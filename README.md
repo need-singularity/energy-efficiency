@@ -8,6 +8,93 @@ AI Energy Efficiency via Number Theory — 10 techniques derived from perfect nu
 
 > Part of the [TECS-L](https://github.com/need-singularity/TECS-L) project family.
 
+## Discovery Progress — Energy Efficiency
+
+```
+  Level 1: Discovery         ████████████████████ 100%
+    ✅ 10 techniques identified  ✅ Number theory basis proven
+    ✅ Phi6Simple 71% FLOPs  ✅ FFT-Mix 3x faster  ✅ Phi-Bottleneck 67% params
+    ✅ Entropy early stop 66.7%  ✅ Egyptian MoE routing
+
+  Level 2: Verification      ████████████████░░░░ 80%
+    ✅ MNIST benchmarks  ✅ CIFAR-10 benchmarks  ✅ Training stability verified
+    ✅ Gradient properties checked  ✅ Scale dependency tested
+    ⬜ ImageNet benchmark  ⬜ NLP benchmark (GLUE/SuperGLUE)
+    ⬜ Large-scale verification (1B+ params)
+
+  Level 3: Combination       ████████████░░░░░░░░ 60%
+    ✅ Combined architecture (all 10 techniques)  ✅ Optimal expansion ratio found
+    ✅ Depth scaling verified  ✅ R-spectrum pruning tested
+    ⬜ Combined technique PPL on LLM  ⬜ Real-world energy measurement (watts)
+    ⬜ Comparison vs standard Transformer  ⬜ Comparison vs efficient attention methods
+
+  Level 4: Package           ██░░░░░░░░░░░░░░░░░░ 10%
+    ⬜ pip installable library  ⬜ Drop-in replacements for nn.Linear/nn.MultiheadAttention
+    ⬜ HuggingFace trainer plugin  ⬜ Documentation site
+    ⬜ CI/CD + automated benchmarks  ⬜ Published paper
+
+  Level 5: Impact            ░░░░░░░░░░░░░░░░░░░░ 0%
+    ⬜ External adoption  ⬜ Energy savings measured in production
+    ⬜ Carbon footprint reduction report  ⬜ Industry partnerships
+    ⬜ Policy citations  ⬜ Framework integration (PyTorch/JAX native)
+
+  Overall: Level 2.5 / 5.0  (techniques proven, packaging needed)
+  Bottleneck: Large-scale benchmarks + packaging as library
+  Theory: 100%  |  Verification: 80%  |  Adoption: 0%
+```
+
+### Level-Up Priority Roadmap
+
+```
+  Level 2 → 3 (60% → 100%) — Large-Scale Proof
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    #1 ★★★ ImageNet benchmark
+       Difficulty: HIGH (GPU hours, large dataset)
+       Effect: Prove techniques work at vision scale
+       → ResNet-50 + Phi-Bottleneck + Phi6Simple vs baseline
+
+    #2 ★★★ LLM PPL comparison
+       Difficulty: HIGH (needs 1B+ model training)
+       Effect: Killer result — same PPL, less compute
+       → GPT-2 124M with all techniques vs standard
+
+    #3 ★★☆ Real energy measurement
+       Difficulty: MEDIUM (power meter or nvidia-smi)
+       Effect: Actual watts/joules saved, not just FLOPs
+       → Before/after on same hardware
+
+    #4 ★★☆ Comparison vs FlashAttention / Linear Attention
+       Difficulty: MEDIUM
+       Effect: Position FFT-Mix in existing landscape
+       → Same model, swap attention, compare wall-clock + accuracy
+
+
+  Level 3 → 4 (10% → 100%) — Package & Publish
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    #5 ★★★ pip install energy-efficiency
+       Difficulty: MEDIUM
+       Effect: 1-line adoption
+       → nn.Phi6Simple, nn.FFTMixAttention, nn.PhiBottleneckFFN
+
+    #6 ★★★ Paper submission
+       Difficulty: HIGH (writing + experiments)
+       Effect: Academic validation
+       → Target: ICLR or Green AI workshop
+       → Already have Zenodo preprint as starting point
+
+    #7 ★★☆ HuggingFace trainer plugin
+       Difficulty: MEDIUM
+       Effect: trainer.add_callback(EntropyEarlyStop())
+       → Works with any HF training loop
+
+    #8 ★☆☆ Documentation site
+       Difficulty: LOW
+       Effect: Searchable docs + tutorials
+       → GitHub Pages + mkdocs
+```
+
 ## Techniques
 
 | # | Technique | Reduction | Method |
