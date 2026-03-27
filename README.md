@@ -206,6 +206,23 @@ For the mathematical foundation, see [TECS-L](https://github.com/need-singularit
 }
 ```
 
+### Ralph Loop (copy-paste ready, ASCII only)
+
+**Technique Benchmark Suite**
+```
+/ralph-loop:ralph-loop Technique benchmark agent. Read README technique list and experiments directory. Pick technique with least benchmark data. Run on MNIST and CIFAR-10 with standard baseline comparison. Measure accuracy and FLOPs and params and wall-clock time. Record full data table. Update README. Commit and push.
+```
+
+**Combined Architecture Test**
+```
+/ralph-loop:ralph-loop Combined architecture tester. Read experiments/experiment_h_ee_11_combined_architecture.py. Run combined system with all 10 techniques enabled. Compare vs vanilla transformer baseline at same model size. Record PPL and accuracy and total FLOPs reduction. If improvement found then update results. Commit and push.
+```
+
+**New Technique Discovery**
+```
+/ralph-loop:ralph-loop New technique discoverer. Read TECS-L math system map via cross-reference. Find n=6 arithmetic identity not yet applied to energy efficiency. Design minimal activation or routing or pruning technique based on it. Implement and benchmark vs baseline. Grade result. Document if successful. Commit and push.
+```
+
 ## License
 
 MIT
