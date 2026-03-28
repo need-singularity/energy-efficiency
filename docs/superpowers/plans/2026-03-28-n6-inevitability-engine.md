@@ -15,7 +15,7 @@
 ## File Structure
 
 ```
-energy-efficiency/
+n6-architecture/
   model_utils.py                          # MODIFY: add new constants (DEDEKIND_PSI, JORDAN_J2, etc.)
 
   techniques/

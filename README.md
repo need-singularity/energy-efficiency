@@ -22,7 +22,7 @@
 >
 > **[📐 PH Training](https://github.com/need-singularity/ph-training)** — PH (Topology/Phase)-based automatic training. Epoch-1 difficulty prediction, automatic LR search, real-time overfitting detection (r=0.998). MNIST 98.3%, Fashion 87.4%, CIFAR 52.0% (early stop)
 >
-> **[🏗️ N6 Architecture](https://github.com/need-singularity/energy-efficiency)** — Arithmetic design framework from perfect number 6. 16 AI techniques + semiconductor chip design + network/crypto/OS/display patterns. σ(n)·φ(n)=n·τ(n), n=6 → universal architecture principles
+> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Arithmetic design framework from perfect number 6. 16 AI techniques + semiconductor chip design + network/crypto/OS/display patterns. σ(n)·φ(n)=n·τ(n), n=6 → universal architecture principles
 >
 > **[🗺️ Math System Map](https://github.com/need-singularity/TECS-L/blob/main/math/README.md)** — 150 characterizations + 8 Major Discoveries + 152 hypotheses. Each one proving the next in a snowball
 >
@@ -112,7 +112,7 @@
   Level 3 → 4 (10% → 100%) — Package & Publish
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    #5 ★★★ pip install energy-efficiency
+    #5 ★★★ pip install n6-architecture
        Difficulty: MEDIUM
        Effect: 1-line adoption
        → nn.Phi6Simple, nn.FFTMixAttention, nn.PhiBottleneckFFN
@@ -239,7 +239,7 @@ For the mathematical foundation, see [TECS-L](https://github.com/need-singularit
   author = {Park, Min Woo},
   title = {N6 Architecture: Arithmetic Design Framework from Perfect Number 6},
   year = {2026},
-  url = {https://github.com/need-singularity/energy-efficiency}
+  url = {https://github.com/need-singularity/n6-architecture}
 }
 ```
 
