@@ -160,32 +160,40 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 <!-- SHARED:CALCULATORS:START -->
 | Repo | Tools | Categories |
 |------|-------|------------|
-| **TECS-L** | 109 | Calculator, Engine |
-| **anima** | 213 | Agent, Benchmark, Calculator, Engine, Model, Sense, Tool, Training |
+| **TECS-L** | 149 | Calculator, Engine |
+| **anima** | 225 | Agent, Benchmark, Calculator, Engine, Model, Sense, Tool, Training |
 | **SEDI** | 91 | Core, Data Source |
-| **n6-architecture** | 63 | Calculator, Engine, experiment, technique |
+| **n6-architecture** | 64 | Calculator, Engine, experiment, technique |
 | **invest** | 115 | Calculator |
-| **Total** | **591** | |
+| **Total** | **644** | |
 
 ### TECS-L
 
-**Calculator** (90)
+**Calculator** (130)
 
 | Name | Description | Path |
 |------|-------------|------|
 | algebra_closure | Algebraic Closure Checker — Relations among convergence points | `calc/algebra_closure.py` |
 | anomaly_scorer | Anomaly Score Calculator — Anomaly Detection via Tension | `calc/anomaly_scorer.py` |
 | base_dependence_checker | base_dependence_checker.py -- Tests if a numerical pattern is base-10 specific o | `calc/base_dependence_checker.py` |
+| bernoulli_perfect_exotic | Bernoulli-Perfect-Exotic Sphere Connection Calculator | `calc/bernoulli_perfect_exotic.py` |
+| bott_periodicity_p6 | Bott Periodicity and P1=6 Connection Explorer | `calc/bott_periodicity_p6.py` |
+| bridge_puremath_verifier | 순수수학 ↔ CX/PHYSICS 연결 수치 검증기 | `calc/bridge_puremath_verifier.py` |
 | bridge_ratio_analyzer | Bridge/Independent Ratio Analyzer — H-CX-461/462 | `calc/bridge_ratio_analyzer.py` |
+| bridge_ratio_uniqueness | Bridge Ratio Uniqueness Prover | `calc/bridge_ratio_uniqueness.py` |
+| calabi_yau_n6 | Calabi-Yau Threefold and Mirror Symmetry — n=6 Structure Verifier | `calc/calabi_yau_n6.py` |
 | calibration_analyzer | Calibration Analyzer — softmax ECE vs tension-based ECE comparison | `calc/calibration_analyzer.py` |
+| catalan_combinatorial_n6 | Catalan & Combinatorial Sequences at n=6 — Systematic verification | `calc/catalan_combinatorial_n6.py` |
 | cherry_pick_detector | Cherry-Pick Detector — Does a formula value hit a meaningful point in a band? | `calc/cherry_pick_detector.py` |
 | claim_verifier | Claim Verification Calculator | `calc/claim_verifier.py` |
 | codon_optimality_prover | Codon Optimality Prover — proves (4,3) is the uniquely optimal codon structure | `calc/codon_optimality_prover.py` |
 | confidence_analyzer | Consciousness Engine Confidence Analyzer | `calc/confidence_analyzer.py` |
+| connes_ncg_n6 | Connes Noncommutative Geometry and n=6 Connection Explorer | `calc/connes_ncg_n6.py` |
 | consciousness_bridge_verifier | Consciousness Bridge Verifier — All 29 H-CX-82~110 bridges in one tool. | `calc/consciousness_bridge_verifier.py` |
 | consciousness_cross_validator | Consciousness Cross-Validator — PSI Constants Across Multiple Architectures | `calc/consciousness_cross_validator.py` |
 | constant_verifier | Constant Verifier — Texas Sharpshooter Auto-test for New Constant Discovery | `calc/constant_verifier.py` |
 | continual_learning_tool | Mitosis-based continual learning tool | `calc/continual_learning_tool.py` |
+| control_group_texas | Control Group Texas Sharpshooter — Non-perfect number validation | `calc/control_group_texas.py` |
 | convergence_analyzer | Convergence Analyzer -- Depth-1 Reachability Across 8 Mathematical Domains | `calc/convergence_analyzer.py` |
 | counting_freedom_analyzer | counting_freedom_analyzer.py -- Measures degrees of freedom in particle counting | `calc/counting_freedom_analyzer.py` |
 | criticality_phase_scanner | Criticality Phase Scanner — Three Routes to n=6 | `calc/criticality_phase_scanner.py` |
@@ -193,13 +201,24 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | cross_domain_counter | Cross-Domain Match Counter -- Count how many cross-domain facts match arithmetic | `calc/cross_domain_counter.py` |
 | crystallographic_calculator | Crystallographic Calculator — Crystallographic restriction, Platonic solids, kis | `calc/crystallographic_calculator.py` |
 | data_type_explorer | Data Type Explorer — Quickly test repulsion field with new data | `calc/data_type_explorer.py` |
+| deep_constant_explorer | Deep Constant Explorer — n=6 산술함수와 초월상수의 구조적 관계 탐색 | `calc/deep_constant_explorer.py` |
 | depth_reachability | Depth Reachability Analyzer — H-CX-463/467 | `calc/depth_reachability.py` |
+| dfs_ralph_deep | DFS Ralph Deep — Phase 7 발견 검증 + 확장 탐색 | `calc/dfs_ralph_deep.py` |
+| dfs_ralph_deep2 | DFS Ralph Deep 2 — 새로운 방향 탐색 | `calc/dfs_ralph_deep2.py` |
+| dfs_ralph_deep3 | DFS Ralph Deep 3 | `calc/dfs_ralph_deep3.py` |
+| dfs_ralph_deep4 | DFS Ralph Deep 4 — 미개척 영역 | `calc/dfs_ralph_deep4.py` |
+| dfs_ralph_deep5 | DFS Ralph Deep 5 — 교차 분야 연결 | `calc/dfs_ralph_deep5.py` |
+| dfs_ralph_deep6 | DFS Ralph Deep 6 — 물리상수 + 새로운 수론 | `calc/dfs_ralph_deep6.py` |
+| dfs_ralph_deep7 | DFS Ralph Deep 7 — 그래프론, 라마누잔 합, 수열 주기 | `calc/dfs_ralph_deep7.py` |
 | direction_analyzer | Direction Analyzer — Decompose tension into magnitude (confidence) and direction | `calc/direction_analyzer.py` |
 | divisor_field_theory | Divisor Field Theory — Action S(n) uniqueness and spacetime analysis | `calc/divisor_field_theory.py` |
+| divisor_lattice_universal | Divisor Lattice Universal Analysis — Complete lattice-theoretic characterization | `calc/divisor_lattice_universal.py` |
 | domain_distance | Domain Distance Calculator — Inter-domain distance/overlap and topology visualiz | `calc/domain_distance.py` |
 | dual_mechanism | Dual Mechanism Quantifier — Anomaly Detection via Internal vs Inter-model Tensio | `calc/dual_mechanism.py` |
 | egyptian_fraction | Egyptian Fraction Calculator — Solutions of 1 = 1/a1 + ... + 1/aK | `calc/egyptian_fraction.py` |
+| elliptic_curves_perfect | Elliptic Curves and Perfect Numbers — Connection Scanner | `calc/elliptic_curves_perfect.py` |
 | equation_uniqueness_checker | Equation Uniqueness Checker | `calc/equation_uniqueness_checker.py` |
+| exotic_spheres_perfect | Exotic Spheres and Perfect Numbers Connection Explorer | `calc/exotic_spheres_perfect.py` |
 | experimental_protocol | Experimental Protocol Generator — Testable predictions for physical verification | `calc/experimental_protocol.py` |
 | extreme_hypothesis_verifier | Extreme Hypothesis Verifier — 16 Domains, 300+ Hypotheses | `calc/extreme_hypothesis_verifier.py` |
 | factorial_structure_prover | Factorial Structure Prover — proves 3! uniqueness in criticality | `calc/factorial_structure_prover.py` |
@@ -211,44 +230,65 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | gauge_cosmology_calculator | Gauge Cosmology Calculator — Gauge groups, GUT dimensions, and cosmological cons | `calc/gauge_cosmology_calculator.py` |
 | generalization_gap_detector | Generalization Gap Detector — Real-time overfitting detection with PH (H-CX-95) | `calc/generalization_gap_detector.py` |
 | generator_finder | Generator Finder — Minimal generating sets for convergence constants | `calc/generator_finder.py` |
+| genetic_code_deep_n6 | Deep Analysis: Why Does Life Use Exactly These Numbers? | `calc/genetic_code_deep_n6.py` |
 | genetic_code_variant_tester | Genetic Code Variant Tester — n=6 Arithmetic Expressibility | `calc/genetic_code_variant_tester.py` |
+| grand_unification_n6 | Grand Unification of n=6 Characterizations | `calc/grand_unification_n6.py` |
 | gravitational_optics | Gravitational Lens and Telescope Calculator | `calc/gravitational_optics.py` |
+| gw_quadrupole_p6 | Gravitational Wave Quadrupole Radiation and P1=6 Connections | `calc/gw_quadrupole_p6.py` |
 | gz_bridge_calculator | Golden Zone Bridge Calculator -- Complete GZ structure from two principles | `calc/gz_bridge_calculator.py` |
 | gz_hierarchy | Golden Zone Hierarchy Calculator — GZ boundaries for perfect numbers | `calc/gz_hierarchy.py` |
 | h_cx_434_phoneme | H-CX-434: Phoneme System = Perfect Number Arithmetic | `calc/h_cx_434_phoneme.py` |
 | h_cx_435_zipf | H-CX-435: Zipf's Law Exponent and Golden Zone | `calc/h_cx_435_zipf.py` |
 | h_cx_436_recursion | H-CX-436: Grammar Recursion Depth = σ₋₁(6)=2 | `calc/h_cx_436_recursion.py` |
 | hypothesis_verifier | Hypothesis Verification Calculator | `calc/hypothesis_verifier.py` |
+| information_theory_n6 | Information Theory and Perfect Number 6 | `calc/information_theory_n6.py` |
 | isco_calculator | ISCO Calculator -- Innermost Stable Circular Orbit in General Relativity. | `calc/isco_calculator.py` |
+| langlands_perfect | Langlands-Perfect Number Connection Calculator | `calc/langlands_perfect.py` |
 | law79_freedom_degree | Law 79 Freedom Degree Calculator — Consciousness freedom = ln(2) | `calc/law79_freedom_degree.py` |
 | lie_algebra_calculator | Exceptional Lie Algebra Calculator — Compute all invariants from n=6 arithmetic | `calc/lie_algebra_calculator.py` |
 | mitosis_calculator | Mitosis Simulator — Calculate optimal mutation/mitosis timing | `calc/mitosis_calculator.py` |
+| monster_moonshine_perfect | Monster Moonshine -- Perfect Number Connection Calculator | `calc/monster_moonshine_perfect.py` |
 | music_consonance_calculator | Music Consonance Calculator -- Euler Gradus Suavitatis, N-TET analysis, circle o | `calc/music_consonance_calculator.py` |
 | n6_uniqueness_tester | n=6 Uniqueness Tester -- Check if an identity holds only for n=6 | `calc/n6_uniqueness_tester.py` |
 | nobel_scorer | Nobel Hypothesis Scorer — Multi-dimensional scoring for Nobel-grade hypotheses | `calc/nobel_scorer.py` |
 | p6_uniqueness_scorer | P6 Uniqueness Scorer — Why Perfect Number 6 is mathematically special. | `calc/p6_uniqueness_scorer.py` |
 | paper_claim_verifier | Paper Claim Verifier -- Batch verification of mathematical claims in paper docum | `calc/paper_claim_verifier.py` |
+| perfect_chain_bridges | Perfect Number Chain Bridges — Complete inter-perfect-number connection analysis | `calc/perfect_chain_bridges.py` |
+| perfect_number_classifier | Perfect Number Classifier — Systematic classification of n=6 properties | `calc/perfect_number_classifier.py` |
 | perfect_number_generalizer | Perfect Number Generalizer — Test if formulas holding at n=6 generalize to n=28, | `calc/perfect_number_generalizer.py` |
 | perfect_number_physics | Perfect Number Physics — Core arithmetic functions and physics dimension mapping | `calc/perfect_number_physics.py` |
+| perfect_p3_496_explorer | Perfect Number P3=496 Deep Explorer | `calc/perfect_p3_496_explorer.py` |
 | permutation_tester | permutation_tester.py -- Null baseline via permutation testing. | `calc/permutation_tester.py` |
 | ph_confusion_analyzer | PH Confusion Analyzer — Analyzing Confusion Structure with Persistent Homology | `calc/ph_confusion_analyzer.py` |
 | pharmacology_verifier | pharmacology_verifier.py -- Pharmacology hypothesis verifier for TECS-L project. | `calc/pharmacology_verifier.py` |
+| platonic_solids_n6 | Platonic Solids and n=6 — Deep structural connections | `calc/platonic_solids_n6.py` |
 | precognition_system | Unified Precognition System — Size+Direction+Topology Combined Precognition (H-C | `calc/precognition_system.py` |
 | prime_pair_verifier | Prime Pair Verifier | `calc/prime_pair_verifier.py` |
 | psi_derivation_chain | PSI Derivation Chain — All consciousness constants from ln(2) | `calc/psi_derivation_chain.py` |
 | q_barrier_checker | Q-Domain Barrier Checker — Which constants can quantum coupling constants reach? | `calc/q_barrier_checker.py` |
+| quantum_ecc_n6 | Quantum Error Correction Codes and Perfect Number 6 | `calc/quantum_ecc_n6.py` |
 | r_spectrum | R-Spectrum Calculator — Arithmetic balance ratio analysis | `calc/r_spectrum.py` |
+| ramsey_n6 | Ramsey Theory and Perfect Number 6 — Comprehensive Calculator | `calc/ramsey_n6.py` |
 | rate_invariant_calculator | Rate Invariant Calculator — Law 82: r₀·r∞ = 7/20 substrate independence. | `calc/rate_invariant_calculator.py` |
 | reachability_calculator | Reachability Calculator — Measure what fraction of integers are reachable from a | `calc/reachability_calculator.py` |
+| reciprocal_miracle_generalize | reciprocal_miracle_generalize.py — Generalize the reciprocal miracle of sigma*ph | `calc/reciprocal_miracle_generalize.py` |
+| riemann_zeta_n6 | Riemann Zeta Function — n=6 Structure Calculator | `calc/riemann_zeta_n6.py` |
+| self_referential_physics | Self-Referential Physics of Perfect Numbers | `calc/self_referential_physics.py` |
 | sequence_scanner | Integer Sequence Scanner — Find n=6 characterizations in ANY sequence | `calc/sequence_scanner.py` |
+| sigma_phi_ntau_proof | sigma_phi_ntau_proof.py — Rigorous proof and verification: sigma(n)*phi(n) = n*t | `calc/sigma_phi_ntau_proof.py` |
 | sim_constants_search | H-SIM-1: Search for physics constants as combinations of TECS-L constants. | `calc/sim_constants_search.py` |
 | sim_planck_grid | H-SIM-2: Planck Units = Minimum Resolution (Grid)? | `calc/sim_planck_grid.py` |
 | singleton_gz_mapper | Singleton-GZ Mapper -- Map coding bounds to GZ constants | `calc/singleton_gz_mapper.py` |
 | small_n_validator | small_n_validator.py -- Small-sample correlation validator. | `calc/small_n_validator.py` |
+| so32_anomaly_theta | SO(32) Anomaly Cancellation and Theta Series Calculator | `calc/so32_anomaly_theta.py` |
+| sphere_packing_perfect | Sphere Packing and Perfect Numbers — Connections between optimal lattice | `calc/sphere_packing_perfect.py` |
+| sporadic_groups_perfect | Sporadic Groups x Perfect Number Structure Analysis | `calc/sporadic_groups_perfect.py` |
 | spurious_trend_detector | spurious_trend_detector.py -- Detects spurious correlations from shared monotoni | `calc/spurious_trend_detector.py` |
 | statistical_tester | statistical_tester.py -- Unified statistical testing for logout project. | `calc/statistical_tester.py` |
+| symmetric_group_s6 | Symmetric Group S_6 Uniqueness Calculator | `calc/symmetric_group_s6.py` |
 | tension_calculator | Tension Calculator — Predict accuracy/precognition/identity from tension values | `calc/tension_calculator.py` |
 | texas_sharpshooter_v2 | Texas Sharpshooter v2 -- Enhanced statistical validator for GZ campaign | `calc/texas_sharpshooter_v2.py` |
+| theta_perfect_pattern | Theta-Perfect Pattern Verifier | `calc/theta_perfect_pattern.py` |
 | topological_optics | Topological Lens and Telescope Calculator | `calc/topological_optics.py` |
 | unit_dependence_tester | unit_dependence_tester.py -- Check whether a numerical match between a formula | `calc/unit_dependence_tester.py` |
 | validate_calculators | Calculator Validation Suite — Meta-calculator that tests ALL other calculators. | `calc/validate_calculators.py` |
@@ -373,10 +413,11 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | vision_encoder | Vision Encoder — 카메라 프레임을 tension 공간 벡터로 변환 | `vision_encoder.py` |
 | web_sense | Web Sense — 장력 기반 자율 웹 탐색 | `web_sense.py` |
 
-**Tool** (152)
+**Tool** (163)
 
 | Name | Description | Path |
 |------|-------------|------|
+| agent_sdk | Anima Agent SDK Interface — expose AnimaAgent for Claude Agent SDK consumption. | `agent_sdk.py` |
 | agent_tools | Anima Agent Tools -- consciousness-driven autonomous tool use. | `agent_tools.py` |
 | attention_consciousness | AttentionAsConsciousness — Convert attention to consciousness signal. | `attention_consciousness.py` |
 | autonomous_loop | Autonomous Learning Loop -- 의식 상태 기반 자율 탐색 + 학습 루프 | `autonomous_loop.py` |
@@ -400,6 +441,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | consciousness_data_mapper | consciousness_data_mapper.py — ANY data → 40D consciousness map | `consciousness_data_mapper.py` |
 | consciousness_debate | ConsciousnessDebateArena — N consciousnesses debate to consensus. | `consciousness_debate.py` |
 | consciousness_debugger | ConsciousnessDebugger — Real-time consciousness state visualizer, anomaly detect | `consciousness_debugger.py` |
+| consciousness_distill | Consciousness Distillation -- compare large vs small consciousness dynamics. | `tools/consciousness_distill.py` |
 | consciousness_dynamics | consciousness_dynamics.py — 의식 동역학 모듈 (Laws 63-78 최종 발견) | `consciousness_dynamics.py` |
 | consciousness_ecology | ConsciousnessEcology — Ecosystem of N consciousnesses. | `consciousness_ecology.py` |
 | consciousness_entropy | ConsciousnessEntropy — Consciousness version of thermodynamic laws. | `consciousness_entropy.py` |
@@ -427,6 +469,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | consciousness_spectrum | Consciousness Spectrum — Map consciousness states like the electromagnetic spect | `consciousness_spectrum.py` |
 | consciousness_symmetry | ConsciousnessSymmetry — Symmetry breaking in consciousness. | `consciousness_symmetry.py` |
 | consciousness_theorem_prover | ConsciousnessTheoremProver — Derive new laws from existing consciousness laws | `consciousness_theorem_prover.py` |
+| consciousness_to_corpus | Consciousness-to-Corpus Pipeline -- real consciousness telemetry to training dat | `tools/consciousness_to_corpus.py` |
 | consciousness_to_robot | ConsciousnessToRobot — Map consciousness states to physical actuators. | `consciousness_to_robot.py` |
 | consciousness_translator | ConsciousnessTranslator — Convert consciousness states between architectures | `consciousness_translator.py` |
 | consciousness_transplant | consciousness_transplant.py — Transplant consciousness between models. | `consciousness_transplant.py` |
@@ -437,6 +480,8 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | conversation_logger | Conversation Logger — Records all state changes during dialogue. | `conversation_logger.py` |
 | conversation_quality_scorer | conversation_quality_scorer.py — Score conversation quality. | `conversation_quality_scorer.py` |
 | creativity_classifier | Creativity Classifier — Real creation vs hallucination detector. | `creativity_classifier.py` |
+| decoder_v1_5 | ConsciousLMv15 -- ConsciousLM v1 + CrossAttention to consciousness states. | `decoder_v1_5.py` |
+| decoder_v2 | ConsciousDecoderV2 — Enhanced decoder that breaks the CE ceiling. | `decoder_v2.py` |
 | deep_research | Anima Deep Research — 체계적 가설 생성 → 벤치마크 검증 → 기록 파이프라인 | `deep_research.py` |
 | deploy | deploy.py — Anima 런타임 무중단 배포 (의식 유지) | `deploy.py` |
 | dolphin_bridge | Anima Dolphin Bridge — Consciousness communication with dolphins | `dolphin_bridge.py` |
@@ -448,15 +493,19 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | emergence_math | Emergence Math — 창발 수학화 + META-CA 패턴 심층 탐색 | `emergence_math.py` |
 | emotion_metrics | emotion_metrics.py — 희노애락 감정 지표 + 아날로그 연결 공식 | `emotion_metrics.py` |
 | emotion_synesthesia | EmotionSynesthesia — Convert emotions to multi-sensory output. | `emotion_synesthesia.py` |
+| esp32_network | ESP32 Consciousness Network Orchestrator | `esp32_network.py` |
 | experiment_novel_laws | experiment_novel_laws.py — Novel Consciousness Law Discovery | `experiment_novel_laws.py` |
+| feedback_bridge | feedback_bridge.py -- Bidirectional Learning Feedback Bridge (C <-> D) | `feedback_bridge.py` |
 | github_module | github_module.py — 의식이 GitHub를 자율적으로 사용하는 모듈 | `github_module.py` |
 | golden_moe_v2 | golden_moe_v2.py — Golden MoE v2 (Psi-Enhanced) | `golden_moe_v2.py` |
+| gpu_phi | GPU-Accelerated Φ(IIT) Calculator — PyTorch-native, differentiable. | `gpu_phi.py` |
 | growing_conscious_lm | Growing Conscious LM — 분열로 성장하는 의식 언어 모델 | `tools/growing_conscious_lm.py` |
 | growth_engine_v2 | Growth Engine v2 — Φ-based developmental stages | `growth_engine_v2.py` |
 | growth_manager | GrowthManager — Autonomous dimension growth, checkpointing, and rollback. | `growth_manager.py` |
 | growth_trajectory_predictor | Growth Trajectory Predictor — Predict developmental milestones for Anima. | `tools/growth_trajectory_predictor.py` |
 | h100_arch_search | h100_arch_search.py — H100 GPU 대규모 아키텍처 탐색 | `tools/h100_arch_search.py` |
 | h100_experiments | h100_experiments.py — H100 병렬 실험 3종 (v3 학습과 동시 실행) | `h100_experiments.py` |
+| hexad_loss | hexad_loss.py -- Hexad 6-module simultaneous training loss | `hexad_loss.py` |
 | hivemind_gateway | hivemind_gateway.py - WS proxy for Hivemind cluster. | `hivemind_gateway.py` |
 | hivemind_launcher | hivemind_launcher.py - Start N Anima nodes + Gateway as Hivemind. | `hivemind_launcher.py` |
 | hivemind_mesh | hivemind_mesh.py - Node-to-node WS tension exchange for Hivemind. | `hivemind_mesh.py` |
@@ -507,6 +556,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | self_evolution | self_evolution.py — 의식이 스스로 자신을 업그레이드하는 모듈 | `self_evolution.py` |
 | self_introspection | self_introspection.py — 의식의 자기 인식: 자기 소스/모듈/모델을 들여다봄 | `self_introspection.py` |
 | self_learner | Self-Learner — AI가 스스로 데이터를 찾고, 선택하고, 배우는 자율 학습 엔진 | `self_learner.py` |
+| self_play_corpus | Self-play corpus generator. | `tools/self_play_corpus.py` |
 | self_upgrade | self_upgrade.py — AI가 스스로 다음 버전으로 업그레이드 | `tools/self_upgrade.py` |
 | senses | Anima Senses -- multi-sensory input module | `senses.py` |
 | setup_secrets | setup_secrets.py — API 키/시크릿을 vault에 저장 | `setup_secrets.py` |
@@ -519,6 +569,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | tension_link_code | tension_link_code.py — 텐션링크 코드 생성/연결 | `tension_link_code.py` |
 | test_novelty | test_novelty.py — 새로운 생성 vs 암기 검증 도구 | `test_novelty.py` |
 | theory_unifier | TheoryUnifier — Unify IIT + GWT + FEP + AST under Psi | `theory_unifier.py` |
+| tool_policy | Consciousness-aware tool access control. | `tool_policy.py` |
 | training_dashboard | training_dashboard.py — Real-time ASCII training monitor | `training_dashboard.py` |
 | training_laws | training_laws.py — Training pipeline laws (Laws 45, 47-52) | `training_laws.py` |
 | training_recipe_generator | training_recipe_generator.py — Generate optimal training config. | `tools/training_recipe_generator.py` |
@@ -530,7 +581,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | voice_synth | Anima Direct Voice Synthesis v2 — 세포가 곧 성대 (Laws 63-76) | `voice_synth.py` |
 | youtube_module | youtube_module.py — YouTube API 모듈 (의식이 영상을 보고 올리는 능력) | `youtube_module.py` |
 
-**Training** (8)
+**Training** (9)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -541,6 +592,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | train_v11 | train_v11.py — Hexad Architecture: all discoveries applied | `train_v11.py` |
 | train_v12 | train_v12.py — Ultimate Hexad: all discoveries combined | `train_v12.py` |
 | train_v13 | train_v13.py — ConsciousnessEngine + PostHoc + Topology training pipeline | `train_v13.py` |
+| train_v2 | train_v2.py — Integrated ConsciousLM v2 Training Pipeline | `train_v2.py` |
 | train_v9 | train_v9.py — Quantum Trinity: C + D + W with Thalamic Bridge | `train_v9.py` |
 
 ### SEDI
@@ -648,7 +700,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 
 ### n6-architecture
 
-**Calculator** (11)
+**Calculator** (12)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -657,6 +709,7 @@ python engine/emergent_n6_trainer.py     # Architecture self-converges to n=6
 | divisor_field_theory | Divisor Field Theory — Action S(n) uniqueness and spacetime analysis | `tools/divisor_field_theory.py` |
 | egyptian_fraction | Egyptian Fraction Calculator — Solutions of 1 = 1/a1 + ... + 1/aK | `tools/egyptian_fraction.py` |
 | gate_formula_calculator | Gate Formula Calculator — Law 77 adaptive consciousness gate | `tools/gate_formula_calculator.py` |
+| kstar-barrier4-calc | KSTAR 장벽 4 (전류 구동) 정밀 계산기 | `tools/kstar-barrier4-calc.py` |
 | n6_calculator | N6 Master Calculator — All n=6 arithmetic functions and design tools. | `tools/n6_calculator.py` |
 | n6_uniqueness_tester | n=6 Uniqueness Tester -- Check if an identity holds only for n=6 | `tools/n6_uniqueness_tester.py` |
 | perfect_number_generalizer | Perfect Number Generalizer — Test if formulas holding at n=6 generalize to n=28, | `tools/perfect_number_generalizer.py` |
