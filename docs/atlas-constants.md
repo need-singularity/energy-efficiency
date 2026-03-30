@@ -464,6 +464,8 @@
 | dim(E₆) | 78 | n·(σ+μ) = 6·13 | Trinification | BT-19 |
 | 1/α fine structure | 137.0357 vs 137.0360 | σ(σ-μ)+sopfr+1/P₂ | **2.1 ppm** | BT-19 |
 | 6π⁵ ≈ m_p/m_e | 1836.118 vs 1836.153 | 6π⁵ | 19 ppm | H-CP-10 |
+| α_s strong coupling | 0.1190 vs 0.1179 | sopfr/((σ-sopfr)·n)=5/42 | 0.97% | new |
+| m_n/m_p - 1 | 1/720 vs 0.001378 | 1/n! = 1/720 | 0.79% | H-CP-61 |
 | σn+μ ≈ H₀ | 73 vs 73.04 | σn+μ | 0.05% | H-CP-11 |
 | Bott periodicity | 8 | σ-τ | K-theory | H-CP-14 |
 

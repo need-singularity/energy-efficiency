@@ -302,6 +302,8 @@ This uses no transcendental functions ($\pi$, $e$) — only integer arithmetic a
 | $\sum m_\nu$ | $\sigma\sqrt{\Delta m^2_{21}}$ | 0.104 eV | $< 0.12$ | — | DESI/Euclid |
 | $\sin^2\theta_W(M_Z)$ | $(n/\varphi)/(\sigma{+}\mu)$ | 0.2308 | 0.2312 | 0.19% | precision EW |
 | $1/\alpha$ | $\sigma(\sigma{-}\mu){+}\mathrm{sopfr}{+}P_2^{-1}$ | 137.0357 | 137.0360 | **2.1 ppm** | CODATA |
+| $\alpha_s(M_Z)$ | $\mathrm{sopfr}/((\sigma{-}\mathrm{sopfr})\cdot n) = 5/42$ | 0.1190 | 0.1179 | 0.97% | PDG |
+| $m_n/m_p - 1$ | $1/n! = 1/720$ | 0.001389 | 0.001378 | 0.79% | nuclear |
 
 ---
 
