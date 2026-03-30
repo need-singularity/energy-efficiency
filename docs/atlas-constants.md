@@ -611,6 +611,7 @@
 | BT-15 | Kissing Number Quadruple K₁..₄=(φ,n,σ,J₂) | math, superconductor, nuclear, coding | ⭐⭐⭐ |
 | BT-16 | Riemann Zeta Trident ζ(2)=π²/n, ζ(-1)=-1/σ, BCS=σ/(7ζ(3)) | math, number theory, superconductor, AI | ⭐⭐⭐ |
 | BT-17 | SM Fermion-Boson σ-Balance: (n/φ)×τ = σ = generators | particle physics, math, number theory | ⭐⭐ |
+| BT-18 | Vacuum Energy Chain: E₀=-(σφ)⁻¹ → η²⁴ → Δ(wt σ) → Monster | QFT, modular forms, coding, lattice, group theory | CONJECTURE |
 
 ---
 
@@ -625,7 +626,7 @@
   CLOSE constants registered: 140+
   Total atlas entries: 295+ (registered rows, duplicates consolidated)
 
-  Breakthrough Theorems: 17 (BT-1~17)
+  Breakthrough Theorems: 18 (BT-1~18, BT-18 = CONJECTURE)
     Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16
     Two-star (⭐⭐): BT-1, BT-2, BT-3, BT-7, BT-8, BT-10, BT-12, BT-14, BT-17
     One-star (⭐): BT-4, BT-9, BT-11

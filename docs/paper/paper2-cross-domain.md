@@ -205,7 +205,26 @@ $$[24,\;12,\;8] = [\sigma(6)\cdot\varphi(6),\;\;\sigma(6),\;\;\sigma(6)-\tau(6)]
 
 The Leech lattice is constructed from $\mathcal{G}_{24}$ via the Construction A procedure [3].
 
-### 4.4. Bosonic String
+### 4.4. Casimir Vacuum Energy and the Dedekind Eta Function
+
+The regularized sum $\sum_{n=1}^{\infty} n = \zeta(-1) = -1/12 = -1/\sigma(6)$ yields the Casimir vacuum energy of a 2D free boson:
+
+$$E_0 = \frac{1}{2}\zeta(-1) = -\frac{1}{24} = -\frac{1}{\sigma(6)\cdot\varphi(6)} = -\frac{1}{n\cdot\tau(6)}.$$
+
+The vacuum energy is the negative reciprocal of the core theorem value. This $1/24$ enters the Dedekind eta function $\eta(\tau) = q^{1/24}\prod_{n=1}^{\infty}(1-q^n)$, which transforms under $\tau \to \tau+1$ with phase $e^{i\pi/12} = e^{i\pi/\sigma(6)}$. To obtain a proper modular form, $\eta$ must be raised to the $24$th power:
+
+$$\Delta(\tau) = \eta(\tau)^{24} = \eta(\tau)^{\sigma(6)\cdot\varphi(6)},$$
+
+which is the modular discriminant of weight $12 = \sigma(6)$.
+
+This creates two independent paths from $n=6$ to the Monster group:
+
+1. **Analytic**: $B_2 = 1/6 \to \zeta(-1) = -1/12 \to E_0 = -1/24 \to \eta \to \Delta \to j(\tau) \to$ Moonshine $\to$ Monster
+2. **Algebraic**: Hexacode$[6,3,4] \xrightarrow{\times\tau} $ Golay$[24,12,8] \to$ Leech $\Lambda_{24} \to \mathrm{Co}_0 \to$ Monster
+
+Both paths start from $n=6$ and converge at the Monster group. Whether this convergence is structurally necessary (rather than coincidental) is the central open question of this work (see BT-18 in the companion document).
+
+### 4.5. Bosonic String
 
 The bosonic string has critical spacetime dimension $D=26$. The physical transverse degrees of freedom number $D-2 = 24$. The relation $26 = 24 + 2 = \sigma(6)\varphi(6) + \varphi(6)$ can be noted, though $2$ is a very common number.
 
@@ -408,7 +427,7 @@ We consolidate the limitations of the cross-domain claims:
 
 We pose the following questions in decreasing order of mathematical precision:
 
-**Question 1** (Algebraic). *Does there exist a functorial or categorical relationship between the condition $R(n)=1$ and the existence of the binary Golay code $[24,12,8]$? Specifically, can one derive the Golay code parameters from the equation $\sigma(n)\varphi(n) = n\tau(n)$ without appealing to numerical coincidence?*
+**Question 1** (Algebraic — BT-18 Conjecture). *Does there exist a functorial or categorical relationship between the condition $R(n)=1$ and the existence of the binary Golay code $[24,12,8]$? Specifically, can one derive the Golay code parameters from the equation $\sigma(n)\varphi(n) = n\tau(n)$ without appealing to numerical coincidence? The Turyn construction uses expansion factor $\tau(6)=4$, and $n\cdot\tau(6) = \sigma(6)\cdot\varphi(6) = 24$ is the core theorem identity, suggesting that the construction literally implements the balance equation. The analytic parallel — that the Casimir energy $E_0 = -1/24 = -(\sigma\varphi)^{-1}$ generates $\eta^{24} = \Delta$ of weight $\sigma = 12$, leading independently to the Monster group via Moonshine — provides a second convergent path from $R(n)=1$ to the same algebraic endpoint.*
 
 **Question 2** (Information-theoretic). *Does $R(n) = \sigma(n)\varphi(n)/(n\tau(n))$ correspond to a well-defined information-theoretic quantity (e.g., a ratio of channel capacity to transmission rate) for some natural encoding scheme associated with the divisor lattice of $n$?*
 
