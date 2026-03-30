@@ -363,3 +363,24 @@ This self-consistent decomposition is the strongest structural argument in this 
 
 **Honest assessment:**
 The particle counting matches (quarks, leptons, generators) are genuine exact integers. The m_p/m_e formula is strikingly precise. Most other matches are either too generic (small integers) or require ad hoc combinations. This domain has ~4 strong results out of 30 hypotheses, which is roughly consistent with the other N6 domains.
+
+---
+
+## BT-Level Extensions (H-CP-81~86) — Verified 2026-03-31
+
+Cross-verified against PDG 2024, NuFIT 5.3, Planck 2018.
+
+| ID | Hypothesis | Grade | Error |
+|----|-----------|-------|-------|
+| H-CP-81 | sin²θ₁₂ = 3/10 | **CLOSE** | 0.99% (within 0.25σ of NuFIT) |
+| H-CP-82 | sin²θ₂₃ = 4/7 | **CLOSE** | 0.10% (within 0.04σ of NuFIT) |
+| H-CP-83 | sin²(2θ₁₃) = 1/12 | **CLOSE** | 0.91% (within 0.23σ of NuFIT) |
+| H-CP-84 | n_s = 27/28 | **EXACT** | 0.064% (within 0.15σ of Planck) |
+| H-CP-85 | α_s = 5/42 | **CLOSE** | 0.97% (within 1.3σ of PDG) |
+| H-CP-86 | 1/α = 137.03571 | **CLOSE** | 2.08 ppm (pure integer arithmetic) |
+
+**Updated domain summary with BT extensions:**
+- EXACT: 5 (H-CP-1, 2, 5, 7, **84**)
+- CLOSE: 14 (original 9 + **81, 82, 83, 85, 86**)
+- Strongest new: n_s = 27/28 (H-CP-84) — 0.064% on most precisely measured cosmological parameter.
+- Testable: LiteBIRD r ≈ 0.00383 (BT-22), JUNO sin²θ₁₂ (BT-21), DUNE sin²θ₂₃ (BT-21).

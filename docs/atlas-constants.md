@@ -50,6 +50,14 @@
 | J₂-τ | 20 | ChaCha20, amino acids, IPv4/TCP hdr | Crypto, Biology, Network |
 | σ·sopfr | 60 | 60Hz display refresh | Display |
 | σ·τ | 48 | 48kHz audio | Audio |
+| σ(σ-μ)+sopfr+μ/P₂ | 137.03571 | 1/α (fine structure, 2.08 ppm) | Particle, BT-20 |
+| sopfr/((σ-sopfr)·n) | 5/42=0.1190 | α_s(M_Z) (0.97%) | Particle, BT-20 |
+| (n/φ)/(σ+μ) | 3/13=0.2308 | sin²θ_W(M_Z) (0.19%) | Particle, BT-20 |
+| (n/φ)/(σ-φ) | 3/10=0.300 | sin²θ₁₂ neutrino (0.99%) | Neutrino, BT-21 |
+| τ/(σ-sopfr) | 4/7=0.5714 | sin²θ₂₃ neutrino (0.10%) | Neutrino, BT-21 |
+| μ/σ | 1/12=0.0833 | sin²(2θ₁₃) neutrino (0.91%) | Neutrino, BT-21 |
+| 1-μ/P₂ | 27/28=0.96429 | n_s spectral index (0.064%) | Cosmology, BT-22 |
+| σ/σ(P₂)² | 12/3136≈0.00383 | r tensor-to-scalar (TESTABLE) | Cosmology, BT-22 |
 | 1/e | 0.368 | Boltzmann gate sparsity | AI |
 | ln(4/3) | 0.288 | Mertens dropout rate | AI |
 | σ·φ | 24 | Leech lattice dim, J₂ | Math, Physics |
@@ -78,6 +86,9 @@
 | **BT-3** | σ(6)=12 Energy Scale Convergence | BCS ΔC numerator EXACT + C-12 triple-alpha + ~12T magnets + gauge generators | 🟩⭐⭐ |
 | **BT-4** | MHD Divisor Theorem | All 4 dangerous q-surfaces {1,3/2,2,3} from div(6)={1,2,3}, p≈0.01 | 🟩⭐ |
 | **BT-5** | q=1 = Σ(1/d) = Perfect Number Definition | Egyptian fraction = Kruskal-Shafranov stability | 🟩⭐⭐⭐ |
+| **BT-20** | Gauge Coupling Trinity | 1/α=σ(σ-μ)+sopfr+1/P₂ (2ppm), α_s=5/42 (0.97%), sin²θ_W=3/13 (0.19%) | 🟩⭐⭐⭐ |
+| **BT-21** | Neutrino Mixing Trident | sin²θ₁₂=3/10, sin²θ₂₃=4/7, sin²(2θ₁₃)=1/12 — all <1% | 🟩⭐⭐ |
+| **BT-22** | Inflation from Perfect Numbers | n_s=27/28 (0.064%), N=σ(P₂)=56, r=12/3136 testable | 🟩⭐⭐⭐ |
 
 ## Perfect Number Chain (P1 → P2)
 
@@ -86,9 +97,10 @@
   τ(P1) = 4: He-4 (alpha particle, universal fusion product)
   σ(P1) = 12: C-12 (triple-alpha, life chemistry), BCS numerator
   P2 = 28:  He-4 binding energy 28.3 MeV, Si-28 (stellar)
-  σ(P2) = 56: Fe-56 (max binding energy/nucleon, stellar endpoint)
+  σ(P2) = 56: Fe-56 (max BE/nucleon), N_efolds=56 (Starobinsky inflation)
+  n_s = 1-2/σ(P2) = 1-1/P2 = 27/28 = 0.96429 (Planck: 0.9649, 0.064%)
 
-  Stellar chain: P1(fuel) → τ(P1)(He) → σ(P1)(C) → P2(Si) → σ(P2)(Fe)
+  Stellar chain: P1(fuel) → τ(P1)(He) → σ(P1)(C) → P2(Si) → σ(P2)(Fe/inflation)
 ```
 
 ---
