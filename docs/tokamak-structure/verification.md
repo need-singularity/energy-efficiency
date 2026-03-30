@@ -601,3 +601,25 @@ The hypothesis itself notes that fission power plants have a similar system deco
 4. **Most FAIL downgrades** result from: (a) factual errors in ITER design values, (b) counting schemes that apply to any industrial facility (not tokamak-specific), or (c) freely adjustable parameters presented as constrained.
 
 5. **Overall honest assessment**: 60 hypotheses produced 1 genuine topological result (H-TK-11) and ~12 interesting-but-coincidental pattern matches. The hit rate for physically meaningful connections is approximately 2%.
+
+---
+
+## Extreme Hypotheses (H-TK-61~80)
+
+극한 가설 20개의 독립 검증은 별도 문서 참조:
+→ **[extreme-verification.md](extreme-verification.md)**
+
+극한 검증 결과 요약: 3 EXACT, 8 CLOSE, 5 WEAK, 1 FAIL, 3 UNVERIFIABLE
+
+### 통합 등급 (전 80개 가설)
+
+| Grade | Base (1-60) | Extreme (61-80) | Total | Pct |
+|-------|-------------|-----------------|-------|-----|
+| EXACT | 1 | 3 | **4** | 5.0% |
+| CLOSE | 12 | 8 | **20** | 25.0% |
+| WEAK | 25 | 5 | **30** | 37.5% |
+| FAIL | 22 | 1 | **23** | 28.8% |
+| UNVERIFIABLE | 0 | 3 | **3** | 3.8% |
+| **Total** | **60** | **20** | **80** | 100% |
+
+Atlas 등록: **4 EXACT + 20 CLOSE = 24개** (전체의 30%)

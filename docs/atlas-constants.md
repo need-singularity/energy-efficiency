@@ -209,34 +209,43 @@
 
 ## Tokamak Structure Constants (H-TK)
 
-### EXACT
+### EXACT (3 verified)
 
 | Parameter | Value | n=6 Expression | Source | Hypothesis |
 |-----------|-------|---------------|--------|------------|
-| X-point snowflake (2nd order null) | 6 branches | n | Topological necessity | H-TK-11/H-TK-73 (extreme) |
-| X-point standard (1st order null) | 4 branches | τ(6) | Topological necessity | H-TK-11 |
-| q=1 = Egyptian fraction | 1/2+1/3+1/6=1 | Σ(1/d)=1 | Perfect number definition | H-TK-62 (extreme) |
-| q₉₅=3 operating point | σ/τ=12/4=3 | σ(6)/τ(6) | MHD stability optimum | H-TK-68 (extreme) |
+| X-point snowflake (2nd order null) | 6 branches | n | Topological necessity: 2(k+1), k=2 | H-TK-11/H-TK-73 (extreme) |
+| X-point standard (1st order null) | 4 branches | τ(6) | Topological necessity: 2(k+1), k=1 | H-TK-11 |
+| q=1 = Egyptian fraction | 1/2+1/3+1/6=1 | Σ(1/d)=1 | Perfect number definition ≡ K-S limit | H-TK-62 (extreme) |
 | ITER port allocation quad | diag=6,NBI=3,ECH=4,ICH=2 | n,n/φ,τ,φ | Independent engineering choices | H-TK-79 (extreme) |
 
-### CLOSE
+### CLOSE (19 verified)
 
 | Parameter | Value | n=6 Expression | Error | Hypothesis |
 |-----------|-------|---------------|-------|------------|
 | Port types (upper/equatorial/lower) | 3 | n/φ | exact count | H-TK-2 |
 | Divertor core parts (in/out/dome) | 3 | n/φ | exact count | H-TK-7 |
 | Blanket functions | 4 (shield/heat/breed/face) | τ(6) | exact count | H-TK-14 |
+| Diagnostic categories | 6 | n | EM spectrum based | H-TK-19 |
 | Plasma control loops | 6 | n | exact count | H-TK-24 |
 | Disruption response stages | 4 (avoid/predict/mitigate/survive) | τ(6) | exact count | H-TK-25 |
-| Plasma startup sequence | 6 steps | n | exact count | H-TK-49 |
-| ITER operating scenarios | 4 | τ(6) | exact count | H-TK-47 |
-| Fuel injection methods | 3 (gas/pellet/NBI) | n/φ | exact count | H-TK-36 |
-| P_fus ∝ B⁴ exponent | 4 | τ(6) | physics derivation | H-TK-58 |
 | Robot arm DOF | 6 | n | SE(3) group | H-TK-30 |
-| Safety barriers | 3 (VV/cryostat/building) | n/φ | exact count | H-TK-51 |
-| Divertor cassettes per VV sector | 6 | n | ITER design | H-TK-6 |
-| Diagnostic categories | 6 | n | EM spectrum based | H-TK-19 |
+| ITER port allocation detail | diag=6,NBI=3,ECH=4,ICH=2 | n,n/φ,τ,φ | system-level match | H-TK-33 |
+| Fuel injection methods | 3 (gas/pellet/NBI) | n/φ | exact count | H-TK-36 |
+| ITER operating scenarios | 4 | τ(6) | exact count | H-TK-47 |
+| Plasma startup sequence | 6 steps | n | exact count | H-TK-49 |
+| P_fus ∝ B⁴ exponent | 4 | τ(6) | physics derivation | H-TK-58 |
+| Startup 6-phase causal chain | 6 steps (physics necessity) | n | causal sequence | H-TK-61 (extreme) |
 | MHD island width from div(6) | {1,2,3} only | proper div(6) | Low-order dominance | H-TK-63 (extreme) |
+| Divertor detachment stages | 3 (attached/partial/full) | n/φ | standard classification | H-TK-64 (extreme) |
+| Bohm diffusion coefficient | 1/16 = 2⁻⁴ | 2⁻τ⁽⁶⁾ | semi-empirical constant | H-TK-65 (extreme) |
+| ST/conventional boundary | A = 2 | φ(6) | CS geometry threshold | H-TK-67 (extreme) |
+| q₉₅=3 operating point | σ/τ=12/4=3 | σ(6)/τ(6) | ITER baseline (not universal) | H-TK-68 (extreme) |
+| P_fus ∝ B⁴ deep derivation | exponent 4 = τ(6) | τ(6) | n²<σv> → β²B⁴V chain | H-TK-69 (extreme) |
+| NTM stabilization strategies | 3 (ECCD/rotation/profile) | n/φ | standard classification | H-TK-77 (extreme) |
+| Steady-state barriers | 4 (divertor/impurity/coil/current) | τ(6) | KSTAR team standard | SS-2 (KSTAR research) |
+| Snowflake 6-leg heat spreading | 2-3× reduction per n legs | n | H-TK-73 EXACT applied | SS-3 (KSTAR research) |
+| Bootstrap fraction threshold | 50% = 1/2 | 1/φ(6) | fusion community standard | SS-8 (KSTAR research) |
+| ECCD gyrotrons targeting rational surfaces | 4 surfaces (q=1,3/2,2,off-axis) | τ(6) | H-TK-63 applied | SS-9 (KSTAR research) |
 | Heating methods | 3 (NBI/ECH/ICH) | n/φ | standard classification | H-FU-17 |
 
 ---
@@ -281,11 +290,11 @@
 
 ```
   Total hypotheses graded: 320 (4 domains × 80)
-  Independent verifications: 240
+  Independent verifications: 260 (base 240 + TK extreme 20)
 
-  EXACT constants registered: 33
-  CLOSE constants registered: 46
-  Total atlas entries: 79
+  EXACT constants registered: 32
+  CLOSE constants registered: 71
+  Total atlas entries: 103
 
   Breakthrough Theorems: 5 (BT-1~5)
 
@@ -339,4 +348,4 @@
 
 *Last updated: 2026-03-30*
 *Source: n6-architecture project, 24 domains, 320 graded hypotheses (fusion/SC/magnet/tokamak) + 400+ prior*
-*Atlas entries: 33 EXACT + 46 CLOSE = 79 registered constants*
+*Atlas entries: 32 EXACT + 71 CLOSE = 103 registered constants*

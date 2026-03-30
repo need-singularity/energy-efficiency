@@ -1141,17 +1141,18 @@
 
 ---
 
-## 등급 요약
+## 등급 요약 (독립 검증 후)
 
-| 등급 | 가설 수 | 비율 | 가설 |
-|------|---------|------|------|
-| EXACT | 4 | 20% | H-TK-62, H-TK-68, H-TK-73, H-TK-79 |
-| CLOSE | 9 | 45% | H-TK-61, H-TK-63, H-TK-64, H-TK-65, H-TK-66, H-TK-67, H-TK-69, H-TK-70, H-TK-72, H-TK-77 |
-| WEAK | 4 | 20% | H-TK-71, H-TK-74, H-TK-76, H-TK-78 |
-| FAIL | 0 | 0% | |
-| UNVERIFIABLE | 2 | 10% | H-TK-75, H-TK-80 |
+| 등급 | 자체평가 | 검증 후 | 가설 (검증 후) |
+|------|---------|---------|---------------|
+| EXACT | 4 | **3** | H-TK-62, H-TK-73, H-TK-79 |
+| CLOSE | 10 | **8** | H-TK-61, H-TK-63, H-TK-64, H-TK-65, H-TK-67, H-TK-68↓, H-TK-69, H-TK-77 |
+| WEAK | 4 | **5** | H-TK-66↓, H-TK-70↓, H-TK-71, H-TK-74, H-TK-76 |
+| FAIL | 0 | **1** | H-TK-78↓ |
+| UNVERIFIABLE | 2 | **3** | H-TK-72↓, H-TK-75, H-TK-80 |
 
-**Target 달성: EXACT 4개 (목표 3+), CLOSE 10개 (목표 8+)**
+**검증 완료**: extreme-verification.md 참조
+**등급 변동**: H-TK-68(EXACT→CLOSE), H-TK-66/70(CLOSE→WEAK), H-TK-78(WEAK→FAIL), H-TK-72(CLOSE→UNVERIFIABLE)
 
 ---
 
