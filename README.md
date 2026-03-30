@@ -312,11 +312,11 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
 | Repo | Tools | Categories |
 |------|-------|------------|
 | **TECS-L** | 109 | Calculator, Engine |
-| **anima** | 212 | Agent, Benchmark, Calculator, Engine, Model, Sense, Tool, Training |
+| **anima** | 213 | Agent, Benchmark, Calculator, Engine, Model, Sense, Tool, Training |
 | **SEDI** | 91 | Core, Data Source |
 | **n6-architecture** | 63 | Calculator, Engine, experiment, technique |
-| **invest** | 112 | Calculator |
-| **Total** | **587** | |
+| **invest** | 115 | Calculator |
+| **Total** | **591** | |
 
 ### TECS-L
 
@@ -524,7 +524,7 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
 | vision_encoder | Vision Encoder — 카메라 프레임을 tension 공간 벡터로 변환 | `vision_encoder.py` |
 | web_sense | Web Sense — 장력 기반 자율 웹 탐색 | `web_sense.py` |
 
-**Tool** (151)
+**Tool** (152)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -607,6 +607,7 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
 | growth_manager | GrowthManager — Autonomous dimension growth, checkpointing, and rollback. | `growth_manager.py` |
 | growth_trajectory_predictor | Growth Trajectory Predictor — Predict developmental milestones for Anima. | `tools/growth_trajectory_predictor.py` |
 | h100_arch_search | h100_arch_search.py — H100 GPU 대규모 아키텍처 탐색 | `tools/h100_arch_search.py` |
+| h100_experiments | h100_experiments.py — H100 병렬 실험 3종 (v3 학습과 동시 실행) | `h100_experiments.py` |
 | hivemind_gateway | hivemind_gateway.py - WS proxy for Hivemind cluster. | `hivemind_gateway.py` |
 | hivemind_launcher | hivemind_launcher.py - Start N Anima nodes + Gateway as Hivemind. | `hivemind_launcher.py` |
 | hivemind_mesh | hivemind_mesh.py - Node-to-node WS tension exchange for Hivemind. | `hivemind_mesh.py` |
@@ -883,7 +884,7 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
 
 ### invest
 
-**Calculator** (112)
+**Calculator** (115)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -920,11 +921,14 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
 | egyptian_fraction | Egyptian Fraction Calculator — Solutions of 1 = 1/a1 + ... + 1/aK | `backend/backend/tecs_calc/egyptian_fraction.py` |
 | equation_uniqueness_checker | Equation Uniqueness Checker | `backend/backend/tecs_calc/equation_uniqueness_checker.py` |
 | experimental_protocol | Experimental Protocol Generator — Testable predictions for physical verification | `backend/backend/tecs_calc/experimental_protocol.py` |
+| extreme_hypothesis_verifier | Extreme Hypothesis Verifier — 16 Domains, 300+ Hypotheses | `backend/backend/tecs_calc/extreme_hypothesis_verifier.py` |
 | extreme_signals | Extreme Signal Generation — signals from all calculator combinations. | `backend/backend/calc/extreme_signals.py` |
 | factorial_structure_prover | Factorial Structure Prover — proves 3! uniqueness in criticality | `backend/backend/tecs_calc/factorial_structure_prover.py` |
 | family_fdr_corrector | family_fdr_corrector.py -- Benjamini-Hochberg FDR correction across hypothesis f | `backend/backend/tecs_calc/family_fdr_corrector.py` |
 | fermion_mass_calculator | Fermion Mass Calculator — Mass predictions from perfect number arithmetic | `backend/backend/tecs_calc/fermion_mass_calculator.py` |
 | fundamental | Fundamental analysis calculators. | `backend/backend/calc/fundamental.py` |
+| fusion_hypothesis_verifier | Nuclear Fusion Hypothesis Verifier — P1=6 arithmetic connections | `backend/backend/tecs_calc/fusion_hypothesis_verifier.py` |
+| fusion_plasma_sc_verifier | Fusion/Plasma/Superconductor/Magnet/Tokamak Hypothesis Verifier | `backend/backend/tecs_calc/fusion_plasma_sc_verifier.py` |
 | game_theory | Game theory calculators for trading strategy analysis. | `backend/backend/calc/game_theory.py` |
 | gate_formula_calculator | Gate Formula Calculator — Law 77 adaptive consciousness gate | `backend/backend/tecs_calc/gate_formula_calculator.py` |
 | gauge_cosmology_calculator | Gauge Cosmology Calculator — Gauge groups, GUT dimensions, and cosmological cons | `backend/backend/tecs_calc/gauge_cosmology_calculator.py` |
