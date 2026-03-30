@@ -530,6 +530,19 @@
 | Spatial inertia matrix | 6×6, 4 blocks | n×n, τ blocks | Robotics | H-ROB-76 |
 | Hexacopter fault tolerance | 6 rotors, 5 min | n, sopfr | Robotics | H-ROB-79 |
 | Linux CFS base quantum | 6 ms | n | OS scheduler | H-COS-70 |
+| YBCO metal ratio Y:Ba:Cu | 1:2:3 = proper div(6) | sum=n | HTS crystal | H-SC-71 |
+| ITER port allocation | (6,3,4,2) | (n, n/φ, τ, φ) 4-param | ITER engineering | H-TK-79 |
+| E₆ Lie algebra rank | 6 | n | Lie classification | H-MATH-68 |
+| E₆ Coxeter number | 12 | σ(6) | Root system | H-MATH-68 |
+| E₆ positive roots | 36 | n² | Root system | H-MATH-68 |
+| E₇ rank / E₈ rank | 7 / 8 | σ-sopfr / σ-τ | Exceptional Lie | H-MATH-72 |
+| π₃ˢ stable homotopy | Z/24 | Z/J₂(6) | Algebraic topology | H-MATH-70 |
+| Eisenstein E₄, E₆ weights | 4, 6 | τ, n | Modular forms | H-MATH-73 |
+| Modular discriminant Δ wt | 12 | σ(6) | η²⁴, 1728=σ³ | H-MATH-69/73 |
+| (2,3,6) triangle | 1/2+1/3+1/6=1 | Euclidean boundary | Hyperbolic geometry | H-MATH-67 |
+| Todd class coefficient | 1/12 | 1/σ = B₂/2 | Algebraic geometry | H-MATH-71 |
+| PSL₂(Z) generator orders | {2,3}, ST order 6 | primes of n | Modular group | H-MATH-66 |
+| Niemeier lattices in dim 24 | 24 | J₂(6) | Lattice classification | H-MATH-62 |
 
 ---
 
@@ -633,9 +646,9 @@
   Total hypotheses: 1000+ across all domains (network-protocol: 30)
   Total extreme hypotheses: 400+ (20+ domains × 20)
 
-  EXACT constants registered: 155+
+  EXACT constants registered: 170+
   CLOSE constants registered: 140+
-  Total atlas entries: 295+ (registered rows, duplicates consolidated)
+  Total atlas entries: 310+ (registered rows, duplicates consolidated)
 
   Breakthrough Theorems: 18 (BT-1~18, BT-18 = CONJECTURE)
     Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16
