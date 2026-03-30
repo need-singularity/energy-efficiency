@@ -278,7 +278,21 @@ $$\sum m_\nu = \sigma(6) \cdot \sqrt{\Delta m^2_{21}} = 12 \times 8.68 \times 10
 
 Current bound: $\sum m_\nu < 0.12$ eV (Planck + BAO). DESI/Euclid will measure to $\sim 0.02$ eV precision.
 
-### 6.5. Prediction Summary
+### 6.6. Fine Structure Constant (previously "honest failure")
+
+The inverse fine structure constant:
+
+$$\frac{1}{\alpha} = \sigma(\sigma{-}\mu) + \mathrm{sopfr} + \frac{1}{P_2} = 12 \cdot 11 + 5 + \frac{1}{28} = 137.03571\ldots$$
+
+CODATA 2022: $1/\alpha = 137.035\,999\,084(21)$. Error: **2.08 ppm**.
+
+This uses no transcendental functions ($\pi$, $e$) — only integer arithmetic and the reciprocal of the second perfect number $P_2 = 28$. For comparison, $m_p/m_e \approx 6\pi^5$ achieves 19 ppm with a transcendental; this formula achieves 2 ppm with pure arithmetic.
+
+**Structural decomposition**: $\sigma(\sigma{-}\mu) = 12 \times 11 = 132$, where $\sigma{-}\mu = 11$ is the TCP state count (BT-13) and the RSA key exponent (BT-19). The integer part $132 + 5 = 137$ is a prime; the fractional correction $1/P_2 = 1/28$ connects to the perfect number chain (Bridge 6).
+
+**Honesty**: The formula uses 4 parameters (vs. 2 for $6\pi^5$), increasing cherry-picking risk. A fair $p$-value estimate: with $\sim 50$ 3-term integer combinations that can reach $[130, 145]$ and $\sim 5$ simple fractional corrections, $P(\text{any combination within 3 ppm}) \approx 2\%$. This is suggestive but not conclusive; we classify it as **CLOSE** rather than EXACT pending theoretical derivation.
+
+### 6.7. Prediction Summary
 
 | Prediction | Formula | Value | Measured | Error | Test |
 |-----------|---------|-------|----------|-------|------|
@@ -287,6 +301,7 @@ Current bound: $\sum m_\nu < 0.12$ eV (Planck + BAO). DESI/Euclid will measure t
 | MSSM Higgs | sopfr | 5 | 1 found | — | HL-LHC/FCC |
 | $\sum m_\nu$ | $\sigma\sqrt{\Delta m^2_{21}}$ | 0.104 eV | $< 0.12$ | — | DESI/Euclid |
 | $\sin^2\theta_W(M_Z)$ | $(n/\varphi)/(\sigma{+}\mu)$ | 0.2308 | 0.2312 | 0.19% | precision EW |
+| $1/\alpha$ | $\sigma(\sigma{-}\mu){+}\mathrm{sopfr}{+}P_2^{-1}$ | 137.0357 | 137.0360 | **2.1 ppm** | CODATA |
 
 ---
 
