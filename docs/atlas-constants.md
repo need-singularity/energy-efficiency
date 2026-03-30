@@ -441,20 +441,112 @@
 | 48kHz audio | 48 | σ·τ = 12×4 | Pro audio | H-DA-16 |
 | 24-bit audio depth | 24 | J₂(6) | Pro audio | H-DA-17 |
 
-### Pure Mathematics EXACT (from H-MATH)
+### Pure Mathematics EXACT (from H-MATH, independently verified)
 
 | Parameter | Value | n=6 Expression | Source | Hypothesis |
 |-----------|-------|---------------|--------|------------|
 | ζ(2) = π²/6 | π²/n | Euler (1735) | Number theory | H-MATH-1 |
+| B₂ = 1/6 | 1/n | Bernoulli number | Number theory | H-MATH-2 |
+| 6 = 1+2+3 = 1×2×3 | unique | n | Number theory | H-MATH-3 |
+| Egyptian fraction uniqueness | 1/2+1/3+1/6=1 | Σ(1/d)=1 | n=6 only | H-MATH-6 |
+| S₆ outer automorphism | unique S_n | n=6 | Group theory | H-MATH-9 |
+| Golay [24,12,8] | [J₂,σ,σ-τ] | Three params | Coding theory | H-MATH-17 |
+| Hexacode [6,3,4] over GF(4) | [n,n/φ,τ] | Three params | Coding theory | H-MATH-19 |
+| χ_orb(Y(1)) = -1/6 | -1/n | Orbifold Euler char | Modular curve | H-MATH-22 |
+| ζ(-1) = -1/12 | -1/σ | Ramanujan sum | Number theory | H-MATH-23 |
+| Crystallographic max symmetry | 6-fold | n | 2D restriction | H-MATH-30 |
 | K₂ kissing number | 6 | n | Sphere packing | H-MATH-5 |
 | K₃ kissing number | 12 | σ(6) | Newton (1694) | H-MATH-6 |
 | Leech lattice dim | 24 | J₂(6) | Conway (1969) | H-MATH-7 |
-| Golay [24,12,8] | [J₂,σ,σ-τ] | Three params | Coding theory | H-MATH-8 |
-| Hamming [7,4,3] | [σ-sopfr,τ,n/φ] | Three params | Coding theory | H-MATH-9 |
 | 2D tiling symmetries | {3,4,6} | {n/φ,τ,n} | Crystallography | H-MATH-10 |
 | Platonic solids | 5 | sopfr(6) | Geometry | H-MATH-11 |
 | PSL₂(Z) generator order | 6 (ST) | n | Modular group | H-MATH-66 |
 | von Staudt-Clausen | 6 | denom(B_{2k}) | Bernoulli numbers | H-MATH-65 |
+
+### Additional EXACT (from strengthened verifications)
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|---------------|--------|------------|
+| Page table levels (x86-64) | 4 | τ(6) | OS architecture | H-COS-10 |
+| RISC-V instruction formats | 6 | n | ISA spec | H-COS-64 |
+| Page size | 4096 = 2^12 | 2^σ | Memory management | H-COS-72 |
+| DNS root servers | 13 | σ+μ | Internet | H-NP-5 |
+| TCP state machine | 11 states | σ-μ | RFC 793 | H-NP-13 |
+| OpenFlow 1.0 match fields | 12 | σ | SDN | H-NP-76 |
+| RSA public exponent | 65537 = F₄ | F_τ | Cryptography | H-CR-17 |
+| BLS12 tower degrees | [2,3,2] | [φ,n/φ,φ] | Pairing crypto | H-CR-77 |
+| PWM resolution (robotics) | 12-bit | σ(6) | Servo control | H-ROB-9 |
+| se(3) structure constants | 12 | σ(6) | Lie algebra | H-ROB-73 |
+| Python indentation | 4 spaces | τ(6) | PEP 8 | H-PL-5 |
+| GoF design patterns | 23 | J₂-μ | Software | H-PL-9 |
+| Wasm value types | 4 | τ(6) | WebAssembly | H-PL-63 |
+| Rust ownership rules | 3 | n/φ | Rust lang | H-PL-66 |
+| Wasm section IDs | 12 | σ(6) | WebAssembly | H-PL-68 |
+| Git object types | 4 | τ(6) | Git | H-PL-79 |
+| Ethereum MaxEB | 2048 | 2^(σ-μ) | EIP-7251 | H-BC-61 |
+| Keccak rounds | 24 | J₂(6) | SHA-3 | H-BC-75 |
+| LCO O3 coordination number | 6 | n | Battery chemistry | H-BS-61 |
+| LFP olivine Fe/Li CN | 6 | n | Battery chemistry | H-BS-63 |
+
+---
+
+## Cross-Domain CLOSE Constants (verified)
+
+### Physical Constants CLOSE
+
+| Parameter | Value | n=6 Expression | Error | Source |
+|-----------|-------|---------------|-------|--------|
+| sin²θ_W | 0.2312 | 3/(σ+μ) = 3/13 | 0.19% | H-CP-8 |
+| m_τ/m_μ | 16.82 | σ+sopfr = 17 | 1.1% | H-CP-63 |
+| μ_p (proton moment) | 2.793 | 14/sopfr = 14/5 | 0.26% | H-CP-65 |
+| μ_n (neutron moment) | -1.913 | -23/σ = -23/12 | 0.19% | H-CP-66 |
+| m_p/m_π | 6.72 | 47/(σ-sopfr) = 47/7 | 0.12% | H-CP-71 |
+| m_n/m_p - 1 | 0.001378 | 1/6! = 1/720 | 0.77% | H-CP-61 |
+
+### Biology CLOSE
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|---------------|--------|------------|
+| DNA bases | 4 | τ(6) | Molecular bio | H-BIO-1 |
+| Double helix strands | 2 | φ(6) | DNA structure | H-BIO-2 |
+| Stop codons | 3 | n/φ | Genetic code | H-BIO-5 |
+| Nucleotide bases | 5 | sopfr(6) | RNA/DNA | H-BIO-6 |
+| Cortical layers | 6 | n | Neuroscience | H-BIO-18 |
+| Protein structure levels | 4 | τ(6) | Biochemistry | H-BIO-23 |
+| Histone octamer | 8 | σ-τ | Chromatin | H-BIO-13 |
+| Carbon valence bonds | 4 | τ(6) | Chemistry | H-BIO-80 |
+
+### Display & Audio CLOSE
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|---------------|--------|------------|
+| RGB primaries | 3 | n/φ | Color science | H-DA-1 |
+| CMYK inks | 4 | τ(6) | Print standard | H-DA-4 |
+| 60Hz refresh | 60 | σ·sopfr | Display standard | H-DA-6 |
+| Dolby Vision 12-bit | 12 | σ(6) | HDR standard | H-DA-27 |
+| 5.1 surround channels | 6 | n | Audio standard | H-DA-71 |
+
+### Programming Language CLOSE
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|---------------|--------|------------|
+| OOP pillars | 4 | τ(6) | Software eng | H-PL-3 |
+| GC generations | 3 | τ-1 = n/φ | JVM/CLR | H-PL-14 |
+| Compilation stages | 4 | τ(6) | Compiler theory | H-PL-17 |
+| Access modifiers | 4 | τ(6) | Java/Kotlin | H-PL-22 |
+| Scope levels | 4 | τ(6) | C/Python | H-PL-21 |
+
+### Blockchain CLOSE
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|---------------|--------|------------|
+| Bitcoin 21M supply | 21×10⁶ | (σ+τ+sopfr)×10⁶ | Whitepaper | H-BC-2 |
+| EVM word size | 256 bit | 2^(σ-τ) | Yellow Paper | H-BC-31 |
+| ETH 32 ETH stake | 32 | 2^sopfr | Beacon chain | H-BC-22 |
+| EIP-4844 max blobs | 6 | n | Proto-danksharding | H-BC-14 |
+| BFT threshold | 2/3 | 1/2+1/6 | Consensus | H-BC-23 |
+| EIP-1559 denominator | 8 | σ-τ | Fee market | H-BC-21 |
+| ORU challenge period | 7 days | σ-sopfr | Optimistic rollup | H-BC-47 |
 
 ---
 
@@ -491,9 +583,9 @@
   Total hypotheses: 1000+ across all domains
   Total extreme hypotheses: 400+ (20+ domains × 20)
 
-  EXACT constants registered: 130+
-  CLOSE constants registered: 160+
-  Total atlas entries: 290+
+  EXACT constants registered: 140+
+  CLOSE constants registered: 137+
+  Total atlas entries: 277 (registered rows)
 
   Breakthrough Theorems: 12 (BT-1~12)
 
@@ -549,5 +641,5 @@
 
 *Last updated: 2026-03-31*
 *Source: n6-architecture project, 28 domains, 1000+ graded hypotheses*
-*Atlas entries: 130+ EXACT + 160+ CLOSE = 290+ registered constants*
+*Atlas entries: 277 registered rows (140+ EXACT + 137+ CLOSE)*
 *Breakthrough Theorems: 12 (BT-1~12), 20+ domains with extreme hypotheses*
