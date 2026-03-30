@@ -72,6 +72,13 @@
 | J₂+φ | 26 mV | Thermal voltage V_T(300K) (0.57%) | Chip+Thermal, BT-30 |
 | sopfr·φ | 10 | B-10 control rod, IEEE harmonic | Nuclear+Grid, BT-29/32 |
 | τ²/(n/φ)³ | 16/27 | Betz limit (wind turbine, EXACT) | Energy, BT-30 |
+| σ·(σ-φ) | 120 | H₂ LHV (MJ/kg, EXACT) | Hydrogen, BT-38 |
+| σ²-φ | 142 | H₂ HHV (MJ/kg, EXACT) | Hydrogen, BT-38 |
+| σ·n+φ | 74 | Landauer bits per SQ photon (0.5%) | Info theory, BT-36 |
+| σ·τ | 48 nm | TSMC N3/N2 gate pitch (EXACT) | Semiconductor, BT-37 |
+| (σ-φ)^τ | 10⁴ | RoPE base θ (LLaMA) | AI, BT-34 |
+| 1/(σ-φ) | 0.1 | LLM weight decay (universal) | AI, BT-34 |
+| 1-1/(J₂-τ) | 0.95 | Adam β₂ (GPT-3/LLaMA) | AI, BT-34 |
 
 ## Egyptian Fractions
 
@@ -113,6 +120,9 @@
 | **BT-33** | Transformer σ=12 Atom | d=σ·2^k, heads=σ, SwiGLU=8/3=(σ-τ)/(n/φ), LoRA r=σ-τ | 🟩⭐ |
 | **BT-34** | RoPE Base & Decimal Bridge | θ=(σ-φ)^{τ,sopfr,n}={10⁴,10⁵,10⁶}, WD=1/(σ-φ), β₂=1-1/(J₂-τ) | 🟩⭐⭐ |
 | **BT-35** | Battery Voltage Table | 7/8 chemistries: 1.2=n/sopfr, 1.5=n/τ, 2.0=φ, 3.0=n/φ, 4.0=τ | 🟩⭐ |
+| **BT-36** | Grand Energy-Info-HW-Physics Chain | Solar→Semiconductor→Landauer→H100→1/α, 5 links all <1% | 🟩⭐⭐⭐ |
+| **BT-37** | Semiconductor Pitch Ladder | N5 pitch=P₂=28nm, N3 gate=σ·τ=48nm, 8/8 EXACT | 🟩⭐⭐ |
+| **BT-38** | Hydrogen Energy Quadruplet | LHV=σ(σ-φ)=120, HHV=σ²-φ=142, Gibbs=113,118 — 4/4 EXACT, diffs also n=6 | 🟩⭐⭐ |
 
 ## Perfect Number Chain (P1 → P2)
 
