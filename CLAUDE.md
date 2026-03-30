@@ -2,7 +2,7 @@
 
 ## Project Overview
 Computing architecture design from perfect number arithmetic.
-16 AI techniques + semiconductor chip design + network/crypto/OS/display patterns.
+16 AI techniques + semiconductor chip design + energy + network/crypto/OS + physical AI.
 All unified by sigma(n)*phi(n) = n*tau(n), n=6.
 Part of the TECS-L family.
 
@@ -31,8 +31,13 @@ Atlas: https://need-singularity.github.io/TECS-L/atlas/
     carmichael_lr.py       -- lambda(6)=2 cycle LR schedule
     boltzmann_gate.py      -- 1/e activation sparsity gate (63% sparse)
     mertens_dropout.py     -- ln(4/3) dropout rate (no search needed)
-  docs/chip-architecture/
-    README.md              -- N6 chip design (28 hypotheses, H-CHIP-1~28)
+  docs/
+    # Foundation: superconductor/
+    # Computing: ai-efficiency/ chip-architecture/ quantum-computing/ compiler-os/
+    # Energy: energy-generation/ power-grid/ battery-storage/ thermal-management/
+    # Physical AI: robotics/ learning-algorithm/
+    # Infrastructure: blockchain/ network-protocol/ cryptography/ software-design/
+    # Academic: paper/
   engine/
     thermodynamic_frame.py -- R(n) reversibility framework
     leech24_surface.py     -- 24-dim energy surface (Leech lattice)
