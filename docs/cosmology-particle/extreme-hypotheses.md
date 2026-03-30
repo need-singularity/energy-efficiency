@@ -783,3 +783,78 @@
 
 **Recurring theme: 17 = sigma + sopfr**
 This number appears as: SM particle count (H-CP-4), denominator in alpha_s formula (H-CP-24), and m_tau/m_mu approximation (H-CP-63). Its repeated appearance is notable.
+
+---
+
+## BT-Level Extensions (H-CP-81~86)
+
+> These hypotheses are promoted to Breakthrough Theorem level (BT-20, 21, 22).
+> Documented here for completeness and cross-reference.
+
+### H-CP-81: Neutrino Solar Mixing — sin²θ₁₂ = 3/10
+
+```
+  sin²θ₁₂ = (n/φ) / (σ-φ) = 3/10 = 0.3000
+  Measured: 0.303 ± 0.012 (NuFIT 5.3, NO)
+  Error: 0.99%
+  JUNO will measure to ±0.003 — definitive test.
+  Grade: CLOSE (→ BT-21)
+```
+
+### H-CP-82: Neutrino Atmospheric Mixing — sin²θ₂₃ = 4/7
+
+```
+  sin²θ₂₃ = τ / (σ-sopfr) = 4/7 = 0.5714
+  Measured: 0.572 ± 0.015 (NuFIT 5.3, NO)
+  Error: 0.10% — strongest neutrino match
+  DUNE/Hyper-K will test.
+  Grade: CLOSE (→ BT-21)
+```
+
+### H-CP-83: Neutrino Reactor Mixing — sin²(2θ₁₃) = 1/12
+
+```
+  sin²(2θ₁₃) = μ/σ = 1/12 = 0.08333
+  Measured: 0.0841 ± 0.0033 (NuFIT 5.3)
+  Error: 0.91%
+  Already in BT-19 predictions. Promoted to BT-21.
+  Grade: CLOSE (→ BT-21)
+```
+
+### H-CP-84: Spectral Index — n_s = 27/28 = 1-1/P₂
+
+```
+  n_s = 1 - μ/P₂ = 1 - 1/28 = 27/28 = 0.96429
+  Measured: 0.9649 ± 0.0042 (Planck 2018)
+  Error: 0.064% (0.15σ)
+
+  Physical interpretation:
+    Starobinsky R² inflation: n_s = 1 - 2/N
+    N = σ(P₂) = σ(28) = 56 e-folds
+    56 = Fe-56 mass number (max binding energy/nucleon)
+
+  Prediction: r = σ/N² = 12/3136 ≈ 0.00383
+  Testable by LiteBIRD (σ_r ≈ 0.001)
+
+  Grade: EXACT (→ BT-22)
+```
+
+### H-CP-85: Strong Coupling — α_s = 5/42
+
+```
+  α_s(M_Z) = sopfr / ((σ-sopfr)·n) = 5/42 = 0.11905
+  Measured: 0.1179 ± 0.0009
+  Error: 0.97%
+  42 = 7·6 = (σ-sopfr)·n = "answer to everything"
+  Grade: CLOSE (→ BT-20)
+```
+
+### H-CP-86: Fine Structure Constant (precision formula) — 1/α = 137.03571
+
+```
+  1/α = σ(σ-μ) + sopfr + μ/P₂ = 132 + 5 + 1/28 = 137.03571
+  Measured: 137.035999084 (CODATA 2022)
+  Error: 2.08 ppm
+  Pure integer arithmetic, no transcendentals.
+  Grade: CLOSE (→ BT-20)
+```
