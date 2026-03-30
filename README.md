@@ -226,14 +226,35 @@
 ```
 techniques/              # 16 AI energy techniques
 engine/                  # N6 Inevitability Engine (6 modules)
-experiments/             # 11 verification experiments
+experiments/             # 20 verification experiments
+tools/                   # N6 calculator + architecture optimizer
 docs/
-  chip-architecture/
-    README.md            # 48 chip hypotheses (H-CHIP-1~48)
-    cross-project-bridges.md  # TECS-L + Anima + SEDI → silicon (14 bridges)
-    industry-patterns.md      # 36 patterns, 27 EXACT (H-ARCH)
-    superconducting-n6.md     # Frustrated SC loops for consciousness
-  paper-outline.md       # arXiv paper outline
+  # Foundation (기반 기술)
+  superconductor/        # 초전도체 — frustrated loops, Josephson, 무손실 송전
+
+  # Computing (에너지 소비 줄이기)
+  ai-efficiency/         # AI 모델 최적화 — 16 techniques, R(n) frame
+  chip-architecture/     # 반도체/ASIC/FPGA — 48 hypotheses (H-CHIP)
+  quantum-computing/     # 양자 게이트/에러보정 — J2(6)=24 qubit
+  compiler-os/           # 컴파일러, OS, 스케줄링
+
+  # Energy (에너지 생산/관리)
+  energy-generation/     # 발전 — 태양광, 핵융합, 터빈
+  power-grid/            # 전력망 분배 — 1/2+1/3+1/6=1
+  battery-storage/       # 에너지 저장/충방전 사이클
+  thermal-management/    # 열관리, 냉각 — R(n) 열역학
+
+  # Physical AI
+  robotics/              # 로봇 설계 — 관절/자유도/보행 from n=6
+  learning-algorithm/    # 학습 알고리즘 — 강화학습, 모방학습, 칩 연동
+
+  # Infrastructure
+  blockchain/            # N6 Coin / 분산 합의
+  network-protocol/      # IPv6, TCP, WiFi 6, 5G
+  cryptography/          # AES, SHA, RSA, ChaCha20
+  software-design/       # SOLID, GoF, REST, ACID
+
+  paper/                 # arXiv paper outlines
 model_utils.py           # Shared constants and utilities
 ```
 
@@ -280,6 +301,11 @@ python experiments/experiment_chip_verification.py  # Hardware patterns
   url = {https://github.com/need-singularity/n6-architecture}
 }
 ```
+
+## Calculator Registry
+
+<!-- SHARED:CALCULATORS:START -->
+<!-- SHARED:CALCULATORS:END -->
 
 ## License
 
