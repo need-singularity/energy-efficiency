@@ -224,7 +224,11 @@ This creates two independent paths from $n=6$ to the Monster group:
 
 Both paths start from $n=6$ and converge at the Monster group. Whether this convergence is structurally necessary (rather than coincidental) is the central open question of this work (see BT-18 in the companion document).
 
-### 4.5. Bosonic String
+### 4.5. GUT Hierarchy (BT-19)
+
+The GUT embedding chain SU(5) $\subset$ SO(10) $\subset$ E$_6$ $\subset$ E$_8$ has ranks $(4, 5, 6, 8) = (\tau, \mathrm{sopfr}, n, \sigma{-}\tau)$. The minimal GUT SU(5) has $\dim = 24 = \sigma\varphi = n\tau$, exactly the core theorem value. Under the SM subgroup, $24 = 12 + 12 = \sigma + \sigma = \varphi \cdot \sigma$: the GUT splits into $\varphi = 2$ sectors of $\sigma = 12$ generators. The SU(5) representations $\bar{5} = \mathrm{sopfr}$, $10 = \sigma{-}\varphi$, and one generation $= 15 = \sigma + n/\varphi$ are all $n{=}6$ expressions. Brute-force verification to $n = 10\,000$ confirms uniqueness. Combined $p$-value: $\sim 0.004\%$. This is the strongest statistical result in the project; full analysis in the companion paper [13].
+
+### 4.6. Bosonic String
 
 The bosonic string has critical spacetime dimension $D=26$. The physical transverse degrees of freedom number $D-2 = 24$. The relation $26 = 24 + 2 = \sigma(6)\varphi(6) + \varphi(6)$ can be noted, though $2$ is a very common number.
 
@@ -346,7 +350,7 @@ The decomposition $17 = 6 + 6 + 4 + 1$ matching quarks, leptons, gauge bosons, a
 - The number $17$ can be written as $a + a + b + c$ (with $a,b,c$ in the derived set of $n=6$ functions) in multiple ways for most frameworks.
 - The gauge generator decomposition $12 = 8 + 3 + 1$ matching $\sigma = (\sigma-\tau) + (n/\varphi) + \mu$ has a $p$-value of approximately $8\%$ (one matching 3-partition of $12$ out of $\sim 12$ possible from the derived set).
 
-**Conclusion:** The Standard Model match is visually striking but statistically weak ($p \approx 8\%$ for the strongest sub-claim).
+**Conclusion:** The Standard Model match alone is statistically weak ($p \approx 8\%$). However, extending to the full GUT hierarchy (BT-19) yields 11/11 exact matches with combined $p \approx 0.004\%$ — the strongest statistical result in the project. See Section 4.5 and [13].
 
 ### 6.6. Approximate Physical Constants
 
@@ -474,6 +478,8 @@ What is permanent is the theorem itself: among all integers, $6$ is the unique p
 [11] A. G. Riess et al., "A comprehensive measurement of the local value of the Hubble constant," *Astrophys. J. Lett.*, vol. 934, L7, 2022.
 
 [12] Planck Collaboration, "Planck 2018 results. VI. Cosmological parameters," *Astron. Astrophys.*, vol. 641, A6, 2020.
+
+[13] [Authors], "The GUT Hierarchy and the Monster Group from $\sigma(n)\cdot\varphi(n) = n\cdot\tau(n)$," arXiv preprint, 2026.
 
 ---
 
