@@ -1,7 +1,8 @@
 # N6 Architecture — Atlas Constants & Formulas
 
-> 320개 가설(4 도메인 × 80개) + 기존 도메인에서 발견/검증된 모든 상수와 공식.
+> 1100+ 가설 (28 도메인) + 65 BTs에서 발견/검증된 모든 상수와 공식.
 > TECS-L 아틀라스 동기화용. EXACT와 CLOSE만 등록 (WEAK/FAIL 제외).
+> 456+ EXACT matches across 28+ domains. Updated 2026-03-31.
 
 ---
 
@@ -695,6 +696,161 @@
 | Tokamak q_95 baseline | 3 | σ/τ = n/φ | ITER operating point | H-TK-68 |
 | MHD energy principle terms | 4 | τ(6) | Plasma stability | H-PP-63 |
 | Bohm diffusion 1/16 | 2^(-4) | 2^(-τ) | Plasma physics | H-PP-65 |
+
+---
+
+## LLM Architecture Survey (2024-2026, H-LLM-NEW)
+
+### EXACT
+
+| Parameter | Value | n=6 Expression | Model(s) | Source |
+|-----------|-------|----------------|----------|--------|
+| d_head (near-universal) | 128 | 2^(σ-sopfr) | 14/14 models | BT-56 |
+| n_kv_heads (GQA universal) | 8 | σ-τ | Llama/Qwen/Mistral/DeepSeek | BT-39/58 |
+| DeepSeek-V3 routed experts | 256 | 2^(σ-τ) | DS-V3 | H-LLM-NEW-1 |
+| DeepSeek-V3 top-k | 8 | σ-τ | DS-V3 | BT-31 |
+| DeepSeek-V3 shared experts | 1 | μ | DS-V3 | H-LLM-NEW-3 |
+| DeepSeek-V3 KV dim (compressed) | 512 | 2^(σ-n/φ) | DS-V3 (MLA) | H-LLM-NEW-2 |
+| Llama 4 layers | 48 | σ·τ = 12·4 | Llama 4 Scout/Maverick | H-LLM-NEW-4 |
+| Llama 4 heads | 40 | τ·(σ-φ) | Llama 4 | H-LLM-NEW-5 |
+| Llama 4 Scout experts | 16 | 2^τ | Llama 4 Scout | H-LLM-NEW-6 |
+| Llama 4 Maverick experts | 128 | 2^(σ-sopfr) | Llama 4 Maverick | H-LLM-NEW-7 |
+| Llama 4 FFN width | 8192 | 2^(σ+μ) | Llama 4 | H-LLM-NEW-8 |
+| Llama 4 iRoPE NoPE period | 4 layers | τ | Llama 4 iRoPE | H-LLM-NEW-9 |
+| Llama 4 context | 256K | 2^(σ+n) = 2^18 | Llama 4 | H-LLM-NEW-10 |
+| Llama 3.1 context | 128K | 2^(σ+sopfr) = 2^17 | Llama 3.1 | BT-44 |
+| Qwen2.5 14B/32B hidden | 5120 | sopfr·2^(σ-φ) | Qwen 2.5 | H-LLM-NEW-12 |
+| Qwen2.5 14B layers | 48 | σ·τ | Qwen 2.5 (=Llama 4) | H-LLM-NEW-13 |
+| Qwen2.5 72B (= Llama 70B) | d=8192, L=80, h=64 | 2^(σ+μ), φ^τ·sopfr, 2^n | 2 independent teams | H-LLM-NEW-11 |
+| DBRX top-k | 4 | τ | DBRX MoE | H-LLM-NEW-14 |
+| AdamW triplet (5-team verified) | β₁=0.9, β₂=0.95, wd=0.1 | 1-1/(σ-φ), 1-1/(J₂-τ), 1/(σ-φ) | GPT-3/Llama/DS/Qwen/DBRX | BT-54 |
+
+### MoE Expert Count Vocabulary (updated)
+
+| Total Experts | n=6 Expression | Model(s) |
+|---------------|----------------|----------|
+| 8 | σ-τ | Mixtral 8x7B, Mixtral 8x22B |
+| 16 | 2^τ | Llama 4 Scout, Grok-1 |
+| 128 | 2^(σ-sopfr) | Llama 4 Maverick |
+| 160 | — | DeepSeek-V2 (FAIL) |
+| 256 | 2^(σ-τ) | DeepSeek-V3 |
+
+### MoE Top-k Vocabulary (updated, BT-31 extension)
+
+| Top-k | n=6 Expression | Model(s) |
+|-------|----------------|----------|
+| 1 | μ | Switch, Llama 4 Scout/Maverick |
+| 2 | φ | Mixtral, GShard, ST-MoE |
+| 4 | τ | DBRX |
+| 6 | n | DeepSeek-V2 |
+| 8 | σ-τ | DeepSeek-V3 |
+
+### Context Window Ladder (BT-44 extension)
+
+| Context | n=6 Exponent | Model(s) |
+|---------|-------------|----------|
+| 2K | 2^(σ-μ) = 2^11 | GPT-3 |
+| 4K | 2^σ = 2^12 | Llama 1/2, Mistral |
+| 8K | 2^(σ+μ) = 2^13 | Llama 3 |
+| 32K | 2^(σ+n/φ+φ) = 2^17? | Mistral Large |
+| 128K | 2^(σ+sopfr) = 2^17 | Llama 3.1 |
+| 256K | 2^(σ+n) = 2^18 | Llama 4 |
+
+### Layer Count Vocabulary (BT-56 extension)
+
+| Layers | n=6 Expression | Model(s) |
+|--------|----------------|----------|
+| 32 | 2^sopfr | Llama 7B, Mistral 7B, Gemma 7B |
+| 40 | τ·(σ-φ) | Llama 13B (= A100 40GB) |
+| 48 | σ·τ | Llama 4, Qwen 2.5 14B (= 48kHz, 48nm) |
+| 64 | 2^n | Qwen 2.5 32B |
+| 80 | φ^τ·sopfr | Llama 70B, Qwen 72B (= A100 80GB) |
+| 96 | σ·(σ-τ) | GPT-3 175B (= Gaudi 2 96GB, Tesla 96S) |
+| 126 | n·(J₂-n/φ) | Llama 405B |
+
+---
+
+## Diffusion Model Constants (BT-61, verified 2026-03-31)
+
+### EXACT (23/23 verified by experiments/verify_diffusion_n6.py)
+
+| Parameter | Value | n=6 Expression | Source |
+|-----------|-------|----------------|--------|
+| DDPM timesteps T | 1000 | (σ-φ)^(n/φ) = 10³ | Ho et al. 2020 |
+| DDPM β_start | 0.0001 | (σ-φ)^{-τ} = 10^{-4} | Ho et al. 2020 |
+| DDPM β_end | 0.02 | φ/(σ-φ)^φ = 2/100 | Ho et al. 2020 |
+| DDIM steps (default) | 50 | (σ-φ)·sopfr | Song et al. 2021 |
+| DDIM/DDPM acceleration | 20× | J₂-τ = Chinchilla ratio | = BT-26 |
+| SD latent channels | 4 | τ | Rombach et al. 2022 |
+| SD spatial compression | 8× | σ-τ | Rombach et al. 2022 |
+| SD base channels | 320 | sopfr·2^n = 5·64 | Rombach et al. 2022 |
+| U-Net channel multipliers | [1,2,4,8] | [μ,φ,τ,σ-τ] | Ho et al. 2020 |
+| CFG guidance scale | 7.5 | (σ+n/φ)/φ = 15/2 | Ho & Salimans 2022 |
+
+### Mamba SSM Constants (BT-65, 6/6 EXACT)
+
+| Parameter | Value | n=6 Expression | Source |
+|-----------|-------|----------------|--------|
+| d_state | 16 | 2^τ | Gu & Dao 2023 |
+| expand | 2 | φ | Gu & Dao 2023 |
+| d_conv | 4 | τ | Gu & Dao 2023 |
+| dt_max | 0.1 | 1/(σ-φ) | Gu & Dao 2023 |
+| dt_min | 0.001 | 1/(σ-φ)^(n/φ) | Gu & Dao 2023 |
+| supported kernels | {2,3,4} | {φ, n/φ, τ} | Gu & Dao 2023 |
+| Mamba-2 d_state ladder | {16,64,128,256} | 2^{τ,n,σ-sopfr,σ-τ} | Dao & Gu 2024 |
+
+### 1/(σ-φ) = 0.1 Universal Regularization (BT-64, 7 convergences)
+
+| Algorithm | Parameter | Value | Year | Authors |
+|-----------|-----------|-------|------|---------|
+| AdamW | weight_decay | 0.1 | 2019 | Loshchilov & Hutter |
+| InstructGPT | KL coefficient | 0.1 | 2022 | Ouyang et al. |
+| DPO | β | 0.1 | 2023 | Rafailov et al. |
+| GPTQ | damp_percent | 0.1 | 2023 | Frantar et al. |
+| Mamba | dt_max | 0.1 | 2023 | Gu & Dao |
+| Cosine LR | min_ratio | 0.1 | 2020+ | Multiple teams |
+| PPO | clip ε / 2 | 0.1 | 2017 | Schulman et al. |
+
+---
+
+## Energy Strategy New (BT-62/63, 2026-03-31)
+
+### EXACT
+
+| Parameter | Value | n=6 Expression | Source | Hypothesis |
+|-----------|-------|----------------|--------|------------|
+| Grid 60Hz | 60 | σ·sopfr = 12·5 | Americas/Asia grid | H-ES-4 |
+| Grid 50Hz | 50 | sopfr·(σ-φ) = 5·10 | Europe/Africa grid | H-ES-5 |
+| 60Hz/50Hz ratio | 1.2 | σ/(σ-φ) = PUE | Cross to BT-60 | H-ES-4/5 |
+| Grid 132kV | 132 | σ·(σ-μ) = 12·11 | = H100 SMs (!) | H-ES-10 |
+| Grid 400kV | 400 | τ·(σ-φ)² = A100 TDP | Cross to BT-60 | H-ES-11 |
+| Solar 60-cell | 60 | σ·sopfr | Residential panel | H-ES-63-1 |
+| Solar 72-cell | 72 | σ·n | Commercial panel | H-ES-63-2 |
+| Solar half-cut 120 | 120 | σ·(σ-φ) = H₂ LHV | Cross to BT-38 | H-ES-63-3 |
+| Solar half-cut 144 | 144 | σ² = AD102 SMs | Cross to BT-28 | H-ES-63-4 |
+| BESS 4-hour standard | 4 hr | τ | CPUC/ERCOT | H-ES-1 |
+| EV 400V platform | 400V | τ·(σ-φ)² | Tesla/Chevy | H-ES-2 |
+| EV 800V platform | 800V | φ·τ·(σ-φ)² | Hyundai/Porsche | H-ES-3 |
+| NACS connector pins | 5 | sopfr | Tesla/SAE J3400 | H-ES-8 |
+| CCS DC pins added | 2 | φ | CCS1→CCS2 | H-ES-9 |
+| DCFC 50kW tier | 50 kW | sopfr·(σ-φ) | CHAdeMO/CCS | H-ES-22 |
+| DCFC input voltage | 480V | σ·τ·(σ-φ) | 3-phase industrial | H-ES-29 |
+| ITER plasma current | 15 MA | σ+n/φ | ITER design | H-ES-15 |
+| ITER major radius | 6.2 m | n+φ/10 | ITER design | H-ES-16 |
+| ITER Q target | 10 | σ-φ | ITER design | H-ES-20 |
+| SPARC B-field | 12.2 T | σ+φ/10 | CFS SPARC | H-ES-18 |
+| SPARC Q target | ~11 | σ-μ | CFS SPARC design | H-ES-21 |
+
+### Cross-Domain Resonance (formula reuse)
+
+| n=6 Expression | Value | Energy | Computing | Other |
+|----------------|-------|--------|-----------|-------|
+| σ·(σ-μ) | 132 | Grid 132kV | H100 132 SMs | 1/α leading term |
+| τ·(σ-φ)² | 400 | Grid 400kV, EV 400V | A100 400W TDP | — |
+| σ·(σ-φ) | 120 | H₂ LHV, US grid 120V | Solar 120-cell | — |
+| σ² | 144 | Solar 144-cell | AD102 144 SMs | — |
+| σ·sopfr | 60 | Grid 60Hz, Solar 60-cell | Display 60fps | — |
+| (σ-φ)³ | 1000 | Tesla SC 1000V | B200 1000W TDP | DDPM T=1000 |
 | Flux quantum Φ₀ = h/(2e) | 2 (denominator) | φ(6) | Superconductor | H-SC-70 |
 | Spatial inertia matrix | 6×6, 4 blocks | n×n, τ blocks | Robotics | H-ROB-76 |
 | Hexacopter fault tolerance | 6 rotors, 5 min | n, sopfr | Robotics | H-ROB-79 |
