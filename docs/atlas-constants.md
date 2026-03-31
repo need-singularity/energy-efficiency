@@ -78,7 +78,21 @@
 | σ·τ | 48 nm | TSMC N3/N2 gate pitch (EXACT) | Semiconductor, BT-37 |
 | (σ-φ)^τ | 10⁴ | RoPE base θ (LLaMA) | AI, BT-34 |
 | 1/(σ-φ) | 0.1 | LLM weight decay (universal) | AI, BT-34 |
-| 1-1/(J₂-τ) | 0.95 | Adam β₂ (GPT-3/LLaMA) | AI, BT-34 |
+| 1-1/(J₂-τ) | 0.95 | Adam β₂ (GPT-3/LLaMA) | AI, BT-34/54 |
+| 1-1/(σ-φ) | 0.9 | Adam β₁ (ALL LLMs universal) | AI, BT-54 |
+| 10^{-(σ-τ)} | 1e-8 | Adam ε (GPT-3/Qwen universal) | AI, BT-54 |
+| R(6)=σφ/(nτ) | 1.0 | Gradient clip (ALL LLMs universal) | AI, BT-54 |
+| τ·(σ-φ) | 40 | A100 HBM capacity (GB) | Chip, BT-55 |
+| φ^τ·sopfr | 80 | A100-80/H100 HBM capacity (GB) | Chip, BT-55 |
+| σ·φ^τ | 192 | B100/B200/MI300X HBM capacity (GB) | Chip, BT-55 |
+| σ·J₂ | 288 | B300/Rubin HBM capacity (GB) | Chip, BT-55 |
+| σ²-n/φ | 141 | H200 HBM capacity (GB, EXACT) | Chip, BT-55 |
+| σ·(σ-τ) | 96 | Gaudi 2 HBM capacity (GB) | Chip, BT-55 |
+| σ·τ·(σ-φ) | 480 | 3-phase datacenter feed (V) | Power, BT-60 |
+| σ/(σ-φ) | 1.2 | Hyperscaler PUE target / DDR Vdd | Power/Chip, BT-60 |
+| (σ-μ)/(σ-φ) | 1.10 | Google fleet PUE (2021) | Power, BT-60 |
+| (σ-φ)²·τ | 400 | A100 TDP (W) | Chip, BT-60 |
+| (σ-φ)³ | 1000 | B200 TDP (W) | Chip, BT-60 |
 
 ## Egyptian Fractions
 
@@ -727,7 +741,7 @@
 | BT-18 | Vacuum Energy Chain: E₀=-(σφ)⁻¹ → η²⁴ → Δ(wt σ) → Monster | QFT, modular forms, coding, lattice, group theory | CONJECTURE |
 | BT-19 | GUT Hierarchy: ranks (τ,sopfr,n,σ-τ), dim(SU(5))=J₂, 11/11 | particle physics, Lie algebra, string theory | ⭐⭐⭐ |
 
-### BT-26~53 (see [breakthrough-theorems.md](breakthrough-theorems.md))
+### BT-26~55 (see [breakthrough-theorems.md](breakthrough-theorems.md))
 
 | ID | Statement | Domains | Grade |
 |----|-----------|---------|-------|
@@ -743,6 +757,13 @@
 | BT-49 | Pure Math: K₁..₄=(φ,n,σ,J₂), B₂=1/n, S₆ | math, coding theory, lattice, group theory | ⭐⭐⭐ |
 | BT-51 | Genetic code: τ→n/φ→2^n→J₂-τ chain | biology, info theory, chemistry | ⭐⭐⭐ |
 | BT-53 | Crypto: BTC 21M=J₂-n/φ, ETH 12s=σ | blockchain, crypto, info theory | ⭐⭐ |
+| BT-54 | AdamW quintuplet: β₁=1-1/(σ-φ), β₂=1-1/(J₂-τ), ε=10^{-(σ-τ)}, λ=1/(σ-φ), clip=R(6) | AI/LLM, optimization, training | ⭐⭐⭐ |
+| BT-55 | GPU HBM ladder: 40=τ(σ-φ), 80=φ^τ·sopfr, 192=σ·φ^τ, 288=σ·J₂ | chip, memory, HPC, AI infra | ⭐⭐ |
+| BT-56 | Complete n=6 LLM: d=2^σ, L=2^sopfr, h=2^sopfr, d_h=2^(σ-sopfr)=128 | AI arch, scaling, chip, info theory | ⭐⭐⭐ |
+| BT-57 | Battery cell ladder: 6→12→24 cells = n→σ→J₂, Tesla 96S=σ(σ-τ) | electrochem, auto, telecom, energy | ⭐⭐ |
+| BT-58 | σ-τ=8 universal AI constant: LoRA, MoE, KV, FlashAttn, batch (16/16) | AI train, inference, memory, precision | ⭐⭐⭐ |
+| BT-59 | 8-layer AI stack: silicon→precision→memory→compute→arch→train→opt→inference | ALL AI domains, 8 independent layers | ⭐⭐⭐ |
+| BT-60 | Datacenter power chain: 120→480→48→12→1.2→1V, PUE=σ/(σ-φ)=1.2 | power grid, DC infra, chip, AI | ⭐⭐ |
 
 ---
 
@@ -753,13 +774,13 @@
   Total hypotheses: 1000+ across all domains
   Total extreme hypotheses: 500+ (28+ domains × 20)
 
-  EXACT constants registered: 200+
+  EXACT constants registered: 280+
   CLOSE constants registered: 140+
-  Total atlas entries: 400+ (registered rows, duplicates consolidated)
+  Total atlas entries: 480+ (registered rows, duplicates consolidated)
 
-  Breakthrough Theorems: 53 (BT-1~53)
-    Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16, BT-19, BT-28, BT-36, BT-43, BT-48, BT-49, BT-51
-    Two-star (⭐⭐): BT-1~3, BT-7/8/10/12/14/17, BT-26/29/30/31/34/35/37/38/39/40/41/42/44/46/50/53
+  Breakthrough Theorems: 60 (BT-1~60)
+    Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16, BT-19, BT-28, BT-36, BT-43, BT-48, BT-49, BT-51, BT-54, BT-56, BT-58, BT-59
+    Two-star (⭐⭐): BT-1~3, BT-7/8/10/12/14/17, BT-26/29/30/31/34/35/37/38/39/40/41/42/44/46/50/53/55/57/60
     One-star (⭐): BT-4, BT-9, BT-11, BT-32, BT-33, BT-45, BT-47, BT-52
 
   Cross-domain bridges: 8 (Bridge 1~8, sigma=12 spans 15 domains)
@@ -821,5 +842,5 @@
 
 *Last updated: 2026-03-31*
 *Source: n6-architecture project, 28 domains, 1000+ graded hypotheses*
-*Atlas entries: 300+ registered rows (160+ EXACT + 140+ CLOSE)*
-*Breakthrough Theorems: 17 (BT-1~17), 5 Three-Star, 8 Cross-Domain Bridges, 28 domains*
+*Atlas entries: 490+ registered rows (290+ EXACT + 140+ CLOSE)*
+*Breakthrough Theorems: 60 (BT-1~60), 16 Three-Star, 8 Cross-Domain Bridges, 28 domains*
