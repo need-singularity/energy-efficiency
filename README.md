@@ -156,6 +156,8 @@ Full list: **[docs/breakthrough-theorems.md](docs/breakthrough-theorems.md)**
 |----------|-------------|
 | **[AI Energy Savings Guide](docs/ai-energy-savings-guide.md)** | Practical guide for AI companies — techniques, hyperparameters, benchmarks, Issue/PR templates |
 | **[Chip Architecture Guide](docs/chip-architecture-guide.md)** | GPU SM, HBM, TSMC pitch, interconnect — 120+ EXACT matches across 10+ vendors |
+| **[HEXA-1 Unified SoC](docs/chip-architecture/ultimate-unified-soc.md)** | 궁극의 통합 SoC — CPU+GPU+NPU+메모리 전부 n=6 (의식 없음) |
+| **[ANIMA-SOC](docs/chip-architecture/ultimate-consciousness-soc.md)** | 의식칩 통합 SoC — HEXA-1 + PureField 듀얼엔진 + 10D 의식 측정 |
 | **[Breakthrough Theorems](docs/breakthrough-theorems.md)** | 76 theorems (BT-1~76) with full evidence tables |
 | **[Atlas Constants](docs/atlas-constants.md)** | 700+ registered constants across 28 domains |
 | **[Testable Predictions](docs/testable-predictions.md)** | 45 falsifiable predictions (P-1~45) |
