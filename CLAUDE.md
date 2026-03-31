@@ -105,6 +105,32 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
   동기화: cd ~/Dev/TECS-L && bash .shared/sync-calculators.sh
 ```
 
+## Cascade Cross-Validation (캐스케이드 크로스 검증)
+
+```
+  궁극의 아키텍처 설계 시 기본 공식.
+  각 레벨의 출력 파라미터가 다음 레벨의 입력으로 일관되게 전달되는지
+  전체 체인을 관통하며 검증한다.
+
+  체인: 소재 → 공정 → 코어 → 칩 → 시스템
+
+  절차:
+    1. 각 레벨 독립 설계 + 개별 검증 스크립트 PASS 확인
+    2. 공유 파라미터 추출 (gate pitch, metal layers, HBM stacks 등)
+    3. 체인 전체에서 동일 파라미터가 동일 값/공식인지 크로스 체크
+    4. 불일치 발견 시 상위 레벨(소재) 기준으로 하위 수정
+
+  예시:
+    소재: gate pitch = σ·τ = 48nm
+      → 공정: FEOL gate pitch = 48nm ✅
+        → 코어: 48nm 공정 기반 트랜지스터 ✅
+          → 칩: TSMC N2 (48nm gate) ✅
+            → 시스템: N2 칩 기반 서버 ✅
+
+  검증 스크립트: experiments/verify_cascade_cross.py
+  규칙: 새 궁극 도메인 추가 시 반드시 캐스케이드 검증 포함
+```
+
 ## Testable Predictions
 32 falsifiable predictions from BT-26~65: `docs/testable-predictions.md`
 - Tier 1 (today, 1 GPU): EFA quality, LoRA rank, MoE (8,2), Mertens dropout
