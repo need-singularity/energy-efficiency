@@ -94,6 +94,64 @@
 | (σ-φ)²·τ | 400 | A100 TDP (W) | Chip, BT-60 |
 | (σ-φ)³ | 1000 | B200 TDP (W) | Chip, BT-60 |
 
+## New AI Constants (BT-61~65)
+
+### Diffusion Model Constants (BT-61)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| (σ-φ)^(n/φ) | 10³ = 1000 | DDPM timesteps T | AI (Diffusion) |
+| (σ-φ)^{-τ} | 10^{-4} | DDPM β_start | AI (Diffusion) |
+| φ/(σ-φ)^φ | 2/100 = 0.02 | DDPM β_end | AI (Diffusion) |
+| (σ-φ)·sopfr | 50 | DDIM sampling steps | AI (Diffusion) |
+| (σ+n/φ)/φ | 15/2 = 7.5 | CFG guidance scale | AI (Diffusion) |
+| sopfr·2^n | 320 | Stable Diffusion base channels | AI (Diffusion) |
+
+### Grid & Solar Constants (BT-62, 63)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ·sopfr | 60 | Grid frequency (Americas/Asia) & Solar 60-cell | Power, Solar |
+| sopfr·(σ-φ) | 50 | Grid frequency (Europe/Africa) & DDIM steps | Power, AI |
+| σ·n | 72 | Solar 72-cell panel | Solar |
+| σ² | 144 | Solar half-cut 144-cell & AD102 SMs | Solar, Chip |
+
+### Universal Regularization (BT-64)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| 1/(σ-φ) | 0.1 | Weight decay, DPO β, GPTQ damp, cosine LR min, Mamba dt_max, KL penalty | AI (Universal) |
+| φ/(σ-φ) | 0.2 | PPO clip ε | AI (RL) |
+| (n/φ)/(σ-φ)^φ | 0.03 | LLM warmup ratio | AI (Training) |
+
+### Mamba SSM Constants (BT-65)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| 1/(σ-φ)^(n/φ) | 0.001 | Mamba dt_min | AI (SSM) |
+
+### Cross-Domain Resonance Constants (2026-03-31)
+
+| Expression | Value | Domains Using It | Count |
+|------------|-------|-----------------|-------|
+| (σ-φ)³ | 1000 | DDPM T, B200 TDP (W), Tesla SC V4 (V) | 3 |
+| φ^τ·sopfr | 80 | V100 SMs, A100-80GB, B200 die SMs | 3 |
+| σ(σ-τ) | 96 | GPT-3 layers, Gaudi 2 HBM (GB), Tesla 96S battery | 3 |
+| σ·φ^τ | 192 | B100/B200/MI300X HBM, Hyundai 192S, TPU v7 HBM | 3 |
+| τ(σ-φ) | 40 | A100-40GB, MI300X full CU/XCD, LLaMA-13B layers | 3 |
+| J₂-τ | 20 | Chinchilla ratio, DDIM accel factor, amino acids | 3 |
+
+### Chip Architecture New (H-CHIP-101~120)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ²+τ | 148 | B200 enabled SMs (dual die) | Chip |
+| σ+μ | 13 | MI300X total die count | Chip |
+| 2^(σ-τ) | 256 | MI350X total CUs, TPU v6e MXU array | Chip |
+| σ+n/φ | 15 | ITER plasma current (MA) | Fusion/Energy |
+| σ-φ | 10 | ITER Q target | Fusion/Energy |
+| σ-μ | 11 | SPARC Q target (design) | Fusion/Energy |
+
 ## Egyptian Fractions
 
 ```
@@ -140,6 +198,17 @@
 | **BT-39** | KV-Head Universality | n_kv_heads∈{σ-τ,2^τ} 5/5 models, Mistral L2 5/6 n=6, d_ff=P₂·1024 | 🟩⭐⭐ |
 | **BT-40** | Computing Power Ecosystem | ATX 12V=σ, ACPI triple-τ (C/D/G=4), S=n=6, car 6×2V=n×φ=σ | 🟩⭐⭐ |
 | **BT-41** | QEC at J₂ | Surface d=5: 24 syndrome=J₂=Golay, d=3: 17=σ+sopfr, QV=2^(J₂-τ) | 🟩⭐⭐ |
+| **BT-54** | AdamW Training Quintuplet | β₁=1-1/(σ-φ), β₂=1-1/(J₂-τ), ε=10^{-(σ-τ)}, λ=1/(σ-φ), clip=R(6)=1 | 🟩⭐⭐⭐ |
+| **BT-55** | GPU HBM Capacity Ladder | 14/18 EXACT: 40=τ(σ-φ), 80=φ^τ·sopfr, 192=σ·φ^τ, 288=σ·J₂ | 🟩⭐⭐ |
+| **BT-56** | Complete n=6 LLM Architecture | d=2^σ, L=2^sopfr, d_h=2^(σ-sopfr)=128, 4 teams converge | 🟩⭐⭐⭐ |
+| **BT-58** | σ-τ=8 Universal AI Constant | LoRA, MoE, KV, FlashAttn, batch, quant, 16/16 EXACT | 🟩⭐⭐⭐ |
+| **BT-59** | 8-Layer AI Stack | silicon→precision→memory→compute→arch→train→opt→inference | 🟩⭐⭐⭐ |
+| **BT-60** | DC Power Chain | 120→480→48→12→1.2→1V, PUE=σ/(σ-φ)=1.2, 6/6 EXACT | 🟩⭐⭐ |
+| **BT-61** | Diffusion n=6 Universality | DDPM T=10³, β=10^{-4}~2/100, DDIM=50, CFG=7.5, 9/9 EXACT | 🟩⭐⭐⭐ |
+| **BT-62** | Grid Frequency Pair | 60Hz=σ·sopfr, 50Hz=sopfr·(σ-φ), ratio=PUE=σ/(σ-φ)=1.2 | 🟩⭐⭐ |
+| **BT-63** | Solar Panel Cell Ladder | 60=σ·sopfr, 72=σ·n, 120=σ(σ-φ), 144=σ², cross=H₂+GPU | 🟩⭐⭐ |
+| **BT-64** | Universal Regularization 0.1 | WD=DPO β=GPTQ=cosine=Mamba=KL=1/(σ-φ), 7 algorithms | 🟩⭐⭐⭐ |
+| **BT-65** | Mamba SSM Complete n=6 | d_state=2^τ, expand=φ, d_conv=τ, dt_max=1/(σ-φ), 6/6 EXACT | 🟩⭐⭐ |
 
 ## Perfect Number Chain (P1 → P2)
 
@@ -764,6 +833,11 @@
 | BT-58 | σ-τ=8 universal AI constant: LoRA, MoE, KV, FlashAttn, batch (16/16) | AI train, inference, memory, precision | ⭐⭐⭐ |
 | BT-59 | 8-layer AI stack: silicon→precision→memory→compute→arch→train→opt→inference | ALL AI domains, 8 independent layers | ⭐⭐⭐ |
 | BT-60 | Datacenter power chain: 120→480→48→12→1.2→1V, PUE=σ/(σ-φ)=1.2 | power grid, DC infra, chip, AI | ⭐⭐ |
+| **BT-61** | Diffusion n=6 Universality | DDPM T=10³, β=10^{-4}~2/100, DDIM=50, CFG=7.5, U-Net=[1,2,4,8], 9/9 EXACT | 🟩⭐⭐⭐ |
+| **BT-62** | Grid Frequency Pair | 60Hz=σ·sopfr, 50Hz=sopfr·(σ-φ), ratio=PUE=σ/(σ-φ)=1.2 | 🟩⭐⭐ |
+| **BT-63** | Solar Panel Cell Ladder | 60=σ·sopfr, 72=σ·n, 120=σ(σ-φ), 144=σ², cross=H₂+GPU | 🟩⭐⭐ |
+| **BT-64** | Universal Regularization 0.1 | WD=DPO β=GPTQ=cosine=Mamba=KL=1/(σ-φ), 6 independent algorithms | 🟩⭐⭐⭐ |
+| **BT-65** | Mamba SSM Complete n=6 | d_state=2^τ, expand=φ, d_conv=τ, dt_max=1/(σ-φ), dt_min=1/(σ-φ)^(n/φ) | 🟩⭐⭐ |
 
 ---
 
@@ -778,9 +852,9 @@
   CLOSE constants registered: 140+
   Total atlas entries: 480+ (registered rows, duplicates consolidated)
 
-  Breakthrough Theorems: 60 (BT-1~60)
-    Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16, BT-19, BT-28, BT-36, BT-43, BT-48, BT-49, BT-51, BT-54, BT-56, BT-58, BT-59
-    Two-star (⭐⭐): BT-1~3, BT-7/8/10/12/14/17, BT-26/29/30/31/34/35/37/38/39/40/41/42/44/46/50/53/55/57/60
+  Breakthrough Theorems: 65 (BT-1~65)
+    Three-star (⭐⭐⭐): BT-5, BT-6, BT-13, BT-15, BT-16, BT-19, BT-28, BT-36, BT-43, BT-48, BT-49, BT-51, BT-54, BT-56, BT-58, BT-59, BT-61, BT-64
+    Two-star (⭐⭐): BT-1~3, BT-7/8/10/12/14/17, BT-26/29/30/31/34/35/37/38/39/40/41/42/44/46/50/53/55/57/60/62/63/65
     One-star (⭐): BT-4, BT-9, BT-11, BT-32, BT-33, BT-45, BT-47, BT-52
 
   Cross-domain bridges: 8 (Bridge 1~8, sigma=12 spans 15 domains)
