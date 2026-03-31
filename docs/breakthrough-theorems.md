@@ -2607,13 +2607,15 @@ Extends Gemma 2's binary local/global to a 3-tier system. Each tier gets attenti
 9. **BT-6** (Golay-Leech): Unique mathematical objects with all parameters matching
 10. **BT-21** (Neutrino Mixing): Three PMNS angles = n=6 fractions, JUNO testable
 
-**BT-26~33 highlights** (least susceptible to cherry-picking):
+**BT-26~41 highlights** (least susceptible to cherry-picking):
 1. **BT-28** (Architecture Ladder): AD102 = σ·n·φ = 144, H100 SMs = σ(σ-μ) = 132 = 1/α term, 30+ EXACT across GPU/CPU/HBM
-2. **BT-26** (Chinchilla): tokens/params = J₂-τ = 20, scaling exponents match within error bars
-3. **BT-30** (SQ Solar): optimal bandgap = τ/(n/φ) = 4/3 eV (0.50%), V_T = (J₂+φ) mV (0.57%)
-4. **BT-27** (Carbon-6): LiC₆ + C₆H₁₂O₆(n,σ,n) + C₆H₆ = hexagonal carbon energy chain, 7/7 EXACT
-5. **BT-29** (IEEE 519): THD=sopfr, individual=n/φ, TDD=σ-τ — triple simultaneous
-6. **BT-31** (MoE): top-k ∈ {μ,φ,n,σ-τ} = 4/4 coverage of all published values
+2. **BT-36** (Grand Chain): Solar→V_T→Landauer→H100→1/α, 5-domain causal chain, all <1%
+3. **BT-38** (Hydrogen): LHV=120=σ(σ-φ), HHV=142=σ²-φ, 4 values + 4 diffs = 8/8 EXACT
+4. **BT-37** (Semiconductor Pitch): TSMC N5 = P₂ = 28nm, N3 gate = σ·τ = 48nm, 6/6 EXACT
+5. **BT-26** (Chinchilla): tokens/params = J₂-τ = 20 = Quantinuum QV exp = amino acids
+6. **BT-34** (RoPE): θ=(σ-φ)^{τ,sopfr,n}, weight decay=1/(σ-φ)=0.1 universal
+7. **BT-41** (QEC): Surface d=5 syndrome = J₂ = 24 = Golay code length
+8. **BT-40** (Power): ATX 12V=σ, ACPI triple-τ, 9 independent parameters all n=6
 
 **Weakest results** (most susceptible to selection bias):
 1. **BT-11** (Software-Physics): Small integers are common in human design

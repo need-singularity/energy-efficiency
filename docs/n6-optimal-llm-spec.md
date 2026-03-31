@@ -24,21 +24,21 @@
 
 ```yaml
 # Architecture
-d_model:       1536     # σ · 2^7 = 12 · 128
-n_heads:       12       # σ
+d_model:       2048     # 2^(σ-μ) = 2^11 (BT-28 ladder)
+n_heads:       16       # 2^τ
 n_kv_heads:    4        # τ (smaller model uses fewer KV heads)
 d_k:           128      # 2^(σ-sopfr) = d_model / n_heads
-d_ff:          4096     # 8/3 · 1536 = 4096 (rounded to 2^σ)
+d_ff:          5504     # 8/3 · 2048 ≈ 5461, rounded to next ×256
 n_layers:      24       # J₂
 vocab_size:    32000    # 2^sopfr · 10^(n/φ)
 max_seq_len:   4096     # 2^σ
 activation:    SwiGLU
 norm:          RMSNorm (ε = 10^-sopfr = 1e-5)
-attention:     EFA (6 full + 4 local + 2 global, w=512)
+attention:     EFA (8 full + 5 local + 3 global, w=512)
 
 # Training
 batch_tokens:  ~4M      # ramp to this
-total_tokens:  24B      # J₂ · 10^9 (Chinchilla: 20× params)
+total_tokens:  24B      # J₂ · 10^9 (Chinchilla: ~20× params)
 peak_lr:       3e-4     # (n/φ) · (σ-φ)^(-τ)
 warmup_steps:  2000
 schedule:      WSD (3 phases = n/φ)
@@ -53,11 +53,11 @@ attn_FLOPs:    ~60% of standard (EFA saving)
 ```
 
 **Parameter count verification**:
-- Embedding: 32000 × 1536 = 49.2M
-- Per layer: QKV(1536→1536+256+256) + O(1536) + FFN(1536→4096→1536×2 SwiGLU) ≈ 38.4M
-- 24 layers × 38.4M = 921.6M
-- Head + norms: ~3M
-- **Total: ~1.17B** ✓
+- Embedding: 32000 × 2048 = 65.5M
+- Per layer: QKV(2048→2048+512+512) + O(2048) + SwiGLU(2048→5504→2048×3) ≈ 44.3M
+- 24 layers × 44.3M = 1063M
+- Output head (shared with embedding): 65.5M
+- **Total: ~1.19B** ✓
 
 ---
 
