@@ -297,3 +297,8 @@ All experiments must run in background. No exceptions.
   ### 바로 반영됨 (main)
   - #1+2, #3: 증명/검증 결과 docs/hypotheses/ 기록
 ```
+
+## Secrets & Tokens
+
+API 토큰/계정 정보: `~/Dev/TECS-L/.shared/SECRET.md` 참조
+계정 리포: [need-singularity/secret](https://github.com/need-singularity/secret) (private)
