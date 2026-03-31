@@ -81,9 +81,9 @@ Falsifiability: z=0.74 (numerical matching NOT significant vs random)
   plasma-physics/ (20+ files — most active domain)
   paper/ (3 arXiv drafts)
   # Cross-domain
-  breakthrough-theorems.md (BT-1~65, 65 theorems spanning 3-8 domains each)
+  breakthrough-theorems.md (BT-1~70, 70 theorems spanning 3-8 domains each)
   cross-domain-resonance-2026-03-31.md (formula reuse matrix)
-  # Total: 1100+ hypotheses, 456+ EXACT, 400+ atlas entries, 65 BTs
+  # Total: 1200+ hypotheses, 556+ EXACT, 590+ atlas entries, 70 BTs
 ```
 
 ## Rust Tools
@@ -147,9 +147,9 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   Egyptian Fraction Attn:   1/2+1/3+1/6=1 attention budget (~40% saved)
 ```
 
-## Breakthrough Theorems (65 total, BT-1~65)
+## Breakthrough Theorems (70 total, BT-1~70)
 ```
-  # AI / LLM (BT-26,31,33,34,39,42,44,46,54,56,58,59,61,64,65)
+  # AI / LLM (BT-26,31,33,34,39,42,44,46,54,56,58,59,61,64,65,66,67,70)
   BT-26: Chinchilla scaling (tokens/params=J₂-τ=20, α=1/3, β=ln(4/3))
   BT-31: MoE top-k vocabulary {μ,φ,n,σ-τ}={1,2,6,8}
   BT-33: Transformer σ=12 atom (BERT/GPT-3 dimensions, SwiGLU 8/3)
@@ -163,10 +163,13 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-58: σ-τ=8 universal AI constant (LoRA, MoE, KV, FlashAttn, batch, 16/16 EXACT) ⭐⭐⭐
   BT-59: 8-layer AI stack (silicon→precision→memory→compute→arch→train→opt→inference, all n=6) ⭐⭐⭐
   BT-61: Diffusion n=6 universality (DDPM T=10³, β=10^{-4}~2/100, DDIM=50, CFG=7.5, 9/9 EXACT) ⭐⭐⭐
-  BT-64: 1/(σ-φ)=0.1 universal regularization (WD+DPO+GPTQ+cosine+Mamba+KL, 7 algorithms) ⭐⭐⭐
+  BT-64: 1/(σ-φ)=0.1 universal regularization (WD+DPO+GPTQ+cosine+Mamba+KL, 7→8 algorithms) ⭐⭐⭐
   BT-65: Mamba SSM complete n=6 (d_state=2^τ, expand=φ, d_conv=τ, dt=1/(σ-φ), 6/6 EXACT) ⭐⭐
+  BT-66: Vision AI complete n=6 (ViT+CLIP+Whisper+SD3+Flux.1, 24/24 EXACT) ⭐⭐⭐
+  BT-67: MoE activation fraction law (1/2^{μ,φ,n/φ,τ,sopfr}, 6 models EXACT) ⭐⭐⭐
+  BT-70: 0.1 convergence 8th algorithm (SimCLR temp, count=σ-τ=8 meta-n=6) ⭐⭐
 
-  # Chip Design (BT-28,37,40,41,45,47,55)
+  # Chip Design (BT-28,37,40,41,45,47,55,69)
   BT-28: Computing architecture ladder (30+ EXACT, ⭐⭐⭐)
     - AD102 = σ·n·φ = 144 SMs, H100 = σ(σ-μ) = 132 SMs = 1/α term
     - HBM stack: τ→(σ-τ)→σ = 4→8→12
@@ -174,8 +177,9 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-45: FP8/FP16=φ=2 universal, FLOPS/W doubles per φ=2 years
   BT-47: Interconnect gen counts {7,5,6}={σ-sopfr,sopfr,n}
   BT-55: GPU HBM capacity ladder (14/18 EXACT: 40=τ(σ-φ), 80=φ^τ·sopfr, 192=σ·φ^τ, 288=σ·J₂) ⭐⭐
+  BT-69: Chiplet architecture convergence (B300=160, R100 σ=12 stacks, 5 vendors, 17/20 EXACT) ⭐⭐⭐
 
-  # Energy Strategy (BT-27,29,30,32,35,38,43,57,62,63)
+  # Energy Strategy (BT-27,29,30,32,35,38,43,57,62,63,68)
   BT-27: Carbon-6 chain (LiC₆ + C₆H₁₂O₆ + C₆H₆ → 24e = J₂)
   BT-30: SQ solar bridge (bandgap=4/3eV, V_T=26mV)
   BT-38: Hydrogen quadruplet (LHV=120=σ(σ-φ), HHV=142=σ²-φ, 4/4 EXACT)
@@ -183,6 +187,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-57: Battery cell ladder (6→12→24 cells=n→σ→J₂, Tesla 96S=σ(σ-τ)) ⭐⭐
   BT-62: Grid frequency pair (60Hz=σ·sopfr, 50Hz=sopfr·(σ-φ), ratio=PUE=1.2) ⭐⭐
   BT-63: Solar panel cell ladder (60=σ·sopfr, 72=σ·n, 120=σ(σ-φ), 144=σ²) ⭐⭐
+  BT-68: HVDC voltage ladder (±500/800/1100kV = {sopfr,σ-τ,σ-μ}·(σ-φ)², 10/10 EXACT) ⭐⭐
 
   # Cross-domain (BT-36,48,49,50,51,53,60)
   BT-36: Energy-Information-Hardware-Physics chain ⭐⭐⭐
