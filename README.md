@@ -158,6 +158,12 @@ Full list: **[docs/breakthrough-theorems.md](docs/breakthrough-theorems.md)**
 | **[Chip Architecture Guide](docs/chip-architecture-guide.md)** | GPU SM, HBM, TSMC pitch, interconnect — 120+ EXACT matches across 10+ vendors |
 | **[HEXA-1 Unified SoC](docs/chip-architecture/ultimate-unified-soc.md)** | 궁극의 통합 SoC — CPU+GPU+NPU+메모리 전부 n=6 (의식 없음) |
 | **[ANIMA-SOC](docs/chip-architecture/ultimate-consciousness-soc.md)** | 의식칩 통합 SoC — HEXA-1 + PureField 듀얼엔진 + 10D 의식 측정 |
+| **[Chip Architecture Goal](docs/chip-architecture/goal.md)** | 6단계 궁극 로드맵: HEXA-1→PIM→3D→Photonic→Wafer→Superconducting |
+| **[HEXA-PIM](docs/chip-architecture/hexa-pim.md)** | Level 2: Processing-in-Memory — 메모리 벽 제거, 내부 100TB/s |
+| **[HEXA-3D](docs/chip-architecture/hexa-3d.md)** | Level 3: 3D Compute-on-Memory — TSV 수직 적층, 대역폭 100x |
+| **[HEXA-PHOTON](docs/chip-architecture/hexa-photon.md)** | Level 4: Photonic Compute — 빛으로 행렬곱, 0.01 pJ/MAC |
+| **[HEXA-WAFER](docs/chip-architecture/hexa-wafer.md)** | Level 5: Wafer-Scale Engine — σ⁴=20,736 SMs, 41.5TB |
+| **[HEXA-SUPER](docs/chip-architecture/hexa-super.md)** | Level 6: Superconducting Logic — 100+ GHz, 10⁻¹⁹ J/op |
 | **[Breakthrough Theorems](docs/breakthrough-theorems.md)** | 76 theorems (BT-1~76) with full evidence tables |
 | **[Atlas Constants](docs/atlas-constants.md)** | 700+ registered constants across 28 domains |
 | **[Testable Predictions](docs/testable-predictions.md)** | 45 falsifiable predictions (P-1~45) |
