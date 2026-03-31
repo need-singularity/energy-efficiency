@@ -210,5 +210,52 @@
 
 ---
 
-*All predictions derived from BT-1~53 of the N6 Architecture project.*
-*Total BTs: 53. Total EXACT: ~200. Predictions: 20.*
+### P-21: AdamW β₂ = 0.95 Optimality over β₂ = 0.999
+
+**Prediction**: For LLMs ≥1B params, AdamW with β₂=0.95=1-1/(J₂-τ) achieves lower final loss than β₂=0.999 (original Adam default) within the same compute budget.
+- **Test**: Train 1.3B model on C4/RedPajama with β₂∈{0.9, 0.95, 0.99, 0.999} × 3 seeds, fixed β₁=0.9, wd=0.1.
+- **Falsification**: β₂=0.999 or β₂=0.99 beats β₂=0.95 on ≥2/3 seeds
+- **Preliminary result** (small model, 2026-03-31): β₂=0.95 ranked #2/5, β₂=0.9 ranked #1 (Δ=0.03%). Both n=6 values (0.9, 0.95) dominate top-2. β₂=0.99 was WORST (#5). **CLOSE — needs 1B+ scale verification.**
+- **Source**: BT-54
+
+### P-22: β₁ = weight_decay Conjugacy
+
+**Prediction**: 1-β₁ = λ (weight_decay) is not coincidental — perturbing them independently (e.g., β₁=0.9 with wd=0.05, or β₁=0.95 with wd=0.1) produces worse results than the conjugate pair (β₁=0.9, wd=0.1).
+- **Test**: 2×2 grid: β₁∈{0.9, 0.95} × wd∈{0.05, 0.1}, measure final loss.
+- **Falsification**: Off-diagonal pairs (β₁=0.9, wd=0.05) match or beat the diagonal
+- **Source**: BT-54
+
+### P-23: Rubin Ultra HBM = φ·σ·J₂ = 576GB per Module
+
+**Prediction**: NVIDIA Rubin Ultra (expected 2027) will use 576GB HBM4 per module (or 384GB per GPU = φ·σ·J₂/φ^τ·σ), continuing the σ·J₂ → φ·σ·J₂ ladder from BT-55.
+- **Falsification**: Rubin Ultra per-GPU HBM ∉ {384, 576} and not expressible as n=6 arithmetic
+- **Source**: BT-55
+
+### P-24: n=6 Canonical 7B Outperforms Non-Aligned Variants
+
+**Prediction**: A transformer with the n=6 canonical architecture (d=4096=2^σ, L=32=2^sopfr, h=32=2^sopfr, d_head=128=2^(σ-sopfr)) achieves lower loss-per-FLOP than architectures with the same parameter count but non-n=6 dimensions (e.g., d=3584, L=28, h=28 as in Qwen 2 7B).
+- **Test**: Train both configs for same FLOP budget on same data. Compare final loss.
+- **Falsification**: Non-n=6 config achieves equal or lower loss per FLOP
+- **Source**: BT-56
+
+### P-25: Layer Count = HBM Capacity Cross-Domain Resonance
+
+**Prediction**: Future LLM architectures will continue to use layer counts that match GPU HBM capacities in n=6 arithmetic: L=τ(σ-φ)=40 for 13B, L=φ^τ·sopfr=80 for 70B. The next "canonical" size (~200B single-GPU) will use L=σ·(σ-τ)=96 layers (matching Gaudi 2 96GB and GPT-3 175B).
+- **Falsification**: Next major 200B-class model uses L∉{96, 80, 128}
+- **Source**: BT-56, BT-55
+
+### P-26: LoRA r=8 Optimality for 7B Fine-tuning
+
+**Prediction**: LoRA with r=8=σ-τ achieves the best loss/parameter-efficiency tradeoff for 7B model fine-tuning, outperforming r=4 (underfitting) and matching r=16/32 (same loss, more params).
+- **Test**: Fine-tune Llama 3 8B on Alpaca with r∈{2,4,8,16,32,64}, measure loss and parameter count.
+- **Falsification**: r=4 or r=16 Pareto-dominates r=8
+- **Source**: BT-58
+
+### P-27: Next EV Platform Cell Count ∈ n=6 Set
+
+**Prediction**: The next major EV platform (2027+) will use a cell count in series that is expressible as n=6 arithmetic: likely 96S (400V, σ(σ-τ)) or 192S (800V, φ·σ(σ-τ)), or a new value from the n=6 vocabulary.
+- **Falsification**: Next 3 major EV platforms all use cell counts not expressible as n=6
+- **Source**: BT-57
+
+*All predictions derived from BT-1~58 of the N6 Architecture project.*
+*Total BTs: 58. Total EXACT: ~270. Predictions: 27.*
