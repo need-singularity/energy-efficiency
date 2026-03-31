@@ -56,7 +56,7 @@
 
 ## Level 1: HEXA-CELL (기초)
 
-**Status**: 설계 예정 → [hexa-cell.md](hexa-cell.md)
+**Status**: 설계 완료 → [hexa-cell.md](hexa-cell.md) (870줄)
 
 ```
   혁신: CN=6 결정학 --- 인류 최고 에너지 저장 = n=6 결정 구조
