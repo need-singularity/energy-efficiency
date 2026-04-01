@@ -4,9 +4,9 @@
 
 [meta]
 updated = "2026-04-01T10"
-total_domains = 200
-total_valid_paths = 1430000
-domains_100pct_n6 = 200
+total_domains = 204
+total_valid_paths = 1460000
+domains_100pct_n6 = 204
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"
 
@@ -13120,6 +13120,42 @@ goal = true
 dse = "done"
 combos = 7776
 tool = "tools/universal-dse/ domains/seismograph.toml"
+n6_max = 100.0
+n6_avg = 100.0
+note = "DSE complete"
+
+[drone-delivery]
+goal = true
+dse = "done"
+combos = 7776
+tool = "tools/universal-dse/ domains/drone-delivery.toml"
+n6_max = 100.0
+n6_avg = 100.0
+note = "DSE complete"
+
+[machine-vision]
+goal = true
+dse = "done"
+combos = 7776
+tool = "tools/universal-dse/ domains/machine-vision.toml"
+n6_max = 100.0
+n6_avg = 100.0
+note = "DSE complete"
+
+[plastic-recycling]
+goal = true
+dse = "done"
+combos = 7776
+tool = "tools/universal-dse/ domains/plastic-recycling.toml"
+n6_max = 100.0
+n6_avg = 100.0
+note = "DSE complete"
+
+[thermal-storage]
+goal = true
+dse = "done"
+combos = 7776
+tool = "tools/universal-dse/ domains/thermal-storage.toml"
 n6_max = 100.0
 n6_avg = 100.0
 note = "DSE complete"

@@ -564,6 +564,10 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | `domains/self-replicating-chip.toml` | Seed→Fabrication→Assembly→Verification→Replication | 7,776 | ✅ |
 | `domains/aquaculture.toml` | Species→Feed→Tank→Water→Harvest | 7,776 | ✅ |
 | `domains/seismograph.toml` | Sensor→Amplifier→Digitizer→Recording→Analysis | 7,776 | ✅ |
+| `domains/drone-delivery.toml` | Vehicle→Navigation→Payload→Communication→Logistics | 7,776 | ✅ |
+| `domains/machine-vision.toml` | Camera→Illumination→Preprocessing→Algorithm→Application | 7,776 | ✅ |
+| `domains/plastic-recycling.toml` | Collection→Sorting→Washing→Processing→Product | 7,776 | ✅ |
+| `domains/thermal-storage.toml` | Medium→Container→Charging→Discharging→Integration | 7,776 | ✅ |
 
 ---
 
