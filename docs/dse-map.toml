@@ -610,3 +610,12 @@ status = "done"
 tool = "tools/universal-dse/"
 best = "Genomics + Diamond (100.0% n6, score 0.8662)"
 note = "Genomics+Bioreactor+GeneCircuit+AlphaFold+BioMfg → Diamond HEXA-P — 생명공학×칩 100% n6 EXACT"
+
+# ── Thermal Management Cross-DSE ────────────────
+
+[cross-dse.thermal-x-chip]
+domains = ["thermal-management", "chip-architecture"]
+status = "done"
+tool = "tools/universal-dse/"
+best = "TwoPhase + Diamond (100.0% n6, score 0.8736)"
+note = "TwoPhase+VaporChamber+DiamondSpreader+DVFS+EV_Battery → Diamond HEXA-P — 열관리×칩 100% n6 EXACT"
