@@ -96,6 +96,7 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
 - `tools/gpu-arch-calc/`  — GPU/HBM architecture verification + Rubin prediction
 - `tools/energy-calc/`    — Solar/Battery/Hydrogen/IEEE519 energy verification
 - `tools/gut-calc-rust/`  — GUT parameter brute-force search
+- `tools/dse-calc/`       — 소재×공정×코어×칩×시스템 DSE 전수 조합 탐색 + Pareto frontier
 
 ## Calculator Rules (Shared)
 **새 계산기 개발시 성능 문제 예상되면 반드시 Rust 우선.**
