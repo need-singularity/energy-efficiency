@@ -244,12 +244,12 @@ notes  = "Boiling blanch + drying, standard EU method"
 [[candidate]]
 level  = 3
 id     = "Fractionation"
-label  = "Protein/Fat/Chitin Fractionation"
-n6     = 0.83
+label  = "n=6 Fraction Separation (protein/fat/chitin/mineral/fiber/water)"
+n6     = 1.00
 perf   = 0.90
 power  = 0.45
 cost   = 0.50
-notes  = "Separate into n=6 fractions (protein/fat/chitin/mineral/fiber/water)"
+notes  = "n=6 EXACT — 6 fractions (protein/fat/chitin/mineral/fiber/water), hexagonal separation pipeline"
 
 [[candidate]]
 level  = 3

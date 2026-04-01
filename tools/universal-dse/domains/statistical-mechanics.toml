@@ -287,13 +287,13 @@ notes  = "upper_critical_dim, marginal operators, d=4 Ising"
 
 [[candidate]]
 level  = 3
-id     = "CriticalN6"
-label  = "n=6 보편성 클래스 임계현상 (n=6 EXACT)"
+id     = "SixExponents"
+label  = "6 Critical Exponents (n=6 EXACT: alpha/beta/gamma/delta/nu/eta)"
 n6     = 1.00
-perf   = 0.85
+perf   = 0.88
 power  = 0.55
-cost   = 0.45
-notes  = "universality_classes=n=6 EXACT, n6-universality critical phenomena"
+cost   = 0.50
+notes  = "exponents=6=n EXACT (alpha/beta/gamma/delta/nu/eta), scaling_relations=4=tau EXACT, universality=fundamental"
 [[level]]
 name = "Application"
 
@@ -355,13 +355,13 @@ notes  = "minority game, herding, fat tails, criticality, econophysics"
 
 [[candidate]]
 level  = 4
-id     = "MagnetN6"
-label  = "sigma=12 자성 대칭군 응용 (sigma=12 EXACT)"
+id     = "IceRuleApp"
+label  = "6-Vertex Ice Rule Applications (n=6 EXACT vertex model)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "symmetry_groups=sigma=12 EXACT, n6-magnetic material application"
+perf   = 0.84
+power  = 0.58
+cost   = 0.48
+notes  = "vertices=6=n EXACT, proton_ordering=ice_Ih, ferroelectric=KDP, antiferro=F_model, residual_entropy=W^{3/2}*ln(4/3)"
 [[rule]]
 type       = "require"
 if_level   = 1

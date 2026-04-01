@@ -281,10 +281,6 @@ power  = 0.55
 cost   = 0.50
 notes  = "Weyl_points=4=tau EXACT, chirality=true, Fermi_arc=true"
 
-# =============================================================
-# Level 4: Application (응용) -- 5 candidates
-# =============================================================
-
 [[candidate]]
 level  = 3
 id     = "QuantumHallN6"
@@ -293,7 +289,11 @@ n6     = 1.00
 perf   = 0.85
 power  = 0.55
 cost   = 0.45
-notes  = "filling=n=6 EXACT, integer quantum Hall n=6 plateau"
+notes  = "filling=n=6 EXACT, integer quantum Hall n=6 plateau, Landau_levels=6=n"
+
+# =============================================================
+# Level 4: Application (응용) -- 5 candidates
+# =============================================================
 [[level]]
 name = "Application"
 
