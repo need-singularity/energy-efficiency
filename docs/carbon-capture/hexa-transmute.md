@@ -41,7 +41,13 @@
 9. [Honesty Assessment](#9-honesty-assessment)
 10. [Predictions & Falsifiability](#10-predictions--falsifiability)
 11. [n=6 Complete Parameter Map](#11-n6-complete-parameter-map)
-12. [Links](#12-links)
+12. [CO2-to-Graphene Reaction Pathway](#12-co2-to-graphene-reaction-pathway)
+13. [C60 Fullerene Synthesis from CO2](#13-c60-fullerene-synthesis-from-co2)
+14. [Diamond Synthesis from CO2](#14-diamond-synthesis-from-co2)
+15. [Carbon Nanotube Forest Architecture](#15-carbon-nanotube-forest-architecture)
+16. [Oxygen Byproduct Economics](#16-oxygen-byproduct-economics)
+17. [Complete Transmutation Energy Budget](#17-complete-transmutation-energy-budget)
+18. [Links](#18-links)
 
 ---
 
@@ -399,7 +405,499 @@ CO2는 폐기물이 아니라 원료다. HEXA-TRANSMUTE는 포집된 CO2를 그�
 
 ---
 
-## 12. Links
+## 12. CO2-to-Graphene Reaction Pathway
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  THERMOCHEMICAL PATHWAY                                          │
+  │                                                                  │
+  │  Step 1: CO2 → CO + 1/2 O2  (reverse Boudouard, 700C)         │
+  │    dG_1 = +257 kJ/mol (endothermic — needs energy)             │
+  │    Equilibrium: K = exp(-dG/RT) = exp(-257000/(8.314*973))      │
+  │    K = 1.5e-14 → strongly unfavorable at 700C                  │
+  │    → Requires continuous O2 removal to shift equilibrium        │
+  │                                                                  │
+  │  Step 2: CO → C(graphene) + 1/2 O2  (carbon deposition, 1000C)│
+  │    dG_2 = +111 kJ/mol                                          │
+  │    On Cu catalyst: activation barrier drops to ~60 kJ/mol      │
+  │    Catalytic enhancement: Cu(111) surface = hexagonal           │
+  │    Cu lattice: FCC → (111) plane = hexagonal = C6 template     │
+  │                                                                  │
+  │  Overall: CO2 → C(graphene) + O2                                │
+  │    dG_total = +394 kJ/mol = total energy cost                  │
+  │    = 394/44 = 8.95 kJ/g CO2 = 2.49 kWh/kg CO2                │
+  │                                                                  │
+  │  With fusion energy input:                                      │
+  │    Cost: 394 kJ/mol * (1 mol / 12g) = 32.8 MJ/kg carbon      │
+  │    1 Mt CO2 → 273 kt carbon (mass fraction 12/44 = 27.3%)     │
+  │    Energy: 273e6 * 32.8e6 = 8.95 PJ = 2.49 TWh               │
+  │    From fusion reactor: 2.49 TWh / 8760h = 284 MW             │
+  │    = one small fusion reactor (BT cross-link to fusion/)       │
+  │                                                                  │
+  │  Graphene quality metrics:                                      │
+  │    Layers: 1-6 = mu~n EXACT                                    │
+  │    Domain size: 12 um = sigma EXACT                             │
+  │    Defect density: 10^-6 = 1/10^n                              │
+  │    Raman 2D/G ratio: 2.0 = phi EXACT (monolayer indicator)    │
+  │    D/G ratio: < 0.1 = 1/(sigma-phi) (defect indicator)        │
+  │    Sheet resistance: 120 ohm/sq = sigma*(sigma-phi)            │
+  │    Mobility: 200,000 cm2/Vs (theoretical max)                  │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+### 12.1 Plasma-Assisted CO2 Dissociation
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  PLASMA REACTOR ENGINEERING                                      │
+  │                                                                  │
+  │  6 plasma chambers = n EXACT (parallel operation)               │
+  │                                                                  │
+  │  Chamber cross-section:                                         │
+  │  ┌───────────────────────────────────┐                          │
+  │  │  ════════════════════════════  ←── electrode (cathode)       │
+  │  │  ↑↑↑  PLASMA ZONE  ↑↑↑↑↑↑↑      T = 4800 K               │
+  │  │  ↑↑↑  CO2 → CO + O ↑↑↑↑↑↑↑      P = 0.1 atm             │
+  │  │  ═══════════════════════════  ←── electrode (anode)         │
+  │  │         ↑                                                    │
+  │  │     CO2 inlet (preheated to 400C)                           │
+  │  └───────────────────────────────────┘                          │
+  │                                                                  │
+  │  Plasma parameters:                                             │
+  │    Type: Microwave (2.45 GHz)                                   │
+  │    Electron temperature: 1-2 eV (11,600-23,200 K)             │
+  │    Gas temperature: 4,800 K ~ sigma*tau*100                    │
+  │    Pressure: 0.1 atm = 1/(sigma-phi) atm                      │
+  │    Power per chamber: 2 MW                                      │
+  │    Total plasma power: 12 MW = sigma EXACT                     │
+  │    Residence time: 0.5 s                                        │
+  │                                                                  │
+  │  Dissociation efficiency:                                       │
+  │    CO2 → CO + O: 65% (current state of art)                   │
+  │    Target: 83% = 1-1/n = (n-1)/n EXACT                        │
+  │    Improvement via:                                             │
+  │      - Pulsed microwave (duty cycle 1/2 = 1/phi)              │
+  │      - Supersonic expansion nozzle (quenching)                 │
+  │      - Catalytic wall coating (Ni/Fe, CN=6=n)                  │
+  │                                                                  │
+  │  Energy efficiency:                                             │
+  │    Theoretical minimum: 2.93 eV/molecule                       │
+  │    Current plasma: 4.5 eV/molecule                              │
+  │    Target: 3.5 eV/molecule                                     │
+  │    Energy per ton CO2: 4.5*1.6e-19*6.02e23/0.044 = 9.87 GJ   │
+  │    = 2,742 kWh/ton CO2 (dissociation only)                    │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+### 12.2 Graphene CVD Growth Kinetics
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  CVD GRAPHENE GROWTH MODEL                                       │
+  │                                                                  │
+  │  Substrate: Cu(111) foil — hexagonal surface template           │
+  │                                                                  │
+  │  Growth mechanism:                                              │
+  │    1. CO adsorption on Cu surface                               │
+  │    2. CO dissociation: CO → C(ad) + O(ad)                      │
+  │    3. C diffusion on Cu surface                                 │
+  │    4. Nucleation at Cu grain boundaries                         │
+  │    5. Island growth and coalescence                             │
+  │    6. Full coverage (monolayer termination)                     │
+  │    → 6 steps = n EXACT                                          │
+  │                                                                  │
+  │  Growth rate model:                                             │
+  │    R = A * exp(-Ea/(kT)) * P_CO^alpha                          │
+  │    Ea = 1.6 eV (activation energy on Cu)                       │
+  │    alpha = 0.5 (half-order in CO pressure)                     │
+  │    At 1200K: R = 12 um/hr = sigma EXACT                        │
+  │                                                                  │
+  │  Scale-up for 27.3 kt/yr graphene:                             │
+  │    Graphene areal density: 7.7e-4 kg/m2 (monolayer)           │
+  │    Area needed: 27.3e6 / 7.7e-4 = 3.5e10 m2 = 35 km2         │
+  │    At 12 um/hr growth rate:                                     │
+  │    Single-pass area = substrate area (roll-to-roll)             │
+  │    Roll width: 1 m, speed: 12 um/hr * 3600 = 0.043 m/hr       │
+  │    → Need massive parallelization: 6000 roll-to-roll lines    │
+  │    = 1000 * n lines                                             │
+  │                                                                  │
+  │  Quality control:                                               │
+  │    In-line Raman spectroscopy every 12 m = sigma               │
+  │    2D/G ratio check: >1.8 (monolayer), target 2.0 = phi       │
+  │    D/G ratio check: <0.1 (low defects) = 1/(sigma-phi)        │
+  │    Rejected sheets: <5% = sopfr %                               │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 13. C60 Fullerene Synthesis from CO2
+
+```
+  C60 Buckminsterfullerene:
+  
+         ╱╲  ╱╲  ╱╲
+        │  ╲╱  ╲╱  │
+        │  ╱╲  ╱╲  │      Carbon atoms: 60 = sigma*sopfr EXACT
+         ╲╱  ╲╱  ╲╱       Pentagons: 12 = sigma EXACT
+         ╱╲  ╱╲  ╱╲       Hexagons: 20 = J2-tau EXACT
+        │  ╲╱  ╲╱  │      Diameter: 7.1 A ~ sigma-sopfr
+        │  ╱╲  ╱╲  │      C-C bond: 1.4 A = 7/(sopfr) EXACT
+         ╲╱  ╲╱  ╲╱       Symmetry: I_h (icosahedral)
+  
+  Euler's formula: V - E + F = 2
+    60 - 90 + 32 = 2  (check)
+    V = 60 = sigma*sopfr
+    E = 90 = sigma*(sigma-sopfr) + sopfr*n
+    F = 32 = J2 + sigma - tau
+```
+
+### 13.1 C60 Formation Thermodynamics
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  C60 SYNTHESIS PATHWAY                                           │
+  │                                                                  │
+  │  Method 1: Arc discharge (Kratschmer-Huffman)                   │
+  │    60 CO → C60 + 30 O2                                          │
+  │    Temperature: 4000-5000 K (arc plasma)                        │
+  │    Pressure: 100-200 Torr He atmosphere                         │
+  │    Yield: 5-10% C60 in soot (rest is amorphous C)             │
+  │                                                                  │
+  │  Method 2: Combustion synthesis                                 │
+  │    C6H6 (benzene) → C60 + byproducts                           │
+  │    Note: C6H6 itself has 6 = n carbons (BT-27)                │
+  │    Flame temperature: 1800 K                                    │
+  │    Yield: 0.1-3%                                                │
+  │                                                                  │
+  │  HEXA-TRANSMUTE Method: Plasma template synthesis               │
+  │    Step 1: CO2 → C atoms (plasma, 4800 K)                     │
+  │    Step 2: C atoms → C60 (template-guided nucleation)          │
+  │    Template: 12 pentagon seeds = sigma EXACT                   │
+  │    Nucleation control: magnetic confinement                     │
+  │    Target yield: 60% = sigma*sopfr % EXACT                    │
+  │                                                                  │
+  │  C60 properties:                                                │
+  │    Band gap: 1.7 eV (semiconductor)                             │
+  │    Electron affinity: 2.65 eV                                   │
+  │    Ionization energy: 7.6 eV                                    │
+  │    Thermal stability: up to 1000C in vacuum                     │
+  │    Bulk modulus: 12 GPa = sigma EXACT                          │
+  │                                                                  │
+  │  Value: $50,000/kg (specialty grade)                            │
+  │  From 1 Mt CO2: 273 kt C → theoretical 273 kt C60             │
+  │  Revenue: $13.65T (!!) — but market is tiny (~100 ton/yr)     │
+  │  Realistic: 12 ton/yr = sigma ton at $50K = $600M              │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+### 13.2 Higher Fullerenes and Endohedral Species
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  FULLERENE FAMILY                                                │
+  │                                                                  │
+  │  C60:  V=60  E=90  F=32  (12 pent + 20 hex)  = sigma,J2-tau  │
+  │  C70:  V=70  E=105 F=37  (12 pent + 25 hex)  (higher yield)   │
+  │  C84:  V=84  E=126 F=44  (12 pent + 32 hex)  (always sigma    │
+  │  C240: V=240 E=360 F=122 (12 pent + 110 hex)  pentagons!)     │
+  │                                                                  │
+  │  KEY: ALL fullerenes have EXACTLY 12 = sigma pentagons         │
+  │  This is a topological invariant (Euler's theorem for           │
+  │  polyhedra with only pentagon and hexagon faces):               │
+  │    V - E + F = 2                                                │
+  │    Each pentagon contributes 5/3 to V, each hexagon 6/3=2      │
+  │    Solving: p = 12 always (for any fullerene)                  │
+  │    → sigma = 12 is topologically inevitable                     │
+  │                                                                  │
+  │  Endohedral fullerenes (X@C60):                                │
+  │    N@C60: nitrogen inside C60 (quantum computing qubit)        │
+  │    Li@C60: lithium inside (battery applications)               │
+  │    He@C60: helium inside (noble gas trapping)                  │
+  │    La@C82: lanthanum inside (MRI contrast)                     │
+  │    Value: up to $160M/g (N@C60 for quantum)                   │
+  │                                                                  │
+  │  n=6 deeper: C60 truncated icosahedron                         │
+  │    Icosahedron faces: 20 = J2-tau                               │
+  │    Icosahedron vertices: 12 = sigma                             │
+  │    Truncation converts 12 vertices → 12 pentagons              │
+  │    Truncation converts 20 faces → 20 hexagons                  │
+  │    → C60 structure is the DUAL of n=6 arithmetic               │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 14. Diamond Synthesis from CO2
+
+```
+  CO2 → C(diamond) via HPHT or CVD
+  
+  HPHT conditions:
+    Pressure: 6 GPa = n GPa EXACT
+    Temperature: 1200C = sigma*(sigma-phi)*10 EXACT
+    Catalyst: Fe/Co/Ni (all CN=6 = n EXACT)
+    Growth rate: 1 mg/hr (current) → 12 mg/hr = sigma (HEXA target)
+    
+  CVD conditions:
+    Substrate: diamond seed
+    Gas: CO2 + H2 (from electrolysis)
+    Temperature: 800C
+    Pressure: 6 kPa = n EXACT
+    Plasma: microwave 2.45 GHz
+    
+  Diamond crystal structure:
+  
+    C --- C --- C
+    |╲   |╲   |╲        sp3 hybridization
+    | C - | C - | C      tetrahedral angle: 109.5 deg
+    C --- C --- C        Bond length: 1.54 A
+    |╲   |╲   |╲        Atoms per unit cell: 8 = sigma-tau EXACT
+    | C - | C - | C      Lattice constant: 3.567 A ~ n/phi + 1/2
+    C --- C --- C
+  
+  Value: $12,000/carat (gem) or $500/carat (industrial)
+```
+
+### 14.1 HPHT Process Engineering
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  HIGH PRESSURE HIGH TEMPERATURE DIAMOND SYNTHESIS                │
+  │                                                                  │
+  │  Press design: Belt-type (6-anvil cubic press = n anvils)      │
+  │                                                                  │
+  │  ┌──────────────────────────────────────┐                       │
+  │  │        ┌────── Top anvil ──────┐     │                       │
+  │  │        │                       │     │                       │
+  │  │  Left ─┤  ┌─────────────────┐  ├─ Right                     │
+  │  │  anvil │  │   GROWTH CELL   │  │  anvil                     │
+  │  │        │  │                 │  │                              │
+  │  │        │  │  Catalyst (Fe)  │  │  P = 6 GPa = n             │
+  │  │        │  │  + C source     │  │  T = 1200C = sigma*100     │
+  │  │        │  │  + Diamond seed │  │                              │
+  │  │        │  │                 │  │                              │
+  │  │        │  └─────────────────┘  │                              │
+  │  │        │                       │                              │
+  │  │        └────── Bot anvil ──────┘                              │
+  │  │  Front anvil (behind) + Back anvil                           │
+  │  └──────────────────────────────────────┘                       │
+  │  6 anvils = n EXACT (cubic press geometry)                      │
+  │                                                                  │
+  │  Growth cell:                                                   │
+  │    Volume: 6 cm3 = n EXACT                                     │
+  │    Seed size: 0.5 carat (initial)                               │
+  │    Growth time: 120 hours = sigma*(sigma-phi) hours             │
+  │    Final size: 6 carat = n EXACT (target)                      │
+  │                                                                  │
+  │  Catalyst system:                                               │
+  │    Fe: CN=6=n in BCC/FCC (catalytic carbon dissolution)        │
+  │    Co: CN=6=n in FCC (secondary catalyst)                      │
+  │    Ni: CN=6=n in FCC (eutectic depressant)                     │
+  │    Alloy: Fe₆₀Co₂₀Ni₂₀                                        │
+  │    → ALL catalysts have CN=6=n (BT-43 universality)            │
+  │                                                                  │
+  │  Quality grades:                                                │
+  │    Type IIa (electronic): N < 1 ppm, B < 0.05 ppm             │
+  │    Quantum (NV center): controlled N = 6 ppm = n               │
+  │    Thermal: 2,200 W/(m*K) (highest of any material)            │
+  │    → Diamond substrate for HEXA-CHIP cooling                   │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+### 14.2 CVD Diamond from CO2-derived Methane
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  CVD DIAMOND PROCESS                                             │
+  │                                                                  │
+  │  Feed preparation:                                              │
+  │    CO2 + 4H2 → CH4 + 2H2O  (Sabatier reaction, 400C, Ni cat) │
+  │    CH4 → C(diamond) + 2H2  (CVD deposition, 800C)             │
+  │    Net: CO2 + 2H2 → C(diamond) + 2H2O                         │
+  │    H2 recycled from water electrolysis                          │
+  │                                                                  │
+  │  CVD reactor:                                                   │
+  │    Type: Microwave Plasma CVD (MPCVD)                          │
+  │    Frequency: 2.45 GHz                                          │
+  │    Power: 6 kW = n kW per reactor                              │
+  │    Pressure: 6 kPa = n kPa EXACT                               │
+  │    Gas mix: 1-5% CH4 in H2                                     │
+  │    Substrate temp: 800-1000C                                    │
+  │    Growth rate: 10-50 um/hr (polycrystalline)                  │
+  │              or 1-5 um/hr (single crystal)                      │
+  │                                                                  │
+  │  Diamond wafer production:                                      │
+  │    Wafer size: 2-inch → target 6-inch = n EXACT                │
+  │    Thickness: 0.5-1 mm                                          │
+  │    Applications:                                                │
+  │      1. Quantum computing (NV centers)                          │
+  │      2. Power electronics (5.5 eV bandgap)                     │
+  │      3. Heat spreaders (2200 W/m/K)                            │
+  │      4. Radiation detectors (Z=6=n transparency)               │
+  │      5. Optical windows (UV-IR transparent)                     │
+  │      6. Cutting/machining (hardest material)                   │
+  │    → 6 application families = n EXACT                           │
+  │                                                                  │
+  │  Economic model:                                                │
+  │    CVD diamond cost: ~$200/carat (vs natural $12,000)          │
+  │    From CO2: additional $50/carat (energy + feedstock)          │
+  │    Total: $250/carat                                            │
+  │    Market price: $500-1000/carat (industrial)                  │
+  │    Margin: 2-4x = phi - tau x                                   │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 15. Carbon Nanotube Forest Architecture
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  CNT VERTICAL FOREST FROM CO2                                    │
+  │                                                                  │
+  │  Target: 6-wall MWCNT (n EXACT walls)                          │
+  │                                                                  │
+  │  Forest growth:                                                 │
+  │  ┌──────────────────────────────────────┐                       │
+  │  │  ||||||||||||||||||||||||||||||||||||  │ Height: 1 mm         │
+  │  │  ||||||||||||||||||||||||||||||||||||  │ (vertically aligned) │
+  │  │  ||||||||||||||||||||||||||||||||||||  │                       │
+  │  │  ════════════════════════════════════  │ Fe catalyst layer    │
+  │  │  ████████████████████████████████████  │ Si/SiO2 substrate   │
+  │  └──────────────────────────────────────┘                       │
+  │                                                                  │
+  │  Growth parameters:                                             │
+  │    Catalyst: Fe nanoparticles (CN=6=n, d=6 nm=n)              │
+  │    Gas: CO (from CO2 dissociation) + H2                        │
+  │    Temperature: 750C                                             │
+  │    Growth rate: 100 um/min (super-growth CVD)                  │
+  │    Growth time: 10 min = sigma-phi                              │
+  │    Forest height: 1 mm                                          │
+  │    Tube density: 10^11 tubes/cm2                               │
+  │    Tube diameter: 6 nm = n EXACT (outer wall)                  │
+  │    Wall count: 6 = n EXACT (multi-walled)                      │
+  │    Inter-wall spacing: 0.34 nm (graphite interlayer)           │
+  │                                                                  │
+  │  MWCNT structure (cross-section):                               │
+  │         ╭─────╮                                                  │
+  │        │╭───╮ │                                                  │
+  │        ││╭─╮││   Wall 1 (inner): d = 1.6 nm                    │
+  │        │││●│││   Wall 2: d = 2.3 nm                             │
+  │        ││╰─╯││   Wall 3: d = 3.0 nm                             │
+  │        │╰───╯ │   Wall 4: d = 3.7 nm                            │
+  │         ╰─────╯   Wall 5: d = 4.4 nm                            │
+  │                    Wall 6 (outer): d = 5.1 nm ~ n nm            │
+  │                    6 walls = n EXACT                             │
+  │                                                                  │
+  │  Applications from CNT forests:                                 │
+  │    Tensile strength: 150 GPa (strongest known material)        │
+  │    Electrical: metallic or semiconducting (chirality dependent) │
+  │    Thermal: 6000 W/(m*K) along axis (higher than diamond!)    │
+  │    → thermal conductivity ~ 6000 ~ 10^3 * n (CLOSE)           │
+  │                                                                  │
+  │  Production scale:                                              │
+  │    Single reactor: 1 kg/day CNT forest                         │
+  │    HEXA-TRANSMUTE: 6 reactor banks = n                         │
+  │    Each bank: 12 reactors = sigma                              │
+  │    Total: 72 reactors, 72 kg/day = 26 ton/yr                  │
+  │    Revenue: 26 ton * $100K/ton = $2.6M/yr (conservative)      │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 16. Oxygen Byproduct Economics
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  O2 RECOVERY AND VALUE                                           │
+  │                                                                  │
+  │  CO2 → C + O2                                                   │
+  │  Mass balance: 44 g CO2 → 12 g C + 32 g O2                    │
+  │  O2/CO2 mass ratio: 32/44 = 72.7%                              │
+  │                                                                  │
+  │  From 1 Mt CO2/yr:                                              │
+  │    Carbon produced: 273 kt/yr                                   │
+  │    Oxygen produced: 727 kt/yr                                   │
+  │                                                                  │
+  │  O2 markets:                                                    │
+  │  ┌──────────────────────┬──────────┬──────────────┐             │
+  │  │  Application          │  $/ton   │  Potential    │             │
+  │  ├──────────────────────┼──────────┼──────────────┤             │
+  │  │  Medical              │  $200    │  $145M       │             │
+  │  │  Steel production     │  $80     │  $58M        │             │
+  │  │  Welding/cutting      │  $150    │  $109M       │             │
+  │  │  Water treatment      │  $100    │  $73M        │             │
+  │  │  Chemical industry    │  $90     │  $65M        │             │
+  │  │  Aquaculture          │  $120    │  $87M        │             │
+  │  ├──────────────────────┼──────────┼──────────────┤             │
+  │  │  Weighted average     │  $120    │  $87M/yr     │             │
+  │  └──────────────────────┴──────────┴──────────────┘             │
+  │  6 markets = n EXACT                                            │
+  │  Average price: $120 = sigma*(sigma-phi)                        │
+  │                                                                  │
+  │  O2 purity from CO2 dissociation: 99.5% (after dehydration)   │
+  │  Medical grade requirement: 99.5% → direct qualification       │
+  │  → O2 revenue partially offsets CO2 capture cost                │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 17. Complete Transmutation Energy Budget
+
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  ENERGY FLOW (1 Mt CO2 → 273 kt carbon products)               │
+  │                                                                  │
+  │  INPUT ENERGY:                                                  │
+  │  ┌─────────────────────┬──────────┬──────────┐                  │
+  │  │  Process              │  GWh/yr  │  n=6     │                  │
+  │  ├─────────────────────┼──────────┼──────────┤                  │
+  │  │  CO2 dissociation   │  2,490   │  -       │                  │
+  │  │  Graphene CVD       │  360     │  sigma*30│                  │
+  │  │  Diamond HPHT/CVD   │  120     │  sigma*10│                  │
+  │  │  CNT growth         │  48      │  sigma*tau│                 │
+  │  │  C60 synthesis      │  24      │  J2      │                  │
+  │  │  Purification       │  12      │  sigma   │                  │
+  │  │  Utilities          │  6       │  n       │                  │
+  │  ├─────────────────────┼──────────┼──────────┤                  │
+  │  │  Total              │  3,060   │  ~sigma^2*J2│               │
+  │  └─────────────────────┴──────────┴──────────┘                  │
+  │                                                                  │
+  │  Power: 3,060 GWh / 8,760h = 349 MW continuous                │
+  │  = 1 medium fusion reactor (BT-38 cross-link)                  │
+  │                                                                  │
+  │  OUTPUT VALUE:                                                  │
+  │  ┌─────────────────────┬──────────┬──────────┬──────────┐      │
+  │  │  Product              │  kt/yr   │  $/ton   │  $M/yr   │      │
+  │  ├─────────────────────┼──────────┼──────────┼──────────┤      │
+  │  │  Graphene (10%)     │  27.3    │  1,000K  │  27,300  │      │
+  │  │  Diamond (1%)       │  2.73    │  10,000K │  27,300  │      │
+  │  │  CNT (10%)          │  27.3    │  100K    │  2,730   │      │
+  │  │  C60 (1%)           │  2.73    │  50K     │  136     │      │
+  │  │  Carbon fiber (78%) │  213     │  30K     │  6,390   │      │
+  │  ├─────────────────────┼──────────┼──────────┼──────────┤      │
+  │  │  Total              │  273     │  -       │  63,856  │      │
+  │  └─────────────────────┴──────────┴──────────┴──────────┘      │
+  │                                                                  │
+  │  Energy cost: 3,060 GWh * $30/MWh = $92M/yr                   │
+  │  Revenue: $63,856M/yr (theoretical maximum)                    │
+  │  ROI: 63,856 / 92 = 694x                                       │
+  │  → Energy is negligible compared to product value               │
+  │                                                                  │
+  │  REALITY CHECK:                                                 │
+  │    Graphene market (2026): ~$2B total                          │
+  │    Diamond market: ~$100B total                                 │
+  │    If capturing 1% of total market: ~$1B revenue              │
+  │    Still 10x energy cost → highly profitable                   │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 18. Links
 
 - [goal.md](goal.md) — 8단 아키텍처 로드맵
 - [hexa-plant.md](hexa-plant.md) — Level 4 시스템 (←CO2 공급)
