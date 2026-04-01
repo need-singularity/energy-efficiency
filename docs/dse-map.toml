@@ -14011,6 +14011,83 @@ bridge = "CO₂ Carbon Z=6=n + 6 capture methods — DAC monitoring chip"
 n6_exact = 6
 note = "BT-27 Carbon Z=6 chain + BT-43 CN=6; CO₂ (C Z=6) capture, σ=12 injection wells; DAC control chip with n=6 sensor arrays"
 
+[cross-dse.carbon-capture-x-battery]
+domains = ["carbon-capture", "battery-architecture"]
+status = "done"
+bridge = "CO₂ capture powered by LFP battery storage — S3 sorbent + LiFePO4 CN=6 cathode"
+n6_exact = 100.0
+note = "2400 combos. Top-1 score=0.8281. S3+LFP all n6=100%. Battery ESS 48V/24-cell backs DAC plant, BT-43 CN=6 cathode + BT-27 Carbon Z=6"
+
+[cross-dse.carbon-capture-x-fusion]
+domains = ["carbon-capture", "fusion"]
+status = "done"
+bridge = "Fusion energy powers industrial CCUS — S3 sorbent + D-T Li-6 breeding fuel cycle"
+n6_exact = 100.0
+note = "6182 combos. Top-1 score=0.8535. S3+DT_Li6 n6=100%. Fusion Brayton η=50% drives electrochemical CO₂ capture, Li-6 breeding blanket TBR=7/6"
+
+[cross-dse.carbon-capture-x-material]
+domains = ["carbon-capture", "material-synthesis"]
+status = "done"
+bridge = "Captured CO₂ as Carbon Z=6 feedstock for material synthesis — S3 sorbent + Carbon_Z6 element"
+n6_exact = 100.0
+note = "5250 combos. Top-1 score=0.8519. S3+E1(Carbon_Z6) n6=100%. CO₂→graphene/CNT/diamond via self-assembly + DNA origami, BT-85 Carbon Z=6 universality"
+
+[cross-dse.carbon-capture-x-solar]
+domains = ["carbon-capture", "solar-architecture"]
+status = "done"
+bridge = "Solar GaAs 6-junction tandem powers DAC plant — S3 sorbent + GaAs absorber"
+n6_exact = 100.0
+note = "1624 combos. Top-1 score=0.8559. S3+GaAs n6=100%. 6-junction tandem + 120-cell module powers electrochemical CO₂ capture, BT-30 SQ bandgap 4/3 eV"
+
+[cross-dse.carbon-capture-x-mof]
+domains = ["carbon-capture", "metal-organic-framework"]
+status = "done"
+bridge = "MOF Zr6 cluster as CO₂ sorbent material — S3 sorbent + UiO-66 Zr₆O₄(OH)₄ node"
+n6_exact = 100.0
+note = "7776 combos. Top-1 score=0.8585. S3+Zr6_UiO n6=100%. Highest score among all 11 pairs. MOF CN=6 Zr node + BDC 6-atom linker = ideal CO₂ adsorbent, BT-86 CN=6"
+
+[cross-dse.carbon-capture-x-hydrogen-fuel-cell]
+domains = ["carbon-capture", "hydrogen-fuel-cell"]
+status = "done"
+bridge = "Green H₂ from captured CO₂ electrolysis — S3 sorbent + Nafion PFSA membrane"
+n6_exact = 100.0
+note = "7776 combos. Top-1 score=0.8390. S3+Nafion n6=100%. Fuel cell CHP 6kW/12kW powers DAC, H₂ from CO₂ co-electrolysis, BT-38 H₂ LHV=120=σ(σ-φ)"
+
+[cross-dse.carbon-capture-x-wind-energy]
+domains = ["carbon-capture", "wind-energy"]
+status = "done"
+bridge = "Wind farm 72MW powers industrial CCUS — S3 sorbent + GFRP 3-blade turbine"
+n6_exact = 100.0
+note = "7560 combos. Top-1 score=0.8495. S3+GFRP_3 n6=100%. 6 rows × 12 turbines = 72MW onshore wind → DAC electricity, 6 pole-pair PMSG"
+
+[cross-dse.carbon-capture-x-concrete]
+domains = ["carbon-capture", "concrete-technology"]
+status = "done"
+bridge = "CO₂ mineralization into concrete — S3 sorbent + Fly Ash Class F cement"
+n6_exact = 100.0
+note = "3600 combos. Top-1 score=0.8558. S3+Fly-Ash n6=100%. Captured CO₂ cured into concrete (carbonation curing), fly ash pozzolanic 6-month gain, BT-27 Carbon Z=6"
+
+[cross-dse.carbon-capture-x-ocean-engineering]
+domains = ["carbon-capture", "ocean-engineering"]
+status = "done"
+bridge = "Ocean-based CO₂ sequestration via AUV swarm — S3 sorbent + Teardrop hull 6-compartment"
+n6_exact = 100.0
+note = "7776 combos. Top-1 score=0.8345. S3+TearDrop n6=100%. 6-unit AUV swarm monitors ocean CO₂ sink, 600kHz sonar, L/D=6 hull for subsea CCUS pipeline"
+
+[cross-dse.carbon-capture-x-graphene]
+domains = ["carbon-capture", "graphene-2d-material"]
+status = "done"
+bridge = "CO₂→Graphene C₆ hexagonal conversion — S3 sorbent + Graphene 6-atom ring"
+n6_exact = 96.0
+note = "7776 combos. Top-1 score=0.8555. S3+Graphene n6=96%. CO₂ reduced to graphene (C₆ ring), graphene membrane for CO₂ separation, BT-85+BT-93 Carbon Z=6"
+
+[cross-dse.carbon-capture-x-climate-modeling]
+domains = ["carbon-capture", "climate-modeling"]
+status = "done"
+bridge = "Climate model validates CCUS impact — S3 sorbent + Spectral T6 atmosphere model"
+n6_exact = 100.0
+note = "5400 combos. Top-1 score=0.8442. S3+SpectralT6 n6=100%. n=6 wave truncation climate model quantifies CCUS carbon removal, 6-hour coupling cycle, 6 ocean layers"
+
 # ==============================================================================
 # Cross-DSE: Computing/AI/Remaining Domains × chip-architecture (21 entries)
 # Added: 2026-04-01
