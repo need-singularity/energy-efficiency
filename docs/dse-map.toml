@@ -196,9 +196,22 @@ n6_avg = 74.7
 note = "궁극의 네트워크 5단 DSE. SRv6=n=6 EXACT, WireGuard tau=4, BBR sigma-tau=8. BT-47,53,74 활용"
 
 [cryptography]
-goal = false
-dse = "none"
-cross_dse = ["network-protocol", "blockchain"]
+goal = true
+dse = "done"
+combos = 4500
+valid = 3420
+tool = "tools/universal-dse/ domains/crypto.toml"
+levels = ["Foundation", "KeyMgmt", "Primitive", "Engine", "System"]
+cross_dse = ["network-protocol", "blockchain", "chip-architecture"]
+best_pareto = "Symmetric + KeyDeriv + AES256 + AESNI + EdgeSec (0.8312)"
+best_n6 = "PostQuantum + KeyDeriv + Kyber + AESNI + Blockchain (100.0%)"
+best_perf = "Symmetric + HSM + AES256 + AESNI + TLS_Web (perf=0.930)"
+best_power = "Symmetric + KeyDeriv + AES256 + AESNI + EdgeSec (power=0.740)"
+best_cost = "Symmetric + KeyDeriv + ChaCha20 + AESNI + TLS_Web (cost=0.690)"
+pareto_frontier = 8
+n6_max = 100.0
+n6_avg = 79.0
+note = "궁극의 암호 5단 DSE. AES 2^(sigma-tau)=256, BTC n=6 confirms, Kyber k=tau=4. BT-53/58/50 활용"
 
 [blockchain]
 goal = false
