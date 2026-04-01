@@ -221,13 +221,13 @@ notes  = "variables=2=phi EXACT, discriminant, representation, genera"
 
 [[candidate]]
 level  = 2
-id     = "AlgN6"
-label  = "n=6 갈루아군 S_6 대수적 구조 (n=6 EXACT)"
+id     = "EisensteinZ6"
+label  = "Eisenstein Integers Z[omega_6] (6th root of unity ring, n=6 EXACT)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "galois_order=n!=720 S_6 unique, n6-algebraic structure"
+perf   = 0.82
+power  = 0.52
+cost   = 0.48
+notes  = "omega=e^{2pi*i/6} root=6=n EXACT, Z[omega_6]=Z[zeta_3], class_number=1, unique_factorization=true, hexagonal_lattice=true"
 [[level]]
 name = "Combinatorial"
 
@@ -357,13 +357,13 @@ notes  = "primality=AKS, factoring=NFS, discrete_log, elliptic_curves"
 
 [[candidate]]
 level  = 4
-id     = "AppCryptoN6"
-label  = "sigma=12 비트 암호 블록 (sigma=12 EXACT)"
+id     = "BTC6Confirm"
+label  = "BTC 6 Confirmations + Golay J2=24 Code (n=6, J2=24 EXACT)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "block_bits=sigma=12 EXACT scaled, n6-crypto application"
+perf   = 0.88
+power  = 0.52
+cost   = 0.42
+notes  = "BTC_confirms=6=n EXACT (BT-53), Golay_code=24=J2 EXACT, RSA_primes=2=phi EXACT, AES_rounds=10=sigma-phi EXACT"
 [[rule]]
 type       = "require"
 if_level   = 1

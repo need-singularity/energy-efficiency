@@ -8,6 +8,8 @@
 [meta]
 name = "nuclear-reactor"
 desc = "Fission Reactor Architecture DSE (fuel/moderator/coolant/control/containment)"
+levels = ["Fuel", "Moderator", "Coolant", "Control", "Containment"]
+vision = "n=6 fission architecture — UO₂ hex pellet (6-fold), Carbon Z=6 moderator, σ=12 control rods, 6 salt/drain loops"
 
 [scoring]
 n6 = 0.35
@@ -340,7 +342,7 @@ type = "require"
 if_level = 0
 if_id = "TRISO"
 then_level = 1
-then_ids = ["Graphite-C6", "BeO"]
+then_ids = "Graphite-C6,BeO"
 
 # Metal alloy fuel requires no moderator (fast spectrum)
 [[rule]]
@@ -348,7 +350,7 @@ type = "require"
 if_level = 0
 if_id = "Metal-Alloy"
 then_level = 1
-then_ids = ["NoModerator"]
+then_ids = "NoModerator"
 
 # Sodium coolant excluded from BWR containment
 [[rule]]
@@ -356,7 +358,7 @@ type = "exclude"
 if_level = 2
 if_id = "Sodium-Liquid"
 then_level = 4
-then_ids = ["BWR-Mark3"]
+then_ids = "BWR-Mark3"
 
 # Molten salt coolant requires MSR drain tank containment
 [[rule]]
@@ -364,7 +366,7 @@ type = "require"
 if_level = 2
 if_id = "MoltenSalt"
 then_level = 4
-then_ids = ["MSR-Drain"]
+then_ids = "MSR-Drain"
 
 # No moderator requires sodium or molten salt coolant (fast spectrum)
 [[rule]]
@@ -372,4 +374,4 @@ type = "require"
 if_level = 1
 if_id = "NoModerator"
 then_level = 2
-then_ids = ["Sodium-Liquid", "MoltenSalt"]
+then_ids = "Sodium-Liquid,MoltenSalt"

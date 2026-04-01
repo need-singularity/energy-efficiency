@@ -579,8 +579,8 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | **TECS-L** | 209 | Calculator, Engine |
 | **anima** | 0 |  |
 | **SEDI** | 91 | Core, Data Source |
-| **n6-architecture** | 118 | Calculator, Engine, experiment, technique |
-| **Total** | **418** | |
+| **n6-architecture** | 125 | Calculator, Engine, experiment, technique |
+| **Total** | **425** | |
 
 ### TECS-L
 
@@ -912,7 +912,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 
 ### n6-architecture
 
-**Calculator** (42)
+**Calculator** (46)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -926,6 +926,9 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | bt48_53_verify | BT-48~53: New Breakthrough Theorems — Unexplored Domains | `tools/bt48_53_verify.py` |
 | bt_master_verify | BT-26~41 Master Verification — All 16 new breakthrough theorems | `tools/bt_master_verify.py` |
 | chinchilla_n6_deep_verify | Chinchilla Scaling Law vs n=6 Arithmetic — Deep Verification Calculator | `tools/chinchilla_n6_deep_verify.py` |
+| chip-n6-calc | N6 Chip Parameter Generator | `tools/chip-n6-calc/main.rs` |
+| chip-perf-calc | - | `tools/chip-perf-calc/main.rs` |
+| chip-power-calc | - | `tools/chip-power-calc/main.rs` |
 | consciousness-calc | - | `tools/consciousness-calc/main.rs` |
 | convergence_analyzer | Convergence Analyzer -- Depth-1 Reachability Across 8 Mathematical Domains | `tools/convergence_analyzer.py` |
 | divisor_field_theory | Divisor Field Theory — Action S(n) uniqueness and spacetime analysis | `tools/divisor_field_theory.py` |
@@ -950,6 +953,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | optimizer_constants_n6_deep | Deep Optimizer Hyperparameter vs n=6 Arithmetic Analysis | `tools/optimizer_constants_n6_deep.py` |
 | perfect_number_generalizer | Perfect Number Generalizer — Test if formulas holding at n=6 generalize to n=28, | `tools/perfect_number_generalizer.py` |
 | perfect_number_physics | Perfect Number Physics — Core arithmetic functions and physics dimension mapping | `tools/perfect_number_physics.py` |
+| photonic-energy-calc | - | `tools/photonic-energy-calc/main.rs` |
 | robot-dse | N6 궁극의 로봇 DSE — 6단 전수 조합 탐색기 | `tools/robot-dse/main.rs` |
 | sc-dse | N6 궁극의 초전도체 DSE — 6단 전수 조합 탐색기 | `tools/sc-dse/main.rs` |
 | solar-dse | HEXA-SOLAR Design Space Exploration (DSE) | `tools/solar-dse/main.rs` |
@@ -970,10 +974,11 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | sedi_training_monitor | SEDI Training Monitor | `engine/sedi_training_monitor.py` |
 | thermodynamic_frame | Thermodynamic Frame | `engine/thermodynamic_frame.py` |
 
-**Experiment** (53)
+**Experiment** (56)
 
 | Name | Description | Path |
 |------|-------------|------|
+| chip_phase_diagram | Chip Phase Diagram -- Computing Paradigms on Power x Performance Axes | `experiments/chip_phase_diagram.py` |
 | experiment_alpha_attack | Experiment: Fine Structure Constant Alpha Attack | `experiments/experiment_alpha_attack.py` |
 | experiment_attractor_curvature | Experiment: Attractor Dimension + Energy Surface Curvature | `experiments/experiment_attractor_curvature.py` |
 | experiment_bitnet_n6 | BitNet b1.58 2B4T — Real Config n=6 Verification Experiment | `experiments/experiment_bitnet_n6.py` |
@@ -1014,6 +1019,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | verify_bt66_76 | Independent verification of BT-66 through BT-76 claims. | `experiments/verify_bt66_76.py` |
 | verify_bt77_bitnet | BT-77: BitNet Quantization n=6 Universality — Independent Verification | `experiments/verify_bt77_bitnet.py` |
 | verify_cascade_cross | 캐스케이드 크로스 검증 (Cascade Cross-Validation) | `experiments/verify_cascade_cross.py` |
+| verify_chip_n6 | HEXA Chip Family — n=6 수학 검증 | `experiments/verify_chip_n6.py` |
 | verify_chip_ultimate | verify_chip_ultimate.py — Ultimate Chip Architecture n=6 Mathematical Verificati | `experiments/verify_chip_ultimate.py` |
 | verify_consciousness_chip | verify_consciousness_chip.py — Consciousness Chip Architecture Mathematical Veri | `experiments/verify_consciousness_chip.py` |
 | verify_diffusion_n6 | verify_diffusion_n6.py — Diffusion Model n=6 Pattern Verification | `experiments/verify_diffusion_n6.py` |
@@ -1027,6 +1033,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | verify_hexa_super | HEXA-SUPER (Level 6) n=6 파라미터 수학적 검증 | `experiments/verify_hexa_super.py` |
 | verify_hexa_system | HEXA-SYSTEM 시스템 아키텍처 수학 검증 — 145개 파라미터 전수 검사 | `experiments/verify_hexa_system.py` |
 | verify_hexa_wafer | HEXA-WAFER (Level 5) n=6 파라미터 수학적 검증 | `experiments/verify_hexa_wafer.py` |
+| verify_topological_chip | Verify BT-90, BT-91, BT-92: Topological Chip Architecture | `experiments/verify_topological_chip.py` |
 
 **Technique** (17)
 

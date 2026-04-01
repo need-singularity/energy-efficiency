@@ -154,13 +154,13 @@ notes  = "modes=12=sigma EXACT, nodes_antinodes=true, resonant_cavity=true"
 
 [[candidate]]
 level  = 1
-id     = "PropagN6"
-label  = "n=6 파동 모드 전파 (n=6 EXACT)"
+id     = "PropagN6Modes"
+label  = "6 EM Propagation Modes (n=6 EXACT: TE/TM/TEM/surface/guided/leaky)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "wave_modes=n=6 EXACT, n6-mode wave propagation"
+perf   = 0.82
+power  = 0.60
+cost   = 0.50
+notes  = "modes=6=n EXACT (TE/TM/TEM/surface/guided/leaky), waveguide_theory=complete, Maxwell_classification=true"
 [[level]]
 name = "Interference"
 
@@ -230,13 +230,13 @@ notes  = "dimensions=3=n/phi, reference+object=2=phi, hologram=true"
 
 [[candidate]]
 level  = 2
-id     = "InterferN6"
-label  = "n=6 간섭 패턴 (n=6 빔 간섭)"
+id     = "SixSlitGrating"
+label  = "6-Slit Diffraction Grating (n=6 EXACT interference)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "beam_count=n=6 EXACT, n6-beam interference pattern"
+perf   = 0.78
+power  = 0.58
+cost   = 0.48
+notes  = "slits=6=n EXACT, principal_maxima=6, secondary_maxima=4=tau, resolution=6N, spectroscopy=true"
 [[level]]
 name = "Resonance"
 
@@ -364,13 +364,13 @@ notes  = "semitones=12=sigma EXACT, octave=2=phi EXACT, temperament=equal"
 
 [[candidate]]
 level  = 4
-id     = "AcousticsN6"
-label  = "sigma=12 반음계 음향 응용 (sigma=12 EXACT)"
+id     = "SixGTerahertz"
+label  = "6G Terahertz Communication (n=6 EXACT generation)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "semitones=sigma=12 EXACT, n6-chromatic acoustics application"
+perf   = 0.92
+power  = 0.45
+cost   = 0.35
+notes  = "generation=6=n EXACT, THz_band=0.1-10THz, bandwidth=100Gbps+, wave_propagation=central, 6G_standard=2030"
 [[rule]]
 type       = "require"
 if_level   = 0

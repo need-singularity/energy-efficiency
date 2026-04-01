@@ -76,6 +76,15 @@ power = 0.65
 cost = 0.55
 notes = "paths=2=phi EXACT, single-chip bidirectional, AC switch, solid-state relay"
 
+[[candidate]]
+id = "HEMT-6H-GaN"
+label = "6H-GaN HEMT (n=6 EXACT polytype, hexagonal 6-layer stacking, 1200V)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.35
+notes = "6H=n=6 EXACT polytype stacking, hexagonal symmetry, tau=4 epi layers, high-voltage rugged"
+
 # ============================================================
 # Level 1: Substrate (기판)
 #   n6 checks: polytype==6H(n), diameter_inch, thermal_conductivity

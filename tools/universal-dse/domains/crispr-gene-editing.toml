@@ -349,6 +349,16 @@ power  = 0.40
 cost   = 0.30
 notes  = "Gene drive for population modification, malaria mosquito, invasive species"
 
+[[candidate]]
+level  = 4
+id     = "Hexaplex_6gene"
+label  = "Hexaplex-6gene (n=6 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.50
+cost   = 0.45
+notes  = "n=6 EXACT — 6-gene multiplex panel targeting, simultaneous editing of n=6 disease-associated loci"
+
 # =============================================================
 # Compatibility Rules
 # =============================================================

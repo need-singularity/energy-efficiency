@@ -220,13 +220,13 @@ notes  = "depths=5=sopfr EXACT (0.25/0.5/1.0/1.5/2.0mm), collagen_induction=true
 
 [[candidate]]
 level  = 2
-id     = "TherapyN6"
-label  = "n=6 성장인자 칵테일 치료 (n=6 EXACT)"
+id     = "Hexapeptide6"
+label  = "Hexapeptide-6 Therapy (6-amino-acid peptide, n=6 EXACT)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "growth_factors=n=6 EXACT, n6-factor hair regeneration therapy"
+perf   = 0.80
+power  = 0.60
+cost   = 0.50
+notes  = "amino_acids=6=n EXACT, copper_hexapeptide_GHK-Cu, follicle_stimulation=true, anti-DHT=true"
 [[level]]
 name = "Delivery"
 
@@ -296,13 +296,13 @@ notes  = "wavelengths=2=phi EXACT (red_660nm/NIR_850nm), photobiomodulation=true
 
 [[candidate]]
 level  = 3
-id     = "DeliveryN6"
-label  = "n=6 약물전달 경로 (n=6 EXACT)"
+id     = "HexLipidNP"
+label  = "Hexagonal Lipid Nanoparticle (hex phase n=6 EXACT)"
 n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "delivery_routes=n=6 EXACT, n6-route drug delivery system"
+perf   = 0.88
+power  = 0.50
+cost   = 0.40
+notes  = "hex_symmetry=6=n EXACT, inverted_hexagonal_phase=H_II, sustained_release=true, follicle_penetration=high"
 [[level]]
 name = "Outcome"
 
@@ -364,13 +364,13 @@ notes  = "de_novo_follicle=true, permanent=true, holy_grail=true"
 
 [[candidate]]
 level  = 4
-id     = "OutcomeN6"
-label  = "n=6 평가지표 복원 결과 (n=6 EXACT)"
+id     = "TrichoscopyN6"
+label  = "6-Metric Trichoscopy Score (n=6 EXACT endpoints)"
 n6     = 1.00
 perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "metrics=n=6 EXACT, n6-metric hair restoration outcome"
+power  = 0.60
+cost   = 0.55
+notes  = "metrics=6=n EXACT (density/thickness/growth_rate/anagen_ratio/vellus_ratio/coverage), standardized=true"
 [[rule]]
 type       = "require"
 if_level   = 2

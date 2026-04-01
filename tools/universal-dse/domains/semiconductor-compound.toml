@@ -267,6 +267,15 @@ power = 0.50
 cost = 0.30
 notes = "Te=Group_VI=n EXACT, 6-fold band inversion, topological insulator phase"
 
+[[candidate]]
+id = "AlN_6eV_wide"
+label = "AlN 6.0eV bandgap (n=6 EXACT, deepest UV, wurtzite 6-fold)"
+n6 = 1.00
+perf = 0.80
+power = 0.75
+cost = 0.40
+notes = "bandgap=6.0eV=n EXACT, deepest UV-C emission, wurtzite coordination=6=n EXACT, far-UV LED/laser"
+
 # ============================================================
 # Level 4: Application (응용)
 #   n6 checks: LED 6-color (n=6), laser 12-QW active (sigma=12),

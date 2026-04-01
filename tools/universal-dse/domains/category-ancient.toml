@@ -215,19 +215,19 @@ power  = 0.55
 cost   = 0.45
 notes  = "embedding=1=mu EXACT (fully faithful), hom_sets=12=sigma, naturality=1=mu EXACT"
 
+[[candidate]]
+level  = 2
+id     = "SixFunctor"
+label  = "6-함자 형식주의 (Grothendieck n=6 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "functors=6=n EXACT (f*,f_*,f^!,f_!,tensor,Hom), adjoint_pairs=3=n/phi EXACT, foundation of sheaf theory"
+
 # =============================================================
 # Level 3: Application (응용) -- 6 candidates
 # =============================================================
-
-[[candidate]]
-level  = 2
-id     = "NatTransN6"
-label  = "자연 변환 n=6 사상 (n=6 functor morphism)"
-n6     = 1.00
-perf   = 0.90
-power  = 0.60
-cost   = 0.50
-notes  = "morphisms=n=6 EXACT, natural transformation, category theory"
 [[level]]
 name = "Application"
 
@@ -291,19 +291,19 @@ power  = 0.55
 cost   = 0.45
 notes  = "key_rounds=24=J2 EXACT (AES-like), block_bits=128=2^(sigma-sopfr), modes=6=n EXACT"
 
+[[candidate]]
+level  = 3
+id     = "CalabiYau6"
+label  = "칼라비-야우 6차원 컴팩트화 (n=6 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.40
+notes  = "compact_dim=6=n EXACT, string theory 10D=4+6, Hodge_numbers=tau=4, mirror_symmetry=phi=2 EXACT"
+
 # =============================================================
 # Level 4: Heritage (고대 지식) -- 5 candidates
 # =============================================================
-
-[[candidate]]
-level  = 3
-id     = "ToposN6"
-label  = "토포스 n=6 분류 (n=6 subobject classifier)"
-n6     = 1.00
-perf   = 0.85
-power  = 0.55
-cost   = 0.45
-notes  = "classifiers=n=6 EXACT, topos theory, logical framework"
 [[level]]
 name = "Heritage"
 
@@ -367,7 +367,7 @@ type       = "require"
 if_level   = 0
 if_id      = "Grothendieck6"
 then_level = 2
-then_ids   = "AdjointPair,KanExtension,NatTransN6"
+then_ids   = "AdjointPair,KanExtension,SixFunctor"
 
 # HigherCategory requires YonedaLemma or KanExtension (needs universal properties)
 [[rule]]
@@ -375,7 +375,7 @@ type       = "require"
 if_level   = 0
 if_id      = "HigherCategory"
 then_level = 2
-then_ids   = "YonedaLemma,KanExtension,NatTransN6"
+then_ids   = "YonedaLemma,KanExtension,SixFunctor"
 
 # ToposTheory requires LogicFoundation (topos is logical framework)
 [[rule]]

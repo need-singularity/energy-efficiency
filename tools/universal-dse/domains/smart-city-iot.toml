@@ -216,6 +216,16 @@ power  = 0.85
 cost   = 0.35
 notes  = "Neuromorphic local processing, event-driven, ultra-low power inference"
 
+[[candidate]]
+level  = 2
+id     = "HexaEdge_6node"
+label  = "Hexa-edge-6node (n=6 EXACT)"
+n6     = 1.00
+perf   = 0.86
+power  = 0.68
+cost   = 0.55
+notes  = "n=6 EXACT — 6-node edge cluster (sense/preprocess/infer/aggregate/cache/relay), τ=4 data tiers, hexagonal mesh topology"
+
 # =============================================================
 # Level 3: Platform (플랫폼 계층)  -- 6 candidates
 # =============================================================
