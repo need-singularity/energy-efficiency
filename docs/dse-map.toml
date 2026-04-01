@@ -65,6 +65,24 @@ ultimate_score = 0.883
 ultimate_n6 = "19/20 (95.0%)"
 note = "궁극의 에너지 = 4도메인 통합 Cross-DSE. BT-27,30,43,57,60,62,63,68,80-84 활용"
 
+[autonomous-driving]
+goal = true
+dse = "done"
+combos = 4500
+valid = 3210
+tool = "tools/universal-dse/ domains/autonomous.toml"
+levels = ["SensorFusion", "Perception", "ControlCore", "AIEngine", "VehicleSystem"]
+cross_dse = ["chip-architecture", "battery-architecture", "learning-algorithm"]
+best_pareto = "IMU_GPS + BEV_Fusion + MPC + TransformerAD + L4_Urban (0.7810)"
+best_n6 = "V2X + BEV_Fusion + MPC + TransformerAD + L4_Urban (100.0%)"
+best_perf = "LiDAR + BEV_Fusion + MPC + TransformerAD + L4_Urban (perf=0.918)"
+best_power = "Ultrasonic + PathPlan + RuleEngine + OccupancyNet + L2_ADAS (power=0.710)"
+best_cost = "Ultrasonic + PathPlan + RuleEngine + OccupancyNet + L2_ADAS (cost=0.630)"
+pareto_frontier = 46
+n6_max = 100.0
+n6_avg = 80.8
+note = "궁극의 자율주행 5단 DSE. SAE L0-L5=n=6 EXACT, n=6 DOF IMU, BEV n=6 fusion. BT-56,58,61,66 활용"
+
 # ── 미시작 ────────────────────────────────────────
 
 [quantum-computing]
@@ -290,9 +308,22 @@ dse = "none"
 cross_dse = ["cosmology-particle"]
 
 [plasma-physics]
-goal = false
-dse = "none"
-cross_dse = ["fusion", "superconductor"]
+goal = true
+dse = "done"
+combos = 6480
+valid = 4224
+tool = "tools/universal-dse/ domains/plasma-physics.toml"
+levels = ["Source", "Confinement", "Heating", "Control", "Application"]
+cross_dse = ["fusion", "superconductor", "thermal-management"]
+best_pareto = "Tokamak + H_mode + NBI + MHD_Feedback + DEMO_Steady (0.7590)"
+best_n6 = "Tokamak + H_mode + LHCD + RMP_ELM + ITER_Burn (90.0%)"
+best_perf = "Tokamak + H_mode + NBI + MHD_Feedback + DEMO_Steady (perf=0.920)"
+best_power = "Stellarator + Ohmic_L + Ohmic + ELM_Pellet + Industrial (power=0.810)"
+best_cost = "Z_Pinch + Ohmic_L + Ohmic + ELM_Pellet + Industrial (cost=0.810)"
+pareto_frontier = 136
+n6_max = 90.0
+n6_avg = 72.5
+note = "궁극의 플라즈마물리 5단 DSE. BT-74(beta=5%) + BT-5(q=1 Egyptian). Tokamak+H-mode 압도적"
 
 [thermal-management]
 goal = true
@@ -695,3 +726,12 @@ status = "done"
 tool = "tools/universal-dse/"
 best = "NuclearThermal + Diamond (100.0% n6, score 0.8576)"
 note = "NTP Z=6 Carbon + Diamond HEXA-P — 우주등급 프로세서×핵열추진 100% n6 EXACT"
+
+# ── Autonomous Driving Cross-DSE ────────────────
+
+[cross-dse.auto-x-chip]
+domains = ["autonomous-driving", "chip-architecture"]
+status = "done"
+tool = "tools/universal-dse/"
+best = "IMU_GPS + Diamond (100.0% n6, score 0.8664)"
+note = "IMU_GPS+BEV+MPC+TransformerAD+L4 → Diamond HEXA-P — 자율주행×칩 100% n6 EXACT"
