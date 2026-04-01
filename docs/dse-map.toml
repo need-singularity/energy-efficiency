@@ -303,9 +303,22 @@ n6_avg = 78.2
 note = "궁극의 우주론/입자 5단 DSE. A+B+C 융합. H-CP-1~86 + BT-36,49,51,58 활용. 검증: LiteBIRD 2032, JUNO 2027, DUNE 2030"
 
 [pure-mathematics]
-goal = false
-dse = "none"
-cross_dse = ["cosmology-particle"]
+goal = true
+dse = "done"
+combos = 39200
+valid = 38024
+tool = "tools/universal-dse/ domains/pure-mathematics.toml"
+levels = ["Field", "Function", "Structure", "Proof", "Bridge"]
+cross_dse = ["cosmology-particle", "biology", "chip-architecture"]
+best_pareto = "LT + jordan + DIM + LATTICE + AI (0.8420)"
+best_n6 = "NT + phi + IDENT + DIRECT + AI (94.0%)"
+best_perf = "CT + jordan + CLASS + CATEG + COSMO (perf=0.910)"
+best_power = "MP + n6_val + DIM + LATTICE + AI (power=0.880)"
+best_cost = "NT + mu + IDENT + DIRECT + AI (cost=0.960)"
+pareto_frontier = 57
+n6_max = 94.0
+n6_avg = 78.2
+note = "궁극의 순수수학 5단 DSE. BT-49 kissing chain + BT-76 σ·τ=48. LT+J₂(6)=24+Leech lattice 압도적"
 
 [plasma-physics]
 goal = true
@@ -780,3 +793,12 @@ status = "done"
 tool = "tools/universal-dse/"
 best = "ECG + Diamond (100.0% n6, score 0.8823)"
 note = "ECG sigma=12 + Diamond HEXA-P — 의료기기×칩 100% n6 EXACT. RealTime+Electrode+ImageAI+PointOfCare"
+
+# ── Agriculture Cross-DSE ────────────────
+
+[cross-dse.agriculture-x-chip]
+domains = ["agriculture", "chip-architecture"]
+status = "done"
+tool = "tools/universal-dse/"
+best = "CRISPR_Crop + Diamond (100.0% n6, score 0.8609)"
+note = "CRISPR C₆H₁₂O₆ + Diamond HEXA-P — 농업×칩 100% n6 EXACT. PlantVision+DroneMonitor+SmartFarm"
