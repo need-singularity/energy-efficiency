@@ -384,6 +384,42 @@ n6_max = 100.0
 n6_avg = 78.6
 note = "궁극의 우주공학 5단 DSE. Kepler n=6 궤도요소 + Carbon Z=6 구조 + D-T J₂=24 MeV. BT-27,30,38,63 활용"
 
+[medical-device]
+goal = true
+dse = "done"
+combos = 4500
+valid = 1700
+tool = "tools/universal-dse/ domains/medical.toml"
+levels = ["Foundation", "Process", "Core", "Engine", "System"]
+cross_dse = ["chip-architecture", "battery-architecture", "biology", "robotics", "superconductor"]
+best_pareto = "ECG + RealTime + Electrode + ImageAI + PointOfCare (0.8305)"
+best_n6 = "ECG + RealTime + Electrode + ImageAI + PointOfCare (100.0%)"
+best_perf = "MRI + RealTime + CMOS_Sensor + ImageAI + Hospital (perf=0.914)"
+best_power = "ECG + Compress + Electrode + WaveformAI + Wearable (power=0.770)"
+best_cost = "ECG + Compress + Electrode + WaveformAI + Wearable (cost=0.680)"
+pareto_frontier = 22
+n6_max = 100.0
+n6_avg = 79.1
+note = "궁극의 의료기기 5단 DSE. ECG sigma=12 leads EXACT + n=6 limb leads + BT-66 Vision AI. sigma-tau=8 ADC"
+
+[agriculture]
+goal = true
+dse = "done"
+combos = 4500
+valid = 3360
+tool = "tools/universal-dse/ domains/agriculture.toml"
+levels = ["Foundation", "Process", "Core", "Engine", "System"]
+cross_dse = ["chip-architecture", "biology", "solar-architecture", "battery-architecture"]
+best_pareto = "CRISPR_Crop + Precision + DroneMonitor + PlantVision + SmartFarm (0.7711)"
+best_n6 = "CRISPR_Crop + Vertical + DroneMonitor + PlantVision + AquaPonics (100.0%)"
+best_perf = "CRISPR_Crop + Precision + DroneMonitor + PlantVision + MegaFarm (perf=0.896)"
+best_power = "Hybrid + Organic + SoilSensor + SupplyChain + AquaPonics (power=0.720)"
+best_cost = "Hybrid + Organic + SoilSensor + SupplyChain + AquaPonics (cost=0.600)"
+pareto_frontier = 50
+n6_max = 100.0
+n6_avg = 80.0
+note = "궁극의 농업/식량 5단 DSE. BT-27 6CO₂+6H₂O→C₆H₁₂O₆ + BT-51 genetic code + BT-66 Vision AI"
+
 [material-synthesis]
 goal = true
 dse = "wip"
@@ -735,3 +771,12 @@ status = "done"
 tool = "tools/universal-dse/"
 best = "IMU_GPS + Diamond (100.0% n6, score 0.8664)"
 note = "IMU_GPS+BEV+MPC+TransformerAD+L4 → Diamond HEXA-P — 자율주행×칩 100% n6 EXACT"
+
+# ── Medical Device Cross-DSE ────────────────
+
+[cross-dse.medical-x-chip]
+domains = ["medical-device", "chip-architecture"]
+status = "done"
+tool = "tools/universal-dse/"
+best = "ECG + Diamond (100.0% n6, score 0.8823)"
+note = "ECG sigma=12 + Diamond HEXA-P — 의료기기×칩 100% n6 EXACT. RealTime+Electrode+ImageAI+PointOfCare"
