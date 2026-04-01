@@ -165,9 +165,22 @@ n6_avg = 70.0
 note = "궁극의 컴파일러/OS 5단 DSE. H-COS-1~26 + H-COS-61~80 활용. RISC-V N6 + LLVM 최적"
 
 [network-protocol]
-goal = false
-dse = "none"
-cross_dse = ["cryptography", "blockchain"]
+goal = true
+dse = "done"
+combos = 4500
+valid = 3305
+tool = "tools/universal-dse/ domains/network.toml"
+levels = ["Foundation", "Process", "Core", "Engine", "System"]
+cross_dse = ["chip-architecture", "cryptography", "blockchain"]
+best_pareto = "Mesh_N6 + WireGuard + Segment + Congestion + IoT_LPWAN (0.8171)"
+best_n6 = "Mesh_N6 + WireGuard + Segment + Congestion + IoT_LPWAN (96.6%)"
+best_perf = "QUIC + RDMA + Segment + CDN_N6 + DC_Fabric (perf=0.958)"
+best_power = "DTN + WireGuard + Intent + Compress + IoT_LPWAN (power=0.780)"
+best_cost = "TCP_IP + WireGuard + MPLS_N6 + Compress + IoT_LPWAN (cost=0.720)"
+pareto_frontier = 65
+n6_max = 96.6
+n6_avg = 74.7
+note = "궁극의 네트워크 5단 DSE. SRv6=n=6 EXACT, WireGuard tau=4, BBR sigma-tau=8. BT-47,53,74 활용"
 
 [cryptography]
 goal = false
@@ -494,3 +507,12 @@ status = "done"
 tool = "tools/universal-dse/"
 best = "PerfNum + LFP (93.7% n6, score 0.8401)"
 note = "n=6 산술 → LFP CN=6 — 입자물리 대칭×배터리 옥타헤드랄 구조"
+
+# ── Network Protocol Cross-DSE ────────────────
+
+[cross-dse.network-x-chip]
+domains = ["network-protocol", "chip-architecture"]
+status = "done"
+tool = "tools/universal-dse/"
+best = "Mesh_N6 + Diamond (98.3% n6, score 0.8735)"
+note = "N6 Mesh + Diamond HEXA-P — SRv6 n=6 + Z=6 칩 융합, BBR sigma-tau=8 최적화"
