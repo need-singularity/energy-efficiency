@@ -49,3 +49,4 @@ tools/vendor-compare-calc/vendor-compare-calc
 calc
 # TECS-L .shared symlink
 .shared
+model_utils.py

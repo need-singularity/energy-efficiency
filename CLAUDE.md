@@ -168,6 +168,42 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
 - `tools/material-dse/`   — 물질합성 DSE 전수 탐색 (3,600 조합, BT-85~88 기반)
 - `tools/universal-dse/`  — **공용 DSE 탐색기** (TOML 도메인 정의 → 전수 탐색 + Pareto + Cross-DSE)
 
+## .shared/ Cross-Repo Infrastructure (필수)
+
+> **상세 규칙: `.shared/CLAUDE.md` 참조** (심링크로 자동 접근)
+
+```
+  원본: ~/Dev/TECS-L/.shared/ (이 리포는 심링크로 연결)
+  구조:
+    .shared/ → ../TECS-L/.shared/   (심링크, 공유 인프라 전체)
+    calc/    → .shared/calc/        (심링크 체인, 194+ 계산기)
+
+  ── 심링크 파일 목록 ──
+    .shared/CLAUDE.md           ← 공유 규칙 상세
+    .shared/CALCULATOR_RULES.md ← 계산기 생성 규칙 (Rust vs Python)
+    .shared/SECRET.md           ← API 토큰/계정
+    .shared/calc/               ← 계산기 원본 (194+ files)
+    .shared/math_atlas.json     ← 수학 지도 (1700+ 가설)
+    .shared/installed_tools.json← 설치 도구 레지스트리
+    .shared/projects.md         ← 프로젝트 설명 원본
+
+  ── 자동 동기화 트리거 (작업 중 발생 시 즉시 실행) ──
+
+    새 계산기 생성:
+      calc/new_calc.py 생성 → 모든 리포 자동 공유 (심링크)
+      python3 .shared/scan-calculators.py --save --summary
+
+    새 상수/가설 발견:
+      python3 .shared/scan_math_atlas.py --save --summary
+
+    전체 동기화 (README + Atlas + Registry):
+      bash .shared/sync-math-atlas.sh &&       bash .shared/sync-calculators.sh &&       bash .shared/sync-readmes.sh &&       bash .shared/sync-claude-rules.sh
+
+  ── 상수 관리 ──
+    공유 상수: ~/Dev/TECS-L/model_utils.py (n=6 확장 상수 포함)
+    리포별 상수: 각 리포 고유 모듈에서 import
+    매직 넘버 하드코딩 금지 — model_utils 또는 .shared/ 참조
+```
 ## Calculator Rules (Shared)
 **새 계산기 개발시 성능 문제 예상되면 반드시 Rust 우선.**
 전체 규칙: `~/Dev/TECS-L/.shared/CALCULATOR_RULES.md`
