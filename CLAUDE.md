@@ -97,12 +97,10 @@ Atlas: https://need-singularity.github.io/TECS-L/atlas/
     # Technique 17 — Egyptian Fraction Attention
     egyptian_attention.py  -- 1/2+1/3+1/6=1 attention budget (EFA, ~40% FLOPs saved)
   docs/
-    # Foundation: superconductor/ (60 H-SC + 20 extreme)
-    # Fusion: fusion/ (60 H-FU + 20 extreme)
-    # Magnets: superconducting-magnet/ (60 H-SM + 20 extreme)
-    # Tokamak: tokamak-structure/ (60 H-TK + 20 extreme)
+    # Foundation: superconductor/ (SC + magnet 통합, 60 H-SC + 20 extreme)
+    # Fusion: fusion/ (fusion + tokamak + plasma 통합)
     # Computing: ai-efficiency/ chip-architecture/ quantum-computing/ compiler-os/
-    # Energy: energy-generation/ power-grid/ battery-storage/ thermal-management/
+    # Energy: energy-architecture/ (energy-gen 통합) power-grid/ battery-architecture/ (battery-storage 통합) thermal-management/
     # Physical AI: robotics/ learning-algorithm/
     # Infrastructure: blockchain/ network-protocol/ cryptography/ software-design/
     # Academic: paper/
@@ -122,15 +120,15 @@ Atlas: https://need-singularity.github.io/TECS-L/atlas/
 Full proof: docs/theorem-r1-uniqueness.md
 Falsifiability: z=0.74 (numerical matching NOT significant vs random)
 
-## Docs Structure (35 domains) — ALL have extreme-hypotheses.md
+## Docs Structure (32 domains) — ALL have extreme-hypotheses.md
 ```
-  # Physics (4 domains × 80 hypotheses each + extreme)
-  superconductor/ fusion/ superconducting-magnet/ tokamak-structure/
+  # Physics (통합 완료)
+  superconductor/ (+ magnet 병합) fusion/ (+ tokamak 병합) plasma-physics/
   # Computing (all with hypotheses + extreme)
   ai-efficiency/ chip-architecture/ quantum-computing/
   compiler-os/ programming-language/ software-design/
-  # Energy (all with hypotheses + extreme)
-  energy-generation/ power-grid/ battery-storage/ thermal-management/
+  # Energy (통합 완료)
+  energy-architecture/ (+ energy-gen 병합) power-grid/ battery-architecture/ (+ battery-storage 병합) thermal-management/
   # Physical AI
   robotics/ learning-algorithm/
   # Infrastructure
@@ -420,7 +418,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
     - TOML 형식: [meta] + [scoring] + [[level]] + [[candidate]] + [[rule]]
     - 도메인 파일: tools/universal-dse/domains/*.toml
 
-  적용 도메인 (305개 TOML, 16 카테고리, 4,213,416 조합):
+  적용 도메인 (322개 TOML, 16 카테고리, 5,893,032+ 조합):
     - 전체 목록: docs/dse-domains.md (카테고리별 분류 + 레벨 체인 + 조합 수)
     - AI/ML(14), Consciousness(23), Semiconductor(25), Energy(24)
     - SC/Plasma(2), Bio/Medical(26), Physics/Math(24), Robot(7)
@@ -511,7 +509,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
     - ~/Dev/TECS-L/calc/ (검증 스크립트)
 
   n6 연결:
-    - tools/universal-dse/domains/*.toml (305 DSE)
+    - tools/universal-dse/domains/*.toml (322 DSE)
     - docs/atlas-constants.md (1,100+ 상수)
     - tools/*-calc, *-dse (Rust 계산기 29+)
     - docs/dse-map.toml (도메인 현황)
