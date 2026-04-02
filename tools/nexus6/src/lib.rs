@@ -7,6 +7,8 @@ pub mod telescope;
 pub mod history;
 pub mod ouroboros;
 pub mod lens_forge;
+pub mod experiment;
+pub mod science;
 pub mod cli;
 
 #[cfg(feature = "python")]

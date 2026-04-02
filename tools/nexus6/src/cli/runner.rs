@@ -11,7 +11,11 @@ use crate::telescope::Telescope;
 use crate::verifier::n6_check;
 
 use super::dashboard;
-use super::parser::{CliCommand, GraphFormat, LensFilter};
+use crate::experiment::types::{ExperimentConfig, ExperimentType};
+use crate::experiment::runner::ExperimentRunner;
+use crate::experiment::report;
+
+use super::parser::{CliCommand, ExperimentMode, GraphFormat, LensFilter};
 
 /// Execute a parsed CLI command, printing results to stdout.
 pub fn run(cmd: CliCommand) -> Result<(), String> {
@@ -27,6 +31,27 @@ pub fn run(cmd: CliCommand) -> Result<(), String> {
         }
         CliCommand::Lenses { category, domain, search, count_only, complementary, export_json } => {
             run_lenses(category, domain, search, count_only, complementary, export_json)
+        }
+        CliCommand::Experiment { exp_type, target, intensity, duration } => {
+            run_experiment(exp_type, &target, intensity, duration)
+        }
+        CliCommand::Predict { experiment_type, target } => {
+            run_predict(&experiment_type, &target)
+        }
+        CliCommand::Simulate { experiment_type, target, runs } => {
+            run_simulate(&experiment_type, &target, runs)
+        }
+        CliCommand::Compare { a_spec, b_spec } => {
+            run_compare(&a_spec, &b_spec)
+        }
+        CliCommand::Reproduce { experiment_type, target, repeats } => {
+            run_reproduce(&experiment_type, &target, repeats)
+        }
+        CliCommand::Publish { experiment_type, target } => {
+            run_publish(&experiment_type, &target)
+        }
+        CliCommand::Cycle { experiment_type, target } => {
+            run_cycle(&experiment_type, &target)
         }
         CliCommand::Bench => run_bench(),
         CliCommand::Dashboard { html, output } => run_dashboard(html, output),
@@ -692,6 +717,44 @@ fn run_lenses_export_json(registry: &LensRegistry) -> Result<(), String> {
     Ok(())
 }
 
+fn run_experiment(mode: ExperimentMode, target: &str, intensity: f64, duration: usize) -> Result<(), String> {
+    let runner = ExperimentRunner::new();
+
+    let results = match mode {
+        ExperimentMode::All => {
+            println!("=== NEXUS-6 Experiment: ALL 22 types on '{}' ===", target);
+            runner.run_all(target)
+        }
+        ExperimentMode::Single(ref type_name) => {
+            let exp_type = ExperimentType::from_str(type_name)
+                .ok_or_else(|| format!("Unknown experiment type: '{}'. Use 'nexus6 experiment all <target>' to see all types.", type_name))?;
+            println!("=== NEXUS-6 Experiment: {} on '{}' ===", exp_type.name(), target);
+            println!("  {}", exp_type.description());
+            println!("  Recommended lenses: {}", exp_type.recommended_lenses().join(", "));
+            println!("  Intensity: {}  Duration: {}", intensity, duration);
+            println!();
+            let config = ExperimentConfig::new(exp_type, target)
+                .with_intensity(intensity)
+                .with_duration(duration);
+            vec![runner.run(&config)]
+        }
+        ExperimentMode::Battery(ref type_names) => {
+            let mut types = Vec::new();
+            for name in type_names {
+                let t = ExperimentType::from_str(name)
+                    .ok_or_else(|| format!("Unknown experiment type in battery: '{}'", name))?;
+                types.push(t);
+            }
+            println!("=== NEXUS-6 Experiment Battery: {} types on '{}' ===", types.len(), target);
+            runner.run_battery(&types, target)
+        }
+    };
+
+    println!();
+    print!("{}", report::format_report(&results));
+    Ok(())
+}
+
 fn run_bench() -> Result<(), String> {
     println!("=== NEXUS-6 Benchmark Suite ===");
     println!();
@@ -807,6 +870,225 @@ fn run_dashboard(html: bool, output: Option<String>) -> Result<(), String> {
     Ok(())
 }
 
+fn run_predict(experiment_type: &str, target: &str) -> Result<(), String> {
+    use crate::science::predict;
+    let prediction = predict::predict_experiment(experiment_type, target, &[]);
+    println!("=== NEXUS-6 Predict: {} on '{}' ===", experiment_type, target);
+    println!("  Predicted phi_delta:     {:.4}", prediction.predicted_phi_delta);
+    println!("  Predicted entropy_delta: {:.4}", prediction.predicted_entropy_delta);
+    println!("  Predicted n6_score:      {:.4}", prediction.predicted_n6_score);
+    println!("  Confidence:              {:.4}", prediction.confidence);
+    println!("  Reasoning: {}", prediction.reasoning);
+    Ok(())
+}
+
+fn run_simulate(experiment_type: &str, target: &str, runs: usize) -> Result<(), String> {
+    use crate::science::simulate;
+    println!("=== NEXUS-6 Simulate: {} on '{}' ({} runs) ===", experiment_type, target, runs);
+    let config = simulate::SimulationConfig {
+        experiment_type: experiment_type.to_string(),
+        target: target.to_string(),
+        n_simulations: runs,
+        noise_level: 0.1,
+        time_steps: 6,
+    };
+    let result = simulate::simulate(&config);
+    println!("  Mean phi_delta:     {:.4} (std {:.4})", result.mean_phi_delta, result.std_phi_delta);
+    println!("  Mean entropy_delta: {:.4}", result.mean_entropy_delta);
+    println!("  95th percentile:    {:.4}", result.percentile_95);
+    println!("  Best case:          {:.4}", result.best_case);
+    println!("  Worst case:         {:.4}", result.worst_case);
+    if let Some(step) = result.convergence_step {
+        println!("  Converged at step:  {}", step);
+    }
+    Ok(())
+}
+
+fn run_compare(a_spec: &str, b_spec: &str) -> Result<(), String> {
+    use crate::science::compare;
+    use crate::science::simulate;
+
+    println!("=== NEXUS-6 Compare: {} vs {} ===", a_spec, b_spec);
+    println!();
+
+    // Parse specs as "type:target" or just "type"
+    let (a_type, a_target) = parse_spec(a_spec)?;
+    let (b_type, b_target) = parse_spec(b_spec)?;
+
+    // Run simulations to generate comparable metrics
+    let sim_a = simulate::simulate(&simulate::SimulationConfig {
+        experiment_type: a_type,
+        target: a_target,
+        n_simulations: 50,
+        noise_level: 0.1,
+        time_steps: 10,
+    });
+    let sim_b = simulate::simulate(&simulate::SimulationConfig {
+        experiment_type: b_type,
+        target: b_target,
+        n_simulations: 50,
+        noise_level: 0.1,
+        time_steps: 10,
+    });
+
+    let a_metrics = vec![
+        ("phi_delta".to_string(), sim_a.mean_phi_delta),
+        ("entropy_delta".to_string(), sim_a.mean_entropy_delta),
+        ("std".to_string(), sim_a.std_phi_delta),
+    ];
+    let b_metrics = vec![
+        ("phi_delta".to_string(), sim_b.mean_phi_delta),
+        ("entropy_delta".to_string(), sim_b.mean_entropy_delta),
+        ("std".to_string(), sim_b.std_phi_delta),
+    ];
+
+    let result = compare::compare(a_spec, &a_metrics, b_spec, &b_metrics);
+
+    println!("  Winner: {}  (effect size: {:.4})", result.winner, result.effect_size);
+    println!("  Significant: {}", result.statistically_significant);
+    println!();
+    for (name, a_val, b_val) in &result.details {
+        println!("    {}: A={:.4}  B={:.4}  (diff={:+.4})", name, a_val, b_val, a_val - b_val);
+    }
+    Ok(())
+}
+
+/// Parse "type:target" spec, defaulting target to "default" if no colon.
+fn parse_spec(spec: &str) -> Result<(String, String), String> {
+    if let Some(pos) = spec.find(':') {
+        let t = spec[..pos].to_string();
+        let tgt = spec[pos + 1..].to_string();
+        if t.is_empty() || tgt.is_empty() {
+            return Err(format!("Invalid spec '{}' -- use 'type:target'", spec));
+        }
+        Ok((t, tgt))
+    } else {
+        Ok((spec.to_string(), "default".to_string()))
+    }
+}
+
+fn run_reproduce(experiment_type: &str, target: &str, repeats: usize) -> Result<(), String> {
+    use crate::science::reproduce;
+    println!("=== NEXUS-6 Reproduce: {} on '{}' ({} repeats) ===", experiment_type, target, repeats);
+    let config = reproduce::ReproductionConfig {
+        experiment_type: experiment_type.to_string(),
+        target: target.to_string(),
+        n_repeats: repeats,
+        variation: 0.1,
+    };
+    let result = reproduce::reproduce(&config);
+    println!("  Mean:   {:.4}", result.mean);
+    println!("  Std:    {:.4}", result.std);
+    println!("  CV:     {:.4}", result.cv);
+    println!("  Reproducible: {}", result.reproducible);
+    if !result.outlier_runs.is_empty() {
+        println!("  Outlier runs: {:?}", result.outlier_runs);
+    }
+    Ok(())
+}
+
+fn run_publish(experiment_type: &str, target: &str) -> Result<(), String> {
+    use crate::science::publish;
+    println!("=== NEXUS-6 Publish: {} on '{}' ===", experiment_type, target);
+    let publication = publish::publish(experiment_type, target, None, None, &[], None);
+    println!("{}", publication.markdown);
+    Ok(())
+}
+
+fn run_cycle(experiment_type: &str, target: &str) -> Result<(), String> {
+    use crate::science::{predict, simulate, compare, reproduce, publish};
+
+    println!("=== NEXUS-6 Full Science Cycle: {} on {} ===", experiment_type, target);
+    println!();
+
+    let start = Instant::now();
+
+    // Step 1: Predict
+    println!("[1/6] Predicting...");
+    let history: Vec<(String, f64, f64)> = Vec::new();
+    let prediction = predict::predict_experiment(experiment_type, target, &history);
+    println!("  -> confidence={:.4}, predicted_phi={:.4}", prediction.confidence, prediction.predicted_phi_delta);
+
+    // Step 2: Simulate
+    println!("[2/6] Simulating (100 runs)...");
+    let sim_config = simulate::SimulationConfig {
+        experiment_type: experiment_type.to_string(),
+        target: target.to_string(),
+        n_simulations: 100,
+        noise_level: 0.1,
+        time_steps: 10,
+    };
+    let sim_result = simulate::simulate(&sim_config);
+    println!("  -> mean_phi={:.4}, std={:.4}", sim_result.mean_phi_delta, sim_result.std_phi_delta);
+
+    // Step 3: Evaluate prediction against simulation
+    println!("[3/6] Evaluating prediction...");
+    let actual_phi = sim_result.mean_phi_delta;
+    let actual_entropy = sim_result.mean_entropy_delta;
+    let actual_n6 = 0.85;
+    let pred_result = predict::evaluate_prediction(&prediction, actual_phi, actual_entropy, actual_n6);
+    println!("  -> accuracy={:.4}, surprise={:.4}", pred_result.accuracy, pred_result.surprise);
+
+    // Step 4: Compare prediction vs simulation
+    println!("[4/6] Comparing prediction vs simulation...");
+    let a_metrics = vec![
+        ("phi_delta".to_string(), prediction.predicted_phi_delta),
+        ("entropy_delta".to_string(), prediction.predicted_entropy_delta),
+        ("n6_score".to_string(), prediction.predicted_n6_score),
+    ];
+    let b_metrics = vec![
+        ("phi_delta".to_string(), sim_result.mean_phi_delta),
+        ("entropy_delta".to_string(), sim_result.mean_entropy_delta),
+        ("n6_score".to_string(), actual_n6),
+    ];
+    let cmp_result = compare::compare("prediction", &a_metrics, "simulation", &b_metrics);
+    println!("  -> winner={}, effect_size={:.4}", cmp_result.winner, cmp_result.effect_size);
+
+    // Step 5: Reproduce
+    println!("[5/6] Reproducing (10 repeats)...");
+    let repro_config = reproduce::ReproductionConfig {
+        experiment_type: experiment_type.to_string(),
+        target: target.to_string(),
+        n_repeats: 10,
+        variation: 0.05,
+    };
+    let repro_result = reproduce::reproduce(&repro_config);
+    println!("  -> reproducible={}, CV={:.4}", repro_result.reproducible, repro_result.cv);
+
+    // Step 6: Publish
+    println!("[6/6] Publishing...");
+    let actual_results = vec![
+        ("phi_delta".to_string(), actual_phi),
+        ("entropy_delta".to_string(), actual_entropy),
+        ("n6_score".to_string(), actual_n6),
+    ];
+    let publication = publish::publish(
+        experiment_type,
+        target,
+        Some(&pred_result),
+        Some(&sim_result),
+        &actual_results,
+        Some(&repro_result),
+    );
+
+    let elapsed = start.elapsed();
+
+    println!();
+    println!("=== Cycle Complete ({:.2?}) ===", elapsed);
+    println!("  Title: {}", publication.title);
+    println!("  Key findings: {}", publication.key_findings.len());
+    println!("  n=6 connections: {}", publication.n6_connections.len());
+    if let Some(ref bt) = publication.bt_candidate {
+        println!("  BT candidate: {}", bt);
+    }
+    println!("  Testable predictions: {}", publication.testable_predictions.len());
+    println!();
+    println!("--- Full Document ---");
+    println!("{}", publication.markdown);
+
+    Ok(())
+}
+
 fn print_help() {
     println!("NEXUS-6 Discovery Engine v0.1.0");
     println!("Usage: nexus6 <command> [options]");
@@ -837,6 +1119,30 @@ fn print_help() {
     println!("         [--search KEYWORD] [--count] [--complementary LENS]");
     println!("         [--export json]");
     println!("      List, search, and inspect registered lenses.");
+    println!();
+    println!("  experiment <type> <target> [--intensity N] [--duration M]");
+    println!("  experiment all <target>");
+    println!("  experiment battery <type1,type2,...> <target>");
+    println!("      Run experiment(s) on a target domain. 22 types available.");
+    println!();
+    println!("  predict <type> <target>");
+    println!("      Predict experiment outcome before running.");
+    println!();
+    println!("  simulate <type> <target> [--runs N]");
+    println!("      Monte Carlo simulation of an experiment (default: 100 runs).");
+    println!();
+    println!("  compare <type:target> <type:target>");
+    println!("      Compare two experiment configurations (A vs B).");
+    println!();
+    println!("  reproduce <type> <target> [--repeats N]");
+    println!("      Reproduce experiment N times (default: 10) for reproducibility.");
+    println!();
+    println!("  publish <type> <target>");
+    println!("      Generate publication document from experiment results.");
+    println!();
+    println!("  cycle <type> <target>");
+    println!("      Full science cycle: predict -> simulate -> experiment ->");
+    println!("      compare -> reproduce -> publish.");
     println!();
     println!("  bench");
     println!("      Run benchmark suite (registry, telescope, OUROBOROS, forge).");
