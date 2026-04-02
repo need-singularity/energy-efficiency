@@ -229,11 +229,11 @@ notes = "high aspect ratio, TSV/MEMS, selectivity tunable"
 [[candidate]]
 id = "Wet-chemical"
 label = "Wet Chemical Etch (isotropic, HF/KOH/H2O2, batch process)"
-n6 = 0.25
+n6 = 0.50
 perf = 0.35
 power = 0.90
 cost = 1.00
-notes = "simplest, batch processing, cleaning/strip, limited to isotropic"
+notes = "3 chemicals=n/phi EXACT (HF/KOH/H2O2), batch processing, isotropic"
 
 [[candidate]]
 id = "ALE-atomic-layer"
