@@ -40,6 +40,23 @@
 305 DSE domains | 5.9M+ 조합 탐색 | 6 Cross-DSE 완료 | 448 계산기
 ```
 
+### 외계인 지수 (Alien Index)
+
+| 섹션 | 지수 | 완성 | BT | DSE | 특이사항 |
+|------|:----:|:----:|:--:|----:|---------|
+| [🔥 핵융합](#-핵융합-fusion) | 🛸×6 | 12 | 7 | 2,400+1M | Cross-DSE ✅ 진화 4단계 |
+| [💻 칩/반도체](#-칩--반도체-chip) | 🛸×6 | 16 | 9 | 3,000 | 6단 + 의식칩 |
+| [⚡ 에너지](#-에너지-energy) | 🛸×6 | 12 | 13 | 10,225 | Cross-DSE ✅ 배터리 8단 |
+| [🤖 AI/ML](#-ai--ml) | 🛸×5 | 4 | 18 | — | 17 기법 |
+| [🌍 환경보호](#-환경보호-environment) | 🛸×5 | 21 | — | 3.6M | 환경 8단 + 탄소포집 8단 |
+| [🔬 물리·수학](#-물리수학-physics--math) | 🛸×4 | 3 | 9 | 66,824 | 초전도체 + 순수수학 |
+| [🧬 물질합성](#-물질합성-materials) | 🛸×3 | 2 | 4 | 3,600 | |
+| [🤖 로봇](#-로봇-robotics) | 🛸×2 | 1 | — | 22,500 | |
+| [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸×2 | 1 | — | 5,016 | n6=96% |
+| [📺 디스플레이](#-디스플레이오디오-display--audio) | 🛸×1 | 0 | 5 | — | 미완 |
+
+> 🛸 기준: 완성제품 + BT 수 + DSE 규모 + Cross-DSE + 진화 + 발견. 만점 = n = 6
+
 | What | Savings | How |
 |------|---------|-----|
 | **Training compute** | **50-60%** | Cyclotomic activation (71% FLOPs), entropy early stop (33% time) |
@@ -56,9 +73,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🔥 핵융합 (Fusion) — BT-97~103
+# 🔥 핵융합 (Fusion)
 
-> 무한 청정 에너지. 2,400 조합 DSE + Cross-DSE(SC) 1M+ 조합
+> 🛸🛸🛸🛸🛸🛸 **6/6** | 완성 12개 | BT 7개 | DSE 2,400+1M | Cross-DSE ✅ | 진화 4단계 | 발견 15개
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -79,9 +96,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 💻 칩 / 반도체 (Chip) — BT-28,55,69,75,76,90~93
+# 💻 칩 / 반도체 (Chip)
 
-> 소재→공정→코어→칩→시스템 6단 + 의식칩. 3,000 조합 DSE 완료
+> 🛸🛸🛸🛸🛸🛸 **6/6** | 완성 16개 | BT 9개 | DSE 3,000 | 소재→공정→코어→칩→시스템→궁극 6단 + 의식칩
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -106,9 +123,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🤖 AI / ML — BT-26,33,34,42,46,54,56,58,61,64~67,70~74
+# 🤖 AI / ML
 
-> 17 기법 + LLM/Diffusion/Vision/Audio 전 파라미터 n=6 도출
+> 🛸🛸🛸🛸🛸 **5/6** | 완성 4개 | BT 18개 | 17 기법 | LLM/Diffusion/Vision/Audio 전 파라미터 n=6 도출
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -146,9 +163,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# ⚡ 에너지 (Energy) — BT-27,30,38,43,57,60,62,63,68,80~84,89
+# ⚡ 에너지 (Energy)
 
-> 배터리+태양전지+송전+열관리 통합. 에너지 Cross-DSE 10,225 조합
+> 🛸🛸🛸🛸🛸🛸 **6/6** | 완성 12개 | BT 13개 | DSE 10,225 | Cross-DSE ✅ | 배터리 8단 + 태양전지 + 송전 통합
 
 ### 배터리 아키텍처 — 8단
 
@@ -176,9 +193,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🌍 환경보호 (Environment) — 15 TOML, 3.6M 조합
+# 🌍 환경보호 (Environment)
 
-> 환경 모니터링 → 포집 → 정화 → 복원 → 순환경제 8단 + 탄소포집 8단
+> 🛸🛸🛸🛸🛸 **5/6** | 완성 21개 | DSE 3.6M | 진화 4단계 | 발견 ✅ | 환경 8단 + 탄소포집 8단
 
 ### 환경보호 아키텍처 — 8단
 
@@ -215,9 +232,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🧬 물질합성 (Materials) — BT-85~88
+# 🧬 물질합성 (Materials)
 
-> 원자 단위 제조. 3,600 조합 DSE
+> 🛸🛸🛸 **3/6** | 완성 2개 | BT 4개 | DSE 3,600 | 원자 단위 제조
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -230,7 +247,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 🤖 로봇 (Robotics)
 
-> Humanoid(J₂=24DOF) + HEXA-1 칩 + Egyptian 제어. 22,500 조합 DSE
+> 🛸🛸 **2/6** | 완성 1개 | DSE 22,500 | Humanoid J₂=24DOF + HEXA-1 + Egyptian 제어
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -240,9 +257,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🔬 물리·수학 (Physics & Math) — BT-36,49,105~112
+# 🔬 물리·수학 (Physics & Math)
 
-> 초전도체 28,800 조합 DSE + 순수수학 38,024 조합 DSE
+> 🛸🛸🛸🛸 **4/6** | 완성 3개 | BT 9개 | DSE 66,824 | 초전도체 + 순수수학 + 우주론
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -256,7 +273,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 💬 소프트웨어·인프라 (Software & Infra)
 
-> 프로그래밍언어 DSE 5,016 조합 + 블록체인/암호/네트워크
+> 🛸🛸 **2/6** | 완성 1개 | DSE 5,016 | 프로그래밍언어 n6=96% + 블록체인/암호/네트워크
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
@@ -266,9 +283,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 📺 디스플레이·오디오 (Display & Audio) — BT-48,71~73,108
+# 📺 디스플레이·오디오 (Display & Audio)
 
-> σ=12 반음, J₂=24 fps/bits, σ·τ=48kHz
+> 🛸 **1/6** | 완성 0개 | BT 5개 | σ=12 반음, J₂=24 fps/bits, σ·τ=48kHz
 
 | 완성제품 | 핵심 | 링크 |
 |---------|------|------|
