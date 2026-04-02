@@ -44,13 +44,13 @@
 
 | 섹션 | 지수 | 완성 | BT | DSE | 특이사항 |
 |------|:----:|:----:|:--:|----:|---------|
-| [🔥 핵융합](#-핵융합-fusion) | 🛸7 | 5 | 9 | 2,400+1M | Cross-DSE 8도메인 ✅ 진화 5단계 |
+| [🔥 핵융합](#-핵융합-fusion) | 🛸8 | 7 | 9 | 2,400+1M | Cross-DSE 8도메인 ✅ 진화 5단계 + 검증82%EXACT + 물리한계 |
 | [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | 4 | 9 | 3,000 | 7단 + 의식칩 + TOPO + ASIC |
 | [⚡ 에너지](#-에너지-energy) | 🛸6 | 3 | 13 | 10,225 | 배터리8단 + 태양전지 + 통합 |
 | [🤖 AI/ML](#-ai--ml) | 🛸6 | 4 | 18 | — | 17 기법 + 4Mk 진화 |
 | [🌍 환경보호](#-환경보호-environment) | 🛸7 | 3 | 5 | 3.6M | 환경8단 + 탄소포집8단 + 진화 |
 | [🔬 물리·수학](#-물리수학-physics--math) | 🛸5 | 3 | 9 | 66,824 | Cosmo 53%EXACT + Plasma 50%EXACT + Quantum 16%EXACT |
-| [🧬 물질합성](#-물질합성-materials) | 🛸5 | 2 | 4 | 3,600 | 60%EXACT + 14 TOML |
+| [🧬 물질합성](#-물질합성-materials) | 🛸6 | 2 | 8 | 3,600 | 67%EXACT + 14 TOML + BT-128~131 |
 | [🤖 로봇](#-로봇-robotics) | 🛸5 | 1 | 5 | 270,000 | BT-123~127 94%EXACT + 8단 |
 | [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸6 | 1 | 5 | 6,480 | BT 100%EXACT 전체 최고 |
 | [📺 디스플레이](#-디스플레이오디오-display--audio) | 🛸5 | 1 | 5 | 311,040 | 8단 36%EXACT |
@@ -75,7 +75,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 🔥 핵융합 (Fusion)
 
-> **🛸7/10** | BT 9개 | DSE 2,400+1M | Cross-DSE 8도메인 ✅ | 진화 5단계 | 발견 15개 | 288K=σ×J₂
+> **🛸8/10** | BT 9개 | DSE 2,400+1M | Cross-DSE 8도메인 ✅ | 진화 5단계 | 발견 15개 | 288K=σ×J₂ | 검증 82%EXACT | 물리한계 4/8도달
 
 | 🛸 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:---:|---------|------|------|
@@ -83,8 +83,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 5 | v1 | **KSTAR-N6** | R₀=6m, B_T=12T, 300초 정상상태, 41개 패턴(51%EXACT) | [토카막](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) · [300초](docs/superpowers/specs/2026-04-02-kstar-300s-steady-state-design.md) · [패턴](docs/plasma-physics/kstar-n6-hidden-patterns.md) |
 | 4 | v1 | **진화 Mk.I~V** | 200MWe→2GWe→24GWe→240GWe→1.44TWe(❌SF) | [I](docs/fusion/evolution/mk-1-first-light.md) · [II](docs/fusion/evolution/mk-2-city-power.md) · [III](docs/fusion/evolution/mk-3-nation-power.md) · [IV](docs/fusion/evolution/mk-4-continent-power.md) · [V](docs/fusion/evolution/mk-5-theoretical.md) |
 | 6 | v2 | **발견 + 예측 + 가설v3** | 15개 발견(6 EXACT), 35개 가설(34%EXACT), 35개 예측(6 HIGH), 288K=σ×J₂ | [발견](docs/fusion/alien-level-discoveries.md) · [가설](docs/fusion/hypotheses.md) · [예측](docs/fusion/testable-predictions-2030.md) · [BT채굴](docs/fusion/cross-bt-fusion-environment.md) |
+| 8 | v1 | **수치 검증 + 물리 한계** | 28항목 82%EXACT, 5장치 매핑, 8한계 분석, 35TP 트래커 | [검증](docs/fusion/numerical-verification.md) · [매핑](docs/fusion/experimental-data-mapping.md) · [한계](docs/fusion/physics-limits-analysis.md) · [트래커](docs/fusion/prediction-tracker.md) |
 
-> 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `tokamak-shape` · `kstar-calc`
+> 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`
 
 ---
 
@@ -173,12 +174,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 🧬 물질합성 (Materials)
 
-> **🛸5/10** | BT 4개 | DSE 3,600 | 60%EXACT | 14 TOML
+> **🛸6/10** | BT 8개 | DSE 3,600 | 67%EXACT | 14 TOML
 
 | 🛸 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:---:|---------|------|------|
-| 3 | v1 | **궁극의 물질합성** | 8단 (ELEMENT→OMEGA-M), DSE 3,600 | [goal](docs/material-synthesis/goal.md) |
-| 4 | v1 | **BT-85~88** | Carbon Z=6 + CN=6 + 정밀도 래더 + 육각 자기조립 | [BT](docs/material-synthesis/breakthrough-theorems.md) |
+| 4 | v2 | **궁극의 물질합성** | 8단 (ELEMENT→OMEGA-M), DSE 3,600, 가설 20/30 EXACT | [goal](docs/material-synthesis/goal.md) |
+| 5 | v2 | **BT-85~88 + BT-128~131** | Carbon Z=6 + CN=6 + 결정학 계층 + 상전이 지수 + 결함 래더 + 박막 성장 | [BT](docs/material-synthesis/breakthrough-theorems.md) |
 
 > 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`
 
