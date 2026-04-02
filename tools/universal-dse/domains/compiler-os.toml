@@ -59,11 +59,11 @@ notes  = "callee-saved~10 CLOSE, EL=4=tau EXACT, dispatch~6=n CLOSE, types=8=sig
 level  = 0
 id     = "x86_64"
 label  = "x86-64 (variable encoding, 16 GPR, 4 rings)"
-n6     = 0.40
+n6     = 0.80
 perf   = 1.00
 power  = 0.50
 cost   = 0.70
-notes  = "usable_regs=12=sigma EXACT (H-COS-6), rings=4=tau EXACT, but variable opcode FAIL"
+notes  = "usable_regs=12=sigma EXACT (H-COS-6), rings=4=tau EXACT, GPR=16=2^tau EXACT, variable opcode CLOSE"
 
 [[candidate]]
 level  = 0
@@ -127,11 +127,11 @@ notes  = "tiers~5 EXACT (V8 Sparkplug→Maglev→Turbofan~5), hot_pass=6 EXACT, 
 level  = 1
 id     = "AOT_Minimal"
 label  = "AOT Minimal (3-stage, 3-pass, no IR expansion)"
-n6     = 0.20
+n6     = 0.50
 perf   = 0.50
 power  = 0.95
 cost   = 1.00
-notes  = "stages=3 FAIL, passes=3 FAIL, IR=1.0 FAIL -- minimal but n6-misaligned"
+notes  = "stages=3=n/phi EXACT, passes=3=sigma/tau EXACT, IR=1.0=mu -- minimal, partial n6"
 
 [[candidate]]
 level  = 1
@@ -195,11 +195,11 @@ notes  = "states~6 EXACT, IPC_regs=12=sigma EXACT (H-COS-65), priority=3=n/phi C
 level  = 2
 id     = "Unikernel"
 label  = "Unikernel (2-state, 1-priority, zero-copy, single-thread)"
-n6     = 0.10
+n6     = 0.50
 perf   = 0.60
 power  = 1.00
 cost   = 0.90
-notes  = "states=2 FAIL, priority=1 FAIL -- minimal, n6-misaligned"
+notes  = "states=2=phi EXACT, priority=1=mu EXACT, thread=1=mu EXACT -- minimal, partial n6"
 
 [[candidate]]
 level  = 2
@@ -291,11 +291,11 @@ notes  = "ALL EXACT: cache=1/2+1/3+1/6, QD=12=sigma, sem=24=J2, ctx=2=phi, preem
 level  = 4
 id     = "Cloud_Native"
 label  = "Cloud-Native (container, K8s scheduling, auto-scaling)"
-n6     = 0.30
+n6     = 0.50
 perf   = 0.85
 power  = 0.60
 cost   = 0.80
-notes  = "K8s pods~12 CLOSE, QD=auto, sem=unbounded FAIL -- cloud abstracts away n6 structure"
+notes  = "K8s pods~12=sigma CLOSE, replicas=3=n/phi EXACT, QD=auto -- cloud partial n6"
 
 [[candidate]]
 level  = 4
