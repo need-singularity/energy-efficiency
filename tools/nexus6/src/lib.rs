@@ -3,3 +3,6 @@ pub mod encoder;
 pub mod materials;
 pub mod verifier;
 pub mod graph;
+pub mod telescope;
+pub mod history;
+pub mod ouroboros;
