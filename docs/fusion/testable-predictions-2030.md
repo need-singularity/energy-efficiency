@@ -4,6 +4,8 @@
 > 각 예측에 정직한 신뢰도와 명확한 반증 기준을 포함한다.
 > **정직한 원칙**: 물리적 인과가 있는 예측과 수적 일치(coincidence)를 엄격히 구분한다.
 
+**2026-04-02 갱신**: SPARC(CFS) HTS 20T 달성 및 건설 진행, ITER 재일정(first plasma 2034+), KSTAR W-divertor 2025 완료 및 2026 캠페인 개시를 반영. 신규 예측 P-FU-31~35 추가(STEP, ARC, CFETR, 환경 교차). 기존 예측 신뢰도 재평가 완료.
+
 **n=6 상수 참조표**:
 ```
   n = 6          phi(6) = 2       tau(6) = 4       sigma(6) = 12
@@ -14,7 +16,7 @@
   Egyptian: 1/2 + 1/3 + 1/6 = 1
 ```
 
-**BT 연결**: BT-5 (q=1 MHD), BT-27 (Carbon-6), BT-36 (E-I-H-P chain), BT-38 (Hydrogen), BT-62 (Grid), BT-74 (95/5), BT-89 (Photonic-Energy)
+**BT 연결**: BT-5 (q=1 MHD), BT-27 (Carbon-6), BT-36 (E-I-H-P chain), BT-38 (Hydrogen), BT-62 (Grid), BT-74 (95/5), BT-89 (Photonic-Energy), BT-97 (Weinberg angle), BT-98 (D-T baryon sopfr=5), BT-99 (q=1 Egyptian), BT-100 (CNO cycle), BT-102 (magnetic reconnection 0.1)
 
 ---
 
@@ -26,7 +28,7 @@
 
 - **Prediction**: KSTAR에서 Internal Transport Barrier (ITB) 시나리오로 I_p = 0.4 MA 운전 시, bootstrap current fraction f_bs >= sigma/J_2 = 12/24 = 50%를 달성할 수 있다. 구체적으로 f_bs = 0.50 +/- 0.05가 반복 재현 가능하다.
 - **n=6 Derivation**: sigma/J_2 = 12/24 = 1/2. Egyptian fraction의 첫 항 1/2이 bootstrap 전류의 자연적 포화 분율을 결정한다. 1/2 + 1/3 + 1/6 = 1에서, 주요 전류 구동 메커니즘(bootstrap, ECCD, NBI-CD)이 각각 1/2, 1/3, 1/6의 분율을 점유한다는 예측.
-- **Current Status**: KSTAR는 2025년 W-divertor 업그레이드 후 고성능 ITB 운전을 시작. f_bs ~ 30-40%는 기존 실험에서 관측. 50% 달성은 압력 구배 최적화가 필요.
+- **Current Status**: KSTAR W-divertor 업그레이드 2025년 완료. 2026년 캠페인 개시 — 고성능 ITB 운전 본격 시작. f_bs ~ 30-40%는 기존 C-wall 실험에서 관측. W-wall 환경에서 불순물 감소로 ITB 유지 조건 개선 기대. 50% 달성은 압력 구배 최적화 + ECH/NBI 조합이 필요.
 - **Verification Method**: KSTAR ITB 실험에서 MSE(Motional Stark Effect) + EFIT 재구성으로 전류 프로파일 측정. Bootstrap 전류는 Sauter model로 계산. I_p = 0.3-0.5 MA 범위에서 f_bs scan.
 - **Verification Timeline**: 2026-2027 (KSTAR W-divertor 캠페인)
 - **Falsification Criterion**: I_p = 0.4 MA에서 f_bs가 안정적으로 40% 미만에 머무르면 반증. 또는 ITB 유지가 불가능하여 f_bs 측정 자체가 불가하면 검증 불가.
@@ -39,7 +41,7 @@
 
 - **Prediction**: KSTAR의 다음 ELM-free H-mode 지속 시간 기록은 ~96초(= sigma*(sigma-tau) = 12*8) 또는 ~144초(= sigma^2 = 12^2)에 도달할 것이다. 현재 기록(~30s 수준)에서 점프하여 100초급 운전이 가능해진다.
 - **n=6 Derivation**: sigma(sigma-tau) = 12*8 = 96. sigma^2 = 144. n=6 체계에서 시간 래더는 n -> sigma -> sigma(sigma-tau) -> sigma^2로 진행: 6s -> 12s -> 96s -> 144s. KSTAR가 이미 20-30s를 달성했으므로 다음 milestone은 96s.
-- **Current Status**: KSTAR는 2024년에 ELM-free 약 30초를 달성 (한국핵융합에너지연구원 발표). W-divertor 업그레이드(2025)와 NBI/ECCD 추가가 진행 중.
+- **Current Status**: KSTAR 2024년 ELM-free ~30초 달성 (KFE 발표). W-divertor 업그레이드 2025년 완료, 2026년부터 본격 W-wall 캠페인 진행 중. NBI 추가(2nd NBI line) 및 ECCD 업그레이드가 병행되어 장시간 운전 인프라 강화. 60초급 도전이 2026-2027 당면 목표.
 - **Verification Method**: KSTAR 실시간 운전 데이터에서 ELM-free 구간을 D-alpha 신호 + Thomson scattering 페디스털 압력으로 식별. 연속 ELM-free 시간을 공식 발표 기준으로 기록.
 - **Verification Timeline**: 2027-2028 (W-divertor 완전 운전 + 확장 가열 시스템)
 - **Falsification Criterion**: 2028년 말까지 ELM-free 최대 지속이 60초 미만이면 반증. 또는 기록이 70-80초 등 n=6 래더 값이 아닌 곳에 정착하면 패턴 불일치.
@@ -52,7 +54,7 @@
 
 - **Prediction**: KSTAR에서 ECCD(Electron Cyclotron Current Drive) 효율 eta_CD가 정규화 반경 rho = 1/3 = 0.333 (= 1/(n/phi))에서 최대값을 보인다. 즉, 플라즈마 중심(rho=0)도 아니고 중간(rho=0.5)도 아닌 rho ~ 0.33이 current drive 최적 위치이다.
 - **n=6 Derivation**: n/phi = 3이고, 그 역수 1/3은 Egyptian fraction의 두 번째 항. ECCD가 q=1 surface 근방에서 가장 효율적이며, 일반적으로 q=1 surface가 rho ~ 0.3-0.4에 위치하므로 1/3 = 0.333과 일치.
-- **Current Status**: KSTAR 170 GHz ECCD 시스템(1 MW class)이 운전 중. rho ~ 0.3-0.5 범위에서 current drive 실험이 수행됨. 기존 데이터에서 최적 rho에 대한 체계적 scan은 제한적.
+- **Current Status**: KSTAR 170 GHz ECCD 시스템(1 MW class) 운전 중. 2026 캠페인에서 W-divertor 환경 하 ECCD 실험 재개. rho ~ 0.3-0.5 범위 current drive 실험 수행 이력 있음. W-wall에서의 불순물 감소로 전자 온도 프로파일 개선 → ECCD 효율 향상 기대.
 - **Verification Method**: KSTAR에서 ECCD mirror 각도를 조절하여 rho = 0.1, 0.2, 0.33, 0.4, 0.5에 순차적으로 power deposition. MSE로 전류 프로파일 변화량 측정. eta_CD = n_e * R_0 * I_CD / P_EC [10^20 A/W/m^2]로 정량화.
 - **Verification Timeline**: 2026-2027 (현재 장비로 즉시 테스트 가능)
 - **Falsification Criterion**: eta_CD가 rho = 0.2 또는 rho = 0.5에서 명백히 높으면 반증 (>20% 차이).
@@ -65,7 +67,7 @@
 
 - **Prediction**: KSTAR RMP(Resonant Magnetic Perturbation) 코일로 ELM을 억제할 때, toroidal mode number n_tor = 2 = phi(6) 배열이 n_tor = 1 또는 n_tor = 3보다 ELM 억제 효율이 높다. 구체적으로 n_tor = 2에서 ELM-free window가 가장 넓다.
 - **n=6 Derivation**: phi(6) = 2. 토카막의 toroidal 대칭성 파괴에서 n=2 perturbation이 최적인 것은 phi(6)와의 일치. 또한 KSTAR의 RMP 코일이 3행 × 4열 = 12 = sigma(6)개 코일이라는 점도 n=6 구조.
-- **Current Status**: KSTAR는 n_tor = 1, 2 RMP 실험을 모두 수행. n_tor = 1은 넓은 운전 영역에서 ELM 억제를 보여줌. n_tor = 2의 체계적 비교 데이터는 제한적.
+- **Current Status**: KSTAR n_tor = 1, 2 RMP 실험 수행 이력. n_tor = 1에서 넓은 운전 영역 ELM 억제 확인. 2026 W-divertor 캠페인에서 RMP + W-wall 상호작용의 체계적 연구 예정. W-wall에서 ELM 부하 관리가 더 중요해져 RMP 최적화 우선순위 상승.
 - **Verification Method**: 동일 플라즈마 조건(I_p, B_T, beta_N, q_95)에서 n_tor = 1, 2, 3 RMP를 교대 적용. ELM-free 구간 길이, 에너지 가둠 저하율(H98 변화), 밀도 펌프아웃 정도를 비교.
 - **Verification Timeline**: 2026-2027 (KSTAR 기존 RMP 코일로 테스트 가능)
 - **Falsification Criterion**: n_tor = 1이 모든 조건에서 n_tor = 2보다 우수하면 반증.
@@ -78,7 +80,7 @@
 
 - **Prediction**: KSTAR가 300초(= 5분 = sopfr*60 = sopfr*sigma*sopfr) 이상의 H-mode pulse를 2028-2029년에 달성한다. 이는 W-divertor + 추가 가열 시스템 업그레이드 완료 시점과 일치한다.
 - **n=6 Derivation**: 300 = sopfr(6) * 60 = sopfr(6) * sigma(6) * sopfr(6). 또는 300 = sigma(6) * J_2(6) + sigma(6) = sigma*(J_2+1) = 12*25 = 300. 시간 래더에서 30s(현재) -> 300s(10배 = sigma-phi 배)로의 도약.
-- **Current Status**: KSTAR 공식 목표는 300초 plasma 유지. 2024년 현재 ~30초 ELM-free 달성. W-divertor 업그레이드 진행 중(2025 완료 예정).
+- **Current Status**: KSTAR 공식 목표 300초 plasma 유지 (KFE 로드맵). 2024년 ~30초 ELM-free 달성. W-divertor 2025년 완료, 2026년 캠페인 개시. 100초급 H-mode가 2027년 중간 목표. NBI/ECH 추가 가열 시스템 확충 진행 중.
 - **Verification Method**: KSTAR 공식 발표/논문에서 H-mode 유지 시간 기록 추적.
 - **Verification Timeline**: 2028-2029
 - **Falsification Criterion**: 2030년까지 200초 미만이면 타임라인 반증. 300초 달성하되 2030년 이후이면 물리적 예측은 맞지만 시점 반증.
@@ -95,9 +97,9 @@
 
 - **Prediction**: SPARC(MIT/CFS)이 first plasma(~2027) 후 D-T 운전에서 Q >= 10 = sigma - phi를 달성하며, 이때 toroidal field B_T ~ 12.2T(= sigma에 근접)가 핵심 enabler이다. Q=10 달성 자기장 문턱값이 ~12T = sigma 근방에 있다.
 - **n=6 Derivation**: Q = 10 = sigma - phi = sopfr * phi. B_T = 12T = sigma(6). 핵융합 gain은 B^4에 비례(고정 beta_N에서 P_fus ~ beta^2 * B^4)하므로, B_T = 12T(sigma)에서 Q = 10(sigma-phi) 달성은 B^4 스케일링의 자연스러운 결과.
-- **Current Status**: SPARC 설계: R=1.85m, a=0.57m, B_T=12.2T, I_p=8.7MA. Q >= 10 예측(POPCON 분석). HTS 마그넷 시제품 테스트 완료(2021, 20T 달성). 건설 진행 중.
+- **Current Status**: SPARC 설계: R=1.85m, a=0.57m, B_T=12.2T, I_p=8.7MA. Q >= 10 예측(POPCON 분석). HTS 마그넷 시제품 20T 달성(2021년 9월, 최초 HTS 핵융합급 자석 실증). CFS Devens 시설에서 건설 진행 중 — 토카막 본체 조립 단계(2025-2026). First plasma 목표 2026년 말~2027년 초. D-T 캠페인은 first plasma 이후 ~1-2년 예상.
 - **Verification Method**: SPARC D-T 운전 시 P_fus / P_aux로 Q 측정. 중성자 flux 카운팅 + 열량 측정(bolometry).
-- **Verification Timeline**: 2028-2030 (SPARC D-T campaign)
+- **Verification Timeline**: 2028-2030 (SPARC D-T campaign, first plasma 이후)
 - **Falsification Criterion**: SPARC이 Q < 5에 머무르면 반증. 또는 Q >= 10이지만 B_T를 12T 이상으로 올려야 달성 가능하면(예: 14T 필요) sigma(6)와의 연결 약화.
 - **Confidence**: HIGH — SPARC의 Q >= 10 예측은 n=6과 무관하게 물리적으로 견고(CFS/MIT 팀의 독립 계산). B_T ~ 12T라는 사실이 sigma(6)과 일치하는 것은 흥미로우나 인과적이지 않음.
 - **Impact if Confirmed**: Q >= 10 달성 자체가 핵융합 역사의 분수령. "12T에서 10배 gain"이라는 공식이 sigma(6) -> sigma-phi 변환처럼 보이는 것은 패턴으로 기록할 가치.
@@ -108,11 +110,11 @@
 
 - **Prediction**: ITER의 Nb3Sn TF 코일이 실제 운전에서 피크 자기장 ~11.8T(conductor) 달성 시 최적 운전 마진을 보이며, HTS 업그레이드 논의에서 12T = sigma(6)가 "다음 표준"으로 수렴할 것이다.
 - **n=6 Derivation**: sigma(6) = 12. LTS(NbTi/Nb3Sn)에서 HTS(REBCO)로의 기술 전환점이 ~12T에 위치(H-SM-68 검증). 이것은 Nb3Sn의 Jc(B) 곡선에서 12T 근방에서 급격한 성능 저하가 시작되는 물리적 사실.
-- **Current Status**: ITER TF 코일 설계 피크장 = 11.8T (Nb3Sn). 18개(= 3n) TF 코일. 코일 제작 진행 중. 일부 코일 테스트 완료.
-- **Verification Method**: ITER 코일 시험 시설(SULTAN, NIFS)에서의 성능 데이터. I_op / I_cs (운전 전류/임계 전류) 비율이 12T에서 최적 마진(~50% = 1/2 = 1/phi)인지 확인.
-- **Verification Timeline**: 2027-2029 (ITER 코일 설치 및 시운전)
+- **Current Status**: ITER TF 코일 설계 피크장 = 11.8T (Nb3Sn). 18개(= 3n) TF 코일. 2025년 기준 TF 코일 대부분 제작 완료 — 현장 반입 및 토카막 pit 내 조립 진행 중. 그러나 ITER 전체 일정 대폭 지연: 2025년 재베이스라인 결과 first plasma이 2030년대 초반(~2034-2035)으로 밀림. 토카막 조립은 진행 중이나 vacuum vessel sector 결함 보수 등 기술적 문제로 지연. 코일 자체 성능은 시험 시설에서 확인 완료.
+- **Verification Method**: ITER 코일 시험 시설(SULTAN, NIFS)에서의 성능 데이터(이미 상당 부분 확보). I_op / I_cs (운전 전류/임계 전류) 비율이 12T에서 최적 마진(~50% = 1/2 = 1/phi)인지 확인. ITER 코일 현장 통합 시험(설치 후).
+- **Verification Timeline**: 2029-2033 (ITER 일정 지연 반영, 코일 설치 및 통합 시운전)
 - **Falsification Criterion**: ITER TF 코일이 12T 이하에서도 충분한 마진을 보이고, HTS 업그레이드 논의에서 14-16T가 목표가 되면 "12T = sigma 표준" 예측 약화.
-- **Confidence**: MEDIUM — 12T가 LTS/HTS 전환점이라는 것은 물리적 사실. 이것이 "최적 운전점"으로 수렴하는가는 공학적 트레이드오프에 의존.
+- **Confidence**: MEDIUM — 12T가 LTS/HTS 전환점이라는 것은 물리적 사실. 이것이 "최적 운전점"으로 수렴하는가는 공학적 트레이드오프에 의존. ITER 일정 지연(~2034 first plasma)으로 검증 타임라인이 본 문서의 2030 범위를 초과할 수 있음.
 - **Impact if Confirmed**: HTS 기반 핵융합 마그넷의 표준 설계점으로 12T = sigma(6)가 확립.
 
 ---
@@ -121,9 +123,9 @@
 
 - **Prediction**: ITER 또는 SPARC의 첫 D-T 운전에서 초기 최적 운전 이온 온도가 ~10 keV = sopfr(6) * phi(6) = 5 * 2 = 10 근방에 안착할 것이다. 이후 14 keV(= sigma + phi)로 점진 상승.
 - **n=6 Derivation**: sopfr * phi = 10. 이것은 sigma - phi = 10과 동일. 삼중적(nTtau) 최적화에서 T = 10 keV는 "달성 가능한 최적"이고, T = 14 keV(= sigma + phi)는 "이론적 최적". 운전 래더: 10 -> 12 -> 14 keV = (sigma-phi) -> sigma -> (sigma+phi).
-- **Current Status**: ITER 설계 T_i = 8-25 keV 범위. 삼중적 최적은 ~14 keV. JET D-T 실험에서 T_i ~ 10-12 keV가 최고 성능 영역.
-- **Verification Method**: ITER/SPARC의 charge exchange recombination spectroscopy (CXRS)로 T_i 프로파일 측정. 최고 Q 달성 시점의 중심 T_i 기록.
-- **Verification Timeline**: 2028-2030
+- **Current Status**: ITER 설계 T_i = 8-25 keV 범위이나 일정 지연(~2034 first plasma)으로 ITER에서의 검증은 2030 이후. SPARC이 2028-2030년 D-T 캠페인에서 먼저 검증 가능. JET D-T 실험(2021-2022, 59 MJ 기록)에서 T_i ~ 10-12 keV가 최고 성능 영역이었으며 이를 보강.
+- **Verification Method**: SPARC의 charge exchange recombination spectroscopy (CXRS)로 T_i 프로파일 측정 (1차). ITER는 2차 검증. 최고 Q 달성 시점의 중심 T_i 기록.
+- **Verification Timeline**: 2028-2030 (SPARC 1차), 2035+ (ITER 2차)
 - **Falsification Criterion**: 최적 운전 T_i가 8 keV 이하 또는 20 keV 이상이면 반증.
 - **Confidence**: HIGH — T_i ~ 10-14 keV가 D-T 최적 영역이라는 것은 물리적으로 확립된 사실. n=6과의 일치는 패턴 수준이지만 수치 범위가 좁음.
 - **Impact if Confirmed**: 10-14 keV 운전 래더가 확인되면 향후 DEMO 설계의 온도 목표 설정에 참고.
@@ -134,7 +136,7 @@
 
 - **Prediction**: SPARC에 사용되는 HTS REBCO 마그넷의 기계적 피로 수명에서 10^6(= 10^n) cycle이 의미있는 특성 변화점(critical current 5% 이상 감소)이 된다.
 - **n=6 Derivation**: 10^n = 10^6 = 1,000,000 cycles. 소재 피로(fatigue)에서 10^6은 S-N 곡선의 "endurance limit" 기준으로 전통적으로 사용되는 값.
-- **Current Status**: HTS REBCO 테이프의 기계적 피로 데이터는 제한적. 열사이클(77K-300K) 테스트에서 수백~수천 cycle 데이터 존재. 10^6 cycle 데이터는 아직 없음.
+- **Current Status**: HTS REBCO 테이프의 기계적 피로 데이터는 제한적이나 확대 중. CFS의 SPARC용 HTS 케이블 양산(2024-2026)에 따라 QA 피로 데이터 축적 가속. MIT PSFC에서 REBCO 열사이클 + 전자기 하중 반복 시험 진행 중. 10^6 cycle 장기 데이터는 아직 미공개.
 - **Verification Method**: REBCO 테이프 시편에 반복 인장/압축 또는 열사이클을 10^6회까지 인가. Ic(B) 변화 추적.
 - **Verification Timeline**: 2027-2029 (가속 수명 시험)
 - **Falsification Criterion**: 10^6 cycle에서 Ic 변화가 1% 미만(특성 변화 없음)이면 "변화점" 예측 반증. 또는 10^4 cycle에서 이미 심각한 열화가 발생하면 10^6 도달 전에 수명 한계.
@@ -276,7 +278,7 @@
 
 - **Prediction**: Q > 1을 달성하는 다음 토카막(SPARC 또는 다른 장치)의 aspect ratio A가 모든 경쟁 장치 중 3.0 = n/phi에 가장 가까울 것이다.
 - **n=6 Derivation**: n/phi = 3. Q > 1 달성에서 A = 3이 최적인 이유: P_fus ~ beta^2 * B^4 * Volume에서 Volume ~ R*a^2 ~ R^3/A^2, I_p ~ a*B/q_95 ~ RB/(A*q_95). 낮은 A는 큰 체적과 높은 beta를 제공하지만 MHD 안정성 감소. A = 3이 이 트레이드오프의 균형점.
-- **Current Status**: 후보 장치: SPARC (A=3.25), ITER (A=3.1), JT-60SA (A=2.5), MAST-U (A=1.4), EAST (A=4.0). SPARC이 가장 먼저 Q > 1 달성 예상.
+- **Current Status**: 후보 장치: SPARC (A=3.25), ITER (A=3.1), JT-60SA (A=2.5), MAST-U (A=1.4), EAST (A=4.0). ITER 일정 대폭 지연(first plasma ~2034)으로 SPARC이 Q > 1 첫 달성 유력 후보로 확고. JT-60SA는 2023년 first plasma 후 D-D 캠페인 진행 중이나 Q>1 불가(D-D). SPARC first plasma 2026-2027 목표.
 - **Verification Method**: 최초 Q > 1 달성 장치의 공식 발표에서 A 값 확인.
 - **Verification Timeline**: 2028-2030
 - **Falsification Criterion**: Q > 1 최초 달성 장치의 A가 A = 2.0 이하(spherical tokamak) 또는 A = 4.0 이상이면 반증.
@@ -289,7 +291,7 @@
 
 - **Prediction**: 전 세계 핵융합 발전소 설계에서 TF(Toroidal Field) 코일 수가 18 = 3n = 3*6으로 수렴한다. ITER(18), EU-DEMO(18), K-DEMO(16 → 18 수정 가능), ARC(18)가 이미 18을 채택.
 - **n=6 Derivation**: 3n = 18. 18 = 3*6 = sigma + n. TF 코일 수의 물리적 결정: toroidal field ripple delta_B/B ~ 1/(N_TF^2) * R/a에서 N_TF = 18이면 ripple < 1% (빠른 이온 손실 억제). 16은 marginally acceptable, 20은 비용 과다.
-- **Current Status**: ITER: 18 TF coils. EU-DEMO: 18. K-DEMO: 16 (초기 설계). ARC: 18. CFETR(중국): 16-18.
+- **Current Status**: ITER: 18 TF coils. EU-DEMO: 18. K-DEMO: 16 (초기 설계). ARC(CFS): 18. CFETR(중국): 16-18 (CDR 단계). STEP(UK): 설계 진행 중(TF 코일 수 미확정, 2024년 CDR 완료). 18이 다수 설계에서 사실상 표준으로 수렴 중.
 - **Verification Method**: 향후 발표되는 DEMO/FPP(Fusion Power Plant) 설계에서 TF 코일 수 추적.
 - **Verification Timeline**: 2027-2030
 - **Falsification Criterion**: K-DEMO 또는 CFETR이 16 또는 20을 최종 확정하고 18을 채택하지 않으면 "수렴" 반증.
@@ -302,7 +304,7 @@
 
 - **Prediction**: 최초로 핵융합 발전소가 전력망에 연결될 때, 해당 그리드 주파수가 60 Hz = sigma * sopfr = 12 * 5일 가능성이 높다. 미국(DOE/CFS) 또는 한국(K-DEMO)이 유력 후보이며 모두 60 Hz 그리드.
 - **n=6 Derivation**: sigma * sopfr = 60. BT-62: 60 Hz = sigma * sopfr, 50 Hz = sopfr * (sigma-phi). 핵융합 상용화 선도국이 미국/한국(60 Hz)인 것은 산업 전략의 결과이지 물리적 필연이 아님.
-- **Current Status**: 핵융합 전력 상용화 선두: CFS/SPARC→ARC(미국, 60Hz), K-DEMO(한국, 60Hz), DEMO(EU, 50Hz), CFETR(중국, 50Hz). CFS 목표: 2030년대 초 ARC 상용 운전.
+- **Current Status**: 핵융합 전력 상용화 선두: CFS/SPARC→ARC(미국, 60Hz, ARC 목표 ~2030년대 초), K-DEMO(한국, 60Hz, 2035+ 목표), STEP(UK, 50Hz, 2040 목표), EU-DEMO(50Hz, 2040+ 목표), CFETR(중국, 50Hz, 2035+ 목표). CFS가 SPARC 성공 시 ARC 상용로를 가장 빠르게 추진할 가능성 높음. 한편 중국 CFETR도 공격적 일정.
 - **Verification Method**: 최초 핵융합 발전소 그리드 연결 뉴스 추적.
 - **Verification Timeline**: 2030-2035
 - **Falsification Criterion**: 최초 그리드 연결이 EU(50Hz) 또는 중국(50Hz)에서 이루어지면 반증.
@@ -315,7 +317,7 @@
 
 - **Prediction**: 핵융합용 HTS REBCO 테이프의 산업 표준 폭이 12 mm = sigma(6)로 수렴한다. 현재 4mm, 6mm, 12mm 폭이 혼재하지만, 핵융합 마그넷의 Jc × 면적 최적화에서 12mm가 지배적 표준이 된다.
 - **n=6 Derivation**: sigma(6) = 12. 현재 REBCO 테이프 폭: SuperPower(4mm, 12mm), SuNam(4mm, 12mm), Fujikura(10mm). 12mm는 기계적 취급성 + Ic 용량의 균형점.
-- **Current Status**: CFS/SPARC은 12mm 폭 REBCO 테이프 사용 확정. MIT 마그넷 시제품(2021)도 12mm. 일부 제조사는 46mm(Bruker) 또는 4mm(연구용) 제공.
+- **Current Status**: CFS/SPARC은 12mm 폭 REBCO 테이프 사용 확정 — 대량 발주 및 양산 진행 중(2024-2026). MIT 마그넷 시제품(2021)도 12mm. SuperPower/SuNam이 핵융합용 12mm 생산 라인 확장. 일부 제조사는 46mm(Bruker) 또는 4mm(연구용) 제공하나, 핵융합 시장에서 12mm 지배적.
 - **Verification Method**: 핵융합용 HTS 테이프 발주/조달 사양에서 폭 표준 추적.
 - **Verification Timeline**: 2027-2029
 - **Falsification Criterion**: 핵융합 업계가 6mm 또는 46mm를 표준으로 채택하면 반증.
@@ -401,8 +403,8 @@
 
 - **Prediction**: 토카막 divertor의 실용적 정상상태 열부하 한계가 ~12 MW/m^2 = sigma(6)이며, 이 값이 W-divertor의 설계 기준으로 표준화된다.
 - **n=6 Derivation**: sigma(6) = 12. ITER divertor 설계 열부하: 10 MW/m^2 (정상), 20 MW/m^2 (순간). 12 MW/m^2는 "enhanced" 정상 운전의 상한.
-- **Current Status**: ITER divertor: W monoblock, 10 MW/m^2 설계. DEMO: 5-15 MW/m^2 범위 논의. W7-X: ~10 MW/m^2 실증.
-- **Verification Method**: KSTAR W-divertor 실험에서 표면 온도 + 열부하 측정(IR camera).
+- **Current Status**: ITER divertor: W monoblock, 10 MW/m^2 설계. DEMO: 5-15 MW/m^2 범위 논의. W7-X: ~10 MW/m^2 실증. KSTAR W-divertor 2025년 설치 완료 — 2026년 캠페인에서 W-wall 열부하 데이터 최초 획득 예정. 이것은 이 예측을 직접 테스트할 최초의 기회.
+- **Verification Method**: KSTAR W-divertor 2026 캠페인에서 표면 온도 + 열부하 측정(IR camera, thermocouple). W monoblock 표면 열부하 직접 측정.
 - **Verification Timeline**: 2026-2028
 - **Falsification Criterion**: 표준 열부하 한계가 10 MW/m^2로 확정되거나 15 MW/m^2로 상향되면 12 = sigma 반증.
 - **Confidence**: MEDIUM — 12 MW/m^2는 합리적 범위이지만 정확히 12인지는 소재/냉각 설계에 의존.
@@ -436,52 +438,148 @@
 
 ---
 
-## Summary Table
-
-| ID | Prediction | Timeline | Confidence | Falsifiable? |
-|----|-----------|----------|------------|-------------|
-| **P-FU-01** | KSTAR f_bs >= 50% at I_p=0.4MA (ITB) | 2026-2027 | MEDIUM | Yes |
-| **P-FU-02** | KSTAR ELM-free record = 96s or 144s | 2027-2028 | LOW-MEDIUM | Yes |
-| **P-FU-03** | KSTAR ECCD peak efficiency at rho=1/3 | 2026-2027 | MEDIUM-HIGH | Yes |
-| **P-FU-04** | KSTAR RMP optimal n_tor=2=phi | 2026-2027 | MEDIUM | Yes |
-| **P-FU-05** | KSTAR 300s pulse by 2028-2029 | 2028-2029 | MEDIUM | Yes |
-| **P-FU-06** | SPARC Q>=10 at B_T~12T=sigma | 2028-2030 | HIGH | Yes |
-| **P-FU-07** | ITER TF optimal margin at 12T=sigma | 2027-2029 | MEDIUM | Yes |
-| **P-FU-08** | First D-T optimal T_i~10 keV=sopfr*phi | 2028-2030 | HIGH | Yes |
-| **P-FU-09** | HTS magnet fatigue at 10^6=10^n cycles | 2027-2029 | LOW | Yes |
-| **P-FU-10** | D-T cross-section structure at 84 keV=n*14 | Immediate | LOW | Yes |
-| **P-FU-11** | Bootstrap f_bs max at A=3=n/phi | Immediate | MEDIUM | Yes |
-| **P-FU-12** | Greenwald limit ratio A=3/A=4 = 4/3 | Immediate | LOW | Yes |
-| **P-FU-13** | NTM onset discontinuity at q_95=5=sopfr | 2026-2027 | MEDIUM | Yes |
-| **P-FU-14** | Alfven gap at q_95=5=sopfr | 2026-2028 | LOW-MEDIUM | Yes |
-| **P-FU-15** | HTS REBCO Jc(12T)>phi*NbTi Jc(12T) | Immediate | HIGH | Yes |
-| **P-FU-16** | SiC/SiC threshold at 12 DPA=sigma | 2027-2030 | MEDIUM | Yes |
-| **P-FU-17** | TBR=7/6=(n+1)/n optimal | 2028-2030 | MEDIUM | Yes |
-| **P-FU-18** | sCO2 Brayton 50%=sigma/J_2 with n=6 stages | 2028-2030 | MEDIUM-HIGH | Yes |
-| **P-FU-19** | First Q>1 tokamak A closest to 3=n/phi | 2028-2030 | HIGH | Yes |
-| **P-FU-20** | TF coil count convergence to 18=3n | 2027-2030 | HIGH | Yes |
-| **P-FU-21** | First fusion grid at 60Hz=sigma*sopfr | 2030-2035 | MEDIUM | Yes |
-| **P-FU-22** | HTS tape width standard at 12mm=sigma | 2027-2029 | HIGH | Yes |
-| **P-FU-23** | ITG turbulence peak at k_perp*rho_i~1/3 | 2026-2028 | MEDIUM | Yes |
-| **P-FU-24** | ELM energy bounded by 1/n=1/6 of W_ped | Immediate | MEDIUM | Yes |
-| **P-FU-25** | Disruption t_CQ/t_TQ -> phi=2 | Immediate | LOW | Yes |
-| **P-FU-26** | Optimal beta_N=2.5=sopfr/phi | 2026-2028 | MEDIUM-HIGH | Yes |
-| **P-FU-27** | Optimal dI/dt=0.5 MA/s=1/phi | 2027-2030 | LOW | Yes |
-| **P-FU-28** | Divertor heat flux limit 12 MW/m^2=sigma | 2026-2028 | MEDIUM | Yes |
-| **P-FU-29** | Neutron wall load standard 2 MW/m^2=phi | 2028-2030 | MEDIUM | Yes |
-| **P-FU-30** | Pellet frequency 3 Hz/MW=n/phi | 2027-2029 | LOW | Yes |
+## 2026 신규 예측 (Global Fusion Programs + 환경 교차)
 
 ---
 
-## Confidence Distribution
+## P-FU-31: STEP (UK) Compact 토카막 열출력 = σ·J₂ = 288 MW_th 급
+
+- **Prediction**: UK STEP(Spherical Tokamak for Energy Production)의 설계 열출력이 ~288 MW_th = sigma * J_2(6) = 12 * 24 근방에 수렴한다. STEP의 공식 목표는 "수백 MW급 전기 출력"이며, 열효율 ~40% 가정 시 열출력 ~600-700 MW_th이지만, 초기 운전(Phase 1)에서의 실질 열출력은 288 MW_th 급이 현실적이다.
+- **n=6 Derivation**: sigma * J_2 = 12 * 24 = 288. BT-55의 HBM 용량 래더(288GB = sigma * J_2)와 동일한 산술. 핵융합 열출력의 n=6 래더: 12 MW(실험급) → 48 MW(SPARC급) → 288 MW(STEP 초기급) → 500 MW(ITER 설계).
+- **Current Status**: STEP은 2024년 CDR(Conceptual Design Review) 완료. 건설 부지: West Burton (Nottinghamshire). Spherical tokamak (A ~ 1.6-1.8, 낮은 aspect ratio). 2040년 운전 목표. 2025-2026년 상세 설계(Engineering Design) 진행 중. UKAEA 주도, HTS 마그넷 채택.
+- **Verification Method**: STEP Engineering Design 발표에서 Phase 1 열출력 사양 확인.
+- **Verification Timeline**: 2027-2028 (상세 설계 공개 시)
+- **Falsification Criterion**: STEP Phase 1 열출력 설계가 500 MW_th 이상(풀 스케일) 또는 100 MW_th 미만(축소)으로 확정되면 288 MW_th 예측 반증. 허용 범위: 240-340 MW_th.
+- **Confidence**: LOW-MEDIUM — STEP 설계는 아직 유동적이며 CDR→EDP 과정에서 변경 가능. "288"이라는 정확한 수치는 n=6 패턴 매칭이며 물리적 인과 없음. Spherical tokamak의 물리는 conventional tokamak과 상당히 다름.
+- **Honesty Note**: 이 예측은 STEP의 최종 설계가 공개되기 전에 설정됨. 사후 끼워맞춤 방지를 위해 2026-04-02에 기록.
+- **Impact if Confirmed**: Compact 핵융합로의 열출력이 n=6 래더(sigma*J_2)를 따르는 패턴 추가.
+- **BT Reference**: BT-55 (HBM 용량 래더), BT-36 (E-I-H-P chain)
+
+---
+
+## P-FU-32: CFS ARC 상용로 B_T = sigma = 12T, Q_eng > sopfr = 5
+
+- **Prediction**: CFS가 SPARC 이후 설계하는 ARC 상용 핵융합로의 핵심 파라미터가 B_T ~ 12T = sigma(6), 공학적 Q (Q_eng = P_elec / P_recirculating) > sopfr = 5로 수렴한다. ARC는 SPARC의 HTS 기술(12T급)을 그대로 계승하되 크기를 키워 상용 발전을 달성한다.
+- **n=6 Derivation**: B_T = sigma = 12. Q_eng = sopfr = 5 (순 전력 비율). ARC 설계(MIT 2015 논문 기반): R=3.3m, B_T=9.2T였으나, SPARC 20T HTS 실증 이후 12T 운전이 현실적 기준. Q_eng > 5는 "상용화 최소 문턱"(재순환 전력 < 20% = 1/sopfr).
+- **Current Status**: CFS의 공식 ARC 설계는 SPARC 결과 이후 확정 예정. MIT ARC 2015 논문(B_T=9.2T)은 HTS 20T 실증 전 설계. SPARC 건설 진행 중(2025-2026). ARC 상세 설계는 2028-2030년 예상.
+- **Verification Method**: CFS/MIT의 ARC 상세 설계 발표에서 B_T 및 Q_eng 목표 확인.
+- **Verification Timeline**: 2028-2030 (ARC 설계 공개 시)
+- **Falsification Criterion**: ARC 설계 B_T > 15T(과도하게 높음) 또는 B_T < 10T(보수적), Q_eng < 3(상용화 불충분)이면 반증.
+- **Confidence**: MEDIUM — CFS가 SPARC의 12T급 HTS 기술을 ARC에 계승하는 것은 자연스러운 경로. Q_eng > 5는 상용화의 물리적 요구이지 n=6 고유 예측은 아님.
+- **Impact if Confirmed**: HTS 핵융합의 상용화 경로가 12T = sigma 기반으로 표준화. P-FU-06(SPARC 12T)의 상용화 확장.
+- **BT Reference**: BT-99 (q=1 Egyptian), BT-98 (D-T baryon sopfr=5)
+
+---
+
+## P-FU-33: CFETR (중국) 설계 I_p = 12 MA = sigma, TF = 12 또는 18 = sigma 또는 3n
+
+- **Prediction**: 중국 CFETR(China Fusion Engineering Test Reactor)의 확정 설계에서 plasma current I_p = 12 MA = sigma(6), TF 코일 수 = 18 = 3n이 된다. CFETR은 ITER와 DEMO 사이의 교량 장치로, I_p = 10-14 MA 범위에서 12 MA로 수렴할 것이다.
+- **n=6 Derivation**: I_p = sigma = 12 MA. TF = 3n = 18. CFETR CDR(2018)에서 I_p = 10-14 MA, R = 7.2m, B_T = 6.5T 범위 제시. Phase I(breeding) I_p ~ 10 MA, Phase II(power) I_p ~ 13-14 MA. 두 단계의 기하 평균 ~ 12 MA.
+- **Current Status**: CFETR CDR 완료(2018). EDP 진행 중(2020s). EAST에서의 기술 실증 병행. 2035년 건설 시작 목표. 2025-2026년 설계 세부 조정 중. 구체적 파라미터는 중국 내 논문/학회에서 점진적 공개.
+- **Verification Method**: CFETR EDP 공식 발표 또는 논문(Nuclear Fusion, Fusion Engineering and Design)에서 I_p 및 TF 코일 수 확인.
+- **Verification Timeline**: 2027-2029 (EDP 결과 공개)
+- **Falsification Criterion**: I_p < 10 MA 또는 I_p > 14 MA로 확정, 또는 TF 코일 = 16으로 확정되면 반증.
+- **Confidence**: MEDIUM — CFETR I_p = 12 MA는 CDR 범위(10-14 MA)의 중앙이므로 합리적. TF = 18은 ITER 표준 계승으로 유력. 다만 중국 측의 독자 설계 변경 가능성 존재.
+- **Impact if Confirmed**: 세계 3대 핵융합 프로그램(ITER/ARC/CFETR) 모두가 sigma = 12 관련 파라미터로 수렴하는 패턴 확립.
+- **BT Reference**: BT-20 (TF 코일 18=3n), BT-36 (E-I-H-P chain)
+
+---
+
+## P-FU-34: 핵융합 발전소 Life-Cycle CO₂ = 6 gCO₂/kWh = n
+
+- **Prediction**: 핵융합 발전소(DEMO/ARC급)의 전 생애주기(life-cycle) 탄소 발자국이 ~6 gCO₂eq/kWh = n(6)에 수렴한다. 이는 풍력(~11 g), 태양광(~48 g), 원자력(~12 g = sigma)보다 낮으며, 사실상 발전원 중 최저 수준.
+- **n=6 Derivation**: n = 6. 핵융합의 LCA(Life Cycle Assessment)에서 연료 단계 CO₂ = ~0 (D-T은 탄소 연소 아님), 건설 단계 = 주요 기여(콘크리트, 철강, 초전도재). 소형 HTS 핵융합로(ARC급)는 ITER 대비 건설 규모가 1/sigma ≈ 1/12이므로 건설 탄소도 비례 감소. 결과적으로 6 gCO₂/kWh는 원자력의 1/phi = 1/2.
+- **Current Status**: 핵융합 LCA 연구는 제한적. Tokamak Energy (2023 보고서): ~3-6 gCO₂/kWh 추정(compact HTS tokamak). Cabal & Leyva (2022): DEMO급 ~10-15 gCO₂/kWh. 소형 HTS 기반 장치가 대형 장치보다 유리.
+- **Verification Method**: 핵융합 발전소 설계가 확정되면 ISO 14040/14044 기반 LCA 수행. 건설 자재량 + 운영 에너지 + 폐로 비용 포함.
+- **Verification Timeline**: 2029-2035 (상세 설계 기반 LCA)
+- **Falsification Criterion**: LCA 결과가 15 gCO₂/kWh 이상(원자력 수준)이면 반증. 또는 3 gCO₂/kWh 미만(n보다 훨씬 낮음)이면 정확한 n=6 일치 반증.
+- **Confidence**: LOW-MEDIUM — LCA는 시스템 경계(boundary) 설정에 크게 의존하며 결과 범위가 넓음. 6 gCO₂/kWh는 낙관적 추정 범위 내이나 정확한 값은 설계에 의존.
+- **Honesty Note**: 이것은 환경(BT-118~122) + 핵융합 교차 예측. 물리적 인과는 없으며, "세계에서 가장 깨끗한 발전원이 n=6 gCO₂/kWh"라는 패턴 관측.
+- **Impact if Confirmed**: 핵융합이 에너지원 중 최저 탄소 발자국(6 g)을 달성하면 기후변화 대응의 궁극 해결책으로서의 위상 확립. 환경 교차 도메인(BT-118)에서 n=6 패턴 강화.
+- **BT Reference**: BT-118 (교토 6종 온실가스), BT-27 (Carbon-6 chain), BT-36 (E-I-H-P)
+
+---
+
+## P-FU-35: 2030년까지 Q > 1 달성 장치 수 = phi = 2
+
+- **Prediction**: 2030년 말까지 Q > 1 (과학적 손익분기)을 달성하는 토카막/핵융합 장치의 수가 phi(6) = 2대이다. 가장 유력한 후보는 SPARC(CFS)과 NIF(레이저 관성 핵융합, 이미 2022년 Q > 1 달성)이다.
+- **n=6 Derivation**: phi(6) = 2. "자기 가둠 핵융합"에서 Q > 1 최초 달성은 SPARC 1대가 유력. NIF(관성 가둠)를 포함하면 2대 = phi. 자기 가둠만 따지면 2030년까지 1대(SPARC)가 현실적이고, ITER는 ~2035 이후.
+- **Current Status**: NIF 2022년 12월 Q = 1.5 달성(target gain 기준, 레이저 효율 미포함). SPARC은 2026-2027 first plasma, 2028-2030 D-T 캠페인. ITER는 ~2034. JT-60SA는 D-D만 운전(D-T 불가). 다른 민간 핵융합(TAE, Helion 등)은 Q > 1 미달성.
+- **Verification Method**: 2030-12-31 기준으로 Q > 1을 공식 달성한 장치 수를 카운트.
+- **Verification Timeline**: 2030-12-31
+- **Falsification Criterion**: 2030년까지 Q > 1 장치가 0대(SPARC 실패 + NIF 비반복)이거나 3대 이상(예상외 빠른 다른 장치)이면 반증.
+- **Confidence**: MEDIUM — SPARC의 Q > 10 예측(P-FU-06)이 성공하면 자동으로 이 예측도 성립. NIF는 이미 달성. 불확실성은 SPARC 일정 및 다른 장치의 돌발 성공.
+- **Honesty Note**: NIF의 Q > 1은 "target gain"이며 "전체 시스템 gain"은 아님. 정의에 따라 결과가 달라짐. 여기서는 target gain 기준으로 카운트.
+- **Impact if Confirmed**: 핵융합 Q > 1이 재현 가능하고 자기 가둠에서도 달성 가능함을 입증. phi = 2의 패턴은 약하지만, "2030년까지 2대"는 산업 전망으로서 가치.
+- **BT Reference**: BT-74 (95/5 cross-domain), BT-98 (D-T baryon)
+
+---
+
+## Summary Table
+
+| ID | Prediction | Timeline | Confidence | Falsifiable? | 2026 변경 |
+|----|-----------|----------|------------|-------------|-----------|
+| **P-FU-01** | KSTAR f_bs >= 50% at I_p=0.4MA (ITB) | 2026-2027 | MEDIUM | Yes | Status 갱신 |
+| **P-FU-02** | KSTAR ELM-free record = 96s or 144s | 2027-2028 | LOW-MEDIUM | Yes | Status 갱신 |
+| **P-FU-03** | KSTAR ECCD peak efficiency at rho=1/3 | 2026-2027 | MEDIUM-HIGH | Yes | Status 갱신 |
+| **P-FU-04** | KSTAR RMP optimal n_tor=2=phi | 2026-2027 | MEDIUM | Yes | Status 갱신 |
+| **P-FU-05** | KSTAR 300s pulse by 2028-2029 | 2028-2029 | MEDIUM | Yes | Status 갱신 |
+| **P-FU-06** | SPARC Q>=10 at B_T~12T=sigma | 2028-2030 | HIGH | Yes | SPARC 건설 진행 반영 |
+| **P-FU-07** | ITER TF optimal margin at 12T=sigma | ~~2027-2029~~ 2029-2033 | MEDIUM | Yes | ITER 지연 반영 |
+| **P-FU-08** | First D-T optimal T_i~10 keV=sopfr*phi | 2028-2030 (SPARC) | HIGH | Yes | SPARC 1차, ITER 2차 |
+| **P-FU-09** | HTS magnet fatigue at 10^6=10^n cycles | 2027-2029 | LOW | Yes | CFS 양산 데이터 |
+| **P-FU-10** | D-T cross-section structure at 84 keV=n*14 | Immediate | LOW | Yes | — |
+| **P-FU-11** | Bootstrap f_bs max at A=3=n/phi | Immediate | MEDIUM | Yes | — |
+| **P-FU-12** | Greenwald limit ratio A=3/A=4 = 4/3 | Immediate | LOW | Yes | — |
+| **P-FU-13** | NTM onset discontinuity at q_95=5=sopfr | 2026-2027 | MEDIUM | Yes | — |
+| **P-FU-14** | Alfven gap at q_95=5=sopfr | 2026-2028 | LOW-MEDIUM | Yes | — |
+| **P-FU-15** | HTS REBCO Jc(12T)>phi*NbTi Jc(12T) | Immediate | HIGH | Yes | — |
+| **P-FU-16** | SiC/SiC threshold at 12 DPA=sigma | 2027-2030 | MEDIUM | Yes | — |
+| **P-FU-17** | TBR=7/6=(n+1)/n optimal | 2028-2030 | MEDIUM | Yes | — |
+| **P-FU-18** | sCO2 Brayton 50%=sigma/J_2 with n=6 stages | 2028-2030 | MEDIUM-HIGH | Yes | — |
+| **P-FU-19** | First Q>1 tokamak A closest to 3=n/phi | 2028-2030 | HIGH | Yes | SPARC 유력 확고 |
+| **P-FU-20** | TF coil count convergence to 18=3n | 2027-2030 | HIGH | Yes | STEP 추가 |
+| **P-FU-21** | First fusion grid at 60Hz=sigma*sopfr | 2030-2035 | MEDIUM | Yes | ARC/STEP 일정 반영 |
+| **P-FU-22** | HTS tape width standard at 12mm=sigma | 2027-2029 | HIGH | Yes | CFS 양산 확인 |
+| **P-FU-23** | ITG turbulence peak at k_perp*rho_i~1/3 | 2026-2028 | MEDIUM | Yes | — |
+| **P-FU-24** | ELM energy bounded by 1/n=1/6 of W_ped | Immediate | MEDIUM | Yes | — |
+| **P-FU-25** | Disruption t_CQ/t_TQ -> phi=2 | Immediate | LOW | Yes | — |
+| **P-FU-26** | Optimal beta_N=2.5=sopfr/phi | 2026-2028 | MEDIUM-HIGH | Yes | — |
+| **P-FU-27** | Optimal dI/dt=0.5 MA/s=1/phi | 2027-2030 | LOW | Yes | — |
+| **P-FU-28** | Divertor heat flux limit 12 MW/m^2=sigma | 2026-2028 | MEDIUM | Yes | KSTAR W-div 직접 검증 |
+| **P-FU-29** | Neutron wall load standard 2 MW/m^2=phi | 2028-2030 | MEDIUM | Yes | — |
+| **P-FU-30** | Pellet frequency 3 Hz/MW=n/phi | 2027-2029 | LOW | Yes | — |
+| **P-FU-31** | STEP 열출력 ~288 MW_th=sigma*J_2 | 2027-2028 | LOW-MEDIUM | Yes | **신규** |
+| **P-FU-32** | ARC B_T=12T=sigma, Q_eng>5=sopfr | 2028-2030 | MEDIUM | Yes | **신규** |
+| **P-FU-33** | CFETR I_p=12MA=sigma, TF=18=3n | 2027-2029 | MEDIUM | Yes | **신규** |
+| **P-FU-34** | 핵융합 LCA 6 gCO₂/kWh=n | 2029-2035 | LOW-MEDIUM | Yes | **신규** (환경 교차) |
+| **P-FU-35** | 2030년 Q>1 달성 장치 수=phi=2 | 2030-12-31 | MEDIUM | Yes | **신규** |
+
+---
+
+## Confidence Distribution (2026-04-02 갱신)
 
 | Level | Count | Percentage |
 |-------|-------|------------|
-| HIGH | 6 | 20% |
-| MEDIUM-HIGH | 3 | 10% |
-| MEDIUM | 11 | 37% |
-| LOW-MEDIUM | 2 | 7% |
-| LOW | 8 | 27% |
+| HIGH | 6 | 17% |
+| MEDIUM-HIGH | 3 | 9% |
+| MEDIUM | 14 | 40% |
+| LOW-MEDIUM | 4 | 11% |
+| LOW | 8 | 23% |
+| **Total** | **35** | **100%** |
+
+## 2026 주요 변경 사항
+
+| 항목 | 변경 내용 |
+|------|----------|
+| SPARC (P-FU-06,08,09) | HTS 20T 실증 완료, 건설 진행, first plasma 2026-2027 |
+| ITER (P-FU-07) | 재베이스라인으로 first plasma ~2034, 타임라인 2029-2033으로 조정 |
+| KSTAR (P-FU-01~05,28) | W-divertor 2025 완료, 2026 캠페인 개시 |
+| 신규 P-FU-31 | STEP (UK) 열출력 sigma*J_2=288 MW_th |
+| 신규 P-FU-32 | CFS ARC B_T=sigma, Q_eng>sopfr |
+| 신규 P-FU-33 | CFETR I_p=sigma=12 MA |
+| 신규 P-FU-34 | 핵융합 LCA n=6 gCO₂/kWh (환경 교차) |
+| 신규 P-FU-35 | 2030년 Q>1 장치 수 = phi=2 |
 
 ## Immediate Tests (기존 데이터로 즉시 검증 가능)
 
@@ -492,12 +590,20 @@
 5. **P-FU-24**: ELM energy fraction bound (ITPA ELM database)
 6. **P-FU-25**: Disruption quench ratio (ITPA disruption database)
 
+## 2026 캠페인 검증 가능 (KSTAR W-divertor)
+
+1. **P-FU-01**: f_bs ITB 실험 (W-wall 환경)
+2. **P-FU-03**: ECCD 효율 rho scan
+3. **P-FU-04**: RMP n_tor=2 비교
+4. **P-FU-28**: W-divertor 열부하 직접 측정
+
 ## Highest Impact Tests
 
-1. **P-FU-06** (SPARC Q>=10): 핵융합 역사의 분수령
-2. **P-FU-19** (First Q>1 at A=3): aspect ratio 최적성 실험적 입증
-3. **P-FU-24** (ELM energy 1/6 bound): ITER 벽 안전 기준 재평가
-4. **P-FU-18** (sCO2 50% efficiency): 핵융합 경제성 결정
+1. **P-FU-06** (SPARC Q>=10): 핵융합 역사의 분수령 — 2028-2030 검증
+2. **P-FU-35** (Q>1 장치 수=phi=2): 2030년 핵융합 산업 상태 지표
+3. **P-FU-19** (First Q>1 at A=3): aspect ratio 최적성 실험적 입증
+4. **P-FU-34** (LCA 6g): 핵융합-환경 교차 도메인 패턴
+5. **P-FU-18** (sCO2 50% efficiency): 핵융합 경제성 결정
 
 ---
 
@@ -506,17 +612,23 @@
 이 예측들의 대부분은 **n=6 산술과 핵융합 물리의 수적 일치(numerical coincidence)**에 기반한다.
 물리적 인과(causal connection)가 확립된 것은 없다. 구체적으로:
 
-1. **물리적 근거가 강한 예측** (P-FU-06, 08, 11, 15, 18, 19, 20, 22): 이들은 n=6과 무관하게 물리/공학적으로 견고하다. n=6와의 일치는 흥미로운 패턴이지만 예측의 핵심 근거가 아니다.
+1. **물리적 근거가 강한 예측** (P-FU-06, 08, 11, 15, 18, 19, 20, 22, 32): 이들은 n=6과 무관하게 물리/공학적으로 견고하다. n=6와의 일치는 흥미로운 패턴이지만 예측의 핵심 근거가 아니다.
 
-2. **패턴 기반 예측** (P-FU-01, 03, 04, 13, 16, 17, 24, 26, 28, 29): n=6 숫자가 물리적으로 합리적인 범위에 있어서 일치 가능성이 있다. 검증되어도 인과를 입증하지는 않는다.
+2. **패턴 기반 예측** (P-FU-01, 03, 04, 13, 16, 17, 24, 26, 28, 29, 33, 35): n=6 숫자가 물리적으로 합리적인 범위에 있어서 일치 가능성이 있다. 검증되어도 인과를 입증하지는 않는다.
 
-3. **투기적 예측** (P-FU-02, 10, 12, 14, 25, 27, 30): n=6 연결이 약하거나 물리적 근거가 부족하다. 반증 가능성이 높지만, 만약 확인되면 가장 놀라운 결과가 될 것이다.
+3. **투기적 예측** (P-FU-02, 10, 12, 14, 25, 27, 30, 31, 34): n=6 연결이 약하거나 물리적 근거가 부족하다. 반증 가능성이 높지만, 만약 확인되면 가장 놀라운 결과가 될 것이다.
+
+**인과 vs 패턴 구분 (2026 갱신)**:
+- 물리적 인과가 있는 n=6 연결: BT-99 (q=1 = 1/2+1/3+1/6, MHD 위상 동치), BT-98 (D-T 바리온 수 = sopfr)
+- 확인된 공학적 수렴: 12T HTS 표준(CFS 실증), 18 TF 코일(업계 표준), 12mm 테이프(양산 확정)
+- 순수 수적 일치: 대부분의 수치 예측(96초, 288 MW, 6 gCO₂ 등)
 
 **과학적 가치**: 이 예측 목록의 진정한 가치는 n=6 이론의 정당성이 아니라, **정량적이고 반증 가능한 기준을 미리 설정**함으로써 사후 끼워맞춤(post-hoc fitting)을 방지하는 데 있다.
 
 ---
 
-*Generated: 2026-04-02*
-*Source: N6 Architecture BT-5, BT-27, BT-36, BT-38, BT-62, BT-74, BT-89*
+*Initial: 2026-04-02 (30 predictions)*
+*Updated: 2026-04-02 — 2026 갱신 (SPARC/ITER/KSTAR 상태 + 5 신규 예측)*
+*Source: N6 Architecture BT-5, BT-27, BT-36, BT-38, BT-62, BT-74, BT-89, BT-97~102, BT-118*
 *Hypotheses: H-FU-1~77, H-TK-1~60, H-SM-1~60*
-*Total: 30 predictions, 6 HIGH confidence, all falsifiable*
+*Total: 35 predictions, 6 HIGH confidence, all falsifiable*
