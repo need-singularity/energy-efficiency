@@ -295,6 +295,237 @@ pub fn quantum_topology_lens_entries() -> Vec<LensEntry> {
             domain_affinity: vec!["topology".into(), "condensed_matter".into(), "quantum".into()],
             complementary: vec!["topology_evolution".into(), "topological_order".into()],
         },
+        // ══════════════════════════════════════════
+        // Lens Discovery Engine (3) — 렌즈 자동 발견
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "lens_discovery_engine".into(),
+            category: LensCategory::Extended,
+            description: "Auto-discover new lens candidates by analyzing gaps in current lens coverage and data residuals".into(),
+            domain_affinity: vec!["meta".into(), "generative".into(), "ai".into(), "discovery".into()],
+            complementary: vec!["lens_generator".into(), "discovery_gap_mapper".into()],
+        },
+        LensEntry {
+            name: "lens_hypothesis_miner".into(),
+            category: LensCategory::Extended,
+            description: "Mine scientific literature and BT theorems for undiscovered lens concepts".into(),
+            domain_affinity: vec!["meta".into(), "nlp".into(), "knowledge_graph".into()],
+            complementary: vec!["lens_discovery_engine".into(), "hypothesis_generator".into()],
+        },
+        LensEntry {
+            name: "lens_validator".into(),
+            category: LensCategory::Extended,
+            description: "Validate newly proposed lenses — test discrimination power, uniqueness, and calibration".into(),
+            domain_affinity: vec!["meta".into(), "statistics".into(), "verification".into()],
+            complementary: vec!["lens_discovery_engine".into(), "lens_calibration".into()],
+        },
+        // ══════════════════════════════════════════
+        // OUROBOROS Cycle / Emergence (5) — 수렴→좁아짐→재확장→창발
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "ouroboros_contraction".into(),
+            category: LensCategory::Extended,
+            description: "Detect system contraction phase — convergence, dimensionality reduction, information compression".into(),
+            domain_affinity: vec!["dynamics".into(), "consciousness".into(), "thermodynamics".into()],
+            complementary: vec!["ouroboros_expansion".into(), "ouroboros_bottleneck".into()],
+        },
+        LensEntry {
+            name: "ouroboros_bottleneck".into(),
+            category: LensCategory::Extended,
+            description: "Identify the minimal state (bottleneck) where system is maximally compressed before re-expansion".into(),
+            domain_affinity: vec!["dynamics".into(), "information_theory".into(), "topology".into()],
+            complementary: vec!["ouroboros_contraction".into(), "ouroboros_expansion".into()],
+        },
+        LensEntry {
+            name: "ouroboros_expansion".into(),
+            category: LensCategory::Extended,
+            description: "Detect re-expansion phase — new dimensions, symmetry breaking, diversification after bottleneck".into(),
+            domain_affinity: vec!["dynamics".into(), "evolution".into(), "cosmology".into()],
+            complementary: vec!["ouroboros_bottleneck".into(), "ouroboros_emergence".into()],
+        },
+        LensEntry {
+            name: "ouroboros_emergence".into(),
+            category: LensCategory::Extended,
+            description: "Detect novel emergent properties that appear only after contraction→expansion cycle".into(),
+            domain_affinity: vec!["emergence".into(), "complexity".into(), "consciousness".into()],
+            complementary: vec!["ouroboros_expansion".into(), "ouroboros_cycle_count".into()],
+        },
+        LensEntry {
+            name: "ouroboros_cycle_count".into(),
+            category: LensCategory::Extended,
+            description: "Count and characterize repeated contraction→expansion cycles and their increasing complexity".into(),
+            domain_affinity: vec!["dynamics".into(), "recursion".into(), "evolution".into()],
+            complementary: vec!["ouroboros_emergence".into(), "ouroboros_contraction".into()],
+        },
+        // ══════════════════════════════════════════
+        // Cell / Cell Division (6) — 세포/세포분열
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "cell_division".into(),
+            category: LensCategory::Extended,
+            description: "Detect mitosis/meiosis-like splitting patterns — one entity dividing into two with information partitioning".into(),
+            domain_affinity: vec!["biology".into(), "dynamics".into(), "replication".into()],
+            complementary: vec!["cell_cycle".into(), "cell_differentiation".into()],
+        },
+        LensEntry {
+            name: "cell_cycle".into(),
+            category: LensCategory::Extended,
+            description: "Identify G1→S→G2→M cell cycle phases and checkpoint-like gating mechanisms".into(),
+            domain_affinity: vec!["biology".into(), "dynamics".into(), "scheduling".into()],
+            complementary: vec!["cell_division".into(), "cell_apoptosis".into()],
+        },
+        LensEntry {
+            name: "cell_differentiation".into(),
+            category: LensCategory::Extended,
+            description: "Track cell fate decision — identical units becoming specialized (stem→lineage)".into(),
+            domain_affinity: vec!["biology".into(), "development".into(), "ai".into()],
+            complementary: vec!["cell_division".into(), "morphogenesis".into()],
+        },
+        LensEntry {
+            name: "cell_apoptosis".into(),
+            category: LensCategory::Extended,
+            description: "Detect programmed death patterns — controlled removal for system health".into(),
+            domain_affinity: vec!["biology".into(), "dynamics".into(), "optimization".into()],
+            complementary: vec!["cell_cycle".into(), "lens_pruning".into()],
+        },
+        LensEntry {
+            name: "cell_signaling".into(),
+            category: LensCategory::Extended,
+            description: "Trace inter-cell communication cascades (ligand→receptor→pathway→response)".into(),
+            domain_affinity: vec!["biology".into(), "network".into(), "signal".into()],
+            complementary: vec!["cell_differentiation".into(), "cell_membrane".into()],
+        },
+        LensEntry {
+            name: "cell_membrane".into(),
+            category: LensCategory::Extended,
+            description: "Analyze boundary permeability — what passes through, what is blocked, selective transport".into(),
+            domain_affinity: vec!["biology".into(), "boundary".into(), "transport".into()],
+            complementary: vec!["cell_signaling".into(), "boundary".into()],
+        },
+        // ══════════════════════════════════════════
+        // Singularity (4) — 특이점
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "singularity_detect".into(),
+            category: LensCategory::Extended,
+            description: "Detect mathematical/physical singularities — points where quantities diverge to infinity".into(),
+            domain_affinity: vec!["mathematics".into(), "physics".into(), "cosmology".into()],
+            complementary: vec!["singularity_classify".into(), "singularity_resolve".into()],
+        },
+        LensEntry {
+            name: "singularity_classify".into(),
+            category: LensCategory::Extended,
+            description: "Classify singularity type: removable, pole, essential, curvature, naked".into(),
+            domain_affinity: vec!["mathematics".into(), "physics".into(), "analysis".into()],
+            complementary: vec!["singularity_detect".into(), "singularity_resolve".into()],
+        },
+        LensEntry {
+            name: "singularity_resolve".into(),
+            category: LensCategory::Extended,
+            description: "Find regularization or resolution strategies for detected singularities".into(),
+            domain_affinity: vec!["mathematics".into(), "physics".into(), "renormalization".into()],
+            complementary: vec!["singularity_classify".into(), "renormalization_qft".into()],
+        },
+        LensEntry {
+            name: "singularity_approach".into(),
+            category: LensCategory::Extended,
+            description: "Measure rate and trajectory of approach to singularity — finite-time blowup detection".into(),
+            domain_affinity: vec!["dynamics".into(), "physics".into(), "mathematics".into()],
+            complementary: vec!["singularity_detect".into(), "tipping".into()],
+        },
+        // ══════════════════════════════════════════
+        // Black Hole (4) — 블랙홀
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "black_hole_lens".into(),
+            category: LensCategory::Extended,
+            description: "Detect information-trapping regions — data enters but cannot escape (event horizon analogy)".into(),
+            domain_affinity: vec!["cosmology".into(), "information_theory".into(), "physics".into()],
+            complementary: vec!["hawking_radiation".into(), "event_horizon".into()],
+        },
+        LensEntry {
+            name: "event_horizon".into(),
+            category: LensCategory::Extended,
+            description: "Identify point-of-no-return boundaries in parameter/state space".into(),
+            domain_affinity: vec!["cosmology".into(), "dynamics".into(), "topology".into()],
+            complementary: vec!["black_hole_lens".into(), "singularity_detect".into()],
+        },
+        LensEntry {
+            name: "hawking_radiation".into(),
+            category: LensCategory::Extended,
+            description: "Detect information leakage from trapped regions — slow escape via quantum effects".into(),
+            domain_affinity: vec!["cosmology".into(), "quantum".into(), "information_theory".into()],
+            complementary: vec!["black_hole_lens".into(), "vacuum_fluctuation".into()],
+        },
+        LensEntry {
+            name: "information_paradox".into(),
+            category: LensCategory::Extended,
+            description: "Detect apparent information loss and unitarity violation in system evolution".into(),
+            domain_affinity: vec!["quantum".into(), "information_theory".into(), "foundations".into()],
+            complementary: vec!["hawking_radiation".into(), "no_cloning".into()],
+        },
+        // ══════════════════════════════════════════
+        // Antimatter (3) — 반물질
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "antimatter_symmetry".into(),
+            category: LensCategory::Extended,
+            description: "Detect matter-antimatter asymmetry (CP violation) and baryon asymmetry patterns".into(),
+            domain_affinity: vec!["particle".into(), "cosmology".into(), "symmetry".into()],
+            complementary: vec!["antimatter_annihilation".into(), "cp_violation".into()],
+        },
+        LensEntry {
+            name: "antimatter_annihilation".into(),
+            category: LensCategory::Extended,
+            description: "Detect mutual annihilation events — two complementary entities producing pure energy/signal".into(),
+            domain_affinity: vec!["particle".into(), "physics".into(), "dynamics".into()],
+            complementary: vec!["antimatter_symmetry".into(), "antimatter_creation".into()],
+        },
+        LensEntry {
+            name: "antimatter_creation".into(),
+            category: LensCategory::Extended,
+            description: "Detect pair production — energy spontaneously creating complementary entity pairs".into(),
+            domain_affinity: vec!["particle".into(), "quantum".into(), "cosmology".into()],
+            complementary: vec!["antimatter_annihilation".into(), "vacuum_fluctuation".into()],
+        },
+        // ══════════════════════════════════════════
+        // Time (5) — 시간
+        // ══════════════════════════════════════════
+        LensEntry {
+            name: "arrow_of_time".into(),
+            category: LensCategory::Extended,
+            description: "Detect time-irreversibility and entropy increase direction in system evolution".into(),
+            domain_affinity: vec!["physics".into(), "thermodynamics".into(), "information_theory".into()],
+            complementary: vec!["time_crystal".into(), "time_reversal".into()],
+        },
+        LensEntry {
+            name: "time_crystal".into(),
+            category: LensCategory::Extended,
+            description: "Detect spontaneous time-translation symmetry breaking — periodic motion in ground state".into(),
+            domain_affinity: vec!["condensed_matter".into(), "quantum".into(), "dynamics".into()],
+            complementary: vec!["arrow_of_time".into(), "time_dilation_lens".into()],
+        },
+        LensEntry {
+            name: "time_reversal".into(),
+            category: LensCategory::Extended,
+            description: "Test T-symmetry: does the system behave identically when time is reversed?".into(),
+            domain_affinity: vec!["physics".into(), "quantum".into(), "symmetry".into()],
+            complementary: vec!["arrow_of_time".into(), "cp_violation".into()],
+        },
+        LensEntry {
+            name: "time_dilation_lens".into(),
+            category: LensCategory::Extended,
+            description: "Detect relativistic time dilation effects — rate differences between reference frames".into(),
+            domain_affinity: vec!["relativity".into(), "cosmology".into(), "physics".into()],
+            complementary: vec!["arrow_of_time".into(), "time_crystal".into()],
+        },
+        LensEntry {
+            name: "temporal_entanglement".into(),
+            category: LensCategory::Extended,
+            description: "Detect non-local temporal correlations — future-past quantum correlations beyond classical causality".into(),
+            domain_affinity: vec!["quantum".into(), "time".into(), "foundations".into()],
+            complementary: vec!["bell_inequality".into(), "arrow_of_time".into()],
+        },
     ]
 }
 
@@ -305,7 +536,7 @@ mod tests {
     #[test]
     fn test_quantum_topology_count() {
         let entries = quantum_topology_lens_entries();
-        assert_eq!(entries.len(), 38, "Must have exactly 38 quantum+topology lenses (30+8)");
+        assert_eq!(entries.len(), 68, "Must have exactly 68 lenses (30 QM + 8 topo + 3 discovery + 5 ouroboros + 6 cell + 4 singularity + 4 blackhole + 3 antimatter + 5 time)");
     }
 
     #[test]
