@@ -40,12 +40,51 @@ pub enum CliCommand {
         complementary: Option<String>,
         export_json: bool,
     },
+    Experiment {
+        exp_type: ExperimentMode,
+        target: String,
+        intensity: f64,
+        duration: usize,
+    },
     Bench,
     Dashboard {
         html: bool,
         output: Option<String>,
     },
+    Predict {
+        experiment_type: String,
+        target: String,
+    },
+    Simulate {
+        experiment_type: String,
+        target: String,
+        runs: usize,
+    },
+    Compare {
+        a_spec: String,
+        b_spec: String,
+    },
+    Reproduce {
+        experiment_type: String,
+        target: String,
+        repeats: usize,
+    },
+    Publish {
+        experiment_type: String,
+        target: String,
+    },
+    Cycle {
+        experiment_type: String,
+        target: String,
+    },
     Help,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum ExperimentMode {
+    Single(String),
+    All,
+    Battery(Vec<String>),
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -82,6 +121,13 @@ pub fn parse_args(args: &[String]) -> Result<CliCommand, String> {
         "evolve" => parse_evolve(rest),
         "auto" => parse_auto(rest),
         "lenses" => parse_lenses(rest),
+        "experiment" | "exp" => parse_experiment(rest),
+        "predict" => parse_predict(rest),
+        "simulate" => parse_simulate(rest),
+        "compare" => parse_compare(rest),
+        "reproduce" => parse_reproduce(rest),
+        "publish" => parse_publish(rest),
+        "cycle" => parse_cycle(rest),
         "bench" => Ok(CliCommand::Bench),
         "dashboard" => parse_dashboard(rest),
         "help" | "--help" | "-h" => Ok(CliCommand::Help),
@@ -377,6 +423,74 @@ fn parse_lenses(args: &[String]) -> Result<CliCommand, String> {
     Ok(CliCommand::Lenses { category, domain, search, count_only, complementary, export_json })
 }
 
+fn parse_experiment(args: &[String]) -> Result<CliCommand, String> {
+    if args.is_empty() {
+        return Err("experiment requires <type> <target>. Use 'all', a type name, or 'battery type1,type2,...'".to_string());
+    }
+
+    let type_str = args[0].as_str();
+    let mut intensity = 0.5_f64;
+    let mut duration = 6_usize;
+
+    // Determine mode and target position
+    let (mode, target_idx) = if type_str == "all" {
+        (ExperimentMode::All, 1)
+    } else if type_str == "battery" {
+        if args.len() < 2 {
+            return Err("experiment battery requires <types> <target>".to_string());
+        }
+        let types: Vec<String> = args[1]
+            .split(',')
+            .map(|s| s.trim().to_string())
+            .filter(|s| !s.is_empty())
+            .collect();
+        (ExperimentMode::Battery(types), 2)
+    } else {
+        (ExperimentMode::Single(type_str.to_string()), 1)
+    };
+
+    if target_idx >= args.len() {
+        return Err("experiment requires a <target> argument".to_string());
+    }
+    let target = args[target_idx].clone();
+
+    // Parse optional flags
+    let mut i = target_idx + 1;
+    while i < args.len() {
+        match args[i].as_str() {
+            "--intensity" => {
+                i += 1;
+                if i >= args.len() {
+                    return Err("--intensity requires a value (0.0~1.0)".to_string());
+                }
+                intensity = args[i]
+                    .parse()
+                    .map_err(|_| format!("--intensity: '{}' is not a valid number", args[i]))?;
+            }
+            "--duration" => {
+                i += 1;
+                if i >= args.len() {
+                    return Err("--duration requires a value".to_string());
+                }
+                duration = args[i]
+                    .parse()
+                    .map_err(|_| format!("--duration: '{}' is not a valid number", args[i]))?;
+            }
+            other => {
+                return Err(format!("experiment: unknown option '{}'", other));
+            }
+        }
+        i += 1;
+    }
+
+    Ok(CliCommand::Experiment {
+        exp_type: mode,
+        target,
+        intensity,
+        duration,
+    })
+}
+
 fn parse_dashboard(args: &[String]) -> Result<CliCommand, String> {
     let mut html = false;
     let mut output: Option<String> = None;
@@ -402,6 +516,114 @@ fn parse_dashboard(args: &[String]) -> Result<CliCommand, String> {
     }
 
     Ok(CliCommand::Dashboard { html, output })
+}
+
+fn parse_predict(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("predict requires <experiment_type> <target>".to_string());
+    }
+    Ok(CliCommand::Predict {
+        experiment_type: args[0].clone(),
+        target: args[1].clone(),
+    })
+}
+
+fn parse_simulate(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("simulate requires <experiment_type> <target>".to_string());
+    }
+    let experiment_type = args[0].clone();
+    let target = args[1].clone();
+    let mut runs: usize = 100; // default
+
+    let mut i = 2;
+    while i < args.len() {
+        match args[i].as_str() {
+            "--runs" => {
+                i += 1;
+                if i >= args.len() {
+                    return Err("--runs requires a number".to_string());
+                }
+                runs = args[i]
+                    .parse()
+                    .map_err(|_| format!("--runs: '{}' is not a valid number", args[i]))?;
+            }
+            other => {
+                return Err(format!("simulate: unknown option '{}'", other));
+            }
+        }
+        i += 1;
+    }
+
+    Ok(CliCommand::Simulate {
+        experiment_type,
+        target,
+        runs,
+    })
+}
+
+fn parse_compare(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("compare requires <a_spec> <b_spec> (e.g. \"tension:physics\" \"fusion:plasma\")".to_string());
+    }
+    Ok(CliCommand::Compare {
+        a_spec: args[0].clone(),
+        b_spec: args[1].clone(),
+    })
+}
+
+fn parse_reproduce(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("reproduce requires <experiment_type> <target>".to_string());
+    }
+    let experiment_type = args[0].clone();
+    let target = args[1].clone();
+    let mut repeats: usize = 10; // default
+
+    let mut i = 2;
+    while i < args.len() {
+        match args[i].as_str() {
+            "--repeats" => {
+                i += 1;
+                if i >= args.len() {
+                    return Err("--repeats requires a number".to_string());
+                }
+                repeats = args[i]
+                    .parse()
+                    .map_err(|_| format!("--repeats: '{}' is not a valid number", args[i]))?;
+            }
+            other => {
+                return Err(format!("reproduce: unknown option '{}'", other));
+            }
+        }
+        i += 1;
+    }
+
+    Ok(CliCommand::Reproduce {
+        experiment_type,
+        target,
+        repeats,
+    })
+}
+
+fn parse_publish(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("publish requires <experiment_type> <target>".to_string());
+    }
+    Ok(CliCommand::Publish {
+        experiment_type: args[0].clone(),
+        target: args[1].clone(),
+    })
+}
+
+fn parse_cycle(args: &[String]) -> Result<CliCommand, String> {
+    if args.len() < 2 {
+        return Err("cycle requires <experiment_type> <target>".to_string());
+    }
+    Ok(CliCommand::Cycle {
+        experiment_type: args[0].clone(),
+        target: args[1].clone(),
+    })
 }
 
 #[cfg(test)]
