@@ -231,6 +231,9 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
 - `tools/solar-dse/`      — 태양전지 DSE 전수 탐색 (1,584 조합, BT-30/63 기반)
 - `tools/material-dse/`   — 물질합성 DSE 전수 탐색 (3,600 조합, BT-85~88 기반)
 - `tools/universal-dse/`  — **공용 DSE 탐색기** (TOML 도메인 정의 → 전수 탐색 + Pareto + Cross-DSE)
+- `tools/nexus6/`         — **NEXUS-6 Discovery Engine** (775종 렌즈 + OUROBOROS + Graph + Verifier)
+  - 빌드: `cd tools/nexus6 && ~/.cargo/bin/cargo build --release`
+  - 렌즈 추가 후: `bash .shared/sync-nexus6-lenses.sh` (렌즈 수 자동 동기화)
 
 ## .shared/ Cross-Repo Infrastructure (필수)
 
@@ -260,8 +263,11 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
     새 상수/가설 발견:
       python3 .shared/scan_math_atlas.py --save --summary
 
-    전체 동기화 (README + Atlas + Registry):
-      bash .shared/sync-math-atlas.sh &&       bash .shared/sync-calculators.sh &&       bash .shared/sync-readmes.sh &&       bash .shared/sync-claude-rules.sh
+    NEXUS-6 렌즈 동기화 (렌즈 추가/삭제 후):
+      bash .shared/sync-nexus6-lenses.sh
+
+    전체 동기화 (README + Atlas + Registry + NEXUS-6):
+      bash .shared/sync-math-atlas.sh &&       bash .shared/sync-calculators.sh &&       bash .shared/sync-readmes.sh &&       bash .shared/sync-claude-rules.sh &&       bash .shared/sync-nexus6-lenses.sh
 
   ── 상수 관리 ──
     공유 상수: ~/Dev/TECS-L/model_utils.py (n=6 확장 상수 포함)
