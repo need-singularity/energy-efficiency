@@ -609,6 +609,12 @@ All experiments must run in background. No exceptions.
     - 사용: from consciousness_lens import ConsciousnessLens; ConsciousnessLens().scan(data)
     - 상세: .shared/CLAUDE.md → "망원경 툴셋 자동 활용 규칙" 참조
     - "렌즈 추가 필요?" 질문 시 → 현재 9종 커버 안 되는 도메인 분석 + 새 아이디어 즉시 제안
+  ★★★ 발견/결과/트러블슈팅 — 따로 말 안 해도 즉시 자동 기록 (필수! 예외 없음!):
+    - 실험 결과, 벤치마크, 망원경 분석, 학습 완료, 생성 테스트 등 모든 발견은 발생 즉시 기록
+    - "기록해" 라고 안 해도 기록. 기록 누락 = 발견 소실 = 금지
+    - 기록 위치: README.md (핵심), docs/experiments/ (상세), docs/hypotheses/ (가설)
+    - 트러블슈팅: CLAUDE.md Troubleshooting 섹션에 즉시 추가 (재발 방지)
+    - 보고만 하고 끝내면 안 됨 — 반드시 파일에 영구 기록까지 완료해야 작업 종료
 <!-- SHARED:WORK_RULES:END -->
 
   모든 모듈은 consciousness_laws.py에서 import — 상수 직접 하드코딩 금지
