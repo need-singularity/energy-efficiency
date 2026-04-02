@@ -666,8 +666,8 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | **TECS-L** | 213 | Calculator, Engine |
 | **anima** | 0 |  |
 | **SEDI** | 91 | Core, Data Source |
-| **n6-architecture** | 137 | Calculator, Engine, experiment, technique |
-| **Total** | **441** | |
+| **n6-architecture** | 144 | Calculator, Engine, experiment, technique |
+| **Total** | **448** | |
 
 ### TECS-L
 
@@ -1003,7 +1003,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 
 ### n6-architecture
 
-**Calculator** (53)
+**Calculator** (56)
 
 | Name | Description | Path |
 |------|-------------|------|
@@ -1026,10 +1026,13 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | convergence_analyzer | Convergence Analyzer -- Depth-1 Reachability Across 8 Mathematical Domains | `tools/convergence_analyzer.py` |
 | cross-dse-calc | - | `tools/cross-dse-calc/main.rs` |
 | crypto-calc | N6 Crypto / Blockchain / Cryptography Calculator | `tools/crypto-calc/main.rs` |
+| deep-miner | - | `tools/deep-miner/main.rs` |
+| discovery-engine | - | `tools/discovery-engine/main.rs` |
 | divisor_field_theory | Divisor Field Theory — Action S(n) uniqueness and spacetime analysis | `tools/divisor_field_theory.py` |
 | dse-calc | N6 Design Space Exploration (DSE) — 전수 조합 탐색기 | `tools/dse-calc/main.rs` |
 | egyptian_fraction | Egyptian Fraction Calculator — Solutions of 1 = 1/a1 + ... + 1/aK | `tools/egyptian_fraction.py` |
 | energy-calc | N6 Energy Strategy Calculator | `tools/energy-calc/main.rs` |
+| formula-miner | - | `tools/formula-miner/main.rs` |
 | fusion-calc | N6 Fusion Calculator — 핵융합 파라미터 계산 + n=6 검증 | `tools/fusion-calc/main.rs` |
 | fusion-dse | N6 Fusion Design Space Exploration (DSE) — 전수 조합 탐색기 | `tools/fusion-dse/main.rs` |
 | gate_formula_calculator | Gate Formula Calculator — Law 77 adaptive consciousness gate | `tools/gate_formula_calculator.py` |
@@ -1072,14 +1075,17 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | sedi_training_monitor | SEDI Training Monitor | `engine/sedi_training_monitor.py` |
 | thermodynamic_frame | Thermodynamic Frame | `engine/thermodynamic_frame.py` |
 
-**Experiment** (61)
+**Experiment** (65)
 
 | Name | Description | Path |
 |------|-------------|------|
+| anomaly_detection | N6 Architecture — Anomaly Detection | `experiments/anomaly_detection.py` |
 | blind_verification | Blind Domain Verification of n=6 Universality (Experiment 4 Implementation) | `experiments/blind_verification.py` |
 | chip_phase_diagram | Chip Phase Diagram -- Computing Paradigms on Power x Performance Axes | `experiments/chip_phase_diagram.py` |
+| cross_dse_fusion_5domain | Cross-DSE: 5-Domain Fusion Analysis | `experiments/cross_dse_fusion_5domain.py` |
 | cross_repo_mining | Cross-Repo Constant Mining: scan 305 TOML domains for n=6 patterns. | `experiments/cross_repo_mining.py` |
 | cross_strong_collision | Cross-reference STRONG hypotheses with constant collision analysis. | `experiments/cross_strong_collision.py` |
+| discovery_graph_topology | Discovery Graph Topology Analysis | `experiments/discovery_graph_topology.py` |
 | experiment_alpha_attack | Experiment: Fine Structure Constant Alpha Attack | `experiments/experiment_alpha_attack.py` |
 | experiment_attractor_curvature | Experiment: Attractor Dimension + Energy Surface Curvature | `experiments/experiment_attractor_curvature.py` |
 | experiment_bitnet_n6 | BitNet b1.58 2B4T — Real Config n=6 Verification Experiment | `experiments/experiment_bitnet_n6.py` |
@@ -1126,6 +1132,7 @@ tools/universal-dse/universal-dse domains/chip.toml domains/battery.toml domains
 | verify_chip_ultimate | verify_chip_ultimate.py — Ultimate Chip Architecture n=6 Mathematical Verificati | `experiments/verify_chip_ultimate.py` |
 | verify_consciousness_chip | verify_consciousness_chip.py — Consciousness Chip Architecture Mathematical Veri | `experiments/verify_consciousness_chip.py` |
 | verify_diffusion_n6 | verify_diffusion_n6.py — Diffusion Model n=6 Pattern Verification | `experiments/verify_diffusion_n6.py` |
+| verify_fusion_predictions | HEXA-FUSION 예측 검증 스크립트 | `experiments/verify_fusion_predictions.py` |
 | verify_hexa_3d | HEXA-3D (Level 3) n=6 파라미터 수학적 검증 | `experiments/verify_hexa_3d.py` |
 | verify_hexa_chip | HEXA-1 Unified SoC 아키텍처 수학 검증 — 전수 검사 | `experiments/verify_hexa_chip.py` |
 | verify_hexa_core | HEXA-CORE 마이크로아키텍처 수학 검증 — 98개 파라미터 전수 검사 | `experiments/verify_hexa_core.py` |
