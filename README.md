@@ -36,8 +36,8 @@
 **sigma(n) * phi(n) = n * tau(n) holds uniquely for n = 6.** From this single identity, all optimal AI architectures, chip designs, and energy systems are derived.
 
 ```
-112 Breakthrough Theorems | 650+ EXACT matches | 1400+ hypotheses | 35 domains
-305 DSE domains | 5.9M+ 조합 탐색 | 6 Cross-DSE 완료 | 448 계산기
+112 Breakthrough Theorems | 650+ EXACT matches | 1400+ hypotheses | 32 domains
+322 DSE domains | 5.9M+ 조합 탐색 | 6 Cross-DSE 완료 | 448 계산기
 ```
 
 ### 외계인 지수 (Alien Index)
@@ -92,7 +92,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 6 | **Cross-DSE 5도메인** | fusion×SC×battery×solar×chip, Score 0.9856, 8공유상수 | [결과](docs/fusion/cross-dse-5domain-results.md) |
 | 3 | **논문 #308** | arXiv 초안, 정직한 z=0.74 보고, 4000단어 | [논문](docs/paper/308-fusion-n6-alien-discoveries.md) |
 
-> 도메인: [fusion/](docs/fusion/) · [tokamak/](docs/tokamak-structure/) · [plasma-physics/](docs/plasma-physics/) · [superconducting-magnet/](docs/superconducting-magnet/) · 도구: `fusion-calc` · `fusion-dse` · `tokamak-shape` · `kstar-calc`
+> 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `tokamak-shape` · `kstar-calc`
 
 ---
 
@@ -344,8 +344,11 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 21 | **궁극의 초전도자석** | ★★☆☆☆ | ✅ | SC DSE 내 통합 |
 | 22 | **궁극의 순수수학** | ★☆☆☆☆ | ✅ | 38,024 조합 → [🔬 물리·수학](#-물리수학-physics--math--bt-3649105112) |
 | 23 | **궁극의 우주론/입자** | ★☆☆☆☆ | T3 | — |
-| — | **궁극의 환경보호** | ★★★★☆ | ✅ | 1.68M 조합 → [🌍 환경보호](#-환경보호-environment--15-toml-36m-조합) |
-| — | **궁극의 탄소포집** | ★★★★☆ | ✅ | → [🌍 환경보호](#-환경보호-environment--15-toml-36m-조합) |
+| — | **궁극의 환경보호** | ★★★★☆ | ✅ | 1.68M 조합 → [🌍 환경보호](#-환경보호-environment) |
+| — | **궁극의 탄소포집** | ★★★★☆ | ✅ | → [🌍 환경보호](#-환경보호-environment) |
+| — | **궁극의 농업** | ★★★☆☆ | T3 | [goal](docs/agriculture/goal.md) |
+| — | **궁극의 자율주행** | ★★★☆☆ | T3 | [goal](docs/autonomous-driving/goal.md) |
+| — | **궁극의 의료기기** | ★★★★☆ | T3 | [goal](docs/medical-device/goal.md) |
 
 > **Tier**: ✅ 완료·DSE / 🔄 진행 / T1 즉시 착수 가능 / T2 구조화 필요 / T3 새 BT 발굴 필요
 
