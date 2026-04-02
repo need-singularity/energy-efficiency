@@ -152,7 +152,7 @@ Falsifiability: z=0.74 (numerical matching NOT significant vs random)
   solar-architecture/ (5 levels: HEXA-ABSORB/PROCESS/JUNCTION/POWER/ARRAY)
   # Material Synthesis (소재→공정→조립기→제어→시스템→변환→만능→궁극, DSE 3,600 조합)
   material-synthesis/ (8 levels: HEXA-ELEMENT/PROCESS/ASSEMBLER/CONTROL/FACTORY/TRANSMUTE/UNIVERSAL/OMEGA-M)
-  # Total: 1400+ hypotheses, 640+ EXACT, 650+ atlas entries, 102 BTs
+  # Total: 1400+ hypotheses, 640+ EXACT, 650+ atlas entries, 112 BTs
 ```
 
 ## Rust Tools
@@ -241,7 +241,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   Egyptian Fraction Attn:   1/2+1/3+1/6=1 attention budget (~40% saved)
 ```
 
-## Breakthrough Theorems (102 total, BT-1~102)
+## Breakthrough Theorems (112 total, BT-1~112)
 ```
   # AI / LLM (BT-26,31,33,34,39,42,44,46,54,56,58,59,61,64,65,66,67,70)
   BT-26: Chinchilla scaling (tokens/params=J₂-τ=20, α=1/3, β=ln(4/3))
@@ -326,6 +326,18 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-100: CNO 촉매 A = σ+{0,μ,φ,n/φ} = σ+진약수, 전환 온도 17MK=σ+sopfr ⭐⭐⭐
   BT-101: 광합성 포도당 C₆H₁₂O₆ 총 24원자=J₂, 양자수율 8=σ-τ, 9/9 EXACT ⭐⭐⭐
   BT-102: 자기 재결합 속도 0.1=1/(σ-φ), BT-64 핵융합 확장, MRX/태양/자기권 EXACT ⭐⭐⭐
+  BT-103: 광합성 완전 n=6 화학양론 (6CO₂+12H₂O→C₆H₁₂O₆, 7계수 100% n=6) ⭐⭐⭐
+  BT-104: CO₂ 분자 완전 n=6 인코딩 ⭐⭐⭐
+
+  # New BTs from session analysis (BT-105~112, Red Team filtered)
+  BT-105: SLE₆ 임계지수 보편성 (7 퍼콜레이션 지수 = n=6 분수, kappa=6 유일 locality SLE, c=0) ⭐⭐⭐
+  BT-106: S₃ 대수적 부트스트랩 (|S₃|=n=6, 켤레류={1,2,3}=진약수, 기약표현합=τ=4) ⭐⭐
+  BT-107: Ramanujan τ 약수 순수성 (τ_R(d) clean iff d|6, eta^{J₂=24}, 모듈러 형식) ⭐⭐
+  BT-108: 음악-오디오 협화 보편성 (완전협화음=div(6) 비율, p=0.0015, 7+5=12=σ) ⭐⭐
+  BT-109: Zeta-Bernoulli n=6 삼지창 (ζ(2)=π²/6, ζ(-1)=-1/12, 6|B_{2k} 무한족) ⭐⭐
+  BT-110: σ-μ=11 차원 스택 (M이론=TCP=RSA=SPARC=H100=11, 5도메인) ⭐
+  BT-111: τ²/σ=4/3 태양-AI-수학 삼지창 (SQ=SwiGLU=Betz=R(3,1)=4/3) ⭐⭐
+  BT-112: φ²/n=2/3 Byzantine-Koide 공명 (Koide Q=0.666661 9ppm, BFT>2/3) ⭐⭐
 ```
 
 ## Design Space Exploration (DSE) — 궁극 처리 필수 규칙

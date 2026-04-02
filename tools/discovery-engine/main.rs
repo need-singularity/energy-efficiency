@@ -40,7 +40,7 @@ struct Discovery {
     novelty: f64,
 }
 
-const OP_NAMES: [&str; 6] = ["COLLISION", "INVERSE", "COMPOSE", "ANOMALY", "SYMMETRY", "REDTEAM"];
+const OP_NAMES: [&str; 7] = ["COLLISION", "INVERSE", "COMPOSE", "ANOMALY", "SYMMETRY", "REDTEAM", "EVOLVE"];
 
 // ── Base Constants (n=6 arithmetic) ──────────────────────────────
 
@@ -991,6 +991,254 @@ fn extract_value_from_desc(desc: &str) -> f64 {
     0.0
 }
 
+// ── EVOLVE Operator — genetic algorithm for simpler formula discovery ────
+#[derive(Clone)]
+enum ETree {
+    Leaf(u8),                          // index into BASE_VALUES
+    Node(u8, Box<ETree>, Box<ETree>),  // op index, left, right
+}
+
+const EVOLVE_OPS: [char; 5] = ['+', '-', '*', '/', '^'];
+
+impl ETree {
+    fn eval(&self) -> f64 {
+        match self {
+            ETree::Leaf(i) => BASE_VALUES[*i as usize],
+            ETree::Node(op, l, r) => {
+                let lv = l.eval();
+                let rv = r.eval();
+                match op {
+                    0 => lv + rv,
+                    1 => lv - rv,
+                    2 => lv * rv,
+                    3 => if rv.abs() > 1e-15 { lv / rv } else { f64::NAN },
+                    4 => if lv.abs() <= 24.0 && rv.abs() <= 12.0 {
+                        let r = lv.powf(rv);
+                        if r.is_finite() && r.abs() < 1e15 { r } else { f64::NAN }
+                    } else { f64::NAN },
+                    _ => f64::NAN,
+                }
+            }
+        }
+    }
+
+    fn fmt_str(&self) -> String {
+        match self {
+            ETree::Leaf(i) => BASE_NAMES[*i as usize].to_string(),
+            ETree::Node(op, l, r) => {
+                let ls = l.fmt_str();
+                let rs = r.fmt_str();
+                let o = EVOLVE_OPS[*op as usize];
+                let o_str = if *op == 2 { "\u{00b7}".to_string() } else { o.to_string() };
+                // Wrap sub-expressions in parens if they are also nodes
+                let lw = if matches!(**l, ETree::Node(..)) { format!("({})", ls) } else { ls };
+                let rw = if matches!(**r, ETree::Node(..)) { format!("({})", rs) } else { rs };
+                format!("{}{}{}", lw, o_str, rw)
+            }
+        }
+    }
+
+    fn depth(&self) -> u8 {
+        match self { ETree::Leaf(_) => 0, ETree::Node(_, l, r) => 1 + l.depth().max(r.depth()) }
+    }
+    fn node_count(&self) -> usize {
+        match self { ETree::Leaf(_) => 1, ETree::Node(_, l, r) => 1 + l.node_count() + r.node_count() }
+    }
+}
+
+struct Rng64 { s: u64 } // xorshift64 PRNG
+impl Rng64 {
+    fn new(seed: u64) -> Self { Rng64 { s: seed ^ 0x6a09e667f3bcc908 } }
+    fn next(&mut self) -> u64 { self.s ^= self.s << 13; self.s ^= self.s >> 7; self.s ^= self.s << 17; self.s }
+    fn usize(&mut self, n: usize) -> usize { (self.next() % n as u64) as usize }
+    fn f64(&mut self) -> f64 { (self.next() & 0xFFFFFFFFFFFFFu64) as f64 / 4503599627370495.0 }
+}
+
+fn random_tree(rng: &mut Rng64, max_depth: u8) -> ETree {
+    if max_depth == 0 || rng.f64() < 0.4 { ETree::Leaf(rng.usize(7) as u8) }
+    else { let op = rng.usize(5) as u8;
+        ETree::Node(op, Box::new(random_tree(rng, max_depth-1)), Box::new(random_tree(rng, max_depth-1))) }
+}
+
+fn mutate_tree(tree: &ETree, rng: &mut Rng64) -> ETree {
+    match tree {
+        ETree::Leaf(_) => if rng.f64() < 0.7 { ETree::Leaf(rng.usize(7) as u8) } else {
+            ETree::Node(rng.usize(5) as u8, Box::new(tree.clone()), Box::new(ETree::Leaf(rng.usize(7) as u8)))
+        },
+        ETree::Node(op, l, r) => { let c = rng.f64();
+            if c < 0.2 { ETree::Node(rng.usize(5) as u8, l.clone(), r.clone()) }
+            else if c < 0.5 { ETree::Node(*op, Box::new(mutate_tree(l, rng)), r.clone()) }
+            else if c < 0.8 { ETree::Node(*op, l.clone(), Box::new(mutate_tree(r, rng))) }
+            else { random_tree(rng, 2) }
+        }
+    }
+}
+
+fn crossover_tree(a: &ETree, b: &ETree, rng: &mut Rng64) -> ETree {
+    match (a, b) {
+        (ETree::Node(op, al, ar), ETree::Node(_, bl, br)) =>
+            if rng.f64() < 0.5 { ETree::Node(*op, al.clone(), br.clone()) }
+            else { ETree::Node(*op, bl.clone(), ar.clone()) },
+        (ETree::Node(op, l, _), leaf) | (leaf, ETree::Node(op, l, _)) =>
+            if rng.f64() < 0.5 { ETree::Node(*op, l.clone(), Box::new(leaf.clone())) }
+            else { leaf.clone() },
+        _ => if rng.f64() < 0.5 { a.clone() } else { b.clone() },
+    }
+}
+
+fn op_evolve(et: &ExprTable) -> Vec<Discovery> {
+    // Collect unique atlas target values and their best known expressions
+    let mut target_map: HashMap<i64, (f64, String)> = HashMap::new();
+    for i in 0..et.texts.len() {
+        let v = et.values[i];
+        if v.is_nan() || v.is_infinite() || v.abs() < 1e-15 { continue; }
+        let key = (v * 1000.0).round() as i64;
+        let entry = target_map.entry(key).or_insert_with(|| (v, et.texts[i].clone()));
+        // Prefer shorter existing expressions as reference
+        if et.texts[i].len() < entry.1.len() {
+            entry.1 = et.texts[i].clone();
+        }
+    }
+    let targets: Vec<(f64, String)> = target_map.into_values().collect();
+
+    // Fitness: count how many atlas targets this tree matches (tighter tolerance for large values)
+    let fitness = |tree: &ETree| -> (f64, Vec<usize>) {
+        let v = tree.eval();
+        if v.is_nan() || v.is_infinite() || v.abs() > 1e8 { return (0.0, vec![]); }
+        let mut matched = Vec::new();
+        for (i, (tv, _)) in targets.iter().enumerate() {
+            if tv.abs() < 1e-15 { continue; }
+            // Tighter tolerance for large values to avoid spurious matches
+            let tol = if tv.abs() > 1000.0 { 0.0001 } else { 0.01 };
+            let err = ((v - tv) / tv).abs();
+            if err < tol { matched.push(i); }
+        }
+        // Bonus for simpler trees (fewer nodes = better)
+        let simplicity = 1.0 / (tree.node_count() as f64);
+        let score = matched.len() as f64 + simplicity * 0.1;
+        (score, matched)
+    };
+
+    let pop_size = 500;
+    let generations = 50;
+    let elite_n = pop_size / 10; // 10% elitism
+    let tourn_size = 3;
+
+    let mut rng = Rng64::new(6 * 12 * 24); // n6-themed seed: n*sigma*J2
+
+    // Initialize population
+    let mut pop: Vec<ETree> = (0..pop_size)
+        .map(|_| random_tree(&mut rng, 2))
+        .collect();
+
+    for _gen in 0..generations {
+        // Evaluate fitness into parallel array for O(1) lookup
+        let fit_scores: Vec<f64> = pop.iter().map(|t| fitness(t).0).collect();
+
+        // Sort indices by fitness (descending)
+        let mut indices: Vec<usize> = (0..pop_size).collect();
+        indices.sort_by(|&a, &b| fit_scores[b].partial_cmp(&fit_scores[a]).unwrap_or(std::cmp::Ordering::Equal));
+
+        let mut next_pop: Vec<ETree> = Vec::with_capacity(pop_size);
+
+        // Elitism: carry over top 10%
+        for &idx in indices.iter().take(elite_n) {
+            next_pop.push(pop[idx].clone());
+        }
+
+        // Fill rest with tournament selection + crossover + mutation
+        while next_pop.len() < pop_size {
+            // Tournament select parent A
+            let mut best_a = rng.usize(pop_size);
+            for _ in 1..tourn_size {
+                let c = rng.usize(pop_size);
+                if fit_scores[c] > fit_scores[best_a] { best_a = c; }
+            }
+
+            // Tournament select parent B
+            let mut best_b = rng.usize(pop_size);
+            for _ in 1..tourn_size {
+                let c = rng.usize(pop_size);
+                if fit_scores[c] > fit_scores[best_b] { best_b = c; }
+            }
+
+            let mut child = crossover_tree(&pop[best_a], &pop[best_b], &mut rng);
+
+            // Mutation (30% chance)
+            if rng.f64() < 0.3 {
+                child = mutate_tree(&child, &mut rng);
+            }
+
+            // Cap depth at 2
+            if child.depth() <= 2 {
+                next_pop.push(child);
+            } else {
+                next_pop.push(random_tree(&mut rng, 2));
+            }
+        }
+
+        pop = next_pop;
+    }
+
+    // Collect discoveries: unique formula equivalences
+    // Key = (evolved_formula, target_value_key) to avoid duplicate matches
+    let mut seen_pairs: HashSet<String> = HashSet::new();
+    let mut seen_formulas: HashSet<String> = HashSet::new();
+    let mut discoveries = Vec::new();
+
+    for tree in &pop {
+        let (_score, matched) = fitness(tree);
+        if matched.is_empty() { continue; }
+
+        let formula = tree.fmt_str();
+        if seen_formulas.contains(&formula) { continue; }
+
+        let v = tree.eval();
+        if v.is_nan() || v.is_infinite() { continue; }
+
+        // For each matched target, pick only the best (closest) one per evolved formula
+        let mut best_match: Option<(usize, f64)> = None;
+        for &mi in &matched {
+            let (tv, ref known_expr) = targets[mi];
+            if formula == *known_expr { continue; }
+            // Skip if evolved formula is not simpler
+            if formula.len() >= known_expr.len() && tree.node_count() >= 3 { continue; }
+            let err = ((v - tv) / tv).abs();
+            if best_match.is_none() || err < best_match.unwrap().1 {
+                best_match = Some((mi, err));
+            }
+        }
+
+        if let Some((mi, err)) = best_match {
+            let (tv, ref known_expr) = targets[mi];
+            let pair_key = format!("{}={:.2}", formula, tv);
+            if !seen_pairs.insert(pair_key) { continue; }
+            let prec = 1.0 - err;
+            let is_simpler = formula.len() < known_expr.len();
+            let simplicity_bonus = if is_simpler { 0.3 } else { 0.0 };
+            let d_score = prec * 0.5 + simplicity_bonus;
+            if d_score > 0.05 {
+                discoveries.push(Discovery {
+                    operator: 6, score: d_score,
+                    description: format!(
+                        "EVOLVE: {} = {:.6} (known: {} = {:.6}, err={:.4}%, {} simpler)",
+                        formula, v, known_expr, tv, err * 100.0,
+                        if is_simpler { "IS" } else { "NOT" }
+                    ),
+                    domain_bits: 0, formula: format!("{} = {}", formula, known_expr),
+                    diversity: 0.11, precision: prec,
+                    novelty: if is_simpler { 1.0 } else { 0.5 },
+                });
+            }
+        }
+        seen_formulas.insert(formula);
+    }
+
+    discoveries.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap_or(std::cmp::Ordering::Equal));
+    discoveries.truncate(30); // top 30 evolved formulas
+    discoveries
+}
+
 // ── Known BT Values ─────────────────────────────────────────────
 
 fn known_bt_values() -> Vec<String> {
@@ -1067,9 +1315,9 @@ fn print_text(discoveries: &[Discovery], total_exprs: usize, total_matches: usiz
     let frac = (elapsed_us % 1000) / 100;
 
     // Count per operator
-    let mut op_counts = [0usize; 6];
+    let mut op_counts = [0usize; 7];
     for d in discoveries {
-        if (d.operator as usize) < 6 { op_counts[d.operator as usize] += 1; }
+        if (d.operator as usize) < 7 { op_counts[d.operator as usize] += 1; }
     }
 
     println!("╔══════════════════════════════════════════════════════════════════╗");
@@ -1079,7 +1327,7 @@ fn print_text(discoveries: &[Discovery], total_exprs: usize, total_matches: usiz
     println!("║  Discoveries found:      {:>8}                               ║", total_matches);
     println!("║  Time elapsed:         {:>3}.{} ms                              ║", ms, frac);
     println!("╠══════════════════════════════════════════════════════════════════╣");
-    for i in 0..6 {
+    for i in 0..7 {
         println!("║    {:<9}: {:>4}                                                ║", OP_NAMES[i], op_counts[i]);
     }
     println!("╚══════════════════════════════════════════════════════════════════╝");
@@ -1090,7 +1338,7 @@ fn print_text(discoveries: &[Discovery], total_exprs: usize, total_matches: usiz
     println!("{}", "-".repeat(130));
 
     for (i, d) in discoveries.iter().take(60).enumerate() {
-        let op_name = if (d.operator as usize) < 6 { OP_NAMES[d.operator as usize] } else { "???" };
+        let op_name = if (d.operator as usize) < 7 { OP_NAMES[d.operator as usize] } else { "???" };
         let desc_trunc = if d.description.chars().count() > 80 {
             let s: String = d.description.chars().take(77).collect();
             format!("{}...", s)
@@ -1135,6 +1383,16 @@ fn print_text(discoveries: &[Discovery], total_exprs: usize, total_matches: usiz
     for d in survived.iter().take(8) {
         println!("  [OK] {}", &d.description[..d.description.len().min(120)]);
     }
+
+    println!();
+    println!("═══ EVOLVE Report ═══");
+    let evos: Vec<&Discovery> = discoveries.iter().filter(|d| d.operator == 6).collect();
+    let simpler: Vec<&&Discovery> = evos.iter().filter(|d| d.description.contains("IS simpler")).collect();
+    println!("  Evolved formulas: {}  |  Simpler alternatives: {}", evos.len(), simpler.len());
+    for d in evos.iter().take(15) {
+        let tag = if d.description.contains("IS simpler") { "NEW" } else { "ALT" };
+        println!("  [{}] {}", tag, &d.description[..d.description.len().min(130)]);
+    }
 }
 
 fn print_json(discoveries: &[Discovery], total_exprs: usize, total_matches: usize, elapsed_us: u128) {
@@ -1152,7 +1410,7 @@ fn print_json(discoveries: &[Discovery], total_exprs: usize, total_matches: usiz
         let domains_json: Vec<String> = domain_names.iter().map(|s| format!("\"{}\"", s)).collect();
         println!("    {{");
         println!("      \"rank\": {},", i + 1);
-        let op_name = if (d.operator as usize) < 6 { OP_NAMES[d.operator as usize] } else { "???" };
+        let op_name = if (d.operator as usize) < 7 { OP_NAMES[d.operator as usize] } else { "???" };
         println!("      \"operator\": \"{}\",", op_name);
         println!("      \"score\": {:.4},", d.score);
         println!("      \"diversity\": {:.4},", d.diversity);
@@ -1193,15 +1451,17 @@ impl EngineState {
         let d3 = op_compose(&self.et, &self.idx, targets, &self.known_bts);
         let d4 = op_anomaly(&self.constants, &self.et, &self.idx);
         let d5 = op_symmetry(&self.constants);
+        let d7 = op_evolve(&self.et);
 
         let mut all: Vec<Discovery> = Vec::with_capacity(
-            d1.len() + d2.len() + d3.len() + d4.len() + d5.len() + 25
+            d1.len() + d2.len() + d3.len() + d4.len() + d5.len() + d7.len() + 25
         );
         all.extend(d1);
         all.extend(d2);
         all.extend(d3);
         all.extend(d4);
         all.extend(d5);
+        all.extend(d7);
 
         // REDTEAM runs on all prior discoveries
         let d6 = op_redteam(&all);

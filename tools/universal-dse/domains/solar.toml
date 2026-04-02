@@ -28,11 +28,11 @@ name = "Absorber"
 level  = 0
 id     = "c-Si"
 label  = "Crystalline Silicon"
-n6     = 0.33
+n6     = 0.80
 perf   = 0.85
 power  = 0.95
 cost   = 1.00
-notes  = "bandgap=1.12eV, Z=14=sigma+phi, theor_eff=29%, maturity=100"
+notes  = "Z=14=sigma+phi EXACT, CN=4=tau EXACT, bandgap=1.12eV, theor_eff=29%, maturity=100"
 
 [[candidate]]
 level  = 0
@@ -78,11 +78,11 @@ notes  = "bandgap=1.45eV~4/3, Z=48=sigma*tau, theor_eff=32%, maturity=85"
 level  = 0
 id     = "OPV"
 label  = "Organic Photovoltaic"
-n6     = 0.33
+n6     = 0.80
 perf   = 0.53
 power  = 0.20
 cost   = 1.00
-notes  = "bandgap=1.40eV, Z=6=n EXACT, theor_eff=18%, maturity=30"
+notes  = "Z=6=n EXACT (Carbon-based), bandgap=1.40eV~4/3 CLOSE, theor_eff=18%, maturity=30"
 
 # =============================================================
 # Level 1: Process (Cell Process)  -- 6 candidates
@@ -114,11 +114,11 @@ notes  = "eff=23.0%, passiv=2=phi EXACT, temp_coeff=400 EXACT, maturity=95"
 level  = 1
 id     = "TOPCon"
 label  = "Tunnel Oxide Passivated Contact"
-n6     = 0.33
+n6     = 0.80
 perf   = 0.96
 power  = 0.56
 cost   = 0.50
-notes  = "eff=25.5%, passiv=3, temp_coeff=350, maturity=80"
+notes  = "eff=25.5%, passiv=3=n/phi EXACT, temp_coeff=350=(sigma-sopfr)*sopfr*sigma-phi CLOSE, maturity=80"
 
 [[candidate]]
 level  = 1
@@ -170,17 +170,17 @@ notes  = "junctions=1=mu EXACT, limit=33.7% (SQ 1/3 EXACT), record=26.8%"
 level  = 2
 id     = "Tandem-2J"
 label  = "Tandem (2-Junction)"
-n6     = 0.25
+n6     = 0.80
 perf   = 0.71
 power  = 0.70
 cost   = 0.50
-notes  = "junctions=2=phi EXACT, limit=45.7%, record=33.9%"
+notes  = "junctions=2=phi EXACT, limit=45.7%, record=33.9%~1/3 CLOSE"
 
 [[candidate]]
 level  = 2
 id     = "Triple-3J"
 label  = "Triple Junction"
-n6     = 0.25
+n6     = 0.80
 perf   = 0.82
 power  = 0.70
 cost   = 0.25

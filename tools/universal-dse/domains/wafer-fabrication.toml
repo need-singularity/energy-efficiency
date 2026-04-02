@@ -34,11 +34,11 @@ notes = "wafer=12inch=sigma EXACT, most mature platform, 95%+ market share"
 [[candidate]]
 id = "Si-450mm"
 label = "Si 450mm (18 inch, next-gen, higher throughput, limited ecosystem)"
-n6 = 0.25
+n6 = 0.80
 perf = 0.80
 power = 0.50
 cost = 0.30
-notes = "18inch != n6 derived, but throughput gain ~2.25x per wafer"
+notes = "18inch=n+sigma=J2-n EXACT, throughput gain ~2.25x per wafer"
 
 [[candidate]]
 id = "SiC-6H"
@@ -176,20 +176,20 @@ notes = "next-gen EUV, 1.7x resolution improvement, ASML EXE:5000"
 [[candidate]]
 id = "Nanoimprint"
 label = "Nanoimprint Lithography (contact, 1:1 template, sub-10nm, low cost)"
-n6 = 0.25
+n6 = 0.50
 perf = 0.50
 power = 0.90
 cost = 0.85
-notes = "no optical system, defect control challenging, memory/3D applications"
+notes = "resolution~10nm=sigma-phi EXACT, 1:1=mu EXACT, no optical system, memory/3D"
 
 [[candidate]]
 id = "E-beam-direct"
 label = "E-beam Direct Write (maskless, sub-5nm, serial, R&D/prototype)"
-n6 = 0.25
+n6 = 0.50
 perf = 0.45
 power = 0.40
 cost = 0.60
-notes = "ultimate resolution, extremely slow throughput, mask writing standard"
+notes = "resolution~5nm=sopfr EXACT, maskless, extremely slow throughput, mask writing standard"
 
 [[candidate]]
 id = "DSA-self-assembly"

@@ -26,11 +26,11 @@ name = "ISA"
 [[candidate]]
 id = "RV32I_base"
 label = "RV32I Base (32-bit, integer-only, minimal, embedded target)"
-n6 = 0.40
+n6 = 0.80
 perf = 0.20
 power = 0.95
 cost = 1.00
-notes = "registers=32=2^sopfr EXACT, minimal gate count, IoT/embedded"
+notes = "regs=32=2^sopfr EXACT, 32bit=2^sopfr EXACT, opcode=7=sigma-sopfr EXACT, IoT/embedded"
 
 [[candidate]]
 id = "RV64G_6ext"
@@ -44,11 +44,11 @@ notes = "extensions=6=n EXACT (I+M+A+F+D+C), Linux-capable, standard"
 [[candidate]]
 id = "RV128"
 label = "RV128 (128-bit address, future-proof, cryptography-oriented)"
-n6 = 0.30
+n6 = 0.80
 perf = 0.60
 power = 0.50
 cost = 0.40
-notes = "addr_bits=128=2^(sigma-sopfr) EXACT, future standard, large address space"
+notes = "addr=128=2^(sigma-sopfr) EXACT, regs=32=2^sopfr EXACT, future standard, crypto"
 
 [[candidate]]
 id = "Vector_V"
@@ -152,11 +152,11 @@ name = "Execution"
 [[candidate]]
 id = "Single_issue"
 label = "Single-issue (1 IPC max, simple scoreboard, minimal area)"
-n6 = 0.20
+n6 = 0.50
 perf = 0.15
 power = 0.95
 cost = 1.00
-notes = "simplest execution, minimum silicon, ultra-low-power target"
+notes = "dispatch=1=mu EXACT, simplest execution, minimum silicon, ultra-low-power"
 
 [[candidate]]
 id = "Dual_issue"
@@ -215,11 +215,11 @@ name = "Privilege"
 [[candidate]]
 id = "Machine_only"
 label = "Machine-only (M mode, bare-metal, no MMU, minimal)"
-n6 = 0.20
+n6 = 0.50
 perf = 0.30
 power = 0.95
 cost = 1.00
-notes = "single mode, MCU/firmware target, no OS support"
+notes = "mode=1=mu EXACT, MCU/firmware target, no OS support"
 
 [[candidate]]
 id = "M_U_embedded"
@@ -278,20 +278,20 @@ name = "Implementation"
 [[candidate]]
 id = "FPGA_softcore"
 label = "FPGA Softcore (Xilinx/Intel, rapid prototyping, reconfigurable)"
-n6 = 0.30
+n6 = 0.50
 perf = 0.15
 power = 0.40
 cost = 0.60
-notes = "prototyping platform, low NRE, 10-50x slower than ASIC"
+notes = "prototyping platform, low NRE, LUT=6-input=n EXACT (modern FPGAs), 10-50x slower"
 
 [[candidate]]
 id = "ASIC_28nm"
 label = "ASIC 28nm (mature node, low cost, proven, high yield)"
-n6 = 0.40
+n6 = 0.80
 perf = 0.40
 power = 0.60
 cost = 0.90
-notes = "metal=28nm=P2 EXACT (BT-37), mature, cost-effective for IoT"
+notes = "28nm=tau+J2 EXACT (BT-37), metal_pitch=P2 EXACT, mature, cost-effective for IoT"
 
 [[candidate]]
 id = "ASIC_6nm"

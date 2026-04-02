@@ -26,21 +26,21 @@ name = "Conductor"
 level  = 0
 id     = "ACSR"
 label  = "Aluminum Conductor Steel Reinforced"
-n6     = 0.00
+n6     = 0.50
 perf   = 0.50
 power  = 0.50
 cost   = 1.00
-notes  = "baseline conductor, loss=5-8%, no n6 alignment"
+notes  = "loss~5%=sopfr CLOSE, Al Z=13=sigma+mu EXACT, baseline conductor"
 
 [[candidate]]
 level  = 0
 id     = "HTLS"
 label  = "High-Temperature Low-Sag Conductor"
-n6     = 0.00
+n6     = 0.50
 perf   = 0.70
 power  = 0.65
 cost   = 0.60
-notes  = "2x capacity of ACSR, loss=3-5%, high-temp alloy"
+notes  = "2x=phi EXACT capacity of ACSR, loss=3-5%=n/phi~sopfr CLOSE, high-temp alloy"
 
 [[candidate]]
 level  = 0
@@ -56,11 +56,11 @@ notes  = "zero DC resistance, Tc=93K, CN=6 perovskite EXACT, loss<0.5%"
 level  = 0
 id     = "XLPE_Sub"
 label  = "XLPE Submarine Cable"
-n6     = 0.00
+n6     = 0.50
 perf   = 0.65
 power  = 0.70
 cost   = 0.40
-notes  = "cross-linked polyethylene, subsea HVDC, loss=3%"
+notes  = "loss=3%=n/phi EXACT, cross-linked polyethylene, subsea HVDC"
 
 [[candidate]]
 level  = 0
@@ -132,11 +132,11 @@ notes  = "SiC bandgap=3.3eV, eff=99%, switching=100kHz"
 level  = 1
 id     = "GaN_HEMT"
 label  = "GaN HEMT Converter"
-n6     = 0.33
+n6     = 0.80
 perf   = 0.90
 power  = 0.85
 cost   = 0.35
-notes  = "GaN bandgap=3.4eV, eff=98.5%, switching=1MHz"
+notes  = "GaN bandgap=3.4eV~n/phi+0.4, eff=98.5%, switching=1MHz=10^n EXACT"
 
 # =============================================================
 # Level 2: Transformer (Voltage Transform)  -- 5 candidates

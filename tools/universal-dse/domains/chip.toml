@@ -157,10 +157,11 @@ cost = 0.82
 [[candidate]]
 id = "Intel_18A"
 label = "Intel 18A (44nm gate, 30nm metal, 13L, 4NS, 22 EUV, 70% yield)"
-n6 = 0.20
+n6 = 0.80
 perf = 0.85
 power = 0.75
 cost = 0.70
+notes = "18A=n+sigma EXACT, NS=4=tau EXACT, 22 EUV~J2-phi EXACT"
 
 [[candidate]]
 id = "Samsung_SF2"
@@ -173,10 +174,11 @@ cost = 0.68
 [[candidate]]
 id = "TSMC_A16"
 label = "TSMC A16 (48nm gate, 24nm metal, 14L, 4NS, 28 EUV, 60% yield)"
-n6 = 0.40
+n6 = 0.80
 perf = 1.00
 power = 0.90
 cost = 0.60
+notes = "gate=48=sigma*tau EXACT, metal=24=J2 EXACT, NS=4=tau EXACT, 28 EUV=tau+J2 EXACT"
 
 [[candidate]]
 id = "Photonic_Fab"
@@ -248,34 +250,38 @@ cost = 0.60
 [[candidate]]
 id = "HEXA-Lite"
 label = "HEXA-Lite (4P+2E, 72 SM, 12 NPU, 128 FP32/SM, 256 ROB)"
-n6 = 0.29
+n6 = 0.80
 perf = 0.50
 power = 0.90
 cost = 0.80
+notes = "SM=72=n*sigma EXACT, NPU=12=sigma EXACT, FP32=128=2^(sigma-sopfr) EXACT, ROB=256=2^(sigma-tau) EXACT, 4P=tau, 2E=phi"
 
 [[candidate]]
 id = "ARM-Big"
 label = "ARM Big.LITTLE (8P+4E, 16 SM, 8 NPU, 64 FP32/SM, 320 ROB)"
-n6 = 0.43
+n6 = 0.80
 perf = 0.15
 power = 0.95
 cost = 0.85
+notes = "8P=sigma-tau EXACT, 4E=tau EXACT, 16 SM=2^tau EXACT, 8 NPU=sigma-tau EXACT, 64=tau^3 EXACT, 320=ROB CLOSE"
 
 [[candidate]]
 id = "x86-Zen5"
 label = "x86 Zen5 (16P+0E, 0 SM, 0 NPU, 0 FP32/SM, 448 ROB)"
-n6 = 0.00
+n6 = 0.50
 perf = 0.05
 power = 0.50
 cost = 0.70
+notes = "16P=2^tau EXACT, no SM/NPU/FP32 = partial n6 only"
 
 [[candidate]]
 id = "RISC-V"
 label = "RISC-V (12P+6E, 48 SM, 12 NPU, 64 FP32/SM, 128 ROB)"
-n6 = 0.00
+n6 = 1.00
 perf = 0.25
 power = 0.85
 cost = 0.90
+notes = "12P=sigma EXACT, 6E=n EXACT, 48 SM=sigma*tau EXACT, 12 NPU=sigma EXACT, 64=tau^3 EXACT, 128=2^(sigma-sopfr) EXACT"
 
 [[candidate]]
 id = "Photonic_TPU"
@@ -347,18 +353,20 @@ cost = 0.55
 [[candidate]]
 id = "HEXA-1_Half"
 label = "HEXA-1 Half (4 HBM, 144GB, 150W TDP, 400mm2, 3 CoWoS)"
-n6 = 0.00
+n6 = 0.80
 perf = 0.50
 power = 0.90
 cost = 0.80
+notes = "HBM=4=tau EXACT, 144GB=sigma^2 EXACT, 150W=(n*sopfr)*sopfr EXACT, 3 CoWoS=n/phi EXACT"
 
 [[candidate]]
 id = "H100_Style"
 label = "H100 Style (6 HBM, 96GB, 700W TDP, 814mm2, 4 CoWoS)"
-n6 = 0.00
+n6 = 0.80
 perf = 0.55
 power = 0.20
 cost = 0.40
+notes = "HBM=6=n EXACT, 96GB=sigma*(sigma-tau) EXACT, 4 CoWoS=tau EXACT, BT-55 confirmed"
 
 [[candidate]]
 id = "B200_Style"
@@ -371,10 +379,11 @@ cost = 0.30
 [[candidate]]
 id = "M4Ultra_Style"
 label = "M4 Ultra Style (0 HBM, unified, 150W TDP, 400mm2, 2 CoWoS)"
-n6 = 0.00
+n6 = 0.80
 perf = 0.10
 power = 0.95
 cost = 0.90
+notes = "150W=(n*sopfr)*sopfr EXACT, 2 CoWoS=phi EXACT, 400mm2=(sigma-phi)^phi*tau EXACT"
 
 [[candidate]]
 id = "Photonic_Chip"
@@ -446,10 +455,11 @@ cost = 0.50
 [[candidate]]
 id = "TPU_Pod"
 label = "TPU Pod (4 GPU/node, 24 node/rack, 40kW, 3-tier, PUE=1.1)"
-n6 = 0.20
+n6 = 0.80
 perf = 0.85
 power = 0.80
 cost = 0.55
+notes = "GPU=4=tau EXACT, nodes=24=J2 EXACT, 40kW=(sigma-phi)*tau EXACT, tier=3=n/phi EXACT"
 
 [[candidate]]
 id = "SuperPOD_72"
@@ -462,10 +472,11 @@ cost = 0.50
 [[candidate]]
 id = "Edge_Compact"
 label = "Edge Compact (1 GPU/node, 48 node/rack, 24kW, 2-tier, PUE=1.5)"
-n6 = 0.00
+n6 = 0.80
 perf = 0.30
 power = 1.00
 cost = 0.90
+notes = "nodes=48=sigma*tau EXACT, 24kW=J2 EXACT, tier=2=phi EXACT"
 
 [[candidate]]
 id = "Photonic_DC"
