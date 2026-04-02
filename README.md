@@ -192,7 +192,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 7 | | v4 | **가설 30/30 100%EXACT** | H-MS-01~30 전수 검증 완료, CrossDSE 8도메인 (94.1% n6) | [가설](docs/material-synthesis/hypotheses.md) · [CrossDSE](docs/material-synthesis/cross-dse-8domain-results.md) |
 | 8 | | v4 | **산업검증 20소재** | 강철1.9Bt + 시멘트4.1Bt + 플라스틱400Mt + 반도체 — 전부 n=6 구조 | [산업](docs/material-synthesis/industrial-validation.md) |
 | 9 | | v5 | **실험검증 + TP 28/28** | 50+ 발표 데이터셋 + 28 예측 전수 검증 (14 VERIFIED + 14 PARTIAL, 0 FAIL) | [실험](docs/material-synthesis/experimental-verification.md) · [TP](docs/material-synthesis/testable-predictions.md) |
-| 10 | ✅ | v4 | **🔬 물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계 | [proof](docs/material-synthesis/physical-limit-proof.md) · [Mk.V](docs/material-synthesis/evolution/mk-5-limit.md) |
+| 10 | | v4 | **물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계 | [proof](docs/material-synthesis/physical-limit-proof.md) · [Mk.V](docs/material-synthesis/evolution/mk-5-limit.md) |
 
 > 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`
 
