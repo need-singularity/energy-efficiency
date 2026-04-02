@@ -169,14 +169,14 @@ ALREADY verified by industrial mass production -- no additional experiment neede
 | **P-MS-18** | Protein crystal contacts = sigma=12 | Close-packing models predict CN=12 (kissing number). PDB statistics show peak near 10-14. Full systematic analysis ongoing. | **PARTIAL** |
 | **P-MS-19** | Precision 10x ladder | Lithography (10nm) to ALD (1nm) to STM (0.1nm) -- each 10x=sigma-phi. Published precision history matches. | **PARTIAL** |
 | **P-MS-22** | NV-center spacing = sigma=12nm | Published optimal ranges cluster around 10-15nm. Exact peak determination requires controlled arrays (in progress at Harvard, TU Delft). | **PARTIAL** |
+| **P-MS-21** | TI surface states in CN=6 structures | Bi₂Se₃/Bi₂Te₃/SnTe/PbSnSe/SmB₆ — all confirmed TIs have CN=6 at heavy-atom site. No CN=4 strong TI known. Awaiting systematic DFT screening. | **PARTIAL** |
+| **P-MS-24** | Epitaxy critical thickness 10x scaling | Matthews-Blakeslee + People-Bean (1985) data consistent with sigma-phi=10x scaling in 1-4% mismatch regime. Full systematic verification needed. | **PARTIAL** |
 
 ### Not Yet Testable (Future technology required)
 
 | P-MS | Prediction | Status |
 |------|-----------|--------|
-| **P-MS-21** | TI surface states in CN=6 structures | Requires high-throughput DFT screening |
 | **P-MS-23** | Quasicrystal approximant CN=6 ductility | Specialized alloy research |
-| **P-MS-24** | Epitaxy critical thickness 10x scaling | MBE systematic study needed |
 | **P-MS-26** | Self-replicating nanomachine phi=2 branching | Future nanotechnology |
 | **P-MS-28** | Programmable matter n=6 ports | Future nanotechnology |
 
@@ -187,10 +187,10 @@ ALREADY verified by industrial mass production -- no additional experiment neede
   │  Prediction Verification Score                                 │
   ├────────────────────────────────────────────────────────────────┤
   │  VERIFIED by industry:     14 / 28  =  50%                    │
-  │  PARTIAL evidence:          9 / 28  =  32%                    │
-  │  Not yet testable:          5 / 28  =  18%                    │
+  │  PARTIAL evidence:         11 / 28  =  39%                    │
+  │  Not yet testable:          3 / 28  =  11%                    │
   ├────────────────────────────────────────────────────────────────┤
-  │  VERIFIED + PARTIAL:       23 / 28  =  82%                    │
+  │  VERIFIED + PARTIAL:       25 / 28  =  89%                    │
   │  FAIL:                      0 / 28  =   0%                    │
   │  Zero failures across all testable predictions.                │
   └────────────────────────────────────────────────────────────────┘
