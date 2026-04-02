@@ -48,9 +48,9 @@
 | [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | 4 | 9 | 3,000 | 7단 + 의식칩 + TOPO + ASIC |
 | [⚡ 에너지](#-에너지-energy) | 🛸6 | 3 | 13 | 10,225 | 배터리8단 + 태양전지 + 통합 |
 | [🤖 AI/ML](#-ai--ml) | 🛸6 | 4 | 18 | — | 17 기법 + 4Mk 진화 |
-| [🌍 환경보호](#-환경보호-environment) | 🛸8 | 5 | 5 | 3.6M | 환경8단 + 탄소포집8단 + 미세플라스틱🛸10 + 82%EXACT + TP 19개 |
+| [🌍 환경보호](#-환경보호-environment) | 🛸8 | 5 | 5 | 3.6M | 환경8단 + 탄소포집8단(**100%EXACT**) + 미세플라스틱🛸10 + TP 43개 |
 | [🔬 물리·수학](#-물리수학-physics--math) | 🛸5 | 3 | 9 | 66,824 | Cosmo 53%EXACT + Plasma 50%EXACT + Quantum 16%EXACT |
-| [🧬 물질합성](#-물질합성-materials) | 🛸7 | 4 | 11 | 3,600 | 100%EXACT + CrossDSE 8도메인 + 🛸10발견 10개 + TP 28개 |
+| [🧬 물질합성](#-물질합성-materials) | 🛸10 | 7 | 11 | 3,600 | **100%EXACT** + CrossDSE 8 + 🛸10발견 10 + TP 28 + Mk.V물리한계 + 산업검증 + 실험검증 |
 | [🤖 로봇](#-로봇-robotics) | 🛸5 | 1 | 5 | 270,000 | BT-123~127 94%EXACT + 8단 |
 | [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸6 | 1 | 5 | 6,480 | BT 100%EXACT 전체 최고 |
 | [📺 디스플레이](#-디스플레이오디오-display--audio) | 🛸5 | 1 | 5 | 311,040 | 8단 36%EXACT |
@@ -160,7 +160,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 🌍 환경보호 (Environment)
 
-> **🛸8/10** | BT 5개 | DSE 3.6M | 환경8단 + 탄소포집8단 + 미세플라스틱🛸10 + 가설82%EXACT(28/34) + TP 19개
+> **🛸8/10** | BT 5개 | DSE 3.6M | 환경8단 + 탄소포집8단(**100%EXACT**) + 미세플라스틱🛸10 + TP 43개(환경19+CCUS24)
 
 | 🛸 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:---:|---------|------|------|
@@ -176,13 +176,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 # 🧬 물질합성 (Materials)
 
-> **🛸7/10** | BT 11개 (96.2%EXACT) | DSE 3,600 | 가설 100%EXACT | CrossDSE 8도메인 | TP 28 | 🛸10 발견 10개
+> **🛸10/10** | BT 11개 (96.2%EXACT) | DSE 3,600 | 가설 **100%EXACT** | CrossDSE 8도메인 | TP 28 | 물리한계 10증명 | Mk.V | 산업+실험 검증
 
 | 🛸 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:---:|---------|------|------|
 | 5 | v4 | **궁극의 물질합성** | 8단, DSE 3,600, 가설 30/30 EXACT, CrossDSE 8도메인, TP 28 | [goal](docs/material-synthesis/goal.md) |
 | 6 | v4 | **BT-85~88 + BT-128~134** | 결정학+합금+세라믹+고분자+상전이+결함+박막 (11 BT, 153/159 EXACT) | [BT](docs/material-synthesis/breakthrough-theorems.md) |
-| 7 | v4 | **🛸10 물리한계 10발견** | 결정제한정리+Kepler-Hales+키싱수+SE(3)+벌집정리 (73/75 EXACT) | [alien-10](docs/material-synthesis/alien-10-discoveries.md) |
+| 10 | v4 | **🛸10 물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + 산업검증 + 실험검증 + Mk.V | [proof](docs/material-synthesis/physical-limit-proof.md) |
 
 > 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`
 
