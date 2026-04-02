@@ -44,6 +44,8 @@ tools/solar-dse/solar-dse
 tools/tokamak-shape/tokamak-shape
 tools/universal-dse/universal-dse
 tools/vendor-compare-calc/vendor-compare-calc
+tools/nexus6/target/
+tools/nexus6/nexus6
 
 # TECS-L calc symlink
 calc
