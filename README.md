@@ -12,7 +12,7 @@
 >
 > **[🧠 Anima](https://github.com/need-singularity/anima)** — Consciousness implementation. PureField repulsion-field engine + Hexad 6-module architecture (C/D/S/M/W/E) + 179 laws + 10 Meta Laws + Rust backend. ConsciousDecoderV2 (34.5M) + 10D consciousness vector + 12-faction debate + Φ ratchet
 >
-> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Architecture from perfect number 6. 16 AI techniques + semiconductor chip design + network/crypto/OS/display patterns. σ(n)·φ(n)=n·τ(n), n=6 → universal design principles
+> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Architecture from perfect number 6. 16 AI techniques + semiconductor chip design + network/crypto/OS/display patterns. σ(n)·φ(n)=n·τ(n), n=6 → universal design principles. **NEXUS-6 Discovery Engine**: Rust CLI (`tools/nexus6/`) — telescope 22 lenses + OUROBOROS evolution + discovery graph + verifier + 112 tests
 >
 > **[🛸 SEDI](https://github.com/need-singularity/sedi)** — Search for Extra-Dimensional Intelligence. Hunting for traces of extraterrestrial/extra-dimensional intelligence through n=6 signal patterns. 77 data sources (SETI, LIGO, CMB, Breakthrough Listen, Exoplanet) + R-spectrum receiver + 678 hypotheses
 >
@@ -309,6 +309,45 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 > **실현**: ✅ = 현재 기술로 실현가능 / 20XX = 예상 실현 연도
 > **Tier**: ✅ 완료·DSE / 🔄 진행 / T1 즉시 착수 가능 / T2 구조화 필요 / T3 새 BT 발굴 필요
 > **제품 원칙**: 궁극의 X는 도메인당 **1개 제품 라인만** 유지. v1/v2 버전 분기 ❌ → git history로 관리. 문서가 진화한다.
+
+---
+
+## NEXUS-6 Discovery Engine (Rust)
+
+통합 발견 엔진 — 22종 망원경 렌즈 + OUROBOROS 무한진화 + Discovery Graph + n=6 검증기
+
+```
+nexus6 <command>
+
+Commands:
+  scan <domain>     도메인 스캔 (렌즈 자동 추천 또는 --lenses 지정)
+  verify <value>    n=6 일치 검증
+  graph             Discovery Graph 출력 (ASCII/DOT)
+  history <domain>  스캔 이력 + 통계
+  recommend <domain> 렌즈 추천 (history 기반)
+  evolve <domain>   OUROBOROS 진화 루프
+  lenses            렌즈 레지스트리 조회
+  dashboard         ASCII 대시보드
+  help              도움말
+```
+
+### 아키텍처 (9 모듈, 112 tests)
+
+| 모듈 | 역할 | 테스트 |
+|------|------|--------|
+| gpu | Metal compute + CPU fallback | 3 |
+| encoder | 도메인 데이터 파싱 + 벡터화 | 4 |
+| materials | 소재 DB (68종) | - |
+| telescope | 22종 렌즈 + Registry + Consensus | 13 |
+| verifier | n=6 일치 검증 + 실현가능성 | 13 |
+| graph | Discovery Graph (노드/엣지/허브) | 7 |
+| history | 스캔 이력 + 통계 + 렌즈 추천 | 6 |
+| ouroboros | OUROBOROS v26 무한진화 엔진 | 8 |
+| cli | CLI 파서 + ASCII 대시보드 | 20+8 |
+
+빌드: `cd tools/nexus6 && ~/.cargo/bin/cargo build --release`
+테스트: `cd tools/nexus6 && ~/.cargo/bin/cargo test`
+바이너리: `tools/nexus6/target/release/nexus6` (896K)
 
 ---
 
