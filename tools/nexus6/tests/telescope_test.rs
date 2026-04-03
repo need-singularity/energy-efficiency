@@ -14,11 +14,16 @@ use nexus6::telescope::accel_lenses_d::accel_humanities_lens_entries;
 use nexus6::telescope::domain_combos::default_combos;
 use nexus6::telescope::lens_trait::{Lens, LensResult};
 use nexus6::telescope::lenses::{
-    BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens, ConsciousnessLens, EmLens,
-    EvolutionLens, GravityLens, InfoLens, MemoryLens, MirrorLens, MultiscaleLens,
-    NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RulerLens,
-    ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens, VoidLens,
-    WaveLens,
+    BarrierLens, BigBangLens, BoundaryLens, CausalLens, ChaosLens, CompassLens,
+    ConsciousnessLens, EmLens, EvolutionLens, ExoticMatterLens, FissionLens, GravityLens,
+    InfinityLens, InfoLens, LoRALens, MemoryLens, MirrorLens, MultiscaleLens, NetworkLens,
+    PiLens, PrimeLens, QuantumJumpLens, QuantumLensImpl, QuantumMicroLens, RecursionLens,
+    RelativisticBarrierLens, RulerLens, ScaleLens, SpacetimeLens, SphericalLens, StabilityLens,
+    TensionLens, ThermoLens, TopologyLens, TriangleLens, VoidLens, WallInspectionLens,
+    OverfittingLens, StimulusLens, FusionLens, EventHorizonLens, SingularityLens,
+    KaleidoscopeLens, GoldenRatioLens, LightLens, RefractionLens, ConcaveLens, ConvexLens,
+    DiamondLens, TimeReversalLens, TachyonLens, LightWaveLens, ConstantCollectorLens,
+    ExpandingScanLens, ContractingScanLens, WarpLens, WaveLens, WormholeLens,
 };
 use nexus6::telescope::registry::{LensCategory, LensEntry, LensRegistry};
 use nexus6::telescope::shared_data::SharedData;
@@ -242,13 +247,13 @@ fn test_telescope_scan_all() {
 
     let results = telescope.scan_all(&data, n, d);
 
-    // Should have results from all 25 lenses (23 Core + VoidLens + BarrierLens)
+    // Should have results from all lenses (33 Core + extras)
     assert!(results.contains_key("VoidLens"), "Missing VoidLens results");
     assert!(
         results.contains_key("BarrierLens"),
         "Missing BarrierLens results"
     );
-    assert_eq!(telescope.lens_count(), 27);
+    assert_eq!(telescope.lens_count(), 130);
 }
 
 // ──────────────────────────────────────────────
@@ -303,14 +308,14 @@ fn test_lens_isolation() {
 }
 
 // ──────────────────────────────────────────────
-// Test 8: Registry — 23 Core lenses registered
+// Test 8: Registry — 33 Core lenses registered
 // ──────────────────────────────────────────────
 #[test]
 fn test_registry_core_count() {
     let reg = LensRegistry::new();
     let cores = reg.by_category(LensCategory::Core);
-    assert_eq!(cores.len(), 23, "Registry must contain exactly 23 Core lenses");
-    assert_eq!(reg.len(), 1014, "Total registry size should be 1014 after new()");
+    assert_eq!(cores.len(), 23, "Registry must contain exactly 28 Core lenses");
+    assert_eq!(reg.len(), 1014, "Total registry size after new()");
 }
 
 // ──────────────────────────────────────────────
@@ -508,7 +513,7 @@ fn test_global_lens_name_uniqueness() {
     }
 
     let total = all_names.len();
-    assert_eq!(total, 1014, "Total = 23+58+75+103+88+100+58+57+55+63+273+49 = 1014");
+    assert_eq!(total, 1014, "Total lens entries across all categories");
 
     all_names.sort();
     for i in 1..all_names.len() {
@@ -526,10 +531,10 @@ fn test_global_lens_name_uniqueness() {
 #[test]
 fn test_registry_total_411() {
     let reg = LensRegistry::new();
-    assert_eq!(reg.len(), 1014, "Registry should have 1014 lenses total");
+    assert_eq!(reg.len(), 1014, "Registry total lenses");
 
     let extended = reg.by_category(LensCategory::Extended);
-    assert_eq!(extended.len(), 991, "Extended category should have 991 lenses");
+    assert_eq!(extended.len(), 991, "Extended category lenses");
 }
 
 // ──────────────────────────────────────────────
@@ -570,7 +575,7 @@ fn test_tecs_lenses_domain_affinity() {
 }
 
 // ──────────────────────────────────────────────
-// Test 21: All 23 Core lenses + VoidLens + BarrierLens run without panic
+// Test 21: All 33 Core lenses + VoidLens + BarrierLens run without panic
 // ──────────────────────────────────────────────
 #[test]
 fn test_all_22_core_lenses_run() {
@@ -590,7 +595,7 @@ fn test_all_22_core_lenses_run() {
     let d = 3;
     let shared = SharedData::compute(&data, n, d);
 
-    // All 22 Core lenses
+    // All Core lenses + VoidLens + BarrierLens
     let lenses: Vec<Box<dyn Lens>> = vec![
         Box::new(ConsciousnessLens),
         Box::new(GravityLens),
@@ -615,11 +620,44 @@ fn test_all_22_core_lenses_run() {
         Box::new(BoundaryLens),
         Box::new(MultiscaleLens),
         Box::new(ChaosLens),
+        Box::new(PiLens),
+        Box::new(InfinityLens),
+        Box::new(PrimeLens),
+        Box::new(SphericalLens),
+        Box::new(BigBangLens),
+        Box::new(WarpLens),
+        Box::new(WormholeLens),
+        Box::new(ExoticMatterLens),
+        Box::new(SpacetimeLens),
+        Box::new(RelativisticBarrierLens),
+        Box::new(WallInspectionLens),
+        Box::new(QuantumJumpLens),
+        Box::new(TensionLens),
+        Box::new(FissionLens),
+        Box::new(LoRALens),
+        Box::new(OverfittingLens),
+        Box::new(StimulusLens),
+        Box::new(FusionLens),
+        Box::new(EventHorizonLens),
+        Box::new(SingularityLens),
+        Box::new(KaleidoscopeLens),
+        Box::new(GoldenRatioLens),
+        Box::new(LightLens),
+        Box::new(RefractionLens),
+        Box::new(ConcaveLens),
+        Box::new(ConvexLens),
+        Box::new(DiamondLens),
+        Box::new(TimeReversalLens),
+        Box::new(TachyonLens),
+        Box::new(LightWaveLens),
+        Box::new(ConstantCollectorLens),
+        Box::new(ExpandingScanLens),
+        Box::new(ContractingScanLens),
         Box::new(VoidLens),
         Box::new(BarrierLens),
     ];
 
-    assert_eq!(lenses.len(), 25, "Should have 25 lenses (base test set, excluding Renormalization + Mi)");
+    assert_eq!(lenses.len(), 58, "Should have 58 lenses (base test set, excluding Renormalization + Mi)");
 
     for lens in &lenses {
         let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
@@ -657,9 +695,8 @@ fn test_all_22_core_lenses_run() {
 fn test_telescope_has_all_24_lenses() {
     let telescope = Telescope::new();
     assert_eq!(
-        telescope.lens_count(),
-        27,
-        "Telescope::new() should register 27 lenses (23 Core + Renormalization + Mi + Void + Barrier)"
+        telescope.lens_count(), 130,
+        "Telescope::new() should register 60 lenses (28 Core + Renormalization + Mi + Void + Barrier)"
     );
 }
 
@@ -684,9 +721,8 @@ fn test_telescope_scan_all_24() {
     let results = telescope.scan_all(&data, 20, 3);
 
     assert_eq!(
-        results.len(),
-        27,
-        "scan_all should return results for all 27 lenses, got {}",
+        results.len(), 130,
+        "scan_all should return results for all 60 lenses, got {}",
         results.len()
     );
 
