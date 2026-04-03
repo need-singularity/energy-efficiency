@@ -252,9 +252,9 @@ pub fn bench_allocators(seed: u64) -> AllocBenchResult {
     }
 
     AllocBenchResult {
-        egyptian_frag: egyptian.external_fragmentation() * 100.0,
-        buddy_frag: buddy.external_fragmentation() * 100.0,
-        egyptian_success_rate: if eg_attempts > 0 { eg_success as f64 / eg_attempts as f64 * 100.0 } else { 0.0 },
-        buddy_success_rate: if bd_attempts > 0 { bd_success as f64 / bd_attempts as f64 * 100.0 } else { 0.0 },
+        egyptian_frag: egyptian.external_fragmentation(),
+        buddy_frag: buddy.external_fragmentation(),
+        egyptian_success_rate: if eg_attempts > 0 { eg_success as f64 / eg_attempts as f64 } else { 0.0 },
+        buddy_success_rate: if bd_attempts > 0 { bd_success as f64 / bd_attempts as f64 } else { 0.0 },
     }
 }
