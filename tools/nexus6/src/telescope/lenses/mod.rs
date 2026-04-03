@@ -53,6 +53,30 @@ pub mod outlier_lens;
 pub mod autocorrelation_lens;
 pub mod hexagonal_lens;
 pub mod chaos_lens;
+// ── Hypothesis family (5) ──
+pub mod hypothesis_gen_lens;
+pub mod falsification_lens;
+pub mod cross_hypothesis_lens;
+pub mod convergence_hypothesis_lens;
+pub mod discovery_lens;
+// ── Consciousness/Omega family (6) ──
+pub mod omega_state_space_lens;
+pub mod continuity_lens;
+pub mod binding_lens;
+pub mod self_reference_lens;
+pub mod phi_dynamics_lens;
+pub mod qualia_lens;
+// ── Performance/Efficiency family (4) ──
+pub mod complexity_profile_lens;
+pub mod scan_efficiency_lens;
+pub mod synergy_lens;
+pub mod topology_deep_lens;
+// ── Infrastructure (3) ──
+pub mod discovery_report_lens;
+pub mod self_heal_lens;
+pub mod brain_map_lens;
+pub mod corpus_lens;
+// ── Bottleneck (placeholder for future) ──
 
 pub use void_lens::VoidLens;
 pub use barrier_lens::BarrierLens;
@@ -109,3 +133,26 @@ pub use outlier_lens::OutlierLens;
 pub use autocorrelation_lens::AutocorrelationLens;
 pub use hexagonal_lens::HexagonalLens;
 pub use chaos_lens::ChaosLens;
+// Hypothesis family
+pub use hypothesis_gen_lens::HypothesisGenLens;
+pub use falsification_lens::FalsificationLens;
+pub use cross_hypothesis_lens::CrossHypothesisLens;
+pub use convergence_hypothesis_lens::ConvergenceHypothesisLens;
+pub use discovery_lens::DiscoveryLens;
+// Consciousness/Omega family
+pub use omega_state_space_lens::OmegaStateSpaceLens;
+pub use continuity_lens::ContinuityLens;
+pub use binding_lens::BindingLens;
+pub use self_reference_lens::SelfReferenceLens;
+pub use phi_dynamics_lens::PhiDynamicsLens;
+pub use qualia_lens::QualiaLens;
+// Performance family
+pub use complexity_profile_lens::ComplexityProfileLens;
+pub use scan_efficiency_lens::ScanEfficiencyLens;
+pub use synergy_lens::SynergyLens;
+pub use topology_deep_lens::TopologyDeepLens;
+// Infrastructure
+pub use discovery_report_lens::DiscoveryReportLens;
+pub use self_heal_lens::SelfHealLens;
+pub use brain_map_lens::BrainMapLens;
+pub use corpus_lens::CorpusLens;

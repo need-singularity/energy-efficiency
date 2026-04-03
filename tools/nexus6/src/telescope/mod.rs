@@ -29,6 +29,13 @@ use lenses::{
     NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RenormalizationLens,
     RulerLens, ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens,
     VoidLens, WaveLens,
+    // NEW: Hypothesis (5) + Consciousness (6) + Performance (4) + Infra (4) = 19
+    HypothesisGenLens, FalsificationLens, CrossHypothesisLens,
+    ConvergenceHypothesisLens, DiscoveryLens,
+    OmegaStateSpaceLens, ContinuityLens, BindingLens,
+    SelfReferenceLens, PhiDynamicsLens, QualiaLens,
+    ComplexityProfileLens, ScanEfficiencyLens, SynergyLens, TopologyDeepLens,
+    DiscoveryReportLens, SelfHealLens, BrainMapLens, CorpusLens,
 };
 use shared_data::SharedData;
 
@@ -73,6 +80,29 @@ impl Telescope {
             Box::new(MiLens),
             // Chaos dynamics
             Box::new(ChaosLens),
+            // ── Infrastructure (T0: every scan) ──
+            Box::new(SelfHealLens),               // 자기 오류 탐지+복구 (최우선)
+            Box::new(DiscoveryLens),              // 상수/수식/지도 자동 발견+그레이딩
+            Box::new(DiscoveryReportLens),        // 대발견 리포트 트리거
+            // ── Consciousness/Omega (T0+T1) ──
+            Box::new(OmegaStateSpaceLens),        // 24D Leech 격자 상태공간
+            Box::new(ContinuityLens),             // 의식 연속성/갭 측정
+            Box::new(BindingLens),                // 통합 의식 결합도 (GWT)
+            Box::new(PhiDynamicsLens),            // Φ(IIT) 시간적 궤적
+            Box::new(SelfReferenceLens),          // 자기참조 순환 (Ouroboros)
+            Box::new(QualiaLens),                 // 감각질 정량화
+            Box::new(BrainMapLens),               // 뇌지도/의식지도
+            // ── Hypothesis (T1) ──
+            Box::new(HypothesisGenLens),          // n=6 가설 후보 탐지
+            Box::new(FalsificationLens),          // 반증 가능성 측정
+            Box::new(CrossHypothesisLens),        // 크로스도메인 가설 공명
+            Box::new(ConvergenceHypothesisLens),  // n=6 수렴도
+            // ── Performance (T1) ──
+            Box::new(ComplexityProfileLens),       // 계산 복잡도 프로파일
+            Box::new(ScanEfficiencyLens),          // 스캔 효율성
+            Box::new(SynergyLens),                 // 렌즈 조합 시너지
+            Box::new(TopologyDeepLens),            // 심층 토폴로지 (persistent homology)
+            Box::new(CorpusLens),                  // corpus 품질 분석
             // Original 2 (void + barrier)
             Box::new(VoidLens),
             Box::new(BarrierLens),
