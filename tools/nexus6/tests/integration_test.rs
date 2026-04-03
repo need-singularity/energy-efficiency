@@ -127,7 +127,7 @@ fn test_evolution_with_registry() {
     // 1. Extract Core lens names from registry
     let registry = LensRegistry::new();
     let core_lenses = registry.by_category(LensCategory::Core);
-    assert_eq!(core_lenses.len(), 22, "Should have 22 Core lenses");
+    assert_eq!(core_lenses.len(), 23, "Should have 23 Core lenses (22 + chaos)");
 
     let core_names: Vec<String> = core_lenses.iter().map(|e| e.name.clone()).collect();
 

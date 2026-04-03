@@ -52,6 +52,7 @@ pub mod phase_transition_lens;
 pub mod outlier_lens;
 pub mod autocorrelation_lens;
 pub mod hexagonal_lens;
+pub mod chaos_lens;
 
 pub use void_lens::VoidLens;
 pub use barrier_lens::BarrierLens;
@@ -107,3 +108,4 @@ pub use phase_transition_lens::PhaseTransitionLens;
 pub use outlier_lens::OutlierLens;
 pub use autocorrelation_lens::AutocorrelationLens;
 pub use hexagonal_lens::HexagonalLens;
+pub use chaos_lens::ChaosLens;

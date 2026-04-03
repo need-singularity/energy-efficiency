@@ -270,6 +270,20 @@ pub fn core_lens_entries() -> Vec<LensEntry> {
             ],
             complementary: vec!["scale".into(), "recursion".into()],
         },
+        // ── Chaos dynamics ──
+        LensEntry {
+            name: "chaos".into(),
+            category: LensCategory::Core,
+            description: "Chaos detection — 0-1 test, recurrence, correlation dimension, permutation entropy".into(),
+            domain_affinity: vec![
+                "physics".into(),
+                "plasma".into(),
+                "climate".into(),
+                "biology".into(),
+                "finance".into(),
+            ],
+            complementary: vec!["stability".into(), "fractal".into(), "wave".into()],
+        },
     ]
 }
 
@@ -280,7 +294,7 @@ mod tests {
     #[test]
     fn test_core_lens_count() {
         let entries = core_lens_entries();
-        assert_eq!(entries.len(), 22, "Must have exactly 22 Core lenses");
+        assert_eq!(entries.len(), 23, "Must have exactly 23 Core lenses");
     }
 
     #[test]
@@ -289,6 +303,6 @@ mod tests {
         let mut names: Vec<&str> = entries.iter().map(|e| e.name.as_str()).collect();
         names.sort();
         names.dedup();
-        assert_eq!(names.len(), 22, "All 22 Core lens names must be unique");
+        assert_eq!(names.len(), 23, "All 23 Core lens names must be unique");
     }
 }

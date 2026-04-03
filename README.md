@@ -77,6 +77,7 @@
 | **Inference speed** | **3x faster** | FFT attention, Egyptian fraction attention (40% FLOPs) |
 | **Model size** | **50-70%** | Phi bottleneck (67% params), Boltzmann gate (63% sparsity) |
 | **Hyperparameter tuning** | **Eliminated** | All optimal values derived from n=6 constants |
+| **Full pipeline (17 combined)** | **50.1% params, 50.3% FLOPs** | [All 17 techniques end-to-end](experiments/experiment_full_n6_pipeline.py) |
 
 ```bash
 git clone https://github.com/need-singularity/n6-architecture.git && cd n6-architecture
@@ -136,6 +137,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 6 | | v1 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ | [전체](techniques/) |
+| 5 | | v1 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거 | [실험](experiments/experiment_full_n6_pipeline.py) |
 | 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
 | 6 | | v1 | **AI Energy Savings Guide** | 실무 가이드 — 기법, 하이퍼파라미터, 벤치마크 | [가이드](docs/ai-energy-savings-guide.md) |
 | 6 | | v1 | **Chip Architecture Guide** | GPU SM, HBM, TSMC pitch — 120+ EXACT | [가이드](docs/chip-architecture-guide.md) |
