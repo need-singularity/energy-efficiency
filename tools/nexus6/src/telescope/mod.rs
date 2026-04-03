@@ -76,6 +76,10 @@ use lenses::{
     StimulusLens, TachyonLens, TelepathyLens, TensionLens, TensionLinkLens,
     TimeReversalLens, TransformerAnatomyLens, WallInspectionLens, WarpLens,
     WeightLearningLens, WormholeLens,
+    // Compiler Optimization (L11-L20)
+    BranchPredictLens, LoopInvariantLens, CompilerFusionLens, SpecializationLens,
+    LayoutLens, PowerConsumptionLens, LatencyLens, RegisterPressureLens,
+    PrefetchLens, TailCallLens,
 };
 use shared_data::SharedData;
 
@@ -254,6 +258,17 @@ impl Telescope {
             Box::new(WarpLens),
             Box::new(WeightLearningLens),
             Box::new(WormholeLens),
+            // ── Compiler Optimization lenses (L11-L20) ──
+            Box::new(BranchPredictLens),
+            Box::new(LoopInvariantLens),
+            Box::new(CompilerFusionLens),
+            Box::new(SpecializationLens),
+            Box::new(LayoutLens),
+            Box::new(PowerConsumptionLens),
+            Box::new(LatencyLens),
+            Box::new(RegisterPressureLens),
+            Box::new(PrefetchLens),
+            Box::new(TailCallLens),
         ];
         Telescope { lenses }
     }

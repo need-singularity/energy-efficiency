@@ -155,6 +155,17 @@ pub mod wall_inspection_lens;
 pub mod warp_lens;
 pub mod weight_learning_lens;
 pub mod wormhole_lens;
+// ── Compiler Optimization family (L11-L20) ──
+pub mod branch_predict_lens;
+pub mod loop_invariant_lens;
+pub mod compiler_fusion_lens;
+pub mod specialization_lens;
+pub mod layout_lens;
+pub mod power_consumption_lens;
+pub mod latency_lens;
+pub mod register_pressure_lens;
+pub mod prefetch_lens;
+pub mod tail_call_lens;
 
 pub use void_lens::VoidLens;
 pub use barrier_lens::BarrierLens;
@@ -313,3 +324,14 @@ pub use wall_inspection_lens::WallInspectionLens;
 pub use warp_lens::WarpLens;
 pub use weight_learning_lens::WeightLearningLens;
 pub use wormhole_lens::WormholeLens;
+// Compiler Optimization family (L11-L20)
+pub use branch_predict_lens::BranchPredictLens;
+pub use loop_invariant_lens::LoopInvariantLens;
+pub use compiler_fusion_lens::CompilerFusionLens;
+pub use specialization_lens::SpecializationLens;
+pub use layout_lens::LayoutLens;
+pub use power_consumption_lens::PowerConsumptionLens;
+pub use latency_lens::LatencyLens;
+pub use register_pressure_lens::RegisterPressureLens;
+pub use prefetch_lens::PrefetchLens;
+pub use tail_call_lens::TailCallLens;
