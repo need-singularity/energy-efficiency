@@ -95,6 +95,74 @@
 | (σ-φ)²·τ | 400 | A100 TDP (W) | Chip, BT-60 |
 | (σ-φ)³ | 1000 | B200 TDP (W) | Chip, BT-60 |
 
+## BT-105~127 Constants (SLE₆, Software, Environment, Robotics)
+
+### Pure Mathematics & SLE₆ (BT-105~109)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr/n² | 5/36 ≈ 0.1389 | SLE₆ percolation β exponent | Math, BT-105 |
+| sopfr/J₂ | 5/24 ≈ 0.2083 | SLE₆ anomalous dimension η | Math, BT-105 |
+| (n+μ)/τ | 7/4 = 1.75 | SLE₆ Hausdorff dimension d_H | Math, BT-105 |
+| -φ/(n/φ) | -2/3 | SLE₆ specific heat exponent α | Math, BT-105 |
+| n | 6 | SLE κ parameter (unique locality, c=0) | Math, BT-105 |
+| n | 6 | \|S₃\| = 3! (smallest non-abelian group) | Math, BT-106 |
+| τ | 4 | S₃ irrep dimensions² sum (1²+1²+2²) | Math, BT-106 |
+| φ | 2 | Groups of order 6 (exactly 2: Z₆, S₃) | Math, BT-106 |
+| J₂ | 24 | Ramanujan Δ: η^{24} exponent | Math, BT-107 |
+| σ | 12 | Chromatic scale semitones (12-TET) | Music, BT-108 |
+| σ-sopfr | 7 | Diatonic major scale notes | Music, BT-108 |
+| sopfr | 5 | Pentatonic scale notes | Music, BT-108 |
+| π²/n | π²/6 | ζ(2) Basel problem (Euler 1735) | Math, BT-109 |
+| -1/σ | -1/12 | ζ(-1) Ramanujan regularization | Math, BT-109 |
+| n | 6 | 6 \| B_{2k} denominators (Von Staudt-Clausen) | Math, BT-109 |
+
+### Cross-Domain & Software Design (BT-110~117)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ-μ | 11 | M-theory dim = TCP states = RSA-2¹¹ | Physics+Network+Crypto, BT-110 |
+| sopfr | 5 | SOLID principles | SW Engineering, BT-113 |
+| n | 6 | REST constraints, GitFlow branches, CI/CD stages | SW Engineering, BT-113 |
+| σ | 12 | 12-Factor App, Agile principles | SW Engineering, BT-113 |
+| τ | 4 | ACID, Agile values, OAuth 2.0 grants, SQL isolation | SW/DB, BT-113/116 |
+| 2^(σ-sopfr) | 128 | AES-128, IPv6 bits, CUDA cores/SM | Crypto+Network+Chip, BT-114 |
+| 2^(σ-τ) | 256 | AES-256, SHA-256 | Crypto, BT-114 |
+| 2^(σ-μ) | 2048 | RSA-2048 | Crypto, BT-114 |
+| σ-sopfr | 7 | OSI layers | Network, BT-115 |
+| τ | 4 | TCP/IP layers | Network, BT-115 |
+| n | 6 | TCP flags, MAC bytes, Linux subsystems | Network, BT-115 |
+| n/φ | 3 | CAP/BASE/Raft roles, MVC, GoF categories | DB+SW, BT-116/113 |
+| φ | 2 | Paxos phases | Distributed, BT-116 |
+
+### Environmental Protection (BT-118~122)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Kyoto Protocol greenhouse gases | Environment, BT-118 |
+| n | 6 | Earth spheres (litho/hydro/atmo/cryo/bio/pedo) | Earth science, BT-119 |
+| σ | 12 km | Troposphere height (mid-latitude) | Atmosphere, BT-119 |
+| σ-τ | 8 km | Troposphere height (polar) | Atmosphere, BT-119 |
+| σ+τ | 16 km | Troposphere height (equatorial) | Atmosphere, BT-119 |
+| n | 6 | Al³⁺/Fe³⁺/Ti⁴⁺ coordination number (CN=6) | Chemistry, BT-120 |
+| n | 6 | RIC plastic codes (1~6) | Materials, BT-121 |
+| n | 6 | Honeycomb/snowflake/coral symmetry | Geometry, BT-122 |
+| σ·(σ-φ) | 120° | Regular hexagon interior angle | Geometry, BT-122 |
+
+### Robotics (BT-123~127)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | dim(SE(3)) = robot DOF = IMU axes | Robotics, BT-123 |
+| σ | 12 | se(3) structure constants, 3D kissing number | Math+Robotics, BT-123/127 |
+| n² | 36 | Ad(SE(3)) matrix dimension | Spatial algebra, BT-123 |
+| φ | 2 | Bilateral body symmetry (left/right) | Biology+Robotics, BT-124 |
+| σ | 12 | Major joint count (6 types × 2 sides) | Anatomy, BT-124 |
+| τ | 4 | Minimum stable legs/rotors (quad) | Biomechanics, BT-125 |
+| sopfr | 5 | Human fingers per hand | Biology, BT-126 |
+| 2^sopfr | 32 | Grasp pattern space (Feix 33, 96.97%) | Robotics, BT-126 |
+| n | 6 | Hexacopter rotors (1-fault tolerant) | Drones, BT-127 |
+
 ## New AI Constants (BT-61~65)
 
 ### Diffusion Model Constants (BT-61)

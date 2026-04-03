@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CLAUDE_CLI="${CLAUDE_CLI:-/Users/ghost/.local/bin/claude}"# ═══════════════════════════════════════════════════════════════════════
+CLAUDE_CLI="${CLAUDE_CLI:-/Users/ghost/.local/bin/claude}"
+# ═══════════════════════════════════════════════════════════════════════
 # NEXUS-6 Architecture Growth
 # Usage: ./grow_architecture.sh [--dry-run] [--max-actions N]
 #
