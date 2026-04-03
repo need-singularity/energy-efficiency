@@ -1,4 +1,9 @@
 {
+  "_meta": {
+    "description": "NEXUS-6 auto-start hook config for Claude Code",
+    "updated": "2026-04-03",
+    "schema_version": "1.0"
+  },
   "description": "NEXUS-6 auto-start hook for Claude Code settings.json",
   "instruction": "Add the 'hook' object below to ~/.claude/settings.json under 'hooks' to auto-ensure NEXUS-6 daemon is running on every tool use.",
   "hook": {
