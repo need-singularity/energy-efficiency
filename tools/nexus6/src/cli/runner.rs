@@ -53,6 +53,7 @@ pub fn run(cmd: CliCommand) -> Result<(), String> {
         CliCommand::Cycle { experiment_type, target } => {
             run_cycle(&experiment_type, &target)
         }
+        CliCommand::Ingest { sources, verbose } => run_ingest(sources, verbose),
         CliCommand::Bench => run_bench(),
         CliCommand::Dashboard { html, output } => run_dashboard(html, output),
         CliCommand::Help => {
@@ -755,6 +756,108 @@ fn run_experiment(mode: ExperimentMode, target: &str, intensity: f64, duration: 
     Ok(())
 }
 
+fn run_ingest(sources: Vec<String>, verbose: bool) -> Result<(), String> {
+    use crate::ingest::crawler;
+    use std::path::PathBuf;
+    use std::time::Instant;
+
+    println!("=== NEXUS-6 Ingest: Multi-Project Crawler ===");
+    println!();
+
+    let config = if sources.is_empty() {
+        println!("  Using default project sources...");
+        crawler::default_config()
+    } else {
+        let default_exts = vec![
+            "toml".to_string(), "md".to_string(), "py".to_string(),
+            "json".to_string(), "csv".to_string(), "txt".to_string(),
+        ];
+        let project_sources: Vec<crawler::ProjectSource> = sources
+            .iter()
+            .map(|s| {
+                let path = PathBuf::from(s);
+                let domain = path
+                    .file_name()
+                    .and_then(|n| n.to_str())
+                    .unwrap_or("unknown")
+                    .to_string();
+                crawler::ProjectSource {
+                    path,
+                    domain,
+                    extensions: default_exts.clone(),
+                }
+            })
+            .collect();
+        crawler::CrawlConfig { sources: project_sources }
+    };
+
+    for src in &config.sources {
+        println!("  [{}] {}", src.domain, src.path.display());
+    }
+    println!();
+
+    let start = Instant::now();
+    let result = crawler::crawl(&config);
+    let elapsed = start.elapsed();
+
+    println!("  Files scanned:  {}", result.files_scanned);
+    println!("  Files skipped:  {}", result.files_skipped);
+    println!("  Probes found:   {}", result.probes.len());
+    println!("  Elapsed:        {:.2?}", elapsed);
+
+    if !result.errors.is_empty() {
+        println!();
+        println!("  Errors ({}):", result.errors.len());
+        for err in &result.errors {
+            println!("    {}", err);
+        }
+    }
+
+    if verbose {
+        println!();
+        println!("  --- Probe Details ---");
+        for probe in &result.probes {
+            let named_count = probe.named_values.len();
+            let raw_count = probe.raw_values.len();
+            println!(
+                "    [{}] {} — {} named, {} raw",
+                probe.domain, probe.source_file, named_count, raw_count
+            );
+            for (name, val) in &probe.named_values {
+                println!("      {}: {}", name, val);
+            }
+        }
+    }
+
+    // Summary by domain
+    println!();
+    println!("  --- By Domain ---");
+    let mut domain_counts: std::collections::HashMap<String, (usize, usize)> =
+        std::collections::HashMap::new();
+    for probe in &result.probes {
+        let entry = domain_counts.entry(probe.domain.clone()).or_insert((0, 0));
+        entry.0 += 1;
+        entry.1 += probe.named_values.len() + probe.raw_values.len();
+    }
+    for (domain, (files, values)) in &domain_counts {
+        println!("    {:<20} {} files, {} values", domain, files, values);
+    }
+
+    let flat = crawler::flatten_all(&result);
+    println!();
+    println!("  Total numeric values: {}", flat.len());
+
+    // Quick n6 check on the ingested data
+    if !flat.is_empty() {
+        let n6_ratio = crate::verifier::n6_check::n6_exact_ratio(&flat);
+        println!("  n6 EXACT ratio:       {:.1}%", n6_ratio * 100.0);
+    }
+
+    println!();
+    println!("  Ingest complete.");
+    Ok(())
+}
+
 fn run_bench() -> Result<(), String> {
     println!("=== NEXUS-6 Benchmark Suite ===");
     println!();
@@ -1143,6 +1246,10 @@ fn print_help() {
     println!("  cycle <type> <target>");
     println!("      Full science cycle: predict -> simulate -> experiment ->");
     println!("      compare -> reproduce -> publish.");
+    println!();
+    println!("  ingest [--source PATH]... [--verbose]");
+    println!("      Crawl project directories for data files (toml/md/py/json/csv).");
+    println!("      Without --source, uses default n6/TECS-L/anima sources.");
     println!();
     println!("  bench");
     println!("      Run benchmark suite (registry, telescope, OUROBOROS, forge).");

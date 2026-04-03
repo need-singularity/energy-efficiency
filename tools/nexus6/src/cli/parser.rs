@@ -46,6 +46,10 @@ pub enum CliCommand {
         intensity: f64,
         duration: usize,
     },
+    Ingest {
+        sources: Vec<String>,
+        verbose: bool,
+    },
     Bench,
     Dashboard {
         html: bool,
@@ -128,6 +132,7 @@ pub fn parse_args(args: &[String]) -> Result<CliCommand, String> {
         "reproduce" => parse_reproduce(rest),
         "publish" => parse_publish(rest),
         "cycle" => parse_cycle(rest),
+        "ingest" => parse_ingest(rest),
         "bench" => Ok(CliCommand::Bench),
         "dashboard" => parse_dashboard(rest),
         "help" | "--help" | "-h" => Ok(CliCommand::Help),
@@ -616,6 +621,33 @@ fn parse_publish(args: &[String]) -> Result<CliCommand, String> {
     })
 }
 
+fn parse_ingest(args: &[String]) -> Result<CliCommand, String> {
+    let mut sources: Vec<String> = Vec::new();
+    let mut verbose = false;
+
+    let mut i = 0;
+    while i < args.len() {
+        match args[i].as_str() {
+            "--source" => {
+                i += 1;
+                if i >= args.len() {
+                    return Err("--source requires a path".to_string());
+                }
+                sources.push(args[i].clone());
+            }
+            "--verbose" | "-v" => {
+                verbose = true;
+            }
+            other => {
+                return Err(format!("ingest: unknown option '{}'", other));
+            }
+        }
+        i += 1;
+    }
+
+    Ok(CliCommand::Ingest { sources, verbose })
+}
+
 fn parse_cycle(args: &[String]) -> Result<CliCommand, String> {
     if args.len() < 2 {
         return Err("cycle requires <experiment_type> <target>".to_string());
@@ -891,6 +923,30 @@ mod tests {
             cmd,
             CliCommand::Recommend {
                 domain: "biology".to_string(),
+            }
+        );
+    }
+
+    #[test]
+    fn test_parse_ingest_default() {
+        let cmd = parse_args(&args("nexus6 ingest")).unwrap();
+        assert_eq!(
+            cmd,
+            CliCommand::Ingest {
+                sources: vec![],
+                verbose: false,
+            }
+        );
+    }
+
+    #[test]
+    fn test_parse_ingest_with_sources() {
+        let cmd = parse_args(&args("nexus6 ingest --source /tmp/proj1 --source /tmp/proj2 --verbose")).unwrap();
+        assert_eq!(
+            cmd,
+            CliCommand::Ingest {
+                sources: vec!["/tmp/proj1".to_string(), "/tmp/proj2".to_string()],
+                verbose: true,
             }
         );
     }
