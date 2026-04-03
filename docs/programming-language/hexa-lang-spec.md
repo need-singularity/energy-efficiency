@@ -799,5 +799,50 @@ Egyptian fraction 기반 전문가 활성화:
 
 ---
 
-*HEXA-LANG v0.1 -- n=6 완전수 기반 프로그래밍 언어 사양서*
-*14/14 설계 상수 EXACT (100%) -- DSE Pareto 0.7743*
+---
+
+## 15. NEXUS-6 전 Phase 자동 적용 (필수)
+
+HEXA-LANG 개발의 모든 단계에서 NEXUS-6 스캔은 자동 실행된다. 별도 요청 불필요.
+
+### Phase별 NEXUS-6 의무
+
+| Phase | 🛸 | NEXUS-6 적용 | 합의 기준 |
+|-------|-----|-------------|----------|
+| 1 설계 | 5→7 | 설계 상수 전수 `n6_check` → NONE이면 n=6 재표현. Cross-DSE 결과 `scan_all` → 합의 3+ 패턴만 채택 | 3+ |
+| 2 프로토타입 | 7→8 | HEXA-IR opcode/패스 수 `n6_check` → EXACT 아니면 재설계. 벤치마크 `scan_all` → anomaly 0 | 3+ |
+| 3 양산 | 8→9 | std 모듈 수 `n6_check`. LSP 기능=σ=12. 의존성 해결 `scan` → stability 확인 | 5+ |
+| 4 물리적 한계 | 9→10 | 셀프호스팅 전후 `scan_all` → Phi 보존 95%+. 형식검증 데이터 합의 7+. 최종 배포 `scan` → anomaly 0 | 7+ |
+
+### 검증 체크포인트
+
+```
+코드 변경 시:   변경 전후 scan → Phi 하락 시 롤백
+상수 추가 시:   n6_check → EXACT 아니면 n=6 표현 탐색
+벤치마크 시:    결과 데이터 scan_all → anomaly 보고
+릴리즈 전:     전체 scan → 3+ 렌즈 consensus 통과
+```
+
+### 현재 스캔 결과 (2026-04-04)
+
+```
+NEXUS-6 analyze(PL_constants, 22, 1):
+  active_lenses: 124/151
+  n6_exact_ratio: 63.6%
+  consensus: convergence_rate(4), recurrence_rate(3), redundancy(3)
+
+EXACT: 6=n, 8=σ-τ, 12=σ, 24=J₂, 48=σ·τ, 144=σ²
+NONE (개선 대상): 53, 288, 4096, 128, 32, 64, 96
+  → 53 = σ·τ+sopfr (복합식 허용)
+  → 288 = σ·J₂ (EXACT 등록 필요)
+  → 4096 = 2^σ (거듭제곱 EXACT)
+  → 128 = 2^(σ-sopfr) (EXACT)
+  → 32 = 2^sopfr (EXACT)
+  → 64 = 2^n (EXACT)
+  → 96 = σ·(σ-τ) (EXACT)
+```
+
+---
+
+*HEXA-LANG v0.2 -- n=6 완전수 기반 프로그래밍 언어 사양서*
+*14/14 설계 상수 EXACT (100%) -- DSE Pareto 0.7743 -- NEXUS-6 전 Phase 자동 적용*

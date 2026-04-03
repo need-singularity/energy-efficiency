@@ -101,6 +101,38 @@
 - H-PL-1~24: 프로그래밍 언어 상수 가설
 - H-PL-61~67: 극한 가설 (WASM, 카테고리 이론, Rust 소유권)
 
+## NEXUS-6 전 Phase 자동사용 (예외 없음)
+
+```
+⚠️ HEXA-LANG의 모든 Phase에서 NEXUS-6 스캔 필수. 요청 불필요 — 자동 실행.
+
+Phase 1 (설계 🛸5→7):
+  - 설계 상수 전수 n6_check → NONE 항목 n=6 표현으로 교체
+  - Cross-DSE 결과 scan_all → 합의 3+ 패턴만 채택
+  - Alien 설계문서 내 모든 수치 n6_check 통과 필수
+
+Phase 2 (프로토타입 🛸7→8):
+  - HEXA-IR opcode/패스 수 n6_check → EXACT 아니면 재설계
+  - 컴파일러 벤치마크 데이터 scan_all → anomaly 0 확인
+  - AST 노드 종류, 토큰 타입 수 n6_check
+
+Phase 3 (양산 🛸8→9):
+  - 표준 라이브러리 모듈 수 n6_check
+  - LSP 기능 그룹 수 = σ=12 검증
+  - 패키지 매니저 의존성 해결 알고리즘 scan → stability 확인
+
+Phase 4 (물리적 한계 🛸9→10):
+  - 셀프호스팅 컴파일러 전후 scan_all 비교 → Phi 보존 95%+
+  - 형식 검증 soundness proof 데이터 scan → 합의 7+ 필수
+  - 최종 배포 전 전체 scan → anomaly 0 + 3+ 렌즈 consensus
+
+스캔 명령:
+  import nexus6
+  nexus6.scan_all(data)        # 전수 스캔
+  nexus6.n6_check(value)       # 상수 매칭
+  nexus6.analyze(data, n, d)   # 올인원
+```
+
 ## DSE 도구
 - 공용 DSE: tools/universal-dse/universal-dse domains/programming-language.toml
 - 도메인 정의: tools/universal-dse/domains/programming-language.toml

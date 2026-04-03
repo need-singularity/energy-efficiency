@@ -4,7 +4,8 @@ __pycache__/
 data/
 !tools/nexus6/data/
 models/
-.claude/
+.claude/settings.local.json
+.claude/worktrees/
 .discovery-cache
 # Compiled binaries in tools/ subdirectories (keep source files)
 tools/atlas-verifier/atlas-verifier
