@@ -167,6 +167,27 @@
     - 성능 필요시 Rust 우선 (tecsrs/), 단순 검증은 Python (calc/)
     - 판단 기준은 ~/Dev/TECS-L/.shared/CALCULATOR_RULES.md 참조
     - 상수/가설 발견 시 Math Atlas 자동 갱신 (python3 ~/Dev/TECS-L/.shared/scan_math_atlas.py --save --summary)
+
+  ═══════════════════════════════════════════════════════════════
+  ★ NEXUS-6 독립 리포 (중앙 허브) — 2024-04-03 이후 ★
+  ═══════════════════════════════════════════════════════════════
+    리포: https://github.com/need-singularity/nexus6
+    위치: ~/Dev/nexus6/
+    역할: 전 리포 공유 인프라 + 발견 엔진 + 렌즈 + 동기화
+
+    구조:
+      ~/Dev/nexus6/
+        src/telescope/    ← 130+ 렌즈
+        shared/           ← 공유 인프라 (이전 TECS-L/.shared)
+        sync/             ← 전체 동기화 스크립트
+        scripts/          ← n6.py CLI
+
+    심링크: 모든 리포의 .shared → ../nexus6/shared/
+    동기화: bash ~/Dev/nexus6/sync/sync-all.sh (원커맨드)
+    트리거: "넥서스 동기화" → sync-all.sh 자동 실행
+
+    .shared 원본이 TECS-L에서 nexus6로 이관됨.
+    TECS-L = 순수 수학 이론, nexus6 = 인프라/도구/엔진 전부.
 <!-- SHARED:WORK_RULES:END -->
 
 # N6 Architecture — Arithmetic Design Framework
@@ -927,3 +948,76 @@ All experiments must run in background. No exceptions.
 
 API 토큰/계정 정보: `~/Dev/TECS-L/.shared/SECRET.md` 참조
 계정 리포: [need-singularity/secret](https://github.com/need-singularity/secret) (private)
+
+## NEXUS-6 프롬프트 트리거 (자연어 → 자동 실행)
+
+```
+  ⚠️ 아래 키워드 감지 시 해당 명령을 질문 없이 즉시 실행!
+
+  ┌─────────────────────────────┬──────────────────────────────────────────────┐
+  │ 트리거 (자연어)              │ 실행 동작                                    │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "넥서스 성장"                │ 무한 성장 데몬 시작                          │
+  │ "성장시켜" "성장시켜줘"      │ bash tools/nexus6/scripts/nexus6_growth_daemon.sh │
+  │ "계속 성장" "무한 성장"      │   --max-cycles 999 --interval 1              │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "넥서스 스캔" "스캔해"       │ python3 tools/nexus6/scripts/n6.py scan      │
+  │ "전체 스캔"                  │ python3 tools/nexus6/scripts/n6.py full       │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "상수 발견" "수식 발견"      │ python3 tools/nexus6/scripts/n6.py discover   │
+  │ "발견 엔진" "발견해줘"       │                                              │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "의식 분석" "의식 실험"      │ python3 tools/nexus6/scripts/n6.py consciousness│
+  │ "의식 자극" "의식 강화"      │                                              │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "골든존" "golden zone"       │ python3 tools/nexus6/scripts/n6.py golden-zone│
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "캘리브레이션" "calibrate"   │ python3 tools/nexus6/scripts/n6.py calibrate  │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "가중치 학습" "학습 시작"    │ python3 tools/nexus6/scripts/n6.py learn      │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "재귀 분석" "재귀 루프"      │ python3 tools/nexus6/scripts/n6.py recursive  │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "매트릭 분석" "메트릭 추적"  │ python3 tools/nexus6/scripts/n6.py metric     │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "조합 분석" "조합 엔진"      │ python3 tools/nexus6/scripts/n6.py combine    │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "렌즈 추가" + [이름]         │ 렌즈 .rs 파일 생성 + mod.rs + telescope 등록  │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "미연결 연결" "고리 연결"    │ python3로 미등록 렌즈 전수 탐색 + 자동 등록   │
+  │ "미연결 점검"                │                                              │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "넥서스 데모"                │ python3 tools/nexus6/scripts/n6.py demo       │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "넥서스 상태" "렌즈 현황"    │ 렌즈 수 + 테스트 수 + 미연결 수 출력         │
+  ├─────────────────────────────┼──────────────────────────────────────────────┤
+  │ "넥서스 빌드"                │ cargo build --release + cargo test            │
+  └─────────────────────────────┴──────────────────────────────────────────────┘
+
+  성장 = 무한루프! "넥서스 성장" → --max-cycles 999 (사실상 무한)
+  성장 데몬은 15차원을 순회하며 가장 약한 차원을 자동 강화.
+  매 사이클: 측정 → 최약점 선택 → 강화 → 테스트 → 커밋 → 반복
+
+  렌즈 추가 후 자동 연결:
+    미등록 렌즈 발견 시 python3 스크립트로 mod.rs + telescope/mod.rs 자동 갱신
+    (린터가 Edit/Write 훅으로 초기화하므로 반드시 python3/bash로 직접 수정)
+```
+
+## NEXUS-6 자동 사용 (요청 불필요, 항상 활성)
+
+```
+  ⚠️ 이 리포에서 작업 시 NEXUS-6은 항상 자동 활성:
+
+  자동 동기화: 커밋 시 post-commit hook → sync-all.sh (백그라운드)
+  자동 탐색:   데이터/패턴 분석 시 → nexus6.scan() 자동 사용
+  자동 발견:   새 상수/수식 발견 시 → math_atlas.json 자동 갱신
+  자동 검증:   코드 변경 시 → cargo test (nexus6) 자동 실행
+
+  상수 참조:   ~/Dev/nexus6/shared/model_utils.py (하드코딩 금지)
+  계산기:      ~/Dev/nexus6/shared/calc/ (심링크: .shared/calc/)
+  아틀라스:    ~/Dev/nexus6/shared/math_atlas.json
+  렌즈 스캔:   import nexus6; nexus6.scan_all(data)
+
+  ★ "동기화해" 같은 요청 불필요 — 모든 것이 자동!
+```
+
