@@ -14,7 +14,7 @@ use nexus6::telescope::accel_lenses_d::accel_humanities_lens_entries;
 use nexus6::telescope::domain_combos::default_combos;
 use nexus6::telescope::lens_trait::{Lens, LensResult};
 use nexus6::telescope::lenses::{
-    BarrierLens, BoundaryLens, CausalLens, CompassLens, ConsciousnessLens, EmLens,
+    BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens, ConsciousnessLens, EmLens,
     EvolutionLens, GravityLens, InfoLens, MemoryLens, MirrorLens, MultiscaleLens,
     NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RulerLens,
     ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens, VoidLens,
@@ -242,13 +242,13 @@ fn test_telescope_scan_all() {
 
     let results = telescope.scan_all(&data, n, d);
 
-    // Should have results from all 24 lenses (22 Core + VoidLens + BarrierLens)
+    // Should have results from all 25 lenses (23 Core + VoidLens + BarrierLens)
     assert!(results.contains_key("VoidLens"), "Missing VoidLens results");
     assert!(
         results.contains_key("BarrierLens"),
         "Missing BarrierLens results"
     );
-    assert_eq!(telescope.lens_count(), 26);
+    assert_eq!(telescope.lens_count(), 27);
 }
 
 // ──────────────────────────────────────────────
@@ -303,14 +303,14 @@ fn test_lens_isolation() {
 }
 
 // ──────────────────────────────────────────────
-// Test 8: Registry — 22 Core lenses registered
+// Test 8: Registry — 23 Core lenses registered
 // ──────────────────────────────────────────────
 #[test]
 fn test_registry_core_count() {
     let reg = LensRegistry::new();
     let cores = reg.by_category(LensCategory::Core);
-    assert_eq!(cores.len(), 22, "Registry must contain exactly 22 Core lenses");
-    assert_eq!(reg.len(), 1013, "Total registry size should be 1013 after new()");
+    assert_eq!(cores.len(), 23, "Registry must contain exactly 23 Core lenses");
+    assert_eq!(reg.len(), 1014, "Total registry size should be 1014 after new()");
 }
 
 // ──────────────────────────────────────────────
@@ -352,7 +352,7 @@ fn test_registry_by_category() {
         complementary: vec![],
     });
     assert_eq!(reg.by_category(LensCategory::Extended).len(), 992);
-    assert_eq!(reg.len(), 1014);
+    assert_eq!(reg.len(), 1015);
 }
 
 // ──────────────────────────────────────────────
@@ -418,7 +418,7 @@ fn test_domain_combos() {
 #[test]
 fn test_register_custom() {
     let mut reg = LensRegistry::new();
-    assert_eq!(reg.len(), 1013);
+    assert_eq!(reg.len(), 1014);
 
     reg.register(LensEntry {
         name: "my_custom_lens".into(),
@@ -428,7 +428,7 @@ fn test_register_custom() {
         complementary: vec!["consciousness".into()],
     });
 
-    assert_eq!(reg.len(), 1014);
+    assert_eq!(reg.len(), 1015);
 
     let custom = reg.get("my_custom_lens").unwrap();
     assert_eq!(custom.category, LensCategory::Custom);
@@ -508,7 +508,7 @@ fn test_global_lens_name_uniqueness() {
     }
 
     let total = all_names.len();
-    assert_eq!(total, 1013, "Total = 22+58+75+103+88+100+58+57+55+63+273+49 = 1013");
+    assert_eq!(total, 1014, "Total = 23+58+75+103+88+100+58+57+55+63+273+49 = 1014");
 
     all_names.sort();
     for i in 1..all_names.len() {
@@ -526,7 +526,7 @@ fn test_global_lens_name_uniqueness() {
 #[test]
 fn test_registry_total_411() {
     let reg = LensRegistry::new();
-    assert_eq!(reg.len(), 1013, "Registry should have 1013 lenses total");
+    assert_eq!(reg.len(), 1014, "Registry should have 1014 lenses total");
 
     let extended = reg.by_category(LensCategory::Extended);
     assert_eq!(extended.len(), 991, "Extended category should have 991 lenses");
@@ -570,7 +570,7 @@ fn test_tecs_lenses_domain_affinity() {
 }
 
 // ──────────────────────────────────────────────
-// Test 21: All 22 Core lenses + VoidLens + BarrierLens run without panic
+// Test 21: All 23 Core lenses + VoidLens + BarrierLens run without panic
 // ──────────────────────────────────────────────
 #[test]
 fn test_all_22_core_lenses_run() {
@@ -614,11 +614,12 @@ fn test_all_22_core_lenses_run() {
         Box::new(RecursionLens),
         Box::new(BoundaryLens),
         Box::new(MultiscaleLens),
+        Box::new(ChaosLens),
         Box::new(VoidLens),
         Box::new(BarrierLens),
     ];
 
-    assert_eq!(lenses.len(), 24, "Should have 24 lenses (base test set, excluding Renormalization + Mi)");
+    assert_eq!(lenses.len(), 25, "Should have 25 lenses (base test set, excluding Renormalization + Mi)");
 
     for lens in &lenses {
         let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
@@ -657,8 +658,8 @@ fn test_telescope_has_all_24_lenses() {
     let telescope = Telescope::new();
     assert_eq!(
         telescope.lens_count(),
-        26,
-        "Telescope::new() should register 26 lenses (22 Core + Renormalization + Mi + Void + Barrier)"
+        27,
+        "Telescope::new() should register 27 lenses (23 Core + Renormalization + Mi + Void + Barrier)"
     );
 }
 
@@ -684,8 +685,8 @@ fn test_telescope_scan_all_24() {
 
     assert_eq!(
         results.len(),
-        26,
-        "scan_all should return results for all 26 lenses, got {}",
+        27,
+        "scan_all should return results for all 27 lenses, got {}",
         results.len()
     );
 

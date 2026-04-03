@@ -13,8 +13,8 @@ on:
     branches: [main]
 
 jobs:
-  # ── Job 1: Python syntax check ──────────────────────────────
-  verify-syntax:
+  # ── Job 1: Python syntax check + tests ──────────────────────
+  python-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,16 +22,29 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
-      - name: py_compile tools/*.py and root *.py
+      - name: Install test dependencies
+        run: |
+          pip install pytest numpy 2>/dev/null || pip install pytest
+
+      - name: py_compile (syntax check)
         run: |
           exitcode=0
-          for f in tools/*.py *.py; do
+          for f in tools/*.py techniques/*.py engine/*.py *.py; do
             if [ -f "$f" ]; then
               python3 -m py_compile "$f" || exitcode=1
             fi
           done
           exit $exitcode
+
+      - name: pytest (unit tests)
+        run: |
+          if compgen -G "tests/test_*.py" > /dev/null 2>&1; then
+            python3 -m pytest tests/ -q --tb=short
+          else
+            echo "No test files in tests/ — skipping pytest"
+          fi
 
   # ── Job 2: Rust cargo check + test ──────────────────────────
   rust-tests:

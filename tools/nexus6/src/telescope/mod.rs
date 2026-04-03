@@ -24,7 +24,7 @@ use std::panic;
 
 use lens_trait::{Lens, LensResult};
 use lenses::{
-    BarrierLens, BoundaryLens, CausalLens, CompassLens, ConsciousnessLens, EmLens,
+    BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens, ConsciousnessLens, EmLens,
     EvolutionLens, GravityLens, InfoLens, MemoryLens, MiLens, MirrorLens, MultiscaleLens,
     NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RenormalizationLens,
     RulerLens, ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens,
@@ -71,6 +71,8 @@ impl Telescope {
             Box::new(RenormalizationLens),
             // Mutual Information (migrated from telescope-rs)
             Box::new(MiLens),
+            // Chaos dynamics
+            Box::new(ChaosLens),
             // Original 2 (void + barrier)
             Box::new(VoidLens),
             Box::new(BarrierLens),
