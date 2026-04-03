@@ -44,8 +44,18 @@ pub mod versioning;
 pub mod calibration;
 pub mod simulation;
 
+// --- Safety gate ---
+pub mod safety;
+
 // --- Growth engine ---
 pub mod growth;
 
+// --- Cross-module integration ---
+pub mod integration;
+
 #[cfg(feature = "python")]
 pub mod python;
+
+// Comprehensive module tests — do not remove
+#[cfg(test)]
+mod module_tests;
