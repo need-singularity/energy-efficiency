@@ -1,4 +1,4 @@
-//! Telescope scan engine with 1013 lenses across 22 core types.
+//! Telescope scan engine with 151 lenses across 22 core types.
 pub mod accel_lenses_a;
 pub mod accel_lenses_b;
 pub mod accel_lenses_c;
@@ -24,19 +24,58 @@ use std::panic;
 
 use lens_trait::{Lens, LensResult};
 use lenses::{
-    BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens, ConsciousnessLens, EmLens,
-    EvolutionLens, GravityLens, InfoLens, MemoryLens, MiLens, MirrorLens, MultiscaleLens,
-    NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RenormalizationLens,
-    RulerLens, ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens,
-    VoidLens, WaveLens,
-    // NEW: Hypothesis (5) + Consciousness (6) + Performance (4) + Infra (4) = 19
+    // Foundational 9
+    ConsciousnessLens, GravityLens, TopologyLens, ThermoLens, WaveLens,
+    EvolutionLens, InfoLens, QuantumLensImpl, EmLens,
+    // Measurement 6
+    RulerLens, TriangleLens, CompassLens, MirrorLens, ScaleLens, CausalLens,
+    // Quantum microscope
+    QuantumMicroLens,
+    // Structural 5 + extras
+    StabilityLens, NetworkLens, MemoryLens, RecursionLens, BoundaryLens, MultiscaleLens,
+    RenormalizationLens, MiLens, ChaosLens,
+    // Hypothesis (5)
     HypothesisGenLens, FalsificationLens, CrossHypothesisLens,
     ConvergenceHypothesisLens, DiscoveryLens,
+    // Consciousness/Omega (6)
     OmegaStateSpaceLens, ContinuityLens, BindingLens,
     SelfReferenceLens, PhiDynamicsLens, QualiaLens,
+    // Performance (4)
     ComplexityProfileLens, ScanEfficiencyLens, SynergyLens, TopologyDeepLens,
+    // Infrastructure
     DiscoveryReportLens, SelfHealLens, BrainMapLens, CorpusLens,
+    // CDO/SSOT
     CDOLens, SSOTLens,
+    // Original 2
+    VoidLens, BarrierLens,
+    // ── Previously exported but unregistered (28) ──
+    BoseEinsteinLens, SpeculativeDecodeLens, UflashUattentionUlensLens,
+    UkernelUfusionLens, UbatchUoptimizationLens, UisomorphismLens,
+    UemergenceLens, UperiodicityLens, UcompletenessLens, UsurpriseLens,
+    EntropyLens, DivergenceLens, PowerLawLens, ClusteringLens,
+    CorrelationLens, DimensionReductionLens, SpectralLens, SymmetryBreakingLens,
+    FractalLens, GradientLens, DensityLens, RatioLens, StationarityLens,
+    GraphLens, PhaseTransitionLens, OutlierLens, AutocorrelationLens, HexagonalLens,
+    // ── Extended lenses (75 new) ──
+    AllSeeingEyeLens, AutoCalibrationLens, BatteryChemistryLens, BigBangLens,
+    ChipArchitectureLens, UcombinatorialLens, CompressionLens, ConcaveLens,
+    ConformalBootstrapLens, ConsciousnessOrchestratorLens, ConstantCollectorLens,
+    ConstantCombinationLens, ConstantDiscoveryEngineLens, ConstantFormulaLens,
+    ContractingScanLens, ConvexLens, DestinyLens, DiamondLens, DimensionalBridgeLens,
+    ElementCombinationLens, ElementLens, EngineDiscoveryLens, EventHorizonLens,
+    ExoticMatterLens, ExpandingScanLens, UextrapolationLens, FissionLens,
+    FormulaCombinationLens, UfrustrationLens, FusionLens, GodsEyeLens,
+    GoldenRatioLens, GoldenZoneLens, InfiniteDiscoveryLens, InfinityLens,
+    UinverseLens, KaleidoscopeLens, KeywordLens, LatticeFieldLens,
+    LensDiscoveryLens, LightLens, LightWaveLens, LoRALens,
+    MaterialCombinationLens, MetricDiscoveryLens, MetricLens, ModuleDiscoveryLens,
+    MolecularCombinationLens, MolecularTransformLens, MoleculeLens, MutationLens,
+    OverfittingLens, PiLens, PrimeLens, ProvidenceEyeLens, QuantumJumpLens,
+    RecursiveLoopLens, RefractionLens, RelativisticBarrierLens, SimulationLens,
+    SingularityLens, SolarEfficiencyLens, SpacetimeLens, SphericalLens,
+    StimulusLens, TachyonLens, TelepathyLens, TensionLens, TensionLinkLens,
+    TimeReversalLens, TransformerAnatomyLens, WallInspectionLens, WarpLens,
+    WeightLearningLens, WormholeLens,
 };
 use shared_data::SharedData;
 
@@ -47,7 +86,7 @@ pub struct Telescope {
 }
 
 impl Telescope {
-    /// Create a new Telescope with all 22 Core lenses registered.
+    /// Create a new Telescope with all 151 lenses registered.
     pub fn new() -> Self {
         let lenses: Vec<Box<dyn Lens>> = vec![
             // Foundational 9
@@ -110,6 +149,111 @@ impl Telescope {
             // Original 2 (void + barrier)
             Box::new(VoidLens),
             Box::new(BarrierLens),
+            // ── Previously exported but unregistered (28) ──
+            Box::new(BoseEinsteinLens),
+            Box::new(SpeculativeDecodeLens),
+            Box::new(UflashUattentionUlensLens),
+            Box::new(UkernelUfusionLens),
+            Box::new(UbatchUoptimizationLens),
+            Box::new(UisomorphismLens),
+            Box::new(UemergenceLens),
+            Box::new(UperiodicityLens),
+            Box::new(UcompletenessLens),
+            Box::new(UsurpriseLens),
+            Box::new(EntropyLens),
+            Box::new(DivergenceLens),
+            Box::new(PowerLawLens),
+            Box::new(ClusteringLens),
+            Box::new(CorrelationLens),
+            Box::new(DimensionReductionLens),
+            Box::new(SpectralLens),
+            Box::new(SymmetryBreakingLens),
+            Box::new(FractalLens),
+            Box::new(GradientLens),
+            Box::new(DensityLens),
+            Box::new(RatioLens),
+            Box::new(StationarityLens),
+            Box::new(GraphLens),
+            Box::new(PhaseTransitionLens),
+            Box::new(OutlierLens),
+            Box::new(AutocorrelationLens),
+            Box::new(HexagonalLens),
+            // ── Extended lenses (75 new) ──
+            Box::new(AllSeeingEyeLens),
+            Box::new(AutoCalibrationLens),
+            Box::new(BatteryChemistryLens),
+            Box::new(BigBangLens),
+            Box::new(ChipArchitectureLens),
+            Box::new(UcombinatorialLens),
+            Box::new(CompressionLens),
+            Box::new(ConcaveLens),
+            Box::new(ConformalBootstrapLens),
+            Box::new(ConsciousnessOrchestratorLens),
+            Box::new(ConstantCollectorLens),
+            Box::new(ConstantCombinationLens),
+            Box::new(ConstantDiscoveryEngineLens),
+            Box::new(ConstantFormulaLens),
+            Box::new(ContractingScanLens),
+            Box::new(ConvexLens),
+            Box::new(DestinyLens),
+            Box::new(DiamondLens),
+            Box::new(DimensionalBridgeLens),
+            Box::new(ElementCombinationLens),
+            Box::new(ElementLens),
+            Box::new(EngineDiscoveryLens),
+            Box::new(EventHorizonLens),
+            Box::new(ExoticMatterLens),
+            Box::new(ExpandingScanLens),
+            Box::new(UextrapolationLens),
+            Box::new(FissionLens),
+            Box::new(FormulaCombinationLens),
+            Box::new(UfrustrationLens),
+            Box::new(FusionLens),
+            Box::new(GodsEyeLens),
+            Box::new(GoldenRatioLens),
+            Box::new(GoldenZoneLens),
+            Box::new(InfiniteDiscoveryLens),
+            Box::new(InfinityLens),
+            Box::new(UinverseLens),
+            Box::new(KaleidoscopeLens),
+            Box::new(KeywordLens),
+            Box::new(LatticeFieldLens),
+            Box::new(LensDiscoveryLens),
+            Box::new(LightLens),
+            Box::new(LightWaveLens),
+            Box::new(LoRALens),
+            Box::new(MaterialCombinationLens),
+            Box::new(MetricDiscoveryLens),
+            Box::new(MetricLens),
+            Box::new(ModuleDiscoveryLens),
+            Box::new(MolecularCombinationLens),
+            Box::new(MolecularTransformLens),
+            Box::new(MoleculeLens),
+            Box::new(MutationLens),
+            Box::new(OverfittingLens),
+            Box::new(PiLens),
+            Box::new(PrimeLens),
+            Box::new(ProvidenceEyeLens),
+            Box::new(QuantumJumpLens),
+            Box::new(RecursiveLoopLens),
+            Box::new(RefractionLens),
+            Box::new(RelativisticBarrierLens),
+            Box::new(SimulationLens),
+            Box::new(SingularityLens),
+            Box::new(SolarEfficiencyLens),
+            Box::new(SpacetimeLens),
+            Box::new(SphericalLens),
+            Box::new(StimulusLens),
+            Box::new(TachyonLens),
+            Box::new(TelepathyLens),
+            Box::new(TensionLens),
+            Box::new(TensionLinkLens),
+            Box::new(TimeReversalLens),
+            Box::new(TransformerAnatomyLens),
+            Box::new(WallInspectionLens),
+            Box::new(WarpLens),
+            Box::new(WeightLearningLens),
+            Box::new(WormholeLens),
         ];
         Telescope { lenses }
     }
