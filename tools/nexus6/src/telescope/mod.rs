@@ -123,6 +123,15 @@ impl Telescope {
         n: usize,
         d: usize,
     ) -> HashMap<String, LensResult> {
+        // Early validation — prevent panics in SharedData::compute
+        if data.len() != n * d || n == 0 || d == 0 {
+            eprintln!(
+                "[NEXUS-6] scan_all: invalid dimensions (data.len={}, n={}, d={}, n*d={})",
+                data.len(), n, d, n.saturating_mul(d)
+            );
+            return self.lenses.iter().map(|l| (l.name().to_string(), HashMap::new())).collect();
+        }
+
         let shared = SharedData::compute(data, n, d);
         let mut results = HashMap::new();
 
@@ -137,7 +146,18 @@ impl Telescope {
                 Ok(lr) => {
                     results.insert(name, lr);
                 }
-                Err(_) => {
+                Err(e) => {
+                    let msg = if let Some(s) = e.downcast_ref::<String>() {
+                        s.clone()
+                    } else if let Some(s) = e.downcast_ref::<&str>() {
+                        s.to_string()
+                    } else {
+                        "unknown panic".to_string()
+                    };
+                    eprintln!(
+                        "[NEXUS-6] Lens '{}' panicked — skipping: {}",
+                        name, msg
+                    );
                     results.insert(name, HashMap::new());
                 }
             }

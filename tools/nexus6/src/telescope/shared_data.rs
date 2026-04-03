@@ -4,6 +4,13 @@ use crate::gpu::fallback;
 // Hot-path utility functions (migrated from telescope-rs common.rs)
 // ---------------------------------------------------------------------------
 
+/// Safe data access — returns 0.0 for out-of-bounds indices instead of panicking.
+/// Use this in lens scan functions to prevent index-out-of-bounds panics.
+#[inline]
+pub fn safe_get(data: &[f64], index: usize) -> f64 {
+    data.get(index).copied().unwrap_or(0.0)
+}
+
 /// Min and max of a slice. Returns (min, max).
 #[inline]
 pub fn min_max(s: &[f64]) -> (f64, f64) {

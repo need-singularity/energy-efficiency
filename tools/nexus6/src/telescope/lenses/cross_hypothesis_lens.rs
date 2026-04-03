@@ -3,6 +3,12 @@ use std::collections::HashMap;
 use crate::telescope::lens_trait::{Lens, LensResult};
 use crate::telescope::shared_data::SharedData;
 
+/// Safe data access — returns 0.0 for out-of-bounds indices instead of panicking.
+#[inline]
+fn safe_get(data: &[f64], index: usize) -> f64 {
+    data.get(index).copied().unwrap_or(0.0)
+}
+
 /// CrossHypothesisLens: Detects cross-domain resonance patterns for hypothesis transfer.
 ///
 /// Algorithm:
@@ -31,7 +37,7 @@ impl Lens for CrossHypothesisLens {
     }
 
     fn scan(&self, data: &[f64], n: usize, d: usize, _shared: &SharedData) -> LensResult {
-        if n < 6 || d < 4 {
+        if n < 6 || d < 4 || data.len() < n * d {
             return HashMap::new();
         }
 
@@ -42,9 +48,9 @@ impl Lens for CrossHypothesisLens {
 
         // Compute correlation matrices for each domain half
         let means_a = dim_means(data, n, d, 0, d_a);
-        let means_b = dim_means(data, n, d, split, split + d_b);
+        let means_b = dim_means(data, n, d, split, d_b);
         let stds_a = dim_stds(data, n, d, 0, d_a, &means_a);
-        let stds_b = dim_stds(data, n, d, split, split + d_b, &means_b);
+        let stds_b = dim_stds(data, n, d, split, d_b, &means_b);
 
         // Cross-domain correlation: each dim in A vs each dim in B
         let mut max_cross_corr = 0.0_f64;
@@ -66,8 +72,8 @@ impl Lens for CrossHypothesisLens {
 
                 let mut cov = 0.0_f64;
                 for row in 0..n {
-                    let va = data[row * d + ai] - means_a[ai];
-                    let vb = data[row * d + split + bi] - means_b[bi];
+                    let va = safe_get(data, row * d + ai) - means_a[ai];
+                    let vb = safe_get(data, row * d + split + bi) - means_b[bi];
                     cov += va * vb;
                 }
                 cov /= n as f64;
@@ -130,7 +136,7 @@ fn dim_means(data: &[f64], n: usize, d: usize, start: usize, count: usize) -> Ve
     (0..count)
         .map(|di| {
             let col_idx = start + di;
-            (0..n).map(|r| data[r * d + col_idx]).sum::<f64>() / n as f64
+            (0..n).map(|r| safe_get(data, r * d + col_idx)).sum::<f64>() / n as f64
         })
         .collect()
 }
@@ -147,7 +153,7 @@ fn dim_stds(
         .map(|di| {
             let col_idx = start + di;
             let var =
-                (0..n).map(|r| (data[r * d + col_idx] - means[di]).powi(2)).sum::<f64>() / n as f64;
+                (0..n).map(|r| (safe_get(data, r * d + col_idx) - means[di]).powi(2)).sum::<f64>() / n as f64;
             var.sqrt()
         })
         .collect()
@@ -174,8 +180,8 @@ fn intra_correlation(
             }
             let mut cov = 0.0_f64;
             for row in 0..n {
-                let vi = data[row * d + start + i] - means[i];
-                let vj = data[row * d + start + j] - means[j];
+                let vi = safe_get(data, row * d + start + i) - means[i];
+                let vj = safe_get(data, row * d + start + j) - means[j];
                 cov += vi * vj;
             }
             cov /= n as f64;
@@ -200,7 +206,7 @@ fn binned_entropy(data: &[f64], n: usize, d: usize, start: usize, end: usize) ->
     let mut all_vals: Vec<f64> = Vec::with_capacity(n * count);
     for row in 0..n {
         for di in start..end {
-            all_vals.push(data[row * d + di]);
+            all_vals.push(safe_get(data, row * d + di));
         }
     }
 
