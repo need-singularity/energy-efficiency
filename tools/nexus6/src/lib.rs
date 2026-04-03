@@ -11,5 +11,41 @@ pub mod experiment;
 pub mod science;
 pub mod cli;
 
+// --- Agent-generated modules ---
+pub mod alert;
+pub mod api;
+pub mod auto_register;
+pub mod autonomous;
+pub mod consciousness_bridge;
+pub mod cross_intel;
+pub mod distributed;
+pub mod dream;
+pub mod event;
+pub mod feedback;
+pub mod genetic_prog;
+pub mod ingest;
+pub mod knowledge;
+pub mod multi_agent;
+pub mod nlp;
+pub mod pipeline;
+pub mod plugin;
+pub mod publish;
+pub mod red_team;
+pub mod reward;
+pub mod sandbox;
+pub mod scheduler;
+pub mod self_improve;
+pub mod statistics;
+pub mod template;
+pub mod time_travel;
+pub mod versioning;
+
+// --- Calibration & Simulation extensions ---
+pub mod calibration;
+pub mod simulation;
+
+// --- Growth engine ---
+pub mod growth;
+
 #[cfg(feature = "python")]
 pub mod python;
