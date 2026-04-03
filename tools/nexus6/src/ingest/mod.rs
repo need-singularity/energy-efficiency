@@ -1,3 +1,7 @@
+pub mod crawler;
 pub mod csv_reader;
 pub mod json_reader;
+pub mod md_parser;
+pub mod py_parser;
 pub mod text_parser;
+pub mod toml_parser;
