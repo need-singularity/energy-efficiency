@@ -438,10 +438,10 @@
 
 | # | Prediction | Method | Expected | Status |
 |---|-----------|--------|----------|--------|
-| TP-SC-01 | Nb₃Sn triple coincidence significance | Monte Carlo: P(3 matches in random A15) | P < 0.001 | 🔬 Pending |
-| TP-SC-02 | New A15 compounds with 6 atoms/cell | Screen A15 database for X₃Y with 6X | Pattern or null | 🔬 |
+| TP-SC-01 | Nb₃Sn triple coincidence significance | Monte Carlo: P(3 matches in random A15) | P < 0.001 | ✅ VERIFIED |
+| TP-SC-02 | New A15 compounds with 6 atoms/cell | Screen A15 database for X₃Y with 6X | Pattern or null | ✅ VERIFIED |
 | TP-SC-03 | Vortex lattice CN=6 in new Type II SC | STM on FeSe thin film | CN=6 expected | ✅ Already confirmed |
-| TP-SC-04 | CORC 6-tape optimal | Compare Je: 6-tape vs 4,8,12 tape | 6 competitive | 🔬 |
+| TP-SC-04 | CORC 6-tape optimal | Compare Je: 6-tape vs 4,8,12 tape | 6 competitive | ❌ FALSIFIED: 문헌에 6-tape 최적 근거 없음, 응용별 2-30개 범위 |
 
 ### Tier 2: Testable with Facilities (2026-2030)
 

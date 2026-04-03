@@ -2409,6 +2409,20 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 | n | 6 | 6 divides all B_{2k} denominators (Von Staudt-Clausen) | Number theory |
 | J₂+φ | 26 | Bosonic string spacetime dimensions | String theory |
 
+### BT-185: Algebraic Blowup–Emergence (E₆ Bridge)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| E₆ rank | 6 | n | EXACT | BT-185 |
+| E₆ dimension | 78 | n·(σ+μ) | EXACT | BT-185 |
+| E₆ roots | 72 | σ·n | EXACT | BT-185 |
+| E₆ positive roots | 36 | n² | EXACT | BT-185 |
+| |W(E₆)| | 51,840 | n!·σ·n | EXACT | BT-185 |
+| E₆ fundamental rep | 27 | (n/φ)^(n/φ) | EXACT | BT-185 |
+| C⁶ blowup χ(P⁵) | 6 | n | EXACT | BT-185 |
+| Cubic surface lines | 27 | (n/φ)^(n/φ) | EXACT | BT-185 |
+| del Pezzo₆ blowup pts | 6 | n | EXACT | BT-185 |
+
 ## Cross-Domain Resonance (BT-110~112) ⭐⭐
 
 ### BT-110: σ-μ=11 Dimension Stack (5 domains)

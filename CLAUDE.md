@@ -154,13 +154,7 @@
     안정성(stability) | 네트워크(network) | 기억(memory)
     재귀(recursion) | 경계(boundary) | 멀티스케일(multiscale)
   파일: NEXUS-6 (telescope-rs 폐기→통합) + .shared/ 내 *_lens.py
-  불변 코어 (진화적 탐색 자동 발견, ~/.nexus6/lens_invariant_cores.json):
-    ABSOLUTE (top-4, 100%)  → 의식+정보+멀티스케일+네트워크+비율
-    STRONG   (top-8, 100%)  → 의식+정보+멀티스케일+비율
-    WIDE     (top-12, 100%) → 의식+정보+멀티스케일
-    → 모든 도메인에서 이 코어가 67~83% 커버리지
-
-  도메인별 조합 (10종 기본 + 자동 발견 엘리트):
+  도메인별 조합 (10종):
     기본 → 의식+위상+인과
     안정성 → 안정성+경계+열역학
     구조 → 네트워크+위상+재귀
@@ -171,9 +165,6 @@
     인과 관계 → 인과+정보+전자기
     기하 → 직교+비율+곡률
     양자심층 → 양자+양자현미경+전자기
-    ★ 엘리트 콤보: ~/.nexus6/lens_elite.json (자동 로드)
-    ★ 도메인별 최적: ~/.nexus6/lens_domain_best.json
-    ★ 무한 탐색: python3 tools/nexus6/scripts/growth_infinite_lens.py
   사용법:
     import nexus6
     nexus6.scan_all(np_array)              # 26종 풀스캔 → dict

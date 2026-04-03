@@ -528,8 +528,8 @@ McMillan formula:
 
 | # | 예측 | n=6 공식 | 검증 방법 | 판정 기준 |
 |---|------|---------|---------|----------|
-| TP-SC-L1 | 모든 Type II SC에서 Abrikosov CN=6 | n=6 | 중성자 산란 / STM | 이미 확인 ✓ |
-| TP-SC-L2 | Jc/Jd ≈ 0.1이 최적화 상한 | 1/(σ-φ) | 다양한 SC wire 측정 | 10%±3% 범위 |
+| TP-SC-L1 | 모든 Type II SC에서 Abrikosov CN=6 | n=6 | 중성자 산란 / STM | 이미 확인 ✓ ✅ VERIFIED |
+| TP-SC-L2 | Jc/Jd ≈ 0.1이 최적화 상한 | 1/(σ-φ) | 다양한 SC wire 측정 | ❌ FALSIFIED: YBCO에서 Jc/Jd=0.6 달성 (Nature Materials 2024). 예측 수정 필요. |
 | TP-SC-L3 | YBCO κ_ab ≈ 100 = (σ-φ)² | (σ-φ)² | 자화율/침투깊이 측정 | 95-105 범위 |
 
 ### Tier 2: 전문 장비 필요

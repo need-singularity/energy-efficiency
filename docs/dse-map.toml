@@ -267,7 +267,7 @@ combos = 28800
 valid = 7651
 tool = "tools/sc-dse/"
 levels = ["Material", "Process", "Wire", "Magnet", "Cooling", "System"]
-cross_dse = ["chip-architecture", "fusion", "power-grid", "quantum-computing", "plasma-physics", "energy", "robotics", "material-synthesis"]
+cross_dse = ["chip-architecture", "fusion", "power-grid", "quantum-computing", "plasma-physics", "energy", "robotics", "material-synthesis", "neuromorphic", "optics-telescope", "nuclear-structure", "biophysics", "eeg-bci"]
 best_pareto = "REBCO + PIT + FlatTape2G + Hybrid_LH + Hybrid_4K20K + FusionMagnet (62.50)"
 best_n6 = "REBCO + PIT + Round + SMES + LHe_4K + QuantumChip (100%)"
 best_fusion_30T = "REBCO + PIT + FlatTape2G + Hybrid_LH + Hybrid_4K20K + FusionMagnet (45T, 100%)"
@@ -280,10 +280,14 @@ thermodynamic_limits = "docs/superconductor/thermodynamic-limits.md"
 total_claims = 187
 verified_pct = 75.9
 hypothesis_exact_pct = 100.0
-bt_count = 11
+bt_count = 14
 bt_exact_pct = 90.6
+new_bt = ["BT-140 Transmon-Surface(10/10,3star)", "BT-141 MRI-NMR(8/10,2star)", "BT-142 QuantumInternet(10/10,3star)"]
+new_exact = ["DC-SQUID(phi=2)", "Transmon(phi=2)", "AZ-4classes(tau=4)", "Maglev(phi=2)"]
+tp_verified = 3
+tp_falsified = 2
 testable_predictions = 28
-cross_dse_domains = 8
+cross_dse_domains = 13
 impossibility_theorems = 12
 certification = "docs/superconductor/alien-10-certification.md"
 bt_honest_ceiling = true
@@ -292,7 +296,7 @@ universal_physics_params = 83
 total_params = 97
 total_files = 42
 total_lines = 21880
-note = "🛸10 CERTIFIED: 보편물리100%EXACT(83/83), 12불가능성정리, BT90.6%(정직한천장), 가설30/30, CrossDSE8도메인, TP28, 산업12만+, 실험113년0예외, 42파일21,880줄, 인증 2026-04-04"
+note = "🛸10 벽돌파: 보편물리100%EXACT(83/83), 12불가능성정리+4신규EXACT, BT14개(+3신규:140-142), CrossDSE13도메인(+5), TP3검증+2반증, 산업12만+, 실험113년0예외, 인증 2026-04-04"
 
 [energy-generation]
 goal = true
