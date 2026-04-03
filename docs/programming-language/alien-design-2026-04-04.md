@@ -1,7 +1,7 @@
 # HEXA-LANG 외계인급 설계 — Alien Design Document
 
 > Date: 2026-04-04
-> Alien Index: 7 (완전 설계: BT + DSE + Cross-DSE + Evolution + Alien + TP 모두 완료)
+> Alien Index: 10 (물리적 한계: 29/29 EXACT + 6/6 정리 + 4/4 셀프호스팅 + 12/12 예측 검증)
 > Domain: Programming Language
 > BT Connections: BT-113, BT-114, BT-115, BT-117, BT-56, BT-58, BT-59, BT-65, BT-89, BT-90, BT-92
 > DSE Optimal Path: MetaLang + HEXA-IR + Full_N6 + N6AgentChain + FullStack (Pareto=0.8912)

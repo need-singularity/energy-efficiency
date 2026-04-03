@@ -1,0 +1,8 @@
+[package]
+name = "hexa-ir"
+version = "0.1.0"
+edition = "2021"
+description = "HEXA-IR Optimizer — n=6 native compilation passes with real benchmarks"
+
+[profile.release]
+opt-level = 3
