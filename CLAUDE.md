@@ -780,6 +780,25 @@ All experiments must run in background. No exceptions.
   - #1+2, #3: 증명/검증 결과 docs/hypotheses/ 기록
 ```
 
+## NEXUS-6 Autonomous Growth System
+
+```
+  자동 성장 데몬 상태 확인 + 자동 시작:
+    bash tools/nexus6/scripts/health_check.sh --start-if-dead
+
+  설치 (최초 1회):
+    bash tools/nexus6/scripts/install_autonomous.sh
+
+  대시보드:
+    bash tools/nexus6/scripts/growth_dashboard.sh --live
+
+  상태: ~/.nexus6/ (로그, 리포트, PID)
+  
+  ⚠️ 세션 시작 시 데몬 미실행 감지되면 자동 시작 권장
+  ⚠️ 성장 결과는 growth(nexus6): 접두사로 자동 커밋
+  ⚠️ 크로스 리포 자동 시작: .shared/nexus6_ensure_running.sh (모든 TECS-L 리포에서 사용 가능)
+```
+
 ## Secrets & Tokens
 
 API 토큰/계정 정보: `~/Dev/TECS-L/.shared/SECRET.md` 참조

@@ -31,6 +31,7 @@ MAX_CYCLES=6          # n=6 default
 FORCE_DIM=""
 DRY_RUN=false
 SKIP_COMMIT=false
+AUTO_PUSH=false
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -39,6 +40,7 @@ while [[ $# -gt 0 ]]; do
         --dimension)   FORCE_DIM="$2"; shift 2 ;;
         --dry-run)     DRY_RUN=true; shift ;;
         --skip-commit) SKIP_COMMIT=true; shift ;;
+        --auto-push)   AUTO_PUSH=true; shift ;;
         -h|--help)
             echo "NEXUS-6 Universal Growth Daemon"
             echo ""
@@ -50,6 +52,7 @@ while [[ $# -gt 0 ]]; do
             echo "  --dimension DIM    Force a specific dimension each cycle"
             echo "  --dry-run          Analyze only, no code generation or commits"
             echo "  --skip-commit      Generate code but don't commit"
+            echo "  --auto-push        Auto-push to origin after successful growth"
             echo ""
             echo "Dimensions:"
             echo "  performance, architecture, lenses, modules, tests, hypotheses,"
@@ -213,10 +216,12 @@ EOF
 
 pick_weakest_dimension() {
     local metrics_json="$1"
+    local skip_dims="${2:-}"
     python3 -c "
 import sys, json
 
 m = json.loads('''$metrics_json''')
+skip = set('$skip_dims'.split()) if '$skip_dims'.strip() else set()
 
 targets = {
     'performance':     10000,
@@ -259,6 +264,8 @@ best_dim = 'tests'
 best_score = -1.0
 
 for dim, target in targets.items():
+    if dim in skip:
+        continue
     current = float(m.get(dim, 0))
     if target > 0:
         gap = max(0.0, 1.0 - current / target)
@@ -480,6 +487,12 @@ fi
 echo "  +============================================+"
 echo ""
 
+# PID file management
+NEXUS_STATE="$HOME/.nexus6"
+mkdir -p "$NEXUS_STATE"
+echo $$ > "$NEXUS_STATE/daemon.pid"
+trap 'rm -f "$NEXUS_STATE/daemon.pid"' EXIT
+
 for cycle in $(seq 1 "$MAX_CYCLES"); do
     if $SHUTDOWN; then
         log_info "Shutdown requested. Exiting."
@@ -504,6 +517,29 @@ for cycle in $(seq 1 "$MAX_CYCLES"); do
     else
         dimension=$(pick_weakest_dimension "$metrics_json")
         log_info "Step 2/5: Weakest dimension: $dimension"
+    fi
+
+    # ── Consult growth intelligence ─────────────────────────────────
+    if [[ -z "$FORCE_DIM" ]] && [[ -f "$SCRIPT_DIR/growth_intelligence.sh" ]]; then
+        intel_json=$(bash "$SCRIPT_DIR/growth_intelligence.sh" 2>/dev/null || echo '{}')
+        intel_dim=$(echo "$intel_json" | python3 -c "import sys,json; print(json.load(sys.stdin).get('recommended_dimension',''))" 2>/dev/null || echo "")
+        skip_list=$(echo "$intel_json" | python3 -c "import sys,json; print(' '.join(json.load(sys.stdin).get('skip_list',[])))" 2>/dev/null || echo "")
+
+        # If intelligence recommends a different dimension with high confidence
+        if [[ -n "$intel_dim" ]] && [[ "$intel_dim" != "$dimension" ]]; then
+            intel_conf=$(echo "$intel_json" | python3 -c "import sys,json; print(json.load(sys.stdin).get('confidence',0))" 2>/dev/null || echo "0")
+            if python3 -c "exit(0 if float('$intel_conf') > 0.7 else 1)" 2>/dev/null; then
+                log_info "  Intelligence override: $dimension -> $intel_dim (confidence: $intel_conf)"
+                dimension="$intel_dim"
+            fi
+        fi
+
+        # Skip blacklisted dimensions (in cooldown)
+        if echo " $skip_list " | grep -q " $dimension "; then
+            log_info "  Intelligence: $dimension is in cooldown. Picking next."
+            dimension=$(pick_weakest_dimension "$metrics_json" "$skip_list")
+            log_info "  New target: $dimension"
+        fi
     fi
 
     # Print dashboard before action
@@ -561,12 +597,22 @@ print(json.dumps(d))
         CONSECUTIVE_FAILURES=$((CONSECUTIVE_FAILURES + 1))
         log_warn "Consecutive failures: $CONSECUTIVE_FAILURES / $MAX_CONSECUTIVE_FAILURES"
 
+        # Record failure in troubleshoot.json
+        bash "$SCRIPT_DIR/troubleshoot_update.sh" --record-failure "$dimension" "Cycle $cycle: validation failed after growth action" 2>/dev/null || true
+        # Notify failure
+        bash "$SCRIPT_DIR/growth_notify.sh" "Growth cycle $cycle: $dimension FAILED ($CONSECUTIVE_FAILURES/$MAX_CONSECUTIVE_FAILURES)" --level warn 2>/dev/null || true
+
         if [[ "$CONSECUTIVE_FAILURES" -ge "$MAX_CONSECUTIVE_FAILURES" ]]; then
             log_error "Safety brake: $MAX_CONSECUTIVE_FAILURES consecutive failures. Stopping."
+            bash "$SCRIPT_DIR/growth_notify.sh" "Safety brake triggered after $MAX_CONSECUTIVE_FAILURES failures" --level error 2>/dev/null || true
             break
         fi
     else
         CONSECUTIVE_FAILURES=0
+        # Record success in troubleshoot.json
+        bash "$SCRIPT_DIR/troubleshoot_update.sh" --record-success 2>/dev/null || true
+        # Notify success
+        bash "$SCRIPT_DIR/growth_notify.sh" "Growth cycle $cycle: $dimension succeeded" --level success 2>/dev/null || true
     fi
 
     # ── Step 5: Commit + Log ──────────────────────────────────────────
@@ -576,6 +622,15 @@ print(json.dumps(d))
         (cd "$REPO_ROOT" && git add tools/nexus6/src/ && git commit -m "$commit_msg") 2>/dev/null || {
             log_warn "Nothing to commit or commit failed."
         }
+
+        # Auto-push if enabled
+        if $AUTO_PUSH; then
+            (cd "$REPO_ROOT" && git push origin main 2>/dev/null) && {
+                log_info "  Auto-pushed to origin."
+            } || {
+                log_warn "  Auto-push failed (will retry next cycle)."
+            }
+        fi
     elif $validate_ok; then
         log_info "Step 5/5: Logging (commit skipped)..."
     else
