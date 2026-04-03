@@ -50,6 +50,9 @@ pub mod safety;
 // --- Growth engine ---
 pub mod growth;
 
+// --- Topology exploration ---
+pub mod topology_exploration;
+
 // --- Cross-module integration ---
 pub mod integration;
 
