@@ -203,7 +203,7 @@ fn parse_tables(lines: &[&str], sections: &[MdSection]) -> Vec<MdTable> {
 fn split_table_row(line: &str) -> Vec<String> {
     let trimmed = line.trim();
     // Remove leading and trailing |
-    let inner = if trimmed.starts_with('|') && trimmed.ends_with('|') {
+    let inner = if trimmed.starts_with('|') && trimmed.ends_with('|') && trimmed.len() >= 2 {
         &trimmed[1..trimmed.len() - 1]
     } else {
         trimmed
