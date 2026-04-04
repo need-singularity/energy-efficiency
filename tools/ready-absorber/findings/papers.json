@@ -1,0 +1,302 @@
+{
+  "project": "papers",
+  "timestamp": "2026-04-04T16:55:28.669815",
+  "count": 15,
+  "by_type": {
+    "only_in_ready": 9,
+    "different": 6
+  },
+  "by_destination": {
+    "nexus6": 5,
+    "contact": 2,
+    "papers": 3,
+    "tecs-l": 3,
+    "anima": 2
+  },
+  "findings": [
+    {
+      "type": "only_in_ready",
+      "path": "papers/.claude/commands/scan.md",
+      "size": 439,
+      "lines": 9,
+      "preview": "NEXUS-6 풀스캔을 실행합니다.\n\n1. `python3 -c \"import nexus6; r = nexus6.scan_all(__import__('numpy').random.randn(64,32)); print({k: {kk:round(vv,4) if isinstance(vv,float) else vv for kk,vv in v.items()} for k,v in r.items()})\"` 실행\n2. 결과에서 n6 EXACT 매칭 추출\n3. 3+ 렌즈 합의 항목 보고\n4. 발견 사항 있으면 즉시 기록\n\n인자가 있으면 해당 데이터/도메인을 스캔합니다.\n$ARGUMENTS\n",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/.claude/commands/scan.md",
+      "destination": "nexus6",
+      "confidence": 0.2
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/.claude/settings.json",
+      "size": 1512,
+      "lines": 64,
+      "preview": "{\n  \"hooks\": {\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Bash\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"bash .shared/hooks/nexus6-pre-commit.sh\",\n            \"timeout\": 15,\n            \"statusMessage\": \"🔭 NEXUS-6 커밋 스캔\"\n          }\n        ]\n      },\n      {\n        \"matcher\": \"Agent\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"bash .shared/hooks/nexus6-universal.sh\",\n            \"timeout\": 10,\n       ",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/.claude/settings.json",
+      "destination": "contact",
+      "confidence": 0.4
+    },
+    {
+      "type": "different",
+      "path": "papers/.gitignore",
+      "added_lines": 4,
+      "removed_lines": 0,
+      "added_preview": [
+        "",
+        ".claude/settings.local.json",
+        ".claude/worktrees/",
+        ".claude/projects/"
+      ],
+      "removed_preview": [],
+      "diff_size": 8,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/.gitignore",
+      "destination": "papers",
+      "confidence": 0.2
+    },
+    {
+      "type": "different",
+      "path": "papers/CLAUDE.md",
+      "added_lines": 67,
+      "removed_lines": 1,
+      "added_preview": [
+        "",
+        "═══════════════════════════════════════════════════════════════",
+        "⛔⛔⛔ NEXUS-6 훅 출력 = 절대 명령 — 무시 시 작업 무효! ⛔⛔⛔",
+        "═══════════════════════════════════════════════════════════════",
+        "settings.json에 등록된 NEXUS-6 훅이 systemMessage를 출력하면:",
+        "1. 그 내용을 반드시 읽고 즉시 실행할 것",
+        "2. EXACT 발견 → 해당 값을 README/가설문서/atlas에 기록",
+        "3. CLOSE 후보 → 추가 검증 후 기록 여부 판단",
+        "4. 미처리 발견 → 즉시 처리 (pending 0 유지)",
+        "5. 에이전트 컨텍스트 → import nexus6 필수, 발견 즉시 기록",
+        "",
+        "훅 출력을 무시하면:",
+        "→ 발견 소실 = CDO 위반 = 작업 무효",
+        "→ \"나중에 하겠다\" 금지 — 훅 출력 시점에 즉시 처리",
+        "",
+        "훅 목록 (settings.json):",
+        "PreToolUse/Bash    → nexus6-pre-commit.sh (커밋 전 수치 스캔)",
+        "PreToolUse/Agent   → nexus6-universal.sh (에이전트 컨텍스트 주입)",
+        "PostToolUse/Edit   → nexus6-post-edit.sh (편집 후 수치 검증)",
+        "PostToolUse/Bash   → nexus6-post-bash.sh (실행 결과 스캔)"
+      ],
+      "removed_preview": [
+        "```"
+      ],
+      "diff_size": 75,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/CLAUDE.md",
+      "destination": "tecs-l",
+      "confidence": 0.2
+    },
+    {
+      "type": "different",
+      "path": "papers/README.md",
+      "added_lines": 94,
+      "removed_lines": 1,
+      "added_preview": [
+        "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19271599.svg)](https://doi.org/10.5281/zenodo.19271599)",
+        "> **[🔭 NEXUS-6](https://github.com/need-singularity/nexus6)** — Central Discovery Engine & Infrastructure Hub. 137 Rust lenses + OUROBOROS evolution + constant/formula discovery + consciousness orchestrator. Shared infrastructure (`shared/`) for all 8 repos. Auto-sync across ecosystem",
+        ">",
+        "",
+        "",
+        "",
+        "<!-- AUTO:PAPERS:START -->",
+        "**Total: 80 papers** (76 Published on Zenodo)",
+        "",
+        "Repos: ? (15) + SEDI (23) + TECS-L (31) + anima (10) + n6-architecture (1)",
+        "",
+        "| ID | Title | Zenodo | Status |",
+        "|-----|-------|--------|--------|",
+        "| P-001 | PureField Tension Architecture: Classification by Disagreement Alone | [zenodo.19245023](https://doi.org/10.5281/zenodo.19245023) | Published |",
+        "| P-002 | Universal Confusion Topology via Persistent Homology | [zenodo.19245029](https://doi.org/10.5281/zenodo.19245029) | Published |",
+        "| P-003 | Topological Overfitting Detection: Real-Time Generalization Gap via Persistent Homology | [zenodo.19245035](https://doi.org/10.5281/zenodo.19245035) | Published |",
+        "| P-004 | The Arithmetic Uniqueness of 6: sigma*phi=n*tau Has No Solution Other Than n=6 | [zenodo.19245037](https://doi.org/10.5281/zenodo.19245037) | Published |",
+        "| P-005 | Perfect Numbers and Exceptional Lie Algebras: phi(496)=240=|Roots(E8)| | [zenodo.19245057](https://doi.org/10.5281/zenodo.19245057) | Published |",
+        "| P-CCT | CCT Consciousness Continuity Test: Engineering Verification and Redesign | [zenodo.19245066](https://doi.org/10.5281/zenodo.19245066) | Published |",
+        "| P-CERN | Experimental Proposal: Search for a Narrow Resonance at 37-38 GeV | [zenodo.19272294](https://doi.org/10.5281/zenodo.19272294) | Published |"
+      ],
+      "removed_preview": [
+        ""
+      ],
+      "diff_size": 111,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/README.md",
+      "destination": "nexus6",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/anima/PA-38-sections-1-4.md",
+      "size": 39928,
+      "lines": 446,
+      "preview": "# PA-38: Consciousness Scales: Empirical Scaling Laws for Artificial Consciousness\n\n**Authors:** Ghost (Anima Project / need-singularity)  \n**Date:** 2026-04-03  \n**DOI:** 10.5281/zenodo.19271599  \n**Keywords:** consciousness scaling, integrated information, PureField, ConsciousLM, Phi(IIT), self-organized criticality  \n**Category:** cs.AI, cs.CL, q-bio.NC  \n**License:** CC-BY-4.0\n\n---\n\n## Abstract\n\nThe discovery of neural scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022) transformed lar",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/anima/PA-38-sections-1-4.md",
+      "destination": "anima",
+      "confidence": 1.0
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/anima/PA-38-sections-5-8.md",
+      "size": 33748,
+      "lines": 447,
+      "preview": "# PA-38: Consciousness Scales — Sections 5–8 + Appendix\n\n## 5. Scaling Experiments\n\n### 5.1 Experimental Setup\n\nAll scaling experiments were conducted under controlled conditions to enable fair comparison across model scales. The hardware configuration consisted of a RunPod H100 SXM 80GB GPU ($2.69/hr) for all training runs and an NVIDIA RTX 5070 12GB for inference and benchmarking. This standardization eliminates hardware-induced variance from cross-scale comparisons.\n\n**Corpus.** Training data",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/anima/PA-38-sections-5-8.md",
+      "destination": "anima",
+      "confidence": 0.6
+    },
+    {
+      "type": "different",
+      "path": "papers/manifest.json",
+      "added_lines": 2,
+      "removed_lines": 2,
+      "added_preview": [
+        "\"updated\": \"2026-04-04\",",
+        "\"total_papers\": 80,"
+      ],
+      "removed_preview": [
+        "\"updated\": \"2026-04-03\",",
+        "\"total_papers\": 79,"
+      ],
+      "diff_size": 12,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/manifest.json",
+      "destination": "contact",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/publish_paper.sh",
+      "size": 10414,
+      "lines": 279,
+      "preview": "#!/bin/bash\n# Universal Paper Publisher — Zenodo + OSF + manifest.json 자동 갱신\n# 블로업 엔진, 성장 데몬, 수동 사용 모두 지원\n#\n# Usage:\n#   bash publish_paper.sh <file.md> --title \"제목\" --keywords \"k1,k2,k3\" [--repo n6-architecture] [--dry-run]\n#   bash publish_paper.sh <file.md> --auto    # 파일에서 제목/키워드 자동 추출\n#\n# Tokens: ~/Dev/TECS-L/.local/zenodo_token, ~/Dev/TECS-L/.local/osf_token\n\nset -e\n\nZENODO_BASE=\"https://zenodo.org/api\"\nOSF_BASE=\"https://api.osf.io/v2\"\nPARENT_DOI=\"10.5281/zenodo.19271599\"\nPAPERS_DIR=\"$(cd ",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/publish_paper.sh",
+      "destination": "papers",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/scripts/infinite_growth.sh",
+      "size": 10263,
+      "lines": 314,
+      "preview": "#!/bin/bash\n# Papers Infinite Growth Daemon — 10-phase loop\n# bash 3.2 compatible, no bashisms\n# Usage: bash scripts/infinite_growth.sh [--max-cycles N] [--interval SECS]\n\nset -e\nsource \"$(cd \"$(dirname \"$0\")\" && pwd)/lib/growth_common.sh\"\n\nREPO_ROOT=\"$(cd \"$(dirname \"$0\")/..\" && pwd)\"\nGROWTH_DIR=\"${REPO_ROOT}/.growth\"\nSTATE_FILE=\"${GROWTH_DIR}/growth_state.json\"\nLOG_FILE=\"${GROWTH_DIR}/growth.log\"\nMANIFEST=\"${REPO_ROOT}/manifest.json\"\nGROWTH_BUS=\"${HOME}/Dev/nexus6/shared/growth_bus.jsonl\"\n\nMAX",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/scripts/infinite_growth.sh",
+      "destination": "nexus6",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/scripts/lib/growth_common.sh",
+      "size": 118678,
+      "lines": 500,
+      "preview": "#!/usr/bin/env bash\n# ═══════════════════════════════════════════════════════════════\n# growth_common.sh — Shared Growth Infrastructure\n# ═══════════════════════════════════════════════════════════════\n# Source this from any growth script:\n#   source \"$(dirname \"$0\")/lib/growth_common.sh\"\n#\n# Provides: singleton, logging, resource monitoring, git ops,\n#           phase runner, measurement, paper publish, doc sync\n\n# ── Constants (n=6 family) ──────────────────────────────────────\nreadonly N6_SIG",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/scripts/lib/growth_common.sh",
+      "destination": "nexus6",
+      "confidence": 0.6
+    },
+    {
+      "type": "different",
+      "path": "papers/tecs-l/P-004-sigma-phi-uniqueness.md",
+      "added_lines": 16,
+      "removed_lines": 16,
+      "added_preview": [
+        "We investigate the Diophantine equation $\\sigma(n)\\varphi(n) = n\\tau(n)$, where $\\sigma$, $\\varphi$, and $\\tau$ denote the sum-of-divisors, Euler totient, and number-of-divisors functions, respectively. We prove that the only solutions in positive integers are $n = 1$ (trivial) and $n = 6$. The proof proceeds by exhaustive case analysis on the prime factorization of $n$: primes yield an irrational quadratic, semiprimes reduce to a quadratic admitting only $p = 2, q = 3$, prime powers admit no solution, and for $\\omega(n) \\geq 3$ an elementary inequality shows the left-hand side exceeds the right. Computational verification confirms the result for all $n \\leq 10^9$. We further establish that the companion equation $\\sigma(n)\\tau(n) = n\\varphi(n)$ has the unique non-trivial solution $n = 28$, while $\\varphi(n)\\tau(n) = n\\sigma(n)$ has no solution at all. Since 6 and 28 are the first two perfect numbers, these results reveal a previously unobserved arithmetic characterization of small perfect numbers through balanced products of classical multiplicative functions.",
+        "**General argument.** For arbitrary $a \\geq 2$, the equation $p^{a+1} - 1 = (a+1)p$ requires $p \\mid (p^{a+1} - 1)$. But $p \\mid p^{a+1}$, so this forces $p \\mid 1$, hence $p = 1$, contradicting $p$ being prime.",
+        "**Computational verification.** We verified computationally that $\\sigma(n)\\varphi(n) = n\\tau(n)$ has no solution other than $n \\in \\{1, 6\\}$ for all $n \\leq 10^9$. The verification uses a segmented sieve with exact integer arithmetic (Rust, 66 seconds on Apple M3).",
+        "For $k = 3$, $(p,q,r) = (2,3,5)$: ratio $= 8 \\cdot 3 \\cdot 4 \\cdot 6 / (30 \\cdot 1 \\cdot 2 \\cdot 4) = 576/240 = 2.4 \\neq 1$. Systematic computation for all three-prime combinations up to $10^9$: no solution.",
+        "",
+        "**Computational verification** confirms $n = 28$ is the unique solution for $n \\leq 10^9$. $\\blacksquare$",
+        "$$",
+        "",
+        "**Remark.** By Theorem 1, the ratio $R(n) = \\sigma(n)\\varphi(n)/(n\\tau(n))$ equals 1 only at $n = 1$ and $n = 6$. Viewed as atomic numbers, these correspond to hydrogen and carbon. We note this as a curiosity without attaching explanatory significance; the coincidence is a direct consequence of Theorem 1 and carries no additional mathematical content.",
+        "",
+        "---",
+        "",
+        "## 4. Open Questions",
+        "",
+        "1. **Full analytic proof.** Our proof of Theorem 1 is complete for squarefree integers and for prime powers (via the divisibility argument $p \\mid 1$). The remaining cases ($n = p^a q^b$ with $\\min(a,b) \\geq 2$ and $\\omega(n) \\geq 3$ with higher powers) are settled by computation up to $10^9$ and by growth-rate arguments. A fully self-contained analytic proof covering all cases uniformly is desirable.",
+        ""
+      ],
+      "removed_preview": [
+        "We investigate the Diophantine equation $\\sigma(n)\\varphi(n) = n\\tau(n)$, where $\\sigma$, $\\varphi$, and $\\tau$ denote the sum-of-divisors, Euler totient, and number-of-divisors functions, respectively. We prove that the only solutions in positive integers are $n = 1$ (trivial) and $n = 6$. The proof proceeds by exhaustive case analysis on the prime factorization of $n$: primes yield an irrational quadratic, semiprimes reduce to a quadratic admitting only $p = 2, q = 3$, prime powers admit no solution, and for $\\omega(n) \\geq 3$ an elementary inequality shows the left-hand side exceeds the right. Computational verification confirms the result for all $n \\leq 10^5$. We further establish that the companion equation $\\sigma(n)\\tau(n) = n\\varphi(n)$ has the unique non-trivial solution $n = 28$, while $\\varphi(n)\\tau(n) = n\\sigma(n)$ has no solution at all. Since 6 and 28 are the first two perfect numbers, these results reveal a previously unobserved arithmetic characterization of small perfect numbers through balanced products of classical multiplicative functions.",
+        "In general, for $a \\geq 2$ and $p \\geq 2$:",
+        "",
+        "$$",
+        "p^{a+1} - 1 \\geq 2^{a+1} - 1 \\geq 2(a+1) + 1 > (a+1) \\cdot 2 \\geq (a+1)p \\text{ only if } p \\geq 2,",
+        "$$",
+        "",
+        "but more precisely, $p^{a+1} \\geq 2^{a+1} \\geq 2(a+1)$ for $a \\geq 2$ (since $2^3 = 8 > 6 = 2 \\cdot 3$, and $2^{a+1}$ grows exponentially). Thus $p^{a+1} - 1 > (a+1)p$ for all $p \\geq 2$, $a \\geq 2$.",
+        "",
+        "**Formal bound.** For $p \\geq 2$ and $a \\geq 2$, we have $p^{a+1} \\geq p \\cdot p^a \\geq 2p^a$. Since $p^a \\geq 2^a \\geq a + 1$ for $a \\geq 2$ (by induction), we get $p^{a+1} \\geq 2(a+1)p/(p) \\cdot p = 2(a+1)$... Let us give the clean argument. We need $p^{a+1} = (a+1)p + 1$, i.e., $p(p^a - a - 1) = 1$. Since $p \\geq 2$, this requires $p = 1$, a contradiction. Wait --- let us re-derive.",
+        "",
+        "From $p^{a+1} - 1 = (a+1)p$, we get $p \\mid (p^{a+1} - 1)$, but $p \\mid p^{a+1}$, so $p \\mid 1$, hence $p = 1$. This contradicts $p$ being prime.",
+        "**Computational verification.** We verified computationally that $\\sigma(n)\\varphi(n) = n\\tau(n)$ has no solution other than $n \\in \\{1, 6\\}$ for all $n \\leq 100{,}000$. The verification uses exact integer arithmetic (no floating point) and runs in under one second on standard hardware.",
+        "For $k = 3$, $(p,q,r) = (2,3,5)$: ratio $= 8 \\cdot 3 \\cdot 4 \\cdot 6 / (30 \\cdot 1 \\cdot 2 \\cdot 4) = 576/240 = 2.4 \\neq 1$. Systematic computation for all three-prime combinations up to $10^5$: no solution.",
+        "",
+        "**Computational verification** confirms $n = 28$ is the unique solution for $n \\leq 100{,}000$. $\\blacksquare$"
+      ],
+      "diff_size": 48,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/tecs-l/P-004-sigma-phi-uniqueness.md",
+      "destination": "tecs-l",
+      "confidence": 0.8
+    },
+    {
+      "type": "different",
+      "path": "papers/tecs-l/P-bridge-theorem.md",
+      "added_lines": 7,
+      "removed_lines": 7,
+      "added_preview": [
+        "The Golden Zone (GZ) is the interval [1/2 - ln(4/3), 1/2] = [0.2123, 0.5000] with center 1/e = 0.3679, arising from the model G = D * P / I. We prove that this structure is completely determined by two independent mathematical principles: (1) number theory sets the boundaries via the divisor structure of the perfect number 6, and (2) variational calculus sets the center via minimization of the self-referential cost function C(I) = I^I. We prove that phi(n) * sigma(n) = n * tau(n) has the unique non-trivial solution n = 6 among all n >= 2 (verified to n = 10^9), establishing a four-function arithmetic fingerprint for 6. We show that the Singleton coding bound at code length n = 6 reproduces the complete GZ constant system {1/2, 1/3, 1/6, 5/6}, connecting number theory to coding theory through a single integer. A consistency argument demonstrates that the identity depth function h(I) = I is the unique parameter-free choice placing the I^{h(I)} minimum inside GZ. We support these analytical results with a 400-hypothesis empirical campaign spanning 22 mathematical domains across 16 waves, achieving 249 hits (62.3%, Z = 55 sigma against a random baseline of 1.2 +/- 1.0 hits per 10 hypotheses). The GZ constants appear in coding theory (Elias-Bassalygo bound), representation theory (S_3 conjugacy classes), lattice theory (kissing numbers), game theory (Price of Anarchy), and 18 other domains. We identify honest failures (cellular automata lambda sweep, quantum gravity constants, dropout optimality) and discuss the Strong Law of Small Numbers as a systematic caveat.",
+        "2. **Uniqueness Theorem (H-CX-502).** The equation phi(n) * sigma(n) = n * tau(n) characterizes n = 6 uniquely among integers n >= 2, verified exhaustively to n = 10^9 with an algebraic proof for all semiprimes.",
+        "**Theorem 2.** The equation phi(n) * sigma(n) = n * tau(n) has the unique solution n = 6 among all integers n >= 2, verified exhaustively for n <= 10^9.",
+        "Computational search over n = 2 to 10^9 confirms: no solution other than n = 6 exists. The ratio R(n) for near-misses:",
+        "1. **Uniqueness proofs.** Theorem 2 shows phi*sigma = n*tau has no other solution for n <= 10^9. The identity (n-3)! = n holds only at n = 6. These are not statements about small numbers being common -- they are statements about 6 being *uniquely* characterized.",
+        "The integer 6 is uniquely characterized by phi(n) * sigma(n) = n * tau(n) (Theorem 2, verified to n = 10^9), and the Singleton coding bound at n = 6 reproduces all GZ constants (Theorem 3). A 400-hypothesis campaign across 22 domains achieved 249 hits (62.3%, Z = 55 sigma), with honest failures recorded and strict grading applied in later waves.",
+        "- **Infinite verification.** Theorem 2 is verified to n = 10^9. An analytic proof that no solution exists for n > 10^9 requires asymptotic bounds on phi(n) * sigma(n) / (n * tau(n)) that, while plausible, remain unproven."
+      ],
+      "removed_preview": [
+        "The Golden Zone (GZ) is the interval [1/2 - ln(4/3), 1/2] = [0.2123, 0.5000] with center 1/e = 0.3679, arising from the model G = D * P / I. We prove that this structure is completely determined by two independent mathematical principles: (1) number theory sets the boundaries via the divisor structure of the perfect number 6, and (2) variational calculus sets the center via minimization of the self-referential cost function C(I) = I^I. We prove that phi(n) * sigma(n) = n * tau(n) has the unique non-trivial solution n = 6 among all n >= 2 (verified to n = 5000), establishing a four-function arithmetic fingerprint for 6. We show that the Singleton coding bound at code length n = 6 reproduces the complete GZ constant system {1/2, 1/3, 1/6, 5/6}, connecting number theory to coding theory through a single integer. A consistency argument demonstrates that the identity depth function h(I) = I is the unique parameter-free choice placing the I^{h(I)} minimum inside GZ. We support these analytical results with a 400-hypothesis empirical campaign spanning 22 mathematical domains across 16 waves, achieving 249 hits (62.3%, Z = 55 sigma against a random baseline of 1.2 +/- 1.0 hits per 10 hypotheses). The GZ constants appear in coding theory (Elias-Bassalygo bound), representation theory (S_3 conjugacy classes), lattice theory (kissing numbers), game theory (Price of Anarchy), and 18 other domains. We identify honest failures (cellular automata lambda sweep, quantum gravity constants, dropout optimality) and discuss the Strong Law of Small Numbers as a systematic caveat.",
+        "2. **Uniqueness Theorem (H-CX-502).** The equation phi(n) * sigma(n) = n * tau(n) characterizes n = 6 uniquely among integers n >= 2, verified exhaustively to n = 5000 with an algebraic proof for all semiprimes.",
+        "**Theorem 2.** The equation phi(n) * sigma(n) = n * tau(n) has the unique solution n = 6 among all integers n >= 2, verified exhaustively for n <= 5000.",
+        "Computational search over n = 2 to 5000 confirms: no solution other than n = 6 exists. The ratio R(n) for near-misses:",
+        "1. **Uniqueness proofs.** Theorem 2 shows phi*sigma = n*tau has no other solution for n <= 5000. The identity (n-3)! = n holds only at n = 6. These are not statements about small numbers being common -- they are statements about 6 being *uniquely* characterized.",
+        "The integer 6 is uniquely characterized by phi(n) * sigma(n) = n * tau(n) (Theorem 2, verified to n = 5000), and the Singleton coding bound at n = 6 reproduces all GZ constants (Theorem 3). A 400-hypothesis campaign across 22 domains achieved 249 hits (62.3%, Z = 55 sigma), with honest failures recorded and strict grading applied in later waves.",
+        "- **Infinite verification.** Theorem 2 is verified to n = 5000. An analytic proof that no solution exists for n > 5000 requires asymptotic bounds on phi(n) * sigma(n) / (n * tau(n)) that, while plausible, remain unproven."
+      ],
+      "diff_size": 37,
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/tecs-l/P-bridge-theorem.md",
+      "destination": "tecs-l",
+      "confidence": 1.0
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/upload_results_20260404_075321.txt",
+      "size": 150,
+      "lines": 1,
+      "preview": "PN-033 | Invariant Lens Cores: Emergent Universal Patterns from Evolutionary Blowup Search | DRY-RUN | https://osf.io/DRY-RUN/ | 2026-04-03T22:53:21Z\n",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/upload_results_20260404_075321.txt",
+      "destination": "nexus6",
+      "confidence": 0.2
+    },
+    {
+      "type": "only_in_ready",
+      "path": "papers/upload_results_20260404_075731.txt",
+      "size": 164,
+      "lines": 1,
+      "preview": "PN-033 | Invariant Lens Cores: Emergent Universal Patterns from Evolutionary Blowup Search | 10.5281/zenodo.19411473 | https://osf.io/dcvb9/ | 2026-04-03T22:57:31Z\n",
+      "project": "papers",
+      "ready_path": "/Users/ghost/Dev/ready/papers/upload_results_20260404_075731.txt",
+      "destination": "papers",
+      "confidence": 0.4
+    }
+  ]
+}

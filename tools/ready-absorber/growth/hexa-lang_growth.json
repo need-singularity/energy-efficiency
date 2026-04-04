@@ -1,0 +1,151 @@
+{
+  "project": "hexa-lang",
+  "timestamp": "2026-04-04T17:07:32.652742",
+  "events_count": 12,
+  "events": [
+    {
+      "timestamp": "2026-04-04T17:07:32.636770",
+      "source_project": "hexa-lang",
+      "destination": "anima",
+      "path": "docs/book/README.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 50.0,
+      "n6_exact_ratio": 1.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.637269",
+      "source_project": "hexa-lang",
+      "destination": "tecs-l",
+      "path": "docs/book/ch02-n6-math.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 31.25,
+      "n6_exact_ratio": 0.625
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.637875",
+      "source_project": "hexa-lang",
+      "destination": "n6-architecture",
+      "path": "docs/book/ch04-hardware.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 36.36363636363637,
+      "n6_exact_ratio": 0.7272727272727273
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.638367",
+      "source_project": "hexa-lang",
+      "destination": "n6-architecture",
+      "path": "docs/book/ch05-stdlib.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 45.0,
+      "n6_exact_ratio": 0.9
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.638554",
+      "source_project": "hexa-lang",
+      "destination": "tecs-l",
+      "path": "docs/breakthroughs/hexa_lang_bt.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.639653",
+      "source_project": "hexa-lang",
+      "destination": "n6-architecture",
+      "path": "docs/hexa-ir-dse-recheck.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 36.36363636363637,
+      "n6_exact_ratio": 0.7272727272727273
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.640383",
+      "source_project": "hexa-lang",
+      "destination": "n6-architecture",
+      "path": "docs/nexus6-scan-report.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.640974",
+      "source_project": "hexa-lang",
+      "destination": "n6-architecture",
+      "path": "docs/reference.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 43.75,
+      "n6_exact_ratio": 0.875
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.642851",
+      "source_project": "hexa-lang",
+      "destination": "anima",
+      "path": "examples/consciousness_laws.hexa",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 16.666666666666664,
+      "n6_exact_ratio": 0.3333333333333333
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.643448",
+      "source_project": "hexa-lang",
+      "destination": "nexus6",
+      "path": "examples/discovery_engine.hexa",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 35.0,
+      "n6_exact_ratio": 0.7
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.650530",
+      "source_project": "hexa-lang",
+      "destination": "nexus6",
+      "path": "src/nanbox.rs",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 15.0,
+      "n6_exact_ratio": 0.3
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.651602",
+      "source_project": "hexa-lang",
+      "destination": "nexus6",
+      "path": "src/std_nexus6.rs",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    }
+  ]
+}

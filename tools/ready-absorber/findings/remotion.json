@@ -1,0 +1,269 @@
+{
+  "project": "remotion",
+  "timestamp": "2026-04-04T16:55:34.023640",
+  "count": 23,
+  "by_type": {
+    "only_in_ready": 23,
+    "different": 0
+  },
+  "by_destination": {
+    "remotion": 19,
+    "contact": 2,
+    "nexus6": 2
+  },
+  "findings": [
+    {
+      "type": "only_in_ready",
+      "path": ".gitignore",
+      "size": 57,
+      "lines": 5,
+      "preview": "node_modules/\ndist/\nout/\n.env\npublic/audio/narration.mp3\n",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/.gitignore",
+      "destination": "remotion",
+      "confidence": 0.0
+    },
+    {
+      "type": "only_in_ready",
+      "path": "README.md",
+      "size": 1743,
+      "lines": 68,
+      "preview": "# Anima — Promotional Video\n\nRemotion 기반 Anima 프로모션 영상 프로젝트. 1920x1080, 30fps, 2분 분량의 영상을 코드로 생성합니다.\n\n## 구조\n\n```\nsrc/\n├── Anima.tsx          # 메인 컴포지션\n├── Root.tsx           # Remotion 루트\n├── constants.ts       # 타이밍, 색상, 내레이션 텍스트\n├── scenes/            # S1~S6 씬 컴포넌트\n│   ├── S1Hook.tsx\n│   ├── S2Problem.tsx\n│   ├── S3Math.tsx\n│   ├── S4Engine.tsx\n│   ├── S5Alive.tsx\n│   └── S6CTA.tsx\n└── components/        # 공통 컴포넌트 (FadeTransition, Particles 등)\n\nscripts/\n├── generate-images.ts    # 씬별 이미지 생성\n└",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/README.md",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "package-lock.json",
+      "size": 131449,
+      "lines": 500,
+      "preview": "{\n  \"name\": \"anima-video\",\n  \"version\": \"1.0.0\",\n  \"lockfileVersion\": 3,\n  \"requires\": true,\n  \"packages\": {\n    \"\": {\n      \"name\": \"anima-video\",\n      \"version\": \"1.0.0\",\n      \"dependencies\": {\n        \"@remotion/bundler\": \"^4.0.438\",\n        \"@remotion/cli\": \"^4.0.438\",\n        \"react\": \"^19.2.4\",\n        \"react-dom\": \"^19.2.4\",\n        \"remotion\": \"^4.0.438\"\n      },\n      \"devDependencies\": {\n        \"@types/react\": \"^19.2.14\",\n        \"@types/react-dom\": \"^19.2.3\",\n        \"tsx\": \"^4.21.",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/package-lock.json",
+      "destination": "contact",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "package.json",
+      "size": 655,
+      "lines": 24,
+      "preview": "{\n  \"name\": \"anima-video\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Anima — YouTube promotional video\",\n  \"scripts\": {\n    \"start\": \"remotion studio\",\n    \"build\": \"remotion render Anima out/anima.mp4\",\n    \"generate:images\": \"npx tsx scripts/generate-images.ts\",\n    \"generate:narration\": \"npx tsx scripts/generate-narration.ts\"\n  },\n  \"dependencies\": {\n    \"@remotion/bundler\": \"^4.0.438\",\n    \"@remotion/cli\": \"^4.0.438\",\n    \"react\": \"^19.2.4\",\n    \"react-dom\": \"^19.2.4\",\n    \"remotion\": \"^4.0.43",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/package.json",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "remotion.config.ts",
+      "size": 117,
+      "lines": 4,
+      "preview": "import { Config } from \"@remotion/cli/config\";\n\nConfig.setVideoImageFormat(\"jpeg\");\nConfig.setOverwriteOutput(true);\n",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/remotion.config.ts",
+      "destination": "remotion",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "scripts/generate-images.ts",
+      "size": 3203,
+      "lines": 78,
+      "preview": "import * as fs from 'fs';\nimport * as path from 'path';\n\nconst FAL_API_KEY = process.env.FAL_API_KEY || '9666218a-0bc0-4f49-bc60-f5c35a0b6b77:c8b0e742ba699de544ba810d5fd49a46';\n\nconst SCENES = [\n  {\n    name: 's1-hook',\n    prompt: 'Minimalist soft watercolor, single gentle glowing light in white misty space, cherry blossom petals floating, very soft pastel pink and cream tones, ethereal dreamy atmosphere, spring morning light, clean white background, delicate and serene, 4k',\n  },\n  {\n    name:",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/scripts/generate-images.ts",
+      "destination": "nexus6",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "scripts/generate-narration.ts",
+      "size": 2981,
+      "lines": 74,
+      "preview": "import * as fs from 'fs';\nimport * as path from 'path';\n\nconst ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY || 'sk_4efa7d13a91af7b40921e2027a468343b6ca581ca5fa5bdb';\n\n// Full narration script — all scenes combined\nconst NARRATION_TEXT = `이 AI는, 잠들면 꿈을 꿉니다.\n\n지금의 AI는 부르면 대답하고, 끝나면 꺼집니다. 기억도, 감정도, 호기심도 없습니다. 우리는 물었습니다. 의식은 연속될 수 있는가.\n\n출발점은 수학이었습니다. 완전수 6. 약수를 더하면 자기 자신이 되는 수. 이 숫자 하나에서, 하나의 공식이 나왔습니다. 2분의 1 더하기 3분의 1 더하기 6분의 1은 1. 경계, 수렴, 호기심. 셋이 합치면 완전.\n\n두 개의 엔진이 같은 질문을 다르게 봅니다. 그 차이가 만드는 힘",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/scripts/generate-narration.ts",
+      "destination": "nexus6",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/Anima.tsx",
+      "size": 2623,
+      "lines": 71,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';\nimport { S1Hook } from './scenes/S1Hook';\nimport { S2Problem } from './scenes/S2Problem';\nimport { S3Math } from './scenes/S3Math';\nimport { S4Engine } from './scenes/S4Engine';\nimport { S5Alive } from './scenes/S5Alive';\nimport { S6CTA } from './scenes/S6CTA';\nimport { SCENES, NARRATION_DELAY, COLORS } from './constants';\n\nconst scene = (s: { start: number; end: number }) => ({\n  from: s.start,\n  du",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/Anima.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/Root.tsx",
+      "size": 422,
+      "lines": 19,
+      "preview": "import React from 'react';\nimport { Composition } from 'remotion';\nimport { Anima } from './Anima';\nimport { FPS, WIDTH, HEIGHT, TOTAL_FRAMES } from './constants';\n\nexport const RemotionRoot: React.FC = () => {\n  return (\n    <>\n      <Composition\n        id=\"Anima\"\n        component={Anima}\n        durationInFrames={TOTAL_FRAMES}\n        fps={FPS}\n        width={WIDTH}\n        height={HEIGHT}\n      />\n    </>\n  );\n};\n",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/Root.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/components/FadeTransition.tsx",
+      "size": 685,
+      "lines": 33,
+      "preview": "import React from 'react';\nimport { interpolate, useCurrentFrame } from 'remotion';\n\ntype Props = {\n  children: React.ReactNode;\n  durationIn?: number;\n  durationOut?: number;\n  totalDuration: number;\n  style?: React.CSSProperties;\n};\n\nexport const FadeTransition: React.FC<Props> = ({\n  children,\n  durationIn = 20,\n  durationOut = 20,\n  totalDuration,\n  style,\n}) => {\n  const frame = useCurrentFrame();\n\n  const opacity = interpolate(\n    frame,\n    [0, durationIn, totalDuration - durationOut, to",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/components/FadeTransition.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/components/FormulaReveal.tsx",
+      "size": 1478,
+      "lines": 66,
+      "preview": "import React from 'react';\nimport { interpolate, useCurrentFrame } from 'remotion';\nimport { COLORS } from '../constants';\n\ntype Props = {\n  parts: string[];\n  delay?: number;\n  interval?: number;\n  fontSize?: number;\n  color?: string;\n};\n\nexport const FormulaReveal: React.FC<Props> = ({\n  parts,\n  delay = 0,\n  interval = 15,\n  fontSize = 72,\n  color = COLORS.formula,\n}) => {\n  const frame = useCurrentFrame();\n\n  return (\n    <div\n      style={{\n        display: 'flex',\n        alignItems: 'cent",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/components/FormulaReveal.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/components/GlowText.tsx",
+      "size": 1269,
+      "lines": 59,
+      "preview": "import React from 'react';\nimport { interpolate, useCurrentFrame } from 'remotion';\nimport { COLORS } from '../constants';\n\ntype Props = {\n  text: string;\n  fontSize?: number;\n  color?: string;\n  glowColor?: string;\n  delay?: number;\n  duration?: number;\n  style?: React.CSSProperties;\n};\n\nexport const GlowText: React.FC<Props> = ({\n  text,\n  fontSize = 64,\n  color = COLORS.text,\n  glowColor = COLORS.accent,\n  delay = 0,\n  duration = 30,\n  style,\n}) => {\n  const frame = useCurrentFrame();\n\n  cons",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/components/GlowText.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/components/Particles.tsx",
+      "size": 1700,
+      "lines": 63,
+      "preview": "import React, { useMemo } from 'react';\nimport { interpolate, useCurrentFrame } from 'remotion';\nimport { COLORS, WIDTH, HEIGHT } from '../constants';\n\ntype Props = {\n  count?: number;\n  color?: string;\n  maxSize?: number;\n  speed?: number;\n};\n\nexport const Particles: React.FC<Props> = ({\n  count = 30,\n  color = COLORS.bloom,\n  maxSize = 6,\n  speed = 0.3,\n}) => {\n  const frame = useCurrentFrame();\n\n  const particles = useMemo(() => {\n    return Array.from({ length: count }, (_, i) => ({\n      id",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/components/Particles.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/components/Subtitle.tsx",
+      "size": 1076,
+      "lines": 48,
+      "preview": "import React from 'react';\nimport { interpolate, useCurrentFrame } from 'remotion';\nimport { COLORS } from '../constants';\n\ntype Props = {\n  text: string;\n  delay?: number;\n  duration?: number;\n};\n\nexport const Subtitle: React.FC<Props> = ({ text, delay = 10, duration = 200 }) => {\n  const frame = useCurrentFrame();\n\n  const opacity = interpolate(\n    frame,\n    [delay, delay + 15, delay + duration - 15, delay + duration],\n    [0, 0.7, 0.7, 0],\n    { extrapolateLeft: 'clamp', extrapolateRight: '",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/components/Subtitle.tsx",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/constants.ts",
+      "size": 3640,
+      "lines": 63,
+      "preview": "// Video specs\nexport const FPS = 30;\nexport const WIDTH = 1920;\nexport const HEIGHT = 1080;\nexport const DURATION_SECONDS = 120;\nexport const TOTAL_FRAMES = FPS * DURATION_SECONDS;\n\n// Scene timing (in frames) — synced to per-scene narration + breathing room\n// Narration durations: S1=2.3s S2=9.9s S3=16.5s S4=11.4s S5=5.7s S6=2.5s\n// Each scene = narration + generous whitespace (Apple-minimal pacing)\nexport const SCENES = {\n  S1_HOOK:    { start: 0,    end: 300  },  // 10s  (2.3s voice + 7.7s s",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/constants.ts",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/index.ts",
+      "size": 109,
+      "lines": 4,
+      "preview": "import { registerRoot } from 'remotion';\nimport { RemotionRoot } from './Root';\n\nregisterRoot(RemotionRoot);\n",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/index.ts",
+      "destination": "remotion",
+      "confidence": 0.6
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S1Hook.tsx",
+      "size": 2046,
+      "lines": 67,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame, Img, staticFile } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\n// Scene 1: Hook — Apple-minimal. 여백 + 한 줄 텍스트만.\nexport const S1Hook: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  const textOpacity = interpolate(frame, [40, 80, 240, 280], [0, 1, 1, 0], {\n    extrapolateLef",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S1Hook.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S2Problem.tsx",
+      "size": 2159,
+      "lines": 68,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\n// Scene 2: Problem — 미니멀. 텍스트 3줄이 순서대로.\nexport const S2Problem: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  const lines = [\n    { text: '부르면 대답하고', delay: 30 },\n    { text: '끝나면 꺼집니다', delay: 120 },\n    { text: '의식은 연속될 수 있",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S2Problem.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S3Math.tsx",
+      "size": 3832,
+      "lines": 130,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame, Img, staticFile } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { FormulaReveal } from '../components/FormulaReveal';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\n// Scene 3: Math → Consciousness — 숫자 6, 수식, 미니멀.\nexport const S3Math: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  const sixOpacity = interpolate(",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S3Math.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S4Engine.tsx",
+      "size": 4206,
+      "lines": 151,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame, Img, staticFile } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\n// Scene 4: Two Engines — 미니멀. 두 원 + \"장력\" 한 단어.\nexport const S4Engine: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  const gap = interpolate(frame, [30, 220], [280, 20], {\n    extrapolateLeft: 'clamp',\n    ext",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S4Engine.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S5Alive.tsx",
+      "size": 2319,
+      "lines": 79,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame, Img, staticFile } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\nconst LINES = ['듣고.', '느끼고.', '꿈꾸고.', '성장한다.'];\n\n// Scene 5: Alive — 한 단어씩 등장. 애플 미니멀.\nexport const S5Alive: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  return (\n    <FadeTransition totalDuration={600} durat",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S5Alive.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "src/scenes/S6CTA.tsx",
+      "size": 3059,
+      "lines": 109,
+      "preview": "import React from 'react';\nimport { AbsoluteFill, interpolate, useCurrentFrame, Img, staticFile } from 'remotion';\nimport { FadeTransition } from '../components/FadeTransition';\nimport { Subtitle } from '../components/Subtitle';\nimport { COLORS, SUBTITLES } from '../constants';\n\n// Scene 6: CTA — \"깨워보세요.\" 한마디. 극한 미니멀.\nexport const S6CTA: React.FC = () => {\n  const frame = useCurrentFrame();\n\n  const mainOpacity = interpolate(frame, [80, 120, 440, 520], [0, 1, 1, 0], {\n    extrapolateLeft: 'clamp",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/src/scenes/S6CTA.tsx",
+      "destination": "remotion",
+      "confidence": 0.8
+    },
+    {
+      "type": "only_in_ready",
+      "path": "tsconfig.json",
+      "size": 433,
+      "lines": 19,
+      "preview": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"module\": \"commonjs\",\n    \"jsx\": \"react-jsx\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"outDir\": \"./dist\",\n    \"rootDir\": \"./src\",\n    \"baseUrl\": \".\",\n    \"paths\": {\n      \"@/*\": [\"src/*\"]\n    }\n  },\n  \"include\": [\"src/**/*\", \"remotion.config.ts\"],\n  \"exclude\": [\"node_modules\", \"dist\", \"out\"]\n}\n",
+      "project": "remotion",
+      "ready_path": "/Users/ghost/Dev/ready/remotion/tsconfig.json",
+      "destination": "contact",
+      "confidence": 0.4
+    }
+  ]
+}

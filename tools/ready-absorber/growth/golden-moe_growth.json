@@ -1,0 +1,19 @@
+{
+  "project": "golden-moe",
+  "timestamp": "2026-04-04T17:07:32.634898",
+  "events_count": 1,
+  "events": [
+    {
+      "timestamp": "2026-04-04T17:07:32.633640",
+      "source_project": "golden-moe",
+      "destination": "tecs-l",
+      "path": "docs/H-GM-bridge-expert-count.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    }
+  ]
+}

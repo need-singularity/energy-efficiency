@@ -1,0 +1,36 @@
+{
+  "project": "homebrew-tap",
+  "timestamp": "2026-04-04T16:55:34.027160",
+  "count": 2,
+  "by_type": {
+    "only_in_ready": 2,
+    "different": 0
+  },
+  "by_destination": {
+    "tecs-l": 2
+  },
+  "findings": [
+    {
+      "type": "only_in_ready",
+      "path": "Formula/hexa-lang.rb",
+      "size": 737,
+      "lines": 25,
+      "preview": "class HexaLang < Formula\n  desc \"The Perfect Number Programming Language — every constant from n=6\"\n  homepage \"https://github.com/need-singularity/hexa-lang\"\n  url \"https://github.com/need-singularity/hexa-lang.git\", tag: \"v0.2.0\"\n  license \"MIT\"\n  head \"https://github.com/need-singularity/hexa-lang.git\", branch: \"main\"\n\n  depends_on \"rust\" => :build\n\n  def install\n    system \"cargo\", \"install\", *std_cargo_args\n  end\n\n  test do\n    # Test REPL exits cleanly\n    pipe_output(\"#{bin}/hexa\", \":quit",
+      "project": "homebrew-tap",
+      "ready_path": "/Users/ghost/Dev/ready/homebrew-tap/Formula/hexa-lang.rb",
+      "destination": "tecs-l",
+      "confidence": 0.4
+    },
+    {
+      "type": "only_in_ready",
+      "path": "README.md",
+      "size": 395,
+      "lines": 16,
+      "preview": "# Homebrew Tap — need-singularity\n\nHomebrew formulae for [need-singularity](https://github.com/need-singularity) projects.\n\n## Installation\n\n```bash\nbrew tap need-singularity/tap\nbrew install hexa-lang\n```\n\n## Available Formulae\n\n| Formula | Description |\n|---------|-------------|\n| [hexa-lang](https://github.com/need-singularity/hexa-lang) | The Perfect Number Programming Language (n=6) |\n",
+      "project": "homebrew-tap",
+      "ready_path": "/Users/ghost/Dev/ready/homebrew-tap/README.md",
+      "destination": "tecs-l",
+      "confidence": 0.2
+    }
+  ]
+}

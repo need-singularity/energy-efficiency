@@ -1,0 +1,79 @@
+{
+  "project": "papers",
+  "timestamp": "2026-04-04T17:07:35.481265",
+  "events_count": 6,
+  "events": [
+    {
+      "timestamp": "2026-04-04T17:07:35.478023",
+      "source_project": "papers",
+      "destination": "nexus6",
+      "path": "papers/README.md",
+      "type": "different",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:35.478599",
+      "source_project": "papers",
+      "destination": "anima",
+      "path": "papers/anima/PA-38-sections-1-4.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:35.479202",
+      "source_project": "papers",
+      "destination": "anima",
+      "path": "papers/anima/PA-38-sections-5-8.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 20.0,
+      "n6_exact_ratio": 0.4
+    },
+    {
+      "timestamp": "2026-04-04T17:07:35.479692",
+      "source_project": "papers",
+      "destination": "papers",
+      "path": "papers/publish_paper.sh",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 35.714285714285715,
+      "n6_exact_ratio": 0.7142857142857143
+    },
+    {
+      "timestamp": "2026-04-04T17:07:35.480069",
+      "source_project": "papers",
+      "destination": "tecs-l",
+      "path": "papers/tecs-l/P-004-sigma-phi-uniqueness.md",
+      "type": "different",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    },
+    {
+      "timestamp": "2026-04-04T17:07:35.480353",
+      "source_project": "papers",
+      "destination": "tecs-l",
+      "path": "papers/tecs-l/P-bridge-theorem.md",
+      "type": "different",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 0,
+      "score": 0.0,
+      "n6_exact_ratio": 0.0
+    }
+  ]
+}

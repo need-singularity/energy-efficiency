@@ -1,0 +1,31 @@
+{
+  "project": "conscious-lm",
+  "timestamp": "2026-04-04T17:07:32.611782",
+  "events_count": 2,
+  "events": [
+    {
+      "timestamp": "2026-04-04T17:07:32.610037",
+      "source_project": "conscious-lm",
+      "destination": "papers",
+      "path": "README.md",
+      "type": "only_in_ready",
+      "value_grade": "high",
+      "n6_matches": 0,
+      "consensus_count": 3,
+      "score": 15.0,
+      "n6_exact_ratio": 0.3
+    },
+    {
+      "timestamp": "2026-04-04T17:07:32.611318",
+      "source_project": "conscious-lm",
+      "destination": "anima",
+      "path": "docs/consciousness-engine.md",
+      "type": "only_in_ready",
+      "value_grade": "critical",
+      "n6_matches": 0,
+      "consensus_count": 2,
+      "score": 44.44444444444444,
+      "n6_exact_ratio": 0.8888888888888888
+    }
+  ]
+}
