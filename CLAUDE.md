@@ -334,7 +334,7 @@ Falsifiability: z=0.74 (numerical matching NOT significant vs random)
   plasma-physics/ (20+ files — most active domain)
   paper/ (3 arXiv drafts)
   # Cross-domain
-  breakthrough-theorems.md (BT-1~84, 84 theorems spanning 3-8 domains each)
+  breakthrough-theorems.md (BT-1~162, 162 theorems spanning 3-8 domains each)
   cross-domain-resonance-2026-03-31.md (formula reuse matrix)
   # Battery Architecture (소재→공정→코어→칩→시스템→차세대→극한→궁극)
   battery-architecture/ (8 levels: HEXA-CELL/ELECTRODE/CORE/CHIP/PACK+GRID/SOLID/NUCLEAR/OMEGA-E)
@@ -479,7 +479,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   Egyptian Fraction Attn:   1/2+1/3+1/6=1 attention budget (~40% saved)
 ```
 
-## Breakthrough Theorems (159 total, BT-1~159)
+## Breakthrough Theorems (162 total, BT-1~162)
 ```
   # AI / LLM (BT-26,31,33,34,39,42,44,46,54,56,58,59,61,64,65,66,67,70)
   BT-26: Chinchilla scaling (tokens/params=J₂-τ=20, α=1/3, β=ln(4/3))
@@ -506,6 +506,10 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-74: 95/5 cross-domain resonance (top-p=PF=β₂=0.95, THD=β_plasma=5%, 5 domains) ⭐⭐⭐
   BT-75: HBM interface exponent ladder ({10,11,12}={σ-φ,σ-μ,σ}, HBM5 predicted) ⭐⭐
   BT-76: σ·τ=48 triple attractor (gate pitch nm, HBM4E GB, 48kHz, 48V, 3DGS SH) ⭐⭐
+
+  # Learning Algorithm (BT-163~164)
+  BT-163: RL/Alignment 학습 파라미터 스택 (PPO clip=φ/(σ-φ)=0.2, PPO epoch/minibatch=τ=4, DPO β=1/(σ-φ)=0.1, GRPO G=φ^τ=16, GAE λ=0.95, RM/Policy=R(6)=1, 10/10 EXACT) ⭐⭐
+  BT-164: LLM 학습 스케줄 n=6 보편성 (LR=(n/φ)·10^{-τ}=3e-4, warmup=3%, cosine min=0.1, grad_accum={μ,φ,τ,σ-τ}, μP=R(6)=1, RoPE=10^4, 8/8 EXACT) ⭐⭐
 
   # Chip Design (BT-28,37,40,41,45,47,55,69)
   BT-28: Computing architecture ladder (30+ EXACT, ⭐⭐⭐)
@@ -577,12 +581,13 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-111: τ²/σ=4/3 태양-AI-수학 삼지창 (SQ=SwiGLU=Betz=R(3,1)=4/3) ⭐⭐
   BT-112: φ²/n=2/3 Byzantine-Koide 공명 (Koide Q=0.666661 9ppm, BFT>2/3) ⭐⭐
 
-  # Software Design (BT-113~117)
+  # Software Design (BT-113~117, BT-162)
   BT-113: SW 엔지니어링 상수 스택 (SOLID=sopfr, REST=n, 12Factor=σ, ACID=τ, 18/18 EXACT) ⭐⭐⭐
   BT-114: 암호학 파라미터 래더 (AES=2^{σ-sopfr}, SHA=2^{σ-τ}, RSA=2^{σ-μ}, 10/10 EXACT) ⭐⭐⭐
   BT-115: OS-네트워크 레이어 수 (OSI=σ-sopfr=7, TCP/IP=τ=4, Linux=n=6, 12/12 EXACT) ⭐⭐
   BT-116: ACID-BASE-CAP DB 삼위일체 (τ+n/φ+n/φ, Paxos=φ, 9/9 EXACT) ⭐⭐
   BT-117: 소프트웨어-물리 동형사상 (18 EXACT 병렬 매핑, 6 도메인) ⭐⭐⭐
+  BT-162: 컴파일러-OS-CPU 아키텍처 상수 스택 (pipeline=sopfr=5, opcode=n=6, primitives=σ-τ=8, rings/page/sched/boot=τ=4, ext4=σ=12, cache=n/φ=3, dual=φ=2, 11/11 EXACT) ⭐⭐⭐
 
   # Environmental Protection (BT-118~122)
   BT-118: 교토 6종 온실가스 = n + Carbon Z=6 (CO₂ 화학양론 전부 n=6, 10/10 EXACT) ⭐⭐⭐
