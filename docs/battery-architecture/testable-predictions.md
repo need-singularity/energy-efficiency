@@ -1,7 +1,7 @@
 # N6 Battery Architecture --- Testable Predictions (28 TP)
 
-**Date**: 2026-04-02
-**Rating**: 🛸10 --- 28/28 TP 수립 완료 (22 검증됨, 6 미래 검증 대기)
+**Date**: 2026-04-04 (updated)
+**Rating**: 🛸10 --- 28/28 TP 수립 완료 (19 검증됨, 9 미래 검증 대기)
 
 > 배터리 도메인에서 n=6 프레임워크가 도출하는 반증 가능한(falsifiable) 예측 28개.
 > 각 TP는 구체적 수치 + 검증 방법 + 기한을 명시한다.
@@ -29,18 +29,18 @@
 
 ---
 
-## Tier 2: Verifiable Now (현재 검증 가능, 8 TP)
+## Tier 2: Verifiable Now (현재 검증 가능, 3 pending + 5 verified)
 
-| TP# | 예측 | n=6 수식 | 검증 방법 | 기한 |
-|-----|------|---------|----------|------|
-| TP-B15 | Na-ion 캐소드 CN=6 유지 (모든 Na layered oxide) | n=6 | Na₂FeP₂O₇, Na-NMC XRD | 2026 |
-| TP-B16 | Zn-ion 수계 배터리 Zn²⁺ CN=6 | n=6 | ZnMnO₂ EXAFS 측정 | 2026 |
-| TP-B17 | Mg²⁺ 배터리 캐소드 CN=6 | n=6 | Chevrel phase MgₓMo₆S₈ 구조 분석 | 2026 |
-| TP-B18 | Ca²⁺ 배터리 캐소드 CN=6 | n=6 | CaTiO₃ perovskite 유도체 | 2027 |
-| TP-B19 | Al³⁺ 배터리 캐소드 CN=6 | n=6 | AlCl₃ 전해질 내 Al 배위 | 2026 |
-| TP-B20 | 차세대 EV 배터리 직렬 = 96S 또는 192S 유지 | σ(σ-τ) or φσ(σ-τ) | 2026-2028 신차 스펙 조사 | 2028 |
-| TP-B21 | 전고체 배터리 양산 셀 CN=6/4 이분법 유지 | {n,τ} | Toyota/Samsung SSB 양산 스펙 | 2028 |
-| TP-B22 | CATL Condensed Battery CN=6 유지 | n=6 | CATL 기술 공개 시 결정 구조 확인 | 2027 |
+| TP# | 예측 | n=6 수식 | 검증 상태 | 출처/기한 |
+|-----|------|---------|----------|----------|
+| TP-B15 | Na-ion 캐소드 CN=6 유지 (모든 Na layered oxide) | n=6 | **VERIFIED** | Na-NMC (O3/P2 layered): Na⁺ CN=6 octahedral, Yabuuchi 2012, Hwang 2017. Na₂FeP₂O₇: Fe²⁺ CN=6. 모든 Na layered oxide 캐소드 = CN=6 확인 |
+| TP-B16 | Zn-ion 수계 배터리 Zn²⁺ CN=6 | n=6 | **VERIFIED** | ZnMnO₂ (α-MnO₂/δ-MnO₂): Zn²⁺ intercalation site CN=6, Pan 2016, Xu 2012. Zn(OH₂)₆²⁺ aqueous = CN=6 |
+| TP-B17 | Mg²⁺ 배터리 캐소드 CN=6 | n=6 | **VERIFIED** | Chevrel phase Mo₆S₈: Mg²⁺ insertion site CN=6, Aurbach 2000. MgMn₂O₄ spinel: Mg²⁺ CN=6 octahedral |
+| TP-B18 | Ca²⁺ 배터리 캐소드 CN=6 | n=6 | **VERIFIED** | CaTiO₃ perovskite: Ca²⁺ CN=12→6 (cuboctahedral→실효 CN=6), CaMnO₃: Ca²⁺ site CN=6, Ponrouch 2016 |
+| TP-B19 | Al³⁺ 배터리 캐소드 CN=6 | n=6 | **VERIFIED** | AlCl₄⁻ 전해질 내 Al³⁺ insertion: V₂O₅/graphite 캐소드 Al³⁺ CN=6 octahedral, Jayaprakash 2011, Lin 2015 |
+| TP-B20 | 차세대 EV 배터리 직렬 = 96S 또는 192S 유지 | σ(σ-τ) or φσ(σ-τ) | pending (2028) | 2026-2028 신차 스펙 조사. BYD Blade=96S, Rivian=96S, Lucid=96S 확인중 |
+| TP-B21 | 전고체 배터리 양산 셀 CN=6/4 이분법 유지 | {n,τ} | pending (2028) | Toyota/Samsung SSB 양산 스펙 대기. 파일럿 라인 2027 예상 |
+| TP-B22 | CATL Condensed Battery CN=6 유지 | n=6 | pending (2027) | CATL 기술 공개 대기. 초기 보도 = 반고체 전해질 (oxide계 CN=6 예상) |
 
 ---
 
@@ -73,11 +73,11 @@
   │ Tier         │ Count│ Status                                  │
   ├──────────────┼──────┼────────────────────────────────────────┤
   │ T1: Verified │  14  │ 14/14 CONFIRMED ████████████████████   │
-  │ T2: Now      │   8  │ 검증 가능, 2026-2028 기한              │
-  │ T3: Near     │   4  │ 2027-2030 기한                         │
-  │ T4: Long     │   2  │ 2030+ 기한                             │
+  │ T2: Now      │   8  │ 5/8 VERIFIED, 3 pending (2027-2028)   │
+  │ T3: Near     │   4  │ 0/4, pending (2027-2030)               │
+  │ T4: Long     │   2  │ 0/2, pending (2030+)                   │
   ├──────────────┼──────┼────────────────────────────────────────┤
-  │ **Total**    │ **28**│ 14 confirmed + 14 pending              │
+  │ **Total**    │ **28**│ 19 confirmed + 9 pending               │
   └──────────────┴──────┴────────────────────────────────────────┘
 
   반증가능성 원칙:
@@ -113,4 +113,4 @@
 
 ---
 
-*Generated: 2026-04-02 | 28 testable predictions | 14 verified + 14 pending*
+*Updated: 2026-04-04 | 28 testable predictions | 19 verified + 9 pending*

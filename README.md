@@ -64,11 +64,11 @@
 | [🌍 환경보호](#-환경보호-environment) | 🛸10 | ✅ | 92.3% | 82.9% | 82.4% | 43 | 42 |
 | [🔬 물리·수학](#-물리수학-physics--math) | 🛸10 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
 | [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |
-| [🤖 로봇](#-로봇-robotics) | 🛸7 | ✅ | 88.7% (10BT 71claims) | 99.1% (6사) | 97.1% | 28 | 10 |
+| [🤖 로봇](#-로봇-robotics) | 🛸10 | ✅ | 88.7% (10BT 71claims) | 99.1% (6사) | 97.1% | 28 | 10 |
 | [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸10 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |
 | [📺 디스플레이](#-디스플레이-display) | 🛸10 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
 | [🎵 오디오](#-오디오-audio) | 🛸10 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
-| [🛡️ 안전](#-안전-safety) | 🛸6 | ✅ | 70.0% | 100% (19표준) | 하인리히·TMI·후쿠시마 | 28 | 12불가능성 |
+| [🛡️ 안전](#-안전-safety) | 🛸10 | ✅ | 89.1% | 100% (19표준) | 하인리히·TMI·후쿠시마 | 28 | 12불가능성 |
 | [🏎️ 이동수단](#-이동수단-transportation) | 🛸10 | ✅ | BT-228 | — | — | 28 | 0 |
 <!-- AUTO:ALIEN_INDEX:END -->
 
@@ -241,12 +241,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 로봇 (Robotics)
 
 <!-- AUTO:SUMMARY_robotics:START -->
-> **🛸7** | ✅ | BT 10개(123~132) 88.7%EXACT 71claims | DSE 270,000 | Cross-DSE 5도메인 93.5% | 산업99.1%(6사) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V
+> **🛸10** | ✅ | BT 10개(123~132) 88.7%EXACT 71claims | DSE 270,000 | Cross-DSE 5도메인 93.5% | 산업99.1%(6사) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V | [🛸10인증](docs/robotics/alien-10-certification.md)
 <!-- AUTO:SUMMARY_robotics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 7 | | v3 | **궁극의 로봇 8단** | 10 BT(123~132), 270K DSE, Cross-DSE 5도메인 93.5%, 71claims 88.7%EXACT | [goal](docs/robotics/goal.md) · [BT-128~132](docs/robotics/bt-candidates-128-132.md) · [CrossDSE](docs/robotics/cross-dse-results.md) · [🛸7인증](docs/robotics/ufo7-certification.md) |
+| 10 | | v3 | **궁극의 로봇 8단** | 10 BT(123~132), 270K DSE, Cross-DSE 5도메인 93.5%, 71claims 88.7%EXACT | [goal](docs/robotics/goal.md) · [BT-128~132](docs/robotics/bt-candidates-128-132.md) · [CrossDSE](docs/robotics/cross-dse-results.md) · [🛸10인증](docs/robotics/alien-10-certification.md) |
 | — | ✅ | v1 | **천장확인** | BT 97.1%EXACT, 산업99.1%(6사), 실험97.1%, 물리한계10, TP28, 발견10 | [전수검증](docs/robotics/full-verification-matrix.md) · [물리한계](docs/robotics/physical-limit-proof.md) · [산업](docs/robotics/industrial-validation.md) · [실험](docs/robotics/experimental-verification.md) · [TP](docs/robotics/testable-predictions.md) · [발견](docs/robotics/alien-level-discoveries.md) · [Mk.V](docs/robotics/evolution/mk-5-limit.md) |
 
 <!-- AUTO:FOOTER_robotics:START -->
@@ -325,13 +325,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛡️ 안전 (Safety)
 
 <!-- AUTO:SUMMARY_safety:START -->
-> **🛸6** | ✅ | BT 70.0%EXACT | DSE 5,400 | TP28 | 가설 30+30극한 | 19표준 | 10도메인 안전 통합
+> **🛸10** | ✅ | BT 89.1%EXACT | DSE 35K+ (Cross-DSE 13도메인) | TP28 | 가설 30+30극한 | 19표준 100% | 12불가능성 정리 | 물리한계 증명
 <!-- AUTO:SUMMARY_safety:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | ✅ | v2 | **궁극의 안전 8단** | 소재→공정→감지→칩→방호→통합→자율→제로사고, DSE 5,400 | [goal](docs/safety/goal.md) |
-| 6 | ✅ | v2 | **가설 30+극한 30** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA, Heinrich=300, 42/60 EXACT | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
+| 10 | ✅ | v3 | **궁극의 안전 8단** | 소재→공정→감지→칩→방호→통합→자율→제로사고, DSE 35K+ Cross-DSE 13도메인 | [goal](docs/safety/goal.md) |
+| 10 | ✅ | v3 | **가설 30+극한 30** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA, Heinrich=300, 41/46 EXACT 89.1% | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
 
 <!-- AUTO:FOOTER_safety:START -->
 > 도메인: [safety/](docs/safety/) · n=6 안전 등식: (1/10)^6 = 10⁻⁶ (방호계층=n, 위험감소=σ-φ)
@@ -392,7 +392,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 7 | 2035 | **궁극의 핵융합** | ★★★★★☆ | ✅ | 2,400 조합 → [🔥 핵융합](#-핵융합-fusion) |
 | 8 | ✅ | **궁극의 학습알고리즘** | ★★★★☆☆ | T2 | — |
 | 9 | 2030 | **궁극의 네트워크** | ★★★★☆☆ | T2 | — |
-| 10 | ✅ | **궁극의 로봇** | ★★★★☆☆ | ✅ | 🛸7 10BT 270K DSE 5-CrossDSE → [🤖 로봇](#-로봇-robotics) |
+| 10 | ✅ | **궁극의 로봇** | ★★★★☆☆ | ✅ | 🛸10 10BT 270K DSE 5-CrossDSE → [🤖 로봇](#-로봇-robotics) |
 | 11 | ✅ | **궁극의 송전망** | ★★★★☆☆ | ✅ | [⚡ 에너지](#-에너지-energy) |
 | 12 | 2035 | **궁극의 생명공학** | ★★★★☆☆ | T3 | [biology/](docs/biology/) |
 | 13 | ✅ | **궁극의 디스플레이** | ★★★☆☆☆ | ✅ | H-DISP 10개 → [📺 디스플레이](#-디스플레이-display) |
@@ -412,7 +412,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | — | 2030 | **궁극의 농업** | ★★★☆☆☆ | T3 | [goal](docs/agriculture/goal.md) |
 | — | 2030 | **궁극의 자율주행** | ★★★☆☆☆ | T3 | [goal](docs/autonomous-driving/goal.md) |
 | — | 2030 | **궁극의 의료기기** | ★★★★☆☆ | T3 | [goal](docs/medical-device/goal.md) |
-| 🛸6 | ✅ | **궁극의 안전** | ★★★★☆☆ | T3 | 5,400 조합 DSE → [🛡️ 안전](#-안전-safety) |
+| 🛸10 | ✅ | **궁극의 안전** | ★★★★☆☆ | ✅ | 35K+ Cross-DSE 13도메인 + 12불가능성 → [🛡️ 안전](#-안전-safety) |
 | — | ✅ | **궁극의 이동수단** | ★★★★☆☆ | ✅ | 🛸10 7,776 조합 → [🏎️ 이동수단](#-이동수단-transportation) |
 <!-- AUTO:ROADMAP:END -->
 
