@@ -136,7 +136,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | | v1 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ | [전체](techniques/) |
+| 10 | ✅ | v2 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준) | [전체](techniques/) · [Python검증](docs/ai-efficiency/verify_all_techniques_n6.py) |
 | 5 | | v1 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거 | [실험](experiments/experiment_full_n6_pipeline.py) |
 | 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
 | 6 | | v1 | **AI Energy Savings Guide** | 실무 가이드 — 기법, 하이퍼파라미터, 벤치마크 | [가이드](docs/ai-energy-savings-guide.md) |
