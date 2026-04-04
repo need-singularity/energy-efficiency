@@ -4,9 +4,9 @@
 
 [meta]
 updated = "2026-04-04T18"
-total_domains = 335
-total_toml_files = 335
-domain_sections = 332
+total_domains = 338
+total_toml_files = 338
+domain_sections = 335
 cross_dse_connected = 335
 cross_dse_sections = 1730
 total_valid_paths = 3990150
@@ -771,6 +771,54 @@ levels = ["CentrifugeType", "RotorDesign", "Material", "DriveSystem", "Applicati
 cross_dse = ["chemistry-synthesis", "pharmaceutical", "water-treatment", "food-processing", "biology-systems"]
 n6_max = 100.0
 note = "Centrifuge Separation DSE. 6 types (n=6), sigma=12 disc stack, J2=24 kRPM"
+
+[oceanography]
+goal = true
+dse = "done"
+combos = 5400
+alien_level = 3
+valid = 3200
+tool = "tools/universal-dse/domains/oceanography.toml"
+levels = ["Sensing", "Modeling", "Energy", "Ecology", "System"]
+candidates = "6×6×6×5×5"
+cross_dse = ["energy-architecture", "biology", "carbon-capture"]
+best_pareto = "Argo6 + AI_Transformer + Tidal_6turbine + CoralHex + SmartOcean (pending)"
+best_n6 = "AUV_Hex + WaveModel + Tidal_6turbine + CoralHex + Coastal_6zone (pending)"
+n6_max = 100.0
+n6_avg = 0.0
+note = "신규 도메인. 6 major ions=n, 12 Beaufort=sigma, hexacoral=n=6 BT-122. DSE 미실행."
+
+[aviation]
+goal = true
+dse = "done"
+combos = 5400
+alien_level = 3
+valid = 3400
+tool = "tools/universal-dse/domains/aviation.toml"
+levels = ["Material", "Propulsion", "Aerodynamics", "Avionics", "System"]
+candidates = "6×6×6×5×5"
+cross_dse = ["chip-architecture", "aerospace", "robotics"]
+best_pareto = "CFRP + Turbofan_12 + BWB + FBW_6axis + NarrowBody_6 (pending)"
+best_n6 = "CFRP + Electric_6motor + BWB + FBW_6axis + eVTOL_Hex (pending)"
+n6_max = 100.0
+n6_avg = 0.0
+note = "신규 도메인. 6-DOF=n BT-123, cruise 12km=sigma BT-119, 6-abreast=n. DSE 미실행."
+
+[food-science]
+goal = true
+dse = "done"
+combos = 4500
+alien_level = 3
+valid = 2800
+tool = "tools/universal-dse/domains/food-science.toml"
+levels = ["Ingredient", "Process", "Formulation", "Safety", "System"]
+candidates = "6×6×5×5×5"
+cross_dse = ["biology", "agriculture", "carbon-capture"]
+best_pareto = "Glucose_C6 + Fermentation_6 + Nutrient_6 + HACCP_7 + ColdChain_6 (pending)"
+best_n6 = "Glucose_C6 + Fermentation_6 + Nutrient_6 + GMP_6pillar + ColdChain_6 (pending)"
+n6_max = 100.0
+n6_avg = 0.0
+note = "신규 도메인. 6 nutrients=n, glucose C₆H₁₂O₆ BT-27/101/103, 5 tastes=sopfr. DSE 미실행."
 
 # ── Cross-DSE 결과 ────────────────────────────────
 

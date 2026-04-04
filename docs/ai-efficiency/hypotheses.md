@@ -341,7 +341,7 @@
 
 **EXACT rate**: 27/36 = 75.0%
 
-> Note: BT-26,33,34,39,42,46,54,56,58,64와 교차 검증 완료. 기존 BT와의 중복은 독립 검증으로 간주.
+> Note: BT-26,33,34,39,42,46,54,56,58,64,163,164,330~337와 교차 검증 완료. 기존 BT와의 중복은 독립 검증으로 간주.
 
 ---
 
@@ -371,4 +371,14 @@
   BT-73: Tokenizer Vocabulary n=6 Law — 32K/50257/100K/128K = 2^n*10^n family
   BT-74: 95/5 Cross-Domain Resonance — top-p=beta2=0.95, THD=beta_plasma=5%
   BT-84: 96/192 Triple Convergence — Tesla 96S=Gaudi2 96GB=GPT-3 96L
+  BT-163: RL/Alignment Training Parameter Stack — PPO, DPO, GRPO All n=6 (10/10 EXACT)
+  BT-164: LLM Training Schedule n=6 Universality — LR, Warmup, Cosine, Accumulation (8/8 EXACT)
+  BT-330: Quantization Precision Ladder Complete n=6 — FP32→Ternary, BitNet 25/26 EXACT (10/10 EXACT)
+  BT-331: Speculative Decoding + Inference Acceleration — Draft/Accept/Window All n=6 (8/8 EXACT)
+  BT-332: DeepSeek MLA KV Cache Architecture — Compression/Latent/Grouping All n=6 (12/12 EXACT)
+  BT-333: Post-Transformer Hybrid Convergence — Jamba/Zamba/Mamba-2 All n=6 (10/10 EXACT)
+  BT-334: AI FLOPs Reduction Technique Stack — MAE/MoD/Egyptian/FlashAttn All n=6 (8/8 EXACT)
+  BT-335: DeepSeek-V3 Complete Architecture — 14/15 EXACT (⭐⭐⭐)
+  BT-336: GQA/MQA/MHA Attention Compression Hierarchy — Head/Ratio/Cache All div(6) (10/10 EXACT)
+  BT-337: Whisper Audio Model Layer Ladder — {tau,n,sigma,J2,2^sopfr}={4,6,12,24,32} (8/8 EXACT)
 ```
