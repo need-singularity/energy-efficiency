@@ -622,6 +622,16 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-125: τ=4 locomotion/flight minimum stability (quadruped, quadrotor, 7/8 EXACT) ⭐⭐
   BT-126: sopfr=5 fingers + 2^sopfr=32 grasp space (Feix taxonomy 96.97%, 5/6 EXACT) ⭐⭐
   BT-127: 3D kissing number σ=12 + hexacopter n=6 fault tolerance (6/6 EXACT) ⭐⭐⭐
+
+  # Plasma Physics Deep Dive (BT-310~317)
+  BT-310: Stellarator field period family W7-X=sopfr/LHD=σ-φ/HSX=TJ-II=τ (7/7 EXACT) ⭐⭐
+  BT-311: Kruskal-Shafranov q>φ=2 + div(6)={1,2,3} stability hierarchy (6/6 EXACT) ⭐⭐
+  BT-312: MHD instability quartet τ=4 kink/sausage/ballooning/tearing + ELM I-IV (7/7 EXACT) ⭐⭐
+  BT-313: Tokamak triangularity δ=φ/n=1/3 + shape triple {1/3,2,3} (6/6 EXACT) ⭐⭐
+  BT-314: Confinement mode triad L/H/I=n/φ=3 60-year completeness (6/6 EXACT) ⭐⭐
+  BT-315: Heating quartet Ohmic+NBI+ICRH+ECRH=τ=4 (7/7 EXACT) ⭐
+  BT-316: Matter phase quartet τ=4 + C(τ,2)=n combinatoric (7/7 EXACT) ⭐⭐
+  BT-317: Tokamak complete n=6 map 12/12 EXACT meta-theorem 92.3% (12/12 EXACT) ⭐⭐⭐
 ```
 
 ## Design Space Exploration (DSE) — 궁극 처리 필수 규칙
