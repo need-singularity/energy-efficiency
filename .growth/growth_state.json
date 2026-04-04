@@ -1,28 +1,28 @@
 {
   "repo": "n6-architecture",
   "created": "2026-04-04T00:00:00",
-  "scan_count": 23,
-  "total_growth": 144,
-  "last_scan": "2026-04-04T10:30:27",
-  "last_delta": 9,
-  "nexus6_bonus": 1,
-  "opportunity_count": 6,
+  "scan_count": 25,
+  "total_growth": 149,
+  "last_scan": "2026-04-04T11:24:40",
+  "last_delta": 4,
+  "nexus6_bonus": 0,
+  "opportunity_count": 5,
   "high_water": {
-    "TP_PENDING": 0,
-    "EXTREME_MISSING": 0,
-    "BT_GAPS": 0,
+    "TP_PENDING": 7,
+    "EXTREME_MISSING": 5,
+    "BT_GAPS": 7,
     "TECHNIQUE_NO_EXPERIMENT": 0,
-    "DOC_MISSING_GOAL": 0,
+    "DOC_MISSING_GOAL": 1,
     "DOC_MISSING_VERIFY": 0,
-    "DSE_INCOMPLETE": 0
+    "DSE_INCOMPLETE": 10
   },
-  "last_tick": "2026-04-04T10:30:30",
+  "last_tick": "2026-04-04T11:25:25",
   "infinite_cycle": 1,
   "meta_recursion": {
     "level": 3,
     "cycle": 6,
-    "convergence_rate": 100,
+    "convergence_rate": 36,
     "connected_repos": 9,
-    "engine_functions": 57
+    "engine_functions": 62
   }
 }
