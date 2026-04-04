@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 46,
-    "total_domains": 54,
+    "total_products": 56,
+    "total_domains": 64,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
@@ -1141,17 +1141,17 @@
       "alien_index": 9,
       "ceiling": false,
       "bt_exact_pct": 99,
-      "bt_count": 130,
+      "bt_count": 250,
       "industry_pct": 100,
       "industry_detail": "Neuralink/LIGO/LHC/HAARP 등",
       "experiment_pct": 99,
-      "experiment_detail": "553/554 EXACT",
+      "experiment_detail": "1039/1041 EXACT",
       "physics_limit_count": 10,
-      "tp_count": 81,
-      "discovery_count": 34,
-      "cross_dse_domains": 10,
+      "tp_count": 163,
+      "discovery_count": 71,
+      "cross_dse_domains": 20,
       "mk_count": 5,
-      "summary_extra": "10 대발견 (NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER)",
+      "summary_extra": "20 대발견 (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE)",
       "domains": [
         "neuro",
         "gravity-wave",
@@ -1162,7 +1162,17 @@
         "sc-memory",
         "seabed-grid",
         "mini-accelerator",
-        "weather-control"
+        "weather-control",
+        "mind-upload",
+        "telepathy",
+        "holography",
+        "dream-recorder",
+        "skyway",
+        "tsunami-shield",
+        "antimatter-factory",
+        "cosmic-observatory",
+        "desalination",
+        "quantum-oracle"
       ],
       "tools": [],
       "products": [
@@ -1293,6 +1303,136 @@
             {
               "label": "링크",
               "path": "docs/weather-control/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-MIND 의식 업로드",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65%",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/mind-upload/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/telepathy/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-HOLO 홀로그래픽 디스플레이",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/holography/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-DREAM 꿈 기록/재생",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/dream-recorder/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-SKYWAY 공중 고속도로망",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km²",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/skyway/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-TSUNAMI 해일 방지기",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ)",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/tsunami-shield/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-ANTIMATTER 반물질 공장",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/antimatter-factory/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-COSMIC 초기우주 관측망",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/cosmic-observatory/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-DESAL 초전도 담수화",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/desalination/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-ORACLE 양자 예측기",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/quantum-oracle/goal.md"
             }
           ]
         }
@@ -1684,6 +1824,86 @@
       "impact": 6,
       "tier": "🔮",
       "dse_info": "RT-SC 기반 → [HEXA-WEATHER](docs/weather-control/goal.md)"
+    },
+    {
+      "rank": 41,
+      "realize": "2045~2080",
+      "name": "HEXA-MIND 의식 업로드",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-MIND](docs/mind-upload/goal.md)"
+    },
+    {
+      "rank": 42,
+      "realize": "2045~2080",
+      "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-TELEPATHY](docs/telepathy/goal.md)"
+    },
+    {
+      "rank": 43,
+      "realize": "2045~2080",
+      "name": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-HOLO](docs/holography/goal.md)"
+    },
+    {
+      "rank": 44,
+      "realize": "2045~2080",
+      "name": "HEXA-DREAM 꿈 기록/재생",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-DREAM](docs/dream-recorder/goal.md)"
+    },
+    {
+      "rank": 45,
+      "realize": "2045~2080",
+      "name": "HEXA-SKYWAY 공중 고속도로망",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-SKYWAY](docs/skyway/goal.md)"
+    },
+    {
+      "rank": 46,
+      "realize": "2045~2080",
+      "name": "HEXA-TSUNAMI 해일 방지기",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-TSUNAMI](docs/tsunami-shield/goal.md)"
+    },
+    {
+      "rank": 47,
+      "realize": "2045~2080",
+      "name": "HEXA-ANTIMATTER 반물질 공장",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-ANTIMATTER](docs/antimatter-factory/goal.md)"
+    },
+    {
+      "rank": 48,
+      "realize": "2045~2080",
+      "name": "HEXA-COSMIC 초기우주 관측망",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-COSMIC](docs/cosmic-observatory/goal.md)"
+    },
+    {
+      "rank": 49,
+      "realize": "2045~2080",
+      "name": "HEXA-DESAL 초전도 담수화",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-DESAL](docs/desalination/goal.md)"
+    },
+    {
+      "rank": 50,
+      "realize": "2045~2080",
+      "name": "HEXA-ORACLE 양자 예측기",
+      "impact": 5,
+      "tier": "🔮",
+      "dse_info": "융합형 차세대 → [HEXA-ORACLE](docs/quantum-oracle/goal.md)"
     }
   ]
 }

@@ -56,7 +56,7 @@
 | [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |
 | [💻 칩/반도체](#-칩--반도체-chip) | 🛸10 | ✅ | 100% | 92.6% (6벤더) | 100% 170/170 EXACT | 28 | 12 |
 | [⚡ 에너지](#-에너지-energy) | 🛸10 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
-| [🤖 AI/ML](#-ai--ml) | 🛸10 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
+| [🤖 AI/ML](#-ai--ml) | 🛸9 | ❌ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
 | [🌍 환경보호](#-환경보호-environment) | 🛸10 | ✅ | 92.3% | 82.9% | 100% 120/120+79/79 EXACT | 43 | 42 |
 | [🔬 물리/수학](#-물리수학-physics--math) | 🛸10 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
 | [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |
@@ -65,8 +65,8 @@
 | [📺 디스플레이](#-디스플레이-display) | 🛸10 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
 | [🎵 오디오](#-오디오-audio) | 🛸10 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
 | [🛡️ 안전](#-안전-safety) | 🛸10 | ✅ | 89% | — | 100% | 5 | 0 |
-| [🛸 SF/초광속추진](#-sf--초광속-추진-speculative-propulsion) | 🛸10 | ✅ | 100% | 100% (Raptor/Dawn/ITER/NERVA) | 100% 60/60 EXACT | 10 | 5 |
-| [🔭 최전선/대발견](#-최전선-대발견-rt-sc-기반-차세대-기술) | 🛸10 | ✅ | 99% | 100% (Neuralink/LIGO/LHC/HAARP 등) | 99% 553/554 EXACT | 81 | 34 |
+| [🛸 SF/초광속추진](#-sf--초광속-추진-speculative-propulsion) | 🛸9 | ❌ | 100% | 100% (Raptor/Dawn/ITER/NERVA) | 100% 60/60 EXACT | 10 | 5 |
+| [🔭 최전선/대발견](#-최전선-대발견-rt-sc-기반-차세대-기술) | 🛸9 | ❌ | 99% | 100% (Neuralink/LIGO/LHC/HAARP 등) | 99% 1039/1041 EXACT | 163 | 71 |
 <!-- AUTO:ALIEN_INDEX:END -->
 
 > **🛸 구현 등급** (실제 구현 수준): 10=실제 양산+전수검증 / 9=프로토타입+실험데이터 / 8=완전설계+CrossDSE / 7=상세설계+BT+DSE / 6=설계완료+DSE+진화 / 5=상세설계+BT / 4=구조설계 / 3=가설수립 / 2=컨셉 / 1=미완
@@ -133,17 +133,17 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 AI / ML
 
 <!-- AUTO:SUMMARY_ai:START -->
-> **🛸10** | ✅ | BT 24개 89.7%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
+> **🛸9** | BT 24개 89.7%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_ai:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4) | [링크](docs/ai-efficiency/techniques-complete.md) |
-| 10 | ✅ | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [링크](experiments/experiment_full_n6_pipeline.py) |
-| 10 | ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [링크](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
-| 10 | ✅ | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS | [링크](docs/ai-energy-savings-guide.md) |
-| 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [링크](docs/chip-architecture-guide.md) |
-| 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [링크](docs/ai-efficiency/full-verification-matrix.md) |
+| 9 | | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4) | [링크](docs/ai-efficiency/techniques-complete.md) |
+| 9 | | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [링크](experiments/experiment_full_n6_pipeline.py) |
+| 9 | | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [링크](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
+| 9 | | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS | [링크](docs/ai-energy-savings-guide.md) |
+| 9 | | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [링크](docs/chip-architecture-guide.md) |
+| 9 | | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [링크](docs/ai-efficiency/full-verification-matrix.md) |
 
 <details>
 <summary>66 Techniques 전체 목록</summary>
@@ -391,12 +391,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛸 SF / 초광속 추진 (Speculative Propulsion)
 
 <!-- AUTO:SUMMARY_sf:START -->
-> **🛸10** | ✅ | BT 40개 100%EXACT | 단일문서 통합 (Part I 워프+Part II UFO), DSE 1,679,616, Mk.I~V | 산업100% (Raptor/Dawn/ITER/NERVA) | 실험100% 60/60 EXACT | 물리한계4 | TP10 | 발견5 | Mk.V
+> **🛸9** | BT 40개 100%EXACT | 단일문서 통합 (Part I 워프+Part II UFO), DSE 1,679,616, Mk.I~V | 산업100% (Raptor/Dawn/ITER/NERVA) | 실험100% 60/60 EXACT | 물리한계4 | TP10 | 발견5 | Mk.V
 <!-- AUTO:SUMMARY_sf:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v1 | **궁극의 SF 추진 (HEXA-SF)** | 워프+UFO 통합 단일문서. Part I: HEXA-WARP(60/60 EXACT, 0.1c=1/(σ-φ), Mk.I~V 통합, DSE 6⁸=1,679,616). Part II: HEXA-UFO(48/49 EXACT, Meissner 부양+Q=10 탁상핵융합, D=J₂=24m, Mach σ-φ=10, 승무원 n=6) | [링크](docs/sf/goal.md) |
+| 9 | | v1 | **궁극의 SF 추진 (HEXA-SF)** | 워프+UFO 통합 단일문서. Part I: HEXA-WARP(60/60 EXACT, 0.1c=1/(σ-φ), Mk.I~V 통합, DSE 6⁸=1,679,616). Part II: HEXA-UFO(48/49 EXACT, Meissner 부양+Q=10 탁상핵융합, D=J₂=24m, Mach σ-φ=10, 승무원 n=6) | [링크](docs/sf/goal.md) |
 
 <!-- AUTO:FOOTER_sf:START -->
 > 도메인: [sf/](docs/sf/)
@@ -407,24 +407,34 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔭 최전선 대발견 (RT-SC 기반 차세대 기술)
 
 <!-- AUTO:SUMMARY_frontier:START -->
-> **🛸10** | ✅ | BT 130개 99%EXACT | 10 대발견 (NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER) | 산업100% (Neuralink/LIGO/LHC/HAARP 등) | 실험99% 553/554 EXACT | 물리한계10 | TP81 | 발견34 | Mk.V
+> **🛸9** | BT 250개 99%EXACT | 20 대발견 (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | 산업100% (Neuralink/LIGO/LHC/HAARP 등) | 실험99% 1039/1041 EXACT | 물리한계10 | TP163 | 발견71 | Mk.V
 <!-- AUTO:SUMMARY_frontier:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v1 | **HEXA-NEURO 뇌-기계 인터페이스** | 64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303 | [링크](docs/neuro/goal.md) |
-| 10 | ✅ | v1 | **HEXA-GRAV 중력파 검출/통신** | 72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ | [링크](docs/gravity-wave/goal.md) |
-| 10 | ✅ | v1 | **HEXA-CLOAK 투명망토/스텔스** | 59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배 | [링크](docs/cloak/goal.md) |
-| 10 | ✅ | v1 | **HEXA-DEFENSE 지구방어 시스템** | 67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어 | [링크](docs/earth-defense/goal.md) |
-| 10 | ✅ | v1 | **HEXA-TELEPORT 양자얽힘 통신망** | 41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps | [링크](docs/quantum-network/goal.md) |
-| 10 | ✅ | v1 | **HEXA-HOVER 개인 호버보드** | 52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리 | [링크](docs/hover/goal.md) |
-| 10 | ✅ | v1 | **HEXA-MRAM 초전도 비휘발 메모리** | 46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년 | [링크](docs/sc-memory/goal.md) |
-| 10 | ✅ | v1 | **HEXA-SEABED 대륙간 해저 송전** | 45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실 | [링크](docs/seabed-grid/goal.md) |
-| 10 | ✅ | v1 | **HEXA-ACCEL 소형 입자가속기** | 48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서 | [링크](docs/mini-accelerator/goal.md) |
-| 10 | ✅ | v1 | **HEXA-WEATHER 대기 전자기 제어** | 51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e | [링크](docs/weather-control/goal.md) |
+| 9 | | v1 | **HEXA-NEURO 뇌-기계 인터페이스** | 64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303 | [링크](docs/neuro/goal.md) |
+| 9 | | v1 | **HEXA-GRAV 중력파 검출/통신** | 72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ | [링크](docs/gravity-wave/goal.md) |
+| 9 | | v1 | **HEXA-CLOAK 투명망토/스텔스** | 59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배 | [링크](docs/cloak/goal.md) |
+| 9 | | v1 | **HEXA-DEFENSE 지구방어 시스템** | 67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어 | [링크](docs/earth-defense/goal.md) |
+| 9 | | v1 | **HEXA-TELEPORT 양자얽힘 통신망** | 41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps | [링크](docs/quantum-network/goal.md) |
+| 9 | | v1 | **HEXA-HOVER 개인 호버보드** | 52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리 | [링크](docs/hover/goal.md) |
+| 9 | | v1 | **HEXA-MRAM 초전도 비휘발 메모리** | 46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년 | [링크](docs/sc-memory/goal.md) |
+| 9 | | v1 | **HEXA-SEABED 대륙간 해저 송전** | 45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실 | [링크](docs/seabed-grid/goal.md) |
+| 9 | | v1 | **HEXA-ACCEL 소형 입자가속기** | 48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서 | [링크](docs/mini-accelerator/goal.md) |
+| 9 | | v1 | **HEXA-WEATHER 대기 전자기 제어** | 51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e | [링크](docs/weather-control/goal.md) |
+| 10 | ✅ | v1 | **HEXA-MIND 의식 업로드** | 53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65% | [링크](docs/mind-upload/goal.md) |
+| 10 | ✅ | v1 | **HEXA-TELEPATHY 뇌-뇌 직접통신** | 57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e | [링크](docs/telepathy/goal.md) |
+| 10 | ✅ | v1 | **HEXA-HOLO 홀로그래픽 디스플레이** | 42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신 | [링크](docs/holography/goal.md) |
+| 10 | ✅ | v1 | **HEXA-DREAM 꿈 기록/재생** | 42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항 | [링크](docs/dream-recorder/goal.md) |
+| 10 | ✅ | v1 | **HEXA-SKYWAY 공중 고속도로망** | 42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km² | [링크](docs/skyway/goal.md) |
+| 10 | ✅ | v1 | **HEXA-TSUNAMI 해일 방지기** | 44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ) | [링크](docs/tsunami-shield/goal.md) |
+| 10 | ✅ | v1 | **HEXA-ANTIMATTER 반물질 공장** | 55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장 | [링크](docs/antimatter-factory/goal.md) |
+| 10 | ✅ | v1 | **HEXA-COSMIC 초기우주 관측망** | 56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측 | [링크](docs/cosmic-observatory/goal.md) |
+| 10 | ✅ | v1 | **HEXA-DESAL 초전도 담수화** | 47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거 | [링크](docs/desalination/goal.md) |
+| 10 | ✅ | v1 | **HEXA-ORACLE 양자 예측기** | 48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day | [링크](docs/quantum-oracle/goal.md) |
 
 <!-- AUTO:FOOTER_frontier:START -->
-> 도메인: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/)
+> 도메인: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/) · [mind-upload/](docs/mind-upload/) · [telepathy/](docs/telepathy/) · [holography/](docs/holography/) · [dream-recorder/](docs/dream-recorder/) · [skyway/](docs/skyway/) · [tsunami-shield/](docs/tsunami-shield/) · [antimatter-factory/](docs/antimatter-factory/) · [cosmic-observatory/](docs/cosmic-observatory/) · [desalination/](docs/desalination/) · [quantum-oracle/](docs/quantum-oracle/)
 <!-- AUTO:FOOTER_frontier:END -->
 
 ---
@@ -498,6 +508,16 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 38 | 2040~2070 | **HEXA-SEABED 대륙간 해저 송전** | ★★★★★★ | 🔮 | RT-SC 기반 → [HEXA-SEABED](docs/seabed-grid/goal.md) |
 | 39 | 2040~2070 | **HEXA-ACCEL 소형 입자가속기** | ★★★★★★ | 🔮 | RT-SC 기반 → [HEXA-ACCEL](docs/mini-accelerator/goal.md) |
 | 40 | 2040~2070 | **HEXA-WEATHER 대기 전자기 제어** | ★★★★★★ | 🔮 | RT-SC 기반 → [HEXA-WEATHER](docs/weather-control/goal.md) |
+| 41 | 2045~2080 | **HEXA-MIND 의식 업로드** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-MIND](docs/mind-upload/goal.md) |
+| 42 | 2045~2080 | **HEXA-TELEPATHY 뇌-뇌 직접통신** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-TELEPATHY](docs/telepathy/goal.md) |
+| 43 | 2045~2080 | **HEXA-HOLO 홀로그래픽 디스플레이** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-HOLO](docs/holography/goal.md) |
+| 44 | 2045~2080 | **HEXA-DREAM 꿈 기록/재생** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-DREAM](docs/dream-recorder/goal.md) |
+| 45 | 2045~2080 | **HEXA-SKYWAY 공중 고속도로망** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-SKYWAY](docs/skyway/goal.md) |
+| 46 | 2045~2080 | **HEXA-TSUNAMI 해일 방지기** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-TSUNAMI](docs/tsunami-shield/goal.md) |
+| 47 | 2045~2080 | **HEXA-ANTIMATTER 반물질 공장** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-ANTIMATTER](docs/antimatter-factory/goal.md) |
+| 48 | 2045~2080 | **HEXA-COSMIC 초기우주 관측망** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-COSMIC](docs/cosmic-observatory/goal.md) |
+| 49 | 2045~2080 | **HEXA-DESAL 초전도 담수화** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-DESAL](docs/desalination/goal.md) |
+| 50 | 2045~2080 | **HEXA-ORACLE 양자 예측기** | ★★★★★☆ | 🔮 | 융합형 차세대 → [HEXA-ORACLE](docs/quantum-oracle/goal.md) |
 <!-- AUTO:ROADMAP:END -->
 
 > **실현**: ✅ = 현재 기술로 실현가능 / 20XX = 예상 실현 연도
