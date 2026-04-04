@@ -637,6 +637,10 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   # Autonomous Driving (BT-327~328)
   BT-327: AD sensor-compute complete n=6 map SE(3)=n/12USS=σ/6CAM=n/144TOPS=σ²/CAN=σ-τ=8/SAE=n (8/8 EXACT) ⭐⭐
   BT-328: AD τ=4 subsystem universality wheels/radar/pipeline/ASIL/sensors/GNSS/V2X/TPMS (9/10 EXACT 1 CLOSE) ⭐⭐
+
+  # Economics/Finance (BT-338~339)
+  BT-338: Financial temporal-governance n=6 map (fiscal σ=12/τ=4 quarters/φ=2 halves/J₂=24h market/G6=n/DJIA σ=12, 10/10 EXACT) ⭐⭐
+  BT-339: Financial engineering parameter n=6 map (Black-Scholes sopfr=5/double-entry φ=2/Basel III n/φ=3/τ=4 statements/Porter sopfr=5/G20=J₂-τ=20, 10/10 EXACT) ⭐⭐
 ```
 
 ## Design Space Exploration (DSE) — 궁극 처리 필수 규칙
@@ -789,11 +793,21 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
     ⚠️ 완성제품 테이블에 버전(ver) 컬럼 추가 — 현재 설계 세대 표시
       양식: | 🛸 | ver | 완성제품 | 핵심 | 링크 |
       ver = 설계 세대 (v1, v2, v3...), git commit hash로 추적
+    ⚠️ 문서는 한장으로 작성! — 궁극 설계 문서는 단일 .md 파일로 통합 (분할 금지)
+      → goal.md 1개에 전체 설계 (8단/DSE/물리한계/산업/TP/발견/Mk 전부 포함)
+      → 파일 분산 = 맥락 단절 = 금지
+
+  완성제품 현황 (2026-04-04):
+    | 🛸 | ver | 완성제품 | 핵심 | 비고 |
+    |---|----|---------|------|------|
+    | 6 | v2 | 궁극의 배터리 8단 | 셀→전극→코어→BMS→팩+그리드→전고체→핵→Omega, 1,908 DSE | 설계·goal·전수검증·물리한계·산업·실험·TP·발견·Mk.V |
+    | 7 | v3 | 궁극의 태양전지 | 1,584 DSE, 43%EXACT, 물리한계5, Mk.V, 발견8, TP19, CrossDSE4, 산업8사 | goal·한계증명·발견·산업·CrossDSE·Mk.V |
+    | 6 | v1 | 궁극의 에너지 통합 | 4도메인 Cross-DSE, 10,225 조합, 53%EXACT 송전 | 문서 한장 통합 |
 
   🛸 외계인 지수 (10단계, 만점=10):
     10 = 물리적 한계 도달 — 더이상 발전 불가, 모든 이론·실험·양산 완료
-         ⚠️ 필수: 상세문서에 수학적 검증 가능한 코드 포함 (예외 없음!)
-         → Python/Rust 검증 스크립트가 docs/<domain>/ 또는 calc/ 에 존재
+         ⚠️ 필수: 상세문서에 수학적 검증 가능한 Python 계산 코드 포함 (예외 없음!)
+         → Python 검증 스크립트가 docs/<domain>/ 또는 calc/ 에 존재
          → 모든 EXACT 상수를 코드로 재현 가능해야 함
          → 실행 시 PASS/FAIL 판정 자동 출력
          → 코드 없는 🛸10 = 무효 (🛸9로 강등)
