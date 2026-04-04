@@ -62,4 +62,53 @@ mod tests {
         assert!(buf2.capacity() >= 1024); // capacity retained
         assert_eq!(pool.available(), 0);
     }
+
+    #[test]
+    fn pool_zero_capacity() {
+        let pool = BufferPool::new(0);
+        let buf = pool.get();
+        assert_eq!(buf.len(), 0);
+        pool.put(buf);
+        assert_eq!(pool.available(), 1);
+
+        let buf2 = pool.get();
+        assert_eq!(buf2.len(), 0);
+        assert_eq!(pool.available(), 0);
+    }
+
+    #[test]
+    fn pool_multiple_buffers() {
+        let pool = BufferPool::new(64);
+
+        // Get and return several buffers
+        let mut bufs: Vec<Vec<f32>> = (0..5).map(|_| pool.get()).collect();
+        assert_eq!(pool.available(), 0);
+
+        for buf in &mut bufs {
+            buf.push(42.0);
+        }
+
+        for buf in bufs {
+            pool.put(buf);
+        }
+        assert_eq!(pool.available(), 5);
+
+        // Drain all — each should be cleared
+        for _ in 0..5 {
+            let b = pool.get();
+            assert_eq!(b.len(), 0);
+        }
+        assert_eq!(pool.available(), 0);
+    }
+
+    #[test]
+    fn pool_large_capacity() {
+        let pool = BufferPool::new(1_000_000);
+        let buf = pool.get();
+        assert!(buf.capacity() >= 1_000_000);
+        pool.put(buf);
+
+        let buf2 = pool.get();
+        assert!(buf2.capacity() >= 1_000_000);
+    }
 }

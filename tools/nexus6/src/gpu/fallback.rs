@@ -175,4 +175,139 @@ mod tests {
         assert_eq!(result.len(), 1);
         assert!((result[0] - 5.0).abs() < 1e-5);
     }
+
+    #[test]
+    fn distance_three_points() {
+        // 3 points in 1D: 0, 3, 7
+        // pairs: (1,0)=3, (2,0)=7, (2,1)=4  -> 3 entries
+        let data = vec![0.0, 3.0, 7.0];
+        let result = distance_matrix_cpu(&data, 3, 1);
+        assert_eq!(result.len(), 3);
+        assert!((result[0] - 3.0).abs() < 1e-5); // dist(1,0)
+        assert!((result[1] - 7.0).abs() < 1e-5); // dist(2,0)
+        assert!((result[2] - 4.0).abs() < 1e-5); // dist(2,1)
+    }
+
+    #[test]
+    fn distance_identical_points() {
+        // Two identical points -> distance = 0
+        let data = vec![5.0, 5.0, 5.0, 5.0];
+        let result = distance_matrix_cpu(&data, 2, 2);
+        assert_eq!(result.len(), 1);
+        assert!(result[0].abs() < 1e-5);
+    }
+
+    #[test]
+    fn distance_single_dimension() {
+        // 4 points in 1D
+        let data = vec![1.0, 2.0, 4.0, 8.0];
+        let result = distance_matrix_cpu(&data, 4, 1);
+        assert_eq!(result.len(), 6); // 4*3/2
+        // (1,0)=1, (2,0)=3, (2,1)=2, (3,0)=7, (3,1)=6, (3,2)=4
+        assert!((result[0] - 1.0).abs() < 1e-5);
+        assert!((result[1] - 3.0).abs() < 1e-5);
+        assert!((result[2] - 2.0).abs() < 1e-5);
+        assert!((result[3] - 7.0).abs() < 1e-5);
+        assert!((result[4] - 6.0).abs() < 1e-5);
+        assert!((result[5] - 4.0).abs() < 1e-5);
+    }
+
+    #[test]
+    #[should_panic(expected = "data length must equal n * d")]
+    fn distance_wrong_data_length() {
+        let data = vec![1.0, 2.0, 3.0];
+        distance_matrix_cpu(&data, 2, 2); // expects 4 elements
+    }
+
+    #[test]
+    fn mutual_info_independent_dims() {
+        // 2 dimensions with independent uniform data
+        // MI should be close to 0 for independent variables
+        let n = 100;
+        let d = 2;
+        let mut data = Vec::with_capacity(n * d);
+        for i in 0..n {
+            data.push(i as f32);            // dim 0: linear
+            data.push((i * 7 % 100) as f32); // dim 1: scrambled
+        }
+        let mi = mutual_info_cpu(&data, n as u32, d as u32, 10);
+        assert_eq!(mi.len(), d * d);
+        // Diagonal = 0 by definition in this impl
+        assert_eq!(mi[0], 0.0); // MI(0,0)
+        assert_eq!(mi[3], 0.0); // MI(1,1)
+        // Off-diagonal should be non-negative
+        assert!(mi[1] >= 0.0);
+        assert!(mi[2] >= 0.0);
+    }
+
+    #[test]
+    fn mutual_info_identical_dims() {
+        // 2 dimensions that are identical -> high MI
+        let n = 50;
+        let d = 2;
+        let mut data = Vec::with_capacity(n * d);
+        for i in 0..n {
+            let v = i as f32;
+            data.push(v);
+            data.push(v); // identical to dim 0
+        }
+        let mi = mutual_info_cpu(&data, n as u32, d as u32, 10);
+        assert_eq!(mi.len(), 4);
+        // MI(0,1) and MI(1,0) should be positive and equal
+        assert!(mi[1] > 0.0);
+        assert!((mi[1] - mi[2]).abs() < 1e-5);
+    }
+
+    #[test]
+    fn mutual_info_constant_dim() {
+        // One dimension is constant -> MI with anything = 0
+        let n = 20;
+        let d = 2;
+        let mut data = Vec::with_capacity(n * d);
+        for i in 0..n {
+            data.push(i as f32);
+            data.push(5.0); // constant
+        }
+        let mi = mutual_info_cpu(&data, n as u32, d as u32, 5);
+        // MI(0,1) should be 0 since dim 1 has no variance
+        assert!((mi[1]).abs() < 1e-5);
+    }
+
+    #[test]
+    fn knn_basic() {
+        // 3 points in 1D: 0, 1, 10
+        let data = vec![0.0, 1.0, 10.0];
+        let dist = distance_matrix_cpu(&data, 3, 1);
+        // dist: (1,0)=1, (2,0)=10, (2,1)=9
+
+        let neighbors = knn_cpu(&dist, 3, 1);
+        assert_eq!(neighbors.len(), 3); // 3 points * k=1
+        assert_eq!(neighbors[0], 1); // nearest to 0 is 1
+        assert_eq!(neighbors[1], 0); // nearest to 1 is 0
+        assert_eq!(neighbors[2], 1); // nearest to 10 is 1
+    }
+
+    #[test]
+    fn knn_k2() {
+        // 4 points in 1D: 0, 1, 3, 10
+        let data = vec![0.0, 1.0, 3.0, 10.0];
+        let dist = distance_matrix_cpu(&data, 4, 1);
+        let neighbors = knn_cpu(&dist, 4, 2);
+        assert_eq!(neighbors.len(), 8); // 4 points * k=2
+
+        // Point 0 (val=0): nearest are 1(d=1), 3(d=3) -> indices 1, 2
+        assert_eq!(neighbors[0], 1);
+        assert_eq!(neighbors[1], 2);
+
+        // Point 3 (val=10): nearest are 3(d=7), 1(d=9) -> indices 2, 1
+        assert_eq!(neighbors[6], 2);
+        assert_eq!(neighbors[7], 1);
+    }
+
+    #[test]
+    #[should_panic(expected = "k must be less than n")]
+    fn knn_k_equals_n() {
+        let dist = vec![1.0]; // 2 points
+        knn_cpu(&dist, 2, 2); // k=2 >= n=2
+    }
 }

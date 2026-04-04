@@ -32,3 +32,34 @@ pub fn device() -> Option<&'static metal::Device> {
 pub fn device() -> Option<&'static ()> {
     None
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn is_available_returns_bool() {
+        // On any platform, is_available should return a valid bool
+        let result = is_available();
+        assert!(result == true || result == false);
+    }
+
+    #[test]
+    fn device_returns_valid_option() {
+        // device() should not panic on any platform
+        let dev = device();
+        // On non-macOS, always None
+        #[cfg(not(target_os = "macos"))]
+        assert!(dev.is_none());
+        // On macOS, may or may not have a device — just ensure no panic
+        let _ = dev;
+    }
+
+    #[test]
+    fn device_is_consistent() {
+        // Multiple calls should return the same result (OnceLock caching)
+        let d1 = device();
+        let d2 = device();
+        assert_eq!(d1.is_some(), d2.is_some());
+    }
+}
