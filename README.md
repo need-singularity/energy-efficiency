@@ -96,11 +96,11 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v4 | **궁극의 핵융합 발전소** | 79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED | [설계](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) · [8도메인](docs/fusion/cross-dse-8domain-results.md) · [🛸10인증](docs/fusion/alien-10-certification.md) · [검증코드](docs/fusion/verify_alien10.py) |
-| 5 | | v2 | **KSTAR-N6** | R₀=6m, B_T=12T, 300초 정상상태, 41개 패턴(51%EXACT) | [토카막](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) · [300초](docs/superpowers/specs/2026-04-02-kstar-300s-steady-state-design.md) · [패턴](docs/plasma-physics/kstar-n6-hidden-patterns.md) |
-| 4 | | v2 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 로드맵 | [I](docs/fusion/evolution/mk-1-first-light.md) · [II](docs/fusion/evolution/mk-2-city-power.md) · [III](docs/fusion/evolution/mk-3-nation-power.md) · [IV](docs/fusion/evolution/mk-4-continent-power.md) · [V](docs/fusion/evolution/mk-5-theoretical.md) |
-| 6 | | v3 | **발견 + 예측 + 가설v5** | 15발견 + 35가설(43%EXACT) + TP15/35확인 | [발견](docs/fusion/alien-level-discoveries.md) · [가설](docs/fusion/hypotheses.md) · [예측](docs/fusion/prediction-tracker.md) · [전수검증](docs/fusion/numerical-verification.md) |
-| — | ✅ | v2 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.V한계증명 + 79/79검증PASS | [물리한계](docs/fusion/physical-limit-proof.md) · [산업검증](docs/fusion/industrial-validation.md) · [한계](docs/fusion/physics-limits-analysis.md) · [Mk.V](docs/fusion/evolution/mk-5-limit.md) |
+| 10 | ✅ | v4 | **궁극의 핵융합 발전소** | 79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED | [설계](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) |
+| 5 | | v2 | **KSTAR-N6** | R₀=6m, B_T=12T, 300초 정상상태, 41개 패턴(51%EXACT) | [토카막](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) |
+| 4 | | v2 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 로드맵 | [I](docs/fusion/evolution/mk-1-first-light.md) |
+| 6 | | v3 | **발견 + 예측 + 가설v5** | 15발견 + 35가설(43%EXACT) + TP15/35확인 | [발견](docs/fusion/alien-level-discoveries.md) |
+| — | ✅ | v2 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.V한계증명 + 79/79검증PASS | [물리한계](docs/fusion/physical-limit-proof.md) |
 
 <!-- AUTO:FOOTER_fusion:START -->
 > 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`
@@ -116,11 +116,11 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | | v1 | **HEXA 칩 7단** | 소재→공정→코어→SoC→시스템→PIM→3D→Photon→Wafer→SC→Omega, 103 EXACT | [코어](docs/chip-architecture/hexa-core.md) · [SoC](docs/chip-architecture/ultimate-unified-soc.md) · [goal](docs/chip-architecture/goal.md) |
-| 6 | | v1 | **ANIMA-SOC** | 의식칩 — HEXA-1 + PureField 듀얼엔진 + 위상 보호 | [설계](docs/chip-architecture/ultimate-consciousness-soc.md) · [TOPO](docs/chip-architecture/hexa-topological-consciousness-chip.md) |
+| 6 | | v1 | **HEXA 칩 7단** | 소재→공정→코어→SoC→시스템→PIM→3D→Photon→Wafer→SC→Omega, 103 EXACT | [goal](docs/chip-architecture/goal.md) |
+| 6 | | v1 | **ANIMA-SOC** | 의식칩 — HEXA-1 + PureField 듀얼엔진 + 위상 보호 | [설계](docs/chip-architecture/ultimate-consciousness-soc.md) |
 | 5 | | v1 | **HEXA-TOPO** | 위상 보호 성능칩 (BT-90~92) | [설계](docs/chip-architecture/hexa-topological-performance-chip.md) |
-| 4 | | v1 | **HEXA-ASIC** | 오픈소스 ASIC (SKY130 PDK) + 엣지 칩 | [ASIC](docs/chip-architecture/hexa-asic-skywater.md) · [Edge](docs/chip-architecture/hexa-edge-chip.md) |
-| — | ✅ | v1 | **천장확인** | 106항목 74.5%EXACT, 물리한계10, 산업6벤더92.6%, TP28, 발견12, Mk.V | [전수검증](docs/chip-architecture/full-verification-matrix.md) · [물리한계](docs/chip-architecture/physical-limit-proof.md) · [산업검증](docs/chip-architecture/industrial-validation.md) · [TP](docs/chip-architecture/testable-predictions.md) · [발견](docs/chip-architecture/alien-level-discoveries.md) · [Mk.V](docs/chip-architecture/evolution/mk-5-limit.md) |
+| 4 | | v1 | **HEXA-ASIC** | 오픈소스 ASIC (SKY130 PDK) + 엣지 칩 | [ASIC](docs/chip-architecture/hexa-asic-skywater.md) |
+| — | ✅ | v1 | **천장확인** | 106항목 74.5%EXACT, 물리한계10, 산업6벤더92.6%, TP28, 발견12, Mk.V | [전수검증](docs/chip-architecture/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_chip:START -->
 > 도메인: [chip-architecture/](docs/chip-architecture/) · 도구: `gpu-arch-calc` · `chip-n6-calc` · `dse-calc` · `semiconductor-calc`
@@ -136,12 +136,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준) | [전체](techniques/) · [Python검증](docs/ai-efficiency/verify_all_techniques_n6.py) |
+| 10 | ✅ | v2 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준) | [전체](techniques/) |
 | 5 | | v1 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거 | [실험](experiments/experiment_full_n6_pipeline.py) |
 | 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
 | 6 | | v1 | **AI Energy Savings Guide** | 실무 가이드 — 기법, 하이퍼파라미터, 벤치마크 | [가이드](docs/ai-energy-savings-guide.md) |
 | 6 | | v1 | **Chip Architecture Guide** | GPU SM, HBM, TSMC pitch — 120+ EXACT | [가이드](docs/chip-architecture-guide.md) |
-| — | ✅ | v1 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 실험96.2%, 물리한계10, TP28, 발견12 | [전수검증](docs/ai-efficiency/full-verification-matrix.md) · [물리한계](docs/ai-efficiency/physical-limit-proof.md) · [산업](docs/ai-efficiency/industrial-validation.md) · [실험](docs/ai-efficiency/experimental-verification.md) · [TP](docs/ai-efficiency/testable-predictions.md) · [발견](docs/ai-efficiency/alien-level-discoveries.md) · [Mk.V](docs/ai-efficiency/evolution/mk-5-limit.md) · [CrossDSE](docs/ai-efficiency/cross-dse-analysis.md) |
+| — | ✅ | v1 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 실험96.2%, 물리한계10, TP28, 발견12 | [전수검증](docs/ai-efficiency/full-verification-matrix.md) |
 
 <details>
 <summary>66 Techniques 전체 목록</summary>
@@ -231,9 +231,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | ✅ | v2 | **궁극의 배터리 8단** | 셀→전극→코어→BMS→팩+그리드→전고체→핵→Omega, 1,908 DSE | [설계](docs/superpowers/specs/2026-04-01-hexa-battery-design.md) · [goal](docs/battery-architecture/goal.md) · [전수검증](docs/battery-architecture/full-verification-matrix.md) · [물리한계](docs/battery-architecture/physical-limit-proof.md) · [산업](docs/battery-architecture/industrial-validation.md) · [실험](docs/battery-architecture/experimental-verification.md) · [TP](docs/battery-architecture/testable-predictions.md) · [발견](docs/battery-architecture/alien-level-discoveries.md) · [Mk.V](docs/battery-architecture/evolution/mk-5-limit.md) |
-| 7 | ✅ | v3 | **궁극의 태양전지** | 1,584 DSE, 43%EXACT, 물리한계5, Mk.V, 발견8, TP19, CrossDSE4, 산업8사 | [goal](docs/solar-architecture/goal.md) · [한계증명](docs/solar-architecture/physical-limit-proof.md) · [발견](docs/solar-architecture/alien-level-discoveries.md) · [산업](docs/solar-architecture/industrial-validation.md) · [CrossDSE](docs/solar-architecture/cross-dse-analysis.md) · [Mk.V](docs/solar-architecture/evolution/mk-5-limit.md) |
-| 6 | | v1 | **궁극의 에너지 통합** | 4도메인 Cross-DSE, 10,225 조합, 53%EXACT 송전 | [goal](docs/energy-architecture/goal.md) · [송전](docs/power-grid/) |
+| 6 | ✅ | v2 | **궁극의 배터리 8단** | 셀→전극→코어→BMS→팩+그리드→전고체→핵→Omega, 1,908 DSE | [설계](docs/superpowers/specs/2026-04-01-hexa-battery-design.md) |
+| 7 | ✅ | v3 | **궁극의 태양전지** | 1,584 DSE, 43%EXACT, 물리한계5, Mk.V, 발견8, TP19, CrossDSE4, 산업8사 | [goal](docs/solar-architecture/goal.md) |
+| 6 | | v1 | **궁극의 에너지 통합** | 4도메인 Cross-DSE, 10,225 조합, 53%EXACT 송전 | [goal](docs/energy-architecture/goal.md) |
 
 <!-- AUTO:FOOTER_energy:START -->
 > 도메인: [battery-architecture/](docs/battery-architecture/) · [solar-architecture/](docs/solar-architecture/) · [energy-architecture/](docs/energy-architecture/) · [power-grid/](docs/power-grid/) · [thermal-management/](docs/thermal-management/) · 도구: `energy-calc` · `battery-dse` · `solar-dse`
@@ -249,11 +249,11 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | ✅ | v3 | **궁극의 환경보호 8단** | 센서→모니터→포집→정화→복원→순환→생태계→Omega, 가설88.2%EXACT | [goal](docs/environmental-protection/) · [전수검증](docs/environmental-protection/full-verification-matrix.md) · [물리한계](docs/environmental-protection/physical-limit-proof.md) · [산업](docs/environmental-protection/industrial-validation.md) · [실험](docs/environmental-protection/experimental-verification.md) · [CrossDSE](docs/environmental-protection/cross-dse-analysis.md) · [Mk.V](docs/environmental-protection/evolution/mk-5-limit.md) |
+| 6 | ✅ | v3 | **궁극의 환경보호 8단** | 센서→모니터→포집→정화→복원→순환→생태계→Omega, 가설88.2%EXACT | [goal](docs/environmental-protection/) |
 | 7 | ✅ | v1 | **HEXA-MICROPLASTICS** | 6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체 | [설계](docs/environmental-protection/microplastics-solution.md) |
-| 7 | ✅ | v4 | **궁극의 탄소포집 8단** | **30/30=100%EXACT**, DSE 3.6M, 53/54 실험검증 | [goal](docs/carbon-capture/goal.md) · [가설](docs/carbon-capture/hypotheses.md) · [DSE](docs/carbon-capture/dse-results.md) · [검증](docs/carbon-capture/experimental-validation.md) |
-| 4 | | v1 | **진화 Mk.I~V** | 환경+CCUS 양쪽 진화 로드맵, 발견 42개 | [환경Mk](docs/environmental-protection/evolution/) · [CCUSMk](docs/carbon-capture/evolution/) |
-| 5 | | v2 | **예측 + 검증** | TP 19개(환경) + **TP 24개(CCUS)** + 가설 v5(88.2%EXACT) | [환경TP](docs/environmental-protection/testable-predictions-2030.md) · [CCUS TP](docs/carbon-capture/testable-predictions.md) · [검증](docs/carbon-capture/verification.md) |
+| 7 | ✅ | v4 | **궁극의 탄소포집 8단** | **30/30=100%EXACT**, DSE 3.6M, 53/54 실험검증 | [goal](docs/carbon-capture/goal.md) |
+| 4 | | v1 | **진화 Mk.I~V** | 환경+CCUS 양쪽 진화 로드맵, 발견 42개 | [환경Mk](docs/environmental-protection/evolution/) |
+| 5 | | v2 | **예측 + 검증** | TP 19개(환경) + **TP 24개(CCUS)** + 가설 v5(88.2%EXACT) | [환경TP](docs/environmental-protection/testable-predictions-2030.md) |
 
 <!-- AUTO:FOOTER_environment:START -->
 > 도메인: [environmental-protection/](docs/environmental-protection/) · [carbon-capture/](docs/carbon-capture/) · 도구: `carbon-capture-calc`
@@ -271,10 +271,10 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 |:--:|:--:|:---:|---------|------|------|
 | 5 | | v4 | **궁극의 물질합성 8단** | 소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600 | [goal](docs/material-synthesis/goal.md) |
 | 6 | | v5 | **BT-85~88 + BT-128~134** | 결정학+합금+세라믹+고분자+상전이+결함+박막 (11 BT, **159/159 EXACT**) | [BT](docs/material-synthesis/breakthrough-theorems.md) |
-| 7 | | v4 | **가설 30/30 100%EXACT** | H-MS-01~30 전수 검증 완료, CrossDSE 8도메인 (94.1% n6) | [가설](docs/material-synthesis/hypotheses.md) · [CrossDSE](docs/material-synthesis/cross-dse-8domain-results.md) |
+| 7 | | v4 | **가설 30/30 100%EXACT** | H-MS-01~30 전수 검증 완료, CrossDSE 8도메인 (94.1% n6) | [가설](docs/material-synthesis/hypotheses.md) |
 | 8 | | v4 | **산업검증 20소재** | 강철1.9Bt + 시멘트4.1Bt + 플라스틱400Mt + 반도체 — 전부 n=6 구조 | [산업](docs/material-synthesis/industrial-validation.md) |
-| 9 | | v5 | **실험검증 + TP 28/28** | 50+ 발표 데이터셋 + 28 예측 전수 검증 (14 VERIFIED + 14 PARTIAL, 0 FAIL) | [실험](docs/material-synthesis/experimental-verification.md) · [TP](docs/material-synthesis/testable-predictions.md) |
-| 10 | | v4 | **물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계 | [proof](docs/material-synthesis/physical-limit-proof.md) · [Mk.V](docs/material-synthesis/evolution/mk-5-limit.md) |
+| 9 | | v5 | **실험검증 + TP 28/28** | 50+ 발표 데이터셋 + 28 예측 전수 검증 (14 VERIFIED + 14 PARTIAL, 0 FAIL) | [실험](docs/material-synthesis/experimental-verification.md) |
+| 10 | | v4 | **물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계 | [proof](docs/material-synthesis/physical-limit-proof.md) |
 
 <!-- AUTO:FOOTER_materials:START -->
 > 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`
@@ -291,7 +291,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 4 | | v2 | **궁극의 로봇 8단** | 8단 DSE, 270,000 조합, BT-123~127, 가설83.3% | [goal](docs/robotics/goal.md) |
-| — | ✅ | v1 | **천장확인** | BT 97.1%EXACT, 산업99.1%(6사), 실험97.1%, 물리한계10, TP28, 발견10 | [전수검증](docs/robotics/full-verification-matrix.md) · [물리한계](docs/robotics/physical-limit-proof.md) · [산업](docs/robotics/industrial-validation.md) · [실험](docs/robotics/experimental-verification.md) · [TP](docs/robotics/testable-predictions.md) · [발견](docs/robotics/alien-level-discoveries.md) · [Mk.V](docs/robotics/evolution/mk-5-limit.md) · [CrossDSE](docs/robotics/cross-dse-analysis.md) |
+| — | ✅ | v1 | **천장확인** | BT 97.1%EXACT, 산업99.1%(6사), 실험97.1%, 물리한계10, TP28, 발견10 | [전수검증](docs/robotics/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_robotics:START -->
 > 도메인: [robotics/](docs/robotics/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `robot-dse`
@@ -307,9 +307,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 7 | ✅ | v4 | **궁극의 초전도체** | 100%EXACT, BT 11개, CrossDSE 8도메인, TP28, 산업+실험검증 | [goal](docs/superconductor/goal.md) · [BT](docs/superconductor/breakthrough-theorems.md) · [🛸10](docs/superconductor/alien-10-discoveries.md) |
-| 5 | ✅ | v2 | **궁극의 순수수학** | 11 불가능성 정리(=영구 수학적 진리), TP 24, Mk.V | [goal](docs/pure-mathematics/goal.md) · [불가능성](docs/pure-mathematics/mathematical-impossibility-theorems.md) · [전수검증](docs/pure-mathematics/full-verification-matrix.md) · [TP](docs/pure-mathematics/testable-predictions.md) |
-| 3 | ✅ | v2 | **궁극의 우주론/입자** | 30가설 53.3%EXACT, TP 28, 발견9, Mk.V | [goal](docs/cosmology-particle/goal.md) · [전수검증](docs/cosmology-particle/full-verification-matrix.md) · [TP](docs/cosmology-particle/testable-predictions.md) · [발견](docs/cosmology-particle/alien-level-discoveries.md) |
+| 7 | ✅ | v4 | **궁극의 초전도체** | 100%EXACT, BT 11개, CrossDSE 8도메인, TP28, 산업+실험검증 | [goal](docs/superconductor/goal.md) |
+| 5 | ✅ | v2 | **궁극의 순수수학** | 11 불가능성 정리(=영구 수학적 진리), TP 24, Mk.V | [goal](docs/pure-mathematics/goal.md) |
+| 3 | ✅ | v2 | **궁극의 우주론/입자** | 30가설 53.3%EXACT, TP 28, 발견9, Mk.V | [goal](docs/cosmology-particle/goal.md) |
 
 <!-- AUTO:FOOTER_physics:START -->
 > 도메인: [superconductor/](docs/superconductor/) · [pure-mathematics/](docs/pure-mathematics/) · [cosmology-particle/](docs/cosmology-particle/) · [quantum-computing/](docs/quantum-computing/) · 도구: `sc-dse` · `gut-calc-rust` · `quantum-calc` · `optics-calc`
@@ -325,8 +325,8 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 5 | | v1 | **궁극의 프로그래밍언어** | DSE 6,480 조합, n6=96.0% | [goal](docs/programming-language/goal.md) · [설계서](docs/superpowers/specs/2026-04-01-ultimate-programming-language-design.md) |
-| — | ✅ | v1 | **천장확인** | 61claims 95.1%EXACT, 산업98.6%, 실험100%, 물리한계10, TP28, 발견10 | [전수검증](docs/software-design/full-verification-matrix.md) · [물리한계](docs/software-design/physical-limit-proof.md) · [산업](docs/software-design/industrial-validation.md) · [실험](docs/software-design/experimental-verification.md) · [TP](docs/software-design/testable-predictions.md) · [발견](docs/software-design/alien-level-discoveries.md) · [Mk.V](docs/software-design/evolution/mk-5-limit.md) · [CrossDSE](docs/software-design/cross-dse-analysis.md) |
+| 5 | | v1 | **궁극의 프로그래밍언어** | DSE 6,480 조합, n6=96.0% | [goal](docs/programming-language/goal.md) |
+| — | ✅ | v1 | **천장확인** | 61claims 95.1%EXACT, 산업98.6%, 실험100%, 물리한계10, TP28, 발견10 | [전수검증](docs/software-design/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_software:START -->
 > 도메인: [programming-language/](docs/programming-language/) · [compiler-os/](docs/compiler-os/) · [software-design/](docs/software-design/) · [cryptography/](docs/cryptography/) · [network-protocol/](docs/network-protocol/) · [blockchain/](docs/blockchain/) · 도구: `lang-dse` · `crypto-calc` · `interconnect-calc`
@@ -343,7 +343,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 5 | | v1 | **궁극의 디스플레이 8단** | 소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega | [goal](docs/display/goal.md) |
-| — | ✅ | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [검증](docs/display/full-verification-matrix.md) · [물리한계](docs/display/physical-limit-proof.md) · [산업](docs/display/industrial-validation.md) · [실험](docs/display/experimental-verification.md) · [TP](docs/display/testable-predictions.md) · [CrossDSE](docs/display/cross-dse-analysis.md) |
+| — | ✅ | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [검증](docs/display/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_display:START -->
 > 도메인: [display/](docs/display/)
@@ -360,7 +360,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 5 | | v1 | **궁극의 오디오 7단** | 트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega | [goal](docs/audio/goal.md) |
-| — | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [검증](docs/audio/full-verification-matrix.md) · [물리한계](docs/audio/physical-limit-proof.md) · [산업](docs/audio/industrial-validation.md) · [실험](docs/audio/experimental-verification.md) · [TP](docs/audio/testable-predictions.md) · [CrossDSE](docs/audio/cross-dse-analysis.md) |
+| — | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [검증](docs/audio/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_audio:START -->
 > 도메인: [audio/](docs/audio/)
@@ -377,7 +377,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 3 | | v1 | **궁극의 안전 8단** | 소재→공정→감지→칩→방호→통합→자율→제로사고, DSE 7,776 | [goal](docs/safety/goal.md) |
-| 3 | | v1 | **가설 30+극한 20** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA=sopfr·n, 20/30 EXACT | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
+| 3 | | v1 | **가설 30+극한 20** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA=sopfr·n, 20/30 EXACT | [가설](docs/safety/hypotheses.md) |
 
 <!-- AUTO:FOOTER_safety:START -->
 > 도메인: [safety/](docs/safety/)
