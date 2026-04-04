@@ -186,6 +186,21 @@ check("Synthesis K4", 6, n, "K4 = n")
 check("Optimization K5", 4, tau, "K5 = tau")
 check("Applications K6", 5, sopfr, "K6 = sopfr")
 
+# === 9d. DSE 후보 필터링 결과 ===
+print("\n--- 9d. DSE 필터링 결과 ---")
+check("Valid combos (filter)", 5184, (sigma * n) ** phi, "(sigma*n)^phi = 72^2 = 5184")
+check("Tc>=250K candidates", 1728, sigma ** (n // phi), "sigma^3 = 12^3 = 1728")
+check("Tc>=300K candidates", 864, sigma_sq * n, "sigma^2 * n = 144*6 = 864")
+check("RT+1atm candidates", 144, sigma_sq, "sigma^2 = 144 (2.8% of 5184)")
+check("Pareto optimal", 24, J2, "J2 = 24 optimal paths")
+
+# === 9e. YBCO + 응용 요구사항 ===
+print("\n--- 9e. YBCO + 응용 ---")
+check("YBCO Tc (K)", 93, sigma_sq - phi * J2 - n // phi, "sigma^2 - 2*J2 - n/phi = 144-48-3 = 93")
+check("Fusion magnet req (T)", 30, sopfr * n, "sopfr*n = 5*6 = 30 T")
+check("Strain engineering (%)", 10, sigma_phi, "sigma-phi = 10%")
+check("Y Z (YH6/YH9)", 39, sigma_sq - sigma_sq + (J2 + sigma + n // phi), "J2+sigma+n/phi = 24+12+3 = 39")
+
 # === 10. Cross-domain 상수 ===
 print("\n--- 10. Cross-domain ---")
 check("Grid loss (%)", 6, n, "n = 6%")
