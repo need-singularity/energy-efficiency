@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 36,
+    "total_products": 37,
     "total_domains": 44,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
@@ -1104,7 +1104,7 @@
       "alien_index": 10,
       "ceiling": true,
       "bt_exact_pct": 100,
-      "bt_count": 21,
+      "bt_count": 40,
       "industry_pct": 100,
       "industry_detail": "Raptor/Dawn/ITER/NERVA",
       "experiment_pct": 100,
@@ -1114,7 +1114,7 @@
       "discovery_count": 5,
       "cross_dse_domains": 8,
       "mk_count": 5,
-      "summary_extra": "DSE 1,679,616조합, Mk.I~V 진화 (Mk.V=SF사고실험❌)",
+      "summary_extra": "HEXA-WARP(워프) + HEXA-UFO(비행접시), Mk.I~V 통합, RT-SC 기반",
       "domains": [
         "warp-drive"
       ],
@@ -1125,7 +1125,7 @@
           "ufo": 10,
           "ceiling": true,
           "ver": "v1",
-          "description": "60/60 EXACT, 0.1c=1/(σ-φ) [BT-102], Q=σ-φ=10 [BT-298], D-T sopfr=5 [BT-98], ITER TF=3n=18 [BT-302], 48V=σ·τ [BT-325], 8단 DSE 6⁸=1,679,616, Mk.I화학→Mk.V Alcubierre(SF)",
+          "description": "60/60 EXACT, 0.1c=1/(σ-φ) [BT-102], Q=σ-φ=10 [BT-298], D-T sopfr=5 [BT-98], ITER TF=3n=18 [BT-302], 48V=σ·τ [BT-325], 8단 DSE 6⁸=1,679,616, Mk.I~V 통합(단일문서)",
           "links": [
             {
               "label": "설계",
@@ -1134,26 +1134,19 @@
             {
               "label": "검증",
               "path": "docs/warp-drive/verify_warp_n6.py"
-            },
+            }
+          ]
+        },
+        {
+          "name": "HEXA-UFO 비행접시",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "48/49 EXACT (98%), Meissner 무동력부양 + 48T SC 추진 + Q=10 탁상 핵융합, D=J₂=24m 원반, Mach σ-φ=10 대기권, Isp=σ·J₂·10³=288,000s 우주, 승무원 n=6 (BT-273)",
+          "links": [
             {
-              "label": "Mk.I",
-              "path": "docs/warp-drive/evolution/mk-1-current.md"
-            },
-            {
-              "label": "Mk.II",
-              "path": "docs/warp-drive/evolution/mk-2-near-term.md"
-            },
-            {
-              "label": "Mk.III",
-              "path": "docs/warp-drive/evolution/mk-3-mid-term.md"
-            },
-            {
-              "label": "Mk.IV",
-              "path": "docs/warp-drive/evolution/mk-4-long-term.md"
-            },
-            {
-              "label": "Mk.V(SF)",
-              "path": "docs/warp-drive/evolution/mk-5-theoretical.md"
+              "label": "설계",
+              "path": "docs/room-temp-sc/ufo-flying-saucer.md"
             }
           ]
         }
