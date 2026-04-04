@@ -248,7 +248,7 @@ fn test_telescope_scan_all() {
         results.contains_key("BarrierLens"),
         "Missing BarrierLens results"
     );
-    assert_eq!(telescope.lens_count(), 35);
+    assert!(telescope.lens_count() >= 179, "Expected at least 179 lenses, got {}", telescope.lens_count());
 }
 
 // ──────────────────────────────────────────────
@@ -659,10 +659,11 @@ fn test_all_22_core_lenses_run() {
 #[test]
 fn test_telescope_has_all_24_lenses() {
     let telescope = Telescope::new();
-    assert_eq!(
-        telescope.lens_count(),
-        35,
-        "Telescope::new() should register 35 lenses"
+    // 179 dedicated + GenericLens auto-instantiation from registry
+    assert!(
+        telescope.lens_count() >= 179,
+        "Telescope::new() should register at least 179 dedicated lenses, got {}",
+        telescope.lens_count()
     );
 }
 
@@ -686,10 +687,9 @@ fn test_telescope_scan_all_24() {
     let telescope = Telescope::new();
     let results = telescope.scan_all(&data, 20, 3);
 
-    assert_eq!(
-        results.len(),
-        35,
-        "scan_all should return results for all 35 lenses, got {}",
+    assert!(
+        results.len() >= 179,
+        "scan_all should return results for at least 179 lenses, got {}",
         results.len()
     );
 

@@ -272,17 +272,8 @@ impl DiscoveryLoop {
     /// Execute a single Claude CLI call for a discovery action.
     /// Returns the result (success/failure + files modified).
     pub fn execute_action(&mut self, action: &DiscoveryAction) -> CliResult {
-        if !self.config.enabled {
-            return CliResult {
-                action: action.clone(),
-                success: false,
-                files_modified: Vec::new(),
-                summary: "CLI disabled".to_string(),
-                exit_code: -1,
-            };
-        }
-
-        // Check retry limit (phi = 2)
+        // Check retry limit (phi = 2) — must precede enabled check
+        // so exhausted actions are rejected even when CLI is disabled
         let action_key = format!("{:?}", action);
         let retries = self.retries.get(&action_key).copied().unwrap_or(0);
         if retries >= PHI {
@@ -292,6 +283,16 @@ impl DiscoveryLoop {
                 files_modified: Vec::new(),
                 summary: format!("Retry limit reached (phi={})", PHI),
                 exit_code: -2,
+            };
+        }
+
+        if !self.config.enabled {
+            return CliResult {
+                action: action.clone(),
+                success: false,
+                files_modified: Vec::new(),
+                summary: "CLI disabled".to_string(),
+                exit_code: -1,
             };
         }
 

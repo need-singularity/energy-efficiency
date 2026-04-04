@@ -40,21 +40,46 @@ impl Lens for UextrapolationLens {
             centroid[j] *= inv_n;
         }
 
-        // Compute distance from centroid for each point
-        let mut centroid_dists: Vec<(f64, usize)> = (0..n)
+        // Find farthest point from centroid to define a principal axis
+        let mut max_dist_sq = 0.0f64;
+        let mut farthest_idx = 0usize;
+        for i in 0..n {
+            let row = i * d;
+            let mut sq = 0.0;
+            for j in 0..d {
+                let diff = data[row + j] - centroid[j];
+                sq += diff * diff;
+            }
+            if sq > max_dist_sq {
+                max_dist_sq = sq;
+                farthest_idx = i;
+            }
+        }
+
+        // Build principal axis direction (centroid → farthest point)
+        let mut axis = vec![0.0f64; d];
+        let axis_len = max_dist_sq.sqrt();
+        if axis_len > 1e-15 {
+            let row = farthest_idx * d;
+            for j in 0..d {
+                axis[j] = (data[row + j] - centroid[j]) / axis_len;
+            }
+        }
+
+        // Project each point onto the principal axis (signed projection preserves direction)
+        let mut projections: Vec<(f64, usize)> = (0..n)
             .map(|i| {
                 let row = i * d;
-                let mut sq = 0.0;
+                let mut proj = 0.0;
                 for j in 0..d {
-                    let diff = data[row + j] - centroid[j];
-                    sq += diff * diff;
+                    proj += (data[row + j] - centroid[j]) * axis[j];
                 }
-                (sq.sqrt(), i)
+                (proj, i)
             })
             .collect();
-        centroid_dists.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap_or(std::cmp::Ordering::Equal));
+        projections.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap_or(std::cmp::Ordering::Equal));
 
-        let ordering: Vec<usize> = centroid_dists.iter().map(|&(_, idx)| idx).collect();
+        let ordering: Vec<usize> = projections.iter().map(|&(_, idx)| idx).collect();
 
         // --- Step 2: Per-dimension linear regression along ordering ---
         // For each dimension, fit y = a*t + b where t = ordering index

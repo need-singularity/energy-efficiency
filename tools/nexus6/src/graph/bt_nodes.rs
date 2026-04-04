@@ -1,4 +1,4 @@
-//! Breakthrough Theorem (BT-1 ~ BT-127) graph nodes and cross-domain edges.
+//! Breakthrough Theorem (BT-1 ~ BT-127, BT-185) graph nodes and cross-domain edges.
 //!
 //! Each BT is a graph node with id, title, domains, and star rating.
 //! Edges are created between BTs that share at least one domain.
@@ -15,7 +15,7 @@ struct BtEntry {
     stars: u8, // 0 = conjecture, 1..3 = star rating
 }
 
-/// All 127 BTs with their domains and star ratings.
+/// All BTs with their domains and star ratings (BT-1~127, BT-185, BT-210~225, BT-233~246).
 const BT_ENTRIES: &[BtEntry] = &[
     BtEntry { id: 1, title: "phi(6)=2 Universal Pairing", domains: &["SC", "Fusion", "Magnet", "QC", "Tokamak", "Chip", "Crypto"], stars: 2 },
     BtEntry { id: 2, title: "tau(6)=4 Bohm-BCS Bridge", domains: &["SC", "Fusion", "Tokamak", "Plasma"], stars: 2 },
@@ -144,6 +144,42 @@ const BT_ENTRIES: &[BtEntry] = &[
     BtEntry { id: 125, title: "tau=4 Locomotion/Flight Minimum Stability", domains: &["Robotics", "Energy", "Chip"], stars: 2 },
     BtEntry { id: 126, title: "sopfr=5 Fingers + 2^sopfr=32 Grasp Space", domains: &["Robotics", "Biology", "DisplayAudio"], stars: 2 },
     BtEntry { id: 127, title: "3D Kissing sigma=12 + Hexacopter n=6", domains: &["Robotics", "Cosmology", "Material"], stars: 2 },
+    // BT-185: Pure Mathematics — Algebraic Blowup-Emergence E₆ Bridge
+    BtEntry { id: 185, title: "Algebraic Blowup-Emergence E6 Bridge", domains: &["Math", "NumberTheory", "Topology", "Particle", "StringTheory", "Biology"], stars: 3 },
+    // BT-210~211, BT-219, BT-222: Cognitive Architecture
+    BtEntry { id: 210, title: "Cortex 6 Layers = n Universality", domains: &["Cognitive", "Biology", "Math", "Neuroscience"], stars: 3 },
+    BtEntry { id: 211, title: "Grid Cell Hexagonal = Perfect Number Space Filling", domains: &["Cognitive", "Math", "Neuroscience", "Topology"], stars: 2 },
+    BtEntry { id: 219, title: "Working Memory tau±mu=4±1 Cognitive Channel", domains: &["Cognitive", "AI", "Neuroscience", "InfoTheory"], stars: 3 },
+    BtEntry { id: 222, title: "Compiler-Cortex tau=4 Pipeline Isomorphism", domains: &["Cognitive", "Software", "Chip", "AI", "Neuroscience"], stars: 3 },
+    // BT-212~213, BT-221, BT-224: Temporal Architecture
+    BtEntry { id: 212, title: "Sexagesimal sigma*sopfr=60 Universal Time", domains: &["Temporal", "Math", "NumberTheory", "Cosmology"], stars: 3 },
+    BtEntry { id: 213, title: "GPS Orbital Plane n=6 Optimal", domains: &["Temporal", "Cosmology", "Network", "Math"], stars: 2 },
+    BtEntry { id: 221, title: "Circadian Triple Stack J2=24h sigma=12mo", domains: &["Temporal", "Biology", "Neuroscience", "Math"], stars: 3 },
+    BtEntry { id: 224, title: "Cesium-133 n=6 Shell Atomic Clock", domains: &["Temporal", "Physics", "Chemistry", "Math"], stars: 2 },
+    // BT-214~215, BT-220, BT-223: Social Architecture
+    BtEntry { id: 214, title: "Six Degrees = n Social Topology", domains: &["Social", "Network", "Math", "Topology"], stars: 3 },
+    BtEntry { id: 215, title: "Dunbar sigma²+n=150 Cognitive-Social Bridge", domains: &["Social", "Cognitive", "Biology", "Math"], stars: 2 },
+    BtEntry { id: 220, title: "Moral Foundation n=6 Universal Ethics", domains: &["Social", "Cognitive", "Math", "Biology"], stars: 2 },
+    BtEntry { id: 223, title: "Hexagonal Urban Planning n=6 Spatial Optimization", domains: &["Social", "Math", "Topology", "Environment"], stars: 2 },
+    // BT-225: Cross-Domain Meta
+    BtEntry { id: 225, title: "Cognitive-Social-Temporal Triple Bridge", domains: &["Cognitive", "Social", "Temporal", "Math", "Neuroscience", "Biology"], stars: 3 },
+    // BT-233~237: Transportation
+    BtEntry { id: 233, title: "Transportation n=6 Universality", domains: &["Transportation", "Energy", "Chip", "Material", "Robotics"], stars: 3 },
+    BtEntry { id: 234, title: "Railway Signaling tau=4 Safety", domains: &["Transportation", "Network", "Software"], stars: 2 },
+    BtEntry { id: 235, title: "Maritime IMO n=6 Safety", domains: &["Transportation", "Environment", "Network"], stars: 3 },
+    BtEntry { id: 236, title: "Automotive Safety n=6", domains: &["Transportation", "Robotics", "AI", "Software"], stars: 2 },
+    BtEntry { id: 237, title: "Logistics Supply Chain n=6", domains: &["Transportation", "Network", "Software", "Math"], stars: 2 },
+    // BT-238~242: Medical
+    BtEntry { id: 238, title: "Surgical Safety n=6", domains: &["Medical", "Biology", "Software"], stars: 3 },
+    BtEntry { id: 239, title: "Critical Care Scoring n=6", domains: &["Medical", "Biology", "Math"], stars: 3 },
+    BtEntry { id: 240, title: "Cardiac System n=6", domains: &["Medical", "Biology", "Chip"], stars: 3 },
+    BtEntry { id: 241, title: "WHO Social Determinants n=6", domains: &["Medical", "Social", "Biology"], stars: 2 },
+    BtEntry { id: 242, title: "Dental n=6", domains: &["Medical", "Biology", "Math"], stars: 3 },
+    // BT-243~246: Transportation Extended
+    BtEntry { id: 243, title: "Inline-6 Engine Perfect Balance", domains: &["Transportation", "Energy", "Math"], stars: 3 },
+    BtEntry { id: 244, title: "Automotive Voltage Ladder 6-12-24-48", domains: &["Transportation", "Energy", "Chip", "Battery"], stars: 3 },
+    BtEntry { id: 245, title: "Transmission Gear Count Convergence", domains: &["Transportation", "Math"], stars: 2 },
+    BtEntry { id: 246, title: "F1 Racing n=6 Architecture", domains: &["Transportation", "Energy", "Math"], stars: 2 },
 ];
 
 /// Create a Node from a BtEntry.
@@ -172,7 +208,7 @@ fn bt_to_node(bt: &BtEntry) -> Node {
     }
 }
 
-/// Populate a DiscoveryGraph with all 127 BT nodes and cross-domain edges.
+/// Populate a DiscoveryGraph with all BT nodes and cross-domain edges.
 ///
 /// Edges are created between any two BTs that share at least one domain.
 /// Edge strength is proportional to the number of shared domains.
@@ -261,7 +297,7 @@ mod tests {
     fn test_populate_bt_graph_node_count() {
         let mut graph = DiscoveryGraph::new();
         populate_bt_graph(&mut graph);
-        assert_eq!(graph.nodes.len(), 127, "Should have exactly 127 BT nodes");
+        assert_eq!(graph.nodes.len(), 155, "Should have exactly 155 BT nodes (BT-1~127 + BT-185 + BT-210~225 + BT-233~246)");
     }
 
     #[test]
@@ -283,7 +319,7 @@ mod tests {
 
     #[test]
     fn test_bt_count_and_domains() {
-        assert_eq!(bt_count(), 127);
+        assert_eq!(bt_count(), 155);
         let domain_count = unique_domain_count();
         assert!(
             domain_count >= 30,
@@ -295,9 +331,10 @@ mod tests {
     #[test]
     fn test_bts_in_domain() {
         let robotics = bts_in_domain("Robotics");
-        assert_eq!(robotics.len(), 5, "Robotics should have BT-123~127");
+        assert_eq!(robotics.len(), 7, "Robotics should have BT-123~127 + BT-233 + BT-236");
         assert!(robotics.contains(&"BT-123".to_string()));
         assert!(robotics.contains(&"BT-127".to_string()));
+        assert!(robotics.contains(&"BT-233".to_string()));
     }
 
     #[test]
