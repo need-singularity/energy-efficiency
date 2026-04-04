@@ -55,11 +55,7 @@ def gen_alien_index(data):
         if not sec:
             continue
 
-        # Use alien_index_row if provided (exact match to README)
-        if sec.get("alien_index_row"):
-            lines.append(sec["alien_index_row"])
-            continue
-
+        # SSOT: always auto-generate from structured fields (never use alien_index_row)
         icon = sec["icon"]
         title = sec["title"]
         ai = sec["alien_index"]
@@ -238,22 +234,16 @@ def main():
     for sec in data["sections"]:
         sid = sec["id"]
 
-        # SUMMARY: use raw text if provided, otherwise generate
-        if sec.get("summary_raw"):
-            summary = sec["summary_raw"]
-        else:
-            summary = _gen_summary_fallback(sec)
+        # SSOT: always auto-generate summary from structured fields
+        summary = _gen_summary(sec)
         readme_text, _ = replace_marker(readme_text, f"SUMMARY_{sid}", summary)
 
         # Products table
         products_table = gen_products_table(sec)
         readme_text = replace_products_table(readme_text, sid, products_table)
 
-        # FOOTER: use raw text if provided, otherwise generate
-        if sec.get("footer_raw"):
-            footer = sec["footer_raw"]
-        else:
-            footer = _gen_footer_fallback(sec)
+        # SSOT: always auto-generate footer from structured fields
+        footer = _gen_footer(sec)
         readme_text, _ = replace_marker(readme_text, f"FOOTER_{sid}", footer)
 
         print(f"  [OK] {sid}: SUMMARY + 제품테이블 + FOOTER 치환")
@@ -283,8 +273,8 @@ def main():
             print("\n[DONE] 변경 없음 (이미 최신)")
 
 
-def _gen_summary_fallback(sec):
-    """Fallback summary generator when summary_raw is not set."""
+def _gen_summary(sec):
+    """SSOT: auto-generate summary line from structured JSON fields."""
     parts = [f"**🛸{sec['alien_index']}**"]
     if sec.get("ceiling"):
         parts.append("✅")
@@ -315,8 +305,8 @@ def _gen_summary_fallback(sec):
     return "> " + " | ".join(parts)
 
 
-def _gen_footer_fallback(sec):
-    """Fallback footer generator when footer_raw is not set."""
+def _gen_footer(sec):
+    """SSOT: auto-generate footer line from structured JSON fields."""
     parts = [f"[{d}/](docs/{d}/)" for d in sec.get("domains", [])]
     result = "> 도메인: " + " · ".join(parts)
     tools = sec.get("tools", [])

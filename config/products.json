@@ -183,10 +183,7 @@
           ]
         }
       ],
-      "anchor": "-핵융합-fusion",
-      "alien_index_row": "| [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |",
-      "summary_raw": "> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+ | 산업87% (7장치) | 42보편핵물리100% | 79/79검증PASS | 물리한계12 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V | 물리천장증명(QED)",
-      "footer_raw": "> 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`"
+      "anchor": "-핵융합-fusion"
     },
     {
       "id": "chip",
@@ -319,10 +316,7 @@
           ]
         }
       ],
-      "anchor": "-칩--반도체-chip",
-      "alien_index_row": "| [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | ✅ | 74.5% | 92.6% (6벤더) | — | 28 | 12 |",
-      "summary_raw": "> **🛸7** | ✅ | BT 13개 74.5%EXACT | DSE 3,000 | 산업92.6% (6벤더) | 물리한계10 | TP28 | 발견12 | Mk.V",
-      "footer_raw": "> 도메인: [chip-architecture/](docs/chip-architecture/) · 도구: `gpu-arch-calc` · `chip-n6-calc` · `dse-calc` · `semiconductor-calc`"
+      "anchor": "-칩--반도체-chip"
     },
     {
       "id": "ai",
@@ -462,10 +456,7 @@
           ]
         }
       ],
-      "anchor": "-ai--ml",
-      "alien_index_row": "| [🤖 AI/ML](#-ai--ml) | 🛸6 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |",
-      "summary_raw": "> **🛸6** | ✅ | BT 24개 89.7%EXACT | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V | CrossDSE",
-      "footer_raw": "> 도메인: [ai-efficiency/](docs/ai-efficiency/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `n6_calculator.py`"
+      "anchor": "-ai--ml"
     },
     {
       "id": "energy",
@@ -595,10 +586,7 @@
           ]
         }
       ],
-      "anchor": "-에너지-energy",
-      "alien_index_row": "| [⚡ 에너지](#-에너지-energy) | 🛸8 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |",
-      "summary_raw": "> **🛸8** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | 배터리+태양전지🛸10 | Mk.V",
-      "footer_raw": "> 도메인: [battery-architecture/](docs/battery-architecture/) · [solar-architecture/](docs/solar-architecture/) · [energy-architecture/](docs/energy-architecture/) · [power-grid/](docs/power-grid/) · [thermal-management/](docs/thermal-management/) · 도구: `energy-calc` · `battery-dse` · `solar-dse`"
+      "anchor": "-에너지-energy"
     },
     {
       "id": "environment",
@@ -741,10 +729,7 @@
           ]
         }
       ],
-      "anchor": "-환경보호-environment",
-      "alien_index_row": "| [🌍 환경보호](#-환경보호-environment) | 🛸8 | ✅ | 92.3% | 82.9% | 82.4% | 43 | 42 |",
-      "summary_raw": "> **🛸8** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | 미세플라스틱🛸10 | CCUS100%EXACT | Mk.V",
-      "footer_raw": "> 도메인: [environmental-protection/](docs/environmental-protection/) · [carbon-capture/](docs/carbon-capture/) · 도구: `carbon-capture-calc`"
+      "anchor": "-환경보호-environment"
     },
     {
       "id": "materials",
@@ -863,10 +848,7 @@
           ]
         }
       ],
-      "anchor": "-물질합성-materials",
-      "alien_index_row": "| [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |",
-      "summary_raw": "> **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3,600 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | CrossDSE 8도메인 | Mk.V",
-      "footer_raw": "> 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`"
+      "anchor": "-물질합성-materials"
     },
     {
       "id": "robotics",
@@ -950,10 +932,7 @@
           ]
         }
       ],
-      "anchor": "-로봇-robotics",
-      "alien_index_row": "| [🤖 로봇](#-로봇-robotics) | 🛸5 | ✅ | 97.1% | 99.1% (6사) | 97.1% | 28 | 10 |",
-      "summary_raw": "> **🛸5** | ✅ | BT 5개 97.1%EXACT | DSE 270,000 | 산업99.1% (6사) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V",
-      "footer_raw": "> 도메인: [robotics/](docs/robotics/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `robot-dse`"
+      "anchor": "-로봇-robotics"
     },
     {
       "id": "physics",
@@ -1060,10 +1039,7 @@
           ]
         }
       ],
-      "anchor": "-물리수학-physics--math",
-      "alien_index_row": "| [🔬 물리·수학](#-물리수학-physics--math) | 🛸7 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |",
-      "summary_raw": "> **🛸7** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 산업(🛸10(SC)) | 실험11정리(수학) | TP52 | 발견19+ | 초전도🛸10 | 순수수학🛸10 | 우주론🛸9",
-      "footer_raw": "> 도메인: [superconductor/](docs/superconductor/) · [pure-mathematics/](docs/pure-mathematics/) · [cosmology-particle/](docs/cosmology-particle/) · [quantum-computing/](docs/quantum-computing/) · 도구: `sc-dse` · `gut-calc-rust` · `quantum-calc` · `optics-calc`"
+      "anchor": "-물리수학-physics--math"
     },
     {
       "id": "software",
@@ -1157,10 +1133,7 @@
           ]
         }
       ],
-      "anchor": "-소프트웨어인프라-software--infra",
-      "alien_index_row": "| [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸6 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |",
-      "summary_raw": "> **🛸6** | ✅ | BT 5개 95.1%EXACT | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V | CrossDSE5-Way",
-      "footer_raw": "> 도메인: [programming-language/](docs/programming-language/) · [compiler-os/](docs/compiler-os/) · [software-design/](docs/software-design/) · [cryptography/](docs/cryptography/) · [network-protocol/](docs/network-protocol/) · [blockchain/](docs/blockchain/) · 도구: `lang-dse` · `crypto-calc` · `interconnect-calc`"
+      "anchor": "-소프트웨어인프라-software--infra"
     },
     {
       "id": "display",
@@ -1233,10 +1206,7 @@
           ]
         }
       ],
-      "anchor": "-디스플레이-display",
-      "alien_index_row": "| [📺 디스플레이](#-디스플레이-display) | 🛸5 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |",
-      "summary_raw": "> **🛸5** | ✅ | BT 3개 86%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V",
-      "footer_raw": "> 도메인: [display/](docs/display/) · BT-48 (J₂=24fps), BT-66 (ViT/CLIP), BT-71 (NeRF/3DGS)"
+      "anchor": "-디스플레이-display"
     },
     {
       "id": "audio",
@@ -1309,10 +1279,7 @@
           ]
         }
       ],
-      "anchor": "-오디오-audio",
-      "alien_index_row": "| [🎵 오디오](#-오디오-audio) | 🛸5 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |",
-      "summary_raw": "> **🛸5** | ✅ | BT 4개 86%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V",
-      "footer_raw": "> 도메인: [audio/](docs/audio/) · BT-48 (σ·τ=48kHz, σ=12 semitones), BT-72 (EnCodec), BT-108 (협화음), BT-76 (48 attractor)"
+      "anchor": "-오디오-audio"
     },
     {
       "id": "safety",
@@ -1373,10 +1340,7 @@
           ]
         }
       ],
-      "anchor": "-안전-safety",
-      "alien_index_row": "| [🛡️ 안전](#-안전-safety) | 🛸3 | ❌ | 66.7% | — | — | 5 | 0 |",
-      "summary_raw": "> **🛸3** | BT 66.7%EXACT | DSE 7,776 | TP5 | 가설 30+20극한 | 10개 도메인 안전 통합",
-      "footer_raw": "> 도메인: [safety/](docs/safety/) · n=6 안전 등식: (1/10)^6 = 10⁻⁶ (방호계층=n, 위험감소=σ-φ)"
+      "anchor": "-안전-safety"
     }
   ],
   "roadmap": [

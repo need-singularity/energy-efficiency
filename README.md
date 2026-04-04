@@ -58,10 +58,10 @@
 | [⚡ 에너지](#-에너지-energy) | 🛸8 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
 | [🤖 AI/ML](#-ai--ml) | 🛸6 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
 | [🌍 환경보호](#-환경보호-environment) | 🛸8 | ✅ | 92.3% | 82.9% | 82.4% | 43 | 42 |
-| [🔬 물리·수학](#-물리수학-physics--math) | 🛸7 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
+| [🔬 물리/수학](#-물리수학-physics--math) | 🛸7 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
 | [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |
 | [🤖 로봇](#-로봇-robotics) | 🛸5 | ✅ | 97.1% | 99.1% (6사) | 97.1% | 28 | 10 |
-| [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸6 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |
+| [💬 소프트웨어/인프라](#-소프트웨어인프라-software--infra) | 🛸6 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |
 | [📺 디스플레이](#-디스플레이-display) | 🛸5 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
 | [🎵 오디오](#-오디오-audio) | 🛸5 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
 | [🛡️ 안전](#-안전-safety) | 🛸3 | ❌ | 66.7% | — | — | 5 | 0 |
@@ -91,7 +91,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔥 핵융합 (Fusion)
 
 <!-- AUTO:SUMMARY_fusion:START -->
-> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+ | 산업87% (7장치) | 42보편핵물리100% | 79/79검증PASS | 물리한계12 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V | 물리천장증명(QED)
+> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+, 42보편핵물리100% | 산업87% (7장치) | 실험100% 79/79 EXACT | 물리한계12 | TP35 | 발견15 | Mk.V
 <!-- AUTO:SUMMARY_fusion:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -131,7 +131,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 AI / ML
 
 <!-- AUTO:SUMMARY_ai:START -->
-> **🛸6** | ✅ | BT 24개 89.7%EXACT | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V | CrossDSE
+> **🛸6** | ✅ | BT 24개 89.7%EXACT | CrossDSE | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_ai:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -226,7 +226,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # ⚡ 에너지 (Energy)
 
 <!-- AUTO:SUMMARY_energy:START -->
-> **🛸8** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | 배터리+태양전지🛸10 | Mk.V
+> **🛸8** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 배터리+태양전지🛸10 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | Mk.V
 <!-- AUTO:SUMMARY_energy:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -244,7 +244,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🌍 환경보호 (Environment)
 
 <!-- AUTO:SUMMARY_environment:START -->
-> **🛸8** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | 미세플라스틱🛸10 | CCUS100%EXACT | Mk.V
+> **🛸8** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 미세플라스틱🛸10 | CCUS100%EXACT | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | Mk.V
 <!-- AUTO:SUMMARY_environment:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -264,7 +264,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🧬 물질합성 (Materials)
 
 <!-- AUTO:SUMMARY_materials:START -->
-> **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3,600 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | CrossDSE 8도메인 | Mk.V
+> **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3,600 | CrossDSE 8도메인 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_materials:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -302,7 +302,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔬 물리·수학 (Physics & Math)
 
 <!-- AUTO:SUMMARY_physics:START -->
-> **🛸7** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 산업(🛸10(SC)) | 실험11정리(수학) | TP52 | 발견19+ | 초전도🛸10 | 순수수학🛸10 | 우주론🛸9
+> **🛸7** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 초전도🛸10 | 순수수학🛸10 | 우주론🛸9 | TP52 | 발견19+ | Mk.V
 <!-- AUTO:SUMMARY_physics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -320,7 +320,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 💬 소프트웨어·인프라 (Software & Infra)
 
 <!-- AUTO:SUMMARY_software:START -->
-> **🛸6** | ✅ | BT 5개 95.1%EXACT | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V | CrossDSE5-Way
+> **🛸6** | ✅ | BT 5개 95.1%EXACT | CrossDSE5-Way | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_software:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -346,7 +346,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | — | ✅ | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [검증](docs/display/full-verification-matrix.md) · [물리한계](docs/display/physical-limit-proof.md) · [산업](docs/display/industrial-validation.md) · [실험](docs/display/experimental-verification.md) · [TP](docs/display/testable-predictions.md) · [CrossDSE](docs/display/cross-dse-analysis.md) |
 
 <!-- AUTO:FOOTER_display:START -->
-> 도메인: [display/](docs/display/) · BT-48 (J₂=24fps), BT-66 (ViT/CLIP), BT-71 (NeRF/3DGS)
+> 도메인: [display/](docs/display/)
 <!-- AUTO:FOOTER_display:END -->
 
 ---
@@ -363,7 +363,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | — | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [검증](docs/audio/full-verification-matrix.md) · [물리한계](docs/audio/physical-limit-proof.md) · [산업](docs/audio/industrial-validation.md) · [실험](docs/audio/experimental-verification.md) · [TP](docs/audio/testable-predictions.md) · [CrossDSE](docs/audio/cross-dse-analysis.md) |
 
 <!-- AUTO:FOOTER_audio:START -->
-> 도메인: [audio/](docs/audio/) · BT-48 (σ·τ=48kHz, σ=12 semitones), BT-72 (EnCodec), BT-108 (협화음), BT-76 (48 attractor)
+> 도메인: [audio/](docs/audio/)
 <!-- AUTO:FOOTER_audio:END -->
 
 ---
@@ -371,7 +371,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛡️ 안전 (Safety)
 
 <!-- AUTO:SUMMARY_safety:START -->
-> **🛸3** | BT 66.7%EXACT | DSE 7,776 | TP5 | 가설 30+20극한 | 10개 도메인 안전 통합
+> **🛸3** | DSE 7,776 | 가설 30+20극한 | 10개 도메인 안전 통합 | TP5
 <!-- AUTO:SUMMARY_safety:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -380,7 +380,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 3 | | v1 | **가설 30+극한 20** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA=sopfr·n, 20/30 EXACT | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
 
 <!-- AUTO:FOOTER_safety:START -->
-> 도메인: [safety/](docs/safety/) · n=6 안전 등식: (1/10)^6 = 10⁻⁶ (방호계층=n, 위험감소=σ-φ)
+> 도메인: [safety/](docs/safety/)
 <!-- AUTO:FOOTER_safety:END -->
 
 ---
