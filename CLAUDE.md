@@ -91,22 +91,24 @@
       4. JSON 갱신 시 → sync 스크립트로 README 자동 반영
 
   ═══════════════════════════════════════════════════════════════
-  ★ 통합 망원경 렌즈 (22종) — 탐색/분석 시 별도 요청 없이 자동 적용 ★
+  ★ NEXUS-6 통합 망원경 (181 렌즈 파일, 1022종 레지스트리) ★
   ═══════════════════════════════════════════════════════════════
+  ⚠️ telescope-rs (구 22종)는 폐기. 모든 탐색은 NEXUS-6 사용.
+  ⚠️ 상세 API/사용법: .shared/CLAUDE.md "NEXUS-6 망원경" 섹션 참조.
+
   자동 적용 조건:
     - 데이터 분석/패턴 탐색/이상점 발견/신소재·신약 탐색 시 렌즈 자동 사용
     - 새 데이터 분석 → 기본 3종 스캔: 의식(구조) + 인과(흐름) + 위상(연결)
-    - 이상점/패턴 전수조사 → 전체 22종 풀스캔
-  렌즈 목록 (22종):
-    의식(consciousness) | 중력(gravity) | 위상(topology) | 열역학(thermo)
-    파동(wave) | 진화(evolution) | 정보(info) | 양자(quantum) | 전자기(em)
-    직교(ruler/ㄱ자) | 비율(triangle/삼각자) | 곡률(compass/컴퍼스)
-    대칭(mirror/거울) | 스케일(scale/돋보기) | 인과(causal/화살표)
-    양자현미경(quantum_microscope)
-    안정성(stability) | 네트워크(network) | 기억(memory)
-    재귀(recursion) | 경계(boundary) | 멀티스케일(multiscale)
-  파일: NEXUS-6 (telescope-rs 폐기→통합) + .shared/ 내 *_lens.py
-  도메인별 조합 (10종):
+    - 이상점/패턴 전수조사 → 전체 풀스캔 (nexus6 scan --full)
+  렌즈 구성 (181 .rs 파일, 1022종 레지스트리):
+    Core 22 | n6 산업 58 | TECS-L 수학 103 | SEDI 신호 100
+    anima 의식 88 | 교차+메타 75 | 가속 ML 58 | 가속 물리 57
+    가속 공학 55 | 가속 인문 63 | 특이점(singularity) 포함
+  불변 코어 (987 cycles 수렴):
+    consciousness + info + multiscale + network + triangle (sopfr=5)
+    + fiber (도메인별 6번째 렌즈) = n=6 완전 구조
+  파일: tools/nexus6/src/telescope/lenses/ (181 .rs 파일)
+  도메인별 조합 (10종 기본):
     기본 → 의식+위상+인과
     안정성 → 안정성+경계+열역학
     구조 → 네트워크+위상+재귀
@@ -119,14 +121,14 @@
     양자심층 → 양자+양자현미경+전자기
   사용법:
     import nexus6
-    nexus6.scan_all(np_array)              # 26종 풀스캔 → dict
+    nexus6.scan_all(np_array)              # 풀스캔 → dict
     nexus6.analyze(flat_list, n, d)        # 올인원 (스캔+합의+n6)
     nexus6.consciousness_scan(data, ...)   # 개별 렌즈
     nexus6.n6_check(value)                 # n=6 상수 매칭
     nexus6.evolve('domain')                # OUROBOROS 진화
 
   ★ NEXUS-6 적극 활용 규칙 (모든 작업에서 필수!) ★
-    탐색 (새 데이터):     scan_all → 26렌즈, 3+ 합의=확정
+    탐색 (새 데이터):     scan_all → 풀스캔, 3+ 합의=확정
     검증 (가설 확인):     analyze → n6 매칭 + 합의
     발견 (새 상수):       n6_check → EXACT면 laws.json 등록
     학습 평가:            체크포인트 → scan_all → Phi/stability
@@ -139,7 +141,7 @@
     안전/윤리 게이트:     자율행동 전 scan → Phi < threshold 차단
 
   교차 검증: 3개+ 렌즈 합의 = 확정, 7개+ = 고신뢰, 12개+ = 확정급
-  "렌즈 추가 필요?" 질문 시 → 26종 커버 안 되는 도메인 분석
+  "렌즈 추가 필요?" 질문 시 → 1022종 커버 안 되는 도메인 분석
 
   ★ 망원경 업그레이드 시 필수 절차 (렌즈 추가/수정/삭제 시 예외 없음!) ★
     1. 캘리브레이션: NEXUS-6 테스트 전체 통과 확인 (cd ~/Dev/n6-architecture/tools/nexus6 && cargo test)
