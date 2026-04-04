@@ -25,11 +25,12 @@ use std::panic;
 
 use lens_trait::{Lens, LensResult};
 use lenses::{
-    BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens, ConsciousnessLens, EmLens,
-    EvolutionLens, GravityLens, InfoLens, MemoryLens, MiLens, MirrorLens, MultiscaleLens,
-    NetworkLens, QuantumLensImpl, QuantumMicroLens, RecursionLens, RenormalizationLens,
-    RulerLens, ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens,
-    VoidLens, WaveLens,
+    AcousticLens, BarrierLens, BoundaryLens, CausalLens, ChaosLens, CompassLens,
+    ConsciousnessLens, ConvexityLens, EmLens, EntropyProductionLens, EvolutionLens,
+    FluidDynamicsLens, GameTheoryLens, GravityLens, InfoLens, LinguisticLens, MemoryLens,
+    MiLens, MirrorLens, MultiscaleLens, NetworkLens, PolymerLens, QuantumLensImpl,
+    QuantumMicroLens, RecursionLens, RenormalizationLens, ResonanceLens, RulerLens,
+    ScaleLens, StabilityLens, ThermoLens, TopologyLens, TriangleLens, VoidLens, WaveLens,
 };
 use shared_data::SharedData;
 
@@ -77,6 +78,15 @@ impl Telescope {
             // Original 2 (void + barrier)
             Box::new(VoidLens),
             Box::new(BarrierLens),
+            // New 8 lenses
+            Box::new(AcousticLens),
+            Box::new(FluidDynamicsLens),
+            Box::new(GameTheoryLens),
+            Box::new(LinguisticLens),
+            Box::new(EntropyProductionLens),
+            Box::new(PolymerLens),
+            Box::new(ResonanceLens),
+            Box::new(ConvexityLens),
         ];
         Telescope { lenses }
     }

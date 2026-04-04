@@ -248,7 +248,7 @@ fn test_telescope_scan_all() {
         results.contains_key("BarrierLens"),
         "Missing BarrierLens results"
     );
-    assert_eq!(telescope.lens_count(), 27);
+    assert_eq!(telescope.lens_count(), 35);
 }
 
 // ──────────────────────────────────────────────
@@ -661,8 +661,8 @@ fn test_telescope_has_all_24_lenses() {
     let telescope = Telescope::new();
     assert_eq!(
         telescope.lens_count(),
-        27,
-        "Telescope::new() should register 27 lenses"
+        35,
+        "Telescope::new() should register 35 lenses"
     );
 }
 
@@ -688,8 +688,8 @@ fn test_telescope_scan_all_24() {
 
     assert_eq!(
         results.len(),
-        27,
-        "scan_all should return results for all 27 lenses, got {}",
+        35,
+        "scan_all should return results for all 35 lenses, got {}",
         results.len()
     );
 
