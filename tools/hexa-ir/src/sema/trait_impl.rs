@@ -1,36 +1,59 @@
-/// Trait resolution — Mk.II placeholder
+/// Trait resolution — Mk.II: trait + impl verification
 ///
-/// In Mk.I, traits are not yet supported. This module provides the
-/// structural scaffolding so that Mk.II can implement:
-///   - Trait definition and method lookup
-///   - impl block resolution
-///   - Trait bounds on generics
-///
-/// For now, resolve_trait always succeeds (no-op pass).
+/// Validates trait implementations and builds dispatch tables.
 
-use crate::parser::ast::Program;
+use std::collections::HashMap;
+use crate::parser::ast::{Program, Decl};
 use super::error::SemaError;
 
-/// Trait resolver state (Mk.II: will hold trait definitions + impl tables)
+/// Trait resolver state
 pub struct TraitResolver {
-    // Mk.II: trait_defs: HashMap<String, TraitDef>
-    // Mk.II: impl_table: HashMap<(String, String), ImplBlock>
-    _placeholder: (),
+    trait_methods: HashMap<String, Vec<String>>,
 }
 
 impl TraitResolver {
     pub fn new() -> Self {
-        TraitResolver { _placeholder: () }
+        TraitResolver { trait_methods: HashMap::new() }
     }
 
     /// Resolve all trait implementations in the program.
-    /// Mk.I: no-op, always returns Ok.
-    pub fn resolve_traits(&mut self, _program: &Program) -> Result<(), Vec<SemaError>> {
-        // Mk.II will:
-        //   1. Collect all trait definitions
-        //   2. Collect all impl blocks
-        //   3. Verify each impl satisfies the trait's required methods
-        //   4. Build a dispatch table for dynamic dispatch
-        Ok(())
+    pub fn resolve_traits(&mut self, program: &Program) -> Result<(), Vec<SemaError>> {
+        let mut errors = Vec::new();
+
+        // Collect trait definitions
+        for decl in &program.decls {
+            if let Decl::TraitDecl(td) = decl {
+                let methods: Vec<String> = td.methods.iter().map(|m| m.name.clone()).collect();
+                self.trait_methods.insert(td.name.clone(), methods);
+            }
+        }
+
+        // Verify impl blocks
+        for decl in &program.decls {
+            if let Decl::ImplBlock(ib) = decl {
+                let required = match self.trait_methods.get(&ib.trait_name) {
+                    Some(m) => m.clone(),
+                    None => {
+                        errors.push(SemaError::UndefinedName {
+                            span: ib.span,
+                            name: format!("trait '{}'", ib.trait_name),
+                        });
+                        continue;
+                    }
+                };
+                let impl_names: Vec<&str> = ib.methods.iter().map(|m| m.name.as_str()).collect();
+                for req in &required {
+                    if !impl_names.contains(&req.as_str()) {
+                        errors.push(SemaError::TypeError {
+                            span: ib.span,
+                            expected: format!("method '{}' from trait '{}'", req, ib.trait_name),
+                            found: "missing".to_string(),
+                        });
+                    }
+                }
+            }
+        }
+
+        if errors.is_empty() { Ok(()) } else { Err(errors) }
     }
 }

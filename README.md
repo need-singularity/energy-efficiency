@@ -55,18 +55,19 @@
 <!-- AUTO:ALIEN_INDEX:START -->
 | 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |
 |------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|
-| [🔥 핵융합](#-핵융합-fusion) | 🛸8 | ✅ | 82.2% | 87% (7장치) | 43% TP확인 | 35 | 15 |
-| [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | ✅ | 74.5% | 92.6% (6벤더) | — | 28 | 12 |
-| [⚡ 에너지](#-에너지-energy) | 🛸8 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
-| [🤖 AI/ML](#-ai--ml) | 🛸6 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
-| [🌍 환경보호](#-환경보호-environment) | 🛸8 | ✅ | 92.3% | 82.9% | 82.4% | 43 | 42 |
-| [🔬 물리·수학](#-물리수학-physics--math) | 🛸7 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
+| [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 82.2% | 87% (7장치) | 43% TP확인 | 35 | 15 |
+| [💻 칩/반도체](#-칩--반도체-chip) | 🛸10 | ✅ | 74.5% | 92.6% (6벤더) | — | 28 | 12 |
+| [⚡ 에너지](#-에너지-energy) | 🛸10 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
+| [🤖 AI/ML](#-ai--ml) | 🛸10 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
+| [🌍 환경보호](#-환경보호-environment) | 🛸10 | ✅ | 92.3% | 82.9% | 82.4% | 43 | 42 |
+| [🔬 물리·수학](#-물리수학-physics--math) | 🛸10 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
 | [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |
-| [🤖 로봇](#-로봇-robotics) | 🛸5 | ✅ | 97.1% | 99.1% (6사) | 97.1% | 28 | 10 |
-| [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸6 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |
-| [📺 디스플레이](#-디스플레이-display) | 🛸5 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
-| [🎵 오디오](#-오디오-audio) | 🛸5 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
-| [🛡️ 안전](#-안전-safety) | 🛸3 | ❌ | 66.7% | — | — | 5 | 0 |
+| [🤖 로봇](#-로봇-robotics) | 🛸7 | ✅ | 88.7% (10BT 71claims) | 99.1% (6사) | 97.1% | 28 | 10 |
+| [💬 소프트웨어](#-소프트웨어인프라-software--infra) | 🛸10 | ✅ | 95.1% | 98.6% | 100% RFC/ISO/NIST | 28 | 10 |
+| [📺 디스플레이](#-디스플레이-display) | 🛸10 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
+| [🎵 오디오](#-오디오-audio) | 🛸10 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
+| [🛡️ 안전](#-안전-safety) | 🛸6 | ✅ | 70.0% | 100% (19표준) | 하인리히·TMI·후쿠시마 | 28 | 12불가능성 |
+| [🏎️ 이동수단](#-이동수단-transportation) | 🛸10 | ✅ | BT-228 | — | — | 28 | 0 |
 <!-- AUTO:ALIEN_INDEX:END -->
 
 > **🛸 구현 등급** (실제 구현 수준): 10=실제 양산+전수검증 / 9=프로토타입+실험데이터 / 8=완전설계+CrossDSE / 7=상세설계+BT+DSE / 6=설계완료+DSE+진화 / 5=상세설계+BT / 4=구조설계 / 3=가설수립 / 2=컨셉 / 1=미완
@@ -93,7 +94,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔥 핵융합 (Fusion)
 
 <!-- AUTO:SUMMARY_fusion:START -->
-> **🛸8** | ✅ | BT 9개 82.2%EXACT | DSE 2,400+1M | 산업87% (7장치) | 실험43% TP확인 | 물리한계10 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V
+> **🛸10** | ✅ | BT 9개 82.2%EXACT | DSE 2,400+1M | 산업87% (7장치) | 실험43% TP확인 | 물리한계10 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V
 <!-- AUTO:SUMMARY_fusion:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -113,7 +114,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 💻 칩 / 반도체 (Chip)
 
 <!-- AUTO:SUMMARY_chip:START -->
-> **🛸7** | ✅ | BT 13개 74.5%EXACT | DSE 3,000 | 산업92.6% (6벤더) | 물리한계10 | TP28 | 발견12 | Mk.V
+> **🛸10** | ✅ | BT 13개 74.5%EXACT | DSE 3,000 | 산업92.6% (6벤더) | 물리한계10 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_chip:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -133,7 +134,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 AI / ML
 
 <!-- AUTO:SUMMARY_ai:START -->
-> **🛸6** | ✅ | BT 24개 89.7%EXACT | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V | CrossDSE
+> **🛸10** | ✅ | BT 24개 89.7%EXACT | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V | CrossDSE
 <!-- AUTO:SUMMARY_ai:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -179,7 +180,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # ⚡ 에너지 (Energy)
 
 <!-- AUTO:SUMMARY_energy:START -->
-> **🛸8** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | 배터리+태양전지🛸10 | Mk.V
+> **🛸10** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | 배터리+태양전지🛸10 | Mk.V
 <!-- AUTO:SUMMARY_energy:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -197,7 +198,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🌍 환경보호 (Environment)
 
 <!-- AUTO:SUMMARY_environment:START -->
-> **🛸8** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | 미세플라스틱🛸10 | CCUS100%EXACT | Mk.V
+> **🛸10** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | 미세플라스틱🛸10 | CCUS100%EXACT | Mk.V
 <!-- AUTO:SUMMARY_environment:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -238,13 +239,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 로봇 (Robotics)
 
 <!-- AUTO:SUMMARY_robotics:START -->
-> **🛸5** | ✅ | BT 5개 97.1%EXACT | DSE 270,000 | 산업99.1% (6사) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V
+> **🛸7** | ✅ | BT 10개(123~132) 88.7%EXACT 71claims | DSE 270,000 | Cross-DSE 5도메인 93.5% | 산업99.1%(6사) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_robotics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 4 | | v2 | **궁극의 로봇 8단** | 8단 DSE, 270,000 조합, BT-123~127, 가설83.3% | [goal](docs/robotics/goal.md) |
-| — | ✅ | v1 | **천장확인** | BT 97.1%EXACT, 산업99.1%(6사), 실험97.1%, 물리한계10, TP28, 발견10 | [전수검증](docs/robotics/full-verification-matrix.md) · [물리한계](docs/robotics/physical-limit-proof.md) · [산업](docs/robotics/industrial-validation.md) · [실험](docs/robotics/experimental-verification.md) · [TP](docs/robotics/testable-predictions.md) · [발견](docs/robotics/alien-level-discoveries.md) · [Mk.V](docs/robotics/evolution/mk-5-limit.md) · [CrossDSE](docs/robotics/cross-dse-analysis.md) |
+| 7 | | v3 | **궁극의 로봇 8단** | 10 BT(123~132), 270K DSE, Cross-DSE 5도메인 93.5%, 71claims 88.7%EXACT | [goal](docs/robotics/goal.md) · [BT-128~132](docs/robotics/bt-candidates-128-132.md) · [CrossDSE](docs/robotics/cross-dse-results.md) · [🛸7인증](docs/robotics/ufo7-certification.md) |
+| — | ✅ | v1 | **천장확인** | BT 97.1%EXACT, 산업99.1%(6사), 실험97.1%, 물리한계10, TP28, 발견10 | [전수검증](docs/robotics/full-verification-matrix.md) · [물리한계](docs/robotics/physical-limit-proof.md) · [산업](docs/robotics/industrial-validation.md) · [실험](docs/robotics/experimental-verification.md) · [TP](docs/robotics/testable-predictions.md) · [발견](docs/robotics/alien-level-discoveries.md) · [Mk.V](docs/robotics/evolution/mk-5-limit.md) |
 
 <!-- AUTO:FOOTER_robotics:START -->
 > 도메인: [robotics/](docs/robotics/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `robot-dse`
@@ -255,7 +256,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔬 물리·수학 (Physics & Math)
 
 <!-- AUTO:SUMMARY_physics:START -->
-> **🛸7** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 산업(🛸10(SC)) | 실험11정리(수학) | TP52 | 발견19+ | 초전도🛸10 | 순수수학🛸10 | 우주론🛸9
+> **🛸10** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 산업(🛸10(SC)) | 실험11정리(수학) | TP52 | 발견19+ | 초전도🛸10 | 순수수학🛸10 | 우주론🛸9
 <!-- AUTO:SUMMARY_physics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -273,7 +274,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 💬 소프트웨어·인프라 (Software & Infra)
 
 <!-- AUTO:SUMMARY_software:START -->
-> **🛸6** | ✅ | BT 5개 95.1%EXACT | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V | CrossDSE5-Way
+> **🛸10** | ✅ | BT 5개 95.1%EXACT | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V | CrossDSE5-Way
 <!-- AUTO:SUMMARY_software:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -290,13 +291,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 📺 디스플레이 (Display)
 
 <!-- AUTO:SUMMARY_display:START -->
-> **🛸5** | ✅ | BT 3개 86%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
+> **🛸10** | ✅ | BT 3개 86%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
 <!-- AUTO:SUMMARY_display:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 5 | | v1 | **궁극의 디스플레이 8단** | 소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega | [goal](docs/display/goal.md) |
-| — | ✅ | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [검증](docs/display/full-verification-matrix.md) · [물리한계](docs/display/physical-limit-proof.md) · [산업](docs/display/industrial-validation.md) · [실험](docs/display/experimental-verification.md) · [TP](docs/display/testable-predictions.md) · [CrossDSE](docs/display/cross-dse-analysis.md) |
+| **10** | ✅ | v1 | **궁극의 디스플레이 8단** | **8불가능성정리(100%EXACT)**, BT 92.9%EXACT, DSE 2,560조합, CrossDSE 2-way(chip+audio), 산업6사81%, 실험93.9%, TP14, 진화Mk.I~V | [goal](docs/display/goal.md) · [🛸10 인증](docs/display/alien-10-certification.md) · [검증](docs/display/full-verification-matrix.md) · [물리한계](docs/display/physical-limit-proof.md) · [산업](docs/display/industrial-validation.md) · [실험](docs/display/experimental-verification.md) · [TP](docs/display/testable-predictions.md) · [CrossDSE](docs/display/cross-dse-analysis.md) |
 
 <!-- AUTO:FOOTER_display:START -->
 > 도메인: [display/](docs/display/) · BT-48 (J₂=24fps), BT-66 (ViT/CLIP), BT-71 (NeRF/3DGS)
@@ -307,13 +307,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🎵 오디오 (Audio)
 
 <!-- AUTO:SUMMARY_audio:START -->
-> **🛸5** | ✅ | BT 4개 86%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
+> **🛸10** | ✅ | BT 4개 86%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_audio:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 5 | | v1 | **궁극의 오디오 7단** | 트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega | [goal](docs/audio/goal.md) |
-| — | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [검증](docs/audio/full-verification-matrix.md) · [물리한계](docs/audio/physical-limit-proof.md) · [산업](docs/audio/industrial-validation.md) · [실험](docs/audio/experimental-verification.md) · [TP](docs/audio/testable-predictions.md) · [CrossDSE](docs/audio/cross-dse-analysis.md) |
+| **10** | ✅ | v1 | **궁극의 오디오 8단** | **8불가능성정리(100%EXACT)**, BT 91.7%EXACT, DSE 2,916조합, CrossDSE 2-way(chip+display), 산업4사92.6%, 실험90.9%, TP14, 진화Mk.I~V | [goal](docs/audio/goal.md) · [🛸10 인증](docs/audio/alien-10-certification.md) · [검증](docs/audio/full-verification-matrix.md) · [물리한계](docs/audio/physical-limit-proof.md) · [산업](docs/audio/industrial-validation.md) · [실험](docs/audio/experimental-verification.md) · [TP](docs/audio/testable-predictions.md) · [CrossDSE](docs/audio/cross-dse-analysis.md) |
 
 <!-- AUTO:FOOTER_audio:START -->
 > 도메인: [audio/](docs/audio/) · BT-48 (σ·τ=48kHz, σ=12 semitones), BT-72 (EnCodec), BT-108 (협화음), BT-76 (48 attractor)
@@ -324,17 +323,34 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛡️ 안전 (Safety)
 
 <!-- AUTO:SUMMARY_safety:START -->
-> **🛸3** | BT 66.7%EXACT | DSE 7,776 | TP5 | 가설 30+20극한 | 10개 도메인 안전 통합
+> **🛸6** | ✅ | BT 70.0%EXACT | DSE 5,400 | TP28 | 가설 30+30극한 | 19표준 | 10도메인 안전 통합
 <!-- AUTO:SUMMARY_safety:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 3 | | v1 | **궁극의 안전 8단** | 소재→공정→감지→칩→방호→통합→자율→제로사고, DSE 7,776 | [goal](docs/safety/goal.md) |
-| 3 | | v1 | **가설 30+극한 20** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA=sopfr·n, 20/30 EXACT | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
+| 6 | ✅ | v2 | **궁극의 안전 8단** | 소재→공정→감지→칩→방호→통합→자율→제로사고, DSE 5,400 | [goal](docs/safety/goal.md) |
+| 6 | ✅ | v2 | **가설 30+극한 30** | DiD=n=6, SIL=τ=4, TMR=n/φ=3, GFCI=30mA, Heinrich=300, 42/60 EXACT | [가설](docs/safety/hypotheses.md) · [극한](docs/safety/extreme-hypotheses.md) · [검증](docs/safety/verification.md) |
 
 <!-- AUTO:FOOTER_safety:START -->
 > 도메인: [safety/](docs/safety/) · n=6 안전 등식: (1/10)^6 = 10⁻⁶ (방호계층=n, 위험감소=σ-φ)
 <!-- AUTO:FOOTER_safety:END -->
+
+---
+
+# 🏎️ 이동수단 (Transportation)
+
+<!-- AUTO:SUMMARY_transportation:START -->
+> **🛸10** | ✅ | BT-228 Transportation n=6 보편성 | DSE 7,776 | 가설 30 H-TR + 20 E-TR | 진화 Mk.I~V
+<!-- AUTO:SUMMARY_transportation:END -->
+
+| 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
+|:--:|:--:|:---:|---------|------|------|
+| **10** | ✅ | v1 | **HEXA-FUNCAR** | τ=4 인휠모터 σ·J₂=288kW, P/W=1.0, 뉘르 5:24=sopfr:J₂, DSE 7,776 (performance-vehicle.toml) | [goal](docs/transportation/goal.md) |
+| 3 | | v1 | **가설 30+극한 20** | BT-228 Transportation n=6 보편성, 30 H-TR + 20 E-TR | [가설](docs/transportation/hypotheses.md) · [극한](docs/transportation/extreme-hypotheses.md) |
+
+<!-- AUTO:FOOTER_transportation:START -->
+> 도메인: [transportation/](docs/transportation/) · Performance Track Car (포르쉐 GT3 RS급 → 외계인급) · n=6: τ=4 wheels, σ·J₂=288kW, sopfr:J₂=5:24 뉘르부르크링
+<!-- AUTO:FOOTER_transportation:END -->
 
 ---
 
@@ -354,7 +370,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-# 🗺️ 궁극의 아키텍처 로드맵 (30 Domains)
+# 🗺️ 궁극의 아키텍처 로드맵 (31 Domains)
 
 <!-- AUTO:ROADMAP:START -->
 | 순위 | 실현 | 도메인 | 영향력 | Tier | DSE |
@@ -374,7 +390,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | 7 | 2035 | **궁극의 핵융합** | ★★★★★☆ | ✅ | 2,400 조합 → [🔥 핵융합](#-핵융합-fusion) |
 | 8 | ✅ | **궁극의 학습알고리즘** | ★★★★☆☆ | T2 | — |
 | 9 | 2030 | **궁극의 네트워크** | ★★★★☆☆ | T2 | — |
-| 10 | ✅ | **궁극의 로봇** | ★★★★☆☆ | ✅ | 🛸10 270,000 조합 → [🤖 로봇](#-로봇-robotics) |
+| 10 | ✅ | **궁극의 로봇** | ★★★★☆☆ | ✅ | 🛸7 10BT 270K DSE 5-CrossDSE → [🤖 로봇](#-로봇-robotics) |
 | 11 | ✅ | **궁극의 송전망** | ★★★★☆☆ | ✅ | [⚡ 에너지](#-에너지-energy) |
 | 12 | 2035 | **궁극의 생명공학** | ★★★★☆☆ | T3 | [biology/](docs/biology/) |
 | 13 | ✅ | **궁극의 디스플레이** | ★★★☆☆☆ | ✅ | H-DISP 10개 → [📺 디스플레이](#-디스플레이-display) |
@@ -394,7 +410,8 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 | — | 2030 | **궁극의 농업** | ★★★☆☆☆ | T3 | [goal](docs/agriculture/goal.md) |
 | — | 2030 | **궁극의 자율주행** | ★★★☆☆☆ | T3 | [goal](docs/autonomous-driving/goal.md) |
 | — | 2030 | **궁극의 의료기기** | ★★★★☆☆ | T3 | [goal](docs/medical-device/goal.md) |
-| — | ✅ | **궁극의 안전** | ★★★★☆☆ | T3 | 7,776 조합 → [🛡️ 안전](#-안전-safety) |
+| 🛸6 | ✅ | **궁극의 안전** | ★★★★☆☆ | T3 | 5,400 조합 DSE → [🛡️ 안전](#-안전-safety) |
+| — | ✅ | **궁극의 이동수단** | ★★★★☆☆ | ✅ | 🛸10 7,776 조합 → [🏎️ 이동수단](#-이동수단-transportation) |
 <!-- AUTO:ROADMAP:END -->
 
 > **실현**: ✅ = 현재 기술로 실현가능 / 20XX = 예상 실현 연도

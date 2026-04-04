@@ -79,15 +79,23 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
                 });
                 return dest;
             }
+            // Check if this is a module-qualified path: "mod::func" -> mangled "mod__func"
+            let resolved_name = if name.contains("::") && ctx.lookup_enum_variant(name).is_none() {
+                name.replace("::", "__")
+            } else {
+                name.clone()
+            };
             // Look up the variable's SSA register and emit a Load
-            let src = ctx.lookup_var(name).unwrap_or(0);
+            let src = ctx.lookup_var(&resolved_name)
+                .or_else(|| ctx.lookup_var(name))
+                .unwrap_or(0);
             let dest = ctx.fresh_reg();
             block.instrs.push(HexaInstr {
                 op: HexaOp::Load,
                 dest: Some(dest),
                 args: vec![src],
                 ty: HexaType::Any, // type resolved by pass_type_inference
-                label: Some(name.clone()), // carry variable/function name for codegen
+                label: Some(resolved_name), // carry mangled name for codegen
             });
             dest
         }
@@ -125,9 +133,55 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
         }
 
         Expr::Call { func, args, .. } => {
-            // Extract function name from callee for codegen
+            // Check for method call: obj.method(args) -> TypeName__method(obj, args)
+            if let Expr::Field { obj, name: method_name, .. } = func.as_ref() {
+                let struct_type_name = match obj.as_ref() {
+                    Expr::Ident(var_name, _) => ctx.lookup_var_struct_type(var_name).cloned(),
+                    _ => None,
+                };
+                if let Some(type_name) = struct_type_name {
+                    let dispatch_key = (type_name.clone(), method_name.clone());
+                    if let Some(mangled) = ctx.method_dispatch.get(&dispatch_key).cloned() {
+                        let self_reg = match obj.as_ref() {
+                            Expr::Ident(var_name, _) => ctx.lookup_var(var_name).unwrap_or(0),
+                            _ => lower_expr(ctx, block, obj),
+                        };
+                        let fn_name_reg = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Load,
+                            dest: Some(fn_name_reg),
+                            args: vec![0],
+                            ty: HexaType::Any,
+                            label: Some(mangled.clone()),
+                        });
+                        let mut arg_regs = vec![fn_name_reg, self_reg];
+                        for arg in args {
+                            let r = lower_expr(ctx, block, arg);
+                            arg_regs.push(r);
+                        }
+                        let dest = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Call,
+                            dest: Some(dest),
+                            args: arg_regs,
+                            ty: HexaType::Any,
+                            label: Some(mangled),
+                        });
+                        return dest;
+                    }
+                }
+            }
+
+            // Regular function call
+            // Mangle module paths: "mod::func" -> "mod__func"
             let call_name = match func.as_ref() {
-                Expr::Ident(name, _) => Some(name.clone()),
+                Expr::Ident(name, _) => {
+                    if name.contains("::") && ctx.lookup_enum_variant(name).is_none() {
+                        Some(name.replace("::", "__"))
+                    } else {
+                        Some(name.clone())
+                    }
+                }
                 _ => None,
             };
             // Lower the callee expression
@@ -418,6 +472,101 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
             return lower_match_expr(ctx, block, scrutinee, arms);
         }
 
+        Expr::TryExpr { expr, .. } => {
+            return lower_try_expr(ctx, block, expr);
+        }
+
+        Expr::Closure { params, body, .. } => {
+            // Closure lowering: allocate env struct, store captures, return env_reg
+            let param_names: Vec<&str> = params.iter().map(|(n, _)| n.as_str()).collect();
+            let captured: Vec<(String, usize)> = ctx.vars.iter()
+                .filter(|(name, _)| !param_names.contains(&name.as_str()))
+                .map(|(name, reg)| (name.clone(), *reg))
+                .collect();
+
+            let env_size = if captured.is_empty() { 8 } else { captured.len() * 8 };
+            let env_reg = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Alloc,
+                dest: Some(env_reg),
+                args: vec![env_size],
+                ty: HexaType::Any,
+                label: Some("closure_env".to_string()),
+            });
+
+            // Store captured variables into environment
+            for (i, (_cap_name, cap_reg)) in captured.iter().enumerate() {
+                if i == 0 {
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store, dest: None,
+                        args: vec![env_reg, *cap_reg],
+                        ty: HexaType::Void, label: None,
+                    });
+                } else {
+                    let offset_reg = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Alloc, dest: Some(offset_reg),
+                        args: vec![i * 8], ty: HexaType::I64, label: None,
+                    });
+                    let addr = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Add, dest: Some(addr),
+                        args: vec![env_reg, offset_reg],
+                        ty: HexaType::I64, label: None,
+                    });
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store, dest: None,
+                        args: vec![addr, *cap_reg],
+                        ty: HexaType::Void, label: None,
+                    });
+                }
+            }
+
+            let closure_id = ctx.next_closure_id();
+            let closure_fn_name = format!("__closure_{}", closure_id);
+
+            // Record closure for lambda lifting
+            ctx.closure_fns.push(super::closure::ClosureIR {
+                captures: captured.iter().enumerate().map(|(i, (name, reg))| {
+                    super::closure::CaptureInfo {
+                        name: name.clone(), outer_reg: *reg,
+                        capture_offset: i * 8, by_ref: false,
+                    }
+                }).collect(),
+                env_reg,
+                body_fn: closure_fn_name.clone(),
+            });
+
+            let result = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Alloc, dest: Some(result),
+                args: vec![env_reg],
+                ty: HexaType::Fn(vec![], Box::new(HexaType::Any)),
+                label: Some(closure_fn_name),
+            });
+            result
+        }
+
+        Expr::GenericCall { func, args, .. } => {
+            // Generic calls are monomorphized — lower as regular Call
+            let call_name = match func.as_ref() {
+                Expr::Ident(name, _) => Some(name.clone()),
+                _ => None,
+            };
+            let func_reg = lower_expr(ctx, block, func);
+            let mut arg_regs = vec![func_reg];
+            for arg in args {
+                arg_regs.push(lower_expr(ctx, block, arg));
+            }
+            let dest = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Call, dest: Some(dest),
+                args: arg_regs, ty: HexaType::Any,
+                label: call_name,
+            });
+            dest
+        }
+
         Expr::Block(blk) => {
             // Lower statements in the block; result is last expression if any
             let mut last_reg = ctx.fresh_reg();
@@ -474,17 +623,10 @@ fn lower_match_expr(
 
     for arm in arms {
         let arm_id = ctx.fresh_block();
-        let tag = match &arm.pattern {
-            Pattern::Variant { enum_name, variant_name, .. } => {
-                let qualified = format!("{}::{}", enum_name, variant_name);
-                Some(ctx.lookup_enum_variant(&qualified).map(|(t, _)| t).unwrap_or(0))
-            }
-            Pattern::Literal(v, _) => Some(*v as usize),
-            Pattern::Wildcard(_) => {
-                wildcard_id = Some(arm_id);
-                None
-            }
-        };
+        let tag = extract_pattern_tag(ctx, &arm.pattern);
+        if tag.is_none() && wildcard_id.is_none() {
+            wildcard_id = Some(arm_id);
+        }
         arm_infos.push((arm_id, tag));
     }
 
@@ -567,6 +709,9 @@ fn lower_match_expr(
             successors: Vec::new(),
         };
 
+        // Emit pattern bindings (struct destructure, variable bindings, etc.)
+        emit_pattern_bindings(ctx, &mut arm_block, &arm.pattern, scrutinee_reg);
+
         let arm_val = lower_expr(ctx, &mut arm_block, &arm.body);
 
         // Store result
@@ -608,6 +753,246 @@ fn lower_match_expr(
         args: vec![result_reg],
         ty: HexaType::I64,
         label: Some("match_result".to_string()),
+    });
+
+    loaded
+}
+
+/// Extract a comparable tag from a pattern (for match dispatch).
+/// Returns None for catch-all patterns (wildcard, binding, struct-destructure, tuple, guard-only).
+fn extract_pattern_tag(ctx: &LowerContext, pattern: &crate::parser::ast::Pattern) -> Option<usize> {
+    use crate::parser::ast::Pattern;
+    match pattern {
+        Pattern::Variant { enum_name, variant_name, .. } => {
+            let qualified = format!("{}::{}", enum_name, variant_name);
+            Some(ctx.lookup_enum_variant(&qualified).map(|(t, _)| t).unwrap_or(0))
+        }
+        Pattern::Literal(v, _) => Some(*v as usize),
+        Pattern::Guard { pattern: inner, .. } => extract_pattern_tag(ctx, inner),
+        Pattern::Wildcard(_) | Pattern::Binding(_, _) |
+        Pattern::StructDestructure { .. } | Pattern::Tuple { .. } => None,
+    }
+}
+
+/// Emit variable bindings for a pattern into the arm block.
+fn emit_pattern_bindings(
+    ctx: &mut LowerContext,
+    block: &mut HexaBlock,
+    pattern: &crate::parser::ast::Pattern,
+    scrutinee_reg: usize,
+) {
+    use crate::parser::ast::Pattern;
+    match pattern {
+        Pattern::Binding(name, _) => {
+            ctx.bind_var(name, scrutinee_reg);
+        }
+        Pattern::Variant { bindings, .. } => {
+            for (i, sub_pat) in bindings.iter().enumerate() {
+                let field_reg = ctx.fresh_reg();
+                block.instrs.push(HexaInstr {
+                    op: HexaOp::Load,
+                    dest: Some(field_reg),
+                    args: vec![scrutinee_reg, i],
+                    ty: HexaType::Any,
+                    label: Some(format!("variant_field_{}", i)),
+                });
+                emit_pattern_bindings(ctx, block, sub_pat, field_reg);
+            }
+        }
+        Pattern::StructDestructure { struct_name, fields, .. } => {
+            for (field_name, sub_pat) in fields {
+                let field_reg = if let Some((_idx, byte_offset, field_ty)) = ctx.lookup_struct_field(struct_name, field_name) {
+                    if byte_offset == 0 {
+                        let dest = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Load,
+                            dest: Some(dest),
+                            args: vec![scrutinee_reg],
+                            ty: field_ty,
+                            label: Some(format!("destr_{}", field_name)),
+                        });
+                        dest
+                    } else {
+                        let offset_reg = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Alloc,
+                            dest: Some(offset_reg),
+                            args: vec![byte_offset],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        let addr = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Add,
+                            dest: Some(addr),
+                            args: vec![scrutinee_reg, offset_reg],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        let dest = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Load,
+                            dest: Some(dest),
+                            args: vec![addr],
+                            ty: field_ty,
+                            label: Some(format!("destr_{}", field_name)),
+                        });
+                        dest
+                    }
+                } else {
+                    let dest = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Load,
+                        dest: Some(dest),
+                        args: vec![scrutinee_reg],
+                        ty: HexaType::Any,
+                        label: Some(format!("destr_{}", field_name)),
+                    });
+                    dest
+                };
+                if let Some(pat) = sub_pat {
+                    emit_pattern_bindings(ctx, block, pat, field_reg);
+                } else {
+                    ctx.bind_var(field_name, field_reg);
+                }
+            }
+        }
+        Pattern::Tuple { elements, .. } => {
+            for (i, elem_pat) in elements.iter().enumerate() {
+                let elem_reg = ctx.fresh_reg();
+                block.instrs.push(HexaInstr {
+                    op: HexaOp::Load,
+                    dest: Some(elem_reg),
+                    args: vec![scrutinee_reg, i],
+                    ty: HexaType::Any,
+                    label: Some(format!("tuple_{}", i)),
+                });
+                emit_pattern_bindings(ctx, block, elem_pat, elem_reg);
+            }
+        }
+        Pattern::Guard { pattern: inner, .. } => {
+            emit_pattern_bindings(ctx, block, inner, scrutinee_reg);
+        }
+        Pattern::Wildcard(_) | Pattern::Literal(_, _) => {}
+    }
+}
+
+/// Lower a try expression: `expr?` -> match tag, early return on Err
+fn lower_try_expr(
+    ctx: &mut LowerContext,
+    block: &mut HexaBlock,
+    expr: &Expr,
+) -> usize {
+    let result_reg = lower_expr(ctx, block, expr);
+
+    let ok_id = ctx.fresh_block();
+    let err_id = ctx.fresh_block();
+    let merge_id = ctx.fresh_block();
+
+    // Result slot for the unwrapped Ok value
+    let unwrap_slot = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Alloc,
+        dest: Some(unwrap_slot),
+        args: vec![0],
+        ty: HexaType::Any,
+        label: Some("try_result".to_string()),
+    });
+
+    // Load tag (first word: 0=Ok, 1=Err)
+    let tag_reg = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Load,
+        dest: Some(tag_reg),
+        args: vec![result_reg],
+        ty: HexaType::I64,
+        label: Some("result_tag".to_string()),
+    });
+
+    let zero_reg = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Alloc,
+        dest: Some(zero_reg),
+        args: vec![0],
+        ty: HexaType::I64,
+        label: None,
+    });
+
+    let cmp_reg = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Sub,
+        dest: Some(cmp_reg),
+        args: vec![tag_reg, zero_reg],
+        ty: HexaType::Bool,
+        label: Some("eq".to_string()),
+    });
+
+    // Branch: tag==0 -> ok, else -> err
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Branch,
+        dest: None,
+        args: vec![cmp_reg, err_id, ok_id],
+        ty: HexaType::Void,
+        label: None,
+    });
+    block.successors.push(ok_id);
+    block.successors.push(err_id);
+
+    // Ok block: unwrap payload, store, jump to merge
+    let mut ok_block = HexaBlock { id: ok_id, instrs: Vec::new(), successors: Vec::new() };
+    let ok_payload = ctx.fresh_reg();
+    ok_block.instrs.push(HexaInstr {
+        op: HexaOp::Load,
+        dest: Some(ok_payload),
+        args: vec![result_reg, 1],
+        ty: HexaType::Any,
+        label: Some("ok_payload".to_string()),
+    });
+    ok_block.instrs.push(HexaInstr {
+        op: HexaOp::Store,
+        dest: None,
+        args: vec![unwrap_slot, ok_payload],
+        ty: HexaType::Void,
+        label: None,
+    });
+    ok_block.instrs.push(HexaInstr {
+        op: HexaOp::Jump,
+        dest: None,
+        args: vec![merge_id],
+        ty: HexaType::Void,
+        label: None,
+    });
+    ok_block.successors.push(merge_id);
+    ctx.pending_blocks.push(ok_block);
+
+    // Err block: early return, propagate error
+    let mut err_block = HexaBlock { id: err_id, instrs: Vec::new(), successors: Vec::new() };
+    err_block.instrs.push(HexaInstr {
+        op: HexaOp::Return,
+        dest: None,
+        args: vec![result_reg],
+        ty: HexaType::Void,
+        label: Some("try_err_propagate".to_string()),
+    });
+    ctx.pending_blocks.push(err_block);
+
+    // Swap to merge block
+    let prev_blk = HexaBlock {
+        id: block.id,
+        instrs: std::mem::take(&mut block.instrs),
+        successors: std::mem::take(&mut block.successors),
+    };
+    ctx.pending_blocks.push(prev_blk);
+    block.id = merge_id;
+
+    // Load unwrapped value
+    let loaded = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Load,
+        dest: Some(loaded),
+        args: vec![unwrap_slot],
+        ty: HexaType::Any,
+        label: Some("try_result".to_string()),
     });
 
     loaded

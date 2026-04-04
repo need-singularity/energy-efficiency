@@ -34,6 +34,8 @@ pub struct LowerContext {
     /// Extra blocks created during expression lowering (e.g., match arms)
     /// Drained after each statement/block lowering cycle.
     pub pending_blocks: Vec<HexaBlock>,
+    /// Method dispatch: (type_name, method_name) -> mangled function name
+    pub method_dispatch: HashMap<(String, String), String>,
 }
 
 impl LowerContext {
@@ -48,6 +50,7 @@ impl LowerContext {
             var_struct_types: HashMap::new(),
             enum_defs: HashMap::new(),
             pending_blocks: Vec::new(),
+            method_dispatch: HashMap::new(),
         }
     }
 
@@ -162,6 +165,18 @@ pub fn lower_program(program: &ast::Program) -> Vec<HexaFunction> {
                     .collect();
                 ctx.enum_defs.insert(e.name.clone(), variants);
             }
+            ast::Decl::ModuleDecl(m) => {
+                register_module_types(&mut ctx, &m.decls);
+            }
+            ast::Decl::ImplBlock(ib) => {
+                for method in &ib.methods {
+                    let mangled = format!("{}__{}", ib.target_type, method.name);
+                    ctx.method_dispatch.insert(
+                        (ib.target_type.clone(), method.name.clone()),
+                        mangled,
+                    );
+                }
+            }
             _ => {}
         }
     }
@@ -173,7 +188,19 @@ pub fn lower_program(program: &ast::Program) -> Vec<HexaFunction> {
                 let func = lower_fn(&mut ctx, f);
                 ctx.functions.push(func);
             }
-            // struct/enum/type alias handled at type level — no IR emitted
+            ast::Decl::ModuleDecl(m) => {
+                lower_module_fns(&mut ctx, &m.name, &m.decls);
+            }
+            ast::Decl::ImplBlock(ib) => {
+                for method in &ib.methods {
+                    let mangled_name = format!("{}__{}", ib.target_type, method.name);
+                    let mut mangled_method = method.clone();
+                    mangled_method.name = mangled_name;
+                    let func = lower_fn(&mut ctx, &mangled_method);
+                    ctx.functions.push(func);
+                }
+            }
+            // struct/enum/type alias/trait/use handled at type level
             _ => {}
         }
     }
@@ -248,6 +275,56 @@ pub fn lower_type_expr(ty: &ast::TypeExpr) -> HexaType {
             let params: Vec<HexaType> = param_tys.iter().map(|t| lower_type_expr(t)).collect();
             let ret = lower_type_expr(ret_ty);
             HexaType::Fn(params, Box::new(ret))
+        }
+        ast::TypeExpr::TypeParam(_, _) => HexaType::Any, // generic → Any until monomorphization
+    }
+}
+
+/// Register struct/enum types from inside a module
+fn register_module_types(ctx: &mut LowerContext, decls: &[ast::Decl]) {
+    for decl in decls {
+        match decl {
+            ast::Decl::StructDecl(s) => {
+                let fields: Vec<StructFieldDef> = s.fields.iter()
+                    .map(|(name, ty_expr)| (name.clone(), lower_type_expr(ty_expr)))
+                    .collect();
+                ctx.register_struct(&s.name, fields);
+            }
+            ast::Decl::EnumDecl(e) => {
+                let variants: Vec<(String, Option<Vec<HexaType>>)> = e.variants.iter()
+                    .map(|(name, payload)| {
+                        let payload_tys = payload.as_ref().map(|tys|
+                            tys.iter().map(|t| lower_type_expr(t)).collect()
+                        );
+                        (name.clone(), payload_tys)
+                    })
+                    .collect();
+                ctx.enum_defs.insert(e.name.clone(), variants);
+            }
+            ast::Decl::ModuleDecl(m) => {
+                register_module_types(ctx, &m.decls);
+            }
+            _ => {}
+        }
+    }
+}
+
+/// Lower functions inside a module with mangled names: mod__fn
+fn lower_module_fns(ctx: &mut LowerContext, mod_name: &str, decls: &[ast::Decl]) {
+    for decl in decls {
+        match decl {
+            ast::Decl::FnDecl(f) => {
+                let mangled_name = format!("{}__{}", mod_name, f.name);
+                let mut mangled_fn = f.clone();
+                mangled_fn.name = mangled_name;
+                let func = lower_fn(ctx, &mangled_fn);
+                ctx.functions.push(func);
+            }
+            ast::Decl::ModuleDecl(m) => {
+                let nested_name = format!("{}__{}", mod_name, m.name);
+                lower_module_fns(ctx, &nested_name, &m.decls);
+            }
+            _ => {}
         }
     }
 }

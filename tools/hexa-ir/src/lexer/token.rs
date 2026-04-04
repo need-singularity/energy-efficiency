@@ -17,7 +17,7 @@ pub enum TokenKind {
     StrLit(String),
     BoolLit(bool),
 
-    // ── Keywords (sigma+1=13 for Mk.II: +match) ──
+    // ── Keywords (sigma+tau=16 for Mk.II: +match+mod+use+pub) ──
     Fn,
     Let,
     Mut,
@@ -31,6 +31,12 @@ pub enum TokenKind {
     False,
     Type,
     Match,
+    Mod,
+    Use,
+    Pub,
+    Trait,
+    Impl,
+    For,
 
     // ── Type keywords (sigma-tau=8) ──
     KwI64,

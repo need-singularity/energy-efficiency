@@ -34,14 +34,19 @@ pub fn analyze(program: &Program) -> Result<(), Vec<SemaError>> {
 
     // Layer 2: Ownership analysis per function
     for decl in &program.decls {
-        if let crate::parser::ast::Decl::FnDecl(f) = decl {
-            let mut oc = OwnershipChecker::new();
-            // Register parameters as owned
-            for (pname, _) in &f.params {
-                oc.define(pname, f.span);
+        match decl {
+            crate::parser::ast::Decl::FnDecl(f) => {
+                let mut oc = OwnershipChecker::new();
+                for (pname, _) in &f.params {
+                    oc.define(pname, f.span);
+                }
+                let mut errs = oc.check_block(&f.body);
+                all_errors.append(&mut errs);
             }
-            let mut errs = oc.check_block(&f.body);
-            all_errors.append(&mut errs);
+            crate::parser::ast::Decl::ModuleDecl(m) => {
+                check_module_ownership(&m.decls, &mut all_errors);
+            }
+            _ => {}
         }
     }
 
@@ -55,5 +60,25 @@ pub fn analyze(program: &Program) -> Result<(), Vec<SemaError>> {
         Ok(())
     } else {
         Err(all_errors)
+    }
+}
+
+/// Check ownership for functions inside modules (recursive)
+fn check_module_ownership(decls: &[crate::parser::ast::Decl], errors: &mut Vec<SemaError>) {
+    for decl in decls {
+        match decl {
+            crate::parser::ast::Decl::FnDecl(f) => {
+                let mut oc = OwnershipChecker::new();
+                for (pname, _) in &f.params {
+                    oc.define(pname, f.span);
+                }
+                let mut errs = oc.check_block(&f.body);
+                errors.append(&mut errs);
+            }
+            crate::parser::ast::Decl::ModuleDecl(m) => {
+                check_module_ownership(&m.decls, errors);
+            }
+            _ => {}
+        }
     }
 }

@@ -7,6 +7,7 @@ use std::collections::HashMap;
 use crate::lexer::Span;
 use crate::ir::HexaType;
 use crate::parser::ast::*;
+use crate::parser::ast::Pattern;
 use super::resolve::{Resolver, VarInfo};
 use super::error::SemaError;
 
@@ -17,6 +18,10 @@ pub struct TypeChecker {
     current_ret_ty: Option<HexaType>,
     /// Struct definitions: struct_name -> Vec<(field_name, HexaType)>
     struct_defs: HashMap<String, Vec<(String, HexaType)>>,
+    /// Trait definitions: trait_name -> list of required method names
+    trait_defs: HashMap<String, Vec<String>>,
+    /// Impl table: (trait_name, type_name) -> method names
+    impl_table: HashMap<(String, String), Vec<String>>,
 }
 
 impl TypeChecker {
@@ -25,6 +30,8 @@ impl TypeChecker {
             resolver: Resolver::new(),
             current_ret_ty: None,
             struct_defs: HashMap::new(),
+            trait_defs: HashMap::new(),
+            impl_table: HashMap::new(),
         };
         // Register built-in functions (file I/O, memory, print)
         // These are special-cased in codegen as inline syscalls
@@ -117,19 +124,158 @@ impl TypeChecker {
                         errors.push(e);
                     }
                 }
-            }
-        }
-
-        // Second pass: check function bodies
-        for decl in &program.decls {
-            if let Decl::FnDecl(f) = decl {
-                if let Err(mut errs) = self.check_fn(f) {
-                    errors.append(&mut errs);
+                Decl::TraitDecl(td) => {
+                    let method_names: Vec<String> = td.methods.iter()
+                        .map(|m| m.name.clone()).collect();
+                    self.trait_defs.insert(td.name.clone(), method_names);
+                    if let Err(e) = self.resolver.define(VarInfo {
+                        name: td.name.clone(),
+                        ty_name: "trait".to_string(),
+                        mutable: false,
+                        defined_at: td.span,
+                    }) { errors.push(e); }
+                }
+                Decl::ImplBlock(ib) => {
+                    if !self.trait_defs.contains_key(&ib.trait_name) {
+                        errors.push(SemaError::UndefinedName {
+                            span: ib.span,
+                            name: format!("trait '{}'", ib.trait_name),
+                        });
+                    } else {
+                        let required = self.trait_defs.get(&ib.trait_name).cloned().unwrap_or_default();
+                        let impl_names: Vec<&str> = ib.methods.iter().map(|m| m.name.as_str()).collect();
+                        for req in &required {
+                            if !impl_names.contains(&req.as_str()) {
+                                errors.push(SemaError::TypeError {
+                                    span: ib.span,
+                                    expected: format!("method '{}' required by trait '{}'", req, ib.trait_name),
+                                    found: "not implemented".to_string(),
+                                });
+                            }
+                        }
+                    }
+                    for method in &ib.methods {
+                        let mangled = format!("{}__{}", ib.target_type, method.name);
+                        let ret_name = method.ret_ty.as_ref().map(type_expr_to_name).unwrap_or_else(|| "void".to_string());
+                        if let Err(e) = self.resolver.define(VarInfo {
+                            name: mangled,
+                            ty_name: format!("fn -> {}", ret_name),
+                            mutable: false,
+                            defined_at: method.span,
+                        }) { errors.push(e); }
+                    }
+                }
+                Decl::ModuleDecl(m) => {
+                    self.register_module_symbols(&m.name, &m.decls, &mut errors);
+                }
+                Decl::UseDecl(u) => {
+                    if u.path.len() >= 2 {
+                        let qualified = u.path.join("::");
+                        let short_name = u.path.last().unwrap().clone();
+                        if self.resolver.is_defined(&qualified) {
+                            let info = self.resolver.lookup(&qualified, u.span)
+                                .ok().cloned();
+                            if let Some(info) = info {
+                                let _ = self.resolver.define(VarInfo {
+                                    name: short_name,
+                                    ty_name: info.ty_name.clone(),
+                                    mutable: false,
+                                    defined_at: u.span,
+                                });
+                            }
+                        } else {
+                            errors.push(SemaError::UndefinedName {
+                                span: u.span,
+                                name: qualified,
+                            });
+                        }
+                    }
                 }
             }
         }
 
+        // Second pass: check function bodies (including module functions)
+        for decl in &program.decls {
+            match decl {
+                Decl::FnDecl(f) => {
+                    if let Err(mut errs) = self.check_fn(f) {
+                        errors.append(&mut errs);
+                    }
+                }
+                Decl::ModuleDecl(m) => {
+                    self.check_module_fns(&m.name, &m.decls, &mut errors);
+                }
+                Decl::ImplBlock(ib) => {
+                    for method in &ib.methods {
+                        if let Err(mut errs) = self.check_fn(method) {
+                            errors.append(&mut errs);
+                        }
+                    }
+                }
+                _ => {}
+            }
+        }
+
         if errors.is_empty() { Ok(()) } else { Err(errors) }
+    }
+
+    /// Register symbols from a module declaration with qualified names.
+    /// Only pub items are visible from outside the module.
+    fn register_module_symbols(&mut self, mod_name: &str, decls: &[Decl], errors: &mut Vec<SemaError>) {
+        for decl in decls {
+            match decl {
+                Decl::FnDecl(f) => {
+                    if f.vis == Visibility::Public {
+                        let qualified = format!("{}::{}", mod_name, f.name);
+                        let ret_name = f.ret_ty.as_ref()
+                            .map(type_expr_to_name)
+                            .unwrap_or_else(|| "void".to_string());
+                        if let Err(e) = self.resolver.define(VarInfo {
+                            name: qualified,
+                            ty_name: format!("fn -> {}", ret_name),
+                            mutable: false,
+                            defined_at: f.span,
+                        }) {
+                            errors.push(e);
+                        }
+                    }
+                }
+                Decl::StructDecl(s) => {
+                    let qualified = format!("{}::{}", mod_name, s.name);
+                    if let Err(e) = self.resolver.define(VarInfo {
+                        name: qualified,
+                        ty_name: "struct".to_string(),
+                        mutable: false,
+                        defined_at: s.span,
+                    }) {
+                        errors.push(e);
+                    }
+                }
+                Decl::ModuleDecl(m) => {
+                    let nested_name = format!("{}::{}", mod_name, m.name);
+                    self.register_module_symbols(&nested_name, &m.decls, errors);
+                }
+                _ => {}
+            }
+        }
+    }
+
+    /// Check function bodies inside a module
+    fn check_module_fns(&mut self, mod_name: &str, decls: &[Decl], errors: &mut Vec<SemaError>) {
+        for decl in decls {
+            match decl {
+                Decl::FnDecl(f) => {
+                    if let Err(mut errs) = self.check_fn(f) {
+                        errors.append(&mut errs);
+                    }
+                }
+                Decl::ModuleDecl(m) => {
+                    let nested = format!("{}::{}", mod_name, m.name);
+                    self.check_module_fns(&nested, &m.decls, errors);
+                }
+                _ => {}
+            }
+        }
     }
 
     /// Check a function declaration
@@ -273,7 +419,6 @@ impl TypeChecker {
                 let rt = self.check_expr(rhs)?;
                 match op {
                     BinOp::Add => {
-                        // str + str = concatenation
                         if matches!(lt, HexaType::Str) && matches!(rt, HexaType::Str) {
                             Ok(HexaType::Str)
                         } else if lt.is_numeric() && rt.is_numeric() {
@@ -282,6 +427,8 @@ impl TypeChecker {
                             } else {
                                 Ok(HexaType::I64)
                             }
+                        } else if matches!(lt, HexaType::Any) || matches!(rt, HexaType::Any) {
+                            Ok(HexaType::Any)
                         } else {
                             Err(SemaError::TypeError {
                                 span: *span,
@@ -293,12 +440,13 @@ impl TypeChecker {
                     BinOp::Sub | BinOp::Mul | BinOp::Div |
                     BinOp::Mod | BinOp::Pow => {
                         if lt.is_numeric() && rt.is_numeric() {
-                            // Promote to F64 if either is F64
                             if matches!(lt, HexaType::F64) || matches!(rt, HexaType::F64) {
                                 Ok(HexaType::F64)
                             } else {
                                 Ok(HexaType::I64)
                             }
+                        } else if matches!(lt, HexaType::Any) || matches!(rt, HexaType::Any) {
+                            Ok(HexaType::Any)
                         } else {
                             Err(SemaError::TypeError {
                                 span: *span,
@@ -413,8 +561,13 @@ impl TypeChecker {
                     self.resolver.push_scope();
                     if let crate::parser::ast::Pattern::Variant { bindings, span, .. } = &arm.pattern {
                         for binding in bindings {
+                            let bname = match binding {
+                                crate::parser::ast::Pattern::Binding(n, _) => n.clone(),
+                                crate::parser::ast::Pattern::Wildcard(_) => continue,
+                                _ => format!("{:?}", binding),
+                            };
                             let _ = self.resolver.define(VarInfo {
-                                name: binding.clone(),
+                                name: bname,
                                 ty_name: "any".to_string(),
                                 mutable: false,
                                 defined_at: *span,
@@ -425,6 +578,37 @@ impl TypeChecker {
                     self.resolver.pop_scope();
                 }
                 // Match result type: Any for Mk.I (full inference in Mk.II)
+                Ok(HexaType::Any)
+            }
+            Expr::TryExpr { expr, .. } => {
+                let _ = self.check_expr(expr)?;
+                Ok(HexaType::Any)
+            }
+            Expr::Closure { params, ret_ty, body, span } => {
+                self.resolver.push_scope();
+                let mut param_types = Vec::new();
+                for (pname, pty) in params {
+                    let ty_name = pty.as_ref()
+                        .map(type_expr_to_name)
+                        .unwrap_or_else(|| "any".to_string());
+                    param_types.push(resolve_type_name(&ty_name));
+                    let _ = self.resolver.define(VarInfo {
+                        name: pname.clone(),
+                        ty_name,
+                        mutable: false,
+                        defined_at: *span,
+                    });
+                }
+                let body_ty = self.check_expr(body)?;
+                self.resolver.pop_scope();
+                let ret = ret_ty.as_ref()
+                    .map(|t| resolve_type_name(&type_expr_to_name(t)))
+                    .unwrap_or(body_ty);
+                Ok(HexaType::Fn(param_types, Box::new(ret)))
+            }
+            Expr::GenericCall { func, args, .. } => {
+                let _ = self.check_expr(func)?;
+                for arg in args { let _ = self.check_expr(arg)?; }
                 Ok(HexaType::Any)
             }
             Expr::Block(block) => {
@@ -450,6 +634,7 @@ fn type_expr_to_name(te: &TypeExpr) -> String {
             let ps: Vec<String> = params.iter().map(type_expr_to_name).collect();
             format!("fn({}) -> {}", ps.join(", "), type_expr_to_name(ret))
         }
+        TypeExpr::TypeParam(name, _) => name.clone(),
     }
 }
 

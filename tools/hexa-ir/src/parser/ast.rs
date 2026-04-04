@@ -14,7 +14,15 @@ pub struct Program {
     pub decls: Vec<Decl>,
 }
 
-// ── Declarations (tau=4) ──
+// ── Visibility ──
+
+#[derive(Clone, Debug, PartialEq)]
+pub enum Visibility {
+    Private,
+    Public,
+}
+
+// ── Declarations (tau+n/phi=7 variants) ──
 
 #[derive(Clone, Debug)]
 pub enum Decl {
@@ -22,11 +30,60 @@ pub enum Decl {
     StructDecl(StructDecl),
     EnumDecl(EnumDecl),
     TypeAlias(TypeAliasDecl),
+    ModuleDecl(ModuleDecl),
+    UseDecl(UseDecl),
+    TraitDecl(TraitDecl),
+    ImplBlock(ImplBlock),
+}
+
+/// Trait method signature (no body)
+#[derive(Clone, Debug)]
+pub struct TraitMethodSig {
+    pub name: String,
+    pub params: Vec<(String, TypeExpr)>, // excludes &self
+    pub ret_ty: Option<TypeExpr>,
+    pub span: Span,
+}
+
+/// Trait definition: `trait Name { fn method(&self, ...); ... }`
+#[derive(Clone, Debug)]
+pub struct TraitDecl {
+    pub name: String,
+    pub methods: Vec<TraitMethodSig>,
+    pub span: Span,
+}
+
+/// Impl block: `impl TraitName for TypeName { fn method(&self) { ... } ... }`
+#[derive(Clone, Debug)]
+pub struct ImplBlock {
+    pub trait_name: String,
+    pub target_type: String,
+    pub methods: Vec<FnDecl>,
+    pub span: Span,
+}
+
+/// Module declaration: `mod name { decl* }`
+#[derive(Clone, Debug)]
+pub struct ModuleDecl {
+    pub name: String,
+    pub decls: Vec<Decl>,
+    pub span: Span,
+}
+
+/// Use declaration: `use path::to::item;`
+#[derive(Clone, Debug)]
+pub struct UseDecl {
+    /// Path segments, e.g., ["math", "add"] for `use math::add;`
+    pub path: Vec<String>,
+    pub span: Span,
 }
 
 #[derive(Clone, Debug)]
 pub struct FnDecl {
+    /// Generic type parameters: `fn foo<T, U>(...)` => ["T", "U"]
+    pub type_params: Vec<String>,
     pub name: String,
+    pub vis: Visibility,
     pub params: Vec<(String, TypeExpr)>,
     pub ret_ty: Option<TypeExpr>,
     pub body: Block,
@@ -150,6 +207,25 @@ pub enum Expr {
         arms: Vec<MatchArm>,
         span: Span,
     },
+    /// Try expression: `expr?`
+    TryExpr {
+        expr: Box<Expr>,
+        span: Span,
+    },
+    /// Closure: `|x, y| expr` or `|x: i64| -> i64 { body }`
+    Closure {
+        params: Vec<(String, Option<TypeExpr>)>,
+        ret_ty: Option<Box<TypeExpr>>,
+        body: Box<Expr>,
+        span: Span,
+    },
+    /// Generic function call: `foo::<i64>(x)` (type args erased during mono)
+    GenericCall {
+        func: Box<Expr>,
+        type_args: Vec<TypeExpr>,
+        args: Vec<Expr>,
+        span: Span,
+    },
     Block(Block),
 }
 
@@ -161,20 +237,53 @@ pub struct MatchArm {
     pub span: Span,
 }
 
-/// Pattern for match arms
+/// Pattern for match arms (7 variants)
 #[derive(Clone, Debug)]
 pub enum Pattern {
     /// Wildcard: `_`
     Wildcard(Span),
     /// Integer literal: `42`
     Literal(i64, Span),
-    /// Enum variant: `Color::Red` or `Color::RGB(r, g, b)`
+    /// Variable binding: `x`
+    Binding(String, Span),
+    /// Enum variant: `Color::Red` or `Color::RGB(pat1, pat2)`
     Variant {
         enum_name: String,
         variant_name: String,
-        bindings: Vec<String>,
+        bindings: Vec<Pattern>,
         span: Span,
     },
+    /// Struct destructure: `Point { x, y }`
+    StructDestructure {
+        struct_name: String,
+        fields: Vec<(String, Option<Pattern>)>,
+        span: Span,
+    },
+    /// Tuple pattern: `(pat1, pat2)`
+    Tuple {
+        elements: Vec<Pattern>,
+        span: Span,
+    },
+    /// Guard pattern: `pat if cond`
+    Guard {
+        pattern: Box<Pattern>,
+        condition: Box<Expr>,
+        span: Span,
+    },
+}
+
+impl Pattern {
+    pub fn span(&self) -> Span {
+        match self {
+            Pattern::Wildcard(s) => *s,
+            Pattern::Literal(_, s) => *s,
+            Pattern::Binding(_, s) => *s,
+            Pattern::Variant { span, .. } => *span,
+            Pattern::StructDestructure { span, .. } => *span,
+            Pattern::Tuple { span, .. } => *span,
+            Pattern::Guard { span, .. } => *span,
+        }
+    }
 }
 
 impl Expr {
@@ -193,6 +302,9 @@ impl Expr {
             Expr::StructInit { span, .. } => *span,
             Expr::ArrayLit { span, .. } => *span,
             Expr::Match { span, .. } => *span,
+            Expr::TryExpr { span, .. } => *span,
+            Expr::Closure { span, .. } => *span,
+            Expr::GenericCall { span, .. } => *span,
             Expr::Block(b) => b.span,
         }
     }
@@ -230,6 +342,8 @@ pub enum TypeExpr {
     Array(Box<TypeExpr>, usize, Span),
     /// Function type: `fn(i64, bool) -> f64`
     Fn(Vec<TypeExpr>, Box<TypeExpr>, Span),
+    /// Type parameter: `T` in generic context
+    TypeParam(String, Span),
 }
 
 impl TypeExpr {
@@ -238,6 +352,7 @@ impl TypeExpr {
             TypeExpr::Named(_, s) => *s,
             TypeExpr::Array(_, _, s) => *s,
             TypeExpr::Fn(_, _, s) => *s,
+            TypeExpr::TypeParam(_, s) => *s,
         }
     }
 }

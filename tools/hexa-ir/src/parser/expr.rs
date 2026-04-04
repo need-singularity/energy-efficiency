@@ -35,6 +35,12 @@ fn parse_expr_bp(p: &mut Parser, min_bp: u8, no_struct: bool) -> Result<Expr, Pa
             TokenKind::LParen => parse_call(p, lhs)?,
             TokenKind::Dot => parse_field_access(p, lhs)?,
             TokenKind::LBracket => parse_index(p, lhs)?,
+            TokenKind::Question => {
+                let q_span = p.peek_span();
+                p.advance();
+                let span = lhs.span().merge(q_span);
+                Expr::TryExpr { expr: Box::new(lhs), span }
+            }
             _ => lhs,
         };
 
@@ -138,6 +144,10 @@ fn parse_prefix_inner(p: &mut Parser, no_struct: bool) -> Result<Expr, ParseErro
         TokenKind::LBracket => {
             return parse_array_literal(p, span);
         }
+        // Closure: `|params| body` or `|| body`
+        TokenKind::BitOr | TokenKind::Or => {
+            return parse_closure(p, span);
+        }
         other => Err(ParseError::new(
             span,
             format!("expected expression, found {:?}", other),
@@ -163,6 +173,48 @@ fn parse_array_literal(p: &mut Parser, start_span: Span) -> Result<Expr, ParseEr
         elements,
         span: start_span.merge(end_span),
     })
+}
+
+/// Closure expression: `|x, y| expr` or `|x: i64| -> i64 { body }` or `|| expr`
+fn parse_closure(p: &mut Parser, start_span: Span) -> Result<Expr, ParseError> {
+    let params = if p.eat(&TokenKind::Or) {
+        // `||` — zero parameters
+        Vec::new()
+    } else {
+        // `|` — parse params until closing `|`
+        p.expect(&TokenKind::BitOr)?;
+        let mut params = Vec::new();
+        while !p.at(&TokenKind::BitOr) && !p.is_eof() {
+            let (pname, _) = p.expect_ident()?;
+            let ty = if p.eat(&TokenKind::Colon) {
+                Some(super::stmt::parse_type_expr(p)?)
+            } else {
+                None
+            };
+            params.push((pname, ty));
+            if !p.eat(&TokenKind::Comma) {
+                break;
+            }
+        }
+        p.expect(&TokenKind::BitOr)?;
+        params
+    };
+
+    let ret_ty = if p.eat(&TokenKind::Arrow) {
+        Some(Box::new(super::stmt::parse_type_expr(p)?))
+    } else {
+        None
+    };
+
+    let body = if p.at(&TokenKind::LBrace) {
+        let block = super::stmt::parse_block(p)?;
+        Expr::Block(block)
+    } else {
+        parse_expr(p)?
+    };
+
+    let span = start_span.merge(body.span());
+    Ok(Expr::Closure { params, ret_ty, body: Box::new(body), span })
 }
 
 /// Struct initialization: `Name { field1: expr1, field2: expr2 }`
@@ -302,8 +354,25 @@ fn parse_match_arm(p: &mut Parser) -> Result<MatchArm, ParseError> {
     Ok(MatchArm { pattern, body, span })
 }
 
-/// Parse a pattern: `_`, `42`, `Color::Red`, `Color::RGB(r, g, b)`
+/// Parse a pattern with optional guard: `pat`, `pat if cond`
 fn parse_pattern(p: &mut Parser) -> Result<Pattern, ParseError> {
+    let inner = parse_pattern_atom(p)?;
+    // Check for guard: `pat if cond`
+    if p.at(&TokenKind::If) {
+        p.advance();
+        let condition = parse_expr(p)?;
+        let span = inner.span().merge(condition.span());
+        return Ok(Pattern::Guard {
+            pattern: Box::new(inner),
+            condition: Box::new(condition),
+            span,
+        });
+    }
+    Ok(inner)
+}
+
+/// Parse an atomic pattern (without guard)
+fn parse_pattern_atom(p: &mut Parser) -> Result<Pattern, ParseError> {
     let span = p.peek_span();
 
     // Wildcard: `_`
@@ -320,49 +389,75 @@ fn parse_pattern(p: &mut Parser) -> Result<Pattern, ParseError> {
         return Ok(Pattern::Literal(v, span));
     }
 
-    // Enum variant pattern: `EnumName::VariantName` or `EnumName::VariantName(bindings...)`
+    // Tuple pattern: `(pat1, pat2, ...)`
+    if p.at(&TokenKind::LParen) {
+        p.advance();
+        let mut elements = Vec::new();
+        while !p.at(&TokenKind::RParen) && !p.is_eof() {
+            elements.push(parse_pattern(p)?);
+            if !p.eat(&TokenKind::Comma) { break; }
+        }
+        let end = p.peek_span();
+        p.expect(&TokenKind::RParen)?;
+        return Ok(Pattern::Tuple { elements, span: span.merge(end) });
+    }
+
+    // Identifier-based patterns
     if let TokenKind::Ident(ref name) = p.peek().clone() {
-        let enum_name = name.clone();
+        let ident_name = name.clone();
         p.advance();
 
+        // Enum variant: `Name::Variant`
         if p.at(&TokenKind::ColonColon) {
             p.expect(&TokenKind::ColonColon)?;
             let (variant_name, variant_span) = p.expect_ident()?;
             let full_span = span.merge(variant_span);
 
-            // Optional bindings: `Variant(a, b, c)`
+            // Optional nested pattern bindings: `Variant(pat1, pat2)`
             let mut bindings = Vec::new();
             if p.at(&TokenKind::LParen) {
                 p.expect(&TokenKind::LParen)?;
                 while !p.at(&TokenKind::RParen) && !p.is_eof() {
-                    let (binding_name, _) = p.expect_ident()?;
-                    bindings.push(binding_name);
-                    if !p.eat(&TokenKind::Comma) {
-                        break;
-                    }
+                    bindings.push(parse_pattern(p)?);
+                    if !p.eat(&TokenKind::Comma) { break; }
                 }
                 let end = p.peek_span();
                 p.expect(&TokenKind::RParen)?;
                 return Ok(Pattern::Variant {
-                    enum_name,
-                    variant_name,
-                    bindings,
+                    enum_name: ident_name, variant_name, bindings,
                     span: span.merge(end),
                 });
             }
 
             return Ok(Pattern::Variant {
-                enum_name,
-                variant_name,
-                bindings,
+                enum_name: ident_name, variant_name, bindings,
                 span: full_span,
             });
         }
 
-        // Plain identifier used as pattern (treat as variable binding, or error for now)
-        return Err(ParseError::new(span, format!(
-            "expected pattern (_, literal, or Enum::Variant), found identifier '{}'", enum_name
-        )));
+        // Struct destructure: `Name { field1, field2 }`
+        if p.at(&TokenKind::LBrace) {
+            p.expect(&TokenKind::LBrace)?;
+            let mut fields = Vec::new();
+            while !p.at(&TokenKind::RBrace) && !p.is_eof() {
+                let (field_name, _) = p.expect_ident()?;
+                let sub_pat = if p.eat(&TokenKind::Colon) {
+                    Some(parse_pattern(p)?)
+                } else {
+                    None
+                };
+                fields.push((field_name, sub_pat));
+                if !p.eat(&TokenKind::Comma) { break; }
+            }
+            let end = p.peek_span();
+            p.expect(&TokenKind::RBrace)?;
+            return Ok(Pattern::StructDestructure {
+                struct_name: ident_name, fields, span: span.merge(end),
+            });
+        }
+
+        // Plain identifier: variable binding
+        return Ok(Pattern::Binding(ident_name, span));
     }
 
     Err(ParseError::new(span, format!("expected pattern, found {:?}", p.peek())))

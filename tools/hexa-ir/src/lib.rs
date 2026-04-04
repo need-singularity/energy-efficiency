@@ -816,3 +816,678 @@ fn main() -> i64 {
         assert!(asm.contains("mov x16, #73"), "should have SYS_munmap");
     }
 }
+
+#[cfg(test)]
+mod module_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::HexaOp;
+
+    /// Helper: run full pipeline (lex -> parse -> sema -> lower) and return IR functions
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    #[test]
+    fn test_module_define_and_call() {
+        let source = r#"
+mod math {
+    pub fn add(a: i64, b: i64) -> i64 {
+        return a + b
+    }
+}
+
+fn main() -> i64 {
+    return math::add(1, 2)
+}
+"#;
+        let funcs = compile_to_ir(source);
+        assert!(funcs.len() >= 2, "expected at least 2 functions, got {}", funcs.len());
+
+        let math_add = funcs.iter().find(|f| f.name == "math__add");
+        assert!(math_add.is_some(), "should have function 'math__add'");
+
+        let main_fn = funcs.iter().find(|f| f.name == "main");
+        assert!(main_fn.is_some(), "should have function 'main'");
+
+        let has_call = main_fn.unwrap().blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call && i.label.as_deref() == Some("math__add"));
+        assert!(has_call, "main should call 'math__add'");
+    }
+
+    #[test]
+    fn test_use_import_name_resolution() {
+        let source = r#"
+mod math {
+    pub fn multiply(a: i64, b: i64) -> i64 {
+        return a * b
+    }
+}
+
+use math::multiply;
+
+fn main() -> i64 {
+    return multiply(3, 4)
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let math_mul = funcs.iter().find(|f| f.name == "math__multiply");
+        assert!(math_mul.is_some(), "should have 'math__multiply' function");
+
+        let main_fn = funcs.iter().find(|f| f.name == "main");
+        assert!(main_fn.is_some(), "should have 'main' function");
+    }
+
+    #[test]
+    fn test_pub_private_visibility() {
+        let source = r#"
+mod secret {
+    fn hidden(x: i64) -> i64 {
+        return x
+    }
+}
+
+fn main() -> i64 {
+    return secret::hidden(42)
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        let result = sema::analyze(&program);
+        assert!(result.is_err(), "sema should reject access to private module function");
+    }
+
+    #[test]
+    fn test_module_sema_accepts_pub() {
+        let source = r#"
+mod utils {
+    pub fn double(x: i64) -> i64 {
+        return x * 2
+    }
+}
+
+fn main() -> i64 {
+    return utils::double(21)
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept pub module function access");
+    }
+
+    #[test]
+    fn test_module_with_use_sema() {
+        let source = r#"
+mod io {
+    pub fn read_val() -> i64 {
+        return 42
+    }
+}
+
+use io::read_val;
+
+fn main() -> i64 {
+    return read_val()
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept use-imported function");
+    }
+}
+
+// ═══ Closure Tests ═══
+
+#[cfg(test)]
+mod closure_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::HexaOp;
+
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    #[test]
+    fn test_closure_parse_simple() {
+        let source = "fn main() -> i64 {\n    let f = |x: i64| x + 1\n    return 0\n}\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept closure");
+    }
+
+    #[test]
+    fn test_closure_parse_multi_param() {
+        let source = "fn main() -> i64 {\n    let add = |x: i64, y: i64| x + y\n    return 0\n}\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept multi-param closure");
+    }
+
+    #[test]
+    fn test_closure_parse_no_params() {
+        let source = "fn main() -> i64 {\n    let f = || 42\n    return 0\n}\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept zero-param closure");
+    }
+
+    #[test]
+    fn test_closure_typecheck_infers_fn() {
+        let source = "fn main() -> i64 {\n    let f = |x: i64| x + 1\n    return 0\n}\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should infer Fn type for closure");
+    }
+
+    #[test]
+    fn test_closure_lowering_creates_env() {
+        let source = "fn main() -> i64 {\n    let x = 10\n    let f = |y: i64| x + y\n    return 0\n}\n";
+        let funcs = compile_to_ir(source);
+        let main_fn = &funcs[0];
+        let env_alloc = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Alloc && i.label.as_deref() == Some("closure_env"));
+        assert!(env_alloc, "closure should allocate an environment struct");
+    }
+
+    #[test]
+    fn test_closure_capture_stores() {
+        let source = "fn main() -> i64 {\n    let a = 5\n    let b = 10\n    let f = |x: i64| a + b + x\n    return 0\n}\n";
+        let funcs = compile_to_ir(source);
+        let main_fn = &funcs[0];
+        let store_count = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Store)
+            .count();
+        assert!(store_count >= 3, "should have stores for inits + captures, found {}", store_count);
+    }
+}
+
+// ═══ Generic Tests ═══
+
+#[cfg(test)]
+mod generic_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::HexaOp;
+
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    #[test]
+    fn test_generic_fn_parse() {
+        let source = "fn identity<T>(x: T) -> T {\n    return x\n}\nfn main() -> i64 { return identity(42) }\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        let id_fn = program.decls.iter().find_map(|d| {
+            if let crate::parser::ast::Decl::FnDecl(f) = d {
+                if f.name == "identity" { Some(f) } else { None }
+            } else { None }
+        });
+        assert!(id_fn.is_some(), "should have identity function");
+        assert_eq!(id_fn.unwrap().type_params, vec!["T".to_string()]);
+    }
+
+    #[test]
+    fn test_generic_fn_sema() {
+        let source = "fn identity<T>(x: T) -> T {\n    return x\n}\nfn main() -> i64 { return identity(42) }\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept generic function");
+    }
+
+    #[test]
+    fn test_generic_fn_multiple_params() {
+        let source = "fn pair<A, B>(a: A, b: B) -> A {\n    return a\n}\nfn main() -> i64 { return pair(1, 2) }\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept multi-param generic");
+        let pair_fn = program.decls.iter().find_map(|d| {
+            if let crate::parser::ast::Decl::FnDecl(f) = d {
+                if f.name == "pair" { Some(f) } else { None }
+            } else { None }
+        }).unwrap();
+        assert_eq!(pair_fn.type_params, vec!["A".to_string(), "B".to_string()]);
+    }
+
+    #[test]
+    fn test_generic_fn_monomorphize() {
+        let source = "fn identity<T>(x: T) -> T {\n    return x\n}\nfn main() -> i64 { return identity(42) }\n";
+        let funcs = compile_to_ir(source);
+        assert!(funcs.len() >= 2, "should have main + identity, found {}", funcs.len());
+        let id_fn = funcs.iter().find(|f| f.name == "identity");
+        assert!(id_fn.is_some(), "should have monomorphized identity function");
+    }
+
+    #[test]
+    fn test_generic_fn_body_preserved() {
+        let source = "fn add_n<T>(x: T, n: i64) -> T {\n    return x + n\n}\nfn main() -> i64 { return add_n(10, 5) }\n";
+        let funcs = compile_to_ir(source);
+        let add_fn = funcs.iter().find(|f| f.name == "add_n").expect("should have add_n");
+        let has_add = add_fn.blocks.iter().flat_map(|b| b.instrs.iter()).any(|i| i.op == HexaOp::Add);
+        assert!(has_add, "add_n should have an Add instruction");
+    }
+
+    #[test]
+    fn test_generic_and_closure_together() {
+        let source = "fn identity<T>(x: T) -> T {\n    return x\n}\nfn main() -> i64 {\n    let f = |x: i64| x * 2\n    return identity(42)\n}\n";
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept generic + closure");
+        let funcs = compile_to_ir(source);
+        assert!(funcs.len() >= 2, "should have main + identity");
+    }
+}
+
+#[cfg(test)]
+mod advanced_pattern_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::{HexaType, HexaOp};
+
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    #[test]
+    fn test_struct_destructure_pattern() {
+        let source = r#"
+struct Point { x: i64, y: i64 }
+
+fn sum_point(p: Point) -> i64 {
+    return match p {
+        Point { x, y } => x + y,
+    };
+}
+
+fn main() -> i64 {
+    let p = Point { x: 10, y: 20 };
+    return sum_point(p);
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept struct destructure pattern");
+
+        let funcs = compile_to_ir(source);
+        let sum_fn = funcs.iter().find(|f| f.name == "sum_point")
+            .expect("should have sum_point function");
+
+        let destr_loads: Vec<_> = sum_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Load
+                && i.label.as_ref().map_or(false, |l| l.starts_with("destr_")))
+            .collect();
+
+        assert!(destr_loads.len() >= 2,
+            "should have at least 2 destructure Load instructions, found {}",
+            destr_loads.len());
+    }
+
+    #[test]
+    fn test_guard_condition_pattern() {
+        let source = r#"
+fn classify(x: i64) -> i64 {
+    return match x {
+        n if n > 0 => 1,
+        n if n < 0 => 2,
+        _ => 0,
+    };
+}
+
+fn main() -> i64 {
+    return classify(42);
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept guard condition pattern");
+
+        let funcs = compile_to_ir(source);
+        let classify_ir = funcs.iter().find(|f| f.name == "classify")
+            .expect("should have classify function in IR");
+
+        assert!(classify_ir.blocks.len() >= 3,
+            "guard match should create multiple blocks, found {}",
+            classify_ir.blocks.len());
+    }
+
+    #[test]
+    fn test_result_type_and_try_operator() {
+        let source = r#"
+enum Result { Ok(i64), Err(i64) }
+
+fn might_fail(x: i64) -> Result {
+    if x > 0 {
+        return Result::Ok(x);
+    }
+    return Result::Err(0);
+}
+
+fn use_result(x: i64) -> Result {
+    let val = might_fail(x)?;
+    return Result::Ok(val + 1);
+}
+
+fn main() -> i64 {
+    return 0;
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept Result + ? operator");
+
+        let funcs = compile_to_ir(source);
+        let use_result_fn = funcs.iter().find(|f| f.name == "use_result")
+            .expect("should have use_result function");
+
+        let branch_count = use_result_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Branch)
+            .count();
+        assert!(branch_count >= 1,
+            "try(?) should create at least 1 Branch, found {}", branch_count);
+
+        let err_return = use_result_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Return
+                && i.label.as_deref() == Some("try_err_propagate"));
+        assert!(err_return.is_some(), "try(?) should emit early Return for Err propagation");
+    }
+
+    #[test]
+    fn test_error_propagation_chain() {
+        let source = r#"
+enum Result { Ok(i64), Err(i64) }
+
+fn step1(x: i64) -> Result {
+    return Result::Ok(x + 1);
+}
+
+fn step2(x: i64) -> Result {
+    return Result::Ok(x + 2);
+}
+
+fn chain(x: i64) -> Result {
+    let a = step1(x)?;
+    let b = step2(a)?;
+    return Result::Ok(b);
+}
+
+fn main() -> i64 {
+    return 0;
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept error propagation chain");
+
+        let funcs = compile_to_ir(source);
+        let chain_fn = funcs.iter().find(|f| f.name == "chain")
+            .expect("should have chain function");
+
+        let branch_count = chain_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Branch)
+            .count();
+        assert!(branch_count >= 2,
+            "two ? should create at least 2 Branches, found {}", branch_count);
+
+        let err_returns = chain_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Return
+                && i.label.as_deref() == Some("try_err_propagate"))
+            .count();
+        assert!(err_returns >= 2,
+            "two ? should emit at least 2 early Returns, found {}", err_returns);
+
+        assert!(chain_fn.blocks.len() >= 5,
+            "chain with 2x? should create at least 5 blocks, found {}",
+            chain_fn.blocks.len());
+    }
+
+    #[test]
+    fn test_variable_binding_pattern() {
+        let source = r#"
+fn identity(x: i64) -> i64 {
+    return match x {
+        val => val + 1,
+    };
+}
+
+fn main() -> i64 {
+    return identity(5);
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept variable binding pattern");
+
+        let funcs = compile_to_ir(source);
+        assert!(funcs.len() >= 2, "should have identity and main functions");
+    }
+
+    #[test]
+    fn test_nested_variant_pattern() {
+        let source = r#"
+enum Option { Some(i64), None }
+
+fn unwrap_or(opt: Option) -> i64 {
+    return match opt {
+        Option::Some(v) => v,
+        Option::None => 0,
+    };
+}
+
+fn main() -> i64 {
+    let x = Option::Some(42);
+    return unwrap_or(x);
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept nested variant pattern");
+
+        let funcs = compile_to_ir(source);
+        let unwrap_fn = funcs.iter().find(|f| f.name == "unwrap_or")
+            .expect("should have unwrap_or function");
+
+        let variant_loads: Vec<_> = unwrap_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Load
+                && i.label.as_ref().map_or(false, |l| l.starts_with("variant_field_")))
+            .collect();
+
+        assert!(variant_loads.len() >= 1,
+            "should have at least 1 variant_field Load for binding 'v', found {}",
+            variant_loads.len());
+    }
+}
+
+#[cfg(test)]
+mod trait_impl_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::HexaOp;
+
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    #[test]
+    fn test_trait_def_parse() {
+        let source = r#"
+trait Printable {
+    fn describe(&self) -> i64;
+}
+
+struct Point { x: i64, y: i64 }
+
+impl Printable for Point {
+    fn describe(&self) -> i64 {
+        return self.x;
+    }
+}
+
+fn main() -> i64 {
+    return 0;
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept trait + impl");
+    }
+
+    #[test]
+    fn test_impl_block_typecheck() {
+        // Good: all methods implemented
+        let source_good = r#"
+trait Greetable {
+    fn greet(&self) -> i64;
+}
+
+struct Dog { age: i64 }
+
+impl Greetable for Dog {
+    fn greet(&self) -> i64 {
+        return self.age;
+    }
+}
+
+fn main() -> i64 { return 0; }
+"#;
+        let tokens = lexer::lex(source_good).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept complete impl");
+
+        // Bad: missing method
+        let source_bad = r#"
+trait Greetable {
+    fn greet(&self) -> i64;
+    fn wave(&self) -> i64;
+}
+
+struct Cat { age: i64 }
+
+impl Greetable for Cat {
+    fn greet(&self) -> i64 {
+        return self.age;
+    }
+}
+
+fn main() -> i64 { return 0; }
+"#;
+        let tokens2 = lexer::lex(source_bad).expect("lex failed");
+        let program2 = parser::parse(tokens2).expect("parse failed");
+        let result = sema::analyze(&program2);
+        assert!(result.is_err(), "sema should reject impl missing 'wave' method");
+    }
+
+    #[test]
+    fn test_method_call_lowering() {
+        let source = r#"
+trait Measurable {
+    fn area(&self) -> i64;
+}
+
+struct Rect { w: i64, h: i64 }
+
+impl Measurable for Rect {
+    fn area(&self) -> i64 {
+        return self.w;
+    }
+}
+
+fn main() -> i64 {
+    let r = Rect { w: 6, h: 12 };
+    let a = r.area();
+    return a;
+}
+"#;
+        let funcs = compile_to_ir(source);
+
+        // Should have main + Rect__area
+        assert!(funcs.len() >= 2, "should have at least 2 functions (main + Rect__area), found {}", funcs.len());
+
+        let area_fn = funcs.iter().find(|f| f.name == "Rect__area");
+        assert!(area_fn.is_some(), "should have mangled function 'Rect__area'");
+
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main function");
+        let method_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Call && i.label.as_deref() == Some("Rect__area"));
+        assert!(method_call.is_some(), "main should have a Call to 'Rect__area'");
+    }
+
+    #[test]
+    fn test_trait_multiple_methods() {
+        let source = r#"
+trait Shape {
+    fn area(&self) -> i64;
+    fn perimeter(&self) -> i64;
+}
+
+struct Square { side: i64 }
+
+impl Shape for Square {
+    fn area(&self) -> i64 {
+        return self.side;
+    }
+    fn perimeter(&self) -> i64 {
+        return self.side;
+    }
+}
+
+fn main() -> i64 {
+    let s = Square { side: 6 };
+    let a = s.area();
+    let p = s.perimeter();
+    return a;
+}
+"#;
+        let funcs = compile_to_ir(source);
+
+        let area_fn = funcs.iter().find(|f| f.name == "Square__area");
+        assert!(area_fn.is_some(), "should have 'Square__area'");
+        let perim_fn = funcs.iter().find(|f| f.name == "Square__perimeter");
+        assert!(perim_fn.is_some(), "should have 'Square__perimeter'");
+
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+        let area_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call && i.label.as_deref() == Some("Square__area"));
+        let perim_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call && i.label.as_deref() == Some("Square__perimeter"));
+        assert!(area_call, "main should call Square__area");
+        assert!(perim_call, "main should call Square__perimeter");
+    }
+}

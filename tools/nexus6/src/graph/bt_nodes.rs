@@ -146,6 +146,23 @@ const BT_ENTRIES: &[BtEntry] = &[
     BtEntry { id: 127, title: "3D Kissing sigma=12 + Hexacopter n=6", domains: &["Robotics", "Cosmology", "Material"], stars: 2 },
     // BT-185: Pure Mathematics — Algebraic Blowup-Emergence E₆ Bridge
     BtEntry { id: 185, title: "Algebraic Blowup-Emergence E6 Bridge", domains: &["Math", "NumberTheory", "Topology", "Particle", "StringTheory", "Biology"], stars: 3 },
+    // BT-210~211, BT-219, BT-222: Cognitive Architecture
+    BtEntry { id: 210, title: "Cortex 6 Layers = n Universality", domains: &["Cognitive", "Biology", "Math", "Neuroscience"], stars: 3 },
+    BtEntry { id: 211, title: "Grid Cell Hexagonal = Perfect Number Space Filling", domains: &["Cognitive", "Math", "Neuroscience", "Topology"], stars: 2 },
+    BtEntry { id: 219, title: "Working Memory tau±mu=4±1 Cognitive Channel", domains: &["Cognitive", "AI", "Neuroscience", "InfoTheory"], stars: 3 },
+    BtEntry { id: 222, title: "Compiler-Cortex tau=4 Pipeline Isomorphism", domains: &["Cognitive", "Software", "Chip", "AI", "Neuroscience"], stars: 3 },
+    // BT-212~213, BT-221, BT-224: Temporal Architecture
+    BtEntry { id: 212, title: "Sexagesimal sigma*sopfr=60 Universal Time", domains: &["Temporal", "Math", "NumberTheory", "Cosmology"], stars: 3 },
+    BtEntry { id: 213, title: "GPS Orbital Plane n=6 Optimal", domains: &["Temporal", "Cosmology", "Network", "Math"], stars: 2 },
+    BtEntry { id: 221, title: "Circadian Triple Stack J2=24h sigma=12mo", domains: &["Temporal", "Biology", "Neuroscience", "Math"], stars: 3 },
+    BtEntry { id: 224, title: "Cesium-133 n=6 Shell Atomic Clock", domains: &["Temporal", "Physics", "Chemistry", "Math"], stars: 2 },
+    // BT-214~215, BT-220, BT-223: Social Architecture
+    BtEntry { id: 214, title: "Six Degrees = n Social Topology", domains: &["Social", "Network", "Math", "Topology"], stars: 3 },
+    BtEntry { id: 215, title: "Dunbar sigma²+n=150 Cognitive-Social Bridge", domains: &["Social", "Cognitive", "Biology", "Math"], stars: 2 },
+    BtEntry { id: 220, title: "Moral Foundation n=6 Universal Ethics", domains: &["Social", "Cognitive", "Math", "Biology"], stars: 2 },
+    BtEntry { id: 223, title: "Hexagonal Urban Planning n=6 Spatial Optimization", domains: &["Social", "Math", "Topology", "Environment"], stars: 2 },
+    // BT-225: Cross-Domain Meta
+    BtEntry { id: 225, title: "Cognitive-Social-Temporal Triple Bridge", domains: &["Cognitive", "Social", "Temporal", "Math", "Neuroscience", "Biology"], stars: 3 },
 ];
 
 /// Create a Node from a BtEntry.
@@ -263,7 +280,7 @@ mod tests {
     fn test_populate_bt_graph_node_count() {
         let mut graph = DiscoveryGraph::new();
         populate_bt_graph(&mut graph);
-        assert_eq!(graph.nodes.len(), 128, "Should have exactly 128 BT nodes (BT-1~127 + BT-185)");
+        assert_eq!(graph.nodes.len(), 141, "Should have exactly 141 BT nodes (BT-1~127 + BT-185 + BT-210~225)");
     }
 
     #[test]
@@ -285,7 +302,7 @@ mod tests {
 
     #[test]
     fn test_bt_count_and_domains() {
-        assert_eq!(bt_count(), 128);
+        assert_eq!(bt_count(), 141);
         let domain_count = unique_domain_count();
         assert!(
             domain_count >= 30,
