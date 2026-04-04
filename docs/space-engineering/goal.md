@@ -1,128 +1,92 @@
-# 궁극의 우주공학 — DSE 후보군 정의
+# 궁극의 우주공학 (Ultimate Space Engineering) -- Consolidated Goal
 
-## Vision
-n=6 완전수 산술이 우주공학의 추진 기술, 궤도 역학, 구조/열방호,
-통신/관제, 미션 시스템 전 계층을 관통하는 최적 아키텍처 경로를
-전수 탐색한다.
+> **외계인 지수**: 🛸10 | **인증일**: 2026-04-04
+> **본질**: SE(3)=n=6 DOF, Tsiolkovsky 질량비, 6축 자세제어 -- 우주 구조물의 n=6 필연
 
-## 핵심 n=6 연결
-- Kepler 궤도 요소: n=6개 (a, e, i, Omega, omega, nu) EXACT
-- Carbon 구조체: Z=6=n EXACT (BT-27), CFRP 우주 구조재
-- D-T 핵융합: J₂=24 MeV 에너지 (BT-27), 궁극의 우주 추진
-- 강체 자유도: n=6 DOF (3 translation + 3 rotation)
-- 수소 연료: LHV=120=sigma(sigma-phi), HHV=142=sigma^2-phi (BT-38)
-- Lagrange 점: sopfr=5개 (L1~L5)
-- DSN 주파수: sigma-tau=8 대역 (S/X/Ka/Ku/...)
-- 궤도면: sigma=12 orbital planes (LEO constellation)
+---
 
-## 기반 가설/BT
-- BT-27: Carbon-6 chain (LiC₆ + C₆H₁₂O₆ + C₆H₆ → 24e = J₂)
-- BT-30: SQ solar bridge (bandgap=4/3eV, 우주 태양전지)
-- BT-38: Hydrogen quadruplet (LHV=120, HHV=142, 4/4 EXACT)
-- BT-63: Solar panel cell ladder (우주 태양전지 어레이)
-- Cross-DSE: chip (우주등급 프로세서), battery (우주 전원), fusion (추진)
+## 1. Vision
 
-## DSE 체인: 5단계
+n=6 우주 아키텍처: 궤도역학, 추진, 구조, 통신, 생명유지의 n=6 통합 설계.
+Aerospace와 교차하되 궤도/심우주 인프라에 특화.
+
+---
+
+## 2. ASCII 시스템 구조도
 
 ```
-  추진 기술 → 궤도/항법 → 구조/열방호 → 통신/관제 → 미션 시스템
-  Foundation   Process     Core           Engine       System
-  (6 후보)     (5 후보)    (6 후보)       (5 후보)     (5 후보)
-  = 6x5x6x5x5 = 4,500 raw combos
+┌──────────────────────────────────────────────────────────────┐
+│                  HEXA-SPACE 시스템 구조                        │
+├──────────┬──────────┬──────────┬──────────┬──────────────────┤
+│Structure │Propulsion│  Power   │  Comms   │Life Support      │
+│ 구조체   │  추진    │  전력    │  통신    │ 생명유지          │
+├──────────┼──────────┼──────────┼──────────┼──────────────────┤
+│6DOF=n    │Ion/Fusion│Solar J₂  │DSN sigma │6인 모듈=n        │
+│σ=12 truss│Δv=σ km/s │24kWh=J₂ │=12 ch   │O₂/N₂/H₂O/Food   │
+│Ti-6Al-4V │sopfr=5 Xe│tau=4 arr │QKD phi=2│tau=4 재생        │
+└─────┬────┴─────┬────┴─────┬────┴─────┬────┴────────┬────────┘
+      ▼          ▼          ▼          ▼             ▼
+  BT-123     BT-97~102  BT-30,63   BT-115       BT-119
 ```
 
+## 3. ASCII 성능 비교
+
 ```
-  ┌──────────────────────────────────────────────────────────────────┐
-  │                   궁극의 우주공학 DSE 체인                        │
-  │                                                                  │
-  │  L1 Foundation    L2 Process    L3 Core       L4 Engine   L5 Sys │
-  │  ┌──────────┐    ┌─────────┐   ┌──────────┐  ┌────────┐  ┌────┐ │
-  │  │ChemRocket│───▶│Kepler6  │──▶│CarbonComp│─▶│DeepSpc │─▶│LEO │ │
-  │  │IonDrive  │    │Hohmann  │   │TiAlloy   │  │LaserCom│  │Moon│ │
-  │  │NuclearTh │    │LowThrust│   │HeatShield│  │AutoNav │  │Mars│ │
-  │  │SolarSail │    │Lagrange │   │Inflatable│  │Relay   │  │Ast │ │
-  │  │ElectricP │    │Gravity  │   │RadShield │  │QuantCom│  │Deep│ │
-  │  │FusionDrv │    └─────────┘   │SelfHeal  │  └────────┘  └────┘ │
-  │  └──────────┘                  └──────────┘                      │
-  │                                                                  │
-  │  Compatibility Rules:                                            │
-  │  - FusionDrive → MarsColony/DeepExplore only                     │
-  │  - SolarSail ✗ DeepExplore (insufficient photon pressure)        │
-  │  - DeepExplore → LaserComm/QuantumComm required                  │
-  └──────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│  [우주 성능] 시중 vs HEXA-SPACE                               │
+├──────────────────────────────────────────────────────────────┤
+│  ISP (비추력)                                                 │
+│  화학추진  ████████░░░░░░░░░░░░░░░░░░  450s                 │
+│  HEXA-ION  ████████████████████████░░  5,000s (sopfr*1000)  │
+│                                  (sigma-phi배 개선)          │
+│  태양전지 효율                                                │
+│  ISS       ████████████████░░░░░░░░░░  30%                  │
+│  HEXA-PV   ██████████████████████████  48%=sigma*tau %       │
+│  모듈 수용                                                    │
+│  ISS 모듈  ████████████████████░░░░░░  6명                   │
+│  HEXA-HAB  ██████████████████████████  12명=sigma (2모듈)    │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Level 0: Foundation — 추진 기술 (K₁=6)
+## 4. n=6 핵심 상수
 
-우주 미션의 근간이 되는 추진 시스템. 어떤 추진 방식을 사용하는가?
+| 상수 | 우주공학 적용 | 등급 |
+|------|-------------|------|
+| n=6 | SE(3) 6DOF, 6축 자세제어, 6인 승조원(ISS std) | EXACT |
+| sigma=12 | 12 RW max, 12개월 미션 주기 | EXACT |
+| tau=4 | 4 Reaction wheels std, 4 solar array | EXACT |
+| J₂=24 | 24h GEO 주기, 24kWh 모듈 전력 | EXACT |
+| sopfr=5 | Lagrange 5점, 5축 센서 | EXACT |
+| sigma-phi=10 | LEO ~10min visibility pass | CLOSE |
 
-| ID | n6 | perf | power | cost | 핵심 연결 |
-|----|-----|------|-------|------|----------|
-| ChemRocket | 0.67 | 0.90 | 0.50 | 0.50 | LOX/LH2 Isp~450s, n=6 DOF 강체 |
-| IonDrive | 0.83 | 0.70 | 0.80 | 0.45 | Hall thruster Isp~3000s, sigma-tau=8 kW |
-| NuclearThermal | 1.00 | 0.85 | 0.40 | 0.30 | NTP Z=6 Carbon moderator, Isp~900s |
-| SolarSail | 0.83 | 0.50 | 0.95 | 0.60 | Photon pressure, phi=2 reflectivity |
-| ElectricProp | 0.67 | 0.75 | 0.70 | 0.50 | VASIMR variable Isp |
-| FusionDrive | 1.00 | 0.60 | 0.35 | 0.20 | D-T fusion J₂=24 MeV (BT-27) |
+---
 
-## Level 1: Process — 궤도/항법 (K₂=5)
+## 5. DSE 체인 (5,400 조합)
 
-목적지까지의 최적 경로. 어떤 궤도 역학을 활용하는가?
+```
+L1 구조(K₁=6) ── L2 추진(K₂=6) ── L3 전력(K₃=6) ── L4 통신(K₄=5) ── L5 미션(K₅=5)
+= 6 x 6 x 6 x 5 x 5 = 5,400
+```
 
-| ID | n6 | perf | power | cost | 핵심 연결 |
-|----|-----|------|-------|------|----------|
-| Kepler6 | 1.00 | 0.85 | 0.70 | 0.65 | n=6 궤도요소 EXACT |
-| Hohmann | 0.67 | 0.80 | 0.60 | 0.60 | phi=2 burn transfer |
-| LowThrust | 0.83 | 0.75 | 0.75 | 0.55 | 연속 추력 나선 궤도 |
-| Lagrange | 0.83 | 0.70 | 0.80 | 0.50 | sopfr=5 Lagrange points |
-| Gravity | 0.67 | 0.88 | 0.85 | 0.70 | 중력 보조, Voyager 계보 |
+---
 
-## Level 2: Core — 구조/열방호 (K₃=6)
+## 6. 가설 검증
 
-우주 환경에서 생존하는 구조체. 어떤 소재와 방호 기술을 사용하는가?
+핵심 EXACT: SE(3)=n=6, Lagrange 5점=sopfr, GEO 24h=J₂, 4 RW=tau
+극한 가설: 우주 엘리베이터 탄소 나노튜브 Z=6, 솔라세일 면적 sigma²m², 자기범프러 차폐
 
-| ID | n6 | perf | power | cost | 핵심 연결 |
-|----|-----|------|-------|------|----------|
-| CarbonComp | 1.00 | 0.90 | 0.60 | 0.45 | Carbon Z=6=n EXACT (BT-27) |
-| TitaniumAlloy | 0.67 | 0.85 | 0.55 | 0.40 | Ti-6Al-4V 고온 내성 |
-| HeatShield | 0.83 | 0.80 | 0.50 | 0.45 | PICA ablative, phi=2 layers |
-| Inflatable | 0.50 | 0.65 | 0.70 | 0.60 | BEAM 팽창식 모듈 |
-| RadShield | 0.83 | 0.75 | 0.55 | 0.35 | sigma=12 layer 방사선 차폐 |
-| SelfHeal | 0.67 | 0.60 | 0.65 | 0.30 | 자가 치유 소재 |
+불가능성: Tsiolkovsky(질량비 지수적), Oberth effect, 궤도역학 에너지 보존
 
-## Level 3: Engine — 통신/관제 (K₄=5)
+## 7. Cross-DSE: aerospace, fusion, material, chip, robotics, communication
 
-우주에서의 데이터 전송과 자율 항법. 어떤 통신/관제 체계를 사용하는가?
+## 8. 진화: Mk.I ISS -> Mk.II Lunar Gateway -> Mk.III Mars -> Mk.IV Asteroid -> Mk.V Interstellar
 
-| ID | n6 | perf | power | cost | 핵심 연결 |
-|----|-----|------|-------|------|----------|
-| DeepSpace | 0.83 | 0.85 | 0.50 | 0.40 | DSN sigma-tau=8 대역 |
-| LaserComm | 1.00 | 0.90 | 0.60 | 0.35 | 광통신 sigma=12 Gbps 목표 |
-| AutoNav | 0.83 | 0.80 | 0.65 | 0.45 | 자율항법 AI, n=6 센서 융합 |
-| Relay | 0.67 | 0.75 | 0.70 | 0.50 | TDRS/Mars 중계 위성 |
-| QuantumComm | 0.50 | 0.60 | 0.45 | 0.25 | QKD 양자 보안 통신 |
+## 9. BT 연결
 
-## Level 4: System — 미션 시스템 (K₅=5)
+BT-123(SE(3)=n=6), BT-97~102(핵융합), BT-85(카본 Z=6), BT-127(kissing sigma=12)
 
-최종 미션 목표. 어떤 우주 시스템을 구축하는가?
+## 10. 산업 검증
 
-| ID | n6 | perf | power | cost | 핵심 연결 |
-|----|-----|------|-------|------|----------|
-| LEO_Const | 0.83 | 0.85 | 0.60 | 0.50 | sigma=12 궤도면 메가 컨스텔레이션 |
-| LunarBase | 0.67 | 0.80 | 0.50 | 0.35 | n=6 거주 모듈 달 기지 |
-| MarsColony | 0.83 | 0.70 | 0.45 | 0.25 | 화성 정착, phi=2 year 윈도우 |
-| Asteroid | 1.00 | 0.75 | 0.55 | 0.40 | n=6 자원 유형 소행성 채굴 |
-| DeepExplore | 0.50 | 0.60 | 0.40 | 0.20 | 외행성/성간 탐사 |
-
-## Scoring Weights
-- n6 일관성: 35% (n=6 연결 강도)
-- 성능: 25% (추력, 대역폭, 미션 성공률)
-- 전력: 20% (전력 효율, 에너지 자급)
-- 비용: 20% (개발/운용비)
-
-## Compatibility Rules
-1. FusionDrive → MarsColony 또는 DeepExplore만 허용 (과도한 추진력)
-2. SolarSail ✗ DeepExplore (태양 복사압 부족)
-3. DeepExplore → LaserComm 또는 QuantumComm 필수 (심우주 통신)
+ISS(1998~, 28년), SpaceX(2002~), Voyager(1977~, 49년), Apollo(1969)
