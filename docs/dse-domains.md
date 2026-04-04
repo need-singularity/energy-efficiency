@@ -57,7 +57,7 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `speech-synthesis.toml` | TextAnalysis→Acoustic→Vocoder→Enhancement→Deployment | 7,776 |
 | `tokenizer-design.toml` | Algorithm→Vocabulary→Encoding→Normalization→Application | 7,776 |
 
-> **14개 | 107,568 조합**
+> **14개 | 107,784 조합**
 
 ---
 
@@ -511,5 +511,7 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `quantum.toml` | Foundation→Process→Core→Engine→System | 4,500 |
 | `simulation-hypothesis.toml` | Constants→Grid→Quantum→Optimization→Evidence | 6,480 |
 | `snn-spiking.toml` | NeuronModel→TimeConstant→SNN_Topology→Learning→Platform | 7,776 |
+| `social-architecture.toml` | Individual→Relationship→Team→Organization→Social-System | 3,750 |
+| `temporal-architecture.toml` | OscillatorMaterial→OscillationProcess→ClockCore→TimingChip→SyncSystem | 4,500 |
 
-> **13개 | 94,556 조합**
+> **15개 | 106,062 조합**
