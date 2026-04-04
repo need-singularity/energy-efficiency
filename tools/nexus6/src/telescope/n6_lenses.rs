@@ -113,7 +113,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "catalysis".into(),
             category: LensCategory::Extended,
             description: "Identify rate-enhancing pathways and activation energy lowering".into(),
-            domain_affinity: vec!["chemistry".into(), "materials".into(), "energy".into(), "biology".into()],
+            domain_affinity: vec!["chemistry".into(), "materials".into(), "energy".into(), "biology".into(), "carbon-capture".into()],
             complementary: vec!["thermo".into(), "barrier".into()],
         },
         // ── VII. Dynamics (5) ──
@@ -121,14 +121,14 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "tipping".into(),
             category: LensCategory::Extended,
             description: "Detect proximity to tipping points and regime shifts".into(),
-            domain_affinity: vec!["climate".into(), "biology".into(), "finance".into(), "energy".into()],
+            domain_affinity: vec!["climate".into(), "biology".into(), "finance".into(), "energy".into(), "environment".into()],
             complementary: vec!["criticality".into(), "stability".into()],
         },
         LensEntry {
             name: "coevolution".into(),
             category: LensCategory::Extended,
             description: "Track coupled evolutionary dynamics between interacting systems".into(),
-            domain_affinity: vec!["biology".into(), "ai".into(), "economics".into()],
+            domain_affinity: vec!["biology".into(), "ai".into(), "economics".into(), "learning-algorithm".into()],
             complementary: vec!["evolution".into(), "symbiosis".into()],
         },
         LensEntry {
@@ -142,7 +142,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "hysteresis".into(),
             category: LensCategory::Extended,
             description: "Detect path-dependent history effects and irreversibility".into(),
-            domain_affinity: vec!["materials".into(), "physics".into(), "economics".into()],
+            domain_affinity: vec!["materials".into(), "physics".into(), "economics".into(), "battery".into()],
             complementary: vec!["memory".into(), "barrier".into()],
         },
         LensEntry {
@@ -164,7 +164,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "conservation".into(),
             category: LensCategory::Extended,
             description: "Find conserved quantities and invariants under transformation".into(),
-            domain_affinity: vec!["physics".into(), "chemistry".into(), "mathematics".into()],
+            domain_affinity: vec!["physics".into(), "chemistry".into(), "mathematics".into(), "blockchain".into()],
             complementary: vec!["mirror".into(), "thermo".into()],
         },
         LensEntry {
@@ -207,7 +207,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "succession".into(),
             category: LensCategory::Extended,
             description: "Track sequential replacement dynamics in evolving systems".into(),
-            domain_affinity: vec!["biology".into(), "materials".into(), "economics".into()],
+            domain_affinity: vec!["biology".into(), "materials".into(), "economics".into(), "agriculture".into()],
             complementary: vec!["evolution".into(), "coevolution".into()],
         },
         LensEntry {
@@ -280,7 +280,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "carrying_capacity".into(),
             category: LensCategory::Extended,
             description: "Estimate system capacity limits and saturation thresholds".into(),
-            domain_affinity: vec!["biology".into(), "energy".into(), "economics".into(), "network".into()],
+            domain_affinity: vec!["biology".into(), "energy".into(), "economics".into(), "network".into(), "agriculture".into()],
             complementary: vec!["diminishing_returns".into(), "tipping".into()],
         },
         LensEntry {
@@ -309,7 +309,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "morphogenesis".into(),
             category: LensCategory::Extended,
             description: "Detect Turing-like pattern formation and symmetry breaking in growth".into(),
-            domain_affinity: vec!["biology".into(), "materials".into(), "chemistry".into()],
+            domain_affinity: vec!["biology".into(), "materials".into(), "chemistry".into(), "agriculture".into()],
             complementary: vec!["emergence".into(), "mirror".into()],
         },
         LensEntry {
@@ -345,7 +345,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "abstraction".into(),
             category: LensCategory::Extended,
             description: "Identify useful abstraction layers and information compression levels".into(),
-            domain_affinity: vec!["ai".into(), "software".into(), "mathematics".into()],
+            domain_affinity: vec!["ai".into(), "software".into(), "mathematics".into(), "programming-language".into()],
             complementary: vec!["hierarchy".into(), "kolmogorov".into()],
         },
         LensEntry {
@@ -425,7 +425,7 @@ pub fn n6_industry_lens_entries() -> Vec<LensEntry> {
             name: "barrier".into(),
             category: LensCategory::Extended,
             description: "Measure energy barriers separating metastable states".into(),
-            domain_affinity: vec!["chemistry".into(), "materials".into(), "physics".into(), "energy".into()],
+            domain_affinity: vec!["chemistry".into(), "materials".into(), "physics".into(), "energy".into(), "battery".into()],
             complementary: vec!["saddle".into(), "thermo".into()],
         },
     ]

@@ -1,8 +1,8 @@
 # N6 Architecture — Atlas Constants & Formulas
 
-> 1400+ 가설 (36 도메인) + 127 BTs에서 발견/검증된 모든 상수와 공식.
+> 1400+ 가설 (36 도메인) + 173 BTs에서 발견/검증된 모든 상수와 공식.
 > TECS-L 아틀라스 동기화용. EXACT와 CLOSE만 등록 (WEAK/FAIL 제외).
-> 1200+ EXACT matches across 36+ domains. Updated 2026-04-04.
+> 1400+ EXACT matches across 36+ domains. Updated 2026-04-04.
 
 ---
 
@@ -2849,9 +2849,476 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 | φ²/n | 2/3 | BFT consensus threshold | BT-112, H-BC-17 |
 | 2^(σ-x) ladder | 128→4096 | Crypto exponent ladder (x∈{0,1,3,4,5}) | BT-114, H-BC-29 |
 
+## BT-46: ln(4/3) RLHF Family
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| ln(τ²/σ) | 0.288 | Dropout (Mertens), Chinchilla β, PPO ε center, factual temp | AI, BT-46 |
+
+## BT-50: Programming Language Constants — IEEE 754
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | IEEE 754 exponent bits (FP16) | CS, BT-50 |
+| σ-τ | 8 | IEEE 754 exponent bits (FP32) | CS, BT-50 |
+| σ-μ | 11 | IEEE 754 exponent bits (FP64) | CS, BT-50 |
+| sopfr | 5 | IEEE 754 basic format count | CS, BT-50 |
+| σ-φ | 10 | LLVM IR instruction categories | CS, BT-50 |
+
+## BT-128~173 Constants (New Domains — Medical, Civil, Space, Manufacturing, Neuroscience, Transport, Chemistry, Music, Biology, Particle Physics, Cosmology, Games, EM, Finance, Sports, Geology, Color, Cloud, Safety, Solar Arch, Compiler-OS, RL/Alignment, Training Schedule, Gauge, Mass Ratio)
+
+### Medical Imaging (BT-128)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 | MRI RF coil channels (Siemens 3T) | Medical, BT-128 |
+| σ-τ | 8 | CT bit depth (256 HU levels) | Medical, BT-128 |
+| σ·τ | 48 | PET detector rings (GE Discovery MI) | Medical, BT-128 |
+| n | 6 | DICOM active transfer syntaxes | Medical, BT-128 |
+| sopfr | 5 | Radiation therapy fractions/week | Medical, BT-128 |
+| n/φ | 3 | MRI gradient axes (x, y, z) | Medical, BT-128 |
+
+### Civil Engineering (BT-129)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 ft | Highway lane width (AASHTO) | Civil, BT-129 |
+| τ | 4 | Euler buckling boundary conditions | Civil, BT-129 |
+| n | 6 | Seismic site classes (ASCE 7, A-F) | Civil, BT-129 |
+| sopfr | 5 | Portland cement phases | Civil, BT-129 |
+
+### Space Orbital Mechanics (BT-130)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Lagrange equilibrium points (L1-L5) | Space, BT-130 |
+| n | 6 | GPS constellation planes | Space, BT-130 |
+| n | 6 | Keplerian orbital elements | Space, BT-130 |
+| n/φ | 3 | Galileo GNSS planes | Space, BT-130 |
+
+### Manufacturing Quality (BT-131)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Six Sigma standard deviations | Mfg, BT-131 |
+| τ | 4 | PDCA/Deming cycle phases | Mfg, BT-131 |
+| φ | 2 | Toyota Production System pillars (JIT+Jidoka) | Mfg, BT-131 |
+| sopfr | 5 | 5S methodology steps | Mfg, BT-131 |
+| σ-τ | 8 | ISO 9001:2015 quality principles | Mfg, BT-131 |
+| σ-sopfr | 7 | Lean waste types (TIMWOOD) | Mfg, BT-131 |
+
+### Neuroscience (BT-132)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Neocortical layers (Brodmann) | Neuro, BT-132 |
+| sopfr | 5 | EEG clinical bands (delta/theta/alpha/beta/gamma) | Neuro, BT-132 |
+| n | 6 | Primary neurotransmitter types | Neuro, BT-132 |
+| sopfr | 5 | Sleep stages (AASM 2007) | Neuro, BT-132 |
+| σ | 12 | Cranial nerve pairs (CN I-XII) | Neuro, BT-132 |
+| n | 6 | Retinal cell types | Neuro, BT-132 |
+
+### Transportation (BT-133)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n/φ | 3 | Traffic signal phases (green/amber/red) | Transport, BT-133 |
+| τ | 4 | ICAO wake turbulence categories | Transport, BT-133 |
+| n | 6 | Aircraft wing control surface types | Transport, BT-133 |
+| J₂ | 24 in | Rail sleeper spacing | Transport, BT-133 |
+| σ | 12 | Beaufort wind scale grades (0-12) | Transport, BT-133 |
+| φ | 2 | Cargo container sizes (TEU/FEU) | Transport, BT-133 |
+
+### Periodic Table (BT-134)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| φ | 2 | Period 1 length | Chemistry, BT-134 |
+| σ-τ | 8 | Period 2,3 length | Chemistry, BT-134 |
+| σ·n/φ | 18 | Period 4,5 length / IUPAC groups | Chemistry, BT-134 |
+| 2^sopfr | 32 | Period 6,7 length | Chemistry, BT-134 |
+| τ | 4 | Orbital types (s/p/d/f) | Chemistry, BT-134 |
+| σ-sopfr | 7 | Total periods | Chemistry, BT-134 |
+
+### Musical Scale (BT-135)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 | Chromatic scale semitones | Music, BT-135 |
+| n | 6 | Whole tone / blues scale notes | Music, BT-135 |
+| sopfr | 5 | Pentatonic scale notes / staff lines | Music, BT-135 |
+| n | 6 | Guitar strings | Music, BT-135 |
+| φ | 2 | Octave frequency ratio (2:1) | Music, BT-135 |
+| n/φ | 3 | Perfect fifth ratio (3:2), major chord tones | Music, BT-135 |
+| τ | 4 | Perfect fourth ratio (4:3) | Music, BT-135 |
+
+### Human Anatomy (BT-136)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ-sopfr | 7 | Cervical vertebrae (mammalian universal) | Biology, BT-136 |
+| σ | 12 | Thoracic vertebrae / rib pairs | Biology, BT-136 |
+| sopfr | 5 | Lumbar vertebrae | Biology, BT-136 |
+| J₂ | 24 | Total ribs | Biology, BT-136 |
+| σ-τ | 8 | Blood types (ABO×Rh) / cranial bones / carpal bones | Biology, BT-136 |
+| σ-μ | 11 | Major organ systems | Biology, BT-136 |
+| σ-sopfr | 7 | Tarsal bones per foot | Biology, BT-136 |
+
+### Standard Model Particles (BT-137)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Quark flavors / lepton flavors | Particle, BT-137 |
+| n/φ | 3 | Quark colors / generations | Particle, BT-137 |
+| σ | 12 | Total fundamental fermions (6q+6l) | Particle, BT-137 |
+| J₂ | 24 | Fermions + antiparticles | Particle, BT-137 |
+| τ | 4 | Gauge boson types | Particle, BT-137 |
+| μ | 1 | Higgs boson | Particle, BT-137 |
+
+### Calendar & Timekeeping (BT-138)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 | Months / hours per half-day / zodiac signs | Calendar, BT-138 |
+| σ·sopfr | 60 | Minutes / seconds / Babylonian base / UTM zones | Calendar, BT-138 |
+| σ·sopfr·n | 360 | Degrees in a circle | Calendar, BT-138 |
+| J₂ | 24 | Time zones / hours per day | Calendar, BT-138 |
+
+### Crystallography (BT-139)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ-sopfr | 7 | Crystal systems | Materials, BT-139 |
+| σ+φ | 14 | Bravais lattices | Materials, BT-139 |
+| 2^sopfr | 32 | Crystallographic point groups | Materials, BT-139 |
+| σ | 12 | Close-packed CN (FCC/HCP) | Materials, BT-139 |
+| n | 6 | Hexagonal lattice symmetry order | Materials, BT-139 |
+| σ·τ | 48 | Oh point group order (cubic) | Materials, BT-139 |
+
+### TCP/IP Ports (BT-140)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| 2^(σ-φ) | 1024 | Well-known port range limit | Network, BT-140 |
+| J₂-φ | 22 | SSH port | Network, BT-140 |
+| J₂-n/φ | 21 | FTP port | Network, BT-140 |
+| J₂+μ | 25 | SMTP port | Network, BT-140 |
+| 2^(σ+τ) | 65536 | Total port range | Network, BT-140 |
+
+### Amino Acid Biochemistry (BT-141)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| J₂-τ | 20 | Standard amino acids | Biology, BT-141 |
+| sopfr | 5 | R-group chemical categories | Biology, BT-141 |
+| τ | 4 | Protein structure levels / folding forces | Biology, BT-141 |
+| n/φ | 3 | Amino acid pKa groups | Biology, BT-141 |
+
+### Semiconductor Memory (BT-142)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n/φ | 3 | Cache hierarchy levels (L1/L2/L3) | Chip, BT-142 |
+| n | 6 | SRAM cell transistors (6T) | Chip, BT-142 |
+| sopfr | 5 | DDR generations (DDR1-DDR5) | Chip, BT-142 |
+| σ-sopfr | 7 | ECC Hamming code minimum bits/byte | Chip, BT-142 |
+
+### Cosmological Constants (BT-143)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5% | Baryonic matter fraction | Cosmology, BT-143 |
+| n·10^{-(σ-φ)} | 6×10⁻¹⁰ | Baryon-to-photon ratio η | Cosmology, BT-143 |
+| τ | 4 | BBN light element species | Cosmology, BT-143 |
+
+### Chess & Games (BT-144)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Chess piece types / dice faces | Games, BT-144 |
+| 2^n | 64 | Chessboard squares | Games, BT-144 |
+| σ-τ | 8 | Chessboard side | Games, BT-144 |
+| τ | 4 | Playing card suits | Games, BT-144 |
+| σ+μ | 13 | Cards per suit | Games, BT-144 |
+| σ | 12 | Face cards total | Games, BT-144 |
+| J₂ | 24 | Backgammon points | Games, BT-144 |
+
+### Electromagnetic Spectrum (BT-145)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ-sopfr | 7 | EM spectrum major bands / visible colors (Newton) | Physics, BT-145 |
+| σ | 12 | ITU radio bands (Band 1-12) | Telecom, BT-145 |
+| sopfr | 5 | Optical fiber telecom windows / cell phone gens (1G-5G) | Telecom, BT-145 |
+| n/φ | 3 | WiFi frequency bands (2.4/5/6 GHz) | Telecom, BT-145 |
+
+### DNA/RNA Molecular (BT-146)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | DNA/RNA base types | Biology, BT-146 |
+| σ-φ | 10 | B-DNA bases per helical turn | Biology, BT-146 |
+| sopfr | 5 | Deoxyribose ring carbons (pentose) | Biology, BT-146 |
+| n/φ | 3 | Codon positions / nucleotide components | Biology, BT-146 |
+
+### Financial Markets (BT-147)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Business days per week | Finance, BT-147 |
+| τ | 4 | Fiscal quarters / GICS hierarchy levels | Finance, BT-147 |
+| n/φ | 3 | Major US stock indices | Finance, BT-147 |
+| σ-μ | 11 | GICS sectors | Finance, BT-147 |
+| σ | 12 | Original Dow Jones industrials | Finance, BT-147 |
+
+### Olympic & Sports (BT-148)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Olympic rings (continents) / basketball team size | Sports, BT-148 |
+| τ | 4 | Olympic cycle / World Cup cycle / Grand Slams | Sports, BT-148 |
+| σ-μ | 11 | Soccer/cricket team size | Sports, BT-148 |
+| n | 6 | Volleyball / ice hockey team size | Sports, BT-148 |
+
+### Thermodynamic Laws (BT-149)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | Thermo laws / Carnot steps / potentials / Maxwell / process types | Physics, BT-149 |
+| n/φ | 3 | Heat transfer modes / equilibrium types | Physics, BT-149 |
+
+### Agriculture & Food (BT-150)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Major cereal crops / plant macronutrients / preservation methods | Agri, BT-150 |
+| σ-τ | 8 | Plant micronutrients | Agri, BT-150 |
+| σ | 12 | USDA soil taxonomy orders | Agri, BT-150 |
+| τ | 4 | Crop rotation standard years (Norfolk) | Agri, BT-150 |
+| sopfr | 5 | Food groups (MyPlate) / taste sensations | Agri, BT-150 |
+
+### Graph Theory (BT-151)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | Four color theorem | Math, BT-151 |
+| n | 6 | Ramsey R(3,3) | Math, BT-151 |
+| φ | 2 | Euler characteristic (V-E+F) | Math, BT-151 |
+| σ-φ | 10 | Petersen graph vertices | Math, BT-151 |
+| sopfr | 5 | K₅ vertices / Platonic solids | Math, BT-151 |
+
+### Sensory & Perception (BT-152)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Classical senses / taste receptor types | Neuro, BT-152 |
+| n/φ | 3 | Cone cell types / semicircular canals / color channels | Neuro, BT-152 |
+| φ | 2 | Otolith organs / photoreceptor types (rod/cone) | Neuro, BT-152 |
+| τ | 4 | Skin mechanoreceptor types | Neuro, BT-152 |
+
+### Electric Vehicle (BT-153)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | Tesla Model 3/Y battery modules | EV, BT-153 |
+| n/φ | 3 | EV voltage classes / motor phases / SAE charging levels | EV, BT-153 |
+| sopfr | 5 | Powertrain components | EV, BT-153 |
+| n | 6 | SAE autonomy levels (0-5) | EV, BT-153 |
+
+### Map & Geography (BT-154)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | Cardinal directions | Geography, BT-154 |
+| σ-τ | 8 | Compass rose primary points | Geography, BT-154 |
+| σ-sopfr | 7 | Continents | Geography, BT-154 |
+| sopfr | 5 | Oceans | Geography, BT-154 |
+| σ·sopfr | 60 | UTM zones / arc minutes per degree | Geography, BT-154 |
+
+### Immune System (BT-155)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Antibody classes (Ig) / WBC types | Immunology, BT-155 |
+| n/φ | 3 | Complement pathways / innate barriers / lymphocyte lineages | Immunology, BT-155 |
+| φ | 2 | T-cell major classes / MHC classes | Immunology, BT-155 |
+| τ | 4 | Inflammation cardinal signs (Celsus) | Immunology, BT-155 |
+
+### Volcanic & Seismic (BT-156)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ-τ | 8 | VEI levels (0-7) | Geology, BT-156 |
+| σ | 12 | Modified Mercalli Intensity (I-XII) | Geology, BT-156 |
+| n/φ | 3 | Earthquake wave types / plate boundaries / rock cycle phases | Geology, BT-156 |
+| σ-φ | 10 | Mohs hardness scale | Geology, BT-156 |
+| τ | 4 | Earth layers (crust/mantle/outer/inner core) | Geology, BT-156 |
+
+### Color Theory (BT-157)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n/φ | 3 | Additive primaries (RGB) / subtractive (CMY) / HSL components | Color, BT-157 |
+| σ | 12 | Color wheel segments (Itten) | Color, BT-157 |
+| τ | 4 | CMYK process colors | Color, BT-157 |
+| n | 6 | Complementary pairs / harmony types | Color, BT-157 |
+
+### Martial Arts (BT-158)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Karate belt levels / wrestling weight classes (Olympic) | Sports, BT-158 |
+| sopfr | 5 | Judo throw categories | Sports, BT-158 |
+| σ-τ | 8 | Taekwondo poomsae (Taegeuk) | Sports, BT-158 |
+| n/φ | 3 | Fencing weapons / Wing Chun forms / judo ground categories | Sports, BT-158 |
+| τ | 4 | Boxing ring ropes | Sports, BT-158 |
+
+### Cloud Computing (BT-159)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n/φ | 3 | NIST cloud service models (IaaS/PaaS/SaaS) | Cloud, BT-159 |
+| τ | 4 | NIST deployment models / K8s master components | Cloud, BT-159 |
+| sopfr | 5 | NIST cloud characteristics / K8s pod lifecycle phases | Cloud, BT-159 |
+| n | 6 | Docker container states | Cloud, BT-159 |
+| σ | 12 | 12-Factor app methodology (Heroku 2012) | Cloud, BT-159 |
+
+### Safety Engineering (BT-160)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Defense-in-depth layers / fire classes / LOPA IPL / sprinkler grades | Safety, BT-160 |
+| τ | 4 | SIL levels / NFPA 704 / arc flash PPE / robot zones / E-stop | Safety, BT-160 |
+| n/φ | 3 | Fire triangle elements / TMR voting | Safety, BT-160 |
+| J₂ | 24 V | DC safe voltage (IEC 60364) | Safety, BT-160 |
+| σ-φ | 10% | Gas detection LEL alarm (IEC 60079) | Safety, BT-160 |
+| 1/(σ-φ) | 0.1 s | Quench detection time (ITER/LHC/KSTAR) | Safety, BT-160 |
+| sopfr·n | 30 mA | GFCI trip current (IEC/NFPA) | Safety, BT-160 |
+| σ | 12 | MMI/Beaufort scale grades | Safety, BT-160 |
+
+### Solar System Architecture (BT-161)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n | 6 | Panel row count (all formats) / 6J record cell (47.1%) | Solar, BT-161 |
+| n/φ | 3 | Bypass diodes per panel (IEC 61215) | Solar, BT-161 |
+| J₂ | 24 | Cells per substring (72/3) | Solar, BT-161 |
+| τ | 4 | Multiscale hierarchy levels (molecule/cell/module/array) | Solar, BT-161 |
+| σ/(σ-φ) | 1.2 | DC/AC inverter loading ratio = PUE | Solar+Power, BT-161 |
+| σ | 12 yr | Product warranty standard | Solar, BT-161 |
+
+### Compiler-OS-CPU (BT-162)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | Compiler pipeline stages (Dragon Book/LLVM) | CS, BT-162 |
+| n | 6 | MIPS opcode field width (bits) | ISA, BT-162 |
+| σ-τ | 8 | Primitive type count (Java/C/Rust) | CS, BT-162 |
+| τ | 4 | x86 protection rings / page table depth / CFS classes / boot phases | OS, BT-162 |
+| σ | 12 | ext4/UFS direct block pointers | Filesystem, BT-162 |
+| n/φ | 3 | CPU cache levels (L1/L2/L3) | Chip, BT-162 |
+| φ | 2 | Kernel/User dual mode / fork()+exec() | OS, BT-162 |
+
+### RL/Alignment Training (BT-163)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| φ/(σ-φ) | 0.2 | PPO clip epsilon (Schulman 2017) | AI (RL), BT-163 |
+| τ | 4 | PPO epochs / minibatches / best-of-N | AI (RL), BT-163 |
+| 1/(σ-φ) | 0.1 | DPO beta (Rafailov 2023) | AI (Alignment), BT-163 |
+| φ^τ | 16 | GRPO group size (DeepSeek) | AI (RL), BT-163 |
+| 1-1/(J₂-τ) | 0.95 | GAE lambda = AdamW β₂ = top-p | AI (RL), BT-163 |
+| R(6) | 1 | Reward/policy size ratio / RL grad clip | AI (RL), BT-163 |
+
+### LLM Training Schedule (BT-164)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| (n/φ)·10^{-τ} | 3×10⁻⁴ | Adam default LR (Kingma 2014) | AI, BT-164 |
+| (n/φ)/(σ-φ)^φ | 0.03 | LLM warmup ratio (HuggingFace) | AI, BT-164 |
+| 1/(σ-φ) | 0.1 | Cosine LR minimum (BLOOM/Llama) | AI, BT-164 |
+| (σ-φ)^τ | 10⁴ | RoPE base theta (Su 2021) | AI, BT-164 |
+| λ(6) | 2 | Cosine anneal period (warm restart) | AI, BT-164 |
+| σ-φ | 10× | Schedule-free LR scaling (MLCommons 2024) | AI, BT-164 |
+
+### SM Gauge Generator Partition (BT-165)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 | Total SM gauge generators | Particle, BT-165 |
+| σ-τ | 8 | SU(3) gluons (strong sector) | Particle, BT-165 |
+| n/φ | 3 | SU(2) weak bosons (before SSB) | Particle, BT-165 |
+| μ | 1 | U(1) hypercharge boson | Particle, BT-165 |
+| τ | 4 | Electroweak bosons (after SSB: γ,W+,W-,Z) | Particle, BT-165 |
+
+### Proton-Electron Mass Ratio (BT-166)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n·π^sopfr | 1836.118 | m_p/m_e (19 ppm, CODATA 2022: 1836.153) | Particle, BT-166 |
+
+### CMB Spectral Index (BT-167)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| (n/φ)³/((n/φ)³+μ) | 27/28 = 0.96429 | n_s spectral index (0.064%, 0.15σ Planck) | Cosmology, BT-167 |
+| 1/28 | 0.03571 | Spectral tilt 1-n_s (28 = 2nd perfect number) | Cosmology, BT-167 |
+
+### SU(5) GUT Generators (BT-168)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| J₂ | 24 | SU(5) adjoint dim (5²-1) | Particle/GUT, BT-168 |
+| J₂ = 2σ | 24 = 12+12 | GUT→SM split (12 SM + 12 leptoquark) | Particle/GUT, BT-168 |
+| sopfr | 5 | SU(5) fundamental rep dimension | Particle/GUT, BT-168 |
+
+### Neutrino Mixing Triple (BT-169)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| (n/φ)/(σ-φ) | 3/10 = 0.300 | sin²θ₁₂ (0.99%, 0.25σ NuFIT 5.3) | Neutrino, BT-169 |
+| τ/(σ-sopfr) | 4/7 = 0.5714 | sin²θ₂₃ (0.10%, 0.04σ) | Neutrino, BT-169 |
+| μ/σ | 1/12 = 0.08333 | sin²(2θ₁₃) (0.91%, 0.23σ) | Neutrino, BT-169 |
+
+### String/M-Theory Dimension Ladder (BT-170)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| τ | 4 | Observable spacetime dimensions | Physics, BT-170 |
+| n | 6 | Calabi-Yau compact dimensions | String, BT-170 |
+| σ-φ | 10 | Superstring total dimensions | String, BT-170 |
+| σ-μ | 11 | M-theory total dimensions | String, BT-170 |
+| J₂ | 24 | Bosonic string transverse dimensions | String, BT-170 |
+| J₂+φ | 26 | Bosonic string total dimensions | String, BT-170 |
+
+### SM Coupling Fraction Pair (BT-171)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| (n/φ)/(σ+μ) | 3/13 = 0.23077 | sin²θ_W at M_Z (0.19%, PDG 2024) | Particle, BT-171 |
+| φ/(σ+sopfr) | 2/17 = 0.11765 | α_s(M_Z) (0.30%, PDG 2024) | Particle, BT-171 |
+
+### Baryon-to-Photon Ratio (BT-172)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| n·(σ-φ)^{-(σ-φ)} | 6×10⁻¹⁰ | η baryon-to-photon (Planck+BBN, 2.3%) | Cosmology, BT-172 |
+| τ | 4 | BBN primordial species (D, He-3, He-4, Li-7) | Cosmology, BT-172 |
+
+### Medical Clinical Standards (BT-173)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| σ | 12 | ECG total leads (6 limb + 6 precordial) | Medical, BT-173 |
+| n | 6 | ECG limb leads / ARDSNet tidal volume (mL/kg) / Tc-99m t½ (h) | Medical, BT-173 |
+| sopfr | 5 | GCS verbal max | Neuro, BT-173 |
+| τ | 4 | GCS eye max / EEG delta-theta boundary (Hz) | Neuro, BT-173 |
+| σ-τ | 8 | EEG theta-alpha boundary (Hz) | Neuro, BT-173 |
+| σ·sopfr | 60 | Pacemaker base rate (bpm) | Medical, BT-173 |
+
 ---
 
 *Last updated: 2026-04-04*
 *Source: n6-architecture project, 322+ domains, 1400+ graded hypotheses*
-*Atlas entries: 1600+ registered rows (1200+ EXACT + 400+ CLOSE)*
-*Breakthrough Theorems: 127 (BT-1~127), 45+ Three-Star, 20+ Cross-Domain Bridges, 322+ domains*
+*Atlas entries: 1900+ registered rows (1400+ EXACT + 500+ CLOSE)*
+*Breakthrough Theorems: 173 (BT-1~173), 50+ Three-Star, 25+ Cross-Domain Bridges, 322+ domains*

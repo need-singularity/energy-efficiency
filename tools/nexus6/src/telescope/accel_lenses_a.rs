@@ -44,7 +44,7 @@ pub fn accel_ml_lens_entries() -> Vec<LensEntry> {
             name: "lottery_ticket".into(),
             category: LensCategory::Extended,
             description: "Detect sparse subnetworks that match full-network performance".into(),
-            domain_affinity: vec!["ai".into(), "optimization".into(), "chip".into()],
+            domain_affinity: vec!["ai".into(), "optimization".into(), "chip".into(), "learning-algorithm".into()],
             complementary: vec!["eigenspectrum".into(), "architecture_search".into()],
         },
         LensEntry {
@@ -79,7 +79,7 @@ pub fn accel_ml_lens_entries() -> Vec<LensEntry> {
             name: "compute_graph".into(),
             category: LensCategory::Extended,
             description: "Analyze computation DAGs for parallelism and fusion opportunities".into(),
-            domain_affinity: vec!["ai".into(), "chip".into(), "software".into()],
+            domain_affinity: vec!["ai".into(), "chip".into(), "software".into(), "compiler-os".into()],
             complementary: vec!["kernel_fusion".into(), "pipeline_parallel".into()],
         },
         LensEntry {
@@ -121,7 +121,7 @@ pub fn accel_ml_lens_entries() -> Vec<LensEntry> {
             name: "adversarial_robustness".into(),
             category: LensCategory::Extended,
             description: "Measure model resilience to adversarial perturbations and worst-case inputs".into(),
-            domain_affinity: vec!["ai".into(), "security".into(), "optimization".into()],
+            domain_affinity: vec!["ai".into(), "security".into(), "optimization".into(), "autonomous-driving".into(), "safety".into()],
             complementary: vec!["self_play".into(), "exploration_exploitation".into()],
         },
         LensEntry {

@@ -50,14 +50,14 @@ pub fn accel_engineering_lens_entries() -> Vec<LensEntry> {
             name: "feedback_loop".into(),
             category: LensCategory::Extended,
             description: "Detect positive and negative feedback loops in control systems".into(),
-            domain_affinity: vec!["engineering".into(), "biology".into(), "economics".into(), "climate".into()],
+            domain_affinity: vec!["engineering".into(), "biology".into(), "economics".into(), "climate".into(), "autonomous-driving".into()],
             complementary: vec!["pid_control".into(), "stability".into()],
         },
         LensEntry {
             name: "pid_control".into(),
             category: LensCategory::Extended,
             description: "Analyze proportional-integral-derivative control response and tuning".into(),
-            domain_affinity: vec!["engineering".into(), "robotics".into(), "manufacturing".into()],
+            domain_affinity: vec!["engineering".into(), "robotics".into(), "manufacturing".into(), "autonomous-driving".into()],
             complementary: vec!["feedback_loop".into(), "fault_tolerance".into()],
         },
         LensEntry {

@@ -11,7 +11,7 @@ pub fn frontier_lens_entries() -> Vec<LensEntry> {
             name: "acoustic".into(),
             category: LensCategory::Extended,
             description: "Detect sound-wave patterns: periodicity, harmonics, tonality (sigma=12 semitones)".into(),
-            domain_affinity: vec!["audio".into(), "music".into(), "physics".into(), "signal".into()],
+            domain_affinity: vec!["audio".into(), "music".into(), "physics".into(), "signal".into(), "display".into()],
             complementary: vec!["wave".into(), "periodicity".into(), "resonance".into()],
         },
         LensEntry {
@@ -39,14 +39,14 @@ pub fn frontier_lens_entries() -> Vec<LensEntry> {
             name: "entropy_production_rate".into(),
             category: LensCategory::Extended,
             description: "Quantify irreversibility via forward/backward transition asymmetry (R(6)=1 reversibility)".into(),
-            domain_affinity: vec!["physics".into(), "chemistry".into(), "biology".into(), "thermo".into()],
+            domain_affinity: vec!["physics".into(), "chemistry".into(), "biology".into(), "thermo".into(), "environment".into()],
             complementary: vec!["thermo".into(), "causal".into(), "memory".into()],
         },
         LensEntry {
             name: "polymer".into(),
             category: LensCategory::Extended,
             description: "Chain statistics: Flory exponent, radius of gyration, persistence (Carbon Z=6 backbone)".into(),
-            domain_affinity: vec!["chemistry".into(), "materials".into(), "biology".into(), "polymer".into()],
+            domain_affinity: vec!["chemistry".into(), "materials".into(), "biology".into(), "polymer".into(), "carbon-capture".into()],
             complementary: vec!["fractal".into(), "scale".into(), "hexagonal".into()],
         },
         LensEntry {

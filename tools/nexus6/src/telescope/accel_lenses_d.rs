@@ -19,7 +19,7 @@ pub fn accel_humanities_lens_entries() -> Vec<LensEntry> {
             name: "urban_metabolism".into(),
             category: LensCategory::Extended,
             description: "Model cities as metabolic systems — energy/material in-out flows".into(),
-            domain_affinity: vec!["urban".into(), "energy".into(), "environment".into()],
+            domain_affinity: vec!["urban".into(), "energy".into(), "environment".into(), "carbon-capture".into()],
             complementary: vec!["thermo".into(), "carrying_capacity".into()],
         },
         LensEntry {
@@ -33,7 +33,7 @@ pub fn accel_humanities_lens_entries() -> Vec<LensEntry> {
             name: "vehicle_routing".into(),
             category: LensCategory::Extended,
             description: "Optimize multi-stop routing under capacity and time constraints".into(),
-            domain_affinity: vec!["logistics".into(), "optimization".into(), "urban".into()],
+            domain_affinity: vec!["logistics".into(), "optimization".into(), "urban".into(), "autonomous-driving".into()],
             complementary: vec!["combinatorial".into(), "traffic_flow".into()],
         },
         LensEntry {

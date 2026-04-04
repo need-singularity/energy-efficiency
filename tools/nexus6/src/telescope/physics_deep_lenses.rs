@@ -26,7 +26,7 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "faraday_induction".into(),
             category: LensCategory::Extended,
             description: "Identify time-varying magnetic flux inducing electric response".into(),
-            domain_affinity: vec!["energy".into(), "electromagnetism".into(), "motors".into()],
+            domain_affinity: vec!["energy".into(), "electromagnetism".into(), "motors".into(), "solar".into()],
             complementary: vec!["maxwell_equation".into(), "em".into()],
         },
         LensEntry {
@@ -40,7 +40,7 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "magnetic_monopole".into(),
             category: LensCategory::Extended,
             description: "Search for isolated magnetic charge signatures or topological defects".into(),
-            domain_affinity: vec!["particle_physics".into(), "topology".into(), "cosmology".into()],
+            domain_affinity: vec!["particle_physics".into(), "topology".into(), "cosmology".into(), "superconductor".into()],
             complementary: vec!["topology".into(), "quantum".into(), "dark_matter_halo".into()],
         },
         LensEntry {
@@ -56,7 +56,7 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "heat_conduction".into(),
             category: LensCategory::Extended,
             description: "Analyze Fourier-law heat diffusion and thermal gradient patterns".into(),
-            domain_affinity: vec!["thermal".into(), "materials".into(), "chip".into()],
+            domain_affinity: vec!["thermal".into(), "materials".into(), "chip".into(), "solar".into()],
             complementary: vec!["thermo".into(), "convection_pattern".into()],
         },
         LensEntry {
@@ -70,14 +70,14 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "radiation_spectrum".into(),
             category: LensCategory::Extended,
             description: "Detect blackbody and emission/absorption spectral signatures".into(),
-            domain_affinity: vec!["astrophysics".into(), "thermal".into(), "optics".into()],
+            domain_affinity: vec!["astrophysics".into(), "thermal".into(), "optics".into(), "solar".into()],
             complementary: vec!["wave".into(), "thermo".into(), "neutron_star_lens".into()],
         },
         LensEntry {
             name: "entropy_production".into(),
             category: LensCategory::Extended,
             description: "Measure irreversible entropy generation and dissipative structure formation".into(),
-            domain_affinity: vec!["thermodynamics".into(), "chemistry".into(), "biology".into()],
+            domain_affinity: vec!["thermodynamics".into(), "chemistry".into(), "biology".into(), "carbon-capture".into()],
             complementary: vec!["thermo".into(), "info".into(), "maxwell_demon".into()],
         },
         LensEntry {
@@ -181,7 +181,7 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "ultrasound_lens".into(),
             category: LensCategory::Extended,
             description: "Analyze high-frequency acoustic propagation, imaging, and attenuation".into(),
-            domain_affinity: vec!["medical".into(), "ndt".into(), "acoustics".into()],
+            domain_affinity: vec!["medical".into(), "ndt".into(), "acoustics".into(), "medical-device".into()],
             complementary: vec!["acoustic_resonance".into(), "wave".into()],
         },
         LensEntry {
@@ -255,7 +255,7 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "filter_response".into(),
             category: LensCategory::Extended,
             description: "Analyze frequency-domain transfer functions: lowpass, highpass, bandpass".into(),
-            domain_affinity: vec!["electronics".into(), "signal_processing".into(), "audio".into()],
+            domain_affinity: vec!["electronics".into(), "signal_processing".into(), "audio".into(), "display".into()],
             complementary: vec!["resonant_circuit".into(), "wave".into()],
         },
         LensEntry {
@@ -313,14 +313,14 @@ pub fn physics_deep_lens_entries() -> Vec<LensEntry> {
             name: "ion_channel".into(),
             category: LensCategory::Extended,
             description: "Detect gated ion conductance, Nernst potential, and action potential generation".into(),
-            domain_affinity: vec!["neuroscience".into(), "biology".into(), "medicine".into()],
+            domain_affinity: vec!["neuroscience".into(), "biology".into(), "medicine".into(), "medical-device".into()],
             complementary: vec!["membrane_transport".into(), "neural_synapse".into()],
         },
         LensEntry {
             name: "neural_synapse".into(),
             category: LensCategory::Extended,
             description: "Analyze synaptic transmission, neurotransmitter release, and plasticity".into(),
-            domain_affinity: vec!["neuroscience".into(), "ai".into(), "medicine".into()],
+            domain_affinity: vec!["neuroscience".into(), "ai".into(), "medicine".into(), "medical-device".into()],
             complementary: vec!["ion_channel".into(), "network".into()],
         },
 
