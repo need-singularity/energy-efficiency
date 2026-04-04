@@ -1,11 +1,11 @@
-# N6 Ultimate Flying Object DSE — cross-domain fusion architecture
+# N6 Aerospace DSE — cross-domain fusion architecture
 # 6 Materials x 6 Propulsion x 6 Power x 6 Compute x 6 System = 7,776 combos
 # BT-85 (Carbon Z=6), BT-93 (Diamond/Graphene), BT-123 (SE(3) dim=n=6)
 # All n=6 connections: Z=6, CN=6, SE(3)=6DOF, σ=12, J₂=24, τ=4, φ=2
 
 [meta]
-name = "ufo"
-desc = "Ultimate Flying Object (Materials + Propulsion + Power + Compute + System)"
+name = "aerospace"
+desc = "Aerospace (Materials + Propulsion + Power + Compute + System)"
 version = "1.0"
 levels = 5
 total_hint = 7776
@@ -355,7 +355,7 @@ perf = 1.00
 power = 0.30
 cost = 0.05
 safety = 0.70
-notes = "6 modes=n EXACT, 24 subsystems=J2 EXACT, true UFO — all domain operational"
+notes = "6 modes=n EXACT, 24 subsystems=J2 EXACT, true all-domain aerospace — all domain operational"
 
 # ============================================================
 # Rules: compatibility and preference constraints

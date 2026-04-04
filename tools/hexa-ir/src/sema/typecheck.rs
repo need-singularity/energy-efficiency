@@ -3,6 +3,7 @@
 /// Walks the AST, checks type consistency of expressions and statements,
 /// and resolves type names to HexaType.
 
+use std::collections::HashMap;
 use crate::lexer::Span;
 use crate::ir::HexaType;
 use crate::parser::ast::*;
@@ -14,14 +15,38 @@ pub struct TypeChecker {
     resolver: Resolver,
     /// Return type of the current function (for return-statement checking)
     current_ret_ty: Option<HexaType>,
+    /// Struct definitions: struct_name -> Vec<(field_name, HexaType)>
+    struct_defs: HashMap<String, Vec<(String, HexaType)>>,
 }
 
 impl TypeChecker {
     pub fn new() -> Self {
-        TypeChecker {
+        let mut tc = TypeChecker {
             resolver: Resolver::new(),
             current_ret_ty: None,
+            struct_defs: HashMap::new(),
+        };
+        // Register built-in functions (file I/O, memory, print)
+        // These are special-cased in codegen as inline syscalls
+        let builtins = [
+            ("print",      "fn -> i64"),
+            ("file_open",  "fn -> i64"),
+            ("file_read",  "fn -> i64"),
+            ("file_write", "fn -> i64"),
+            ("file_close", "fn -> i64"),
+            ("heap_alloc", "fn -> i64"),
+            ("heap_free",  "fn -> i64"),
+        ];
+        let builtin_span = Span::dummy();
+        for (name, ty) in builtins {
+            let _ = tc.resolver.define(VarInfo {
+                name: name.to_string(),
+                ty_name: ty.to_string(),
+                mutable: false,
+                defined_at: builtin_span,
+            });
         }
+        tc
     }
 
     /// Check an entire program: all declarations
@@ -45,6 +70,7 @@ impl TypeChecker {
                     }
                 }
                 Decl::StructDecl(s) => {
+                    // Register struct in resolver
                     if let Err(e) = self.resolver.define(VarInfo {
                         name: s.name.clone(),
                         ty_name: "struct".to_string(),
@@ -53,6 +79,11 @@ impl TypeChecker {
                     }) {
                         errors.push(e);
                     }
+                    // Register struct field definitions for type checking
+                    let fields: Vec<(String, HexaType)> = s.fields.iter()
+                        .map(|(name, ty_expr)| (name.clone(), resolve_type_name(&type_expr_to_name(ty_expr))))
+                        .collect();
+                    self.struct_defs.insert(s.name.clone(), fields);
                 }
                 Decl::EnumDecl(en) => {
                     if let Err(e) = self.resolver.define(VarInfo {
@@ -62,6 +93,18 @@ impl TypeChecker {
                         defined_at: en.span,
                     }) {
                         errors.push(e);
+                    }
+                    // Register each variant as "EnumName::VariantName"
+                    for (vname, _) in &en.variants {
+                        let qualified = format!("{}::{}", en.name, vname);
+                        if let Err(e) = self.resolver.define(VarInfo {
+                            name: qualified,
+                            ty_name: en.name.clone(),
+                            mutable: false,
+                            defined_at: en.span,
+                        }) {
+                            errors.push(e);
+                        }
                     }
                 }
                 Decl::TypeAlias(t) => {
@@ -129,8 +172,14 @@ impl TypeChecker {
                 let ty_name = match (ty, init) {
                     (Some(te), _) => type_expr_to_name(te),
                     (None, Some(expr)) => {
-                        let inferred = self.check_expr(expr)?;
-                        hexa_type_name(&inferred)
+                        // For struct init, preserve the struct name as the type
+                        if let Expr::StructInit { name: struct_name, .. } = expr {
+                            let _ = self.check_expr(expr)?;
+                            struct_name.clone()
+                        } else {
+                            let inferred = self.check_expr(expr)?;
+                            hexa_type_name(&inferred)
+                        }
                     }
                     (None, None) => "any".to_string(),
                 };
@@ -223,7 +272,25 @@ impl TypeChecker {
                 let lt = self.check_expr(lhs)?;
                 let rt = self.check_expr(rhs)?;
                 match op {
-                    BinOp::Add | BinOp::Sub | BinOp::Mul | BinOp::Div |
+                    BinOp::Add => {
+                        // str + str = concatenation
+                        if matches!(lt, HexaType::Str) && matches!(rt, HexaType::Str) {
+                            Ok(HexaType::Str)
+                        } else if lt.is_numeric() && rt.is_numeric() {
+                            if matches!(lt, HexaType::F64) || matches!(rt, HexaType::F64) {
+                                Ok(HexaType::F64)
+                            } else {
+                                Ok(HexaType::I64)
+                            }
+                        } else {
+                            Err(SemaError::TypeError {
+                                span: *span,
+                                expected: "numeric or str".to_string(),
+                                found: format!("{:?} and {:?}", lt, rt),
+                            })
+                        }
+                    }
+                    BinOp::Sub | BinOp::Mul | BinOp::Div |
                     BinOp::Mod | BinOp::Pow => {
                         if lt.is_numeric() && rt.is_numeric() {
                             // Promote to F64 if either is F64
@@ -272,12 +339,28 @@ impl TypeChecker {
                 Ok(HexaType::Any)
             }
             Expr::Field { obj, name, span } => {
-                let _ = self.check_expr(obj)?;
-                // Struct field resolution requires type tables — Mk.II
+                let obj_ty = self.check_expr(obj)?;
+                // Try to resolve struct field type
+                // If obj is an Ident, look up its type name (which may be a struct name)
+                let struct_name = match obj.as_ref() {
+                    Expr::Ident(var_name, id_span) => {
+                        self.resolver.lookup(var_name, *id_span).ok()
+                            .map(|info| info.ty_name.clone())
+                    }
+                    _ => None,
+                };
+                if let Some(sname) = struct_name {
+                    if let Some(fields) = self.struct_defs.get(&sname) {
+                        if let Some((_, fty)) = fields.iter().find(|(fname, _)| fname == name) {
+                            return Ok(fty.clone());
+                        }
+                    }
+                }
+                // Fallback: return Any for unresolved struct field access
                 Ok(HexaType::Any)
             }
             Expr::Index { arr, idx, span } => {
-                let _ = self.check_expr(arr)?;
+                let arr_ty = self.check_expr(arr)?;
                 let idx_ty = self.check_expr(idx)?;
                 if !matches!(idx_ty, HexaType::I64) {
                     return Err(SemaError::TypeError {
@@ -286,14 +369,62 @@ impl TypeChecker {
                         found: hexa_type_name(&idx_ty),
                     });
                 }
-                Ok(HexaType::Any)
+                // If array type is known, return the element type
+                match arr_ty {
+                    HexaType::Array(inner, _) => Ok(*inner),
+                    _ => Ok(HexaType::Any),
+                }
             }
             Expr::StructInit { name, fields, span } => {
                 // Verify struct exists
                 let _ = self.resolver.lookup(name, *span)?;
+                // Type-check each field value
                 for (_, val) in fields {
                     let _ = self.check_expr(val)?;
                 }
+                // Return the struct type with field types
+                if let Some(struct_fields) = self.struct_defs.get(name) {
+                    let field_types: Vec<HexaType> = struct_fields.iter()
+                        .map(|(_, ty)| ty.clone())
+                        .collect();
+                    Ok(HexaType::Struct(field_types))
+                } else {
+                    Ok(HexaType::Any)
+                }
+            }
+            Expr::ArrayLit { elements, .. } => {
+                // Type-check all elements; infer element type from first element
+                let mut elem_ty = HexaType::Any;
+                for elem in elements {
+                    let t = self.check_expr(elem)?;
+                    if matches!(elem_ty, HexaType::Any) {
+                        elem_ty = t;
+                    }
+                }
+                let count = elements.len();
+                Ok(HexaType::Array(Box::new(elem_ty), count))
+            }
+            Expr::Match { scrutinee, arms, .. } => {
+                // Check the scrutinee
+                let _ = self.check_expr(scrutinee)?;
+                // Check each arm body
+                for arm in arms {
+                    // For variant patterns with bindings, push a scope
+                    self.resolver.push_scope();
+                    if let crate::parser::ast::Pattern::Variant { bindings, span, .. } = &arm.pattern {
+                        for binding in bindings {
+                            let _ = self.resolver.define(VarInfo {
+                                name: binding.clone(),
+                                ty_name: "any".to_string(),
+                                mutable: false,
+                                defined_at: *span,
+                            });
+                        }
+                    }
+                    let _ = self.check_expr(&arm.body)?;
+                    self.resolver.pop_scope();
+                }
+                // Match result type: Any for Mk.I (full inference in Mk.II)
                 Ok(HexaType::Any)
             }
             Expr::Block(block) => {

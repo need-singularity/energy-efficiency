@@ -20,6 +20,9 @@ pub fn lower_block(
 ) {
     for stmt in &ast_block.stmts {
         lower_stmt_full(ctx, block, stmt, extra_blocks);
+        // Drain any pending blocks created by expr_lower (e.g., match arms)
+        let pending = std::mem::take(&mut ctx.pending_blocks);
+        extra_blocks.extend(pending);
     }
 }
 
@@ -42,34 +45,55 @@ fn lower_stmt_full(
 ) {
     match stmt {
         Stmt::Let { name, init, ty, .. } => {
-            // Allocate space for the variable
-            let addr = ctx.fresh_reg();
-            let var_ty = ty.as_ref()
-                .map(|t| super::lower_type_expr(t))
-                .unwrap_or(HexaType::Any);
-            block.instrs.push(HexaInstr {
-                op: HexaOp::Alloc,
-                dest: Some(addr),
-                args: vec![],
-                ty: var_ty.clone(),
-            label: None,
-            });
+            // Check if initializer is an array literal — bind directly to array base
+            let is_array_init = matches!(init, Some(crate::parser::ast::Expr::ArrayLit { .. }));
+            // Check if initializer is a struct init — bind directly to struct base
+            let is_struct_init = matches!(init, Some(crate::parser::ast::Expr::StructInit { .. }));
 
-            // If there's an initializer, lower it and store
-            if let Some(init_expr) = init {
-                let val = lower_expr(ctx, block, init_expr);
+            if is_array_init {
+                // Array init: lower the ArrayLit (which already allocates + stores elements)
+                // and bind the variable directly to the array base register
+                let val = lower_expr(ctx, block, init.as_ref().unwrap());
+                ctx.bind_var(name, val);
+            } else if is_struct_init {
+                // Struct init: lower the StructInit (which allocates + stores fields)
+                // and bind the variable directly to the struct base register
+                // Also track which struct type this variable has for field access
+                if let Some(crate::parser::ast::Expr::StructInit { name: struct_name, .. }) = init {
+                    let val = lower_expr(ctx, block, init.as_ref().unwrap());
+                    ctx.bind_var(name, val);
+                    ctx.bind_var_struct_type(name, struct_name);
+                }
+            } else {
+                // Normal variable: allocate space and optionally store initializer
+                let addr = ctx.fresh_reg();
+                let var_ty = ty.as_ref()
+                    .map(|t| super::lower_type_expr(t))
+                    .unwrap_or(HexaType::Any);
                 block.instrs.push(HexaInstr {
-                    op: HexaOp::Store,
-                    dest: None,
-                    args: vec![addr, val],
-                    ty: HexaType::Void,
-            label: None,
+                    op: HexaOp::Alloc,
+                    dest: Some(addr),
+                    args: vec![],
+                    ty: var_ty.clone(),
+                    label: None,
                 });
-                // Emit ownership transfer: the value is now owned by this variable
-                super::proof_emit::emit_ownership_transfer(ctx, block, val, addr);
-            }
 
-            ctx.bind_var(name, addr);
+                // If there's an initializer, lower it and store
+                if let Some(init_expr) = init {
+                    let val = lower_expr(ctx, block, init_expr);
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![addr, val],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+                    // Emit ownership transfer: the value is now owned by this variable
+                    super::proof_emit::emit_ownership_transfer(ctx, block, val, addr);
+                }
+
+                ctx.bind_var(name, addr);
+            }
         }
 
         Stmt::Assign { target, value, .. } => {
@@ -132,13 +156,10 @@ fn lower_stmt_full(
                 successors: Vec::new(),
             };
 
-            // Create merge block (joins after if/else)
+            // Create merge block ID (joins after if/else).
+            // The merge block is realized by swapping block.id below,
+            // so we only need the ID here.
             let merge_id = ctx.fresh_block();
-            let mut merge_blk = HexaBlock {
-                id: merge_id,
-                instrs: Vec::new(),
-                successors: Vec::new(),
-            };
 
             if let Some(else_ast) = else_block {
                 // Create else-block

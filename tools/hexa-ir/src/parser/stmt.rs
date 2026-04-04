@@ -5,7 +5,7 @@
 use crate::lexer::{TokenKind, Span};
 use super::ast::*;
 use super::error::{Parser, ParseError};
-use super::expr::parse_expr;
+use super::expr::{parse_expr, parse_expr_no_struct};
 
 /// Parse a single statement
 pub fn parse_stmt(p: &mut Parser) -> Result<Stmt, ParseError> {
@@ -76,7 +76,7 @@ fn parse_if(p: &mut Parser) -> Result<Stmt, ParseError> {
     let start = p.peek_span();
     p.expect(&TokenKind::If)?;
 
-    let cond = parse_expr(p)?;
+    let cond = parse_expr_no_struct(p)?;
     let then_block = parse_block(p)?;
 
     let else_block = if p.eat(&TokenKind::Else) {
@@ -102,7 +102,7 @@ fn parse_while(p: &mut Parser) -> Result<Stmt, ParseError> {
     let start = p.peek_span();
     p.expect(&TokenKind::While)?;
 
-    let cond = parse_expr(p)?;
+    let cond = parse_expr_no_struct(p)?;
     let body = parse_block(p)?;
 
     Ok(Stmt::While {

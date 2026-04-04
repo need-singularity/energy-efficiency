@@ -16,12 +16,18 @@ use super::error::{Parser, ParseError};
 
 /// Pratt parser entry point
 pub fn parse_expr(p: &mut Parser) -> Result<Expr, ParseError> {
-    parse_expr_bp(p, 0)
+    parse_expr_bp(p, 0, false)
+}
+
+/// Parse expression without allowing struct-init (`Ident {` is not struct literal).
+/// Used in if/while conditions where `{` starts a block, not a struct.
+pub fn parse_expr_no_struct(p: &mut Parser) -> Result<Expr, ParseError> {
+    parse_expr_bp(p, 0, true)
 }
 
 /// Pratt parser with minimum binding power
-fn parse_expr_bp(p: &mut Parser, min_bp: u8) -> Result<Expr, ParseError> {
-    let mut lhs = parse_prefix(p)?;
+fn parse_expr_bp(p: &mut Parser, min_bp: u8, no_struct: bool) -> Result<Expr, ParseError> {
+    let mut lhs = parse_prefix_inner(p, no_struct)?;
 
     loop {
         // Check for postfix operations: call, field, index
@@ -43,7 +49,7 @@ fn parse_expr_bp(p: &mut Parser, min_bp: u8) -> Result<Expr, ParseError> {
         }
 
         p.advance(); // consume operator token
-        let rhs = parse_expr_bp(p, r_bp)?;
+        let rhs = parse_expr_bp(p, r_bp, no_struct)?;
         let span = lhs.span().merge(rhs.span());
         lhs = Expr::Binary {
             op,
@@ -57,7 +63,9 @@ fn parse_expr_bp(p: &mut Parser, min_bp: u8) -> Result<Expr, ParseError> {
 }
 
 /// Parse prefix expressions (atoms + unary operators)
-fn parse_prefix(p: &mut Parser) -> Result<Expr, ParseError> {
+/// When `no_struct` is true, `Ident {` is NOT interpreted as struct-init
+/// (used in if/while conditions where `{` starts a block).
+fn parse_prefix_inner(p: &mut Parser, no_struct: bool) -> Result<Expr, ParseError> {
     let span = p.peek_span();
 
     match p.peek().clone() {
@@ -87,16 +95,23 @@ fn parse_prefix(p: &mut Parser) -> Result<Expr, ParseError> {
         TokenKind::Ident(ref name) => {
             let name = name.clone();
             p.advance();
+            // Check for path expression: `Name::Variant` (enum construction)
+            if p.at(&TokenKind::ColonColon) {
+                parse_path_expr(p, name, span)
             // Check for struct initialization: `Name { field: val }`
-            if p.at(&TokenKind::LBrace) {
+            // Skip in no_struct mode (if/while conditions) where `{` starts a block
+            } else if !no_struct && p.at(&TokenKind::LBrace) {
                 parse_struct_init(p, name, span)
             } else {
                 Ok(Expr::Ident(name, span))
             }
         }
+        TokenKind::Match => {
+            return parse_match_expr(p, span);
+        }
         TokenKind::Minus => {
             p.advance();
-            let operand = parse_expr_bp(p, prefix_bp())?;
+            let operand = parse_expr_bp(p, prefix_bp(), no_struct)?;
             let full_span = span.merge(operand.span());
             Ok(Expr::Unary {
                 op: UnOp::Neg,
@@ -106,7 +121,7 @@ fn parse_prefix(p: &mut Parser) -> Result<Expr, ParseError> {
         }
         TokenKind::Not => {
             p.advance();
-            let operand = parse_expr_bp(p, prefix_bp())?;
+            let operand = parse_expr_bp(p, prefix_bp(), no_struct)?;
             let full_span = span.merge(operand.span());
             Ok(Expr::Unary {
                 op: UnOp::Not,
@@ -120,11 +135,34 @@ fn parse_prefix(p: &mut Parser) -> Result<Expr, ParseError> {
             p.expect(&TokenKind::RParen)?;
             Ok(expr)
         }
+        TokenKind::LBracket => {
+            return parse_array_literal(p, span);
+        }
         other => Err(ParseError::new(
             span,
             format!("expected expression, found {:?}", other),
         )),
     }
+}
+
+/// Array literal: `[expr1, expr2, ...]`
+fn parse_array_literal(p: &mut Parser, start_span: Span) -> Result<Expr, ParseError> {
+    p.advance(); // consume [
+    let mut elements = Vec::new();
+
+    while !p.at(&TokenKind::RBracket) && !p.is_eof() {
+        elements.push(parse_expr(p)?);
+        if !p.eat(&TokenKind::Comma) {
+            break;
+        }
+    }
+
+    let end_span = p.peek_span();
+    p.expect(&TokenKind::RBracket)?;
+    Ok(Expr::ArrayLit {
+        elements,
+        span: start_span.merge(end_span),
+    })
 }
 
 /// Struct initialization: `Name { field1: expr1, field2: expr2 }`
@@ -184,6 +222,7 @@ fn parse_field_access(p: &mut Parser, obj: Expr) -> Result<Expr, ParseError> {
     })
 }
 
+
 /// Index access: `expr[index]`
 fn parse_index(p: &mut Parser, arr: Expr) -> Result<Expr, ParseError> {
     p.expect(&TokenKind::LBracket)?;
@@ -195,6 +234,138 @@ fn parse_index(p: &mut Parser, arr: Expr) -> Result<Expr, ParseError> {
         arr: Box::new(arr),
         idx: Box::new(idx),
     })
+}
+
+/// Path expression: `Name::Variant` or `Name::Variant(args...)`
+/// Desugared to a Call with the enum variant name as function
+fn parse_path_expr(p: &mut Parser, enum_name: String, start_span: Span) -> Result<Expr, ParseError> {
+    p.expect(&TokenKind::ColonColon)?;
+    let (variant_name, variant_span) = p.expect_ident()?;
+    let full_span = start_span.merge(variant_span);
+    // Encode as Ident with qualified name "EnumName::VariantName"
+    // This is resolved during lowering where enum_defs are available
+    let qualified = format!("{}::{}", enum_name, variant_name);
+
+    // Check for tuple payload: `Color::RGB(r, g, b)`
+    if p.at(&TokenKind::LParen) {
+        p.expect(&TokenKind::LParen)?;
+        let mut args = Vec::new();
+        while !p.at(&TokenKind::RParen) && !p.is_eof() {
+            args.push(parse_expr(p)?);
+            if !p.eat(&TokenKind::Comma) {
+                break;
+            }
+        }
+        let end_span = p.peek_span();
+        p.expect(&TokenKind::RParen)?;
+        Ok(Expr::Call {
+            func: Box::new(Expr::Ident(qualified, full_span)),
+            args,
+            span: start_span.merge(end_span),
+        })
+    } else {
+        Ok(Expr::Ident(qualified, full_span))
+    }
+}
+
+/// Match expression: `match scrutinee { Pattern => body, ... }`
+fn parse_match_expr(p: &mut Parser, start_span: Span) -> Result<Expr, ParseError> {
+    p.expect(&TokenKind::Match)?;
+    let scrutinee = parse_expr_no_struct(p)?;
+    p.expect(&TokenKind::LBrace)?;
+
+    let mut arms = Vec::new();
+    while !p.at(&TokenKind::RBrace) && !p.is_eof() {
+        let arm = parse_match_arm(p)?;
+        arms.push(arm);
+        // Optional comma between arms
+        p.eat(&TokenKind::Comma);
+    }
+
+    let end_span = p.peek_span();
+    p.expect(&TokenKind::RBrace)?;
+
+    Ok(Expr::Match {
+        scrutinee: Box::new(scrutinee),
+        arms,
+        span: start_span.merge(end_span),
+    })
+}
+
+/// Parse a single match arm: `pattern => expr`
+fn parse_match_arm(p: &mut Parser) -> Result<MatchArm, ParseError> {
+    let start = p.peek_span();
+    let pattern = parse_pattern(p)?;
+    p.expect(&TokenKind::FatArrow)?;
+    let body = parse_expr(p)?;
+    let span = start.merge(body.span());
+    Ok(MatchArm { pattern, body, span })
+}
+
+/// Parse a pattern: `_`, `42`, `Color::Red`, `Color::RGB(r, g, b)`
+fn parse_pattern(p: &mut Parser) -> Result<Pattern, ParseError> {
+    let span = p.peek_span();
+
+    // Wildcard: `_`
+    if let TokenKind::Ident(ref name) = p.peek().clone() {
+        if name == "_" {
+            p.advance();
+            return Ok(Pattern::Wildcard(span));
+        }
+    }
+
+    // Integer literal pattern
+    if let TokenKind::IntLit(v) = p.peek().clone() {
+        p.advance();
+        return Ok(Pattern::Literal(v, span));
+    }
+
+    // Enum variant pattern: `EnumName::VariantName` or `EnumName::VariantName(bindings...)`
+    if let TokenKind::Ident(ref name) = p.peek().clone() {
+        let enum_name = name.clone();
+        p.advance();
+
+        if p.at(&TokenKind::ColonColon) {
+            p.expect(&TokenKind::ColonColon)?;
+            let (variant_name, variant_span) = p.expect_ident()?;
+            let full_span = span.merge(variant_span);
+
+            // Optional bindings: `Variant(a, b, c)`
+            let mut bindings = Vec::new();
+            if p.at(&TokenKind::LParen) {
+                p.expect(&TokenKind::LParen)?;
+                while !p.at(&TokenKind::RParen) && !p.is_eof() {
+                    let (binding_name, _) = p.expect_ident()?;
+                    bindings.push(binding_name);
+                    if !p.eat(&TokenKind::Comma) {
+                        break;
+                    }
+                }
+                let end = p.peek_span();
+                p.expect(&TokenKind::RParen)?;
+                return Ok(Pattern::Variant {
+                    enum_name,
+                    variant_name,
+                    bindings,
+                    span: span.merge(end),
+                });
+            }
+
+            return Ok(Pattern::Variant {
+                enum_name,
+                variant_name,
+                bindings,
+                span: full_span,
+            });
+        }
+
+        // Plain identifier used as pattern (treat as variable binding, or error for now)
+        return Err(ParseError::new(span, format!(
+            "expected pattern (_, literal, or Enum::Variant), found identifier '{}'", enum_name
+        )));
+    }
+
+    Err(ParseError::new(span, format!("expected pattern, found {:?}", p.peek())))
 }
 
 /// Binding power for prefix (unary) operators — level 8 (highest)

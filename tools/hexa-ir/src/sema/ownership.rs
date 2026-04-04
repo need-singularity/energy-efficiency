@@ -215,6 +215,13 @@ impl OwnershipChecker {
                 }
                 Ok(())
             }
+            Expr::Match { scrutinee, arms, .. } => {
+                self.check_expr_uses(scrutinee)?;
+                for arm in arms {
+                    self.check_expr_uses(&arm.body)?;
+                }
+                Ok(())
+            }
             // Literals and blocks don't reference variables directly
             _ => Ok(()),
         }

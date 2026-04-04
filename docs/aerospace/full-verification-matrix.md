@@ -8,9 +8,9 @@
 
 ## Section A: BT Connection Matrix (23 BTs)
 
-### A-1. UFO 전용 신규 BT (BT-AERO-1 ~ BT-AERO-6)
+### A-1. Aerospace 전용 신규 BT (BT-AERO-1 ~ BT-AERO-6)
 
-| BT# | 제목 | UFO 서브시스템 | 핵심 연결 | EXACT율 | 등급 | 출처 |
+| BT# | 제목 | Aerospace 서브시스템 | 핵심 연결 | EXACT율 | 등급 | 출처 |
 |-----|------|---------------|----------|:-------:|:----:|------|
 | BT-AERO-1 | SE(3)=6DOF 보편 비행 정리 | 제어 (Compute) | SE(3) Lie group dim=3+3=n=6, 모든 비행체 6자유도 | 6/6 (100%) | EXACT | Lie group theory, 6 비행체 유형 검증 |
 | BT-AERO-2 | GPS J₂=24 위성 궤도면 정리 | 통신 (Comms) | GPS 6궤도면×4위성=24=n·τ=J₂, GLONASS/Galileo/BeiDou 모두 24위성 수렴 | 5/6 (83%) | EXACT | GPS ICD-200, 4개 독립 GNSS 시스템 |
@@ -21,7 +21,7 @@
 
 ### A-2. 기존 BT 매핑 (17개)
 
-| BT# | 제목 | UFO 서브시스템 | 연결 설명 | Grade | 출처 |
+| BT# | 제목 | Aerospace 서브시스템 | 연결 설명 | Grade | 출처 |
 |-----|------|---------------|----------|:-----:|------|
 | BT-28 | Computing architecture ladder | 제어 (Compute) | GPU σ²=144 SM, HBM σ·J₂=288 GB → 비행 컴퓨터 연산 아키텍처 | EXACT | AD102=144 SM, H100=132 SM |
 | BT-33 | Transformer σ=12 atom | 지능 (Intelligence) | AGI 자율비행의 Transformer 기반 인지 아키텍처, d_model=2^σ | EXACT | BERT/GPT-3 차원 수렴 |
@@ -47,7 +47,7 @@
 ┌────────────────────────────────────────────────────────┐
 │  BT Connection Summary                                  │
 ├────────────────────────────────────────────────────────┤
-│  신규 BT (UFO 전용):     6개 (BT-AERO-1~6)             │
+│  신규 BT (Aerospace 전용):     6개 (BT-AERO-1~6)             │
 │  기존 BT 매핑:           17개                           │
 │  총 BT 연결:             23개                           │
 │                                                        │
@@ -55,12 +55,12 @@
 │  CLOSE:    1/23 =  4.3% (BT-AERO-6 일부 CLOSE)         │
 │                                                        │
 │  서브시스템별 BT 분포:                                   │
-│    소재 (Hull):       6 BTs (BT-85,86,88,93,UFO-3,6)  │
-│    추진 (Propulsion): 4 BTs (BT-89,97,99,UFO-4)       │
+│    소재 (Hull):       6 BTs (BT-85,86,88,93,AERO-3,6)  │
+│    추진 (Propulsion): 4 BTs (BT-89,97,99,AERO-4)       │
 │    에너지 (Power):    1 BT  (BT-43)                    │
-│    제어 (Compute):    3 BTs (BT-28,123,UFO-1)          │
-│    통신 (Comms):      3 BTs (BT-48,53,UFO-2)           │
-│    지능 (Intelligence):6 BTs (BT-33,54,56,58,59,UFO-5) │
+│    제어 (Compute):    3 BTs (BT-28,123,AERO-1)          │
+│    통신 (Comms):      3 BTs (BT-48,53,AERO-2)           │
+│    지능 (Intelligence):6 BTs (BT-33,54,56,58,59,AERO-5) │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -72,49 +72,49 @@
 
 | TP# | Prediction | Tier | 검증 시기 | 검증 방법 | 기대 결과 | n=6 수식 |
 |-----|-----------|:----:|----------|----------|----------|---------|
-| TP-UFO-01 | Joby S4 6로터 효율이 4/8로터 eVTOL 대비 Pareto 최적 | T1 | 2026~2027 | Joby S4 vs Lilium (없음) vs Volocopter (18로터) 비행 데이터 공개 시 hover efficiency (W/kg) 비교 | 6로터 hover power/weight 최소, MTOW 대비 유효 하중 최대 | n=6 로터 = SE(3) 최소 내결함 구성 |
-| TP-UFO-02 | eVTOL 최적 도심 항속거리 = σ=12 km (±2 km) | T1 | 2026~2028 | FAA Part 135 인가 eVTOL 실운항 데이터, Joby/Archer 초기 노선 거리 분석 | 도심 운항 노선 평균 10~14 km, 중심 12 km | σ(6)=12 km, 에너지 밀도 한계와 수요 교차점 |
-| TP-UFO-03 | 6축 IMU (3 gyro + 3 accel)가 9축 대비 관성항법 정밀도 최적 | T1 | 2026 | Honeywell HG9900 vs 9-axis MEMS IMU 벤치마크, Allan variance 비교 | 6채널 ring laser > 9채널 MEMS, bias stability 10배+ 우수 | n=6 sensing channels = 3축×φ=2 이중화 |
-| TP-UFO-04 | 헥사콥터 1모터 고장 시 6DOF 완전 복구, 쿼드콥터 불가 | T1 | 2026 | DJI Matrice 600 (6로터) vs DJI Phantom (4로터) 모터 차단 비행 시험 | 헥사: 고장 후 yaw 제한적이나 position hold 유지, 쿼드: 즉시 불안정 | n=6 로터, 잔여 sopfr=5 > 3 (최소 안정) |
-| TP-UFO-05 | GPS 24위성 GDOP이 30/36위성 GDOP 대비 기하학적 최적 근접 | T1 | 2026 | GPS constellation simulator (STK/GMAT), 24/30/36위성 GDOP 시뮬레이션 | 24위성 GDOP ≈ 1.2 (= σ/(σ-φ) = PUE), 30+ 추가 시 개선폭 <5% | J₂=24 = n·τ, GDOP_opt ≈ 1.2 = σ/(σ-φ) |
-| TP-UFO-06 | 비행 제어 루프 τ=4 ms (250 Hz)에서 안정성 최대 | T1 | 2026~2027 | PX4/ArduPilot 오픈소스 FC, 제어 주기 1/2/4/8/16 ms 스윕, settling time 비교 | 4 ms에서 settling time 최소 + overshoot 최소 (Pareto) | τ(6)=4, OODA 최소 완결 주기 |
-| TP-UFO-07 | 탄소섬유 12K tow가 3K/6K/24K 대비 강도/중량비 제조 효율 최적 | T1 | 2026~2027 | Toray T700 12K vs 3K/6K/24K tensile coupon 시험 (ASTM D3039), 드레이프성 비교 | 12K = 인장강도/면적밀도 비 최적, 3K 고가, 24K 수지 침투 불량 | σ(6)=12K 번들, 산업 표준 |
-| TP-UFO-08 | 6개 제어면 항공기가 4/8개 대비 제어 할당 효율 최적 | T1 | 2026 | 6DOF 제어 할당 시뮬레이션 (MATLAB/Simulink), 4/6/8 면 가상 항공기 | 6면: attainable moment set/actuator weight 비 최대 | n=6 = SE(3) dim, n/φ=3축 × φ=2 |
+| TP-AERO-01 | Joby S4 6로터 효율이 4/8로터 eVTOL 대비 Pareto 최적 | T1 | 2026~2027 | Joby S4 vs Lilium (없음) vs Volocopter (18로터) 비행 데이터 공개 시 hover efficiency (W/kg) 비교 | 6로터 hover power/weight 최소, MTOW 대비 유효 하중 최대 | n=6 로터 = SE(3) 최소 내결함 구성 |
+| TP-AERO-02 | eVTOL 최적 도심 항속거리 = σ=12 km (±2 km) | T1 | 2026~2028 | FAA Part 135 인가 eVTOL 실운항 데이터, Joby/Archer 초기 노선 거리 분석 | 도심 운항 노선 평균 10~14 km, 중심 12 km | σ(6)=12 km, 에너지 밀도 한계와 수요 교차점 |
+| TP-AERO-03 | 6축 IMU (3 gyro + 3 accel)가 9축 대비 관성항법 정밀도 최적 | T1 | 2026 | Honeywell HG9900 vs 9-axis MEMS IMU 벤치마크, Allan variance 비교 | 6채널 ring laser > 9채널 MEMS, bias stability 10배+ 우수 | n=6 sensing channels = 3축×φ=2 이중화 |
+| TP-AERO-04 | 헥사콥터 1모터 고장 시 6DOF 완전 복구, 쿼드콥터 불가 | T1 | 2026 | DJI Matrice 600 (6로터) vs DJI Phantom (4로터) 모터 차단 비행 시험 | 헥사: 고장 후 yaw 제한적이나 position hold 유지, 쿼드: 즉시 불안정 | n=6 로터, 잔여 sopfr=5 > 3 (최소 안정) |
+| TP-AERO-05 | GPS 24위성 GDOP이 30/36위성 GDOP 대비 기하학적 최적 근접 | T1 | 2026 | GPS constellation simulator (STK/GMAT), 24/30/36위성 GDOP 시뮬레이션 | 24위성 GDOP ≈ 1.2 (= σ/(σ-φ) = PUE), 30+ 추가 시 개선폭 <5% | J₂=24 = n·τ, GDOP_opt ≈ 1.2 = σ/(σ-φ) |
+| TP-AERO-06 | 비행 제어 루프 τ=4 ms (250 Hz)에서 안정성 최대 | T1 | 2026~2027 | PX4/ArduPilot 오픈소스 FC, 제어 주기 1/2/4/8/16 ms 스윕, settling time 비교 | 4 ms에서 settling time 최소 + overshoot 최소 (Pareto) | τ(6)=4, OODA 최소 완결 주기 |
+| TP-AERO-07 | 탄소섬유 12K tow가 3K/6K/24K 대비 강도/중량비 제조 효율 최적 | T1 | 2026~2027 | Toray T700 12K vs 3K/6K/24K tensile coupon 시험 (ASTM D3039), 드레이프성 비교 | 12K = 인장강도/면적밀도 비 최적, 3K 고가, 24K 수지 침투 불량 | σ(6)=12K 번들, 산업 표준 |
+| TP-AERO-08 | 6개 제어면 항공기가 4/8개 대비 제어 할당 효율 최적 | T1 | 2026 | 6DOF 제어 할당 시뮬레이션 (MATLAB/Simulink), 4/6/8 면 가상 항공기 | 6면: attainable moment set/actuator weight 비 최대 | n=6 = SE(3) dim, n/φ=3축 × φ=2 |
 
 ### Tier 2: 중기 기술 (2028~2035) -- 8개
 
 | TP# | Prediction | Tier | 검증 시기 | 검증 방법 | 기대 결과 | n=6 수식 |
 |-----|-----------|:----:|----------|----------|----------|---------|
-| TP-UFO-09 | MHD 감속 장치로 극초음속 항공기 열 부하 σ-φ=10배 감소 | T2 | 2028~2030 | 풍동 시험 (NASA Langley / AEDC), MHD 감속 on/off 비교, 열유속 측정 | MHD on 시 stagnation heat flux 10배 감소, B=σ=12T 초전도 코일 | σ-φ=10배 저감, B=σ=12 T |
-| TP-UFO-10 | Scramjet 최대 비추력 Mach n=6 설계점에서 달성 | T2 | 2028~2032 | X-51A 후속 또는 DARPA HAWC Mach 5~8 비행시험 데이터 | Mach 6 ±0.5에서 specific impulse 피크 (>1500 s) | n=6 = scramjet 전환 Mach |
-| TP-UFO-11 | 초전도 σ=12 T 코일이 MHD 추진 임계 자기장 | T2 | 2030~2035 | ITER/SPARC/CFS 기반 12T 급 HTS 코일 → 해수 MHD 추진 실증 | 12T 이상에서 MHD interaction parameter S>1, 유효 추진 달성 | σ(6)=12 T, S=σB²L/ρv |
-| TP-UFO-12 | eVTOL 배터리 96S 직렬이 400V 시스템 표준으로 수렴 | T2 | 2028~2030 | FAA/EASA eVTOL 형식증명 배터리 사양 수집, 직렬 셀 수 통계 | 96S ±10%가 모달 값, 400V DC 버스 표준화 | 96=σ·(σ-τ), BT-57/84 |
-| TP-UFO-13 | CFRP 적층판 12-ply 그룹이 NASA/ESA 차세대 기체 표준 유지 | T2 | 2028~2032 | NASA HCCC (High-rate Composite Aircraft Manufacturing) 보고서 | 12-ply quasi-isotropic = 복합재 기본 반복 단위 유지 | σ(6)=12 plies |
-| TP-UFO-14 | F-35 DAS 후속 시스템도 n=6 IR 센서 유지 | T2 | 2030~2035 | 6세대 전투기 NGAD/FCAS/Tempest 센서 사양 공개 시 | DAS IR 센서 수 = 6 (정육면체 면 커버), 또는 12 (σ, 반구×2) | n=6 (최소 구면 커버), σ=12 (고해상도) |
-| TP-UFO-15 | 군용 드론 스웜 기본 운용 단위 J₂=24기로 수렴 | T2 | 2028~2032 | DARPA/US Army/PLA 드론 스웜 실증 시험 편대 규모 통계 | Sub-swarm unit = 24 ±4기, GPS 배치와 동일 최적 구면 분할 | J₂(6)=24, σ·φ=24 |
-| TP-UFO-16 | 항공 VHF 8.33 kHz 채널 간격 글로벌 확산 (ICAO 채택) | T2 | 2028~2030 | ICAO Annex 10 개정안, 유럽 외 지역 (미국, 아시아) 도입 현황 | 8.33 kHz = 25/(n/φ) = 25/3이 글로벌 표준으로 확산 | 25/(n/φ) = 8.33 kHz |
+| TP-AERO-09 | MHD 감속 장치로 극초음속 항공기 열 부하 σ-φ=10배 감소 | T2 | 2028~2030 | 풍동 시험 (NASA Langley / AEDC), MHD 감속 on/off 비교, 열유속 측정 | MHD on 시 stagnation heat flux 10배 감소, B=σ=12T 초전도 코일 | σ-φ=10배 저감, B=σ=12 T |
+| TP-AERO-10 | Scramjet 최대 비추력 Mach n=6 설계점에서 달성 | T2 | 2028~2032 | X-51A 후속 또는 DARPA HAWC Mach 5~8 비행시험 데이터 | Mach 6 ±0.5에서 specific impulse 피크 (>1500 s) | n=6 = scramjet 전환 Mach |
+| TP-AERO-11 | 초전도 σ=12 T 코일이 MHD 추진 임계 자기장 | T2 | 2030~2035 | ITER/SPARC/CFS 기반 12T 급 HTS 코일 → 해수 MHD 추진 실증 | 12T 이상에서 MHD interaction parameter S>1, 유효 추진 달성 | σ(6)=12 T, S=σB²L/ρv |
+| TP-AERO-12 | eVTOL 배터리 96S 직렬이 400V 시스템 표준으로 수렴 | T2 | 2028~2030 | FAA/EASA eVTOL 형식증명 배터리 사양 수집, 직렬 셀 수 통계 | 96S ±10%가 모달 값, 400V DC 버스 표준화 | 96=σ·(σ-τ), BT-57/84 |
+| TP-AERO-13 | CFRP 적층판 12-ply 그룹이 NASA/ESA 차세대 기체 표준 유지 | T2 | 2028~2032 | NASA HCCC (High-rate Composite Aircraft Manufacturing) 보고서 | 12-ply quasi-isotropic = 복합재 기본 반복 단위 유지 | σ(6)=12 plies |
+| TP-AERO-14 | F-35 DAS 후속 시스템도 n=6 IR 센서 유지 | T2 | 2030~2035 | 6세대 전투기 NGAD/FCAS/Tempest 센서 사양 공개 시 | DAS IR 센서 수 = 6 (정육면체 면 커버), 또는 12 (σ, 반구×2) | n=6 (최소 구면 커버), σ=12 (고해상도) |
+| TP-AERO-15 | 군용 드론 스웜 기본 운용 단위 J₂=24기로 수렴 | T2 | 2028~2032 | DARPA/US Army/PLA 드론 스웜 실증 시험 편대 규모 통계 | Sub-swarm unit = 24 ±4기, GPS 배치와 동일 최적 구면 분할 | J₂(6)=24, σ·φ=24 |
+| TP-AERO-16 | 항공 VHF 8.33 kHz 채널 간격 글로벌 확산 (ICAO 채택) | T2 | 2028~2030 | ICAO Annex 10 개정안, 유럽 외 지역 (미국, 아시아) 도입 현황 | 8.33 kHz = 25/(n/φ) = 25/3이 글로벌 표준으로 확산 | 25/(n/φ) = 8.33 kHz |
 
 ### Tier 3: 장기 기술 (2035~2050) -- 7개
 
 | TP# | Prediction | Tier | 검증 시기 | 검증 방법 | 기대 결과 | n=6 수식 |
 |-----|-----------|:----:|----------|----------|----------|---------|
-| TP-UFO-17 | SSTO (Single Stage to Orbit) Mach J₂=24 달성 | T3 | 2040~2050 | 공력 가열 + scramjet/RBCC 추진 기술 성숙 후 실증기 | Mach 24 = 궤도속도 7.8 km/s, J₂=24 | J₂(6)=24, v_orbit=7.8 km/s |
-| TP-UFO-18 | Compact Fusion Q=σ-φ=10 달성 | T3 | 2035~2045 | CFS SPARC (Q>2 목표) → ARC → compact fusion Q=10 | Q_eng ≥ 10 = σ-φ, 비행체 탑재 가능 사이즈 | σ-φ=10, ITER Q=10 목표 |
-| TP-UFO-19 | Diamond 반도체 (Z=6) 파워 일렉트로닉스 항공 실용화 | T3 | 2035~2040 | Diamond MOSFET/Schottky 상용화, eVTOL/항공기 전력변환기 채택 | Diamond SBD breakdown > 10 MV/cm, 효율 99%+, Z=6=n | Z_carbon=6=n, BT-93 |
-| TP-UFO-20 | 핵융합 직접 추진 (Direct Fusion Drive) ISP=σ³=1728s 급 | T3 | 2040~2050 | Princeton DFD 또는 후속 프로그램 실증 | ISP 1500~2000 s, 추력 5~10 N급, σ³=1728 중심 | σ³=1728 s |
-| TP-UFO-21 | 양자 통신 위성 6 대역 (L/S/C/Ku/Ka/V+Q) 항공 표준화 | T3 | 2035~2045 | ITU WRC 결의, 항공 위성 양자키배포(QKD) 대역 할당 | n=6 대역 유지 또는 +1(양자)=σ-sopfr=7 | n=6 bands, BT-114 |
-| TP-UFO-22 | 자율비행 Level sopfr=5 (Full Autonomy) FAA 인증 | T3 | 2040~2050 | FAA Part 23/25 자율비행 인증 체계 수립 + 형식증명 | SAE Level 5 = sopfr(6) 완전 자율 인증 | sopfr(6)=5, n=6 총 레벨 |
-| TP-UFO-23 | 재진입체 TPS 표면/구조 온도비 σ-φ=10 불변 법칙 확인 | T3 | 2035~2045 | SpaceX Starship/Orion/Dream Chaser 재진입 열측정 데이터 | T_surface/T_structure = 10 ±1.5 = σ-φ, 소재 무관 | σ-φ=10, H-AERO-04 |
+| TP-AERO-17 | SSTO (Single Stage to Orbit) Mach J₂=24 달성 | T3 | 2040~2050 | 공력 가열 + scramjet/RBCC 추진 기술 성숙 후 실증기 | Mach 24 = 궤도속도 7.8 km/s, J₂=24 | J₂(6)=24, v_orbit=7.8 km/s |
+| TP-AERO-18 | Compact Fusion Q=σ-φ=10 달성 | T3 | 2035~2045 | CFS SPARC (Q>2 목표) → ARC → compact fusion Q=10 | Q_eng ≥ 10 = σ-φ, 비행체 탑재 가능 사이즈 | σ-φ=10, ITER Q=10 목표 |
+| TP-AERO-19 | Diamond 반도체 (Z=6) 파워 일렉트로닉스 항공 실용화 | T3 | 2035~2040 | Diamond MOSFET/Schottky 상용화, eVTOL/항공기 전력변환기 채택 | Diamond SBD breakdown > 10 MV/cm, 효율 99%+, Z=6=n | Z_carbon=6=n, BT-93 |
+| TP-AERO-20 | 핵융합 직접 추진 (Direct Fusion Drive) ISP=σ³=1728s 급 | T3 | 2040~2050 | Princeton DFD 또는 후속 프로그램 실증 | ISP 1500~2000 s, 추력 5~10 N급, σ³=1728 중심 | σ³=1728 s |
+| TP-AERO-21 | 양자 통신 위성 6 대역 (L/S/C/Ku/Ka/V+Q) 항공 표준화 | T3 | 2035~2045 | ITU WRC 결의, 항공 위성 양자키배포(QKD) 대역 할당 | n=6 대역 유지 또는 +1(양자)=σ-sopfr=7 | n=6 bands, BT-114 |
+| TP-AERO-22 | 자율비행 Level sopfr=5 (Full Autonomy) FAA 인증 | T3 | 2040~2050 | FAA Part 23/25 자율비행 인증 체계 수립 + 형식증명 | SAE Level 5 = sopfr(6) 완전 자율 인증 | sopfr(6)=5, n=6 총 레벨 |
+| TP-AERO-23 | 재진입체 TPS 표면/구조 온도비 σ-φ=10 불변 법칙 확인 | T3 | 2035~2045 | SpaceX Starship/Orion/Dream Chaser 재진입 열측정 데이터 | T_surface/T_structure = 10 ±1.5 = σ-φ, 소재 무관 | σ-φ=10, H-AERO-04 |
 
 ### Tier 4: 원시 기술 (2050~2060) -- 5개
 
 | TP# | Prediction | Tier | 검증 시기 | 검증 방법 | 기대 결과 | n=6 수식 |
 |-----|-----------|:----:|----------|----------|----------|---------|
-| TP-UFO-24 | 심우주 탐사선 ΔV=σ=12 km/s 달성 (목성 직항) | T4 | 2050~2060 | 핵융합/핵열/이온 고속 탐사선 실증 | ΔV=12 km/s = σ, 목성 2~3년 도달 (현재 5~7년) | σ(6)=12 km/s |
-| TP-UFO-25 | AGI 자율비행 J₂=24 에이전트 아키텍처 달성 | T4 | 2050~2060 | AGI 비행 제어 시스템, 24 독립 전문 에이전트 멀티모달 융합 | J₂=24 에이전트 = sensor fusion + navigation + decision + actuation | J₂(6)=24, BT-56 |
-| TP-UFO-26 | 전 영역 겸용 (대기+궤도+심우주) 단일 기체 실증 | T4 | 2055~2060 | SSTO + 우주 순항 + 재진입 일체형 비행체 | Mach 0~24 전 영역 운용, 서브시스템 n=6 모두 통합 | n=6 서브시스템 완전 통합 |
-| TP-UFO-27 | 초전도 MHD 추력/중량비 T/W=σ=12 달성 | T4 | 2050~2060 | HTS MHD 추진기 실증, 12T 코일 + plasma flow | T/W=12=σ, 수직 이착륙+극초음속 가능 | σ(6)=12 |
-| TP-UFO-28 | 비행체 최대 지속 가속도 σ=12g (무인, 구조 한계) | T4 | 2050~2060 | 탄소 복합재/다이아몬드 구조 무인기 구조 시험 + 비행 시험 | 12g 지속 기동 = σ, 인체 한계(9g) 초과 무인 전용 | σ(6)=12g |
+| TP-AERO-24 | 심우주 탐사선 ΔV=σ=12 km/s 달성 (목성 직항) | T4 | 2050~2060 | 핵융합/핵열/이온 고속 탐사선 실증 | ΔV=12 km/s = σ, 목성 2~3년 도달 (현재 5~7년) | σ(6)=12 km/s |
+| TP-AERO-25 | AGI 자율비행 J₂=24 에이전트 아키텍처 달성 | T4 | 2050~2060 | AGI 비행 제어 시스템, 24 독립 전문 에이전트 멀티모달 융합 | J₂=24 에이전트 = sensor fusion + navigation + decision + actuation | J₂(6)=24, BT-56 |
+| TP-AERO-26 | 전 영역 겸용 (대기+궤도+심우주) 단일 기체 실증 | T4 | 2055~2060 | SSTO + 우주 순항 + 재진입 일체형 비행체 | Mach 0~24 전 영역 운용, 서브시스템 n=6 모두 통합 | n=6 서브시스템 완전 통합 |
+| TP-AERO-27 | 초전도 MHD 추력/중량비 T/W=σ=12 달성 | T4 | 2050~2060 | HTS MHD 추진기 실증, 12T 코일 + plasma flow | T/W=12=σ, 수직 이착륙+극초음속 가능 | σ(6)=12 |
+| TP-AERO-28 | 비행체 최대 지속 가속도 σ=12g (무인, 구조 한계) | T4 | 2050~2060 | 탄소 복합재/다이아몬드 구조 무인기 구조 시험 + 비행 시험 | 12g 지속 기동 = σ, 인체 한계(9g) 초과 무인 전용 | σ(6)=12g |
 
 ### Tier 분포 요약
 
@@ -143,7 +143,7 @@
 
 ## Section C: Cross-DSE Verification (13 도메인)
 
-| # | 도메인 | 현재 🛸 | UFO 서브시스템 | 공유 BT | 연결 강도 | 연결 설명 |
+| # | 도메인 | 현재 🛸 | Aerospace 서브시스템 | 공유 BT | 연결 강도 | 연결 설명 |
 |---|--------|:------:|---------------|---------|:--------:|----------|
 | 1 | **물질합성** | 🛸10 | 소재 (Hull) | BT-85, BT-86, BT-88, BT-93, BT-122 | ★★★★★ | Carbon Z=6 전 도메인 1위 소재, CN=6 허니컴, 다이아몬드/그래핀 구조재 |
 | 2 | **초전도체** | 🛸10 | 추진 (MHD) | BT-80, BT-90, BT-91, BT-92, BT-93 | ★★★★★ | YBCO Cu CN=6, σ=12T 코일, MHD 추진 + 전자기 차폐 |
@@ -215,7 +215,7 @@
 
 ### D-1. 항공기 제조사
 
-| 프로그램 | 기업 | UFO 파라미터 검증 | 데이터 기간 | 누적 비행시간 | 검증 내용 |
+| 프로그램 | 기업 | Aerospace 파라미터 검증 | 데이터 기간 | 누적 비행시간 | 검증 내용 |
 |---------|------|------------------|-----------|:----------:|----------|
 | **Boeing 787 Dreamliner** | Boeing | CFRP 50%=n/σ%, 허니컴 CN=6 | 2011~현재 | ~15M hrs | H-AERO-01 (Carbon Z=6), H-AERO-02 (허니컴 CN=6), H-AERO-03 (12-ply CFRP) |
 | **Boeing 777X** | Boeing | GE9X BPR=10, CFRP 날개, 6제어면 | 2025~현재 | 시험비행 중 | H-AERO-07 (BPR→σ), H-AERO-05 (6 제어면) |
@@ -226,34 +226,34 @@
 
 ### D-2. 우주 발사체 / eVTOL
 
-| 프로그램 | 기업 | UFO 파라미터 검증 | 데이터 기간 | 누적 시간 | 검증 내용 |
+| 프로그램 | 기업 | Aerospace 파라미터 검증 | 데이터 기간 | 누적 시간 | 검증 내용 |
 |---------|------|------------------|-----------|:--------:|----------|
 | **Falcon 9** | SpaceX | 6DOF landing=n, 9 Merlin (3×3=n/φ×n/φ) | 2010~현재 | 300+ 착륙 | BT-AERO-1 (SE(3)=6DOF), 로켓 재사용 |
 | **Starship** | SpaceX | 6 Raptor (ground config)=n, TPS 재진입 | 2023~현재 | 시험 중 | H-AERO-04 (TPS 10배), BT-AERO-1 |
-| **Joby S4** | Joby Aviation | **6 로터=n**, eVTOL 1고장 허용 | 2021~현재 | FAA 시험 중 | BT-AERO-3 (n=6 내결함), TP-UFO-01 직접 검증 대상 |
+| **Joby S4** | Joby Aviation | **6 로터=n**, eVTOL 1고장 허용 | 2021~현재 | FAA 시험 중 | BT-AERO-3 (n=6 내결함), TP-AERO-01 직접 검증 대상 |
 | **GPS III** | Lockheed Martin | **24위성=J₂**, 6궤도면=n, 4위성/면=τ | 1978~현재 | 46년 연속 | BT-AERO-2 (GPS J₂=24), H-AERO-16 |
 | **ISS** | NASA/ESA/JAXA | 4 SAW=τ, 6 DOF 자세제어 | 1998~현재 | 26년 연속 | H-AERO-11 (ISS SAW τ=4), BT-AERO-1 |
 
 ### D-3. 극초음속 / 핵융합
 
-| 프로그램 | 기관 | UFO 파라미터 검증 | 데이터 기간 | 검증 내용 |
+| 프로그램 | 기관 | Aerospace 파라미터 검증 | 데이터 기간 | 검증 내용 |
 |---------|------|------------------|-----------|----------|
 | **NASA X-43A** | NASA | Scramjet **Mach 6.83 / 9.6** | 2001~2004 | H-AERO-06 (Mach n=6 설계점), BT-AERO-4 |
 | **X-51A Waverider** | Boeing/AFRL | Scramjet **Mach 5.1** (목표 6) | 2010~2013 | H-AERO-06, 설계 목표 Mach 6=n 확인 |
-| **ITER** | ITER Organization | **Q=σ-φ=10** 목표, 토카막 q=1 | 1985~현재 | BT-99 (q=1), BT-AERO-4, TP-UFO-18 |
-| **SPARC** | CFS/MIT | **σ=12T** HTS 코일 달성 (2024) | 2018~현재 | TP-UFO-11 (12T MHD), σ=12 초전도 |
+| **ITER** | ITER Organization | **Q=σ-φ=10** 목표, 토카막 q=1 | 1985~현재 | BT-99 (q=1), BT-AERO-4, TP-AERO-18 |
+| **SPARC** | CFS/MIT | **σ=12T** HTS 코일 달성 (2024) | 2018~현재 | TP-AERO-11 (12T MHD), σ=12 초전도 |
 | **MRX** | Princeton | 자기 재결합 0.1=1/(σ-φ) | 1995~현재 | BT-102, MHD 유동 제어 |
 
 ### D-4. 항법 / 통신 표준
 
-| 표준 | 기관 | UFO 파라미터 검증 | 채택년도 | 검증 내용 |
+| 표준 | 기관 | Aerospace 파라미터 검증 | 채택년도 | 검증 내용 |
 |------|------|------------------|---------|----------|
 | **GPS ICD-200** | US DoD | n=6 궤도면, J₂=24 위성 | 1978 | H-AERO-16, BT-AERO-2 |
 | **MIL-STD-1553B** | US DoD | φ=2 이중 버스, 2^sopfr RT | 1975 | H-AERO-19 |
 | **ARINC 664/AFDX** | ARINC/Airbus | σ-sopfr=7 OSI 계층 | 2005 | H-AERO-22, BT-115 |
 | **DO-178C** | RTCA | SW 인증 레벨 A~E = sopfr=5 | 2011 | SW 안전 등급 5단계 |
 | **ICAO Annex 10** | ICAO | 8.33 kHz = 25/(n/φ) | 1999 (유럽) | H-AERO-21 |
-| **SAE J3016** | SAE | n=6 자율 레벨 (0~5) | 2014 | H-AERO-26, TP-UFO-22 |
+| **SAE J3016** | SAE | n=6 자율 레벨 (0~5) | 2014 | H-AERO-26, TP-AERO-22 |
 
 ### D-5. 산업 검증 시간 종합
 
@@ -298,7 +298,7 @@
 
 | 항목 | 수치 | 비율 |
 |------|:----:|:----:|
-| 신규 BT (UFO 전용) | 6개 | — |
+| 신규 BT (Aerospace 전용) | 6개 | — |
 | 기존 BT 매핑 | 17개 | — |
 | **총 BT 연결** | **23개** | — |
 | EXACT BT | 22개 | **95.7%** |

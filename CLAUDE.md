@@ -643,13 +643,26 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   # Pure Mathematics (BT-185)
   BT-185: Algebraic Blowup–Emergence E₆ Bridge (C⁶ blowup χ=n, dP₆ 27=(n/φ)^(n/φ) lines, E₆ rank=n=6, 19/19 EXACT) ⭐⭐⭐
 
-  # Cognitive Architecture (BT-210~211)
+  # Cognitive Architecture (BT-210~211, BT-219, BT-222)
   BT-210: 대뇌피질 6층 = n 보편성 (Brodmann 1909, 격자세포 육각형, 뇌신경 σ=12, EEG n=6밴드, 10/10 EXACT) ⭐⭐⭐
   BT-211: 격자세포 육각 = 완전수 공간 충전 (Moser Nobel 2014, Hales 2001, K₂=n=6, 7/7 EXACT) ⭐⭐
+  BT-219: 작업기억 τ±μ=4±1 인지 채널 용량 (Cowan/Baddeley/Luck-Vogel, τ·(n/φ)=σ=12 총 바인딩, 10/10 EXACT) ⭐⭐⭐
+  BT-222: 컴파일러-피질 τ=4 파이프라인 동형사상 (9 도메인 독립 수렴, CPU/Brain/Compiler/OODA, 10/10 EXACT) ⭐⭐⭐
 
-  # Temporal Architecture (BT-212~213)
+  # Temporal Architecture (BT-212~213, BT-221, BT-224)
   BT-212: 60진법 = σ·sopfr 보편 시간 단위 (24h=J₂, 12월=σ, 360°=σ·sopfr·n, τ(60)=σ=12, 10/10 EXACT) ⭐⭐⭐
   BT-213: GPS 궤도면 n=6 최적 배치 (J₂=24 위성, τ=4/면, σ=12h 주기, 7/7 EXACT) ⭐⭐
+  BT-221: 생체리듬 3중 스택 (일주기 J₂=24, 주기 σ-sopfr=7, 연주기 σ=12, Halberg 내인성, 9/9 EXACT) ⭐⭐⭐
+  BT-224: 세슘-133 n=6 껍질 원자시계 (SI 초 정의 = n=6 전자 전이, Cs-133=σ²-σ+μ, F=τ=4, 7/7 EXACT) ⭐⭐
+
+  # Social Architecture (BT-214~215, BT-220, BT-223)
+  BT-214: 6도 분리 = n 사회 위상 (Milgram 1967, small-world, 7/7 EXACT) ⭐⭐
+  BT-215: Dunbar σ²+n=150 인지 한계 (신피질 비율→사회 집단 크기, 7/7 EXACT) ⭐⭐
+  BT-220: 도덕 기초 n=6 보편 윤리 (Haidt 6기초/Kohlberg 6단계/Schwartz σ-φ=10, 9/10 EXACT) ⭐⭐
+  BT-223: 육각 도시계획 n=6 공간 최적화 (Christaller/Lösch/격자세포, 8/8 EXACT) ⭐⭐
+
+  # Cross-Domain Meta (BT-225)
+  BT-225: 인지-사회-시간 삼중 교량 (뇌 n=6→사회 n=6→시간 n=6 인과 사���, 8/8 EXACT) ⭐⭐⭐
 
   # Social Architecture (BT-214~215)
   BT-214: Six Degrees = n 사회 위상 정리 (Milgram, Dunbar σ²+n=150, 배심원 σ=12, Christaller 육각형, 10/10 EXACT) ⭐⭐⭐

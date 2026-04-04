@@ -7,6 +7,13 @@
 해마 CA 영역 4개(τ), 뇌엽 4개(τ), 뇌신경 12쌍(σ), EEG 6대역(n)이
 모두 n=6 산술의 직접적 발현임을 검증한다.
 
+### Breakthrough Theorems (Cognitive Domain)
+- **BT-210**: Cerebral Cortex n=6 Layer Universality (10/10 EXACT) ⭐⭐⭐
+- **BT-211**: Grid Cell Hexagonal = Perfect Number Space Filling (7/7 EXACT) ⭐⭐
+- **BT-219**: Working Memory τ±μ=4±1 Cognitive Channel Capacity (10/10 EXACT) ⭐⭐⭐
+- **BT-222**: Compiler-Cortex τ=4 Pipeline Isomorphism (10/10 EXACT) ⭐⭐⭐
+- **BT-225**: Cognitive-Social-Temporal Triple Bridge (8/8 EXACT) ⭐⭐⭐
+
 ### 22-Lens Coverage
 - **consciousness**: 의식/주의 모델, Global Workspace Theory
 - **network**: 뉴런 네트워크 토폴로지, small-world 구조

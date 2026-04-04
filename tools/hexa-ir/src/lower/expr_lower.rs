@@ -50,19 +50,35 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
             dest
         }
 
-        Expr::StrLit(_, _) => {
+        Expr::StrLit(s, _) => {
+            // Intern string in pool; emit Alloc with pool_index and length
+            let pool_idx = ctx.intern_string(s);
+            let str_len = s.len();
             let dest = ctx.fresh_reg();
             block.instrs.push(HexaInstr {
                 op: HexaOp::Alloc,
                 dest: Some(dest),
-                args: vec![],
+                args: vec![pool_idx, str_len],
                 ty: HexaType::Str,
-            label: None,
+                label: Some(format!("str_pool_{}", pool_idx)),
             });
             dest
         }
 
         Expr::Ident(name, _) => {
+            // Check if this is an enum variant: "EnumName::VariantName"
+            if let Some((tag, _payload)) = ctx.lookup_enum_variant(name) {
+                // Emit the tag as an integer constant
+                let dest = ctx.fresh_reg();
+                block.instrs.push(HexaInstr {
+                    op: HexaOp::Alloc,
+                    dest: Some(dest),
+                    args: vec![tag],
+                    ty: HexaType::I64,
+                    label: Some(format!("enum_tag_{}", name)),
+                });
+                return dest;
+            }
             // Look up the variable's SSA register and emit a Load
             let src = ctx.lookup_var(name).unwrap_or(0);
             let dest = ctx.fresh_reg();
@@ -133,31 +149,127 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
             dest
         }
 
-        Expr::Field { obj, .. } => {
-            // Mk.I: lower the object, field access becomes a Load
-            let obj_reg = lower_expr(ctx, block, obj);
-            let dest = ctx.fresh_reg();
-            block.instrs.push(HexaInstr {
-                op: HexaOp::Load,
-                dest: Some(dest),
-                args: vec![obj_reg],
-                ty: HexaType::Any,
-            label: None,
-            });
-            dest
+        Expr::Field { obj, name, .. } => {
+            // Resolve the struct type from the object expression
+            // For Ident objects, look up var -> struct type mapping
+            let struct_name = match obj.as_ref() {
+                Expr::Ident(var_name, _) => ctx.lookup_var_struct_type(var_name).cloned(),
+                _ => None,
+            };
+
+            // Get the base register — for struct variables, get base directly (no Load)
+            let obj_reg = match obj.as_ref() {
+                Expr::Ident(var_name, _) => {
+                    ctx.lookup_var(var_name).unwrap_or(0)
+                }
+                _ => lower_expr(ctx, block, obj),
+            };
+
+            if let Some(sname) = struct_name {
+                if let Some((_idx, byte_offset, field_ty)) = ctx.lookup_struct_field(&sname, name) {
+                    if byte_offset == 0 {
+                        // First field: load directly from base
+                        let dest = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Load,
+                            dest: Some(dest),
+                            args: vec![obj_reg],
+                            ty: field_ty,
+                            label: Some(format!("field_{}", name)),
+                        });
+                        dest
+                    } else {
+                        // Compute address: base + byte_offset
+                        let offset_reg = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Alloc,
+                            dest: Some(offset_reg),
+                            args: vec![byte_offset],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        let addr = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Add,
+                            dest: Some(addr),
+                            args: vec![obj_reg, offset_reg],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        let dest = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Load,
+                            dest: Some(dest),
+                            args: vec![addr],
+                            ty: field_ty,
+                            label: Some(format!("field_{}", name)),
+                        });
+                        dest
+                    }
+                } else {
+                    // Field not found — fallback to simple Load
+                    let dest = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Load,
+                        dest: Some(dest),
+                        args: vec![obj_reg],
+                        ty: HexaType::Any,
+                        label: None,
+                    });
+                    dest
+                }
+            } else {
+                // No struct type info — fallback to simple Load
+                let dest = ctx.fresh_reg();
+                block.instrs.push(HexaInstr {
+                    op: HexaOp::Load,
+                    dest: Some(dest),
+                    args: vec![obj_reg],
+                    ty: HexaType::Any,
+                    label: None,
+                });
+                dest
+            }
         }
 
         Expr::Index { arr, idx, .. } => {
-            let arr_reg = lower_expr(ctx, block, arr);
+            // For array indexing, get the base address directly (skip Load indirection)
+            let arr_reg = match arr.as_ref() {
+                Expr::Ident(name, _) => {
+                    // Direct lookup: return the array base register without emitting Load
+                    ctx.lookup_var(name).unwrap_or(0)
+                }
+                _ => lower_expr(ctx, block, arr),
+            };
             let idx_reg = lower_expr(ctx, block, idx);
-            // Compute address: base + index * element_size
+            // Proof obligation: assert index >= 0 (zero runtime cost)
+            // Emit ProofAssert with idx_reg; verifier checks idx < array_length
+            super::proof_emit::emit_proof_assert(ctx, block, idx_reg);
+            // Compute element offset: idx * element_size (σ-τ=8 bytes for i64)
+            let elem_size = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Alloc,
+                dest: Some(elem_size),
+                args: vec![8], // i64 element size = σ-τ=8 bytes
+                ty: HexaType::I64,
+                label: None,
+            });
+            let offset = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Mul,
+                dest: Some(offset),
+                args: vec![idx_reg, elem_size],
+                ty: HexaType::I64,
+                label: None,
+            });
+            // Compute address: base + offset
             let addr = ctx.fresh_reg();
             block.instrs.push(HexaInstr {
                 op: HexaOp::Add,
                 dest: Some(addr),
-                args: vec![arr_reg, idx_reg],
+                args: vec![arr_reg, offset],
                 ty: HexaType::I64,
-            label: None,
+                label: None,
             });
             let dest = ctx.fresh_reg();
             block.instrs.push(HexaInstr {
@@ -165,40 +277,145 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
                 dest: Some(dest),
                 args: vec![addr],
                 ty: HexaType::Any,
-            label: None,
+                label: None,
             });
             dest
         }
 
-        Expr::StructInit { fields, .. } => {
-            // Allocate space for the struct, store each field
+        Expr::StructInit { name: struct_name, fields, .. } => {
+            // Look up struct definition for proper byte-offset layout
+            let struct_fields = ctx.struct_defs.get(struct_name).cloned();
+            let total_size = ctx.struct_size(struct_name);
+            let alloc_size = if total_size > 0 { total_size } else { fields.len() * 8 };
+
+            // Build field type list for HexaType::Struct
+            let field_types: Vec<HexaType> = struct_fields.as_ref()
+                .map(|fs| fs.iter().map(|(_, ty)| ty.clone()).collect())
+                .unwrap_or_else(|| vec![HexaType::Any; fields.len()]);
+
+            // Allocate space for the entire struct
             let base = ctx.fresh_reg();
             block.instrs.push(HexaInstr {
                 op: HexaOp::Alloc,
                 dest: Some(base),
-                args: vec![fields.len()],
-                ty: HexaType::Any,
-            label: None,
+                args: vec![alloc_size],
+                ty: HexaType::Struct(field_types),
+                label: Some(format!("struct_{}", struct_name)),
             });
-            for (i, (_name, val_expr)) in fields.iter().enumerate() {
+
+            // Store each field at its proper byte offset
+            for (field_name, val_expr) in fields.iter() {
                 let val_reg = lower_expr(ctx, block, val_expr);
-                let field_addr = ctx.fresh_reg();
-                block.instrs.push(HexaInstr {
-                    op: HexaOp::Add,
-                    dest: Some(field_addr),
-                    args: vec![base, i], // offset by field index
-                    ty: HexaType::I64,
-            label: None,
-                });
-                block.instrs.push(HexaInstr {
-                    op: HexaOp::Store,
-                    dest: None,
-                    args: vec![field_addr, val_reg],
-                    ty: HexaType::Void,
-            label: None,
-                });
+
+                // Look up byte offset from struct definition
+                let byte_offset = struct_fields.as_ref()
+                    .and_then(|fs| {
+                        let mut off = 0usize;
+                        for (fname, fty) in fs.iter() {
+                            if fname == field_name {
+                                return Some(off);
+                            }
+                            off += fty.size_bytes();
+                        }
+                        None
+                    })
+                    .unwrap_or(0);
+
+                if byte_offset == 0 {
+                    // First field: store directly at base
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![base, val_reg],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+                } else {
+                    let offset_reg = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Alloc,
+                        dest: Some(offset_reg),
+                        args: vec![byte_offset],
+                        ty: HexaType::I64,
+                        label: None,
+                    });
+                    let field_addr = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Add,
+                        dest: Some(field_addr),
+                        args: vec![base, offset_reg],
+                        ty: HexaType::I64,
+                        label: None,
+                    });
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![field_addr, val_reg],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+                }
             }
             base
+        }
+
+        Expr::ArrayLit { elements, .. } => {
+            // Allocate contiguous space: element_count * element_size (σ-τ=8 bytes)
+            let elem_count = elements.len();
+            let total_size = elem_count * 8; // i64 = σ-τ=8 bytes each
+            let base = ctx.fresh_reg();
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Alloc,
+                dest: Some(base),
+                args: vec![total_size],
+                ty: HexaType::Array(Box::new(HexaType::I64), elem_count),
+                label: None,
+            });
+            // Store each element at base + i * 8
+            // First element at offset 0 stores directly to base
+            for (i, elem) in elements.iter().enumerate() {
+                let val_reg = lower_expr(ctx, block, elem);
+                if i == 0 {
+                    // Store directly at base address (offset 0)
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![base, val_reg],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+                } else {
+                    let byte_offset = i * 8;
+                    let offset_reg = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Alloc,
+                        dest: Some(offset_reg),
+                        args: vec![byte_offset],
+                        ty: HexaType::I64,
+                        label: None,
+                    });
+                    let elem_addr = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Add,
+                        dest: Some(elem_addr),
+                        args: vec![base, offset_reg],
+                        ty: HexaType::I64,
+                        label: None,
+                    });
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![elem_addr, val_reg],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+                }
+            }
+            base
+        }
+
+        Expr::Match { scrutinee, arms, .. } => {
+            return lower_match_expr(ctx, block, scrutinee, arms);
         }
 
         Expr::Block(blk) => {
@@ -219,6 +436,181 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
             last_reg
         }
     }
+}
+
+/// Lower a match expression into multi-block Switch-based control flow.
+///
+/// Strategy:
+///   1. Evaluate the scrutinee (produces tag value for enums)
+///   2. For each arm, create a separate block
+///   3. Emit cascading compare-and-branch from the entry block
+///   4. Each arm block lowers its body, then jumps to merge block
+///   5. The merge block receives the result via Load from shared slot
+fn lower_match_expr(
+    ctx: &mut LowerContext,
+    block: &mut HexaBlock,
+    scrutinee: &Expr,
+    arms: &[crate::parser::ast::MatchArm],
+) -> usize {
+    use crate::parser::ast::Pattern;
+
+    let scrutinee_reg = lower_expr(ctx, block, scrutinee);
+
+    let merge_id = ctx.fresh_block();
+
+    // Alloc a result slot that all arms will Store into
+    let result_reg = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Alloc,
+        dest: Some(result_reg),
+        args: vec![0],
+        ty: HexaType::I64,
+        label: Some("match_result".to_string()),
+    });
+
+    // Collect arm block IDs and tags
+    let mut arm_infos: Vec<(usize, Option<usize>)> = Vec::new();
+    let mut wildcard_id: Option<usize> = None;
+
+    for arm in arms {
+        let arm_id = ctx.fresh_block();
+        let tag = match &arm.pattern {
+            Pattern::Variant { enum_name, variant_name, .. } => {
+                let qualified = format!("{}::{}", enum_name, variant_name);
+                Some(ctx.lookup_enum_variant(&qualified).map(|(t, _)| t).unwrap_or(0))
+            }
+            Pattern::Literal(v, _) => Some(*v as usize),
+            Pattern::Wildcard(_) => {
+                wildcard_id = Some(arm_id);
+                None
+            }
+        };
+        arm_infos.push((arm_id, tag));
+    }
+
+    let default_target = wildcard_id.unwrap_or(merge_id);
+
+    // Build a chain of compare-and-branch blocks.
+    // We swap `block` to new check blocks as we go.
+    let non_wildcard: Vec<(usize, usize)> = arm_infos.iter()
+        .filter_map(|(id, tag)| tag.map(|t| (*id, t)))
+        .collect();
+
+    for (i, (arm_id, tag_val)) in non_wildcard.iter().enumerate() {
+        let tag_reg = ctx.fresh_reg();
+        block.instrs.push(HexaInstr {
+            op: HexaOp::Alloc,
+            dest: Some(tag_reg),
+            args: vec![*tag_val],
+            ty: HexaType::I64,
+            label: None,
+        });
+
+        let cmp_reg = ctx.fresh_reg();
+        block.instrs.push(HexaInstr {
+            op: HexaOp::Sub,
+            dest: Some(cmp_reg),
+            args: vec![scrutinee_reg, tag_reg],
+            ty: HexaType::Bool,
+            label: Some("eq".to_string()),
+        });
+
+        // Determine else target: next check block or default
+        let is_last = i + 1 >= non_wildcard.len();
+        let else_target = if is_last { default_target } else { ctx.fresh_block() };
+
+        // Branch: cmp != 0 → else_target (no match), cmp == 0 → arm_id (match)
+        block.instrs.push(HexaInstr {
+            op: HexaOp::Branch,
+            dest: None,
+            args: vec![cmp_reg, else_target, *arm_id],
+            ty: HexaType::Void,
+            label: None,
+        });
+        block.successors.push(*arm_id);
+        block.successors.push(else_target);
+
+        if !is_last {
+            // Swap current block → push old, continue in else_target
+            let prev_blk = HexaBlock {
+                id: block.id,
+                instrs: std::mem::take(&mut block.instrs),
+                successors: std::mem::take(&mut block.successors),
+            };
+            ctx.pending_blocks.push(prev_blk);
+            block.id = else_target;
+        }
+    }
+
+    // If the last check block doesn't fall through to default naturally,
+    // and there's no wildcard but we need to reach merge, add a Jump
+    if non_wildcard.is_empty() {
+        // All arms are wildcards — just jump to the first arm
+        if let Some(wid) = wildcard_id {
+            block.instrs.push(HexaInstr {
+                op: HexaOp::Jump,
+                dest: None,
+                args: vec![wid],
+                ty: HexaType::Void,
+                label: None,
+            });
+            block.successors.push(wid);
+        }
+    }
+
+    // Lower each arm body into its own block
+    for (i, arm) in arms.iter().enumerate() {
+        let arm_id = arm_infos[i].0;
+        let mut arm_block = HexaBlock {
+            id: arm_id,
+            instrs: Vec::new(),
+            successors: Vec::new(),
+        };
+
+        let arm_val = lower_expr(ctx, &mut arm_block, &arm.body);
+
+        // Store result
+        arm_block.instrs.push(HexaInstr {
+            op: HexaOp::Store,
+            dest: None,
+            args: vec![result_reg, arm_val],
+            ty: HexaType::Void,
+            label: None,
+        });
+
+        // Jump to merge
+        arm_block.instrs.push(HexaInstr {
+            op: HexaOp::Jump,
+            dest: None,
+            args: vec![merge_id],
+            ty: HexaType::Void,
+            label: None,
+        });
+        arm_block.successors.push(merge_id);
+
+        ctx.pending_blocks.push(arm_block);
+    }
+
+    // Swap current block to merge block
+    let prev_blk = HexaBlock {
+        id: block.id,
+        instrs: std::mem::take(&mut block.instrs),
+        successors: std::mem::take(&mut block.successors),
+    };
+    ctx.pending_blocks.push(prev_blk);
+    block.id = merge_id;
+
+    // Load the result from the result slot
+    let loaded = ctx.fresh_reg();
+    block.instrs.push(HexaInstr {
+        op: HexaOp::Load,
+        dest: Some(loaded),
+        args: vec![result_reg],
+        ty: HexaType::I64,
+        label: Some("match_result".to_string()),
+    });
+
+    loaded
 }
 
 /// Encode comparison kind in label field for codegen (Sub+Bool instructions)

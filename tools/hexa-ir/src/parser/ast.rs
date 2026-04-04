@@ -3,7 +3,7 @@
 /// Node count follows n=6 arithmetic:
 ///   Decl:     tau=4 variants
 ///   Stmt:     n=6 variants
-///   Expr:     sigma=12 variants (Mk.I)
+///   Expr:     sigma+phi=14 variants (Mk.I + ArrayLit + Match)
 ///   TypeExpr: n/phi=3 variants
 
 use crate::lexer::Span;
@@ -99,7 +99,7 @@ pub enum Stmt {
     },
 }
 
-// ── Expressions (sigma=12) ──
+// ── Expressions (sigma+phi=14) ──
 
 #[derive(Clone, Debug)]
 pub enum Expr {
@@ -139,7 +139,42 @@ pub enum Expr {
         fields: Vec<(String, Expr)>,
         span: Span,
     },
+    /// Array literal: `[1, 2, 3]`
+    ArrayLit {
+        elements: Vec<Expr>,
+        span: Span,
+    },
+    /// Match expression: `match expr { Pattern => body, ... }`
+    Match {
+        scrutinee: Box<Expr>,
+        arms: Vec<MatchArm>,
+        span: Span,
+    },
     Block(Block),
+}
+
+/// A single arm of a match expression
+#[derive(Clone, Debug)]
+pub struct MatchArm {
+    pub pattern: Pattern,
+    pub body: Expr,
+    pub span: Span,
+}
+
+/// Pattern for match arms
+#[derive(Clone, Debug)]
+pub enum Pattern {
+    /// Wildcard: `_`
+    Wildcard(Span),
+    /// Integer literal: `42`
+    Literal(i64, Span),
+    /// Enum variant: `Color::Red` or `Color::RGB(r, g, b)`
+    Variant {
+        enum_name: String,
+        variant_name: String,
+        bindings: Vec<String>,
+        span: Span,
+    },
 }
 
 impl Expr {
@@ -156,6 +191,8 @@ impl Expr {
             Expr::Field { span, .. } => *span,
             Expr::Index { span, .. } => *span,
             Expr::StructInit { span, .. } => *span,
+            Expr::ArrayLit { span, .. } => *span,
+            Expr::Match { span, .. } => *span,
             Expr::Block(b) => b.span,
         }
     }

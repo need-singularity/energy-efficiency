@@ -28,7 +28,31 @@ fn emit(code: &mut Vec<u8>, instr: u32) {
 pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
     let mut code = Vec::new();
 
-    // Minimal entry: no frame setup needed for leaf functions
+    // Pre-scan: detect array allocations and compute stack frame layout
+    // Array Alloc = Alloc with Array type; maps SSA reg -> stack offset
+    let mut array_stack_offsets: std::collections::HashMap<usize, u32> = std::collections::HashMap::new();
+    let mut stack_frame_size: u32 = 0;
+    for block in &func.blocks {
+        for instr in &block.instrs {
+            if instr.op == HexaOp::Alloc {
+                if let Some(dest) = instr.dest {
+                    if matches!(instr.ty, HexaType::Array(_, _) | HexaType::Struct(_)) {
+                        let size = instr.args.first().copied().unwrap_or(0) as u32;
+                        array_stack_offsets.insert(dest, stack_frame_size);
+                        stack_frame_size += size;
+                    }
+                }
+            }
+        }
+    }
+    // Align stack frame to 16 bytes (ARM64 ABI requirement)
+    if stack_frame_size > 0 {
+        stack_frame_size = (stack_frame_size + 15) & !15;
+        // Prologue: sub sp, sp, #frame_size
+        // 0xD1000000 | (imm12 << 10) | (31 << 5) | 31  (sub sp, sp, #imm)
+        let imm12 = stack_frame_size & 0xFFF;
+        emit(&mut code, 0xd1000000u32 | (imm12 << 10) | (31 << 5) | 31);
+    }
 
     // Collect constant values from Alloc instructions (Alloc %imm = load immediate)
     let mut reg_constants: std::collections::HashMap<usize, u64> = std::collections::HashMap::new();
@@ -36,7 +60,10 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
         for instr in &block.instrs {
             if instr.op == HexaOp::Alloc {
                 if let (Some(dest), Some(&imm)) = (instr.dest, instr.args.first()) {
-                    reg_constants.insert(dest, imm as u64);
+                    // Don't treat array allocs as simple constants
+                    if !array_stack_offsets.contains_key(&dest) {
+                        reg_constants.insert(dest, imm as u64);
+                    }
                 }
             }
         }
@@ -49,12 +76,34 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
                 // ── Arithmetic (n=6) ──
 
                 HexaOp::Add => {
-                    // add x<rd>, x<rn>, x<rm>: 0x8B000000 | rm<<16 | rn<<5 | rd
                     if let (Some(dest), Some(&a), Some(&b)) = (instr.dest, instr.args.get(0), instr.args.get(1)) {
                         let rd = alloc.get_phys(dest).unwrap_or(0) as u32;
-                        let rn = alloc.get_phys(a).unwrap_or(0) as u32;
-                        let rm = alloc.get_phys(b).unwrap_or(0) as u32;
-                        emit(&mut code, 0x8b000000u32 | (rm << 16) | (rn << 5) | rd);
+                        // Resolve first operand (may be spilled constant -> load to x14)
+                        let rn = if let Some(phys) = alloc.get_phys(a) {
+                            phys as u32
+                        } else if let Some(&imm) = reg_constants.get(&a) {
+                            let imm16 = (imm as u32) & 0xFFFF;
+                            emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                            14u32
+                        } else {
+                            0u32
+                        };
+                        // Optimize: if second operand is a known constant, use add-immediate
+                        if let Some(&imm) = reg_constants.get(&b) {
+                            if imm <= 0xFFF {
+                                // add x<rd>, x<rn>, #imm: 0x91000000 | imm12<<10 | rn<<5 | rd
+                                emit(&mut code, 0x91000000u32 | ((imm as u32) << 10) | (rn << 5) | rd);
+                            } else {
+                                // Load large constant into scratch x14
+                                let imm16 = (imm as u32) & 0xFFFF;
+                                emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                                emit(&mut code, 0x8b000000u32 | (14u32 << 16) | (rn << 5) | rd);
+                            }
+                        } else {
+                            // add x<rd>, x<rn>, x<rm>: 0x8B000000 | rm<<16 | rn<<5 | rd
+                            let rm = alloc.get_phys(b).unwrap_or(0) as u32;
+                            emit(&mut code, 0x8b000000u32 | (rm << 16) | (rn << 5) | rd);
+                        }
                     }
                 }
                 HexaOp::Sub => {
@@ -71,8 +120,30 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
                     // 0x9B007C00 | rm<<16 | rn<<5 | rd
                     if let (Some(dest), Some(&a), Some(&b)) = (instr.dest, instr.args.get(0), instr.args.get(1)) {
                         let rd = alloc.get_phys(dest).unwrap_or(0) as u32;
-                        let rn = alloc.get_phys(a).unwrap_or(0) as u32;
-                        let rm = alloc.get_phys(b).unwrap_or(0) as u32;
+                        // Handle constant operands: load into scratch x14 if spilled
+                        let rn = if let Some(&imm) = reg_constants.get(&a) {
+                            if alloc.get_phys(a).is_none() {
+                                // Load constant into x14 scratch
+                                let imm16 = (imm as u32) & 0xFFFF;
+                                emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                                14u32
+                            } else {
+                                alloc.get_phys(a).unwrap() as u32
+                            }
+                        } else {
+                            alloc.get_phys(a).unwrap_or(0) as u32
+                        };
+                        let rm = if let Some(&imm) = reg_constants.get(&b) {
+                            if alloc.get_phys(b).is_none() {
+                                let imm16 = (imm as u32) & 0xFFFF;
+                                emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                                14u32
+                            } else {
+                                alloc.get_phys(b).unwrap() as u32
+                            }
+                        } else {
+                            alloc.get_phys(b).unwrap_or(0) as u32
+                        };
                         emit(&mut code, 0x9b007c00u32 | (rm << 16) | (rn << 5) | rd);
                     }
                 }
@@ -117,25 +188,84 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
                     // ldr x<rd>, [x<rn>]: 0xF9400000 | rn<<5 | rd
                     if let (Some(dest), Some(&base)) = (instr.dest, instr.args.first()) {
                         let rd = alloc.get_phys(dest).unwrap_or(0) as u32;
-                        let rn = alloc.get_phys(base).unwrap_or(0) as u32;
+                        // Resolve base register (may be spilled)
+                        let rn = if let Some(phys) = alloc.get_phys(base) {
+                            phys as u32
+                        } else if let Some(&imm) = reg_constants.get(&base) {
+                            // Base is a constant — load address into scratch x14
+                            let imm16 = (imm as u32) & 0xFFFF;
+                            emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                            14u32
+                        } else {
+                            0u32
+                        };
                         emit(&mut code, 0xf9400000u32 | (rn << 5) | rd);
                     }
                 }
                 HexaOp::Store => {
-                    // str x<rs>, [x<rn>]: 0xF9000000 | rn<<5 | rs
-                    // args: [value_to_store, address]
-                    if let (Some(&val), Some(&addr)) = (instr.args.get(0), instr.args.get(1)) {
-                        let rs = alloc.get_phys(val).unwrap_or(0) as u32;
-                        let rn = alloc.get_phys(addr).unwrap_or(0) as u32;
-                        emit(&mut code, 0xf9000000u32 | (rn << 5) | rs);
+                    // str x<rt>, [x<rn>]: 0xF9000000 | rn<<5 | rt
+                    // args: [address, value_to_store]
+                    if let (Some(&addr), Some(&val)) = (instr.args.get(0), instr.args.get(1)) {
+                        // Resolve address register (may be spilled)
+                        let rn = if let Some(phys) = alloc.get_phys(addr) {
+                            phys as u32
+                        } else if let Some(&imm) = reg_constants.get(&addr) {
+                            let imm16 = (imm as u32) & 0xFFFF;
+                            emit(&mut code, 0xd2800000u32 | (imm16 << 5) | 14);
+                            14u32
+                        } else {
+                            0u32
+                        };
+                        // Resolve value register (may be a constant)
+                        let rt = if let Some(phys) = alloc.get_phys(val) {
+                            phys as u32
+                        } else if let Some(&imm) = reg_constants.get(&val) {
+                            // Load constant value into scratch x14 (or x13 if addr uses x14)
+                            let scratch = if rn == 14 { 13u32 } else { 14u32 };
+                            let imm16 = (imm as u32) & 0xFFFF;
+                            emit(&mut code, 0xd2800000u32 | (imm16 << 5) | scratch);
+                            scratch
+                        } else {
+                            0u32
+                        };
+                        emit(&mut code, 0xf9000000u32 | (rn << 5) | rt);
                     }
                 }
                 HexaOp::Alloc => {
-                    // Alloc %imm → movz x<dest>, #imm
-                    if let (Some(dest), Some(&imm)) = (instr.dest, instr.args.first()) {
-                        let rd = alloc.get_phys(dest).unwrap_or(0) as u32;
-                        let imm16 = (imm as u32) & 0xFFFF;
-                        emit(&mut code, 0xd2800000u32 | (imm16 << 5) | rd);
+                    if let Some(dest) = instr.dest {
+                        if let Some(&offset) = array_stack_offsets.get(&dest) {
+                            // Array allocation: x<rd> = sp + offset
+                            let rd = alloc.get_phys(dest).unwrap_or(0) as u32;
+                            if offset == 0 {
+                                // mov x<rd>, sp = add x<rd>, sp, #0
+                                emit(&mut code, 0x91000000u32 | (31 << 5) | rd);
+                            } else {
+                                // add x<rd>, sp, #offset
+                                let imm12 = (offset as u32) & 0xFFF;
+                                emit(&mut code, 0x91000000u32 | (imm12 << 10) | (31 << 5) | rd);
+                            }
+                        } else if reg_constants.contains_key(&dest) {
+                            // Scalar constant: only emit movz if it has a physical register
+                            // (constants used only as immediates in Add/Mul don't need a register)
+                            if let Some(phys) = alloc.get_phys(dest) {
+                                if let Some(&imm) = instr.args.first() {
+                                    let rd = phys as u32;
+                                    let imm16 = (imm as u32) & 0xFFFF;
+                                    emit(&mut code, 0xd2800000u32 | (imm16 << 5) | rd);
+                                }
+                            }
+                            // If spilled, the constant is in reg_constants and will be
+                            // used as immediate when referenced by Add/Mul/etc.
+                        } else {
+                            // Non-constant alloc (e.g., variable slot with no init)
+                            if let Some(&imm) = instr.args.first() {
+                                if let Some(phys) = alloc.get_phys(dest) {
+                                    let rd = phys as u32;
+                                    let imm16 = (imm as u32) & 0xFFFF;
+                                    emit(&mut code, 0xd2800000u32 | (imm16 << 5) | rd);
+                                }
+                            }
+                        }
                     }
                 }
                 HexaOp::Free => {
@@ -207,6 +337,12 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
                             }
                         }
                     }
+                    // Epilogue: restore stack frame if arrays were allocated
+                    if stack_frame_size > 0 {
+                        // add sp, sp, #frame_size
+                        let imm12 = stack_frame_size & 0xFFF;
+                        emit(&mut code, 0x91000000u32 | (imm12 << 10) | (31 << 5) | 31);
+                    }
                 }
                 HexaOp::Phi => {
                     // Phi nodes are resolved during register allocation — no machine code
@@ -241,6 +377,12 @@ pub fn select_function(func: &HexaFunction, alloc: &RegAlloc) -> Vec<u8> {
                 HexaOp::LifetimeEnd => {}
             }
         }
+    }
+
+    // Epilogue: restore stack frame if arrays were allocated (for fallthrough paths)
+    if stack_frame_size > 0 {
+        let imm12 = stack_frame_size & 0xFFF;
+        emit(&mut code, 0x91000000u32 | (imm12 << 10) | (31 << 5) | 31);
     }
 
     // For standalone executables: exit syscall instead of ret

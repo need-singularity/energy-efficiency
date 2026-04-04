@@ -198,5 +198,5 @@ ITER (2025~), SPARC (2026~), 민간 핵융합 (CFS, TAE) 진행 중.
 | 가설 검증 | 17/30 VERIFIED-EXACT (56.7%) -- 정직한 수치 |
 | NEXUS-6 스캔 | 93상수 72 EXACT (77.4%), anomaly=0 |
 | 불가능성 정리 | STRONG 1 (SE(3)=6DOF), MODERATE 5, WEAK 6 |
-| BT 총수 | 215 -> 221 (UFO 6개 추가) |
+| BT 총수 | 215 -> 221 (Aerospace 6개 추가) |
 | 실현가능성 등급 | 🔮 장기 실현가능 (돌파 2~3개 필요, 2035~2045) |

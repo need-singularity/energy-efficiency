@@ -6,6 +6,13 @@
 6도 분리(Milgram), Dunbar 수 150, 최적 팀 크기 6, 삼권분립, 배심원 12명,
 Christaller 육각 중심지 — 모두 σ(6)·φ(6) = 6·τ(6) = 24에서 도출.
 
+### Breakthrough Theorems (Social Domain)
+- **BT-214**: Six Degrees of Separation = n Social Topology (7/7 EXACT) ⭐⭐
+- **BT-215**: Dunbar σ²+n=150 Cognitive Limit (7/7 EXACT) ⭐⭐
+- **BT-220**: Moral Foundation n=6 Universal Ethics (9/10 EXACT) ⭐⭐
+- **BT-223**: Hexagonal City Planning n=6 Spatial Optimization (8/8 EXACT) ⭐⭐
+- **BT-225**: Cognitive-Social-Temporal Triple Bridge (8/8 EXACT) ⭐⭐⭐
+
 ### 22-Lens Coverage
 - **consciousness**: 집단 의식, 팀 정체성
 - **network**: 소셜 그래프, small-world 구조

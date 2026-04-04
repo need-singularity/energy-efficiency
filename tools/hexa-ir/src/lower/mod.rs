@@ -13,6 +13,9 @@ use crate::ir::*;
 use crate::parser::ast;
 use std::collections::HashMap;
 
+/// Struct field definition: (field_name, field_type)
+pub type StructFieldDef = (String, HexaType);
+
 /// Lowering context — tracks SSA register/block counters and variable bindings
 pub struct LowerContext {
     pub functions: Vec<HexaFunction>,
@@ -20,6 +23,17 @@ pub struct LowerContext {
     block_counter: usize,
     /// Variable name -> SSA register holding its current value
     pub vars: HashMap<String, usize>,
+    /// String constant pool for the current function being lowered
+    pub string_pool: Vec<String>,
+    /// Struct definitions: struct_name -> Vec<(field_name, field_type)>
+    pub struct_defs: HashMap<String, Vec<StructFieldDef>>,
+    /// Variable name -> struct type name (for field resolution)
+    pub var_struct_types: HashMap<String, String>,
+    /// Enum definitions: enum_name -> [(variant_name, optional_payload_types)]
+    pub enum_defs: HashMap<String, Vec<(String, Option<Vec<HexaType>>)>>,
+    /// Extra blocks created during expression lowering (e.g., match arms)
+    /// Drained after each statement/block lowering cycle.
+    pub pending_blocks: Vec<HexaBlock>,
 }
 
 impl LowerContext {
@@ -29,6 +43,11 @@ impl LowerContext {
             reg_counter: 0,
             block_counter: 0,
             vars: HashMap::new(),
+            string_pool: Vec::new(),
+            struct_defs: HashMap::new(),
+            var_struct_types: HashMap::new(),
+            enum_defs: HashMap::new(),
+            pending_blocks: Vec::new(),
         }
     }
 
@@ -53,11 +72,101 @@ impl LowerContext {
     pub fn lookup_var(&self, name: &str) -> Option<usize> {
         self.vars.get(name).copied()
     }
+
+    /// Intern a string literal in the current function's string pool.
+    /// Returns the pool index.
+    pub fn intern_string(&mut self, s: &str) -> usize {
+        // Check for existing identical string
+        if let Some(idx) = self.string_pool.iter().position(|existing| existing == s) {
+            return idx;
+        }
+        let idx = self.string_pool.len();
+        self.string_pool.push(s.to_string());
+        idx
+    }
+
+    /// Register a struct definition
+    pub fn register_struct(&mut self, name: &str, fields: Vec<StructFieldDef>) {
+        self.struct_defs.insert(name.to_string(), fields);
+    }
+
+    /// Look up struct field: returns (field_index, byte_offset, field_type)
+    pub fn lookup_struct_field(&self, struct_name: &str, field_name: &str) -> Option<(usize, usize, HexaType)> {
+        let fields = self.struct_defs.get(struct_name)?;
+        let mut byte_offset = 0usize;
+        for (i, (fname, fty)) in fields.iter().enumerate() {
+            if fname == field_name {
+                return Some((i, byte_offset, fty.clone()));
+            }
+            byte_offset += fty.size_bytes();
+        }
+        None
+    }
+
+    /// Get total byte size of a struct
+    pub fn struct_size(&self, struct_name: &str) -> usize {
+        self.struct_defs.get(struct_name)
+            .map(|fields| fields.iter().map(|(_, ty)| ty.size_bytes()).sum())
+            .unwrap_or(0)
+    }
+
+    /// Bind a variable to a struct type name (for field access resolution)
+    pub fn bind_var_struct_type(&mut self, var_name: &str, struct_name: &str) {
+        self.var_struct_types.insert(var_name.to_string(), struct_name.to_string());
+    }
+
+    /// Look up which struct type a variable has
+    pub fn lookup_var_struct_type(&self, var_name: &str) -> Option<&String> {
+        self.var_struct_types.get(var_name)
+    }
+
+    /// Look up an enum variant by qualified name "EnumName::VariantName".
+    /// Returns (tag_index, optional_payload_types).
+    pub fn lookup_enum_variant(&self, qualified: &str) -> Option<(usize, Option<Vec<HexaType>>)> {
+        let parts: Vec<&str> = qualified.splitn(2, "::").collect();
+        if parts.len() != 2 {
+            return None;
+        }
+        let (enum_name, variant_name) = (parts[0], parts[1]);
+        let variants = self.enum_defs.get(enum_name)?;
+        for (i, (vname, payload)) in variants.iter().enumerate() {
+            if vname == variant_name {
+                return Some((i, payload.clone()));
+            }
+        }
+        None
+    }
 }
 
 /// Lower an entire program to a list of IR functions
 pub fn lower_program(program: &ast::Program) -> Vec<HexaFunction> {
     let mut ctx = LowerContext::new();
+
+    // First pass: register all struct and enum declarations
+    for decl in &program.decls {
+        match decl {
+            ast::Decl::StructDecl(s) => {
+                let fields: Vec<StructFieldDef> = s.fields.iter()
+                    .map(|(name, ty_expr)| (name.clone(), lower_type_expr(ty_expr)))
+                    .collect();
+                ctx.register_struct(&s.name, fields);
+            }
+            ast::Decl::EnumDecl(e) => {
+                let variants: Vec<(String, Option<Vec<HexaType>>)> = e.variants.iter()
+                    .map(|(name, payload)| {
+                        let payload_tys = payload.as_ref().map(|tys|
+                            tys.iter().map(|t| lower_type_expr(t)).collect()
+                        );
+                        (name.clone(), payload_tys)
+                    })
+                    .collect();
+                ctx.enum_defs.insert(e.name.clone(), variants);
+            }
+            _ => {}
+        }
+    }
+
+    // Second pass: lower function bodies
     for decl in &program.decls {
         match decl {
             ast::Decl::FnDecl(f) => {
@@ -73,10 +182,12 @@ pub fn lower_program(program: &ast::Program) -> Vec<HexaFunction> {
 
 /// Lower a single function declaration to HexaFunction
 fn lower_fn(ctx: &mut LowerContext, f: &ast::FnDecl) -> HexaFunction {
-    // Reset per-function state
+    // Reset per-function state (struct_defs preserved across functions)
     ctx.reg_counter = 0;
     ctx.block_counter = 0;
     ctx.vars.clear();
+    ctx.var_struct_types.clear();
+    ctx.string_pool.clear();
 
     // Create parameter registers and bind them
     let mut params = Vec::new();
@@ -113,6 +224,7 @@ fn lower_fn(ctx: &mut LowerContext, f: &ast::FnDecl) -> HexaFunction {
         blocks,
         params,
         ret_ty,
+        string_pool: ctx.string_pool.clone(),
     }
 }
 

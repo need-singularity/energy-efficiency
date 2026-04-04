@@ -1,12 +1,12 @@
 # HEXA-AERO Breakthrough Theorems -- BT-AERO-1 ~ BT-AERO-6
 
-## UFO 도메인 고유 돌파 정리 (6개 = n)
+## Aerospace 도메인 고유 돌파 정리 (6개 = n)
 
 ---
 
-## 기존 BT 매핑 -- UFO 도메인 연결
+## 기존 BT 매핑 -- Aerospace 도메인 연결
 
-| 기존 BT | 제목 | UFO 연결 |
+| 기존 BT | 제목 | Aerospace 연결 |
 |---------|------|----------|
 | BT-123 | SE(3) dim=n=6 robot universality | 6 DOF 비행 제어의 수학적 필연 |
 | BT-124 | phi=2 bilateral symmetry + sigma=12 joint | 날개 쌍(phi=2) + sigma=12 제어점 |
@@ -225,7 +225,7 @@ Mach sigma=12에서:
 
 ---
 
-## UFO BT 통합 테이블
+## Aerospace BT 통합 테이블
 
 | BT# | 제목 | 핵심 수 | EXACT 비율 | 등급 |
 |-----|------|---------|----------|------|
@@ -244,7 +244,7 @@ Mach sigma=12에서:
 
 ```
   ┌─────────────────────────────────────────────────────────────┐
-  │             UFO BT Cross-Domain 연결 그래프                  │
+  │             Aerospace BT Cross-Domain 연결 그래프                  │
   │                                                             │
   │  수학 ──────── BT-AERO-1 (SE(3)=6) ──────── 로봇 (BT-123)  │
   │    │                    │                       │           │
@@ -265,5 +265,5 @@ Mach sigma=12에서:
   └─────────────────────────────────────────────────────────────┘
 ```
 
-UFO = **8 = sigma-tau** 개 도메인의 교차점. 이것이 UFO가 "Ultimate"인 이유.
+Aerospace = **8 = sigma-tau** 개 도메인의 교차점. 이것이 Aerospace가 "Ultimate"인 이유.
 모든 BT가 만나는 곳 = n=6의 가장 풍부한 교차 도메인.

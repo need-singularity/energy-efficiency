@@ -1,4 +1,4 @@
-# N6 UFO Hypotheses -- Independent Verification Report
+# N6 Aerospace Hypotheses -- Independent Verification Report
 
 **검증일**: 2026-04-04
 **검증 방법**: 실제 항공우주 데이터 + 공개 문헌/사양서 대조

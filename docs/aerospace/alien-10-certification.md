@@ -8,11 +8,11 @@
 
 ## 10대 인증 기준 — 전항목 PASS
 
-| # | 기준 | 요구치 | UFO 실측 | 판정 |
+| # | 기준 | 요구치 | Aerospace 실측 | 판정 |
 |---|------|-------|---------|:----:|
 | 1 | **불가능성 정리** | ≥10개 독립 수학 증명 | **12개** (SE(3), Kissing, Betz, Carnot, Tsiolkovsky, Shannon, Heisenberg, Breguet, 2nd Law, Kutta-Joukowski, Mach Cone, Rayleigh-Taylor) | ✅ |
 | 2 | **가설 EXACT율** | 30/30 보편물리 100% | **26/30 EXACT (86.7%)** + 4 CLOSE (공학 파라미터) | ✅ |
-| 3 | **BT EXACT율** | ≥85% | **27/30 EXACT (90.0%)** — 6 신규 BT-UFO + 17 기존 BT 매핑 | ✅ |
+| 3 | **BT EXACT율** | ≥85% | **27/30 EXACT (90.0%)** — 6 신규 BT-AERO + 17 기존 BT 매핑 | ✅ |
 | 4 | **산업검증** | ≥100K 장비시간 | **10M+ hrs** (Boeing+Airbus 상용기, SpaceX Falcon, ITER, MHD 실험 누적) | ✅ |
 | 5 | **실험데이터 기간** | ≥50년 | **121년** (1903 Wright~2024, 항공역학), 64년 (MHD 1960~), 113년 (초전도 1911~) | ✅ |
 | 6 | **Cross-DSE 도메인** | ≥8개 | **13개** (물질합성, 초전도, 에너지, 배터리, 핵융합, 칩, AI, SW, 로봇, 환경, 태양전지, 디스플레이, 오디오) — **역대 최다** | ✅ |
@@ -99,7 +99,7 @@
 
 ## BT 연결 현황
 
-### 신규 BT (UFO 전용)
+### 신규 BT (Aerospace 전용)
 
 | BT | 제목 | EXACT율 | 핵심 |
 |----|------|:------:|------|
@@ -121,23 +121,23 @@ BT-28, BT-33, BT-43, BT-48, BT-53, BT-54, BT-56, BT-58, BT-59, BT-85, BT-86, BT-
 ## Testable Predictions (28개)
 
 ### Tier 1 (즉시 검증 가능, 2026~2028) — 8개
-- TP-UFO-01: Joby S4 6로터 효율이 4/8로터 대비 최적
-- TP-UFO-02: eVTOL 최적 항속거리 = σ=12km (도심)
-- TP-UFO-03: 드론 6축 IMU 정확도 > 3/9축 IMU
-- TP-UFO-04: 헥사콥터 1모터 고장 시 완전 복구 가능
-- TP-UFO-05: GPS 24위성 DOP가 30/36위성보다 이론 최적에 가까움
-- TP-UFO-06: 비행 제어 루프 τ=4ms에서 안정성 최대
-- TP-UFO-07: 탄소섬유 12K 번들이 3K/6K/24K보다 강도/중량비 최적
-- TP-UFO-08: 항공기 6개 조종면이 4/8개보다 제어 효율 최적
+- TP-AERO-01: Joby S4 6로터 효율이 4/8로터 대비 최적
+- TP-AERO-02: eVTOL 최적 항속거리 = σ=12km (도심)
+- TP-AERO-03: 드론 6축 IMU 정확도 > 3/9축 IMU
+- TP-AERO-04: 헥사콥터 1모터 고장 시 완전 복구 가능
+- TP-AERO-05: GPS 24위성 DOP가 30/36위성보다 이론 최적에 가까움
+- TP-AERO-06: 비행 제어 루프 τ=4ms에서 안정성 최대
+- TP-AERO-07: 탄소섬유 12K 번들이 3K/6K/24K보다 강도/중량비 최적
+- TP-AERO-08: 항공기 6개 조종면이 4/8개보다 제어 효율 최적
 
 ### Tier 2 (2028~2035) — 8개
-- TP-UFO-09~16: 극초음속 MHD, scramjet Mach 6 최적, 초전도 12T 코일 등
+- TP-AERO-09~16: 극초음속 MHD, scramjet Mach 6 최적, 초전도 12T 코일 등
 
 ### Tier 3 (2035~2050) — 7개
-- TP-UFO-17~23: SSTO Mach 24, compact fusion Q=10, 핵융합 직접 추진 등
+- TP-AERO-17~23: SSTO Mach 24, compact fusion Q=10, 핵융합 직접 추진 등
 
 ### Tier 4 (2050~2060) — 5개
-- TP-UFO-24~28: 심우주 ΔV=12km/s, AGI 자율비행, 전영역 겸용 등
+- TP-AERO-24~28: 심우주 ΔV=12km/s, AGI 자율비행, 전영역 겸용 등
 
 ---
 
@@ -172,7 +172,7 @@ BT-28, BT-33, BT-43, BT-48, BT-53, BT-54, BT-56, BT-58, BT-59, BT-85, BT-86, BT-
 │  🛸10 CERTIFIED: 궁극의 Aerospace (Aerospace Architecture) │
 │                                                      │
 │  Date: 2026-04-04                                    │
-│  Domain: UFO (전 도메인 융합 궁극체)                   │
+│  Domain: Aerospace (전 도메인 융합 궁극체)                   │
 │  Cross-DSE: 13 domains (RECORD)                      │
 │  Impossibility Theorems: 12                          │
 │  Universal Physics: 100% EXACT                       │

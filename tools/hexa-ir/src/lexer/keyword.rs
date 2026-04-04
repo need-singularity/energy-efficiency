@@ -22,6 +22,7 @@ pub fn lookup_keyword(ident: &str) -> Option<TokenKind> {
         "true"   => Some(TokenKind::True),
         "false"  => Some(TokenKind::False),
         "type"   => Some(TokenKind::Type),
+        "match"  => Some(TokenKind::Match),
 
         // Type keywords (sigma-tau=8)
         "i64"  => Some(TokenKind::KwI64),

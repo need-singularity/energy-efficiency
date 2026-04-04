@@ -17,7 +17,7 @@ pub enum TokenKind {
     StrLit(String),
     BoolLit(bool),
 
-    // ── Keywords (sigma=12 for Mk.I) ──
+    // ── Keywords (sigma+1=13 for Mk.II: +match) ──
     Fn,
     Let,
     Mut,
@@ -30,6 +30,7 @@ pub enum TokenKind {
     True,
     False,
     Type,
+    Match,
 
     // ── Type keywords (sigma-tau=8) ──
     KwI64,
@@ -100,9 +101,9 @@ impl TokenKind {
             TokenKind::IntLit(_) | TokenKind::FloatLit(_) |
             TokenKind::StrLit(_) | TokenKind::BoolLit(_) |
             TokenKind::True | TokenKind::False |
-            TokenKind::Ident(_) | TokenKind::LParen |
+            TokenKind::Ident(_) | TokenKind::LParen | TokenKind::LBracket |
             TokenKind::Minus | TokenKind::Not |
-            TokenKind::If
+            TokenKind::If | TokenKind::Match
         )
     }
 

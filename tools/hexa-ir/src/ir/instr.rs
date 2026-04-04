@@ -41,6 +41,8 @@ pub struct HexaFunction {
     pub blocks: Vec<HexaBlock>,
     pub params: Vec<(String, HexaType)>,
     pub ret_ty: HexaType,
+    /// String constant pool — string literals referenced by index
+    pub string_pool: Vec<String>,
 }
 
 impl HexaFunction {

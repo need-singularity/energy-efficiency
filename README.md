@@ -403,11 +403,11 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 ---
 
-## 🛸 UFO (Ultimate Flying Object)
+## 🛸 Aerospace
 
 > **🛸10** | ✅ | BT 23개 90%EXACT | DSE 7,776 | 산업10M+hrs | 실험121년 | 물리한계12정리 | TP28 | 발견13도메인CrossDSE | Mk.V
 
-| **10** | ✅ | v1 | **궁극의 UFO** | **13도메인CrossDSE(역대최다)**, 12불가능성정리, BT90%(정직한천장), 7,776+CrossDSE30K+조합, 121년0예외, 보편물리100%EXACT, 가설26/30EXACT | [goal](docs/ufo/goal.md) · [BT](docs/ufo/evolution/breakthrough-theorems.md) · [🛸10 인증](docs/ufo/alien-10-certification.md) · [가설](docs/ufo/hypotheses.md) |
+| **10** | ✅ | v1 | **궁극의 Aerospace** | **13도메인CrossDSE(역대최다)**, 12불가능성정리, BT90%(정직한천장), 7,776+CrossDSE30K+조합, 121년0예외, 보편물리100%EXACT, 가설26/30EXACT | [goal](docs/aerospace/goal.md) · [BT](docs/aerospace/evolution/breakthrough-theorems.md) · [🛸10 인증](docs/aerospace/alien-10-certification.md) · [가설](docs/aerospace/hypotheses.md) |
 
 **전 도메인 융합 궁극체** — n6-architecture의 모든 도메인이 하나의 비행체로 수렴.
 

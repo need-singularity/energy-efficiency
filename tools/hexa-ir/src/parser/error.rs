@@ -123,7 +123,7 @@ impl Parser {
                 TokenKind::RBrace => return,
                 TokenKind::Fn | TokenKind::Let | TokenKind::Struct |
                 TokenKind::Enum | TokenKind::Return | TokenKind::If |
-                TokenKind::While | TokenKind::Type => return,
+                TokenKind::While | TokenKind::Type | TokenKind::Match => return,
                 _ => { self.advance(); }
             }
         }

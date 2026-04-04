@@ -1,9 +1,15 @@
 /// Optimization Pipeline — sigma=12 passes in n/phi=3 waves
 ///
-/// Front (P1-P4): type resolution, ownership dedup, dead stores, redundant loads
-/// Mid   (P5-P8): inlining, LICM, CSE, strength reduction
-/// Back  (P9-P12): sinking, coalescing, final DCE, verification
+/// Front (P1-P4): type resolution, ownership dedup, proof-guided DSE, const fold
+/// Mid   (P5-P8): inlining, proof-guided LICM, CSE, strength reduction
+/// Back  (P9-P12): sinking, coalescing, proof-guided DCE, verification
+///
+/// HEXA advantage over LLVM: passes P3, P6, P11 exploit proof instructions
+/// (OwnershipTransfer, BorrowCheck, LifetimeEnd, ProofInvariant, ProofAssert)
+/// to eliminate code that LLVM must conservatively keep. Zero runtime cost —
+/// proof instructions are erased at codegen.
 
+pub mod proof_info;
 pub mod front;
 pub mod mid;
 pub mod back;

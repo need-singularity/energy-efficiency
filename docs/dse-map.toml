@@ -16830,11 +16830,11 @@ bridge = "플라즈마 대면 소재 (W, SiC)"
 n6_resonance = "SiC C Z=6, W tiles sigma=12 mm thickness"
 note = "SiC (C Z=6) 플라즈마 대면 소재 + W 타일 sigma=12 mm 두께"
 
-[ufo]
-name = "UFO (Ultimate Flying Object)"
+[aerospace]
+name = "Aerospace"
 status = "complete"
 alien_index = 10
-toml = "tools/universal-dse/domains/ufo.toml"
+toml = "tools/universal-dse/domains/aerospace.toml"
 combinations = 7776
 valid = 6912
 pareto = 107

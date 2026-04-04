@@ -72,6 +72,7 @@ impl IRBuilder {
             blocks: self.blocks,
             params: self.params,
             ret_ty: self.ret_ty,
+            string_pool: Vec::new(),
         }
     }
 }

@@ -1,8 +1,8 @@
-# UFO DSE 결과 (Aerospace Architecture)
+# Aerospace DSE 결과 (Aerospace Architecture)
 
 > 생성일: 2026-04-04
-> 도구: `tools/universal-dse/universal-dse domains/ufo.toml`
-> TOML: `tools/universal-dse/domains/ufo.toml`
+> 도구: `tools/universal-dse/universal-dse domains/aerospace.toml`
+> TOML: `tools/universal-dse/domains/aerospace.toml`
 
 ## 탐색 요약
 
@@ -182,6 +182,6 @@ n6_EXACT 통계 (6,912 호환 조합 기준):
    - 동일 Pareto 점수, 더 높은 성능(0.800) + 전력효율(0.850)
    - 비용이 더 낮지만(0.370) 기술 성숙도가 낮음
 
-3. **전체 6,912 조합 중 95.8% 평균 n6 일관성** -- n=6 체계가 UFO 설계에 보편적으로 적용됨
+3. **전체 6,912 조합 중 95.8% 평균 n6 일관성** -- n=6 체계가 Aerospace 설계에 보편적으로 적용됨
 
 4. **107개 Pareto 해** -- 다양한 운용 시나리오(대기권/궤도/심우주/도심/극한환경)에 맞는 최적 구성이 존재

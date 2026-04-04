@@ -696,6 +696,7 @@ fn generate_test_function(seed: u64, num_blocks: usize, instrs_per_block: usize)
         blocks,
         params: vec![("a".into(), HexaType::I64), ("b".into(), HexaType::I64)], // φ=2 params
         ret_ty: HexaType::I64,
+        string_pool: Vec::new(),
     }
 }
 
@@ -882,7 +883,10 @@ fn main() {
         for func in &mut functions {
             let before = func.count_instrs();
             hexa_ir::opt::run_pipeline(func);
-            if verbose { eprintln!("  Stage 5 (Opt): {} → {} instrs", before, func.count_instrs()); }
+            if verbose {
+                eprintln!("  Stage 5 (Opt): {} → {} instrs", before, func.count_instrs());
+                eprintln!("{}", hexa_ir::ir::print::print_function(func));
+            }
         }
 
         let output = src_path.replace(".hexa", "");

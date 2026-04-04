@@ -5,7 +5,12 @@
 > Constants: σ=12, φ=2, τ=4, J₂=24, n=6, sopfr=5, μ=1
 > Derived: σ-τ=8, σ-φ=10, σ-μ=11, n/φ=3, R(6)=1, σ·sopfr=60, σ·sopfr·n=360
 
-**관련 Breakthrough Theorems**: BT-48, BT-62, BT-74, BT-113, BT-115
+**관련 Breakthrough Theorems**: BT-48, BT-62, BT-74, BT-113, BT-115, BT-212, BT-213, BT-221, BT-224, BT-225
+
+### New BTs (this session)
+- **BT-221**: Circaseptan-Circadian-Circannual Biological Rhythm Stack (9/9 EXACT) ⭐⭐⭐
+- **BT-224**: Atomic Clock Caesium-133 n=6 Shell Temporal Anchor (7/7 EXACT) ⭐⭐
+- **BT-225**: Cognitive-Social-Temporal Triple Bridge (8/8 EXACT) ⭐⭐⭐
 
 ---
 

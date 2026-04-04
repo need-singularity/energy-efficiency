@@ -1,4 +1,4 @@
-"""NEXUS-6 UFO Domain Full Scan -- aerospace/aviation/space constants n=6 matching
+"""NEXUS-6 Aerospace Domain Full Scan -- aerospace/aviation/space constants n=6 matching
 Run: python3 experiments/ufo_nexus6_scan.py
 """
 import json, math, sys, os
@@ -49,39 +49,39 @@ N6_COMPOUND = {
 N6.update(N6_COMPOUND)
 
 # ============================================================
-# SECTION 1: Existing H-UFO hypotheses verification
+# SECTION 1: Existing H-AERO hypotheses verification
 # ============================================================
 EXISTING_HYPOTHESES = {
-    "H-UFO-01 Carbon Z=6": (6, "n", "EXACT"),
-    "H-UFO-02 Honeycomb CN=6": (6, "n", "EXACT"),
-    "H-UFO-03 CFRP 12-ply": (12, "sigma", "EXACT"),
-    "H-UFO-04 TPS temp ratio": (10, "sigma_minus_phi", "EXACT"),
-    "H-UFO-05 Control surfaces": (6, "n", "EXACT"),
-    "H-UFO-06 Scramjet Mach 6": (6, "n", "EXACT"),
-    "H-UFO-07 Turbofan BPR": (12.5, "sigma", "CLOSE"),
-    "H-UFO-08 TVC 3-axis": (3, "n_over_phi", "EXACT"),
-    "H-UFO-09 Ion ISP": (1728, "sigma_cube", "WEAK"),
-    "H-UFO-10 Compressor stages": (14, "sigma", "CLOSE"),
-    "H-UFO-11 ISS 4 SAW": (4, "tau", "EXACT"),
-    "H-UFO-12 Triple power": (3, "n_over_phi", "EXACT"),
-    "H-UFO-13 Triple junction solar": (3, "n_over_phi", "EXACT"),
-    "H-UFO-14 Battery 96S": (96, "sigma_times_sigma_minus_tau", "EXACT"),
-    "H-UFO-15 Engine count": (2, "phi", "EXACT"),
-    "H-UFO-16 GPS 24 sats": (24, "J2", "EXACT"),
-    "H-UFO-17 Triple FCC": (3, "n_over_phi", "EXACT"),
-    "H-UFO-18 INS 6 channels": (6, "n", "EXACT"),
-    "H-UFO-19 MIL-1553 dual bus": (2, "phi", "EXACT"),
-    "H-UFO-20 FDR 8 params": (8, "sigma_minus_tau", "CLOSE"),
-    "H-UFO-21 VHF 8.33kHz": (3, "n_over_phi", "EXACT"),
-    "H-UFO-22 OSI 7 layers": (7, "sigma_minus_sopfr", "EXACT"),
-    "H-UFO-23 AES-128": (128, "two_pow_sigma_minus_sopfr", "EXACT"),
-    "H-UFO-24 ACARS 12 fields": (12, "sigma", "CLOSE"),
-    "H-UFO-25 Satcom 6 bands": (6, "n", "EXACT"),
-    "H-UFO-26 SAE 6 levels": (6, "n", "EXACT"),
-    "H-UFO-27 OODA 4 phases": (4, "tau", "EXACT"),
-    "H-UFO-28 F-35 12 sensors": (12, "sigma", "EXACT"),
-    "H-UFO-29 DAS 6 IR": (6, "n", "EXACT"),
-    "H-UFO-30 Swarm 24 units": (24, "J2", "EXACT"),
+    "H-AERO-01 Carbon Z=6": (6, "n", "EXACT"),
+    "H-AERO-02 Honeycomb CN=6": (6, "n", "EXACT"),
+    "H-AERO-03 CFRP 12-ply": (12, "sigma", "EXACT"),
+    "H-AERO-04 TPS temp ratio": (10, "sigma_minus_phi", "EXACT"),
+    "H-AERO-05 Control surfaces": (6, "n", "EXACT"),
+    "H-AERO-06 Scramjet Mach 6": (6, "n", "EXACT"),
+    "H-AERO-07 Turbofan BPR": (12.5, "sigma", "CLOSE"),
+    "H-AERO-08 TVC 3-axis": (3, "n_over_phi", "EXACT"),
+    "H-AERO-09 Ion ISP": (1728, "sigma_cube", "WEAK"),
+    "H-AERO-10 Compressor stages": (14, "sigma", "CLOSE"),
+    "H-AERO-11 ISS 4 SAW": (4, "tau", "EXACT"),
+    "H-AERO-12 Triple power": (3, "n_over_phi", "EXACT"),
+    "H-AERO-13 Triple junction solar": (3, "n_over_phi", "EXACT"),
+    "H-AERO-14 Battery 96S": (96, "sigma_times_sigma_minus_tau", "EXACT"),
+    "H-AERO-15 Engine count": (2, "phi", "EXACT"),
+    "H-AERO-16 GPS 24 sats": (24, "J2", "EXACT"),
+    "H-AERO-17 Triple FCC": (3, "n_over_phi", "EXACT"),
+    "H-AERO-18 INS 6 channels": (6, "n", "EXACT"),
+    "H-AERO-19 MIL-1553 dual bus": (2, "phi", "EXACT"),
+    "H-AERO-20 FDR 8 params": (8, "sigma_minus_tau", "CLOSE"),
+    "H-AERO-21 VHF 8.33kHz": (3, "n_over_phi", "EXACT"),
+    "H-AERO-22 OSI 7 layers": (7, "sigma_minus_sopfr", "EXACT"),
+    "H-AERO-23 AES-128": (128, "two_pow_sigma_minus_sopfr", "EXACT"),
+    "H-AERO-24 ACARS 12 fields": (12, "sigma", "CLOSE"),
+    "H-AERO-25 Satcom 6 bands": (6, "n", "EXACT"),
+    "H-AERO-26 SAE 6 levels": (6, "n", "EXACT"),
+    "H-AERO-27 OODA 4 phases": (4, "tau", "EXACT"),
+    "H-AERO-28 F-35 12 sensors": (12, "sigma", "EXACT"),
+    "H-AERO-29 DAS 6 IR": (6, "n", "EXACT"),
+    "H-AERO-30 Swarm 24 units": (24, "J2", "EXACT"),
 }
 
 # ============================================================
@@ -245,14 +245,14 @@ def run_scan(constants_dict, section_name):
 # MAIN
 # ============================================================
 print("=" * 70)
-print("  NEXUS-6 UFO DOMAIN FULL SCAN")
+print("  NEXUS-6 AEROSPACE DOMAIN FULL SCAN")
 print("  Date: 2026-04-04")
 print("  Lenses: 22 (stability, network, boundary, multiscale, ...)")
 print("=" * 70)
 
 # Section 1: Verify existing hypotheses
 print("\n" + "=" * 70)
-print("  SECTION 1: Existing H-UFO-01~30 Verification")
+print("  SECTION 1: Existing H-AERO-01~30 Verification")
 print("=" * 70)
 
 existing_exact = 0
@@ -383,20 +383,20 @@ print("  SECTION 6: Strongest New BT Candidates")
 print("=" * 70)
 
 strong_candidates = [
-    ("BT-UFO-1", "GPS orbital period = sigma=12 hours", "EXACT", "GPS 위성 궤도 주기가 정확히 12시간 = sigma(6)"),
-    ("BT-UFO-2", "Galileo/BeiDou MEO baseline = J2=24 sats", "EXACT", "EU/중국 위성항법도 24기 기본 배치 = J2(6)"),
-    ("BT-UFO-3", "Tropopause altitude = sigma=12 km", "EXACT", "대류권계면 고도가 정확히 12km = sigma(6), BT-119 확장"),
-    ("BT-UFO-4", "ISS expedition crew = n=6", "EXACT", "ISS 표준 승무원 6명 = n, SE(3) dim=6"),
-    ("BT-UFO-5", "NASA crewed programs count = n=6", "EXACT", "Mercury/Gemini/Apollo/Shuttle/Dragon/Starliner = 6종 = n"),
-    ("BT-UFO-6", "Six Sigma quality = n=6", "EXACT", "품질관리 표준 6시그마 = n, 항공우주 품질 기반"),
-    ("BT-UFO-7", "Hexacopter rotors = n=6", "EXACT", "eVTOL 헥사콥터 6로터 = n, BT-127 키싱넘버 확장"),
-    ("BT-UFO-8", "Ti-6Al-4V composition 6%Al + 4%V = {n, tau}", "EXACT", "항공우주 표준 합금 조성이 n=6, tau=4"),
-    ("BT-UFO-9", "Boeing 787 generators = n=6", "EXACT", "B787 전원 6대 = n (4 main + 2 APU)"),
-    ("BT-UFO-10", "ISS US segment modules = n=6", "EXACT", "ISS 미국 구획 모듈 6개 = n"),
-    ("BT-UFO-11", "USAF numbered air forces = sigma=12", "EXACT", "미 공군 번호 부대 12개 = sigma(6)"),
-    ("BT-UFO-12", "Boeing 737 production target = sigma*tau=48/mo", "EXACT", "B737 생산목표 48대/월 = sigma*tau"),
-    ("BT-UFO-13", "Stall AoA typical = sigma=12 deg", "EXACT", "실속 받음각 12도 = sigma, 에어포일 보편"),
-    ("BT-UFO-14", "Flight phases standard = n=6", "EXACT", "비행 6단계 = n (택시/이륙/상승/순항/하강/착륙)"),
+    ("BT-AERO-1", "GPS orbital period = sigma=12 hours", "EXACT", "GPS 위성 궤도 주기가 정확히 12시간 = sigma(6)"),
+    ("BT-AERO-2", "Galileo/BeiDou MEO baseline = J2=24 sats", "EXACT", "EU/중국 위성항법도 24기 기본 배치 = J2(6)"),
+    ("BT-AERO-3", "Tropopause altitude = sigma=12 km", "EXACT", "대류권계면 고도가 정확히 12km = sigma(6), BT-119 확장"),
+    ("BT-AERO-4", "ISS expedition crew = n=6", "EXACT", "ISS 표준 승무원 6명 = n, SE(3) dim=6"),
+    ("BT-AERO-5", "NASA crewed programs count = n=6", "EXACT", "Mercury/Gemini/Apollo/Shuttle/Dragon/Starliner = 6종 = n"),
+    ("BT-AERO-6", "Six Sigma quality = n=6", "EXACT", "품질관리 표준 6시그마 = n, 항공우주 품질 기반"),
+    ("BT-AERO-7", "Hexacopter rotors = n=6", "EXACT", "eVTOL 헥사콥터 6로터 = n, BT-127 키싱넘버 확장"),
+    ("BT-AERO-8", "Ti-6Al-4V composition 6%Al + 4%V = {n, tau}", "EXACT", "항공우주 표준 합금 조성이 n=6, tau=4"),
+    ("BT-AERO-9", "Boeing 787 generators = n=6", "EXACT", "B787 전원 6대 = n (4 main + 2 APU)"),
+    ("BT-AERO-10", "ISS US segment modules = n=6", "EXACT", "ISS 미국 구획 모듈 6개 = n"),
+    ("BT-AERO-11", "USAF numbered air forces = sigma=12", "EXACT", "미 공군 번호 부대 12개 = sigma(6)"),
+    ("BT-AERO-12", "Boeing 737 production target = sigma*tau=48/mo", "EXACT", "B737 생산목표 48대/월 = sigma*tau"),
+    ("BT-AERO-13", "Stall AoA typical = sigma=12 deg", "EXACT", "실속 받음각 12도 = sigma, 에어포일 보편"),
+    ("BT-AERO-14", "Flight phases standard = n=6", "EXACT", "비행 6단계 = n (택시/이륙/상승/순항/하강/착륙)"),
 ]
 
 for bt_id, title, grade, desc in strong_candidates:
@@ -409,7 +409,7 @@ print("\n" + "=" * 70)
 print("  FINAL SUMMARY")
 print("=" * 70)
 print(f"""
-  Existing hypotheses (H-UFO-01~30):
+  Existing hypotheses (H-AERO-01~30):
     EXACT: {existing_exact}/30 = {existing_exact/30*100:.1f}%
     CLOSE: {existing_close}/30 = {existing_close/30*100:.1f}%
 

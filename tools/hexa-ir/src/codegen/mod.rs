@@ -98,6 +98,32 @@ pub mod arm64_asm {
     /// Emit a complete program as ARM64 assembly text
     pub fn emit_program_asm(functions: &[HexaFunction]) -> String {
         let mut asm = String::new();
+
+        // Emit string constant pool in __cstring section
+        let mut has_strings = false;
+        for func in functions {
+            if !func.string_pool.is_empty() {
+                has_strings = true;
+                break;
+            }
+        }
+        if has_strings {
+            asm.push_str(".section __TEXT,__cstring,cstring_literals\n");
+            for func in functions {
+                for (i, s) in func.string_pool.iter().enumerate() {
+                    asm.push_str(&format!("_str_{}_{}:\n", func.name, i));
+                    // Emit .asciz (null-terminated string literal)
+                    asm.push_str(&format!("    .asciz \"{}\"\n",
+                        s.replace('\\', "\\\\")
+                         .replace('"', "\\\"")
+                         .replace('\n', "\\n")
+                         .replace('\t', "\\t")
+                         .replace('\0', "\\0")));
+                }
+            }
+            asm.push('\n');
+        }
+
         asm.push_str(".section __TEXT,__text,regular,pure_instructions\n");
         asm.push_str(".align 4\n\n");
 
@@ -130,9 +156,32 @@ pub mod arm64_asm {
             .unwrap_or(0) + 1;
         let num_params = func.params.len();
         let total_slots = std::cmp::max(max_reg, num_params);
+
+        // Pre-scan for aggregate allocations (arrays and structs):
+        // compute extra stack space beyond the SSA register slots
+        let mut array_allocs: std::collections::HashMap<usize, usize> = std::collections::HashMap::new();
+        let mut array_data_size: usize = 0;
+        for block in &func.blocks {
+            for instr in &block.instrs {
+                if instr.op == HexaOp::Alloc {
+                    if let Some(dest) = instr.dest {
+                        if matches!(instr.ty, HexaType::Array(_, _) | HexaType::Struct(_)) {
+                            let size = instr.args.first().copied().unwrap_or(0);
+                            array_allocs.insert(dest, array_data_size);
+                            array_data_size += size;
+                        }
+                    }
+                }
+            }
+        }
+
         // 16-byte aligned, minimum 32 for frame + lr
-        let frame_size = ((total_slots * 8 + 16 + 15) / 16) * 16;
+        let slots_bytes = total_slots * 8 + 16;
+        let total_frame_bytes = slots_bytes + array_data_size;
+        let frame_size = ((total_frame_bytes + 15) / 16) * 16;
         let frame_size = std::cmp::max(frame_size, 32);
+        // Aggregate data starts after the SSA register slots
+        let array_base_offset = 16 + total_slots * 8;
 
         let is_main = label == "_main";
 
@@ -160,6 +209,24 @@ pub mod arm64_asm {
             16 + reg * 8
         };
 
+        // Track which SSA registers hold memory addresses (pointer-based Store/Load)
+        // A register is a "pointer" if defined by Array/Struct Alloc or Add involving a pointer
+        let mut pointer_regs: std::collections::HashSet<usize> = std::collections::HashSet::new();
+        for block in &func.blocks {
+            for instr in &block.instrs {
+                if let Some(dest) = instr.dest {
+                    if instr.op == HexaOp::Alloc && array_allocs.contains_key(&dest) {
+                        pointer_regs.insert(dest);
+                    }
+                    if instr.op == HexaOp::Add {
+                        if instr.args.iter().any(|a| pointer_regs.contains(a)) {
+                            pointer_regs.insert(dest);
+                        }
+                    }
+                }
+            }
+        }
+
         // Emit blocks
         for block in &func.blocks {
             asm.push_str(&format!(".L{}_b{}:\n", label, block.id));
@@ -168,30 +235,64 @@ pub mod arm64_asm {
                 match instr.op {
                     HexaOp::Alloc => {
                         if let Some(dest) = instr.dest {
-                            let imm = instr.args.first().copied().unwrap_or(0);
-                            if matches!(instr.ty, HexaType::I64 | HexaType::Bool | HexaType::Void) {
-                                asm.push_str(&format!("    mov x9, #{}\n", imm));
+                            if let Some(&arr_offset) = array_allocs.get(&dest) {
+                                // Array allocation: store the stack address of array data
+                                // into this SSA register's slot
+                                let addr = array_base_offset + arr_offset;
+                                asm.push_str(&format!("    add x9, sp, #{}\n", addr));
                                 asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                            } else if matches!(instr.ty, HexaType::Str) && instr.label.is_some() {
+                                // String literal: load pointer to string constant from pool
+                                let pool_idx = instr.args.first().copied().unwrap_or(0);
+                                let str_len = instr.args.get(1).copied().unwrap_or(0);
+                                let str_label = format!("_str_{}_{}", func.name, pool_idx);
+                                asm.push_str(&format!("    adrp x9, {}@PAGE\n", str_label));
+                                asm.push_str(&format!("    add x9, x9, {}@PAGEOFF\n", str_label));
+                                asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                                let _ = str_len;
                             } else {
-                                // Other types: store 0 placeholder
-                                asm.push_str(&format!("    str xzr, [sp, #{}]\n", slot(dest)));
+                                let imm = instr.args.first().copied().unwrap_or(0);
+                                if matches!(instr.ty, HexaType::I64 | HexaType::Bool | HexaType::Void) {
+                                    asm.push_str(&format!("    mov x9, #{}\n", imm));
+                                    asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                                } else {
+                                    // Other types: store 0 placeholder
+                                    asm.push_str(&format!("    str xzr, [sp, #{}]\n", slot(dest)));
+                                }
                             }
                         }
                     }
 
                     HexaOp::Load => {
                         if let (Some(dest), Some(&src)) = (instr.dest, instr.args.first()) {
-                            // Load from the slot of the source SSA register
-                            asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(src)));
-                            asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                            if pointer_regs.contains(&src) {
+                                // Pointer-based load: src holds a memory address
+                                // Load the address, then load the value from that address
+                                asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(src)));
+                                asm.push_str("    ldr x9, [x9]\n");
+                                asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                            } else {
+                                // Slot-copy load: copy value between SSA register slots
+                                asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(src)));
+                                asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                            }
                         }
                     }
 
                     HexaOp::Store => {
-                        // Store: args[0] = addr_reg (destination slot), args[1] = value_reg
+                        // Store: args[0] = addr_reg, args[1] = value_reg
                         if let (Some(&addr), Some(&val)) = (instr.args.get(0), instr.args.get(1)) {
-                            asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(val)));
-                            asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(addr)));
+                            if pointer_regs.contains(&addr) {
+                                // Pointer-based store: addr holds a memory address
+                                // Load the address, load the value, then store value at address
+                                asm.push_str(&format!("    ldr x10, [sp, #{}]\n", slot(addr)));
+                                asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(val)));
+                                asm.push_str("    str x9, [x10]\n");
+                            } else {
+                                // Slot-copy store: copy value to the destination slot
+                                asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(val)));
+                                asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(addr)));
+                            }
                         }
                     }
 
@@ -305,22 +406,133 @@ pub mod arm64_asm {
 
                     HexaOp::Call => {
                         // args[0] = func_reg (Ident lowered), args[1..] = actual args
-                        // Move arguments to x0-x7
-                        if instr.args.len() > 1 {
-                            for (i, &arg_reg) in instr.args[1..].iter().enumerate() {
-                                if i < 8 {
-                                    asm.push_str(&format!("    ldr x{}, [sp, #{}]\n", i, slot(arg_reg)));
+                        let call_name = instr.label.as_deref().unwrap_or("unknown");
+
+                        match call_name {
+                            // ── Built-in: print(s: str) -> i64 ──
+                            // write(stdout=1, str_ptr, str_len) via syscall x16=4
+                            "print" => {
+                                if instr.args.len() > 1 {
+                                    let str_reg = instr.args[1];
+                                    asm.push_str(&format!("    ldr x1, [sp, #{}]\n", slot(str_reg)));
+                                    // Find string length from the Alloc that defined str_reg
+                                    let str_len = func.blocks.iter()
+                                        .flat_map(|b| b.instrs.iter())
+                                        .find(|i| i.dest == Some(str_reg)
+                                            && i.op == HexaOp::Alloc
+                                            && matches!(i.ty, HexaType::Str))
+                                        .and_then(|i| i.args.get(1).copied())
+                                        .unwrap_or(0);
+                                    asm.push_str(&format!("    mov x2, #{}\n", str_len));
+                                    asm.push_str("    mov x0, #1\n");    // fd = stdout
+                                    asm.push_str("    mov x16, #4\n");   // SYS_write
+                                    asm.push_str("    svc #0x80\n");
+                                }
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
                                 }
                             }
-                        }
 
-                        // Use the label field to get the function name
-                        let func_name = instr.label.as_deref().unwrap_or("unknown");
-                        asm.push_str(&format!("    bl _{}\n", func_name));
+                            // ── Built-in: file_open(path: str) -> i64 (fd) ──
+                            "file_open" => {
+                                if instr.args.len() > 1 {
+                                    asm.push_str(&format!("    ldr x0, [sp, #{}]\n", slot(instr.args[1])));
+                                }
+                                asm.push_str("    mov x1, #0\n");
+                                asm.push_str("    mov x2, #0\n");
+                                asm.push_str("    mov x16, #5\n");   // SYS_open
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
 
-                        // Store result (x0) to dest slot
-                        if let Some(dest) = instr.dest {
-                            asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                            // ── Built-in: file_read(fd, buf, n) -> i64 ──
+                            "file_read" => {
+                                if instr.args.len() > 3 {
+                                    asm.push_str(&format!("    ldr x0, [sp, #{}]\n", slot(instr.args[1])));
+                                    asm.push_str(&format!("    ldr x1, [sp, #{}]\n", slot(instr.args[2])));
+                                    asm.push_str(&format!("    ldr x2, [sp, #{}]\n", slot(instr.args[3])));
+                                }
+                                asm.push_str("    mov x16, #3\n");   // SYS_read
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
+
+                            // ── Built-in: file_write(fd, data, n) -> i64 ──
+                            "file_write" => {
+                                if instr.args.len() > 3 {
+                                    asm.push_str(&format!("    ldr x0, [sp, #{}]\n", slot(instr.args[1])));
+                                    asm.push_str(&format!("    ldr x1, [sp, #{}]\n", slot(instr.args[2])));
+                                    asm.push_str(&format!("    ldr x2, [sp, #{}]\n", slot(instr.args[3])));
+                                }
+                                asm.push_str("    mov x16, #4\n");   // SYS_write
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
+
+                            // ── Built-in: file_close(fd) -> i64 ──
+                            "file_close" => {
+                                if instr.args.len() > 1 {
+                                    asm.push_str(&format!("    ldr x0, [sp, #{}]\n", slot(instr.args[1])));
+                                }
+                                asm.push_str("    mov x16, #6\n");   // SYS_close
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
+
+                            // ── Built-in: heap_alloc(size) -> i64 (pointer) ──
+                            // mmap(0, size, PROT_READ|PROT_WRITE=3, MAP_ANON|MAP_PRIVATE=0x1002, -1, 0)
+                            "heap_alloc" => {
+                                if instr.args.len() > 1 {
+                                    asm.push_str(&format!("    ldr x1, [sp, #{}]\n", slot(instr.args[1])));
+                                }
+                                asm.push_str("    mov x0, #0\n");
+                                asm.push_str("    mov x2, #3\n");         // PROT_READ|PROT_WRITE
+                                asm.push_str("    mov x3, #0x1002\n");    // MAP_ANON|MAP_PRIVATE
+                                asm.push_str("    mov x4, #-1\n");
+                                asm.push_str("    mov x5, #0\n");
+                                asm.push_str("    mov x16, #197\n");      // SYS_mmap
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
+
+                            // ── Built-in: heap_free(ptr, size) -> i64 ──
+                            // munmap(ptr, size) via syscall x16=73
+                            "heap_free" => {
+                                if instr.args.len() > 2 {
+                                    asm.push_str(&format!("    ldr x0, [sp, #{}]\n", slot(instr.args[1])));
+                                    asm.push_str(&format!("    ldr x1, [sp, #{}]\n", slot(instr.args[2])));
+                                }
+                                asm.push_str("    mov x16, #73\n");   // SYS_munmap
+                                asm.push_str("    svc #0x80\n");
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
+
+                            // ── Regular function call ──
+                            _ => {
+                                if instr.args.len() > 1 {
+                                    for (i, &arg_reg) in instr.args[1..].iter().enumerate() {
+                                        if i < 8 {
+                                            asm.push_str(&format!("    ldr x{}, [sp, #{}]\n", i, slot(arg_reg)));
+                                        }
+                                    }
+                                }
+                                asm.push_str(&format!("    bl _{}\n", call_name));
+                                if let Some(dest) = instr.dest {
+                                    asm.push_str(&format!("    str x0, [sp, #{}]\n", slot(dest)));
+                                }
+                            }
                         }
                     }
 
@@ -328,8 +540,16 @@ pub mod arm64_asm {
                     HexaOp::ProofAssert | HexaOp::ProofInvariant | HexaOp::ProofWitness |
                     HexaOp::OwnershipTransfer | HexaOp::BorrowCheck | HexaOp::LifetimeEnd => {}
 
+                    // Copy/Move: copy value from source slot to dest slot
+                    HexaOp::Copy | HexaOp::Move => {
+                        if let (Some(dest), Some(&src)) = (instr.dest, instr.args.first()) {
+                            asm.push_str(&format!("    ldr x9, [sp, #{}]\n", slot(src)));
+                            asm.push_str(&format!("    str x9, [sp, #{}]\n", slot(dest)));
+                        }
+                    }
+
                     // Other ops: nop for Mk.I
-                    HexaOp::Free | HexaOp::Copy | HexaOp::Move | HexaOp::Phi | HexaOp::Switch => {}
+                    HexaOp::Free | HexaOp::Phi | HexaOp::Switch => {}
                 }
             }
         }
