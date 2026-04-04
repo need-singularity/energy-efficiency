@@ -53,7 +53,7 @@
 <!-- AUTO:ALIEN_INDEX:START -->
 | 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |
 |------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|
-| [🔥 핵융합](#-핵융합-fusion) | 🛸8 | ✅ | 82.2% | 87% (7장치) | 43% TP확인 | 35 | 15 |
+| [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |
 | [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | ✅ | 74.5% | 92.6% (6벤더) | — | 28 | 12 |
 | [⚡ 에너지](#-에너지-energy) | 🛸8 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
 | [🤖 AI/ML](#-ai--ml) | 🛸6 | ✅ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
@@ -91,16 +91,16 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔥 핵융합 (Fusion)
 
 <!-- AUTO:SUMMARY_fusion:START -->
-> **🛸8** | ✅ | BT 9개 82.2%EXACT | DSE 2,400+1M | 산업87% (7장치) | 실험43% TP확인 | 물리한계10 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V
+> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+ | 산업87% (7장치) | 42보편핵물리100% | 79/79검증PASS | 물리한계12 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V | 물리천장증명(QED)
 <!-- AUTO:SUMMARY_fusion:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 6 | ✅ | v3 | **궁극의 핵융합 발전소** | 5단 DSE 2,400+조합, TBR=1.117, Cross-DSE 8도메인 | [설계](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) · [8도메인](docs/fusion/cross-dse-8domain-results.md) |
+| 10 | ✅ | v4 | **궁극의 핵융합 발전소** | 79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED | [설계](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) · [8도메인](docs/fusion/cross-dse-8domain-results.md) · [🛸10인증](docs/fusion/alien-10-certification.md) · [검증코드](docs/fusion/verify_alien10.py) |
 | 5 | | v2 | **KSTAR-N6** | R₀=6m, B_T=12T, 300초 정상상태, 41개 패턴(51%EXACT) | [토카막](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) · [300초](docs/superpowers/specs/2026-04-02-kstar-300s-steady-state-design.md) · [패턴](docs/plasma-physics/kstar-n6-hidden-patterns.md) |
 | 4 | | v2 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 로드맵 | [I](docs/fusion/evolution/mk-1-first-light.md) · [II](docs/fusion/evolution/mk-2-city-power.md) · [III](docs/fusion/evolution/mk-3-nation-power.md) · [IV](docs/fusion/evolution/mk-4-continent-power.md) · [V](docs/fusion/evolution/mk-5-theoretical.md) |
 | 6 | | v3 | **발견 + 예측 + 가설v5** | 15발견 + 35가설(43%EXACT) + TP15/35확인 | [발견](docs/fusion/alien-level-discoveries.md) · [가설](docs/fusion/hypotheses.md) · [예측](docs/fusion/prediction-tracker.md) · [전수검증](docs/fusion/numerical-verification.md) |
-| — | ✅ | v1 | **천장확인** | 물리한계8/8 + 불가능성10증명 + 산업7장치87% + Mk.V한계증명 | [물리한계](docs/fusion/physical-limit-proof.md) · [산업검증](docs/fusion/industrial-validation.md) · [한계](docs/fusion/physics-limits-analysis.md) · [Mk.V](docs/fusion/evolution/mk-5-limit.md) |
+| — | ✅ | v2 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.V한계증명 + 79/79검증PASS | [물리한계](docs/fusion/physical-limit-proof.md) · [산업검증](docs/fusion/industrial-validation.md) · [한계](docs/fusion/physics-limits-analysis.md) · [Mk.V](docs/fusion/evolution/mk-5-limit.md) |
 
 <!-- AUTO:FOOTER_fusion:START -->
 > 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`
@@ -136,7 +136,7 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS + 43신규기법 (LLM/MoE/Vision/Audio/Graph/PostTransformer) | [전체](techniques/) · [Python검증](docs/ai-efficiency/verify_all_techniques_n6.py) |
+| 10 | ✅ | v2 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준) | [전체](techniques/) · [Python검증](docs/ai-efficiency/verify_all_techniques_n6.py) |
 | 5 | | v1 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거 | [실험](experiments/experiment_full_n6_pipeline.py) |
 | 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
 | 6 | | v1 | **AI Energy Savings Guide** | 실무 가이드 — 기법, 하이퍼파라미터, 벤치마크 | [가이드](docs/ai-energy-savings-guide.md) |

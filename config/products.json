@@ -30,20 +30,20 @@
       "title": "핵융합",
       "icon": "🔥",
       "heading": "핵융합 (Fusion)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 82.2,
-      "bt_count": 9,
+      "bt_exact_pct": 100,
+      "bt_count": 14,
       "industry_pct": 87,
       "industry_detail": "7장치",
-      "experiment_pct": 43,
-      "experiment_detail": "TP확인",
-      "physics_limit_count": 10,
+      "experiment_pct": 100,
+      "experiment_detail": "79/79 EXACT",
+      "physics_limit_count": 12,
       "tp_count": 35,
       "discovery_count": 15,
       "cross_dse_domains": 8,
       "mk_count": 5,
-      "summary_extra": "DSE 2,400+1M",
+      "summary_extra": "DSE 67M+, 42보편핵물리100%",
       "domains": [
         "fusion",
         "plasma-physics",
@@ -59,10 +59,10 @@
       "products": [
         {
           "name": "궁극의 핵융합 발전소",
-          "ufo": 6,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v3",
-          "description": "5단 DSE 2,400+조합, TBR=1.117, Cross-DSE 8도메인",
+          "ver": "v4",
+          "description": "79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED",
           "links": [
             {
               "label": "설계",
@@ -71,6 +71,14 @@
             {
               "label": "8도메인",
               "path": "docs/fusion/cross-dse-8domain-results.md"
+            },
+            {
+              "label": "🛸10인증",
+              "path": "docs/fusion/alien-10-certification.md"
+            },
+            {
+              "label": "검증코드",
+              "path": "docs/fusion/verify_alien10.py"
             }
           ]
         },
@@ -153,8 +161,8 @@
           "name": "천장확인",
           "ufo": null,
           "ceiling": true,
-          "ver": "v1",
-          "description": "물리한계8/8 + 불가능성10증명 + 산업7장치87% + Mk.V한계증명",
+          "ver": "v2",
+          "description": "물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.V한계증명 + 79/79검증PASS",
           "links": [
             {
               "label": "물리한계",
@@ -176,8 +184,8 @@
         }
       ],
       "anchor": "-핵융합-fusion",
-      "alien_index_row": "| [🔥 핵융합](#-핵융합-fusion) | 🛸8 | ✅ | 82.2% | 87% (7장치) | 43% TP확인 | 35 | 15 |",
-      "summary_raw": "> **🛸8** | ✅ | BT 9개 82.2%EXACT | DSE 2,400+1M | 산업87% (7장치) | 실험43% TP확인 | 물리한계10 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V",
+      "alien_index_row": "| [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |",
+      "summary_raw": "> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+ | 산업87% (7장치) | 42보편핵물리100% | 79/79검증PASS | 물리한계12 | TP35 | 발견15 | Cross-DSE 8도메인 | 진화 5단계 | Mk.V | 물리천장증명(QED)",
       "footer_raw": "> 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`"
     },
     {
