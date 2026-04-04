@@ -10,10 +10,16 @@
   .header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #21262d; }
   .header h1 { font-size: 18px; color: #58a6ff; }
   .controls { display: flex; gap: 8px; }
+  .controls-btn { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .controls-btn:hover:not(:disabled) { background: #30363d; }
+  .controls-btn.active { background: #238636; border-color: #2ea043; color: #fff; }
+  .controls-btn.danger { background: #da3633; border-color: #f85149; color: #fff; }
+  .controls-btn.disabled-btn { background: #161b22; color: #484f58; border-color: #21262d; cursor: not-allowed; opacity: 0.5; }
   .controls button { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; }
   .controls button:hover { background: #30363d; }
-  .controls button.active { background: #238636; border-color: #2ea043; color: #fff; }
-  .controls button.danger { background: #da3633; border-color: #f85149; color: #fff; }
+  .toast { position: fixed; bottom: 24px; right: 24px; padding: 10px 20px; border-radius: 6px; font-size: 13px; z-index: 200; transition: opacity 0.3s; }
+  .toast-success { background: #238636; color: #fff; }
+  .toast-error { background: #da3633; color: #fff; }
   .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
   .status-dot.on { background: #3fb950; }
   .status-dot.off { background: #f85149; }
@@ -44,8 +50,8 @@
 <div class="header">
   <h1><span class="status-dot off" id="statusDot"></span> NEXUS-6 Growth Monitor</h1>
   <div class="controls">
-    <button id="btnStart" class="active" onclick="daemonStart()">Start</button>
-    <button id="btnStop" class="danger" onclick="daemonStop()">Stop</button>
+    <button id="btnStart" class="controls-btn active" onclick="daemonStart()">Start</button>
+    <button id="btnStop" class="controls-btn danger" onclick="daemonStop()">Stop</button>
     <button onclick="showGrowModal()">Grow</button>
   </div>
 </div>
@@ -152,14 +158,52 @@ function connectSSE() {
   };
 }
 
-async function daemonStart() { await fetch('/api/daemon/start',{method:'POST'}); checkStatus(); }
-async function daemonStop() { await fetch('/api/daemon/stop',{method:'POST'}); checkStatus(); }
+async function daemonStart() {
+  const btn = document.getElementById('btnStart');
+  btn.disabled = true; btn.textContent = 'Starting...';
+  try {
+    const res = await fetch('/api/daemon/start',{method:'POST'});
+    const data = await res.json();
+    if (!data.ok) showToast(data.error || 'Start failed', 'error');
+    else showToast('Daemon started (PID '+data.pid+')', 'success');
+  } catch(e) { showToast('Connection error', 'error'); }
+  await checkStatus();
+}
+
+async function daemonStop() {
+  const btn = document.getElementById('btnStop');
+  btn.disabled = true; btn.textContent = 'Stopping...';
+  try {
+    const res = await fetch('/api/daemon/stop',{method:'POST'});
+    const data = await res.json();
+    showToast(data.msg || 'Daemon stopped', 'success');
+  } catch(e) { showToast('Connection error', 'error'); }
+  await checkStatus();
+}
+
 async function checkStatus() {
   try {
     const res = await fetch('/api/daemon/status');
     const data = await res.json();
-    document.getElementById('statusDot').className = 'status-dot '+(data.running?'on':'off');
+    const running = data.running;
+    document.getElementById('statusDot').className = 'status-dot '+(running?'on':'off');
+    const btnStart = document.getElementById('btnStart');
+    const btnStop = document.getElementById('btnStop');
+    btnStart.disabled = running;
+    btnStart.textContent = running ? 'Running' : 'Start';
+    btnStart.className = running ? 'controls-btn disabled-btn' : 'controls-btn active';
+    btnStop.disabled = !running;
+    btnStop.textContent = 'Stop';
+    btnStop.className = !running ? 'controls-btn disabled-btn' : 'controls-btn danger';
   } catch(e) {}
+}
+
+function showToast(msg, type) {
+  const toast = document.createElement('div');
+  toast.className = 'toast toast-'+type;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
 }
 
 function showGrowModal() {
@@ -171,7 +215,15 @@ function hideGrowModal() {
   document.getElementById('growModal').classList.remove('show');
   document.getElementById('overlay').classList.remove('show');
 }
-async function triggerGrow(dim) { hideGrowModal(); await fetch(`/api/grow/${dim}`,{method:'POST'}); }
+async function triggerGrow(dim) {
+  hideGrowModal();
+  showToast('Growing: '+dim+'...', 'success');
+  try {
+    const res = await fetch(`/api/grow/${dim}`,{method:'POST'});
+    const data = await res.json();
+    if (!data.ok) showToast(data.error, 'error');
+  } catch(e) { showToast('Grow failed', 'error'); }
+}
 
 async function fetchRecent() {
   try {
