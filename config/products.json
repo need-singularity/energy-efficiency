@@ -250,15 +250,15 @@
       ],
       "products": [
         {
-          "name": "17 Techniques",
+          "name": "66 Techniques",
           "ufo": 10,
           "ceiling": true,
-          "ver": "v2",
-          "description": "71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준)",
+          "ver": "v3",
+          "description": "71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4)",
           "links": [
             {
-              "label": "전체",
-              "path": "techniques/"
+              "label": "통합문서",
+              "path": "docs/ai-efficiency/techniques-complete.md"
             }
           ]
         },
@@ -267,7 +267,7 @@
           "ufo": 5,
           "ceiling": false,
           "ver": "v1",
-          "description": "17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거",
+          "description": "66기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성",
           "links": [
             {
               "label": "실험",
@@ -280,7 +280,7 @@
           "ufo": 5,
           "ceiling": false,
           "ver": "v1",
-          "description": "기법 11~16 통합 설계",
+          "description": "기법 11~16 통합 설계 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens)",
           "links": [
             {
               "label": "설계서",

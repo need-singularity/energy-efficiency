@@ -136,9 +136,9 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **17 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 280검증 100%PASS (23기법+블로업+창발+특이점+UFO10 10대기준) | [전체](techniques/) |
-| 5 | | v1 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성, 8 하이퍼파라미터 제거 | [실험](experiments/experiment_full_n6_pipeline.py) |
-| 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
+| 10 | ✅ | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4) | [통합문서](docs/ai-efficiency/techniques-complete.md) |
+| 5 | | v1 | **Full N6 Pipeline** | 66기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 | [실험](experiments/experiment_full_n6_pipeline.py) |
+| 5 | | v1 | **N6 Inevitability Engine** | 기법 11~16 통합 설계 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) | [설계서](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
 | 6 | | v1 | **AI Energy Savings Guide** | 실무 가이드 — 기법, 하이퍼파라미터, 벤치마크 | [가이드](docs/ai-energy-savings-guide.md) |
 | 6 | | v1 | **Chip Architecture Guide** | GPU SM, HBM, TSMC pitch — 120+ EXACT | [가이드](docs/chip-architecture-guide.md) |
 | — | ✅ | v1 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 실험96.2%, 물리한계10, TP28, 발견12 | [전수검증](docs/ai-efficiency/full-verification-matrix.md) |
