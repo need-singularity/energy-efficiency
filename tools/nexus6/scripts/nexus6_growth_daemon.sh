@@ -69,13 +69,78 @@ log_info()  { echo "[$(date +%H:%M:%S)] INFO:  $*"; }
 log_warn()  { echo "[$(date +%H:%M:%S)] WARN:  $*"; }
 log_error() { echo "[$(date +%H:%M:%S)] ERROR: $*"; }
 
+# ── Singleton lock — 절대 1개만 실행 ────────────────────────────────
+NEXUS_STATE="$HOME/.nexus6"
+mkdir -p "$NEXUS_STATE"
+PID_FILE="$NEXUS_STATE/daemon.pid"
+
+if [[ -f "$PID_FILE" ]]; then
+    existing_pid=$(cat "$PID_FILE" 2>/dev/null | tr -d '[:space:]')
+    if [[ -n "$existing_pid" ]] && kill -0 "$existing_pid" 2>/dev/null; then
+        echo "ERROR: NEXUS-6 daemon already running (PID $existing_pid)"
+        echo "  Kill it first: kill $existing_pid"
+        exit 1
+    else
+        log_warn "Stale PID file found (PID $existing_pid dead). Cleaning up."
+        rm -f "$PID_FILE"
+    fi
+fi
+echo $$ > "$PID_FILE"
+trap 'rm -f "$PID_FILE"' EXIT
+
+# ── Resource monitor — Mac 자원 적응형 ──────────────────────────────
+# CPU idle% + 가용 메모리 체크 → 간격/강도 자동 조절
+#
+# 자원 등급:
+#   FULL   — CPU idle>60%, mem>4GB → 기본 간격, �� 성장
+#   MEDIUM — CPU idle>30%, mem>2GB → 간격 2배, 경량 성장
+#   LOW    — 그 외              → 간격 4배, 측정만 (성�� 스킵)
+
+get_resource_grade() {
+    # CPU idle% (macOS top 방식)
+    local cpu_idle
+    cpu_idle=$(top -l 1 -n 0 2>/dev/null | grep "CPU usage" | awk '{print $7}' | tr -d '%' || echo "50")
+    cpu_idle=${cpu_idle:-50}
+
+    # 가용 메모리 MB (macOS vm_stat)
+    local free_mb
+    free_mb=$(vm_stat 2>/dev/null | awk '
+        /Pages free/     { free=$3 }
+        /Pages inactive/ { inactive=$3 }
+        END { gsub(/\./,"",free); gsub(/\./,"",inactive);
+              printf "%.0f", (free+inactive)*4096/1048576 }
+    ' || echo "4000")
+    free_mb=${free_mb:-4000}
+
+    # 등급 판정
+    local grade="FULL"
+    if python3 -c "exit(0 if float('$cpu_idle') < 30 or float('$free_mb') < 2000 else 1)" 2>/dev/null; then
+        grade="LOW"
+    elif python3 -c "exit(0 if float('$cpu_idle') < 60 or float('$free_mb') < 4000 else 1)" 2>/dev/null; then
+        grade="MEDIUM"
+    fi
+
+    echo "$grade $cpu_idle $free_mb"
+}
+
+# 자원 ���급에 따른 간격 배수
+resource_interval_multiplier() {
+    local grade="$1"
+    case "$grade" in
+        FULL)   echo 1 ;;
+        MEDIUM) echo 2 ;;
+        LOW)    echo 4 ;;
+        *)      echo 2 ;;
+    esac
+}
+
 # Consecutive failure counter for safety brake
 CONSECUTIVE_FAILURES=0
 MAX_CONSECUTIVE_FAILURES=3
 
 # Graceful shutdown
 SHUTDOWN=false
-trap 'log_info "SIGTERM/SIGINT received, shutting down after current cycle..."; SHUTDOWN=true' SIGTERM SIGINT
+trap 'rm -f "$PID_FILE"; log_info "Shutdown."; exit 0' SIGTERM SIGINT
 
 # ── Dimension measurement ────────────────────────────────────────────
 #
@@ -505,23 +570,29 @@ fi
 echo "  +============================================+"
 echo ""
 
-# PID file management
-NEXUS_STATE="$HOME/.nexus6"
-mkdir -p "$NEXUS_STATE"
-echo $$ > "$NEXUS_STATE/daemon.pid"
-trap 'rm -f "$NEXUS_STATE/daemon.pid"' EXIT
-
 for cycle in $(seq 1 "$MAX_CYCLES"); do
     if $SHUTDOWN; then
         log_info "Shutdown requested. Exiting."
         break
     fi
 
+    # ── Step 0: Resource check ────────────────────────────────────────
+    resource_info=$(get_resource_grade)
+    RESOURCE_GRADE=$(echo "$resource_info" | awk '{print $1}')
+    RESOURCE_CPU=$(echo "$resource_info" | awk '{print $2}')
+    RESOURCE_MEM=$(echo "$resource_info" | awk '{print $3}')
+    INTERVAL_MULT=$(resource_interval_multiplier "$RESOURCE_GRADE")
+
     echo ""
     echo "  ========================================"
-    echo "  Cycle $cycle / $MAX_CYCLES"
+    echo "  Cycle $cycle / $MAX_CYCLES  [Resource: $RESOURCE_GRADE]"
+    echo "  CPU idle: ${RESOURCE_CPU}%  Free mem: ${RESOURCE_MEM}MB"
     echo "  ========================================"
     echo ""
+
+    if [[ "$RESOURCE_GRADE" == "LOW" ]]; then
+        log_warn "Low resources — measure only, skipping growth action."
+    fi
 
     # ── Step 1: Measure all dimensions ────────────────────────────────
     log_info "Step 1/5: Measuring all 15 dimensions..."
@@ -562,6 +633,28 @@ for cycle in $(seq 1 "$MAX_CYCLES"); do
 
     # Print dashboard before action
     print_dashboard "$metrics_json" "$cycle" "$dimension"
+
+    if [[ "$RESOURCE_GRADE" == "LOW" ]]; then
+        log_info "[LOW-RESOURCE] Skipping growth, measure only. Next check in $((INTERVAL_MIN * INTERVAL_MULT))m."
+        echo "$metrics_json" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+d['cycle'] = $cycle
+d['dimension'] = '$dimension'
+d['action'] = 'low-resource-skip'
+d['resource_grade'] = '$RESOURCE_GRADE'
+d['success'] = True
+print(json.dumps(d))
+" >> "$LOG_FILE" 2>/dev/null || true
+        # Adaptive sleep
+        sleep_min=$((INTERVAL_MIN * INTERVAL_MULT))
+        if [[ "$cycle" -lt "$MAX_CYCLES" ]] && [[ "$sleep_min" -gt 0 ]] && ! $SHUTDOWN; then
+            log_info "Sleeping ${sleep_min}m (LOW resource, ${INTERVAL_MULT}x)..."
+            sleep "${sleep_min}m" &
+            wait $! 2>/dev/null || true
+        fi
+        continue
+    fi
 
     if $DRY_RUN; then
         log_info "[DRY-RUN] Would execute growth for: $dimension"
@@ -672,10 +765,15 @@ print(json.dumps(d))
         print_dashboard "$after_metrics" "$cycle" "$dimension"
     fi
 
-    # Sleep between cycles (skip on last)
-    if [[ "$cycle" -lt "$MAX_CYCLES" ]] && [[ "$INTERVAL_MIN" -gt 0 ]] && ! $SHUTDOWN; then
-        log_info "Sleeping ${INTERVAL_MIN}m before next cycle..."
-        sleep "${INTERVAL_MIN}m" &
+    # Sleep between cycles (adaptive to resource grade)
+    sleep_min=$((INTERVAL_MIN * INTERVAL_MULT))
+    if [[ "$cycle" -lt "$MAX_CYCLES" ]] && [[ "$sleep_min" -gt 0 ]] && ! $SHUTDOWN; then
+        if [[ "$INTERVAL_MULT" -gt 1 ]]; then
+            log_info "Sleeping ${sleep_min}m (${RESOURCE_GRADE}, ${INTERVAL_MULT}x throttle)..."
+        else
+            log_info "Sleeping ${sleep_min}m before next cycle..."
+        fi
+        sleep "${sleep_min}m" &
         wait $! 2>/dev/null || true  # interruptible sleep
     fi
 done

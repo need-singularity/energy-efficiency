@@ -25,6 +25,15 @@ pub async fn get_status() -> Json<DaemonStatus> {
 }
 
 pub async fn start_daemon() -> Json<serde_json::Value> {
+    // Singleton check — already running이면 거부
+    let (running, existing_pid) = check_daemon();
+    if running {
+        return Json(serde_json::json!({
+            "ok": false,
+            "error": format!("already running (PID {})", existing_pid.unwrap_or(0))
+        }));
+    }
+
     let repo_root = data::repo_root();
     let script = repo_root.join("tools/nexus6/scripts/nexus6_growth_daemon.sh");
     let result = Command::new("bash")
@@ -32,7 +41,7 @@ pub async fn start_daemon() -> Json<serde_json::Value> {
         .arg("--max-cycles")
         .arg("999")
         .arg("--interval")
-        .arg("30")
+        .arg("5")
         .arg("--skip-commit")
         .spawn();
     match result {
