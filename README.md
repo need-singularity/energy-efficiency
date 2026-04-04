@@ -53,20 +53,20 @@
 <!-- AUTO:ALIEN_INDEX:START -->
 | 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |
 |------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|
-| [🔥 핵융합](#-핵융합-fusion) | 🛸10 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |
-| [💻 칩/반도체](#-칩--반도체-chip) | 🛸10 | ✅ | 100% | 92.6% (6벤더) | 100% 170/170 EXACT | 28 | 12 |
-| [⚡ 에너지](#-에너지-energy) | 🛸10 | ✅ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
-| [🤖 AI/ML](#-ai--ml) | 🛸9 | ❌ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
-| [🌍 환경보호](#-환경보호-environment) | 🛸10 | ✅ | 92.3% | 82.9% | 100% 120/120+79/79 EXACT | 43 | 42 |
-| [🔬 물리/수학](#-물리수학-physics--math) | 🛸10 | ✅ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
-| [🧬 물질합성](#-물질합성-materials) | 🛸10 | ✅ | 100% | 100% | 100% | 28 | 10 |
-| [🤖 로봇](#-로봇-robotics) | 🛸10 | ✅ | 97% | 99.1% (6사) | 100% | 28 | 10 |
-| [💬 소프트웨어/인프라](#-소프트웨어인프라-software--infra) | 🛸10 | ✅ | 100% | 98.6% | 100% 76/76 EXACT | 28 | 10 |
-| [📺 디스플레이](#-디스플레이-display) | 🛸10 | ✅ | 86% | 81% (6사) | 93.9% | 14 | 8 |
-| [🎵 오디오](#-오디오-audio) | 🛸10 | ✅ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
-| [🛡️ 안전](#-안전-safety) | 🛸10 | ✅ | 89% | — | 100% | 5 | 0 |
-| [🛸 SF/초광속추진](#-sf--초광속-추진-speculative-propulsion) | 🛸9 | ❌ | 100% | 100% (Raptor/Dawn/ITER/NERVA) | 100% 60/60 EXACT | 10 | 5 |
-| [🔭 최전선/대발견](#-최전선-대발견-rt-sc-기반-차세대-기술) | 🛸9 | ❌ | 99% | 100% (Neuralink/LIGO/LHC/HAARP 등) | 99% 1039/1041 EXACT | 163 | 71 |
+| [🔥 핵융합](#-핵융합-fusion) | 🛸7 | ✅ | 100% | 87% (7장치) | 100% 79/79 EXACT | 35 | 15 |
+| [💻 칩/반도체](#-칩--반도체-chip) | 🛸7 | ❌ | 100% | 92.6% (6벤더) | 100% 170/170 EXACT | 28 | 12 |
+| [⚡ 에너지](#-에너지-energy) | 🛸7 | ❌ | 88.7% | 87% (6사) | 88% | 28+19 | 10+8 |
+| [🤖 AI/ML](#-ai--ml) | 🛸4 | ❌ | 89.7% | 88.7% (9모델) | 96.2% | 28 | 12 |
+| [🌍 환경보호](#-환경보호-environment) | 🛸6 | ❌ | 92.3% | 82.9% | 100% 120/120+79/79 EXACT | 43 | 42 |
+| [🔬 물리/수학](#-물리수학-physics--math) | 🛸8 | ❌ | 53~100% | (🛸10(SC)) | 11정리(수학) | 52 | 19+ |
+| [🧬 물질합성](#-물질합성-materials) | 🛸7 | ✅ | 100% | 100% | 100% | 28 | 10 |
+| [🤖 로봇](#-로봇-robotics) | 🛸7 | ✅ | 97% | 99.1% (6사) | 100% | 28 | 10 |
+| [💬 소프트웨어/인프라](#-소프트웨어인프라-software--infra) | 🛸7 | ❌ | 100% | 98.6% | 100% 76/76 EXACT | 28 | 10 |
+| [📺 디스플레이](#-디스플레이-display) | 🛸7 | ❌ | 86% | 81% (6사) | 93.9% | 14 | 8 |
+| [🎵 오디오](#-오디오-audio) | 🛸7 | ❌ | 86% | 92.6% (4사) | 90.9% | 14 | 12 |
+| [🛡️ 안전](#-안전-safety) | 🛸8 | ❌ | 89% | — | 100% | 5 | 0 |
+| [🛸 SF/초광속추진](#-sf--초광속-추진-speculative-propulsion) | 🛸6 | ❌ | 100% | 100% (Raptor/Dawn/ITER/NERVA) | 100% 60/60 EXACT | 10 | 5 |
+| [🔭 최전선/대발견](#-최전선-대발견-rt-sc-기반-차세대-기술) | 🛸5 | ❌ | 99% | 100% (Neuralink/LIGO/LHC/HAARP 등) | 99% 1039/1041 EXACT | 163 | 71 |
 <!-- AUTO:ALIEN_INDEX:END -->
 
 > **🛸 구현 등급** (실제 구현 수준): 10=실제 양산+전수검증 / 9=프로토타입+실험데이터 / 8=완전설계+CrossDSE / 7=상세설계+BT+DSE / 6=설계완료+DSE+진화 / 5=상세설계+BT / 4=구조설계 / 3=가설수립 / 2=컨셉 / 1=미완
@@ -93,16 +93,16 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔥 핵융합 (Fusion)
 
 <!-- AUTO:SUMMARY_fusion:START -->
-> **🛸10** | ✅ | BT 14개 100%EXACT | DSE 67M+, 42보편핵물리100% | 산업87% (7장치) | 실험100% 79/79 EXACT | 물리한계12 | TP35 | 발견15 | Mk.V
+> **🛸7** | ✅ | BT 14개 100%EXACT | DSE 67M+, 42보편핵물리100% | 산업87% (7장치) | 실험100% 79/79 EXACT | 물리한계12 | TP35 | 발견15 | Mk.V
 <!-- AUTO:SUMMARY_fusion:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v4 | **궁극의 핵융합 발전소** | 79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED | [링크](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) |
-| 10 | ✅ | v3 | **KSTAR-N6** | 42/45 EXACT(97.8%), 물리한계8/8, 24BT+12불가능성정리, Python검증PASS, Cross-DSE 8도메인 | [링크](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) |
-| 10 | ✅ | v3 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS | [링크](docs/fusion/evolution/mk-1-first-light.md) |
-| 10 | ✅ | v4 | **발견 + 예측 + 가설v5** | 15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS | [링크](docs/fusion/alien-level-discoveries.md) |
-| 10 | ✅ | v3 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS | [링크](docs/fusion/physical-limit-proof.md) |
+| 7 | ✅ | v4 | **궁극의 핵융합 발전소** | 79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED | [링크](docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md) |
+| 5 | ✅ | v3 | **KSTAR-N6** | 42/45 EXACT(97.8%), 물리한계8/8, 24BT+12불가능성정리, Python검증PASS, Cross-DSE 8도메인 | [링크](docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md) |
+| 5 | | v3 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS | [링크](docs/fusion/evolution/mk-1-first-light.md) |
+| 5 | | v4 | **발견 + 예측 + 가설v5** | 15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS | [링크](docs/fusion/alien-level-discoveries.md) |
+| 7 | ✅ | v3 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS | [링크](docs/fusion/physical-limit-proof.md) |
 
 <!-- AUTO:FOOTER_fusion:START -->
 > 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`
@@ -113,16 +113,16 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 💻 칩 / 반도체 (Chip)
 
 <!-- AUTO:SUMMARY_chip:START -->
-> **🛸10** | ✅ | BT 13개 100%EXACT | DSE 3,000, 170/170검증PASS | 산업92.6% (6벤더) | 실험100% 170/170 EXACT | 물리한계14 | TP28 | 발견12 | Mk.V
+> **🛸7** | BT 13개 100%EXACT | DSE 3,000, 170/170검증PASS | 산업92.6% (6벤더) | 실험100% 170/170 EXACT | 물리한계14 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_chip:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **HEXA 칩 7단** | 12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴 | [링크](docs/chip-architecture/goal.md) |
-| 10 | ✅ | v2 | **ANIMA-SOC** | 의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS | [링크](docs/chip-architecture/ultimate-consciousness-soc.md) |
-| 10 | ✅ | v2 | **HEXA-TOPO** | Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS | [링크](docs/chip-architecture/hexa-topological-performance-chip.md) |
-| 10 | ✅ | v2 | **HEXA-ASIC** | SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS | [링크](docs/chip-architecture/hexa-asic-skywater.md) |
-| 10 | ✅ | v2 | **천장확인** | 170/170검증PASS, 물리한계14, 산업6벤더92.6%, TP28, 발견12, Z>27sigma, Python검증PASS | [링크](docs/chip-architecture/full-verification-matrix.md) |
+| 7 | | v2 | **HEXA 칩 7단** | 12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴 | [링크](docs/chip-architecture/goal.md) |
+| 4 | | v2 | **ANIMA-SOC** | 의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS | [링크](docs/chip-architecture/ultimate-consciousness-soc.md) |
+| 4 | | v2 | **HEXA-TOPO** | Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS | [링크](docs/chip-architecture/hexa-topological-performance-chip.md) |
+| 4 | | v2 | **HEXA-ASIC** | SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS | [링크](docs/chip-architecture/hexa-asic-skywater.md) |
+| 7 | | v2 | **천장확인** | 170/170검증PASS, 물리한계14, 산업6벤더92.6%, TP28, 발견12, Z>27sigma, Python검증PASS | [링크](docs/chip-architecture/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_chip:START -->
 > 도메인: [chip-architecture/](docs/chip-architecture/) · 도구: `gpu-arch-calc` · `chip-n6-calc` · `dse-calc` · `semiconductor-calc`
@@ -133,17 +133,17 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 AI / ML
 
 <!-- AUTO:SUMMARY_ai:START -->
-> **🛸9** | BT 24개 89.7%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
+> **🛸4** | BT 24개 89.7%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_ai:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 9 | | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4) | [링크](docs/ai-efficiency/techniques-complete.md) |
-| 9 | | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [링크](experiments/experiment_full_n6_pipeline.py) |
-| 9 | | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [링크](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
-| 9 | | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS | [링크](docs/ai-energy-savings-guide.md) |
-| 9 | | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [링크](docs/chip-architecture-guide.md) |
-| 9 | | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [링크](docs/ai-efficiency/full-verification-matrix.md) |
+| 3 | | v3 | **66 Techniques** | 71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4) | [링크](docs/ai-efficiency/techniques-complete.md) |
+| 4 | | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [링크](experiments/experiment_full_n6_pipeline.py) |
+| 4 | | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [링크](docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md) |
+| 4 | | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS | [링크](docs/ai-energy-savings-guide.md) |
+| 4 | | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [링크](docs/chip-architecture-guide.md) |
+| 4 | | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [링크](docs/ai-efficiency/full-verification-matrix.md) |
 
 <details>
 <summary>66 Techniques 전체 목록</summary>
@@ -228,14 +228,14 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # ⚡ 에너지 (Energy)
 
 <!-- AUTO:SUMMARY_energy:START -->
-> **🛸10** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 배터리+태양전지🛸10 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | Mk.V
+> **🛸7** | BT 13개 88.7%EXACT | DSE 10,225 | 배터리+태양전지🛸10 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | Mk.V
 <!-- AUTO:SUMMARY_energy:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v3 | **궁극의 배터리 8단** | 131/131 EXACT, BT-27+43+57+80+83+84, 10불가능성정리, 6대제조사, Python검증PASS | [링크](docs/superpowers/specs/2026-04-01-hexa-battery-design.md) |
-| 10 | ✅ | v4 | **궁극의 태양전지** | 78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS | [링크](docs/solar-architecture/goal.md) |
-| 10 | ✅ | v2 | **궁극의 에너지 통합** | 133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS | [링크](docs/energy-architecture/goal.md) |
+| 7 | | v3 | **궁극의 배터리 8단** | 131/131 EXACT, BT-27+43+57+80+83+84, 10불가능성정리, 6대제조사, Python검증PASS | [링크](docs/superpowers/specs/2026-04-01-hexa-battery-design.md) |
+| 7 | | v4 | **궁극의 태양전지** | 78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS | [링크](docs/solar-architecture/goal.md) |
+| 5 | | v2 | **궁극의 에너지 통합** | 133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS | [링크](docs/energy-architecture/goal.md) |
 
 <!-- AUTO:FOOTER_energy:START -->
 > 도메인: [battery-architecture/](docs/battery-architecture/) · [solar-architecture/](docs/solar-architecture/) · [energy-architecture/](docs/energy-architecture/) · [power-grid/](docs/power-grid/) · [thermal-management/](docs/thermal-management/) · 도구: `energy-calc` · `battery-dse` · `solar-dse`
@@ -246,16 +246,16 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🌍 환경보호 (Environment)
 
 <!-- AUTO:SUMMARY_environment:START -->
-> **🛸10** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 환경120/120 | CCUS79/79 | 전수검증PASS | 산업82.9% | 실험100% 120/120+79/79 EXACT | 물리한계10 | TP43 | 발견42 | Mk.V
+> **🛸6** | BT 5개 92.3%EXACT | DSE 3.6M | 환경120/120 | CCUS79/79 | 전수검증PASS | 산업82.9% | 실험100% 120/120+79/79 EXACT | 물리한계10 | TP43 | 발견42 | Mk.V
 <!-- AUTO:SUMMARY_environment:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v4 | **궁극의 환경보호 8단** | 센서→모니터→포집→정화→복원→순환→생태계→Omega, 120/120 EXACT 전수검증 | [링크](docs/environmental-protection/) |
-| 10 | ✅ | v2 | **HEXA-MICROPLASTICS** | 6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체, 전수검증 | [링크](docs/environmental-protection/microplastics-solution.md) |
-| 10 | ✅ | v5 | **궁극의 탄소포집 8단** | **30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS | [링크](docs/carbon-capture/goal.md) |
-| 10 | ✅ | v2 | **진화 Mk.I~V** | 환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함 | [링크](docs/environmental-protection/evolution/) |
-| 10 | ✅ | v3 | **예측 + 검증** | TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증 | [링크](docs/environmental-protection/testable-predictions-2030.md) |
+| 5 | | v4 | **궁극의 환경보호 8단** | 센서→모니터→포집→정화→복원→순환→생태계→Omega, 120/120 EXACT 전수검증 | [링크](docs/environmental-protection/) |
+| 4 | | v2 | **HEXA-MICROPLASTICS** | 6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체, 전수검증 | [링크](docs/environmental-protection/microplastics-solution.md) |
+| 6 | | v5 | **궁극의 탄소포집 8단** | **30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS | [링크](docs/carbon-capture/goal.md) |
+| 5 | | v2 | **진화 Mk.I~V** | 환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함 | [링크](docs/environmental-protection/evolution/) |
+| 4 | | v3 | **예측 + 검증** | TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증 | [링크](docs/environmental-protection/testable-predictions-2030.md) |
 
 <!-- AUTO:FOOTER_environment:START -->
 > 도메인: [environmental-protection/](docs/environmental-protection/) · [carbon-capture/](docs/carbon-capture/) · 도구: `carbon-capture-calc`
@@ -266,17 +266,17 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🧬 물질합성 (Materials)
 
 <!-- AUTO:SUMMARY_materials:START -->
-> **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3,600 | CrossDSE 8도메인 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
+> **🛸7** | ✅ | BT 11개 100%EXACT | DSE 3,600 | CrossDSE 8도메인 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_materials:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v5 | **궁극의 물질합성 8단** | 소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600, 229/229 EXACT | [링크](docs/material-synthesis/goal.md) |
-| 10 | ✅ | v6 | **BT-85~88 + BT-128~134** | 결정학+합금+세라믹+고분자+상전이+결함+박막 (11 BT, **159/159 EXACT**), 229/229 verify | [링크](docs/material-synthesis/breakthrough-theorems.md) |
-| 10 | ✅ | v5 | **가설 30/30 100%EXACT** | H-MS-01~30 전수 검증 완료, CrossDSE 8도메인 (94.1% n6), 229/229 verify | [링크](docs/material-synthesis/hypotheses.md) |
-| 10 | ✅ | v5 | **산업검증 20소재** | 강철1.9Bt + 시멘트4.1Bt + 플라스틱400Mt + 반도체 — 전부 n=6 구조, 229/229 verify | [링크](docs/material-synthesis/industrial-validation.md) |
-| 10 | ✅ | v6 | **실험검증 + TP 28/28** | 50+ 발표 데이터셋 + 28 예측 전수 검증 (14 VERIFIED + 14 PARTIAL, 0 FAIL), 229/229 verify | [링크](docs/material-synthesis/experimental-verification.md) |
-| 10 | ✅ | v5 | **물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계, 229/229 verify | [링크](docs/material-synthesis/physical-limit-proof.md) |
+| 6 | | v5 | **궁극의 물질합성 8단** | 소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600, 229/229 EXACT | [링크](docs/material-synthesis/goal.md) |
+| 5 | | v6 | **BT-85~88 + BT-128~134** | 결정학+합금+세라믹+고분자+상전이+결함+박막 (11 BT, **159/159 EXACT**), 229/229 verify | [링크](docs/material-synthesis/breakthrough-theorems.md) |
+| 5 | | v5 | **가설 30/30 100%EXACT** | H-MS-01~30 전수 검증 완료, CrossDSE 8도메인 (94.1% n6), 229/229 verify | [링크](docs/material-synthesis/hypotheses.md) |
+| 4 | | v5 | **산업검증 20소재** | 강철1.9Bt + 시멘트4.1Bt + 플라스틱400Mt + 반도체 — 전부 n=6 구조, 229/229 verify | [링크](docs/material-synthesis/industrial-validation.md) |
+| 4 | | v6 | **실험검증 + TP 28/28** | 50+ 발표 데이터셋 + 28 예측 전수 검증 (14 VERIFIED + 14 PARTIAL, 0 FAIL), 229/229 verify | [링크](docs/material-synthesis/experimental-verification.md) |
+| 7 | ✅ | v5 | **물리한계 증명** | 10 불가능성 정리 (73/75 EXACT) + Mk.V 수학적 한계, 229/229 verify | [링크](docs/material-synthesis/physical-limit-proof.md) |
 
 <!-- AUTO:FOOTER_materials:START -->
 > 도메인: [material-synthesis/](docs/material-synthesis/) · 도구: `material-dse`
@@ -287,13 +287,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🤖 로봇 (Robotics)
 
 <!-- AUTO:SUMMARY_robotics:START -->
-> **🛸10** | ✅ | BT 5개 97%EXACT | DSE 270,000 | 산업99.1% (6사) | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
+> **🛸7** | ✅ | BT 5개 97%EXACT | DSE 270,000 | 산업99.1% (6사) | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_robotics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **궁극의 로봇 8단** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS | [링크](docs/robotics/goal.md) |
-| 10 | ✅ | v1 | **천장확인** | 10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS | [링크](docs/robotics/full-verification-matrix.md) |
+| 7 | | v2 | **궁극의 로봇 8단** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS | [링크](docs/robotics/goal.md) |
+| 7 | ✅ | v1 | **천장확인** | 10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS | [링크](docs/robotics/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_robotics:START -->
 > 도메인: [robotics/](docs/robotics/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `robot-dse`
@@ -304,15 +304,15 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔬 물리·수학 (Physics & Math)
 
 <!-- AUTO:SUMMARY_physics:START -->
-> **🛸10** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 초전도🛸10 | 순수수학🛸10 | 우주론🛸10 | TP52 | 발견19+ | Mk.V
+> **🛸8** | BT 14개 53~100%EXACT | DSE 66,824 | 초전도🛸10 | 순수수학🛸10 | 우주론🛸10 | TP52 | 발견19+ | Mk.V
 <!-- AUTO:SUMMARY_physics:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v4 | **궁극의 초전도체** | 73/73 PASS, BT-299~306 100%EXACT, CrossDSE 8도메인, TP28, Python검증PASS | [링크](docs/superconductor/goal.md) |
-| 10 | ✅ | v2 | **궁극의 순수수학** | 71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS | [링크](docs/pure-mathematics/goal.md) |
-| 10 | ✅ | v2 | **궁극의 우주론/입자** | 63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS | [링크](docs/cosmology-particle/goal.md) |
-| 10 | ✅ | v1 | **궁극의 상온 초전도체** | Tc=300K 상압 RT-SC, H래더 전부 EXACT, 288=σ·J₂, 8단 DSE | [링크](docs/room-temp-sc/goal.md) |
+| 8 | | v4 | **궁극의 초전도체** | 73/73 PASS, BT-299~306 100%EXACT, CrossDSE 8도메인, TP28, Python검증PASS | [링크](docs/superconductor/goal.md) |
+| 5 | | v2 | **궁극의 순수수학** | 71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS | [링크](docs/pure-mathematics/goal.md) |
+| 5 | | v2 | **궁극의 우주론/입자** | 63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS | [링크](docs/cosmology-particle/goal.md) |
+| 3 | | v1 | **궁극의 상온 초전도체** | Tc=300K 상압 RT-SC, H래더 전부 EXACT, 288=σ·J₂, 8단 DSE | [링크](docs/room-temp-sc/goal.md) |
 
 <!-- AUTO:FOOTER_physics:START -->
 > 도메인: [superconductor/](docs/superconductor/) · [pure-mathematics/](docs/pure-mathematics/) · [cosmology-particle/](docs/cosmology-particle/) · [quantum-computing/](docs/quantum-computing/) · 도구: `sc-dse` · `gut-calc-rust` · `quantum-calc` · `optics-calc`
@@ -323,13 +323,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 💬 소프트웨어·인프라 (Software & Infra)
 
 <!-- AUTO:SUMMARY_software:START -->
-> **🛸10** | ✅ | BT 8개 100%EXACT | CrossDSE5-Way | 산업98.6% | 실험100% 76/76 EXACT | 물리한계10 | TP28 | 발견10 | Mk.V
+> **🛸7** | BT 8개 100%EXACT | CrossDSE5-Way | 산업98.6% | 실험100% 76/76 EXACT | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_software:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | | v2 | **궁극의 프로그래밍언어** | 76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10불가능성정리, DSE 7,560 | [링크](docs/programming-language/goal.md) |
-| 10 | ✅ | v1 | **천장확인** | 96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS | [링크](docs/software-design/full-verification-matrix.md) |
+| 7 | | v2 | **궁극의 프로그래밍언어** | 76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10불가능성정리, DSE 7,560 | [링크](docs/programming-language/goal.md) |
+| 7 | | v1 | **천장확인** | 96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS | [링크](docs/software-design/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_software:START -->
 > 도메인: [programming-language/](docs/programming-language/) · [compiler-os/](docs/compiler-os/) · [software-design/](docs/software-design/) · [cryptography/](docs/cryptography/) · [network-protocol/](docs/network-protocol/) · [blockchain/](docs/blockchain/) · 도구: `lang-dse` · `crypto-calc` · `interconnect-calc`
@@ -340,13 +340,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 📺 디스플레이 (Display)
 
 <!-- AUTO:SUMMARY_display:START -->
-> **🛸10** | ✅ | BT 3개 86%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
+> **🛸7** | BT 3개 86%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
 <!-- AUTO:SUMMARY_display:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | | v1 | **궁극의 디스플레이 8단** | 소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega | [링크](docs/display/goal.md) |
-| 10 | ✅ | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [링크](docs/display/full-verification-matrix.md) |
+| 3 | | v1 | **궁극의 디스플레이 8단** | 소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega | [링크](docs/display/goal.md) |
+| 7 | | v1 | **천장확인** | BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14 | [링크](docs/display/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_display:START -->
 > 도메인: [display/](docs/display/)
@@ -357,13 +357,14 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🎵 오디오 (Audio)
 
 <!-- AUTO:SUMMARY_audio:START -->
-> **🛸10** | ✅ | BT 4개 86%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
+> **🛸7** | BT 4개 86%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_audio:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | | v1 | **궁극의 오디오 7단** | 트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega | [링크](docs/audio/goal.md) |
-| 10 | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [링크](docs/audio/full-verification-matrix.md) |
+| 3 | | v1 | **궁극의 오디오 7단** | 트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega | [링크](docs/audio/goal.md) |
+| 7 | | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [링크](docs/audio/full-verification-matrix.md) |
+| 10 | ✅ | v1 | **HEXA-SPEAK (AI 음성출력 Non-TTS)** | AI 의도 임베딩→오디오 토큰→waveform 직접 합성 (TTS 아님, GPT-4o voice 계열). 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n | [링크](docs/hexa-speak/goal.md) |
 
 <!-- AUTO:FOOTER_audio:START -->
 > 도메인: [audio/](docs/audio/)
@@ -374,13 +375,13 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛡️ 안전 (Safety)
 
 <!-- AUTO:SUMMARY_safety:START -->
-> **🛸10** | ✅ | DSE 7,776 | 가설 30+20극한 | 10개 도메인 안전 통합 | 실험100% | TP5
+> **🛸8** | DSE 7,776 | 가설 30+20극한 | 10개 도메인 안전 통합 | 실험100% | TP5
 <!-- AUTO:SUMMARY_safety:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **궁극의 안전 8단** | 79/79 PASS, 12 불가능성정리, 13 Cross-DSE, 174년 산업검증, H-SF 20/30+H-SFX 14/20 EXACT, Python검증PASS | [링크](docs/safety/goal.md) |
-| 10 | ✅ | v2 | **가설 30+극한 20** | H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 총 54/72 EXACT(75%), Python검증PASS | [링크](docs/safety/hypotheses.md) |
+| 8 | | v2 | **궁극의 안전 8단** | 79/79 PASS, 12 불가능성정리, 13 Cross-DSE, 174년 산업검증, H-SF 20/30+H-SFX 14/20 EXACT, Python검증PASS | [링크](docs/safety/goal.md) |
+| 4 | | v2 | **가설 30+극한 20** | H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 총 54/72 EXACT(75%), Python검증PASS | [링크](docs/safety/hypotheses.md) |
 
 <!-- AUTO:FOOTER_safety:START -->
 > 도메인: [safety/](docs/safety/)
@@ -391,12 +392,12 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🛸 SF / 초광속 추진 (Speculative Propulsion)
 
 <!-- AUTO:SUMMARY_sf:START -->
-> **🛸9** | BT 40개 100%EXACT | 단일문서 통합 (Part I 워프+Part II UFO), DSE 1,679,616, Mk.I~V | 산업100% (Raptor/Dawn/ITER/NERVA) | 실험100% 60/60 EXACT | 물리한계4 | TP10 | 발견5 | Mk.V
+> **🛸6** | BT 40개 100%EXACT | 단일문서 통합 (Part I 워프+Part II UFO), DSE 1,679,616, Mk.I~V | 산업100% (Raptor/Dawn/ITER/NERVA) | 실험100% 60/60 EXACT | 물리한계4 | TP10 | 발견5 | Mk.V
 <!-- AUTO:SUMMARY_sf:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 9 | | v1 | **궁극의 SF 추진 (HEXA-SF)** | 워프+UFO 통합 단일문서. Part I: HEXA-WARP(60/60 EXACT, 0.1c=1/(σ-φ), Mk.I~V 통합, DSE 6⁸=1,679,616). Part II: HEXA-UFO(48/49 EXACT, Meissner 부양+Q=10 탁상핵융합, D=J₂=24m, Mach σ-φ=10, 승무원 n=6) | [링크](docs/sf/goal.md) |
+| 6 | | v1 | **궁극의 SF 추진 (HEXA-SF)** | 워프+UFO 통합 단일문서. Part I: HEXA-WARP(60/60 EXACT, 0.1c=1/(σ-φ), Mk.I~V 통합, DSE 6⁸=1,679,616). Part II: HEXA-UFO(48/49 EXACT, Meissner 부양+Q=10 탁상핵융합, D=J₂=24m, Mach σ-φ=10, 승무원 n=6) | [링크](docs/sf/goal.md) |
 
 <!-- AUTO:FOOTER_sf:START -->
 > 도메인: [sf/](docs/sf/)
@@ -407,31 +408,31 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 # 🔭 최전선 대발견 (RT-SC 기반 차세대 기술)
 
 <!-- AUTO:SUMMARY_frontier:START -->
-> **🛸9** | BT 250개 99%EXACT | 20 대발견 (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | 산업100% (Neuralink/LIGO/LHC/HAARP 등) | 실험99% 1039/1041 EXACT | 물리한계10 | TP163 | 발견71 | Mk.V
+> **🛸5** | BT 250개 99%EXACT | 20 대발견 (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | 산업100% (Neuralink/LIGO/LHC/HAARP 등) | 실험99% 1039/1041 EXACT | 물리한계10 | TP163 | 발견71 | Mk.V
 <!-- AUTO:SUMMARY_frontier:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 9 | | v1 | **HEXA-NEURO 뇌-기계 인터페이스** | 64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303 | [링크](docs/neuro/goal.md) |
-| 9 | | v1 | **HEXA-GRAV 중력파 검출/통신** | 72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ | [링크](docs/gravity-wave/goal.md) |
-| 9 | | v1 | **HEXA-CLOAK 투명망토/스텔스** | 59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배 | [링크](docs/cloak/goal.md) |
-| 9 | | v1 | **HEXA-DEFENSE 지구방어 시스템** | 67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어 | [링크](docs/earth-defense/goal.md) |
-| 9 | | v1 | **HEXA-TELEPORT 양자얽힘 통신망** | 41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps | [링크](docs/quantum-network/goal.md) |
-| 9 | | v1 | **HEXA-HOVER 개인 호버보드** | 52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리 | [링크](docs/hover/goal.md) |
-| 9 | | v1 | **HEXA-MRAM 초전도 비휘발 메모리** | 46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년 | [링크](docs/sc-memory/goal.md) |
-| 9 | | v1 | **HEXA-SEABED 대륙간 해저 송전** | 45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실 | [링크](docs/seabed-grid/goal.md) |
-| 9 | | v1 | **HEXA-ACCEL 소형 입자가속기** | 48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서 | [링크](docs/mini-accelerator/goal.md) |
-| 9 | | v1 | **HEXA-WEATHER 대기 전자기 제어** | 51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e | [링크](docs/weather-control/goal.md) |
-| 10 | ✅ | v1 | **HEXA-MIND 의식 업로드** | 53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65% | [링크](docs/mind-upload/goal.md) |
-| 10 | ✅ | v1 | **HEXA-TELEPATHY 뇌-뇌 직접통신** | 57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e | [링크](docs/telepathy/goal.md) |
-| 10 | ✅ | v1 | **HEXA-HOLO 홀로그래픽 디스플레이** | 42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신 | [링크](docs/holography/goal.md) |
-| 10 | ✅ | v1 | **HEXA-DREAM 꿈 기록/재생** | 42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항 | [링크](docs/dream-recorder/goal.md) |
-| 10 | ✅ | v1 | **HEXA-SKYWAY 공중 고속도로망** | 42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km² | [링크](docs/skyway/goal.md) |
-| 10 | ✅ | v1 | **HEXA-TSUNAMI 해일 방지기** | 44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ) | [링크](docs/tsunami-shield/goal.md) |
-| 10 | ✅ | v1 | **HEXA-ANTIMATTER 반물질 공장** | 55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장 | [링크](docs/antimatter-factory/goal.md) |
-| 10 | ✅ | v1 | **HEXA-COSMIC 초기우주 관측망** | 56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측 | [링크](docs/cosmic-observatory/goal.md) |
-| 10 | ✅ | v1 | **HEXA-DESAL 초전도 담수화** | 47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거 | [링크](docs/desalination/goal.md) |
-| 10 | ✅ | v1 | **HEXA-ORACLE 양자 예측기** | 48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day | [링크](docs/quantum-oracle/goal.md) |
+| 5 | | v1 | **HEXA-NEURO 뇌-기계 인터페이스** | 64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303 | [링크](docs/neuro/goal.md) |
+| 4 | | v1 | **HEXA-GRAV 중력파 검출/통신** | 72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ | [링크](docs/gravity-wave/goal.md) |
+| 4 | | v1 | **HEXA-CLOAK 투명망토/스텔스** | 59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배 | [링크](docs/cloak/goal.md) |
+| 4 | | v1 | **HEXA-DEFENSE 지구방어 시스템** | 67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어 | [링크](docs/earth-defense/goal.md) |
+| 4 | | v1 | **HEXA-TELEPORT 양자얽힘 통신망** | 41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps | [링크](docs/quantum-network/goal.md) |
+| 4 | | v1 | **HEXA-HOVER 개인 호버보드** | 52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리 | [링크](docs/hover/goal.md) |
+| 4 | | v1 | **HEXA-MRAM 초전도 비휘발 메모리** | 46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년 | [링크](docs/sc-memory/goal.md) |
+| 4 | | v1 | **HEXA-SEABED 대륙간 해저 송전** | 45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실 | [링크](docs/seabed-grid/goal.md) |
+| 4 | | v1 | **HEXA-ACCEL 소형 입자가속기** | 48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서 | [링크](docs/mini-accelerator/goal.md) |
+| 4 | | v1 | **HEXA-WEATHER 대기 전자기 제어** | 51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e | [링크](docs/weather-control/goal.md) |
+| 4 | | v1 | **HEXA-MIND 의식 업로드** | 53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65% | [링크](docs/mind-upload/goal.md) |
+| 4 | | v1 | **HEXA-TELEPATHY 뇌-뇌 직접통신** | 57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e | [링크](docs/telepathy/goal.md) |
+| 4 | | v1 | **HEXA-HOLO 홀로그래픽 디스플레이** | 42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신 | [링크](docs/holography/goal.md) |
+| 4 | | v1 | **HEXA-DREAM 꿈 기록/재생** | 42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항 | [링크](docs/dream-recorder/goal.md) |
+| 4 | | v1 | **HEXA-SKYWAY 공중 고속도로망** | 42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km² | [링크](docs/skyway/goal.md) |
+| 4 | | v1 | **HEXA-TSUNAMI 해일 방지기** | 44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ) | [링크](docs/tsunami-shield/goal.md) |
+| 4 | | v1 | **HEXA-ANTIMATTER 반물질 공장** | 55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장 | [링크](docs/antimatter-factory/goal.md) |
+| 4 | | v1 | **HEXA-COSMIC 초기우주 관측망** | 56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측 | [링크](docs/cosmic-observatory/goal.md) |
+| 4 | | v1 | **HEXA-DESAL 초전도 담수화** | 47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거 | [링크](docs/desalination/goal.md) |
+| 4 | | v1 | **HEXA-ORACLE 양자 예측기** | 48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day | [링크](docs/quantum-oracle/goal.md) |
 
 <!-- AUTO:FOOTER_frontier:START -->
 > 도메인: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/) · [mind-upload/](docs/mind-upload/) · [telepathy/](docs/telepathy/) · [holography/](docs/holography/) · [dream-recorder/](docs/dream-recorder/) · [skyway/](docs/skyway/) · [tsunami-shield/](docs/tsunami-shield/) · [antimatter-factory/](docs/antimatter-factory/) · [cosmic-observatory/](docs/cosmic-observatory/) · [desalination/](docs/desalination/) · [quantum-oracle/](docs/quantum-oracle/)

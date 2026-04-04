@@ -984,11 +984,26 @@
             }
           ],
           "verify_script": "docs/audio/verify_alien10.py"
+        },
+        {
+          "name": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "AI 의도 임베딩→오디오 토큰→waveform 직접 합성 (TTS 아님, GPT-4o voice 계열). 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/hexa-speak/goal.md"
+            }
+          ],
+          "verify_script": "docs/hexa-speak/verify_alien10.py"
         }
       ],
       "anchor": "-오디오-audio",
       "verify_scripts": [
-        "docs/audio/verify_alien10.py"
+        "docs/audio/verify_alien10.py",
+        "docs/hexa-speak/verify_alien10.py"
       ]
     },
     {
