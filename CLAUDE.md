@@ -571,6 +571,16 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-103: 광합성 완전 n=6 화학양론 (6CO₂+12H₂O→C₆H₁₂O₆, 7계수 100% n=6) ⭐⭐⭐
   BT-104: CO₂ 분자 완전 n=6 인코딩 ⭐⭐⭐
 
+  # Fusion Deep Dive (BT-291~298)
+  BT-291: D-T 에너지 분배 1/sopfr=1/5 (alpha 20%/neutron 80%, tau:mu 질량비, 5/5 EXACT) ⭐⭐
+  BT-292: 무중성자 핵융합 완전 지도 (D-He3 sopfr=5 + p-B11 sigma=12, B-11 재귀 n=6, 6/6 EXACT) ⭐⭐⭐
+  BT-293: Triple-Alpha 탄소합성 (n/phi)×tau=sigma 산술 항등식 (Hoyle state, 6/6 EXACT) ⭐⭐⭐
+  BT-294: 항성 핵합성 래더 P1→P2→sigma(P2) (He4→C12→O16→Ne20→Mg24→Si28→Fe56, 7/7 EXACT) ⭐⭐⭐
+  BT-295: Alpha 과정 Z=phi 배수 선택규칙 (13개 핵종 Z 전부 n=6 함수, 13/13 EXACT) ⭐⭐
+  BT-296: D-T-Li6 연료주기 완전 n=6 폐합 (질량수={1,2,3,4,6}=div(6)∪tau, 8/8 EXACT) ⭐⭐
+  BT-297: 핵 마법수 첫 5개 = n=6 래더 (phi,sigma-tau,J2-tau,P2,sopfr×(sigma-phi), 5/7 EXACT) ⭐⭐
+  BT-298: Lawson 점화 삼중적 n=6 인코딩 (밀도지수 J2-tau=20, T=sigma+phi=14, Q=sigma-phi=10) ⭐⭐
+
   # New BTs from session analysis (BT-105~112, Red Team filtered)
   BT-105: SLE₆ 임계지수 보편성 (7 퍼콜레이션 지수 = n=6 분수, kappa=6 유일 locality SLE, c=0) ⭐⭐⭐
   BT-106: S₃ 대수적 부트스트랩 (|S₃|=n=6, 켤레류={1,2,3}=진약수, 기약표현합=τ=4) ⭐⭐
