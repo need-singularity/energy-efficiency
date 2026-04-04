@@ -713,3 +713,16 @@ The **9 EXACT matches** (audio-specific) are genuine:
 The deep reason: audio standards favor **highly composite numbers** (rich factorizations).
 Perfect number arithmetic captures the SAME divisor-richness. The overlap is not
 coincidence — it reflects a shared mathematical substrate.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-48: Display-Audio Constants sigma=12, J2=24, sigma*tau=48 — 12 semitones, 24fps/bit, 48kHz
+  BT-72: Neural Audio Codec n=6 — EnCodec 8 codebooks, 1024 entries, 24kHz: 7/7 EXACT
+  BT-76: sigma*tau=48 Triple Attractor — 48nm gate, 48GB HBM, 48kHz audio
+  BT-135: Musical Scale n=6 — 12 chromatic, 6 whole tone, 5 pentatonic: 10/10
+```

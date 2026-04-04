@@ -856,3 +856,34 @@ arithmetic functions predict or organize these quantities.
 4. **BT-anchored**: Most hypotheses connect to established Breakthrough Theorems.
 5. **Cross-domain**: New hypotheses from biology (BT-51,101), fusion (BT-98,100,102), and mathematics (BT-105,109) strengthen the particle physics core with independent evidence.
 6. **22-lens annotated**: Each hypothesis lists which telescope lenses apply; new lenses (boundary, network, multiscale, stability, recursion) are used where appropriate.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-3: sigma(6)=12 Energy Scale Convergence — BCS DeltaC=12, C-12 triple-alpha, ~12T magnets
+  BT-9: Bott Periodicity Bridge sigma-tau=8 — Bott period-8, byte=8, SHA-256=2^8, 8 gluons
+  BT-14: Carbon-Silicon Tetrahedral Bridge — Z=6 carbon + Z=14=sigma+phi silicon share sp3 bonding
+  BT-17: SM Fermion-Boson sigma-Balance — 12 fermions + 12 anti = J2=24, sigma=12 gauge generators
+  BT-19: GUT Hierarchy = n=6 (11/11) — Grand Unified Theory: 11 parameters match n=6
+  BT-20: Gauge Coupling Trinity — Three SM couplings alpha_1,2,3 = n=6 fractions
+  BT-21: Neutrino Mixing Trident PMNS — PMNS angles theta_12,23,13 = n=6 fractions
+  BT-22: Inflation n_s=1-1/P2=27/28 — CMB spectral index from perfect number arithmetic
+  BT-23: CKM Quark Mixing |V_ub|=r=3/784 — CKM matrix elements = n=6 fractions
+  BT-24: Koide Pole Residue phi^2/n=2/3 — Lepton mass relation Q=2/3 from n=6
+  BT-130: Space Orbital Mechanics n=6 — Lagrange=5, GPS=6 planes, Kepler=6 elements
+  BT-134: Periodic Table = n=6 — Period lengths {2,8,18,32}={phi,sigma-tau,18,2^sopfr}
+  BT-137: SM Particle Count n=6 Map — 6 quarks, 6 leptons, 12 fermions, 24 with anti
+  BT-143: Cosmological Constant n=6 Ladder — Baryon 5%, eta=6*10^-10, BBN elements=4
+  BT-165: SM Gauge Partition sigma=8+3+1 — SU(3)xSU(2)xU(1): 8+3+1=12=sigma
+  BT-166: Proton-Electron Mass = n*pi^5 — m_p/m_e=1836 ~ 6*pi^5
+  BT-167: CMB n_s=27/28 — (n/phi)^3/((n/phi)^3+mu) = 27/28
+  BT-168: SU(5) GUT Generators = J2 — SU(5): 24=J2 generators, sigma+sigma split
+  BT-169: Neutrino Mixing n=6 Triple — Three PMNS angles from n=6 fractions
+  BT-170: String/M-Theory Dim Ladder — 4->6->10->11->24->26 = tau->n->sigma-phi->sigma-mu->J2->J2+phi
+  BT-171: SM Coupling n=6 Fraction Pair — SM coupling constants at M_Z = n=6
+  BT-172: Baryon-Photon eta=6*10^-10 — eta = n*10^-(sigma-phi) = n*(sigma-phi)^-(sigma-phi)
+```

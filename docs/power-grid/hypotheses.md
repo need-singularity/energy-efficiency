@@ -621,3 +621,25 @@ n = 6. Hexagonal lattice에서 각 터빈이 6개 이웃과 등거리.
 - **Egyptian Fraction 강제 적용 전면 제거**: 1/2+1/3+1/6=1은 수학적으로 아름답지만, 전력 시스템의 실제 비율/분배와 일치하지 않음
 - **IEEE/IEC/NERC 공인 표준과 대조**: 표준 문서 번호 명시
 - **정직한 등급**: CLOSE와 WEAK 구분 엄격화
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-7: Egyptian Fraction 1/2+1/3+1/6=1 — Perfect number reciprocals govern resource allocation
+  BT-8: Pulse Rectifier Chain 6->12->24 — Pulse topology, coil counts, Leech/Golay share sigma chain
+  BT-11: Software-Physics Isomorphism — tau=4, n/phi=3, sigma=12, sopfr=5 shared across SW and physics
+  BT-29: IEEE 519 Power Quality — THD limits and harmonics from n=6 arithmetic
+  BT-32: Nuclear Fission 6 Delayed Neutron Groups — Reactor kinetics: exactly n=6 delayed neutron groups
+  BT-38: Hydrogen Energy Density Quadruplet — LHV=120=sigma*(sigma-phi), HHV=142=sigma^2-phi
+  BT-40: Computing Power ATX 12V + ACPI — ATX 12V=sigma, ACPI states = n=6
+  BT-60: DC Power Chain 6 Voltage Steps — 120->480->48->12->1.2->1V, PUE=1.2
+  BT-62: Grid Frequency 60/50Hz from n=6 — 60=sigma*sopfr, 50=sopfr*(sigma-phi), PUE=1.2
+  BT-68: HVDC Voltage Ladder 500/800/1100kV — = n=6 expressions * (sigma-phi)^2
+  BT-74: 95/5 Cross-Domain Resonance — top-p=beta2=0.95, THD=beta_plasma=5%
+  BT-89: Photonic-Energy n=6 Bridge — PUE->1.0, E-O loss=1/(sigma-phi)=10%
+  BT-149: Thermodynamic Laws n=6 — 4 laws, 4 potentials, 4 Maxwell, 3 heat transfer
+```

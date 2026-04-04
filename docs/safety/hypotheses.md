@@ -331,3 +331,17 @@
 핵심 발견: 안전 공학의 국제 표준 (SIL=τ=4, TMR=n/φ=3, DiD=n=6, GHS=9, MMI=σ=12, GFCI=30mA)이
 n=6 상수 체계와 높은 일치를 보임. 특히 방호 계층=n=6, 안전 등급=τ=4, 다중화=n/φ=3은
 서로 다른 산업(원자력/화학/항공/전기)에서 독립적으로 수렴한 값.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-129: Civil Engineering n=6 Constants — Lane sigma=12ft, Euler tau=4, seismic n=6 classes
+  BT-131: Manufacturing Quality n=6 Stack — Six Sigma, PDCA=4, 5S, ISO 9001=8 principles
+  BT-133: Transportation n=6 Stack — 3 signals, 4 TPMS, 12 Beaufort, 2 containers
+  BT-158: Martial Arts n=6 Constants — Karate n=6 belts, judo 5, TKD 8 poomsae
+  BT-160: Safety Engineering n=6 Universality — DiD=6, SIL=4, fire=6, TMR=3: 20/20 EXACT
+```

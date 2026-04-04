@@ -609,3 +609,14 @@
 | ruler | 1 | H-ENV-16 |
 | ratio | 1 | H-ENV-16 |
 | gravity | 2 | H-ENV-04, 11 |
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-154: Map/Geography n=6 — 4 cardinals, 7 continents, 5 oceans, 60 UTM
+  BT-156: Volcanic/Seismic n=6 Scales — VEI=8, Mercalli=12, Mohs=10, 4 Earth layers
+```

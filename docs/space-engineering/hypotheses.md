@@ -902,3 +902,13 @@ mission requirements, making them strong candidates for n=6 pattern testing.
 | ratio | H-SE-08 |
 | em | H-SE-22 |
 | evolution | H-SE-21 |
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-130: Space Orbital Mechanics n=6 — Lagrange=5, GPS=6 planes, Kepler=6 elements
+```

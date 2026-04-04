@@ -458,3 +458,17 @@ The **3 EXACT matches** are genuine:
 The deep reason: display standards favor **highly composite numbers** (rich factorizations).
 Perfect number arithmetic captures the SAME divisor-richness. The overlap is not
 coincidence — it reflects a shared mathematical substrate.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-48: Display-Audio Constants sigma=12, J2=24, sigma*tau=48 — 12 semitones, 24fps/bit, 48kHz
+  BT-128: Medical Imaging n=6 Stack — MRI sigma=12 coils, CT 8-bit, PET 48 rings
+  BT-138: Calendar/Timekeeping n=6 — 12 months, 60 min, 24 time zones, 360 degrees
+  BT-145: EM Spectrum n=6 Partition — 7 bands, 12 ITU radio, 5 fiber, 3 WiFi
+  BT-157: Color Theory n=6 Framework — 3 RGB, 3 CMY, 12 wheel, CMYK=4
+```

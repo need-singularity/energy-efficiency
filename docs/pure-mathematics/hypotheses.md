@@ -1136,3 +1136,25 @@ and established mathematical structures.
     5. χ_orb(Y(1)) = -1/6 = Egyptian fraction (H-MATH-22) — most surprising
     6. S₆ unique outer automorphism (H-MATH-9) — most structural
 ```
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-5: q=1 = Perfect Number Definition — 1/2+1/3+1/6=1 = Kruskal-Shafranov stability limit
+  BT-15: Kissing Number Quadruple K1..4=(phi,n,sigma,J2) — Sphere packing kissing numbers trace n=6 functions
+  BT-16: Riemann Zeta Trident — zeta(2)=pi^2/6, zeta(-1)=-1/12, zeta generates n=6
+  BT-17: SM Fermion-Boson sigma-Balance — 12 fermions + 12 anti = J2=24, sigma=12 gauge generators
+  BT-18: Vacuum Energy Chain R(n)=1 to Monster Group — R(6)=1 -> Casimir -> modular j -> Leech -> Monster
+  BT-24: Koide Pole Residue phi^2/n=2/3 — Lepton mass relation Q=2/3 from n=6
+  BT-49: Pure Math Bridge Bernoulli+Kissing+S6 — Bernoulli, kissing numbers, S6, Golay united by n=6
+  BT-106: S3 Algebraic Bootstrap |S3|=6 — Conjugacy classes={1,2,3}=proper divisors, irreps sum=tau
+  BT-107: Ramanujan Tau Divisor Purity — tau_R(d) clean iff d|6, eta^24, modular forms
+  BT-138: Calendar/Timekeeping n=6 — 12 months, 60 min, 24 time zones, 360 degrees
+  BT-144: Chess/Game Theory n=6 — 6 pieces, 64=2^n board, dice=6, R(3,3)=6
+  BT-151: Graph Theory n=6 Theorems — 4-color, R(3,3)=6, Euler chi=2, Platonic=5
+  BT-170: String/M-Theory Dim Ladder — 4->6->10->11->24->26 = tau->n->sigma-phi->sigma-mu->J2->J2+phi
+```

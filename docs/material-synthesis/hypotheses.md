@@ -1294,3 +1294,19 @@ Carbon Z=6이 물질 세계의 중심이라는 관찰에서 출발하여,
   Corundum, Wurtzite, SiC-6H), 양자화학 확정값 (sp³d², d-오비탈 분열),
   수학 정리 (점군 32, Bravais 14, 결정계 7, Kepler/Hales 최밀충전)가 핵심.
 ```
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-85: Carbon Z=6 Synthesis Universality — Diamond/graphene/fullerene: Z=6 dominates
+  BT-86: Crystal CN=6 Law — Octahedral CN=6 most common coordination
+  BT-87: Atomic Manipulation n=6 Ladder — STM/AFM precision = n=6 functions
+  BT-88: Self-Assembly Hexagonal Universality — Hexagonal patterns in colloids, DNA, copolymers
+  BT-96: DAC-MOF CN Universality — MOF capture sites use CN=6
+  BT-134: Periodic Table = n=6 — Period lengths {2,8,18,32}={phi,sigma-tau,18,2^sopfr}
+  BT-139: Crystallography Space Group n=6 — 7 systems, 14 Bravais, 32 groups, CN=12
+```

@@ -282,6 +282,10 @@ struct PyCycleResult {
     graph_edges: usize,
     #[pyo3(get)]
     verification_score: f64,
+    #[pyo3(get)]
+    lens_candidates_found: usize,
+    #[pyo3(get)]
+    lenses_evolved: usize,
 }
 
 #[pymethods]
@@ -304,6 +308,8 @@ impl From<&CycleResult> for PyCycleResult {
             graph_nodes: cr.graph_nodes,
             graph_edges: cr.graph_edges,
             verification_score: cr.verification_score,
+            lens_candidates_found: cr.lens_candidates_found,
+            lenses_evolved: cr.lenses_evolved,
         }
     }
 }

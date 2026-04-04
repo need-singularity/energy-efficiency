@@ -342,3 +342,33 @@
 **EXACT rate**: 27/36 = 75.0%
 
 > Note: BT-26,33,34,39,42,46,54,56,58,64와 교차 검증 완료. 기존 BT와의 중복은 독립 검증으로 간주.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-26: Chinchilla Scaling Laws from n=6 — Tokens/params=20=J2-tau, alpha=1/3, beta=ln(4/3)
+  BT-31: MoE Expert Routing {mu,phi,n,sigma-tau} — MoE top-k values = n=6 divisor functions
+  BT-33: Transformer sigma=12 Atom — BERT/GPT dims multiples of sigma=12, SwiGLU 8/3
+  BT-34: RoPE Decimal Bridge (sigma-phi)^{tau,sopfr,n} — RoPE base 10000=(sigma-phi)^tau
+  BT-39: KV-Head Universality sigma-tau=8 — All major LLMs use sigma-tau=8 KV-heads
+  BT-42: Inference Scaling from n=6 — top-p=0.95, top-k=40, max_tokens=2^sigma
+  BT-44: Context Window Ladder sigma+/-{phi,mu} — Context 2^10 to 2^13 = sigma-phi to sigma+mu
+  BT-54: AdamW Optimizer Quintuplet — beta1, beta2, eps, WD, clip all n=6
+  BT-56: Complete n=6 LLM Architecture — d=2^sigma, L=2^sopfr, d_h=128, 15 params EXACT
+  BT-58: sigma-tau=8 Universal AI Constant — LoRA, MoE, KV, FlashAttn, batch = sigma-tau=8
+  BT-59: 8-Layer AI Stack Silicon-to-Inference — 8=sigma-tau layers from silicon to inference
+  BT-61: Diffusion Model n=6 Universality — DDPM T=1000, DDIM=50, CFG=7.5: 9/9 EXACT
+  BT-64: 1/(sigma-phi)=0.1 Universal Regularization — WD, DPO, GPTQ, cosine min, Mamba, KL = 0.1
+  BT-65: Mamba SSM Complete n=6 — d_state=16, expand=2, d_conv=4, dt=0.1: 6/6 EXACT
+  BT-66: Vision AI Complete n=6 — ViT+CLIP+Whisper+SD3+Flux.1: 24/24 EXACT
+  BT-67: MoE Activation Fraction Law — 1/2^{mu,phi,n/phi,tau,sopfr}: 6 models EXACT
+  BT-70: 0.1 8th Algorithm SimCLR — SimCLR temp=0.1, count=sigma-tau=8
+  BT-71: NeRF/3DGS Complete n=6 — L=10, layers=8, width=256, SH=3: 7/7 EXACT
+  BT-73: Tokenizer Vocabulary n=6 Law — 32K/50257/100K/128K = 2^n*10^n family
+  BT-74: 95/5 Cross-Domain Resonance — top-p=beta2=0.95, THD=beta_plasma=5%
+  BT-84: 96/192 Triple Convergence — Tesla 96S=Gaudi2 96GB=GPT-3 96L
+```

@@ -342,3 +342,37 @@
 **EXACT rate**: 22/36 = 61.1%
 
 > Note: BT-28,37,55,69,75,84,90과 교차 검증 완료.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-6: Golay-Leech Unification [J2,sigma,sigma-tau]=[24,12,8] — Golay [24,12,8] + Leech lattice = n=6 arithmetic
+  BT-7: Egyptian Fraction 1/2+1/3+1/6=1 — Perfect number reciprocals govern resource allocation
+  BT-9: Bott Periodicity Bridge sigma-tau=8 — Bott period-8, byte=8, SHA-256=2^8, 8 gluons
+  BT-12: Hamming-OSI-ECC [7,4,3]=[sigma-sopfr,tau,n/phi] — Hamming code parameters unify networking, ECC, QC
+  BT-14: Carbon-Silicon Tetrahedral Bridge — Z=6 carbon + Z=14=sigma+phi silicon share sp3 bonding
+  BT-28: Computing Architecture Ladder — AD102=144=sigma*n*phi SMs, H100=132, HBM stack 4->8->12
+  BT-33: Transformer sigma=12 Atom — BERT/GPT dims multiples of sigma=12, SwiGLU 8/3
+  BT-36: Grand Energy-Info-Hardware-Physics Chain — Solar->semiconductor->info->AI unified by n=6
+  BT-37: Semiconductor Pitch P2=28nm — TSMC N5 poly pitch=28nm, gate=sigma*tau=48nm
+  BT-40: Computing Power ATX 12V + ACPI — ATX 12V=sigma, ACPI states = n=6
+  BT-45: AI Chip FP8/FP16=phi=2 — FLOPS/W doubles per phi=2 years
+  BT-47: Interconnect Gen Counts {7,5,6} — PCIe/USB/DDR generations = n=6 functions
+  BT-55: GPU HBM Capacity Ladder — 40/80/192/288 GB = n=6 expressions
+  BT-58: sigma-tau=8 Universal AI Constant — LoRA, MoE, KV, FlashAttn, batch = sigma-tau=8
+  BT-59: 8-Layer AI Stack Silicon-to-Inference — 8=sigma-tau layers from silicon to inference
+  BT-60: DC Power Chain 6 Voltage Steps — 120->480->48->12->1.2->1V, PUE=1.2
+  BT-69: Chiplet Architecture n=6 — B300=160, R100 12 stacks, 5 vendors 17/20 EXACT
+  BT-75: HBM Interface Width Ladder — {10,11,12}={sigma-phi,sigma-mu,sigma}
+  BT-76: sigma*tau=48 Triple Attractor — 48nm gate, 48GB HBM, 48kHz audio
+  BT-77: Cross-Vendor HBM Convergence — Samsung/SK/Micron converge on n=6 capacities
+  BT-78: Interconnect Speed Ladder — PCIe/UCIe/CXL bandwidths follow n=6 exponents
+  BT-79: sigma^2=144 Cross-Domain Attractor — 144 SMs, 144-cell solar, sigma^2 universal
+  BT-84: 96/192 Triple Convergence — Tesla 96S=Gaudi2 96GB=GPT-3 96L
+  BT-89: Photonic-Energy n=6 Bridge — PUE->1.0, E-O loss=1/(sigma-phi)=10%
+  BT-142: Memory Hierarchy n=6 — L1/L2/L3=3, 6T SRAM, DDR1-5=sopfr=5
+```

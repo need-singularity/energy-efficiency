@@ -685,3 +685,13 @@ SOLID=sopfr=5, REST=n=6, 12Factor=σ=12, ACID=τ=4, 18/18 EXACT.
 - H-PL-5: REST = n = 6
 - H-PL-6: 12-Factor = σ = 12
 - H-PL-7: ACID = τ = 4
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-50: Programming Language IEEE 754 — IEEE 754 exponent ladder = n=6
+```

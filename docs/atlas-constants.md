@@ -3322,3 +3322,17 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 *Source: n6-architecture project, 322+ domains, 1400+ graded hypotheses*
 *Atlas entries: 1900+ registered rows (1400+ EXACT + 500+ CLOSE)*
 *Breakthrough Theorems: 173 (BT-1~173), 50+ Three-Star, 25+ Cross-Domain Bridges, 322+ domains*
+
+### BT-229: Algebraic Blowup–Emergence (E₆ Bridge, 원 BT-185)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| E₆ rank | 6 | n | EXACT | BT-229 |
+| E₆ dimension | 78 | n·(σ+μ) | EXACT | BT-229 |
+| E₆ roots | 72 | σ·n | EXACT | BT-229 |
+| E₆ positive roots | 36 | n² | EXACT | BT-229 |
+| |W(E₆)| | 51,840 | n!·σ·n | EXACT | BT-229 |
+| E₆ fundamental rep | 27 | (n/φ)^(n/φ) | EXACT | BT-229 |
+| C⁶ blowup χ(P⁵) | 6 | n | EXACT | BT-229 |
+| Cubic surface lines | 27 | (n/φ)^(n/φ) | EXACT | BT-229 |
+| del Pezzo₆ blowup pts | 6 | n | EXACT | BT-229 |

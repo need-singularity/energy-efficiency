@@ -435,3 +435,15 @@
 - stability: 12/30 (40%) -- crystal stability, thermal durability, zero strain
 - network: 10/30 (33%) -- carbon cycle, pipelines, cross-domain, regulation
 - multiscale: 28/30 (93%) -- atom->molecule->crystal->reactor->plant->global
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-94: CO2 Capture Energy n=6 Law — DAC energy requirements = n=6 arithmetic
+  BT-95: Carbon Cycle Complete n=6 Loop — CO2 capture->storage->utilization = n=6
+  BT-96: DAC-MOF CN Universality — MOF capture sites use CN=6
+```

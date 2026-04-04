@@ -1116,3 +1116,18 @@ v4 재스캔에서 검토했으나 등급 유지된 가설 (17 CLOSE + 5 WEAK = 
 
 v3→v4 핵심: H-FU-05 승격 논리의 H-FU-26 일관 적용 (1건 승격).
 22개 CLOSE/WEAK 전수 재스캔 결과, 추가 승격 불가 확인.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-1: phi(6)=2 Universal Pairing — Cooper pairs, D(A=2), Phi_0=h/2e, SQUID, MgB2 2-gap, Type I/II
+  BT-2: tau(6)=4 Bohm-BCS Bridge — Bohm diffusion 1/2^4, BCS T^4 penetration, 4 MHD modes
+  BT-3: sigma(6)=12 Energy Scale Convergence — BCS DeltaC=12, C-12 triple-alpha, ~12T magnets
+  BT-4: MHD Divisor Theorem — All dangerous q-surfaces {1,3/2,2,3} from div(6)={1,2,3}
+  BT-5: q=1 = Perfect Number Definition — 1/2+1/3+1/6=1 = Kruskal-Shafranov stability limit
+  BT-7: Egyptian Fraction 1/2+1/3+1/6=1 — Perfect number reciprocals govern resource allocation
+```

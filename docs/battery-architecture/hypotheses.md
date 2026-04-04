@@ -394,3 +394,22 @@
 - FAIL 4→0, EXACT 13→14, CLOSE 8→11
 
 **구조적 관찰:** n=6이 배터리 도메인에서 진짜 효력을 갖는 영역은 (1) 결정 구조 (CN=6 octahedral = CFSE의 물리적 귀결), (2) 셀 수/전압 래더 (SELV 안전한계 + 셀 전압 = 정수 구성), (3) Li⁺ 전도 경로 (O-T-O 호핑 = CN=6 노드)이다. 경계층(SEI)과 열화 메커니즘은 CLOSE 수준의 구조적 연결을 보인다.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-27: Carbon-6 Energy Chain LiC6+C6H12O6+C6H6 — All carbon energy carriers have C6 backbone
+  BT-35: Battery Voltage Periodic Table — Cell potentials = n=6 rationals
+  BT-43: Battery Cathode CN=6 Universality — All Li-ion cathodes = octahedral CN=6
+  BT-57: Battery Cell Count Ladder — 6->12->24 cells, Tesla 96S=sigma*(sigma-tau)
+  BT-80: Solid-State Electrolyte CN=6 — NASICON/Garnet/LLZO all CN=6
+  BT-81: Anode Capacity sigma-phi=10x — Si/Graphite capacity ratio ~ sigma-phi=10
+  BT-82: Complete Battery Pack n=6 Map — 6->12->24 cells, 96S/192S, BMS div(6)
+  BT-83: Li-S Polysulfide Ladder — S8->S4->S2->S1 = (sigma-tau)->tau->phi->mu
+  BT-84: 96/192 Triple Convergence — Tesla 96S=Gaudi2 96GB=GPT-3 96L
+  BT-153: Electric Vehicle n=6 Architecture — Tesla 4 modules, 3 voltage classes, SAE 6 levels
+```

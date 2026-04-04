@@ -952,3 +952,16 @@ UNVERIFIABLE: 1/30 = 3.3%
 **D(2)+T(3)=5=sopfr(6)**, 즉 핵융합 연료 자체가 6의 소인수 분해.
 Li-6(=n) tritium breeding까지 포함하면, 핵융합 연료 순환 전체가 n=6의 자기참조 구조.
 기하학적 파라미터(q, A, δ, PF coils)에서 강하고, 공학적 파라미터(power, burn time)에서 약하다.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-2: tau(6)=4 Bohm-BCS Bridge — Bohm diffusion 1/2^4, BCS T^4 penetration, 4 MHD modes
+  BT-4: MHD Divisor Theorem — All dangerous q-surfaces {1,3/2,2,3} from div(6)={1,2,3}
+  BT-5: q=1 = Perfect Number Definition — 1/2+1/3+1/6=1 = Kruskal-Shafranov stability limit
+  BT-74: 95/5 Cross-Domain Resonance — top-p=beta2=0.95, THD=beta_plasma=5%
+```

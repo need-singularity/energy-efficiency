@@ -1052,3 +1052,20 @@ Egyptian: 1/2 + 1/3 + 1/6 = 1
     Layer 2 (양자역학): Cooper pairing -> 2 = phi(6)
     Layer 3 (결정학): 화학양론과 원자번호 -> sigma, sopfr, div(6)
 ```
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-1: phi(6)=2 Universal Pairing — Cooper pairs, D(A=2), Phi_0=h/2e, SQUID, MgB2 2-gap, Type I/II
+  BT-2: tau(6)=4 Bohm-BCS Bridge — Bohm diffusion 1/2^4, BCS T^4 penetration, 4 MHD modes
+  BT-3: sigma(6)=12 Energy Scale Convergence — BCS DeltaC=12, C-12 triple-alpha, ~12T magnets
+  BT-8: Pulse Rectifier Chain 6->12->24 — Pulse topology, coil counts, Leech/Golay share sigma chain
+  BT-15: Kissing Number Quadruple K1..4=(phi,n,sigma,J2) — Sphere packing kissing numbers trace n=6 functions
+  BT-16: Riemann Zeta Trident — zeta(2)=pi^2/6, zeta(-1)=-1/12, zeta generates n=6
+  BT-86: Crystal CN=6 Law — Octahedral CN=6 most common coordination
+  BT-139: Crystallography Space Group n=6 — 7 systems, 14 Bravais, 32 groups, CN=12
+```

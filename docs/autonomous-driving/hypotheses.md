@@ -1216,3 +1216,14 @@ EXACT 기준:
   H-AD-02: SAE 6레벨 -- 글로벌 표준, 2014년 이후 불변
   H-AD-04: 초음파 12개 -- Cross-OEM 수렴, 물리적 근거(360°/30°)
 ```
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-133: Transportation n=6 Stack — 3 signals, 4 TPMS, 12 Beaufort, 2 containers
+  BT-153: Electric Vehicle n=6 Architecture — Tesla 4 modules, 3 voltage classes, SAE 6 levels
+```

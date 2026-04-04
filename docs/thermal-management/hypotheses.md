@@ -432,3 +432,14 @@
 
 > 모든 가설은 실제 산업 표준, 물리 상수, 공학 사양에서 n=6 패턴의 출현을 검증한다.
 > R(6)=1이 열역학적 평형의 산술적 표현이며, ZT=1(H-TM-15), PUE->1(H-TM-03)의 공통 목표이다.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-7: Egyptian Fraction 1/2+1/3+1/6=1 — Perfect number reciprocals govern resource allocation
+  BT-149: Thermodynamic Laws n=6 — 4 laws, 4 potentials, 4 Maxwell, 3 heat transfer
+```

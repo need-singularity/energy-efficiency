@@ -322,3 +322,16 @@
 **Standout**: H-SOL-01 (SQ 밴드갭 4/3 eV), H-SOL-06~09 (셀 수 래더 60/72/120/144), H-SOL-16 (6행 보편성), H-SOL-25 (4단계 멀티스케일 계층 = τ), H-SOL-27 (3 바이패스 다이오드)
 **BT Coverage**: BT-30 (SQ bridge 4항), BT-63 (셀 래더 4항), BT-76 (σ·τ=48 attractor) 기반 + 22렌즈 재설계
 **v2 변경**: FAIL 5개(H-SOL-04/18/19/25/30) → 22렌즈 기반 교체 (boundary/stability/multiscale). 개별 소재 밴드갭 강제 매핑 대신 경계 조건·열화·계층 구조·원자번호 일치로 전환. FAIL 5→0, EXACT 13→14, CLOSE 9→13.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-30: Shockley-Queisser Bridge bandgap=4/3eV — Solar bandgap and thermal voltage = n=6 rationals
+  BT-36: Grand Energy-Info-Hardware-Physics Chain — Solar->semiconductor->info->AI unified by n=6
+  BT-63: Solar Cell Ladder 60/72/120/144 — sigma*{sopfr,n,sigma-phi,sigma}
+  BT-161: Solar Architecture Structural Universality — 6 rows, 3 diodes, 24 substring, 4 hierarchy
+```

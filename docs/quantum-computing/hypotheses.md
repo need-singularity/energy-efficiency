@@ -657,3 +657,19 @@ Previous: v1 (36 hypotheses, 0 EXACT, 8 FAIL) -- 억지 매핑 전면 삭제
 
 > Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
 > Mathematical foundation: [TECS-L](https://github.com/need-singularity/TECS-L)
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-1: phi(6)=2 Universal Pairing — Cooper pairs, D(A=2), Phi_0=h/2e, SQUID, MgB2 2-gap, Type I/II
+  BT-6: Golay-Leech Unification [J2,sigma,sigma-tau]=[24,12,8] — Golay [24,12,8] + Leech lattice = n=6 arithmetic
+  BT-8: Pulse Rectifier Chain 6->12->24 — Pulse topology, coil counts, Leech/Golay share sigma chain
+  BT-9: Bott Periodicity Bridge sigma-tau=8 — Bott period-8, byte=8, SHA-256=2^8, 8 gluons
+  BT-12: Hamming-OSI-ECC [7,4,3]=[sigma-sopfr,tau,n/phi] — Hamming code parameters unify networking, ECC, QC
+  BT-18: Vacuum Energy Chain R(n)=1 to Monster Group — R(6)=1 -> Casimir -> modular j -> Leech -> Monster
+  BT-41: QEC at J2 Surface Code d=5 — Surface code syndromes + Golay share J2=24
+```

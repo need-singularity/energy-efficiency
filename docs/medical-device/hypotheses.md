@@ -1173,3 +1173,18 @@ EXACT 기준:
   H-MD-04: 6-DOF surgical robot -- dim(SE(3))=6 수학적 정리
   H-MD-05: ARDSNet 6 mL/kg -- RCT 근거 의학 상수, n vs σ 대비 구조적
 ```
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-128: Medical Imaging n=6 Stack — MRI sigma=12 coils, CT 8-bit, PET 48 rings
+  BT-132: Neuroscience Cortical n=6 — 6 cortex layers, 12 cranial nerves, 5 EEG bands
+  BT-136: Human Anatomy n=6 Constants — 7/12/5 vertebrae, 24 ribs, 8 blood types
+  BT-152: Sensory/Perception n=6 — 5 senses, 3 cone types, 4 mechanoreceptors
+  BT-155: Immune System n=6 Architecture — 5 Ig classes, 3 complement, 4 inflammation signs
+  BT-173: Medical Clinical Standards n=6 — ECG, nuclear medicine, critical care = n=6
+```

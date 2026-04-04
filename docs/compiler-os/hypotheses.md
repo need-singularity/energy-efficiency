@@ -674,3 +674,15 @@ Gamma et al., "Design Patterns" (1994).
 ---
 
 *Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture) | TECS-L family*
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-52: Compiler + OS Kernel Constants — Kernel subsystems, compiler stages = n=6
+  BT-159: Cloud Computing n=6 — IaaS/PaaS/SaaS=3, Docker=6 states, 12-Factor
+  BT-162: Compiler-OS-CPU Constant Stack — 5 stages, 6-bit opcode, 4 rings, 12 pointers
+```

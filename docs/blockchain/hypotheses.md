@@ -812,3 +812,14 @@ Compared to the previous 60-hypothesis version:
 ## Version History
 - v2 (2026-04-02): Redesigned 60→30. Removed all FAIL/forced mappings. Added BT-53/112/114 integration, lens annotations.
 - v1 (original): 60 hypotheses, 23 FAIL (38%), 5 EXACT (8%).
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-53: Crypto Consensus Constants — BTC 21M=J2-n/phi, 6 confirms=n, ETH 12s=sigma
+  BT-147: Financial Market n=6 — 5 business days, 4 quarters, 11 GICS sectors
+```

@@ -1084,3 +1084,13 @@ GDD, water ratios, etc.) and 5 WEAKs (variable ratios, approximate ranges). EXAC
 improved from 11.4% to 23.3% by focusing on stoichiometrically fixed quantities and
 mathematical theorems (Hales honeycomb). All remaining hypotheses have physical/chemical
 grounding, not management conventions.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-150: Agriculture/Food n=6 — 6 cereals, 6 macronutrients, 12 soil orders
+```

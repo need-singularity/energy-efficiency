@@ -1123,3 +1123,25 @@ Note: EXACT rate improved from 10% to 37% by (1) removing 8 FAILs and 9 WEAKs th
 trivial small-integer matches or convention-dependent, (2) adding BT-backed hypotheses with
 physical/chemical justification, (3) promoting 6-membered ring and hexagonal packing from
 CLOSE to EXACT based on mathematical proofs (Hückel rule, Hales theorem).
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-14: Carbon-Silicon Tetrahedral Bridge — Z=6 carbon + Z=14=sigma+phi silicon share sp3 bonding
+  BT-25: Genetic Code Arithmetic — Codons=64=2^n, amino acids=20=J2-tau, bases=4=tau
+  BT-27: Carbon-6 Energy Chain LiC6+C6H12O6+C6H6 — All carbon energy carriers have C6 backbone
+  BT-51: Genetic Code Chain tau->n/phi->2^n->J2-tau — 4->3->64->20: bases->codons->amino acids
+  BT-85: Carbon Z=6 Synthesis Universality — Diamond/graphene/fullerene: Z=6 dominates
+  BT-132: Neuroscience Cortical n=6 — 6 cortex layers, 12 cranial nerves, 5 EEG bands
+  BT-136: Human Anatomy n=6 Constants — 7/12/5 vertebrae, 24 ribs, 8 blood types
+  BT-141: Amino Acid n=6 Biochemistry — 20=J2-tau amino acids, 5 R-groups, 4 levels
+  BT-146: DNA/RNA Constants n=6 — 4 bases, 10 bases/turn, 3 codons, 5 sugars
+  BT-148: Olympic/Sports n=6 Structure — 5 rings, 4-year cycle, volleyball/hockey=6
+  BT-150: Agriculture/Food n=6 — 6 cereals, 6 macronutrients, 12 soil orders
+  BT-152: Sensory/Perception n=6 — 5 senses, 3 cone types, 4 mechanoreceptors
+  BT-155: Immune System n=6 Architecture — 5 Ig classes, 3 complement, 4 inflammation signs
+```

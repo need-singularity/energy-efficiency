@@ -292,3 +292,15 @@
 **BT Coverage**: BT-113(18항), BT-114(10항), BT-115(12항), BT-116(9항) 중 핵심 30개 선별
 
 > Note: extreme-hypotheses.md (H-SD-61~80)의 20개는 이 목록과 별도. 총 50개 가설로 소프트웨어 도메인 커버.
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-11: Software-Physics Isomorphism — tau=4, n/phi=3, sigma=12, sopfr=5 shared across SW and physics
+  BT-140: TCP/IP Port n=6 Archaeology — 1024=2^(sigma-phi), SSH=22, FTP=21, SMTP=25
+  BT-159: Cloud Computing n=6 — IaaS/PaaS/SaaS=3, Docker=6 states, 12-Factor
+```

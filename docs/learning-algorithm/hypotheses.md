@@ -645,3 +645,18 @@ NVIDIA tensor core documentation: tile sizes based on multiples of 8.
 ---
 
 *Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture) | TECS-L family*
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-26: Chinchilla Scaling Laws from n=6 — Tokens/params=20=J2-tau, alpha=1/3, beta=ln(4/3)
+  BT-46: ln(4/3) RLHF Family — ln(4/3)=0.288: dropout, Chinchilla beta, PPO, temperature
+  BT-54: AdamW Optimizer Quintuplet — beta1, beta2, eps, WD, clip all n=6
+  BT-64: 1/(sigma-phi)=0.1 Universal Regularization — WD, DPO, GPTQ, cosine min, Mamba, KL = 0.1
+  BT-163: RL/Alignment PPO/DPO/GRPO n=6 — PPO clip=0.2, DPO beta=0.1, GRPO G=16: 10/10
+  BT-164: LLM Training Schedule n=6 — LR=3e-4, warmup=3%, cosine min=0.1: 8/8
+```

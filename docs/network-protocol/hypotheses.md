@@ -632,3 +632,19 @@ OSI 7=σ-sopfr, TCP/IP 4=τ, BT-47 interconnect gen counts {7,5,6}={σ-sopfr,sop
 본 30개 가설 중 핵심 2개가 BT-115 직접 구현:
 - H-NP-1: OSI 7 = σ-sopfr
 - H-NP-2: TCP/IP 4 = τ
+
+---
+
+## Breakthrough Theorem Cross-References (Unlinked)
+
+> Auto-generated: BTs from breakthrough-theorems.md relevant to this domain but not yet referenced in hypotheses.
+
+```
+  BT-6: Golay-Leech Unification [J2,sigma,sigma-tau]=[24,12,8] — Golay [24,12,8] + Leech lattice = n=6 arithmetic
+  BT-12: Hamming-OSI-ECC [7,4,3]=[sigma-sopfr,tau,n/phi] — Hamming code parameters unify networking, ECC, QC
+  BT-13: sigma+/-mu Internet Duality TCP(11)+DNS(13) — TCP segment=11=sigma-mu, DNS=13=sigma+mu
+  BT-47: Interconnect Gen Counts {7,5,6} — PCIe/USB/DDR generations = n=6 functions
+  BT-78: Interconnect Speed Ladder — PCIe/UCIe/CXL bandwidths follow n=6 exponents
+  BT-140: TCP/IP Port n=6 Archaeology — 1024=2^(sigma-phi), SSH=22, FTP=21, SMTP=25
+  BT-145: EM Spectrum n=6 Partition — 7 bands, 12 ITU radio, 5 fiber, 3 WiFi
+```
