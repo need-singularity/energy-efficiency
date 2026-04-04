@@ -384,13 +384,15 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | 도메인 TOML | 레벨 | 조합 수 |
 |---|---|---:|
 | `ar-vr-system.toml` | Display→Optics→Tracking→Compute→Interaction | 7,776 |
+| `audio.toml` | Material→Transducer→Driver→Processor→System→Spatial→Neural→Ultimate | 14,580 |
 | `audio-processing.toml` | Capture→Encoding→Processing→Synthesis→Output | 6,480 |
-| `display-audio.toml` | Foundation→Process→Core→Engine→System | 4,500 |
+| `display.toml` | Material→Panel→Driver→Processor→System→Hologram→Neural→Ultimate | 30,720 |
 | `e-ink-display.toml` | Particle→Cell→Driving→Controller→Application | 7,776 |
 | `holographic-display.toml` | Source→SLM→Optics→Processing→Application | 7,776 |
 | `lidar-system.toml` | Laser→Scanner→Detector→Processing→Application | 7,776 |
 | `micro-led.toml` | Epitaxy→Transfer→Driver→Bonding→Application | 7,776 |
 | `music-notation.toml` | Staff→Clef→NoteValue→Dynamics→Layout | 6,480 |
+| `music-rhythm.toml` | TimeSignature→Scale→Instrument→Production→Perception | 16,128 |
 | `music-theory.toml` | PitchSystem→Harmony→Rhythm→Form→Technology | 6,480 |
 | `noise-cancellation.toml` | Microphone→Algorithm→Driver→Control→Application | 7,776 |
 | `optics-telescope.toml` | LensType→OpticalDesign→Detection→Analysis→Observatory | 7,560 |
@@ -399,7 +401,7 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `telescope-array.toml` | Antenna→Receiver→Correlator→Imaging→Science | 7,776 |
 | `ultrasound-imaging.toml` | Transducer→Beamforming→SignalProcessing→ImagingMode→Platform | 7,560 |
 
-> **15개 | 107,752 조합**
+> **17개 | 166,188 조합**
 
 ---
 
