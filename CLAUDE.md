@@ -677,6 +677,12 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-236: Automotive safety n=6 (Euro NCAP τ=4, NHTSA sopfr=5★, airbag n=6, SAE n=6 자율주행, 10/10 EXACT) ⭐⭐
   BT-237: Logistics supply chain n=6 (SCOR n=6, Incoterms σ-μ=11, NMFC σ+n=18, EUR pallet σ×(σ-φ), 10/10 EXACT) ⭐⭐
 
+  # Transportation Extended (BT-243~246)
+  BT-243: Inline-6 engine n=6 perfect balance (I6 완전밸런스=div(6) 대칭, F1 V6=n, NASCAR 12:1=σ, 120°=360/(n/φ), 8/8 EXACT) ⭐⭐⭐
+  BT-244: Automotive voltage ladder 6→12→24→48 (n→σ→J₂→σ·τ, 80년 φ=2 배 상승, 6/6 EXACT) ⭐⭐⭐
+  BT-245: Transmission gear count convergence (MT n=6 수렴, AT τ→n→σ-sopfr→σ-τ→σ-φ 래더, 7/7 EXACT) ⭐⭐
+  BT-246: F1 racing n=6 architecture (V6=n, 5 compound=sopfr, 7 tire=σ-sopfr, top-10=σ-φ, 10/10 EXACT) ⭐⭐
+
   # Medical (BT-238~242)
   BT-238: Surgical safety n=6 (WHO checklist n/φ=3, ASA n=6, wound τ=4, Mallampati τ=4, Aldrete σ-φ=10, 10/10 EXACT) ⭐⭐⭐
   BT-239: Critical care scoring n=6 (Apgar sopfr=5→σ-φ=10, SOFA n=6 장기, GCS n/φ=3, NEWS2 σ-sopfr=7, 10/10 EXACT) ⭐⭐⭐
