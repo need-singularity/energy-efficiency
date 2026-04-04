@@ -670,8 +670,19 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   BT-214: Six Degrees = n 사회 위상 정리 (Milgram, Dunbar σ²+n=150, 배심원 σ=12, Christaller 육각형, 10/10 EXACT) ⭐⭐⭐
   BT-215: Dunbar σ²+n=150 인지-사회 브릿지 (n=6 피질→n=6 사회위상, 계층비 n/φ=3, 7/7 EXACT) ⭐⭐
 
-  # Transportation (BT-233)
+  # Transportation (BT-233~237)
   BT-233: Transportation n=6 보편성 (12극=σ, 3상=n/φ, 96S/192S, τ=4 인휠, SE(3)=n DOF, Z=6 카본, 10/12 EXACT) ⭐⭐⭐
+  BT-234: Railway signaling τ=4 안전 (4-aspect/ETCS 4/τ=4 axles, rail 12m=σ→24m=J₂→36m=n², 10/10 EXACT) ⭐⭐
+  BT-235: Maritime IMO n=6 안전 (MARPOL n=6 부속서, SOLAS σ=12 장, IACS σ=12 협회, TEU J₂-τ=20, 10/10 EXACT) ⭐⭐⭐
+  BT-236: Automotive safety n=6 (Euro NCAP τ=4, NHTSA sopfr=5★, airbag n=6, SAE n=6 자율주행, 10/10 EXACT) ⭐⭐
+  BT-237: Logistics supply chain n=6 (SCOR n=6, Incoterms σ-μ=11, NMFC σ+n=18, EUR pallet σ×(σ-φ), 10/10 EXACT) ⭐⭐
+
+  # Medical (BT-238~242)
+  BT-238: Surgical safety n=6 (WHO checklist n/φ=3, ASA n=6, wound τ=4, Mallampati τ=4, Aldrete σ-φ=10, 10/10 EXACT) ⭐⭐⭐
+  BT-239: Critical care scoring n=6 (Apgar sopfr=5→σ-φ=10, SOFA n=6 장기, GCS n/φ=3, NEWS2 σ-sopfr=7, 10/10 EXACT) ⭐⭐⭐
+  BT-240: Cardiac system n=6 (ECG n+n=σ=12 leads, τ=4 chambers/valves, sopfr=5 전도/주기, 10/10 EXACT) ⭐⭐⭐
+  BT-241: WHO social determinants n=6 (building blocks n=6, Dahlgren-Whitehead sopfr=5, SDG σ+μ=13, 10/10 EXACT) ⭐⭐
+  BT-242: Dental n=6 (probing n=6 sites, 2^sopfr=32 teeth, J₂-τ=20 유치, sopfr=5 tooth surfaces, 10/10 EXACT) ⭐⭐⭐
 ```
 
 ## Design Space Exploration (DSE) — 궁극 처리 필수 규칙

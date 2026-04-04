@@ -133,6 +133,74 @@ pub fn lower_expr(ctx: &mut LowerContext, block: &mut HexaBlock, expr: &Expr) ->
         }
 
         Expr::Call { func, args, .. } => {
+            // Check for enum variant construction with payload: EnumName::Variant(args...)
+            // Parser emits Call { func: Ident("EnumName::Variant"), args: [...] }
+            // We intercept this and emit proper tag + payload allocation instead of a function call.
+            if let Expr::Ident(name, _) = func.as_ref() {
+                if let Some((tag, payload_types)) = ctx.lookup_enum_variant(name) {
+                    // Allocate space for tag + payload
+                    // Layout: [tag: i64, payload_0: type, payload_1: type, ...]
+                    let payload_count = payload_types.as_ref().map(|v| v.len()).unwrap_or(0);
+                    let total_size = 8 + payload_count * 8; // tag(8) + each payload field(8)
+                    let base = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Alloc,
+                        dest: Some(base),
+                        args: vec![total_size],
+                        ty: HexaType::Any,
+                        label: Some(format!("enum_variant_{}", name)),
+                    });
+
+                    // Store the tag at offset 0
+                    let tag_reg = ctx.fresh_reg();
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Alloc,
+                        dest: Some(tag_reg),
+                        args: vec![tag],
+                        ty: HexaType::I64,
+                        label: None,
+                    });
+                    block.instrs.push(HexaInstr {
+                        op: HexaOp::Store,
+                        dest: None,
+                        args: vec![base, tag_reg],
+                        ty: HexaType::Void,
+                        label: None,
+                    });
+
+                    // Store each payload argument at subsequent offsets
+                    for (i, arg) in args.iter().enumerate() {
+                        let val_reg = lower_expr(ctx, block, arg);
+                        let byte_offset = (i + 1) * 8;
+                        let offset_reg = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Alloc,
+                            dest: Some(offset_reg),
+                            args: vec![byte_offset],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        let field_addr = ctx.fresh_reg();
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Add,
+                            dest: Some(field_addr),
+                            args: vec![base, offset_reg],
+                            ty: HexaType::I64,
+                            label: None,
+                        });
+                        block.instrs.push(HexaInstr {
+                            op: HexaOp::Store,
+                            dest: None,
+                            args: vec![field_addr, val_reg],
+                            ty: HexaType::Void,
+                            label: None,
+                        });
+                    }
+
+                    return base;
+                }
+            }
+
             // Check for method call: obj.method(args) -> TypeName__method(obj, args)
             if let Expr::Field { obj, name: method_name, .. } = func.as_ref() {
                 let struct_type_name = match obj.as_ref() {

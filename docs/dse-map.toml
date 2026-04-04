@@ -4,13 +4,13 @@
 
 [meta]
 updated = "2026-04-04T18"
-total_domains = 334
-total_toml_files = 334
-domain_sections = 333
-cross_dse_connected = 334
+total_domains = 335
+total_toml_files = 335
+domain_sections = 332
+cross_dse_connected = 335
 cross_dse_sections = 1730
 total_valid_paths = 3990150
-domains_100pct_n6 = 334
+domains_100pct_n6 = 335
 alien_level_all = 10
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"

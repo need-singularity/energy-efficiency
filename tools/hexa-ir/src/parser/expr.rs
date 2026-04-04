@@ -294,6 +294,40 @@ fn parse_index(p: &mut Parser, arr: Expr) -> Result<Expr, ParseError> {
 /// Desugared to a Call with the enum variant name as function
 fn parse_path_expr(p: &mut Parser, enum_name: String, start_span: Span) -> Result<Expr, ParseError> {
     p.expect(&TokenKind::ColonColon)?;
+
+    // Turbofish syntax: `name::<Type1, Type2>(args...)`
+    // When `::` is followed by `<`, parse type arguments then call args.
+    if p.at(&TokenKind::Lt) {
+        p.advance(); // consume <
+        let mut type_args = Vec::new();
+        while !p.at(&TokenKind::Gt) && !p.is_eof() {
+            type_args.push(super::stmt::parse_type_expr(p)?);
+            if !p.eat(&TokenKind::Comma) {
+                break;
+            }
+        }
+        p.expect(&TokenKind::Gt)?;
+
+        // Now expect call args: `(args...)`
+        p.expect(&TokenKind::LParen)?;
+        let mut args = Vec::new();
+        while !p.at(&TokenKind::RParen) && !p.is_eof() {
+            args.push(parse_expr(p)?);
+            if !p.eat(&TokenKind::Comma) {
+                break;
+            }
+        }
+        let end_span = p.peek_span();
+        p.expect(&TokenKind::RParen)?;
+
+        return Ok(Expr::GenericCall {
+            func: Box::new(Expr::Ident(enum_name, start_span)),
+            type_args,
+            args,
+            span: start_span.merge(end_span),
+        });
+    }
+
     let (variant_name, variant_span) = p.expect_ident()?;
     let full_span = start_span.merge(variant_span);
     // Encode as Ident with qualified name "EnumName::VariantName"

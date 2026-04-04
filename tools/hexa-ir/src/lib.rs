@@ -1680,3 +1680,691 @@ fn main() -> i64 {
         assert!(has_dotdoteq, "lexer should produce DotDotEq token for ..=");
     }
 }
+
+// ═══ Ownership & Type Inference Enhancement Tests ═══
+
+#[cfg(test)]
+mod ownership_enhanced_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+
+    /// Helper: parse and run sema, expect it to succeed
+    fn sema_ok(source: &str) {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept this program");
+    }
+
+    /// Helper: parse and run sema, expect ownership/type error
+    fn sema_err(source: &str) -> Vec<crate::sema::SemaError> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect_err("sema should reject this program")
+    }
+
+    // ── Test 1: Move-after-use detection for non-Copy struct ──
+
+    #[test]
+    fn test_move_after_use_struct() {
+        let source = r#"
+struct Point { x: i64, y: i64 }
+
+fn main() -> i64 {
+    let p = Point { x: 1, y: 2 };
+    let q = p;
+    let r = p;
+    return 0;
+}
+"#;
+        let errors = sema_err(source);
+        let has_move_error = errors.iter().any(|e| {
+            if let crate::sema::SemaError::OwnershipError { message, .. } = e {
+                message.contains("moved")
+            } else {
+                false
+            }
+        });
+        assert!(has_move_error, "should detect use-after-move for struct: {:?}", errors);
+    }
+
+    // ── Test 2: Copy types do NOT move ──
+
+    #[test]
+    fn test_copy_types_no_move() {
+        let source = r#"
+fn main() -> i64 {
+    let x: i64 = 5;
+    let y = x;
+    let z = x;
+    return z;
+}
+"#;
+        sema_ok(source);
+    }
+
+    // ── Test 3: Immutable borrow prevents mutation (API-level) ──
+
+    #[test]
+    fn test_immut_borrow_prevents_mutation() {
+        use crate::sema::ownership::OwnershipChecker;
+        use crate::lexer::Span;
+
+        let mut oc = OwnershipChecker::new();
+        let s1 = Span::new(0, 1, 1, 1);
+        let s2 = Span::new(1, 2, 1, 2);
+        let s3 = Span::new(2, 3, 1, 3);
+
+        // Define a mutable, non-Copy variable
+        oc.define_with_info("x", s1, true, false);
+
+        // Immutably borrow x
+        assert!(oc.check_borrow("x", s2).is_ok(), "immut borrow should succeed");
+
+        // Try to mutate x while borrowed
+        let result = oc.check_mutation("x", s3);
+        assert!(result.is_err(), "mutation during immut borrow should fail");
+        if let crate::sema::SemaError::OwnershipError { message, .. } = result.unwrap_err() {
+            assert!(message.contains("immutably borrowed"),
+                "error should mention immutable borrow: {}", message);
+        }
+    }
+
+    // ── Test 4: Mutable borrow exclusivity ──
+
+    #[test]
+    fn test_mut_borrow_exclusivity() {
+        use crate::sema::ownership::OwnershipChecker;
+        use crate::lexer::Span;
+
+        let mut oc = OwnershipChecker::new();
+        let s1 = Span::new(0, 1, 1, 1);
+        let s2 = Span::new(1, 2, 1, 2);
+        let s3 = Span::new(2, 3, 1, 3);
+
+        oc.define_with_info("x", s1, true, false);
+
+        // First mutable borrow succeeds
+        assert!(oc.check_mut_borrow("x", "r1", s2).is_ok());
+
+        // Second mutable borrow fails (exclusivity)
+        let result = oc.check_mut_borrow("x", "r2", s3);
+        assert!(result.is_err(), "second mut borrow should fail");
+        if let crate::sema::SemaError::OwnershipError { message, .. } = result.unwrap_err() {
+            assert!(message.contains("already mutably borrowed"),
+                "error should mention existing mutable borrow: {}", message);
+        }
+    }
+
+    // ── Test 5: Function argument ownership transfer (non-Copy) ──
+
+    #[test]
+    fn test_fn_arg_ownership_transfer() {
+        let source = r#"
+struct Data { value: i64 }
+
+fn consume(d: Data) -> i64 {
+    return 0;
+}
+
+fn main() -> i64 {
+    let d = Data { value: 42 };
+    let r1 = consume(d);
+    let r2 = consume(d);
+    return 0;
+}
+"#;
+        let errors = sema_err(source);
+        let has_move_error = errors.iter().any(|e| {
+            if let crate::sema::SemaError::OwnershipError { message, .. } = e {
+                message.contains("moved")
+            } else {
+                false
+            }
+        });
+        assert!(has_move_error, "should detect use-after-move for fn arg: {:?}", errors);
+    }
+
+    // ── Test 6: Return type mismatch detection ──
+
+    #[test]
+    fn test_return_type_mismatch() {
+        let source = r#"
+fn bad() -> i64 {
+    return "hello";
+}
+
+fn main() -> i64 {
+    return 0;
+}
+"#;
+        let errors = sema_err(source);
+        let has_type_error = errors.iter().any(|e| {
+            matches!(e, crate::sema::SemaError::TypeError { .. })
+        });
+        assert!(has_type_error, "should detect return type mismatch: {:?}", errors);
+    }
+
+    // ── Test 7: Function call return type inference ──
+
+    #[test]
+    fn test_fn_call_return_type_inference() {
+        let source = r#"
+fn add(a: i64, b: i64) -> i64 {
+    return a;
+}
+
+fn main() -> i64 {
+    let x = add(1, 2);
+    return x;
+}
+"#;
+        sema_ok(source);
+    }
+
+    // ── Test 8: Immut-then-mut borrow conflict ──
+
+    #[test]
+    fn test_immut_then_mut_borrow_conflict() {
+        use crate::sema::ownership::OwnershipChecker;
+        use crate::lexer::Span;
+
+        let mut oc = OwnershipChecker::new();
+        let s1 = Span::new(0, 1, 1, 1);
+        let s2 = Span::new(1, 2, 1, 2);
+        let s3 = Span::new(2, 3, 1, 3);
+
+        oc.define_with_info("x", s1, true, false);
+        assert!(oc.check_borrow("x", s2).is_ok());
+
+        // Mut borrow while immut borrow active should fail
+        let result = oc.check_mut_borrow("x", "r", s3);
+        assert!(result.is_err(), "mut borrow while immut borrowed should fail");
+    }
+}
+
+// ═══ Mk.II Breakthrough Tests — Enum Payload + Match + Closure + Generic + Array Integration ═══
+
+#[cfg(test)]
+mod breakthrough_tests {
+    use crate::lexer;
+    use crate::parser;
+    use crate::sema;
+    use crate::lower;
+    use crate::ir::{HexaType, HexaOp};
+
+    fn compile_to_ir(source: &str) -> Vec<crate::ir::HexaFunction> {
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema failed");
+        lower::lower_program(&program)
+    }
+
+    // ── Enum Payload Construction ──
+
+    #[test]
+    fn test_enum_payload_construction() {
+        // Option::Some(42) should allocate tag + payload, NOT a function call
+        let source = r#"
+enum Option { Some(i64), None }
+
+fn main() -> i64 {
+    let x = Option::Some(42);
+    return 0;
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let main_fn = &funcs[0];
+
+        // Should have an Alloc with label "enum_variant_Option::Some"
+        let variant_alloc = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Alloc
+                && i.label.as_ref().map_or(false, |l| l.contains("enum_variant_Option::Some")));
+        assert!(variant_alloc.is_some(),
+            "Option::Some(42) should emit enum_variant Alloc, not a Call");
+
+        // Should NOT have a Call instruction for enum construction
+        let has_enum_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call
+                && i.label.as_ref().map_or(false, |l| l.contains("Option::Some")));
+        assert!(!has_enum_call,
+            "Option::Some(42) should NOT lower to a Call instruction");
+
+        // Should have a Store for the tag value
+        let store_count = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Store)
+            .count();
+        assert!(store_count >= 2,
+            "enum variant with payload should have at least 2 Stores (tag + payload), got {}",
+            store_count);
+    }
+
+    #[test]
+    fn test_enum_multiple_payload_fields() {
+        let source = r#"
+enum Shape { Circle(i64), Rect(i64, i64), Point }
+
+fn main() -> i64 {
+    let c = Shape::Circle(10);
+    let r = Shape::Rect(6, 12);
+    let p = Shape::Point;
+    return 0;
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let main_fn = &funcs[0];
+
+        // Circle should have tag 0
+        let circle_alloc = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Alloc
+                && i.label.as_ref().map_or(false, |l| l.contains("enum_variant_Shape::Circle")));
+        assert!(circle_alloc.is_some(), "should allocate enum_variant for Shape::Circle");
+
+        // Rect should have tag 1 and TWO payload fields
+        let rect_alloc = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Alloc
+                && i.label.as_ref().map_or(false, |l| l.contains("enum_variant_Shape::Rect")));
+        assert!(rect_alloc.is_some(), "should allocate enum_variant for Shape::Rect");
+
+        // Point (no payload) should be a plain tag Alloc
+        let point_tag = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Alloc
+                && i.label.as_ref().map_or(false, |l| l.contains("enum_tag_Shape::Point")));
+        assert!(point_tag.is_some(), "Shape::Point should be a simple enum_tag Alloc");
+    }
+
+    #[test]
+    fn test_enum_payload_with_match() {
+        // Full pipeline: construct enum with payload, then match on it
+        let source = r#"
+enum Option { Some(i64), None }
+
+fn unwrap_or_default(opt: Option) -> i64 {
+    return match opt {
+        Option::Some(v) => v,
+        Option::None => 0,
+    };
+}
+
+fn main() -> i64 {
+    let x = Option::Some(42);
+    return unwrap_or_default(x);
+}
+"#;
+        let funcs = compile_to_ir(source);
+        assert!(funcs.len() >= 2, "should have main + unwrap_or_default");
+
+        let unwrap_fn = funcs.iter().find(|f| f.name == "unwrap_or_default")
+            .expect("should have unwrap_or_default");
+
+        // Match should create multiple blocks
+        assert!(unwrap_fn.blocks.len() >= 3,
+            "match on Option should create 3+ blocks, got {}", unwrap_fn.blocks.len());
+
+        // Should have variant_field Load for extracting payload
+        let has_variant_field = unwrap_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Load
+                && i.label.as_ref().map_or(false, |l| l.starts_with("variant_field_")));
+        assert!(has_variant_field,
+            "match on Option::Some(v) should emit variant_field Load for binding 'v'");
+    }
+
+    // ── Closure Block Body ──
+
+    #[test]
+    fn test_closure_with_block_body() {
+        let source = r#"
+fn main() -> i64 {
+    let compute = |x: i64| -> i64 {
+        let doubled = x * 2
+        return doubled + 1
+    }
+    return 0
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept closure with block body");
+    }
+
+    #[test]
+    fn test_closure_with_return_type_annotation() {
+        let source = r#"
+fn main() -> i64 {
+    let add = |a: i64, b: i64| -> i64 { return a + b }
+    return 0
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept closure with return type");
+    }
+
+    // ── Generic Call Syntax ──
+
+    #[test]
+    fn test_generic_call_turbofish() {
+        let source = r#"
+fn identity<T>(x: T) -> T {
+    return x
+}
+
+fn main() -> i64 {
+    return identity::<i64>(42)
+}
+"#;
+        let tokens = lexer::lex(source).expect("lex failed");
+        let program = parser::parse(tokens).expect("parse failed");
+        sema::analyze(&program).expect("sema should accept turbofish generic call");
+
+        let funcs = compile_to_ir(source);
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+
+        let has_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call);
+        assert!(has_call, "turbofish call should lower to a Call instruction");
+    }
+
+    // ── Match on Integer Literals ──
+
+    #[test]
+    fn test_match_integer_literals() {
+        let source = r#"
+fn classify(x: i64) -> i64 {
+    return match x {
+        0 => 100,
+        1 => 200,
+        6 => 600,
+        _ => 0,
+    };
+}
+
+fn main() -> i64 {
+    return classify(6);
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let classify_fn = funcs.iter().find(|f| f.name == "classify")
+            .expect("should have classify function");
+
+        // Should create multiple blocks for integer match
+        assert!(classify_fn.blocks.len() >= 4,
+            "integer match with 3 literals + wildcard should have 4+ blocks, got {}",
+            classify_fn.blocks.len());
+
+        // Should have comparison branches
+        let branch_count = classify_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .filter(|i| i.op == HexaOp::Branch)
+            .count();
+        assert!(branch_count >= 3,
+            "3-literal match should have 3+ branches, got {}", branch_count);
+    }
+
+    // ── Array + For Integration ──
+
+    #[test]
+    fn test_array_for_loop_integration() {
+        // Complete pipeline: array literal + for-in-array + accumulate
+        let source = r#"
+fn main() -> i64 {
+    let nums = [1, 2, 3, 4, 5, 6]
+    let mut total = 0
+    for n in nums {
+        total = total + n
+    }
+    return total
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+
+        // Array alloc: 6 * 8 = 48 bytes
+        let arr_alloc = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .find(|i| i.op == HexaOp::Alloc && matches!(i.ty, HexaType::Array(_, 6)));
+        assert!(arr_alloc.is_some(), "should allocate [i64; 6] array");
+        assert_eq!(arr_alloc.unwrap().args[0], 48, "6-element array should be 48 bytes");
+
+        // Loop should have header with comparison
+        assert!(main_fn.blocks.len() >= 4,
+            "array for-loop should create 4+ blocks, got {}",
+            main_fn.blocks.len());
+    }
+
+    // ── Struct + Trait + Method Call Integration ──
+
+    #[test]
+    fn test_trait_method_dispatch_integration() {
+        let source = r#"
+trait Calculator {
+    fn compute(&self) -> i64;
+}
+
+struct Adder { a: i64, b: i64 }
+
+impl Calculator for Adder {
+    fn compute(&self) -> i64 {
+        return self.a + self.b;
+    }
+}
+
+fn main() -> i64 {
+    let adder = Adder { a: 6, b: 12 };
+    return adder.compute();
+}
+"#;
+        let funcs = compile_to_ir(source);
+
+        // Should have Adder__compute function
+        let compute_fn = funcs.iter().find(|f| f.name == "Adder__compute");
+        assert!(compute_fn.is_some(), "should have mangled 'Adder__compute' function");
+
+        // Compute function should have Add instruction (a + b)
+        let has_add = compute_fn.unwrap().blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Add);
+        assert!(has_add, "Adder.compute() should have Add for a + b");
+
+        // main should dispatch to Adder__compute
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+        let has_dispatch = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call
+                && i.label.as_deref() == Some("Adder__compute"));
+        assert!(has_dispatch, "main should call Adder__compute");
+    }
+
+    // ── Full Integration: All Features Together ──
+
+    #[test]
+    fn test_all_features_integration() {
+        // enum + match + struct + array + for-loop + closure + generic in one program
+        let source = r#"
+enum Result { Ok(i64), Err(i64) }
+struct Pair { first: i64, second: i64 }
+
+fn identity<T>(x: T) -> T {
+    return x
+}
+
+fn process(data: i64) -> Result {
+    if data > 0 {
+        return Result::Ok(data)
+    }
+    return Result::Err(0)
+}
+
+fn main() -> i64 {
+    let p = Pair { first: 6, second: 12 }
+    let arr = [1, 2, 3]
+    let double = |x: i64| x * 2
+    let id_val = identity(p.first)
+    let r = process(id_val)
+    return match r {
+        Result::Ok(v) => v,
+        Result::Err(e) => e,
+    }
+}
+"#;
+        let funcs = compile_to_ir(source);
+
+        // Should have multiple functions: identity, process, main
+        assert!(funcs.len() >= 3,
+            "should have 3+ functions (identity, process, main), got {}",
+            funcs.len());
+
+        // main should have enum_variant Alloc (from process's Result::Ok/Err)
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+        assert!(main_fn.blocks.len() >= 2,
+            "main with match should have 2+ blocks, got {}",
+            main_fn.blocks.len());
+
+        // process should have Branch (from if) and enum_variant construction
+        let process_fn = funcs.iter().find(|f| f.name == "process").expect("process");
+        let has_branch = process_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Branch);
+        assert!(has_branch, "process() should have if-branch");
+
+        let has_enum_variant = process_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Alloc
+                && i.label.as_ref().map_or(false, |l| l.contains("enum_variant_")));
+        assert!(has_enum_variant,
+            "process() should construct enum variants with payload");
+    }
+
+    // ── Nested Match ──
+
+    #[test]
+    fn test_nested_enum_match() {
+        let source = r#"
+enum Outer { A(i64), B(i64) }
+
+fn process(x: Outer) -> i64 {
+    return match x {
+        Outer::A(val) => val + 10,
+        Outer::B(val) => val * 2,
+    }
+}
+
+fn main() -> i64 {
+    let x = Outer::A(6);
+    return process(x);
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let process_fn = funcs.iter().find(|f| f.name == "process")
+            .expect("should have process function");
+
+        // Should have multiple arm blocks
+        let arm_block_count = process_fn.blocks.len();
+        assert!(arm_block_count >= 4,
+            "match with 2 variant arms should create 4+ blocks, got {}",
+            arm_block_count);
+
+        // Each arm should have its own computation (Add for A, Mul for B)
+        let has_add = process_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Add);
+        let has_mul = process_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Mul);
+        assert!(has_add, "arm A should have Add");
+        assert!(has_mul, "arm B should have Mul");
+    }
+
+    // ── For-in-Range with function calls in body ──
+
+    #[test]
+    fn test_for_loop_with_function_call() {
+        let source = r#"
+fn double(x: i64) -> i64 {
+    return x * 2
+}
+
+fn main() -> i64 {
+    let mut sum = 0
+    for i in 0..6 {
+        sum = sum + double(i)
+    }
+    return sum
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+
+        // Should have Call to double inside loop body block
+        let has_call = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Call && i.label.as_deref() == Some("double"));
+        assert!(has_call, "for-loop body should contain Call to double()");
+    }
+
+    // ── Module + Use + Enum combo ──
+
+    #[test]
+    fn test_module_enum_combo() {
+        let source = r#"
+enum Status { Active, Inactive }
+
+mod utils {
+    pub fn check(s: Status) -> i64 {
+        return 1
+    }
+}
+
+fn main() -> i64 {
+    let s = Status::Active;
+    return utils::check(s)
+}
+"#;
+        let funcs = compile_to_ir(source);
+
+        let check_fn = funcs.iter().find(|f| f.name == "utils__check");
+        assert!(check_fn.is_some(), "should have utils__check function");
+
+        let main_fn = funcs.iter().find(|f| f.name == "main").expect("main");
+        let has_tag = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.op == HexaOp::Alloc
+                && i.label.as_deref() == Some("enum_tag_Status::Active"));
+        assert!(has_tag, "should construct Status::Active tag");
+    }
+
+    // ── Closure capture + enum ──
+
+    #[test]
+    fn test_closure_captures_with_enum() {
+        let source = r#"
+enum Mode { Fast, Slow }
+
+fn main() -> i64 {
+    let m = Mode::Fast;
+    let f = |x: i64| x + 1
+    return 0
+}
+"#;
+        let funcs = compile_to_ir(source);
+        let main_fn = &funcs[0];
+
+        // Should have both enum tag and closure env
+        let has_tag = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.label.as_ref().map_or(false, |l| l.starts_with("enum_tag_")));
+        let has_env = main_fn.blocks.iter()
+            .flat_map(|b| b.instrs.iter())
+            .any(|i| i.label.as_deref() == Some("closure_env"));
+        assert!(has_tag, "should have enum tag allocation");
+        assert!(has_env, "should have closure environment allocation");
+    }
+}
