@@ -198,7 +198,8 @@
       "anchor": "-핵융합-fusion",
       "verify_scripts": [
         "docs/fusion/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 11
     },
     {
       "id": "chip",
@@ -303,7 +304,8 @@
       "anchor": "-칩--반도체-chip",
       "verify_scripts": [
         "docs/chip-architecture/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 11
     },
     {
       "id": "ai",
@@ -411,7 +413,8 @@
           ]
         }
       ],
-      "anchor": "-ai--ml"
+      "anchor": "-ai--ml",
+      "closure_grade": 11
     },
     {
       "id": "energy",
@@ -493,7 +496,8 @@
         "docs/battery-architecture/verify_alien10.py",
         "docs/solar-architecture/verify_alien10.py",
         "docs/energy-architecture/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 9
     },
     {
       "id": "environment",
@@ -597,7 +601,8 @@
       "verify_scripts": [
         "docs/environmental-protection/verify_alien10.py",
         "docs/carbon-capture/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 9
     },
     {
       "id": "materials",
@@ -713,7 +718,8 @@
       "anchor": "-물질합성-materials",
       "verify_scripts": [
         "docs/material-synthesis/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 11
     },
     {
       "id": "robotics",
@@ -774,7 +780,8 @@
       "anchor": "-로봇-robotics",
       "verify_scripts": [
         "docs/robotics/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 10
     },
     {
       "id": "physics",
@@ -870,7 +877,8 @@
       "verify_scripts": [
         "docs/pure-mathematics/verify_alien10.py",
         "docs/cosmology-particle/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 6
     },
     {
       "id": "software",
@@ -938,7 +946,8 @@
       "verify_scripts": [
         "docs/programming-language/verify_alien10.py",
         "docs/software-design/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 10
     },
     {
       "id": "display",
@@ -996,7 +1005,8 @@
       "anchor": "-디스플레이-display",
       "verify_scripts": [
         "docs/display/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 9
     },
     {
       "id": "audio",
@@ -1069,7 +1079,8 @@
       "verify_scripts": [
         "docs/audio/verify_alien10.py",
         "docs/hexa-speak/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 9
     },
     {
       "id": "safety",
@@ -1127,7 +1138,8 @@
       "anchor": "-안전-safety",
       "verify_scripts": [
         "docs/safety/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 9
     },
     {
       "id": "fun-car",
@@ -1171,7 +1183,8 @@
       "anchor": "-펀카--모터스포츠-fun-car",
       "verify_scripts": [
         "docs/fun-car/verify_alien10.py"
-      ]
+      ],
+      "closure_grade": 11
     },
     {
       "id": "sf",
@@ -1211,7 +1224,8 @@
           ]
         }
       ],
-      "anchor": "-sf--초광속-추진-speculative-propulsion"
+      "anchor": "-sf--초광속-추진-speculative-propulsion",
+      "closure_grade": 11
     },
     {
       "id": "frontier",
@@ -1517,7 +1531,8 @@
           ]
         }
       ],
-      "anchor": "-최전선-대발견-rt-sc-기반-차세대-기술"
+      "anchor": "-최전선-대발견-rt-sc-기반-차세대-기술",
+      "closure_grade": 11
     }
   ],
   "roadmap": [
