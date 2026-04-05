@@ -50,6 +50,37 @@
 
 ### 외계인 지수 (Alien Index)
 
+> **이중 축 등급 체제** — [shared/GRADE_RUBRIC_1_TO_10PLUS.md](shared/GRADE_RUBRIC_1_TO_10PLUS.md) (nexus6 공용 rubric)
+>
+> **🛸 alien_index (1~10)** — 제품 maturity 축
+> | 🛸 | 단계 | 기준 |
+> |:---:|------|------|
+> | 10 | 물리적 한계 | 양산 + Python 검증 코드 + EXACT 전수 재현 |
+> | 9  | 실제 양산 | 예측 전수 검증 완료 |
+> | 8  | 프로토타입 | 실험 데이터 확보 |
+> | 7  | 완전 설계 | BT + DSE + Cross-DSE + Evolution + Alien + TP |
+> | 6  | 설계 완료 | DSE 통과 + 진화 경로 |
+> | 5  | 상세 설계 | BT + DSE |
+> | 4  | 구조 설계 | 가설 검증 |
+> | 3  | 가설 수립 | 초기 검증 |
+> | 2  | 컨셉/탐색 | — |
+> | 1  | 아이디어 | — |
+>
+> **closure_grade (1~13+)** — n=6 닫힘 축 (nexus6 rubric)
+> | grade | 단계 | 기준 | 이모지 |
+> |:---:|------|------|:---:|
+> | 13+ | meta² | meta-closure 상위 생성공식 | ∞ |
+> | 12 | universal | 3+ 독립 프로젝트 등장 | 🌌 |
+> | 11 | meta-closure | K≥3 닫힘 생성 공식 (cross_dse≥3) | 🛸 |
+> | 10 | **EXACT 닫힘** | n=6 primitive finite combo | ⭐ |
+> |  9 | closed (PASS) | n=6 조합 매칭 확인 | 🟩 |
+> |  8 | NEAR closed | 1항 불확실, 수치 매칭 (tol 1%) | 🟧 |
+> |  7 | depth-3 expr | 3-연산 조합 닫힘 | 🟦 |
+> |  6 | partial n=6 | 1 primitive 연결 | 🟨 |
+> | 1~5 | observation → rational approx | 관찰/재현/근사 단계 | ★⬛⚪🟪🟥 |
+>
+> **두 축은 독립** — alien_index=제품 성숙도, closure_grade=n=6 수학적 닫힘 품질.
+
 <!-- AUTO:ALIEN_INDEX:START -->
 | 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |
 |------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|
