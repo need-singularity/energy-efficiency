@@ -13,7 +13,7 @@ SIG_TAU, SIG_PHI, SIG_MU, SIG_SOPFR = 8, 10, 11, 7
 def check(name, value, formula_fn, expected):
     got = formula_fn()
     ok = (got == value == expected)
-    print(f"  [{'EXACT' if ok else 'FAIL '}] {name}: {value} = {got} (== {expected})")
+    print(f"  [{'정확' if ok else '불일치'}] {name}: {value} = {got} (== {expected})")
     return ok
 
 
@@ -122,28 +122,28 @@ def verify_all():
         check("focus_filters", 6, lambda: n, 6),
         check("family_sharing_max", 6, lambda: n, 6),
     ]
-    print("  Core identities")
+    print("  핵심 항등식")
     egyptian = 1 / 2 + 1 / 3 + 1 / 6
     ok_egy = abs(egyptian - 1.0) < 1e-10
-    print(f"  [{'EXACT' if ok_egy else 'FAIL '}] Egyptian 1/2+1/3+1/6 = {egyptian}")
+    print(f"  [{'정확' if ok_egy else '불일치'}] 이집트분수 1/2+1/3+1/6 = {egyptian}")
     results.append(ok_egy)
     ok_sig = sigma * phi_ == n * tau == J2
-    print(f"  [{'EXACT' if ok_sig else 'FAIL '}] sigma*phi = n*tau = J2 = {sigma*phi_}")
+    print(f"  [{'정확' if ok_sig else '불일치'}] σ·φ = n·τ = J₂ = {sigma*phi_}")
     results.append(ok_sig)
     R6 = (sigma * phi_) / (n * tau)
     ok_R = R6 == 1.0
-    print(f"  [{'EXACT' if ok_R else 'FAIL '}] R(6) = {R6}")
+    print(f"  [{'정확' if ok_R else '불일치'}] R(6) = {R6}")
     results.append(ok_R)
 
     total = len(results)
     passed = sum(results)
     print("=" * 64)
-    print(f"HEXA-macOS n=6 EXACT: {passed}/{total} = {100*passed/total:.1f}%")
+    print(f"HEXA-macOS n=6 정확일치: {passed}/{total} = {100*passed/total:.1f}%")
     print("=" * 64)
     if passed == total:
-        print("ALIEN INDEX 10 CERTIFIED - Physical limit reached (macOS domain)")
+        print("외계인 지수 10 인증 완료 — 물리 한계 도달 (macOS 도메인)")
     else:
-        raise AssertionError(f"FAIL: {total - passed} mismatches")
+        raise AssertionError(f"실패: {total - passed}개 불일치")
     return passed == total
 
 
