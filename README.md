@@ -52,19 +52,22 @@
 
 > **이중 축 등급 체제** — [shared/GRADE_RUBRIC_1_TO_10PLUS.md](shared/GRADE_RUBRIC_1_TO_10PLUS.md) (nexus6 공용 rubric)
 >
-> **🛸 alien_index (1~10)** — 제품 maturity 축
-> | 🛸 | 단계 | 기준 |
-> |:---:|------|------|
-> | 10 | 물리적 한계 | 양산 + Python 검증 코드 + EXACT 전수 재현 |
-> | 9  | 실제 양산 | 예측 전수 검증 완료 |
-> | 8  | 프로토타입 | 실험 데이터 확보 |
-> | 7  | 완전 설계 | BT + DSE + Cross-DSE + Evolution + Alien + TP |
-> | 6  | 설계 완료 | DSE 통과 + 진화 경로 |
-> | 5  | 상세 설계 | BT + DSE |
-> | 4  | 구조 설계 | 가설 검증 |
-> | 3  | 가설 수립 | 초기 검증 |
-> | 2  | 컨셉/탐색 | — |
-> | 1  | 아이디어 | — |
+> **🛸 alien_index (1~13+)** — 제품 maturity 축 (10 이상 = 문명 스케일 확산)
+> | 🛸 | 단계 | 기준 | 이모지 |
+> |:---:|------|------|:---:|
+> | **13+** | **civilization-scale** | 우주/문명 척도 인프라 (Dyson / interstellar) | ∞ |
+> | **12** | **industry standard** | 전 세계 표준 채택, ISO/IEC 등재 | 🌌 |
+> | **11** | **multi-industry** | 3+ 독립 산업 확산 + 양산 | 🛸 |
+> | **10** | **물리적 한계** | 양산 + Python 검증 코드 + EXACT 전수 재현 | ⭐ |
+> | 9  | 실제 양산 | 예측 전수 검증 완료 | 🟩 |
+> | 8  | 프로토타입 | 실험 데이터 확보 | 🟧 |
+> | 7  | 완전 설계 | BT + DSE + Cross-DSE + Evolution + Alien + TP | 🟦 |
+> | 6  | 설계 완료 | DSE 통과 + 진화 경로 | 🟨 |
+> | 5  | 상세 설계 | BT + DSE | 🟥 |
+> | 4  | 구조 설계 | 가설 검증 | 🟪 |
+> | 3  | 가설 수립 | 초기 검증 | ⚪ |
+> | 2  | 컨셉/탐색 | — | ⬛ |
+> | 1  | 아이디어 | — | ★ |
 >
 > **closure_grade (1~13+)** — n=6 닫힘 축 (nexus6 rubric)
 > | grade | 단계 | 기준 | 이모지 |
