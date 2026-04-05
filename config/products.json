@@ -865,7 +865,7 @@
       "experiment_pct": null,
       "experiment_detail": "11정리(수학)",
       "physics_limit_count": null,
-      "tp_count": 52,
+      "tp_count": 76,
       "discovery_count": "19+",
       "cross_dse_domains": null,
       "mk_count": 5,
@@ -929,15 +929,18 @@
           "name": "궁극의 상온 초전도체",
           "ufo": 10,
           "ceiling": true,
-          "ver": "v3",
-          "description": "150/150 EXACT (천장돌파), 17카테고리, 전원소Z EXACT(Sc/Y/La/Ac/Th), H3S Tc=203=(σ-φ)²φ+n/φ, CSH 267GPa=σJ₂-J₂+n/φ, McMillan 1.2=σ/(σ-φ), BCS 1.43=sopfr·τ/(σ+φ)",
+          "ver": "v5",
+          "description": "325/325 EXACT (이론150+실현76+Mk.I합성48+Mk.II소재51), 9소재후보+6Mk.II후보, Mk.I정밀레시피(6소재P-T경로+Phase1/2실험$6.18M), Mk.II상압후보(La,Ce,Y,Sc)H24고엔트로피Pareto1위, 2685줄",
           "links": [
             {
               "label": "링크",
               "path": "docs/room-temp-sc/goal.md"
             }
           ],
-          "verify_script": "docs/room-temp-sc/verify_alien10.py"
+          "verify_script": "docs/room-temp-sc/verify_alien10.py",
+          "verify_scripts_extra": [
+            "docs/room-temp-sc/verify_realization.py"
+          ]
         }
       ],
       "anchor": "-물리수학-physics--math",
