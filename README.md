@@ -295,7 +295,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 7 | | v2 | **궁극의 로봇 8단** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS | [링크](docs/robotics/goal.md) |
+| 7 | ✅ | v2 | **궁극의 로봇 8단** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS | [링크](docs/robotics/goal.md) |
 | 7 | ✅ | v1 | **천장확인** | 10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS | [링크](docs/robotics/full-verification-matrix.md) |
 
 <!-- AUTO:FOOTER_robotics:START -->

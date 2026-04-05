@@ -821,7 +821,7 @@
         {
           "name": "궁극의 로봇 8단",
           "ufo": 7,
-          "ceiling": false,
+          "ceiling": true,
           "ver": "v2",
           "description": "49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS",
           "links": [
