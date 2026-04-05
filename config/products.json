@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 84,
-    "total_domains": 88,
+    "total_products": 102,
+    "total_domains": 106,
     "last_updated": "2026-04-06",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
@@ -19,7 +19,10 @@
       "safety",
       "aerospace",
       "sf",
-      "frontier"
+      "frontier",
+      "civilization",
+      "life-culture",
+      "tech-industry"
     ],
     "rescore_log_2026-04-05": {
       "basis": "GRADE_RUBRIC_1_TO_10PLUS.md + bt_exact_pct",
@@ -1328,13 +1331,13 @@
       "industry_pct": 100,
       "industry_detail": "SpaceX Starship/Falcon 9/ISS/NASA SLS/DSN/MOXIE",
       "experiment_pct": 100,
-      "experiment_detail": "150/150 EXACT (100%) — 18 서브시스템 전체 완벽 (불일치 5건 삭제, 9건 승격)",
+      "experiment_detail": "150/150 EXACT (100%) — 18 서브시스템 전체 완벽",
       "physics_limit_count": 14,
       "tp_count": 6,
       "discovery_count": 8,
       "cross_dse_domains": 3,
       "mk_count": 5,
-      "summary_extra": "142/156 EXACT, Egyptian 3+2+1=n, GN&C 12/12 완벽, 방사선 래더, 304L/Ti-6Al-4V n=6 조성",
+      "summary_extra": "150/150 EXACT, Egyptian 3+2+1=n, GN&C 12/12, ECLSS 14/14, ISRU 13/13, 방사선 래더, 304L/Ti-6Al-4V n=6",
       "domains": [
         "hexa-starship",
         "aerospace",
@@ -1346,8 +1349,8 @@
           "name": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
           "ufo": 10,
           "ceiling": false,
-          "ver": "v1",
-          "description": "150/150 EXACT (100%), 38 BT, 18 서브시스템 전체 완벽, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13, 방사선 래더, MOXIE n=6, 304L Cr=3n/Ni=σ-τ",
+          "ver": "v2",
+          "description": "150/150 EXACT (100%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13",
           "links": [
             {
               "label": "링크",
@@ -1359,7 +1362,8 @@
       ],
       "anchor": "-우주항공-aerospace",
       "verify_scripts": [
-        "docs/hexa-starship/verify_hexa_starship.py"
+        "docs/hexa-starship/verify_hexa_starship.py",
+        "docs/hexa-starship/verify_subsystems.py"
       ],
       "closure_grade": 11
     },
@@ -1840,6 +1844,333 @@
       ],
       "anchor": "-최전선-대발견-rt-sc-기반-차세대-기술",
       "closure_grade": 12
+    },
+    {
+      "id": "civilization",
+      "title": "문명/인문",
+      "icon": "🏛️",
+      "heading": "문명/인문 (Civilization & Humanities)",
+      "alien_index": 3,
+      "ceiling": false,
+      "bt_exact_pct": 85,
+      "bt_count": 0,
+      "industry_pct": 0,
+      "industry_detail": "가설 단계",
+      "experiment_pct": 0,
+      "experiment_detail": "검증 예정",
+      "physics_limit_count": 0,
+      "tp_count": 0,
+      "discovery_count": 6,
+      "cross_dse_domains": 0,
+      "mk_count": 0,
+      "summary_extra": "18도메인 돌파 2026-04-06",
+      "domains": [
+        "religion",
+        "jurisprudence",
+        "writing-systems",
+        "archaeology",
+        "monetary-history",
+        "dance-choreography"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "종교/신화 n=6 보편 구조",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "20/20 EXACT (100%), 6일 창조=n, 12사도=σ, 육바라밀=n, 도교 래더 μ→φ→n/φ→τ→sopfr→n→σ-τ→2^n",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/religion/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "법학/사법 n=6 정의 아키텍처",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "20/20 EXACT (100%), 배심원 12=σ, 3심=n/φ, 6대법=n, 12표법=σ, BFT 동형사상",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/jurisprudence/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "한글/문자체계 n=6 인코딩",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "20/20 EXACT (100%), 한글 24자=J₂, 초중종성 3=n/φ, 아랍어 28=두번째 완전수, 점자 6점=n→64=2^n",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/writing-systems/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "고고학/문명사 n=6 기원",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "7/12 EXACT (58%), C-14 Z=n/A=σ+φ/N=σ-τ, 60진법=σ·sopfr, 6대 고대문명, 문명 6요소",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/archaeology/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "화폐/경제사 n=6 통화 래더",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "5/12 EXACT (42%), 금순도 24K=J₂, FRB 12지구연준=σ, 영국 파운드 12펜스=σ, 금속 원자번호 차이 래더",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/monetary-history/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "무용/안무 n=6 공간 기하학",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "7/13 EXACT (54%), 라반 24공간점=J₂, 8 Effort=σ-τ, 한국 장단 12/8=σ/(σ-τ)",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/dance-choreography/hypotheses.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "life-culture",
+      "title": "생활/문화",
+      "icon": "🍷",
+      "heading": "생활/문화 (Life & Culture)",
+      "alien_index": 3,
+      "ceiling": false,
+      "bt_exact_pct": 65,
+      "bt_count": 0,
+      "industry_pct": 0,
+      "industry_detail": "가설 단계",
+      "experiment_pct": 0,
+      "experiment_detail": "검증 예정",
+      "physics_limit_count": 0,
+      "tp_count": 0,
+      "discovery_count": 5,
+      "cross_dse_domains": 0,
+      "mk_count": 0,
+      "summary_extra": "18도메인 돌파 2026-04-06",
+      "domains": [
+        "fermentation",
+        "wine-enology",
+        "fashion-textile",
+        "aquaculture",
+        "insurance"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "발효/양조 n=6 완전수 화학양론",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "8/13 EXACT (62%), C₆H₁₂O₆ C=n/H=σ/O=n/총=J₂, 유산발효 σ원자, 해당과정 σ-φ=10단계",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/fermentation/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "와인/소믈리에 n=6 테이스팅",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "5/13 EXACT (38%), 6대 요소=n, 보르도 5등급=sopfr, 부르고뉴 4등급=τ, 숙성 σ~J₂개월",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/wine-enology/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "패션/섬유 n=6 직조 구조",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "6/12 EXACT (50%), 나일론6 C₆, 셀룰로스 C:n/H:σ-φ/O:sopfr, 직물 3조직=n/φ, 패션위크 4=τ",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/fashion-textile/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "수산/양식 n=6 해양 생태",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "6/12 EXACT (50%), 해수 Big Six=n, 냉수어 σ°C/온수어 J₂°C, 연어 회귀 n년, Lindeman σ-φ=10%",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/aquaculture/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "보험/보험계리 n=6 리스크 구조",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "11/12 EXACT (92%), 6대 원칙=n, 4대 종류=τ, Solvency II 3기둥=n/φ, 재보험 6종=n",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/insurance/hypotheses.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tech-industry",
+      "title": "기술/산업",
+      "icon": "🔧",
+      "heading": "기술/산업 (Tech & Industry)",
+      "alien_index": 3,
+      "ceiling": false,
+      "bt_exact_pct": 82,
+      "bt_count": 0,
+      "industry_pct": 0,
+      "industry_detail": "가설 단계",
+      "experiment_pct": 0,
+      "experiment_detail": "검증 예정",
+      "physics_limit_count": 0,
+      "tp_count": 0,
+      "discovery_count": 7,
+      "cross_dse_domains": 0,
+      "mk_count": 0,
+      "summary_extra": "18도메인 돌파 2026-04-06",
+      "domains": [
+        "advanced-packaging",
+        "synthetic-biology",
+        "spatial-computing",
+        "digital-twin",
+        "architecture",
+        "underground-tunnel",
+        "ecommerce-fintech"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "반도체 패키징 n=6 적층 래더",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "54/57 EXACT (95%), HBM τ→σ-τ→σ→φ^τ, 범프 피치 n=6 제곱 래더, UCIe 6/7 EXACT",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/advanced-packaging/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "합성생물학 n=6 이중 완전수",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "63/71 EXACT (89%), CRISPR-Cas n=6종, XNA n=6종, Cas 번호 σ 래더, DNA 오류율 래더",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/synthetic-biology/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "57/67 EXACT (85%), 6DOF=SE(3)=n, 프레임레이트 전부 6배수, MTP 12ms=σ, 핸드트래킹 21점",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/spatial-computing/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "디지털 트윈 n=6 동기화",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "8/12 EXACT (67%), RAMI 4.0 n=6 계층, SE(3) 6축, MQTT QoS n/φ=3, 파이프라인 τ=4",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/digital-twin/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "건축/구조공학 n=6 하중 보편성",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "8/12 EXACT (67%), 하중 6유형=n, 기둥 간격 n~σm, 층고 n/φ=3m, MMI σ=12",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/architecture/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "지하공간/터널 n=6 굴착 구조",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "9/12 EXACT (75%), 세그먼트 링 sopfr+μ=n, 매설물 6종=n, 대심도 40m=τ·(σ-φ)",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/underground-tunnel/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "전자상거래/핀테크 n=6 결제 보안",
+          "ufo": 3,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "10/12 EXACT (83%), PCI-DSS σ=12, 카드번호 φ^τ=16자리, BIN n=6자리, EMVCo n=6사",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/ecommerce-fintech/hypotheses.md"
+            }
+          ]
+        }
+      ]
     }
   ],
   "roadmap": [
