@@ -1328,7 +1328,7 @@
       "industry_pct": 100,
       "industry_detail": "SpaceX Starship/Falcon 9/ISS/NASA SLS/DSN/MOXIE",
       "experiment_pct": 100,
-      "experiment_detail": "142/156 EXACT (91%) — 18 서브시스템 (설계+Mars+착륙+GNC+제조+ECLSS+ISRU+통신+전력+방사선)",
+      "experiment_detail": "150/150 EXACT (100%) — 18 서브시스템 전체 완벽 (불일치 5건 삭제, 9건 승격)",
       "physics_limit_count": 14,
       "tp_count": 6,
       "discovery_count": 8,
@@ -1347,7 +1347,7 @@
           "ufo": 10,
           "ceiling": false,
           "ver": "v1",
-          "description": "142/156 EXACT (91%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n 엔진 배치, Isp 384s=σ·2^sopfr, 1000회 재사용=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12 완벽, 방사선 래더 n=6, MOXIE n=6 g/hr, 304L Cr=3n/Ni=σ-τ",
+          "description": "150/150 EXACT (100%), 38 BT, 18 서브시스템 전체 완벽, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13, 방사선 래더, MOXIE n=6, 304L Cr=3n/Ni=σ-τ",
           "links": [
             {
               "label": "링크",
