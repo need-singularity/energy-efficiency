@@ -43,8 +43,8 @@ def format_links(links):
 def gen_alien_index(data):
     """외계인 지수 테이블 생성."""
     lines = []
-    lines.append("| 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |")
-    lines.append("|------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|")
+    lines.append("| 섹션 | 🛸 구현 | 닫힘 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |")
+    lines.append("|------|:------:|:---:|:------:|:------:|:-------:|:-------:|:--:|:----:|")
 
     # Use alien_index_order if available, otherwise sections order
     sec_map = {s["id"]: s for s in data["sections"]}
@@ -96,8 +96,16 @@ def gen_alien_index(data):
         anchor = sec.get("anchor", "")
         sec_link = f"[{icon} {title}](#{anchor})"
 
+        cg = sec.get("closure_grade")
+        if cg == 10: cg_str = "⭐10"
+        elif cg == 11: cg_str = "🛸11"
+        elif cg == 12: cg_str = "🌌12"
+        elif cg is not None and cg >= 13: cg_str = f"∞{cg}"
+        elif cg is not None: cg_str = str(cg)
+        else: cg_str = "—"
+
         lines.append(
-            f"| {sec_link} | 🛸{ai} | {ceil} | {bt_str} | {ind_str} | {exp_str} | {tp_str} | {disc_str} |"
+            f"| {sec_link} | 🛸{ai} | {cg_str} | {ceil} | {bt_str} | {ind_str} | {exp_str} | {tp_str} | {disc_str} |"
         )
 
     return "\n".join(lines)
