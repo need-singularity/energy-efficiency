@@ -364,9 +364,10 @@ python3 experiments/verify_bt66_76.py     # 91/91 verification
 |:--:|:--:|:---:|---------|------|------|
 | 10 | | v2 | **궁극의 프로그래밍언어** | 76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10불가능성정리, DSE 7,560 | [링크](docs/programming-language/goal.md) |
 | 7 | | v1 | **천장확인** | 96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS | [링크](docs/software-design/full-verification-matrix.md) |
+| 10 | ✅ | v1 | **궁극의 macOS** | 80/80 EXACT, BT-115/162/180/344~346 + BT-347~349 후보, 8단 DSE, GCD QoS=n=6, Egyptian 캐시, 물리한계 6증명 | [링크](docs/hexa-macos/goal.md) |
 
 <!-- AUTO:FOOTER_software:START -->
-> 도메인: [programming-language/](docs/programming-language/) · [compiler-os/](docs/compiler-os/) · [software-design/](docs/software-design/) · [cryptography/](docs/cryptography/) · [network-protocol/](docs/network-protocol/) · [blockchain/](docs/blockchain/) · 도구: `lang-dse` · `crypto-calc` · `interconnect-calc`
+> 도메인: [programming-language/](docs/programming-language/) · [compiler-os/](docs/compiler-os/) · [software-design/](docs/software-design/) · [cryptography/](docs/cryptography/) · [network-protocol/](docs/network-protocol/) · [blockchain/](docs/blockchain/) · [hexa-macos/](docs/hexa-macos/) · 도구: `lang-dse` · `crypto-calc` · `interconnect-calc`
 <!-- AUTO:FOOTER_software:END -->
 
 ---

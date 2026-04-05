@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 56,
+    "total_products": 57,
     "total_domains": 64,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
@@ -905,7 +905,8 @@
         "software-design",
         "cryptography",
         "network-protocol",
-        "blockchain"
+        "blockchain",
+        "hexa-macos"
       ],
       "tools": [
         "lang-dse",
@@ -940,12 +941,27 @@
             }
           ],
           "verify_script": "docs/programming-language/verify_alien10.py"
+        },
+        {
+          "name": "궁극의 macOS",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "80/80 EXACT, BT-115/162/180/344~346 + BT-347~349 후보, 8단 DSE, GCD QoS=n=6, Egyptian 캐시, 물리한계 6증명",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/hexa-macos/goal.md"
+            }
+          ],
+          "verify_script": "experiments/verify_hexa_macos.py"
         }
       ],
       "anchor": "-소프트웨어인프라-software--infra",
       "verify_scripts": [
         "docs/programming-language/verify_alien10.py",
-        "docs/software-design/verify_alien10.py"
+        "docs/software-design/verify_alien10.py",
+        "verify_hexa_macos.py"
       ],
       "closure_grade": 10
     },
