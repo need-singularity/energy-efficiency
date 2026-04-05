@@ -6,7 +6,7 @@
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 <!-- AUTO:BADGE:START -->
 [![DSE](https://img.shields.io/badge/DSE-323%20domains-blue.svg)](docs/dse-map.toml)
-[![NEXUS-6](https://img.shields.io/badge/NEXUS--6-1116%20tests-green.svg)](tools/nexus6/)
+[![NEXUS-6](https://img.shields.io/badge/NEXUS--6-2078%20tests-green.svg)](tools/nexus6/)
 <!-- AUTO:BADGE:END -->
 
 <!-- SHARED:PROJECTS:START -->
@@ -42,10 +42,10 @@
 
 <!-- AUTO:STATS:START -->
 ```
-  AI techniques:    17
+  AI techniques:    16
   DSE domains:      323
-  DSE paths:        5,893,032+
-  NEXUS-6 tests:    1116
+  DSE paths:        ?+
+  NEXUS-6 tests:    2078
 ```
 <!-- AUTO:STATS:END -->
 
