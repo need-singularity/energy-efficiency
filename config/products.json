@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 60,
-    "total_domains": 65,
+    "total_products": 61,
+    "total_domains": 66,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
@@ -17,6 +17,7 @@
       "display",
       "audio",
       "safety",
+      "aerospace",
       "sf",
       "frontier"
     ],
@@ -88,13 +89,38 @@
   },
   "closure_grade_12_log_2026-04-05": {
     "basis": "docs/hypotheses/grade-12-evidence.md",
-    "constants": ["sigma-tau=8", "1/(sigma-phi)=0.1", "J_2=24", "sigma-phi=10"],
+    "constants": [
+      "sigma-tau=8",
+      "1/(sigma-phi)=0.1",
+      "J_2=24",
+      "sigma-phi=10"
+    ],
     "criterion": "3+ independent domains with same role confirmed",
     "changes": [
-      {"section": "fusion", "from": 11, "to": 12, "reason": "sigma-phi=10 (ITER Q=10), J_2=24 (Nb3Sn Hc2), plasma 0.1 reconnection"},
-      {"section": "chip", "from": 11, "to": 12, "reason": "sigma-tau=8 (6 sub-domains), J_2=24 (ECC), sigma-phi=10 (HBM exponent)"},
-      {"section": "ai", "from": 11, "to": 12, "reason": "all 4 constants present (sigma-tau 6x, 0.1 8x, J_2 2x, sigma-phi 4x)"},
-      {"section": "frontier", "from": 11, "to": 12, "reason": "meta-section covering all cross-domain constants, 250 BTs"}
+      {
+        "section": "fusion",
+        "from": 11,
+        "to": 12,
+        "reason": "sigma-phi=10 (ITER Q=10), J_2=24 (Nb3Sn Hc2), plasma 0.1 reconnection"
+      },
+      {
+        "section": "chip",
+        "from": 11,
+        "to": 12,
+        "reason": "sigma-tau=8 (6 sub-domains), J_2=24 (ECC), sigma-phi=10 (HBM exponent)"
+      },
+      {
+        "section": "ai",
+        "from": 11,
+        "to": 12,
+        "reason": "all 4 constants present (sigma-tau 6x, 0.1 8x, J_2 2x, sigma-phi 4x)"
+      },
+      {
+        "section": "frontier",
+        "from": 11,
+        "to": 12,
+        "reason": "meta-section covering all cross-domain constants, 250 BTs"
+      }
     ]
   },
   "absolute_rules": [
@@ -1271,6 +1297,53 @@
       "verify_scripts": [
         "docs/fun-car/verify_alien10.py",
         "docs/motorcycle/verify_alien10.py"
+      ],
+      "closure_grade": 11
+    },
+    {
+      "id": "aerospace",
+      "title": "우주항공",
+      "icon": "🚀",
+      "heading": "우주항공 (Aerospace)",
+      "alien_index": 10,
+      "ceiling": false,
+      "bt_exact_pct": 100,
+      "bt_count": 24,
+      "industry_pct": 100,
+      "industry_detail": "SpaceX Starship/Falcon 9/ISS/NASA SLS",
+      "experiment_pct": 100,
+      "experiment_detail": "57/57 EXACT (45 설계 + 12 특이점)",
+      "physics_limit_count": 14,
+      "tp_count": 6,
+      "discovery_count": 2,
+      "cross_dse_domains": 3,
+      "mk_count": 5,
+      "summary_extra": "Egyptian 엔진 배치 3+2+1=n, Mars 미션 12인",
+      "domains": [
+        "hexa-starship",
+        "aerospace",
+        "space-engineering"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+          "ufo": 10,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "57/57 EXACT (45 설계+12 Mars), BT-5/27/43/85/123/130/174/196/231/241/270~276, Egyptian 3+2+1=n 엔진 배치, Isp 384s=σ·2^sopfr, 1000회 재사용=(σ-φ)³, $12/kg=σ, Mars 12인 180일",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/hexa-starship/goal.md"
+            }
+          ],
+          "verify_script": "docs/hexa-starship/verify_hexa_starship.py"
+        }
+      ],
+      "anchor": "-우주항공-aerospace",
+      "verify_scripts": [
+        "docs/hexa-starship/verify_hexa_starship.py"
       ],
       "closure_grade": 11
     },

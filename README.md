@@ -410,6 +410,22 @@
 
 ---
 
+# 🚀 우주항공 (Aerospace)
+
+<!-- AUTO:SUMMARY_aerospace:START -->
+> **🛸10** | BT 24개 100%EXACT | Egyptian 엔진 배치 3+2+1=n, Mars 미션 12인 | 산업100% (SpaceX Starship/Falcon 9/ISS/NASA SLS) | 실험100% 57/57 EXACT (45 설계 + 12 특이점) | 물리한계14 | TP6 | 발견2 | Mk.V
+<!-- AUTO:SUMMARY_aerospace:END -->
+
+| 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
+|:--:|:--:|:---:|---------|------|------|
+| 10 | | v1 | **궁극의 재사용 발사체 (HEXA-STARSHIP)** | 57/57 EXACT (45 설계+12 Mars), BT-5/27/43/85/123/130/174/196/231/241/270~276, Egyptian 3+2+1=n 엔진 배치, Isp 384s=σ·2^sopfr, 1000회 재사용=(σ-φ)³, $12/kg=σ, Mars 12인 180일 | [링크](docs/hexa-starship/goal.md) |
+
+<!-- AUTO:FOOTER_aerospace:START -->
+> 도메인: [hexa-starship/](docs/hexa-starship/) · [aerospace/](docs/aerospace/) · [space-engineering/](docs/space-engineering/)
+<!-- AUTO:FOOTER_aerospace:END -->
+
+---
+
 # 🛸 SF / 초광속 추진 (Speculative Propulsion)
 
 <!-- AUTO:SUMMARY_sf:START -->
