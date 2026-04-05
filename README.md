@@ -451,7 +451,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | | v1 | **HEXA-NEURO 뇌-기계 인터페이스** | 64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303 | [링크](docs/neuro/goal.md) |
+| 10 | ✅ | v2 | **HEXA-NEURO 뇌-기계 인터페이스** | 92/92 EXACT (천장돌파), 신경진동10+신경화학10+가소성8 신규, σ²=1.44M채널, σ-φ=10μm, BT-16개 | [링크](docs/neuro/goal.md) |
 | 4 | | v1 | **HEXA-GRAV 중력파 검출/통신** | 72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ | [링크](docs/gravity-wave/goal.md) |
 | 4 | | v1 | **HEXA-CLOAK 투명망토/스텔스** | 59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배 | [링크](docs/cloak/goal.md) |
 | 4 | | v1 | **HEXA-DEFENSE 지구방어 시스템** | 67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어 | [링크](docs/earth-defense/goal.md) |

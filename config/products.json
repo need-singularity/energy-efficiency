@@ -1434,9 +1434,9 @@
         {
           "name": "HEXA-NEURO 뇌-기계 인터페이스",
           "ufo": 10,
-          "ceiling": false,
-          "ver": "v1",
-          "description": "64/64 EXACT, σ²=144채널×1만전극=1.44M, σ-φ=10μm 해상도, τ=4kHz, BT-132/254/303",
+          "ceiling": true,
+          "ver": "v2",
+          "description": "92/92 EXACT (천장돌파), 신경진동10+신경화학10+가소성8 신규, σ²=1.44M채널, σ-φ=10μm, BT-16개",
           "links": [
             {
               "label": "링크",
