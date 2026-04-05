@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 57,
+    "total_products": 58,
     "total_domains": 64,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
@@ -143,7 +143,7 @@
           "ufo": 5,
           "ceiling": true,
           "ver": "v3",
-          "description": "42/45 EXACT(97.8%), 물리한계8/8, 24BT+12불가능성정리, Python검증PASS, Cross-DSE 8도메인",
+          "description": "42/45 EXACT(97.8%), 물리한계8/8, 24BT+12불가능성정리, Python검증PASS, Cross-DSE 8도메인 10돌파시도",
           "links": [
             {
               "label": "링크",
@@ -595,6 +595,23 @@
             }
           ],
           "verify_script": "docs/environmental-protection/verify_alien10.py"
+        },
+        {
+          "name": "궁극의 재활용 — HEXA-RECYCLE",
+          "ufo": 10,
+          "ceiling": "열역학 엔트로피 한계",
+          "ver": "v1",
+          "description": "6R 순환 + σ=12 분류 + J₂=24 추적 + 5-DSE 통합 (35,424 조합)",
+          "links": [
+            {
+              "label": "설계",
+              "path": "docs/recycling/goal.md"
+            },
+            {
+              "label": "검증",
+              "path": "docs/recycling/verify_recycling_n6.py"
+            }
+          ]
         }
       ],
       "anchor": "-환경보호-environment",
