@@ -6,6 +6,9 @@
 //! either max_meta_cycles is reached or LensForge cannot produce
 //! new lenses (true convergence).
 
+use crate::graph::edge::{Edge, EdgeType};
+use crate::graph::node::{Node, NodeType};
+use crate::graph::persistence::{default_graph_path, DiscoveryGraph};
 use crate::history::recorder::ScanRecord;
 use crate::lens_forge::forge_engine::{self, ForgeConfig, ForgeResult};
 use crate::ouroboros::convergence::ConvergenceStatus;
@@ -219,6 +222,16 @@ impl MetaLoop {
                 Ok(n) => self.report(0, 0, &format!("Persisted {} custom lenses to ~/.nexus6/custom_lenses.json", n)),
                 Err(e) => self.report(0, 0, &format!("Warning: failed to persist custom lenses: {}", e)),
             }
+
+            // 단조된 렌즈 + 도메인을 Discovery Graph에 자동 흡수
+            // (과거: custom_lenses.json에만 저장 → graph 누락. 이제 이중 기록.)
+            let absorbed = self.absorb_into_graph(&all_forged_lenses);
+            if absorbed > 0 {
+                self.report(0, 0, &format!(
+                    "Graph absorb: {} 노드 (Domain + Technique) + edges 추가",
+                    absorbed
+                ));
+            }
         }
 
         MetaLoopResult {
@@ -245,6 +258,70 @@ impl MetaLoop {
         if let Some(ref cb) = self.on_progress {
             cb(meta_cycle, ouro_cycle, msg);
         }
+    }
+
+    /// Absorb forged lenses + self.domain into ~/.nexus6/discovery_graph.json.
+    /// 각 forged lens는 Technique 노드로, self.domain은 Domain 노드(D-<Domain>)로
+    /// 등록되고, Domain --Derives--> Technique 엣지가 추가된다.
+    /// 중복 id/edge는 DiscoveryGraph.merge()에서 자동 dedup.
+    /// 반환: 추가된 노드 수.
+    fn absorb_into_graph(&self, forged: &[String]) -> usize {
+        let graph_path = default_graph_path();
+        let mut graph = match DiscoveryGraph::load(&graph_path) {
+            Ok(g) => g,
+            Err(_) => return 0,
+        };
+        let existing: std::collections::HashSet<String> =
+            graph.nodes.iter().map(|n| n.id.clone()).collect();
+        let ts = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_secs().to_string())
+            .unwrap_or_else(|_| "0".to_string());
+
+        // Domain 노드 보장: D-<Domain>
+        let domain_id = format!("D-{}", self.domain);
+        let mut added = 0;
+        if !existing.contains(&domain_id) {
+            graph.add_node(Node {
+                id: domain_id.clone(),
+                node_type: NodeType::Domain,
+                domain: self.domain.clone(),
+                project: "nexus6".to_string(),
+                summary: format!("OUROBOROS 자동 등록 도메인: {}", self.domain),
+                confidence: 1.0,
+                lenses_used: vec![],
+                timestamp: ts.clone(),
+            });
+            added += 1;
+        }
+
+        // forged lens → Technique 노드 + Domain -Derives-> Technique 엣지
+        for lens_name in forged {
+            if !existing.contains(lens_name) {
+                graph.add_node(Node {
+                    id: lens_name.clone(),
+                    node_type: NodeType::Technique,
+                    domain: "ouroboros_forge".to_string(),
+                    project: "nexus6".to_string(),
+                    summary: format!("OUROBOROS-forged lens (domain: {})", self.domain),
+                    confidence: 0.75,
+                    lenses_used: vec![],
+                    timestamp: ts.clone(),
+                });
+                added += 1;
+            }
+            graph.add_edge(Edge {
+                from: domain_id.clone(),
+                to: lens_name.clone(),
+                edge_type: EdgeType::Derives,
+                strength: 0.7,
+                bidirectional: false,
+            });
+        }
+
+        // save는 merge-on-write이므로 race-safe + edge dedup 자동 적용
+        let _ = graph.save(&graph_path);
+        added
     }
 }
 
@@ -328,5 +405,40 @@ mod tests {
         let msgs = messages.lock().unwrap();
         assert!(!msgs.is_empty());
         assert!(msgs[0].starts_with("M1O0:"));
+    }
+
+    #[test]
+    fn test_absorb_into_graph_creates_domain_and_lens_nodes() {
+        // 임시 HOME 설정으로 격리된 graph 파일 사용
+        let tmp_dir = std::env::temp_dir().join(format!("nexus6_test_{}", std::process::id()));
+        std::fs::create_dir_all(&tmp_dir).ok();
+        std::env::set_var("HOME", tmp_dir.to_str().unwrap());
+
+        let meta_loop = MetaLoop::new(
+            "test_domain_xyz".to_string(),
+            vec![],
+            MetaLoopConfig::default(),
+        );
+
+        let forged = vec![
+            "lens_A_mut_test".to_string(),
+            "lens_B_mut_test".to_string(),
+        ];
+        let added = meta_loop.absorb_into_graph(&forged);
+
+        // 최소 3개 노드 추가 (Domain 1개 + Technique 2개)
+        assert!(added >= 3, "expected ≥3 nodes, got {}", added);
+
+        // graph 파일 존재 + 노드 확인
+        let graph_path = default_graph_path();
+        let graph = DiscoveryGraph::load(&graph_path).expect("graph load");
+        let ids: std::collections::HashSet<_> =
+            graph.nodes.iter().map(|n| n.id.clone()).collect();
+        assert!(ids.contains("D-test_domain_xyz"));
+        assert!(ids.contains("lens_A_mut_test"));
+        assert!(ids.contains("lens_B_mut_test"));
+
+        // 정리
+        std::fs::remove_dir_all(&tmp_dir).ok();
     }
 }
