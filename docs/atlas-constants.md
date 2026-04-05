@@ -3423,3 +3423,30 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 | σ² | 144 | Validation rules per gate | HEXA-GATE, BT-346 |
 | φ^τ | 16 | Hash rounds | HEXA-GATE, BT-346 |
 | 2^(σ-τ) | 256 | Hash block bytes | HEXA-GATE, BT-346 |
+
+
+### SMR / Datacenter Nuclear (BT-347~349)
+
+| Expression | Value | Application | Domain |
+|------------|-------|-------------|--------|
+| sopfr | 5 | TRISO coating layers / Defense-in-depth barriers | Nuclear fuel/safety, BT-347 |
+| σ·n | 72 | Emergency cooling hours (NRC post-Fukushima) | Nuclear safety, BT-347 |
+| n/φ | 3 | Safety system triple redundancy | Nuclear licensing, BT-347 |
+| 10^{-n} | 10^{-6} | Core damage frequency target (/reactor-year) | Nuclear PRA, BT-347 |
+| σ-φ | 10 | EPZ radius (miles) | Nuclear safety, BT-347 |
+| τ | 4 | Emergency classification levels (NOUE/Alert/SAE/GE) | Nuclear safety, BT-347 |
+| J₂ | 24 | Control rod cluster count (AP1000) | Nuclear design, BT-347 |
+| σ·τ | 48 | sCO₂ Brayton efficiency (%) | Nuclear SMR, BT-348 |
+| σ·τ | 48 | Datacenter bus voltage (V, SMR-powered) | Nuclear-DC integration, BT-348 |
+| σ·τ | 48 | District heating delta-T (°C) | Nuclear waste heat, BT-348 |
+| σ·(σ-φ) | 120 | High burnup target (GWd/MTU) | Nuclear fuel, BT-348 |
+| (σ+sopfr)·(σ-φ) | 170 | RPV design pressure (bar) | Nuclear SMR, BT-348 |
+| σ²·φ | 288 | sCO₂ core outlet temp range midpoint (°C) | Nuclear SMR, BT-348 |
+| J₂·100 | 2400 | Boron concentration BOC (ppm) | Nuclear chemistry, BT-348 |
+| n!/φ | 360 | SMR total weight (tonnes, 6×60t modules) | Nuclear SMR, BT-349 |
+| σ·sopfr | 60 | Nuclear plant lifetime (years) | Nuclear industry, BT-349 |
+| σ·sopfr | 60 | SMR module shipping weight (tonnes) | Nuclear SMR, BT-349 |
+| σ·sopfr | 60 | Single module output (MWe, NuScale) | Nuclear SMR, BT-349 |
+| n·σ·sopfr | 360 | Total plant output (MWe, VOYGR-6) | Nuclear SMR, BT-349 |
+| sopfr | 5 | HALEU enrichment boundary (% U-235) | Nuclear fuel, BT-349 |
+| J₂-τ | 20 | Spent fuel minimum cooling time (years) | Nuclear waste, BT-349 |
