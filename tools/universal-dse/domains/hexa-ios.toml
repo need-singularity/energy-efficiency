@@ -1,0 +1,214 @@
+[meta]
+name = "hexa-ios"
+description = "궁극의 iOS — HEXA-iOS Mobile Architecture DSE"
+version = "1.0"
+bt_refs = ["BT-115", "BT-162", "BT-180", "BT-48", "BT-58", "BT-66", "BT-113", "BT-123", "BT-211"]
+alien_index = 10
+
+[scoring]
+n6_weight = 40
+performance_weight = 25
+power_weight = 20
+cost_weight = 15
+
+# L0: Substrate (소재)
+[[level]]
+name = "Substrate"
+index = 0
+
+[[level.candidate]]
+name = "Diamond_Z6"
+n6_score = 100
+performance = 95
+power = 90
+cost = 40
+tags = ["Z=6=n", "thermal_conductivity_2000"]
+
+[[level.candidate]]
+name = "SiC_4H"
+n6_score = 70
+performance = 85
+power = 85
+cost = 60
+tags = ["wide_bandgap", "power"]
+
+[[level.candidate]]
+name = "GaN"
+n6_score = 50
+performance = 80
+power = 80
+cost = 55
+tags = ["high_freq", "5G"]
+
+[[level.candidate]]
+name = "Si_standard"
+n6_score = 40
+performance = 75
+power = 70
+cost = 95
+tags = ["CMOS", "mature"]
+
+# L1: Process (공정)
+[[level]]
+name = "Process"
+index = 1
+
+[[level.candidate]]
+name = "N3E"
+n6_score = 100
+performance = 90
+power = 90
+cost = 70
+tags = ["n/phi=3nm", "current"]
+
+[[level.candidate]]
+name = "N2_GAA"
+n6_score = 95
+performance = 95
+power = 95
+cost = 50
+tags = ["phi=2nm", "next_gen"]
+
+[[level.candidate]]
+name = "CFET"
+n6_score = 80
+performance = 98
+power = 92
+cost = 30
+tags = ["complementary_FET", "future"]
+
+[[level.candidate]]
+name = "N5"
+n6_score = 60
+performance = 80
+power = 80
+cost = 90
+tags = ["sopfr=5nm", "legacy"]
+
+# L2: Core Architecture (코어)
+[[level]]
+name = "Core"
+index = 2
+
+[[level.candidate]]
+name = "HEXA_A_n6"
+n6_score = 100
+performance = 95
+power = 95
+cost = 60
+tags = ["phi_P+tau_E=n=6_CPU", "n=6_GPU", "sigma_tau=48_TOPS"]
+
+[[level.candidate]]
+name = "A18Pro"
+n6_score = 95
+performance = 90
+power = 90
+cost = 80
+tags = ["2P+4E=n=6", "6GPU=n", "current"]
+
+[[level.candidate]]
+name = "A17Pro"
+n6_score = 90
+performance = 80
+power = 85
+cost = 90
+tags = ["2P+4E=n=6", "6GPU=n", "prev_gen"]
+
+[[level.candidate]]
+name = "Custom_8core"
+n6_score = 40
+performance = 85
+power = 70
+cost = 50
+tags = ["sigma-tau=8_cores", "non_n6_total"]
+
+# L3: Runtime (OS/런타임)
+[[level]]
+name = "Runtime"
+index = 3
+
+[[level.candidate]]
+name = "HEXA_iOS"
+n6_score = 100
+performance = 95
+power = 95
+cost = 60
+tags = ["sopfr=5_lifecycle", "n=6_QoS", "Egyptian_power"]
+
+[[level.candidate]]
+name = "iOS18"
+n6_score = 85
+performance = 88
+power = 90
+cost = 95
+tags = ["current", "XNU", "Jetsam_tau=4"]
+
+[[level.candidate]]
+name = "MicroKernel"
+n6_score = 70
+performance = 80
+power = 85
+cost = 40
+tags = ["L4", "seL4", "minimal"]
+
+[[level.candidate]]
+name = "Hybrid_OS"
+n6_score = 60
+performance = 82
+power = 80
+cost = 50
+tags = ["Fuchsia_style", "Zircon"]
+
+# L4: Ecosystem (생태계)
+[[level]]
+name = "Ecosystem"
+index = 4
+
+[[level.candidate]]
+name = "Closed_Apple"
+n6_score = 95
+performance = 95
+power = 90
+cost = 80
+tags = ["n=6_radios", "n=6_sensors", "Continuity"]
+
+[[level.candidate]]
+name = "Open_AOSP"
+n6_score = 30
+performance = 70
+power = 65
+cost = 95
+tags = ["fragmented", "non_n6"]
+
+[[level.candidate]]
+name = "Federated"
+n6_score = 60
+performance = 78
+power = 75
+cost = 70
+tags = ["cross_platform", "interop"]
+
+[[level.candidate]]
+name = "Hybrid_Walled"
+n6_score = 75
+performance = 85
+power = 82
+cost = 75
+tags = ["selective_open", "app_sideload"]
+
+# Compatibility rules
+[[rule]]
+type = "exclude"
+condition = "Si_standard AND CFET"
+reason = "Si substrate incompatible with CFET process"
+
+[[rule]]
+type = "exclude"
+condition = "Custom_8core AND HEXA_iOS"
+reason = "8-core breaks n=6 CPU total requirement"
+
+[[rule]]
+type = "boost"
+condition = "Diamond_Z6 AND HEXA_A_n6 AND HEXA_iOS"
+bonus = 10
+reason = "Full n=6 stack synergy"

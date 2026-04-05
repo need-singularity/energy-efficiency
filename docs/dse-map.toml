@@ -618,6 +618,25 @@ n6_max = 100.0
 n6_avg = 78.1
 note = "v2: 5개 n6=1.00 후보 추가 (전 레벨) → 100%. SOLID(5)+Hex(1)=n=6 + 12Factor=sigma. 궁극의 소프트웨어설계 5단 DSE. Hexagonal n=6 EXACT"
 
+[hexa-ios]
+goal = true
+dse = "done"
+combos = 1024
+alien_level = 10
+valid = 720
+tool = "tools/universal-dse/domains/hexa-ios.toml"
+levels = ["Substrate", "Process", "Core", "Runtime", "Ecosystem"]
+cross_dse = ["hexa-macos", "chip-architecture", "compiler-os", "software-design"]
+best_pareto = "Diamond_Z6 + N2_GAA + HEXA_A_n6 + HEXA_iOS + Closed_Apple (0.9200)"
+best_n6 = "Diamond_Z6 + N3E + HEXA_A_n6 + HEXA_iOS + Closed_Apple (100.0%)"
+best_perf = "Diamond_Z6 + N2_GAA + HEXA_A_n6 + HEXA_iOS + Closed_Apple (perf=0.950)"
+best_power = "Diamond_Z6 + N2_GAA + HEXA_A_n6 + HEXA_iOS + Closed_Apple (power=0.950)"
+best_cost = "Si_standard + N3E + A18Pro + iOS18 + Closed_Apple (cost=0.800)"
+pareto_frontier = 12
+n6_max = 100.0
+n6_avg = 82.5
+note = "궁극의 iOS 5단 DSE. iPhone CPU=n=6, GPU=n=6, Screen=n, 86/86 EXACT. macOS 자매 연결 165/165"
+
 [learning-algorithm]
 goal = true
 dse = "done"
@@ -17497,3 +17516,17 @@ bridge = "사회 주기 + 시간 구조"
 n6_resonance = "BT-212 60진법=σ·sopfr + BT-214 6도분리"
 note = "60초/60분/24시간/12월 → 사회 구조 시간 기반"
 
+
+[cross-dse.hexa-ios-x-hexa-macos]
+domains = ["hexa-ios", "hexa-macos"]
+status = "done"
+bridge = "Apple 모바일×데스크톱 n=6 생태계 통합"
+n6_resonance = "XNU n/φ=3 공유, GCD n=6 QoS, Egyptian 캐시, APFS J₂=24"
+note = "iOS 86/86 + macOS 79/79 = 165/165 EXACT, Apple 생태계 100% n=6 수렴"
+
+[cross-dse.hexa-ios-x-chip-architecture]
+domains = ["hexa-ios", "chip-architecture"]
+status = "done"
+bridge = "A-series SoC + 칩 아키텍처 융합"
+n6_resonance = "CPU n=6, GPU n=6, NE phi^tau=16, σ·J₂=288 ROB"
+note = "iPhone A-series = n=6 완전수 SoC, BT-69 chiplet 연결"

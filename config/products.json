@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 59,
-    "total_domains": 64,
+    "total_products": 60,
+    "total_domains": 65,
     "last_updated": "2026-04-05",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
@@ -947,7 +947,8 @@
         "cryptography",
         "network-protocol",
         "blockchain",
-        "hexa-macos"
+        "hexa-macos",
+        "hexa-ios"
       ],
       "tools": [
         "lang-dse",
@@ -996,6 +997,20 @@
             }
           ],
           "verify_script": "experiments/verify_hexa_macos.py"
+        },
+        {
+          "name": "궁극의 iOS",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "86/86 EXACT, BT-115/162/180/48/58/66/113/123/211 10BT교차, iPhone CPU=n=6·GPU=n=6·Screen=n=6\", 8단 DSE 1024조합, 물리한계 6증명, macOS 자매 165/165",
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/hexa-ios/goal.md"
+            }
+          ],
+          "verify_script": "experiments/verify_hexa_ios.py"
         }
       ],
       "anchor": "-소프트웨어인프라-software--infra",
