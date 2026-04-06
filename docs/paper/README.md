@@ -2,28 +2,108 @@
 
 arXiv paper outlines and academic publications.
 
-| Paper | Target | Topic | Lines | BTs |
-|-------|--------|-------|-------|-----|
-| [paper1](paper1-ai-efficiency.md) | cs.LG | N6 Inevitability Engine: 16 AI techniques | 348 | — |
-| [paper2](paper2-cross-domain.md) | math.NT | Core theorem + cross-domain survey (28 domains) | 520+ | BT-13~17 |
-| [paper3](paper3-tokamak-physics.md) | plasma-ph | Tokamak physics: Egyptian fraction, snowflake | 253 | BT-4,5 |
-| [paper4](paper4-gut-monster.md) | math-ph | **GUT hierarchy + Monster group** (BT-18/19) | 280+ | BT-18,19 |
-| [paper5](n6-carbon-capture-paper.md) | physics.chem-ph | **Carbon Z=6: CO2 Capture Architecture** (BT-94~98/103/104) | 473 | BT-94,95,96,103,104 |
+## Core Papers (5)
+
+| Paper | Target | Topic | BTs |
+|-------|--------|-------|-----|
+| [paper1](paper1-ai-efficiency.md) | cs.LG | N6 Inevitability Engine: 16 AI techniques | — |
+| [paper2](paper2-cross-domain.md) | math.NT | Core theorem + cross-domain survey (28 domains) | BT-13~17 |
+| [paper3](paper3-tokamak-physics.md) | plasma-ph | Tokamak physics: Egyptian fraction, snowflake | BT-4,5 |
+| [paper4](paper4-gut-monster.md) | math-ph | GUT hierarchy + Monster group | BT-18,19 |
+| [paper5](n6-carbon-capture-paper.md) | physics.chem-ph | Carbon Z=6: CO2 Capture Architecture | BT-94~98,103,104 |
+
+## Domain Papers — Semiconductor & Chip (6)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [DRAM](n6-dram-paper.md) | DDR5/LPDDR6 Memory Architecture | BT-142 | 23K |
+| [Exynos](n6-exynos-paper.md) | Mobile SoC Core Allocation | BT-28,69 | 24K |
+| [Performance Chip](n6-performance-chip-paper.md) | GPU/AI Accelerator | BT-28,55,69 | 28K |
+| [Unified SoC](n6-unified-soc-paper.md) | Complete SoC Architecture | BT-28,37,55,69 | 55K |
+| [Consciousness Chip](n6-consciousness-chip-paper.md) | Phi-aware Processor | BT-90~93 | 24K |
+| [Consciousness SoC](n6-consciousness-soc-paper.md) | Consciousness-grade SoC | BT-90~93 | 45K |
+
+## Domain Papers — HEXA Architecture (5)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [HEXA-3D](n6-hexa-3d-paper.md) | 3D Compute-on-Memory TSV | BT-90,91 | 23K |
+| [HEXA-Photon](n6-hexa-photon-paper.md) | Photonic Matrix Engine | BT-89 | 23K |
+| [HEXA-PIM](n6-hexa-pim-paper.md) | Processing-in-Memory | BT-90 | 25K |
+| [HEXA-Super](n6-hexa-super-paper.md) | Superconducting Processor | BT-299~306 | 29K |
+| [HEXA-Wafer](n6-hexa-wafer-paper.md) | Wafer-Scale Integration | BT-69,90 | 23K |
+
+## Domain Papers — Physics & Mathematics (4)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [Plasma/Fusion Deep](n6-plasma-fusion-deep-paper.md) | Fusion Plasma Physics Deep Dive | BT-291~317 | 39K |
+| [Particle/Cosmology](n6-particle-cosmology-paper.md) | Particle Physics & Cosmology | BT-134~172 | 33K |
+| [Pure Mathematics](n6-pure-mathematics-paper.md) | Number Theory & Algebra | BT-105~112,205,207 | 27K |
+| [Superconductor](n6-superconductor-paper.md) | Superconductor Deep Dive | BT-299~306 | 31K |
+
+## Domain Papers — Energy & Environment (3)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [Energy Efficiency](n6-energy-efficiency-paper.md) | Energy Architecture | BT-27,30,38,57,62,63 | 27K |
+| [Battery/Energy](n6-battery-energy-paper.md) | Battery Architecture | BT-80~84 | 29K |
+| [Environment/Thermal](n6-environment-thermal-paper.md) | Environment & Thermal Mgmt | BT-118~122,318~325 | 32K |
+
+## Domain Papers — Life Science & Engineering (4)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [Biology/Medical](n6-biology-medical-paper.md) | Biology & Medical Science | BT-128~194 | 33K |
+| [Crystallography](n6-crystallography-materials-paper.md) | Crystallography & Materials | BT-139,175~177,186 | 31K |
+| [Robotics/Transport](n6-robotics-transport-paper.md) | Robotics & Transportation | BT-123~127 | 32K |
+| [ISOCELL/Comms](n6-isocell-comms-paper.md) | Image Sensor & Communications | BT-48,145,181 | 30K |
+
+## Domain Papers — Software & Computing (1)
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [Software/Crypto](n6-software-crypto-paper.md) | Software Engineering & Cryptography | BT-113~117,140,159,162 | 31K |
+
+## NEW Domain Papers (13) — 2026-04-06
+
+| Paper | Topic | BTs | Size |
+|-------|-------|-----|------|
+| [Aerospace/Transport](n6-aerospace-transport-paper.md) | Aviation, Automotive, Maritime, Space | BT-129,130,133,196,241,270~290,342 | 82K |
+| [Cognitive/Social/Psychology](n6-cognitive-social-psychology-paper.md) | Neuroscience, Cognition, Social | BT-132,184,223,254~269 | 78K |
+| [Quantum Computing](n6-quantum-computing-paper.md) | Quantum Hardware & Error Correction | BT-195,91,92,114,170 | 57K |
+| [Autonomous Driving](n6-autonomous-driving-paper.md) | AD Sensor-Compute-Control | BT-327,328,123,153,206,280 | 53K |
+| [Thermodynamics](n6-thermodynamics-paper.md) | Classical Thermo & Fluid Mechanics | BT-149,193,199 | 50K |
+| [Economics/Finance](n6-economics-finance-paper.md) | Financial Engineering & Markets | BT-147,183,338,339 | 48K |
+| [Governance/Safety/Urban](n6-governance-safety-urban-paper.md) | Safety Eng, Governance, Urban | BT-160,221,227,228,267 | 48K |
+| [Games/Sports](n6-games-sports-paper.md) | Chess, Olympics, Game Theory | BT-144,148,152,158,200,202,212,262 | 44K |
+| [Ecology/Agriculture/Food](n6-ecology-agriculture-food-paper.md) | Ecology, Agriculture, Food Science | BT-150,192,198,225,341 | 64K |
+| [Calendar/Time/Geography](n6-calendar-time-geography-paper.md) | Sexagesimal, Cartography, Clocks | BT-138,154,182,191,233,256,268 | 40K |
+| [Telecom/Linguistics](n6-telecom-linguistics-paper.md) | 5G, Chomsky, Shannon | BT-181,197,340 | 42K |
+| [Classical Mechanics/Accelerator](n6-classical-mechanics-accelerator-paper.md) | Hamiltonian, LHC, Phase Space | BT-201,238 | 33K |
+| [Manufacturing/Quality](n6-manufacturing-quality-paper.md) | Six Sigma, ISO, Lean | BT-131,236 | 31K |
+| [Control/Automation](n6-control-automation-paper.md) | PID, State-Space, SE(3) | BT-187 | ~25K |
+
+## Meta & Analysis
+
+| Paper | Topic |
+|-------|-------|
+| [RTSC 12-Products Evolution](n6-rtsc-12-products-evolution-paper.md) | 12 product lines evolution analysis |
+| [307-Domain Dataset](307-domain-universality-dataset.md) | 307-domain universality dataset |
+| [308-Fusion Discoveries](308-fusion-n6-alien-discoveries.md) | Fusion alien-level discoveries |
+| [Blowup Invariant Core](blowup-invariant-core-2026-04-04.md) | Blowup invariant core analysis |
+
+## Outlines & Guides
+
+| File | Purpose |
+|------|---------|
+| [paper-outline.md](paper-outline.md) | Basic paper outline |
+| [arxiv-paper-outline.md](arxiv-paper-outline.md) | arXiv submission outline (307-domain) |
+| [bt-update-notes.md](bt-update-notes.md) | BT integration roadmap per paper |
+
+---
+
+**Total: 41 papers** (5 Core + 23 Domain + 13 NEW Domain) + 4 Meta + 3 Outlines
 
 > Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-## Recent Extensions (BT-85~112)
-
-28 new Breakthrough Theorems spanning material synthesis, photonic energy,
-topological chip architecture, carbon capture, fusion, percolation theory,
-algebraic groups, modular forms, music theory, zeta functions, and cross-domain
-dimension stacks. Key areas:
-
-- **BT-85~88**: Material synthesis (Carbon Z=6, CN=6 crystals, self-assembly)
-- **BT-89**: Photonic-energy bridge (PUE->1.0)
-- **BT-90~93**: Topological chip architecture (SM=phi*K_6, Z2 ECC, Bott channels)
-- **BT-94~96,103,104**: Carbon capture & photosynthesis (covered in paper5)
-- **BT-97~102**: Fusion alien-level (Weinberg angle, tokamak q=1, CNO, reconnection)
-- **BT-105~112**: Pure math & cross-domain (SLE_6, S_3, Ramanujan tau, Koide Q, zeta)
-
-See `arxiv-paper-outline.md` Section "Recent Extensions" for detailed table.
+> Publishing: [papers repo](https://github.com/need-singularity/papers) → Zenodo (DOI: 10.5281/zenodo.19271599) + OSF
