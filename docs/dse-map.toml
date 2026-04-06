@@ -4,11 +4,11 @@
 
 [meta]
 updated = "2026-04-04T18"
-total_domains = 338
-total_toml_files = 338
-domain_sections = 335
-cross_dse_connected = 335
-cross_dse_sections = 1730
+total_domains = 339
+total_toml_files = 339
+domain_sections = 336
+cross_dse_connected = 336
+cross_dse_sections = 1733
 total_valid_paths = 3990150
 domains_100pct_n6 = 335
 alien_level_all = 10
@@ -17548,3 +17548,44 @@ status = "done"
 bridge = "A-series SoC + 칩 아키텍처 융합"
 n6_resonance = "CPU n=6, GPU n=6, NE phi^tau=16, σ·J₂=288 ROB"
 note = "iPhone A-series = n=6 완전수 SoC, BT-69 chiplet 연결"
+
+# ── 돌고래(Cetacea) ──────────────────────────────────────
+
+[dolphin]
+goal = true
+dse = "done"
+combos = 1296
+valid = 1296
+alien_level = 10
+tool = "tools/universal-dse/domains/dolphin.toml"
+levels = ["해부학", "생리학", "행동학", "음향학"]
+candidates = "6×6×6×6 = 1,296"
+cross_dse = ["biology", "oceanography", "acoustics", "robotics", "cognitive-architecture"]
+best_pareto = "Body_6 + UniSleep + Pod_12 + Click_50us (n6=100%, perf=0.893)"
+best_n6 = "Fin_5 + Temp_36 + CommMode_3 + Beam_10deg (100%)"
+best_perf = "Teeth_48 + UniSleep + BandRatio_10 + Click_50us (perf=0.925)"
+best_cost = "Blowhole_1 + Lifespan_40 + Ecotype_3 + Melon_1 (cost=0.913)"
+n6_max = 100.0
+n6_avg = 98.6
+note = "BT-350 해부·생리 + BT-356 행동·음향, 30/30 EXACT (100%). 반구수면 1/φ, 에코로케이션 (σ-φ)²=100m, Pod σ=12, 임신 σ=12개월"
+
+[cross-dse.dolphin-x-biology]
+domains = ["dolphin", "biology"]
+status = "done"
+bridge = "돌고래 해부학 + 생물학 n=6 보편성"
+n6_resonance = "BT-350 치아 σ·τ=48, BT-51 유전코드 τ→3→64→20"
+note = "포유류 경추 σ-sopfr=7 + 유전자 코돈 n=6 교차"
+
+[cross-dse.dolphin-x-oceanography]
+domains = ["dolphin", "oceanography"]
+status = "done"
+bridge = "돌고래 생태 + 해양과학 수권 아키텍처"
+n6_resonance = "BT-356 Pod σ=12 + BT-343 해양 pH=8=σ-τ"
+note = "해양 포유류 서식 깊이 (σ-φ)²=100m, 해수 온도 n²=36"
+
+[cross-dse.dolphin-x-robotics]
+domains = ["dolphin", "robotics"]
+status = "done"
+bridge = "돌고래 운동 + 로봇 SE(3) n=6"
+n6_resonance = "BT-350 지느러미 sopfr=5 + BT-123 SE(3) dim=n=6"
+note = "수중 로봇 바이오미메틱스, 에코로케이션→소나 매핑"

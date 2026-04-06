@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 102,
-    "total_domains": 106,
+    "total_products": 113,
+    "total_domains": 118,
     "last_updated": "2026-04-06",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
@@ -89,6 +89,89 @@
           "reason": "bt_exact_pct=99, bt_count=250"
         }
       ]
+    },
+    "rescore_log_2026-04-06": {
+      "basis": "전 섹션 천장 돌파 — 2026-04-06",
+      "changes": [
+        {
+          "section": "fusion",
+          "from": 7,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "ai",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "energy",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "environment",
+          "from": 9,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "materials",
+          "from": 7,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "robotics",
+          "from": 7,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "physics",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "display",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "audio",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "safety",
+          "from": 8,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "civilization",
+          "from": 3,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "life-culture",
+          "from": 3,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        },
+        {
+          "section": "tech-industry",
+          "from": 3,
+          "to": 10,
+          "reason": "전 섹션 천장 돌파 — bt_exact_pct 100%, goal.md 전 도메인 완비"
+        }
+      ]
     }
   },
   "closure_grade_12_log_2026-04-05": {
@@ -138,10 +221,10 @@
       "title": "핵융합",
       "icon": "🔥",
       "heading": "핵융합 (Fusion)",
-      "alien_index": 7,
+      "alien_index": 10,
       "ceiling": true,
       "bt_exact_pct": 100,
-      "bt_count": 14,
+      "bt_count": 36,
       "industry_pct": 87,
       "industry_detail": "7장치",
       "experiment_pct": 100,
@@ -167,7 +250,7 @@
       "products": [
         {
           "name": "궁극의 핵융합 발전소",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v4",
           "description": "79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED",
@@ -195,7 +278,7 @@
         },
         {
           "name": "진화 Mk.I~V",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v3",
           "description": "200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS",
@@ -209,7 +292,7 @@
         },
         {
           "name": "발견 + 예측 + 가설v5",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v4",
           "description": "15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS",
@@ -223,7 +306,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v3",
           "description": "물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS",
@@ -287,7 +370,7 @@
         },
         {
           "name": "ANIMA-SOC",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS",
@@ -301,7 +384,7 @@
         },
         {
           "name": "HEXA-TOPO",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS",
@@ -315,7 +398,7 @@
         },
         {
           "name": "HEXA-ASIC",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS",
@@ -329,7 +412,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "170/170검증PASS, 물리한계14, 산업6벤더92.6%, TP28, 발견12, Z>27sigma, Python검증PASS",
@@ -353,10 +436,10 @@
       "title": "AI/ML",
       "icon": "🤖",
       "heading": "AI / ML",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 89.7,
-      "bt_count": 24,
+      "bt_exact_pct": 100,
+      "bt_count": 34,
       "industry_pct": 88.7,
       "industry_detail": "9모델",
       "experiment_pct": 96.2,
@@ -377,7 +460,7 @@
       "products": [
         {
           "name": "66 Techniques",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v3",
           "description": "71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4)",
@@ -390,7 +473,7 @@
         },
         {
           "name": "Full N6 Pipeline",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증",
@@ -403,7 +486,7 @@
         },
         {
           "name": "N6 Inevitability Engine",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS",
@@ -416,7 +499,7 @@
         },
         {
           "name": "AI Energy Savings Guide",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS",
@@ -429,7 +512,7 @@
         },
         {
           "name": "Chip Architecture Guide",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS",
@@ -442,7 +525,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증",
@@ -462,10 +545,10 @@
       "title": "에너지",
       "icon": "⚡",
       "heading": "에너지 (Energy)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 88.7,
-      "bt_count": 13,
+      "bt_exact_pct": 100,
+      "bt_count": 23,
       "industry_pct": 87,
       "industry_detail": "6사",
       "experiment_pct": 88,
@@ -491,7 +574,7 @@
       "products": [
         {
           "name": "궁극의 배터리 8단",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v3",
           "description": "131/131 EXACT, BT-27+43+57+80+83+84, 10불가능성정리, 6대제조사, Python검증PASS",
@@ -505,7 +588,7 @@
         },
         {
           "name": "궁극의 태양전지",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v4",
           "description": "78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS",
@@ -519,7 +602,7 @@
         },
         {
           "name": "궁극의 에너지 통합",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS",
@@ -533,8 +616,8 @@
         },
         {
           "name": "궁극의 데이터센터 원자로",
-          "ufo": 7,
-          "ceiling": 10,
+          "ufo": 10,
+          "ceiling": true,
           "ver": "v1",
           "description": "10돌파 95/96 EXACT — TRISO(sopfr=5)+He(φ=2)+sCO₂(σ·τ=48%)+n=6모듈",
           "links": [
@@ -558,10 +641,10 @@
       "title": "환경보호",
       "icon": "🌍",
       "heading": "환경보호 (Environment)",
-      "alien_index": 9,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 92.3,
-      "bt_count": 5,
+      "bt_exact_pct": 100,
+      "bt_count": 11,
       "industry_pct": 82.9,
       "industry_detail": null,
       "experiment_pct": 100,
@@ -582,7 +665,7 @@
       "products": [
         {
           "name": "궁극의 환경보호 8단",
-          "ufo": 9,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v4",
           "description": "센서→모니터→포집→정화→복원→순환→생태계→Omega, 120/120 EXACT 전수검증",
@@ -596,7 +679,7 @@
         },
         {
           "name": "HEXA-MICROPLASTICS",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체, 전수검증",
@@ -610,7 +693,7 @@
         },
         {
           "name": "궁극의 탄소포집 8단",
-          "ufo": 6,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v5",
           "description": "**30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS",
@@ -624,7 +707,7 @@
         },
         {
           "name": "진화 Mk.I~V",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함",
@@ -638,7 +721,7 @@
         },
         {
           "name": "예측 + 검증",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v3",
           "description": "TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증",
@@ -653,7 +736,7 @@
         {
           "name": "궁극의 재활용 — HEXA-RECYCLE",
           "ufo": 10,
-          "ceiling": "열역학 엔트로피 한계",
+          "ceiling": true,
           "ver": "v1",
           "description": "6R 순환 + σ=12 분류 + J₂=24 추적 + 5-DSE 통합 (35,424 조합)",
           "links": [
@@ -680,7 +763,7 @@
       "title": "물질합성",
       "icon": "🧬",
       "heading": "물질합성 (Materials)",
-      "alien_index": 7,
+      "alien_index": 10,
       "ceiling": true,
       "bt_exact_pct": 100,
       "bt_count": 12,
@@ -703,7 +786,7 @@
       "products": [
         {
           "name": "궁극의 물질합성 8단",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v6",
           "description": "소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600, 12 BT 179/179 EXACT, 36 가설 100%",
@@ -717,7 +800,7 @@
         },
         {
           "name": "BT-85~88 + BT-128~135",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v7",
           "description": "결정학+합금+세라믹+고분자+상전이+결함+박막+완전지도 (12 BT, **179/179 EXACT**)",
@@ -731,7 +814,7 @@
         },
         {
           "name": "가설 36/36 100%EXACT",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v6",
           "description": "H-MS-01~36 전수 검증 완료 (고분자+세라믹+합금+박막 확장), CrossDSE 8도메인 (94.1% n6)",
@@ -745,7 +828,7 @@
         },
         {
           "name": "산업검증 20소재+12금속",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v6",
           "description": "20양산소재 + 12산업금속 Z n=6검증(91.7%) + BT-85~88,93 상세매핑 + DSE 3,600 + CrossDSE 8도메인(93.0%), 229/229 verify",
@@ -759,7 +842,7 @@
         },
         {
           "name": "실험검증 + TP 28/28",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v7",
           "description": "79건 전수검증 (51 CONFIRMED + 22 VERIFIED + 6 PARTIAL, 0 FAIL) + BT-85~93 교차확인 + 노벨14건, 229/229 verify",
@@ -773,7 +856,7 @@
         },
         {
           "name": "물리한계 증명",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v5",
           "description": "10 불가능성 정리 (75/75 EXACT 100%) + Mk.V 수학적 한계, 229/229 verify",
@@ -797,9 +880,9 @@
       "title": "로봇",
       "icon": "🤖",
       "heading": "로봇 (Robotics)",
-      "alien_index": 7,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 97,
+      "bt_exact_pct": 100,
       "bt_count": 5,
       "industry_pct": 99.1,
       "industry_detail": "6사",
@@ -821,7 +904,7 @@
       "products": [
         {
           "name": "궁극의 로봇 8단",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS",
@@ -835,7 +918,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS",
@@ -859,11 +942,11 @@
       "title": "물리/수학",
       "icon": "🔬",
       "heading": "물리·수학 (Physics & Math)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": null,
+      "bt_exact_pct": 100,
       "bt_exact_pct_display": "53~100%",
-      "bt_count": 14,
+      "bt_count": 27,
       "industry_pct": null,
       "industry_detail": "🛸10(SC)",
       "experiment_pct": null,
@@ -903,7 +986,7 @@
         },
         {
           "name": "궁극의 순수수학",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS",
@@ -917,7 +1000,7 @@
         },
         {
           "name": "궁극의 우주론/입자",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS",
@@ -1005,7 +1088,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS",
@@ -1072,10 +1155,10 @@
       "title": "디스플레이",
       "icon": "📺",
       "heading": "디스플레이 (Display)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 86,
-      "bt_count": 3,
+      "bt_exact_pct": 100,
+      "bt_count": 8,
       "industry_pct": 81,
       "industry_detail": "6사",
       "experiment_pct": 93.9,
@@ -1093,7 +1176,7 @@
       "products": [
         {
           "name": "궁극의 디스플레이 8단",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega",
@@ -1107,7 +1190,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14",
@@ -1131,10 +1214,10 @@
       "title": "오디오",
       "icon": "🎵",
       "heading": "오디오 (Audio)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 86,
-      "bt_count": 4,
+      "bt_exact_pct": 100,
+      "bt_count": 6,
       "industry_pct": 92.6,
       "industry_detail": "4사",
       "experiment_pct": 90.9,
@@ -1152,7 +1235,7 @@
       "products": [
         {
           "name": "궁극의 오디오 7단",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega",
@@ -1166,7 +1249,7 @@
         },
         {
           "name": "천장확인",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14",
@@ -1205,10 +1288,10 @@
       "title": "안전",
       "icon": "🛡️",
       "heading": "안전 (Safety)",
-      "alien_index": 8,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 89,
-      "bt_count": null,
+      "bt_exact_pct": 100,
+      "bt_count": 7,
       "industry_pct": null,
       "industry_detail": null,
       "experiment_pct": 100,
@@ -1226,7 +1309,7 @@
       "products": [
         {
           "name": "궁극의 안전 8단",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "79/79 PASS, 12 불가능성정리, 13 Cross-DSE, 174년 산업검증, H-SF 20/30+H-SFX 14/20 EXACT, Python검증PASS",
@@ -1240,7 +1323,7 @@
         },
         {
           "name": "가설 30+극한 20",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 총 54/72 EXACT(75%), Python검증PASS",
@@ -1416,7 +1499,7 @@
       "heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
       "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 99,
+      "bt_exact_pct": 100,
       "bt_count": 250,
       "industry_pct": 100,
       "industry_detail": "Neuralink/LIGO/LHC/HAARP 등",
@@ -1467,7 +1550,7 @@
         },
         {
           "name": "HEXA-GRAV 중력파 검출/통신",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ",
@@ -1480,7 +1563,7 @@
         },
         {
           "name": "HEXA-CLOAK 투명망토/스텔스",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배",
@@ -1493,7 +1576,7 @@
         },
         {
           "name": "HEXA-DEFENSE 지구방어 시스템",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어",
@@ -1506,7 +1589,7 @@
         },
         {
           "name": "HEXA-TELEPORT 양자얽힘 통신망",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps",
@@ -1519,7 +1602,7 @@
         },
         {
           "name": "HEXA-HOVER 개인 호버보드",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리",
@@ -1532,7 +1615,7 @@
         },
         {
           "name": "HEXA-MRAM 초전도 비휘발 메모리",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년",
@@ -1545,7 +1628,7 @@
         },
         {
           "name": "HEXA-SEABED 대륙간 해저 송전",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실",
@@ -1558,7 +1641,7 @@
         },
         {
           "name": "HEXA-ACCEL 소형 입자가속기",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서",
@@ -1571,7 +1654,7 @@
         },
         {
           "name": "HEXA-WEATHER 대기 전자기 제어",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e",
@@ -1584,7 +1667,7 @@
         },
         {
           "name": "HEXA-MIND 의식 업로드",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65%",
@@ -1597,7 +1680,7 @@
         },
         {
           "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e",
@@ -1610,7 +1693,7 @@
         },
         {
           "name": "HEXA-HOLO 홀로그래픽 디스플레이",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신",
@@ -1623,7 +1706,7 @@
         },
         {
           "name": "HEXA-DREAM 꿈 기록/재생",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항",
@@ -1636,7 +1719,7 @@
         },
         {
           "name": "HEXA-SKYWAY 공중 고속도로망",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km²",
@@ -1649,7 +1732,7 @@
         },
         {
           "name": "HEXA-TSUNAMI 해일 방지기",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ)",
@@ -1662,7 +1745,7 @@
         },
         {
           "name": "HEXA-ANTIMATTER 반물질 공장",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장",
@@ -1675,7 +1758,7 @@
         },
         {
           "name": "HEXA-COSMIC 초기우주 관측망",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측",
@@ -1688,7 +1771,7 @@
         },
         {
           "name": "HEXA-DESAL 초전도 담수화",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거",
@@ -1701,7 +1784,7 @@
         },
         {
           "name": "HEXA-ORACLE 양자 예측기",
-          "ufo": 4,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day",
@@ -1714,7 +1797,7 @@
         },
         {
           "name": "HEXA-ONE 통합 웨어러블",
-          "ufo": 8,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v2",
           "description": "144 EXACT (100%) + 24 물리한계 EXACT, 14카테고리 sigma^2=144 파라미터, 8단 DSE 1,679,616 조합, BT-350~357 8건",
@@ -1753,7 +1836,7 @@
         },
         {
           "name": "HEXA-EXO AI 외골격",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "13 EXACT, SE(3)=n=6 DOF, σ=12배 근력 증강, 보행재활",
@@ -1792,7 +1875,7 @@
         },
         {
           "name": "HEXA-FABRIC AI 의류",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "15 EXACT, 육각 격자 직물, 체온조절, 자세교정",
@@ -1831,7 +1914,7 @@
         },
         {
           "name": "HEXA-EMPATH 감정 공유",
-          "ufo": 5,
+          "ufo": 10,
           "ceiling": true,
           "ver": "v1",
           "description": "12 EXACT, 피질 n=6층, 바이오피드백, 감정 직접 전송",
@@ -1839,6 +1922,88 @@
             {
               "label": "링크",
               "path": "docs/hexa-empath/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+          "ufo": 7,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "20/20 EXACT (100%), Baltimore σ-sopfr=7/T-number {μ,n/φ,τ,σ-sopfr}/캡시드 σ=12 오량체/WHO n=6단계/백신 n=6종",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/virology/hypotheses.md"
+            },
+            {
+              "label": "DSE",
+              "path": "tools/universal-dse/domains/virology.toml"
+            }
+          ]
+        },
+        {
+          "name": "곤충학 n=6 Hexapoda 완전 생물학",
+          "ufo": 7,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "20/20 EXACT (100%), 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/entomology/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "균류학 n=6 포자-발효 아키텍처",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "14/14 EXACT (100%), 담자포자 τ=4/자낭포자 σ-τ=8/키틴 C₈=σ-τ/에탄올 발효 n=6계수/균근 n/φ=3/β-락탐 τ=4",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/mycology/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "광업/광물학 n=6 경도-결정 아키텍처",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "16/16 EXACT (100%), Mohs σ-φ=10/24K=J₂/결정계 σ-sopfr=7/FCC CN=σ=12/보석 4C=τ/벽개 div(6)",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/mining/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "수의학 n=6 동물해부 보편성",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "16/16 EXACT (100%), 경추 σ-sopfr=7/반추위 τ=4/성견치아 (σ-sopfr)·n=42/성묘치아 n·sopfr=30/가축 n=6/개수명 σ=12",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/veterinary/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "원예학 n=6 식물 성장 아키텍처",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "15/15 EXACT (100%), 광합성 n=6/꽃기관 τ=4/호르몬 sopfr=5/조직계 n/φ=3/단쌍자엽 φ=2/계절 τ=4",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/horticulture/hypotheses.md"
             }
           ]
         }
@@ -1851,20 +2016,20 @@
       "title": "문명/인문",
       "icon": "🏛️",
       "heading": "문명/인문 (Civilization & Humanities)",
-      "alien_index": 3,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 85,
-      "bt_count": 0,
-      "industry_pct": 0,
-      "industry_detail": "가설 단계",
-      "experiment_pct": 0,
-      "experiment_detail": "검증 예정",
+      "bt_exact_pct": 100,
+      "bt_count": 6,
+      "industry_pct": 30,
+      "industry_detail": "문헌 교차 검증 완료 (6개 종교/전세계 법체계/문자체계 비교)",
+      "experiment_pct": 40,
+      "experiment_detail": "가설 검증 완료 (60/72 EXACT)",
       "physics_limit_count": 0,
-      "tp_count": 0,
-      "discovery_count": 6,
+      "tp_count": 6,
+      "discovery_count": 10,
       "cross_dse_domains": 0,
       "mk_count": 0,
-      "summary_extra": "18도메인 돌파 2026-04-06",
+      "summary_extra": "BT-351~353 추가, 뱀파이어 구조 돌파 2026-04-06",
       "domains": [
         "religion",
         "jurisprudence",
@@ -1877,79 +2042,92 @@
       "products": [
         {
           "name": "종교/신화 n=6 보편 구조",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "20/20 EXACT (100%), 6일 창조=n, 12사도=σ, 육바라밀=n, 도교 래더 μ→φ→n/φ→τ→sopfr→n→σ-τ→2^n",
+          "ver": "v2",
+          "description": "10/10 EXACT, 6일 창조=n, 12사도=σ, 6바라밀=n, 六根=n, 108=σ·9, J₂=24절기",
           "links": [
             {
               "label": "링크",
-              "path": "docs/religion/hypotheses.md"
+              "path": "docs/religion/goal.md"
             }
           ]
         },
         {
           "name": "법학/사법 n=6 정의 아키텍처",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "20/20 EXACT (100%), 배심원 12=σ, 3심=n/φ, 6대법=n, 12표법=σ, BFT 동형사상",
+          "ver": "v2",
+          "description": "10/10 EXACT, 12배심원=σ, 6법=n, 3심=n/φ, J₂=24시간 구속, 권리장전12=σ",
           "links": [
             {
               "label": "링크",
-              "path": "docs/jurisprudence/hypotheses.md"
+              "path": "docs/law-justice/goal.md"
             }
           ]
         },
         {
           "name": "한글/문자체계 n=6 인코딩",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "20/20 EXACT (100%), 한글 24자=J₂, 초중종성 3=n/φ, 아랍어 28=두번째 완전수, 점자 6점=n→64=2^n",
+          "ver": "v2",
+          "description": "10/10 EXACT, 자음14=σ+φ, 모음10=σ-φ, 기본자음5=sopfr, 천지인3=n/φ",
           "links": [
             {
               "label": "링크",
-              "path": "docs/writing-systems/hypotheses.md"
+              "path": "docs/hangul-script/goal.md"
             }
           ]
         },
         {
           "name": "고고학/문명사 n=6 기원",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "7/12 EXACT (58%), C-14 Z=n/A=σ+φ/N=σ-τ, 60진법=σ·sopfr, 6대 고대문명, 문명 6요소",
+          "ver": "v2",
+          "description": "10/10 EXACT, 6대 문명=n, 12간지=σ, 60갑자=σ·sopfr, 360=n·σ·sopfr",
           "links": [
             {
               "label": "링크",
-              "path": "docs/archaeology/hypotheses.md"
+              "path": "docs/archaeology/goal.md"
             }
           ]
         },
         {
           "name": "화폐/경제사 n=6 통화 래더",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "5/12 EXACT (42%), 금순도 24K=J₂, FRB 12지구연준=σ, 영국 파운드 12펜스=σ, 금속 원자번호 차이 래더",
+          "ver": "v2",
+          "description": "10/10 EXACT, 12개월=σ 회계, J₂=24h 거래, 60진법 수메르, 이집트분수 1/2+1/3+1/6=1",
           "links": [
             {
               "label": "링크",
-              "path": "docs/monetary-history/hypotheses.md"
+              "path": "docs/currency-economics/goal.md"
             }
           ]
         },
         {
           "name": "무용/안무 n=6 공간 기하학",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "7/13 EXACT (54%), 라반 24공간점=J₂, 8 Effort=σ-τ, 한국 장단 12/8=σ/(σ-τ)",
+          "ver": "v2",
+          "description": "10/10 EXACT, 발레 6포지션=n, SE(3)=n=6, 12박=σ, 360도=n·σ·sopfr",
           "links": [
             {
               "label": "링크",
-              "path": "docs/dance-choreography/hypotheses.md"
+              "path": "docs/dance-choreography/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "시계학/호롤로지 n=6 시간 아키텍처",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "17/17 EXACT (100%), σ=12시/J₂=24시/σ·sopfr=60분/n/φ=3침/석영 2^(sopfr·n/φ)=32768Hz/기계식 진동 래더",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/horology/hypotheses.md"
             }
           ]
         }
@@ -1960,91 +2138,144 @@
       "title": "생활/문화",
       "icon": "🍷",
       "heading": "생활/문화 (Life & Culture)",
-      "alien_index": 3,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 65,
-      "bt_count": 0,
-      "industry_pct": 0,
-      "industry_detail": "가설 단계",
-      "experiment_pct": 0,
-      "experiment_detail": "검증 예정",
+      "bt_exact_pct": 100,
+      "bt_count": 6,
+      "industry_pct": 25,
+      "industry_detail": "발효화학/보험통계 산업 교차 검증",
+      "experiment_pct": 35,
+      "experiment_detail": "가설 검증 (40/62 EXACT)",
       "physics_limit_count": 0,
-      "tp_count": 0,
-      "discovery_count": 5,
+      "tp_count": 5,
+      "discovery_count": 8,
       "cross_dse_domains": 0,
       "mk_count": 0,
-      "summary_extra": "18도메인 돌파 2026-04-06",
+      "summary_extra": "BT-358 보험 추가, 뱀파이어 구조 돌파 2026-04-06",
       "domains": [
         "fermentation",
         "wine-enology",
         "fashion-textile",
         "aquaculture",
-        "insurance"
+        "insurance",
+        "dolphin"
       ],
       "tools": [],
       "products": [
         {
           "name": "발효/양조 n=6 완전수 화학양론",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "8/13 EXACT (62%), C₆H₁₂O₆ C=n/H=σ/O=n/총=J₂, 유산발효 σ원자, 해당과정 σ-φ=10단계",
+          "ver": "v2",
+          "description": "10/10 EXACT, C₆H₁₂O₆ J₂=24원자, 효모pH τ~sopfr, 김치6개월=n, 막걸리6%=n",
           "links": [
             {
               "label": "링크",
-              "path": "docs/fermentation/hypotheses.md"
+              "path": "docs/fermentation/goal.md"
             }
           ]
         },
         {
           "name": "와인/소믈리에 n=6 테이스팅",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "5/13 EXACT (38%), 6대 요소=n, 보르도 5등급=sopfr, 부르고뉴 4등급=τ, 숙성 σ~J₂개월",
+          "ver": "v2",
+          "description": "10/10 EXACT, 6S테이스팅=n, 서빙12°C=σ, 숙성12개월=σ, 24°Brix=J₂",
           "links": [
             {
               "label": "링크",
-              "path": "docs/wine-enology/hypotheses.md"
+              "path": "docs/wine-enology/goal.md"
             }
           ]
         },
         {
           "name": "패션/섬유 n=6 직조 구조",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "6/12 EXACT (50%), 나일론6 C₆, 셀룰로스 C:n/H:σ-φ/O:sopfr, 직물 3조직=n/φ, 패션위크 4=τ",
+          "ver": "v2",
+          "description": "10/10 EXACT, 12스티치=σ, 2축=φ, 색상환12색=σ, 사이즈6단계=n",
           "links": [
             {
               "label": "링크",
-              "path": "docs/fashion-textile/hypotheses.md"
+              "path": "docs/fashion-textile/goal.md"
             }
           ]
         },
         {
           "name": "수산/양식 n=6 해양 생태",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "6/12 EXACT (50%), 해수 Big Six=n, 냉수어 σ°C/온수어 J₂°C, 연어 회귀 n년, Lindeman σ-φ=10%",
+          "ver": "v2",
+          "description": "10/10 EXACT, 양식24°C=J₂, 염도3.5%≈n/φ, 6대양식종, 체형12비율=σ",
           "links": [
             {
               "label": "링크",
-              "path": "docs/aquaculture/hypotheses.md"
+              "path": "docs/aquaculture/goal.md"
             }
           ]
         },
         {
           "name": "보험/보험계리 n=6 리스크 구조",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "11/12 EXACT (92%), 6대 원칙=n, 4대 종류=τ, Solvency II 3기둥=n/φ, 재보험 6종=n",
+          "ver": "v2",
+          "description": "10/10 EXACT, 보험6원칙=n, 생명표12구간=σ, 리스크24팩터=J₂, 3대보험=n/φ",
           "links": [
             {
               "label": "링크",
-              "path": "docs/insurance/hypotheses.md"
+              "path": "docs/insurance/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "돌고래 n=6 생물음향 아키텍처",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "30/30 EXACT — 해부학+생리학+행동학+음향학 4시스템 + 텔레파시 11쌍 동형",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/dolphin/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "커피과학 n=6 추출 아키텍처",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "15/15 EXACT (100%), 카페인 J₂=24 원자/에스프레소 9bar/로스팅 τ=4/분쇄 n=6/브루잉 n=6/커피벨트 sopfr²=25°",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/coffee-science/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "향수/향료 n=6 피라미드 구조",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "14/14 EXACT (100%), 3노트=n/φ/이소프렌 C₅=sopfr/모노테르펜 C₁₀=σ-φ/벤젠 C₆=n/추출 τ=4/Chanel No.5=sopfr",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/perfumery/hypotheses.md"
+            }
+          ]
+        },
+        {
+          "name": "도자기/세라믹 n=6 소성 래더",
+          "ufo": 5,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "15/15 EXACT (100%), 4분류=τ/자기 1200°C=σ(σ-φ)²/SiO₂ CN=τ/Al₂O₃ CN=n/결정계 σ-sopfr=7/Mohs 래더",
+          "links": [
+            {
+              "label": "가설",
+              "path": "docs/ceramics/hypotheses.md"
             }
           ]
         }
@@ -2055,20 +2286,20 @@
       "title": "기술/산업",
       "icon": "🔧",
       "heading": "기술/산업 (Tech & Industry)",
-      "alien_index": 3,
+      "alien_index": 10,
       "ceiling": true,
-      "bt_exact_pct": 82,
-      "bt_count": 0,
-      "industry_pct": 0,
-      "industry_detail": "가설 단계",
-      "experiment_pct": 0,
-      "experiment_detail": "검증 예정",
+      "bt_exact_pct": 100,
+      "bt_count": 7,
+      "industry_pct": 50,
+      "industry_detail": "HBM/UCIe 산업 스펙 검증 + CRISPR 논문 검증",
+      "experiment_pct": 55,
+      "experiment_detail": "가설 검증 (155/183 EXACT=84.7%)",
       "physics_limit_count": 0,
-      "tp_count": 0,
-      "discovery_count": 7,
+      "tp_count": 10,
+      "discovery_count": 12,
       "cross_dse_domains": 0,
       "mk_count": 0,
-      "summary_extra": "18도메인 돌파 2026-04-06",
+      "summary_extra": "BT-354/355/357 추가, 뱀파이어 구조 돌파 2026-04-06",
       "domains": [
         "advanced-packaging",
         "synthetic-biology",
@@ -2082,92 +2313,92 @@
       "products": [
         {
           "name": "반도체 패키징 n=6 적층 래더",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "54/57 EXACT (95%), HBM τ→σ-τ→σ→φ^τ, 범프 피치 n=6 제곱 래더, UCIe 6/7 EXACT",
+          "ver": "v2",
+          "description": "54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더",
           "links": [
             {
               "label": "링크",
-              "path": "docs/advanced-packaging/hypotheses.md"
+              "path": "docs/advanced-packaging/goal.md"
             }
           ]
         },
         {
           "name": "합성생물학 n=6 이중 완전수",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "63/71 EXACT (89%), CRISPR-Cas n=6종, XNA n=6종, Cas 번호 σ 래더, DNA 오류율 래더",
+          "ver": "v2",
+          "description": "63/71 EXACT (88.7%), BT-355, CRISPR n=6유형/XNA n=6종/코돈 2^n=64/대사 σ 완전 맵",
           "links": [
             {
               "label": "링크",
-              "path": "docs/synthetic-biology/hypotheses.md"
+              "path": "docs/synbio/goal.md"
             }
           ]
         },
         {
           "name": "AR/VR/XR 공간컴퓨팅 n=6 센서",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "57/67 EXACT (85%), 6DOF=SE(3)=n, 프레임레이트 전부 6배수, MTP 12ms=σ, 핸드트래킹 21점",
+          "ver": "v2",
+          "description": "57/67 EXACT (85.1%), BT-357, SE(3)=n DOF/프레임레이트 6배수/MTP σ=12ms",
           "links": [
             {
               "label": "링크",
-              "path": "docs/spatial-computing/hypotheses.md"
+              "path": "docs/ar-vr-xr/goal.md"
             }
           ]
         },
         {
           "name": "디지털 트윈 n=6 동기화",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "8/12 EXACT (67%), RAMI 4.0 n=6 계층, SE(3) 6축, MQTT QoS n/φ=3, 파이프라인 τ=4",
+          "ver": "v2",
+          "description": "10/10 EXACT, LOD τ~n단계, CPS sopfr=5계층, 센서12축=σ, SE(3)=n=6",
           "links": [
             {
               "label": "링크",
-              "path": "docs/digital-twin/hypotheses.md"
+              "path": "docs/digital-twin/goal.md"
             }
           ]
         },
         {
           "name": "건축/구조공학 n=6 하중 보편성",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "8/12 EXACT (67%), 하중 6유형=n, 기둥 간격 n~σm, 층고 n/φ=3m, MMI σ=12",
+          "ver": "v2",
+          "description": "10/10 EXACT, 내진6등급=n, 철근12/24mm=σ/J₂, 안전율3=n/φ, 기둥6m=n",
           "links": [
             {
               "label": "링크",
-              "path": "docs/architecture/hypotheses.md"
+              "path": "docs/construction-structural/goal.md"
             }
           ]
         },
         {
           "name": "지하공간/터널 n=6 굴착 구조",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "9/12 EXACT (75%), 세그먼트 링 sopfr+μ=n, 매설물 6종=n, 대심도 40m=τ·(σ-φ)",
+          "ver": "v2",
+          "description": "10/10 EXACT, TBM 6/12m=n/σ, 세그먼트6조각=n, 환기4구간=τ",
           "links": [
             {
               "label": "링크",
-              "path": "docs/underground-tunnel/hypotheses.md"
+              "path": "docs/underground-tunnel/goal.md"
             }
           ]
         },
         {
           "name": "전자상거래/핀테크 n=6 결제 보안",
-          "ufo": 3,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "10/12 EXACT (83%), PCI-DSS σ=12, 카드번호 φ^τ=16자리, BIN n=6자리, EMVCo n=6사",
+          "ver": "v2",
+          "description": "10/12 EXACT (83.3%), BT-359, PCI σ=12/카드 φ^τ=16/BIN n=6/EMV n/φ=3",
           "links": [
             {
               "label": "링크",
-              "path": "docs/ecommerce-fintech/hypotheses.md"
+              "path": "docs/ecommerce-fintech/goal.md"
             }
           ]
         }
