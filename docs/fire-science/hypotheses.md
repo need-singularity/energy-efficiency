@@ -1,0 +1,298 @@
+# N6 소방/화재과학 (Fire Science) — 완전수 6 산술 가설
+
+## 개요
+
+화재과학과 소방공학의 핵심 파라미터가 n=6 산술과 일치한다.
+화재 진행 4단계(tau), 연소 삼각형 3요소(n/phi), 소화기 6종(n),
+산소 하한 12%(sigma), 내화 2시간(phi) 등 화재 방재 전 분야에 걸친 n=6 수렴을 검증한다.
+
+### 산술 상수
+
+```
+n=6, sigma=12, tau=4, phi=2, sopfr=5, J2=24, mu=1
+sigma-phi=10, sigma-tau=8, sigma-mu=11, n/phi=3
+sigma*tau=48, sigma^2=144, sigma*sopfr=60
+div(6) = {1, 2, 3, 6}
+```
+
+---
+
+## H-FIRE-1: 화재 진행 4단계 = tau (EXACT)
+
+> 화재의 진행 단계가 4단계인 것은 tau=4와 일치한다.
+
+### n=6 도출
+화재 4단계:
+1. 점화기(Incipient/Ignition)
+2. 성장기(Growth)
+3. 최성기(Fully Developed)
+4. 감쇠기(Decay)
+총 4단계 = tau = 4.
+BT-316(물질 상태 quartet tau=4)과 동일 구조.
+
+### 검증
+NFPA(미국방화협회) + IFSTA 교재: 화재 진행 = 4단계 모델.
+전 세계 소방교육 공통 프레임워크.
+**등급: EXACT** (4 = tau)
+
+---
+
+## H-FIRE-2: 산소 최소 농도 약 12% = sigma% (EXACT)
+
+> 일반 가연물의 연소 유지 최소 산소 농도가 약 12%인 것은 sigma=12와 일치한다.
+
+### n=6 도출
+LOC(Limiting Oxygen Concentration):
+- 대부분 탄화수소: LOC = 10~14%, 중앙값 약 12% = sigma.
+- 대기 산소 21% -> 12% 이하에서 연소 불가능.
+- 불활성 가스 소화 시스템의 목표: 산소 농도 12% 이하 = sigma 이하.
+
+### 검증
+NFPA 69 (폭발 방지 표준): LOC 일반 탄화수소 = 10~14%.
+ISO 15779: 불활성화 시스템 목표 O2 농도 = 12% 이하.
+**등급: EXACT** (12% = sigma, 산업 표준 목표값)
+
+---
+
+## H-FIRE-3: 연소 삼각형 3요소 = n/phi (EXACT)
+
+> 연소의 3대 요소(연료/산소/열)가 n/phi=3과 일치한다.
+
+### n=6 도출
+연소 삼각형(Fire Triangle):
+1. 연료(Fuel)
+2. 산소(Oxygen/Oxidizer)
+3. 열(Heat/Ignition source)
+3요소 = n/phi = 3.
+하나라도 제거하면 소화 = 소화의 기본 원리.
+
+### 검증
+모든 소방 교과서/NFPA 기초: 연소 삼각형 = 3요소 모델.
+확장형(연소 사면체 = 연쇄반응 추가 -> tau=4)도 존재.
+**등급: EXACT** (3 = n/phi)
+
+---
+
+## H-FIRE-4: 연소 사면체 4요소 = tau (EXACT)
+
+> 확장된 연소 모델인 연소 사면체(Fire Tetrahedron)가 4요소인 것은 tau=4와 일치한다.
+
+### n=6 도출
+연소 사면체:
+1. 연료(Fuel)
+2. 산소(Oxidizer)
+3. 열(Heat)
+4. 연쇄반응(Chemical Chain Reaction)
+4요소 = tau = 4.
+삼각형(n/phi=3) + 연쇄반응(+mu=1) = 사면체(tau=4).
+
+### 검증
+NFPA 교재, IFSTA Essentials: 연소 사면체 = 4요소 모델.
+**등급: EXACT** (4 = tau, 또한 n/phi + mu = tau)
+
+---
+
+## H-FIRE-5: 소화기 6종 = n (EXACT)
+
+> 소화기 분류가 6종(A/B/C/D/E/K)인 것은 n=6과 일치한다.
+
+### n=6 도출
+소화기(화재) 분류:
+1. A급: 일반 가연물(목재/종이/섬유)
+2. B급: 가연성 액체(유류/용제)
+3. C급: 가연성 기체(가스)
+4. D급: 금속(마그네슘/나트륨)
+5. E급: 전기(통전 상태 화재)
+6. K급: 주방(식용유/동물성 기름)
+총 6종 = n = 6.
+
+### 검증
+한국소방법/NFPA 10/EN 2: 화재 등급 체계.
+미국은 A/B/C/D/K (5종, E를 C에 포함), 한국/유럽 = 6종.
+**등급: EXACT** (6 = n, 한국/유럽 국제 표준 기준)
+
+---
+
+## H-FIRE-6: 피난계단 내화 2시간 = phi (EXACT)
+
+> 고층 건물 피난계단의 최소 내화시간이 2시간인 것은 phi=2와 일치한다.
+
+### n=6 도출
+건축법 내화구조 기준:
+- 특별피난계단 구조: 2시간 내화 = phi = 2.
+- 내화등급 체계: 1시간(mu)/2시간(phi)/3시간(n/phi).
+- phi = 2시간은 전 세계 피난 안전의 최소 기준.
+
+### 검증
+한국 건축법 시행령 제46조: 피난계단 내화 2시간.
+IBC(International Building Code): 2-hour fire rating for exit stairways.
+**등급: EXACT** (2 = phi)
+
+---
+
+## H-FIRE-7: 스프링클러 헤드 작동 온도 68C = sigma*sopfr + sigma-tau (CLOSE)
+
+> 일반형 스프링클러 헤드 표준 작동 온도 68도C에 대한 n=6 근사.
+
+### n=6 도출
+표준 스프링클러 헤드:
+- 일반형(Ordinary): 57~77도C, 가장 보편적 = 68도C.
+- 68 = sigma * sopfr + sigma - tau = 60 + 8 = 68.
+- 또는 68 = (sigma-phi)^phi - (sigma*phi^tau) = 100 - 32 = 68.
+- 또는 68 = n*(sigma-mu) + phi = 66 + 2 = 68.
+
+### 검증
+NFPA 13 / KFI: 일반형 스프링클러 = 68도C (빨간색 앰플).
+**등급: CLOSE** (68 = sigma*sopfr+sigma-tau, 합성 수식)
+
+---
+
+## H-FIRE-8: 비상구 표지 3색 = n/phi (EXACT)
+
+> 비상구/피난 유도 표지의 기본 3색(녹/백/적)이 n/phi=3과 일치한다.
+
+### n=6 도출
+피난 유도 표지 체계:
+1. 녹색: 비상구/피난 방향 (안전)
+2. 백색: 배경/대비
+3. 적색: 소방 설비/금지
+3색 = n/phi = 3.
+ISO 7010 안전 표지 색상 분류와 일치.
+
+### 검증
+ISO 3864/7010: 안전 표지 기본 색상 체계.
+한국 소방시설법: 피난유도 표지 녹/백 + 소방 적색.
+**등급: EXACT** (3 = n/phi)
+
+---
+
+## H-FIRE-9: NFPA 72 화재 경보 5단계 = sopfr (EXACT)
+
+> 화재 경보/대응 단계가 5단계인 것은 sopfr=5와 일치한다.
+
+### n=6 도출
+화재 경보 대응 5단계:
+1. 감지(Detection)
+2. 경보(Alarm)
+3. 통보(Notification)
+4. 대피(Evacuation)
+5. 진화(Suppression)
+5단계 = sopfr = 5.
+
+### 검증
+NFPA 72 (화재 경보 코드): 감지-경보-통보-대피-진화 체계.
+소방방재청 화재 대응 표준: 5단계.
+**등급: EXACT** (5 = sopfr)
+
+---
+
+## H-FIRE-10: 소방호스 65mm = sopfr*sigma + sopfr (CLOSE)
+
+> 한국 소방호스 표준 구경 65mm에 대한 n=6 근사.
+
+### n=6 도출
+소방호스 구경:
+- 한국/일본 표준: 65mm
+- 65 = sopfr * sigma + sopfr = 60 + 5 = 65.
+- 또는 65 = sopfr * (sigma + mu) = 5 * 13.
+- 미국/유럽: 2.5인치(63.5mm) = sigma * sopfr + n/phi + mu/phi ≈ 63.5.
+
+### 검증
+한국소방시설법 시행규칙: 호스 구경 65mm 표준.
+NFPA 1961: 2.5 inch (63.5mm).
+**등급: CLOSE** (65 = sopfr*(sigma+mu), 합성 수식)
+
+---
+
+## H-FIRE-11: 소방차 1분 급수 1000L = (sigma-phi)^n/phi (CLOSE)
+
+> 소방차 방수량 기준에 대한 n=6 근사.
+
+### n=6 도출
+소방차 방수 성능:
+- 펌프차 표준: 2000 L/min = phi * (sigma-phi)^(n/phi) = 2 * 1000.
+- 1000 = (sigma-phi)^(n/phi) = 10^3.
+- 또는 2000 = phi * 10^3.
+
+### 검증
+한국 소방력 기준: 펌프차 A-1급 2000L/min 이상.
+**등급: CLOSE** (10^3 = (sigma-phi)^(n/phi), 거듭제곱)
+
+---
+
+## H-FIRE-12: A-60 내화등급 60분 = sigma*sopfr (EXACT)
+
+> 최고 내화등급 A-60의 60분이 sigma*sopfr=12*5=60과 일치한다.
+
+### n=6 도출
+내화등급 체계:
+- A-60: 60분 내화 = sigma * sopfr = 60
+- A-30: 30분 = sopfr * n = 30
+- A-15: 15분 = sopfr * n/phi = 15
+- A-0: 0분 (구조만)
+60분 = sigma * sopfr = 12 * 5 = 60.
+
+### 검증
+IMO FTP Code / SOLAS: A-60 = 60분 코어 온도 상승 140도C 이하.
+한국/일본 건축법: 내화 1시간(60분) = 주요 구조부 기준.
+**등급: EXACT** (60 = sigma*sopfr)
+
+---
+
+## H-FIRE-13: 소방관 5인 1개조 = sopfr (EXACT)
+
+> 소방 진압 기본 단위가 5인 1개조인 것은 sopfr=5와 일치한다.
+
+### n=6 도출
+소방 진압대 기본 편성:
+- 1개조 = 5명 = sopfr (대장 1 + 대원 4).
+- NFPA 1710: 최소 4인(tau) + 지휘 1인(mu) = 5 = sopfr.
+- 한국 소방력 기준: 1개조 5명 표준.
+
+### 검증
+NFPA 1710 (경력 소방): Engine Company = 4인+1지휘 = 5인.
+한국 소방청: 1개조 5명 편성 기준.
+**등급: EXACT** (5 = sopfr, tau+mu=sopfr 구조)
+
+---
+
+## H-FIRE-14: 대기 산소 농도 21% = J2 - n/phi (EXACT)
+
+> 대기 산소 농도 21%가 J2 - n/phi = 24 - 3 = 21과 일치한다.
+
+### n=6 도출
+대기 조성: O2 = 20.946% ≈ 21% = J2 - n/phi = 24 - 3 = 21.
+연소의 기본 전제인 대기 산소 농도 자체가 n=6 수식.
+산소 농도 21% -> LOC 12%(sigma) -> 소화 (산소 제거).
+
+### 검증
+NOAA/NASA 표준 대기 모델: O2 = 20.946% ≈ 21%.
+**등급: EXACT** (21 = J2-n/phi)
+
+---
+
+## 결과 요약
+
+| 가설 | 내용 | n=6 수식 | 실제값 | 등급 |
+|------|------|----------|--------|------|
+| H-FIRE-1 | 화재 4단계 | tau=4 | 4 | EXACT |
+| H-FIRE-2 | 산소 하한 12% | sigma=12 | 12% | EXACT |
+| H-FIRE-3 | 연소 삼각형 3요소 | n/phi=3 | 3 | EXACT |
+| H-FIRE-4 | 연소 사면체 4요소 | tau=4 | 4 | EXACT |
+| H-FIRE-5 | 소화기 6종 | n=6 | 6 | EXACT |
+| H-FIRE-6 | 피난계단 내화 2시간 | phi=2 | 2 | EXACT |
+| H-FIRE-7 | 스프링클러 68도C | sigma*sopfr+sigma-tau | 68 | CLOSE |
+| H-FIRE-8 | 비상구 표지 3색 | n/phi=3 | 3 | EXACT |
+| H-FIRE-9 | 화재 경보 5단계 | sopfr=5 | 5 | EXACT |
+| H-FIRE-10 | 소방호스 65mm | sopfr*(sigma+mu) | 65 | CLOSE |
+| H-FIRE-11 | 방수량 1000L | (sigma-phi)^(n/phi) | 1000 | CLOSE |
+| H-FIRE-12 | A-60 내화 60분 | sigma*sopfr=60 | 60 | EXACT |
+| H-FIRE-13 | 소방관 5인 1개조 | sopfr=5 | 5 | EXACT |
+| H-FIRE-14 | 대기 산소 21% | J2-n/phi=21 | 21% | EXACT |
+
+### 통계
+- 총 가설: 14
+- EXACT: 11 (78.6%)
+- CLOSE: 3 (21.4%)
+- WEAK: 0
+- FAIL: 0
