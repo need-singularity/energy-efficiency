@@ -28,12 +28,12 @@
 
 > **83/83 EXACT** | 코오롱인더스트리 산업자재 + 화학부문 | 나일론 + 아라미드 + 타이어코드 + 에폭시
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 23/23 | v2 | **나일론 6/6,6** | n=6 폴리머, σ=12C, 원사 840d=σ(σ-φ)(σ-sopfr), 필라멘트 σ²=144f | [문서](kolon/nylon.md) | [검증](../calc/kolon/verify_nylon.py) |
-| 20/20 | v2 | **아라미드 (Heracron)** | 28=2nd 완전수, 밀도 1.44=σ²/100, 1500d=σ·sopfr³, 분해 500°C | [문서](kolon/aramid.md) | [검증](../calc/kolon/verify_aramid.py) |
-| 20/20 | v2 | **타이어코드** | 가황 144°C=σ², 벨트각 J₂=24°, 공기압 2^sopfr=32psi, 부품 n=6 | [문서](kolon/tire-cord.md) | [검증](../calc/kolon/verify_tire_cord.py) |
-| 20/20 | v2 | **에폭시/페놀 수지** | FR-4 1.6mm=φ^τ/(σ-φ), Tg=σ(σ-φ)=120°C, 탄소섬유 tow n/σ/J₂ | [문서](kolon/epoxy.md) | [검증](../calc/kolon/verify_epoxy.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 23/23 | v2 | **나일론 6/6,6** | n=6 폴리머, σ=12C, 원사 840d=σ(σ-φ)(σ-sopfr), 필라멘트 σ²=144f | [문서](kolon/nylon.md) |
+| 20/20 | v2 | **아라미드 (Heracron)** | 28=2nd 완전수, 밀도 1.44=σ²/100, 1500d=σ·sopfr³, 분해 500°C | [문서](kolon/aramid.md) |
+| 20/20 | v2 | **타이어코드** | 가황 144°C=σ², 벨트각 J₂=24°, 공기압 2^sopfr=32psi, 부품 n=6 | [문서](kolon/tire-cord.md) |
+| 20/20 | v2 | **에폭시/페놀 수지** | FR-4 1.6mm=φ^τ/(σ-φ), Tg=σ(σ-φ)=120°C, 탄소섬유 tow n/σ/J₂ | [문서](kolon/epoxy.md) |
 
 > 도메인: [kolon/nylon.md](kolon/nylon.md) · [kolon/aramid.md](kolon/aramid.md) · [kolon/tire-cord.md](kolon/tire-cord.md) · [kolon/epoxy.md](kolon/epoxy.md)
 
@@ -43,9 +43,9 @@
 
 > **22/22 EXACT** | 코오롱인더스트리 필름/전자재료
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 22/22 | v2 | **PET 광학필름** | 탄소 σ-φ=10, Tg=σn=72°C, IV=0.6=n/(σ-φ), 투과율 90=(σ-φ)²-(σ-φ) | [문서](kolon/pet-film.md) | [검증](../calc/kolon/verify_pet_film.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 22/22 | v2 | **PET 광학필름** | 탄소 σ-φ=10, Tg=σn=72°C, IV=0.6=n/(σ-φ), 투과율 90=(σ-φ)²-(σ-φ) | [문서](kolon/pet-film.md) |
 
 > 도메인: [kolon/pet-film.md](kolon/pet-film.md)
 
@@ -55,9 +55,9 @@
 
 > **18/18 EXACT** | 코오롱인더스트리 에어백원단
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 18/18 | v2 | **에어백** | 차량당 n=6개, 전개 30ms=σφ+n, 부피 σ·sopfr=60L, 실밀도 J₂=24 | [문서](kolon/airbag.md) | [검증](../calc/kolon/verify_airbag.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 18/18 | v2 | **에어백** | 차량당 n=6개, 전개 30ms=σφ+n, 부피 σ·sopfr=60L, 실밀도 J₂=24 | [문서](kolon/airbag.md) |
 
 > 도메인: [kolon/airbag.md](kolon/airbag.md)
 
@@ -67,9 +67,9 @@
 
 > **21/21 EXACT** | 코오롱워터앤에너지
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 21/21 | v2 | **수처리 멤브레인** | CN=6 팔면체, A2O n/φ=3, BOD σ-φ=10, pH n\~σ-τ | [문서](kolon/water-treatment.md) | [검증](../calc/kolon/verify_water_treatment.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 21/21 | v2 | **수처리 멤브레인** | CN=6 팔면체, A2O n/φ=3, BOD σ-φ=10, pH n\~σ-τ | [문서](kolon/water-treatment.md) |
 
 > 도메인: [kolon/water-treatment.md](kolon/water-treatment.md)
 
@@ -79,9 +79,9 @@
 
 > **21/21 EXACT** | 코오롱인더스트리 수소사업
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 21/21 | v2 | **PEMFC 수소막** | 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142 | [문서](kolon/pemfc.md) | [검증](../calc/kolon/verify_pemfc.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 21/21 | v2 | **PEMFC 수소막** | 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142 | [문서](kolon/pemfc.md) |
 
 > 도메인: [kolon/pemfc.md](kolon/pemfc.md)
 
@@ -91,9 +91,9 @@
 
 > **22/22 EXACT** | 코오롱글로벌 건설부문
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 22/22 | v2 | **건설 콘크리트** | 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ) | [문서](kolon/concrete.md) | [검증](../calc/kolon/verify_concrete.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 22/22 | v2 | **건설 콘크리트** | 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ) | [문서](kolon/concrete.md) |
 
 > 도메인: [kolon/concrete.md](kolon/concrete.md)
 
@@ -103,9 +103,9 @@
 
 > **25/25 EXACT** | 코오롱제약/티슈진
 
-| EXACT | ver | 제품 | 핵심 | 문서 | 검증 |
-|:-----:|:---:|------|------|------|------|
-| 25/25 | v2 | **바이오 약물전달** | ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4 | [문서](kolon/bio-pharma.md) | [검증](../calc/kolon/verify_bio_pharma.py) |
+| EXACT | ver | 제품 | 핵심 | 문서 |
+|:-----:|:---:|------|------|------|
+| 25/25 | v2 | **바이오 약물전달** | ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4 | [문서](kolon/bio-pharma.md) |
 
 > 도메인: [kolon/bio-pharma.md](kolon/bio-pharma.md)
 
