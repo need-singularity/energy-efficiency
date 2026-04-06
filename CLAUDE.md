@@ -194,6 +194,13 @@
 
 # N6 Architecture — Arithmetic Design Framework
 
+## ⚠️ 필수 규칙 (최우선)
+
+### hexa-native 전용 (sh/py/rs 작성 금지)
+- **새 파일은 `.hexa`만 허용** — `.sh`, `.py`, `.rs` 등 다른 언어 파일 작성 금지
+- 모든 새 모듈은 `mk2_hexa/native/` 에 `.hexa` 파일로 생성
+- 기존 sh/py 스크립트는 참조만 허용, 신규 작성 불가
+
 ## ⚠️ 설계 산출물 필수 규칙 (최우선, 예외 없음)
 
 ```
