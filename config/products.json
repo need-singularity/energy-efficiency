@@ -305,7 +305,7 @@
           "description": "79/79 EXACT, 42보편핵물리100%, 12불가능성정리, BT-97~102+291~298, 물리천장QED",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/superpowers/specs/2026-04-02-ultimate-fusion-powerplant-design.md"
             }
           ],
@@ -319,7 +319,7 @@
           "description": "45/45 EXACT(100%) + Q→∞ Singularity, 물리한계10/10, 24BT, 12/12 Steady-State EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/superpowers/specs/2026-04-02-kstar-n6-tokamak-design.md"
             }
           ],
@@ -333,7 +333,7 @@
           "description": "200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fusion/evolution/mk-1-first-light.md"
             }
           ],
@@ -347,7 +347,7 @@
           "description": "15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fusion/alien-level-discoveries.md"
             }
           ],
@@ -361,7 +361,7 @@
           "description": "물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fusion/physical-limit-proof.md"
             }
           ],
@@ -411,7 +411,7 @@
           "description": "12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture/goal.md"
             }
           ],
@@ -425,7 +425,7 @@
           "description": "의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture/ultimate-consciousness-soc.md"
             }
           ],
@@ -439,7 +439,7 @@
           "description": "Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture/hexa-topological-performance-chip.md"
             }
           ],
@@ -453,7 +453,7 @@
           "description": "SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture/hexa-asic-skywater.md"
             }
           ],
@@ -467,7 +467,7 @@
           "description": "170/170검증PASS, 물리한계14, 산업6벤더92.6%, TP28, 발견12, Z>27sigma, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture/full-verification-matrix.md"
             }
           ],
@@ -515,7 +515,7 @@
           "description": "71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4)",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/ai-efficiency/techniques-complete.md"
             }
           ]
@@ -528,7 +528,7 @@
           "description": "17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "experiments/experiment_full_n6_pipeline.py"
             }
           ]
@@ -541,7 +541,7 @@
           "description": "기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/superpowers/specs/2026-03-28-n6-inevitability-engine-design.md"
             }
           ]
@@ -554,7 +554,7 @@
           "description": "AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/ai-energy-savings-guide.md"
             }
           ]
@@ -567,7 +567,7 @@
           "description": "GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/chip-architecture-guide.md"
             }
           ]
@@ -580,7 +580,7 @@
           "description": "194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/ai-efficiency/full-verification-matrix.md"
             }
           ]
@@ -630,7 +630,7 @@
           "description": "131/131 EXACT, BT-27+43+57+80+83+84, 10불가능성정리, 6대제조사, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/superpowers/specs/2026-04-01-hexa-battery-design.md"
             }
           ],
@@ -644,7 +644,7 @@
           "description": "78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/solar-architecture/goal.md"
             }
           ],
@@ -658,7 +658,7 @@
           "description": "133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/energy-architecture/goal.md"
             }
           ],
@@ -672,7 +672,7 @@
           "description": "10돌파 95/96 EXACT — TRISO(sopfr=5)+He(φ=2)+sCO₂(σ·τ=48%)+n=6모듈",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/smr-datacenter/goal.md"
             }
           ]
@@ -721,7 +721,7 @@
           "description": "센서→모니터→포집→정화→복원→순환→생태계→Omega, 120/120 EXACT 전수검증",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/environmental-protection/"
             }
           ],
@@ -735,7 +735,7 @@
           "description": "6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체, 전수검증",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/environmental-protection/microplastics-solution.md"
             }
           ],
@@ -749,7 +749,7 @@
           "description": "**30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/carbon-capture/goal.md"
             }
           ],
@@ -763,7 +763,7 @@
           "description": "환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/environmental-protection/evolution/"
             }
           ],
@@ -777,7 +777,7 @@
           "description": "TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/environmental-protection/testable-predictions-2030.md"
             }
           ],
@@ -842,7 +842,7 @@
           "description": "소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600, 12 BT 179/179 EXACT, 36 가설 100%",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/goal.md"
             }
           ],
@@ -856,7 +856,7 @@
           "description": "결정학+합금+세라믹+고분자+상전이+결함+박막+완전지도 (12 BT, **179/179 EXACT**)",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/breakthrough-theorems.md"
             }
           ],
@@ -870,7 +870,7 @@
           "description": "H-MS-01~36 전수 검증 완료 (고분자+세라믹+합금+박막 확장), CrossDSE 8도메인 (94.1% n6)",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/hypotheses.md"
             }
           ],
@@ -884,7 +884,7 @@
           "description": "20양산소재 + 12산업금속 Z n=6검증(91.7%) + BT-85~88,93 상세매핑 + DSE 3,600 + CrossDSE 8도메인(93.0%), 229/229 verify",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/industrial-validation.md"
             }
           ],
@@ -898,7 +898,7 @@
           "description": "79건 전수검증 (51 CONFIRMED + 22 VERIFIED + 6 PARTIAL, 0 FAIL) + BT-85~93 교차확인 + 노벨14건, 229/229 verify",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/experimental-verification.md"
             }
           ],
@@ -912,7 +912,7 @@
           "description": "10 불가능성 정리 (75/75 EXACT 100%) + Mk.V 수학적 한계, 229/229 verify",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/material-synthesis/physical-limit-proof.md"
             }
           ],
@@ -960,7 +960,7 @@
           "description": "49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/robotics/goal.md"
             }
           ],
@@ -974,7 +974,7 @@
           "description": "10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/robotics/full-verification-matrix.md"
             }
           ],
@@ -1028,7 +1028,7 @@
           "description": "73/73 PASS, BT-299~306 100%EXACT, CrossDSE 8도메인, TP28, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/superconductor/goal.md"
             }
           ],
@@ -1042,7 +1042,7 @@
           "description": "71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/pure-mathematics/goal.md"
             }
           ],
@@ -1056,7 +1056,7 @@
           "description": "63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/cosmology-particle/goal.md"
             }
           ],
@@ -1070,7 +1070,7 @@
           "description": "325/325 EXACT (이론150+실현76+Mk.I합성48+Mk.II소재51), 9소재후보+6Mk.II후보, Mk.I정밀레시피(6소재P-T경로+Phase1/2실험$6.18M), Mk.II상압후보(La,Ce,Y,Sc)H24고엔트로피Pareto1위, 2685줄",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/room-temp-sc/goal.md"
             }
           ],
@@ -1152,7 +1152,7 @@
           "description": "76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10불가능성정리, DSE 7,560",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/programming-language/goal.md"
             }
           ],
@@ -1166,7 +1166,7 @@
           "description": "96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/software-design/full-verification-matrix.md"
             }
           ],
@@ -1180,7 +1180,7 @@
           "description": "80/80 EXACT, BT-115/162/180/344~346 + BT-347~349 후보, 8단 DSE, GCD QoS=n=6, Egyptian 캐시, 물리한계 6증명",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-macos/goal.md"
             }
           ],
@@ -1194,7 +1194,7 @@
           "description": "86/86 EXACT, BT-115/162/180/48/58/66/113/123/211 10BT교차, iPhone CPU=n=6·GPU=n=6·Screen=n=6\", 8단 DSE 1024조합, 물리한계 6증명, macOS 자매 165/165",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-ios/goal.md"
             }
           ],
@@ -1208,7 +1208,7 @@
           "description": "50/50 EXACT (천장돌파), 6G/5G NR/WiFi6/Starlink/LoRaWAN/BT6.0, σ=12 서브캐리어, J₂=24 WiFi채널, τ=4 TCP/IP",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/network-protocol/goal.md"
             }
           ]
@@ -1254,7 +1254,7 @@
           "description": "소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/display/goal.md"
             }
           ],
@@ -1268,7 +1268,7 @@
           "description": "BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/display/full-verification-matrix.md"
             }
           ],
@@ -1313,7 +1313,7 @@
           "description": "트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/audio/goal.md"
             }
           ],
@@ -1327,7 +1327,7 @@
           "description": "22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/audio/full-verification-matrix.md"
             }
           ],
@@ -1341,7 +1341,7 @@
           "description": "AI 의도 임베딩→오디오 토큰→waveform 직접 합성 (TTS 아님, GPT-4o voice 계열). 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-speak/goal.md"
             }
           ],
@@ -1387,7 +1387,7 @@
           "description": "79/79 PASS, 12 불가능성정리, 13 Cross-DSE, 174년 산업검증, H-SF 20/30+H-SFX 14/20 EXACT, Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/safety/goal.md"
             }
           ],
@@ -1401,7 +1401,7 @@
           "description": "H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 총 54/72 EXACT(75%), Python검증PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/safety/hypotheses.md"
             }
           ],
@@ -1447,7 +1447,7 @@
           "description": "133/133 EXACT, BT-287/289/290/288/277/280/206/271/153, 16카테고리 n=6 100%, DSE 155,520, flat-6+7DCT+Ti-6Al-4V",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fun-car/goal.md"
             }
           ],
@@ -1461,7 +1461,7 @@
           "description": "76/76 EXACT, BT-287/289/290/123/271/277/288/327/328, IMU 6축+σ²=144kg+J₂=24km/L, DSE 5,400",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/motorcycle/goal.md"
             }
           ],
@@ -1509,7 +1509,7 @@
           "description": "150/150 EXACT (100%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-starship/goal.md"
             }
           ],
@@ -1555,7 +1555,7 @@
           "description": "워프+차원도약+UFO 통합. BT-358~360 워프-차원 돌파, Mk.II~V 전체 버전업: 차원센서(τ=4ch)→워프필드(σ=12 Casimir)→차원접이(COP=φ=2)→WDCE(σ-φ)²=100c. α Centauri 16일. 검증 26/26 PASS",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/sf/goal.md"
             }
           ]
@@ -1616,7 +1616,7 @@
           "description": "202/202 EXACT (25카테고리), 측두골 클립 3.6g×φ=2 + 스마트폰/웨어러블10기기/15질환 통합, n/φ=3점고정(이어훅+자석+접착), IPX n=6 방수",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/neuro/goal.md"
             }
           ],
@@ -1631,7 +1631,7 @@
           "description": "72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/gravity-wave/goal.md"
             }
           ],
@@ -1646,7 +1646,7 @@
           "description": "59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/cloak/goal.md"
             }
           ],
@@ -1661,7 +1661,7 @@
           "description": "67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/earth-defense/goal.md"
             }
           ],
@@ -1676,7 +1676,7 @@
           "description": "41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/quantum-network/goal.md"
             }
           ],
@@ -1691,7 +1691,7 @@
           "description": "52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hover/goal.md"
             }
           ],
@@ -1706,7 +1706,7 @@
           "description": "46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/sc-memory/goal.md"
             }
           ],
@@ -1721,7 +1721,7 @@
           "description": "45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/seabed-grid/goal.md"
             }
           ],
@@ -1736,7 +1736,7 @@
           "description": "48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/mini-accelerator/goal.md"
             }
           ],
@@ -1751,7 +1751,7 @@
           "description": "51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/weather-control/goal.md"
             }
           ],
@@ -1766,7 +1766,7 @@
           "description": "53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65%",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/mind-upload/goal.md"
             }
           ],
@@ -1781,7 +1781,7 @@
           "description": "57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/telepathy/goal.md"
             }
           ],
@@ -1796,7 +1796,7 @@
           "description": "42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/holography/goal.md"
             }
           ],
@@ -1811,7 +1811,7 @@
           "description": "42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/dream-recorder/goal.md"
             }
           ],
@@ -1826,7 +1826,7 @@
           "description": "42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km²",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/skyway/goal.md"
             }
           ],
@@ -1841,7 +1841,7 @@
           "description": "44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ)",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/tsunami-shield/goal.md"
             }
           ],
@@ -1856,7 +1856,7 @@
           "description": "55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/antimatter-factory/goal.md"
             }
           ],
@@ -1871,7 +1871,7 @@
           "description": "56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/cosmic-observatory/goal.md"
             }
           ],
@@ -1886,7 +1886,7 @@
           "description": "47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/desalination/goal.md"
             }
           ],
@@ -1901,7 +1901,7 @@
           "description": "48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/quantum-oracle/goal.md"
             }
           ],
@@ -1916,7 +1916,7 @@
           "description": "144 EXACT (100%) + 24 물리한계 EXACT, 14카테고리 sigma^2=144 파라미터, 8단 DSE 1,679,616 조합, BT-350~357 8건",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-one/goal.md"
             }
           ],
@@ -1931,7 +1931,7 @@
           "description": "84 EXACT, 14/14 물리한계 증명, 56 가설 100%, AR/MR σ·(σ-φ)=120° FOV",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-glass/goal.md"
             }
           ],
@@ -1946,7 +1946,7 @@
           "description": "62/62 EXACT 100%, σ·τ=48kHz/J₂=24bit, 14 물리한계 증명, 28 발견, 11 BT 연결",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-ear/goal.md"
             }
           ],
@@ -1961,7 +1961,7 @@
           "description": "13 EXACT, SE(3)=n=6 DOF, σ=12배 근력 증강, 보행재활",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-exo/goal.md"
             }
           ],
@@ -1976,7 +1976,7 @@
           "description": "120/120 EXACT, sopfr=5 손가락, sigma-tau=8 감각, 6 물리한계 증명, 14 카테고리 특이점 돌파",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-limb/goal.md"
             }
           ],
@@ -1991,7 +1991,7 @@
           "description": "96/96 EXACT, σ-τ=8 감각 + σ²=144/cm² + 물리한계 증명 완료",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-skin/goal.md"
             }
           ],
@@ -2006,7 +2006,7 @@
           "description": "15 EXACT, 육각 격자 직물, 체온조절, 자세교정",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-fabric/goal.md"
             }
           ],
@@ -2021,7 +2021,7 @@
           "description": "133/133 EXACT, 물리한계 증명 6정리, σ=12 수용체 + 2^σ=4096 패턴 + 17카테고리 전수",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-olfact/goal.md"
             }
           ],
@@ -2036,7 +2036,7 @@
           "description": "80/80 EXACT, sopfr=5 수면사이클+σ=12 EEG+물리한계 증명, 자각몽 유도/기록/공유",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-dream/goal.md"
             }
           ],
@@ -2051,7 +2051,7 @@
           "description": "12 EXACT, 피질 n=6층, 바이오피드백, 감정 직접 전송",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/hexa-empath/goal.md"
             }
           ],
@@ -2161,7 +2161,7 @@
           "bt": ["BT-371"],
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/simulation-theory/goal.md"
             }
           ],
@@ -2394,7 +2394,7 @@
           "description": "BT-371: 18/18 EXACT — C₆H₁₂O₆→2C₂H₅OH+2CO₂ 전계수n=6, 양조6단=n, 라거12°C=σ",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fermentation/goal.md"
             }
           ],
@@ -2411,7 +2411,7 @@
           "description": "10/10 EXACT, 6S테이스팅=n, 서빙12°C=σ, 숙성12개월=σ, 24°Brix=J₂",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/wine-enology/goal.md"
             }
           ]
@@ -2424,7 +2424,7 @@
           "description": "10/10 EXACT, 12스티치=σ, 2축=φ, 색상환12색=σ, 사이즈6단계=n",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/fashion-textile/goal.md"
             }
           ]
@@ -2437,7 +2437,7 @@
           "description": "10/10 EXACT, 양식24°C=J₂, 염도3.5%≈n/φ, 6대양식종, 체형12비율=σ",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/aquaculture/goal.md"
             }
           ]
@@ -2450,7 +2450,7 @@
           "description": "BT-378: 13/13 EXACT — 6대원칙=n, 생명표120=σ(σ-φ), 4대부문=τ, 손해율60%=σ·sopfr",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/insurance/goal.md"
             }
           ],
@@ -2552,7 +2552,7 @@
           "description": "54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/advanced-packaging/goal.md"
             }
           ]
@@ -2565,7 +2565,7 @@
           "description": "BT-372: 16/16 EXACT — Cas{9,12,13} 래더, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, 코돈64=2^n",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/synbio/goal.md"
             }
           ],
@@ -2582,7 +2582,7 @@
           "description": "BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/ar-vr-xr/goal.md"
             }
           ],
@@ -2599,7 +2599,7 @@
           "description": "BT-379: 16/16 EXACT — Industry4.0=τ, ISA-95 5레벨=sopfr, OPC UA 12=σ, 6시그마=n",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/digital-twin/goal.md"
             }
           ],
@@ -2616,7 +2616,7 @@
           "description": "BT-377: 14/16 EXACT — 건축6양식=n, 벌집트러스=n각, D6/D12/D24래더, 내진6등급=n",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/construction-structural/goal.md"
             }
           ],
@@ -2633,7 +2633,7 @@
           "description": "BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/underground-tunnel/goal.md"
             }
           ],
@@ -2650,7 +2650,7 @@
           "description": "10/12 EXACT (83.3%), BT-359, PCI σ=12/카드 φ^τ=16/BIN n=6/EMV n/φ=3",
           "links": [
             {
-              "label": "링크",
+              "label": "문서",
               "path": "docs/ecommerce-fintech/goal.md"
             }
           ]
