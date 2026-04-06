@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 116,
+    "total_products": 119,
     "total_domains": 118,
     "last_updated": "2026-04-07",
     "description": "완성제품 SSOT — README 자동 생성용",
@@ -488,13 +488,13 @@
       "alien_index": 10,
       "ceiling": true,
       "bt_exact_pct": 100,
-      "bt_count": 36,
+      "bt_count": 58,
       "industry_pct": 88.7,
       "industry_detail": "9모델",
       "experiment_pct": 96.2,
       "experiment_detail": null,
       "physics_limit_count": 10,
-      "tp_count": 28,
+      "tp_count": 58,
       "discovery_count": 12,
       "cross_dse_domains": 10,
       "mk_count": 5,
@@ -584,11 +584,90 @@
               "path": "docs/ai-efficiency/full-verification-matrix.md"
             }
           ]
+        },
+        {
+          "name": "Next-Gen AI 8-Paradigm Blowup",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "추론/비디오/과학FM/뉴로모픽/에이전트/신규아키/로보틱스/의료 8패러다임 — 234/256 EXACT (91.4%), BT-380~390",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/ai-efficiency/next-model-blowup-2026-04.md"
+            },
+            {
+              "label": "교차공명",
+              "path": "docs/ai-efficiency/cross-paradigm-resonance-2026-04.md"
+            }
+          ]
+        },
+        {
+          "name": "AI 6-Domain Sweep",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "코드생성/RL게임/추천시계열/SSL·NLU/서빙컴파일러/멀티모달 6도메인 — 314/344 EXACT (91.3%), BT-391~396",
+          "links": [
+            {
+              "label": "코드생성",
+              "path": "docs/ai-efficiency/bt-391-code-generation.md"
+            },
+            {
+              "label": "RL게임",
+              "path": "docs/ai-efficiency/bt-392-rl-game-ai.md"
+            },
+            {
+              "label": "추천시계열",
+              "path": "docs/ai-efficiency/bt-393-recsys-timeseries.md"
+            },
+            {
+              "label": "SSL+NLU",
+              "path": "docs/ai-efficiency/bt-394-ssl-nlu.md"
+            },
+            {
+              "label": "서빙",
+              "path": "docs/ai-efficiency/bt-395-ai-serving-compiler.md"
+            },
+            {
+              "label": "멀티모달",
+              "path": "docs/ai-efficiency/bt-396-multimodal-data.md"
+            }
+          ]
+        },
+        {
+          "name": "N6 Reverse-Engineering Suite",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401",
+          "links": [
+            {
+              "label": "신규모델",
+              "path": "docs/ai-efficiency/bt-397-n6-novel-architectures.md"
+            },
+            {
+              "label": "학습기법",
+              "path": "docs/ai-efficiency/bt-398-n6-novel-training.md"
+            },
+            {
+              "label": "HW-SW",
+              "path": "docs/ai-efficiency/bt-399-hw-sw-coevolution.md"
+            },
+            {
+              "label": "AGI",
+              "path": "docs/ai-efficiency/bt-400-n6-agi-convergence.md"
+            },
+            {
+              "label": "HEXA-CODER",
+              "path": "docs/ai-efficiency/bt-401-hexa-coder.md"
+            }
+          ]
         }
       ],
       "anchor": "-ai--ml",
       "closure_grade": 12,
-      "bt_detail": "BT-58 텐서몫 강화, BT-26 mod3부동점 강화"
+      "bt_detail": "BT-380~401 신규 22건 (8패러다임+6도메인+역설계5건)"
     },
     {
       "id": "energy",
@@ -2158,7 +2237,9 @@
           "ceiling": true,
           "ver": "v1",
           "description": "65/65 EXACT (100%), Planck 지수 래더 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, 차원 래더 τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2",
-          "bt": ["BT-371"],
+          "bt": [
+            "BT-371"
+          ],
           "links": [
             {
               "label": "문서",

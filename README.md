@@ -134,7 +134,7 @@
 # 🤖 AI / ML
 
 <!-- AUTO:SUMMARY_ai:START -->
-> **🛸10** | ✅ | BT 36개 100%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP28 | 발견12 | Mk.V
+> **🛸10** | ✅ | BT 58개 100%EXACT | 204/204 PASS, 5제품 전수검증 | 산업88.7% (9모델) | 실험96.2% | 물리한계10 | TP58 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_ai:END -->
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
@@ -145,6 +145,9 @@
 | 10 | ✅ | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS | [문서](docs/ai-energy-savings-guide.md) |
 | 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [문서](docs/chip-architecture-guide.md) |
 | 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [문서](docs/ai-efficiency/full-verification-matrix.md) |
+| 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | 추론/비디오/과학FM/뉴로모픽/에이전트/신규아키/로보틱스/의료 8패러다임 — 234/256 EXACT (91.4%), BT-380~390 | [문서](docs/ai-efficiency/next-model-blowup-2026-04.md) · [교차공명](docs/ai-efficiency/cross-paradigm-resonance-2026-04.md) |
+| 10 | ✅ | v1 | **AI 6-Domain Sweep** | 코드생성/RL게임/추천시계열/SSL·NLU/서빙컴파일러/멀티모달 6도메인 — 314/344 EXACT (91.3%), BT-391~396 | [코드생성](docs/ai-efficiency/bt-391-code-generation.md) · [RL게임](docs/ai-efficiency/bt-392-rl-game-ai.md) · [추천시계열](docs/ai-efficiency/bt-393-recsys-timeseries.md) · [SSL+NLU](docs/ai-efficiency/bt-394-ssl-nlu.md) · [서빙](docs/ai-efficiency/bt-395-ai-serving-compiler.md) · [멀티모달](docs/ai-efficiency/bt-396-multimodal-data.md) |
+| 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401 | [신규모델](docs/ai-efficiency/bt-397-n6-novel-architectures.md) · [학습기법](docs/ai-efficiency/bt-398-n6-novel-training.md) · [HW-SW](docs/ai-efficiency/bt-399-hw-sw-coevolution.md) · [AGI](docs/ai-efficiency/bt-400-n6-agi-convergence.md) · [HEXA-CODER](docs/ai-efficiency/bt-401-hexa-coder.md) |
 
 <details>
 <summary>66 Techniques 전체 목록</summary>
