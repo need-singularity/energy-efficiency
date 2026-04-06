@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 115,
+    "total_products": 116,
     "total_domains": 118,
     "last_updated": "2026-04-07",
     "description": "완성제품 SSOT — README 자동 생성용",
@@ -1603,7 +1603,8 @@
         "antimatter-factory",
         "cosmic-observatory",
         "desalination",
-        "quantum-oracle"
+        "quantum-oracle",
+        "simulation-theory"
       ],
       "tools": [],
       "products": [
@@ -1619,7 +1620,8 @@
               "path": "docs/neuro/goal.md"
             }
           ],
-          "verify_script": "docs/neuro/verify_alien10.py"
+          "verify_script": "docs/neuro/verify_alien10.py",
+          "exact": "80/80"
         },
         {
           "name": "HEXA-GRAV 중력파 검출/통신",
@@ -1633,7 +1635,8 @@
               "path": "docs/gravity-wave/goal.md"
             }
           ],
-          "verify_script": "docs/gravity-wave/verify_alien10.py"
+          "verify_script": "docs/gravity-wave/verify_alien10.py",
+          "exact": "58/58"
         },
         {
           "name": "HEXA-CLOAK 투명망토/스텔스",
@@ -1647,7 +1650,8 @@
               "path": "docs/cloak/goal.md"
             }
           ],
-          "verify_script": "docs/cloak/verify_alien10.py"
+          "verify_script": "docs/cloak/verify_alien10.py",
+          "exact": "30/30"
         },
         {
           "name": "HEXA-DEFENSE 지구방어 시스템",
@@ -1661,7 +1665,8 @@
               "path": "docs/earth-defense/goal.md"
             }
           ],
-          "verify_script": "docs/earth-defense/verify_alien10.py"
+          "verify_script": "docs/earth-defense/verify_alien10.py",
+          "exact": "32/32"
         },
         {
           "name": "HEXA-TELEPORT 양자얽힘 통신망",
@@ -1675,7 +1680,8 @@
               "path": "docs/quantum-network/goal.md"
             }
           ],
-          "verify_script": "docs/quantum-network/verify_alien10.py"
+          "verify_script": "docs/quantum-network/verify_alien10.py",
+          "exact": "30/30"
         },
         {
           "name": "HEXA-HOVER 개인 호버보드",
@@ -1689,7 +1695,8 @@
               "path": "docs/hover/goal.md"
             }
           ],
-          "verify_script": "docs/hover/verify_alien10.py"
+          "verify_script": "docs/hover/verify_alien10.py",
+          "exact": "31/31"
         },
         {
           "name": "HEXA-MRAM 초전도 비휘발 메모리",
@@ -1703,7 +1710,8 @@
               "path": "docs/sc-memory/goal.md"
             }
           ],
-          "verify_script": "docs/sc-memory/verify_alien10.py"
+          "verify_script": "docs/sc-memory/verify_alien10.py",
+          "exact": "30/30"
         },
         {
           "name": "HEXA-SEABED 대륙간 해저 송전",
@@ -1717,7 +1725,8 @@
               "path": "docs/seabed-grid/goal.md"
             }
           ],
-          "verify_script": "docs/seabed-grid/verify_alien10.py"
+          "verify_script": "docs/seabed-grid/verify_alien10.py",
+          "exact": "23/23"
         },
         {
           "name": "HEXA-ACCEL 소형 입자가속기",
@@ -1731,7 +1740,8 @@
               "path": "docs/mini-accelerator/goal.md"
             }
           ],
-          "verify_script": "docs/mini-accelerator/verify_alien10.py"
+          "verify_script": "docs/mini-accelerator/verify_alien10.py",
+          "exact": "37/37"
         },
         {
           "name": "HEXA-WEATHER 대기 전자기 제어",
@@ -1745,7 +1755,8 @@
               "path": "docs/weather-control/goal.md"
             }
           ],
-          "verify_script": "docs/weather-control/verify_alien10.py"
+          "verify_script": "docs/weather-control/verify_alien10.py",
+          "exact": "30/30"
         },
         {
           "name": "HEXA-MIND 의식 업로드",
@@ -1759,7 +1770,8 @@
               "path": "docs/mind-upload/goal.md"
             }
           ],
-          "verify_script": "docs/mind-upload/verify_alien10.py"
+          "verify_script": "docs/mind-upload/verify_alien10.py",
+          "exact": "29/29"
         },
         {
           "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
@@ -1773,7 +1785,8 @@
               "path": "docs/telepathy/goal.md"
             }
           ],
-          "verify_script": "docs/telepathy/verify_alien10.py"
+          "verify_script": "docs/telepathy/verify_alien10.py",
+          "exact": "33/33"
         },
         {
           "name": "HEXA-HOLO 홀로그래픽 디스플레이",
@@ -1787,7 +1800,8 @@
               "path": "docs/holography/goal.md"
             }
           ],
-          "verify_script": "docs/holography/verify_alien10.py"
+          "verify_script": "docs/holography/verify_alien10.py",
+          "exact": "25/25"
         },
         {
           "name": "HEXA-DREAM 꿈 기록/재생",
@@ -1801,7 +1815,8 @@
               "path": "docs/dream-recorder/goal.md"
             }
           ],
-          "verify_script": "docs/dream-recorder/verify_alien10.py"
+          "verify_script": "docs/dream-recorder/verify_alien10.py",
+          "exact": "25/25"
         },
         {
           "name": "HEXA-SKYWAY 공중 고속도로망",
@@ -1815,7 +1830,8 @@
               "path": "docs/skyway/goal.md"
             }
           ],
-          "verify_script": "docs/skyway/verify_alien10.py"
+          "verify_script": "docs/skyway/verify_alien10.py",
+          "exact": "29/29"
         },
         {
           "name": "HEXA-TSUNAMI 해일 방지기",
@@ -1829,7 +1845,8 @@
               "path": "docs/tsunami-shield/goal.md"
             }
           ],
-          "verify_script": "docs/tsunami-shield/verify_alien10.py"
+          "verify_script": "docs/tsunami-shield/verify_alien10.py",
+          "exact": "29/29"
         },
         {
           "name": "HEXA-ANTIMATTER 반물질 공장",
@@ -1843,7 +1860,8 @@
               "path": "docs/antimatter-factory/goal.md"
             }
           ],
-          "verify_script": "docs/antimatter-factory/verify_alien10.py"
+          "verify_script": "docs/antimatter-factory/verify_alien10.py",
+          "exact": "32/32"
         },
         {
           "name": "HEXA-COSMIC 초기우주 관측망",
@@ -1857,7 +1875,8 @@
               "path": "docs/cosmic-observatory/goal.md"
             }
           ],
-          "verify_script": "docs/cosmic-observatory/verify_alien10.py"
+          "verify_script": "docs/cosmic-observatory/verify_alien10.py",
+          "exact": "31/31"
         },
         {
           "name": "HEXA-DESAL 초전도 담수화",
@@ -1871,7 +1890,8 @@
               "path": "docs/desalination/goal.md"
             }
           ],
-          "verify_script": "docs/desalination/verify_alien10.py"
+          "verify_script": "docs/desalination/verify_alien10.py",
+          "exact": "28/28"
         },
         {
           "name": "HEXA-ORACLE 양자 예측기",
@@ -1885,7 +1905,8 @@
               "path": "docs/quantum-oracle/goal.md"
             }
           ],
-          "verify_script": "docs/quantum-oracle/verify_alien10.py"
+          "verify_script": "docs/quantum-oracle/verify_alien10.py",
+          "exact": "32/32"
         },
         {
           "name": "HEXA-ONE 통합 웨어러블",
@@ -1898,7 +1919,9 @@
               "label": "링크",
               "path": "docs/hexa-one/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-one/verify_alien10.py",
+          "exact": "54/54"
         },
         {
           "name": "HEXA-GLASS AI 안경",
@@ -1911,7 +1934,9 @@
               "label": "링크",
               "path": "docs/hexa-glass/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-glass/verify_alien10.py",
+          "exact": "48/48"
         },
         {
           "name": "HEXA-EAR AI 이어폰",
@@ -1924,7 +1949,9 @@
               "label": "링크",
               "path": "docs/hexa-ear/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-ear/verify_alien10.py",
+          "exact": "42/42"
         },
         {
           "name": "HEXA-EXO AI 외골격",
@@ -1937,7 +1964,9 @@
               "label": "링크",
               "path": "docs/hexa-exo/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-exo/verify_alien10.py",
+          "exact": "100/100"
         },
         {
           "name": "HEXA-LIMB AI 의수/의족",
@@ -1950,7 +1979,9 @@
               "label": "링크",
               "path": "docs/hexa-limb/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-limb/verify_alien10.py",
+          "exact": "100/100"
         },
         {
           "name": "HEXA-SKIN 전자 피부",
@@ -1963,7 +1994,9 @@
               "label": "링크",
               "path": "docs/hexa-skin/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-skin/verify_alien10.py",
+          "exact": "78/78"
         },
         {
           "name": "HEXA-FABRIC AI 의류",
@@ -1976,7 +2009,9 @@
               "label": "링크",
               "path": "docs/hexa-fabric/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-fabric/verify_alien10.py",
+          "exact": "121/121"
         },
         {
           "name": "HEXA-OLFACT 디지털 후각",
@@ -1989,7 +2024,9 @@
               "label": "링크",
               "path": "docs/hexa-olfact/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-olfact/verify_alien10.py",
+          "exact": "125/125"
         },
         {
           "name": "HEXA-DREAM 꿈 인터페이스",
@@ -2002,7 +2039,9 @@
               "label": "링크",
               "path": "docs/hexa-dream/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-dream/verify_alien10.py",
+          "exact": "80/80"
         },
         {
           "name": "HEXA-EMPATH 감정 공유",
@@ -2015,7 +2054,9 @@
               "label": "링크",
               "path": "docs/hexa-empath/goal.md"
             }
-          ]
+          ],
+          "verify_script": "docs/hexa-empath/verify_alien10.py",
+          "exact": "97/97"
         },
         {
           "name": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
@@ -2032,7 +2073,9 @@
               "label": "DSE",
               "path": "tools/universal-dse/domains/virology.toml"
             }
-          ]
+          ],
+          "verify_script": "docs/virology/verify_alien10.py",
+          "exact": "43/43"
         },
         {
           "name": "곤충학 n=6 Hexapoda 완전 생물학",
@@ -2045,7 +2088,9 @@
               "label": "가설",
               "path": "docs/entomology/hypotheses.md"
             }
-          ]
+          ],
+          "verify_script": "docs/entomology/verify_alien10.py",
+          "exact": "23/23"
         },
         {
           "name": "균류학 n=6 포자-발효 아키텍처",
@@ -2058,7 +2103,9 @@
               "label": "가설",
               "path": "docs/mycology/hypotheses.md"
             }
-          ]
+          ],
+          "verify_script": "docs/mycology/verify_alien10.py",
+          "exact": "26/26"
         },
         {
           "name": "광업/광물학 n=6 경도-결정 아키텍처",
@@ -2071,7 +2118,9 @@
               "label": "가설",
               "path": "docs/mining/hypotheses.md"
             }
-          ]
+          ],
+          "verify_script": "docs/mining/verify_alien10.py",
+          "exact": "26/26"
         },
         {
           "name": "수의학 n=6 동물해부 보편성",
@@ -2084,7 +2133,9 @@
               "label": "가설",
               "path": "docs/veterinary/hypotheses.md"
             }
-          ]
+          ],
+          "verify_script": "docs/veterinary/verify_alien10.py",
+          "exact": "21/21"
         },
         {
           "name": "원예학 n=6 식물 성장 아키텍처",
@@ -2097,7 +2148,25 @@
               "label": "가설",
               "path": "docs/horticulture/hypotheses.md"
             }
-          ]
+          ],
+          "verify_script": "docs/horticulture/verify_alien10.py",
+          "exact": "27/27"
+        },
+        {
+          "name": "HEXA-SIM 우주 시뮬레이션",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "65/65 EXACT (100%), Planck 지수 래더 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, 차원 래더 τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2",
+          "bt": ["BT-371"],
+          "links": [
+            {
+              "label": "링크",
+              "path": "docs/simulation-theory/goal.md"
+            }
+          ],
+          "verify_script": "docs/simulation-theory/verify_alien10.py",
+          "exact": "65/65"
         },
         {
           "name": "크로스 도메인 메가 브릿지",
@@ -2111,13 +2180,14 @@
             "BT-368",
             "BT-369"
           ],
-          "exact": "40/41",
+          "exact": "45/45",
           "links": [
             {
               "label": "문서",
               "path": "docs/new-bt-dimensional-unfolding-2026-04-06.md"
             }
-          ]
+          ],
+          "verify_script": "docs/cross-domain-mega/verify_alien10.py"
         }
       ],
       "anchor": "-최전선-대발견-rt-sc-기반-차세대-기술",

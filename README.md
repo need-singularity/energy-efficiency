@@ -489,10 +489,11 @@
 | 5 | ✅ | v1 | **광업/광물학 n=6 경도-결정 아키텍처** | 16/16 EXACT (100%), Mohs σ-φ=10/24K=J₂/결정계 σ-sopfr=7/FCC CN=σ=12/보석 4C=τ/벽개 div(6) | [가설](docs/mining/hypotheses.md) |
 | 5 | ✅ | v1 | **수의학 n=6 동물해부 보편성** | 16/16 EXACT (100%), 경추 σ-sopfr=7/반추위 τ=4/성견치아 (σ-sopfr)·n=42/성묘치아 n·sopfr=30/가축 n=6/개수명 σ=12 | [가설](docs/veterinary/hypotheses.md) |
 | 5 | ✅ | v1 | **원예학 n=6 식물 성장 아키텍처** | 15/15 EXACT (100%), 광합성 n=6/꽃기관 τ=4/호르몬 sopfr=5/조직계 n/φ=3/단쌍자엽 φ=2/계절 τ=4 | [가설](docs/horticulture/hypotheses.md) |
+| 10 | ✅ | v1 | **HEXA-SIM 우주 시뮬레이션** | 65/65 EXACT (100%), Planck 지수 래더 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, 차원 래더 τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2 | [링크](docs/simulation-theory/goal.md) |
 | 10 | ✅ | v1 | **크로스 도메인 메가 브릿지** | BT-366~369: τ=4(12도메인)12/12, J₂=24(10도메인)9/9, σ-φ=10(7도메인)9/10, n/φ=3(8도메인)10/10 | [문서](docs/new-bt-dimensional-unfolding-2026-04-06.md) |
 
 <!-- AUTO:FOOTER_frontier:START -->
-> 도메인: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/) · [mind-upload/](docs/mind-upload/) · [telepathy/](docs/telepathy/) · [holography/](docs/holography/) · [dream-recorder/](docs/dream-recorder/) · [skyway/](docs/skyway/) · [tsunami-shield/](docs/tsunami-shield/) · [antimatter-factory/](docs/antimatter-factory/) · [cosmic-observatory/](docs/cosmic-observatory/) · [desalination/](docs/desalination/) · [quantum-oracle/](docs/quantum-oracle/)
+> 도메인: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/) · [mind-upload/](docs/mind-upload/) · [telepathy/](docs/telepathy/) · [holography/](docs/holography/) · [dream-recorder/](docs/dream-recorder/) · [skyway/](docs/skyway/) · [tsunami-shield/](docs/tsunami-shield/) · [antimatter-factory/](docs/antimatter-factory/) · [cosmic-observatory/](docs/cosmic-observatory/) · [desalination/](docs/desalination/) · [quantum-oracle/](docs/quantum-oracle/) · [simulation-theory/](docs/simulation-theory/)
 <!-- AUTO:FOOTER_frontier:END -->
 
 ---
