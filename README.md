@@ -653,9 +653,7 @@
 ## 🐉 판타지 도메인 (Fantasy Domains)
 
 > [!WARNING]
-> 신화/판타지 탐색입니다. 공학적 설계 대상이 아닙니다.
-
-2 도메인 · 60 가설 · 16 EXACT (26.7%) → **[상세 문서](docs/fantasy/README.md)** · SSOT: [`config/fantasy.json`](config/fantasy.json)
+> 신화/판타지 탐색입니다. 공학적 설계 대상이 아닙니다. · 2 도메인 · 60 가설 · 16 EXACT (26.7%) → **[상세 문서](docs/fantasy/README.md)**
 
 ---
 
