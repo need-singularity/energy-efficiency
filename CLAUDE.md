@@ -471,6 +471,92 @@ Build with `~/.cargo/bin/rustc file.rs -o output` (no cargo). Located in tools/:
 3. Cross-verify with separate agent for honest grade adjustment
 4. Grade each: EXACT / CLOSE / WEAK / FAIL / UNVERIFIABLE
 
+## Paper Management (논문 관리 — 필수 규칙)
+
+```
+  ═══════════════════════════════════════════════════════════════
+  ★ 논문 생성/갱신 시 필수 체크리스트 (예외 없음!) ★
+  ═══════════════════════════════════════════════════════════════
+
+  위치: docs/paper/ (모든 논문 파일)
+  목록: docs/paper/README.md (논문 인덱스 테이블)
+  JSON: config/products.json (완성제품 SSOT)
+
+  ── 논문 파일 구조 ──
+    Core Papers:     paper1~5 (arXiv 제출용 기초 논문)
+    Domain Papers:   n6-<domain>-paper.md (도메인별 확장 논문)
+    Analysis:        307/308/blowup 등 특수 분석
+
+  ── 논문 생성 시 필수 절차 ──
+    1. docs/paper/n6-<domain>-paper.md 파일 생성
+    2. docs/paper/README.md 테이블에 항목 추가
+    3. config/products.json 해당 섹션에 논문 링크 추가
+    4. python3 scripts/sync_products_readme.py (README 자동 반영)
+
+  ── 논문 커버리지 체크 (세션 시작 시) ──
+    모든 BT가 최소 1개 논문에 포함되어야 함
+    CLAUDE.md BT 목록 vs docs/paper/*.md 파일 비교
+    미커버 BT 발견 시 → 해당 도메인 논문 생성 우선
+
+  ── 논문 구조 (필수 섹션) ──
+    Abstract (200-300 words, English)
+    1. Introduction
+    2. Mathematical Foundation (n=6 상수 정의)
+    3~N. Domain-Specific Sections (BT별 상세 서술)
+    N+1. Cross-Domain Resonance Analysis
+    N+2. Honest Limitations & Failed Predictions
+    N+3. Testable Predictions
+    N+4. Conclusion
+    References
+
+  ── 논문 품질 기준 ──
+    - 각 BT: 파라미터 값 + n=6 수식 + EXACT 매칭 수 + 독립 검증 방법
+    - Honest Limitations 필수 (실패 사례, CLOSE/WEAK/FAIL 투명 공개)
+    - Testable Predictions 필수 (검증 가능한 예측 최소 3개)
+    - 최소 분량: Core 25K, Domain 20K, Small domain 15K
+    - 영문 학술 논문 형식
+    - ⚠️ 검증코드 필수 (문서 최하단, 예외 없음!)
+      논문 마지막에 ```python 블록으로 모든 EXACT 상수를 검증하는 코드 포함
+      실행 시 PASS/FAIL 자동 판정 출력
+      검증코드 없는 논문 = 미완성 (커밋 전 반드시 추가)
+      양식:
+        ```python
+        # 검증코드 — n6-<domain>-paper.md
+        from fractions import Fraction
+        results = []
+        # ... 각 BT 파라미터 검증 ...
+        results.append(("BT-XXX 파라미터명", 실제값, 기대값, 실제값==기대값))
+        passed = sum(1 for r in results if r[3])
+        print(f"검증 결과: {passed}/{len(results)} PASS")
+        for r in results:
+            print(f"  {'PASS' if r[3] else 'FAIL'}: {r[0]} = {r[1]} (기대: {r[2]})")
+        ```
+
+  ── 현재 논문 목록 (39편) ──
+    Core (5): paper1-ai, paper2-cross, paper3-tokamak, paper4-gut, paper5-carbon
+    Chip (6): dram, exynos, performance-chip, unified-soc, consciousness-chip/soc
+    HEXA (5): 3d, photon, pim, super, wafer
+    Physics (4): plasma-fusion-deep, particle-cosmology, pure-mathematics, superconductor
+    Energy (2): energy-efficiency, battery-energy
+    Environment (1): environment-thermal
+    Bio/Med (1): biology-medical
+    Materials (1): crystallography-materials
+    Robot/Transport (1): robotics-transport
+    Software (1): software-crypto
+    Comms (1): isocell-comms
+    Meta (1): rtsc-12-products-evolution
+    NEW (13): aerospace-transport, cognitive-social-psychology, quantum-computing,
+              autonomous-driving, games-sports, calendar-time-geography,
+              economics-finance, ecology-agriculture-food, space-systems,
+              telecom-linguistics, governance-safety-urban, thermodynamics,
+              control-automation, manufacturing-quality, classical-mechanics-accelerator
+
+  ── BT→논문 매핑 규칙 ──
+    새 BT 추가 시 → 해당 도메인 논문에 반영 (bt-update-notes.md 참조)
+    미커버 BT 13개 이상 축적 시 → 신규 논문 생성 트리거
+    docs/paper/bt-update-notes.md = BT→논문 통합 로드맵
+```
+
 ## Atlas Sync
 Constants registry: `docs/atlas-constants.md`
 TECS-L scanner includes n6-architecture. Run: `cd ~/Dev/TECS-L && bash .shared/sync-calculators.sh`
