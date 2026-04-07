@@ -1,8 +1,9 @@
 name: Deploy 3D Reality Map
 on:
+  workflow_dispatch:
   push:
     branches: [main]
-    paths: [docs/index.html]
+    paths: ['docs/index.html', 'docs/reality_map.json', 'docs/.nojekyll']
 permissions:
   contents: read
   pages: write
