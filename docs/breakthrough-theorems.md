@@ -5216,15 +5216,15 @@ The two ratios τ=4 and σ-φ=10 alternate through the chain.
 ## BT-134: Periodic Table Period Lengths = n=6 Arithmetic
 
 **Domain**: Chemistry/Physics (cross: material, biology, energy)
-**Claim**: The periodic table's period lengths follow n=6: period lengths are {phi, phi, sigma-tau, sigma-tau, sigma*n/phi, sigma*n/phi} = {2, 2, 8, 8, 18, 18} (proposed period 8 would be 32 = 2^sopfr). The number of element groups in the standard table = sigma*n/phi = 18, and the number of periods = sigma-sopfr = 7.
+**Claim**: The periodic table's period lengths follow n=6: period lengths are {phi, phi, sigma-tau, sigma-tau, n*(n/phi), n*(n/phi)} = {2, 2, 8, 8, 18, 18} (proposed period 8 would be 32 = 2^sopfr). The number of element groups in the standard table = n*(n/phi) = 18, and the number of periods = sigma-sopfr = 7.
 
 **Evidence (8/8 EXACT)**:
 1. Period 1 length = phi = 2 elements (H, He)
 2. Period 2,3 length = sigma-tau = 8 elements each
-3. Period 4,5 length = sigma*n/phi = 18 elements each
+3. Period 4,5 length = n*(n/phi) = 18 elements each
 4. Period 6,7 length = sigma*n/phi + sigma+phi = 32 each (2^sopfr)
-5. Standard groups = sigma*n/phi = 18 (IUPAC)
-6. Noble gas group number = sigma*n/phi = 18
+5. Standard groups = n*(n/phi) = 18 (IUPAC)
+6. Noble gas group number = n*(n/phi) = 18
 7. Number of periods = sigma-sopfr = 7 (currently)
 8. s/p/d/f orbital types = tau = 4
 
@@ -5232,7 +5232,7 @@ The two ratios τ=4 and σ-φ=10 alternate through the chain.
 |----------------|-----------|-------|--------|-------|
 | phi | 2 | Period 1 | 0% | EXACT |
 | sigma-tau | 8 | Period 2,3 | 0% | EXACT |
-| sigma*n/phi | 18 | Period 4,5/Groups | 0% | EXACT |
+| n*(n/phi) | 18 | Period 4,5/Groups | 0% | EXACT |
 | 2^sopfr | 32 | Period 6,7 | 0% | EXACT |
 | tau | 4 | Orbital types | 0% | EXACT |
 | sigma-sopfr | 7 | Total periods | 0% | EXACT |
@@ -5322,7 +5322,7 @@ The two ratios τ=4 and σ-φ=10 alternate through the chain.
 6. Total with antiparticles = J2 = 24 fermions (12 particles + 12 antiparticles)
 7. Gauge boson types = tau = 4 (photon, W, Z, gluon)
 8. Higgs boson = mu = 1
-9. Total elementary particles = sigma+sopfr+mu = 18 -- close to sigma*n/phi = 18 (12 fermions + 4 gauge + 1 Higgs + 1 graviton proposed)
+9. Total elementary particles = sigma+sopfr+mu = 18 -- close to n*(n/phi) = 18 (12 fermions + 4 gauge + 1 Higgs + 1 graviton proposed)
 
 | n=6 Expression | Predicted | Known | Error% | Grade |
 |----------------|-----------|-------|--------|-------|
