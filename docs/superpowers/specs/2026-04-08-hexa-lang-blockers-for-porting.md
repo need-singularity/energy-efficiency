@@ -79,6 +79,26 @@ n6-architecture의 `.py` / `.rs` / `.sh` → `.hexa` 전면 포팅은 **현재 h
 **영향:** L3 `techniques/*.py` 23개, L4 `experiments/*.py` 전부
 **필요:** 별도 결정 — (a) HEXA용 ML 스택 신규 작성 / (b) Python FFI / (c) L3/L4 포팅 영구 보류
 
+### B-12. 배열 리터럴 codegen 손상 (CRITICAL)
+
+**증상:** `let names = ["SU(5)", "SO(10)", "E_6", "E_8"]`에서 생성된 C:
+```c
+HexaVal vals = hexa_array_new(), tau), sopfr), n), hexa_int(...));
+```
+괄호 짝 깨진 무효 C. push 체인으로 펼쳐지지 않음.
+**영향:** 단일원소 외 배열 리터럴 전부 불가 → 거의 모든 비자명 프로그램 불가
+**필요:** codegen_c2에서 배열 리터럴을 `hexa_array_push(hexa_array_push(... hexa_array_new() ...))` 형태로 제대로 펼치기
+
+### B-13. while/for 본문에서 외부 스코프 변수 미인식 (CRITICAL)
+
+**증상:** top-level `let names = ...` 후 `while i < 4 { ... names[i] ... }`에서
+```
+error: use of undeclared identifier 'names'
+error: use of undeclared identifier 'ranks'
+```
+**영향:** 루프 안에서 외부 변수 사용 불가 → 사실상 모든 비자명 프로그램 불가능
+**필요:** codegen_c2의 블록 스코프 처리 — 루프 본문 C 블록이 외부 식별자를 볼 수 있게 emit
+
 ### B-11. 빌드 산출물 cleanup / 출력 경로
 
 **증상:** `.c` 중간 파일이 소스 옆에 남음. `-I` 플래그가 `ready/self` 상대경로로 하드코딩 → cwd 의존
@@ -89,6 +109,7 @@ n6-architecture의 `.py` / `.rs` / `.sh` → `.hexa` 전면 포팅은 **현재 h
 
 | 우선 | 차단 항목 | 해소되면 가능해지는 것 |
 |---|---|---|
+| **P-1** | **B-12, B-13** | **모든 비자명 프로그램** (루프+배열) |
 | **P0** | B-1, B-2, B-11 | 기본 sweep 진입 |
 | **P0** | B-3, B-4 | L2 sweep 가능 |
 | P1 | B-5, B-6 | L2 품질 유지 |
