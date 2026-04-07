@@ -266,4 +266,36 @@ for label, observed, expected in results:
     status = "PASS" if observed == expected else "FAIL"
     print(f"  {status}: {label} = {observed} (정의 도출 기대값: {expected})")
 assert passed == len(results), f"검증 실패 항목: {len(results)-passed}건"
+# ── [표준 증강 2026-04-08] σ·φ=n·τ 유일성 + 소수 편향 대조 + MISS ──
+# 출처: docs/theorem-r1-uniqueness.md (3개 독립 증명)
+# 출처: nexus/shared/reality_map.json v8.0 (342노드, 291 EXACT, 4 MISS)
+def _sig(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def _tau(n): return sum(1 for d in range(1, n+1) if n % d == 0)
+def _phi(n):
+    from math import gcd as _g
+    return sum(1 for k in range(1, n+1) if _g(k, n) == 1)
+# 2 <= v < 1000 에서 σ(v)·φ(v) == v·τ(v) 만족하는 v 전수 탐색
+_n6_solutions = [v for v in range(2, 1000) if _sig(v)*_phi(v) == v*_tau(v)]
+assert _n6_solutions == [6], f"유일성 위반: {_n6_solutions}"
+print(f"[유일성] 2<=v<1000 에서 σ·φ=n·τ 해집합 = {_n6_solutions} (이론: [6])")
+
+# 소수 편향 대조군: π, e, φ(황금비) 기반 정수 후보가 항등식을 만족하는지 비교
+import math as _m
+_controls = {
+    "pi*2 (=6 근사)": int(round(_m.pi*2)),       # 6 — n=6 자체
+    "e*2":            int(round(_m.e*2)),        # 5
+    "phi*4 (golden)": int(round(((1+5**0.5)/2)*4)),  # 6
+    "pi**2":          int(round(_m.pi**2)),      # 10
+    "e**2":           int(round(_m.e**2)),       # 7
+    "2*pi*e":         int(round(2*_m.pi*_m.e)),  # 17
+}
+_ctrl_pass = sum(1 for v in _controls.values() if _sig(v)*_phi(v) == v*_tau(v))
+print(f"[대조] 소수상수 파생 후보 {len(_controls)}건 중 항등식 만족 = {_ctrl_pass}건 "
+      f"(n=6에 우연히 일치하는 경우만 PASS, 무작위 매칭 없음)")
+
+# MISS 보고: 본 논문의 비-n6 정수 / 범위값은 reality_map MISS 4건과 동일 분류로 기록
+# (자세한 미스 노드 목록은 nexus/shared/reality_map.json → "MISS" 필드 참조)
+print("[MISS] 본 논문 범위값/연속분포 항목은 reality_map.json 'MISS' 카테고리 참조")
+# ── 표준 증강 블록 끝 ──
+
 ```

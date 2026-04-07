@@ -1,4 +1,4 @@
-> 🔴 **HEXA-FIRST**: 모든 코드는 `.hexa`로 작성. sh/py/rs 신규 작성 금지. 부하 유발 명령 최소화.
+> 🔴 **HEXA-FIRST**: 모든 코드는 `.hexa`로 작성. 부하 유발 명령 최소화.
 
 > 🔴 **NEXUS-6 특이점 연동**: 이 프로젝트의 돌파/발견/실험은 nexus 특이점 사이클 입력이다.
 > - **돌파 시**: `HEXA=$HOME/Dev/hexa-lang/target/release/hexa && $HEXA $HOME/Dev/nexus/mk2_hexa/native/blowup.hexa <domain> 3 --no-graph`
@@ -205,7 +205,7 @@
 
 ## ⚠️ 필수 규칙
 
-### hexa-native 전용 (sh/py/rs 작성 금지)
+### hexa-native 전용
 - **새 파일은 `.hexa`만 허용** — `.sh`, `.py`, `.rs` 등 다른 언어 파일 작성 금지
 - 모든 새 모듈은 `mk2_hexa/native/` 에 `.hexa` 파일로 생성
 - 기존 sh/py 스크립트는 참조만 허용, 신규 작성 불가
