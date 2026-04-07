@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>n=6 Reality Map 3D v3.0 (127 nodes)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a1a; color: #eee; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+#stats {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  background: rgba(10,10,30,0.92); border: 1px solid #334; border-radius: 8px;
+  padding: 10px 24px; z-index: 100; font-size: 14px; display: flex; gap: 20px;
+  backdrop-filter: blur(6px);
+}
+#stats .exact { color: #4fc3f7; }
+#stats .close { color: #ffd54f; }
+#stats .miss  { color: #ef5350; }
+#stats .total { color: #b0bec5; }
+#tooltip {
+  position: fixed; display: none; background: rgba(10,10,30,0.95);
+  border: 1px solid #556; border-radius: 6px; padding: 10px 14px;
+  font-size: 13px; max-width: 380px; z-index: 200; pointer-events: none;
+  backdrop-filter: blur(8px); line-height: 1.5;
+}
+#tooltip .grade-tag {
+  display: inline-block; padding: 1px 8px; border-radius: 3px;
+  font-weight: bold; font-size: 11px; margin-left: 6px;
+}
+#tooltip .grade-EXACT { background: #1565c0; color: #fff; }
+#tooltip .grade-CLOSE { background: #f9a825; color: #000; }
+#tooltip .grade-MISS  { background: #c62828; color: #fff; }
+#legend {
+  position: fixed; bottom: 12px; left: 12px; background: rgba(10,10,30,0.9);
+  border: 1px solid #334; border-radius: 8px; padding: 10px 14px;
+  font-size: 12px; z-index: 100; line-height: 1.8;
+}
+#legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+#axes-label {
+  position: fixed; bottom: 12px; right: 12px; background: rgba(10,10,30,0.9);
+  border: 1px solid #334; border-radius: 8px; padding: 10px 14px;
+  font-size: 12px; z-index: 100; line-height: 1.6;
+}
+canvas { display: block; }
+</style>
+</head>
+<body>
+
+<div id="stats">
+  <span class="total">Total: <b id="s-total"></b></span>
+  <span class="exact">EXACT: <b id="s-exact"></b></span>
+  <span class="close">CLOSE: <b id="s-close"></b></span>
+  <span class="miss">MISS: <b id="s-miss"></b></span>
+  <span class="total" style="color:#aaa">|</span>
+  <span class="exact" style="color:#81d4fa">EXACT <b id="s-pct"></b>%</span>
+</div>
+
+<div id="tooltip"></div>
+
+<div id="legend">
+  <b>Level (X axis)</b><br>
+  <span class="dot" style="background:#ef5350"></span>L0 Particle
+  <span class="dot" style="background:#ff9800;margin-left:8px"></span>L1 Atom<br>
+  <span class="dot" style="background:#ffee58"></span>L2 Bond
+  <span class="dot" style="background:#66bb6a;margin-left:8px"></span>L3 Molecule<br>
+  <span class="dot" style="background:#42a5f5"></span>L4 Genetic
+  <span class="dot" style="background:#ab47bc;margin-left:8px"></span>L5 Material/Bio<br>
+  <span class="dot" style="background:#ffd700;margin-left:8px"></span><b style="color:#ffd700">CHAIN</b> (인과 사슬)<br>
+  <br><b>Causal Type</b><br>
+  <span style="color:#4fc3f7">STRUCTURAL</span> (수학/군론 증명)&nbsp;
+  <span style="color:#66bb6a">CAUSAL</span> (물리 유도)<br>
+  <span style="color:#ffd54f">EMPIRICAL</span> (측정 일치)&nbsp;
+  <span style="color:#b0bec5">CONVENTION</span> (관례)<br>
+  <br><b>Edges</b><br>
+  <span style="color:#fff">--- parent (white)</span><br>
+  <span style="color:#888">--- sibling (gray)</span><br>
+  <span style="color:#4fc3f7">--- thread (colored)</span>
+</div>
+
+<div id="axes-label">
+  <b>Axes</b><br>
+  X = Level (L0-L5)<br>
+  Y = Thread (n,sigma,tau,...)<br>
+  Z = Domain index
+</div>
+
+<canvas id="c"></canvas>
+
+<script>
+const DATA = {"nodes": [{"id": "L0-quark-flavors", "x": 0, "y": 0, "z": 0, "level": "L0_particle", "thread": "n", "grade": "EXACT", "claim": "쿼크 맛(flavor) 수", "source": "Particle Data Group (PDG) 2024 Review", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "표준모형 SU(3)xSU(2)xU(1) 게이지 대칭의 3세대 x 2(up/down) = 6", "isChain": false}, {"id": "L0-lepton-flavors", "x": 0, "y": 0, "z": 1, "level": "L0_particle", "thread": "n", "grade": "EXACT", "claim": "렙톤 맛(flavor) 수", "source": "PDG 2024", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "3세대 x 2(하전/중성) = 6, 쿼크-렙톤 대칭(anomaly cancellation)", "isChain": false}, {"id": "L0-gauge-bosons", "x": 0, "y": 1, "z": 0, "level": "L0_particle", "thread": "sigma", "grade": "EXACT", "claim": "게이지 보손 총 수", "source": "PDG 2024, SM gauge group dim", "measured": "12", "n6_expr": "sigma", "causal": "STRUCTURAL", "cause": "dim SU(3)=8, dim SU(2)=3, dim U(1)=1, 합=12는 군론 필연", "isChain": false}, {"id": "L0-fundamental-forces", "x": 0, "y": 2, "z": 0, "level": "L0_particle", "thread": "tau", "grade": "EXACT", "claim": "기본 상호작용 수", "source": "표준모형 + 일반상대론", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "SM 3 게이지 상호작용 + 중력 = 4, GUT에서 통합 시도 중", "isChain": false}, {"id": "L0-quark-colors", "x": 0, "y": 7, "z": 0, "level": "L0_particle", "thread": "n_over_phi", "grade": "EXACT", "claim": "쿼크 색전하 수", "source": "QCD SU(3) 기본표현 차원", "measured": "3", "n6_expr": "n / phi", "causal": "STRUCTURAL", "cause": "SU(3) 기본표현 차원 = 3", "isChain": false}, {"id": "L0-gluons", "x": 0, "y": 8, "z": 0, "level": "L0_particle", "thread": "sigma_minus_tau", "grade": "EXACT", "claim": "글루온 수", "source": "QCD, PDG 2024", "measured": "8", "n6_expr": "sigma - tau", "causal": "STRUCTURAL", "cause": "dim adj SU(3) = N^2 - 1 = 8, 군론 필연", "isChain": false}, {"id": "L0-generations", "x": 0, "y": 7, "z": 1, "level": "L0_particle", "thread": "n_over_phi", "grade": "EXACT", "claim": "입자 세대 수", "source": "LEP Collaborations 2005, Phys.Rept.427:257", "measured": "3", "n6_expr": "n / phi", "causal": "EMPIRICAL", "cause": "왜 3세대인지는 미해결 -- SM이 설명 못함, 실험적 사실", "isChain": false}, {"id": "L0-mp-me-ratio", "x": 0, "y": 0, "z": 2, "level": "L0_particle", "thread": "n", "grade": "CLOSE", "claim": "양성자/전자 질량비", "source": "CODATA 2018, NIST", "measured": "1836.15267", "n6_expr": "n * pi**5", "causal": "EMPIRICAL", "cause": "n*pi^5 근사 -- 19 ppm 일치, 인과 메커니즘 불명", "isChain": false}, {"id": "L1-carbon-Z6", "x": 1, "y": 0, "z": 0, "level": "L1_atom", "thread": "n", "grade": "EXACT", "claim": "탄소 원자번호", "source": "IUPAC Periodic Table 2021", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "양성자 6개 = 핵력 안정 구조, He-4 alpha 과정으로 합성 (triple-alpha)", "isChain": false}, {"id": "L1-carbon-valence", "x": 1, "y": 2, "z": 0, "level": "L1_atom", "thread": "tau", "grade": "EXACT", "claim": "탄소 원자가 전자 수", "source": "NIST Atomic Spectra Database", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "Z=6, 전자배치 [He]2s2 2p2 → 원자가=4는 양자역학 필연", "isChain": false}, {"id": "L1-quantum-numbers", "x": 1, "y": 2, "z": 1, "level": "L1_atom", "thread": "tau", "grade": "EXACT", "claim": "양자수 종류", "source": "양자역학 교과서 (Griffiths, Sakurai)", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "3D 수소 원자 Schrodinger 방정식 해의 분리 상수 3개 + Dirac 스핀 1개", "isChain": false}, {"id": "L1-subshell-types", "x": 1, "y": 2, "z": 2, "level": "L1_atom", "thread": "tau", "grade": "EXACT", "claim": "전자 부껍질 유형", "source": "양자역학, 각운동량 양자수 l=0..n-1", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "첫 4 주기에서 실제 채워지는 부껍질 유형, l_max=3까지", "isChain": false}, {"id": "L1-period-lengths", "x": 1, "y": 10, "z": 0, "level": "L1_atom", "thread": "mixed", "grade": "EXACT", "claim": "주기율표 주기 길이", "source": "IUPAC Periodic Table", "measured": "[2, 8, 8, 18, 18, 32, 32]", "n6_expr": "[phi, sigma-tau, sigma-tau, 3*n, 3*n, 2**sopfr, 2**sopfr]", "causal": "STRUCTURAL", "cause": "Madelung 규칙 + Pauli 배타 원리, 2n^2에서 n=1..4", "isChain": false}, {"id": "L1-hydrogen-Z1", "x": 1, "y": 6, "z": 0, "level": "L1_atom", "thread": "mu", "grade": "EXACT", "claim": "수소 원자번호", "source": "IUPAC", "measured": "1", "n6_expr": "mu", "causal": "STRUCTURAL", "cause": "양성자 1개 = 가장 단순한 원자핵", "isChain": false}, {"id": "L1-magnesium-Z12", "x": 1, "y": 1, "z": 0, "level": "L1_atom", "thread": "sigma", "grade": "EXACT", "claim": "마그네슘 원자번호", "source": "IUPAC", "measured": "12", "n6_expr": "sigma", "causal": "STRUCTURAL", "cause": "Z=12, 엽록소 Mg 중심 → 광합성 핵심", "isChain": false}, {"id": "L1-boron-Z5", "x": 1, "y": 4, "z": 0, "level": "L1_atom", "thread": "sopfr", "grade": "EXACT", "claim": "붕소 원자번호", "source": "IUPAC", "measured": "5", "n6_expr": "sopfr", "causal": "STRUCTURAL", "cause": "Z=5, 경질 세라믹(B4C)과 초전도(MgB2) 핵심", "isChain": false}, {"id": "MISS-SI-base-units", "x": 1, "y": 11, "z": 0, "level": "L1_atom", "thread": "none", "grade": "MISS", "claim": "SI 기본 단위 수", "source": "BIPM SI Brochure 9th ed. 2019", "measured": "7", "n6_expr": "sigma - sopfr (= 7, 하지만 n=6이 아님)", "causal": "CONVENTION", "cause": "7은 n=6이 아님. sigma-sopfr=7로 매핑 가능하나, SI 단위 7개는 인간 관례 (2019년에 재정의됨)", "isChain": false}, {"id": "MISS-crystal-systems", "x": 2, "y": 11, "z": 0, "level": "L2_bond", "thread": "none", "grade": "MISS", "claim": "결정계 수", "source": "International Tables for Crystallography Vol A", "measured": "7", "n6_expr": "sigma - sopfr (= 7, n=6 아님)", "causal": "STRUCTURAL", "cause": "7은 n=6이 아님. 3D 격자 대칭 분류의 군론적 필연 = 7, 수학 정리로 증명됨", "isChain": false}, {"id": "MISS-planck-units", "x": 0, "y": 4, "z": 0, "level": "L0_particle", "thread": "sopfr", "grade": "EXACT", "claim": "플랑크 기본 단위 수", "source": "NIST CODATA 2018", "measured": "5", "n6_expr": "sopfr (= 5, n=6 아님)", "causal": "STRUCTURAL", "cause": "5개 기본 물리 상수(G,h,c,k_B,e)에서 유도, 차원 분석 필연", "isChain": false}, {"id": "MISS-body-temperature", "x": 6, "y": 0, "z": 0, "level": "L5_bio", "thread": "n", "grade": "CLOSE", "claim": "인체 정상 체온", "source": "Mackowiak PA et al. JAMA 1992;268:1578", "measured": "37.0", "n6_expr": "n**2 (= 36, 실측 37)", "causal": "EMPIRICAL", "cause": "n^2=36 vs 실측 37.0, 오차 2.7%. 효소 최적 온도는 진화적 결과이지 물리 상수 아님", "isChain": false}, {"id": "MISS-ATP-modern", "x": 6, "y": 0, "z": 1, "level": "L5_bio", "thread": "n", "grade": "MISS", "claim": "포도당 1분자당 ATP 생산량 (현대값)", "source": "Rich PR. Biochem Soc Trans 2003;31:1095", "measured": "30.5", "n6_expr": "n**2 (= 36, 실측 30-32)", "causal": "EMPIRICAL", "cause": "고전 교과서 36은 양성자 구배 효율 100% 가정. 현대 측정값 30-32. n^2=36은 이론 상한에 가까움", "isChain": false}, {"id": "L2-sp2-hexagonal", "x": 2, "y": 1, "z": 0, "level": "L2_bond", "thread": "sigma", "grade": "EXACT", "claim": "sp2 혼성 결합각", "source": "IUPAC Gold Book, VSEPR theory", "measured": "120.0", "n6_expr": "sigma * (sigma - phi)", "causal": "CAUSAL", "cause": "360/3 = 120, 3개 sp2 오비탈이 평면에서 등분 → 육각형 형성의 기하학적 필연", "isChain": false}, {"id": "L2-sp3-tetrahedral", "x": 2, "y": 11, "z": 1, "level": "L2_bond", "thread": "none", "grade": "MISS", "claim": "sp3 혼성 결합각", "source": "IUPAC Gold Book", "measured": "109.47", "n6_expr": "arccos(-1/3) ≈ 109.47 (n=6 직접 매핑 없음)", "causal": "STRUCTURAL", "cause": "정사면체 각도 = arccos(-1/3), 기하학 필연. n=6 상수와 직접 관계 없음", "isChain": false}, {"id": "L2-cn6-octahedral", "x": 2, "y": 0, "z": 0, "level": "L2_bond", "thread": "n", "grade": "EXACT", "claim": "정팔면체 배위수", "source": "Wells, Structural Inorganic Chemistry, 5th ed.", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "이온 반지름비 0.414-0.732에서 안정, 지각 광물 대다수 = 정팔면체 CN=6", "isChain": false}, {"id": "L2-cn4-tetrahedral", "x": 2, "y": 2, "z": 0, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "정사면체 배위수", "source": "Wells, Structural Inorganic Chemistry", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "이온 반지름비 0.225-0.414에서 안정", "isChain": false}, {"id": "L2-cn12-closepacked", "x": 2, "y": 1, "z": 1, "level": "L2_bond", "thread": "sigma", "grade": "EXACT", "claim": "최밀충전 배위수 (3D kissing number)", "source": "Schutte & van der Waerden 1953, Math. Annalen 125", "measured": "12", "n6_expr": "sigma", "causal": "STRUCTURAL", "cause": "3D 구 패킹 수학 정리 (1953 증명), 기하학 필연", "isChain": false}, {"id": "L2-bravais-lattices", "x": 2, "y": 10, "z": 0, "level": "L2_bond", "thread": "mixed", "grade": "EXACT", "claim": "브라베 격자 수", "source": "Bravais 1850, IUCr Tables Vol A", "measured": "14", "n6_expr": "sigma + phi (= 14)", "causal": "STRUCTURAL", "cause": "3D 점격자 분류의 군론적 필연, 수학 정리", "isChain": false}, {"id": "L2-point-groups", "x": 2, "y": 4, "z": 0, "level": "L2_bond", "thread": "sopfr", "grade": "EXACT", "claim": "결정학적 점군 수", "source": "IUCr Tables Vol A, Schoenflies 1891", "measured": "32", "n6_expr": "2 ** sopfr", "causal": "STRUCTURAL", "cause": "결정학적 제한(1,2,3,4,6차 회전만 허용) 하 점대칭 분류, 수학 정리", "isChain": false}, {"id": "L2-space-groups", "x": 2, "y": 11, "z": 2, "level": "L2_bond", "thread": "none", "grade": "MISS", "claim": "공간군 수", "source": "Fedorov 1891, Schoenflies 1891", "measured": "230", "n6_expr": "230 (n=6 단순 매핑 없음)", "causal": "STRUCTURAL", "cause": "230 = 수학 정리로 증명된 정수, n=6 산술 함수로 단순 표현 불가", "isChain": false}, {"id": "L2-max-rotation-crystal", "x": 2, "y": 0, "z": 1, "level": "L2_bond", "thread": "n", "grade": "EXACT", "claim": "결정에서 허용되는 최대 회전 대칭 차수", "source": "Crystallographic restriction theorem", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "2D 격자 병진 대칭과 호환되는 최대 회전 = 6차 (수학 정리, 오일러 공식에서 유도)", "isChain": false}, {"id": "L2-fcc-slip-systems", "x": 2, "y": 1, "z": 2, "level": "L2_bond", "thread": "sigma", "grade": "EXACT", "claim": "FCC 슬립 시스템 수", "source": "Callister, Materials Science and Engineering 9th ed.", "measured": "12", "n6_expr": "sigma", "causal": "CAUSAL", "cause": "FCC 대칭에서 tau=4 밀집면 x n/phi=3 밀집 방향 = sigma=12, 기하학 필연", "isChain": false}, {"id": "L3-benzene", "x": 3, "y": 0, "z": 0, "level": "L3_molecule", "thread": "n", "grade": "EXACT", "claim": "벤젠 탄소 고리 원자 수", "source": "IUPAC, PubChem CID 241", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "sp2 120도 x 6 = 720도 내각합 (정육각형), 탄소 sp2 혼성의 기하학적 필연", "isChain": false}, {"id": "L3-glucose", "x": 3, "y": 5, "z": 0, "level": "L3_molecule", "thread": "J2", "grade": "EXACT", "claim": "포도당 총 원자 수", "source": "IUPAC, PubChem CID 5793", "measured": "24", "n6_expr": "J2", "causal": "CAUSAL", "cause": "C6(n) + H12(sigma) + O6(n) = 24(J2), 탄소 6원환 기반 단당", "isChain": false}, {"id": "L3-glucose-carbons", "x": 3, "y": 0, "z": 1, "level": "L3_molecule", "thread": "n", "grade": "EXACT", "claim": "포도당 탄소 수", "source": "PubChem CID 5793", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "해당작용(glycolysis)이 C6을 C3+C3으로 분할 -- n/phi=3", "isChain": false}, {"id": "L3-water", "x": 3, "y": 11, "z": 0, "level": "L3_molecule", "thread": "none", "grade": "MISS", "claim": "물 결합각", "source": "NIST Chemistry WebBook", "measured": "104.5", "n6_expr": "n=6 직접 매핑 없음", "causal": "STRUCTURAL", "cause": "104.5도는 sp3 정사면체(109.5)에서 고립전자쌍 2개 반발로 축소. n=6 매핑 없음", "isChain": false}, {"id": "L3-C60", "x": 3, "y": 10, "z": 0, "level": "L3_molecule", "thread": "mixed", "grade": "EXACT", "claim": "풀러렌 C60 탄소 수", "source": "Kroto et al. Nature 1985;318:162", "measured": "60", "n6_expr": "sigma * sopfr", "causal": "STRUCTURAL", "cause": "오일러 공식: V-E+F=2, 12 오각형(=sigma) + 20 육각형(=J2-tau), V=60", "isChain": false}, {"id": "L3-C60-pentagons", "x": 3, "y": 1, "z": 0, "level": "L3_molecule", "thread": "sigma", "grade": "EXACT", "claim": "C60 오각형 면 수", "source": "오일러 다면체 정리 V-E+F=2", "measured": "12", "n6_expr": "sigma", "causal": "STRUCTURAL", "cause": "오일러 공식에서 유도: 임의의 풀러렌은 정확히 12개 오각형을 가져야 함 (수학 정리)", "isChain": false}, {"id": "L4-dna-bases", "x": 4, "y": 2, "z": 0, "level": "L4_genetic", "thread": "tau", "grade": "EXACT", "claim": "DNA 염기 종류", "source": "Watson & Crick 1953, NCBI GenBank", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "퓨린 2종(A,G) + 피리미딘 2종(T,C) = 4, Watson-Crick 수소결합 상보성", "isChain": false}, {"id": "L4-double-helix", "x": 4, "y": 3, "z": 0, "level": "L4_genetic", "thread": "phi", "grade": "EXACT", "claim": "DNA 가닥 수", "source": "Watson & Crick, Nature 1953;171:737", "measured": "2", "n6_expr": "phi", "causal": "CAUSAL", "cause": "상보적 염기쌍 → 2가닥 필연, 복제 메커니즘의 기초", "isChain": false}, {"id": "L4-codons", "x": 4, "y": 0, "z": 0, "level": "L4_genetic", "thread": "n", "grade": "EXACT", "claim": "코돈 총 수", "source": "Nirenberg & Matthaei 1961, 유전 코드 해독", "measured": "64", "n6_expr": "2 ** n", "causal": "CAUSAL", "cause": "tau^(n/phi) = 4^3 = 64 = 2^6 = 2^n, 조합론 필연", "isChain": false}, {"id": "L4-codon-length", "x": 4, "y": 7, "z": 0, "level": "L4_genetic", "thread": "n_over_phi", "grade": "EXACT", "claim": "코돈 길이 (염기 수)", "source": "Crick et al. Nature 1961;192:1227", "measured": "3", "n6_expr": "n / phi", "causal": "CAUSAL", "cause": "2자리면 4^2=16 (부족), 3자리면 4^3=64 (충분) → 최소 필요 길이가 3", "isChain": false}, {"id": "L4-amino-acids", "x": 4, "y": 10, "z": 0, "level": "L4_genetic", "thread": "mixed", "grade": "EXACT", "claim": "표준 아미노산 수", "source": "IUPAC-IUBMB, UniProt", "measured": "20", "n6_expr": "J2 - tau", "causal": "EMPIRICAL", "cause": "왜 정확히 20종인지는 미해결 문제. J2-tau=20 매핑은 있으나 인과 불명", "isChain": false}, {"id": "L4-stop-codons", "x": 4, "y": 7, "z": 1, "level": "L4_genetic", "thread": "n_over_phi", "grade": "EXACT", "claim": "종결 코돈 수", "source": "NCBI Genetic Code Table 1", "measured": "3", "n6_expr": "n / phi", "causal": "EMPIRICAL", "cause": "64 코돈 중 3개가 종결 = 진화적 결과, n/phi=3 일치하나 인과 불명", "isChain": false}, {"id": "L4-start-codon", "x": 4, "y": 6, "z": 0, "level": "L4_genetic", "thread": "mu", "grade": "EXACT", "claim": "개시 코돈 수", "source": "NCBI Genetic Code Table 1", "measured": "1", "n6_expr": "mu", "causal": "EMPIRICAL", "cause": "진화적으로 AUG 하나에 수렴", "isChain": false}, {"id": "MISS-base-pairs-per-turn", "x": 4, "y": 1, "z": 0, "level": "L4_genetic", "thread": "sigma", "grade": "CLOSE", "claim": "DNA 이중나선 1회전당 염기쌍", "source": "Watson & Crick 1953 (원래 10), 후속 X선: 10.5", "measured": "10.5", "n6_expr": "sigma - phi (= 10, 실측 10.5)", "causal": "EMPIRICAL", "cause": "sigma-phi=10 vs 실측 10.5, 4.8% 오차. B-DNA 구조의 열역학적 최적", "isChain": false}, {"id": "L5-nacl", "x": 5, "y": 0, "z": 0, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "NaCl 구조 배위수", "source": "IUCr, Wells Structural Inorganic Chemistry", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "Na+/Cl- 반지름비 0.56 → 정팔면체 안정, CN=6", "isChain": false}, {"id": "L5-perovskite", "x": 5, "y": 0, "z": 1, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "페로브스카이트 ABO3 B자리 배위수", "source": "Goldschmidt 1926, IUCr", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "B 양이온이 산소 6개에 둘러싸인 정팔면체 구조", "isChain": false}, {"id": "L5-lion-cathode", "x": 5, "y": 0, "z": 2, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "Li-ion 양극 배위수 (LiCoO2, NMC, LFP 전부)", "source": "Goodenough & Park, JACS 2013;135:1167", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "전이금속 d 오비탈 + 산소 정팔면체장 → Li 이동 경로 안정화", "isChain": false}, {"id": "L5-diamond-atoms-per-cell", "x": 5, "y": 8, "z": 0, "level": "L5_material", "thread": "sigma_minus_tau", "grade": "EXACT", "claim": "다이아몬드 단위정 원자 수", "source": "IUCr, Fd-3m space group", "measured": "8", "n6_expr": "sigma - tau", "causal": "STRUCTURAL", "cause": "FCC(4 원자) x 기저(2 원자) = 8, 결정학 필연", "isChain": false}, {"id": "L5-graphene", "x": 5, "y": 3, "z": 0, "level": "L5_material", "thread": "phi", "grade": "EXACT", "claim": "그래핀 단위정 원자 수", "source": "Novoselov et al. Science 2004;306:666", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "삼각 부격자 2개로 구성된 벌집 격자, 기하학 필연", "isChain": false}, {"id": "L5-graphene-ring", "x": 5, "y": 0, "z": 3, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "그래핀/그래파이트 기본 고리 원자 수", "source": "IUCr", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "sp2 120도 → 내각합 720도 = 정육각형, L2-sp2-hexagonal에서 유도", "isChain": false}, {"id": "L5-ice-hexagonal", "x": 5, "y": 0, "z": 4, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "얼음 Ih 대칭", "source": "Petrenko & Whitworth, Physics of Ice, Cambridge 1999", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "물 분자 수소결합 각도(~109도 sp3) → 4배위 → 육방 격자 형성, 열역학 필연", "isChain": false}, {"id": "L5-honeycomb", "x": 5, "y": 0, "z": 5, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "벌집 육각형 최적성", "source": "Hales TC. Disc. Comp. Geom. 2001;25:1-22", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "2D 등면적 분할 최소 둘레 = 정육각형 (2001년 수학적 증명)", "isChain": false}, {"id": "L5-YBCO", "x": 5, "y": 10, "z": 0, "level": "L5_material", "thread": "mixed", "grade": "EXACT", "claim": "YBCO 초전도체 화학양론", "source": "Wu et al. Phys. Rev. Lett. 1987;58:908", "measured": "[1, 2, 3]", "n6_expr": "div(6) = {1, 2, 3}", "causal": "EMPIRICAL", "cause": "Y:Ba:Cu = 1:2:3 = 6의 진약수 집합. 우연의 일치일 수 있으나 구조적으로 흥미", "isChain": false}, {"id": "L5-glycolysis-electrons", "x": 6, "y": 5, "z": 0, "level": "L5_bio", "thread": "J2", "grade": "EXACT", "claim": "포도당 완전 산화 전자 수", "source": "Berg et al. Biochemistry 9th ed.", "measured": "24", "n6_expr": "J2", "causal": "CAUSAL", "cause": "각 C가 0 → +4 산화 (CO2), 6C x 4e = 24e, 화학양론 필연", "isChain": false}, {"id": "L5-mitochondria-complexes", "x": 6, "y": 2, "z": 0, "level": "L5_bio", "thread": "tau", "grade": "EXACT", "claim": "미토콘드리아 전자전달 복합체 수", "source": "Berg et al. Biochemistry, Lehninger Principles", "measured": "4", "n6_expr": "tau", "causal": "EMPIRICAL", "cause": "진화적으로 수렴한 4개 복합체, tau=4 일치하나 인과 불명", "isChain": false}, {"id": "L5-krebs-cycle", "x": 6, "y": 8, "z": 0, "level": "L5_bio", "thread": "sigma_minus_tau", "grade": "EXACT", "claim": "크렙스 회로 단계 수", "source": "Berg et al. Biochemistry", "measured": "8", "n6_expr": "sigma - tau", "causal": "EMPIRICAL", "cause": "진화적으로 수렴한 8단계, sigma-tau=8 일치. 왜 정확히 8인지 열역학적 설명 부분적", "isChain": false}, {"id": "L5-cortical-layers", "x": 6, "y": 0, "z": 2, "level": "L5_bio", "thread": "n", "grade": "EXACT", "claim": "대뇌 신피질 층 수", "source": "Brodmann 1909, Mountcastle 1997", "measured": "6", "n6_expr": "n", "causal": "EMPIRICAL", "cause": "모든 포유류에서 보존된 6층 구조. 발생학적으로 안쪽→바깥쪽 6단계 이동. 왜 6인지 완전 해명 안 됨", "isChain": false}, {"id": "L5-tc99m-halflife", "x": 6, "y": 0, "z": 3, "level": "L5_bio", "thread": "n", "grade": "EXACT", "claim": "Tc-99m 반감기", "source": "NNDC Nuclear Data, Brookhaven", "measured": "6.0067", "n6_expr": "n", "causal": "EMPIRICAL", "cause": "핵 준위 수명 = 핵력 행렬 요소에 의존, n=6과 0.11% 일치. 순수 우연일 가능성 높음", "isChain": false}, {"id": "PHYS-CMB-spectral-index", "x": 0, "y": 7, "z": 2, "level": "L0_particle", "thread": "n_over_phi", "grade": "EXACT", "claim": "CMB 스펙트럼 지수 n_s", "source": "Planck Collaboration 2018, A&A 641, A6", "measured": "0.9649", "n6_expr": "27/28 = (n/phi)^3 / ((n/phi)^3 + mu)", "causal": "EMPIRICAL", "cause": "27/28 = 0.96429 vs Planck 0.9649 +/- 0.0042, 1sigma 이내. 인과 불명", "isChain": false}, {"id": "PHYS-stefan-boltzmann-exponent", "x": 2, "y": 2, "z": 1, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "Stefan-Boltzmann 법칙 온도 지수", "source": "Stefan 1879, Boltzmann 1884 (이론적 유도)", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "3D + 1 (에너지 적분의 차원) = 4, 열역학/통계역학에서 유도. 차원 분석 필연", "isChain": false}, {"id": "PHYS-phase-transitions", "x": 5, "y": 2, "z": 0, "level": "L5_material", "thread": "tau", "grade": "EXACT", "claim": "물질 상태 수", "source": "열역학/물리학 교과서", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "분자 결합 에너지 vs 열에너지 비율에 따른 4 체제. 상전이 쌍 수 = C(4,2)=6=n", "isChain": false}, {"id": "PHYS-phase-transition-pairs", "x": 5, "y": 0, "z": 6, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "상전이 쌍 수", "source": "조합론 C(4,2)=6", "measured": "6", "n6_expr": "n = C(tau, phi)", "causal": "STRUCTURAL", "cause": "C(4,2) = 6, 순수 조합론. tau=4 상태에서 phi=2개를 고르는 경우의 수 = n", "isChain": false}, {"id": "THERMO-laws", "x": 2, "y": 2, "z": 2, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "열역학 법칙 수", "source": "Callen Thermodynamics", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "Carnot~Fowler 107년 독립유도", "isChain": false}, {"id": "THERMO-potentials", "x": 2, "y": 2, "z": 3, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "열역학 포텐셜 수", "source": "Callen", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "2변수x2르장드르=4", "isChain": false}, {"id": "THERMO-maxwell-rel", "x": 2, "y": 2, "z": 4, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "Maxwell 열역학 관계식", "source": "Callen", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "2차편미분교환", "isChain": false}, {"id": "THERMO-heat-modes", "x": 2, "y": 7, "z": 0, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "열전달 방식", "source": "Incropera Heat Transfer", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "고체/유체/진공=3매질", "isChain": false}, {"id": "THERMO-carnot-steps", "x": 2, "y": 2, "z": 5, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "카르노 사이클 과정", "source": "Carnot 1824", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "2등온+2단열=2x2", "isChain": false}, {"id": "EM-maxwell-eq", "x": 2, "y": 2, "z": 6, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "Maxwell 방정식 수", "source": "Jackson Electrodynamics", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "E,B각각 발산+회전=2x2=4", "isChain": false}, {"id": "EM-charge-types", "x": 0, "y": 3, "z": 0, "level": "L0_particle", "thread": "phi", "grade": "EXACT", "claim": "전하 부호 종류", "source": "Coulomb 1785", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "U(1) 게이지→±양자화", "isChain": false}, {"id": "EM-lorentz-terms", "x": 2, "y": 3, "z": 0, "level": "L2_bond", "thread": "phi", "grade": "EXACT", "claim": "로렌츠 힘 항", "source": "Lorentz 1892", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "E,B=전자기텐서 두성분", "isChain": false}, {"id": "NUC-alpha", "x": 1, "y": 2, "z": 3, "level": "L1_atom", "thread": "tau", "grade": "EXACT", "claim": "알파입자 핵자수", "source": "PDG", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "최소이중마법핵", "isChain": false}, {"id": "NUC-triple-alpha", "x": 1, "y": 7, "z": 0, "level": "L1_atom", "thread": "n_over_phi", "grade": "EXACT", "claim": "삼중알파 He-4수", "source": "Hoyle 1954", "measured": "3", "n6_expr": "n//phi", "causal": "CAUSAL", "cause": "3xHe4(tau)=C12(sigma)", "isChain": false}, {"id": "NUC-magic-first5", "x": 1, "y": 10, "z": 1, "level": "L1_atom", "thread": "mixed", "grade": "EXACT", "claim": "핵마법수 첫5개", "source": "Mayer&Jensen 1955 노벨상", "measured": "[2, 8, 20, 28, 50]", "n6_expr": "[phi,sigma-tau,J2-tau,J2+tau,sopfr*(sigma-phi)]", "causal": "EMPIRICAL", "cause": "첫5개매핑가능,82/126불가", "isChain": false}, {"id": "MISS-magic-82-126", "x": 1, "y": 11, "z": 1, "level": "L1_atom", "thread": "none", "grade": "MISS", "claim": "핵마법수 82,126", "source": "Mayer&Jensen 1955", "measured": "[82, 126]", "n6_expr": "단순매핑불가", "causal": "STRUCTURAL", "cause": "82,126은 n=6 1-2개조합 불가", "isChain": false}, {"id": "MATH-basel", "x": 0, "y": 0, "z": 3, "level": "L0_particle", "thread": "n", "grade": "EXACT", "claim": "Basel문제 zeta(2)=pi^2/6", "source": "Euler 1735", "measured": "1.6449340668", "n6_expr": "pi**2/n", "causal": "STRUCTURAL", "cause": "zeta(2)=pi^2/6 수학정리,분모6=n", "isChain": false}, {"id": "MATH-platonic", "x": 2, "y": 4, "z": 1, "level": "L2_bond", "thread": "sopfr", "grade": "EXACT", "claim": "정다면체(플라톤입체) 수", "source": "Euclid XIII BC300", "measured": "5", "n6_expr": "sopfr", "causal": "STRUCTURAL", "cause": "3D볼록정다면체=5,유클리드증명", "isChain": false}, {"id": "MATH-euler-id", "x": 0, "y": 4, "z": 1, "level": "L0_particle", "thread": "sopfr", "grade": "EXACT", "claim": "오일러항등식 상수수", "source": "Euler 1748", "measured": "5", "n6_expr": "sopfr", "causal": "STRUCTURAL", "cause": "복소해석학 5기본상수", "isChain": false}, {"id": "MATH-2d-kissing", "x": 2, "y": 0, "z": 2, "level": "L2_bond", "thread": "n", "grade": "EXACT", "claim": "2D최밀충전 배위수", "source": "Thue 1910,Toth 1940", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "2D원패킹=정삼각격자,6이웃.수학정리", "isChain": false}, {"id": "CHEM-noble-gases", "x": 1, "y": 0, "z": 1, "level": "L1_atom", "thread": "n", "grade": "EXACT", "claim": "비활성기체 수", "source": "IUPAC Group18", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "주기1~6 각1개=6종", "isChain": false}, {"id": "CHEM-bond-primary", "x": 2, "y": 7, "z": 1, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "1차 결합유형", "source": "IUPAC Gold Book", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "전자 공유/이동/비편재화=3체제", "isChain": false}, {"id": "CHEM-C-allotrope", "x": 3, "y": 2, "z": 0, "level": "L3_molecule", "thread": "tau", "grade": "EXACT", "claim": "탄소동소체 주요족", "source": "Hirsch 2010 Nat.Mater.", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "sp,sp2,sp3+곡면sp2=4결합체제", "isChain": false}, {"id": "CHEM-water-hbond", "x": 3, "y": 2, "z": 1, "level": "L3_molecule", "thread": "tau", "grade": "EXACT", "claim": "물 수소결합수(얼음)", "source": "Petrenko Physics of Ice", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "O 2고립전자쌍+2H=4수소결합,VSEPR", "isChain": false}, {"id": "BIO-mitosis", "x": 4, "y": 2, "z": 1, "level": "L4_genetic", "thread": "tau", "grade": "EXACT", "claim": "유사분열 단계", "source": "Alberts Mol.Bio.Cell 6th", "measured": "4", "n6_expr": "tau", "causal": "EMPIRICAL", "cause": "염색체 응축→정렬→분리→이완", "isChain": false}, {"id": "BIO-blood-ABO", "x": 6, "y": 2, "z": 1, "level": "L5_bio", "thread": "tau", "grade": "EXACT", "claim": "ABO 혈액형", "source": "Landsteiner 1901 노벨1930", "measured": "4", "n6_expr": "tau", "causal": "EMPIRICAL", "cause": "2항원 유/무=2^2=4=phi^phi=tau", "isChain": false}, {"id": "BIO-pyrimidine-ring", "x": 3, "y": 0, "z": 2, "level": "L3_molecule", "thread": "n", "grade": "EXACT", "claim": "피리미딘 고리원자", "source": "IUPAC,PubChem", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "방향족6원환=벤젠동일구조", "isChain": false}, {"id": "BIO-photosynthesis", "x": 6, "y": 0, "z": 4, "level": "L5_bio", "thread": "n", "grade": "EXACT", "claim": "광합성 반응식계수", "source": "Calvin cycle,Berg Biochem", "measured": "[6, 6, 1, 6, 6]", "n6_expr": "[n,n,mu,n,n]", "causal": "CAUSAL", "cause": "C6포도당 화학양론 필연", "isChain": false}, {"id": "BIO-glycolysis-split", "x": 6, "y": 3, "z": 0, "level": "L5_bio", "thread": "phi", "grade": "EXACT", "claim": "해당작용 분할", "source": "Berg Biochem", "measured": "2", "n6_expr": "phi", "causal": "CAUSAL", "cause": "C6(n)→2xC3(n/phi)", "isChain": false}, {"id": "MISS-fine-structure", "x": 0, "y": 11, "z": 0, "level": "L0_particle", "thread": "none", "grade": "MISS", "claim": "미세구조상수 역수 1/alpha", "source": "CODATA 2018", "measured": "137.036", "n6_expr": "단순매핑불가", "causal": "EMPIRICAL", "cause": "137.036 n=6 1-2개조합 불가,이론적 미해결", "isChain": false}, {"id": "PHYS-weinberg", "x": 0, "y": 7, "z": 3, "level": "L0_particle", "thread": "n_over_phi", "grade": "CLOSE", "claim": "Weinberg각 sin2theta_W", "source": "PDG 2024", "measured": "0.2312", "n6_expr": "3/13=(n/phi)/(sigma+mu)", "causal": "EMPIRICAL", "cause": "3/13 vs 0.2312,0.19%오차", "isChain": false}, {"id": "PHYS-stokes-drag", "x": 3, "y": 0, "z": 3, "level": "L3_molecule", "thread": "n", "grade": "EXACT", "claim": "Stokes항력계수 6pi", "source": "Stokes 1851", "measured": "18.8496", "n6_expr": "n*pi", "causal": "STRUCTURAL", "cause": "NS해 구면적분에서 6pi필연", "isChain": false}, {"id": "PHYS-NS-eq", "x": 2, "y": 2, "z": 7, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "Navier-Stokes 방정식수", "source": "Navier 1822", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "스칼라1+벡터3=4,3D+질량보존", "isChain": false}, {"id": "PHYS-kolmogorov", "x": 5, "y": 4, "z": 0, "level": "L5_material", "thread": "sopfr", "grade": "EXACT", "claim": "Kolmogorov 에너지지수 -5/3", "source": "Kolmogorov 1941", "measured": "-1.6667", "n6_expr": "-sopfr/(n//phi)", "causal": "STRUCTURAL", "cause": "차원분석 필연", "isChain": false}, {"id": "ELEC-ohm-law-vars", "x": 2, "y": 7, "z": 2, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "옴의 법칙 변수 수", "source": "Ohm 1827", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "2차 선형 관계 → 변수 3개 필연", "isChain": false}, {"id": "ELEC-kirchhoff-laws", "x": 2, "y": 3, "z": 1, "level": "L2_bond", "thread": "phi", "grade": "EXACT", "claim": "키르히호프 법칙 수", "source": "Kirchhoff 1845", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "전하 보존(KCL) + 에너지 보존(KVL) = 2", "isChain": false}, {"id": "ELEC-3phase-power", "x": 5, "y": 7, "z": 0, "level": "L5_material", "thread": "n_over_phi", "grade": "EXACT", "claim": "교류 전력 상 수", "source": "Tesla 1888, Dolivo-Dobrovolsky 1889", "measured": "3", "n6_expr": "n//phi", "causal": "CAUSAL", "cause": "120도 위상차 → 일정 토크, 360/3=120=sigma*(sigma-phi)", "isChain": false}, {"id": "OPTICS-snell-vars", "x": 2, "y": 2, "z": 8, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "스넬 법칙 변수 수", "source": "Snell 1621, Descartes 1637", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "2매질 x 2변수(굴절률,각도)=4", "isChain": false}, {"id": "OPTICS-visible-colors", "x": 3, "y": 11, "z": 1, "level": "L3_molecule", "thread": "none", "grade": "EXACT", "claim": "무지개 가시광 색 수", "source": "Newton 1672 Opticks", "measured": "7", "n6_expr": "sigma-sopfr", "causal": "CONVENTION", "cause": "Newton이 7로 정한 것 — 인간 관례. 실제 스펙트럼은 연속", "isChain": false}, {"id": "OPTICS-stokes-params", "x": 2, "y": 2, "z": 9, "level": "L2_bond", "thread": "tau", "grade": "EXACT", "claim": "Stokes 편광 파라미터 수", "source": "Stokes 1852", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "횡파 2자유도 + 총강도 + 위상 = 4, Mueller 행렬 4x4", "isChain": false}, {"id": "MUSIC-chromatic-semitones", "x": 5, "y": 1, "z": 0, "level": "L5_material", "thread": "sigma", "grade": "EXACT", "claim": "반음계 반음 수", "source": "Zhu Zaiyu 1584, Stevin 1585", "measured": "12", "n6_expr": "sigma", "causal": "CAUSAL", "cause": "2^(1/12) ≈ 주요 정수비 근사 (3/2, 4/3, 5/4), 12가 최소 충분 분할", "isChain": false}, {"id": "MUSIC-diatonic-notes", "x": 5, "y": 10, "z": 1, "level": "L5_material", "thread": "mixed", "grade": "EXACT", "claim": "장음계 음 수", "source": "Guido d'Arezzo c.1000", "measured": "7", "n6_expr": "sigma-sopfr", "causal": "CAUSAL", "cause": "12반음 중 5도권 연속 7개 선택 = 최대 협화", "isChain": false}, {"id": "MUSIC-pentatonic", "x": 5, "y": 4, "z": 1, "level": "L5_material", "thread": "sopfr", "grade": "EXACT", "claim": "5음계 음 수", "source": "인류학 범문화 연구", "measured": "5", "n6_expr": "sopfr", "causal": "CAUSAL", "cause": "7음계에서 반음 2개 제거 → 불협화 최소화", "isChain": false}, {"id": "MUSIC-perfect-consonance", "x": 3, "y": 10, "z": 1, "level": "L3_molecule", "thread": "mixed", "grade": "EXACT", "claim": "완전 협화 음정 비율", "source": "Pythagoras c.500 BC", "measured": "[1, 2, 3]", "n6_expr": "div(6)={1,2,3}", "causal": "STRUCTURAL", "cause": "6의 진약수 {1,2,3} = 가장 단순한 정수비, 고막 진동 동기화", "isChain": false}, {"id": "ASTRO-kepler-laws", "x": 2, "y": 7, "z": 3, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "케플러 법칙 수", "source": "Kepler 1609/1619", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "2체 역제곱 문제의 3 보존량(E,L,LRL벡터)에서 유도", "isChain": false}, {"id": "ASTRO-newton-laws-motion", "x": 2, "y": 7, "z": 4, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "뉴턴 운동법칙 수", "source": "Newton 1687 Principia", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "역학의 기본 공리 체계 — 3개로 완전", "isChain": false}, {"id": "ASTRO-spacetime-dims", "x": 0, "y": 2, "z": 1, "level": "L0_particle", "thread": "tau", "grade": "EXACT", "claim": "시공간 차원", "source": "Einstein 1905/1915", "measured": "4", "n6_expr": "tau", "causal": "STRUCTURAL", "cause": "3+1 시그니처는 안정 궤도+인과구조 필요조건 (Ehrenfest 1917)", "isChain": false}, {"id": "ASTRO-spatial-dims", "x": 0, "y": 7, "z": 4, "level": "L0_particle", "thread": "n_over_phi", "grade": "EXACT", "claim": "공간 차원", "source": "Ehrenfest 1917", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "역제곱법칙 → 안정 폐궤도 → 3D만 가능 (Bertrand 정리)", "isChain": false}, {"id": "NUC-dt-baryons", "x": 1, "y": 4, "z": 1, "level": "L1_atom", "thread": "sopfr", "grade": "EXACT", "claim": "D-T 핵융합 바리온 수", "source": "핵물리학", "measured": "5", "n6_expr": "sopfr", "causal": "CAUSAL", "cause": "sopfr(6)=2+3=D+T 질량수, D-T가 최적 핵융합 연료인 단면적 이유", "isChain": false}, {"id": "PART-higgs-doublet", "x": 0, "y": 3, "z": 1, "level": "L0_particle", "thread": "phi", "grade": "EXACT", "claim": "Higgs 이중항 성분", "source": "Higgs 1964, PDG", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "SU(2) 기본표현 차원=2", "isChain": false}, {"id": "PART-sm-fermion-generations", "x": 0, "y": 1, "z": 1, "level": "L0_particle", "thread": "sigma", "grade": "EXACT", "claim": "SM 페르미온 총 수 (반입자 제외)", "source": "PDG 2024", "measured": "12", "n6_expr": "sigma", "causal": "STRUCTURAL", "cause": "n(쿼크)+n(렙톤)=sigma, anomaly cancellation 요구", "isChain": false}, {"id": "CHEM-amino-acid-essential", "x": 4, "y": 10, "z": 1, "level": "L4_genetic", "thread": "mixed", "grade": "EXACT", "claim": "필수 아미노산 수 (성인)", "source": "WHO/FAO/UNU 2007", "measured": "9", "n6_expr": "n + n//phi (= 9)", "causal": "EMPIRICAL", "cause": "인체가 합성 불가한 9종 — 진화적 결과", "isChain": false}, {"id": "CHEM-nucleotide-components", "x": 4, "y": 7, "z": 2, "level": "L4_genetic", "thread": "n_over_phi", "grade": "EXACT", "claim": "뉴클레오타이드 구성 요소", "source": "분자생물학 교과서", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "인산(골격)+당(연결)+염기(정보) = 3 기능적 모듈", "isChain": false}, {"id": "CHEM-ribose-carbons", "x": 3, "y": 4, "z": 0, "level": "L3_molecule", "thread": "sopfr", "grade": "EXACT", "claim": "리보스 탄소 수", "source": "IUPAC, PubChem", "measured": "5", "n6_expr": "sopfr", "causal": "STRUCTURAL", "cause": "DNA/RNA 당 골격 = 5탄당, 6탄당(포도당)보다 고리 유연성", "isChain": false}, {"id": "BIO-watson-crick-hbonds", "x": 4, "y": 7, "z": 3, "level": "L4_genetic", "thread": "n_over_phi", "grade": "EXACT", "claim": "G-C 염기쌍 수소결합", "source": "Watson & Crick 1953", "measured": "3", "n6_expr": "n//phi", "causal": "CAUSAL", "cause": "구아닌-시토신 수소결합 수용/기증 위치의 상보성", "isChain": false}, {"id": "BIO-watson-crick-AT", "x": 4, "y": 3, "z": 1, "level": "L4_genetic", "thread": "phi", "grade": "EXACT", "claim": "A-T 염기쌍 수소결합", "source": "Watson & Crick 1953", "measured": "2", "n6_expr": "phi", "causal": "CAUSAL", "cause": "아데닌-티민 상보성", "isChain": false}, {"id": "BIO-cell-cycle-phases", "x": 4, "y": 2, "z": 2, "level": "L4_genetic", "thread": "tau", "grade": "EXACT", "claim": "세포 주기 단계", "source": "Howard & Pelc 1953", "measured": "4", "n6_expr": "tau", "causal": "EMPIRICAL", "cause": "성장→복제→성장→분열 = 4 기능적 단계", "isChain": false}, {"id": "BIO-central-dogma-steps", "x": 4, "y": 7, "z": 4, "level": "L4_genetic", "thread": "n_over_phi", "grade": "EXACT", "claim": "중심원리 단계", "source": "Crick 1958, 1970", "measured": "3", "n6_expr": "n//phi", "causal": "STRUCTURAL", "cause": "DNA→DNA(복제), DNA→RNA(전사), RNA→단백질(번역)", "isChain": false}, {"id": "CHAIN-quark-to-carbon", "x": 1, "y": 2, "z": 4, "level": "L1_atom", "thread": "tau", "grade": "EXACT", "claim": "쿼크→탄소 인과 사슬 단계", "source": "표준모형+핵물리", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "강력→핵력→알파과정→탄소합성, 각 단계 에너지 스케일 분리", "isChain": true}, {"id": "CHAIN-carbon-to-hexagonal", "x": 2, "y": 7, "z": 5, "level": "L2_bond", "thread": "n_over_phi", "grade": "EXACT", "claim": "탄소→육각형 인과 단계", "source": "양자화학", "measured": "3", "n6_expr": "n//phi", "causal": "CAUSAL", "cause": "4전자 중 3개 sp2 → 평면120도 → 정육각형 닫힘", "isChain": true}, {"id": "CHAIN-hexagonal-to-life", "x": 4, "y": 2, "z": 3, "level": "L4_genetic", "thread": "tau", "grade": "EXACT", "claim": "육각형→생명 인과 단계", "source": "분자생물학", "measured": "4", "n6_expr": "tau", "causal": "CAUSAL", "cause": "방향족6원환→핵산염기→Watson-Crick쌍→삼중코돈", "isChain": true}, {"id": "MAT-LiC6", "x": 5, "y": 0, "z": 7, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "흑연 층간화합물 탄소/Li 비", "source": "Herold 1955", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "Li+가 그래핀 6원환 중심에 1개씩 삽입 → C6당 Li1", "isChain": false}, {"id": "MAT-graphite-layer-stacking", "x": 5, "y": 3, "z": 1, "level": "L5_material", "thread": "phi", "grade": "EXACT", "claim": "흑연 적층 주기", "source": "Bernal 1924", "measured": "2", "n6_expr": "phi", "causal": "STRUCTURAL", "cause": "AB 교대 적층 = 최소 에너지 구조", "isChain": false}, {"id": "MAT-quartz-crystal-system", "x": 5, "y": 0, "z": 8, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "석영 결정 대칭 차수", "source": "IUCr, P3121/P3221", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "SiO4 정사면체의 나선 연결 → 6차 대칭", "isChain": false}, {"id": "MAT-basalt-columns", "x": 5, "y": 0, "z": 9, "level": "L5_material", "thread": "n", "grade": "EXACT", "claim": "현무암 주상절리 전형 변 수", "source": "Mallet 1875, Goehring 2013", "measured": "6", "n6_expr": "n", "causal": "CAUSAL", "cause": "균일 냉각 수축 → 최소 에너지 균열 = 120도 삼중점 → 육각형 (Hales 정리)", "isChain": false}, {"id": "PHYS-conservation-laws", "x": 0, "y": 0, "z": 4, "level": "L0_particle", "thread": "n", "grade": "EXACT", "claim": "기본 보존 법칙 수", "source": "Noether 1918 + SM", "measured": "6", "n6_expr": "n", "causal": "STRUCTURAL", "cause": "각 보존 법칙은 연속대칭에서 유도 (Noether 정리), SM에서 6대 보존량", "isChain": false}, {"id": "PHYS-spacetime-symmetries", "x": 0, "y": 9, "z": 0, "level": "L0_particle", "thread": "sigma_minus_phi", "grade": "EXACT", "claim": "시공간 연속 대칭 수 (Poincare)", "source": "Poincare group", "measured": "10", "n6_expr": "sigma-phi", "causal": "STRUCTURAL", "cause": "4D 시공간 등거리 변환군 차원 = C(4,2)+4 = 6+4 = 10", "isChain": false}, {"id": "PHYS-lorentz-generators", "x": 0, "y": 0, "z": 5, "level": "L0_particle", "thread": "n", "grade": "EXACT", "claim": "Lorentz 변환 생성자 수", "source": "Lorentz group SO(3,1)", "measured": "6", "n6_expr": "n = C(tau, phi)", "causal": "STRUCTURAL", "cause": "4D 반대칭 텐서 독립 성분 = C(4,2) = 6 = n", "isChain": false}], "parent_edges": [["L0-quark-flavors", "L1-carbon-Z6"], ["L0-quark-colors", "L0-gluons"], ["L1-carbon-Z6", "L2-sp2-hexagonal"], ["L1-carbon-Z6", "L2-sp3-tetrahedral"], ["L1-carbon-Z6", "L2-cn6-octahedral"], ["L1-carbon-valence", "L2-sp2-hexagonal"], ["L1-carbon-valence", "L2-sp3-tetrahedral"], ["L1-quantum-numbers", "L1-subshell-types"], ["L1-hydrogen-Z1", "L3-water"], ["L2-sp2-hexagonal", "L3-benzene"], ["L2-sp2-hexagonal", "L5-graphene"], ["L2-cn6-octahedral", "L5-nacl"], ["L2-cn6-octahedral", "L5-perovskite"], ["L2-cn6-octahedral", "L5-lion-cathode"], ["L2-max-rotation-crystal", "L5-honeycomb"], ["L3-benzene", "L5-graphene"], ["L3-water", "L5-ice-hexagonal"], ["L4-dna-bases", "L4-codons"], ["L4-codons", "L4-amino-acids"], ["L4-codon-length", "L4-codons"], ["NUC-triple-alpha", "L1-carbon-Z6"], ["MATH-2d-kissing", "L5-honeycomb"], ["CHEM-water-hbond", "L5-ice-hexagonal"], ["BIO-pyrimidine-ring", "L4-dna-bases"], ["CHEM-nucleotide-components", "L4-dna-bases"], ["CHEM-ribose-carbons", "CHEM-nucleotide-components"], ["CHAIN-quark-to-carbon", "L1-carbon-Z6"], ["CHAIN-carbon-to-hexagonal", "L3-benzene"], ["CHAIN-hexagonal-to-life", "L4-codons"]], "sibling_edges": [["L0-quark-flavors", "L0-lepton-flavors"], ["L0-gauge-bosons", "L0-quark-flavors"], ["L0-gluons", "L0-gauge-bosons"], ["L0-generations", "L0-quark-colors"], ["L1-carbon-Z6", "L1-carbon-valence"], ["L1-subshell-types", "L1-quantum-numbers"], ["L1-period-lengths", "L1-subshell-types"], ["L1-magnesium-Z12", "L1-carbon-Z6"], ["L2-sp2-hexagonal", "L2-sp3-tetrahedral"], ["L2-cn6-octahedral", "L2-cn4-tetrahedral"], ["L2-cn6-octahedral", "L2-cn12-closepacked"], ["L2-bravais-lattices", "MISS-crystal-systems"], ["L2-point-groups", "L2-space-groups"], ["L2-fcc-slip-systems", "L2-cn12-closepacked"], ["L3-benzene", "L3-glucose"], ["L3-glucose-carbons", "L3-benzene"], ["L3-C60", "L3-benzene"], ["L3-C60-pentagons", "L3-C60"], ["L4-double-helix", "L4-dna-bases"], ["L4-amino-acids", "L4-codons"], ["L4-stop-codons", "L4-codons"], ["L4-start-codon", "L4-stop-codons"], ["L5-nacl", "L5-perovskite"], ["L5-perovskite", "L5-lion-cathode"], ["L5-lion-cathode", "L5-nacl"], ["L5-graphene", "L5-diamond-atoms-per-cell"], ["L5-graphene-ring", "L3-benzene"], ["L5-ice-hexagonal", "L5-honeycomb"], ["L5-honeycomb", "L5-graphene-ring"], ["L5-glycolysis-electrons", "L3-glucose"], ["L5-krebs-cycle", "L5-mitochondria-complexes"], ["PHYS-phase-transition-pairs", "PHYS-phase-transitions"], ["ELEC-3phase-power", "L2-sp2-hexagonal"], ["MUSIC-diatonic-notes", "MUSIC-chromatic-semitones"], ["MUSIC-pentatonic", "MUSIC-diatonic-notes"], ["ASTRO-newton-laws-motion", "ASTRO-kepler-laws"], ["ASTRO-spatial-dims", "ASTRO-spacetime-dims"], ["PART-sm-fermion-generations", "L0-quark-flavors"], ["PART-sm-fermion-generations", "L0-lepton-flavors"], ["CHEM-amino-acid-essential", "L4-amino-acids"], ["CHEM-ribose-carbons", "L3-glucose-carbons"], ["BIO-watson-crick-AT", "BIO-watson-crick-hbonds"], ["MAT-LiC6", "L5-graphene-ring"], ["MAT-graphite-layer-stacking", "L5-graphene"], ["MAT-quartz-crystal-system", "L5-ice-hexagonal"], ["MAT-basalt-columns", "L5-honeycomb"], ["PHYS-lorentz-generators", "PHYS-spacetime-symmetries"]], "thread_edges": [["L0-quark-flavors", "L0-lepton-flavors", "n"], ["L0-lepton-flavors", "L0-mp-me-ratio", "n"], ["L0-mp-me-ratio", "L1-carbon-Z6", "n"], ["L1-carbon-Z6", "MISS-body-temperature", "n"], ["MISS-body-temperature", "MISS-ATP-modern", "n"], ["MISS-ATP-modern", "L2-cn6-octahedral", "n"], ["L2-cn6-octahedral", "L2-max-rotation-crystal", "n"], ["L2-max-rotation-crystal", "L3-benzene", "n"], ["L3-benzene", "L3-glucose-carbons", "n"], ["L3-glucose-carbons", "L4-codons", "n"], ["L4-codons", "L5-nacl", "n"], ["L5-nacl", "L5-perovskite", "n"], ["L5-perovskite", "L5-lion-cathode", "n"], ["L5-lion-cathode", "L5-graphene-ring", "n"], ["L5-graphene-ring", "L5-ice-hexagonal", "n"], ["L5-ice-hexagonal", "L5-honeycomb", "n"], ["L5-honeycomb", "L5-cortical-layers", "n"], ["L5-cortical-layers", "L5-tc99m-halflife", "n"], ["L5-tc99m-halflife", "PHYS-phase-transition-pairs", "n"], ["PHYS-phase-transition-pairs", "MATH-basel", "n"], ["MATH-basel", "MATH-2d-kissing", "n"], ["MATH-2d-kissing", "CHEM-noble-gases", "n"], ["CHEM-noble-gases", "BIO-pyrimidine-ring", "n"], ["BIO-pyrimidine-ring", "BIO-photosynthesis", "n"], ["BIO-photosynthesis", "PHYS-stokes-drag", "n"], ["PHYS-stokes-drag", "MAT-LiC6", "n"], ["MAT-LiC6", "MAT-quartz-crystal-system", "n"], ["MAT-quartz-crystal-system", "MAT-basalt-columns", "n"], ["MAT-basalt-columns", "PHYS-conservation-laws", "n"], ["PHYS-conservation-laws", "PHYS-lorentz-generators", "n"], ["L0-gauge-bosons", "L1-magnesium-Z12", "sigma"], ["L1-magnesium-Z12", "L2-sp2-hexagonal", "sigma"], ["L2-sp2-hexagonal", "L2-cn12-closepacked", "sigma"], ["L2-cn12-closepacked", "L2-fcc-slip-systems", "sigma"], ["L2-fcc-slip-systems", "L3-C60-pentagons", "sigma"], ["L3-C60-pentagons", "MISS-base-pairs-per-turn", "sigma"], ["MISS-base-pairs-per-turn", "MUSIC-chromatic-semitones", "sigma"], ["MUSIC-chromatic-semitones", "PART-sm-fermion-generations", "sigma"], ["L0-fundamental-forces", "L1-carbon-valence", "tau"], ["L1-carbon-valence", "L1-quantum-numbers", "tau"], ["L1-quantum-numbers", "L1-subshell-types", "tau"], ["L1-subshell-types", "L2-cn4-tetrahedral", "tau"], ["L2-cn4-tetrahedral", "L4-dna-bases", "tau"], ["L4-dna-bases", "L5-mitochondria-complexes", "tau"], ["L5-mitochondria-complexes", "PHYS-stefan-boltzmann-exponent", "tau"], ["PHYS-stefan-boltzmann-exponent", "PHYS-phase-transitions", "tau"], ["PHYS-phase-transitions", "THERMO-laws", "tau"], ["THERMO-laws", "THERMO-potentials", "tau"], ["THERMO-potentials", "THERMO-maxwell-rel", "tau"], ["THERMO-maxwell-rel", "THERMO-carnot-steps", "tau"], ["THERMO-carnot-steps", "EM-maxwell-eq", "tau"], ["EM-maxwell-eq", "NUC-alpha", "tau"], ["NUC-alpha", "CHEM-C-allotrope", "tau"], ["CHEM-C-allotrope", "CHEM-water-hbond", "tau"], ["CHEM-water-hbond", "BIO-mitosis", "tau"], ["BIO-mitosis", "BIO-blood-ABO", "tau"], ["BIO-blood-ABO", "PHYS-NS-eq", "tau"], ["PHYS-NS-eq", "OPTICS-snell-vars", "tau"], ["OPTICS-snell-vars", "OPTICS-stokes-params", "tau"], ["OPTICS-stokes-params", "ASTRO-spacetime-dims", "tau"], ["ASTRO-spacetime-dims", "BIO-cell-cycle-phases", "tau"], ["BIO-cell-cycle-phases", "CHAIN-quark-to-carbon", "tau"], ["CHAIN-quark-to-carbon", "CHAIN-hexagonal-to-life", "tau"], ["L0-quark-colors", "L0-generations", "n_over_phi"], ["L0-generations", "L4-codon-length", "n_over_phi"], ["L4-codon-length", "L4-stop-codons", "n_over_phi"], ["L4-stop-codons", "PHYS-CMB-spectral-index", "n_over_phi"], ["PHYS-CMB-spectral-index", "THERMO-heat-modes", "n_over_phi"], ["THERMO-heat-modes", "NUC-triple-alpha", "n_over_phi"], ["NUC-triple-alpha", "CHEM-bond-primary", "n_over_phi"], ["CHEM-bond-primary", "PHYS-weinberg", "n_over_phi"], ["PHYS-weinberg", "ELEC-ohm-law-vars", "n_over_phi"], ["ELEC-ohm-law-vars", "ELEC-3phase-power", "n_over_phi"], ["ELEC-3phase-power", "ASTRO-kepler-laws", "n_over_phi"], ["ASTRO-kepler-laws", "ASTRO-newton-laws-motion", "n_over_phi"], ["ASTRO-newton-laws-motion", "ASTRO-spatial-dims", "n_over_phi"], ["ASTRO-spatial-dims", "CHEM-nucleotide-components", "n_over_phi"], ["CHEM-nucleotide-components", "BIO-watson-crick-hbonds", "n_over_phi"], ["BIO-watson-crick-hbonds", "BIO-central-dogma-steps", "n_over_phi"], ["BIO-central-dogma-steps", "CHAIN-carbon-to-hexagonal", "n_over_phi"], ["L0-gluons", "L5-diamond-atoms-per-cell", "sigma_minus_tau"], ["L5-diamond-atoms-per-cell", "L5-krebs-cycle", "sigma_minus_tau"], ["L1-period-lengths", "L2-bravais-lattices", "mixed"], ["L2-bravais-lattices", "L3-C60", "mixed"], ["L3-C60", "L4-amino-acids", "mixed"], ["L4-amino-acids", "L5-YBCO", "mixed"], ["L5-YBCO", "NUC-magic-first5", "mixed"], ["NUC-magic-first5", "MUSIC-diatonic-notes", "mixed"], ["MUSIC-diatonic-notes", "MUSIC-perfect-consonance", "mixed"], ["MUSIC-perfect-consonance", "CHEM-amino-acid-essential", "mixed"], ["L1-hydrogen-Z1", "L4-start-codon", "mu"], ["L1-boron-Z5", "MISS-planck-units", "sopfr"], ["MISS-planck-units", "L2-point-groups", "sopfr"], ["L2-point-groups", "MATH-platonic", "sopfr"], ["MATH-platonic", "MATH-euler-id", "sopfr"], ["MATH-euler-id", "PHYS-kolmogorov", "sopfr"], ["PHYS-kolmogorov", "MUSIC-pentatonic", "sopfr"], ["MUSIC-pentatonic", "NUC-dt-baryons", "sopfr"], ["NUC-dt-baryons", "CHEM-ribose-carbons", "sopfr"], ["MISS-SI-base-units", "MISS-crystal-systems", "none"], ["MISS-crystal-systems", "L2-sp3-tetrahedral", "none"], ["L2-sp3-tetrahedral", "L2-space-groups", "none"], ["L2-space-groups", "L3-water", "none"], ["L3-water", "MISS-magic-82-126", "none"], ["MISS-magic-82-126", "MISS-fine-structure", "none"], ["MISS-fine-structure", "OPTICS-visible-colors", "none"], ["L3-glucose", "L5-glycolysis-electrons", "J2"], ["L4-double-helix", "L5-graphene", "phi"], ["L5-graphene", "EM-charge-types", "phi"], ["EM-charge-types", "EM-lorentz-terms", "phi"], ["EM-lorentz-terms", "BIO-glycolysis-split", "phi"], ["BIO-glycolysis-split", "ELEC-kirchhoff-laws", "phi"], ["ELEC-kirchhoff-laws", "PART-higgs-doublet", "phi"], ["PART-higgs-doublet", "BIO-watson-crick-AT", "phi"], ["BIO-watson-crick-AT", "MAT-graphite-layer-stacking", "phi"]]};
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const tooltip = document.getElementById('tooltip');
+
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+// Stats (computed from nodes)
+const STATS = { total: 0, exact: 0, close: 0, miss: 0 };
+DATA.nodes.forEach(n => {
+  STATS.total++;
+  if (n.grade === 'EXACT') STATS.exact++;
+  else if (n.grade === 'CLOSE') STATS.close++;
+  else if (n.grade === 'MISS') STATS.miss++;
+});
+document.getElementById('s-total').textContent = STATS.total;
+document.getElementById('s-exact').textContent = STATS.exact;
+document.getElementById('s-close').textContent = STATS.close;
+document.getElementById('s-miss').textContent = STATS.miss;
+document.getElementById('s-pct').textContent = ((STATS.exact / STATS.total) * 100).toFixed(1);
+
+// Colors
+const LEVEL_COLORS = {
+  'L0_particle': '#ef5350',
+  'L1_atom': '#ff9800',
+  'L2_bond': '#ffee58',
+  'L3_molecule': '#66bb6a',
+  'L4_genetic': '#42a5f5',
+  'L5_material': '#ab47bc',
+  'L5_bio': '#ce93d8'
+};
+
+const THREAD_COLORS = {
+  'n': '#4fc3f7',
+  'sigma': '#ff7043',
+  'tau': '#66bb6a',
+  'phi': '#ffd54f',
+  'mu': '#e0e0e0',
+  'sopfr': '#ba68c8',
+  'J2': '#ff8a65',
+  'n_over_phi': '#4dd0e1',
+  'sigma_minus_tau': '#aed581',
+  'mixed': '#90a4ae',
+  'none': '#616161'
+};
+
+const GRADE_ALPHA = { 'EXACT': 1.0, 'CLOSE': 0.8, 'MISS': 0.5 };
+
+// Causal type colors (for tooltip badge)
+const CAUSAL_COLORS = {
+  'STRUCTURAL': '#4fc3f7',
+  'CAUSAL': '#66bb6a',
+  'EMPIRICAL': '#ffd54f',
+  'CONVENTION': '#b0bec5'
+};
+
+// Chain node gold color
+const CHAIN_COLOR = '#ffd700';
+
+// Node lookup
+const nodeById = {};
+DATA.nodes.forEach(n => { nodeById[n.id] = n; });
+
+// 3D positions: spread out
+const SCALE_X = 120;
+const SCALE_Y = 70;
+const SCALE_Z = 50;
+const OFFSET_X = 0;
+const OFFSET_Y = 0;
+
+DATA.nodes.forEach(n => {
+  n.px = (n.x - 3) * SCALE_X;
+  n.py = (n.y - 5) * SCALE_Y;
+  n.pz = (n.z - 2) * SCALE_Z;
+});
+
+// Camera
+let rotX = -0.3;
+let rotY = 0.5;
+let zoom = 1.0;
+let panX = 0, panY = 0;
+
+// Projection
+function project(px, py, pz) {
+  // Rotate Y
+  let x1 = px * Math.cos(rotY) - pz * Math.sin(rotY);
+  let z1 = px * Math.sin(rotY) + pz * Math.cos(rotY);
+  let y1 = py;
+  // Rotate X
+  let y2 = y1 * Math.cos(rotX) - z1 * Math.sin(rotX);
+  let z2 = y1 * Math.sin(rotX) + z1 * Math.cos(rotX);
+  let x2 = x1;
+  // Perspective
+  let d = 800;
+  let scale = d / (d + z2) * zoom;
+  return {
+    sx: W / 2 + x2 * scale + panX,
+    sy: H / 2 + y2 * scale + panY,
+    z: z2,
+    scale: scale
+  };
+}
+
+// Draw
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw grid lines faintly
+  ctx.globalAlpha = 0.06;
+  ctx.strokeStyle = '#4488aa';
+  ctx.lineWidth = 0.5;
+  for (let lx = 0; lx < 7; lx++) {
+    for (let ly = 0; ly < 11; ly++) {
+      let a = project((lx - 3) * SCALE_X, (ly - 5) * SCALE_Y, -3 * SCALE_Z);
+      let b = project((lx - 3) * SCALE_X, (ly - 5) * SCALE_Y, 5 * SCALE_Z);
+      ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
+    }
+  }
+  ctx.globalAlpha = 1;
+
+  // Collect projected nodes
+  let projected = DATA.nodes.map(n => {
+    let p = project(n.px, n.py, n.pz);
+    return { ...n, sx: p.sx, sy: p.sy, z: p.z, scale: p.scale };
+  });
+
+  // Sort by z (back to front)
+  projected.sort((a, b) => b.z - a.z);
+
+  // Draw thread edges first (behind everything)
+  ctx.lineWidth = 0.8;
+  DATA.thread_edges.forEach(e => {
+    let a = nodeById[e[0]], b = nodeById[e[1]];
+    if (!a || !b) return;
+    let pa = project(a.px, a.py, a.pz);
+    let pb = project(b.px, b.py, b.pz);
+    ctx.globalAlpha = 0.15;
+    ctx.strokeStyle = THREAD_COLORS[e[2]] || '#555';
+    ctx.beginPath(); ctx.moveTo(pa.sx, pa.sy); ctx.lineTo(pb.sx, pb.sy); ctx.stroke();
+  });
+
+  // Draw parent edges
+  ctx.lineWidth = 1.2;
+  DATA.parent_edges.forEach(e => {
+    let a = nodeById[e[0]], b = nodeById[e[1]];
+    if (!a || !b) return;
+    let pa = project(a.px, a.py, a.pz);
+    let pb = project(b.px, b.py, b.pz);
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = '#ffffff';
+    ctx.beginPath(); ctx.moveTo(pa.sx, pa.sy); ctx.lineTo(pb.sx, pb.sy); ctx.stroke();
+  });
+
+  // Draw sibling edges
+  ctx.lineWidth = 0.8;
+  DATA.sibling_edges.forEach(e => {
+    let a = nodeById[e[0]], b = nodeById[e[1]];
+    if (!a || !b) return;
+    let pa = project(a.px, a.py, a.pz);
+    let pb = project(b.px, b.py, b.pz);
+    ctx.globalAlpha = 0.2;
+    ctx.strokeStyle = '#888888';
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(pa.sx, pa.sy); ctx.lineTo(pb.sx, pb.sy); ctx.stroke();
+    ctx.setLineDash([]);
+  });
+
+  ctx.globalAlpha = 1;
+
+  // Draw nodes
+  projected.forEach(n => {
+    let r = Math.max(3, 6 * n.scale);
+    let color = n.isChain ? CHAIN_COLOR : (LEVEL_COLORS[n.level] || '#888');
+    let alpha = GRADE_ALPHA[n.grade] || 0.6;
+
+    // Glow for CHAIN nodes (gold pulsing)
+    if (n.isChain) {
+      ctx.globalAlpha = 0.25;
+      ctx.fillStyle = CHAIN_COLOR;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, r * 3.5, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, r * 2, 0, Math.PI * 2); ctx.fill();
+    }
+    // Glow for EXACT
+    else if (n.grade === 'EXACT') {
+      ctx.globalAlpha = alpha * 0.2;
+      ctx.fillStyle = color;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, r * 2.5, 0, Math.PI * 2); ctx.fill();
+    }
+
+    // Node
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(n.sx, n.sy, r, 0, Math.PI * 2); ctx.fill();
+
+    // Diamond border for CHAIN
+    if (n.isChain) {
+      ctx.strokeStyle = CHAIN_COLOR;
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, r + 2, 0, Math.PI * 2); ctx.stroke();
+    }
+    // Border for MISS
+    else if (n.grade === 'MISS') {
+      ctx.strokeStyle = '#ef5350';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, r + 1, 0, Math.PI * 2); ctx.stroke();
+    }
+
+    // Store screen coords for hover
+    n._r = r;
+  });
+
+  ctx.globalAlpha = 1;
+
+  // Axis labels
+  ctx.font = '11px monospace';
+  ctx.fillStyle = '#667';
+  const levelNames = ['L0\nParticle','L1\nAtom','L2\nBond','L3\nMolecule','L4\nGenetic','L5\nMaterial','L5\nBio'];
+  for (let i = 0; i < 7; i++) {
+    let p = project((i - 3) * SCALE_X, -6 * SCALE_Y, 0);
+    ctx.fillText(levelNames[i].replace('\\n',' '), p.sx - 20, p.sy);
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+// Mouse interaction
+let dragging = false, lastMX, lastMY, rightDrag = false;
+
+canvas.addEventListener('mousedown', e => {
+  if (e.button === 2) { rightDrag = true; } else { dragging = true; }
+  lastMX = e.clientX; lastMY = e.clientY;
+  e.preventDefault();
+});
+
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+window.addEventListener('mouseup', () => { dragging = false; rightDrag = false; });
+
+window.addEventListener('mousemove', e => {
+  if (dragging) {
+    let dx = e.clientX - lastMX, dy = e.clientY - lastMY;
+    rotY += dx * 0.005;
+    rotX += dy * 0.005;
+    lastMX = e.clientX; lastMY = e.clientY;
+  }
+  if (rightDrag) {
+    panX += e.clientX - lastMX;
+    panY += e.clientY - lastMY;
+    lastMX = e.clientX; lastMY = e.clientY;
+  }
+
+  // Hover detection
+  let mx = e.clientX, my = e.clientY;
+  let hit = null, minDist = Infinity;
+  DATA.nodes.forEach(n => {
+    if (!n.sx) return;
+    let p = project(n.px, n.py, n.pz);
+    let dx = p.sx - mx, dy = p.sy - my;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    let r = Math.max(3, 6 * p.scale);
+    if (dist < r + 4 && dist < minDist) { minDist = dist; hit = n; }
+  });
+
+  if (hit) {
+    tooltip.style.display = 'block';
+    tooltip.style.left = (mx + 16) + 'px';
+    tooltip.style.top = (my - 10) + 'px';
+    // Keep tooltip on screen
+    if (mx + 400 > W) tooltip.style.left = (mx - 390) + 'px';
+    if (my + 150 > H) tooltip.style.top = (my - 140) + 'px';
+
+    let gradeClass = 'grade-' + hit.grade;
+    let causalColor = CAUSAL_COLORS[hit.causal] || '#888';
+    let chainTag = hit.isChain ? '<span style="display:inline-block;padding:1px 8px;border-radius:3px;background:#ffd700;color:#000;font-weight:bold;font-size:11px;margin-left:6px">CHAIN</span>' : '';
+    tooltip.innerHTML =
+      '<b>' + hit.claim + '</b>' +
+      '<span class="grade-tag ' + gradeClass + '">' + hit.grade + '</span>' + chainTag + '<br>' +
+      '<span style="color:#aaa">measured:</span> ' + hit.measured + '<br>' +
+      '<span style="color:#aaa">n6 expr:</span> <span style="color:#4fc3f7">' + hit.n6_expr + '</span><br>' +
+      '<span style="color:#aaa">thread:</span> ' + hit.thread +
+      ' &nbsp; <span style="color:#aaa">level:</span> ' + hit.level + '<br>' +
+      '<span style="color:#aaa">causal:</span> <span style="color:' + causalColor + ';font-weight:bold">' + (hit.causal || 'N/A') + '</span><br>' +
+      (hit.cause ? '<span style="color:#777;font-size:11px">' + hit.cause + '</span><br>' : '') +
+      '<span style="color:#888;font-size:11px">' + hit.source + '</span>';
+  } else {
+    tooltip.style.display = 'none';
+  }
+});
+
+canvas.addEventListener('wheel', e => {
+  zoom *= e.deltaY > 0 ? 0.93 : 1.07;
+  zoom = Math.max(0.2, Math.min(5, zoom));
+  e.preventDefault();
+}, { passive: false });
+
+// Touch support
+let lastTouchDist = 0;
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    dragging = true;
+    lastMX = e.touches[0].clientX;
+    lastMY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    let dx = e.touches[0].clientX - e.touches[1].clientX;
+    let dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx*dx + dy*dy);
+  }
+  e.preventDefault();
+}, { passive: false });
+
+canvas.addEventListener('touchmove', e => {
+  if (e.touches.length === 1 && dragging) {
+    let dx = e.touches[0].clientX - lastMX;
+    let dy = e.touches[0].clientY - lastMY;
+    rotY += dx * 0.005;
+    rotX += dy * 0.005;
+    lastMX = e.touches[0].clientX;
+    lastMY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    let dx = e.touches[0].clientX - e.touches[1].clientX;
+    let dy = e.touches[0].clientY - e.touches[1].clientY;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    if (lastTouchDist > 0) {
+      zoom *= dist / lastTouchDist;
+      zoom = Math.max(0.2, Math.min(5, zoom));
+    }
+    lastTouchDist = dist;
+  }
+  e.preventDefault();
+}, { passive: false });
+
+canvas.addEventListener('touchend', () => { dragging = false; lastTouchDist = 0; });
+</script>
+</body>
+</html>
