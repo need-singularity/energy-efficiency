@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "total_products": 121,
-    "total_domains": 119,
-    "last_updated": "2026-04-07",
+    "total_products": 125,
+    "total_domains": 120,
+    "last_updated": "2026-04-08",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
       "fusion",
@@ -23,7 +23,8 @@
       "frontier",
       "civilization",
       "life-culture",
-      "tech-industry"
+      "tech-industry",
+      "virology"
     ],
     "rescore_log_2026-04-05": {
       "basis": "GRADE_RUBRIC_1_TO_10PLUS.md + bt_exact_pct",
@@ -2162,11 +2163,15 @@
         },
         {
           "name": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "20/20 EXACT (100%), Baltimore σ-sopfr=7/T-number {μ,n/φ,τ,σ-sopfr}/캡시드 σ=12 오량체/WHO n=6단계/백신 n=6종",
+          "ver": "v2",
+          "description": "43/43 EXACT (100%), BT-351~353 3연속돌파, 이십면체 σ=12 pentamer/T-number {μ,n/φ,τ,σ-sopfr}/Baltimore σ-sopfr=7/게놈분절래더/역학-백신-효소 완전폐쇄, Mk.I~V 5세대 진화",
           "links": [
+            {
+              "label": "목표",
+              "path": "docs/virology/goal.md"
+            },
             {
               "label": "가설",
               "path": "docs/virology/hypotheses.md"
@@ -2174,25 +2179,47 @@
             {
               "label": "DSE",
               "path": "tools/universal-dse/domains/virology.toml"
+            },
+            {
+              "label": "Mk.I",
+              "path": "docs/virology/evolution/mk-1-current.md"
+            },
+            {
+              "label": "Mk.V",
+              "path": "docs/virology/evolution/mk-5-theoretical.md"
             }
           ],
           "verify_script": "docs/virology/verify_alien10.py",
-          "exact": "43/43"
+          "exact": "43/43",
+          "mk_count": 5
         },
         {
           "name": "곤충학 n=6 Hexapoda 완전 생물학",
-          "ufo": 7,
+          "ufo": 10,
           "ceiling": true,
-          "ver": "v1",
-          "description": "20/20 EXACT (100%), 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30",
+          "ver": "v2",
+          "description": "23/23 EXACT (100%), BT-352 곤충학 완전 n=6 아키텍처, 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30, Mk.I~V 5세대 진화",
           "links": [
+            {
+              "label": "목표",
+              "path": "docs/entomology/goal.md"
+            },
             {
               "label": "가설",
               "path": "docs/entomology/hypotheses.md"
+            },
+            {
+              "label": "Mk.I",
+              "path": "docs/entomology/evolution/mk-1-current.md"
+            },
+            {
+              "label": "Mk.V",
+              "path": "docs/entomology/evolution/mk-5-theoretical.md"
             }
           ],
           "verify_script": "docs/entomology/verify_alien10.py",
-          "exact": "23/23"
+          "exact": "23/23",
+          "mk_count": 5
         },
         {
           "name": "균류학 n=6 포자-발효 아키텍처",
@@ -2295,10 +2322,10 @@
         },
         {
           "name": "HEXA-NANOBOT 치료 나노봇",
-          "ufo": 7,
-          "ceiling": false,
-          "ver": "v2",
-          "description": "BT-404~413: 10 연속 돌파, 113/122 EXACT (92.6%), Mk.I~V 진화 완료, 6대 플랫폼/추진/EPR/pH/센서/면역/반감기/통신/에너지/배출, DSE 7776 조합, (sigma-phi)^2=100 나노 허브, n=6 관문(신장 6nm), J2=24 에너지-시간 수렴",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v3",
+          "description": "BT-404~413: 10 연속 돌파, 113/122 EXACT (92.6%) + 9 CLOSE(물리한계 문서화), Mk.I~V 진화 완료, 6대 플랫폼/추진/EPR/pH/센서/면역/반감기/통신/에너지/배출, DSE 7776 조합, (sigma-phi)^2=100 나노 허브, n=6 관문(신장 6nm), J2=24 에너지-시간 수렴",
           "bt": [
             "BT-404",
             "BT-405",
@@ -2337,6 +2364,7 @@
               "path": "docs/therapeutic-nanobot/evolution/mk-5-theoretical.md"
             }
           ],
+          "verify_script": "docs/therapeutic-nanobot/verify_alien10.py",
           "exact": "113/122",
           "mk_count": 5,
           "dse_combinations": 7776
@@ -2809,6 +2837,106 @@
         }
       ],
       "bt_detail": "BT-372 CRISPR16/16, BT-376 AR/VR16/16, BT-377 건축16/16, BT-379 디지털트윈16/16"
+    },
+    {
+      "id": "virology",
+      "title": "바이러스학",
+      "icon": "🦠",
+      "heading": "바이러스학 (Virology)",
+      "alien_index": 10,
+      "ceiling": true,
+      "bt_exact_pct": 100,
+      "bt_count": 3,
+      "industry_pct": 60,
+      "industry_detail": "캡시드 CK이론 + Baltimore 분류 + mRNA 백신 구조",
+      "experiment_pct": 100,
+      "experiment_detail": "43/43 EXACT (100%)",
+      "physics_limit_count": 3,
+      "tp_count": 6,
+      "discovery_count": 3,
+      "cross_dse_domains": 6,
+      "mk_count": 5,
+      "summary_extra": "BT-351~353 3연속돌파, 43/43 EXACT, 5세대 진화, 12BT 교차공명 6도메인 관통",
+      "domains": [
+        "virology"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "바이러스 구조-분류 완전 n=6 맵",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-351: 이십면체 pentamer σ=12, T-number {1,3,4,7}={μ,n/φ,τ,σ-sopfr}, Baltimore σ-sopfr=7, 형태 τ=4, 11/11 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/virology/goal.md"
+            },
+            {
+              "label": "가설",
+              "path": "docs/virology/hypotheses.md"
+            }
+          ],
+          "bt": [
+            "BT-351"
+          ],
+          "exact": "11/11",
+          "verify_script": "docs/virology/verify_alien10.py"
+        },
+        {
+          "name": "바이러스 게놈 분절-유전자 n=6 래더",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-352: 인플루엔자 σ-τ=8분절, 로타바이러스 σ-μ=11분절/σ=12총단백질, 레오바이러스 σ-φ=10분절, HIV n/φ+φ+τ=9유전자, CoV NSP φ^τ=16, 15/15 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/virology/goal.md"
+            }
+          ],
+          "bt": [
+            "BT-352"
+          ],
+          "exact": "15/15"
+        },
+        {
+          "name": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-353: 감염사슬 n=6고리, mRNA백신 sopfr=5구조, LNP τ=4성분, RdRp σ-sopfr=7모티프, 이십면체 오일러 V-E+F=φ=2, 13/13 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/virology/goal.md"
+            }
+          ],
+          "bt": [
+            "BT-353"
+          ],
+          "exact": "13/13"
+        },
+        {
+          "name": "진화 Mk.I~V",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "5세대 진화: Mk.I 이십면체해석(현재) → Mk.II 캡시드공학(2035) → Mk.III 프로그래머블벡터(2050) → Mk.IV 합성바이러스치료(2070) → Mk.V 분자인터페이스(사고실험)",
+          "links": [
+            {
+              "label": "Mk.I",
+              "path": "docs/virology/evolution/mk-1-current.md"
+            },
+            {
+              "label": "Mk.V",
+              "path": "docs/virology/evolution/mk-5-theoretical.md"
+            }
+          ]
+        }
+      ],
+      "bt_detail": "BT-351 구조-분류 11/11, BT-352 게놈래더 15/15, BT-353 역학-백신-효소 13/13"
     }
   ],
   "roadmap": [
