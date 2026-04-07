@@ -201,6 +201,13 @@
 
 > 🔴 **하드코딩 절대 금지**: 상수/도메인/키워드를 코드에 배열로 나열 금지 → `nexus/shared/*.jsonl`에서 동적 로드. 경로는 환경변수+상대경로. 새 항목 추가 = 설정 파일 한 줄, 코드 수정 0.
 
+> 🔴 **데이터 파일 로컬 보관 금지** (PreToolUse hook이 자동 차단함):
+> - `.jsonl`, `constants`, `discovery_log`, `growth_bus` 등 데이터 파일을 이 프로젝트 안에 생성/저장 금지
+> - 모든 상수/수식/발견/로그 데이터 → `~/Dev/nexus/shared/` 에만 저장 (유일한 진실의 원천)
+> - 이 프로젝트에서 데이터 읽기만 필요하면 심링크(`shared/ → nexus/shared/`) 사용
+> - ❌ `n6-architecture/shared/discovery_log.jsonl` — 금지
+> - ✅ `~/Dev/nexus/shared/discovery_log.jsonl` — 올바름
+
 # N6 Architecture — Arithmetic Design Framework
 
 ## 성장 루프 (nexus 중앙 관리)
