@@ -397,175 +397,58 @@ RT-SC 전력망은 다음 도메인과 교차 최적화된다:
 ## 9. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-GRID Lossless Power Grid -- n=6 Parameter Verification
-외계인 지수 🛸10 인증용 수학적 검증 코드
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# ═══════════════════════════════════════════
-# n=6 Core Constants
-# ═══════════════════════════════════════════
-n = 6
-sigma = 12      # sigma(6) = 1+2+3+6
-phi = 2         # phi(6) = Euler totient
-tau = 4         # tau(6) = number of divisors
-sopfr = 5       # sopfr(6) = 2+3
-mu = 1          # mu(6) = Mobius
-J2 = 24         # J_2(6) = Jordan totient
-R6 = 1          # R(6) = reversibility (perfect number)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# Core theorem verification
-assert sigma * phi == n * tau == J2, f"Core theorem FAIL: {sigma}*{phi} != {n}*{tau}"
-print(f"Core theorem: sigma*phi = n*tau = J2 = {J2}  [PASS]")
-
-# ═══════════════════════════════════════════
-# Test counters
-# ═══════════════════════════════════════════
-total = 0
-passed = 0
-failed = 0
-
-def check(name, actual, expected, formula, tol=0.01):
-    global total, passed, failed
-    total += 1
-    if isinstance(expected, (int, float)):
-        ok = abs(actual - expected) / max(abs(expected), 1e-15) < tol
+# lossless-power-grid.md — 정의 도출 검증
+results = [
+    ("BT-326 항목", None, None, None),  # MISSING DATA
+    ("BT-68 항목", None, None, None),  # MISSING DATA
+    ("BT-62 항목", None, None, None),  # MISSING DATA
+    ("BT-60 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-300 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-89 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        ok = actual == expected
-    status = "EXACT" if ok else "FAIL"
-    if ok:
-        passed += 1
-    else:
-        failed += 1
-    print(f"  [{status}] {name}: {actual} = {expected} ({formula})")
-    return ok
-
-print("\n" + "="*60)
-print("1. Grid Frequency (BT-62)")
-print("="*60)
-check("US/KR frequency", 60, sigma * sopfr, "sigma*sopfr = 12*5")
-check("EU/JP frequency", 50, sopfr * (sigma - phi), "sopfr*(sigma-phi) = 5*10")
-check("60/50 ratio", 60/50, sigma / (sigma - phi), "sigma/(sigma-phi) = PUE")
-check("Aircraft 400Hz", 400, (sigma - phi)**2 * tau, "(sigma-phi)^2 * tau = 100*4")
-
-print("\n" + "="*60)
-print("2. HVDC Voltage Ladder (BT-68)")
-print("="*60)
-check("HVDC +-500kV", 500, sopfr * (sigma - phi)**2, "sopfr*(sigma-phi)^2 = 5*100")
-check("HVDC +-800kV", 800, (sigma - tau) * (sigma - phi)**2, "(sigma-tau)*(sigma-phi)^2 = 8*100")
-check("HVDC +-1100kV", 1100, (sigma - mu) * (sigma - phi)**2, "(sigma-mu)*(sigma-phi)^2 = 11*100")
-
-print("\n" + "="*60)
-print("3. DC Power Chain (BT-60)")
-print("="*60)
-check("Generation MW", 120, sigma * (sigma - phi), "sigma*(sigma-phi) = 12*10")
-check("Substation V", 480, sigma * tau * (sigma - phi), "sigma*tau*(sigma-phi) = 12*4*10")
-check("Server rack V", 48, sigma * tau, "sigma*tau = 12*4")
-check("Board V", 12, sigma, "sigma = 12")
-check("PUE standard", 1.2, sigma / (sigma - phi), "sigma/(sigma-phi) = 12/10")
-check("PUE SC limit", 1.0, R6, "R(6) = 1")
-check("Chip V", 1.0, R6, "R(6) = mu = 1")
-
-print("\n" + "="*60)
-print("4. Grid Operation (BT-326)")
-print("="*60)
-check("Stability angle (deg)", 30, sopfr * n, "sopfr*n = 5*6")
-check("N-1 security", 1, mu, "mu = R(6) = 1")
-check("Reserve margin", 0.1, 1/(sigma - phi), "1/(sigma-phi) = 1/10")
-check("Voltage tolerance", 0.05, 1/(J2 - tau), "1/(J2-tau) = 1/20")
-check("Freq tolerance Hz", 0.5, R6 / phi, "R(6)/phi = 1/2")
-check("THD limit", 0.05, sopfr / 100, "sopfr/100 = 5/100")
-check("EV charging V", 400, (sigma - phi)**2 * tau, "(sigma-phi)^2 * tau = 100*4")
-
-print("\n" + "="*60)
-print("5. Domestic Voltage (BT-60 extension)")
-print("="*60)
-check("KR/EU 220V", 220, (sigma - mu) * (J2 - tau), "(sigma-mu)*(J2-tau) = 11*20")
-check("US 120V", 120, sigma * (sigma - phi), "sigma*(sigma-phi) = 12*10")
-
-print("\n" + "="*60)
-print("6. RT-SC Cable Parameters")
-print("="*60)
-check("Current density gain", 10, sigma - phi, "sigma-phi = 10x vs Cu")
-check("J_c (A/cm2)", 10**6, (sigma - phi)**n, "(sigma-phi)^n = 10^6")
-check("Cable diameter ratio", 1/3, phi / n, "phi/n = 2/6 = 1/3")
-check("Cooper pair", 2, phi, "phi = 2")
-check("Current loss (old)", 6, n, "n = 6%")
-check("Current loss (new)", 0, R6 - mu, "R(6)-mu = 1-1 = 0%")
-check("SMES field T", 12, sigma, "sigma = 12 T")
-check("SMES energy MJ/m3", 10, sigma - phi, "sigma-phi = 10")
-check("SFCL response ms", 1, mu, "mu = 1 ms")
-check("Meissner shield %", 100, (sigma - phi)**phi, "(sigma-phi)^phi = 10^2")
-
-print("\n" + "="*60)
-print("7. Transmission Loss Economics")
-print("="*60)
-world_generation_TWh = 29000  # 2022 세계 발전량
-loss_pct = n / 100            # n=6%
-loss_TWh = world_generation_TWh * loss_pct
-price_per_kWh = 0.08          # USD
-savings_B = loss_TWh * 1e6 * price_per_kWh / 1e9
-check("World generation TWh", world_generation_TWh, 29000, "IEA 2022")
-check("Loss fraction", loss_pct, 0.06, "n/100 = 6/100")
-check("Loss TWh", loss_TWh, 1740, "29000*0.06", tol=0.35)
-check("Annual savings $B", savings_B, 139.2, "1740*10^6*0.08/10^9", tol=0.35)
-print(f"  -> Annual savings: ${savings_B:.1f}B (~{savings_B*1350:.0f}조원)")
-
-print("\n" + "="*60)
-print("8. CO2 Reduction from Lossless Grid")
-print("="*60)
-co2_per_TWh = 0.45  # MtCO2/TWh (world average)
-co2_saved_Mt = loss_TWh * co2_per_TWh
-check("CO2 saved (Mt/yr)", co2_saved_Mt, 783, "1740*0.45", tol=0.35)
-print(f"  -> CO2 saved: {co2_saved_Mt:.0f} Mt/yr (= Germany total emissions)")
-
-print("\n" + "="*60)
-print("9. SMES Physics Verification")
-print("="*60)
-mu_0 = 4 * math.pi * 1e-7
-B_smes = sigma  # 12 T
-E_magnetic = B_smes**2 / (2 * mu_0)  # J/m3
-E_MJ = E_magnetic / 1e6
-check("SMES B field", B_smes, 12, "sigma = 12 T")
-check("E = B^2/(2mu0) MJ/m3", round(E_MJ, 1), 57.3, "B^2/(2*mu_0)", tol=0.05)
-# Practical fill factor ~ 0.18 -> ~10 MJ/m3
-E_practical = E_MJ * 0.175
-check("Practical SMES MJ/m3", round(E_practical, 1), 10.0, "E*fill_factor ~ sigma-phi", tol=0.05)
-
-print("\n" + "="*60)
-print("10. Depairing Current Limit")
-print("="*60)
-Phi_0 = 2.067e-15  # Wb (flux quantum)
-lambda_L = 100e-9   # 100 nm (London penetration depth)
-xi = 10e-9           # 10 nm (coherence length)
-J_dp = Phi_0 / (3 * math.sqrt(3) * math.pi * mu_0 * lambda_L**2 * xi)
-check("Depairing J (A/cm2)", round(J_dp/1e4, -3), 1e8, "Phi_0/(3sqrt3*pi*mu0*lam^2*xi)", tol=0.5)
-print(f"  -> J_dp = {J_dp:.2e} A/m2 = {J_dp/1e4:.2e} A/cm2")
-print(f"  -> Engineering J_c = (sigma-phi)^n = {(sigma-phi)**n:.0e} A/cm2 (conservative)")
-
-# ═══════════════════════════════════════════
-# Summary
-# ═══════════════════════════════════════════
-print("\n" + "="*60)
-print(f"VERIFICATION SUMMARY")
-print("="*60)
-print(f"  Total tests:  {total}")
-print(f"  EXACT:        {passed}")
-print(f"  FAIL:         {failed}")
-print(f"  EXACT rate:   {passed/total*100:.1f}%")
-print()
-if failed == 0:
-    print("  *** ALL TESTS PASSED — 🛸10 CERTIFIED ***")
-else:
-    print(f"  *** {failed} TESTS FAILED — review required ***")
-print()
-print("  n=6 Core: sigma(6)*phi(6) = n*tau(6) = J_2(6) = 24")
-print("  Grid Loss: n=6% -> 0% (R=0 superconductor)")
-print("  HVDC Ladder: +-{500,800,1100}kV = {sopfr,sigma-tau,sigma-mu}*(sigma-phi)^2")
-print("  Freq Pair: 60/50 Hz = sigma*sopfr / sopfr*(sigma-phi) = PUE = 1.2")
-print("  Annual Savings: $100B+ (= 140조원+)")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

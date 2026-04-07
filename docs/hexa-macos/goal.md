@@ -331,149 +331,58 @@ User Input ──▶ [HID] ──▶ [WindowServer] ──▶ [QoS Router] ─�
 ## 🧪 Python 검증 코드 (🛸10 필수)
 
 ```python
-# /Users/ghost/Dev/n6-architecture/experiments/verify_hexa_macos.py
-"""
-HEXA-macOS 외계인 지수 10 수학적 검증
-79/79 EXACT 재현 + 물리 한계 확인
-"""
-from math import gcd, log2
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n, sigma, tau, phi_, sopfr, J2, mu = 6, 12, 4, 2, 5, 24, 1
-SIG_TAU, SIG_PHI, SIG_MU, SIG_SOPFR = 8, 10, 11, 7
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def n6_exact(name, value, formula_fn, expected):
-    got = formula_fn()
-    status = "EXACT" if got == value == expected else "FAIL"
-    print(f"  [{status}] {name}: {value} = {got} ({expected})")
-    return status == "EXACT"
-
-def verify_all():
-    results = []
-    # L0 Wafer
-    results += [
-        n6_exact("process_node_nm", 3, lambda: n//phi_, 3),
-        n6_exact("wafer_dia_mm", 300, lambda: sigma*25, 300),
-        n6_exact("metal_layers", 12, lambda: sigma, 12),
-        n6_exact("via_pitch_nm", 24, lambda: J2, 24),
-        n6_exact("diamond_Z", 6, lambda: n, 6),
-        n6_exact("crystal_face", 4, lambda: tau**2//tau, 4),
-    ]
-    # L1 Process
-    results += [
-        n6_exact("gate_pitch_nm", 48, lambda: sigma*tau, 48),
-        n6_exact("GAA_fins", 4, lambda: tau, 4),
-        n6_exact("sheet_thick_nm", 5, lambda: sopfr, 5),
-        n6_exact("EUV_masks", 24, lambda: J2, 24),
-        n6_exact("TSV_count", 6, lambda: n, 6),
-        n6_exact("bond_pressure", 12, lambda: sigma, 12),
-    ]
-    # L2 Core (M4 Max)
-    results += [
-        n6_exact("P_cores", 12, lambda: sigma, 12),
-        n6_exact("E_cores", 4, lambda: tau, 4),
-        n6_exact("CPU_total", 16, lambda: tau**2, 16),
-        n6_exact("GPU_cores", 40, lambda: tau*SIG_PHI, 40),
-        n6_exact("NE_TOPS", 16, lambda: tau**2, 16),
-        n6_exact("NE_units", 16, lambda: phi_**tau, 16),
-        n6_exact("vector_lanes", 128, lambda: 2**SIG_SOPFR, 128),
-        n6_exact("L1_cache_KB", 192, lambda: sigma*SIG_TAU*2, 192),
-        n6_exact("L2_cluster_MB", 16, lambda: tau**2, 16),
-        n6_exact("SLC_MB", 48, lambda: sigma*tau, 48),
-        n6_exact("pipe_stages", 8, lambda: SIG_TAU, 8),
-        n6_exact("ROB_entries", 288, lambda: sigma*J2, 288),
-    ]
-    # L3 SoC
-    results += [
-        n6_exact("bandwidth", 288, lambda: sigma*J2, 288),
-        n6_exact("fabric_ring", 12, lambda: sigma, 12),
-        n6_exact("die_count", 2, lambda: phi_, 2),
-        n6_exact("TDP_W", 120, lambda: sigma*SIG_PHI, 120),
-        n6_exact("PMIC_rails", 24, lambda: J2, 24),
-        n6_exact("TB_ports", 4, lambda: tau, 4),
-        n6_exact("USB_ports", 3, lambda: n//phi_, 3),
-        n6_exact("display_eng", 4, lambda: tau, 4),
-        n6_exact("media_eng", 2, lambda: phi_, 2),
-        n6_exact("UM_GB", 128, lambda: 2**SIG_SOPFR, 128),
-    ]
-    # L4 Kernel (XNU)
-    results += [
-        n6_exact("subsystems", 3, lambda: n//phi_, 3),
-        n6_exact("mach_rights", 4, lambda: tau, 4),
-        n6_exact("sched_bands", 4, lambda: tau, 4),
-        n6_exact("thr_prio_levels", 128, lambda: 2**SIG_SOPFR, 128),
-        n6_exact("zone_alloc", 6, lambda: n, 6),
-        n6_exact("VM_page_KB", 16, lambda: phi_**tau, 16),
-        n6_exact("kern_stack_KB", 16, lambda: phi_**tau, 16),
-        n6_exact("IOKit_fam", 12, lambda: sigma, 12),
-        n6_exact("signals", 24, lambda: J2, 24),
-    ]
-    # L5 Runtime
-    results += [
-        n6_exact("GCD_QoS", 6, lambda: n, 6),
-        n6_exact("launchd_PID", 1, lambda: mu, 1),
-        n6_exact("dyld_cache_ver", 3, lambda: n//phi_, 3),
-        n6_exact("objc_rt_ver", 2, lambda: phi_, 2),
-        n6_exact("swift_refcnt_bits", 64, lambda: tau**3, 64),
-        n6_exact("GCD_global_pri", 4, lambda: tau, 4),
-        n6_exact("XPC_slots", 12, lambda: sigma, 12),
-        n6_exact("metal_encoders", 4, lambda: tau, 4),
-    ]
-    # L6 System
-    results += [
-        n6_exact("APFS_containers", 12, lambda: sigma, 12),
-        n6_exact("snapshots_hourly", 24, lambda: J2, 24),
-        n6_exact("APFS_file_types", 4, lambda: tau, 4),
-        n6_exact("fletcher_bits", 64, lambda: tau**3, 64),
-        n6_exact("TM_interval_h", 1, lambda: mu, 1),
-        n6_exact("dock_icons", 12, lambda: sigma, 12),
-        n6_exact("spaces_max", 16, lambda: phi_**tau, 16),
-        n6_exact("finder_sections", 4, lambda: tau, 4),
-        n6_exact("spotlight_cats", 12, lambda: sigma, 12),
-        n6_exact("tab_groups_max", 24, lambda: J2, 24),
-        n6_exact("notif_types", 6, lambda: n, 6),
-        n6_exact("focus_modes", 6, lambda: n, 6),
-        n6_exact("wallpaper_rotation", 6, lambda: n, 6),
-        n6_exact("menubar_max", 12, lambda: sigma, 12),
-    ]
-    # L7 Ecosystem
-    results += [
-        n6_exact("icloud_devices", 12, lambda: sigma, 12),
-        n6_exact("airdrop_m", 10, lambda: SIG_PHI, 10),
-        n6_exact("handoff_ms", 100, lambda: SIG_PHI*SIG_PHI, 100),
-        n6_exact("continuity_features", 12, lambda: sigma, 12),
-        n6_exact("universal_arch", 3, lambda: n//phi_, 3),
-        n6_exact("appstore_cats", 24, lambda: J2, 24),
-        n6_exact("sidecar_res", 2, lambda: phi_, 2),
-        n6_exact("shortcut_types", 6, lambda: n, 6),
-        n6_exact("facetime_max", 32, lambda: 2**sopfr, 32),
-        n6_exact("imessage_reacts", 6, lambda: n, 6),
-        n6_exact("focus_filters", 6, lambda: n, 6),
-        n6_exact("family_sharing", 6, lambda: n, 6),
-    ]
-    # Egyptian cache check
-    egyptian = 1/2 + 1/3 + 1/6
-    results.append(abs(egyptian - 1.0) < 1e-10)
-    print(f"  [{'EXACT' if results[-1] else 'FAIL'}] Egyptian: 1/2+1/3+1/6 = {egyptian}")
-    # σ·φ = n·τ uniqueness
-    results.append(sigma*phi_ == n*tau == J2)
-    print(f"  [{'EXACT' if results[-1] else 'FAIL'}] σ·φ=n·τ={sigma*phi_}=J₂")
-    # R(6) reversibility
-    R6 = (sigma*phi_)/(n*tau)
-    results.append(R6 == 1.0)
-    print(f"  [{'EXACT' if results[-1] else 'FAIL'}] R(6) = {R6}")
-
-    total = len(results)
-    passed = sum(results)
-    print(f"\n{'='*60}")
-    print(f"HEXA-macOS n=6 EXACT 검증: {passed}/{total} = {100*passed/total:.1f}%")
-    print(f"{'='*60}")
-    assert passed == total, f"FAIL: {total-passed}개 불일치"
-    return passed == total
-
-if __name__ == "__main__":
-    verify_all()
-    print("\n🛸10 ALIEN INDEX 10 CERTIFIED — Physical limit reached")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-115 항목", None, None, None),  # MISSING DATA
+    ("BT-162 항목", None, None, None),  # MISSING DATA
+    ("BT-180 항목", None, None, None),  # MISSING DATA
+    ("BT-344 항목", None, None, None),  # MISSING DATA
+    ("BT-31 항목", None, None, None),  # MISSING DATA
+    ("BT-74 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-113 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

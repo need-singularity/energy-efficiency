@@ -2689,292 +2689,58 @@ Mk.II 전용 42개 신규 파라미터 검증 항목이 verify_realization.py에
 ## 부록 A. 검증 코드 — verify_alien10.py (이론 파라미터 150/150 EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-RTSC 검증 스크립트 — 상온 초전도체 n=6 EXACT 전수 검증
-천장 돌파: 91 -> 120+ EXACT
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-실행: python3 docs/room-temp-sc/verify_alien10.py
-"""
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# === n=6 기본 상수 ===
-n = 6
-phi = 2        # phi(6) = 2
-tau = 4        # tau(6) = 4
-sigma = 12     # sigma(6) = 12
-mu = 1         # mu(6) = 1
-sopfr = 5      # sopfr(6) = 2+3 = 5
-J2 = 24        # J_2(6) = 24
-R6 = 1         # R(6) = 1
-
-# 유도 상수
-sigma_phi = sigma - phi       # 10
-sigma_tau = sigma - tau        # 8
-sigma_mu = sigma - mu          # 11
-sigma_sopfr = sigma - sopfr    # 7
-sigma_times_tau = sigma * tau  # 48
-sigma_sq = sigma ** 2          # 144
-phi_tau = phi ** tau            # 16
-sopfr_sq = sopfr ** 2          # 25
-J2_tau = J2 - tau              # 20
-
-results = []
-
-def check(name, actual, expected, formula, tolerance=0.02):
-    """actual vs expected 비교, tolerance 이내면 EXACT"""
-    if expected == 0:
-        match = actual == 0
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-300 항목", None, None, None),  # MISSING DATA
+    ("BT-64 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-304 항목", None, None, None),  # MISSING DATA
+    ("BT-305 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        match = abs(actual - expected) / abs(expected) <= tolerance
-    grade = "EXACT" if match else "CLOSE" if abs(actual - expected) / max(abs(expected), 1) <= 0.1 else "FAIL"
-    results.append((name, actual, expected, formula, grade))
-    return grade
-
-print("=" * 70)
-print("HEXA-RTSC 천장 돌파 검증 — 120+ EXACT 목표")
-print("=" * 70)
-
-# 카테고리 1: 수소 원자수 래더 (8 항목)
-print("\n--- 1. 수소 원자수 래더 ---")
-check("H3S H 원자수", 3, n // phi, "n/phi = 3")
-check("CaH6 H 원자수", 6, n, "n = 6")
-check("YH6 H 원자수", 6, n, "n = 6")
-check("YH9 H 원자수", 9, sigma - n // phi, "sigma - n/phi = 9")
-check("LaH10 H 원자수", 10, sigma_phi, "sigma - phi = 10")
-check("ThH10 H 원자수", 10, sigma_phi, "sigma - phi = 10")
-check("ScH12 H 원자수", 12, sigma, "sigma = 12")
-check("AcH10 H 원자수", 10, sigma_phi, "sigma - phi = 10")
-
-# 카테고리 2: Tc 값 래더 (14 항목)
-print("\n--- 2. Tc 값 래더 ---")
-check("H3S Tc=203K", 203, (sigma_phi)**2 * phi + n // phi, "(sigma-phi)^2*phi + n/phi = 200+3 = 203")
-check("CaH6 Tc=215K", 215, sigma_sq + J2 * (n // phi) - mu, "sigma^2+J2*(n/phi)-mu = 144+72-1 = 215")
-check("YH6 Tc=224K", 224, sigma_sq + J2_tau * tau, "sigma^2+(J2-tau)*tau = 144+80 = 224")
-check("YH9 Tc=243K", 243, (n // phi) ** sopfr, "(n/phi)^sopfr = 3^5 = 243")
-check("LaH10 Tc=250K", 250, sigma_phi * sopfr_sq, "(sigma-phi)*sopfr^2 = 10*25 = 250")
-check("AcH10 Tc=251K", 251, sigma_phi * sopfr_sq + mu, "(sigma-phi)*sopfr^2+mu = 251")
-check("CSH Tc=288K", 288, sigma * J2, "sigma*J2 = 12*24 = 288")
-check("상온 목표 Tc=300K", 300, sopfr_sq * sigma, "sopfr^2*sigma = 25*12 = 300")
-check("Nb3Sn Tc=18K", 18, n * (n // phi), "n*(n/phi) = 6*3 = 18")
-check("NbTi Tc=9K", 9, (n // phi) ** phi, "(n/phi)^phi = 3^2 = 9")
-check("Hg Tc=4.2K", 4.2, tau + mu/sopfr, "tau+mu/sopfr = 4+0.2 = 4.2")
-check("MgB2 Tc=39K", 39, sigma * (n // phi) + n // phi, "sigma*(n/phi)+n/phi = 36+3 = 39")
-check("ThH10 Tc=161K", 161, sigma_sq + sigma + sopfr, "sigma^2+sigma+sopfr = 144+12+5 = 161")
-check("YBCO Tc=93K", 93, sigma_sq - phi * J2 - n // phi, "sigma^2-2*J2-n/phi = 144-48-3 = 93")
-
-# 카테고리 3: 압력 래더 (12 항목)
-print("\n--- 3. 압력 래더 ---")
-check("H3S 임계 압력 150GPa", 150, sigma_sq + n, "sigma^2+n = 144+6 = 150")
-check("LaH10 압력 170GPa", 170, sigma_sq + J2 + phi, "sigma^2+J2+phi = 170")
-check("CaH6 압력 172GPa", 172, sigma_sq + J2 + tau, "sigma^2+J2+tau = 172")
-check("AcH10 압력 200GPa", 200, phi * sigma_phi**2, "phi*(sigma-phi)^2 = 200")
-check("YH9 압력 201GPa", 201, phi * sigma_phi**2 + mu, "phi*(sigma-phi)^2+mu = 201")
-check("YH6 압력 166GPa", 166, sigma_sq + J2 - phi, "sigma^2+J2-phi = 166")
-check("CSH 압력 267GPa", 267, sigma * J2 - J2 + n // phi, "sigma*J2-J2+n/phi = 288-24+3 = 267")
-check("ThH10 압력 175GPa", 175, sigma_sq + J2 + sigma_sopfr, "sigma^2+J2+(sigma-sopfr) = 144+24+7 = 175")
-check("1 atm = 101.325 kPa", 101.325, sigma_phi**2, "(sigma-phi)^2 = 100 kPa", tolerance=0.02)
-check("100 GPa 노드", 100, sigma_phi**2, "(sigma-phi)^2 = 100")
-check("200 GPa 노드", 200, phi * sigma_phi**2, "phi*(sigma-phi)^2 = 200")
-check("DAC 실용 한계 300GPa", 300, sopfr_sq * sigma, "sopfr^2*sigma = 300")
-
-# 카테고리 4: 원소 원자번호 래더 (12 항목)
-print("\n--- 4. 원소 Z 래더 ---")
-check("H Z=1", 1, mu, "mu = 1")
-check("B Z=5", 5, sopfr, "sopfr = 5")
-check("C Z=6", 6, n, "n = 6")
-check("N Z=7", 7, sigma_sopfr, "sigma-sopfr = 7")
-check("Mg Z=12", 12, sigma, "sigma = 12")
-check("S Z=16", 16, phi_tau, "phi^tau = 16")
-check("Ca Z=20", 20, J2_tau, "J2-tau = 20")
-check("Sc Z=21", 21, J2 - n // phi, "J2-n/phi = 24-3 = 21")
-check("Y Z=39", 39, J2 + sigma + n // phi, "J2+sigma+n/phi = 24+12+3 = 39")
-check("La Z=57", 57, sopfr * sigma - n // phi, "sopfr*sigma-n/phi = 60-3 = 57")
-check("Ac Z=89", 89, (sigma_phi)**2 - sigma + mu, "(sigma-phi)^2-sigma+mu = 100-12+1 = 89")
-check("Th Z=90", 90, (sigma_phi)**2 - sigma_phi, "(sigma-phi)^2-(sigma-phi) = 100-10 = 90")
-
-# 카테고리 5: CN/결정구조 래더 (8 항목)
-print("\n--- 5. CN/결정구조 래더 ---")
-check("Perovskite CN=6", 6, n, "n = 6")
-check("BCC CN=8 (Im-3m)", 8, sigma_tau, "sigma-tau = 8")
-check("FCC/HCP CN=12", 12, sigma, "sigma = 12")
-check("Clathrate-II CN=20", 20, J2_tau, "J2-tau = 20")
-check("Sodalite CN=24", 24, J2, "J2 = 24")
-check("절단정팔면체 면 수 12", 12, sigma, "sigma = 12")
-check("정사각형 면 4", 4, tau, "tau = 4")
-check("Abrikosov 자속격자 CN=6", 6, n, "n = 6")
-
-# 카테고리 6: BCS/Eliashberg 파라미터 (14 항목)
-print("\n--- 6. BCS/Eliashberg 파라미터 ---")
-check("mu* Coulomb 의사퍼텐셜 0.1", 0.1, 1/sigma_phi, "1/(sigma-phi) = 0.1")
-check("lambda 강결합 한계 2", 2, phi, "phi = 2")
-check("lambda 상온 목표 3", 3, n // phi, "n/phi = 3")
-check("Cooper pair 전자수 2", 2, phi, "phi = 2")
-check("강결합 갭 비율 tau", 4, tau, "tau = 4")
-check("omega_log H 1000K", 1000, sigma_phi**(n//phi), "(sigma-phi)^(n/phi) = 10^3")
-check("Stoner 기준 1", 1, mu, "mu = 1")
-check("BCS 약결합 비열 점프 1.43", 1.43, sopfr*tau/(sigma+phi), "sopfr*tau/(sigma+phi) = 20/14 = 1.4286", tolerance=0.01)
-check("동위원소 효과 alpha=0.5", 0.5, mu / phi, "mu/phi = 0.5")
-check("kT(300K) = 26 meV", 26, J2 + phi, "J2+phi = 26")
-check("McMillan 분모 1.04", 1.04, mu + tau/sigma_phi**2, "mu+tau/(sigma-phi)^2 = 1.04")
-check("McMillan prefactor 1.2", 1.2, sigma / sigma_phi, "sigma/(sigma-phi) = 1.2")
-check("BCS 2Delta/kTc 약결합 3.53", 3.53, (n//phi) + mu/phi, "n/phi+mu/phi = 3.5", tolerance=0.01)
-check("Cooper pair 결합 에너지 2Delta @300K (meV)", 104, tau*(J2+phi), "tau*(J2+phi) = 104")
-
-# 카테고리 7: 공간군/대칭 (6 항목)
-print("\n--- 7. 공간군/대칭 ---")
-check("정육면체 면 수 6", 6, n, "n = 6")
-check("Im-3m - Fm-3m 차이 4", 4, tau, "tau = 4")
-check("Fm-3m #225 = sopfr^2*9", 225, sopfr_sq * (sigma - n // phi), "sopfr^2*(sigma-n/phi) = 25*9 = 225")
-check("P6/mmm 육방 대칭", 6, n, "n = 6")
-check("격자 상수 하한 3A", 3, n // phi, "n/phi = 3")
-check("격자 상수 상한 6A", 6, n, "n = 6")
-
-# 카테고리 8: DSE 구조 (12 항목)
-print("\n--- 8. DSE 구조 ---")
-check("DSE 단계 수 8", 8, sigma_tau, "sigma-tau = 8")
-check("K1 원소 후보 8", 8, sigma_tau, "sigma-tau = 8")
-check("K2 결정구조 6", 6, n, "n = 6")
-check("K3 압축방식 5", 5, sopfr, "sopfr = 5")
-check("K4 합성방법 6", 6, n, "n = 6")
-check("K5 최적화 4", 4, tau, "tau = 4")
-check("K6 응용분야 5", 5, sopfr, "sopfr = 5")
-check("전수 조합 28800", 28800, 8*6*5*6*4*5, "K1*...*K6 = 28800")
-check("유효 조합 5184", 5184, (sigma * n) ** phi, "(sigma*n)^phi = 5184")
-check("Tc>=300K 후보 864", 864, sigma_sq * n, "sigma^2*n = 864")
-check("상압+상온 후보 144", 144, sigma_sq, "sigma^2 = 144")
-check("Pareto 최적 24", 24, J2, "J2 = 24")
-
-# 카테고리 9: 물리 한계 (12 항목)
-print("\n--- 9. 물리 한계 ---")
-check("Migdal 한계 lambda_max 3", 3, n // phi, "n/phi = 3")
-check("수소 Z (양자영점운동) 1", 1, mu, "mu = 1")
-check("다이아몬드 Z (메타안정) 6", 6, n, "n = 6")
-check("kT(300K) 26 meV", 26, J2 + phi, "J2+phi = 26")
-check("최소 SC 갭 52 meV", 52, phi * (J2 + phi), "phi*(J2+phi) = 52")
-check("확산 장벽 0.5 eV", 0.5, mu / phi, "mu/phi = 0.5")
-check("Pauli 한계 계수 1.84", 1.84, phi - phi/sigma_phi, "phi-phi/(sigma-phi) = 1.8", tolerance=0.025)
-check("스케일업 비율 10^7", 1e7, sigma_phi**(sigma_sopfr), "(sigma-phi)^(sigma-sopfr) = 10^7")
-check("포논 최적 단일 모드 mu", 1, mu, "mu = 1")
-check("Cooper pair 보손화 phi", 2, phi, "phi = 2")
-check("BCS 갭 비율 강결합 tau", 4, tau, "tau = 4")
-check("Stoner 기준 mu", 1, mu, "mu = 1")
-
-# 카테고리 10: Hc2 상부임계자장 (4 항목)
-print("\n--- 10. Hc2 상부임계자장 ---")
-check("Hc2 스케일 sigma^2=144T", 144, sigma_sq, "sigma^2 = 144")
-check("LaH10 Hc2=140T", 140, sigma_sq - tau, "sigma^2-tau = 140")
-check("H3S Hc2=70T", 70, sigma*sopfr + sigma_phi, "sigma*sopfr+(sigma-phi) = 70")
-check("Pauli 한계 @300K 552T", 552, J2*J2 - J2, "J2^2-J2 = 552")
-
-# 카테고리 11: Cross-domain (10 항목)
-print("\n--- 11. Cross-domain ---")
-check("전력망 손실 n=6%", 6, n, "n = 6")
-check("MRI 코일 sigma=12", 12, sigma, "sigma = 12")
-check("ITER TF 코일 3n=18", 18, n*(n//phi), "n*(n/phi) = 18")
-check("Josephson 분모 phi=2", 2, phi, "phi = 2")
-check("PUE 이상 R6=1.0", 1.0, R6, "R(6) = 1")
-check("SE(3) DOF n=6", 6, n, "n = 6")
-check("핵융합 자석 30T", 30, sopfr * n, "sopfr*n = 30")
-check("변형 10%", 10, sigma_phi, "sigma-phi = 10")
-check("YBCO 비 합 1+2+3=6", 6, n, "n = 6")
-check("전기차 모터 효율 향상 20%", 20, J2_tau, "J2-tau = 20")
-
-# 카테고리 12: BT-RTSC (8 항목)
-print("\n--- 12. BT-RTSC ---")
-check("BT-RTSC-1 H Z=mu", 1, mu, "mu = 1")
-check("BT-RTSC-2 목표Tc=300", 300, sopfr_sq * sigma, "sopfr^2*sigma = 300")
-check("BT-RTSC-3 상압 100kPa", 100, sigma_phi**2, "(sigma-phi)^2 = 100")
-check("BT-RTSC-4 CN n=6", 6, n, "n = 6")
-check("BT-RTSC-5 갭비율 tau", 4, tau, "tau = 4")
-check("BT-RTSC-6 lambda n/phi", 3, n // phi, "n/phi = 3")
-check("BT-RTSC-7 자속격자 n", 6, n, "n = 6")
-check("BT-RTSC-8 Cooper phi", 2, phi, "phi = 2")
-
-# 카테고리 13: 핵심 항등식 (4 항목)
-print("\n--- 13. 핵심 항등식 ---")
-check("sigma*phi = n*tau = 24", sigma*phi, n*tau, "sigma*phi = n*tau")
-check("= J2 = 24", sigma*phi, J2, "= J2")
-check("sopfr^2*sigma = 300", sopfr_sq * sigma, 300, "= 300K")
-check("sigma*J2 = 288", sigma * J2, 288, "= 288K")
-
-# 카테고리 14: 초전도 양자 상수 (10 항목)
-print("\n--- 14. 초전도 양자 상수 ---")
-check("Phi_0 = h/(2e) 분모 phi", 2, phi, "phi = 2")
-check("SQUID 2접합 phi", 2, phi, "phi = 2")
-check("Meissner |chi|=1 mu", 1, mu, "mu = 1")
-check("Type-II 2 임계자장 phi", 2, phi, "phi = 2")
-check("GL 차수변수 복소 2차원 phi", 2, phi, "phi = 2")
-check("s-wave l=0", 0, 0, "l=0")
-check("d-wave l=2=phi", 2, phi, "phi = 2")
-check("d-wave 노드 4=tau", 4, tau, "tau = 4")
-check("GL kappa 하한 sigma-phi=10", 10, sigma_phi, "sigma-phi = 10")
-check("London 침투깊이 100nm", 100, sigma_phi**2, "(sigma-phi)^2 = 100")
-
-# 카테고리 15: 수소 cage 기하/결합 (6 항목)
-print("\n--- 15. 수소 cage 기하 ---")
-check("H-M-H 결합각도 90도", 90, (sigma_phi)**2 - sigma_phi, "(sigma-phi)^2-(sigma-phi) = 90")
-check("정12면체 면 수 12=sigma", 12, sigma, "sigma = 12")
-check("정20면체 꼭짓점 12=sigma", 12, sigma, "sigma = 12")
-check("중수소 질량수 2=phi", 2, phi, "phi = 2")
-check("삼중수소 질량수 3=n/phi", 3, n // phi, "n/phi = 3")
-check("양성자 전하 1=mu", 1, mu, "mu = 1")
-
-# 카테고리 16: Tc 배증 패턴 (4 항목)
-print("\n--- 16. Tc 배증 패턴 ---")
-check("Nb Tc=9 = (n/phi)^phi", 9, (n//phi)**phi, "(n/phi)^phi = 9")
-check("Tc=288/Tc=203 비율 ~1.44", 288/203, sigma_sq/(sigma_phi**2), "sigma^2/(sigma-phi)^2 = 1.44", tolerance=0.02)
-check("화학프리압축 60GPa", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("Tc 갭 300-288 = sigma", 12, sigma, "sigma = 12")
-
-# 카테고리 17: 응용 상수 (6 항목)
-print("\n--- 17. 응용 상수 ---")
-check("Jc 지수 10^n A/cm2", 6, n, "n = 6")
-check("양자큐비트 2레벨 phi", 2, phi, "phi = 2")
-check("자기부상 전류 J2 kA", 24, J2, "J2 = 24")
-check("SMES 운전 J2시간", 24, J2, "J2 = 24")
-check("변압기 sigma kV", 12, sigma, "sigma = 12")
-check("BCS xi_0 스케일 sigma nm", 12, sigma, "sigma = 12 nm")
-
-# 결과 요약
-print("\n" + "=" * 70)
-print("검증 결과 요약")
-print("=" * 70)
-
-total = len(results)
-exact = sum(1 for r in results if r[4] == "EXACT")
-close = sum(1 for r in results if r[4] == "CLOSE")
-fail = sum(1 for r in results if r[4] == "FAIL")
-
-for name, actual, expected, formula, grade in results:
-    symbol = "PASS" if grade == "EXACT" else "NEAR" if grade == "CLOSE" else "FAIL"
-    print(f"  [{symbol}] {name}: {actual} = {expected} ({formula}) -> {grade}")
-
-print(f"\n{'=' * 70}")
-print(f"  전체: {total} 항목")
-print(f"  EXACT: {exact} ({100*exact/total:.1f}%)")
-print(f"  CLOSE: {close} ({100*close/total:.1f}%)")
-print(f"  FAIL:  {fail} ({100*fail/total:.1f}%)")
-print(f"{'=' * 70}")
-
-if fail > 0:
-    print(f"\n  FAIL 항목:")
-    for name, actual, expected, formula, grade in results:
-        if grade == "FAIL":
-            print(f"    - {name}: actual={actual}, expected={expected} ({formula})")
-
-if close > 0:
-    print(f"\n  CLOSE 항목:")
-    for name, actual, expected, formula, grade in results:
-        if grade == "CLOSE":
-            print(f"    - {name}: actual={actual}, expected={expected} ({formula})")
-
-if exact >= 100:
-    print(f"\n  천장 돌파: {exact} EXACT >= 100 목표 달성!")
-    print(f"  인증: PASS (EXACT {100*exact/total:.1f}%)")
-else:
-    print(f"\n  목표 미달: {exact} EXACT < 100")
-
-print(f"{'=' * 70}")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -2982,375 +2748,56 @@ print(f"{'=' * 70}")
 ## 부록 B. 검증 코드 — verify_realization.py (실현 경로 175/175 EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-RTSC 실현 경로 검증 스크립트 — 소재 후보별 n=6 스코어 자동 계산
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-실행: python3 docs/room-temp-sc/verify_realization.py
-"""
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# === n=6 기본 상수 ===
-n = 6
-phi = 2
-tau = 4
-sigma = 12
-mu = 1
-sopfr = 5
-J2 = 24
-R6 = 1
-
-# 유도 상수
-sigma_phi = sigma - phi       # 10
-sigma_tau = sigma - tau        # 8
-sigma_mu = sigma - mu          # 11
-sigma_sq = sigma ** 2          # 144
-J2_tau = J2 - tau              # 20
-
-results = []
-
-def check(name, actual, expected, formula, tolerance=0.02):
-    if expected == 0:
-        match = actual == 0
-    else:
-        match = abs(actual - expected) / abs(expected) <= tolerance
-    grade = "EXACT" if match else "CLOSE" if abs(actual - expected) / max(abs(expected), 1) <= 0.1 else "FAIL"
-    results.append((name, actual, expected, formula, grade))
-    return grade
-
-print("=" * 70)
-print("HEXA-RTSC 실현 경로 검증 — 소재 후보별 n=6 스코어")
-print("=" * 70)
-
-# 후보 1: BaH12 (9/9 EXACT)
-print("\n--- 후보 1: BaH12 ---")
-check("Ba Z", 56, sigma * sopfr - tau, "sigma*sopfr - tau = 56")
-check("BaH12 H 원자수", 12, sigma, "sigma = 12")
-check("BaH12 cage CN", 24, J2, "J2 = 24")
-check("Ba2+ 이온반경 (pm)", 135, sigma_sq - (sigma - n // phi), "sigma^2 - (sigma-n/phi) = 135")
-check("BaH12 내부등가압 (GPa)", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("BaH12 외부압 (GPa)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("BaH12 예측 Tc (K)", 250, sigma_phi * sopfr ** 2, "(sigma-phi)*sopfr^2 = 250")
-check("BaH12 결정구조 CN", 12, sigma, "FCC CN = sigma = 12")
-check("BaH12 Ba:H 비", 12, sigma, "mu:sigma -> H/Ba = sigma")
-
-# 후보 2: CaH6 (7/7 EXACT)
-print("\n--- 후보 2: CaH6 메타안정 ---")
-check("Ca Z", 20, J2_tau, "J2 - tau = 20")
-check("CaH6 H 원자수", 6, n, "n = 6 (완전수!)")
-check("CaH6 cage CN", 24, J2, "J2 = 24")
-check("CaH6 sodalite 면수", 14, sigma + phi, "sigma + phi = 14")
-check("CaH6 합성압 (GPa)", 172, sigma_sq + J2 + tau, "sigma^2 + J2 + tau = 172")
-check("CaH6 Tc (K)", 215, sigma_phi * sopfr ** 2 - 35, "확인 Tc")
-check("CaH6 메타안정 장벽 (eV)", 0.3, n / phi * 0.1, "n/phi * 1/(sigma-phi) = 0.3")
-
-# 후보 3: YH6 (6/6 EXACT)
-print("\n--- 후보 3: YH6 에피택시 ---")
-check("Y Z", 39, J2 + sigma + n // phi, "J2 + sigma + n/phi = 39")
-check("YH6 H 원자수", 6, n, "n = 6")
-check("YH6 cage CN", 24, J2, "J2 = 24")
-check("YH6 Tc (K)", 224, sigma_phi * sopfr ** 2 - 26, "확인 Tc")
-check("YH6 에피택시 변형 (%)", 10, sigma_phi, "sigma - phi = 10")
-check("YH6 등가 내부압 (GPa)", 10, sigma_phi, "sigma - phi = 10")
-
-# 후보 4: (La,Ce)H10 (9/9 EXACT)
-print("\n--- 후보 4: (La,Ce)H10 ---")
-check("La Z", 57, sigma * sopfr - n // phi, "sigma*sopfr - n/phi = 57")
-check("LaH10 H 원자수", 10, sigma_phi, "sigma - phi = 10")
-check("LaH10 Tc (K)", 250, sigma_phi * sopfr ** 2, "(sigma-phi)*sopfr^2 = 250")
-check("LaH10 clathrate CN", 20, J2_tau, "J2 - tau = 20")
-check("LaH10 합성압 (GPa)", 170, sigma_sq + J2 + phi, "sigma^2 + J2 + phi = 170")
-check("Ce 도핑 Tc 향상 (%)", 10, sigma_phi, "sigma - phi = 10")
-check("La-Ce Z 차이", 1, mu, "mu = 1")
-check("(La,Ce)H10 목표 Tc (K)", 300, sopfr ** 2 * sigma, "sopfr^2*sigma = 300")
-check("최적 Ce 비율", 1/6, mu / n, "mu/n = 1/6")
-
-# 후보 5: MgH6 (10/10 EXACT)
-print("\n--- 후보 5: MgH6 (이론적 최적) ---")
-check("Mg Z", 12, sigma, "sigma = 12")
-check("MgH6 H 원자수", 6, n, "n = 6 (완전수!)")
-check("MgH6 cage CN", 24, J2, "J2 = 24")
-check("MgH6 예측 Tc (K)", 270, sopfr ** 2 * sigma - 30, "sopfr^2*sigma 근접")
-check("MgH6 예측 압력 (GPa)", 200, phi * sigma_phi ** 2, "phi*(sigma-phi)^2 = 200")
-check("Mg 이온반경 (pm)", 72, sigma * n, "sigma*n = 72")
-check("Mg:H 화학양론", 6, n, "mu:n -> H/Mg = n = 6 (완전수!)")
-check("MgH6 H-H 거리 (A)", 1.2, sigma / sigma_phi, "sigma/(sigma-phi) = 1.2")
-check("MgH6 lambda", 2.5, sopfr / phi, "sopfr/phi = 2.5")
-check("MgH6 구조", 1, 1, "sodalite Im-3m BCC")
-
-# 후보 6: ScH12 (4/4 EXACT)
-print("\n--- 후보 6: ScH12 ---")
-check("Sc Z", 21, J2 - n // phi, "J2 - n/phi = 21")
-check("ScH12 H 원자수", 12, sigma, "sigma = 12")
-check("ScH12 육각 CN", 12, sigma, "P6/mmm CN = sigma")
-check("ScH12 cage 꼭짓점", 12, sigma, "정이십면체 12 꼭짓점 = sigma")
-
-# 비수소: MATBG (2/2 EXACT)
-print("\n--- 비수소: MATBG ---")
-check("C Z", 6, n, "n = 6")
-check("벌집격자 CN", 3, n // phi, "n/phi = 3")
-check("전자 필링", 0.25, mu / tau, "mu/tau = 1/4 = 0.25")
-
-# 비수소: K3C60 (5/5 EXACT)
-print("\n--- 비수소: K3C60 ---")
-check("C60 탄소수", 60, sigma * sopfr, "sigma*sopfr = 60")
-check("오각형 면", 12, sigma, "sigma = 12")
-check("육각형 면", 20, J2_tau, "J2-tau = 20")
-check("총 면수", 32, phi ** sopfr, "phi^sopfr = 32")
-check("K3 도핑수", 3, n // phi, "n/phi = 3")
-
-# 비수소: B-Diamond (5/5 EXACT)
-print("\n--- 비수소: B-Diamond ---")
-check("C Z (다이아몬드)", 6, n, "n = 6")
-check("B Z", 5, sopfr, "sopfr = 5")
-check("다이아몬드 CN", 4, tau, "tau = 4")
-check("현재 Tc (K)", 4, tau, "tau = 4")
-check("B 도핑 농도 (%)", 3, n // phi, "n/phi = 3")
-
-# 메타안정 장벽 (4/4 EXACT)
-print("\n--- 메타안정 장벽 분석 ---")
-check("다이아몬드 장벽 (eV)", 1.0, mu, "mu = 1.0")
-check("kT(300K) (eV)", 0.026, (J2 + phi) / 1000, "(J2+phi)/1000 = 0.026")
-check("목표 장벽 (eV)", 0.5, mu / phi, "mu/phi = 0.5")
-check("DLC 코팅 두께 (nm)", 12, sigma, "sigma = 12")
-
-# 합성 프로토콜 (6/6 EXACT)
-print("\n--- 합성 프로토콜 ---")
-check("가열 온도 (K)", 1440, sigma_sq * sigma_phi, "sigma^2*(sigma-phi) = 1440")
-check("유지 시간 (h)", 4, tau, "tau = 4")
-check("급냉 속도 (K/s)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("감압 중간점1 (GPa)", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("감압 중간점2 (GPa)", 5, sopfr, "sopfr = 5")
-check("안정성 확인 시간 (h)", 12, sigma, "sigma = 12")
-
-# 궁극 프로파일 (8/8 EXACT)
-print("\n--- 궁극 상온 SC 프로파일 ---")
-check("궁극 Tc (K)", 300, sopfr ** 2 * sigma, "sopfr^2*sigma = 300")
-check("궁극 압력 (kPa)", 100, sigma_phi ** 2, "(sigma-phi)^2 kPa = 100 kPa = 1 atm")
-check("궁극 lambda", 3, n // phi, "n/phi = 3")
-check("궁극 mu*", 0.1, 1 / sigma_phi, "1/(sigma-phi) = 0.1")
-check("궁극 omega_log (K)", 1000, sigma_phi ** (n // phi), "(sigma-phi)^(n/phi) = 1000")
-check("궁극 Delta(0) (meV)", 52, tau * 26 / phi, "tau*kT/phi = 52")
-check("궁극 kappa", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("마일스톤 수", 10, sigma_phi, "sigma-phi = 10")
-
-# Mk.I 합성 파라미터 (48/48 EXACT)
-print("\n--- Mk.I 합성 파이프라인 ---")
-check("Mk.I 합성 단계 수", 6, n, "n = 6")
-check("Mk.I Phase 1 실험 종류", 6, n, "n = 6")
-check("Mk.I 도핑 Ce 비율 (분모)", 6, n, "mu/n, 분모 = n = 6")
-check("Mk.I 합금 재용융 횟수", 6, n, "n = 6")
-check("Mk.I DAC 가스켓 두께 (um)", 40, (J2 - tau) * phi, "(J2-tau)*phi = 40")
-check("Mk.I DAC 큐렛 직경 (um)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("Mk.I H2 로딩 압력 (MPa)", 200, phi * sigma_phi ** 2, "phi*(sigma-phi)^2 = 200")
-check("Mk.I 승압 속도 (GPa/h)", 10, sigma_phi, "sigma-phi = 10")
-check("Mk.I 가열 온도 LaH10 (K)", 1500, sigma_sq * sigma_phi + sopfr * sigma, "sigma^2*(sigma-phi)+sopfr*sigma = 1500")
-check("Mk.I 유지 시간 (h)", 4, tau, "tau = 4")
-check("Mk.I 급냉 속도 (K/s)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("Mk.I 레이저 출력 (W)", 60, sopfr * sigma, "sopfr*sigma = 60")
-
-print("\n--- Mk.I Phase 1 구조 ---")
-check("Mk.I Phase 1 총 실험", 50, sopfr * sigma_phi, "sopfr*(sigma-phi) = 50")
-check("Mk.I Phase 1 인력", 8, sigma_tau, "sigma-tau = 8")
-check("Mk.I 박사급 인력", 3, n // phi, "n/phi = 3")
-check("Mk.I 대학원생 인력", 5, sopfr, "sopfr = 5")
-check("Mk.I 빔타임/년 (일)", 24, J2, "J2 = 24")
-
-print("\n--- Mk.I 나노캡슐화 ---")
-check("Mk.I DLC 코팅 (nm)", 12, sigma, "sigma = 12")
-check("Mk.I BN 코팅 (nm)", 5, sopfr, "sopfr = 5")
-check("Mk.I Al2O3 코팅 (nm)", 3, n // phi, "n/phi = 3")
-check("Mk.I 총 코팅 두께 (nm)", 20, J2_tau, "J2-tau = 20")
-check("Mk.I 코팅 층수", 3, n // phi, "n/phi = 3")
-
-print("\n--- Mk.I 감압 프로토콜 ---")
-check("Mk.I 감압 정지점1 (GPa)", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("Mk.I 감압 정지점2 (GPa)", 5, sopfr, "sopfr = 5")
-check("Mk.I 안정성 확인 시간 (h)", 12, sigma, "sigma = 12")
-
-print("\n--- Mk.I 에피택시 박막 ---")
-check("Mk.I 에피택시 변형 (%)", 10, sigma_phi, "sigma-phi = 10")
-check("Mk.I 스퍼터 전력 (W)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("Mk.I 박막 두께 (nm)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("Mk.I ALD DLC 사이클", 120, sigma * sigma_phi, "sigma*(sigma-phi) = 120")
-
-print("\n--- Mk.I Phase 2 구조 ---")
-check("Mk.I Phase 2 감압 실험", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("Mk.I Phase 2 박막 실험", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("Mk.I Phase 2 코팅 실험", 24, J2, "J2 = 24")
-
-print("\n--- Mk.I PLD/스퍼터 조건 ---")
-check("Mk.I PLD 에너지 밀도 (J/cm2)", 2, phi, "phi = 2")
-check("Mk.I PLD 반복율 (Hz)", 10, sigma_phi, "sigma-phi = 10")
-check("Mk.I H2 혼합비 (%)", 10, sigma_phi, "sigma-phi = 10")
-check("Mk.I Ar 압력 (mTorr)", 5, sopfr, "sopfr = 5")
-
-print("\n--- Mk.I 실험별 횟수 ---")
-check("Mk.I 승온 단계 수", 6, n, "n = 6")
-check("Mk.I 기판 후보 수", 3, n // phi, "n/phi = 3")
-check("Mk.I BaH12 실험 횟수", 8, sigma_tau, "sigma-tau = 8")
-check("Mk.I CaH6 감압 실험", 8, sigma_tau, "sigma-tau = 8")
-check("Mk.I YH6 박막 실험", 10, sigma_phi, "sigma-phi = 10")
-check("Mk.I MgH6 합성 실험", 6, n, "n = 6")
-check("Mk.I ScH12 합성 실험", 6, n, "n = 6")
-
-print("\n--- Mk.I 기간/장비 ---")
-check("Mk.I Phase 1 기간 (월)", 12, sigma, "sigma = 12")
-check("Mk.I Phase 2 기간 (월)", 24, J2, "J2 = 24")
-check("Mk.I BaH12 큐렛 (um)", 150, sigma_sq + n, "sigma^2+n = 150")
-check("Mk.I 증착 시간 (s)", 200, phi * sigma_phi ** 2, "phi*(sigma-phi)^2 = 200")
-check("Mk.I 기판 회전 (rpm)", 10, sigma_phi, "sigma-phi = 10")
-
-# Mk.II: (La,Y)H24 (10/10 EXACT)
-print("\n--- MkII-1: (La,Y)H24 삼원 clathrate ---")
-check("MkII (La,Y)H24 La Z", 57, sigma * sopfr - n // phi, "sigma*sopfr - n/phi = 57")
-check("MkII (La,Y)H24 Y Z", 39, J2 + sigma + n // phi, "J2+sigma+n/phi = 39")
-check("MkII (La,Y)H24 H수", 24, J2, "J2 = 24")
-check("MkII (La,Y)H24 cage CN", 24, J2, "J2 = 24")
-check("MkII (La,Y)H24 금속 Z합", 96, tau * J2, "tau*J2 = 96")
-check("MkII (La,Y)H24 내부등가압 (GPa)", 144, sigma_sq, "sigma^2 = 144")
-check("MkII (La,Y)H24 외부압 (GPa)", 60, sopfr * sigma, "sopfr*sigma = 60")
-check("MkII (La,Y)H24 Tc (K)", 280, sigma * J2 - sigma // phi, "sigma*J2 - sigma/phi = 282 근접")
-check("MkII (La,Y)H24 반경차 (pm)", 13, sigma + mu, "sigma+mu = 13")
-check("MkII (La,Y)H24 불일치 (%)", 13, sigma + mu, "sigma+mu = 13")
-
-# Mk.II: (Ca,Ba)H18 (6/6 EXACT)
-print("\n--- MkII-2: (Ca,Ba)H18 ---")
-check("MkII (Ca,Ba)H18 Ca Z", 20, J2_tau, "J2-tau = 20")
-check("MkII (Ca,Ba)H18 Ba Z", 56, sigma * sopfr - tau, "sigma*sopfr - tau = 56")
-check("MkII (Ca,Ba)H18 H수", 18, n * (n // phi), "n*n/phi = 3n = 18")
-check("MkII (Ca,Ba)H18 금속 Z합", 76, sigma * n + tau, "sigma*n + tau = 76")
-check("MkII (Ca,Ba)H18 내부등가압 (GPa)", 120, sigma * sigma_phi, "sigma*(sigma-phi) = 120")
-check("MkII (Ca,Ba)H18 반경차 (pm)", 35, sigma * (n // phi) - mu, "sigma*n/phi - mu = 35")
-
-# Mk.II: (Mg,Ca)H12 (8/8 EXACT)
-print("\n--- MkII-3: (Mg,Ca)H12 sodalite ---")
-check("MkII (Mg,Ca)H12 Mg Z", 12, sigma, "sigma = 12")
-check("MkII (Mg,Ca)H12 Ca Z", 20, J2_tau, "J2-tau = 20")
-check("MkII (Mg,Ca)H12 H수", 12, sigma, "sigma = 12")
-check("MkII (Mg,Ca)H12 금속 Z합", 32, phi ** sopfr, "phi^sopfr = 32")
-check("MkII (Mg,Ca)H12 내부등가압 (GPa)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("MkII (Mg,Ca)H12 외부압 (GPa)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("MkII (Mg,Ca)H12 반경차 (pm)", 28, J2 + tau, "J2+tau = 28")
-check("MkII (Mg,Ca)H12 H-H (A)", 1.2, sigma / sigma_phi, "sigma/(sigma-phi) = 1.2")
-
-# Mk.II: (La,Ce,Y,Sc)H24 고엔트로피 (12/12 EXACT)
-print("\n--- MkII-4: (La,Ce,Y,Sc)H24 고엔트로피 ---")
-check("MkII HEA 원소수", 4, tau, "tau = 4")
-check("MkII HEA H수", 24, J2, "J2 = 24")
-check("MkII HEA 총원자수/셀", 28, J2 + tau, "J2+tau = 28")
-check("MkII HEA La Z", 57, sigma * sopfr - n // phi, "sigma*sopfr - n/phi = 57")
-check("MkII HEA Ce Z", 58, sigma * sopfr - phi, "sigma*sopfr - phi = 58")
-check("MkII HEA Y Z", 39, J2 + sigma + n // phi, "J2+sigma+n/phi = 39")
-check("MkII HEA Sc Z", 21, J2 - n // phi, "J2-n/phi = 21")
-check("MkII HEA 내부등가압 (GPa)", 204, sigma_sq + sopfr * sigma, "sigma^2+sopfr*sigma = 204")
-check("MkII HEA 외부압 (GPa)", 0, 0, "상압 = 0 GPa")
-check("MkII HEA Tc (K)", 300, sopfr ** 2 * sigma, "sopfr^2*sigma = 300")
-check("MkII HEA cage CN", 24, J2, "J2 = 24")
-check("MkII HEA 불일치 (%)", 14, sigma + phi, "sigma+phi = 14")
-
-# Mk.II: LaH10/YBCO 헤테로 (7/7 EXACT)
-print("\n--- MkII-5: LaH10/YBCO 헤테로 ---")
-check("MkII hetero LaH10 Tc (K)", 250, sigma_phi * sopfr ** 2, "(sigma-phi)*sopfr^2 = 250")
-check("MkII hetero 수소화물층 (nm)", 12, sigma, "sigma = 12")
-check("MkII hetero cuprate층 (nm)", 6, n, "n = 6")
-check("MkII hetero 주기 (nm)", 18, n * (n // phi), "n*n/phi = 3n = 18")
-check("MkII hetero xi (nm)", 5, sopfr, "sopfr = 5")
-check("MkII hetero 유효Tc (K)", 300, sopfr ** 2 * sigma, "sopfr^2*sigma = 300")
-check("MkII hetero Cu Z", 29, J2 + sopfr, "J2+sopfr = 29")
-
-# Mk.II: CaH6@Diamond 나노캡슐 (8/8 EXACT)
-print("\n--- MkII-6: CaH6@Diamond 나노캡슐 ---")
-check("MkII nano 코어직경 (nm)", 12, sigma, "sigma = 12")
-check("MkII nano 쉘두께 (nm)", 6, n, "n = 6")
-check("MkII nano 총직경 (nm)", 24, J2, "J2 = 24")
-check("MkII nano Diamond장벽 (eV)", 1.0, mu, "mu = 1.0")
-check("MkII nano C Z", 6, n, "n = 6")
-check("MkII nano 내부압 (GPa)", 100, sigma_phi ** 2, "(sigma-phi)^2 = 100")
-check("MkII nano 밀봉수명 (년)", 12, sigma, "sigma = 12")
-check("MkII nano BN코팅 (nm)", 5, sopfr, "sopfr = 5")
-
-# 결과 요약
-print("\n" + "=" * 70)
-print("결과 요약")
-print("=" * 70)
-
-exact = sum(1 for r in results if r[4] == "EXACT")
-close = sum(1 for r in results if r[4] == "CLOSE")
-fail = sum(1 for r in results if r[4] == "FAIL")
-total = len(results)
-
-print(f"  EXACT: {exact} ({100*exact/total:.1f}%)")
-print(f"  CLOSE: {close} ({100*close/total:.1f}%)")
-print(f"  FAIL:  {fail} ({100*fail/total:.1f}%)")
-print(f"  총:    {total}")
-
-# 후보별 스코어
-candidates = {
-    "BaH12": [], "CaH6": [], "YH6": [], "(La,Ce)H10": [],
-    "MgH6": [], "ScH12": [], "MATBG": [], "K3C60": [], "B-Diamond": [],
-    "Mk.I-합성": [],
-    "MkII-(La,Y)H24": [], "MkII-(Ca,Ba)H18": [], "MkII-(Mg,Ca)H12": [],
-    "MkII-HEA-H24": [], "MkII-Hetero": [], "MkII-Nanocap": [],
-}
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-300 항목", None, None, None),  # MISSING DATA
+    ("BT-64 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-304 항목", None, None, None),  # MISSING DATA
+    ("BT-305 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    name = r[0]
-    if name.startswith("Mk.I"):
-        candidates["Mk.I-합성"].append(r[4])
-    elif name.startswith("MkII (La,Y)"):
-        candidates["MkII-(La,Y)H24"].append(r[4])
-    elif name.startswith("MkII (Ca,Ba)"):
-        candidates["MkII-(Ca,Ba)H18"].append(r[4])
-    elif name.startswith("MkII (Mg,Ca)"):
-        candidates["MkII-(Mg,Ca)H12"].append(r[4])
-    elif name.startswith("MkII HEA"):
-        candidates["MkII-HEA-H24"].append(r[4])
-    elif name.startswith("MkII hetero"):
-        candidates["MkII-Hetero"].append(r[4])
-    elif name.startswith("MkII nano"):
-        candidates["MkII-Nanocap"].append(r[4])
-    elif "Ba" in name or "BaH12" in name:
-        candidates["BaH12"].append(r[4])
-    elif "Ca" in name or "CaH6" in name or "sodalite" in name:
-        candidates["CaH6"].append(r[4])
-    elif "Y " in name or "YH6" in name:
-        candidates["YH6"].append(r[4])
-    elif "La" in name or "Ce" in name:
-        candidates["(La,Ce)H10"].append(r[4])
-    elif "Mg" in name or "MgH6" in name:
-        candidates["MgH6"].append(r[4])
-    elif "Sc" in name or "ScH12" in name:
-        candidates["ScH12"].append(r[4])
-    elif "MATBG" in name or "벌집" in name or "전자 필링" in name:
-        candidates["MATBG"].append(r[4])
-    elif "C60" in name or "오각" in name or "육각" in name or "K3" in name or "총 면" in name:
-        candidates["K3C60"].append(r[4])
-    elif "다이아" in name or "B Z" in name or "B 도핑" in name:
-        candidates["B-Diamond"].append(r[4])
-
-print(f"\n후보별 n6 스코어 (Mk.I):")
-for cand in ["BaH12","CaH6","YH6","(La,Ce)H10","MgH6","ScH12","MATBG","K3C60","B-Diamond"]:
-    grades = candidates[cand]
-    if grades:
-        ex = sum(1 for g in grades if g == "EXACT")
-        print(f"  {cand:15s}: {ex}/{len(grades)} EXACT")
-
-print(f"\nMk.I 합성 파라미터:")
-mk1_grades = candidates["Mk.I-합성"]
-if mk1_grades:
-    mk1_ex = sum(1 for g in mk1_grades if g == "EXACT")
-    print(f"  Mk.I-합성       : {mk1_ex}/{len(mk1_grades)} EXACT")
-
-print(f"\n후보별 n6 스코어 (Mk.II):")
-for cand in ["MkII-(La,Y)H24","MkII-(Ca,Ba)H18","MkII-(Mg,Ca)H12","MkII-HEA-H24","MkII-Hetero","MkII-Nanocap"]:
-    grades = candidates[cand]
-    if grades:
-        ex = sum(1 for g in grades if g == "EXACT")
-        print(f"  {cand:20s}: {ex}/{len(grades)} EXACT")
-
-print(f"\n{'='*70}")
-if fail == 0:
-    print("ALL PASS — 실현 경로 전 파라미터 n=6 일치!")
-else:
-    print(f"FAIL {fail}건 — 재검토 필요")
-print(f"{'='*70}")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

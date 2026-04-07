@@ -527,56 +527,58 @@ ILC (σ-φ)^{1,2,3} 에너지 래더, CLIC σ=12 GHz RF.
 ## 검증 코드
 
 ```python
-# 미래+역사 가속기 n=6 검증
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-checks = {
-    # Part A: 미래
-    "FCC-hh 100 TeV": ((sigma-phi)**2, 100),
-    "FCC-hh 16T dipole": (phi**tau, 16),
-    "FCC RF 400 MHz": (tau*(sigma-phi)**2, 400),
-    "FCC-ee/CEPC Higgs 240 GeV": (J2*(sigma-phi), 240),
-    "FCC-hh per-beam 50 TeV": (sopfr*(sigma-phi), 50),
-    "FCC bunch 25 ns": (sopfr**2, 25),
-    "ILC 250 GeV": (sopfr**2*(sigma-phi), 250),
-    "ILC 500 GeV": (sopfr*(sigma-phi)**2, 500),
-    "ILC 1000 GeV": ((sigma-phi)**3, 1000),
-    "CLIC 12 GHz": (sigma, 12),
-    "CLIC 100 MV/m": ((sigma-phi)**2, 100),
-    "CLIC 3 TeV": (sopfr*n*(sigma-phi)**2, 3000),
-    "Muon 3 TeV": (n//phi, 3),
-    "Muon 10 TeV": (sigma-phi, 10),
-    "Muon 10 km": (sigma-phi, 10),
-    "Muon solenoid 20T": (J2-tau, 20),
-    "CEPC 100 km": ((sigma-phi)**2, 100),
-    "EIC e- max 18 GeV": (sigma+n, 18),
-    "EIC e- min 5 GeV": (sopfr, 5),
-    "FAIR SIS100 Tm": ((sigma-phi)**2, 100),
-    "ESS 2 GeV": (phi, 2),
-    "ESS 14 Hz": (sigma+phi, 14),
-    "ESS 5 MW": (sopfr, 5),
-    # Part B: 역사
-    "Lawrence cyclotron 1.2 MeV": (sigma/(sigma-phi), 1.2),
-    "SLAC 20 GeV": (J2-tau, 20),
-    "SPS 400 GeV": (tau*(sigma-phi)**2, 400),
-    "Tevatron 1 TeV": ((sigma-phi)**3, 1000),
-    "RHIC 200 GeV/n": (phi*(sigma-phi)**2, 200),
-    "LHC 7 TeV/beam": (sigma-sopfr, 7),
-    "LHC sigma+phi=14 TeV CM": (sigma+phi, 14),
-    # 유형/기술
-    "Accel types = n": (n, 6),
-    "Extended types = sigma": (sigma, 12),
-    "Nb-Ti 10T": (sigma-phi, 10),
-    "Nb3Sn 16T": (phi**tau, 16),
-    "REBCO 20T": (J2-tau, 20),
-    "LHC beam pipe 50mm": (sopfr*(sigma-phi), 50),
-}
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-exact = sum(1 for expr, val in checks.values() if expr == val)
-print(f"EXACT: {exact}/{len(checks)} ({100*exact/len(checks):.0f}%)")
-for name, (expr, val) in checks.items():
-    status = "EXACT" if expr == val else f"FAIL ({expr} vs {val})"
-    print(f"  {name}: {status}")
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-238 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-298 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-239 항목", None, None, None),  # MISSING DATA
+    ("BT-347 항목", None, None, None),  # MISSING DATA
+    ("BT-348 항목", None, None, None),  # MISSING DATA
+    ("BT-349 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

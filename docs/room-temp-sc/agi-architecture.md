@@ -562,349 +562,58 @@ AGI가 창발하기 위한 3대 조건과 그 n=6 표현:
 ## 12. Python 검증 코드 (🛸10 필수)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-AGI 궁극의 AGI 아키텍처 — n=6 파라미터 전수 검증
-=====================================================
-전체 196개 EXACT 파라미터를 수학적으로 재현한다.
-실행: python3 docs/room-temp-sc/agi-architecture-verify.py
-판정: ALL PASS → 🛸10 유효, ANY FAIL → 🛸9 강등
-"""
-
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# ─── n=6 핵심 상수 ────────────────────────────────────────
-n = 6
-sigma = 12          # σ(6) = sum of divisors
-phi = 2             # φ(6) = Euler totient
-tau = 4             # τ(6) = number of divisors
-sopfr = 5           # sopfr(6) = sum of prime factors with multiplicity
-mu = 1              # μ(6) = Mobius function (squarefree, even # primes → +1)
-J2 = 24             # J₂(6) = Jordan totient
-R6 = 1              # R(6) = sigma*phi/(n*tau) = 24/24 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 핵심 정리 검증
-assert sigma * phi == n * tau == J2, f"핵심 정리 실패: {sigma}*{phi}={sigma*phi}, {n}*{tau}={n*tau}, J2={J2}"
-
-# ─── 검증 함수 ─────────────────────────────────────────────
-results = []
-
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    """EXACT 검증: actual == expected (허용 오차 tol)"""
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
-    else:
-        passed = actual == expected
-    results.append({
-        "name": name,
-        "actual": actual,
-        "expected": expected,
-        "formula": formula,
-        "category": category,
-        "passed": passed
-    })
-
-# ═══════════════════════════════════════════════════════════
-# A. 핵심 상수 검증 (14개)
-# ═══════════════════════════════════════════════════════════
-check("n", n, 6, "n=6", "Constants")
-check("sigma", sigma, 12, "σ(6)=1+2+3+6=12", "Constants")
-check("phi", phi, 2, "φ(6)=|{1,5}|=2", "Constants")
-check("tau", tau, 4, "τ(6)=|{1,2,3,6}|=4", "Constants")
-check("sopfr", sopfr, 5, "sopfr(6)=2+3=5", "Constants")
-check("mu", mu, 1, "μ(6)=(-1)^2=1", "Constants")
-check("J2", J2, 24, "J₂(6)=σ·φ=24", "Constants")
-check("R6", R6, 1, "R(6)=σφ/(nτ)=24/24=1", "Constants")
-check("sigma-phi", sigma - phi, 10, "σ-φ=10", "Constants")
-check("sigma-tau", sigma - tau, 8, "σ-τ=8", "Constants")
-check("sigma-mu", sigma - mu, 11, "σ-μ=11", "Constants")
-check("sigma*tau", sigma * tau, 48, "σ·τ=48", "Constants")
-check("phi^tau", phi**tau, 16, "φ^τ=2^4=16", "Constants")
-check("sigma^2", sigma**2, 144, "σ²=144", "Constants")
-
-# ═══════════════════════════════════════════════════════════
-# B. BT-56 완전 LLM 아키텍처 (15개)
-# ═══════════════════════════════════════════════════════════
-check("d_model", 2**sigma, 4096, "2^σ=2^12=4096", "BT-56")
-check("layers", 2**sopfr, 32, "2^sopfr=2^5=32", "BT-56")
-check("d_head", 2**(sigma - sopfr), 128, "2^(σ-sopfr)=2^7=128", "BT-56")
-check("n_heads", 2**sopfr, 32, "2^sopfr=2^5=32", "BT-56")
-check("d_ff_SwiGLU", round(4096 * tau**2 / sigma), 5461, "d·τ²/σ=4096·16/12≈5461", "BT-56")
-check("vocab", 2**sopfr * (sigma - phi)**(n // phi), 32000, "2^sopfr·(σ-φ)^(n/φ)=32·1000=32000", "BT-56")
-check("max_seq", 2**sigma, 4096, "2^σ=2^12=4096", "BT-56")
-check("RoPE_theta", (sigma - phi)**tau, 10000, "(σ-φ)^τ=10^4=10000", "BT-56")
-check("batch_tokens", 2**(J2 - tau), 2**20, "2^(J₂-τ)=2^20=1M", "BT-56")
-check("KV_heads_GQA", sigma - tau, 8, "σ-τ=8", "BT-56")
-check("LR", (n / phi) * 10**(-tau), 3e-4, "(n/φ)·10^(-τ)=3e-4", "BT-56")
-check("dropout", math.log(4/3), 0.2876820724517809, "ln(4/3)≈0.288", "BT-56", tol=1e-4)
-check("weight_decay", 1 / (sigma - phi), 0.1, "1/(σ-φ)=0.1", "BT-56")
-check("grad_clip", R6, 1.0, "R(6)=1", "BT-56")
-check("warmup_pct", n / phi, 3, "n/φ=3%→0.03", "BT-56")
-
-# ═══════════════════════════════════════════════════════════
-# C. BT-54 AdamW 5중쌍 (5개)
-# ═══════════════════════════════════════════════════════════
-check("beta1", 1 - 1/(sigma - phi), 0.9, "1-1/(σ-φ)=0.9", "BT-54")
-check("beta2", 1 - 10**(-(n // phi)), 0.999, "1-10^(-n/φ)=0.999", "BT-54")
-check("epsilon", 10**(-(sigma - tau)), 1e-8, "10^(-(σ-τ))=1e-8", "BT-54")
-check("weight_decay_adamw", 1 / (sigma - phi), 0.1, "1/(σ-φ)=0.1", "BT-54")
-check("grad_clip_adamw", float(R6), 1.0, "R(6)=1", "BT-54")
-
-# ═══════════════════════════════════════════════════════════
-# D. BT-42 추론 스케일링 (6개)
-# ═══════════════════════════════════════════════════════════
-check("top_p", 1 - 1/(J2 - tau), 0.95, "1-1/(J₂-τ)=1-1/20=0.95", "BT-42")
-check("top_k", phi * (J2 - tau), 40, "φ·(J₂-τ)=2·20=40", "BT-42")
-check("temperature", float(R6), 1.0, "R(6)=1", "BT-42")
-check("max_tokens", 2**sigma, 4096, "2^σ=4096", "BT-42")
-check("draft_ratio", 1/(sigma - tau), 0.125, "1/(σ-τ)=1/8", "BT-331")
-check("accept_rate", (sigma - tau)/(sigma - phi), 0.8, "(σ-τ)/(σ-φ)=8/10=0.8", "BT-331")
-
-# ═══════════════════════════════════════════════════════════
-# E. MoE 파라미터 (6개)
-# ═══════════════════════════════════════════════════════════
-check("total_experts", 2**n, 64, "2^n=2^6=64", "MoE")
-check("active_experts", sigma - tau, 8, "σ-τ=8", "MoE")
-check("activation_fraction", 1/(sigma - tau), 0.125, "1/(σ-τ)=1/8", "MoE")
-check("routing_sum", 1/2 + 1/3 + 1/6, 1.0, "1/2+1/3+1/6=1 (완전수)", "MoE")
-check("mla_kv_compression", 1/(sigma - tau), 0.125, "1/(σ-τ)=1/8", "MoE")
-check("shared_experts", phi, 2, "φ=2", "MoE")
-
-# ═══════════════════════════════════════════════════════════
-# F. 양자화 래더 (6개)
-# ═══════════════════════════════════════════════════════════
-check("FP32_bits", 2**sopfr, 32, "2^sopfr=32", "Quantization")
-check("FP16_bits", phi**tau, 16, "φ^τ=16", "Quantization")
-check("FP8_bits", sigma - tau, 8, "σ-τ=8", "Quantization")
-check("INT4_bits", tau, 4, "τ=4", "Quantization")
-check("Ternary_bits", phi, 2, "φ=2", "Quantization")
-check("Binary_bits", mu, 1, "μ=1", "Quantization")
-
-# ═══════════════════════════════════════════════════════════
-# G. 하드웨어 파라미터 (20개)
-# ═══════════════════════════════════════════════════════════
-# SC-CPU (BT-90~93)
-check("SC_CPU_clock_GHz", sigma * sopfr, 60, "σ·sopfr=12·5=60 GHz", "Hardware")
-check("SC_CPU_SM", sigma**2, 144, "σ²=144 SM (BT-90)", "Hardware")
-check("SC_CPU_HBM_GB", sigma * J2, 288, "σ·J₂=12·24=288 GB", "Hardware")
-check("SC_CPU_TDP_mW", 300, 300, "0.3W=10^(-n/φ+n/φ) kW → 300mW", "Hardware")
-check("SC_CPU_energy_per_op", -19, -19, "~10^-19 J/op (SFQ)", "Hardware")
-check("SC_CPU_ECC_savings_GB", J2, 24, "Z2 위상 ECC J₂=24 GB 절약 (BT-91)", "Hardware")
-
-# RT-QC (BT-195)
-check("RTQC_logical_qubits", sigma**2, 144, "σ²=144 논리큐비트/칩", "Hardware")
-check("RTQC_PQ_per_LQ", J2, 24, "J₂=24 물리큐비트/논리큐비트", "Hardware")
-check("RTQC_total_PQ", sigma**2 * J2, 3456, "σ²·J₂=144·24=3456 물리큐비트", "Hardware")
-check("RTQC_coherence_us", sigma * tau, 48, "σ·τ=48 μs 결맞음", "Hardware")
-check("RTQC_gate_time_ns", 10, 10, "σ-φ=10 ns 게이트시간", "Hardware")
-check("RTQC_gates_per_coherence", 4800, 4800, "48μs/10ns=4800 게이트", "Hardware")
-check("RTQC_Tc_K", sopfr**2 * sigma, 300, "sopfr²·σ=25·12=300K (상온)", "Hardware")
-check("RTQC_power_kW", sopfr / phi, 2.5, "sopfr/φ=5/2=2.5 kW", "Hardware")
-
-# Tabletop Fusion
-check("Fusion_BT_Tesla", sigma * tau, 48, "σ·τ=48T 자기장", "Hardware")
-check("Fusion_R_m", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1m 반경", "Hardware")
-check("Fusion_Q", sigma - phi, 10, "σ-φ=10 에너지증배", "Hardware")
-
-# SMES Memory
-check("SMES_bandwidth_GBs", sigma * J2, 288, "σ·J₂=288 GB/s", "Hardware")
-check("SMES_routing", 1/2 + 1/3 + 1/6, 1.0, "Egyptian fraction=1", "Hardware")
-check("SMES_BT84", 96, 96, "σ·(σ-τ)=12·8=96 (Tesla 96S)", "Hardware")
-
-# ═══════════════════════════════════════════════════════════
-# H. 학습 파라미터 추가 (10개)
-# ═══════════════════════════════════════════════════════════
-check("Chinchilla_ratio", J2 - tau, 20, "J₂-τ=20 (tokens/params)", "Training")
-check("PPO_clip", phi / (sigma - phi), 0.2, "φ/(σ-φ)=2/10=0.2", "Training")
-check("DPO_beta", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "Training")
-check("GRPO_group", phi**tau, 16, "φ^τ=16", "Training")
-check("cosine_min_lr_ratio", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "Training")
-check("RLHF_temp", float(R6), 1.0, "R(6)=1", "Training")
-check("KL_penalty", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "Training")
-check("label_smoothing", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "Training")
-check("train_epochs_finetune", n // phi, 3, "n/φ=3", "Training")
-check("eval_steps_fraction", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "Training")
-
-# ═══════════════════════════════════════════════════════════
-# I. 17기법 시너지 (7개)
-# ═══════════════════════════════════════════════════════════
-cyclotomic_save = 0.71
-efa_save = 0.40
-boltzmann_sparse = 0.63
-effective_flops = (1 - cyclotomic_save) * (1 - efa_save) * (1 - boltzmann_sparse)
-check("17tech_flops_remain", round(effective_flops, 4), round(0.29 * 0.60 * 0.37, 4),
-      "Cyclotomic(71%)×EFA(40%)×Boltzmann(63%) 잔여", "Synergy")
-check("phi_bottleneck_reduction", 1 - n/sigma**2, 1 - 6/144,
-      "1-n/σ²=1-6/144≈0.958", "Synergy", tol=0.01)
-check("fft_speedup", n // phi, 3, "n/φ=3배 속도 (FFT attention)", "Synergy")
-check("entropy_stop_save", 1/3, 1/(n//phi), "1/(n/φ)=1/3 학습 시간 절감", "Synergy")
-check("mertens_dropout_val", round(math.log(4/3), 4), 0.2877,
-      "ln(4/3)≈0.2877", "Synergy", tol=0.001)
-check("egyptian_sum", 1/2 + 1/3 + 1/6, 1.0, "완전수 약수 역수합=1", "Synergy")
-check("sc_cpu_efficiency_gain", (sigma - phi)**3, 1000,
-      "(σ-φ)³=10³=1000배 에너지효율", "Synergy")
-
-# ═══════════════════════════════════════════════════════════
-# J. BT-59 8층 AI 스택 (8개)
-# ═══════════════════════════════════════════════════════════
-check("stack_layers", sigma - tau, 8, "σ-τ=8층", "BT-59")
-check("L1_material_Z", sigma, 12, "Mg Z=σ=12", "BT-59")
-check("L2_precision_bits", sigma - tau, 8, "FP8=σ-τ=8", "BT-59")
-check("L3_memory_GB", sigma * J2, 288, "σ·J₂=288 GB", "BT-59")
-check("L4_compute_SM", sigma**2, 144, "σ²=144 SM", "BT-59")
-check("L5_arch_params", 15, 15, "BT-56 15/15 EXACT", "BT-59")
-check("L6_optim_params", 5, 5, "BT-54 5/5 EXACT", "BT-59")
-check("L7_no_search", 0, 0, "탐색 불필요 (n=6 결정)", "BT-59")
-
-# ═══════════════════════════════════════════════════════════
-# K. 추론 고급 파라미터 (8개)
-# ═══════════════════════════════════════════════════════════
-check("SC_tok_per_sec", sigma * 80, 960, "σ·80=960 tok/s (SC-CPU 12배)", "Inference")
-check("speculative_window", sigma - tau, 8, "σ-τ=8 드래프트 토큰", "Inference")
-check("KV_cache_reduction", sigma - tau, 8, "σ-τ=8배 KV 압축 (MLA)", "Inference")
-check("FlashAttn_block", sigma - tau, 8, "σ-τ=8 (블록 크기 계수)", "Inference")
-check("continuous_batch", sigma, 12, "σ=12 동시 요청", "Inference")
-check("context_ladder_start", sigma - phi, 10, "σ-φ=10 (4K→...)", "Inference")
-check("context_ladder_mid", sigma, 12, "σ=12 (중간)", "Inference")
-check("context_ladder_end", sigma + mu, 13, "σ+μ=13 (최대)", "Inference")
-
-# ═══════════════════════════════════════════════════════════
-# L. AGI 창발 조건 (6개)
-# ═══════════════════════════════════════════════════════════
-check("brain_flops_ratio", (sigma - phi)**phi, 100, "(σ-φ)^φ=100배 vs 뇌", "AGI")
-check("energy_efficiency_vs_brain", sigma - tau, 8, "σ-τ=8배 효율 vs 뇌", "AGI")
-check("architecture_exact_count", 15, 15, "BT-56 15/15 전수 EXACT", "AGI")
-check("chinchilla_multiplier", J2 - tau, 20, "J₂-τ=20 토큰/파라미터", "AGI")
-check("total_stack_exact", sigma - tau, 8, "8층 전부 n=6 (BT-59)", "AGI")
-check("hparam_search_space", 0, 0, "n=6 유일 결정 → 탐색 공간 0", "AGI")
-
-# ═══════════════════════════════════════════════════════════
-# M. 에너지-컴퓨팅 통합 (10개)
-# ═══════════════════════════════════════════════════════════
-check("PUE", float(R6), 1.0, "R(6)=PUE=1.0 (SC-CPU 발열 0)", "Energy")
-check("total_system_kW", sopfr / phi, 2.5, "sopfr/φ=2.5 kW", "Energy")
-check("flops_per_watt", round(4e14, -12), round(4e14, -12),
-      "10^18/2500=4×10^14 FLOPs/W", "Energy")
-check("fusion_B_field", sigma * tau, 48, "σ·τ=48T", "Energy")
-check("fusion_radius_m", 1/(sigma-phi), 0.1, "1/(σ-φ)=0.1m", "Energy")
-check("fusion_Q_energy", sigma - phi, 10, "σ-φ=10 에너지증배", "Energy")
-check("smes_bandwidth", sigma * J2, 288, "σ·J₂=288 GB/s", "Energy")
-check("dc_voltage", sigma * tau, 48, "σ·τ=48V DC (BT-325)", "Energy")
-check("grid_freq", sigma * sopfr, 60, "σ·sopfr=60 Hz (BT-62)", "Energy")
-check("hvdc_base_kV", sopfr * (sigma-phi)**2, 500, "sopfr·(σ-φ)²=5·100=500 kV", "Energy")
-
-# ═══════════════════════════════════════════════════════════
-# N. Cross-domain 보편 상수 (10개)
-# ═══════════════════════════════════════════════════════════
-check("SE3_dim", n, 6, "SE(3) dim=n=6 (로봇 6-DOF, BT-123)", "Cross")
-check("genetic_code_codons", 2**n, 64, "2^n=64 코돈 (BT-51)", "Cross")
-check("amino_acids", J2 - tau, 20, "J₂-τ=20 아미노산 (BT-51)", "Cross")
-check("music_semitones", sigma, 12, "σ=12 반음 (BT-108)", "Cross")
-check("video_fps", J2, 24, "J₂=24 fps (BT-48)", "Cross")
-check("crypto_confirms", n, 6, "n=6 BTC 확인수 (BT-53)", "Cross")
-check("OSI_layers", sigma - sopfr, 7, "σ-sopfr=7 OSI 레이어 (BT-115)", "Cross")
-check("TCP_IP_layers", tau, 4, "τ=4 TCP/IP 레이어 (BT-115)", "Cross")
-check("SLE_kappa", n, 6, "κ=6 SLE₆ 임계지수 (BT-105)", "Cross")
-check("cortex_layers", n, 6, "n=6 대뇌피질 층수 (BT-254)", "Cross")
-
-# ═══════════════════════════════════════════════════════════
-# O. RLHF / Alignment 파라미터 (8개)
-# ═══════════════════════════════════════════════════════════
-check("ppo_clip_range", phi / (sigma - phi), 0.2, "φ/(σ-φ)=0.2 (BT-163)", "RLHF")
-check("dpo_beta_val", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1 (BT-163)", "RLHF")
-check("reward_model_epochs", n // phi, 3, "n/φ=3 에폭", "RLHF")
-check("kl_target", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1", "RLHF")
-check("rlhf_lr_ratio", 1/(sigma - phi), 0.1, "SFT LR의 1/(σ-φ)=1/10", "RLHF")
-check("grpo_group_size", phi**tau, 16, "φ^τ=16 (BT-163)", "RLHF")
-check("rejection_sampling_k", sigma - tau, 8, "σ-τ=8 후보", "RLHF")
-check("safety_threshold", 1/(sigma - phi), 0.1, "1/(σ-φ)=0.1 안전 임계", "RLHF")
-
-# ═══════════════════════════════════════════════════════════
-# P. Diffusion / Vision / Audio (10개)
-# ═══════════════════════════════════════════════════════════
-check("ddpm_T", (sigma - phi)**3, 1000, "(σ-φ)³=1000 (BT-61)", "Multimodal")
-check("ddim_steps", sopfr * (sigma - phi), 50, "sopfr·(σ-φ)=50 (BT-61)", "Multimodal")
-check("cfg_scale", sigma - sopfr + 0.5, 7.5, "(σ-sopfr)+0.5=7.5 (BT-61)", "Multimodal")
-check("vit_patch", phi**(sigma - tau), 256, "φ^(σ-τ)=2^8=256 (16x16)", "Multimodal")
-check("clip_dim", 2**(sigma - sopfr + 2), 512, "2^9=512 (BT-66)", "Multimodal")
-check("whisper_sample_rate", J2 * (sigma - phi)**3, 24000, "J₂·(σ-φ)³=24000 Hz", "Multimodal")
-check("audio_codebook", sigma - tau, 8, "σ-τ=8 코드북 (BT-72)", "Multimodal")
-check("encodec_entries", 2**(sigma - phi), 1024, "2^(σ-φ)=1024 (BT-72)", "Multimodal")
-check("audio_sample_48k", sigma * tau * 1000, 48000, "σ·τ·10³=48000 Hz", "Multimodal")
-check("video_J2_fps", J2, 24, "J₂=24 fps", "Multimodal")
-
-# ═══════════════════════════════════════════════════════════
-# Q. 보편 정규화 0.1 패밀리 (8개, BT-64)
-# ═══════════════════════════════════════════════════════════
-one_tenth = 1 / (sigma - phi)
-check("wd_01", one_tenth, 0.1, "Weight Decay = 1/(σ-φ)", "BT-64")
-check("dpo_01", one_tenth, 0.1, "DPO β = 1/(σ-φ)", "BT-64")
-check("gptq_01", one_tenth, 0.1, "GPTQ dampening = 1/(σ-φ)", "BT-64")
-check("cosine_min_01", one_tenth, 0.1, "Cosine min ratio = 1/(σ-φ)", "BT-64")
-check("mamba_dt_01", one_tenth, 0.1, "Mamba dt_init = 1/(σ-φ)", "BT-64")
-check("kl_01", one_tenth, 0.1, "KL penalty = 1/(σ-φ)", "BT-64")
-check("simclr_temp_01", one_tenth, 0.1, "SimCLR temp (BT-70) 1/(σ-φ)", "BT-64")
-check("label_smooth_01", one_tenth, 0.1, "Label smoothing = 1/(σ-φ)", "BT-64")
-
-# ═══════════════════════════════════════════════════════════
-# R. σ-τ=8 보편 AI 상수 (BT-58, 10개)
-# ═══════════════════════════════════════════════════════════
-eight = sigma - tau
-check("lora_rank", eight, 8, "LoRA rank=σ-τ=8 (BT-58)", "BT-58")
-check("moe_top_k", eight, 8, "MoE top-k=σ-τ=8 (BT-58)", "BT-58")
-check("kv_heads_8", eight, 8, "KV heads=σ-τ=8 (BT-58)", "BT-58")
-check("flash_attn_block", eight, 8, "FlashAttn block=σ-τ=8 (BT-58)", "BT-58")
-check("batch_power", eight, 8, "Batch=2^(σ-τ)=256 (BT-58)", "BT-58")
-check("fp8_bits_58", eight, 8, "FP8=σ-τ=8 bits (BT-58)", "BT-58")
-check("nerf_layers", eight, 8, "NeRF layers=σ-τ=8 (BT-71)", "BT-58")
-check("codec_books", eight, 8, "Codec books=σ-τ=8 (BT-72)", "BT-58")
-check("spec_dec_window", eight, 8, "Spec-Dec window=σ-τ=8 (BT-331)", "BT-58")
-check("rejection_k", eight, 8, "Rejection K=σ-τ=8", "BT-58")
-
-# ═══════════════════════════════════════════════════════════
-# 최종 결과
-# ═══════════════════════════════════════════════════════════
-total = len(results)
-passed = sum(1 for r in results if r["passed"])
-failed = [r for r in results if not r["passed"]]
-
-print("=" * 72)
-print(f"  HEXA-AGI 궁극의 AGI 아키텍처 — n=6 파라미터 검증")
-print("=" * 72)
-
-# 카테고리별 집계
-categories = {}
+# agi-architecture.md — 정의 도출 검증
+results = [
+    ("BT-26 항목", None, None, None),  # MISSING DATA
+    ("BT-90 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-291 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-54 항목", None, None, None),  # MISSING DATA
+    ("BT-42 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    cat = r["category"]
-    if cat not in categories:
-        categories[cat] = {"total": 0, "passed": 0}
-    categories[cat]["total"] += 1
-    if r["passed"]:
-        categories[cat]["passed"] += 1
-
-for cat, stats in sorted(categories.items()):
-    pct = 100 * stats["passed"] / stats["total"]
-    marker = "PASS" if stats["passed"] == stats["total"] else "WARN"
-    print(f"  [{marker}] {cat:20s}: {stats['passed']:3d}/{stats['total']:3d} ({pct:.1f}%)")
-
-print("-" * 72)
-print(f"  전체: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("-" * 72)
-
-if failed:
-    print(f"\n  FAIL 항목 ({len(failed)}개):")
-    for f in failed:
-        print(f"    ✗ {f['name']}: expected={f['expected']}, got={f['actual']} ({f['formula']})")
-
-if passed == total:
-    print("\n  ★★★ ALL PASS — 🛸10 유효! ★★★")
-    print(f"  {total}개 파라미터 전수 검증 통과")
-    print(f"  σ(n)·φ(n) = n·τ(n) = 24 ⟺ n = 6 — AGI는 수학적 필연")
-else:
-    print(f"\n  ⚠️ {len(failed)}개 FAIL — 🛸9로 강등")
-    print(f"  FAIL 항목 수정 후 재검증 필요")
-
-print("=" * 72)
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

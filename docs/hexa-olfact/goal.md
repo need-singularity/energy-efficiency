@@ -522,216 +522,58 @@ VOC 배출 < σ-φ=10 ppb(EPA 기준 이하), 알레르겐 HEPA 필터 1-1/e=63%
 ## 12. Python 검증 코드 (🛸10 필수, 인라인)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-OLFACT 디지털 후각 — n=6 파라미터 전수 검증 (특이점 돌파판)
-================================================================
-133개 EXACT 파라미터를 수학적으로 재현.
-판정: ALL PASS → 🛸10 CERTIFIED, ANY FAIL → 🛸9 강등
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2, R6 = 6, 12, 2, 4, 5, 1, 24, 1
-assert sigma*phi == n*tau == J2
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-51 항목", None, None, None),  # MISSING DATA
+    ("BT-141 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-152 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-194 항목", None, None, None),  # MISSING DATA
+    ("BT-136 항목", None, None, None),  # MISSING DATA
+    ("BT-146 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# ═══ A. 핵심 상수 (7) ═══
-check("n", n, 6, "n=6", "Core")
-check("sigma", sigma, 12, "σ=12", "Core")
-check("phi", phi, 2, "φ=2", "Core")
-check("tau", tau, 4, "τ=4", "Core")
-check("sopfr", sopfr, 5, "sopfr=5", "Core")
-check("mu", mu, 1, "μ=1", "Core")
-check("J2", J2, 24, "J₂=24", "Core")
-
-# ═══ B. 수용체 (7) ═══
-check("receptors",         sigma,          12,     "σ=12 기본 수용체",          "Receptor")
-check("sensor_array",      sigma*(sigma-phi), 120, "σ·(σ-φ)=120 센서 총수",    "Receptor")
-check("cross_matrix",      sigma**2,       144,    "σ²=144 교차반응 행렬",     "Receptor")
-check("pca_dims",          sigma-phi,      10,     "σ-φ=10 독립차원(PCA)",     "Receptor")
-check("sensitivity_ppb",   mu,             1,      "μ=1 ppb 감도",             "Receptor")
-check("patterns",          2**sigma,       4096,   "2^σ=4096 냄새 패턴",       "Receptor")
-check("odor_groups",       sigma-tau,      8,      "σ-τ=8 기본 향군",          "Receptor")
-
-# ═══ C. 분석기 (6) ═══
-check("ai_layers",         sigma,          12,     "σ=12층 Transformer",       "Analyzer")
-check("classes",           2**sigma,       4096,   "2^σ=4096 분류 클래스",     "Analyzer")
-check("train_samples",     10**n,          1000000,"10^n=10⁶ 학습 데이터",     "Analyzer")
-check("accuracy_pct",      1-1/(sigma-phi),0.9,    "1-1/(σ-φ)=90% 정확도",    "Analyzer", tol=0.01)
-check("inference_ms",      tau,            4,      "τ=4 ms 추론",             "Analyzer")
-check("input_dim",         sigma,          12,     "σ=12차원 향벡터",          "Analyzer")
-
-# ═══ D. 생성기 (6) ═══
-check("cartridges",        sigma,          12,     "σ=12 기본향 카트리지",     "Generator")
-check("volume_mL",         tau,            4,      "τ=4 mL/카트리지",          "Generator")
-check("valve_ms",          mu,             1,      "μ=1 ms 밸브 전환",         "Generator")
-check("combos",            2**sigma,       4096,   "2^σ=4096 혼합 조합",      "Generator")
-check("lifetime_days",     sigma*sopfr,    60,     "σ·sopfr=60일 수명",       "Generator")
-check("dispense_s",        tau,            4,      "τ=4초 분사→감지",          "Generator")
-
-# ═══ E. 전송 (5) ═══
-check("code_bits",         J2,             24,     "J₂=24-bit 향코드",        "Transmit")
-check("packet_bytes",      n*tau,          24,     "n·τ=24 byte 패킷",        "Transmit")
-check("ble_GHz",           sopfr,          5,      "sopfr=5 GHz BLE",         "Transmit")
-check("bandwidth_Mbps",    J2,             24,     "J₂=24 Mbps",              "Transmit")
-check("tx_latency_ms",     mu,             1,      "μ=1 ms 전송 지연",        "Transmit")
-
-# ═══ F. 안전 (5) ═══
-check("voc_limit_ppb",     sigma-phi,      10,     "σ-φ=10 ppb VOC 한계",     "Safety")
-check("child_hold_s",      tau,            4,      "τ=4초 아동 잠금",          "Safety")
-check("auto_off_min",      sigma*sopfr,    60,     "σ·sopfr=60분 자동꺼짐",   "Safety")
-check("ventilation_Lm",    n,              6,      "n=6 L/min 환기",          "Safety")
-check("safety_grade",      n,              6,      "n=6 안전 등급",            "Safety")
-
-# ═══ G. 물리/에너지 (5) ═══
-check("sensor_mW",         sigma,          12,     "σ=12 mW 센서 전력",       "Power")
-check("gen_mW",            sigma*sopfr,    60,     "σ·sopfr=60 mW 생성기",    "Power")
-check("ai_mW",             sigma,          12,     "σ=12 mW AI 전력",         "Power")
-check("flow_mL_s",         tau,            4,      "τ=4 mL/s 기류 유량",      "Power")
-check("library_MB",        sigma**2,       144,    "σ²=144 MB 향 라이브러리",  "Power")
-
-# ═══ H. 응용 (5) ═══
-check("diseases",          sigma,          12,     "σ=12종 질병 진단",         "App")
-check("food_gases",        sigma-tau,      8,      "σ-τ=8종 부패 가스",       "App")
-check("diagnosis_s",       tau,            4,      "τ=4초 진단 응답",          "App")
-check("operation_h",       J2,             24,     "J₂=24시간 연속 구동",      "App")
-check("price_usd",         sigma*sopfr,    60,     "σ·sopfr=60달러",          "App")
-
-# ═══ I. 후각 신경과학 — 수용체 생물학 (12) ═══
-check("OR_pseudogene",     sigma*sopfr*(sigma-phi), 600, "σ·sopfr·(σ-φ)=600 의사유전자", "Neuro-Bio")
-check("OR_family_total",   (sigma-phi)**3, 1000,   "(σ-φ)³=1000 전체 OR 패밀리", "Neuro-Bio")
-check("glomeruli",         phi*(sigma-phi)**3, 2000,"φ·(σ-φ)³=2000 사구체",   "Neuro-Bio")
-check("OSN_count",         10**(sigma-sopfr), 10**7,"10^(σ-sopfr)=10⁷ OSN",   "Neuro-Bio")
-check("receptor_per_neuron", mu,           1,      "μ=1 수용체/뉴런 규칙",     "Neuro-Bio")
-check("epithelium_cm2",    sigma-phi,      10,     "σ-φ=10 cm² 후각상피",     "Neuro-Bio")
-check("cilia_per_neuron",  sigma,          12,     "σ=12 섬모/뉴런",          "Neuro-Bio")
-check("mol_carbon_max",    J2-tau,         20,     "J₂-τ=20 최대 탄소수",     "Neuro-Bio")
-check("signal_time_ms",    tau,            4,      "τ=4 ms 섬모→축삭 신호",   "Neuro-Bio")
-check("convergence_ratio", (sigma-phi)**3//phi, 500,"(σ-φ)³/φ=500 수렴비",    "Neuro-Bio")
-check("mol_weight_max",    sigma*J2,       288,    "σ·J₂=288 Da 분자량 상한", "Neuro-Bio")
-check("mol_carbon_min",    n//phi,         3,      "n/φ=3 최소 탄소수",       "Neuro-Bio")
-
-# ═══ J. 후각 피질 계층 (10) ═══
-check("OB_layers",         n,              6,      "n=6 후각망울 층수",        "Neuro-Cortex")
-check("cortex_regions",    n,              6,      "n=6 후각피질 영역",        "Neuro-Cortex")
-check("synapse_hops",      n//phi,         3,      "n/φ=3 시냅스 경유",       "Neuro-Cortex")
-check("nerve_mm",          mu,             1,      "μ=1 mm 후각신경 두께",    "Neuro-Cortex")
-check("mitral_per_glom",   sigma-phi,      10,     "σ-φ=10 승모세포/사구체",  "Neuro-Cortex")
-check("gamma_Hz",          sigma*tau,      48,     "σ·τ=48 Hz γ진동",        "Neuro-Cortex")
-check("min_sniff",         mu,             1,      "μ=1 스니프 최소 노출",    "Neuro-Cortex")
-check("sniff_Hz",          phi,            2,      "φ=2 Hz 스니프 주기",      "Neuro-Cortex")
-check("odor_STM",          sigma-tau,      8,      "σ-τ=8 냄새 단기기억",     "Neuro-Cortex")
-check("adaptation_s",      sigma*sopfr,    60,     "σ·sopfr=60초 순응시간",   "Neuro-Cortex")
-
-# ═══ K. Weber-Fechner 심리물리학 (8) ═══
-check("weber_ratio",       1/(n//phi),     1/3,    "1/(n/φ)=1/3 Weber 비율",  "Psycho", tol=0.01)
-check("intensity_scale",   n,              6,      "n=6 감각강도 단계",        "Psycho")
-check("threshold_decades",sigma-tau,       8,      "σ-τ=8 역치 자릿수 범위",  "Psycho")
-check("senses",            sopfr,          5,      "sopfr=5 오감",            "Psycho")
-check("flavor_ratio_olf",  sigma-tau,      8,      "σ-τ=8 풍미 중 후각 80%",  "Psycho")
-check("proust_factor",     sigma//phi,     6,      "σ/φ=6배 냄새-기억 강도",  "Psycho")
-check("expert_distinguish",sigma**2*(sigma-phi), 1440, "σ²·(σ-φ)=1440 전문가 구별", "Psycho")
-check("general_distinguish",sigma**2*phi**2, 576,  "σ²·φ²=576 일반인 구별",   "Psycho")
-
-# ═══ L. 냄새 분자 화학 (12) ═══
-check("functional_groups", sigma,          12,     "σ=12 관능기 종류",        "Chemistry")
-check("vibration_clusters",sigma-tau,      8,      "σ-τ=8 진동모드 클러스터",  "Chemistry")
-check("amino_acids",       J2-tau,         20,     "J₂-τ=20 아미노산",       "Chemistry")
-check("TM_domains",        sigma-sopfr,    7,      "σ-sopfr=7 TM 도메인",    "Chemistry")
-check("DRY_motif",         n//phi,         3,      "n/φ=3 GPCR 보존잔기",    "Chemistry")
-check("VOC_classes",       sigma-phi,      10,     "σ-φ=10 WHO VOC 분류",    "Chemistry")
-check("coffee_compounds",  sigma**2*sopfr, 720,    "σ²·sopfr=720 커피 향미",  "Chemistry")
-check("oil_compounds",     sigma*(sigma-phi), 120, "σ·(σ-φ)=120 에센셜오일",  "Chemistry")
-check("perfume_notes",     n//phi,         3,      "n/φ=3 향수 노트 분류",    "Chemistry")
-check("carbon_Z",          n,              6,      "n=6 탄소 원자번호",       "Chemistry")
-check("benzene_C",         n,              6,      "n=6 벤젠 고리 탄소",      "Chemistry")
-check("perfume_ratio_top", tau,            4,      "τ=4시간 탑노트",          "Chemistry")
-
-# ═══ M. 캘리브레이션 (6) ═══
-check("ref_odorants",      sigma,          12,     "σ=12 표준향 물질",        "Calibration")
-check("cal_points",        sopfr,          5,      "sopfr=5점 표준곡선",      "Calibration")
-check("cal_period_h",      J2,             24,     "J₂=24시간 캘 주기",       "Calibration")
-check("temp_center_C",     sigma*n//phi,   36,     "σ·n/φ=36°C 기준온도",    "Calibration")
-check("temp_range_C",      sigma-phi,      10,     "σ-φ=10°C 온도 보정범위",  "Calibration")
-check("cal_conc_levels",   tau,            4,      "τ=4 농도레벨 캘포인트",   "Calibration")
-
-# ═══ N. 신호 처리 (10) ═══
-check("adc_bits",          sigma-phi,      10,     "σ-φ=10 bit ADC",         "Signal")
-check("sample_kHz",        tau,            4,      "τ=4 kHz 샘플링",         "Signal")
-check("filter_order",      n,              6,      "n=6차 Butterworth",       "Signal")
-check("fft_window",        sigma*J2,       288,    "σ·J₂=288 FFT 윈도우",    "Signal")
-check("pca_components",    sigma-phi,      10,     "σ-φ=10 PCA 성분",        "Signal")
-check("data_bus_bits",     sigma,          12,     "σ=12 bit 데이터 버스",    "Signal")
-check("sn_threshold",      1/(sigma-phi),  0.1,    "1/(σ-φ)=0.1 S/N 임계",   "Signal", tol=0.01)
-check("time_const_s",      phi,            2,      "φ=2초 시정수",            "Signal")
-check("ma_window",         sigma-tau,      8,      "σ-τ=8 이동평균 윈도우",   "Signal")
-check("loop_period_ms",    tau,            4,      "τ=4 ms 보상루프",         "Signal")
-
-# ═══ O. 마이크로유체 공학 (10) ═══
-check("channel_um",        sigma*(sigma-phi), 120, "σ·(σ-φ)=120 μm 채널폭",  "Microfluidic")
-check("depth_um",          sigma*sopfr,    60,     "σ·sopfr=60 μm 채널깊이",  "Microfluidic")
-check("chamber_nL",        n,              6,      "n=6 nL 혼합실",           "Microfluidic")
-check("valve_count",       sigma,          12,     "σ=12 밸브 수",            "Microfluidic")
-check("flow_resolution",   sigma**2,       144,    "σ²=144 유량 단계",        "Microfluidic")
-check("nozzle_um",         sigma-phi,      10,     "σ-φ=10 μm 노즐 직경",    "Microfluidic")
-check("dispense_Hz",       sigma,          12,     "σ=12 Hz 분사 빈도",       "Microfluidic")
-check("egyptian_mix",      1/phi+1/(n//phi)+1/n, 1.0, "1/2+1/3+1/6=1 혼합비", "Microfluidic", tol=0.001)
-check("purge_time_s",      tau,            4,      "τ=4초 퍼지 시간",         "Microfluidic")
-check("evap_temp_min_C",   sigma*n//phi,   36,     "σ·n/φ=36°C 최저기화온도", "Microfluidic")
-
-# ═══ P. 프로토콜/통신 (10) ═══
-check("header_bytes",      n,              6,      "n=6 byte 헤더",           "Protocol")
-check("payload_bits",      J2,             24,     "J₂=24 bit 페이로드",      "Protocol")
-check("crc_order",         sigma-tau,      8,      "σ-τ=8 CRC 다항식 차수",  "Protocol")
-check("protocol_layers",   tau,            4,      "τ=4 프로토콜 계층",       "Protocol")
-check("retransmit_max",    n//phi,         3,      "n/φ=3 최대 재전송",       "Protocol")
-check("qos_levels",        n,              6,      "n=6 QoS 우선순위",        "Protocol")
-check("preamble_bits",     n,              6,      "n=6 bit 프리앰블",        "Protocol")
-check("hamming_n",         sigma-sopfr,    7,      "σ-sopfr=7 Hamming(7,4)",  "Protocol")
-check("file_fields",       sigma,          12,     "σ=12 파일 포맷 필드",     "Protocol")
-check("compress_ratio",    1-1/(n//phi),   2/3,    "1-1/(n/φ)=2/3 압축률",   "Protocol", tol=0.01)
-
-# ═══ Q. 산업 표준/규제 (9) — CLOSE 1건 제외 ═══
-check("iso_panel",         sigma,          12,     "σ=12 ISO 관능 패널",      "Standard")
-check("triangle_test",     n//phi,         3,      "n/φ=3 삼각검사 시료",     "Standard")
-check("epa_voc_groups",    sigma-phi,      10,     "σ-φ=10 EPA VOC군",       "Standard")
-check("who_indoor",        sigma-tau,      8,      "σ-τ=8 WHO 실내공기",     "Standard")
-check("osha_pel_h",        sigma-tau,      8,      "σ-τ=8시간 TWA",          "Standard")
-check("codex_scale",       sopfr,          5,      "sopfr=5점 Codex 척도",   "Standard")
-check("fda_class",         n//phi,         3,      "n/φ=3 FDA 등급",         "Standard")
-check("reach_endpoints",   sigma-phi,      10,     "σ-φ=10 REACH 엔드포인트", "Standard")
-check("ghs_pictograms",    sigma-tau+mu,   9,      "σ-τ+μ=9 GHS 그림문자",   "Standard")
-
-# ═══ 최종 리포트 ═══
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-OLFACT Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
-for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-for cat, (p,t) in sorted(by_cat.items()):
-    print(f"  {cat:16s} {p}/{t}")
-print("="*72)
-for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"[{status}] {r['category']:16s} {r['name']:30s} = {r['actual']}  ({r['formula']})")
-print("="*72)
-if passed == total:
-    print("ALL PASS — 🛸10 CERTIFIED (물리 한계 도달, 특이점 돌파)")
-else:
-    print(f"FAILED: {total-passed} checks → 🛸9 강등")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

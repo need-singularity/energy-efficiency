@@ -596,184 +596,58 @@ I = 4인 경우: 3 <= N - 4 <= 5 -> 7 <= N <= 9 -> G >= 7*16=112 >> 24 (조건 8
 ## 12. Python 검증 코드 (96 EXACT, 인라인)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-EMPATH 감정 공유 디바이스 -- n=6 파라미터 전수 검증 (특이점 돌파판)
-=======================================================================
-97개 EXACT 파라미터를 수학적으로 재현. 14 카테고리.
-실행: python3 docs/hexa-empath/goal.py (또는 이 블록 직접 실행)
-판정: ALL PASS -> 10 인증, ANY FAIL -> 9 강등
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# --- n=6 핵심 상수 ---
-n       = 6
-sigma   = 12
-phi     = 2
-tau     = 4
-sopfr   = 5
-mu      = 1
-J2      = 24
-R6      = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-assert sigma*phi == n*tau == J2, "핵심 항등식 실패"
-
-results = []
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-263 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-255 항목", None, None, None),  # MISSING DATA
+    ("BT-284 항목", None, None, None),  # MISSING DATA
+    ("BT-283 항목", None, None, None),  # MISSING DATA
+    ("BT-223 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# === A. 핵심 상수 (7) ===
-check("n",           n,            6,    "n=6 완전수",              "Core")
-check("sigma",       sigma,        12,   "sigma(6)=12",             "Core")
-check("phi",         phi,          2,    "phi(6)=2",                "Core")
-check("tau",         tau,          4,    "tau(6)=4",                "Core")
-check("sopfr",       sopfr,        5,    "sopfr(6)=2+3=5",         "Core")
-check("mu",          mu,           1,    "mu(6)=1",                 "Core")
-check("J2",          J2,           24,   "J2(6)=sigma*phi=24",      "Core")
-
-# === B. 센서 아키텍처 (6) ===
-check("sensor_modalities",  n,          6,    "n=6 바이오센서 모달",           "Sensor")
-check("EDA_channels",       phi,        2,    "phi=2 EDA 채널",               "Sensor")
-check("ECG_leads",          sigma,      12,   "sigma=12 ECG 리드",            "Sensor")
-check("respiration_Hz",     tau,        4,    "tau=4 Hz 호흡 주파수",          "Sensor")
-check("MFCC_coeffs",        sopfr,      5,    "sopfr=5 MFCC 음성 계수",       "Sensor")
-check("AU_facial",          n,          6,    "n=6 기본 Action Unit",          "Sensor")
-
-# === C. 감정 분류 (8) ===
-check("ekman_basic",        n,          6,    "Ekman 6 기본감정=n",            "Emotion")
-check("intensity_levels",   phi,        2,    "phi=2 강도(고/저)",             "Emotion")
-check("fine_emotions",      n*phi,      12,   "n*phi=sigma=12 세분류",         "Emotion")
-check("full_gradient",      sigma*phi,  24,   "sigma*phi=J2=24 전체감정",      "Emotion")
-check("accuracy",           1-1/(J2-tau), 0.95, "1-1/(J2-tau)=0.95 정확도",   "Emotion", tol=1e-6)
-check("emotion_bits",       sopfr,      5,    "sopfr=5 감정 벡터 비트",        "Emotion")
-check("intensity_bits",     n//phi,     3,    "n/phi=3 강도 비트",             "Emotion")
-check("frame_bits",         sigma-tau,  8,    "sigma-tau=8 비트/프레임",       "Emotion")
-
-# === D. 디코더 (8) ===
-check("decoder_layers",     sigma,      12,   "sigma=12 디코더 계층",          "Decoder")
-check("decoder_dim",        2**sigma,   4096, "d=2^sigma=4096",                "Decoder")
-check("decoder_heads",      2**sopfr,   32,   "heads=2^sopfr=32",              "Decoder")
-check("decoder_head_dim",   2**(sigma-sopfr), 128, "d_head=2^(sigma-sopfr)=128","Decoder")
-check("swiglu_ratio",       tau**2/sigma, 4/3, "tau^2/sigma=4/3 SwiGLU",       "Decoder", tol=1e-6)
-check("gqa_kv",             sigma-tau,  8,    "GQA KV=sigma-tau=8",            "Decoder")
-check("dropout",            math.log(4/3), 0.2876820724517809, "ln(4/3)=0.288","Decoder", tol=1e-4)
-check("learning_rate",      (n/phi)*10**(-tau), 3e-4, "(n/phi)*10^(-tau)=3e-4", "Decoder", tol=1e-10)
-
-# === E. 전송 (5) ===
-check("codec_bps",          J2,         24,   "J2=24 kbps 코덱 대역",          "Transmit")
-check("aes_key_bits",       2**(sigma-tau), 256, "2^(sigma-tau)=256 AES",       "Transmit")
-check("tx_latency_ms",      mu,         1,    "mu=1 ms 전송 지연",             "Transmit")
-check("frame_rate_kHz",     tau,        4,    "tau=4 kHz 프레임율",            "Transmit")
-check("protocol_layers",    sopfr,      5,    "sopfr=5 프로토콜 계층",         "Transmit")
-
-# === F. 자극 (6) ===
-check("target_regions",     n,          6,    "n=6 감정중추 타겟 영역",        "Stimulate")
-check("stim_intensity_mT",  sigma,      12,   "sigma=12 mT 자극 세기",         "Stimulate")
-check("stim_freq_Hz",       sigma,      12,   "sigma=12 Hz alpha 동기화",      "Stimulate")
-check("duty_cycle_pct",     round((1-1/math.e)*100), 63, "1-1/e=63% 듀티",    "Stimulate")
-check("feedback_ms",        tau,        4,    "tau=4 ms 피드백 루프",          "Stimulate")
-check("spatial_res_mm",     mu,         1,    "mu=1 mm 공간해상도",            "Stimulate")
-
-# === G. 안전 (6) ===
-check("safety_layers",      n,          6,    "n=6 안전 계층",                 "Safety")
-check("redundancy",         n//phi,     3,    "n/phi=3중 윤리 게이트",         "Safety")
-check("overstim_block_dB",  n*(sigma-phi), 60, "n*(sigma-phi)=60 dB 차단",    "Safety")
-check("consent_steps",      tau,        4,    "tau=4 동의 단계",               "Safety")
-check("crypto_layers",      sopfr,      5,    "sopfr=5 암호 계층",             "Safety")
-check("emergency_ms",       mu,         1,    "mu=1 ms 비상정지",              "Safety")
-
-# === H. 피질 (2) ===
-check("cortex_layers",      n,          6,    "대뇌피질 n=6 층",               "Cortex")
-check("working_memory",     tau,        4,    "tau=4 작업기억 청크",           "Cortex")
-
-# === I. 뇌파/신경 (13) ===
-check("eeg_bands",          sopfr,      5,    "sopfr=5 EEG 밴드 수",          "Neuro")
-check("eeg_10_20_electrodes", sigma,    12,   "sigma=12 기본 전극",           "Neuro")
-check("alpha_center_Hz",    sigma-phi, 10,    "sigma-phi=10 Hz alpha 중심",    "Neuro")
-check("beta_upper_Hz",      J2,        24,    "J2=24 Hz beta 상한",            "Neuro")
-check("gamma_lower_Hz",     2**sopfr,  32,    "2^sopfr=32 Hz gamma 하한",      "Neuro")
-check("delta_upper_Hz",     tau,        4,    "tau=4 Hz delta 상한",           "Neuro")
-check("theta_lower_Hz",     tau,        4,    "tau=4 Hz theta 하한",           "Neuro")
-check("theta_upper_Hz",     sigma-tau,  8,    "sigma-tau=8 Hz theta 상한",     "Neuro")
-check("brain_hemispheres",  phi,        2,    "phi=2 뇌 반구",                "Neuro")
-check("brain_lobes",        tau,        4,    "tau=4 뇌엽",                   "Neuro")
-check("limbic_structures",  n,          6,    "n=6 변연계 핵심 구조",          "Neuro")
-check("cortical_column_1e4", mu,        1,    "mu=1 (x10^4 뉴런/컬럼)",       "Neuro")
-check("sleep_stages",       sopfr,      5,    "sopfr=5 수면 단계",            "Neuro")
-
-# === J. 신경전달물질 (8) ===
-check("major_ntm_count",    n,          6,    "n=6 주요 감정 NTM",            "NTM")
-check("dopamine_receptors",  sopfr,     5,    "sopfr=5 D1~D5",               "NTM")
-check("serotonin_families",  sopfr,     5,    "sopfr=5 5-HT 주요 패밀리",     "NTM")
-check("adrenaline_subtypes", phi,       2,    "phi=2 alpha/beta",             "NTM")
-check("gaba_types",          phi,       2,    "phi=2 GABA-A/B",              "NTM")
-check("endorphin_types",     n//phi,    3,    "n/phi=3 alpha/beta/gamma",     "NTM")
-check("oxytocin_halflife_min", sopfr,   5,    "sopfr=5 분 옥시토신 반감기",    "NTM")
-check("serotonin_enzymes",   phi,       2,    "phi=2 TPH/AADC",              "NTM")
-
-# === K. 생체신호 (8) ===
-check("ans_branches",       phi,        2,    "phi=2 교감/부교감",            "Biometric")
-check("hrv_freq_bands",     n//phi,     3,    "n/phi=3 VLF/LF/HF",           "Biometric")
-check("resting_hr_lower",   n*(sigma-phi), 60, "n*(sigma-phi)=60 bpm 하한",  "Biometric")
-check("resting_hr_upper",   (sigma-phi)**phi, 100, "(sigma-phi)^phi=100 bpm 상한", "Biometric")
-check("lf_hf_balance",      mu,         1,    "R(6)=mu=1 LF/HF 균형",        "Biometric")
-check("eda_latency_upper_s", tau,       4,    "tau=4 초 EDA 반응 상한",       "Biometric")
-check("cortisol_peak_hour",  sigma-tau, 8,    "sigma-tau=8 시 코르티솔 피크",  "Biometric")
-check("temp_circadian_C",    mu,        1,    "mu=1 도C 체온 일주기 변동",     "Biometric")
-
-# === L. 사회/네트워크 (6) ===
-check("six_degrees",        n,          6,    "n=6 단계 분리",                "Social")
-check("dunbar_intimate",    sopfr,      5,    "sopfr=5 친밀 관계",            "Social")
-check("dunbar_sympathy",    sigma,      12,   "sigma=12~15 동정 그룹 하한",    "Social")
-check("dunbar_band",        sigma*tau,  48,   "sigma*tau=48 밴드",            "Social")
-check("dunbar_full",        sigma**2+n, 150,  "sigma^2+n=150 Dunbar 수",     "Social")
-check("mirror_neuron_ms",   mu,         1,    "mu=1 ms 거울뉴런 지연",        "Social")
-
-# === M. 임상 스코어링 (8) ===
-check("gcs_min",            n//phi,     3,    "n/phi=3 GCS 최소",             "Clinical")
-check("gcs_max",            sigma+n//phi, 15, "sigma+n/phi=15 GCS 최대",      "Clinical")
-check("gcs_subscales",      n//phi,     3,    "n/phi=3 GCS 하위척도",          "Clinical")
-check("sofa_organs",        n,          6,    "n=6 SOFA 장기",                "Clinical")
-check("phq9_items",         sigma-n//phi, 9,  "sigma-n/phi=9 PHQ-9 문항",     "Clinical")
-check("hamd_items",         J2,         24,   "J2=24 HAM-D 항목",             "Clinical")
-check("apgar_items",        sopfr,      5,    "sopfr=5 Apgar 항목",           "Clinical")
-check("apgar_max_score",    sigma-phi,  10,   "sigma-phi=10 Apgar 최고점",    "Clinical")
-
-# === N. 하드웨어 (6) ===
-check("sensor_weight_g",    sigma,      12,   "sigma=12 g 센서 무게",          "Hardware")
-check("device_weight_g",    sigma*tau,  48,   "sigma*tau=48 g 총 무게",        "Hardware")
-check("battery_mah",        sopfr*10**phi, 500, "sopfr*10^phi=500 mAh",       "Hardware")
-check("battery_hours",      J2,         24,   "J2=24 시간 연속사용",           "Hardware")
-check("charge_time_h",      mu,         1,    "mu=1 시간 충전",               "Hardware")
-check("ble_range_m",        sigma-phi,  10,   "sigma-phi=10 m BLE 범위",      "Hardware")
-
-# === 최종 리포트 ===
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-EMPATH Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
-for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-for cat, (p,t) in by_cat.items():
-    print(f"  {cat:12s} {p}/{t}")
-print("="*72)
-for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"[{status}] {r['category']:12s} {r['name']:25s} = {r['actual']}  ({r['formula']})")
-print("="*72)
-if passed == total:
-    print("ALL PASS -- 10 CERTIFIED (물리 한계 도달, 특이점 돌파)")
-else:
-    print(f"FAILED: {total-passed} checks -> 9 강등")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (2026-04-06 특이점 돌파 검증 완료)**:

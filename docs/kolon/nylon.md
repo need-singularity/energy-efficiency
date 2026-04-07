@@ -112,65 +112,51 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""나일론 6/6,6 n=6 검증 — 23/23 EXACT 목표"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
-PASS = 0
-FAIL = 0
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-
-def check(name, actual, expected, expr=""):
-    global PASS, FAIL
-    if isinstance(actual, float) or isinstance(expected, float):
-        ok = abs(actual - expected) < 1e-9
+# nylon.md — 정의 도출 검증
+results = [
+    ("BT-27 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-86 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        ok = actual == expected
-    PASS += ok
-    FAIL += not ok
-    status = "EXACT" if ok else "FAIL "
-    print(f"  [{status}] {name}: {actual} = {expr} (기대: {expected})")
-
-
-print("=" * 60)
-print("나일론 6/6,6 — Phase 1: 분자구조")
-print("=" * 60)
-
-check("카프로락탐 탄소수",         6,             n,                     "n")
-check("아디프산 탄소수",           6,             n,                     "n")
-check("헥사메틸렌디아민 탄소수",   6,             n,                     "n")
-check("나일론6,6 반복단위 총탄소", 12,            sigma,                 "σ=12")
-check("주력 등급 수",              2,             phi,                   "φ=2")
-check("아미드결합 수",             2,             phi,                   "φ=2")
-check("헤테로원자(N+O) 수",        4,             tau,                   "τ=4")
-check("아디프산 메틸렌 수",        4,             tau,                   "τ=4")
-check("디아민 메틸렌 수",          6,             n,                     "n=6")
-check("반복단위 총 메틸렌 수",     10,            sigma - phi,           "σ-φ=10")
-check("중원자 수",                 16,            phi ** tau,            "φ^τ=16")
-check("나일론6 고리원자 수",       6,             n,                     "n=6")
-
-print()
-print("=" * 60)
-print("나일론 6/6,6 — Phase 2: 공정/산업규격")
-print("=" * 60)
-
-check("840d 원사 굵기",  840,  sigma * (sigma - phi) * (sigma - sopfr),  "σ(σ-φ)(σ-sopfr)=12·10·7=840")
-check("420d 원사",       420,  840 // phi,                                "840/φ=420")
-check("210d 원사",       210,  840 // tau,                                "840/τ=210")
-check("70d 원사",        70,   840 // sigma,                              "840/σ=70")
-check("필라멘트 24f",    24,   J2,                                        "J₂=24")
-check("필라멘트 48f",    48,   sigma * tau,                               "σ·τ=48")
-check("필라멘트 72f",    72,   sigma * n,                                 "σ·n=72")
-check("필라멘트 144f",   144,  sigma ** 2,                                "σ²=144")
-check("중합 목표 DP",    120,  sigma * (sigma - phi),                     "σ(σ-φ)=120")
-check("중합시간 단계1",  12,   sigma,                                     "σ=12h")
-check("중합시간 단계2",  24,   J2,                                        "J₂=24h")
-
-total = PASS + FAIL
-print()
-print("=" * 60)
-print(f"총 {total}건: {PASS} EXACT, {FAIL} FAIL ({PASS/total*100:.0f}%)")
-print("=" * 60)
-if FAIL == 0:
-    print(">>> ALL PASS — 나일론 6/6,6 n=6 완전 검증!")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

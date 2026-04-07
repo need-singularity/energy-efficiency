@@ -1,0 +1,162 @@
+# HEXA DSE — 정유 증류
+[meta]
+name = "essential-oil-distillation"
+desc = "정유 증류"
+levels = ["Plant","Harvest","Distill","Separate","Bottle"]
+vision = "n=6 보편 정유 증류"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "L1"
+[[candidate]]
+level = 0
+id = "A"
+label = "라벤더"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT, sigma=12"
+[[candidate]]
+level = 0
+id = "B"
+label = "로즈마리"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "tau=4 단계"
+[[candidate]]
+level = 0
+id = "C"
+label = "유칼립투스"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "phi=2 변형"
+
+[[level]]
+name = "L2"
+[[candidate]]
+level = 1
+id = "A"
+label = "꽃 채취"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 1
+id = "B"
+label = "잎 채취"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "sigma=12 표준"
+[[candidate]]
+level = 1
+id = "C"
+label = "전초"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "tau=4 단계"
+
+[[level]]
+name = "L3"
+[[candidate]]
+level = 2
+id = "A"
+label = "수증기 증류"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 2
+id = "B"
+label = "진공 증류"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "phi=2 변형"
+[[candidate]]
+level = 2
+id = "C"
+label = "용매 추출"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "J2=24 시간"
+
+[[level]]
+name = "L4"
+[[candidate]]
+level = 3
+id = "A"
+label = "유수 분리"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT, sopfr=5"
+[[candidate]]
+level = 3
+id = "B"
+label = "원심 분리"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "sigma-tau=8"
+[[candidate]]
+level = 3
+id = "C"
+label = "막 분리"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "sigma-phi=10"
+
+[[level]]
+name = "L5"
+[[candidate]]
+level = 4
+id = "A"
+label = "갈색 유리"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 4
+id = "B"
+label = "블루 유리"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "tau=4 단계"
+[[candidate]]
+level = 4
+id = "C"
+label = "투명 유리"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "phi=2 변형"

@@ -14,9 +14,9 @@ use crate::telescope::shared_data::SharedData;
 ///      (connected components of the high-similarity graph).
 ///   4. Outputs: mean isomorphism score, equivalence class count + sizes,
 ///      and a profile entropy measuring structural diversity.
-pub struct UisomorphismLens;
+pub struct IsomorphismLens;
 
-impl Lens for UisomorphismLens {
+impl Lens for IsomorphismLens {
     fn name(&self) -> &str {
         "isomorphism"
     }
@@ -188,7 +188,7 @@ mod tests {
         // Square: (0,0), (1,0), (1,1), (0,1)
         let data = vec![0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0];
         let shared = SharedData::compute(&data, 4, 2);
-        let lens = UisomorphismLens;
+        let lens = IsomorphismLens;
         let result = lens.scan(&data, 4, 2, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -217,7 +217,7 @@ mod tests {
         let n = 8;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UisomorphismLens;
+        let lens = IsomorphismLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -236,7 +236,7 @@ mod tests {
     fn test_isomorphism_minimum_points() {
         let data = vec![0.0, 1.0, 2.0];
         let shared = SharedData::compute(&data, 3, 1);
-        let lens = UisomorphismLens;
+        let lens = IsomorphismLens;
         let result = lens.scan(&data, 3, 1, &shared);
         assert!(!result.is_empty());
         assert!(result["mean_isomorphism_score"][0].is_finite());

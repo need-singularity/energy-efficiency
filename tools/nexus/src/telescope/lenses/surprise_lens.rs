@@ -16,11 +16,11 @@ use crate::telescope::shared_data::SharedData;
 ///   - "z_anomaly": per-point z-score of mean neighbor distance, length = n
 ///   - "dimension_kurtosis": per-dimension excess kurtosis, length = d
 ///   - "summary": [mean_surprise, max_surprise, fraction_anomalous (|z| > 2)]
-pub struct UsurpriseLens;
+pub struct SurpriseLens;
 
-impl Lens for UsurpriseLens {
+impl Lens for SurpriseLens {
     fn name(&self) -> &str {
-        "UsurpriseLens"
+        "SurpriseLens"
     }
 
     fn category(&self) -> &str {
@@ -155,7 +155,7 @@ mod tests {
         let n = 5;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UsurpriseLens;
+        let lens = SurpriseLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -190,7 +190,7 @@ mod tests {
         let n = 4;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UsurpriseLens;
+        let lens = SurpriseLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -215,7 +215,7 @@ mod tests {
         let n = 2;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UsurpriseLens;
+        let lens = SurpriseLens;
         let result = lens.scan(&data, n, d, &shared);
         assert!(result.is_empty(), "n<3 should return empty");
     }

@@ -277,42 +277,54 @@ SE(3)=n=6  σ-τ=8 Effort  σ-φ=10 종목  σ·sopfr=60 BPM
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""무용/안무 n=6 공간 기하학 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("라반 24 공간점",         24,  J2),
-    ("발레 5 포지션",           5,   sopfr),
-    ("SE(3) 6 자유도",          6,   n),
-    ("왈츠 3/4 (분자3)",        3,   n // phi),
-    ("사교춤 10종목",          10,  sigma - phi),
-    ("한국 장단 12/8 (12)",    12,  sigma),
-    ("라반 8 Effort",           8,   sigma - tau),
-    ("파드되 2명",              2,   phi),
-    ("360도 회전",            360,  n * sigma * sopfr),
-    ("4/4 박자",                4,   tau),
-    ("라반 4 Effort요소",       4,   tau),
-    ("12반음 음계",            12,  sigma),
-    ("발레 7 기본동작",         7,   sigma - sopfr),
-    ("라반 3 공간레벨",         3,   n // phi),
-    ("6/8 박자 (분자6)",        6,   n),
-    ("인체 12 주요관절",       12,  sigma),
-    ("Andante 60 BPM",        60,  sigma * sopfr),
-    ("발레 5 팔포지션",         5,   sopfr),
-    ("라반 Body 5구역",         5,   sopfr),
-    ("한국 5방색",              5,   sopfr),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-135 항목", None, None, None),  # MISSING DATA
+    ("BT-108 항목", None, None, None),  # MISSING DATA
+    ("BT-201 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 무용/안무 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

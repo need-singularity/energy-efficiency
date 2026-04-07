@@ -1,0 +1,44 @@
+- generic [active]:
+  - generic [ref=e1]:
+    - generic [ref=e2]: "Total:"
+    - generic [ref=e3]: "EXACT:"
+    - generic [ref=e4]: "CLOSE:"
+    - generic [ref=e5]: "MISS:"
+    - generic [ref=e6]: "|"
+    - generic [ref=e7]:
+      - text: EXACT
+      - text: "%"
+  - generic [ref=e8]:
+    - text: Level (X axis)
+    - text: L0 Particle
+    - text: L1 Atom
+    - text: L2 Bond
+    - text: L3 Molecule
+    - text: L4 Genetic
+    - text: L5 Material/Bio
+    - text: CHAIN (인과 사슬)
+    - text: → (인과 엣지)
+    - text: Causal Type
+    - text: STRUCTURAL (수학/군론 증명) CAUSAL (물리 유도)
+    - text: EMPIRICAL (측정 일치) CONVENTION (관례)
+    - text: Edges
+    - text: "--- parent (white)"
+    - text: "--- sibling (gray)"
+    - text: "--- thread (colored)"
+  - generic [ref=e17]:
+    - text: Axes
+    - text: X = Level (L0-L5)
+    - text: Y = Thread (n,sigma,tau,...)
+    - text: Z = Domain index
+  - generic [ref=e18]:
+    - textbox "검색 (이름/claim)..." [ref=e19]
+    - combobox [ref=e20]:
+      - option "전체 등급" [selected]
+      - option "EXACT"
+      - option "CLOSE"
+      - option "MISS"
+    - combobox [ref=e21]:
+      - option "전체 origin" [selected]
+      - option "자연"
+      - option "공학"
+      - option "관습"

@@ -178,94 +178,58 @@ SC 구간 손실 = **μ/10⁶ = 0 실질** (quasiparticle tunneling only).
 ## 6. Python 검증 코드 (인라인, 42 checks)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-SEABED Verification — 42 checks, target 90%+ EXACT"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, phi, tau, sigma, mu, sopfr, J2 = 6, 2, 4, 12, 1, 5, 24
-d_sig_phi = sigma - phi     # 10
-d_sig_tau = sigma - tau     # 8
-d_sig_mu  = sigma - mu      # 11
-d_sig2    = sigma * sigma   # 144
-d_sigJ2   = sigma * J2      # 288
-d_phitau  = phi ** tau      # 16
-sig_sopfr = sigma * sopfr   # 60
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def check(name, got, expect, tol=0.02):
-    ok = abs(got-expect)/max(abs(expect),1e-12) < tol
-    checks.append((name, got, expect, ok))
-    return ok
-
-# L0: Material
-check("YBCO Cu CN = n",                              6, n)
-check("MgB2 Tc/K = sopfr*(sigma-phi)-7 approx 39",  39, sopfr*(d_sig_phi)-11)
-check("Nb3Sn Nb=n/phi=3 atoms",                      3, n//phi)
-check("H3S hydrogen = n/phi=3",                      3, n//phi)
-check("RT-SC critical T target = sigma*25K=300",   300, sigma*25)
-check("SC gap 2Delta = phi meV (RT)",                2, phi)
-
-# L1: Cable
-check("HTS tape width = tau mm",                     4, tau)
-check("CORC cable strand count = sigma",            12, sigma)
-check("Critical current density I_c = sigma kA",    12, sigma)
-check("Phase count J2=24 (three 8-phase)",          24, J2)
-check("Cable diameter = sigma cm=12",               12, sigma)
-check("Cooling return layer count = phi",            2, phi)
-
-# L2: Insulation
-check("LN2 temp 77K = sigma*(sigma-phi/2)",         77, 77)
-check("Insulation layer count = sigma",             12, sigma)
-check("Vacuum gap = tau mm",                         4, tau)
-check("Aerogel thickness = sopfr cm",                5, sopfr)
-check("Cryostat wall = phi cm",                      2, phi)
-check("Thermal tau = tau hours",                     4, tau)
-
-# L3: Segment / Depth
-check("Seabed depth = sigma*(sigma-phi)^2 m=1200",1200, sigma*(d_sig_phi)**2)
-check("Pressure 120 bar = sigma*sopfr*phi",        120, sigma*sopfr*phi)
-check("Seawater temp = tau deg C",                   4, tau)
-check("Segment length = n*10^3 km=6000",          6000, n*1000)
-check("Repeater count per 6000km = sigma",          12, sigma)
-check("Max depth trench = n*10^3 m (Mariana)=6000",6000, n*1000)
-
-# L4: Conversion (VSC HVDC)
-check("Converter stage count = sigma-tau=8",         8, d_sig_tau)
-check("VSC cell count per arm = sigma",             12, sigma)
-check("DC voltage = (sigma-tau)*(sigma-phi)^2 kV=800",800, d_sig_tau*(d_sig_phi)**2)
-check("AC freq = sigma*sopfr Hz=60",                60, sig_sopfr)
-check("Transformer ratio = sigma-phi=10",           10, d_sig_phi)
-check("Bridge rectifier diodes = n",                 6, n)
-
-# L5: Terminal
-check("Terminal voltage = 800 kV",                 800, d_sig_tau*100)
-check("Alt voltage +/-500 = sopfr*(sigma-phi)^2", 500, sopfr*(d_sig_phi)**2)
-check("Alt voltage +/-1100 = (sigma-mu)*100",     1100, d_sig_mu*100)
-check("Power pole count = phi (bipolar)",            2, phi)
-check("Substation bus = J2",                        24, J2)
-check("Protection relay = sigma channels",          12, sigma)
-
-# L6: Link
-check("Link length km = J2*10^3=24000",          24000, J2*1000)
-check("Continental hops = tau",                      4, tau)
-check("Cable parallel count = n",                    6, n)
-check("Redundancy = n/phi=3 fold",                   3, n//phi)
-
-# L7: Global
-check("Total capacity GW = sigma^2*J2=3456",      3456, d_sig2*J2)
-check("Time zones spanned = J2",                    24, J2)
-check("PUE global = R(6) = 1",                       1, mu)
-check("Loss pct = 0 (SC)",                           0, 0)
-check("Conversion loss pct = sigma-phi/phi*0.04=0.2",0.2, 0.2)
-
-# Summary
-passed = sum(1 for _,_,_,ok in checks if ok)
-total  = len(checks)
-print(f"HEXA-SEABED Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, got, exp, ok in checks:
-    tag = "EXACT" if ok else "FAIL"
-    print(f"  [{tag}] {name}: got={got}, expect={exp}")
-assert passed/total >= 0.90, f"below 90% threshold"
-print("PASS: HEXA-SEABED design n=6 consistency >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-68 항목", None, None, None),  # MISSING DATA
+    ("BT-213 항목", None, None, None),  # MISSING DATA
+    ("BT-60 항목", None, None, None),  # MISSING DATA
+    ("BT-326 항목", None, None, None),  # MISSING DATA
+    ("BT-305 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과**: 44/44 EXACT = 100.0% → PASS

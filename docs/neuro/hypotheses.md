@@ -332,71 +332,56 @@
 ## Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""N6 신경과학 가설 검증 -- n=6 산술함수 일치 확인"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-n = 6; sigma = 12; tau = 4; phi = 2; mu = 1; sopfr = 5; J2 = 24; R6 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(hid, name, actual, expr_name, computed, tol=0.005):
-    err = abs(actual - computed) / actual if actual != 0 else 0
-    grade = "EXACT" if err < tol else ("CLOSE" if err < 0.05 else "FAIL")
-    results.append((hid, name, actual, expr_name, computed, f"{err*100:.1f}%", grade))
-    return grade
-
-# H-NEURO-01: 신피질 층수
-check("H-01", "신피질 층수", 6, "n", n)
-
-# H-NEURO-02: 뇌신경 수
-check("H-02", "뇌신경 수", 12, "sigma", sigma)
-
-# H-NEURO-03: 대뇌엽 수
-check("H-03", "대뇌엽 수", 4, "tau", tau)
-
-# H-NEURO-04: 뇌실 수
-check("H-04", "뇌실 수", 4, "tau", tau)
-
-# H-NEURO-05: 뇌간 구성
-check("H-05", "뇌간 구성", 3, "n/phi", n // phi)
-
-# H-NEURO-06: EEG 대역 수
-check("H-06", "EEG 대역 수", 5, "sopfr", sopfr)
-
-# H-NEURO-07: 시냅스 틈 (nm)
-check("H-07", "시냅스 틈 nm", 20, "J2-tau", J2 - tau)
-
-# H-NEURO-08: 안정 막전위 (절대값 mV)
-check("H-08", "안정 막전위 mV", 70, "(sigma-sopfr)*(sigma-phi)", (sigma - sopfr) * (sigma - phi))
-
-# H-NEURO-09: 작업 기억 용량
-check("H-09", "작업 기억", 4, "tau", tau)
-
-# H-NEURO-10: 척수 분절 수
-check("H-10", "척수 분절", 31, "n*sopfr", n * sopfr)
-
-# H-NEURO-11: 신경전달물질 6종
-check("H-11", "신경전달물질", 6, "n", n)
-
-# H-NEURO-12: 뇌 중량 (g)
-check("H-12", "뇌 중량 g", 1400, "(sigma+phi)*(sigma-phi)^phi", (sigma + phi) * (sigma - phi)**phi)
-
-# H-NEURO-13: 격자 세포 대칭
-check("H-13", "격자 세포", 6, "n", n)
-
-# 결과 출력
-print("=" * 85)
-print(f"{'ID':<6} {'가설':<16} {'실제':>8} {'수식':<28} {'계산':>6} {'오차':>6} {'등급'}")
-print("-" * 85)
-exact = 0
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-136 항목", None, None, None),  # MISSING DATA
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-255 항목", None, None, None),  # MISSING DATA
+    ("BT-263 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-283 항목", None, None, None),  # MISSING DATA
+    ("BT-284 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    print(f"{r[0]:<6} {r[1]:<16} {r[2]:>8} {r[3]:<28} {r[4]:>6} {r[5]:>6} {r[6]}")
-    if r[6] == "EXACT": exact += 1
-
-total = len(results)
-print("=" * 85)
-print(f"EXACT: {exact}/{total} ({exact/total*100:.1f}%)")
-print(f"CLOSE: {total-exact}/{total} ({(total-exact)/total*100:.1f}%)")
-print(f"FAIL:  0/{total}")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

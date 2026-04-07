@@ -14,11 +14,11 @@ use crate::telescope::shared_data::SharedData;
 ///      Net flow asymmetry reveals causal direction.
 ///   3. Causal depth: rank points by how many neighbors they "explain" — points
 ///      whose local neighborhood has low residual variance are causal hubs.
-pub struct UinverseLens;
+pub struct InverseLens;
 
-impl Lens for UinverseLens {
+impl Lens for InverseLens {
     fn name(&self) -> &str {
-        "UinverseLens"
+        "InverseLens"
     }
 
     fn category(&self) -> &str {
@@ -291,7 +291,7 @@ mod tests {
         }
 
         let shared = SharedData::compute(&data, n, d);
-        let lens = UinverseLens;
+        let lens = InverseLens;
         let result = lens.scan(&data, n, d, &shared);
 
         // Must return non-empty results
@@ -328,7 +328,7 @@ mod tests {
         }
 
         let shared = SharedData::compute(&data, n, d);
-        let lens = UinverseLens;
+        let lens = InverseLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan() must return non-empty HashMap");

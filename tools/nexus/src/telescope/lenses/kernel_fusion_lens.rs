@@ -18,9 +18,9 @@ use crate::telescope::shared_data::SharedData;
 ///   4. Greedy merge: iterate edges in descending score order, merge into groups
 ///      (union-find) as long as both endpoints are not yet in different groups
 ///   5. Report fusion groups, scores, and bandwidth-saving estimate
-pub struct UkernelUfusionLens;
+pub struct KernelFusionLens;
 
-impl Lens for UkernelUfusionLens {
+impl Lens for KernelFusionLens {
     fn name(&self) -> &str {
         "kernel_fusion"
     }
@@ -234,7 +234,7 @@ mod tests {
         let n = 6;
         let d = 2;
         let shared = make_shared(&data, n, d);
-        let lens = UkernelUfusionLens;
+        let lens = KernelFusionLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -265,7 +265,7 @@ mod tests {
         let n = 4;
         let d = 2;
         let shared = make_shared(&data, n, d);
-        let lens = UkernelUfusionLens;
+        let lens = KernelFusionLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -283,7 +283,7 @@ mod tests {
     fn test_small_n_returns_empty() {
         let data = vec![1.0, 2.0, 3.0, 4.0];
         let shared = make_shared(&data, 2, 2);
-        let lens = UkernelUfusionLens;
+        let lens = KernelFusionLens;
         let result = lens.scan(&data, 2, 2, &shared);
         assert!(result.is_empty(), "n<3 should return empty HashMap");
     }

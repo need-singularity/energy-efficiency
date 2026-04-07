@@ -1,6 +1,6 @@
 # H-CX-847: Periodic Table Period Lengths
 
-> **Hypothesis**: The periodic table's period lengths 2, 8, 8, 18, 18, 32, 32 map to TECS-L constants as φ, (σ-τ)², (σ+P₁)², (φ^sopfr)² under the double-period pattern 2n² for n=1,2,3,4.
+> **Hypothesis**: The periodic table's period lengths 2, 8, 8, 18, 18, 32, 32 map to TECS-L constants as φ, σ−τ, σ+P₁, φ^sopfr under the double-period pattern 2n² for n=1,2,3,4 (수정: 기존 (·)² 표기는 오류, 실제 매핑은 제곱 없음).
 
 ## Grade: 🟩 CONFIRMED
 

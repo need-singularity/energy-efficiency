@@ -396,249 +396,58 @@ n·σ/φ = 6·12/2 = 36 — 완전수 산술이 생체 체온을 유일 결정.
 ## 12. Python 검증 코드 (🛸10 필수, 인라인)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-FABRIC AI 의류 — n=6 파라미터 전수 검증 (특이점 돌파판)
-============================================================
-158개 EXACT 파라미터를 21카테고리에서 수학적으로 재현 (46→158 특이점 돌파).
-판정: ALL PASS → 🛸10 인증, ANY FAIL → 🛸9 강등
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2, R6 = 6, 12, 2, 4, 5, 1, 24, 1
-assert sigma*phi == n*tau == J2
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-321 항목", None, None, None),  # MISSING DATA
+    ("BT-136 항목", None, None, None),  # MISSING DATA
+    ("BT-30 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-160 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# ═══ A. 핵심 상수 Core (7) ═══
-check("n", n, 6, "n=6", "Core")
-check("sigma", sigma, 12, "σ=12", "Core")
-check("phi", phi, 2, "φ=2", "Core")
-check("tau", tau, 4, "τ=4", "Core")
-check("sopfr", sopfr, 5, "sopfr=5", "Core")
-check("mu", mu, 1, "μ=1", "Core")
-check("J2", J2, 24, "J₂=24", "Core")
-
-# ═══ B. 섬유 소재 Fiber (6) ═══
-check("carbon_Z",          n,              6,      "Z=6 탄소(BT-85)",        "Fiber")
-check("fiber_dia_um",      sigma-phi,      10,     "σ-φ=10 μm 섬유직경",     "Fiber")
-check("tensile_GPa",       n*sigma//phi,   36,     "n·σ/φ=36 GPa 인장강도",  "Fiber")
-check("conductivity_kS",   sigma,          12,     "σ=12 kS/m 전도도",       "Fiber")
-check("weave_directions",  sigma,          12,     "σ=12 방향 교차직조",      "Fiber")
-check("stretch_pct",       sigma*sopfr,    60,     "σ·sopfr=60% 신축성",     "Fiber")
-
-# ═══ C. 직조 기하 Weave (6) ═══
-check("hex_pattern",       n,              6,      "n=6 육각 직조(BT-122)",   "Weave")
-check("thread_density",    sigma**2,       144,    "σ²=144/cm 실밀도",       "Weave")
-check("pore_um",           sigma*tau,      48,     "σ·τ=48 μm 통기공",       "Weave")
-check("layers",            sigma,          12,     "σ=12 적층 레이어",        "Weave")
-check("bilateral",         phi,            2,      "φ=2 좌우 대칭",           "Weave")
-check("unit_cell_mm",      n,              6,      "n=6 mm 단위셀",           "Weave")
-
-# ═══ D. 체온 조절 Thermal (6) ═══
-check("body_temp_C",       n*sigma//phi,   36,     "n·σ/φ=36°C 기준체온",    "Thermal")
-check("precision_C",       mu,             1,      "μ=1°C 정밀도",            "Thermal")
-check("heating_W_peak",    sigma,          12,     "σ=12W 피크 발열",         "Thermal")
-check("cooling_delta_C",   sigma-phi,      10,     "σ-φ=10°C 냉각",          "Thermal")
-check("color_change_n",    n,              6,      "n=6색 전자잉크",          "Thermal")
-check("switch_time_s",     tau,            4,      "τ=4초 색 전환",           "Thermal")
-
-# ═══ E. 에너지 Energy (5) ═══
-check("seebeck_mW",        sigma-phi,      10,     "σ-φ=10 mW 체열",         "Energy")
-check("pv_peak_mW",        sigma*tau,      48,     "σ·τ=48 mW PV 피크",      "Energy")
-check("pv_eff_pct",        J2,             24,     "J₂=24% PV 효율",         "Energy")
-check("total_harvest_mW",  sigma*sopfr,    60,     "σ·sopfr=60 mW 총수확",   "Energy")
-check("consume_mW",        sigma,          12,     "σ=12 mW 총소비",         "Energy")
-
-# ═══ F. 인터페이스 Interface (5) ═══
-check("ble_GHz",           sopfr,          5,      "sopfr=5 GHz BLE",        "Interface")
-check("bandwidth_Mbps",    J2,             24,     "J₂=24 Mbps",             "Interface")
-check("latency_ms",        mu,             1,      "μ=1 ms 지연",            "Interface")
-check("devices",           n,              6,      "n=6 동시 연결",           "Interface")
-check("operation_hours",   J2,             24,     "J₂=24시간 구동",          "Interface")
-
-# ═══ G. 안전/내구 Safety (6) ═══
-check("wash_cycles",       sigma**2,       144,    "σ²=144회 세탁",           "Safety")
-check("fire_LOI_pct",      sigma*phi,      24,     "σ·φ=24% LOI 난연",       "Safety")
-check("biocompat_tests",   n,              6,      "n=6 ISO10993 항목",       "Safety")
-check("emi_dB",            sigma**2,       144,    "σ²=144 dB EMI",          "Safety")
-check("waterproof_IP",     n,              6,      "IP6X n=6 방수",           "Safety")
-check("child_safety",      tau,            4,      "τ=4중 아동 안전",         "Safety")
-
-# ═══ H. 응용 App (5) ═══
-check("seasons",           tau,            4,      "τ=4 계절 적응",           "App")
-check("joints",            n,              6,      "n=6 관절 모션 캡처",      "App")
-check("monitor_hours",     J2,             24,     "J₂=24시간 건강 모니터",   "App")
-check("fall_predict_s",    tau,            4,      "τ=4초 낙상 예측",         "App")
-check("cost_add_usd",      sigma*sopfr,    60,     "σ·sopfr=60달러 추가",     "App")
-
-# ═══ I. 섬유 화학 FiberChem (10) ═══
-check("nylon6_carbon",     n,              6,      "나일론-6 C₆ 백본(BT-85)",    "FiberChem")
-check("benzene_C6",        n,              6,      "벤젠 C₆H₆ 방향족(BT-121)",   "FiberChem")
-check("pet_repeat_atoms",  sigma-phi,      10,     "PET 반복단위 σ-φ=10 원자",    "FiberChem")
-check("aramid_ring_C",     n,              6,      "아라미드 페닐렌 n=6 C",        "FiberChem")
-check("cellulose_C",       n,              6,      "셀룰로스 C₆H₁₀O₅(BT-101)",   "FiberChem")
-check("opt_DP",            sigma**2,       144,    "최적 중합도 σ²=144",           "FiberChem")
-check("nylon6_Tg",         sigma*sopfr-sigma+phi, 50, "나일론-6 Tg=50°C",         "FiberChem")
-check("cf_crystallinity",  sigma*sopfr,    60,     "탄소섬유 결정화도 σ·sopfr=60%","FiberChem")
-check("spandex_recovery",  90,             90,     "스판덱스 복원 1-1/(σ-φ)=90%",  "FiberChem")
-check("PDI_optimal",       mu,             1,      "PDI 최적 μ=1 단분산",          "FiberChem")
-
-# ═══ J. 인체 생리학 HumanPhysio (10) ═══
-check("epidermis_layers",  n,              6,      "표피 n=6층(BT-254)",           "HumanPhysio")
-check("sweat_glands_M",    n//phi,         3,      "에크린 땀샘 n/φ=3백만",        "HumanPhysio")
-check("body_surface_m2",   phi,            2,      "체표면적 φ=2 m²(BT-136)",     "HumanPhysio")
-check("skin_thickness_mm", phi,            2,      "피부 두께 φ=2 mm",             "HumanPhysio")
-check("basal_heat_W",      sigma*sopfr,    60,     "기저 체열 σ·sopfr=60W",        "HumanPhysio")
-check("heart_rest_bpm",    sigma*sopfr,    60,     "안정 심박 σ·sopfr=60 bpm",     "HumanPhysio")
-check("resp_rate_low",     sigma,          12,     "호흡수 하한 σ=12/min",          "HumanPhysio")
-check("spo2_target_pct",   90,             90,     "SpO₂ 목표 1-1/(σ-φ)=90%",     "HumanPhysio")
-check("circadian_amp_C",   mu,             1,      "일주기 진폭 μ=1°C(BT-265)",   "HumanPhysio")
-check("skin_receptors",    n,              6,      "피부 수용체 n=6종(BT-152)",    "HumanPhysio")
-
-# ═══ K. 직물 산업 표준 TextileStd (10) ═══
-check("thread_count_percale", sigma**2,    144,    "Thread count σ²=144 TPI",      "TextileStd")
-check("denier_std",        sigma*sopfr,    60,     "표준 데니어 σ·sopfr=60D",      "TextileStd")
-check("microdenier",       mu,             1,      "극세사 μ=1D",                   "TextileStd")
-check("knit_gauge_fine",   J2,             24,     "니트 fine J₂=24 게이지",        "TextileStd")
-check("tex_industrial",    sigma*J2,       288,    "산업사 σ·J₂=288 tex",          "TextileStd")
-check("tear_test_mm",      sigma**2,       144,    "인열시험편 σ²=144mm",           "TextileStd")
-check("martindale_min",    sigma**2*100,   14400,  "내마모 σ²·100=14400회",        "TextileStd")
-check("aatcc_wash_std",    sigma**2,       144,    "AATCC 세탁 σ²=144 사이클",     "TextileStd")
-check("moisture_regain",   sigma-tau,      8,      "면 수분율 σ-τ=8%",              "TextileStd")
-check("test_temp_C",       (sigma-phi)+sigma, 22,   "시험온도 (σ-φ)+σ=22°C",        "TextileStd")
-
-# ═══ L. 열 물리학 ThermalPhys (8) ═══
-check("water_latent_kJ",   J2*100,         2400,   "기화열 J₂·100=2400 kJ/kg",    "ThermalPhys")
-check("clo_winter",        phi,            2,      "겨울 코트 φ=2 clo",            "ThermalPhys")
-check("clo_summer",        0.5,            0.5,    "여름 셔츠 1/φ=0.5 clo",        "ThermalPhys")
-check("metabolic_walk_W",  sigma*(sigma-phi), 120, "걷기 σ·(σ-φ)=120W",           "ThermalPhys")
-check("seebeck_uVK",      J2*(sigma-phi),  240,    "BiTe Seebeck J₂·(σ-φ)=240μV/K","ThermalPhys")
-check("ZT_limit",          R6,             1,      "열전 ZT=R(6)=1(BT-321)",       "ThermalPhys")
-check("insul_min_WmK",     0.1,            0.1,    "단열 하한 1/(σ-φ)=0.1 W/mK",   "ThermalPhys")
-check("emissivity_opt",    0.9,            0.9,    "방사율 1-1/(σ-φ)=0.9",          "ThermalPhys")
-
-# ═══ M. 생체역학 Biomech (8) ═══
-check("major_joints",      sigma,          12,     "주요 관절 σ=12(BT-136)",       "Biomech")
-check("joint_DOF",         n,              6,      "관절 SE(3) n=6-DOF(BT-123)",   "Biomech")
-check("hand_bones",        J2+phi,         26,     "손 뼈 J₂+φ=26",               "Biomech")
-check("foot_bones",        J2+phi,         26,     "발 뼈 J₂+φ=26",               "Biomech")
-check("spine_curves",      tau,            4,      "척추 만곡 τ=4",                 "Biomech")
-check("gait_phases",       phi,            2,      "보행 위상 φ=2(입각/유각)",      "Biomech")
-check("muscle_groups",     n,              6,      "근육군 대분류 n=6",              "Biomech")
-check("step_freq_Hz",      phi,            2,      "걸음 주파수 φ=2 Hz",            "Biomech")
-
-# ═══ N. 세탁 화학 WashChem (8) ═══
-check("wash_pH",           n+mu,           7,      "세탁수 pH n+μ=7",              "WashChem")
-check("wash_temp_C",       sigma*tau-sigma+tau, 40,"세탁온도 σ·τ-σ+τ=40°C",       "WashChem")
-check("spin_rpm",          sigma**2*(sigma-phi), 1440, "탈수 σ²·(σ-φ)=1440 rpm",  "WashChem")
-check("HLB_optimal",       sigma,          12,     "계면활성제 HLB σ=12",           "WashChem")
-check("wash_time_min",     sigma*sopfr,    60,     "세탁시간 σ·sopfr=60분",         "WashChem")
-check("rinse_cycles",      n//phi,         3,      "헹굼 횟수 n/φ=3회",             "WashChem")
-check("dry_temp_max_C",    sigma*sopfr,    60,     "건조온도 상한 σ·sopfr=60°C",    "WashChem")
-check("water_L_per_wash",  sigma*sopfr,    60,     "물 사용량 σ·sopfr=60 L",        "WashChem")
-
-# ═══ O. 의류 공학 GarmentEng (10) ═══
-check("size_grades",       n,              6,      "사이즈 n=6종(XS~XXL)",          "GarmentEng")
-check("seam_types",        sigma-tau,      8,      "봉제선 σ-τ=8 기법",             "GarmentEng")
-check("pattern_pieces",    sigma,          12,     "재단 패턴 σ=12 피스",            "GarmentEng")
-check("needle_size",       sigma,          12,     "바늘 호수 σ=12번",               "GarmentEng")
-check("thread_tex",        sigma*phi,      24,     "봉제사 σ·φ=24 tex",             "GarmentEng")
-check("buttons_shirt",     n,              6,      "셔츠 단추 n=6개",                "GarmentEng")
-check("pockets",           sopfr,          5,      "포켓 sopfr=5개",                 "GarmentEng")
-check("garment_categories",sigma-tau,      8,      "의류 대분류 σ-τ=8종",            "GarmentEng")
-check("fabric_width_cm",   sigma**2,       144,    "원단폭 σ²=144cm(≈150근사)",     "GarmentEng")
-check("stitch_per_inch",   sigma,          12,     "재봉 땀수 σ=12 SPI",             "GarmentEng")
-
-# ═══ P. 전기화학 ElectroChem (8) ═══
-check("lion_voltage",      3.6,            3.6,    "Li-ion n·σ/(φ·10)=3.6V",       "ElectroChem")
-check("scap_Wh_kg",        sigma-phi,      10,     "슈퍼캡 σ-φ=10 Wh/kg",          "ElectroChem")
-check("battery_cycles",    sigma**2,       144,    "유연배터리 σ²=144 사이클",       "ElectroChem")
-check("charge_time_h",     tau,            4,      "완속충전 τ=4시간",               "ElectroChem")
-check("fast_charge_min",   sigma*sopfr,    60,     "급속충전 σ·sopfr=60분",          "ElectroChem")
-check("max_current_A",     phi,            2,      "최대전류 φ=2A",                  "ElectroChem")
-check("cell_count",        n,              6,      "배터리셀 n=6직렬",               "ElectroChem")
-check("energy_density",    sigma*(sigma-phi), 120, "에너지밀도 σ·(σ-φ)=120 Wh/kg", "ElectroChem")
-
-# ═══ Q. 항등식 Identity (8) ═══
-check("id_core",           sigma*phi,      n*tau,  "σ·φ=n·τ=24",                   "Identity")
-check("id_egyptian",       1,              1,      "1/2+1/3+1/6=1 전력분배",        "Identity")
-check("id_sq_over_n",      sigma**2//n,    J2,     "σ²/n=J₂=24",                   "Identity")
-check("id_thermal_sq",     (sigma-phi)**2, 100,    "(σ-φ)²=100 열경계(BT-324)",     "Identity")
-check("id_factorial",      math.factorial(n), 720, "n!=720 직물변형전수",             "Identity")
-check("id_sopfr",          2+3,            sopfr,  "sopfr(6)=2+3=5",                "Identity")
-check("id_divisors",       tau,            4,      "|div(6)|=τ=4 약수개수",          "Identity")
-check("id_abundance",      sigma//n,       phi,    "σ/n=φ=2 풍부지수",               "Identity")
-
-# ═══ R. 물리한계 증명 PhysLimit (8) ═══
-check("hales_hex",         n,              6,      "Hales 벌집 n=6 최적(BT-122)",   "PhysLimit")
-check("shannon_Mbps",      J2,             24,     "Shannon BLE 한계 J₂=24 Mbps",   "PhysLimit")
-check("carnot_eff_pct",    sopfr,          5,      "Carnot 체열 η=sopfr=5%",         "PhysLimit")
-check("zt_limit",          R6,             1,      "ZT=R(6)=1 단일재료한계",          "PhysLimit")
-check("fourier_clo_min",   1,              1,      "Fourier 최소 R-값 μ=1 clo",      "PhysLimit")
-check("conductor_limit_kS",sigma,          12,     "전도성고분자 σ=12 kS/m한계",      "PhysLimit")
-check("sensor_density_max",sigma**2,       144,    "배선피치한계 σ²=144/cm²",         "PhysLimit")
-check("wash_fatigue_max",  sigma**2,       144,    "접합피로 σ²=144회한계",            "PhysLimit")
-
-# ═══ S. 편직/니팅 Knit (8) ═══
-check("knit_fine_gauge",   J2,             24,     "fine 게이지 J₂=24",              "Knit")
-check("knit_med_gauge",    sigma,          12,     "medium 게이지 σ=12",             "Knit")
-check("knit_coarse_gauge", n,              6,      "coarse 게이지 n=6",              "Knit")
-check("knit_structures",   tau,            4,      "편직 기본구조 τ=4종",             "Knit")
-check("circular_needles",  sigma**2,       144,    "원형편직 바늘 σ²=144",            "Knit")
-check("course_wale_ratio", phi,            2,      "코스/웨일비 φ=2:1",               "Knit")
-check("warp_bars",         phi,            2,      "경편 바 수 φ=2(기본)",            "Knit")
-check("sock_needles",      sigma**2,       144,    "양말기 바늘 σ²=144",              "Knit")
-
-# ═══ T. 염색/마감 Dye (8) ═══
-check("primary_colors",    n//phi,         3,      "원색 n/φ=3(RGB/CMY)",            "Dye")
-check("secondary_colors",  n//phi,         3,      "2차색 n/φ=3",                     "Dye")
-check("color_wheel",       n,              6,      "기본 색환 n=6",                    "Dye")
-check("dye_temp_boil_C",   (sigma-phi)**2, 100,    "염색 끓는물 (σ-φ)²=100°C",       "Dye")
-check("dye_time_min",      sigma*sopfr,    60,     "염색시간 σ·sopfr=60분",            "Dye")
-check("mordant_metals",    n//phi,         3,      "매염제 금속 n/φ=3종",              "Dye")
-check("liquor_ratio_low",  sigma-phi,      10,     "욕비 하한 σ-φ=10:1",              "Dye")
-check("dye_pH_range_low",  n,              6,      "염색 pH 하한 n=6",                 "Dye")
-
-# ═══ U. 스마트센서 확장 SmartSensor (8) ═══
-check("imu_axes",          n,              6,      "IMU n=6축(BT-123)",               "SmartSensor")
-check("ecg_leads",         sigma,          12,     "ECG σ=12 리드(BT-284)",           "SmartSensor")
-check("spo2_wavelengths",  phi,            2,      "SpO₂ φ=2 파장",                   "SmartSensor")
-check("hrv_bands",         tau,            4,      "HRV τ=4 주파수대역",               "SmartSensor")
-check("gsr_electrode_cm",  phi,            2,      "GSR 전극간격 φ=2 cm",              "SmartSensor")
-check("resp_rate_high",    J2,             24,     "호흡 상한 J₂=24/min",              "SmartSensor")
-check("emg_channels",      sigma-tau,      8,      "EMG σ-τ=8 채널",                  "SmartSensor")
-check("temp_precision_C",  0.1,            0.1,    "체온정밀 1/(σ-φ)=0.1°C",           "SmartSensor")
-
-# ═══ 최종 리포트 ═══
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-FABRIC Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
-for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-for cat, (p,t) in sorted(by_cat.items()):
-    print(f"  {cat:15s} {p}/{t}")
-print("="*72)
-for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"[{status}] {r['category']:15s} {r['name']:28s} = {r['actual']}  ({r['formula']})")
-print("="*72)
-if passed == total:
-    print(f"ALL PASS — 🛸10 CERTIFIED (물리 한계 도달, {total}개 EXACT)")
-else:
-    print(f"FAILED: {total-passed} checks → 🛸9 강등")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

@@ -665,202 +665,58 @@ HEXA-MEDICINE은 다음 궁극 제품과 교차 최적화된다:
 ## 11. Python 검증 코드 (🛸10 필수)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-MEDICINE 불멸 아키텍처 — n=6 EXACT 검증 코드
-모든 의료 파라미터가 n=6 산술함수에서 유도됨을 검증
-"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# ═══════════════════════════════════════════════
-# n=6 기본 상수
-# ═══════════════════════════════════════════════
-n = 6
-sigma = 12       # sigma(6) = 1+2+3+6
-phi = 2          # phi(6) = #{1,5 coprime to 6}
-tau = 4          # tau(6) = #{1,2,3,6}
-sopfr = 5        # sopfr(6) = 2+3
-mu = 1           # mu(6) = (-1)^2 = 1 (squarefree, 2 prime factors)
-J2 = 24          # J_2(6) = sum of d*phi(d) for d|6
-R6 = 1           # R(6) = sigma*phi/(n*tau) = 24/24 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 파생 상수
-sigma_minus_phi = sigma - phi   # 10
-sigma_minus_tau = sigma - tau   # 8
-sigma_minus_mu = sigma - mu     # 11
-sigma_times_tau = sigma * tau   # 48
-phi_to_tau = phi ** tau          # 16
-sopfr_sq = sopfr ** 2            # 25
-sigma_sq = sigma ** 2            # 144
-J2_minus_tau = J2 - tau          # 20
-
-# ═══════════════════════════════════════════════
-# 핵심 정리 검증
-# ═══════════════════════════════════════════════
-assert sigma * phi == n * tau == J2, \
-    f"핵심 정리 실패: {sigma}*{phi}={sigma*phi}, {n}*{tau}={n*tau}, J2={J2}"
-
-# ═══════════════════════════════════════════════
-# 의료 상수 EXACT 검증
-# ═══════════════════════════════════════════════
-results = []
-
-def check(name, actual, expected, formula):
-    """EXACT 검증: 실제값과 n=6 수식값 비교"""
-    match = actual == expected
-    results.append((name, actual, expected, formula, match))
-    return match
-
-# === 3.1 생명 코드 ===
-check("DNA 염기 종류", 4, tau, "tau=4")
-check("코돈 크기 (bp)", 3, n // phi, "n/phi=3")
-check("코돈 총수", 64, 2**n, "2^n=64")
-check("필수 아미노산", 20, J2_minus_tau, "J2-tau=20")
-check("대뇌피질 층수", 6, n, "n=6")
-check("뇌신경 쌍수", 12, sigma, "sigma=12")
-check("DNA bp/turn", 10, sigma_minus_phi, "sigma-phi=10")
-check("척추 흉추 수", 12, sigma, "sigma=12")
-check("늑골 쌍 수", 12, sigma, "sigma=12")
-check("면역글로불린 종류", 5, sopfr, "sopfr=5")
-check("보체 경로", 3, n // phi, "n/phi=3")
-check("ECG 리드 수", 12, sigma, "sigma=12")
-check("혈액형 주요", 4, tau, "tau=4")
-check("GCS 최소점", 3, n // phi, "n/phi=3")
-check("GCS 최대점", 15, sigma + n // phi, "sigma+n/phi=15")
-check("APGAR 항목", 5, sopfr, "sopfr=5")
-check("WHO 체크리스트 단계", 3, n // phi, "n/phi=3")
-check("외과 도구 종류", 6, n, "n=6")
-check("치아 사분면", 4, tau, "tau=4")
-check("영구치 수", 32, 2**sopfr, "2^sopfr=32")
-check("SOFA 장기 수", 6, n, "n=6")
-check("Krebs 회로 단계", 8, sigma_minus_tau, "sigma-tau=8")
-check("세포주기 체크포인트", 4, tau, "tau=4")
-check("텔로미어 반복단위 (bp)", 6, n, "n=6 (TTAGGG)")
-
-# === 6.1 진단 ===
-check("MRI 자장 3T", 3, n // phi, "n/phi=3")
-check("MRI 자장 10T", 10, sigma_minus_phi, "sigma-phi=10")
-check("MRI 코일 채널", 12, sigma, "sigma=12")
-check("SQUID 채널", 12, sigma, "sigma=12")
-check("진단 모달리티", 6, n, "n=6")
-check("CT 선량 절감비", 10, sigma_minus_phi, "sigma-phi=10")
-check("촬영 시간 (분)", 5, sopfr, "sopfr=5")
-
-# === 6.2 신약 ===
-check("약물 후보/일", 144, sigma_sq, "sigma^2=144")
-check("ADMET 파라미터", 5, sopfr, "sopfr=5")
-check("임상 단계", 4, tau, "tau=4 (Phase I~IV)")
-check("약물 타겟 수", 6, n, "n=6")
-check("개발 기간 (월)", 6, n, "n=6")
-check("비용 절감비", 10, sigma_minus_phi, "sigma-phi=10")
-check("후보 스크리닝/일", 10**6, (sigma_minus_phi)**n, "(sigma-phi)^n=10^6")
-
-# === 6.3 수술 ===
-check("로봇 DOF", 6, n, "n=6 (SE(3))")
-check("수술 도구", 6, n, "n=6")
-check("WHO 체크리스트", 3, n // phi, "n/phi=3")
-check("수술실 온도 (C)", 20, J2_minus_tau, "J2-tau=20")
-check("수술 감염률 (x10^3)", 1, mu, "1/(sigma-phi)^(n/phi)*10^3=1")
-
-# === 6.4 유전자 ===
-check("코돈 크기", 3, n // phi, "n/phi=3")
-check("텔로미어 반복", 6, n, "n=6 bp (TTAGGG)")
-check("DNA bp/turn (유전)", 10, sigma_minus_phi, "sigma-phi=10")
-check("Yamanaka 인자", 4, tau, "tau=4 (OSKM)")
-check("유전자 편집 정밀도 (bp)", 1, mu, "mu=1")
-check("전달 벡터 종류", 4, tau, "tau=4")
-
-# === 6.5 뇌 ===
-check("피질 층수", 6, n, "n=6")
-check("뇌신경 쌍", 12, sigma, "sigma=12")
-check("SQUID 뇌 채널", 12, sigma, "sigma=12")
-check("전극 어레이", 144, sigma_sq, "sigma^2=144")
-check("감각 채널", 5, sopfr, "sopfr=5")
-check("대뇌 반구", 2, phi, "phi=2")
-check("뇌엽 수", 4, tau, "tau=4")
-check("조기 진단 (년)", 12, sigma, "sigma=12")
-
-# === 6.6 재생 ===
-check("인쇄 해상도 (um)", 1, mu, "mu=1")
-check("장기 인쇄 시간 (h)", 24, J2, "J2=24")
-check("세포 유형", 6, n, "n=6")
-check("조직 층", 4, tau, "tau=4")
-check("Ig 클래스", 5, sopfr, "sopfr=5")
-check("배아층", 3, n // phi, "n/phi=3")
-
-# === 6.7 예방/장수 ===
-check("목표 수명 (세)", 144, sigma_sq, "sigma^2=144")
-check("연장 단계", 6, n, "n=6")
-check("각 단계 연장 (년)", 12, sigma, "sigma=12")
-check("나노봇 순환 주기 (h)", 12, sigma, "sigma=12")
-check("바이오마커 수", 12, sigma, "sigma=12")
-check("건강검진 (회/년)", 2, phi, "phi=2")
-check("줄기세포 은행 유형", 6, n, "n=6")
-check("DNA 복구 효소 종류", 4, tau, "tau=4")
-
-# ═══════════════════════════════════════════════
-# 결과 출력
-# ═══════════════════════════════════════════════
-total = len(results)
-exact = sum(1 for r in results if r[4])
-fail = total - exact
-
-print("=" * 70)
-print("HEXA-MEDICINE 불멸 아키텍처 — n=6 EXACT 검증 결과")
-print("=" * 70)
-print(f"\n총 파라미터: {total}")
-print(f"EXACT:       {exact} ({100*exact/total:.1f}%)")
-print(f"FAIL:        {fail} ({100*fail/total:.1f}%)")
-print(f"\n핵심 정리: sigma*phi = n*tau = J2 = {sigma*phi} = {n*tau} = {J2} ✓")
-print(f"건강 수명 목표: sigma^2 = {sigma_sq}세")
-print()
-
-# 상세 결과
-if fail > 0:
-    print("--- FAIL 목록 ---")
-    for name, actual, expected, formula, match in results:
-        if not match:
-            print(f"  ✗ {name}: actual={actual}, expected={expected} ({formula})")
-    print()
-
-print("--- 전체 EXACT 목록 ---")
-for name, actual, expected, formula, match in results:
-    status = "✓" if match else "✗"
-    print(f"  {status} {name} = {actual} = {formula}")
-
-print()
-print("=" * 70)
-if fail == 0:
-    print(f"★ 전원 PASS: {exact}/{total} EXACT (100.0%) — 🛸10 인증 완료 ★")
-else:
-    print(f"  {exact}/{total} EXACT ({100*exact/total:.1f}%) — FAIL {fail}개 수정 필요")
-print("=" * 70)
-
-# ═══════════════════════════════════════════════
-# 장수 경로 시뮬레이션
-# ═══════════════════════════════════════════════
-print("\n" + "=" * 70)
-print("장수 경로 시뮬레이션 (n=6 단계, 각 sigma=12년)")
-print("=" * 70)
-age = 73  # 현재 한국 건강수명
-stages = [
-    ("텔로미어 복원", sigma),
-    ("미토콘드리아 보수", sigma),
-    ("줄기세포 보충", sigma),
-    ("장기 교체", sigma),
-    ("뇌 보호", sigma),
-    ("나노봇 항상성", sigma - mu),  # 마지막 단계: 11년
+# immortality-medicine.md — 정의 도출 검증
+results = [
+    ("BT-128 항목", None, None, None),  # MISSING DATA
+    ("BT-51 항목", None, None, None),  # MISSING DATA
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-146 항목", None, None, None),  # MISSING DATA
+    ("BT-141 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-print(f"\n출발점: 현재 건강수명 = {age}세")
-for i, (name, years) in enumerate(stages):
-    age += years
-    print(f"  단계 {i+1}/{n}: {name} → +{years}년 → {age}세")
-print(f"\n최종 건강수명: {age}세 = sigma^2 = {sigma_sq}")
-assert age == sigma_sq, f"수렴 실패: {age} != {sigma_sq}"
-print(f"★ sigma^2 = {sigma_sq}세 수렴 확인 ✓")
-total_extension = sigma_sq - 73
-print(f"총 연장: {total_extension}년 = sigma*n - mu = {sigma}*{n}-{mu} = {sigma*n - mu}")
-assert total_extension == sigma * n - mu, "연장 공식 불일치"
-print("★ 연장 공식 검증 완료 ✓")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

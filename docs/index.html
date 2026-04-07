@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>n=6 Reality Map 3D v6.0 — WebGL</title>
+<title>n=6 Reality Map 3D v6.1 — WebGL 풀세트</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #0a0a1a; color: #eee; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
@@ -114,6 +114,19 @@ body { background: #0a0a1a; color: #eee; font-family: 'Segoe UI', sans-serif; ov
     <option value="engineering">공학</option>
     <option value="convention">관습</option>
   </select>
+  <!-- v6.1 풀세트 UI: 토글 버튼 그룹 -->
+  <label style="font-size:11px;color:#aef;display:flex;align-items:center;gap:3px"><input type="checkbox" id="toggle-origin-mode"> origin 색상</label>
+  <label style="font-size:11px;color:#aef;display:flex;align-items:center;gap:3px"><input type="checkbox" id="toggle-domain-z" checked> Z=6도메인</label>
+  <button id="btn-chain-anim" style="background:#1565c0;color:#fff;border:0;border-radius:4px;padding:4px 10px;font-size:12px;cursor:pointer">▶ 인과사슬</button>
+</div>
+
+<!-- v6.1: BT 역참조 팝업 -->
+<div id="bt-popup" style="display:none;position:fixed;top:80px;left:50%;transform:translateX(-50%);background:rgba(10,10,30,0.97);border:1px solid #4fc3f7;border-radius:8px;padding:14px 18px;font-size:13px;z-index:300;max-width:520px;backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(79,195,247,0.25)">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <b id="bt-popup-title" style="color:#4fc3f7"></b>
+    <span id="bt-popup-close" style="cursor:pointer;color:#888;font-size:18px;padding:0 6px">×</span>
+  </div>
+  <div id="bt-popup-body" style="line-height:1.6"></div>
 </div>
 
 <!-- Three.js CDN (r175, ES module) -->
@@ -369,6 +382,86 @@ function initApp(DATA) {
   }
 
   scene.add(nodeMesh);
+
+  // ══════════════════════════════════════════════════════
+  // v6.1 풀세트: Z축 6도메인 분리 + origin 색상 모드
+  // ══════════════════════════════════════════════════════
+  // 6도메인 = n. level 7개 → 6 버킷으로 압축 (L5_material+L5_bio 동일 도메인)
+  const DOMAIN_OF_LEVEL = {
+    'L0_particle': 0, 'L1_atom': 1, 'L2_bond': 2,
+    'L3_molecule': 3, 'L4_genetic': 4, 'L5_material': 5, 'L5_bio': 5
+  };
+  const DOMAIN_COLORS_6 = [0xef5350, 0xff9800, 0xffee58, 0x66bb6a, 0x42a5f5, 0xab47bc]; // n=6
+  const ORIGIN_COLORS = {
+    'natural':     0x4fc3f7,
+    'engineering': 0xff7043,
+    'convention':  0xb0bec5
+  };
+  // 도메인별 Z 오프셋 (6분할, n=6 축)
+  const DOMAIN_Z_GAP = SCALE_Z * 4;
+  // 도메인 내 노드 카운터로 Z 좌표 산포
+  function applyDomainZ() {
+    const cnt = [0,0,0,0,0,0];
+    DATA.nodes.forEach(n => {
+      const d = DOMAIN_OF_LEVEL[n.level] !== undefined ? DOMAIN_OF_LEVEL[n.level] : 5;
+      n.domain6 = d;
+      const k = cnt[d]++;
+      // 도메인 슬라이스마다 Z 중앙값 + 산포
+      n.pz = (d - 2.5) * DOMAIN_Z_GAP + ((k % 5) - 2) * 12;
+    });
+  }
+  // 토글 OFF 시 원래 좌표 (기존 레이아웃 보존)
+  function restoreOriginalZ() {
+    const posCounter2 = {};
+    DATA.nodes.forEach(n => {
+      let lx = LEVEL_ORDER.indexOf(n.level); if (lx < 0) lx = LEVEL_ORDER.length;
+      let ty = THREAD_ORDER.indexOf(n.thread); if (ty < 0) ty = THREAD_ORDER.length;
+      const key = lx + ',' + ty;
+      if (!posCounter2[key]) posCounter2[key] = 0;
+      const zi = posCounter2[key]++;
+      n.pz = (zi - 3) * SCALE_Z;
+    });
+  }
+
+  // origin 색상 모드 활성 시 색상 오버라이드
+  let originColorMode = false;
+  let domainZMode = true;
+
+  // updateNodes 를 감싸는 v6.1 reflow: 좌표/색상 토글 후 엣지 라인 위치도 갱신해야 함
+  // → 엣지는 노드 좌표 캐시 기반 BufferGeometry 이므로 재구성 필요
+  let allEdgeLines = []; // 재구성 대상
+
+  function rebuildEdges() {
+    // 기존 엣지 제거
+    allEdgeLines.forEach(l => { if (l) { scene.remove(l); l.geometry.dispose(); l.material.dispose(); } });
+    allEdgeLines = [];
+    const tl = createEdgeLines(DATA.thread_edges, 0x555555, 0.15, 0, 0, true);
+    if (tl) { scene.add(tl); allEdgeLines.push(tl); }
+    const pl = createEdgeLines(DATA.parent_edges, 0xffffff, 0.4, 0, 0, true);
+    if (pl) { scene.add(pl); allEdgeLines.push(pl); }
+    const sl = createEdgeLines(DATA.sibling_edges, 0x888888, 0.25, 8, 8, true);
+    if (sl) { scene.add(sl); allEdgeLines.push(sl); }
+    const cl = createEdgeLines(DATA.edges, 0xffd700, 0.6, 12, 6, false);
+    if (cl) { scene.add(cl); allEdgeLines.push(cl); }
+  }
+
+  // updateNodes 색상 단계에 origin 오버라이드 hook
+  const _origUpdateNodes = updateNodes;
+  updateNodes = function() {
+    if (domainZMode) applyDomainZ(); else restoreOriginalZ();
+    _origUpdateNodes();
+    if (originColorMode) {
+      // 각 인스턴스 색상을 origin 으로 재칠
+      for (let i = 0; i < nodeCount; i++) {
+        const n = DATA.nodes[i];
+        const hex = ORIGIN_COLORS[n.origin] || 0x616161;
+        tempColor.setHex(hex);
+        nodeMesh.setColorAt(i, tempColor);
+      }
+      if (nodeMesh.instanceColor) nodeMesh.instanceColor.needsUpdate = true;
+    }
+  };
+
   updateNodes();
 
   // ══════════════════════════════════════════════════════
@@ -432,23 +525,15 @@ function initApp(DATA) {
   }
 
   // ── 엣지 그룹 ──
-  // 쓰레드 엣지 (가장 뒤, 투명)
-  const threadLines = createEdgeLines(DATA.thread_edges, 0x555555, 0.15, 0, 0, true);
-  if (threadLines) scene.add(threadLines);
-
-  // 부모 엣지 (흰색)
-  const parentLines = createEdgeLines(DATA.parent_edges, 0xffffff, 0.4, 0, 0, true);
-  if (parentLines) scene.add(parentLines);
-
-  // 형제 엣지 (회색, 대시)
-  const siblingLines = createEdgeLines(DATA.sibling_edges, 0x888888, 0.25, 8, 8, true);
-  if (siblingLines) scene.add(siblingLines);
-
-  // 인과 엣지 (금색, 대시) — edges 배열
-  const causalLines = createEdgeLines(DATA.edges, 0xffd700, 0.6, 12, 6, false);
-  if (causalLines) scene.add(causalLines);
+  // v6.1: 엣지를 allEdgeLines 배열에 등록 → 토글 시 재구성 가능
+  function _addEdge(line) { if (line) { line.userData.isEdge = true; scene.add(line); allEdgeLines.push(line); } }
+  _addEdge(createEdgeLines(DATA.thread_edges, 0x555555, 0.15, 0, 0, true));
+  _addEdge(createEdgeLines(DATA.parent_edges, 0xffffff, 0.4, 0, 0, true));
+  _addEdge(createEdgeLines(DATA.sibling_edges, 0x888888, 0.25, 8, 8, true));
+  _addEdge(createEdgeLines(DATA.edges, 0xffd700, 0.6, 12, 6, false));
 
   // ── 인과 엣지 화살표 콘 ──
+  const causalCones = []; // v6.1: 토글 시 재배치 위해 추적
   if (DATA.edges) {
     const coneGeo = new THREE.ConeGeometry(3, 10, 8);
     const coneMat = new THREE.MeshBasicMaterial({ color: 0xffd700, transparent: true, opacity: 0.7 });
@@ -470,7 +555,23 @@ function initApp(DATA) {
       const up = new THREE.Vector3(0, 1, 0);
       const quat = new THREE.Quaternion().setFromUnitVectors(up, dir);
       cone.setRotationFromQuaternion(quat);
+      cone.userData.edgeRef = e;
       scene.add(cone);
+      causalCones.push(cone);
+    });
+  }
+  // v6.1: 콘 위치 재계산 (Z 토글 시)
+  function repositionCones() {
+    causalCones.forEach(cone => {
+      const e = cone.userData.edgeRef;
+      const a = nodeById[e.from], b = nodeById[e.to];
+      if (!a || !b) return;
+      const dir = new THREE.Vector3(b.px - a.px, b.py - a.py, b.pz - a.pz);
+      if (dir.length() < 1) return;
+      dir.normalize();
+      cone.position.set(b.px - dir.x * 10, b.py - dir.y * 10, b.pz - dir.z * 10);
+      const up = new THREE.Vector3(0, 1, 0);
+      cone.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(up, dir));
     });
   }
 
@@ -654,6 +755,131 @@ function initApp(DATA) {
   });
 
   // ══════════════════════════════════════════════════════
+  // v6.1 풀세트: 토글 + BT 팝업 + 인과사슬 애니메이션
+  // ══════════════════════════════════════════════════════
+
+  // ── 노드 좌표 변경 후 엣지/콘 재구성 (좌표가 노드에 직접 박혀있어 BufferGeometry 갱신 필요) ──
+  function refreshScene() {
+    updateNodes();
+    rebuildEdges();
+    repositionCones();
+  }
+
+  // origin 색상 모드 토글
+  document.getElementById('toggle-origin-mode').addEventListener('change', (ev) => {
+    originColorMode = ev.target.checked;
+    updateNodes();
+  });
+  // Z=6도메인 분리 토글
+  document.getElementById('toggle-domain-z').addEventListener('change', (ev) => {
+    domainZMode = ev.target.checked;
+    refreshScene();
+  });
+
+  // ── BT 역참조 팝업 ──
+  const btPopup = document.getElementById('bt-popup');
+  document.getElementById('bt-popup-close').addEventListener('click', () => { btPopup.style.display = 'none'; });
+  function showBtPopup(node) {
+    document.getElementById('bt-popup-title').textContent = node.claim || node.id;
+    let html = '';
+    html += '<div style="color:#aaa;margin-bottom:6px"><b>id:</b> ' + node.id + '</div>';
+    if (node.bt_refs && node.bt_refs.length) {
+      html += '<div style="margin-bottom:8px"><b style="color:#ce93d8">BT 역참조 (' + node.bt_refs.length + ')</b><br>';
+      html += node.bt_refs.map(bt =>
+        '<span style="display:inline-block;background:#4a148c;color:#fff;padding:2px 8px;border-radius:3px;margin:3px 4px 0 0;font-size:11px">' + bt + '</span>'
+      ).join('');
+      html += '</div>';
+    } else {
+      html += '<div style="color:#888;margin-bottom:8px">(연결된 BT 없음)</div>';
+    }
+    if (node.measured) html += '<div><b>측정:</b> ' + node.measured + '</div>';
+    if (node.n6_expr)  html += '<div><b>n6 식:</b> <span style="color:#4fc3f7">' + node.n6_expr + '</span></div>';
+    if (node.cause)    html += '<div style="color:#aaa;margin-top:6px;font-size:12px">' + node.cause + '</div>';
+    if (node.source_url) html += '<div style="margin-top:8px"><a href="' + node.source_url + '" target="_blank" style="color:#4fc3f7">원본 문서 →</a></div>';
+    document.getElementById('bt-popup-body').innerHTML = html;
+    btPopup.style.display = 'block';
+  }
+
+  // 클릭 핸들러 확장: bt_refs 있으면 팝업, 없으면 source_url 폴백
+  // 기존 click 리스너는 source_url 만 열기 → 한번 더 가로채는 대신, capture 단계에서 처리
+  window.addEventListener('click', (event) => {
+    if (event.target.closest('#stats, #legend, #axes-label, #search-bar, #tooltip, #bt-popup')) return;
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    let hit = null;
+    const intersects = raycaster.intersectObject(nodeMesh, false);
+    if (intersects.length > 0) {
+      for (const isect of intersects) {
+        const idx = isect.instanceId;
+        if (idx !== undefined && nodeVisible[idx]) { hit = nodeIndexMap[idx]; break; }
+      }
+    }
+    if (!hit) {
+      const ray = raycaster.ray;
+      let minDist = Infinity;
+      for (let i = 0; i < nodeCount; i++) {
+        if (!nodeVisible[i]) continue;
+        const n = DATA.nodes[i];
+        const pos = new THREE.Vector3(n.px, n.py, n.pz);
+        const dist = ray.distanceToPoint(pos);
+        const threshold = nodeRadii[i] * 1.5;
+        if (dist < threshold && dist < minDist) { minDist = dist; hit = n; }
+      }
+    }
+    if (hit && hit.bt_refs && hit.bt_refs.length) {
+      showBtPopup(hit);
+      event.stopImmediatePropagation();
+    }
+  }, true);
+
+  // ── 인과사슬 애니메이션: 최대 5개 STRUCTURAL(또는 전체) 경로 자동 순회 ──
+  let chainAnimRunning = false;
+  let chainAnimTimer = null;
+  let chainHighlightNodes = new Set();
+  let chainPulsePhase = 0;
+  function pickChainPaths() {
+    // type 필드 없으므로 edges 배열 자체에서 5개 샘플
+    const all = (DATA.edges || []).slice();
+    return all.slice(0, 5);
+  }
+  function highlightChainStep(edge) {
+    if (!edge) return;
+    chainHighlightNodes.clear();
+    chainHighlightNodes.add(edge.from);
+    chainHighlightNodes.add(edge.to);
+    // 카메라 부드럽게 이동: 두 노드 중점
+    const a = nodeById[edge.from], b = nodeById[edge.to];
+    if (a && b) {
+      const cx = (a.px + b.px) / 2, cy = (a.py + b.py) / 2, cz = (a.pz + b.pz) / 2;
+      controls.target.set(cx, cy, cz);
+    }
+  }
+  function startChainAnim() {
+    const paths = pickChainPaths();
+    if (paths.length === 0) return;
+    chainAnimRunning = true;
+    document.getElementById('btn-chain-anim').textContent = '■ 정지';
+    let idx = 0;
+    const tick = () => {
+      if (!chainAnimRunning) return;
+      highlightChainStep(paths[idx % paths.length]);
+      idx++;
+      chainAnimTimer = setTimeout(tick, 2200);
+    };
+    tick();
+  }
+  function stopChainAnim() {
+    chainAnimRunning = false;
+    if (chainAnimTimer) clearTimeout(chainAnimTimer);
+    chainHighlightNodes.clear();
+    document.getElementById('btn-chain-anim').textContent = '▶ 인과사슬';
+  }
+  document.getElementById('btn-chain-anim').addEventListener('click', () => {
+    if (chainAnimRunning) stopChainAnim(); else startChainAnim();
+  });
+
+  // ══════════════════════════════════════════════════════
   // 반응형 리사이즈
   // ══════════════════════════════════════════════════════
   window.addEventListener('resize', () => {
@@ -676,6 +902,21 @@ function initApp(DATA) {
       const pulse = 0.9 + 0.1 * Math.sin(t * 2 + i * 0.5);
       sprite.material.opacity = sprite.material.opacity * pulse;
     });
+
+    // v6.1: 인과사슬 노드 강조 펄스 (해당 인스턴스 스케일 박동)
+    if (chainAnimRunning && chainHighlightNodes.size > 0) {
+      const pulse = 1.0 + 0.4 * Math.sin(t * 6);
+      for (let i = 0; i < nodeCount; i++) {
+        const n = DATA.nodes[i];
+        if (chainHighlightNodes.has(n.id) && nodeVisible[i]) {
+          dummy.position.set(n.px, n.py, n.pz);
+          dummy.scale.setScalar(nodeRadii[i] * pulse * 1.6);
+          dummy.updateMatrix();
+          nodeMesh.setMatrixAt(i, dummy.matrix);
+        }
+      }
+      nodeMesh.instanceMatrix.needsUpdate = true;
+    }
 
     controls.update();
     renderer.render(scene, camera);

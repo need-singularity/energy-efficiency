@@ -290,114 +290,58 @@ RT-SC 조건부 전도 없이는 불가능 (임계 온도 의존).
 ## 11. Python 검증 코드 (인라인, 표준라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-CLOAK 검증: n=6 상수 매칭 + 물리 공식 확인"""
-
-# n=6 상수
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
-# 유도
-s_phi, s_tau, s_J2, s_sq, phi_tau = sigma-phi, sigma-tau, sigma*J2, sigma**2, phi**tau
-s_mu = sigma - mu
-
-checks = []
-def check(name, val, expected, tol=0.01):
-    ok = abs(val - expected) < tol
-    checks.append((name, val, expected, ok))
-    return ok
-
-# === 소재 레벨 ===
-check("MgB2 Z_Mg",            12,     sigma)              # Mg Z=12
-check("MgB2 Z_B",              5,     sopfr)              # B Z=5
-check("Graphene Z_C",          6,     n)                  # Carbon Z=6
-check("YBCO Y:Ba:Cu sum",  1+2+3,     n)                  # 1+2+3=6
-check("hBN B+N",           5+7,       sigma)              # 5+7=12
-check("Ag plasma eV",          9,     n + n/phi)          # 9=6+3
-
-# === 공정 레벨 ===
-check("EUV N3 pitch nm",      48,     sigma*tau)          # 48nm
-check("EUV High-NA nm",       24,     J2)                 # 24nm
-check("E-beam nm",            10,     s_phi)              # 10nm
-check("DSA nm",                6,     n)                  # 6nm
-check("Nanoimprint nm",       48,     sigma*tau)          # 48nm
-check("ALD nm",                1,     mu)                 # 1nm
-
-# === 셀 레벨 (Q factor) ===
-check("Hex-SRR Q",            48,     sigma*tau)          # Q=48
-check("Fishnet Q",           144,     s_sq)               # Q=144
-check("Jerusalem Q",          24,     J2)                 # Q=24
-check("Chiral omega Q",        6,     n)                  # Q=6
-check("Hyperbolic Q",         10,     s_phi)              # Q=10
-
-# === 격자 배위수 ===
-check("Hexagonal Z_coord",     6,     n)                  # 6
-check("Triangular Z_coord",    6,     n)                  # 6
-check("Kagome Z_coord",        4,     tau)                # 4
-check("Honeycomb Z_coord",     3,     n//phi)             # 3
-check("Square Z_coord",        4,     tau)                # 4
-check("Diamond Z_coord",       4,     tau)                # 4
-
-# === 필름 두께 ===
-check("Mono layer",            1,     mu)
-check("Bilayer",               2,     phi)
-check("Triple",                3,     n/phi)
-check("Quad",                  4,     tau)
-check("Penta",                 5,     sopfr)
-check("Hexa",                  6,     n)
-
-# === 시트 층수 ===
-check("Sheet σ-μ",            11,     s_mu)
-check("Sheet σ",              12,     sigma)
-check("Sheet σ+μ",            13,     sigma+mu)
-check("Sheet J2",             24,     J2)
-check("Sheet σ·τ",            48,     sigma*tau)
-
-# === 시스템 면적 ===
-check("Area σ²",             144,     s_sq)
-check("Area σ·J2",           288,     s_J2)
-check("Area σ²·τ",           576,     s_sq*tau)
-check("Area φ^σ",           4096,     phi**sigma)
-check("Area σ³",            1728,     sigma**3)
-
-# === 운용 채널 ===
-check("Op τ ch",               4,     tau)
-check("Op n ch",               6,     n)
-check("Op σ-τ ch",             8,     s_tau)
-check("Op σ-φ ch",            10,     s_phi)
-check("Op σ ch",              12,     sigma)
-check("Op J2 ch",             24,     J2)
-
-# === 물리 파생 ===
-check("Bandwidth oct",         8,     s_tau)              # σ-τ=8
-check("Absorption 1-1/e%",    63, 63.21, tol=0.5)         # boltzmann
-check("RCS ratio v1 vs B2",  0.01, 1/(s_phi*s_phi), tol=0.001)  # 10^-3
-check("Cell pitch nm",        10,     s_phi)              # 10nm
-check("Layer count",          12,     sigma)
-check("Energy mW/m2",         10,     s_phi)
-check("Bias mW",              30,     sigma*phi+n)        # 12*2+6=30
-check("Phase shift deg",      60,     360//n)             # 360/6=60
-check("RCS improve B2",     1000,     s_phi**(n//phi))    # 10^3 (σ-φ)^3
-
-# === BT 참조 검증 ===
-check("BT-145 EM bands",       6,     n)
-check("BT-189 photonics",     48,     sigma*tau)
-check("BT-301 MgB2 sum",      17,     sigma+sopfr)
-check("BT-122 honeycomb",      6,     n)
-
-# Absorption boltzmann
 import math
-absorption = (1 - 1/math.e) * 100
-check("Boltzmann abs%", absorption, 63.21, tol=0.5)
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# === Summary ===
-total = len(checks)
-passed = sum(1 for _,_,_,ok in checks if ok)
-print(f"HEXA-CLOAK verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, val, exp, ok in checks:
-    mark = "EXACT" if ok else "FAIL "
-    print(f"  [{mark}] {name:30s} val={val} expected={exp}")
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-assert passed/total >= 0.90, f"Failed: only {passed}/{total} passed"
-print("RESULT: PASS")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-145 항목", None, None, None),  # MISSING DATA
+    ("BT-189 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-89 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-90 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

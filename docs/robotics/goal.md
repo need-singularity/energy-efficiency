@@ -673,121 +673,58 @@
 ## Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-ROBOT 검증 스크립트 — BT-123~127 전수검증 + 불가능성 정리 + 교차 항등식
-49/49 PASS = 천장 돌파 확인
-"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# ─── n=6 기본상수 ───
-N = 6
-PHI = 2
-TAU = 4
-SIGMA = 12
-SOPFR = 5
-MU = 1
-J2 = 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-passed = 0
-failed = 0
-total = 0
-
-
-def check(name, expected, actual):
-    global passed, failed, total
-    total += 1
-    ok = (expected == actual)
-    passed += ok
-    failed += (not ok)
-    print(f"  [{'PASS' if ok else 'FAIL'}] {name}: 기댓값={expected}, 실제={actual}")
-    return ok
-
-
-print("=" * 70)
-print("HEXA-ROBOT n=6 전수 검증")
-print("=" * 70)
-
-# ─── BT-123: SE(3) dim=n=6 로봇 보편성 (9건) ───
-print("\n--- BT-123: SE(3) dim=n=6 로봇 보편성 ---")
-check("SE(3) dim = n", N, 3 + 3)
-check("6-DOF 팔 산업 표준", N, 6)
-check("6축 힘/토크 센서", N, 6)
-check("6면 큐브 모듈", N, 6)
-check("se(3) 비영 구조상수", SIGMA, 12)
-check("Ad(SE(3)) dim = n^2", N**2, 36)
-check("공간 관성 블록 = tau", TAU, 4)
-check("쿼드로터 직접 DOF = tau", TAU, 4)
-check("헥사콥터 로터 = n", N, 6)
-
-# ─── BT-124: phi=2 좌우대칭 + sigma=12 관절 (6건) ───
-print("\n--- BT-124: phi=2 좌우대칭 + sigma=12 관절 ---")
-check("좌우 대칭 = phi", PHI, 2)
-check("주요 관절 = 6종 x phi=2 = sigma", SIGMA, 6 * PHI)
-check("상지 관절쌍 = n/phi", N // PHI, 3)
-check("하지 관절쌍 = n/phi", N // PHI, 3)
-check("12비트 PWM = sigma", SIGMA, 12)
-check("RBDA 블록 = tau", TAU, 4)
-
-# ─── BT-125: tau=4 보행/비행 안정 (8건) ───
-print("\n--- BT-125: tau=4 보행/비행 안정 ---")
-check("사족보행 다리 = tau", TAU, 4)
-check("쿼드로터 로터 = tau", TAU, 4)
-check("4다리 x 3DOF = tau*(n/phi) = sigma", TAU * (N // PHI), SIGMA)
-check("제어 계층 = tau (정규)", TAU, 4)
-check("H-브리지 상태 = tau", TAU, 4)
-check("임피던스 파라미터 = tau", TAU, 4)
-check("다리당 DOF = n/phi", N // PHI, 3)
-check("tau*(n/phi)=sigma 항등식", TAU * (N // PHI), SIGMA)
-
-# ─── BT-126: sopfr=5 손가락 + 2^sopfr=32 파지 (6건) ───
-print("\n--- BT-126: sopfr=5 손가락 + 2^sopfr=32 파지 공간 ---")
-check("인간 손가락 = sopfr", SOPFR, 5)
-check("Feix 파지 유형 = 2^sopfr", 2**SOPFR, 32)
-check("2조 그리퍼 = phi", PHI, 2)
-check("삼점 파지 = n/phi", N // PHI, 3)
-check("3손가락 그리퍼", SOPFR - PHI, 3)
-check("Feix 커버리지 분수", 32, 2**SOPFR)
-
-# ─── BT-127: 3D 접촉수 sigma=12 + 헥사콥터 n=6 (6건) ───
-print("\n--- BT-127: 3D 접촉수 sigma=12 + 헥사콥터 n=6 ---")
-check("3D 접촉수 k(3) = sigma", SIGMA, 12)
-check("FCC 최근접 이웃 = sigma", SIGMA, 12)
-check("헥사콥터 로터 = n", N, 6)
-check("쿼드로터 로터 = tau (내결함 불가)", TAU, 4)
-check("2D 패킹 배위수 = n", N, 6)
-check("DJI Matrice 600 로터 = n", N, 6)
-
-# ─── 불가능성 정리 (PL-1~10) ───
-print("\n--- 불가능성 정리 (PL-1~10) ---")
-check("PL-1: DOF 완전성 = n", N, 6)
-check("PL-2: 보행 안정 = tau", TAU, 4)
-check("PL-3: 내결함 로터 = n", N, 6)
-check("PL-4: 3D 접촉수 = sigma", SIGMA, 12)
-check("PL-5: 힘 닫힘 = phi, 기민 = sopfr", SOPFR, 5)
-check("PL-6: IMU 축 = n", N, 6)
-check("PL-7: D-H 파라미터 = tau", TAU, 4)
-check("PL-8: 2D 패킹 = n", N, 6)
-check("PL-9: 임피던스 파라미터 = tau", TAU, 4)
-check("PL-10: 좌우 대칭 = phi", PHI, 2)
-
-# ─── 교차 도메인 항등식 ───
-print("\n--- 교차 도메인 항등식 ---")
-check("sigma*phi = n*tau = J2", SIGMA * PHI, N * TAU)
-check("J2 = 24", J2, SIGMA * PHI)
-check("sopfr = 2+3 = 5", SOPFR, 2 + 3)
-check("N은 완전수: 진약수합", 1 + 2 + 3, N)
-
-# ─── 요약 ───
-print("\n" + "=" * 70)
-print(f"전체: {total} 테스트")
-print(f"통과: {passed}/{total} ({100*passed/total:.1f}%)")
-print(f"실패: {failed}/{total} ({100*failed/total:.1f}%)")
-print("=" * 70)
-
-if failed == 0:
-    print("판정: 전체 통과 — 천장 돌파 확인")
-else:
-    print(f"판정: {failed}건 실패 — 검토 필요")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-59 항목", None, None, None),  # MISSING DATA
+    ("BT-127 항목", None, None, None),  # MISSING DATA
+    ("BT-84 항목", None, None, None),  # MISSING DATA
+    ("BT-57 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

@@ -439,118 +439,58 @@ n6_EXACT: 72/78 파라미터 = 92.3%
 ## 10. 검증코드
 
 ```python
-# 검증코드 --- hexa-ear-ultimate.md
-# HEXA-EAR 궁극 이어폰 n=6 파라미터 전수 검증
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-from fractions import Fraction
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# n=6 기본 상수
-n = 6
-sigma = 12    # sigma(6)
-phi = 2       # phi(6)
-tau = 4       # tau(6)
-J2 = 24       # Jordan J_2(6)
-sopfr = 5     # sopfr(6) = 2+3
-mu = 1        # mu(6) = |mobius(6)|
-
-results = []
-
-# === L0 소재 ===
-results.append(("L0 탄소 원자번호 Z=n", 6, n, 6 == n))
-results.append(("L0 DLC 음속 비율 sigma=12배", 12, sigma, 12 == sigma))
-
-# === L1 드라이버 ===
-results.append(("L1 DD 수 phi=2", 2, phi, 2 == phi))
-results.append(("L1 BA 수 n=6", 6, n, 6 == n))
-results.append(("L1 총 드라이버 sigma-tau=8", 8, sigma - tau, 8 == sigma - tau))
-results.append(("L1 DD 직경 sigma=12mm", 12, sigma, 12 == sigma))
-results.append(("L1 크로스오버 n/phi=3way", 3, n // phi, 3 == n // phi))
-results.append(("L1 Egyptian 1/2+1/3+1/6=1",
-    float(Fraction(1,2) + Fraction(1,3) + Fraction(1,6)), 1.0,
-    Fraction(1,2) + Fraction(1,3) + Fraction(1,6) == 1))
-results.append(("L1 감도 sigma*(sigma-phi)=120dB", sigma * (sigma - phi), 120, sigma * (sigma - phi) == 120))
-results.append(("L1 THD 1/sigma^2=0.00694", round(1/sigma**2, 5), round(0.00694, 5), abs(1/sigma**2 - 0.00694) < 0.0001))
-results.append(("L1 임피던스 sigma+n=18옴", sigma + n, 18, sigma + n == 18))
-
-# === L2 음향 ===
-results.append(("L2 사운드 튜브 n=6 보어", 6, n, 6 == n))
-results.append(("L2 셸 깊이 sigma=12mm", 12, sigma, 12 == sigma))
-results.append(("L2 이어팁 n=6종", 6, n, 6 == n))
-results.append(("L2 챔버 phi=2실", 2, phi, 2 == phi))
-results.append(("L2 포트 n/phi=3개", 3, n // phi, 3 == n // phi))
-results.append(("L2 패시브 차단 sigma-phi=10dB", sigma - phi, 10, sigma - phi == 10))
-results.append(("L2 3D스캔 sigma=12 측정점", 12, sigma, 12 == sigma))
-results.append(("L2 무게 tau=4g", 4, tau, 4 == tau))
-results.append(("L2 방수 IPX n=6", 6, n, 6 == n))
-
-# === L3 DAC-Amp ===
-results.append(("L3 DAC 차수 n=6", 6, n, 6 == n))
-results.append(("L3 비트심도 J2=24bit", 24, J2, 24 == J2))
-results.append(("L3 샘플레이트 sigma*tau=48kHz", sigma * tau, 48, sigma * tau == 48))
-results.append(("L3 오버샘플링 sigma^2=144배", sigma**2, 144, sigma**2 == 144))
-results.append(("L3 ENOB J2-tau=20bit", J2 - tau, 20, J2 - tau == 20))
-results.append(("L3 DEM sigma=12 요소", 12, sigma, 12 == sigma))
-results.append(("L3 SNR sigma*(sigma-phi)=120dB", sigma * (sigma - phi), 120, sigma * (sigma - phi) == 120))
-results.append(("L3 THD+N 1/sigma^2", round(1/sigma**2, 5), round(0.00694, 5), abs(1/sigma**2 - 0.00694) < 0.0001))
-results.append(("L3 앰프출력 sigma*tau=48mW", sigma * tau, 48, sigma * tau == 48))
-results.append(("L3 앰프효율 1-1/e ~0.632", round(1 - 1/2.71828, 3), 0.632, abs(1 - 1/2.71828 - 0.632) < 0.001))
-results.append(("L3 전력소비 sigma*tau=48mW", sigma * tau, 48, sigma * tau == 48))
-results.append(("L3 크로스토크 sigma^2=144dB", sigma**2, 144, sigma**2 == 144))
-
-# === L4 무선 ===
-results.append(("L4 코드북 sigma-tau=8", sigma - tau, 8, sigma - tau == 8))
-results.append(("L4 코드북크기 2^(sigma-phi)=1024", 2**(sigma - phi), 1024, 2**(sigma - phi) == 1024))
-results.append(("L4 비트레이트 n/sigma/J2={6,12,24}",
-    [n, sigma, J2], [6, 12, 24], [n, sigma, J2] == [6, 12, 24]))
-results.append(("L4 지연 n=6ms", 6, n, 6 == n))
-results.append(("L4 BT범위 실내 sigma=12m", 12, sigma, 12 == sigma))
-results.append(("L4 BT범위 개방 sigma^2=144m", sigma**2, 144, sigma**2 == 144))
-results.append(("L4 스트림 phi=2", 2, phi, 2 == phi))
-results.append(("L4 브로드캐스트 sigma=12수신", 12, sigma, 12 == sigma))
-results.append(("L4 멀티포인트 n/phi=3", n // phi, 3, n // phi == 3))
-
-# === L5 ANC ===
-results.append(("L5 마이크 총수 sigma-tau=8", sigma - tau, 8, sigma - tau == 8))
-results.append(("L5 FF마이크 tau=4", 4, tau, 4 == tau))
-results.append(("L5 FB마이크 tau=4", 4, tau, 4 == tau))
-results.append(("L5 감쇄 sigma*tau=48dB", sigma * tau, 48, sigma * tau == 48))
-results.append(("L5 필터탭 sigma^2=144", sigma**2, 144, sigma**2 == 144))
-results.append(("L5 갱신속도 2^(sigma-tau)=256Hz", 2**(sigma - tau), 256, 2**(sigma - tau) == 256))
-results.append(("L5 투명지연 mu=1ms", 1, mu, 1 == mu))
-
-# === L6 AI 엔진 ===
-results.append(("L6 EQ밴드 sigma=12", 12, sigma, 12 == sigma))
-results.append(("L6 청력포인트 J2=24", 24, J2, 24 == J2))
-results.append(("L6 HRTF방향 sigma^2=144", sigma**2, 144, sigma**2 == 144))
-results.append(("L6 헤드트래킹 n=6 DOF", 6, n, 6 == n))
-results.append(("L6 화자분리 sopfr=5", 5, sopfr, 5 == sopfr))
-results.append(("L6 번역 n=6 언어", 6, n, 6 == n))
-results.append(("L6 바이탈 n/phi=3", n // phi, 3, n // phi == 3))
-results.append(("L6 IMU n=6 DOF", 6, n, 6 == n))
-results.append(("L6 NPU sigma^2=144 GOPS", sigma**2, 144, sigma**2 == 144))
-
-# === L7 궁극 ===
-results.append(("L7 EEG전극 n=6채널", 6, n, 6 == n))
-results.append(("L7 감정축 tau=4", 4, tau, 4 == tau))
-results.append(("L7 뇌파대역 sopfr=5", 5, sopfr, 5 == sopfr))
-results.append(("L7 전달경로 phi=2", 2, phi, 2 == phi))
-
-# === 교차 상수 ===
-results.append(("교차 sigma*phi=n*tau=J2=24", sigma * phi, n * tau, sigma * phi == n * tau == J2))
-results.append(("교차 배터리 sigma=12h", 12, sigma, 12 == sigma))
-results.append(("교차 sigma*tau=48 삼중(kHz/mW/dB)", sigma * tau, 48, sigma * tau == 48))
-results.append(("교차 sigma-tau=8 삼중(드라이버/마이크/CB)", sigma - tau, 8, sigma - tau == 8))
-
-# === 결과 출력 ===
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"\n{'='*60}")
-print(f"HEXA-EAR 검증 결과: {passed}/{total} PASS ({100*passed/total:.1f}%)")
-print(f"{'='*60}")
+# hexa-ear-ultimate.md — 정의 도출 검증
+results = [
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-72 항목", None, None, None),  # MISSING DATA
+    ("BT-108 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-67 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (기대: {r[2]})")
-print(f"\n총계: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

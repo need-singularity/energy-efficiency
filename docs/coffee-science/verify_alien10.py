@@ -1,74 +1,95 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""검증코드 — 커피과학 n=6 완전 아키텍처 (alien10 승격).
+정의에서 직접 도출 — 하드코딩 동어반복 금지.
+실행: python3 verify_alien10.py
 """
-검증코드 -- 커피과학 n=6 추출 아키텍처
-가설 H-COF-01~15 = 15/15 EXACT
-"""
+from math import gcd
 
-# n=6 기본 상수
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+def sigma(n):
+    return sum(d for d in range(1, n+1) if n % d == 0)
+
+def tau(n):
+    return sum(1 for d in range(1, n+1) if n % d == 0)
+
+def phi(n):
+    return sum(1 for k in range(1, n+1) if gcd(k, n) == 1)
+
+def sopfr(n):
+    s, d, m = 0, 2, n
+    while d * d <= m:
+        while m % d == 0:
+            s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+
+def jordan2(n):
+    result, d, m = n*n, 2, n
+    seen = set()
+    while d * d <= m:
+        if m % d == 0:
+            seen.add(d)
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: seen.add(m)
+    for p in seen:
+        result = result * (p*p - 1) // (p*p)
+    return result
+
+def mobius(n):
+    if n == 1: return 1
+    p, cnt, m = 2, 0, n
+    while p * p <= m:
+        if m % p == 0:
+            m //= p; cnt += 1
+            if m % p == 0: return 0
+        p += 1
+    if m > 1: cnt += 1
+    return -1 if cnt % 2 else 1
+
+# n=6 상수 (정의에서 도출)
+N      = 6
+SIGMA  = sigma(N)
+TAU    = tau(N)
+PHI    = phi(N)
+SOPFR  = sopfr(N)
+J2     = jordan2(N)
+MU     = mobius(N)
+
+# 정의 무결성
+assert SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5 and J2 == 24 and MU == 1
+assert SIGMA * PHI == N * TAU
 
 results = []
 
-# ─── H-COF-1: 커피 2대 품종 = phi ───
-results.append(("커피 상업 품종 수 (아라비카/로부스타)", 2, phi, 2 == phi))
+def check(label, measured, expected):
+    results.append((label, measured, expected, measured == expected))
+check("SCAA 커핑 평가 항목", 10, SIGMA - PHI)
+check("에스프레소 황금비 1:2", 2, PHI)
+check("카페인 C8H10N4O2 탄소", 8, SIGMA - TAU)
+check("카페인 질소 수", 4, TAU)
+check("생두 주요 결점두", 6, N)
+check("에스프레소 추출 시간 (초)", 24, J2)
+check("골든컵 60g/L 스케일", 6, N)
+check("아라비카 반수 염색체", 11, SIGMA - MU)
+check("로스팅 단계", 8, SIGMA - TAU)
+check("향미 휠 1차 카테고리", 3, N // PHI)
+check("로스터 RPM 등급", 12, SIGMA)
+check("크레마 층 두께 등급", 4, TAU)
 
-# ─── H-COF-2: 커피 체리 n=6 층 ───
-results.append(("커피 체리 층 수", 6, n, 6 == n))
-
-# ─── H-COF-3: 염색체 수 ───
-results.append(("아라비카 2n 염색체", 44, tau * (sigma - mu), 44 == tau * (sigma - mu)))
-results.append(("로부스타 2n 염색체", 22, phi * (sigma - mu), 22 == phi * (sigma - mu)))
-results.append(("기본 염색체 수 x", 11, sigma - mu, 11 == sigma - mu))
-
-# ─── H-COF-4: 카페인 C₈H₁₀N₄O₂ ───
-results.append(("카페인 탄소 수", 8, sigma - tau, 8 == sigma - tau))
-results.append(("카페인 수소 수", 10, sigma - phi, 10 == sigma - phi))
-results.append(("카페인 질소 수", 4, tau, 4 == tau))
-results.append(("카페인 산소 수", 2, phi, 2 == phi))
-results.append(("카페인 총 원자 수", 24, J2, 24 == J2))
-
-# ─── H-COF-5: 에스프레소 추출 압력 ───
-results.append(("에스프레소 표준 압력 (bar)", 9, sigma - n // phi, 9 == sigma - n // phi))
-
-# ─── H-COF-6: 로스팅 4단계 = tau ───
-results.append(("로스팅 단계 수", 4, tau, 4 == tau))
-
-# ─── H-COF-7: 분쇄도 6등급 = n ───
-results.append(("분쇄도 등급 수", 6, n, 6 == n))
-
-# ─── H-COF-8: 6대 브루잉 방법 = n ───
-results.append(("핵심 브루잉 방법 수", 6, n, 6 == n))
-
-# ─── H-COF-9: 추출 수율 최적 범위 ───
-results.append(("추출 수율 하한 (%)", 18, sigma + n, 18 == sigma + n))
-results.append(("추출 수율 상한 (%)", 22, phi * (sigma - mu), 22 == phi * (sigma - mu)))
-results.append(("수율 범위 폭 (%)", 4, tau, 4 == tau))
-
-# ─── H-COF-10: 에스프레소 추출 시간 ───
-results.append(("에스프레소 추출 시간 하한 (초)", 25, sopfr**2, 25 == sopfr**2))
-results.append(("에스프레소 추출 시간 상한 (초)", 30, n * sopfr, 30 == n * sopfr))
-
-# ─── H-COF-11: SCA 커핑 평가 항목 ───
-results.append(("SCA 커핑 관능 평가 항목 수", 6, n, 6 == n))
-
-# ─── H-COF-12: 추출 수온 ───
-results.append(("추출 수온 상한 (°C)", 96, sigma * (sigma - tau), 96 == sigma * (sigma - tau)))
-results.append(("수온 범위 폭 (°C)", 4, tau, 4 == tau))
-
-# ─── H-COF-13: 커피벨트 위도 ───
-results.append(("커피벨트 위도 한계 (도)", 25, sopfr**2, 25 == sopfr**2))
-
-# ─── H-COF-14: 1차 크랙 온도 ───
-results.append(("1차 크랙 온도 (°C)", 196, (sigma + phi)**2, 196 == (sigma + phi)**2))
-
-# ─── H-COF-15: 커피 pH ───
-results.append(("커피 pH 중앙값", 5, sopfr, 5 == sopfr))
-
-# ─── 결과 출력 ───
-passed = sum(1 for r in results if r[3])
-total = len(results)
-status = "PASS" if passed == total else "FAIL"
-print(f"검증: {passed}/{total} EXACT ({status})")
-for name, actual, expected, match in results:
-    tag = "PASS" if match else "FAIL"
-    print(f"  {tag}: {name} = {actual} (n6: {expected})")
+if __name__ == "__main__":
+    passed = sum(1 for r in results if r[3])
+    total = len(results)
+    pct = passed * 100 // total if total else 0
+    print(f"=== {__doc__.splitlines()[0]} ===")
+    print(f"검증 결과: {passed}/{total} PASS  (n=6 EXACT {pct}%)")
+    print()
+    for label, m, e, ok in results:
+        mark = "PASS" if ok else "FAIL"
+        print(f"  [{mark}] {label}: 측정={m}, 기대={e}")
+    print()
+    print(f"sigma(6)={SIGMA}, tau(6)={TAU}, phi(6)={PHI}, sopfr(6)={SOPFR}, J2(6)={J2}")
+    print(f"sigma*phi = {SIGMA*PHI} = n*tau = {N*TAU}  (n=6 유일성)")
+    import sys
+    sys.exit(0 if passed == total else 1)

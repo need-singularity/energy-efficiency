@@ -196,55 +196,49 @@ n=6 수식: σ-τ = 8, σ = 12, J₂ = 24
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""홀로그래피 n=6 가설 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-hypotheses = {
-    "H-HO-1: HeNe 633nm": (632.8, 633, 633),  # 근사
-    "H-HO-2: SLM 256 레벨": (256, phi**(sigma - tau), 256),
-    "H-HO-3a: 기록재 5000 lp/mm": (5000, sopfr * 10**(n // phi), 5000),
-    "H-HO-3b: DCG 10000 lp/mm": (10000, (sigma - phi) * 10**(n // phi), 10000),
-    "H-HO-4a: 가시광 하한 400nm": (400, tau * (sigma - phi)**2, 400),
-    "H-HO-4b: 가시광 상한 700nm": (700, (sigma - sopfr) * (sigma - phi)**2, 700),
-    "H-HO-5: Ar 514nm": (514.5, sopfr * (sigma - phi)**2 + (sigma + phi), 514),
-    "H-HO-6a: Full HD 2M": (2, phi, 2),
-    "H-HO-6b: 4K SLM 8M": (8, sigma - tau, 8),
-    "H-HO-7: 기록 각도 30도": (30, n * sopfr, 30),
-    "H-HO-8: CGH 8비트": (8, sigma - tau, 8),
-    "H-HO-9: 홀로그래피 6유형": (6, n, 6),
-    "H-HO-10: 코히어런스 30cm": (30, n * sopfr, 30),
-    "H-HO-11a: 레인보우 슬릿 1mm": (1, mu, 1),
-    "H-HO-11b: 레인보우 슬릿 2mm": (2, phi, 2),
-    "H-HO-12a: 멀티뷰 8시점": (8, sigma - tau, 8),
-    "H-HO-12b: 멀티뷰 12시점": (12, sigma, 12),
-    "H-HO-12c: 멀티뷰 24시점": (24, J2, 24),
-}
-
-print("=" * 65)
-print("홀로그래피 n=6 가설 검증 결과")
-print("=" * 65)
-
-exact = close = fail = 0
-for name, (actual, formula, predicted) in hypotheses.items():
-    if actual == 0:
-        error = 0 if predicted == 0 else 100
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        error = abs(actual - predicted) / abs(actual) * 100
-    if error < 0.5:
-        grade = "EXACT"
-        exact += 1
-    elif error < 5:
-        grade = "CLOSE"
-        close += 1
-    else:
-        grade = "FAIL"
-        fail += 1
-    status = "PASS" if error < 5 else "FAIL"
-    print(f"  {status} | {name}: 실제={actual}, 예측={predicted}, 오차={error:.2f}% [{grade}]")
-
-total = exact + close + fail
-print(f"\n총: {exact}/{total} EXACT ({exact/total*100:.0f}%), "
-      f"{close} CLOSE, {fail} FAIL")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

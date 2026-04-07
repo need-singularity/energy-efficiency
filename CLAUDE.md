@@ -63,7 +63,7 @@ TECS-L 수학 이론의 산업 실증 리포. 부모: https://github.com/need-si
 
 ## 핵심 정리 (증명 완료)
 σ(n)·φ(n) = n·τ(n) ⟺ n = 6 (n >= 2). 3개 독립 증명.
-증명: `docs/theorem-r1-uniqueness.md` | 현실 지도: `nexus/shared/reality_map.json` (144노드, 130 EXACT, 90.3%)
+증명: `docs/theorem-r1-uniqueness.md` | 현실 지도: `nexus/shared/reality_map.json` v8.0 (342노드, 291 EXACT, 4 MISS, z=9.04 전체/5.30 자연/8.70 큰수)
 
 ## 참조 링크 테이블
 

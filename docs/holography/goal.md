@@ -129,81 +129,58 @@
 ## Python 인라인 검증
 
 ```python
-"""HEXA-HOLO verification — n=6 상수 전수 검증 (표준 라이브러리 only)"""
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-checks = []
-def add(name, measured, formula_value, formula_str):
-    ok = (measured == formula_value)
-    checks.append((name, measured, formula_value, formula_str, ok))
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# ── L0~L4 소재/공정/코어/칩 ──
-add("메타셀 밀도(cells/mm)", 12, sigma, "σ")
-add("픽셀 ppi 3D", 288, sigma*J2, "σ·J₂")
-add("뷰 존(views)", 288, sigma*J2, "σ·J₂")
-add("깊이 레이어", 144, sigma**2, "σ²")
-add("hogel 개수", 144, sigma**2, "σ²")
-add("색 채널/축", 256, 2**(sigma-tau), "2^(σ-τ)")
-add("각해상도 분각(')", 10, sigma-phi, "σ-φ")
-add("갱신률 Hz", 24, J2, "J₂")
-add("위상 레벨", 24, J2, "J₂")
-add("비트 심도", 8, sigma-tau, "σ-τ")
-add("FOV 도", 60, sigma*sopfr, "σ·sopfr")
-add("subpixel", 12, sigma, "σ")
-add("LUT bits", 12, sigma, "σ")
-add("지연 ms", 12, sigma, "σ")
-add("voxel mm", 1, mu, "μ")
-add("회절 차수", 6, n, "n")
-add("parallax 레이어", 24, J2, "J₂")
-add("체적 cm 깊이", 48, sigma*tau, "σ·τ")
-add("프레임 버짓 ms", 24, J2, "J₂")
-
-# ── 파장 (nm) ──
-add("R 파장 nm", 720, n*sigma*sopfr*phi, "n·σ·sopfr·φ")
-add("G 파장 nm", 600, sigma*sopfr*(sigma-phi), "σ·sopfr·(σ-φ)")
-add("B 파장 nm", 480, J2*(J2-tau), "J₂·(J₂-τ)")
-add("파장 간격 nm", 120, sigma*(sigma-phi), "σ·(σ-φ)")
-
-# ── 색공간 ──
-add("색공간 3D", 256**3, (2**(sigma-tau))**3, "(2^(σ-τ))³")
-add("색상환 hue", 12, sigma, "σ")
-add("명도 레벨", 24, J2, "J₂")
-
-# ── L5~L7 시스템 ──
-add("IR 랜드마크", 48, sigma*tau, "σ·τ")
-add("Room volume ℓ", 1728, sigma**3, "σ³")
-add("시점 방향", 12, sigma, "σ")
-add("공간 seat", 6, n, "n")
-
-# ── 전력/효율 ──
-add("소비전력 W", 30, (sigma-phi)*n//phi, "(σ-φ)·n/φ")
-add("루미넌스 nits", 1000, (sigma-phi)**n//1000, "(σ-φ)^n/1000")
-add("meta fill factor %", 50, 100//phi, "100/φ")
-
-# ── 타이밍 ──
-add("REM-free latency ms", 12, sigma, "σ")
-add("motion-to-photon ms", 12, sigma, "σ")
-add("frame ms", 24, J2, "J₂")  # 1000/J2≈41.6 -> use J2 tag
-add("tracking rate Hz", 144, sigma**2, "σ²")
-
-# ── 구조 ──
-add("stack layers", 6, n, "n")
-add("driver bit", 12, sigma, "σ")
-add("DAC 채널", 144, sigma**2, "σ²")
-add("ADC bit", 12, sigma, "σ")
-add("bus lanes", 24, J2, "J₂")
-
-# 요약
-passed = sum(1 for c in checks if c[4])
-total = len(checks)
-pct = passed / total * 100
-print(f"HEXA-HOLO verification: {passed}/{total} EXACT ({pct:.1f}%)")
-print("FAIL:" if passed<total else "ALL PASS")
-for name, m, v, f, ok in checks:
-    if not ok:
-        print(f"  ✗ {name}: measured={m} formula={f}={v}")
-assert pct >= 90.0, f"n6 EXACT rate {pct:.1f}% < 90%"
-print("🛸10 gate: PASS")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-145 항목", None, None, None),  # MISSING DATA
+    ("BT-189 항목", None, None, None),  # MISSING DATA
+    ("BT-157 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-217 항목", None, None, None),  # MISSING DATA
+    ("BT-222 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (expected)**: `HEXA-HOLO verification: 42/42 EXACT (100.0%)` → 🛸10 gate PASS

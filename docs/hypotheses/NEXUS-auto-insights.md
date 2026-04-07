@@ -1,6 +1,6 @@
 ---
 title: NEXUS-6 자동 닫힘 인사이트 (auto-generated)
-date: 2026-04-07
+date: 2026-04-08
 source: nexus singularity-recursion closure sweep
 total_unique_closed: 98181
 generator: tools/publish-insights.sh

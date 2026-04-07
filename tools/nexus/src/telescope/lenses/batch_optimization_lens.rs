@@ -14,9 +14,9 @@ use crate::telescope::shared_data::SharedData;
 ///      - throughput score: batch_size / (1 + gradient_variance)
 ///   4. Select optimal batch size maximizing throughput * coverage
 ///   5. Compute composition ratios (how many from each stratum per batch)
-pub struct UbatchUoptimizationLens;
+pub struct BatchOptimizationLens;
 
-impl Lens for UbatchUoptimizationLens {
+impl Lens for BatchOptimizationLens {
     fn name(&self) -> &str {
         "batch_optimization"
     }
@@ -216,7 +216,7 @@ mod tests {
     #[test]
     fn test_scan_returns_nonempty() {
         let (data, n, d, shared) = make_test_data();
-        let lens = UbatchUoptimizationLens;
+        let lens = BatchOptimizationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan() must return non-empty result");
@@ -237,7 +237,7 @@ mod tests {
     #[test]
     fn test_strata_composition_sums_to_batch() {
         let (data, n, d, shared) = make_test_data();
-        let lens = UbatchUoptimizationLens;
+        let lens = BatchOptimizationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         let batch_size = result["optimal_batch_size"][0];

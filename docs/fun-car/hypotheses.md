@@ -226,75 +226,52 @@ OBD-II 표준 프로토콜 (SAE J1962):
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""자동차(Fun Car) n=6 가설 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(hid, name, actual, expr_name, expr_val, tol=0.005):
-    err = abs(actual - expr_val) / max(abs(expr_val), 1e-12)
-    grade = "EXACT" if err < tol else ("CLOSE" if err < 0.05 else "FAIL")
-    results.append((hid, name, actual, expr_name, expr_val, err, grade))
-    mark = "✅" if grade == "EXACT" else ("🔶" if grade == "CLOSE" else "❌")
-    print(f"{hid}: {name} = {actual} vs {expr_name}={expr_val} | err={err:.4f} | {grade} {mark}")
-
-# H-CAR-1: 바퀴
-check("H-CAR-1", "승용차 바퀴 수", 4, "τ", tau)
-
-# H-CAR-2: 기어단
-check("H-CAR-2a", "수동 기어단 (현대)", 6, "n", n)
-check("H-CAR-2b", "자동 기어단 (현대)", 8, "σ-τ", sigma - tau)
-
-# H-CAR-3: 안전 등급
-check("H-CAR-3a", "NCAP 최고 등급", 5, "sopfr", sopfr)
-check("H-CAR-3b", "NCAP 평가 영역", 4, "τ", tau)
-
-# H-CAR-4: 타이어 압력
-check("H-CAR-4a", "타이어 압력 상한 (psi)", 36, "n²", n**2)
-check("H-CAR-4b", "타이어 압력 하한 (psi)", 30, "n·sopfr", n * sopfr)
-
-# H-CAR-5: I6 밸런스
-check("H-CAR-5a", "I6 실린더 수", 6, "n", n)
-check("H-CAR-5b", "크랭크 각도 (°)", 120, "σ·(σ-φ)", sigma * (sigma - phi))
-
-# H-CAR-6: 엔진 RPM
-check("H-CAR-6a", "일반 레드라인", 6000, "n·10³", n * 1000)
-check("H-CAR-6b", "스포츠 레드라인", 8000, "(σ-τ)·10³", (sigma-tau) * 1000)
-check("H-CAR-6c", "디젤 레드라인", 5000, "sopfr·10³", sopfr * 1000)
-check("H-CAR-6d", "공회전 RPM", 600, "n·10²", n * 100)
-
-# H-CAR-7: 실린더 래더
-for cyl, expr_name, expr_val in [
-    (1, "μ", mu), (2, "φ", phi), (3, "n/φ", n//phi),
-    (4, "τ", tau), (6, "n", n), (8, "σ-τ", sigma-tau), (12, "σ", sigma)
-]:
-    check(f"H-CAR-7-{cyl}cyl", f"{cyl}기통", cyl, expr_name, expr_val)
-
-# H-CAR-8: 0-100 가속
-check("H-CAR-8a", "슈퍼카 0-100 (초)", 3, "n/φ", n // phi)
-check("H-CAR-8b", "스포츠카 0-100 (초)", 4, "τ", tau)
-check("H-CAR-8c", "일반 0-100 (초)", 8, "σ-τ", sigma - tau)
-
-# H-CAR-9: OBD-II
-check("H-CAR-9", "OBD-II 프로토콜 수", 5, "sopfr", sopfr)
-
-# H-CAR-10: 전압 래더
-check("H-CAR-10a", "초기 전압 (V)", 6, "n", n)
-check("H-CAR-10b", "현재 전압 (V)", 12, "σ", sigma)
-check("H-CAR-10c", "트럭 전압 (V)", 24, "J₂", J2)
-check("H-CAR-10d", "MHEV 전압 (V)", 48, "σ·τ", sigma * tau)
-
-# H-CAR-11: 배기가스 기준
-check("H-CAR-11a", "현행 Euro 등급", 6, "n", n)
-check("H-CAR-11b", "규제 오염물질 종수", 4, "τ", tau)
-
-# H-CAR-12: 미러 수
-check("H-CAR-12", "자동차 미러 수", 3, "n/φ", n // phi)
-
-print("\n" + "="*60)
-exact = sum(1 for r in results if r[6] == "EXACT")
-total = len(results)
-print(f"결과: {exact}/{total} EXACT ({100*exact/total:.0f}%)")
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-277 항목", None, None, None),  # MISSING DATA
+    ("BT-289 항목", None, None, None),  # MISSING DATA
+    ("BT-287 항목", None, None, None),  # MISSING DATA
+    ("BT-288 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

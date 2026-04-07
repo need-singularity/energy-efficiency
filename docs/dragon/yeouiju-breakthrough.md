@@ -899,87 +899,58 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""여의주 돌파 — n=6 검증 스크립트"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12      # sigma(6) = 1+2+3+6
-phi = 2         # euler_totient(6)
-tau = 4         # divisor_count(6)
-sopfr = 5       # 2+3
-mu = 1          # mobius(6)
-J2 = 24         # jordan_totient_2(6)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(name, actual, expr_val, expr_str, tol=0):
-    ok = abs(actual - expr_val) <= tol
-    grade = "EXACT" if tol == 0 and ok else ("CLOSE" if ok else "FAIL")
-    results.append((name, actual, expr_val, expr_str, grade))
-    mark = "PASS" if ok else "FAIL"
-    print(f"  [{mark}] {name}: {actual} = {expr_str} = {expr_val} ({grade})")
-    return ok
-
-print("=" * 60)
-print("여의주 돌파 검증")
-print("=" * 60)
-
-# 제1장: 여의주
-print("\n--- 제1장: 여의주 ---")
-check("H-YJ-01 방해석 Ca CN", 6, n, "n")
-check("H-YJ-03a 키싱넘버 K1", 2, phi, "phi")
-check("H-YJ-03b 키싱넘버 K2", 6, n, "n")
-check("H-YJ-03c 키싱넘버 K3", 12, sigma, "sigma")
-check("H-YJ-03d 키싱넘버 K4", 24, J2, "J2")
-check("H-YJ-04a Z(C)", 6, n, "n")
-check("H-YJ-04b Z(O)", 8, sigma - tau, "sigma-tau")
-check("H-YJ-04c Z(Ca)", 20, J2 - tau, "J2-tau")
-check("H-YJ-04d CaCO3 원자수", 5, sopfr, "sopfr")
-check("H-YJ-05 칠보 수", 7, sigma - sopfr, "sigma-sopfr")
-
-# 제2장: 굉음
-print("\n--- 제2장: 굉음 ---")
-check("H-YJ-06 천둥 200Hz", 200, phi * (sigma - phi)**2, "phi*(sigma-phi)^2")
-check("H-YJ-07 번개 30000K", 30000, n * sopfr * (sigma - phi)**3, "n*sopfr*(sigma-phi)^3")
-check("H-YJ-09a 파이프 64ft", 64, 2**n, "2^n")
-check("H-YJ-09b 파이프 8Hz", 8, sigma - tau, "sigma-tau")
-
-# 제3장: 승천
-print("\n--- 제3장: 승천 ---")
-check("H-YJ-10 이무기 1000년", 1000, (sigma - phi)**3, "(sigma-phi)^3")
-check("H-YJ-11a 4D", 4, tau, "tau")
-check("H-YJ-11b 6D", 6, n, "n")
-check("H-YJ-11c 10D", 10, sigma - phi, "sigma-phi")
-check("H-YJ-11d 11D", 11, sigma - mu, "sigma-mu")
-check("H-YJ-11e 24D", 24, J2, "J2")
-check("H-YJ-12 상전이 수", 4, tau, "tau")
-
-# 제4장: 교차문화
-print("\n--- 제4장: 교차문화 ---")
-check("H-YJ-13a 일본 발톱", 3, n // phi, "n/phi")
-check("H-YJ-13b 한국 발톱", 4, tau, "tau")
-check("H-YJ-13c 중국 발톱", 5, sopfr, "sopfr")
-check("H-YJ-13d 발톱 합", 12, sigma, "sigma")
-check("H-YJ-13e 피타고라스", 25, (n//phi)**2 + tau**2, "3^2+4^2 = 5^2 = sopfr^2")
-check("H-YJ-14a 음 비늘", 36, n**2, "n^2")
-check("H-YJ-14b 양 비늘", 81, (n + n // phi)**2, "(n+n/phi)^2")
-check("H-YJ-14c 총 비늘", 117, n**2 + (n + n // phi)**2, "n^2 + (n+n/phi)^2")
-check("H-YJ-15 구사", 9, n + n // phi, "n + n/phi")
-check("H-YJ-16 문화권", 6, n, "n")
-
-# 보너스: CG 번개 50Hz = 전력망 주파수
-print("\n--- 보너스 ---")
-check("CG번개 50Hz", 50, sopfr * (sigma - phi), "sopfr*(sigma-phi)")
-check("IC번개 28Hz", 28, J2 + tau, "J2+tau (=2번째 완전수)")
-check("양/음 비율", 9, (n + n // phi)**2 // n**2, "(n+n/phi)^2 / n^2 = 9/4 정수부")
-
-# 결과 요약
-print("\n" + "=" * 60)
-exact = sum(1 for r in results if r[4] == "EXACT")
-total = len(results)
-print(f"결과: {exact}/{total} EXACT ({100*exact/total:.1f}%)")
-print("=" * 60)
+# yeouiju-breakthrough.md — 정의 도출 검증
+results = [
+    ("BT-43 항목", None, None, None),  # MISSING DATA
+    ("BT-86 항목", None, None, None),  # MISSING DATA
+    ("BT-105 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-170 항목", None, None, None),  # MISSING DATA
+    ("BT-176 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-262 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

@@ -658,155 +658,58 @@ SFQ 로직은 자속양자(Phi_0 = h/2e = 2.07 x 10^-15 Wb)의 존재/부재로 
 ## 11. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-SCPU 🛸10 검증 스크립트
-상온 초전도 CPU n=6 EXACT 전수 검증
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-실행: python3 docs/room-temp-sc/superconducting-cpu.md  (코드 블록 추출 후)
-또는: python3 -c "exec(open('...').read())" 형태로 실행
-"""
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# === n=6 기본 상수 ===
-n = 6
-phi = 2        # phi(6) = 2
-tau = 4        # tau(6) = 4
-sigma = 12     # sigma(6) = 12
-mu = 1         # mu(6) = 1
-sopfr = 5      # sopfr(6) = 2+3 = 5
-J2 = 24        # J_2(6) = 24
-R6 = 1         # R(6) = 1
-
-# 유도 상수
-sigma_phi = sigma - phi      # 10
-sigma_tau = sigma - tau       # 8
-sigma_mu = sigma - mu         # 11
-sigma_sq = sigma ** 2         # 144
-phi_tau = phi ** tau           # 16
-sopfr_sq = sopfr ** 2         # 25
-
-results = []
-total = 0
-exact = 0
-
-def check(name, actual, expected, formula, tolerance=0.02):
-    global total, exact
-    total += 1
-    if expected == 0:
-        match = actual == 0
+# superconducting-cpu.md — 정의 도출 검증
+results = [
+    ("BT-90 항목", None, None, None),  # MISSING DATA
+    ("BT-28 항목", None, None, None),  # MISSING DATA
+    ("BT-69 항목", None, None, None),  # MISSING DATA
+    ("BT-306 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("BT-55 항목", None, None, None),  # MISSING DATA
+    ("BT-91 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        match = abs(actual - expected) / abs(expected) <= tolerance
-    grade = "EXACT" if match else "CLOSE" if abs(actual - expected) / max(abs(expected), 1) <= 0.1 else "FAIL"
-    if grade == "EXACT":
-        exact += 1
-    status = "PASS" if grade == "EXACT" else "----"
-    results.append((name, actual, expected, formula, grade))
-    print(f"  [{status}] {name}: {actual} == {expected} ({formula}) -> {grade}")
-    return grade
-
-print("=" * 70)
-print("HEXA-SCPU 🛸10 VERIFICATION")
-print("상온 초전도 CPU — n=6 파라미터 전수 검증")
-print("=" * 70)
-
-# === 1. 코어 아키텍처 ===
-print("\n--- 1. 코어 아키텍처 ---")
-check("SM count", 144, sigma_sq, "sigma^2 = 144")
-check("Clock (GHz)", 60, sigma * sopfr, "sigma * sopfr = 60")
-check("TDP ratio (CMOS/SC)", 1000, sigma_phi ** 3, "(sigma-phi)^3 = 1000")
-check("HBM (GB)", 288, sigma * J2, "sigma * J2 = 288")
-check("ECC savings (GB)", 24, J2, "J2 = 24")
-check("ALU per SM", 12, sigma, "sigma = 12")
-check("FPU per SM", 8, sigma_tau, "sigma - tau = 8")
-check("Registers per SM", 4096, 2 ** sigma, "2^sigma = 4096")
-check("L1 cache per SM (KB)", 256, 2 ** sigma_tau, "2^(sigma-tau) = 256")
-check("L2 cache (MB)", 48, sigma * tau, "sigma * tau = 48")
-check("Interconnect BW (TB/s)", 12, sigma, "sigma = 12")
-check("Memory BW (TB/s)", 24, J2, "J2 = 24")
-check("Die area (mm^2)", 144, sigma_sq, "sigma^2 = 144")
-
-# === 2. Josephson Junction ===
-print("\n--- 2. Josephson Junction 파라미터 ---")
-check("Phi_0 denominator (2e)", 2, phi, "phi = 2")
-check("JJ types (SIS/SNS/bridge)", 3, n // phi, "n/phi = 3")
-check("RF SQUID junctions", 1, mu, "mu = 1")
-check("DC SQUID junctions", 2, phi, "phi = 2")
-check("Flux qubit junctions", 3, n // phi, "n/phi = 3")
-check("Cooper pair electrons", 2, phi, "phi = 2")
-check("Andreev reflection charge (e)", 2, phi, "phi = 2")
-check("Jc exponent (10^x)", 6, n, "(sigma-phi)^n = 10^6, x=n")
-
-# === 3. SFQ 로직 ===
-print("\n--- 3. SFQ 로직 ---")
-check("Logic families", 4, tau, "tau = 4")
-check("RSFQ max clock (GHz)", 60, sigma * sopfr, "sigma * sopfr = 60")
-check("Fanout", 6, n, "n = 6")
-check("Pipeline stages", 5, sopfr, "sopfr = 5")
-check("JTL speed (c/x)", 3, n // phi, "c/(n/phi) = c/3")
-check("Bias margin (%)", 20, J2 - tau, "J2 - tau = 20")
-
-# === 4. 시스템 ===
-print("\n--- 4. 시스템 ---")
-check("PUE", 1.0, R6, "R(6) = 1.0")
-check("Cluster nodes", 12, sigma, "sigma = 12")
-check("Chiplets per die", 6, n, "n = 6")
-check("HBM stack layers", 12, sigma, "sigma = 12")
-check("Chip temp (K)", 300, sopfr_sq * sigma, "sopfr^2 * sigma = 300")
-check("CMOS voltage ratio", 1000, sigma_phi ** 3, "(sigma-phi)^3 = 1000")
-
-# === 5. BT 연결 검증 ===
-print("\n--- 5. BT 수치 검증 ---")
-check("BT-90: K6 kissing * phi", 144, 72 * phi, "72 * phi = 144")
-check("BT-91: ECC J2 savings", 24, J2, "J2 = 24")
-check("BT-92: KO nontrivial", 5, sopfr, "sopfr = 5")
-check("BT-306: div(6) set max", 3, n // phi, "max(div(6)) = n/phi = 3")
-check("BT-55: HBM top", 288, sigma * J2, "sigma * J2 = 288")
-check("BT-28: sigma = 12 SM base", 12, sigma, "sigma = 12")
-
-# === 6. 물리 한계 검증 ===
-print("\n--- 6. 물리 한계 수치 ---")
-check("kT at 300K (meV) ~ J2+phi", 26, J2 + phi, "J2 + phi = 26")
-check("Delta_min = 2*kT (meV)", 52, phi * (J2 + phi), "phi * 26 = 52")
-check("BCS strong-coupling ratio", 4, tau, "tau = 4")
-check("Shield requirement (dB)", 60, sigma * sopfr, "sigma * sopfr = 60")
-check("Stoner criterion", 1, mu, "U*N(Ef) < mu = 1")
-check("Jc = 10^n A/cm^2", 6, n, "10^n, n = 6")
-
-# === 7. DSE 검증 ===
-print("\n--- 7. DSE 구조 ---")
-check("K1 candidates (materials)", 6, n, "n = 6")
-check("K2 candidates (junction)", 5, sopfr, "sopfr = 5")
-check("K3 candidates (gate)", 4, tau, "tau = 4")
-check("K4 candidates (core)", 6, n, "n = 6")
-check("K5 candidates (system)", 5, sopfr, "sopfr = 5")
-check("Total combos", 3600, n * sopfr * tau * n * sopfr, "6*5*4*6*5 = 3600")
-check("Pareto optimal paths", 24, J2, "J2 = 24")
-
-# === 8. Cross-domain 검증 ===
-print("\n--- 8. Cross-domain ---")
-check("CMOS energy ratio (x)", 1000, sigma_phi ** 3, "(sigma-phi)^3 = 1000")
-check("Clock improvement (x)", 12, sigma, "sigma = 12")
-check("Energy efficiency gain (x)", 12000, sigma * sigma_phi ** 3, "sigma * 1000 = 12000")
-check("TCO breakeven (years)", 6, n, "n = 6")
-
-# === 최종 결과 ===
-print("\n" + "=" * 70)
-print(f"TOTAL: {exact}/{total} EXACT ({100*exact/total:.1f}%)")
-print("=" * 70)
-
-if exact / total >= 0.85:
-    print("STATUS: 🛸10 CERTIFIED -- 물리적 한계 도달")
-elif exact / total >= 0.70:
-    print("STATUS: 🛸9 -- 고수준 달성")
-else:
-    print(f"STATUS: 미달 -- {100*exact/total:.1f}% < 85%")
-
-# FAIL 목록
-fails = [r for r in results if r[4] != "EXACT"]
-if fails:
-    print(f"\n--- Non-EXACT ({len(fails)}개) ---")
-    for name, actual, expected, formula, grade in fails:
-        print(f"  {grade}: {name} = {actual} (expected {expected}, {formula})")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

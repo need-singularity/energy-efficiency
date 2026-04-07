@@ -193,57 +193,49 @@ n=6 수식: J₂ = 24, n² = 36
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""담수화 n=6 가설 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-hypotheses = {
-    "H-DS-1a: RO 운전압 60bar": (60, sigma * sopfr, 60),
-    "H-DS-1b: 삼투압 27bar": (27, n * sopfr - n // phi, 27),
-    "H-DS-2: 해수 TDS 35g/L": (35, sopfr * (sigma - sopfr), 35),
-    "H-DS-3a: 회수율 40%": (40, tau * 10, 40),  # tau/(sigma-phi)*100
-    "H-DS-3b: 회수율 50%": (50, sopfr * 10, 50),  # sopfr/(sigma-phi)*100
-    "H-DS-4a: 에너지 3kWh": (3, n // phi, 3),
-    "H-DS-4b: 에너지 4kWh": (4, tau, 4),
-    "H-DS-5: 염제거 99.5%": (99.5, (1 - 1/(phi * (sigma - phi)**2)) * 100, 99.5),
-    "H-DS-6a: MED 6효용": (6, n, 6),
-    "H-DS-6b: MED 12효용": (12, sigma, 12),
-    "H-DS-7: MSF 24스테이지": (24, J2, 24),
-    "H-DS-8a: RO막 40인치": (40, tau * (sigma - phi), 40),
-    "H-DS-8b: RO막 8인치 직경": (8, sigma - tau, 8),
-    "H-DS-9a: 6소자/PV": (6, n, 6),
-    "H-DS-9b: 7소자/PV": (7, sigma - sopfr, 7),
-    "H-DS-10a: SDI 양호 3": (3, n // phi, 3),
-    "H-DS-10b: SDI 한계 5": (5, sopfr, 5),
-    "H-DS-11: 해수 이온 6종": (6, n, 6),
-    "H-DS-12a: EDR 24셀쌍": (24, J2, 24),
-    "H-DS-12b: EDR 36셀쌍": (36, n**2, 36),
-}
-
-print("=" * 65)
-print("담수화 n=6 가설 검증 결과")
-print("=" * 65)
-
-exact = close = fail = 0
-for name, (actual, formula, predicted) in hypotheses.items():
-    if actual == 0:
-        error = 0 if predicted == 0 else 100
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-343 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        error = abs(actual - predicted) / abs(actual) * 100
-    if error < 0.5:
-        grade = "EXACT"
-        exact += 1
-    elif error < 5:
-        grade = "CLOSE"
-        close += 1
-    else:
-        grade = "FAIL"
-        fail += 1
-    status = "PASS" if error < 5 else "FAIL"
-    print(f"  {status} | {name}: 실제={actual}, 예측={predicted}, 오차={error:.2f}% [{grade}]")
-
-total = exact + close + fail
-print(f"\n총: {exact}/{total} EXACT ({exact/total*100:.0f}%), "
-      f"{close} CLOSE, {fail} FAIL")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

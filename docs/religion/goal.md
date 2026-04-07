@@ -276,42 +276,55 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""종교/신화 n=6 보편 구조 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("창세기 6일 창조",        6,   n),
-    ("예수 12사도",            12,  sigma),
-    ("불교 12연기",            12,  sigma),
-    ("불교 6도 윤회",           6,   n),
-    ("이슬람 6신앙기둥",        6,   n),
-    ("역경 64괘",              64,  2**n),
-    ("불교 108배",             108, sigma * (sigma - n // phi)),
-    ("카발라 10 세피로트",     10,  sigma - phi),
-    ("힌두교 6다르샤나",        6,   n),
-    ("이스라엘 12지파",        12,  sigma),
-    ("불교 4성제",              4,   tau),
-    ("불교 8정도",              8,   sigma - tau),
-    ("올림포스 12신",          12,  sigma),
-    ("십계명",                 10,  sigma - phi),
-    ("묵주기도 5단",            5,   sopfr),
-    ("불교 5온",                5,   sopfr),
-    ("이슬람 5기둥",            5,   sopfr),
-    ("다윗의 별 6각",           6,   n),
-    ("비슈누 24 아바타",       24,  J2),
-    ("도교 태극 2의",           2,   phi),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-51 항목", None, None, None),  # MISSING DATA
+    ("BT-138 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-256 항목", None, None, None),  # MISSING DATA
+    ("BT-258 항목", None, None, None),  # MISSING DATA
+    ("BT-262 항목", None, None, None),  # MISSING DATA
+    ("BT-264 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 종교/신화 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

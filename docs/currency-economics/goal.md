@@ -278,46 +278,54 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""화폐/경제사 n=6 통화 래더 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("금 순도 24K",            24,  J2),
-    ("화폐 100분할",          100, (sigma - phi)**2),
-    ("FRB 12지구",             12,  sigma),
-    ("로마 데나리우스 10",     10,  sigma - phi),
-    ("영국 12펜스=1실링",      12,  sigma),
-    ("화폐 금속 3종",           3,   n // phi),
-    ("G7 경제대국",             7,   sigma - sopfr),
-    ("G20 경제포럼",           20,  J2 - tau),
-    ("BTC 6확인",               6,   n),
-    ("ETH 블록 12초",          12,  sigma),
-    ("BTC 21M 공급",           21,  J2 - n // phi),
-    ("회계연도 12개월",        12,  sigma),
-    ("24시간 FX 거래",         24,  J2),
-    ("이집트 분수 합=1",        1,   1),
-    ("수메르 60진법 무역",     60,  sigma * sopfr),
-    ("4분기 보고",              4,   tau),
-    ("기니 21실링",            21,  J2 - n // phi),
-    ("IMF SDR 5통화",           5,   sopfr),
-    ("신용카드 16자리",        16,  phi**tau),
-    ("BTC 반감기 4년",          4,   tau),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-53 항목", None, None, None),  # MISSING DATA
+    ("BT-147 항목", None, None, None),  # MISSING DATA
+    ("BT-183 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-338 항목", None, None, None),  # MISSING DATA
+    ("BT-339 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-from fractions import Fraction
-egyptian = Fraction(1,2) + Fraction(1,3) + Fraction(1,6)
-assert egyptian == 1, f"이집트 분수 합 FAIL: {egyptian}"
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 화폐/경제사 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

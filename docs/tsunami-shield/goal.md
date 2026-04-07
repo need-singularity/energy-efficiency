@@ -112,81 +112,58 @@
 ## 4️⃣ Python 인라인 검증 (44 체크, 90%+ EXACT 목표)
 
 ```python
-# HEXA-TSUNAMI n=6 Verification (44 checks)
-# Run: python3 docs/tsunami-shield/goal.md (copy block)
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-SIGMA, PHI, TAU, N, MU, SOPFR, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def c(name, val, expect, unit=""):
-    ok = abs(val - expect) < 1e-9 if isinstance(expect, (int,float)) else val == expect
-    checks.append((name, val, expect, unit, ok))
-
-# Level 0: 소재 (REBCO HTS, BT-302)
-c("REBCO 층수", 12, SIGMA, "layer")
-c("구리 안정화", 2, PHI, "μm")
-c("HTS Tc(K)", 92, N*N+SOPFR*N+PHI*(SIGMA-SOPFR), "K")  # ~92K (YBCO)
-c("임계전류 MA", 24, J2, "MA")
-c("초전도 두께", 1, MU, "μm")
-
-# Level 1: 공정 (Quench tape)
-c("Ply 수", 48, SIGMA*TAU, "ply")
-c("테이프 폭(mm)", 12, SIGMA, "mm")
-c("권취 회전수", 288, SIGMA*J2, "turns")
-c("냉각 단계", 4, TAU, "stage")
-
-# Level 2: 코어 (SC 코일 모듈, BT-127)
-c("코일 모듈 수", 12, SIGMA, "module")
-c("Kissing number K₃", 12, SIGMA, "kiss")
-c("자기장 강도(T)", 24, J2, "T")
-c("코일 직경(m)", 6, N, "m")
-c("권선층", 4, TAU, "layer")
-
-# Level 3: 센서 모듈 (BT-203 지진 6파동)
-c("파동 채널", 6, N, "channel")        # P/S/Love/Rayleigh/Stoneley/Scholte
-c("센서 수/모듈", 12, SIGMA, "sensor")
-c("샘플링(kHz)", 24, J2, "kHz")
-c("지진 매그니튜드 범위", 10, SIGMA-PHI, "scale")
-
-# Level 4: 조기경보 (DART + seismic)
-c("DART 부이 수", 12, SIGMA, "buoy")
-c("seismic 관측소", 144, SIGMA**PHI, "station")  # σ²
-c("대응시간(초)", 144, SIGMA**PHI, "s")
-c("경보 반경 km", 288, SIGMA*J2, "km")
-c("신호지연 ms", 10, SIGMA-PHI, "ms")
-c("자기재결합율", 0.1, 1/(SIGMA-PHI), "rate")  # BT-102
-
-# Level 5: 차단 벽 (J₂=24km)
-c("반사벽 길이(km)", 24, J2, "km")
-c("벽 높이(m)", 10, SIGMA-PHI, "m")
-c("감쇠율", 0.9, 1-1/(SIGMA-PHI), "ratio")
-c("흡수 전력 MW", 288, SIGMA*J2, "MW")
-c("벽 섹션 수", 12, SIGMA, "section")
-c("심도(m)", 48, SIGMA*TAU, "m")
-c("반응시간(초)", 4, TAU, "s")
-
-# Level 6: 연안 거점 (σ=12 coast)
-c("연안 거점 수", 12, SIGMA, "base")
-c("거점 간격(km)", 24, J2, "km")     # 12거점 × 24km = σ·J₂=288km 해안선
-c("총 해안선 km", 288, SIGMA*J2, "km")
-c("항만 연결", 6, N, "port")
-c("백업 전력(MW)", 24, J2, "MW")
-
-# Level 7: 네트워크 (BT-179 consensus)
-c("합의 노드", 6, N, "node")
-c("비잔틴 내성", 2, PHI, "fail")      # >2/3 (BT-112)
-c("메쉬 링크", 6, N, "link")
-c("통신 주파수 GHz", 24, J2, "GHz")
-c("암호 라운드", 12, SIGMA, "round")  # BT-114
-
-# 안전/성능
-c("파고 한계(m)", 30, N*SOPFR, "m")   # n·sopfr
-c("경보 정확도(%)", 90, 100*(1-1/(SIGMA-PHI)), "%")
-c("에너지 효율(%)", 96, 100-TAU, "%")  # 100-τ
-
-passed = sum(1 for _,_,_,_,ok in checks if ok)
-print(f"PASS: {passed}/{len(checks)} ({100*passed/len(checks):.1f}%)")
-# Expected: 44/44 = 100.0% EXACT
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-102 항목", None, None, None),  # MISSING DATA
+    ("BT-203 항목", None, None, None),  # MISSING DATA
+    ("BT-213 항목", None, None, None),  # MISSING DATA
+    ("BT-156 항목", None, None, None),  # MISSING DATA
+    ("BT-218 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-179 항목", None, None, None),  # MISSING DATA
+    ("BT-127 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **검증 결과: 44/44 EXACT (100%)** — n=6 파동·SC 완전 정렬

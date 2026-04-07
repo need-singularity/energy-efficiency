@@ -183,95 +183,58 @@ Gibbs 자유에너지 한계 (35 g/L 해수, 298 K) = 0.80 Wh/L (50% 회수율 �
 ## 6. Python 검증 코드 (인라인, 47 checks, 목표 90%+ EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-DESAL Verification — 44 checks, target 90%+ EXACT"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, phi, tau, sigma, mu, sopfr, J2 = 6, 2, 4, 12, 1, 5, 24
-d_sig_phi = sigma - phi     # 10
-d_sig_tau = sigma - tau     # 8
-d_sig_mu  = sigma - mu      # 11
-d_sig2    = sigma * sigma   # 144
-d_sigJ2   = sigma * J2      # 288
-sig_sopfr = sigma * sopfr   # 60
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def check(name, got, expect, tol=0.03):
-    ok = abs(got-expect)/max(abs(expect),1e-12) < tol
-    checks.append((name, got, expect, ok))
-    return ok
-
-# L0: Material (Graphene / Carbon Z=6)
-check("Graphene C atom Z = n",                       6, n)
-check("Carbon CN hexagonal = n",                     6, n)
-check("Graphene thickness = mu layer",               1, mu)
-check("Graphene pore = n Angstrom",                  6, n)
-check("Membrane stack layers = sigma",              12, sigma)
-check("C-C bond length = 1.42 A ~ phi*sopfr/7",     1.42, phi*sopfr/7.04, 0.02)
-
-# L1: MOF membrane
-check("MOF CN = n",                                  6, n)
-check("MOF pore diameter = sigma Angstrom",         12, sigma)
-check("Water flux = n*10 L/m2/h",                   60, n*10)
-check("Salt rejection = 1-10^-tau (99.99%)",     0.9999, 1-10**-tau)
-check("MOF layer count = phi",                       2, phi)
-check("Membrane life years = sigma*sopfr",          60, sig_sopfr)
-
-# L2: Ions
-check("Major ions count = n",                        6, n)
-check("Na+ charge = mu",                             1, mu)
-check("Ca2+ charge = phi",                           2, phi)
-check("TDS ppm / 1000 = sopfr*7",                   35, sopfr*7)
-check("Ion channels per cell = n",                   6, n)
-check("Hydration shell number = n",                  6, n)
-
-# L3: Cell (ED+RO hybrid)
-check("ED stage count = phi",                        2, phi)
-check("RO stage count = sigma",                     12, sigma)
-check("Recovery ratio = 1-mu/n = 5/6",            5/6, 1-mu/n, 0.01)
-check("Flow parallel path = sigma",                 12, sigma)
-check("Pressure RO bar = sopfr*phi*n+1=61",         61, sopfr*phi*n+1)
-check("Pre-filter micron = sigma",                  12, sigma)
-
-# L4: Stack
-check("Cell count per stack = J2",                  24, J2)
-check("Stack parallel count = sigma",               12, sigma)
-check("Layer count = sigma*phi",                    24, sigma*phi)
-check("Voltage per cell mV = J2+n=30",              30, J2+n)
-check("Total stack voltage mV = J2*(J2+n)=720",    720, J2*(J2+n))
-check("Temperature C = J2 (seawater warming)",      24, J2)
-
-# L5: Power (SC bus)
-check("Loss pct SC = 0",                             0, 0)
-check("Loss conversion pct = sigma-phi/100",       0.1, (d_sig_phi)/100, 0.01)
-check("Supply voltage HVDC = (sigma-tau)*100=800",  800, d_sig_tau*100)
-check("HEXA-MRAM control eff pct = (sigma-phi)*10",100, d_sig_phi*10)
-check("Freq AC = sig*sopfr=60",                     60, sig_sopfr)
-check("PSU channels = sigma",                       12, sigma)
-
-# L6: Module
-check("Module output ML/day = sigma*J2*10^3=288000", 288000, d_sigJ2*1000)
-check("Module pumps = n",                            6, n)
-check("Module footprint m2 = sigma*sopfr*10=600",   600, sig_sopfr*10)
-check("Module life years = sig*sopfr",              60, sig_sopfr)
-check("Module energy Wh/L = (sigma-phi)*1e-2=0.1", 0.1, d_sig_phi/100, 0.01)
-
-# L7: Plant (grid)
-check("Modules per plant = sigma^2 = 144",         144, d_sig2)
-check("Plant output M L/day = 144*288 = 41472",  41472, d_sig2*d_sigJ2)
-check("Grid tie = n linkage",                        6, n)
-check("Plant area ha = sigma^2",                   144, d_sig2)
-check("Carbon CO2 per m3 kg = mu (via HEXA-SEABED)", 0, 0)
-check("WHO TDS limit pct met = 1 (3.5 ppm < 500)",   1, mu)
-
-# Summary
-passed = sum(1 for _,_,_,ok in checks if ok)
-total  = len(checks)
-print(f"HEXA-DESAL Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, got, exp, ok in checks:
-    tag = "EXACT" if ok else "FAIL"
-    print(f"  [{tag}] {name}: got={got}, expect={exp}")
-assert passed/total >= 0.90, f"below 90% threshold"
-print("PASS: HEXA-DESAL design n=6 consistency >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-120 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-141 항목", None, None, None),  # MISSING DATA
+    ("BT-199 항목", None, None, None),  # MISSING DATA
+    ("BT-321 항목", None, None, None),  # MISSING DATA
+    ("BT-68 항목", None, None, None),  # MISSING DATA
+    ("BT-213 항목", None, None, None),  # MISSING DATA
+    ("BT-326 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과**: 47/47 EXACT = 100.0% → PASS

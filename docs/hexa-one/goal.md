@@ -897,251 +897,58 @@ sigma^2=144채널 EEG, 뇌파 밴드 분류, tDCS 출력.
 ## 15. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-ONE n=6 EXACT 검증 스크립트 v2 — 144개 파라미터 + 24 물리한계"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12    # sigma(6)
-phi = 2       # phi(6) = euler totient
-tau = 4       # tau(6) = divisor count
-J2 = 24       # J_2(6) = Jordan totient
-sopfr = 5     # sopfr(6) = 2+3
-mu = 1        # mobius(6)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 핵심 항등식 검증
-assert sigma * phi == n * tau == J2, f"핵심 항등식 실패: {sigma*phi} != {n*tau} != {J2}"
-
-# 144개 파라미터 검증 (sigma^2=144)
-params = {
-    # --- 물리/폼팩터 (12) ---
-    "무게_30g": (30, n * sopfr),
-    "FOV_120deg": (120, sigma * (sigma - phi)),
-    "렌즈직경_20mm": (20, J2 - tau),
-    "프레임폭_144mm": (144, sigma ** 2),
-    "코패드간격_24mm": (24, J2),
-    "템플길이_120mm": (120, sigma * (sigma - phi)),
-    "두께_12mm": (12, sigma),
-    "코팅경도_HV1000": (1000, (sigma - phi) ** (n // phi)),
-    "투과율_90pct": (0.9, 1 - 1 / (sigma - phi)),
-    "방수_IP68_방진": (6, n),  # IP6X 방진 등급
-    "동작온도하한_m10": (-10, -(sigma - phi)),
-    "내구성_1p2m": (1.2, sigma / (sigma - phi)),
-    # --- 디스플레이/시각 (12) ---
-    "AR해상도_60PPD": (60, sigma * sopfr),
-    "주사율_120Hz": (120, sigma * (sigma - phi)),
-    "색심도_12bit": (12, sigma),
-    "밝기_1000nit": (1000, (sigma - phi) ** (n // phi)),
-    "초점면_4": (4, tau),
-    "RGB_3원색": (3, n // phi),
-    "화면비_16": (16, phi ** tau),
-    "화면비_9": (9, sigma - n // phi),
-    "Waveguide_6": (6, n),
-    "보정관점_12": (12, sigma),
-    "마이크로LED피치_5um": (5, sopfr),
-    "대비비_10000": (10000, (sigma - phi) ** tau),
-    # --- 오디오/청각 (10) ---
-    "샘플링_48kHz": (48, sigma * tau),
-    "비트깊이_24bit": (24, J2),
-    "마이크_4": (4, tau),
-    "ANC_48dB": (48, sigma * tau),
-    "공간오디오_12ch": (12, sigma),
-    "빔포밍_10deg": (10, sigma - phi),
-    "골전도상한_20kHz": (20, J2 - tau),
-    "음성하한_300Hz": (300, (n // phi) * (sigma - phi) ** phi),
-    "음성상한_3400Hz근사": (3400, 3400),  # ITU 표준 고정값
-    "코덱수_6": (6, n),
-    # --- BCI/뇌파 (10) ---
-    "EEG_144ch": (144, sigma ** 2),
-    "시간해상도_1ms": (1, mu),
-    "주파수대역_48Hz": (48, sigma * tau),
-    "ADC_24bit": (24, J2),
-    "tDCS_1mA": (1, mu),
-    "전극임피던스_10k": (10, sigma - phi),
-    "BCI정확도_90pct": (0.9, 1 - 1 / (sigma - phi)),
-    "감정분류_6": (6, n),
-    "뇌파밴드_5": (5, sopfr),
-    "EEG영역_10": (10, sigma - phi),
-    # --- 건강/생체 (12) ---
-    "바이탈_24종": (24, J2),
-    "ECG_12리드": (12, sigma),
-    "PPG_3파장": (3, n // phi),
-    "체온정밀도_0p1C": (0.1, 1 / (sigma - phi)),
-    "SpO2정밀도_1pct": (1, mu),
-    "혈압주기_5분": (5, sopfr),
-    "수면단계_4": (4, tau),
-    "이상탐지_12h": (12, sigma),
-    "스트레스_6단계": (6, n),
-    "기본체온_36C": (36, sigma * (n // phi)),
-    "안정심박_60bpm": (60, sigma * sopfr),
-    "정상SpO2_96pct": (96, sigma * (sigma - tau)),
-    # --- 프로세서/AI (12) ---
-    "NPU_144TOPS": (144, sigma ** 2),
-    "CPU_8코어": (8, sigma - tau),
-    "전력효율_30mW": (30, n * sopfr),
-    "RAM_16GB": (16, phi ** tau),
-    "저장_64GB": (64, 2 ** n),
-    "AI차원_256": (256, 2 ** (sigma - tau)),
-    "AI레이어_12": (12, sigma),
-    "어텐션헤드_8": (8, sigma - tau),
-    "MoE전문가_6": (6, n),
-    "추론지연_12ms": (12, sigma),
-    "양자화_INT4": (4, tau),
-    "LoRA_rank_8": (8, sigma - tau),
-    # --- 통신 (10) ---
-    "BLE_6p0": (6, n),
-    "WiFi_6GHz": (6, n),
-    "UWB_12cm": (12, sigma),
-    "5G_48GHz": (48, sigma * tau),
-    "동시인터페이스_6": (6, n),
-    "데이터_10Gbps": (10, sigma - phi),
-    "NFC_5cm": (5, sopfr),
-    "MIMO_2x2": (2, phi),
-    "WiFi채널_120MHz": (120, sigma * (sigma - phi)),
-    "BLE광고채널_3": (3, n // phi),
-    # --- 에너지/배터리 (8) ---
-    "배터리_60mAh": (60, sigma * sopfr),
-    "배터리수명_24h": (24, J2),
-    "급속충전_30min": (30, n * sopfr),
-    "체열_10mW": (10, sigma - phi),
-    "태양광_4mW": (4, tau),
-    "무선충전_90pct": (0.9, 1 - 1 / (sigma - phi)),
-    "무선충전주파수_6MHz": (6, n),
-    "배터리사이클_1000": (1000, (sigma - phi) ** (n // phi)),
-    # --- 광학/웨이브가이드 (10) ---
-    "웨이브가이드두께_2mm": (2, phi),
-    "회절격자_480nm": (480, sigma * tau * 10),
-    "도파손실_10pct": (0.1, 1 / (sigma - phi)),
-    "입사각_60deg": (60, sigma * sopfr),
-    "컬러유니포미티_5pct": (5, sopfr),
-    "아이박스W_12mm": (12, sigma),
-    "아이박스H_10mm": (10, sigma - phi),
-    "퍼필릴리프_20mm": (20, J2 - tau),
-    "RGB파장수_3": (3, n // phi),
-    "도파모드_6": (6, n),
-    # --- 촉각/햅틱 (8) ---
-    "햅틱존_6": (6, n),
-    "진동하한_60Hz": (60, sigma * sopfr),
-    "액추에이터_12": (12, sigma),
-    "진동세기_10단계": (10, sigma - phi),
-    "촉각해상도_5mm": (5, sopfr),
-    "햅틱응답_1ms": (1, mu),
-    "구동전압_5V": (5, sopfr),
-    "햅틱소비_2mW": (2, phi),
-    # --- 열관리 (8) ---
-    "피부한계_48C": (48, sigma * tau),
-    "방열면적_144mm2": (144, sigma ** 2),
-    "열전도_120WmK": (120, sigma * (sigma - phi)),
-    "TDP평시_30mW": (30, n * sopfr),
-    "TDP피크_60mW": (60, sigma * sopfr),
-    "방열패드_1mm": (1, mu),
-    "열저항_5KW": (5, sopfr),
-    "온도범위_70C": (70, sigma * n - phi),
-    # --- 소프트웨어/OS (12) ---
-    "OS레이어_6": (6, n),
-    "동시앱_12": (12, sigma),
-    "시스템서비스_24": (24, J2),
-    "API레벨_6": (6, n),
-    "업데이트주기_4주": (4, tau),
-    "부팅시간_5초": (5, sopfr),
-    "OTA압축_10x": (10, sigma - phi),
-    "권한레벨_4": (4, tau),
-    "퓨전파이프_6단계": (6, n),
-    "전력모드_5": (5, sopfr),
-    "지원언어_6": (6, n),
-    "접근성모드_6": (6, n),
-    # --- 보안/프라이버시 (10) ---
-    "암호화_256bit": (256, 2 ** (sigma - tau)),
-    "생체인증_6종": (6, n),
-    "인증레이어_4": (4, tau),
-    "세션타임아웃_5분": (5, sopfr),
-    "데이터보존_24h": (24, J2),
-    "키교환_4종": (4, tau),
-    "보안엔클레이브_1": (1, mu),
-    "프라이버시_10단계": (10, sigma - phi),
-    "보안수명_6년": (6, n),
-    "TLS_1p2": (1.2, sigma / (sigma - phi)),
-    # --- 제조/양산 (10) ---
-    "부품수_48": (48, sigma * tau),
-    "조립단계_12": (12, sigma),
-    "테스트항목_24": (24, J2),
-    "수율_90pct": (0.9, 1 - 1 / (sigma - phi)),
-    "사이즈변종_4": (4, tau),
-    "색상변종_6": (6, n),
-    "목표가격_60만원": (60, sigma * sopfr),
-    "BOM원가율_0p33": (1/3, 1 / (n // phi)),
-    "출시지역_6": (6, n),
-    "보증기간_2년": (2, phi),
-}
-
-# 24개 물리한계 검증
-physics_limits = {
-    "PL01_FOV한계_120deg": (120, sigma * (sigma - phi)),
-    "PL02_망막PPD_60": (60, sigma * sopfr),
-    "PL03_원색수_3": (3, n // phi),
-    "PL04_대비비_10000": (10000, (sigma - phi) ** tau),
-    "PL05_웨이브가이드_2mm": (2, phi),
-    "PL06_VOR지연_12ms": (12, sigma),
-    "PL07_나이퀴스트_48kHz": (48, sigma * tau),
-    "PL08_골전도_20kHz": (20, J2 - tau),
-    "PL09_빔포밍마이크_4": (4, tau),
-    "PL10_ANC한계_48dB": (48, sigma * tau),
-    "PL11_EEG해상도_1cm": (1, mu),
-    "PL12_뇌파상한_48Hz": (48, sigma * tau),
-    "PL13_tDCS안전_1mA": (1, mu),
-    "PL14_안경뇌거리_6cm": (6, n),
-    "PL15_체열하베_10mW": (10, sigma - phi),
-    "PL16_태양광_4mW": (4, tau),
-    "PL17_화상한계_48C": (48, sigma * tau),
-    "PL18_배터리밀도_60mAh": (60, sigma * sopfr),
-    "PL19_최소무게_30g": (30, n * sopfr),
-    "PL20_지지점_2": (2, phi),
-    "PL21_폼팩터_1": (1, mu),
-    "PL22_IPD하한_58mm": (58, sigma * sopfr - phi),
-    "PL23_감각종류_6": (6, n),
-    "PL24_피질층_6": (6, n),
-}
-
-exact = close = fail = 0
-
-print("=" * 70)
-print("HEXA-ONE n=6 EXACT 검증 v2 (144 파라미터 + 24 물리한계)")
-print("=" * 70)
-
-for name, (actual, expected) in params.items():
-    if abs(actual - expected) < 1e-9:
-        exact += 1
-    elif abs(actual - expected) / max(abs(expected), 1e-9) < 0.05:
-        close += 1
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-66 항목", None, None, None),  # MISSING DATA
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-350 항목", None, None, None),  # MISSING DATA
+    ("BT-351 항목", None, None, None),  # MISSING DATA
+    ("BT-352 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        fail += 1
-        print(f"  FAIL: {name}: actual={actual}, expected={expected}")
-
-print(f"\n[설계 파라미터] {exact}/{exact+close+fail} EXACT ({100*exact/(exact+close+fail):.1f}%)")
-print(f"  CLOSE: {close}, FAIL: {fail}")
-
-pl_exact = pl_fail = 0
-for name, (actual, expected) in physics_limits.items():
-    if abs(actual - expected) < 1e-9:
-        pl_exact += 1
-    else:
-        pl_fail += 1
-        print(f"  PL-FAIL: {name}: actual={actual}, expected={expected}")
-
-print(f"\n[물리한계] {pl_exact}/{pl_exact+pl_fail} EXACT ({100*pl_exact/(pl_exact+pl_fail):.1f}%)")
-
-total_exact = exact + pl_exact
-total_all = exact + close + fail + pl_exact + pl_fail
-print(f"\n[총합] {total_exact}/{total_all} EXACT ({100*total_exact/total_all:.1f}%)")
-print(f"\n핵심 항등식: sigma*phi = n*tau = J2 = {sigma*phi}")
-print(f"Egyptian: 1/2+1/3+1/6 = {1/2+1/3+1/6}")
-print(f"파라미터 수 = sigma^2 = {sigma**2} = {len(params)}")
-print(f"물리한계 수 = J2 = {J2} = {len(physics_limits)}")
-
-if fail == 0 and pl_fail == 0:
-    print("\nHEXA-ONE 전체 PASS -- 144 EXACT + 24 물리한계 EXACT 검증 완료")
-else:
-    print(f"\n{fail+pl_fail}개 항목 재검토 필요")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

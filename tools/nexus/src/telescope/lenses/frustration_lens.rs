@@ -21,11 +21,11 @@ use crate::telescope::shared_data::SharedData;
 ///      that are frustrated, then report mean and std.
 ///   5. Compute frustration energy = sum of tension in frustrated triangles,
 ///      where tension = |d_long - d_short_mean| for each frustrated triangle.
-pub struct UfrustrationLens;
+pub struct FrustrationLens;
 
-impl Lens for UfrustrationLens {
+impl Lens for FrustrationLens {
     fn name(&self) -> &str {
-        "UfrustrationLens"
+        "FrustrationLens"
     }
 
     fn category(&self) -> &str {
@@ -184,7 +184,7 @@ mod tests {
         let n = 6;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UfrustrationLens;
+        let lens = FrustrationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -217,7 +217,7 @@ mod tests {
         let n = 8;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UfrustrationLens;
+        let lens = FrustrationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty());
@@ -236,7 +236,7 @@ mod tests {
         let n = 2;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UfrustrationLens;
+        let lens = FrustrationLens;
         let result = lens.scan(&data, n, d, &shared);
         assert!(result.is_empty(), "n<3 should return empty");
     }

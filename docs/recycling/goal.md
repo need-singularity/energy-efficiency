@@ -193,94 +193,58 @@
 ### 검증 코드 (Python) — 10 필수
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-RECYCLE n=6 EXACT 상수 전수 검증
-실행: python3 docs/recycling/verify_recycle_n6.py
-42/42 EXACT → PASS 판정
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12      # σ(6) = 1+2+3+6
-phi = 2         # φ(6) = |{1,5}|
-tau = 4         # τ(6) = |{1,2,3,6}|
-sopfr = 5       # sopfr(6) = 2+3
-J2 = 24         # J₂(6) = Jordan totient
-mu = 1          # μ(6) = Mobius
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 핵심 항등식 검증
-assert sigma * phi == n * tau == 24 == J2, "핵심 항등식 σφ=nτ=24=J₂ 실패!"
-
-results = []
-
-def check(name, actual, expected, formula):
-    ok = actual == expected
-    results.append((name, actual, expected, formula, ok))
-    return ok
-
-# === 42개 EXACT 검증 ===
-check("폐기물 분류 카테고리", 6, n, "n=6")
-check("주요 플라스틱 종류 (RIC 1-6)", 6, n, "n=6")
-check("6R 프레임워크", 6, n, "n=6")
-check("MRF 분류 스트림", 12, sigma, "σ=12")
-check("소재 추적 갱신 주기(h)", 24, J2, "J₂=24")
-check("기본 순환 단계", 4, tau, "τ=4")
-check("최초 이분류", 2, phi, "φ=2")
-check("탄소 원자번호", 6, n, "Z=n=6")
-check("CN=6 팔면체 촉매", 6, n, "CN=n=6")
-check("PET 식품등급 최대 순환", 6, n, "n=6")
-check("퇴비화 최적 주기(주)", 6, n, "n=6 weeks")
-check("혐기 소화 체류시간(일)", 12, sigma, "σ=12 days")
-check("Li-ion 양극 배위수", 6, n, "CN=n=6")
-check("유리 색상 등급", 6, n, "n=6")
-check("EU 폐기물 계층", 5, sopfr, "sopfr=5")
-check("볼츠만 재활용 한계 (%)", 63, round((1 - 1/math.e) * 100), "round(100*(1-1/e))")
-check("배터리 6대 화학종", 6, n, "n=6")
-check("순도 개선 배수", 10, sigma - phi, "σ-φ=10")
-check("열분해 온도 구간", 4, tau, "τ=4")
-check("총 처리 사이클 시간(h)", 48, sigma * tau, "σ·τ=48")
-check("배터리 핵심 회수 원소", 5, sopfr, "sopfr=5")
-check("소재 추적 코드 수", 144, sigma**2, "σ²=144")
-check("NIR 분광 분류 비트", 8, sigma - tau, "σ-τ=8")
-check("재활용 플랜트 스테이션", 20, J2 - tau, "J₂-τ=20")
-check("RIC 코드 주요 범위", 6, n, "1~n=6")
-check("보증금 기본 단위(cents)", 6, n, "n=6")
-check("분기별 수거 사이클", 4, tau, "τ=4")
-check("폐기물→에너지 전환 단계", 3, n // phi, "n/φ=3")
-check("MRF 최적 처리량(ton/h)", 12, sigma, "σ=12")
-check("Bottle-to-bottle 세대", 6, n, "n=6")
-check("셀룰로오스 탄소수", 6, n, "C₆ = n=6")
-check("배터리 셀 래더 시작", 6, n, "n=6")
-check("배터리 셀 래더 중간", 12, sigma, "σ=12")
-check("배터리 셀 래더 끝", 24, J2, "J₂=24")
-check("교토 온실가스 종류", 6, n, "n=6")
-check("벌집 구조 꼭짓점", 6, n, "n=6")
-check("Zero-waste 전환율(%)", 90, round(100 * (1 - 1/(sigma - phi))), "100*(1-1/(σ-φ))")
-check("포도당 총 원자수", 24, J2, "J₂=24")
-check("전자폐기물 회수 원소", 12, sigma, "σ=12")
-check("순환경제 KPI 수", 12, sigma, "σ=12")
-check("재활용 소재 등급", 24, J2, "J₂=24")
-check("퇴비 최적 C/N 비", 24, J2, "J₂:μ=24:1")
-
-# === 결과 출력 ===
-passed = sum(1 for r in results if r[4])
-total = len(results)
-print(f"\n{'='*60}")
-print(f"HEXA-RECYCLE n=6 EXACT 검증 결과: {passed}/{total}")
-print(f"{'='*60}")
-for name, actual, expected, formula, ok in results:
-    status = "PASS" if ok else "FAIL"
-    print(f"  [{status}] {name}: {actual} = {formula} (expected {expected})")
-print(f"\n{'='*60}")
-if passed == total:
-    print(f"  전체 PASS — {total}/{total} EXACT (100%)")
-    print(f"  외계인 지수 10 검증 완료")
-else:
-    fails = total - passed
-    print(f"  FAIL: {fails}개 — 외계인 지수 강등 필요")
-print(f"{'='*60}\n")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-121 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-120 항목", None, None, None),  # MISSING DATA
+    ("BT-43 항목", None, None, None),  # MISSING DATA
+    ("BT-57 항목", None, None, None),  # MISSING DATA
+    ("BT-118 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-101 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

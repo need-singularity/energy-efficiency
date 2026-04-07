@@ -13,11 +13,11 @@ use crate::telescope::shared_data::SharedData;
 ///   5. Emergence score = inter-cluster variance / total variance (how much structure
 ///      arises beyond uniform distribution)
 ///   6. Emergence entropy = Shannon entropy of cluster size distribution (organizational complexity)
-pub struct UemergenceLens;
+pub struct EmergenceLens;
 
-impl Lens for UemergenceLens {
+impl Lens for EmergenceLens {
     fn name(&self) -> &str {
-        "UemergenceLens"
+        "EmergenceLens"
     }
 
     fn category(&self) -> &str {
@@ -246,7 +246,7 @@ mod tests {
         let n = 6;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UemergenceLens;
+        let lens = EmergenceLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must not be empty");
@@ -272,7 +272,7 @@ mod tests {
         let n = 9;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UemergenceLens;
+        let lens = EmergenceLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must not be empty");
@@ -295,7 +295,7 @@ mod tests {
         let n = 2;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UemergenceLens;
+        let lens = EmergenceLens;
         let result = lens.scan(&data, n, d, &shared);
         assert!(result.is_empty());
     }

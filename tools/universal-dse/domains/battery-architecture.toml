@@ -2,14 +2,17 @@
 # HEXA Battery Architecture DSE Domain Definition
 # 궁극의 배터리 아키텍처 — n=6 기반 소재→전극→코어→칩→시스템
 # BT-27 (Carbon-6 chain) + BT-43 (CN=6 universality) +
-# BT-57 (Cell ladder) + BT-80 (SSE CN=6) + BT-82 (Pack map) +
-# BT-84 (96/192 triple convergence)
+# BT-57 (Cell ladder) + BT-80 (SSE CN=6) + BT-81 (Anode 10x ladder) +
+# BT-82 (Pack map) + BT-83 (Li-S polysulfide) + BT-84 (96/192 triple) +
+# BT-153 (EV n=6 아키텍처) + BT-206 (EV 전압-커넥터 스택) +
+# BT-288 (자동차 전압 래더 6→12→24→48) + BT-326 (전력망 운영 n=6 맵)
 # Total raw combos: 6x5x5x4x6 = 3,600 (pre-filter)
+# 갱신: 2026-04-08 — 최신 BT 정합 (EV/그리드 통합)
 # =============================================================
 
 [meta]
 name = "battery-architecture"
-desc = "Ultimate Battery Architecture DSE (BT-27/43/57/80/82/84)"
+desc = "궁극 배터리 아키텍처 DSE (BT-27/43/57/80/81/82/83/84/153/206/288/326)"
 levels = ["Material", "Electrode", "Core", "Chip", "System"]
 vision = "n=6 crystallography from atom to grid — CN=6 universal energy storage"
 
@@ -257,7 +260,7 @@ n6     = 1.00
 perf   = 0.85
 power  = 0.70
 cost   = 0.55
-notes  = "96S=sigma(sigma-tau) EXACT, 400V class, Tesla, BT-57/84"
+notes  = "96S=sigma(sigma-tau) EXACT, 400V class, Tesla, BT-57/84/153/206/288"
 
 [[candidate]]
 level  = 4
@@ -267,7 +270,7 @@ n6     = 1.00
 perf   = 0.90
 power  = 0.65
 cost   = 0.45
-notes  = "192S=phi*96 EXACT, 800V class, Hyundai E-GMP, BT-57"
+notes  = "192S=phi*96 EXACT, 800V class, Hyundai E-GMP, BT-57/153/206"
 
 [[candidate]]
 level  = 4
@@ -277,7 +280,7 @@ n6     = 0.83
 perf   = 0.80
 power  = 0.75
 cost   = 0.50
-notes  = "J2=24 kV distribution EXACT, utility-scale, BT-62"
+notes  = "J2=24 kV distribution EXACT, utility-scale, BT-62/326 (전력망 n=6 맵)"
 
 [[candidate]]
 level  = 4
@@ -287,7 +290,7 @@ n6     = 1.00
 perf   = 0.75
 power  = 0.80
 cost   = 0.60
-notes  = "48V=sigma*tau EXACT, sigma=12 cell modules, BT-60"
+notes  = "48V=sigma*tau EXACT, sigma=12 cell modules, BT-60/288 (자동차 전압 래더)"
 
 [[candidate]]
 level  = 4
@@ -307,7 +310,7 @@ n6     = 0.83
 perf   = 0.82
 power  = 0.78
 cost   = 0.55
-notes  = "phi=2 directional EXACT, DC chain BT-60"
+notes  = "phi=2 directional EXACT, DC chain BT-60/326 V2G 그리드 통합"
 
 # =============================================================
 # Compatibility Rules

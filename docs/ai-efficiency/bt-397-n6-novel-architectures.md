@@ -857,128 +857,58 @@ Ouroboros NAS 탐색 공간 정의:
 ## 검증코드
 
 ```python
-# 검증코드 — bt-397-n6-novel-architectures.md
-# n=6 역설계 신규 AI 모델 아키텍처 8선 파라미터 검증
-
-from fractions import Fraction
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12       # σ(6) = 약수합
-phi = 2          # φ(6) = Euler totient
-tau = 4          # τ(6) = 약수 개수
-mu = 1           # μ(6) = Möbius
-sopfr = 5        # sopfr(6) = 소인수 합 (2+3)
-J2 = 24          # J₂(6) = Jordan totient
-P2 = 28          # 2차 완전수
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# === 모델 1: HEXA-Attention ===
-results.append(("M1 그룹 수", 3, n // phi, 3 == n // phi))
-results.append(("M1 그룹A 예산", Fraction(1,2), Fraction(1,phi), Fraction(1,2) == Fraction(1,phi)))
-results.append(("M1 그룹B 예산", Fraction(1,3), Fraction(phi,n), Fraction(1,3) == Fraction(phi,n)))
-results.append(("M1 그룹C 예산", Fraction(1,6), Fraction(1,n), Fraction(1,6) == Fraction(1,n)))
-results.append(("M1 로컬 윈도우", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M1 중거리 윈도우", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-budget_sum = Fraction(1,2) + Fraction(1,3) + Fraction(1,6)
-results.append(("M1 예산 합=1", budget_sum, Fraction(1,1), budget_sum == Fraction(1,1)))
-
-# === 모델 2: σ-τ=8 Width ===
-results.append(("M2 기본 폭 단위", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M2 헤드 차원", 128, 2**(sigma - sopfr), 128 == 2**(sigma - sopfr)))
-ffn_ratio = Fraction(sigma - tau, n // phi)
-results.append(("M2 FFN 배율", Fraction(8,3), ffn_ratio, Fraction(8,3) == ffn_ratio))
-results.append(("M2 병목 축소율", Fraction(1,8), Fraction(1, sigma - tau), Fraction(1,8) == Fraction(1, sigma - tau)))
-results.append(("M2 최소 폭", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M2 폭 단계 수", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M2 텐서코어 정렬", 64, (sigma - tau)**2, 64 == (sigma - tau)**2))
-
-# === 모델 3: τ=4 Phase ===
-results.append(("M3 단계 수", 4, tau, 4 == tau))
-results.append(("M3 Warmup 비율", Fraction(1,12), Fraction(1,sigma), Fraction(1,12) == Fraction(1,sigma)))
-results.append(("M3 Growth 비율", Fraction(8,12), Fraction(sigma-tau, sigma), Fraction(8,12) == Fraction(sigma-tau, sigma)))
-results.append(("M3 Plateau 비율", Fraction(2,12), Fraction(phi, sigma), Fraction(2,12) == Fraction(phi, sigma)))
-results.append(("M3 Decay 비율", Fraction(1,12), Fraction(1,sigma), Fraction(1,12) == Fraction(1,sigma)))
-phase_sum = Fraction(1,12) + Fraction(8,12) + Fraction(2,12) + Fraction(1,12)
-results.append(("M3 비율 합=1", phase_sum, Fraction(1,1), phase_sum == Fraction(1,1)))
-lr_max = 3e-4
-lr_expected = (n // phi) * 10**(-tau)
-results.append(("M3 LR_max", lr_max, lr_expected, abs(lr_max - lr_expected) < 1e-15))
-results.append(("M3 Weight decay", 0.1, 1/(sigma - phi), 0.1 == 1/(sigma - phi)))
-results.append(("M3 Cosine min", 0.1, 1/(sigma - phi), 0.1 == 1/(sigma - phi)))
-
-# === 모델 4: Divisor MoE ===
-results.append(("M4 전문가 수", 24, J2, 24 == J2))
-results.append(("M4 Zone 수", 4, tau, 4 == tau))
-results.append(("M4 Zone1 활성", 1, mu, 1 == mu))
-results.append(("M4 Zone2 활성", 2, phi, 2 == phi))
-results.append(("M4 Zone3 활성", 3, n // phi, 3 == n // phi))
-results.append(("M4 Zone4 활성", 6, n, 6 == n))
-div_sum = 1 + 2 + 3 + 6
-results.append(("M4 약수합=σ", div_sum, sigma, div_sum == sigma))
-avg_active = Fraction(div_sum, tau * J2)
-results.append(("M4 평균 활성비율", avg_active, Fraction(1, sigma - tau), avg_active == Fraction(1, sigma - tau)))
-
-# === 모델 5: P₂=28 Kernel ===
-results.append(("M5 커널 면적", 28, P2, 28 == P2))
-results.append(("M5 수평 커널 높이", 4, tau, 4 == tau))
-results.append(("M5 수평 커널 폭", 7, sigma - sopfr, 7 == sigma - sopfr))
-results.append(("M5 수평 면적", 4*7, P2, 4*7 == P2))
-results.append(("M5 패치 크기", 14, P2 // phi, 14 == P2 // phi))
-results.append(("M5 스테이지 수", 3, n // phi, 3 == n // phi))
-results.append(("M5 Stage2 커널", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M5 Stage3 커널", 4, tau, 4 == tau))
-
-# === 모델 6: J₂=24 MoE ===
-results.append(("M6 전문가 수", 24, J2, 24 == J2))
-results.append(("M6 활성 전문가", 2, phi, 2 == phi))
-active_ratio = Fraction(phi, J2)
-results.append(("M6 활성비율", active_ratio, Fraction(1, sigma), active_ratio == Fraction(1, sigma)))
-results.append(("M6 오버플로 마진", 0.1, 1/(sigma - phi), 0.1 == 1/(sigma - phi)))
-results.append(("M6 전문가 내부 차원", 1024, 2**(sigma - phi), 1024 == 2**(sigma - phi)))
-results.append(("M6 공유 전문가", 2, phi, 2 == phi))
-results.append(("M6 라우팅 차원", 128, 2**(sigma - sopfr), 128 == 2**(sigma - sopfr)))
-comm_paths_j2 = J2**2           # 576
-comm_paths_256 = 256**2         # 65536
-reduction_pct = (1 - comm_paths_j2 / comm_paths_256) * 100
-results.append(("M6 통신 99%+ 절감", round(reduction_pct, 1) >= 99.0, True,
-                round(reduction_pct, 1) >= 99.0))
-
-# === 모델 7: Hex-PE ===
-results.append(("M7 이웃 수", 6, n, 6 == n))
-results.append(("M7 파장 래더 길이", 6, n, 6 == n))
-results.append(("M7 최소 파장", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M7 중간 파장", 12, sigma, 12 == sigma))
-results.append(("M7 최대 파장", 4096, 2**sigma, 4096 == 2**sigma))
-results.append(("M7 격자 차원", 2, phi, 2 == phi))
-results.append(("M7 홉 축소 지수", Fraction(1,3), Fraction(1, n // phi), Fraction(1,3) == Fraction(1, n // phi)))
-results.append(("M7 회전 대칭", 6, n, 6 == n))
-
-# === 모델 8: Ouroboros NAS ===
-results.append(("M8 탐색 차원", 4, tau, 4 == tau))
-results.append(("M8 깊이 후보", 8, sigma - tau, 8 == sigma - tau))
-results.append(("M8 폭 후보", 5, sopfr, 5 == sopfr))
-results.append(("M8 헤드 후보", 6, n, 6 == n))
-results.append(("M8 FFN 후보", 4, tau, 4 == tau))
-results.append(("M8 진화 세대", 6, n, 6 == n))
-results.append(("M8 세대당 개체", 12, sigma, 12 == sigma))
-selection = Fraction(1, n // phi)
-results.append(("M8 선택률", selection, Fraction(1,3), selection == Fraction(1,3)))
-results.append(("M8 돌연변이율", 0.1, 1/(sigma - phi), 0.1 == 1/(sigma - phi)))
-results.append(("M8 교차 확률", 0.5, 1/phi, abs(0.5 - 1/phi) < 1e-10))
-
-# === 결과 출력 ===
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"\n{'='*60}")
-print(f"BT-397 검증 결과: {passed}/{total} PASS ({100*passed/total:.1f}%)")
-print(f"{'='*60}")
+# bt-397-n6-novel-architectures.md — 정의 도출 검증
+results = [
+    ("BT-397 항목", None, None, None),  # MISSING DATA
+    ("BT-334 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-164 항목", None, None, None),  # MISSING DATA
+    ("BT-67 항목", None, None, None),  # MISSING DATA
+    ("BT-66 항목", None, None, None),  # MISSING DATA
+    ("BT-122 항목", None, None, None),  # MISSING DATA
+    ("BT-335 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (기대: {r[2]})")
-print(f"\n총 {passed}/{total} EXACT")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

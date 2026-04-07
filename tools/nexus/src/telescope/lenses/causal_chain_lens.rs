@@ -252,14 +252,24 @@ mod tests {
 
     #[test]
     fn test_causal_chain_basic() {
-        // 인과 체인 테스트: dim0 -> dim1 -> dim2 (시차 1)
-        let n = 20;
+        // 인과 체인 테스트: 의사난수 + 시차 인과 (낮은 auto-corr, 높은 cross-corr)
+        let n = 40;
         let d = 3;
         let mut data = vec![0.0; n * d];
+        // dim0: 의사난수 시퀀스 (low autocorrelation)
+        let mut rng_state = 42u64;
         for t in 0..n {
-            data[t * d + 0] = t as f64;
-            data[t * d + 1] = if t > 0 { (t - 1) as f64 * 0.9 } else { 0.0 };
-            data[t * d + 2] = if t > 1 { (t - 2) as f64 * 0.8 } else { 0.0 };
+            rng_state = rng_state.wrapping_mul(6364136223846793005).wrapping_add(1);
+            let noise = ((rng_state >> 33) as f64) / (u32::MAX as f64) - 0.5;
+            data[t * d + 0] = noise;
+        }
+        // dim1: dim0을 1스텝 지연 복사 (강한 인과)
+        for t in 1..n {
+            data[t * d + 1] = data[(t - 1) * d + 0] * 0.9;
+        }
+        // dim2: dim1을 1스텝 지연 복사
+        for t in 1..n {
+            data[t * d + 2] = data[(t - 1) * d + 1] * 0.9;
         }
         let shared = SharedData::compute(&data, n, d);
         let result = CausalChainLens.scan(&data, n, d, &shared);

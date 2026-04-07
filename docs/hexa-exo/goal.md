@@ -511,191 +511,58 @@ HEXA-EXO는 그보다 **sigma-tau=8배 가볍고**, **J2/2=12배 오래 가고**
 ## 11. Python 검증 코드 (10 필수, 인라인, 104개 EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-EXO AI 외골격 -- n=6 파라미터 전수 검증
-=============================================
-104개 EXACT 파라미터를 수학적으로 재현.
-실행: python3 docs/hexa-exo/goal.py (또는 이 블록 직접 실행)
-판정: ALL PASS -> 10 인증, ANY FAIL -> 9 강등
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# --- n=6 핵심 상수 ---
-n       = 6
-sigma   = 12
-phi     = 2
-tau     = 4
-sopfr   = 5
-mu      = 1
-J2      = 24
-R6      = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-assert sigma*phi == n*tau == J2, "핵심 항등식 실패"
-
-results = []
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-125 항목", None, None, None),  # MISSING DATA
+    ("BT-126 항목", None, None, None),  # MISSING DATA
+    ("BT-127 항목", None, None, None),  # MISSING DATA
+    ("BT-271 항목", None, None, None),  # MISSING DATA
+    ("BT-153 항목", None, None, None),  # MISSING DATA
+    ("BT-277 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# === A. 핵심 상수 (14) ===
-check("n",           n,            6,    "n=6 완전수",              "Core")
-check("sigma",       sigma,        12,   "sigma(6)=12",             "Core")
-check("phi",         phi,          2,    "phi(6)=2",                "Core")
-check("tau",         tau,          4,    "tau(6)=4",                "Core")
-check("sopfr",       sopfr,        5,    "sopfr(6)=2+3=5",         "Core")
-check("mu",          mu,           1,    "mu(6)=1",                 "Core")
-check("J2",          J2,           24,   "J2(6)=sigma*phi=24",      "Core")
-check("sigma-phi",   sigma-phi,    10,   "sigma-phi=10",            "Core")
-check("sigma-tau",   sigma-tau,    8,    "sigma-tau=8",             "Core")
-check("sigma-mu",    sigma-mu,     11,   "sigma-mu=11",             "Core")
-check("sigma*tau",   sigma*tau,    48,   "sigma*tau=48",            "Core")
-check("phi^tau",     phi**tau,     16,   "phi^tau=16",              "Core")
-check("sigma^2",     sigma**2,     144,  "sigma^2=144",             "Core")
-check("sigma*J2",    sigma*J2,     288,  "sigma*J2=288",            "Core")
-
-# === B. 프레임 (BT-271 Ti-6Al-4V) (7) ===
-check("frame_weight_kg",     sigma,           12,   "sigma=12 kg (=n*phi)",     "Frame")
-check("frame_material_Z",    n,               6,    "Ti-6Al-4V: Z(C)=6=n",     "Frame")
-check("cf_thickness_mm",     phi,             2,    "phi=2 mm CF",              "Frame")
-check("frame_segments",      n,               6,    "n=6 세그먼트",             "Frame")
-check("frame_height_levels", tau,             4,    "tau=4 높이레벨",           "Frame")
-check("total_parts",         sigma**2,        144,  "sigma^2=144 부품",         "Frame")
-check("assembly_bolts",      J2,              24,   "J2=24 볼트",              "Frame")
-
-# === C. 관절 (BT-124 sigma=12 관절) (8) ===
-check("total_joints",        J2,              24,   "J2=24 관절",              "Joint")
-check("limbs",               tau,             4,    "tau=4 사지",              "Joint")
-check("joints_per_limb",     n,               6,    "n=6 관절/사지",           "Joint")
-check("joint_axes",          sopfr,           5,    "sopfr=5 관절축",          "Joint")
-check("rotation_range_deg",  sigma**2,        144,  "sigma^2=144도",           "Joint")
-check("backlash_deg",        1/(sigma-phi),   0.1,  "1/(sigma-phi)=0.1도",     "Joint", tol=1e-6)
-check("SE3_DOF",             n,               6,    "SE(3)=n=6",              "Joint")
-check("trans_rot",           n//phi,          3,    "n/phi=3 (병진=회전)",     "Joint")
-
-# === D. 구동기 (BT-153 EV 모터) (8) ===
-check("motor_count",         sigma,           12,   "sigma=12 모터",           "Actuator")
-check("force_multiplier",    sigma,           12,   "sigma=12배 근력",         "Actuator")
-check("torque_Nm",           sigma*sopfr,     60,   "sigma*sopfr=60 Nm",       "Actuator")
-check("drive_voltage_V",     J2,              24,   "J2=24V 구동",            "Actuator")
-check("peak_power_W",        J2,              24,   "J2=24W/모터 피크",        "Actuator")
-check("motor_RPM",           (sigma-phi)**(n//phi), 1000, "(sigma-phi)^(n/phi)=1000 RPM", "Actuator")
-check("efficiency_pct",      1-1/(J2-tau),    0.95, "1-1/(J2-tau)=0.95=95%",   "Actuator", tol=1e-6)
-check("gear_ratio",          (sigma-phi)**phi, 100, "(sigma-phi)^phi=100:1",   "Actuator")
-
-# === E. 제어기 (BT-56 LLM 아키텍처) (10) ===
-check("ctrl_layers",         sigma,           12,   "sigma=12 AI 계층",        "Control")
-check("ctrl_dim",            2**sigma,        4096, "2^sigma=4096 d_model",    "Control")
-check("ctrl_heads",          2**sopfr,        32,   "2^sopfr=32 heads",        "Control")
-check("ctrl_head_dim",       2**(sigma-sopfr),128,  "2^(sigma-sopfr)=128",     "Control")
-check("ctrl_GQA",            sigma-tau,       8,    "sigma-tau=8 GQA KV",      "Control")
-check("ctrl_latency_ms",     mu,              1,    "mu=1 ms 폐루프",         "Control")
-check("ctrl_freq_Hz",        (sigma-phi)**(n//phi), 1000, "(sigma-phi)^(n/phi)=1kHz", "Control")
-check("gait_phases",         tau,             4,    "tau=4 보행위상",          "Control")
-check("gait_period_s",       sigma/(sigma-phi), 1.2, "sigma/(sigma-phi)=1.2s", "Control", tol=1e-6)
-check("ctrl_dropout",        math.log(4/3),   0.2876820724517809, "ln(4/3)=0.288", "Control", tol=1e-4)
-
-# === F. 센서 (BT-127 키싱수) (7) ===
-check("sensor_types",        sigma-tau,       8,    "sigma-tau=8종 센서",      "Sensor")
-check("IMU_axes",            n,               6,    "n=6 IMU 축",             "Sensor")
-check("tactile_channels",    sigma,           12,   "sigma=12 촉각채널",       "Sensor")
-check("EMG_channels",        sigma-tau,       8,    "sigma-tau=8 EMG",         "Sensor")
-check("cameras",             n,               6,    "n=6 카메라",             "Sensor")
-check("sensor_ADC_bits",     sigma-phi,       10,   "sigma-phi=10 bit",        "Sensor")
-check("sampling_kHz",        tau,             4,    "tau=4 kHz",               "Sensor")
-
-# === G. 배터리 (BT-57 셀 래더) (6) ===
-check("battery_V",           sigma*tau,       48,   "sigma*tau=48V",           "Battery")
-check("battery_Wh",          sigma*J2,        288,  "sigma*J2=288 Wh",        "Battery")
-check("battery_cells",       sigma,           12,   "sigma=12 셀",            "Battery")
-check("battery_hours",       J2,              24,   "J2=24 시간",             "Battery")
-check("charge_hours",        phi,             2,    "phi=2 시간 충전",         "Battery")
-check("battery_weight_kg",   phi,             2,    "phi=2 kg",               "Battery")
-
-# === H. 안전 (BT-160/276) (6) ===
-check("safety_SIL",          n//phi,          3,    "n/phi=3 SIL등급",         "Safety")
-check("redundancy",          n//phi,          3,    "n/phi=3중 이중화",        "Safety")
-check("estop_ms",            mu,              1,    "mu=1 ms 비상정지",        "Safety")
-check("overload_Nm",         sigma**2,        144,  "sigma^2=144 Nm 차단",     "Safety")
-check("IP_rating",           sigma-sopfr,     7,    "sigma-sopfr=7 (IP67)",    "Safety")
-check("safety_zones",        n,               6,    "n=6 안전영역",            "Safety")
-
-# === I. 응용 (BT-125/123) (8) ===
-check("rehab_recovery",      R6,              1,    "R(6)=1=100% 보행복귀",    "App")
-check("rehab_speedup",       n,               6,    "n=6배 재활단축",          "App")
-check("carry_kg",            sigma*sopfr,     60,   "sigma*sopfr=60 kg 운반",  "App")
-check("adapt_days",          mu,              1,    "mu=1일 적응학습",         "App")
-check("app_domains",         n,               6,    "n=6 응용분야",            "App")
-check("walk_speed_kmh",      sopfr,           5,    "sopfr=5 km/h 보행",       "App")
-check("stair_angle_deg",     sigma*tau,       48,   "sigma*tau=48도 경사한계",  "App")
-check("max_carry_kg",        sigma**2,        144,  "sigma^2=144 kg 최대운반",  "App")
-
-# === J. 열관리 (BT-318/319) (6) ===
-check("motor_max_temp_C",    (sigma-phi)**phi, 100, "(sigma-phi)^phi=100도",   "Thermal")
-check("throttle_temp_C",     100-sopfr,       95,   "100-sopfr=95도 스로틀",   "Thermal")
-check("heatsink_cm2",        sigma**2,        144,  "sigma^2=144 cm^2 방열판", "Thermal")
-check("cooling_channels",    n,               6,    "n=6 냉각채널",            "Thermal")
-check("thermal_paths",       tau,             4,    "tau=4 열전도경로",         "Thermal")
-check("max_heat_W",          sigma*sopfr,     60,   "sigma*sopfr=60W 최대발열", "Thermal")
-
-# === K. 통신 (BT-181/114/140) (6) ===
-check("ble_version",         sopfr,           5,    "sopfr=5 BLE5.0",          "Comm")
-check("wireless_channels",   sigma,           12,   "sigma=12 무선채널",        "Comm")
-check("telemetry_Hz",        sigma-phi,       10,   "sigma-phi=10 Hz 텔레메트리","Comm")
-check("packet_bytes",        sigma*tau,       48,   "sigma*tau=48 byte 패킷",   "Comm")
-check("encryption",          2**(sigma-sopfr),128,  "2^(sigma-sopfr)=128 AES",  "Comm")
-check("antennas",            phi,             2,    "phi=2 안테나",             "Comm")
-
-# === L. 손/그립 (BT-126) (6) ===
-check("fingers",             sopfr,           5,    "sopfr=5 손가락",           "Hand")
-check("grasp_space",         2**sopfr,        32,   "2^sopfr=32 파지공간",      "Hand")
-check("grip_force_N",        sigma*sopfr,     60,   "sigma*sopfr=60 N 그립력",  "Hand")
-check("finger_joints",       n//phi,          3,    "n/phi=3 핑거관절",         "Hand")
-check("thumb_angle_deg",     sigma**2,        144,  "sigma^2=144도 엄지대향",   "Hand")
-check("tactile_per_hand",    sigma,           12,   "sigma=12 촉각/손",         "Hand")
-
-# === M. 인체공학 (BT-136/236) (6) ===
-check("don_time_min",        sopfr,           5,    "sopfr=5분 착용시간",       "Ergo")
-check("body_weight_ratio",   n,               6,    "1/n=1/6 체중비",          "Ergo")
-check("fitting_sizes",       n,               6,    "n=6 피팅사이즈",          "Ergo")
-check("pressure_points",     sigma,           12,   "sigma=12 압력분산점",      "Ergo")
-check("vent_holes",          J2,              24,   "J2=24 환기구멍",          "Ergo")
-check("swap_modules",        tau,             4,    "tau=4 교체모듈",          "Ergo")
-
-# === N. 정비 (BT-131/236) (6) ===
-check("maint_cycle_months",  n,               6,    "n=6개월 정비주기",         "Maint")
-check("consumables",         sigma,           12,   "sigma=12 소모품",          "Maint")
-check("MTBF_hours",          (sigma-phi)**tau, 10000,"(sigma-phi)^tau=10000h",  "Maint")
-check("part_swap_min",       sopfr,           5,    "sopfr=5분 부품교체",       "Maint")
-check("self_diag_items",     J2,              24,   "J2=24 자가진단항목",       "Maint")
-check("fw_update_weeks",     tau,             4,    "tau=4주 업데이트주기",      "Maint")
-
-# === 최종 리포트 ===
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-EXO Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
-for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-for cat, (p,t) in by_cat.items():
-    print(f"  {cat:12s} {p}/{t}")
-print("="*72)
-for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"[{status}] {r['category']:12s} {r['name']:25s} = {r['actual']}  ({r['formula']})")
-print("="*72)
-if passed == total:
-    print("ALL PASS -- 10 CERTIFIED (물리 한계 도달)")
-else:
-    print(f"FAILED: {total-passed} checks -> 9 강등")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (2026-04-06 검증 완료)**:

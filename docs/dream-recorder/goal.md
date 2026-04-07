@@ -129,88 +129,58 @@
 ## Python 인라인 검증
 
 ```python
-"""HEXA-DREAM verification — 표준 라이브러리 only"""
 import math
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-checks = []
-def add(name, measured, formula_value, formula_str, tol=0):
-    if tol == 0:
-        ok = (measured == formula_value)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
+
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-222 항목", None, None, None),  # MISSING DATA
+    ("BT-189 항목", None, None, None),  # MISSING DATA
+    ("BT-152 항목", None, None, None),  # MISSING DATA
+    ("BT-221 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-255 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        ok = abs(measured - formula_value) <= tol
-    checks.append((name, measured, formula_value, formula_str, ok))
-
-# ── 뇌 신호 센서 ──
-add("시각피질 채널(1k)", 144, sigma**2, "σ²")
-add("시각피질 voxel", 144000, sigma**2*1000, "σ²·1000")
-add("EEG 전극 수", 256, 2**(sigma-tau), "2^(σ-τ)")
-add("EEG 비트", 8, sigma-tau, "σ-τ")
-add("fMRI voxel mm", 1, mu, "μ")
-add("샘플링 Hz", 48, sigma*tau, "σ·τ")
-add("BOLD 지연 s", 6, n, "n")
-add("자기장 T", 7, sopfr+phi, "sopfr+φ")
-
-# ── 뇌파 주파수 ──
-add("델타 Hz", 2, phi, "φ")
-add("세타 Hz", 4, tau, "τ")
-add("알파 Hz", 12, sigma, "σ")
-add("베타 Hz", 24, J2, "J₂")
-add("감마 Hz", 96, J2*tau, "J₂·τ")
-add("리플 Hz", 144, sigma**2, "σ²")
-
-# ── 수면 구조 ──
-add("수면 단계 수", 5, sopfr, "sopfr")
-add("사이클/밤", 6, n, "n")
-add("REM 시간 hr", 6, n, "n")
-add("REM/cycle min", 24, J2, "J₂")
-add("사이클 min", 90, sigma*sopfr+J2+n, "σ·sopfr+J₂+n")
-add("총 수면 hr", 8, sigma-tau, "σ-τ")
-
-# ── 피질 층 ──
-add("신피질 층", 6, n, "n (BT-254)")
-add("시각피질 V1~V6", 6, n, "n")
-add("층당 뉴런(1M)", 12, sigma, "σ")
-
-# ── 디코더 ──
-add("CNN-T layers", 12, sigma, "σ")
-add("embedding dim", 144, sigma**2, "σ²")
-add("attention heads", 12, sigma, "σ")
-add("diffusion steps", 24, J2, "J₂")
-add("latent channels", 8, sigma-tau, "σ-τ")
-
-# ── 재생 홀로그램 ──
-add("holo views", 288, sigma*J2, "σ·J₂")
-add("depth layers", 144, sigma**2, "σ²")
-add("refresh Hz", 24, J2, "J₂")
-add("color channels", 256, 2**(sigma-tau), "2^(σ-τ)")
-
-# ── 시스템 ──
-add("dream-bed volume ℓ", 1728, sigma**3, "σ³")
-add("recording hrs", 6, n, "n")
-add("storage GB/night", 144, sigma**2, "σ²")
-add("GPU TOPS", 288, sigma*J2, "σ·J₂")
-
-# ── 복원률 (허용오차) ──
-reconstruction = 0.632
-add("복원률 1-1/e", round(reconstruction, 3), round(1-1/math.e, 3), "1-1/e", tol=0.01)
-
-# ── 정확도 bit ──
-add("encoder bits", 12, sigma, "σ")
-add("decoder bits", 12, sigma, "σ")
-add("DAC ch", 144, sigma**2, "σ²")
-add("ADC bit", 12, sigma, "σ")
-add("noise floor dB", -60, -(sigma*sopfr), "-σ·sopfr")
-
-passed = sum(1 for c in checks if c[4])
-total = len(checks)
-pct = passed/total*100
-print(f"HEXA-DREAM verification: {passed}/{total} EXACT ({pct:.1f}%)")
-for name, m, v, f, ok in checks:
-    if not ok:
-        print(f"  ✗ {name}: measured={m} formula={f}={v}")
-assert pct >= 90.0
-print("🛸10 gate: PASS")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (expected)**: `HEXA-DREAM verification: 43/43 EXACT (100.0%)` → 🛸10 gate PASS

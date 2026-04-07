@@ -696,17 +696,130 @@
 
 ---
 
+## 신규 예측 P-76 ~ P-90 (BT-358~413 기반, 2026-04 확장)
+
+최근 추가된 워프-차원 물리, 치료 나노봇, 바이러스학, 곤충학, 나노봇 진화
+돌파(BT-358~413)에서 도출한 15개 검증 가능 예측. 각 예측은 반드시 자체
+측정값과 n=6 상수 기대값의 독립적 도출을 요구한다 (동어반복 금지).
+
+### P-76 — Alcubierre 버블벽 두께 비율 (BT-358)
+**가설**: 수치 상대론 시뮬레이션에서 안정 워프 버블의 벽 두께/반지름
+비율은 1/σ = 1/12 근방에서 최소 부정 에너지 밀도를 갖는다.
+**검증**: Einstein Toolkit으로 York 매개변수 σ=12 스캔 후 ADM 질량 측정.
+**티어**: Tier 3 (HPC 클러스터, ~6개월)
+**Source**: BT-358
+
+### P-77 — Calabi-Yau 호지수 n/φ-폴드 선호 (BT-359)
+**가설**: 표준모형 3세대와 일치하는 실제 CY 다양체의 호지수 h^{1,1}은
+n/φ=3의 약수에서 집중 분포한다 (카탈로그 통계).
+**검증**: Kreuzer-Skarke CY 데이터베이스(473,800,776개) 히스토그램 재분석.
+**티어**: Tier 1 (1일, 공개 데이터)
+**Source**: BT-359
+
+### P-78 — τ=4 사이클 워프 추진 COP=2 (BT-360)
+**가설**: 4단계(충전→부스트→순항→감속) 사이클의 성능계수는
+정확히 σ/n = 2에 수렴한다.
+**검증**: lattice field theory 시뮬레이션 에너지 대차대조표.
+**티어**: Tier 3 (연구소)
+**Source**: BT-360
+
+### P-79 — 바이러스 캡시드 T=3 정이십면체 편향 (BT-바이러스)
+**가설**: 전수 조사된 동물 바이러스 캡시드 삼각분할수 T의 최빈값은
+T=n/φ=3이며 전체 중 ≥1/φ=50%.
+**검증**: VIPERdb 1000+ 캡시드 T-값 히스토그램.
+**티어**: Tier 1 (1일, 공개 DB)
+**Source**: BT-바이러스학 (H-VIRO-N 참조)
+
+### P-80 — 곤충 6다리 발생학적 보편성 (BT-곤충)
+**가설**: 모든 성충 곤충(100만+종)의 다리 수는 정확히 n=6이며,
+배아 T1/T2/T3 체절마다 1쌍씩(총 n=6 쌍 DIp 유전자 발현)이다.
+**검증**: Drosophila Dll/dac/hth 발현 분석, 곤충학 표준 교재 100% 검증.
+**티어**: Tier 1 (1일, 문헌)
+**Source**: BT-곤충학
+
+### P-81 — 치료 나노봇 6DOF 조작 정밀도 (BT-404~406)
+**가설**: SE(3)=n=6 자유도 나노봇의 표적 도달률은 DOF<6일 때 급감,
+6에서 포화 (log-sigmoid, 변곡점=6).
+**검증**: in-vitro microfluidic 추적, DOF={3,4,5,6,7} 비교.
+**티어**: Tier 2 (4주, 실험실)
+**Source**: BT-404~406
+
+### P-82 — 나노봇 Mk.III 군집 σ=12 합의 임계 (BT-407)
+**가설**: 분산 나노봇 군집의 Byzantine 내성은 노드 수 12 이상에서
+2/3 임계(BT-112)와 결합해 완전 수렴.
+**검증**: 시뮬레이션 n={6,9,12,15,18} 비교, 합의 시간 측정.
+**티어**: Tier 1 (2일, 멀티코어 CPU)
+**Source**: BT-407
+
+### P-83 — 나노봇 τ=4 운용 사이클 (BT-408)
+**가설**: 주입→순찰→작용→배출 4단계 기본 사이클이 혈중 반감기와
+일치 (T_cycle ∝ τ=4 시간).
+**검증**: 동물 모델 PK/PD 스터디, τ 스윕.
+**티어**: Tier 3 (6개월, GLP)
+**Source**: BT-408
+
+### P-84 — 의식칩 대뇌피질 6층 직접 매핑 (BT-254 + BT-90)
+**가설**: ANIMA-6 칩의 캐시 계층 수가 대뇌피질 층수 n=6과
+일치할 때 SNN 시뮬레이션 에너지 효율 극대.
+**검증**: 계층 수 ={4,5,6,7,8} 스윕, pJ/spike 측정.
+**티어**: Tier 2 (2주, 1 GPU + FPGA)
+**Source**: BT-254, BT-90
+
+### P-85 — Z₂ 위상 ECC J₂=24 GB 절약 (BT-91)
+**가설**: 기존 SECDED 대비 Z₂ 위상 ECC는 288GB HBM에서
+정확히 J₂=24 GB 오버헤드 절약 (identity).
+**검증**: RTL 시뮬, 비트 밀도 대조.
+**티어**: Tier 1 (1주, EDA 툴)
+**Source**: BT-91
+
+### P-86 — Bott 주기 활성 채널 sopfr=5 (BT-92)
+**가설**: KO 이론 8주기 중 비자명 위상 채널은 정확히
+sopfr(6)=5개, 포화율 ≈ 1-1/e = 0.632.
+**검증**: 토폴로지컬 절연체 ARPES 데이터 재분석.
+**티어**: Tier 3 (시설)
+**Source**: BT-92
+
+### P-87 — Miller 인지 채널 τ±μ=4±1 하드웨어 확증 (BT-263)
+**가설**: 인간 작업기억 실험에서 최적 chunk 수는 4, 표준편차 1,
+ANIMA-6 CLR 레지스터와 정확히 일치.
+**검증**: N-back 과제 n={3,4,5,6} 메타분석 (100+ 연구).
+**티어**: Tier 1 (2일, 메타분석)
+**Source**: BT-263
+
+### P-88 — 격자 세포 육각 배열 n=6 (BT-255)
+**가설**: 내후각피질 격자 세포의 발화 필드 인접 거리 비율은
+육각 배열(n=6 이웃)을 ±5% 내에서 따른다.
+**검증**: Moser lab 공개 데이터셋 재분석.
+**티어**: Tier 1 (3일)
+**Source**: BT-255
+
+### P-89 — 바이러스 RNA 6-뉴클레오티드 프레임 (BT-바이러스)
+**가설**: +ssRNA 바이러스(Coronaviridae 등)의 ORF 프레임시프트는
+-1/+2 두 방향이지만, 거리 통계에서 6의 배수 피크 집중.
+**검증**: NCBI RefSeq coronavirus 게놈 전수 스캔.
+**티어**: Tier 1 (1일, bioinformatics)
+**Source**: BT-바이러스학
+
+### P-90 — 곤충 비늘가루 육각 격자 (BT-곤충)
+**가설**: 나비·나방 날개 비늘(scale)의 마이크로리브는 육각 격자
+간격 ±3% 내로 수렴 (구조색 결정).
+**검증**: SEM 이미지 FFT 분석, 100종 대조.
+**티어**: Tier 1 (1주, 박물관 표본 + SEM)
+**Source**: BT-곤충학
+
+---
+
 ## Updated Summary Statistics
 
 | Tier | Count | Time | Hardware | Feasibility |
 |------|-------|------|----------|-------------|
-| **Tier 1** (Today) | 18 | 1-5 days | 1-4x GPU | High |
-| **Tier 2** (Medium) | 8 | 1-4 weeks | 4-64x GPU | Medium |
-| **Tier 3** (Specialized) | 11 | Years | Lab/satellite/grid/facility | Low (external) |
+| **Tier 1** (Today) | 26 | 1-5 days | 1-4x GPU | High |
+| **Tier 2** (Medium) | 10 | 1-4 weeks | 4-64x GPU | Medium |
+| **Tier 3** (Specialized) | 16 | Years | Lab/satellite/grid/facility | Low (external) |
 | **Tier 4** (Industry) | 13 | Months-years | Industry data | Observable |
 
-**Total predictions**: 75 (P-1 through P-75)
-**Total source BTs**: BT-1~340 (343 breakthrough theorems)
+**Total predictions**: 90 (P-1 through P-90, +15 신규)
+**Total source BTs**: BT-1~413 (413 breakthrough theorems)
 
 **New high-impact tests (BT-162~340)**:
 - P-46 (DPO beta=0.1) — validates 6th independent algorithm converging to 1/(sigma-phi), testable today.

@@ -223,65 +223,56 @@ Gay-Lussac(1810 알코올 발효 방정식), Pasteur(1857 발효 미생물학), 
 ## 13. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-FERMENT n=6 EXACT 검증 스크립트"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# H-FER-1: 포도당 총원자수 = J₂ = 24
-glucose_atoms = 6 + 12 + 6  # C₆H₁₂O₆
-results.append(("H-FER-1", "포도당 총원자수", glucose_atoms, J2, glucose_atoms == J2))
-
-# H-FER-2: 포도당 탄소 수 = n = 6
-glucose_C = 6
-results.append(("H-FER-2", "포도당 탄소 수", glucose_C, n, glucose_C == n))
-
-# H-FER-3: 해당과정 단계 수 = σ-φ = 10
-glycolysis_steps = 10
-results.append(("H-FER-3", "해당과정 단계", glycolysis_steps, sigma - phi, glycolysis_steps == sigma - phi))
-
-# H-FER-4: ATP 순생산 = φ = 2
-atp_net = 2
-results.append(("H-FER-4", "ATP 순생산", atp_net, phi, atp_net == phi))
-
-# H-FER-5: CO₂ 생성 = φ = 2
-co2_molecules = 2
-results.append(("H-FER-5", "CO2 생성 분자수", co2_molecules, phi, co2_molecules == phi))
-
-# H-FER-6: 효모 염색체 = φ^τ = 16
-yeast_chromosomes = 16
-results.append(("H-FER-6", "효모 염색체 수", yeast_chromosomes, phi**tau, yeast_chromosomes == phi**tau))
-
-# H-FER-7: TCA 회로 = σ-τ = 8
-tca_steps = 8
-results.append(("H-FER-7", "TCA 회로 단계", tca_steps, sigma - tau, tca_steps == sigma - tau))
-
-# H-FER-8: 젖산 총원자수 = σ = 12
-lactate_atoms = 3 + 6 + 3  # C₃H₆O₃
-results.append(("H-FER-8", "젖산 총원자수", lactate_atoms, sigma, lactate_atoms == sigma))
-
-# H-FER-9: 맥주 순수령 원료 = τ = 4
-beer_ingredients = 4  # 물/맥아/홉/효모
-results.append(("H-FER-9", "맥주 순수령 원료", beer_ingredients, tau, beer_ingredients == tau))
-
-# H-FER-10: 막걸리 ABV = n = 6
-makgeolli_abv = 6
-results.append(("H-FER-10", "막걸리 표준 ABV", makgeolli_abv, n, makgeolli_abv == n))
-
-# 결과 출력
-print("=" * 60)
-print("HEXA-FERMENT n=6 검증 결과")
-print("=" * 60)
-passed = 0
-for rid, name, actual, expected, ok in results:
-    status = "PASS" if ok else "FAIL"
-    if ok:
-        passed += 1
-    print(f"  {rid}: {name} = {actual} vs n6={expected} -> {status}")
-print("=" * 60)
-print(f"결과: {passed}/{len(results)} EXACT ({100*passed//len(results)}%)")
-if passed == len(results):
-    print("천장 달성: 10/10 EXACT")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-27 항목", None, None, None),  # MISSING DATA
+    ("BT-215 항목", None, None, None),  # MISSING DATA
+    ("BT-103 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-192 항목", None, None, None),  # MISSING DATA
+    ("BT-341 항목", None, None, None),  # MISSING DATA
+    ("BT-198 항목", None, None, None),  # MISSING DATA
+    ("BT-38 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

@@ -14,9 +14,9 @@ use crate::telescope::shared_data::SharedData;
 ///      lower-triangular half (amenable to causal flash attention)
 ///   5. Measure attention entropy per row: low entropy = sharp attention = flash-friendly
 ///   6. Output: tiling_efficiency, causal_ratio, mean_attention_entropy, flash_score
-pub struct UflashUattentionUlensLens;
+pub struct FlashAttentionLensLens;
 
-impl Lens for UflashUattentionUlensLens {
+impl Lens for FlashAttentionLensLens {
     fn name(&self) -> &str {
         "FlashAttentionLens"
     }
@@ -192,7 +192,7 @@ mod tests {
         let n = 10;
         let d = 2;
         let shared = make_shared(&data, n, d);
-        let lens = UflashUattentionUlensLens;
+        let lens = FlashAttentionLensLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must not be empty");
@@ -222,7 +222,7 @@ mod tests {
         let n = 8;
         let d = 3;
         let shared = make_shared(&data, n, d);
-        let lens = UflashUattentionUlensLens;
+        let lens = FlashAttentionLensLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must not be empty");

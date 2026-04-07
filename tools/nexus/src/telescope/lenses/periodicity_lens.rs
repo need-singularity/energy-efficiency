@@ -14,9 +14,9 @@ use crate::telescope::shared_data::SharedData;
 ///      measuring how strongly periodic the signal is.
 ///   4. Distance-based recurrence: Count near-recurrences in the
 ///      pairwise distance matrix at multiples of detected period.
-pub struct UperiodicityLens;
+pub struct PeriodicityLens;
 
-impl Lens for UperiodicityLens {
+impl Lens for PeriodicityLens {
     fn name(&self) -> &str {
         "PeriodicityLens"
     }
@@ -192,7 +192,7 @@ mod tests {
         let d = 1;
         let shared = SharedData::compute(&data, n, d);
 
-        let lens = UperiodicityLens;
+        let lens = PeriodicityLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "Result must be non-empty");
@@ -215,7 +215,7 @@ mod tests {
         let d = 1;
         let shared = SharedData::compute(&data, n, d);
 
-        let lens = UperiodicityLens;
+        let lens = PeriodicityLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "Result must be non-empty even for non-periodic data");
@@ -237,7 +237,7 @@ mod tests {
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
 
-        let lens = UperiodicityLens;
+        let lens = PeriodicityLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty());

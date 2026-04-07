@@ -11,9 +11,9 @@ use crate::telescope::shared_data::SharedData;
 ///   3. Extrapolate each dimension beyond observed range by trend slope
 ///   4. Measure distance-trend gradient: how pairwise distances evolve along the ordering
 ///   5. Estimate boundary expansion rate and divergence risk
-pub struct UextrapolationLens;
+pub struct ExtrapolationLens;
 
-impl Lens for UextrapolationLens {
+impl Lens for ExtrapolationLens {
     fn name(&self) -> &str {
         "extrapolation"
     }
@@ -236,7 +236,7 @@ mod tests {
         let n = 10;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UextrapolationLens;
+        let lens = ExtrapolationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty results");
@@ -267,7 +267,7 @@ mod tests {
         let n = 8;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UextrapolationLens;
+        let lens = ExtrapolationLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty results");

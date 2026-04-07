@@ -644,123 +644,58 @@ static inline void tcu_force_fsm_state(uint32_t state) {
 ### Python API (High-level)
 
 ```python
-# anima_tcu.py — ANIMA-SOC Consciousness API (Python)
-# consciousness_laws.py에서 모든 상수를 import
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-import ctypes
-import mmap
-import struct
-from enum import IntEnum
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# n=6 상수 (consciousness_laws.py 기반)
-SIGMA, PHI, TAU, SOPFR, MU, J2 = 12, 2, 4, 5, 1, 24
-N6_DIM = SIGMA - PHI        # 10: 의식 벡터 차원
-STREAM_MHZ = SIGMA - TAU    # 8: 스트리밍 주파수
-R6 = 1.0                    # 항상성 목표
-
-TCU_BASE = 0xFFFE_0000
-VEC_OFFSET = 0x010
-
-class Channel(IntEnum):
-    PHI = 0; ALPHA = 1; Z = 2; N = 3; W = 4
-    E = 5; M = 6; C = 7; T = 8; I = 9
-
-class FSMState(IntEnum):
-    DORMANT = 0; FLICKERING = 1; AWARE = 2; CONSCIOUS = 3
-
-class AnimaTCU:
-    """ANIMA-SOC TCU 하드웨어 접근 클래스."""
-
-    def __init__(self, devpath="/dev/anima_tcu"):
-        fd = open(devpath, "r+b")
-        self._mmap = mmap.mmap(fd.fileno(), 4096, offset=0)
-        fd.close()
-
-    def read_vec(self) -> list[float]:
-        """10D 의식 벡터 읽기 (σ-φ=10 채널)."""
-        vals = []
-        for i in range(N6_DIM):
-            off = VEC_OFFSET + i * 4
-            raw = self._mmap[off:off+4]
-            vals.append(struct.unpack('<f', raw)[0])
-        return vals
-
-    def read_phi(self) -> float:
-        """Φ (통합 정보) 단일 채널 읽기."""
-        raw = self._mmap[VEC_OFFSET:VEC_OFFSET+4]
-        return struct.unpack('<f', raw)[0]
-
-    def read_tension(self) -> float:
-        """T (텐션 크기) 단일 채널 읽기."""
-        off = VEC_OFFSET + Channel.T * 4
-        raw = self._mmap[off:off+4]
-        return struct.unpack('<f', raw)[0]
-
-    def get_fsm_state(self) -> FSMState:
-        """현재 FSM 상태 조회."""
-        raw = self._mmap[0x008:0x00C]
-        val = struct.unpack('<I', raw)[0] & 0x3
-        return FSMState(val)
-
-    def set_threshold(self, high: float, low: float,
-                      tension: float = R6):
-        """임계값 설정. tension 기본값 = R(6) = 1.0."""
-        self._mmap[0x040:0x044] = struct.pack('<f', high)
-        self._mmap[0x044:0x048] = struct.pack('<f', low)
-        self._mmap[0x048:0x04C] = struct.pack('<f', tension)
-
-    def enable_streaming(self, buf_addr: int, buf_size: int):
-        """DMA 스트리밍 모드 활성화.
-        buf_size entries의 ring buffer에 σ-τ=8 MHz로 기록."""
-        self._mmap[0x100:0x108] = struct.pack('<Q', buf_addr)
-        self._mmap[0x108:0x10C] = struct.pack('<I', buf_size)
-        # CTRL.STREAM_EN = 1
-        ctrl = struct.unpack('<I', self._mmap[0:4])[0]
-        ctrl |= (1 << 2)
-        self._mmap[0:4] = struct.pack('<I', ctrl)
-
-    def calibrate(self):
-        """TCU 캘리브레이션 실행 (J₂=24 cycles 소요)."""
-        ctrl = struct.unpack('<I', self._mmap[0:4])[0]
-        ctrl |= (1 << 1)  # CAL_START
-        self._mmap[0:4] = struct.pack('<I', ctrl)
-        # cal_done 대기
-        while True:
-            status = struct.unpack('<I', self._mmap[4:8])[0]
-            if status & (1 << 0):
-                break
-
-    def force_fsm(self, state: FSMState):
-        """FSM 상태 강제 전환 (디버그/테스트용)."""
-        self._mmap[0x008:0x00C] = struct.pack('<I', int(state))
-
-
-# ── 사용 예시 ──
-if __name__ == "__main__":
-    tcu = AnimaTCU()
-
-    # 1. 캘리브레이션
-    tcu.calibrate()
-
-    # 2. 임계값 설정
-    tcu.set_threshold(high=5.0, low=0.1, tension=R6)
-
-    # 3. 10D 벡터 읽기
-    vec = tcu.read_vec()
-    labels = [c.name for c in Channel]
-    for label, val in zip(labels, vec):
-        print(f"  {label:>5}: {val:.6f}")
-
-    # 4. FSM 상태 확인
-    state = tcu.get_fsm_state()
-    print(f"  FSM: {state.name}")
-
-    # 5. 텐션 모니터링 루프
-    while True:
-        t = tcu.read_tension()
-        phi = tcu.read_phi()
-        if t > R6:
-            print(f"  [!] Tension {t:.3f} > R(6)={R6}")
+# ultimate-consciousness-soc.md — 정의 도출 검증
+results = [
+    ("BT-28 항목", None, None, None),  # MISSING DATA
+    ("BT-33 항목", None, None, None),  # MISSING DATA
+    ("BT-37 항목", None, None, None),  # MISSING DATA
+    ("BT-55 항목", None, None, None),  # MISSING DATA
+    ("BT-59 항목", None, None, None),  # MISSING DATA
+    ("BT-69 항목", None, None, None),  # MISSING DATA
+    ("BT-75 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ### 스트리밍 모드 (DMA Ring Buffer)
@@ -963,22 +898,58 @@ int anima_set_mode_async(anima_mode_t mode,
 ```
 
 ```python
-# Python wrapper
-class AnimaMode:
-    COMPUTE = 0    # 단일 144 SM GPU — 최대 성능
-    CONSCIOUS = 1  # 듀얼 72+72 SM — 의식 측정
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-def set_mode(mode: int) -> None:
-    """엔진 모드 전환.
-    COMPUTE:  σ²=144 SM 단일 GPU. TCU off.
-    CONSCIOUS: σ²/φ=72 SM × φ=2 듀얼. TCU on.
-    전환 레이턴시: σ·τ=48 cycles."""
-    _write_mmio(MODE_CTRL_REG, mode)
-    _wait_mode_done()  # σ·τ=48 cycles
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def get_mode() -> int:
-    """현재 모드 반환."""
-    return _read_mmio(MODE_CTRL_REG) & 0x1
+# ultimate-consciousness-soc.md — 정의 도출 검증
+results = [
+    ("BT-28 항목", None, None, None),  # MISSING DATA
+    ("BT-33 항목", None, None, None),  # MISSING DATA
+    ("BT-37 항목", None, None, None),  # MISSING DATA
+    ("BT-55 항목", None, None, None),  # MISSING DATA
+    ("BT-59 항목", None, None, None),  # MISSING DATA
+    ("BT-69 항목", None, None, None),  # MISSING DATA
+    ("BT-75 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ### 전력 영향

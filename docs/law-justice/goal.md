@@ -277,42 +277,54 @@ n/φ=3심제  σ-φ=10 원칙  σ-n/φ=9 대법관  30=sopfr·n 인권선언
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""법학/사법 n=6 정의 아키텍처 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("배심원 12인",            12,  sigma),
-    ("3심 재판 구조",           3,   n // phi),
-    ("로마 12표법",            12,  sigma),
-    ("6대 법 분류",             6,   n),
-    ("UN 안보리 상임 5개국",    5,   sopfr),
-    ("UN 안보리 15개국",       15,  sopfr * (n // phi)),
-    ("세계인권선언 30조",      30,  sopfr * n),
-    ("형법 구성요건 4요소",     4,   tau),
-    ("미국 대법관 9인",         9,   sigma - n // phi),
-    ("합의 2/3 (분자2)",        2,   phi),  # 2/3 = phi / (n/phi)
-    ("증거법 5대 유형",         5,   sopfr),
-    ("나폴레옹 법전 5편",       5,   sopfr),
-    ("국제법 4대 법원",         4,   tau),
-    ("6인 소배심",              6,   n),
-    ("영국 대배심 24인",       24,  J2),
-    ("법리 10대 원칙",         10,  sigma - phi),
-    ("EU 기본권헌장 6편",       6,   n),
-    ("계약법 4대 요건",         4,   tau),
-    ("수정헌법 권리장전 10조", 10,  sigma - phi),
-    ("ICJ 재판관 15인",        15,  sopfr * (n // phi)),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-113 항목", None, None, None),  # MISSING DATA
+    ("BT-160 항목", None, None, None),  # MISSING DATA
+    ("BT-179 항목", None, None, None),  # MISSING DATA
+    ("BT-228 항목", None, None, None),  # MISSING DATA
+    ("BT-258 항목", None, None, None),  # MISSING DATA
+    ("BT-264 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 법학/사법 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

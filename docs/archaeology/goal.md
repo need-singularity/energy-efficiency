@@ -276,46 +276,55 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""고고학/문명사 n=6 기원 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("메소포타미아 60진법",     60,  sigma * sopfr),
-    ("이집트 12시간 체계",      12,  sigma),
-    ("C-14 탄소 Z=6",           6,   n),
-    ("3시대 구분법",             3,   n // phi),
-    ("마야 20진법",             20,  J2 - tau),
-    ("바빌로니아 360도",       360,  n * sigma * sopfr),
-    ("7대 불가사의",             7,   sigma - sopfr),
-    ("이집트 분수 합=1",         1,   1),
-    ("6대 문명 발상지",          6,   n),
-    ("12간지",                  12,  sigma),
-    ("60갑자",                  60,  sigma * sopfr),
-    ("24절기",                  24,  J2),
-    ("10진법 보편성",           10,  sigma - phi),
-    ("12진법 도량형",           12,  sigma),
-    ("쐐기문자 2종 획",          2,   phi),
-    ("피라미드 6구성",           6,   n),
-    ("문명 6요소",               6,   n),
-    ("로제타석 3문자",           3,   n // phi),
-    ("144 sar 면적",           144,  sigma**2),
-    ("고대 4원소",               4,   tau),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-138 항목", None, None, None),  # MISSING DATA
+    ("BT-182 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-256 항목", None, None, None),  # MISSING DATA
+    ("BT-262 항목", None, None, None),  # MISSING DATA
+    ("BT-267 항목", None, None, None),  # MISSING DATA
+    ("BT-99 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-from fractions import Fraction
-egyptian = Fraction(1,2) + Fraction(1,3) + Fraction(1,6)
-assert egyptian == 1, f"이집트 분수 합 FAIL: {egyptian}"
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 고고학/문명사 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

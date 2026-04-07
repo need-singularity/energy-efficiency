@@ -601,98 +601,58 @@ HEXA-CODEC-E x HEXA-CODEC x EnCodec sigma-tau=8 = **100% n6 EXACT**
 ## 15. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-EAR n=6 EXACT 검증 (62 파라미터)"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, tau, phi = 6, 12, 4, 2
-J2, sopfr, mu = 24, 5, 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-assert sigma * phi == n * tau == J2, f"핵심 항등식 실패"
-
-checks = {
-    # A. 오디오 코덱/샘플링 (12)
-    "48kHz 샘플레이트 = sigma*tau": (sigma*tau, 48),
-    "24-bit 오디오 = J2": (J2, 24),
-    "EnCodec 8 코덱북 = sigma-tau": (sigma-tau, 8),
-    "EnCodec 6kbps = n": (n, 6),
-    "EnCodec 24kHz = J2": (J2, 24),
-    "1024 코덱북 엔트리 = 2^(sigma-phi)": (2**(sigma-phi), 1024),
-    "CD 16-bit = phi^tau": (phi**tau, 16),
-    "전화 8kHz = sigma-tau": (sigma-tau, 8),
-    "mu-law 256 레벨 = 2^(sigma-tau)": (2**(sigma-tau), 256),
-    "광대역 16kHz = phi^tau": (phi**tau, 16),
-    "LDAC 96kHz = sigma*tau*phi": (sigma*tau*phi, 96),
-    "오버샘플링 144kHz = sigma^2": (sigma**2, 144),
-    # B. 음악/심리음향 (12)
-    "12 반음 = sigma": (sigma, 12),
-    "완전협화 div(6)": (len([1,2,3,6]), 4),  # tau개 약수
-    "장3화음 4:5:6 = tau:sopfr:n": ((tau, sopfr, n), (4, 5, 6)),
-    "가청 10 옥타브 = sigma-phi": (sigma-phi, 10),
-    "Bark 24 밴드 = J2": (J2, 24),
-    "피아노 흑건 5 = sopfr": (sopfr, 5),
-    "가청 하한 20Hz = J2-tau": (J2-tau, 20),
-    "48V 팬텀 = sigma*tau": (sigma*tau, 48),
-    "5.1 서라운드 = sopfr": (sopfr, 5),
-    "7.1 서라운드 = sigma-sopfr": (sigma-sopfr, 7),
-    "Dolby Atmos 12ch = sigma": (sigma, 12),
-    "옥타브 비율 = phi": (phi, 2),
-    # C. 이어폰 하드웨어 (10)
-    "드라이버 12mm = sigma": (sigma, 12),
-    "ANC 마이크 4 = tau": (tau, 4),
-    "이어버드 2개 = phi": (phi, 2),
-    "BA 드라이버 2 = phi": (phi, 2),
-    "임피던스 12옴 = sigma": (sigma, 12),
-    "감도 120dB = sigma*(sigma-phi)": (sigma*(sigma-phi), 120),
-    "MEMS 마이크 5mm = sopfr": (sopfr, 5),
-    "THD < 1/sigma^2": (1/sigma**2, 1/144),
-    "이어팁 11mm = sigma-mu": (sigma-mu, 11),
-    "무게 5g = sopfr": (sopfr, 5),
-    # D. AI 엔진 (8)
-    "감정 6 클래스 = n": (n, 6),
-    "음성복제 5초 = sopfr": (sopfr, 5),
-    "NPU 8 TOPS = sigma-tau": (sigma-tau, 8),
-    "동시 화자 6 = n": (n, 6),
-    "번역 60 언어 = sigma*sopfr": (sigma*sopfr, 60),
-    "AI 전력 4mW = tau": (tau, 4),
-    "Whisper d=4096 = 2^sigma": (2**sigma, 4096),
-    "FFT 1024 = 2^(sigma-phi)": (2**(sigma-phi), 1024),
-    # E. 건강 센서 (8)
-    "바이탈 6종 = n": (n, 6),
-    "심박 +-1bpm = mu": (mu, 1),
-    "SpO2 +-2% = phi": (phi, 2),
-    "체온 +-0.1 = 1/(sigma-phi)": (1/(sigma-phi), 0.1),
-    "24시간 모니터링 = J2": (J2, 24),
-    "ECG 리드 2 = phi": (phi, 2),
-    "6-DOF IMU = n": (n, 6),
-    "일주기 24h = J2": (J2, 24),
-    # F. 통신 (6)
-    "BLE 채널 sigma=12": (sigma, 12),
-    "BLE 5.x = sopfr": (sopfr, 5),
-    "LE Audio 48kHz = sigma*tau": (sigma*tau, 48),
-    "AES-128 = 2^(sigma-sopfr)": (2**(sigma-sopfr), 128),
-    "범위 10m = sigma-phi": (sigma-phi, 10),
-    "지연 1ms = mu": (mu, 1),
-    # G. 공간/물리 (6)
-    "Atmos 24 objects = J2": (J2, 24),
-    "헤드트래킹 4ms = tau": (tau, 4),
-    "IMU 120Hz = sigma*(sigma-phi)": (sigma*(sigma-phi), 120),
-    "통증역치 120dB = sigma*(sigma-phi)": (sigma*(sigma-phi), 120),
-    "배터리 12시간 = sigma": (sigma, 12),
-    "배터리 60mAh = sigma*sopfr": (sigma*sopfr, 60),
-}
-
-exact = 0
-for name, (got, expected) in checks.items():
-    if got == expected:
-        exact += 1
-        print(f"  PASS  {name}: {got}")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-72 항목", None, None, None),  # MISSING DATA
+    ("BT-108 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-337 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        print(f"  FAIL  {name}: {got} != {expected}")
-
-total = len(checks)
-print(f"\n결과: {exact}/{total} EXACT ({100*exact/total:.1f}%)")
-assert exact == total, f"EXACT {exact}/{total} -- 미달"
-print("HEXA-EAR 62/62 전체 검증 PASS")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

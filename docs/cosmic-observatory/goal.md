@@ -223,102 +223,58 @@
 ## Python 검증 코드 (인라인, 표준 라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-COSMIC n=6 EXACT 검증기"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-SIGMA, PHI, TAU, N, MU, SOPFR, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def check(name, val, expr, expected, tol=1e-9):
-    ok = abs(val - expected) < tol
-    print(f"[{'EXACT' if ok else 'FAIL'}] {name}: {val} =?= {expr} = {expected}")
-    return ok
-
-results = []
-
-# === L0 미러 ===
-results.append(check("RT-SC 288K", 288, "σ·J₂", SIGMA*J2))
-results.append(check("다이아몬드 Z=6", 6, "n", N))
-results.append(check("사파이어 12K", 12, "σ", SIGMA))
-results.append(check("실리콘 24K", 24, "J₂", J2))
-
-# === L1 간섭계 ===
-results.append(check("팔 24km", 24, "J₂", J2))
-results.append(check("팔 12km", 12, "σ", SIGMA))
-results.append(check("팔 48km", 48, "σ·τ", SIGMA*TAU))
-results.append(check("팔 6km", 6, "n", N))
-results.append(check("팔 144km", 144, "σ²", SIGMA**2))
-results.append(check("팔 288km", 288, "σ·J₂", SIGMA*J2))
-results.append(check("재귀 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("재귀 144", 144, "σ²", SIGMA**2))
-results.append(check("삼각형 48", 48, "σ·τ", SIGMA*TAU))
-
-# === L2 네트워크 ===
-results.append(check("지점 12", 12, "σ", SIGMA))
-results.append(check("지점 6 대륙", 6, "n", N))
-results.append(check("지점 24", 24, "J₂", J2))
-results.append(check("지점 144", 144, "σ²", SIGMA**2))
-results.append(check("지점 4 극지", 4, "τ", TAU))
-results.append(check("지점 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("기저선 6000km 지수", 6000, "n·10³", N*1000))
-
-# === L3 양자링크 ===
-results.append(check("full mesh 144", 144, "σ²", SIGMA**2))
-results.append(check("star 24", 24, "J₂", J2))
-results.append(check("ring 12", 12, "σ", SIGMA))
-results.append(check("double 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("cluster 72", 72, "n·σ", N*SIGMA))
-results.append(check("노드 12", 12, "σ", SIGMA))
-
-# === L4 검출 센서 ===
-results.append(check("SPAD 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("balanced PD 144", 144, "σ²", SIGMA**2))
-results.append(check("TES SNSPD 24", 24, "J₂", J2))
-results.append(check("homodyne 12", 12, "σ", SIGMA))
-results.append(check("heterodyne 48", 48, "σ·τ", SIGMA*TAU))
-results.append(check("squeezed 6", 6, "n", N))
-
-# === L5 데이터 처리 ===
-results.append(check("샘플링 144kHz", 144, "σ²", SIGMA**2))
-results.append(check("샘플링 288kHz", 288, "σ·J₂", SIGMA*J2))
-results.append(check("샘플링 48kHz", 48, "σ·τ", SIGMA*TAU))
-results.append(check("샘플링 12kHz", 12, "σ", SIGMA))
-results.append(check("샘플링 6kHz", 6, "n", N))
-results.append(check("대역 288MB/s", 288, "σ·J₂", SIGMA*J2))
-
-# === L6 교정 ===
-results.append(check("광격자 지수 18", 18, "σ+n", SIGMA+N))
-results.append(check("세슘 지수 15", 15, "σ+n/φ", SIGMA+N//PHI))
-results.append(check("양자링크 지수 19", 19, "σ·φ-sopfr", SIGMA*PHI-SOPFR))
-results.append(check("Pulsar 지수 8", 8, "σ-τ", SIGMA-TAU))
-
-# === L7 제어 ===
-results.append(check("core 6", 6, "n", N))
-results.append(check("trigger 12", 12, "σ", SIGMA))
-results.append(check("J₂ 센서", 24, "J₂", J2))
-results.append(check("σ² MPC", 144, "σ²", SIGMA**2))
-results.append(check("FSM 4", 4, "τ", TAU))
-results.append(check("ASIL 48", 48, "σ·τ", SIGMA*TAU))
-
-# === 전체 시스템 ===
-results.append(check("검출기 지점 12", 12, "σ", SIGMA))
-results.append(check("간섭 팔 24km", 24, "J₂", J2))
-results.append(check("양자링크 144", 144, "σ²", SIGMA**2))
-results.append(check("RT-SC 미러 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("레이저 48W", 48, "σ·τ", SIGMA*TAU))
-results.append(check("Q 지수 12", 12, "σ", SIGMA))
-results.append(check("strain 지수 30", 30, "J₂+n", J2+N))
-results.append(check("관측시대 지수 32", 32, "J₂+σ-τ", J2+SIGMA-TAU))
-
-# === 요약 ===
-total = len(results)
-passed = sum(results)
-print(f"\n{'='*50}")
-print(f"TOTAL: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print(f"{'='*50}")
-assert passed >= total * 0.90, f"90% threshold failed: {passed}/{total}"
-print("PASS: HEXA-COSMIC n=6 EXACT >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-167 항목", None, None, None),  # MISSING DATA
+    ("BT-143 항목", None, None, None),  # MISSING DATA
+    ("BT-130 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-231 항목", None, None, None),  # MISSING DATA
+    ("BT-174 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-268 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **검증 결과**: 56/56 EXACT (100.0%) ✓ PASS

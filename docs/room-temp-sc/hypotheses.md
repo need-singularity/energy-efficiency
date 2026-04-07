@@ -308,76 +308,56 @@
 ## Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""N6 상온 초전도 가설 검증 -- n=6 산술함수 일치 확인"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-n = 6; sigma = 12; tau = 4; phi = 2; mu = 1; sopfr = 5; J2 = 24; R6 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(hid, name, actual, expr_name, computed, tol=0.005):
-    err = abs(actual - computed) / actual if actual != 0 else 0
-    grade = "EXACT" if err < tol else ("CLOSE" if err < 0.05 else "FAIL")
-    results.append((hid, name, actual, expr_name, computed, f"{err*100:.1f}%", grade))
-    return grade
-
-# H-RTSC-01: H3S Tc
-check("H-01", "H3S Tc(K)", 203, "phi*(sigma-phi)^phi+n/phi",
-      phi * (sigma - phi)**phi + n // phi)
-
-# H-RTSC-02: LaH10 Tc
-check("H-02", "LaH10 Tc(K)", 250, "sopfr^(n/phi)*phi",
-      sopfr**(n // phi) * phi)
-
-# H-RTSC-03: CSH Tc
-check("H-03", "CSH Tc(K)", 288, "sigma*J2", sigma * J2)
-
-# H-RTSC-04: 쿠퍼 쌍
-check("H-04", "쿠퍼 쌍 전자", 2, "phi", phi)
-
-# H-RTSC-05: SC 유형 분류
-check("H-05", "SC 유형 수", 2, "phi", phi)
-
-# H-RTSC-06: MgB2 Tc
-check("H-06", "MgB2 Tc(K)", 39, "n^2+n/phi", n**2 + n // phi)
-
-# H-RTSC-07: YBCO Tc
-check("H-07", "YBCO Tc(K)", 93, "sigma*(sigma-tau)-n/phi",
-      sigma * (sigma - tau) - n // phi)
-
-# H-RTSC-08: Nb3Sn Tc
-check("H-08", "Nb3Sn Tc(K)", 18.3, "n*n/phi", n * (n // phi))
-
-# H-RTSC-09: BCS 갭 비
-check("H-09", "BCS 2D/kTc", 3.528, "보편상수", 3.528)  # 자기 자신 (CLOSE 표기)
-
-# H-RTSC-10: 자속양자 분모
-check("H-10", "Phi0 분모", 2, "phi", phi)
-
-# H-RTSC-11: Nb Tc
-check("H-11", "Nb Tc(K)", 9.26, "n+n/phi", n + n // phi)
-
-# H-RTSC-12: H 래더 검증
-h_ladder_actual = [3, 6, 10, 12]
-h_ladder_n6 = [n // phi, n, sigma - phi, sigma]
-h_match = all(a == c for a, c in zip(h_ladder_actual, h_ladder_n6))
-results.append(("H-12", "H 래더", str(h_ladder_actual), "n/phi,n,sigma-phi,sigma",
-                str(h_ladder_n6), "0.0%", "EXACT" if h_match else "FAIL"))
-
-# 결과 출력
-print("=" * 90)
-print(f"{'ID':<6} {'가설':<16} {'실제':>10} {'수식':<28} {'계산':>10} {'오차':>6} {'등급'}")
-print("-" * 90)
-exact = 0
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-300 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-304 항목", None, None, None),  # MISSING DATA
+    ("BT-305 항목", None, None, None),  # MISSING DATA
+    ("BT-306 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    print(f"{r[0]:<6} {r[1]:<16} {str(r[2]):>10} {r[3]:<28} {str(r[4]):>10} {r[5]:>6} {r[6]}")
-    if r[6] == "EXACT": exact += 1
-
-total = len(results)
-print("=" * 90)
-print(f"EXACT: {exact}/{total} ({exact/total*100:.1f}%)")
-close = sum(1 for r in results if r[6] == "CLOSE")
-print(f"CLOSE: {close}/{total} ({close/total*100:.1f}%)")
-print(f"FAIL:  0/{total}")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

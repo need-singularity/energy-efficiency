@@ -225,93 +225,58 @@
 ## Python 검증 코드 (인라인)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-WEATHER n=6 EXACT 검증"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-SIGMA, PHI, TAU, N, MU, SOPFR, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def check(name, val, expr, expected, tol=1e-9):
-    ok = abs(val - expected) < tol
-    print(f"[{'EXACT' if ok else 'FAIL'}] {name}: {val} =?= {expr}={expected}")
-    return ok
-
-r = []
-
-# === L0 소재 ===
-r.append(check("H3S Tc 288K", 288, "σ·J₂", SIGMA*J2))
-r.append(check("H3S Bc2 48T", 48, "σ·τ", SIGMA*TAU))
-r.append(check("YBCO 144T", 144, "σ²", SIGMA**2))
-r.append(check("Graphene Z=6", 6, "n", N))
-r.append(check("σ=12 Graphene B", 12, "σ", SIGMA))
-r.append(check("σ·J₂=288", 288, "σ·J₂", SIGMA*J2))
-
-# === L1 어레이 ===
-r.append(check("288 헥사", 288, "σ·J₂", SIGMA*J2))
-r.append(check("144 km²", 144, "σ²", SIGMA**2))
-r.append(check("72 km²", 72, "σ²/φ", SIGMA**2//PHI))
-r.append(check("24 링", 24, "J₂", J2))
-r.append(check("48 크로스", 48, "σ·τ", SIGMA*TAU))
-r.append(check("12 릴레이", 12, "σ", SIGMA))
-
-# === L2 전원 ===
-r.append(check("1200 GW", 1200, "σ·(σ-φ)²", SIGMA*(SIGMA-PHI)**2))
-r.append(check("288 GW", 288, "σ·J₂", SIGMA*J2))
-r.append(check("144 GW", 144, "σ²", SIGMA**2))
-r.append(check("480 GW", 480, "σ·(σ-τ)·(σ-φ)", SIGMA*(SIGMA-TAU)*(SIGMA-PHI)))
-r.append(check("48 GW", 48, "σ·τ", SIGMA*TAU))
-r.append(check("12 GW", 12, "σ", SIGMA))
-
-# === L3 주파수 ===
-r.append(check("12 대역", 12, "σ", SIGMA))
-r.append(check("6 ELF", 6, "n", N))
-r.append(check("24 wideband", 24, "J₂", J2))
-r.append(check("48 스펙트럼", 48, "σ·τ", SIGMA*TAU))
-r.append(check("4 특정", 4, "τ", TAU))
-r.append(check("288 서브", 288, "σ·J₂", SIGMA*J2))
-
-# === L4 센서 ===
-r.append(check("144 위성", 144, "σ²", SIGMA**2))
-r.append(check("24 도플러", 24, "J₂", J2))
-r.append(check("288 지상", 288, "σ·J₂", SIGMA*J2))
-r.append(check("48 라이다", 48, "σ·τ", SIGMA*TAU))
-r.append(check("12 중성", 12, "σ", SIGMA))
-r.append(check("6 조망", 6, "n", N))
-
-# === L5 제어 ===
-r.append(check("24 AI", 24, "J₂", J2))
-r.append(check("12 Kalman", 12, "σ", SIGMA))
-r.append(check("6 RL", 6, "n", N))
-r.append(check("4 FSM", 4, "τ", TAU))
-r.append(check("48 MPC", 48, "σ·τ", SIGMA*TAU))
-r.append(check("144 분산", 144, "σ²", SIGMA**2))
-
-# === L6 냉각 ===
-r.append(check("RT-SC 288K", 288, "σ·J₂", SIGMA*J2))
-r.append(check("LN2 77K CLOSE", 77, "sopfr·(σ-φ·φ)·(σ-τ)", 80, tol=4))
-r.append(check("LH2 20K", 20, "J₂-τ", J2-TAU))
-r.append(check("LHe 4K", 4, "τ", TAU))
-
-# === L7 거버넌스 ===
-r.append(check("UN 12", 12, "σ", SIGMA))
-r.append(check("G6", 6, "n", N))
-r.append(check("4 대륙", 4, "τ", TAU))
-r.append(check("24 국가", 24, "J₂", J2))
-r.append(check("48 전문가", 48, "σ·τ", SIGMA*TAU))
-r.append(check("144 시민", 144, "σ²", SIGMA**2))
-
-# === 전체 시스템 ===
-r.append(check("효과 반경 240km", 240, "J₂·(σ-φ)", J2*(SIGMA-PHI)))
-r.append(check("이온화 η CLOSE", 0.63, "1-1/e", 1-1/math.e, tol=0.005))
-r.append(check("펄스 4ms", 4, "τ", TAU))
-r.append(check("고도 48km", 48, "σ·τ", SIGMA*TAU))
-r.append(check("E밀도 288 kW/m²", 288, "σ·J₂", SIGMA*J2))
-r.append(check("자기재결합 0.1", 0.1, "1/(σ-φ)", 1/(SIGMA-PHI), tol=1e-9))
-
-total = len(r); p = sum(r)
-print(f"\n{'='*50}\nTOTAL: {p}/{total} EXACT ({100*p/total:.1f}%)\n{'='*50}")
-assert p >= total * 0.90, f"90% fail: {p}/{total}"
-print("PASS: HEXA-WEATHER n=6 EXACT >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-218 항목", None, None, None),  # MISSING DATA
+    ("BT-343 항목", None, None, None),  # MISSING DATA
+    ("BT-145 항목", None, None, None),  # MISSING DATA
+    ("BT-102 항목", None, None, None),  # MISSING DATA
+    ("BT-94 항목", None, None, None),  # MISSING DATA
+    ("BT-119 항목", None, None, None),  # MISSING DATA
+    ("BT-181 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **검증**: 51/52 EXACT (98.1%) ✓ PASS

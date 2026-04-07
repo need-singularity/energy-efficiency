@@ -578,207 +578,58 @@ sigma*sopfr=60kg 악력을 mu=1ms 반응속도로 전달하면, 절단 장애인
 ## 12. Python 검증 코드 (10 필수, 인라인)
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-LIMB AI 의수/의족 -- n=6 파라미터 전수 검증 (특이점 돌파)
-================================================================
-120개 EXACT 파라미터를 수학적으로 재현 (14 카테고리).
-실행: python3 docs/hexa-limb/goal.py (또는 이 블록 직접 실행)
-판정: ALL PASS -> 10 인증, ANY FAIL -> 9 강등
-"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# --- n=6 핵심 상수 ---
-n       = 6
-sigma   = 12
-phi     = 2
-tau     = 4
-sopfr   = 5
-mu      = 1
-J2      = 24
-R6      = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-assert sigma*phi == n*tau == J2, "핵심 항등식 실패"
-
-results = []
-def check(name, actual, expected, formula, category="General", tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-126 항목", None, None, None),  # MISSING DATA
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-271 항목", None, None, None),  # MISSING DATA
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-185 항목", None, None, None),  # MISSING DATA
+    ("BT-43 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# === A. 핵심 상수 (14) ===
-check("n",           n,            6,    "n=6 완전수",              "Core")
-check("sigma",       sigma,        12,   "sigma(6)=12",             "Core")
-check("phi",         phi,          2,    "phi(6)=2",                "Core")
-check("tau",         tau,          4,    "tau(6)=4",                "Core")
-check("sopfr",       sopfr,        5,    "sopfr(6)=2+3=5",         "Core")
-check("mu",          mu,           1,    "mu(6)=1",                 "Core")
-check("J2",          J2,           24,   "J2(6)=sigma*phi=24",      "Core")
-check("sigma-phi",   sigma-phi,    10,   "sigma-phi=10",            "Core")
-check("sigma-tau",   sigma-tau,    8,    "sigma-tau=8",             "Core")
-check("sigma-mu",    sigma-mu,     11,   "sigma-mu=11",             "Core")
-check("sigma*tau",   sigma*tau,    48,   "sigma*tau=48",            "Core")
-check("phi^tau",     phi**tau,     16,   "phi^tau=16",              "Core")
-check("sigma^2",     sigma**2,     144,  "sigma^2=144",             "Core")
-check("sigma*J2",    sigma*J2,     288,  "sigma*J2=288",            "Core")
-
-# === B. 골격 (8) ===
-check("fingers",             sopfr,           5,     "sopfr=5 손가락",          "Skeleton")
-check("thumb_joints",        phi,             2,     "phi=2 엄지 대립 관절",    "Skeleton")
-check("finger_joints_total", sigma,           12,    "sigma=12 손가락 관절 총",  "Skeleton")
-check("hand_weight_g",       phi*100,         200,   "phi*100=200g 손 무게",    "Skeleton")
-check("leg_weight_g",        sopfr*100,       500,   "sopfr*100=500g 의족",     "Skeleton")
-check("toe_joints",          n,               6,     "n=6 발가락 관절",         "Skeleton")
-check("phalanges_per_finger", n//phi,         3,     "n/phi=3 지절골",          "Skeleton")
-check("grip_patterns",       2**sopfr,        32,    "2^sopfr=32 그립",         "Skeleton")
-
-# === C. 구동기 (8) ===
-check("micro_motors",        sigma,           12,    "sigma=12 마이크로 모터",   "Actuator")
-check("torque_mNm",          J2,              24,    "J2=24 mNm/모터",          "Actuator")
-check("grip_strength_kg",    sigma*sopfr,     60,    "sigma*sopfr=60 kg 악력",  "Actuator")
-check("drive_voltage_V",     sigma,           12,    "sigma=12V",               "Actuator")
-check("pinch_force_kg",      sigma-phi,       10,    "sigma-phi=10 kg 핀치",    "Actuator")
-check("finger_speed_deg_s",  sigma**2,        144,   "sigma^2=144 deg/s",       "Actuator")
-check("motor_efficiency",    1-1/(J2-tau),    0.95,  "1-1/(J2-tau)=0.95",       "Actuator", tol=1e-6)
-check("wire_diameter_mm",    mu,              1,     "mu=1 mm 와이어",          "Actuator")
-
-# === D. 신경 인터페이스 (9) ===
-check("EMG_channels",        sigma-tau,       8,     "sigma-tau=8 EMG",         "Neural")
-check("nerve_electrodes",    n,               6,     "n=6 신경전극",            "Neural")
-check("nerve_bandwidth_kbps", J2,             24,    "J2=24 kbps",              "Neural")
-check("decode_latency_ms",   mu,              1,     "mu=1 ms 디코딩",          "Neural")
-check("AI_layers",           sigma,           12,    "sigma=12 AI 계층",        "Neural")
-check("AI_dim",              2**sigma,        4096,  "2^sigma=4096 d_model",    "Neural")
-check("AI_heads",            2**sopfr,        32,    "2^sopfr=32 heads",        "Neural")
-check("AI_head_dim",         2**(sigma-sopfr), 128,  "2^(sigma-sopfr)=128",     "Neural")
-check("AI_GQA",              sigma-tau,       8,     "sigma-tau=8 GQA KV",      "Neural")
-
-# === E. 감각 (8) ===
-check("sensory_types",       sigma-tau,       8,     "sigma-tau=8종 감각",      "Sensory")
-check("tactile_channels",    sigma,           12,    "sigma=12 촉각채널",       "Sensory")
-check("tactile_res_mm",      mu,              1,     "mu=1 mm 촉각해상도",      "Sensory")
-check("temp_range_low",      sopfr,           5,     "sopfr=5도 하한",          "Sensory")
-check("pressure_min_N",      1/(sigma-phi),   0.1,   "1/(sigma-phi)=0.1N",      "Sensory", tol=1e-6)
-check("vibration_min_Hz",    tau,             4,     "tau=4 Hz 진동 하한",      "Sensory")
-check("feedback_ms",         tau,             4,     "tau=4 ms 피드백",         "Sensory")
-check("embodiment_weeks",    tau,             4,     "tau=4 주 체화 기간",      "Sensory")
-
-# === F. 배터리 (6) ===
-check("batt_V",              sigma,           12,    "sigma=12V",               "Battery")
-check("batt_Wh",             J2,              24,    "J2=24 Wh",               "Battery")
-check("batt_cells",          tau,             4,     "tau=4 셀",               "Battery")
-check("batt_hours",          J2,              24,    "J2=24 시간",             "Battery")
-check("batt_charge_h",       phi,             2,     "phi=2 시간 충전",         "Battery")
-check("batt_weight_g",       sopfr*10,        50,    "sopfr*10=50g 배터리",     "Battery")
-
-# === G. 안전 (6) ===
-check("redundancy",          n//phi,          3,     "n/phi=3 중복",            "Safety")
-check("emergency_ms",        mu,              1,     "mu=1 ms 비상이완",        "Safety")
-check("max_force_kg",        (sigma-phi)**phi, 100,  "(sigma-phi)^phi=100kg",   "Safety")
-check("biocompat_CN",        n,               6,     "CN=6 생체적합",           "Safety")
-check("waterproof_IP6x",     sigma-sopfr,     7,     "IP67: sigma-sopfr=7",     "Safety")
-check("skin_ISO_items",      sigma-tau,       8,     "sigma-tau=8 항목",        "Safety")
-
-# === H. 응용 (8) ===
-check("app_grip",            2**sopfr,        32,    "2^sopfr=32 그립 패턴",    "App")
-check("app_walk",            R6,              1,     "R(6)=1 보행 복원율",      "App")
-check("app_adapt_wk",        tau,             4,     "tau=4 주 적응",           "App")
-check("app_modes",           n,               6,     "n=6 응용 모드",           "App")
-check("app_child_yr",        phi,             2,     "phi=2 년 교체주기",       "App")
-check("app_ADL",             2**sopfr,        32,    "2^sopfr=32 ADL 종류",     "App")
-check("app_rehab_phase",     tau,             4,     "tau=4 재활 단계",         "App")
-check("app_gait_phase",      tau,             4,     "tau=4 보행 위상",         "App")
-
-# === I. 제어 (12) ===
-check("ctrl_DOF",            n,               6,     "n=6 SE(3) DOF",           "Control")
-check("ctrl_PID_loops",      sigma,           12,    "sigma=12 PID 루프",       "Control")
-check("ctrl_bandwidth_kHz",  1,               1,     "1/mu=1 kHz 대역폭",      "Control")
-check("ctrl_servo_kHz",      (sigma-phi),     10,    "(sigma-phi)=10 kHz 서보", "Control")
-check("ctrl_pos_bits",       sigma,           12,    "sigma=12 bit 위치",       "Control")
-check("ctrl_cur_bits",       sigma-phi,       10,    "(sigma-phi)=10 bit 전류", "Control")
-check("ctrl_ff_coeff",       sopfr,           5,     "sopfr=5 피드포워드 계수", "Control")
-check("ctrl_impedance",      n//phi,          3,     "n/phi=3 임피던스 모드",   "Control")
-check("ctrl_accel_ax",       n,               6,     "n=6 가속도계 축",         "Control")
-check("ctrl_gyro_ax",        n,               6,     "n=6 자이로 축",           "Control")
-check("ctrl_IMU_dof",        n,               6,     "n=6 IMU 자유도",          "Control")
-check("ctrl_PD_gains",       J2,              24,    "J2=24 PD 게인 세트",      "Control")
-
-# === J. 생체역학 (10) ===
-check("bio_ROM_finger",      sigma**2,        144,   "sigma^2=144도 손가락ROM",  "Biomech")
-check("bio_ROM_wrist",       sigma*tau,       48,    "sigma*tau=48도 손목",      "Biomech")
-check("bio_ROM_thumb",       sigma*(sigma-phi), 120, "sigma*(sigma-phi)=120도",  "Biomech")
-check("bio_power_grip_cm2",  J2,              24,    "J2=24 cm^2 파워그립",      "Biomech")
-check("bio_key_grip_cm2",    n,               6,     "n=6 cm^2 키그립",          "Biomech")
-check("bio_gait_cycle_s",    mu,              1,     "mu=1 s 보행주기",          "Biomech")
-check("bio_stride_sens",     tau,             4,     "tau=4 보폭센서",           "Biomech")
-check("bio_ankle_Nm",        sigma*tau,       48,    "sigma*tau=48 Nm 발목",     "Biomech")
-check("bio_knee_ROM",        sigma**2,        144,   "sigma^2=144도 무릎ROM",    "Biomech")
-check("bio_moment_arm_cm",   sigma,           12,    "sigma=12 cm 모멘트팔",     "Biomech")
-
-# === K. 통신 (8) ===
-check("com_BLE_ch",          sigma*tau,       48,    "sigma*tau=48 BLE채널",     "Comm")
-check("com_bw_Mbps",         1,               1,     "10^n bps = 1 Mbps",       "Comm")
-check("com_layers",          tau,             4,     "tau=4 프로토콜 레이어",    "Comm")
-check("com_pkt_byte",        2**(sigma-sopfr), 128,  "2^(sigma-sopfr)=128B",    "Comm")
-check("com_OTA_wk",          sigma,           12,    "sigma=12 주 OTA",          "Comm")
-check("com_sync_h",          J2,              24,    "J2=24 h 동기화",           "Comm")
-check("com_key_bit",         2**(sigma-sopfr), 128,  "2^(sigma-sopfr)=128bit",  "Comm")
-check("com_sample_kHz",      tau,             4,     "tau=4 kHz 센서샘플",       "Comm")
-
-# === L. 제조 (8) ===
-check("mfg_parts",           sigma*tau,       48,    "sigma*tau=48 조립파트",    "Mfg")
-check("mfg_precision_um",    sigma-phi,       10,    "(sigma-phi)=10 um CNC",   "Mfg")
-check("mfg_QC_items",        sigma,           12,    "sigma=12 QC검사",          "Mfg")
-check("mfg_assy_steps",      n,               6,     "n=6 조립단계",             "Mfg")
-check("mfg_tol_pct",         sopfr,           5,     "sopfr=5% 공차(1/sopfr*100 아님, sopfr 직접)", "Mfg")
-check("mfg_MTBF",            (sigma-phi)**n,  1000000, "(sigma-phi)^n=10^6",    "Mfg")
-check("mfg_BOM_types",       J2,              24,    "J2=24 부품종류",           "Mfg")
-check("mfg_Cpk",             phi,             2,     "phi=2.0 Cpk",              "Mfg")
-
-# === M. 재활 (8) ===
-check("rehab_phases",        tau,             4,     "tau=4 재활단계",           "Rehab")
-check("rehab_sess_wk",       sopfr,           5,     "sopfr=5 세션/주",          "Rehab")
-check("rehab_sess_h",        mu,              1,     "mu=1 h 세션시간",          "Rehab")
-check("rehab_plasticity_wk", sigma,           12,    "sigma=12 주 가소성",       "Rehab")
-check("rehab_fine_types",    n,               6,     "n=6 미세동작유형",         "Rehab")
-check("rehab_embody",        1-1/(J2-tau),    0.95,  "1-1/(J2-tau)=0.95 체화",  "Rehab", tol=1e-6)
-check("rehab_memory_task",   tau,             4,     "tau=4 작업기억과제",       "Rehab")
-check("rehab_motor_stage",   sopfr,           5,     "sopfr=5 운동학습단계",     "Rehab")
-
-# === N. 신호처리 (7) ===
-check("sig_ADC_bit",         sigma-phi,       10,    "(sigma-phi)=10 bit ADC",  "Signal")
-check("sig_sample_kHz",      tau,             4,     "tau=4 kHz 샘플링",        "Signal")
-check("sig_FFT_win",         2**(sigma-tau),  256,   "2^(sigma-tau)=256 FFT",   "Signal")
-check("sig_EMG_lo_Hz",       sigma-phi,       10,    "(sigma-phi)=10 Hz EMG하한", "Signal")
-check("sig_EMG_hi_Hz",       sopfr*100,       500,   "sopfr*100=500 Hz EMG상한", "Signal")
-check("sig_filter_order",    n,               6,     "n=6 필터차수",             "Signal")
-check("sig_feat_dim",        sigma*tau,       48,    "sigma*tau=48 특징차원",    "Signal")
-
-# === 최종 리포트 ===
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-LIMB Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
-for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-for cat, (p,t) in by_cat.items():
-    print(f"  {cat:12s} {p}/{t}")
-print("="*72)
-for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"[{status}] {r['category']:12s} {r['name']:28s} = {r['actual']}  ({r['formula']})")
-print("="*72)
-if passed == total:
-    print("ALL PASS -- 10 CERTIFIED (물리 한계 도달, 특이점 돌파)")
-else:
-    print(f"FAILED: {total-passed} checks -> 9 강등")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (2026-04-06 특이점 돌파 검증 완료)**:

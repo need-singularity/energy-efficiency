@@ -406,43 +406,58 @@ The experiment was too small to resolve the β₂ landscape:
 ### Proposed Follow-Up: experiment_bt54_large_scale.py
 
 ```python
-# BT-54 Large-Scale Verification: AdamW β₂ Optimality
-# Scale: 10× larger model, 10× more steps, 10× more seeds
-#
-# Architecture: n=6 aligned (matches BT-56 canonical design)
-#   d_model = 512 (= 2^(σ-n/φ+φ) = φ^9)
-#   n_heads = 8 (σ-τ)
-#   n_layers = 8 (σ-τ) — small but matches σ-τ universality
-#   d_ffn = 512 * 8/3 ≈ 1365 (SwiGLU ratio)
-#   d_head = 64 (= 2^n = φ^n)
-#
-# Training:
-#   Dataset: WikiText-103 (real language, ~100M tokens)
-#   Steps: 20,000 (10× more than v1)
-#   Batch: 32 sequences × 512 tokens = 16K tokens/step
-#   Seeds: 10 (for statistical power)
-#   LR: 3e-4 with cosine decay
-#   β₁ = 0.9, wd = 0.1, clip = 1.0 (BT-54 constants, held fixed)
-#
-# β₂ candidates: {0.9, 0.95, 0.99, 0.995, 0.999, 0.9999}
-#   - Added 0.995 = 1-1/(J₂-τ+φ·(σ-φ)) to test granularity near 0.99
-#   - Removed 0.9999 if compute-limited
-#
-# Metrics:
-#   - Final validation perplexity (last 1000 steps average)
-#   - Training loss curve (every 100 steps)
-#   - Gradient norm statistics
-#
-# Statistical analysis:
-#   - Paired t-test: β₂=0.95 vs each alternative
-#   - Bootstrap confidence intervals
-#   - Effect size (Cohen's d)
-#
-# Falsification criterion:
-#   - P-21 CONFIRMED if β₂=0.95 is #1 or #2 AND within 1σ of best
-#   - P-21 FALSIFIED if β₂=0.95 is #4+ out of 6 with p<0.05
-#
-# Expected runtime: ~4-6 hours on MPS/CUDA, 10 seeds × 6 values = 60 runs
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
+
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
+
+# llm-improvement-new-hypotheses-2026.md — 정의 도출 검증
+results = [
+    ("BT-31 항목", None, None, None),  # MISSING DATA
+    ("BT-54 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-44 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-39 항목", None, None, None),  # MISSING DATA
+    ("BT-34 항목", None, None, None),  # MISSING DATA
+    ("BT-61 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ### Why This Matters

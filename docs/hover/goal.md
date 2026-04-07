@@ -200,103 +200,58 @@
 ## 🔧 Python 인라인 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-HOVER n=6 EXACT 검증 (45+ checks)"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def check(name, actual, expected, tol=0.005):
-    ok = abs(actual - expected) / max(abs(expected), 1e-9) < tol
-    status = "EXACT" if ok else "FAIL"
-    print(f"  [{status}] {name}: {actual} vs {expected}")
-    return ok
-
-checks = []
-
-# === 1. 부양 & 자기장 (8) ===
-print("\n[Levitation & Magnetics]")
-checks.append(check("부양고도 cm",          10,     sigma-phi))
-checks.append(check("하중 kg",              600,    (sigma-phi)**2 * n))
-checks.append(check("자기장 T",             16,     sigma+tau))
-checks.append(check("자석 포드",            6,      n))
-checks.append(check("Halbach arr",          12,     sigma))
-checks.append(check("에어갭 mm",            100,    (sigma-phi)**phi))  # 100mm=10cm
-checks.append(check("반발력 kN",            6,      n))
-checks.append(check("Lenz damping",         0.1,    1/(sigma-phi)))
-
-# === 2. 구동 & 모터 (7) ===
-print("\n[Drive & Motor]")
-checks.append(check("모터상수",             12,     sigma))
-checks.append(check("코일배열",             24,     J2))
-checks.append(check("PID Hz",               48,     sigma*tau))
-checks.append(check("상수×위상",            48,     sigma*tau))
-checks.append(check("torque Nm",            288,    sigma*J2))
-checks.append(check("RPM max",              1440,   sigma**2 * (sigma-phi), tol=0.01))  # 144·10=1440
-checks.append(check("포드추력 kN",          1,      mu))
-
-# === 3. 성능 (6) ===
-print("\n[Performance]")
-checks.append(check("속도 kmh",             48,     sigma*tau))
-checks.append(check("레인지 km",            144,    sigma**2))
-checks.append(check("가속 s (0-48)",        4,      tau))
-checks.append(check("상승률 m/s",           2,      phi))
-checks.append(check("선회반경 m",           6,      n))
-checks.append(check("최대경사 %",           24,     J2))
-
-# === 4. 배터리 (7) ===
-print("\n[Battery]")
-checks.append(check("에너지밀도 Wh/kg",     288,    sigma*J2))
-checks.append(check("셀 전압 V",            3.6,    (sigma+n)/sopfr, tol=0.01))  # 18/5=3.6 Li-ion
-checks.append(check("팩 셀수",              144,    sigma**2))
-checks.append(check("시스템 V",             48,     sigma*tau))
-checks.append(check("급속충전 분",          10,     sigma-phi))
-checks.append(check("충전출력 W/cell",      288,    sigma*J2))
-checks.append(check("사이클수명",           4096,   2**sigma))
-
-# === 5. 안전 & 제어 (6) ===
-print("\n[Safety & Control]")
-checks.append(check("IMU DOF",              6,      n))
-checks.append(check("제어 stage",           4,      tau))
-checks.append(check("redundancy",           3,      n/phi))
-checks.append(check("센서 frame rate",      48,     sigma*tau))
-checks.append(check("emergency land s",     2,      phi))
-checks.append(check("AEB detection m",      12,     sigma))
-
-# === 6. 차체 & 탑재 (6) ===
-print("\n[Body & Payload]")
-checks.append(check("좌석수",               4,      1 + n/phi))
-checks.append(check("CFRP 플라이",          8,      sigma-tau))
-checks.append(check("차체길이 m",           4,      tau))
-checks.append(check("차체폭 m",             2,      phi))
-checks.append(check("차체높이 m",           1.6,    (sigma-tau)/sopfr, tol=0.01))  # 8/5=1.6
-checks.append(check("적재 kg",              600,    (sigma-phi)**2 * n))
-
-# === 7. 인프라 & 환경 (7) ===
-print("\n[Infrastructure & Env]")
-checks.append(check("도킹 pads/km²",        24,     J2))
-checks.append(check("레인 폭 m",            3,      n/phi))
-checks.append(check("주차 m²",              0.25,   mu/tau, tol=0.01))
-checks.append(check("소음 dB",              25,     sopfr*sopfr))
-checks.append(check("CO2 감축%",            90,     100*(1-1/(sigma-phi))))  # 90%
-checks.append(check("PUE",                  1.0,    1.0))  # R(6)
-checks.append(check("회생%",                10,     sigma-phi))
-
-# === 8. 냉각 & HTS (5) ===
-print("\n[Cooling & HTS]")
-checks.append(check("Tc K (YBCO)",          92,     sigma*sigma - sigma*tau - tau, tol=0.02))  # 144-48-4=92
-checks.append(check("냉각 stage",           4,      tau))
-checks.append(check("열관리 zone",          6,      n))
-checks.append(check("SC layer",             12,     sigma))
-checks.append(check("Jc MA/cm²",            1.0,    mu))
-
-# 합산
-total = len(checks)
-passed = sum(checks)
-print(f"\n{'='*50}")
-print(f"TOTAL: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print(f"{'='*50}")
-assert passed >= total * 0.9, f"FAIL: only {passed}/{total}"
-print("HEXA-HOVER 🛸10 CERTIFIED")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-84 항목", None, None, None),  # MISSING DATA
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("BT-301 항목", None, None, None),  # MISSING DATA
+    ("BT-80 항목", None, None, None),  # MISSING DATA
+    ("BT-83 항목", None, None, None),  # MISSING DATA
+    ("BT-271 항목", None, None, None),  # MISSING DATA
+    ("BT-277 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과**: **목표 45/45 EXACT (≥90%)** — 🛸10 인증 ✅

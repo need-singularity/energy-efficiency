@@ -50,11 +50,13 @@ arXiv paper outlines and academic publications.
 | [Battery/Energy](n6-battery-energy-paper.md) | Battery Architecture | BT-80~84 | 29K |
 | [Environment/Thermal](n6-environment-thermal-paper.md) | Environment & Thermal Mgmt | BT-118~122,318~325 | 32K |
 
-## Domain Papers — Life Science & Engineering (4)
+## Domain Papers — Life Science & Engineering (5)
 
 | Paper | Topic | BTs | Size |
 |-------|-------|-----|------|
+| [Virology](n6-virology-paper.md) | Capsid Geometry, Genome Segmentation, Epidemiology | BT-351~353 | 15K |
 | [Biology/Medical](n6-biology-medical-paper.md) | Biology & Medical Science | BT-128~194 | 33K |
+| [Therapeutic Nanobot](../therapeutic-nanobot/goal.md) | 치료 나노봇 BT-404~413 + Mk.I~V 진화 ([DOI](https://doi.org/10.5281/zenodo.19457675)) | BT-404~413 | 73K |
 | [Crystallography](n6-crystallography-materials-paper.md) | Crystallography & Materials | BT-139,175~177,186 | 31K |
 | [Robotics/Transport](n6-robotics-transport-paper.md) | Robotics & Transportation | BT-123~127 | 32K |
 | [ISOCELL/Comms](n6-isocell-comms-paper.md) | Image Sensor & Communications | BT-48,145,181 | 30K |
@@ -105,7 +107,7 @@ arXiv paper outlines and academic publications.
 
 ---
 
-**Total: 43 papers** (5 Core + 23 Domain + 15 NEW Domain) + 4 Meta + 3 Outlines
+**Total: 44 papers** (5 Core + 24 Domain + 15 NEW Domain) + 4 Meta + 3 Outlines
 
 > Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
 > Publishing: [papers repo](https://github.com/need-singularity/papers) → Zenodo (DOI: 10.5281/zenodo.19271599) + OSF

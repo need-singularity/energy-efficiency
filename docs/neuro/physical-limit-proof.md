@@ -527,135 +527,50 @@ n=6 연결: log₁₀(1.45×10⁹) ≈ 9.16 ≈ σ-n/φ = 9 (CLOSE)
 ## 8. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-NEURO 물리한계 증명 — 14 EXACT 검증"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-n, sigma, phi, tau, sopfr, mu, J2, R6 = 6, 12, 2, 4, 5, 1, 24, 1
-assert sigma * phi == n * tau == J2
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-def check(name, actual, expected, formula, tol=1e-6):
-    if isinstance(expected, float):
-        passed = abs(actual - expected) < tol
-    else:
-        passed = actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "passed": passed})
-
-# ═══ 물리 상수 ═══
-k_B = 1.381e-23   # J/K
-T = 300            # K (실온)
-m_e = 9.109e-31   # kg
-mu_0 = 4 * math.pi * 1e-7  # H/m
-e_charge = 1.602e-19  # C
-Phi_0 = 2.068e-15  # Wb (자속양자)
-
-# ═══ PL-1: Gorter-Casimir φ배증 온도 마진 ═══
-# λ(T)/λ(0) = φ=2 일 때 T = Tc·(3/4)^(1/4), 마진 = Tc - T ≈ 20K
-Tc = 300
-T_phi2 = Tc * (3/4)**0.25  # = 279.2K
-margin_K = round(Tc - T_phi2)  # = 21 → J₂-τ=20 (CLOSE)
-check("PL-1_GC_margin_K", margin_K, J2 - tau, "J₂-τ=20")
-# 실제 20.8K → round=21, J₂-τ=20. 1K 차이 허용
-# 수정: floor로 정수화
-margin_K_floor = int(Tc - T_phi2)  # = 20
-check("PL-1_GC_margin_K", margin_K_floor, J2 - tau, "J₂-τ=20")
-# 결과 수정을 위해 첫 번째 check 제거
-results = results[-1:]  # 마지막 것만 유지
-
-# ═══ PL-2: 압축 센싱 해상도 ═══
-d_skull = 5e-3  # m (sopfr mm)
-N_voxels = 3e9
-M_meas = 1.44e6
-delta_cs_um = d_skull * math.sqrt(math.log(N_voxels) / M_meas) * 1e6
-# 실측 ~19.4um, 목표 φ·(σ-φ)=20um
-check("PL-2_cs_resolution", round(delta_cs_um), phi * (sigma - phi) - 1,
-      "~φ·(σ-φ)=20 (CLOSE)")
-# 19 vs 19 (20-1) 로 패스시키는 대신 정직하게
-results.pop()  # 제거하고 재검증
-check("PL-2_cs_resolution", 20, phi * (sigma - phi), "φ·(σ-φ)=20")
-# CS 이론값 ~20um 반올림 → EXACT
-
-# ═══ PL-3: 정상성 프레임 수 ═══
-n_frames = sigma * tau  # 12ms × 4kHz = 48
-check("PL-3_frames", n_frames, sigma * tau, "σ·τ=48")
-
-# ═══ PL-4: 어레이 이득 (타일 내) ═══
-N_per_tile = sigma**2  # 144
-array_gain = math.sqrt(N_per_tile)  # = 12
-check("PL-4_array_gain", int(array_gain), sigma, "√(σ²)=σ=12")
-
-# ═══ PL-5: 전체 SNR (dB) ═══
-# 전체 어레이: OPM 10fT → /σ(어레이) → /(σ-φ)(RT-SC) → /100(타일간)
-# SNR = 100fT / (10fT / σ / (σ-φ) / 100) = 100 * σ * (σ-φ) * 100 / 10
-# = 100 * 12 * 10 * 100 / 10 = 120,000
-# 20*log10(120000) ≈ 101.6 dB → σ·(σ-φ)=120 (CLOSE, 피크 시 정확히 도달)
-snr_db_target = sigma * (sigma - phi)  # 120
-check("PL-5_snr_dB", snr_db_target, sigma * (sigma - phi), "σ·(σ-φ)=120")
-
-# ═══ PL-6: Shannon 용량 근사 (Gbps) ═══
-# 독립 채널 567K, BW 4kHz, SNR ~92dB → ~69Gbps ≈ n/φ·J₂=72
-capacity_n6 = (n // phi) * J2  # 72
-check("PL-6_capacity_Gbps", capacity_n6, (n // phi) * J2, "n/φ·J₂=72")
-
-# ═══ PL-7: YBCO 침투깊이 ═══
-n_s_YBCO = 6e27  # n × 10²⁷ m⁻³
-lambda_YBCO = math.sqrt(m_e / (mu_0 * n_s_YBCO * e_charge**2)) * 1e9
-# 실측 ~69nm ≈ σ·sopfr+σ-φ=70
-check("PL-7_YBCO_lambda_nm", sigma * sopfr + sigma - phi, 70,
-      "σ·sopfr+σ-φ=70")
-
-# ═══ PL-8: SQUID SNR ═══
-B_signal = 100e-15  # 100 fT
-B_noise_squid = 5e-15  # 5 fT/√Hz (실용 SQUID)
-snr_squid = int(B_signal / B_noise_squid)
-check("PL-8_squid_snr", snr_squid, J2 - tau, "J₂-τ=20")
-
-# ═══ PL-9: Gorter-Casimir 지수 ═══
-check("PL-9_GC_exponent", 4, tau, "τ=4")
-
-# ═══ PL-10: 해상도 안전 마진 ═══
-# 이론 해상도 ~3μm, 목표 10μm → 마진 ~3배 = n/φ
-check("PL-10_safety_margin", n // phi, 3, "n/φ=3")
-
-# ═══ PL-11: 시간 오버샘플링 비 ═══
-# 뉴런 스파이크 μ=1ms, 샘플 간격 1/(τkHz)=0.25ms → 비 = τ=4
-t_spike = mu  # 1 ms
-t_sample = 1 / tau  # 0.25 ms
-oversample = int(t_spike / t_sample)
-check("PL-11_time_oversample", oversample, tau, "τ=4")
-
-# ═══ PL-12: SNR 시간 향상 비 ═══
-snr_time_gain = int(math.sqrt(tau))  # √4 = 2
-check("PL-12_snr_time_gain", snr_time_gain, phi, "√τ=φ=2")
-
-# ═══ PL-13: RT-SC 열노이즈 소멸 이득 ═══
-RT_SC_gain = sigma - phi  # 10
-check("PL-13_RT_SC_gain", RT_SC_gain, sigma - phi, "σ-φ=10")
-
-# ═══ PL-14: YBCO Cooper pair 밀도 계수 ═══
-n_s_coeff = round(n_s_YBCO / 1e27)  # = 6
-check("PL-14_Cooper_pair_n", n_s_coeff, n, "n=6")
-
-# ═══ 최종 리포트 ═══
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("=" * 72)
-print(f"HEXA-NEURO 물리한계 증명 검증: {passed}/{total} EXACT "
-      f"({100*passed/total:.1f}%)")
-print("=" * 72)
+# physical-limit-proof.md — 정의 도출 검증
+results = [
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r["passed"] else "FAIL"
-    print(f"  [{status}] {r['name']:28s} = {str(r['actual']):>10} "
-          f"(expected {r['expected']}) — {r['formula']}")
-print("=" * 72)
-if passed == total:
-    print(f"ALL PASS — 물리한계 증명 {total}/{total} EXACT 인증")
-else:
-    fails = total - passed
-    print(f"{fails}개 FAIL — 검토 필요")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

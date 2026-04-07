@@ -13,9 +13,9 @@ use crate::telescope::shared_data::SharedData;
 ///   5. Compute nearest-neighbor dispersion: max over all grid centroids
 ///      of the minimum distance to any data point (measures worst-case hole)
 ///   6. completeness_score = coverage_ratio * (1 - mean_max_gap)
-pub struct UcompletenessLens;
+pub struct CompletenessLens;
 
-impl Lens for UcompletenessLens {
+impl Lens for CompletenessLens {
     fn name(&self) -> &str {
         "CompletenessLens"
     }
@@ -189,7 +189,7 @@ mod tests {
         let n = 9;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UcompletenessLens;
+        let lens = CompletenessLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must be non-empty");
@@ -213,7 +213,7 @@ mod tests {
         let n = 6;
         let d = 2;
         let shared = SharedData::compute(&data, n, d);
-        let lens = UcompletenessLens;
+        let lens = CompletenessLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "result must be non-empty");

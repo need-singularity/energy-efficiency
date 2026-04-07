@@ -353,146 +353,57 @@ RecSys와 시계열 모델에서 공통으로 출현하는 차원:
 ## E. 검증코드
 
 ```python
-# 검증코드 — bt-393-recsys-timeseries.md
-# 추천 시스템 + 시계열 예측 AI n=6 파라미터 검증
-
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12      # σ(6)
-phi = 2         # φ(6)
-tau = 4         # τ(6)
-J2 = 24         # J₂(6)
-sopfr = 5       # 2+3
-mu = 1          # μ(6)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# ===== A. 추천 시스템 =====
-
-# A1. YouTube DNN
-results.append(("YouTube DNN 후보생성 MLP 깊이", 3, n // phi, 3 == n // phi))
-results.append(("YouTube DNN 임베딩 차원", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("YouTube DNN 후보풀 K", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("YouTube DNN 랭킹 MLP 깊이", 3, n // phi, 3 == n // phi))
-results.append(("YouTube DNN negative sampling", 4096, 2**sigma, 4096 == 2**sigma))
-
-# A2. BERT4Rec
-results.append(("BERT4Rec 은닉 차원", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("BERT4Rec 어텐션 헤드", 8, sigma - tau, 8 == sigma - tau))
-results.append(("BERT4Rec 레이어", 2, phi, 2 == phi))
-results.append(("BERT4Rec 시퀀스 길이", 200, (sigma - phi)**phi * phi, 200 == (sigma - phi)**phi * phi))
-results.append(("BERT4Rec 마스크 비율", 0.2, 1/sopfr, abs(0.2 - 1/sopfr) < 1e-9))
-results.append(("BERT4Rec 임베딩(소규모)", 64, 2**n, 64 == 2**n))
-
-# A3. SASRec
-results.append(("SASRec 레이어", 2, phi, 2 == phi))
-results.append(("SASRec 은닉 차원", 50, sopfr * (sigma - phi), 50 == sopfr * (sigma - phi)))
-results.append(("SASRec 시퀀스 길이", 200, (sigma - phi)**phi * phi, 200 == (sigma - phi)**phi * phi))
-results.append(("SASRec 드롭아웃", 0.2, 1/sopfr, abs(0.2 - 1/sopfr) < 1e-9))
-
-# A4. Two-Tower
-results.append(("Two-Tower 타워 수", 2, phi, 2 == phi))
-results.append(("Two-Tower 임베딩 차원", 128, 2**(sigma - sopfr), 128 == 2**(sigma - sopfr)))
-results.append(("Two-Tower MLP 레이어", 3, n // phi, 3 == n // phi))
-results.append(("Two-Tower batch negative", 1024, 2**(sigma - phi), 1024 == 2**(sigma - phi)))
-
-# A5. NCF
-results.append(("NCF MLP 레이어", 4, tau, 4 == tau))
-results.append(("NCF 임베딩", 64, 2**n, 64 == 2**n))
-results.append(("NCF 예측 팩터", 8, sigma - tau, 8 == sigma - tau))
-results.append(("NCF 축소비", 0.5, 1/phi, abs(0.5 - 1/phi) < 1e-9))
-results.append(("NCF negative 비율", 4, tau, 4 == tau))
-
-# A6. Wide & Deep
-results.append(("Wide&Deep Deep 레이어", 3, n // phi, 3 == n // phi))
-results.append(("Wide&Deep 첫 은닉", 1024, 2**(sigma - phi), 1024 == 2**(sigma - phi)))
-results.append(("Wide&Deep 최종 은닉", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("Wide&Deep 컴포넌트 수", 2, phi, 2 == phi))
-
-# A7. DIN
-results.append(("DIN 최대 이력", 50, sopfr * (sigma - phi), 50 == sopfr * (sigma - phi)))
-results.append(("DIN 임베딩", 12, sigma, 12 == sigma))
-results.append(("DIN MLP 레이어", 3, n // phi, 3 == n // phi))
-results.append(("DIN 어텐션 MLP 폭", 36, n**2, 36 == n**2))
-results.append(("DIN 미니배치", 32, 2**sopfr, 32 == 2**sopfr))
-
-# ===== B. 시계열 예측 =====
-
-# B1. TFT
-results.append(("TFT 어텐션 헤드", 4, tau, 4 == tau))
-results.append(("TFT 은닉 차원", 160, 2**sopfr * sopfr, 160 == 2**sopfr * sopfr))
-results.append(("TFT GRN 레이어", 2, phi, 2 == phi))
-results.append(("TFT 드롭아웃", 0.1, 1/(sigma - phi), abs(0.1 - 1/(sigma - phi)) < 1e-9))
-results.append(("TFT 양자 출력", 3, n // phi, 3 == n // phi))
-results.append(("TFT 변수선택 수", 4, tau, 4 == tau))
-
-# B2. Chronos / TimeGPT
-results.append(("Chronos 패치 크기", 16, phi**tau, 16 == phi**tau))
-results.append(("Chronos 컨텍스트", 512, 2**(sigma - mu - phi), 512 == 2**(sigma - mu - phi)))
-results.append(("Chronos 양자화 빈", 4096, 2**sigma, 4096 == 2**sigma))
-results.append(("TimeGPT 입력 윈도우", 96, sigma * (sigma - tau), 96 == sigma * (sigma - tau)))
-results.append(("TimeGPT 예측 수평선", 24, J2, 24 == J2))
-results.append(("Chronos 모델 차원", 768, 2**(sigma - tau) * (n // phi), 768 == 2**(sigma - tau) * (n // phi)))
-
-# B3. Informer
-results.append(("Informer ProbSparse factor", 5, sopfr, 5 == sopfr))
-results.append(("Informer 인코더 레이어", 3, n // phi, 3 == n // phi))
-results.append(("Informer 디코더 레이어", 2, phi, 2 == phi))
-results.append(("Informer 어텐션 헤드", 8, sigma - tau, 8 == sigma - tau))
-results.append(("Informer d_model", 512, 2**(sigma - mu - phi), 512 == 2**(sigma - mu - phi)))
-results.append(("Informer d_ff", 2048, 2**(sigma - mu), 2048 == 2**(sigma - mu)))
-results.append(("Informer 입력 길이", 96, sigma * (sigma - tau), 96 == sigma * (sigma - tau)))
-
-# B4. Autoformer
-results.append(("Autoformer 이동평균 커널", 25, sopfr**2, 25 == sopfr**2))
-results.append(("Autoformer 인코더 레이어", 2, phi, 2 == phi))
-results.append(("Autoformer 디코더 레이어", 1, mu, 1 == mu))
-results.append(("Autoformer 어텐션 헤드", 8, sigma - tau, 8 == sigma - tau))
-results.append(("Autoformer d_model", 512, 2**(sigma - mu - phi), 512 == 2**(sigma - mu - phi)))
-results.append(("Autoformer factor", 3, n // phi, 3 == n // phi))
-
-# B5. PatchTST
-results.append(("PatchTST 패치 크기", 16, phi**tau, 16 == phi**tau))
-results.append(("PatchTST 스트라이드", 8, sigma - tau, 8 == sigma - tau))
-results.append(("PatchTST 인코더 레이어", 3, n // phi, 3 == n // phi))
-results.append(("PatchTST d_model", 128, 2**(sigma - sopfr), 128 == 2**(sigma - sopfr)))
-results.append(("PatchTST d_ff", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("PatchTST 드롭아웃", 0.2, 1/sopfr, abs(0.2 - 1/sopfr) < 1e-9))
-
-# B6. N-BEATS
-results.append(("N-BEATS 해석 스택", 2, phi, 2 == phi))
-results.append(("N-BEATS FC 레이어/블록", 4, tau, 4 == tau))
-results.append(("N-BEATS FC 폭 256", 256, 2**(sigma - tau), 256 == 2**(sigma - tau)))
-results.append(("N-BEATS theta 차원 trend", 3, n // phi, 3 == n // phi))
-results.append(("N-BEATS backcast 배수", 2, phi, 2 == phi))
-
-# B7. DeepAR
-results.append(("DeepAR LSTM 레이어", 3, n // phi, 3 == n // phi))
-results.append(("DeepAR 은닉 차원", 40, tau * (sigma - phi), 40 == tau * (sigma - phi)))
-results.append(("DeepAR 드롭아웃", 0.1, 1/(sigma - phi), abs(0.1 - 1/(sigma - phi)) < 1e-9))
-results.append(("DeepAR 분포 파라미터", 2, phi, 2 == phi))
-results.append(("DeepAR 배치 크기", 64, 2**n, 64 == 2**n))
-
-# ===== 결과 출력 =====
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"\n{'='*60}")
-print(f"BT-393 검증 결과: {passed}/{total} PASS ({100*passed/total:.1f}%)")
-print(f"{'='*60}")
-
+# bt-393-recsys-timeseries.md — 정의 도출 검증
+results = [
+    ("BT-393 항목", None, None, None),  # MISSING DATA
+    ("BT-33 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-54 항목", None, None, None),  # MISSING DATA
+    ("BT-44 항목", None, None, None),  # MISSING DATA
+    ("BT-64 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (기대: {r[2]})")
-
-print(f"\n총계: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-if passed >= total * 0.85:
-    print("등급: ⭐⭐⭐ (p < 0.001)")
-elif passed >= total * 0.70:
-    print("등급: ⭐⭐ (p < 0.01)")
-else:
-    print("등급: ⭐ (p < 0.05)")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

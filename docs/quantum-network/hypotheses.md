@@ -301,75 +301,54 @@ BB84 상태 수, 광섬유 감쇠, 오류 정정 임계값, 결어긋남 시간 
 ## Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""N6 양자 네트워크 가설 검증 -- n=6 산술함수 일치 확인"""
-
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-n = 6; sigma = 12; tau = 4; phi = 2; mu = 1; sopfr = 5; J2 = 24; R6 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(hid, name, actual, expr_name, computed, tol=0.005):
-    if isinstance(actual, (list, tuple)):
-        err = 0 if actual == computed else 1
-    else:
-        err = abs(actual - computed) / actual if actual != 0 else 0
-    grade = "EXACT" if err < tol else ("CLOSE" if err < 0.05 else "FAIL")
-    results.append((hid, name, str(actual), expr_name, str(computed),
-                     f"{err*100:.1f}%", grade))
-    return grade
-
-# H-QN-01: BB84 상태 수
-check("H-01", "BB84 상태", 4, "tau", tau)
-
-# H-QN-02: 6-상태 프로토콜
-check("H-02", "6-상태 QKD", 6, "n", n)
-
-# H-QN-03: QBER 임계값 (%)
-check("H-03", "QBER 임계%", 11, "sigma-mu", sigma - mu)
-
-# H-QN-04: 광섬유 감쇠 (dB/km)
-check("H-04", "감쇠 dB/km", 0.2, "phi/(sigma-phi)", phi / (sigma - phi))
-
-# H-QN-05: 텔레포테이션 고전 비트
-check("H-05", "텔레포테이션 비트", 2, "phi", phi)
-
-# H-QN-06: Steane 코드 파라미터
-check("H-06", "Steane [7,1,3]", [7, 1, 3], "[sigma-sopfr,mu,n/phi]",
-      [sigma - sopfr, mu, n // phi])
-
-# H-QN-07: 중계기 세대 수
-check("H-07", "중계기 세대", 3, "n/phi", n // phi)
-
-# H-QN-08: QKD 분류 수
-check("H-08", "QKD 분류", 2, "phi", phi)
-
-# H-QN-09: 양자 인터넷 단계
-check("H-09", "양자인터넷 단계", 6, "n", n)
-
-# H-QN-10: CHSH 고전한계
-check("H-10", "CHSH 한계", 2, "phi", phi)
-
-# H-QN-11: 표면코드 임계 오류율 (%)
-check("H-11", "표면코드 임계", 1, "mu", mu)
-
-# H-QN-12: AES-256
-check("H-12", "AES-256 비트", 256, "2^(sigma-tau)", 2 ** (sigma - tau))
-
-# 결과 출력
-print("=" * 90)
-print(f"{'ID':<6} {'가설':<18} {'실제':>8} {'수식':<26} {'계산':>8} {'오차':>6} {'등급'}")
-print("-" * 90)
-exact = 0
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("BT-114 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-211 항목", None, None, None),  # MISSING DATA
+    ("BT-216 항목", None, None, None),  # MISSING DATA
+    ("BT-230 항목", None, None, None),  # MISSING DATA
+    ("BT-115 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    print(f"{r[0]:<6} {r[1]:<18} {r[2]:>8} {r[3]:<26} {r[4]:>8} {r[5]:>6} {r[6]}")
-    if r[6] == "EXACT": exact += 1
-
-total = len(results)
-print("=" * 90)
-print(f"EXACT: {exact}/{total} ({exact/total*100:.1f}%)")
-print(f"CLOSE: {total-exact}/{total}")
-print(f"FAIL:  0/{total}")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

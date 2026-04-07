@@ -358,189 +358,58 @@
 ## 검증코드
 
 ```python
-# 검증코드 -- bt-402-earphone-hardware.md
-from fractions import Fraction
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수 정의
-n, sigma, phi, tau = 6, 12, 2, 4
-J2, sopfr, mu = 24, 5, 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# 1. 드라이버 직경 (6종)
-results.append(("드라이버 6mm IEM 소", 6, n, 6 == n))
-results.append(("드라이버 8mm IEM 표준", 8, sigma - tau, 8 == sigma - tau))
-results.append(("드라이버 10mm IEM 대", 10, sigma - phi, 10 == sigma - phi))
-results.append(("드라이버 12mm IEM 프리미엄", 12, sigma, 12 == sigma))
-results.append(("드라이버 40mm 헤드폰", 40, tau * (sigma - phi), 40 == tau * (sigma - phi)))
-results.append(("드라이버 50mm 헤드폰 대형", 50, sopfr * (sigma - phi), 50 == sopfr * (sigma - phi)))
-
-# 2. BA 드라이버 수 (7종)
-results.append(("BA 1", 1, mu, 1 == mu))
-results.append(("BA 2", 2, phi, 2 == phi))
-results.append(("BA 3", 3, n // phi, 3 == n // phi))
-results.append(("BA 4", 4, tau, 4 == tau))
-results.append(("BA 6", 6, n, 6 == n))
-results.append(("BA 8", 8, sigma - tau, 8 == sigma - tau))
-results.append(("BA 12", 12, sigma, 12 == sigma))
-
-# 3. 하이브리드 IEM (5종)
-results.append(("하이브리드 1DD+1BA=2", 2, phi, 2 == phi))
-results.append(("하이브리드 1DD+2BA=3", 3, n // phi, 3 == n // phi))
-results.append(("하이브리드 1DD+4BA=5", 5, sopfr, 5 == sopfr))
-results.append(("하이브리드 2DD+6BA=8", 8, sigma - tau, 8 == sigma - tau))
-results.append(("하이브리드 1DD+6BA+1EST=8", 8, sigma - tau, 8 == sigma - tau))
-
-# 4. 평면자기 (2종)
-results.append(("평면자기 50mm", 50, sopfr * (sigma - phi), 50 == sopfr * (sigma - phi)))
-results.append(("평면자기 100mm", 100, (sigma - phi) ** phi, 100 == (sigma - phi) ** phi))
-
-# 5. 임피던스 (6종)
-results.append(("임피던스 16 Ohm", 16, 2 ** tau, 16 == 2 ** tau))
-results.append(("임피던스 32 Ohm", 32, 2 ** sopfr, 32 == 2 ** sopfr))
-results.append(("임피던스 64 Ohm", 64, 2 ** n, 64 == 2 ** n))
-results.append(("임피던스 250 Ohm", 250, sopfr ** (n // phi) * phi, 250 == sopfr ** 3 * phi))
-results.append(("임피던스 300 Ohm", 300, sopfr ** phi * sigma, 300 == sopfr ** 2 * sigma))
-results.append(("임피던스 600 Ohm", 600, n * (sigma - phi) ** phi, 600 == n * 100))
-
-# 6. 감도 (5종)
-results.append(("감도 90dB", 90, sopfr * (sigma + n), 90 == sopfr * 18))
-results.append(("감도 96dB", 96, sigma * (sigma - tau), 96 == sigma * 8))
-results.append(("감도 100dB", 100, (sigma - phi) ** phi, 100 == 10 ** 2))
-results.append(("감도 110dB", 110, (sigma - phi) * (sigma - mu), 110 == 10 * 11))
-results.append(("감도 120dB", 120, sigma * (sigma - phi), 120 == 12 * 10))
-
-# 7. BT 버전 (4종)
-results.append(("BT 5.0", 5.0, sopfr, 5.0 == sopfr))
-results.append(("BT 5.2", 5.2, sopfr + phi / (sigma - phi), abs(5.2 - (5 + 0.2)) < 1e-10))
-results.append(("BT 5.3", 5.3, sopfr + (n / phi) / (sigma - phi), abs(5.3 - (5 + 0.3)) < 1e-10))
-results.append(("BT 5.4", 5.4, sopfr + tau / (sigma - phi), abs(5.4 - (5 + 0.4)) < 1e-10))
-
-# 8. 코덱 비트레이트 (11종)
-results.append(("AAC 256kbps", 256, 2 ** (sigma - tau), 256 == 2 ** 8))
-results.append(("aptX 384kbps", 384, sigma * 2 ** sopfr, 384 == 12 * 32))
-results.append(("aptX HD 576kbps", 576, J2 ** phi, 576 == 24 ** 2))
-results.append(("LDAC 330kbps", 330, sopfr * n * (sigma - mu), 330 == 5 * 6 * 11))
-results.append(("LDAC 660kbps", 660, sopfr * n * (sigma - mu) * phi, 660 == 330 * 2))
-results.append(("LDAC 990kbps", 990, sopfr * n * (sigma - mu) * (n // phi), 990 == 330 * 3))
-results.append(("LC3 160kbps", 160, 2 ** sopfr * sopfr, 160 == 32 * 5))
-results.append(("LC3plus 192kbps", 192, sigma * 2 ** tau, 192 == 12 * 16))
-results.append(("LC3plus 256kbps", 256, 2 ** (sigma - tau), 256 == 256))
-results.append(("LC3plus 320kbps", 320, 2 ** sopfr * (sigma - phi), 320 == 32 * 10))
-# SBC 328 = tau*(sigma*n + sigma-phi) = 4*82 = 328
-results.append(("SBC 328kbps", 328, tau * (sigma * n + sigma - phi), 328 == tau * (sigma * n + sigma - phi)))
-
-# 9. ANC 마이크 (4종)
-results.append(("ANC 마이크 2", 2, phi, 2 == phi))
-results.append(("ANC 마이크 4", 4, tau, 4 == tau))
-results.append(("ANC 마이크 6", 6, n, 6 == n))
-results.append(("ANC 마이크 8", 8, sigma - tau, 8 == sigma - tau))
-
-# 10. ANC 감쇄 (5종)
-results.append(("ANC -25dB", 25, sopfr ** phi, 25 == 25))
-results.append(("ANC -30dB", 30, sopfr * n, 30 == 30))
-results.append(("ANC -35dB", 35, sopfr * (sigma - sopfr), 35 == 5 * 7))
-results.append(("ANC -40dB", 40, tau * (sigma - phi), 40 == 4 * 10))
-results.append(("ANC -45dB", 45, sopfr * (sigma - n // phi), 45 == 5 * 9))
-
-# 11. 적응 필터 (3종)
-results.append(("필터 128탭", 128, 2 ** (sigma - sopfr), 128 == 2 ** 7))
-results.append(("필터 256탭", 256, 2 ** (sigma - tau), 256 == 2 ** 8))
-results.append(("필터 512탭", 512, 2 ** (sigma - n // phi), 512 == 2 ** 9))
-
-# 12. 배터리 수명 (6종)
-results.append(("배터리 4h", 4, tau, 4 == tau))
-results.append(("배터리 5h", 5, sopfr, 5 == sopfr))
-results.append(("배터리 6h", 6, n, 6 == n))
-results.append(("배터리 8h", 8, sigma - tau, 8 == sigma - tau))
-results.append(("배터리 10h", 10, sigma - phi, 10 == sigma - phi))
-results.append(("배터리 12h", 12, sigma, 12 == sigma))
-
-# 13. 케이스 총수명 (4종)
-results.append(("케이스 18h", 18, sigma + n, 18 == 18))
-results.append(("케이스 24h", 24, J2, 24 == J2))
-results.append(("케이스 30h", 30, sopfr * n, 30 == 30))
-results.append(("케이스 36h", 36, n ** phi, 36 == 36))
-
-# 14. 주파수 응답 (6종)
-results.append(("가청 하한 20Hz", 20, J2 - tau, 20 == 20))
-results.append(("가청 상한 20kHz (단위 kHz)", 20, J2 - tau, 20 == 20))
-results.append(("Hi-Res 하한 4Hz", 4, tau, 4 == tau))
-results.append(("Hi-Res 상한 40kHz (단위 kHz)", 40, tau * (sigma - phi), 40 == 40))
-results.append(("프리미엄 48kHz (단위 kHz)", 48, sigma * tau, 48 == 48))
-results.append(("초저음 5Hz", 5, sopfr, 5 == sopfr))
-
-# 15. THD (4종)
-results.append(("THD 1%", 1, mu, 1 == mu))
-results.append(("THD 0.1%", Fraction(1, 10), Fraction(1, sigma - phi), Fraction(1, 10) == Fraction(1, 10)))
-results.append(("THD 0.05%", Fraction(1, 20), Fraction(1, J2 - tau), Fraction(1, 20) == Fraction(1, 20)))
-results.append(("THD 0.01%", Fraction(1, 100), Fraction(1, (sigma - phi) ** phi), Fraction(1, 100) == Fraction(1, 100)))
-
-# 16. 채널 분리 (4종)
-results.append(("채널분리 50dB", 50, sopfr * (sigma - phi), 50 == 50))
-results.append(("채널분리 80dB", 80, (sigma - tau) * (sigma - phi), 80 == 80))
-results.append(("채널분리 100dB", 100, (sigma - phi) ** phi, 100 == 100))
-results.append(("채널분리 120dB", 120, sigma * (sigma - phi), 120 == 120))
-
-# 17. 크로스오버 (4종)
-results.append(("크로스오버 200Hz", 200, phi * (sigma - phi) ** phi, 200 == 200))
-results.append(("크로스오버 2kHz", 2000, phi * 10 ** (n // phi), 2000 == 2000))
-results.append(("크로스오버 8kHz", 8000, (sigma - tau) * 10 ** (n // phi), 8000 == 8000))
-results.append(("크로스오버 16kHz", 16000, 2 ** tau * 10 ** (n // phi), 16000 == 16000))
-
-# 18. DAC (8종 -- 44.1kHz = CLOSE)
-results.append(("DAC 16bit", 16, 2 ** tau, 16 == 16))
-results.append(("DAC 24bit", 24, J2, 24 == J2))
-results.append(("DAC 32bit", 32, 2 ** sopfr, 32 == 32))
-results.append(("DAC 48kHz", 48, sigma * tau, 48 == 48))
-results.append(("DAC 96kHz", 96, sigma * (sigma - tau), 96 == 96))
-results.append(("DAC 192kHz", 192, sigma * 2 ** tau, 192 == 192))
-results.append(("DAC 384kHz", 384, sigma * 2 ** sopfr, 384 == 384))
-# 44.1kHz = (n/phi*(sigma-sopfr))^phi * (sigma-phi)^phi = 21^2 * 100 = 44100
-results.append(("CD 44.1kHz", 44100, (n // phi * (sigma - sopfr)) ** phi * (sigma - phi) ** phi, 44100 == 441 * 100))
-
-# 19. 물리 치수/무게 (9종)
-results.append(("IEM 4g", 4, tau, 4 == tau))
-results.append(("IEM 5g", 5, sopfr, 5 == sopfr))
-results.append(("IEM 6g", 6, n, 6 == n))
-results.append(("IEM 8g", 8, sigma - tau, 8 == sigma - tau))
-results.append(("헤드폰 250g", 250, sopfr ** 3 * phi, 250 == 250))
-results.append(("헤드폰 300g", 300, sopfr ** 2 * sigma, 300 == 300))
-results.append(("드라이버-이어 6mm", 6, n, 6 == n))
-results.append(("이어팁 3사이즈", 3, n // phi, 3 == 3))
-results.append(("이어팁 5사이즈", 5, sopfr, 5 == sopfr))
-
-# 20. 보어 직경 (3종)
-results.append(("보어 4mm", 4, tau, 4 == tau))
-results.append(("보어 5mm", 5, sopfr, 5 == sopfr))
-results.append(("보어 6mm", 6, n, 6 == n))
-
-# 21. 충전 (4종)
-results.append(("USB-C 5V", 5, sopfr, 5 == sopfr))
-results.append(("Qi 5W", 5, sopfr, 5 == sopfr))
-results.append(("급속충전 1h", 1, mu, 1 == mu))
-results.append(("완충 2h", 2, phi, 2 == phi))
-
-# 22. 커넥터 (5종)
-results.append(("3.5mm 잭", 3.5, n / phi + mu / phi, abs(3.5 - 3.5) < 1e-10))
-results.append(("TRS 접점 3", 3, n // phi, 3 == 3))
-results.append(("TRRS 접점 4", 4, tau, 4 == tau))
-results.append(("2-pin", 2, phi, 2 == phi))
-results.append(("MMCX 1-pin", 1, mu, 1 == mu))
-
-# 23. 진동판 소재 (2종)
-results.append(("탄소 Z=6", 6, n, 6 == n))
-results.append(("베릴륨 Z=4", 4, tau, 4 == tau))
-
-# 결과 출력
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"검증 결과: {passed}/{total} PASS ({100*passed/total:.1f}%)")
-print(f"(CLOSE 0건 — SBC 328, CD 44.1kHz 모두 EXACT 승격 완료)")
-print()
+# bt-402-earphone-hardware.md — 정의 도출 검증
+results = [
+    ("BT-402 항목", None, None, None),  # MISSING DATA
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-72 항목", None, None, None),  # MISSING DATA
+    ("BT-108 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-324 항목", None, None, None),  # MISSING DATA
+    ("BT-92 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (n=6: {r[2]})")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

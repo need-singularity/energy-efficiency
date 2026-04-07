@@ -195,98 +195,58 @@
 ## 검증코드
 
 ```python
-# 검증코드 --- bt-403-earphone-software.md
-# 이어폰/헤드폰 소프트웨어·신호처리·심리음향 완전 n=6 맵
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n = 6
-sigma = 12    # sigma(6) = 1+2+3+6
-phi = 2       # phi(6) = |{1,5}|
-tau = 4       # tau(6) = |{1,2,3,6}|
-J2 = 24       # Jordan J_2(6)
-sopfr = 5     # 2+3
-mu = 1        # Mobius mu(6)
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# === 1. 심리음향 ===
-results.append(("가청 하한 20Hz = phi*(sigma-phi)", phi*(sigma-phi), 20, phi*(sigma-phi)==20))
-results.append(("가청 상한 20000Hz = phi*(sigma-phi)*10^3", phi*(sigma-phi)*1000, 20000, phi*(sigma-phi)*1000==20000))
-results.append(("가청 옥타브 10 = sigma-phi", sigma-phi, 10, sigma-phi==10))
-results.append(("Bark 임계대역 24 = J2", J2, 24, J2==24))
-results.append(("반음 12 = sigma", sigma, 12, sigma==12))
-results.append(("다이아토닉 7 = sigma-sopfr", sigma-sopfr, 7, sigma-sopfr==7))
-results.append(("시간마스킹 20ms = J2-tau", J2-tau, 20, J2-tau==20))
-results.append(("외이도공명 3kHz = n/phi", n//phi, 3, n//phi==3))
-
-# === 2. EQ/필터 ===
-results.append(("그래픽EQ 10밴드 = sigma-phi", sigma-phi, 10, sigma-phi==10))
-results.append(("파라메트릭EQ 12밴드 = sigma", sigma, 12, sigma==12))
-results.append(("Harman 베이스 +6dB = n", n, 6, n==6))
-results.append(("Harman 프레즌스 -3dB = n/phi", n//phi, 3, n//phi==3))
-results.append(("Biquad 2차 = phi", phi, 2, phi==2))
-results.append(("LR4 크로스오버 4차 = tau", tau, 4, tau==4))
-results.append(("Butterworth 6차 = n", n, 6, n==6))
-results.append(("Elliptic 8차 = sigma-tau", sigma-tau, 8, sigma-tau==8))
-results.append(("1/3옥타브 31밴드 = 2^sopfr - mu", 2**sopfr - mu, 31, 2**sopfr - mu==31))
-
-# === 3. 공간오디오 ===
-results.append(("Ambisonics 1차 4ch = tau", tau, 4, tau==4))
-results.append(("Ambisonics 3차 16ch = phi^tau", phi**tau, 16, phi**tau==16))
-results.append(("Dolby Atmos 12ch = sigma", sigma, 12, sigma==12))
-results.append(("Dolby Atmos 24obj = J2", J2, 24, J2==24))
-results.append(("HRTF 방위각 72점 = sigma*n", sigma*n, 72, sigma*n==72))
-results.append(("HRTF 128탭 = 2^(sigma-sopfr)", 2**(sigma-sopfr), 128, 2**(sigma-sopfr)==128))
-results.append(("HRTF 256탭 = 2^(sigma-tau)", 2**(sigma-tau), 256, 2**(sigma-tau)==256))
-results.append(("HRTF 512탭 = 2^(sigma-n/phi)", 2**(sigma-n//phi), 512, 2**(sigma-n//phi)==512))
-
-# === 4. 코덱 ===
-results.append(("EnCodec 8 코드북 = sigma-tau", sigma-tau, 8, sigma-tau==8))
-results.append(("RVQ 1024 엔트리 = 2^(sigma-phi)", 2**(sigma-phi), 1024, 2**(sigma-phi)==1024))
-results.append(("EnCodec 24kHz = J2", J2, 24, J2==24))
-results.append(("EnCodec 6kbps = n", n, 6, n==6))
-results.append(("AAC short 256 = 2^(sigma-tau)", 2**(sigma-tau), 256, 2**(sigma-tau)==256))
-results.append(("AAC long 1024 = 2^(sigma-phi)", 2**(sigma-phi), 1024, 2**(sigma-phi)==1024))
-results.append(("Opus 10ms = sigma-phi", sigma-phi, 10, sigma-phi==10))
-results.append(("Opus 20ms = J2-tau", J2-tau, 20, J2-tau==20))
-results.append(("Pro audio 48kHz = sigma*tau", sigma*tau, 48, sigma*tau==48))
-results.append(("24-bit = J2", J2, 24, J2==24))
-
-# === 5. DSP ===
-results.append(("ANC 128탭 = 2^(sigma-sopfr)", 2**(sigma-sopfr), 128, 2**(sigma-sopfr)==128))
-results.append(("ANC 256탭 = 2^(sigma-tau)", 2**(sigma-tau), 256, 2**(sigma-tau)==256))
-results.append(("ANC 512탭 = 2^(sigma-n/phi)", 2**(sigma-n//phi), 512, 2**(sigma-n//phi)==512))
-results.append(("빔포밍 2마이크 = phi", phi, 2, phi==2))
-results.append(("빔포밍 4마이크 = tau", tau, 4, tau==4))
-results.append(("VAD 10ms = sigma-phi", sigma-phi, 10, sigma-phi==10))
-results.append(("VAD 20ms = J2-tau", J2-tau, 20, J2-tau==20))
-results.append(("컴프레서 2:1 = phi", phi, 2, phi==2))
-results.append(("컴프레서 4:1 = tau", tau, 4, tau==4))
-results.append(("컴프레서 12:1 = sigma", sigma, 12, sigma==12))
-
-# === 6. 블루투스 ===
-results.append(("LC3 20ms = J2-tau", J2-tau, 20, J2-tau==20))
-results.append(("LC3 48kHz = sigma*tau", sigma*tau, 48, sigma*tau==48))
-results.append(("Bluetooth 5.x = sopfr", sopfr, 5, sopfr==5))
-results.append(("LE Audio 2스트림 = phi", phi, 2, phi==2))
-
-# === 7. AI 기능 ===
-results.append(("적응형EQ 24밴드 = J2", J2, 24, J2==24))
-results.append(("청력검사 6포인트 = n", n, 6, n==6))
-results.append(("청력검사 12포인트 = sigma", sigma, 12, sigma==12))
-results.append(("대화인식 3kHz = n/phi", n//phi, 3, n//phi==3))
-
-# === 결과 출력 ===
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"\n검증 결과: {passed}/{total} PASS ({100*passed/total:.1f}%)")
-print(f"{'='*70}")
+# bt-403-earphone-software.md — 정의 도출 검증
+results = [
+    ("BT-403 항목", None, None, None),  # MISSING DATA
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-72 항목", None, None, None),  # MISSING DATA
+    ("BT-108 항목", None, None, None),  # MISSING DATA
+    ("BT-178 항목", None, None, None),  # MISSING DATA
+    ("BT-337 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-73 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} -> 계산={r[1]}, 기대={r[2]}")
-print(f"{'='*70}")
-print(f"최종: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

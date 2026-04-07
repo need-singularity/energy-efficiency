@@ -1,0 +1,88 @@
+# ═══════════════════════════════════════════════════════════════
+# reality_map.json 노드 수 검증 (v6.1 풀세트 UI 회귀 방지)
+# - 노드 수 임계값 미달 시 실패
+# - _meta.node_count 와 실제 노드 수 일치 여부 확인
+# - bt_refs 필드 보유 노드 카운트 보고 (BT 역참조 UI 의존)
+# ═══════════════════════════════════════════════════════════════
+name: Reality Map Verify (v6.1)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/reality_map.json'
+      - 'docs/index.html'
+      - '.github/workflows/reality_map_verify.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/reality_map.json'
+      - 'docs/index.html'
+
+jobs:
+  verify-node-count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 노드 수 임계값 검증
+        run: |
+          python3 - <<'PYEOF'
+          import json, sys, os
+
+          path = "docs/reality_map.json"
+          if not os.path.isfile(path):
+              print(f"SKIP: {path} 없음")
+              sys.exit(0)
+
+          with open(path) as f:
+              data = json.load(f)
+
+          nodes = [n for n in data.get("nodes", []) if isinstance(n, dict) and "id" in n]
+          total = len(nodes)
+          MIN_NODES = 200  # v6.1 회귀 방지 임계값
+
+          # bt_refs 보유 노드 (BT 역참조 UI 의존)
+          with_bt = sum(1 for n in nodes if n.get("bt_refs"))
+          # 등급 분포
+          exact = sum(1 for n in nodes if n.get("grade") == "EXACT")
+          close = sum(1 for n in nodes if n.get("grade") == "CLOSE")
+          miss  = sum(1 for n in nodes if n.get("grade") == "MISS")
+          # 도메인 6분할 (v6.1 Z축 기준: level → 6 버킷)
+          DOMAIN_OF_LEVEL = {
+              'L0_particle': 0, 'L1_atom': 1, 'L2_bond': 2,
+              'L3_molecule': 3, 'L4_genetic': 4,
+              'L5_material': 5, 'L5_bio': 5,
+          }
+          domain_count = [0]*6
+          for n in nodes:
+              d = DOMAIN_OF_LEVEL.get(n.get("level"), 5)
+              domain_count[d] += 1
+          # edges 카운트
+          edges = data.get("edges", [])
+
+          print("=== Reality Map v6.1 Verify ===")
+          print(f"  유효 노드: {total}")
+          print(f"  EXACT: {exact}  CLOSE: {close}  MISS: {miss}")
+          print(f"  bt_refs 보유: {with_bt} / {total}")
+          print(f"  6도메인 분포: {domain_count}  (n=6)")
+          print(f"  인과 엣지: {len(edges)}")
+
+          # 임계값 검증
+          ok = True
+          if total < MIN_NODES:
+              print(f"FAIL: 노드 수 {total} < 임계값 {MIN_NODES}")
+              ok = False
+          # _meta.node_count 일치 확인 (있을 때만)
+          declared = data.get("_meta", {}).get("node_count")
+          if declared is not None and declared != total:
+              print(f"WARNING: _meta.node_count={declared} 와 실제 {total} 불일치")
+          # 6도메인 모두 0보다 큰지 (Z축 분리 의미 보장 — 1개라도 비면 경고)
+          empty = [i for i,c in enumerate(domain_count) if c == 0]
+          if empty:
+              print(f"WARNING: 빈 도메인 슬롯 {empty}")
+
+          if not ok:
+              sys.exit(1)
+          print("PASS")
+          PYEOF

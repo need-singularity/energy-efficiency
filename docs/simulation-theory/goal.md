@@ -523,114 +523,58 @@ Planck 기본 5종의 SI 지수 절대값 합이 정확히 137이며, 이것이 
 전체 65/65 EXACT 검증코드: `docs/simulation-theory/verify_alien10.py`
 
 ```python
-#!/usr/bin/env python3
-"""검증코드 — HEXA-SIM BT-371 시뮬레이션 이론 65/65 EXACT 검증"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 산술 상수
-n, sigma, phi, tau, sopfr, J2, mu = 6, 12, 2, 4, 5, 24, 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def chk(name, actual, predicted):
-    ok = abs(actual - predicted) < 0.01 if isinstance(actual, float) else actual == predicted
-    results.append((name, actual, predicted, ok))
-
-# === 카테고리 1: Planck 지수 래더 (5/5) ===
-chk("Planck 질량 지수", -8, -(sigma - tau))
-chk("Planck 길이 지수", -35, -(sopfr * (sigma - sopfr)))
-chk("Planck 시간 지수", -44, -(tau * (sigma - mu)))
-chk("Planck 온도 지수", 32, phi**sopfr)
-chk("Planck 전하 지수", -18, -(n * (n // phi)))
-
-# === 카테고리 2: Lloyd 우주 정보 (3/3) ===
-chk("우주 총 연산 지수", 120, sigma * (sigma - phi))
-chk("홀로그래피 정보 지수", 124, sigma * (sigma - phi) + tau)
-chk("바리온 입자 수 지수", 80, (sigma - tau) * (sigma - phi))
-
-# === 카테고리 3: Conway GoL (7/7) ===
-chk("GoL 탄생 규칙 B", 3, n // phi)
-chk("GoL 생존 규칙 S 하한", 2, phi)
-chk("GoL 생존 규칙 S 상한", 3, n // phi)
-chk("글라이더 셀 수", 5, sopfr)
-chk("글라이더 이동 주기", 4, tau)
-chk("펄사 셀 수", 12, sigma)
-chk("펄사 주기", 3, n // phi)
-
-# === 카테고리 4: 디지털 물리학 (8/8) ===
-chk("Rule 110 TC", 110, (sigma - mu) * (sigma - phi))
-chk("1D CA 기본 규칙 수", 256, 2**(sigma - tau))
-chk("Wolfram CA 클래스 수", 4, tau)
-chk("1D CA 이웃 크기", 3, n // phi)
-chk("계산 복잡도 기본 클래스", 7, sigma - sopfr)
-chk("P-NP-PSPACE-EXP 체인", 4, tau)
-chk("Bostrom 삼분법", 3, n // phi)
-chk("독립 기본 물리 상수", 3, n // phi)
-
-# === 카테고리 5: 홀로그래픽 원리 (5/5) ===
-chk("Bekenstein 면적 인자", 4, tau)
-chk("경계 차원", 2, phi)
-chk("벌크 차원", 3, n // phi)
-chk("차원 비 벌크/경계", 1.5, n / phi**2)
-chk("Bekenstein S=A/(4lP2) 계수", 4, tau)
-
-# === 카테고리 6: 자연 해상도 6계층 (7/7) ===
-chk("L1 Planck 지수", -35, -(sopfr * (sigma - sopfr)))
-chk("L2 원자핵 지수", -15, -(sigma + n // phi))
-chk("L3 원자 지수", -10, -(sigma - phi))
-chk("L4 분자 지수", -9, -(n // phi)**2)
-chk("L5 세포 지수", -5, -sopfr)
-chk("L6 거시 지수", 0, 0)
-chk("계층 수", 6, n)
-
-# === 카테고리 7: 3D 렌더링 (6/6) ===
-chk("GPU 렌더링 단계", 6, n)
-chk("표준 프레임레이트", 24, J2)
-chk("오디오 샘플링 kHz", 48, sigma * tau)
-chk("색 채널 RGB", 3, n // phi)
-chk("색 깊이 bit/ch", 8, sigma - tau)
-chk("총 색 비트", 24, J2)
-
-# === 카테고리 8: 우주 물리 (10/10) ===
-chk("시공간 차원", 4, tau)
-chk("공간 차원", 3, n // phi)
-chk("시간 차원", 1, mu)
-chk("1/alpha", 137, sigma**2 - sopfr - phi)
-chk("우주 나이 지수 s", 17, sigma + sopfr)
-chk("우주/Planck 비 지수", 60, sigma * sopfr)
-chk("기본 힘 수", 4, tau)
-chk("페르미온 세대", 3, n // phi)
-chk("게이지 그룹 수", 3, n // phi)
-chk("Hubble 상수", 70, sopfr * (sigma + phi))
-
-# === 카테고리 9: 양자 시뮬레이션 (6/6) ===
-chk("Tsirelson 한계", 2 * math.sqrt(2), phi * math.sqrt(phi))
-chk("고전 벨 한계", 2, phi)
-chk("양자/고전 비", math.sqrt(2), math.sqrt(phi))
-chk("양자 게이트 범용 최소", 3, n // phi)
-chk("lP/tP 지수 차", 9, (n // phi)**2)
-chk("광속 지수", 8, sigma - tau)
-
-# === 카테고리 10: 메타구조 6층 (6/6) ===
-chk("메타 구조 층 수", 6, n)
-chk("자기참조 루프 수", 3, n // phi)
-chk("정보 기본 단위 bit", 2, phi)
-chk("Planck 단위 수", 5, sopfr)
-chk("재귀 최대 깊이", 2, phi)
-chk("1/alpha 합 검증", 137, 44 + 35 + 18 + 8 + 32)
-
-# === 결과 출력 ===
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print("=" * 65)
-print(f"HEXA-SIM BT-371 시뮬레이션 이론 검증 결과")
-print("=" * 65)
-for name, actual, pred, ok in results:
-    mark = "PASS" if ok else "FAIL"
-    print(f"  {mark}: {name:32s}  실제={str(actual):>10s}  예측={str(pred):>10s}")
-print(f"\n검증 결과: {passed}/{total} PASS ({passed/total*100:.1f}%)")
-if passed == total:
-    print(">>> 전체 EXACT 달성 — 외계인 지수 10 확정 <<<")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-371 항목", None, None, None),  # MISSING DATA
+    ("BT-178 항목", None, None, None),  # MISSING DATA
+    ("BT-137 항목", None, None, None),  # MISSING DATA
+    ("BT-143 항목", None, None, None),  # MISSING DATA
+    ("BT-165 항목", None, None, None),  # MISSING DATA
+    ("BT-170 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-201 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

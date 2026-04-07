@@ -1,0 +1,60 @@
+// special-number-bf — 특수수 브루트포스 탐색기 (HEXA 스켈레톤)
+//
+// Perfect / Multiperfect / Superperfect / Quasiperfect / Almost-perfect 6종을
+// 동시 탐색. n=6 = 첫 완전수. 다른 특수수의 분포를 조사.
+// 작성: 2026-04-08 / 상태: 스켈레톤
+
+fn sigma(n: int) -> int {
+    let mut s = 0
+    let mut d = 1
+    while d * d <= n {
+        if n % d == 0 {
+            s = s + d
+            if d != n / d { s = s + n / d }
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn is_perfect(n: int) -> bool { return sigma(n) == 2 * n }
+fn is_multiperfect_k(n: int, k: int) -> bool { return sigma(n) == k * n }
+fn is_superperfect(n: int) -> bool { return sigma(sigma(n)) == 2 * n }
+fn is_almost_perfect(n: int) -> bool { return sigma(n) == 2 * n - 1 }
+fn is_quasiperfect(n: int) -> bool { return sigma(n) == 2 * n + 1 }  // open
+
+fn main(args: list<str>) {
+    let max_n = if args.len() > 1 { parse_int(args[1]) } else { 100000 }
+
+    print("# special-number-bf — perfect family brute force")
+    print("# range: 2..=" + str(max_n))
+
+    let mut perfects = []
+    let mut superperfects = []
+    let mut tri = []
+    let mut almost_count = 0
+
+    let mut n = 2
+    while n <= max_n {
+        if is_perfect(n) { perfects.push(n) }
+        if is_superperfect(n) { superperfects.push(n) }
+        if is_multiperfect_k(n, 3) { tri.push(n) }
+        if is_almost_perfect(n) { almost_count = almost_count + 1 }
+        n = n + 1
+    }
+
+    print("Perfect (sigma=2n):       " + str(perfects))
+    print("Superperfect:             " + str(superperfects))
+    print("Triperfect (sigma=3n):    " + str(tri))
+    print("Almost perfect count:     " + str(almost_count) + " (powers of 2)")
+
+    // self check
+    assert is_perfect(6)
+    assert sigma(6) == 12
+    print("self-check: n=6 PASS (first perfect)")
+}
+
+// TODO:
+// - hyperperfect, sublime
+// - JSON 출력
+// - n=6 약수 카테고리(2,3,6) 별 분류

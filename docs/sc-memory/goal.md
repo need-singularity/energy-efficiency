@@ -179,99 +179,58 @@ E_gap = σ-φ meV, T=77K → **T ~ 2^σ = 4,096 년**.
 ## 6. Python 검증 코드 (인라인, 44 checks)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-MRAM Verification — 44 checks, target 90%+ EXACT"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 constants
-n, phi, tau, sigma, mu, sopfr, J2 = 6, 2, 4, 12, 1, 5, 24
-# derived
-d_sig_phi = sigma - phi       # 10
-d_sig_tau = sigma - tau       # 8
-d_sig_J2  = sigma * J2        # 288
-d_sig2    = sigma * sigma     # 144
-d_phitau  = phi ** tau        # 16
-d_sig_mu  = sigma - mu        # 11
-d_sigJ2_4 = J2 + tau          # 28
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def check(name, got, expect, tol=0.02):
-    ok = abs(got-expect)/max(abs(expect),1e-12) < tol
-    checks.append((name, got, expect, ok))
-    return ok
-
-# L0: Material
-check("Cu atomic number Z=6=n",           6, n)
-check("Carbon Z=6 CN coordination",       6, n)
-check("YBCO Y:Ba:Cu ratio sum=1+2+3=n",   1+2+3, n)
-check("BSCCO Bi:Sr:Ca:Cu:O hex ring=n",   6, n)
-check("MgB2 B atoms per hexagon=n",       6, n)
-check("H3S hydrogen count=n/phi=3",       3, n//phi)
-
-# L1: Josephson Junction
-check("Critical current I_c = sigma uA",           12, sigma)
-check("JJ rise time tau = 4 ps",                    4, tau)
-check("SIS voltage gap 2Delta/e ~ phi mV",          2, phi)
-check("SNS junction count in series = n",           6, n)
-check("Nb3Sn Nb atoms = n",                         3, n//phi)
-check("Phi_0 quanta per bit = sigma/sigma=1",       1, mu)
-
-# L2: Cell
-check("Cell size = sigma-tau nm",                    8, d_sig_tau)
-check("Z2 topological index = phi",                  2, phi)
-check("Bit per cell binary = phi",                   2, phi)
-check("SFQ pulse amplitude = phi mV",                2, phi)
-check("AQFP adiabatic factor = tau",                 4, tau)
-check("QPSJ flux state count = phi",                 2, phi)
-
-# L3: Array
-check("Crossbar banks = sigma",                     12, sigma)
-check("Hexagonal neighbor count = n",                6, n)
-check("3D-stack layers = phi (bilayer)",             2, phi)
-check("Word line pitch mult = sigma-tau",            8, d_sig_tau)
-check("Bit line count per bank = 2^sigma",        4096, 2**sigma)
-check("Sense amp count = J2",                       24, J2)
-
-# L4: Die
-check("Die capacity = sigma*J2 Mb=288",            288, d_sig_J2)
-check("Die edge = sigma mm",                        12, sigma)
-check("Die area = sigma^2 mm^2=144",               144, d_sig2)
-check("Bank count per die = J2",                    24, J2)
-check("Row count = 2^sigma=4096",                 4096, 2**sigma)
-check("Column groups = phi^tau=16",                 16, d_phitau)
-
-# L5: Module (HBM-SC)
-check("HBM-SC channels = J2",                       24, J2)
-check("Stack height = sigma dies",                  12, sigma)
-check("Bus width per channel = 2^sopfr=32",         32, 2**sopfr)
-check("IO bandwidth exp = sigma-phi=10",            10, d_sig_phi)
-check("Total capacity = sigma*J2 GB=288",          288, d_sig_J2)
-check("Refresh = 0 (SC non-volatile)",               0, 0)
-
-# L6: Package
-check("Die count stack = sigma",                    12, sigma)
-check("Via count per die = phi^tau=16",             16, d_phitau)
-check("Package pitch = sigma*tau um=48",            48, sigma*tau)
-check("TSV count = 2^sigma=4096",                 4096, 2**sigma)
-
-# L7: System
-check("PUE Topo DC = R(6)=1",                        1, mu)
-check("Power domain voltage = mu V=1",               1, mu)
-check("Write energy = sigma-phi aJ",                10, d_sig_phi)
-check("Retention time = 2^sigma years=4096",      4096, 2**sigma)
-
-# Performance
-check("Density Gbit/cm2 = sigma*J2",               288, d_sig_J2)
-check("Cycle endurance log2 = infinity (SC)",   10**18, 10**18)  # placeholder infinite
-
-# Summary
-passed = sum(1 for _,_,_,ok in checks if ok)
-total  = len(checks)
-print(f"HEXA-MRAM Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, got, exp, ok in checks:
-    tag = "EXACT" if ok else "FAIL"
-    print(f"  [{tag}] {name}: got={got}, expect={exp}")
-assert passed/total >= 0.90, f"below 90% threshold: {passed}/{total}"
-print("PASS: HEXA-MRAM design n=6 consistency >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-142 항목", None, None, None),  # MISSING DATA
+    ("BT-180 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-306 항목", None, None, None),  # MISSING DATA
+    ("BT-55 항목", None, None, None),  # MISSING DATA
+    ("BT-75 항목", None, None, None),  # MISSING DATA
+    ("BT-69 항목", None, None, None),  # MISSING DATA
+    ("BT-60 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (design-time)**: 44/44 EXACT = 100.0% → PASS

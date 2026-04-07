@@ -242,112 +242,58 @@ MRAM 보존 = 2^σ = 4096년, 인류 문명 기록(5천년)과 동급.
 ## 10. Python 검증 코드 (표준 라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-MIND n=6 산술 검증 — 표준 라이브러리만."""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def close(a, b, tol=1e-3):
-    if b == 0: return abs(a) < tol
-    return abs(a-b)/abs(b) < tol
-
-checks = []
-def C(name, val, target):
-    ok = close(val, target)
-    checks.append((name, val, target, "EXACT" if ok else "FAIL"))
-    return ok
-
-# Core identity
-C("sigma*phi=n*tau",       sigma*phi,  n*tau)          # 24=24
-C("sigma-phi=10",          sigma-phi,  10)
-C("sigma-tau=8",           sigma-tau,  8)
-C("sigma-mu=11",           sigma-mu,   11)
-C("sigma*tau=48",          sigma*tau,  48)
-C("sigma*J2=288",          sigma*J2,   288)
-C("sigma^2=144",           sigma**2,   144)
-C("phi^tau=16",            phi**tau,   16)
-C("2^sigma=4096",          2**sigma,   4096)
-C("sopfr(6)=5",            2+3,        sopfr)
-
-# Brain scale
-C("neurons=10^11",         10**(sigma*sopfr//(sigma-phi)), 10**11)  # 10^6? adjust
-C("neurons direct",        10**11,     10**11)
-C("synapses=10^14",        10**14,     10**14)
-C("cortex layers=n",       6,          n)             # BT-254
-C("cortex layers=6",       6,          6)
-C("hemispheres*lobes*layers=48", 2*4*6, sigma*tau)
-C("brain volumes=48",      sigma*tau,  48)
-
-# Scan
-C("MRI tesla=12",          12,         sigma)         # σT
-C("scan channels=1.44M",   1440000,    sigma**2 * 10000)  # 144*10000
-C("scan hours=144",        144,        sigma**2)
-C("scan days=6",           144//24,    n)
-
-# Storage
-C("MRAM years=4096",       4096,       2**sigma)
-C("MRAM PB=288",           288,        sigma*J2)
-C("MRAM stack=12",         12,         sigma)
-C("bit-flip exp=-144",     -sigma**2,  -144)
-
-# Emulation
-C("emu fidelity=0.9965",   1-1/(sigma*J2), 1-1/288)
-C("emu cores=144",         sigma**2,   144)
-C("emu layers=12",         sigma,      12)
-C("Phi bound=0.95",        round(1-1/(sigma*phi-n),4), round(1-1/(24-6),4))
-
-# Working memory / consciousness
-C("WM capacity=4±1",       tau,        4)             # Miller-Cowan
-C("WM max=5",              tau+mu,     sopfr)
-C("WM min=3",              tau-mu,     n//phi)
-
-# Body integration
-C("body sensors=12",       sigma,      12)
-C("body DoF=6",            n,          6)             # SE(3) BT-123
-C("refresh hours=24",      J2,         24)
-C("replication=3",         n//phi,     3)             # triple redundancy
-
-# Senses
-C("senses=8ch",            sigma-tau,  8)             # multimodal
-C("bilateral=2",           phi,        2)
-
-# Continuity
-C("continuity=0.632",      round(1-1/math.e,3), 0.632)
-C("survivor prob=0.95",    round(1-1/(sigma*phi-sigma-phi),3), round(1-1/(24-14),3))
-
-# Timescales
-C("Mk.I start=2028",       2028-2028,  0)
-C("Mk.III start=2041",     2041-2026,  sigma+n-3)     # ~15 years
-C("Mk.V start=2076",       2076-2026,  sigma*tau+phi) # 50 years
-
-# Cost scaling
-C("cost/brain scale",      10**(sigma-sopfr), 10**7)  # $10M Mk.III
-C("refresh/day=1",         J2//J2,     mu)
-
-# Cryo
-C("cryo temp=77K",         77,         n*sigma+sopfr) # LN2
-C("fixation steps=4",      tau,        4)
-
-# Extra architecture
-C("cortical columns",      sigma*J2*10**6//10**6, 288)  # ~288 columns/mm²? placeholder
-C("brain mass kg",         round(n/tau,1), 1.5)         # ~1.5kg
-C("synapse/neuron",        10**14//10**11, 10**(n//phi))  # 10^3
-C("axon types=6",          n,          6)
-C("neurotransmitters=σ",   12,         sigma)         # major NTs
-C("EEG bands=6",           n,          6)             # delta..gamma
-C("sleep stages=τ",        tau,        4)             # N1-3 + REM
-
-# Count
-exact = sum(1 for c in checks if c[3]=="EXACT")
-total = len(checks)
-pct = 100*exact/total
-print(f"HEXA-MIND Verification: {exact}/{total} EXACT ({pct:.1f}%)")
-for name,v,t,s in checks:
-    mark = "[OK]" if s=="EXACT" else "[!!]"
-    print(f"  {mark} {name}: {v} vs {t}")
-assert pct >= 90, f"FAIL: {pct:.1f}% < 90%"
-print("PASS: 90%+ EXACT achieved")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-254 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-303 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-142 항목", None, None, None),  # MISSING DATA
+    ("BT-128 항목", None, None, None),  # MISSING DATA
+    ("BT-136 항목", None, None, None),  # MISSING DATA
+    ("BT-146 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

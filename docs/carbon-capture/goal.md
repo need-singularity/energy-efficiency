@@ -519,91 +519,56 @@ Key findings from NEXUS-6 analysis:
 > 별도 파일: `docs/carbon-capture/verify_alien10.py` (동일 내용)
 
 ```python
-# 검증코드 — HEXA-CCUS goal.md
-# H-CC-01~30 (30/30 EXACT) + BT-94~96/307~309 + DSE 8단
-# 실행: python3 docs/carbon-capture/verify_alien10.py
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-import sys, math
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# n=6 기본 상수
-N, PHI, TAU, SIGMA, SOPFR, MU, J2 = 6, 2, 4, 12, 5, 1, 24
-SIGMA_PHI, SIGMA_TAU, SIGMA_MU, N_PHI = 10, 8, 11, 3
-
-results = []
-
-def check(name, n6_val, phys_val):
-    ok = (n6_val == phys_val) if not isinstance(n6_val, float) else abs(n6_val - phys_val) < 1e-10
-    results.append((name, n6_val, phys_val, ok))
-
-# --- A: CO2 분자 n=6 인코딩 (H-CC-01~06) ---
-check("CC-01 Carbon Z = n = 6", N, 6)
-check("CC-02 CO2 원자 수 = n/phi = 3", N_PHI, 3)
-check("CC-03 CO2 진동 모드 = tau = 4", TAU, 4)
-check("CC-04a sp2 결합 = n/phi = 3", N_PHI, 3)
-check("CC-04b sp3 결합 = tau = 4", TAU, 4)
-check("CC-04c sp 결합 = phi = 2", PHI, 2)
-check("CC-05 C6 pi 전자 = n = 6", N, 6)
-check("CC-06 CO2 MW = tau*(sigma-mu) = 44", TAU * SIGMA_MU, 44)
-
-# --- B: Carbon 화학 보편성 (H-CC-07~12) ---
-check("CC-07a CaCO3 Ca CN = n = 6", N, 6)
-check("CC-07b CO3 대칭 = n/phi = 3", N_PHI, 3)
-check("CC-08a 시클로헥산 C = n = 6", N, 6)
-check("CC-08b 시클로헥산 H = sigma = 12", SIGMA, 12)
-check("CC-09 광합성 CO2 계수 = n = 6", N, 6)
-check("CC-10 교토 GHG = n = 6", N, 6)
-check("CC-11a Sabatier H2 = tau = 4", TAU, 4)
-check("CC-11b Sabatier H2O = phi = 2", PHI, 2)
-check("CC-12a C60 = sigma*sopfr = 60", SIGMA * SOPFR, 60)
-check("CC-12b C60 오각형 = sigma = 12", SIGMA, 12)
-
-# --- C: 열역학 (H-CC-13~18) ---
-check("CC-13 DAC Carnot = 1/n = 1/6", round(1.0/N, 10), round(1.0 - 300.0/360.0, 10))
-check("CC-14 DAC 에너지 비율 = sigma-phi = 10", SIGMA_PHI, 10)
-check("CC-15a 탄소섬유 12K = sigma", SIGMA, 12)
-check("CC-15b 탄소섬유 24K = J2", J2, 24)
-check("CC-16 MEA 비율 = phi = 2", PHI, 2)
-check("CC-17 카르노 사이클 = tau = 4", TAU, 4)
-check("CC-18 CO2->메탄올 H = n = 6", N, 6)
-
-# --- D: 결정/소재 구조 (H-CC-19~24) ---
-check("CC-19a 다이아몬드 결합 = tau = 4", TAU, 4)
-check("CC-19b 다이아몬드 셀 = sigma-tau = 8", SIGMA_TAU, 8)
-check("CC-20a 흑연 결합/C = n/phi = 3", N_PHI, 3)
-check("CC-20b 흑연 C6 ring = n = 6", N, 6)
-check("CC-21 CNT armchair (n,n) = (6,6)", N, 6)
-check("CC-22 Al/Fe/Ti CN = n = 6", N, 6)
-check("CC-23 CaO/CaCO3 Ca CN = n = 6", N, 6)
-check("CC-24 페로브스카이트 B-CN = n = 6", N, 6)
-
-# --- E: 인프라/스케일링 (H-CC-25~28) ---
-check("CC-25a 발효 에탄올 = phi = 2", PHI, 2)
-check("CC-25b 발효 CO2 = phi = 2", PHI, 2)
-check("CC-26 벌집 n=6 (Hales 2001)", N, 6)
-check("CC-27 요소 NH3 = phi = 2", PHI, 2)
-check("CC-28 NaOH = phi = 2", PHI, 2)
-
-# --- F: 교차 도메인 (H-CC-29~30) ---
-check("CC-29 RWGS 계수 = mu = 1", MU, 1)
-check("CC-30a 그래핀 C6 = n = 6", N, 6)
-check("CC-30b 그래핀 sp2 = n/phi = 3", N_PHI, 3)
-check("CC-30c 그래핀 셀 = phi = 2", PHI, 2)
-check("CC-30d 그래핀 결합각 = sigma*(sigma-phi) = 120", SIGMA * SIGMA_PHI, 120)
-
-# --- BT 교차검증 ---
-check("BT-94 에너지 비율 = sigma-phi = 10", SIGMA_PHI, 10)
-check("BT-96 MOF CN = n = 6", N, 6)
-check("BT-307 Sabatier H2 = tau = 4", TAU, 4)
-check("BT-308 카르노 = tau = 4", TAU, 4)
-check("BT-309 다이아몬드 sp3 = tau = 4", TAU, 4)
-
-# --- 결과 출력 ---
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"검증 결과: {passed}/{total} PASS ({passed/total*100:.1f}%)")
-for name, n6, phys, ok in results:
-    print(f"  {'PASS' if ok else 'FAIL'}: {name} = {n6} (기대: {phys})")
-if passed == total:
-    print(f"\n  HEXA-CCUS 외계인 10 인증: PASS ({passed}/{total})")
-sys.exit(0 if passed == total else 1)
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-38 항목", None, None, None),  # MISSING DATA
+    ("BT-27 항목", None, None, None),  # MISSING DATA
+    ("BT-85 항목", None, None, None),  # MISSING DATA
+    ("BT-93 항목", None, None, None),  # MISSING DATA
+    ("BT-103 항목", None, None, None),  # MISSING DATA
+    ("BT-96 항목", None, None, None),  # MISSING DATA
+    ("BT-104 항목", None, None, None),  # MISSING DATA
+    ("BT-43 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

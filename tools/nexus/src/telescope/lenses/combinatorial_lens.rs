@@ -15,9 +15,9 @@ use crate::telescope::shared_data::SharedData;
 ///   5. Compute a Pareto dominance count: for every pair of unique signatures,
 ///      check if one dominates the other (all dimension-centroids ≤ or ≥).
 ///   6. Output coverage, diversity, compactness, dominance fraction, and per-signature scores.
-pub struct UcombinatorialLens;
+pub struct CombinatorialLens;
 
-impl UcombinatorialLens {
+impl CombinatorialLens {
     /// Number of bins per dimension for discretization.
     const NUM_BINS: usize = 6; // n=6
 
@@ -45,7 +45,7 @@ impl UcombinatorialLens {
     }
 }
 
-impl Lens for UcombinatorialLens {
+impl Lens for CombinatorialLens {
     fn name(&self) -> &str {
         "combinatorial"
     }
@@ -253,7 +253,7 @@ mod tests {
         let n = 6;
         let d = 2;
         let shared = make_shared(&data, n, d);
-        let lens = UcombinatorialLens;
+        let lens = CombinatorialLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty(), "scan must return non-empty result");
@@ -281,7 +281,7 @@ mod tests {
         let n = 4;
         let d = 2;
         let shared = make_shared(&data, n, d);
-        let lens = UcombinatorialLens;
+        let lens = CombinatorialLens;
         let result = lens.scan(&data, n, d, &shared);
 
         assert!(!result.is_empty());
@@ -321,7 +321,7 @@ mod tests {
         let n = 12;
         let d = 3;
         let shared = make_shared(&data, n, d);
-        let lens = UcombinatorialLens;
+        let lens = CombinatorialLens;
         let result = lens.scan(&data, n, d, &shared);
 
         let norm_div = result["diversity"][1];

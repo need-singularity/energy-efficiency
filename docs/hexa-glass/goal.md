@@ -659,124 +659,58 @@ HEXA-NPU x HEXA-1 칩 x Vision AI = **100% n6 EXACT**
 ## 15. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-GLASS n=6 EXACT 검증 (84 파라미터) — 특이점 돌파"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, tau, phi = 6, 12, 4, 2
-J2, sopfr, mu = 24, 5, 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 핵심 항등식
-assert sigma * phi == n * tau == J2, "핵심 항등식 실패"
-
-checks = {
-    # ═══ 센서 스택 (8) ═══
-    "센서 수 = n": (n, 6),
-    "카메라 fps = J2": (J2, 24),
-    "IMU 축 = sigma": (sigma, 12),
-    "마이크 수 = tau": (tau, 4),
-    "카메라 해상도 = sigma-tau MP": (sigma-tau, 8),
-    "LiDAR 거리 = sigma m": (sigma, 12),
-    "IR LED = phi": (phi, 2),
-    "깊이맵 비트 = sigma-tau": (sigma-tau, 8),
-    # ═══ 광학 스택 (8) ═══
-    "FOV = sigma*(sigma-phi)": (sigma*(sigma-phi), 120),
-    "도파관 바운스 = sigma-phi": (sigma-phi, 10),
-    "렌즈 두께 = sopfr mm": (sopfr, 5),
-    "RGB 채널 = n/phi": (n//phi, 3),
-    "도파관 층 = n/phi": (n//phi, 3),
-    "굴절률 ~phi": (phi, 2),
-    "TIR 효율 = 1-1/(sigma-phi)": (1-1/(sigma-phi), 0.9),
-    "출동공 = J2-tau mm": (J2-tau, 20),
-    # ═══ 프로세서 스택 (8) ═══
-    "NPU = sigma^2 TOPS": (sigma**2, 144),
-    "TDP = tau W": (tau, 4),
-    "코어 수 = n": (n, 6),
-    "SRAM = sigma-tau MB": (sigma-tau, 8),
-    "DRAM = sigma GB": (sigma, 12),
-    "양자화 = INT tau": (tau, 4),
-    "LLM = (sopfr-phi)B": (sopfr-phi, 3),
-    "공정 = sopfr-phi nm": (sopfr-phi, 3),
-    # ═══ 디스플레이 스택 (8) ═══
-    "PPI = sigma^2*100": (sigma**2*100, 14400),
-    "색심도 = J2 bit": (J2, 24),
-    "가로 해상도 = 2^sigma": (2**sigma, 4096),
-    "주사율 = sigma*(sigma-phi) Hz": (sigma*(sigma-phi), 120),
-    "디스플 전력 = phi W": (phi, 2),
-    "픽셀 피치 = sopfr um": (sopfr, 5),
-    "밝기(실내) = sigma*(sigma-phi) nits": (sigma*(sigma-phi), 120),
-    "HDR 피크 = (sigma-phi)^tau nits": ((sigma-phi)**tau, 10000),
-    # ═══ AI 엔진 스택 (8) ═══
-    "인식 물체 = sigma^2": (sigma**2, 144),
-    "NeRF 레이어 = sigma-phi": (sigma-phi, 10),
-    "3DGS SH = n/phi": (n//phi, 3),
-    "NeRF 폭 = 2^(sigma-tau)": (2**(sigma-tau), 256),
-    "번역 언어 = sigma*sopfr": (sigma*sopfr, 60),
-    "오디오 코덱 = sigma*tau kHz": (sigma*tau, 48),
-    "추론 top-p = 1-1/(J2-tau)": (1-1/(J2-tau), 0.95),
-    "감정 클래스 = n (Ekman)": (n, 6),
-    # ═══ 통신 스택 (6) ═══
-    "BLE 채널 = sigma": (sigma, 12),
-    "WiFi 대역 = n GHz": (n, 6),
-    "UWB 정밀도 = sigma-phi cm": (sigma-phi, 10),
-    "5G = sigma*tau GHz": (sigma*tau, 48),
-    "암호화 = AES-2^(sigma-sopfr)": (2**(sigma-sopfr), 128),
-    "지연 = mu ms": (mu, 1),
-    # ═══ 시스템/인체 스택 (10) ═══
-    "무게 = n*sopfr g": (n*sopfr, 30),
-    "배터리 = sigma 시간": (sigma, 12),
-    "대기시간 = J2 시간": (J2, 24),
-    "총 전력 = n+mu W": (n+mu, 7),
-    "PUE = sigma/(sigma-phi)": (sigma/(sigma-phi), 1.2),
-    "Diamond Z = n": (n, 6),
-    "SLAM = sigma fps": (sigma, 12),
-    "시선추적 = sigma*(sigma-phi) Hz": (sigma*(sigma-phi), 120),
-    "프레임 폭 = J2-tau mm": (J2-tau, 20),
-    "안경다리 폭 = sigma-mu mm": (sigma-mu, 11),
-    # ═══ 물리한계 (14) ═══
-    "시야각 한계 = sigma*sopfr*n/phi=180": (sigma*sopfr*(n//phi), 180),
-    "망막 분해능 = sigma*(sigma-phi)=120": (sigma*(sigma-phi), 120),
-    "VOR 지연 = tau=4ms": (tau, 4),
-    "색각 채널 = n/phi=3": (n//phi, 3),
-    "IPD 중심 = sigma*sopfr=60mm": (sigma*sopfr, 60),
-    "MicroLED 피치 = sopfr=5um": (sopfr, 5),
-    "J2=24bit 열잡음 한계": (J2, 24),
-    "열방출 TDP = tau=4W": (tau, 4),
-    "나이퀴스트 시선 = sigma*(sigma-phi)=120Hz": (sigma*(sigma-phi), 120),
-    "도파관 두께 = sopfr=5mm": (sopfr, 5),
-    "SLAM 최소 = sigma=12fps": (sigma, 12),
-    "오디오 나이퀴스트 = sigma*tau=48kHz": (sigma*tau, 48),
-    "통신 지연 한계 = mu=1ms": (mu, 1),
-    "플리커 융합 = sigma*sopfr=60Hz": (sigma*sopfr, 60),
-    # ═══ 산업 검증 (10) ═══
-    "AVP R1 = sigma ms": (sigma, 12),
-    "AVP 카메라 수 = sigma": (sigma, 12),
-    "AVP passthrough = J2 fps": (J2, 24),
-    "AVP 무게 = sigma*sopfr*(sigma-phi)g": (sigma*sopfr*(sigma-phi), 600),
-    "Meta 배터리 = tau 시간": (tau, 4),
-    "Meta 카메라 = sigma MP": (sigma, 12),
-    "GG 무게 = n^phi g": (n**phi, 36),
-    "GG 카메라 = sopfr MP": (sopfr, 5),
-    "HoloLens FOV = sigma*tau+tau": (sigma*tau+tau, 52),
-    "HoloLens ToF = sigma-phi m": (sigma-phi, 10),
-    # ═══ 극한 상수 (4) ═══
-    "OLED 수명 = (sigma-phi)^tau": ((sigma-phi)**tau, 10000),
-    "MicroLED QE = 1-1/(J2-tau)": (1-1/(J2-tau), 0.95),
-    "IPD 평균 = sigma*sopfr+n/phi": (sigma*sopfr+n//phi, 63),
-    "손 관절 = sopfr^phi": (sopfr**phi, 25),
-}
-
-exact = 0
-for name, (got, expected) in checks.items():
-    if abs(got - expected) < 1e-9:
-        exact += 1
-        print(f"  PASS  {name}: {got} == {expected}")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-66 항목", None, None, None),  # MISSING DATA
+    ("BT-71 항목", None, None, None),  # MISSING DATA
+    ("BT-327 항목", None, None, None),  # MISSING DATA
+    ("BT-189 항목", None, None, None),  # MISSING DATA
+    ("BT-53 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("BT-42 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        print(f"  FAIL  {name}: {got} != {expected}")
-
-total = len(checks)
-print(f"\n결과: {exact}/{total} EXACT ({100*exact/total:.1f}%)")
-assert exact == total, f"EXACT {exact}/{total} -- 미달"
-print("HEXA-GLASS 전체 검증 PASS — 특이점 돌파 완료")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

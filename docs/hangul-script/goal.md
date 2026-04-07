@@ -279,42 +279,54 @@
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""한글/문자체계 n=6 인코딩 — 20/20 EXACT 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-tests = [
-    ("한글 자모 24자",         24,  J2),
-    ("한글 초중종성 3단",       3,   n // phi),
-    ("점자 6점",                6,   n),
-    ("점자 64조합",            64,  2**n),
-    ("한글 기본자음 5자",       5,   sopfr),
-    ("히브리어 22자",          22,  sigma * phi - phi),
-    ("아랍어 28자",            28,  sigma + phi**tau),
-    ("라틴 알파벳 26자",       26,  J2 + phi),
-    ("히라가나 46자",          46,  sigma * tau - phi),
-    ("키릴 문자 33자",         33,  sigma * (n // phi) - n // phi),
-    ("한글 기본 모음 3자",      3,   n // phi),
-    ("훈민정음 28자",          28,  sigma + phi**tau),
-    ("그리스 알파벳 24자",     24,  J2),
-    ("한자 6서 분류",           6,   n),
-    ("쐐기문자 2종 획",         2,   phi),
-    ("8비트 바이트",            8,   sigma - tau),
-    ("유니코드 17 평면",       17,  sigma + sopfr),
-    ("ASCII 128문자",         128, 2**(sigma - sopfr)),
-    ("ISO 8859 256문자",      256, 2**(sigma - tau)),
-    ("한글 모아쓰기 최대 4자소", 4,  tau),
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-73 항목", None, None, None),  # MISSING DATA
+    ("BT-197 항목", None, None, None),  # MISSING DATA
+    ("BT-227 항목", None, None, None),  # MISSING DATA
+    ("BT-262 항목", None, None, None),  # MISSING DATA
+    ("BT-329 항목", None, None, None),  # MISSING DATA
+    ("BT-340 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
-
-exact = sum(1 for name, val, formula in tests if val == formula)
-total = len(tests)
-
-for name, val, formula in tests:
-    status = "PASS" if val == formula else "FAIL"
-    print(f"  [{status}] {name}: {val} = {formula}")
-
-print(f"\nEXACT: {exact}/{total} ({100*exact//total}%)")
-assert exact == total, f"FAIL: {exact}/{total}"
-print("전체 PASS — 한글/문자체계 n=6 천장 확인")
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

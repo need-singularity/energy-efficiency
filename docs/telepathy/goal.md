@@ -349,119 +349,58 @@ candidates.consent = ["none","opt-in","biometric","multi-factor","legal-signed",
 ## 10. Python 검증 코드 (표준 라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-TELEPATHY n=6 산술 검증 — 표준 라이브러리만."""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def close(a, b, tol=1e-3):
-    if b == 0: return abs(a) < tol
-    return abs(a-b)/abs(b) < tol
-
-checks = []
-def C(name, val, target):
-    ok = close(val, target)
-    checks.append((name, val, target, "EXACT" if ok else "FAIL"))
-    return ok
-
-# Core identity
-C("sigma*phi=n*tau", sigma*phi, n*tau)
-C("sigma-phi=10",    sigma-phi, 10)
-C("sigma-tau=8",     sigma-tau, 8)
-C("sigma*tau=48",    sigma*tau, 48)
-C("sigma*J2=288",    sigma*J2,  288)
-C("sigma^2=144",     sigma**2,  144)
-C("phi^tau=16",      phi**tau,  16)
-C("2^sigma=4096",    2**sigma,  4096)
-C("sopfr=5",         2+3,       sopfr)
-
-# Bandwidth
-C("bw=144Mbps",      sigma**2,     144)
-C("bw source",       n*J2,         sigma**2)      # 6*24=144
-C("symbols/s=144",   sigma**2,     144)
-C("channels=8",      sigma-tau,    8)
-C("BW/ch=18Mbps",    sigma**2//(sigma-tau), 18)
-C("sample rate=24Hz",J2,           24)
-
-# Latency
-C("latency=1ms=mu",  mu,           1)
-C("5G speedup=10x",  10//mu,       sigma-phi)
-C("brain rxn ms=250",250//(sigma-phi), 25)        # 250/10
-C("latency bound",   mu,           mu)
-
-# Sensory channels
-C("senses=8=σ-τ",    sigma-tau,    8)
-C("basic senses=6",  n,            6)             # +2 extended
-C("extended=2=φ",    phi,          2)
-
-# Quantum channel
-C("qubit pairs=4096",2**sigma,     4096)
-C("entangle stack",  2**sigma,     4096)
-C("BB84 basis=4",    tau,          4)             # 4 quantum states
-C("AES-256 key bits",2**(sigma-tau), 256)
-C("AES-128 key bits",2**(sigma-sopfr), 128)
-C("AES key=2^8=256", 2**(sigma-tau), 256)
-
-# Crypto
-C("AES rounds",      sigma+phi,    n*phi+phi)     # 14 rounds AES-256
-C("AES rounds=14",   sigma+phi,    14)
-C("rounds n=6",      n,            n)
-C("hash bits=256",   2**(sigma-tau), 256)
-C("auth levels=3",   n//phi,       3)
-
-# Protocol
-C("OSI=7",           sigma-sopfr,  7)
-C("TCP layers=4",    tau,          4)
-C("stack depth=6",   n,            6)
-
-# Synchrony
-C("sync=0.632",      round(1-1/math.e,3), 0.632)
-C("sync bound",      round(1-1/math.e,4), 0.6321)
-
-# Time
-C("refresh=24h",     J2,           24)
-C("brain clock Hz",  sigma*J2*1e6,sigma*J2*1e6)   # 288MHz
-C("frame rate=144",  sigma**2,     144)
-
-# BCI
-C("BCI ch=1.44M",    sigma**2*10**4,1440000)
-C("electrodes=144",  sigma**2,     144)
-C("array=12x12",     sigma*sigma,  144)
-
-# Errors
-C("BER=10^-10",      -(sigma-phi), -10)
-C("SNR dB=48",       sigma*tau,    48)
-
-# Energy
-C("power W=12",      sigma,        12)
-C("battery h=24",    J2,           24)
-C("TDP W=48",        sigma*tau,    48)
-
-# Ethics
-C("consent=3lvl",    n//phi,       3)
-C("moral foundations=6", n,        6)             # BT-264
-
-# Language
-C("language=24ch",   J2,           24)            # parallel semantic channels
-C("semantics=288",   sigma*J2,     288)
-C("ph/gramm ratio",  tau//phi,     2)             # ~2
-
-# Extras
-C("timeline Mk.I=2",  2030-2028,   phi)
-C("Mk.III gap=22y",   2050-2028,   sigma+sigma-phi)
-C("Mk.V gap=72y",     2100-2028,   sigma*n)       # 72
-
-# Count
-exact = sum(1 for c in checks if c[3]=="EXACT")
-total = len(checks)
-pct = 100*exact/total
-print(f"HEXA-TELEPATHY Verification: {exact}/{total} EXACT ({pct:.1f}%)")
-for name,v,t,s in checks:
-    mark = "[OK]" if s=="EXACT" else "[!!]"
-    print(f"  {mark} {name}: {v} vs {t}")
-assert pct >= 90, f"FAIL: {pct:.1f}% < 90%"
-print("PASS: 90%+ EXACT achieved")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-64 항목", None, None, None),  # MISSING DATA
+    ("BT-114 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-181 항목", None, None, None),  # MISSING DATA
+    ("BT-197 항목", None, None, None),  # MISSING DATA
+    ("BT-340 항목", None, None, None),  # MISSING DATA
+    ("BT-263 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

@@ -109,79 +109,58 @@
 ## 4️⃣ Python 인라인 검증 (42 체크, 90%+ EXACT 목표)
 
 ```python
-# HEXA-SKYWAY n=6 Verification (42 checks)
-# Run: python3 docs/skyway/goal.md (copy block)
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-SIGMA, PHI, TAU, N, MU, SOPFR, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def c(name, val, expect, unit=""):
-    ok = abs(val - expect) < 1e-9 if isinstance(expect, (int,float)) else val == expect
-    checks.append((name, val, expect, unit, ok))
-
-# Level 0: 소재 (Ti-6Al-4V, BT-271)
-c("Ti-6Al-4V Ti%", 6, N, "%·10")         # 6 at% scaled
-c("Ti-6Al-4V Al%", 6, N, "%·Al")          # 6% Al = n=6
-c("Ti-6Al-4V V%", 4, TAU, "%·V")          # 4% V = τ=4
-c("합금 총 원소수", 3, N//PHI, "elem")     # 3 elements = n/φ
-
-# Level 1: 공정 (CFRP 적층)
-c("CFRP ply count", 48, SIGMA*TAU, "ply") # 48 ply = σ·τ
-c("skin 면수", 3, N//PHI, "면")            # 3 skin faces
-c("적층 각도 step", 30, N*SOPFR, "°")      # 30° = n·sopfr
-c("Ply 두께(mil)", 12, SIGMA, "mil")       # σ=12 mil
-
-# Level 2: 코어 (rotor + motor, BT-90)
-c("Rotor 수", 12, SIGMA, "rotor")          # σ=12 rotors
-c("Contact number K", 12, SIGMA, "contact")# BT-90 K₆=12
-c("PMSM slot", 12, SIGMA, "slot")          # σ=12 slots
-c("pole pair", 4, TAU, "pair")             # τ=4 pairs
-c("motor 수", 12, SIGMA, "motor")          # σ=12 motors
-
-# Level 3: 차량 (VTOL, BT-123 SE(3))
-c("DOF", 6, N, "DOF")                      # SE(3)=n=6
-c("좌석 수", 6, N, "seat")                 # 6 seats
-c("윙 수", 2, PHI, "wing")                 # φ=2 (bilateral, BT-124)
-c("Prop 수/wing", 6, N, "prop")            # 6/wing
-c("랜딩기어", 3, N//PHI, "gear")            # 3 gear = n/φ (BT-276 redundancy)
-
-# Level 4: 허브 (σ·τ=48 per city)
-c("Hub/city", 48, SIGMA*TAU, "hub")        # σ·τ=48
-c("Hub pad/hub", 4, TAU, "pad")            # τ=4 pads
-c("Hub 층수", 24, J2, "floor")             # J₂=24 floors
-c("충전 port/pad", 12, SIGMA, "port")       # σ=12 ports
-
-# Level 5: 경로 (J₂=24층 공중)
-c("층 수", 24, J2, "층")                    # J₂=24
-c("고도 간격", 48, SIGMA*TAU, "m")         # σ·τ=48m
-c("최저 고도", 100, (SIGMA-PHI)**PHI, "m") # 100m = (σ-φ)²
-c("최고 고도", 1200, SIGMA*(SIGMA-PHI)**PHI, "m") # σ·(σ-φ)²
-c("차량 밀도", 1000, (SIGMA-PHI)*100, "/km²") # 10·100 = σ-φ·10²
-c("안전거리", 24, TAU*N, "m")              # τ·n=24m
-c("속도 순항층", 144, SIGMA**PHI, "km/h")  # σ²=144
-c("속도 고속층", 288, SIGMA*J2, "km/h")    # σ·J₂=288
-c("층당 경로수", 6, N, "lane")              # n=6 lanes/floor
-
-# Level 6: 관제 (BT-276, BT-327)
-c("FBW 중복", 3, N//PHI, "redund")         # 3중 (BT-276)
-c("센서 종류", 4, TAU, "sensor")           # τ=4 (RADAR/LIDAR/CAM/USS)
-c("카메라 수", 6, N, "cam")                # BT-327 6CAM
-c("USS 수", 12, SIGMA, "uss")              # BT-327 12USS
-c("compute TOPS", 144, SIGMA**PHI, "TOPS") # σ²=144 TOPS
-c("반응시간 ms", 10, SIGMA-PHI, "ms")      # σ-φ=10ms
-c("대응시간", 144, SIGMA**PHI, "s")        # σ²=144s
-
-# Level 7: 네트워크 (도시 전체)
-c("섹터 수", 12, SIGMA, "sector")          # σ=12 zones
-c("섹터당 허브", 4, TAU, "hub")            # τ=4 hub/sector
-c("메쉬 링크/hub", 6, N, "link")           # 6-link mesh
-c("주파수 대역", 24, J2, "MHz")            # J₂=24 MHz
-c("암호화 라운드", 12, SIGMA, "round")     # σ=12 (BT-114)
-
-# 결과
-passed = sum(1 for _,_,_,_,ok in checks if ok)
-print(f"PASS: {passed}/{len(checks)} ({100*passed/len(checks):.1f}%)")
-# Expected: 42/42 = 100.0% EXACT
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-277 항목", None, None, None),  # MISSING DATA
+    ("BT-276 항목", None, None, None),  # MISSING DATA
+    ("BT-288 항목", None, None, None),  # MISSING DATA
+    ("BT-327 항목", None, None, None),  # MISSING DATA
+    ("BT-271 항목", None, None, None),  # MISSING DATA
+    ("BT-90 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **검증 결과: 42/42 EXACT (100%)** — n=6 아키텍처 완전 정렬

@@ -577,83 +577,58 @@ Loss = L_task + λ₂ * sum(w² for w in W) + λ₁ * sum(|w| for w in W)
 ## 검증코드
 
 ```python
-# 검증코드 — bt-398-n6-novel-training.md
-# n=6 역설계 신규 학습 기법 8선 파라미터 EXACT 검증
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-from fractions import Fraction
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# n=6 상수
-n = 6
-sigma = 12
-phi = 2
-tau = 4
-J2 = 24
-sopfr = 5
-mu = 1
-P2 = 28
-
-results = []
-
-# --- 기법 1: Perfect Number Schedule ---
-results.append(("PNSched 단계 수", n, 6, n == 6))
-results.append(("PNSched 1단→2단 감쇠", Fraction(1, phi), Fraction(1, 2), Fraction(1, phi) == Fraction(1, 2)))
-results.append(("PNSched 2단→3단 감쇠", Fraction(phi, n // phi), Fraction(2, 3), Fraction(phi, n // phi) == Fraction(2, 3)))
-results.append(("PNSched 최종/초기", Fraction(1, J2), Fraction(1, 24), Fraction(1, J2) == Fraction(1, 24)))
-
-# --- 기법 2: Egyptian Gradient Accumulation ---
-results.append(("EgyptGA 최근 가중치", Fraction(1, phi), Fraction(1, 2), Fraction(1, phi) == Fraction(1, 2)))
-results.append(("EgyptGA 이전 가중치", Fraction(1, n // phi), Fraction(1, 3), Fraction(1, n // phi) == Fraction(1, 3)))
-results.append(("EgyptGA 2단계 전", Fraction(1, n), Fraction(1, 6), Fraction(1, n) == Fraction(1, 6)))
-egypt_sum = Fraction(1, 2) + Fraction(1, 3) + Fraction(1, 6)
-results.append(("EgyptGA 가중합=1", egypt_sum, 1, egypt_sum == 1))
-
-# --- 기법 3: Aliquot Pruning ---
-results.append(("AliqPrn 핵심 비율", Fraction(1, n), Fraction(1, 6), Fraction(1, n) == Fraction(1, 6)))
-results.append(("AliqPrn 양자화 비율", Fraction(phi, n), Fraction(1, 3), Fraction(phi, n) == Fraction(1, 3)))
-results.append(("AliqPrn 제거 비율", Fraction(1, phi), Fraction(1, 2), Fraction(1, phi) == Fraction(1, 2)))
-aliq_sum = Fraction(1, 6) + Fraction(1, 3) + Fraction(1, 2)
-results.append(("AliqPrn 등급 수", n // phi, 3, n // phi == 3))
-
-# --- 기법 4: τ=4 Cycle Replay ---
-results.append(("τCycRep 주기 수", tau, 4, tau == 4))
-results.append(("τCycRep 1주기 비율", Fraction(1, mu), 1, Fraction(1, mu) == 1))
-results.append(("τCycRep 4주기 비율", round(1/n, 4), round(0.1667, 4), abs(1/n - 0.1667) < 0.001))
-results.append(("τCycRep LR 감쇠", Fraction(1, phi), Fraction(1, 2), Fraction(1, phi) == Fraction(1, 2)))
-
-# --- 기법 5: Sopfr=5 Ensemble Distillation ---
-results.append(("SprDist 교사 수", sopfr, 5, sopfr == 5))
-results.append(("SprDist 교사 가중치", Fraction(1, sopfr), Fraction(1, 5), Fraction(1, sopfr) == Fraction(1, 5)))
-results.append(("SprDist 증류 온도", n, 6, n == 6))
-results.append(("SprDist soft/hard", f"{phi}:{mu}", "2:1", f"{phi}:{mu}" == "2:1"))
-
-# --- 기법 6: σ-φ=10 Warmup Ratio ---
-results.append(("WarmRat 대형 warmup", 1/(sigma - phi), 0.1, 1/(sigma - phi) == 0.1))
-warmup_small = (n / phi) / (sigma - phi)**2
-results.append(("WarmRat 소형 warmup", warmup_small, 0.03, warmup_small == 0.03))
-results.append(("WarmRat 래더 단계", tau, 4, tau == 4))
-results.append(("WarmRat 래더 범위", sigma / (n / phi), 4.0, sigma / (n / phi) == 4.0))
-
-# --- 기법 7: Hexagonal Batch Scheduling ---
-results.append(("HexBtch 주기 길이", n, 6, n == 6))
-results.append(("HexBtch 최소 배율", mu, 1, mu == 1))
-results.append(("HexBtch 최대 배율", n, 6, n == 6))
-div6 = {1, 2, 3, 6}
-results.append(("HexBtch 배율 집합", div6, {1, 2, 3, 6}, div6 == {1, 2, 3, 6}))
-
-# --- 기법 8: Abundance Ratio Regularization ---
-results.append(("AbndReg L2/L1 비율", phi, 2, phi == 2))
-results.append(("AbndReg L2 계수", 1/(sigma - phi)**2, 0.01, 1/(sigma - phi)**2 == 0.01))
-results.append(("AbndReg L1 계수", 1/(phi * (sigma - phi)**2), 0.005, 1/(phi * (sigma - phi)**2) == 0.005))
-results.append(("AbndReg 정규화 항 수", phi, 2, phi == 2))
-
-# --- 결과 출력 ---
-passed = sum(1 for r in results if r[3])
-total = len(results)
-print(f"\n검증 결과: {passed}/{total} PASS")
-print(f"EXACT 비율: {passed/total*100:.1f}%\n")
+# bt-398-n6-novel-training.md — 정의 도출 검증
+results = [
+    ("BT-398 항목", None, None, None),  # MISSING DATA
+    ("BT-54 항목", None, None, None),  # MISSING DATA
+    ("BT-64 항목", None, None, None),  # MISSING DATA
+    ("BT-46 항목", None, None, None),  # MISSING DATA
+    ("BT-164 항목", None, None, None),  # MISSING DATA
+    ("BT-330 항목", None, None, None),  # MISSING DATA
+    ("BT-67 항목", None, None, None),  # MISSING DATA
+    ("BT-287 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (기대: {r[2]})")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

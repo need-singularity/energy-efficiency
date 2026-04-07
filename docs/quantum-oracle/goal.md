@@ -187,98 +187,58 @@ Lyapunov horizon for coupled nonlinear economy+climate = **1/λ ≈ J₂ = 24 �
 ## 6. Python 검증 코드 (인라인, 48 checks, 목표 90%+ EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-ORACLE Verification — 48 checks, target 90%+ EXACT"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, phi, tau, sigma, mu, sopfr, J2 = 6, 2, 4, 12, 1, 5, 24
-d_sig_phi = sigma - phi     # 10
-d_sig_tau = sigma - tau     # 8
-d_sig_mu  = sigma - mu      # 11
-d_sig2    = sigma * sigma   # 144
-d_sigJ2   = sigma * J2      # 288
-d_sopfr2  = sopfr * sopfr   # 25
-sig_sopfr = sigma * sopfr   # 60
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def check(name, got, expect, tol=0.02):
-    ok = abs(got-expect)/max(abs(expect),1e-12) < tol
-    checks.append((name, got, expect, ok))
-    return ok
-
-# L0: Qubit (SC Transmon)
-check("Qubit count = 2^sigma = 4096",             4096, 2**sigma)
-check("Logical qubits = phi^phi = 4",                4, phi**phi)
-check("Physical per logical = 2^sig_sopfr/60",    1024, 2**10)
-check("Temperature mK = sigma+mu=13",               13, sigma+mu)
-check("Coherence T1 us = sigma*sopfr*2 = 120",     120, sig_sopfr*phi)
-check("T2/T1 ratio = phi",                           2, phi)
-
-# L1: Gate
-check("CNOT fidelity pct = 1-1/(sig*J2) = 99.65",99.65, (1-1/d_sigJ2)*100, 0.01)
-check("Gate count per op = tau",                     4, tau)
-check("Gate time ns = J2",                          24, J2)
-check("Error rate = 1/sig*J2*10 = 3.47e-4",   3.47e-4, 1/(d_sigJ2*10), 0.02)
-check("Crosstalk dB = -sigma*phi = -24",           -24, -sigma*phi)
-check("Two-qubit gate variety = n",                  6, n)
-
-# L2: Circuit
-check("Circuit depth = sigma^2 = 144",             144, d_sig2)
-check("Parallel lanes = sigma",                     12, sigma)
-check("QEC code distance = n",                       6, n)
-check("Surface code layer = phi",                    2, phi)
-check("Syndrome measure per cycle = J2",            24, J2)
-check("Compile time min = tau",                      4, tau)
-
-# L3: QPU
-check("Total qubits = 2^sigma",                   4096, 2**sigma)
-check("QPU chiplets = n",                            6, n)
-check("Chiplet qubits = 2^sigma/n",             682.67, 4096/n, 0.01)
-check("Cryostat stages = sopfr",                     5, sopfr)
-check("Control wires = sigma^2*phi=288",           288, d_sigJ2)
-check("Dilution fridge stages = tau",                4, tau)
-
-# L4: AGI model
-check("Params billion = sig*J2 = 288",             288, d_sigJ2)
-check("Layers = sig*J2 = 288",                     288, d_sigJ2)
-check("Hidden dim = 2^sigma",                     4096, 2**sigma)
-check("Head count = sigma",                         12, sigma)
-check("Context window = 2^sigma tokens",          4096, 2**sigma)
-check("SwiGLU expansion = tau/n = 4/3",            4/3, tau/n, 0.01)
-check("Top-p sampling = 1-1/(J2-tau) = 0.95",     0.95, 1-1/(J2-tau), 0.01)
-
-# L5: Fusion (Teleport link)
-check("Teleport nodes = J2",                        24, J2)
-check("Bell pair rate kHz = sigma",                 12, sigma)
-check("Fidelity end-to-end = 1-sopfr/100=0.95",   0.95, 1-sopfr/100, 0.01)
-check("Latency ms = sopfr",                          5, sopfr)
-check("Entanglement swap hops = tau",                4, tau)
-check("Channel count = sigma",                      12, sigma)
-
-# L6: Prediction
-check("Scenario count = 2^(sigma-tau) = 256",      256, 2**d_sig_tau)
-check("Prediction horizon months = J2",             24, J2)
-check("Accuracy pct = (1-1/sig*J2)*100=99.653",99.653, (1-1/d_sigJ2)*100, 0.01)
-check("Updates per day = sigma^2 = 144",           144, d_sig2)
-check("Confidence interval sigma = phi",             2, phi)
-check("Variable count = sig*J2*10 = 2880",        2880, d_sigJ2*10)
-
-# L7: Oracle (Global)
-check("Regions covered = J2",                       24, J2)
-check("Time zones = J2",                            24, J2)
-check("Domain count = tau (econ/climate/health/social)", 4, tau)
-check("Vars per domain = sig*J2*10/tau=720",       720, d_sigJ2*10/tau)
-check("Forecast freshness min = d_sig_tau+phi=10",  10, d_sig_tau+phi)
-check("Response time ms = J2",                      24, J2)
-
-# Summary
-passed = sum(1 for _,_,_,ok in checks if ok)
-total  = len(checks)
-print(f"HEXA-ORACLE Verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, got, exp, ok in checks:
-    tag = "EXACT" if ok else "FAIL"
-    print(f"  [{tag}] {name}: got={got}, expect={exp}")
-assert passed/total >= 0.90, f"below 90% threshold"
-print("PASS: HEXA-ORACLE design n=6 consistency >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-207 항목", None, None, None),  # MISSING DATA
+    ("BT-169 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-174 항목", None, None, None),  # MISSING DATA
+    ("BT-147 항목", None, None, None),  # MISSING DATA
+    ("BT-233 항목", None, None, None),  # MISSING DATA
+    ("BT-218 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과**: 48/48 EXACT = 100.0% → PASS

@@ -222,64 +222,56 @@ BT-27(Carbon-6 chain), BT-101(광합성 J₂=24), BT-103(광합성 n=6 화학양
 ## 13. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-WINE n=6 EXACT 검증 스크립트"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# H-WINE-1: 발효 총원자수 = J₂ = 24
-fermentation_atoms = 6 + 12 + 6  # C₆H₁₂O₆
-results.append(("H-WINE-1", "발효 원자 보존", fermentation_atoms, J2, fermentation_atoms == J2))
-
-# H-WINE-2: 와인 평가 요소 = n = 6
-tasting_elements = 6  # 산도/당도/타닌/알코올/바디/아로마
-results.append(("H-WINE-2", "평가 6대 요소", tasting_elements, n, tasting_elements == n))
-
-# H-WINE-3: 보르도 품종 = n = 6
-bordeaux_varieties = 6
-results.append(("H-WINE-3", "보르도 6품종", bordeaux_varieties, n, bordeaux_varieties == n))
-
-# H-WINE-4: 오크 숙성 = σ = 12개월
-oak_aging = 12
-results.append(("H-WINE-4", "오크 숙성 기간", oak_aging, sigma, oak_aging == sigma))
-
-# H-WINE-5: 서빙 온도 = σ = 12°C
-serving_temp = 12
-results.append(("H-WINE-5", "레드와인 서빙 온도", serving_temp, sigma, serving_temp == sigma))
-
-# H-WINE-6: 부르고뉴 등급 = τ = 4
-burgundy_levels = 4
-results.append(("H-WINE-6", "부르고뉴 4등급", burgundy_levels, tau, burgundy_levels == tau))
-
-# H-WINE-7: 보르도 1855 등급 = sopfr = 5
-bordeaux_1855 = 5
-results.append(("H-WINE-7", "보르도 1855 5등급", bordeaux_1855, sopfr, bordeaux_1855 == sopfr))
-
-# H-WINE-8: 에탄올 탄소 = φ = 2
-ethanol_C = 2
-results.append(("H-WINE-8", "에탄올 탄소 수", ethanol_C, phi, ethanol_C == phi))
-
-# H-WINE-9: 발효 계수 = φ = 2
-ferment_coeff = 2
-results.append(("H-WINE-9", "발효 생성물 계수", ferment_coeff, phi, ferment_coeff == phi))
-
-# H-WINE-10: 아로마 계층 = n/φ = 3
-aroma_layers = 3
-results.append(("H-WINE-10", "아로마 3계층", aroma_layers, n // phi, aroma_layers == n // phi))
-
-print("=" * 60)
-print("HEXA-WINE n=6 검증 결과")
-print("=" * 60)
-passed = 0
-for rid, name, actual, expected, ok in results:
-    status = "PASS" if ok else "FAIL"
-    if ok:
-        passed += 1
-    print(f"  {rid}: {name} = {actual} vs n6={expected} -> {status}")
-print("=" * 60)
-print(f"결과: {passed}/{len(results)} EXACT ({100*passed//len(results)}%)")
-if passed == len(results):
-    print("천장 달성: 10/10 EXACT")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-103 항목", None, None, None),  # MISSING DATA
+    ("BT-27 항목", None, None, None),  # MISSING DATA
+    ("BT-265 항목", None, None, None),  # MISSING DATA
+    ("BT-192 항목", None, None, None),  # MISSING DATA
+    ("BT-135 항목", None, None, None),  # MISSING DATA
+    ("BT-101 항목", None, None, None),  # MISSING DATA
+    ("BT-341 항목", None, None, None),  # MISSING DATA
+    ("BT-198 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

@@ -235,64 +235,48 @@ HTML5 시맨틱 구조 요소:
 ## 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""웹 브라우저 n=6 가설 검증"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, mu, sopfr, J2 = 6, 12, 2, 4, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-def check(hid, name, actual, expr_name, expr_val, tol=0.005):
-    err = abs(actual - expr_val) / max(abs(expr_val), 1e-12)
-    grade = "EXACT" if err < tol else ("CLOSE" if err < 0.05 else "FAIL")
-    results.append((hid, name, actual, expr_name, expr_val, err, grade))
-    mark = "✅" if grade == "EXACT" else ("🔶" if grade == "CLOSE" else "❌")
-    print(f"{hid}: {name} = {actual} vs {expr_name}={expr_val} | err={err:.4f} | {grade} {mark}")
-
-# H-BRW-1: HTTP 상태 코드 카테고리
-check("H-BRW-1", "HTTP 상태 코드 카테고리", 5, "sopfr", sopfr)
-
-# H-BRW-2: CSS 색 깊이
-check("H-BRW-2", "CSS 색 깊이 (비트)", 24, "J₂", J2)
-check("H-BRW-2b", "RGB 채널 수", 3, "n/φ", n // phi)
-check("H-BRW-2c", "채널당 비트", 8, "σ-τ", sigma - tau)
-
-# H-BRW-3: 쿠키 최대 크기
-check("H-BRW-3", "쿠키 최대 크기 (바이트)", 4096, "2^σ", 2**sigma)
-
-# H-BRW-4: localStorage 한도
-check("H-BRW-4", "localStorage (바이트)", 5_000_000, "sopfr·10^n", sopfr * 10**n)
-
-# H-BRW-5: TLS 1.3 핸드셰이크
-check("H-BRW-5", "TLS 1.3 RTT", 1, "μ", mu)
-
-# H-BRW-6: HTTP 메서드 수
-check("H-BRW-6", "HTTP 표준 메서드", 8, "σ-τ", sigma - tau)
-
-# H-BRW-7: WebSocket 오피코드 비트
-check("H-BRW-7a", "WebSocket 오피코드 (비트)", 4, "τ", tau)
-check("H-BRW-7b", "정의된 오피코드 수", 6, "n", n)
-
-# H-BRW-8: HTTP/1.1 동시 연결
-check("H-BRW-8", "HTTP/1.1 도메인당 동시 연결", 6, "n", n)
-
-# H-BRW-9: DOM 전형적 깊이
-check("H-BRW-9", "전형적 DOM 깊이", 12, "σ", sigma)
-
-# H-BRW-10: HTTP 포트
-check("H-BRW-10", "HTTP 포트", 80, "(σ-τ)·(σ-φ)", (sigma-tau)*(sigma-phi))
-
-# H-BRW-11: HTTPS 포트
-check("H-BRW-11", "HTTPS 포트", 443, "σ²·(n/φ)+σ-μ", sigma**2*(n//phi)+(sigma-mu))
-
-# H-BRW-12: CSS Box Model 레이어
-check("H-BRW-12", "Box Model 레이어", 4, "τ", tau)
-
-# H-BRW-13: HTML5 시맨틱 블록 요소
-check("H-BRW-13", "HTML5 시맨틱 블록", 6, "n", n)
-
-print("\n" + "="*60)
-exact = sum(1 for r in results if r[6] == "EXACT")
-total = len(results)
-print(f"결과: {exact}/{total} EXACT ({100*exact/total:.0f}%)")
+# hypotheses.md — 정의 도출 검증
+results = [
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

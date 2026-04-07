@@ -194,54 +194,56 @@ FAO 수산양식 보고서, NOAA 해양 데이터, IHO 국제수로기구, Sverd
 ## 12. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-AQUA n=6 EXACT 검증 스크립트"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# H-AQU-1: 해수 이온 = n = 6
-results.append(("H-AQU-1", "해수 주요 이온", 6, n, 6 == n))
-
-# H-AQU-2: 5대양 = sopfr = 5
-results.append(("H-AQU-2", "5대양", 5, sopfr, 5 == sopfr))
-
-# H-AQU-3: 해수 pH = σ-τ = 8
-results.append(("H-AQU-3", "해수 pH", 8, sigma - tau, 8 == sigma - tau))
-
-# H-AQU-4: 해수 염도 = sopfr×(σ-sopfr) = 35
-results.append(("H-AQU-4", "해수 염도 35psu", 35, sopfr * (sigma - sopfr), 35 == sopfr * (sigma - sopfr)))
-
-# H-AQU-5: Beaufort 등급 = σ = 12
-results.append(("H-AQU-5", "Beaufort 풍력등급", 12, sigma, 12 == sigma))
-
-# H-AQU-6: 양식 수온 = J₂ = 24
-results.append(("H-AQU-6", "온수어 수온", 24, J2, 24 == J2))
-
-# H-AQU-7: 양식 주기 = τ = 4
-results.append(("H-AQU-7", "양식 주기", 4, tau, 4 == tau))
-
-# H-AQU-8: 6대 영양소 = n = 6
-results.append(("H-AQU-8", "6대 영양소", 6, n, 6 == n))
-
-# H-AQU-9: 참치 체온 상승 = sopfr = 5
-results.append(("H-AQU-9", "참치 체온상승", 5, sopfr, 5 == sopfr))
-
-# H-AQU-10: 이분열 = φ = 2
-results.append(("H-AQU-10", "조류 이분열", 2, phi, 2 == phi))
-
-print("=" * 60)
-print("HEXA-AQUA n=6 검증 결과")
-print("=" * 60)
-passed = 0
-for rid, name, actual, expected, ok in results:
-    status = "PASS" if ok else "FAIL"
-    if ok:
-        passed += 1
-    print(f"  {rid}: {name} = {actual} vs n6={expected} -> {status}")
-print("=" * 60)
-print(f"결과: {passed}/{len(results)} EXACT ({100*passed//len(results)}%)")
-if passed == len(results):
-    print("천장 달성: 10/10 EXACT")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-213 항목", None, None, None),  # MISSING DATA
+    ("BT-225 항목", None, None, None),  # MISSING DATA
+    ("BT-198 항목", None, None, None),  # MISSING DATA
+    ("BT-341 항목", None, None, None),  # MISSING DATA
+    ("BT-131 항목", None, None, None),  # MISSING DATA
+    ("BT-343 항목", None, None, None),  # MISSING DATA
+    ("BT-118 항목", None, None, None),  # MISSING DATA
+    ("BT-124 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```

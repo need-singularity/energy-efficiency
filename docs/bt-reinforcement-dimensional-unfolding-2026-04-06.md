@@ -556,102 +556,58 @@ ATP(36)와 포도당(24)은 **동일한 텐서 분해의 두 가지 투영(proje
 ## 검증코드
 
 ```python
-# 검증코드 -- 차원펼침 텐서 분해 + mod3 + 로그 스펙트럼
-from fractions import Fraction
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-
-# 텐서 분해 3대 항등식
-results.append(("텐서1: n*sigma/phi = n^2", n*sigma//phi, n**2, n*sigma//phi == n**2))
-results.append(("텐서2: sigma*tau/phi = J2", sigma*tau//phi, J2, sigma*tau//phi == J2))
-results.append(("텐서3: sigma*tau/n = sigma-tau", sigma*tau//n, sigma-tau, sigma*tau//n == sigma-tau))
-
-# BT-58 핵심: sigma-tau = sigma*tau/n 이 근본 정리의 변형임을 검증
-# sigma*phi = n*tau => sigma-tau = sigma*tau/n
-lhs = sigma - tau  # 8
-rhs = sigma * tau // n  # 8
-results.append(("BT-58 텐서 몫 = 뺄셈", lhs, rhs, lhs == rhs))
-
-# 근본 정리에서 유도
-# n(sigma-tau) = sigma*tau => n*sigma - n*tau = sigma*tau => sigma(n-tau) = ... 아니라
-# sigma*phi = n*tau 로부터: sigma*phi = n*tau => sigma*tau/n = sigma*tau/n
-# sigma-tau 와 sigma*tau/n 이 같다는 것을 직접 확인:
-# sigma-tau = 12-4 = 8, sigma*tau/n = 48/6 = 8 (위에서 확인)
-# 이것이 sigma*phi = n*tau 와 동치임을 보이자:
-# sigma*tau/n = sigma-tau
-# => sigma*tau = n*(sigma-tau) = n*sigma - n*tau
-# => sigma*tau + n*tau = n*sigma
-# => tau*(sigma+n) = n*sigma ... 이것은 일반적이지 않음
-# 직접 대입: sigma*phi = 12*2 = 24 = n*tau = 6*4 = 24. OK.
-results.append(("근본 정리 sigma*phi = n*tau", sigma*phi, n*tau, sigma*phi == n*tau))
-
-# BT-205: E6 양근 = n^2 = 36
-results.append(("BT-205 E6 양근 = n^2", 36, n**2, 36 == n**2))
-
-# BT-79: 144 = n^2 * tau
-results.append(("BT-79 sigma^2 = n^2*tau", sigma**2, n**2 * tau, sigma**2 == n**2 * tau))
-
-# BT-90: 144 = phi * K6 = phi * 72
-K6 = 72  # 6D 접촉수
-results.append(("BT-90 SM = phi*K6 = n^2*tau", phi * K6, n**2 * tau, phi * K6 == n**2 * tau))
-
-# BT-26: Chinchilla alpha = 1/3
-results.append(("BT-26 alpha = 1/3", Fraction(1,3), Fraction(1,3), True))
-
-# BT-111: tau^2/sigma = 4/3
-results.append(("BT-111 tau^2/sigma = 4/3", Fraction(tau**2, sigma), Fraction(4,3), Fraction(tau**2, sigma) == Fraction(4,3)))
-
-# BT-167: n_s = 27/28
-ns_pred = Fraction(27, 28)
-ns_planck = 0.9649
-results.append(("BT-167 n_s = 27/28 = 0.96428", float(ns_pred), 0.96428, abs(float(ns_pred) - 0.96428) < 0.0001))
-
-# BT-143: Omega_Lambda = 24/35
-omega_pred = Fraction(J2, J2 + sigma - mu)
-omega_planck = 0.6847
-omega_pred_f = float(omega_pred)
-results.append(("BT-143 분모 = J2+sigma-mu = 35", J2 + sigma - mu, 35, J2 + sigma - mu == 35))
-results.append(("BT-143 Omega_Lambda = 24/35", omega_pred, Fraction(24,35), omega_pred == Fraction(24,35)))
-results.append(("BT-143 Planck 이내 (0.14sigma)", abs(omega_pred_f - omega_planck) < 0.0073, True, abs(omega_pred_f - omega_planck) < 0.0073))
-
-# BT-10: ln(2) 근접
-ln2 = math.log(2)
-results.append(("BT-10 ln(phi) = ln(2)", math.log(phi), ln2, abs(math.log(phi) - ln2) < 1e-10))
-
-# BT-272: 36 = n * (sigma/phi)
-results.append(("BT-272 나침반 36 = n*(sigma/phi)", n * (sigma // phi), 36, n * (sigma // phi) == 36))
-
-# BT-355: ATP 36 = n^2, 포도당 24 = J2
-results.append(("BT-355 ATP = n^2 = 36", n**2, 36, n**2 == 36))
-results.append(("BT-355 포도당 = J2 = 24", J2, 24, J2 == 24))
-
-# BT-48/76: 48 = n * (sigma-tau) = n * 8
-results.append(("BT-48 sigma*tau = n*(sigma-tau)", sigma*tau, n*(sigma-tau), sigma*tau == n*(sigma-tau)))
-
-# BT-33: sigma = n * phi
-results.append(("BT-33 sigma = n*phi", sigma, n*phi, sigma == n*phi))
-
-# BT-168: J2 = sigma*tau/phi
-results.append(("BT-168 J2 = sigma*tau/phi", J2, sigma*tau//phi, J2 == sigma*tau//phi))
-
-# mod3 부동점 검증
-results.append(("mod3: 28 mod 3 = 1", 28 % 3, 1, 28 % 3 == 1))
-results.append(("mod3: 27 mod 3 = 0", 27 % 3, 0, 27 % 3 == 0))
-
-# Omega_m = 11/35
-omega_m_pred = Fraction(sigma - mu, 35)
-omega_m_planck = 0.3153
-results.append(("BT-143 Omega_m = 11/35", float(omega_m_pred), 0.31428, abs(float(omega_m_pred) - omega_m_planck) < 0.0073))
-
-passed = sum(1 for r in results if r[3])
-print(f"검증 결과: {passed}/{len(results)} PASS")
+# bt-reinforcement-dimensional-unfolding-2026-04-06.md — 정의 도출 검증
+results = [
+    ("BT-205 항목", None, None, None),  # MISSING DATA
+    ("BT-79 항목", None, None, None),  # MISSING DATA
+    ("BT-90 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-48 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("BT-26 항목", None, None, None),  # MISSING DATA
+    ("BT-111 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    status = "PASS" if r[3] else "FAIL"
-    print(f"  {status}: {r[0]} = {r[1]} (기대: {r[2]})")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

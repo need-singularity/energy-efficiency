@@ -1,0 +1,50 @@
+// reality-map-grow — 현실 지도 자동 성장기 (HEXA 스켈레톤)
+//
+// nexus/shared/reality_map.json (v6.0 247노드) 에 새 노드/엣지 후보 제안.
+// 입력: BT 목록 + discovery_log.jsonl
+// 작성: 2026-04-08 / 상태: 스켈레톤
+
+fn main(args: list<str>) {
+    let home = env("HOME")
+    let map_path = if args.len() > 1 { args[1] }
+                   else { home + "/Dev/nexus/shared/reality_map.json" }
+    let log_path = if args.len() > 2 { args[2] }
+                   else { home + "/Dev/nexus/shared/discovery_log.jsonl" }
+
+    print("# reality-map-grow — node/edge candidate generator")
+    print("# map: " + map_path)
+    print("# log: " + log_path)
+
+    let map_text = fs_read(map_path)
+    let log_text = fs_read(log_path)
+
+    let existing_nodes = map_text.count("\"id\":")
+    let log_lines = log_text.split("\n")
+
+    print("existing nodes (approx): " + str(existing_nodes))
+    print("discovery log entries:   " + str(log_lines.len()))
+
+    let mut candidates = []
+    for line in log_lines {
+        if line.contains("\"name\":\"") {
+            let name = extract_between(line, "\"name\":\"", "\"")
+            if !map_text.contains(name) { candidates.push(name) }
+        }
+    }
+
+    print("candidate new nodes: " + str(candidates.len()))
+    let mut i = 0
+    while i < 20 && i < candidates.len() {
+        print("  + " + candidates[i])
+        i = i + 1
+    }
+
+    print("n6-check: candidates mod 6 = " + str(candidates.len() % 6))
+}
+
+// TODO:
+// - 정식 JSON 파서 사용
+// - 노드 카테고리 자동 분류 (BT 번호 → 도메인)
+// - edge 제안 (sopfr 거리 인접도)
+// - --apply 플래그 (실제 reality_map 갱신)
+// - z-score 재계산 (n=6 vs n=28 대조 유지)

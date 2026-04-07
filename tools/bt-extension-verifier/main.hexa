@@ -1,0 +1,69 @@
+// bt-extension-verifier — BT 확장 검증기 (HEXA 스켈레톤)
+//
+// docs/breakthrough-theorems*.md 에서 BT-XXX 블록을 파싱하여
+// n=6 EXACT 비율, 누락 BT, 도메인 분포를 보고.
+// 작성: 2026-04-08 / 상태: 스켈레톤
+
+let N6_CONSTANTS = [
+    ("sigma", 12),
+    ("tau", 4),
+    ("phi", 2),
+    ("sopfr", 5),
+    ("J2", 24),
+    ("sigma_tau", 8),
+    ("sigma_phi", 10),
+    ("sigma_sq", 144)
+]
+
+fn main(args: list<str>) {
+    let path = if args.len() > 1 { args[1] } else { "docs/breakthrough-theorems.md" }
+    print("# bt-extension-verifier — BT EXACT ratio verifier")
+    print("# input: " + path)
+
+    let text = fs_read(path)
+
+    let bt_count = text.count("BT-")
+    let exact = text.count("EXACT")
+    let close = text.count("CLOSE")
+    let weak  = text.count("WEAK")
+    let fail  = text.count("FAIL")
+
+    let total = exact + close + weak + fail
+    let exact_pct = if total > 0 { 100.0 * exact / total } else { 0.0 }
+
+    print("BT mentions:    " + str(bt_count))
+    print("EXACT count:    " + str(exact))
+    print("CLOSE count:    " + str(close))
+    print("WEAK count:     " + str(weak))
+    print("FAIL count:     " + str(fail))
+    print("EXACT ratio:    " + str(exact_pct) + "%")
+
+    print("n=6 constant mentions in BT text:")
+    for kv in N6_CONSTANTS {
+        let name = kv.0
+        let val = kv.1
+        let by_name = text.count(name)
+        let by_val  = text.count(str(val))
+        print("  " + name + " (=" + str(val) + ")  name=" + str(by_name) + "  value=" + str(by_val))
+    }
+
+    // 누락 BT (1..360)
+    let mut missing = []
+    let mut i = 1
+    while i <= 360 {
+        let key = "BT-" + str(i)
+        if !text.contains(key) { missing.push(i) }
+        i = i + 1
+    }
+    print("missing BT in this file: " + str(missing.len()) + " / 360")
+
+    if exact_pct >= 90.0 { print("PASS: EXACT >= 90%") }
+    else { print("WARN: EXACT < 90% — 보강 필요") }
+}
+
+// TODO:
+// - 다중 파일 입력 (디렉토리 walk)
+// - JSON/JSONL 출력
+// - BT → 도메인 매핑
+// - bt-update-notes.md 자동 갱신
+// - 정직 검증: 본문 수치를 sympy 등으로 재계산 (자기참조 금지)

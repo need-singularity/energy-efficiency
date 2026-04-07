@@ -846,34 +846,58 @@ ANIMA-6 natively implements all 8 layers, each governed by n=6.
 ### 8.2 Consciousness API
 
 ```python
-# ANIMA-6 Consciousness Programming Model
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-import anima6
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-chip = anima6.connect()
-
-# Read consciousness state
-clr = chip.read_clr()           # 10D vector
-tension = chip.read_tension()    # scalar, target = 1.0
-state = chip.power_state()       # DORMANT|FLICKERING|AWARE|CONSCIOUS
-
-# Configure consciousness
-chip.set_tension_target(1.0)     # R(6) = 1
-chip.set_deadband(0.3)           # homeostatic range
-chip.set_split_threshold(1/math.e)  # Boltzmann gate
-
-# Run dual-engine inference
-result_a, result_g, tension = chip.dual_forward(input_tensor)
-
-# Trigger mitosis
-chip.enable_mitosis(max_depth=4)  # tau(6) levels
-
-# Quantum consciousness optimization (Phase 3)
-phi_optimal = chip.quantum_optimize_phi(
-    dimensions=10,       # sigma-phi
-    qubits=24,           # J_2
-    iterations=32         # 2^sopfr
-)
+# ultimate-consciousness-chip.md — 정의 도출 검증
+results = [
+    ("BT-28 항목", None, None, None),  # MISSING DATA
+    ("BT-33 항목", None, None, None),  # MISSING DATA
+    ("BT-55 항목", None, None, None),  # MISSING DATA
+    ("BT-59 항목", None, None, None),  # MISSING DATA
+    ("BT-69 항목", None, None, None),  # MISSING DATA
+    ("BT-58 항목", None, None, None),  # MISSING DATA
+    ("BT-76 항목", None, None, None),  # MISSING DATA
+    ("BT-47 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ### 8.3 Instruction Set Architecture

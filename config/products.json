@@ -2324,7 +2324,7 @@
           "name": "HEXA-NANOBOT 치료 나노봇",
           "ufo": 10,
           "ceiling": true,
-          "ver": "v3",
+          "ver": "5680bc44",
           "description": "BT-404~413: 10 연속 돌파, 113/122 EXACT (92.6%) + 9 CLOSE(물리한계 문서화), Mk.I~V 진화 완료, 6대 플랫폼/추진/EPR/pH/센서/면역/반감기/통신/에너지/배출, DSE 7776 조합, (sigma-phi)^2=100 나노 허브, n=6 관문(신장 6nm), J2=24 에너지-시간 수렴",
           "bt": [
             "BT-404",

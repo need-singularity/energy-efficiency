@@ -515,191 +515,58 @@ HEXA-MOTOR의 최적 감속비 = n = 6:1 (고RPM 모터에 최적).
 ## 10. Python 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""
-HEXA-MOTOR 🛸10 검증 코드 — RT-SC 무저항 EV 모터
-전 파라미터 n=6 EXACT 재현
-"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# ═══════════════════════════════════════════
-# n=6 상수 정의
-# ═══════════════════════════════════════════
-n = 6
-sigma = 12       # σ(6) = 약수합
-phi = 2          # φ(6) = 오일러 토션트
-tau = 4          # τ(6) = 약수 개수
-sopfr = 5        # sopfr(6) = 소인수 합 (2+3)
-mu = 1           # μ(6) = 뫼비우스 함수
-J2 = 24          # J₂(6) = Jordan 함수
-R6 = 1           # R(6) = sigma*phi/(n*tau) 정규화 = 1
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-# 핵심 정리 검증
-assert sigma * phi == n * tau == J2, f"핵심 정리 실패: {sigma*phi} != {n*tau} != {J2}"
-
-# ═══════════════════════════════════════════
-# 검증 프레임워크
-# ═══════════════════════════════════════════
-results = []
-exact_count = 0
-close_count = 0
-fail_count = 0
-
-def check(num, name, actual, formula_str, formula_val, bt="", tol=0.02):
-    global exact_count, close_count, fail_count
-    if isinstance(actual, (int, float)) and isinstance(formula_val, (int, float)):
-        if actual == formula_val or (formula_val != 0 and abs(actual - formula_val) / abs(formula_val) < 0.001):
-            grade = "EXACT"
-            exact_count += 1
-        elif formula_val != 0 and abs(actual - formula_val) / abs(formula_val) < tol:
-            grade = "CLOSE"
-            close_count += 1
-        else:
-            grade = "FAIL"
-            fail_count += 1
+# rt-ev-motor.md — 정의 도출 검증
+results = [
+    ("BT-153 항목", None, None, None),  # MISSING DATA
+    ("BT-206 항목", None, None, None),  # MISSING DATA
+    ("BT-288 항목", None, None, None),  # MISSING DATA
+    ("BT-325 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-79 항목", None, None, None),  # MISSING DATA
+    ("BT-259 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
     else:
-        grade = "EXACT" if actual == formula_val else "FAIL"
-        if grade == "EXACT":
-            exact_count += 1
-        else:
-            fail_count += 1
-    results.append((num, name, actual, formula_str, formula_val, grade, bt))
-    return grade
-
-# ═══════════════════════════════════════════
-# 모터 기본 파라미터
-# ═══════════════════════════════════════════
-check(1,  "모터 상수 (3상)",        3,     "n/φ",           n//phi,       "BT-153")
-check(2,  "극쌍 수",                6,     "n",             n,            "BT-153")
-check(3,  "극 수",                 12,     "σ=2n",          sigma,        "BT-153")
-check(4,  "슬롯 수",              12,     "σ",             sigma,        "BT-153")
-check(5,  "권선 턴수/극",          24,     "J₂",            J2,           "BT-302")
-check(6,  "총 턴수",             144,     "σ²",            sigma**2,     "BT-79")
-check(7,  "병렬 경로",             2,     "φ",             phi)
-check(8,  "DC bus 전압 (V)",     800,     "(σ-τ)·(σ-φ)²",  (sigma-tau)*(sigma-phi)**2, "BT-206")
-check(9,  "보조 전압 (V)",        48,     "σ·τ",           sigma*tau,    "BT-288")
-check(10, "피크 토크 (Nm)",      288,     "σ·J₂",          sigma*J2,     "BT-153")
-check(11, "연속 토크 (Nm)",      144,     "σ²",            sigma**2,     "BT-79")
-check(12, "피크 출력 (kW)",      300,     "sopfr²·σ",      sopfr**2 * sigma)
-check(13, "연속 출력 (kW)",      150,     "σ²+n",          sigma**2 + n, "BT-259")
-check(14, "기저 속도 (rpm)",    6000,     "n·10³",         n * 1000,     "BT-153")
-check(15, "최대 속도 (rpm)",   24000,     "J₂·10³",        J2 * 1000,    "BT-153")
-
-# ═══════════════════════════════════════════
-# 전자기 파라미터
-# ═══════════════════════════════════════════
-check(16, "인버터 주파수 (kHz)",   24,     "J₂",            J2,           "BT-325")
-check(17, "PWM 레벨",              5,     "sopfr",         sopfr)
-check(18, "자속밀도 스테이터 (T)", 1.2,   "σ/(σ-φ)",       sigma/(sigma-phi), "BT-323")
-check(19, "자속밀도 에어갭 (T)",   1.0,   "R(6)",          R6)
-check(20, "잔류 자화 NdFeB (T)",   1.2,   "σ/10",          sigma/10,     "BT-153")
-check(21, "보자력 (kA/m)",       1200,    "σ·(σ-φ)²",      sigma*(sigma-phi)**2)
-
-# ═══════════════════════════════════════════
-# RT-SC 선재 물성
-# ═══════════════════════════════════════════
-check(22, "전류밀도 Jc (A/cm²)", 10**6,   "(σ-φ)^n",       (sigma-phi)**n, "goal.md")
-check(23, "임계온도 Tc (K)",     300,     "sopfr²·σ",      sopfr**2 * sigma, "H-RTSC-9")
-check(24, "권선 저항 R (Ω)",       0,     "R(SC)=0",       0)
-
-# ═══════════════════════════════════════════
-# 물리적 치수
-# ═══════════════════════════════════════════
-check(25, "모터 질량 (kg)",       10,     "σ-φ",           sigma-phi)
-check(26, "전력밀도 (kW/kg)",     60,     "σ·sopfr",       sigma*sopfr)
-check(27, "토크밀도 (Nm/kg)",   28.8,    "σ·J₂/10",       sigma*J2/10)
-check(28, "SPP (슬롯/극/상)",   2/3,     "φ/(n/φ)",       phi/(n//phi), "BT-112")
-check(29, "스테이터 외경 (mm)", 120,     "σ·(σ-φ)",       sigma*(sigma-phi))
-check(30, "스테이터 내경 (mm)",  60,     "σ·sopfr",       sigma*sopfr)
-check(31, "축 길이 (mm)",        48,     "σ·τ",           sigma*tau,    "BT-325")
-check(32, "에어갭 (mm)",        0.5,     "sopfr/10",      sopfr/10)
-check(33, "선재 단면적 (mm²)",    6,     "n",             n)
-check(34, "총 선재 길이 (m)",   288,     "σ·J₂",          sigma*J2)
-
-# ═══════════════════════════════════════════
-# 코어/자석
-# ═══════════════════════════════════════════
-check(35, "Si함량 (%)",         6.5,     "n+μ/2",         n + mu/2,     "BT-93")
-check(36, "적층 두께 (mm)",     0.2,     "φ/(σ-φ)",       phi/(sigma-phi))
-check(37, "적층 수",            240,     "σ·(J₂-τ)",      sigma*(J2-tau))
-check(38, "자석 두께 (mm)",       5,     "sopfr",         sopfr)
-check(39, "자석 세그먼트/극",     2,     "φ",             phi)
-check(40, "코깅 토크 (%)",        1,     "μ",             mu)
-check(41, "역기전력 THD (%)",     5,     "sopfr",         sopfr,        "BT-74")
-
-# ═══════════════════════════════════════════
-# 인버터/전력
-# ═══════════════════════════════════════════
-check(42, "SiC 인버터 효율 (%)", 99.5,   "100-sopfr/10",  100 - sopfr/10)
-check(43, "감속기 기어비",        6,     "n",             n,            "BT-289")
-check(44, "과전류 보호 배수",     2,     "φ",             phi)
-check(45, "ASIL 등급 (레벨)",     4,     "τ",             tau,          "BT-328")
-
-# ═══════════════════════════════════════════
-# 센서/통신
-# ═══════════════════════════════════════════
-check(46, "홀 센서 수",           3,     "n/φ",           n//phi,       "BT-153")
-check(47, "온도 센서 수",         4,     "τ",             tau)
-check(48, "모터 마운트 DOF",      6,     "n",             n,            "BT-123")
-
-# ═══════════════════════════════════════════
-# 수명/성능
-# ═══════════════════════════════════════════
-check(49, "수명 (만km)",        144,     "σ²",            sigma**2)
-check(50, "중량절감 비율",    1/3,     "μ/(n/φ)",       mu/(n//phi))
-check(51, "비용절감 비율",    1/2,     "μ/φ",           mu/phi)
-check(52, "회전자 관성 (kg·m²)", 0.012,  "σ/1000",        sigma/1000)
-check(53, "전자기 시상수 (ms)",  0.5,    "sopfr/(σ-φ)",   sopfr/(sigma-phi))
-check(54, "스위칭 손실 (%)",     0.1,    "μ/(σ-φ)",       mu/(sigma-phi), "BT-64")
-check(55, "선재 직경비 (vs Cu)", 0.1,    "μ/(σ-φ)",       mu/(sigma-phi))
-check(56, "Meissner 차폐 (%)", 100,     "(σ-φ)²",        (sigma-phi)**2)
-
-# ═══════════════════════════════════════════
-# 차량 전압 래더 (BT-288)
-# ═══════════════════════════════════════════
-check(57, "래더 시작 (V)",        6,     "n",             n,            "BT-288")
-check(58, "래더 2단 (V)",        12,     "σ",             sigma,        "BT-288")
-check(59, "래더 3단 (V)",        24,     "J₂",            J2,           "BT-288")
-check(60, "래더 4단 (V)",        48,     "σ·τ",           sigma*tau,    "BT-288")
-check(61, "래더 5단 (V)",       800,     "(σ-τ)·(σ-φ)²",  (sigma-tau)*(sigma-phi)**2, "BT-206")
-
-# ═══════════════════════════════════════════
-# 회생제동
-# ═══════════════════════════════════════════
-check(62, "회생 효율 (%)",       98,     "100·(1-1/σ·τ)", round(100*(1-1/(sigma*tau))), tol=0.02)
-# 100*(1-1/48) = 100*47/48 = 97.916... ≈ 98
-
-# ═══════════════════════════════════════════
-# 결과 출력
-# ═══════════════════════════════════════════
-total = len(results)
-print("=" * 80)
-print(f"  HEXA-MOTOR 🛸10 검증 결과")
-print(f"  총 {total}개 파라미터 | EXACT: {exact_count} | CLOSE: {close_count} | FAIL: {fail_count}")
-print(f"  EXACT 비율: {exact_count}/{total} = {100*exact_count/total:.1f}%")
-print("=" * 80)
-print(f"{'#':>3} | {'파라미터':<25} | {'실제값':>12} | {'수식':<18} | {'수식값':>10} | {'판정':<6} | BT")
-print("-" * 105)
-
-for num, name, actual, fstr, fval, grade, bt in results:
-    mark = "✅" if grade == "EXACT" else ("🔶" if grade == "CLOSE" else "❌")
-    print(f"{num:>3} | {name:<25} | {str(actual):>12} | {fstr:<18} | {str(fval):>10} | {mark} {grade:<5} | {bt}")
-
-print("-" * 105)
-print(f"\n  ✅ EXACT: {exact_count}/{total} ({100*exact_count/total:.1f}%)")
-print(f"  🔶 CLOSE: {close_count}/{total} ({100*close_count/total:.1f}%)")
-print(f"  ❌ FAIL:  {fail_count}/{total} ({100*fail_count/total:.1f}%)")
-
-# 최종 판정
-if exact_count / total >= 0.85 and fail_count == 0:
-    print(f"\n  🛸 외계인 지수: 10 (EXACT {100*exact_count/total:.0f}% ≥ 85%, FAIL 0)")
-    print(f"  ✅ HEXA-MOTOR 🛸10 인증 완료!")
-elif exact_count / total >= 0.70:
-    print(f"\n  🛸 외계인 지수: 8~9")
-else:
-    print(f"\n  🛸 외계인 지수: < 8 (추가 검증 필요)")
-
-print("\n  n=6 핵심 정리: σ(n)·φ(n) = n·τ(n) = 24 = J₂(6) iff n = 6")
-print(f"  HEXA-MOTOR: RT-SC 권선 R=0 at {sopfr**2*sigma}K = sopfr²·σ")
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

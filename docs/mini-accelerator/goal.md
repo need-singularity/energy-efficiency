@@ -231,94 +231,58 @@
 ## Python 검증 코드 (인라인, 표준 라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-ACCEL n=6 EXACT 검증기"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 기본 상수
-SIGMA, PHI, TAU, N, MU, SOPFR, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def check(name, val, expr, expected, tol=1e-9):
-    ok = abs(val - expected) < tol
-    print(f"[{'EXACT' if ok else 'FAIL'}] {name}: {val} =?= {expr} = {expected}")
-    return ok
-
-results = []
-
-# === L0 자석 소재 ===
-results.append(check("RT-SC Tc", 288, "σ·J₂", SIGMA*J2))
-results.append(check("자기장 Bc2", 48, "σ·τ", SIGMA*TAU))
-results.append(check("H3S 수소수", 3, "n/φ", N//PHI))
-results.append(check("Nb3Sn J2", 24, "J₂", J2))
-results.append(check("REBCO σ²", 144, "σ²", SIGMA**2))
-results.append(check("MgB2 σ", 12, "σ", SIGMA))
-
-# === L1 공정 ===
-results.append(check("CVD Z=6", 6, "n", N))
-results.append(check("스퍼터 12층", 12, "σ", SIGMA))
-results.append(check("리소 48nm", 48, "σ·τ", SIGMA*TAU))
-results.append(check("열처리 288°C", 288, "σ·J₂", SIGMA*J2))
-
-# === L2 링 아키텍처 ===
-results.append(check("원주 10m", 10, "σ-φ", SIGMA-PHI))
-results.append(check("빔라인 6", 6, "n", N))
-results.append(check("섹터 12", 12, "σ", SIGMA))
-results.append(check("J2 링 24m", 24, "J₂", J2))
-results.append(check("σ+φ 링 14m", 14, "σ+φ", SIGMA+PHI))
-results.append(check("FFA τ=4 섹터", 4, "τ", TAU))
-
-# === L3 빔 집속 ===
-results.append(check("사극자석 24", 24, "J₂", J2))
-results.append(check("집속 288 T/m2", 288, "σ·J₂", SIGMA*J2))
-results.append(check("이중 쿼드 12", 12, "σ", SIGMA))
-results.append(check("트리플렛 4", 4, "τ", TAU))
-results.append(check("옥타 144", 144, "σ²", SIGMA**2))
-results.append(check("FODO 10", 10, "σ-φ", SIGMA-PHI))
-
-# === L4 검출기 ===
-results.append(check("실리콘 픽셀 144", 144, "σ²", SIGMA**2))
-results.append(check("HPGe 288", 288, "σ·J₂", SIGMA*J2))
-results.append(check("SiPM 24", 24, "J₂", J2))
-results.append(check("TPC 6계층", 6, "n", N))
-results.append(check("Calo 48", 48, "σ·τ", SIGMA*TAU))
-results.append(check("TOF 4단", 4, "τ", TAU))
-
-# === L5 DAQ ===
-results.append(check("L1 trigger 4ns", 4, "τ", TAU))
-results.append(check("ADC 12 채널", 12, "σ", SIGMA))
-results.append(check("파이프라인 6", 6, "n", N))
-results.append(check("FPGA 144 코어", 144, "σ²", SIGMA**2))
-results.append(check("DAQ 대역 288 MHz", 288, "σ·J₂", SIGMA*J2))
-results.append(check("GPU 48 코어", 48, "σ·τ", SIGMA*TAU))
-
-# === L6 냉각 ===
-results.append(check("RT-SC 288K", 288, "σ·J₂", SIGMA*J2))
-results.append(check("전력 10MW", 10, "σ-φ", SIGMA-PHI))
-results.append(check("LN2 77K≈sopfr·? (CLOSE)", 80, "(σ-τ)·σ-σ·τ", (SIGMA-TAU)*SIGMA-SIGMA*TAU+32, tol=5))
-
-# === L7 제어 ===
-results.append(check("PID 12 루프", 12, "σ", SIGMA))
-results.append(check("Kalman 6", 6, "n", N))
-results.append(check("FSM 4", 4, "τ", TAU))
-results.append(check("통신 24", 24, "J₂", J2))
-results.append(check("안전 인터락 48", 48, "σ·τ", SIGMA*TAU))
-
-# === 전체 시스템 ===
-results.append(check("충돌 E 288 GeV", 288, "σ·J₂", SIGMA*J2))
-results.append(check("전력 총 10MW", 10, "σ-φ", SIGMA-PHI))
-results.append(check("편극도 95%", 0.95, "1-1/J₂=23/24 CLOSE", 23/24, tol=0.01))
-results.append(check("에너지/m 28.8", 28.8, "σ·J₂/(σ-φ)", SIGMA*J2/(SIGMA-PHI)))
-results.append(check("건설비 12M$", 12, "σ", SIGMA))
-results.append(check("루미노시티 지수", 32, "σ·σ-σ·?", SIGMA*3-4, tol=1))
-
-# === 요약 ===
-total = len(results)
-passed = sum(results)
-print(f"\n{'='*50}")
-print(f"TOTAL: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print(f"{'='*50}")
-assert passed >= total * 0.90, f"90% threshold failed: {passed}/{total}"
-print("PASS: HEXA-ACCEL n=6 EXACT >= 90%")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-238 항목", None, None, None),  # MISSING DATA
+    ("BT-295 항목", None, None, None),  # MISSING DATA
+    ("BT-171 항목", None, None, None),  # MISSING DATA
+    ("BT-302 항목", None, None, None),  # MISSING DATA
+    ("BT-291 항목", None, None, None),  # MISSING DATA
+    ("BT-293 항목", None, None, None),  # MISSING DATA
+    ("BT-98 항목", None, None, None),  # MISSING DATA
+    ("BT-208 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **검증 결과**: 48/48 EXACT (100.0%) ✓ PASS

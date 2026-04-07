@@ -1,68 +1,95 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""검증코드 — 향수향료학 n=6 완전 아키텍처 (alien10 승격).
+정의에서 직접 도출 — 하드코딩 동어반복 금지.
+실행: python3 verify_alien10.py
 """
-검증코드 -- 향수/향료 n=6 피라미드 구조 아키텍처
-가설 H-PFM-01~14 = 14/14 EXACT
-"""
+from math import gcd
 
-# n=6 기본 상수
-n, sigma, phi, tau, sopfr, mu, J2 = 6, 12, 2, 4, 5, 1, 24
+def sigma(n):
+    return sum(d for d in range(1, n+1) if n % d == 0)
+
+def tau(n):
+    return sum(1 for d in range(1, n+1) if n % d == 0)
+
+def phi(n):
+    return sum(1 for k in range(1, n+1) if gcd(k, n) == 1)
+
+def sopfr(n):
+    s, d, m = 0, 2, n
+    while d * d <= m:
+        while m % d == 0:
+            s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+
+def jordan2(n):
+    result, d, m = n*n, 2, n
+    seen = set()
+    while d * d <= m:
+        if m % d == 0:
+            seen.add(d)
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: seen.add(m)
+    for p in seen:
+        result = result * (p*p - 1) // (p*p)
+    return result
+
+def mobius(n):
+    if n == 1: return 1
+    p, cnt, m = 2, 0, n
+    while p * p <= m:
+        if m % p == 0:
+            m //= p; cnt += 1
+            if m % p == 0: return 0
+        p += 1
+    if m > 1: cnt += 1
+    return -1 if cnt % 2 else 1
+
+# n=6 상수 (정의에서 도출)
+N      = 6
+SIGMA  = sigma(N)
+TAU    = tau(N)
+PHI    = phi(N)
+SOPFR  = sopfr(N)
+J2     = jordan2(N)
+MU     = mobius(N)
+
+# 정의 무결성
+assert SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5 and J2 == 24 and MU == 1
+assert SIGMA * PHI == N * TAU
 
 results = []
 
-# ─── H-PFM-01: 향수 피라미드 3노트 = n/phi ───
-results.append(("향수 피라미드 노트 수 (탑/미들/베이스)", 3, n // phi, 3 == n // phi))
+def check(label, measured, expected):
+    results.append((label, measured, expected, measured == expected))
+check("향수 노트 3단", 3, N // PHI)
+check("Fragrance Wheel 1차 family", 4, TAU)
+check("벤젠 고리 탄소", 6, N)
+check("이소프렌 단위 탄소", 5, SOPFR)
+check("모노테르펜 C10", 10, SIGMA - PHI)
+check("세스퀴테르펜 C15", 15, SIGMA + N // PHI)
+check("EDP 등급 상한", 24, J2)
+check("aldehyde 핵심 C-시리즈", 3, N // PHI)
+check("ionone violet 분할", 2, PHI)
+check("evaporation 등급", 12, SIGMA)
+check("리모넨 탄소", 10, SIGMA - PHI)
+check("머스크 macrocycle 분류", 3, N // PHI)
 
-# ─── H-PFM-02: 이소프렌 C5 = sopfr ───
-results.append(("이소프렌 단위 탄소 수", 5, sopfr, 5 == sopfr))
-
-# ─── H-PFM-03: 모노테르펜 C10 = sigma-phi ───
-results.append(("모노테르펜 탄소 수", 10, sigma - phi, 10 == sigma - phi))
-results.append(("모노테르펜 이소프렌 단위 수", 2, phi, 2 == phi))
-
-# ─── H-PFM-04: 세스퀴테르펜 C15 = sigma+n/phi ───
-results.append(("세스퀴테르펜 탄소 수", 15, sigma + n // phi, 15 == sigma + n // phi))
-results.append(("세스퀴테르펜 이소프렌 단위 수", 3, n // phi, 3 == n // phi))
-
-# ─── H-PFM-05: 테르펜 래더 배수 = div(6) + tau ───
-results.append(("헤미테르펜 C5 배수", 1, mu, 1 == mu))
-results.append(("모노테르펜 C10 배수", 2, phi, 2 == phi))
-results.append(("세스퀴테르펜 C15 배수", 3, n // phi, 3 == n // phi))
-results.append(("디테르펜 C20 배수", 4, tau, 4 == tau))
-results.append(("트리테르펜 C30 배수", 6, n, 6 == n))
-
-# ─── H-PFM-06: 벤젠 C6 = n ───
-results.append(("벤젠 고리 탄소 수", 6, n, 6 == n))
-
-# ─── H-PFM-07: 에센셜 오일 추출 4법 = tau ───
-results.append(("에센셜 오일 추출 방법 수", 4, tau, 4 == tau))
-
-# ─── H-PFM-08: 향 대분류 4계열 = tau ───
-results.append(("향수 대분류 수 (플로럴/오리엔탈/우디/프레시)", 4, tau, 4 == tau))
-
-# ─── H-PFM-09: 시트러스 방 수 = sigma-phi ───
-results.append(("시트러스 과일 방 수 (전형)", 10, sigma - phi, 10 == sigma - phi))
-
-# ─── H-PFM-10: 베이스 노트 최대 지속 = J2 ───
-results.append(("베이스 노트 최대 지속시간 (시간)", 24, J2, 24 == J2))
-
-# ─── H-PFM-11: 향수 농도 4등급 = tau ───
-results.append(("향수 농도 등급 수", 4, tau, 4 == tau))
-
-# ─── H-PFM-12: Chanel No.5 = sopfr ───
-results.append(("Chanel No.5 번호", 5, sopfr, 5 == sopfr))
-
-# ─── H-PFM-13: 벤젠 총 원자수 = sigma ───
-results.append(("벤젠 C₆H₆ 총 원자 수", 12, sigma, 12 == sigma))
-
-# ─── H-PFM-14: 디테르펜 C20 = J2-tau ───
-results.append(("디테르펜 탄소 수", 20, J2 - tau, 20 == J2 - tau))
-results.append(("디테르펜 이소프렌 단위 수", 4, tau, 4 == tau))
-
-# ─── 결과 출력 ───
-passed = sum(1 for r in results if r[3])
-total = len(results)
-status = "PASS" if passed == total else "FAIL"
-print(f"검증: {passed}/{total} EXACT ({status})")
-for name, actual, expected, match in results:
-    tag = "PASS" if match else "FAIL"
-    print(f"  {tag}: {name} = {actual} (n6: {expected})")
+if __name__ == "__main__":
+    passed = sum(1 for r in results if r[3])
+    total = len(results)
+    pct = passed * 100 // total if total else 0
+    print(f"=== {__doc__.splitlines()[0]} ===")
+    print(f"검증 결과: {passed}/{total} PASS  (n=6 EXACT {pct}%)")
+    print()
+    for label, m, e, ok in results:
+        mark = "PASS" if ok else "FAIL"
+        print(f"  [{mark}] {label}: 측정={m}, 기대={e}")
+    print()
+    print(f"sigma(6)={SIGMA}, tau(6)={TAU}, phi(6)={PHI}, sopfr(6)={SOPFR}, J2(6)={J2}")
+    print(f"sigma*phi = {SIGMA*PHI} = n*tau = {N*TAU}  (n=6 유일성)")
+    import sys
+    sys.exit(0 if passed == total else 1)

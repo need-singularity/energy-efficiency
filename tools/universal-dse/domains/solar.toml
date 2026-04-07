@@ -1,13 +1,15 @@
 # =============================================================
 # HEXA-SOLAR DSE Domain Definition
 # Source: tools/solar-dse/main.rs
-# BT-30 (SQ solar bridge) + BT-63 (Solar panel cell ladder)
+# BT-30 (SQ solar bridge) + BT-63 (Solar panel cell ladder) +
+# BT-161 (태양전지 시스템 아키텍처 — Rows/Diodes/Junctions n=6, 9/9 EXACT)
 # Total raw combos: 6x6x5x5x5 = 4,500 (pre-filter)
+# 갱신: 2026-04-08 — BT-161 시스템 보편성 정합
 # =============================================================
 
 [meta]
 name = "solar"
-desc = "Solar Architecture DSE (BT-30/63)"
+desc = "궁극 태양광 아키텍처 DSE (BT-30/63/161)"
 levels = ["Absorber", "Process", "Junction", "PowerElec", "Module"]
 vision = "Zero electricity bill -- one roof powers home + car"
 
@@ -316,7 +318,7 @@ n6     = 0.80
 perf   = 1.00
 power  = 0.95
 cost   = 0.70
-notes  = "cells=144=sigma^2 EXACT, 500W, lifespan=30=sopfr*n EXACT, roof=75"
+notes  = "cells=144=sigma^2 EXACT, 500W, lifespan=30=sopfr*n EXACT, roof=75, BT-161 (rows=12=sigma, diodes=3=n/phi)"
 
 [[candidate]]
 level  = 4

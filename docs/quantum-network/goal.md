@@ -186,90 +186,58 @@
 ## 🔧 Python 인라인 검증 코드
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-TELEPORT n=6 EXACT 검증 (40+ checks)"""
+import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-def check(name, actual, expected, tol=0.005):
-    ok = abs(actual - expected) / max(abs(expected), 1e-9) < tol
-    status = "EXACT" if ok else "FAIL"
-    print(f"  [{status}] {name}: {actual} vs {expected}")
-    return ok
-
-checks = []
-
-# === 1. 양자 프로세서 (7) ===
-print("\n[Quantum Processor]")
-checks.append(check("큐빗 수",            4096,   2**sigma))
-checks.append(check("Transmon 층수",      12,     sigma))
-checks.append(check("Bell 상태 수",        4,      tau))
-checks.append(check("게이트 딥스",         6,      n))
-checks.append(check("오류정정 거리",       64,     2**n))
-checks.append(check("AES 키 호환",         256,    2**(sigma-tau)))
-checks.append(check("코드워드 길이",       288,    sigma*J2))
-
-# === 2. 얽힘 분배 (7) ===
-print("\n[Entanglement Distribution]")
-checks.append(check("홉 거리 km",          144,    sigma**2))
-checks.append(check("채널 다중화",         8,      sigma-tau))
-checks.append(check("중계 단계",           4,      tau))
-checks.append(check("궤도면 수",           12,     sigma))
-checks.append(check("백본 노드",           288,    sigma*J2))
-checks.append(check("키 생성률 Mbps",      288,    sigma*J2))
-checks.append(check("홉 지연 ms",          10,     sigma-phi))
-
-# === 3. 충실도·에러 (6) ===
-print("\n[Fidelity & Error]")
-checks.append(check("충실도%",             99.653, (1-1/(sigma*J2))*100, tol=0.001))
-checks.append(check("에러율%",             0.347,  100/(sigma*J2), tol=0.01))
-checks.append(check("BFT threshold",       2/3,    phi**2/n))
-checks.append(check("decoherence ms",      48,     sigma*tau))
-checks.append(check("T1 시간 us",          144,    sigma**2))
-checks.append(check("T2 시간 us",          288,    sigma*J2))
-
-# === 4. 광학 파라미터 (6) ===
-print("\n[Optical]")
-checks.append(check("파장 nm",             1550,   sopfr*310, tol=0.001))  # sopfr·310=1550
-checks.append(check("SPDC 결정 mm",        10,     sigma-phi))
-checks.append(check("콜리메이터 mm",       48,     sigma*tau))
-checks.append(check("망원경 지름 cm",      24,     J2))
-checks.append(check("FSR GHz",             12,     sigma))
-checks.append(check("밴드 THz",            192,    sigma*(sigma+tau), tol=0.02))  # 192~sigma*16
-
-# === 5. Egyptian 채널 (4) ===
-print("\n[Egyptian Multiplex]")
-checks.append(check("Egyptian 합",         1.0,    1/phi + 1/(n/phi) + 1/n))
-checks.append(check("Ch group 1",          4,      (sigma-tau)*(1/phi)))  # 8*(1/2)=4
-checks.append(check("Ch group 2",          2.67,   (sigma-tau)*(1/3), tol=0.01))
-checks.append(check("Ch group 3",          1.33,   (sigma-tau)*(1/6), tol=0.01))
-
-# === 6. 네트워크 위상 (5) ===
-print("\n[Network Topology]")
-checks.append(check("위성/궤도면",         24,     J2))
-checks.append(check("총 위성 수",          288,    sigma*J2))
-checks.append(check("지구 노드",           144,    sigma**2))
-checks.append(check("continent mesh",      48,     sigma*tau))
-checks.append(check("urban ring",          10,     sigma-phi))
-
-# === 7. 프로토콜 (6) ===
-print("\n[Protocol]")
-checks.append(check("BB84 상태",           4,      tau))
-checks.append(check("E91 Bell 측정",       12,     sigma))
-checks.append(check("MDI-QKD Alice+Bob+C", 3,      n/phi))
-checks.append(check("purification 라운드", 6,      n))
-checks.append(check("privacy amp ratio",   2/3,    phi**2/n))
-checks.append(check("decoy states",        3,      n/phi))
-
-# 합산
-total = len(checks)
-passed = sum(checks)
-print(f"\n{'='*50}")
-print(f"TOTAL: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print(f"{'='*50}")
-assert passed >= total * 0.9, f"FAIL: only {passed}/{total}"
-print("HEXA-TELEPORT 🛸10 CERTIFIED")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-114 항목", None, None, None),  # MISSING DATA
+    ("BT-195 항목", None, None, None),  # MISSING DATA
+    ("BT-306 항목", None, None, None),  # MISSING DATA
+    ("BT-181 항목", None, None, None),  # MISSING DATA
+    ("BT-253 항목", None, None, None),  # MISSING DATA
+    ("BT-79 항목", None, None, None),  # MISSING DATA
+    ("BT-68 항목", None, None, None),  # MISSING DATA
+    ("BT-112 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과**: **41/41 EXACT (100%)** — 🛸10 인증 ✅

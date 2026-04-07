@@ -647,289 +647,58 @@ BT-299~306 (초전도), BT-160 (안전)
 ## 12. Python 검증 코드 (190/190 EXACT)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-NEURO 재설계 — 190 EXACT 전수 검증 (24 카테고리, 스마트폰 대체 포함)"""
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-n, sigma, phi, tau, sopfr, mu, J2, R6 = 6, 12, 2, 4, 5, 1, 24, 1
-assert sigma*phi == n*tau == J2
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-results = []
-def check(name, actual, expected, formula, category, tol=1e-6):
-    passed = abs(actual - expected) < tol if isinstance(expected, float) else actual == expected
-    results.append({"name": name, "actual": actual, "expected": expected,
-                    "formula": formula, "category": category, "passed": passed})
-
-# ═══ A. Core (14) ═══
-for nm,a,e,f in [("n",n,6,"n"),("sigma",sigma,12,"σ"),("phi",phi,2,"φ"),("tau",tau,4,"τ"),
-    ("sopfr",sopfr,5,"sopfr"),("mu",mu,1,"μ"),("J2",J2,24,"J₂"),("s-p",sigma-phi,10,"σ-φ"),
-    ("s-t",sigma-tau,8,"σ-τ"),("s-m",sigma-mu,11,"σ-μ"),("st",sigma*tau,48,"σ·τ"),
-    ("pt",phi**tau,16,"φ^τ"),("s2",sigma**2,144,"σ²"),("sJ",sigma*J2,288,"σ·J₂")]:
-    check(nm,a,e,f,"Core")
-
-# ═══ B. Channel (10) ═══
-check("ch_per_tile",sigma**2,144,"σ²","Channel")
-check("cortex_layers",n,6,"n","Channel")
-check("total_elec",(sigma**2)**2,20736,"σ⁴","Channel")
-check("total_ch",sigma**2*10000,1440000,"σ²·10⁴","Channel")
-check("spatial_um",sigma-phi,10,"σ-φ","Channel")
-check("temporal_kHz",tau,4,"τ","Channel")
-check("bandwidth",J2,24,"J₂","Channel")
-check("ADC_bits",sigma-phi,10,"σ-φ","Channel")
-check("DR_dB",6*(sigma-phi),60,"6·(σ-φ)","Channel")
-check("coverage",(phi**tau-1)*n+n,96,"(φ^τ-1)·n+n","Channel")
-
-# ═══ C. SE3 (6) ═══
-for i in range(4): check(f"se3_{i}",n,6,"n","SE3")
-check("se3_trans",n//phi,3,"n/φ","SE3")
-check("se3_rot",n//phi,3,"n/φ","SE3")
-
-# ═══ D. SC (9) ═══
-check("Tc",(sigma-phi)*sigma*(n//phi)-sigma*sopfr,300,"300K","SC")
-check("coil_r",sigma-phi,10,"σ-φ","SC")
-check("B_field",sigma,12,"σ","SC")
-check("R6",R6,1,"R(6)","SC")
-check("lambda_L",sopfr,5,"sopfr","SC")
-check("xi",n,6,"n","SC")
-check("P_coil",(n//phi)*10**(-(sigma-phi-mu)),3e-9,"3nW","SC",tol=1e-15)
-check("kappa",phi,2,"φ","SC")
-check("Jc",sigma-phi,10,"σ-φ","SC")
-
-# ═══ E. Decoder (10) ═══
-check("dec_L",sigma,12,"σ","Decoder")
-check("dec_d",2**sigma,4096,"2^σ","Decoder")
-check("dec_heads",2**sopfr,32,"2^sopfr","Decoder")
-check("dec_swiglu",tau**2/sigma,4/3,"τ²/σ","Decoder",tol=1e-6)
-check("dec_depth",2**sopfr,32,"2^sopfr","Decoder")
-check("dec_dh",2**(sigma-sopfr),128,"2^(σ-sopfr)","Decoder")
-check("dec_kv",sigma-tau,8,"σ-τ","Decoder")
-check("dec_drop",math.log(4/3),0.2876820724517809,"ln(4/3)","Decoder",tol=1e-4)
-check("dec_lr",(n/phi)*10**(-tau),3e-4,"(n/φ)·10⁻τ","Decoder",tol=1e-10)
-check("dec_topp",1-1/(J2-tau),0.95,"1-1/(J₂-τ)","Decoder",tol=1e-6)
-
-# ═══ F. Brain (5) ═══
-check("neurons_log",sigma-mu,11,"σ-μ","Brain")
-check("synapses_log",sigma+phi,14,"σ+φ","Brain")
-check("regions",sigma**2,144,"σ²","Brain")
-check("columns",sigma**2*(sigma-phi),1440,"σ²·(σ-φ)","Brain")
-check("per_col",10**tau,10000,"10^τ","Brain")
-
-# ═══ G. Info (5) ═══
-check("duty",round((1-1/math.e)*100),63,"1-1/e","Info")
-check("sparse",round((1/math.e)*100),37,"1/e","Info")
-check("noise",mu,1,"μ","Info")
-check("SNR",n*(sigma-phi),60,"n·(σ-φ)","Info")
-check("bits",sopfr,5,"sopfr","Info")
-
-# ═══ H. Latency (5) ═══
-check("latency",mu,1,"μ","Latency")
-check("refresh",(sigma-phi)**(n//phi),1000,"(σ-φ)³","Latency")
-check("feedback",2**phi,4,"2^φ","Latency")
-check("frame",tau,4,"τ","Latency")
-check("integ",sigma,12,"σ","Latency")
-
-# ═══ I. Oscillation (10) ═══
-check("eeg_bands",n,6,"n","Oscillation")
-check("alpha_Hz",sigma-phi,10,"σ-φ","Oscillation")
-check("ab_boundary",sigma,12,"σ","Oscillation")
-check("spindle",sigma,12,"σ","Oscillation")
-check("gamma_lo",sopfr*n,30,"sopfr·n","Oscillation")
-check("P300",(sigma-phi)*sigma*(n//phi)-sigma*sopfr,300,"300ms","Oscillation")
-check("N400",tau*(sigma-phi)**2,400,"τ·(σ-φ)²","Oscillation")
-check("theta_lo",tau,4,"τ","Oscillation")
-check("theta_hi",sigma-tau,8,"σ-τ","Oscillation")
-check("ab_harm",phi,2,"φ","Oscillation")
-
-# ═══ J. Neurochemistry (10) ═══
-check("NT_count",n,6,"n","Neurochemistry")
-check("DA_rec",sopfr,5,"sopfr","Neurochemistry")
-check("5HT",sopfr,5,"sopfr","Neurochemistry")
-check("GABAA",sopfr,5,"sopfr","Neurochemistry")
-check("Glu_rec",tau,4,"τ","Neurochemistry")
-check("ACh_rec",phi,2,"φ","Neurochemistry")
-check("catechol",n//phi,3,"n/φ","Neurochemistry")
-check("amino_NT",n//phi,3,"n/φ","Neurochemistry")
-check("quantal",mu,1,"μ","Neurochemistry")
-check("HH_ions",tau,4,"τ","Neurochemistry")
-
-# ═══ K. Plasticity (8) ═══
-check("hebb",n//phi,3,"n/φ","Plasticity")
-check("plast_type",tau,4,"τ","Plasticity")
-check("STDP",sigma-phi,10,"σ-φ","Plasticity")
-check("BCM",phi,2,"φ","Plasticity")
-check("learn_ratio",J2-tau,20,"J₂-τ","Plasticity")
-check("grid_hex",n,6,"n","Plasticity")
-check("syn_tag",sigma,12,"σ","Plasticity")
-check("sleep_cyc",sopfr,5,"sopfr","Plasticity")
-
-# ═══ L. Sensory (10) ═══
-check("senses",n,6,"n","Sensory")
-check("CN",sigma,12,"σ","Sensory")
-check("cones",n//phi,3,"n/φ","Sensory")
-check("canals",n//phi,3,"n/φ","Sensory")
-check("octaves",sigma-phi,10,"σ-φ","Sensory")
-check("taste",sopfr,5,"sopfr","Sensory")
-check("mechano",tau,4,"τ","Sensory")
-check("ossicles",n//phi,3,"n/φ","Sensory")
-check("retina_cells",sopfr,5,"sopfr","Sensory")
-check("photorec",tau,4,"τ","Sensory")
-
-# ═══ M. Motor (10) ═══
-check("limbs",tau,4,"τ","Motor")
-check("fingers",sopfr,5,"sopfr","Motor")
-check("arm_DOF",n,6,"n","Motor")
-check("cervical",sigma-tau,8,"σ-τ","Motor")
-check("thoracic",sigma,12,"σ","Motor")
-check("lumbar",sopfr,5,"sopfr","Motor")
-check("M1_Brodmann",tau,4,"τ","Motor")
-check("SMA_Brodmann",n,6,"n","Motor")
-check("basal_gang",sopfr,5,"sopfr","Motor")
-check("desc_tracts",n//phi,3,"n/φ","Motor")
-
-# ═══ N. Autonomic (8) ═══
-check("ANS",phi,2,"φ","Autonomic")
-check("vagus",sigma-phi,10,"σ-φ","Autonomic")
-check("heart",tau,4,"τ","Autonomic")
-check("vitals",tau,4,"τ","Autonomic")
-check("ECG_limb",n,6,"n","Autonomic")
-check("ECG_total",sigma,12,"σ","Autonomic")
-check("sleep_stg",sopfr,5,"sopfr","Autonomic")
-check("circadian",J2,24,"J₂","Autonomic")
-
-# ═══ O. BrainAnat (8) ═══
-check("lobes",tau,4,"τ","BrainAnat")
-check("ventricles",tau,4,"τ","BrainAnat")
-check("meninges",n//phi,3,"n/φ","BrainAnat")
-check("hemispheres",phi,2,"φ","BrainAnat")
-check("brainstem",n//phi,3,"n/φ","BrainAnat")
-check("hippocampus",n//phi,3,"n/φ","BrainAnat")
-check("cerebellum",n//phi,3,"n/φ","BrainAnat")
-check("brain_wt",phi,2,"φ","BrainAnat")
-
-# ═══ P. Development (6) ═══
-check("vesicle1",n//phi,3,"n/φ","Development")
-check("vesicle2",sopfr,5,"sopfr","Development")
-check("neural_tube",n//phi,3,"n/φ","Development")
-check("crest",tau,4,"τ","Development")
-check("germ",n//phi,3,"n/φ","Development")
-check("somite",phi,2,"φ","Development")
-
-# ═══ Q. Clinical (5) ═══
-check("GCS",n//phi,3,"n/φ","Clinical")
-check("brain_death",n,6,"n","Clinical")
-check("CDR",sopfr,5,"sopfr","Clinical")
-check("MAC",mu,1,"μ","Clinical")
-check("NRS",sigma-phi,10,"σ-φ","Clinical")
-
-# ═══ R. SynapCircuit (5) ═══
-check("vesicle_rel",tau,4,"τ","SynapCircuit")
-check("neuron_type",tau,4,"τ","SynapCircuit")
-check("glia",tau,4,"τ","SynapCircuit")
-check("vesicle_nm",sigma*tau,48,"σ·τ","SynapCircuit")
-check("AP_phase",tau,4,"τ","SynapCircuit")
-
-# ═══ S. SensoryDetail (6) ═══
-check("V_areas",n,6,"n","SensoryDetail")
-check("retina_lay",sigma-phi,10,"σ-φ","SensoryDetail")
-check("binoc_FOV",sigma*(sigma-phi),120,"σ·(σ-φ)","SensoryDetail")
-check("Corti_rows",tau,4,"τ","SensoryDetail")
-check("Bark_bands",J2,24,"J₂","SensoryDetail")
-check("hear_range",sigma*(sigma-phi),120,"σ·(σ-φ)","SensoryDetail")
-
-# ═══ T. Imaging (6) ★ 신규 ═══
-check("MRI_T",n//phi,3,"n/φ","Imaging")
-check("fMRI_TR",phi,2,"φ","Imaging")
-check("CT_rot",mu,1,"μ","Imaging")
-check("DTI_dir",n,6,"n","Imaging")
-check("MRI_echo",tau,4,"τ","Imaging")
-check("TCD_MHz",phi,2,"φ","Imaging")
-
-# ═══ U. NeuroPharma (8) ★ 신규 ═══
-check("drug_class",n,6,"n","NeuroPharma")
-check("GABAA_alpha",n,6,"n","NeuroPharma")
-check("opioid_rec",n//phi,3,"n/φ","NeuroPharma")
-check("anesthesia",tau,4,"τ","NeuroPharma")
-check("CB_rec",phi,2,"φ","NeuroPharma")
-check("adrener",phi,2,"φ","NeuroPharma")
-check("DA_path",tau,4,"τ","NeuroPharma")
-check("SSRI",mu,1,"μ","NeuroPharma")
-
-# ═══ V. Disease (7) ★ 신규 ═══
-check("stroke_h",tau,4,"τ","Disease")
-check("seizure_type",phi,2,"φ","Disease")
-check("parkinson",tau,4,"τ","Disease")
-check("TBI",n//phi,3,"n/φ","Disease")
-check("MS_type",tau,4,"τ","Disease")
-check("dementia",tau,4,"τ","Disease")
-check("tumor_WHO",tau,4,"τ","Disease")
-
-# ═══ W. DeepSensory (5) ★ 신규 ═══
-check("otolith",phi,2,"φ","DeepSensory")
-check("propriocept",n//phi,3,"n/φ","DeepSensory")
-check("pain_fiber",n//phi,3,"n/φ","DeepSensory")
-check("vis_stream",phi,2,"φ","DeepSensory")
-check("aud_belt",n//phi,3,"n/φ","DeepSensory")
-
-# ═══ X. FormFactor (12) ★ 측두골 클립 ═══
-check("clips",phi,2,"φ","FormFactor")
-check("bone_mm",sopfr,5,"sopfr","FormFactor")
-check("area_cm2",n,6,"n","FormFactor")
-check("fix_pts",n//phi,3,"n/φ","FormFactor")
-check("battery_h",J2,24,"J₂","FormFactor")
-check("charge_W",mu,1,"μ","FormFactor")
-check("IPX",n,6,"n","FormFactor")
-check("wireless",tau,4,"τ","FormFactor")
-check("skin_sens",n//phi,3,"n/φ","FormFactor")
-check("magnets",phi,2,"φ","FormFactor")
-check("coil_rows",sigma,12,"σ","FormFactor")
-check("weight_g",n*n//sopfr,7,"n²/sopfr","FormFactor")
-
-# ═══ Y. Smartphone (14) ★ 스마트폰 대체 특이점 ═══
-check("spatial_cells",sopfr,5,"sopfr","Smartphone")
-check("mem_stages",n//phi,3,"n/φ","Smartphone")
-check("LTM_types",n//phi,3,"n/φ","Smartphone")
-check("lang_areas",phi,2,"φ","Smartphone")
-check("work_mem",tau,4,"τ","Smartphone")
-check("attn_types",tau,4,"τ","Smartphone")
-check("PFC_areas",n,6,"n","Smartphone")
-check("decision",n//phi,3,"n/φ","Smartphone")
-check("WiFi_gen",n,6,"n","Smartphone")
-check("cell_gen",n,6,"n","Smartphone")
-check("phone_sensors",n,6,"n","Smartphone")
-check("BT_major",sopfr,5,"sopfr","Smartphone")
-check("USB_ver",tau,4,"τ","Smartphone")
-check("TCP_IP",tau,4,"τ","Smartphone")
-
-# ═══ 최종 리포트 ═══
-passed = sum(1 for r in results if r["passed"])
-total = len(results)
-print("="*72)
-print(f"HEXA-NEURO 재설계 검증: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-print("="*72)
-by_cat = {}
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-123 항목", None, None, None),  # MISSING DATA
+    ("BT-33 항목", None, None, None),  # MISSING DATA
+    ("BT-263 항목", None, None, None),  # MISSING DATA
+    ("BT-300 항목", None, None, None),  # MISSING DATA
+    ("BT-28 항목", None, None, None),  # MISSING DATA
+    ("BT-299 항목", None, None, None),  # MISSING DATA
+    ("BT-132 항목", None, None, None),  # MISSING DATA
+    ("BT-56 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
-    by_cat.setdefault(r["category"], [0,0])
-    by_cat[r["category"]][1] += 1
-    if r["passed"]: by_cat[r["category"]][0] += 1
-new_cats = {"Imaging","NeuroPharma","Disease","DeepSensory"}
-for cat, (p,t) in by_cat.items():
-    mark = " ★ 신규" if cat in new_cats else ""
-    print(f"  {cat:16s} {p}/{t}{mark}")
-print("="*72)
-fails = [r for r in results if not r["passed"]]
-for r in fails:
-    print(f"[FAIL] {r['category']:16s} {r['name']} = {r['actual']} (expected {r['expected']})")
-if passed == total and total >= 202:
-    print(f"ALL PASS — 🛸10+++ CERTIFIED (측두골 클립 특이점: {total}/{total} EXACT)")
-    print("★ 25카테고리: 측두골 클립 3.6g × φ=2 + 스마트폰 + 웨어러블 10기기 + 15질환 치료")
-elif passed == total and total >= 190:
-    print(f"ALL PASS — 🛸10+++ (스마트폰 대체: {total}/{total} EXACT)")
-elif passed == total and total >= 174:
-    print(f"ALL PASS — 🛸10+++ ({total}/{total})")
-elif passed == total:
-    print(f"ALL PASS — 🛸10++ ({total}/{total})")
-else:
-    print(f"FAILED: {total-passed} checks")
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---

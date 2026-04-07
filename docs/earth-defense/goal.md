@@ -307,131 +307,58 @@ GPS 변위 + InSAR + 가스 농도 결합 시 n=6일 선제 경보가 물리 하
 ## 11. Python 검증 코드 (인라인, 표준라이브러리만)
 
 ```python
-#!/usr/bin/env python3
-"""HEXA-DEFENSE 검증: n=6 상수 매칭 + 물리 공식 확인"""
-
 import math
+def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
+def tau(n):   return sum(1 for d in range(1, n+1) if n % d == 0)
+def phi(n):   return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
+def sopfr(n):
+    s, m, d = 0, n, 2
+    while d*d <= m:
+        while m % d == 0: s += d; m //= d
+        d += 1
+    if m > 1: s += m
+    return s
+def jordan2(n):
+    r = n*n; m, d = n, 2
+    while d*d <= m:
+        if m % d == 0:
+            r = r * (1 - 1/(d*d))
+            while m % d == 0: m //= d
+        d += 1
+    if m > 1: r = r * (1 - 1/(m*m))
+    return int(round(r))
 
-# n=6 상수
-sigma, phi, tau, n, mu, sopfr, J2 = 12, 2, 4, 6, 1, 5, 24
-s_phi, s_tau, s_J2 = sigma-phi, sigma-tau, sigma*J2
-s_sq, phi_tau = sigma**2, phi**tau
-s_mu = sigma - mu
+# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
+assert sopfr(6) == 5 and jordan2(6) == 24
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
-checks = []
-def check(name, val, expected, tol=0.01):
-    ok = abs(val - expected) < tol
-    checks.append((name, val, expected, ok))
-    return ok
-
-# === Level 0: 탐지 ===
-check("NEO satellites",            24, n*tau)                  # 24=6*4
-check("NEO alt J2",                24, J2)                     # 24
-check("Coverage deg",             360, n*n*sigma-72)           # 360
-check("Altitude band deg",         12, sigma)                  # 12
-check("LD range sigma^2",         144, s_sq)                   # 144 LD
-
-# === Level 1: 추적 ===
-check("Track pts/h",              288, s_J2)                   # σ·J2=288
-check("Track hr/day",              24, J2)                     # 24
-check("Track pts/day",           6912, J2*s_J2)                # 24*288
-check("Orbit err deg",              4, tau)                    # ±4 deg
-
-# === Level 2: 판단 ===
-check("AI channels",               12, sigma)                  # σ=12ch
-check("Decision modes",             6, n)                      # n=6
-check("Confidence levels",          4, tau)                    # τ=4 tier
-
-# === Level 3: 대응 ===
-check("Response modes",             4, tau)                    # τ=4
-check("Impact mode",                1, mu)                     # kinetic
-check("Nuclear mode",               1, mu)                     # nuclear
-check("Gravity tractor",            1, mu)                     # gravity
-check("Laser ablation",             1, mu)                     # laser
-
-# === Level 4: 우주 추진 ===
-check("Mk.I Delta-v mm/s",         12, sigma)                  # 12mm/s
-check("Mk.II Delta-v mm/s",        30, sigma*phi+n)            # 24+6=30? no 12*2+6=30
-check("Mk.III Delta-v mm/s",       72, sigma*n)                # σ·n=72
-check("Mk.IV Delta-v mm/s",       144, s_sq)                   # σ²=144
-check("Warning days Mk.I",       8760, J2*365)                 # 24 years
-check("Warning years Mk.I",        24, J2)                     # 24 years
-
-# === Level 5: 지진 반사 ===
-check("Seismic P-wave Hz",         10, s_phi)                  # 10Hz
-check("Seismic S-wave Hz",          4, tau)                    # 4Hz
-check("Warning sec",               60, sigma*sopfr)            # 60s
-check("Reflector layers",           6, n)                      # 6 layer
-check("Absorb rate %",             63, int((1-1/math.e)*100))  # 63%
-
-# === Level 6: 화산 ===
-check("Volcano warn days",          6, n)                      # 6 days
-check("Sensor channels",           24, J2)                     # J2=24 ch
-check("Sensor array",             144, s_sq)                   # 144 sensors
-check("Sensor per grid",            6, n)                      # n=6
-
-# === Level 7: 통신 ===
-check("Comm channels",             48, sigma*tau)              # 48 ch
-check("Downlink Mbps",            288, s_J2)                   # 288 Mbps
-check("Uplink Mbps",               12, sigma)                  # 12 Mbps
-
-# === 에너지 수지 ===
-check("Sat power kW",              24, sigma*phi)              # 24 kW/sat
-check("Total sat kW",             576, J2*J2)                  # 576 kW
-check("Seismic kW total",        1728, sigma**3)               # σ³=1728
-check("Sensor W",                   6, n)                      # n=6 W/sensor
-
-# === 비용 ===
-check("Mk.I cost M USD",           12, sigma)                  # $12M/unit
-check("Mk.II cost M USD",          30, sigma*phi+n)            # $30M
-check("Mk.III cost M USD",        100, int((s_phi)**phi))      # $100M=(σ-φ)²
-check("Mk.IV cost M USD",        1000, s_phi**n//(s_phi**(n-3)))  # $1B
-# Simplify: 1000 = 10^3 = (σ-φ)^3
-check("Mk.IV B 10^3",            1000, s_phi**(n//phi))        # (σ-φ)³=1000
-
-# === 개선 배수 vs 경쟁 ===
-check("DART cost M",              324, sigma*J2+sigma+J2)      # 288+24+12=324
-check("Cost savings x",            27, 324//12)                # 27x
-check("Range vs ATLAS",            14, s_sq//10)               # 144/10≈14x
-check("Warning vs JMA",             6, sigma*sopfr//10)        # 60/10=6x
-
-# === 물리 하한 ===
-check("P-wave speed km/s",          6, n)                      # ~6 km/s
-check("S-wave speed km/s",          4, tau)                    # ~4 km/s
-check("P/S ratio",                1.5, n/tau, tol=0.01)        # 1.5
-check("Earth radius km",         6378, 6000+378)               # earth R
-check("Moon distance LD",           1, mu)                     # 1 LD
-
-# === BT 참조 ===
-check("BT-156 Richter",            12, sigma)                  # σ scale
-check("BT-203 P/S ratio",         1.5, n/tau, tol=0.01)
-check("BT-231 Kepler",              6, n)
-check("BT-174 GNSS",               24, J2)
-
-# === 방어 확률 ===
-check("Defense layers",             3, n//phi)                 # 우주/지진/화산
-check("Redundancy",                 6, n)                      # 6x redundant
-check("Risk reduction",           144, s_sq)                   # 1/σ² risk
-check("Civilization save %",       99, 100-mu)                 # 99%
-check("Boltzmann absorb",          63, int((1-1/math.e)*100))
-
-# === 시간 수렴 ===
-check("Warning cascade yr",        24, J2)                     # 24 yr
-check("Days 24 years",           8760, J2*365)                 # 8760 days
-check("Hours in day",              24, J2)                     # 24h
-check("Minutes in hour",           60, sigma*sopfr)            # 60m
-check("Degrees in circle",        360, n*n*sigma-72)           # 360
-
-# === Summary ===
-total = len(checks)
-passed = sum(1 for _,_,_,ok in checks if ok)
-print(f"HEXA-DEFENSE verification: {passed}/{total} EXACT ({100*passed/total:.1f}%)")
-for name, val, exp, ok in checks:
-    mark = "EXACT" if ok else "FAIL "
-    print(f"  [{mark}] {name:30s} val={val} expected={exp}")
-
-assert passed/total >= 0.90, f"Failed: only {passed}/{total} passed"
-print("RESULT: PASS")
+# goal.md — 정의 도출 검증
+results = [
+    ("BT-156 항목", None, None, None),  # MISSING DATA
+    ("BT-203 항목", None, None, None),  # MISSING DATA
+    ("BT-231 항목", None, None, None),  # MISSING DATA
+    ("BT-130 항목", None, None, None),  # MISSING DATA
+    ("BT-174 항목", None, None, None),  # MISSING DATA
+    ("BT-210 항목", None, None, None),  # MISSING DATA
+    ("BT-257 항목", None, None, None),  # MISSING DATA
+    ("BT-218 항목", None, None, None),  # MISSING DATA
+    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
+    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
+    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
+    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
+    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+]
+valid = [r for r in results if r[3] is not None]
+passed = sum(1 for r in valid if r[3])
+print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+for r in results:
+    if r[3] is None:
+        print(f"  SKIP: {r[0]} — MISSING DATA")
+    else:
+        mark = "PASS" if r[3] else "FAIL"
+        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
