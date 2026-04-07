@@ -1,4 +1,4 @@
-> 🔴 **HEXA-FIRST**: 모든 코드는 `.hexa`로 작성. sh/py/rs 신규 작성 금지. 부하 유발 명령 최소화.
+> 🔴 **HEXA-FIRST**: 모든 코드는 `.hexa`로 작성. 부하 유발 명령 최소화.
 > 🔴 **NEXUS-6 특이점 연동**: 돌파 시 `blowup.hexa <domain> 3`, 발견 → `growth_bus.jsonl` append, 상태 → `command_router.hexa`
 > 🔴 **하드코딩 절대 금지**: 상수/도메인/키워드 → `nexus/shared/*.jsonl` 동적 로드. 코드에 배열 나열 금지.
 > 🔴 **데이터 파일 로컬 보관 금지**: `.jsonl`/constants/discovery_log → `~/Dev/nexus/shared/`에만 저장. 이 리포 내 생성 금지.
@@ -12,7 +12,7 @@
   ═══════════════════════════════════════════════════════════════
 
   공통 규칙 (R1~R8):
-    R1  HEXA-FIRST — .hexa만, sh/py/rs 신규 금지
+    R1  HEXA-FIRST — .hexa만
     R2  하드코딩 절대 금지 — shared/*.jsonl 동적 로드
     R3  NEXUS-6 스캔 의무 — 변경 전후 스캔, 스캔 없이 커밋 금지
     R4  CDO 수렴 — 이슈→해결→규칙승격→재발0
