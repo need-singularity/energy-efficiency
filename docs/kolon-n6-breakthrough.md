@@ -10,7 +10,7 @@
 >
 > 검증 코드: [`calc/kolon_n6_breakthrough.py`](../calc/kolon_n6_breakthrough.py) · [`calc/kolon_n6_phase2.py`](../calc/kolon_n6_phase2.py)
 >
-> 상위 참조: [`../CLAUDE.md`](../CLAUDE.md) (n=6 상수 원본) · [`breakthrough-theorems.md`](breakthrough-theorems.md) (BT-1~343) · [`kolon/goal.md`](kolon/goal.md) (실생활·ASCII·업그레이드)
+> 상위 참조: [`../CLAUDE.md`](../CLAUDE.md) (n=6 상수 원본) · [`breakthrough-theorems.md`](breakthrough-theorems.md) (BT-1~343) · [`kolon-overview.md`](kolon-overview.md) (실생활·ASCII·업그레이드)
 
 ## n=6 기본 상수
 
@@ -32,12 +32,12 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 23/23 | v2 | **나일론 6/6,6** | n=6 폴리머, σ=12C, 원사 840d=σ(σ-φ)(σ-sopfr), 필라멘트 σ²=144f | [문서](kolon/nylon.md) |
-| 20/20 | v2 | **아라미드 (Heracron)** | 28=2nd 완전수, 밀도 1.44=σ²/100, 1500d=σ·sopfr³, 분해 500°C | [문서](kolon/aramid.md) |
-| 20/20 | v2 | **타이어코드** | 가황 144°C=σ², 벨트각 J₂=24°, 공기압 2^sopfr=32psi, 부품 n=6 | [문서](kolon/tire-cord.md) |
-| 20/20 | v2 | **에폭시/페놀 수지** | FR-4 1.6mm=φ^τ/(σ-φ), Tg=σ(σ-φ)=120°C, 탄소섬유 tow n/σ/J₂ | [문서](kolon/epoxy.md) |
+| 23/23 | v2 | **나일론 6/6,6** | n=6 폴리머, σ=12C, 원사 840d=σ(σ-φ)(σ-sopfr), 필라멘트 σ²=144f | [문서](nylon/goal.md) |
+| 20/20 | v2 | **아라미드 (Heracron)** | 28=2nd 완전수, 밀도 1.44=σ²/100, 1500d=σ·sopfr³, 분해 500°C | [문서](aramid/goal.md) |
+| 20/20 | v2 | **타이어코드** | 가황 144°C=σ², 벨트각 J₂=24°, 공기압 2^sopfr=32psi, 부품 n=6 | [문서](tire-cord/goal.md) |
+| 20/20 | v2 | **에폭시/페놀 수지** | FR-4 1.6mm=φ^τ/(σ-φ), Tg=σ(σ-φ)=120°C, 탄소섬유 tow n/σ/J₂ | [문서](epoxy/goal.md) |
 
-> 도메인: [kolon/nylon.md](kolon/nylon.md) · [kolon/aramid.md](kolon/aramid.md) · [kolon/tire-cord.md](kolon/tire-cord.md) · [kolon/epoxy.md](kolon/epoxy.md)
+> 도메인: [nylon/goal.md](nylon/goal.md) · [aramid/goal.md](aramid/goal.md) · [tire-cord/goal.md](tire-cord/goal.md) · [epoxy/goal.md](epoxy/goal.md)
 
 ---
 
@@ -47,9 +47,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 22/22 | v2 | **PET 광학필름** | 탄소 σ-φ=10, Tg=σn=72°C, IV=0.6=n/(σ-φ), 투과율 90=(σ-φ)²-(σ-φ) | [문서](kolon/pet-film.md) |
+| 22/22 | v2 | **PET 광학필름** | 탄소 σ-φ=10, Tg=σn=72°C, IV=0.6=n/(σ-φ), 투과율 90=(σ-φ)²-(σ-φ) | [문서](pet-film/goal.md) |
 
-> 도메인: [kolon/pet-film.md](kolon/pet-film.md)
+> 도메인: [pet-film/goal.md](pet-film/goal.md)
 
 ---
 
@@ -59,9 +59,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 18/18 | v2 | **에어백** | 차량당 n=6개, 전개 30ms=σφ+n, 부피 σ·sopfr=60L, 실밀도 J₂=24 | [문서](kolon/airbag.md) |
+| 18/18 | v2 | **에어백** | 차량당 n=6개, 전개 30ms=σφ+n, 부피 σ·sopfr=60L, 실밀도 J₂=24 | [문서](airbag/goal.md) |
 
-> 도메인: [kolon/airbag.md](kolon/airbag.md)
+> 도메인: [airbag/goal.md](airbag/goal.md)
 
 ---
 
@@ -71,9 +71,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 21/21 | v2 | **수처리 멤브레인** | CN=6 팔면체, A2O n/φ=3, BOD σ-φ=10, pH n\~σ-τ | [문서](kolon/water-treatment.md) |
+| 21/21 | v2 | **수처리 멤브레인** | CN=6 팔면체, A2O n/φ=3, BOD σ-φ=10, pH n\~σ-τ | [문서](water-treatment/goal.md) |
 
-> 도메인: [kolon/water-treatment.md](kolon/water-treatment.md)
+> 도메인: [water-treatment/goal.md](water-treatment/goal.md)
 
 ---
 
@@ -83,9 +83,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 21/21 | v2 | **PEMFC 수소막** | 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142 | [문서](kolon/pemfc.md) |
+| 21/21 | v2 | **PEMFC 수소막** | 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142 | [문서](pemfc/goal.md) |
 
-> 도메인: [kolon/pemfc.md](kolon/pemfc.md)
+> 도메인: [pemfc/goal.md](pemfc/goal.md)
 
 ---
 
@@ -95,9 +95,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 22/22 | v2 | **건설 콘크리트** | 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ) | [문서](kolon/concrete.md) |
+| 22/22 | v2 | **건설 콘크리트** | 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ) | [문서](concrete/goal.md) |
 
-> 도메인: [kolon/concrete.md](kolon/concrete.md)
+> 도메인: [concrete/goal.md](concrete/goal.md)
 
 ---
 
@@ -107,9 +107,9 @@
 
 | EXACT | ver | 제품 | 핵심 | 문서 |
 |:-----:|:---:|------|------|------|
-| 25/25 | v2 | **바이오 약물전달** | ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4 | [문서](kolon/bio-pharma.md) |
+| 25/25 | v2 | **바이오 약물전달** | ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4 | [문서](bio-pharma/goal.md) |
 
-> 도메인: [kolon/bio-pharma.md](kolon/bio-pharma.md)
+> 도메인: [bio-pharma/goal.md](bio-pharma/goal.md)
 
 ---
 
