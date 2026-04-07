@@ -1,6 +1,5 @@
-// Mini-port: gut-calc-rust PART 1 (rank sequence) only
-// Workarounds: parallel arrays (no tuple destructuring),
-//   single-arg println (string concat), no powi (constant)
+// Mini-port: gut-calc-rust PART 1 — full fidelity attempt
+// Tests: unicode literals, format(), multi-arg println
 
 let n = 6
 let sigma = 12
@@ -11,23 +10,26 @@ let sopfr = 5
 println("══ PART 1: GUT Rank Sequence ══")
 println("")
 
-let names = ["SU(5)", "SO(10)", "E_6", "E_8"]
-let ranks = [4, 5, 6, 8]
-let vals  = [tau, sopfr, n, sigma - tau]
-let exprs = ["tau(6)", "sopfr(6)", "n", "sigma-tau"]
+let names = ["SU(5)   ", "SO(10)  ", "E₆      ", "E₈      "]
+let ranks = [" 4", " 5", " 6", " 8"]
+let vals  = [" 4", " 5", " 6", " 8"]
+let valsi = [tau, sopfr, n, sigma - tau]
+let ranki = [4, 5, 6, 8]
+let exprs = ["τ(6)    ", "sopfr(6)", "n       ", "σ-τ     "]
 
 let i = 0
 let matches = 0
 while i < 4 {
-    let mark = "FAIL"
-    if ranks[i] == vals[i] {
-        mark = "EXACT"
+    let mark = "✗ FAIL"
+    if ranki[i] == valsi[i] {
+        mark = "✓ EXACT"
         matches = matches + 1
     }
-    println(names[i] + " rank=" + to_string(ranks[i]) + " vs " + exprs[i] + "=" + to_string(vals[i]) + " -> " + mark)
+    println("  " + names[i] + " rank = " + ranks[i] + "  vs  " + exprs[i] + " = " + vals[i] + "  → " + mark)
     i = i + 1
 }
 
 println("")
-println("Matches: " + to_string(matches) + "/4")
-println("P(all 4 match by chance) ~ 0.0028 = 0.28%")
+println("  Rank sequence: (4, 5, 6, 8) = (τ, sopfr, n, σ-τ)")
+println("  Matches: " + to_string(matches) + "/4")
+println("  P(all 4 match by chance) ≈ 0.0028 = 0.28%")

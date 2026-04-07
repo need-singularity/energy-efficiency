@@ -18,37 +18,36 @@ n6-architecture의 `.py` / `.rs` / `.sh` → `.hexa` 전면 포팅은 **현재 h
 
 ## 차단 항목 (Blockers)
 
-### B-1. 다중 인수 `println` 미지원 (codegen_c2)
+### B-1. 다중 인수 `println` (RESOLVED 2026-04-08)
 
-**증상:** `println("fib(", i, ") =", fib(i))` 컴파일 실패
-**영향:** 거의 모든 .rs 계산기 (`println!("...{}...", x)` 형태가 표준)
-**필요:** 가변 인수 println 또는 포맷 문자열 지원
+**상태:** ✅ string concat (`"a=" + to_string(x)`) 형태로 동작 확인 (Pilot-B G3 통과)
+**잔여:** 다중 `{}` 치환은 B-3a로 분리
 
-### B-2. CLI argv 미지원
+### B-2. CLI argv (RESOLVED 2026-04-08)
 
-**증상:** `hexa_build.hexa`조차 `source_file = "examples/fibonacci.hexa"` 하드코딩 사용
-**영향:**
-- L1 `scripts/*.sh` 13개 — 거의 전부 `$1 $2` 사용
-- L2 `tools/*calc/*.rs` ~30개 — 일부 argv 사용
-**필요:** `args()` 또는 `argv` 표준 함수
+**상태:** ✅ `args()` 동작 확인 (Pilot-β: argv[0] 포함 정상)
 
-### B-3. 포맷 스펙 부재
+### B-3. 포맷 스펙 부분 지원 (2026-04-08 재검증)
 
-**증상:** Rust `{:<8}`, `{:>2}`, `{:.4}` 같은 정렬·정밀도 지정자 등가물 없음
-**영향:** 거의 모든 L2 계산기의 표 출력
-**필요:** `format!` / `printf` 류 또는 폭/정밀도 헬퍼 함수
+**현재 상태 (Pilot-β 측정):**
+- ✅ `format("{}", x)` 단일 치환 동작
+- ❌ **B-3a:** `format("{} {}", a, b)` 다중 치환 — 첫 번째만 치환, 나머지 리터럴
+- ❌ **B-3b:** `{:<8}` `{:>2}` `{:.4}` 등 폭/정밀도/정렬 지정자 — 전부 리터럴 출력
+- ❌ **B-3c:** `to_string(float)` 정밀도 제어 — 기본 표시만 (`0.00279841` 등)
 
-### B-4. 부동소수 수학 함수
+**영향:** L2 계산기의 표 출력이 자동 포팅 불가, **수동 패딩 워크어라운드**로만 가능 (Pilot-B에서 입증)
+**필요:** Rust `{:<width}` `{:>width.prec}` 등가 또는 헬퍼 (`pad_left`, `pad_right`, `to_string_prec`)
 
-**증상:** `f64::powi`, `sqrt`, `sin`, `cos`, `ln`, `exp` 등 표준 라이브러리 함수 미확인
-**영향:** 모든 물리/광학/핵융합 계산기 (L2 다수)
-**필요:** `math` 모듈 또는 `extern` libm 바인딩
+### B-4. 부동소수 수학 함수 (PARTIAL 2026-04-08)
 
-### B-5. 유니코드 리터럴 안정성 미확인
+**확인:** ✅ `pow`, `sqrt`, `floor` 동작 (Pilot-β)
+**미확인:** `sin`, `cos`, `tan`, `ln`, `log10`, `exp`, `atan2`, `ceil`, `abs`
+**필요:** 나머지 libm 함수 노출 확인
 
-**증상:** `═`, `✓`, `✗`, 한글 등 비-ASCII 출력. 토큰화·C 코드 생성 시 escape 처리 미검증
-**영향:** 거의 모든 리포 출력 (CLAUDE.md 한글 강제 규칙)
-**필요:** UTF-8 안전 문자열 처리 명시
+### B-5. 유니코드 리터럴 (RESOLVED 2026-04-08)
+
+**상태:** ✅ `═ ✓ ✗ → ₆ ₈ τ σ` 등 BMP 문자 동작 확인 (Pilot-B G3 byte-perfect)
+**미확인:** 한글, 4-byte UTF-8 (이모지 등) — 별도 검증 필요
 
 ### B-6. for/range 루프와 destructuring
 
@@ -79,7 +78,10 @@ n6-architecture의 `.py` / `.rs` / `.sh` → `.hexa` 전면 포팅은 **현재 h
 **영향:** L3 `techniques/*.py` 23개, L4 `experiments/*.py` 전부
 **필요:** 별도 결정 — (a) HEXA용 ML 스택 신규 작성 / (b) Python FFI / (c) L3/L4 포팅 영구 보류
 
-### B-12. 배열 리터럴 codegen 손상 (CRITICAL)
+### B-12. 배열 리터럴 codegen (RESOLVED 2026-04-08)
+
+**상태:** ✅ Pilot-B 재시도에서 `["a","b","c","d"]` 정상 동작
+*이전 증상 (보존):*
 
 **증상:** `let names = ["SU(5)", "SO(10)", "E_6", "E_8"]`에서 생성된 C:
 ```c
@@ -89,7 +91,10 @@ HexaVal vals = hexa_array_new(), tau), sopfr), n), hexa_int(...));
 **영향:** 단일원소 외 배열 리터럴 전부 불가 → 거의 모든 비자명 프로그램 불가
 **필요:** codegen_c2에서 배열 리터럴을 `hexa_array_push(hexa_array_push(... hexa_array_new() ...))` 형태로 제대로 펼치기
 
-### B-13. while/for 본문에서 외부 스코프 변수 미인식 (CRITICAL)
+### B-13. while/for 본문 외부 스코프 (RESOLVED 2026-04-08)
+
+**상태:** ✅ Pilot-B 재시도에서 `while { ... names[i] ... matches = matches + 1 ... }` 동작
+*이전 증상 (보존):*
 
 **증상:** top-level `let names = ...` 후 `while i < 4 { ... names[i] ... }`에서
 ```
