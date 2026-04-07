@@ -169,6 +169,36 @@ F5: pct(102.0, 100.0) = 0     // (102.0 - 100.0) / 100.0 * 100.0
 **영향:** G3 byte-perfect에 영향 (Rust calc 다수가 `{:?}` 또는 `{}` 로 bool 출력)
 **필요:** `to_string`에서 TAG_BOOL → `"true"`/`"false"`
 
+### B-23. 과학 표기 리터럴 (`1.38e-23`)
+
+**증상:** 렉서가 `1.38e` + `-23`으로 분리 → C 코드에 `e` 미선언 식별자
+**영향:** Boltzmann/Planck 등 물리 상수, energy-calc/optics-calc/photonic-energy-calc
+**필요:** lexer가 float exponent 인식 (`[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?`)
+
+### B-24. `ln(x)` 자연로그
+
+**증상:** 함수 미정의, C에 implicit 선언
+**영향:** Landauer `kT·ln(2)`, Shannon entropy 등
+**필요:** runtime `hexa_ln` (libm `log`)
+
+### B-25. `log10(x)` 이름 충돌
+
+**증상:** hexa runtime에 미정의 → C log10이 HexaVal struct로 잘못 호출되어 컴파일 에러
+**영향:** dB 계산, exponent 추정
+**필요:** runtime `hexa_log10` 정의 (libm `log10` 래핑)
+
+### B-26. `array.contains(item)` 항상 `false`
+
+**증상:** `["--solar","--all"].contains("--all")` → `false`
+**영향:** `args.contains("--solar")` 류 CLI 플래그 검사 — energy-calc 등 거의 모든 calc
+**필요:** `array.contains` 메서드가 실제 비교 후 bool 반환
+
+### B-27. Float 정밀도 포맷 (`{:>10.4}`, `{:>6.2}%`, `{:.4e}`)
+
+**증상:** pad_right/pad_left은 string 패딩만, float 자릿수 제어 불가. `to_string(0.337)`은 `"0.337"`만 (소수 2/4자리 강제 불가)
+**영향:** L2 calc 표 출력 거의 전부 — G3 byte-perfect 자동화 불가
+**필요:** `format_float(f, prec)` 또는 `{:.4}` 등가 포맷 헬퍼
+
 ### B-11. 빌드 산출물 cleanup / 출력 경로
 
 **증상:** `.c` 중간 파일이 소스 옆에 남음. `-I` 플래그가 `ready/self` 상대경로로 하드코딩 → cwd 의존
