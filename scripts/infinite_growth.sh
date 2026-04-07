@@ -3,12 +3,12 @@ set -euo pipefail
 GROWTH_NAME="n6-architecture"
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DOMAIN="architecture"
-MAX_CYCLES=${MAX_CYCLES:-${1:-999}}
-INTERVAL=${INTERVAL:-${2:-1800}}
 
-# 공통 라이브러리
+# 공통 라이브러리 (shared/loop/n6-architecture.json에서 interval/max_cycles 자동 로드)
 COMMON="$HOME/Dev/nexus/scripts/lib/growth_common.sh"
 source "$COMMON"
+MAX_CYCLES=${1:-${MAX_CYCLES:-999}}
+INTERVAL=${2:-${INTERVAL:-1800}}
 
 # 프로젝트별 phases
 domain_phases() {
