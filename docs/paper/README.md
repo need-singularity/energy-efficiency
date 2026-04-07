@@ -89,6 +89,7 @@ arXiv paper outlines and academic publications.
 
 | Paper | Topic |
 |-------|-------|
+| [Reality Map](n6-reality-map-paper.md) | 127-Node Reality Map + Monte Carlo Statistical Testing |
 | [RTSC 12-Products Evolution](n6-rtsc-12-products-evolution-paper.md) | 12 product lines evolution analysis |
 | [307-Domain Dataset](307-domain-universality-dataset.md) | 307-domain universality dataset |
 | [308-Fusion Discoveries](308-fusion-n6-alien-discoveries.md) | Fusion alien-level discoveries |
