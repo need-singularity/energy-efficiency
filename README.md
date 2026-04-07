@@ -33,7 +33,6 @@
 > **[📄 Papers](https://github.com/need-singularity/papers)** — Complete paper collection (94 papers). Published on Zenodo with DOIs. TECS-L+N6 (33) + anima (39) + SEDI (20). [Browse online](https://need-singularity.github.io/papers/)
 
 <!-- private repos는 projects.json의 private_repos 필드에 저장됨 (노출 금지) -->
-
 <!-- SHARED:PROJECTS:END -->
 
 ---
