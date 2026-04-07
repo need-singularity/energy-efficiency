@@ -396,7 +396,7 @@ Statistical verification (2026-04-07):
   plasma-physics/ (20+ files — most active domain)
   paper/ (3 arXiv drafts)
   # Cross-domain
-  breakthrough-theorems.md (BT-1~343, 343 theorems spanning 3-8 domains each)
+  breakthrough-theorems.md (BT-1~413, 413 theorems spanning 3-8 domains each)
   cross-domain-resonance-2026-03-31.md (formula reuse matrix)
   # Battery Architecture (소재→공정→코어→칩→시스템→차세대→극한→궁극)
   battery-architecture/ (8 levels: HEXA-CELL/ELECTRODE/CORE/CHIP/PACK+GRID/SOLID/NUCLEAR/OMEGA-E)
@@ -729,7 +729,7 @@ python3 experiments/experiment_h_ee_11_combined_architecture.py
   Egyptian Fraction Attn:   1/2+1/3+1/6=1 attention budget (~40% saved)
 ```
 
-## Breakthrough Theorems (343 total, BT-1~343)
+## Breakthrough Theorems (413 total, BT-1~413)
 ```
   # AI / LLM (BT-26,31,33,34,39,42,44,46,54,56,58,59,61,64,65,66,67,70~76,163,164,330~337)
   BT-26: Chinchilla scaling (tokens/params=J₂-τ=20, α=1/3, β=ln(4/3))
@@ -1551,3 +1551,6 @@ nexus loop --cycles 1              # 8단계 루프 (mirror+blowup 포함)
 nexus daemon --interval 30         # 자율 데몬 (30분 간격)
 ```
 
+
+## 할일 (todo)
+- "todo", "할일" → `hexa-bin-actual $HOME/Dev/nexus/mk2_hexa/native/todo.hexa n6-arch` 실행 후 **결과를 마크다운 텍스트로 직접 출력** (렌더링되는 표로)
