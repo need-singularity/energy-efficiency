@@ -3233,8 +3233,7 @@
           ],
           "verify_script": "calc/kolon_n6_phase2.py",
           "exact": "25/25"
-        }
-      ],
+        },
         {
           "name": "HVAC 냉난방 n=6 COP 최적화",
           "ufo": 10,
