@@ -151,7 +151,7 @@ arXiv paper outlines and academic publications.
 |-------|-------|------|
 | [HEXA-COSMIC](n6-hexa-cosmic-paper.md) | 초기우주 관측망 | 장기 |
 | [HEXA-GRAV](n6-hexa-grav-paper.md) | 중력파 검출/통신 | 장기 |
-| [HEXA-SF](n6-hexa-sf-paper.md) | 초광속 추진 | SF |
+| [HEXA-UFO](n6-hexa-ufo-paper.md) | UFO 비행접시 (RT-SC VTOL) | 장기 |
 | [HEXA-STARSHIP](n6-hexa-starship-paper.md) | 재사용 발사체 | 진짜 |
 | [Antimatter Factory](n6-antimatter-factory-paper.md) | 반물질 공장 | SF |
 
