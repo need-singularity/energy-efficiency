@@ -1754,10 +1754,6 @@
             {
               "label": "문서",
               "path": "docs/sf/goal.md"
-            },
-            {
-              "label": "논문",
-              "path": "docs/paper/n6-hexa-ufo-paper.md"
             }
           ]
         }
