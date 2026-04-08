@@ -2,6 +2,18 @@
 // Verifies GUT hierarchy against n=6 arithmetic
 // Original: tools/gut-calc-rust/main.rs
 
+fn pad_right(s, w) {
+    let mut r = to_string(s)
+    while len(r) < w { r = r + " " }
+    r
+}
+
+fn pad_left(s, w) {
+    let mut r = to_string(s)
+    while len(r) < w { r = " " + r }
+    r
+}
+
 println("═══════════════════════════════════════════════════════")
 println("  N6 GUT Gauge Group Calculator")
 println("  Verifying Grand Unified Theory hierarchy vs n=6")
@@ -37,14 +49,14 @@ while i < 4 {
     let mut mark = "✗ FAIL"
     if g_ranks[i] == g_vals[i] {
         mark = "✓ EXACT"
-        rank_matches += 1
+        rank_matches = rank_matches + 1
     }
     let np = pad_right(g_names[i], 8)
     let rp = pad_left(to_string(g_ranks[i]), 2)
     let ep = pad_right(g_exprs[i], 8)
     let vp = pad_left(to_string(g_vals[i]), 2)
     println("  " + np + " rank = " + rp + "  vs  " + ep + " = " + vp + "  → " + mark)
-    i += 1
+    i = i + 1
 }
 println("")
 println("  Rank sequence: (4, 5, 6, 8) = (τ, sopfr, n, σ-τ)")
@@ -99,7 +111,7 @@ while j < 4 {
     let ep = pad_right(r_exprs[j], 10)
     let vp = pad_left(to_string(r_vals[j]), 3)
     println("  " + np + " dim = " + dp + "  vs  " + ep + " = " + vp + "  → " + rmark)
-    j += 1
+    j = j + 1
 }
 
 println("")
@@ -124,7 +136,7 @@ while k < 5 {
     let dp = pad_left(to_string(h_dims[k]), 4)
     let ep = pad_left(h_exprs[k], 25)
     println("  " + np + " dim = " + dp + "  " + ep + "  → " + h_marks[k])
-    k += 1
+    k = k + 1
 }
 
 println("")
@@ -146,13 +158,13 @@ let s_exprs = ["σ-τ", "n/φ", "μ"]
 let mut total = 0
 let mut m = 0
 while m < 3 {
-    total += s_counts[m]
+    total = total + s_counts[m]
     let smark = if s_counts[m] == s_vals[m] { "✓" } else { "✗" }
     let np = pad_right(s_names[m], 20)
     let cp = pad_left(to_string(s_counts[m]), 2)
     let ep = pad_right(s_exprs[m], 5)
     println("    " + np + " " + cp + " = " + ep + " " + smark)
-    m += 1
+    m = m + 1
 }
 println("    ────────────────────────")
 println(format("    Total              {} = σ(6) = {}  ✓", total, sigma))
@@ -170,9 +182,9 @@ let mut pass = 0
 let mut p = 0
 while p < c_descs.len() {
     let cmark = if c_oks[p] { "✓" } else { "✗" }
-    if c_oks[p] { pass += 1 }
+    if c_oks[p] { pass = pass + 1 }
     println("  " + cmark + " " + c_descs[p])
-    p += 1
+    p = p + 1
 }
 println("")
 println(format("  Score: {}/{} EXACT matches", pass, c_descs.len()))
