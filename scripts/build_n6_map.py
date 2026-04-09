@@ -41,6 +41,27 @@ CHEMISTRY_KEYWORDS = {
     "food-chemistry", "battery-chemistry", "electrochemistry"
 }
 
+# ── reality_map.json 레벨 → 3D 맵 5계층 매핑 ──
+REALITY_LEVEL_MAP = {
+    "L-2_sub_quark": 0,
+    "L-1_quark": 0,
+    "L0_particle": 0,
+    "L1_atom": 0,
+    "L2_bond": 1,
+    "L2_law": 1,
+    "L3_molecule": 1,
+    "L4_genetic": 2,
+    "L5_material": 2,
+    "L5_bio": 2,
+    "L6_discovery": 3,
+    "L7_celestial": 3,
+    "L8_galactic": 3,
+    "L9_cosmological": 3,
+    "L10_multiversal": 3,
+}
+
+SHARED_DIR = Path.home() / "Dev" / "nexus" / "shared"
+
 
 def is_material_domain(name: str) -> bool:
     return any(kw in name for kw in MATERIAL_KEYWORDS)
@@ -48,6 +69,76 @@ def is_material_domain(name: str) -> bool:
 
 def is_chemistry_domain(name: str) -> bool:
     return any(kw in name for kw in CHEMISTRY_KEYWORDS)
+
+
+def load_reality_map(existing_ids: set[str]):
+    """reality_map.json → 노드 + 엣지 (기존 노드와 ID 충돌 시 스킵)"""
+    nodes, edges = [], []
+    path = SHARED_DIR / "reality_map.json"
+    if not path.exists():
+        print(f"  ⚠ reality_map.json not found: {path}")
+        return nodes, edges
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+
+    for n in data.get("nodes", []):
+        if "id" not in n:
+            continue  # skip comment nodes
+        nid = f"rm_{n['id']}"
+        if nid in existing_ids:
+            continue
+
+        level = n.get("level", "unknown")
+        # L6_* 세분화: 6계층의 수십 개 하위 도메인 → 모두 layer 3
+        if level.startswith("L6_") or level.startswith("L7_") or \
+           level.startswith("L8_") or level.startswith("L9_") or \
+           level.startswith("L10_"):
+            layer = 3
+        else:
+            layer = REALITY_LEVEL_MAP.get(level, 2)
+
+        label = n.get("claim", n["id"])
+        if len(label) > 60:
+            label = label[:57] + "..."
+
+        nodes.append({
+            "id": nid,
+            "label": label,
+            "layer": layer,
+            "type": "reality",
+            "grade": n.get("grade", ""),
+            "n6_expr": n.get("n6_expr", ""),
+            "origin": n.get("origin", ""),
+            "level": level,
+        })
+
+        # children → 엣지
+        for child_id in n.get("children", []):
+            edges.append({
+                "source": nid,
+                "target": f"rm_{child_id}",
+                "type": "reality_child",
+            })
+        # siblings → 엣지
+        for sib_id in n.get("siblings", []):
+            edges.append({
+                "source": nid,
+                "target": f"rm_{sib_id}",
+                "type": "reality_sibling",
+            })
+
+    # 기존 엣지도 포함
+    for e in data.get("edges", []):
+        src = e.get("source", e.get("from", ""))
+        tgt = e.get("target", e.get("to", ""))
+        if src and tgt:
+            edges.append({
+                "source": f"rm_{src}",
+                "target": f"rm_{tgt}",
+                "type": e.get("type", "reality_edge"),
+            })
+
+    return nodes, edges
 
 
 def load_constants():
@@ -490,6 +581,12 @@ def main():
     all_nodes.extend(prod_nodes)
     all_edges.extend(prod_edges)
 
+    print("Loading reality map...")
+    existing_ids = {n["id"] for n in all_nodes}
+    rm_nodes, rm_edges = load_reality_map(existing_ids)
+    all_nodes.extend(rm_nodes)
+    all_edges.extend(rm_edges)
+
     print("Adding cross-layer edges...")
     add_cross_layer_edges(all_nodes, all_edges)
 
@@ -505,7 +602,7 @@ def main():
     output = {
         "meta": {
             "title": "n=6 Architecture — Full Layer Map",
-            "version": "1.0",
+            "version": "2.0",
             "layers": {
                 "0": "원소/상수 (Constants & Elements)",
                 "1": "재료/화학 (Materials & Chemistry)",

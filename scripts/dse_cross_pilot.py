@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""DSE 교차 공명 분석 — 전체 335 도메인, n=6 수식 패턴 교차 탐색
+"""DSE 교차 공명 분석 — 전체 335 도메인, n=6 수식 패턴 교차 탐색 (v2: 전체 확장)
 
 입력: docs/dse-map.toml
 출력:
   ~/Dev/nexus/shared/dse_cross/top50_domains.jsonl
   ~/Dev/nexus/shared/dse_cross/pair_scores.jsonl
   ~/Dev/nexus/shared/dse_cross/resonance_hist.jsonl
-  ~/Dev/nexus/shared/dse_cross/formula_cross.jsonl    ← 신규: 수식별 교차 공명
-  docs/dse-cross-resonance.md (상위 50 교차 공명 패턴 + 도메인 매핑)
+  ~/Dev/nexus/shared/dse_cross/formula_cross.jsonl    ← 수식별 교차 공명
+  ~/Dev/nexus/shared/dse_cross/all_pairs_s05.jsonl    ← 전체 도메인 S>=0.5 쌍
+  ~/Dev/nexus/shared/dse_cross/domain_clusters.jsonl  ← 수식 기반 도메인 클러스터
+  docs/dse-cross-resonance.md (교차 공명 전체 리포트)
 
 교차 공명 정의 (동어반복 금지, 정의에서 도출):
   각 도메인의 note/candidates/best_* 필드에서 n=6 산술 수식 패턴을 추출.
   동일 수식이 서로 다른 도메인에서 나타나면 "교차 공명".
   빈도 상위 50개 패턴 = 가장 강한 교차 공명.
+
+v2 확장 (2026-04-09):
+  - 쌍 분석을 상위 50 → 전체 335 도메인으로 확장
+  - S >= 0.5 인 모든 쌍 추출
+  - 수식 공유 기반 도메인 클러스터 그룹핑 (Union-Find)
+  - 클러스터별 통계 및 리포트
 
 n=6 산술 상수:
   n=6, σ=12, τ=4, φ=2, sopfr=5, J₂=24, σ·φ=24, σ-τ=8, σ/τ=3
@@ -355,16 +363,16 @@ with (OUT/"formula_cross.jsonl").open("w") as f:
             "domains": doms,
         }, ensure_ascii=False) + "\n")
 
-# ── 5. 기존 쌍 분석도 유지 (상위 50 도메인) ─────────────────────
+# ── 5. 전체 도메인 쌍 분석 (v2: 335 도메인 전체 확장) ───────────
 def score_size(d):
     c = d.get("combos", 0)
     if isinstance(c, (int,float)): return c
     return 0
 
 ranked_domains = sorted(pure_domains.items(), key=lambda kv: score_size(kv[1]), reverse=True)
-combos_top50 = ranked_domains[:50]
 
-# 선정 정책: combos 상위 50 ∪ {n6_avg ≥ 90 도메인}
+# 기존 호환: combos 상위 50 ∪ n6_avg >= 90 도메인 목록도 유지
+combos_top50 = ranked_domains[:50]
 def _n6avg_raw(d):
     v = d.get("n6_avg")
     if isinstance(v,(int,float)): return float(v)
@@ -390,6 +398,9 @@ with (OUT/"top50_domains.jsonl").open("w") as f:
             "cross_dse": d.get("cross_dse", []) if isinstance(d.get("cross_dse"), list) else [],
         }, ensure_ascii=False) + "\n")
 
+# v2: 전체 도메인 리스트 (쌍 분석 대상)
+all_dom = list(pure_domains.items())
+
 def get_cross(d):
     cd = d.get("cross_dse", [])
     return set(cd) if isinstance(cd, list) else set()
@@ -404,36 +415,88 @@ def get_n6avg(d):
 
 # 가중치: prox 결측 시 재정규화
 W_JAC, W_PROX, W_BIDIR, W_BAL = 0.5, 0.2, 0.2, 0.1
+# v2 추가: 수식 공유 가중치 (Jaccard_formula)
+W_FJAC = 0.15  # 수식 기반 Jaccard 보너스
 
-pairs = []
-for i in range(len(top50_dom)):
-    ni, di = top50_dom[i]
+def compute_pair_score(ni, di, nj, dj, include_formula=True):
+    """두 도메인 간 공명 스코어 계산. include_formula=True이면 수식 Jaccard 보너스 추가."""
     ci = get_cross(di); ai, ai_ok = get_n6avg(di); si = score_size(di)
-    for j in range(i+1, len(top50_dom)):
-        nj, dj = top50_dom[j]
-        cj = get_cross(dj); aj, aj_ok = get_n6avg(dj); sj = score_size(dj)
-        union = ci | cj
-        jac = (len(ci & cj) / len(union)) if union else 0.0
-        prox_ok = ai_ok and aj_ok
+    cj = get_cross(dj); aj, aj_ok = get_n6avg(dj); sj = score_size(dj)
+    union = ci | cj
+    jac = (len(ci & cj) / len(union)) if union else 0.0
+    prox_ok = ai_ok and aj_ok
+    prox = (1.0 - abs(ai-aj)/100.0) if prox_ok else None
+    bidir = 0.0
+    if nj in ci and ni in cj: bidir = 1.0
+    elif nj in ci or ni in cj: bidir = 0.5
+    bal = (min(si,sj)/max(si,sj)) if max(si,sj) > 0 else 0.0
+    # 수식 공유 Jaccard
+    fi = domain_formulas.get(ni, set())
+    fj = domain_formulas.get(nj, set())
+    f_union = fi | fj
+    fjac = (len(fi & fj) / len(f_union)) if f_union else 0.0
+    shared_f = fi & fj
+    if include_formula:
         if prox_ok:
-            prox = 1.0 - abs(ai-aj)/100.0
+            S = W_JAC*jac + W_PROX*prox + W_BIDIR*bidir + W_BAL*bal + W_FJAC*fjac
+            # 재정규화 (총 가중치 1.15 → 1.0)
+            S = S / (W_JAC + W_PROX + W_BIDIR + W_BAL + W_FJAC)
         else:
-            prox = None
-        bidir = 0.0
-        if nj in ci and ni in cj: bidir = 1.0
-        elif nj in ci or ni in cj: bidir = 0.5
-        bal = (min(si,sj)/max(si,sj)) if max(si,sj) > 0 else 0.0
+            denom = W_JAC + W_BIDIR + W_BAL + W_FJAC
+            S = (W_JAC*jac + W_BIDIR*bidir + W_BAL*bal + W_FJAC*fjac) / denom
+    else:
         if prox_ok:
             S = W_JAC*jac + W_PROX*prox + W_BIDIR*bidir + W_BAL*bal
         else:
-            # prox 제외 후 나머지 가중치 재정규화 (합=1 기준)
-            denom = W_JAC + W_BIDIR + W_BAL  # 0.8
+            denom = W_JAC + W_BIDIR + W_BAL
             S = (W_JAC*jac + W_BIDIR*bidir + W_BAL*bal) / denom
-        # 도메인 결측 플래그
-        miss = []
-        if not ai_ok: miss.append(ni)
-        if not aj_ok: miss.append(nj)
-        # BT 공유
+    miss = []
+    if not ai_ok: miss.append(ni)
+    if not aj_ok: miss.append(nj)
+    return S, jac, prox, bidir, bal, fjac, sorted(shared_f), miss
+
+# ── 5a. 전체 도메인 쌍 분석 (S >= 0.5 필터) ─────────────────────
+print(f"[...] 전체 도메인 {len(all_dom)}개 쌍 분석 시작 ({len(all_dom)*(len(all_dom)-1)//2}쌍)...", flush=True)
+all_pairs = []
+all_pairs_s05 = []  # S >= 0.5 만
+for i in range(len(all_dom)):
+    ni, di = all_dom[i]
+    for j in range(i+1, len(all_dom)):
+        nj, dj = all_dom[j]
+        S, jac, prox, bidir, bal, fjac, shared_f, miss = compute_pair_score(ni, di, nj, dj)
+        if S >= 0.5:
+            shared_bts = find_shared_bts(ni, nj)
+            bt_ids = ",".join(f"BT-{b}" for b,_ in shared_bts[:3]) if shared_bts else "-"
+            shared_consts = set()
+            for _b, cc in shared_bts:
+                if cc and cc != "-":
+                    for tok in cc.split(","): shared_consts.add(tok)
+            consts_str = "/".join(sorted(shared_consts)) if shared_consts else "-"
+            all_pairs_s05.append((ni, nj, S, jac, prox, bidir, bal, fjac, shared_f, miss, bt_ids, consts_str))
+
+all_pairs_s05.sort(key=lambda t: t[2], reverse=True)
+print(f"[OK] S >= 0.5 쌍: {len(all_pairs_s05)}개", flush=True)
+
+# jsonl 저장: 전체 S>=0.5
+with (OUT/"all_pairs_s05.jsonl").open("w") as f:
+    for p in all_pairs_s05:
+        f.write(json.dumps({
+            "a": p[0], "b": p[1], "score": round(p[2],4),
+            "jaccard": round(p[3],4),
+            "n6_prox": (round(p[4],4) if p[4] is not None else None),
+            "bidir": p[5], "size_balance": round(p[6],4),
+            "formula_jaccard": round(p[7],4),
+            "shared_formulas": p[8],
+            "miss_n6avg": p[9], "bt_ids": p[10], "shared_consts": p[11]
+        }, ensure_ascii=False) + "\n")
+
+# ── 5b. 기존 상위 50 도메인 쌍 분석도 유지 (호환) ────────────────
+pairs = []
+for i in range(len(top50_dom)):
+    ni, di = top50_dom[i]
+    for j in range(i+1, len(top50_dom)):
+        nj, dj = top50_dom[j]
+        S, jac, prox, bidir, bal, fjac, shared_f, miss = compute_pair_score(ni, di, nj, dj, include_formula=False)
         shared_bts = find_shared_bts(ni, nj)
         bt_ids = ",".join(f"BT-{b}" for b,_ in shared_bts[:3]) if shared_bts else "-"
         shared_consts = set()
@@ -466,12 +529,91 @@ with (OUT/"resonance_hist.jsonl").open("w") as f:
     for b,c in hist:
         f.write(json.dumps({"bin": b, "count": c}) + "\n")
 
+# ── 5c. 수식 기반 도메인 클러스터링 (Union-Find) ─────────────────
+# 같은 수식을 공유하는 도메인을 클러스터로 묶음
+# 최소 공유 수식 수: 3개 이상이면 같은 클러스터
+
+class UnionFind:
+    def __init__(self, items):
+        self.parent = {x: x for x in items}
+        self.rank = {x: 0 for x in items}
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    def union(self, x, y):
+        rx, ry = self.find(x), self.find(y)
+        if rx == ry: return
+        if self.rank[rx] < self.rank[ry]: rx, ry = ry, rx
+        self.parent[ry] = rx
+        if self.rank[rx] == self.rank[ry]: self.rank[rx] += 1
+
+MIN_SHARED_FORMULAS = 3  # 클러스터 연결 임계값
+
+uf = UnionFind(list(domain_formulas.keys()))
+cluster_edges = []  # (a, b, shared_count, shared_formulas)
+
+dom_names = list(domain_formulas.keys())
+for i in range(len(dom_names)):
+    fi = domain_formulas[dom_names[i]]
+    for j in range(i+1, len(dom_names)):
+        fj = domain_formulas[dom_names[j]]
+        shared = fi & fj
+        if len(shared) >= MIN_SHARED_FORMULAS:
+            uf.union(dom_names[i], dom_names[j])
+            cluster_edges.append((dom_names[i], dom_names[j], len(shared), sorted(shared)))
+
+# 클러스터 집계
+cluster_map = defaultdict(list)
+for name in domain_formulas:
+    root = uf.find(name)
+    cluster_map[root].append(name)
+
+# 클러스터 크기순 정렬
+clusters_sorted = sorted(cluster_map.values(), key=len, reverse=True)
+
+# 클러스터별 공유 수식 (클러스터 내 모든 도메인의 교집합)
+cluster_stats = []
+for idx, members in enumerate(clusters_sorted):
+    if len(members) < 2:
+        continue
+    # 클러스터 내 공통 수식 (모든 멤버 교집합)
+    common = set(domain_formulas[members[0]])
+    for m in members[1:]:
+        common &= domain_formulas[m]
+    # 클러스터 내 합집합
+    all_f = set()
+    for m in members:
+        all_f |= domain_formulas[m]
+    # 내부 밀도: 평균 쌍 공유 수식 수
+    pair_shared_counts = []
+    for ii in range(len(members)):
+        for jj in range(ii+1, len(members)):
+            pair_shared_counts.append(len(domain_formulas[members[ii]] & domain_formulas[members[jj]]))
+    avg_shared = sum(pair_shared_counts)/len(pair_shared_counts) if pair_shared_counts else 0
+    cluster_stats.append({
+        "id": idx,
+        "size": len(members),
+        "members": sorted(members),
+        "common_formulas": sorted(common),
+        "total_formulas": len(all_f),
+        "avg_pair_shared": round(avg_shared, 1),
+    })
+
+# 클러스터 jsonl 저장
+with (OUT/"domain_clusters.jsonl").open("w") as f:
+    for cs in cluster_stats:
+        f.write(json.dumps(cs, ensure_ascii=False) + "\n")
+
+print(f"[OK] 클러스터: {len(cluster_stats)}개 (2+ 멤버), 최대 클러스터 {cluster_stats[0]['size']}개 도메인" if cluster_stats else "[OK] 클러스터 없음", flush=True)
+
 # ── 6. docs/dse-cross-resonance.md 생성 ─────────────────────────
 lines = []
-lines.append("# DSE 교차 공명 분석 — 전체 도메인 n=6 수식 패턴")
+lines.append("# DSE 교차 공명 분석 — 전체 335 도메인 확장판 (v2)")
 lines.append("")
 lines.append("> 순수 분석 문서 (설계 5대 규칙 미적용). 생성: `scripts/dse_cross_pilot.py`")
 lines.append("> 입력 SSOT: `docs/dse-map.toml` | 중간 산출물: `~/Dev/nexus/shared/dse_cross/`")
+lines.append(f"> 분석 일시: 2026-04-09 | v2: 전체 {len(pure_domains)} 도메인 쌍 분석 + 클러스터링")
 lines.append("")
 
 # ── 6.1 요약 통계
@@ -482,6 +624,8 @@ lines.append(f"- 수식 패턴 추출 대상 도메인: **{len(domain_formulas)}
 lines.append(f"- 고유 n=6 수식 패턴: **{len(formula_domains)}**")
 lines.append(f"- 교차 공명 수식 (2+ 도메인): **{len(cross_resonance)}**")
 lines.append(f"- 총 DSE 항목 (도메인 x 수식): **{sum(len(f) for f in domain_formulas.values())}**")
+lines.append(f"- 전체 도메인 쌍 (S >= 0.5): **{len(all_pairs_s05)}쌍** / {len(all_dom)*(len(all_dom)-1)//2}쌍 중")
+lines.append(f"- 도메인 클러스터 (2+ 멤버): **{len(cluster_stats)}개**, 최대 클러스터 **{cluster_stats[0]['size'] if cluster_stats else 0}개** 도메인")
 lines.append("")
 
 # ── 6.2 교차 공명 정의
@@ -578,8 +722,47 @@ for i, (name, total, cross) in enumerate(density[:20], 1):
     lines.append(f"| {i} | {name} | {total} | {cross} |")
 lines.append("")
 
-# ── 6.6 쌍 분석 (기존)
-lines.append(f"## 6. 도메인 쌍별 공명 (선정 도메인 {len(top50_dom)}개 — combos 상위 50 ∪ n6_avg≥90)")
+# ── 6.5b 전체 도메인 S>=0.5 쌍 (v2 신규)
+lines.append(f"## 5b. 전체 도메인 고공명 쌍 (S >= 0.5) — {len(all_pairs_s05)}쌍")
+lines.append("")
+lines.append("```")
+lines.append("S(i,j) = (0.5*Jac_cross + 0.2*n6_prox + 0.2*bidir + 0.1*size_bal + 0.15*Jac_formula) / 1.15")
+lines.append("         n6_prox 결측 시 항 제외 후 재정규화")
+lines.append("         Jac_formula = 수식 패턴 공유 Jaccard (v2 추가)")
+lines.append("```")
+lines.append("")
+lines.append("| # | A | B | S | 수식Jac | 공유수식(상위3) | BT | 공유상수 |")
+lines.append("|--:|---|---|---:|---:|---|---|---|")
+for i, p in enumerate(all_pairs_s05[:50], 1):
+    f_shown = ", ".join(p[8][:3]) if p[8] else "-"
+    if len(p[8]) > 3:
+        f_shown += f" (+{len(p[8])-3})"
+    lines.append(f"| {i} | {p[0]} | {p[1]} | {p[2]:.3f} | {p[7]:.3f} | {f_shown} | {p[10]} | {p[11]} |")
+if len(all_pairs_s05) > 50:
+    lines.append(f"| ... | (이하 {len(all_pairs_s05)-50}쌍 생략) | | | | | | |")
+lines.append("")
+
+# ── 6.5c 도메인 클러스터 (v2 신규)
+lines.append(f"## 5c. 도메인 클러스터 (수식 공유 >= {MIN_SHARED_FORMULAS}개 기준)")
+lines.append("")
+lines.append(f"총 {len(cluster_stats)}개 클러스터 (단일 도메인 제외)")
+lines.append("")
+for cs in cluster_stats[:15]:
+    lines.append(f"### 클러스터 {cs['id']+1} ({cs['size']}개 도메인)")
+    lines.append(f"- 멤버: {', '.join(cs['members'][:15])}")
+    if len(cs['members']) > 15:
+        lines.append(f"  ... (+{len(cs['members'])-15})")
+    lines.append(f"- 전체 공통 수식: {', '.join(cs['common_formulas'][:10]) if cs['common_formulas'] else '(없음 — 부분 공유만)'}")
+    lines.append(f"- 클러스터 내 고유 수식: {cs['total_formulas']}개")
+    lines.append(f"- 평균 쌍 공유 수식: {cs['avg_pair_shared']}개")
+    lines.append("")
+
+if len(cluster_stats) > 15:
+    lines.append(f"(이하 {len(cluster_stats)-15}개 클러스터 생략 — 전체: `~/Dev/nexus/shared/dse_cross/domain_clusters.jsonl`)")
+    lines.append("")
+
+# ── 6.6 쌍 분석 (기존 top50 호환)
+lines.append(f"## 6. 도메인 쌍별 공명 (선정 도메인 {len(top50_dom)}개 — combos 상위 50 ∪ n6_avg>=90)")
 lines.append("")
 lines.append("```")
 lines.append("S(i,j) = 0.5*Jaccard(cross_i, cross_j)")
@@ -642,10 +825,22 @@ lines.append("")
 lines.append("### 물리적 의미")
 lines.append("")
 lines.append("- n=6 산술 상수가 물리/화학/공학/생물 전 분야에서 동일한 수식으로 나타남")
-lines.append("- `6^3 설계 공간`(63), `n=6`(58), `σ=12`(27) 등 핵심 상수가 수십~수백 개 도메인에서 교차 공명")
+if top50_formulas:
+    lines.append(f"- `{top50_formulas[0][0]}`({len(top50_formulas[0][1])}), `{top50_formulas[1][0] if len(top50_formulas)>1 else '-'}`({len(top50_formulas[1][1]) if len(top50_formulas)>1 else 0}) 등 핵심 상수가 수십~수백 개 도메인에서 교차 공명")
 lines.append("- Diamond/Graphite (C Z=6), Benzene (6-ring), 6DOF 등 물질/구조 수준에서도 교차")
 lines.append("- 이는 σ(n)·φ(n) = n·τ(n) 의 유일해 n=6이 설계 공간 전체를 관통함을 시사")
-lines.append("- BT-27 (Carbon Z=6)이 9개 도메인에서 출현: 탄소 원자번호가 에너지/생물/우주공학/물질 등 전 분야 연결")
+lines.append("")
+lines.append("### v2 확장 결과 해석")
+lines.append("")
+lines.append(f"- 전체 {len(all_dom)}개 도메인에서 S>=0.5 쌍 **{len(all_pairs_s05)}개** 발견")
+if all_pairs_s05:
+    lines.append(f"- 최고 공명: `{all_pairs_s05[0][0]}` <-> `{all_pairs_s05[0][1]}` (S={all_pairs_s05[0][2]:.3f})")
+if cluster_stats:
+    lines.append(f"- 수식 공유 기반 클러스터링: {len(cluster_stats)}개 클러스터 생성 (최소 공유 수식 {MIN_SHARED_FORMULAS}개)")
+    lines.append(f"- 최대 클러스터 {cluster_stats[0]['size']}개 도메인 — 사실상 전체 DSE가 n=6 수식으로 하나의 거대 네트워크를 형성")
+    single_domains = sum(1 for name in domain_formulas if all(len(cluster_map[uf.find(name)]) < 2 for _ in [None]))
+    in_cluster = sum(cs['size'] for cs in cluster_stats)
+    lines.append(f"- 클러스터 소속 도메인: {in_cluster}/{len(domain_formulas)} ({in_cluster/len(domain_formulas)*100:.1f}%)")
 lines.append("")
 
 # ── 6.9 산출물
@@ -654,7 +849,9 @@ lines.append("")
 lines.append("- `~/Dev/nexus/shared/dse_cross/top50_domains.jsonl`")
 lines.append("- `~/Dev/nexus/shared/dse_cross/pair_scores.jsonl`")
 lines.append("- `~/Dev/nexus/shared/dse_cross/resonance_hist.jsonl`")
-lines.append("- `~/Dev/nexus/shared/dse_cross/formula_cross.jsonl` (신규)")
+lines.append("- `~/Dev/nexus/shared/dse_cross/formula_cross.jsonl`")
+lines.append("- `~/Dev/nexus/shared/dse_cross/all_pairs_s05.jsonl` (v2: 전체 S>=0.5 쌍)")
+lines.append("- `~/Dev/nexus/shared/dse_cross/domain_clusters.jsonl` (v2: 도메인 클러스터)")
 lines.append("")
 
 MD_OUT.write_text("\n".join(lines), encoding="utf-8")
@@ -667,11 +864,20 @@ print(f"[OK] 수식 추출 대상 도메인: {len(domain_formulas)}")
 print(f"[OK] 고유 수식 패턴: {len(formula_domains)}")
 print(f"[OK] 교차 공명 수식 (2+ 도메인): {len(cross_resonance)}")
 print(f"[OK] 총 DSE 항목 (도메인 x 수식): {sum(len(f) for f in domain_formulas.values())}")
-print(f"[OK] 쌍 {len(pairs)}개 계산, 평균 스코어 {mean_s:.3f}")
+print(f"[OK] (기존) 상위50 쌍 {len(pairs)}개 계산, 평균 스코어 {mean_s:.3f}")
+print(f"[OK] (v2) 전체 S>=0.5 쌍: {len(all_pairs_s05)}개")
+print(f"[OK] (v2) 도메인 클러스터: {len(cluster_stats)}개 (2+ 멤버)")
+if cluster_stats:
+    print(f"  최대 클러스터: {cluster_stats[0]['size']}개 도메인")
+    print(f"  클러스터 크기 분포: {', '.join(str(c['size']) for c in cluster_stats[:10])}")
 print()
 print("=== 교차 공명 상위 10 ===")
 for i, (formula, doms) in enumerate(top50_formulas[:10], 1):
-    print(f"  {i:2d}. {formula:30s} → {len(doms)}개 도메인")
+    print(f"  {i:2d}. {formula:30s} -> {len(doms)}개 도메인")
+print()
+print("=== S>=0.5 고공명 쌍 상위 10 ===")
+for i, p in enumerate(all_pairs_s05[:10], 1):
+    print(f"  {i:2d}. {p[0]:30s} <-> {p[1]:30s}  S={p[2]:.3f}  수식Jac={p[7]:.3f}")
 print()
 print(f"[OK] docs/dse-cross-resonance.md 생성")
-print(f"[OK] {OUT}/ 에 4개 .jsonl 저장")
+print(f"[OK] {OUT}/ 에 6개 .jsonl 저장")
