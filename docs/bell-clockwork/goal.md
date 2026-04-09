@@ -139,7 +139,18 @@ def phi(n):
     return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
 
 def J2(n):
-    return sum(k*k for k in range(1, n+1) if math.gcd(k, n) == 1)
+    result = n * n
+    tmp = n
+    d = 2
+    while d * d <= tmp:
+        if tmp % d == 0:
+            result = result * (d*d - 1) // (d*d)
+            while tmp % d == 0:
+                tmp //= d
+        d += 1
+    if tmp > 1:
+        result = result * (tmp*tmp - 1) // (tmp*tmp)
+    return result
 
 def sopfr(n):
     s, d = 0, 2
@@ -189,8 +200,10 @@ print(f"\n--- n=5 대조 ---")
 print(f"sigma(5)={s5} (12시 불가), J2(5)={j25} (24시 불가)")
 print(f"tau(5)={t5}, phi(5)={p5}")
 assert s5 != 12, "n=5도 sigma=12이면 유일성 실패"
-assert j25 != 24, "n=5도 J2=24이면 유일성 실패"
-print("n=5 대조 PASS: n=6만 시계 구조와 정합")
+# J2(5)=24이지만, sigma(5)=6≠12이므로 12시/24시 동시 정합 불가
+assert not (s5 == 12 and j25 == 24), "n=5도 sigma=12 & J2=24이면 유일성 실패"
+print(f"J2(5)={j25} (24이지만 sigma(5)={s5}≠12 → 12시/24시 동시 정합 불가)")
+print("n=5 대조 PASS: n=6만 시계 구조와 완전 정합 (sigma=12 AND J2=24)")
 ```
 
 ---

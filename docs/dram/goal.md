@@ -141,7 +141,18 @@ def phi(n):
     return sum(1 for k in range(1, n+1) if math.gcd(k, n) == 1)
 
 def J2(n):
-    return sum(k*k for k in range(1, n+1) if math.gcd(k, n) == 1)
+    result = n * n
+    tmp = n
+    d = 2
+    while d * d <= tmp:
+        if tmp % d == 0:
+            result = result * (d*d - 1) // (d*d)
+            while tmp % d == 0:
+                tmp //= d
+        d += 1
+    if tmp > 1:
+        result = result * (tmp*tmp - 1) // (tmp*tmp)
+    return result
 
 def sopfr(n):
     s, d = 0, 2
