@@ -3,8 +3,8 @@
 # 상태: done / wip / none
 
 [meta]
-updated = "2026-04-09"
-total_domains = 340
+updated = "2026-04-10"
+total_domains = 342
 total_toml_files = 340
 domain_sections = 337
 cross_dse_connected = 337
@@ -164,6 +164,7 @@ pareto_frontier = 105
 n6_max = 100.0
 n6_avg = 78.4
 note = "궁극의 내진설계 5단 DSE. SPT n=6 boring + Hex mat + 6-layer HDRB + σ=12 SHM channel"
+evolution = ["mk-1-seismic"]
 
 [nuclear-reactor]
 goal = true
@@ -12441,6 +12442,7 @@ n6_max = 100.0
 n6_avg = 98.7
 note = "DSE complete — 83 Pareto, avg n6=98.7% near-perfect"
 cross_dse = ["eeg-bci", "neuroscience", "prosthetics", "consciousness-chip", "additive-bio"]
+evolution = ["mk-1-invasive"]
 
 [chaos-dynamical]
 goal = true
@@ -14775,6 +14777,7 @@ best_n6 = "Cas6 + crRNA-tracrRNA + RNP + Knockout + AgriCrop (100%)"
 n6_max = 100.0
 n6_avg = 78.9
 note = "Cas6 = n=6 EXACT. crRNA-tracrRNA phi=2 dual guide. BT-51 유전자 코드 연결"
+evolution = ["mk-1-precision"]
 
 [dram-memory]
 goal = true
@@ -17568,6 +17571,7 @@ best_cost = "Blowhole_1 + Lifespan_40 + Ecotype_3 + Melon_1 (cost=0.913)"
 n6_max = 100.0
 n6_avg = 98.6
 note = "BT-350 해부·생리 + BT-356 행동·음향, 30/30 EXACT (100%). 반구수면 1/φ, 에코로케이션 (σ-φ)²=100m, Pod σ=12, 임신 σ=12개월"
+evolution = ["mk-1-passive-monitoring"]
 
 [cross-dse.dolphin-x-biology]
 domains = ["dolphin", "biology"]
@@ -17589,6 +17593,33 @@ status = "done"
 bridge = "돌고래 운동 + 로봇 SE(3) n=6"
 n6_resonance = "BT-350 지느러미 sopfr=5 + BT-123 SE(3) dim=n=6"
 note = "수중 로봇 바이오미메틱스, 에코로케이션→소나 매핑"
+
+# ── 신규 도메인 (2026-04-10 추가) ──────────────────────
+
+[music-mathematics]
+goal = true
+dse = "wip"
+alien_level = 10
+levels = ["음계구조", "화성수학", "리듬패턴", "음색스펙트럼", "형식이론"]
+cross_dse = ["audio", "cognitive-social-psychology", "cryptography", "telecom-linguistics"]
+note = "σ=12 반음, n=6 현, τ=4 박자, φ=2 옥타브, J₂=24 조, 배음렬 4:5:6=τ:sopfr:n"
+
+[neuropharmacology]
+goal = true
+dse = "wip"
+alien_level = 10
+levels = ["신경전달물질", "수용체", "약물동태", "시냅스가소성", "임상적용"]
+cross_dse = ["brain-computer-interface", "bio-pharma", "consciousness-chip", "cancer-therapy"]
+note = "σ=12 전달물질, τ=4 ADME, φ=2 수용체유형, sopfr=5 도파민경로, n/φ=3 모노아민"
+
+[cancer-therapy]
+goal = true
+dse = "wip"
+alien_level = 10
+levels = ["진단", "표적치료", "면역치료", "병용전략", "모니터링"]
+cross_dse = ["gene-therapy", "crispr-gene-editing", "neuropharmacology", "therapeutic-nanobot"]
+evolution = ["mk-1-conventional"]
+note = "n=6 기반 항암 치료 아키텍처. 면역관문 φ=2 이진, σ=12 바이오마커, τ=4 치료단계"
 
 # ── 마케팅 (2026-04-09 추가) ──────────────────────────
 
