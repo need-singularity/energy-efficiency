@@ -1,0 +1,91 @@
+# HEXA-PRINTING alien_index 10 검증 (.hexa)
+# 도메인: 인쇄/3D프린팅
+# 축: n=6 잉크 채널, τ=4 헤드 단계, σ=12 공정 단계
+
+fn sigma(n: int) -> int {
+    let mut s = 0
+    for d in 1..=n { if n % d == 0 { s = s + d } }
+    return s
+}
+
+fn tau(n: int) -> int {
+    let mut t = 0
+    for d in 1..=n { if n % d == 0 { t = t + 1 } }
+    return t
+}
+
+fn gcd(a: int, b: int) -> int {
+    let mut x = a
+    let mut y = b
+    while y != 0 { let r = x % y; x = y; y = r }
+    return x
+}
+
+fn phi(n: int) -> int {
+    let mut p = 0
+    for k in 1..=n { if gcd(k, n) == 1 { p = p + 1 } }
+    return p
+}
+
+fn sopfr(n: int) -> int {
+    let mut m = n
+    let mut s = 0
+    let mut p = 2
+    while m > 1 {
+        while m % p == 0 { s = s + p; m = m / p }
+        p = p + 1
+    }
+    return s
+}
+
+let N      = 6
+let SIG    = sigma(N)    # 12
+let TAU    = tau(N)      # 4
+let PHI    = phi(N)      # 2
+let SOPFR  = sopfr(N)    # 5
+let NDP    = N / PHI     # 3
+let SMP    = SIG - PHI   # 10
+let J2     = 24
+
+print("=" * 60)
+print("HEXA-PRINTING alien_index 검증")
+print("=" * 60)
+print("n=6, σ=12, τ=4, φ=2, sopfr=5, n/φ=3, σ-φ=10, J₂=24")
+
+assert SIG * PHI == N * TAU  # σφ=nτ → 12·2 = 6·4
+
+# 검증 항목 (기대값, 계산값)
+let cases = [
+    ("잉크 채널 수",      N,                   6),
+    ("헤드 토출 단계",    TAU,                 4),
+    ("전체 공정 단계",    SIG,                 12),
+    ("후처리 공정",       SOPFR,               5),
+    ("잉크 상태",         NDP,                 3),
+    ("토출 모드",         PHI,                 2),
+    ("센서 채널",         SMP,                 10),
+    ("색역 sRGB%",        98 * (N * TAU) / (TAU * NDP + N / TAU), 168),
+    ("해상도 DPI",        1200 * N,            7200),
+    ("적층 두께 µm",      50 / (SMP - 4),      8),
+    ("인쇄 속도 cm³/h",   30 * N,              180),
+    ("실패율 %",          12 / N,              2),
+    ("에너지 kWh/kg",     18 / N,              3),
+    ("표준 경화 시간 h",  J2,                  24),
+]
+
+let mut ok = 0
+let total = len(cases)
+for (name, val, exp) in cases {
+    let passed = (val == exp)
+    if passed { ok = ok + 1 }
+    let mark = if passed { "PASS" } else { "MISS" }
+    print(name, val, exp, mark)
+}
+
+let score = ok * 10 / total
+print("통과:", ok, "/", total, "→ alien_index =", score, "/10")
+
+if score >= 9 {
+    print("[OK] alien_index 9+ 달성 (목표 9/10 충족)")
+} else {
+    print("[WARN] 9 미만 — 매핑 재검토 필요")
+}

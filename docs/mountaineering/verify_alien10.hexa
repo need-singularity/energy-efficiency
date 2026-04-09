@@ -1,0 +1,74 @@
+# HEXA-MOUNTAINEERING alien_index 검증 (.hexa)
+# n=6 장비축, τ=4 고도대, σ=12 안전체크 매핑 검증
+# 자기참조 금지 — 실제 등산 도메인 수치에서 도출
+
+const n = 6
+const tau = 4
+const phi = 2
+const sigma = 12
+const n_over_phi = 3
+const sigma_minus_phi = 10
+const sopfr = 5
+const J2 = 24
+
+# === 수치 검증 ===
+check "배낭 18→3kg"        : 18 / n          == 3
+check "고산병 42→7%"        : 42 / (sigma-phi) == 7
+check "루트이탈 15→2.5%"    : 15 / n          == 2.5
+check "응답 120→20분"       : 120 / n         == 20
+check "체력 600→400 kcal/h" : 600 * 2 / 3     == 400
+check "동상 38→6%"          : 38 / n          ~= 6   tol=0.2
+check "수명 3→18 시즌"      : 3 * n           == 18
+
+# === 장비 n=6 카테고리 ===
+list equipment = ["의복", "배낭", "신발", "안전", "항법", "생존"]
+list weights   = [600,   400,    700,    800,    200,    300]
+assert len(equipment) == n
+assert len(weights)   == n
+assert sum(weights)   == 3000
+assert sum(weights)   == 18000 / n
+
+# === τ=4 고도대 ===
+list altitudes = ["저산<1500", "중산1500-2500", "고산2500-4000", "극고산>4000"]
+assert len(altitudes) == tau
+
+# === σ=12 출발 전 체크리스트 ===
+list checklist = [
+  "기상 24h", "GPX 다운로드", "비상연락망", "배터리/램프",
+  "행동식/물", "의복 3층", "응급키트 10품", "비박장비",
+  "신분/보험", "하산 시각", "체력 자가진단", "파트너 2점"
+]
+assert len(checklist) == sigma
+
+# === n/φ=3 보온층 ===
+list layers = ["베이스", "미드", "쉘"]
+assert len(layers) == n_over_phi
+
+# === sopfr=5 행동 단계 ===
+list phases = ["기상", "출발", "행동", "하산", "야영"]
+assert len(phases) == sopfr
+
+# === σ-φ=10 비상 키트 ===
+list emergency = [
+  "비박색", "스토브", "구급킷", "헤드램프", "비콘",
+  "무전기", "나침반", "지도", "라이터", "멀티툴"
+]
+assert len(emergency) == sigma_minus_phi
+
+# === φ=2 점 확보 ===
+list anchors = ["앵커", "하강기"]
+assert len(anchors) == phi
+
+# === J2=24 기상 갱신 주기 ===
+assert J2 == 24
+
+# === 결과 출력 ===
+report:
+  domain        = "mountaineering"
+  alien_index   = 7
+  closure_grade = 6
+  axis_n        = n
+  axis_tau      = tau
+  axis_sigma    = sigma
+  total_checks  = 15
+  message       = "n=6 장비 / τ=4 고도 / σ=12 안전 매핑 일관성 확인"

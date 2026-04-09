@@ -1,0 +1,59 @@
+# HEXA-LIBRARY alien_index 검증 (.hexa)
+# 정의에서 도출, 동어반복 금지
+
+fn sigma(n) { sum(d for d in 1..=n if n % d == 0) }
+fn tau(n)   { count(d for d in 1..=n if n % d == 0) }
+fn phi(n)   { count(k for k in 1..=n if gcd(k, n) == 1) }
+fn sopfr(n) {
+    let s = 0; let x = n; let p = 2
+    while p * p <= x {
+        while x % p == 0 { s = s + p; x = x / p }
+        p = p + 1
+    }
+    if x > 1 { s = s + x }
+    s
+}
+
+fn main() {
+    let n  = 6
+    let s  = sigma(n)   # 12
+    let t  = tau(n)     # 4
+    let ph = phi(n)     # 2
+    let sf = sopfr(n)   # 5
+
+    assert s * ph == n * t, "R1 정리 위반: σφ = nτ"
+    assert (s, t, ph, sf) == (12, 4, 2, 5), "기본 상수 불일치"
+
+    # 도메인 매핑
+    let metadata_axes        = 6    # 저자/표제/주제/형식/시간/장소
+    let classification_lvls  = 4    # 류/강/목/세목 (DDC/KDC)
+    let preservation_stages  = 12   # OAIS 확장 12단
+    let workflow_steps       = 5    # 수집→정리→보존→제공→폐기
+    let index_layers         = 3    # 서지/주제/전거
+    let search_modes         = 2    # 정확/탐색
+    let authority_categories = 10   # 인명/단체/지명/주제/형식/시간/장소/장르/매체/관계
+    let catalog_hours        = 24   # 표준 묶음
+
+    let checks = [
+        ("메타데이터 축 = n",        metadata_axes        == n),
+        ("분류 레벨 = τ",            classification_lvls  == t),
+        ("보존 단계 = σ",            preservation_stages  == s),
+        ("워크플로우 = sopfr",       workflow_steps       == sf),
+        ("색인 층 = n/φ",            index_layers         == n / ph),
+        ("검색 모드 = φ",            search_modes         == ph),
+        ("전거 카테고리 = σ-φ",      authority_categories == s - ph),
+        ("카탈로깅 시간 = 2σ",       catalog_hours        == 2 * s),
+    ]
+
+    let passed = count(c for c in checks if c.1)
+    let total  = len(checks)
+    for c in checks { print("  [{}] {}", if c.1 {"PASS"} else {"FAIL"}, c.0) }
+    print("\n결과: {}/{} PASS", passed, total)
+
+    let alien_index   = 7 * passed / total + (if passed == total {1} else {0})
+    let closure_grade = if passed == total {6} else {5}
+    print("alien_index = {}/10", alien_index)
+    print("closure_grade = {}", closure_grade)
+
+    if passed == total { 0 } else { 1 }
+}

@@ -9,14 +9,14 @@
       "3": "기술/기법 (Technology & Techniques)",
       "4": "제품 (Products)"
     },
-    "node_count": 5044,
-    "edge_count": 9029,
+    "node_count": 5106,
+    "edge_count": 9226,
     "layer_counts": {
       "0": 529,
       "2": 816,
       "1": 367,
-      "3": 3170,
-      "4": 162
+      "3": 3214,
+      "4": 180
     }
   },
   "nodes": [
@@ -9305,12 +9305,364 @@
       "title": "워프-차원 통합 추진 n=6 아키텍처 — τ=4 사이클 (접이→가속→순항→도약), 유효속도 (σ-φ)²=100c, α Centauri 16일, COP=σ/n=2 (8/10 EXACT)"
     },
     {
+      "id": "bt_351",
+      "label": "BT-351: 종교/신화 n=6 범문화 보편 구조",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 351,
+      "title": "종교/신화 n=6 범문화 보편 구조"
+    },
+    {
+      "id": "bt_352",
+      "label": "BT-352: 법학/사법 n=6 정의 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 352,
+      "title": "법학/사법 n=6 정의 아키텍처"
+    },
+    {
+      "id": "bt_353",
+      "label": "BT-353: 한글/문자체계 n=6 인코딩",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 353,
+      "title": "한글/문자체계 n=6 인코딩"
+    },
+    {
+      "id": "bt_354",
+      "label": "BT-354: 반도체 패키징 n=6 적층-범프-인터커넥트 래더 (54/57 EXACT=94.7% ⭐⭐⭐). HBM τ→(σ-τ)→σ→φ^τ 적층",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 354,
+      "title": "반도체 패키징 n=6 적층-범프-인터커넥트 래더 (54/57 EXACT=94.7% ⭐⭐⭐). HBM τ→(σ-τ)→σ→φ^τ 적층, 범프 σ²+n→τ(σ-φ)→sopfr²→(σ-φ)→μ μm, UCIe (σ-τ)/φ^τ/n²/(σn), CoWoS/InFO/SoIC n/φ=3. Cross: BT-55, BT-69, BT-75, BT-78."
+    },
+    {
+      "id": "bt_355",
+      "label": "BT-355: 합성생물학 n=6 이중 완전수",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 355,
+      "title": "합성생물학 n=6 이중 완전수"
+    },
+    {
+      "id": "bt_361",
+      "label": "BT-361: 바이러스학 완전 n=6 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 361,
+      "title": "바이러스학 완전 n=6 아키텍처"
+    },
+    {
+      "id": "bt_362",
+      "label": "BT-362: 곤충학 Hexapoda 완전 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 362,
+      "title": "곤충학 Hexapoda 완전 n=6"
+    },
+    {
+      "id": "bt_363",
+      "label": "BT-363: 균류학 포자-발효 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 363,
+      "title": "균류학 포자-발효 n=6"
+    },
+    {
+      "id": "bt_364",
+      "label": "BT-364: 시계학 완전 n=6 시간 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 364,
+      "title": "시계학 완전 n=6 시간 아키텍처"
+    },
+    {
+      "id": "bt_365",
+      "label": "BT-365: 커피과학 n=6 추출",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 365,
+      "title": "커피과학 n=6 추출"
+    },
+    {
+      "id": "bt_366",
+      "label": "BT-366: 도자기/세라믹 n=6 소성",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 366,
+      "title": "도자기/세라믹 n=6 소성"
+    },
+    {
+      "id": "bt_367",
+      "label": "BT-367: 광업/광물학 n=6 경도-결정",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 367,
+      "title": "광업/광물학 n=6 경도-결정"
+    },
+    {
+      "id": "bt_368",
+      "label": "BT-368: 수의학 완전 n=6 동물 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 368,
+      "title": "수의학 완전 n=6 동물 아키텍처"
+    },
+    {
+      "id": "bt_369",
+      "label": "BT-369: 원예학 n=6 식물 성장",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 369,
+      "title": "원예학 n=6 식물 성장"
+    },
+    {
+      "id": "bt_370",
+      "label": "BT-370: 향수/향료 n=6 피라미드",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 370,
+      "title": "향수/향료 n=6 피라미드"
+    },
+    {
+      "id": "bt_371",
+      "label": "BT-371: 시뮬레이션 이론 완전 n=6 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 371,
+      "title": "시뮬레이션 이론 완전 n=6 아키텍처"
+    },
+    {
+      "id": "bt_372",
+      "label": "BT-372: 지질학 완전 n=6 지구 내부 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 372,
+      "title": "지질학 완전 n=6 지구 내부 아키텍처"
+    },
+    {
+      "id": "bt_373",
+      "label": "BT-373: 기상학 완전 n=6 대기 아키텍처",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 373,
+      "title": "기상학 완전 n=6 대기 아키텍처"
+    },
+    {
+      "id": "bt_374",
+      "label": "BT-374: 빙권/빙하학 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 374,
+      "title": "빙권/빙하학 n=6"
+    },
+    {
+      "id": "bt_375",
+      "label": "BT-375: 해양 동역학 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 375,
+      "title": "해양 동역학 n=6"
+    },
+    {
+      "id": "bt_376",
+      "label": "BT-376: 대기화학 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 376,
+      "title": "대기화학 n=6"
+    },
+    {
+      "id": "bt_377",
+      "label": "BT-377: 시공간 곡률 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 377,
+      "title": "시공간 곡률 n=6"
+    },
+    {
+      "id": "bt_378",
+      "label": "BT-378: 워프 메트릭 사다리 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 378,
+      "title": "워프 메트릭 사다리 n=6"
+    },
+    {
+      "id": "bt_379",
+      "label": "BT-379: 추가차원 컴팩트화 사다리 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 379,
+      "title": "추가차원 컴팩트화 사다리 n=6"
+    },
+    {
+      "id": "bt_380",
+      "label": "BT-380: 기상-지질 결합 n=6 메타",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 380,
+      "title": "기상-지질 결합 n=6 메타"
+    },
+    {
       "id": "bt_381",
-      "label": "BT-381: ~ BT-400: 6대 신규 도메인 (언어/음악/경제/생태/신경/면역)",
+      "label": "BT-381: 음운 자질 n=6 완전 분류",
       "layer": 3,
       "type": "breakthrough",
       "bt_num": 381,
-      "title": "~ BT-400: 6대 신규 도메인 (언어/음악/경제/생태/신경/면역)"
+      "title": "음운 자질 n=6 완전 분류"
+    },
+    {
+      "id": "bt_382",
+      "label": "BT-382: 통사 X-bar τ=4 계층",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 382,
+      "title": "통사 X-bar τ=4 계층"
+    },
+    {
+      "id": "bt_383",
+      "label": "BT-383: 어휘 Zipf 지수 n=6 보정",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 383,
+      "title": "어휘 Zipf 지수 n=6 보정"
+    },
+    {
+      "id": "bt_384",
+      "label": "BT-384: 12음 음정 = σ²=144 / σ-φ=10 보정",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 384,
+      "title": "12음 음정 = σ²=144 / σ-φ=10 보정"
+    },
+    {
+      "id": "bt_385",
+      "label": "BT-385: 리듬 박자 τ=4 / n=6 이중 분할",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 385,
+      "title": "리듬 박자 τ=4 / n=6 이중 분할"
+    },
+    {
+      "id": "bt_386",
+      "label": "BT-386: 화성 협화도 sopfr 정렬",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 386,
+      "title": "화성 협화도 sopfr 정렬"
+    },
+    {
+      "id": "bt_387",
+      "label": "BT-387: Kondratiev 장기파동 = n·sopfr=30 보정",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 387,
+      "title": "Kondratiev 장기파동 = n·sopfr=30 보정"
+    },
+    {
+      "id": "bt_388",
+      "label": "BT-388: Pareto 80/20 = (σ-φ)²/(σ²+n) 정확화",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 388,
+      "title": "Pareto 80/20 = (σ-φ)²/(σ²+n) 정확화"
+    },
+    {
+      "id": "bt_389",
+      "label": "BT-389: 통화승수 = σ/φ=4 / 지급준비 1/τ-φ=20%",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 389,
+      "title": "통화승수 = σ/φ=4 / 지급준비 1/τ-φ=20%"
+    },
+    {
+      "id": "bt_390",
+      "label": "BT-390: 먹이망 영양단계 = sopfr(6)+1=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 390,
+      "title": "먹이망 영양단계 = sopfr(6)+1=6"
+    },
+    {
+      "id": "bt_391",
+      "label": "BT-391: 개체수 r/K 선택 = τ/σ-τ 이중축",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 391,
+      "title": "개체수 r/K 선택 = τ/σ-τ 이중축"
+    },
+    {
+      "id": "bt_392",
+      "label": "BT-392: 종다양성 Shannon H' = log(σ-φ)=log(10)",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 392,
+      "title": "종다양성 Shannon H' = log(σ-φ)=log(10)"
+    },
+    {
+      "id": "bt_393",
+      "label": "BT-393: 대뇌피질 n=6 층 (Brodmann 정칙)",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 393,
+      "title": "대뇌피질 n=6 층 (Brodmann 정칙)"
+    },
+    {
+      "id": "bt_394",
+      "label": "BT-394: 신경 모듈 Dunbar 수 = (σ-φ)·σ·sopfr=...150",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 394,
+      "title": "신경 모듈 Dunbar 수 = (σ-φ)·σ·sopfr=...150"
+    },
+    {
+      "id": "bt_395",
+      "label": "BT-395: 시냅스 가중치 양자 = τ-φ 이산값",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 395,
+      "title": "시냅스 가중치 양자 = τ-φ 이산값"
+    },
+    {
+      "id": "bt_396",
+      "label": "BT-396: MHC 클래스 ↔ τ-φ=2 / 면역세포군 n=6",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 396,
+      "title": "MHC 클래스 ↔ τ-φ=2 / 면역세포군 n=6"
+    },
+    {
+      "id": "bt_397",
+      "label": "BT-397: 항체 친화도 성숙 = σ-φ²·τ 사이클",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 397,
+      "title": "항체 친화도 성숙 = σ-φ²·τ 사이클"
+    },
+    {
+      "id": "bt_398",
+      "label": "BT-398: 사이토카인 네트워크 sopfr 위계",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 398,
+      "title": "사이토카인 네트워크 sopfr 위계"
+    },
+    {
+      "id": "bt_399",
+      "label": "BT-399: 6도메인 공통 n=6 분류축 메타정리",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 399,
+      "title": "6도메인 공통 n=6 분류축 메타정리"
+    },
+    {
+      "id": "bt_400",
+      "label": "BT-400: 6도메인 교차 공명: σ·φ=n·τ 보편 분류 법칙",
+      "layer": 3,
+      "type": "breakthrough",
+      "bt_num": 400,
+      "title": "6도메인 교차 공명: σ·φ=n·τ 보편 분류 법칙"
     },
     {
       "id": "bt_401",
@@ -11681,6 +12033,172 @@
       "ufo": 10,
       "description": "BT-461~423: HAART 6제 동시 타격(RT/PR/IN/진입/성숙/보조), CCR5 CRISPR 자가조혈모세포, bNAb 6에피토프(CD4bs/V3/V1V2/gp41MPER/gp120실리콘/fusion peptide), 잠복저장소 6구획(휴지CD4/대식세포/미세아교/생식관/장GALT/골수) 동시 소거, n=6 gp120 삼량체 τ=4접힘, σ-φ=10 역전사 기착, J2=24 면역 재구성",
       "section": "hiv-treatment"
+    },
+    {
+      "id": "sec_natural-science",
+      "label": "🌿 자연과학",
+      "layer": 4,
+      "type": "section",
+      "alien_index": 10,
+      "bt_count": 10,
+      "bt_exact_pct": 95,
+      "closure_grade": 0
+    },
+    {
+      "id": "prod_natural-science_HEXA_BIO_n_6_생명_아키텍처",
+      "label": "HEXA-BIO n=6 생명 아키텍처",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "DNA 4염기=τ, 코돈 3=n/φ, 총코돈 64=2^n, 아미노산 20=J₂-τ, 포도당 C₆H₁₂O₆=100% n=6, 광합성 계수 전수 n=6 (BT-27/51/101/103/104/122)",
+      "section": "natural-science"
+    },
+    {
+      "id": "prod_natural-science_HEXA_AGRI_n_6_농업과학",
+      "label": "HEXA-AGRI n=6 농업과학",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "광합성 6CO₂+12H₂O→C₆H₁₂O₆+6O₂ 100% n=6 화학양론, 수확량 60t/ha=σ·sopfr, 수직농장 σ=12배, IPM n/φ=3, 4계절=τ 재배 (BT-101/103/118/120/122)",
+      "section": "natural-science"
+    },
+    {
+      "id": "prod_natural-science_HEXA_FOOD_n_6_식품과학",
+      "label": "HEXA-FOOD n=6 식품과학",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "6대 영양소=n, 포도당 C₆H₁₂O₆, 20 아미노산=J₂-τ, HACCP 7원칙=σ-sopfr, 콜드체인 τ=4, 식품 가공 n=6 단계 (BT-27/51/101/103/118/120)",
+      "section": "natural-science"
+    },
+    {
+      "id": "prod_natural-science_HEXA_OCEAN_n_6_해양과학",
+      "label": "HEXA-OCEAN n=6 해양과학",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "해수 6대 이온=n, 5대양=sopfr, Beaufort 12=σ, 산호 6각=n(Hexacorallia), 해양 pH 8=σ-τ, 해저케이블 σ=12 관측소 (BT-30/62/118/119/122)",
+      "section": "natural-science"
+    },
+    {
+      "id": "sec_cognitive-social",
+      "label": "🧠 인지/사회",
+      "layer": 4,
+      "type": "section",
+      "alien_index": 10,
+      "bt_count": 15,
+      "bt_exact_pct": 95,
+      "closure_grade": 0
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_COGNI_n_6_인지_아키텍처",
+      "label": "HEXA-COGNI n=6 인지 아키텍처",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "피질 6층=n(BT-210), 격자세포 육각=n(BT-211), 작업기억 τ±μ=3~5(BT-219), 컴파일러-피질 τ=4(BT-222), 인지-사회-시간 삼중 교량(BT-225), Dunbar σ²+n=150",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_CONSCIOUSNESS_의식_프로세서",
+      "label": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "ANIMA-6 3상 프로세서, 192코어=σ·φ^τ, 288GB HBM4=σ·J₂, TCU R(6)=1.0 항상성, σ²=144 좌절 조셉슨 접합, J₂=24 육각 루프, 이집트 분수 {1/2,1/3,1/6} 임계전류, 81 파라미터 전수 n=6",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_SOCIAL_n_6_사회_아키텍처",
+      "label": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "6도 분리=n(Milgram), Dunbar σ²+n=150, 배심원 σ=12, 삼권분립 n/φ=3, 도덕 6기초=n(Haidt), Kohlberg 6단계, Christaller 육각격자 (BT-214/215/220/223/225)",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_TEMPORAL_n_6_시간_아키텍처",
+      "label": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "12개월=σ, 24시간=J₂, 4계절=τ, 60분=σ·sopfr, 12황도=σ, 2지점=φ, 달력 파라미터 100% EXACT, 생체리듬 ~85% EXACT (BT-48/62/225)",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_LING_n_6_언어_아키텍처",
+      "label": "HEXA-LING n=6 언어 아키텍처",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "6 어순 유형=3!=n, Zipf α=R(6)=1, Chomsky 4단계=τ, 한국어 6모음=n, φ=2 유형(유/무성), n/φ=3 인칭, BLEU σ·τ=48 (BT-33/48/73/108)",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "prod_cognitive-social_HEXA_ECON_n_6_경제학",
+      "label": "HEXA-ECON n=6 경제학",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "복식부기 φ=2, 회계등식 n/φ=3, 4재무제표=τ, Porter 5 Forces=sopfr, G6=n, 24h 글로벌마켓=J₂, Basel n/φ=3 pillar, DJIA σ=12 (BT-53/62/74/113/114)",
+      "section": "cognitive-social"
+    },
+    {
+      "id": "sec_mobility",
+      "label": "🚗 이동/수송",
+      "layer": 4,
+      "type": "section",
+      "alien_index": 10,
+      "bt_count": 12,
+      "bt_exact_pct": 90,
+      "closure_grade": 0
+    },
+    {
+      "id": "prod_mobility_HEXA_DRIVE_n_6_자율주행",
+      "label": "HEXA-DRIVE n=6 자율주행",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "SAE L0-L5=n=6 레벨 EXACT, BEV Fusion n=6 sensor, σ-τ=8 cam, LiDAR σ=12, MPC+PID n/φ=3, ViT d=2^σ=4096, σ=12 fleet/zone (BT-327/328+BT-56/58/61/66/69/84)",
+      "section": "mobility"
+    },
+    {
+      "id": "prod_mobility_HEXA_WING_n_6_항공공학",
+      "label": "HEXA-WING n=6 항공공학",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "SE(3) 6-DOF=n, 순항고도 12km=σ, ICAO 6등급=n, τ=4 비행단계, CFRP Z=6, Ti-6Al-4V, eVTOL τ=4 quad, ILS n/φ=3 cat (BT-85/93/119/123/125/127)",
+      "section": "mobility"
+    },
+    {
+      "id": "sec_digital-medical",
+      "label": "🏥 디지털/의료기기",
+      "layer": 4,
+      "type": "section",
+      "alien_index": 10,
+      "bt_count": 13,
+      "bt_exact_pct": 92,
+      "closure_grade": 0
+    },
+    {
+      "id": "prod_digital-medical_HEXA_BROWSER_특이점_브라우저",
+      "label": "HEXA-BROWSER 특이점 브라우저",
+      "layer": 4,
+      "type": "product",
+      "ufo": 7,
+      "description": "124/134 EXACT(92.5%), 10개 돌파 × 10+ 파라미터, DSE 4,500 조합, 페이지 로딩 σ-φ=10배 감소, 배터리 φ=2배, n/φ=3중 추적 격리 (BT-48/113/115/116/140/162/180/211/329/348)",
+      "section": "digital-medical"
+    },
+    {
+      "id": "prod_digital-medical_HEXA_MED_n_6_의료기기",
+      "label": "HEXA-MED n=6 의료기기",
+      "layer": 4,
+      "type": "product",
+      "ufo": 10,
+      "description": "ECG σ=12 리드(6사지+6흉부), MRI σ=12 코일채널, 초음파 n=6 MHz, US τ=4 모드(B/M/D/Color), SE(3) 6-DOF 수술로봇, Mk.I~V 진화 (BT-48/51/56/58/64/66/85/90/113/118/123/300)",
+      "section": "digital-medical"
     },
     {
       "id": "rm_L0-quark-flavors",
@@ -65780,6 +66298,16 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_356",
+      "target": "bt_354",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_356",
+      "target": "bt_351",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_357",
       "target": "bt_254",
       "type": "bt_crosslink"
@@ -66060,248 +66588,493 @@
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_351",
+      "target": "bt_233",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_351",
       "target": "bt_262",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_351",
       "target": "bt_261",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_352",
       "target": "bt_179",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_352",
       "target": "bt_228",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_352",
       "target": "bt_200",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_353",
+      "target": "bt_262",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_353",
       "target": "bt_197",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_353",
       "target": "bt_340",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
-      "target": "bt_55",
-      "type": "bt_crosslink"
-    },
-    {
-      "source": "bt_360",
-      "target": "bt_69",
-      "type": "bt_crosslink"
-    },
-    {
-      "source": "bt_360",
-      "target": "bt_75",
-      "type": "bt_crosslink"
-    },
-    {
-      "source": "bt_360",
-      "target": "bt_78",
-      "type": "bt_crosslink"
-    },
-    {
-      "source": "bt_360",
+      "source": "bt_355",
       "target": "bt_146",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
       "target": "bt_215",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
+      "target": "bt_262",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
+      "target": "bt_357",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
       "target": "bt_123",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
       "target": "bt_48",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
       "target": "bt_66",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
+      "target": "bt_358",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
       "target": "bt_183",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
+      "target": "bt_338",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
       "target": "bt_160",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
+      "target": "bt_359",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
       "target": "bt_114",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_355",
+      "target": "bt_211",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
+      "target": "bt_230",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
+      "target": "bt_360",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
+      "target": "bt_233",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_355",
       "target": "bt_138",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_361",
       "target": "bt_235",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_361",
       "target": "bt_155",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_361",
       "target": "bt_204",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_362",
       "target": "bt_122",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_362",
       "target": "bt_225",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_362",
       "target": "bt_126",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_363",
       "target": "bt_192",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_363",
+      "target": "bt_215",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_363",
       "target": "bt_101",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_364",
+      "target": "bt_233",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_364",
+      "target": "bt_138",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_364",
       "target": "bt_256",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_365",
+      "target": "bt_192",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_365",
       "target": "bt_150",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_366",
       "target": "bt_139",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_366",
       "target": "bt_175",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_366",
+      "target": "bt_122",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_367",
+      "target": "bt_139",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_367",
       "target": "bt_186",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_367",
       "target": "bt_85",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_368",
       "target": "bt_136",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_368",
+      "target": "bt_225",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_368",
       "target": "bt_124",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_369",
+      "target": "bt_101",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_369",
       "target": "bt_198",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_369",
       "target": "bt_265",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_370",
       "target": "bt_108",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_370",
       "target": "bt_145",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_370",
       "target": "bt_189",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
       "target": "bt_137",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
       "target": "bt_143",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
       "target": "bt_165",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
+      "target": "bt_170",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_371",
       "target": "bt_195",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
       "target": "bt_201",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
       "target": "bt_260",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_371",
+      "target": "bt_262",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_372",
+      "target": "bt_139",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_372",
+      "target": "bt_186",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_372",
+      "target": "bt_200",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_372",
+      "target": "bt_367",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_373",
       "target": "bt_176",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_360",
+      "source": "bt_373",
+      "target": "bt_204",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_373",
+      "target": "bt_225",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_373",
+      "target": "bt_265",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_374",
+      "target": "bt_122",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_374",
+      "target": "bt_373",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_374",
+      "target": "bt_200",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_375",
       "target": "bt_180",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_375",
+      "target": "bt_176",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_375",
+      "target": "bt_373",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_376",
+      "target": "bt_373",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_376",
+      "target": "bt_204",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_377",
+      "target": "bt_358",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_377",
+      "target": "bt_359",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_377",
+      "target": "bt_208",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_377",
+      "target": "bt_170",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_378",
+      "target": "bt_358",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_378",
+      "target": "bt_377",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_378",
+      "target": "bt_359",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_379",
+      "target": "bt_359",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_379",
+      "target": "bt_358",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_379",
+      "target": "bt_377",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_379",
+      "target": "bt_170",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_379",
+      "target": "bt_205",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_373",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_374",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_375",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_376",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_380",
+      "target": "bt_200",
       "type": "bt_crosslink"
     },
     {
@@ -66315,17 +67088,127 @@
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_381",
+      "source": "bt_382",
+      "target": "bt_381",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_382",
+      "target": "bt_391",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_383",
+      "target": "bt_394",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_384",
+      "target": "bt_385",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_384",
+      "target": "bt_403",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_386",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_387",
+      "target": "bt_388",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_387",
+      "target": "bt_389",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_388",
+      "target": "bt_389",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_390",
+      "target": "bt_391",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_390",
       "target": "bt_193",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_381",
+      "source": "bt_391",
+      "target": "bt_387",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_392",
+      "target": "bt_390",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_392",
+      "target": "bt_391",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_393",
       "target": "bt_357",
       "type": "bt_crosslink"
     },
     {
-      "source": "bt_381",
+      "source": "bt_393",
+      "target": "bt_394",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_394",
+      "target": "bt_395",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_395",
+      "target": "bt_393",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_396",
+      "target": "bt_397",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_396",
+      "target": "bt_398",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_397",
+      "target": "bt_398",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_399",
+      "target": "bt_381",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_400",
+      "target": "bt_381",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_400",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_400",
       "target": "bt_401",
       "type": "bt_crosslink"
     },
@@ -66336,12 +67219,22 @@
     },
     {
       "source": "bt_401",
+      "target": "bt_396",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_401",
       "target": "bt_10",
       "type": "bt_crosslink"
     },
     {
       "source": "bt_401",
       "target": "bt_195",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_402",
+      "target": "bt_396",
       "type": "bt_crosslink"
     },
     {
@@ -66402,6 +67295,11 @@
     {
       "source": "bt_405",
       "target": "bt_193",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_405",
+      "target": "bt_396",
       "type": "bt_crosslink"
     },
     {
@@ -66506,7 +67404,37 @@
     },
     {
       "source": "bt_409",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_409",
+      "target": "bt_393",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_409",
+      "target": "bt_398",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_409",
       "target": "bt_407",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_410",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_410",
+      "target": "bt_364",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_410",
+      "target": "bt_396",
       "type": "bt_crosslink"
     },
     {
@@ -66521,6 +67449,11 @@
     },
     {
       "source": "bt_411",
+      "target": "bt_393",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_411",
       "target": "bt_350",
       "type": "bt_crosslink"
     },
@@ -66530,8 +67463,38 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_411",
+      "target": "bt_369",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_412",
+      "target": "bt_393",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_412",
+      "target": "bt_394",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_412",
+      "target": "bt_395",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_412",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_412",
       "target": "bt_381",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_413",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66542,6 +67505,11 @@
     {
       "source": "bt_413",
       "target": "bt_407",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_413",
+      "target": "bt_382",
       "type": "bt_crosslink"
     },
     {
@@ -66566,7 +67534,32 @@
     },
     {
       "source": "bt_415",
+      "target": "bt_377",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_415",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_415",
       "target": "bt_407",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_415",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_416",
+      "target": "bt_375",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_416",
+      "target": "bt_373",
       "type": "bt_crosslink"
     },
     {
@@ -66580,6 +67573,31 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_416",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_416",
+      "target": "bt_374",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_417",
+      "target": "bt_373",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_417",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_417",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_417",
       "target": "bt_415",
       "type": "bt_crosslink"
@@ -66590,8 +67608,38 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_418",
+      "target": "bt_367",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_418",
+      "target": "bt_365",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_418",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_419",
+      "target": "bt_390",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_419",
       "target": "bt_417",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_419",
+      "target": "bt_375",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_419",
+      "target": "bt_373",
       "type": "bt_crosslink"
     },
     {
@@ -66606,12 +67654,32 @@
     },
     {
       "source": "bt_420",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_420",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_420",
       "target": "bt_407",
       "type": "bt_crosslink"
     },
     {
       "source": "bt_420",
       "target": "bt_48",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_421",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_421",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66630,8 +67698,38 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_422",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_422",
+      "target": "bt_393",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_423",
+      "target": "bt_365",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_423",
+      "target": "bt_390",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_423",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_423",
       "target": "bt_193",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_424",
+      "target": "bt_364",
       "type": "bt_crosslink"
     },
     {
@@ -66661,6 +67759,11 @@
     },
     {
       "source": "bt_425",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_425",
       "target": "bt_413",
       "type": "bt_crosslink"
     },
@@ -66672,6 +67775,11 @@
     {
       "source": "bt_426",
       "target": "bt_412",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_426",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66681,12 +67789,22 @@
     },
     {
       "source": "bt_427",
+      "target": "bt_394",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_427",
       "target": "bt_412",
       "type": "bt_crosslink"
     },
     {
       "source": "bt_427",
       "target": "bt_425",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_427",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66697,6 +67815,11 @@
     {
       "source": "bt_428",
       "target": "bt_413",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_428",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66711,12 +67834,27 @@
     },
     {
       "source": "bt_429",
+      "target": "bt_362",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_429",
       "target": "bt_350",
       "type": "bt_crosslink"
     },
     {
       "source": "bt_429",
       "target": "bt_411",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_429",
+      "target": "bt_390",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_430",
+      "target": "bt_369",
       "type": "bt_crosslink"
     },
     {
@@ -66727,6 +67865,11 @@
     {
       "source": "bt_430",
       "target": "bt_411",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_430",
+      "target": "bt_390",
       "type": "bt_crosslink"
     },
     {
@@ -66756,12 +67899,27 @@
     },
     {
       "source": "bt_432",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_432",
       "target": "bt_411",
       "type": "bt_crosslink"
     },
     {
       "source": "bt_432",
       "target": "bt_431",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_433",
+      "target": "bt_361",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_433",
+      "target": "bt_396",
       "type": "bt_crosslink"
     },
     {
@@ -66860,6 +68018,21 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_438",
+      "target": "bt_367",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_438",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_438",
+      "target": "bt_366",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_439",
       "target": "bt_193",
       "type": "bt_crosslink"
@@ -66921,7 +68094,17 @@
     },
     {
       "source": "bt_442",
+      "target": "bt_372",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_442",
       "target": "bt_413",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_442",
+      "target": "bt_399",
       "type": "bt_crosslink"
     },
     {
@@ -66970,6 +68153,11 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_443",
+      "target": "bt_364",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_444",
       "target": "bt_419",
       "type": "bt_crosslink"
@@ -66982,6 +68170,11 @@
     {
       "source": "bt_444",
       "target": "bt_429",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_444",
+      "target": "bt_390",
       "type": "bt_crosslink"
     },
     {
@@ -67076,6 +68269,11 @@
     },
     {
       "source": "bt_447",
+      "target": "bt_384",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_447",
       "target": "bt_417",
       "type": "bt_crosslink"
     },
@@ -67112,6 +68310,11 @@
     {
       "source": "bt_447",
       "target": "bt_409",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_448",
+      "target": "bt_364",
       "type": "bt_crosslink"
     },
     {
@@ -67171,6 +68374,11 @@
     },
     {
       "source": "bt_449",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_449",
       "target": "bt_443",
       "type": "bt_crosslink"
     },
@@ -67195,8 +68403,23 @@
       "type": "bt_crosslink"
     },
     {
+      "source": "bt_449",
+      "target": "bt_400",
+      "type": "bt_crosslink"
+    },
+    {
       "source": "bt_450",
       "target": "bt_409",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_450",
+      "target": "bt_399",
+      "type": "bt_crosslink"
+    },
+    {
+      "source": "bt_450",
+      "target": "bt_400",
       "type": "bt_crosslink"
     },
     {
@@ -68388,6 +69611,146 @@
       "source": "sec_hiv-treatment",
       "target": "prod_hiv-treatment_HEXA_HIV_6축_완전_치료_체인",
       "type": "section_product"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "prod_natural-science_HEXA_BIO_n_6_생명_아키텍처",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "prod_natural-science_HEXA_AGRI_n_6_농업과학",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "prod_natural-science_HEXA_FOOD_n_6_식품과학",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "prod_natural-science_HEXA_OCEAN_n_6_해양과학",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "dse_biology",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "dse_agriculture",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "dse_food-science",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_natural-science",
+      "target": "dse_oceanography",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_COGNI_n_6_인지_아키텍처",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_CONSCIOUSNESS_의식_프로세서",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_SOCIAL_n_6_사회_아키텍처",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_TEMPORAL_n_6_시간_아키텍처",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_LING_n_6_언어_아키텍처",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "prod_cognitive-social_HEXA_ECON_n_6_경제학",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_cognitive-architecture",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_consciousness-chip",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_social-architecture",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_temporal-architecture",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_linguistics",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_cognitive-social",
+      "target": "dse_economics",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_mobility",
+      "target": "prod_mobility_HEXA_DRIVE_n_6_자율주행",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_mobility",
+      "target": "prod_mobility_HEXA_WING_n_6_항공공학",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_mobility",
+      "target": "dse_autonomous-driving",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_mobility",
+      "target": "dse_aviation",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_digital-medical",
+      "target": "prod_digital-medical_HEXA_BROWSER_특이점_브라우저",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_digital-medical",
+      "target": "prod_digital-medical_HEXA_MED_n_6_의료기기",
+      "type": "section_product"
+    },
+    {
+      "source": "sec_digital-medical",
+      "target": "dse_browser",
+      "type": "section_domain"
+    },
+    {
+      "source": "sec_digital-medical",
+      "target": "dse_medical-device",
+      "type": "section_domain"
     },
     {
       "source": "rm_L0-quark-flavors",
@@ -78020,6 +79383,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_σ",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_σ",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_σ",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_σ",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_τ",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78125,6 +79508,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_τ",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_τ",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_τ",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_τ",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_φ",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78230,6 +79633,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_φ",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_φ",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_φ",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_φ",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_sopfr",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78335,6 +79758,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_sopfr",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_sopfr",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_sopfr",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_sopfr",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_J₂",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78440,6 +79883,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_J₂",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_J₂",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_J₂",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_J₂",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_μ",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78545,6 +80008,26 @@
       "type": "foundation"
     },
     {
+      "source": "const_μ",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_μ",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_μ",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_μ",
+      "target": "sec_digital-medical",
+      "type": "foundation"
+    },
+    {
       "source": "const_n",
       "target": "sec_fusion",
       "type": "foundation"
@@ -78647,6 +80130,26 @@
     {
       "source": "const_n",
       "target": "sec_hiv-treatment",
+      "type": "foundation"
+    },
+    {
+      "source": "const_n",
+      "target": "sec_natural-science",
+      "type": "foundation"
+    },
+    {
+      "source": "const_n",
+      "target": "sec_cognitive-social",
+      "type": "foundation"
+    },
+    {
+      "source": "const_n",
+      "target": "sec_mobility",
+      "type": "foundation"
+    },
+    {
+      "source": "const_n",
+      "target": "sec_digital-medical",
       "type": "foundation"
     },
     {
