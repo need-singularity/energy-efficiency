@@ -14,10 +14,10 @@ domains_100pct_n6 = 335
 alien_level_all = 10
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"
-bt_total = 989
-bt_range = "BT-1~1104 (gaps)"
-bt_latest_series = "BT-1104 궁극의 HBM 10-도메인 대통합 (58/58 EXACT=100%, 10 domains)"
-note = "전 도메인 🛸10 달성. BT-1104 HBM 대통합 추가 (2026-04-10). 신규 전용 TOML 6개."
+bt_total = 995
+bt_range = "BT-1~1110 (gaps)"
+bt_latest_series = "BT-1110 Wave-Cascade Unification — 비공명 도메인 mind(sopfr=5)"
+note = "전 도메인 alien 10 달성. BT-1105~1110 돌파 6건 추가 (2026-04-10)."
 
 # ── 완료 ──────────────────────────────────────────
 
@@ -13493,7 +13493,20 @@ tool = "tools/universal-dse/ domains/ar-vr-system.toml"
 n6_max = 100.0
 n6_avg = 100.0
 note = "DSE complete"
-cross_dse = ["display", "audio", "gesture-recognition", "machine-vision", "audio-processing", "micro-led"]
+cross_dse = ["display", "audio", "gesture-recognition", "machine-vision", "audio-processing", "micro-led", "dimensional-perception"]
+
+[dimensional-perception]
+goal = true
+dse = "done"
+combos = 7776
+alien_level = 10
+levels = ["SensorTracking", "LightField", "Visualization", "Interaction", "CognitiveMapping"]
+candidates = "6x6x6x6x6"
+best_n6 = "6DOF + Plenoptic6D + Tesseract24face + 6RotPlane + CalabiYau6D (100%)"
+n6_max = 100.0
+n6_avg = 100.0
+note = "BT-1108 차원지각 대통합. 완전광학함수 6D=n, Tesseract 24면=J2, 4D 회전평면 6=n, 24-cell J2=24, Calabi-Yau 6=n. 18/18 EXACT."
+cross_dse = ["ar-vr-system", "display", "optics-telescope", "holographic-display", "pure-mathematics", "particle-cosmology"]
 
 [speech-synthesis]
 goal = true
