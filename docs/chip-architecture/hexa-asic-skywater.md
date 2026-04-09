@@ -516,45 +516,140 @@ derived from perfect number arithmetic gets burned into real silicon.
 ### 5.2 Test Plan Matrix
 
 ```
-  ┌─────────────────┬─────────────────────────────────┬──────────┬────────┐
-  │  Module          │  Test                           │  Method  │ Status │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  RISC-V Core    │  RV32I compliance (riscv-tests) │  Cocotb  │  TODO  │
-  │                 │  RV32M multiply/divide          │  Cocotb  │  TODO  │
-  │                 │  Pipeline hazards (RAW/WAW)     │  Cocotb  │  TODO  │
-  │                 │  Branch prediction              │  Cocotb  │  TODO  │
-  │                 │  CSR read/write                 │  Cocotb  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  Mem Controller │  Stack region bounds (0..8191)  │  Formal  │  TODO  │
-  │                 │  Heap region bounds             │  Formal  │  TODO  │
-  │                 │  Arena region bounds             │  Formal  │  TODO  │
-  │                 │  Cross-region access = fault    │  Formal  │  TODO  │
-  │                 │  Concurrent access arbitration  │  Cocotb  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  HEXA-LANG Dec  │  All 53 keywords recognized     │  Cocotb  │  TODO  │
-  │                 │  Unknown keyword = default       │  Cocotb  │  TODO  │
-  │                 │  CAM timing (single-cycle)      │  Formal  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  SNN Ring       │  n=6 neuron fire pattern        │  Cocotb  │  TODO  │
-  │                 │  Synapse weight update           │  Cocotb  │  TODO  │
-  │                 │  Ring oscillation stability     │  Cocotb  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  SPI            │  Mode 0/1/2/3 transactions      │  Cocotb  │  TODO  │
-  │                 │  6-channel arbitration           │  Cocotb  │  TODO  │
-  │                 │  Clock divider                   │  Cocotb  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  GPIO           │  All 24 pins I/O toggle          │  Cocotb  │  TODO  │
-  │                 │  Interrupt generation            │  Cocotb  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  Wishbone       │  Single read/write              │  Cocotb  │  TODO  │
-  │                 │  Burst transactions              │  Cocotb  │  TODO  │
-  │                 │  Address decode correctness      │  Formal  │  TODO  │
-  ├─────────────────┼─────────────────────────────────┼──────────┼────────┤
-  │  Top Level      │  Boot sequence (Caravel harness)│  Cocotb  │  TODO  │
-  │                 │  Memory-mapped IO access        │  Cocotb  │  TODO  │
-  │                 │  IRQ generation + handling       │  Cocotb  │  TODO  │
-  │                 │  Logic analyzer readback         │  Cocotb  │  TODO  │
-  └─────────────────┴─────────────────────────────────┴──────────┴────────┘
+  ┌─────────────────┬─────────────────────────────────┬──────────┬────────┬──────────────────────────────────────────────────────────┐
+  │  Module          │  Test                           │  Method  │ Status │  Detail                                                    │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  RISC-V Core    │  RV32I compliance (riscv-tests) │  Cocotb  │  SPEC  │  Run official riscv-tests rv32ui/rv32mi suites (55 ISA   │
+  │                 │                                 │          │        │  tests). Assert n=6-stage pipeline retires each insn in   │
+  │                 │                                 │          │        │  6 cycles. Use Cocotb BFM driving Wishbone to load ELF.   │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  RV32M multiply/divide          │  Cocotb  │  SPEC  │  Verify 32x32→64 MUL/MULH/DIV/REM. Multiply latency =   │
+  │                 │                                 │          │        │  tau=4 cycles (radix-4 Booth). Divide = sigma-tau=8 cyc.  │
+  │                 │                                 │          │        │  Edge cases: divide-by-zero returns 0xFFFFFFFF per spec.  │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Pipeline hazards (RAW/WAW)     │  Cocotb  │  SPEC  │  Inject dependent instruction sequences (ADD r1→r2 fwd). │
+  │                 │                                 │          │        │  Verify n/phi=3-wide decode stalls on RAW hazard within   │
+  │                 │                                 │          │        │  phi=2 cycle forwarding window. WAW resolved by in-order  │
+  │                 │                                 │          │        │  writeback at stage 6. Check CPI stays <= 1.2.            │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Branch prediction              │  Cocotb  │  SPEC  │  2-bit saturating predictor, sigma=12-entry BTB indexed   │
+  │                 │                                 │          │        │  by PC[5:2]. Misprediction penalty = sopfr=5 cycles       │
+  │                 │                                 │          │        │  (flush stages 2..6). Test: tight loop (>90% hit), branch │
+  │                 │                                 │          │        │  storm (random targets, measure mispredict rate).          │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  CSR read/write                 │  Cocotb  │  SPEC  │  Validate mstatus, mie, mip, mcause, mepc, mtvec CSRs.   │
+  │                 │                                 │          │        │  CSRRW/CSRRS/CSRRC in single cycle. Custom CSRs at        │
+  │                 │                                 │          │        │  0xFC0..0xFCB (sigma=12 N6 status registers): pipeline    │
+  │                 │                                 │          │        │  occupancy, SNN state, memory region usage counters.      │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  Mem Controller │  Stack region bounds (0..8191)  │  Formal  │  SPEC  │  SymbiYosys BMC depth=20: assert addr ∈ [0x0000,0x1FFF]  │
+  │                 │                                 │          │        │  ↔ region==STACK. Stack = TOTAL_MEM/2 = 8192 bytes.       │
+  │                 │                                 │          │        │  Cover: push/pop to boundary, overflow triggers fault.    │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Heap region bounds             │  Formal  │  SPEC  │  BMC depth=20: assert addr ∈ [0x2000,0x3555] ↔           │
+  │                 │                                 │          │        │  region==HEAP. Heap = TOTAL_MEM/3 = 5461 bytes.           │
+  │                 │                                 │          │        │  Verify malloc metadata stays within 1/3 partition.       │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Arena region bounds             │  Formal  │  SPEC  │  BMC depth=20: assert addr ∈ [0x3556,0x3FFF] ↔           │
+  │                 │                                 │          │        │  region==ARENA. Arena = TOTAL_MEM/6 = 2731 bytes.         │
+  │                 │                                 │          │        │  1/2+1/3+1/6=1 Egyptian fraction identity verified.       │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Cross-region access = fault    │  Formal  │  SPEC  │  BMC depth=12: STACK write to addr>=0x2000 → fault=1     │
+  │                 │                                 │          │        │  within μ=1 cycle. HEAP write to addr<0x2000 → fault.    │
+  │                 │                                 │          │        │  Fault handler loads mcause with region-violation code.   │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Concurrent access arbitration  │  Cocotb  │  SPEC  │  CPU + SNN simultaneous read: round-robin arbiter with   │
+  │                 │                                 │          │        │  phi=2 priority levels. CPU gets priority on even cycles, │
+  │                 │                                 │          │        │  SNN on odd. Max stall = mu=1 cycle. Verify no data       │
+  │                 │                                 │          │        │  corruption under back-to-back contention for 10K cycles. │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  HEXA-LANG Dec  │  All 53 keywords recognized     │  Cocotb  │  SPEC  │  Drive all σ*τ+sopfr = 53 keyword encodings into CAM     │
+  │                 │                                 │          │        │  input. Assert each produces unique J₂=24-bit opcode.    │
+  │                 │                                 │          │        │  Sweep: sequential scan of keyword IDs 0..52, verify     │
+  │                 │                                 │          │        │  match_valid=1 and opcode matches golden reference LUT.   │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Unknown keyword = default       │  Cocotb  │  SPEC  │  Feed keyword IDs 53..63 (beyond valid range) and random │
+  │                 │                                 │          │        │  bit patterns. Assert match_valid=0 and opcode output =  │
+  │                 │                                 │          │        │  24'h000000 (NOP). Verify no CAM false-positive matches.  │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  CAM timing (single-cycle)      │  Formal  │  SPEC  │  SymbiYosys: assert that from keyword_in valid to         │
+  │                 │                                 │          │        │  opcode_out valid takes exactly μ=1 clock cycle.          │
+  │                 │                                 │          │        │  STA: CAM critical path < 20 ns (50 MHz period).         │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  SNN Ring       │  n=6 neuron fire pattern        │  Cocotb  │  SPEC  │  Initialize n=6 Izhikevich neurons with a=0.02, b=0.2,  │
+  │                 │                                 │          │        │  c=-65, d=8 (regular spiking). Inject constant current   │
+  │                 │                                 │          │        │  I=10 on neuron 0. After sigma=12 SNN clock cycles,       │
+  │                 │                                 │          │        │  verify propagation through ring: neuron k fires at t =  │
+  │                 │                                 │          │        │  k*phi cycles (k=0..5). Check spike count over 1000 cyc.  │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Synapse weight update           │  Cocotb  │  SPEC  │  σ=12 synapses (2 per neuron in ring topology). Apply    │
+  │                 │                                 │          │        │  STDP rule: Δw = +A_plus if t_post-t_pre < tau=4 ms,     │
+  │                 │                                 │          │        │  Δw = -A_minus otherwise. Weights are 8-bit fixed-point.  │
+  │                 │                                 │          │        │  Verify weight saturation at 0xFF, no underflow below 0.  │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Ring oscillation stability     │  Cocotb  │  SPEC  │  Run n=6 neuron ring for 50,000 SNN clocks (at 8.33 MHz  │
+  │                 │                                 │          │        │  = CLK_SYS/n). Assert spike interval variance < 5%.      │
+  │                 │                                 │          │        │  No neuron enters quiescent state permanently. Ring       │
+  │                 │                                 │          │        │  frequency stabilizes within σ²=144 initial cycles.       │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  SPI            │  Mode 0/1/2/3 transactions      │  Cocotb  │  SPEC  │  For each SPI mode (CPOL,CPHA ∈ {0,1}²=τ modes): send   │
+  │                 │                                 │          │        │  8-bit, 16-bit, 32-bit frames via channel 0. Verify MISO │
+  │                 │                                 │          │        │  loopback matches MOSI. SPI_CLK = 12.5 MHz (CLK/τ).     │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  6-channel arbitration           │  Cocotb  │  SPEC  │  Assert all n=6 SPI channels simultaneously. Round-robin │
+  │                 │                                 │          │        │  arbiter grants 1 channel per SPI_CLK cycle. Verify no   │
+  │                 │                                 │          │        │  channel starved over σ=12 consecutive arbitration rounds.│
+  │                 │                                 │          │        │  Max latency = n-1=5 SPI_CLK cycles for lowest-priority. │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Clock divider                   │  Cocotb  │  SPEC  │  Programmable divider: CLK_SYS / (2*N) where N=1..σ=12. │
+  │                 │                                 │          │        │  Default N=τ=4 → 12.5 MHz. Verify duty cycle 50%±2%.    │
+  │                 │                                 │          │        │  Test: sweep N from 1 to 12, measure output frequency.   │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  GPIO           │  All 24 pins I/O toggle          │  Cocotb  │  SPEC  │  Loop over J₂=24 GPIO pins: set output_enable=1, drive  │
+  │                 │                                 │          │        │  high, read back=1; drive low, read back=0. Then set     │
+  │                 │                                 │          │        │  output_enable=0, drive externally, verify input capture. │
+  │                 │                                 │          │        │  Toggle rate: 1 transition per phi=2 CLK_SYS cycles.     │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Interrupt generation            │  Cocotb  │  SPEC  │  Configure n=6 GPIO pins (GPIO[0..5]) as edge-triggered  │
+  │                 │                                 │          │        │  interrupt sources (rising/falling/both). Drive edges,    │
+  │                 │                                 │          │        │  verify IRQ line asserts within μ=1 cycle. Check ISR      │
+  │                 │                                 │          │        │  reads correct GPIO IRQ status register (24-bit bitmap). │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  Wishbone       │  Single read/write              │  Cocotb  │  SPEC  │  Wishbone B4 pipelined: assert cyc+stb, wait ack within  │
+  │                 │                                 │          │        │  phi=2 cycles. Write 32-bit word to each memory region,   │
+  │                 │                                 │          │        │  read back, compare. Test all tau=4 byte select combos.   │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Burst transactions              │  Cocotb  │  SPEC  │  Wishbone incrementing burst of n=6 words. Assert stb    │
+  │                 │                                 │          │        │  held for 6 consecutive cycles, ack pipelined 1 cycle    │
+  │                 │                                 │          │        │  behind. Verify sigma=12 words transferred in 2 bursts.  │
+  │                 │                                 │          │        │  Bus throughput = 32 bits * 50 MHz = 200 MB/s peak.       │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Address decode correctness      │  Formal  │  SPEC  │  SymbiYosys: for each of n=6 peripherals mapped in addr  │
+  │                 │                                 │          │        │  space, assert unique decode (no overlap). Memory map:    │
+  │                 │                                 │          │        │  SRAM 0x00000000..0x00003FFF (φ^τ=16 KB), GPIO 0x10000,  │
+  │                 │                                 │          │        │  SPI 0x10100, SNN 0x10200, CSR 0x10300. BMC depth=10.    │
+  ├─────────────────┼─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │  Top Level      │  Boot sequence (Caravel harness)│  Cocotb  │  SPEC  │  Caravel integration test: management core releases      │
+  │                 │                                 │          │        │  user_clock2, deasserts reset. N6 core fetches from       │
+  │                 │                                 │          │        │  0x00000000 (reset vector). First n=6 instructions in     │
+  │                 │                                 │          │        │  boot ROM initialize stack pointer to 0x1FFF, set mtvec. │
+  │                 │                                 │          │        │  Boot completes in < σ²=144 cycles.                      │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Memory-mapped IO access        │  Cocotb  │  SPEC  │  CPU executes SW/LW to GPIO base (0x10000). Toggle       │
+  │                 │                                 │          │        │  GPIO[0] via store, verify physical pin change within     │
+  │                 │                                 │          │        │  phi=2 cycles. Read SNN status register at 0x10200,       │
+  │                 │                                 │          │        │  verify n=6 neuron state bits [5:0] are accessible.       │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  IRQ generation + handling       │  Cocotb  │  SPEC  │  Trigger GPIO interrupt on pin 0. Verify: (1) mip.MEIP   │
+  │                 │                                 │          │        │  set within μ=1 cycle, (2) PC jumps to mtvec within      │
+  │                 │                                 │          │        │  sopfr=5 cycles (pipeline flush), (3) ISR reads mcause=  │
+  │                 │                                 │          │        │  sigma=12+pin_id, (4) mret resumes from mepc correctly.  │
+  │                 ├─────────────────────────────────┼──────────┼────────┼──────────────────────────────────────────────────────────┤
+  │                 │  Logic analyzer readback         │  Cocotb  │  SPEC  │  Caravel LA probes (128 bits): map σ*J₂=288 internal     │
+  │                 │                                 │          │        │  signals via mux into LA[127:0]. Verify pipeline stage   │
+  │                 │                                 │          │        │  occupancy (n=6 bits), SNN spike bus (n=6 bits), memory   │
+  │                 │                                 │          │        │  region select (phi=2 bits), arbitration state readable.  │
+  └─────────────────┴─────────────────────────────────┴──────────┴────────┴──────────────────────────────────────────────────────────┘
 ```
 
 ### 5.3 Formal Verification (Egyptian Memory Regions)

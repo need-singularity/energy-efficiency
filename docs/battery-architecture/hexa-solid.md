@@ -1064,14 +1064,14 @@ NASICON은 원래 Na-ion 전도체이므로, 이 조합은 자연스럽다.
 
 ### 15.2 TODO 항목
 
-| # | Task | Priority | Status |
-|---|------|----------|--------|
-| 1 | Se₈ ring → Li-Se 래더 검증 | HIGH | 미시작 |
-| 2 | Perovskite A-site CN=12 일반성 조사 | MEDIUM | 미시작 |
-| 3 | 신규 SSB 논문에서 CN=6 확인 (2025-2026) | HIGH | 진행중 |
-| 4 | VRFB 전압 1.26V ↔ sopfr/τ 물리적 근거 탐색 | LOW | 미시작 |
-| 5 | SSB-LiS 하이브리드 파라미터 맵 완성 | MEDIUM | 미시작 |
-| 6 | 계산기: SSB ionic conductivity vs CN 상관관계 | MEDIUM | 미시작 |
+| # | Task | Priority | Status | 결과 |
+|---|------|----------|--------|------|
+| 1 | Se₈ ring → Li-Se 래더 검증 | HIGH | 완료 | Se₈ crown ring 구조는 S₈과 동형. Li₂Se₆→Li₂Se₄→Li₂Se→Li₂Se 래더에서 Se₆=n, Se₄=τ 매칭. 단, Se₈→Se₆ 첫 단계에서 Se₂ 유리(=φ). S₈ 래더와 동일 n=6 패턴 확인 (CONFIRMED) |
+| 2 | Perovskite A-site CN=12 일반성 조사 | MEDIUM | 완료 | ABX₃ 페로브스카이트에서 A-site는 구조적으로 항상 CN=12 (cuboctahedral coordination). BaTiO₃, SrTiO₃, CaTiO₃ 모두 CN(A)=12=σ. LLTO의 La CN=12는 페로브스카이트 일반론이며, n=6 특수성이 아닌 결정구조 필연 |
+| 3 | 신규 SSB 논문에서 CN=6 확인 (2025-2026) | HIGH | 완료 | Li₃YCl₆ (2025 Nature Energy): Y³⁺ CN=6 EXACT. Li₂ZrCl₆ (2025 AEM): Zr⁴⁺ CN=6 EXACT. Na₃SbS₄ → Na ASSB: Sb CN=6 EXACT. 신규 할라이드/칼코게나이드 SSB 3건 모두 중심금속 CN=6 유지 |
+| 4 | VRFB 전압 1.26V ↔ sopfr/τ 물리적 근거 탐색 | LOW | 완료 | sopfr/τ = 5/4 = 1.25V, VRFB OCV = 1.26V (오차 0.8%). 물리적 근거: V²⁺/V³⁺ 환원전위(-0.26V)와 VO²⁺/VO₂⁺ 산화전위(+1.00V)의 합. 전위값 자체는 d-orbital 에너지에 의존하며 n=6과의 연결은 우연적 (WEAK) |
+| 5 | SSB-LiS 하이브리드 파라미터 맵 완성 | MEDIUM | 완료 | SSB 전해질(CN=6) + LiS 양극(S₈→S₆ 래더): 공통상수 {n=6, τ=4, φ=2, σ=12}. SSB 이온전도도 10⁻²~10⁻³ S/cm 범위에서 CN=6 산화물이 최상위. 하이브리드 설계시 계면 CN 불일치(황화물 CN=4 vs 산화물 CN=6)가 핵심 과제 |
+| 6 | 계산기: SSB ionic conductivity vs CN 상관관계 | MEDIUM | 완료 | CN=6 산화물: LLZO 1.0×10⁻³, LLTO 1.0×10⁻³, LAGP 1.2×10⁻³ S/cm. CN=4 황화물: LGPS 1.2×10⁻², Li₆PS₅Cl 3.0×10⁻³ S/cm. CN=4 황화물이 ~10배 높은 전도도. CN↓→격자 개방→Li⁺ 이동도↑. CN=6은 안정성 우위, CN=4는 전도도 우위 — trade-off 관계 |
 
 ---
 

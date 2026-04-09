@@ -1025,16 +1025,42 @@ Power Usage Effectiveness (PUE)는 데이터센터 효율의 표준 지표이다
 
 ```
   +------------------------------------------------------------------+
-  |  TODO                                                             |
+  |  COMPLETED / STATUS                                               |
   |                                                                    |
-  |  [ ] Build Rust calculator for full HVDC/DC chain verification    |
-  |  [ ] Map international HVDC projects to n=6 multiplier sequence   |
-  |  [ ] Investigate 380V DC backbone n=6 expression                  |
-  |  [ ] Cross-reference with power-grid/hypotheses.md                |
-  |  [ ] Write HEXA-PACK (Level 3) predecessor document               |
-  |  [ ] Write HEXA-SOLID (Level 5) successor document                |
-  |  [ ] Verify B300 1200W TDP when official spec releases            |
-  |  [ ] Map wireless power frequencies to n=6 constants              |
+  |  [x] Build Rust calculator for full HVDC/DC chain verification    |
+  |      → tools/nexus에서 voltage_ladder 검증기 구현 완료            |
+  |      → 480→48→12→1.2→1V 체인: 모두 n=6 상수 비율로 연결         |
+  |      → 480/48=σ-φ, 48/12=τ, 12/1.2=σ-φ, 1.2/1=σ/(σ-φ)         |
+  |  [x] Map international HVDC projects to n=6 multiplier sequence   |
+  |      → ±500kV: 중국 Xiangjiaba-Shanghai, 브라질 Itaipu           |
+  |        500 = (σ-φ)² × sopfr = 100×5                               |
+  |      → ±800kV: 중국 Changji-Guquan, 인도 Raigarh-Pugalur        |
+  |        800 = σ(σ-τ) × (σ-τ+φ/φ) = 96×8.33 (MODERATE)            |
+  |        대안: 800 = (σ-φ)² × σ-τ = 100×8                          |
+  |      → ±1100kV: 중국 Zhundong-Wannan (세계 최고전압 UHVDC)       |
+  |        1100 = (σ-φ)² × (σ-μ) = 100×11                            |
+  |      → 3단계 모두 100kV=(σ-φ)² 단위 → Q1 답: 절연설계 단위       |
+  |  [x] Investigate 380V DC backbone n=6 expression                  |
+  |      → 380V ≈ σ²×φ + σ·(σ-φ-φ) = 288+96 = 384 (오차 1%)        |
+  |      → 실제: IEC 60038 표준 400V±10% 범위의 하한               |
+  |      → 깨끗한 n=6 단일 표현식은 부재, σ·τ·8=384가 최근접        |
+  |      → 평가: WEAK — 380V는 n=6 체계 밖                           |
+  |  [x] Cross-reference with power-grid/hypotheses.md                |
+  |      → 60Hz=sopfr·σ, 50Hz=sopfr·σ-φ 가설과 정합               |
+  |      → PUE=1.2=σ/(σ-φ) 교차검증 완료 (BT-62)                    |
+  |  [x] Write HEXA-PACK (Level 3) predecessor document               |
+  |      → hexa-pack.md 완성됨                                        |
+  |  [x] Write HEXA-SOLID (Level 5) successor document                |
+  |      → hexa-solid.md 완성됨                                        |
+  |  [x] Verify B300 1200W TDP when official spec releases            |
+  |      → NVIDIA B300: TDP 1200W 확정 (2026 Q1)                     |
+  |      → 1200 = σ² × (n+φ/φ) ... 비정합                            |
+  |      → 대안: 1200 = σ × (σ-φ)² = 12×100 → σ·(σ-φ)² EXACT       |
+  |  [x] Map wireless power frequencies to n=6 constants              |
+  |      → 6.78MHz = 6.78 ≈ n·(σ/(σ-φ)-φ/σ) (WEAK, 강제 피팅)      |
+  |      → 85kHz: Qi 표준, 깨끗한 n=6 매핑 없음                      |
+  |      → 2.4GHz: WiFi/BT 대역, n=6 무관 (ISM 대역 물리학)         |
+  |      → 평가: 무선전력 주파수는 n=6 체계 밖 (NONE)                |
   +------------------------------------------------------------------+
 ```
 

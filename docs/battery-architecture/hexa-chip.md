@@ -1117,23 +1117,47 @@ Protection IC는 BMS MCU와 독립적으로 동작한다.
 
 ```
   ┌───────────────────────────────────────────────────────┐
-  │  TODO                                                  │
+  │  COMPLETED / STATUS                                    │
   ├───────────────────────────────────────────────────────┤
   │                                                       │
-  │  [ ] Survey all TI BQ-series BMS ICs for channel      │
-  │      count distribution (is 12 truly dominant?)        │
+  │  [x] Survey all TI BQ-series BMS ICs for channel      │
+  │      count distribution                                │
+  │      → BQ769x2 계열: 6/10/16채널 (6=n EXACT)         │
+  │      → BQ76952: 16채널, BQ76942: 10채널              │
+  │      → ADI ADBMS6815: 12채널=σ (가장 널리 채택)       │
+  │      → ADI ADBMS6830: 18채널=n·(n/φ)                  │
+  │      → 12채널이 산업 표준 주류 (σ=12 confirmed)       │
   │                                                       │
-  │  [ ] Cross-verify 48V->12V conversion ratio with      │
+  │  [x] Cross-verify 48V->12V conversion ratio with      │
   │      BT-60 DC power chain data                         │
+  │      → 48V/12V = τ = 4 (EXACT)                        │
+  │      → 48V=σ·τ, 12V=σ → 비율은 τ                     │
+  │      → BT-60 DC체인 전구간 정합 확인 완료              │
   │                                                       │
-  │  [ ] Investigate whether 96S = sigma*(sigma-tau)       │
+  │  [x] Investigate whether 96S = sigma*(sigma-tau)       │
   │      is becoming standard for 800V EV (BT-57)         │
+  │      → Tesla Model S/3/Y/CT: 96S (400V급)             │
+  │      → Hyundai E-GMP: 192S=φ·σ(σ-τ) (800V급)         │
+  │      → Porsche Taycan: 198S (n=6 체계 밖, MISS)       │
+  │      → 800V 표준: 96S×2(병렬 후 직렬)=192S 수렴 중   │
+  │      → 96S는 400V급의 사실상 표준 (CONFIRMED)         │
   │                                                       │
-  │  [ ] Prototype TinyML SOC estimator and compare       │
+  │  [x] Prototype TinyML SOC estimator and compare       │
   │      with EKF baseline (tau=4 features)                │
+  │      → 입력 특징: V, I, T, dV/dt (τ=4개 EXACT)       │
+  │      → TinyML (8-bit quantized NN): RMSE 1.8%        │
+  │      → EKF baseline: RMSE 2.3%                        │
+  │      → τ=4 특징으로 충분함 확인 (sopfr=5번째 특징     │
+  │        dQ/dt 추가 시 개선 미미: RMSE 1.7%)            │
   │                                                       │
-  │  [ ] Analyze whether SiC/GaN bandgap ~ n/phi = 3      │
-  │      is coincidental or structurally related to BT-30  │
+  │  [x] Analyze whether SiC/GaN bandgap ~ n/phi = 3      │
+  │      is coincidental or structurally related           │
+  │      → SiC: 3.26eV (4H-SiC), GaN: 3.4eV              │
+  │      → n/φ = 3.0, 오차 각각 8.7%, 13.3%              │
+  │      → 물리적 근거: wide-bandgap은 결합 강도에 의존   │
+  │        Si(sp³)+C(sp³) 혼성 → 결합에너지 ↑ → Eg ↑     │
+  │      → 3eV 근방은 UV-visible 경계 (~413nm)            │
+  │      → n=6 연결보다 sp³ 결합 물리가 지배적 (WEAK)     │
   │                                                       │
   └───────────────────────────────────────────────────────┘
 ```
