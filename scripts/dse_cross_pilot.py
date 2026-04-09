@@ -531,6 +531,7 @@ with (OUT/"all_pairs_s05.jsonl").open("w") as f:
             "miss_n6avg": p[9], "bt_ids": p[10], "shared_consts": p[11]
         }, ensure_ascii=False) + "\n")
 
+import sys; print("[MARKER] 5b start", file=sys.stderr, flush=True)
 # ── 5b. 기존 상위 50 도메인 쌍 분석도 유지 (호환) ────────────────
 pairs = []
 for i in range(len(top50_dom)):
@@ -570,6 +571,7 @@ with (OUT/"resonance_hist.jsonl").open("w") as f:
     for b,c in hist:
         f.write(json.dumps({"bin": b, "count": c}) + "\n")
 
+import sys; print("[MARKER] 5c clustering start", file=sys.stderr, flush=True)
 # ── 5c. 수식 기반 도메인 클러스터링 (Union-Find) ─────────────────
 # 같은 수식을 공유하는 도메인을 클러스터로 묶음
 # 최소 공유 수식 수: 3개 이상이면 같은 클러스터
@@ -648,6 +650,7 @@ with (OUT/"domain_clusters.jsonl").open("w") as f:
 
 print(f"[OK] 클러스터: {len(cluster_stats)}개 (2+ 멤버), 최대 클러스터 {cluster_stats[0]['size']}개 도메인" if cluster_stats else "[OK] 클러스터 없음", file=_sys.stderr, flush=True)
 
+import sys; print("[MARKER] 6 md generation start", file=sys.stderr, flush=True)
 # ── 6. docs/dse-cross-resonance.md 생성 ─────────────────────────
 lines = []
 lines.append("# DSE 교차 공명 분석 — 전체 335 도메인 확장판 (v2)")
