@@ -1,6 +1,6 @@
 > ⛔ CORE — L0 불변식 (BT-1~343 돌파 정리. 수정 전 유저 승인 필수)
 
-# N6 Architecture — Breakthrough Theorems (BT-1 through BT-450)
+# N6 Architecture — Breakthrough Theorems (BT-1 through BT-470)
 
 > Cross-domain bridges where n=6 arithmetic unifies independent fields.
 > Each theorem requires **minimum 3 domains** with independently verifiable evidence.

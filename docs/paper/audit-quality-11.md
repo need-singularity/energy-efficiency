@@ -34,34 +34,27 @@ CLAUDE.md 참조 테이블의 "현재 39편"은 `docs/paper/README.md` 기준이
 | 4 | n6-hexa-exo-paper | 1 | 11/11 | 정상 종료 | 정의-도출 | **PASS** |
 | 5 | n6-hexa-limb-paper | 1 | 12/12 | 정상 종료 | 정의-도출 | **PASS** |
 | 6 | n6-hexa-mind-paper | 1 | 9/9 | 정상 종료 | 정의-도출 | **PASS** |
-| 7 | n6-hexa-neuro-paper | 1 | **10/11** | `AssertionError: BT-405/406 검증 실패` | 정의-도출이지만 "시각 격자 3600" 항목 산식 오류 | **FAIL** |
+| 7 | n6-hexa-neuro-paper | 1 | **11/11** | 정상 종료, 모든 `assert` 통과 | 정의-도출 (시각 격자 산식 수정 완료: `(σ·sopfr)²=3600`) | **PASS** |
 | 8 | n6-hexa-olfact-paper | 1 | 11/11 | 정상 종료 | 정의-도출 | **PASS** |
 | 9 | n6-hexa-skin-paper | 1 | 13/13 | 정상 종료 | 정의-도출 | **PASS** |
 | 10 | n6-hexa-telepathy-paper | 1 | 10/10 | 정상 종료 | 정의-도출 | **PASS** |
 | 11 | n6-synthetic-biology-paper | 1 | 12/12 | 정상 종료 (이중 완전수 6,28) | 정의-도출 | **PASS** |
 
-**총계: 10 PASS / 1 FAIL / 11편**
+**총계: 11 PASS / 0 FAIL / 11편**
 
 공통으로 11편 모두 "표준 증강 블록"(σ(v)·φ(v)=v·τ(v) 해집합 전수 탐색, 소수 편향 대조 6종, MISS 참조)을 포함하여 유일성 검증을 공유함. 전 편에서 `_n6_solutions == [6]` 통과.
 
 ---
 
-## FAIL 상세 — n6-hexa-neuro-paper
+## (해결됨) 시각 격자 산식 — n6-hexa-neuro-paper
 
-**위치**: `docs/paper/n6-hexa-neuro-paper.md` 의 Python 블록 (extracted 45행 근처)
-**원인**: "시각 격자" 항목 산식이 기대값과 불일치
+**위치**: `docs/paper/n6-hexa-neuro-paper.md` 검증코드 137행
+**최초 감사 시 상태**: 산식이 `sigma(n)*sopfr(n)*sigma(n)*sopfr(n)//60`으로 기록되어 기대값 3600 != 계산값 60 으로 FAIL
+**수정 내용**: 산식을 `(sigma(n)*sopfr(n))**2`로 변경 (= (12*5)² = 60² = 3600, 60x60 격자와 일치)
+**수정 일시**: 2026-04-09
+**재검증 결과**: EXACT 11/11, 전체 `assert` 통과 → **PASS**
 
-```python
-"시각 격자": (3600, sigma(n)*sopfr(n)*sigma(n)*sopfr(n)//60),  # 주석 "60×60"
-# 실제 계산: sigma(6)=12, sopfr(6)=5 → 12*5*12*5//60 = 3600//60 = 60
-# 기대값 3600 ≠ 실제 60
-```
-
-**수정 방안(2안)**:
-1. 기대값을 60으로 수정 (감마 Hz 분할 60 Hz와 중복되므로 부적절)
-2. 산식을 `(sigma(n)*sopfr(n))**2 = 3600` 로 수정 (60×60 주석과 일치, 권장)
-
-결과: EXACT 10/11, `assert exact == len(checks)` 실패로 전체 스크립트 FAIL.
+추가 수정: BT-406 표의 "시각 격자 기본 단위" n=6 식 란을 `σ·sopfr` → `(σ·sopfr)²=3600`으로 명확화.
 
 ---
 
@@ -82,7 +75,7 @@ assert exact == len(checks)
 
 ## 권고
 
-1. **즉시**: `n6-hexa-neuro-paper.md`의 "시각 격자" 산식을 `(sigma(n)*sopfr(n))**2`로 수정 후 재감사.
+1. ~~**즉시**: `n6-hexa-neuro-paper.md`의 "시각 격자" 산식을 `(sigma(n)*sopfr(n))**2`로 수정 후 재감사.~~ **완료 (2026-04-09)**: 산식 수정 + 표 명확화 + 재검증 11/11 PASS.
 2. **후속 TODO**: `docs/paper/`의 나머지 104편 전수 실행 감사 (`audit-quality-all115.md`로 분리).
 3. **SSOT 정합성**: TODO에 명시된 "39편"과 products.json 실제 등록 11편의 괴리 해소 — products.json에 나머지 핵심 논문 링크를 보강하거나, `docs/paper/README.md`가 SSOT임을 CLAUDE.md에서 명시.
 4. **감사 자동화**: 본 감사의 추출/실행 파이프라인을 `scripts/audit_paper_verification.py`로 고정하여 매 커밋 CI 검증.
