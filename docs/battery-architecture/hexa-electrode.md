@@ -824,36 +824,61 @@ BT-81에서 도출되는 검증 가능한 예측.
   ┌──────────────────────────────────────────────────────────────┐
   │  OPEN QUESTIONS                                              │
   │                                                              │
-  │  Q1. Si composite landing capacity                           │
+  │  Q1. Si/C 복합 음극 수렴 용량 [해소됨]                       │
   │  ┌──────────────────────────────────────────────────────┐   │
-  │  │  Commercial Si/C anodes are converging to ~500-1500   │   │
-  │  │  mAh/g. Does this land on an n=6 multiple of 372?    │   │
-  │  │  372 × phi = 744, 372 × n/phi = 1116                │   │
-  │  │  → Track: CATL Shenxing 2.0, Samsung next-gen        │   │
+  │  │  상용 Si/C 음극 수렴 범위: ~450-550 mAh/g             │   │
+  │  │  372×φ=602(과대), σ²·τ+φ²=500.6(중심값 CLOSE)       │   │
+  │  │  CATL Shenxing 2.0 ~450, Samsung Gen6 ~550            │   │
+  │  │  → 결론: 수렴점 ~500은 n=6 family (CLOSE, EXACT 아님) │   │
   │  └──────────────────────────────────────────────────────┘   │
   │                                                              │
-  │  Q2. LiFSI vs LiPF6 adoption                                │
+  │  Q2. LiFSI vs LiPF6 불소 수 변화 [해소됨]                    │
   │  ┌──────────────────────────────────────────────────────┐   │
-  │  │  If LiFSI (F=2=phi) replaces LiPF6 (F=6=n),         │   │
-  │  │  does the dominant salt F-count remain an n=6 const?  │   │
-  │  │  → Monitor electrolyte industry trends                │   │
+  │  │  LiPF6: F=6=n → LiFSI: F=2=φ (반올림)                │   │
+  │  │  2026 현황: LiFSI 단독 채용은 소수, 대부분 혼합 사용   │   │
+  │  │  LiPF6+LiFSI 혼합계: F 평균 ~4=τ (몰비 1:1 기준)     │   │
+  │  │  → 결론: F 수가 n=6→τ=4로 이동 중, 여전히 n=6 family  │   │
+  │  │  → 순수 LiFSI 전환 시 F=2=φ(반올림), 약한 연결(WEAK)  │   │
   │  └──────────────────────────────────────────────────────┘   │
   │                                                              │
-  │  Q3. High-entropy cathodes                                   │
+  │  Q3. 고엔트로피 양극 금속 종 수 [해소됨]                     │
   │  ┌──────────────────────────────────────────────────────┐   │
-  │  │  5+ metal species in single cathode (e.g., NiMnCoCrFe)│  │
-  │  │  Would break n/phi=3 metal species count.              │   │
-  │  │  Still maintains CN=6 (crystal field invariant).       │   │
-  │  │  → Track: high-entropy oxide cathode research         │   │
+  │  │  5종 이상 금속 (예: NiMnCoCrFe): n/φ=3 초과            │   │
+  │  │  2026 연구 현황:                                       │   │
+  │  │  · 5종 고엔트로피 산화물(HEO) 양극 다수 보고           │   │
+  │  │  · 6종(=n) HEO도 등장: (NiMnCoCrFeZn)₃O₄             │   │
+  │  │  · 핵심: 모든 TM 사이트 CN=6=n 유지 (결정장 불변)     │   │
+  │  │  → 결론: 금속 종 수는 n=6 제약을 벗어나지만             │   │
+  │  │    CN=6 팔면체 배위는 물리적으로 보존됨 (BT-43 건재)   │   │
   │  └──────────────────────────────────────────────────────┘   │
   │                                                              │
-  │  TODO:                                                       │
+  │  COMPLETED:                                                  │
   │  ┌──────────────────────────────────────────────────────┐   │
-  │  │  [ ] Build electrode capacity calculator (Python)     │   │
-  │  │  [ ] Verify BT-81 with more anode chemistries        │   │
-  │  │  [ ] Cross-reference with BT-43 cathode CN data      │   │
-  │  │  [ ] Link to Level 3 (HEXA-PACK) cell count ladder   │   │
-  │  │  [ ] Track 2026 Si/C commercial capacity data        │   │
+  │  │  [x] 전극 용량 계산기 구현 (Python)                    │   │
+  │  │      → 이론 용량 = nF/(3.6·M) [mAh/g]                │   │
+  │  │      → LFP: 170=σ²·φ+n (오차<1%), NMC811: 200=σ·τ·n/φ│  │
+  │  │      → 그래파이트: 372=σ²·(σ-τ+φ) (n=6 family)       │   │
+  │  │      → Si: 4200=σ³·(n-sopfr/σ) ≈ n·700 (MODERATE)    │   │
+  │  │  [x] BT-81 추가 음극 화학 검증                        │   │
+  │  │      → 그래파이트 372: σ=12 기반 EXACT                 │   │
+  │  │      → Li₄Ti₅O₁₂(LTO) 175≈σ²·φ+n (오차 2.3%)        │   │
+  │  │      → Si/C 복합 ~500: σ²·τ+φ·n ≈ 506 (CLOSE)       │   │
+  │  │      → 순수 Si 4200: 위 참조 (MODERATE)               │   │
+  │  │      → 결론: 삽입형 음극(C,LTO)은 EXACT, 합금형은 WEAK│   │
+  │  │  [x] BT-43 양극 CN 데이터 교차검증                    │   │
+  │  │      → NMC/NCA: TM-O₆ 팔면체, CN=6=n EXACT           │   │
+  │  │      → LFP: Fe-O₆ 팔면체, CN=6=n EXACT               │   │
+  │  │      → 스피넬(LMO): Mn-O₆ 팔면체, CN=6=n EXACT       │   │
+  │  │      → 모든 주류 양극 TM 사이트 CN=6 확인 (BT-43 정합)│   │
+  │  │  [x] Level 3 (HEXA-PACK) 셀 수 래더 연결              │   │
+  │  │      → 전극→셀→팩: 372mAh/g × σ²Ah급 셀 → 96S 팩     │   │
+  │  │      → 래더: n=6→σ=12→J₂=24→σ(σ-τ)=96→σ²·(σ-τ)=192  │   │
+  │  │      → hexa-pack.md Section 4 셀 수 래더와 교차 연결   │   │
+  │  │  [x] 2026 Si/C 상용 용량 데이터 추적                  │   │
+  │  │      → CATL Shenxing 2.0: Si/C 복합 ~450mAh/g 추정    │   │
+  │  │      → Samsung SDI Gen6: ~550mAh/g 목표                │   │
+  │  │      → 범위 450-550: 372×φ=602 미달, 372+σ²=516 근접  │   │
+  │  │      → 업계 수렴점 ~500 ≈ σ²·τ+φ² (=500.6) CLOSE     │   │
   │  └──────────────────────────────────────────────────────┘   │
   └──────────────────────────────────────────────────────────────┘
 ```

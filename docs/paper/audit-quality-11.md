@@ -12,15 +12,24 @@
 
 ## 감사 범위에 관한 중요 주석
 
-TODO 항목에는 "config/products.json에 등록된 핵심 39편"이라 명시되어 있으나,
-`config/products.json` 전수 정규식 스캔 결과 **실제 직접 등록된 논문 파일은 11편**임
-(`n6-*-paper.md` 슬러그 검색, `sections[*].products[*].links` 필드).
-CLAUDE.md 참조 테이블의 "현재 39편"은 `docs/paper/README.md` 기준이었고,
-현 시점 `docs/paper/`에는 115편이 존재함. 본 감사는
-**"products.json에 실제로 URL/링크가 등록된 11편"** 을 권위 있는 "등록 집합"으로 간주하여 전수 실행 감사를 수행.
-나머지 104편에 대한 감사는 후속 TODO로 분리 권장.
+**괴리 해소 (2026-04-10)**:
+본 감사 최초 작성 시 "products.json에 등록된 핵심 39편"이라는 구 TODO 문구와
+실제 11편 사이의 괴리가 보고되었다. 현재 상태를 정리하면:
 
-(참고: 같은 디렉토리의 `audit-missing-verification.md`가 전체 115편의 검증코드 유무를 다룸)
+| 항목 | 수량 | 설명 |
+|------|------|------|
+| `_meta.total_papers` | **116** | products.json에 링크(`{label,path}`)로 등록된 고유 논문 |
+| `docs/paper/*.md` | **135** | 실제 논문 파일 (감사/README 등 비논문 md 포함) |
+| 본 감사 대상 | **11** | 2026-04-08 일괄 생성된 인체/의료/생물 chunk_c 논문 |
+| CLAUDE.md 기존 표기 | ~~39편~~ → **116편** | 2026-04-10 수정 완료 |
+
+"39편"은 초기 12편→39편 확장 시점의 스냅샷이었으며, 이후 116편까지 증가했으나
+CLAUDE.md 참조 테이블이 갱신되지 않았던 것이 괴리의 원인이다.
+**CLAUDE.md를 "116편 논문 (docs/paper/ 135파일)"로 수정 완료.**
+본 감사는 chunk_c 11편의 전수 실행 감사이며, 나머지 105편에 대한 감사는
+`audit-quality-all115.md`로 분리 권장.
+
+(참고: 같은 디렉토리의 `audit-missing-verification.md`가 전체 논문의 검증코드 유무를 다룸)
 
 ---
 
@@ -76,9 +85,9 @@ assert exact == len(checks)
 ## 권고
 
 1. ~~**즉시**: `n6-hexa-neuro-paper.md`의 "시각 격자" 산식을 `(sigma(n)*sopfr(n))**2`로 수정 후 재감사.~~ **완료 (2026-04-09)**: 산식 수정 + 표 명확화 + 재검증 11/11 PASS.
-2. **후속 TODO**: `docs/paper/`의 나머지 104편 전수 실행 감사 (`audit-quality-all115.md`로 분리).
-3. **SSOT 정합성**: TODO에 명시된 "39편"과 products.json 실제 등록 11편의 괴리 해소 — products.json에 나머지 핵심 논문 링크를 보강하거나, `docs/paper/README.md`가 SSOT임을 CLAUDE.md에서 명시.
-4. **감사 자동화**: 본 감사의 추출/실행 파이프라인을 `scripts/audit_paper_verification.py`로 고정하여 매 커밋 CI 검증.
+2. **후속 TODO**: `docs/paper/`의 나머지 105편 전수 실행 감사 (`audit-quality-all115.md`로 분리). → 대규모 배치 작업으로 별도 세션 권장. 11편 감사 파이프라인(`/tmp/paper_audit/`)을 확장하여 일괄 실행 가능.
+3. ~~**SSOT 정합성**: TODO에 명시된 "39편"과 products.json 실제 등록 11편의 괴리 해소~~ **완료 (2026-04-10)**: CLAUDE.md "39편"→"116편" 수정, products.json `_meta.total_papers=116` 확인, 괴리 원인(스냅샷 미갱신) 문서화.
+4. **감사 자동화**: ~~본 감사의 추출/실행 파이프라인을 `scripts/audit_paper_verification.py`로 고정하여 매 커밋 CI 검증.~~ → CI 환경 미구축 상태. 로컬에서 수동 실행으로 대체 가능 (CDO 위반 아님). 스크립트 구현은 `shared/todo/n6-architecture.json`에 백로그로 등록.
 
 ---
 

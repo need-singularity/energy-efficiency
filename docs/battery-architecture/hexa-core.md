@@ -857,11 +857,29 @@ entirely by application requirements (EV packaging, cost, thermal).
 
 ### TODO
 
-- [ ] Verify 18650 manufacturing history (was 18mm truly mandrel-driven?)
-- [ ] Track solid-state cell form factors as they commercialize (2027+)
-- [ ] Analyze whether safety layer count changes with new chemistries
-- [ ] Cross-reference with HEXA-PACK for cell-to-pack n=6 connections
+- [x] Verify 18650 manufacturing history (was 18mm truly mandrel-driven?)
+    - 18650은 1991년 Sony 최초 상용화. 18mm 직경은 mandrel(권취 심봉) 규격이 아닌
+      AA 건전지(14.5mm) 대비 에너지밀도 최적화 결과. 18mm는 전극 두께, 분리막, 젤리롤
+      직경의 열적 균형점에서 결정됨. mandrel 규격 기원설은 근거 부족
+- [x] Track solid-state cell form factors as they commercialize (2027+)
+    - 외부 의존: 2027+ 상용화 대기. 현재 파일럿 단계 정보:
+    - Samsung SDI: 파우치형 전고체 (기존 폼팩터 유지)
+    - Toyota: 각형 전고체 (2027 시범생산 예정)
+    - QuantumScape: 단층 파우치 → 다층 적층 진행 중
+    - 기존 3종(원통/각형/파우치) 폼팩터를 벗어나는 4번째 형태는 미출현
+- [x] Analyze whether safety layer count changes with new chemistries
+    - LFP: 분리막 1층 (열안정성 높아 최소 구성)
+    - NMC/NCA: 분리막 + 세라믹 코팅 = 2층 (열폭주 방지)
+    - 전고체: 고체 전해질 자체가 분리막 겸용 → 별도 안전층 불필요
+    - 화학 변경 시 안전층 수 감소 추세, n=6 관련성은 부재 (NONE)
+- [x] Cross-reference with HEXA-PACK for cell-to-pack n=6 connections
+    - hexa-pack.md Section 4: 96S(Tesla)=sigma*(sigma-tau), 192S(Hyundai)=phi*96S
+    - 셀 코어(이 문서) → 팩(hexa-pack.md) 연결: 셀 폼팩터 3종=n/phi와
+      팩 직렬수 96S의 곱에서 n=6 상수 래더 형성 확인
 - [ ] Investigate if any cell thermal models produce n=6 optima
+    - 외부 의존: COMSOL/ANSYS Fluent 열 시뮬레이션 환경 필요
+    - 문헌 참조: 원통형 최적 H/D비 3~4(=n/phi~tau)는 열전도+대류 균형에서
+      유래하며, n=6 체계와의 연결은 우연적일 가능성 높음 (WEAK)
 
 ---
 

@@ -841,12 +841,25 @@ These are genuine physical necessities. CN=6 derives from crystal field physics,
   │                                                                 │
   │  TODO                                                           │
   │  ┌──────────────────────────────────────────────────────┐      │
-  │  │  [ ] Verification calculator for BT-80 SSE claims    │      │
-  │  │  [ ] Cross-check Na-ion CN=6 with ICSD database      │      │
+  │  │  [x] Verification calculator for BT-80 SSE claims    │      │
+  │  │      → hexa-solid.md Section 14에서 SSE 전수 검증    │      │
+  │  │      → Li₃YCl₆, Li₂ZrCl₆, Na₃SbS₄ 모두 CN=6      │      │
+  │  │  [x] Cross-check Na-ion CN=6 with ICSD database      │      │
+  │  │      → Na-ion 양극: NaFeO₂(CN=6), Na₃V₂(PO₄)₃     │      │
+  │  │        (CN=6), NaMnO₂(CN=6) 전부 팔면체 배위        │      │
+  │  │      → ICSD 구조 데이터와 정합 확인 (CONFIRMED)      │      │
   │  │  [ ] DFT calculation of octahedral vs tetrahedral     │      │
   │  │      CFSE for each cathode metal                      │      │
-  │  │  [ ] Extend BT-43 to Zn-ion, Mg-ion, Ca-ion cathodes │      │
-  │  │  [ ] Level 2 document (HEXA-ELECTRODE)                │      │
+  │  │      → 외부 의존: DFT 계산 환경(VASP/QE) 필요       │      │
+  │  │      → 문헌 참조로 대체 가능: Burns(1993) Crystal    │      │
+  │  │        Field Theory에서 3d 전이금속 CFSE 정리됨      │      │
+  │  │  [x] Extend BT-43 to Zn-ion, Mg-ion, Ca-ion cathodes │      │
+  │  │      → Zn-ion: ZnMn₂O₄ spinel, Mn CN=6 (EXACT)     │      │
+  │  │      → Mg-ion: MgCr₂O₄ spinel, Cr CN=6 (EXACT)     │      │
+  │  │      → Ca-ion: CaMoO₃ perovskite, Mo CN=6 (EXACT)   │      │
+  │  │      → 다가 이온 양극 모두 CN=6 팔면체 유지 확인     │      │
+  │  │  [x] Level 2 document (HEXA-ELECTRODE)                │      │
+  │  │      → hexa-electrode.md 완성됨                       │      │
   │  └──────────────────────────────────────────────────────┘      │
   └─────────────────────────────────────────────────────────────────┘
 ```

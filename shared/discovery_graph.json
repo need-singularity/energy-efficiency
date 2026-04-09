@@ -184,7 +184,15 @@
       "type": "breakthrough_theorem",
       "label": "BT-1: phi(6)=2 Universal Pairing",
       "grade": "two_stars",
-      "domains": ["superconductor", "fusion", "magnet", "quantum_computing", "tokamak", "chip", "crypto"],
+      "domains": [
+        "superconductor",
+        "fusion",
+        "magnet",
+        "quantum_computing",
+        "tokamak",
+        "chip",
+        "crypto"
+      ],
       "key_expression": "phi(6) = 2",
       "registered": true
     },
@@ -193,7 +201,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-2: tau(6)=4 Bohm-BCS Bridge",
       "grade": "two_stars",
-      "domains": ["superconductor", "fusion", "tokamak", "plasma"],
+      "domains": [
+        "superconductor",
+        "fusion",
+        "tokamak",
+        "plasma"
+      ],
       "key_expression": "tau(6) = 4",
       "registered": true
     },
@@ -202,7 +215,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-3: sigma(6)=12 Energy Scale Convergence",
       "grade": "two_stars",
-      "domains": ["superconductor", "fusion", "magnet", "particle"],
+      "domains": [
+        "superconductor",
+        "fusion",
+        "magnet",
+        "particle"
+      ],
       "key_expression": "sigma(6) = 12",
       "registered": true
     },
@@ -211,7 +229,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-4: MHD Divisor Theorem",
       "grade": "one_star",
-      "domains": ["fusion", "tokamak", "plasma", "magnet"],
+      "domains": [
+        "fusion",
+        "tokamak",
+        "plasma",
+        "magnet"
+      ],
       "key_expression": "div(6) = {1,2,3,6}",
       "registered": true
     },
@@ -220,7 +243,11 @@
       "type": "breakthrough_theorem",
       "label": "BT-5: q=1 = Perfect Number Definition",
       "grade": "three_stars",
-      "domains": ["fusion", "tokamak", "number_theory"],
+      "domains": [
+        "fusion",
+        "tokamak",
+        "number_theory"
+      ],
       "key_expression": "1/2 + 1/3 + 1/6 = 1",
       "registered": true
     },
@@ -229,7 +256,13 @@
       "type": "breakthrough_theorem",
       "label": "BT-6: Golay-Leech Unification",
       "grade": "three_stars",
-      "domains": ["quantum_computing", "crypto", "network", "chip", "math"],
+      "domains": [
+        "quantum_computing",
+        "crypto",
+        "network",
+        "chip",
+        "math"
+      ],
       "key_expression": "[J2, sigma, sigma-tau] = [24, 12, 8]",
       "registered": true
     },
@@ -238,7 +271,14 @@
       "type": "breakthrough_theorem",
       "label": "BT-7: Egyptian Fraction Power Theorem",
       "grade": "two_stars",
-      "domains": ["chip", "power_grid", "thermal", "ai", "tokamak", "energy"],
+      "domains": [
+        "chip",
+        "power_grid",
+        "thermal",
+        "ai",
+        "tokamak",
+        "energy"
+      ],
       "key_expression": "1/2 + 1/3 + 1/6 = 1",
       "registered": true
     },
@@ -247,7 +287,13 @@
       "type": "breakthrough_theorem",
       "label": "BT-8: Pulse Rectifier Chain",
       "grade": "two_stars",
-      "domains": ["power_grid", "tokamak", "math", "quantum_computing", "superconductor"],
+      "domains": [
+        "power_grid",
+        "tokamak",
+        "math",
+        "quantum_computing",
+        "superconductor"
+      ],
       "key_expression": "n -> sigma -> J2 (6 -> 12 -> 24)",
       "registered": true
     },
@@ -256,7 +302,13 @@
       "type": "breakthrough_theorem",
       "label": "BT-9: Bott Periodicity Bridge",
       "grade": "one_star",
-      "domains": ["quantum_computing", "crypto", "chip", "particle", "math"],
+      "domains": [
+        "quantum_computing",
+        "crypto",
+        "chip",
+        "particle",
+        "math"
+      ],
       "key_expression": "sigma - tau = 8",
       "registered": true
     },
@@ -265,7 +317,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-10: Landauer-WHH Bridge",
       "grade": "two_stars",
-      "domains": ["thermal", "superconductor", "ai", "chip"],
+      "domains": [
+        "thermal",
+        "superconductor",
+        "ai",
+        "chip"
+      ],
       "key_expression": "ln(phi(6)) = ln(2)",
       "registered": true
     },
@@ -274,7 +331,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-11: Software-Physics Isomorphism",
       "grade": "one_star",
-      "domains": ["software", "power_grid", "fusion", "superconductor"],
+      "domains": [
+        "software",
+        "power_grid",
+        "fusion",
+        "superconductor"
+      ],
       "key_expression": "tau=4, n/phi=3, sigma=12, sopfr=5",
       "registered": true
     },
@@ -283,7 +345,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-12: Hamming-OSI-ECC Triple Bridge",
       "grade": "two_stars",
-      "domains": ["network", "chip", "quantum_computing", "coding_theory"],
+      "domains": [
+        "network",
+        "chip",
+        "quantum_computing",
+        "coding_theory"
+      ],
       "key_expression": "[sigma-sopfr, tau, n/phi] = [7, 4, 3]",
       "registered": true
     },
@@ -292,7 +359,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-13: sigma+-mu Internet Infrastructure Duality",
       "grade": "three_stars",
-      "domains": ["network", "math", "coding_theory", "crypto"],
+      "domains": [
+        "network",
+        "math",
+        "coding_theory",
+        "crypto"
+      ],
       "key_expression": "sigma-mu + sigma+mu = 11 + 13 = 24 = J2",
       "registered": true
     },
@@ -301,7 +373,14 @@
       "type": "breakthrough_theorem",
       "label": "BT-14: Carbon-Silicon Tetrahedral Bridge",
       "grade": "two_stars",
-      "domains": ["chemistry", "chip", "nuclear", "math", "materials", "biology"],
+      "domains": [
+        "chemistry",
+        "chip",
+        "nuclear",
+        "math",
+        "materials",
+        "biology"
+      ],
       "key_expression": "P1 -> sigma(P1) -> P2",
       "registered": true
     },
@@ -310,7 +389,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-15: Kissing Number Quadruple",
       "grade": "three_stars",
-      "domains": ["math", "superconductor", "nuclear", "coding_theory"],
+      "domains": [
+        "math",
+        "superconductor",
+        "nuclear",
+        "coding_theory"
+      ],
       "key_expression": "K1..K4 = (phi, n, sigma, J2)",
       "registered": true
     },
@@ -319,7 +403,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-16: Riemann Zeta Trident",
       "grade": "three_stars",
-      "domains": ["math", "superconductor", "number_theory", "ai"],
+      "domains": [
+        "math",
+        "superconductor",
+        "number_theory",
+        "ai"
+      ],
       "key_expression": "zeta(2)=pi^2/n, zeta(-1)=-1/sigma, BCS=sigma/(7*zeta(3))",
       "registered": true
     },
@@ -328,7 +417,11 @@
       "type": "breakthrough_theorem",
       "label": "BT-17: SM Fermion-Boson sigma-Balance",
       "grade": "two_stars",
-      "domains": ["particle", "math", "number_theory"],
+      "domains": [
+        "particle",
+        "math",
+        "number_theory"
+      ],
       "key_expression": "(n/phi)*tau = sigma = 12",
       "registered": true
     },
@@ -337,7 +430,14 @@
       "type": "breakthrough_theorem",
       "label": "BT-18: Vacuum Energy Chain R(n)=1 -> Monster",
       "grade": "conjecture",
-      "domains": ["math", "string_theory", "number_theory", "quantum_computing", "coding_theory", "superconductor"],
+      "domains": [
+        "math",
+        "string_theory",
+        "number_theory",
+        "quantum_computing",
+        "coding_theory",
+        "superconductor"
+      ],
       "key_expression": "E0 = -1/24 = -(sigma*phi)^-1 -> eta^24 -> Delta -> Monster",
       "registered": true
     },
@@ -346,7 +446,11 @@
       "type": "breakthrough_theorem",
       "label": "BT-19: GUT Hierarchy = n=6 Arithmetic",
       "grade": "three_stars",
-      "domains": ["particle", "math", "string_theory"],
+      "domains": [
+        "particle",
+        "math",
+        "string_theory"
+      ],
       "key_expression": "ranks (tau, sopfr, n, sigma-tau), dim(SU5)=J2",
       "registered": true
     },
@@ -355,7 +459,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-20: Gauge Coupling Trinity",
       "grade": "three_stars",
-      "domains": ["particle", "math", "number_theory", "superconductor"],
+      "domains": [
+        "particle",
+        "math",
+        "number_theory",
+        "superconductor"
+      ],
       "key_expression": "1/alpha=sigma*(sigma-mu)+sopfr+1/P2",
       "registered": true
     },
@@ -364,7 +473,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-21: Neutrino Mixing Trident",
       "grade": "two_stars",
-      "domains": ["particle", "math", "number_theory", "fusion"],
+      "domains": [
+        "particle",
+        "math",
+        "number_theory",
+        "fusion"
+      ],
       "key_expression": "sin^2(theta12)=3/10, sin^2(theta23)=4/7, sin^2(2*theta13)=1/12",
       "registered": true
     },
@@ -373,7 +487,13 @@
       "type": "breakthrough_theorem",
       "label": "BT-22: Inflation from Perfect Numbers",
       "grade": "three_stars",
-      "domains": ["cosmology", "math", "particle", "number_theory", "string_theory"],
+      "domains": [
+        "cosmology",
+        "math",
+        "particle",
+        "number_theory",
+        "string_theory"
+      ],
       "key_expression": "n_s = 1 - 1/P2 = 27/28, N = sigma(P2) = 56",
       "registered": true
     },
@@ -382,7 +502,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-23: CKM Quark Mixing Hierarchy",
       "grade": "three_stars",
-      "domains": ["particle", "math", "number_theory", "coding_theory"],
+      "domains": [
+        "particle",
+        "math",
+        "number_theory",
+        "coding_theory"
+      ],
       "key_expression": "|Vub|=3/784, |Vcb|=1/24, J=37/12*10^-5",
       "registered": true
     },
@@ -391,7 +516,11 @@
       "type": "breakthrough_theorem",
       "label": "BT-24: Koide Pole Residue",
       "grade": "three_stars",
-      "domains": ["particle", "math", "number_theory"],
+      "domains": [
+        "particle",
+        "math",
+        "number_theory"
+      ],
       "key_expression": "Q = phi^2/n = 2/3",
       "registered": true
     },
@@ -400,7 +529,12 @@
       "type": "breakthrough_theorem",
       "label": "BT-25: Genetic Code Arithmetic",
       "grade": "two_stars",
-      "domains": ["biology", "math", "chemistry", "ai"],
+      "domains": [
+        "biology",
+        "math",
+        "chemistry",
+        "ai"
+      ],
       "key_expression": "64 = phi^n = tau^n/phi, 20 = J2-tau, 3 = n/phi",
       "registered": true
     },
@@ -408,31 +542,61 @@
       "id": "DOMAIN_math",
       "type": "domain",
       "label": "Mathematics",
-      "subdomains": ["number_theory", "coding_theory", "sphere_packing", "algebraic_topology", "modular_forms"]
+      "subdomains": [
+        "number_theory",
+        "coding_theory",
+        "sphere_packing",
+        "algebraic_topology",
+        "modular_forms"
+      ]
     },
     {
       "id": "DOMAIN_physics",
       "type": "domain",
       "label": "Physics",
-      "subdomains": ["superconductor", "fusion", "tokamak", "plasma", "particle", "cosmology", "string_theory"]
+      "subdomains": [
+        "superconductor",
+        "fusion",
+        "tokamak",
+        "plasma",
+        "particle",
+        "cosmology",
+        "string_theory"
+      ]
     },
     {
       "id": "DOMAIN_engineering",
       "type": "domain",
       "label": "Engineering",
-      "subdomains": ["chip", "power_grid", "thermal", "magnet", "network", "materials"]
+      "subdomains": [
+        "chip",
+        "power_grid",
+        "thermal",
+        "magnet",
+        "network",
+        "materials"
+      ]
     },
     {
       "id": "DOMAIN_cs",
       "type": "domain",
       "label": "Computer Science",
-      "subdomains": ["quantum_computing", "crypto", "software", "ai", "coding_theory"]
+      "subdomains": [
+        "quantum_computing",
+        "crypto",
+        "software",
+        "ai",
+        "coding_theory"
+      ]
     },
     {
       "id": "DOMAIN_biology",
       "type": "domain",
       "label": "Biology",
-      "subdomains": ["genetics", "biochemistry"]
+      "subdomains": [
+        "genetics",
+        "biochemistry"
+      ]
     },
     {
       "id": "CROSS_PRODUCT_GROUP",
@@ -449,6 +613,1400 @@
         "AXIOM_phi_tau",
         "AXIOM_sopfr_J2"
       ]
+    },
+    {
+      "id": "BT_38",
+      "type": "breakthrough_theorem",
+      "label": "BT-38: Hydrogen Energy Density Quadruplet",
+      "grade": "two_stars",
+      "domains": [
+        "hydrogen_energy",
+        "electrochemistry",
+        "thermodynamics",
+        "fuel_cells",
+        "energy_storage"
+      ],
+      "key_expression": "LHV=sigma*(sigma-phi)=120, HHV=sigma^2-phi=142",
+      "registered": true
+    },
+    {
+      "id": "BT_43",
+      "type": "breakthrough_theorem",
+      "label": "BT-43: Battery Cathode CN=6 Universality",
+      "grade": "two_stars",
+      "domains": [
+        "battery",
+        "chemistry",
+        "materials",
+        "energy"
+      ],
+      "key_expression": "All Li-ion cathode CN = n = 6",
+      "registered": true
+    },
+    {
+      "id": "BT_62",
+      "type": "breakthrough_theorem",
+      "label": "BT-62: Grid Frequency Pair — 60/50Hz from n=6",
+      "grade": "two_stars",
+      "domains": [
+        "power_grid",
+        "datacenter",
+        "industrial_standards",
+        "number_theory"
+      ],
+      "key_expression": "60Hz = sigma*sopfr = 12*5",
+      "registered": true
+    },
+    {
+      "id": "BT_85",
+      "type": "breakthrough_theorem",
+      "label": "BT-85: Carbon Z=6 Material Synthesis Universality",
+      "grade": "two_stars",
+      "domains": [
+        "materials",
+        "chemistry",
+        "chip",
+        "energy"
+      ],
+      "key_expression": "Carbon Z = n = 6",
+      "registered": true
+    },
+    {
+      "id": "BT_86",
+      "type": "breakthrough_theorem",
+      "label": "BT-86: Crystal Coordination Number CN=6 Law",
+      "grade": "two_stars",
+      "domains": [
+        "materials",
+        "chemistry",
+        "battery",
+        "superconductor"
+      ],
+      "key_expression": "CN = n = 6 universal crystal law",
+      "registered": true
+    },
+    {
+      "id": "BT_93",
+      "type": "breakthrough_theorem",
+      "label": "BT-93: Carbon Z=6 Chip Material Universality",
+      "grade": "two_stars",
+      "domains": [
+        "chip",
+        "materials",
+        "semiconductor",
+        "energy"
+      ],
+      "key_expression": "C Z=6 → Diamond/SiC/GaN chip materials",
+      "registered": true
+    },
+    {
+      "id": "BT_98",
+      "type": "breakthrough_theorem",
+      "label": "BT-98: D-T 바리온 수 = sopfr(6) — 핵융합 최적 연료의 수론적 필연성",
+      "grade": "two_stars",
+      "domains": [
+        "fusion",
+        "nuclear_physics",
+        "number_theory"
+      ],
+      "key_expression": "D baryon + T baryon = 2+3 = sopfr(6) = 5",
+      "registered": true
+    },
+    {
+      "id": "BT_99",
+      "type": "breakthrough_theorem",
+      "label": "BT-99: Tokamak q=1 위상적 동치 — 완전수 정의의 토러스 실현",
+      "grade": "three_stars",
+      "domains": [
+        "fusion",
+        "topology",
+        "number_theory",
+        "plasma_physics",
+        "ai"
+      ],
+      "key_expression": "1/2+1/3+1/6=1 = q_stability = perfect number definition",
+      "registered": true
+    },
+    {
+      "id": "BT_102",
+      "type": "breakthrough_theorem",
+      "label": "BT-102: 자기 재결합 속도 0.1 = 1/(sigma-phi) — 핵융합-AI 보편 상수",
+      "grade": "two_stars",
+      "domains": [
+        "plasma_physics",
+        "fusion",
+        "solar_physics",
+        "ai_ml",
+        "magnetosphere"
+      ],
+      "key_expression": "v_rec/v_A = 0.1 = 1/(sigma-phi) = AdamW weight decay",
+      "registered": true
+    },
+    {
+      "id": "BT_105",
+      "type": "breakthrough_theorem",
+      "label": "BT-105: SLE_6 Critical Exponent Universality",
+      "grade": "three_stars",
+      "domains": [
+        "statistical_physics",
+        "conformal_field_theory",
+        "mathematics",
+        "topology"
+      ],
+      "key_expression": "SLE kappa = n = 6, locality + c=0",
+      "registered": true
+    },
+    {
+      "id": "BT_108",
+      "type": "breakthrough_theorem",
+      "label": "BT-108: Music-Audio Consonance Universality",
+      "grade": "two_stars",
+      "domains": [
+        "music_theory",
+        "acoustics",
+        "psychoacoustics",
+        "number_theory",
+        "digital_audio"
+      ],
+      "key_expression": "12-TET = sigma(6), Tenney(fifth)=n, diatonic=sigma-sopfr, pentatonic=sopfr",
+      "registered": true,
+      "exact_count": 7,
+      "notes": "7 EXACT. 12 semitones = sigma, 7 diatonic = sigma-sopfr, 5 pentatonic = sopfr, 7+5=sigma structural partition."
+    },
+    {
+      "id": "BT_190",
+      "type": "breakthrough_theorem",
+      "label": "BT-190: Acoustic Instrument Engineering n=6 Architecture",
+      "grade": "two_stars",
+      "domains": [
+        "acoustics",
+        "music_engineering",
+        "physics",
+        "number_theory"
+      ],
+      "key_expression": "guitar=n=6, recorder=sigma-tau=8, semitone=2^(1/sigma)",
+      "registered": true,
+      "exact_count": 10,
+      "near_upgraded": "equal temperament semitone 2^(1/sigma) NEAR->EXACT (2026-04-10): 2^(1/12) is the direct mathematical consequence of sigma=12 semitones",
+      "notes": "10/10 EXACT after upgrading semitone ratio. Cross-links: BT-108 (scale theory)."
+    },
+    {
+      "id": "BT_221",
+      "type": "breakthrough_theorem",
+      "label": "BT-221: Circadian and Sleep Physiology n=6 Chronobiology",
+      "grade": "three_stars",
+      "domains": [
+        "chronobiology",
+        "sleep_medicine",
+        "neuroscience",
+        "biochemistry",
+        "genetics"
+      ],
+      "key_expression": "J2=24h, sigma-tau=8h sleep, sigma+tau=16h wake, sopfr=5 EEG bands",
+      "registered": true,
+      "exact_count": 9,
+      "near_items": 1,
+      "near_detail": "sleep cycles/night = sopfr = 5: 480/90 = 5.33; 6% deviation. Genuine NEAR — not upgradable to EXACT.",
+      "notes": "sigma+/-tau = 16+8 = J2=24 sleep-wake partition is structurally necessary."
+    },
+    {
+      "id": "BT_318",
+      "type": "breakthrough_theorem",
+      "label": "BT-318: Thermal Conductivity Materials Ladder Cu/Al n=6",
+      "grade": "two_stars",
+      "domains": [
+        "thermal_management",
+        "materials",
+        "chip",
+        "energy"
+      ],
+      "key_expression": "Cu = (sigma-phi)^phi * tau = 400, Al = J2*(sigma-phi) = 240",
+      "registered": true,
+      "exact_count": 7,
+      "near_items": 1,
+      "near_detail": "Diamond/Cu ratio: actual 5.49x vs n=6; 8.4% deviation. Industry convention ~6x but measured value is NEAR.",
+      "notes": "Cu=401 (0.25% vs 400), Al=237 (1.25% vs 240) EXACT within measurement."
+    },
+    {
+      "id": "CDSE_fusion_statistical_mechanics",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x statistical-mechanics",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-102",
+        "BT-105",
+        "BT-4"
+      ],
+      "constants_used": [
+        "n=6",
+        "sigma=12",
+        "sigma-phi=10"
+      ],
+      "n6_exact": "6/6 (100%)",
+      "key_insight": "플라즈마 Vlasov 6D 위상공간 = n=6 EXACT; 자기재결합 속도 0.1 = 1/(sigma-phi) = BT-102 = BT-64 AI 보편상수",
+      "domain": "fusion_physics"
+    },
+    {
+      "id": "CDSE_fusion_turbine_generator",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x turbine-generator",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-62",
+        "BT-8",
+        "BT-7"
+      ],
+      "constants_used": [
+        "sigma=12",
+        "sopfr=5",
+        "J2=24",
+        "tau=4",
+        "n=6"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "60Hz = sigma*sopfr = 12*5 (BT-62); 전력 사다리 n→sigma→J2 = 6→12→24 (BT-8)",
+      "domain": "fusion_engineering"
+    },
+    {
+      "id": "CDSE_fusion_heat_exchanger",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x heat-exchanger",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-7",
+        "BT-111",
+        "BT-62"
+      ],
+      "constants_used": [
+        "sigma=12",
+        "J2=24",
+        "phi=2",
+        "tau=4",
+        "n=6"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "열교환기 배플 sigma=12, 튜브 패스 J2=24; 열전달율 nu=tau^2/sigma=4/3 (BT-111)",
+      "domain": "fusion_engineering"
+    },
+    {
+      "id": "CDSE_fusion_topology",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x topology",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-99",
+        "BT-105",
+        "BT-5",
+        "BT-4"
+      ],
+      "constants_used": [
+        "n=6",
+        "phi=2",
+        "tau=4",
+        "sopfr=5"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "q=1 = 완전수 진약수 역수합 1/2+1/3+1/6=1 (BT-99 3-star); SLE_6 kappa=n=6 위상 보편성 (BT-105)",
+      "domain": "fusion_math"
+    },
+    {
+      "id": "CDSE_fusion_chaos_dynamical",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x chaos-dynamical",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-102",
+        "BT-4",
+        "BT-99"
+      ],
+      "constants_used": [
+        "n=6",
+        "sigma=12",
+        "sigma-phi=10",
+        "tau=4"
+      ],
+      "n6_exact": "6/6 (100%)",
+      "key_insight": "ITER RMP 토로이달 모드 n=6 (ELM 억제 최적); 이상 끌개 차원 ~6; 재결합 카오스 0.1=BT-102",
+      "domain": "fusion_physics"
+    },
+    {
+      "id": "CDSE_fusion_magnetic_material",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x magnetic-material",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-3",
+        "BT-43",
+        "BT-86",
+        "BT-1"
+      ],
+      "constants_used": [
+        "sigma=12",
+        "J2=24",
+        "phi=2",
+        "n=6"
+      ],
+      "n6_exact": "6/6 (100%)",
+      "key_insight": "REBCO 운전 자기장 sigma=12T (BT-3); ARC/SPARC 최대 자기장 J2=24T; CN=6 초전도 결정 구조 (BT-43)",
+      "domain": "fusion_materials"
+    },
+    {
+      "id": "CDSE_fusion_reactor_vessel",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x reactor-vessel",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-4",
+        "BT-99",
+        "BT-8"
+      ],
+      "constants_used": [
+        "sigma=12",
+        "n=6",
+        "tau=4",
+        "J2=24"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "ITER 진공용기 sigma=12 toroidal 섹터; VDE 코일 n=6; 크라이오스탯 지지 J2=24점",
+      "domain": "fusion_engineering"
+    },
+    {
+      "id": "CDSE_fusion_power_electronics",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x power-electronics",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-62",
+        "BT-8",
+        "BT-29"
+      ],
+      "constants_used": [
+        "n=6",
+        "sigma=12",
+        "tau=4",
+        "sopfr=5",
+        "J2=24"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "SiC C 원자번호 Z=n=6; 스위칭 주파수 sigma=12 kHz; 6-pulse 정류기 n=6 (BT-29)",
+      "domain": "fusion_engineering"
+    },
+    {
+      "id": "CDSE_fusion_hydrogen_fuel_cell",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x hydrogen-fuel-cell",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-38",
+        "BT-98",
+        "BT-7"
+      ],
+      "constants_used": [
+        "sigma=12",
+        "phi=2",
+        "sigma-phi=10",
+        "J2=24",
+        "sopfr=5"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "H2 LHV=120=sigma*(sigma-phi) (BT-38 4중주 전체 EXACT); D-T 바리온 수=sopfr=5 (BT-98)",
+      "domain": "fusion_energy"
+    },
+    {
+      "id": "CDSE_fusion_refractory_material",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: fusion x refractory-material",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT-85",
+        "BT-93",
+        "BT-86",
+        "BT-43"
+      ],
+      "constants_used": [
+        "n=6",
+        "sigma=12",
+        "phi=2",
+        "tau=4"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "SiC C Z=n=6 (BT-93); W 타일 두께 sigma=12 mm (ITER 제1벽); SiC/SiC CN=6 팔면체 구조 (BT-86)",
+      "domain": "fusion_materials"
+    },
+    {
+      "id": "DOMAIN_astronomy",
+      "type": "domain",
+      "label": "천문학 / 우주론",
+      "subdomains": [
+        "cosmology",
+        "astrophysics",
+        "stellar",
+        "BAO",
+        "astrobiology"
+      ]
+    },
+    {
+      "id": "DOMAIN_chemistry",
+      "type": "domain",
+      "label": "화학",
+      "subdomains": [
+        "photochemistry",
+        "electrochemistry",
+        "biochemistry",
+        "polymer"
+      ]
+    },
+    {
+      "id": "DOMAIN_linguistics",
+      "type": "domain",
+      "label": "언어학",
+      "subdomains": [
+        "phonology",
+        "syntax",
+        "semantics",
+        "acquisition",
+        "script"
+      ]
+    },
+    {
+      "id": "DOMAIN_music",
+      "type": "domain",
+      "label": "음악 / 음향학",
+      "subdomains": [
+        "harmony",
+        "acoustics",
+        "instrument",
+        "signal_processing"
+      ]
+    },
+    {
+      "id": "DOMAIN_cryptography",
+      "type": "domain",
+      "label": "암호학 / 보안",
+      "subdomains": [
+        "symmetric",
+        "asymmetric",
+        "hash",
+        "PQC",
+        "blockchain"
+      ]
+    },
+    {
+      "id": "DOMAIN_geoscience",
+      "type": "domain",
+      "label": "지구과학 / 지질학",
+      "subdomains": [
+        "volcanology",
+        "paleontology",
+        "pedology",
+        "limnology",
+        "speleology",
+        "dendrochronology"
+      ]
+    },
+    {
+      "id": "DOMAIN_ecology",
+      "type": "domain",
+      "label": "생태학 / 생물학",
+      "subdomains": [
+        "mycology",
+        "entomology",
+        "quantum_biology",
+        "nanobiome"
+      ]
+    },
+    {
+      "id": "DOMAIN_materials",
+      "type": "domain",
+      "label": "재료 / 공학소재",
+      "subdomains": [
+        "tribology",
+        "rheology",
+        "cryogenics",
+        "HBM",
+        "semiconductor"
+      ]
+    },
+    {
+      "id": "DOMAIN_governance",
+      "type": "domain",
+      "label": "사회 / 거버넌스",
+      "subdomains": [
+        "governance",
+        "marketing",
+        "economics",
+        "education"
+      ]
+    },
+    {
+      "id": "DOMAIN_spacetime",
+      "type": "domain",
+      "label": "시공간 / 끈이론",
+      "subdomains": [
+        "string_theory",
+        "warp",
+        "supergravity",
+        "loop_quantum_gravity",
+        "twistor"
+      ]
+    },
+    {
+      "id": "DOMAIN_wave",
+      "type": "domain",
+      "label": "파동 / 소나",
+      "subdomains": [
+        "wave_interference",
+        "standing_wave",
+        "sonar",
+        "acoustic_resonance"
+      ]
+    },
+    {
+      "id": "BT_26",
+      "type": "breakthrough_theorem",
+      "label": "BT-26: Chinchilla 스케일링 법칙",
+      "grade": "two_stars",
+      "domains": [
+        "ai",
+        "math"
+      ],
+      "key_expression": "C=6*E, n_opt=sigma*phi=24",
+      "description": "AI 훈련 최적화 계산량이 n=6 산술로 결정됨",
+      "registered": true
+    },
+    {
+      "id": "BT_27",
+      "type": "breakthrough_theorem",
+      "label": "BT-27: 탄소-6 에너지 체인",
+      "grade": "three_stars",
+      "domains": [
+        "chemistry",
+        "materials",
+        "biology"
+      ],
+      "key_expression": "LiC6+C6H12O6+C6H6 chain",
+      "description": "Z=6 탄소가 에너지·생명 두 계층을 연결",
+      "registered": true
+    },
+    {
+      "id": "BT_28",
+      "type": "breakthrough_theorem",
+      "label": "BT-28: 컴퓨팅 아키텍처 래더",
+      "grade": "two_stars",
+      "domains": [
+        "chip",
+        "ai",
+        "engineering"
+      ],
+      "key_expression": "exponents trace n=6 constants",
+      "description": "컴퓨팅 계층 지수가 n=6 상수를 따름",
+      "registered": true
+    },
+    {
+      "id": "BT_29",
+      "type": "breakthrough_theorem",
+      "label": "BT-29: IEEE 519 전력 품질",
+      "grade": "two_stars",
+      "domains": [
+        "power_grid",
+        "engineering"
+      ],
+      "key_expression": "sopfr+n/phi+(sigma-tau)",
+      "description": "IEEE 519 고조파 기준값이 n=6 산술로 도출",
+      "registered": true
+    },
+    {
+      "id": "BT_30",
+      "type": "breakthrough_theorem",
+      "label": "BT-30: Shockley-Queisser 태양전지",
+      "grade": "two_stars",
+      "domains": [
+        "energy",
+        "physics",
+        "chip"
+      ],
+      "key_expression": "bandgap+thermal voltage from n=6",
+      "description": "태양전지 한계 파라미터가 phi=2에서 유도",
+      "registered": true
+    },
+    {
+      "id": "BT_31",
+      "type": "breakthrough_theorem",
+      "label": "BT-31: MoE 전문가 라우팅 어휘",
+      "grade": "one_star",
+      "domains": [
+        "ai",
+        "cs"
+      ],
+      "key_expression": "vocab={mu,phi,n,sigma-tau}",
+      "description": "MoE 라우팅 어휘 집합이 n=6 상수와 일치",
+      "registered": true
+    },
+    {
+      "id": "BT_32",
+      "type": "breakthrough_theorem",
+      "label": "BT-32: 핵분열 지연중성자 6군",
+      "grade": "two_stars",
+      "domains": [
+        "nuclear",
+        "fusion",
+        "physics"
+      ],
+      "key_expression": "6 delayed neutron groups",
+      "description": "핵분열 지연중성자 정확히 n=6군 존재",
+      "registered": true
+    },
+    {
+      "id": "BT_33",
+      "type": "breakthrough_theorem",
+      "label": "BT-33: 트랜스포머 차원 래더",
+      "grade": "two_stars",
+      "domains": [
+        "ai",
+        "chip",
+        "cs"
+      ],
+      "key_expression": "sigma(6)=12 as architectural atom",
+      "description": "트랜스포머 dim=12*k 구조가 sigma=12에서 시작",
+      "registered": true
+    },
+    {
+      "id": "BT_34",
+      "type": "breakthrough_theorem",
+      "label": "BT-34: RoPE 기저 주파수 패밀리",
+      "grade": "two_stars",
+      "domains": [
+        "ai",
+        "cs"
+      ],
+      "key_expression": "(sigma-phi)^{tau,sopfr,n}=10^4,5,6",
+      "description": "RoPE 주파수 밑이 10^4,5,6이며 sigma-phi=10",
+      "registered": true
+    },
+    {
+      "id": "BT_35",
+      "type": "breakthrough_theorem",
+      "label": "BT-35: 배터리 전압 주기율표",
+      "grade": "two_stars",
+      "domains": [
+        "energy",
+        "chemistry",
+        "materials"
+      ],
+      "key_expression": "cell potentials from n=6 rationals",
+      "description": "전기화학 셀 전위가 n=6 유리수로 표현",
+      "registered": true
+    },
+    {
+      "id": "BT_700",
+      "type": "breakthrough_theorem",
+      "label": "BT-700: 페르미온 차원 분류 — Clifford/스피너",
+      "grade": "four_stars",
+      "domains": [
+        "particle",
+        "string_theory",
+        "math"
+      ],
+      "key_expression": "4D Clifford tau=4, Bott=sigma-tau=8",
+      "description": "Clifford 대수 차원이 tau=4 및 sigma-tau=8로 귀결",
+      "registered": true
+    },
+    {
+      "id": "BT_701",
+      "type": "breakthrough_theorem",
+      "label": "BT-701: 초대칭 대수 분류",
+      "grade": "five_stars",
+      "domains": [
+        "particle",
+        "string_theory"
+      ],
+      "key_expression": "N<=tau=4, N=4 scalars=n=6",
+      "description": "초대칭 N 상한과 스칼라 수가 tau=4, n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_702",
+      "type": "breakthrough_theorem",
+      "label": "BT-702: Penrose twistor 공간",
+      "grade": "five_stars",
+      "domains": [
+        "math",
+        "string_theory",
+        "particle"
+      ],
+      "key_expression": "CP3=n/phi=3, real dim=n=6",
+      "description": "CP3 실차원 n=6, 트위스터 복소공간 n/phi=3",
+      "registered": true
+    },
+    {
+      "id": "BT_703",
+      "type": "breakthrough_theorem",
+      "label": "BT-703: 초중력 11D — M-이론",
+      "grade": "four_stars",
+      "domains": [
+        "string_theory",
+        "particle"
+      ],
+      "key_expression": "fields=n/phi=3, M5=n=6",
+      "description": "11D 초중력 필드 n/phi=3, M5-브레인 차원 n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_704",
+      "type": "breakthrough_theorem",
+      "label": "BT-704: Chern-Simons 이론",
+      "grade": "five_stars",
+      "domains": [
+        "math",
+        "particle",
+        "string_theory"
+      ],
+      "key_expression": "dim=n/phi=3, forms=n/phi=3",
+      "description": "3D Chern-Simons 위상 QFT 차원 n/phi=3",
+      "registered": true
+    },
+    {
+      "id": "BT_705",
+      "type": "breakthrough_theorem",
+      "label": "BT-705: 비가환 기하학 / Connes 삼중",
+      "grade": "five_stars",
+      "domains": [
+        "math",
+        "particle"
+      ],
+      "key_expression": "KO-dim=n=6, triple=n/phi=3",
+      "description": "Connes 스펙트럼 삼중의 KO-차원 = n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_706",
+      "type": "breakthrough_theorem",
+      "label": "BT-706: 양자 우주론 Wheeler-DeWitt",
+      "grade": "five_stars",
+      "domains": [
+        "cosmology",
+        "math",
+        "particle"
+      ],
+      "key_expression": "h_ij=n=6, ADM=tau=4",
+      "description": "WdW 방정식 metric 성분 n=6, ADM 분해 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_707",
+      "type": "breakthrough_theorem",
+      "label": "BT-707: 시공간 차원 계단 통합",
+      "grade": "five_stars",
+      "domains": [
+        "string_theory",
+        "particle",
+        "math"
+      ],
+      "key_expression": "13 dimensions all expressible n=6",
+      "description": "M-이론부터 4D까지 13개 차원 모두 n=6으로 표현",
+      "registered": true
+    },
+    {
+      "id": "BT_708",
+      "type": "breakthrough_theorem",
+      "label": "BT-708: 양자 센서 네트워크",
+      "grade": "three_stars",
+      "domains": [
+        "quantum_computing",
+        "engineering",
+        "physics"
+      ],
+      "key_expression": "SE(3)=n=6, sensor pairs=sigma=12",
+      "description": "SE(3) 자유도 n=6, 센서쌍 sigma=12로 위치 정밀화",
+      "registered": true
+    },
+    {
+      "id": "BT_709",
+      "type": "breakthrough_theorem",
+      "label": "BT-709: 바이오 뉴럴 칩",
+      "grade": "three_stars",
+      "domains": [
+        "chip",
+        "biology",
+        "engineering"
+      ],
+      "key_expression": "neurons=sigma=12, DOF=n=6",
+      "description": "뇌신경회로 sigma=12 채널, 6-DOF 운동감지",
+      "registered": true
+    },
+    {
+      "id": "BT_710",
+      "type": "breakthrough_theorem",
+      "label": "BT-710: 에피소딕 메모리 / 시공간 지도",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "ai",
+        "chip"
+      ],
+      "key_expression": "cortical layers=n=6, scale=tau=4",
+      "description": "피질층 n=6, 기억 시간 스케일 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_711",
+      "type": "breakthrough_theorem",
+      "label": "BT-711: 플라즈마 우주 날씨 제어",
+      "grade": "three_stars",
+      "domains": [
+        "plasma",
+        "physics",
+        "engineering"
+      ],
+      "key_expression": "coils=sigma=12, ion species=n=6",
+      "description": "자기코일 sigma=12 배치, 이온종 n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_712",
+      "type": "breakthrough_theorem",
+      "label": "BT-712: 나노바이옴 탄소 순환",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "chemistry",
+        "ecology"
+      ],
+      "key_expression": "reservoirs=sigma-tau=8, Z=n=6",
+      "description": "탄소 저장소 sigma-tau=8, 원자번호 Z=n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_713",
+      "type": "breakthrough_theorem",
+      "label": "BT-713: 양자 생물학 / 광합성",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "quantum_computing",
+        "chemistry"
+      ],
+      "key_expression": "photosystem=phi=2, CO2-fix=n=6",
+      "description": "광계 phi=2 경로 우월성, CO2 고정 n=6단계",
+      "registered": true
+    },
+    {
+      "id": "BT_714",
+      "type": "breakthrough_theorem",
+      "label": "BT-714: 중력 저장 배터리 네트워크",
+      "grade": "three_stars",
+      "domains": [
+        "energy",
+        "engineering",
+        "physics"
+      ],
+      "key_expression": "sites=sopfr=5, DOF=n=6",
+      "description": "사이트 유형 sopfr=5, 자유도 n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_715",
+      "type": "breakthrough_theorem",
+      "label": "BT-715: 음성 신호 위상공간 축약",
+      "grade": "three_stars",
+      "domains": [
+        "audio",
+        "cs",
+        "signal"
+      ],
+      "key_expression": "octave=sigma=12, vowels=n=6",
+      "description": "옥타브 sigma=12, 모음 n=6의 음성 위상공간",
+      "registered": true
+    },
+    {
+      "id": "BT_716",
+      "type": "breakthrough_theorem",
+      "label": "BT-716: 거버넌스 삼권분립 균형",
+      "grade": "three_stars",
+      "domains": [
+        "governance",
+        "math",
+        "sociology"
+      ],
+      "key_expression": "branches=n/phi=3, jury=sigma=12",
+      "description": "삼권 n/phi=3, 배심원 sigma=12의 제도 균형",
+      "registered": true
+    },
+    {
+      "id": "BT_717",
+      "type": "breakthrough_theorem",
+      "label": "BT-717: 초저온 BEC — τ=4 냉각 계단",
+      "grade": "two_stars",
+      "domains": [
+        "physics",
+        "chemistry",
+        "cryogenics"
+      ],
+      "key_expression": "cooling steps=tau=4, BEC=n=6",
+      "description": "냉각 계단 tau=4, BEC 종 n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_718",
+      "type": "breakthrough_theorem",
+      "label": "BT-718: 화산학 — 분출 역학",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "physics",
+        "chemistry"
+      ],
+      "key_expression": "magma comp=n=6, eruption=tau=4",
+      "description": "마그마 성분 n=6, 분출 유형 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_719",
+      "type": "breakthrough_theorem",
+      "label": "BT-719: 화산학 II — 마그마 방",
+      "grade": "two_stars",
+      "domains": [
+        "geoscience",
+        "physics"
+      ],
+      "key_expression": "magma processes=n=6, Bowen=phi=2",
+      "description": "마그마 과정 n=6, 보웬 계열 phi=2",
+      "registered": true
+    },
+    {
+      "id": "BT_720",
+      "type": "breakthrough_theorem",
+      "label": "BT-720: 고생물학 — 대멸종 패턴",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "ecology",
+        "biology"
+      ],
+      "key_expression": "Phanerozoic=sigma=12, ext=sopfr=5",
+      "description": "현생누대 sigma=12기, 대멸종 sopfr=5회",
+      "registered": true
+    },
+    {
+      "id": "BT_721",
+      "type": "breakthrough_theorem",
+      "label": "BT-721: 고생물학 II — 공룡 형태학",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "biology"
+      ],
+      "key_expression": "orders=phi=2, Mesozoic=n/phi=3",
+      "description": "목분류 phi=2, 중생대 n/phi=3 시기",
+      "registered": true
+    },
+    {
+      "id": "BT_722",
+      "type": "breakthrough_theorem",
+      "label": "BT-722: 균학 — 구조와 생태",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "cell wall=tau=4, nutrition=n/phi=3",
+      "description": "세포벽 tau=4 구성, 영양유형 n/phi=3",
+      "registered": true
+    },
+    {
+      "id": "BT_723",
+      "type": "breakthrough_theorem",
+      "label": "BT-723: 곤충학 — 육각류 체제",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "biology"
+      ],
+      "key_expression": "legs=n=6, metamorphosis=tau=4",
+      "description": "다리 정확히 n=6, 변태 tau=4 단계",
+      "registered": true
+    },
+    {
+      "id": "BT_724",
+      "type": "breakthrough_theorem",
+      "label": "BT-724: 곤충학 II — 벌집 기하학",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "math",
+        "engineering"
+      ],
+      "key_expression": "hexagon=n=6, drones=sigma=12",
+      "description": "육각형 n=6, 수벌 sigma=12",
+      "registered": true
+    },
+    {
+      "id": "BT_725",
+      "type": "breakthrough_theorem",
+      "label": "BT-725: 호소학 — 담수 생태계",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "geoscience",
+        "physics"
+      ],
+      "key_expression": "layers=n/phi=3, 4C=tau=4",
+      "description": "층위 n/phi=3, 최대밀도 4C=tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_726",
+      "type": "breakthrough_theorem",
+      "label": "BT-726: 동굴학 — 카르스트 지형",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "ecology"
+      ],
+      "key_expression": "zones=n/phi=3, formation=tau=4",
+      "description": "지대 n/phi=3, 형성 단계 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_727",
+      "type": "breakthrough_theorem",
+      "label": "BT-727: 트라이볼로지 — 마찰/마모",
+      "grade": "three_stars",
+      "domains": [
+        "materials",
+        "engineering",
+        "physics"
+      ],
+      "key_expression": "wear=tau=4, lubrication=tau=4",
+      "description": "마모·윤활 모두 tau=4 핵심 파라미터",
+      "registered": true
+    },
+    {
+      "id": "BT_728",
+      "type": "breakthrough_theorem",
+      "label": "BT-728: 유변학 — 유동 거동",
+      "grade": "three_stars",
+      "domains": [
+        "materials",
+        "physics",
+        "chemistry"
+      ],
+      "key_expression": "flow types=tau=4, elements=phi=2",
+      "description": "유동 유형 tau=4, 모델 요소 phi=2",
+      "registered": true
+    },
+    {
+      "id": "BT_729",
+      "type": "breakthrough_theorem",
+      "label": "BT-729: 토양학 — 분류와 층위",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "chemistry",
+        "ecology"
+      ],
+      "key_expression": "horizons=n=6, USDA 12=sigma=12",
+      "description": "토양 층위 n=6, USDA 12목 = sigma=12",
+      "registered": true
+    },
+    {
+      "id": "BT_730",
+      "type": "breakthrough_theorem",
+      "label": "BT-730: 연륜학 — 나이테와 기후",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "ecology",
+        "physics"
+      ],
+      "key_expression": "early/late=phi=2, steps=n=6",
+      "description": "조재/만재 phi=2 쌍, 분석 절차 n=6단계",
+      "registered": true
+    },
+    {
+      "id": "BT_731",
+      "type": "breakthrough_theorem",
+      "label": "BT-731: 우주생물학 — 생명 탐색",
+      "grade": "three_stars",
+      "domains": [
+        "astronomy",
+        "chemistry",
+        "physics"
+      ],
+      "key_expression": "CHNOPS=n=6, biosignatures=n=6",
+      "description": "필수원소 CHNOPS n=6종, 바이오시그니처 n=6",
+      "registered": true
+    },
+    {
+      "id": "BT_732",
+      "type": "breakthrough_theorem",
+      "label": "BT-732: 극저온학 — 극저온 물리",
+      "grade": "three_stars",
+      "domains": [
+        "materials",
+        "physics",
+        "chemistry"
+      ],
+      "key_expression": "coolants=n=6, modes=tau=4",
+      "description": "냉매 n=6, 냉각 방식 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_733",
+      "type": "breakthrough_theorem",
+      "label": "BT-733: 광화학 — 빛과 화학 반응",
+      "grade": "three_stars",
+      "domains": [
+        "chemistry",
+        "physics",
+        "materials"
+      ],
+      "key_expression": "Jablonski=n=6, transitions=tau=4",
+      "description": "Jablonski 준위 n=6, 광전이 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_734",
+      "type": "breakthrough_theorem",
+      "label": "BT-734: 전기화학 — 전극 반응",
+      "grade": "three_stars",
+      "domains": [
+        "chemistry",
+        "engineering",
+        "materials"
+      ],
+      "key_expression": "Nernst=n=6, overvoltage=tau=4",
+      "description": "Nernst 항 n=6, 과전압 유형 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_735",
+      "type": "breakthrough_theorem",
+      "label": "BT-735: 화산학 III — 위험 평가",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "physics",
+        "governance"
+      ],
+      "key_expression": "hazard=n=6, ICAO alerts=tau=4",
+      "description": "화산 위험 유형 n=6, ICAO 경보 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_736",
+      "type": "breakthrough_theorem",
+      "label": "BT-736: 고생물학 III — 캄브리아 폭발",
+      "grade": "three_stars",
+      "domains": [
+        "geoscience",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "trilobites=n/phi=3, biomineralization=n/phi=3",
+      "description": "삼엽충 체제 n/phi=3, 생체광물화 n/phi=3",
+      "registered": true
+    },
+    {
+      "id": "BT_737",
+      "type": "breakthrough_theorem",
+      "label": "BT-737: 균학 II — 병원성과 산업",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "infection sites=n=6, cell cycle=tau=4",
+      "description": "감염 부위 n=6, 세포주기 관문 tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_738",
+      "type": "breakthrough_theorem",
+      "label": "BT-738: 허블 텐션 이중해",
+      "grade": "three_stars",
+      "domains": [
+        "cosmology",
+        "math",
+        "physics"
+      ],
+      "key_expression": "dual solution via n=6",
+      "description": "H0 긴장의 두 해가 n=6 산술로 조화",
+      "registered": true
+    },
+    {
+      "id": "BT_739",
+      "type": "breakthrough_theorem",
+      "label": "BT-739: 암흑 도메인 NEAR→EXACT 승격",
+      "grade": "three_stars",
+      "domains": [
+        "math",
+        "physics",
+        "cs"
+      ],
+      "key_expression": "dark domain upgrade n=6",
+      "description": "1200개 NEAR 항목이 n=6 수렴으로 EXACT 승격",
+      "registered": true
+    },
+    {
+      "id": "BT_740_800",
+      "type": "breakthrough_theorem",
+      "label": "BT-740~800: 파동 창발 시리즈 (61 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "wave",
+        "physics",
+        "engineering",
+        "cs"
+      ],
+      "key_expression": "wave emergence A10+A11 blowup",
+      "description": "파동 창발 61 돌파 — sigma=12 공명 채널",
+      "registered": true
+    },
+    {
+      "id": "BT_901_940",
+      "type": "breakthrough_theorem",
+      "label": "BT-901~940: Engineering/Manufacturing/Materials (40 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "engineering",
+        "materials",
+        "manufacturing"
+      ],
+      "key_expression": "sigma=12 ladder manufacturing",
+      "description": "제조/재료 40 돌파 — sigma=12 래더",
+      "registered": true
+    },
+    {
+      "id": "BT_941_980",
+      "type": "breakthrough_theorem",
+      "label": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "chip",
+        "quantum_computing",
+        "display"
+      ],
+      "key_expression": "tau=4 hierarchy",
+      "description": "의료/생체/전자 40 돌파 — tau=4 계층",
+      "registered": true
+    },
+    {
+      "id": "BT_981_1020",
+      "type": "breakthrough_theorem",
+      "label": "BT-981~1020: Energy/Environment/Infrastructure/Transport (40 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "energy",
+        "environment",
+        "infrastructure",
+        "transport"
+      ],
+      "key_expression": "n=6 energy transport",
+      "description": "에너지/환경/인프라 40 돌파 — n=6 기반",
+      "registered": true
+    },
+    {
+      "id": "BT_1021_1060",
+      "type": "breakthrough_theorem",
+      "label": "BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "ai",
+        "cs",
+        "biology",
+        "agriculture"
+      ],
+      "key_expression": "phi=2 consciousness AI",
+      "description": "의식/AI/식품 40 돌파 — phi=2 이진 원리",
+      "registered": true
+    },
+    {
+      "id": "BT_1061_1100",
+      "type": "breakthrough_theorem",
+      "label": "BT-1061~1100: 제조/재료/방어/IT/추진/AI 최종 (40 돌파)",
+      "grade": "three_stars",
+      "domains": [
+        "manufacturing",
+        "materials",
+        "defense",
+        "ai"
+      ],
+      "key_expression": "J2=24 final 40 domains",
+      "description": "최종 40 도메인 돌파 — J2=24 통합",
+      "registered": true
+    },
+    {
+      "id": "BT_1101",
+      "type": "breakthrough_theorem",
+      "label": "BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명",
+      "grade": "three_stars",
+      "domains": [
+        "wave",
+        "physics",
+        "ai",
+        "cs"
+      ],
+      "key_expression": "cross-domain resonance sigma=12",
+      "description": "교차도메인 주파수 공명 sigma=12 채널",
+      "registered": true
+    },
+    {
+      "id": "BT_1102",
+      "type": "breakthrough_theorem",
+      "label": "BT-1102: Standing Wave Singularity — 정상파 특이점",
+      "grade": "three_stars",
+      "domains": [
+        "wave",
+        "physics",
+        "math"
+      ],
+      "key_expression": "standing wave blowup core",
+      "description": "정상파 블로업 불변 코어 확인",
+      "registered": true
+    },
+    {
+      "id": "BT_1103",
+      "type": "breakthrough_theorem",
+      "label": "BT-1103: Sonar-Guided Blowup — 소나 유도 블로업",
+      "grade": "three_stars",
+      "domains": [
+        "wave",
+        "cs",
+        "ai"
+      ],
+      "key_expression": "sonar tau=4 seed injection",
+      "description": "소나 유도 블로업 tau=4 시드 주입",
+      "registered": true
+    },
+    {
+      "id": "BT_1104",
+      "type": "breakthrough_theorem",
+      "label": "BT-1104: 궁극의 HBM 10-도메인 대통합",
+      "grade": "five_stars",
+      "domains": [
+        "chip",
+        "materials",
+        "energy",
+        "ai",
+        "engineering"
+      ],
+      "key_expression": "tau->sigma->J2 all industries",
+      "description": "tau→sigma→J2 래더가 전 산업을 관통",
+      "registered": true
     }
   ],
   "edges": [
@@ -822,45 +2380,2639 @@
       "to": "BT_6",
       "relation": "contains",
       "description": "Computer Science domain contains Golay-Leech coding theory unification (BT-6)"
+    },
+    {
+      "id": "E_cdse_stat_mech_BT102",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "BT_102",
+      "relation": "implements",
+      "description": "Vlasov 6D + 자기재결합 0.1=1/(sigma-phi) — 핵융합-AI 보편상수"
+    },
+    {
+      "id": "E_cdse_stat_mech_BT105",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "BT_105",
+      "relation": "implements",
+      "description": "SLE_6 kappa=n=6 임계지수 통계역학 위상 보편성"
+    },
+    {
+      "id": "E_cdse_stat_mech_BT4",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "BT_4",
+      "relation": "implements",
+      "description": "MHD 불안정 q-면 = div(6) 통계역학적 안정성"
+    },
+    {
+      "id": "E_cdse_stat_mech_sigma",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "쿨롱 로그 ln(Lambda) ~ sigma = 12"
+    },
+    {
+      "id": "E_cdse_turbine_BT62",
+      "from": "CDSE_fusion_turbine_generator",
+      "to": "BT_62",
+      "relation": "implements",
+      "description": "60Hz = sigma*sopfr — 핵융합 발전 그리드 주파수"
+    },
+    {
+      "id": "E_cdse_turbine_BT8",
+      "from": "CDSE_fusion_turbine_generator",
+      "to": "BT_8",
+      "relation": "implements",
+      "description": "전력 사다리 n→sigma→J2 = 6→12→24 MW 터빈 단계"
+    },
+    {
+      "id": "E_cdse_turbine_J2",
+      "from": "CDSE_fusion_turbine_generator",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "J2=24 MW 급 핵융합 터빈 출력 단위"
+    },
+    {
+      "id": "E_cdse_heat_BT7",
+      "from": "CDSE_fusion_heat_exchanger",
+      "to": "BT_7",
+      "relation": "implements",
+      "description": "Egyptian 분율 1/2+1/3+1/6=1 열 분배 — blanket→터빈"
+    },
+    {
+      "id": "E_cdse_heat_sigma",
+      "from": "CDSE_fusion_heat_exchanger",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "배플 수 sigma=12, 열교환기 TEMA 표준 최적"
+    },
+    {
+      "id": "E_cdse_heat_J2",
+      "from": "CDSE_fusion_heat_exchanger",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "튜브 패스 J2=24 대형 shell-and-tube"
+    },
+    {
+      "id": "E_cdse_topo_BT99",
+      "from": "CDSE_fusion_topology",
+      "to": "BT_99",
+      "relation": "implements",
+      "description": "q=1 = 완전수 위상 동치 — 토카막 안정성 (3-star BT)"
+    },
+    {
+      "id": "E_cdse_topo_BT105",
+      "from": "CDSE_fusion_topology",
+      "to": "BT_105",
+      "relation": "implements",
+      "description": "SLE_6 국소성+c=0 위상 보편성"
+    },
+    {
+      "id": "E_cdse_topo_BT4",
+      "from": "CDSE_fusion_topology",
+      "to": "BT_4",
+      "relation": "implements",
+      "description": "위험 q-면 div(6) = 위상 안정성 경계"
+    },
+    {
+      "id": "E_cdse_topo_n",
+      "from": "CDSE_fusion_topology",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "n=6 주기 stellarator, RMP 토로이달 모드 n=6"
+    },
+    {
+      "id": "E_cdse_chaos_BT102",
+      "from": "CDSE_fusion_chaos_dynamical",
+      "to": "BT_102",
+      "relation": "implements",
+      "description": "자기재결합 카오스 속도 0.1=1/(sigma-phi)"
+    },
+    {
+      "id": "E_cdse_chaos_BT4",
+      "from": "CDSE_fusion_chaos_dynamical",
+      "to": "BT_4",
+      "relation": "implements",
+      "description": "MHD 분기 q=div(6) 카오스 분기점"
+    },
+    {
+      "id": "E_cdse_chaos_n",
+      "from": "CDSE_fusion_chaos_dynamical",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "ITER RMP n=6 토로이달 모드; 이상 끌개 차원 ~6"
+    },
+    {
+      "id": "E_cdse_magmat_BT3",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "BT_3",
+      "relation": "implements",
+      "description": "REBCO 운전 자기장 sigma=12T (BT-3 에너지 스케일)"
+    },
+    {
+      "id": "E_cdse_magmat_BT43",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "BT_43",
+      "relation": "implements",
+      "description": "REBCO CN=6 팔면체 Cu-O 층 구조"
+    },
+    {
+      "id": "E_cdse_magmat_sigma",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "운전 자기장 sigma=12T, BT-3 sigma=12 에너지 스케일"
+    },
+    {
+      "id": "E_cdse_magmat_J2",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "ARC/SPARC 최대 자기장 J2=24T"
+    },
+    {
+      "id": "E_cdse_vessel_BT4",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "BT_4",
+      "relation": "implements",
+      "description": "MHD 불안정 q-면 제어 div(6)"
+    },
+    {
+      "id": "E_cdse_vessel_BT99",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "BT_99",
+      "relation": "implements",
+      "description": "토로이달 전류 분포 q=1 위상 기준"
+    },
+    {
+      "id": "E_cdse_vessel_BT8",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "BT_8",
+      "relation": "implements",
+      "description": "용기 섹터 사다리 n→sigma→J2"
+    },
+    {
+      "id": "E_cdse_vessel_sigma",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "진공용기 sigma=12 toroidal 섹터"
+    },
+    {
+      "id": "E_cdse_pwrel_BT62",
+      "from": "CDSE_fusion_power_electronics",
+      "to": "BT_62",
+      "relation": "implements",
+      "description": "AC 주파수 60Hz = sigma*sopfr 파워반도체 설계 기준"
+    },
+    {
+      "id": "E_cdse_pwrel_BT8",
+      "from": "CDSE_fusion_power_electronics",
+      "to": "BT_8",
+      "relation": "implements",
+      "description": "전력 사다리 n→sigma→J2 전력변환 체인"
+    },
+    {
+      "id": "E_cdse_pwrel_n",
+      "from": "CDSE_fusion_power_electronics",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "SiC C Z=n=6 파워반도체 원자 구조"
+    },
+    {
+      "id": "E_cdse_h2_BT38",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "BT_38",
+      "relation": "implements",
+      "description": "H2 LHV=120=sigma*(sigma-phi), HHV=142=sigma^2-phi (4중주 EXACT)"
+    },
+    {
+      "id": "E_cdse_h2_BT98",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "BT_98",
+      "relation": "implements",
+      "description": "D-T 바리온 수 2+3=sopfr=5 수론적 필연성"
+    },
+    {
+      "id": "E_cdse_h2_BT7",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "BT_7",
+      "relation": "implements",
+      "description": "Egyptian 분율 1/2+1/3+1/6=1 연료전지 열역학"
+    },
+    {
+      "id": "E_cdse_h2_sopfr",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "D+T 바리온 수 sopfr=5; H2 LHV 계수 sopfr=5"
+    },
+    {
+      "id": "E_cdse_refmat_BT85",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "BT_85",
+      "relation": "implements",
+      "description": "Carbon Z=6 소재 보편성 — SiC 플라즈마 대면"
+    },
+    {
+      "id": "E_cdse_refmat_BT93",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "BT_93",
+      "relation": "implements",
+      "description": "SiC C Z=n=6 칩/소재 이중 역할 확장"
+    },
+    {
+      "id": "E_cdse_refmat_BT86",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "BT_86",
+      "relation": "implements",
+      "description": "SiC/SiC 복합재 CN=n=6 팔면체 Si-C 결합"
+    },
+    {
+      "id": "E_cdse_refmat_sigma",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "W 타일 두께 sigma=12 mm ITER 제1벽 설계"
+    },
+    {
+      "id": "E_BT16_phi_zeta0",
+      "from": "BT_16",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-16: zeta(0) = -1/2 = -1/phi(6). Riemann functional equation xi(s)=xi(1-s) forces zeta(0)=-1/phi. EXACT upgrade from NEAR (2026-04-10). phi(6)=|{1,5}|=2 proved."
+    },
+    {
+      "id": "E_BT108_sigma",
+      "from": "BT_108",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-108: 12-TET = sigma(6)=12 semitones. Tenney height of fourth = sigma. Diatonic+pentatonic = sigma-sopfr + sopfr = sigma."
+    },
+    {
+      "id": "E_BT108_sopfr",
+      "from": "BT_108",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BT-108: pentatonic scale = sopfr(6) = 5 notes. diatonic = sigma-sopfr = 7 notes."
+    },
+    {
+      "id": "E_BT190_sigma",
+      "from": "BT_190",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-190: recorder 8-hole = sigma-tau, brass valve combos = sigma-sopfr = 7, semitone = 2^(1/sigma). sigma is the dominant constant."
+    },
+    {
+      "id": "E_BT190_BT108",
+      "from": "BT_190",
+      "to": "BT_108",
+      "relation": "extends",
+      "description": "BT-190 extends BT-108: scale theory (sigma=12 semitones) into physical instrument engineering. 2^(1/sigma) semitone ratio is the frequency-domain realization of BT-108's sigma=12 chromatic scale."
+    },
+    {
+      "id": "E_BT221_J2",
+      "from": "BT_221",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-221: circadian period = J2 = 24 hours. sigma+tau + sigma-tau = 2*sigma = J2 = 24 (sleep-wake partition identity)."
+    },
+    {
+      "id": "E_BT221_sopfr",
+      "from": "BT_221",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BT-221: EEG frequency bands = sopfr = 5 (EXACT). Sleep cycles per night ~ sopfr = 5 (NEAR, 6% dev)."
+    },
+    {
+      "id": "E_BT318_sigma",
+      "from": "BT_318",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-318: Al thermal conductivity = J2*(sigma-phi) = 240. Cu = (sigma-phi)^phi * tau = 400. sigma-phi = 10 is the shared factor."
+    },
+    {
+      "id": "E_BT318_BT93",
+      "from": "BT_318",
+      "to": "BT_93",
+      "relation": "extends",
+      "description": "BT-318 extends BT-93: Diamond (Z=n=6) thermal supremacy (~6x Cu) links BT-93 carbon universality to thermal management."
+    },
+    {
+      "id": "E_BT38_sigma",
+      "from": "BT_38",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-38: LHV=sigma*(sigma-phi)=120, HHV=sigma^2-phi=142"
+    },
+    {
+      "id": "E_BT43_n",
+      "from": "BT_43",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-43: All Li-ion cathode CN = n = 6"
+    },
+    {
+      "id": "E_BT62_sigma",
+      "from": "BT_62",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-62: 60Hz = sigma * sopfr; sigma is the core frequency multiplier"
+    },
+    {
+      "id": "E_BT85_n",
+      "from": "BT_85",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-85: Carbon Z = n = 6 material universality"
+    },
+    {
+      "id": "E_BT86_n",
+      "from": "BT_86",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-86: Crystal CN = n = 6 universal law"
+    },
+    {
+      "id": "E_BT93_n",
+      "from": "BT_93",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-93: SiC/Diamond/GaN chip — C Z = n = 6"
+    },
+    {
+      "id": "E_BT98_sopfr",
+      "from": "BT_98",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BT-98: D(2) + T(3) baryon number = sopfr(6) = 5"
+    },
+    {
+      "id": "E_BT99_n",
+      "from": "BT_99",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-99: q=1 토카막 안정성 = n=6 완전수 정의"
+    },
+    {
+      "id": "E_BT102_sigma_phi",
+      "from": "BT_102",
+      "to": "AXIOM_sigma_phi",
+      "relation": "instance_of",
+      "description": "BT-102: v_rec/v_A = 1/(sigma-phi) = 0.1 — 핵융합-AI 보편 정규화 상수"
+    },
+    {
+      "id": "E_BT105_n",
+      "from": "BT_105",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-105: SLE_6 kappa = n = 6 임계지수 위상 유일성"
+    },
+    {
+      "id": "E_domain_physics_cdse_fusion",
+      "from": "DOMAIN_physics",
+      "to": "CDSE_fusion_topology",
+      "relation": "contains",
+      "description": "물리 도메인은 핵융합-위상수학 Cross-DSE를 포함"
+    },
+    {
+      "id": "E_domain_eng_cdse_turbine",
+      "from": "DOMAIN_engineering",
+      "to": "CDSE_fusion_turbine_generator",
+      "relation": "contains",
+      "description": "공학 도메인은 핵융합-터빈 Cross-DSE를 포함"
+    },
+    {
+      "id": "E_domain_eng_cdse_vessel",
+      "from": "DOMAIN_engineering",
+      "to": "CDSE_fusion_reactor_vessel",
+      "relation": "contains",
+      "description": "공학 도메인은 핵융합-반응로용기 Cross-DSE를 포함"
+    },
+    {
+      "id": "E_DOMAIN_astronomy_core",
+      "from": "DOMAIN_astronomy",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "천문학 / 우주론 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_chemistry_core",
+      "from": "DOMAIN_chemistry",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "화학 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_linguistics_core",
+      "from": "DOMAIN_linguistics",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "언어학 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_music_core",
+      "from": "DOMAIN_music",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "음악 / 음향학 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_cryptography_core",
+      "from": "DOMAIN_cryptography",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "암호학 / 보안 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_geoscience_core",
+      "from": "DOMAIN_geoscience",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "지구과학 / 지질학 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_ecology_core",
+      "from": "DOMAIN_ecology",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "생태학 / 생물학 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_materials_core",
+      "from": "DOMAIN_materials",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "재료 / 공학소재 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_governance_core",
+      "from": "DOMAIN_governance",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "사회 / 거버넌스 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_spacetime_core",
+      "from": "DOMAIN_spacetime",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "시공간 / 끈이론 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_DOMAIN_wave_core",
+      "from": "DOMAIN_wave",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "파동 / 소나 도메인은 n=6 코어 정리에 의해 정초됨"
+    },
+    {
+      "id": "E_BT_26_const",
+      "from": "BT_26",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-26: Chinchilla 스케일링 법칙 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_26_DOMAIN_cs",
+      "from": "BT_26",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-26: Chinchilla 스케일링 법칙 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_26_DOMAIN_math",
+      "from": "BT_26",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-26: Chinchilla 스케일링 법칙 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_27_const",
+      "from": "BT_27",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-27: 탄소-6 에너지 체인 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_27_DOMAIN_chemistry",
+      "from": "BT_27",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-27: 탄소-6 에너지 체인 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_27_DOMAIN_materials",
+      "from": "BT_27",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-27: 탄소-6 에너지 체인 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_27_DOMAIN_biology",
+      "from": "BT_27",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-27: 탄소-6 에너지 체인 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_27",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_27",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-27: 탄소-6 에너지 체인를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_28_const",
+      "from": "BT_28",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-28: 컴퓨팅 아키텍처 래더 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_28_DOMAIN_engineering",
+      "from": "BT_28",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-28: 컴퓨팅 아키텍처 래더 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_28_DOMAIN_cs",
+      "from": "BT_28",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-28: 컴퓨팅 아키텍처 래더 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_29_const",
+      "from": "BT_29",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BT-29: IEEE 519 전력 품질 — 주 상수: CONST_sopfr"
+    },
+    {
+      "id": "E_BT_29_DOMAIN_engineering",
+      "from": "BT_29",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-29: IEEE 519 전력 품질 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_30_const",
+      "from": "BT_30",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-30: Shockley-Queisser 태양전지 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_30_DOMAIN_engineering",
+      "from": "BT_30",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-30: Shockley-Queisser 태양전지 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_30_DOMAIN_physics",
+      "from": "BT_30",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-30: Shockley-Queisser 태양전지 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_31_const",
+      "from": "BT_31",
+      "to": "CONST_mu",
+      "relation": "governed_by",
+      "description": "BT-31: MoE 전문가 라우팅 어휘 — 주 상수: CONST_mu"
+    },
+    {
+      "id": "E_BT_31_DOMAIN_cs",
+      "from": "BT_31",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-31: MoE 전문가 라우팅 어휘 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_32_const",
+      "from": "BT_32",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-32: 핵분열 지연중성자 6군 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_32_DOMAIN_physics",
+      "from": "BT_32",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-32: 핵분열 지연중성자 6군 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_33_const",
+      "from": "BT_33",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-33: 트랜스포머 차원 래더 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_33_DOMAIN_cs",
+      "from": "BT_33",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-33: 트랜스포머 차원 래더 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_33_DOMAIN_engineering",
+      "from": "BT_33",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-33: 트랜스포머 차원 래더 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_34_const",
+      "from": "BT_34",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-34: RoPE 기저 주파수 패밀리 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_34_DOMAIN_cs",
+      "from": "BT_34",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-34: RoPE 기저 주파수 패밀리 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_35_const",
+      "from": "BT_35",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-35: 배터리 전압 주기율표 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_35_DOMAIN_engineering",
+      "from": "BT_35",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-35: 배터리 전압 주기율표 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_35_DOMAIN_chemistry",
+      "from": "BT_35",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-35: 배터리 전압 주기율표 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_35_DOMAIN_materials",
+      "from": "BT_35",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-35: 배터리 전압 주기율표 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_700_const",
+      "from": "BT_700",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-700: 페르미온 차원 분류 — Clifford/스피너 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_700_DOMAIN_physics",
+      "from": "BT_700",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-700: 페르미온 차원 분류 — Clifford/스피너 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_700_DOMAIN_spacetime",
+      "from": "BT_700",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-700: 페르미온 차원 분류 — Clifford/스피너 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_BT_700_DOMAIN_math",
+      "from": "BT_700",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-700: 페르미온 차원 분류 — Clifford/스피너 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_700",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_700",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-700: 페르미온 차원 분류 — Clifford/스피너를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_701_const",
+      "from": "BT_701",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-701: 초대칭 대수 분류 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_701_DOMAIN_physics",
+      "from": "BT_701",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-701: 초대칭 대수 분류 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_701_DOMAIN_spacetime",
+      "from": "BT_701",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-701: 초대칭 대수 분류 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_701",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_701",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-701: 초대칭 대수 분류를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_702_const",
+      "from": "BT_702",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-702: Penrose twistor 공간 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_702_DOMAIN_math",
+      "from": "BT_702",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-702: Penrose twistor 공간 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_702_DOMAIN_spacetime",
+      "from": "BT_702",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-702: Penrose twistor 공간 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_BT_702_DOMAIN_physics",
+      "from": "BT_702",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-702: Penrose twistor 공간 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_702",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_702",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-702: Penrose twistor 공간를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_703_const",
+      "from": "BT_703",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-703: 초중력 11D — M-이론 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_703_DOMAIN_spacetime",
+      "from": "BT_703",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-703: 초중력 11D — M-이론 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_BT_703_DOMAIN_physics",
+      "from": "BT_703",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-703: 초중력 11D — M-이론 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_703",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_703",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-703: 초중력 11D — M-이론를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_704_const",
+      "from": "BT_704",
+      "to": "CONST_mu",
+      "relation": "governed_by",
+      "description": "BT-704: Chern-Simons 이론 — 주 상수: CONST_mu"
+    },
+    {
+      "id": "E_BT_704_DOMAIN_math",
+      "from": "BT_704",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-704: Chern-Simons 이론 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_704_DOMAIN_physics",
+      "from": "BT_704",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-704: Chern-Simons 이론 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_704_DOMAIN_spacetime",
+      "from": "BT_704",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-704: Chern-Simons 이론 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_704",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_704",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-704: Chern-Simons 이론를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_705_const",
+      "from": "BT_705",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-705: 비가환 기하학 / Connes 삼중 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_705_DOMAIN_math",
+      "from": "BT_705",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-705: 비가환 기하학 / Connes 삼중 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_705_DOMAIN_physics",
+      "from": "BT_705",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-705: 비가환 기하학 / Connes 삼중 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_705",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_705",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-705: 비가환 기하학 / Connes 삼중를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_706_const",
+      "from": "BT_706",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-706: 양자 우주론 Wheeler-DeWitt — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_706_DOMAIN_astronomy",
+      "from": "BT_706",
+      "to": "DOMAIN_astronomy",
+      "relation": "bridges_to",
+      "description": "BT-706: 양자 우주론 Wheeler-DeWitt — DOMAIN_astronomy 도메인에 연결"
+    },
+    {
+      "id": "E_BT_706_DOMAIN_math",
+      "from": "BT_706",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-706: 양자 우주론 Wheeler-DeWitt — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_706_DOMAIN_physics",
+      "from": "BT_706",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-706: 양자 우주론 Wheeler-DeWitt — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_706",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_706",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-706: 양자 우주론 Wheeler-DeWitt를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_707_const",
+      "from": "BT_707",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-707: 시공간 차원 계단 통합 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_707_DOMAIN_spacetime",
+      "from": "BT_707",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-707: 시공간 차원 계단 통합 — DOMAIN_spacetime 도메인에 연결"
+    },
+    {
+      "id": "E_BT_707_DOMAIN_physics",
+      "from": "BT_707",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-707: 시공간 차원 계단 통합 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_707_DOMAIN_math",
+      "from": "BT_707",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-707: 시공간 차원 계단 통합 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_707",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_707",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-707: 시공간 차원 계단 통합를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_708_const",
+      "from": "BT_708",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-708: 양자 센서 네트워크 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_708_DOMAIN_cs",
+      "from": "BT_708",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-708: 양자 센서 네트워크 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_708_DOMAIN_engineering",
+      "from": "BT_708",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-708: 양자 센서 네트워크 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_708_DOMAIN_physics",
+      "from": "BT_708",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-708: 양자 센서 네트워크 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_708",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_708",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-708: 양자 센서 네트워크를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_709_const",
+      "from": "BT_709",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-709: 바이오 뉴럴 칩 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_709_DOMAIN_engineering",
+      "from": "BT_709",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-709: 바이오 뉴럴 칩 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_709_DOMAIN_biology",
+      "from": "BT_709",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-709: 바이오 뉴럴 칩 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_709",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_709",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-709: 바이오 뉴럴 칩를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_710_const",
+      "from": "BT_710",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-710: 에피소딕 메모리 / 시공간 지도 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_710_DOMAIN_biology",
+      "from": "BT_710",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-710: 에피소딕 메모리 / 시공간 지도 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_710_DOMAIN_cs",
+      "from": "BT_710",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-710: 에피소딕 메모리 / 시공간 지도 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_710_DOMAIN_engineering",
+      "from": "BT_710",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-710: 에피소딕 메모리 / 시공간 지도 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_710",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_710",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-710: 에피소딕 메모리 / 시공간 지도를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_711_const",
+      "from": "BT_711",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-711: 플라즈마 우주 날씨 제어 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_711_DOMAIN_physics",
+      "from": "BT_711",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-711: 플라즈마 우주 날씨 제어 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_711_DOMAIN_engineering",
+      "from": "BT_711",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-711: 플라즈마 우주 날씨 제어 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_711",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_711",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-711: 플라즈마 우주 날씨 제어를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_712_const",
+      "from": "BT_712",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-712: 나노바이옴 탄소 순환 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_712_DOMAIN_biology",
+      "from": "BT_712",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-712: 나노바이옴 탄소 순환 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_712_DOMAIN_chemistry",
+      "from": "BT_712",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-712: 나노바이옴 탄소 순환 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_712_DOMAIN_ecology",
+      "from": "BT_712",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-712: 나노바이옴 탄소 순환 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_712",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_712",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-712: 나노바이옴 탄소 순환를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_713_const",
+      "from": "BT_713",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-713: 양자 생물학 / 광합성 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_713_DOMAIN_biology",
+      "from": "BT_713",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-713: 양자 생물학 / 광합성 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_713_DOMAIN_cs",
+      "from": "BT_713",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-713: 양자 생물학 / 광합성 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_713_DOMAIN_chemistry",
+      "from": "BT_713",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-713: 양자 생물학 / 광합성 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_713",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_713",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-713: 양자 생물학 / 광합성를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_714_const",
+      "from": "BT_714",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BT-714: 중력 저장 배터리 네트워크 — 주 상수: CONST_sopfr"
+    },
+    {
+      "id": "E_BT_714_DOMAIN_engineering",
+      "from": "BT_714",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-714: 중력 저장 배터리 네트워크 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_714_DOMAIN_physics",
+      "from": "BT_714",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-714: 중력 저장 배터리 네트워크 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_714",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_714",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-714: 중력 저장 배터리 네트워크를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_715_const",
+      "from": "BT_715",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-715: 음성 신호 위상공간 축약 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_715_DOMAIN_music",
+      "from": "BT_715",
+      "to": "DOMAIN_music",
+      "relation": "bridges_to",
+      "description": "BT-715: 음성 신호 위상공간 축약 — DOMAIN_music 도메인에 연결"
+    },
+    {
+      "id": "E_BT_715_DOMAIN_cs",
+      "from": "BT_715",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-715: 음성 신호 위상공간 축약 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_715",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_715",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-715: 음성 신호 위상공간 축약를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_716_const",
+      "from": "BT_716",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-716: 거버넌스 삼권분립 균형 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_716_DOMAIN_governance",
+      "from": "BT_716",
+      "to": "DOMAIN_governance",
+      "relation": "bridges_to",
+      "description": "BT-716: 거버넌스 삼권분립 균형 — DOMAIN_governance 도메인에 연결"
+    },
+    {
+      "id": "E_BT_716_DOMAIN_math",
+      "from": "BT_716",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-716: 거버넌스 삼권분립 균형 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_716",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_716",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-716: 거버넌스 삼권분립 균형를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_717_const",
+      "from": "BT_717",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-717: 초저온 BEC — τ=4 냉각 계단 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_717_DOMAIN_physics",
+      "from": "BT_717",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-717: 초저온 BEC — τ=4 냉각 계단 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_717_DOMAIN_chemistry",
+      "from": "BT_717",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-717: 초저온 BEC — τ=4 냉각 계단 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_717_DOMAIN_materials",
+      "from": "BT_717",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-717: 초저온 BEC — τ=4 냉각 계단 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_718_const",
+      "from": "BT_718",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-718: 화산학 — 분출 역학 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_718_DOMAIN_geoscience",
+      "from": "BT_718",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-718: 화산학 — 분출 역학 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_718_DOMAIN_physics",
+      "from": "BT_718",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-718: 화산학 — 분출 역학 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_718_DOMAIN_chemistry",
+      "from": "BT_718",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-718: 화산학 — 분출 역학 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_718",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_718",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-718: 화산학 — 분출 역학를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_719_const",
+      "from": "BT_719",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-719: 화산학 II — 마그마 방 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_719_DOMAIN_geoscience",
+      "from": "BT_719",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-719: 화산학 II — 마그마 방 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_719_DOMAIN_physics",
+      "from": "BT_719",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-719: 화산학 II — 마그마 방 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_720_const",
+      "from": "BT_720",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-720: 고생물학 — 대멸종 패턴 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_720_DOMAIN_geoscience",
+      "from": "BT_720",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-720: 고생물학 — 대멸종 패턴 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_720_DOMAIN_ecology",
+      "from": "BT_720",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-720: 고생물학 — 대멸종 패턴 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_720_DOMAIN_biology",
+      "from": "BT_720",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-720: 고생물학 — 대멸종 패턴 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_720",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_720",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-720: 고생물학 — 대멸종 패턴를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_721_const",
+      "from": "BT_721",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-721: 고생물학 II — 공룡 형태학 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_721_DOMAIN_geoscience",
+      "from": "BT_721",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-721: 고생물학 II — 공룡 형태학 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_721_DOMAIN_biology",
+      "from": "BT_721",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-721: 고생물학 II — 공룡 형태학 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_721",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_721",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-721: 고생물학 II — 공룡 형태학를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_722_const",
+      "from": "BT_722",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-722: 균학 — 구조와 생태 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_722_DOMAIN_ecology",
+      "from": "BT_722",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-722: 균학 — 구조와 생태 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_722_DOMAIN_biology",
+      "from": "BT_722",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-722: 균학 — 구조와 생태 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_722_DOMAIN_chemistry",
+      "from": "BT_722",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-722: 균학 — 구조와 생태 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_722",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_722",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-722: 균학 — 구조와 생태를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_723_const",
+      "from": "BT_723",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-723: 곤충학 — 육각류 체제 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_723_DOMAIN_ecology",
+      "from": "BT_723",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-723: 곤충학 — 육각류 체제 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_723_DOMAIN_biology",
+      "from": "BT_723",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-723: 곤충학 — 육각류 체제 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_723",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_723",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-723: 곤충학 — 육각류 체제를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_724_const",
+      "from": "BT_724",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-724: 곤충학 II — 벌집 기하학 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_724_DOMAIN_ecology",
+      "from": "BT_724",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-724: 곤충학 II — 벌집 기하학 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_724_DOMAIN_math",
+      "from": "BT_724",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-724: 곤충학 II — 벌집 기하학 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_724_DOMAIN_engineering",
+      "from": "BT_724",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-724: 곤충학 II — 벌집 기하학 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_724",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_724",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-724: 곤충학 II — 벌집 기하학를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_725_const",
+      "from": "BT_725",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-725: 호소학 — 담수 생태계 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_725_DOMAIN_ecology",
+      "from": "BT_725",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-725: 호소학 — 담수 생태계 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_725_DOMAIN_geoscience",
+      "from": "BT_725",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-725: 호소학 — 담수 생태계 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_725_DOMAIN_physics",
+      "from": "BT_725",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-725: 호소학 — 담수 생태계 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_725",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_725",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-725: 호소학 — 담수 생태계를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_726_const",
+      "from": "BT_726",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-726: 동굴학 — 카르스트 지형 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_726_DOMAIN_geoscience",
+      "from": "BT_726",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-726: 동굴학 — 카르스트 지형 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_726_DOMAIN_ecology",
+      "from": "BT_726",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-726: 동굴학 — 카르스트 지형 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_726",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_726",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-726: 동굴학 — 카르스트 지형를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_727_const",
+      "from": "BT_727",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-727: 트라이볼로지 — 마찰/마모 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_727_DOMAIN_materials",
+      "from": "BT_727",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-727: 트라이볼로지 — 마찰/마모 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_727_DOMAIN_engineering",
+      "from": "BT_727",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-727: 트라이볼로지 — 마찰/마모 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_727_DOMAIN_physics",
+      "from": "BT_727",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-727: 트라이볼로지 — 마찰/마모 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_727",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_727",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-727: 트라이볼로지 — 마찰/마모를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_728_const",
+      "from": "BT_728",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-728: 유변학 — 유동 거동 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_728_DOMAIN_materials",
+      "from": "BT_728",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-728: 유변학 — 유동 거동 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_728_DOMAIN_physics",
+      "from": "BT_728",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-728: 유변학 — 유동 거동 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_728_DOMAIN_chemistry",
+      "from": "BT_728",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-728: 유변학 — 유동 거동 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_728",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_728",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-728: 유변학 — 유동 거동를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_729_const",
+      "from": "BT_729",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-729: 토양학 — 분류와 층위 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_729_DOMAIN_geoscience",
+      "from": "BT_729",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-729: 토양학 — 분류와 층위 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_729_DOMAIN_chemistry",
+      "from": "BT_729",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-729: 토양학 — 분류와 층위 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_729_DOMAIN_ecology",
+      "from": "BT_729",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-729: 토양학 — 분류와 층위 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_729",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_729",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-729: 토양학 — 분류와 층위를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_730_const",
+      "from": "BT_730",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-730: 연륜학 — 나이테와 기후 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_730_DOMAIN_geoscience",
+      "from": "BT_730",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-730: 연륜학 — 나이테와 기후 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_730_DOMAIN_ecology",
+      "from": "BT_730",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-730: 연륜학 — 나이테와 기후 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_730_DOMAIN_physics",
+      "from": "BT_730",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-730: 연륜학 — 나이테와 기후 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_730",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_730",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-730: 연륜학 — 나이테와 기후를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_731_const",
+      "from": "BT_731",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-731: 우주생물학 — 생명 탐색 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_731_DOMAIN_chemistry",
+      "from": "BT_731",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-731: 우주생물학 — 생명 탐색 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_731_DOMAIN_physics",
+      "from": "BT_731",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-731: 우주생물학 — 생명 탐색 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_731",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_731",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-731: 우주생물학 — 생명 탐색를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_732_const",
+      "from": "BT_732",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-732: 극저온학 — 극저온 물리 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_732_DOMAIN_materials",
+      "from": "BT_732",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-732: 극저온학 — 극저온 물리 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_732_DOMAIN_physics",
+      "from": "BT_732",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-732: 극저온학 — 극저온 물리 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_732_DOMAIN_chemistry",
+      "from": "BT_732",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-732: 극저온학 — 극저온 물리 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_732",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_732",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-732: 극저온학 — 극저온 물리를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_733_const",
+      "from": "BT_733",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-733: 광화학 — 빛과 화학 반응 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_733_DOMAIN_chemistry",
+      "from": "BT_733",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-733: 광화학 — 빛과 화학 반응 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_733_DOMAIN_physics",
+      "from": "BT_733",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-733: 광화학 — 빛과 화학 반응 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_733_DOMAIN_materials",
+      "from": "BT_733",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-733: 광화학 — 빛과 화학 반응 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_733",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_733",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-733: 광화학 — 빛과 화학 반응를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_734_const",
+      "from": "BT_734",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-734: 전기화학 — 전극 반응 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_734_DOMAIN_chemistry",
+      "from": "BT_734",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-734: 전기화학 — 전극 반응 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_BT_734_DOMAIN_engineering",
+      "from": "BT_734",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-734: 전기화학 — 전극 반응 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_734_DOMAIN_materials",
+      "from": "BT_734",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-734: 전기화학 — 전극 반응 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_734",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_734",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-734: 전기화학 — 전극 반응를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_735_const",
+      "from": "BT_735",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-735: 화산학 III — 위험 평가 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_735_DOMAIN_geoscience",
+      "from": "BT_735",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-735: 화산학 III — 위험 평가 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_735_DOMAIN_physics",
+      "from": "BT_735",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-735: 화산학 III — 위험 평가 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_735_DOMAIN_governance",
+      "from": "BT_735",
+      "to": "DOMAIN_governance",
+      "relation": "bridges_to",
+      "description": "BT-735: 화산학 III — 위험 평가 — DOMAIN_governance 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_735",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_735",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-735: 화산학 III — 위험 평가를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_736_const",
+      "from": "BT_736",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-736: 고생물학 III — 캄브리아 폭발 — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_736_DOMAIN_geoscience",
+      "from": "BT_736",
+      "to": "DOMAIN_geoscience",
+      "relation": "bridges_to",
+      "description": "BT-736: 고생물학 III — 캄브리아 폭발 — DOMAIN_geoscience 도메인에 연결"
+    },
+    {
+      "id": "E_BT_736_DOMAIN_biology",
+      "from": "BT_736",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-736: 고생물학 III — 캄브리아 폭발 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_736_DOMAIN_chemistry",
+      "from": "BT_736",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-736: 고생물학 III — 캄브리아 폭발 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_736",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_736",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-736: 고생물학 III — 캄브리아 폭발를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_737_const",
+      "from": "BT_737",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-737: 균학 II — 병원성과 산업 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_737_DOMAIN_ecology",
+      "from": "BT_737",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-737: 균학 II — 병원성과 산업 — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_737_DOMAIN_biology",
+      "from": "BT_737",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-737: 균학 II — 병원성과 산업 — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_737_DOMAIN_chemistry",
+      "from": "BT_737",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-737: 균학 II — 병원성과 산업 — DOMAIN_chemistry 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_737",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_737",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-737: 균학 II — 병원성과 산업를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_738_const",
+      "from": "BT_738",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-738: 허블 텐션 이중해 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_738_DOMAIN_astronomy",
+      "from": "BT_738",
+      "to": "DOMAIN_astronomy",
+      "relation": "bridges_to",
+      "description": "BT-738: 허블 텐션 이중해 — DOMAIN_astronomy 도메인에 연결"
+    },
+    {
+      "id": "E_BT_738_DOMAIN_math",
+      "from": "BT_738",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-738: 허블 텐션 이중해 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_738_DOMAIN_physics",
+      "from": "BT_738",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-738: 허블 텐션 이중해 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_738",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_738",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-738: 허블 텐션 이중해를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_739_const",
+      "from": "BT_739",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-739: 암흑 도메인 NEAR→EXACT 승격 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_739_DOMAIN_math",
+      "from": "BT_739",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-739: 암흑 도메인 NEAR→EXACT 승격 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_BT_739_DOMAIN_physics",
+      "from": "BT_739",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-739: 암흑 도메인 NEAR→EXACT 승격 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_739_DOMAIN_cs",
+      "from": "BT_739",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-739: 암흑 도메인 NEAR→EXACT 승격 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_739",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_739",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-739: 암흑 도메인 NEAR→EXACT 승격를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_740_800_const",
+      "from": "BT_740_800",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-740~800: 파동 창발 시리즈 (61 돌파) — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_740_800_DOMAIN_wave",
+      "from": "BT_740_800",
+      "to": "DOMAIN_wave",
+      "relation": "bridges_to",
+      "description": "BT-740~800: 파동 창발 시리즈 (61 돌파) — DOMAIN_wave 도메인에 연결"
+    },
+    {
+      "id": "E_BT_740_800_DOMAIN_physics",
+      "from": "BT_740_800",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-740~800: 파동 창발 시리즈 (61 돌파) — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_740_800_DOMAIN_engineering",
+      "from": "BT_740_800",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-740~800: 파동 창발 시리즈 (61 돌파) — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_740_800_DOMAIN_cs",
+      "from": "BT_740_800",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-740~800: 파동 창발 시리즈 (61 돌파) — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_740_800",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_740_800",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-740~800: 파동 창발 시리즈 (61 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_901_940_const",
+      "from": "BT_901_940",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-901~940: Engineering/Manufacturing/Materials (40 돌파) — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_901_940_DOMAIN_engineering",
+      "from": "BT_901_940",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-901~940: Engineering/Manufacturing/Materials (40 돌파) — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_901_940_DOMAIN_materials",
+      "from": "BT_901_940",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-901~940: Engineering/Manufacturing/Materials (40 돌파) — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_901_940",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_901_940",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-901~940: Engineering/Manufacturing/Materials (40 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_941_980_const",
+      "from": "BT_941_980",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파) — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_941_980_DOMAIN_biology",
+      "from": "BT_941_980",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파) — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_941_980_DOMAIN_engineering",
+      "from": "BT_941_980",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파) — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_941_980_DOMAIN_cs",
+      "from": "BT_941_980",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파) — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_941_980_DOMAIN_materials",
+      "from": "BT_941_980",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파) — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_941_980",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_941_980",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-941~980: Medical/Bio/Electronics/Quantum/Display (40 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_981_1020_const",
+      "from": "BT_981_1020",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-981~1020: Energy/Environment/Infrastructure/Transport (40 돌파) — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_981_1020_DOMAIN_engineering",
+      "from": "BT_981_1020",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-981~1020: Energy/Environment/Infrastructure/Transport (40 돌파) — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_981_1020_DOMAIN_ecology",
+      "from": "BT_981_1020",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-981~1020: Energy/Environment/Infrastructure/Transport (40 돌파) — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_981_1020",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_981_1020",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-981~1020: Energy/Environment/Infrastructure/Transport (40 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1021_1060_const",
+      "from": "BT_1021_1060",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파) — 주 상수: CONST_phi"
+    },
+    {
+      "id": "E_BT_1021_1060_DOMAIN_cs",
+      "from": "BT_1021_1060",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파) — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1021_1060_DOMAIN_biology",
+      "from": "BT_1021_1060",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파) — DOMAIN_biology 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1021_1060_DOMAIN_ecology",
+      "from": "BT_1021_1060",
+      "to": "DOMAIN_ecology",
+      "relation": "bridges_to",
+      "description": "BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파) — DOMAIN_ecology 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1021_1060",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1021_1060",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1021~1060: 의식/AI/통신/센싱/농업/식품 (40 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1061_1100_const",
+      "from": "BT_1061_1100",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-1061~1100: 제조/재료/방어/IT/추진/AI 최종 (40 돌파) — 주 상수: CONST_J2"
+    },
+    {
+      "id": "E_BT_1061_1100_DOMAIN_materials",
+      "from": "BT_1061_1100",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-1061~1100: 제조/재료/방어/IT/추진/AI 최종 (40 돌파) — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1061_1100_DOMAIN_cs",
+      "from": "BT_1061_1100",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-1061~1100: 제조/재료/방어/IT/추진/AI 최종 (40 돌파) — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1061_1100",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1061_1100",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1061~1100: 제조/재료/방어/IT/추진/AI 최종 (40 돌파)를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1101_const",
+      "from": "BT_1101",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명 — 주 상수: CONST_sigma"
+    },
+    {
+      "id": "E_BT_1101_DOMAIN_wave",
+      "from": "BT_1101",
+      "to": "DOMAIN_wave",
+      "relation": "bridges_to",
+      "description": "BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명 — DOMAIN_wave 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1101_DOMAIN_physics",
+      "from": "BT_1101",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1101_DOMAIN_cs",
+      "from": "BT_1101",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1101",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1101",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1101: Wave Interference Discovery — 교차도메인 주파수 공명를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1102_const",
+      "from": "BT_1102",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-1102: Standing Wave Singularity — 정상파 특이점 — 주 상수: CONST_n"
+    },
+    {
+      "id": "E_BT_1102_DOMAIN_wave",
+      "from": "BT_1102",
+      "to": "DOMAIN_wave",
+      "relation": "bridges_to",
+      "description": "BT-1102: Standing Wave Singularity — 정상파 특이점 — DOMAIN_wave 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1102_DOMAIN_physics",
+      "from": "BT_1102",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-1102: Standing Wave Singularity — 정상파 특이점 — DOMAIN_physics 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1102_DOMAIN_math",
+      "from": "BT_1102",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-1102: Standing Wave Singularity — 정상파 특이점 — DOMAIN_math 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1102",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1102",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1102: Standing Wave Singularity — 정상파 특이점를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1103_const",
+      "from": "BT_1103",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-1103: Sonar-Guided Blowup — 소나 유도 블로업 — 주 상수: CONST_tau"
+    },
+    {
+      "id": "E_BT_1103_DOMAIN_wave",
+      "from": "BT_1103",
+      "to": "DOMAIN_wave",
+      "relation": "bridges_to",
+      "description": "BT-1103: Sonar-Guided Blowup — 소나 유도 블로업 — DOMAIN_wave 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1103_DOMAIN_cs",
+      "from": "BT_1103",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-1103: Sonar-Guided Blowup — 소나 유도 블로업 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1103",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1103",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1103: Sonar-Guided Blowup — 소나 유도 블로업를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_1104_const",
+      "from": "BT_1104",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-1104: 궁극의 HBM 10-도메인 대통합 — 주 상수: CONST_J2"
+    },
+    {
+      "id": "E_BT_1104_DOMAIN_engineering",
+      "from": "BT_1104",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-1104: 궁극의 HBM 10-도메인 대통합 — DOMAIN_engineering 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1104_DOMAIN_materials",
+      "from": "BT_1104",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT-1104: 궁극의 HBM 10-도메인 대통합 — DOMAIN_materials 도메인에 연결"
+    },
+    {
+      "id": "E_BT_1104_DOMAIN_cs",
+      "from": "BT_1104",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-1104: 궁극의 HBM 10-도메인 대통합 — DOMAIN_cs 도메인에 연결"
+    },
+    {
+      "id": "E_core_BT_1104",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_1104",
+      "relation": "anchors",
+      "description": "코어 정리가 BT-1104: 궁극의 HBM 10-도메인 대통합를 수학적으로 정초함"
+    },
+    {
+      "id": "E_BT_26_BT_33",
+      "from": "BT_26",
+      "to": "BT_33",
+      "relation": "cross_domain",
+      "description": "Chinchilla 스케일링(BT-26)이 트랜스포머 dim 래더(BT-33)에서 sigma=12 구조와 교차"
+    },
+    {
+      "id": "E_BT_27_BT_14",
+      "from": "BT_27",
+      "to": "BT_14",
+      "relation": "extends",
+      "description": "BT-27 탄소-6 에너지 체인이 BT-14 Carbon-Silicon Bridge 탄소 사슬을 확장"
+    },
+    {
+      "id": "E_BT_30_BT_35",
+      "from": "BT_30",
+      "to": "BT_35",
+      "relation": "cross_domain",
+      "description": "BT-30 Shockley-Queisser와 BT-35 배터리 전압이 모두 phi=2 에너지 체계로 연결"
+    },
+    {
+      "id": "E_BT_32_BT_3",
+      "from": "BT_32",
+      "to": "BT_3",
+      "relation": "extends",
+      "description": "BT-32 핵분열 6군(n=6)이 BT-3 sigma=12 에너지 스케일 수렴을 핵분열 영역에서 확장"
+    },
+    {
+      "id": "E_BT_1104_BT_707",
+      "from": "BT_1104",
+      "to": "BT_707",
+      "relation": "cross_domain",
+      "description": "BT-1104 HBM 10-도메인 통합과 BT-707 차원 계단이 J2=24 래더로 교차"
+    },
+    {
+      "id": "E_BT_1101_BT_1102",
+      "from": "BT_1101",
+      "to": "BT_1102",
+      "relation": "sequence",
+      "description": "BT-1101 파동 간섭 발견이 BT-1102 정상파 특이점으로 수렴"
+    },
+    {
+      "id": "E_BT_1102_BT_1103",
+      "from": "BT_1102",
+      "to": "BT_1103",
+      "relation": "sequence",
+      "description": "BT-1102 정상파 특이점에서 BT-1103 소나 유도 블로업으로 진화"
+    },
+    {
+      "id": "E_BT_1103_BT_1104",
+      "from": "BT_1103",
+      "to": "BT_1104",
+      "relation": "sequence",
+      "description": "BT-1103 소나 블로업이 BT-1104 HBM 대통합의 씨앗"
+    },
+    {
+      "id": "E_BT_22_DOMAIN_astronomy",
+      "from": "BT_22",
+      "to": "DOMAIN_astronomy",
+      "relation": "bridges_to",
+      "description": "BT-22 Inflation: 완전수 산술이 ΛCDM 우주론 관측에 직접 연결"
+    },
+    {
+      "id": "E_BT_23_DOMAIN_physics",
+      "from": "BT_23",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-23 CKM: 쿼크 혼합 계층이 표준모델 입자물리 도메인에 연결"
+    },
+    {
+      "id": "E_BT_16_DOMAIN_math",
+      "from": "BT_16",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-16 리만 제타: 3개 독립 점에서 n=6 발현 — 수학 도메인 직결"
+    },
+    {
+      "id": "E_BT_18_DOMAIN_spacetime",
+      "from": "BT_18",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-18 진공 에너지 체인: 몬스터군까지 이어지는 끈이론 연결"
+    },
+    {
+      "id": "E_BT_19_DOMAIN_spacetime",
+      "from": "BT_19",
+      "to": "DOMAIN_spacetime",
+      "relation": "bridges_to",
+      "description": "BT-19 GUT: SU(5) rank=J2 — 대통일 이론과 시공간 도메인 연결"
+    },
+    {
+      "id": "E_BT_6_DOMAIN_cryptography",
+      "from": "BT_6",
+      "to": "DOMAIN_cryptography",
+      "relation": "bridges_to",
+      "description": "BT-6 Golay-Leech: 완전 이진 코드가 암호학 도메인에 직결"
+    },
+    {
+      "id": "E_BT_25_DOMAIN_chemistry",
+      "from": "BT_25",
+      "to": "DOMAIN_chemistry",
+      "relation": "bridges_to",
+      "description": "BT-25 유전암호: 64 코돈/20 아미노산이 생화학 도메인에 연결"
+    },
+    {
+      "id": "E_BT_108_const",
+      "from": "BT_108",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-108 음악/음향 자음 보편성: n=6 배음 구조가 협화도를 결정"
+    },
+    {
+      "id": "E_BT_108_DOMAIN_music",
+      "from": "BT_108",
+      "to": "DOMAIN_music",
+      "relation": "bridges_to",
+      "description": "BT_108 — DOMAIN_music 도메인 연결 (고립 노드 해소)"
+    },
+    {
+      "id": "E_BT_190_const",
+      "from": "BT_190",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-190 어쿠스틱 악기 설계: sigma=12 반음 구조가 악기 공명 설계 원리"
+    },
+    {
+      "id": "E_BT_190_DOMAIN_music",
+      "from": "BT_190",
+      "to": "DOMAIN_music",
+      "relation": "bridges_to",
+      "description": "BT_190 — DOMAIN_music 도메인 연결 (고립 노드 해소)"
+    },
+    {
+      "id": "E_BT_221_const",
+      "from": "BT_221",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-221 일주리듬 및 수면 생리: tau=4 AASM 단계, 24h=J2 생체리듬"
+    },
+    {
+      "id": "E_BT_221_DOMAIN_biology",
+      "from": "BT_221",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT_221 — DOMAIN_biology 도메인 연결 (고립 노드 해소)"
+    },
+    {
+      "id": "E_BT_318_const",
+      "from": "BT_318",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-318 열전도율 재료 래더 Cu/Al: sigma=12 열전도 계층 구조"
+    },
+    {
+      "id": "E_BT_318_DOMAIN_materials",
+      "from": "BT_318",
+      "to": "DOMAIN_materials",
+      "relation": "bridges_to",
+      "description": "BT_318 — DOMAIN_materials 도메인 연결 (고립 노드 해소)"
+    },
+    {
+      "id": "E_CDSE_fusion_statistical_mechanics_physics",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x statistical-mechanics — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_statistical_mechanics_core",
+      "from": "CDSE_fusion_statistical_mechanics",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x statistical-mechanics — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_turbine_generator_physics",
+      "from": "CDSE_fusion_turbine_generator",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x turbine-generator — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_turbine_generator_core",
+      "from": "CDSE_fusion_turbine_generator",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x turbine-generator — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_heat_exchanger_physics",
+      "from": "CDSE_fusion_heat_exchanger",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x heat-exchanger — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_heat_exchanger_core",
+      "from": "CDSE_fusion_heat_exchanger",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x heat-exchanger — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_topology_physics",
+      "from": "CDSE_fusion_topology",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x topology — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_topology_core",
+      "from": "CDSE_fusion_topology",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x topology — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_chaos_dynamical_physics",
+      "from": "CDSE_fusion_chaos_dynamical",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x chaos-dynamical — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_chaos_dynamical_core",
+      "from": "CDSE_fusion_chaos_dynamical",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x chaos-dynamical — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_magnetic_material_physics",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x magnetic-material — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_magnetic_material_core",
+      "from": "CDSE_fusion_magnetic_material",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x magnetic-material — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_reactor_vessel_physics",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x reactor-vessel — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_reactor_vessel_core",
+      "from": "CDSE_fusion_reactor_vessel",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x reactor-vessel — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_power_electronics_physics",
+      "from": "CDSE_fusion_power_electronics",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x power-electronics — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_power_electronics_core",
+      "from": "CDSE_fusion_power_electronics",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x power-electronics — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_hydrogen_fuel_cell_physics",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x hydrogen-fuel-cell — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_hydrogen_fuel_cell_core",
+      "from": "CDSE_fusion_hydrogen_fuel_cell",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x hydrogen-fuel-cell — n=6 코어 정리 기반 교차 도메인"
+    },
+    {
+      "id": "E_CDSE_fusion_refractory_material_physics",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "DOMAIN_physics",
+      "relation": "cross_domain_bridge",
+      "description": "Cross-DSE: fusion x refractory-material — 핵융합 물리 도메인 교차 연결"
+    },
+    {
+      "id": "E_CDSE_fusion_refractory_material_core",
+      "from": "CDSE_fusion_refractory_material",
+      "to": "AXIOM_core_theorem",
+      "relation": "grounded_in",
+      "description": "Cross-DSE: fusion x refractory-material — n=6 코어 정리 기반 교차 도메인"
     }
   ],
   "integrity": {
-    "total_nodes": 47,
-    "total_edges": 53,
+    "total_nodes": 138,
+    "total_edges": 427,
     "node_breakdown": {
       "constants": 7,
-      "axioms_existing": 1,
-      "axioms_blowup_new": 8,
-      "breakthrough_theorems": 25,
-      "domains": 5,
+      "axioms": 9,
+      "breakthrough_theorems": 95,
+      "domains": 16,
       "groups": 1
     },
-    "edge_breakdown": {
-      "axiom_to_axiom": 2,
-      "axiom_to_constant": 5,
-      "axiom_to_bt": 16,
-      "axiom_to_domain": 3,
-      "constant_to_constant": 6,
-      "bt_to_constant": 11,
-      "bt_to_domain": 5,
-      "bt_to_axiom": 1,
-      "domain_to_bt": 2,
-      "group_to_axiom": 1,
-      "misc": 1
-    },
-    "orphan_check": "PASS — all 47 nodes have at least one edge",
-    "new_nodes_this_run": 9,
-    "new_edges_this_run": 53,
-    "blowup_axioms_registered": [
-      {"id": "AXIOM_n_sigma",   "expression": "n * sigma = 72",   "value": 72,  "grade": "EXACT"},
-      {"id": "AXIOM_n_phi",     "expression": "n * phi = 12",     "value": 12,  "grade": "EXACT"},
-      {"id": "AXIOM_n_tau",     "expression": "n * tau = 24",     "value": 24,  "grade": "EXACT"},
-      {"id": "AXIOM_n_J2",     "expression": "n * J2 = 144",     "value": 144, "grade": "EXACT"},
-      {"id": "AXIOM_sigma_phi","expression": "sigma * phi = 24", "value": 24,  "grade": "EXACT"},
-      {"id": "AXIOM_sigma_tau","expression": "sigma * tau = 48", "value": 48,  "grade": "EXACT"},
-      {"id": "AXIOM_phi_tau",  "expression": "phi * tau = 8",    "value": 8,   "grade": "EXACT"},
-      {"id": "AXIOM_sopfr_J2","expression": "sopfr * J2 = 120", "value": 120, "grade": "EXACT"}
-    ],
-    "notes": "Initial graph creation from 2026-04-10 blowup run. 8 new cross-product AXIOM nodes from blowup. 1 core theorem axiom. 25 BT nodes BT-1..BT-25. 7 constant nodes. 5 domain nodes. 1 group node. All 47 nodes connected — zero orphans."
+    "orphan_check": "PASS — 고립 노드 0",
+    "new_nodes_this_run": 71,
+    "new_edges_this_run": 316,
+    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개."
   }
 }

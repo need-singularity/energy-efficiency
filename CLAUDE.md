@@ -14,7 +14,7 @@
 | 할일 | `shared/todo/n6-architecture.json` | 우선순위별 TODO |
 | BT | `docs/breakthrough-theorems.md` | 343 돌파 정리 |
 | DSE | `docs/dse-map.toml` | 322 도메인 DSE 현황 |
-| 논문 SSOT | `config/products.json` | 39편 논문 |
+| 논문 SSOT | `config/products.json` | 116편 논문 (docs/paper/ 135파일) |
 | 상수 | `docs/atlas-constants.md` | 1100+ 상수 아틀라스 |
 | 렌즈 | `tools/nexus/src/telescope/lenses/` | 181 .rs (1022종) |
 | 기법 | `techniques/` | 17 AI 기법 |
