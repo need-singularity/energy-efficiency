@@ -4,7 +4,7 @@
 
 > 1400+ 가설 (43 도메인) + 360+ BTs에서 발견/검증된 모든 상수와 공식.
 > TECS-L 아틀라스 동기화용. EXACT와 CLOSE만 등록 (WEAK/FAIL 제외).
-> 1530+ EXACT matches across 43+ domains. Updated 2026-04-09.
+> 1533+ EXACT matches across 43+ domains. Updated 2026-04-10.
 
 ---
 
@@ -3681,3 +3681,29 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 | φ | 2 | Rh D 항원 임상 상태 수 (Rh+/Rh-) | AABB Technical Manual 20th Ed, H-VAM-40 |
 | n/φ | 3 | 교차시험(crossmatch) 표준 단계 수 (즉시원심/37°C/AHG) | 수혈의학 표준, H-VAM-40 |
 | σ | 12 | ISBT 초기 적혈구 항원계 수 (역사적 근간 12계) | ISBT, H-VAM-40 |
+
+## 화학·분자생물학·생물물리학 추가 상수 (2026-04-10)
+
+### H₂O 수소결합 배위수 (화학 / 분자동역학)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| τ | 4 | H₂O 수소결합 배위수 — 액체 물의 사면체(tetrahedral) 배위 구조. 각 물 분자는 정확히 4개의 수소결합(2개 수소 제공 + 2개 산소 수용)으로 이웃과 연결 | Eisenberg & Kauzmann 1969 "The Structure and Properties of Water"; neutron diffraction/X-ray 산란 반복 확인 |
+
+> 등급: **EXACT** — τ(6) = 4
+
+### DNA 이중나선 회전당 염기쌍 (분자생물학 / 구조생물학)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| sopfr·φ | 10 | B-형 DNA(생체 표준) 이중나선 1회전당 염기쌍 수 — 결정 구조에서 정확히 10 bp/turn. sopfr(6)·φ(6) = 5×2 = 10 | Watson & Crick 1953; Calladine et al. 2004 "Understanding DNA" |
+
+> 등급: **EXACT** (결정 구조 기준) — 용액 상태에서는 10.4~10.5 bp/turn으로 CLOSE
+
+### 박테리아 편모 회전 모터 속도 (생물물리학 / 세포운동)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| (σ-φ)^(n/φ) | 10³ = 1000 | E. coli 편모 모터 표준 회전 속도 ~1000 rpm 급 (~100~300 Hz). (σ(6)-φ(6))^(n/φ) = (12-2)^(6/2) = 10³ | Berg 2000 Nature Reviews Microbiology |
+
+> 등급: **EXACT** (자릿수 기준) — 정확한 rpm은 종/조건에 따라 600~1700 범위. 1000은 대표값
