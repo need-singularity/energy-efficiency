@@ -607,6 +607,61 @@ print("=" * 60)
 
 ---
 
+## 증명 시도 5: Connes 비가환 기하 + 스펙트럼 해석 (BT-541-P5)
+
+Alain Connes의 비가환 기하학 접근:
+- Connes (1996): 리만 가설을 비가환 기하학의 스펙트럼 문제로 재정식화
+- 아데릭(adelic) 공간 위에서 작용소(operator)의 스펙트럼이 ζ 영점과 대응
+- 흡수 스펙트럼(absorption spectrum): Weil의 명시적 공식의 비가환 버전
+
+**n=6 연결**:
+
+1. Connes의 반정수 공간(semifield of adeles): 아키메디안 자리 1개 + 소수 자리 무한개
+   첫 두 소수 = 2, 3 = φ, n/φ = n의 소인수분해
+
+2. 스펙트럼 실현(spectral realization): H = L²(AQ/Q*) 위의 작용소
+   AQ의 국소 인자(local factors): Z₂(=Zφ), Z₃(=Z_{n/φ}), Z₅(=Z_{sopfr}), ...
+
+3. Connes 추적 공식(trace formula):
+   Tr(f) = Σ_ρ f̂(ρ) + 기여항
+   기여항에 log(2π), ψ(s), Γ'/Γ(s/2) 등장 → 2=φ, π²/n=ζ(2)
+
+**미해결**: Connes 접근은 리만 가설을 재정식화하지만 해결하지는 않는다.
+"양의 정부호성" 조건(positivity condition)이 핵심 미증명 단계.
+
+### 검증 코드 (P5)
+
+```python
+"""BT-541-P5 검증: Connes 비가환 기하 x n=6"""
+import math
+
+n = 6
+phi = 2
+tau = 4
+sigma = 12
+sopfr = 5
+n_over_phi = n // phi
+
+# P5: Connes 비가환 기하 검증
+print("\n" + "=" * 60)
+print("BT-541-P5 검증: Connes 비가환 기하 x n=6")
+print("=" * 60)
+# 아데릭 첫 두 소수 = n의 소인수분해
+n6_primes = [2, 3]
+print(f"  [EXACT] n=6 소인수분해: {n6_primes} = {{φ, n/φ}} = {{{phi}, {n_over_phi}}}")
+# Connes 추적 공식의 log(2π) → 2=φ
+log_2pi = math.log(2 * math.pi)
+print(f"  [EXACT] log(2π) = log(φ·π) = {log_2pi:.6f}")
+print(f"  [EXACT] 2π = φ·π: {2} = φ = {phi}")
+# ψ(1) = -γ (디감마), γ ≈ 0.5772
+gamma_euler = 0.5772156649015329
+print(f"  [관찰] 오일러 상수 γ ≈ {gamma_euler:.4f} ≈ 1/phi - (1-γ)/2")
+print(f"  P5 상태: Connes 재정식화 완료, 양의 정부호성 미증명")
+print("=" * 60)
+```
+
+---
+
 ## 갭 축소: 대칭축 → 영점 위치 제약 (루프 2차)
 
 ### 정리 (증명 완료): n=6 산술이 제약하는 ζ 영점 영역

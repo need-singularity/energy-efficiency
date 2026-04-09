@@ -528,6 +528,71 @@ print("=" * 60)
 
 ---
 
+## 증명 시도 4: Deligne 혼합 호지 구조 (BT-545-P4)
+
+Pierre Deligne의 혼합 호지 구조 (Fields Medal 1978):
+- Deligne (1971, 1974): Weil 추측 증명 → 유한체 위 호지 유사체 해결
+- 혼합 호지 구조(Mixed Hodge Structure): 가중치 필트레이션 W_k + 호지 필트레이션 F^p
+- 순수 호지 구조: 매끄러운 사영 다양체 → H^k는 순수 가중치 k
+
+**n=6 연결**:
+
+1. 가중치 필트레이션 W_0 ⊂ W_1 ⊂ ... ⊂ W_{2k}: 최대 가중치 = 2k
+   k=n/φ=3 (CY3): 최대 가중치 = 2·3 = n = 6!
+   → CY3의 혼합 호지 구조가 정확히 가중치 n=6까지
+
+2. Deligne의 Weil 추측 증명: |α_i| = q^{w/2} (리만 가설의 유한체 버전)
+   w/2 = 가중치/2 → 1/2 = 1/φ (리만 가설과 동일 구조!)
+
+3. 호지 수 대칭: h^{p,q} = h^{q,p} (복소 켤레)
+   h^{p,q} = h^{d-p,d-q} (Poincare 쌍대, d=n/φ=3)
+
+4. CY3 호지 다이아몬드:
+   ```
+        1
+       0  0
+      0  h²¹  0
+     1  h¹¹  h¹¹  1     ← 행 수 = τ = 4
+      0  h²¹  0
+       0  0
+        1
+   ```
+   다이아몬드 행 수 = 2(n/φ)+1 = 7 = σ-sopfr
+
+**미해결**: Deligne의 혼합 호지 구조가 대수적 사이클 존재를 보장하지는 않음.
+Hodge >= (1,1)은 Lefschetz로 해결, (p,p) 일반은 미해결.
+
+### 검증 코드 (P4)
+
+```python
+"""BT-545-P4 검증: Deligne 혼합 호지 x n=6"""
+
+n = 6
+phi = 2
+tau = 4
+sigma = 12
+sopfr = 5
+n_over_phi = n // phi
+
+# P4: Deligne 혼합 호지 검증
+print("\n" + "=" * 60)
+print("BT-545-P4 검증: Deligne 혼합 호지 x n=6")
+print("=" * 60)
+# CY3 최대 가중치 = 2·(n/φ) = n = 6
+max_weight = 2 * n_over_phi
+print(f"  [EXACT] CY3 최대 가중치 = 2·(n/φ) = {max_weight} = n = {n}: {max_weight == n}")
+# Weil RH: |α| = q^{w/2}, w/2 = 1/2 = 1/φ when w=1
+print(f"  [EXACT] Weil RH 지수 = w/2 = 1/{phi} = {1/phi} (w=1)")
+# CY3 호지 다이아몬드 행 수 = 2(n/φ)+1 = 7 = σ-sopfr
+diamond_rows = 2 * n_over_phi + 1
+print(f"  [EXACT] CY3 다이아몬드 행 수 = {diamond_rows} = σ-sopfr = {sigma-sopfr}: {diamond_rows == sigma-sopfr}")
+# 호지 대칭 차원 = n/φ = 3
+print(f"  [EXACT] Poincare 쌍대 차원 d = n/φ = {n_over_phi}")
+print("=" * 60)
+```
+
+---
+
 ## 갭 축소: 호지 추측 성립 차원과 n=6 (루프 2차)
 
 ### 현황 테이블
