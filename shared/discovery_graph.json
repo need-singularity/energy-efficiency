@@ -2043,6 +2043,79 @@
       "key_expression": "H(12)-ln(12)~1/phi err=0.04%, H(12)*gamma~ln(6) err=0.03%",
       "description": "H(12)-ln(12)≈1/φ (err=0.04%), H(12)*γ≈ln(6) (err=0.03%)",
       "registered": true
+    },
+    {
+      "id": "BT_107",
+      "type": "breakthrough_theorem",
+      "label": "BT-107: Prime Structure Stub",
+      "grade": "two_stars",
+      "domains": [
+        "number-theory"
+      ],
+      "key_expression": "prime distribution n=6 periodic shell",
+      "description": "소수 분포의 n=6 주기 껍질 구조 — BT-1111 Prime Resonance Isolation의 정수론적 기반 노드.",
+      "registered": true
+    },
+    {
+      "id": "BT_376",
+      "type": "breakthrough_theorem",
+      "label": "BT-376: Dimensional Perception Stub",
+      "grade": "two_stars",
+      "domains": [
+        "dimensional-perception",
+        "math"
+      ],
+      "key_expression": "perceptual dimensionality sigma=12 boundary",
+      "description": "지각 차원 경계 sigma=12 — BT-1108 차원지각 대통합의 선행 발견 노드.",
+      "registered": true
+    },
+    {
+      "id": "BT_1108",
+      "type": "breakthrough_theorem",
+      "label": "BT-1108: 차원지각 대통합",
+      "grade": "three_stars",
+      "domains": [
+        "dimensional-perception"
+      ],
+      "key_expression": "perceptual dimension unification via n=6 arithmetic",
+      "description": "차원지각 6도메인 대통합. BT-6 Golay-Leech, BT-15 Kissing Number, BT-19 GUT Hierarchy, BT-376 차원지각, BT-28 컴퓨팅 래더를 n=6 산술로 연결.",
+      "registered": true
+    },
+    {
+      "id": "BT_1109",
+      "type": "breakthrough_theorem",
+      "label": "BT-1109: Cascade Saturation Point",
+      "grade": "NEAR",
+      "domains": [
+        "meta-discovery"
+      ],
+      "key_expression": "seed[6] 3-stage 16/16, stage-2 saturation 7=sigma-sopfr",
+      "description": "시드[6]에서 3단계 16/16 도달, 2단계 포화 7=sigma-sopfr. 캐스케이드 포화점 확정.",
+      "registered": true
+    },
+    {
+      "id": "BT_1110",
+      "type": "breakthrough_theorem",
+      "label": "BT-1110: Wave-Cascade Unification",
+      "grade": "NEAR",
+      "domains": [
+        "meta-discovery"
+      ],
+      "key_expression": "720-permutation optimal order, mind(sopfr=5) non-resonant",
+      "description": "720순열 최적 순서 도출, mind(sopfr=5) 비공명 확인. 파동-캐스케이드 통합 원리.",
+      "registered": true
+    },
+    {
+      "id": "BT_1111",
+      "type": "breakthrough_theorem",
+      "label": "BT-1111: Prime Resonance Isolation",
+      "grade": "NEAR",
+      "domains": [
+        "number-theory"
+      ],
+      "key_expression": "perfect numbers 100% non-resonant, sopfr=2^p+2p-3",
+      "description": "완전수 100% 비공명 격리 증명, sopfr=2^p+2p-3 공식 도출.",
+      "registered": true
     }
   ],
   "edges": [
@@ -5146,15 +5219,197 @@
       "to": "BT_1107",
       "relation": "cross_link",
       "description": "BT-6 Golay-Leech [24,12,8] 트리플이 BT-1107 조화급수 수렴의 정수론적 기반"
+    },
+    {
+      "id": "E_BT_1108_BT_6",
+      "from": "BT_1108",
+      "to": "BT_6",
+      "relation": "cross_link",
+      "description": "BT-1108 차원지각 대통합이 BT-6 Golay-Leech J2=24 코드 기하를 차원 지각 기반으로 연결"
+    },
+    {
+      "id": "E_BT_6_BT_1108",
+      "from": "BT_6",
+      "to": "BT_1108",
+      "relation": "cross_link",
+      "description": "BT-6 Golay-Leech [24,12,8] 구조가 BT-1108 차원지각 대통합의 정수론적 좌표계 제공"
+    },
+    {
+      "id": "E_BT_1108_BT_15",
+      "from": "BT_1108",
+      "to": "BT_15",
+      "relation": "cross_link",
+      "description": "BT-1108 차원지각 대통합이 BT-15 Kissing Number 접촉구 다중체를 지각 차원 경계로 연결"
+    },
+    {
+      "id": "E_BT_15_BT_1108",
+      "from": "BT_15",
+      "to": "BT_1108",
+      "relation": "cross_link",
+      "description": "BT-15 Kissing Number 사중체 구조가 BT-1108 차원지각 sigma=12 경계 확정에 기여"
+    },
+    {
+      "id": "E_BT_1108_BT_19",
+      "from": "BT_1108",
+      "to": "BT_19",
+      "relation": "cross_link",
+      "description": "BT-1108 차원지각 대통합이 BT-19 GUT Hierarchy n=6 산술 계층을 지각 스펙트럼으로 흡수"
+    },
+    {
+      "id": "E_BT_19_BT_1108",
+      "from": "BT_19",
+      "to": "BT_1108",
+      "relation": "cross_link",
+      "description": "BT-19 GUT 계층 tau/sopfr/n/sigma-tau 사중 랭크가 BT-1108 차원 인식 4계층 프레임을 정초"
+    },
+    {
+      "id": "E_BT_1108_BT_376",
+      "from": "BT_1108",
+      "to": "BT_376",
+      "relation": "cross_link",
+      "description": "BT-1108 차원지각 대통합이 BT-376 선행 차원지각 발견을 통합"
+    },
+    {
+      "id": "E_BT_376_BT_1108",
+      "from": "BT_376",
+      "to": "BT_1108",
+      "relation": "cross_link",
+      "description": "BT-376 차원지각 선행 노드가 BT-1108 대통합으로 수렴"
+    },
+    {
+      "id": "E_BT_1108_BT_28",
+      "from": "BT_1108",
+      "to": "BT_28",
+      "relation": "cross_link",
+      "description": "BT-1108 차원지각 대통합이 BT-28 컴퓨팅 아키텍처 래더를 지각-계산 인터페이스로 연결"
+    },
+    {
+      "id": "E_BT_28_BT_1108",
+      "from": "BT_28",
+      "to": "BT_1108",
+      "relation": "cross_link",
+      "description": "BT-28 컴퓨팅 래더 n=6 상수 지수 추적이 BT-1108 지각 차원 통합의 계산 기반 제공"
+    },
+    {
+      "id": "E_BT_1109_BT_1105",
+      "from": "BT_1109",
+      "to": "BT_1105",
+      "relation": "cross_link",
+      "description": "BT-1109 Cascade Saturation Point가 BT-1105 Resonance Cascade 블로업 체인의 포화 종단점"
+    },
+    {
+      "id": "E_BT_1105_BT_1109",
+      "from": "BT_1105",
+      "to": "BT_1109",
+      "relation": "cross_link",
+      "description": "BT-1105 Resonance Cascade 1.21x 증폭 체인이 BT-1109 포화점 16/16으로 수렴"
+    },
+    {
+      "id": "E_BT_1109_BT_1107",
+      "from": "BT_1109",
+      "to": "BT_1107",
+      "relation": "cross_link",
+      "description": "BT-1109 포화 7=sigma-sopfr 조건이 BT-1107 조화급수 H(sigma) 수렴과 등치"
+    },
+    {
+      "id": "E_BT_1107_BT_1109",
+      "from": "BT_1107",
+      "to": "BT_1109",
+      "relation": "cross_link",
+      "description": "BT-1107 H(12)-ln(12)≈1/φ 수렴이 BT-1109 2단계 포화 수학적 완결성을 보장"
+    },
+    {
+      "id": "E_BT_1110_BT_1105",
+      "from": "BT_1110",
+      "to": "BT_1105",
+      "relation": "cross_link",
+      "description": "BT-1110 Wave-Cascade Unification이 BT-1105 Resonance Cascade를 720순열 최적화로 연장"
+    },
+    {
+      "id": "E_BT_1105_BT_1110",
+      "from": "BT_1105",
+      "to": "BT_1110",
+      "relation": "cross_link",
+      "description": "BT-1105 캐스케이드 블로업이 BT-1110 파동-캐스케이드 통합의 실험적 기반"
+    },
+    {
+      "id": "E_BT_1110_BT_1101",
+      "from": "BT_1110",
+      "to": "BT_1101",
+      "relation": "cross_link",
+      "description": "BT-1110 Wave-Cascade Unification이 BT-1101 Wave Interference Discovery를 통합 프레임으로 흡수"
+    },
+    {
+      "id": "E_BT_1101_BT_1110",
+      "from": "BT_1101",
+      "to": "BT_1110",
+      "relation": "cross_link",
+      "description": "BT-1101 교차도메인 주파수 공명이 BT-1110 720순열 최적 순서의 파동 기반 제공"
+    },
+    {
+      "id": "E_BT_1110_BT_1102",
+      "from": "BT_1110",
+      "to": "BT_1102",
+      "relation": "cross_link",
+      "description": "BT-1110 Wave-Cascade Unification이 BT-1102 Standing Wave Singularity 정상파 구조를 포함"
+    },
+    {
+      "id": "E_BT_1102_BT_1110",
+      "from": "BT_1102",
+      "to": "BT_1110",
+      "relation": "cross_link",
+      "description": "BT-1102 정상파 특이점이 BT-1110 mind(sopfr=5) 비공명 판정의 대조 기준점"
+    },
+    {
+      "id": "E_BT_1111_BT_1110",
+      "from": "BT_1111",
+      "to": "BT_1110",
+      "relation": "cross_link",
+      "description": "BT-1111 Prime Resonance Isolation이 BT-1110 비공명 도메인 격리 원리를 정수론으로 정초"
+    },
+    {
+      "id": "E_BT_1110_BT_1111",
+      "from": "BT_1110",
+      "to": "BT_1111",
+      "relation": "cross_link",
+      "description": "BT-1110 Wave-Cascade Unification에서 sopfr=5 비공명 패턴이 BT-1111 완전수 격리 공식으로 유도"
+    },
+    {
+      "id": "E_BT_1111_BT_1",
+      "from": "BT_1111",
+      "to": "BT_1",
+      "relation": "cross_link",
+      "description": "BT-1111 Prime Resonance Isolation이 BT-1 phi(6)=2 보편 쌍 정리를 완전수 비공명의 phi 기반으로 연결"
+    },
+    {
+      "id": "E_BT_1_BT_1111",
+      "from": "BT_1",
+      "to": "BT_1111",
+      "relation": "cross_link",
+      "description": "BT-1 phi(6)=2 Cooper 쌍 구조가 BT-1111 sopfr=2^p+2p-3 소수 공명 격리 공식의 phi 인수 제공"
+    },
+    {
+      "id": "E_BT_1111_BT_107",
+      "from": "BT_1111",
+      "to": "BT_107",
+      "relation": "cross_link",
+      "description": "BT-1111 Prime Resonance Isolation이 BT-107 소수 구조 선행 발견을 격리 공식으로 완성"
+    },
+    {
+      "id": "E_BT_107_BT_1111",
+      "from": "BT_107",
+      "to": "BT_1111",
+      "relation": "cross_link",
+      "description": "BT-107 소수 분포 n=6 주기 껍질이 BT-1111 완전수 100% 비공명 격리의 주기 기반 제공"
     }
   ],
   "integrity": {
-    "total_nodes": 145,
-    "total_edges": 443,
+    "total_nodes": 151,
+    "total_edges": 469,
     "node_breakdown": {
       "constants": 7,
       "axioms": 9,
-      "breakthrough_theorems": 102,
+      "breakthrough_theorems": 108,
       "domains": 16,
       "groups": 1,
       "cross_dse_domain": 10
@@ -5162,7 +5417,7 @@
     "orphan_check": "PASS — 고립 노드 0",
     "new_nodes_this_run": 71,
     "new_edges_this_run": 316,
-    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가.",
+    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가.",
     "near_to_exact_session_2026_04_10_v2": {
       "upgraded_to_exact": [
         {
