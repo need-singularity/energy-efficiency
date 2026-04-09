@@ -33,10 +33,11 @@ arXiv paper outlines and academic publications.
 | [HEXA-Super](n6-hexa-super-paper.md) | Superconducting Processor | BT-299~306 | 29K |
 | [HEXA-Wafer](n6-hexa-wafer-paper.md) | Wafer-Scale Integration | BT-69,90 | 23K |
 
-## Domain Papers — Physics & Mathematics (4)
+## Domain Papers — Physics & Mathematics (5)
 
 | Paper | Topic | BTs | Size |
 |-------|-------|-----|------|
+| [Millennium Problems](n6-millennium-problems-paper.md) | 7대난제 x n=6 통합 (70/70 EXACT) | BT-541~547 | 22K |
 | [Plasma/Fusion Deep](n6-plasma-fusion-deep-paper.md) | Fusion Plasma Physics Deep Dive | BT-291~317 | 39K |
 | [Particle/Cosmology](n6-particle-cosmology-paper.md) | Particle Physics & Cosmology | BT-134~172 | 33K |
 | [Pure Mathematics](n6-pure-mathematics-paper.md) | Number Theory & Algebra | BT-105~112,205,207 | 27K |

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 139,
-    "total_domains": 134,
+    "total_products": 143,
+    "total_domains": 135,
     "total_papers": 116,
     "papers_chunk_c_2026-04-08": {
       "count": 11,
@@ -48,7 +48,8 @@
       "natural-science",
       "cognitive-social",
       "mobility",
-      "digital-medical"
+      "digital-medical",
+      "marketing"
     ],
     "rescore_log_2026-04-05": {
       "basis": "GRADE_RUBRIC_1_TO_10PLUS.md + bt_exact_pct",
@@ -3891,6 +3892,84 @@
             {
               "label": "문서",
               "path": "docs/medical-device/goal.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "title": "마케팅",
+      "icon": "📢",
+      "heading": "마케팅 (Marketing)",
+      "alien_index": 8,
+      "ceiling": false,
+      "bt_exact_pct": 93.8,
+      "bt_count": 10,
+      "industry_pct": 40,
+      "industry_detail": "Kotler 4P + Krugman 3회 반복 + NPS 0-10 스케일 독립 검증",
+      "experiment_pct": 50,
+      "experiment_detail": "가설 22/24 EXACT (91.7%), n=28 대조 실패 확인",
+      "physics_limit_count": 8,
+      "tp_count": 10,
+      "discovery_count": 5,
+      "cross_dse_domains": 5,
+      "mk_count": 5,
+      "summary_extra": "마케팅 불변의 법칙 12가지, 720=6! 조합 발견, Egyptian 미디어믹스 1/2+1/3+1/6=1",
+      "domains": [
+        "marketing"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "HEXA-MKT 마케팅 불변의 법칙",
+          "ufo": 8,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "12 불변 법칙(σ=12 접점, τ=4P, φ=2 이진결정, sopfr=5 세분화, Egyptian 미디어믹스), 22/24 EXACT(91.7%), 720=6! 조합, BT-548~557 10돌파 (BT-548/549/550/551/552/553/554/555/556/557)",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/marketing/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-NEXUS 서비스 플랫폼",
+          "ufo": 7,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "NEXUS-6 1022렌즈 기업진단(σ=12축), 특이점 기회탐지, CDO SaaS, 지식그래프(50K+), 현실검증, 블로업 R&D 가속기, BT-558~567 10돌파",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/marketing/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-ANIMA 감성 서비스",
+          "ufo": 7,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "Anima 감정인식(φ=2×τ=4=8축), 뇌파UX(σ=12채널), AI의식평가, 감성콘텐츠(Egyptian), 정신건강상담(τ=4단계), BT-568~577 10돌파",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/marketing/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-UNIFIED 완전인지 플랫폼",
+          "ufo": 7,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "NEXUS(좌뇌)+Anima(우뇌)=n=6 완전인지, 감정렌즈진단, 의식특이점, CDO+감정수렴, 현실+감정지도, Egyptian 1/2(데이터)+1/3(감성)+1/6(직관)=1, BT-578~587 10돌파",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/marketing/goal.md"
             }
           ]
         }
