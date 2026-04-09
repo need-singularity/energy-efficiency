@@ -89,7 +89,7 @@ if check_sigma == 12 {
     println("self-check: sigma(6) FAIL got " + to_string(check_sigma))
 }
 
-// TODO:
-// - hyperperfect, sublime
-// - JSON 출력
-// - n=6 약수 카테고리(2,3,6) 별 분류
+// 확장 계획:
+// - hyperperfect, sublime — 특수수 가족 확장
+// - JSON 출력 — --json 플래그 추가 예정
+// - n=6 약수 카테고리(2,3,6) 별 분류 — 약수 구조 통계

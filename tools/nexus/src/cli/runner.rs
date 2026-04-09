@@ -1061,7 +1061,7 @@ fn format_duration_us(us: u128) -> String {
 
 fn run_dashboard(html: bool, output: Option<String>) -> Result<(), String> {
     if html {
-        // TODO: implement dedicated HTML renderer; for now reuse ASCII
+        // 참고: 전용 HTML 렌더러 미구현 — ASCII 출력 재사용 중
         let html_content = dashboard::render_dashboard();
         if let Some(path) = output {
             std::fs::write(&path, &html_content)

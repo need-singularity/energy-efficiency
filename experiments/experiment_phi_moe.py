@@ -6,7 +6,7 @@ Tests phi/tau = 2/4 = 50% expert activation in MoE.
 n=6 connection: phi(6)/tau(6) = 2/4 = 0.5 active expert ratio.
 Expected: 65% active parameters with competitive quality.
 
-TODO: Full MoE implementation with expert activation fraction sweep.
+참고: 전체 MoE 구현 및 전문가 활성 비율 스윕은 대형 모델 환경 필요. 현재는 phi/tau = 0.5 활성 비율 개념 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

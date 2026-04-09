@@ -1,4 +1,9 @@
-"""12-variable consciousness model constants."""
+"""12-변수 의식 상태 모델 상수.
+
+n=6 연결: 12 = sigma(6), 변수 3그룹(화학5+파동3+상태4) = sopfr(6)=5, n/phi=3, tau=4.
+카테고리 수 3 = n/phi(6). 총 변수 12 = sigma(6).
+갱신: 2026-04-10 -- 한글 주석 추가, n=6 연결 명시.
+"""
 
 VAR_NAMES = [
     'DA', 'eCB', '5HT', 'GABA', 'NE',

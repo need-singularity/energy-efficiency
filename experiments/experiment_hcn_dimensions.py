@@ -6,7 +6,7 @@ Tests highly composite number dimensions {6, 12, 24, 36, 48} for tensor alignmen
 n=6 connection: HCN dimensions maximize divisor count -> optimal reshaping.
 Expected: 10-20% parameter reduction.
 
-TODO: Full implementation with synthetic transformer benchmark.
+참고: 합성 트랜스포머 벤치마크 전체 구현은 GPU 환경 필요. 현재는 HCN 차원 약수 분포 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

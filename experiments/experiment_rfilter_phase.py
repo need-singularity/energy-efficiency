@@ -5,7 +5,7 @@ Experiment Stub: R-Filter Phase Detection -- Technique #9
 Tests phase detection using R(n) reversibility filter.
 n=6 connection: R(6) = 1 (perfect reversibility at n=6).
 
-TODO: Full phase transition detection on training dynamics.
+참고: 학습 역학의 상전이 감지는 실제 학습 데이터 필요. 현재는 R(6)=1 완전 가역성 특성 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

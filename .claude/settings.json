@@ -10,6 +10,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "OUTPUT=$(cat); if echo \"$OUTPUT\" | grep -q 'error\\[Syntax\\]\\|error\\[Type\\]\\|error\\[Parse\\]\\|문법'; then FILE=$(echo \"$OUTPUT\" | grep -oE '[^ ]+\\.hexa:[0-9]+' | head -1 | cut -d: -f1); ERR=$(echo \"$OUTPUT\" | grep 'error\\[' | head -1); GID=''; case \"$ERR\" in *Semicolon*) GID='G6';; *'-> ('*|*RParen*LBracket*) GID='G1';; *'block comment'*|*'/*'*) GID='G3';; *': ['*|*'expected identifier'*) GID='G2';; *'Struct{}'*) GID='G5';; esac; echo \"{\\\"systemMessage\\\":\\\"⚠️ hexa 문법 오류 ${GID:-?} 감지. 에러: $ERR 파일: $FILE — 참조: shared/hexa-grammar/ (autofix.json+issues.jsonl+convergence.json). 해당 파일 직접 수정 후 재실행.\\\"}\"; fi"
+          }
+        ]
+      }
     ]
   }
 }

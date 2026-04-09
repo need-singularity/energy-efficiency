@@ -1,3 +1,7 @@
+"""12-변수 의식 모델 상수 테스트.
+
+n=6 연결 검증: 변수 수 12=sigma(6), 카테고리 3=n/phi, 그룹별 5+3+4.
+"""
 from brainwire.variables import (
     VAR_NAMES, VAR_CATEGORIES, CHEM_VARS, WAVE_VARS, STATE_VARS,
     TENSION_WEIGHTS, baseline_vector

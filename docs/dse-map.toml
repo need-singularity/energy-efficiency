@@ -14,7 +14,10 @@ domains_100pct_n6 = 335
 alien_level_all = 10
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"
-note = "전 도메인 🛸10 달성. 신규 전용 TOML 6개 (chip-architecture, battery-architecture, material-synthesis, network-protocol, power-grid, space-engineering). Safety/Display/Audio 🛸10 승격."
+bt_total = 985
+bt_range = "BT-1~1100 (gaps)"
+bt_latest_series = "BT-901~1100 전 도메인 동시 돌파 200개 (EXACT 163, NEAR 34, CLOSE 3 = 81.5% EXACT)"
+note = "전 도메인 🛸10 달성. BT-901~1100 전 도메인 200 돌파 추가 (2026-04-10). 신규 전용 TOML 6개."
 
 # ── 완료 ──────────────────────────────────────────
 

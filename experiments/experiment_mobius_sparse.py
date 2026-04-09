@@ -6,7 +6,7 @@ Tests squarefree gradient topology using mu(6)=1.
 n=6 connection: mu(6) = 1 (6 is squarefree: 2*3).
 Expected: Sparse gradient patterns aligned with squarefree structure.
 
-TODO: Full gradient sparsity analysis during training.
+참고: 학습 중 그래디언트 희소성 분석은 실제 학습 파이프라인 필요. 현재는 mu(6)=1 제곱자유 구조 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

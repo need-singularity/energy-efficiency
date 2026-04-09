@@ -6,7 +6,7 @@ Tests lambda(6)=2 cycle learning rate schedule.
 n=6 connection: Carmichael function lambda(6) = lcm(lambda(2), lambda(3)) = lcm(1,2) = 2.
 Expected: 2-cycle cosine LR outperforms standard schedules.
 
-TODO: Full LR schedule comparison on training benchmark.
+참고: 전체 학습률 스케줄 비교는 실제 학습 벤치마크 필요. 현재는 lambda(6)=2 사이클 코사인 학습률 프로파일 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

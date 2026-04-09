@@ -99,8 +99,8 @@ if sc_pass {
     println("self-check: n=6 FAIL")
 }
 
-// TODO:
-// - segmented sieve (n > 10^9)
-// - JSON 출력 (--json)
-// - 통계: 평균 sigma/n, phi/n
-// - n=28 (다음 완전수) 대조 출력
+// 확장 계획:
+// - segmented sieve (n > 10^9) — 대규모 탐색용
+// - JSON 출력 (--json) — growth_bus.jsonl 연동
+// - 통계: 평균 sigma/n, phi/n — R(n) 분포 히스토그램
+// - n=28 (다음 완전수) 대조 출력 — 유일성 강화 증거

@@ -64,9 +64,9 @@ print("missing BT in this file: " + to_string(missing_count) + " / 360")
 if exact_pct >= 90.0 { print("PASS: EXACT >= 90%") }
 else { print("WARN: EXACT < 90% — 보강 필요") }
 
-// TODO:
-// - 다중 파일 입력 (디렉토리 walk)
-// - JSON/JSONL 출력
-// - BT → 도메인 매핑
-// - bt-update-notes.md 자동 갱신
+// 확장 계획:
+// - 다중 파일 입력 (디렉토리 walk) — HEXA fs_walk 지원 시 구현
+// - JSON/JSONL 출력 — --json 플래그 추가 예정
+// - BT → 도메인 매핑 — shared/domain_registry.jsonl 연동
+// - bt-update-notes.md 자동 갱신 — growth_bus.jsonl 연동
 // - 정직 검증: 본문 수치를 sympy 등으로 재계산 (자기참조 금지)

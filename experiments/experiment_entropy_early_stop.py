@@ -6,7 +6,7 @@ Tests entropy-based training stopping at 2/3 of full training.
 n=6 connection: 2/3 = phi(6)/n/phi(6) -> stop at 66.7% training.
 Expected: 33% training time saved.
 
-TODO: Full training curve analysis with entropy threshold detection.
+참고: 전체 학습 곡선의 엔트로피 임계 감지는 실제 학습 데이터 필요. 현재는 phi(6)/n 정지점 = 2/3 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

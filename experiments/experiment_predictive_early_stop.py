@@ -5,7 +5,7 @@ Experiment Stub: Predictive Early Stop -- Technique #23
 Tests predictive early stopping using loss curve extrapolation.
 n=6 connection: Predicts convergence point using n=6 scaling laws.
 
-TODO: Full training curve prediction benchmark.
+참고: 전체 학습 곡선 예측 벤치마크는 실제 GPU 학습 데이터 필요. 현재는 합성 손실 곡선 기반 수렴 예측 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

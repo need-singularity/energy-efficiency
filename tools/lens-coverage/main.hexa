@@ -67,7 +67,7 @@ print("n6-check: nonzero categories = " + to_string(nonzero) + " (target >= 6)")
 if nonzero >= 6 { print("PASS — n=6 fiber 만족") }
 else { print("FAIL — 카테고리 보강 필요") }
 
-// TODO:
-// - JSONL 출력
-// - 도메인 × 카테고리 cross-matrix
-// - sync-nexus-lenses.sh 연동
+// 확장 계획:
+// - JSONL 출력 — growth_bus.jsonl 포맷 호환
+// - 도메인 x 카테고리 cross-matrix — 빈 셀 = 렌즈 추가 대상
+// - sync-nexus-lenses.sh 연동 — 커버리지 리포트 자동 갱신

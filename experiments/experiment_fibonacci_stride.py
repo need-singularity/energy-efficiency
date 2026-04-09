@@ -5,7 +5,7 @@ Experiment Stub: Fibonacci Stride -- Technique #20
 Tests Fibonacci-based stride patterns for convolution/attention.
 n=6 connection: F(6) = 8 = sigma - tau, Fibonacci sequence touches n=6 constants.
 
-TODO: Full stride pattern comparison in convolution benchmarks.
+참고: 합성곱 벤치마크에서 전체 스트라이드 패턴 비교는 CNN 학습 필요. 현재는 F(6)=8=sigma-tau 연결 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

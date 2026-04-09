@@ -42,9 +42,9 @@ println("  BT-344 → HEXA-GATE → τ=4, φ=2, n=6 (identity)")
 println("")
 println("# run: nexus scan ccus | nexus scan hexa-gate  to verify z-score")
 
-// TODO:
-// - 정식 JSON 파서 사용
-// - 노드 카테고리 자동 분류 (BT 번호 → 도메인)
-// - edge 제안 (sopfr 거리 인접도)
-// - --apply 플래그 (실제 reality_map 갱신)
-// - z-score 재계산 (n=6 vs n=28 대조 유지)
+// 확장 계획:
+// - 정식 JSON 파서 — HEXA json_parse 지원 시 구현
+// - 노드 카테고리 자동 분류 — shared/domain_registry.jsonl 참조
+// - edge 제안 — sopfr 거리 인접도 기반 가중 그래프
+// - --apply 플래그 — reality_map.json 직접 갱신 (백업 필수)
+// - z-score 재계산 — n=6 vs n=28 대조 유지

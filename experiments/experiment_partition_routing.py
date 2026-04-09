@@ -5,7 +5,7 @@ Experiment Stub: Partition Routing -- Technique #19
 Tests p(6)=11 partition-based routing in expert networks.
 n=6 connection: p(6) = 11 = sigma - mu integer partitions of 6.
 
-TODO: Full routing comparison with partition-based expert assignment.
+참고: 분할 기반 전문가 할당 라우팅 비교는 MoE 모델 필요. 현재는 p(6)=11 분할 열거 및 라우팅 테이블 크기 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

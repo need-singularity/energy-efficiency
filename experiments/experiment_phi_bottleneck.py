@@ -6,7 +6,7 @@ Tests 4/3x FFN expansion ratio from tau^2/sigma = 4/3.
 n=6 connection: FFN expansion = tau(6)^2/sigma(6) = 16/12 = 4/3.
 Expected: 67% parameter reduction vs standard 4x expansion.
 
-TODO: Full implementation comparing 4/3x vs 4x FFN on classification.
+참고: 4/3x vs 4x FFN 분류 비교는 실제 트랜스포머 학습 필요. 현재는 파라미터 절감률(67%) 산술 검증.
 """
 import sys, os, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))

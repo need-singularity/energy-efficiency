@@ -6,7 +6,7 @@ Tests zeta(2)*ln(2) gated activation function.
 n=6 connection: zeta(2) = pi^2/6, ln(2) ~ 0.693, product ~ 1.14.
 Expected: 71% FLOPs reduction similar to Phi6.
 
-TODO: Full activation comparison benchmark.
+참고: 전체 활성 함수 비교 벤치마크는 학습 파이프라인 필요. 현재는 zeta(2)*ln(2) 게이트 희소성 검증.
 """
 import sys, os, numpy as np, math
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
