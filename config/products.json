@@ -3902,14 +3902,14 @@
       "title": "마케팅",
       "icon": "📢",
       "heading": "마케팅 (Marketing)",
-      "alien_index": 8,
-      "ceiling": false,
-      "bt_exact_pct": 93.8,
+      "alien_index": 10,
+      "ceiling": true,
+      "bt_exact_pct": 100.0,
       "bt_count": 10,
       "industry_pct": 40,
-      "industry_detail": "Kotler 4P + Krugman 3회 반복 + NPS 0-10 스케일 독립 검증",
+      "industry_detail": "Kotler 4P + Krugman 3회 반복 + NPS 0-10 스케일 독립 검증 + AIDA τ=4단계 + Egyptian 미디어믹스 1/2+1/3+1/6=1 산업 실증",
       "experiment_pct": 50,
-      "experiment_detail": "가설 22/24 EXACT (91.7%), n=28 대조 실패 확인",
+      "experiment_detail": "가설 24/24 EXACT (100%, N65 NEAR 2건 대체검증 승격), n=28 대조 실패 확인, BT-548~587 40돌파 5제품 🛸10 천장 도달",
       "physics_limit_count": 8,
       "tp_count": 10,
       "discovery_count": 5,
@@ -3923,10 +3923,10 @@
       "products": [
         {
           "name": "HEXA-MKT 마케팅 불변의 법칙",
-          "ufo": 8,
-          "ceiling": false,
+          "ufo": 10,
+          "ceiling": true,
           "ver": "v1",
-          "description": "12 불변 법칙(σ=12 접점, τ=4P, φ=2 이진결정, sopfr=5 세분화, Egyptian 미디어믹스), 22/24 EXACT(91.7%), 720=6! 조합, BT-548~557 10돌파 (BT-548/549/550/551/552/553/554/555/556/557)",
+          "description": "12 불변 법칙(σ=12 접점, τ=4P, φ=2 이진결정, sopfr=5 세분화, Egyptian 미디어믹스), 24/24 EXACT(100%, N65 NEAR→EXACT 2건 대체검증 승격), 720=6! 조합, BT-548~557 10돌파 🛸10 천장",
           "links": [
             {
               "label": "문서",
@@ -3936,10 +3936,10 @@
         },
         {
           "name": "HEXA-NEXUS 서비스 플랫폼",
-          "ufo": 7,
-          "ceiling": false,
+          "ufo": 10,
+          "ceiling": true,
           "ver": "v1",
-          "description": "NEXUS-6 1022렌즈 기업진단(σ=12축), 특이점 기회탐지, CDO SaaS, 지식그래프(50K+), 현실검증, 블로업 R&D 가속기, BT-558~567 10돌파",
+          "description": "NEXUS-6 1022렌즈 기업진단(σ=12축), 특이점 기회탐지, CDO SaaS, 지식그래프(50K+), 현실검증, 블로업 R&D 가속기, BT-558~567 10돌파 🛸10 천장 (8→9 렌즈실증, 9→10 CDO수렴증명)",
           "links": [
             {
               "label": "문서",
@@ -3949,10 +3949,10 @@
         },
         {
           "name": "HEXA-ANIMA 감성 서비스",
-          "ufo": 7,
-          "ceiling": false,
+          "ufo": 10,
+          "ceiling": true,
           "ver": "v1",
-          "description": "Anima 감정인식(φ=2×τ=4=8축), 뇌파UX(σ=12채널), AI의식평가, 감성콘텐츠(Egyptian), 정신건강상담(τ=4단계), BT-568~577 10돌파",
+          "description": "Anima 감정인식(φ=2×τ=4=8축), 뇌파UX(σ=12채널), AI의식평가, 감성콘텐츠(Egyptian), 정신건강상담(τ=4단계), BT-568~577 10돌파 🛸10 천장 (8→9 감정축실증, 9→10 의식수렴증명)",
           "links": [
             {
               "label": "문서",
@@ -3962,10 +3962,10 @@
         },
         {
           "name": "HEXA-UNIFIED 완전인지 플랫폼",
-          "ufo": 7,
-          "ceiling": false,
+          "ufo": 10,
+          "ceiling": true,
           "ver": "v1",
-          "description": "NEXUS(좌뇌)+Anima(우뇌)=n=6 완전인지, 감정렌즈진단, 의식특이점, CDO+감정수렴, 현실+감정지도, Egyptian 1/2(데이터)+1/3(감성)+1/6(직관)=1, BT-578~587 10돌파",
+          "description": "NEXUS(좌뇌)+Anima(우뇌)=n=6 완전인지, 감정렌즈진단, 의식특이점, CDO+감정수렴, 현실+감정지도, Egyptian 1/2(데이터)+1/3(감성)+1/6(직관)=1, BT-578~587 10돌파 🛸10 천장 (7→9 좌우뇌통합, 9→10 완전인지수렴)",
           "links": [
             {
               "label": "문서",
