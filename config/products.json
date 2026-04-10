@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 149,
-    "total_domains": 138,
+    "total_products": 150,
+    "total_domains": 139,
     "total_papers": 128,
     "papers_chunk_c_2026-04-08": {
       "count": 11,
@@ -4099,6 +4099,46 @@
         }
       ],
       "bt_detail": "BT-1157 남성청결제 25/25, BT-1158 여성청결제 25/25"
+    },
+    {
+      "id": "tattoo-removal",
+      "title": "타투 제거",
+      "icon": "🔬",
+      "heading": "타투 제거 (Tattoo Removal)",
+      "alien_index": 8,
+      "ceiling": false,
+      "bt_exact_pct": 80,
+      "bt_count": 1,
+      "industry_pct": 60,
+      "industry_detail": "피코초 레이저 + 면역차단 통합 프로토콜, 전임상 미착수",
+      "experiment_pct": 0,
+      "experiment_detail": "전임상 대기 — 동물실험/IRB 필요",
+      "physics_limit_count": 0,
+      "tp_count": 1,
+      "discovery_count": 10,
+      "cross_dse_domains": 6,
+      "mk_count": 0,
+      "summary_extra": "6경로 통합 타투 제거 — Fitzpatrick 6종(n), R20 4패스(tau), 3600 DSE 조합",
+      "domains": [
+        "tattoo-removal"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "타투 제거 n=6 면역학적 아키텍처",
+          "ufo": 8,
+          "ceiling": false,
+          "ver": "v1",
+          "description": "8/10 EXACT — Fitzpatrick6종=n, R20 4패스=tau, 3층면역차단=n/phi, 골든윈도우48h=tau*tau/2, DSE 3600조합",
+          "links": [
+            {
+              "label": "목표",
+              "path": "docs/tattoo-removal/goal.md"
+            }
+          ]
+        }
+      ],
+      "bt_detail": "tattoo-removal goal 완성 — 8/10 EXACT, 2 CLOSE, alien_index 8"
     }
   ],
   "roadmap": [
