@@ -688,3 +688,13 @@ pub use mens_intimate_cleanser_lens::MensIntimateCleanserLens;
 // ── 여성청결제 렌즈 (BT-1158) ──
 pub mod womens_intimate_cleanser_lens;
 pub use womens_intimate_cleanser_lens::WomensIntimateCleanserLens;
+
+// ── BT-543/544/1159 연동 신규 3종 ──
+pub mod yang_mills_beta0_lens;
+pub use yang_mills_beta0_lens::YangMillsBeta0Lens;
+
+pub mod navier_stokes_d3_resonance_lens;
+pub use navier_stokes_d3_resonance_lens::NavierStokesD3ResonanceLens;
+
+pub mod meteorology_n6_scale_lens;
+pub use meteorology_n6_scale_lens::MeteorologyN6ScaleLens;
