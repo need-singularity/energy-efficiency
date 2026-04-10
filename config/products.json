@@ -1650,6 +1650,20 @@
             }
           ],
           "exact": "71/72"
+        },
+        {
+          "name": "HEXA-SPEAKER 궁극 스피커",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "궁극의 스피커 6단 설계 — CNT 열음향/sigma=12 드라이버 어레이/이집트 분수 대역분할/LR4 크로스오버/ClassD 576W/144 공간객체, 36/36 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/audio/hexa-speaker-ultimate.md"
+            }
+          ],
+          "exact": "36/36"
         }
       ],
       "anchor": "-오디오-audio",
