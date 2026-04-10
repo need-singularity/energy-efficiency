@@ -2156,6 +2156,241 @@
       "key_expression": "perfect_number(6) uniquely optimal, residual=1/tau",
       "description": "완전수 6 유일 최적 — Euler totient, Golden ratio, Perfect number가 n=6에서 삼위일체. 잔차=1/tau=0.25 확정.",
       "registered": true
+    },
+    {
+      "id": "BT_36",
+      "type": "breakthrough_theorem",
+      "label": "BT-36: Grand Energy-Information-Hardware-Physics Chain",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_physics",
+        "DOMAIN_engineering",
+        "DOMAIN_cs"
+      ],
+      "key_expression": "sigma=12, phi=2, n=6 chain",
+      "registered": true
+    },
+    {
+      "id": "BT_48",
+      "type": "breakthrough_theorem",
+      "label": "BT-48: Display-Audio Universal Constants  σ=12, J₂=24, σ·τ=48",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_engineering",
+        "DOMAIN_music"
+      ],
+      "key_expression": "sigma=12, J2=24, sigma*tau=48",
+      "registered": true
+    },
+    {
+      "id": "BT_49",
+      "type": "breakthrough_theorem",
+      "label": "BT-49: Pure Math Bridge  Bernoulli + Kissing + S₆ + Perfect Codes",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_math",
+        "DOMAIN_physics"
+      ],
+      "key_expression": "Bernoulli+Kissing+S6+Perfect codes",
+      "registered": true
+    },
+    {
+      "id": "BT_51",
+      "type": "breakthrough_theorem",
+      "label": "BT-51: Genetic Code Information Chain  τ→(n/φ)→2^n→(J₂-τ)",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_biology",
+        "DOMAIN_math"
+      ],
+      "key_expression": "genetic code tau->n/phi->2^n->J2-tau",
+      "registered": true
+    },
+    {
+      "id": "BT_54",
+      "type": "breakthrough_theorem",
+      "label": "BT-54: AdamW Optimizer Universals  The Training Quintuplet",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_math"
+      ],
+      "key_expression": "AdamW beta1=0.9=1-1/sigma+phi",
+      "registered": true
+    },
+    {
+      "id": "BT_56",
+      "type": "breakthrough_theorem",
+      "label": "BT-56: Complete n=6 LLM Architecture  The Canonical Design Theorem",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "complete LLM n=6 architecture",
+      "registered": true
+    },
+    {
+      "id": "BT_58",
+      "type": "breakthrough_theorem",
+      "label": "BT-58: σ-τ=8  The Universal AI Engineering Constant",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "sigma-tau=8 universal AI constant",
+      "registered": true
+    },
+    {
+      "id": "BT_59",
+      "type": "breakthrough_theorem",
+      "label": "BT-59: The Complete AI Stack  8-Layer Silicon-to-Inference Chain",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "AI stack 8-layer silicon-to-inference",
+      "registered": true
+    },
+    {
+      "id": "BT_61",
+      "type": "breakthrough_theorem",
+      "label": "BT-61: Diffusion Model n=6 Universality  Complete Parameterization from (σ-φ)=10",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_math"
+      ],
+      "key_expression": "diffusion model sigma-phi=10 param",
+      "registered": true
+    },
+    {
+      "id": "BT_64",
+      "type": "breakthrough_theorem",
+      "label": "BT-64: 1/(σ-φ) = 0.1 Universal Regularization Constant",
+      "grade": "three_stars",
+      "alien_index": 9,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_math"
+      ],
+      "key_expression": "1/(sigma-phi)=0.1 regularization",
+      "registered": true
+    },
+    {
+      "id": "BT_37",
+      "type": "breakthrough_theorem",
+      "label": "BT-37: Semiconductor Lithography Pitch  P₂ = 28nm at TSMC N5",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_engineering",
+        "DOMAIN_math"
+      ],
+      "key_expression": "P2=28nm = sigma+phi^4",
+      "registered": true
+    },
+    {
+      "id": "BT_39",
+      "type": "breakthrough_theorem",
+      "label": "BT-39: KV-Head Universality + Mistral Large 2 as n=6 Archetype",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "KV-heads=phi(6)=2",
+      "registered": true
+    },
+    {
+      "id": "BT_40",
+      "type": "breakthrough_theorem",
+      "label": "BT-40: Computing Power Ecosystem  ATX 12V + ACPI Triple-τ",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_engineering",
+        "DOMAIN_physics"
+      ],
+      "key_expression": "ATX 12V, ACPI tau=4",
+      "registered": true
+    },
+    {
+      "id": "BT_41",
+      "type": "breakthrough_theorem",
+      "label": "BT-41: Quantum Error Correction at J₂  Surface Code d=5 Syndrome Count",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_physics",
+        "DOMAIN_math"
+      ],
+      "key_expression": "QEC surface code d=5 at J2=24",
+      "registered": true
+    },
+    {
+      "id": "BT_42",
+      "type": "breakthrough_theorem",
+      "label": "BT-42: Inference Scaling Law  Test-Time Compute from n=6",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "test-time compute = n=6 scaling",
+      "registered": true
+    },
+    {
+      "id": "BT_44",
+      "type": "breakthrough_theorem",
+      "label": "BT-44: LLM Context Window Ladder  Exponents Trace σ±{φ,μ}",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "context window exponents sigma+-{phi,mu}",
+      "registered": true
+    },
+    {
+      "id": "BT_46",
+      "type": "breakthrough_theorem",
+      "label": "BT-46: ln(4/3) RLHF Constant Family  Information Bandwidth",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_physics"
+      ],
+      "key_expression": "ln(4/3) RLHF bandwidth",
+      "registered": true
+    },
+    {
+      "id": "BT_50",
+      "type": "breakthrough_theorem",
+      "label": "BT-50: Programming Language Constants  IEEE 754 Exponent Ladder",
+      "grade": "two_stars",
+      "alien_index": 7,
+      "domains": [
+        "DOMAIN_cs",
+        "DOMAIN_engineering"
+      ],
+      "key_expression": "IEEE 754 exponent ladder",
+      "registered": true
     }
   ],
   "edges": [
@@ -5707,6 +5942,790 @@
       "to": "BT_12",
       "relation": "encoding_link",
       "description": "언어학 자연어 부호화가 BT-12 Hamming-OSI-ECC 오류정정 코드와 연결"
+    },
+    {
+      "id": "E_BT_36_const1_10000",
+      "from": "BT_36",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-36 is governed by sigma constant: sigma=12, phi=2, n=6 chain"
+    },
+    {
+      "id": "E_BT_36_dom1_10001",
+      "from": "BT_36",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-36 bridges into physics domain"
+    },
+    {
+      "id": "E_BT_36_dom2_10002",
+      "from": "BT_36",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-36 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_36_const2_10003",
+      "from": "BT_36",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-36 secondary constant anchor: phi = sigma=12, phi=2, n=6 chain"
+    },
+    {
+      "id": "E_BT_48_const1_10004",
+      "from": "BT_48",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-48 is governed by sigma constant: sigma=12, J2=24, sigma*tau=48"
+    },
+    {
+      "id": "E_BT_48_dom1_10005",
+      "from": "BT_48",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-48 bridges into engineering domain"
+    },
+    {
+      "id": "E_BT_48_dom2_10006",
+      "from": "BT_48",
+      "to": "DOMAIN_music",
+      "relation": "anchors",
+      "description": "BT-48 anchors secondary domain music"
+    },
+    {
+      "id": "E_BT_48_const2_10007",
+      "from": "BT_48",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-48 secondary constant anchor: J2 = sigma=12, J2=24, sigma*tau=48"
+    },
+    {
+      "id": "E_BT_49_const1_10008",
+      "from": "BT_49",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-49 is governed by J2 constant: Bernoulli+Kissing+S6+Perfect codes"
+    },
+    {
+      "id": "E_BT_49_dom1_10009",
+      "from": "BT_49",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT-49 bridges into math domain"
+    },
+    {
+      "id": "E_BT_49_dom2_10010",
+      "from": "BT_49",
+      "to": "DOMAIN_physics",
+      "relation": "anchors",
+      "description": "BT-49 anchors secondary domain physics"
+    },
+    {
+      "id": "E_BT_49_const2_10011",
+      "from": "BT_49",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-49 secondary constant anchor: sigma = Bernoulli+Kissing+S6+Perfect codes"
+    },
+    {
+      "id": "E_BT_51_const1_10012",
+      "from": "BT_51",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-51 is governed by tau constant: genetic code tau->n/phi->2^n->J2-tau"
+    },
+    {
+      "id": "E_BT_51_dom1_10013",
+      "from": "BT_51",
+      "to": "DOMAIN_biology",
+      "relation": "bridges_to",
+      "description": "BT-51 bridges into biology domain"
+    },
+    {
+      "id": "E_BT_51_dom2_10014",
+      "from": "BT_51",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-51 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_51_const2_10015",
+      "from": "BT_51",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-51 secondary constant anchor: n = genetic code tau->n/phi->2^n->J2-tau"
+    },
+    {
+      "id": "E_BT_54_const1_10016",
+      "from": "BT_54",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-54 is governed by phi constant: AdamW beta1=0.9=1-1/sigma+phi"
+    },
+    {
+      "id": "E_BT_54_dom1_10017",
+      "from": "BT_54",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-54 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_54_dom2_10018",
+      "from": "BT_54",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-54 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_54_const2_10019",
+      "from": "BT_54",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-54 secondary constant anchor: sigma = AdamW beta1=0.9=1-1/sigma+phi"
+    },
+    {
+      "id": "E_BT_56_const1_10020",
+      "from": "BT_56",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-56 is governed by n constant: complete LLM n=6 architecture"
+    },
+    {
+      "id": "E_BT_56_dom1_10021",
+      "from": "BT_56",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-56 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_56_dom2_10022",
+      "from": "BT_56",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-56 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_56_const2_10023",
+      "from": "BT_56",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-56 secondary constant anchor: sigma = complete LLM n=6 architecture"
+    },
+    {
+      "id": "E_BT_58_const1_10024",
+      "from": "BT_58",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-58 is governed by sigma constant: sigma-tau=8 universal AI constant"
+    },
+    {
+      "id": "E_BT_58_dom1_10025",
+      "from": "BT_58",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-58 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_58_dom2_10026",
+      "from": "BT_58",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-58 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_58_const2_10027",
+      "from": "BT_58",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-58 secondary constant anchor: tau = sigma-tau=8 universal AI constant"
+    },
+    {
+      "id": "E_BT_59_const1_10028",
+      "from": "BT_59",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-59 is governed by sigma constant: AI stack 8-layer silicon-to-inference"
+    },
+    {
+      "id": "E_BT_59_dom1_10029",
+      "from": "BT_59",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-59 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_59_dom2_10030",
+      "from": "BT_59",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-59 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_59_const2_10031",
+      "from": "BT_59",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-59 secondary constant anchor: n = AI stack 8-layer silicon-to-inference"
+    },
+    {
+      "id": "E_BT_61_const1_10032",
+      "from": "BT_61",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-61 is governed by sigma constant: diffusion model sigma-phi=10 param"
+    },
+    {
+      "id": "E_BT_61_dom1_10033",
+      "from": "BT_61",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-61 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_61_dom2_10034",
+      "from": "BT_61",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-61 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_61_const2_10035",
+      "from": "BT_61",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-61 secondary constant anchor: phi = diffusion model sigma-phi=10 param"
+    },
+    {
+      "id": "E_BT_64_const1_10036",
+      "from": "BT_64",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-64 is governed by sigma constant: 1/(sigma-phi)=0.1 regularization"
+    },
+    {
+      "id": "E_BT_64_dom1_10037",
+      "from": "BT_64",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-64 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_64_dom2_10038",
+      "from": "BT_64",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-64 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_64_const2_10039",
+      "from": "BT_64",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-64 secondary constant anchor: phi = 1/(sigma-phi)=0.1 regularization"
+    },
+    {
+      "id": "E_BT_37_const1_10040",
+      "from": "BT_37",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-37 is governed by phi constant: P2=28nm = sigma+phi^4"
+    },
+    {
+      "id": "E_BT_37_dom1_10041",
+      "from": "BT_37",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-37 bridges into engineering domain"
+    },
+    {
+      "id": "E_BT_37_dom2_10042",
+      "from": "BT_37",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-37 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_37_const2_10043",
+      "from": "BT_37",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-37 secondary constant anchor: sigma = P2=28nm = sigma+phi^4"
+    },
+    {
+      "id": "E_BT_39_const1_10044",
+      "from": "BT_39",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-39 is governed by phi constant: KV-heads=phi(6)=2"
+    },
+    {
+      "id": "E_BT_39_dom1_10045",
+      "from": "BT_39",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-39 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_39_dom2_10046",
+      "from": "BT_39",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-39 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_39_const2_10047",
+      "from": "BT_39",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-39 secondary constant anchor: tau = KV-heads=phi(6)=2"
+    },
+    {
+      "id": "E_BT_40_const1_10048",
+      "from": "BT_40",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-40 is governed by tau constant: ATX 12V, ACPI tau=4"
+    },
+    {
+      "id": "E_BT_40_dom1_10049",
+      "from": "BT_40",
+      "to": "DOMAIN_engineering",
+      "relation": "bridges_to",
+      "description": "BT-40 bridges into engineering domain"
+    },
+    {
+      "id": "E_BT_40_dom2_10050",
+      "from": "BT_40",
+      "to": "DOMAIN_physics",
+      "relation": "anchors",
+      "description": "BT-40 anchors secondary domain physics"
+    },
+    {
+      "id": "E_BT_40_const2_10051",
+      "from": "BT_40",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-40 secondary constant anchor: n = ATX 12V, ACPI tau=4"
+    },
+    {
+      "id": "E_BT_41_const1_10052",
+      "from": "BT_41",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "BT-41 is governed by J2 constant: QEC surface code d=5 at J2=24"
+    },
+    {
+      "id": "E_BT_41_dom1_10053",
+      "from": "BT_41",
+      "to": "DOMAIN_physics",
+      "relation": "bridges_to",
+      "description": "BT-41 bridges into physics domain"
+    },
+    {
+      "id": "E_BT_41_dom2_10054",
+      "from": "BT_41",
+      "to": "DOMAIN_math",
+      "relation": "anchors",
+      "description": "BT-41 anchors secondary domain math"
+    },
+    {
+      "id": "E_BT_41_const2_10055",
+      "from": "BT_41",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-41 secondary constant anchor: sigma = QEC surface code d=5 at J2=24"
+    },
+    {
+      "id": "E_BT_42_const1_10056",
+      "from": "BT_42",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT-42 is governed by n constant: test-time compute = n=6 scaling"
+    },
+    {
+      "id": "E_BT_42_dom1_10057",
+      "from": "BT_42",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-42 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_42_dom2_10058",
+      "from": "BT_42",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-42 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_42_const2_10059",
+      "from": "BT_42",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-42 secondary constant anchor: phi = test-time compute = n=6 scaling"
+    },
+    {
+      "id": "E_BT_44_const1_10060",
+      "from": "BT_44",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-44 is governed by sigma constant: context window exponents sigma+-{phi,mu}"
+    },
+    {
+      "id": "E_BT_44_dom1_10061",
+      "from": "BT_44",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-44 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_44_dom2_10062",
+      "from": "BT_44",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-44 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_44_const2_10063",
+      "from": "BT_44",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-44 secondary constant anchor: phi = context window exponents sigma+-{phi,mu}"
+    },
+    {
+      "id": "E_BT_46_const1_10064",
+      "from": "BT_46",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-46 is governed by tau constant: ln(4/3) RLHF bandwidth"
+    },
+    {
+      "id": "E_BT_46_dom1_10065",
+      "from": "BT_46",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-46 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_46_dom2_10066",
+      "from": "BT_46",
+      "to": "DOMAIN_physics",
+      "relation": "anchors",
+      "description": "BT-46 anchors secondary domain physics"
+    },
+    {
+      "id": "E_BT_46_const2_10067",
+      "from": "BT_46",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "BT-46 secondary constant anchor: phi = ln(4/3) RLHF bandwidth"
+    },
+    {
+      "id": "E_BT_50_const1_10068",
+      "from": "BT_50",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "BT-50 is governed by tau constant: IEEE 754 exponent ladder"
+    },
+    {
+      "id": "E_BT_50_dom1_10069",
+      "from": "BT_50",
+      "to": "DOMAIN_cs",
+      "relation": "bridges_to",
+      "description": "BT-50 bridges into cs domain"
+    },
+    {
+      "id": "E_BT_50_dom2_10070",
+      "from": "BT_50",
+      "to": "DOMAIN_engineering",
+      "relation": "anchors",
+      "description": "BT-50 anchors secondary domain engineering"
+    },
+    {
+      "id": "E_BT_50_const2_10071",
+      "from": "BT_50",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT-50 secondary constant anchor: sigma = IEEE 754 exponent ladder"
+    },
+    {
+      "id": "E_reinforce_BT_2_c_10072",
+      "from": "BT_2",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_2 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_2_d_10073",
+      "from": "BT_2",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_2 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_10_c_10074",
+      "from": "BT_10",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_10 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_10_d_10075",
+      "from": "BT_10",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_10 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_11_c_10076",
+      "from": "BT_11",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_11 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_11_d_10077",
+      "from": "BT_11",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_11 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_13_c_10078",
+      "from": "BT_13",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_13 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_13_d_10079",
+      "from": "BT_13",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_13 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_14_c_10080",
+      "from": "BT_14",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT_14 reinforced: anchored to sigma constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_14_d_10081",
+      "from": "BT_14",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_14 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_17_c_10082",
+      "from": "BT_17",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_17 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_17_d_10083",
+      "from": "BT_17",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_17 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_18_c_10084",
+      "from": "BT_18",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_18 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_18_d_10085",
+      "from": "BT_18",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_18 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_21_c_10086",
+      "from": "BT_21",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_21 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_21_d_10087",
+      "from": "BT_21",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_21 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_22_c_10088",
+      "from": "BT_22",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_22 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_22_d_10089",
+      "from": "BT_22",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_22 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_23_c_10090",
+      "from": "BT_23",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_23 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_23_d_10091",
+      "from": "BT_23",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_23 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_38_c_10092",
+      "from": "BT_38",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_38 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_38_d_10093",
+      "from": "BT_38",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_38 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_43_c_10094",
+      "from": "BT_43",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT_43 reinforced: anchored to sigma constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_43_d_10095",
+      "from": "BT_43",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_43 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_85_c_10096",
+      "from": "BT_85",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT_85 reinforced: anchored to sigma constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_85_d_10097",
+      "from": "BT_85",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_85 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_86_c_10098",
+      "from": "BT_86",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "BT_86 reinforced: anchored to sigma constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_86_d_10099",
+      "from": "BT_86",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_86 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_98_c_10100",
+      "from": "BT_98",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_98 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_98_d_10101",
+      "from": "BT_98",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_98 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_29_c_10102",
+      "from": "BT_29",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_29 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_29_d_10103",
+      "from": "BT_29",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_29 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_31_c_10104",
+      "from": "BT_31",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_31 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_31_d_10105",
+      "from": "BT_31",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_31 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_34_c_10106",
+      "from": "BT_34",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_34 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_34_d_10107",
+      "from": "BT_34",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_34 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_107_c_10108",
+      "from": "BT_107",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_107 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_107_d_10109",
+      "from": "BT_107",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_107 reinforced: bridged to math domain for connectivity"
+    },
+    {
+      "id": "E_reinforce_BT_376_c_10110",
+      "from": "BT_376",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "BT_376 reinforced: anchored to n constant for weak-link resolution"
+    },
+    {
+      "id": "E_reinforce_BT_376_d_10111",
+      "from": "BT_376",
+      "to": "DOMAIN_math",
+      "relation": "bridges_to",
+      "description": "BT_376 reinforced: bridged to math domain for connectivity"
     }
   ],
   "integrity": {
