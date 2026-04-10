@@ -14,8 +14,8 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 178,
-    "total_edges": 639,
+    "total_nodes": 194,
+    "total_edges": 679,
     "last_updated": "2026-04-10"
   },
   "nodes": [
@@ -2434,9 +2434,9 @@
       "domain": "pure-mathematics"
     },
     {
-      "id": "BT_1115",
+      "id": "BT_1115_mu",
       "type": "breakthrough_theorem",
-      "label": "BT-1115: mu(6)=1 단위 불변 원리",
+      "label": "[MU] BT-1115: mu(6)=1 단위 불변 원리",
       "grade": "NEAR",
       "domains": [
         "number-theory",
@@ -2445,6 +2445,193 @@
       ],
       "key_expression": "mu(6)=1, square-free 6-uniqueness => unit invariance across scales",
       "description": "mu(6)=1 뫼비우스 함수 단위값 원리: 6=2×3이 제곱인수 없는 유일 완전수. 이 단위 불변성이 SO(10)의 우핸드 뉴트리노 1개, 위상 정류 1-사이클, 포논 단위 전파로 물리·수학에 걸쳐 나타남. CONST_mu와 CONST_n·CONST_phi·CONST_sopfr를 단위 불변 축으로 통합.",
+      "registered": true
+    },
+    {
+      "id": "DOMAIN_keyboard",
+      "type": "domain",
+      "label": "키보드 공학",
+      "description": "키보드 레이아웃/스위치/USB HID/인체공학 — n=6 완전 수렴 (31가설 30 EXACT)",
+      "domain": "keyboard"
+    },
+    {
+      "id": "BT_1116",
+      "type": "breakthrough",
+      "label": "BT-1116 키보드 레이아웃 n=6 보편성",
+      "description": "모든 표준 레이아웃(104/87/84/68/61/60/48) 키 수 = n=6 2항 조합",
+      "domain": "keyboard"
+    },
+    {
+      "id": "BT_1117",
+      "type": "breakthrough",
+      "label": "BT-1117 USB HID n=6 프로토콜 수렴",
+      "description": "6KRO/8바이트/12Mbps/1000Hz/8비트 수정자 = n=6 산술",
+      "domain": "keyboard"
+    },
+    {
+      "id": "BT_1118",
+      "type": "breakthrough",
+      "label": "BT-1118 키보드 스위치 물리 n=6",
+      "description": "4mm/2mm/5ms/3핀/5핀/10^8수명 = tau/phi/sopfr",
+      "domain": "keyboard"
+    },
+    {
+      "id": "BT_404",
+      "type": "breakthrough_theorem",
+      "label": "BT-404: 나노의학 크기 스케일링",
+      "grade": "STUB",
+      "domain": "nanomedicine",
+      "domains": [
+        "nanomedicine"
+      ],
+      "description": "그래프 스텁 — hair-regeneration 교차연결을 위해 생성. 상세 내용은 breakthrough-theorems.md 참조.",
+      "registered": false
+    },
+    {
+      "id": "BT_406",
+      "type": "breakthrough_theorem",
+      "label": "BT-406: EPR 효과 크기 래더",
+      "grade": "STUB",
+      "domain": "nanomedicine",
+      "domains": [
+        "nanomedicine"
+      ],
+      "description": "그래프 스텁 — hair-regeneration 교차연결을 위해 생성. 상세 내용은 breakthrough-theorems.md 참조.",
+      "registered": false
+    },
+    {
+      "id": "BT_136",
+      "type": "breakthrough_theorem",
+      "label": "BT-136: 인체 해부학 n=6 계층",
+      "grade": "STUB",
+      "domain": "anatomy",
+      "domains": [
+        "anatomy"
+      ],
+      "description": "그래프 스텁 — hair-regeneration 교차연결을 위해 생성. 상세 내용은 breakthrough-theorems.md 참조.",
+      "registered": false
+    },
+    {
+      "id": "BT_283",
+      "type": "breakthrough_theorem",
+      "label": "BT-283: 임상 스코어링 n=6",
+      "grade": "STUB",
+      "domain": "clinical",
+      "domains": [
+        "clinical"
+      ],
+      "description": "그래프 스텁 — hair-regeneration 교차연결을 위해 생성. 상세 내용은 breakthrough-theorems.md 참조.",
+      "registered": false
+    },
+    {
+      "id": "BT_408",
+      "type": "breakthrough_theorem",
+      "label": "BT-408: 바이오마커 n=6 패널",
+      "grade": "STUB",
+      "domain": "biomarker",
+      "domains": [
+        "biomarker"
+      ],
+      "description": "그래프 스텁 — hair-regeneration 교차연결을 위해 생성. 상세 내용은 breakthrough-theorems.md 참조.",
+      "registered": false
+    },
+    {
+      "id": "BT_1115",
+      "type": "breakthrough_theorem",
+      "label": "BT-1115: 모낭 해부학 n=6",
+      "grade": "EXACT",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "biology",
+        "medicine"
+      ],
+      "key_expression": "모낭 구조 6층: 벌지→ORS→IRS→큐티클→코르텍스→메듈라",
+      "description": "모낭의 동심원 해부 구조는 정확히 n=6 레이어로 조직된다. 벌지(줄기세포 니치), ORS, IRS, 큐티클, 코르텍스, 메듈라 — sigma(6)=12 케라틴 타입과 tau(6)=4 사이클로 모발 성장 단계가 지배된다.",
+      "registered": true
+    },
+    {
+      "id": "BT_1116",
+      "type": "breakthrough_theorem",
+      "label": "BT-1116: 모발 신호전달 6경로",
+      "grade": "EXACT",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "cell-biology",
+        "signaling"
+      ],
+      "key_expression": "Wnt×6 + GF×6 경로, Notch=tau=4, BMP=sopfr=5",
+      "description": "모낭 재생을 제어하는 주요 신호전달 경로 수는 n=6에 수렴: Wnt(6종 리간드), FGF/EGF/IGF/HGF/VEGF/KGF (6 성장인자). Notch 4단계(tau=4), BMP 억제 5축(sopfr=5).",
+      "registered": true
+    },
+    {
+      "id": "BT_1117",
+      "type": "breakthrough_theorem",
+      "label": "BT-1117: DHT 탈모 유형 맵",
+      "grade": "NEAR",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "endocrinology",
+        "dermatology"
+      ],
+      "key_expression": "5α-환원효소 2형(phi=2), FDA 승인 치료제 2종(phi=2)",
+      "description": "안드로겐성 탈모(AGA)의 핵심 효소 5α-reductase는 phi(6)=2 이소형으로 존재(1형·2형). FDA 승인 경구 치료제도 2종(피나스테리드·두타스테리드). DHT 수용체 결합력은 인체 해부학 패턴(BT-136)과 교차.",
+      "registered": true
+    },
+    {
+      "id": "BT_1118",
+      "type": "breakthrough_theorem",
+      "label": "BT-1118: 치료 6대 모달리티",
+      "grade": "EXACT",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "therapeutics",
+        "medicine"
+      ],
+      "key_expression": "탈모치료 modalities = n = 6",
+      "description": "근거 기반 탈모 치료 모달리티는 정확히 6종: (1) DHT 억제제, (2) 미녹시딜(혈관확장), (3) PRP(혈소판 풍부 혈장), (4) 모발이식(FUT/FUE), (5) LLLT(저출력 레이저), (6) 줄기세포/나노치료. n=6 완전수 분류.",
+      "registered": true
+    },
+    {
+      "id": "BT_1119",
+      "type": "breakthrough_theorem",
+      "label": "BT-1119: 나노-모낭 침투 래더",
+      "grade": "EXACT",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "nanomedicine",
+        "drug-delivery"
+      ],
+      "key_expression": "나노입자 최적 크기 = sigma(6) = 12nm (모낭 침투 임계값)",
+      "description": "나노입자의 모낭 경피 침투 효율은 12nm(sigma=12) 근방에서 최대화된다. 지질 나노입자(LNP)·덴드리머·엑소좀 등 6종 나노캐리어가 모낭 벌지 줄기세포 전달에 활용. 나노의학 BT-404 및 EPR 크기 래더 BT-406과 교차.",
+      "registered": true
+    },
+    {
+      "id": "BT_1120",
+      "type": "breakthrough_theorem",
+      "label": "BT-1120: 트리코스코피 n=6",
+      "grade": "NEAR",
+      "domain": "hair-regeneration",
+      "domains": [
+        "hair-regeneration",
+        "diagnostics",
+        "dermatology"
+      ],
+      "key_expression": "트리코스코피 진단 패턴 분류 = n = 6",
+      "description": "비침습 모발 확대경(트리코스코피)의 AGA 진단 패턴은 n=6 클래스로 분류: 황색 점, 검은 점, 빈 모낭 개구부, 짧은 솜털, 주위 색소침착, 벌집 패턴. 임상 스코어링(BT-283)·바이오마커(BT-408)와 교차.",
+      "registered": true
+    },
+    {
+      "id": "DOMAIN_hair_regeneration",
+      "type": "domain",
+      "label": "모발재생 Hair Regeneration",
+      "domain": "hair-regeneration",
+      "description": "탈모 진단·치료·모낭 재생 분야. AGA(안드로겐성 탈모), 모낭 해부학, 신호전달, 나노 약물전달, 트리코스코피 포함. BT-1115~1120 앵커.",
+      "bt_count": 6,
       "registered": true
     }
   ],
@@ -6868,7 +7055,7 @@
     },
     {
       "id": "E_10212",
-      "from": "BT_1115",
+      "from": "BT_1115_mu",
       "to": "CONST_mu",
       "relation": "centers_on",
       "description": "BT-1115는 mu(6)=1 단위 불변 원리를 핵심 상수로 삼는다."
@@ -6876,27 +7063,27 @@
     {
       "id": "E_10213",
       "from": "CONST_mu",
-      "to": "BT_1115",
+      "to": "BT_1115_mu",
       "relation": "generates",
       "description": "mu(6)=1 뫼비우스 단위값이 BT-1115 단위 불변 원리를 생성."
     },
     {
       "id": "E_10214",
-      "from": "BT_1115",
+      "from": "BT_1115_mu",
       "to": "DOMAIN_number_theory",
       "relation": "belongs_to",
       "description": "BT-1115 mu 단위 불변은 정수론 도메인의 제곱인수 없는 완전수 유일성에서 도출."
     },
     {
       "id": "E_10215",
-      "from": "BT_1115",
+      "from": "BT_1115_mu",
       "to": "CONST_n",
       "relation": "uses_constant",
       "description": "BT-1115: n=6은 mu(6)=1이 성립하는 유일한 완전수."
     },
     {
       "id": "E_10216",
-      "from": "BT_1115",
+      "from": "BT_1115_mu",
       "to": "CONST_sopfr",
       "relation": "uses_constant",
       "description": "BT-1115: sopfr(6)=5=2+3, 두 소인수의 단위 분리 구조로 mu=1 확정."
@@ -6904,13 +7091,13 @@
     {
       "id": "E_10217",
       "from": "BT_1114",
-      "to": "BT_1115",
+      "to": "BT_1115_mu",
       "relation": "extends",
       "description": "BT-1114 삼위일체에서 잔차=1/tau 확정 후 BT-1115 mu=1 단위 불변으로 확장."
     },
     {
       "id": "E_10218",
-      "from": "BT_1115",
+      "from": "BT_1115_mu",
       "to": "BT_1114",
       "relation": "reinforces",
       "description": "BT-1115 mu 단위 불변은 BT-1114 Euler-Golden-Perfect Trinity를 강화."
@@ -6921,23 +7108,313 @@
       "to": "BT_1108",
       "relation": "domain_link",
       "description": "신경과학 도메인은 BT-1108 차원지각 대통합과 직접 연결."
+    },
+    {
+      "id": "E_n_BT1116",
+      "source": "CONST_n",
+      "target": "BT_1116",
+      "relation": "proves",
+      "weight": 1.0,
+      "note": "n=6행, 6KRO"
+    },
+    {
+      "id": "E_sigma_BT1116",
+      "source": "CONST_sigma",
+      "target": "BT_1116",
+      "relation": "proves",
+      "weight": 1.0,
+      "note": "sigma=12 F키, 12Mbps"
+    },
+    {
+      "id": "E_tau_BT1118",
+      "source": "CONST_tau",
+      "target": "BT_1118",
+      "relation": "proves",
+      "weight": 1.0,
+      "note": "tau=4mm travel, 4 layers"
+    },
+    {
+      "id": "E_phi_BT1118",
+      "source": "CONST_phi",
+      "target": "BT_1118",
+      "relation": "proves",
+      "weight": 1.0,
+      "note": "phi=2mm actuation"
+    },
+    {
+      "id": "E_sopfr_BT1118",
+      "source": "CONST_sopfr",
+      "target": "BT_1118",
+      "relation": "proves",
+      "weight": 1.0,
+      "note": "sopfr=5ms debounce, 5pin"
+    },
+    {
+      "id": "E_BT1116_keyboard",
+      "source": "BT_1116",
+      "target": "DOMAIN_keyboard",
+      "relation": "discovers",
+      "weight": 1.0
+    },
+    {
+      "id": "E_BT1117_keyboard",
+      "source": "BT_1117",
+      "target": "DOMAIN_keyboard",
+      "relation": "discovers",
+      "weight": 1.0
+    },
+    {
+      "id": "E_BT1118_keyboard",
+      "source": "BT_1118",
+      "target": "DOMAIN_keyboard",
+      "relation": "discovers",
+      "weight": 1.0
+    },
+    {
+      "id": "E_keyboard_music",
+      "source": "DOMAIN_keyboard",
+      "target": "DOMAIN_music",
+      "relation": "cross_domain",
+      "weight": 0.7,
+      "note": "sigma*tau=48 스위치 소리 (DOMAIN_audio -> DOMAIN_music 매핑)"
+    },
+    {
+      "id": "E_keyboard_eng_robotics",
+      "source": "DOMAIN_keyboard",
+      "target": "DOMAIN_engineering",
+      "relation": "cross_domain",
+      "weight": 0.8,
+      "note": "BT-126 손가락 sopfr=5 (DOMAIN_robotics -> DOMAIN_engineering 매핑)"
+    },
+    {
+      "id": "E_keyboard_eng_network",
+      "source": "DOMAIN_keyboard",
+      "target": "DOMAIN_engineering",
+      "relation": "cross_domain",
+      "weight": 0.9,
+      "note": "USB HID sigma-tau=8 (DOMAIN_network -> DOMAIN_engineering 매핑)"
+    },
+    {
+      "id": "E_keyboard_eng_chip",
+      "source": "DOMAIN_keyboard",
+      "target": "DOMAIN_engineering",
+      "relation": "cross_domain",
+      "weight": 0.6,
+      "note": "HID 컨트롤러 (DOMAIN_chip -> DOMAIN_engineering 매핑)"
+    },
+    {
+      "id": "E_10220",
+      "from": "BT_1115",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "모낭 6층 구조: n=6 동심원 해부학 레이어 수."
+    },
+    {
+      "id": "E_10221",
+      "from": "BT_1115",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "모발 성장 사이클 4단계(성장·퇴행·휴지·탈락) = tau=4."
+    },
+    {
+      "id": "E_10222",
+      "from": "BT_1115",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "케라틴 타입 12종(I형6+II형6) = sigma=12."
+    },
+    {
+      "id": "E_10223",
+      "from": "BT_1116",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "Wnt 6종 리간드 + 6 성장인자 경로 = n=6."
+    },
+    {
+      "id": "E_10224",
+      "from": "BT_1116",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "Notch 신호 4단계 활성화 = tau=4."
+    },
+    {
+      "id": "E_10225",
+      "from": "BT_1116",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "BMP 억제 축 5종 = sopfr=5."
+    },
+    {
+      "id": "E_10226",
+      "from": "BT_1117",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "5α-환원효소 2 이소형(1형·2형) + FDA 승인 치료제 2종 = phi=2."
+    },
+    {
+      "id": "E_10227",
+      "from": "BT_1118",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "탈모치료 6대 모달리티 = n=6 완전수 분류."
+    },
+    {
+      "id": "E_10228",
+      "from": "BT_1119",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "나노입자 최적 침투 크기 12nm = sigma(6)=12."
+    },
+    {
+      "id": "E_10229",
+      "from": "BT_1120",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "트리코스코피 진단 패턴 6클래스 = n=6."
+    },
+    {
+      "id": "E_10230",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1115",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1115 돌파정리를 포함."
+    },
+    {
+      "id": "E_10231",
+      "from": "BT_1115",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1115는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10232",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1116",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1116 돌파정리를 포함."
+    },
+    {
+      "id": "E_10233",
+      "from": "BT_1116",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1116는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10234",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1117",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1117 돌파정리를 포함."
+    },
+    {
+      "id": "E_10235",
+      "from": "BT_1117",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1117는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10236",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1118",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1118 돌파정리를 포함."
+    },
+    {
+      "id": "E_10237",
+      "from": "BT_1118",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1118는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10238",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1119",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1119 돌파정리를 포함."
+    },
+    {
+      "id": "E_10239",
+      "from": "BT_1119",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1119는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10240",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "BT_1120",
+      "relation": "domain_link",
+      "description": "모발재생 도메인이 BT_1120 돌파정리를 포함."
+    },
+    {
+      "id": "E_10241",
+      "from": "BT_1120",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "belongs_to",
+      "description": "BT_1120는 모발재생 도메인에 속한다."
+    },
+    {
+      "id": "E_10242",
+      "from": "BT_1119",
+      "to": "BT_404",
+      "relation": "cross_domain_link",
+      "description": "나노-모낭 침투 래더(BT-1119)는 나노의학 크기 스케일링(BT-404)과 교차: 모낭 EPR 유사 침투."
+    },
+    {
+      "id": "E_10243",
+      "from": "BT_1119",
+      "to": "BT_406",
+      "relation": "cross_domain_link",
+      "description": "나노입자 12nm 침투 최적값(BT-1119)은 EPR 크기 래더(BT-406)와 교차: 종양→모낭 전달 원리 공유."
+    },
+    {
+      "id": "E_10244",
+      "from": "BT_1117",
+      "to": "BT_136",
+      "relation": "cross_domain_link",
+      "description": "DHT 탈모 유형 맵(BT-1117)은 인체 해부학 n=6 계층(BT-136)과 교차: 피부·모낭 해부 공유."
+    },
+    {
+      "id": "E_10245",
+      "from": "BT_1120",
+      "to": "BT_283",
+      "relation": "cross_domain_link",
+      "description": "트리코스코피 n=6 패턴(BT-1120)은 임상 스코어링 n=6(BT-283)과 교차: 진단 분류 동형성."
+    },
+    {
+      "id": "E_10246",
+      "from": "BT_1120",
+      "to": "BT_408",
+      "relation": "cross_domain_link",
+      "description": "트리코스코피(BT-1120)는 바이오마커 n=6 패널(BT-408)과 교차: 모발 밀도·굵기 바이오마커."
+    },
+    {
+      "id": "E_10247",
+      "from": "DOMAIN_keyboard",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "키보드 공학 도메인은 n=6 완전 수렴(31가설 30 EXACT) — 스위치 접점/HID 폴링/레이아웃 모두 n=6 축."
     }
   ],
   "integrity": {
-    "total_nodes": 153,
-    "total_edges": 481,
+    "total_nodes": 194,
+    "total_edges": 679,
     "node_breakdown": {
-      "constants": 7,
-      "axioms": 9,
-      "breakthrough_theorems": 110,
-      "domains": 16,
-      "groups": 1,
-      "cross_dse_domain": 10
+      "constant": 7,
+      "axiom": 9,
+      "breakthrough_theorem": 141,
+      "domain": 23,
+      "group": 1,
+      "cross_dse_domain": 10,
+      "breakthrough": 3
     },
     "orphan_check": "PASS — 고립 노드 0",
     "new_nodes_this_run": 71,
     "new_edges_this_run": 316,
-    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지.",
+    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 총 노드 194개, 총 엣지 678개. 고립 노드 0개.",
     "near_to_exact_session_2026_04_10_v2": {
       "upgraded_to_exact": [
         {
