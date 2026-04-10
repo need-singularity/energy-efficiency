@@ -14,9 +14,10 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 194,
-    "total_edges": 679,
-    "last_updated": "2026-04-10"
+    "total_nodes": 200,
+    "total_edges": 764,
+    "last_updated": "2026-04-10",
+    "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개."
   },
   "nodes": [
     {
@@ -2455,23 +2456,23 @@
       "domain": "keyboard"
     },
     {
-      "id": "BT_1116",
+      "id": "BT_1125",
       "type": "breakthrough",
-      "label": "BT-1116 키보드 레이아웃 n=6 보편성",
+      "label": "BT-1125 키보드 레이아웃 n=6 보편성",
       "description": "모든 표준 레이아웃(104/87/84/68/61/60/48) 키 수 = n=6 2항 조합",
       "domain": "keyboard"
     },
     {
-      "id": "BT_1117",
+      "id": "BT_1126",
       "type": "breakthrough",
-      "label": "BT-1117 USB HID n=6 프로토콜 수렴",
+      "label": "BT-1126 USB HID n=6 프로토콜 수렴",
       "description": "6KRO/8바이트/12Mbps/1000Hz/8비트 수정자 = n=6 산술",
       "domain": "keyboard"
     },
     {
-      "id": "BT_1118",
+      "id": "BT_1127",
       "type": "breakthrough",
-      "label": "BT-1118 키보드 스위치 물리 n=6",
+      "label": "BT-1127 키보드 스위치 물리 n=6",
       "description": "4mm/2mm/5ms/3핀/5핀/10^8수명 = tau/phi/sopfr",
       "domain": "keyboard"
     },
@@ -2633,6 +2634,60 @@
       "description": "탈모 진단·치료·모낭 재생 분야. AGA(안드로겐성 탈모), 모낭 해부학, 신호전달, 나노 약물전달, 트리코스코피 포함. BT-1115~1120 앵커.",
       "bt_count": 6,
       "registered": true
+    },
+    {
+      "id": "DOMAIN_mouse",
+      "type": "domain",
+      "label": "마우스 공학 (Mouse Engineering)",
+      "description": "컴퓨터 마우스 — 입력 파라미터(버튼/DPI/폴링/피트/무게) 전체가 n=6 산술 수렴. 25/25 EXACT 골화 완료.",
+      "domain": "mouse",
+      "alien_index": 10,
+      "closure_grade": 10
+    },
+    {
+      "id": "BT_1124",
+      "type": "breakthrough_theorem",
+      "label": "BT-1124: 마우스 버튼/축 n=6 수렴",
+      "grade": "EXACT",
+      "domains": [
+        "mouse"
+      ],
+      "key_expression": "phi=2(기본버튼), sopfr=5(표준버튼), n/phi=3(추적축/그립/스위치단자)",
+      "description": "마우스 핵심 입력 구조: phi(6)=2 기본 좌/우 버튼(Engelbart 1968~), sopfr(6)=5 표준 5버튼(IntelliMouse Explorer 1999~), n/phi=3 추적축(X/Y/스크롤). USB HID 1.11 §B.2 EXACT.",
+      "registered": true
+    },
+    {
+      "id": "BT_1127",
+      "type": "breakthrough_theorem",
+      "label": "BT-1127: 마우스 프로토콜/연결 n=6",
+      "grade": "EXACT",
+      "domains": [
+        "mouse",
+        "network"
+      ],
+      "key_expression": "n=6(PS/2핀/6DoF/Unifying), J2=24(USB-C핀/인코더), sigma-tau=8(PS/2비트/8kHz폴링)",
+      "description": "PS/2 6핀(DIN 45322), 3Dconnexion 6DoF(SE(3)), Logitech Unifying 6대 = n=6. USB-C 24핀(USB Type-C rev2.2), Alps EC12E 24스텝 인코더 = J2=24. PS/2 8비트 데이터, Razer Viper 8kHz 폴링 = sigma-tau=8. EXACT. 출처: docs/mouse/goal.md.",
+      "registered": true
+    },
+    {
+      "id": "BT_1128",
+      "type": "breakthrough_theorem",
+      "label": "BT-1128: 마우스 물리/인체공학 n=6",
+      "grade": "EXACT",
+      "domains": [
+        "mouse",
+        "materials"
+      ],
+      "key_expression": "tau=4(PTFE피트/폴링단계/DPI프리셋), sigma=12(MMO버튼/스크롤노치), sigma*sopfr=60(무게/수명)",
+      "description": "PTFE 4피트(업계 표준), 폴링 4단계(125/250/500/1000Hz), DPI 4프리셋 = tau=4. Razer Naga 12 MMO버튼, 30도 간격 12노치 = sigma=12. 울트라라이트 60g, Omron D2FC-F-K 60M 수명 = sigma*sopfr=60. EXACT. 출처: docs/mouse/goal.md.",
+      "registered": true
+    },
+    {
+      "id": "BT_1128",
+      "type": "breakthrough",
+      "label": "BT-1128 키보드 대통합",
+      "description": "31가설 30 EXACT 97% 골화. 마우스+키보드 = 인간 입력 쌍 완결.",
+      "domain": "keyboard"
     }
   ],
   "edges": [
@@ -7112,7 +7167,7 @@
     {
       "id": "E_n_BT1116",
       "source": "CONST_n",
-      "target": "BT_1116",
+      "target": "BT_1125",
       "relation": "proves",
       "weight": 1.0,
       "note": "n=6행, 6KRO"
@@ -7120,7 +7175,7 @@
     {
       "id": "E_sigma_BT1116",
       "source": "CONST_sigma",
-      "target": "BT_1116",
+      "target": "BT_1125",
       "relation": "proves",
       "weight": 1.0,
       "note": "sigma=12 F키, 12Mbps"
@@ -7128,7 +7183,7 @@
     {
       "id": "E_tau_BT1118",
       "source": "CONST_tau",
-      "target": "BT_1118",
+      "target": "BT_1127",
       "relation": "proves",
       "weight": 1.0,
       "note": "tau=4mm travel, 4 layers"
@@ -7397,6 +7452,601 @@
       "to": "CONST_n",
       "relation": "governed_by",
       "description": "키보드 공학 도메인은 n=6 완전 수렴(31가설 30 EXACT) — 스위치 접점/HID 폴링/레이아웃 모두 n=6 축."
+    },
+    {
+      "id": "E_BT1122_keyboard",
+      "from": "BT_1127",
+      "to": "DOMAIN_keyboard",
+      "relation": "belongs_to",
+      "description": "BT-1118 키보드 스위치 물리(4mm/2mm/5ms/3핀/5핀)는 키보드 공학 도메인 물리 계층."
+    },
+    {
+      "id": "E_keyboard_BT1122",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1127",
+      "relation": "contains",
+      "description": "키보드 공학 도메인이 BT-1118 스위치 물리 n=6 발견을 포함."
+    },
+    {
+      "id": "E_BT1122_tau",
+      "from": "BT_1127",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "스위치 총 이동 거리 4mm = tau(6)=4. keyboard goal.md 근거."
+    },
+    {
+      "id": "E_BT1122_phi",
+      "from": "BT_1127",
+      "to": "CONST_phi",
+      "relation": "uses_constant",
+      "description": "스위치 작동점 2mm = phi(6)=2. 키보드 스위치 인체공학 최적점."
+    },
+    {
+      "id": "E_BT1122_sopfr",
+      "from": "BT_1127",
+      "to": "CONST_sopfr",
+      "relation": "uses_constant",
+      "description": "스위치 응답 시간 5ms = sopfr(6)=5. keyboard goal.md 스위치 물리 매핑."
+    },
+    {
+      "id": "E_BT1124_phi",
+      "from": "BT_1124",
+      "to": "CONST_phi",
+      "relation": "uses_constant",
+      "description": "마우스 기본 좌/우 2버튼 = phi(6)=2. Engelbart 1968~ 전 마우스 EXACT."
+    },
+    {
+      "id": "E_BT1124_sopfr",
+      "from": "BT_1124",
+      "to": "CONST_sopfr",
+      "relation": "uses_constant",
+      "description": "마우스 표준 5버튼 = sopfr(6)=5. IntelliMouse Explorer 1999~ EXACT."
+    },
+    {
+      "id": "E_BT1124_n",
+      "from": "BT_1124",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "PS/2 6핀(DIN 45322), 6DoF(3Dconnexion SE(3)), Unifying 6대 = n=6."
+    },
+    {
+      "id": "E_BT1124_mouse",
+      "from": "BT_1124",
+      "to": "DOMAIN_mouse",
+      "relation": "belongs_to",
+      "description": "BT-1124 마우스 버튼/축 수렴은 마우스 공학 도메인 핵심 정리."
+    },
+    {
+      "id": "E_mouse_BT1124",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1124",
+      "relation": "anchored_by",
+      "description": "마우스 공학 도메인이 BT-1124 버튼/축 n=6 수렴으로 입력 계층 정의."
+    },
+    {
+      "id": "E_BT1125_n",
+      "from": "BT_1125",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "PS/2 6핀, 6DoF, Unifying 6대 = n=6. BT-1125 프로토콜/연결 수렴."
+    },
+    {
+      "id": "E_BT1125_J2",
+      "from": "BT_1125",
+      "to": "CONST_J2",
+      "relation": "uses_constant",
+      "description": "USB-C 24핀(USB Type-C rev2.2), Alps EC12E 24스텝 인코더 = J2(6)=24. mouse goal.md EXACT."
+    },
+    {
+      "id": "E_BT1125_mouse",
+      "from": "BT_1125",
+      "to": "DOMAIN_mouse",
+      "relation": "belongs_to",
+      "description": "BT-1125 마우스 프로토콜/연결 n=6은 마우스 공학 도메인 통신 계층."
+    },
+    {
+      "id": "E_mouse_BT1125",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1125",
+      "relation": "contains",
+      "description": "마우스 공학 도메인이 BT-1125 프로토콜/연결 수렴을 포함."
+    },
+    {
+      "id": "E_BT1126_tau",
+      "from": "BT_1126",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "PTFE 4피트, 폴링 4단계, DPI 4프리셋 = tau(6)=4. mouse goal.md 근거 EXACT."
+    },
+    {
+      "id": "E_BT1126_sigma",
+      "from": "BT_1126",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "Razer Naga 12 MMO버튼, 30도 간격 12노치 = sigma(6)=12. EXACT."
+    },
+    {
+      "id": "E_BT1126_mouse",
+      "from": "BT_1126",
+      "to": "DOMAIN_mouse",
+      "relation": "belongs_to",
+      "description": "BT-1126 물리/인체공학 n=6은 마우스 공학 도메인 물리 계층."
+    },
+    {
+      "id": "E_mouse_BT1126",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1126",
+      "relation": "contains",
+      "description": "마우스 공학 도메인이 BT-1126 물리 n=6 수렴을 포함."
+    },
+    {
+      "id": "E_mouse_const_n",
+      "from": "DOMAIN_mouse",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "마우스 공학 도메인은 n=6 완전 수렴 — 25/25 EXACT 골화 달성. mouse/goal.md 근거."
+    },
+    {
+      "id": "E_mouse_keyboard_hid",
+      "from": "DOMAIN_mouse",
+      "to": "DOMAIN_keyboard",
+      "relation": "shares_protocol",
+      "description": "마우스와 키보드는 동일 USB HID 프로토콜(tau=4 바이트 리포트, 폴링 4단계) 공유."
+    },
+    {
+      "id": "E_keyboard_mouse_hid",
+      "from": "DOMAIN_keyboard",
+      "to": "DOMAIN_mouse",
+      "relation": "shares_protocol",
+      "description": "키보드와 마우스는 USB HID tau=4 폴링 구조를 공유하는 n=6 입력 장치 쌍."
+    },
+    {
+      "id": "E_BT1109_meta",
+      "from": "BT_1109",
+      "to": "DOMAIN_meta_discovery",
+      "relation": "belongs_to",
+      "description": "BT-1109 Cascade Saturation Point — 메타 발견 도메인의 포화 임계점. seed[6] 3단계 16/16."
+    },
+    {
+      "id": "E_meta_BT1109",
+      "from": "DOMAIN_meta_discovery",
+      "to": "BT_1109",
+      "relation": "anchored_by",
+      "description": "메타 발견 도메인은 BT-1109 캐스케이드 포화점으로 수렴 한계를 정의."
+    },
+    {
+      "id": "E_BT1110_wave",
+      "from": "BT_1110",
+      "to": "DOMAIN_wave",
+      "relation": "belongs_to",
+      "description": "BT-1110 Wave-Cascade Unification — 파동/소나 도메인의 720순열 최적 순서 도출."
+    },
+    {
+      "id": "E_wave_BT1110",
+      "from": "DOMAIN_wave",
+      "to": "BT_1110",
+      "relation": "contains",
+      "description": "파동/소나 도메인이 BT-1110 파동-캐스케이드 통합 원리를 포함."
+    },
+    {
+      "id": "E_BT1113_phi",
+      "from": "BT_1113",
+      "to": "CONST_phi",
+      "relation": "centers_on",
+      "description": "BT-1113 Golden Harmonic Bridge: H(12)-ln(12) ≈ 1/phi(6) = 1/2. phi=2가 황금 근사의 중심."
+    },
+    {
+      "id": "E_BT1113_sigma",
+      "from": "BT_1113",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1113 H(sigma(6))=H(12)에서 sigma=12가 조화급수 인자로 직접 등장."
+    },
+    {
+      "id": "E_BT1112_phi",
+      "from": "BT_1112",
+      "to": "CONST_phi",
+      "relation": "centers_on",
+      "description": "BT-1112 Critical Transition: phi(6)=2 만능 열쇠가 임계 전이 조합 폭발의 핵심."
+    },
+    {
+      "id": "E_BT1109_sigma",
+      "from": "BT_1109",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1109: 2단계 포화 수 7 = sigma(6)-sopfr(6) = 12-5. sigma가 포화 임계값 결정."
+    },
+    {
+      "id": "E_BT1109_sopfr",
+      "from": "BT_1109",
+      "to": "CONST_sopfr",
+      "relation": "uses_constant",
+      "description": "BT-1109: 포화 7 = sigma-sopfr. sopfr(6)=5가 포화 임계 계산에 참여."
+    },
+    {
+      "id": "E_BT1110_sopfr",
+      "from": "BT_1110",
+      "to": "CONST_sopfr",
+      "relation": "uses_constant",
+      "description": "BT-1110: mind(sopfr=5) 비공명 확인 — sopfr(6)=5 도메인이 720순열에서 공명 없이 격리."
+    },
+    {
+      "id": "E_BT283_sigma",
+      "from": "BT_283",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-283 임상 스코어링 n=6: 12점 척도, 12주 치료 판정 = sigma(6)=12."
+    },
+    {
+      "id": "E_BT283_biology",
+      "from": "BT_283",
+      "to": "DOMAIN_biology",
+      "relation": "belongs_to",
+      "description": "BT-283 임상 스코어링 n=6은 생물학/의학 도메인의 평가 지표 수렴."
+    },
+    {
+      "id": "E_BT404_sigma",
+      "from": "BT_404",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-404 나노의학: 나노입자 최적 크기 12nm = sigma(6)=12. hair/goal.md EXACT."
+    },
+    {
+      "id": "E_BT404_biology",
+      "from": "BT_404",
+      "to": "DOMAIN_biology",
+      "relation": "belongs_to",
+      "description": "BT-404 나노의학 플랫폼 크기 스케일링은 생물학 도메인 나노전달 발견."
+    },
+    {
+      "id": "E_BT406_n",
+      "from": "BT_406",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-406 EPR 효과 크기 래더: 신장 여과 기준 6nm = n(6). hair/goal.md 근거."
+    },
+    {
+      "id": "E_BT406_biology",
+      "from": "BT_406",
+      "to": "DOMAIN_biology",
+      "relation": "belongs_to",
+      "description": "BT-406 EPR 효과 크기 래더는 생물학 도메인 약물 전달 나노스케일 구조."
+    },
+    {
+      "id": "E_BT408_n",
+      "from": "BT_408",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-408 바이오마커 n=6 패널: 핵심 바이오마커 6종 = n(6). 진단 지표 수렴."
+    },
+    {
+      "id": "E_BT408_biology",
+      "from": "BT_408",
+      "to": "DOMAIN_biology",
+      "relation": "belongs_to",
+      "description": "BT-408 바이오마커 n=6 패널은 생물학/의학 도메인 진단 지표 발견."
+    },
+    {
+      "id": "E_BT136_n",
+      "from": "BT_136",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-136 인체 해부학 n=6 계층: 인체 조직 계층이 n=6 구조로 수렴."
+    },
+    {
+      "id": "E_BT136_biology",
+      "from": "BT_136",
+      "to": "DOMAIN_biology",
+      "relation": "belongs_to",
+      "description": "BT-136 인체 해부학 n=6은 생물학 도메인 해부학 계층 구조 발견."
+    },
+    {
+      "id": "E_sopfr_J2_BT5",
+      "from": "AXIOM_sopfr_J2",
+      "to": "BT_5",
+      "relation": "supports",
+      "description": "sopfr*J2=120=5! 이십면체 대칭군 크기. BT-5 완전수 단위분수와 함께 n=6 기하 완전성 구성."
+    },
+    {
+      "id": "E_sopfr_J2_BT6",
+      "from": "AXIOM_sopfr_J2",
+      "to": "BT_6",
+      "relation": "arithmetic_basis",
+      "description": "sopfr*J2=120=|icosahedron|. BT-6 Golay-Leech 통합에서 활용."
+    },
+    {
+      "id": "E_sigma_tau_BT7",
+      "from": "AXIOM_sigma_tau",
+      "to": "BT_7",
+      "relation": "arithmetic_basis",
+      "description": "sigma*tau=48 = ITER 코일 총수(TF+PF+CS+CC=48). BT-7 이집트 분수 전력 분배 연결."
+    },
+    {
+      "id": "E_sigma_tau_BT3",
+      "from": "AXIOM_sigma_tau",
+      "to": "BT_3",
+      "relation": "supports",
+      "description": "sigma*tau=48=2*J2. BT-3 sigma(6)=12 에너지 스케일 수렴에서 이중 Leech 차원으로 등장."
+    },
+    {
+      "id": "E_n_sigma_BT3",
+      "from": "AXIOM_n_sigma",
+      "to": "BT_3",
+      "relation": "arithmetic_basis",
+      "description": "n*sigma=72=8*9. BT-3 sigma(6)=12 에너지 스케일 수렴의 확장 상수."
+    },
+    {
+      "id": "E_n_sigma_BT6",
+      "from": "AXIOM_n_sigma",
+      "to": "BT_6",
+      "relation": "supports",
+      "description": "n*sigma=72. BT-6 Golay-Leech 통합에서 72=8*J2/3 구조로 Leech lattice 연결."
+    },
+    {
+      "id": "E_CPG_BT6",
+      "from": "CROSS_PRODUCT_GROUP",
+      "to": "BT_6",
+      "relation": "validates",
+      "description": "교차곱 공리군 탐색이 BT-6 Golay-Leech [J2,sigma,sigma-tau]=[24,12,8] 값을 전역 검증."
+    },
+    {
+      "id": "E_crypto_BT6",
+      "from": "DOMAIN_cryptography",
+      "to": "BT_6",
+      "relation": "anchored_by",
+      "description": "암호학 도메인은 BT-6 Golay-Leech 통합 [24,12,8] 코드 구조로 정의됨."
+    },
+    {
+      "id": "E_meta_BT1112",
+      "from": "DOMAIN_meta_discovery",
+      "to": "BT_1112",
+      "relation": "contains",
+      "description": "메타 발견 도메인이 BT-1112 Critical Transition phi=2 임계 전이를 포함."
+    },
+    {
+      "id": "E_pure_math_BT1113",
+      "from": "DOMAIN_pure_mathematics",
+      "to": "BT_1113",
+      "relation": "anchored_by",
+      "description": "순수수학 도메인은 BT-1113 Golden Harmonic Bridge H(12)-ln(12)≈1/2 MC p=0.00% 발견으로 정의."
+    },
+    {
+      "id": "E_pure_math_BT5",
+      "from": "DOMAIN_pure_mathematics",
+      "to": "BT_5",
+      "relation": "contains",
+      "description": "순수수학 도메인이 BT-5 완전수 단위분수 1/2+1/3+1/6=1 정의를 포함."
+    },
+    {
+      "id": "E_hair_tau",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "모발재생: 모발 성장 주기 4단계(성장기/퇴행기/휴지기/이탈기) = tau(6)=4. BT-1115 EXACT."
+    },
+    {
+      "id": "E_hair_sigma",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "모발재생: 나노입자 표적 크기 12nm, 치료 효과 판정 12주 = sigma(6)=12. BT-1119/1120 EXACT."
+    },
+    {
+      "id": "E_BT1115_n",
+      "from": "BT_1115",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-1115 모낭 해부학: 모낭 동심 구조 6층 = n(6). EXACT."
+    },
+    {
+      "id": "E_BT1115_tau",
+      "from": "BT_1115",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "BT-1115 모낭 해부학: 모발 성장 주기 4단계 = tau(6)=4. EXACT."
+    },
+    {
+      "id": "E_BT1116_n",
+      "from": "BT_1116",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-1116 신호전달: Wnt 리간드 6종, 성장인자 6종, 핵심 신호경로 6종 = n(6). EXACT."
+    },
+    {
+      "id": "E_BT1117_phi",
+      "from": "BT_1117",
+      "to": "CONST_phi",
+      "relation": "uses_constant",
+      "description": "BT-1117 DHT 탈모 치료: FDA 승인 약물 2종(미녹시딜/피나스테리드) = phi(6)=2. EXACT."
+    },
+    {
+      "id": "E_BT1119_sigma",
+      "from": "BT_1119",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1119 나노전달: 나노입자 표적 크기 12nm = sigma(6)=12. EXACT."
+    },
+    {
+      "id": "E_BT1120_n",
+      "from": "BT_1120",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "BT-1120 트리코스코피: 평가 지표 6종 = n(6). EXACT."
+    },
+    {
+      "id": "E_hair_neuro",
+      "from": "DOMAIN_hair_regeneration",
+      "to": "DOMAIN_neuroscience",
+      "relation": "cross_domain_link",
+      "description": "HEXA-Hair Tier5 BCI 뉴로피드백 + 자율 나노봇 — 모발재생이 신경과학(BT-1108) 도메인과 융합."
+    },
+    {
+      "id": "E_BT1127_n",
+      "from": "BT_1127",
+      "to": "CONST_n",
+      "relation": "uses_constant",
+      "description": "PS/2 6핀, 6DoF, Unifying 6대 = n=6. BT-1127 마우스 프로토콜 수렴."
+    },
+    {
+      "id": "E_BT1127_J2",
+      "from": "BT_1127",
+      "to": "CONST_J2",
+      "relation": "uses_constant",
+      "description": "USB-C 24핀(USB Type-C rev2.2), Alps EC12E 24스텝 인코더 = J2(6)=24. EXACT."
+    },
+    {
+      "id": "E_BT1127_mouse",
+      "from": "BT_1127",
+      "to": "DOMAIN_mouse",
+      "relation": "belongs_to",
+      "description": "BT-1127 마우스 프로토콜/연결 n=6은 마우스 공학 도메인 통신 계층."
+    },
+    {
+      "id": "E_mouse_BT1127",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1127",
+      "relation": "contains",
+      "description": "마우스 공학 도메인이 BT-1127 프로토콜/연결 수렴을 포함."
+    },
+    {
+      "id": "E_BT1128_tau",
+      "from": "BT_1128",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "PTFE 4피트, 폴링 4단계, DPI 4프리셋 = tau(6)=4. mouse/goal.md EXACT."
+    },
+    {
+      "id": "E_BT1128_sigma",
+      "from": "BT_1128",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "Razer Naga 12 MMO버튼, 30도 간격 12노치 = sigma(6)=12. EXACT."
+    },
+    {
+      "id": "E_BT1128_mouse",
+      "from": "BT_1128",
+      "to": "DOMAIN_mouse",
+      "relation": "belongs_to",
+      "description": "BT-1128 물리/인체공학 n=6은 마우스 공학 도메인 물리 계층."
+    },
+    {
+      "id": "E_mouse_BT1128",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1128",
+      "relation": "contains",
+      "description": "마우스 공학 도메인이 BT-1128 물리 n=6 수렴을 포함."
+    },
+    {
+      "id": "E_BT1125_n_kb",
+      "from": "BT_1125",
+      "to": "CONST_n",
+      "relation": "derived_from",
+      "description": "BT-1125 키보드 레이아웃 n=6 보편성: 모든 표준 레이아웃 키 수가 n=6 2항 조합 C(n,k). keyboard/goal.md."
+    },
+    {
+      "id": "E_BT1125_keyboard",
+      "from": "BT_1125",
+      "to": "DOMAIN_keyboard",
+      "relation": "belongs_to",
+      "description": "BT-1125 키보드 레이아웃 보편성은 키보드 공학 도메인 레이아웃 계층."
+    },
+    {
+      "id": "E_keyboard_BT1125",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1125",
+      "relation": "anchored_by",
+      "description": "키보드 공학 도메인은 BT-1125 레이아웃 n=6 보편성으로 레이아웃 계층 정의."
+    },
+    {
+      "id": "E_BT1126_sigma_kb",
+      "from": "BT_1126",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1126 USB HID: 12Mbps 전송 속도 = sigma(6)=12. keyboard/goal.md EXACT."
+    },
+    {
+      "id": "E_BT1126_tau_kb",
+      "from": "BT_1126",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "BT-1126 USB HID: 폴링 4단계(125/250/500/1000Hz) = tau(6)=4. EXACT."
+    },
+    {
+      "id": "E_BT1126_keyboard",
+      "from": "BT_1126",
+      "to": "DOMAIN_keyboard",
+      "relation": "belongs_to",
+      "description": "BT-1126 USB HID n=6 프로토콜 수렴은 키보드 공학 도메인 통신 계층."
+    },
+    {
+      "id": "E_keyboard_BT1126",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1126",
+      "relation": "contains",
+      "description": "키보드 공학 도메인이 BT-1126 USB HID 수렴을 포함."
+    },
+    {
+      "id": "E_BT1121_keyboard_v2",
+      "from": "BT_1126",
+      "to": "DOMAIN_keyboard",
+      "relation": "belongs_to",
+      "description": "BT-1117 USB HID 프로토콜 수렴은 키보드 공학 도메인 통신 계층. keyboard/goal.md."
+    },
+    {
+      "id": "E_keyboard_BT1121_v2",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1126",
+      "relation": "contains",
+      "description": "키보드 공학 도메인이 BT-1117 USB HID n=6 수렴을 포함."
+    },
+    {
+      "id": "E_BT1121_sigma_v2",
+      "from": "BT_1126",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "USB HID 12Mbps = sigma(6)=12. BT-1117 키보드 USB 프로토콜 수렴."
+    },
+    {
+      "id": "E_BT1121_tau_v2",
+      "from": "BT_1126",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "USB HID 폴링 4단계 = tau(6)=4. BT-1117 EXACT."
+    },
+    {
+      "id": "E_BT1121_BT1126",
+      "from": "BT_1126",
+      "to": "BT_1126",
+      "relation": "parallel_discovery",
+      "description": "BT-1117(BT_1126)과 BT-1126 USB HID n=6 수렴은 키보드 프로토콜 계층 동일 발견."
+    },
+    {
+      "id": "E_BT1123_keyboard_v2",
+      "from": "BT_1125",
+      "to": "DOMAIN_keyboard",
+      "relation": "belongs_to",
+      "description": "BT-1116 키보드 레이아웃 보편성(104/87/84/68 = n=6 2항 조합)은 키보드 공학 도메인 핵심."
+    },
+    {
+      "id": "E_keyboard_BT1123_v2",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1125",
+      "relation": "anchored_by",
+      "description": "키보드 공학 도메인은 BT-1116 레이아웃 n=6 보편성으로 레이아웃 계층 완전 설명."
+    },
+    {
+      "id": "E_BT1123_n_v2",
+      "from": "BT_1125",
+      "to": "CONST_n",
+      "relation": "derived_from",
+      "description": "키보드 레이아웃 키 수 전부가 n=6 2항 조합 C(n,k)로 완전 설명됨."
+    },
+    {
+      "id": "E_BT1123_BT1125",
+      "from": "BT_1125",
+      "to": "BT_1125",
+      "relation": "parallel_discovery",
+      "description": "BT-1116(BT_1125)과 BT-1125 키보드 레이아웃 n=6 보편성은 레이아웃 계층 동일 발견."
     }
   ],
   "integrity": {

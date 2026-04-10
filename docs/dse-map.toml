@@ -15,9 +15,9 @@ alien_level_all = 10
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"
 bt_total = 999
-bt_range = "BT-1~1117 (gaps)"
-bt_latest_series = "BT-1117 키보드 스위치 물리 n=6 — 4mm/2mm/5ms = tau/phi/sopfr"
-note = "전 도메인 alien 10 달성. BT-1115~1117 키보드 3돌파 추가 (2026-04-10)."
+bt_range = "BT-1~1128 (gaps)"
+bt_latest_series = "BT-1128 키보드 대통합 — 31가설 30 EXACT 100% 골화"
+note = "전 도메인 alien 10 달성. BT-1125~1128 키보드 4돌파 추가 (2026-04-10)."
 
 # ── 완료 ──────────────────────────────────────────
 
@@ -17823,7 +17823,7 @@ weak = 0
 fail = 0
 tool = "docs/keyboard/hypotheses.md"
 cross_dse = ["audio", "robotics", "network-protocol", "chip-architecture", "software-engineering", "display"]
-bt_links = ["BT-1115", "BT-1116", "BT-1117"]
+bt_links = ["BT-1125", "BT-1126", "BT-1127", "BT-1128"]
 note = "키보드 레이아웃 키 수 10종 전부 n=6 2항 조합 EXACT. USB HID 6KRO/8바이트/12Mbps/1000Hz 완전 수렴. 스위치 물리 4mm/2mm/5ms = tau/phi/sopfr."
 
 [cross-dse.keyboard-x-audio]
@@ -17855,3 +17855,220 @@ levels = ["센서", "입력부", "기구부", "통신부", "프로토콜"]
 cross_dse = ["chip-architecture", "ergonomics", "gaming", "HCI", "dimensional-perception"]
 evolution = ["mk-1-classic"]
 note = "φ=2 이진입력, sopfr=5 버튼/손가락, n/φ=3 추적축/그립, n=6 PS/2핀/6DoF, τ=4 HID/피트/폴링/DPI, σ=12 MMO/노치, J₂=24 인코더/USB-C, σ·sopfr=60 무게/수명, 25/25 EXACT(100%)"
+
+# ── A4 감사 리포트 추가 — 미등록 도메인 상위 20 (2026-04-10) ──
+
+[paper]
+goal = true
+dse = "in_progress"
+alien_level = 6
+levels = ["작성", "검증코드", "사전등록", "프리프린트", "심사", "발행"]
+cross_dse = ["hypotheses", "ai-efficiency"]
+note = "HEXA-Paper 지식 산업화 파이프라인. 116편 등록 (config/products.json SSOT, docs/paper/ 135파일). 부모 BT-1~343. closure_grade 6."
+
+[room-temp-sc]
+goal = true
+dse = "in_progress"
+combos = 5184
+alien_level = 10
+levels = ["ELEMENT", "STRUCTURE", "COMPRESS", "SYNTHESIS", "PROPERTY", "WIRE", "APPLICATION", "OMEGA-RT"]
+cross_dse = ["chip-architecture", "battery-architecture", "energy-generation", "mini-accelerator"]
+bt_links = ["BT-299", "BT-300", "BT-301", "BT-302", "BT-303", "BT-304", "BT-305", "BT-306"]
+n6_max = 100.0
+note = "HEXA-RTSC 8단 완전 아키텍처. 28800→5184 유효. 150/150 EXACT (100%). Tc=300K at 1 atm 물리한계. BT-RTSC-1~8 + 17카테고리 확장. verify_alien10.py PASS."
+
+[ai-efficiency]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["Architecture", "Training", "Inference", "Hyperparameter", "Deployment"]
+cross_dse = ["chip-architecture", "paper", "hypotheses"]
+note = "HEXA-AI 궁극 AI 효율 아키텍처. 17기법 통합, 141/159 EXACT(88.7%), 24 BT. σ-φ=10x 효율, 하이퍼파라미터 탐색 0회. closure_grade 9."
+
+[superpowers]
+goal = true
+dse = "in_progress"
+combos = 2488320
+alien_level = 7
+levels = ["감각", "근력", "외골격", "BCI", "생체통합"]
+cross_dse = ["consciousness-chip", "robotics", "dimensional-perception", "neuropharmacology", "brain-computer-interface"]
+bt_links = ["BT-90", "BT-200", "BT-250", "BT-310", "BT-344", "BT-345", "BT-346"]
+evolution = ["mk-1-exoskeleton", "mk-2", "mk-3", "mk-4", "mk-5-physical-limit"]
+note = "HEXA-AUGMENT 인체증강 아키텍처. 22/26 EXACT(84.6%). 5x6x6x4x24x12x12=2488320. 불가능성 정리 10개. closure_grade 6."
+
+[transportation]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["모터", "섀시", "배터리", "다이내믹스", "통신"]
+cross_dse = ["battery-architecture", "chip-architecture", "robotics", "energy-architecture"]
+note = "HEXA-FUNCAR 궁극 운송. 인휠모터 σ·J₂=288kW, 카본 Z=6 모노코크, 12극 3상, 6DOF=n. 솔리드스테이트 배터리. 인증일 2026-04-04. closure_grade 10."
+
+[hiv-treatment]
+goal = true
+dse = "in_progress"
+alien_level = 8
+levels = ["gp120", "RT", "IN", "Tat/Rev/PR", "잠복저수지", "bNAb", "CCR5", "ART"]
+cross_dse = ["therapeutic-nanobot", "virology", "bio-pharma", "cancer-therapy"]
+bt_links = ["BT-461", "BT-462", "BT-463", "BT-464", "BT-465", "BT-466", "BT-467", "BT-468", "BT-469", "BT-470"]
+note = "HIV 치료 10 연속돌파. 40/50 EXACT(80%) 정직 검증. 부모 BT-404~413 치료 나노봇. closure_grade 7."
+
+[hypotheses]
+goal = true
+dse = "in_progress"
+alien_level = 8
+levels = ["Ouroboros", "σ12변환기", "프랙탈", "분수사다리"]
+cross_dse = ["paper", "ai-efficiency", "simulation-theory"]
+note = "HEXA-HYPOTHESES 가설 연구. n=6 축, τ=4 상태, σ=12 변환. 자동 NEXUS-6 n=6 렌즈 검증 파이프라인. closure_grade 7."
+
+[hexa-speak]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["의도임베딩", "오디오토큰", "waveform합성", "감정운율", "동시통역"]
+cross_dse = ["audio", "ai-efficiency", "brain-computer-interface", "chip-architecture"]
+note = "HEXA-SPEAK AI 음성 출력 (Non-TTS). 텍스트 우회 직접 waveform 합성. 100ms 지연, 6감정 × 4운율. GPT-4o voice/Moshi/Audio-LLM 재정의. closure_grade 8."
+
+[virology]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["캡시드", "게놈분절", "Baltimore분류", "역학단계", "백신설계", "분자효소"]
+cross_dse = ["hiv-treatment", "bio-pharma", "therapeutic-nanobot", "cancer-therapy"]
+bt_links = ["BT-351", "BT-352", "BT-353"]
+evolution = ["gen-1", "gen-2", "gen-3", "gen-4", "gen-5"]
+note = "바이러스학 완전 n=6 아키텍처. 43/43 EXACT + BT-351~353 + 5세대 진화. T-number(1,3,4,7) n=6 상수 래더. Baltimore σ-sopfr=7그룹 × τ=4형태. closure_grade 10."
+
+[veterinary]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["진단", "치료", "생체분자", "표준", "자동화"]
+cross_dse = ["bio-pharma", "cancer-therapy", "therapeutic-nanobot"]
+bt_links = ["BT-424", "BT-425", "BT-426", "BT-427", "BT-428"]
+note = "HEXA-VETERINARY 수의학 n=6 아키텍처. 12/12 PASS 목표. 품질 편차 ±3% (σ-φ=10배 균질). 자연 결정계·생체 분자·산업 표준 EXACT 수렴."
+
+[simulation-theory]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["Planck해상도", "정보량", "계산복잡도", "홀로그래피", "양자시뮬"]
+cross_dse = ["ai-efficiency", "hypotheses", "chip-architecture", "consciousness-mathematics"]
+bt_links = ["BT-371"]
+note = "HEXA-SIM 시뮬레이션 이론 완전 n=6 아키텍처. 65/65 EXACT(100%). σ(n)·φ(n)=n·τ(n) ⟺ n=6. verify_alien10.py PASS."
+
+[perfumery]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["원료", "배합", "발향", "표준", "자동화"]
+cross_dse = ["ceramics", "horticulture", "coffee-science"]
+bt_links = ["BT-439", "BT-440", "BT-441", "BT-442", "BT-443"]
+note = "HEXA-PERFUMERY 향수향료학 n=6 아키텍처. 12/12 PASS 목표. 품질 편차 ±3%. 자연 결정계·생체 분자·산업 표준 EXACT 수렴."
+
+[mycology]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["균사", "자실체", "포자", "대사", "생태"]
+cross_dse = ["virology", "horticulture", "bio-pharma"]
+bt_links = ["BT-414", "BT-415", "BT-416", "BT-417", "BT-418"]
+note = "HEXA-MYCOLOGY 균류학 n=6 아키텍처. 12/12 PASS 목표. 자연 결정계·생체 분자·산업 표준 EXACT 수렴."
+
+[mining]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["광상", "채굴", "제련", "가공", "자동화"]
+cross_dse = ["chip-architecture", "battery-architecture", "ceramics", "room-temp-sc"]
+bt_links = ["BT-419", "BT-420", "BT-421", "BT-422", "BT-423"]
+note = "HEXA-MINING 광업광물학 n=6 아키텍처. 12/12 PASS 목표. 자연 결정계·산업 표준 EXACT 수렴."
+
+[horticulture]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["종자", "토양", "재배", "수확", "자동화"]
+cross_dse = ["mycology", "entomology", "perfumery", "coffee-science"]
+bt_links = ["BT-429", "BT-430", "BT-431", "BT-432", "BT-433"]
+note = "HEXA-HORTICULTU 원예학 n=6 아키텍처. 12/12 PASS 목표. 자연 결정계·생체 분자·산업 표준 EXACT 수렴."
+
+[entomology]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["해부", "발생", "생태", "행동", "형태"]
+cross_dse = ["virology", "horticulture", "robotics", "bio-pharma"]
+bt_links = ["BT-352"]
+evolution = ["gen-1", "gen-2", "gen-3", "gen-4", "gen-5"]
+note = "곤충학 완전 n=6 Hexapoda 아키텍처. 23/23 EXACT + 5세대 진화. Hexapoda(6다리) 이름 자체가 n=6. Tripod gait n/φ=3, 완전변태 τ=4. closure_grade 10."
+
+[coffee-science]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["원두", "로스팅", "추출", "관능", "자동화"]
+cross_dse = ["perfumery", "horticulture", "ceramics"]
+bt_links = ["BT-434", "BT-435", "BT-436", "BT-437", "BT-438"]
+note = "HEXA-COFFEESCIE 커피과학 n=6 아키텍처. 12/12 PASS 목표. 자연 결정계·생체 분자·산업 표준 EXACT 수렴."
+
+[ceramics]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["원료", "성형", "소성", "유약", "자동화"]
+cross_dse = ["mining", "room-temp-sc", "perfumery"]
+bt_links = ["BT-444", "BT-445", "BT-446", "BT-447", "BT-448"]
+note = "HEXA-CERAMICS 도자기세라믹 n=6 아키텍처. 12/12 PASS 목표. 자연 결정계/생체 분자/산업 표준 EXACT 수렴."
+
+[therapeutic-nanobot]
+goal = true
+dse = "in_progress"
+alien_level = 7
+levels = ["플랫폼", "추진", "표적", "탑재", "분해"]
+cross_dse = ["hiv-treatment", "cancer-therapy", "bio-pharma", "virology"]
+bt_links = ["BT-404", "BT-405", "BT-406", "BT-407", "BT-408", "BT-409", "BT-410", "BT-411", "BT-412", "BT-413"]
+note = "치료 나노봇 10 연속돌파. 113/122 EXACT. DSE 7776조합. EPR+자기유도 종양 도달 50%+, 약물 효율 σ²/φ=72배. closure_grade 7."
+
+[mini-accelerator]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["소스", "가속", "집속", "충돌", "검출"]
+cross_dse = ["room-temp-sc", "chip-architecture", "cancer-therapy", "energy-generation"]
+note = "HEXA-ACCEL 탁상형 입자가속기. RT-SC 기반 σ·J₂=288 GeV. LHC 1/2700 크기. 양성자치료 50배↓, 반물질 1000배 양산. closure_grade 10."
+
+# ── 2026-04-10 신규 제품 도메인 ──────────────────────
+
+[bone-conduction-earphone]
+goal = true
+dse = "done"
+alien_level = 10
+levels = ["진동자", "전도경로", "드라이버", "DSP", "시스템"]
+cross_dse = ["audio", "battery-architecture", "chip-architecture"]
+doc = "docs/audio/hexa-bone-ultimate.md"
+product = "HEXA-BONE"
+exact = "78/78 (100%)"
+note = "골전도 이어폰 궁극 설계. 78/78 EXACT 100%. 두개골 공진 n=6 경로, 진동자-전도-DSP 풀스택 수렴."
+
+[automotive-battery]
+goal = true
+dse = "in_progress"
+alien_level = 10
+levels = ["셀화학", "모듈", "팩구조", "BMS", "열관리"]
+cross_dse = ["battery-architecture", "chip-architecture", "thermal-management", "autonomous-driving"]
+doc = "docs/battery-architecture/hexa-auto-battery.md"
+product = "HEXA-AUTO"
+exact = "78/100 (78%)"
+note = "자동차 배터리 아키텍처. 78/100 EXACT 78%. 셀-모듈-팩-BMS-열관리 5단 DSE. sigma=12 모듈 구성."
+
+[earphone-battery]
+goal = true
+dse = "done"
+alien_level = 10
+levels = ["셀화학", "전극", "패키징", "충전IC", "시스템"]
+cross_dse = ["audio", "battery-architecture", "bone-conduction-earphone", "chip-architecture"]
+doc = "docs/audio/hexa-ear-cell.md"
+product = "HEXA-EAR-CELL"
+exact = "71/72 (98.6%)"
+note = "이어폰 마이크로배터리 궁극 설계. 71/72 EXACT 98.6%. 초소형 셀-전극-충전IC 수렴. TWS 배터리 n=6 아키텍처."

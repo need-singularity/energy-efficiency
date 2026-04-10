@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "total_products": 143,
+    "total_products": 146,
     "total_domains": 135,
     "total_papers": 116,
     "papers_chunk_c_2026-04-08": {
@@ -825,6 +825,20 @@
               "path": "docs/paper/n6-datacenter-reactor-paper.md"
             }
           ]
+        },
+        {
+          "name": "HEXA-AUTO 자동차배터리",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "궁극의 자동차배터리 SLI+EV 통합 설계 — 6셀=n 납축/96S=sigma*(sigma-tau) EV/100 파라미터, 78/100 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/battery-architecture/hexa-auto-battery.md"
+            }
+          ],
+          "exact": "78/100"
         }
       ],
       "anchor": "-에너지-energy",
@@ -1608,6 +1622,34 @@
               "path": "docs/paper/n6-hexa-ear-paper.md"
             }
           ]
+        },
+        {
+          "name": "HEXA-BONE 골전도 이어폰",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "100% 골전도 전용 8단 설계 — Ti+그래핀 듀얼진동자/AI 골밀도보정/뇌파연동, 78/78 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/audio/hexa-bone-ultimate.md"
+            }
+          ],
+          "exact": "78/78"
+        },
+        {
+          "name": "HEXA-EAR-CELL 이어폰 배터리",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "궁극의 이어폰 배터리 6단 설계 — sigma=12h 수명/J2=24h 총수명/72 파라미터, 71/72 EXACT",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/audio/hexa-ear-cell.md"
+            }
+          ],
+          "exact": "71/72"
         }
       ],
       "anchor": "-오디오-audio",

@@ -583,3 +583,15 @@ pub use euler_golden_perfect_lens::EulerGoldenPerfectLens;
 // ── BCI 뉴로피드백 렌즈 (BT-1108 확장) ──
 pub mod bci_neurofeedback_lens;
 pub use bci_neurofeedback_lens::BciNeurofeedbackLens;
+
+// ── 모발재생 렌즈 (BT-1115~1120) ──
+pub mod hair_regeneration_lens;
+pub use hair_regeneration_lens::HairRegenerationLens;
+
+// ── 키보드 인체공학 렌즈 (BT-1125~1128) ──
+pub mod keyboard_ergonomics_lens;
+pub use keyboard_ergonomics_lens::KeyboardErgonomicsLens;
+
+// ── 마우스 인체공학 렌즈 (HEXA-MOUSE) ──
+pub mod mouse_ergonomics_lens;
+pub use mouse_ergonomics_lens::MouseErgonomicsLens;
