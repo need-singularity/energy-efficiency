@@ -8,7 +8,7 @@
 - 확인 질문 없이 즉시 Bash 실행
 
 ```sh
-hexa shared/blowup/core/blowup.hexa <domain> 3 --no-graph --seeds "$(hexa shared/blowup/seed/seed_engine.hexa merge | tr '|' ',')"
+hexa shared/blowup/core/blowup.hexa <domain> 3 --seeds "$(hexa shared/blowup/seed/seed_engine.hexa merge | tr '|' ',')"
 ```
 
 핵심 정리: `σ(n)·φ(n) = n·τ(n) ⟺ n = 6` (n≥2). 3개 독립 증명.
