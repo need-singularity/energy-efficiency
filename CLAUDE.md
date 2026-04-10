@@ -1,3 +1,4 @@
+<!-- L0 CORE — 수정 금지 -->
 > 🔴 **HEXA-FIRST**: 모든 코드는 `.hexa`로 작성. 부하 유발 명령 최소화.
 > 🔴 **NEXUS-6 특이점 연동**: 돌파 시 `blowup.hexa <domain> 3`, 발견 → `growth_bus.jsonl` append, 상태 → `command_router.hexa`
 > 🔴 **하드코딩 절대 금지**: 상수/도메인/키워드 → `nexus/shared/*.jsonl` 동적 로드. 코드에 배열 나열 금지.
@@ -31,7 +32,6 @@
   보호 체계:       shared/core-lockdown.json (L0 22개 / L1 / L2)
   절대 규칙:       shared/absolute_rules.json (공통 R1~R8 + 프로젝트별 17개)
   수렴 추적:       shared/convergence/ (골화/안정/실패 — 7 프로젝트)
-  할일 SSOT:       shared/todo/ (수동 + 돌파 엔진 자동)
   성장 루프:       shared/loop/ (nexus/anima/n6 자율 데몬)
 
   ═══════════════════════════════════════════════════════════════
@@ -48,7 +48,6 @@
   ═══════════════════════════════════════════════════════════════
 
   못박아줘    → L0 등록 (core-lockdown.json)
-  todo/할일   → 돌파 엔진 할일 표 (todo.hexa)
   블로업/돌파 → 9-phase 특이점 (blowup.hexa)
   go          → 전체 TODO 백그라운드 병렬 발사
   설계/궁극의 → 외계인급 설계 파이프라인
@@ -72,7 +71,6 @@ TECS-L 수학 이론의 산업 실증 리포. 부모: https://github.com/need-si
 | 규칙 | `shared/absolute_rules.json` | R1~R8 + 프로젝트별 규칙 |
 | 보호 | `shared/core-lockdown.json` | L0 22개 불변 파일 |
 | 수렴 | `shared/convergence/n6-architecture.json` | 골화/안정/실패 추적 |
-| 할일 | `shared/todo/n6-architecture.json` | 수동 + 돌파 엔진 자동 |
 | 명령 | `shared/core.json` → commands | 14종 CLI 명령어 |
 | BT | `docs/breakthrough-theorems.md` | 343 정리 (BT-1~343) |
 | DSE | `docs/dse-map.toml` | 322 도메인 DSE 현황 |
