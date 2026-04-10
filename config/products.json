@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 151,
-    "total_domains": 140,
+    "total_products": 152,
+    "total_domains": 141,
     "total_papers": 128,
     "papers_chunk_c_2026-04-08": {
       "count": 11,
@@ -4179,6 +4179,46 @@
         }
       ],
       "bt_detail": "BT-1125~1128 키보드 4돌파 — 31가설 30 EXACT 100% 골화"
+    },
+    {
+      "id": "mouse",
+      "title": "마우스",
+      "icon": "🖱️",
+      "heading": "마우스 (Mouse)",
+      "alien_index": 10,
+      "ceiling": true,
+      "bt_exact_pct": 100,
+      "bt_count": 10,
+      "industry_pct": 100,
+      "industry_detail": "게이밍/오피스/MMO 전 카테고리 n=6 수렴 확인",
+      "experiment_pct": 100,
+      "experiment_detail": "25/25 EXACT (100%)",
+      "physics_limit_count": 0,
+      "tp_count": 0,
+      "discovery_count": 10,
+      "cross_dse_domains": 5,
+      "mk_count": 0,
+      "summary_extra": "BT-1115~1124 마우스 10돌파 — PS/2 6핀=n, sopfr=5 버튼, sigma=12 MMO/노치, 25/25 EXACT 100%",
+      "domains": [
+        "mouse"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "HEXA-MOUSE n=6 인체공학 마우스",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-1115~1124: 25/25 EXACT — PS/2 n=6핀, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, sigma-tau=8kHz 폴링, sigma=12 MMO/노치, J2=24 인코더",
+          "links": [
+            {
+              "label": "목표",
+              "path": "docs/mouse/goal.md"
+            }
+          ]
+        }
+      ],
+      "bt_detail": "BT-1115~1124 마우스 10돌파 — 25/25 EXACT 100% 골화"
     }
   ],
   "roadmap": [

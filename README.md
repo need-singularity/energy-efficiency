@@ -596,9 +596,10 @@
 | 10 | ✅ | v1 | **키보드 n=6 인체공학 아키텍처** | BT-1125~1128: 30/31 EXACT — 레이아웃 10종 전부 C(n,2) 조합, USB 6KRO/8바이트/12Mbps, 스위치 4mm(tau)/2mm(phi)/5ms(sopfr) | [목표](docs/keyboard/goal.md) |
 | 10 | ✅ | v1 | **HEXA-BCI 뇌-컴퓨터 인터페이스** | 36/40 EXACT (90%), 6DOF=n, σ=12 EEG채널, 불가능성 12정리, 광유전학/보철/AI 교차 | [목표](docs/brain-computer-interface/goal.md) |
 | 10 | ✅ | v1 | **양자컴퓨터 n=6 큐빗 아키텍처** | 20/24 EXACT — NeutralAtom n=6원자, SurfaceCode σ=12 data qubit, Clifford τ*n=24 gate, kissing number BT-49 | [목표](docs/quantum-computer/goal.md) |
+| 10 | ✅ | v1 | **HEXA-MOUSE n=6 인체공학 마우스** | BT-1115~1124: 25/25 EXACT — PS/2 n=6핀, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, σ-τ=8kHz 폴링, σ=12 MMO/노치, J₂=24 인코더 | [목표](docs/mouse/goal.md) |
 
 <!-- AUTO:FOOTER_computer:START -->
-> 도메인: [keyboard/](docs/keyboard/) · [brain-computer-interface/](docs/brain-computer-interface/) · [quantum-computer/](docs/quantum-computer/) · BT: 49, 1125~1128 · 인간-기계 인터페이스 전수 n=6 파라미터화
+> 도메인: [keyboard/](docs/keyboard/) · [mouse/](docs/mouse/) · [brain-computer-interface/](docs/brain-computer-interface/) · [quantum-computer/](docs/quantum-computer/) · BT: 49, 1115~1128 · 인간-기계 인터페이스 전수 n=6 파라미터화
 <!-- AUTO:FOOTER_computer:END -->
 
 ---
