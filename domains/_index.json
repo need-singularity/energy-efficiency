@@ -1,0 +1,113 @@
+{
+  "_doc": "도메인 SSOT — 295 도메인을 9축으로 분류. 축 변경 시 이 파일만 수정.",
+  "_version": "1.0.0",
+  "_total": 295,
+  "_axes": 10,
+  "_template": "각 도메인: domains/<axis>/<name>/{CLAUDE.md, <name>.md, verify.hexa}",
+
+  "physics": [
+    "antimatter-factory", "classical-mechanics-accelerator", "cosmic-observatory",
+    "cosmology", "cosmology-particle", "crystallography", "crystallography-materials",
+    "electromagnetism", "fluid", "gravity-wave", "higgs", "holography",
+    "light-optics", "mini-accelerator",
+    "millennium-bsd", "millennium-hodge", "millennium-navier-stokes",
+    "millennium-p-vs-np", "millennium-poincare", "millennium-riemann",
+    "millennium-yang-mills",
+    "optics", "particle-cosmology", "plasma", "plasma-fusion-deep",
+    "plasma-physics", "pure-mathematics", "quantum-computer", "quantum-computing",
+    "quantum-gravity-sensor", "quantum-network", "quantum-oracle",
+    "simulation-theory", "tachyon", "thermodynamics", "topology", "hexa-topo"
+  ],
+
+  "life": [
+    "agriculture", "apiculture", "aquaculture", "baking", "bio-pharma",
+    "biology", "biology-medical", "cancer-therapy", "cheese-dairy",
+    "coffee", "coffee-science", "cosmetic-surgery", "crispr-gene-editing",
+    "dolphin", "dolphin-bioacoustics", "ecology", "ecology-agriculture-food",
+    "entomology", "fermentation", "food-science", "genetics",
+    "hair-regeneration", "herbalism", "hiv", "hiv-treatment", "horticulture",
+    "immunology", "medical-device", "mens-intimate-cleanser",
+    "microplastics", "mycology", "neuro", "neuropharmacology", "neuroscience",
+    "perfumery", "pharmacology", "synbio", "synthetic-biology",
+    "tattoo-removal", "therapeutic-nanobot", "vaccine", "veterinary",
+    "virology", "viticulture", "wine-enology", "womens-intimate-cleanser",
+    "hexa-skin", "hexa-limb"
+  ],
+
+  "energy": [
+    "battery-architecture", "battery-energy", "datacenter-reactor",
+    "energy-architecture", "energy-efficiency", "fusion", "fusion-powerplant",
+    "nuclear-reactor", "pemfc", "power-grid", "room-temp-sc",
+    "solar-architecture", "smr-datacenter", "superconductor",
+    "thermal-management", "hvac-system"
+  ],
+
+  "compute": [
+    "5g-6g-network", "advanced-packaging", "ai-efficiency", "blockchain",
+    "browser", "chip-architecture", "compiler-os", "consciousness-chip",
+    "consciousness-soc", "cryptography", "digital-twin", "display",
+    "display-8stack", "dram", "exynos", "isocell-comms", "keyboard",
+    "learning-algorithm", "mouse", "network", "network-protocol",
+    "performance-chip", "programming-language", "sc-memory",
+    "semiconductor-lithography", "software-crypto", "software-design",
+    "spatial-computing", "unified-service", "unified-soc", "vnand",
+    "hexa-3d", "hexa-accel", "hexa-asic", "hexa-holo", "hexa-ios",
+    "hexa-macos", "hexa-mram", "hexa-netproto", "hexa-one", "hexa-photon",
+    "hexa-pim", "hexa-proglang", "hexa-super", "hexa-wafer",
+    "nexus-service", "nexus-breakthrough-gate"
+  ],
+
+  "materials": [
+    "aramid", "ceramics", "concrete", "concrete-technology", "epoxy",
+    "fashion-textile", "gemology", "lutherie", "material-synthesis", "nylon",
+    "paper", "pet-film", "recycling", "swordsmithing", "textile-dyeing",
+    "tire-cord", "hexa-fabric", "hexa-glass", "hexa-recycle"
+  ],
+
+  "space": [
+    "aerospace", "aerospace-transport", "astronomy", "observational-astronomy",
+    "space-engineering", "space-systems", "hexa-cosmic", "hexa-starship"
+  ],
+
+  "infra": [
+    "airbag", "architecture", "aviation", "autonomous-driving", "calendar-time-geography",
+    "cartography-gis", "civil-engineering", "climate", "construction-structural",
+    "control-automation", "currency-economics", "desal", "desalination",
+    "earth-defense", "earthquake-engineering", "ecommerce-fintech", "economics",
+    "economics-finance", "electric-vehicle", "environment-thermal",
+    "environmental-protection", "fire-science", "fun-car", "geology",
+    "governance-safety-urban", "insurance", "jurisprudence", "law-justice",
+    "manufacturing-quality", "marketing", "meteorology", "mining",
+    "monetary-history", "motorcycle", "naval-architecture", "ocean",
+    "oceanography", "printing", "robotics", "robotics-transport", "safety",
+    "seabed-grid", "skyway", "smart-city", "surveying", "transportation",
+    "tsunami-shield", "ultimate-safety", "underground-tunnel", "water-treatment",
+    "weather-control", "carbon-capture", "hexa-defense", "hexa-exo",
+    "hexa-skyway", "hexa-tsunami", "hexa-weather"
+  ],
+
+  "cognitive": [
+    "anima-service", "anima-soc", "brain-computer-interface", "causal-chain",
+    "cognitive-architecture", "cognitive-social-psychology", "dream-recorder",
+    "mind-upload", "reality-map", "superpowers", "telepathy",
+    "temporal-architecture", "hexa-dream", "hexa-ear", "hexa-empath",
+    "hexa-mind", "hexa-neuro", "hexa-olfact", "hexa-oracle", "hexa-speak",
+    "hexa-telepathy"
+  ],
+
+  "culture": [
+    "archaeology", "ar-vr-xr", "audio", "baduk", "bell-clockwork", "biometrics",
+    "dance-choreography", "dice-probability", "games-sports", "hangul-script", "horology",
+    "library-science", "linguistics", "mountaineering", "music",
+    "music-mathematics", "numismatics", "photography", "religion",
+    "religion-mythology", "social-architecture", "taekwondo",
+    "telecom-linguistics", "writing-systems", "yoga"
+  ],
+
+  "sf-ufo": [
+    "cloak", "dragon", "fantasy", "hover", "sf", "snowflake-ice", "vampire",
+    "hexa-cloak", "hexa-grav", "hexa-hover", "hexa-sim", "hexa-teleport",
+    "hexa-ufo", "rtsc-12-products-evolution", "cross-domain-mega",
+    "experiments", "hypotheses"
+  ]
+}
