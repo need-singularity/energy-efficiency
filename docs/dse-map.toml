@@ -4,9 +4,9 @@
 
 [meta]
 updated = "2026-04-10"
-total_domains = 343
+total_domains = 346
 total_toml_files = 340
-domain_sections = 338
+domain_sections = 341
 cross_dse_connected = 338
 cross_dse_sections = 1739
 total_valid_paths = 3990870
