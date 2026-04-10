@@ -1,9 +1,0 @@
-# n6-architecture 로컬 override
-# 이유: /Users/ghost/.hx/bin/{cargo,rustc} 는 HEXA-GATE 원격 실행 shim 이며,
-# ag_resolve_host / ag_budget_check 결과에 따라 빌드 산출물 경로를
-# /home/aiden/airgenome/gate_files 로 rewriting 하여 로컬 빌드가 깨진다.
-# 이 프로젝트에서만 rustup 진짜 rustc 바이너리를 강제 지정한다.
-# (.hx/bin 전역 shim 은 그대로 둠 — 다른 프로젝트에서 필요할 수 있음)
-
-[build]
-rustc = "/Users/ghost/.cargo/bin/rustc"
