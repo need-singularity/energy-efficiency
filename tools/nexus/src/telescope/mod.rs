@@ -117,6 +117,19 @@ use lenses::{
     VeterinaryMedicineLens, WindTurbineLens, WinemakingLens, YogaAsanaLens,
 };
 use lenses::DimensionalPerceptionLens;
+use lenses::{
+    // ── 신규 20종 렌즈 ──
+    DiceProbabilityLens, DiceEntropyLens,
+    SnowflakeHexagonalSymmetryLens, SnowflakeNucleationLens,
+    BeekeepingHoneycombLens, BeekeepingWaggleDanceLens,
+    ControlNyquistLens, ControlBodeMarginLens,
+    ParticleQuarkFlavorLens, ParticleLeptonFamilyLens,
+    CalendarSexagesimalLens, CalendarMetonicLens,
+    FusionPowerplantMagnetLens, FusionPowerplantTritiumLens,
+    HovercraftCushionPressureLens,
+    SatelliteOrbitLens, SleepCycleLens, SwarmRoboticsLens,
+    CheeseAgingLens, GlacierDynamicsLens,
+};
 use lenses::GenericLens;
 use registry::LensRegistry;
 use shared_data::SharedData;
@@ -417,6 +430,27 @@ impl Telescope {
             Box::new(YogaAsanaLens),
             // ── 차원지각 렌즈 (BT-1108) ──
             Box::new(DimensionalPerceptionLens),
+            // ── 신규 20종 렌즈 ──
+            Box::new(DiceProbabilityLens),
+            Box::new(DiceEntropyLens),
+            Box::new(SnowflakeHexagonalSymmetryLens),
+            Box::new(SnowflakeNucleationLens),
+            Box::new(BeekeepingHoneycombLens),
+            Box::new(BeekeepingWaggleDanceLens),
+            Box::new(ControlNyquistLens),
+            Box::new(ControlBodeMarginLens),
+            Box::new(ParticleQuarkFlavorLens),
+            Box::new(ParticleLeptonFamilyLens),
+            Box::new(CalendarSexagesimalLens),
+            Box::new(CalendarMetonicLens),
+            Box::new(FusionPowerplantMagnetLens),
+            Box::new(FusionPowerplantTritiumLens),
+            Box::new(HovercraftCushionPressureLens),
+            Box::new(SatelliteOrbitLens),
+            Box::new(SleepCycleLens),
+            Box::new(SwarmRoboticsLens),
+            Box::new(CheeseAgingLens),
+            Box::new(GlacierDynamicsLens),
         ];
 
         // ── Auto-instantiate GenericLens for all unimplemented registry entries ──

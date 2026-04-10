@@ -600,6 +600,67 @@ pub use mouse_ergonomics_lens::MouseErgonomicsLens;
 pub mod tattoo_removal_lens;
 pub use tattoo_removal_lens::TattooRemovalLens;
 
+// ── 신규 20종 렌즈 (lens_registry.json registered → 구현) ──
+pub mod dice_probability_lens;
+pub use dice_probability_lens::DiceProbabilityLens;
+
+pub mod dice_entropy_lens;
+pub use dice_entropy_lens::DiceEntropyLens;
+
+pub mod snowflake_hexagonal_symmetry_lens;
+pub use snowflake_hexagonal_symmetry_lens::SnowflakeHexagonalSymmetryLens;
+
+pub mod snowflake_nucleation_lens;
+pub use snowflake_nucleation_lens::SnowflakeNucleationLens;
+
+pub mod beekeeping_honeycomb_lens;
+pub use beekeeping_honeycomb_lens::BeekeepingHoneycombLens;
+
+pub mod beekeeping_waggle_dance_lens;
+pub use beekeeping_waggle_dance_lens::BeekeepingWaggleDanceLens;
+
+pub mod control_nyquist_lens;
+pub use control_nyquist_lens::ControlNyquistLens;
+
+pub mod control_bode_margin_lens;
+pub use control_bode_margin_lens::ControlBodeMarginLens;
+
+pub mod particle_quark_flavor_lens;
+pub use particle_quark_flavor_lens::ParticleQuarkFlavorLens;
+
+pub mod particle_lepton_family_lens;
+pub use particle_lepton_family_lens::ParticleLeptonFamilyLens;
+
+pub mod calendar_sexagesimal_lens;
+pub use calendar_sexagesimal_lens::CalendarSexagesimalLens;
+
+pub mod calendar_metonic_lens;
+pub use calendar_metonic_lens::CalendarMetonicLens;
+
+pub mod fusion_powerplant_magnet_lens;
+pub use fusion_powerplant_magnet_lens::FusionPowerplantMagnetLens;
+
+pub mod fusion_powerplant_tritium_lens;
+pub use fusion_powerplant_tritium_lens::FusionPowerplantTritiumLens;
+
+pub mod hovercraft_cushion_pressure_lens;
+pub use hovercraft_cushion_pressure_lens::HovercraftCushionPressureLens;
+
+pub mod satellite_orbit_lens;
+pub use satellite_orbit_lens::SatelliteOrbitLens;
+
+pub mod sleep_cycle_lens;
+pub use sleep_cycle_lens::SleepCycleLens;
+
+pub mod swarm_robotics_lens;
+pub use swarm_robotics_lens::SwarmRoboticsLens;
+
+pub mod cheese_aging_lens;
+pub use cheese_aging_lens::CheeseAgingLens;
+
+pub mod glacier_dynamics_lens;
+pub use glacier_dynamics_lens::GlacierDynamicsLens;
+
 // ── 마케팅 렌즈 (BT-548~557) ──
 pub mod marketing_lens;
 pub use marketing_lens::MarketingLens;
