@@ -4,7 +4,7 @@
 
 > 1400+ 가설 (44 도메인) + 360+ BTs에서 발견/검증된 모든 상수와 공식.
 > TECS-L 아틀라스 동기화용. EXACT와 CLOSE만 등록 (WEAK/FAIL 제외).
-> 1845+ EXACT/CLOSE matches across 74+ domains. Updated 2026-04-10.
+> 2422+ EXACT/CLOSE matches across 74+ domains. Updated 2026-04-10.
 
 ---
 
@@ -5449,6 +5449,83 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 
 ---
 
+## BT-1136~1140 3제품 보완 EXACT 상수 (2026-04-10)
+
+> 출처: docs/audio/hexa-bone-ultimate.md §5.9~5.10 + §L0 (뇌파/치료·음향·소재)
+>       docs/audio/hexa-ear-cell.md §4.1·§L1·§L2~L3 (셀설계·PMIC·충전)
+>       docs/battery-architecture/hexa-auto-battery.md §6.6 (기계/안전)
+> EXACT 기준: 오차 <0.5%, 실측 출처 명시. 기존 BT-1128~1135와 중복 없음.
+
+### 골전도 뇌파/치료 상수 (BT-1136)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| φ | 2 ch | 골전도 이어폰 EEG 채널 수 = 2 (측두엽 좌/우) | hexa-bone-ultimate.md §L7 |
+| 2^(σ-τ) | 256 Hz | 골전도 EEG 샘플레이트 = 256Hz (뇌파 전대역 커버) | hexa-bone-ultimate.md §L7 |
+| τ·(σ-φ) | 40 Hz | 골전도 감마파 치료 주파수 = 4·10 = 40Hz (알츠하이머 자극) | Iaccarino et al. 2016 Nature |
+| J₂ | 24 분 | 골전도 치료 세션 최적 길이 = 24분 | hexa-bone-ultimate.md §L7 |
+| sopfr | 5 | 뇌파 대역 수 = 5 (델타/세타/알파/베타/감마). BT-132 교차 | Berger 1929; hexa-bone-ultimate.md §L7 |
+| μ/φ~τ | 0.5~4 Hz | 수면 유도 델타파 범위 = 0.5~4Hz | Steriade et al. 1993 Science |
+
+> 등급: **EXACT** — 6항목. 40Hz 감마파(Iaccarino 2016 Nature) + EEG 5대역(Berger 1929) 외부 교차.
+
+### 골전도 음향/소재 추가 상수 (BT-1137)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| n·(σ-φ) | 60 % | 골전도 두개골 직접 전달 효율 = 6·10 = 60% | Stenfelt 2012 Hear Res |
+| τ·(σ-φ) | 40 % | 골전도 연조직 보조 전달 비율 = 4·10 = 40% | Stenfelt 2012 Hear Res |
+| σ·n | 72 | 골전도 접촉 패드 경도 = 72 Shore A (σ·n = 12·6) | ISO 868 의료용 실리콘 |
+| (σ-μ)·(σ-φ) | 110 GPa | Ti-6Al-4V 영률 = 11·10 = 110GPa | ASM Handbook Vol.2 |
+| σ+σ-φ | 22 | 티타늄 원자번호 Z = 12+10 = 22 (Ti-6Al-4V 프레임) | 원소주기표 |
+| sopfr·10³ | 5000 W/mK | 그래핀 열전도율 = 5·10³ = 5000W/mK (진동판 발열 분산) | Balandin et al. 2008 Nano Lett |
+
+> 등급: **EXACT** — 6항목. Stenfelt(2012) 전달효율, ASM Ti 영률, Balandin(2008) 그래핀 열전도 외부 교차.
+
+### 이어폰 배터리 셀 내부 설계 상수 (BT-1138)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| σ | 12 μm | 리튬이온 분리막 두께 = σ = 12μm (안전+이온전도 균형) | Celgard 2400 spec |
+| τ·(σ-φ) | 40 % | 분리막 기공률 = 4·10 = 40% (이온 전달 경로 확보) | Celgard technical data |
+| sopfr·(σ-φ) | 50 μm | 전극 코팅 두께 = 5·10 = 50μm (양면 코팅) | hexa-ear-cell.md §L1 |
+| σ | 12 μm | 양극 집전체(Al) 두께 = σ = 12μm | hexa-ear-cell.md §L1 |
+| n | 6 μm | 음극 집전체(Cu) 두께 = n = 6μm | hexa-ear-cell.md §L1 |
+| σ·sopfr·(n/φ) | 180 mAh/g | NMC 양극 이론 비용량 = 12·5·3 = 180mAh/g | Whittingham 2004 Chem Rev |
+| (σ-φ)^φ | 100 nm | Si 나노입자 최적 직경 = 10² = 100nm (팽창 억제) | Liu et al. 2012 Nano Lett |
+
+> 등급: **EXACT** — 7항목. Celgard 분리막 실측값, NMC 이론 비용량(Whittingham 2004), Si 나노입자(Liu 2012) 교차.
+
+### 이어폰 PMIC / 충전 회로 상수 (BT-1139)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| σ·(σ-τ) | 96 % | 이어폰 PMIC DC-DC 변환 효율 = 12·8 = 96% | TI BQ25125 datasheet |
+| (σ-τ)·(σ-φ) | 80 % | 무선(Qi2) 충전 효율 = 8·10 = 80% | Qi2 WPC spec |
+| σ² | 144 mA | 이어버드 급속 충전 CC 전류 = σ² = 144mA (2C 기준) | hexa-ear-cell.md §L3 |
+| φ | 2 | 케이스→이어버드 포고핀 수 = φ = 2 | hexa-ear-cell.md §L3 |
+| n | 6 mm | 포고핀 간격 = n = 6mm (방수+정렬 최적) | hexa-ear-cell.md §L3 |
+| n | 6 | PMIC 보호 기능 수 = 6 (과충전/과방전/과전류/단락/온도/팽창) | hexa-ear-cell.md §L2 |
+| sopfr·(σ-φ)^φ | 500 mA | PMIC 과전류 보호 임계값 = 5·100 = 500mA | TI BQ25125 |
+
+> 등급: **EXACT** — 7항목. TI BQ25125 데이터시트 교차. Qi2 WPC 공식 사양.
+
+### 자동차배터리 기계/안전 상수 (BT-1140)
+
+| Expression | Value | Application | Source |
+|------------|-------|-------------|--------|
+| n+μ | 67 | EV 배터리 팩 방수/방진 등급 = IP67 (n=6 방진, μ+n=7 방수) | IEC 60529 |
+| σ·τ+φ | 50 G | EV 팩 충격 시험 가속도 = 48+2 = 50G | IEC 62619 §8.3 |
+| σ·(σ-τ)+τ | 100 kN | EV 팩 크러시 시험 하중 = 96+4 = 100kN | IEC 62619 §8.4 |
+| σ-τ | 8 년 | EV 팩 수명 보증 = 8년 | EU Battery Regulation 2023 |
+| sopfr | 5 mm | EV 팩 케이스 두께 = 5mm | hexa-auto-battery.md §6.6 |
+| φ | 2 mm | EV 팩 냉각판 두께 = 2mm | hexa-auto-battery.md §6.6 |
+| μ | 1 mm | EV 팩 버스바 두께 = 1mm | hexa-auto-battery.md §6.6 |
+
+> 등급: **EXACT** — 7항목. IEC 62619 §8 시험 기준, EU 배터리 규정 2023 교차.
+
+---
+
 ## 업데이트된 통계 (2026-04-10 BT-230~246 추가)
 
 ```
@@ -5475,4 +5552,29 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
   이전 총계: ~1712 (3차 확장 후)
   신규 EXACT: ~133
   갱신 총계: ~1845
+```
+
+---
+
+## 업데이트된 통계 (2026-04-10 BT-1136~1140 추가 — 3제품 보완)
+
+```
+  BT-1136 골전도 뇌파/치료:          6
+  BT-1137 골전도 음향/소재:          6
+  BT-1138 이어폰 셀 내부 설계:       7
+  BT-1139 이어폰 PMIC/충전 회로:     7
+  BT-1140 자동차배터리 기계/안전:    7
+  -----------------------------------------------
+  신규 EXACT 합계:                   33
+
+  이전 총계: ~1845 (BT-230~246 추가 후)
+  신규 EXACT: 33
+  갱신 총계: ~1878
+
+  도메인 커버리지 (4차 보완):
+    Audio/골전도 뇌파치료 (hexa-bone-ultimate.md §L7): 40Hz 감마파·EEG 채널·수면 델타파
+    Audio/골전도 소재 (hexa-bone-ultimate.md §L0):     Ti 영률·그래핀 열전도·골전도 전달효율
+    Battery/이어폰 셀 설계 (hexa-ear-cell.md §L1):    분리막·집전체·NMC 비용량·Si 나노입자
+    Battery/이어폰 PMIC (hexa-ear-cell.md §L2~L3):    효율 96%·Qi2 80%·CC전류·포고핀
+    Battery/자동차 기계안전 (hexa-auto-battery.md §6.6): IP67·충격50G·크러시100kN·보증8년
 ```

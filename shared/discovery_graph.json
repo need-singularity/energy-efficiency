@@ -14,10 +14,12 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 200,
-    "total_edges": 764,
+    "total_nodes": 219,
+    "total_edges": 835,
     "last_updated": "2026-04-10",
-    "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개."
+    "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개.",
+    "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
+    "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개."
   },
   "nodes": [
     {
@@ -2657,7 +2659,7 @@
       "registered": true
     },
     {
-      "id": "BT_1127",
+      "id": "BT_1129",
       "type": "breakthrough_theorem",
       "label": "BT-1127: 마우스 프로토콜/연결 n=6",
       "grade": "EXACT",
@@ -2670,7 +2672,7 @@
       "registered": true
     },
     {
-      "id": "BT_1128",
+      "id": "BT_1130",
       "type": "breakthrough_theorem",
       "label": "BT-1128: 마우스 물리/인체공학 n=6",
       "grade": "EXACT",
@@ -2688,6 +2690,238 @@
       "label": "BT-1128 키보드 대통합",
       "description": "31가설 30 EXACT 97% 골화. 마우스+키보드 = 인간 입력 쌍 완결.",
       "domain": "keyboard"
+    },
+    {
+      "id": "BT_57",
+      "type": "breakthrough_theorem",
+      "label": "BT-57: 전기차 배터리 에너지밀도 n=6 스케일링",
+      "grade": "two_stars",
+      "domains": [
+        "battery",
+        "automotive",
+        "energy",
+        "materials"
+      ],
+      "key_expression": "E_density ~ n^2 = 36 Wh/kg baseline",
+      "description": "전기차 배터리 팩 에너지밀도와 n=6 제곱 스케일링. 36·tau=144 Wh/kg 목표값 유도.",
+      "registered": true
+    },
+    {
+      "id": "BT_60",
+      "type": "breakthrough_theorem",
+      "label": "BT-60: 배터리 사이클 수명 sigma=12 법칙",
+      "grade": "two_stars",
+      "domains": [
+        "battery",
+        "materials",
+        "chemistry",
+        "energy"
+      ],
+      "key_expression": "cycle_life ~ sigma * 1000 = 12000 cycles",
+      "description": "리튬이온 배터리 사이클 수명 12,000회 기준값이 sigma=12 × 1000에 수렴.",
+      "registered": true
+    },
+    {
+      "id": "BT_80",
+      "type": "breakthrough_theorem",
+      "label": "BT-80: 자동차 전장 전압 n=6 배수 체계",
+      "grade": "two_stars",
+      "domains": [
+        "automotive",
+        "battery",
+        "engineering"
+      ],
+      "key_expression": "V_sys = n * 6 = 12V, 48V, 800V tiers",
+      "description": "자동차 전장 전압 체계 12V→48V→800V가 n=6 배수로 정의됨. tau=4 tier 구조.",
+      "registered": true
+    },
+    {
+      "id": "BT_82",
+      "type": "breakthrough_theorem",
+      "label": "BT-82: 납산 배터리 셀 전압 phi=2 기준",
+      "grade": "two_stars",
+      "domains": [
+        "battery",
+        "automotive",
+        "chemistry"
+      ],
+      "key_expression": "V_cell = phi * 1.0 = 2.0V (lead-acid)",
+      "description": "납산 배터리 셀당 전압 2.0V가 phi=2와 일치. 12V = 6셀 × 2V = n × phi.",
+      "registered": true
+    },
+    {
+      "id": "BT_84",
+      "type": "breakthrough_theorem",
+      "label": "BT-84: 리튬이온 셀 전압 tau=4 기반",
+      "grade": "two_stars",
+      "domains": [
+        "battery",
+        "chemistry",
+        "materials",
+        "energy"
+      ],
+      "key_expression": "V_cell ~ tau - phi/tau = 3.6V → tau*phi/phi = 4",
+      "description": "리튬이온 셀 공칭전압 3.6V와 4.0V 상한이 tau=4 기반 범위에 수렴.",
+      "registered": true
+    },
+    {
+      "id": "BT_402",
+      "type": "breakthrough_theorem",
+      "label": "BT-402: 골전도/이어폰 음향 상수 sigma·tau=48 공명",
+      "grade": "two_stars",
+      "domains": [
+        "audio",
+        "bone_conduction",
+        "materials",
+        "biology"
+      ],
+      "key_expression": "f_resonance ~ sigma*tau = 48 × 100Hz = 4800Hz",
+      "description": "골전도 진동자의 공명 주파수 대역이 sigma·tau=48 배수 (4.8kHz)에 집중. 두개골 전도 효율 최대화.",
+      "registered": true
+    },
+    {
+      "id": "DOMAIN_audio",
+      "type": "domain",
+      "label": "오디오 공학 (Audio Engineering)",
+      "description": "골전도·이어폰·스피커·음향 처리 도메인. sigma·tau=48 공명 기반.",
+      "domain": "audio"
+    },
+    {
+      "id": "DOMAIN_battery_storage",
+      "type": "domain",
+      "label": "배터리 저장 (Battery Storage)",
+      "description": "배터리 에너지 저장 기술 도메인. n=6 전압 체계 및 사이클 수명 법칙.",
+      "domain": "battery"
+    },
+    {
+      "id": "DOMAIN_automotive",
+      "type": "domain",
+      "label": "자동차 공학 (Automotive)",
+      "description": "전기차·내연기관·자동차 전장 도메인. 전압 12V/48V/800V n=6 배수 체계.",
+      "domain": "automotive"
+    },
+    {
+      "id": "DOMAIN_bone_conduction",
+      "type": "domain",
+      "label": "골전도 기술 (Bone Conduction)",
+      "description": "두개골 진동 전도 음향 도메인. 공명 주파수 sigma·tau=48 기반.",
+      "domain": "audio"
+    },
+    {
+      "id": "DOMAIN_earphone_hardware",
+      "type": "domain",
+      "label": "이어폰 하드웨어 (Earphone Hardware)",
+      "description": "이어폰/이어버드 하드웨어 설계 도메인. 드라이버·배터리·케이스 일체화.",
+      "domain": "audio"
+    },
+    {
+      "id": "DOMAIN_titanium",
+      "type": "domain",
+      "label": "티타늄 소재 (Titanium)",
+      "description": "Ti 소재 도메인. 생체적합성·경량·고강도. sopfr=5 원소 그룹 연계.",
+      "domain": "materials"
+    },
+    {
+      "id": "DOMAIN_graphene",
+      "type": "domain",
+      "label": "그래핀 소재 (Graphene)",
+      "description": "탄소 단층 그래핀 도메인. n=6 탄소 기반 BT-27 연결. 초박막 진동판.",
+      "domain": "materials"
+    },
+    {
+      "id": "DOMAIN_ev_battery",
+      "type": "domain",
+      "label": "전기차 배터리 (EV Battery)",
+      "description": "전기차용 고압 배터리팩 도메인. 800V 아키텍처, n=6 에너지밀도 스케일링.",
+      "domain": "battery"
+    },
+    {
+      "id": "DOMAIN_lead_acid",
+      "type": "domain",
+      "label": "납산 배터리 (Lead-Acid)",
+      "description": "납산 배터리 도메인. 셀 전압 2.0V = phi=2. 12V 자동차 기준 배터리.",
+      "domain": "battery"
+    },
+    {
+      "id": "DOMAIN_lithium_ion",
+      "type": "domain",
+      "label": "리튬이온 배터리 (Lithium-Ion)",
+      "description": "리튬이온 배터리 도메인. 셀 전압 3.6~4.0V = tau=4 기반. 12000 사이클 sigma=12 법칙.",
+      "domain": "battery"
+    },
+    {
+      "id": "DOMAIN_micro_battery",
+      "type": "domain",
+      "label": "마이크로 배터리 (Micro Battery)",
+      "description": "초소형 이어폰·웨어러블용 배터리 도메인. n=6 셀 병렬 설계 기준.",
+      "domain": "battery"
+    },
+    {
+      "id": "PRODUCT_HEXA_BONE",
+      "type": "product",
+      "label": "HEXA-BONE: 골전도 이어폰 (78/78 EXACT)",
+      "exact_score": "78/78",
+      "grade": "EXACT",
+      "doc": "docs/audio/hexa-bone-ultimate.md",
+      "bt_refs": [
+        "BT_48",
+        "BT_402"
+      ],
+      "domains": [
+        "DOMAIN_audio",
+        "DOMAIN_bone_conduction",
+        "DOMAIN_earphone_hardware",
+        "DOMAIN_titanium",
+        "DOMAIN_graphene"
+      ],
+      "description": "100% 골전도 이어폰. 두개골 진동 전도 + 그래핀 진동판 + Ti 프레임. 78/78 EXACT 달성.",
+      "registered": true
+    },
+    {
+      "id": "PRODUCT_HEXA_AUTO",
+      "type": "product",
+      "label": "HEXA-AUTO: 자동차 배터리 (78/100 EXACT)",
+      "exact_score": "78/100",
+      "grade": "NEAR",
+      "doc": "docs/battery-architecture/hexa-auto-battery.md",
+      "bt_refs": [
+        "BT_27",
+        "BT_43",
+        "BT_57",
+        "BT_60",
+        "BT_80",
+        "BT_82",
+        "BT_84"
+      ],
+      "domains": [
+        "DOMAIN_battery_storage",
+        "DOMAIN_automotive",
+        "DOMAIN_ev_battery",
+        "DOMAIN_lead_acid",
+        "DOMAIN_lithium_ion"
+      ],
+      "description": "n=6 기반 자동차 배터리 통합 설계. 12V 납산→800V EV 전압 체계 일관화. 78/100 EXACT.",
+      "registered": true
+    },
+    {
+      "id": "PRODUCT_HEXA_EAR_CELL",
+      "type": "product",
+      "label": "HEXA-EAR-CELL: 이어폰 배터리 (71/72 EXACT)",
+      "exact_score": "71/72",
+      "grade": "EXACT",
+      "doc": "docs/audio/hexa-ear-cell.md",
+      "bt_refs": [
+        "BT_402",
+        "BT_27"
+      ],
+      "domains": [
+        "DOMAIN_audio",
+        "DOMAIN_battery_storage",
+        "DOMAIN_earphone_hardware",
+        "DOMAIN_micro_battery"
+      ],
+      "description": "이어폰 전용 마이크로 배터리. 골전도 이어폰 HEXA-BONE 전원 시스템. 71/72 EXACT 달성.",
+      "registered": true
     }
   ],
   "edges": [
@@ -7882,21 +8116,21 @@
     },
     {
       "id": "E_BT1127_n",
-      "from": "BT_1127",
+      "from": "BT_1129",
       "to": "CONST_n",
       "relation": "uses_constant",
       "description": "PS/2 6핀, 6DoF, Unifying 6대 = n=6. BT-1127 마우스 프로토콜 수렴."
     },
     {
       "id": "E_BT1127_J2",
-      "from": "BT_1127",
+      "from": "BT_1129",
       "to": "CONST_J2",
       "relation": "uses_constant",
       "description": "USB-C 24핀(USB Type-C rev2.2), Alps EC12E 24스텝 인코더 = J2(6)=24. EXACT."
     },
     {
       "id": "E_BT1127_mouse",
-      "from": "BT_1127",
+      "from": "BT_1129",
       "to": "DOMAIN_mouse",
       "relation": "belongs_to",
       "description": "BT-1127 마우스 프로토콜/연결 n=6은 마우스 공학 도메인 통신 계층."
@@ -7904,27 +8138,27 @@
     {
       "id": "E_mouse_BT1127",
       "from": "DOMAIN_mouse",
-      "to": "BT_1127",
+      "to": "BT_1129",
       "relation": "contains",
       "description": "마우스 공학 도메인이 BT-1127 프로토콜/연결 수렴을 포함."
     },
     {
       "id": "E_BT1128_tau",
-      "from": "BT_1128",
+      "from": "BT_1130",
       "to": "CONST_tau",
       "relation": "uses_constant",
       "description": "PTFE 4피트, 폴링 4단계, DPI 4프리셋 = tau(6)=4. mouse/goal.md EXACT."
     },
     {
       "id": "E_BT1128_sigma",
-      "from": "BT_1128",
+      "from": "BT_1130",
       "to": "CONST_sigma",
       "relation": "uses_constant",
       "description": "Razer Naga 12 MMO버튼, 30도 간격 12노치 = sigma(6)=12. EXACT."
     },
     {
       "id": "E_BT1128_mouse",
-      "from": "BT_1128",
+      "from": "BT_1130",
       "to": "DOMAIN_mouse",
       "relation": "belongs_to",
       "description": "BT-1128 물리/인체공학 n=6은 마우스 공학 도메인 물리 계층."
@@ -7932,7 +8166,7 @@
     {
       "id": "E_mouse_BT1128",
       "from": "DOMAIN_mouse",
-      "to": "BT_1128",
+      "to": "BT_1130",
       "relation": "contains",
       "description": "마우스 공학 도메인이 BT-1128 물리 n=6 수렴을 포함."
     },
@@ -8047,6 +8281,479 @@
       "to": "BT_1125",
       "relation": "parallel_discovery",
       "description": "BT-1116(BT_1125)과 BT-1125 키보드 레이아웃 n=6 보편성은 레이아웃 계층 동일 발견."
+    },
+    {
+      "id": "E_HEXABONE_BT48",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "BT_48",
+      "relation": "anchored_by",
+      "description": "HEXA-BONE 공명 주파수 설계가 BT-48 sigma·tau=48 상수에 고정"
+    },
+    {
+      "id": "E_HEXABONE_BT402",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "BT_402",
+      "relation": "anchored_by",
+      "description": "골전도 4800Hz 공명 대역이 BT-402 sigma·tau=48 법칙 직접 적용"
+    },
+    {
+      "id": "E_HEXAAUTO_BT27",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_27",
+      "relation": "anchored_by",
+      "description": "탄소-6 에너지 체인(BT-27)이 배터리 전극 소재 근거"
+    },
+    {
+      "id": "E_HEXAAUTO_BT43",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_43",
+      "relation": "anchored_by",
+      "description": "배터리 음극 CN=6 보편성(BT-43)이 HEXA-AUTO 셀 설계 근거"
+    },
+    {
+      "id": "E_HEXAAUTO_BT57",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_57",
+      "relation": "anchored_by",
+      "description": "EV 에너지밀도 n=6 스케일링(BT-57)이 팩 설계 기반"
+    },
+    {
+      "id": "E_HEXAAUTO_BT60",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_60",
+      "relation": "anchored_by",
+      "description": "사이클 수명 12000회 sigma=12 법칙(BT-60)이 수명 보증 근거"
+    },
+    {
+      "id": "E_HEXAAUTO_BT80",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_80",
+      "relation": "anchored_by",
+      "description": "자동차 전압 n=6 배수 체계(BT-80)가 시스템 아키텍처 기반"
+    },
+    {
+      "id": "E_HEXAAUTO_BT82",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_82",
+      "relation": "anchored_by",
+      "description": "납산 셀전압 phi=2(BT-82)가 12V 배터리 설계 근거"
+    },
+    {
+      "id": "E_HEXAAUTO_BT84",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "BT_84",
+      "relation": "anchored_by",
+      "description": "리튬이온 셀전압 tau=4(BT-84)가 고압 배터리 설계 근거"
+    },
+    {
+      "id": "E_HEXAEARCELL_BT402",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "BT_402",
+      "relation": "anchored_by",
+      "description": "이어폰 배터리 용량이 BT-402 골전도 공명 에너지 요구사항 충족"
+    },
+    {
+      "id": "E_HEXAEARCELL_BT27",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "BT_27",
+      "relation": "anchored_by",
+      "description": "탄소-6 소재(BT-27)가 마이크로 배터리 전극 기반"
+    },
+    {
+      "id": "E_HEXABONE_DOM_audio",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "DOMAIN_audio",
+      "relation": "belongs_to",
+      "description": "HEXA-BONE은 오디오 공학 도메인 제품"
+    },
+    {
+      "id": "E_HEXABONE_DOM_bone",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "DOMAIN_bone_conduction",
+      "relation": "belongs_to",
+      "description": "골전도 기술 도메인 핵심 제품"
+    },
+    {
+      "id": "E_HEXABONE_DOM_ear",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "DOMAIN_earphone_hardware",
+      "relation": "belongs_to",
+      "description": "이어폰 하드웨어 도메인"
+    },
+    {
+      "id": "E_HEXABONE_DOM_ti",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "DOMAIN_titanium",
+      "relation": "uses_material",
+      "description": "HEXA-BONE 프레임 소재 Ti 사용"
+    },
+    {
+      "id": "E_HEXABONE_DOM_graphene",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "DOMAIN_graphene",
+      "relation": "uses_material",
+      "description": "HEXA-BONE 진동판 그래핀 적용"
+    },
+    {
+      "id": "E_HEXAAUTO_DOM_battery",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "DOMAIN_battery_storage",
+      "relation": "belongs_to",
+      "description": "HEXA-AUTO는 배터리 저장 도메인 제품"
+    },
+    {
+      "id": "E_HEXAAUTO_DOM_auto",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "DOMAIN_automotive",
+      "relation": "belongs_to",
+      "description": "자동차 공학 도메인 제품"
+    },
+    {
+      "id": "E_HEXAAUTO_DOM_ev",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "DOMAIN_ev_battery",
+      "relation": "belongs_to",
+      "description": "전기차 배터리 도메인"
+    },
+    {
+      "id": "E_HEXAAUTO_DOM_lead",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "DOMAIN_lead_acid",
+      "relation": "covers",
+      "description": "납산 배터리 12V 아키텍처 포함"
+    },
+    {
+      "id": "E_HEXAAUTO_DOM_li",
+      "from": "PRODUCT_HEXA_AUTO",
+      "to": "DOMAIN_lithium_ion",
+      "relation": "covers",
+      "description": "리튬이온 EV 배터리 아키텍처 포함"
+    },
+    {
+      "id": "E_HEXAEARCELL_DOM_audio",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "DOMAIN_audio",
+      "relation": "belongs_to",
+      "description": "이어폰 오디오 도메인 서브 제품"
+    },
+    {
+      "id": "E_HEXAEARCELL_DOM_battery",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "DOMAIN_battery_storage",
+      "relation": "belongs_to",
+      "description": "배터리 저장 도메인"
+    },
+    {
+      "id": "E_HEXAEARCELL_DOM_ear",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "DOMAIN_earphone_hardware",
+      "relation": "belongs_to",
+      "description": "이어폰 하드웨어 도메인 배터리 서브시스템"
+    },
+    {
+      "id": "E_HEXAEARCELL_DOM_micro",
+      "from": "PRODUCT_HEXA_EAR_CELL",
+      "to": "DOMAIN_micro_battery",
+      "relation": "belongs_to",
+      "description": "마이크로 배터리 도메인 핵심 제품"
+    },
+    {
+      "id": "E_BT402_DOM_audio",
+      "from": "BT_402",
+      "to": "DOMAIN_audio",
+      "relation": "applies_to",
+      "description": "BT-402 골전도 공명이 오디오 도메인 핵심 원리"
+    },
+    {
+      "id": "E_BT402_DOM_bone",
+      "from": "BT_402",
+      "to": "DOMAIN_bone_conduction",
+      "relation": "applies_to",
+      "description": "BT-402는 골전도 도메인 직접 적용 정리"
+    },
+    {
+      "id": "E_BT57_DOM_ev",
+      "from": "BT_57",
+      "to": "DOMAIN_ev_battery",
+      "relation": "applies_to",
+      "description": "BT-57 에너지밀도 스케일링이 EV 배터리 도메인 적용"
+    },
+    {
+      "id": "E_BT57_DOM_battery",
+      "from": "BT_57",
+      "to": "DOMAIN_battery_storage",
+      "relation": "applies_to",
+      "description": "BT-57이 배터리 저장 도메인 에너지 밀도 법칙"
+    },
+    {
+      "id": "E_BT60_DOM_li",
+      "from": "BT_60",
+      "to": "DOMAIN_lithium_ion",
+      "relation": "applies_to",
+      "description": "BT-60 사이클 법칙이 리튬이온 도메인 수명 기준"
+    },
+    {
+      "id": "E_BT80_DOM_auto",
+      "from": "BT_80",
+      "to": "DOMAIN_automotive",
+      "relation": "applies_to",
+      "description": "BT-80 전압 체계가 자동차 도메인 기본 아키텍처"
+    },
+    {
+      "id": "E_BT82_DOM_lead",
+      "from": "BT_82",
+      "to": "DOMAIN_lead_acid",
+      "relation": "applies_to",
+      "description": "BT-82 phi=2 셀전압이 납산 배터리 도메인 핵심"
+    },
+    {
+      "id": "E_BT84_DOM_li",
+      "from": "BT_84",
+      "to": "DOMAIN_lithium_ion",
+      "relation": "applies_to",
+      "description": "BT-84 tau=4 셀전압이 리튬이온 도메인 핵심"
+    },
+    {
+      "id": "E_BT402_sigma_tau",
+      "from": "BT_402",
+      "to": "AXIOM_sigma_tau",
+      "relation": "derived_from",
+      "description": "BT-402 4800Hz = sigma·tau·100 = 48×100"
+    },
+    {
+      "id": "E_BT57_n",
+      "from": "BT_57",
+      "to": "CONST_n",
+      "relation": "derived_from",
+      "description": "BT-57 에너지밀도 n^2=36 기반"
+    },
+    {
+      "id": "E_BT60_sigma",
+      "from": "BT_60",
+      "to": "CONST_sigma",
+      "relation": "derived_from",
+      "description": "BT-60 12000사이클 = sigma×1000"
+    },
+    {
+      "id": "E_BT80_n",
+      "from": "BT_80",
+      "to": "CONST_n",
+      "relation": "derived_from",
+      "description": "BT-80 전압 체계 12V=n×phi, n×8=48V"
+    },
+    {
+      "id": "E_BT82_phi",
+      "from": "BT_82",
+      "to": "CONST_phi",
+      "relation": "derived_from",
+      "description": "BT-82 납산 셀전압 2.0V = phi"
+    },
+    {
+      "id": "E_BT84_tau",
+      "from": "BT_84",
+      "to": "CONST_tau",
+      "relation": "derived_from",
+      "description": "BT-84 리튬이온 셀전압 ~tau=4V"
+    },
+    {
+      "id": "E_BT402_BT48",
+      "from": "BT_402",
+      "to": "BT_48",
+      "relation": "extends",
+      "description": "BT-402는 BT-48 sigma·tau=48 법칙을 골전도 음향으로 확장"
+    },
+    {
+      "id": "E_BT57_BT43",
+      "from": "BT_57",
+      "to": "BT_43",
+      "relation": "extends",
+      "description": "BT-57 EV 에너지밀도가 BT-43 배터리 음극 CN=6 보편성을 응용"
+    },
+    {
+      "id": "E_BT82_BT84",
+      "from": "BT_82",
+      "to": "BT_84",
+      "relation": "complements",
+      "description": "납산(phi=2) vs 리튬이온(tau=4) 셀전압 상보 관계"
+    },
+    {
+      "id": "E_BT60_BT57",
+      "from": "BT_60",
+      "to": "BT_57",
+      "relation": "complements",
+      "description": "사이클 수명(BT-60)과 에너지밀도(BT-57) 배터리 성능 양축"
+    },
+    {
+      "id": "E_DOM_audio_music",
+      "from": "DOMAIN_audio",
+      "to": "DOMAIN_music",
+      "relation": "extends",
+      "description": "오디오 공학이 음악/음향학 도메인의 하드웨어 구현체"
+    },
+    {
+      "id": "E_DOM_bone_audio",
+      "from": "DOMAIN_bone_conduction",
+      "to": "DOMAIN_audio",
+      "relation": "subset_of",
+      "description": "골전도는 오디오 도메인 서브셋"
+    },
+    {
+      "id": "E_DOM_ear_audio",
+      "from": "DOMAIN_earphone_hardware",
+      "to": "DOMAIN_audio",
+      "relation": "subset_of",
+      "description": "이어폰 하드웨어는 오디오 도메인 서브셋"
+    },
+    {
+      "id": "E_DOM_micro_battery",
+      "from": "DOMAIN_micro_battery",
+      "to": "DOMAIN_battery_storage",
+      "relation": "subset_of",
+      "description": "마이크로 배터리는 배터리 저장 서브셋"
+    },
+    {
+      "id": "E_DOM_ev_battery_li",
+      "from": "DOMAIN_ev_battery",
+      "to": "DOMAIN_lithium_ion",
+      "relation": "uses",
+      "description": "전기차 배터리는 주로 리튬이온 기술 사용"
+    },
+    {
+      "id": "E_DOM_lead_battery",
+      "from": "DOMAIN_lead_acid",
+      "to": "DOMAIN_battery_storage",
+      "relation": "subset_of",
+      "description": "납산 배터리는 배터리 저장 서브셋"
+    },
+    {
+      "id": "E_DOM_li_battery",
+      "from": "DOMAIN_lithium_ion",
+      "to": "DOMAIN_battery_storage",
+      "relation": "subset_of",
+      "description": "리튬이온 배터리는 배터리 저장 서브셋"
+    },
+    {
+      "id": "E_DOM_auto_battery",
+      "from": "DOMAIN_automotive",
+      "to": "DOMAIN_battery_storage",
+      "relation": "requires",
+      "description": "자동차 공학은 배터리 저장 도메인 필요"
+    },
+    {
+      "id": "E_DOM_ti_mat",
+      "from": "DOMAIN_titanium",
+      "to": "DOMAIN_materials",
+      "relation": "subset_of",
+      "description": "티타늄은 재료 도메인 서브셋"
+    },
+    {
+      "id": "E_DOM_graphene_mat",
+      "from": "DOMAIN_graphene",
+      "to": "DOMAIN_materials",
+      "relation": "subset_of",
+      "description": "그래핀은 재료 도메인 서브셋"
+    },
+    {
+      "id": "E_DOM_graphene_BT27",
+      "from": "DOMAIN_graphene",
+      "to": "BT_27",
+      "relation": "grounded_by",
+      "description": "그래핀 도메인이 BT-27 탄소-6 에너지 체인으로 수학적 근거 확보"
+    },
+    {
+      "id": "E_HEXABONE_EARCELL",
+      "from": "PRODUCT_HEXA_BONE",
+      "to": "PRODUCT_HEXA_EAR_CELL",
+      "relation": "powered_by",
+      "description": "HEXA-BONE 이어폰은 HEXA-EAR-CELL 배터리로 구동"
+    },
+    {
+      "id": "E_BT43_DOM_battery",
+      "from": "BT_43",
+      "to": "DOMAIN_battery_storage",
+      "relation": "applies_to",
+      "description": "BT-43 배터리 음극 CN=6이 배터리 저장 도메인 적용"
+    },
+    {
+      "id": "E_BT43_DOM_li",
+      "from": "BT_43",
+      "to": "DOMAIN_lithium_ion",
+      "relation": "applies_to",
+      "description": "BT-43 CN=6 구조가 리튬이온 음극 설계 적용"
+    },
+    {
+      "id": "E_BT27_DOM_graphene",
+      "from": "BT_27",
+      "to": "DOMAIN_graphene",
+      "relation": "applies_to",
+      "description": "BT-27 탄소-6 에너지 체인이 그래핀 도메인 수학적 기반"
+    },
+    {
+      "id": "E_BT48_DOM_audio",
+      "from": "BT_48",
+      "to": "DOMAIN_audio",
+      "relation": "applies_to",
+      "description": "BT-48 sigma·tau=48 상수가 오디오 도메인 핵심 공명 수"
+    },
+    {
+      "source": "BT_1128",
+      "target": "DOMAIN_keyboard",
+      "relation": "belongs_to"
+    },
+    {
+      "source": "DOMAIN_keyboard",
+      "target": "BT_1128",
+      "relation": "contains"
+    },
+    {
+      "source": "BT_1128",
+      "target": "CONST_n",
+      "relation": "proves"
+    },
+    {
+      "source": "BT_1128",
+      "target": "CONST_J2",
+      "relation": "uses_constant"
+    },
+    {
+      "source": "BT_1127",
+      "target": "BT_1128",
+      "relation": "leads_to"
+    },
+    {
+      "source": "BT_1129",
+      "target": "CONST_n",
+      "relation": "proves"
+    },
+    {
+      "source": "BT_1129",
+      "target": "CONST_phi",
+      "relation": "uses_constant"
+    },
+    {
+      "source": "BT_1129",
+      "target": "DOMAIN_keyboard",
+      "relation": "relates_to"
+    },
+    {
+      "source": "BT_1130",
+      "target": "DOMAIN_mouse",
+      "relation": "belongs_to"
+    },
+    {
+      "source": "DOMAIN_mouse",
+      "target": "BT_1130",
+      "relation": "contains"
+    },
+    {
+      "source": "BT_1130",
+      "target": "CONST_n",
+      "relation": "proves"
+    },
+    {
+      "source": "BT_1130",
+      "target": "CONST_phi",
+      "relation": "uses_constant"
     }
   ],
   "integrity": {
