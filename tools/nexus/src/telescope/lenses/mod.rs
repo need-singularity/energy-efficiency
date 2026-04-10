@@ -619,3 +619,11 @@ pub use horology_lens::HorologyLens;
 // ── 오디오/스피커 렌즈 (BT-1136~1141) ──
 pub mod audio_speaker_lens;
 pub use audio_speaker_lens::AudioSpeakerLens;
+
+// ── 남성청결제 렌즈 (BT-1157) ──
+pub mod mens_intimate_cleanser_lens;
+pub use mens_intimate_cleanser_lens::MensIntimateCleanserLens;
+
+// ── 여성청결제 렌즈 (BT-1158) ──
+pub mod womens_intimate_cleanser_lens;
+pub use womens_intimate_cleanser_lens::WomensIntimateCleanserLens;

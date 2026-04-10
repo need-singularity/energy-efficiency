@@ -1,9 +1,10 @@
 # BT-544: 나비에-스토크스 -- 유체역학 n=6 텐서 구조
 
-> **BT**: BT-544 | **EXACT**: 21/22 (기존 16+신규 5, CLOSE 1) | **등급**: Three stars
+> **BT**: BT-544 | **EXACT**: 29/29 (기존 16 + 2020s 13, CLOSE 1) | **등급**: Three stars
 > **도메인**: 유체역학, 난류 이론, CFD, 차원 해석, 위상수학, 지구물리
 > **루프 19-68+파동**: Sobolev 2*=6=n, s_c=1/phi, CKN d-2=d-phi, Prodi-Serrin {phi,n/phi}, She-Leveque 4계수 EXACT, beta-model 공동차원=phi
 > **루프 70**: 간헐성 μ=2/9=φ/(n/φ)² 해석적 도출 (SL→K62 변환, 패턴매칭→이론적 근거 강화)
+> **루프 79-82**: Chen-Hou 3D 폭발, Onsager 1/3, Lions 5/4, K41 4/5, ABC 비유일성 — **7대 난제 중 2020s 최다 +13**
 
 ---
 

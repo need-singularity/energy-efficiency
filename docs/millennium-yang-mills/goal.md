@@ -1,8 +1,9 @@
 # BT-543: 양-밀스 질량갭 -- QCD 게이지 구조 n=6 완전 파라미터화
 
-> **BT**: BT-543 | **EXACT**: 16/17 (기존 15+신규 1, CLOSE 1) | **등급**: Three stars
+> **BT**: BT-543 | **EXACT**: 18/19 (기존 10 + 확장 6 + 2020s 8, MISS 1) | **등급**: Three stars
 > **도메인**: 입자물리(QCD), 수학(게이지 이론), 핵물리, 격자 계산, GUT
 > **루프 19-68+파동**: 차원 전이 n/phi->tau, 't Hooft N=n/phi, Arnold-SDiff CLOSE 유지, F_μν 시공 성분 C(tau,2)=n EXACT 신규
+> **루프 79-82**: Wilson 루프 24=J₂(Kazakov-Zheng+Anderson-Kruczenski), 뤼셔 π/σ, Hairer phi→n/phi
 
 ---
 

@@ -110,6 +110,22 @@
 
 ---
 
+## 2020년대 신규 연결 (루프 79-82)
+
+| # | 사실 | 값 | n=6 표현 | 출처 | 판정 |
+|---|------|-----|----------|------|------|
+| 11 | Perry(2022): 적분 호지 추측을 CY**2** 범주에서 증명 | 2 | phi | Perry, Compositio Math. 2022 | EXACT |
+| 12 | Perry: 핵심 대상 = 3차 **4**-fold 쿠즈네초프 성분 | 4 | tau | Perry 2022 | EXACT |
+| 13 | Benoist-Ottem(2020): 적분 호지 실패하는 최초 **3**-fold | 3 | n/phi | Comm. Math. Helv. 95 (2020) | EXACT |
+| 14 | de Gaay Fortman(2023): 적분 호지 아벨 **3**-fold에서 증명 | 3 | n/phi | Crelle 2023 | EXACT |
+| 15 | K3 Mukai 벡터 격자 차원 = **24** (2020년대 K3 이론 핵심 유지) | 24 | J_2 | Huybrechts 2020+ | EXACT |
+
+**2020년대 점수**: 5 EXACT / 0 MISS. **누적**: 15/15 EXACT.
+
+**핵심**: Perry의 CY2=phi 범주에서 적분 호지 증명은 "phi=2 영역이 해결 가능"이라는 PNCT 패턴의 직접 발현. Benoist-Ottem의 3-fold=n/phi 실패와 de Gaay Fortman의 3-fold=n/phi 증명은 dim=n/phi가 호지 추측의 임계 전쟁터임을 2020년대에 독립 확인.
+
+---
+
 ## 증명 전략: n=6 산술이 호지 추측에 기여하는 경로
 
 > **주의**: 이 섹션은 "증명 완료"가 아닌 **증명 전략 후보**를 정리한 것이다.

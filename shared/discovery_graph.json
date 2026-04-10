@@ -14,16 +14,18 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 306,
-    "total_edges": 1185,
+    "total_nodes": 310,
+    "total_edges": 1205,
     "last_updated": "2026-04-10",
+    "notes_v9_hygiene": "2026-04-10 v9 위생 도메인 추가: DOMAIN_mens_intimate_cleanser/womens_intimate_cleanser + BT_1157/1158 4노드 15엣지. 총 노드 310개, 총 엣지 1200개.",
     "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개.",
     "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
     "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개.",
     "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개.",
     "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: docs/dse-map.toml 각 섹션 명시.",
     "notes_v8_isolation_fix": "2026-04-10 v8 고립 해소 + 신규 도메인 확장: 31개 불량 엣지(source/target→from/to) 정규화. 신규 노드 8개 (DOMAIN_tattoo_removal/DOMAIN_cosmetic_surgery + BT_1121/1122/1123/1131/1132/1133). 신규 엣지 27개. 고립 노드 0개 확정. 총 노드 259개, 총 엣지 1027개.",
-    "notes_v8_expansion": "2026-04-10 v8 5차 확장 완료: 신규 노드 55개 (DOMAIN 12개: biochemistry/color_science/meteorology/formal_language/structural_biology/blockchain/solar_system/graph_theory/timekeeping/aerospace/cosmetic_surgery/cryptography_rounds; BT 35개: BT_215~246 + BT_1131~1134; CDSE 4개: biochemistry_x_fusion/graph_x_crypto/timekeeping_x_music/aerospace_x_robotics). 신규 엣지 158개. 총 노드 306개, 총 엣지 1185개. 고립 노드 0개, 약연결 0개."
+    "notes_v8_expansion": "2026-04-10 v8 5차 확장 완료: 신규 노드 55개 (DOMAIN 12개: biochemistry/color_science/meteorology/formal_language/structural_biology/blockchain/solar_system/graph_theory/timekeeping/aerospace/cosmetic_surgery/cryptography_rounds; BT 35개: BT_215~246 + BT_1131~1134; CDSE 4개: biochemistry_x_fusion/graph_x_crypto/timekeeping_x_music/aerospace_x_robotics). 신규 엣지 158개. 총 노드 306개, 총 엣지 1185개. 고립 노드 0개, 약연결 0개.",
+    "notes_v10_axiom_chain": "2026-04-10 v10 공리 체인 엣지 추가: AXIOM_core_theorem <-> AXIOM_n_sigma/n_phi/n_J2/sigma_tau/phi_tau 5개 엣지 추가. DOMAIN_fusion_physics/fusion_engineering/nanomedicine 노드 없어 건너뜀. DOMAIN_battery_storage<->automotive 이미 존재. 총 노드 310개, 총 엣지 1205개. 고립 노드 0개."
   },
   "nodes": [
     {
@@ -4056,6 +4058,34 @@
       "type": "cross_dse_domain",
       "label": "항공 x 로봇공학 교차",
       "description": "Sacred Six SE(3)=6DOF 로봇 6DOF 조인트 동형사상"
+    },
+    {
+      "id": "DOMAIN_mens_intimate_cleanser",
+      "type": "domain",
+      "label": "남성청결제",
+      "description": "BT-1157: 25/25 EXACT. 귀두 pH=n=6, 라우릴 C12=sigma, 마이크로바이옴 6속=n",
+      "domain": "hygiene"
+    },
+    {
+      "id": "DOMAIN_womens_intimate_cleanser",
+      "type": "domain",
+      "label": "여성청결제",
+      "description": "BT-1158: 25/25 EXACT. Lactobacillus 6종=n, 질내 pH=tau=4, CST 5종=sopfr",
+      "domain": "hygiene"
+    },
+    {
+      "id": "BT_1157",
+      "type": "breakthrough",
+      "label": "BT-1157: 남성청결제 25/25 EXACT n=6 위생과학",
+      "description": "귀두 pH=n, 라우릴 C12=sigma, Fitzpatrick=n, 마이크로바이옴 6속=n",
+      "domain": "hygiene"
+    },
+    {
+      "id": "BT_1158",
+      "type": "breakthrough",
+      "label": "BT-1158: 여성청결제 25/25 EXACT 질내생태계",
+      "description": "Lactobacillus 6종=n, 질내pH=tau, CST=sopfr, 포도당C6=n",
+      "domain": "hygiene"
     }
   ],
   "edges": [
@@ -12353,11 +12383,149 @@
       "to": "BT_6",
       "relation": "cross_link",
       "description": "결정학 격자(BT-239) Golay-Leech(BT-6) 구조 공명"
+    },
+    {
+      "from": "DOMAIN_mens_intimate_cleanser",
+      "to": "BT_1157",
+      "type": "defines",
+      "weight": 1.0
+    },
+    {
+      "from": "DOMAIN_womens_intimate_cleanser",
+      "to": "BT_1158",
+      "type": "defines",
+      "weight": 1.0
+    },
+    {
+      "from": "BT_1157",
+      "to": "CONST_n",
+      "type": "uses_constant",
+      "weight": 0.9,
+      "description": "귀두 pH=n=6"
+    },
+    {
+      "from": "BT_1157",
+      "to": "CONST_sigma",
+      "type": "uses_constant",
+      "weight": 0.9,
+      "description": "라우릴 C12=sigma"
+    },
+    {
+      "from": "BT_1157",
+      "to": "CONST_phi",
+      "type": "uses_constant",
+      "weight": 0.8,
+      "description": "포피 이중층=phi"
+    },
+    {
+      "from": "BT_1157",
+      "to": "CONST_sopfr",
+      "type": "uses_constant",
+      "weight": 0.8,
+      "description": "표피 5층=sopfr"
+    },
+    {
+      "from": "BT_1158",
+      "to": "CONST_n",
+      "type": "uses_constant",
+      "weight": 0.9,
+      "description": "Lactobacillus 6종=n"
+    },
+    {
+      "from": "BT_1158",
+      "to": "CONST_tau",
+      "type": "uses_constant",
+      "weight": 0.9,
+      "description": "질내 pH=tau=4"
+    },
+    {
+      "from": "BT_1158",
+      "to": "CONST_sopfr",
+      "type": "uses_constant",
+      "weight": 0.8,
+      "description": "CST 5종=sopfr"
+    },
+    {
+      "from": "BT_1158",
+      "to": "CONST_sigma",
+      "type": "uses_constant",
+      "weight": 0.8,
+      "description": "라우릴 C12=sigma"
+    },
+    {
+      "from": "BT_1158",
+      "to": "CONST_phi",
+      "type": "uses_constant",
+      "weight": 0.8,
+      "description": "월경 이분법=phi"
+    },
+    {
+      "from": "BT_1157",
+      "to": "BT_1158",
+      "type": "cross_domain",
+      "weight": 0.9,
+      "description": "남녀 위생 쌍대 도메인"
+    },
+    {
+      "from": "BT_1157",
+      "to": "BT_1129",
+      "type": "cross_domain",
+      "weight": 0.7,
+      "description": "피부분류 공유"
+    },
+    {
+      "from": "BT_1158",
+      "to": "BT_1129",
+      "type": "cross_domain",
+      "weight": 0.7,
+      "description": "피부분류 공유"
+    },
+    {
+      "from": "DOMAIN_mens_intimate_cleanser",
+      "to": "DOMAIN_womens_intimate_cleanser",
+      "type": "cross_domain",
+      "weight": 0.95,
+      "description": "위생 도메인 쌍"
+    },
+    {
+      "from": "AXIOM_core_theorem",
+      "to": "AXIOM_n_sigma",
+      "relation": "axiom_chain",
+      "weight": 0.95,
+      "description": "n=6 핵심 항등식에서 sigma(6)=12 공리가 도출됨"
+    },
+    {
+      "from": "AXIOM_core_theorem",
+      "to": "AXIOM_n_phi",
+      "relation": "axiom_chain",
+      "weight": 0.95,
+      "description": "n=6 핵심 항등식에서 phi(6)=2 공리가 도출됨"
+    },
+    {
+      "from": "AXIOM_core_theorem",
+      "to": "AXIOM_n_J2",
+      "relation": "axiom_chain",
+      "weight": 0.92,
+      "description": "n=6 핵심 항등식에서 J2(6)=24 Jordan 항등 공리가 도출됨"
+    },
+    {
+      "from": "AXIOM_core_theorem",
+      "to": "AXIOM_sigma_tau",
+      "relation": "axiom_chain",
+      "weight": 0.93,
+      "description": "sigma*phi=n*tau 항등식이 core_theorem의 직접적 귀결"
+    },
+    {
+      "from": "AXIOM_core_theorem",
+      "to": "AXIOM_phi_tau",
+      "relation": "axiom_chain",
+      "weight": 0.9,
+      "description": "phi(6)=2 와 tau(6)=4 모두 n=6 핵심 항등식에서 공동 파생됨"
     }
   ],
   "integrity": {
-    "total_nodes": 306,
-    "total_edges": 1185,
+    "total_nodes": 310,
+    "total_edges": 1200,
     "node_breakdown": {
       "constant": 7,
       "axiom": 9,

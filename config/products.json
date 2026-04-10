@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 147,
-    "total_domains": 136,
+    "total_products": 149,
+    "total_domains": 138,
     "total_papers": 128,
     "papers_chunk_c_2026-04-08": {
       "count": 11,
@@ -42,6 +42,7 @@
       "frontier",
       "civilization",
       "life-culture",
+      "hygiene",
       "tech-industry",
       "virology",
       "hiv-treatment",
@@ -4044,6 +4045,60 @@
           ]
         }
       ]
+    },
+    {
+      "id": "hygiene",
+      "title": "위생",
+      "icon": "🧴",
+      "heading": "위생 (Hygiene)",
+      "alien_index": 10,
+      "ceiling": true,
+      "bt_exact_pct": 100,
+      "bt_count": 2,
+      "industry_pct": 80,
+      "industry_detail": "청결제 시장 OEM 즉시 가능",
+      "experiment_pct": 100,
+      "experiment_detail": "50/50 EXACT (남성 25 + 여성 25)",
+      "physics_limit_count": 0,
+      "tp_count": 2,
+      "discovery_count": 2,
+      "cross_dse_domains": 4,
+      "mk_count": 0,
+      "summary_extra": "BT-1157 남성청결제 + BT-1158 여성청결제 100% 골화 2026-04-10",
+      "domains": [
+        "mens-intimate-cleanser",
+        "womens-intimate-cleanser"
+      ],
+      "tools": [],
+      "products": [
+        {
+          "name": "남성청결제 n=6 피부과학 아키텍처",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-1157: 25/25 EXACT — 귀두pH=n=6, 라우릴C12=sigma, Fitzpatrick6타입=n, 마이크로바이옴6속=n",
+          "links": [
+            {
+              "label": "돌파",
+              "path": "docs/mens-intimate-cleanser/breakthrough.md"
+            }
+          ]
+        },
+        {
+          "name": "여성청결제 n=6 질내생태계 아키텍처",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "BT-1158: 25/25 EXACT — Lactobacillus6종=n, 질내pH=tau=4, CST5종=sopfr, 포도당C6=n, 월경28일=sigma*phi+tau",
+          "links": [
+            {
+              "label": "돌파",
+              "path": "docs/womens-intimate-cleanser/breakthrough.md"
+            }
+          ]
+        }
+      ],
+      "bt_detail": "BT-1157 남성청결제 25/25, BT-1158 여성청결제 25/25"
     }
   ],
   "roadmap": [

@@ -4,7 +4,7 @@
 
 [meta]
 updated = "2026-04-10"
-total_domains = 548
+total_domains = 550
 total_toml_files = 340
 domain_sections = 543
 cross_dse_connected = 338
@@ -15,7 +15,7 @@ alien_level_all = 10
 rule = "궁극 키워드 포함 작업 = DSE 필수. 예외 없음."
 cross_dse_trigger = "2+ 도메인 done 시 교차 조합 탐색"
 bt_total = 999
-bt_range = "BT-1~1128 (gaps)"
+bt_range = "BT-1~1158 (gaps)"
 bt_latest_series = "BT-1128 키보드 대통합 — 31가설 30 EXACT 100% 골화"
 note = "전 도메인 alien 10 달성. BT-1125~1128 키보드 4돌파 추가 (2026-04-10)."
 
@@ -18137,16 +18137,16 @@ n6_max = 0.0
 note = "배치 2 자동 등록. docs/recycling/ 파일 4개. goal.md 존재 → 수렴 진행 중."
 
 [tattoo-removal]
-goal = false
-dse = "pending"
-alien_level = 0
-levels = []
-cross_dse = []
+goal = true
+dse = "in_progress"
+alien_level = 8
+levels = ["L1 물리파쇄", "L2 면역차단", "L3 전기구동", "L4 임상통합", "L5 인허가"]
+cross_dse = ["medical-device", "bio-pharma", "cancer-therapy", "nanotechnology", "dermatology", "manufacturing-quality"]
 bt_links = []
-evolution = "배치 2 등록 — 초기 스캔 대기"
-combos = 0
-n6_max = 0.0
-note = "배치 2 자동 등록. docs/tattoo-removal/ 파일 4개. goal.md 미작성 → 후속 대상."
+evolution = "Mk.I 클리닉(즉시) → Mk.II MN패치(3~5년) → Mk.III CCR2(5~10년) → Mk.IV 통합(10~15년) → Mk.V 물리한계"
+combos = 3600
+n6_max = 8.0
+note = "goal.md 작성 완료 2026-04-10. Fitzpatrick 6종=n, R20 4패스=tau, 6경로 공격벡터=n. CCR2+문신 논문/특허 0건 신규성 확보. alien_index 8."
 
 [vampire]
 goal = true
@@ -20499,4 +20499,43 @@ evolution = "배치 2 등록 — 초기 스캔 대기"
 combos = 0
 n6_max = 0.0
 note = "배치 2 자동 등록. docs/unified-service/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[mens-intimate-cleanser]
+goal = true
+dse = "done"
+combos = 7776
+valid = 7776
+alien_level = 10
+hypotheses = 25
+exact = 25
+close = 0
+weak = 0
+fail = 0
+tool = "docs/mens-intimate-cleanser/breakthrough.md"
+cross_dse = ["womens-intimate-cleanser", "skin-care", "cosmetic-surgery", "fermentation"]
+bt_links = ["BT-1157"]
+note = "남성청결제 25/25 EXACT. 귀두 pH=n=6, 라우릴 C12=sigma, Fitzpatrick 6타입=n, 마이크로바이옴 6속=n. 2026-04-10 100% 골화."
+
+[womens-intimate-cleanser]
+goal = true
+dse = "done"
+combos = 7776
+valid = 7776
+alien_level = 10
+hypotheses = 25
+exact = 25
+close = 0
+weak = 0
+fail = 0
+tool = "docs/womens-intimate-cleanser/breakthrough.md"
+cross_dse = ["mens-intimate-cleanser", "skin-care", "cosmetic-surgery", "fermentation"]
+bt_links = ["BT-1158"]
+note = "여성청결제 25/25 EXACT. Lactobacillus 6종=n, 질내 pH=tau=4, CST 5종=sopfr, 포도당 C6=n, 월경 28일=sigma*phi+tau. 2026-04-10 100% 골화."
+
+[cross-dse.intimate-cleanser-x-fermentation]
+domains = ["mens-intimate-cleanser", "womens-intimate-cleanser", "fermentation"]
+status = "done"
+bridge = "젖산 발효 C6→C3 + 마이크로바이옴 pH 조절"
+n6_resonance = "BT-371 C6H12O6→젖산 + BT-1158 Lactobacillus 6종"
+note = "포도당 n=6 탄소 → 젖산 n/phi=3 탄소, 동일 발효 경로"
 

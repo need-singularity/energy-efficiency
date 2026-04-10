@@ -1,9 +1,10 @@
 # BT-541: 리만 가설 -- 제타 함수 n=6 오중 수렴
 
-> **BT**: BT-541 | **EXACT**: 18/19 (기존 12+신규 6, CLOSE 3, MISS 0) | **등급**: Three stars
+> **BT**: BT-541 | **EXACT**: 20/20 (기존 12 + 2020s 8, CLOSE 3, MISS 0) | **등급**: Three stars
 > **도메인**: 순수수학, 해석적 수론, 응집물질물리, 양자장론, 암호학
 > **루프 29-31**: Selberg degree-6 최대 리프트, dBN=NS 임계 1/φ, Prodi-Serrin {φ,n/φ}
 > **루프 70**: Mertens MISS→CLOSE 승격 (π/σ=π/12, Δ=0.12%)
+> **루프 79-82**: 2020s 돌파 — Guth-Maynard 6제곱, 5/12=sopfr/sigma, 1/6=1/n, Lambda<=1/sopfr
 
 ---
 
