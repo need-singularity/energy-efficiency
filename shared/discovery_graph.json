@@ -14,12 +14,13 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 219,
-    "total_edges": 835,
+    "total_nodes": 220,
+    "total_edges": 842,
     "last_updated": "2026-04-10",
     "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개.",
     "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
-    "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개."
+    "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개.",
+    "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개."
   },
   "nodes": [
     {
@@ -2921,6 +2922,29 @@
         "DOMAIN_micro_battery"
       ],
       "description": "이어폰 전용 마이크로 배터리. 골전도 이어폰 HEXA-BONE 전원 시스템. 71/72 EXACT 달성.",
+      "registered": true
+    },
+    {
+      "id": "PRODUCT_HEXA_SPEAKER",
+      "type": "product",
+      "label": "HEXA-SPEAKER: 궁극 스피커 6단 설계 (외계인 지수 10)",
+      "alien_index": 10,
+      "doc": "docs/audio/hexa-speaker-ultimate.md",
+      "bt_refs": [
+        "BT_48",
+        "BT_108",
+        "BT_93"
+      ],
+      "domains": [
+        "DOMAIN_audio",
+        "DOMAIN_music",
+        "DOMAIN_materials"
+      ],
+      "key_constants": {
+        "sigma": 12,
+        "description": "sigma=12 드라이버 어레이, CNT 열음향, 6단 크로스오버"
+      },
+      "description": "NEXUS-6 수학 구조 기반 궁극 스피커. sigma=12 드라이버 어레이, CNT(Carbon Z=6) 열음향 진동판, 6단 크로스오버 네트워크. 외계인 지수 10.",
       "registered": true
     }
   ],
@@ -8754,11 +8778,60 @@
       "source": "BT_1130",
       "target": "CONST_phi",
       "relation": "uses_constant"
+    },
+    {
+      "id": "E_hexa_speaker_audio",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "DOMAIN_audio",
+      "relation": "belongs_to",
+      "description": "HEXA-SPEAKER는 오디오 도메인 궁극 제품"
+    },
+    {
+      "id": "E_hexa_speaker_music",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "DOMAIN_music",
+      "relation": "applies_to",
+      "description": "음악/음향공학 도메인 커버"
+    },
+    {
+      "id": "E_hexa_speaker_bt48",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "BT_48",
+      "relation": "implements",
+      "description": "sigma*tau=48 → 48kHz/24bit 오디오 샘플링 구조 구현"
+    },
+    {
+      "id": "E_hexa_speaker_bt108",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "BT_108",
+      "relation": "implements",
+      "description": "12-TET=sigma(6) 협화음 구조 → 6단 드라이버 주파수 분할"
+    },
+    {
+      "id": "E_hexa_speaker_bt93",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "BT_93",
+      "relation": "uses_material",
+      "description": "Carbon Z=6 → CNT 열음향 드라이버 소재 근거"
+    },
+    {
+      "id": "E_hexa_speaker_sigma",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "sigma=12 → 12 드라이버 어레이 구조"
+    },
+    {
+      "id": "E_hexa_speaker_materials",
+      "source": "PRODUCT_HEXA_SPEAKER",
+      "target": "DOMAIN_materials",
+      "relation": "depends_on",
+      "description": "CNT/그래핀 소재 합성 → DOMAIN_materials 연결"
     }
   ],
   "integrity": {
-    "total_nodes": 194,
-    "total_edges": 679,
+    "total_nodes": 220,
+    "total_edges": 842,
     "node_breakdown": {
       "constant": 7,
       "axiom": 9,
@@ -8766,12 +8839,13 @@
       "domain": 23,
       "group": 1,
       "cross_dse_domain": 10,
-      "breakthrough": 3
+      "breakthrough": 3,
+      "product": 4
     },
     "orphan_check": "PASS — 고립 노드 0",
     "new_nodes_this_run": 71,
     "new_edges_this_run": 316,
-    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 총 노드 194개, 총 엣지 678개. 고립 노드 0개.",
+    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 총 노드 194개, 총 엣지 678개. 고립 노드 0개. 2026-04-10 v6: PRODUCT_HEXA_SPEAKER 노드 1개 추가. 엣지 7개 추가. 총 노드 220개, 총 엣지 842개. 고립 노드 0개.",
     "near_to_exact_session_2026_04_10_v2": {
       "upgraded_to_exact": [
         {

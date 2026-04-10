@@ -46,6 +46,16 @@
             "command": "OUTPUT=$(cat); if echo \"$OUTPUT\" | grep -q 'error\\[Syntax\\]\\|error\\[Type\\]\\|error\\[Parse\\]\\|문법'; then FILE=$(echo \"$OUTPUT\" | grep -oE '[^ ]+\\.hexa:[0-9]+' | head -1 | cut -d: -f1); ERR=$(echo \"$OUTPUT\" | grep 'error\\[' | head -1); GID=''; case \"$ERR\" in *Semicolon*) GID='G6';; *'-> ('*|*RParen*LBracket*) GID='G1';; *'block comment'*|*'/*'*) GID='G3';; *': ['*|*'expected identifier'*) GID='G2';; *'Struct{}'*) GID='G5';; esac; echo \"{\\\"systemMessage\\\":\\\"⚠️ hexa 문법 오류 ${GID:-?} 감지. 에러: $ERR 파일: $FILE — 참조: shared/hexa-grammar/ (autofix.json+issues.jsonl+convergence.json). 해당 파일 직접 수정 후 재실행.\\\"}\"; fi"
           }
         ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "INPUT=$(cat); FILE=$(echo \"$INPUT\" | /usr/bin/python3 -c \"import sys,json; print(json.load(sys.stdin).get('file_path',''))\" 2>/dev/null); if echo \"$FILE\" | grep -qE 'docs/[^/]+/goal\\.md$'; then DOMAIN=$(echo \"$FILE\" | sed 's|.*/docs/||;s|/goal\\.md||'); echo \"{\\\"systemMessage\\\":\\\"🔧 도메인 [$DOMAIN] goal.md 생성 감지. 자동 등록 파이프라인 실행: (1) atlas-constants.md EXACT 상수 섹션 추가 확인 (2) breakthrough-theorems.md BT 추가 확인 (3) 모두 완료 후 tools/auto-register-domain.sh docs/$DOMAIN/goal.md 실행 → dse-map 등록+커밋+푸시 자동 수행. 확인 없이 즉시 실행.\\\"}\"; fi; exit 0",
+            "timeout": 3
+          }
+        ]
       }
     ]
   }
