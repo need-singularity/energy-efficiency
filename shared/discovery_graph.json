@@ -14,14 +14,16 @@
       "breakthrough_rho": 0.254,
       "recursive_growth": 60
     },
-    "total_nodes": 220,
-    "total_edges": 842,
+    "total_nodes": 306,
+    "total_edges": 1185,
     "last_updated": "2026-04-10",
     "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개.",
     "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
     "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개.",
     "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개.",
-    "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: docs/dse-map.toml 각 섹션 명시."
+    "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: docs/dse-map.toml 각 섹션 명시.",
+    "notes_v8_isolation_fix": "2026-04-10 v8 고립 해소 + 신규 도메인 확장: 31개 불량 엣지(source/target→from/to) 정규화. 신규 노드 8개 (DOMAIN_tattoo_removal/DOMAIN_cosmetic_surgery + BT_1121/1122/1123/1131/1132/1133). 신규 엣지 27개. 고립 노드 0개 확정. 총 노드 259개, 총 엣지 1027개.",
+    "notes_v8_expansion": "2026-04-10 v8 5차 확장 완료: 신규 노드 55개 (DOMAIN 12개: biochemistry/color_science/meteorology/formal_language/structural_biology/blockchain/solar_system/graph_theory/timekeeping/aerospace/cosmetic_surgery/cryptography_rounds; BT 35개: BT_215~246 + BT_1131~1134; CDSE 4개: biochemistry_x_fusion/graph_x_crypto/timekeeping_x_music/aerospace_x_robotics). 신규 엣지 158개. 총 노드 306개, 총 엣지 1185개. 고립 노드 0개, 약연결 0개."
   },
   "nodes": [
     {
@@ -3407,6 +3409,653 @@
       "key_expression": "n6_filter: sigma(n)*phi(n)/n/tau(n) == 1 iff n=6",
       "description": "HEXA-HYPOTHESES 가설 자동 검증 필터: sigma(n)*phi(n) = n*tau(n) iff n=6. 임의 정수 n에 대해 이 등식이 성립하는 유일한 양의 정수는 n=6. 모든 NEXUS-6 가설이 이 필터를 경유. 코어 정리의 가설 파이프라인 적용. dse-map.toml [hypotheses]: n=6 축 명기.",
       "registered": true
+    },
+    {
+      "id": "DOMAIN_tattoo_removal",
+      "type": "domain",
+      "label": "Tattoo Removal",
+      "description": "레이저 타투 제거 도메인: Q-스위치/피코초 레이저, 색소 분해, 6파장 선택, sigma=12 pulse cycles",
+      "domain": "medical"
+    },
+    {
+      "id": "DOMAIN_cosmetic_surgery",
+      "type": "domain",
+      "label": "Cosmetic Surgery",
+      "description": "성형외과 도메인: n=6 조직층, tau=4 회복 단계, phi=2 대칭 기준, sigma=12 수술 프로토콜",
+      "domain": "medical"
+    },
+    {
+      "id": "BT_1121",
+      "type": "breakthrough_theorem",
+      "label": "BT-1121: 타투 제거 6파장 수렴",
+      "grade": "one_star",
+      "domains": [
+        "tattoo_removal",
+        "laser",
+        "materials"
+      ],
+      "key_expression": "n=6 wavelengths: 532/694/755/785/1064/1320nm",
+      "description": "Q-스위치 레이저 6개 핵심 파장이 n=6에 수렴. sigma=12 펄스 세션, tau=4 색소 분해 단계.",
+      "registered": true
+    },
+    {
+      "id": "BT_1122",
+      "type": "breakthrough_theorem",
+      "label": "BT-1122: 성형외과 n=6 조직층 대칭",
+      "grade": "one_star",
+      "domains": [
+        "cosmetic_surgery",
+        "biology",
+        "engineering"
+      ],
+      "key_expression": "6 tissue layers: epidermis/dermis/hypodermis/SMAS/muscle/periosteum",
+      "description": "인체 얼굴 6 조직층이 n=6에 정확히 수렴. phi=2 대칭축, tau=4 수술 접근법.",
+      "registered": true
+    },
+    {
+      "id": "BT_1123",
+      "type": "breakthrough_theorem",
+      "label": "BT-1123: 오디오 드라이버 6대역 분리",
+      "grade": "one_star",
+      "domains": [
+        "audio",
+        "music",
+        "engineering"
+      ],
+      "key_expression": "6-way crossover: sub/bass/mid-bass/mid/upper-mid/treble",
+      "description": "6방향 주파수 분리가 n=6 수렴. sigma=12 옥타브, tau=4 드라이버 유형(woofer/mid/tweeter/super).",
+      "registered": true
+    },
+    {
+      "id": "BT_1131",
+      "type": "breakthrough_theorem",
+      "label": "BT-1131: 타투 색소 분해 tau=4 단계",
+      "grade": "one_star",
+      "domains": [
+        "tattoo_removal",
+        "chemistry",
+        "biology"
+      ],
+      "key_expression": "tau=4 degradation stages: photodisruption/macrophage/lymphatic/excretion",
+      "description": "타투 색소 체외 배출 4단계가 tau(6)=4에 수렴. phi=2 면역 세포 쌍(대식세포+수지상세포).",
+      "registered": true
+    },
+    {
+      "id": "BT_1132",
+      "type": "breakthrough_theorem",
+      "label": "BT-1132: 성형 회복 phi=2 대칭 복원",
+      "grade": "one_star",
+      "domains": [
+        "cosmetic_surgery",
+        "biology",
+        "materials"
+      ],
+      "key_expression": "phi=2 symmetry axis: bilateral facial geometry restoration",
+      "description": "성형 수술 후 phi=2 양측 대칭 복원 기준. sigma=12주 회복 사이클, J2=24시간 초기 부종 관리.",
+      "registered": true
+    },
+    {
+      "id": "BT_1133",
+      "type": "breakthrough_theorem",
+      "label": "BT-1133: 오디오 임피던스 n=6 매칭",
+      "grade": "one_star",
+      "domains": [
+        "audio",
+        "engineering",
+        "physics"
+      ],
+      "key_expression": "n=6 impedance nodes: 4/8/16/32/120/600 ohm",
+      "description": "표준 오디오 임피던스 6개 값이 n=6 구조에 수렴. tau=4 증폭 단계, sigma=12dB 단계.",
+      "registered": true
+    },
+    {
+      "id": "DOMAIN_biochemistry",
+      "type": "domain",
+      "label": "생화학",
+      "description": "EC 효소 6클래스, TCA사이클 8단계, 해당과정 10단계 n=6 대사경로",
+      "domain": "biochemistry"
+    },
+    {
+      "id": "DOMAIN_cryptography_rounds",
+      "type": "domain",
+      "label": "암호화 라운드",
+      "description": "AES 10/12/14라운드, SHA-256 64라운드, J2=24 라운드 n=6 구조",
+      "domain": "cryptography_rounds"
+    },
+    {
+      "id": "DOMAIN_color_science",
+      "type": "domain",
+      "label": "색채과학",
+      "description": "RGB 3원색, CMYK 4색, 12-TET 색상 n=6 광학 구조",
+      "domain": "color_science"
+    },
+    {
+      "id": "DOMAIN_meteorology",
+      "type": "domain",
+      "label": "기상학",
+      "description": "쾨펜 5기후군, EF0~EF5 토네이도, 대기권 5층 n=6",
+      "domain": "meteorology"
+    },
+    {
+      "id": "DOMAIN_formal_language",
+      "type": "domain",
+      "label": "계산이론/형식언어",
+      "description": "Chomsky 4계층, Turing기계 n=6 논리 구조",
+      "domain": "formal_language"
+    },
+    {
+      "id": "DOMAIN_structural_biology",
+      "type": "domain",
+      "label": "구조생물학",
+      "description": "DNA 이중나선, 단백질 접힘 n=6 구조기하학",
+      "domain": "structural_biology"
+    },
+    {
+      "id": "DOMAIN_blockchain",
+      "type": "domain",
+      "label": "블록체인",
+      "description": "Bitcoin 6블록 확인, Ethereum 32슬롯 n=6 합의",
+      "domain": "blockchain"
+    },
+    {
+      "id": "DOMAIN_solar_system",
+      "type": "domain",
+      "label": "태양계/천체역학",
+      "description": "Kepler 6궤도요소, L1~L5 n=6 궤도",
+      "domain": "solar_system"
+    },
+    {
+      "id": "DOMAIN_graph_theory",
+      "type": "domain",
+      "label": "그래프이론/조합론",
+      "description": "R(3,3)=6, 4색정리, 5 Platonic 입체 n=6",
+      "domain": "graph_theory"
+    },
+    {
+      "id": "DOMAIN_timekeeping",
+      "type": "domain",
+      "label": "시간계측/역법",
+      "description": "60진법, 24시간, 12달 n=6 시공간",
+      "domain": "timekeeping"
+    },
+    {
+      "id": "DOMAIN_aerospace",
+      "type": "domain",
+      "label": "항공/우주항공",
+      "description": "Sacred Six 계기, SE(3)=6DOF n=6 비행",
+      "domain": "aerospace"
+    },
+    {
+      "id": "BT_215",
+      "type": "breakthrough_theorem",
+      "label": "BT-215: 생화학 대사경로 n=6",
+      "grade": "three_stars",
+      "domains": [
+        "biochemistry",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "n=6 EC효소 클래스, sigma-phi=10 해당과정, sigma-tau=8 TCA단계, n^2=36 ATP",
+      "registered": true
+    },
+    {
+      "id": "BT_216",
+      "type": "breakthrough_theorem",
+      "label": "BT-216: 암호화 라운드 수 n=6 완전 구조",
+      "grade": "three_stars",
+      "domains": [
+        "cryptography",
+        "cryptography_rounds",
+        "cs"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "AES 10/12/14라운드, SHA-256 64라운드, J2=24 Keccak라운드",
+      "registered": true
+    },
+    {
+      "id": "BT_217",
+      "type": "breakthrough_theorem",
+      "label": "BT-217: 색채과학 n=6 광학 구조",
+      "grade": "three_stars",
+      "domains": [
+        "color_science",
+        "physics",
+        "display"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "RGB 3원색, CMYK 4색, J2=24 트루컬러비트, NCS n=6 기본색",
+      "registered": true
+    },
+    {
+      "id": "BT_218",
+      "type": "breakthrough_theorem",
+      "label": "BT-218: 기상학/기후학 n=6 대기 구조",
+      "grade": "three_stars",
+      "domains": [
+        "meteorology",
+        "environment",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "쾨펜 5기후군, EF0~EF5 n=6 토네이도, 밀란코비치 3주기, 대기 5층",
+      "registered": true
+    },
+    {
+      "id": "BT_219",
+      "type": "breakthrough_theorem",
+      "label": "BT-219: 계산이론/형식언어 n=6 논리 구조",
+      "grade": "three_stars",
+      "domains": [
+        "formal_language",
+        "cs",
+        "math"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Chomsky 계층 4층, Turing 정지문제, n=6 파서 상태",
+      "registered": true
+    },
+    {
+      "id": "BT_220",
+      "type": "breakthrough_theorem",
+      "label": "BT-220: 단백질 구조/접힘 n=6 구조생물학",
+      "grade": "three_stars",
+      "domains": [
+        "structural_biology",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "단백질 4차 구조, alpha-helix 3.6잔기/회전, n=6 아미노산 코드",
+      "registered": true
+    },
+    {
+      "id": "BT_222",
+      "type": "breakthrough_theorem",
+      "label": "BT-222: 사진/이미징 센서 n=6 광학 캡처",
+      "grade": "three_stars",
+      "domains": [
+        "color_science",
+        "display",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Bayer CFA 2x2 패턴 tau=4, f/5.6 조리개, 18% 그레이카드",
+      "registered": true
+    },
+    {
+      "id": "BT_223",
+      "type": "breakthrough_theorem",
+      "label": "BT-223: 심리학/인지과학 n=6 마음 구조",
+      "grade": "three_stars",
+      "domains": [
+        "neuroscience",
+        "biology",
+        "cs"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Maslow 5단계, 인지부하 7+2, Kohlberg 6단계 도덕발달",
+      "registered": true
+    },
+    {
+      "id": "BT_224",
+      "type": "breakthrough_theorem",
+      "label": "BT-224: 인체 해부/생리 n=6 신체 구조",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "structural_biology",
+        "engineering"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "6대 영양소, 12대 뇌신경, 5생명징후, 4혈액형",
+      "registered": true
+    },
+    {
+      "id": "BT_225",
+      "type": "breakthrough_theorem",
+      "label": "BT-225: 생태학/생물다양성 n=6 생명 분류",
+      "grade": "three_stars",
+      "domains": [
+        "ecology",
+        "biology",
+        "environment"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "린네 분류 6계, n=6 영양단계 최대, 5멸종대사건",
+      "registered": true
+    },
+    {
+      "id": "BT_226",
+      "type": "breakthrough_theorem",
+      "label": "BT-226: 타이포그래피/조판 n=6 인쇄 구조",
+      "grade": "three_stars",
+      "domains": [
+        "cs",
+        "manufacturing",
+        "math"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "12포인트=파이카, 72포인트=인치, n=6 활자 계열",
+      "registered": true
+    },
+    {
+      "id": "BT_227",
+      "type": "breakthrough_theorem",
+      "label": "BT-227: 글로벌 식별 코드 n=6 인코딩",
+      "grade": "three_stars",
+      "domains": [
+        "cs",
+        "cryptography",
+        "network"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "ISBN-13, IBAN sigma=12자리, EAN-13 바코드 tau*n=24",
+      "registered": true
+    },
+    {
+      "id": "BT_228",
+      "type": "breakthrough_theorem",
+      "label": "BT-228: 국제 거버넌스 n=6 제도 구조",
+      "grade": "three_stars",
+      "domains": [
+        "governance",
+        "math",
+        "cs"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "UN안보리 상임이사국 5, G7, G20, n=6 UN공식언어",
+      "registered": true
+    },
+    {
+      "id": "BT_229",
+      "type": "breakthrough_theorem",
+      "label": "BT-229: Algebraic Blowup E6 Bridge",
+      "grade": "three_stars",
+      "domains": [
+        "math",
+        "physics",
+        "pure_mathematics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "E6 리대수 차원=78, E6 루트계=72=n*sigma, Weyl그룹",
+      "registered": true
+    },
+    {
+      "id": "BT_230",
+      "type": "breakthrough_theorem",
+      "label": "BT-230: 블록체인 합의 n=6 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "blockchain",
+        "cs",
+        "cryptography"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Bitcoin 6블록 확인, Ethereum 32슬롯, Byzantine 1/3 내결함성",
+      "registered": true
+    },
+    {
+      "id": "BT_231",
+      "type": "breakthrough_theorem",
+      "label": "BT-231: 태양계 & 천체역학 n=6 궤도 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "solar_system",
+        "astronomy",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Kepler 6궤도요소, Lagrange L1~L5, IAU 8행성, JWST 18세그먼트",
+      "registered": true
+    },
+    {
+      "id": "BT_232",
+      "type": "breakthrough_theorem",
+      "label": "BT-232: 그래프 이론 & 조합 위상수학 n=6 EXACT",
+      "grade": "three_stars",
+      "domains": [
+        "graph_theory",
+        "math",
+        "pure_mathematics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Ramsey R(3,3)=6, 4색정리, 5 Platonic 입체, Euler 표수 chi=2",
+      "registered": true
+    },
+    {
+      "id": "BT_233",
+      "type": "breakthrough_theorem",
+      "label": "BT-233: 60진법 시간·각도 n=6 시공간 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "timekeeping",
+        "math",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "60진법=sigma*sopfr, 24시간=J2, 12달=sigma, 360도=6*sigma*sopfr",
+      "registered": true
+    },
+    {
+      "id": "BT_234",
+      "type": "breakthrough_theorem",
+      "label": "BT-234: Hardy-Ramanujan 1729 수론 n=6 교차",
+      "grade": "three_stars",
+      "domains": [
+        "math",
+        "pure_mathematics",
+        "number_theory"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "1729=12^3+1^3=10^3+9^3, 택시캡수, Ramanujan tau함수",
+      "registered": true
+    },
+    {
+      "id": "BT_235",
+      "type": "breakthrough_theorem",
+      "label": "BT-235: 이코사헤드럴 캡시드·풀러렌·준결정 n=6 대칭",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "chemistry",
+        "materials"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "T수=1,3,4,7..., C60풀러렌 60꼭짓점, 준결정 5겹 대칭",
+      "registered": true
+    },
+    {
+      "id": "BT_236",
+      "type": "breakthrough_theorem",
+      "label": "BT-236: 품질·운영관리 n=6 프로세스 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "manufacturing",
+        "engineering",
+        "cs"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "6시그마 DMAIC 5단계, PDCA 4단계, ISO9001 n=6 원칙",
+      "registered": true
+    },
+    {
+      "id": "BT_237",
+      "type": "breakthrough_theorem",
+      "label": "BT-237: DNA 이중나선 n=6 구조기하학",
+      "grade": "three_stars",
+      "domains": [
+        "structural_biology",
+        "biology",
+        "chemistry"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "DNA 큰홈 12A=sigma, 작은홈 6A=n, 회전당 10.5염기쌍",
+      "registered": true
+    },
+    {
+      "id": "BT_238",
+      "type": "breakthrough_theorem",
+      "label": "BT-238: 입자가속기 LHC n=6 공학 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "physics",
+        "engineering",
+        "chemistry"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "LHC 8섹터=sigma-tau, 1232 이중극 자석, 27km 둘레",
+      "registered": true
+    },
+    {
+      "id": "BT_239",
+      "type": "breakthrough_theorem",
+      "label": "BT-239: 결정학 & 광물과학 n=6 격자 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "chemistry",
+        "materials",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "7결정계, 14Bravais격자, 6입방계 대칭조작, 6배위수 CN=6",
+      "registered": true
+    },
+    {
+      "id": "BT_240",
+      "type": "breakthrough_theorem",
+      "label": "BT-240: 조합 설계 이론 n=6 Steiner 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "math",
+        "pure_mathematics",
+        "graph_theory"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Steiner S(2,3,7) 7점 7블록, Fano평면 7점, BIBD(7,3,1)",
+      "registered": true
+    },
+    {
+      "id": "BT_241",
+      "type": "breakthrough_theorem",
+      "label": "BT-241: 항공 & 우주항공 n=6 비행 아키텍처",
+      "grade": "three_stars",
+      "domains": [
+        "aerospace",
+        "engineering",
+        "physics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "Sacred Six 계기 n=6, SE(3)=6DOF, ILS CAT I/II/III",
+      "registered": true
+    },
+    {
+      "id": "BT_242",
+      "type": "breakthrough_theorem",
+      "label": "BT-242: SLE6 침투 플라즈마 수송 위상 등가",
+      "grade": "three_stars",
+      "domains": [
+        "math",
+        "physics",
+        "pure_mathematics"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "SLE kappa=n=6 국소성, Hausdorff dim=7/4, 침투임계값 1/phi=0.5",
+      "registered": true
+    },
+    {
+      "id": "BT_243",
+      "type": "breakthrough_theorem",
+      "label": "BT-243: 토카막 위상 양자 오류 정정 n=6 동형사상",
+      "grade": "three_stars",
+      "domains": [
+        "physics",
+        "quantum_computing",
+        "engineering"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "ITER TF sigma=12코일, PF n=6코일, Golay 코드 J2=24",
+      "registered": true
+    },
+    {
+      "id": "BT_244",
+      "type": "breakthrough_theorem",
+      "label": "BT-244: ATP 합성효소 토카막 회전 에너지 변환 n=6",
+      "grade": "three_stars",
+      "domains": [
+        "biology",
+        "physics",
+        "biochemistry"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "F1 alpha3beta3 육량체 n=6, 회전 120도, 광합성 6CO2",
+      "registered": true
+    },
+    {
+      "id": "BT_245",
+      "type": "breakthrough_theorem",
+      "label": "BT-245: MHD q면 음악 협화음 div(6) 공명",
+      "grade": "three_stars",
+      "domains": [
+        "physics",
+        "math",
+        "music"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "q=1/q=2/q=3 MHD면, div(6)={1,2,3,6} 협화음, ITER sigma=12코일",
+      "registered": true
+    },
+    {
+      "id": "BT_246",
+      "type": "breakthrough_theorem",
+      "label": "BT-246: 핵융합 탄소 사이클 n=6 완전 루프",
+      "grade": "three_stars",
+      "domains": [
+        "physics",
+        "environment",
+        "biology"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "탄소-12 핵자 12개=sigma, 광합성 6CO2, 핵융합-탄소 완전루프",
+      "registered": true
+    },
+    {
+      "id": "BT_1134",
+      "type": "breakthrough_theorem",
+      "label": "BT-1134: 성형외과 시술 기준 n=6",
+      "grade": "three_stars",
+      "domains": [
+        "cosmetic_surgery",
+        "biology",
+        "engineering"
+      ],
+      "key_expression": "n=6 arithmetic",
+      "description": "봉합사 6-0 표준, Coleman 지방이식 3단계=n/phi, PRP tau~n배 농축",
+      "registered": true
+    },
+    {
+      "id": "CDSE_biochemistry_x_fusion",
+      "type": "cross_dse_domain",
+      "label": "생화학 x 핵융합 교차",
+      "description": "ATP합성효소 회전=토카막 플라즈마 회전 n=6 에너지변환 동형사상"
+    },
+    {
+      "id": "CDSE_graph_theory_x_crypto",
+      "type": "cross_dse_domain",
+      "label": "그래프이론 x 암호화 교차",
+      "description": "Ramsey R(3,3)=6 AES 라운드 n=6 구조적 공명"
+    },
+    {
+      "id": "CDSE_timekeeping_x_music",
+      "type": "cross_dse_domain",
+      "label": "시간계측 x 음악 교차",
+      "description": "60진법 sigma*sopfr=60Hz 12반음 sigma=12 시간/음악 n=6 통합"
+    },
+    {
+      "id": "CDSE_aerospace_x_robotics",
+      "type": "cross_dse_domain",
+      "label": "항공 x 로봇공학 교차",
+      "description": "Sacred Six SE(3)=6DOF 로봇 6DOF 조인트 동형사상"
     }
   ],
   "edges": [
@@ -7885,96 +8534,87 @@
     },
     {
       "id": "E_n_BT1116",
-      "source": "CONST_n",
-      "target": "BT_1125",
+      "from": "CONST_n",
+      "to": "BT_1125",
       "relation": "proves",
-      "weight": 1.0,
-      "note": "n=6행, 6KRO"
+      "description": "n=6행, 6KRO"
     },
     {
       "id": "E_sigma_BT1116",
-      "source": "CONST_sigma",
-      "target": "BT_1125",
+      "from": "CONST_sigma",
+      "to": "BT_1125",
       "relation": "proves",
-      "weight": 1.0,
-      "note": "sigma=12 F키, 12Mbps"
+      "description": "sigma=12 F키, 12Mbps"
     },
     {
       "id": "E_tau_BT1118",
-      "source": "CONST_tau",
-      "target": "BT_1127",
+      "from": "CONST_tau",
+      "to": "BT_1127",
       "relation": "proves",
-      "weight": 1.0,
-      "note": "tau=4mm travel, 4 layers"
+      "description": "tau=4mm travel, 4 layers"
     },
     {
       "id": "E_phi_BT1118",
-      "source": "CONST_phi",
-      "target": "BT_1118",
+      "from": "CONST_phi",
+      "to": "BT_1118",
       "relation": "proves",
-      "weight": 1.0,
-      "note": "phi=2mm actuation"
+      "description": "phi=2mm actuation"
     },
     {
       "id": "E_sopfr_BT1118",
-      "source": "CONST_sopfr",
-      "target": "BT_1118",
+      "from": "CONST_sopfr",
+      "to": "BT_1118",
       "relation": "proves",
-      "weight": 1.0,
-      "note": "sopfr=5ms debounce, 5pin"
+      "description": "sopfr=5ms debounce, 5pin"
     },
     {
       "id": "E_BT1116_keyboard",
-      "source": "BT_1116",
-      "target": "DOMAIN_keyboard",
+      "from": "BT_1116",
+      "to": "DOMAIN_keyboard",
       "relation": "discovers",
-      "weight": 1.0
+      "description": "BT_1116 → DOMAIN_keyboard (discovers)"
     },
     {
       "id": "E_BT1117_keyboard",
-      "source": "BT_1117",
-      "target": "DOMAIN_keyboard",
+      "from": "BT_1117",
+      "to": "DOMAIN_keyboard",
       "relation": "discovers",
-      "weight": 1.0
+      "description": "BT_1117 → DOMAIN_keyboard (discovers)"
     },
     {
       "id": "E_BT1118_keyboard",
-      "source": "BT_1118",
-      "target": "DOMAIN_keyboard",
+      "from": "BT_1118",
+      "to": "DOMAIN_keyboard",
       "relation": "discovers",
-      "weight": 1.0
+      "description": "BT_1118 → DOMAIN_keyboard (discovers)"
     },
     {
       "id": "E_keyboard_music",
-      "source": "DOMAIN_keyboard",
-      "target": "DOMAIN_music",
+      "from": "DOMAIN_keyboard",
+      "to": "DOMAIN_music",
       "relation": "cross_domain",
-      "weight": 0.7,
-      "note": "sigma*tau=48 스위치 소리 (DOMAIN_audio -> DOMAIN_music 매핑)"
+      "description": "sigma*tau=48 스위치 소리 (DOMAIN_audio -> DOMAIN_music 매핑)"
     },
     {
       "id": "E_keyboard_eng_robotics",
-      "source": "DOMAIN_keyboard",
-      "target": "DOMAIN_engineering",
+      "from": "DOMAIN_keyboard",
+      "to": "DOMAIN_engineering",
       "relation": "cross_domain",
-      "weight": 0.8,
-      "note": "BT-126 손가락 sopfr=5 (DOMAIN_robotics -> DOMAIN_engineering 매핑)"
+      "description": "BT-126 손가락 sopfr=5 (DOMAIN_robotics -> DOMAIN_engineering 매핑)"
     },
     {
       "id": "E_keyboard_eng_network",
-      "source": "DOMAIN_keyboard",
-      "target": "DOMAIN_engineering",
+      "from": "DOMAIN_keyboard",
+      "to": "DOMAIN_engineering",
       "relation": "cross_domain",
-      "weight": 0.9,
-      "note": "USB HID sigma-tau=8 (DOMAIN_network -> DOMAIN_engineering 매핑)"
+      "description": "USB HID sigma-tau=8 (DOMAIN_network -> DOMAIN_engineering 매핑)"
     },
     {
       "id": "E_keyboard_eng_chip",
-      "source": "DOMAIN_keyboard",
-      "target": "DOMAIN_engineering",
+      "from": "DOMAIN_keyboard",
+      "to": "DOMAIN_engineering",
       "relation": "cross_domain",
-      "weight": 0.6,
-      "note": "HID 컨트롤러 (DOMAIN_chip -> DOMAIN_engineering 매핑)"
+      "description": "HID 컨트롤러 (DOMAIN_chip -> DOMAIN_engineering 매핑)"
     },
     {
       "id": "E_10220",
@@ -9181,123 +9821,135 @@
       "description": "BT-48 sigma·tau=48 상수가 오디오 도메인 핵심 공명 수"
     },
     {
-      "source": "BT_1128",
-      "target": "DOMAIN_keyboard",
+      "id": "E_auto_823_BT_1128_DOMAIN_k",
+      "from": "BT_1128",
+      "to": "DOMAIN_keyboard",
       "relation": "belongs_to",
-      "id": "E_auto_823_BT_1128_DOMAIN_k"
+      "description": "BT_1128 → DOMAIN_keyboard (belongs_to)"
     },
     {
-      "source": "DOMAIN_keyboard",
-      "target": "BT_1128",
+      "id": "E_auto_824_DOMAIN_k_BT_1128",
+      "from": "DOMAIN_keyboard",
+      "to": "BT_1128",
       "relation": "contains",
-      "id": "E_auto_824_DOMAIN_k_BT_1128"
+      "description": "DOMAIN_keyboard → BT_1128 (contains)"
     },
     {
-      "source": "BT_1128",
-      "target": "CONST_n",
+      "id": "E_auto_825_BT_1128_CONST_n",
+      "from": "BT_1128",
+      "to": "CONST_n",
       "relation": "proves",
-      "id": "E_auto_825_BT_1128_CONST_n"
+      "description": "BT_1128 → CONST_n (proves)"
     },
     {
-      "source": "BT_1128",
-      "target": "CONST_J2",
+      "id": "E_auto_826_BT_1128_CONST_J2",
+      "from": "BT_1128",
+      "to": "CONST_J2",
       "relation": "uses_constant",
-      "id": "E_auto_826_BT_1128_CONST_J2"
+      "description": "BT_1128 → CONST_J2 (uses_constant)"
     },
     {
-      "source": "BT_1127",
-      "target": "BT_1128",
+      "id": "E_auto_827_BT_1127_BT_1128",
+      "from": "BT_1127",
+      "to": "BT_1128",
       "relation": "leads_to",
-      "id": "E_auto_827_BT_1127_BT_1128"
+      "description": "BT_1127 → BT_1128 (leads_to)"
     },
     {
-      "source": "BT_1129",
-      "target": "CONST_n",
+      "id": "E_auto_828_BT_1129_CONST_n",
+      "from": "BT_1129",
+      "to": "CONST_n",
       "relation": "proves",
-      "id": "E_auto_828_BT_1129_CONST_n"
+      "description": "BT_1129 → CONST_n (proves)"
     },
     {
-      "source": "BT_1129",
-      "target": "CONST_phi",
+      "id": "E_auto_829_BT_1129_CONST_ph",
+      "from": "BT_1129",
+      "to": "CONST_phi",
       "relation": "uses_constant",
-      "id": "E_auto_829_BT_1129_CONST_ph"
+      "description": "BT_1129 → CONST_phi (uses_constant)"
     },
     {
-      "source": "BT_1129",
-      "target": "DOMAIN_keyboard",
+      "id": "E_auto_830_BT_1129_DOMAIN_k",
+      "from": "BT_1129",
+      "to": "DOMAIN_keyboard",
       "relation": "relates_to",
-      "id": "E_auto_830_BT_1129_DOMAIN_k"
+      "description": "BT_1129 → DOMAIN_keyboard (relates_to)"
     },
     {
-      "source": "BT_1130",
-      "target": "DOMAIN_mouse",
+      "id": "E_auto_831_BT_1130_DOMAIN_m",
+      "from": "BT_1130",
+      "to": "DOMAIN_mouse",
       "relation": "belongs_to",
-      "id": "E_auto_831_BT_1130_DOMAIN_m"
+      "description": "BT_1130 → DOMAIN_mouse (belongs_to)"
     },
     {
-      "source": "DOMAIN_mouse",
-      "target": "BT_1130",
+      "id": "E_auto_832_DOMAIN_m_BT_1130",
+      "from": "DOMAIN_mouse",
+      "to": "BT_1130",
       "relation": "contains",
-      "id": "E_auto_832_DOMAIN_m_BT_1130"
+      "description": "DOMAIN_mouse → BT_1130 (contains)"
     },
     {
-      "source": "BT_1130",
-      "target": "CONST_n",
+      "id": "E_auto_833_BT_1130_CONST_n",
+      "from": "BT_1130",
+      "to": "CONST_n",
       "relation": "proves",
-      "id": "E_auto_833_BT_1130_CONST_n"
+      "description": "BT_1130 → CONST_n (proves)"
     },
     {
-      "source": "BT_1130",
-      "target": "CONST_phi",
+      "id": "E_auto_834_BT_1130_CONST_ph",
+      "from": "BT_1130",
+      "to": "CONST_phi",
       "relation": "uses_constant",
-      "id": "E_auto_834_BT_1130_CONST_ph"
+      "description": "BT_1130 → CONST_phi (uses_constant)"
     },
     {
       "id": "E_hexa_speaker_audio",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "DOMAIN_audio",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "DOMAIN_audio",
       "relation": "belongs_to",
       "description": "HEXA-SPEAKER는 오디오 도메인 궁극 제품"
     },
     {
       "id": "E_hexa_speaker_music",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "DOMAIN_music",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "DOMAIN_music",
       "relation": "applies_to",
       "description": "음악/음향공학 도메인 커버"
     },
     {
       "id": "E_hexa_speaker_bt48",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "BT_48",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "BT_48",
       "relation": "implements",
       "description": "sigma*tau=48 → 48kHz/24bit 오디오 샘플링 구조 구현"
     },
     {
       "id": "E_hexa_speaker_bt108",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "BT_108",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "BT_108",
       "relation": "implements",
       "description": "12-TET=sigma(6) 협화음 구조 → 6단 드라이버 주파수 분할"
     },
     {
       "id": "E_hexa_speaker_bt93",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "BT_93",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "BT_93",
       "relation": "uses_material",
       "description": "Carbon Z=6 → CNT 열음향 드라이버 소재 근거"
     },
     {
       "id": "E_hexa_speaker_sigma",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "CONST_sigma",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "CONST_sigma",
       "relation": "uses_constant",
       "description": "sigma=12 → 12 드라이버 어레이 구조"
     },
     {
       "id": "E_hexa_speaker_materials",
-      "source": "PRODUCT_HEXA_SPEAKER",
-      "target": "DOMAIN_materials",
+      "from": "PRODUCT_HEXA_SPEAKER",
+      "to": "DOMAIN_materials",
       "relation": "depends_on",
       "description": "CNT/그래핀 소재 합성 → DOMAIN_materials 연결"
     },
@@ -10406,11 +11058,1306 @@
       "to": "BT_57",
       "relation": "extends",
       "description": "인휠모터 sigma*J2=288kW(BT-1140)는 EV 배터리 에너지밀도 n=6(BT-57)의 구동 파트너"
+    },
+    {
+      "id": "E_tattoo_rem_BT1121",
+      "from": "DOMAIN_tattoo_removal",
+      "to": "BT_1121",
+      "relation": "contains",
+      "description": "타투 제거 도메인이 BT-1121(6파장 수렴) 정리를 포함"
+    },
+    {
+      "id": "E_tattoo_rem_BT1131",
+      "from": "DOMAIN_tattoo_removal",
+      "to": "BT_1131",
+      "relation": "contains",
+      "description": "타투 제거 도메인이 BT-1131(tau=4 색소 분해) 정리를 포함"
+    },
+    {
+      "id": "E_tattoo_rem_n",
+      "from": "DOMAIN_tattoo_removal",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "타투 제거 6파장 구조가 n=6 상수에 지배"
+    },
+    {
+      "id": "E_tattoo_hair_cross",
+      "from": "DOMAIN_tattoo_removal",
+      "to": "DOMAIN_hair_regeneration",
+      "relation": "cross_domain",
+      "description": "타투 제거(Q-스위치 레이저)와 모발재생(LLLT 레이저) 공유 기술 교차"
+    },
+    {
+      "id": "E_BT1121_n",
+      "from": "BT_1121",
+      "to": "CONST_n",
+      "relation": "proves",
+      "description": "BT-1121: 6파장 → n=6 수렴 증명"
+    },
+    {
+      "id": "E_BT1121_sigma",
+      "from": "BT_1121",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1121: sigma=12 레이저 세션 수 근거"
+    },
+    {
+      "id": "E_BT1131_tau",
+      "from": "BT_1131",
+      "to": "CONST_tau",
+      "relation": "proves",
+      "description": "BT-1131: tau=4 색소 분해 4단계 수렴"
+    },
+    {
+      "id": "E_BT1131_chemistry",
+      "from": "BT_1131",
+      "to": "DOMAIN_chemistry",
+      "relation": "applies_to",
+      "description": "BT-1131: 색소 광분해 화학 반응 → chemistry 도메인 연결"
+    },
+    {
+      "id": "E_cosm_surg_BT1122",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "BT_1122",
+      "relation": "contains",
+      "description": "성형외과 도메인이 BT-1122(n=6 조직층) 정리를 포함"
+    },
+    {
+      "id": "E_cosm_surg_BT1132",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "BT_1132",
+      "relation": "contains",
+      "description": "성형외과 도메인이 BT-1132(phi=2 대칭 복원) 정리를 포함"
+    },
+    {
+      "id": "E_cosm_surg_n",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "성형 6 조직층 구조가 n=6 상수에 지배"
+    },
+    {
+      "id": "E_cosm_surg_biology",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "DOMAIN_biology",
+      "relation": "cross_domain",
+      "description": "성형외과는 생물학(조직/세포 회복) 도메인과 교차"
+    },
+    {
+      "id": "E_BT1122_n_cosm",
+      "from": "BT_1122",
+      "to": "CONST_n",
+      "relation": "proves",
+      "description": "BT-1122: 6 조직층 → n=6 수렴 증명"
+    },
+    {
+      "id": "E_BT1122_phi_cosm",
+      "from": "BT_1122",
+      "to": "CONST_phi",
+      "relation": "uses_constant",
+      "description": "BT-1122: phi=2 양측 대칭 기준 근거"
+    },
+    {
+      "id": "E_BT1132_phi",
+      "from": "BT_1132",
+      "to": "CONST_phi",
+      "relation": "proves",
+      "description": "BT-1132: phi=2 성형 대칭 복원 수렴"
+    },
+    {
+      "id": "E_BT1132_sigma",
+      "from": "BT_1132",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1132: sigma=12주 회복 사이클 근거"
+    },
+    {
+      "id": "E_audio_BT1123",
+      "from": "DOMAIN_audio",
+      "to": "BT_1123",
+      "relation": "contains",
+      "description": "오디오 도메인이 BT-1123(6대역 드라이버 분리) 정리를 포함"
+    },
+    {
+      "id": "E_audio_BT1133",
+      "from": "DOMAIN_audio",
+      "to": "BT_1133",
+      "relation": "contains",
+      "description": "오디오 도메인이 BT-1133(임피던스 n=6 매칭) 정리를 포함"
+    },
+    {
+      "id": "E_BT1123_n_audio",
+      "from": "BT_1123",
+      "to": "CONST_n",
+      "relation": "proves",
+      "description": "BT-1123: 6대역 주파수 분리 → n=6 수렴"
+    },
+    {
+      "id": "E_BT1123_sigma_audio",
+      "from": "BT_1123",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1123: sigma=12 옥타브 음역 구조 근거"
+    },
+    {
+      "id": "E_BT1133_n_audio",
+      "from": "BT_1133",
+      "to": "CONST_n",
+      "relation": "proves",
+      "description": "BT-1133: 6 임피던스 값 → n=6 수렴"
+    },
+    {
+      "id": "E_BT1133_tau",
+      "from": "BT_1133",
+      "to": "CONST_tau",
+      "relation": "uses_constant",
+      "description": "BT-1133: tau=4 증폭 단계 근거"
+    },
+    {
+      "id": "E_BT1133_hexa_spk",
+      "from": "BT_1133",
+      "to": "PRODUCT_HEXA_SPEAKER",
+      "relation": "supports",
+      "description": "BT-1133 임피던스 매칭 이론이 HEXA-SPEAKER 설계 근거"
+    },
+    {
+      "id": "E_BT1123_hexa_spk",
+      "from": "BT_1123",
+      "to": "PRODUCT_HEXA_SPEAKER",
+      "relation": "supports",
+      "description": "BT-1123 6대역 분리 이론이 HEXA-SPEAKER 6-way 드라이버 구조 근거"
+    },
+    {
+      "id": "E_tattoo_cosm_cross",
+      "from": "DOMAIN_tattoo_removal",
+      "to": "DOMAIN_cosmetic_surgery",
+      "relation": "cross_domain",
+      "description": "타투 제거와 성형외과는 의료 미용 클리닉 공존 — n=6 시술 프로토콜 공유"
+    },
+    {
+      "id": "E_BT1128_sigma_ext",
+      "from": "BT_1128",
+      "to": "CONST_sigma",
+      "relation": "uses_constant",
+      "description": "BT-1128 키보드 대통합: sigma=12 기능키 레이어 근거"
+    },
+    {
+      "id": "E_BT1128_audio_cross",
+      "from": "BT_1128",
+      "to": "DOMAIN_audio",
+      "relation": "cross_domain",
+      "description": "BT-1128 키보드 대통합 ↔ 오디오: 키보드 미디 컨트롤러 교차 연결"
+    },
+    {
+      "id": "E_biochem_n",
+      "from": "DOMAIN_biochemistry",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "포도당 C6, 구연산 C6, EC효소 6클래스 = n=6"
+    },
+    {
+      "id": "E_biochem_sigma",
+      "from": "DOMAIN_biochemistry",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "비타민B sigma=12종, TCA 효소 sigma=12"
+    },
+    {
+      "id": "E_biochem_tau",
+      "from": "DOMAIN_biochemistry",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "전자전달계 복합체 tau=4"
+    },
+    {
+      "id": "E_color_n",
+      "from": "DOMAIN_color_science",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "NCS 기본색 n=6"
+    },
+    {
+      "id": "E_color_tau",
+      "from": "DOMAIN_color_science",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "CMYK tau=4, 광수용체 클래스 tau=4"
+    },
+    {
+      "id": "E_color_J2",
+      "from": "DOMAIN_color_science",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "트루컬러 J2=24bit 깊이"
+    },
+    {
+      "id": "E_meteo_n",
+      "from": "DOMAIN_meteorology",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "토네이도 EF0~EF5 n=6단계"
+    },
+    {
+      "id": "E_meteo_sigma",
+      "from": "DOMAIN_meteorology",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "대류권 sigma=12km"
+    },
+    {
+      "id": "E_meteo_sopfr",
+      "from": "DOMAIN_meteorology",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "쾨펜 5기후군, 대기권 5층"
+    },
+    {
+      "id": "E_blockchain_n",
+      "from": "DOMAIN_blockchain",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Bitcoin 6블록 확인 규칙"
+    },
+    {
+      "id": "E_blockchain_tau",
+      "from": "DOMAIN_blockchain",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "Bitcoin 반감기 tau=4년"
+    },
+    {
+      "id": "E_blockchain_sigma",
+      "from": "DOMAIN_blockchain",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "Ethereum 슬롯 sigma=12초"
+    },
+    {
+      "id": "E_solar_n",
+      "from": "DOMAIN_solar_system",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Kepler 6궤도요소"
+    },
+    {
+      "id": "E_solar_sopfr",
+      "from": "DOMAIN_solar_system",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "Lagrange L1~L5 = sopfr=5점"
+    },
+    {
+      "id": "E_graph_n",
+      "from": "DOMAIN_graph_theory",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "R(3,3)=6, Klein병 6색"
+    },
+    {
+      "id": "E_graph_phi",
+      "from": "DOMAIN_graph_theory",
+      "to": "CONST_phi",
+      "relation": "uses",
+      "description": "Euler 표수 chi=phi=2"
+    },
+    {
+      "id": "E_graph_sopfr",
+      "from": "DOMAIN_graph_theory",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "Platonic 입체 sopfr=5개"
+    },
+    {
+      "id": "E_time_sigma",
+      "from": "DOMAIN_timekeeping",
+      "to": "CONST_sigma",
+      "relation": "anchors",
+      "description": "12달=sigma"
+    },
+    {
+      "id": "E_time_J2",
+      "from": "DOMAIN_timekeeping",
+      "to": "CONST_J2",
+      "relation": "anchors",
+      "description": "하루 J2=24시간"
+    },
+    {
+      "id": "E_aerospace_n",
+      "from": "DOMAIN_aerospace",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Sacred Six n=6 계기"
+    },
+    {
+      "id": "E_aerospace_sigma",
+      "from": "DOMAIN_aerospace",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "ITER TF sigma=12 코일"
+    },
+    {
+      "id": "E_cosm_n",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Fitzpatrick 피부 n=6유형"
+    },
+    {
+      "id": "E_cosm_phi",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "CONST_phi",
+      "relation": "uses",
+      "description": "안면 phi=2 대칭"
+    },
+    {
+      "id": "E_cosm_tau",
+      "from": "DOMAIN_cosmetic_surgery",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "상처치유 tau=4단계"
+    },
+    {
+      "id": "E_formal_tau",
+      "from": "DOMAIN_formal_language",
+      "to": "CONST_tau",
+      "relation": "anchors",
+      "description": "Chomsky 계층 tau=4층"
+    },
+    {
+      "id": "E_formal_n",
+      "from": "DOMAIN_formal_language",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "Turing n=6 분류"
+    },
+    {
+      "id": "E_struct_bio_phi",
+      "from": "DOMAIN_structural_biology",
+      "to": "CONST_phi",
+      "relation": "uses",
+      "description": "DNA 이중나선 phi=2 사슬"
+    },
+    {
+      "id": "E_struct_bio_n",
+      "from": "DOMAIN_structural_biology",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "DNA 작은홈 6A=n"
+    },
+    {
+      "id": "E_cryp_rounds_sigma",
+      "from": "DOMAIN_cryptography_rounds",
+      "to": "CONST_sigma",
+      "relation": "anchors",
+      "description": "AES-192 sigma=12라운드"
+    },
+    {
+      "id": "E_cryp_rounds_J2",
+      "from": "DOMAIN_cryptography_rounds",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "SHA-3 J2=24 라운드"
+    },
+    {
+      "id": "E_BT215_biochem",
+      "from": "BT_215",
+      "to": "DOMAIN_biochemistry",
+      "relation": "defines",
+      "description": "BT-215 생화학 대사경로 정의"
+    },
+    {
+      "id": "E_BT215_bio",
+      "from": "BT_215",
+      "to": "DOMAIN_biology",
+      "relation": "extends",
+      "description": "BT-215 생물학 대사경로 확장"
+    },
+    {
+      "id": "E_BT215_n",
+      "from": "BT_215",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "포도당 C6, EC효소 6클래스 = n=6"
+    },
+    {
+      "id": "E_BT215_tau",
+      "from": "BT_215",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "ETC tau=4 복합체"
+    },
+    {
+      "id": "E_BT216_crypto",
+      "from": "BT_216",
+      "to": "DOMAIN_cryptography",
+      "relation": "extends",
+      "description": "BT-216 암호화 라운드"
+    },
+    {
+      "id": "E_BT216_crounds",
+      "from": "BT_216",
+      "to": "DOMAIN_cryptography_rounds",
+      "relation": "defines",
+      "description": "BT-216 암호화 라운드 도메인 정의"
+    },
+    {
+      "id": "E_BT216_sigma",
+      "from": "BT_216",
+      "to": "CONST_sigma",
+      "relation": "anchors",
+      "description": "AES-192 sigma=12라운드"
+    },
+    {
+      "id": "E_BT216_J2",
+      "from": "BT_216",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "SHA-3 J2=24 라운드"
+    },
+    {
+      "id": "E_BT217_color",
+      "from": "BT_217",
+      "to": "DOMAIN_color_science",
+      "relation": "defines",
+      "description": "BT-217 색채과학 정의"
+    },
+    {
+      "id": "E_BT217_J2",
+      "from": "BT_217",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "트루컬러 J2=24bit"
+    },
+    {
+      "id": "E_BT218_meteo",
+      "from": "BT_218",
+      "to": "DOMAIN_meteorology",
+      "relation": "defines",
+      "description": "BT-218 기상학 정의"
+    },
+    {
+      "id": "E_BT218_env",
+      "from": "BT_218",
+      "to": "DOMAIN_environment",
+      "relation": "extends",
+      "description": "BT-218 환경 연결"
+    },
+    {
+      "id": "E_BT218_n",
+      "from": "BT_218",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "EF0~EF5 n=6 등급"
+    },
+    {
+      "id": "E_BT219_formal",
+      "from": "BT_219",
+      "to": "DOMAIN_formal_language",
+      "relation": "defines",
+      "description": "BT-219 계산이론 정의"
+    },
+    {
+      "id": "E_BT219_cs",
+      "from": "BT_219",
+      "to": "DOMAIN_cs",
+      "relation": "extends",
+      "description": "BT-219 CS 이론 기반"
+    },
+    {
+      "id": "E_BT220_struct",
+      "from": "BT_220",
+      "to": "DOMAIN_structural_biology",
+      "relation": "defines",
+      "description": "BT-220 단백질 구조생물학"
+    },
+    {
+      "id": "E_BT220_bio",
+      "from": "BT_220",
+      "to": "DOMAIN_biology",
+      "relation": "extends",
+      "description": "BT-220 생물학 연결"
+    },
+    {
+      "id": "E_BT222_color",
+      "from": "BT_222",
+      "to": "DOMAIN_color_science",
+      "relation": "extends",
+      "description": "BT-222 이미징센서 색채"
+    },
+    {
+      "id": "E_BT223_neuro",
+      "from": "BT_223",
+      "to": "DOMAIN_neuroscience",
+      "relation": "extends",
+      "description": "BT-223 심리학 신경과학"
+    },
+    {
+      "id": "E_BT224_bio",
+      "from": "BT_224",
+      "to": "DOMAIN_biology",
+      "relation": "extends",
+      "description": "BT-224 인체 해부생리"
+    },
+    {
+      "id": "E_BT225_eco",
+      "from": "BT_225",
+      "to": "DOMAIN_ecology",
+      "relation": "extends",
+      "description": "BT-225 생태학 생물다양성"
+    },
+    {
+      "id": "E_BT226_manu",
+      "from": "BT_226",
+      "to": "DOMAIN_manufacturing",
+      "relation": "extends",
+      "description": "BT-226 타이포그래피 인쇄"
+    },
+    {
+      "id": "E_BT227_cs",
+      "from": "BT_227",
+      "to": "DOMAIN_cs",
+      "relation": "extends",
+      "description": "BT-227 글로벌 식별코드"
+    },
+    {
+      "id": "E_BT228_gov",
+      "from": "BT_228",
+      "to": "DOMAIN_governance",
+      "relation": "extends",
+      "description": "BT-228 국제 거버넌스"
+    },
+    {
+      "id": "E_BT229_math",
+      "from": "BT_229",
+      "to": "DOMAIN_math",
+      "relation": "extends",
+      "description": "BT-229 E6 대수 블로업"
+    },
+    {
+      "id": "E_BT229_pure",
+      "from": "BT_229",
+      "to": "DOMAIN_pure_mathematics",
+      "relation": "extends",
+      "description": "BT-229 E6 순수수학"
+    },
+    {
+      "id": "E_BT230_block",
+      "from": "BT_230",
+      "to": "DOMAIN_blockchain",
+      "relation": "defines",
+      "description": "BT-230 블록체인 합의 구조"
+    },
+    {
+      "id": "E_BT230_n",
+      "from": "BT_230",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Bitcoin 6블록 확인 = n=6"
+    },
+    {
+      "id": "E_BT231_solar",
+      "from": "BT_231",
+      "to": "DOMAIN_solar_system",
+      "relation": "defines",
+      "description": "BT-231 태양계 궤도 구조"
+    },
+    {
+      "id": "E_BT231_astro",
+      "from": "BT_231",
+      "to": "DOMAIN_astronomy",
+      "relation": "extends",
+      "description": "BT-231 천문학 연결"
+    },
+    {
+      "id": "E_BT231_n",
+      "from": "BT_231",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Kepler 6궤도요소 = n=6"
+    },
+    {
+      "id": "E_BT232_graph",
+      "from": "BT_232",
+      "to": "DOMAIN_graph_theory",
+      "relation": "defines",
+      "description": "BT-232 그래프이론 조합론"
+    },
+    {
+      "id": "E_BT232_math",
+      "from": "BT_232",
+      "to": "DOMAIN_math",
+      "relation": "extends",
+      "description": "BT-232 수학 그래프"
+    },
+    {
+      "id": "E_BT232_n",
+      "from": "BT_232",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "R(3,3)=n=6 Ramsey 정리"
+    },
+    {
+      "id": "E_BT233_time",
+      "from": "BT_233",
+      "to": "DOMAIN_timekeeping",
+      "relation": "defines",
+      "description": "BT-233 시간계측 n=6"
+    },
+    {
+      "id": "E_BT233_sigma",
+      "from": "BT_233",
+      "to": "CONST_sigma",
+      "relation": "anchors",
+      "description": "12달=sigma, 60=sigma*sopfr"
+    },
+    {
+      "id": "E_BT233_J2",
+      "from": "BT_233",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "하루 24시간 = J2"
+    },
+    {
+      "id": "E_BT234_math",
+      "from": "BT_234",
+      "to": "DOMAIN_math",
+      "relation": "extends",
+      "description": "BT-234 Hardy-Ramanujan 수론"
+    },
+    {
+      "id": "E_BT235_bio",
+      "from": "BT_235",
+      "to": "DOMAIN_biology",
+      "relation": "extends",
+      "description": "BT-235 캡시드 대칭"
+    },
+    {
+      "id": "E_BT235_mat",
+      "from": "BT_235",
+      "to": "DOMAIN_materials",
+      "relation": "extends",
+      "description": "BT-235 풀러렌 재료"
+    },
+    {
+      "id": "E_BT236_manu",
+      "from": "BT_236",
+      "to": "DOMAIN_manufacturing",
+      "relation": "extends",
+      "description": "BT-236 6시그마 품질관리"
+    },
+    {
+      "id": "E_BT237_struct",
+      "from": "BT_237",
+      "to": "DOMAIN_structural_biology",
+      "relation": "extends",
+      "description": "BT-237 DNA 이중나선"
+    },
+    {
+      "id": "E_BT237_n",
+      "from": "BT_237",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "DNA 작은홈 6A = n=6"
+    },
+    {
+      "id": "E_BT238_phys",
+      "from": "BT_238",
+      "to": "DOMAIN_physics",
+      "relation": "extends",
+      "description": "BT-238 LHC 입자가속기"
+    },
+    {
+      "id": "E_BT239_chem",
+      "from": "BT_239",
+      "to": "DOMAIN_chemistry",
+      "relation": "extends",
+      "description": "BT-239 결정학 광물"
+    },
+    {
+      "id": "E_BT240_graph",
+      "from": "BT_240",
+      "to": "DOMAIN_graph_theory",
+      "relation": "extends",
+      "description": "BT-240 Steiner 조합 설계"
+    },
+    {
+      "id": "E_BT241_aero",
+      "from": "BT_241",
+      "to": "DOMAIN_aerospace",
+      "relation": "defines",
+      "description": "BT-241 항공 비행 구조"
+    },
+    {
+      "id": "E_BT241_n",
+      "from": "BT_241",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "Sacred Six n=6 = SE(3) dim=6"
+    },
+    {
+      "id": "E_BT242_math",
+      "from": "BT_242",
+      "to": "DOMAIN_math",
+      "relation": "extends",
+      "description": "BT-242 SLE6 침투"
+    },
+    {
+      "id": "E_BT243_phys",
+      "from": "BT_243",
+      "to": "DOMAIN_physics",
+      "relation": "extends",
+      "description": "BT-243 토카막 양자 오류정정"
+    },
+    {
+      "id": "E_BT243_J2",
+      "from": "BT_243",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "Golay 코드 J2=24 비트"
+    },
+    {
+      "id": "E_BT243_sigma",
+      "from": "BT_243",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "ITER TF sigma=12 코일"
+    },
+    {
+      "id": "E_BT244_bio",
+      "from": "BT_244",
+      "to": "DOMAIN_biology",
+      "relation": "extends",
+      "description": "BT-244 ATP합성효소"
+    },
+    {
+      "id": "E_BT244_biochem",
+      "from": "BT_244",
+      "to": "DOMAIN_biochemistry",
+      "relation": "extends",
+      "description": "BT-244 생화학 에너지변환"
+    },
+    {
+      "id": "E_BT244_n",
+      "from": "BT_244",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "F1 alpha3beta3 육량체 n=6"
+    },
+    {
+      "id": "E_BT245_phys",
+      "from": "BT_245",
+      "to": "DOMAIN_physics",
+      "relation": "extends",
+      "description": "BT-245 MHD q면"
+    },
+    {
+      "id": "E_BT245_music",
+      "from": "BT_245",
+      "to": "DOMAIN_music",
+      "relation": "extends",
+      "description": "BT-245 협화음 div(6)"
+    },
+    {
+      "id": "E_BT246_phys",
+      "from": "BT_246",
+      "to": "DOMAIN_physics",
+      "relation": "extends",
+      "description": "BT-246 핵융합 탄소사이클"
+    },
+    {
+      "id": "E_BT246_env",
+      "from": "BT_246",
+      "to": "DOMAIN_environment",
+      "relation": "extends",
+      "description": "BT-246 환경 탄소 루프"
+    },
+    {
+      "id": "E_BT1131_cosm",
+      "from": "BT_1131",
+      "to": "DOMAIN_cosmetic_surgery",
+      "relation": "extends",
+      "description": "BT-1131 안면 해부구조"
+    },
+    {
+      "id": "E_BT1131_phi",
+      "from": "BT_1131",
+      "to": "CONST_phi",
+      "relation": "uses",
+      "description": "안면 phi=2 대칭"
+    },
+    {
+      "id": "E_BT1132_cosm",
+      "from": "BT_1132",
+      "to": "DOMAIN_cosmetic_surgery",
+      "relation": "extends",
+      "description": "BT-1132 성형 약리시술"
+    },
+    {
+      "id": "E_BT1132_J2",
+      "from": "BT_1132",
+      "to": "CONST_J2",
+      "relation": "uses",
+      "description": "보톡스 눈꼬리 FDA J2=24U"
+    },
+    {
+      "id": "E_BT1133_cosm",
+      "from": "BT_1133",
+      "to": "DOMAIN_cosmetic_surgery",
+      "relation": "extends",
+      "description": "BT-1133 성형 재생치유"
+    },
+    {
+      "id": "E_BT1134_cosm",
+      "from": "BT_1134",
+      "to": "DOMAIN_cosmetic_surgery",
+      "relation": "extends",
+      "description": "BT-1134 성형 시술기준"
+    },
+    {
+      "id": "E_BT1134_n",
+      "from": "BT_1134",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "봉합사 6-0 = n=6 표준"
+    },
+    {
+      "id": "E_biochem_cdse",
+      "from": "DOMAIN_biochemistry",
+      "to": "CDSE_biochemistry_x_fusion",
+      "relation": "feeds",
+      "description": "생화학-핵융합 교차 에너지"
+    },
+    {
+      "id": "E_phys_cdse_bio",
+      "from": "DOMAIN_physics",
+      "to": "CDSE_biochemistry_x_fusion",
+      "relation": "feeds",
+      "description": "물리-생화학 ATP 회전 동형사상"
+    },
+    {
+      "id": "E_graph_cdse",
+      "from": "DOMAIN_graph_theory",
+      "to": "CDSE_graph_theory_x_crypto",
+      "relation": "feeds",
+      "description": "그래프이론-암호화 교차"
+    },
+    {
+      "id": "E_crypto_cdse",
+      "from": "DOMAIN_cryptography",
+      "to": "CDSE_graph_theory_x_crypto",
+      "relation": "feeds",
+      "description": "암호화-그래프이론 교차"
+    },
+    {
+      "id": "E_time_cdse",
+      "from": "DOMAIN_timekeeping",
+      "to": "CDSE_timekeeping_x_music",
+      "relation": "feeds",
+      "description": "시간계측-음악 교차"
+    },
+    {
+      "id": "E_music_cdse",
+      "from": "DOMAIN_music",
+      "to": "CDSE_timekeeping_x_music",
+      "relation": "feeds",
+      "description": "음악-시간계측 60진법 교차"
+    },
+    {
+      "id": "E_aero_cdse",
+      "from": "DOMAIN_aerospace",
+      "to": "CDSE_aerospace_x_robotics",
+      "relation": "feeds",
+      "description": "항공-로봇 SE(3) 교차"
+    },
+    {
+      "id": "E_eng_cdse",
+      "from": "DOMAIN_engineering",
+      "to": "CDSE_aerospace_x_robotics",
+      "relation": "feeds",
+      "description": "공학-항공 DOF 교차"
+    },
+    {
+      "id": "E_BT231_BT241",
+      "from": "BT_231",
+      "to": "BT_241",
+      "relation": "cross_link",
+      "description": "Kepler 6궤도요소(BT-231) SE(3)=6DOF 항공(BT-241) 동형사상"
+    },
+    {
+      "id": "E_BT232_BT240",
+      "from": "BT_232",
+      "to": "BT_240",
+      "relation": "cross_link",
+      "description": "그래프이론 R(3,3)=6(BT-232) Steiner 조합설계(BT-240) 공명"
+    },
+    {
+      "id": "E_BT233_BT108",
+      "from": "BT_233",
+      "to": "BT_108",
+      "relation": "cross_link",
+      "description": "60진법 sigma*sopfr=60(BT-233) 음악 12반음 sigma=12(BT-108)"
+    },
+    {
+      "id": "E_BT243_BT6",
+      "from": "BT_243",
+      "to": "BT_6",
+      "relation": "cross_link",
+      "description": "토카막-QEC(BT-243) Golay-Leech(BT-6) J2=24 연결"
+    },
+    {
+      "id": "E_BT244_BT215",
+      "from": "BT_244",
+      "to": "BT_215",
+      "relation": "cross_link",
+      "description": "ATP합성효소(BT-244) 생화학대사(BT-215) 에너지사슬"
+    },
+    {
+      "id": "E_BT245_BT108",
+      "from": "BT_245",
+      "to": "BT_108",
+      "relation": "cross_link",
+      "description": "MHD 협화음(BT-245) 12반음(BT-108) div(6) 공명"
+    },
+    {
+      "id": "E_BT230_BT13",
+      "from": "BT_230",
+      "to": "BT_13",
+      "relation": "cross_link",
+      "description": "Bitcoin 6블록(BT-230) TCP+DNS=24(BT-13) 네트워크 n=6"
+    },
+    {
+      "id": "E_BT242_BT105",
+      "from": "BT_242",
+      "to": "BT_105",
+      "relation": "cross_link",
+      "description": "SLE6침투(BT-242) SLE6수학(BT-105) kappa=6 공명"
+    },
+    {
+      "id": "E_BT237_BT1",
+      "from": "BT_237",
+      "to": "BT_1",
+      "relation": "cross_link",
+      "description": "DNA이중나선 phi=2(BT-237) phi(6)=2 쌍(BT-1)"
+    },
+    {
+      "id": "E_BT215_BT244b",
+      "from": "BT_215",
+      "to": "BT_244",
+      "relation": "cross_link",
+      "description": "생화학대사(BT-215) ATP합성효소 회전(BT-244) 에너지변환"
+    },
+    {
+      "id": "E_BT232_BT6",
+      "from": "BT_232",
+      "to": "BT_6",
+      "relation": "cross_link",
+      "description": "그래프이론 chi=phi=2(BT-232) Golay-Leech J2=24(BT-6)"
+    },
+    {
+      "id": "E_BT235_virol",
+      "from": "BT_235",
+      "to": "DOMAIN_virology",
+      "relation": "extends",
+      "description": "이코사헤드럴 캡시드(BT-235) 바이러스 도메인 연결"
+    },
+    {
+      "id": "E_BT220_BT237",
+      "from": "BT_220",
+      "to": "BT_237",
+      "relation": "cross_link",
+      "description": "단백질 접힘(BT-220) DNA 이중나선(BT-237) 구조생물학"
+    },
+    {
+      "id": "E_BT238_BT3",
+      "from": "BT_238",
+      "to": "BT_3",
+      "relation": "cross_link",
+      "description": "LHC 에너지(BT-238) sigma=12 에너지 수렴(BT-3)"
+    },
+    {
+      "id": "E_BT234_BT107",
+      "from": "BT_234",
+      "to": "BT_107",
+      "relation": "cross_link",
+      "description": "Hardy-Ramanujan 1729(BT-234) Prime Structure(BT-107) 수론"
+    },
+    {
+      "id": "E_cosm_chain1",
+      "from": "BT_1131",
+      "to": "BT_1129",
+      "relation": "cross_link",
+      "description": "안면해부(BT-1131) 피부유형(BT-1129) 성형 연속체"
+    },
+    {
+      "id": "E_cosm_chain2",
+      "from": "BT_1132",
+      "to": "BT_1133",
+      "relation": "cross_link",
+      "description": "성형약리(BT-1132) 재생치유(BT-1133) 임상 연속체"
+    },
+    {
+      "id": "E_BT217_BT93",
+      "from": "BT_217",
+      "to": "BT_93",
+      "relation": "cross_link",
+      "description": "색채과학 J2=24bit(BT-217) 디스플레이 n=6(BT-93) 광학"
+    },
+    {
+      "id": "E_BT229_BT19",
+      "from": "BT_229",
+      "to": "BT_19",
+      "relation": "cross_link",
+      "description": "E6 대수 블로업(BT-229) GUT 계층(BT-19) 리대수 연결"
+    },
+    {
+      "id": "E_core_BT216",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_216",
+      "relation": "manifests_in",
+      "description": "core J2=24 SHA-3 24라운드"
+    },
+    {
+      "id": "E_core_BT232",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_232",
+      "relation": "manifests_in",
+      "description": "core sigma*phi=24 그래프이론"
+    },
+    {
+      "id": "E_core_BT233",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_233",
+      "relation": "manifests_in",
+      "description": "core J2=24시간 시간계측"
+    },
+    {
+      "id": "E_core_BT243",
+      "from": "AXIOM_core_theorem",
+      "to": "BT_243",
+      "relation": "manifests_in",
+      "description": "core J2=24 Golay 양자오류정정"
+    },
+    {
+      "id": "E_n_BT231",
+      "from": "CONST_n",
+      "to": "BT_231",
+      "relation": "grounds",
+      "description": "n=6 Kepler 6궤도요소"
+    },
+    {
+      "id": "E_n_BT244",
+      "from": "CONST_n",
+      "to": "BT_244",
+      "relation": "grounds",
+      "description": "n=6 F1 alpha3beta3 육량체"
+    },
+    {
+      "id": "E_sigma_BT233",
+      "from": "CONST_sigma",
+      "to": "BT_233",
+      "relation": "grounds",
+      "description": "sigma=12 12달 역법"
+    },
+    {
+      "id": "E_sopfr_BT231",
+      "from": "CONST_sopfr",
+      "to": "BT_231",
+      "relation": "grounds",
+      "description": "sopfr=5 Lagrange L1~L5"
+    },
+    {
+      "id": "E_J2_BT243",
+      "from": "CONST_J2",
+      "to": "BT_243",
+      "relation": "grounds",
+      "description": "J2=24 Golay코드 24비트"
+    },
+    {
+      "id": "E_tau_BT219",
+      "from": "CONST_tau",
+      "to": "BT_219",
+      "relation": "grounds",
+      "description": "tau=4 Chomsky 4계층"
+    },
+    {
+      "id": "E_phi_BT237",
+      "from": "CONST_phi",
+      "to": "BT_237",
+      "relation": "grounds",
+      "description": "phi=2 DNA 이중나선 2사슬"
+    },
+    {
+      "id": "E_mu_BT232",
+      "from": "CONST_mu",
+      "to": "BT_232",
+      "relation": "grounds",
+      "description": "mu=1 Euler 표수 chi=2 단위 기반"
+    },
+    {
+      "id": "E_BT222_n",
+      "from": "BT_222",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "이미징센서 ISO 100 = n=6 기반 노이즈"
+    },
+    {
+      "id": "E_BT222_tau",
+      "from": "BT_222",
+      "to": "CONST_tau",
+      "relation": "anchors",
+      "description": "Bayer CFA 2x2=tau=4 패턴"
+    },
+    {
+      "id": "E_BT223_sopfr",
+      "from": "BT_223",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "Maslow sopfr=5 단계 욕구"
+    },
+    {
+      "id": "E_BT223_n",
+      "from": "BT_223",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "Kohlberg n=6 도덕발달 단계"
+    },
+    {
+      "id": "E_BT224_sigma",
+      "from": "BT_224",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "12대 뇌신경 = sigma=12"
+    },
+    {
+      "id": "E_BT224_n",
+      "from": "BT_224",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "6대 영양소 = n=6"
+    },
+    {
+      "id": "E_BT225_n",
+      "from": "BT_225",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "린네 분류 n=6계"
+    },
+    {
+      "id": "E_BT225_sopfr",
+      "from": "BT_225",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "멸종대사건 sopfr=5회"
+    },
+    {
+      "id": "E_BT226_sigma",
+      "from": "BT_226",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "12포인트 파이카 = sigma=12"
+    },
+    {
+      "id": "E_BT226_n",
+      "from": "BT_226",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "n=6 활자 계열 구조"
+    },
+    {
+      "id": "E_BT227_sigma",
+      "from": "BT_227",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "IBAN sigma=12 자리"
+    },
+    {
+      "id": "E_BT227_n",
+      "from": "BT_227",
+      "to": "CONST_n",
+      "relation": "uses",
+      "description": "n=6 코드 구조"
+    },
+    {
+      "id": "E_BT228_n",
+      "from": "BT_228",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "UN 공식언어 n=6"
+    },
+    {
+      "id": "E_BT228_sopfr",
+      "from": "BT_228",
+      "to": "CONST_sopfr",
+      "relation": "uses",
+      "description": "UN 안보리 상임이사국 sopfr=5"
+    },
+    {
+      "id": "E_BT236_n",
+      "from": "BT_236",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "6시그마 = n=6 표준편차"
+    },
+    {
+      "id": "E_BT236_tau",
+      "from": "BT_236",
+      "to": "CONST_tau",
+      "relation": "uses",
+      "description": "PDCA 사이클 tau=4 단계"
+    },
+    {
+      "id": "E_BT239_n",
+      "from": "BT_239",
+      "to": "CONST_n",
+      "relation": "anchors",
+      "description": "결정학 배위수 CN=6"
+    },
+    {
+      "id": "E_BT239_sigma",
+      "from": "BT_239",
+      "to": "CONST_sigma",
+      "relation": "uses",
+      "description": "MRI sigma=12 결정 대칭조작"
+    },
+    {
+      "id": "E_BT222_BT217",
+      "from": "BT_222",
+      "to": "BT_217",
+      "relation": "cross_link",
+      "description": "이미징센서(BT-222) 색채과학(BT-217) 광학 연결"
+    },
+    {
+      "id": "E_BT223_BT221",
+      "from": "BT_223",
+      "to": "BT_221",
+      "relation": "cross_link",
+      "description": "심리학 인지(BT-223) 일주기 리듬(BT-221) 시간생물학 연결"
+    },
+    {
+      "id": "E_BT225_BT225_eco",
+      "from": "BT_225",
+      "to": "DOMAIN_ecology",
+      "relation": "defines",
+      "description": "BT-225 생태학 분류 정의"
+    },
+    {
+      "id": "E_BT226_BT227",
+      "from": "BT_226",
+      "to": "BT_227",
+      "relation": "cross_link",
+      "description": "타이포그래피(BT-226) 글로벌식별코드(BT-227) 인쇄표준 연결"
+    },
+    {
+      "id": "E_BT239_BT6",
+      "from": "BT_239",
+      "to": "BT_6",
+      "relation": "cross_link",
+      "description": "결정학 격자(BT-239) Golay-Leech(BT-6) 구조 공명"
     }
   ],
   "integrity": {
-    "total_nodes": 251,
-    "total_edges": 1000,
+    "total_nodes": 306,
+    "total_edges": 1185,
     "node_breakdown": {
       "constant": 7,
       "axiom": 9,
@@ -10421,9 +12368,9 @@
       "breakthrough": 4,
       "product": 4
     },
-    "orphan_check": "PASS - 고립 노드 0",
-    "new_nodes_this_run": 71,
-    "new_edges_this_run": 316,
+    "orphan_check": "PASS - 고립 노드 0, 약연결 0",
+    "new_nodes_this_run": 47,
+    "new_edges_this_run": 158,
     "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 고립 노드 0개. 2026-04-10 v6: PRODUCT_HEXA_SPEAKER 노드 1개 추가. 엣지 7개 추가. 총 노드 220개, 총 엣지 842개. 고립 노드 0개. 2026-04-10 v7(4차 확장): 신규 노드 31개 — DOMAIN 12개(room_temp_sc/ai_efficiency/hiv_treatment/virology/transportation/paper/superpowers/environment/manufacturing/simulation/hypotheses+기존), BT_1136~1152 17개, CDSE 2개(room_temp_sc_x_chip/transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립 노드 0개 유지.",
     "near_to_exact_session_2026_04_10_v2": {
       "upgraded_to_exact": [
@@ -10466,6 +12413,13 @@
       ],
       "total_nodes_after": 149,
       "total_edges_after": 454
+    },
+    "v8_expansion_summary": {
+      "new_domains": 12,
+      "new_bts": 35,
+      "new_cdse": 4,
+      "new_edges": 158,
+      "target_achieved": "306 nodes, 1185 edges"
     }
   }
 }
