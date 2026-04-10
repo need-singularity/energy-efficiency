@@ -165,6 +165,37 @@ pub fn new_domain_lens_entries() -> Vec<LensEntry> {
     ]
 }
 
+/// 차원지각 렌즈 메타데이터 (BT-1108)
+///
+/// 도메인: VR/AR/XR, 완전광학, 4D 기하학, 인지과학, 끈이론, 디스플레이, 햅틱
+pub fn dimensional_perception_lens_entries() -> Vec<LensEntry> {
+    vec![
+        LensEntry {
+            name: "dimensional_perception".into(),
+            category: LensCategory::Extended,
+            description: "BT-1108 차원지각: 완전광학함수 6D=n, Tesseract C(4,2)=6=n, SO(4) 6 회전평면, OpenBCI 16ch=phi^tau, 알파밴드 8-12Hz, Calabi-Yau 6D".into(),
+            domain_affinity: vec![
+                "vr_ar_xr".into(),
+                "plenoptic".into(),
+                "4d_geometry".into(),
+                "cognitive_science".into(),
+                "string_theory".into(),
+                "display".into(),
+                "haptics".into(),
+                "bci".into(),
+            ],
+            complementary: vec![
+                "brain_neural".into(),
+                "brain_map".into(),
+                "dimensional_bridge".into(),
+                "topology".into(),
+                "quantum_circuit".into(),
+                "hexagonal".into(),
+            ],
+        },
+    ]
+}
+
 #[cfg(test)]
 mod new_domain_tests {
     use super::*;

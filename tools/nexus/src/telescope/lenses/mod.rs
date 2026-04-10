@@ -571,3 +571,7 @@ pub use immunogenetics_lens::ImmunogeneticsLens;
 pub use phonetics_lens::PhoneticsLens;
 pub use food_web_lens::FoodWebLens;
 pub use behavioral_economics_lens::BehavioralEconomicsLens;
+
+// ── 차원지각 렌즈 (BT-1108) ──
+pub mod dimensional_perception_lens;
+pub use dimensional_perception_lens::DimensionalPerceptionLens;

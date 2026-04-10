@@ -116,6 +116,7 @@ use lenses::{
     ThermoplasticProcessLens, TribologyLens, UrbanPlanningLens,
     VeterinaryMedicineLens, WindTurbineLens, WinemakingLens, YogaAsanaLens,
 };
+use lenses::DimensionalPerceptionLens;
 use lenses::GenericLens;
 use registry::LensRegistry;
 use shared_data::SharedData;
@@ -414,6 +415,8 @@ impl Telescope {
             Box::new(WindTurbineLens),
             Box::new(WinemakingLens),
             Box::new(YogaAsanaLens),
+            // ── 차원지각 렌즈 (BT-1108) ──
+            Box::new(DimensionalPerceptionLens),
         ];
 
         // ── Auto-instantiate GenericLens for all unimplemented registry entries ──
