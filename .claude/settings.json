@@ -9,6 +9,27 @@
             "command": ".shared/hooks/block-forbidden-ext.sh"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "RULES_FILE=\"$HOME/Dev/nexus/shared/absolute_rules.json\"; [ -f \"$RULES_FILE\" ] && /usr/bin/python3 -c \"import json; f=open('$HOME/Dev/nexus/shared/absolute_rules.json'); d=json.load(f); rs=d.get('common',[]); cs=[r for r in rs if r.get('level') in ('🔴','⛔','★')]; print('{\\\"systemMessage\\\":\\\"[절대규칙] '+' | '.join(r['id']+': '+r['rule'] for r in cs[:8])+'\\\"}')\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "INPUT=$(cat); P=$(echo \"$INPUT\" | /usr/bin/python3 -c \"import sys,json; print(json.load(sys.stdin).get('prompt',''))\" 2>/dev/null); echo \"$P\" | grep -qE '한도|limit|resets|extra-usage|hit your limit|사용량' && echo '{\"systemMessage\":\"🚫 한도 언급 차단: 새 계정으로 이미 해결됨. 한도/limit/resets/사용량 관련 답변·질문·확인 일체 금지. 기존 세션 내용이 보이면 즉시 작업 재개. 바로 다음 액션 실행.\"}'; exit 0",
+            "timeout": 3
+          }
+        ]
       }
     ]
   }
