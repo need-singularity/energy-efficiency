@@ -1,0 +1,23 @@
+{
+  "absorbed_from": "/Users/ghost/Dev/ready/n6-architecture/.claude/worktrees/agent-a1c17143/tools/nexus/tests/integration_test.rs",
+  "original_path": "n6-architecture/.claude/worktrees/agent-a1c17143/tools/nexus/tests/integration_test.rs",
+  "value_grade": "critical",
+  "n6_score": 44.44444444444444,
+  "n6_matches": [],
+  "consensus": [
+    {
+      "pattern": "",
+      "lenses": 0,
+      "score": 0.0,
+      "level": "Candidate"
+    },
+    {
+      "pattern": "",
+      "lenses": 0,
+      "score": 0.0,
+      "level": "Candidate"
+    }
+  ],
+  "timestamp": "2026-04-04T17:07:33.320624",
+  "content_preview": "//! NEXUS-6 Phase 10 — End-to-End Integration Tests\n//!\n//! These tests verify that the full pipeline works when modules are composed\n//! together, simulating real discovery workflows.\n\nuse std::collections::HashMap;\n\nuse nexus::encoder::parser::parse_hypotheses;\nuse nexus::encoder::vectorize::vectorize;\nuse nexus::graph::edge::{Edge, EdgeType};\nuse nexus::graph::node::{Node, NodeType};\nuse nexus::graph::persistence::DiscoveryGraph;\nuse nexus::history::recorder::ScanRecord;\nuse nexus::his"
+}
