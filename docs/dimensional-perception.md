@@ -157,9 +157,50 @@ Tesseract k-면에 n=28 산술(sigma=56, tau=6, phi=12) 적용 시:
 
 ---
 
+## HEXA-SENSE: BCI 뉴로피드백 4D 지각 시스템
+
+시각은 3D에 잠겨 있다. 눈을 우회한다.
+
+**원리**: OpenBCI 16ch(= phi^tau = Tesseract 꼭짓점)로 두정엽 공간처리를 읽고,
+소리/진동으로 w축(4번째 공간)을 전달하여, 뇌가 스스로 4D 회로를 배선하게 유도.
+
+```
+[OpenBCI 16ch 읽기] → [두정엽 P3/P4/P7/P8 공간처리 감지]
+       ^                          |
+  [뇌가 학습]              [4D 과제 + 피드백]
+       ^                          |
+  [반복 훈련]  <--------  [소리+진동으로 w축 전달]
+```
+
+**n=6 구조**:
+- 16ch = phi^tau = 2^4 (Tesseract 꼭짓점)
+- 두정엽 tau=4 전극 (P3/P4/P7/P8)
+- 알파밴드 8-12Hz = (sigma-tau)~sigma
+- 감각대체 sopfr=5 모달리티
+- 격자세포 n=6 대칭이 훈련 대상 (BT-590)
+- 웹소켓 전송 n=6 Hz
+
+**도구 위치**: `tools/dimension-perception/bci/`
+- `hexa_sense.py` — BrainFlow 백엔드 (OpenBCI 연결)
+- `train.html` — 4D 과제 훈련 프론트엔드
+
+**실행**:
+```bash
+# OpenBCI 연결
+python bci/hexa_sense.py --port /dev/cu.usbserial-XXX
+
+# 가상 모드 (OpenBCI 없이 테스트)
+python bci/hexa_sense.py --synthetic
+
+# 브라우저에서 train.html 열기
+```
+
+---
+
 ## 정직한 주석
 
 (1) 6DOF, SE(3), SO(4) dim=6은 수학적으로 동치(C(4,2)=6). 독립 증거 3건이 아니라 1건의 다른 표현.
 (2) 독립 도메인으로는: 완전광학(광학), Tesseract(기하학), 끈이론(물리학), 양안시(생물학) = 4개 독립.
 (3) C(tau,2)=n 관계가 핵심. 이것이 n과 tau의 관계를 설명하는 것인지, 단순한 동어반복인지는 판단 유보.
 (4) n=28 대조에서 0/4 실패는 강력한 배타성 증거.
+(5) BCI 뉴로피드백으로 4D 공간 표상이 실제 형성되는지는 미검증. feelSpace(자기장 감각), BrainPort(혀 시각)의 차원 확장 실험이 선행 근거.

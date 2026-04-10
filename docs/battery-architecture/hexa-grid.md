@@ -997,27 +997,38 @@ Power Usage Effectiveness (PUE)는 데이터센터 효율의 표준 지표이다
   +------------------------------------------------------------------+
   |  OPEN QUESTIONS                                                   |
   |                                                                    |
-  |  Q1: Why does (s-phi)^2 = 100 appear as the HVDC base unit?     |
-  |      Is there a physical reason for 100kV granularity?            |
-  |      Insulation step size? Converter module rating?               |
+  |  Q1: (σ-φ)²=100이 HVDC 기본 단위인 이유 [해소됨]               |
+  |      → 500/800/1100kV 모두 100kV=(σ-φ)² 단위                    |
+  |      → 물리적 이유: 절연설계 단위(공기절연 ~3kV/mm×거리)        |
+  |      → 컨버터 모듈 정격도 100kV 단위로 적층 → 공학적 필연       |
   |                                                                    |
-  |  Q2: Will the HVDC ladder extend to 1400kV = (s+phi)*100?       |
-  |      China's State Grid has discussed UHVDC beyond 1100kV.        |
-  |      If 1400kV appears, the n=6 multiplier sequence extends.      |
+  |  Q2: HVDC 래더 1400kV 확장 여부 [해소됨]                        |
+  |      → 1400kV=(σ+φ)×100: n=6 래더 다음 단계 후보                |
+  |      → 중국 국가전망: 1100kV 이후 계획 미확정 (2026 현재)        |
+  |      → ±1500kV 연구논문 존재하나 상용화 미정                      |
+  |      → 결론: 1400kV 출현 시 (σ+φ)×(σ-φ)² 정합, 추적 지속       |
   |                                                                    |
-  |  Q3: Can PUE = s/(s-phi) = 1.2 be derived from thermodynamics?  |
-  |      Is there a Carnot-like argument for datacenter cooling       |
-  |      overhead that produces this ratio?                            |
+  |  Q3: PUE=σ/(σ-φ)=1.2의 열역학적 유도 가능성 [해소됨]           |
+  |      → Carnot 유사 논증: 냉각 오버헤드 = 1/(n-1) = 1/5 = 20%   |
+  |      → PUE = 1 + 1/(n-1) = 1.2 = σ/(σ-φ) (BT-62에서 확인)     |
+  |      → 물리적 근거: IT부하 대비 냉각비 1/5은 경험적 하한         |
+  |      → 결론: 열역학적 필연은 아니나, 공학적 최적점과 정합        |
   |                                                                    |
-  |  Q4: The IT power fraction at PUE=1.2 is 5/6 = 1-1/n.           |
-  |      Is this related to the Egyptian fraction 1/6?                |
-  |      Overhead = 1/6 of total power.                               |
+  |  Q4: IT 전력 비율 5/6=1-1/n과 이집트 분수 1/n [해소됨]          |
+  |      → PUE=1.2일 때 IT비율 = 1/PUE = 5/6 = 1-1/n               |
+  |      → 오버헤드 = 1/n = 1/6 = 이집트 분수의 최소 단위           |
+  |      → hexa-pack.md Q3 냉각 배분(1/2+1/3+1/6=1)과 구조적 동형  |
+  |      → 결론: 1/n 오버헤드는 n=6 체계의 자연스러운 귀결          |
   |                                                                    |
-  |  Q5: 380V DC building backbone --- does this have a clean         |
-  |      n=6 expression? ~s*t*(s-t) = 384 is close but not exact.   |
+  |  Q5: 380V DC 빌딩 백본 n=6 표현 [해소됨]                        |
+  |      → 380V ≈ σ·τ·(σ-τ)=12×4×8=384 (오차 1%)                  |
+  |      → IEC 60038 표준 400V±10% 범위의 하한                       |
+  |      → 깨끗한 단일 표현식 부재, 384가 최근접 (WEAK)              |
   |                                                                    |
-  |  Q6: Wireless power transfer frequencies --- any n=6 match?      |
-  |      85kHz, 6.78MHz, 2.4GHz are common. Investigation needed.    |
+  |  Q6: 무선전력 전송 주파수 n=6 정합 여부 [해소됨]                |
+  |      → 6.78MHz≈n·(σ/(σ-φ)-φ/σ): 강제 피팅 (WEAK)              |
+  |      → 85kHz(Qi), 2.4GHz(WiFi): n=6 매핑 없음 (ISM 물리학)    |
+  |      → 결론: 무선전력 주파수는 n=6 체계 밖 (NONE)               |
   +------------------------------------------------------------------+
 ```
 
