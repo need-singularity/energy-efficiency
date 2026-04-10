@@ -4,9 +4,9 @@
 
 [meta]
 updated = "2026-04-10"
-total_domains = 346
+total_domains = 548
 total_toml_files = 340
-domain_sections = 341
+domain_sections = 543
 cross_dse_connected = 338
 cross_dse_sections = 1739
 total_valid_paths = 3990870
@@ -18072,3 +18072,2431 @@ doc = "docs/audio/hexa-ear-cell.md"
 product = "HEXA-EAR-CELL"
 exact = "71/72 (98.6%)"
 note = "이어폰 마이크로배터리 궁극 설계. 71/72 EXACT 98.6%. 초소형 셀-전극-충전IC 수렴. TWS 배터리 n=6 아키텍처."
+
+# ── 배치 2: 잔여 미등록 도메인 (2026-04-10) ──
+# A4 감사 후속 — docs/ 하위 미등록 도메인 일괄 등록 (파일 수 내림차순)
+
+[construction-structural]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/construction-structural/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[experiments]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/experiments/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-starship]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-starship/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[neuro]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/neuro/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[recycling]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/recycling/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[tattoo-removal]
+goal = false
+dse = "pending"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/tattoo-removal/ 파일 4개. goal.md 미작성 → 후속 대상."
+
+[vampire]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/vampire/ 파일 4개. goal.md 존재 → 수렴 진행 중."
+
+[advanced-packaging]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/advanced-packaging/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[antimatter-factory]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/antimatter-factory/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[ar-vr-xr]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ar-vr-xr/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[archaeology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/archaeology/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[architecture]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/architecture/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[baduk]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/baduk/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[baking]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/baking/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[cartography-gis]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cartography-gis/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[cloak]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cloak/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[coffee]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/coffee/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[cosmetic-surgery]
+goal = true
+dse = "done"
+alien_level = 10
+levels = ["피부", "해부", "콜라겐", "약리", "시술", "재생"]
+cross_dse = ["biology", "medical-device", "material-synthesis", "ai-efficiency", "pharmacology", "robotics", "therapeutic-nanobot", "cognitive-architecture", "hexa-skin", "chip-architecture"]
+bt_links = [1129, 1130, 1131, 1132, 1133, 1134]
+evolution = "🛸10 천장 도달 — 36가설 33 EXACT (91.7%)"
+combos = 46656
+n6_max = 91.7
+note = "Fitzpatrick n=6, 콜라겐 D=67nm, 보톡스 FDA 20U/24U, 턴오버 28일. 10개 cross-domain."
+
+[cosmic-observatory]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cosmic-observatory/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[crystallography-materials]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/crystallography-materials/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[currency-economics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/currency-economics/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[dance-choreography]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dance-choreography/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[digital-twin]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/digital-twin/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[dolphin-bioacoustics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dolphin-bioacoustics/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[dragon]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dragon/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[dream-recorder]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dream-recorder/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[earth-defense]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/earth-defense/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[ecommerce-fintech]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ecommerce-fintech/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[fashion-textile]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fashion-textile/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[fermentation]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fermentation/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[fun-car]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fun-car/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[gemology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/gemology/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[gravity-wave]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/gravity-wave/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[herbalism]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/herbalism/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-one]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-one/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-ufo]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-ufo/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[higgs]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/higgs/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[holography]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/holography/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[horology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/horology/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[hover]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hover/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[insurance]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/insurance/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[jurisprudence]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/jurisprudence/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[library-science]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/library-science/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[light-optics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/light-optics/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[mind-upload]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/mind-upload/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[monetary-history]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/monetary-history/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[motorcycle]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/motorcycle/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[mountaineering]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/mountaineering/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[naval-architecture]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/naval-architecture/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[photography]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/photography/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[printing]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/printing/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[quantum-oracle]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/quantum-oracle/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[religion]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/religion/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[sc-memory]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/sc-memory/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[seabed-grid]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/seabed-grid/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[skyway]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/skyway/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[smr-datacenter]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/smr-datacenter/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[synbio]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/synbio/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[synthetic-biology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/synthetic-biology/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[tachyon]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/tachyon/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[telepathy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/telepathy/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[textile-dyeing]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/textile-dyeing/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[tsunami-shield]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/tsunami-shield/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[underground-tunnel]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/underground-tunnel/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[vaccine]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/vaccine/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[weather-control]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/weather-control/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[wine-enology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/wine-enology/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[writing-systems]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/writing-systems/ 파일 3개. goal.md 존재 → 수렴 진행 중."
+
+[aerospace-transport]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/aerospace-transport/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[anima-soc]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/anima-soc/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[apiculture]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/apiculture/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[aramid]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/aramid/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[battery-energy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/battery-energy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[bell-clockwork]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/bell-clockwork/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[biology-medical]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/biology-medical/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[biometrics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/biometrics/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[calendar-time-geography]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/calendar-time-geography/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[causal-chain]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/causal-chain/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[cheese-dairy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cheese-dairy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[classical-mechanics-accelerator]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/classical-mechanics-accelerator/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[cognitive-social-psychology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cognitive-social-psychology/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[concrete]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/concrete/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[consciousness-soc]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/consciousness-soc/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[control-automation]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/control-automation/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[cross-domain-mega]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cross-domain-mega/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[datacenter-reactor]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/datacenter-reactor/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[desal]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/desal/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[dice-probability]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dice-probability/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[display-8stack]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/display-8stack/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[ecology-agriculture-food]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ecology-agriculture-food/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[economics-finance]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/economics-finance/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[energy-efficiency]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/energy-efficiency/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[environment-thermal]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/environment-thermal/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[epoxy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/epoxy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[exynos]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/exynos/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[fantasy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fantasy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[fire-science]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fire-science/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[fusion-powerplant]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fusion-powerplant/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[games-sports]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/games-sports/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[governance-safety-urban]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/governance-safety-urban/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hangul-script]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hangul-script/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-3d]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-3d/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-accel]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-accel/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-asic]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-asic/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-cloak]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-cloak/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-cosmic]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-cosmic/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-defense]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-defense/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-dream]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-dream/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-ear]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-ear/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-empath]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-empath/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-exo]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-exo/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-fabric]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-fabric/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-glass]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-glass/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-grav]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-grav/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-holo]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-holo/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-hover]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-hover/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-limb]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-limb/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-macos]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-macos/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-mind]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-mind/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-mram]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-mram/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-netproto]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-netproto/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-neuro]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-neuro/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-olfact]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-olfact/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-oracle]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-oracle/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-photon]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-photon/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-pim]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-pim/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-proglang]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-proglang/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-recycle]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-recycle/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-sim]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-sim/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-skin]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-skin/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-skyway]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-skyway/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-super]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-super/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-telepathy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-telepathy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-teleport]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-teleport/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-topo]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-topo/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-tsunami]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-tsunami/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-wafer]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-wafer/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hexa-weather]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hexa-weather/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[hiv]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/hiv/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[isocell-comms]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/isocell-comms/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[law-justice]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/law-justice/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[lutherie]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/lutherie/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[manufacturing-quality]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/manufacturing-quality/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[microplastics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/microplastics/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[numismatics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/numismatics/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[nylon]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/nylon/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[observational-astronomy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/observational-astronomy/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[particle-cosmology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/particle-cosmology/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[performance-chip]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/performance-chip/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[plasma-fusion-deep]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/plasma-fusion-deep/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[reality-map]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/reality-map/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[religion-mythology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/religion-mythology/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[robotics-transport]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/robotics-transport/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[rtsc-12-products-evolution]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/rtsc-12-products-evolution/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[smart-city]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/smart-city/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[snowflake-ice]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/snowflake-ice/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[software-crypto]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/software-crypto/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[space-systems]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/space-systems/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[spatial-computing]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/spatial-computing/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[surveying]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/surveying/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[swordsmithing]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/swordsmithing/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[taekwondo]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/taekwondo/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[telecom-linguistics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/telecom-linguistics/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[ultimate-safety]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ultimate-safety/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[unified-soc]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/unified-soc/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[viticulture]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/viticulture/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[vnand]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/vnand/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[yoga]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/yoga/ 파일 2개. goal.md 존재 → 수렴 진행 중."
+
+[airbag]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/airbag/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[anima-service]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/anima-service/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[astronomy]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/astronomy/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[bio-pharma]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/bio-pharma/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[climate]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/climate/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[cosmology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/cosmology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[dram]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/dram/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[ecology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ecology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[electromagnetism]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/electromagnetism/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[fluid]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/fluid/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[genetics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/genetics/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[geology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/geology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[immunology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/immunology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[meteorology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/meteorology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-bsd]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-bsd/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-hodge]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-hodge/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-navier-stokes]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-navier-stokes/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-p-vs-np]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-p-vs-np/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-poincare]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-poincare/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-riemann]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-riemann/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[millennium-yang-mills]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/millennium-yang-mills/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[music]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/music/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[network]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/network/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[nexus-breakthrough-gate]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/nexus-breakthrough-gate/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[nexus-service]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/nexus-service/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[ocean]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/ocean/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[optics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/optics/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[pemfc]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/pemfc/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[pet-film]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/pet-film/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[pharmacology]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/pharmacology/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[plasma]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/plasma/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[thermodynamics]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/thermodynamics/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[tire-cord]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/tire-cord/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+
+[unified-service]
+goal = true
+dse = "in_progress"
+alien_level = 0
+levels = []
+cross_dse = []
+bt_links = []
+evolution = "배치 2 등록 — 초기 스캔 대기"
+combos = 0
+n6_max = 0.0
+note = "배치 2 자동 등록. docs/unified-service/ 파일 1개. goal.md 존재 → 수렴 진행 중."
+

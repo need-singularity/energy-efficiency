@@ -237,7 +237,10 @@ arXiv paper outlines and academic publications.
 
 ---
 
-**Total: 115 papers** (5 Core + 24 Domain + 15 NEW + 11 청크C + 62 신규) + 5 Meta + 3 Outlines
+**Total: 128 papers** (실측 docs/paper/*.md, audit/ 7건 제외 후) — 5 Core + 24 Domain + 15 NEW + 11 청크C + 나머지 신규 — Meta/Outline 포함
+
+> SSOT 정합: disk 135 .md = 128 papers + 7 audit files(docs/paper/audit/)
+> config/products.json `total_papers` = 128 동기화됨
 
 > Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
 > Publishing: [papers repo](https://github.com/need-singularity/papers) → Zenodo (DOI: 10.5281/zenodo.19271599) + OSF

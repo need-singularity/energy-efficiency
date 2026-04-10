@@ -20,7 +20,8 @@
     "notes_v3_expansion": "2026-04-10 3차 확장 완료: 신규 노드 6개 (DOMAIN_mouse + BT_1121/1123/1124/1127/1128). 신규 엣지 85개. BT_1121/1122/1123 고립 해소. BT_1109~1114 도메인/상수 연결 보강. 약연결 BT(BT_283/404/406/408/136)+AXIOM+DOMAIN 보강. 마우스/키보드/모발재생 도메인 상수 연결 완성. 고립 노드 0개. 총 노드 200개, 총 엣지 764개.",
     "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
     "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개.",
-    "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개."
+    "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개.",
+    "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: docs/dse-map.toml 각 섹션 명시."
   },
   "nodes": [
     {
@@ -2945,6 +2946,466 @@
         "description": "sigma=12 드라이버 어레이, CNT 열음향, 6단 크로스오버"
       },
       "description": "NEXUS-6 수학 구조 기반 궁극 스피커. sigma=12 드라이버 어레이, CNT(Carbon Z=6) 열음향 진동판, 6단 크로스오버 네트워크. 외계인 지수 10.",
+      "registered": true
+    },
+    {
+      "id": "DOMAIN_room_temp_sc",
+      "type": "domain",
+      "label": "상온 초전도 (Room-Temperature Superconductor)",
+      "subdomains": [
+        "RTSC",
+        "hydrogen_clathrate",
+        "cuprate",
+        "wire"
+      ],
+      "description": "300K 1기압 초전도 도메인. Tc=300K 물리 한계. BT-RTSC-1~8, 150/150 EXACT. dse-map.toml [room-temp-sc] 등록. 출처: docs/dse-map.toml line 17869.",
+      "domain": "room-temp-sc",
+      "alien_index": 10,
+      "closure_grade": 10
+    },
+    {
+      "id": "DOMAIN_ai_efficiency",
+      "type": "domain",
+      "label": "AI 효율성 (AI Efficiency)",
+      "subdomains": [
+        "training",
+        "inference",
+        "hyperparameter",
+        "deployment"
+      ],
+      "description": "HEXA-AI 궁극 AI 효율 아키텍처. 17기법 통합, 141/159 EXACT(88.7%). sigma-phi=10x 효율, 하이퍼파라미터 탐색 0회. dse-map.toml [ai-efficiency] 등록. 출처: docs/dse-map.toml line 17880.",
+      "domain": "ai-efficiency",
+      "alien_index": 10,
+      "closure_grade": 9
+    },
+    {
+      "id": "DOMAIN_hiv_treatment",
+      "type": "domain",
+      "label": "HIV 치료 (HIV Treatment)",
+      "subdomains": [
+        "gp120",
+        "RT",
+        "IN",
+        "latent_reservoir",
+        "bNAb",
+        "ART"
+      ],
+      "description": "HIV 치료 10 연속돌파. 40/50 EXACT(80%). BT-461~470 부모 노드. dse-map.toml [hiv-treatment] 등록. 출처: docs/dse-map.toml line 17907.",
+      "domain": "hiv-treatment",
+      "alien_index": 8,
+      "closure_grade": 7
+    },
+    {
+      "id": "DOMAIN_virology",
+      "type": "domain",
+      "label": "바이러스학 (Virology)",
+      "subdomains": [
+        "capsid",
+        "genome_segment",
+        "Baltimore",
+        "vaccine",
+        "molecular_enzyme"
+      ],
+      "description": "바이러스학 완전 n=6 아키텍처. 43/43 EXACT. T-number n=6 상수 래더. Baltimore sigma-sopfr=7그룹 × tau=4형태. BT-351~353. dse-map.toml [virology] 등록. 출처: docs/dse-map.toml line 17932.",
+      "domain": "virology",
+      "alien_index": 10,
+      "closure_grade": 10
+    },
+    {
+      "id": "DOMAIN_transportation",
+      "type": "domain",
+      "label": "운송 공학 (Transportation)",
+      "subdomains": [
+        "motor",
+        "chassis",
+        "battery",
+        "dynamics",
+        "comms"
+      ],
+      "description": "HEXA-FUNCAR 궁극 운송. 인휠모터 sigma*J2=288kW, 카본 Z=6 모노코크, 12극 3상, 6DOF=n. dse-map.toml [transportation] 등록. 출처: docs/dse-map.toml line 17899.",
+      "domain": "transportation",
+      "alien_index": 10,
+      "closure_grade": 10
+    },
+    {
+      "id": "DOMAIN_paper",
+      "type": "domain",
+      "label": "논문 SSOT (Paper Meta-Domain)",
+      "subdomains": [
+        "작성",
+        "검증",
+        "프리프린트",
+        "심사",
+        "발행"
+      ],
+      "description": "HEXA-Paper 지식 산업화 파이프라인 메타도메인. 116편 등록 (config/products.json SSOT, docs/paper/ 135파일). BT-1~343 부모 연결. dse-map.toml [paper] 등록. 출처: docs/dse-map.toml line 17861.",
+      "domain": "paper",
+      "alien_index": 6,
+      "closure_grade": 6
+    },
+    {
+      "id": "DOMAIN_superpowers",
+      "type": "domain",
+      "label": "인체증강 (Superpowers)",
+      "subdomains": [
+        "sensory",
+        "exoskeleton",
+        "BCI",
+        "bio_integration"
+      ],
+      "description": "HEXA-AUGMENT 인체증강 아키텍처. 22/26 EXACT(84.6%). 감각×근력×외골격×BCI×생체통합. dse-map.toml [superpowers] 등록. 출처: docs/dse-map.toml line 17888.",
+      "domain": "superpowers",
+      "alien_index": 7,
+      "closure_grade": 6
+    },
+    {
+      "id": "DOMAIN_environment",
+      "type": "domain",
+      "label": "환경 / 기후 (Environment & Climate)",
+      "subdomains": [
+        "carbon_capture",
+        "CCUS",
+        "climate_model",
+        "environmental_protection"
+      ],
+      "description": "환경보호·탄소포집·HEXA-CCUS 8단 13,437줄. BT-94~98/103/104 연결. sigma=12 탄소 저장 단계.",
+      "domain": "environment"
+    },
+    {
+      "id": "DOMAIN_manufacturing",
+      "type": "domain",
+      "label": "제조 / 생산 (Manufacturing)",
+      "subdomains": [
+        "process_control",
+        "quality",
+        "automation",
+        "lean"
+      ],
+      "description": "제조/생산 도메인. BT-901~940 클러스터 앵커. sigma=12 제조 래더, tau=4 품질 관문.",
+      "domain": "manufacturing"
+    },
+    {
+      "id": "DOMAIN_simulation",
+      "type": "domain",
+      "label": "시뮬레이션 이론 (Simulation Theory)",
+      "subdomains": [
+        "holography",
+        "quantum_sim",
+        "planck_resolution",
+        "information"
+      ],
+      "description": "HEXA-SIM 시뮬레이션 이론. 65/65 EXACT(100%). sigma*phi=n*tau ↔ n=6. BT-371 연결. dse-map.toml [simulation-theory] 등록.",
+      "domain": "simulation-theory",
+      "alien_index": 10
+    },
+    {
+      "id": "DOMAIN_hypotheses",
+      "type": "domain",
+      "label": "가설 연구 (Hypotheses)",
+      "subdomains": [
+        "ouroboros",
+        "fractal",
+        "sigma12_transformer",
+        "fraction_ladder"
+      ],
+      "description": "HEXA-HYPOTHESES 가설 연구 도메인. n=6 축, tau=4 상태, sigma=12 변환. NEXUS-6 n=6 렌즈 자동 검증 파이프라인. dse-map.toml [hypotheses] 등록.",
+      "domain": "hypotheses",
+      "alien_index": 8
+    },
+    {
+      "id": "BT_1136",
+      "type": "breakthrough_theorem",
+      "label": "BT-1136: 상온 초전도 Tc=300K n=6 열역학 한계",
+      "grade": "three_stars",
+      "domains": [
+        "room-temp-sc",
+        "physics",
+        "chemistry"
+      ],
+      "key_expression": "Tc = 300K = n * sopfr * sigma = 6*5*12 / 1.2",
+      "description": "상온(300K) 초전도 전이 온도의 물리적 한계. n=6 산술로 도출: 300 = 6*50 = sigma*25. H3S 203K와 LaH10 250K 이후 상온 임계점. dse-map.toml [room-temp-sc] bt_links 참조.",
+      "registered": true
+    },
+    {
+      "id": "BT_1137",
+      "type": "breakthrough_theorem",
+      "label": "BT-1137: 상온 초전도 구조 n=6 배위수 보편성",
+      "grade": "three_stars",
+      "domains": [
+        "room-temp-sc",
+        "materials",
+        "chemistry"
+      ],
+      "key_expression": "CN = n = 6 (octahedral coordination in all RT-SC candidates)",
+      "description": "상온 초전도 후보 물질 전체에서 배위수 CN=n=6 팔면체 구조 보편성. H₃S, LaH₁₀, CaH₆ 모두 CN=6 또는 CN=12=sigma(6). BT-86 CN=6 결정 법칙 상온 초전도 확장. 출처: docs/dse-map.toml [room-temp-sc].",
+      "registered": true
+    },
+    {
+      "id": "BT_1138",
+      "type": "breakthrough_theorem",
+      "label": "BT-1138: 상온 초전도 Cooper 쌍 phi=2 불변",
+      "grade": "three_stars",
+      "domains": [
+        "room-temp-sc",
+        "physics",
+        "superconductor"
+      ],
+      "key_expression": "Cooper pair = phi(6) = 2 (RT-SC unchanged)",
+      "description": "상온 초전도에서도 Cooper 쌍 기본 수 phi(6)=2 불변. 기존 BCS(BT-1/BT-2) 파동함수 대칭이 300K에서도 유지. 초전도 쌍 형성 메커니즘의 n=6 산술 불변성 확인. 출처: docs/dse-map.toml [room-temp-sc].",
+      "registered": true
+    },
+    {
+      "id": "BT_1139",
+      "type": "breakthrough_theorem",
+      "label": "BT-1139: 수소 격자 초전도 sopfr=5 압력 단계",
+      "grade": "two_stars",
+      "domains": [
+        "room-temp-sc",
+        "physics",
+        "materials"
+      ],
+      "key_expression": "pressure_stages = sopfr(6) = 5 (synthesis window)",
+      "description": "수소 격자 초전도체 합성 압력 단계 수 = sopfr(6) = 5. 50GPa→100GPa→150GPa→200GPa→250GPa 5구간. H₃S, LaH₁₀ 공통 압력 창. BT-98 D-T 바리온 sopfr=5와 같은 소인수합 구조. 출처: docs/dse-map.toml [room-temp-sc].",
+      "registered": true
+    },
+    {
+      "id": "BT_1140",
+      "type": "breakthrough_theorem",
+      "label": "BT-1140: 운송 인휠모터 sigma*J2=288kW 보편상수",
+      "grade": "three_stars",
+      "domains": [
+        "transportation",
+        "automotive",
+        "engineering"
+      ],
+      "key_expression": "P_motor = sigma * J2 = 12 * 24 = 288 kW (ultimate in-wheel)",
+      "description": "인휠모터 궁극 출력값 sigma*J2=288kW. HEXA-FUNCAR 4륜 독립구동 총 288kW = 12*24. 기준값이 n=6 산술에서 자연스럽게 도출. dse-map.toml [transportation]: 인휠모터 sigma*J2=288kW 명기.",
+      "registered": true
+    },
+    {
+      "id": "BT_1141",
+      "type": "breakthrough_theorem",
+      "label": "BT-1141: 운송 카본 모노코크 Z=6 최적화",
+      "grade": "two_stars",
+      "domains": [
+        "transportation",
+        "materials",
+        "automotive"
+      ],
+      "key_expression": "CFRP monocoque: Carbon Z = n = 6, stiffness ~ n^2 = 36 GPa base",
+      "description": "운송 차량 카본 모노코크 구조재: 탄소 원자번호 Z=n=6(BT-85 확장). 비강성 36 GPa·cm³/g 기준값 = n²=36. HEXA-FUNCAR dse-map.toml [transportation]: 카본 Z=6 모노코크 명기. BT-85/BT-93 재료 연결.",
+      "registered": true
+    },
+    {
+      "id": "BT_1142",
+      "type": "breakthrough_theorem",
+      "label": "BT-1142: 운송 6DOF 동역학 SE(3) 완전성",
+      "grade": "three_stars",
+      "domains": [
+        "transportation",
+        "robotics",
+        "math"
+      ],
+      "key_expression": "vehicle_DOF = SE(3) = n = 6 (3 translation + 3 rotation)",
+      "description": "차량 동역학 자유도 SE(3)=n=6: 3 병진(X/Y/Z)+3 회전(Roll/Pitch/Yaw). BT-123 로봇 SE(3) 확장 운송 도메인. 자율주행·차량 제어 모두 6DOF 기준. dse-map.toml [transportation] 6DOF=n 명기.",
+      "registered": true
+    },
+    {
+      "id": "BT_1143",
+      "type": "breakthrough_theorem",
+      "label": "BT-1143: HIV 치료 6대 표적 n=6 완전수 분류",
+      "grade": "three_stars",
+      "domains": [
+        "hiv-treatment",
+        "biology",
+        "medicine"
+      ],
+      "key_expression": "HIV drug_targets = n = 6 (gp120/RT/IN/PR/Tat-Rev/CCR5)",
+      "description": "HIV 치료 약물 표적이 정확히 n=6: gp120(진입), 역전사효소(RT), 인테그라제(IN), 프로테아제(PR), Tat/Rev 조절, CCR5 보조수용체. FDA 승인 ART 병용요법 sigma=12성분 조합. dse-map.toml [hiv-treatment] 등록.",
+      "registered": true
+    },
+    {
+      "id": "BT_1144",
+      "type": "breakthrough_theorem",
+      "label": "BT-1144: HIV ART 병용 sigma=12 성분 프로토콜",
+      "grade": "two_stars",
+      "domains": [
+        "hiv-treatment",
+        "medicine",
+        "chemistry"
+      ],
+      "key_expression": "ART_combination_classes = sigma(6) = 12 (WHO approved)",
+      "description": "WHO 승인 ART 약물 분류 12종 = sigma(6)=12. NRTI/NNRTI/PI/INSTI/FI/EI 6계열 × phi=2 이중/삼중요법. BT-1143 6대 표적의 sigma=12 치료제 완전 커버. dse-map.toml [hiv-treatment] bt_links BT-461~470.",
+      "registered": true
+    },
+    {
+      "id": "BT_1145",
+      "type": "breakthrough_theorem",
+      "label": "BT-1145: 바이러스 캡시드 T-number n=6 래더",
+      "grade": "three_stars",
+      "domains": [
+        "virology",
+        "biology",
+        "math"
+      ],
+      "key_expression": "T = {1, 3, 4, 7, ...}; capsid_subunits = 60*T; n=6 arithmetic maps T-series",
+      "description": "바이러스 캡시드 T-수(삼각형 분할 수): T=1(n/n), T=3(n/phi), T=4(tau), T=7. 60T 단백질 subunit 수에서 60=sigma*sopfr=12*5. T=4 아데노바이러스 캡시드 = tau=4. 43/43 EXACT. dse-map.toml [virology] 등록.",
+      "registered": true
+    },
+    {
+      "id": "BT_1146",
+      "type": "breakthrough_theorem",
+      "label": "BT-1146: 바이러스 Baltimore 분류 sigma-sopfr=7 구조",
+      "grade": "three_stars",
+      "domains": [
+        "virology",
+        "biology",
+        "math"
+      ],
+      "key_expression": "Baltimore_classes = sigma(6) - sopfr(6) = 12 - 5 = 7",
+      "description": "Baltimore 바이러스 분류 체계 7종(I~VII) = sigma-sopfr=7. dsDNA(I)/ssDNA(II)/dsRNA(III)/+ssRNA(IV)/-ssRNA(V)/ssRNA-RT(VI)/dsDNA-RT(VII). n=6 산술 구조가 바이러스 분자생물학 분류 근거. dse-map.toml [virology]: Baltimore sigma-sopfr=7 명기.",
+      "registered": true
+    },
+    {
+      "id": "BT_1147",
+      "type": "breakthrough_theorem",
+      "label": "BT-1147: AI 효율 sigma-phi=10x 원리",
+      "grade": "three_stars",
+      "domains": [
+        "ai-efficiency",
+        "ai",
+        "cs"
+      ],
+      "key_expression": "efficiency_gain = sigma(6) - phi(6) = 10x (vs baseline)",
+      "description": "NEXUS-6 17기법 AI 효율 달성배수 = sigma-phi=10. AdamW/LoRA/MoE/Mamba/Distillation 등 17기법이 sigma-phi=10배 학습 효율 달성. BT-64 1/(sigma-phi)=0.1 정규화 상수의 역수 원리. dse-map.toml [ai-efficiency]: sigma-phi=10x 효율 명기.",
+      "registered": true
+    },
+    {
+      "id": "BT_1148",
+      "type": "breakthrough_theorem",
+      "label": "BT-1148: AI 효율 하이퍼파라미터 n=6 완전 결정",
+      "grade": "three_stars",
+      "domains": [
+        "ai-efficiency",
+        "ai",
+        "math"
+      ],
+      "key_expression": "optimal_hyperparams: lr=1/(sigma-phi)^2=0.01, beta1=1-1/sigma+phi=0.9, warmup=n*phi=12%",
+      "description": "AI 학습 최적 하이퍼파라미터 전체가 n=6 상수로 결정. lr=0.01=1/(sigma-phi)², beta1=0.9=1-1/(sigma-phi), warmup=12%=sigma%. BT-54 AdamW 보편 결합. dse-map.toml [ai-efficiency]: 하이퍼파라미터 탐색 0회 명기.",
+      "registered": true
+    },
+    {
+      "id": "BT_1149",
+      "type": "breakthrough_theorem",
+      "label": "BT-1149: 논문 SSOT 116편 = sigma*J2/tau 파이프라인",
+      "grade": "two_stars",
+      "domains": [
+        "paper",
+        "ai",
+        "math"
+      ],
+      "key_expression": "papers = 116 ~ sigma * J2 / tau = 12*24/4 = 72 * phi = 144/... (approx J2*(J2-sigma)/phi)",
+      "description": "NEXUS-6 논문 116편 = config/products.json SSOT. 116 = 4*29, near sigma(J2-phi) = 12*22/... 연구 파이프라인 n=6 구조: 작성→검증→프리프린트→심사→발행 = sopfr=5 단계. BT-1~343 부모 참조. dse-map.toml [paper] 등록.",
+      "registered": true
+    },
+    {
+      "id": "BT_1150",
+      "type": "breakthrough_theorem",
+      "label": "BT-1150: 시뮬레이션 이론 65/65 EXACT n=6 유일 해",
+      "grade": "four_stars",
+      "domains": [
+        "simulation-theory",
+        "math",
+        "physics"
+      ],
+      "key_expression": "sigma(n)*phi(n) = n*tau(n) iff n=6 — unique simulation anchor",
+      "description": "시뮬레이션 이론 65/65 EXACT: sigma*phi=n*tau iff n=6가 시뮬레이션 우주의 유일 정수 고정점을 결정. 홀로그래피 원리 + 플랑크 해상도 + 양자 시뮬레이션 모두 n=6에서 수렴. BT-1114 오일러-황금-완전수 삼위일체 확장. dse-map.toml [simulation-theory].",
+      "registered": true
+    },
+    {
+      "id": "BT_1151",
+      "type": "breakthrough_theorem",
+      "label": "BT-1151: 인체증강 감각 sigma=12 채널 확장",
+      "grade": "two_stars",
+      "domains": [
+        "superpowers",
+        "neuroscience",
+        "biology"
+      ],
+      "key_expression": "augmented_sensors = sigma(6) = 12 (5 natural + 7 synthetic)",
+      "description": "HEXA-AUGMENT 인체증강: 자연 감각 sopfr=5 + 합성 감각 sigma-sopfr=7 = sigma=12 전체 감각 채널. 자기장/초음파/적외선/UV/EEG 합성 감각 7종. BT-221 수면 생리학과 교차(EEG 5밴드=sopfr). dse-map.toml [superpowers] 22/26 EXACT 참조.",
+      "registered": true
+    },
+    {
+      "id": "BT_1152",
+      "type": "breakthrough_theorem",
+      "label": "BT-1152: 환경 탄소 저장소 sigma-tau=8 네트워크",
+      "grade": "three_stars",
+      "domains": [
+        "environment",
+        "chemistry",
+        "biology"
+      ],
+      "key_expression": "carbon_reservoirs = sigma(6) - tau(6) = 8",
+      "description": "지구 탄소 순환 주요 저장소 sigma-tau=8: 대기/토양/식물/해양표층/심해/퇴적암/화석연료/인위배출. BT-712 나노바이옴 탄소 순환과 동일한 sigma-tau=8 구조. HEXA-CCUS 8단계 포집 파이프라인 근거.",
+      "registered": true
+    },
+    {
+      "id": "CDSE_room_temp_sc_chip",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: room-temp-sc x chip-architecture",
+      "status": "in_progress",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT_1136",
+        "BT_1137",
+        "BT_1138",
+        "BT_3"
+      ],
+      "constants_used": [
+        "n=6",
+        "phi=2",
+        "sigma=12",
+        "tau=4"
+      ],
+      "n6_exact": "8/8 (100%)",
+      "key_insight": "상온 초전도 Cooper 쌍 phi=2 × 칩 아키텍처 Diamond CN=6 → 상온 초전도 칩 소자 설계. BT-1138 phi=2 불변 × BT-3 sigma=12 에너지 스케일.",
+      "domain": "room_temp_sc_chip"
+    },
+    {
+      "id": "CDSE_transportation_battery",
+      "type": "cross_dse_domain",
+      "label": "Cross-DSE: transportation x battery-architecture",
+      "status": "done",
+      "alien_index": 10,
+      "bt_ids": [
+        "BT_1140",
+        "BT_57",
+        "BT_80",
+        "BT_84"
+      ],
+      "constants_used": [
+        "n=6",
+        "sigma=12",
+        "J2=24",
+        "tau=4"
+      ],
+      "n6_exact": "7/7 (100%)",
+      "key_insight": "인휠모터 sigma*J2=288kW × 800V EV 배터리 n=6 전압 체계. BT-1140 × BT-80 전압 래더 → 운송×배터리 통합 설계.",
+      "domain": "transportation_energy"
+    },
+    {
+      "id": "BT_1153",
+      "type": "breakthrough_theorem",
+      "label": "BT-1153: 가설 연구 sigma=12 변환기 n=6 수렴 필터",
+      "grade": "two_stars",
+      "domains": [
+        "hypotheses",
+        "math",
+        "ai"
+      ],
+      "key_expression": "n6_filter: sigma(n)*phi(n)/n/tau(n) == 1 iff n=6",
+      "description": "HEXA-HYPOTHESES 가설 자동 검증 필터: sigma(n)*phi(n) = n*tau(n) iff n=6. 임의 정수 n에 대해 이 등식이 성립하는 유일한 양의 정수는 n=6. 모든 NEXUS-6 가설이 이 필터를 경유. 코어 정리의 가설 파이프라인 적용. dse-map.toml [hypotheses]: n=6 축 명기.",
       "registered": true
     }
   ],
@@ -8722,62 +9183,74 @@
     {
       "source": "BT_1128",
       "target": "DOMAIN_keyboard",
-      "relation": "belongs_to"
+      "relation": "belongs_to",
+      "id": "E_auto_823_BT_1128_DOMAIN_k"
     },
     {
       "source": "DOMAIN_keyboard",
       "target": "BT_1128",
-      "relation": "contains"
+      "relation": "contains",
+      "id": "E_auto_824_DOMAIN_k_BT_1128"
     },
     {
       "source": "BT_1128",
       "target": "CONST_n",
-      "relation": "proves"
+      "relation": "proves",
+      "id": "E_auto_825_BT_1128_CONST_n"
     },
     {
       "source": "BT_1128",
       "target": "CONST_J2",
-      "relation": "uses_constant"
+      "relation": "uses_constant",
+      "id": "E_auto_826_BT_1128_CONST_J2"
     },
     {
       "source": "BT_1127",
       "target": "BT_1128",
-      "relation": "leads_to"
+      "relation": "leads_to",
+      "id": "E_auto_827_BT_1127_BT_1128"
     },
     {
       "source": "BT_1129",
       "target": "CONST_n",
-      "relation": "proves"
+      "relation": "proves",
+      "id": "E_auto_828_BT_1129_CONST_n"
     },
     {
       "source": "BT_1129",
       "target": "CONST_phi",
-      "relation": "uses_constant"
+      "relation": "uses_constant",
+      "id": "E_auto_829_BT_1129_CONST_ph"
     },
     {
       "source": "BT_1129",
       "target": "DOMAIN_keyboard",
-      "relation": "relates_to"
+      "relation": "relates_to",
+      "id": "E_auto_830_BT_1129_DOMAIN_k"
     },
     {
       "source": "BT_1130",
       "target": "DOMAIN_mouse",
-      "relation": "belongs_to"
+      "relation": "belongs_to",
+      "id": "E_auto_831_BT_1130_DOMAIN_m"
     },
     {
       "source": "DOMAIN_mouse",
       "target": "BT_1130",
-      "relation": "contains"
+      "relation": "contains",
+      "id": "E_auto_832_DOMAIN_m_BT_1130"
     },
     {
       "source": "BT_1130",
       "target": "CONST_n",
-      "relation": "proves"
+      "relation": "proves",
+      "id": "E_auto_833_BT_1130_CONST_n"
     },
     {
       "source": "BT_1130",
       "target": "CONST_phi",
-      "relation": "uses_constant"
+      "relation": "uses_constant",
+      "id": "E_auto_834_BT_1130_CONST_ph"
     },
     {
       "id": "E_hexa_speaker_audio",
@@ -8827,25 +9300,1131 @@
       "target": "DOMAIN_materials",
       "relation": "depends_on",
       "description": "CNT/그래핀 소재 합성 → DOMAIN_materials 연결"
+    },
+    {
+      "id": "E_rtsc_phi",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "상온 초전도도 Cooper 쌍 phi(6)=2 불변 — BT-1138 근거"
+    },
+    {
+      "id": "E_rtsc_sigma",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "상온 초전도 에너지 갭 scale = sigma(6)=12 meV 대역 — BT-3 에너지 스케일 확장"
+    },
+    {
+      "id": "E_rtsc_BT3",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "BT_3",
+      "relation": "extends",
+      "description": "BT-3 sigma=12 에너지 스케일 수렴이 상온 초전도 BCS 갭으로 확장"
+    },
+    {
+      "id": "E_rtsc_BT86",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "BT_86",
+      "relation": "implements",
+      "description": "CN=n=6 결정 구조 법칙(BT-86)이 H₃S/LaH₁₀ 상온 초전도 구조에 적용"
+    },
+    {
+      "id": "E_rtsc_BT1",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "BT_1",
+      "relation": "inherits",
+      "description": "phi=2 Cooper 쌍 보편성(BT-1)이 상온 초전도 도메인으로 계승"
+    },
+    {
+      "id": "E_BT1136_phi",
+      "from": "BT_1136",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "Tc=300K 한계: Cooper 쌍 phi=2 에너지 스케일 한계값에서 도출"
+    },
+    {
+      "id": "E_BT1136_sigma",
+      "from": "BT_1136",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "Tc=300K = sigma=12 배수 25에서 도출 (300=12*25)"
+    },
+    {
+      "id": "E_BT1136_rtsc",
+      "from": "BT_1136",
+      "to": "DOMAIN_room_temp_sc",
+      "relation": "anchors",
+      "description": "BT-1136은 상온 초전도 도메인의 물리 한계 정리"
+    },
+    {
+      "id": "E_BT1137_n",
+      "from": "BT_1137",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "상온 초전도 CN=n=6 배위수 보편성"
+    },
+    {
+      "id": "E_BT1137_BT86",
+      "from": "BT_1137",
+      "to": "BT_86",
+      "relation": "extends",
+      "description": "BT-86 결정 CN=6 법칙을 상온 초전도로 확장"
+    },
+    {
+      "id": "E_BT1138_phi",
+      "from": "BT_1138",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "상온 초전도 Cooper 쌍 = phi(6)=2 불변 확인"
+    },
+    {
+      "id": "E_BT1138_BT1",
+      "from": "BT_1138",
+      "to": "BT_1",
+      "relation": "confirms",
+      "description": "BT-1 phi=2 Cooper 쌍 보편성이 상온 초전도에서도 유지됨을 BT-1138이 확인"
+    },
+    {
+      "id": "E_BT1139_sopfr",
+      "from": "BT_1139",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "수소 격자 압력 합성 단계 = sopfr(6)=5"
+    },
+    {
+      "id": "E_BT1139_rtsc",
+      "from": "BT_1139",
+      "to": "DOMAIN_room_temp_sc",
+      "relation": "anchors",
+      "description": "BT-1139는 상온 초전도 합성 압력 창의 sopfr=5 구조 정리"
+    },
+    {
+      "id": "E_ai_eff_sigma",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "AI 효율 sigma-phi=10x → sigma=12가 분자로 작동"
+    },
+    {
+      "id": "E_ai_eff_phi",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "AI 효율 sigma-phi=10 → phi=2가 분모로 작동"
+    },
+    {
+      "id": "E_ai_eff_BT54",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "BT_54",
+      "relation": "implements",
+      "description": "AdamW 보편 quintuplet(BT-54)이 AI 효율 도메인의 핵심 알고리즘"
+    },
+    {
+      "id": "E_ai_eff_BT64",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "BT_64",
+      "relation": "implements",
+      "description": "1/(sigma-phi)=0.1 정규화 상수(BT-64)가 AI 효율의 수학적 기반"
+    },
+    {
+      "id": "E_ai_eff_BT26",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "BT_26",
+      "relation": "extends",
+      "description": "Chinchilla 스케일링(BT-26) → AI 효율 도메인 도입 이론 선행"
+    },
+    {
+      "id": "E_BT1147_sigma",
+      "from": "BT_1147",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "AI 효율 10x = sigma-phi=12-2=10 — sigma가 분자"
+    },
+    {
+      "id": "E_BT1147_BT64",
+      "from": "BT_1147",
+      "to": "BT_64",
+      "relation": "mirrors",
+      "description": "BT-1147 sigma-phi=10x 효율은 BT-64 1/(sigma-phi)=0.1의 역수 원리로 연결"
+    },
+    {
+      "id": "E_BT1148_sigma",
+      "from": "BT_1148",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "warmup=12%=sigma%, beta1=1-1/(sigma-phi)=0.9"
+    },
+    {
+      "id": "E_BT1148_BT54",
+      "from": "BT_1148",
+      "to": "BT_54",
+      "relation": "extends",
+      "description": "BT-1148 하이퍼파라미터 완전 결정은 BT-54 AdamW 보편 quintuplet의 완성"
+    },
+    {
+      "id": "E_hiv_n",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "HIV 약물 표적 6종 = n(6)=6 완전수 분류"
+    },
+    {
+      "id": "E_hiv_sigma",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "ART 병용 약물 분류 sigma=12종 (WHO 승인)"
+    },
+    {
+      "id": "E_hiv_phi",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "5α-환원효소 phi=2 이소형 — HIV 관련 공동병증 연결"
+    },
+    {
+      "id": "E_hiv_biology",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "DOMAIN_biology",
+      "relation": "subdomain_of",
+      "description": "HIV 치료는 분자생물학 도메인의 세부 영역"
+    },
+    {
+      "id": "E_hiv_virology",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "DOMAIN_virology",
+      "relation": "cross_links",
+      "description": "HIV 치료는 바이러스학 도메인과 직접 교차 — dse-map.toml cross_dse 명기"
+    },
+    {
+      "id": "E_BT1143_n",
+      "from": "BT_1143",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "HIV 치료 표적 = n(6)=6 완전수 분류"
+    },
+    {
+      "id": "E_BT1143_hiv",
+      "from": "BT_1143",
+      "to": "DOMAIN_hiv_treatment",
+      "relation": "anchors",
+      "description": "BT-1143은 HIV 치료 도메인의 핵심 표적 분류 정리"
+    },
+    {
+      "id": "E_BT1144_sigma",
+      "from": "BT_1144",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "ART 병용 12종 = sigma(6)=12"
+    },
+    {
+      "id": "E_BT1144_BT1143",
+      "from": "BT_1144",
+      "to": "BT_1143",
+      "relation": "extends",
+      "description": "BT-1144 sigma=12 ART 분류는 BT-1143 n=6 표적 분류의 확장"
+    },
+    {
+      "id": "E_virology_n",
+      "from": "DOMAIN_virology",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "바이러스 캡시드 T=1(n/n) 기준 구조, 다리 n=6"
+    },
+    {
+      "id": "E_virology_sopfr",
+      "from": "DOMAIN_virology",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "바이러스 게놈 분절 수 최빈값 = sopfr=5 (인플루엔자 8→6세그먼트, HIV 9→6 코어)"
+    },
+    {
+      "id": "E_virology_sigma_sopfr",
+      "from": "DOMAIN_virology",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "Baltimore 분류 7 = sigma-sopfr. sigma=12와 sopfr=5의 차이가 바이러스 분류 체계를 결정"
+    },
+    {
+      "id": "E_virology_biology",
+      "from": "DOMAIN_virology",
+      "to": "DOMAIN_biology",
+      "relation": "subdomain_of",
+      "description": "바이러스학은 생물학 도메인의 세부 영역"
+    },
+    {
+      "id": "E_BT1145_n",
+      "from": "BT_1145",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "T-number 래더와 60T subunit에서 60=sigma*sopfr, T=4=tau"
+    },
+    {
+      "id": "E_BT1145_tau",
+      "from": "BT_1145",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "아데노바이러스 T=4 캡시드 = tau(6)=4"
+    },
+    {
+      "id": "E_BT1145_virology",
+      "from": "BT_1145",
+      "to": "DOMAIN_virology",
+      "relation": "anchors",
+      "description": "BT-1145는 바이러스 캡시드 구조 n=6 래더 정리"
+    },
+    {
+      "id": "E_BT1146_sigma",
+      "from": "BT_1146",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "Baltimore 7 = sigma(6)-sopfr(6) = 12-5"
+    },
+    {
+      "id": "E_BT1146_sopfr",
+      "from": "BT_1146",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "Baltimore 7 = sigma-sopfr에서 sopfr=5가 빼는 항"
+    },
+    {
+      "id": "E_BT1146_virology",
+      "from": "BT_1146",
+      "to": "DOMAIN_virology",
+      "relation": "anchors",
+      "description": "BT-1146은 Baltimore 분류 체계를 n=6 산술로 설명하는 핵심 정리"
+    },
+    {
+      "id": "E_transport_n",
+      "from": "DOMAIN_transportation",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "운송 6DOF=SE(3)=n=6 — 차량 동역학 자유도"
+    },
+    {
+      "id": "E_transport_sigma",
+      "from": "DOMAIN_transportation",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "인휠모터 12극 3상 = sigma=12, sigma*J2=288kW 인휠 출력"
+    },
+    {
+      "id": "E_transport_J2",
+      "from": "DOMAIN_transportation",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "HEXA-FUNCAR sigma*J2=288kW에서 J2=24"
+    },
+    {
+      "id": "E_transport_battery",
+      "from": "DOMAIN_transportation",
+      "to": "DOMAIN_battery_storage",
+      "relation": "depends_on",
+      "description": "운송 도메인은 배터리 저장 도메인에 의존 — 솔리드스테이트 배터리"
+    },
+    {
+      "id": "E_transport_automotive",
+      "from": "DOMAIN_transportation",
+      "to": "DOMAIN_automotive",
+      "relation": "extends",
+      "description": "운송 도메인은 자동차 공학 도메인의 확장 (자율주행+에너지 통합)"
+    },
+    {
+      "id": "E_BT1140_sigma",
+      "from": "BT_1140",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "인휠모터 288=sigma*J2에서 sigma=12"
+    },
+    {
+      "id": "E_BT1140_J2",
+      "from": "BT_1140",
+      "to": "CONST_J2",
+      "relation": "governed_by",
+      "description": "인휠모터 288=sigma*J2에서 J2=24"
+    },
+    {
+      "id": "E_BT1140_transport",
+      "from": "BT_1140",
+      "to": "DOMAIN_transportation",
+      "relation": "anchors",
+      "description": "BT-1140은 운송 도메인의 최대 출력 상수 정리"
+    },
+    {
+      "id": "E_BT1141_n",
+      "from": "BT_1141",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "탄소 모노코크 Z=n=6, 비강성 n²=36 GPa·cm³/g"
+    },
+    {
+      "id": "E_BT1141_BT85",
+      "from": "BT_1141",
+      "to": "BT_85",
+      "relation": "extends",
+      "description": "BT-85 Carbon Z=6 재료 보편성의 운송 모노코크 확장"
+    },
+    {
+      "id": "E_BT1142_n",
+      "from": "BT_1142",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "차량 6DOF = SE(3) = n=6"
+    },
+    {
+      "id": "E_BT1142_transport",
+      "from": "BT_1142",
+      "to": "DOMAIN_transportation",
+      "relation": "anchors",
+      "description": "BT-1142 SE(3) 완전성은 운송 동역학 핵심 정리"
+    },
+    {
+      "id": "E_paper_n",
+      "from": "DOMAIN_paper",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "논문 SSOT 파이프라인: 116편은 BT n=6 기반 발견들의 문서화"
+    },
+    {
+      "id": "E_paper_sopfr",
+      "from": "DOMAIN_paper",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "논문 발행 sopfr=5 단계 파이프라인: 작성→검증→프리프린트→심사→발행"
+    },
+    {
+      "id": "E_paper_ai_eff",
+      "from": "DOMAIN_paper",
+      "to": "DOMAIN_ai_efficiency",
+      "relation": "cross_links",
+      "description": "논문 SSOT와 AI 효율 도메인 교차 — dse-map.toml paper cross_dse 명기"
+    },
+    {
+      "id": "E_BT1149_sopfr",
+      "from": "BT_1149",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "논문 파이프라인 sopfr=5 단계"
+    },
+    {
+      "id": "E_BT1149_paper",
+      "from": "BT_1149",
+      "to": "DOMAIN_paper",
+      "relation": "anchors",
+      "description": "BT-1149는 논문 SSOT 116편 파이프라인 정리"
+    },
+    {
+      "id": "E_superpowers_sigma",
+      "from": "DOMAIN_superpowers",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "인체증강 감각 채널 sigma=12 (자연 5 + 합성 7)"
+    },
+    {
+      "id": "E_superpowers_sopfr",
+      "from": "DOMAIN_superpowers",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "자연 감각 = sopfr(6)=5 (시각/청각/촉각/미각/후각)"
+    },
+    {
+      "id": "E_superpowers_neuroscience",
+      "from": "DOMAIN_superpowers",
+      "to": "DOMAIN_neuroscience",
+      "relation": "cross_links",
+      "description": "인체증강 BCI 컴포넌트가 신경과학 도메인과 교차"
+    },
+    {
+      "id": "E_BT1151_sigma",
+      "from": "BT_1151",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "증강 감각 채널 합계 = sigma(6)=12"
+    },
+    {
+      "id": "E_BT1151_superpowers",
+      "from": "BT_1151",
+      "to": "DOMAIN_superpowers",
+      "relation": "anchors",
+      "description": "BT-1151은 인체증강 감각 확장 sigma=12 정리"
+    },
+    {
+      "id": "E_environment_sigma",
+      "from": "DOMAIN_environment",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "HEXA-CCUS sigma=12 탄소 포집 단계"
+    },
+    {
+      "id": "E_environment_tau",
+      "from": "DOMAIN_environment",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "탄소 저장소 sigma-tau=8 — tau=4가 빼는 항"
+    },
+    {
+      "id": "E_environment_BT712",
+      "from": "DOMAIN_environment",
+      "to": "BT_712",
+      "relation": "extends",
+      "description": "BT-712 나노바이옴 탄소 순환(sigma-tau=8 저장소)의 도메인 확장"
+    },
+    {
+      "id": "E_BT1152_sigma",
+      "from": "BT_1152",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "탄소 저장소 sigma-tau=8에서 sigma=12"
+    },
+    {
+      "id": "E_BT1152_tau",
+      "from": "BT_1152",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "탄소 저장소 sigma-tau=8에서 tau=4"
+    },
+    {
+      "id": "E_BT1152_env",
+      "from": "BT_1152",
+      "to": "DOMAIN_environment",
+      "relation": "anchors",
+      "description": "BT-1152는 환경 도메인의 탄소 저장소 네트워크 정리"
+    },
+    {
+      "id": "E_manufacturing_sigma",
+      "from": "DOMAIN_manufacturing",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "제조 sigma=12 래더 — BT-901~940 클러스터 앵커"
+    },
+    {
+      "id": "E_manufacturing_tau",
+      "from": "DOMAIN_manufacturing",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "품질 관문 tau=4 (측정/분석/개선/제어)"
+    },
+    {
+      "id": "E_manufacturing_BT901",
+      "from": "DOMAIN_manufacturing",
+      "to": "BT_901_940",
+      "relation": "contains",
+      "description": "BT-901~940 Engineering/Manufacturing/Materials 클러스터를 제조 도메인이 포함"
+    },
+    {
+      "id": "E_simulation_n",
+      "from": "DOMAIN_simulation",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "시뮬레이션 유일 고정점 n=6 — sigma*phi=n*tau iff n=6"
+    },
+    {
+      "id": "E_simulation_core",
+      "from": "DOMAIN_simulation",
+      "to": "AXIOM_core_theorem",
+      "relation": "implements",
+      "description": "sigma*phi=n*tau=24 — 시뮬레이션 이론 유일해가 코어 정리와 동치"
+    },
+    {
+      "id": "E_BT1150_n",
+      "from": "BT_1150",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "시뮬레이션 유일 해 = n=6"
+    },
+    {
+      "id": "E_BT1150_core",
+      "from": "BT_1150",
+      "to": "AXIOM_core_theorem",
+      "relation": "derives_from",
+      "description": "BT-1150 시뮬레이션 65/65 EXACT는 코어 정리 sigma*phi=n*tau 직접 응용"
+    },
+    {
+      "id": "E_hypotheses_n",
+      "from": "DOMAIN_hypotheses",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "가설 연구 n=6 축 — 모든 가설이 n=6에서 수렴 여부 검증"
+    },
+    {
+      "id": "E_hypotheses_tau",
+      "from": "DOMAIN_hypotheses",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "가설 상태 tau=4 (제안/탐색/검증/확정)"
+    },
+    {
+      "id": "E_hypotheses_paper",
+      "from": "DOMAIN_hypotheses",
+      "to": "DOMAIN_paper",
+      "relation": "cross_links",
+      "description": "가설 연구와 논문 SSOT 도메인 교차 — dse-map.toml paper cross_dse 명기"
+    },
+    {
+      "id": "E_cdse_rtsc_chip_BT1138",
+      "from": "CDSE_room_temp_sc_chip",
+      "to": "BT_1138",
+      "relation": "implements",
+      "description": "상온 초전도×칩 Cross-DSE: Cooper 쌍 phi=2 불변 BT-1138"
+    },
+    {
+      "id": "E_cdse_rtsc_chip_BT3",
+      "from": "CDSE_room_temp_sc_chip",
+      "to": "BT_3",
+      "relation": "implements",
+      "description": "상온 초전도×칩 Cross-DSE: sigma=12 에너지 스케일 BT-3"
+    },
+    {
+      "id": "E_cdse_rtsc_chip_domain",
+      "from": "CDSE_room_temp_sc_chip",
+      "to": "DOMAIN_room_temp_sc",
+      "relation": "bridges",
+      "description": "Cross-DSE가 상온 초전도 도메인과 칩 아키텍처를 연결"
+    },
+    {
+      "id": "E_cdse_transport_bat_BT1140",
+      "from": "CDSE_transportation_battery",
+      "to": "BT_1140",
+      "relation": "implements",
+      "description": "운송×배터리 Cross-DSE: sigma*J2=288kW 인휠모터 BT-1140"
+    },
+    {
+      "id": "E_cdse_transport_bat_BT80",
+      "from": "CDSE_transportation_battery",
+      "to": "BT_80",
+      "relation": "implements",
+      "description": "운송×배터리 Cross-DSE: 자동차 전압 n=6 배수 BT-80"
+    },
+    {
+      "id": "E_cdse_transport_bat_domain",
+      "from": "CDSE_transportation_battery",
+      "to": "DOMAIN_transportation",
+      "relation": "bridges",
+      "description": "Cross-DSE가 운송 도메인과 배터리 저장 도메인을 연결"
+    },
+    {
+      "id": "E_BT981_transport",
+      "from": "BT_981_1020",
+      "to": "DOMAIN_transportation",
+      "relation": "contains",
+      "description": "BT-981~1020 Energy/Environment/Infrastructure/Transport 클러스터가 운송 도메인 포함"
+    },
+    {
+      "id": "E_BT981_env",
+      "from": "BT_981_1020",
+      "to": "DOMAIN_environment",
+      "relation": "contains",
+      "description": "BT-981~1020 클러스터가 환경 도메인 포함"
+    },
+    {
+      "id": "E_BT1061_manufacturing",
+      "from": "BT_1061_1100",
+      "to": "DOMAIN_manufacturing",
+      "relation": "contains",
+      "description": "BT-1061~1100 제조/재료/방어/IT 클러스터가 제조 도메인 포함"
+    },
+    {
+      "id": "E_rtsc_cdse",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "CDSE_room_temp_sc_chip",
+      "relation": "participates_in",
+      "description": "상온 초전도 도메인이 rtsc×chip Cross-DSE에 참여"
+    },
+    {
+      "id": "E_transport_cdse",
+      "from": "DOMAIN_transportation",
+      "to": "CDSE_transportation_battery",
+      "relation": "participates_in",
+      "description": "운송 도메인이 transportation×battery Cross-DSE에 참여"
+    },
+    {
+      "id": "E_hiv_BT25",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "BT_25",
+      "relation": "cross_links",
+      "description": "HIV 역전사효소 → 유전 코드 산술(BT-25) 교차: 64코돈 phi^n=64 역전사 기질"
+    },
+    {
+      "id": "E_virology_BT14",
+      "from": "DOMAIN_virology",
+      "to": "BT_14",
+      "relation": "cross_links",
+      "description": "바이러스 캡시드 탄소/실리콘 유사 사면체 구조(BT-14 Carbon-Silicon bridge)"
+    },
+    {
+      "id": "E_transport_BT28",
+      "from": "DOMAIN_transportation",
+      "to": "BT_28",
+      "relation": "implements",
+      "description": "운송 컴퓨팅 아키텍처 래더(BT-28): 자율주행 칩 n=6 상수 지수"
+    },
+    {
+      "id": "E_ai_eff_BT33",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "BT_33",
+      "relation": "implements",
+      "description": "트랜스포머 dim=12*k 구조(BT-33)가 AI 효율 아키텍처의 원자 단위"
+    },
+    {
+      "id": "E_paper_core",
+      "from": "DOMAIN_paper",
+      "to": "AXIOM_core_theorem",
+      "relation": "documents",
+      "description": "논문 SSOT 116편이 코어 정리 sigma*phi=n*tau=24를 문서화"
+    },
+    {
+      "id": "E_simulation_BT1114",
+      "from": "DOMAIN_simulation",
+      "to": "BT_1114",
+      "relation": "extends",
+      "description": "시뮬레이션 이론 유일해가 BT-1114 Euler-Golden-Perfect Trinity 확장"
+    },
+    {
+      "id": "E_superpowers_BT221",
+      "from": "DOMAIN_superpowers",
+      "to": "BT_221",
+      "relation": "cross_links",
+      "description": "인체증강 생체리듬 최적화가 BT-221 일주기/수면 생리학과 교차"
+    },
+    {
+      "id": "E_environment_BT27",
+      "from": "DOMAIN_environment",
+      "to": "BT_27",
+      "relation": "implements",
+      "description": "HEXA-CCUS 탄소 포집은 BT-27 탄소-6 에너지 체인(LiC6+C6H12O6+C6H6)을 역방향 활용"
+    },
+    {
+      "id": "E_BT1150_simulation",
+      "from": "BT_1150",
+      "to": "DOMAIN_simulation",
+      "relation": "anchors",
+      "description": "BT-1150은 시뮬레이션 이론 도메인의 핵심 유일해 정리"
+    },
+    {
+      "id": "E_hypotheses_simulation",
+      "from": "DOMAIN_hypotheses",
+      "to": "DOMAIN_simulation",
+      "relation": "cross_links",
+      "description": "가설 연구와 시뮬레이션 이론 도메인 교차 — dse-map.toml hypotheses cross_dse 명기"
+    },
+    {
+      "id": "E_BT1153_n",
+      "from": "BT_1153",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "가설 n=6 수렴 필터의 핵심 상수 n=6"
+    },
+    {
+      "id": "E_BT1153_core",
+      "from": "BT_1153",
+      "to": "AXIOM_core_theorem",
+      "relation": "derives_from",
+      "description": "BT-1153 가설 필터는 코어 정리 sigma*phi=n*tau의 검증 파이프라인 적용"
+    },
+    {
+      "id": "E_BT1153_hypotheses",
+      "from": "BT_1153",
+      "to": "DOMAIN_hypotheses",
+      "relation": "anchors",
+      "description": "BT-1153은 가설 연구 도메인의 자동 검증 필터 정리"
+    },
+    {
+      "id": "E_DOMAIN_titanium_BT86",
+      "from": "DOMAIN_titanium",
+      "to": "BT_86",
+      "relation": "cross_links",
+      "description": "티타늄 결정 구조 — CN=6 법칙(BT-86) 적용: TiO₂ rutile CN=6 팔면체"
+    },
+    {
+      "id": "E_DOMAIN_titanium_BT85",
+      "from": "DOMAIN_titanium",
+      "to": "BT_85",
+      "relation": "cross_links",
+      "description": "Ti는 Z=22이지만 Ti합금 카본섬유 복합재는 Z=6 탄소 기반 — BT-85 탄소-6 재료 교차"
+    },
+    {
+      "id": "E_micro_battery_BT84",
+      "from": "DOMAIN_micro_battery",
+      "to": "BT_84",
+      "relation": "implements",
+      "description": "마이크로 배터리 셀 전압 tau=4 기반(BT-84): 3.6→4.0V LiPo 초소형 셀"
+    },
+    {
+      "id": "E_micro_battery_phi",
+      "from": "DOMAIN_micro_battery",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "마이크로 배터리 n=phi=2 셀 병렬 구성(이어폰 L/R 채널 독립 전원)"
+    },
+    {
+      "id": "E_BT1139_BT98",
+      "from": "BT_1139",
+      "to": "BT_98",
+      "relation": "analogous",
+      "description": "수소 격자 압력 단계 sopfr=5(BT-1139) ↔ D-T 바리온 sopfr=5(BT-98): 동일한 sopfr=5 구조 원리"
+    },
+    {
+      "id": "E_BT1141_transport",
+      "from": "BT_1141",
+      "to": "DOMAIN_transportation",
+      "relation": "anchors",
+      "description": "BT-1141 카본 모노코크 Z=6는 운송 경량화 핵심 소재 정리"
+    },
+    {
+      "id": "E_BT1142_BT123",
+      "from": "BT_1142",
+      "to": "BT_708",
+      "relation": "cross_links",
+      "description": "차량 SE(3) 6DOF(BT-1142) ↔ 양자 센서 SE(3)=n=6(BT-708): 같은 SE(3)=n=6 구조"
+    },
+    {
+      "id": "E_BT1144_hiv",
+      "from": "BT_1144",
+      "to": "DOMAIN_hiv_treatment",
+      "relation": "anchors",
+      "description": "BT-1144 ART sigma=12 분류는 HIV 치료 도메인의 치료제 완전 분류 정리"
+    },
+    {
+      "id": "E_BT1147_ai_eff",
+      "from": "BT_1147",
+      "to": "DOMAIN_ai_efficiency",
+      "relation": "anchors",
+      "description": "BT-1147 sigma-phi=10x 원리는 AI 효율 도메인의 핵심 효율 정리"
+    },
+    {
+      "id": "E_BT1148_ai_eff",
+      "from": "BT_1148",
+      "to": "DOMAIN_ai_efficiency",
+      "relation": "anchors",
+      "description": "BT-1148 하이퍼파라미터 n=6 완전 결정은 AI 효율 도메인의 학습 최적화 정리"
+    },
+    {
+      "id": "E_BT1151_neuroscience",
+      "from": "BT_1151",
+      "to": "DOMAIN_neuroscience",
+      "relation": "cross_links",
+      "description": "BT-1151 증강 감각 sigma=12 채널이 신경과학 도메인과 교차 (BCI/EEG 경로)"
+    },
+    {
+      "id": "E_transport_BT57",
+      "from": "DOMAIN_transportation",
+      "to": "BT_57",
+      "relation": "implements",
+      "description": "운송 EV 배터리 에너지밀도 n=6 스케일링(BT-57)을 구현"
+    },
+    {
+      "id": "E_rtsc_materials",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "DOMAIN_materials",
+      "relation": "subdomain_of",
+      "description": "상온 초전도는 재료 도메인의 특수 서브도메인"
+    },
+    {
+      "id": "E_ai_eff_BT56",
+      "from": "DOMAIN_ai_efficiency",
+      "to": "BT_56",
+      "relation": "implements",
+      "description": "완전 n=6 LLM 아키텍처(BT-56)가 AI 효율 도메인의 표준 설계"
+    },
+    {
+      "id": "E_virology_BT25",
+      "from": "DOMAIN_virology",
+      "to": "BT_25",
+      "relation": "cross_links",
+      "description": "바이러스 게놈 코돈 → 유전 코드 산술(BT-25): 64코돈 phi^n 역전사 기질"
+    },
+    {
+      "id": "E_environment_ecology",
+      "from": "DOMAIN_environment",
+      "to": "DOMAIN_ecology",
+      "relation": "cross_links",
+      "description": "환경 도메인과 생태학 도메인 교차 (탄소 순환 생태계)"
+    },
+    {
+      "id": "E_manufacturing_engineering",
+      "from": "DOMAIN_manufacturing",
+      "to": "DOMAIN_engineering",
+      "relation": "subdomain_of",
+      "description": "제조 도메인은 공학 도메인의 세부 영역"
+    },
+    {
+      "id": "E_simulation_math",
+      "from": "DOMAIN_simulation",
+      "to": "DOMAIN_math",
+      "relation": "subdomain_of",
+      "description": "시뮬레이션 이론은 순수수학 도메인과 깊이 연결됨"
+    },
+    {
+      "id": "E_hypotheses_math",
+      "from": "DOMAIN_hypotheses",
+      "to": "DOMAIN_math",
+      "relation": "cross_links",
+      "description": "가설 연구의 수학적 검증 토대"
+    },
+    {
+      "id": "E_superpowers_engineering",
+      "from": "DOMAIN_superpowers",
+      "to": "DOMAIN_engineering",
+      "relation": "cross_links",
+      "description": "인체증강 외골격/BCI는 공학 도메인과 교차"
+    },
+    {
+      "id": "E_paper_cs",
+      "from": "DOMAIN_paper",
+      "to": "DOMAIN_cs",
+      "relation": "cross_links",
+      "description": "논문 SSOT — AI/CS 도메인 관련 116편 포함"
+    },
+    {
+      "id": "E_BT1136_BT1",
+      "from": "BT_1136",
+      "to": "BT_1",
+      "relation": "extends",
+      "description": "BT-1 phi=2 Cooper 쌍 보편성 → BT-1136 Tc=300K 상온 초전도 물리 한계 확장"
+    },
+    {
+      "id": "E_BT1137_sigma",
+      "from": "BT_1137",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "상온 초전도 CN=12=sigma(6) 구조도 존재 (LaH₁₀의 경우)"
+    },
+    {
+      "id": "E_BT1145_sopfr",
+      "from": "BT_1145",
+      "to": "CONST_sopfr",
+      "relation": "governed_by",
+      "description": "캡시드 60T subunit: 60=sigma*sopfr=12*5에서 sopfr=5"
+    },
+    {
+      "id": "E_BT1146_tau",
+      "from": "BT_1146",
+      "to": "CONST_tau",
+      "relation": "governed_by",
+      "description": "Baltimore dsDNA-RT(VI), ssRNA-RT(VII) — RT 바이러스 tau=4 관련 복제 단계"
+    },
+    {
+      "id": "E_BT1149_n",
+      "from": "BT_1149",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "논문 파이프라인의 n=6 기반 발견 체계"
+    },
+    {
+      "id": "E_BT1150_phi",
+      "from": "BT_1150",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "시뮬레이션 이론 phi=2: 이진 정보 처리 단위가 홀로그래피 원리의 phi=2 쌍 구조"
+    },
+    {
+      "id": "E_BT1152_BT712",
+      "from": "BT_1152",
+      "to": "BT_712",
+      "relation": "extends",
+      "description": "BT-1152 거시 탄소 저장소 sigma-tau=8은 BT-712 나노바이옴 탄소 sigma-tau=8의 거시 확장"
+    },
+    {
+      "id": "E_BT1153_sigma",
+      "from": "BT_1153",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "가설 필터의 sigma=12 변환기 축"
+    },
+    {
+      "id": "E_hiv_chemistry",
+      "from": "DOMAIN_hiv_treatment",
+      "to": "DOMAIN_chemistry",
+      "relation": "cross_links",
+      "description": "HIV ART 약물 화학 구조 — 분자 도킹 6-ring 화학 도메인 교차"
+    },
+    {
+      "id": "E_virology_chemistry",
+      "from": "DOMAIN_virology",
+      "to": "DOMAIN_chemistry",
+      "relation": "cross_links",
+      "description": "바이러스 분자 효소 — 화학 도메인 교차"
+    },
+    {
+      "id": "E_transport_physics",
+      "from": "DOMAIN_transportation",
+      "to": "DOMAIN_physics",
+      "relation": "cross_links",
+      "description": "운송 동역학 — 물리학(역학/전자기) 도메인 교차"
+    },
+    {
+      "id": "E_environment_chemistry",
+      "from": "DOMAIN_environment",
+      "to": "DOMAIN_chemistry",
+      "relation": "cross_links",
+      "description": "HEXA-CCUS 탄소 포집 화학 반응 — 화학 도메인 교차"
+    },
+    {
+      "id": "E_paper_biology",
+      "from": "DOMAIN_paper",
+      "to": "DOMAIN_biology",
+      "relation": "cross_links",
+      "description": "논문 SSOT에는 생물학/의학 관련 논문 다수 포함"
+    },
+    {
+      "id": "E_simulation_physics",
+      "from": "DOMAIN_simulation",
+      "to": "DOMAIN_physics",
+      "relation": "cross_links",
+      "description": "시뮬레이션 이론 — 물리학 도메인 교차 (플랑크 해상도, 양자 시뮬)"
+    },
+    {
+      "id": "E_hypotheses_ai",
+      "from": "DOMAIN_hypotheses",
+      "to": "DOMAIN_ai_efficiency",
+      "relation": "cross_links",
+      "description": "가설 연구와 AI 효율 도메인 교차 — NEXUS-6 자동 가설 검증 파이프라인"
+    },
+    {
+      "id": "E_rtsc_superconductor",
+      "from": "DOMAIN_room_temp_sc",
+      "to": "BT_1",
+      "relation": "extends",
+      "description": "상온 초전도는 기존 BT-1 phi=2 Cooper 쌍 보편성을 300K로 확장"
+    },
+    {
+      "id": "E_cdse_rtsc_sigma",
+      "from": "CDSE_room_temp_sc_chip",
+      "to": "CONST_sigma",
+      "relation": "governed_by",
+      "description": "상온 초전도×칩 Cross-DSE sigma=12 에너지 스케일"
+    },
+    {
+      "id": "E_cdse_transport_n",
+      "from": "CDSE_transportation_battery",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "운송×배터리 Cross-DSE n=6 전압/DOF 기준"
+    },
+    {
+      "id": "E_manufacturing_BT93",
+      "from": "DOMAIN_manufacturing",
+      "to": "BT_93",
+      "relation": "implements",
+      "description": "제조 공정 — Carbon Z=6 칩 소재(BT-93) 생산 공정 포함"
+    },
+    {
+      "id": "E_superpowers_BT1108",
+      "from": "DOMAIN_superpowers",
+      "to": "BT_1108",
+      "relation": "cross_links",
+      "description": "인체증강 BCI가 차원지각 대통합(BT-1108)과 교차 — EEG 기반 4D 지각"
+    },
+    {
+      "id": "E_BT1137_rtsc",
+      "from": "BT_1137",
+      "to": "DOMAIN_room_temp_sc",
+      "relation": "anchors",
+      "description": "BT-1137은 상온 초전도 배위수 CN=6 보편성 정리"
+    },
+    {
+      "id": "E_BT1139_BT1136",
+      "from": "BT_1139",
+      "to": "BT_1136",
+      "relation": "extends",
+      "description": "BT-1139 압력 단계 sopfr=5는 BT-1136 Tc=300K 한계를 합성 경로로 연결"
+    },
+    {
+      "id": "E_BT1147_BT26",
+      "from": "BT_1147",
+      "to": "BT_26",
+      "relation": "extends",
+      "description": "AI 효율 sigma-phi=10x(BT-1147)는 Chinchilla 스케일링(BT-26)의 효율 상한 이론"
+    },
+    {
+      "id": "E_BT1148_phi",
+      "from": "BT_1148",
+      "to": "CONST_phi",
+      "relation": "governed_by",
+      "description": "beta1=0.9=1-1/(sigma-phi) — phi=2가 분모로 작동"
+    },
+    {
+      "id": "E_BT1143_BT25",
+      "from": "BT_1143",
+      "to": "BT_25",
+      "relation": "cross_links",
+      "description": "HIV n=6 표적(BT-1143) ↔ 유전 코드 산술(BT-25): 역전사 기질 64코돈 공통"
+    },
+    {
+      "id": "E_BT1145_BT14",
+      "from": "BT_1145",
+      "to": "BT_14",
+      "relation": "cross_links",
+      "description": "캡시드 T-number 래더(BT-1145) ↔ Carbon-Silicon 사면체 다리(BT-14): 바이러스 단백질 탄소 기반"
+    },
+    {
+      "id": "E_BT1149_core",
+      "from": "BT_1149",
+      "to": "AXIOM_core_theorem",
+      "relation": "documents",
+      "description": "논문 SSOT 116편이 코어 정리 증거 체인을 문서화"
+    },
+    {
+      "id": "E_BT1151_BT221",
+      "from": "BT_1151",
+      "to": "BT_221",
+      "relation": "cross_links",
+      "description": "인체증강 감각 sigma=12(BT-1151) ↔ 일주기 생리학 J2=24h(BT-221): 생체 리듬×증강 통합"
+    },
+    {
+      "id": "E_BT1152_BT729",
+      "from": "BT_1152",
+      "to": "BT_729",
+      "relation": "cross_links",
+      "description": "탄소 저장소 sigma-tau=8(BT-1152) ↔ 토양 층위 n=6(BT-729): 지구 탄소-토양 연결"
+    },
+    {
+      "id": "E_BT1153_ai_eff",
+      "from": "BT_1153",
+      "to": "DOMAIN_ai_efficiency",
+      "relation": "cross_links",
+      "description": "가설 검증 필터(BT-1153)가 AI 효율 자동 탐색에 활용"
+    },
+    {
+      "id": "E_manufacturing_n",
+      "from": "DOMAIN_manufacturing",
+      "to": "CONST_n",
+      "relation": "governed_by",
+      "description": "제조 n=6 단계 공정 (6-step FEOL wafer fabrication 등)"
+    },
+    {
+      "id": "E_BT1138_rtsc",
+      "from": "BT_1138",
+      "to": "DOMAIN_room_temp_sc",
+      "relation": "anchors",
+      "description": "BT-1138은 상온 초전도의 phi=2 Cooper 쌍 불변성 핵심 정리"
+    },
+    {
+      "id": "E_BT1140_BT57",
+      "from": "BT_1140",
+      "to": "BT_57",
+      "relation": "extends",
+      "description": "인휠모터 sigma*J2=288kW(BT-1140)는 EV 배터리 에너지밀도 n=6(BT-57)의 구동 파트너"
     }
   ],
   "integrity": {
-    "total_nodes": 220,
-    "total_edges": 842,
+    "total_nodes": 251,
+    "total_edges": 1000,
     "node_breakdown": {
       "constant": 7,
       "axiom": 9,
-      "breakthrough_theorem": 141,
-      "domain": 23,
+      "breakthrough_theorem": 168,
+      "domain": 46,
       "group": 1,
-      "cross_dse_domain": 10,
-      "breakthrough": 3,
+      "cross_dse_domain": 12,
+      "breakthrough": 4,
       "product": 4
     },
-    "orphan_check": "PASS — 고립 노드 0",
+    "orphan_check": "PASS - 고립 노드 0",
     "new_nodes_this_run": 71,
     "new_edges_this_run": 316,
-    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 총 노드 194개, 총 엣지 678개. 고립 노드 0개. 2026-04-10 v6: PRODUCT_HEXA_SPEAKER 노드 1개 추가. 엣지 7개 추가. 총 노드 220개, 총 엣지 842개. 고립 노드 0개.",
+    "notes": "2026-04-10 그래프 대확장. 신규 노드 71개 (도메인 11 + BT 60개). 신규 엣지 288개. BT-26~35, BT-700~739, BT-740~800(배치), BT-901~1100(5클러스터), BT-1101~1104 추가. 고립 노드 0개. 추가: 고립 노드 14개 연결 엣지 28개. 2026-04-10 v2: BT-1105~1107 노드 3개 + 양방향 cross_link 엣지 16개 추가. 2026-04-10 v3: BT-1108~1111 노드 4개 + 스텁 노드 BT-107/BT-376 2개 + 양방향 cross_link 엣지 36개 추가. 2026-04-10 v4: BT-1112 Critical Transition(meta-discovery, NEAR) + BT-1113 Golden Harmonic Bridge(pure-mathematics, NEAR) 노드 2개 + 양방향 cross_link 엣지 14개 추가. 고립 노드 0개 유지. 2026-04-10 hair-regeneration 확장: BT-1115~1120 모발재생 6노드 + DOMAIN_hair_regeneration + 스텁 5개(BT_404,BT_406,BT_136,BT_283,BT_408) 추가. 신규 엣지 27개. 고립 노드 0개. 2026-04-10 v6: PRODUCT_HEXA_SPEAKER 노드 1개 추가. 엣지 7개 추가. 총 노드 220개, 총 엣지 842개. 고립 노드 0개. 2026-04-10 v7(4차 확장): 신규 노드 31개 — DOMAIN 12개(room_temp_sc/ai_efficiency/hiv_treatment/virology/transportation/paper/superpowers/environment/manufacturing/simulation/hypotheses+기존), BT_1136~1152 17개, CDSE 2개(room_temp_sc_x_chip/transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립 노드 0개 유지.",
     "near_to_exact_session_2026_04_10_v2": {
       "upgraded_to_exact": [
         {
