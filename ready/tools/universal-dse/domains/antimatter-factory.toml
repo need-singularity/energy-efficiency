@@ -1,0 +1,417 @@
+# =============================================================
+# ANTIMATTER-FACTORY DSE Domain Definition
+# 반물질 생산 공장 — 양성자 가속 + 타겟 충돌 + 포획 + 저장 + 응용
+# n=6 기반 반물질 생산: Source → Accelerator → Target → Trap → Storage
+# Total raw combos: 6x6x6x6x6 = 7,776 (pre-filter)
+# NOTE: 장기 기술 (20~50년), SF 요소 배제 (다이슨/반물질 촉매 등 금지)
+# =============================================================
+
+[meta]
+name = "antimatter-factory"
+desc = "Antimatter Production Factory DSE (proton→target→trap, long-term 20-50y)"
+levels = ["Source", "Accelerator", "Target", "Trap", "Storage"]
+vision = "n=6 기반 반양성자/반수소 생산 — Penning trap + 자기 병 저장"
+
+[scoring]
+n6    = 0.35
+perf  = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Source (양성자 소스) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Source"
+
+[[candidate]]
+level = 0
+id    = "H_minus_RFQ"
+label = "H⁻ RFQ 이온원 (n=6 전극 모드)"
+n6    = 1.00
+perf  = 0.88
+power = 0.55
+cost  = 0.45
+notes = "electrode_modes=6=n EXACT, current=50mA, duty=10%, proven=true"
+
+[[candidate]]
+level = 0
+id    = "ECR_Source"
+label = "ECR 이온원 (sopfr=5 단계 전리)"
+n6    = 0.75
+perf  = 0.82
+power = 0.60
+cost  = 0.50
+notes = "ionization_stages=5=sopfr EXACT, microwave=14GHz, highly_charged=true"
+
+[[candidate]]
+level = 0
+id    = "LaserIon"
+label = "레이저 이온원 (phi=2 펄스 모드)"
+n6    = 0.75
+perf  = 0.85
+power = 0.70
+cost  = 0.65
+notes = "pulse_modes=2=phi EXACT, wavelength=tunable, brightness=high, cost_med=true"
+
+[[candidate]]
+level = 0
+id    = "MultiHarmonic"
+label = "다중 하모닉 (sigma=12 주파수)"
+n6    = 1.00
+perf  = 0.80
+power = 0.65
+cost  = 0.55
+notes = "harmonics=12=sigma EXACT, frequency_bands=6=n EXACT, tunable=true"
+
+[[candidate]]
+level = 0
+id    = "PolarizedH"
+label = "편극 양성자원 (tau=4 스핀 상태)"
+n6    = 0.75
+perf  = 0.78
+power = 0.55
+cost  = 0.60
+notes = "spin_states=4=tau EXACT, polarization=0.8, niche=true, precision=high"
+
+[[candidate]]
+level = 0
+id    = "DCSurface"
+label = "DC 표면 플라즈마 (저비용 기준)"
+n6    = 0.50
+perf  = 0.70
+power = 0.45
+cost  = 0.30
+notes = "simple=true, current=20mA, lifetime=1000h, baseline=true"
+
+# =============================================================
+# Level 1: Accelerator (가속기) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Accelerator"
+
+[[candidate]]
+level = 1
+id    = "Synchro_N6"
+label = "n=6 싱크로트론 링 (6 섹터)"
+n6    = 1.00
+perf  = 0.92
+power = 0.70
+cost  = 0.65
+notes = "sectors=6=n EXACT, energy=26GeV, circumference=6km, sextuple_symmetry=true"
+
+[[candidate]]
+level = 1
+id    = "LinacSRF"
+label = "초전도 라이낙 (sigma=12 크라이오 모듈)"
+n6    = 1.00
+perf  = 0.95
+power = 0.75
+cost  = 0.70
+notes = "cryo_modules=12=sigma EXACT, gradient=32MV/m, pulsed=true, srf=true"
+
+[[candidate]]
+level = 1
+id    = "FFAG"
+label = "FFAG 고정장 교번 (tau=4 셀)"
+n6    = 0.75
+perf  = 0.85
+power = 0.60
+cost  = 0.55
+notes = "cells_per_ring=4=tau EXACT, fixed_field=true, rapid_cycle=true, compact=true"
+
+[[candidate]]
+level = 1
+id    = "PlasmaWake"
+label = "플라즈마 웨이크필드 (phi=2 스테이지)"
+n6    = 0.75
+perf  = 0.80
+power = 0.50
+cost  = 0.45
+notes = "stages=2=phi EXACT, gradient=10GV/m, experimental=true, compact_extreme=true"
+
+[[candidate]]
+level = 1
+id    = "CyclotronSC"
+label = "초전도 사이클로트론 (sopfr=5 나선 턴)"
+n6    = 0.75
+perf  = 0.82
+power = 0.65
+cost  = 0.50
+notes = "spiral_turns=5=sopfr EXACT, compact=true, medical_proven=true, energy=1GeV"
+
+[[candidate]]
+level = 1
+id    = "MuonCollider"
+label = "뮤온 콜라이더 (n=6 냉각 단계)"
+n6    = 1.00
+perf  = 0.88
+power = 0.80
+cost  = 0.85
+notes = "cooling_stages=6=n EXACT, long_term=50y, high_energy=10TeV, R&D=active"
+
+# =============================================================
+# Level 2: Target (충돌 타겟) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Target"
+
+[[candidate]]
+level = 2
+id    = "Iridium_N6"
+label = "이리듐 회전 타겟 (n=6 냉각 채널)"
+n6    = 1.00
+perf  = 0.90
+power = 0.55
+cost  = 0.50
+notes = "cooling_channels=6=n EXACT, heat_load=1MW, rotation=30Hz, lifetime=1y"
+
+[[candidate]]
+level = 2
+id    = "LiquidHg"
+label = "액체 수은 타겟 (phi=2 루프)"
+n6    = 0.75
+perf  = 0.88
+power = 0.70
+cost  = 0.60
+notes = "loops=2=phi EXACT, self_healing=true, proven_CERN=true, hazmat=true"
+
+[[candidate]]
+level = 2
+id    = "TungstenPowder"
+label = "텅스텐 파우더 제트 (sigma=12 노즐)"
+n6    = 1.00
+perf  = 0.82
+power = 0.60
+cost  = 0.55
+notes = "nozzles=12=sigma EXACT, replenish=continuous, density=high, R&D=true"
+
+[[candidate]]
+level = 2
+id    = "Graphite"
+label = "그라파이트 블록 (tau=4 레이어)"
+n6    = 0.75
+perf  = 0.75
+power = 0.45
+cost  = 0.30
+notes = "layers=4=tau EXACT, radiation_resistant=true, cheap=true, baseline=true"
+
+[[candidate]]
+level = 2
+id    = "Nickel"
+label = "니켈 단결정 (sopfr=5 냉각 회로)"
+n6    = 0.75
+perf  = 0.80
+power = 0.50
+cost  = 0.45
+notes = "cooling_circuits=5=sopfr EXACT, yield=medium, proven=true"
+
+[[candidate]]
+level = 2
+id    = "LiquidLead"
+label = "액체 납 (n=6 재순환)"
+n6    = 1.00
+perf  = 0.85
+power = 0.65
+cost  = 0.55
+notes = "recirculation_loops=6=n EXACT, self_healing=true, hazmat=medium"
+
+# =============================================================
+# Level 3: Trap (포획) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Trap"
+
+[[candidate]]
+level = 3
+id    = "Penning_N6"
+label = "페닝 트랩 (n=6 전극)"
+n6    = 1.00
+perf  = 0.95
+power = 0.60
+cost  = 0.55
+notes = "electrodes=6=n EXACT, magnetic_field=5T, capture_eff=0.01%, CERN_proven=true"
+
+[[candidate]]
+level = 3
+id    = "PaulTrap"
+label = "폴 트랩 RF (phi=2 모드)"
+n6    = 0.75
+perf  = 0.85
+power = 0.50
+cost  = 0.45
+notes = "rf_modes=2=phi EXACT, small_mass_window=true, precision=high"
+
+[[candidate]]
+level = 3
+id    = "MagneticBottle"
+label = "자기 병 (sopfr=5 코일)"
+n6    = 0.75
+perf  = 0.88
+power = 0.70
+cost  = 0.60
+notes = "coils=5=sopfr EXACT, mirror_ratio=10, long_hold=true, bulky=true"
+
+[[candidate]]
+level = 3
+id    = "OpticalTrap"
+label = "광학 트랩 (tau=4 빔)"
+n6    = 0.75
+perf  = 0.82
+power = 0.65
+cost  = 0.55
+notes = "beams=4=tau EXACT, depth=mK, neutral_only=true, precision_extreme=true"
+
+[[candidate]]
+level = 3
+id    = "CombinedPenningPaul"
+label = "페닝+폴 복합 (sigma=12 전극)"
+n6    = 1.00
+perf  = 0.92
+power = 0.65
+cost  = 0.60
+notes = "electrode_count=12=sigma EXACT, versatile=true, capture+confine=true"
+
+[[candidate]]
+level = 3
+id    = "BECTrap"
+label = "BEC 안티수소 트랩 (n=6 레이저)"
+n6    = 1.00
+perf  = 0.78
+power = 0.75
+cost  = 0.70
+notes = "laser_count=6=n EXACT, temperature<1uK, antihydrogen_only=true, long_term=true"
+
+# =============================================================
+# Level 4: Storage (저장) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Storage"
+
+[[candidate]]
+level = 4
+id    = "PennTrapStack"
+label = "페닝 트랩 스택 (n=6 셀)"
+n6    = 1.00
+perf  = 0.90
+power = 0.70
+cost  = 0.60
+notes = "cells=6=n EXACT, capacity=1e12_pbar, hold_time=1y, modular=true"
+
+[[candidate]]
+level = 4
+id    = "MagneticStorageRing"
+label = "자기 저장 링 (sigma=12 이중극)"
+n6    = 1.00
+perf  = 0.88
+power = 0.75
+cost  = 0.70
+notes = "dipoles=12=sigma EXACT, circulation=continuous, cooling=stochastic"
+
+[[candidate]]
+level = 4
+id    = "CryoPortable"
+label = "극저온 휴대형 (tau=4 차폐층)"
+n6    = 0.75
+perf  = 0.80
+power = 0.60
+cost  = 0.55
+notes = "shield_layers=4=tau EXACT, weight=100kg, transportable=true, BASE_proven=true"
+
+[[candidate]]
+level = 4
+id    = "AntiHbyN6"
+label = "반수소 중성 (n=6 자기 차폐)"
+n6    = 1.00
+perf  = 0.85
+power = 0.50
+cost  = 0.45
+notes = "shield_poles=6=n EXACT, neutral_atoms=true, long_hold=3600s, ALPHA_proven=true"
+
+[[candidate]]
+level = 4
+id    = "IonPlasma"
+label = "이온 플라즈마 저장 (sopfr=5 층)"
+n6    = 0.75
+perf  = 0.82
+power = 0.65
+cost  = 0.55
+notes = "plasma_layers=5=sopfr EXACT, non_neutral=true, density=high"
+
+[[candidate]]
+level = 4
+id    = "SolidH_Bed"
+label = "고체 수소 매트릭스 (phi=2 상)"
+n6    = 0.75
+perf  = 0.70
+power = 0.80
+cost  = 0.50
+notes = "phases=2=phi EXACT, experimental=true, high_density=theoretical, R&D=early"
+
+# =============================================================
+# Compatibility Rules
+# =============================================================
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "MuonCollider"
+then_level = 0
+then_ids   = "H_minus_RFQ,LinacSRF_src"
+
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "BECTrap"
+then_level = 4
+then_ids   = "AntiHbyN6"
+
+[[rule]]
+type       = "exclude"
+if_level   = 2
+if_id      = "Graphite"
+then_level = 1
+then_ids   = "MuonCollider"
+
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "PennTrapStack"
+then_level = 3
+then_ids   = "Penning_N6,CombinedPenningPaul"
+
+[[rule]]
+type       = "exclude"
+if_level   = 4
+if_id      = "SolidH_Bed"
+then_level = 3
+then_ids   = "PaulTrap,OpticalTrap"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "PlasmaWake"
+then_level = 0
+then_ids   = "LaserIon"
+
+# =============================================================
+# n=6 Formulas
+# =============================================================
+[n6_formulas]
+rfq_electrode_modes  = "6 = n"
+ecr_ionization       = "5 = sopfr(6) = 2+3"
+harmonic_bands       = "12 = sigma(6)"
+synchro_sectors      = "6 = n"
+srf_cryomodules      = "12 = sigma(6)"
+ffag_cells           = "4 = tau(6)"
+muon_cooling_stages  = "6 = n"
+target_cooling       = "6 = n"
+penning_electrodes   = "6 = n"
+magnetic_bottle_coils= "5 = sopfr(6)"
+antiH_shield         = "6 = n"
+storage_cells        = "6 = n"
+dipoles_ring         = "12 = sigma(6)"
+shield_layers        = "4 = tau(6)"
+
+# Note: Long-term feasibility label = feasible 20-50y
+# SF excluded: no antimatter catalysts, no Dyson swarms

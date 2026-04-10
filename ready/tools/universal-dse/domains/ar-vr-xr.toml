@@ -1,0 +1,420 @@
+# =============================================================
+# AR-VR-XR DSE Domain Definition
+# 확장 현실 — 디스플레이 + 렌더 + 추적 + 상호작용 + 컨텐츠
+# n=6 기반 XR: Display → Render → Tracking → Interaction → Content
+# Total raw combos: 6x6x6x6x6 = 7,776 (pre-filter)
+# =============================================================
+
+[meta]
+name = "ar-vr-xr"
+desc = "AR/VR/XR DSE — Micro-LED + Foveated Render + 6DoF Tracking + Haptic Glove"
+levels = ["Display", "Render", "Tracking", "Interaction", "Content"]
+vision = "n=6 기반 XR — sigma=12 DoF 전신 추적, phi=2 스테레오, tau=4 햅틱 계층"
+
+[scoring]
+n6    = 0.35
+perf  = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Display (디스플레이) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Display"
+
+[[candidate]]
+level = 0
+id    = "MicroLED_N6"
+label = "Micro-LED (n=6 서브픽셀 모드)"
+n6    = 1.00
+perf  = 0.95
+power = 0.50
+cost  = 0.75
+notes = "subpixel_modes=6=n EXACT (RGB+RGB), brightness=10000nits, efficiency=high, long_life=true"
+
+[[candidate]]
+level = 0
+id    = "OLED_HighPPI"
+label = "OLED 고PPI (sigma=12 드라이버 레인)"
+n6    = 0.75
+perf  = 0.90
+power = 0.55
+cost  = 0.55
+notes = "driver_lanes=12=sigma EXACT, ppi=3000, contrast=inf, burn_in_risk=true"
+
+[[candidate]]
+level = 0
+id    = "LaserRetina"
+label = "레이저 망막 투사 (phi=2 컬러 모드)"
+n6    = 0.75
+perf  = 0.88
+power = 0.45
+cost  = 0.65
+notes = "color_modes=2=phi EXACT, infinite_focus=true, ar_friendly=true, eye_safe=true"
+
+[[candidate]]
+level = 0
+id    = "Holographic"
+label = "홀로그래픽 (tau=4 파면 계층)"
+n6    = 0.75
+perf  = 0.85
+power = 0.70
+cost  = 0.85
+notes = "wavefront_layers=4=tau EXACT, true_3d=true, no_vergence_conflict=true, R&D=true"
+
+[[candidate]]
+level = 0
+id    = "LCoS"
+label = "LCoS (sopfr=5 색 채널)"
+n6    = 0.75
+perf  = 0.80
+power = 0.60
+cost  = 0.50
+notes = "channels=5=sopfr EXACT, high_res=true, latency_medium=true, proven=true"
+
+[[candidate]]
+level = 0
+id    = "LightField"
+label = "라이트필드 (n=6 뷰포인트)"
+n6    = 1.00
+perf  = 0.82
+power = 0.75
+cost  = 0.80
+notes = "viewpoints=6=n EXACT, parallax=full, bandwidth=extreme, future=true"
+
+# =============================================================
+# Level 1: Render (렌더링) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Render"
+
+[[candidate]]
+level = 1
+id    = "Foveated_N6"
+label = "포비티드 렌더 (n=6 해상도 레벨)"
+n6    = 1.00
+perf  = 0.95
+power = 0.40
+cost  = 0.50
+notes = "resolution_levels=6=n EXACT, flops_save=70%, eye_tracking=required, quality=high"
+
+[[candidate]]
+level = 1
+id    = "NeRF_Dynamic"
+label = "동적 NeRF (sigma=12 MLP 층)"
+n6    = 1.00
+perf  = 0.88
+power = 0.75
+cost  = 0.70
+notes = "mlp_layers=12=sigma EXACT, photorealistic=true, compute=heavy, GS_alt=true"
+
+[[candidate]]
+level = 1
+id    = "Raster_Baseline"
+label = "래스터 기본 (tau=4 패스)"
+n6    = 0.75
+perf  = 0.85
+power = 0.65
+cost  = 0.45
+notes = "passes=4=tau EXACT, mature=true, 90fps_stable=true, no_novel=true"
+
+[[candidate]]
+level = 1
+id    = "PathTracing"
+label = "실시간 패스 트레이싱 (sopfr=5 바운스)"
+n6    = 0.75
+perf  = 0.92
+power = 0.85
+cost  = 0.75
+notes = "bounces=5=sopfr EXACT, RTX_required=true, denoise=needed, photoreal=true"
+
+[[candidate]]
+level = 1
+id    = "SplitRender"
+label = "분할 렌더 클라우드 (phi=2 스트림)"
+n6    = 0.75
+perf  = 0.82
+power = 0.55
+cost  = 0.40
+notes = "streams=2=phi EXACT, latency_hide=true, 5G_needed=true, server_cost=true"
+
+[[candidate]]
+level = 1
+id    = "HexaTileN6"
+label = "n=6 타일 병렬 렌더"
+n6    = 1.00
+perf  = 0.90
+power = 0.60
+cost  = 0.55
+notes = "tiles=6=n EXACT, gpu_parallel=true, load_balance=even, scalable=true"
+
+# =============================================================
+# Level 2: Tracking (6DoF 추적) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Tracking"
+
+[[candidate]]
+level = 2
+id    = "SLAM_N6"
+label = "Visual-Inertial SLAM (n=6 피처 맵)"
+n6    = 1.00
+perf  = 0.92
+power = 0.55
+cost  = 0.45
+notes = "feature_maps=6=n EXACT, camera+imu=true, drift<1mm/m, realtime=true"
+
+[[candidate]]
+level = 2
+id    = "SigmaBody12"
+label = "전신 추적 (sigma=12 관절)"
+n6    = 1.00
+perf  = 0.90
+power = 0.65
+cost  = 0.60
+notes = "joints=12=sigma EXACT, inside_out=true, full_body_avatar=true"
+
+[[candidate]]
+level = 2
+id    = "OutsideIn"
+label = "외부 기반 라이트하우스 (tau=4 베이스)"
+n6    = 0.75
+perf  = 0.88
+power = 0.50
+cost  = 0.55
+notes = "bases=4=tau EXACT, sub_mm=true, setup_heavy=true, proven=true"
+
+[[candidate]]
+level = 2
+id    = "EyeTracking"
+label = "눈 추적 (phi=2 카메라)"
+n6    = 0.75
+perf  = 0.85
+power = 0.35
+cost  = 0.45
+notes = "cameras=2=phi EXACT, gaze_rate=120Hz, foveated_enabler=true, calibrate=needed"
+
+[[candidate]]
+level = 2
+id    = "HandN6"
+label = "n=6 손 추적 (6 DOF 관절)"
+n6    = 1.00
+perf  = 0.88
+power = 0.50
+cost  = 0.45
+notes = "hand_dof=6=n EXACT, fingertip_accuracy=2mm, no_gloves=true"
+
+[[candidate]]
+level = 2
+id    = "BCI_Hybrid"
+label = "BCI 하이브리드 (sopfr=5 EEG 채널)"
+n6    = 0.75
+perf  = 0.78
+power = 0.55
+cost  = 0.60
+notes = "eeg_channels=5=sopfr EXACT, intent_decode=true, experimental=true"
+
+# =============================================================
+# Level 3: Interaction (상호작용) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Interaction"
+
+[[candidate]]
+level = 3
+id    = "HapticN6"
+label = "n=6 햅틱 글러브 (6 손가락 모터)"
+n6    = 1.00
+perf  = 0.92
+power = 0.55
+cost  = 0.65
+notes = "actuators_per_hand=6=n EXACT, force_feedback=true, latency<10ms"
+
+[[candidate]]
+level = 3
+id    = "TauHapticLayers"
+label = "tau=4 햅틱 계층 (피부+근육+뼈+관절)"
+n6    = 0.75
+perf  = 0.90
+power = 0.60
+cost  = 0.70
+notes = "layers=4=tau EXACT, multi_modal=true, immersion_max=true"
+
+[[candidate]]
+level = 3
+id    = "VoiceAI"
+label = "음성 AI (phi=2 모드)"
+n6    = 0.75
+perf  = 0.85
+power = 0.50
+cost  = 0.40
+notes = "modes=2=phi EXACT (command+conv), whisper_local=true, latency<200ms"
+
+[[candidate]]
+level = 3
+id    = "GestureML"
+label = "제스처 ML (sigma=12 클래스)"
+n6    = 1.00
+perf  = 0.88
+power = 0.55
+cost  = 0.50
+notes = "gesture_classes=12=sigma EXACT, learned=true, personalized=true"
+
+[[candidate]]
+level = 3
+id    = "ScentOlfactory"
+label = "후각 카트리지 (sopfr=5 향)"
+n6    = 0.75
+perf  = 0.75
+power = 0.45
+cost  = 0.55
+notes = "scents=5=sopfr EXACT, niche=true, refill_needed=true, experimental=true"
+
+[[candidate]]
+level = 3
+id    = "Omnidirectional"
+label = "전방향 트레드밀 (n=6 방향 센서)"
+n6    = 1.00
+perf  = 0.80
+power = 0.70
+cost  = 0.75
+notes = "direction_sensors=6=n EXACT, infinite_walk=true, bulky=true"
+
+# =============================================================
+# Level 4: Content (컨텐츠 플랫폼) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Content"
+
+[[candidate]]
+level = 4
+id    = "USD_N6"
+label = "USD n=6 스키마 (Universal Scene)"
+n6    = 1.00
+perf  = 0.90
+power = 0.50
+cost  = 0.45
+notes = "schema_dims=6=n EXACT, pixar_standard=true, interop=true, open=true"
+
+[[candidate]]
+level = 4
+id    = "GaussianSplat"
+label = "가우시안 스플랫 (sigma=12 attr)"
+n6    = 1.00
+perf  = 0.92
+power = 0.60
+cost  = 0.55
+notes = "attributes=12=sigma EXACT, photoreal=true, fast_render=true, dynamic=WIP"
+
+[[candidate]]
+level = 4
+id    = "ProceduralN6"
+label = "절차적 생성 (n=6 시드 규칙)"
+n6    = 1.00
+perf  = 0.85
+power = 0.55
+cost  = 0.40
+notes = "rules=6=n EXACT, infinite_world=true, memory_low=true, llm_assist=true"
+
+[[candidate]]
+level = 4
+id    = "VideoStream"
+label = "360° 비디오 (tau=4 큐브맵)"
+n6    = 0.75
+perf  = 0.82
+power = 0.60
+cost  = 0.35
+notes = "cube_faces=4=tau EXACT_partial (cubemap simplified), streaming=true, simple=true"
+
+[[candidate]]
+level = 4
+id    = "AvatarSystem"
+label = "아바타 시스템 (sopfr=5 리그 계층)"
+n6    = 0.75
+perf  = 0.80
+power = 0.50
+cost  = 0.55
+notes = "rig_tiers=5=sopfr EXACT, ready_player_me=true, cross_platform=true"
+
+[[candidate]]
+level = 4
+id    = "MetaverseSocial"
+label = "메타버스 소셜 (phi=2 공간 모드)"
+n6    = 0.75
+perf  = 0.75
+power = 0.70
+cost  = 0.70
+notes = "spatial_modes=2=phi EXACT (private+public), network_heavy=true, persistent=true"
+
+# =============================================================
+# Compatibility Rules
+# =============================================================
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Foveated_N6"
+then_level = 2
+then_ids   = "EyeTracking"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Holographic"
+then_level = 1
+then_ids   = "PathTracing,NeRF_Dynamic"
+
+[[rule]]
+type       = "exclude"
+if_level   = 2
+if_id      = "OutsideIn"
+then_level = 4
+then_ids   = "MetaverseSocial"
+
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "HapticN6"
+then_level = 2
+then_ids   = "HandN6"
+
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "GaussianSplat"
+then_level = 1
+then_ids   = "HexaTileN6,Foveated_N6"
+
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "LaserRetina"
+then_level = 3
+then_ids   = "Omnidirectional"
+
+# =============================================================
+# n=6 Formulas
+# =============================================================
+[n6_formulas]
+subpixel_modes    = "6 = n"
+driver_lanes      = "12 = sigma(6)"
+wavefront_layers  = "4 = tau(6)"
+viewpoints        = "6 = n"
+resolution_levels = "6 = n"
+nerf_mlp_layers   = "12 = sigma(6)"
+raster_passes     = "4 = tau(6)"
+path_bounces      = "5 = sopfr(6) = 2+3"
+render_tiles      = "6 = n"
+slam_feature_maps = "6 = n"
+body_joints       = "12 = sigma(6)"
+outside_bases     = "4 = tau(6)"
+hand_dof          = "6 = n"
+haptic_actuators  = "6 = n"
+haptic_layers     = "4 = tau(6)"
+gesture_classes   = "12 = sigma(6)"
+direction_sensors = "6 = n"
+usd_schema_dims   = "6 = n"
+gaussian_attrs    = "12 = sigma(6)"
+procedural_rules  = "6 = n"
+avatar_rig_tiers  = "5 = sopfr(6)"
