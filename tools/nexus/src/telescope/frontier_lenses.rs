@@ -196,6 +196,84 @@ pub fn dimensional_perception_lens_entries() -> Vec<LensEntry> {
     ]
 }
 
+/// 신규 4종 렌즈 메타데이터 (마케팅/디지털트윈/발효/시계공학)
+pub fn new_quad_lens_entries() -> Vec<LensEntry> {
+    vec![
+        LensEntry {
+            name: "marketing".into(),
+            category: LensCategory::Extended,
+            description: "BT-548~557 마케팅 불변법칙 sigma=12, 4P tau=4, 이집트분수 1/2+1/3+1/6=1, NPS sigma-phi=10, 바이럴 R0=n=6".into(),
+            domain_affinity: vec![
+                "marketing".into(),
+                "economics".into(),
+                "social".into(),
+                "psychology".into(),
+                "media".into(),
+            ],
+            complementary: vec![
+                "behavioral_economics".into(),
+                "macroeconomics".into(),
+                "game_theory".into(),
+                "social_network".into(),
+            ],
+        },
+        LensEntry {
+            name: "digital_twin".into(),
+            category: LensCategory::Extended,
+            description: "디지털 트윈: IoT 6레이어=n, ISO 23247 tau=4 레이어, OPC UA sigma-tau=8 노드, 5G sopfr=5 슬라이스, J2=24시간 루프".into(),
+            domain_affinity: vec![
+                "digital_twin".into(),
+                "iot".into(),
+                "manufacturing".into(),
+                "simulation".into(),
+                "ai".into(),
+            ],
+            complementary: vec![
+                "chip_architecture".into(),
+                "networking_protocol".into(),
+                "simulation".into(),
+                "sensor".into(),
+            ],
+        },
+        LensEntry {
+            name: "fermentation".into(),
+            category: LensCategory::Extended,
+            description: "발효 생물화학: 포도당 C₆=n, 해당효소 n=6, ATP 순이득 phi=2, pH tau=4, 로지스틱 성장 S곡선, sigma=12 알코올내성".into(),
+            domain_affinity: vec![
+                "fermentation".into(),
+                "biology".into(),
+                "chemistry".into(),
+                "food_science".into(),
+                "biotechnology".into(),
+            ],
+            complementary: vec![
+                "molecular_transform".into(),
+                "evolution".into(),
+                "polymer".into(),
+                "food_chemistry".into(),
+            ],
+        },
+        LensEntry {
+            name: "horology".into(),
+            category: LensCategory::Extended,
+            description: "시계공학: 기어 n=6, 다이얼 sigma=12, J2=24시간, 탈진 tau=4Hz, 팰릿 phi=2, 3바늘 n/phi=3, 탈진 주기성 감지".into(),
+            domain_affinity: vec![
+                "horology".into(),
+                "precision_mechanics".into(),
+                "metrology".into(),
+                "physics".into(),
+                "manufacturing".into(),
+            ],
+            complementary: vec![
+                "periodicity".into(),
+                "tribology".into(),
+                "materials_crystal".into(),
+                "resonance".into(),
+            ],
+        },
+    ]
+}
+
 #[cfg(test)]
 mod new_domain_tests {
     use super::*;

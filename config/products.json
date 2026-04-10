@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "total_products": 146,
-    "total_domains": 135,
+    "total_products": 147,
+    "total_domains": 136,
     "total_papers": 128,
     "papers_chunk_c_2026-04-08": {
       "count": 11,
@@ -21,7 +21,7 @@
         "docs/paper/n6-dolphin-bioacoustics-paper.md"
       ]
     },
-    "last_updated": "2026-04-09",
+    "last_updated": "2026-04-10",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
       "fusion",
@@ -3908,20 +3908,21 @@
       "alien_index": 10,
       "ceiling": true,
       "bt_exact_pct": 92,
-      "bt_count": 13,
-      "industry_pct": 35,
-      "industry_detail": "ECG/MRI/초음파 산업 표준 + 브라우저 엔진 교차 검증",
-      "experiment_pct": 55,
-      "experiment_detail": "가설 검증 (124/134 EXACT 브라우저 + 의료기기 EXACT)",
-      "physics_limit_count": 5,
-      "tp_count": 12,
-      "discovery_count": 8,
-      "cross_dse_domains": 4,
+      "bt_count": 19,
+      "industry_pct": 40,
+      "industry_detail": "ECG/MRI/초음파 산업 표준 + 브라우저 엔진 + 성형외과 FDA/교과서 교차 검증",
+      "experiment_pct": 60,
+      "experiment_detail": "가설 검증 (124/134 EXACT 브라우저 + 의료기기 EXACT + 성형외과 33/36 EXACT)",
+      "physics_limit_count": 15,
+      "tp_count": 30,
+      "discovery_count": 14,
+      "cross_dse_domains": 14,
       "mk_count": 5,
-      "summary_extra": "브라우저+의료기기 2도메인, ECG σ=12 리드, MRI σ=12 채널, 브라우저 124/134 EXACT",
+      "summary_extra": "브라우저+의료기기+성형외과 3도메인, ECG σ=12 리드, MRI σ=12 채널, 브라우저 124/134 EXACT, 성형외과 33/36 EXACT",
       "domains": [
         "browser",
-        "medical-device"
+        "medical-device",
+        "cosmetic-surgery"
       ],
       "tools": [],
       "products": [
@@ -3948,6 +3949,19 @@
             {
               "label": "문서",
               "path": "docs/medical-device/goal.md"
+            }
+          ]
+        },
+        {
+          "name": "HEXA-AESTHETIC n=6 성형외과",
+          "ufo": 10,
+          "ceiling": true,
+          "ver": "v1",
+          "description": "Fitzpatrick n=6 피부유형, 콜라겐 D=67nm=σ·sopfr+σ-sopfr, 보톡스 FDA J₂-τ=20U/J₂=24U, 표피턴오버 σ·φ+τ=28일, 36가설 33 EXACT(91.7%), 6단 체인, 10 cross-domain (BT-1129~1134)",
+          "links": [
+            {
+              "label": "문서",
+              "path": "docs/cosmetic-surgery/goal.md"
             }
           ]
         }

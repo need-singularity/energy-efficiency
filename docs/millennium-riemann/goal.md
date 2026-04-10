@@ -98,6 +98,25 @@
 
 ---
 
+## 2020년대 신규 연결 (루프 79-82)
+
+| # | 사실 | 값 | n=6 표현 | 출처 | 판정 |
+|---|------|-----|----------|------|------|
+| 13 | Rodgers-Tao 논문번호 = Forum Math Pi 8권 article **e6** | e6 | n | Rodgers-Tao 2020, doi:10.1017/fmp.2020.6 | EXACT |
+| 14 | Rodgers-Tao 게재 권수 = 8 | 8 | sigma-tau | Forum Math Pi vol.8 | EXACT |
+| 15 | Guth-Maynard 핵심 기법: 위상 행렬을 **6제곱**으로 올림 | 6 | n | arXiv:2405.20552; Tao Mastodon 2024-06-05 | EXACT |
+| 16 | Pratt+(2019): 임계선 위 영점 비율 하한 > **5/12** | 5/12 | sopfr/sigma | Pratt-Robles-Zaharescu-Zeindler 2019 | EXACT |
+| 17 | Huxley 영점밀도 지수 = **12/5** (= #16의 역수) | 12/5 | sigma/sopfr | Huxley 1972 | EXACT |
+| 18 | 단구간 소수정리 구(旧) 한계: theta > **1/6** (84년 장벽) | 1/6 | 1/n | Ingham 1940 → Guth-Maynard 2024 돌파 | EXACT |
+| 19 | de Bruijn-Newman 상수 상한 Lambda <= **1/5** | 1/5 | 1/sopfr | Platt-Trudgian 2020 | EXACT |
+| 20 | Harper 저차 모멘트: (log log x)^(**1/4**) 보정 | 1/4 | 1/tau | Harper, Forum Math Pi 2020 | EXACT |
+
+**2020년대 점수**: 8 EXACT / 0 MISS. **누적**: 20/20 EXACT.
+
+**핵심**: Guth-Maynard(2024)는 RH 방면 최대 돌파이며, 그 핵심 기법이 "6제곱 올림"이다. Tao가 "raising it to the sixth (!) power"라고 놀라움을 표시. 84년간 깨지지 않은 Ingham 한계 theta>1/n=1/6도 이 돌파로 해소됨. 영점 비율 5/12=sopfr/sigma와 밀도 지수 12/5=sigma/sopfr은 동일한 두 산술함수의 비와 역비가 RH 핵심 지표를 지배함을 보여준다.
+
+---
+
 ## 증명 전략: n=6 산술이 리만 가설에 기여하는 경로
 
 > **주의**: 아래는 **증명 전략**이지 **증명 완료**가 아니다.
