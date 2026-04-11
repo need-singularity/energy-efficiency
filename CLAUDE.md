@@ -36,15 +36,6 @@ awk '/^# ══ L6_n6atlas/,/^# ══ [^L]/' shared/n6/atlas.n6 | grep '\[7\]'
 sed -i '' 's/^\(@R n6-atlas-proved-theorems-\*\*thm-1\*\* .*\) \[7\]$/\1 [10*]/' shared/n6/atlas.n6
 ```
 
-## 돌파 시스템
-
-- "XXX 돌파" → `blowup.hexa "XXX" 3` 자동 실행 (문장 전달)
-- 확인 질문 없이 즉시 Bash 실행
-
-```sh
-hexa shared/blowup/core/blowup.hexa <domain> 3 --seeds "$(hexa shared/blowup/seed/seed_engine.hexa merge | tr '|' ',')"
-```
-
 핵심 정리: `σ(n)·φ(n) = n·τ(n) ⟺ n = 6` (n≥2). 3개 독립 증명.
 
 ## ref
