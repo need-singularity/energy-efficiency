@@ -1,0 +1,199 @@
+// HEXA-LANG 하드웨어 키워드 디코더
+//
+// 53-항목 CAM(내용 주소 메모리) 키워드 인식
+// 53 = sigma*tau + sopfr = 48 + 5
+//
+// 키워드 그룹 (sigma = 12 그룹):
+//   그룹  0: 제어 흐름  — n=6 키워드     (if else match for while loop)
+//   그룹  1: 타입 선언  — sopfr=5 키워드  (type struct enum trait impl)
+//   그룹  2: 함수       — sopfr=5 키워드  (fn return yield async await)
+//   그룹  3: 변수       — tau=4 키워드     (let mut const static)
+//   그룹  4: 모듈       — tau=4 키워드     (mod use pub crate)
+//   그룹  5: 메모리     — tau=4 키워드     (own borrow move drop)
+//   그룹  6: 동시성     — tau=4 키워드     (spawn channel select atomic)
+//   그룹  7: 이펙트     — tau=4 키워드     (effect handle resume pure)
+//   그룹  8: 증명       — tau=4 키워드     (proof assert invariant theorem)
+//   그룹  9: 메타       — tau=4 키워드     (macro derive where comptime)
+//   그룹 10: 에러       — sopfr=5 키워드   (try catch throw panic recover)
+//   그룹 11: AI         — tau=4 키워드     (intent generate verify optimize)
+//
+// J2=24 비트 옵코드 형식:
+//   [23:18] = 기본 옵코드 (n=6 비트)
+//   [17:14] = 키워드 그룹  (tau=4 비트, 0-11 sigma=12 그룹)
+//   [13:11] = 키워드 인덱스 (n/phi=3 비트, 0-5 그룹 내)
+//   [10:8]  = 수정자 플래그 (n/phi=3 비트)
+//   [7:0]   = 피연산자/즉시값 (sigma-tau=8 비트)
+//
+// 파이프라인: mu(6)=1 사이클 디코드 지연
+
+// n=6 상수
+let N = 6
+let SIGMA = 12
+let TAU = 4
+let SOPFR = 5
+let J2 = 24
+let S_T = 8               // sigma-tau = 8
+let N_KEYWORDS = 53        // sigma*tau + sopfr = 48 + 5
+
+// HEXA-LANG 키워드 옵코드 범위: 0x20-0x3F (32 기본 코드)
+let OP_HLANG_BASE = 0x20
+
+// 그룹 크기 테이블 (sigma=12 그룹)
+let GROUP_SIZES = [
+    6,  // 그룹  0: 제어 흐름 n=6
+    5,  // 그룹  1: 타입 선언 sopfr=5
+    5,  // 그룹  2: 함수 sopfr=5
+    4,  // 그룹  3: 변수 tau=4
+    4,  // 그룹  4: 모듈 tau=4
+    4,  // 그룹  5: 메모리 tau=4
+    4,  // 그룹  6: 동시성 tau=4
+    4,  // 그룹  7: 이펙트 tau=4
+    4,  // 그룹  8: 증명 tau=4
+    4,  // 그룹  9: 메타 tau=4
+    5,  // 그룹 10: 에러 sopfr=5
+    4   // 그룹 11: AI tau=4
+]
+
+// RTL 모듈 정의
+rtl module hexalang_decoder {
+    // 입력 포트
+    input clk: bit
+    input rst_n: bit
+
+    // 명령어 입력
+    input opcode_in: bits(J2)        // J2=24 비트 명령어
+    input valid_in: bit
+
+    // 디코딩 출력 (레지스터 — 1 사이클 지연 = mu(6))
+    output kw_group: bits(4)         // 키워드 그룹 (0-11, sigma=12 그룹)
+    output kw_index: bits(3)         // 그룹 내 인덱스 (0-5, 최대 n=6)
+    output is_keyword: bit           // 명령어가 HEXA-LANG 키워드
+    output alu_op: bits(5)           // J2=24 연산자용 ALU 연산
+    output modifier: bits(3)         // 수정자 플래그
+    output operand: bits(S_T)        // sigma-tau=8 비트 피연산자
+    output valid_out: bit            // 출력 유효
+
+    // 옵코드 필드 추출 (조합 회로)
+    let primary_op = opcode_in[23:18]    // n=6 비트 기본 옵코드
+    let grp_field  = opcode_in[17:14]    // tau=4 비트 그룹
+    let idx_field  = opcode_in[13:11]    // n/phi=3 비트 인덱스
+    let mod_field  = opcode_in[10:8]     // n/phi=3 비트 수정자
+    let opr_field  = opcode_in[7:0]      // sigma-tau=8 비트 피연산자
+
+    let is_hlang_range = (primary_op >= OP_HLANG_BASE)
+
+    // 그룹 크기 룩업 (조합 회로)
+    fn max_idx_for_group(grp: bits(4)) -> bits(3) {
+        match grp {
+            0  => 3'd6    // 제어 흐름: n=6 키워드
+            1  => 3'd5    // 타입 선언: sopfr=5 키워드
+            2  => 3'd5    // 함수: sopfr=5 키워드
+            3  => 3'd4    // 변수: tau=4 키워드
+            4  => 3'd4    // 모듈: tau=4 키워드
+            5  => 3'd4    // 메모리: tau=4 키워드
+            6  => 3'd4    // 동시성: tau=4 키워드
+            7  => 3'd4    // 이펙트: tau=4 키워드
+            8  => 3'd4    // 증명: tau=4 키워드
+            9  => 3'd4    // 메타: tau=4 키워드
+            10 => 3'd5    // 에러: sopfr=5 키워드
+            11 => 3'd4    // AI: tau=4 키워드
+            _  => 3'd0    // 유효하지 않은 그룹
+        }
+    }
+
+    let max_idx = max_idx_for_group(grp_field)
+
+    // CAM 히트: 그룹이 범위 내 AND 인덱스가 그룹 크기 내
+    let cam_hit = is_hlang_range
+                  && (grp_field < SIGMA)
+                  && (idx_field < max_idx)
+
+    // ALU 연산 디코딩 (J2=24 연산자)
+    // 산술 (n=6):  ADD SUB MUL DIV MOD POW   -> 0x00-0x05
+    // 비교 (n=6):  EQ NE LT GT LE GE         -> 0x06-0x0B
+    // 논리 (tau=4): AND OR NOT XOR            -> 0x0C-0x0F
+    // 비트 (tau=4): BAND BOR BXOR BNOT        -> 0x10-0x13
+    // 할당 (phi=2): MOV MOVI                  -> 0x14-0x15
+    // 특수 (phi=2): RANGE ARROW               -> 0x16-0x17
+    // 합계: 6+6+4+4+2+2 = 24 = J2(6)
+    fn decode_alu_op(primary: bits(6), hlang_range: bit) -> bits(5) {
+        if !hlang_range && primary != 0x00 {
+            primary[4:0]     // 표준 ALU 연산 (기본 옵코드 0x01-0x1F)
+        } else {
+            5'h00            // NOP / 키워드 (ALU 없음)
+        }
+    }
+
+    let alu_op_comb = decode_alu_op(primary_op, is_hlang_range)
+
+    // 키워드-하드웨어 동작 매핑
+    // own/borrow/move/drop -> 메모리 영역 연산
+    // spawn               -> SNN 타일 트리거
+    // atomic              -> 버스 락
+    // assert/invariant    -> 하드웨어 트랩
+    fn keyword_hw_action(hit: bit, grp: bits(4), idx: bits(3)) -> bits(5) {
+        if !hit { return 5'h00 }
+        match (grp, idx) {
+            // 메모리 그룹 (5): own=영역락, borrow=영역공유, move=DMA, drop=해제
+            (5, 0) => 5'h18    // own   -> 영역 락
+            (5, 1) => 5'h19    // borrow-> 영역 공유
+            (5, 2) => 5'h1A    // move  -> DMA 트리거
+            (5, 3) => 5'h1B    // drop  -> 영역 해제
+            // 동시성 그룹 (6): spawn=실행, atomic=락
+            (6, 0) => 5'h1C    // spawn  -> SNN/코프로세서 실행
+            (6, 3) => 5'h1D    // atomic -> 버스 락
+            // 증명 그룹 (8): assert=트랩, invariant=체크
+            (8, 1) => 5'h1E    // assert    -> 하드웨어 트랩
+            (8, 2) => 5'h1F    // invariant -> 경계 검사
+            _      => 5'h00
+        }
+    }
+
+    let kw_hw_action = keyword_hw_action(cam_hit, grp_field, idx_field)
+
+    // sigma-tau=8 기본 타입 가속기
+    // 피연산자 필드가 타입 ID (0-7 = sigma-tau=8 타입):
+    //   0=int, 1=float, 2=bool, 3=char, 4=string, 5=byte, 6=void, 7=any
+    fn type_info(type_id: bits(3)) -> (bits(5), bits(3)) {
+        // (width_bytes, align_log2)
+        match type_id {
+            0 => (5'd8,  3'd3)    // int:    sigma-tau=8 바이트
+            1 => (5'd8,  3'd3)    // float:  sigma-tau=8 바이트
+            2 => (5'd1,  3'd0)    // bool:   mu=1 바이트
+            3 => (5'd4,  3'd2)    // char:   tau=4 바이트 (UTF-32)
+            4 => (5'd24, 3'd3)    // string: J2=24 바이트 (ptr+len+cap)
+            5 => (5'd1,  3'd0)    // byte:   mu=1 바이트
+            6 => (5'd0,  3'd0)    // void:   0 바이트
+            7 => (5'd16, 3'd3)    // any:    phi^tau=16 바이트 (vtable+data)
+        }
+    }
+
+    let (type_width, type_align) = type_info(opr_field[2:0])
+
+    // 출력 레지스터 (mu=1 사이클 지연)
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            kw_group   <= 4'b0
+            kw_index   <= 3'b0
+            is_keyword <= 1'b0
+            alu_op     <= 5'b0
+            modifier   <= 3'b0
+            operand    <= 8'b0         // sigma-tau=8 비트
+            valid_out  <= 1'b0
+        } else {
+            valid_out  <= valid_in
+            kw_group   <= grp_field
+            kw_index   <= idx_field
+            is_keyword <= cam_hit
+            modifier   <= mod_field
+            operand    <= opr_field
+
+            // ALU 연산: 키워드 하드웨어 동작이 표준 ALU보다 우선
+            if cam_hit && kw_hw_action != 5'h00 {
+                alu_op <= kw_hw_action
+            } else {
+                alu_op <= alu_op_comb
+            }
+        }
+    }
+}

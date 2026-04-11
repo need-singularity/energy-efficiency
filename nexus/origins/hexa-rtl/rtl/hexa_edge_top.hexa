@@ -1,0 +1,347 @@
+// HEXA-EDGE SoC 최상위 — FPGA 서브셋 (Xilinx Zynq-7020)
+//
+// N6 산술 상수:
+//   n=6  phi=2  tau=4  sigma=12  sopfr=5  mu=1  J2=24  R=1
+//   sigma-tau=8  sigma-phi=10  sigma-mu=11  sigma*tau=48
+//   2^n=64  phi^tau=16  sigma^2=144  sigma*J2=288
+//
+// 아키텍처:
+//   - RISC-V N6 코어 (6-와이드 디코드, 12-스테이지 파이프라인)
+//   - 이집트 분수 메모리 컨트롤러 (1/2+1/3+1/6=1 주소 분할)
+//   - HEXA-LANG 53-키워드 CAM 디코더
+//   - SNN Izhikevich 6-뉴런 링
+//   - 이집트 MoE 라우터 (sigma=12 슬롯, phi=2 활성)
+//   - SPI n=6 채널, GPIO J2=24 핀
+
+// n=6 상수
+let N = 6
+let PHI = 2
+let TAU = 4
+let SIGMA = 12
+let SOPFR = 5
+let J2 = 24
+let S_T = 8
+let S_P = 10
+
+// UART 분주기: 100MHz / 92160 ~ 1085
+let UART_DIV = 10'd1085
+
+rtl module hexa_edge_top {
+    // 입력 포트
+    input clk: bit                     // 100 MHz 시스템 클럭
+    input rst_n: bit                   // 활성 로우 리셋
+
+    // GPIO — J2=24 핀
+    inout gpio: bits(J2)               // J2(6)=24 GPIO 핀
+
+    // SPI — n=6 채널 (채널 0 FPGA 데모용)
+    output spi0_sclk: bit
+    output spi0_mosi: bit
+    input  spi0_miso: bit
+    output spi0_cs_n: bit
+
+    // UART — 디버그 포트
+    input  uart_rx: bit
+    output uart_tx: bit
+
+    // LED 표시기 — tau=4 LED
+    output led: bits(TAU)              // tau(6)=4 상태 LED
+
+    // SNN 스파이크 출력 — n=6 뉴런
+    output snn_spike_out: bits(N)      // n=6 뉴런 스파이크 표시기
+
+    // ================================================================
+    // 내부 버스
+    // ================================================================
+
+    // CPU 명령어 페치 인터페이스
+    wire cpu_iaddr:  bits(J2)          // J2=24 비트 명령어 주소
+    wire cpu_idata:  bits(J2)          // J2=24 비트 명령어 워드
+    wire cpu_ireq:   bit
+    wire cpu_igrant: bit
+
+    // CPU 데이터 인터페이스
+    wire cpu_daddr:  bits(16)          // 16비트 데이터 주소 (64K 공간)
+    wire cpu_dwdata: bits(J2)          // J2=24 비트 쓰기 데이터
+    wire cpu_drdata: bits(J2)          // J2=24 비트 읽기 데이터
+    wire cpu_dwe:    bit               // 쓰기 인에이블
+    wire cpu_dre:    bit               // 읽기 인에이블
+    wire cpu_dready: bit               // 데이터 준비
+
+    // 메모리 컨트롤러 출력
+    wire mem_region: bits(2)           // 00=스택, 01=힙, 10=아레나
+    wire mem_valid:  bit
+
+    // HEXA-LANG 디코더 인터페이스
+    wire hlang_opcode:     bits(J2)    // J2=24 비트 옵코드
+    wire hlang_valid:      bit
+    wire hlang_kw_group:   bits(6)     // 키워드 그룹 인덱스 (0-11, sigma=12)
+    wire hlang_kw_index:   bits(6)     // 그룹 내 키워드 인덱스
+    wire hlang_is_keyword: bit         // 키워드로 디코딩됨
+    wire hlang_alu_op:     bits(5)     // ALU 연산
+
+    // 이집트 MoE 인터페이스
+    wire moe_expert_scores: bits(SIGMA)
+    wire moe_selected:      bits(PHI)
+    wire moe_active_mask:   bits(SIGMA)
+
+    // SNN 인터페이스
+    wire snn_spikes:     bits(N)       // n=6 뉴런 스파이크
+    wire snn_excitation: bits(J2)      // J2=24 비트 여기 입력
+
+    // ================================================================
+    // 명령어 메모리 — tau^tau = 256 워드 (FPGA 블록 RAM)
+    // 각 워드 J2=24 비트
+    // ================================================================
+
+    reg imem: array(256, bits(J2))     // 2^(sigma-tau) = 2^8 = 256 워드
+    reg imem_rdata: bits(J2)
+
+    on posedge(clk) {
+        if cpu_ireq {
+            imem_rdata <= imem[cpu_iaddr[7:0]]
+        }
+    }
+    assign cpu_idata  = imem_rdata
+    assign cpu_igrant = cpu_ireq       // FPGA 데모에서 항상 허가
+
+    // ================================================================
+    // 데이터 메모리 — 2^sigma = 4096 x J2비트 워드 (FPGA BRAM)
+    // ================================================================
+
+    reg dmem: array(4096, bits(J2))    // 2^sigma(6) = 4096 워드
+    reg dmem_rdata: bits(J2)
+    reg dmem_ready: bit
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            dmem_rdata <= 24'b0
+            dmem_ready <= 1'b0
+        } else {
+            dmem_ready <= cpu_dre | cpu_dwe
+            if cpu_dwe && mem_valid {
+                dmem[cpu_daddr[11:0]] <= cpu_dwdata
+            }
+            if cpu_dre {
+                dmem_rdata <= dmem[cpu_daddr[11:0]]
+            }
+        }
+    }
+    assign cpu_drdata = dmem_rdata
+    assign cpu_dready = dmem_ready
+
+    // ================================================================
+    // RISC-V N6 코어
+    // ================================================================
+
+    instance u_cpu: riscv_n6_core {
+        .clk         = clk
+        .rst_n       = rst_n
+        .iaddr       = cpu_iaddr
+        .idata       = cpu_idata
+        .ireq        = cpu_ireq
+        .igrant      = cpu_igrant
+        .daddr       = cpu_daddr
+        .dwdata      = cpu_dwdata
+        .drdata      = cpu_drdata
+        .dwe         = cpu_dwe
+        .dre         = cpu_dre
+        .dready      = cpu_dready
+        .hlang_opcode    = hlang_opcode
+        .hlang_valid     = hlang_valid
+        .hlang_alu_op    = hlang_alu_op
+        .hlang_is_keyword = hlang_is_keyword
+    }
+
+    // ================================================================
+    // 이집트 분수 메모리 컨트롤러 (1/2 + 1/3 + 1/6 = 1)
+    // ================================================================
+
+    instance u_memctrl: egyptian_mem_ctrl {
+        .clk    = clk
+        .rst_n  = rst_n
+        .addr   = cpu_daddr
+        .we     = cpu_dwe
+        .re     = cpu_dre
+        .region = mem_region
+        .valid  = mem_valid
+    }
+
+    // ================================================================
+    // HEXA-LANG 하드웨어 키워드 디코더 (53 키워드)
+    // ================================================================
+
+    instance u_hlang: hexalang_decoder {
+        .clk        = clk
+        .rst_n      = rst_n
+        .opcode_in  = hlang_opcode
+        .valid_in   = hlang_valid
+        .kw_group   = hlang_kw_group
+        .kw_index   = hlang_kw_index
+        .is_keyword = hlang_is_keyword
+        .alu_op     = hlang_alu_op
+    }
+
+    // ================================================================
+    // SNN Izhikevich 6-뉴런 링
+    // ================================================================
+
+    assign snn_excitation = cpu_dwdata
+
+    instance u_snn: snn_izhikevich {
+        .clk        = clk
+        .rst_n      = rst_n
+        .excitation = snn_excitation[17:0]           // 18비트 고정소수점 입력
+        .enable     = cpu_dwe && (cpu_daddr == 16'hFFF0)  // MMIO 트리거
+        .spikes     = snn_spikes
+    }
+
+    assign snn_spike_out = snn_spikes
+
+    // ================================================================
+    // 이집트 MoE 라우터 (sigma=12 전문가, phi=2 활성)
+    // ================================================================
+
+    let moe_trigger = cpu_dwe && (cpu_daddr == 16'hFFE0)
+
+    instance u_moe: egyptian_moe {
+        .clk         = clk
+        .rst_n       = rst_n
+        .scores_in   = {cpu_dwdata, cpu_dwdata}      // 12 x 8비트 스코어
+        .valid_in    = moe_trigger
+        .active_mask = moe_active_mask
+        .top_expert_0 = _
+        .top_expert_1 = _
+        .done         = _
+    }
+
+    // ================================================================
+    // SPI 컨트롤러 — n=6 채널 (채널 0 활성)
+    // 최소 SPI 마스터: sigma-tau=8 비트 시프트 레지스터
+    // ================================================================
+
+    reg spi_shift:  bits(S_T)          // sigma-tau=8 비트 시프트 레지스터
+    reg spi_cnt:    bits(3)            // n/phi=3 비트 카운터
+    reg spi_active: bit
+    reg spi_cs:     bit
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            spi_shift  <= 8'b0         // sigma-tau=8 비트
+            spi_cnt    <= 3'b0
+            spi_active <= 1'b0
+            spi_cs     <= 1'b1
+        } else if cpu_dwe && (cpu_daddr == 16'hFFD0) {
+            // SPI 데이터 레지스터 쓰기로 전송 트리거
+            spi_shift  <= cpu_dwdata[7:0]
+            spi_cnt    <= 3'd0
+            spi_active <= 1'b1
+            spi_cs     <= 1'b0
+        } else if spi_active {
+            spi_shift <= {spi_shift[6:0], spi0_miso}
+            spi_cnt   <= spi_cnt + 3'd1
+            if spi_cnt == 3'd7 {       // sigma-tau=8 비트 전송 완료
+                spi_active <= 1'b0
+                spi_cs     <= 1'b1
+            }
+        }
+    }
+
+    // SPI 클럭 = 시스템 클럭 / (phi*n) = clk/12 활성 시
+    reg spi_div:     bits(4)           // sigma=12 분주기
+    reg spi_clk_out: bit
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            spi_div     <= 4'd0
+            spi_clk_out <= 1'b0
+        } else if spi_active {
+            if spi_div == 4'd5 {       // n-1=5, n=6으로 분주 (반주기)
+                spi_div     <= 4'd0
+                spi_clk_out <= ~spi_clk_out
+            } else {
+                spi_div <= spi_div + 4'd1
+            }
+        } else {
+            spi_clk_out <= 1'b0
+        }
+    }
+
+    assign spi0_sclk = spi_clk_out
+    assign spi0_mosi = spi_shift[7]    // MSB 먼저
+    assign spi0_cs_n = spi_cs
+
+    // ================================================================
+    // GPIO 컨트롤러 — J2=24 핀
+    // ================================================================
+
+    reg gpio_dir: bits(J2)             // J2=24 방향 비트 (1=출력)
+    reg gpio_out: bits(J2)             // J2=24 출력 데이터
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            gpio_dir <= 24'b0          // 리셋 시 모두 입력
+            gpio_out <= 24'b0
+        } else if cpu_dwe {
+            match cpu_daddr {
+                16'hFFC0 => gpio_dir <= cpu_dwdata   // 방향 레지스터
+                16'hFFC4 => gpio_out <= cpu_dwdata   // 출력 레지스터
+                _ => {}
+            }
+        }
+    }
+
+    // 삼상태 GPIO (J2=24 핀)
+    generate for gi in 0..J2 {
+        assign gpio[gi] = if gpio_dir[gi] { gpio_out[gi] } else { 1'bz }
+    }
+
+    let gpio_in = gpio
+
+    // ================================================================
+    // UART — 최소 TX (디버그용)
+    // 보레이트 = 100MHz / 1085 ~ 92160, 9600*sigma-phi에 근사
+    // ================================================================
+
+    reg uart_div:  bits(S_P)           // 보레이트 분주기 (sigma-phi=10 비트)
+    reg uart_bit:  bits(4)             // 비트 카운터
+    reg uart_sr:   bits(S_P)           // sigma-phi=10 비트 시프트 (start+8+stop)
+    reg uart_busy: bit
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            uart_div  <= 10'd0
+            uart_bit  <= 4'd0
+            uart_sr   <= 10'h3FF       // 아이들 하이
+            uart_busy <= 1'b0
+        } else if cpu_dwe && (cpu_daddr == 16'hFFB0) && !uart_busy {
+            // 로드: start(0) + data[7:0] + stop(1) = sigma-phi=10 비트
+            uart_sr   <= {1'b1, cpu_dwdata[7:0], 1'b0}
+            uart_bit  <= 4'd0
+            uart_div  <= 10'd0
+            uart_busy <= 1'b1
+        } else if uart_busy {
+            if uart_div == UART_DIV {
+                uart_div <= 10'd0
+                uart_sr  <= {1'b1, uart_sr[9:1]}    // 우측 시프트, 아이들 하이 채움
+                uart_bit <= uart_bit + 4'd1
+                if uart_bit == 4'd9 {                // sigma-phi=10 비트 전체
+                    uart_busy <= 1'b0
+                }
+            } else {
+                uart_div <= uart_div + 10'd1
+            }
+        }
+    }
+
+    assign uart_tx = uart_sr[0]        // LSB 먼저 출력
+
+    // ================================================================
+    // LED 상태 — tau=4 LED
+    // ================================================================
+
+    assign led[0] = uart_busy            // UART 활동
+    assign led[1] = spi_active           // SPI 활동
+    assign led[2] = |snn_spikes          // SNN 스파이크 발생
+    assign led[3] = |moe_active_mask     // MoE 활성
+}

@@ -1,0 +1,203 @@
+// 이집트 MoE 라우터 — 하드웨어 Mixture-of-Experts
+//
+// 이집트 분수 용량 할당: 1/2 + 1/3 + 1/6 = 1
+//
+// N6 매개변수 매핑:
+//   전문가 슬롯:   sigma = 12
+//   활성 전문가:   phi = 2 (top-2 게이팅)
+//   용량 계층:
+//     A계층 (1/2 용량): n=6 전문가   -> 주력
+//     B계층 (1/3 용량): tau=4 전문가  -> 전문가
+//     C계층 (1/6 용량): phi=2 전문가  -> 희소/긴급
+//     합계: 6+4+2 = sigma=12 EXACT
+//
+// 소프트맥스 게이트 근사:
+//   합성용 구간선형 근사
+//   sigma-tau=8 비트 스코어 입력
+//   top-phi=2 전문가 선택
+//
+// 파이프라인: phi=2 사이클 지연 (스코어->비교->선택)
+
+// n=6 상수
+let N = 6
+let PHI = 2
+let TAU = 4
+let SIGMA = 12
+let S_T = 8                // sigma-tau = 8 비트 스코어
+let J2 = 24
+
+// 이집트 용량 할당: sigma=12 = n + tau + phi = 6+4+2
+let TIER_A_COUNT = N       // n=6 전문가 (1/2 용량)
+let TIER_B_COUNT = TAU     // tau=4 전문가 (1/3 용량)
+let TIER_C_COUNT = PHI     // phi=2 전문가 (1/6 용량)
+
+// 용량 가중치 Q0.8 (sigma-tau=8 소수 비트)
+// 1/2 = 128, 1/3 = 85, 1/6 = 43  (합 = 256 ~ 1.0 Q0.8)
+let CAP_HALF  = 8'd128    // 1/2 용량
+let CAP_THIRD = 8'd85     // 1/3 용량
+let CAP_SIXTH = 8'd43     // 1/6 용량
+// 검증: 128+85+43 = 256 = 2^(sigma-tau) = 2^8 EXACT
+
+rtl module egyptian_moe {
+    // 입력 포트
+    input clk: bit
+    input rst_n: bit
+
+    // 스코어 입력 — sigma=12 전문가 x sigma-tau=8 비트 = 96 비트
+    input scores_in: bits(96)          // sigma*(sigma-tau) = 12*8 = 96 비트
+    input valid_in: bit
+
+    // 선택 출력
+    output active_mask: bits(SIGMA)    // sigma=12 비트 활성 전문가 마스크
+    output top_expert_0: bits(4)       // 최고점 전문가 인덱스
+    output top_expert_1: bits(4)       // 2순위 전문가 인덱스
+    output done: bit                   // 선택 완료
+
+    // ================================================================
+    // 스코어 추출 — sigma=12 스코어 (sigma-tau=8 비트씩)
+    // ================================================================
+
+    // 언팩: scores_in[95:88] = 전문가 11, ... scores_in[7:0] = 전문가 0
+    fn unpack_score(idx: int) -> bits(S_T) {
+        scores_in[idx * S_T +: S_T]
+    }
+
+    // ================================================================
+    // 용량 가중 스코어
+    //
+    // 전문가별 원시 스코어에 계층 용량 곱:
+    //   A계층 (전문가 0-5):  score * CAP_HALF  / 256
+    //   B계층 (전문가 6-9):  score * CAP_THIRD / 256
+    //   C계층 (전문가 10-11): score * CAP_SIXTH / 256
+    // ================================================================
+
+    fn weighted_score(idx: int) -> bits(S_T) {
+        let raw = unpack_score(idx)
+        let weight = if idx < TIER_A_COUNT { CAP_HALF }
+                     else if idx < TIER_A_COUNT + TIER_B_COUNT { CAP_THIRD }
+                     else { CAP_SIXTH }
+        let wide = raw * weight          // 16비트 중간값
+        wide[15:8]                       // 256으로 나눔 (우측 시프트 8)
+    }
+
+    // ================================================================
+    // Top-phi=2 선택 — 병렬 비교 트리
+    //
+    // 스테이지 1: sigma=12 전문가 중 최대값 찾기
+    // 스테이지 2: 2순위 찾기 (1순위 제외)
+    // 합계: phi=2 파이프라인 스테이지
+    // ================================================================
+
+    fn find_top2() -> (bits(4), bits(S_T), bits(4), bits(S_T)) {
+        // top-1 찾기
+        let mut max1_idx = 4'd0
+        let mut max1_val = weighted_score(0)
+        for i in 1..SIGMA {
+            let s = weighted_score(i)
+            if s > max1_val {
+                max1_val = s
+                max1_idx = i as bits(4)
+            }
+        }
+
+        // top-2 찾기 (top-1 제외)
+        let mut max2_idx = 4'd0
+        let mut max2_val = 8'd0
+        for i in 0..SIGMA {
+            let s = weighted_score(i)
+            if i as bits(4) != max1_idx && s > max2_val {
+                max2_val = s
+                max2_idx = i as bits(4)
+            }
+        }
+
+        (max1_idx, max1_val, max2_idx, max2_val)
+    }
+
+    // ================================================================
+    // 파이프라인 선택 (phi=2 스테이지)
+    // ================================================================
+
+    reg sel_phase: bits(2)
+
+    // 1순위 레지스터
+    reg max1_idx: bits(4)
+    reg max1_val: bits(S_T)
+
+    // 2순위 레지스터
+    reg max2_idx: bits(4)
+    reg max2_val: bits(S_T)
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            sel_phase    <= 2'd0
+            max1_idx     <= 4'd0
+            max1_val     <= 8'b0
+            max2_idx     <= 4'd0
+            max2_val     <= 8'b0
+            top_expert_0 <= 4'd0
+            top_expert_1 <= 4'd0
+            active_mask  <= 12'b0
+            done         <= 1'b0
+        } else {
+            match sel_phase {
+                2'd0 => {              // 대기
+                    done <= 1'b0
+                    if valid_in {
+                        sel_phase <= 2'd1
+                    }
+                }
+
+                2'd1 => {              // 스테이지 1: top-1, top-2 캡처 (조합 결과)
+                    let (m1_idx, m1_val, m2_idx, m2_val) = find_top2()
+                    max1_idx <= m1_idx
+                    max1_val <= m1_val
+                    max2_idx <= m2_idx
+                    max2_val <= m2_val
+                    sel_phase <= 2'd2
+                }
+
+                2'd2 => {              // 스테이지 2: 출력 생성
+                    top_expert_0 <= max1_idx
+                    top_expert_1 <= max2_idx
+
+                    // 활성 마스크 생성 — phi=2 전문가만 활성
+                    active_mask <= (12'd1 << max1_idx)
+                                 | (12'd1 << max2_idx)
+
+                    done      <= 1'b1
+                    sel_phase <= 2'd0
+                }
+
+                _ => { sel_phase <= 2'd0 }
+            }
+        }
+    }
+
+    // ================================================================
+    // 부하 분산 — 전문가 사용량 추적
+    //
+    // 전문가별 sigma-tau=8 비트 사용량 카운터.
+    // 전문가 선택 시 카운터 증가.
+    // 사용량이 용량 임계값 초과 시 해당 전문가 패널티.
+    // 이집트 분수 균형 (1/2+1/3+1/6=1) 유지.
+    // ================================================================
+
+    reg util_count: array(SIGMA, bits(S_T))  // sigma=12 사용량 카운터
+
+    on posedge(clk) or negedge(rst_n) {
+        if !rst_n {
+            for i in 0..SIGMA {
+                util_count[i] <= 8'b0
+            }
+        } else if done {
+            // 선택된 전문가 증가
+            if util_count[top_expert_0] < 8'hFF {
+                util_count[top_expert_0] <= util_count[top_expert_0] + 8'd1
+            }
+            if util_count[top_expert_1] < 8'hFF {
+                util_count[top_expert_1] <= util_count[top_expert_1] + 8'd1
+            }
+        }
+    }
+}

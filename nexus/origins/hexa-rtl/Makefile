@@ -1,8 +1,8 @@
 #=============================================================================
 # HEXA-EDGE SoC — Build System
 #
-# Tools: Icarus Verilog (simulation), Yosys (synthesis analysis)
-# Target: Xilinx Zynq-7020 (PYNQ-Z2)
+# 도구: HEXA RTL -> Verilog 변환 후 Icarus Verilog (시뮬레이션), Yosys (합성)
+# 대상: Xilinx Zynq-7020 (PYNQ-Z2)
 #
 # N6 Constants:
 #   n=6  phi=2  tau=4  sigma=12  J2=24  sigma-tau=8  sigma-phi=10
@@ -22,17 +22,17 @@ SIM_DIR   := sim
 CONST_DIR := constraints
 BUILD_DIR := build
 
-# RTL source files (sigma-tau = 8... well, n=6 RTL modules)
+# RTL 소스 파일 (n=6 RTL 모듈, HEXA-FIRST)
 RTL_SRCS := \
-    $(RTL_DIR)/hexa_edge_top.v \
-    $(RTL_DIR)/riscv_n6_core.v \
-    $(RTL_DIR)/egyptian_mem_ctrl.v \
-    $(RTL_DIR)/hexalang_decoder.v \
-    $(RTL_DIR)/snn_izhikevich.v \
-    $(RTL_DIR)/egyptian_moe.v
+    $(RTL_DIR)/hexa_edge_top.hexa \
+    $(RTL_DIR)/riscv_n6_core.hexa \
+    $(RTL_DIR)/egyptian_mem_ctrl.hexa \
+    $(RTL_DIR)/hexalang_decoder.hexa \
+    $(RTL_DIR)/snn_izhikevich.hexa \
+    $(RTL_DIR)/egyptian_moe.hexa
 
-# Testbench
-TB_SRC := $(SIM_DIR)/tb_hexa_edge.v
+# 테스트벤치
+TB_SRC := $(SIM_DIR)/tb_hexa_edge.hexa
 
 # Output files
 SIM_OUT   := $(BUILD_DIR)/hexa_edge_sim
@@ -96,7 +96,7 @@ synth: $(BUILD_DIR) $(RTL_SRCS)
 	@echo "  Clock: 100 MHz (sigma-phi = 10 ns)"
 	@echo "============================================"
 	$(YOSYS) -p "\
-		read_verilog $(RTL_SRCS); \
+		read_verilog $(RTL_SRCS:.hexa=.v); \
 		hierarchy -top hexa_edge_top; \
 		proc; opt; fsm; opt; memory; opt; \
 		techmap; opt; \

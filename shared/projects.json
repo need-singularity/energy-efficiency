@@ -121,24 +121,48 @@
       "name": "HEXA-LANG",
       "path": "hexa-lang",
       "domain": "language",
-      "description": "The Perfect Number Programming Language. 53 keywords, 24 operators, 8 primitives, 6-phase pipeline",
+      "description": "The Perfect Number Programming Language. 53 keywords, 24 AI-native attrs, CPU/GPU ML pipeline, self-hosting fixpoint",
+      "repo": "https://github.com/need-singularity/hexa-lang",
       "scan_patterns": [
         "src/**/*.rs",
-        "hexa/**/*.hexa",
+        "self/**/*.hexa",
         "examples/**/*.hexa"
       ],
       "key_files": [
         "src/lexer.rs",
+        "src/parser.rs",
         "src/compiler.rs",
         "src/interpreter.rs",
         "src/ast.rs",
-        "src/codegen_wgsl.rs"
+        "src/token.rs",
+        "src/wasm.rs"
       ],
       "stats": {
         "keywords": 53,
         "operators": 24,
-        "primitives": 8,
-        "dse_combos": 21952
+        "ai_native_attrs": 24,
+        "backends": 7,
+        "tests": 4118,
+        "loc_rust": 53029,
+        "loc_hexa_self": 92098,
+        "ml_pipeline_files": 143,
+        "ml_pipeline_stages": "12/12 done",
+        "gpu_files": 15,
+        "self_host": "P5 fixpoint 4/4 IDENTICAL",
+        "builtins": 147
+      },
+      "docker": {
+        "image": "needsingularity/anima-h100:latest",
+        "auto_update": true
+      },
+      "ssot": {
+        "state": "shared/hexa-lang/state.json",
+        "ml_pipeline": "shared/hexa-lang/ml-pipeline.json",
+        "ml_perf": "shared/hexa-lang/ml-perf-tracker.json",
+        "grammar": "shared/hexa-lang/grammar.jsonl",
+        "ai_native": "shared/hexa-lang/ai-native.json",
+        "roadmap_p5": "shared/roadmaps/p5_zeta.json",
+        "roadmap_ml45": "shared/roadmaps/ml_advanced_45.json"
       }
     }
   ]

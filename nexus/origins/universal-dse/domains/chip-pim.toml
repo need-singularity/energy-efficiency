@@ -1,0 +1,444 @@
+# =============================================================
+# N6 칩 아키텍처 2단계: Processing-In-Memory (PIM) DSE
+# 칩 6단계 로드맵: HEXA-1 → [PIM] → 3D-적층 → Photonic → Wafer-Scale → Superconducting
+# n=6: sigma-tau=8 비트 MAC, sigma=12 뱅크 그룹, tau=4 서브어레이,
+#       phi=2 오퍼랜드, J2=24 비트라인, n=6 파이프라인 스테이지
+# BT-28 (컴퓨팅 사다리) + BT-55 (HBM) + BT-58 (sigma-tau=8 유니버설)
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "chip-pim"
+desc = "PIM 칩 아키텍처 DSE — 메모리 내 연산 (칩 6단계 2단)"
+levels = ["MemoryTech", "ComputeGranularity", "DataMovement", "Integration", "Workload"]
+vision = "n=6 정렬 PIM — 데이터 이동 제거, 메모리 벽 돌파, sigma-tau=8 비트 연산"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# 레벨 0: MemoryTech (메모리 기술) — 6 후보
+#   n6: 트랜지스터=6(n SRAM-6T), 레벨=4(tau PCM),
+#        뱅크=12(sigma), 상태=2(phi MRAM)
+# =============================================================
+[[level]]
+name = "MemoryTech"
+
+[[candidate]]
+level = 0
+id    = "SRAM_6T"
+label = "SRAM 6T (n=6 트랜지스터, 서브ns 접근, 연산 친화)"
+n6    = 1.00
+perf  = 0.90
+power = 0.65
+cost  = 0.45
+notes = "트랜지스터=6=n EXACT, SRAM 내부 연산 최적, 리프레시 불필요"
+
+[[candidate]]
+level = 0
+id    = "DRAM_12bank"
+label = "DRAM 12뱅크 (sigma=12 뱅크 그룹, 고밀도, 대용량)"
+n6    = 1.00
+perf  = 0.65
+power = 0.50
+cost  = 0.90
+notes = "뱅크=12=sigma EXACT, 최고 밀도, 리프레시 오버헤드 존재"
+
+[[candidate]]
+level = 0
+id    = "ReRAM_crossbar"
+label = "ReRAM 크로스바 (phi=2 단자, 아날로그 MVM, 비휘발)"
+n6    = 0.60
+perf  = 0.80
+power = 0.85
+cost  = 0.60
+notes = "단자=2=phi EXACT, 아날로그 행렬-벡터 곱셈, 가중치 저장"
+
+[[candidate]]
+level = 0
+id    = "PCM_4level"
+label = "PCM tau=4 레벨 (비휘발, 상변화, 멀티비트)"
+n6    = 0.80
+perf  = 0.55
+power = 0.75
+cost  = 0.70
+notes = "레벨=4=tau EXACT, 다중 비트 저장, 누적 연산 가능"
+
+[[candidate]]
+level = 0
+id    = "MRAM_STT"
+label = "MRAM STT (phi=2 상태, 무한 내구성, 비휘발 고속)"
+n6    = 0.60
+perf  = 0.70
+power = 0.80
+cost  = 0.55
+notes = "상태=2=phi EXACT, 스핀전달토크, 즉시 기동, 리프레시 불필요"
+
+[[candidate]]
+level = 0
+id    = "HBM_PIM"
+label = "HBM-PIM sigma=12 채널 (1024비트 버스, 최대 대역폭)"
+n6    = 1.00
+perf  = 0.95
+power = 0.55
+cost  = 0.35
+notes = "채널=12=sigma EXACT, 버스=1024=2^(sigma-phi), PIM 최대 대역폭"
+
+# =============================================================
+# 레벨 1: ComputeGranularity (연산 입도) — 6 후보
+#   n6: LUT=6(n) 비트, MAC=8(sigma-tau) 비트,
+#        트리깊이=4(tau), 오퍼랜드=2(phi)
+# =============================================================
+[[level]]
+name = "ComputeGranularity"
+
+[[candidate]]
+level = 1
+id    = "Bitwise_bulk"
+label = "비트와이즈 벌크 (phi=2 오퍼랜드, AND/OR/XOR, 대규모 병렬)"
+n6    = 0.60
+perf  = 0.40
+power = 0.95
+cost  = 0.95
+notes = "오퍼랜드=2=phi EXACT, 가장 단순한 PIM, 극대 병렬성"
+
+[[candidate]]
+level = 1
+id    = "MAC_8bit"
+label = "MAC sigma-tau=8 비트 (아날로그 곱누적, 크로스바 내적)"
+n6    = 1.00
+perf  = 0.90
+power = 0.80
+cost  = 0.60
+notes = "정밀도=8=sigma-tau EXACT, 아날로그 MVM, 최고 연산 밀도"
+
+[[candidate]]
+level = 1
+id    = "LUT_6input"
+label = "LUT n=6 입력 (구성 가능 함수, FPGA 유사)"
+n6    = 1.00
+perf  = 0.65
+power = 0.85
+cost  = 0.75
+notes = "LUT_입력=6=n EXACT, 임의 부울 함수, 재구성 가능"
+
+[[candidate]]
+level = 1
+id    = "ALU_per_bank"
+label = "뱅크당 ALU (sigma=12 연산 유닛, 디지털 정밀)"
+n6    = 1.00
+perf  = 0.75
+power = 0.70
+cost  = 0.65
+notes = "유닛=12=sigma EXACT, 뱅크 레벨 프로그래머블 연산"
+
+[[candidate]]
+level = 1
+id    = "Reduce_tau4"
+label = "리듀스 트리 tau=4 깊이 (이진 축약, sum/max/min)"
+n6    = 0.80
+perf  = 0.70
+power = 0.75
+cost  = 0.80
+notes = "깊이=4=tau EXACT, 대수적 지연시간, 집계 프리미티브"
+
+[[candidate]]
+level = 1
+id    = "Transpose_6cy"
+label = "전치 엔진 n=6 사이클 (행→열 변환, 데이터 재배치)"
+n6    = 1.00
+perf  = 0.55
+power = 0.80
+cost  = 0.80
+notes = "지연=6=n EXACT 사이클, 행렬 연산 필수, 레이아웃 변환"
+
+# =============================================================
+# 레벨 2: DataMovement (데이터 이동) — 6 후보
+#   n6: 뱅크그룹=12(sigma), 서브어레이=4(tau),
+#        파이프라인=6(n), 비트라인=24(J2)
+# =============================================================
+[[level]]
+name = "DataMovement"
+
+[[candidate]]
+level = 2
+id    = "Row_activate"
+label = "행 활성화 (전체 행 병렬 연산, 최대 처리량)"
+n6    = 0.50
+perf  = 0.85
+power = 0.55
+cost  = 0.80
+notes = "전체 행 활성화, 최고 대역폭, 전력 소모 큼"
+
+[[candidate]]
+level = 2
+id    = "Column_sense"
+label = "열 감지 (감지증폭기 연산, 수직 집계, 에너지 효율)"
+n6    = 0.50
+perf  = 0.70
+power = 0.80
+cost  = 0.80
+notes = "감지증폭기 논리, 열 방향 축약, 행보다 저전력"
+
+[[candidate]]
+level = 2
+id    = "BankGroup_12"
+label = "뱅크그룹 sigma=12 (독립 연산, 고처리량)"
+n6    = 1.00
+perf  = 0.90
+power = 0.65
+cost  = 0.65
+notes = "그룹=12=sigma EXACT, 독립 뱅크 레벨 병렬성"
+
+[[candidate]]
+level = 2
+id    = "Subarray_4"
+label = "서브어레이 tau=4 (세밀 활성화, 에너지 비례)"
+n6    = 0.80
+perf  = 0.55
+power = 0.90
+cost  = 0.85
+notes = "서브어레이=4=tau EXACT, 세밀 활성화, 에너지 비례 동작"
+
+[[candidate]]
+level = 2
+id    = "Pipeline_6"
+label = "파이프라인 n=6 단계 (오버랩 연산, 안정 처리량)"
+n6    = 1.00
+perf  = 0.80
+power = 0.75
+cost  = 0.70
+notes = "단계=6=n EXACT, 파이프라인 PIM 연산, 지속 처리량"
+
+[[candidate]]
+level = 2
+id    = "Broadcast_24"
+label = "브로드캐스트 J2=24 비트라인 (SIMD 유사, 균일 연산)"
+n6    = 0.80
+perf  = 0.75
+power = 0.70
+cost  = 0.75
+notes = "비트라인=24=J2 EXACT, 동일 연산 브로드캐스트, SIMD 시맨틱"
+
+# =============================================================
+# 레벨 3: Integration (통합 방식) — 6 후보
+#   n6: DDR5_랭크=2(phi), HBM_채널=12(sigma),
+#        CXL_타입=2(phi), 커맨드=24(J2) 비트
+# =============================================================
+[[level]]
+name = "Integration"
+
+[[candidate]]
+level = 3
+id    = "DDR5_PIM"
+label = "DDR5-PIM (phi=2 랭크, DIMM 내 연산, 호환 슬롯)"
+n6    = 0.60
+perf  = 0.55
+power = 0.70
+cost  = 0.90
+notes = "랭크=2=phi EXACT, 드롭인 교체, 표준 DDR5 슬롯"
+
+[[candidate]]
+level = 3
+id    = "HBM_PIM_12ch"
+label = "HBM-PIM sigma=12 채널 (1024비트, 최대 대역폭)"
+n6    = 1.00
+perf  = 0.95
+power = 0.60
+cost  = 0.40
+notes = "채널=12=sigma EXACT, 버스=1024=2^(sigma-phi), PIM 최대 대역폭"
+
+[[candidate]]
+level = 3
+id    = "CXL_type2"
+label = "CXL Type 2 (캐시 일관, 분산, 풀링 가능)"
+n6    = 0.50
+perf  = 0.80
+power = 0.65
+cost  = 0.55
+notes = "CXL 타입 2, 일관 디바이스 메모리, 랙 스케일 PIM 풀링"
+
+[[candidate]]
+level = 3
+id    = "Custom_24bit"
+label = "커스텀 버스 J2=24 비트 커맨드 (n=6 사이클 지연)"
+n6    = 1.00
+perf  = 0.85
+power = 0.75
+cost  = 0.50
+notes = "커맨드=24=J2 EXACT, 지연=6=n EXACT, PIM 전용 프로토콜"
+
+[[candidate]]
+level = 3
+id    = "LPDDR_PIM"
+label = "LPDDR-PIM (tau=4 채널, 모바일급, 저전압)"
+n6    = 0.80
+perf  = 0.50
+power = 0.90
+cost  = 0.85
+notes = "채널=4=tau EXACT, 모바일 PIM, 저전력 엣지 추론"
+
+[[candidate]]
+level = 3
+id    = "Optical_PIM"
+label = "광 인터커넥트 PIM (sigma=12 파장, 제로 열)"
+n6    = 1.00
+perf  = 0.90
+power = 0.95
+cost  = 0.30
+notes = "파장=12=sigma EXACT, 광 데이터 이동, 비트당 에너지 거의 제로"
+
+# =============================================================
+# 레벨 4: Workload (대상 워크로드) — 6 후보
+#   n6: 어텐션헤드=12(sigma), 그래프차수=6(n),
+#        정밀도=8(sigma-tau), DNA염기=4(tau)
+# =============================================================
+[[level]]
+name = "Workload"
+
+[[candidate]]
+level = 4
+id    = "LLM_attention"
+label = "LLM 어텐션 (sigma=12 헤드, QKV, 메모리 바운드)"
+n6    = 1.00
+perf  = 0.90
+power = 0.55
+cost  = 0.65
+notes = "헤드=12=sigma EXACT, 어텐션=메모리 바운드, PIM이 데이터 이동 제거"
+
+[[candidate]]
+level = 4
+id    = "Graph_n6"
+label = "그래프 순회 (평균 차수=n=6, 불규칙 접근)"
+n6    = 1.00
+perf  = 0.60
+power = 0.75
+cost  = 0.80
+notes = "평균차수=6=n EXACT, 불규칙 메모리 접근, PIM 최적 워크로드"
+
+[[candidate]]
+level = 4
+id    = "GEMM_int8"
+label = "GEMM INT8 (sigma-tau=8 비트 추론, AI 코어 연산)"
+n6    = 1.00
+perf  = 0.95
+power = 0.50
+cost  = 0.70
+notes = "정밀도=8=sigma-tau EXACT, 지배적 AI 워크로드, 연산 바운드"
+
+[[candidate]]
+level = 4
+id    = "Genome_align"
+label = "게놈 정렬 (DNA tau=4 염기, Smith-Waterman)"
+n6    = 0.80
+perf  = 0.70
+power = 0.80
+cost  = 0.75
+notes = "염기=4=tau EXACT, 동적 프로그래밍, 메모리 바운드, PIM 최적"
+
+[[candidate]]
+level = 4
+id    = "Recommendation"
+label = "추천 시스템 (sigma=12 임베딩 테이블, 희소 피처)"
+n6    = 1.00
+perf  = 0.85
+power = 0.65
+cost  = 0.70
+notes = "테이블=12=sigma EXACT, 희소 임베딩 수집, 메모리 용량 바운드"
+
+[[candidate]]
+level = 4
+id    = "Sparse_MoE"
+label = "Sparse MoE (n=6 활성 전문가, sigma=12 전체)"
+n6    = 1.00
+perf  = 0.85
+power = 0.60
+cost  = 0.60
+notes = "활성=6=n EXACT, 전체=12=sigma EXACT, 라우팅 + 메모리 접근 집중"
+
+# =============================================================
+# 호환성 규칙
+# =============================================================
+
+# SRAM-6T는 LUT 및 뱅크당 ALU 연산에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "SRAM_6T"
+then_level = 1
+then_ids   = "LUT_6input,ALU_per_bank"
+
+# ReRAM 크로스바는 아날로그 MAC 전용 설계
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "ReRAM_crossbar"
+then_level = 1
+then_ids   = "MAC_8bit,Reduce_tau4"
+
+# DRAM 12뱅크는 행/열 병렬 데이터 이동에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "DRAM_12bank"
+then_level = 2
+then_ids   = "Row_activate,BankGroup_12"
+
+# HBM-PIM은 GEMM/LLM 어텐션 워크로드에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 3
+if_id      = "HBM_PIM_12ch"
+then_level = 4
+then_ids   = "GEMM_int8,LLM_attention"
+
+# LPDDR-PIM은 엣지/모바일 워크로드 전용
+[[rule]]
+type       = "prefer"
+if_level   = 3
+if_id      = "LPDDR_PIM"
+then_level = 4
+then_ids   = "Recommendation,Graph_n6"
+
+# PCM은 아날로그 MAC 가중치 저장에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "PCM_4level"
+then_level = 1
+then_ids   = "MAC_8bit,Bitwise_bulk"
+
+# 광 인터커넥트 PIM은 뱅크그룹 병렬에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 3
+if_id      = "Optical_PIM"
+then_level = 2
+then_ids   = "BankGroup_12,Pipeline_6"
+
+# LLM 어텐션은 브로드캐스트 데이터플로우에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "LLM_attention"
+then_level = 2
+then_ids   = "Broadcast_24,BankGroup_12"
+
+# 그래프 순회는 세밀 활성화 필요
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "Graph_n6"
+then_level = 2
+then_ids   = "Subarray_4,Pipeline_6"
+
+# HBM-PIM 메모리는 HBM-PIM 통합에만 적합
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "HBM_PIM"
+then_level = 3
+then_ids   = "HBM_PIM_12ch,Optical_PIM"
