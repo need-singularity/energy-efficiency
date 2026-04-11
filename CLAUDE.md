@@ -46,7 +46,7 @@ sed -i '' 's/^\(@R n6-atlas-proved-theorems-\*\*thm-1\*\* .*\) \[7\]$/\1 [10*]/'
 
 ```
 rules     shared/rules/common.json                R0~R27 공통
-project   shared/rules/n6-architecture.json       N61~N66
+project   shared/rules/n6-architecture.json       N61~N65
 lock      shared/rules/lockdown.json              L0/L1/L2
 cdo       shared/rules/convergence_ops.json       CDO 수렴
 registry  shared/config/projects.json             7프로젝트
