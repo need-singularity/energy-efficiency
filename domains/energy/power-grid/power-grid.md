@@ -1,24 +1,4 @@
-# power-grid
-
-> 축: **energy** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# Power Grid
-
-전력망 분배. 1/2+1/3+1/6=1 Egyptian fraction power split.
-
-> Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-
-## 2. 목표
-
-
-
-# 궁극의 전력망 아키텍처 (Ultimate Power Grid) -- Consolidated Goal
+# 궁극의 전력망 아키텍처 — HEXA-GRID
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).
 > 현재: 🛸10 maturity / closure_grade 9 (bt_exact_pct 기반 추정).
