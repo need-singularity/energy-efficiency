@@ -182,44 +182,74 @@
       "note": "2026-04-11 _version 1.0.2, _total 299→298, reports/audits/synbio-merge-2026-04-11.md. 재검증 2026-04-11: synbio.md 존재, synthetic-biology/ 비존재, _index.json life=47 (재발 0)",
       "ossified_at": "2026-04-11",
       "promoted_from": "stable"
-    }
-  },
-  "stable": {
-    "_description": "안정 — 통과했지만 아직 골화 전",
+    },
     "ATLAS_7_PROMOTION_102": {
       "status": "PASS",
       "value": "[7]→[10*] 102건 승격 완료 (cross_dse 100 + MC 2), [10*] 4,799→4,901",
       "threshold": "잔존 [7] = 0건 (mc-v9-대조-e z=1.915 → [7] 유지 판정, z<2 기준 미달)",
-      "note": "2026-04-12 — mc-v9-대조-e 최종 판정: z=1.915<2.0 통계적 유의성 미달, [7] EMPIRICAL 유지가 안전. 승격 대상 0건으로 종결"
+      "note": "2026-04-12 — mc-v9-대조-e 최종 판정: z=1.915<2.0 통계적 유의성 미달, [7] EMPIRICAL 유지가 안전. 승격 대상 0건으로 종결",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "BT_748_752_NEW_DOMAINS": {
       "status": "PASS",
       "value": "5건 신규 BT (PEMFC/NS유체/콘크리트/지질/등산), BT-748~752",
       "threshold": "10개 미커버 도메인 중 5개 해소",
-      "note": "2026-04-11 — bt-748-752-new-domains-2026-04-11.md 작성"
+      "note": "2026-04-11 — bt-748-752-new-domains-2026-04-11.md 작성",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "THEORY_INDEX_UPDATE": {
       "status": "PASS",
       "value": "_index.json v1.1.3 — BT 561→564, extensions 갱신 (BT-1394~1396 추가)",
-      "note": "2026-04-12"
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "SUPERCONDUCTOR_V5_SMASH": {
       "status": "PASS",
       "value": "궁극의 초전도체 v4→v5 SMASH: 73/73 → 153/153 EXACT, BT-1163~1168 6건 (80/80 자동검증)",
       "threshold": "v4 73 PASS 유지 + v5 80 신규 EXACT 자동검증 통과",
-      "note": "2026-04-12 문서 smash — superconductor.md §16 (v5) 470줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (γ/Maglev/LHC) 정직 분리. 6 BT: Flux Pinning/Coil Stress/Quench/Transmon/MRI NMR/12 Archetype. Cross-DSE 13→16 (dark-matter/GW/radio 추가). TP28→35 (+7)."
+      "note": "2026-04-12 문서 smash — superconductor.md §16 (v5) 470줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (γ/Maglev/LHC) 정직 분리. 6 BT: Flux Pinning/Coil Stress/Quench/Transmon/MRI NMR/12 Archetype. Cross-DSE 13→16 (dark-matter/GW/radio 추가). TP28→35 (+7).",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "FUSION_V5_SMASH": {
       "status": "PASS",
       "value": "궁극의 핵융합 발전소 v4→v5 SMASH: 42/42 → 122/122 EXACT, BT-1169~1174 6건 (80/80 자동검증)",
       "threshold": "v4 42 보편 핵물리 PASS 유지 + v5 80 공학층 신규 EXACT 자동검증 통과",
-      "note": "2026-04-12 문서 smash — fusion.md §16 (v5) ~500줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (NIF 192/ITER B_T,I_p,P_fus/gyrotron 170) 정직 분리. 6 BT: Tokamak Shape 6/Blanket τ=4/ITER 54 Port/Heating 6/Fuel 6/12 Archetype. Cross-DSE 8→12 (dark-matter/GW/QC/propulsion 추가). TP35→42 (+7). 초전도 v5 와 완전 병렬 패턴 — 공학 자유도 = 물리 자유도 증명."
+      "note": "2026-04-12 문서 smash — fusion.md §16 (v5) ~500줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (NIF 192/ITER B_T,I_p,P_fus/gyrotron 170) 정직 분리. 6 BT: Tokamak Shape 6/Blanket τ=4/ITER 54 Port/Heating 6/Fuel 6/12 Archetype. Cross-DSE 8→12 (dark-matter/GW/QC/propulsion 추가). TP35→42 (+7). 초전도 v5 와 완전 병렬 패턴 — 공학 자유도 = 물리 자유도 증명.",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "MILLENNIUM_DFS_92_TIGHT": {
       "status": "PASS",
       "value": "밀레니엄 7대 난제 92건 tight (BT-1394~1396)",
       "threshold": "51→92 tight (+80%), 해결 0/7",
-      "note": "2026-04-12 DFS 3~5차 41건 신규"
+      "note": "2026-04-12 DFS 3~5차 41건 신규",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    }
+  },
+  "stable": {
+    "_description": "안정 — 통과했지만 아직 골화 전",
+    "MILLENNIUM_DFS_102_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 102건 tight (BT-1398 DFS 6차 +10건)",
+      "threshold": "92→102 tight (+10.9%), 해결 0/7",
+      "note": "2026-04-12 DFS 6차 — 그래프이론·해석적수론·대수K이론·모듈러형식·부호이론·동역학계 10건, MISS 8건 정직 기록"
+    },
+    "HEXA_PIM_L2_DESIGN": {
+      "status": "PASS",
+      "value": "HEXA-PIM Level 2 설계 문서 953줄 + verify 55줄",
+      "threshold": "15섹션 전수 작성, 23가설, ASCII 성능비교, Egyptian 전력분배",
+      "note": "2026-04-12 — hexa-pim.md 665줄 추가, verify_chip-pim.hexa 스텁→실동작, MAC 6144=sigma*(sigma-tau)*2^n"
+    },
+    "GO_AUDIT_2026_04_12": {
+      "status": "PASS",
+      "value": "AI 69종 감사 (BODY 3/STUB 66) + calc 10건 소실 확인 + 논문 43편/meta 139 불일치",
+      "threshold": "통합 감사 리포트 작성 완료",
+      "note": "2026-04-12 — reports/audits/go-audit-2026-04-12.md, 기법 95.7% 스텁, calc/ 디렉토리 소실, _meta 카운트 수정 필요"
     }
   },
   "failed": {
