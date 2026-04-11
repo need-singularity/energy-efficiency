@@ -1,23 +1,3 @@
-# learning-algorithm
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# Learning Algorithm — 학습 알고리즘
-
-Physical AI 학습: 강화학습, 모방학습, sim-to-real, 칩 연동 최적화.
-
-> Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-
-## 2. 목표
-
-
-
 # HEXA-LEARN — 궁극의 학습 알고리즘 아키텍처
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

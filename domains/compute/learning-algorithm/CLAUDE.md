@@ -4,7 +4,7 @@
 
 ## 파일
 - `learning-algorithm.md` — 15섹션 통합 본문
-- `verify.hexa` — 검증 실행 진입점
+- 검증코드는 도메인 본문 .md 에 ```python 블록으로 임베드됨
 - `CLAUDE.md` — 본 가이드
 
 ## 사용법
