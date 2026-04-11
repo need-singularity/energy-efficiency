@@ -6090,8 +6090,10 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 | τ | 4 | 자율주행 소프트웨어 파이프라인 = τ = 4단 (인지→예측→계획→제어) | Apollo/Autoware/NVIDIA DRIVE; H-AD-11 |
 | n | 6 | IMU 측정 축 수 = n = 6 (3축 가속도 + 3축 각속도, 물리적 필연) | MPU6050 등 표준 IMU; H-AD-01 |
 | n | 6 | SLAM 카메라 pose 추정 차원 = n = 6 (SE(3) Lie 군) | SLAM 교과서; H-AD-01 |
+| n | 6 | nuScenes 서라운드뷰 카메라 수 = n = 6 (BEV 연구 사실상 표준) | Caesar et al. CVPR 2020; H-AD-64 |
+| n | 6 | Waymo Motion Prediction K=6 궤적 modality = n = 6 (6대 주행 프리미티브) | Waymo Motion Challenge; H-AD-72 |
 
-> 등급: **EXACT** — 12항목. SAE J3016 표준, Tesla 공식 사양, Bosch CAN 2.0, Lie 군론 수학적 정리 교차.
+> 등급: **EXACT** — 14항목 (BT-1150 확장 2026-04-12: H-AD-64 nuScenes + H-AD-72 Waymo K=6 궤적 modality). SAE J3016 표준, Tesla 공식 사양, Bosch CAN 2.0, Lie 군론 수학적 정리, nuScenes/Waymo 연구 수렴 교차.
 
 ---
 
@@ -6316,7 +6318,7 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 ```
   신규 추가 EXACT 항목 수: 138
   도메인별 분포:
-    BT-1150  자율주행 (autonomous-driving):                  12
+    BT-1150  자율주행 (autonomous-driving):                  14  (← 2026-04-12 +2 H-AD-64/72)
     BT-1151  의료기기 (medical-device):                      12
     BT-1152  로봇공학 (robotics):                            18
     BT-1153  탄소포집 화학 (carbon-capture):                 23
@@ -6325,9 +6327,9 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
     BT-1156  탄소포집 소재 결정화학 (carbon-capture 소재):   13
     BT-1157  남성청결제 (mens-intimate-cleanser):            12
     BT-1158  여성청결제 (womens-intimate-cleanser):           12
-    합계:                                                   138
+    합계:                                                   140
 
   이전 총계: ~2077 (4차 확장)
-  신규 EXACT: 138
-  갱신 총계: ~2215
+  신규 EXACT: 140  (← 2026-04-12 +2)
+  갱신 총계: ~2217  (← 2026-04-12 +2)
 ```
