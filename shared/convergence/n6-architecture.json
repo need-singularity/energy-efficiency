@@ -40,6 +40,30 @@
       "ossified_at": "2026-04-11",
       "promoted_from": "go_loop_auto"
     },
+    "PRODUCTS_204_POSTSESSION": {
+      "status": "PASS",
+      "value": "204 제품 / 203 천장확인 / 195 AI지수=10 (40 섹션 SSOT)",
+      "threshold": "HEXA-BCI 재이관 + 고아 6섹션 신규 등록 (millennium/dimension/music/linguistics/crypto/astronomy)",
+      "note": "2026-04-11 GO 후속 — products.json 173→204 (+31), 34→40 섹션 (+6). README AUTO:ALIEN_INDEX 재생성 (149줄), AUTO:STATS 동기화. 잔존: paper 116 ghost / calc 10 / 미이관 MD 48",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_LINKS_717_RESOLVED": {
+      "status": "PASS",
+      "value": "319/445 RESOLVED = 71.7% (miss_other 0건)",
+      "threshold": "products.json 링크 무결성 0.7% → 58.2% → 71.7% (3단 점진 수렴)",
+      "note": "2026-04-11 GO 후속 (3차) — 미이관 MD 48건 매핑 적용 (Agent B 권장 테이블 기반, FOUND_INTEGRATED 46 + DIR 2 모두 적용) + breakthrough-theorems 23건 매핑 (theory/breakthroughs/) 추가. 잔존 MISS 126건은 100% paper 116 + calc 10 (SSOT 구멍, 별도 paper 작성/calc 정리 세션 필요)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_LINKS_771_RESOLVED": {
+      "status": "PASS",
+      "value": "343/445 RESOLVED = 77.1% (miss_other 0건, miss_paper 92, miss_calc 10)",
+      "threshold": "papers/tecs-l/ FOUND_ALT 24편 cp + path 갱신 (Agent C 권장)",
+      "note": "2026-04-11 GO 후속 (4차) — Agent C 발견 24편 FOUND_ALT (papers/tecs-l/ 23 + n6-architecture/papers/ 1) 모두 n6-architecture/papers/로 cp + products.json 25 path 갱신. n6-architecture/papers/ 13→36편. 잔존 MISS 102: paper 92 ghost (작성 필요, frontier 31 / chip 7 / civilization 7 / life-culture 6 / tech-industry 6 등) + calc 10 (kolon_n6_*)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
     "UNIQUENESS_PROOF": {
       "status": "PASS",
       "value": "z=4.02 (큰 수 Monte Carlo)",
@@ -132,30 +156,36 @@
       "note": "cross_dse_fusion.hexa 실행 → dse_cross_results.json 생성",
       "ossified_at": "2026-04-10",
       "promoted_from": "failed_resolved"
+    },
+    "PRODUCTS_164_173_RECOUNT": {
+      "status": "PASS",
+      "value": "164/173 제품 🛸10, 9개 비천장(🛸5 7건/🛸9 1건/🛸7 1건)",
+      "threshold": "products.json _meta 일관성 + ceiling 플래그 정합",
+      "note": "2026-04-11 드리프트 재계수 - PRODUCTS_118 ossified 유지(R10). 재검증 2026-04-11: sum(products)=total, alien_index_order 완전 일치, ufo10⟹ceiling=true 불변식 위반 0. 173→204 진화해도 불변식 유지(재발 0)",
+      "supersedes_check": "PRODUCTS_118 (ossified 불변, 새 항목으로 추가)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
+    },
+    "GOAL_MD_295_COMPLETE": {
+      "status": "PASS",
+      "value": "295/295 goal.md standalone 생성 완료",
+      "threshold": "domains/_index.json 전수 일대일 매핑",
+      "note": "2026-04-11 - GOAL_MD_20 ossified 유지(R10), 294개는 <name>.md 통합본에서 역추출 복원. 재검증 2026-04-11: find domains -name goal.md | wc -l = 295 (재발 0)",
+      "supersedes_check": "GOAL_MD_20 (ossified 불변)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
+    },
+    "SYNBIO_MERGED": {
+      "status": "PASS",
+      "value": "synbio + synthetic-biology 도메인 병합 완료",
+      "threshold": "1 canonical (domains/life/synbio/), 감사 리포트 존재",
+      "note": "2026-04-11 _version 1.0.2, _total 299→298, reports/audits/synbio-merge-2026-04-11.md. 재검증 2026-04-11: synbio.md 존재, synthetic-biology/ 비존재, _index.json life=47 (재발 0)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
     }
   },
   "stable": {
-    "_description": "안정 — 통과했지만 아직 골화 전",
-    "PRODUCTS_164_173_RECOUNT": {
-      "status": "STABLE",
-      "value": "164/173 제품 🛸10, 9개 비천장(🛸5 7건/🛸9 1건/🛸7 1건)",
-      "threshold": "products.json _meta 일관성 + ceiling 플래그 정합",
-      "note": "2026-04-11 드리프트 재계수 - PRODUCTS_118 ossified 유지(R10)",
-      "supersedes_check": "PRODUCTS_118 (ossified 불변, 새 항목으로 추가)"
-    },
-    "GOAL_MD_295_COMPLETE": {
-      "status": "STABLE",
-      "value": "295/295 goal.md standalone 생성 완료",
-      "threshold": "domains/_index.json 전수 일대일 매핑",
-      "note": "2026-04-11 - GOAL_MD_20 ossified 유지(R10), 294개는 <name>.md 통합본에서 역추출 복원",
-      "supersedes_check": "GOAL_MD_20 (ossified 불변)"
-    },
-    "SYNBIO_MERGED": {
-      "status": "STABLE",
-      "value": "synbio + synthetic-biology 도메인 병합 완료",
-      "threshold": "1 canonical (domains/life/synbio/), 감사 리포트 존재",
-      "note": "2026-04-11 _version 1.0.2, _total 299→298, reports/audits/synbio-merge-2026-04-11.md"
-    }
+    "_description": "안정 — 통과했지만 아직 골화 전"
   },
   "failed": {
     "_description": "실패 — 전부 해소됨"

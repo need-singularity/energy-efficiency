@@ -160,14 +160,111 @@ natural-science, marketing, digital-medical, mobility, tattoo-removal, keyboard,
   - frontier → `domains/life/neuro/goal.md` (DOM)
   - keyboard → `domains/compute/keyboard/goal.md` (DOM)
 
-## 후속 작업 (본 세션 범위 외)
+## GO 후속 (commit 457a3857 push 직후 즉시 발사)
 
-1. HEXA-BCI 1건 products.json 재이관 (후보: `digital-medical` 또는 신규 `bci`)
-2. energy +1 (HEXA-AUTO), audio +3 (BONE/EAR-CELL/SPEAKER) 드리프트 products.json 반영
-3. 고아 6섹션 (millennium/dimension/music/linguistics/crypto/astronomy) products.json 신규 섹션 등록
-4. `shared/convergence/n6-architecture.json` 에 신규 ossified `PRODUCTS_173_REMAP_582` 항목 추가 (R10 준수: 기존 PRODUCTS_118 불변, 새 항목 추가)
-5. paper 미작성 174건 — 별도 paper 작성 세션
-6. `sync_products_readme.hexa` 드라이런 (hexa 바이너리 SIGKILL 우회) + 실제 갱신 → 전체 README AUTO 블록 자동 동기화
+### 백그라운드 Agent 3발 (A·B·C)
+
+| # | Agent ID | 작업 | 상태 | 산출 |
+|:-:|---|------|:---:|------|
+| A | aca58117 | products.json 통합 (HEXA-BCI 재이관 + 고아 6섹션 신규 등록) | 완료 | 173→204 제품, 34→40 섹션 (+31, +6) |
+| B | ac86de86 | 미이관 MD 48건 조사 | 완료 | FOUND_INTEGRATED 46 + DIR 2 + MISSING 0 |
+| C | ab31c078 | papers SSOT 정합화 (139편 ghost) | 진행 중 | (대기) |
+
+### Agent A 결과 — products.json 173→204
+
+- 신규 제품 31: HEXA-BCI 1 + millennium 7 + dimension 7 + music 4 + linguistics 4 + crypto 4 + astronomy 4
+- 신규 섹션 6: millennium / dimension / music / linguistics / crypto / astronomy
+- _meta.total_products 173 → 204
+- _meta.alien_index_order 34 → 40
+- 작업 2·3 (energy HEXA-AUTO + audio BONE/EAR-CELL/SPEAKER) NOOP — 역방향 드리프트(products.json이 보유, README가 누락) → R5 SSOT 원칙상 README 측에서 sync 도구로 해결
+- 백업: `reports/audits/products-backup-2026-04-11-postsession.json`
+- 리포트: `reports/audits/products-postsession-additions-2026-04-11.md`
+
+### Agent B 결과 — 미이관 MD 48건 = MISSING 0건
+
+- FOUND_INTEGRATED 46 (95.8%): `domains/<axis>/<dom>/<dom>.md` 통합본에 `### 출처: <원본 nested>` 헤더로 흡수 완료
+- FOUND_ALT (DIR) 2 (4.2%): `domains/infra/environmental-protection/`
+- MISSING 0
+- 핵심: 작성 필요한 ghost 파일 0건 — products.json 링크 갱신만으로 MISS 48건 해소
+- 리포트: `reports/audits/stale-md-48-investigation-2026-04-11.md` (256줄)
+
+### 본체 — 48+23 매핑 적용 (일회성 migration)
+
+- 48건 매핑 (Agent B 권장 테이블) → products.json links/verify_script in-place 갱신
+- breakthrough-theorems 23건 추가 매핑 — 고아 6섹션의 모든 BT 링크가 `docs/breakthrough-theorems.md` (drift) → `theory/breakthroughs/breakthrough-theorems.md`
+- 백업: `reports/audits/products-backup-2026-04-11-pre48.json`
+- 검증 결과 (`os.path.exists` 실측):
+
+| 시점 | total | resolved | 완성도 |
+|------|---:|---:|---:|
+| 시작 | 416 | 3 | 0.7% |
+| Agent 4 | 416 | 242 | 58.2% |
+| Agent A 후 | 445 | 296 | 66.5% |
+| 48 매핑 후 | 445 | 296 | (재계산) |
+| **breakthrough-theorems 23 매핑 후** | **445** | **319** | **71.7%** |
+
+- 잔존 MISS 126: paper 116 + calc 10 + miss_other **0** ✅
+- ossified 신규: `PRODUCTS_LINKS_717_RESOLVED` (R10 준수, 기존 PRODUCTS_118/173/204 모두 불변)
+
+### 본체 — README ALIEN_INDEX 블록 v2 재생성
+
+- 기존 131라인 (34섹션 173제품) → 신규 149라인 (40섹션 204제품)
+- AUTO:ALIEN_INDEX 마커 사이만 in-place 교체 (R5 마커 기반)
+- AUTO:STATS 동기화: `Products: 173 → 204 (40 섹션, 천장 203, AI지수=10 195)`
+
+### Agent C 결과 — papers SSOT 정합화 감사
+
+- 선언 139편 vs 실측 38편 (gap 101) — 보유율 27.3%
+- products.json paper 116 분류:
+  - **FOUND_ALT 24편**: `/Users/ghost/Dev/papers/tecs-l/` 23편 + `n6-architecture/papers/` 1편
+  - **GHOST_CEIL 92편**: 디스크 어디에도 없음, 전부 ceiling=true 섹션
+  - ORPHAN_DECLARED 11 / ORPHAN_DISK 14
+- frontier 단독 31편 ghost (33.7%)
+- Top 3 우선 작성: n6-hexa-neuro / n6-antimatter-factory / n6-hexa-mind
+- 리포트: `reports/audits/papers-ssot-ghost-audit-2026-04-11.md` (328줄)
+
+### 본체 — Agent C FOUND_ALT 24편 cp + path 갱신
+
+사용자 옵션 (A) 선택 — 본 세션 cp 실행:
+- 23편 cp `/Users/ghost/Dev/papers/tecs-l/n6-*-paper.md` → `n6-architecture/papers/`
+- 1편 (n6-synthetic-biology-paper.md) 이미 존재, skipped
+- products.json path 25건 갱신: `docs/paper/...` → `papers/...`
+- n6-architecture/papers/ 13편 → **36편** (+23)
+- 백업: `reports/audits/products-backup-2026-04-11-pre24papers.json`
+
+### 최종 완성도 진전
+
+| 시점 | total | resolved | 완성도 | 증분 |
+|------|---:|---:|---:|---:|
+| 시작 | 416 | 3 | 0.7% | — |
+| Agent 4 (242 path) | 416 | 242 | 58.2% | +57.5%p |
+| Agent A (+31 제품) | 445 | 296 | 66.5% | +8.3%p |
+| 미이관 MD 48 매핑 | 445 | 296 | (재계산) | — |
+| breakthrough-theorems 23 매핑 | 445 | 319 | 71.7% | +5.2%p |
+| **FOUND_ALT 24편 cp+매핑** | **445** | **343** | **77.1%** | **+5.4%p** |
+
+- 잔존 MISS 102:
+  - paper 92 ghost (작성 필요, frontier 31 + chip 7 + civilization 7 + life-culture 6 + tech-industry 6 + ...)
+  - calc 10 (kolon_n6_*.py 미존재)
+  - miss_other = 0 ✅
+
+### convergence ossified 최종 (R10 준수, 신규 항목만 추가)
+
+| 신규 ossified | value | promoted |
+|---|---|---|
+| `PRODUCTS_173_REMAP_582` | 173 제품 / 0.7%→58.2% | 1차 |
+| `PRODUCTS_204_POSTSESSION` | 204 제품 / 40 섹션 (+31, +6) | 2차 |
+| `PRODUCTS_LINKS_717_RESOLVED` | 319/445 = 71.7% | 3차 |
+| `PRODUCTS_LINKS_771_RESOLVED` | 343/445 = 77.1% | 4차 |
+
+기존 PRODUCTS_118 / 다른 작업의 PRODUCTS_164_173_RECOUNT 모두 불변 보존.
+
+## 후속 작업 (본 세션 범위 외, 잔존 MISS 126)
+
+1. **paper 116 ghost** — papers/_registry.json 139편 선언 vs 디스크 13편 + 외부 1편 = 125편 ghost. Agent C가 정합화 분석 중. paper 작성 또는 dangling 제거 결정 필요
+2. **calc 10 미존재** — `calc/kolon_n6_*.py` 등 (코오롱 관련) 별도 정리
+3. `sync_products_readme.hexa` 드라이런 (hexa 바이너리 SIGKILL 우회) + 실행 → AUTO:SUMMARY_<id> / AUTO:FOOTER_<id> 마커 일괄 동기화 (40섹션 204제품 본문 자동 생성)
+4. README 본문 섹션 추가: products.json에는 추가됐지만 README 본문에는 없는 6신규 섹션 (HEXA-BCI 1건 외 동일) — sync 도구로 자동 처리 가능
 
 ## 규칙 준수 체크
 
