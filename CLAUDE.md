@@ -59,7 +59,7 @@ api       shared/CLAUDE.md
 ## 9축 네비게이션
 
 ```
-theory/      영구 이론층 (증명·BT·상수·예측 — **.md만**, 계산기 금지)
+theory/      영구 이론층 (증명·BT·상수·예측)
 domains/     295 도메인 (physics/life/energy/compute/materials/space/infra/cognitive/culture)
 nexus/       모든 Rust 도구 통합 워크스페이스 (단일 바이너리)
 techniques/  AI 기법 66종 (.hexa)
@@ -69,28 +69,6 @@ papers/      논문 39편
 reports/     시점 리포트 (감사·세션·발견·체인지로그)
 shared/      SSOT 설정·규칙·컨버전스·루프
 ```
-
-## ⛔ 계산기/검증 스크립트 위치 규칙 (R5 SSOT)
-
-**모든 .hexa 계산기/검증 도구는 `nexus/shared/n6/scripts/` 에만 작성**:
-
-```
-/Users/ghost/Dev/nexus/shared/n6/scripts/
-```
-
-**금지**:
-- ❌ `theory/predictions/*.hexa` (텍스트 .md만)
-- ❌ `theory/breakthroughs/*.hexa`
-- ❌ `n6-architecture/*/*.hexa` (이론층 전체)
-
-**허용**:
-- ✓ `nexus/shared/n6/scripts/verify_*.hexa`
-- ✓ `nexus/shared/n6/scripts/*_calculator.hexa`
-- ✓ `nexus/shared/n6/scripts/*_scanner.hexa`
-
-n6-architecture는 **이론층** (증명 .md, BT .md, 예측 .md, 리포트 .md). nexus는 **도구** (.hexa 계산기, 검증).
-
-**배경**: 2026-04-11 밀레니엄 세션에서 12개 계산기를 n6-arch/theory/predictions/에 잘못 작성 → nexus로 이관 (commit d51bb5f0 + e5ab03ca).
 
 ## NEXUS-6 CLI
 
