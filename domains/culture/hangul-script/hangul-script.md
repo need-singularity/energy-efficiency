@@ -1,14 +1,3 @@
-# hangul-script
-
-> 축: **culture** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 한글/문자체계 — n=6 인코딩 아키텍처
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

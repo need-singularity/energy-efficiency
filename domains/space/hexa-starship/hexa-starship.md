@@ -1,14 +1,3 @@
-# hexa-starship
-
-> 축: **space** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-STARSHIP Mk.10 — 궁극의 재사용 발사체 특이점 설계
 
 **Date**: 2026-04-05

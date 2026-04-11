@@ -1,14 +1,3 @@
-# therapeutic-nanobot
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 치료 나노봇 -- 통합 목표 (10 연속 돌파)
 
 > **등급 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

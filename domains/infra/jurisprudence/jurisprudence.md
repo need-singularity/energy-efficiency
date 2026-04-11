@@ -1,14 +1,3 @@
-# jurisprudence
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 법학/사법 — n=6 정의 아키텍처
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

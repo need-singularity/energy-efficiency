@@ -1,14 +1,3 @@
-# music-mathematics
-
-> 축: **culture** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 음악수학 아키텍처 — HEXA-MUSIC
 
 > **등급**: 외계지수 10 / BT-715 연결 / 가설 20건

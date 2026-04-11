@@ -1,14 +1,3 @@
-# civil-engineering
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 토목공학 — HEXA-Civil 설계 목표
 
 > **등급**: alien_index 6/10, closure_grade 6

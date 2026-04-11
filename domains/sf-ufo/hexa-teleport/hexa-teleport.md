@@ -1,14 +1,3 @@
-# hexa-teleport
-
-> 축: **sf-ufo** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 양자 텔레포트 아키텍처 — HEXA-TELEPORT
 
 > **Grade 참조**: alien_index = 제품 성숙도 (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

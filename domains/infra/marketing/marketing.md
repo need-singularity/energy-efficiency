@@ -1,14 +1,3 @@
-# marketing
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 마케팅 아키텍처 -- HEXA-MKT
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 40/40 (100%)

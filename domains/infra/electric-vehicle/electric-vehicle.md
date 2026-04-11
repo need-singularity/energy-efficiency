@@ -1,26 +1,3 @@
-# electric-vehicle
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: electric-vehicle
-bt_start: 27
-bt_count: 8
-alien_level: 10
-constants_exact: 24
-constants_count: 28
-levels: ["배터리", "모터", "인버터", "충전", "차량"]
-cross_dse: ["battery-architecture", "power-electronics", "autonomous-driving", "autonomous-drone", "autonomous-ship"]
-note: "LFP-6S sigma=12셀, IPM-6pole n=6극, SiC-6phase sigma=12 IGBT, V2G-Bidir phi=2, City-48V sigma*tau=48V, n6_avg=86%"
----
-
 # 궁극의 전기차 -- HEXA-EV
 
 > alien_index: 10 | BT: BT-27/43/57/80/82/84 외 | 상수 24/28 EXACT (85.7%)

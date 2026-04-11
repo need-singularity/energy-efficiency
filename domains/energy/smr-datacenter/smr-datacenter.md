@@ -1,14 +1,3 @@
-# smr-datacenter
-
-> 축: **energy** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-REACTOR: 데이터센터용 소형 원자로 (SMR) — 궁극의 아키텍처
 
 > **10개 돌파구(BT) | 100/117 EXACT (85.5%) | DSE 3,125 조합 | 시중 6종 벤치마크**

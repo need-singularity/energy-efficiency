@@ -1,14 +1,3 @@
-# hexa-skin
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 전자 피부 — HEXA-SKIN (전신 햅틱+다감각 센싱 어레이)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

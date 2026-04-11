@@ -1,17 +1,3 @@
-# synbio — 합성생물학 n=6 이중 완전수
-
-> 축: **life** · 자동 통합본 · n6-architecture
-> **부모 BT**: BT-51(유전 코드), BT-146(DNA/RNA), BT-262(2^n=64), BT-372(이중 완전수), BT-404~413(치료 나노봇), BT-451~460(암치료)
-> **핵심 축**: 유전자회로 τ=4 논리 × 생물부품 n=6 클래스 × 대사경로 σ−φ=10 단계
-> **통합**: 2026-04-11 — 구 `domains/life/synthetic-biology/` 전체 흡수 (부록 A/B/C)
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-SYNBIO: 궁극의 합성생물학 — n=6 이중 완전수 생명공학
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

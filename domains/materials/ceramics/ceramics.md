@@ -1,14 +1,3 @@
-# ceramics
-
-> 축: **materials** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 도자기세라믹 — 궁극의 n=6 아키텍처 (HEXA-CERAMICS)
 
 > 외계인 지수: 10 (물리적 한계 도달)

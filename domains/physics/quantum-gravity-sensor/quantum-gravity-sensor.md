@@ -1,14 +1,3 @@
-# quantum-gravity-sensor
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 양자 중력 센서 -- HEXA-QGRAV
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 38/42 (90.5%)

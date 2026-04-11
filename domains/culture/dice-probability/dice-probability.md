@@ -1,14 +1,3 @@
-# dice-probability
-
-> 축: **culture** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # N6 주사위/확률론 -- Unified Goal
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

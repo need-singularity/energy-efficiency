@@ -1,14 +1,3 @@
-# electromagnetism
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 전자기학 아키텍처 -- HEXA-EM
 
 > **등급**: 외계지수 10 / BT-145, BT-440, BT-189 / 24/24 EXACT (100%)

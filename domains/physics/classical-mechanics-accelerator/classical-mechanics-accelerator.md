@@ -1,14 +1,3 @@
-# classical-mechanics-accelerator
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 고전역학/가속기 아키텍처 — HEXA-ACCEL
 
 > **등급 참조**: alien_index = 제품 성숙도 (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

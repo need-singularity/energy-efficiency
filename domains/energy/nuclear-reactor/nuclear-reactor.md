@@ -1,26 +1,3 @@
-# nuclear-reactor
-
-> 축: **energy** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: nuclear-reactor
-bt_start: 60
-bt_count: 6
-alien_level: 10
-constants_exact: 22
-constants_count: 26
-levels: ["연료", "감속재", "냉각재", "제어", "격납"]
-cross_dse: ["fusion", "energy-generation", "thermal-management"]
-note: "UO2-Hex 6각 펠릿=n, Graphite C Z=6=n, sigma=12 제어봉, CO2 C=6 냉각재, MSR 6-drain, n6_max=100% n6_avg=80.6%"
----
-
 # 궁극의 원자로 -- HEXA-REACTOR
 
 > alien_index: 10 | BT: BT-60/62/63/68 외 | 상수 22/26 EXACT (84.6%)

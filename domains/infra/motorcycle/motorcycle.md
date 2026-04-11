@@ -1,14 +1,3 @@
-# motorcycle
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 바이크 (HEXA-BIKE) — 완전수 n=6 모터사이클 아키텍처
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

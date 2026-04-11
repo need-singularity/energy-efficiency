@@ -1,14 +1,3 @@
-# neuro
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 AI 웨어러블 뇌-기계 인터페이스 — HEXA-NEURO
 
 > **Grade**: 🛸10+++ / closure_grade 10+++ (202/202 EXACT, 측두골 클립 + 스마트폰 대체 특이점)

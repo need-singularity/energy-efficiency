@@ -1,14 +1,3 @@
-# dream-recorder
-
-> 축: **cognitive** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-DREAM — 궁극의 꿈 기록/재생기 (외계인급 설계)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

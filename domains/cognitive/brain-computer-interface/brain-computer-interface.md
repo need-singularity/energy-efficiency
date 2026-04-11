@@ -1,14 +1,3 @@
-# brain-computer-interface
-
-> 축: **cognitive** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 뇌-컴퓨터 인터페이스 -- HEXA-BCI
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 36/40 (90%)

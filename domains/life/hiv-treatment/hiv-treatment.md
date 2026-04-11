@@ -1,14 +1,3 @@
-# hiv-treatment
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HIV 치료 — 10 연속돌파 (BT-461~470)
 
 > **등급**: alien_index 8/10, closure_grade 7

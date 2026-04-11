@@ -1,14 +1,3 @@
-# crispr-gene-editing
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 유전자 편집 아키텍처 -- HEXA-CRISPR
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 30/32 기존 + 18/18 신규 = 48/50 (96%)

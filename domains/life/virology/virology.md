@@ -1,14 +1,3 @@
-# virology
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 바이러스학 (Virology) -- 통합 목표 (n=6 캡시드-팬데믹 완전 아키텍처)
 
 > **등급 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

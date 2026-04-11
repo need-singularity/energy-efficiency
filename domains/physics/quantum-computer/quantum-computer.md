@@ -1,26 +1,3 @@
-# quantum-computer
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: quantum-computer
-bt_start: 49
-bt_count: 6
-alien_level: 10
-constants_exact: 20
-constants_count: 24
-levels: ["기반", "공정", "코어", "엔진", "시스템"]
-cross_dse: ["chip-architecture", "quantum-computing", "quantum-error-correction"]
-note: "NeutralAtom n=6 원자, SurfaceCode sigma=12 data qubit, Clifford tau*n=24 gate, Grover sopfr 반복, Modular phi=2 모듈, kissing number BT-49"
----
-
 # 궁극의 양자컴퓨터 -- HEXA-QUANTUM
 
 > alien_index: 10 | BT: BT-49 외 | 상수 20/24 EXACT (83.3%)

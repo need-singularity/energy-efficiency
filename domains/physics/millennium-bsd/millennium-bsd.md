@@ -1,14 +1,3 @@
-# millennium-bsd
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-546: 버치-스위너턴다이어 추측 -- 타원곡선 n=6 모듈러 뼈대
 
 > **BT**: BT-546 | **EXACT**: 14/14 (기존 10+신규 4) | **등급**: Three stars

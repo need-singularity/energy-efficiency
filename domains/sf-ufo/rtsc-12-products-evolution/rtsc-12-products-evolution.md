@@ -1,14 +1,3 @@
-# rtsc-12-products-evolution
-
-> 축: **sf-ufo** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 실시간 반도체 12제품 진화 아키텍처 — RTSC-12
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

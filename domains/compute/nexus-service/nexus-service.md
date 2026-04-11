@@ -1,14 +1,3 @@
-# nexus-service
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 AI 서비스 플랫폼 — HEXA-NEXUS
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

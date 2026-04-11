@@ -1,14 +1,3 @@
-# millennium-riemann
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-541: 리만 가설 -- 제타 함수 n=6 오중 수렴
 
 > **BT**: BT-541 | **EXACT**: 20/20 (기존 12 + 2020s 8, CLOSE 3, MISS 0) | **등급**: Three stars

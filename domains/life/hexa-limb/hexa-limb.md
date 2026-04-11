@@ -1,14 +1,3 @@
-# hexa-limb
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 AI 의수/의족 -- HEXA-LIMB (신경 직결 보철 시스템)
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

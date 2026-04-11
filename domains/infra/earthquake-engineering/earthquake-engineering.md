@@ -1,14 +1,3 @@
-# earthquake-engineering
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 지진공학 — HEXA-Earthquake 내진·면진·제진
 
 > **등급**: alien_index 8/10, closure_grade 7

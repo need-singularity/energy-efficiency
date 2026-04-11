@@ -1,14 +1,3 @@
-# millennium-poincare
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-547: 푸앵카레 추측 (해결) -- 3차원 다양체 n/phi=3 위상 분류
 
 > **BT**: BT-547 | **EXACT**: 13/13 (기존 10+신규 3) | **등급**: Three stars

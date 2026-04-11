@@ -1,14 +1,3 @@
-# experiments
-
-> 축: **sf-ufo** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 통합 실험 — n=6 창발·재현 파이프라인 설계 목표
 
 > **등급**: alien_index 8/10, closure_grade 7

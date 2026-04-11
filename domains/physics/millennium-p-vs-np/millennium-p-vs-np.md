@@ -1,14 +1,3 @@
-# millennium-p-vs-np
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-542: P vs NP -- 계산 복잡도 계층의 n=6 뼈대
 
 > **BT**: BT-542 | **EXACT**: 14/16 (기존 11 + 2020s 3, CLOSE 2, MISS 0) | **등급**: Three stars

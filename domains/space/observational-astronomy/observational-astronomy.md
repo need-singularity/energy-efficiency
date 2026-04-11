@@ -1,14 +1,3 @@
-# observational-astronomy
-
-> 축: **space** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 관측천문학 — HEXA-Astro 설계 목표
 
 > **등급**: alien_index 8/10, closure_grade 7

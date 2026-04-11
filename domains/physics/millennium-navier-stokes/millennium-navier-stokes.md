@@ -1,14 +1,3 @@
-# millennium-navier-stokes
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-544: 나비에-스토크스 -- 유체역학 n=6 텐서 구조
 
 > **BT**: BT-544 | **EXACT**: 29/29 (기존 16 + 2020s 13, CLOSE 1) | **등급**: Three stars

@@ -1,14 +1,3 @@
-# biometrics
-
-> 축: **culture** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 생체인식 — HEXA-Biometrics 다중모달
 
 > **등급**: alien_index 7/10, closure_grade 6

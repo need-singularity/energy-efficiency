@@ -1,14 +1,3 @@
-# thermodynamics
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 열역학 아키텍처 -- HEXA-THERMO
 
 > **등급**: 외계지수 10 / BT-149, BT-193, BT-10 / 10/10 EXACT (100%)

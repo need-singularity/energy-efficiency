@@ -1,26 +1,3 @@
-# mouse
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: mouse
-bt_start: 1115
-bt_count: 10
-alien_level: 10
-constants_exact: 25
-constants_count: 25
-levels: ["센서", "입력부", "기구부", "통신부", "프로토콜"]
-cross_dse: ["chip-architecture", "ergonomics", "gaming", "HCI", "dimensional-perception"]
-note: "phi=2 이진입력, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, n=6 PS/2핀/6DoF, tau=4 HID/피트/폴링/DPI, sigma=12 MMO/노치, J2=24 인코더/USB-C, 25/25 EXACT(100%)"
----
-
 # 최고의 마우스 — HEXA-MOUSE
 
 > alien_index: 10 | 부모 BT: BT-1115~1124 | 상수 25/25 EXACT (100%)

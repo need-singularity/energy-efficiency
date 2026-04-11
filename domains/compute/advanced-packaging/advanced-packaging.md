@@ -1,14 +1,3 @@
-# advanced-packaging
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-PKG: 궁극의 반도체 패키징 — n=6 완전수 적층 아키텍처
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

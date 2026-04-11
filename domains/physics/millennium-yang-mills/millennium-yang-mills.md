@@ -1,14 +1,3 @@
-# millennium-yang-mills
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # BT-543: 양-밀스 질량갭 -- QCD 게이지 구조 n=6 완전 파라미터화
 
 > **BT**: BT-543 | **EXACT**: 18/19 (기존 10 + 확장 6 + 2020s 8, MISS 1) | **등급**: Three stars

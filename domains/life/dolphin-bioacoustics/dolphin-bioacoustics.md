@@ -1,14 +1,3 @@
-# dolphin-bioacoustics
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 돌고래 생체음향 아키텍처 — HEXA-DOLPHIN
 
 > **Grade 참조**: alien_index = 제품 성숙도 (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

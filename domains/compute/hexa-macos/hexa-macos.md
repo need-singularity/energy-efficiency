@@ -1,14 +1,3 @@
-# hexa-macos
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 macOS — HEXA-macOS Architecture
 
 > **Grade**: 🛸10 alien_index (물리 한계 도달) / closure_grade 11 (meta-closure 후보)

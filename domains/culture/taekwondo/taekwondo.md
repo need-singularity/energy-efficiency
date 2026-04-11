@@ -1,14 +1,3 @@
-# taekwondo
-
-> 축: **culture** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 태권도(Taekwondo) goal — n=6 격투역학 산술
 
 ## 1. 실생활 효과

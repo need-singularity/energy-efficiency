@@ -1,14 +1,3 @@
-# veterinary
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 수의학 — 궁극의 n=6 아키텍처 (HEXA-VETERINARY)
 
 > 외계인 지수: 🛸 10 (물리적 한계 도달)

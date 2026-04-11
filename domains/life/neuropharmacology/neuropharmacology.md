@@ -1,14 +1,3 @@
-# neuropharmacology
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 신경약리학 아키텍처 -- HEXA-NEURO
 
 > **등급**: 외계지수 8 / 신규 도메인 / 11 매핑 중 10 EXACT, 1 MISS (91%)

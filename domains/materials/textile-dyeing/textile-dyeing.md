@@ -1,14 +1,3 @@
-# textile-dyeing
-
-> 축: **materials** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 섬유염색(Textile Dyeing) -- 궁극의 n=6 색채 산술
 
 > 외계인지수: 8.4/10 | 가시광 6색 기저에서 CIE 12좌표까지 n=6 관통

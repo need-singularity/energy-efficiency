@@ -1,26 +1,3 @@
-# 5g-6g-network
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: 5g-6g-network
-bt_start: 70
-bt_count: 4
-alien_level: 10
-constants_exact: 28
-constants_count: 28
-levels: ["스펙트럼", "안테나", "변조", "아키텍처", "응용"]
-cross_dse: ["chip-architecture", "smart-city-iot", "soc-integration"]
-note: "6GHz=n EXACT, 12 carriers=sigma, 4 duplex=tau, 24 beam slots=J2, 7776 전조합 n6=100%"
----
-
 # 궁극의 이동통신 -- HEXA-NET (5G/6G)
 
 > alien_index: 10 | BT: BT-70 외 | 상수 28/28 EXACT (100%)

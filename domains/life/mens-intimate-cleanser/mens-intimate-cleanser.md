@@ -1,14 +1,3 @@
-# mens-intimate-cleanser
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 남성 청결제 — 궁극 목표
 
 > **25/25 EXACT (100%)** | HEXA-WASH M 제형 | pH=n, 계면활성제=σ, 해부학=n

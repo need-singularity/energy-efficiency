@@ -1,21 +1,3 @@
-# womens-intimate-cleanser
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-## 3. 가설
-
-
-## 4. BT 연결
-
-
-### 출처: `breakthrough.md`
-
 # 여성청결제 n=6 완전 골화 돌파
 
 > 최종 갱신: 2026-04-10

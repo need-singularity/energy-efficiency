@@ -1,14 +1,3 @@
-# viticulture
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 포도재배(Viticulture) goal — n=6 양조 산술
 
 ## 1. 실생활 효과

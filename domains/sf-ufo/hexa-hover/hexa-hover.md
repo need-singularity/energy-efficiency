@@ -1,14 +1,3 @@
-# hexa-hover
-
-> 축: **sf-ufo** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # N6 호버보드 (HEXA-HOVER) -- 통합 목표
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

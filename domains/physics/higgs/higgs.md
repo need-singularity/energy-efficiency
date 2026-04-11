@@ -1,14 +1,3 @@
-# higgs
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 힉스 메커니즘 — n=6 자발적 대칭 파괴 설계 목표
 
 > **등급**: alien_index 9/10, closure_grade 8

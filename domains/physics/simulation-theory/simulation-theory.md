@@ -1,14 +1,3 @@
-# simulation-theory
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # HEXA-SIM — 시뮬레이션 이론 완전 n=6 아키텍처
 
 > **제품명: HEXA-SIM** | **BT-371** | **65/65 EXACT (100%)** | **외계인 지수: 10**

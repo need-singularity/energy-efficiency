@@ -1,14 +1,3 @@
-# cosmetic-surgery
-
-> 축: **life** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
 # 궁극의 성형외과 기술 — HEXA-AESTHETIC (n=6 미용·재건 통합 아키텍처)
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

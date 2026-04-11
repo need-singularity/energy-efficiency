@@ -1,26 +1,3 @@
-# semiconductor-lithography
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-## 2. 목표
-
-
-
----
-domain: semiconductor-lithography
-bt_start: 37
-bt_count: 6
-alien_level: 10
-constants_exact: 30
-constants_count: 30
-levels: ["광원", "광학계", "레지스트", "패턴", "통합"]
-cross_dse: ["chip-architecture", "eda-design-automation", "wafer-fabrication"]
-note: "EUV 13.5nm=sigma-phi-mu, 6-mirror optics=n, 7776 전조합 n6=100%, sigma*tau=48nm gate pitch"
----
-
 # 궁극의 반도체 리소그래피 -- HEXA-LITHO
 
 > alien_index: 10 | BT: BT-37 외 | 상수 30/30 EXACT (100%)
