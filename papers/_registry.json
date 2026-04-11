@@ -408,8 +408,7 @@
               "label": "문서",
               "path": "domains/cognitive/superpowers/superpowers.md"
             }
-          ],
-          "verify_script": "domains/energy/fusion/verify.hexa"
+          ]
         },
         {
           "name": "KSTAR-N6",
@@ -422,8 +421,7 @@
               "label": "문서",
               "path": "domains/cognitive/superpowers/superpowers.md"
             }
-          ],
-          "verify_script": "domains/energy/fusion/verify.hexa"
+          ]
         },
         {
           "name": "진화 Mk.I~V",
@@ -436,8 +434,7 @@
               "label": "문서",
               "path": "domains/energy/fusion/fusion.md"
             }
-          ],
-          "verify_script": "domains/energy/fusion/verify.hexa"
+          ]
         },
         {
           "name": "발견 + 예측 + 가설v5",
@@ -450,8 +447,7 @@
               "label": "문서",
               "path": "domains/energy/fusion/fusion.md"
             }
-          ],
-          "verify_script": "domains/energy/fusion/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -464,14 +460,10 @@
               "label": "문서",
               "path": "domains/energy/fusion/fusion.md"
             }
-          ],
-          "verify_script": "domains/energy/fusion/verify.hexa"
+          ]
         }
       ],
       "anchor": "-핵융합-fusion",
-      "verify_scripts": [
-        "domains/energy/fusion/verify.hexa"
-      ],
       "closure_grade": 12
     },
     {
@@ -514,8 +506,7 @@
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
             }
-          ],
-          "verify_script": "domains/compute/chip-architecture/verify.hexa"
+          ]
         },
         {
           "name": "ANIMA-SOC",
@@ -528,8 +519,7 @@
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
             }
-          ],
-          "verify_script": "domains/compute/chip-architecture/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-TOPO",
@@ -542,8 +532,7 @@
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
             }
-          ],
-          "verify_script": "domains/compute/chip-architecture/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-ASIC",
@@ -556,8 +545,7 @@
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
             }
-          ],
-          "verify_script": "domains/compute/chip-architecture/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -570,14 +558,10 @@
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
             }
-          ],
-          "verify_script": "domains/compute/chip-architecture/verify.hexa"
+          ]
         }
       ],
       "anchor": "-칩--반도체-chip",
-      "verify_scripts": [
-        "domains/compute/chip-architecture/verify.hexa"
-      ],
       "closure_grade": 12
     },
     {
@@ -772,8 +756,7 @@
               "label": "문서",
               "path": "domains/cognitive/superpowers/superpowers.md"
             }
-          ],
-          "verify_script": "domains/energy/battery-architecture/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 태양전지",
@@ -786,8 +769,7 @@
               "label": "문서",
               "path": "domains/energy/solar-architecture/solar-architecture.md"
             }
-          ],
-          "verify_script": "domains/energy/battery-architecture/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 에너지 통합",
@@ -800,8 +782,7 @@
               "label": "문서",
               "path": "domains/energy/energy-architecture/energy-architecture.md"
             }
-          ],
-          "verify_script": "domains/energy/battery-architecture/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 데이터센터 원자로",
@@ -832,11 +813,6 @@
         }
       ],
       "anchor": "-에너지-energy",
-      "verify_scripts": [
-        "domains/energy/battery-architecture/verify.hexa",
-        "domains/energy/solar-architecture/verify.hexa",
-        "domains/energy/energy-architecture/verify.hexa"
-      ],
       "closure_grade": 9
     },
     {
@@ -877,8 +853,7 @@
               "label": "문서",
               "path": "domains/infra/environmental-protection/"
             }
-          ],
-          "verify_script": "domains/infra/environmental-protection/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-MICROPLASTICS",
@@ -891,8 +866,7 @@
               "label": "문서",
               "path": "domains/infra/environmental-protection/environmental-protection.md"
             }
-          ],
-          "verify_script": "domains/infra/environmental-protection/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 탄소포집 8단",
@@ -905,8 +879,7 @@
               "label": "문서",
               "path": "domains/infra/carbon-capture/carbon-capture.md"
             }
-          ],
-          "verify_script": "domains/infra/environmental-protection/verify.hexa"
+          ]
         },
         {
           "name": "진화 Mk.I~V",
@@ -919,8 +892,7 @@
               "label": "문서",
               "path": "domains/infra/environmental-protection/"
             }
-          ],
-          "verify_script": "domains/infra/environmental-protection/verify.hexa"
+          ]
         },
         {
           "name": "예측 + 검증",
@@ -933,8 +905,7 @@
               "label": "문서",
               "path": "domains/infra/environmental-protection/environmental-protection.md"
             }
-          ],
-          "verify_script": "domains/infra/environmental-protection/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 재활용 — HEXA-RECYCLE",
@@ -951,10 +922,6 @@
         }
       ],
       "anchor": "-환경보호-environment",
-      "verify_scripts": [
-        "domains/infra/environmental-protection/verify.hexa",
-        "domains/infra/carbon-capture/verify.hexa"
-      ],
       "closure_grade": 9
     },
     {
@@ -994,8 +961,7 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         },
         {
           "name": "BT-85~88 + BT-128~135",
@@ -1008,8 +974,7 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         },
         {
           "name": "가설 36/36 100%EXACT",
@@ -1022,8 +987,7 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         },
         {
           "name": "산업검증 20소재+12금속",
@@ -1036,8 +1000,7 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         },
         {
           "name": "실험검증 + TP 28/28",
@@ -1050,8 +1013,7 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         },
         {
           "name": "물리한계 증명",
@@ -1064,14 +1026,10 @@
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
             }
-          ],
-          "verify_script": "domains/materials/material-synthesis/verify.hexa"
+          ]
         }
       ],
       "anchor": "-물질합성-materials",
-      "verify_scripts": [
-        "domains/materials/material-synthesis/verify.hexa"
-      ],
       "closure_grade": 11
     },
     {
@@ -1112,8 +1070,7 @@
               "label": "문서",
               "path": "domains/infra/robotics/robotics.md"
             }
-          ],
-          "verify_script": "domains/infra/robotics/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -1126,14 +1083,10 @@
               "label": "문서",
               "path": "domains/infra/robotics/robotics.md"
             }
-          ],
-          "verify_script": "domains/infra/robotics/verify.hexa"
+          ]
         }
       ],
       "anchor": "-로봇-robotics",
-      "verify_scripts": [
-        "domains/infra/robotics/verify.hexa"
-      ],
       "closure_grade": 10
     },
     {
@@ -1180,8 +1133,7 @@
               "label": "문서",
               "path": "domains/energy/superconductor/superconductor.md"
             }
-          ],
-          "verify_script": "domains/physics/pure-mathematics/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 순수수학",
@@ -1194,8 +1146,7 @@
               "label": "문서",
               "path": "domains/physics/pure-mathematics/pure-mathematics.md"
             }
-          ],
-          "verify_script": "domains/physics/pure-mathematics/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 우주론/입자",
@@ -1208,8 +1159,7 @@
               "label": "문서",
               "path": "domains/physics/cosmology-particle/cosmology-particle.md"
             }
-          ],
-          "verify_script": "domains/physics/pure-mathematics/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 상온 초전도체",
@@ -1223,7 +1173,6 @@
               "path": "domains/energy/room-temp-sc/room-temp-sc.md"
             }
           ],
-          "verify_script": "domains/energy/room-temp-sc/verify.hexa",
           "verify_scripts_extra": [
             "domains/energy/room-temp-sc/verify.hexa"
           ]
@@ -1251,10 +1200,6 @@
         }
       ],
       "anchor": "-물리수학-physics--math",
-      "verify_scripts": [
-        "domains/physics/pure-mathematics/verify.hexa",
-        "domains/physics/cosmology-particle/verify.hexa"
-      ],
       "closure_grade": 6,
       "bt_detail": "+BT-361 n²=36, BT-362 텐서삼중, BT-363 mod3, BT-364 1/3, BT-365 Ω_Λ=24/35"
     },
@@ -1304,8 +1249,7 @@
               "label": "문서",
               "path": "domains/compute/programming-language/programming-language.md"
             }
-          ],
-          "verify_script": "domains/compute/programming-language/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -1318,8 +1262,7 @@
               "label": "문서",
               "path": "domains/compute/software-design/software-design.md"
             }
-          ],
-          "verify_script": "domains/compute/programming-language/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 macOS",
@@ -1332,8 +1275,7 @@
               "label": "문서",
               "path": "domains/compute/hexa-macos/hexa-macos.md"
             }
-          ],
-          "verify_script": "experiments/verify_hexa_macos.py"
+          ]
         },
         {
           "name": "궁극의 iOS",
@@ -1346,8 +1288,7 @@
               "label": "문서",
               "path": "domains/compute/hexa-ios/hexa-ios.md"
             }
-          ],
-          "verify_script": "experiments/verify_hexa_ios.py"
+          ]
         },
         {
           "name": "궁극의 네트워크 프로토콜",
@@ -1364,11 +1305,6 @@
         }
       ],
       "anchor": "-소프트웨어인프라-software--infra",
-      "verify_scripts": [
-        "domains/compute/programming-language/verify.hexa",
-        "domains/compute/software-design/verify.hexa",
-        "verify_hexa_macos.py"
-      ],
       "closure_grade": 10
     },
     {
@@ -1406,8 +1342,7 @@
               "label": "문서",
               "path": "domains/compute/display/display.md"
             }
-          ],
-          "verify_script": "domains/compute/display/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -1420,14 +1355,10 @@
               "label": "문서",
               "path": "domains/compute/display/display.md"
             }
-          ],
-          "verify_script": "domains/compute/display/verify.hexa"
+          ]
         }
       ],
       "anchor": "-디스플레이-display",
-      "verify_scripts": [
-        "domains/compute/display/verify.hexa"
-      ],
       "closure_grade": 9
     },
     {
@@ -1465,8 +1396,7 @@
               "label": "문서",
               "path": "domains/culture/audio/audio.md"
             }
-          ],
-          "verify_script": "domains/culture/audio/verify.hexa"
+          ]
         },
         {
           "name": "천장확인",
@@ -1479,8 +1409,7 @@
               "label": "문서",
               "path": "domains/culture/audio/audio.md"
             }
-          ],
-          "verify_script": "domains/culture/audio/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
@@ -1493,8 +1422,7 @@
               "label": "도메인 문서",
               "path": "domains/cognitive/hexa-speak/hexa-speak.md"
             }
-          ],
-          "verify_script": "domains/cognitive/hexa-speak/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-EAR Ultimate",
@@ -1553,10 +1481,6 @@
         }
       ],
       "anchor": "-오디오-audio",
-      "verify_scripts": [
-        "domains/culture/audio/verify.hexa",
-        "domains/cognitive/hexa-speak/verify.hexa"
-      ],
       "closure_grade": 9,
       "bt_detail": "BT-48/72/76/108 + BT-402(HW 115/117) + BT-403(SW 53/62)"
     },
@@ -1595,8 +1519,7 @@
               "label": "문서",
               "path": "domains/infra/safety/safety.md"
             }
-          ],
-          "verify_script": "domains/infra/safety/verify.hexa"
+          ]
         },
         {
           "name": "가설 30+극한 20",
@@ -1609,14 +1532,10 @@
               "label": "문서",
               "path": "domains/infra/safety/safety.md"
             }
-          ],
-          "verify_script": "domains/infra/safety/verify.hexa"
+          ]
         }
       ],
       "anchor": "-안전-safety",
-      "verify_scripts": [
-        "domains/infra/safety/verify.hexa"
-      ],
       "closure_grade": 9
     },
     {
@@ -1655,8 +1574,7 @@
               "label": "문서",
               "path": "domains/infra/fun-car/fun-car.md"
             }
-          ],
-          "verify_script": "domains/infra/fun-car/verify.hexa"
+          ]
         },
         {
           "name": "궁극의 바이크",
@@ -1669,15 +1587,10 @@
               "label": "문서",
               "path": "domains/infra/motorcycle/motorcycle.md"
             }
-          ],
-          "verify_script": "domains/infra/motorcycle/verify.hexa"
+          ]
         }
       ],
       "anchor": "-유희-play",
-      "verify_scripts": [
-        "domains/infra/fun-car/verify.hexa",
-        "domains/infra/motorcycle/verify.hexa"
-      ],
       "closure_grade": 11
     },
     {
@@ -1717,15 +1630,10 @@
               "label": "문서",
               "path": "domains/space/hexa-starship/hexa-starship.md"
             }
-          ],
-          "verify_script": "domains/space/hexa-starship/verify.hexa"
+          ]
         }
       ],
       "anchor": "-우주항공-aerospace",
-      "verify_scripts": [
-        "domains/space/hexa-starship/verify.hexa",
-        "domains/space/hexa-starship/verify.hexa"
-      ],
       "closure_grade": 11
     },
     {
@@ -1826,7 +1734,6 @@
               "path": "domains/life/neuro/neuro.md"
             }
           ],
-          "verify_script": "domains/life/neuro/verify.hexa",
           "exact": "80/80"
         },
         {
@@ -1841,7 +1748,6 @@
               "path": "domains/physics/gravity-wave/gravity-wave.md"
             }
           ],
-          "verify_script": "domains/physics/gravity-wave/verify.hexa",
           "exact": "58/58"
         },
         {
@@ -1856,7 +1762,6 @@
               "path": "domains/sf-ufo/cloak/cloak.md"
             }
           ],
-          "verify_script": "domains/sf-ufo/cloak/verify.hexa",
           "exact": "30/30"
         },
         {
@@ -1871,7 +1776,6 @@
               "path": "domains/infra/earth-defense/earth-defense.md"
             }
           ],
-          "verify_script": "domains/infra/earth-defense/verify.hexa",
           "exact": "32/32"
         },
         {
@@ -1886,7 +1790,6 @@
               "path": "domains/physics/quantum-network/quantum-network.md"
             }
           ],
-          "verify_script": "domains/physics/quantum-network/verify.hexa",
           "exact": "30/30"
         },
         {
@@ -1901,7 +1804,6 @@
               "path": "domains/sf-ufo/hover/hover.md"
             }
           ],
-          "verify_script": "domains/sf-ufo/hover/verify.hexa",
           "exact": "31/31"
         },
         {
@@ -1916,7 +1818,6 @@
               "path": "domains/compute/sc-memory/sc-memory.md"
             }
           ],
-          "verify_script": "domains/compute/sc-memory/verify.hexa",
           "exact": "30/30"
         },
         {
@@ -1931,7 +1832,6 @@
               "path": "domains/infra/seabed-grid/seabed-grid.md"
             }
           ],
-          "verify_script": "domains/infra/seabed-grid/verify.hexa",
           "exact": "23/23"
         },
         {
@@ -1946,7 +1846,6 @@
               "path": "domains/physics/mini-accelerator/mini-accelerator.md"
             }
           ],
-          "verify_script": "domains/physics/mini-accelerator/verify.hexa",
           "exact": "37/37"
         },
         {
@@ -1961,7 +1860,6 @@
               "path": "domains/infra/weather-control/weather-control.md"
             }
           ],
-          "verify_script": "domains/infra/weather-control/verify.hexa",
           "exact": "30/30"
         },
         {
@@ -1976,7 +1874,6 @@
               "path": "domains/cognitive/mind-upload/mind-upload.md"
             }
           ],
-          "verify_script": "domains/cognitive/mind-upload/verify.hexa",
           "exact": "29/29"
         },
         {
@@ -1991,7 +1888,6 @@
               "path": "domains/cognitive/telepathy/telepathy.md"
             }
           ],
-          "verify_script": "domains/cognitive/telepathy/verify.hexa",
           "exact": "33/33"
         },
         {
@@ -2006,7 +1902,6 @@
               "path": "domains/physics/holography/holography.md"
             }
           ],
-          "verify_script": "domains/physics/holography/verify.hexa",
           "exact": "25/25"
         },
         {
@@ -2021,7 +1916,6 @@
               "path": "domains/cognitive/dream-recorder/dream-recorder.md"
             }
           ],
-          "verify_script": "domains/cognitive/dream-recorder/verify.hexa",
           "exact": "25/25"
         },
         {
@@ -2036,7 +1930,6 @@
               "path": "domains/infra/skyway/skyway.md"
             }
           ],
-          "verify_script": "domains/infra/skyway/verify.hexa",
           "exact": "29/29"
         },
         {
@@ -2051,7 +1944,6 @@
               "path": "domains/infra/tsunami-shield/tsunami-shield.md"
             }
           ],
-          "verify_script": "domains/infra/tsunami-shield/verify.hexa",
           "exact": "29/29"
         },
         {
@@ -2066,7 +1958,6 @@
               "path": "domains/physics/antimatter-factory/antimatter-factory.md"
             }
           ],
-          "verify_script": "domains/physics/antimatter-factory/verify.hexa",
           "exact": "32/32"
         },
         {
@@ -2081,7 +1972,6 @@
               "path": "domains/physics/cosmic-observatory/cosmic-observatory.md"
             }
           ],
-          "verify_script": "domains/physics/cosmic-observatory/verify.hexa",
           "exact": "31/31"
         },
         {
@@ -2096,7 +1986,6 @@
               "path": "domains/infra/desalination/desalination.md"
             }
           ],
-          "verify_script": "domains/infra/desalination/verify.hexa",
           "exact": "28/28"
         },
         {
@@ -2111,7 +2000,6 @@
               "path": "domains/physics/quantum-oracle/quantum-oracle.md"
             }
           ],
-          "verify_script": "domains/physics/quantum-oracle/verify.hexa",
           "exact": "32/32"
         },
         {
@@ -2126,7 +2014,6 @@
               "path": "domains/compute/hexa-one/hexa-one.md"
             }
           ],
-          "verify_script": "domains/compute/hexa-one/verify.hexa",
           "exact": "54/54"
         },
         {
@@ -2141,7 +2028,6 @@
               "path": "domains/materials/hexa-glass/hexa-glass.md"
             }
           ],
-          "verify_script": "domains/materials/hexa-glass/verify.hexa",
           "exact": "48/48"
         },
         {
@@ -2156,7 +2042,6 @@
               "path": "domains/cognitive/hexa-ear/hexa-ear.md"
             }
           ],
-          "verify_script": "domains/cognitive/hexa-ear/verify.hexa",
           "exact": "42/42"
         },
         {
@@ -2171,7 +2056,6 @@
               "path": "domains/infra/hexa-exo/hexa-exo.md"
             }
           ],
-          "verify_script": "domains/infra/hexa-exo/verify.hexa",
           "exact": "100/100"
         },
         {
@@ -2186,7 +2070,6 @@
               "path": "domains/life/hexa-limb/hexa-limb.md"
             }
           ],
-          "verify_script": "domains/life/hexa-limb/verify.hexa",
           "exact": "100/100"
         },
         {
@@ -2201,7 +2084,6 @@
               "path": "domains/life/hexa-skin/hexa-skin.md"
             }
           ],
-          "verify_script": "domains/life/hexa-skin/verify.hexa",
           "exact": "78/78"
         },
         {
@@ -2216,7 +2098,6 @@
               "path": "domains/materials/hexa-fabric/hexa-fabric.md"
             }
           ],
-          "verify_script": "domains/materials/hexa-fabric/verify.hexa",
           "exact": "121/121"
         },
         {
@@ -2231,7 +2112,6 @@
               "path": "domains/cognitive/hexa-olfact/hexa-olfact.md"
             }
           ],
-          "verify_script": "domains/cognitive/hexa-olfact/verify.hexa",
           "exact": "125/125"
         },
         {
@@ -2246,7 +2126,6 @@
               "path": "domains/cognitive/hexa-dream/hexa-dream.md"
             }
           ],
-          "verify_script": "domains/cognitive/hexa-dream/verify.hexa",
           "exact": "80/80"
         },
         {
@@ -2261,7 +2140,6 @@
               "path": "domains/cognitive/hexa-empath/hexa-empath.md"
             }
           ],
-          "verify_script": "domains/cognitive/hexa-empath/verify.hexa",
           "exact": "97/97"
         },
         {
@@ -2276,7 +2154,6 @@
               "path": "domains/life/virology/virology.md"
             }
           ],
-          "verify_script": "domains/life/virology/verify.hexa",
           "exact": "43/43",
           "mk_count": 5
         },
@@ -2292,7 +2169,6 @@
               "path": "domains/life/entomology/entomology.md"
             }
           ],
-          "verify_script": "domains/life/entomology/verify.hexa",
           "exact": "23/23",
           "mk_count": 5
         },
@@ -2308,7 +2184,6 @@
               "path": "domains/life/mycology/mycology.md"
             }
           ],
-          "verify_script": "domains/life/mycology/verify.hexa",
           "exact": "26/26"
         },
         {
@@ -2323,7 +2198,6 @@
               "path": "domains/infra/mining/mining.md"
             }
           ],
-          "verify_script": "domains/infra/mining/verify.hexa",
           "exact": "26/26"
         },
         {
@@ -2338,7 +2212,6 @@
               "path": "domains/life/veterinary/veterinary.md"
             }
           ],
-          "verify_script": "domains/life/veterinary/verify.hexa",
           "exact": "21/21"
         },
         {
@@ -2353,7 +2226,6 @@
               "path": "domains/life/horticulture/horticulture.md"
             }
           ],
-          "verify_script": "domains/life/horticulture/verify.hexa",
           "exact": "27/27"
         },
         {
@@ -2371,7 +2243,6 @@
               "path": "domains/physics/simulation-theory/simulation-theory.md"
             }
           ],
-          "verify_script": "domains/physics/simulation-theory/verify.hexa",
           "exact": "65/65"
         },
         {
@@ -2392,8 +2263,7 @@
               "label": "문서",
               "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
             }
-          ],
-          "verify_script": "domains/sf-ufo/cross-domain-mega/verify.hexa"
+          ]
         },
         {
           "name": "HEXA-NANOBOT 치료 나노봇",
@@ -2419,7 +2289,6 @@
               "path": "domains/life/therapeutic-nanobot/therapeutic-nanobot.md"
             }
           ],
-          "verify_script": "domains/life/therapeutic-nanobot/verify.hexa",
           "exact": "113/122",
           "mk_count": 5,
           "dse_combinations": 7776
@@ -2849,8 +2718,7 @@
           "bt": [
             "BT-377"
           ],
-          "exact": "16/16",
-          "verify_script": "domains/infra/construction-structural/verify.hexa"
+          "exact": "16/16"
         },
         {
           "name": "지하공간/터널 n=6 굴착 구조",
@@ -2894,7 +2762,6 @@
               "path": "domains/materials/nylon/nylon.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "23/23"
         },
         {
@@ -2909,7 +2776,6 @@
               "path": "domains/materials/aramid/aramid.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "20/20"
         },
         {
@@ -2924,7 +2790,6 @@
               "path": "domains/materials/tire-cord/tire-cord.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "20/20"
         },
         {
@@ -2939,7 +2804,6 @@
               "path": "domains/materials/epoxy/epoxy.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "20/20"
         },
         {
@@ -2954,7 +2818,6 @@
               "path": "domains/materials/pet-film/pet-film.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "22/22"
         },
         {
@@ -2969,7 +2832,6 @@
               "path": "domains/infra/airbag/airbag.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_breakthrough.py",
           "exact": "18/18"
         },
         {
@@ -2984,7 +2846,6 @@
               "path": "domains/infra/water-treatment/water-treatment.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_phase2.py",
           "exact": "21/21"
         },
         {
@@ -2999,7 +2860,6 @@
               "path": "domains/energy/pemfc/pemfc.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_phase2.py",
           "exact": "21/21"
         },
         {
@@ -3014,7 +2874,6 @@
               "path": "domains/materials/concrete/concrete.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_phase2.py",
           "exact": "22/22"
         },
         {
@@ -3029,7 +2888,6 @@
               "path": "domains/life/bio-pharma/bio-pharma.md"
             }
           ],
-          "verify_script": "calc/kolon_n6_phase2.py",
           "exact": "25/25"
         },
         {
@@ -3044,7 +2902,6 @@
               "path": "domains/energy/hvac-system/verify.hexa"
             }
           ],
-          "verify_script": "domains/energy/hvac-system/verify.hexa",
           "exact": "26/27"
         },
         {
@@ -3059,7 +2916,6 @@
               "path": "domains/infra/earthquake-engineering/verify.hexa"
             }
           ],
-          "verify_script": "domains/infra/earthquake-engineering/verify.hexa",
           "exact": "15/15"
         },
         {
@@ -3074,7 +2930,6 @@
               "path": "domains/materials/concrete-technology/verify.hexa"
             }
           ],
-          "verify_script": "domains/materials/concrete-technology/verify.hexa",
           "exact": "68/69"
         },
         {
@@ -3089,7 +2944,6 @@
               "path": "domains/infra/smart-city/verify.hexa"
             }
           ],
-          "verify_script": "domains/infra/smart-city/verify.hexa",
           "exact": "63/63"
         },
         {
@@ -3104,7 +2958,6 @@
               "path": "domains/infra/civil-engineering/verify.hexa"
             }
           ],
-          "verify_script": "domains/infra/civil-engineering/verify.hexa",
           "exact": "25/27"
         }
       ],
@@ -3149,8 +3002,7 @@
           "bt": [
             "BT-351"
           ],
-          "exact": "11/11",
-          "verify_script": "domains/life/virology/verify.hexa"
+          "exact": "11/11"
         },
         {
           "name": "바이러스 게놈 분절-유전자 n=6 래더",
