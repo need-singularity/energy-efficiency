@@ -1,13 +1,4 @@
-# safety
-
-> 축: **infra** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# N6 Safety Architecture
+# N6 안전 아키텍처 — HEXA-SAFETY
 
 > n=6 완전수 산술로 안전 공학의 보편 상수를 통합하는 도메인.
 > 소재 안전부터 시스템 방호까지 8단계 진화 래더.
