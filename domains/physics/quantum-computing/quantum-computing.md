@@ -1,24 +1,4 @@
-# quantum-computing
-
-> 축: **physics** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# Quantum Computing
-
-양자 게이트/에러보정. J2(6)=24 qubit topology.
-
-> Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-
-## 2. 목표
-
-
-
-# N6 Quantum Computing -- Unified Goal
+# N6 양자 컴퓨팅 — HEXA-QUANTUM
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).
 > 현재: 🛸10 maturity / closure_grade 9 (bt_exact_pct 기반 추정).
