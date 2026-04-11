@@ -2,13 +2,6 @@
 
 > shared/ JSON 단일진실 (R14). 규칙: `shared/rules/common.json` (R0~R27)
 
-## todo 시스템
-
-- "todo" 입력 → hook systemMessage의 Bash 명령을 즉시 실행 (확인 질문 없이)
-- hook이 `📋 todo 돌파 실행중`으로 시작하는 systemMessage를 보내면 그 안의 명령을 Bash로 실행할 것
-- **출력 후 종료 금지**: 할일 표를 출력한 뒤 **즉시 A1 항목부터 실제 작업 착수**
-- **가공 에이전트 위임 금지**: "Snarl에게 맡겨둘게", "다른 세션이 할거야", "나중에 할게" 같은 회피 응답 금지 — 코드베이스에 실재하지 않는 에이전트 이름을 지어내서 떠넘기지 말 것
-
 ## atlas.n6 — 현실지도 SSOT (구조 숙지 필수)
 
 **절대 경로**: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (단일 파일, 60K+ 줄)
