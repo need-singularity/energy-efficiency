@@ -221,6 +221,20 @@
       "level": "🔴",
       "enforcement": "core.json commands[].engine 필드 존재 시 자동 적용",
       "applies_to": "all"
+    },
+    {
+      "id": "R28",
+      "rule": "제품 링크 1개 — _registry.json 제품 links 배열은 도메인 문서 1개만. 논문/엔진/BT 별도 링크 금지. README 제품 행도 [문서] 1개만",
+      "level": "🔴",
+      "enforcement": "domain-doc-sync.hexa PostToolUse 훅 검증. links.length > 1 발견 시 첫 번째만 보존",
+      "applies_to": "n6-architecture"
+    },
+    {
+      "id": "R29",
+      "rule": "도메인당 문서 1파일 — domains/<axis>/<name>/ 에 <name>.md + CLAUDE.md + verify.hexa 만 허용. goal.md/별도 .md 생성 금지",
+      "level": "🔴",
+      "enforcement": "domain-doc-sync.hexa PostToolUse 훅 검증. goal.md 등 추가 .md 발견 시 삭제 또는 통합",
+      "applies_to": "n6-architecture"
     }
   ],
   "projects": {
@@ -301,7 +315,7 @@
       },
       {
         "id": "N64",
-        "rule": "돌파(BT) N연속 요청 = A+B+C 통합 산출 필수 — (A) docs/<domain>/ 개별 bt-*.md + verify_*.py, (B) docs/paper/n6-<domain>-paper.md 통합 논문, (C) config/products.json 제품 라인 + evolution/mk-1~5 문서. 단일 방식만 선택 금지.",
+        "rule": "돌파(BT) N연속 요청 = A+B+C 통합 산출 필수 — (A) domains/<axis>/<domain>/<domain>.md 통합 본문 (도메인당 1파일), (B) papers/n6-<domain>-paper.md 통합 논문 (검증코드 md 임베드), (C) papers/_registry.json 제품 등록 (링크 1개, verify.hexa). 단일 방식만 선택 금지.",
         "level": "🔴"
       },
       {

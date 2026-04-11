@@ -407,14 +407,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/superpowers/superpowers.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-fusion-powerplant-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-plasma-fusion-deep-paper.md"
             }
           ],
           "verify_script": "domains/energy/fusion/verify.hexa"
@@ -521,42 +513,6 @@
             {
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-dram-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-exynos-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-3d-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-photon-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-pim-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-wafer-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-performance-chip-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-unified-soc-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-vnand-paper.md"
             }
           ],
           "verify_script": "domains/compute/chip-architecture/verify.hexa"
@@ -571,14 +527,6 @@
             {
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-anima-soc-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-consciousness-soc-paper.md"
             }
           ],
           "verify_script": "domains/compute/chip-architecture/verify.hexa"
@@ -593,10 +541,6 @@
             {
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-topo-paper.md"
             }
           ],
           "verify_script": "domains/compute/chip-architecture/verify.hexa"
@@ -611,10 +555,6 @@
             {
               "label": "문서",
               "path": "domains/compute/chip-architecture/chip-architecture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-asic-paper.md"
             }
           ],
           "verify_script": "domains/compute/chip-architecture/verify.hexa"
@@ -690,18 +630,6 @@
             {
               "label": "문서",
               "path": "experiments/experiment_full_n6_pipeline.py"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-causal-chain-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-reality-map-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-rtsc-12-products-evolution-paper.md"
             }
           ]
         },
@@ -843,10 +771,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/superpowers/superpowers.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-battery-energy-paper.md"
             }
           ],
           "verify_script": "domains/energy/battery-architecture/verify.hexa"
@@ -875,10 +799,6 @@
             {
               "label": "문서",
               "path": "domains/energy/energy-architecture/energy-architecture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-energy-efficiency-paper.md"
             }
           ],
           "verify_script": "domains/energy/battery-architecture/verify.hexa"
@@ -893,10 +813,6 @@
             {
               "label": "문서",
               "path": "domains/energy/smr-datacenter/smr-datacenter.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-datacenter-reactor-paper.md"
             }
           ]
         },
@@ -960,10 +876,6 @@
             {
               "label": "문서",
               "path": "domains/infra/environmental-protection/"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-environment-thermal-paper.md"
             }
           ],
           "verify_script": "domains/infra/environmental-protection/verify.hexa"
@@ -978,10 +890,6 @@
             {
               "label": "문서",
               "path": "domains/infra/environmental-protection/environmental-protection.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-microplastics-paper.md"
             }
           ],
           "verify_script": "domains/infra/environmental-protection/verify.hexa"
@@ -996,10 +904,6 @@
             {
               "label": "문서",
               "path": "domains/infra/carbon-capture/carbon-capture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-carbon-capture-paper.md"
             }
           ],
           "verify_script": "domains/infra/environmental-protection/verify.hexa"
@@ -1042,10 +946,6 @@
             {
               "label": "설계",
               "path": "domains/materials/recycling/recycling.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-recycle-paper.md"
             }
           ]
         }
@@ -1093,14 +993,6 @@
             {
               "label": "문서",
               "path": "domains/materials/material-synthesis/material-synthesis.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-crystallography-materials-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-material-synthesis-paper.md"
             }
           ],
           "verify_script": "domains/materials/material-synthesis/verify.hexa"
@@ -1219,18 +1111,6 @@
             {
               "label": "문서",
               "path": "domains/infra/robotics/robotics.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-autonomous-driving-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-control-automation-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-robotics-transport-paper.md"
             }
           ],
           "verify_script": "domains/infra/robotics/verify.hexa"
@@ -1299,10 +1179,6 @@
             {
               "label": "문서",
               "path": "domains/energy/superconductor/superconductor.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-superconductor-paper.md"
             }
           ],
           "verify_script": "domains/physics/pure-mathematics/verify.hexa"
@@ -1317,10 +1193,6 @@
             {
               "label": "문서",
               "path": "domains/physics/pure-mathematics/pure-mathematics.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-pure-mathematics-paper.md"
             }
           ],
           "verify_script": "domains/physics/pure-mathematics/verify.hexa"
@@ -1335,18 +1207,6 @@
             {
               "label": "문서",
               "path": "domains/physics/cosmology-particle/cosmology-particle.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-classical-mechanics-accelerator-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-particle-cosmology-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-thermodynamics-paper.md"
             }
           ],
           "verify_script": "domains/physics/pure-mathematics/verify.hexa"
@@ -1361,14 +1221,6 @@
             {
               "label": "문서",
               "path": "domains/energy/room-temp-sc/room-temp-sc.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-super-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-quantum-computing-paper.md"
             }
           ],
           "verify_script": "domains/energy/room-temp-sc/verify.hexa",
@@ -1451,14 +1303,6 @@
             {
               "label": "문서",
               "path": "domains/compute/programming-language/programming-language.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-proglang-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-software-crypto-paper.md"
             }
           ],
           "verify_script": "domains/compute/programming-language/verify.hexa"
@@ -1487,10 +1331,6 @@
             {
               "label": "문서",
               "path": "domains/compute/hexa-macos/hexa-macos.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-macos-paper.md"
             }
           ],
           "verify_script": "experiments/verify_hexa_macos.py"
@@ -1505,10 +1345,6 @@
             {
               "label": "문서",
               "path": "domains/compute/hexa-ios/hexa-ios.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-ios-paper.md"
             }
           ],
           "verify_script": "experiments/verify_hexa_ios.py"
@@ -1523,10 +1359,6 @@
             {
               "label": "문서",
               "path": "domains/compute/network-protocol/network-protocol.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-netproto-paper.md"
             }
           ]
         }
@@ -1573,10 +1405,6 @@
             {
               "label": "문서",
               "path": "domains/compute/display/display.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-display-8stack-paper.md"
             }
           ],
           "verify_script": "domains/compute/display/verify.hexa"
@@ -1636,14 +1464,6 @@
             {
               "label": "문서",
               "path": "domains/culture/audio/audio.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-isocell-comms-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-telecom-linguistics-paper.md"
             }
           ],
           "verify_script": "domains/culture/audio/verify.hexa"
@@ -1672,10 +1492,6 @@
             {
               "label": "도메인 문서",
               "path": "domains/cognitive/hexa-speak/hexa-speak.md"
-            },
-            {
-              "label": "엔진",
-              "path": "engine/n6_speak.hexa"
             }
           ],
           "verify_script": "domains/cognitive/hexa-speak/verify.hexa"
@@ -1690,10 +1506,6 @@
             {
               "label": "문서",
               "path": "domains/culture/audio/audio.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-ear-paper.md"
             }
           ]
         },
@@ -1782,14 +1594,6 @@
             {
               "label": "문서",
               "path": "domains/infra/safety/safety.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-governance-safety-urban-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-ultimate-safety-paper.md"
             }
           ],
           "verify_script": "domains/infra/safety/verify.hexa"
@@ -1850,14 +1654,6 @@
             {
               "label": "문서",
               "path": "domains/infra/fun-car/fun-car.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-fun-car-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-games-sports-paper.md"
             }
           ],
           "verify_script": "domains/infra/fun-car/verify.hexa"
@@ -1872,10 +1668,6 @@
             {
               "label": "문서",
               "path": "domains/infra/motorcycle/motorcycle.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-motorcycle-paper.md"
             }
           ],
           "verify_script": "domains/infra/motorcycle/verify.hexa"
@@ -1924,18 +1716,6 @@
             {
               "label": "문서",
               "path": "domains/space/hexa-starship/hexa-starship.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-aerospace-transport-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-starship-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-space-systems-paper.md"
             }
           ],
           "verify_script": "domains/space/hexa-starship/verify.hexa"
@@ -1982,10 +1762,6 @@
             {
               "label": "문서",
               "path": "domains/sf-ufo/sf/sf.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-ufo-paper.md"
             }
           ]
         }
@@ -2048,14 +1824,6 @@
             {
               "label": "문서",
               "path": "domains/life/neuro/neuro.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-biology-medical-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-neuro-paper.md"
             }
           ],
           "verify_script": "domains/life/neuro/verify.hexa",
@@ -2071,10 +1839,6 @@
             {
               "label": "문서",
               "path": "domains/physics/gravity-wave/gravity-wave.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-grav-paper.md"
             }
           ],
           "verify_script": "domains/physics/gravity-wave/verify.hexa",
@@ -2090,10 +1854,6 @@
             {
               "label": "문서",
               "path": "domains/sf-ufo/cloak/cloak.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-cloak-paper.md"
             }
           ],
           "verify_script": "domains/sf-ufo/cloak/verify.hexa",
@@ -2109,10 +1869,6 @@
             {
               "label": "문서",
               "path": "domains/infra/earth-defense/earth-defense.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-defense-paper.md"
             }
           ],
           "verify_script": "domains/infra/earth-defense/verify.hexa",
@@ -2128,10 +1884,6 @@
             {
               "label": "문서",
               "path": "domains/physics/quantum-network/quantum-network.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-teleport-paper.md"
             }
           ],
           "verify_script": "domains/physics/quantum-network/verify.hexa",
@@ -2147,10 +1899,6 @@
             {
               "label": "문서",
               "path": "domains/sf-ufo/hover/hover.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-hover-paper.md"
             }
           ],
           "verify_script": "domains/sf-ufo/hover/verify.hexa",
@@ -2166,10 +1914,6 @@
             {
               "label": "문서",
               "path": "domains/compute/sc-memory/sc-memory.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-mram-paper.md"
             }
           ],
           "verify_script": "domains/compute/sc-memory/verify.hexa",
@@ -2185,10 +1929,6 @@
             {
               "label": "문서",
               "path": "domains/infra/seabed-grid/seabed-grid.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-seabed-grid-paper.md"
             }
           ],
           "verify_script": "domains/infra/seabed-grid/verify.hexa",
@@ -2204,10 +1944,6 @@
             {
               "label": "문서",
               "path": "domains/physics/mini-accelerator/mini-accelerator.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-accel-paper.md"
             }
           ],
           "verify_script": "domains/physics/mini-accelerator/verify.hexa",
@@ -2223,10 +1959,6 @@
             {
               "label": "문서",
               "path": "domains/infra/weather-control/weather-control.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-weather-paper.md"
             }
           ],
           "verify_script": "domains/infra/weather-control/verify.hexa",
@@ -2242,10 +1974,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/mind-upload/mind-upload.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-mind-paper.md"
             }
           ],
           "verify_script": "domains/cognitive/mind-upload/verify.hexa",
@@ -2261,10 +1989,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/telepathy/telepathy.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-telepathy-paper.md"
             }
           ],
           "verify_script": "domains/cognitive/telepathy/verify.hexa",
@@ -2280,10 +2004,6 @@
             {
               "label": "문서",
               "path": "domains/physics/holography/holography.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-holo-paper.md"
             }
           ],
           "verify_script": "domains/physics/holography/verify.hexa",
@@ -2299,10 +2019,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/dream-recorder/dream-recorder.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-dream-paper.md"
             }
           ],
           "verify_script": "domains/cognitive/dream-recorder/verify.hexa",
@@ -2318,10 +2034,6 @@
             {
               "label": "문서",
               "path": "domains/infra/skyway/skyway.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-skyway-paper.md"
             }
           ],
           "verify_script": "domains/infra/skyway/verify.hexa",
@@ -2337,10 +2049,6 @@
             {
               "label": "문서",
               "path": "domains/infra/tsunami-shield/tsunami-shield.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-tsunami-paper.md"
             }
           ],
           "verify_script": "domains/infra/tsunami-shield/verify.hexa",
@@ -2356,10 +2064,6 @@
             {
               "label": "문서",
               "path": "domains/physics/antimatter-factory/antimatter-factory.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-antimatter-factory-paper.md"
             }
           ],
           "verify_script": "domains/physics/antimatter-factory/verify.hexa",
@@ -2375,10 +2079,6 @@
             {
               "label": "문서",
               "path": "domains/physics/cosmic-observatory/cosmic-observatory.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-cosmic-paper.md"
             }
           ],
           "verify_script": "domains/physics/cosmic-observatory/verify.hexa",
@@ -2394,10 +2094,6 @@
             {
               "label": "문서",
               "path": "domains/infra/desalination/desalination.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-desal-paper.md"
             }
           ],
           "verify_script": "domains/infra/desalination/verify.hexa",
@@ -2413,10 +2109,6 @@
             {
               "label": "문서",
               "path": "domains/physics/quantum-oracle/quantum-oracle.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-oracle-paper.md"
             }
           ],
           "verify_script": "domains/physics/quantum-oracle/verify.hexa",
@@ -2432,10 +2124,6 @@
             {
               "label": "문서",
               "path": "domains/compute/hexa-one/hexa-one.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-one-paper.md"
             }
           ],
           "verify_script": "domains/compute/hexa-one/verify.hexa",
@@ -2451,10 +2139,6 @@
             {
               "label": "문서",
               "path": "domains/materials/hexa-glass/hexa-glass.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-glass-paper.md"
             }
           ],
           "verify_script": "domains/materials/hexa-glass/verify.hexa",
@@ -2485,10 +2169,6 @@
             {
               "label": "문서",
               "path": "domains/infra/hexa-exo/hexa-exo.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-exo-paper.md"
             }
           ],
           "verify_script": "domains/infra/hexa-exo/verify.hexa",
@@ -2504,10 +2184,6 @@
             {
               "label": "문서",
               "path": "domains/life/hexa-limb/hexa-limb.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-limb-paper.md"
             }
           ],
           "verify_script": "domains/life/hexa-limb/verify.hexa",
@@ -2523,10 +2199,6 @@
             {
               "label": "문서",
               "path": "domains/life/hexa-skin/hexa-skin.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-skin-paper.md"
             }
           ],
           "verify_script": "domains/life/hexa-skin/verify.hexa",
@@ -2542,10 +2214,6 @@
             {
               "label": "문서",
               "path": "domains/materials/hexa-fabric/hexa-fabric.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-fabric-paper.md"
             }
           ],
           "verify_script": "domains/materials/hexa-fabric/verify.hexa",
@@ -2561,10 +2229,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/hexa-olfact/hexa-olfact.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-olfact-paper.md"
             }
           ],
           "verify_script": "domains/cognitive/hexa-olfact/verify.hexa",
@@ -2595,10 +2259,6 @@
             {
               "label": "문서",
               "path": "domains/cognitive/hexa-empath/hexa-empath.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-empath-paper.md"
             }
           ],
           "verify_script": "domains/cognitive/hexa-empath/verify.hexa",
@@ -2630,10 +2290,6 @@
             {
               "label": "목표",
               "path": "domains/life/entomology/entomology.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-entomology-paper.md"
             }
           ],
           "verify_script": "domains/life/entomology/verify.hexa",
@@ -2713,10 +2369,6 @@
             {
               "label": "문서",
               "path": "domains/physics/simulation-theory/simulation-theory.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-hexa-sim-paper.md"
             }
           ],
           "verify_script": "domains/physics/simulation-theory/verify.hexa",
@@ -2765,10 +2417,6 @@
             {
               "label": "문서",
               "path": "domains/life/therapeutic-nanobot/therapeutic-nanobot.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-therapeutic-nanobot-paper.md"
             }
           ],
           "verify_script": "domains/life/therapeutic-nanobot/verify.hexa",
@@ -2820,10 +2468,6 @@
             {
               "label": "목표",
               "path": "domains/culture/religion/religion.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-religion-mythology-paper.md"
             }
           ],
           "bt": [
@@ -2841,10 +2485,6 @@
             {
               "label": "목표",
               "path": "domains/infra/jurisprudence/jurisprudence.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-jurisprudence-paper.md"
             }
           ],
           "bt": [
@@ -2862,10 +2502,6 @@
             {
               "label": "목표",
               "path": "domains/culture/writing-systems/writing-systems.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-writing-systems-paper.md"
             }
           ],
           "bt": [
@@ -2883,10 +2519,6 @@
             {
               "label": "목표",
               "path": "domains/culture/archaeology/archaeology.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-archaeology-paper.md"
             }
           ]
         },
@@ -2900,10 +2532,6 @@
             {
               "label": "목표",
               "path": "domains/infra/monetary-history/monetary-history.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-monetary-history-paper.md"
             }
           ],
           "bt": [
@@ -2921,10 +2549,6 @@
             {
               "label": "목표",
               "path": "domains/culture/dance-choreography/dance-choreography.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-dance-choreography-paper.md"
             }
           ]
         },
@@ -2938,14 +2562,6 @@
             {
               "label": "가설",
               "path": "domains/culture/horology/horology.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-calendar-time-geography-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-horology-paper.md"
             }
           ]
         }
@@ -2991,10 +2607,6 @@
             {
               "label": "문서",
               "path": "domains/life/fermentation/fermentation.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-fermentation-paper.md"
             }
           ],
           "bt": [
@@ -3012,10 +2624,6 @@
             {
               "label": "문서",
               "path": "domains/life/wine-enology/wine-enology.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-wine-enology-paper.md"
             }
           ]
         },
@@ -3029,10 +2637,6 @@
             {
               "label": "문서",
               "path": "domains/materials/fashion-textile/fashion-textile.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-fashion-textile-paper.md"
             }
           ]
         },
@@ -3046,10 +2650,6 @@
             {
               "label": "문서",
               "path": "domains/life/aquaculture/aquaculture.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-aquaculture-paper.md"
             }
           ]
         },
@@ -3063,10 +2663,6 @@
             {
               "label": "문서",
               "path": "domains/infra/insurance/insurance.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-insurance-paper.md"
             }
           ],
           "bt": [
@@ -3084,10 +2680,6 @@
             {
               "label": "가설",
               "path": "domains/life/dolphin/dolphin.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-dolphin-bioacoustics-paper.md"
             }
           ]
         },
@@ -3188,18 +2780,6 @@
             {
               "label": "문서",
               "path": "domains/compute/advanced-packaging/advanced-packaging.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-advanced-packaging-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-ecology-agriculture-food-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-manufacturing-quality-paper.md"
             }
           ]
         },
@@ -3213,14 +2793,6 @@
             {
               "label": "도메인",
               "path": "domains/life/synbio/synbio.md"
-            },
-            {
-              "label": "goal",
-              "path": "domains/life/synbio/synbio.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-synthetic-biology-paper.md"
             }
           ],
           "bt": [
@@ -3238,10 +2810,6 @@
             {
               "label": "문서",
               "path": "domains/culture/ar-vr-xr/ar-vr-xr.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-ar-vr-xr-paper.md"
             }
           ],
           "bt": [
@@ -3259,14 +2827,6 @@
             {
               "label": "문서",
               "path": "domains/compute/digital-twin/digital-twin.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-cognitive-social-psychology-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-digital-twin-paper.md"
             }
           ],
           "bt": [
@@ -3284,10 +2844,6 @@
             {
               "label": "문서",
               "path": "domains/infra/construction-structural/construction-structural.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-construction-structural-paper.md"
             }
           ],
           "bt": [
@@ -3306,10 +2862,6 @@
             {
               "label": "문서",
               "path": "domains/infra/underground-tunnel/underground-tunnel.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-underground-tunnel-paper.md"
             }
           ],
           "bt": [
@@ -3327,14 +2879,6 @@
             {
               "label": "문서",
               "path": "domains/infra/ecommerce-fintech/ecommerce-fintech.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-ecommerce-fintech-paper.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-economics-finance-paper.md"
             }
           ]
         },
@@ -3600,10 +3144,6 @@
             {
               "label": "문서",
               "path": "domains/life/virology/virology.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-virology-paper.md"
             }
           ],
           "bt": [
@@ -3708,26 +3248,6 @@
             {
               "label": "논문",
               "path": "papers/n6-hiv-paper.md"
-            },
-            {
-              "label": "Mk.I",
-              "path": "domains/life/hiv-treatment/hiv-treatment.md"
-            },
-            {
-              "label": "Mk.II",
-              "path": "domains/life/hiv-treatment/hiv-treatment.md"
-            },
-            {
-              "label": "Mk.III",
-              "path": "domains/life/hiv-treatment/hiv-treatment.md"
-            },
-            {
-              "label": "Mk.IV",
-              "path": "domains/life/hiv-treatment/hiv-treatment.md"
-            },
-            {
-              "label": "Mk.V",
-              "path": "domains/life/hiv-treatment/hiv-treatment.md"
             }
           ],
           "mk_count": 5
@@ -4331,10 +3851,6 @@
             {
               "label": "목표",
               "path": "domains/infra/manufacturing-quality/manufacturing-quality.md"
-            },
-            {
-              "label": "논문",
-              "path": "papers/n6-manufacturing-quality-paper.md"
             }
           ]
         }
