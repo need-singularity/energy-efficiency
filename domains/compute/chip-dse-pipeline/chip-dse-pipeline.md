@@ -298,3 +298,27 @@ nexus dse universal --pipeline    # Mk.II 이후 실제 실행
 ### B. 레거시
 
 - 단일 DSE 개별 실행 (커밋 dca8f87f 이전) → 파이프라인 Mk.I 으로 대체
+
+---
+
+## 5. DSE 결과
+
+## 6. 물리 한계 증명
+
+## 7. 실험 검증 매트릭스
+
+## 8. 외계인급 발견
+
+## 9. Mk.I~V 진화
+
+## 10. Testable Predictions
+
+## 11. ASCII 성능비교
+
+## 12. ASCII 시스템 구조도
+
+## 13. ASCII 데이터/에너지 플로우
+
+## 14. 업그레이드 시 (시중 vs v1 vs v2)
+
+## 15. 검증 방법 (verify.hexa)
