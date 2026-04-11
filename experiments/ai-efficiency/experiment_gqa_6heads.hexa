@@ -1,0 +1,13 @@
+// experiment_gqa_6heads.hexa
+// 카테고리: ai-efficiency
+// 목적: GQA Group Query Attention 6 query heads / 1 kv head 검증
+// 근거: n=6 ratio 최적 메모리/품질
+// 가설: 6:1 grouping perplexity/메모리 최적
+// 지표: ppl, KV memory
+// 데이터: Llama / Mistral 결과
+
+fn main() {
+    println("[GQA 6 heads] 검증 스텁 — 6:1")
+    println("핵심 가설: 6 Q heads 최적")
+    println("[상태] pending")
+}

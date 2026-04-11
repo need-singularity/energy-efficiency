@@ -7,18 +7,11 @@
       "name": "TECS-L",
       "path": "TECS-L",
       "domain": "mathematics",
-      "description": "Perfect number 6 → universal rules. 150 characterizations + 8 Major Discoveries",
-      "scan_patterns": [
-        "**/*.py",
-        "docs/**/*.md"
-      ],
-      "key_files": [
-        "physics_constant_engine.py",
-        "math/identity_finder.py",
-        "math/omega_identity_search.py",
-        "docs/math-crossroads-map.md",
-        "docs/hypotheses/**/*.md"
-      ],
+      "status": "deprecated",
+      "_note": "TECS-L 폐기 완료 (2026-04). 수학+산업 기능은 n6-architecture 에 흡수됨.",
+      "description": "[폐기] Perfect number 6 수학 이론 -- n6-architecture/theory/ 에 흡수 완료",
+      "scan_patterns": [],
+      "key_files": [],
       "stats": {
         "characterizations": 150,
         "major_discoveries": 8,
@@ -72,48 +65,6 @@
         "ai_techniques": 16,
         "dse_domains": 323,
         "nexus_tests": 1116
-      }
-    },
-    {
-      "id": "sedi",
-      "name": "SEDI",
-      "path": "sedi",
-      "domain": "signal",
-      "description": "Search for Extra-Dimensional Intelligence. n=6 signal patterns + 77 data sources",
-      "scan_patterns": [
-        "sedi/**/*.py",
-        "data/**/*.json"
-      ],
-      "key_files": [
-        "sedi/constants.py",
-        "data/sedi-grades.json",
-        "data/sedi-graph.json",
-        "sedi/detector.py",
-        "sedi/cross_correlator.py"
-      ],
-      "stats": {
-        "hypotheses": 678,
-        "data_sources": 77
-      }
-    },
-    {
-      "id": "brainwire",
-      "name": "BrainWire",
-      "path": "brainwire",
-      "domain": "neuroscience",
-      "description": "Brain interface for consciousness engineering. BCI + therapeutic stimulation + PureField",
-      "scan_patterns": [
-        "brainwire/**/*.py",
-        "docs/**/*.md"
-      ],
-      "key_files": [
-        "brainwire/engine/*.py",
-        "brainwire/hardware/*.py",
-        "brainwire/profiles/*.py",
-        "brainwire/protocol.py"
-      ],
-      "stats": {
-        "modalities": 12
       }
     },
     {

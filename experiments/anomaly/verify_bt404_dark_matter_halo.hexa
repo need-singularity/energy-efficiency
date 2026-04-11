@@ -1,0 +1,13 @@
+// verify_bt404_dark_matter_halo.hexa
+// 카테고리: anomaly
+// 목적: BT-404 암흑물질 할로 NFW 프로파일 스케일 r_s ~ n kpc 검증
+// 근거: 은하 회전 곡선 NFW 피팅 r_s ~ 6 kpc
+// 가설: Milky Way r_s = 6 ± 2 kpc
+// 지표: 스케일 반경, c 매개변수
+// 데이터: Gaia DR3
+
+fn main() {
+    println("[BT-404 암흑물질 할로] 검증 스텁 — r_s=6 kpc")
+    println("핵심 가설: NFW 스케일 n")
+    println("[상태] pending")
+}

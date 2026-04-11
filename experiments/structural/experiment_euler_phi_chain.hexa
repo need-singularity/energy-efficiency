@@ -1,0 +1,13 @@
+// experiment_euler_phi_chain.hexa
+// 카테고리: structural
+// 목적: Euler phi chain length l(6)=3 = sopfr? 검증
+// 근거: phi(6)=2, phi(2)=1, phi(1)=1 → 3 steps
+// 가설: l(6) = 3 (최소 체인 길이)
+// 지표: phi 체인 길이
+// 데이터: OEIS A003434
+
+fn main() {
+    println("[phi chain l(6)] 검증 스텁 — 3 스텝")
+    println("핵심 가설: l(6)=3")
+    println("[상태] pending")
+}

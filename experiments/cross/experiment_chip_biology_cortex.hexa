@@ -1,0 +1,13 @@
+// experiment_chip_biology_cortex.hexa
+// 카테고리: cross
+// 목적: 칩 6단 파이프라인 vs 피질 6 층 cross-domain 동형 검증
+// 근거: BT-386 피질 6층 ↔ chip 6 stage
+// 가설: 두 층 수 n=6 동일
+// 지표: 층 수 동형성
+// 데이터: chip-verify + neuroscience
+
+fn main() {
+    println("[chip-bio cortex] 검증 스텁 — 6 층")
+    println("핵심 가설: chip=cortex n=6")
+    println("[상태] pending")
+}

@@ -1,0 +1,13 @@
+// experiment_speculative_decoding_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Speculative decoding 초안 모델의 예측 길이 γ=6 에서 수용율 × 속도 곱이 최대임을 검증
+// 근거: draft length 6 이 σ·φ ≈ n·τ 조건에서 인과 의존 최저
+// 가설: γ ∈ {2,3,4,5,6,7,8} 스캔 시 γ=6 에서 effective speedup 최고 (>2.5x)
+// 지표: 수용율 α, 실효 speedup, 에너지 효율 (J/token)
+// 의존: techniques/optim/speculative_decoding.hexa
+
+fn main() {
+    println("[Speculative Decoding n6] 실험 스텁 — draft length γ 스캔")
+    println("핵심 가설: γ=6 effective speedup 최대")
+    println("[상태] pending")
+}

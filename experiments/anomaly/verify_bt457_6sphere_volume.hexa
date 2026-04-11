@@ -1,0 +1,47 @@
+// verify_bt457_6sphere_volume.hexa
+// 카테고리: anomaly
+// 목적: BT-457 6차원 단위 공 부피 pi^3/6 ~ 5.1677 검증
+// 근거: V_n = pi^(n/2) / Gamma(n/2+1), n=6 → pi^3/6
+// 가설: 최대 부피는 n=5에서 발생 (5.264), 6차원 근접
+// 지표: 이론 vs 수치
+// 데이터: 다차원 기하
+
+fn main() {
+    println("[BT-457 6차원 구] 부피 pi^3/6 — 산술 검증")
+    let pi: f64 = 3.14159265358979
+
+    // V_6 = pi^3 / 6
+    let pi3: f64 = pi * pi * pi             // 31.006
+    let v6: f64 = pi3 / 6.0                  // 5.1677
+    let v6_known: f64 = 5.16771
+
+    // 다른 차원 비교
+    let v1: f64 = 2.0
+    let v2: f64 = pi                          // 3.1416
+    let v3: f64 = 4.18879                     // 4*pi/3
+    let v4: f64 = pi * pi / 2.0               // 4.9348
+    let v5: f64 = 5.26379                     // 최대
+    let v7: f64 = 4.72477
+
+    // 오차
+    let mut err: f64 = v6 - v6_known
+    if err < 0.0 { err = -err }
+
+    println("pi^3 = " + to_string(pi3))
+    println("V_6 = pi^3/6 = " + to_string(v6))
+    println("알려진 V_6 = " + to_string(v6_known))
+    println("V_5 = " + to_string(v5) + " (최대)")
+    println("V_7 = " + to_string(v7))
+    println("오차 = " + to_string(err))
+
+    let mut pass: i64 = 0
+    if err < 0.001 { pass = pass + 1 }
+    if v5 > v6 { pass = pass + 1 }
+    if v6 > v7 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — V_6 = pi^3/6 + 5D 부피 최대")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

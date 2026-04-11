@@ -1,0 +1,13 @@
+// meta_results_audit_250.hexa
+// 카테고리: meta
+// 목적: _results.jsonl 250 건 감사 — pass/fail/pending 균등성 검증
+// 근거: R14 SSOT 단일 append
+// 가설: 250 중 pass >= 50, pending <= 200
+// 지표: 분포
+// 의존: _results.jsonl
+
+fn main() {
+    println("[감사 250] 검증 스텁 — 분포")
+    println("핵심 가설: pass >= 50")
+    println("[상태] pending")
+}

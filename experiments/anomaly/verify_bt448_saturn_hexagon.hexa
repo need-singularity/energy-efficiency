@@ -1,0 +1,40 @@
+// verify_bt448_saturn_hexagon.hexa
+// 카테고리: anomaly
+// 목적: BT-448 토성 북극 육각 제트 Rossby 파 m=6 모드 검증
+// 근거: Cassini 관측 6각 제트, 각 변 ~13800 km
+// 가설: Rossby 수 m=6 + 자전 주기 10.7 hr 공명
+// 지표: 변 수, 풍속, 주기
+// 데이터: NASA Cassini
+
+fn main() {
+    println("[BT-448 토성 육각] Rossby m=6 — 산술 검증")
+    let sides: i64 = 6
+    let side_km: f64 = 13800.0
+    let wind_ms: f64 = 108.0               // m/s
+    let rot_hr: f64 = 10.656               // 토성 자전
+    let rossby_m: i64 = 6
+
+    // 둘레 (근사)
+    let perimeter: f64 = side_km * 6.0     // 82800 km
+    // 각 내각 (정6각형) = 120도
+    let interior_angle: f64 = 120.0
+    let exterior_angle: f64 = 60.0
+
+    println("변 = " + to_string(sides))
+    println("변 길이 = " + to_string(side_km) + " km")
+    println("둘레 = " + to_string(perimeter) + " km")
+    println("풍속 = " + to_string(wind_ms) + " m/s")
+    println("내각 = " + to_string(interior_angle) + " deg")
+
+    let mut pass: i64 = 0
+    if sides == 6 { pass = pass + 1 }
+    if rossby_m == 6 { pass = pass + 1 }
+    if interior_angle > 119.9 && interior_angle < 120.1 { pass = pass + 1 }
+    if rot_hr > 10.0 && rot_hr < 11.0 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 토성 육각 m=6 Rossby 공명")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

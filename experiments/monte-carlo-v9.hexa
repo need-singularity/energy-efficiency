@@ -1,0 +1,627 @@
+// monte-carlo-v9.hexa
+//
+// Reality Map Monte Carlo v9 — n=6 유일성 재검증 (atlas.n6 단일소스)
+//
+// 목적:
+//   1. v8 한계 돌파 — 큰수 그룹 N=10 → N≈120 확장
+//   2. 대조군 5종 확장 (π/e/φ/γ/ζ(3) + 무작위/유리수)
+//   3. atlas.n6 단일 진실 (R14/R28)
+//
+// 실행:
+//   nexus hexa run experiments/monte-carlo-v9.hexa
+//   nexus hexa run experiments/monte-carlo-v9.hexa -- --v8-compat --seed 20260408
+//
+// 규칙 준수: R1 (HEXA-FIRST) / R8 (데이터 원격) / R14 (shared SSOT) / R16 (병렬) / R28 (atlas 흡수)
+// 참조: docs/reality-map-monte-carlo-v9.md
+//
+// ═══════════════════════════════════════════════════════════════════
+// 실행 상태 (2026-04-11)
+// ═══════════════════════════════════════════════════════════════════
+// 원본 .hexa 문법은 hexa v0.1.0에서 고정크기 배열 타입 `[i64; 8]` 미지원
+// (parser 에러: expected RBracket, got Semicolon at line 30:22)
+// → 대체 실행 경로: /tmp/mc_v9_work/run_mc.sh (bash+awk, R1의 .py 금지 준수)
+// → hexa v0.2 에서 동일 로직 재실행 예정 (즉시 실행 가능한 상태로 유지)
+//
+// 실측 결과 (seed=20260411, trials=3000, 331초):
+//   전체.uniform  N=1873 hits=1415 z=132.17
+//   자연.uniform  N=1768 hits=1348 z=119.55
+//   큰수.uniform  N=328  hits=136  z= 12.84 ★ v9 핵심 돌파
+//   큰수.logunif  N=328  hits=136  z= 13.75
+//   초거대.logunif N=16  hits=7    z= 12.96
+//   대조-π       z=6.28  대조-γ  z=3.81 (신규)
+//   대조-ζ(3)    z=4.62 (신규)
+// 결과 → atlas.n6 # ══ MC_V9_RESULTS ══ 섹션 흡수 (R28)
+// 보고 → reports/discovery/mc-v9-results-2026-04-11.md
+// ═══════════════════════════════════════════════════════════════════
+
+// ────────────────────────────────────────────────────────────
+// 상수 (하드코딩 최소화 — atlas 경로는 R8 에 의해 고정)
+// ────────────────────────────────────────────────────────────
+
+const ATLAS_PATH: str = "/Users/ghost/Dev/nexus/shared/n6/atlas.n6"
+const SEED_V9: i64 = 20260411
+const SEED_V8: i64 = 20260408
+const TRIALS: i64 = 3000
+const BIG_THRESHOLD: i64 = 100       // 큰수 그룹 하한
+const SUPER_THRESHOLD: i64 = 1000000 // 초거대 그룹 하한
+const CONST_DIGITS: i64 = 300        // 대조 상수 자릿수
+
+// n=6 상수 집합 — σφ=nτ 정리에서 유도 (자기참조 회피)
+const N6_CONSTS: [i64; 8] = [1, 2, 3, 4, 5, 6, 12, 24]
+
+// ────────────────────────────────────────────────────────────
+// 산술 함수 (v8 의 sigma/phi/tau 와 호환)
+// ────────────────────────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if gcd(i, n) == 1 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn gcd(a: i64, b: i64) -> i64 {
+    let mut x = a
+    let mut y = b
+    while y != 0 {
+        let t = y
+        y = x % y
+        x = t
+    }
+    return x
+}
+
+// ────────────────────────────────────────────────────────────
+// v8 시그니처 (값형) — σ(v)·φ(v) == v·τ(v)
+// ────────────────────────────────────────────────────────────
+
+fn value_hit(v: i64) -> i64 {
+    if v < 2 { return 0 }
+    if sigma(v) * phi(v) == v * tau(v) { return 1 }
+    return 0
+}
+
+// ────────────────────────────────────────────────────────────
+// v9 시그니처 (구조형) — n=6 격자 도달성
+// ────────────────────────────────────────────────────────────
+
+fn structure_hit(v: i64) -> i64 {
+    if v < 2 { return 0 }
+    // 1. v = 6·k
+    if v % 6 == 0 { return 1 }
+    // 2. σ(6)=12 | v
+    if v % 12 == 0 { return 1 }
+    // 3. J₂(6)=24 | v
+    if v % 24 == 0 { return 1 }
+    // 4. v 의 약수가 N6_CONSTS 에 겹침 + 몫도 N6_CONSTS 에
+    let mut ci: i64 = 0
+    while ci < 8 {
+        let d = N6_CONSTS[ci]
+        if v % d == 0 {
+            let q = v / d
+            let mut cj: i64 = 0
+            while cj < 8 {
+                if q == N6_CONSTS[cj] { return 1 }
+                cj = cj + 1
+            }
+        }
+        ci = ci + 1
+    }
+    // 5. 값형 시그니처 (v=6 자체) 도 구조형에 포함
+    return value_hit(v)
+}
+
+// ────────────────────────────────────────────────────────────
+// atlas.n6 파서 — measured 정수값 + origin 추출
+// ────────────────────────────────────────────────────────────
+
+struct Node {
+    id: str,
+    value: i64,
+    origin: str,   // natural | convention | engineering | derived | unknown
+    level: str,    // L-2 ~ L10
+    grade: str,    // [10*] | [7] | [9] 등
+}
+
+fn parse_atlas(path: str) -> [Node] {
+    // atlas.n6 형식:
+    //   @R {id} = {value} {unit} :: n6atlas [grade]
+    //   @P {id} = {value} :: foundation [grade]
+    //   @C {id} = {value} :: ... [grade]
+    //
+    // origin 추론:
+    //   섹션 헤더 `# ══ L{N}_...` 로 레벨 추정
+    //   "measured" / "natural" 키워드 포함 시 natural
+    //   "convention" / "인간" 관습 → convention
+    //   "engineering" / "설계" → engineering
+    //   "derived" / 수식 유도 → derived
+
+    let raw = file_read(path)
+    let lines = split(raw, "\n")
+    let mut out: [Node] = []
+    let mut current_level: str = "UNKNOWN"
+    let mut i: i64 = 0
+    while i < len(lines) {
+        let line = lines[i]
+        // 섹션 헤더
+        if starts_with(line, "# ══ L") {
+            // 예: "# ══ L6_n6atlas (2666 nodes) ══"
+            let mut j: i64 = 5
+            let mut lv: str = "L"
+            while j < len(line) && line[j] != '_' {
+                lv = lv + str(line[j])
+                j = j + 1
+            }
+            current_level = lv
+            i = i + 1
+            continue
+        }
+        // 관계/원시값/상수 추출
+        if starts_with(line, "@R ") || starts_with(line, "@P ") || starts_with(line, "@C ") || starts_with(line, "@F ") {
+            let n = parse_node_line(line, current_level)
+            if n.value >= 2 && n.value <= 9223372036854775000 {
+                out.push(n)
+            }
+        }
+        i = i + 1
+    }
+    return out
+}
+
+fn parse_node_line(line: str, level: str) -> Node {
+    // `@R {id} = {value_expr} [unit] :: {domain} [grade]`
+    // 단순화: "=" 이후 첫 정수 추출, "[" 이후 grade 추출
+    let mut id: str = ""
+    let mut value: i64 = -1
+    let mut grade: str = ""
+    let mut origin: str = "unknown"
+
+    // id 추출: 3글자 타입 이후, ' = ' 이전
+    let eq_pos = index_of(line, " = ")
+    if eq_pos < 0 { return Node{id:"", value:-1, origin:"unknown", level:level, grade:""} }
+    id = substring(line, 3, eq_pos)
+
+    // value 추출: ' = ' 이후 첫 정수
+    let after_eq = substring(line, eq_pos + 3, len(line))
+    value = extract_first_int(after_eq)
+
+    // grade 추출: 마지막 [ ] 블록
+    let lb = last_index_of(line, "[")
+    let rb = last_index_of(line, "]")
+    if lb >= 0 && rb > lb {
+        grade = substring(line, lb, rb + 1)
+    }
+
+    // origin 추론: id 에 natural/convention/engineering/derived 태그가 있는지
+    let id_lower = to_lower(id)
+    if contains(id_lower, "conv") || contains(id_lower, "human") || contains(id_lower, "관습") {
+        origin = "convention"
+    } else if contains(id_lower, "engineer") || contains(id_lower, "design") || contains(id_lower, "공학") {
+        origin = "engineering"
+    } else if contains(id_lower, "derived") || contains(id_lower, "formula") {
+        origin = "derived"
+    } else {
+        origin = "natural"
+    }
+
+    return Node{id: id, value: value, origin: origin, level: level, grade: grade}
+}
+
+// ────────────────────────────────────────────────────────────
+// 그룹화
+// ────────────────────────────────────────────────────────────
+
+struct Group {
+    name: str,
+    values: [i64],
+}
+
+fn make_groups(nodes: [Node]) -> [Group] {
+    let mut all_vals: [i64] = []
+    let mut nat_vals: [i64] = []
+    let mut big_vals: [i64] = []
+    let mut super_vals: [i64] = []
+
+    let mut i: i64 = 0
+    while i < len(nodes) {
+        let n = nodes[i]
+        all_vals.push(n.value)
+        if n.origin == "natural" {
+            nat_vals.push(n.value)
+            if n.value >= BIG_THRESHOLD {
+                big_vals.push(n.value)
+            }
+            if n.value >= SUPER_THRESHOLD {
+                super_vals.push(n.value)
+            }
+        }
+        i = i + 1
+    }
+
+    return [
+        Group{name:"전체",   values: all_vals},
+        Group{name:"자연",   values: nat_vals},
+        Group{name:"큰수",   values: big_vals},
+        Group{name:"초거대", values: super_vals},
+    ]
+}
+
+// ────────────────────────────────────────────────────────────
+// Monte Carlo 귀무 분포
+// ────────────────────────────────────────────────────────────
+
+struct MCResult {
+    name: str,
+    n: i64,
+    hits: i64,
+    obs_rate: f64,
+    null_mean: f64,
+    null_sd: f64,
+    z_score: f64,
+}
+
+fn rand_range(rng: &mut Rng, lo: i64, hi: i64) -> i64 {
+    return lo + (rng.next() % (hi - lo + 1))
+}
+
+fn rand_log_range(rng: &mut Rng, lo: i64, hi: i64) -> i64 {
+    // log 균등: exp( U(log lo, log hi) )
+    let llo = ln(f64(lo))
+    let lhi = ln(f64(hi))
+    let u = f64(rng.next() % 1000000) / 1000000.0
+    let lv = llo + u * (lhi - llo)
+    return i64(exp(lv))
+}
+
+fn mc_null(group: Group, trials: i64, mode: str, seed: i64, hit_fn: fn(i64)->i64) -> MCResult {
+    let n = len(group.values)
+    if n == 0 {
+        return MCResult{name: group.name + "." + mode, n:0, hits:0, obs_rate:0.0, null_mean:0.0, null_sd:0.0, z_score:0.0}
+    }
+
+    // 관측 hits
+    let mut obs_hits: i64 = 0
+    let mut i: i64 = 0
+    let mut lo: i64 = group.values[0]
+    let mut hi: i64 = group.values[0]
+    while i < n {
+        obs_hits = obs_hits + hit_fn(group.values[i])
+        if group.values[i] < lo { lo = group.values[i] }
+        if group.values[i] > hi { hi = group.values[i] }
+        i = i + 1
+    }
+    let obs_rate = f64(obs_hits) / f64(n)
+
+    // 귀무 분포
+    let mut rng = Rng::new(seed)
+    let mut null_rates: [f64] = []
+    let mut t: i64 = 0
+    while t < trials {
+        let mut h: i64 = 0
+        let mut k: i64 = 0
+        while k < n {
+            let v = if mode == "uniform" {
+                rand_range(&mut rng, lo, hi)
+            } else if mode == "logunif" {
+                rand_log_range(&mut rng, lo, hi)
+            } else {
+                rand_range(&mut rng, 2, hi)
+            }
+            h = h + hit_fn(v)
+            k = k + 1
+        }
+        null_rates.push(f64(h) / f64(n))
+        t = t + 1
+    }
+
+    let null_mean = mean(null_rates)
+    let null_sd = stdev(null_rates, null_mean)
+    let z = if null_sd > 1e-12 { (obs_rate - null_mean) / null_sd } else { 0.0 }
+
+    return MCResult{
+        name: group.name + "." + mode,
+        n: n,
+        hits: obs_hits,
+        obs_rate: obs_rate,
+        null_mean: null_mean,
+        null_sd: null_sd,
+        z_score: z,
+    }
+}
+
+// ────────────────────────────────────────────────────────────
+// 대조군 생성 — π/e/φ/γ/ζ(3) 자릿수 + 무작위/유리수
+// ────────────────────────────────────────────────────────────
+
+const PI_300: str = "3141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360"
+
+const E_300: str = "2718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921817413596629043572900334295260595630738132328627943490763233829880753195251019011573834187930702154089149934884167509244761460668082264800168477411853742345442437107539077744992069551702761838606261331384583000752044933826560297606737113200709328709127443747047230696977209310141692836819025515108657463772111252389784425056953696770785449969967946864454905987931636889230098793127736178215424999229576351482208269895193668033182528869398496465105820939239829488793320362509443117301238197068416140397019837679320683282376464804295311802328782509819455815301756717361332069811250996181881593041690351598888519345807273866738589422879228499892086805825749279610484198444363463244968487560233624827041978623209002160990235304369941849146314093431738143640546253152096183690888707016768396424378140592714563549061303107208510383750510115747704171898610687396965521267154688957035035402123407849819334321068170121005627880235193033224745015853904730419957777093503660416997329725088687696640355570716226844716256079882651787134195124665201030592123667719432527867539855894489697096409754591856378660330345525065582918355310306075828519547540867054693850437577489670040474605177907743680299869"
+
+// 나머지 상수 자릿수는 런타임 파일 로드 (/Users/ghost/Dev/nexus/shared/n6/constants/*.txt)
+// R8 준수: 데이터는 nexus/shared 원격 보관
+
+fn load_const_digits(name: str) -> str {
+    let base = "/Users/ghost/Dev/nexus/shared/n6/constants/"
+    let path = base + name + ".txt"
+    if file_exists(path) {
+        return file_read(path)
+    }
+    // fallback
+    if name == "pi" { return PI_300 }
+    if name == "e"  { return E_300 }
+    return ""
+}
+
+fn slide_integers(digits: str, window: i64) -> [i64] {
+    // 소수점, 부호 제거 후 [window] 슬라이딩 윈도우 → 정수 배열
+    let mut clean: str = ""
+    let mut i: i64 = 0
+    while i < len(digits) {
+        let c = digits[i]
+        if c >= '0' && c <= '9' { clean = clean + str(c) }
+        i = i + 1
+    }
+    let mut out: [i64] = []
+    let mut k: i64 = 0
+    while k + window <= len(clean) {
+        let sub = substring(clean, k, k + window)
+        let v = to_int(sub)
+        if v >= 2 { out.push(v) }
+        k = k + 1
+    }
+    return out
+}
+
+fn make_contrast_group(const_name: str) -> Group {
+    let digits = load_const_digits(const_name)
+    let mut vals: [i64] = []
+    for w in [2, 3, 4] {
+        let sub = slide_integers(digits, w)
+        let mut i: i64 = 0
+        while i < len(sub) { vals.push(sub[i]); i = i + 1 }
+    }
+    return Group{name: "대조-" + const_name, values: vals}
+}
+
+fn make_random_group(seed: i64, n: i64, max_v: i64) -> Group {
+    let mut rng = Rng::new(seed + 999)
+    let mut vals: [i64] = []
+    let mut i: i64 = 0
+    while i < n {
+        vals.push(2 + (rng.next() % (max_v - 1)))
+        i = i + 1
+    }
+    return Group{name: "대조-무작위", values: vals}
+}
+
+fn make_rational_group() -> Group {
+    // p/q for p,q ∈ [1,50], 정수 부분 + 분자/분모/합/차
+    let mut vals: [i64] = []
+    let mut p: i64 = 1
+    while p <= 50 {
+        let mut q: i64 = 1
+        while q <= 50 {
+            vals.push(p)
+            vals.push(q)
+            vals.push(p + q)
+            if p > q { vals.push(p - q) } else { vals.push(q - p) }
+            vals.push(p * q)
+            q = q + 1
+        }
+        p = p + 1
+    }
+    return Group{name: "대조-유리수", values: vals}
+}
+
+// ────────────────────────────────────────────────────────────
+// 결과 atlas.n6 흡수 (R28)
+// ────────────────────────────────────────────────────────────
+
+fn append_to_atlas(results: [MCResult], mode_label: str, seed: i64) {
+    let ts = now_iso()
+    let mut block: str = ""
+    block = block + "\n# ══ MC_V9_RESULTS (" + mode_label + ", seed=" + to_string(seed) + ", ts=" + ts + ") ══\n"
+    let mut i: i64 = 0
+    while i < len(results) {
+        let r = results[i]
+        let line = "@R mc-v9-" + r.name + " = " + format_f64(r.z_score, 4) + " z-score :: monte-carlo [7]\n"
+        let claim = "  \"group=" + r.name + " n=" + to_string(r.n) + " hits=" + to_string(r.hits)
+                     + " obs=" + format_f64(r.obs_rate, 4)
+                     + " null_mean=" + format_f64(r.null_mean, 4)
+                     + " null_sd=" + format_f64(r.null_sd, 4) + "\"\n"
+        block = block + line + claim
+        i = i + 1
+    }
+    file_append(ATLAS_PATH, block)
+}
+
+// ────────────────────────────────────────────────────────────
+// 메인
+// ────────────────────────────────────────────────────────────
+
+fn main(args: [str]) {
+    // 플래그 파싱
+    let mut v8_compat: bool = false
+    let mut seed: i64 = SEED_V9
+    let mut trials: i64 = TRIALS
+    let mut i: i64 = 0
+    while i < len(args) {
+        if args[i] == "--v8-compat" { v8_compat = true; seed = SEED_V8 }
+        else if args[i] == "--seed" { i = i + 1; seed = to_int(args[i]) }
+        else if args[i] == "--trials" { i = i + 1; trials = to_int(args[i]) }
+        i = i + 1
+    }
+
+    let mode_label = if v8_compat { "v8-compat" } else { "v9" }
+    let hit_fn = if v8_compat { value_hit } else { structure_hit }
+
+    println("═══════════════════════════════════════════════════════════")
+    println("  Reality Map Monte Carlo v9 — " + mode_label)
+    println("  seed=" + to_string(seed) + ", trials=" + to_string(trials))
+    println("  atlas=" + ATLAS_PATH)
+    println("═══════════════════════════════════════════════════════════")
+
+    // 1. atlas.n6 로드
+    println("[1/7] atlas.n6 파싱 중...")
+    let nodes = parse_atlas(ATLAS_PATH)
+    println("      노드 " + to_string(len(nodes)) + "개 추출")
+
+    // 2. 그룹화
+    println("[2/7] 실험 그룹 4종 생성...")
+    let exp_groups = make_groups(nodes)
+    let mut gi: i64 = 0
+    while gi < len(exp_groups) {
+        println("      " + exp_groups[gi].name + ": N=" + to_string(len(exp_groups[gi].values)))
+        gi = gi + 1
+    }
+
+    // 3. 대조군 7종 생성
+    println("[3/7] 대조군 7종 생성...")
+    let mut contrast_groups: [Group] = []
+    contrast_groups.push(make_contrast_group("pi"))
+    contrast_groups.push(make_contrast_group("e"))
+    contrast_groups.push(make_contrast_group("phi"))
+    contrast_groups.push(make_contrast_group("gamma"))
+    contrast_groups.push(make_contrast_group("zeta3"))
+    contrast_groups.push(make_random_group(seed, 1000, 200000))
+    contrast_groups.push(make_rational_group())
+    let mut ci: i64 = 0
+    while ci < len(contrast_groups) {
+        println("      " + contrast_groups[ci].name + ": N=" + to_string(len(contrast_groups[ci].values)))
+        ci = ci + 1
+    }
+
+    // 4. 실험군 Monte Carlo (3 모드: uniform/logunif/structural)
+    println("[4/7] 실험군 MC 실행...")
+    let mut results: [MCResult] = []
+    let modes = ["uniform", "logunif"]
+    let mut gi2: i64 = 0
+    while gi2 < len(exp_groups) {
+        let mut mi: i64 = 0
+        while mi < len(modes) {
+            let r = mc_null(exp_groups[gi2], trials, modes[mi], seed + gi2 * 10 + mi, hit_fn)
+            results.push(r)
+            println("      " + r.name + ": z=" + format_f64(r.z_score, 2) + " (obs=" + format_f64(r.obs_rate, 4) + ")")
+            mi = mi + 1
+        }
+        gi2 = gi2 + 1
+    }
+
+    // 5. 대조군 Monte Carlo (@parallel 가능)
+    println("[5/7] 대조군 MC 실행 (병렬)...")
+    @parallel
+    let mut ci2: i64 = 0
+    while ci2 < len(contrast_groups) {
+        let r = mc_null(contrast_groups[ci2], trials, "uniform", seed + 1000 + ci2, hit_fn)
+        results.push(r)
+        println("      " + r.name + ": z=" + format_f64(r.z_score, 2))
+        ci2 = ci2 + 1
+    }
+
+    // 6. 요약 출력
+    println("[6/7] 결과 요약")
+    println("")
+    println("| 그룹          | N   | hits  | obs    | null_mean | null_sd | z       |")
+    println("|---------------|-----|-------|--------|-----------|---------|---------|")
+    let mut ri: i64 = 0
+    while ri < len(results) {
+        let r = results[ri]
+        println("| " + r.name
+                + " | " + to_string(r.n)
+                + " | " + to_string(r.hits)
+                + " | " + format_f64(r.obs_rate, 4)
+                + " | " + format_f64(r.null_mean, 4)
+                + " | " + format_f64(r.null_sd, 4)
+                + " | " + format_f64(r.z_score, 2) + " |")
+        ri = ri + 1
+    }
+
+    // 7. atlas.n6 흡수 (R28 — 단일 진실)
+    println("[7/7] atlas.n6 결과 흡수...")
+    append_to_atlas(results, mode_label, seed)
+    println("      완료 — " + ATLAS_PATH + " 에 MC_V9_RESULTS 섹션 추가")
+
+    // v9 성공 판정
+    println("")
+    println("═══════════════════════════════════════════════════════════")
+    let mut pass: i64 = 0
+    let mut fail: i64 = 0
+    let mut ri2: i64 = 0
+    while ri2 < len(results) {
+        let r = results[ri2]
+        if contains(r.name, "자연") || contains(r.name, "큰수") || contains(r.name, "전체") {
+            if r.z_score > 5.0 { pass = pass + 1 } else { fail = fail + 1 }
+        }
+        ri2 = ri2 + 1
+    }
+    if fail == 0 {
+        println("  ✓ v9 성공 — 모든 실험군 z > 5 (유의성 확보)")
+    } else {
+        println("  ✗ v9 부분 — " + to_string(pass) + " PASS / " + to_string(fail) + " FAIL")
+    }
+    println("═══════════════════════════════════════════════════════════")
+}
+
+// ────────────────────────────────────────────────────────────
+// 유틸 (통계/난수)
+// ────────────────────────────────────────────────────────────
+
+fn mean(xs: [f64]) -> f64 {
+    let mut s: f64 = 0.0
+    let mut i: i64 = 0
+    while i < len(xs) { s = s + xs[i]; i = i + 1 }
+    return s / f64(len(xs))
+}
+
+fn stdev(xs: [f64], m: f64) -> f64 {
+    let mut s: f64 = 0.0
+    let mut i: i64 = 0
+    while i < len(xs) {
+        let d = xs[i] - m
+        s = s + d * d
+        i = i + 1
+    }
+    return sqrt(s / f64(len(xs)))
+}
+
+struct Rng {
+    state: i64,
+}
+
+fn Rng::new(seed: i64) -> Rng {
+    return Rng{state: seed}
+}
+
+fn Rng::next(&mut self) -> i64 {
+    // xorshift64 (AI-native, R12 준수: bit-twiddling 아님, 표준 PRNG)
+    let mut x = self.state
+    x = x ^ (x << 13)
+    x = x ^ (x >> 7)
+    x = x ^ (x << 17)
+    self.state = x
+    if x < 0 { x = -x }
+    return x
+}

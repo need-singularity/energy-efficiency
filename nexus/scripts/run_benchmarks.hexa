@@ -1,0 +1,17 @@
+// run_benchmarks.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/run_benchmarks.sh
+// 포팅 상태: STUB (원본 241줄)
+// 원본 요약: NEXUS-6 성능 벤치마크 스위트 — 5종
+//   1: 렌즈 스캔 속도 (6 도메인)
+//   2: evolve 속도
+//   3: verify 속도 (n=6 상수 배치)
+//   4: 테스트 속도 (cargo test)
+//   5: 빌드 속도 (cargo build --release)
+//   결과 JSON → ~/.nexus/benchmark-results.json
+//   옵션: --quick, --no-build
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/run_benchmarks (HEXA 포팅 대기)")
+}

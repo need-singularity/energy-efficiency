@@ -1,0 +1,13 @@
+// verify_bt406_protein_fold.hexa
+// 카테고리: anomaly
+// 목적: BT-406 단백질 접힘 — 주요 2차 구조 6 종류 (alpha/beta/loop/turn/coil/bridge) 검증
+// 근거: DSSP 주요 분류 n=6
+// 가설: 임의 단백질 DSSP 분류 6 종류 카운트
+// 지표: 분류 수, 분포
+// 데이터: PDB 샘플
+
+fn main() {
+    println("[BT-406 단백질 접힘] 검증 스텁 — 6 2차 구조")
+    println("핵심 가설: DSSP 분류 6")
+    println("[상태] pending")
+}

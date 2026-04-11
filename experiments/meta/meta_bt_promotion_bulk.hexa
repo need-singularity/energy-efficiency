@@ -1,0 +1,13 @@
+// meta_bt_promotion_bulk.hexa
+// 카테고리: meta
+// 목적: BT-372~416 passed 대량 atlas.n6 승격 자동화
+// 근거: 44 BT passed 기대, [7]->[10*] 자동 sed
+// 가설: 44 승격 + diff 크기 측정
+// 지표: 승격 건수
+// 의존: atlas.n6 + _results.jsonl
+
+fn main() {
+    println("[BT 승격 대량] 검증 스텁 — 44 BT")
+    println("핵심 가설: 자동 [7]->[10*]")
+    println("[상태] pending")
+}

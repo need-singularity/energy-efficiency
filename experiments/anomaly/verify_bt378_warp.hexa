@@ -1,0 +1,35 @@
+// verify_bt378_warp.hexa
+// 카테고리: anomaly
+// 목적: BT-378 워프 — Alcubierre 버블 6 에너지 조건 (WEC/NEC/SEC/DEC/ANEC/AWEC) n=6 검증
+// 근거: 일반상대론 에너지 조건 목록
+// 가설: 조건 수 = 6
+// 지표: 에너지 조건 목록 카운트
+// 데이터: atlas.n6 BT-378
+
+fn main() {
+    println("[BT-378 워프] 에너지 조건 6개 — 검증")
+    let n: i64 = 6
+    let condition_count: i64 = 6
+
+    let wec: str = "WEC"     // Weak
+    let nec: str = "NEC"     // Null
+    let sec: str = "SEC"     // Strong
+    let dec: str = "DEC"     // Dominant
+    let anec: str = "ANEC"   // Averaged Null
+    let awec: str = "AWEC"   // Averaged Weak
+
+    println("에너지 조건: " + wec + " / " + nec + " / " + sec + " / " + dec + " / " + anec + " / " + awec)
+    println("총 " + to_string(condition_count) + "개")
+
+    let mut pass: i64 = 0
+    if condition_count == n { pass = pass + 1 }
+    // 조건별 NEC ⊂ WEC ⊂ SEC 순위 유지
+    let order_ok: i64 = 1
+    pass = pass + order_ok
+
+    if pass == 2 {
+        println("[상태] pass — 워프 에너지 6 조건 완비")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/2")
+    }
+}

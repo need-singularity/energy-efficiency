@@ -1,0 +1,13 @@
+// verify_bt407_codon_degeneracy.hexa
+// 카테고리: anomaly
+// 목적: BT-407 코돈 축퇴도 — 6 아미노산 (Leu, Ser, Arg) 최대 축퇴도 6 검증
+// 근거: 표준 유전 코드 6-fold degenerate aa 수
+// 가설: 6-fold 아미노산 수 = 3 (Leu, Ser, Arg)
+// 지표: degeneracy 분포
+// 데이터: 표준 코돈 표
+
+fn main() {
+    println("[BT-407 코돈 축퇴도] 검증 스텁 — 6-fold")
+    println("핵심 가설: 6-fold AA = 3")
+    println("[상태] pending")
+}

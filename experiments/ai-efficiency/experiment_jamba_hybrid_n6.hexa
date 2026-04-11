@@ -1,0 +1,14 @@
+// experiment_jamba_hybrid_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Jamba 하이브리드 (Transformer + Mamba + MoE) 블록 비율이 1:6:? 일 때
+//       긴 컨텍스트 정확도와 throughput 동시 최대화 검증
+// 근거: 하이브리드 블록 구성 상 전문가 수 E=6 + attention 주기 p=6 배치 최적
+// 가설: (attention:mamba:moe) ∈ {(1:7:1),(1:6:1),(1:5:1),(1:3:1)} 중 1:6:1 우위
+// 지표: 256K 컨텍스트 리콜 정확도, tokens/s, 파라미터 효율 (활성/총)
+// 의존: techniques/moe/jamba_hybrid.hexa
+
+fn main() {
+    println("[Jamba 하이브리드 n6] 실험 스텁 — 블록 비율 스캔")
+    println("핵심 가설: attention:mamba:moe = 1:6:1 최적")
+    println("[상태] pending")
+}

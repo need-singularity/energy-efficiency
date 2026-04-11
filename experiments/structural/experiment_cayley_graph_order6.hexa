@@ -1,0 +1,13 @@
+// experiment_cayley_graph_order6.hexa
+// 카테고리: structural
+// 목적: S3 Cayley graph order 6 최소 비가환군 검증
+// 근거: |S3|=6, 최소 non-abelian, 3 generators
+// 가설: 6 노드 Cayley graph 직경 ~ 3
+// 지표: 직경, generators
+// 데이터: 군론 표
+
+fn main() {
+    println("[Cayley S3] 검증 스텁 — order 6")
+    println("핵심 가설: 최소 non-abelian")
+    println("[상태] pending")
+}

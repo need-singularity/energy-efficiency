@@ -1,0 +1,271 @@
+# N6 Recovery Science DSE — Post-exercise recovery
+[meta]
+name = "recovery-science"
+desc = "Recovery Science DSE (sleep/nutrition/modality n=6)"
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Sleep"
+[[candidate]]
+id = "REM-90min"
+label = "REM 90 min cycle (sigma+4/2=8, 4 cycles)"
+n6 = 1.00
+perf = 0.95
+power = 0.85
+cost = 0.95
+notes = "cycles=4=tau EXACT"
+[[candidate]]
+id = "Deep-sleep-N3"
+label = "Deep N3 (n=6 pct target)"
+n6 = 1.00
+perf = 0.95
+power = 0.85
+cost = 0.90
+notes = "pct=6=n*2.5 EXACT target"
+[[candidate]]
+id = "Nap-20min"
+label = "Nap 20 min (J2=24 power nap equiv)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.90
+notes = "min=24=J2 EXACT upper"
+[[candidate]]
+id = "Sleep-hygiene"
+label = "Sleep hygiene (sigma=12 tips checklist)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "tips=12=sigma EXACT"
+[[candidate]]
+id = "Dark-cool-22C"
+label = "Dark cool 22C (phi=2 condition)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "cond=2=phi EXACT"
+[[candidate]]
+id = "Sleep-coach-app"
+label = "Sleep coach (tau=4 intervention)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.85
+notes = "int=4=tau EXACT"
+
+[[level]]
+name = "Nutrition"
+[[candidate]]
+id = "Protein-30g"
+label = "Protein 30g (sigma=12 AA type)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "AA=12=sigma EXACT"
+[[candidate]]
+id = "Carbs-window"
+label = "Carbs window (tau=4 h post)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "h=4=tau EXACT"
+[[candidate]]
+id = "Hydration-6L"
+label = "Hydration 6L (n=6 L/day active)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "L=6=n EXACT"
+[[candidate]]
+id = "Electrolyte"
+label = "Electrolyte (phi=2 Na/K)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "ion=2=phi EXACT"
+[[candidate]]
+id = "Omega-3"
+label = "Omega-3 (n=6 g EPA/DHA week)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.80
+notes = "g=6=n EXACT"
+[[candidate]]
+id = "Tart-cherry"
+label = "Tart cherry (J2=24 oz juice)"
+n6 = 1.00
+perf = 0.80
+power = 0.85
+cost = 0.80
+notes = "oz=24=J2 EXACT"
+
+[[level]]
+name = "Modality"
+[[candidate]]
+id = "Ice-bath"
+label = "Ice bath (tau=4 min 10C)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "min=4=tau EXACT"
+[[candidate]]
+id = "Sauna-contrast"
+label = "Sauna contrast (phi=2 hot/cold)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.80
+notes = "cycle=2=phi EXACT"
+[[candidate]]
+id = "Compression-dynamic"
+label = "Compression dynamic (sigma=12 min)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.75
+notes = "min=12=sigma EXACT"
+[[candidate]]
+id = "Foam-roll"
+label = "Foam roll (n=6 muscle groups)"
+n6 = 1.00
+perf = 0.85
+power = 0.90
+cost = 0.95
+notes = "groups=6=n EXACT"
+[[candidate]]
+id = "Red-light"
+label = "Red light 660nm (J2=24 min session)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.70
+notes = "min=24=J2 EXACT"
+[[candidate]]
+id = "HBOT"
+label = "HBOT 1.5 ATA (sigma=12 session course)"
+n6 = 1.00
+perf = 0.90
+power = 0.70
+cost = 0.55
+notes = "sess=12=sigma EXACT"
+
+[[level]]
+name = "Mental"
+[[candidate]]
+id = "Meditation"
+label = "Meditation (n=6 min sit)"
+n6 = 1.00
+perf = 0.85
+power = 0.90
+cost = 0.95
+notes = "min=6=n EXACT"
+[[candidate]]
+id = "Breathwork"
+label = "Breathwork (tau=4 count in/hold/out)"
+n6 = 1.00
+perf = 0.85
+power = 0.90
+cost = 0.95
+notes = "count=4=tau EXACT"
+[[candidate]]
+id = "Float-tank"
+label = "Float tank (sigma=12 session count)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.65
+notes = "sess=12=sigma EXACT"
+[[candidate]]
+id = "Visualization"
+label = "Visualization (phi=2 role play)"
+n6 = 1.00
+perf = 0.85
+power = 0.90
+cost = 0.95
+notes = "parts=2=phi EXACT"
+[[candidate]]
+id = "Journaling"
+label = "Journaling (J2=24 min/day)"
+n6 = 1.00
+perf = 0.85
+power = 0.90
+cost = 0.95
+notes = "min=24=J2 EXACT"
+[[candidate]]
+id = "Therapy-CBT"
+label = "Therapy CBT (sigma=12 week program)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.65
+notes = "weeks=12=sigma EXACT"
+
+[[level]]
+name = "Monitor"
+[[candidate]]
+id = "HRV-morning"
+label = "HRV morning (sigma=12 rMSSD ms)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "ms=12=sigma EXACT"
+[[candidate]]
+id = "Resting-HR"
+label = "Resting HR (phi=2 am/pm)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "measures=2=phi EXACT"
+[[candidate]]
+id = "Readiness-score"
+label = "Readiness score (n=6 component)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "comp=6=n EXACT"
+[[candidate]]
+id = "Subjective-wellness"
+label = "Subjective wellness (tau=4 Likert)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.90
+notes = "likert=4=tau EXACT"
+[[candidate]]
+id = "Blood-CK"
+label = "Blood CK (J2=24 h post check)"
+n6 = 1.00
+perf = 0.95
+power = 0.75
+cost = 0.55
+notes = "h=24=J2 EXACT"
+[[candidate]]
+id = "Cortisol-diurnal"
+label = "Cortisol diurnal (tau=4 sample/day)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.60
+notes = "samples=4=tau EXACT"
+
+[[rule]]
+type = "prefer"
+if_level = 0
+if_id = "Deep-sleep-N3"
+then_level = 4
+then_ids = "HRV-morning,Readiness-score"

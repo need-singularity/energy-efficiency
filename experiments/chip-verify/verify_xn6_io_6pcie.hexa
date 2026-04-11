@@ -1,0 +1,13 @@
+// verify_xn6_io_6pcie.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 I/O 6 PCIe 레인 대역폭 검증
+// 근거: 6 lane PCIe Gen5 대역
+// 가설: 6 lane > 4 lane 대역
+// 지표: GB/s
+// 의존: nexus/rtl/xn6_io.v
+
+fn main() {
+    println("[Xn6 IO 6 PCIe] 검증 스텁 — 6 lane")
+    println("핵심 가설: 대역 최대")
+    println("[상태] pending")
+}

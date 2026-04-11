@@ -1,0 +1,13 @@
+// experiment_e6_lattice_packing.hexa
+// 카테고리: structural
+// 목적: E6 예외 리 군 격자의 6차원 패킹 밀도가 차원 = 6 에서 국소 최대임을 검증
+// 근거: n=6 유일성과 예외 리 군 E6 차원 일치는 우연 아님 (BT-379 연결)
+// 가설: 차원 d ∈ {4,5,6,7,8} 격자 패킹 밀도 스캔 시 d=6 국소 최적 (E6 / K12 이후)
+// 지표: 구 패킹 밀도, kissing number, Gram 행렬 결정식
+// 연결: BT-379 추가차원, BT-22 MoE 분산
+
+fn main() {
+    println("[E6 격자 패킹] 실험 스텁 — 6차원 국소 최적")
+    println("핵심 가설: d=6 kissing number = 72")
+    println("[상태] pending")
+}

@@ -1,0 +1,13 @@
+// experiment_quant_4bit_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: 4-bit 양자화 n=6 그룹 크기 검증 (GPTQ/AWQ)
+// 근거: 6 그룹 작은 손실 검증
+// 가설: 그룹 크기 6 품질 > 4/8
+// 지표: ppl, 정확도
+// 데이터: GPTQ / AWQ 논문
+
+fn main() {
+    println("[Quant 4bit n6] 검증 스텁 — 6 group")
+    println("핵심 가설: ppl 최소")
+    println("[상태] pending")
+}

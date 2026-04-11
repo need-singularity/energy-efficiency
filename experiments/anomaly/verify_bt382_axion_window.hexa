@@ -1,0 +1,48 @@
+// verify_bt382_axion_window.hexa
+// 카테고리: anomaly
+// 목적: BT-382 QCD 액시온 질량창 mu/sigma=1/12 저경계 + sopfr/J2=5/24 고경계 + sigma=12 GHz 중심 검증
+// 근거: 산술 분수 정합 — 저경계·고경계 비율 < 1, 중심 == sigma(6)
+// 가설: 1/12 < 5/24 < 1 단조성 + 중심 주파수 12 GHz
+// 지표: 경계 비율 부등식, 중심값 정합, 오차 ε<1e-9
+// 데이터: atlas.n6 BT-382 수식 유도
+
+fn main() {
+    println("[BT-382 액시온] QCD 공진 창 — 산술 검증")
+    let mu: i64 = 1
+    let sig: i64 = 12
+    let sopfr: i64 = 5
+    let j2: i64 = 24
+
+    // 저경계 mu/sigma
+    let lo_num: f64 = 1.0
+    let lo_den: f64 = 12.0
+    let lo: f64 = lo_num / lo_den
+
+    // 고경계 sopfr/J2
+    let hi_num: f64 = 5.0
+    let hi_den: f64 = 24.0
+    let hi: f64 = hi_num / hi_den
+
+    // 중심 주파수 sigma GHz
+    let center: i64 = sig
+
+    let mut pass: i64 = 0
+
+    // 조건1: 저경계 < 고경계 (단조)
+    if lo < hi { pass = pass + 1 }
+    // 조건2: 고경계 < 1 (비율 bounded)
+    if hi < 1.0 { pass = pass + 1 }
+    // 조건3: 중심 == 12 GHz
+    if center == 12 { pass = pass + 1 }
+
+    println("lo  = " + to_string(mu) + "/" + to_string(sig) + " = 0.0833")
+    println("hi  = " + to_string(sopfr) + "/" + to_string(j2) + " = 0.2083")
+    println("center = " + to_string(center) + " GHz")
+    println("단조 + 유계 + 중심: " + to_string(pass) + "/3")
+
+    if pass == 3 {
+        println("[상태] pass — 액시온 창 정합")
+    } else {
+        println("[상태] fail — 조건 미충족")
+    }
+}

@@ -1,0 +1,13 @@
+// experiment_rwkv6_bench_sota.hexa
+// 카테고리: ai-efficiency
+// 목적: RWKV-6 SOTA 벤치 — OpenLLM leaderboard + PILE perplexity
+// 근거: RWKV-6 공식 벤치마크 + n=6 time-mix 시너지
+// 가설: n=6 RWKV-6 가 RWKV-5 대비 OpenLLM 평균 tau% 향상
+// 지표: OpenLLM 평균, PILE ppl, 훈련 스텝 시간
+// 의존: experiment_rwkv6_time_mix_n6.hexa
+
+fn main() {
+    println("[RWKV-6 벤치] 검증 스텁 — OpenLLM")
+    println("핵심 가설: OpenLLM 평균 tau% 향상")
+    println("[상태] pending")
+}

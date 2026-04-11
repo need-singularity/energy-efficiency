@@ -1,0 +1,14 @@
+// growth_intelligence.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/growth_intelligence.sh
+// 포팅 상태: STUB (원본 212줄)
+// 원본 요약: NEXUS-6 성장 지능 — 적응형 전략
+//   growth_log.jsonl 에서 학습, 차원별 성공률/실패 연속/최근성 분석
+//   쿨다운: 3연속 실패 → 6사이클 대기 (n=6)
+//   가중 점수: 갭 * 가중치 * 성공률 * 최근성
+//   JSON 출력: 추천 차원 / 신뢰도 / 사유 / 스킵 리스트
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/growth_intelligence (HEXA 포팅 대기)")
+}

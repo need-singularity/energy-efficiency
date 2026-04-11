@@ -1,0 +1,13 @@
+// verify_bt413_ckm_matrix.hexa
+// 카테고리: anomaly
+// 목적: BT-413 CKM 행렬 4 독립 파라미터 + 2 위상 = 6 자유도 n=6 검증
+// 근거: 3x3 유니터리 행렬 9 - 5 제거 = 4 독립, Wolfenstein 파라미터 4
+// 가설: 총 CKM 자유도 n=6 (4+2 추상)
+// 지표: 자유도 수, 행렬 요소
+// 데이터: PDG 2024 CKM
+
+fn main() {
+    println("[BT-413 CKM] 검증 스텁 — 6 자유도")
+    println("핵심 가설: 4 실수 + 2 위상")
+    println("[상태] pending")
+}

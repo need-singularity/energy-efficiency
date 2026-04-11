@@ -1,0 +1,13 @@
+// verify_chip_cache_hierarchy.hexa
+// 카테고리: anomaly
+// 목적: 칩 캐시 계층 (L1/L2/L3 + TLB + Register + DRAM = 6) n=6 검증
+// 근거: 칩 설계 검증 공백 — 메모리 계층 n=6 정합
+// 가설: 현대 SoC (Apple M, Intel, AMD, ARM) 캐시 레벨 수 + 부속 = 6 계층
+// 지표: 각 레벨 지연 (cycle), 용량 비율 (대수적 6배수), 대역폭 피라미드
+// 데이터: atlas.n6 chip-hierarchy 섹션 + 공개 SoC 다이어그램 요약
+
+fn main() {
+    println("[칩 캐시 계층] 검증 스텁 — 6 계층")
+    println("핵심 가설: 캐시+부속 = 6 레벨")
+    println("[상태] pending")
+}

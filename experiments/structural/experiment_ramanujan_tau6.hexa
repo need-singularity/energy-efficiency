@@ -1,0 +1,13 @@
+// experiment_ramanujan_tau6.hexa
+// 카테고리: structural
+// 목적: Ramanujan tau 함수 tau(6) = -6048 = -sigma*phi*252 검증
+// 근거: tau(6) 값과 n=6 산술 연관
+// 가설: tau(6) ≡ 0 mod 6
+// 지표: tau(n) mod 6
+// 데이터: OEIS A000594
+
+fn main() {
+    println("[Ramanujan tau(6)] 검증 스텁 — -6048")
+    println("핵심 가설: mod 6")
+    println("[상태] pending")
+}

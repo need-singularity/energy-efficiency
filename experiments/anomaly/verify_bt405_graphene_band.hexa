@@ -1,0 +1,13 @@
+// verify_bt405_graphene_band.hexa
+// 카테고리: anomaly
+// 목적: BT-405 그래핀 6각 벌집 Dirac cone K점 6개 회전 대칭 검증
+// 근거: 6각 격자 → Brillouin zone 6 K점 → 6-fold symmetry
+// 가설: 6각 격자 고유 Dirac 점 6
+// 지표: K 점 수, 회전 대칭 군 order
+// 데이터: 그래핀 밴드 구조
+
+fn main() {
+    println("[BT-405 그래핀 밴드] 검증 스텁 — 6 K점")
+    println("핵심 가설: Brillouin zone 6-fold")
+    println("[상태] pending")
+}

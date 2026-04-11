@@ -25,7 +25,8 @@
       "purpose": "단일 Rust 바이너리 — 모든 계산기·DSE·분석·대시보드 흡수",
       "ssot": "nexus/_registry.json",
       "binary": "nexus",
-      "subcommands": ["scan", "verify", "calc", "dse", "analyze", "hexa", "dashboard"]
+      "subcommands": ["scan", "verify", "calc", "dse", "analyze", "hexa", "dashboard"],
+      "_lens_warning": "src/telescope/lenses/ 는 Rust 레거시 (폐기 중). 진짜 렌즈 SSOT: /Users/ghost/Dev/nexus/shared/lenses/ (HEXA 네이티브)"
     },
     "techniques": {
       "path": "techniques/",
@@ -37,7 +38,7 @@
       "path": "experiments/",
       "purpose": "검증 실험 — .hexa 전환 완료",
       "ssot": "experiments/_results.jsonl",
-      "subs": ["ai-efficiency", "structural", "cross", "anomaly"]
+      "subs": ["ai-efficiency", "structural", "cross", "anomaly", "chip-verify", "lens-verify", "meta"]
     },
     "engine": {
       "path": "engine/",

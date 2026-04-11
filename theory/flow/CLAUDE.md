@@ -1,6 +1,6 @@
 # theory/flow — 설계 흐름
 
-목적: 외계인급 설계 파이프라인, anima 법칙, TECS-L 브릿지
+목적: 외계인급 설계 파이프라인, anima 법칙, 설계 흐름
 축: theory
 상위: ../CLAUDE.md
 
@@ -8,7 +8,7 @@
 - alien-design-flow.md
 - SYNTHESIS.md
 - anima-law-bridges.md
-- tecs-l-bridge.md
+- tecs-l-bridge.md  (레거시, TECS-L 폐기 후 역사 기록용 보존)
 
 ## SSOT
 - (없음)

@@ -1,0 +1,296 @@
+# N6 Sacred Architecture DSE (n=6 typology)
+[meta]
+name = "sacred-architecture"
+desc = "Sacred Architecture DSE (n=6 typology)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Type"
+
+[[candidate]]
+id = "Cathedral-gothic"
+label = "Cathedral Gothic (sigma=12 bay)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "b=12=sigma"
+
+[[candidate]]
+id = "Mosque-dome"
+label = "Mosque dome (n=6 minaret)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=6=n"
+
+[[candidate]]
+id = "Temple-hindu"
+label = "Temple Hindu (tau=4 gopuram)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "g=4=tau"
+
+[[candidate]]
+id = "Pagoda-tiered"
+label = "Pagoda tiered (J2=24 eaves)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "e=24=J2"
+
+[[candidate]]
+id = "Synagogue"
+label = "Synagogue (phi=2 ark/bimah)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "p=2=phi"
+
+[[candidate]]
+id = "Stupa-mound"
+label = "Stupa mound (n=6 gateway torana)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "t=6=n"
+
+[[level]]
+name = "Plan"
+
+[[candidate]]
+id = "Cruciform"
+label = "Cruciform (tau=4 arm)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "a=4=tau"
+
+[[candidate]]
+id = "Centralized"
+label = "Centralized (n=6 petal)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "p=6=n"
+
+[[candidate]]
+id = "Basilica-long"
+label = "Basilica long (sigma=12 m bay)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=12=sigma"
+
+[[candidate]]
+id = "Courtyard-open"
+label = "Courtyard open (phi=2 layer)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "l=2=phi"
+
+[[candidate]]
+id = "Mandala-square"
+label = "Mandala square (J2=24 unit)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "u=24=J2"
+
+[[candidate]]
+id = "Axial-progression"
+label = "Axial progression (n=6 station)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=6=n"
+
+[[level]]
+name = "Element"
+
+[[candidate]]
+id = "Column-classical"
+label = "Column classical (tau=4 order)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "o=4=tau"
+
+[[candidate]]
+id = "Vault-rib"
+label = "Vault rib (sigma=12 rib)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=12=sigma"
+
+[[candidate]]
+id = "Dome-pendentive"
+label = "Dome pendentive (tau=4 base)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "b=4=tau"
+
+[[candidate]]
+id = "Stained-glass"
+label = "Stained glass (J2=24 panel)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "p=24=J2"
+
+[[candidate]]
+id = "Mihrab-qibla"
+label = "Mihrab qibla (phi=2 wall)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "w=2=phi"
+
+[[candidate]]
+id = "Bell-tower"
+label = "Bell tower (n=6 bell)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "b=6=n"
+
+[[level]]
+name = "Light"
+
+[[candidate]]
+id = "Clerestory"
+label = "Clerestory (sigma=12 window)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "w=12=sigma"
+
+[[candidate]]
+id = "Oculus-dome"
+label = "Oculus dome (phi=2 ring)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "r=2=phi"
+
+[[candidate]]
+id = "Candle-vigil"
+label = "Candle vigil (J2=24 h burn)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "h=24=J2"
+
+[[candidate]]
+id = "Light-shaft"
+label = "Light shaft (tau=4 zone)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "z=4=tau"
+
+[[candidate]]
+id = "Lamp-oil"
+label = "Lamp oil (n=6 type vessel)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "v=6=n"
+
+[[candidate]]
+id = "Solar-noon-axis"
+label = "Solar noon axis (phi=2 equinox)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "e=2=phi"
+
+[[level]]
+name = "Acoustic"
+
+[[candidate]]
+id = "Reverb-long"
+label = "Reverb long (sigma=12 s RT60)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=12=sigma"
+
+[[candidate]]
+id = "Echo-spot"
+label = "Echo spot (tau=4 m reflector)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "m=4=tau"
+
+[[candidate]]
+id = "Whisper-gallery"
+label = "Whisper gallery (n=6 meter radius)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=6=n"
+
+[[candidate]]
+id = "Chanting-opt"
+label = "Chanting opt (phi=2 mode support)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "m=2=phi"
+
+[[candidate]]
+id = "Organ-pipe"
+label = "Organ pipe (J2=24 stop)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "s=24=J2"
+
+[[candidate]]
+id = "Silence-chamber"
+label = "Silence chamber (n=6 dB ambient)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "d=6=n"
+

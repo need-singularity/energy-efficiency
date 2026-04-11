@@ -1,8 +1,8 @@
 # ═══════════════════════════════════════════════════════════════
 # CDO Troubleshooting:
-#   .shared/ is a symlink to ../TECS-L/.shared/ locally.
-#   In CI, this symlink does not resolve — never rely on .shared/ contents.
-#   CDO JSON validation uses inline Python instead.
+#   .shared/ 심링크는 폐기됨 (TECS-L 흡수 완료, n6-architecture 단일 통합).
+#   CI 에서 .shared/ 내용에 의존하지 말 것.
+#   CDO JSON 검증은 인라인 Python 사용.
 # ═══════════════════════════════════════════════════════════════
 name: CI
 

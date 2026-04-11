@@ -1,0 +1,43 @@
+// verify_bt445_hexagonal_closepack.hexa
+// 카테고리: anomaly
+// 목적: BT-445 6각 최밀충진 밀도 pi/(3*sqrt(2)) ~ 0.7405 검증
+// 근거: Kepler 추측 → FCC/HCP 최적, 2D 6각 충진 pi/(2*sqrt(3))
+// 가설: 3D 밀도 pi/(3*sqrt(2)) + 2D 밀도 pi/(2*sqrt(3)) 정합
+// 지표: 이론 vs 수치 오차 < 0.1%
+// 데이터: Hales 증명 (2005)
+
+fn main() {
+    println("[BT-445 6각 최밀충진] 3D/2D 밀도 — 산술 검증")
+    let pi: f64 = 3.14159265358979
+    let sqrt2: f64 = 1.41421356237
+    let sqrt3: f64 = 1.73205080757
+
+    // 3D FCC/HCP 밀도
+    let d3: f64 = pi / (3.0 * sqrt2)         // 0.74048...
+    // 2D 6각 충진 밀도
+    let d2: f64 = pi / (2.0 * sqrt3)         // 0.90690...
+
+    let d3_known: f64 = 0.74048
+    let d2_known: f64 = 0.90690
+
+    let mut err3: f64 = d3 - d3_known
+    if err3 < 0.0 { err3 = -err3 }
+    let mut err2: f64 = d2 - d2_known
+    if err2 < 0.0 { err2 = -err2 }
+
+    println("3D 밀도 = " + to_string(d3))
+    println("2D 밀도 = " + to_string(d2))
+    println("3D 오차 = " + to_string(err3))
+    println("2D 오차 = " + to_string(err2))
+
+    let mut pass: i64 = 0
+    if err3 < 0.001 { pass = pass + 1 }
+    if err2 < 0.001 { pass = pass + 1 }
+    if d2 > d3 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — 6각 충진 3D/2D 산술 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

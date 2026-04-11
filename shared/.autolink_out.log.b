@@ -1,1 +1,1 @@
-Error reading mk2_hexa/native/auto_register.hexa: No such file or directory (os error 2)
+Error reading /Users/ghost/Dev/nexus/shared/blowup/modules/auto_register.hexa: No such file or directory (os error 2)

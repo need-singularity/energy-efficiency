@@ -1,0 +1,13 @@
+// experiment_6vertex_ice_model.hexa
+// 카테고리: structural
+// 목적: 6-vertex ice model (Lieb 1967) 잔류 엔트로피 검증
+// 근거: n=6 기본 상태 배열, Pauling 엔트로피 R*ln(3/2)
+// 가설: 6 기본 상태 + 엔트로피 Pauling
+// 지표: 잔류 엔트로피
+// 데이터: Lieb 1967
+
+fn main() {
+    println("[6-vertex ice] 검증 스텁 — Lieb")
+    println("핵심 가설: 6 기본 상태")
+    println("[상태] pending")
+}

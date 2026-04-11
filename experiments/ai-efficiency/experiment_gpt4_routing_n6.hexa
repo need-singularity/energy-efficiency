@@ -1,0 +1,13 @@
+// experiment_gpt4_routing_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: GPT-4 MoE 추정 라우팅 n=6 expert-per-token 검증
+// 근거: 6 전문가 k=2 top-k 최적 loss
+// 가설: 활성 expert k=6 ideal
+// 지표: top-k loss
+// 데이터: MoE 논문
+
+fn main() {
+    println("[GPT4 Routing n6] 검증 스텁 — k=6")
+    println("핵심 가설: top-6 loss 최소")
+    println("[상태] pending")
+}

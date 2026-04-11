@@ -1,0 +1,296 @@
+# N6 Sculpture Form DSE (n=6 material + method)
+[meta]
+name = "sculpture-form"
+desc = "Sculpture Form DSE (n=6 material + method)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Material"
+
+[[candidate]]
+id = "Marble-carrara"
+label = "Marble carrara (sigma=12 MPa UCS)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.65
+notes = "u=12=sigma"
+
+[[candidate]]
+id = "Bronze-cast"
+label = "Bronze cast (n=6% Sn tin)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "p=6=n"
+
+[[candidate]]
+id = "Steel-welded"
+label = "Steel welded (tau=4 grade)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.8
+notes = "g=4=tau"
+
+[[candidate]]
+id = "Clay-fired"
+label = "Clay fired (J2=24 h firing)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "h=24=J2"
+
+[[candidate]]
+id = "Wood-carved"
+label = "Wood carved (phi=2 hardwood/soft)"
+n6 = 1.0
+perf = 0.9
+power = 0.9
+cost = 0.9
+notes = "t=2=phi"
+
+[[candidate]]
+id = "3D-print-resin"
+label = "3D print resin (sigma=12 μm layer)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "l=12=sigma"
+
+[[level]]
+name = "Method"
+
+[[candidate]]
+id = "Subtractive-carve"
+label = "Subtractive carve (phi=2 direct/indirect)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=2=phi"
+
+[[candidate]]
+id = "Additive-clay"
+label = "Additive clay (n=6 arm armature)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "a=6=n"
+
+[[candidate]]
+id = "Lost-wax-cast"
+label = "Lost wax cast (tau=4 step)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "s=4=tau"
+
+[[candidate]]
+id = "Welding-assembly"
+label = "Welding assembly (sigma=12 joint/m2)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.8
+notes = "j=12=sigma"
+
+[[candidate]]
+id = "Mold-form"
+label = "Mold form (J2=24 h cure)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "h=24=J2"
+
+[[candidate]]
+id = "CNC-stone"
+label = "CNC stone (n=6 axis)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "a=6=n"
+
+[[level]]
+name = "Scale"
+
+[[candidate]]
+id = "Miniature"
+label = "Miniature (phi=2 cm)"
+n6 = 1.0
+perf = 0.85
+power = 0.9
+cost = 0.95
+notes = "c=2=phi"
+
+[[candidate]]
+id = "Table"
+label = "Table (tau=4 cm)"
+n6 = 1.0
+perf = 0.85
+power = 0.9
+cost = 0.9
+notes = "c=4=tau*10"
+
+[[candidate]]
+id = "Life"
+label = "Life (n=6 ft height)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "f=6=n"
+
+[[candidate]]
+id = "Monumental"
+label = "Monumental (sigma=12 m height)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.65
+notes = "m=12=sigma"
+
+[[candidate]]
+id = "Colossal"
+label = "Colossal (J2=24 m peak)"
+n6 = 1.0
+perf = 0.95
+power = 0.75
+cost = 0.55
+notes = "m=24=J2"
+
+[[candidate]]
+id = "Outdoor-park"
+label = "Outdoor park (phi=2 public)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.75
+notes = "p=2=phi"
+
+[[level]]
+name = "Finish"
+
+[[candidate]]
+id = "Patina-bronze"
+label = "Patina bronze (n=6 oxide layer)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "o=6=n"
+
+[[candidate]]
+id = "Polished-stone"
+label = "Polished stone (tau=4 grit step)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "g=4=tau"
+
+[[candidate]]
+id = "Painted-sculpt"
+label = "Painted (J2=24 h cure)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "h=24=J2"
+
+[[candidate]]
+id = "Gilded-leaf"
+label = "Gilded leaf (phi=2 size)"
+n6 = 1.0
+perf = 0.9
+power = 0.8
+cost = 0.7
+notes = "s=2=phi"
+
+[[candidate]]
+id = "Sandblast"
+label = "Sandblast (sigma=12 mesh)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "m=12=sigma"
+
+[[candidate]]
+id = "Burnish-wax"
+label = "Burnish wax (n=6 rub pass)"
+n6 = 1.0
+perf = 0.85
+power = 0.9
+cost = 0.9
+notes = "p=6=n"
+
+[[level]]
+name = "Display"
+
+[[candidate]]
+id = "Pedestal-base"
+label = "Pedestal base (phi=2 height)"
+n6 = 1.0
+perf = 0.85
+power = 0.9
+cost = 0.9
+notes = "h=2=phi"
+
+[[candidate]]
+id = "Rotating-turn"
+label = "Rotating turn (tau=4 rpm)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.8
+notes = "r=4=tau"
+
+[[candidate]]
+id = "Gallery-white"
+label = "Gallery white (sigma=12 lux)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "l=12=sigma*10"
+
+[[candidate]]
+id = "Outdoor-fix"
+label = "Outdoor fix (J2=24 kNm base)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "k=24=J2"
+
+[[candidate]]
+id = "Interactive"
+label = "Interactive (n=6 sensor)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "s=6=n"
+
+[[candidate]]
+id = "AR-companion"
+label = "AR companion (phi=2 mode)"
+n6 = 1.0
+perf = 0.9
+power = 0.8
+cost = 0.75
+notes = "m=2=phi"
+

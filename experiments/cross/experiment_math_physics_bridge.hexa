@@ -1,0 +1,13 @@
+// experiment_math_physics_bridge.hexa
+// 카테고리: cross
+// 목적: 수학/물리 cross-domain — sigma*phi=24 vs 물리 n=6 단위 수렴 검증
+// 근거: 수학 J2=24 = 물리 time dim 24 hr/day
+// 가설: 수학/물리 보편 상수 24
+// 지표: 단위 계산
+// 데이터: atlas BT 그룹
+
+fn main() {
+    println("[math-physics bridge] 검증 스텁 — 24")
+    println("핵심 가설: sigma*phi 보편")
+    println("[상태] pending")
+}

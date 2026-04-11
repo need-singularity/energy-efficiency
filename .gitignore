@@ -11,9 +11,8 @@ models/
 **/target/
 .growth/
 
-# TECS-L calc symlink
+# 레거시 심링크 (TECS-L 폐기 후 잔류, 무시)
 calc
-# TECS-L .shared symlink
 .shared
 model_utils.py
 tecsrs

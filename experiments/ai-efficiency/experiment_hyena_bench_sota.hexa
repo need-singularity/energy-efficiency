@@ -1,0 +1,13 @@
+// experiment_hyena_bench_sota.hexa
+// 카테고리: ai-efficiency
+// 목적: Hyena SOTA 벤치 — Long Range Arena + PILE 에서 n=6 설정 우위
+// 근거: Hyena 공식 벤치 + O=6 차수 가설 시너지
+// 가설: O=6 Hyena 가 baseline 대비 LRA 평균 sigma% 향상
+// 지표: LRA 평균, PILE ppl, 지연/토큰
+// 의존: experiment_hyena_long_conv.hexa
+
+fn main() {
+    println("[Hyena 벤치] 검증 스텁 — LRA/PILE")
+    println("핵심 가설: O=6 LRA 평균 sigma% 향상")
+    println("[상태] pending")
+}

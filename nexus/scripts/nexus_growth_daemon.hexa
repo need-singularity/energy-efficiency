@@ -1,0 +1,17 @@
+// nexus_growth_daemon.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/nexus_growth_daemon.sh
+// 포팅 상태: STUB (원본 ~450줄)
+// 원본 요약: NEXUS-6 범용 성장 데몬 — 마스터 코디네이터
+//   15차원 순환: performance/architecture/lenses/modules/tests/
+//     hypotheses/dse/experiments/calculators/cross_resonance/
+//     knowledge_graph/red_team/atlas/documentation/integration
+//   매 사이클 가장 약한 차원 선택 → 타겟 성장
+//   안전 브레이크: 테스트 3연속 실패 시 중단
+//   싱글톤 락, 리소스 적응형 (CPU/메모리 등급)
+//   옵션: --interval MIN, --max-cycles N, --dimension DIM, --dry-run
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/nexus_growth_daemon (HEXA 포팅 대기)")
+}

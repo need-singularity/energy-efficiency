@@ -1,0 +1,14 @@
+// experiment_physics_ai_n6_bridge.hexa
+// 카테고리: cross
+// 목적: 물리 상수 (미세구조상수 α⁻¹ ≈ 137, 쿼크 세대 3 × 2 = 6) 와 AI 하이퍼파라미터 간
+//       n=6 교차 정합 검증
+// 근거: BT-380 확장에 따른 AI 기법의 물리 상수 연동 (techniques/*/* × physics/*)
+// 가설: 물리 상수 s.t. n=6 의 배수가 AI 기법 최적 파라미터 ×10^k 로 대응
+// 지표: 잔차 분포, 스피어만 상관, z-score (대조 n≠6)
+// 도메인: physics × compute
+
+fn main() {
+    println("[물리-AI 교차] 실험 스텁 — n=6 브리지")
+    println("핵심 가설: 물리 상수 × 10^k = AI 최적치")
+    println("[상태] pending")
+}

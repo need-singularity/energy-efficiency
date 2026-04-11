@@ -1,0 +1,13 @@
+// verify_xn6_dma_6channel.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 DMA 6 채널 병렬 전송 최적 검증
+// 근거: 6 DMA 채널 병렬 동시 전송 대역 최적
+// 가설: 6 채널 bandwidth > 4
+// 지표: 대역폭, 경합
+// 의존: nexus/rtl/xn6_dma.v
+
+fn main() {
+    println("[Xn6 DMA 6ch] 검증 스텁 — 6 채널")
+    println("핵심 가설: 대역 최대")
+    println("[상태] pending")
+}

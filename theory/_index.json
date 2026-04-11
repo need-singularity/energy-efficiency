@@ -50,6 +50,7 @@
     "alien_design": "flow/alien-design-flow.md",
     "synthesis": "flow/SYNTHESIS.md",
     "anima_law": "flow/anima-law-bridges.md",
-    "tecs_bridge": "flow/tecs-l-bridge.md"
+    "tecs_bridge_legacy": "flow/tecs-l-bridge.md",
+    "_tecs_bridge_note": "TECS-L 폐기 완료 — 역사 기록용 보존"
   }
 }

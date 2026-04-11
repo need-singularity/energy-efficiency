@@ -1,0 +1,13 @@
+// verify_quantum_circuit_lens.hexa
+// 카테고리: lens-verify
+// 목적: QuantumCircuitLens — 6 qubit circuit expressivity 검증
+// 근거: n=6 qubit 2^6=64 상태 공간
+// 가설: 6 qubit 게이트 분해 최적 깊이
+// 지표: 회로 깊이
+// 의존: shared/config/lens_registry.json
+
+fn main() {
+    println("[렌즈: Quantum] 검증 스텁 — 6 qubit")
+    println("핵심 가설: depth 최소")
+    println("[상태] pending")
+}

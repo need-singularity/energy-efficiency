@@ -1,0 +1,41 @@
+// verify_bt455_music_hexachord.hexa
+// 카테고리: anomaly
+// 목적: BT-455 음악 6음계 hexachord + 완전6도 공명 검증
+// 근거: Guido d'Arezzo 6음계 ut-re-mi-fa-sol-la
+// 가설: 완전6도 비율 5:3, 6개 반음 + 6개 온음 = 옥타브
+// 지표: 주파수 비율, 음정 수
+// 데이터: 음악 이론 (Pythagoras)
+
+fn main() {
+    println("[BT-455 음악 hexachord] 완전6도 — 산술 검증")
+    let hexachord_notes: i64 = 6
+    let semitones_octave: i64 = 12
+    let half_octave: i64 = 6
+
+    // 완전5도 3:2, 장6도 5:3, 완전6도
+    let fifth_ratio: f64 = 3.0 / 2.0       // 1.5
+    let major_sixth: f64 = 5.0 / 3.0        // 1.667
+    let octave: f64 = 2.0
+
+    // 6개 반음 간격 = 삼온음 tritone
+    let tritone: f64 = 1.4142135            // sqrt(2)
+    let tritone_cents: f64 = 600.0
+
+    println("hexachord 음 수 = " + to_string(hexachord_notes))
+    println("옥타브 반음 = " + to_string(semitones_octave))
+    println("완전5도 = " + to_string(fifth_ratio))
+    println("장6도 = " + to_string(major_sixth))
+    println("삼온음 = sqrt(2) = " + to_string(tritone))
+
+    let mut pass: i64 = 0
+    if hexachord_notes == 6 { pass = pass + 1 }
+    if semitones_octave == 12 { pass = pass + 1 }
+    if half_octave == 6 { pass = pass + 1 }
+    if major_sixth > 1.66 && major_sixth < 1.68 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 음악 6도 공명 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

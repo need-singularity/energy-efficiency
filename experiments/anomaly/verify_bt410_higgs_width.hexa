@@ -1,0 +1,13 @@
+// verify_bt410_higgs_width.hexa
+// 카테고리: anomaly
+// 목적: BT-410 힉스 입자 붕괴 폭 6 주요 채널 n=6 검증
+// 근거: bb, WW, gg, tautau, ZZ, gamma gamma 6 채널
+// 가설: 주요 붕괴 채널 수 = 6
+// 지표: 분기비 분포
+// 데이터: PDG 2024
+
+fn main() {
+    println("[BT-410 힉스 폭] 검증 스텁 — 6 채널")
+    println("핵심 가설: 주요 붕괴 6")
+    println("[상태] pending")
+}

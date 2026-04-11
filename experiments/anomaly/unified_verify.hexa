@@ -1,7 +1,7 @@
 // unified_verify.py → .hexa 포팅 스텁
 // 원본 경로: experiments/anomaly/unified_verify.py
 // 포팅 상태: STUB (원본 124 줄)
-// 원본 요약: Unified Verification Orchestrator — TECS-L + n6-architecture
+// 원본 요약: Unified Verification Orchestrator -- n6-architecture 통합 검증
 // 본격 포팅: nexus verify --hexa <domain> 으로 추진 예정
 // 원본 로직은 git history 에 보존됨
 

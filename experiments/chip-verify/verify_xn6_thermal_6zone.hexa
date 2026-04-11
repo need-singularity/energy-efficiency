@@ -1,0 +1,13 @@
+// verify_xn6_thermal_6zone.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 열 제어 6 존 (6 DVFS 구역) 효율 검증
+// 근거: 6 thermal island 분산 제어
+// 가설: 6 zone 평균 온도 < 4 zone
+// 지표: 평균 온도, 변동성
+// 의존: nexus/rtl/xn6_thermal.v
+
+fn main() {
+    println("[Xn6 thermal 6zone] 검증 스텁 — 6 존")
+    println("핵심 가설: 온도 분산 최적")
+    println("[상태] pending")
+}

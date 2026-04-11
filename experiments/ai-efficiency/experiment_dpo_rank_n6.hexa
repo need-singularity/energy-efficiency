@@ -1,0 +1,13 @@
+// experiment_dpo_rank_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: DPO preference optimization rank n=6 안정도 검증
+// 근거: 6 chosen/rejected 쌍 샘플링 수렴 안정
+// 가설: n=6 쌍 샘플링 KL 수렴
+// 지표: KL, win rate
+// 데이터: UltraFeedback
+
+fn main() {
+    println("[DPO rank n6] 검증 스텁 — 6 쌍")
+    println("핵심 가설: KL 수렴")
+    println("[상태] pending")
+}

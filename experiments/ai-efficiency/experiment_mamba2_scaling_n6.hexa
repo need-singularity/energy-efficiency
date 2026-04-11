@@ -1,0 +1,13 @@
+// experiment_mamba2_scaling_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Mamba-2 스케일링 법칙 n=6 계열 모델 크기 {6, 12, 24, 48} * 100M 수렴
+// 근거: Chinchilla 법칙 + n=6 계열 파라미터 배수
+// 가설: 6x100M/12x100M/24x100M 모델에서 동일 FLOPs 대비 perplexity 최저
+// 지표: perplexity, FLOPs-loss 곡선, 파레토 포인트
+// 의존: experiment_mamba2_ssm_bench.hexa
+
+fn main() {
+    println("[Mamba-2 스케일링] 검증 스텁 — n=6 계열 크기")
+    println("핵심 가설: 6/12/24x100M PPL 최저")
+    println("[상태] pending")
+}

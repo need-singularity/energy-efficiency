@@ -2,8 +2,8 @@ use super::registry::{LensCategory, LensEntry};
 
 /// Build metadata entries for the 40 cross-project lenses.
 ///
-/// These lenses operate across project boundaries (TECS-L, n6-architecture,
-/// OUROBOROS, etc.) enabling inter-domain discovery and verification.
+/// These lenses operate across project boundaries (n6-architecture,
+/// anima, nexus, etc.) enabling inter-domain discovery and verification.
 pub fn cross_project_lens_entries() -> Vec<LensEntry> {
     vec![
         // ── Bilateral (8) — two-project bridges ──

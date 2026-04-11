@@ -1,0 +1,296 @@
+# N6 Pumped Hydro Storage DSE (n=6 config)
+[meta]
+name = "pumped-hydro"
+desc = "Pumped Hydro Storage DSE (n=6 config)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Config"
+
+[[candidate]]
+id = "Pure-pumped"
+label = "Pure pumped (phi=2 reservoir)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=2=phi"
+
+[[candidate]]
+id = "Mixed-hybrid"
+label = "Mixed hybrid (tau=4 pump+gen)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "u=4=tau"
+
+[[candidate]]
+id = "Seawater-coastal"
+label = "Seawater coastal (n=6 m tide)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "t=6=n"
+
+[[candidate]]
+id = "Underground-cavern-PH"
+label = "Underground cavern (sigma=12 m head)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=12=sigma*30"
+
+[[candidate]]
+id = "Ternary-set"
+label = "Ternary set (J2=24 h bi-direct)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "h=24=J2"
+
+[[candidate]]
+id = "Adjustable-speed"
+label = "Adjustable speed (sigma-phi=10% range)"
+n6 = 0.75
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "p=10=sigma-phi"
+
+[[level]]
+name = "Turbine"
+
+[[candidate]]
+id = "Francis-reversible"
+label = "Francis reversible (sigma=12 blade)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "b=12=sigma"
+
+[[candidate]]
+id = "Pelton-high-head"
+label = "Pelton high head (tau=4 needle)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "n=4=tau"
+
+[[candidate]]
+id = "Kaplan-low-head"
+label = "Kaplan low head (n=6 blade)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "b=6=n"
+
+[[candidate]]
+id = "Ternary-separate"
+label = "Ternary separate (phi=2 unit)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "u=2=phi"
+
+[[candidate]]
+id = "Variable-speed-VFD"
+label = "Variable speed VFD (J2=24% range)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "p=24=J2"
+
+[[candidate]]
+id = "Deriaz-mixed"
+label = "Deriaz mixed (sigma-phi=10% eff)"
+n6 = 0.75
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "p=10=sigma-phi"
+
+[[level]]
+name = "Reservoir"
+
+[[candidate]]
+id = "Upper-lake"
+label = "Upper lake (sigma=12 GL)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "G=12=sigma"
+
+[[candidate]]
+id = "Lower-river"
+label = "Lower river (tau=4 km segment)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "k=4=tau"
+
+[[candidate]]
+id = "Head-height-500m"
+label = "Head height 500 m (sopfr*100)"
+n6 = 0.75
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=500"
+
+[[candidate]]
+id = "Penstock-tunnel"
+label = "Penstock tunnel (n=6 m dia)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=6=n"
+
+[[candidate]]
+id = "Surge-tank"
+label = "Surge tank (phi=2 chamber)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "c=2=phi"
+
+[[candidate]]
+id = "Tailrace"
+label = "Tailrace (J2=24 h cycle)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "h=24=J2"
+
+[[level]]
+name = "Operation"
+
+[[candidate]]
+id = "Daily-cycle"
+label = "Daily cycle (sigma=12 h storage)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "h=12=sigma"
+
+[[candidate]]
+id = "Weekly-cycle"
+label = "Weekly cycle (phi=2 peak)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "p=2=phi"
+
+[[candidate]]
+id = "Load-follow"
+label = "Load follow (tau=4 ramp/min)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=4=tau*15"
+
+[[candidate]]
+id = "Black-start-PH"
+label = "Black start (n=6 min)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=6=n"
+
+[[candidate]]
+id = "Frequency-reg-PH"
+label = "Frequency reg (J2=24 s response)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=24=J2"
+
+[[candidate]]
+id = "Spinning-reserve-PH"
+label = "Spinning reserve (sigma-phi=10 min)"
+n6 = 0.75
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=10=sigma-phi"
+
+[[level]]
+name = "Envir"
+
+[[candidate]]
+id = "Fish-pass"
+label = "Fish passage (n=6 ladder)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "l=6=n"
+
+[[candidate]]
+id = "Habitat-compensate"
+label = "Habitat compensate (tau=4 hectare/MW)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "h=4=tau"
+
+[[candidate]]
+id = "Water-quality"
+label = "Water quality (sigma=12 parameter)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "p=12=sigma"
+
+[[candidate]]
+id = "Sediment-manage"
+label = "Sediment manage (J2=24 mo flush)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "m=24=J2"
+
+[[candidate]]
+id = "EIA-report"
+label = "EIA report (phi=2 draft/final)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "r=2=phi"
+
+[[candidate]]
+id = "Decommission-plan"
+label = "Decommission plan (sigma-phi=10 yr late)"
+n6 = 0.75
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "y=10=sigma-phi"
+

@@ -1,0 +1,41 @@
+// verify_bt451_dna_six_base.hexa
+// 카테고리: anomaly
+// 목적: BT-451 확장 DNA 6 염기 (ATCG + 2 합성) 정보 용량 검증
+// 근거: Floyd Romesberg 연구 X-Y 합성 염기쌍 추가
+// 가설: 6 염기 → log2(6) = 2.585 bits/base vs 2 bits/base
+// 지표: 정보 용량 비율, 코돈 수
+// 데이터: Romesberg Lab (Scripps)
+
+fn main() {
+    println("[BT-451 6염기 DNA] 정보 용량 — 산술 검증")
+    let log2_4: f64 = 2.0
+    let log2_6: f64 = 2.58496250072
+
+    // 코돈 수 = base^3
+    let codon_4: i64 = 64     // 4^3
+    let codon_6: i64 = 216    // 6^3
+    // 아미노산 수 확장: 20 (현재) → 가능 최대 = base^3 - 정지코돈
+    let aa_4: i64 = 20
+    let aa_6_max: i64 = 213   // 216 - 3 정지
+
+    let info_gain: f64 = log2_6 - log2_4    // 0.585 bits
+    let ratio: f64 = log2_6 / log2_4        // 1.29
+
+    println("log2(4) = " + to_string(log2_4))
+    println("log2(6) = " + to_string(log2_6))
+    println("4 코돈 = " + to_string(codon_4))
+    println("6 코돈 = " + to_string(codon_6))
+    println("정보 이득 = " + to_string(info_gain) + " bits")
+    println("용량 비율 = " + to_string(ratio))
+
+    let mut pass: i64 = 0
+    if codon_6 == 216 { pass = pass + 1 }
+    if codon_6 > codon_4 * 3 { pass = pass + 1 }
+    if info_gain > 0.5 && info_gain < 0.6 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — 6염기 용량 3.375배")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

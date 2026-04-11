@@ -1,0 +1,13 @@
+// experiment_kv_cache_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: KV Cache 6 레벨 계층 적중률 검증
+// 근거: n=6 계층 = 캐시 6 (BT-386)
+// 가설: 6 레벨 TTL 적중률 > 4
+// 지표: hit rate
+// 데이터: 실측 추론 로그
+
+fn main() {
+    println("[KV cache n6] 검증 스텁 — 6 레벨")
+    println("핵심 가설: hit rate 최대")
+    println("[상태] pending")
+}

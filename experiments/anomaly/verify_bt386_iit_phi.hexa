@@ -1,0 +1,42 @@
+// verify_bt386_iit_phi.hexa
+// 카테고리: anomaly
+// 목적: BT-386 IIT 의식 Phi_max = n*ln(phi) = 6*ln(2) ~ 4.158 bits 검증
+// 근거: 기능 모듈 sigma=12, 연결 밀도 tau/n=2/3, 각성-마취 차이 sigma-tau=8
+// 가설: Phi_max = 6*ln(2) = 4.1588... (이론값)
+// 지표: 이론값, 모듈 수, 연결 밀도, 차이 계산
+// 데이터: 분석적 수식
+
+fn main() {
+    println("[BT-386 IIT Phi] 의식 측도 6*ln(2) — 검증")
+    let n: i64 = 6
+    let phi_n: i64 = 2
+    let sig: i64 = 12
+    let tau_n: i64 = 4
+
+    // Phi_max = n * ln(phi) = 6 * ln(2)
+    let ln2: f64 = 0.69314718056
+    let phi_max: f64 = 6.0 * ln2
+
+    // 연결 밀도 비율 tau/n = 4/6 = 2/3
+    let density_num: i64 = tau_n
+    let density_den: i64 = n
+    let density: f64 = 4.0 / 6.0
+
+    // 각성-마취 모듈 차이 = sigma - tau = 8
+    let awake_diff: i64 = sig - tau_n
+
+    println("Phi_max = 6*ln(2) = " + to_string(phi_max) + " bits")
+    println("연결 밀도 = " + to_string(density_num) + "/" + to_string(density_den) + " = " + to_string(density))
+    println("각성-마취 모듈 차이 = sigma - tau = " + to_string(awake_diff))
+
+    let mut pass: i64 = 0
+    if phi_max > 4.15 && phi_max < 4.17 { pass = pass + 1 }
+    if density > 0.665 && density < 0.668 { pass = pass + 1 }
+    if awake_diff == 8 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — IIT Phi 값/밀도/차이 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

@@ -1,0 +1,45 @@
+// verify_bt381_wimp_ladder.hexa
+// 카테고리: anomaly
+// 목적: BT-381 WIMP 후보 질량 n=6 래더 {32, 36, 48, 144} GeV 검증
+// 근거: phi^5=32, n^2=36, sigma*tau=48, sigma^2=144 (n=6 산술 격자)
+// 가설: 공식 값과 n=6 산술 격자값 일치 + 인접 GeV 대비 체계
+// 지표: 예측값 vs 격자값 편차, 상대 오차 0 요구
+// 데이터: n=6 산술 (atlas.n6 BT-381 노드 수식)
+
+fn main() {
+    println("[BT-381 WIMP] n=6 질량 래더 — 산술 검증")
+    let n: i64 = 6
+    let phi_n: i64 = 2     // phi(6)
+    let sig: i64 = 12      // sigma(6)
+    let tau_n: i64 = 4     // tau(6)
+
+    // 격자 예측
+    let m1: i64 = phi_n * phi_n * phi_n * phi_n * phi_n    // phi^5 = 32
+    let m2: i64 = n * n                                    // n^2 = 36
+    let m3: i64 = sig * tau_n                              // sigma*tau = 48
+    let m4: i64 = sig * sig                                // sigma^2 = 144
+
+    // 목표 래더
+    let t1: i64 = 32
+    let t2: i64 = 36
+    let t3: i64 = 48
+    let t4: i64 = 144
+
+    let mut pass: i64 = 0
+    if m1 == t1 { pass = pass + 1 }
+    if m2 == t2 { pass = pass + 1 }
+    if m3 == t3 { pass = pass + 1 }
+    if m4 == t4 { pass = pass + 1 }
+
+    println("phi^5       = " + to_string(m1) + " (목표 32)")
+    println("n^2         = " + to_string(m2) + " (목표 36)")
+    println("sigma*tau   = " + to_string(m3) + " (목표 48)")
+    println("sigma^2     = " + to_string(m4) + " (목표 144)")
+    println("일치: " + to_string(pass) + "/4")
+
+    if pass == 4 {
+        println("[상태] pass — n=6 WIMP 래더 완전 일치")
+    } else {
+        println("[상태] fail — 격자 편차 " + to_string(4 - pass))
+    }
+}

@@ -5,11 +5,12 @@
     "version": 1
   },
   "routes": {
-    "TECS-L": {
-      "dest": "~/Dev/TECS-L",
+    "_TECS-L_DEPRECATED": {
+      "_note": "TECS-L 폐기 완료 (2026-04). 수학/가설/상수는 n6-architecture/theory/ 에 흡수됨.",
+      "dest": "~/Dev/n6-architecture/theory",
       "keywords": ["characterization", "proof", "theorem", "hypothesis", "math", "atlas", "constant", "formula"],
-      "file_patterns": ["docs/hypotheses/**", "math/**", "data/**", "engines/**", "calc/**"],
-      "priority": "high"
+      "file_patterns": ["theory/**"],
+      "priority": "disabled"
     },
     "n6-architecture": {
       "dest": "~/Dev/n6-architecture",
@@ -44,7 +45,7 @@
     "papers": {
       "dest": "~/Dev/papers",
       "keywords": ["paper", "arxiv", "zenodo", "manuscript", "doi", "draft"],
-      "file_patterns": ["*.pdf", "*.tex", "tecs-l/**", "anima/**", "sedi/**"],
+      "file_patterns": ["*.pdf", "*.tex", "anima/**", "sedi/**"],
       "priority": "medium"
     },
     "invest": {

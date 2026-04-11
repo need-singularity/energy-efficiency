@@ -9,7 +9,7 @@
 - src/cmd/dse/       DSE 8종 (universal/material/solar/fusion/battery/sc/robot)
 - src/cmd/analyze/   분석기 12종 (deep-miner/formula-miner/discovery-engine 등)
 - src/cmd/hexa/      HEXA 유틸 4종 (rtl/sim/ssh/ready-absorber)
-- src/telescope/     렌즈 시스템 (215+ 렌즈)
+- src/telescope/     ⚠️ 렌즈 시스템 (Rust 레거시 312+ 파일, 폐기 중 — 진짜 SSOT: /Users/ghost/Dev/nexus/shared/lenses/ HEXA 네이티브)
 - src/ouroboros/     자기재귀 엔진 (메타루프/수렴/돌연변이)
 - src/growth/        자율성장 시스템
 - src/consciousness_bridge/  의식 브릿지

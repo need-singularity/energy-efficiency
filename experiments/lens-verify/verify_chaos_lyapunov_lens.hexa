@@ -1,0 +1,13 @@
+// verify_chaos_lyapunov_lens.hexa
+// 카테고리: lens-verify
+// 목적: ChaosLyapunovLens — 6 Lyapunov 지수 스펙트럼 검증
+// 근거: 6D 흐름 Lyapunov spectrum 6 성분
+// 가설: 6D 카오스 스펙트럼 구조
+// 지표: 지수 분포
+// 의존: shared/config/lens_registry.json
+
+fn main() {
+    println("[렌즈: Chaos] 검증 스텁 — 6 Lyapunov")
+    println("핵심 가설: 6D 스펙트럼")
+    println("[상태] pending")
+}

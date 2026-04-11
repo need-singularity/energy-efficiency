@@ -1,0 +1,14 @@
+// auto_grow.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/auto_grow.sh
+// 포팅 상태: STUB (원본 326줄)
+// 원본 요약: NEXUS-6 자동 성장 시스템 — 6단계 사이클
+//   1: 측정(cargo test+벤치마크+메트릭), 2: 분석(성장 기회 식별)
+//   3: 생성(Claude CLI로 개선), 4: 검증(cargo check+test)
+//   5: 커밋(테스트 통과 시), 6: 리포트(성장 메트릭 기록)
+//   옵션: --cycles N, --dry-run, --skip-commit
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/auto_grow (HEXA 포팅 대기)")
+}

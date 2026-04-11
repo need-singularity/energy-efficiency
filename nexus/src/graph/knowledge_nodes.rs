@@ -3,7 +3,7 @@
 //!
 //! This module expands the knowledge graph from ~135 toward the 500-node target
 //! by encoding the rich interconnection structure of the n=6 discovery system.
-//! Every node represents a real, meaningful entity in the TECS-L/n6 framework.
+//! Every node represents a real, meaningful entity in the n6 framework.
 
 use super::edge::{Edge, EdgeType};
 use super::node::{Node, NodeType};

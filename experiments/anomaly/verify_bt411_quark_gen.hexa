@@ -1,0 +1,13 @@
+// verify_bt411_quark_gen.hexa
+// 카테고리: anomaly
+// 목적: BT-411 쿼크 6종 (u/d/c/s/t/b) 표준모형 n=6 검증
+// 근거: 표준모형 쿼크 총 6 flavor
+// 가설: 쿼크 수 = 6
+// 지표: 플레이버 수 + 질량 계층
+// 데이터: PDG
+
+fn main() {
+    println("[BT-411 쿼크] 검증 스텁 — 6 flavor")
+    println("핵심 가설: u/d/c/s/t/b = 6")
+    println("[상태] pending")
+}

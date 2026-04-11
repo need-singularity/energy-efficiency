@@ -1,0 +1,14 @@
+// experiment_mixture_of_depths_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Mixture-of-Depths 라우팅 top-k 가 k=6 계열 (토큰 분할 1/6)에서
+//       연산량 절감과 성능 유지가 동시 성립함을 검증
+// 근거: 깊이별 라우터가 n=6 분할 시 σφ=nτ 조건 만족 (정보 보존 θ(n)=6)
+// 가설: capacity_ratio ∈ {1/4, 1/6, 1/8, 1/12} 스캔 시 1/6 에서 loss/FLOPs 비 최대
+// 지표: 계산 절감 (%), validation loss, 라우터 entropy
+// 의존: techniques/moe/mixture_of_depths.hexa
+
+fn main() {
+    println("[MoD n6] 실험 스텁 — capacity ratio 스캔")
+    println("핵심 가설: 1/6 분할 파레토 프론티어")
+    println("[상태] pending")
+}

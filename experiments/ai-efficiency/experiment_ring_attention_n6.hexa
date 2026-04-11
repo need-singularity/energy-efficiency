@@ -1,0 +1,13 @@
+// experiment_ring_attention_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Ring Attention 블록 분할 수가 6 또는 그 약수/배수일 때 통신 지연이 최소화됨을 검증
+// 근거: 링 토폴로지에서 n=6 노드 구성이 σ·φ 비율 최적 (BT-45 네트워크 토폴로지)
+// 가설: 링 크기 R ∈ {3,4,6,8,12} 스캔 시 R=6 에서 total_latency 최저 + throughput 최고
+// 지표: 통신 오버헤드 (token/s), ring all-gather 시간, 메모리 피크
+// 의존: techniques/attention/ring_attention.hexa
+
+fn main() {
+    println("[Ring Attention n6] 실험 스텁 — 링 크기 스캔")
+    println("핵심 가설: R=6 링 최저 지연")
+    println("[상태] pending — 분산 통신 벤치 대기")
+}

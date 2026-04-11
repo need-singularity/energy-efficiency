@@ -1,0 +1,13 @@
+// experiment_lens_chip_fusion.hexa
+// 카테고리: cross
+// 목적: 렌즈 16 종 × 칩 14 종 cross fusion 검증
+// 근거: 16*14=224 조합 중 n=6 수렴 제출
+// 가설: 6 핵심 cross pair 제거 없이 안정
+// 지표: fusion 생존율
+// 데이터: lens-verify + chip-verify
+
+fn main() {
+    println("[lens-chip fusion] 검증 스텁 — 224 조합")
+    println("핵심 가설: 6 cross 안정")
+    println("[상태] pending")
+}

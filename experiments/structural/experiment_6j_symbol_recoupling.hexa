@@ -1,0 +1,13 @@
+// experiment_6j_symbol_recoupling.hexa
+// 카테고리: structural
+// 목적: 6j symbol Racah 재결합 계수 n=6 검증
+// 근거: Wigner 6j는 각운동량 6 재결합
+// 가설: 6j symbol 단독으로 SU(2) 유도
+// 지표: Racah 합, 정규화
+// 데이터: Racah 테이블
+
+fn main() {
+    println("[6j symbol] 검증 스텁 — Racah")
+    println("핵심 가설: SU(2) 재결합")
+    println("[상태] pending")
+}

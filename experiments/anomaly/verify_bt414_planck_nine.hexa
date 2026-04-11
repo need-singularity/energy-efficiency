@@ -1,0 +1,13 @@
+// verify_bt414_planck_nine.hexa
+// 카테고리: anomaly
+// 목적: BT-414 Planck 2018 9 CMB 파라미터 중 핵심 6 (H0, Omega_b, Omega_c, n_s, A_s, tau) 검증
+// 근거: 표준 LambdaCDM 6 파라미터
+// 가설: 독립 핵심 파라미터 = 6
+// 지표: 파라미터 수, 잉여 제거
+// 데이터: Planck 2018
+
+fn main() {
+    println("[BT-414 Planck 6] 검증 스텁 — LambdaCDM 6")
+    println("핵심 가설: H0, Omega_b, Omega_c, n_s, A_s, tau")
+    println("[상태] pending")
+}

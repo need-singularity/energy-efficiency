@@ -1,0 +1,14 @@
+// experiment_gshard_switch_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: GShard / Switch Transformer 전문가 수 E=6, 12, 24 및 top-k ∈ {1,2} 조합에서
+//       로드 밸런싱과 품질의 n=6 정합 검증
+// 근거: BT-22 "전문가 분산은 n=6 의 약수/배수에서 균등" (실험 gap 커버)
+// 가설: E=12 + top-2 에서 로드 불균형 계수 최저 + perplexity 최저
+// 지표: 전문가 활용률 분산, perplexity, 토큰당 통신량
+// 의존: techniques/moe/gshard_switch.hexa
+
+fn main() {
+    println("[GShard/Switch n6] 실험 스텁 — 전문가 수 × top-k 스캔")
+    println("핵심 가설: E=12, top-2 균등 최적")
+    println("[상태] pending")
+}

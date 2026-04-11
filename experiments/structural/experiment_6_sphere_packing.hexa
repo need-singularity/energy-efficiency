@@ -1,0 +1,13 @@
+// experiment_6_sphere_packing.hexa
+// 카테고리: structural
+// 목적: 6차원 구 채우기 최적 밀도 E6 관련 검증
+// 근거: E6 격자 구 채우기 최적 후보
+// 가설: 6D 밀도 ~ pi^3/6! ~ 0.373
+// 지표: 밀도
+// 데이터: 수학 표
+
+fn main() {
+    println("[6D 구 채우기] 검증 스텁 — E6 밀도")
+    println("핵심 가설: ~0.373")
+    println("[상태] pending")
+}

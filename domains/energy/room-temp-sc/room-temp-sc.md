@@ -13743,7 +13743,7 @@ for r in results:
 | BT-54 AdamW | techniques/adamw_quintuplet.py | 옵티마이저 |
 | BT-42 추론 스케일링 | techniques/inference_scaling.py | 추론 |
 | 17기법 전체 | techniques/*.py (67 파일) | AI 기법 |
-| TECS-L 증명 | ~/Dev/TECS-L/docs/ | 수학적 기반 |
+| n6 증명 | theory/proofs/ | 수학적 기반 |
 | DSE 도메인 | tools/universal-dse/domains/ | 전수 탐색 |
 
 ---

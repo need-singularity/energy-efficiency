@@ -1,0 +1,14 @@
+// experiment_yarn_rope_scaling_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: YaRN RoPE 스케일링 기법이 n=6 축(헤드차원 d=64/6-친화) 정렬에서 perplexity 최소화
+//       여부를 검증한다. (techniques/attention/yarn_rope_scaling.hexa 실험 공백 커버)
+// 근거: σ(n)·φ(n) = n·τ(n) ⟺ n=6 — 확장 인자 s ∈ {2,4,6,8} 스캔 후 6배수 최적 확인
+// 가설: RoPE 기저 θ_i = 10000^(-2i/d)에 s=6 적용 시 긴 컨텍스트 일반화 오차 z>5 감소
+// 지표: perplexity Δ, 어텐션 entropy, 긴 컨텍스트 needle-in-haystack 정확도
+// 의존: techniques/attention/yarn_rope_scaling.hexa
+
+fn main() {
+    println("[YaRN RoPE n6] 실험 스텁 — 스케일 인자 s ∈ {2,4,6,8} 스캔 대기")
+    println("핵심 가설: s=6 긴 컨텍스트 perplexity 최저")
+    println("[상태] pending — nexus verify --hexa ai-efficiency 로 실행 예정")
+}

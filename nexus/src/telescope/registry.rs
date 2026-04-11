@@ -39,66 +39,76 @@ pub struct LensRegistry {
 
 impl LensRegistry {
     /// Create a new registry pre-populated with the 22 Core lenses,
-    /// 58 n6-industry lenses, 40 cross-project lenses, 103 TECS-L math
-    /// lenses, 88 Anima consciousness lenses, 100 SEDI signal lenses,
+    /// 58 n6-industry lenses, 40 cross-project lenses, 103 math (구 TECS-L, HEXA 전환중)
+    /// lenses, 88 Anima consciousness lenses,
     /// 58 accel ML lenses, 57 accel physics/neuro lenses, 55 accel
-    /// engineering lenses, 63 accel humanities lenses, and 49 physics-deep
-    /// lenses (693 total).
+    /// engineering lenses, 63 accel humanities lenses, 49 physics-deep
+    /// lenses, 56 expansion-2nd lenses, 50 expansion-3rd lenses,
+    /// and 100 expansion-4th lenses (1236 total).
     pub fn new() -> Self {
         let mut reg = LensRegistry {
             entries: HashMap::new(),
         };
-        for entry in super::core_lenses::core_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::n6_lenses::n6_industry_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::cross_lenses::cross_project_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::tecs_lenses::tecs_math_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::anima_lenses::anima_consciousness_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::sedi_lenses::sedi_signal_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::accel_lenses_a::accel_ml_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::accel_lenses_b::accel_physics_neuro_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::accel_lenses_c::accel_engineering_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::accel_lenses_d::accel_humanities_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::quantum_lenses::quantum_topology_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::physics_deep_lenses::physics_deep_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::frontier_lenses::frontier_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::frontier_lenses::new_domain_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::frontier_lenses::dimensional_perception_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::frontier_lenses::new_quad_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
-        for entry in super::frontier_lenses::expansion_56_lens_entries() {
-            reg.entries.insert(entry.name.clone(), entry);
-        }
+        // ⛔ 레거시 Rust 렌즈 메타데이터 로더 비활성화 (2026-04-11)
+        // 진짜 SSOT: /Users/ghost/Dev/nexus/shared/lenses/*.hexa
+        // 원본 파일은 tar 백업(/tmp/telescope_legacy_backup_20260411.tar.gz)에 보존
+        // for entry in super::core_lenses::core_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::n6_lenses::n6_industry_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::cross_lenses::cross_project_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::tecs_lenses::tecs_math_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::anima_lenses::anima_consciousness_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::sedi_lenses::sedi_signal_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::accel_lenses_a::accel_ml_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::accel_lenses_b::accel_physics_neuro_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::accel_lenses_c::accel_engineering_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::accel_lenses_d::accel_humanities_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::quantum_lenses::quantum_topology_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::physics_deep_lenses::physics_deep_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::frontier_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::new_domain_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::dimensional_perception_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::new_quad_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::expansion_56_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::expansion_50_v3_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
+        // for entry in super::frontier_lenses::expansion_100_v4_lens_entries() {
+        //     reg.entries.insert(entry.name.clone(), entry);
+        // }
         // Auto-load persisted custom lenses from disk (if present).
         let _ = reg.load_custom();
         reg

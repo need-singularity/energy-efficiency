@@ -1,0 +1,13 @@
+// experiment_lora_target_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: LoRA n=6 target 모듈 {q,k,v,o,gate,up} 적용 검증
+// 근거: Transformer 주요 6 linear 레이어
+// 가설: 6 target 조합 수렴 최적
+// 지표: 학습 loss, 정확도
+// 데이터: PEFT 벤치
+
+fn main() {
+    println("[LoRA target n6] 검증 스텁 — 6 modules")
+    println("핵심 가설: 6 target 최적")
+    println("[상태] pending")
+}

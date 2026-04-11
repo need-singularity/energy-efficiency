@@ -1,0 +1,13 @@
+// verify_bt416_hexaquark.hexa
+// 카테고리: anomaly
+// 목적: BT-416 hexaquark d* (2380) 6 쿼크 상태 n=6 검증
+// 근거: 6 쿼크 복합상태 실험 보고
+// 가설: 쿼크 수 = 6, 질량 ~ 2380 MeV
+// 지표: 쿼크 수, 질량, 스핀
+// 데이터: WASA/COSY
+
+fn main() {
+    println("[BT-416 hexaquark] 검증 스텁 — 6 쿼크")
+    println("핵심 가설: d*(2380)")
+    println("[상태] pending")
+}

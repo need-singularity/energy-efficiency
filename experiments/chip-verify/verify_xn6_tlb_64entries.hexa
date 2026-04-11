@@ -1,0 +1,13 @@
+// verify_xn6_tlb_64entries.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 TLB 64 = phi^n 엔트리 적중률 검증
+// 근거: phi^n = 2^6 = 64 페이지 테이블
+// 가설: 64 TLB 적중률 > 32
+// 지표: hit rate
+// 의존: nexus/rtl/xn6_tlb.v
+
+fn main() {
+    println("[Xn6 TLB 64] 검증 스텁 — phi^n")
+    println("핵심 가설: hit rate 최대")
+    println("[상태] pending")
+}

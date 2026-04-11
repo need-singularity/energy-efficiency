@@ -1,0 +1,13 @@
+// verify_bt412_lepton_gen.hexa
+// 카테고리: anomaly
+// 목적: BT-412 렙톤 6종 (e/mu/tau + 3 nu) 표준모형 n=6 검증
+// 근거: 표준모형 렙톤 총 6 (3 charged + 3 neutrino)
+// 가설: 렙톤 수 = 6
+// 지표: 6 종 분할
+// 데이터: PDG
+
+fn main() {
+    println("[BT-412 렙톤] 검증 스텁 — 6 flavor")
+    println("핵심 가설: e/mu/tau + 3 nu")
+    println("[상태] pending")
+}

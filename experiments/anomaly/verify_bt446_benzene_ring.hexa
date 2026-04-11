@@ -1,0 +1,36 @@
+// verify_bt446_benzene_ring.hexa
+// 카테고리: anomaly
+// 목적: BT-446 벤젠 6원환 공명 에너지 36 kcal/mol 검증
+// 근거: 6 탄소 pi 전자 6개, 공명 에너지 ~36 kcal/mol
+// 가설: 방향족성 Huckel 4n+2=6 (n=1) + 6 pi 전자
+// 지표: 전자수, 결합 길이, 공명
+// 데이터: 유기화학 표준
+
+fn main() {
+    println("[BT-446 벤젠 6원환] pi 공명 — 산술 검증")
+    let c_atoms: i64 = 6
+    let pi_electrons: i64 = 6            // 4n+2 = 6 (n=1)
+    let huckel_n: i64 = 1
+    let huckel: i64 = 4 * huckel_n + 2   // 6
+    let res_energy: f64 = 36.0            // kcal/mol
+
+    // 결합 길이 1.39 Å (C-C 단일 1.54, 이중 1.34 사이)
+    let bond: f64 = 1.39
+
+    println("C 원자 = " + to_string(c_atoms))
+    println("pi 전자 = " + to_string(pi_electrons))
+    println("Huckel 규칙 4n+2 = " + to_string(huckel))
+    println("공명 에너지 = " + to_string(res_energy) + " kcal/mol")
+    println("결합 길이 = " + to_string(bond) + " A")
+
+    let mut pass: i64 = 0
+    if c_atoms == 6 { pass = pass + 1 }
+    if huckel == pi_electrons { pass = pass + 1 }
+    if bond > 1.34 && bond < 1.54 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — 벤젠 6원환 방향족성 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

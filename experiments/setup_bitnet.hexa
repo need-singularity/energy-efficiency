@@ -1,0 +1,16 @@
+// setup_bitnet.sh → .hexa 포팅
+// 원본 경로: experiments/setup_bitnet.sh
+// 포팅 상태: STUB (원본 177줄)
+// 원본 요약: BitNet b1.58 2B4T 맥(애플 실리콘) 설치 스크립트
+//   단계 0: 전제조건 확인 (cmake, clang, python3)
+//   단계 1: BitNet 리포 클론
+//   단계 2: Python 환경 설정 (conda 또는 venv)
+//   단계 3: 모델 다운로드 (microsoft/BitNet-b1.58-2B-4T-gguf)
+//   단계 4: 양자화 빌드 (i2_s)
+//   단계 5: 벤치마크 실행
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: experiments/setup_bitnet (HEXA 포팅 대기)")
+}

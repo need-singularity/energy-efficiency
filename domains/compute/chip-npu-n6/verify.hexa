@@ -1,0 +1,94 @@
+// verify.hexa — chip-npu-n6 도메인 검증
+// n=6 정합 NPU 스펙의 수치 일관성 확인
+//
+// 검증 항목:
+//   1. σ·φ = n·τ = 24 (SM 수와 동일)
+//   2. SM 수 = J₂ = 24
+//   3. SM 당 TC = τ = 4
+//   4. TC 당 MAC = σ² = 144
+//   5. 파이프라인 스테이지 = σ = 12
+//   6. 메모리 계층 = τ = 4
+//   7. NoC = 6-regular (SM 당 n=6 이웃)
+//   8. Egyptian 전력 분배 = 1/2 + 1/3 + 1/6 = 1 (유리수 검증)
+
+let N = 6
+let PHI = 2
+let TAU = 4
+let SIGMA = 12
+let J2 = 24
+let SOPFR = 5
+
+// 핵심 항등식
+let lhs = SIGMA * PHI
+let rhs = N * TAU
+
+if lhs != rhs {
+    println("❌ [chip-npu-n6] σ·φ=" + to_string(lhs) + " ≠ n·τ=" + to_string(rhs))
+    exit(1)
+}
+
+if J2 != lhs {
+    println("❌ [chip-npu-n6] J₂ 불일치")
+    exit(1)
+}
+
+// SM 수 = J₂ = 24
+let sm_count = J2
+if sm_count != 24 {
+    println("❌ [chip-npu-n6] SM 수 " + to_string(sm_count) + " ≠ 24")
+    exit(1)
+}
+
+// SM 당 TC = τ = 4
+let tc_per_sm = TAU
+if tc_per_sm != 4 {
+    println("❌ [chip-npu-n6] TC/SM " + to_string(tc_per_sm) + " ≠ 4")
+    exit(1)
+}
+
+// TC 당 MAC = σ² = 144
+let mac_per_tc = SIGMA * SIGMA
+if mac_per_tc != 144 {
+    println("❌ [chip-npu-n6] MAC/TC " + to_string(mac_per_tc) + " ≠ 144")
+    exit(1)
+}
+
+// 총 MAC = 24 × 4 × 144 = 13,824
+let total_mac = sm_count * tc_per_sm * mac_per_tc
+if total_mac != 13824 {
+    println("❌ [chip-npu-n6] 총 MAC " + to_string(total_mac) + " ≠ 13824")
+    exit(1)
+}
+
+// 파이프라인 스테이지 = σ = 12
+let pipe_stages = SIGMA
+if pipe_stages != 12 {
+    println("❌ [chip-npu-n6] 파이프라인 " + to_string(pipe_stages) + " ≠ 12")
+    exit(1)
+}
+
+// 메모리 계층 = τ = 4
+let mem_tiers = TAU
+if mem_tiers != 4 {
+    println("❌ [chip-npu-n6] 메모리 계층 " + to_string(mem_tiers) + " ≠ 4")
+    exit(1)
+}
+
+// NoC 총 링크 = 24 × 6 / 2 = 72 = n·σ
+let noc_links = (sm_count * N) / 2
+let n_sigma = N * SIGMA
+if noc_links != n_sigma {
+    println("❌ [chip-npu-n6] NoC 링크 " + to_string(noc_links) + " ≠ n·σ=" + to_string(n_sigma))
+    exit(1)
+}
+
+// Egyptian 검증 : 1/2 + 1/3 + 1/6 = 1 (분모 6 공통)
+// 3/6 + 2/6 + 1/6 = 6/6
+let egypt_num = 3 + 2 + 1
+let egypt_den = 6
+if egypt_num != egypt_den {
+    println("❌ [chip-npu-n6] Egyptian " + to_string(egypt_num) + "/" + to_string(egypt_den) + " ≠ 1")
+    exit(1)
+}
+
+println("✅ verify[chip-npu-n6] OK: σ·φ=n·τ=" + to_string(lhs) + ", SM=" + to_string(sm_count) + ", TC/SM=" + to_string(tc_per_sm) + ", MAC/TC=" + to_string(mac_per_tc) + ", 총MAC=" + to_string(total_mac) + ", pipe=" + to_string(pipe_stages) + ", 메모리=" + to_string(mem_tiers) + ", NoC=" + to_string(noc_links) + ", Egyptian=1, n=6 일관")

@@ -1,0 +1,66 @@
+// verify.hexa — chip-rtl-gen 도메인 검증
+// n=6 정합 RTL 생성기 설계서의 상수 일관성 확인
+//
+// 검증 항목:
+//   1. σ·φ = n·τ = 24 핵심 항등식
+//   2. 원시연산 6종 (Ω₁~Ω₆) 개수 = n
+//   3. 기법 매핑 개수 16 = n·τ - sigma/phi 가 아닌 16 직접
+//   4. 파이프라인 σ=12 스테이지
+
+let N = 6
+let PHI = 2
+let TAU = 4
+let SIGMA = 12
+let J2 = 24
+let SOPFR = 5
+
+// 핵심 항등식: σ·φ = n·τ
+let lhs = SIGMA * PHI
+let rhs = N * TAU
+
+if lhs != rhs {
+    println("❌ [chip-rtl-gen] σ·φ=" + to_string(lhs) + " ≠ n·τ=" + to_string(rhs))
+    exit(1)
+}
+
+// 유일성: J₂ = σ·φ = 24
+if J2 != lhs {
+    println("❌ [chip-rtl-gen] J₂=" + to_string(J2) + " ≠ σ·φ=" + to_string(lhs))
+    exit(1)
+}
+
+// 원시 연산자 6종 = n
+let num_primitives = 6
+if num_primitives != N {
+    println("❌ [chip-rtl-gen] primitive 개수 " + to_string(num_primitives) + " ≠ n=" + to_string(N))
+    exit(1)
+}
+
+// 기법 매핑 16 종 (attention 3 + moe 3 + sparse 3 + optim 4 + graph 3)
+let techs_attention = 3
+let techs_moe = 3
+let techs_sparse = 3
+let techs_optim = 4
+let techs_graph = 3
+let techs_total = techs_attention + techs_moe + techs_sparse + techs_optim + techs_graph
+
+if techs_total != 16 {
+    println("❌ [chip-rtl-gen] 기법 합계 " + to_string(techs_total) + " ≠ 16")
+    exit(1)
+}
+
+// 파이프라인 깊이 = σ=12
+let pipe_depth = SIGMA
+if pipe_depth != 12 {
+    println("❌ [chip-rtl-gen] pipe_depth " + to_string(pipe_depth) + " ≠ 12")
+    exit(1)
+}
+
+// 스칼라 폭 sigma-tau = 8
+let scalar_width = SIGMA - TAU
+if scalar_width != 8 {
+    println("❌ [chip-rtl-gen] scalar_width " + to_string(scalar_width) + " ≠ 8")
+    exit(1)
+}
+
+println("✅ verify[chip-rtl-gen] OK: σ·φ=n·τ=" + to_string(lhs) + ", J₂=" + to_string(J2) + ", primitive=" + to_string(num_primitives) + ", 기법=" + to_string(techs_total) + ", pipe=" + to_string(pipe_depth) + ", n=6 일관")

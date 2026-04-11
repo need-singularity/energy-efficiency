@@ -1,0 +1,13 @@
+// verify_koopman_operator_lens.hexa
+// 카테고리: lens-verify
+// 목적: KoopmanOperatorLens — 6 주요 모드 동역학 검증
+// 근거: 6 DMD 주요 고유값 안정 근사
+// 가설: 6 Koopman 모드 오류 최소
+// 지표: 재구성 오류
+// 의존: shared/config/lens_registry.json
+
+fn main() {
+    println("[렌즈: Koopman] 검증 스텁 — 6 모드")
+    println("핵심 가설: DMD 6 최적")
+    println("[상태] pending")
+}

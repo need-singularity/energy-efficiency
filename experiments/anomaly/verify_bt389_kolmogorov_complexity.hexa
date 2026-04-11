@@ -1,0 +1,43 @@
+// verify_bt389_kolmogorov_complexity.hexa
+// 카테고리: anomaly
+// 목적: BT-389 Kolmogorov 최소 기술 알파벳 n=6, 길이 tau=4, 상태공간 n^tau=1296 검증
+// 근거: 정보밀도 log_2(1296) = 4*log_2(6) ~ 10.34 bits
+// 가설: n^tau = 1296 정확 + log_2 밀도 정합
+// 지표: 상태공간, 밀도
+// 데이터: 산술 수식
+
+fn main() {
+    println("[BT-389 Kolmogorov] 알파벳 n=6 길이 tau=4 — 산술 검증")
+    let n: i64 = 6
+    let tau_n: i64 = 4
+
+    // n^tau
+    let mut state: i64 = 1
+    let mut i: i64 = 0
+    while i < tau_n {
+        state = state * n
+        i = i + 1
+    }
+
+    // log_2(6) = 2.584962500721...
+    let log2_6: f64 = 2.584962500721
+    let density: f64 = 4.0 * log2_6    // ~10.34
+
+    // log_2(1296) 직접
+    let log2_1296: f64 = log(1296.0) / log(2.0)
+
+    println("n^tau = " + to_string(state))
+    println("밀도 log_2(n^tau) = " + to_string(density) + " bits")
+    println("log_2(1296)       = " + to_string(log2_1296))
+
+    let mut pass: i64 = 0
+    if state == 1296 { pass = pass + 1 }
+    if density > 10.3 && density < 10.4 { pass = pass + 1 }
+    if log2_1296 > 10.3 && log2_1296 < 10.4 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — Kolmogorov 1296 상태공간 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

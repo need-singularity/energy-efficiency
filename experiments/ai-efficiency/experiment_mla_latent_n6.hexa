@@ -1,0 +1,13 @@
+// experiment_mla_latent_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: DeepSeek MLA latent 차원 n=6 압축 검증
+// 근거: 6 차원 잠재 KV 상한
+// 가설: 6 latent ppl 최소
+// 지표: ppl, 속도
+// 데이터: DeepSeek 결과
+
+fn main() {
+    println("[MLA latent n6] 검증 스텁 — 6 latent")
+    println("핵심 가설: 6 차원 최적")
+    println("[상태] pending")
+}

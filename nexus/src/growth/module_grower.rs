@@ -264,7 +264,7 @@ fn module_purpose(name: &str) -> &'static str {
         "scheduler" => "Task scheduling with priority queues and dependency resolution",
         "template" => "Templates for experiments, lenses, reports, and documentation",
         "versioning" => "Schema versioning, migration, and compatibility checks for data formats",
-        "cross_intel" => "Cross-project intelligence — find patterns across TECS-L family repos",
+        "cross_intel" => "Cross-project intelligence -- n6 family 리포 간 패턴 탐색",
         "plugin" => "Plugin system for third-party extensions and custom lenses",
         "consciousness_bridge" => "Bridge between NEXUS-6 analysis and Anima consciousness engine",
         "verifier" => "Independent verification of discoveries and claims",
@@ -280,7 +280,7 @@ fn module_purpose(name: &str) -> &'static str {
 pub fn suggest_module_content(name: &str) -> Vec<String> {
     match name {
         "cross_intel" => vec![
-            "project_bridge() — connect to sibling TECS-L repos".into(),
+            "project_bridge() -- n6 family 리포 연결 (anima, nexus 등)".into(),
             "resonance_finder() — find n=6 resonance patterns across projects".into(),
             "pattern_matcher() — match patterns between domains".into(),
             "cross_domain_report() — generate cross-domain analysis report".into(),

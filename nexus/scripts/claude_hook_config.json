@@ -13,7 +13,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/ghost/Dev/TECS-L/.shared/nexus_ensure_running.sh 2>/dev/null || true"
+            "command": "bash /Users/ghost/Dev/n6-architecture/nexus/scripts/nexus_ensure_running.sh 2>/dev/null || true"
           }
         ]
       }

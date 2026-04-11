@@ -1,0 +1,296 @@
+# N6 Meditation Practice DSE (n=6 technique)
+[meta]
+name = "meditation-practice"
+desc = "Meditation Practice DSE (n=6 technique)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Technique"
+
+[[candidate]]
+id = "Samatha-focus"
+label = "Samatha focus (n=6 breath)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "b=6=n"
+
+[[candidate]]
+id = "Vipassana-insight"
+label = "Vipassana insight (sigma=12 day)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.9
+notes = "d=12=sigma"
+
+[[candidate]]
+id = "Metta-loving"
+label = "Metta loving (tau=4 object class)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "c=4=tau"
+
+[[candidate]]
+id = "Zazen"
+label = "Zazen (phi=2 shikantaza/koan)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "m=2=phi"
+
+[[candidate]]
+id = "Tonglen"
+label = "Tonglen (phi=2 give/take)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "d=2=phi"
+
+[[candidate]]
+id = "TM-mantra"
+label = "TM mantra (J2=24 min session)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.9
+notes = "m=24=J2"
+
+[[level]]
+name = "Posture"
+
+[[candidate]]
+id = "Lotus-full"
+label = "Full lotus (phi=2 leg)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.9
+notes = "l=2=phi"
+
+[[candidate]]
+id = "Half-lotus"
+label = "Half lotus (n=6 min warmup)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.9
+notes = "m=6=n"
+
+[[candidate]]
+id = "Seiza-kneeling"
+label = "Seiza kneeling (tau=4 min threshold)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.95
+notes = "m=4=tau"
+
+[[candidate]]
+id = "Chair-sit"
+label = "Chair sit (sigma=12 cm seat height)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "c=12=sigma"
+
+[[candidate]]
+id = "Walking-kinhin"
+label = "Walking kinhin (J2=24 step/min)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "s=24=J2"
+
+[[candidate]]
+id = "Supine-rest"
+label = "Supine rest (phi=2 hand position)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "h=2=phi"
+
+[[level]]
+name = "Object"
+
+[[candidate]]
+id = "Breath-anapana"
+label = "Breath anapana (n=6 nostril count)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "c=6=n"
+
+[[candidate]]
+id = "Body-scan"
+label = "Body scan (sigma=12 zone)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.9
+notes = "z=12=sigma"
+
+[[candidate]]
+id = "Mantra-chant"
+label = "Mantra chant (tau=4 syllable)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "s=4=tau"
+
+[[candidate]]
+id = "Visual-yantra"
+label = "Visual yantra (J2=24 point)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "p=24=J2"
+
+[[candidate]]
+id = "Sound-nada"
+label = "Sound nada (phi=2 ear)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "e=2=phi"
+
+[[candidate]]
+id = "Open-awareness"
+label = "Open awareness (n=6 sense gate)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "g=6=n"
+
+[[level]]
+name = "Duration"
+
+[[candidate]]
+id = "Micro-break"
+label = "Micro break (phi=2 min)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "m=2=phi"
+
+[[candidate]]
+id = "Short-session"
+label = "Short session (sigma-phi=10 min)"
+n6 = 0.75
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "m=10=sigma-phi"
+
+[[candidate]]
+id = "Standard-20"
+label = "Standard 20 min (J2=24-tau)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "m=20"
+
+[[candidate]]
+id = "Long-60"
+label = "Long 60 min (sigma*5=60)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.9
+notes = "m=60=sigma*5"
+
+[[candidate]]
+id = "Retreat-day"
+label = "Retreat day (n=6 d)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "d=6=n"
+
+[[candidate]]
+id = "Retreat-10day"
+label = "Retreat 10 day (sigma-phi)"
+n6 = 0.75
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "d=10=sigma-phi"
+
+[[level]]
+name = "Monitor"
+
+[[candidate]]
+id = "Diary-log"
+label = "Diary log (n=6 line)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.95
+notes = "l=6=n"
+
+[[candidate]]
+id = "HRV-track"
+label = "HRV track (sigma=12 rMSSD)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=12=sigma"
+
+[[candidate]]
+id = "EEG-muse"
+label = "EEG Muse (tau=4 band)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "b=4=tau"
+
+[[candidate]]
+id = "Timer-app"
+label = "Timer app (J2=24 preset)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.9
+notes = "p=24=J2"
+
+[[candidate]]
+id = "Teacher-feedback"
+label = "Teacher feedback (phi=2 week)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "w=2=phi"
+
+[[candidate]]
+id = "Sangha-community"
+label = "Sangha community (n=6 member)"
+n6 = 1.0
+perf = 0.95
+power = 0.9
+cost = 0.85
+notes = "m=6=n"
+

@@ -21,3 +21,17 @@
 - 원본 섹션 유지, 신규는 해당 섹션 뒤에 추가
 - 레거시는 부록 B에만
 - 한글 필수 (R-한글)
+
+## 외부 검증 스크립트 (R29 — nexus/shared/n6/scripts/ SSOT)
+
+2026-04-11 R29 이관: 이 폴더의 `verify_*.hexa` (verify.hexa 제외) 는
+R29 규칙에 따라 `/Users/ghost/Dev/nexus/shared/n6/scripts/` 로 이관되었습니다.
+
+- 이관 참조: `reports/audits/r29-migration-bulk-2026-04-11.md`
+- 이 폴더의 `verify.hexa` (공통 템플릿) 는 그대로 유지됩니다.
+
+### 이관된 파일
+
+- `verify_anima-soc_n6.hexa` → `/Users/ghost/Dev/nexus/shared/n6/scripts/verify_anima-soc_n6.hexa`
+  - 실행: `hexa /Users/ghost/Dev/nexus/shared/n6/scripts/verify_anima-soc_n6.hexa`
+

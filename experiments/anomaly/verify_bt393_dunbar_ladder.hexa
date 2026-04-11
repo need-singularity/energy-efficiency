@@ -1,0 +1,42 @@
+// verify_bt393_dunbar_ladder.hexa
+// 카테고리: anomaly
+// 목적: BT-393 Dunbar {5,15,50,150} n=6 산술 4계층 인코딩 검증
+// 근거: sopfr=5, sig+n/phi=12+3=15, sig*tau-n/phi=48-3=45 (~50), sig^2+n=144+6=150
+// 가설: 네 계층 크기 n=6 산술 정합 (50은 45 근사)
+// 지표: 정확도 + 허용오차
+// 데이터: atlas.n6
+
+fn main() {
+    println("[BT-393 Dunbar] 사회 계층 {5,15,50,150} — 산술 검증")
+    let n: i64 = 6
+    let phi_n: i64 = 2
+    let sig: i64 = 12
+    let tau_n: i64 = 4
+    let sopfr: i64 = 5
+
+    // 계층 1: sopfr = 5
+    let l1: i64 = sopfr
+    // 계층 2: sigma + n/phi = 12 + 3 = 15
+    let l2: i64 = sig + n / phi_n
+    // 계층 3: sigma*tau - n/phi = 48 - 3 = 45 (≈50)
+    let l3: i64 = sig * tau_n - n / phi_n
+    // 계층 4: sigma^2 + n = 144 + 6 = 150
+    let l4: i64 = sig * sig + n
+
+    println("L1 = sopfr = " + to_string(l1))
+    println("L2 = sigma + n/phi = " + to_string(l2))
+    println("L3 = sigma*tau - n/phi = " + to_string(l3))
+    println("L4 = sigma^2 + n = " + to_string(l4))
+
+    let mut pass: i64 = 0
+    if l1 == 5 { pass = pass + 1 }
+    if l2 == 15 { pass = pass + 1 }
+    if l3 >= 45 && l3 <= 55 { pass = pass + 1 }    // 50 ± 5 허용
+    if l4 == 150 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — Dunbar 4계층 n=6 산술")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

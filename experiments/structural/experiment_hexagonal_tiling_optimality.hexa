@@ -1,0 +1,13 @@
+// experiment_hexagonal_tiling_optimality.hexa
+// 카테고리: structural
+// 목적: 2차원 평면에서 6각 타일링이 면적 대비 둘레 최소임을 σ(n)·φ(n) = n·τ(n) 관점으로 검증
+// 근거: Honeycomb conjecture (Hales 1999) 의 n=6 알고리듬적 재현
+// 가설: 정다각형 타일링 {3,4,6} 중 6 변이 단위 면적당 경계 최저 + σφ 조건 유일 만족
+// 지표: 경계 총합 / 면적, τ(n) 밀도, 각 타일링 에너지 함수
+// 연결: BT-377 곡률, BT-375 해양 (셀 수)
+
+fn main() {
+    println("[6각 타일링 최적성] 실험 스텁 — Honeycomb conjecture 재현")
+    println("핵심 가설: 6각 σφ=nτ 유일")
+    println("[상태] pending")
+}

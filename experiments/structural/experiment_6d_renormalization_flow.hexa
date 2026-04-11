@@ -1,0 +1,13 @@
+// experiment_6d_renormalization_flow.hexa
+// 카테고리: structural
+// 목적: 6 차원에서 비선형 σ 모델의 재규격화군 (RG) 흐름이 고정점으로 수렴함을 검증
+// 근거: 6 은 대부분의 QFT 의 상부 임계 차원 (upper critical dimension) — n=6 우연 아님
+// 가설: d=6 ε-전개 시 고정점 존재 + 안정성 검증, d≠6 엔 drift
+// 지표: β 함수 영점, 고정점 고유값 부호, 재규격화 상수 발산 차수
+// 연결: BT-377 곡률, experiment_rg_flow.hexa 확장
+
+fn main() {
+    println("[6D RG 흐름] 실험 스텁 — 상부 임계 차원 = 6")
+    println("핵심 가설: d=6 고정점 안정")
+    println("[상태] pending")
+}

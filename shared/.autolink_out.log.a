@@ -1,1 +1,5 @@
-Error reading mk2_hexa/native/lens_forge.hexa: No such file or directory (os error 2)
+=== lens_forge: forge cycle ===
+  no candidates generated
+  result: {"generated":0,"accepted":0,"lenses":[]}
+  written: shared/discovery/forge_result.json
+=== lens_forge verified ===

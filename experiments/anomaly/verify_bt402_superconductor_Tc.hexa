@@ -1,0 +1,13 @@
+// verify_bt402_superconductor_Tc.hexa
+// 카테고리: anomaly
+// 목적: BT-402 초전도체 Tc n=6 산술 상한 — (2*sigma+n)/J2 = 30/24 = 1.25 (정규화)
+// 근거: McMillan 공식 + n=6 격자 상수 보정
+// 가설: H2S, LaH10 최적 Tc 비율 n=6 근사
+// 지표: Tc, 격자 상수, 전자-포논 결합
+// 데이터: 공개 초전도 DB
+
+fn main() {
+    println("[BT-402 초전도 Tc] 검증 스텁 — 1.25 정규화")
+    println("핵심 가설: (2*sig+n)/J2")
+    println("[상태] pending")
+}

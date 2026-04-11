@@ -1,0 +1,13 @@
+// grow_lenses.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/grow_lenses.sh
+// 포팅 상태: STUB (원본 451줄)
+// 원본 요약: NEXUS-6 렌즈 배치 자동 구현
+//   배치 크기 기본 6 (n=6), 카테고리 필터, 우선순위 리스트
+//   5단계: 구현 스캔→메타 스캔→배치 선택→구현(Claude CLI)→리포트
+//   구현율 진행바, 성공/실패 카운트
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/grow_lenses (HEXA 포팅 대기)")
+}

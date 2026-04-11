@@ -1,0 +1,13 @@
+// experiment_mamba2_ssm_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Mamba-2 SSM 상태 차원 N 이 6 계열일 때 선택적 스캔 안정성 극대화 검증
+// 근거: SSM 상태공간 {A,B,C,D} 고유값 분포가 n=6 주기에서 강한 수렴 (BT-58)
+// 가설: N ∈ {8,16,24,48,64} 스캔 시 N=24 에서 훈련 손실 & 추론 속도 동시 파레토 최적
+// 지표: 훈련 loss 곡선, token/s, 상태 업데이트 안정성 (스펙트럼 반경)
+// 의존: techniques/arch/mamba2_ssm.hexa
+
+fn main() {
+    println("[Mamba-2 SSM n6] 실험 스텁 — 상태 차원 N 스캔")
+    println("핵심 가설: N=24 파레토 최적")
+    println("[상태] pending")
+}

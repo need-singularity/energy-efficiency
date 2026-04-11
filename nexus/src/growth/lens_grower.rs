@@ -98,9 +98,9 @@ const METADATA_SOURCES: &[(&str, &str, usize)] = &[
     ("cross_lenses", "cross-project", 40),
     ("accel_lenses_b", "accel-physics", 57),
     ("accel_lenses_c", "accel-engineering", 55),
-    ("tecs_lenses", "tecs-math", 103),
+    // ("tecs_lenses", "tecs-math", 103),  // TECS-L 폐기 → nexus/shared/lenses/ HEXA 전환
     ("anima_lenses", "anima-consciousness", 88),
-    ("sedi_lenses", "sedi-signal", 100),
+    // ("sedi_lenses", "sedi-signal", 100), // 폐기: sedi 도메인 흡수 완료
     ("accel_lenses_d", "accel-humanities", 63),
     ("quantum_lenses", "quantum", 0), // count unknown
 ];
@@ -115,9 +115,9 @@ fn source_priority(source_id: &str) -> f64 {
         "cross_lenses" => 0.85,
         "accel_lenses_b" => 0.80,
         "accel_lenses_c" => 0.75,
-        "tecs_lenses" => 0.70,
+        // "tecs_lenses" => 0.70,  // TECS-L 폐기
         "anima_lenses" => 0.65,
-        "sedi_lenses" => 0.60,
+        // "sedi_lenses" => 0.60, // 폐기: sedi 도메인 흡수 완료
         "accel_lenses_d" => 0.55,
         "quantum_lenses" => 0.50,
         _ => 0.30,

@@ -1,0 +1,13 @@
+// experiment_diffusion_forcing_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Diffusion Forcing n=6 시간단계 스케일링 검증
+// 근거: 6 diffusion step에서 FID 최소 관측
+// 가설: 6단계 FID < 4/8 단계
+// 지표: FID, IS, 생성 품질
+// 데이터: CIFAR10 / ImageNet
+
+fn main() {
+    println("[Diffusion Forcing n6] 검증 스텁 — 6단계")
+    println("핵심 가설: FID 최소")
+    println("[상태] pending")
+}

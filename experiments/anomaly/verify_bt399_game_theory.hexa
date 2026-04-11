@@ -1,0 +1,39 @@
+// verify_bt399_game_theory.hexa
+// 카테고리: anomaly
+// 목적: BT-399 n=6 대칭 게임 Nash 균형 n, 협력 분기 1/n, ESS 혼합 sopfr=5, 할인율 tau/(sig-phi)=2/5 검증
+// 근거: 반복 게임 할인 구조
+// 가설: Nash=6, 협력=1/6~0.167, ESS=5, 할인=0.4
+// 지표: 산술 정합
+// 데이터: 반복 죄수 딜레마 로그
+
+fn main() {
+    println("[BT-399 게임이론] n=6 대칭 게임 — 산술 검증")
+    let n: i64 = 6
+    let sopfr: i64 = 5
+    let tau_n: i64 = 4
+    let sig: i64 = 12
+    let phi_n: i64 = 2
+
+    let nash_count: i64 = n               // 6
+    let coop_thresh: f64 = 1.0 / 6.0      // 0.1666...
+    let ess_strategies: i64 = sopfr       // 5
+    // 할인율 = tau / (sigma - phi) = 4 / (12-2) = 4/10 = 0.4
+    let discount: f64 = 4.0 / 10.0
+
+    println("Nash 균형 수 = n   = " + to_string(nash_count))
+    println("협력 분기     = 1/n = " + to_string(coop_thresh))
+    println("ESS 전략 수   = sopfr = " + to_string(ess_strategies))
+    println("할인율       = tau/(sig-phi) = " + to_string(discount))
+
+    let mut pass: i64 = 0
+    if nash_count == 6 { pass = pass + 1 }
+    if coop_thresh > 0.165 && coop_thresh < 0.168 { pass = pass + 1 }
+    if ess_strategies == 5 { pass = pass + 1 }
+    if discount > 0.39 && discount < 0.41 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 게임이론 n=6 구조 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

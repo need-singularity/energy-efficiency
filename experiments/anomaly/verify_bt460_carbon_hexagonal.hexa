@@ -1,0 +1,45 @@
+// verify_bt460_carbon_hexagonal.hexa
+// 카테고리: anomaly
+// 목적: BT-460 그래핀 6각 격자 Dirac cone 무질량 전자 검증
+// 근거: K/K' valley 2, 6각 격자 → 상대론적 준입자
+// 가설: c* = 10^6 m/s (Fermi 속도), 6 이웃
+// 지표: 격자 수, Dirac cone 수
+// 데이터: Novoselov/Geim (2010 Nobel)
+
+fn main() {
+    println("[BT-460 그래핀] 6각 격자 Dirac — 산술 검증")
+    let neighbors: i64 = 6                 // 각 C 원자 인접
+    let valleys: i64 = 2                   // K, K'
+    let sublat: i64 = 2                    // A, B 부격자
+
+    // 격자 상수 a = 2.46 Å
+    let lat_const: f64 = 2.46
+    // C-C 결합 1.42 Å
+    let cc_bond: f64 = 1.42
+    // Fermi 속도
+    let vf: f64 = 1000000.0                // 10^6 m/s
+    let c_light: f64 = 299792458.0
+    let ratio: f64 = vf / c_light          // ~1/300
+
+    // Brillouin zone 6각 + 6 K 점 (3개 K + 3개 K' 등가)
+    let bz_points: i64 = 6
+    let unique_k: i64 = 2
+
+    println("이웃 = " + to_string(neighbors))
+    println("valley = " + to_string(valleys))
+    println("격자 상수 = " + to_string(lat_const) + " A")
+    println("v_F = " + to_string(vf) + " m/s")
+    println("v_F/c = " + to_string(ratio))
+
+    let mut pass: i64 = 0
+    if neighbors == 6 { pass = pass + 1 }
+    if valleys == 2 { pass = pass + 1 }
+    if bz_points == 6 { pass = pass + 1 }
+    if ratio > 0.003 && ratio < 0.004 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 그래핀 6각 격자 Dirac 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

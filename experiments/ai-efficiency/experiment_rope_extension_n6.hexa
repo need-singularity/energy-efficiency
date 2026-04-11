@@ -1,0 +1,13 @@
+// experiment_rope_extension_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: RoPE 확장 n=6 기저 주파수 배수 검증
+// 근거: 2*phi^k 주파수 6 레이어 유지
+// 가설: 6 레이어 rope perplexity 최소
+// 지표: perplexity
+// 데이터: 장문 벤치
+
+fn main() {
+    println("[RoPE ext n6] 검증 스텁 — 6 레이어")
+    println("핵심 가설: ppl 최소")
+    println("[상태] pending")
+}

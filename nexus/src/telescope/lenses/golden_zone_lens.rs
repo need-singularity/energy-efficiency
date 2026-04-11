@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::telescope::lens_trait::{Lens, LensResult};
 use crate::telescope::shared_data::SharedData;
 
-/// GoldenZoneLens: TECS-L Golden Zone detection.
+/// GoldenZoneLens: n=6 Golden Zone detection.
 /// The Golden Zone is centered at 1/e with width ln(4/3).
 /// Range: [1/e - ln(4/3)/2, 1/e + ln(4/3)/2] ≈ [0.224, 0.512].
 /// Key constants: Boltzmann sparsity 1/e≈0.368, Mertens dropout ln(4/3)≈0.288.

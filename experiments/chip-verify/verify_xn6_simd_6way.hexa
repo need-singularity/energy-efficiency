@@ -1,0 +1,13 @@
+// verify_xn6_simd_6way.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 SIMD 6-way 워프 SIMD 최적 검증
+// 근거: 6 data element parallel
+// 가설: 6-way SIMD MFU > 4/8
+// 지표: 활용률
+// 의존: nexus/rtl/xn6_simd.v
+
+fn main() {
+    println("[Xn6 SIMD 6] 검증 스텁 — 6-way")
+    println("핵심 가설: MFU 최대")
+    println("[상태] pending")
+}

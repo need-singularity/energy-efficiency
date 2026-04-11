@@ -1,0 +1,13 @@
+// experiment_hyena_long_conv.hexa
+// 카테고리: ai-efficiency
+// 목적: Hyena 장거리 합성곱 필터 차수 O=6 최적 검증
+// 근거: 장거리 구조 n=6 차수에서 수렴 (BT-58 스펙트럼 안정)
+// 가설: O ∈ {4,5,6,7,8} 스캔 시 O=6 에서 Associative Recall + PILE perplexity 파레토
+// 지표: PILE ppl, Associative Recall, 훈련 처리량
+// 의존: techniques/attention/hyena_operator.hexa
+
+fn main() {
+    println("[Hyena O=6] 실험 스텁 — 합성곱 차수 스캔")
+    println("핵심 가설: O=6 파레토 최적")
+    println("[상태] pending")
+}

@@ -1,0 +1,13 @@
+// experiment_discovery_graph_v10.hexa
+// 카테고리: structural
+// 목적: Discovery Graph v10 — 기존 v9 확장, BT-380 신규 돌파 노드 편입 후 n=6 클러스터 안정성 검증
+// 근거: discovery_graph_v9 (최근 세션) → v10 BT-380 통합 + 6 메타 범주 축 추가
+// 가설: BT-380 편입 후 그래프 에지 밀도 변화에도 클러스터 수 = 6 유지
+// 지표: modularity Q, 클러스터 수, 에지 증가율, betweenness top-6
+// 연결: experiment_anti_node_discovery, discovery_graph_topology
+
+fn main() {
+    println("[Discovery Graph v10] 실험 스텁 — BT-380 통합 후 클러스터 수렴")
+    println("핵심 가설: 클러스터 수 = 6 유지")
+    println("[상태] pending")
+}

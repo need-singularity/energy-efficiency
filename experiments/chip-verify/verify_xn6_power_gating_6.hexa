@@ -1,0 +1,52 @@
+// verify_xn6_power_gating_6.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 전원 게이팅 6 상태 전이 (off/retention/idle/active/boost/thermal) 검증
+// 근거: 세포주기 6 위상 ↔ 칩 6 상태 동형
+// 가설: 6 상태 전이 평균 전력 최소
+// 지표: 상태 수, 평균 전력
+// 의존: nexus/rtl/xn6_pmu.v
+
+fn main() {
+    println("[Xn6 PMU 6상태] 전원 게이팅 — 산술 검증")
+    let n: i64 = 6
+    let states: i64 = 6
+
+    // 각 상태 전력 (normalized)
+    let p_off: f64 = 0.0
+    let p_ret: f64 = 0.01
+    let p_idle: f64 = 0.1
+    let p_active: f64 = 1.0
+    let p_boost: f64 = 1.5
+    let p_thermal: f64 = 0.8
+
+    // 체류 시간 분포 (평균 영역 사용률)
+    let t_off: f64 = 0.1
+    let t_ret: f64 = 0.15
+    let t_idle: f64 = 0.25
+    let t_active: f64 = 0.4
+    let t_boost: f64 = 0.08
+    let t_thermal: f64 = 0.02
+    let t_sum: f64 = t_off + t_ret + t_idle + t_active + t_boost + t_thermal
+
+    // 평균 전력
+    let avg: f64 = p_off*t_off + p_ret*t_ret + p_idle*t_idle + p_active*t_active + p_boost*t_boost + p_thermal*t_thermal
+
+    // 4상태 (off/idle/active/thermal) 대비
+    let avg_4: f64 = 0.0*0.15 + 0.1*0.35 + 1.0*0.45 + 0.8*0.05    // 0.525
+
+    println("상태 수 = " + to_string(states))
+    println("체류 합 = " + to_string(t_sum))
+    println("6 상태 평균 전력 = " + to_string(avg))
+    println("4 상태 평균 전력 = " + to_string(avg_4))
+
+    let mut pass: i64 = 0
+    if states == n { pass = pass + 1 }
+    if t_sum > 0.99 && t_sum < 1.01 { pass = pass + 1 }
+    if avg < avg_4 { pass = pass + 1 }    // 6 상태 우위
+
+    if pass == 3 {
+        println("[상태] pass — 6 상태 전력 절약 우위")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

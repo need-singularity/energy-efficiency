@@ -1,6 +1,6 @@
 //! Gate-1: SOURCE — 화이트리스트 + 블랙리스트
 //!
-//! 9 허용 리포 (sopfr+τ=5+4) × σ²=144 규칙
+//! 6 허용 리포 × σ²=144 규칙
 //! 블랙리스트: ready/, ready-*, *-contaminated, *-broken
 //! τ=4 검증 축: origin / hash / sig / time
 
@@ -15,12 +15,9 @@ impl SourceGate {
     pub fn new() -> Self {
         Self {
             whitelist: vec![
-                // sopfr+τ = 5+4 = 9 리포
+                // TECS-L 폐기 → n6-architecture 흡수 완료 (2026-04)
                 "n6-architecture",
-                "TECS-L",
                 "anima",
-                "sedi",
-                "brainwire",
                 "papers",
                 "nexus",
                 "hexa-lang",

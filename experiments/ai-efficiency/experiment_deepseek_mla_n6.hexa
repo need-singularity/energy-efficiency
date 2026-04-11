@@ -1,0 +1,14 @@
+// experiment_deepseek_mla_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: DeepSeek MLA (Multi-head Latent Attention) 잠재 차원 d_c 가 6의 배수에서
+//       KV 캐시 압축률과 품질 트레이드오프가 최적임을 검증
+// 근거: 압축 투영 W_DKV 랭크가 6계열(6,12,24,48)일 때 σφ=nτ 조건 최근접
+// 가설: d_c ∈ {4,6,8,12,16} 스캔 시 d_c=6 또는 12 에서 복원 오차 최저
+// 지표: KV 캐시 크기, 복원 MSE, downstream 정확도 Δ
+// 의존: techniques/compress/deepseek_mla_compression.hexa
+
+fn main() {
+    println("[DeepSeek MLA n6] 실험 스텁 — 잠재 차원 d_c 스캔")
+    println("핵심 가설: d_c=6 또는 12 복원 오차 최저")
+    println("[상태] pending")
+}

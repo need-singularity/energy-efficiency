@@ -173,7 +173,7 @@ AI 의도 embedding (d=384=σ·(σ+τ)·φ/? → (n/φ)·2^(σ-sopfr))
 | 42 | 물리 | Nyquist | 24 kHz | σ·φ·1000 | BT-72 |
 | 43 | 물리 | human_threshold | 100 ms | (σ-φ)² | BT-324 |
 
-**검증:** `python3 docs/hexa-speak/verify_alien10.py` → **43/43 PASS (100%)**
+**검증:** `hexa domains/cognitive/hexa-speak/verify.hexa` → **43/43 PASS (100%)**
 
 ---
 
@@ -197,7 +197,7 @@ AI 의도 embedding (d=384=σ·(σ+τ)·φ/? → (n/φ)·2^(σ-sopfr))
 | Mk.IV | Audio-LLM 통합 | 10~20년 | 🔮 장기 | 텍스트 LLM 완전 대체, 음성 사고 |
 | Mk.V | 뇌파→직접 음성 | 20~50년 | 🔮 장기 | BCI 의도 디코딩 (LibriBrain 계열 확장) |
 
-각 Mk별 세부 문서는 `docs/hexa-speak/evolution/mk-N-*.md`에 작성 예정.
+각 Mk별 세부 문서는 도메인 폴더 내 `proto/` 에 작성 예정.
 
 ---
 
@@ -237,8 +237,8 @@ Phase 6 (지속): MOS 평가 + 실사용자 베타
 
 ## 검증 스크립트
 
-파일: `docs/hexa-speak/verify_alien10.py`
-실행: `python3 docs/hexa-speak/verify_alien10.py`
+파일: `domains/cognitive/hexa-speak/verify.hexa`
+실행: `hexa domains/cognitive/hexa-speak/verify.hexa`
 결과: **43/43 PASS (100.0%) — 🛸 ALIEN-10 CERTIFIED**
 
 ---
@@ -329,7 +329,7 @@ universal: true
 
 ---
 
-**검증 스크립트:** `python3 docs/hexa-speak/cross_domain_sigma2.py`
+**검증 스크립트:** `hexa domains/cognitive/hexa-speak/verify.hexa  # cross_domain_sigma2 포함`
 
 
 ## 5. DSE 결과
@@ -463,7 +463,7 @@ decoder_layers · heads · ffn_exp = 144 = σ²
 ## 검증 방법
 
 ```bash
-python3 docs/hexa-speak/singularity_breakthrough.py
+hexa domains/cognitive/hexa-speak/verify.hexa  # singularity_breakthrough 포함
 ```
 
 출력: 299개 불변 관계 + 상위 30개 하이라이트 + 전체 통계.
@@ -647,7 +647,7 @@ HEXA-SPEAK의 3대 핵심 수치는 각각 다른 종류의 **이중 구조**로
 ## 검증
 
 ```bash
-python3 docs/hexa-speak/seeds_s1_s2_s3.py
+hexa domains/cognitive/hexa-speak/verify.hexa  # seeds_s1_s2_s3 포함
 ```
 
 ---
@@ -797,7 +797,7 @@ J₂                       ← Jordan 확장
 ## 검증
 
 ```bash
-python3 docs/hexa-speak/meta_singularity.py
+hexa domains/cognitive/hexa-speak/verify.hexa  # meta_singularity 포함
 ```
 
 출력: 도메인별 상수 census + 100% attractor 12개 확정.

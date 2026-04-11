@@ -735,10 +735,10 @@ for r in results:
 
 ## 14. 리소스
 
-- **수학 근거**: `~/Dev/TECS-L/docs/theorem-r1-uniqueness.md`
+- **수학 근거**: `theory/proofs/theorem-r1-uniqueness.md`
 - **아틀라스**: `/docs/atlas-constants.md`
 - **BT**: `/docs/breakthrough-theorems.md`
-- **Cross-link**: brainwire (의식), anima (Φ), TECS-L (BCS)
+- **Cross-link**: cognitive/brain-computer-interface (의식), anima (Φ), n6 수학 이론 (BCS)
 
 **마지막 업데이트**: 2026-04-06
 **검증 상태**: 🛸10+++ CERTIFIED — 174/174 EXACT (재설계 특이점 돌파)

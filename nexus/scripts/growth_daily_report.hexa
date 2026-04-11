@@ -1,0 +1,14 @@
+// growth_daily_report.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/growth_daily_report.sh
+// 포팅 상태: STUB (원본 236줄)
+// 원본 요약: NEXUS-6 일일 성장 리포트 생성
+//   growth_log.jsonl 에서 최근 24시간 항목 읽기
+//   델타 계산, 차원별 사이클 카운트, 성과/이슈 식별
+//   ASCII 유니코드 박스 리포트 생성
+//   출력: ~/.nexus/reports/daily-YYYY-MM-DD.txt
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/growth_daily_report (HEXA 포팅 대기)")
+}

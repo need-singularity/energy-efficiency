@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::telescope::lens_trait::{Lens, LensResult};
 use crate::telescope::shared_data::{SharedData, column_vectors};
 
-/// ConstantDiscoveryEngineLens: TECS-L style constant/formula discovery
+/// ConstantDiscoveryEngineLens: n=6 style constant/formula discovery
 /// with automatic registration.
 ///
 /// Like physics_constant_engine.py — systematically explores expressions
@@ -19,7 +19,7 @@ use crate::telescope::shared_data::{SharedData, column_vectors};
 ///      - Balance: residual (should → 0 for perfect match)
 ///   5. Auto-register discoveries (output as structured result)
 ///
-/// n=6 expression library (from TECS-L model_utils.py):
+/// n=6 expression library (구 model_utils.py 유래):
 ///   σ=12, τ=4, n=6, φ=2, μ=1, sopfr=5, J₂=24,
 ///   σ-τ=8, σ+τ=16, σ*τ=48, σ/τ=3, τ²/σ=4/3,
 ///   ln(4/3)≈0.288, 1/e≈0.368, π²/6≈1.645, e≈2.718

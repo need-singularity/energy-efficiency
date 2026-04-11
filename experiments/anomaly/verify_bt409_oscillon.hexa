@@ -1,0 +1,13 @@
+// verify_bt409_oscillon.hexa
+// 카테고리: anomaly
+// 목적: BT-409 진동자 oscillon 6 대칭 파동 해 n=6 검증
+// 근거: Klein-Gordon + potential 1/6 vacuum manifold
+// 가설: 6각 대칭 oscillon 존재
+// 지표: 주기, 안정성
+// 데이터: 장론 시뮬
+
+fn main() {
+    println("[BT-409 oscillon] 검증 스텁 — 6 대칭")
+    println("핵심 가설: 6각 파동 해")
+    println("[상태] pending")
+}

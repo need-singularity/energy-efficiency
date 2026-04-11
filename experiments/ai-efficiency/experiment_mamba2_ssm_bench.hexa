@@ -1,0 +1,13 @@
+// experiment_mamba2_ssm_bench.hexa
+// 카테고리: ai-efficiency
+// 목적: Mamba-2 SOTA 벤치 — LongBench/MMLU/HELM 에서 n=6 계열 상태 차원 수렴
+// 근거: Mamba-2 공식 벤치 + SSM N=24 파레토 가설
+// 가설: N=24 Mamba-2 가 비-6 차원 baseline 대비 LongBench 평균 sigma% 향상
+// 지표: LongBench 평균, MMLU, 메모리/토큰
+// 의존: techniques/arch/mamba2_ssm.hexa + experiment_mamba2_ssm_n6.hexa
+
+fn main() {
+    println("[Mamba-2 벤치] 검증 스텁 — SOTA LongBench 비교")
+    println("핵심 가설: N=24 평균 sigma% 향상")
+    println("[상태] pending")
+}

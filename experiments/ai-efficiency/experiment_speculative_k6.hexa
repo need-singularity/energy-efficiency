@@ -1,0 +1,13 @@
+// experiment_speculative_k6.hexa
+// 카테고리: ai-efficiency
+// 목적: Speculative decoding k=6 후보 토큰 최적 검증
+// 근거: 6 후보 + phi=2 acceptance balance
+// 가설: k=6 speedup > 4/8
+// 지표: acceptance rate, speedup
+// 데이터: Medusa / EAGLE 벤치
+
+fn main() {
+    println("[Spec decode k6] 검증 스텁 — 6 후보")
+    println("핵심 가설: speedup 최대")
+    println("[상태] pending")
+}

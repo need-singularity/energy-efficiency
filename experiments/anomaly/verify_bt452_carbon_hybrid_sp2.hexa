@@ -1,0 +1,40 @@
+// verify_bt452_carbon_hybrid_sp2.hexa
+// 카테고리: anomaly
+// 목적: BT-452 탄소 sp2 혼성궤도 120도 + 6원환 안정성 검증
+// 근거: 그래핀/벤젠/탄소나노튜브 공통 sp2
+// 가설: 3 sp2 결합 120도 × 6원환 = 720 내각 합
+// 지표: 각도, 결합 수
+// 데이터: 유기화학 표준
+
+fn main() {
+    println("[BT-452 탄소 sp2] 120도 6원환 — 산술 검증")
+    let sp2_angle: f64 = 120.0
+    let bonds: i64 = 3                     // sp2 결합 수
+    let ring_size: i64 = 6
+    let interior_sum: f64 = 120.0 * 6.0   // 720
+
+    // (n-2)*180 공식
+    let formula_sum: f64 = 4.0 * 180.0     // (6-2)*180 = 720
+
+    // 결합 에너지 (kcal/mol)
+    let c_c_single: f64 = 83.0
+    let c_c_aromatic: f64 = 116.0          // 1.5 차수 근사
+    let gain: f64 = c_c_aromatic - c_c_single
+
+    println("sp2 각 = " + to_string(sp2_angle))
+    println("6원환 내각 합 = " + to_string(interior_sum))
+    println("공식 (n-2)*180 = " + to_string(formula_sum))
+    println("방향족 에너지 이득 = " + to_string(gain) + " kcal/mol")
+
+    let mut pass: i64 = 0
+    if sp2_angle > 119.9 && sp2_angle < 120.1 { pass = pass + 1 }
+    if interior_sum == formula_sum { pass = pass + 1 }
+    if bonds == 3 { pass = pass + 1 }
+    if gain > 30.0 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 탄소 sp2 6원환 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

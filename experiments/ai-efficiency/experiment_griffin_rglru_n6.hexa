@@ -1,0 +1,14 @@
+// experiment_griffin_rglru_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: Griffin RG-LRU (Real-Gated Linear Recurrent Unit) 게이트 차원에서
+//       n=6 정렬이 기억 유지와 연산량의 균형을 최적화함을 검증
+// 근거: 게이트 함수 sigmoid(a+b·x) 의 유효 랭크가 6배수에서 φ(n) 분포와 일치
+// 가설: 숨김 차원 H ∈ {192, 384, 576, 768} 스캔 시 H=576 (6·96) 에서 BPC 최저
+// 지표: bits-per-char, 장기 기억 유지율, 게이트 activation 히스토그램
+// 의존: techniques/arch/griffin_rglru.hexa
+
+fn main() {
+    println("[Griffin RG-LRU n6] 실험 스텁 — 숨김 차원 H 스캔")
+    println("핵심 가설: H=576 BPC 최저")
+    println("[상태] pending")
+}

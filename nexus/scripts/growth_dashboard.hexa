@@ -1,0 +1,14 @@
+// growth_dashboard.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/growth_dashboard.sh
+// 포팅 상태: STUB (원본 201줄)
+// 원본 요약: NEXUS-6 성장 대시보드 — 15차원 진행률 표시
+//   차원별 현재값/목표/진행바/속도/건강 상태
+//   registry.rs 와 동일한 목표값 사용
+//   --live 모드: 30초마다 자동 갱신
+//   최근 n=6 액션 이력 표시
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/growth_dashboard (HEXA 포팅 대기)")
+}

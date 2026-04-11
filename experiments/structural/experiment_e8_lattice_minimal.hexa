@@ -1,0 +1,13 @@
+// experiment_e8_lattice_minimal.hexa
+// 카테고리: structural
+// 목적: E8 → E6 ⊂ E8 n=6 부분 격자 최소 벡터 카운트 검증
+// 근거: E6 rank 6 + minimal norm 72 = J2*3
+// 가설: E6 최소 벡터 72 = sigma*phi*3
+// 지표: rank, minimal vectors
+// 데이터: Lie algebra 표준표
+
+fn main() {
+    println("[E8 격자 최소] 검증 스텁 — E6 rank 6")
+    println("핵심 가설: min vectors 72")
+    println("[상태] pending")
+}

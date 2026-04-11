@@ -1,0 +1,13 @@
+// experiment_6d_knot_invariants.hexa
+// 카테고리: structural
+// 목적: 6D 매듭 invariant Vassiliev finite type order 6 검증
+// 근거: 유한 타입 order 6 공간 차원
+// 가설: order-6 invariants 수 ~ 6*f(6)
+// 지표: 차원, 생성원
+// 데이터: Vassiliev 표
+
+fn main() {
+    println("[6D knot Vassiliev] 검증 스텁 — order 6")
+    println("핵심 가설: 6 order 공간")
+    println("[상태] pending")
+}

@@ -10,7 +10,6 @@
 - consciousness_constraints.hexa
 - phi_efficiency_bridge.hexa
 - leech24_surface.hexa
-- sedi_training_monitor.hexa
 - thermodynamic_frame.hexa
 - n6_speak.hexa — 의식→음성 합성 엔진 (n=6 산술 기반)
 - n6_speak_hw.hexa — 하드웨어 벤치마크 (4 tier 물리적 한계)

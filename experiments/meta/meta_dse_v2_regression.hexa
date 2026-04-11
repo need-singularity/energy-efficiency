@@ -1,0 +1,13 @@
+// meta_dse_v2_regression.hexa
+// 카테고리: meta
+// 목적: DSE v2 회귀 검증 — 칩/NPU/NoC 6 디자인 포인트 n=6 파레토 재현
+// 근거: nexus dse 커맨드 + chip-verify 10건 입력
+// 가설: DSE v2 가 v1 대비 파레토 포인트 중복 제거 + 6 포인트 안정
+// 지표: 파레토 포인트 수, 재현성, 실행 시간
+// 의존: nexus/dse/* + experiments/chip-verify/*
+
+fn main() {
+    println("[메타: DSE v2] 회귀 스텁")
+    println("핵심 가설: 6 파레토 포인트 안정")
+    println("[상태] pending")
+}

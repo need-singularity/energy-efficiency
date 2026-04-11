@@ -1,23 +1,26 @@
-//! Telescope scan engine with 1014+ lenses (171+ dedicated + GenericLens auto-instantiated).
-pub mod accel_lenses_a;
-pub mod accel_lenses_b;
-pub mod accel_lenses_c;
-pub mod accel_lenses_d;
-pub mod anima_lenses;
+//! Telescope scan engine — ⛔ 레거시 Rust 렌즈 제거됨 (2026-04-11)
+//! 진짜 SSOT: /Users/ghost/Dev/nexus/shared/lenses/*.hexa (1659+ HEXA 네이티브)
+//! 유지되는 인프라: lens_trait / registry / shared_data / tier / consensus
+//! 복구: tar xzf /tmp/telescope_legacy_backup_20260411.tar.gz -C /Users/ghost/Dev/n6-architecture/nexus/src/
+// pub mod accel_lenses_a;    // 레거시 제거
+// pub mod accel_lenses_b;    // 레거시 제거
+// pub mod accel_lenses_c;    // 레거시 제거
+// pub mod accel_lenses_d;    // 레거시 제거
+// pub mod anima_lenses;      // 레거시 제거
 pub mod consensus;
-pub mod core_lenses;
-pub mod cross_lenses;
+// pub mod core_lenses;       // 레거시 제거
+// pub mod cross_lenses;      // 레거시 제거
 pub mod domain_combos;
-pub mod frontier_lenses;
+// pub mod frontier_lenses;   // 레거시 제거
 pub mod lens_trait;
 pub mod lenses;
-pub mod n6_lenses;
-pub mod physics_deep_lenses;
-pub mod quantum_lenses;
+// pub mod n6_lenses;         // 레거시 제거
+// pub mod physics_deep_lenses; // 레거시 제거
+// pub mod quantum_lenses;    // 레거시 제거
 pub mod registry;
-pub mod sedi_lenses;
+// pub mod sedi_lenses;       // 레거시 제거
 pub mod shared_data;
-pub mod tecs_lenses;
+// pub mod tecs_lenses;       // 레거시 제거
 pub mod tier;
 
 use std::collections::HashMap;

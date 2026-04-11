@@ -1,0 +1,13 @@
+// grow_lens.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/grow_lens.sh
+// 포팅 상태: STUB (원본 137줄)
+// 원본 요약: NEXUS-6 단일 렌즈 성장
+//   5단계: 레지스트리 확인→구현 확인→Claude CLI 생성→검증→리포트
+//   Lens 트레이트 구현: scan() 메서드 실제 분석 로직 생성
+//   실패 시 git checkout 으로 롤백
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/grow_lens (HEXA 포팅 대기)")
+}

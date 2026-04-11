@@ -6075,7 +6075,7 @@ NIF 192 빔 = φ × σ × (σ-τ) = 2 × 12 × 8 [EXACT]
 
 ## 1. Atlas Scanner Results
 
-**Run**: `python3 ~/Dev/TECS-L/.shared/scan_math_atlas.py --save --summary`
+**Run**: atlas 스캔 (구 TECS-L 스크립트, n6-architecture 로 흡수됨)
 
 | Metric | Value |
 |--------|-------|
@@ -6108,11 +6108,11 @@ The following fusion-related constants are now in `docs/atlas-constants.md`:
 
 ## 2. Calculator Sync Results
 
-**Run**: `cd ~/Dev/TECS-L && bash .shared/sync-calculators.sh`
+**Run**: (구 TECS-L 스크립트 -- 폐기됨, nexus 도구 사용)
 
 | Repo | Result | Details |
 |------|--------|---------|
-| TECS-L | Synced + pushed | README updated, calculators.json saved |
+| n6-architecture (구 TECS-L) | 흡수 완료 | nexus 단일 바이너리로 통합 |
 | SEDI | Synced + pushed | README updated |
 | anima | Skipped | No SHARED:CALCULATORS markers in README |
 | n6-architecture | Synced + pushed | 23 calculators copied, README updated |
@@ -6218,20 +6218,12 @@ The alien-level discoveries (15 findings in `alien-level-discoveries.md`) contai
 ## 6. Sync Command Reference
 
 ```bash
-# Full sync (TECS-L -> all repos)
-cd ~/Dev/TECS-L && bash .shared/sync-calculators.sh
+# (레거시) TECS-L 폐기 완료 -- 아래 명령은 역사 기록용 보존
+# 현재: nexus scan --full / nexus verify 사용
+# 구: cd ~/Dev/TECS-L && bash .shared/sync-calculators.sh
+# 구: python3 ~/Dev/TECS-L/.shared/scan_math_atlas.py --save --summary
 
-# Atlas scan (pick up new constants)
-python3 ~/Dev/TECS-L/.shared/scan_math_atlas.py --save --summary
-
-# DSE domain sync (n6 -> TECS-L)
-cp ~/Dev/n6-architecture/tools/universal-dse/domains/*.toml ~/Dev/TECS-L/.shared/dse/domains/
-
-# Math atlas sync (all repos)
-cd ~/Dev/TECS-L && bash .shared/sync-math-atlas.sh
-
-# README sync
-cd ~/Dev/TECS-L && bash .shared/sync-readmes.sh
+# README sync (구: cd ~/Dev/TECS-L && bash .shared/sync-readmes.sh)
 ```
 
 ---

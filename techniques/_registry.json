@@ -1,7 +1,57 @@
 {
   "_doc": "AI 기법 66종 레지스트리. 각 항목은 techniques/<sub>/<name>.hexa 로 실행",
-  "_version": "1.0.0",
+  "_version": "1.1.0",
   "_total": 66,
+  "_sota_extended": 3,
+  "_sota_total": 69,
+  "_last_updated": "2026-04-11",
+  "_changelog": [
+    "2026-04-11: sota 섹션 신설 (S1 mamba2, S2 hyena, S3 rwkv) — 스텁→BODY 전환, papers/n6-sota-ssm-paper.md (N6-059) 통합 논문"
+  ],
+
+  "sota": {
+    "_doc": "SOTA 3종 — Transformer 대안 n=6 공통 정점 (BT-380-SOTA-SSM)",
+    "_paper": "papers/n6-sota-ssm-paper.md",
+    "_paper_id": "N6-059",
+    "items": [
+      {
+        "code": "S1",
+        "name": "mamba2",
+        "path": "techniques/sota/mamba2.hexa",
+        "design": "techniques/sota/mamba2.md",
+        "status": "BODY",
+        "grade": "[7]",
+        "promotion_target": "[10*]",
+        "chip_affinity": ["C3", "C4", "C6"],
+        "n6_constants": ["d_state=n", "d_conv=n", "n_head=n", "head_dim=σ", "chunk_L=J₂"],
+        "ref": "Dao & Gu 2024 — Transformers are SSMs"
+      },
+      {
+        "code": "S2",
+        "name": "hyena",
+        "path": "techniques/sota/hyena.hexa",
+        "design": "techniques/sota/hyena.md",
+        "status": "BODY",
+        "grade": "[7]",
+        "promotion_target": "[10*]",
+        "chip_affinity": ["C3", "C4"],
+        "n6_constants": ["order=n", "fan_in=τ", "egyptian_1/2+1/3+1/6=1", "6-smooth FFT", "cap 96 = J₂-τ = 20"],
+        "ref": "Poli et al 2023 — Hyena Hierarchy"
+      },
+      {
+        "code": "S3",
+        "name": "rwkv",
+        "path": "techniques/sota/rwkv.hexa",
+        "design": "techniques/sota/rwkv.md",
+        "status": "BODY",
+        "grade": "[7]",
+        "promotion_target": "[10*]",
+        "chip_affinity": ["C1", "C3", "C6"],
+        "n6_constants": ["n_block=n", "n_channels%n=0", "timemix_phases=n", "timemix_params=sopfr", "state_dim=n"],
+        "ref": "Peng et al 2025 — RWKV-7 Goose"
+      }
+    ]
+  },
 
   "attention": [
     "alibi_attention", "dedekind_head", "egyptian_attention",

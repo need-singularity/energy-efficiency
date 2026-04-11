@@ -1,0 +1,472 @@
+// ============================================================
+// rtl_generator.hexa — Xn6 Phase 3 RTL 생성기 본체
+// ------------------------------------------------------------
+// n6-architecture · chip-rtl-gen · Mk.I (원시연산 6종)
+//
+// 역할:
+//   1. 6 원시연산 Ω₁~Ω₆ 의 Verilog 모듈 자동 생성
+//   2. 16 AI 기법의 요구 크기에 맞춰 파라미터 스캔
+//   3. 생성 RTL 의 포트/모듈/시맨틱 주석 시뮬레이터 없이 구조 검증
+//
+// 사용:
+//   hexa run rtl_generator.hexa                 — 6 샘플 전량 생성 + 검증
+//   hexa run rtl_generator.hexa --only gemm     — 특정 원시연산만
+//   hexa run rtl_generator.hexa --tech fft_mix  — 특정 기법 파라미터 스캔
+//
+// 출력:
+//   templates/<op>_template.v     — 플레이스홀더 템플릿 (입력)
+//   generated/<op>_<variant>.v    — 파라미터 치환 결과 (산출)
+//
+// 규칙:
+//   - R1 HEXA-FIRST      : 본 생성기 .hexa, 산출물만 .v 허용
+//   - R12 AI-NATIVE      : bit-twiddle 0, @attr 기반 선언
+//   - R25 legacy 동결    : nexus/origins/hexa-rtl/rtl/*.hexa 미수정
+//   - 한글 주석          : 모든 설명 한글
+// ============================================================
+
+// ----------------------------------------------------------------
+// n=6 상수 (검증 assert 용)
+// ----------------------------------------------------------------
+let N       = 6
+let PHI     = 2
+let TAU     = 4
+let SIGMA   = 12
+let J2      = 24
+let S_T     = 8            // σ-τ=8 스칼라 폭
+let MU      = 1            // 단일 사이클 게이트
+
+// ----------------------------------------------------------------
+// σ·φ = n·τ = 24 핵심 항등식 런타임 확인
+// ----------------------------------------------------------------
+fn assert_n6_identity() -> bit {
+    let lhs = SIGMA * PHI
+    let rhs = N * TAU
+    assert(lhs == J2)
+    assert(rhs == J2)
+    return 1
+}
+
+// ================================================================
+// 1. 템플릿 경로 SSOT
+// ================================================================
+
+let TEMPLATE_DIR  = "domains/compute/chip-rtl-gen/templates"
+let GENERATED_DIR = "domains/compute/chip-rtl-gen/generated"
+
+// 6 원시연산 템플릿 파일명
+fn template_path(op: string) -> string {
+    return TEMPLATE_DIR + "/" + op + "_template.v"
+}
+
+// 생성 .v 경로
+fn generated_path(op: string, variant: string) -> string {
+    return GENERATED_DIR + "/" + op + "_" + variant + ".v"
+}
+
+// ================================================================
+// 2. 플레이스홀더 치환 엔진
+// ================================================================
+
+// 단일 {{KEY}} → value 치환 (AI-native: 내장 str.replace)
+fn interpolate(tmpl: string, key: string, value: string) -> string {
+    let token = "{{" + key + "}}"
+    return tmpl.replace(token, value)
+}
+
+// 다중 치환 — key/value 쌍 리스트 순차 적용
+fn interpolate_all(tmpl: string, pairs: list((string, string))) -> string {
+    let mut out = tmpl
+    for (k, v) in pairs {
+        out = interpolate(out, k, v)
+    }
+    return out
+}
+
+// 템플릿 로드 (파일시스템 → 문자열)
+fn load_template(op: string) -> string {
+    let path = template_path(op)
+    return read_file(path)
+}
+
+// 산출 파일 저장
+fn save_generated(op: string, variant: string, body: string) -> bit {
+    let path = generated_path(op, variant)
+    write_file(path, body)
+    return 1
+}
+
+// 생성 메타 헤더
+fn gen_meta(op: string, variant: string) -> string {
+    return "op=" + op
+         + ", variant=" + variant
+         + ", sigma=" + to_string(SIGMA)
+         + ", phi=" + to_string(PHI)
+         + ", tau=" + to_string(TAU)
+         + ", n=" + to_string(N)
+         + ", phase=Mk.I"
+}
+
+// ================================================================
+// 3. Ω₁ GEMM 생성기 — 12×12 systolic array (σ²=144 MAC)
+// ================================================================
+
+fn generate_gemm_module(m: int, n: int, k: int, variant: string) -> string {
+    // σ² = M·N = 144 MAC 셀 검증
+    assert(m == SIGMA)
+    assert(n == SIGMA)
+    assert(k == SIGMA)
+
+    let module_name = "gemm_core" + to_string(SIGMA) + "_" + variant
+
+    let tmpl = load_template("gemm")
+    let pairs = [
+        ("MODULE_NAME",  module_name),
+        ("M",            to_string(m)),
+        ("N",            to_string(n)),
+        ("K",            to_string(k)),
+        ("WIDTH_BITS",   to_string(S_T)),
+        ("SIGMA_STAGES", to_string(SIGMA)),
+        ("VARIANT",      "2'b" + variant),
+        ("GEN_META",     gen_meta("gemm", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 4. Ω₂ SOFTMAX 생성기 — 4단 체인 (exp/max/sub/norm)
+// ================================================================
+
+fn generate_softmax_module(vec_len: int, variant: string) -> string {
+    assert(vec_len == SIGMA)
+
+    // variant → 단계 이름
+    let stage_name =
+        if variant == "00" { "exp" }
+        else if variant == "01" { "max" }
+        else if variant == "10" { "sub" }
+        else { "norm" }
+
+    let module_name = "softmax_phi" + to_string(PHI) + "_" + stage_name
+
+    let tmpl = load_template("softmax")
+    let pairs = [
+        ("MODULE_NAME", module_name),
+        ("VEC_LEN",     to_string(vec_len)),
+        ("WIDTH_BITS",  to_string(S_T)),
+        ("PHI_STAGES",  to_string(PHI)),
+        ("VARIANT",     "2'b" + variant),
+        ("GEN_META",    gen_meta("softmax", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 5. Ω₃ TOPK 생성기 — τ=4 선별기 (k=φ=2 default)
+// ================================================================
+
+fn generate_topk_module(vec_len: int, k: int, variant: string) -> string {
+    assert(k == PHI)          // top-φ=2 기본
+    assert(vec_len == SIGMA)
+
+    let stage_name =
+        if variant == "00" { "sort" }
+        else if variant == "01" { "pick" }
+        else if variant == "10" { "merge" }
+        else { "idx" }
+
+    let module_name = "topk_phi" + to_string(PHI) + "_" + stage_name
+    let idx_bits = 4          // log₂(σ=12) ≈ 4
+
+    let tmpl = load_template("topk")
+    let pairs = [
+        ("MODULE_NAME", module_name),
+        ("VEC_LEN",     to_string(vec_len)),
+        ("K",           to_string(k)),
+        ("WIDTH_BITS",  to_string(S_T)),
+        ("IDX_BITS",    to_string(idx_bits)),
+        ("VARIANT",     "2'b" + variant),
+        ("GEN_META",    gen_meta("topk", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 6. Ω₄ GATE 생성기 — μ=1 사이클 AND/OR/XOR 마스크
+// ================================================================
+
+fn generate_gate_module(vec_len: int, variant: string) -> string {
+    assert(vec_len == SIGMA)
+
+    let stage_name =
+        if variant == "00" { "mul" }
+        else if variant == "01" { "and" }
+        else if variant == "10" { "or" }
+        else { "xor" }
+
+    let module_name = "gate_mu" + to_string(MU) + "_" + stage_name
+
+    // gate_mode: 0=mul 1=and 2=or 3=xor
+    let gate_mode =
+        if variant == "00" { "0" }
+        else if variant == "01" { "1" }
+        else if variant == "10" { "2" }
+        else { "3" }
+
+    let tmpl = load_template("gate")
+    let pairs = [
+        ("MODULE_NAME", module_name),
+        ("VEC_LEN",     to_string(vec_len)),
+        ("WIDTH_BITS",  to_string(S_T)),
+        ("GATE_MODE",   gate_mode),
+        ("VARIANT",     "2'b" + variant),
+        ("GEN_META",    gen_meta("gate", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 7. Ω₅ REDUCE 생성기 — τ=4 reduce tree
+// ================================================================
+
+fn generate_reduce_module(tau_depth: int, variant: string) -> string {
+    assert(tau_depth == TAU)
+
+    let stage_name =
+        if variant == "00" { "sum" }
+        else if variant == "01" { "max" }
+        else if variant == "10" { "min" }
+        else { "mean" }
+
+    let module_name = "reduce_tau" + to_string(TAU) + "_" + stage_name
+    let reduce_op =
+        if variant == "00" { "0" }
+        else if variant == "01" { "1" }
+        else if variant == "10" { "2" }
+        else { "3" }
+
+    let tmpl = load_template("reduce")
+    let pairs = [
+        ("MODULE_NAME", module_name),
+        ("TAU_DEPTH",   to_string(tau_depth)),
+        ("WIDTH_BITS",  to_string(S_T)),
+        ("REDUCE_OP",   reduce_op),
+        ("VARIANT",     "2'b" + variant),
+        ("GEN_META",    gen_meta("reduce", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 8. Ω₆ CONV6 생성기 — 3×3 컨볼루션 + DW/PW fuse
+// ================================================================
+
+fn generate_conv6_module(img_h: int, img_w: int, k_size: int, channels: int, variant: string) -> string {
+    assert(img_h == SIGMA)
+    assert(img_w == SIGMA)
+    assert(channels == TAU || channels == N)
+
+    let stage_name =
+        if variant == "00" { "3x3" }
+        else if variant == "01" { "1x1" }
+        else if variant == "10" { "dw" }
+        else { "pw" }
+
+    let module_name = "conv6_" + stage_name
+
+    let tmpl = load_template("conv6")
+    let pairs = [
+        ("MODULE_NAME",  module_name),
+        ("IMG_H",        to_string(img_h)),
+        ("IMG_W",        to_string(img_w)),
+        ("KERNEL_SIZE",  to_string(k_size)),
+        ("CHANNELS",     to_string(channels)),
+        ("WIDTH_BITS",   to_string(S_T)),
+        ("VARIANT",      "2'b" + variant),
+        ("GEN_META",     gen_meta("conv6", variant)),
+    ]
+    return interpolate_all(tmpl, pairs)
+}
+
+// ================================================================
+// 9. 16 AI 기법 파라미터 스캔 매핑
+// ================================================================
+
+// techniques/_chip_mapping.md 의 16 기법 → 원시연산 DAG 매핑
+// (shared/config/rtl_templates.json SSOT 준수)
+fn scan_technique_params(tech: string) -> list(string) {
+    // 각 기법 → 필요 원시연산 리스트
+    let dag =
+        if tech == "fft_mix_attention"       { ["gemm", "conv6", "gemm"] }
+        else if tech == "egyptian_linear"    { ["gemm", "gate"] }
+        else if tech == "gqa_grouping"       { ["gemm", "softmax", "gemm"] }
+        else if tech == "egyptian_moe"       { ["topk", "gate", "gemm"] }
+        else if tech == "mixture_of_depths"  { ["topk", "gemm"] }
+        else if tech == "phi_moe"            { ["softmax", "topk", "gemm"] }
+        else if tech == "boltzmann_gate"     { ["gate"] }
+        else if tech == "mertens_dropout"    { ["topk", "gate"] }
+        else if tech == "takens_dim6"        { ["conv6", "reduce"] }
+        else if tech == "speculative_decode" { ["gemm", "gemm", "gate"] }
+        else if tech == "medusa_heads"       { ["gemm", "gemm", "gemm", "gemm"] }
+        else if tech == "lookahead_decode"   { ["reduce", "softmax"] }
+        else if tech == "layer_skip"         { ["gate"] }
+        else if tech == "gat_heads"          { ["gemm", "softmax", "reduce"] }
+        else if tech == "gcn_depth"          { ["conv6"] }
+        else if tech == "hcn_dimensions"     { ["conv6"] }
+        else { [] }
+    return dag
+}
+
+// 기법 → 생성 모듈 수 (DAG 길이)
+fn technique_module_count(tech: string) -> int {
+    let dag = scan_technique_params(tech)
+    return len(dag)
+}
+
+// ================================================================
+// 10. Simulator-free 구조 검증
+// ================================================================
+
+// 생성 Verilog 구조 체크 (iverilog/verilator 없이):
+//   1. module ~ endmodule 페어
+//   2. 포트 선언 파싱 (input/output reg)
+//   3. 플레이스홀더 잔존 여부
+//   4. σ·φ=n·τ=24 상수 문자열 포함
+fn verify_generated_structure(body: string, op: string, variant: string) -> bit {
+    // 1. module/endmodule 페어
+    let has_module_start = body.contains("module ")
+    let has_module_end   = body.contains("endmodule")
+    if !has_module_start { println("❌ verify: module 시작 없음 (" + op + ")"); return 0 }
+    if !has_module_end   { println("❌ verify: endmodule 없음 (" + op + ")"); return 0 }
+
+    // 2. 포트 선언 존재 여부 (최소 clk 와 rst_n)
+    let has_clk    = body.contains("input") && body.contains("clk")
+    let has_rst_n  = body.contains("rst_n")
+    if !has_clk   { println("❌ verify: clk 포트 없음 (" + op + ")"); return 0 }
+    if !has_rst_n { println("❌ verify: rst_n 포트 없음 (" + op + ")"); return 0 }
+
+    // 3. 플레이스홀더 잔존 — 치환 누락 탐지
+    let leftover = body.contains("{{")
+    if leftover {
+        println("❌ verify: 미치환 플레이스홀더 잔존 (" + op + ")")
+        return 0
+    }
+
+    // 4. 생성 메타 헤더 — GEN_META 주석 삽입 확인
+    let has_meta = body.contains("생성 메타")
+    if !has_meta { println("❌ verify: 생성 메타 헤더 없음 (" + op + ")"); return 0 }
+
+    println("✅ verify: " + op + "_" + variant + " 구조 OK")
+    return 1
+}
+
+// 6 원시연산 전량 생성 + 검증 (1 variant 씩 샘플)
+fn generate_all_samples() -> int {
+    println("── Phase 3 샘플 생성 6/6 시작 ──")
+    let mut ok_count = 0
+
+    // Ω₁ gemm.m (variant 00)
+    let g = generate_gemm_module(SIGMA, SIGMA, SIGMA, "00")
+    save_generated("gemm", "m", g)
+    if verify_generated_structure(g, "gemm", "m") == 1 { ok_count = ok_count + 1 }
+
+    // Ω₂ softmax.exp (variant 00)
+    let s = generate_softmax_module(SIGMA, "00")
+    save_generated("softmax", "exp", s)
+    if verify_generated_structure(s, "softmax", "exp") == 1 { ok_count = ok_count + 1 }
+
+    // Ω₃ topk.pick (variant 01)
+    let t = generate_topk_module(SIGMA, PHI, "01")
+    save_generated("topk", "pick", t)
+    if verify_generated_structure(t, "topk", "pick") == 1 { ok_count = ok_count + 1 }
+
+    // Ω₄ gate.and (variant 01)
+    let gt = generate_gate_module(SIGMA, "01")
+    save_generated("gate", "and", gt)
+    if verify_generated_structure(gt, "gate", "and") == 1 { ok_count = ok_count + 1 }
+
+    // Ω₅ reduce.sum (variant 00)
+    let rd = generate_reduce_module(TAU, "00")
+    save_generated("reduce", "sum", rd)
+    if verify_generated_structure(rd, "reduce", "sum") == 1 { ok_count = ok_count + 1 }
+
+    // Ω₆ conv6.3x3 (variant 00)
+    let cv = generate_conv6_module(SIGMA, SIGMA, 3, TAU, "00")
+    save_generated("conv6", "3x3", cv)
+    if verify_generated_structure(cv, "conv6", "3x3") == 1 { ok_count = ok_count + 1 }
+
+    println("── Phase 3 샘플 생성 " + to_string(ok_count) + "/6 완료 ──")
+    return ok_count
+}
+
+// ================================================================
+// 11. 기법 파라미터 스캔 테스트
+// ================================================================
+
+fn test_technique_scan() -> bit {
+    // 16 기법 전부 DAG 매핑 존재 여부
+    let techs = [
+        "fft_mix_attention", "egyptian_linear", "gqa_grouping",
+        "egyptian_moe", "mixture_of_depths", "phi_moe",
+        "boltzmann_gate", "mertens_dropout", "takens_dim6",
+        "speculative_decode", "medusa_heads", "lookahead_decode",
+        "layer_skip",
+        "gat_heads", "gcn_depth", "hcn_dimensions"
+    ]
+    let mut ok = 1
+    let mut total = 0
+    for t in techs {
+        let n_modules = technique_module_count(t)
+        if n_modules == 0 {
+            println("❌ 기법 DAG 누락: " + t)
+            ok = 0
+        }
+        total = total + n_modules
+    }
+
+    // 16 기법 총 모듈 호출 수 ≥ 16 (각 기법 최소 1 모듈)
+    if total < 16 {
+        println("❌ 기법 모듈 총합 " + to_string(total) + " < 16")
+        ok = 0
+    }
+
+    println("✅ 16 기법 DAG 매핑 OK (총 모듈 호출=" + to_string(total) + ")")
+    return ok
+}
+
+// ================================================================
+// 12. main 엔트리
+// ================================================================
+
+fn main() {
+    println("==========================================")
+    println("rtl_generator.hexa — Xn6 Phase 3 Mk.I")
+    println("==========================================")
+
+    // 1) n=6 항등식 검증
+    let id_ok = assert_n6_identity()
+    if id_ok != 1 { println("❌ n=6 항등식 실패"); exit(1) }
+    println("✅ σ·φ=n·τ=" + to_string(J2))
+
+    // 2) 6 샘플 생성 + 구조 검증
+    let gen_ok = generate_all_samples()
+    if gen_ok != 6 {
+        println("❌ 샘플 생성 실패: " + to_string(gen_ok) + "/6")
+        exit(1)
+    }
+
+    // 3) 16 기법 DAG 스캔
+    let scan_ok = test_technique_scan()
+    if scan_ok != 1 {
+        println("❌ 기법 스캔 실패")
+        exit(1)
+    }
+
+    // 4) 최종 요약
+    println("==========================================")
+    println("Phase 3 Mk.I 산출:")
+    println("  - 6 원시연산 템플릿  (templates/)")
+    println("  - 6 샘플 Verilog    (generated/)")
+    println("  - 16 기법 DAG 매핑  (scan_technique_params)")
+    println("  - n=6 항등식        PASS")
+    println("==========================================")
+}

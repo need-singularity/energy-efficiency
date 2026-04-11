@@ -1,0 +1,13 @@
+// verify_xn6_fpu_6lane.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 FPU 6 레인 FMA 병렬 실행 검증
+// 근거: n=6 FMA 레인 병렬
+// 가설: 6 레인 throughput > 4/8
+// 지표: FLOPS/area
+// 의존: nexus/rtl/xn6_fpu.v
+
+fn main() {
+    println("[Xn6 FPU 6 lane] 검증 스텁 — 6 FMA")
+    println("핵심 가설: throughput 최대")
+    println("[상태] pending")
+}

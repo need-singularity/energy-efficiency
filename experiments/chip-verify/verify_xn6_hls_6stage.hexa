@@ -1,0 +1,13 @@
+// verify_xn6_hls_6stage.hexa
+// 카테고리: chip-verify
+// 목적: HLS 6 단계 파이프라인 합성 품질 검증
+// 근거: 6 단계 파이프 = RTL 6 단 동형
+// 가설: 6 HLS 합성 PPA 파레토
+// 지표: LUT, FF, Fmax
+// 의존: nexus/hls/xn6_flow
+
+fn main() {
+    println("[Xn6 HLS 6] 검증 스텁 — 6 stage")
+    println("핵심 가설: 합성 최적")
+    println("[상태] pending")
+}

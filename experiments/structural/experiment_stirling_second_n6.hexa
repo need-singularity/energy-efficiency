@@ -1,0 +1,13 @@
+// experiment_stirling_second_n6.hexa
+// 카테고리: structural
+// 목적: Stirling 제2 수 S(n, 6) asymptotic 비교 검증
+// 근거: S(n, 6) / 6^n → 1/6!
+// 가설: n 큰 경우 비율 수렴
+// 지표: 비율 극한
+// 데이터: 표
+
+fn main() {
+    println("[Stirling S(n,6)] 검증 스텁 — 1/6!")
+    println("핵심 가설: 비율 수렴")
+    println("[상태] pending")
+}

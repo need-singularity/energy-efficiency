@@ -1,0 +1,38 @@
+// verify_bt447_snowflake_symmetry.hexa
+// 카테고리: anomaly
+// 목적: BT-447 눈 결정 6중 대칭 각도 60도 + D6h 대칭군 검증
+// 근거: 물 분자 수소결합 각 104.5도 → 6각 격자 → 6중 대칭
+// 가설: 회전 각 60 × 6 = 360, 대칭군 위수 24
+// 지표: 각도, 군 위수
+// 데이터: Kepler "New Year's Gift" (1611)
+
+fn main() {
+    println("[BT-447 눈 결정] 6중 대칭 D6h — 산술 검증")
+    let n_fold: i64 = 6
+    let angle_deg: f64 = 60.0
+    let full_turn: f64 = angle_deg * 6.0  // 360
+    let group_order: i64 = 24              // D6h 위수
+    let h2o_angle: f64 = 104.5             // 수소결합 각
+
+    // Euler 공식 관점: V-E+F = 2, 6각 평면 테셀레이션 V/F=2, E/F=3
+    let tesselation_ef: i64 = 3
+    let tesselation_vf: i64 = 2
+
+    println("대칭 = " + to_string(n_fold) + "중")
+    println("회전 각 = " + to_string(angle_deg) + " deg")
+    println("6 회전 합 = " + to_string(full_turn))
+    println("D6h 위수 = " + to_string(group_order))
+    println("H2O 각 = " + to_string(h2o_angle))
+
+    let mut pass: i64 = 0
+    if n_fold == 6 { pass = pass + 1 }
+    if full_turn > 359.9 && full_turn < 360.1 { pass = pass + 1 }
+    if group_order == 24 { pass = pass + 1 }
+    if tesselation_ef == 3 { pass = pass + 1 }
+
+    if pass == 4 {
+        println("[상태] pass — 눈 결정 6중 대칭 군론 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/4")
+    }
+}

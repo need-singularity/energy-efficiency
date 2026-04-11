@@ -1,0 +1,65 @@
+== Rust → HEXA 렌즈 포팅 청크 8 로그 ==
+날짜: 2026-04-11
+범위: s 시작 (36 파일)
+입력: /Users/ghost/Dev/n6-architecture/nexus/src/telescope/lenses/<filename>.rs
+출력: /Users/ghost/Dev/nexus/shared/lenses/<filename>.hexa
+템플릿: beekeeping_colony_division.hexa
+규칙: 한글 / HEXA v0.1.0 / 원본 보존 / R1/R18/R19
+
+-- 포팅 결과 (36/36 성공, 중복 0) --
+[PORT] sailing_navigation_lens.rs        → sailing_navigation_lens.hexa        (1177 B) T1 항해 나침반 BT-279
+[PORT] satellite_orbit_lens.rs           → satellite_orbit_lens.hexa           (1151 B) T1 케플러 6요소
+[PORT] scale_lens.rs                     → scale_lens.hexa                     (1114 B) T0 멱법칙 Hurst
+[PORT] scan_efficiency_lens.rs           → scan_efficiency_lens.hexa           (1143 B) T1 SNR 중복성 포화
+[PORT] sculpture_art_lens.rs             → sculpture_art_lens.hexa             (1143 B) T1 조각 예술 BT-122
+[PORT] self_heal_lens.rs                 → self_heal_lens.hexa                 (1122 B) T0 자기 치유 6액션
+[PORT] self_reference_lens.rs            → self_reference_lens.hexa            (1115 B) T1 Ouroboros μ(6)=1
+[PORT] semantic_lens.rs                  → semantic_lens.hexa                  (1135 B) compiler 5 dataflow
+[PORT] sigma_j2_attractor_lens.rs        → sigma_j2_attractor_lens.hexa        (1158 B) T1 288 어트랙터
+[PORT] simd_opportunity_lens.rs          → simd_opportunity_lens.hexa          (1148 B) compiler SIMD 2^k
+[PORT] simulation_lens.rs                → simulation_lens.hexa                (1121 B) T1 전후방 투영
+[PORT] singularity_lens.rs               → singularity_lens.hexa               (1088 B) T1 밀도 5배 스파이크
+[PORT] sleep_cycle_lens.rs               → sleep_cycle_lens.hexa               (1109 B) T1 수면 90분 τ주기
+[PORT] snowflake_hexagonal_symmetry_lens.rs → snowflake_hexagonal_symmetry_lens.hexa (1145 B) T1 C6v 6회대칭
+[PORT] snowflake_nucleation_lens.rs      → snowflake_nucleation_lens.hexa      (1138 B) T1 핵생성 육각
+[PORT] social_network_lens.rs            → social_network_lens.hexa            (1113 B) T1 6도분리 Dunbar
+[PORT] soil_science_lens.rs              → soil_science_lens.hexa              (1156 B) T1 토양층 BT-198
+[PORT] solar_cell_junction_lens.rs       → solar_cell_junction_lens.hexa       (1145 B) T1 태양전지 BT-161
+[PORT] solar_efficiency_lens.rs          → solar_efficiency_lens.hexa          (1095 B) T1 SQ 4/3 eV
+[PORT] spaceship_propulsion_lens.rs      → spaceship_propulsion_lens.hexa      (1160 B) T1 SE(3) 6DOF BT-275
+[PORT] spacetime_lens.rs                 → spacetime_lens.hexa                 (1110 B) T1 Lorentz 부호수
+[PORT] specialization_lens.rs            → specialization_lens.hexa            (1122 B) compiler 타입 클러스터
+[PORT] spectral_lens.rs                  → spectral_lens.hexa                  (1099 B) T1 FFT n=6 고조파
+[PORT] speculative_decode_lens.rs        → speculative_decode_lens.hexa        (1125 B) T1 draft-verify
+[PORT] spherical_lens.rs                 → spherical_lens.hexa                 (1085 B) T1 kissing σ·Leech J₂
+[PORT] sports_biomech_lens.rs            → sports_biomech_lens.hexa            (1167 B) T1 6DOF 12근육 BT-148
+[PORT] ssot_lens.rs                      → ssot_lens.hexa                      (1086 B) T1 R14 단일원천
+[PORT] stability_lens.rs                 → stability_lens.hexa                 (1081 B) T1 Lyapunov
+[PORT] stationarity_lens.rs              → stationarity_lens.hexa              (1087 B) T1 창 regime drift
+[PORT] stimulus_lens.rs                  → stimulus_lens.hexa                  (1096 B) T1 신경 버스트
+[PORT] stock_market_lens.rs              → stock_market_lens.hexa              (1100 B) T1 MA6/12/24 BT-338
+[PORT] supply_chain_risk_lens.rs         → supply_chain_risk_lens.hexa         (1168 B) T1 공급망 BT-281
+[PORT] surprise_lens.rs                  → surprise_lens.hexa                  (1079 B) T1 LOF z-score
+[PORT] swarm_robotics_lens.rs            → swarm_robotics_lens.hexa            (1104 B) T1 PSO Boids 6DOF
+[PORT] symmetry_breaking_lens.rs         → symmetry_breaking_lens.hexa         (1103 B) T1 skewness 비대칭
+[PORT] synergy_lens.rs                   → synergy_lens.hexa                   (1100 B) T1 PID 시너지
+
+-- 통계 --
+총 파일수: 36
+성공: 36
+중복 SKIP: 0
+총 바이트: 40388 B (20421 + 19967)
+평균 크기: ~1122 B
+카테고리 분포:
+  T0: 3 (scale, self_heal, self_reference-scale)  → self_reference는 T1
+  T0: 3 (scale, self_heal)  실제: scale T0, self_heal T0, 나머지 31 T1, 3 compiler
+  T1: 30
+  compiler: 3 (semantic, simd_opportunity, specialization)
+
+-- 핵심 보존 --
+- BT 번호 유지: 122, 148, 161, 198, 258, 259, 273, 275, 279, 281, 338, 147
+- n=6 상수 전승: σ=12, φ=2, n=6, τ=4, SOPFR=5, J₂=24
+- σ·φ = n·τ = J₂ 항등식 검증 헤더 일관 적용
+- 도메인 축 특성 주석 한글 보존
+
+상태: 완료

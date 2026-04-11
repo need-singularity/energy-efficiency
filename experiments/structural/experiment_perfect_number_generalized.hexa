@@ -1,0 +1,13 @@
+// experiment_perfect_number_generalized.hexa
+// 카테고리: structural
+// 목적: 완전수 n=6 최소 + 일반화 sigma_k(n) = k*n 검증
+// 근거: 6 = 1+2+3, sigma(6) = 12 = 2*6
+// 가설: 최소 완전수 = 6, sigma(6)/6 = 2
+// 지표: sigma 비율
+// 데이터: 수론 수식
+
+fn main() {
+    println("[완전수 일반화] 검증 스텁 — 6 최소")
+    println("핵심 가설: sigma(6)=2*6")
+    println("[상태] pending")
+}

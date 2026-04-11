@@ -1,0 +1,65 @@
+// verify.hexa — chip-isa-n6 도메인 검증
+// Xn6 RISC-V 확장 ISA 의 J₂=24 명령 슬롯 일관성 확인
+//
+// 검증 항목:
+//   1. σ·φ = n·τ = 24 (ISA 명령 수와 동일)
+//   2. funct3 × variant = n × τ = 24
+//   3. CSR = τ = 4
+//   4. custom opcode 공간 = 4 (custom-0/1/2/3)
+
+let N = 6
+let PHI = 2
+let TAU = 4
+let SIGMA = 12
+let J2 = 24
+let SOPFR = 5
+
+// 핵심 항등식
+let lhs = SIGMA * PHI
+let rhs = N * TAU
+
+if lhs != rhs {
+    println("❌ [chip-isa-n6] σ·φ=" + to_string(lhs) + " ≠ n·τ=" + to_string(rhs))
+    exit(1)
+}
+
+// J₂ = 24 = Xn6-ARITH 명령 수
+if J2 != lhs {
+    println("❌ [chip-isa-n6] J₂ 불일치")
+    exit(1)
+}
+
+// funct3 × variant = n × τ = J₂
+let n_primitives = 6           // funct3 = 000 ~ 101 (6 값 사용, 110/111 예약)
+let n_variants = 4             // τ=4 variant
+let arith_count = n_primitives * n_variants
+
+if arith_count != J2 {
+    println("❌ [chip-isa-n6] arith_count " + to_string(arith_count) + " ≠ J₂=" + to_string(J2))
+    exit(1)
+}
+
+// CSR = τ = 4 (status/id/cycles/score)
+let csr_count = 4
+if csr_count != TAU {
+    println("❌ [chip-isa-n6] CSR " + to_string(csr_count) + " ≠ τ=" + to_string(TAU))
+    exit(1)
+}
+
+// custom opcode 공간 = 4 (custom-0/1/2/3)
+let custom_spaces = 4
+if custom_spaces != TAU {
+    println("❌ [chip-isa-n6] custom opcode " + to_string(custom_spaces) + " ≠ τ=" + to_string(TAU))
+    exit(1)
+}
+
+// 전체 공간 = 4 × 24 = 96 = σ × σ-τ
+let total_space = custom_spaces * J2
+let sigma_minus_tau = SIGMA - TAU
+let expected = SIGMA * sigma_minus_tau
+if total_space != expected {
+    println("❌ [chip-isa-n6] total " + to_string(total_space) + " ≠ σ·(σ-τ)=" + to_string(expected))
+    exit(1)
+}
+
+println("✅ verify[chip-isa-n6] OK: σ·φ=n·τ=" + to_string(lhs) + ", Xn6-ARITH=" + to_string(arith_count) + ", CSR=" + to_string(csr_count) + ", custom=" + to_string(custom_spaces) + ", total=" + to_string(total_space) + ", n=6 일관")

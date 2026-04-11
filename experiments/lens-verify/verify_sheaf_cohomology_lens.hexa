@@ -1,0 +1,13 @@
+// verify_sheaf_cohomology_lens.hexa
+// 카테고리: lens-verify
+// 목적: SheafCohomologyLens — 6 차원 sheaf 코호몰로지 불변량 검증
+// 근거: 6 차원 다양체 sheaf 구조
+// 가설: H^0~H^5 의 6 불변량
+// 지표: 코호몰로지 차원
+// 의존: shared/config/lens_registry.json
+
+fn main() {
+    println("[렌즈: Sheaf] 검증 스텁 — 6 cohomology")
+    println("핵심 가설: H^0~H^5")
+    println("[상태] pending")
+}

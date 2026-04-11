@@ -486,10 +486,10 @@ Key validations:
 
 ---
 
-## 16. TECS-L Bridge
+## 16. n=6 수학 브릿지
 
 ```
-  TECS-L (수학 체계)              →  n6 Thermal Management (산업)
+  n=6 수학 체계                    →  n6 Thermal Management (산업)
   sigma*phi=n*tau 증명             →  R(6)=1 = PUE ideal
   tau(6)=4 약수 함수               →  T^4 복사, tau=4 냉동 사이클
   Carbon Z=6 보편성                →  Diamond/Graphene = 열전도 챔피언

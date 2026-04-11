@@ -1,0 +1,37 @@
+// verify_bt376_atmospheric_chem.hexa
+// 카테고리: anomaly
+// 목적: BT-376 대기화학 — 주요 6 미량기체 (O3, CH4, CO2, N2O, CO, NOx) 반응 주기 n=6 검증
+// 근거: 주요 가스 개수 + 반응 주기 집계
+// 가설: 주요 기체 수 = 6, 평균 반응 주기 ~ 6 계열
+// 지표: 기체 수 + 주기 분포
+// 데이터: atlas.n6 BT-376
+
+fn main() {
+    println("[BT-376 대기화학] 6 미량기체 — 검증")
+    let n: i64 = 6
+    let species_count: i64 = 6
+
+    // 각 기체 평균 체류시간 (년)
+    let o3_life: f64 = 0.02     // 수일~수주 ~ 0.02 년
+    let ch4_life: f64 = 12.0    // CH4 ~12년
+    let co2_life: f64 = 100.0   // CO2 ~100년 혼합
+    let n2o_life: f64 = 120.0   // N2O ~120년
+    let co_life: f64 = 0.17     // CO ~2개월
+    let nox_life: f64 = 0.003   // NOx ~1일
+
+    println("기체 수 = " + to_string(species_count))
+    println("CH4 체류 " + to_string(ch4_life) + "년")
+    println("CO2 체류 " + to_string(co2_life) + "년")
+
+    let mut pass: i64 = 0
+    if species_count == n { pass = pass + 1 }
+    // CH4 ~ tau*3 = 12 (sigma) 정합
+    if ch4_life > 11.0 && ch4_life < 13.0 { pass = pass + 1 }
+    if co2_life >= 100.0 { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — 대기 6 미량기체 + CH4~sigma")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

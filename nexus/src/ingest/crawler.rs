@@ -23,7 +23,7 @@ use super::toml_parser;
 /// A single data point extracted from a file.
 #[derive(Debug, Clone)]
 pub struct ProbeData {
-    /// Source project domain (e.g. "n6-architecture", "TECS-L", "anima").
+    /// Source project domain (e.g. "n6-architecture", "anima").
     pub domain: String,
     /// Relative path within the project.
     pub source_file: String,
@@ -442,11 +442,7 @@ pub fn default_config() -> CrawlConfig {
                 domain: "n6-architecture".to_string(),
                 extensions: default_exts.clone(),
             },
-            ProjectSource {
-                path: PathBuf::from("/Users/ghost/Dev/TECS-L"),
-                domain: "TECS-L".to_string(),
-                extensions: default_exts.clone(),
-            },
+            // TECS-L 폐기 → n6-architecture 에 흡수 완료 (2026-04)
             ProjectSource {
                 path: PathBuf::from("/Users/ghost/Dev/anima"),
                 domain: "anima".to_string(),

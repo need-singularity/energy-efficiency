@@ -1,0 +1,13 @@
+// verify_xn6_mesh_6x6.hexa
+// 카테고리: chip-verify
+// 목적: Xn6 NoC 6x6 mesh 위상 대기 시간 검증
+// 근거: 6x6 = 36 타일 + 홉 분포
+// 가설: 6x6 mesh 평균 홉 < 8x8
+// 지표: 평균 홉
+// 의존: nexus/rtl/xn6_mesh.v
+
+fn main() {
+    println("[Xn6 mesh 6x6] 검증 스텁 — 36 tiles")
+    println("핵심 가설: hops 최소")
+    println("[상태] pending")
+}

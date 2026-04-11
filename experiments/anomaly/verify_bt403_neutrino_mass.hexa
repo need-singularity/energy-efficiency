@@ -1,0 +1,13 @@
+// verify_bt403_neutrino_mass.hexa
+// 카테고리: anomaly
+// 목적: BT-403 뉴트리노 질량 합 ~ 0.06 eV = phi/100 eV 검증
+// 근거: Planck + BAO 상한 0.12 eV, 실험 중심값 0.06 ~ phi/100
+// 가설: KATRIN 미세 측정값이 phi/100 수렴
+// 지표: 질량 합, 단일 질량 스플릿팅
+// 데이터: KATRIN + Planck + BAO
+
+fn main() {
+    println("[BT-403 뉴트리노 질량] 검증 스텁 — phi/100 eV")
+    println("핵심 가설: sum m_nu = 0.06 eV")
+    println("[상태] pending")
+}

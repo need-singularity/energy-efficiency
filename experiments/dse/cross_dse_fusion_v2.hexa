@@ -1,0 +1,438 @@
+// ============================================================
+// cross_dse_fusion_v2.hexa — 400 도메인 × 100K pair 돌파 설계 초안
+// ------------------------------------------------------------
+// 축       : experiments/dse
+// 규칙     : R1 HEXA-FIRST, R2 하드코딩 금지, R12 AI-NATIVE FIRST,
+//            R18 미니멀, R28 자동 흡수, N63 DSE 전수
+// 전제     : 400 TOML 의 Δ1~Δ5 확장 스키마 (bt_refs, cross_seeds,
+//            n6_formula, evidence_grade, energy_pareto)
+// 입력     : nexus/origins/universal-dse/domains/*.toml  (400)
+//            shared/config/bt_weights.json               (BT 가중치)
+//            shared/dse/pareto_frontier_400.json         (파레토 프런티어)
+// 출력     : shared/dse/dse_cross_results.json           (v2 스키마)
+//            reports/discovery/cross_dse_v2_<date>.md    (자동 리포트)
+// 비교     : v1 = 67,913 pair / 67,883 high_conf  →  v2 = 100K+ pair
+// 구현 상태: 설계 초안 (실측 런 전)
+// ============================================================
+
+use std::io::{read_toml, read_json, write_json, append_line}
+use std::collections::{HashSet, HashMap}
+use std::math::{sqrt, min, max}
+
+// ------------------------------------------------------------
+// 1. 상수/경로 — 하드코딩 금지(R2), 동적 로드
+// ------------------------------------------------------------
+const DOMAIN_DIR = env("N6_DOMAIN_DIR")
+                 || "/Users/ghost/Dev/n6-architecture/nexus/origins/universal-dse/domains"
+const BT_WEIGHTS_PATH = env("N6_BT_WEIGHTS")
+                     || "/Users/ghost/Dev/n6-architecture/shared/config/bt_weights.json"
+const PARETO_PATH     = env("N6_PARETO_PATH")
+                     || "/Users/ghost/Dev/nexus/shared/dse/pareto_frontier_400.json"
+const OUT_PATH        = env("N6_CROSS_OUT")
+                     || "/Users/ghost/Dev/nexus/shared/dse/dse_cross_results.json"
+const ATLAS_PATH      = env("N6_ATLAS")
+                     || "/Users/ghost/Dev/nexus/shared/n6/atlas.n6"
+
+// 공명 가중치 — shared/config 로 외부화 대상이나, 초안에서는 기본값만 명시
+const W_KW      = 0.35
+const W_BT      = 0.25
+const W_FORMULA = 0.20
+const W_SEED    = 0.10
+const W_PARETO  = 0.10
+const HIGH_CONF_THRESHOLD = 0.70
+const BT_FORMULA_MIN      = 0.20    // high_conf 추가 조건
+
+// 공통 stop-words (길이 ≥4 필터 + 일반 단어)
+const STOP_WORDS = ["the", "this", "that", "with", "from", "into",
+                    "level", "candidate", "name", "desc", "meta",
+                    "scoring", "label", "notes", "vision", "true", "false"]
+
+// ------------------------------------------------------------
+// 2. 자료구조
+// ------------------------------------------------------------
+struct Feature {
+    name        : String
+    axis        : String           // physics/life/.../sf-ufo
+    kw_set      : HashSet<String>  // 키워드
+    sw_set      : HashSet<String>  // structural words
+    ln_set      : HashSet<String>  // level names
+    bt_set      : HashSet<String>  // bt_refs
+    formula_set : HashSet<String>  // n6_formula 태그
+    seed_set    : HashSet<String>  // cross_seeds
+    pareto_pts  : Vec<[Float; 5]>  // frontier 5개 (n6, perf, power, cost, energy)
+    evidence    : Int              // evidence_grade
+}
+
+struct Pair {
+    a                   : String
+    b                   : String
+    kw_overlap          : Float
+    bt_overlap          : Float
+    formula_overlap     : Float
+    cross_seed_overlap  : Float
+    pareto_proximity    : Float
+    resonance           : Float
+}
+
+struct Report {
+    generated_at        : String
+    schema_version      : Int
+    source              : String
+    n_domains           : Int
+    pair_count          : Int
+    high_confidence_count : Int
+    top_n               : Int
+    top_pairs           : Vec<Pair>
+    hubs                : Vec<(String, Int)>      // (domain, degree)
+    bridges             : Vec<(String, Float)>    // (domain, betweenness)
+    clusters            : Vec<(Int, Vec<String>)> // (cluster_id, members)
+}
+
+// ------------------------------------------------------------
+// 3. TOML 로딩 — @memoize 로 중복 파싱 차단 (R12)
+// ------------------------------------------------------------
+@memoize
+fn parse_domain_toml(path: String) -> TomlDoc {
+    return read_toml(path)
+}
+
+@memoize
+fn extract_features(doc: TomlDoc, name: String, axis: String) -> Feature {
+    let kw       = HashSet::new()
+    let sw       = HashSet::new()
+    let ln       = HashSet::new()
+    let bt       = HashSet::new()
+    let formulas = HashSet::new()
+    let seeds    = HashSet::new()
+
+    // [meta] 에서 bt_refs, cross_seeds 추출 (Δ1, Δ2)
+    if doc.has("meta.bt_refs") {
+        for x in doc.get_list("meta.bt_refs") { bt.insert(x) }
+    }
+    if doc.has("meta.cross_seeds") {
+        for x in doc.get_list("meta.cross_seeds") { seeds.insert(x) }
+    }
+
+    // [[level]] 이름 수집
+    for lv in doc.get_array("level") {
+        if lv.has("name") { ln.insert(lv.get_str("name").to_lower()) }
+    }
+
+    // [[candidate]] 순회하여 키워드/수식 수집
+    for c in doc.get_array("candidate") {
+        // id, label, notes 에서 키워드 추출
+        for field in ["id", "label", "notes"] {
+            if c.has(field) {
+                let txt = c.get_str(field).to_lower()
+                for tok in txt.split_regex("[^a-z0-9_]+") {
+                    if tok.len() >= 4 && !STOP_WORDS.contains(tok) {
+                        kw.insert(tok)
+                    }
+                }
+            }
+        }
+        // n6_formula 배열 수집 (Δ4)
+        if c.has("n6_formula") {
+            for f in c.get_list("n6_formula") {
+                formulas.insert(f.to_lower())
+            }
+        }
+    }
+
+    // sw_set: structural words — TOML 섹션 이름
+    sw.insert("meta"); sw.insert("scoring"); sw.insert("level"); sw.insert("candidate")
+
+    // evidence_grade — 후보별 최대치 (Δ5)
+    let evidence = 7
+    for c in doc.get_array("candidate") {
+        if c.has("evidence_grade") {
+            let e = c.get_int("evidence_grade")
+            if e > evidence { evidence = e }
+        }
+    }
+
+    return Feature {
+        name: name, axis: axis,
+        kw_set: kw, sw_set: sw, ln_set: ln,
+        bt_set: bt, formula_set: formulas, seed_set: seeds,
+        pareto_pts: [],    // 4절에서 채움
+        evidence: evidence
+    }
+}
+
+// ------------------------------------------------------------
+// 4. 파레토 프런티어 병합 (Δ3) — pareto_frontier_400.json
+// ------------------------------------------------------------
+@memoize
+fn load_pareto_frontier(path: String) -> HashMap<String, Vec<[Float; 5]>> {
+    let json = read_json(path)
+    let map  = HashMap::new()
+    for d in json.get_array("domains") {
+        let name = d.get_str("name")
+        let pts  = []
+        for slot in ["n6_max", "perf_max", "energy_min", "cost_min", "balanced"] {
+            let fr = d.get("frontier").get(slot)
+            pts.push([
+                fr.get_f("n6"),
+                fr.get_f("perf"),
+                fr.get_f("power"),
+                fr.get_f("cost"),
+                fr.get_f("energy")
+            ])
+        }
+        map.insert(name, pts)
+    }
+    return map
+}
+
+// ------------------------------------------------------------
+// 5. 공명 지표 — @fuse 단일 커널 (R12)
+// ------------------------------------------------------------
+@fuse
+fn jaccard(a: HashSet<String>, b: HashSet<String>) -> Float {
+    if a.is_empty() && b.is_empty() { return 0.0 }
+    let inter = a.intersect(b).len() as Float
+    let union = a.union(b).len()     as Float
+    return inter / union
+}
+
+@fuse
+fn overlap_coef(a: HashSet<String>, b: HashSet<String>) -> Float {
+    if a.is_empty() || b.is_empty() { return 0.0 }
+    let inter = a.intersect(b).len() as Float
+    return inter / (min(a.len(), b.len()) as Float)
+}
+
+@fuse
+fn pareto_proximity(pa: Vec<[Float; 5]>, pb: Vec<[Float; 5]>) -> Float {
+    if pa.is_empty() || pb.is_empty() { return 0.0 }
+    let best = 1e9
+    for u in pa {
+        for v in pb {
+            let d2 = 0.0
+            for i in 0..5 {
+                let diff = u[i] - v[i]
+                d2 += diff * diff
+            }
+            let d = sqrt(d2)
+            if d < best { best = d }
+        }
+    }
+    // 5차원 단위-정규화: diag = sqrt(5)
+    let diag = sqrt(5.0)
+    let prox = 1.0 - (best / diag)
+    if prox < 0.0 { return 0.0 }
+    return prox
+}
+
+@fuse
+fn pair_score(fa: Feature, fb: Feature) -> Pair {
+    let kw_o      = overlap_coef(fa.kw_set, fb.kw_set)
+    let bt_o      = jaccard(fa.bt_set, fb.bt_set)
+    let formula_o = jaccard(fa.formula_set, fb.formula_set)
+    let seed_o    = jaccard(fa.seed_set, fb.seed_set)
+    let pareto_p  = pareto_proximity(fa.pareto_pts, fb.pareto_pts)
+
+    let resonance = W_KW      * kw_o
+                  + W_BT      * bt_o
+                  + W_FORMULA * formula_o
+                  + W_SEED    * seed_o
+                  + W_PARETO  * pareto_p
+
+    return Pair {
+        a: fa.name, b: fb.name,
+        kw_overlap: kw_o,
+        bt_overlap: bt_o,
+        formula_overlap: formula_o,
+        cross_seed_overlap: seed_o,
+        pareto_proximity: pareto_p,
+        resonance: resonance
+    }
+}
+
+// ------------------------------------------------------------
+// 6. 병렬 파이프라인 — @parallel 10축 × 16배치 (R12)
+// ------------------------------------------------------------
+fn load_all_features() -> Vec<Feature> {
+    let files       = list_dir(DOMAIN_DIR, pattern="*.toml")
+    let axis_map    = read_json("/Users/ghost/Dev/n6-architecture/domains/_index.json")
+    let pareto_map  = load_pareto_frontier(PARETO_PATH)
+    let feats       = Vec::with_capacity(files.len())
+
+    @parallel axis in 10 {
+        @parallel batch in 16 {
+            for path in files.partition(axis, batch) {
+                let name = basename(path).strip_suffix(".toml")
+                let ax   = lookup_axis(axis_map, name) || "infra"
+                let doc  = parse_domain_toml(path)
+                let f    = extract_features(doc, name, ax)
+                // 파레토 프런티어 주입
+                if pareto_map.contains(name) {
+                    f.pareto_pts = pareto_map.get(name)
+                }
+                feats.push_atomic(f)
+            }
+        }
+    }
+    return feats
+}
+
+fn score_all_pairs(feats: Vec<Feature>) -> Vec<Pair> {
+    let n     = feats.len()
+    let pairs = Vec::with_capacity(n * (n-1) / 2)
+
+    @parallel axis_partition in 10 {
+        @parallel batch in 16 {
+            for i in 0..n {
+                for j in (i+1)..n {
+                    if !owns_pair(axis_partition, batch, i, j) { continue }
+                    @fuse {
+                        let p = pair_score(feats[i], feats[j])
+                        if p.resonance >= HIGH_CONF_THRESHOLD
+                           && (p.bt_overlap + p.formula_overlap) >= BT_FORMULA_MIN {
+                            pairs.push_atomic(p)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return pairs
+}
+
+// ------------------------------------------------------------
+// 7. Hasse DAG 후처리 — hub/bridge/cluster (@fuse)
+// ------------------------------------------------------------
+@fuse
+fn compute_hubs(pairs: Vec<Pair>, top_k: Int) -> Vec<(String, Int)> {
+    let deg = HashMap::new()
+    for p in pairs {
+        deg.incr(p.a); deg.incr(p.b)
+    }
+    return deg.top_k_by_value(top_k)
+}
+
+@fuse
+fn compute_bridges(pairs: Vec<Pair>, top_k: Int) -> Vec<(String, Float)> {
+    // 근사 betweenness: 각 노드가 포함된 pair 의 resonance 합 / degree
+    let score = HashMap::new()
+    let count = HashMap::new()
+    for p in pairs {
+        score.add(p.a, p.resonance); score.add(p.b, p.resonance)
+        count.incr(p.a); count.incr(p.b)
+    }
+    let out = []
+    for (name, s) in score {
+        let c = count.get(name)
+        if c > 0 { out.push((name, s / c as Float)) }
+    }
+    return out.sort_desc_by_value().take(top_k)
+}
+
+@fuse
+fn compute_clusters(pairs: Vec<Pair>, k: Int) -> Vec<(Int, Vec<String>)> {
+    // greedy modularity 근사 — 도메인을 노드, resonance를 엣지 weight 로
+    // 초안 단계: 구현 스텁 (실측 런 때 본격 구현)
+    return []
+}
+
+// ------------------------------------------------------------
+// 8. 결과 쓰기 + atlas.n6 자동 흡수 (R28)
+// ------------------------------------------------------------
+fn write_report(report: Report) {
+    let json = to_json(report)
+    write_json(OUT_PATH, json)
+    println("wrote: " + OUT_PATH)
+
+    // atlas.n6 자동 흡수: top_pairs 의 상위 100개를 evidence [7] 로 기록
+    let date = now_date_iso()
+    let lines = []
+    lines.push("# ══ cross_dse_v2 (" + report.pair_count.to_s() + " pairs, " + date + ") ══")
+    for p in report.top_pairs.take(100) {
+        let id = "n6-cross-" + p.a + "-x-" + p.b
+        let line = "@R " + id + " = " + p.resonance.to_s() + " :: cross_dse_v2 [7]"
+        lines.push(line)
+        lines.push("  \"" + p.a + " × " + p.b + " resonance=" + p.resonance.to_s()
+                 + " bt=" + p.bt_overlap.to_s()
+                 + " f=" + p.formula_overlap.to_s() + "\"")
+    }
+    for line in lines { append_line(ATLAS_PATH, line) }
+    println("absorbed into atlas.n6: " + lines.len().to_s() + " lines")
+}
+
+// ------------------------------------------------------------
+// 9. 메인
+// ------------------------------------------------------------
+fn main() {
+    println("cross_dse_fusion v2 — 400 도메인 × 100K pair 돌파")
+    println("----------------------------------------------")
+
+    // 1. 400 TOML 피처 추출 (axis 파티션 병렬)
+    let feats = load_all_features()
+    println("loaded features: " + feats.len().to_s())
+    if feats.len() < 300 {
+        eprintln("error: expected ≥300 TOML, got " + feats.len().to_s())
+        exit(1)    // R19 silent exit 금지
+    }
+
+    // 2. 쌍 점수 계산 (10축 × 16배치 병렬)
+    let pairs = score_all_pairs(feats)
+    let total_possible = feats.len() * (feats.len() - 1) / 2
+    println("pairs total_possible : " + total_possible.to_s())
+    println("pairs high_conf      : " + pairs.len().to_s())
+
+    // 3. 상위 정렬 (전역 + 도메인별 top-1 보장)
+    let sorted = pairs.sort_by_desc(|p| p.resonance)
+    let top_pairs = sorted.take(400)
+
+    // 4. Hasse DAG 지표
+    let hubs     = compute_hubs(pairs, 20)
+    let bridges  = compute_bridges(pairs, 50)
+    let clusters = compute_clusters(pairs, 16)
+
+    // 5. 결과 구성
+    let report = Report {
+        generated_at: now_iso(),
+        schema_version: 2,
+        source: "dse/domains/*.toml (v2 scan, Δ1~Δ5)",
+        n_domains: feats.len(),
+        pair_count: pairs.len(),
+        high_confidence_count: pairs.len(),    // high_conf filter 를 이미 통과
+        top_n: top_pairs.len(),
+        top_pairs: top_pairs,
+        hubs: hubs,
+        bridges: bridges,
+        clusters: clusters
+    }
+
+    // 6. 저장 + 자동 흡수 (R28)
+    write_report(report)
+
+    // 7. 요약 출력
+    println("----------------------------------------------")
+    println("summary:")
+    println("  domains               : " + feats.len().to_s() + " / target 400")
+    println("  high_conf pair_count  : " + pairs.len().to_s() + " / target 100000")
+    println("  hubs (top 5)          : ")
+    for (name, deg) in hubs.take(5) {
+        println("    " + name + "  degree=" + deg.to_s())
+    }
+    println("  bridges (top 5)       : ")
+    for (name, b) in bridges.take(5) {
+        println("    " + name + "  betweenness=" + b.to_s())
+    }
+    println("done.")
+}
+
+// ============================================================
+// 부록 A: v1 vs v2 diff 요약 (design.md 와 동기화)
+// ------------------------------------------------------------
+// [-]  4지표 (kw, sw, ln, n6)              → [+] 5지표 (kw, bt, formula, seed, pareto)
+// [-]  단일 순차 loop                      → [+] @parallel axis(10) × batch(16)
+// [-]  TOML 중복 파싱                      → [+] @memoize parse_domain_toml
+// [-]  하드코드 synergy 12 룰              → [+] BT 인덱스 자동 매칭(bt_refs)
+// [-]  shared_constants 8개 하드코드       → [+] n6_formula 태그 동적 집계
+// [-]  top_pairs[30]                       → [+] top_pairs[400] + hubs + bridges + clusters
+// [-]  없음                                → [+] pareto_frontier_400.json 기반 proximity 지표
+// [-]  없음                                → [+] atlas.n6 자동 흡수(R28)
+// ============================================================

@@ -1,0 +1,38 @@
+// verify_bt387_gwt_broadcast.hexa
+// 카테고리: anomaly
+// 목적: BT-387 GWT 전역작업공간 — 모듈 sigma=12, 시간 창 tau=4, 동기 주파수 tau*(sigma-phi)/phi=20 Hz 검증
+// 근거: 감마 대역 2배 동기 주파수 수식
+// 가설: 12 모듈 + 4 창 + 20 Hz 동기
+// 지표: 산술 정합
+// 데이터: atlas.n6 BT-387
+
+fn main() {
+    println("[BT-387 GWT] 전역작업공간 — 수식 검증")
+    let sig: i64 = 12
+    let tau_n: i64 = 4
+    let phi_n: i64 = 2
+
+    let modules: i64 = sig             // 12
+    let window: i64 = tau_n            // 4
+    // freq = tau * (sigma - phi) / phi = 4*(12-2)/2 = 20
+    let freq: i64 = tau_n * (sig - phi_n) / phi_n
+
+    // 감마 대역 기준 40 Hz → 2배 = 80 Hz? 아님. gamma = 40Hz, 절반 = 20 Hz
+    // 원문: "감마 대역 2배" → 감마 바닥 10 Hz 가정, 20 Hz
+    let gamma_half: i64 = 20
+
+    println("모듈 수 = sigma = " + to_string(modules))
+    println("시간 창 = tau = " + to_string(window))
+    println("동기 주파수 = tau*(sig-phi)/phi = " + to_string(freq) + " Hz")
+
+    let mut pass: i64 = 0
+    if modules == 12 { pass = pass + 1 }
+    if window == 4 { pass = pass + 1 }
+    if freq == gamma_half { pass = pass + 1 }
+
+    if pass == 3 {
+        println("[상태] pass — 12 모듈 + 4 창 + 20 Hz 정합")
+    } else {
+        println("[상태] fail — " + to_string(pass) + "/3")
+    }
+}

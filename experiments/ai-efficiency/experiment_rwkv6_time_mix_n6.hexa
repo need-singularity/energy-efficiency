@@ -1,0 +1,13 @@
+// experiment_rwkv6_time_mix_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: RWKV-6 시간 믹싱 계수 개수 n=6 최적 검증
+// 근거: RWKV-6 이름처럼 n=6 타임 스테이트 구조, BT-58 SSM 수렴
+// 가설: time-mix 계수 수 ∈ {4,5,6,7} 스캔 시 6 에서 PILE ppl 최저
+// 지표: PILE ppl, 시퀀스 길이별 지연, 처리량
+// 의존: techniques/arch/rwkv6.hexa
+
+fn main() {
+    println("[RWKV-6 time-mix] 실험 스텁 — 6 계수")
+    println("핵심 가설: time-mix=6 PPL 최저")
+    println("[상태] pending")
+}

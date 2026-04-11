@@ -626,10 +626,10 @@ ALL PASS — 🛸10 CERTIFIED (물리 한계 도달)
 ## 13. 리소스 & 참고
 
 - **상위 문서**: `/docs/room-temp-sc/goal.md` (RT-SC 기반 기술)
-- **수학 근거**: `~/Dev/TECS-L/docs/theorem-r1-uniqueness.md` (σφ=nτ ⟺ n=6)
+- **수학 근거**: `theory/proofs/theorem-r1-uniqueness.md` (σφ=nτ ⟺ n=6)
 - **아틀라스**: `/docs/atlas-constants.md` (1,100+ 상수)
 - **BT 목록**: `/docs/breakthrough-theorems.md` (BT-1~343)
-- **Cross-link**: TECS-L 수학 이론, anima 의식-중력 브릿지
+- **Cross-link**: n6 수학 이론, anima 의식-중력 브릿지
 - **검증 실행**: `python3 docs/gravity-wave/goal.py` 또는 위 Python 블록 직접 실행
 - **참고 시설**: LIGO(Hanford/Livingston), Virgo(Italy), KAGRA(Japan), LISA(ESA 2035)
 

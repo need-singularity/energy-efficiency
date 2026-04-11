@@ -1,4 +1,4 @@
-/// Cross-project bridge — links discoveries across TECS-L family repos.
+/// Cross-project bridge -- n6 family 리포 간 발견 연결.
 
 use std::collections::HashMap;
 
@@ -11,7 +11,7 @@ pub struct ProjectRef {
     pub relevance: f64,
 }
 
-/// Bridge connecting n6-architecture findings to other TECS-L repos.
+/// Bridge connecting n6-architecture findings to sibling repos (anima, nexus, etc.).
 pub struct ProjectBridge {
     refs: Vec<ProjectRef>,
     index: HashMap<String, Vec<usize>>,
@@ -72,8 +72,8 @@ mod tests {
     fn test_bridge_basic() {
         let mut bridge = ProjectBridge::new();
         bridge.add_ref(ProjectRef {
-            project: "tecs-l".into(),
-            path: "docs/hypotheses/".into(),
+            project: "n6-architecture".into(),
+            path: "theory/breakthroughs/".into(),
             discovery_id: "BT-56".into(),
             relevance: 0.95,
         });
@@ -84,7 +84,7 @@ mod tests {
             relevance: 0.7,
         });
         assert_eq!(bridge.len(), 2);
-        assert_eq!(bridge.by_project("tecs-l").len(), 1);
+        assert_eq!(bridge.by_project("n6-architecture").len(), 1);
         assert_eq!(bridge.above_relevance(0.9).len(), 1);
     }
 }

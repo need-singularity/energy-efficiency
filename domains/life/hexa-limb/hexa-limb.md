@@ -695,7 +695,7 @@ ALL PASS -- 10 CERTIFIED (물리 한계 도달, 특이점 돌파)
 ## 14. 리소스 및 참고
 
 - **상위 문서**: `/docs/robotics/goal.md` (로봇 공학 기반)
-- **수학 근거**: `~/Dev/TECS-L/docs/theorem-r1-uniqueness.md`
+- **수학 근거**: `theory/proofs/theorem-r1-uniqueness.md`
 - **아틀라스**: `/docs/atlas-constants.md` (1,100+ 상수)
 - **BT 목록**: `/docs/breakthrough-theorems.md` (BT-1~343)
 - **Cross-link**: hexa-exo (외골격), neuro (BCI), hexa-bone (임플란트)

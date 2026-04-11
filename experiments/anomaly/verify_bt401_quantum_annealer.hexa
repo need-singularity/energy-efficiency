@@ -1,0 +1,13 @@
+// verify_bt401_quantum_annealer.hexa
+// 카테고리: anomaly
+// 목적: BT-401 양자 어닐러 6 큐비트 부분 그래프 n=6 독립 집합 검증
+// 근거: D-Wave 큐비트 연결 6각 chimera + phi(6)=2 게이트
+// 가설: 6 큐비트 부분 그래프 최적화 수렴 스텝 phi=2배 감소
+// 지표: 스텝 수, 에너지 갭, 오차율
+// 데이터: D-Wave 공개 벤치
+
+fn main() {
+    println("[BT-401 양자 어닐러] 검증 스텁 — 6 큐비트")
+    println("핵심 가설: phi=2 스텝 감소")
+    println("[상태] pending")
+}

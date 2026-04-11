@@ -1,0 +1,13 @@
+// verify_renormalization_lens.hexa
+// 카테고리: lens-verify
+// 목적: RenormalizationLens — 6 RG flow 고정점 검증
+// 근거: epsilon=4-d expansion d=6 상한
+// 가설: 6 차원 RG 고정점 수 명확
+// 지표: 고정점 수
+// 의존: shared/config/lens_registry.json
+
+fn main() {
+    println("[렌즈: RG Flow] 검증 스텁 — 6D")
+    println("핵심 가설: epsilon=6-d")
+    println("[상태] pending")
+}

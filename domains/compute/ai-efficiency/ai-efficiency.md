@@ -14478,7 +14478,8 @@ Applies SEDI's windowed FFT (windows={6,12,24,36}) to training loss curves to au
 
 ### How to Use
 ```python
-from sedi.filter import r_filter
+# sedi 흡수 완료: r_filter 는 techniques/sparse/rfilter_phase.hexa 참조
+# from sedi.filter import r_filter
 peaks = r_filter(loss_curve, window_sizes=[6, 12, 24, 36])
 ```
 

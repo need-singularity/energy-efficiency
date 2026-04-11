@@ -1,0 +1,13 @@
+// experiment_flash_attention3_n6.hexa
+// 카테고리: ai-efficiency
+// 목적: FlashAttention-3 n=6 타일링 MFU 향상 검증
+// 근거: 6 워프 tiling 메모리 대역 최적
+// 가설: 6 타일 MFU > 4/8
+// 지표: MFU, wall clock
+// 데이터: H100 벤치
+
+fn main() {
+    println("[FA3 n6] 검증 스텁 — 6 워프")
+    println("핵심 가설: MFU 최대")
+    println("[상태] pending")
+}
