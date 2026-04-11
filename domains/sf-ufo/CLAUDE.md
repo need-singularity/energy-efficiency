@@ -1,6 +1,6 @@
 # domains/sf-ufo — SF/UFO — 투명망토·텔레포트·하버·환상
 
-목적: sf-ufo 축 도메인. 도메인당 &lt;name&gt;.md + verify.hexa + CLAUDE.md
+목적: sf-ufo 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 

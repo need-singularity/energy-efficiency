@@ -4,12 +4,12 @@
 
 ## 파일
 - `chip-isa-n6.md` — 15섹션 통합 본문 (Xn6 RISC-V 확장 명령 제안서)
-- `verify.hexa` — J₂=24 명령 슬롯, funct3×variant=24, CSR=4 검증
+- 검증코드는 도메인 본문 .md 에 ```python 블록으로 임베드됨
 - `CLAUDE.md` — 본 가이드
 
 ## 사용법
 - 본문 읽기: 섹션 2 목표 → 5 opcode 공간 → 6 명령어 세트 → 9 툴체인
-- 검증 실행: `hexa verify.hexa`
+- 검증 실행: 도메인 본문 .md 내 ```python 블록 참조
 - 진화 단계: 섹션 10 Mk.I~V
 - 디코더: `nexus/origins/hexa-rtl/rtl/xn6_decoder.hexa` (Mk.II 이후)
 

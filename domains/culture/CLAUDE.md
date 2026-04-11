@@ -1,6 +1,6 @@
 # domains/culture — 예술·스포츠·언어·종교·게임·사진
 
-목적: culture 축 도메인. 도메인당 &lt;name&gt;.md + verify.hexa + CLAUDE.md
+목적: culture 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 

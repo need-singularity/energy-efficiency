@@ -4,12 +4,12 @@
 
 ## 파일
 - `chip-npu-n6.md` — 15섹션 통합 본문 (n=6 정합 NPU 사양 초안)
-- `verify.hexa` — SM=24, TC=4, MAC=144, 파이프=12, 메모리=4, NoC=n·σ, Egyptian=1 검증
+- 검증코드는 도메인 본문 .md 에 ```python 블록으로 임베드됨
 - `CLAUDE.md` — 본 가이드
 
 ## 사용법
 - 본문 읽기: 섹션 2 목표 → 5 블록도 → 6 컴퓨트 → 7 파이프라인 → 8 메모리 → 9 데이터플로
-- 검증 실행: `hexa verify.hexa`
+- 검증 실행: 도메인 본문 .md 내 ```python 블록 참조
 - 진화 단계: 섹션 11 Mk.I~V
 - 실측 벤치마크: Mk.V (FPGA → ASIC)
 

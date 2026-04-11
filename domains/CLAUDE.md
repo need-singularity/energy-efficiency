@@ -1,6 +1,6 @@
 # domains — 295 도메인
 
-목적: 10축 분류. 도메인당 1개 .md + 1개 verify.hexa + 1개 CLAUDE.md
+목적: 10축 분류. 도메인당 1개 .md + 1개 CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 

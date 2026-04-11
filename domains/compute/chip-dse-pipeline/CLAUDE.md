@@ -4,12 +4,12 @@
 
 ## 파일
 - `chip-dse-pipeline.md` — 15섹션 통합 본문 (5 DSE 통합 분석 + 확장)
-- `verify.hexa` — σ·φ=n·τ + 단계=5 + 조합=7,776/단계 검증
+- 검증코드는 도메인 본문 .md 에 ```python 블록으로 임베드됨
 - `CLAUDE.md` — 본 가이드
 
 ## 사용법
 - 본문 읽기: 섹션 2 목표 → 5 5종 분석 → 6 파이프라인 → 7 확장점
-- 검증 실행: `hexa verify.hexa`
+- 검증 실행: 도메인 본문 .md 내 ```python 블록 참조
 - 실제 실행 (Mk.II 이후): `nexus dse universal --pipeline`
 - 진화 단계: 섹션 9 Mk.I~V
 

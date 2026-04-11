@@ -1,6 +1,6 @@
 # domains/compute — 반도체·AI·칩·네트워크·암호·OS·공간컴퓨팅
 
-목적: compute 축 도메인. 도메인당 &lt;name&gt;.md + verify.hexa + CLAUDE.md
+목적: compute 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 

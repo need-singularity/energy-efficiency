@@ -1,6 +1,6 @@
 # domains/life — 생명·의학·농·축산·식품·약학
 
-목적: life 축 도메인. 도메인당 &lt;name&gt;.md + verify.hexa + CLAUDE.md
+목적: life 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 

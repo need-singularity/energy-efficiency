@@ -4,7 +4,7 @@
 
 ## 파일
 - `synbio.md` — 15섹션 통합 본문
-- `verify.hexa` — 범용 n=6 정체성 검증 (공통 템플릿, 이동 대상 아님)
+- 검증코드는 도메인 본문 .md 에 ```python 블록으로 임베드됨
 - `CLAUDE.md` — 본 가이드
 
 ## 외부 검증 스크립트 (R29 — nexus/shared/n6/scripts/ SSOT)

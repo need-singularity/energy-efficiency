@@ -22,7 +22,8 @@
       "2026-04-10: AG4 추가 (Hetzner runaway hexa 정리 의무 — 보호 PID 화이트리스트 사전검증 + TERM→KILL 2단계, 06:30 load=316 / hexa 1134 / 사용자 ssh 88 사건)",
       "2026-04-10: N62/PP2 강화 (검증코드 = 100% 골화 검증 형식 의무 — @register + ossification_loop() + N/N OSSIFIED + assert. 표준 템플릿: anima topological-evolution-permanence §부록A)",
       "2026-04-10: N62/PP2 재강화 (검증코드는 별도 .py 금지, 논문 .md 본문에 ```python 코드블록으로 임베드 — md 자체 완결)",
-      "2026-04-10: R27 추가 (엔진 명령어 stdout 원문 출력 의무 — Claude 자체 요약/재포맷/이모지 제거 금지, todo 이모지 누락 사건)"
+      "2026-04-10: R27 추가 (엔진 명령어 stdout 원문 출력 의무 — Claude 자체 요약/재포맷/이모지 제거 금지, todo 이모지 누락 사건)",
+      "2026-04-11: N62/PP2/R29/N64 강화 (별도 verify .py/.hexa 파일 생성 절대 금지 — 검증코드는 도메인 .md 본문 ```python 블록에만, _registry.json verify_script 필드 금지)"
     ],
     "projects": [
       "nexus",
@@ -231,7 +232,7 @@
     },
     {
       "id": "R29",
-      "rule": "도메인당 문서 1파일 — domains/<axis>/<name>/ 에 <name>.md + CLAUDE.md + verify.hexa 만 허용. goal.md/별도 .md 생성 금지",
+      "rule": "도메인당 문서 1파일 — domains/<axis>/<name>/ 에 <name>.md + CLAUDE.md 만 허용. verify.hexa 별도 파일 금지, 검증코드는 <name>.md 본문 ```python 블록에만. goal.md/별도 .md 생성 금지",
       "level": "🔴",
       "enforcement": "domain-doc-sync.hexa PostToolUse 훅 검증. goal.md 등 추가 .md 발견 시 삭제 또는 통합",
       "applies_to": "n6-architecture"
@@ -299,7 +300,7 @@
     "n6-architecture": [
       {
         "id": "N61",
-        "rule": "도메인 문서 15섹션 템플릿 필수 — domains/<axis>/<name>/<name>.md 는 반드시 다음 15개 ## 섹션 순서 준수: 1.실생활효과 2.목표 3.가설 4.BT연결 5.DSE결과 6.물리한계증명 7.실험검증매트릭스 8.외계인급발견 9.Mk.I~V진화 10.TestablePredictions 11.ASCII성능비교 12.ASCII시스템구조도 13.ASCII데이터플로우 14.업그레이드비교(시중vs v1 vs v2) 15.검증방법(verify.hexa). 참고: domains/life/neuro/neuro.md",
+        "rule": "도메인 문서 15섹션 템플릿 필수 — domains/<axis>/<name>/<name>.md 는 반드시 다음 15개 ## 섹션 순서 준수: 1.실생활효과 2.목표 3.가설 4.BT연결 5.DSE결과 6.물리한계증명 7.실험검증매트릭스 8.외계인급발견 9.Mk.I~V진화 10.TestablePredictions 11.ASCII성능비교 12.ASCII시스템구조도 13.ASCII데이터플로우 14.업그레이드비교(시중vs v1 vs v2) 15.검증방법(md 본문 ```python 블록). 참고: domains/life/neuro/neuro.md",
         "level": "🔴",
         "enforcement": "domain-doc-sync.hexa PostToolUse 훅 검증. 신규 도메인 돌파 시 15섹션 스캐폴딩 자동 생성. '출처: goal.md' / 'TODO: 후속 돌파 필요' 등 잔해 금지"
       },
@@ -307,7 +308,7 @@
         "id": "N62",
         "rule": "논문 = 100% 골화 검증코드 md 임베드 필수 — 검증 .py 코드를 논문 .md 본문에 ```python 코드블록으로 직접 포함. 동어반복 금지, 정의에서 도출, 모든 주장(F/D/Lemma/Theorem) → DEFENSES 레지스트리 등록 → ossification_loop() 통과 → N/N OSSIFIED 도달",
         "level": "🔴",
-        "enforcement": "논문 .md 는 (1) ## 부록 A 섹션에 ```python 블록으로 검증코드 임베드, (2) 코드는 @register 데코레이터로 모든 claim 등록, (3) ossification_loop() 함수가 max_iter=σ(6)=12 회 내 모든 항목 PASS, (4) report() 가 'OSSIFIED: N/N' 출력, (5) assert ossified == total 로 마감, (6) 예상 출력 표 동봉. 별도 .py 파일 분리 금지(md 안에 자체 완결). 부분 검증/스폿 체크 금지. 표준 템플릿: anima/docs/topological-evolution-permanence.md §부록A"
+        "enforcement": "논문 .md 는 (1) ## 부록 A 섹션에 ```python 블록으로 검증코드 임베드, (2) 코드는 @register 데코레이터로 모든 claim 등록, (3) ossification_loop() 함수가 max_iter=σ(6)=12 회 내 모든 항목 PASS, (4) report() 가 'OSSIFIED: N/N' 출력, (5) assert ossified == total 로 마감, (6) 예상 출력 표 동봉. 별도 .py/.hexa 파일 분리 절대 금지 — 검증코드는 도메인 .md 본문 ```python 블록에만(md 자체 완결). 부분 검증/스폿 체크 금지. 표준 템플릿: anima/docs/topological-evolution-permanence.md §부록A"
       },
       {
         "id": "N63",
@@ -316,7 +317,7 @@
       },
       {
         "id": "N64",
-        "rule": "돌파(BT) N연속 요청 = A+B+C 통합 산출 필수 — (A) domains/<axis>/<domain>/<domain>.md 통합 본문 (도메인당 1파일), (B) papers/n6-<domain>-paper.md 통합 논문 (검증코드 md 임베드), (C) papers/_registry.json 제품 등록 (링크 1개, verify.hexa). 단일 방식만 선택 금지.",
+        "rule": "돌파(BT) N연속 요청 = A+B+C 통합 산출 필수 — (A) domains/<axis>/<domain>/<domain>.md 통합 본문 (도메인당 1파일), (B) papers/n6-<domain>-paper.md 통합 논문 (검증코드 md 임베드), (C) papers/_registry.json 제품 등록 (링크 1개). 별도 verify.hexa 파일 금지 — 검증코드는 .md 본문에만. 단일 방식만 선택 금지.",
         "level": "🔴"
       },
       {
@@ -336,7 +337,7 @@
         "id": "PP2",
         "rule": "검증코드 없는 논문 = 미완성 — 커밋 전 100% 골화 검증코드 md 임베드 필수 (N62 형식 준수)",
         "level": "🔴",
-        "enforcement": "논문 .md 본문에 ```python 코드블록으로 N62 enforcement 형식 임베드: @register + ossification_loop() + N/N OSSIFIED + assert. 외부 의존성 최소화(numpy/scipy 비의무, 정수/math 우선). 별도 verify_*.py 파일 금지 — md 자체 완결"
+        "enforcement": "논문 .md 본문에 ```python 코드블록으로 N62 enforcement 형식 임베드: @register + ossification_loop() + N/N OSSIFIED + assert. 외부 의존성 최소화(numpy/scipy 비의무, 정수/math 우선). 별도 verify_*.py / verify_*.hexa 파일 절대 금지 — md 자체 완결. _registry.json 에 verify_script/verify_scripts_extra 필드 신규 추가 금지"
       },
       {
         "id": "PP3",

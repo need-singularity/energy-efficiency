@@ -1,6 +1,6 @@
 # domains/energy — 에너지·배터리·태양광·초전도·원자력·융합발전
 
-목적: energy 축 도메인. 도메인당 &lt;name&gt;.md + verify.hexa + CLAUDE.md
+목적: energy 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)
 축: domains
 상위: ../CLAUDE.md
 
