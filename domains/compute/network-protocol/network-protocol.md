@@ -1,24 +1,4 @@
-# network-protocol
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# Network Protocol
-
-IPv6=2^7, TCP 6-packet, WiFi 6, 5G.
-
-> Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-
-## 2. 목표
-
-
-
-# 궁극의 네트워크 프로토콜 (Ultimate Network Protocol) -- Consolidated Goal
+# 궁극의 네트워크 프로토콜 — HEXA-NET
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).
 > 현재: 🛸10 maturity / closure_grade 9 (bt_exact_pct 기반 추정).
