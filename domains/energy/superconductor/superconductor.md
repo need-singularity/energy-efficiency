@@ -1211,6 +1211,7 @@ check("v5_cross_new_count", 3, n//phi, "dark+GW+radio")
 check("cross_domains_total", 16, sigma+tau, "13+3=16")
 check("v4_cross_total", 13, sigma+mu, "8+5=13")
 check("radio_SC_detectors", 2, phi, "SIS+KID")
+check("cross_DSE_KeyBT_count", 14, sigma+phi, "8+BT-1163/4/6/7 추가")
 
 # === 결과 출력 ===
 total = len(exact_results) + len(miss_results)
