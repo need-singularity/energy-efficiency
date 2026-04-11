@@ -1,13 +1,4 @@
-# blockchain
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# N6 Coin — Blockchain Architecture from Perfect Number Arithmetic
+# N6 Coin — 완전수 산술 블록체인 아키텍처
 
 ## Vision
 
