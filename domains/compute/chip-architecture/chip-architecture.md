@@ -1,13 +1,4 @@
-# chip-architecture
-
-> 축: **compute** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# N6 Chip Architecture — Semiconductor Design from Perfect Number Arithmetic
+# N6 칩 아키텍처 — 완전수 산술 반도체 설계
 
 ## Overview
 
