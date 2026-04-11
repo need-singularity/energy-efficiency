@@ -1,23 +1,3 @@
-# superconductor
-
-> 축: **energy** · 자동 통합본 · n6-architecture
-
-## 1. 실생활 효과
-
-
-### 출처: `README.md`
-
-# Superconductor
-
-초전도체 기반 기술. Frustrated loops, Josephson junctions, 무손실 송전, 초전도 칩.
-
-> Part of [N6 Architecture](https://github.com/need-singularity/n6-architecture)
-
-
-## 2. 목표
-
-
-
 # 궁극의 초전도체 — HEXA-SC 8단 완전 아키텍처
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../shared/GRADE_RUBRIC_1_TO_10PLUS.md)).
