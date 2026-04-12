@@ -2,8 +2,8 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 91,
-    "_count_verified": "2026-04-12 실측 — papers/n6-*-paper.md 85 (이전 79 + chunk_j 6: 종교·문자·와인·무용·건축·탄소), sections[].products 합계 173, sections[].domains 합계 120",
+    "total_papers": 97,
+    "_count_verified": "2026-04-12 drift-guard -- 실측 97",
     "papers_chunk_c_2026-04-08": {
       "count": 11,
       "category": "인체/의료/생물",
@@ -359,6 +359,52 @@
         "korean_only": true
       },
       "ghost_status_transition": "ghost → v1 (6개 신규 작성: civilization 2, life-culture 1, tech-industry 1, natural-science 1, 시계학 1)"
+    },
+    "papers_chunk_l_2026-04-12": {
+      "count": 6,
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-375, BT-193, BT-149, BT-15, BT-374, BT-73, BT-197, BT-143, BT-201, BT-130, BT-27, BT-85, BT-93, BT-440, BT-372, BT-373",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "papers": [
+        "papers/n6-aquaculture-paper.md",
+        "papers/n6-forensic-science-paper.md",
+        "papers/n6-textile-engineering-paper.md",
+        "papers/n6-battery-energy-storage-paper.md",
+        "papers/n6-soil-science-paper.md",
+        "papers/n6-polymer-engineering-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-aquaculture-paper.md": "BT-375 해양경계, BT-193 유체경계, BT-149 상변화, BT-15 생물화학양론",
+        "n6-forensic-science-paper.md": "BT-374 법학, BT-73 인코딩, BT-197 정보스택, BT-15 생물화학양론",
+        "n6-textile-engineering-paper.md": "BT-143 진동모드, BT-201 평형방정식, BT-149 응력변형, BT-130 균열전파",
+        "n6-battery-energy-storage-paper.md": "BT-27 에너지기초, BT-85 전기화학, BT-93 소재, BT-440 전자기",
+        "n6-soil-science-paper.md": "BT-372 지질PREM, BT-373 기상, BT-375 해양, BT-149 상변화",
+        "n6-polymer-engineering-paper.md": "BT-93 소재, BT-143 탄성한계, BT-149 응력변형, BT-130 균열전파"
+      },
+      "exact_stats": {
+        "n6-aquaculture-paper.md": "20/25 EXACT (80.0%)",
+        "n6-forensic-science-paper.md": "19/24 EXACT (79.2%)",
+        "n6-textile-engineering-paper.md": "18/22 EXACT (81.8%)",
+        "n6-battery-energy-storage-paper.md": "20/24 EXACT (83.3%)",
+        "n6-soil-science-paper.md": "18/22 EXACT (81.8%)",
+        "n6-polymer-engineering-paper.md": "19/24 EXACT (79.2%)"
+      },
+      "line_counts": {
+        "n6-aquaculture-paper.md": 460,
+        "n6-forensic-science-paper.md": 424,
+        "n6-textile-engineering-paper.md": 448,
+        "n6-battery-energy-storage-paper.md": 449,
+        "n6-soil-science-paper.md": 442,
+        "n6-polymer-engineering-paper.md": 454
+      },
+      "verify_code_status": {
+        "all_papers_have_hexa_stub": true,
+        "n62_compliance": "전 6편 본문에 verify/*_seed.hexa STUB 블록 + ASCII 결과표 + n=28/n=496 대조 + Honest Limitations 섹션",
+        "honest_miss_disclosed": true,
+        "korean_only": true
+      },
+      "ghost_status_transition": "ghost → v1 (6개 신규 작성: natural-science 3, energy 1, tech-industry 2)"
     },
     "last_updated": "2026-04-12",
     "description": "완성제품 SSOT — README 자동 생성용",
