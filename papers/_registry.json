@@ -2,8 +2,8 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 58,
-    "_count_verified": "2026-04-12 실측 — papers/*.md 58 (기존 43 + 칩 ghost 9 + 물리/수학 ghost 6), sections[].products 합계 173, sections[].domains 합계 120",
+    "total_papers": 76,
+    "_count_verified": "2026-04-12 실측 — papers/*.md 76 (기존 73 + 통합 3: AI 68기법·칩 6단·밀레니엄 DFS 1~12), sections[].products 합계 173, sections[].domains 합계 120",
     "papers_chunk_c_2026-04-08": {
       "count": 11,
       "category": "인체/의료/생물",
@@ -154,6 +154,127 @@
         "all_papers_have_hexa_stub": true,
         "n62_compliance": "전 6편 본문에 hexa 검증 스텁 포함"
       }
+    },
+    "papers_chunk_g_2026-04-12": {
+      "count": 3,
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-374 법학, BT-380 AI 8패러다임, 집단지성 네트워크",
+      "status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드",
+      "target_id_range": "N6-072 ~ N6-074",
+      "papers": [
+        "papers/n6-ai-ethics-governance-paper.md",
+        "papers/n6-network-collective-paper.md",
+        "papers/n6-jurisprudence-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-ai-ethics-governance-paper.md": "BT-380, BT-ET-01~06 (EU AI Act, NIST RMF, ISO 42001, IEEE EAD, OECD, GDPR)",
+        "n6-network-collective-paper.md": "BT-NET-01~05 (Milgram, Dunbar, 멀티에이전트 LLM, 조직)",
+        "n6-jurisprudence-paper.md": "BT-374 확장 + BT-JUR-01~05 (영미/대륙/국제/헌법/역사 법전)"
+      },
+      "exact_stats": {
+        "n6-ai-ethics-governance-paper.md": "34/37 EXACT (91.9%)",
+        "n6-network-collective-paper.md": "30/39 EXACT (76.9%, NEAR 포함 92.3%)",
+        "n6-jurisprudence-paper.md": "35/41 EXACT (85.4%)"
+      },
+      "verify_code_status": {
+        "all_papers_have_hexa_stub": true,
+        "all_papers_have_embedded_python": true,
+        "n62_compliance": "전 3편 본문에 hexa 검증 블록 + 파이썬 보조 검증 임베드",
+        "honest_miss_disclosed": true
+      },
+      "ghost_status_transition": "ghost → v1 (3 개 신규 작성)"
+    },
+    "papers_chunk_h_2026-04-12": {
+      "count": 4,
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143, BT-145, BT-149, BT-189, BT-193, BT-201, BT-299, BT-373, BT-375, BT-380, BT-402, BT-403, BT-440, BT-441, BT-130, BT-167",
+      "status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함",
+      "target_id_range": "N6-075 ~ N6-078",
+      "papers": [
+        "papers/n6-optics-paper.md",
+        "papers/n6-acoustics-paper.md",
+        "papers/n6-hydrology-paper.md",
+        "papers/n6-mechanical-engineering-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-optics-paper.md": "BT-145 편광, BT-189 전자기 스펙트럼, BT-380 메타, BT-440 광결합, BT-441 광경로, BT-97 스펙트럼 경계",
+        "n6-acoustics-paper.md": "BT-143 진동 모드, BT-189 파동 매질, BT-201 경계조건, BT-299 공명, BT-402 이어폰 음장, BT-403 공간음향",
+        "n6-hydrology-paper.md": "BT-193 유체 경계, BT-201 순환 평형, BT-149 상변화, BT-373 기상 재현, BT-375 해양 경계",
+        "n6-mechanical-engineering-paper.md": "BT-143 탄성 한계, BT-201 평형 방정식, BT-149 응력-변형, BT-189 진동 모드, BT-130 균열 전파, BT-167 피로 한계"
+      },
+      "exact_stats": {
+        "n6-optics-paper.md": "38/44 EXACT (86.4%), 4 NEAR, 2 MISS",
+        "n6-acoustics-paper.md": "39/45 EXACT (86.7%), 4 NEAR, 2 MISS",
+        "n6-hydrology-paper.md": "34/39 EXACT (87.2%), 3 NEAR, 2 MISS (water-boiling-point atlas 식 재검증 필요)",
+        "n6-mechanical-engineering-paper.md": "35/40 EXACT (87.5%), 3 NEAR, 2 MISS"
+      },
+      "atlas_anchor_nodes": {
+        "n6-optics-paper.md": "L5_material 광학 서브셋, L6_music 파장, L6_electrical 광자 연결",
+        "n6-acoustics-paper.md": "L6_music 171 nodes, L6_atmospheric_physics speed-of-sound",
+        "n6-hydrology-paper.md": "L6_hydrology 6 nodes, L6_glaciology 6 nodes, L6_oceanography 10 nodes, L6_atmospheric_physics 7 nodes",
+        "n6-mechanical-engineering-paper.md": "L6_mechanical 7 nodes [10*] (전부 EXACT)"
+      },
+      "verify_code_status": {
+        "all_papers_have_hexa_stub": true,
+        "n62_compliance": "전 4편 본문에 verify/*_seed.hexa STUB 블록 + 결과표 ASCII 막대 + n=28/n=496 대조 + Honest Limitations 섹션",
+        "honest_miss_disclosed": true,
+        "korean_only": true
+      },
+      "line_counts": {
+        "n6-optics-paper.md": 356,
+        "n6-acoustics-paper.md": 389,
+        "n6-hydrology-paper.md": 373,
+        "n6-mechanical-engineering-paper.md": 408
+      },
+      "ghost_status_transition": "ghost → v1 (4 개 신규 작성, 자연과학/공학 분야)"
+    },
+    "papers_chunk_i_2026-04-12": {
+      "count": 3,
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)",
+      "bt_range": "BT-380 (AI 8패러다임), BT-28·36·55·90·93·1104 (칩 래더), BT-541~547 + BT-1394~1404 (밀레니엄 DFS 1~12차)",
+      "status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합",
+      "target_id_range": "N6-075 ~ N6-077",
+      "papers": [
+        "papers/n6-ai-techniques-68-integrated-paper.md",
+        "papers/n6-chip-6stages-integrated-paper.md",
+        "papers/n6-millennium-dfs-1-12-integrated-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-ai-techniques-68-integrated-paper.md": "BT-380 메타, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73, BT-1394 σ-sopfr 3축",
+        "n6-chip-6stages-integrated-paper.md": "BT-28, BT-36, BT-55, BT-90, BT-93, BT-260~266, BT-344~346, BT-1104",
+        "n6-millennium-dfs-1-12-integrated-paper.md": "BT-541~547 (1~2차 51 tight), BT-1394 (3차 +14), BT-1395 (4차 +15), BT-1396 (5차 +12), BT-1398 (6차 +10), BT-1399 (7차 +12), BT-1400 (8차 +14), BT-1401 (9차 +12), BT-1402 (10차 +12), BT-1403 (11차 +12), BT-1404 (12차 +12)"
+      },
+      "integration_sources": {
+        "n6-ai-techniques-68-integrated-paper.md": [
+          "techniques/_registry.json v1.3.0 (68 BODY, 18,424줄)",
+          "papers/n6-causal-chain-paper.md",
+          "papers/n6-cross-paradigm-ai-paper.md",
+          "papers/n6-ai-17-techniques-experimental-paper.md",
+          "papers/n6-sota-ssm-paper.md"
+        ],
+        "n6-chip-6stages-integrated-paper.md": [
+          "papers/n6-chip-design-ladder-paper.md (255/255 기존)",
+          "papers/n6-hexa-{asic,pim,3d,photon,wafer,super}-paper.md",
+          "domains/compute/chip-design/L1~L6/verify_*.hexa"
+        ],
+        "n6-millennium-dfs-1-12-integrated-paper.md": [
+          "theory/breakthroughs/bt-1394~1404-*.md (DFS 3~12차)",
+          "papers/n6-pure-mathematics-paper.md (25/26 시드)",
+          "papers/n6-topology-paper.md"
+        ]
+      },
+      "key_metrics": {
+        "n6-ai-techniques-68-integrated-paper.md": "68 BODY 기법 / 8 축 / 4 인수 분해 det=0.065",
+        "n6-chip-6stages-integrated-paper.md": "255/255 EXACT / DSE 31,461,488 / 이집트 1/2+1/3+1/6 보존",
+        "n6-millennium-dfs-1-12-integrated-paper.md": "176 tight / 해결 0/7 (정직) / σ-sopfr 3축 연결"
+      },
+      "verify_code_status": {
+        "all_papers_have_embedded_python": true,
+        "n62_compliance": "전 3편 본문에 파이썬 검증코드 임베드",
+        "honest_miss_disclosed": true,
+        "honest_resolution_status": "밀레니엄 해결 0/7 (정직)"
+      },
+      "ghost_status_transition": "ghost → v1 (3 개 신규 통합 메타 작성)"
     },
     "last_updated": "2026-04-12",
     "description": "완성제품 SSOT — README 자동 생성용",

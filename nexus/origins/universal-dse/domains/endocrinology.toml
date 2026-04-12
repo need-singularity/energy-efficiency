@@ -1,0 +1,353 @@
+# =============================================================
+# ENDOCRINOLOGY DSE 도메인 정의
+# 내분비학 — n=6 주요 축 + sigma=12 호르몬 패밀리 + tau=4 receptor 클래스
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "endocrinology"
+desc = "내분비학 DSE — 호르몬 축·수용체·대사·질환·치료, n=6 주요 내분비 축"
+levels = ["Axis", "Hormone", "Receptor", "Disorder", "Therapy"]
+vision = "n=6 기반 궁극 내분비 — n=6 축 + sigma=12 패밀리 + tau=4 수용체"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Axis"
+
+[[candidate]]
+level  = 0
+id     = "HPA"
+label  = "HPA 축 (n=6 stress response stage)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "stages=6=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "HPG"
+label  = "HPG 성선 축 (phi=2 gonad 성별 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "sexes=2=phi EXACT"
+
+[[candidate]]
+level  = 0
+id     = "HPT"
+label  = "HPT 갑상선 축 (tau=4 주요 호르몬)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "hormones=4=tau NEAR (TRH/TSH/T4/T3)"
+
+[[candidate]]
+level  = 0
+id     = "GH_Axis"
+label  = "GH 성장 축 (sigma=12 h 분비 리듬)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "rhythm=12h=sigma NEAR (밤 중심)"
+
+[[candidate]]
+level  = 0
+id     = "PRL_Axis"
+label  = "프로락틴 축 (n=6 기능 주요)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "functions=6=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "RAS_System"
+label  = "RAS 레닌-안지오텐신 (phi=2 local/systemic EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "systems=2=phi EXACT"
+
+[[level]]
+name = "Hormone"
+
+[[candidate]]
+level  = 1
+id     = "Peptide_Horm"
+label  = "펩티드 (sigma=12 주요 예)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "examples=12=sigma NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Steroid_Horm"
+label  = "스테로이드 (tau=4 주 클래스)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "classes=4=tau NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Amine_Horm"
+label  = "아민 (phi=2 T3/T4, catecholamine EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "subclasses=2=phi EXACT"
+
+[[candidate]]
+level  = 1
+id     = "Eicosanoid"
+label  = "에이코사노이드 (n=6 주요 family)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "families=6=n NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Adipokine"
+label  = "아디포카인 (sigma=12 주요 mediator)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "mediators=12=sigma NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Myokine"
+label  = "마이오카인 (phi=2 exercise/rest EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.75
+cost   = 0.70
+notes  = "states=2=phi EXACT"
+
+[[level]]
+name = "Receptor"
+
+[[candidate]]
+level  = 2
+id     = "GPCR_Horm"
+label  = "GPCR (n=6 클래스 IUPHAR)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "classes=6=n NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Nuclear_NR"
+label  = "핵 수용체 (sigma=12 subfamily)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "subfamilies=12=sigma NEAR"
+
+[[candidate]]
+level  = 2
+id     = "RTK_Recept"
+label  = "RTK (tau=4 주요 family)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "families=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Ionotropic"
+label  = "이온성 (phi=2 ligand-gated EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "types=2=phi NEAR"
+
+[[candidate]]
+level  = 2
+id     = "JAK_STAT"
+label  = "JAK-STAT (n=6 STAT subtype)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.70
+notes  = "STATs=6=n NEAR (STAT1-6)"
+
+[[candidate]]
+level  = 2
+id     = "cGMP_NO"
+label  = "cGMP/NO (phi=2 NOS isoform EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "isoforms=2=phi NEAR"
+
+[[level]]
+name = "Disorder"
+
+[[candidate]]
+level  = 3
+id     = "Diabetes_T2"
+label  = "2형 당뇨 (tau=4 주 병태 생리)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "pathways=4=tau NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Thyroid_Hyp"
+label  = "갑상선 항진 (phi=2 Graves/node EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "causes=2=phi NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Cushing"
+label  = "쿠싱 (n=6 주요 증상)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "symptoms=6=n NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Addison"
+label  = "애디슨 (sigma=12 증상 범주)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "symptoms=12=sigma NEAR"
+
+[[candidate]]
+level  = 3
+id     = "PCOS"
+label  = "PCOS 다낭성 (phi=2 cyst count threshold EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "thresholds=2=phi NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Acromegaly"
+label  = "말단비대증 (n=6 임상 주요 증상)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "symptoms=6~=n NEAR"
+
+[[level]]
+name = "Therapy"
+
+[[candidate]]
+level  = 4
+id     = "Insulin_Injection"
+label  = "인슐린 주사 (tau=4 주요 타입)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "types=4=tau NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Levothyroxine"
+label  = "레보티록신 (phi=2 daily/weekly EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.90
+cost   = 0.88
+notes  = "schedules=2=phi EXACT"
+
+[[candidate]]
+level  = 4
+id     = "GLP1_Agonist"
+label  = "GLP-1 (sigma=12 주요 분자 approved)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.60
+notes  = "molecules=12=sigma NEAR"
+
+[[candidate]]
+level  = 4
+id     = "HRT_Estrogen"
+label  = "HRT 에스트로겐 (n=6 주요 프로토콜)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "protocols=6=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Somatostatin"
+label  = "소마토스타틴 (tau=4 주요 indication)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "indications=4=tau NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Steroid_Replace"
+label  = "스테로이드 대체 (phi=2 glucocor/mineral EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "types=2=phi EXACT"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "HPT"
+then_level = 4
+then_ids   = "Levothyroxine"
+
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "Diabetes_T2"
+then_level = 4
+then_ids   = "GLP1_Agonist,Insulin_Injection"
+
+[[rule]]
+type       = "exclude"
+if_level   = 3
+if_id      = "Addison"
+then_level = 4
+then_ids   = "GLP1_Agonist"

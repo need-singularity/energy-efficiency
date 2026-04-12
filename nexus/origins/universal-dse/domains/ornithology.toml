@@ -1,0 +1,353 @@
+# =============================================================
+# ORNITHOLOGY DSE 도메인 정의
+# 조류학 — n=6 주요 목 + sigma=12 deliverable 특성 + tau=4 생활사
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "ornithology"
+desc = "조류학 DSE — 분류·생태·행동·이주·보존, n=6 주요 목"
+levels = ["Order", "Morphology", "Behavior", "Migration", "Conservation"]
+vision = "n=6 기반 궁극 조류 — n=6 목 + sigma=12 특성 + tau=4 생활사"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Order"
+
+[[candidate]]
+level  = 0
+id     = "Passeriformes"
+label  = "참새목 (n=6 주요 과 주요 발성)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.90
+cost   = 0.85
+notes  = "families=6=n NEAR (Turdidae 외)"
+
+[[candidate]]
+level  = 0
+id     = "Falconiformes"
+label  = "매목 (phi=2 sexual dimorph EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "dimorphs=2=phi NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Anseriformes"
+label  = "기러기목 (tau=4 주요 분화)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "clades=4=tau NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Galliformes"
+label  = "닭목 (sigma=12 주요 종)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "species=12=sigma NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Charadriiformes"
+label  = "도요목 (n=6 주요 과)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "families=6=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Strigiformes"
+label  = "올빼미목 (phi=2 주야 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "actives=2=phi NEAR"
+
+[[level]]
+name = "Morphology"
+
+[[candidate]]
+level  = 1
+id     = "Beak_Shape"
+label  = "부리 (tau=4 주요 형태)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "forms=4=tau NEAR (Darwin finch)"
+
+[[candidate]]
+level  = 1
+id     = "Wing_Feather"
+label  = "날개 깃털 (n=6 주요 타입)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "types=6=n NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Foot_Type"
+label  = "발 (phi=2 perching/swimming EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "uses=2=phi NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Plumage_Color"
+label  = "깃색 (sigma=12 주요 pattern)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "patterns=12=sigma NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Pneumatic_Bone"
+label  = "기낭 (n=6 주 sac)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "sacs=6=n NEAR (avian)"
+
+[[candidate]]
+level  = 1
+id     = "Egg_Shape"
+label  = "알 (tau=4 주요 모양)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.85
+cost   = 0.80
+notes  = "shapes=4=tau NEAR"
+
+[[level]]
+name = "Behavior"
+
+[[candidate]]
+level  = 2
+id     = "Song_Learning"
+label  = "노래 학습 (n=6 주요 phase)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "phases=6~=n NEAR (Marler)"
+
+[[candidate]]
+level  = 2
+id     = "Courtship"
+label  = "구애 (phi=2 display/call EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "modes=2=phi EXACT"
+
+[[candidate]]
+level  = 2
+id     = "Nest_Building"
+label  = "둥지 (tau=4 주요 type)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "types=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Flocking"
+label  = "군집 (sigma=12 주요 species 인지)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "species=12=sigma NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Tool_Use_Crow"
+label  = "도구 사용 까마귀 (n=6 주요 도구)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "tools=6=n NEAR (NC crow)"
+
+[[candidate]]
+level  = 2
+id     = "Brood_Parasite"
+label  = "탁란 (phi=2 inter/intra-specific EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "types=2=phi EXACT"
+
+[[level]]
+name = "Migration"
+
+[[candidate]]
+level  = 3
+id     = "Long_Distance"
+label  = "장거리 이주 (sigma=12k km 최대)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "dist=12k km=sigma NEAR (Arctic tern)"
+
+[[candidate]]
+level  = 3
+id     = "Short_Movement"
+label  = "단거리 이동 (tau=4 주요 elevation zone)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "zones=4=tau NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Stopover"
+label  = "중간 기착 (phi=2 refuel/rest EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "purposes=2=phi EXACT"
+
+[[candidate]]
+level  = 3
+id     = "Compass_Nav"
+label  = "방향 감지 (n=6 주요 단서)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "cues=6=n NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Tracking_GPS"
+label  = "GPS 추적 (sigma=12 g 초소형)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.60
+notes  = "weight=12g=sigma NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Partial_Migrant"
+label  = "부분 이주 (phi=2 same/diff pop EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "types=2=phi EXACT"
+
+[[level]]
+name = "Conservation"
+
+[[candidate]]
+level  = 4
+id     = "IUCN_Redlist"
+label  = "IUCN 적색 목록 (n=6 주요 카테고리)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "cats=6~=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Habitat_Fragment"
+label  = "서식지 단편화 (phi=2 matrix/corridor EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "types=2=phi NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Invasive_Species"
+label  = "침입종 (tau=4 주요 impact)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "impacts=4=tau NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Climate_Shift"
+label  = "기후 이동 (sigma=12 km/decade shift)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.65
+notes  = "shift=12km/dec=sigma NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Breeding_Success"
+label  = "번식 성공률 (n=6 주요 factor)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "factors=6=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Citizen_Science"
+label  = "시민 과학 (phi=2 ebird/iNaturalist EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.90
+cost   = 0.85
+notes  = "platforms=2=phi NEAR"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Passeriformes"
+then_level = 2
+then_ids   = "Song_Learning,Courtship"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Charadriiformes"
+then_level = 3
+then_ids   = "Long_Distance,Stopover"
+
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Strigiformes"
+then_level = 4
+then_ids   = "Citizen_Science"

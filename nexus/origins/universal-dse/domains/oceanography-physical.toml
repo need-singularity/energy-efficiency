@@ -1,0 +1,353 @@
+# =============================================================
+# OCEANOGRAPHY PHYSICAL DSE 도메인 정의
+# 물리해양학 — n=6 해수 특성 + sigma=12 해양층 + tau=4 동력
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "oceanography-physical"
+desc = "물리해양학 DSE — 순환·해류·열염·파랑·조석, n=6 해양 물성"
+levels = ["Property", "Circulation", "Mixing", "Observation", "Application"]
+vision = "n=6 기반 궁극 해양 — n=6 특성 + sigma=12 주요 해류 + tau=4 동력"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Property"
+
+[[candidate]]
+level  = 0
+id     = "Temperature"
+label  = "수온 (n=6 C 심층 평균)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.90
+cost   = 0.88
+notes  = "T_deep=6C=n NEAR, CTD"
+
+[[candidate]]
+level  = 0
+id     = "Salinity"
+label  = "염분 (35 PSU, phi=2 담수/해수 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.88
+cost   = 0.85
+notes  = "states=2=phi EXACT"
+
+[[candidate]]
+level  = 0
+id     = "Density_Sigma"
+label  = "밀도 sigma_theta (tau=4 주요 water mass)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "masses=4=tau NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Pressure"
+label  = "수압 (sigma=12 km 수심)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "depth=12km=sigma NEAR (Challenger)"
+
+[[candidate]]
+level  = 0
+id     = "Dissolved_Oxygen"
+label  = "용존 산소 (n=6 mL/L 표층)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "DO=6mL/L=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Nutrients"
+label  = "영양염 (N/P/Si, phi=2 제한 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "limiters=2=phi NEAR (N/P)"
+
+[[level]]
+name = "Circulation"
+
+[[candidate]]
+level  = 1
+id     = "Gulf_Stream"
+label  = "걸프 스트림 (sigma=12 Sv 강도)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "Sv=85 max, 30 avg~Sigma Float"
+
+[[candidate]]
+level  = 1
+id     = "Kuroshio"
+label  = "쿠로시오 (phi=2 ring shedding EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "rings=2=phi NEAR"
+
+[[candidate]]
+level  = 1
+id     = "ACC_Southern"
+label  = "남극순환 (tau=4 front)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.60
+notes  = "fronts=4=tau EXACT (SAF/PF/SACCF/SBACC)"
+
+[[candidate]]
+level  = 1
+id     = "Thermohaline"
+label  = "열염순환 (MOC, n=6×1000 년 주기)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.65
+notes  = "period=6000yr~=n NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Ekman_Pump"
+label  = "에크만 펌핑 (phi=2 반구 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "hemispheres=2=phi EXACT"
+
+[[candidate]]
+level  = 1
+id     = "Gyre_Sub"
+label  = "subgyre (sigma=12 circulation 특징 설정)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "features=12=sigma NEAR"
+
+[[level]]
+name = "Mixing"
+
+[[candidate]]
+level  = 2
+id     = "Langmuir_Cell"
+label  = "Langmuir 셀 (phi=2 vortex 쌍 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "vortices=2=phi EXACT"
+
+[[candidate]]
+level  = 2
+id     = "Internal_Wave"
+label  = "내부파 (tau=4 주요 주기)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.70
+notes  = "periods=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Double_Diffuse"
+label  = "이중확산 (n=6 Salt finger scale)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "scales=6cm=n NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Eddy_Diffusivity"
+label  = "에디 확산 (sigma=12 m²/s 추정)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "K=12m2/s=sigma NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Convective_Mix"
+label  = "대류 혼합 (phi=2 겨울/봄 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "seasons=2=phi NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Tidal_Mix"
+label  = "조석 혼합 (n=6 h 주기 semi-diurnal)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "period=12h/2=6h=n NEAR"
+
+[[level]]
+name = "Observation"
+
+[[candidate]]
+level  = 3
+id     = "CTD_Cast"
+label  = "CTD 프로파일 (tau=4 주요 센서)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "sensors=4=tau NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Argo_Float"
+label  = "Argo 플로트 (phi=2 cycle 일수 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "cycles=10d, 2=phi EXACT (park+profile)"
+
+[[candidate]]
+level  = 3
+id     = "ADCP_Current"
+label  = "ADCP 해류 (sigma=12 bin 주요)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.68
+notes  = "bins=12=sigma NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Satellite_Alt"
+label  = "위성 고도계 (n=6 cm 정확도)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.60
+cost   = 0.45
+notes  = "accuracy=6cm=n NEAR, Jason"
+
+[[candidate]]
+level  = 3
+id     = "Glider_Auto"
+label  = "Glider (tau=4 주요 제조사)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.60
+notes  = "manufacturers=4=tau NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Mooring_Line"
+label  = "계류선 (n=6 층 관측)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.65
+notes  = "layers=6=n NEAR"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "ENSO_Forecast"
+label  = "엘니뇨 예측 (n=6 개월 리드)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "lead=6mo=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Sea_Level_Rise"
+label  = "해수면 상승 (sigma=12 mm/yr 누적)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.70
+cost   = 0.60
+notes  = "rate=12mm/yr max=sigma NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Hurricane_Ocean"
+label  = "허리케인-해양 (phi=2 cold wake EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.60
+notes  = "phases=2=phi NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Marine_Heatwave"
+label  = "해양 열파 (tau=4 카테고리)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "categories=4=tau NEAR (Hobday 2016)"
+
+[[candidate]]
+level  = 4
+id     = "Carbon_Uptake"
+label  = "탄소 흡수 (n=6 Gt/yr)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.65
+cost   = 0.55
+notes  = "uptake=2.6 Gt/yr~, 6 nearby=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Tsunami_Prop"
+label  = "쓰나미 전파 (sigma=12 h 태평양 횡단)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.60
+cost   = 0.50
+notes  = "time=12h=sigma NEAR"
+
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "Argo_Float"
+then_level = 4
+then_ids   = "ENSO_Forecast,Sea_Level_Rise"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Thermohaline"
+then_level = 4
+then_ids   = "Carbon_Uptake"
+
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Dissolved_Oxygen"
+then_level = 4
+then_ids   = "Tsunami_Prop"

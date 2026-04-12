@@ -1,0 +1,353 @@
+# =============================================================
+# SEISMOLOGY DSE 도메인 정의
+# 지진학 — n=6 지진파 모드 + sigma=12 규모 스케일 + tau=4 파형
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "seismology"
+desc = "지진학 DSE — 내부 구조·파동 전파·진원 결정·조기 경보, n=6 지진파 모드"
+levels = ["Source", "Wave", "Detector", "Analysis", "Application"]
+vision = "n=6 기반 궁극 지진학 — n=6 지진파 타입 + sigma=12 규모 단계 + tau=4 파형"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Source"
+
+[[candidate]]
+level  = 0
+id     = "Tectonic_Strike"
+label  = "단층 주향 이동 (n=6 연간 cm 변위)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "slip=6cm/yr=n NEAR, San Andreas 평균"
+
+[[candidate]]
+level  = 0
+id     = "Thrust_Mega"
+label  = "대규모 역단층 (phi=2 판 경계 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "plates=2=phi EXACT (over+under), Tohoku 2011"
+
+[[candidate]]
+level  = 0
+id     = "Volcanic_VT"
+label  = "화산-지진 (VT, 저주파 sigma=12 Hz 대역)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.70
+notes  = "freq=12Hz=sigma NEAR, USGS HVO"
+
+[[candidate]]
+level  = 0
+id     = "Induced_Mining"
+label  = "유발 지진 (광산, tau=4 유형 분류)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.75
+cost   = 0.78
+notes  = "types=4=tau NEAR, McGarr 2014"
+
+[[candidate]]
+level  = 0
+id     = "Explosion_Source"
+label  = "폭발 진원 (핵/자연, n=6 km 심도 제약)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.60
+cost   = 0.50
+notes  = "depth=6km=n NEAR, CTBTO 식별"
+
+[[candidate]]
+level  = 0
+id     = "Slow_Slip_Event"
+label  = "저속 미끄러짐 (SSE, 주-월 지속)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.65
+cost   = 0.55
+notes  = "Obara 2002, Cascadia"
+
+[[level]]
+name = "Wave"
+
+[[candidate]]
+level  = 1
+id     = "P_Wave"
+label  = "P파 (종파, 최속 6 km/s)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.90
+cost   = 0.92
+notes  = "v_p=6km/s=n NEAR (지각), Jeffreys-Bullen"
+
+[[candidate]]
+level  = 1
+id     = "S_Wave"
+label  = "S파 (횡파, phi=2 편광 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.88
+cost   = 0.90
+notes  = "polar=2=phi EXACT (SV+SH), Aki-Richards"
+
+[[candidate]]
+level  = 1
+id     = "Rayleigh"
+label  = "레일리파 (표면, tau=4 모드 분산)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.88
+notes  = "modes=4=tau NEAR, Rayleigh 1885"
+
+[[candidate]]
+level  = 1
+id     = "Love_Wave"
+label  = "러브파 (표면 SH)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.82
+cost   = 0.85
+notes  = "Love 1911, 층상 구조 필수"
+
+[[candidate]]
+level  = 1
+id     = "Normal_Mode"
+label  = "정상 모드 (지구 진동, sigma=12 분 주기)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.65
+notes  = "period=12min=sigma NEAR, Dahlen-Tromp"
+
+[[candidate]]
+level  = 1
+id     = "PKIKP_Core"
+label  = "PKIKP (내핵 P파, n=6 변환 경로 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.60
+cost   = 0.55
+notes  = "segments=6=n EXACT, Lehmann 1936 발견"
+
+[[level]]
+name = "Detector"
+
+[[candidate]]
+level  = 2
+id     = "STS2_BB"
+label  = "STS-2 광대역 지진계 (sigma=12×10 주기 범위)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.70
+cost   = 0.60
+notes  = "period_range=12s~=sigma NEAR, Streckeisen"
+
+[[candidate]]
+level  = 2
+id     = "GEOS_Short"
+label  = "단주기 지오폰 (phi=2 Hz 이하 차단)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.85
+cost   = 0.90
+notes  = "cutoff=2Hz=phi NEAR, Mark Products"
+
+[[candidate]]
+level  = 2
+id     = "OBS_Ocean"
+label  = "해저 지진계 (tau=4 km 수심 배치)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.60
+cost   = 0.45
+notes  = "depth=4km=tau NEAR, Woods Hole OBS"
+
+[[candidate]]
+level  = 2
+id     = "DAS_Fiber"
+label  = "분산 음향 센싱 (광섬유, n=6 m 게이지)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.55
+notes  = "gauge=6m=n NEAR, Silixa iDAS"
+
+[[candidate]]
+level  = 2
+id     = "Rotational_S"
+label  = "회전 지진계 (6성분 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.60
+cost   = 0.50
+notes  = "components=6=n EXACT (3T+3R), BlueSeis"
+
+[[candidate]]
+level  = 2
+id     = "MEMS_Accel"
+label  = "MEMS 가속도계 (n=6 V 출력 범위)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.90
+cost   = 0.92
+notes  = "Kinemetrics Episensor, 강진동"
+
+[[level]]
+name = "Analysis"
+
+[[candidate]]
+level  = 3
+id     = "Moment_Tensor"
+label  = "모멘트 텐서 (sigma=12 자유도 중복 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "dof=6 독립, 12 total, Aki 1972"
+
+[[candidate]]
+level  = 3
+id     = "Travel_Time"
+label  = "주시 인버전 (tau=4 층 IASP91)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.82
+notes  = "layers=4=tau NEAR, Kennett-Engdahl"
+
+[[candidate]]
+level  = 3
+id     = "Full_Waveform"
+label  = "전파형 역산 (FWI, phi=2 adjoint EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.55
+cost   = 0.45
+notes  = "adjoint=2=phi EXACT (forward+adjoint), Tarantola"
+
+[[candidate]]
+level  = 3
+id     = "H_Kappa"
+label  = "H-kappa 수용체 함수 (모호면 깊이)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.80
+cost   = 0.80
+notes  = "Zhu-Kanamori 2000"
+
+[[candidate]]
+level  = 3
+id     = "Ambient_Noise"
+label  = "주변 잡음 상호상관 (sigma=12 h 스택)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.65
+notes  = "stack=12h=sigma NEAR, Shapiro 2005"
+
+[[candidate]]
+level  = 3
+id     = "ML_Pick"
+label  = "기계학습 위상 Pick (CNN)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.65
+cost   = 0.55
+notes  = "PhaseNet Ross 2018"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "EEW_Early"
+label  = "지진 조기 경보 (n=6 초 경보 시간)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.70
+notes  = "lead=6s=n NEAR, ShakeAlert"
+
+[[candidate]]
+level  = 4
+id     = "Tsunami_Warn"
+label  = "쓰나미 경보 (sigma=12 DART 부이)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.55
+cost   = 0.45
+notes  = "buoys=12=sigma NEAR, NOAA PMEL"
+
+[[candidate]]
+level  = 4
+id     = "Nuclear_Monitor"
+label  = "핵 폭발 감시 (CTBTO, tau=4 기술 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.40
+notes  = "technologies=4=tau EXACT (seismic/hydro/IR/radio)"
+
+[[candidate]]
+level  = 4
+id     = "Reservoir_Image"
+label  = "저류층 이미징 (phi=2 4D repeat EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.55
+notes  = "acquisition=2=phi NEAR (baseline+monitor)"
+
+[[candidate]]
+level  = 4
+id     = "Urban_Seismo"
+label  = "도시 지진 관측 (DAS 광섬유, n=6 km 커버)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.75
+cost   = 0.65
+notes  = "coverage=6km=n NEAR, Stanford DAS"
+
+[[candidate]]
+level  = 4
+id     = "Volcano_Forecast"
+label  = "화산 분화 예측 (RSAM, sigma=12 h 전조)"
+n6     = 1.00
+perf   = 0.78
+power  = 0.60
+cost   = 0.55
+notes  = "precursor=12h=sigma NEAR, Endo-Murray"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Thrust_Mega"
+then_level = 4
+then_ids   = "Tsunami_Warn,EEW_Early"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Volcanic_VT"
+then_level = 4
+then_ids   = "Volcano_Forecast"
+
+[[rule]]
+type       = "exclude"
+if_level   = 2
+if_id      = "OBS_Ocean"
+then_level = 4
+then_ids   = "Urban_Seismo"
