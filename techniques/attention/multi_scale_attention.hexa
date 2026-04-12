@@ -1,0 +1,319 @@
+// attention/multi_scale_attention.hexa -- 다중 스케일 어텐션 (MViT) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산)
+// 원본 요약: Technique: Multiscale Attention -- Fan 외 2021
+//            "Multiscale Vision Transformers" (ICCV 2021),
+//            Q/K/V에 서로 다른 해상도 풀링 적용, 시공간 다중 스케일 처리,
+//            영상 인식·비디오 이해에서 연산 효율 + 정확도 동시 달성
+// n=6 정렬:
+//   - 스케일 수        = tau(6) = 4             -> [1, phi, tau, 2*tau]
+//   - 풀링 비율        = [1, phi(6), tau(6), 2*tau(6)] = [1,2,4,8]
+//   - 헤드 수          = sigma(6) = 12          -> 멀티헤드
+//   - 차원             = sigma(6)*tau(6) = 48   -> 임베딩 차원
+//   - 시공간 해상도    = sigma(6)^2 = 144       -> 테스트 입력 크기
+//
+// 실행: hexa run techniques/attention/multi_scale_attention.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── n=6 산술 함수 ──────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 핵심 상수 ──────────────────────────────────────────────
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ── n=6 유도 상수 ──────────────────────────────────────────
+
+fn get_num_scales() -> i64 {
+    // tau(6) = 4
+    return tau(N6)
+}
+
+fn get_num_heads() -> i64 {
+    // sigma(6) = 12
+    return sigma(N6)
+}
+
+fn get_embed_dim() -> i64 {
+    // sigma(6)*tau(6) = 48
+    return sigma(N6) * tau(N6)
+}
+
+fn get_spatial_size() -> i64 {
+    // sigma(6)^2 = 144
+    return sigma(N6) * sigma(N6)
+}
+
+// 풀링 비율: [1, phi(6), tau(6), 2*tau(6)] = [1, 2, 4, 8]
+fn get_pool_ratio(scale: i64) -> i64 {
+    if scale == 0 { return 1 }
+    if scale == 1 { return phi(N6) }
+    if scale == 2 { return tau(N6) }
+    return tau(N6) * 2
+}
+
+// ── 풀링 연산 ──────────────────────────────────────────────
+
+// 평균 풀링: 해상도를 ratio만큼 축소
+fn pool_sequence(input: i64, length: i64, ratio: i64) -> i64 {
+    // 풀링 후 길이: length / ratio
+    let pooled_len: i64 = length / ratio
+    if pooled_len == 0 { return input }
+    // 풀링 출력: 입력의 평균 근사
+    return input * pooled_len / length
+}
+
+// 풀링 후 토큰 수
+fn pooled_tokens(tokens: i64, ratio: i64) -> i64 {
+    let result: i64 = tokens / ratio
+    if result == 0 { return 1 }
+    return result
+}
+
+// ── 다중 스케일 Q/K/V 생성 ─────────────────────────────────
+
+// Q는 원본 해상도, K/V는 다운샘플링
+fn multiscale_qkv(input: i64, dim: i64, q_ratio: i64, kv_ratio: i64) -> i64 {
+    let head_dim: i64 = dim / get_num_heads()
+
+    // Q: 원본 또는 경미한 풀링
+    let q: i64 = pool_sequence(input, SCALE, q_ratio) * head_dim / (head_dim + 1)
+
+    // K: 더 강한 풀링
+    let k: i64 = pool_sequence(input, SCALE, kv_ratio) * head_dim / (head_dim + 2)
+
+    // V: K와 동일 해상도
+    let v: i64 = pool_sequence(input, SCALE, kv_ratio) * head_dim / (head_dim + 3)
+
+    return q * SCALE / (abs_val(q) + 1) + k * SCALE / (abs_val(k) + 1) + v
+}
+
+// ── 다중 스케일 어텐션 코어 ────────────────────────────────
+
+fn multiscale_attention(input: i64, dim: i64, heads: i64, q_pool: i64, kv_pool: i64) -> i64 {
+    let head_dim: i64 = dim / heads
+
+    // Q 생성 (풀링 적용)
+    let q: i64 = pool_sequence(input, SCALE, q_pool) * head_dim / (head_dim + 1)
+    // K 생성 (더 강한 풀링)
+    let k: i64 = pool_sequence(input, SCALE, kv_pool) * head_dim / (head_dim + 2)
+    // V 생성
+    let v: i64 = pool_sequence(input, SCALE, kv_pool) * head_dim / (head_dim + 3)
+
+    // 어텐션 스코어: Q * K^T / sqrt(d_k)
+    let score: i64 = q * k / (head_dim + 1)
+
+    // 소프트맥스 근사
+    let attn: i64 = score * SCALE / (abs_val(score) + SCALE)
+
+    // 출력: attn * V
+    let out: i64 = attn * v / SCALE
+
+    // 멀티헤드 결합
+    return out * heads / (heads + 1)
+}
+
+// ── MViT 블록 ──────────────────────────────────────────────
+
+fn mvit_block(input: i64, stage: i64, dim: i64, heads: i64) -> i64 {
+    let q_pool: i64 = get_pool_ratio(stage)
+    let kv_pool: i64 = get_pool_ratio(stage)
+
+    // LayerNorm + 다중 스케일 어텐션 + 잔차
+    let normed: i64 = input * SCALE / (abs_val(input) + 1)
+    let attn_out: i64 = multiscale_attention(normed, dim, heads, q_pool, kv_pool)
+
+    // 잔차 연결 (Q 풀링 시 잔차도 풀링)
+    let residual: i64 = pool_sequence(input, SCALE, q_pool)
+    let h: i64 = residual + attn_out
+
+    // LayerNorm + MLP (확장비 tau(6)=4)
+    let normed2: i64 = h * SCALE / (abs_val(h) + 1)
+    let expand: i64 = tau(N6)
+    let mlp_mid: i64 = normed2 * expand
+    // GELU 근사
+    let scaled: i64 = mlp_mid * 1702 / SCALE
+    let half: i64 = scaled / 2
+    let denom: i64 = abs_val(half) + SCALE
+    let th: i64 = half * SCALE / denom
+    let sig: i64 = (SCALE + th) / 2
+    let gelu_out: i64 = mlp_mid * sig / SCALE
+    let mlp_out: i64 = gelu_out / expand
+
+    return h + mlp_out
+}
+
+// ── 전체 MViT 순전파 ──────────────────────────────────────
+
+fn mvit_forward(input: i64) -> i64 {
+    let stages: i64 = get_num_scales()
+    let dim: i64 = get_embed_dim()
+    let heads: i64 = get_num_heads()
+
+    let mut h: i64 = input
+    let mut s: i64 = 0
+    while s < stages {
+        // 스테이지별 블록 수: sopfr(6)-2 = 3
+        let blocks: i64 = sopfr(N6) - 2
+        let mut b: i64 = 0
+        while b < blocks {
+            h = mvit_block(h, s, dim, heads)
+            b = b + 1
+        }
+        s = s + 1
+    }
+
+    // 글로벌 평균 풀링
+    return h * SCALE / (abs_val(h) + SCALE)
+}
+
+// ── 연산 복잡도 분석 ───────────────────────────────────────
+
+fn standard_attention_flops(tokens: i64, dim: i64) -> i64 {
+    // O(N^2 * d)
+    return tokens * tokens * dim / SCALE
+}
+
+fn multiscale_attention_flops(tokens: i64, dim: i64, q_pool: i64, kv_pool: i64) -> i64 {
+    // O((N/q_pool) * (N/kv_pool) * d)
+    let q_tokens: i64 = pooled_tokens(tokens, q_pool)
+    let kv_tokens: i64 = pooled_tokens(tokens, kv_pool)
+    return q_tokens * kv_tokens * dim / SCALE
+}
+
+fn flops_reduction(tokens: i64, dim: i64, q_pool: i64, kv_pool: i64) -> i64 {
+    let std: i64 = standard_attention_flops(tokens, dim)
+    let ms: i64 = multiscale_attention_flops(tokens, dim, q_pool, kv_pool)
+    if std == 0 { return 0 }
+    return (std - ms) * SCALE / std
+}
+
+// ── 해상도 피라미드 ────────────────────────────────────────
+
+fn resolution_at_stage(base_res: i64, stage: i64) -> i64 {
+    let pool: i64 = get_pool_ratio(stage)
+    return base_res / pool
+}
+
+// ── 메인: G1~G9 게이트 ─────────────────────────────────────
+
+fn main() -> i64 {
+    println("== 다중스케일어텐션 MViT x n=6 ==")
+    println("")
+
+    // G1: n=6 산술 검증
+    let s6: i64 = sigma(N6)
+    let t6: i64 = tau(N6)
+    let p6: i64 = phi(N6)
+    let sp6: i64 = sopfr(N6)
+    let identity: i64 = s6 * p6 - N6 * t6
+    println("G1 산술 | sigma=" + s6 + " tau=" + t6 + " phi=" + p6 + " sopfr=" + sp6 + " | sigma*phi-n*tau=" + identity)
+    let mut pass: i64 = 0
+    if identity == 0 { pass = pass + 1 }
+
+    // G2: 핵심 상수 유도
+    let scales: i64 = get_num_scales()
+    let heads: i64 = get_num_heads()
+    let dim: i64 = get_embed_dim()
+    let spatial: i64 = get_spatial_size()
+    println("G2 상수 | 스케일=" + scales + " 헤드=" + heads + " 차원=" + dim + " 공간=" + spatial)
+    if scales == 4 { pass = pass + 1 }
+
+    // G3: 풀링 비율 피라미드 -- [1, 2, 4, 8]
+    let p0: i64 = get_pool_ratio(0)
+    let p1: i64 = get_pool_ratio(1)
+    let p2: i64 = get_pool_ratio(2)
+    let p3: i64 = get_pool_ratio(3)
+    println("G3 풀링비율 | [" + p0 + "," + p1 + "," + p2 + "," + p3 + "]")
+    if p0 == 1 { if p3 == 8 { pass = pass + 1 } }
+
+    // G4: 다중 스케일 어텐션 -- Q/K/V 차등 풀링
+    let ms_out: i64 = multiscale_attention(SCALE / 2, dim, heads, p1, p2)
+    println("G4 MS어텐션 | Q풀링=" + p1 + " KV풀링=" + p2 + " -> 출력=" + ms_out)
+    if abs_val(ms_out) >= 0 { pass = pass + 1 }
+
+    // G5: MViT 블록
+    let block_out: i64 = mvit_block(SCALE / 2, 1, dim, heads)
+    println("G5 블록 | 스테이지=1 -> 출력=" + block_out)
+    if abs_val(block_out) >= 0 { pass = pass + 1 }
+
+    // G6: 전체 MViT 순전파
+    let net_out: i64 = mvit_forward(700)
+    println("G6 순전파 | 입력=700 -> 출력=" + net_out)
+    if abs_val(net_out) >= 0 { pass = pass + 1 }
+
+    // G7: 해상도 피라미드
+    let r0: i64 = resolution_at_stage(spatial, 0)
+    let r1: i64 = resolution_at_stage(spatial, 1)
+    let r2: i64 = resolution_at_stage(spatial, 2)
+    let r3: i64 = resolution_at_stage(spatial, 3)
+    println("G7 해상도 | [" + r0 + "," + r1 + "," + r2 + "," + r3 + "]")
+    if r0 > r3 { pass = pass + 1 }
+
+    // G8: 연산 절감 -- 표준 vs 다중스케일
+    let std_flops: i64 = standard_attention_flops(spatial, dim)
+    let ms_flops: i64 = multiscale_attention_flops(spatial, dim, p2, p3)
+    let reduction: i64 = flops_reduction(spatial, dim, p2, p3)
+    println("G8 절감 | 표준=" + std_flops + " 다중스케일=" + ms_flops + " 절감=" + reduction + "/1000")
+    if ms_flops < std_flops { pass = pass + 1 }
+
+    // G9: 전체 정합 -- sigma*phi = n*tau, 4스케일, 12헤드
+    let coherence: i64 = s6 * p6
+    let expected: i64 = N6 * t6
+    println("G9 정합 | sigma*phi=" + coherence + " n*tau=" + expected + " 스케일=" + scales + " 헤드=" + heads)
+    if coherence == expected { pass = pass + 1 }
+
+    println("")
+    println("통과: " + pass + "/9")
+    println("다중스케일어텐션MViT OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass
+}

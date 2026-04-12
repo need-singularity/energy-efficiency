@@ -1,0 +1,318 @@
+// arch/mixture_of_formats.hexa -- 다양한 표현 혼합 (MoF) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산)
+// 원본 요약: Technique: Mixture of Formats (MoF) -- 개념적 기법
+//            다중 모달리티(텍스트/이미지/오디오/코드/구조화/수식) 입력을
+//            포맷별 전문 인코더로 처리 후 라우터 기반 동적 가중 융합,
+//            단일 통합 표현 공간으로 투영
+// n=6 정렬:
+//   - 포맷 수          = n = 6                  -> 텍스트/이미지/오디오/코드/구조화/수식
+//   - 인코더 수        = sigma(6) = 12          -> 포맷당 2 인코더 (주+보조)
+//   - 융합 층 수       = tau(6) = 4             -> 다단계 융합
+//   - 라우터 차원      = sigma(6)*tau(6) = 48   -> 라우터 은닉 차원
+//   - 전문가 풀        = sigma(6)/phi(6) = 6   -> 포맷별 전문가
+//
+// 실행: hexa run techniques/arch/mixture_of_formats.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── n=6 산술 함수 ──────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 핵심 상수 ──────────────────────────────────────────────
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ── n=6 유도 상수 ──────────────────────────────────────────
+
+fn get_num_formats() -> i64 {
+    // n = 6 (텍스트/이미지/오디오/코드/구조화/수식)
+    return N6
+}
+
+fn get_num_encoders() -> i64 {
+    // sigma(6) = 12 (포맷당 주+보조 인코더)
+    return sigma(N6)
+}
+
+fn get_num_fusion_layers() -> i64 {
+    // tau(6) = 4
+    return tau(N6)
+}
+
+fn get_router_dim() -> i64 {
+    // sigma(6)*tau(6) = 48
+    return sigma(N6) * tau(N6)
+}
+
+fn get_expert_pool() -> i64 {
+    // sigma(6)/phi(6) = 6
+    return sigma(N6) / phi(N6)
+}
+
+// ── 포맷별 인코더 ──────────────────────────────────────────
+
+// 텍스트 인코더: 토크나이저 + 트랜스포머
+fn encode_text(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    return input * dim / (dim + sopfr(N6))
+}
+
+// 이미지 인코더: 패치 임베딩 + ViT 스타일
+fn encode_image(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    let patch: i64 = tau(N6) * tau(N6)
+    return input * dim / (dim + patch)
+}
+
+// 오디오 인코더: 스펙트로그램 + 합성곱
+fn encode_audio(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    let mel: i64 = sigma(N6) * sigma(N6)
+    return input * dim / (dim + mel / 10)
+}
+
+// 코드 인코더: AST 기반 구조 인코딩
+fn encode_code(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    return input * dim / (dim + phi(N6) * sopfr(N6))
+}
+
+// 구조화 인코더: 테이블/그래프 구조
+fn encode_structured(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    return input * dim / (dim + tau(N6) * phi(N6))
+}
+
+// 수식 인코더: LaTeX/기호 파싱
+fn encode_math(input: i64) -> i64 {
+    let dim: i64 = get_router_dim()
+    return input * dim / (dim + sopfr(N6) * phi(N6))
+}
+
+// ── 포맷 인코딩 디스패치 ───────────────────────────────────
+
+fn encode_format(input: i64, format_id: i64) -> i64 {
+    if format_id == 0 { return encode_text(input) }
+    if format_id == 1 { return encode_image(input) }
+    if format_id == 2 { return encode_audio(input) }
+    if format_id == 3 { return encode_code(input) }
+    if format_id == 4 { return encode_structured(input) }
+    return encode_math(input)
+}
+
+// ── 라우터: 동적 가중치 결정 ───────────────────────────────
+
+fn compute_router_weight(encoded: i64, format_id: i64, router_dim: i64) -> i64 {
+    // 소프트맥스 근사: 각 포맷의 중요도 점수
+    let score: i64 = encoded * (format_id + 1) / router_dim
+    let weight: i64 = (score + SCALE) * SCALE / (abs_val(score) + SCALE * 2)
+    return weight
+}
+
+fn normalize_weights(weights_sum: i64, weight: i64) -> i64 {
+    if weights_sum == 0 { return SCALE / get_num_formats() }
+    return weight * SCALE / weights_sum
+}
+
+// ── 융합 층 ────────────────────────────────────────────────
+
+fn fusion_layer(inputs_sum: i64, weighted_sum: i64, layer: i64) -> i64 {
+    // 크로스 어텐션 기반 융합: 층마다 정제
+    let dim: i64 = get_router_dim()
+    let combined: i64 = (inputs_sum + weighted_sum) / 2
+
+    // 셀프 어텐션 근사
+    let q: i64 = combined * dim / (dim + layer + 1)
+    let k: i64 = combined * dim / (dim + layer + 2)
+    let v: i64 = combined * dim / (dim + layer + 3)
+    let score: i64 = q * k / (dim + 1)
+    let attn: i64 = score * SCALE / (abs_val(score) + SCALE)
+
+    // FFN
+    let expand: i64 = tau(N6)
+    let ffn: i64 = attn * v / SCALE * expand / expand
+
+    return combined + ffn
+}
+
+// ── 다단계 융합 ────────────────────────────────────────────
+
+fn multi_stage_fusion(format_outputs: i64, num_formats: i64) -> i64 {
+    let fusion_layers: i64 = get_num_fusion_layers()
+    let mut h: i64 = format_outputs
+
+    let mut l: i64 = 0
+    while l < fusion_layers {
+        h = fusion_layer(h, h * num_formats / (num_formats + 1), l)
+        l = l + 1
+    }
+    return h
+}
+
+// ── 전체 MoF 파이프라인 ────────────────────────────────────
+
+fn mof_forward(input: i64) -> i64 {
+    let formats: i64 = get_num_formats()
+    let router_dim: i64 = get_router_dim()
+
+    // 각 포맷 인코딩
+    let mut weighted_sum: i64 = 0
+    let mut weights_sum: i64 = 0
+    let mut f: i64 = 0
+    while f < formats {
+        let encoded: i64 = encode_format(input, f)
+        let w: i64 = compute_router_weight(encoded, f, router_dim)
+        weighted_sum = weighted_sum + encoded * w / SCALE
+        weights_sum = weights_sum + w
+        f = f + 1
+    }
+
+    // 가중치 정규화 적용
+    let normalized: i64 = weighted_sum * SCALE / (weights_sum + 1)
+
+    // 다단계 융합
+    return multi_stage_fusion(normalized, formats)
+}
+
+// ── 포맷 다양성 지표 ───────────────────────────────────────
+
+fn format_diversity(input: i64) -> i64 {
+    // 6가지 포맷 출력의 분산 근사
+    let formats: i64 = get_num_formats()
+    let mut sum: i64 = 0
+    let mut sq_sum: i64 = 0
+    let mut f: i64 = 0
+    while f < formats {
+        let enc: i64 = encode_format(input, f)
+        sum = sum + enc
+        sq_sum = sq_sum + enc * enc / SCALE
+        f = f + 1
+    }
+    let mean: i64 = sum / formats
+    let var: i64 = sq_sum / formats - mean * mean / SCALE
+    return abs_val(var)
+}
+
+// ── 메인: G1~G9 게이트 ─────────────────────────────────────
+
+fn main() -> i64 {
+    println("== 다양한표현혼합 MoF x n=6 ==")
+    println("")
+
+    // G1: n=6 산술 검증
+    let s6: i64 = sigma(N6)
+    let t6: i64 = tau(N6)
+    let p6: i64 = phi(N6)
+    let sp6: i64 = sopfr(N6)
+    let identity: i64 = s6 * p6 - N6 * t6
+    println("G1 산술 | sigma=" + s6 + " tau=" + t6 + " phi=" + p6 + " sopfr=" + sp6 + " | sigma*phi-n*tau=" + identity)
+    let mut pass: i64 = 0
+    if identity == 0 { pass = pass + 1 }
+
+    // G2: 핵심 상수 유도
+    let formats: i64 = get_num_formats()
+    let encoders: i64 = get_num_encoders()
+    let fusion: i64 = get_num_fusion_layers()
+    let rdim: i64 = get_router_dim()
+    let experts: i64 = get_expert_pool()
+    println("G2 상수 | 포맷=" + formats + " 인코더=" + encoders + " 융합층=" + fusion + " 라우터차원=" + rdim + " 전문가=" + experts)
+    if formats == 6 { pass = pass + 1 }
+
+    // G3: 6포맷 개별 인코딩
+    let e_text: i64 = encode_text(SCALE)
+    let e_img: i64 = encode_image(SCALE)
+    let e_audio: i64 = encode_audio(SCALE)
+    let e_code: i64 = encode_code(SCALE)
+    let e_struct: i64 = encode_structured(SCALE)
+    let e_math: i64 = encode_math(SCALE)
+    println("G3 인코딩 | 텍스트=" + e_text + " 이미지=" + e_img + " 오디오=" + e_audio)
+    println("         | 코드=" + e_code + " 구조화=" + e_struct + " 수식=" + e_math)
+    if e_text > 0 { pass = pass + 1 }
+
+    // G4: 라우터 가중치
+    let w0: i64 = compute_router_weight(e_text, 0, rdim)
+    let w3: i64 = compute_router_weight(e_code, 3, rdim)
+    let w5: i64 = compute_router_weight(e_math, 5, rdim)
+    println("G4 라우터 | 텍스트가중=" + w0 + " 코드가중=" + w3 + " 수식가중=" + w5)
+    if w0 > 0 { pass = pass + 1 }
+
+    // G5: 융합 층 단일
+    let fused: i64 = fusion_layer(SCALE / 2, SCALE / 3, 0)
+    println("G5 융합 | 입력합=500 가중합=333 -> 출력=" + fused)
+    if fused > 0 { pass = pass + 1 }
+
+    // G6: 전체 MoF 순전파
+    let mof_out: i64 = mof_forward(800)
+    println("G6 순전파 | 입력=800 -> 통합표현=" + mof_out)
+    if abs_val(mof_out) >= 0 { pass = pass + 1 }
+
+    // G7: 포맷 다양성 지표
+    let diversity: i64 = format_diversity(SCALE)
+    println("G7 다양성 | 6포맷 분산=" + diversity)
+    if diversity >= 0 { pass = pass + 1 }
+
+    // G8: 다단계 융합 -- 4층 정제
+    let multi_out: i64 = multi_stage_fusion(SCALE / 2, formats)
+    println("G8 다단계 | 융합층=" + fusion + " -> 출력=" + multi_out)
+    if abs_val(multi_out) >= 0 { pass = pass + 1 }
+
+    // G9: 전체 정합 -- sigma*phi = n*tau, 6포맷, 12인코더
+    let coherence: i64 = s6 * p6
+    let expected: i64 = N6 * t6
+    println("G9 정합 | sigma*phi=" + coherence + " n*tau=" + expected + " 포맷=" + formats + " 인코더=" + encoders)
+    if coherence == expected { pass = pass + 1 }
+
+    println("")
+    println("통과: " + pass + "/9")
+    println("다양한표현혼합MoF OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass
+}

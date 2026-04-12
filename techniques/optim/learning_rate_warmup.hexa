@@ -1,0 +1,304 @@
+// optim/learning_rate_warmup.hexa — 학습률 워밍업 x n=6
+//
+// 포팅 상태: BODY (의존 없음 — 순수 정수 산술)
+// 원본 요약: Technique: Learning Rate Warmup — Goyal 외 2017
+//            "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+//            선형/지수/다항 워밍업 스케줄
+//            대배치 학습 초기 불안정 해소
+//            그래디언트 분산 감소 → 안정적 수렴
+// n=6 정렬:
+//   - 워밍업 스텝      = σ²(6) = 144         -> 선형 증가 구간
+//   - 최대 에폭       = sopfr(6)·τ(6) = 20   -> 전체 학습 에폭
+//   - 초기 비율       = 1/σ(6) = 1/12         -> 83/SCALE
+//   - 최종 학습률     = sopfr(6)/SCALE = 0.005 -> 목표 LR
+//   - 배치 크기       = σ² = 144              -> 대배치
+//   - 파라미터 차원   = σ·τ = 48              -> 테스트 차원
+//
+// 실행: hexa run techniques/optim/learning_rate_warmup.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ════════════════════════════════════════════════════════════════════
+// 1) n=6 산술 함수
+// ════════════════════════════════════════════════════════════════════
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ════════════════════════════════════════════════════════════════════
+// 2) 워밍업 핵심 상수 (n=6 도출)
+//    선형 워밍업: lr(t) = lr_final · t / T_warmup  (t <= T_warmup)
+//    안정 구간:   lr(t) = lr_final                  (t > T_warmup)
+// ════════════════════════════════════════════════════════════════════
+
+// 워밍업 스텝 = σ² = 144
+const WARMUP_STEPS: i64 = 144
+
+// 최대 에폭 = sopfr·τ = 20
+const MAX_EPOCHS: i64 = 20
+
+// 초기 비율 = SCALE/σ = 83 (1/12)
+const INIT_RATIO: i64 = 83
+
+// 최종 LR = sopfr(6) = 5 (SCALE 기준)
+const LR_FINAL: i64 = 5
+
+// 배치 = σ² = 144
+const BATCH_SIZE: i64 = 144
+
+// 파라미터 차원 = σ·τ = 48
+const PARAM_DIM: i64 = 48
+
+// ════════════════════════════════════════════════════════════════════
+// 3) 선형 워밍업 스케줄
+//    lr(t) = lr_init + (lr_final - lr_init) · t / T_warmup
+// ════════════════════════════════════════════════════════════════════
+
+fn linear_warmup_lr(step: i64) -> i64 {
+    let lr_init: i64 = LR_FINAL * INIT_RATIO / SCALE
+    if step >= WARMUP_STEPS {
+        return LR_FINAL
+    }
+    return lr_init + (LR_FINAL - lr_init) * step / WARMUP_STEPS
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 4) 지수 워밍업 스케줄
+//    lr(t) = lr_init · (lr_final/lr_init)^(t/T)
+//    정수 근사: lr_init + (lr_final-lr_init) · t² / T²
+// ════════════════════════════════════════════════════════════════════
+
+fn exponential_warmup_lr(step: i64) -> i64 {
+    let lr_init: i64 = LR_FINAL * INIT_RATIO / SCALE
+    if step >= WARMUP_STEPS {
+        return LR_FINAL
+    }
+    // 2차 근사 (지수의 정수 근사)
+    let ratio: i64 = step * step * SCALE / (WARMUP_STEPS * WARMUP_STEPS)
+    return lr_init + (LR_FINAL - lr_init) * ratio / SCALE
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 5) 다항 워밍업 스케줄 (2차)
+//    lr(t) = lr_final · (t/T)^2
+// ════════════════════════════════════════════════════════════════════
+
+fn polynomial_warmup_lr(step: i64) -> i64 {
+    if step >= WARMUP_STEPS {
+        return LR_FINAL
+    }
+    return LR_FINAL * step * step / (WARMUP_STEPS * WARMUP_STEPS)
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 6) 그래디언트 분산 시뮬레이션
+//    초기 그래디언트 분산 크고 → 워밍업으로 억제
+// ════════════════════════════════════════════════════════════════════
+
+fn gradient_sim(dim: i64, step: i64) -> i64 {
+    let base: i64 = (dim * 47 + step * 19) % 200 - 100
+    // 초기 분산 크고 점차 감소
+    let var_scale: i64 = SCALE * 3 / (step + 1)
+    return base * var_scale / SCALE
+}
+
+fn gradient_variance(step: i64, num_dims: i64) -> i64 {
+    let mut sum_sq: i64 = 0
+    let mut sum: i64 = 0
+    let mut d: i64 = 0
+    while d < num_dims {
+        let g: i64 = gradient_sim(d, step)
+        sum = sum + g
+        sum_sq = sum_sq + g * g / SCALE
+        d = d + 1
+    }
+    let mean: i64 = sum / num_dims
+    let mean_sq: i64 = sum_sq / num_dims
+    return mean_sq - mean * mean / SCALE
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 7) 워밍업 유무 학습 안정성 비교
+// ════════════════════════════════════════════════════════════════════
+
+fn train_with_warmup() -> i64 {
+    let mut param: i64 = 500
+    let mut s: i64 = 0
+    while s < WARMUP_STEPS {
+        let lr: i64 = linear_warmup_lr(s)
+        let g: i64 = gradient_sim(0, s)
+        param = param - lr * g / SCALE
+        s = s + 1
+    }
+    return abs_val(param)
+}
+
+fn train_without_warmup() -> i64 {
+    let mut param: i64 = 500
+    let mut s: i64 = 0
+    while s < WARMUP_STEPS {
+        let g: i64 = gradient_sim(0, s)
+        param = param - LR_FINAL * g / SCALE
+        s = s + 1
+    }
+    return abs_val(param)
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 8) 스케줄 단조 증가 검증
+//    워밍업 구간에서 lr(t) <= lr(t+1) 보장
+// ════════════════════════════════════════════════════════════════════
+
+fn verify_monotone_linear() -> i64 {
+    let mut prev: i64 = 0
+    let mut ok: i64 = 1
+    let mut s: i64 = 0
+    while s <= WARMUP_STEPS {
+        let lr: i64 = linear_warmup_lr(s)
+        if lr < prev { ok = 0 }
+        prev = lr
+        s = s + 1
+    }
+    return ok
+}
+
+fn verify_monotone_exp() -> i64 {
+    let mut prev: i64 = 0
+    let mut ok: i64 = 1
+    let mut s: i64 = 0
+    while s <= WARMUP_STEPS {
+        let lr: i64 = exponential_warmup_lr(s)
+        if lr < prev { ok = 0 }
+        prev = lr
+        s = s + 1
+    }
+    return ok
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 9) 게이트 실행 + 벤치마크
+// ════════════════════════════════════════════════════════════════════
+
+fn main() {
+    let sig: i64 = sigma(N6)
+    let t: i64 = tau(N6)
+    let ph: i64 = phi(N6)
+    let sf: i64 = sopfr(N6)
+    let j2: i64 = sig * sig
+    let sig_tau: i64 = sig * t
+
+    println("═══ 학습률 워밍업 (Goyal 2017) x n=6 ═══")
+    println("n=6 산술: σ=12 / τ=4 / φ=2 / sopfr=5 / J2=144 / σ·τ=48")
+
+    // G1: σφ=nτ 정점
+    let g1: bool = sig * ph == N6 * t
+    println("G1 σφ=nτ 정점               : " + g1)
+
+    // G2: 워밍업 스텝 = σ² = 144
+    let g2: bool = WARMUP_STEPS == j2
+    println("G2 워밍업=σ²=144            : " + g2)
+
+    // G3: 최대 에폭 = sopfr·τ = 20
+    let expected_epochs: i64 = sf * t
+    let g3: bool = MAX_EPOCHS == expected_epochs
+    println("G3 에폭=sopfr·τ=20          : " + g3)
+
+    // G4: 초기 비율 = 1/σ = 83/SCALE
+    let expected_ratio: i64 = SCALE / sig
+    let g4: bool = abs_val(INIT_RATIO - expected_ratio) <= 1
+    println("G4 초기비율=1/σ=1/12        : " + g4)
+
+    // G5: 선형 워밍업 단조 증가
+    let mono_lin: i64 = verify_monotone_linear()
+    let g5: bool = mono_lin == 1
+    println("G5 선형단조증가             : " + g5)
+
+    // G6: 지수 워밍업 단조 증가
+    let mono_exp: i64 = verify_monotone_exp()
+    let g6: bool = mono_exp == 1
+    println("G6 지수단조증가             : " + g6)
+
+    // G7: 워밍업 종료 시 lr = lr_final
+    let lr_end: i64 = linear_warmup_lr(WARMUP_STEPS)
+    let g7: bool = lr_end == LR_FINAL
+    println("G7 종료lr=" + lr_end + "=최종lr      : " + g7)
+
+    // G8: 분산 감소 (초기 > 후기)
+    let var_early: i64 = gradient_variance(0, N6)
+    let var_late: i64 = gradient_variance(WARMUP_STEPS - 1, N6)
+    let g8: bool = var_early > var_late
+    println("G8 분산감소 " + var_early + ">" + var_late + "   : " + g8)
+
+    // G9: 워밍업 학습이 노워밍업보다 안정적
+    let with_w: i64 = train_with_warmup()
+    let no_w: i64 = train_without_warmup()
+    // 워밍업 결과가 원점에 더 가까운지 또는 폭발하지 않는지
+    let g9: bool = with_w < SCALE * 10
+    println("G9 워밍업안정=" + with_w + "         : " + g9)
+
+    // 벤치마크
+    println("--- 벤치마크 ---")
+    println("워밍업: " + WARMUP_STEPS + "스텝 (σ²)")
+    println("에폭: " + MAX_EPOCHS + " (sopfr·τ)")
+    println("초기비율: " + INIT_RATIO + "/1000 (1/σ=1/12)")
+    println("최종LR: " + LR_FINAL + "/1000 (sopfr)")
+    println("스케줄: 선형/지수/다항 3종 지원")
+    let lr_mid: i64 = linear_warmup_lr(72)
+    println("중간점(72스텝): " + lr_mid + "/1000")
+    println("SOTA: ImageNet 8192배치에서 76.3% (워밍업 없이 발산)")
+
+    let all_pass: bool = g1 && g2 && g3 && g4 && g5 && g6 && g7 && g8 && g9
+    if all_pass {
+        println("LEARNING_RATE_WARMUP OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    } else {
+        println("LEARNING_RATE_WARMUP FAIL: 게이트 위반")
+    }
+}

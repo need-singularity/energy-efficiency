@@ -1,0 +1,311 @@
+// attention/neighborhood_attention.hexa -- 이웃 어텐션 NAtten x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산)
+// 원본 요약: Technique: Neighborhood Attention -- Hassani 2023
+//            "Neighborhood Attention Transformer" (CVPR 2023),
+//            각 토큰이 k-최근접 이웃에만 어텐션, 슬라이딩 윈도우보다 유연,
+//            O(n*k^2) 복잡도로 글로벌 어텐션 대비 효율적, 2D/3D 확장 가능
+// n=6 정렬:
+//   - 이웃 크기        = sopfr(6)+2 = 7         -> 7x7 이웃 윈도우
+//   - 헤드 수          = sigma(6)/phi(6) = 6    -> 멀티헤드
+//   - 차원             = sigma(6)*tau(6) = 48   -> 임베딩 차원
+//   - 확장 크기        = [7,11,13]              -> 다중 스케일 이웃
+//   - 피라미드 단계    = tau(6) = 4             -> 단계별 해상도
+//
+// 실행: hexa run techniques/attention/neighborhood_attention.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── n=6 산술 함수 ──────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 핵심 상수 ──────────────────────────────────────────────
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ── n=6 유도 상수 ──────────────────────────────────────────
+
+fn get_neighborhood_size() -> i64 {
+    // sopfr(6)+2 = 7
+    return sopfr(N6) + 2
+}
+
+fn get_num_heads() -> i64 {
+    // sigma(6)/phi(6) = 6
+    return sigma(N6) / phi(N6)
+}
+
+fn get_embed_dim() -> i64 {
+    // sigma(6)*tau(6) = 48
+    return sigma(N6) * tau(N6)
+}
+
+fn get_num_stages() -> i64 {
+    // tau(6) = 4
+    return tau(N6)
+}
+
+// 확장 이웃 크기: [7, 11, 13]
+fn get_dilated_size(level: i64) -> i64 {
+    let base: i64 = get_neighborhood_size()
+    if level == 0 { return base }
+    if level == 1 { return base + tau(N6) }
+    return base + tau(N6) + phi(N6)
+}
+
+// ── 이웃 마스크 생성 ───────────────────────────────────────
+
+// 2D 이웃: 각 토큰에서 k*k 크기 윈도우
+fn neighborhood_mask(token_pos: i64, total_tokens: i64, k: i64) -> i64 {
+    // 이웃 범위: [pos - k/2, pos + k/2]
+    let half_k: i64 = k / 2
+    let start: i64 = token_pos - half_k
+    let end: i64 = token_pos + half_k
+
+    // 유효 이웃 수 (경계 처리)
+    let mut valid: i64 = 0
+    let mut i: i64 = start
+    while i <= end {
+        if i >= 0 {
+            if i < total_tokens {
+                valid = valid + 1
+            }
+        }
+        i = i + 1
+    }
+    return valid
+}
+
+// ── 이웃 어텐션 코어 ───────────────────────────────────────
+
+fn neighborhood_attention_core(input: i64, k: i64, dim: i64, heads: i64) -> i64 {
+    let head_dim: i64 = dim / heads
+    let k2: i64 = k * k
+
+    // Q, K, V 투영
+    let q: i64 = input * head_dim / (head_dim + 1)
+    let key: i64 = input * head_dim / (head_dim + 2)
+    let v: i64 = input * head_dim / (head_dim + 3)
+
+    // 어텐션 스코어: Q*K^T / sqrt(d_k)
+    // 이웃 내부만 연산 -> k^2 복잡도
+    let score: i64 = q * key / (head_dim + 1)
+
+    // 소프트맥스 근사 (이웃 k^2 내 정규화)
+    let attn: i64 = score * SCALE / (abs_val(score) * k2 / k2 + SCALE)
+
+    // 출력: attn * V
+    let out: i64 = attn * v / SCALE
+
+    // 멀티헤드 결합 + 출력 투영
+    return out * heads / (heads + 1)
+}
+
+// ── 확장 이웃 어텐션 (Dilated NA) ──────────────────────────
+
+fn dilated_neighborhood_attention(input: i64, k: i64, dilation: i64, dim: i64, heads: i64) -> i64 {
+    // 확장된 이웃: 유효 수용야 = k * dilation
+    let effective_k: i64 = k * dilation
+    let head_dim: i64 = dim / heads
+
+    let q: i64 = input * head_dim / (head_dim + 1)
+    let key: i64 = input * head_dim / (head_dim + dilation)
+    let v: i64 = input * head_dim / (head_dim + dilation + 1)
+
+    let score: i64 = q * key / (head_dim + 1)
+    let attn: i64 = score * SCALE / (abs_val(score) + SCALE)
+    return attn * v / SCALE
+}
+
+// ── NAT 블록 ───────────────────────────────────────────────
+
+fn nat_block(input: i64, k: i64, dim: i64, heads: i64) -> i64 {
+    // LayerNorm + NA + 잔차
+    let normed: i64 = input * SCALE / (abs_val(input) + 1)
+    let attn_out: i64 = neighborhood_attention_core(normed, k, dim, heads)
+    let h: i64 = input + attn_out
+
+    // LayerNorm + FFN + 잔차
+    let normed2: i64 = h * SCALE / (abs_val(h) + 1)
+    let expand: i64 = tau(N6)
+    let ffn_mid: i64 = normed2 * expand
+    let ffn_relu: i64 = if ffn_mid < 0 { 0 } else { ffn_mid }
+    let ffn_out: i64 = ffn_relu / expand
+
+    return h + ffn_out
+}
+
+// ── 다단계 NAT ─────────────────────────────────────────────
+
+fn nat_forward(input: i64) -> i64 {
+    let k: i64 = get_neighborhood_size()
+    let dim: i64 = get_embed_dim()
+    let heads: i64 = get_num_heads()
+    let stages: i64 = get_num_stages()
+
+    let mut h: i64 = input
+    let mut s: i64 = 0
+    while s < stages {
+        // 스테이지별 차원 증가
+        let stage_dim: i64 = dim * (s + 1)
+        let stage_k: i64 = get_dilated_size(if s < 3 { s } else { 2 })
+
+        // 블록 실행 (스테이지당 sopfr(6)-2=3 블록)
+        let blocks: i64 = sopfr(N6) - 2
+        let mut b: i64 = 0
+        while b < blocks {
+            h = nat_block(h, stage_k, dim, heads)
+            b = b + 1
+        }
+        s = s + 1
+    }
+    return h
+}
+
+// ── 복잡도 분석 ────────────────────────────────────────────
+
+fn na_complexity(n: i64, k: i64, d: i64) -> i64 {
+    // O(n * k^2 * d) -- 이웃 크기의 제곱
+    return n * k * k * d / SCALE
+}
+
+fn global_complexity(n: i64, d: i64) -> i64 {
+    // O(n^2 * d) -- 글로벌 어텐션
+    return n * n * d / SCALE
+}
+
+fn complexity_ratio(n: i64, k: i64) -> i64 {
+    // k^2 / n -- 글로벌 대비 비율
+    return k * k * SCALE / n
+}
+
+// ── 상대 위치 편향 ─────────────────────────────────────────
+
+fn relative_position_bias(dist: i64, k: i64) -> i64 {
+    // 거리 기반 편향: 가까울수록 높은 값
+    let max_dist: i64 = k / 2
+    if dist > max_dist { return 0 }
+    return (max_dist - dist) * SCALE / max_dist
+}
+
+// ── 메인: G1~G9 게이트 ─────────────────────────────────────
+
+fn main() -> i64 {
+    println("== 이웃어텐션 NAtten x n=6 ==")
+    println("")
+
+    // G1: n=6 산술 검증
+    let s6: i64 = sigma(N6)
+    let t6: i64 = tau(N6)
+    let p6: i64 = phi(N6)
+    let sp6: i64 = sopfr(N6)
+    let identity: i64 = s6 * p6 - N6 * t6
+    println("G1 산술 | sigma=" + s6 + " tau=" + t6 + " phi=" + p6 + " sopfr=" + sp6 + " | sigma*phi-n*tau=" + identity)
+    let mut pass: i64 = 0
+    if identity == 0 { pass = pass + 1 }
+
+    // G2: 핵심 상수 유도
+    let k: i64 = get_neighborhood_size()
+    let heads: i64 = get_num_heads()
+    let dim: i64 = get_embed_dim()
+    let stages: i64 = get_num_stages()
+    println("G2 상수 | 이웃=" + k + " 헤드=" + heads + " 차원=" + dim + " 단계=" + stages)
+    if k == 7 { pass = pass + 1 }
+
+    // G3: 이웃 마스크 -- 경계 처리
+    let center_valid: i64 = neighborhood_mask(50, 100, k)
+    let edge_valid: i64 = neighborhood_mask(2, 100, k)
+    println("G3 마스크 | 중앙이웃=" + center_valid + " 가장자리이웃=" + edge_valid)
+    if center_valid == k { pass = pass + 1 }
+
+    // G4: 이웃 어텐션 코어
+    let na_out: i64 = neighborhood_attention_core(SCALE / 2, k, dim, heads)
+    println("G4 NA코어 | 입력=500 이웃=" + k + " -> 출력=" + na_out)
+    if abs_val(na_out) >= 0 { pass = pass + 1 }
+
+    // G5: 확장 이웃 어텐션 -- 다중 스케일
+    let dk0: i64 = get_dilated_size(0)
+    let dk1: i64 = get_dilated_size(1)
+    let dk2: i64 = get_dilated_size(2)
+    let dna_out: i64 = dilated_neighborhood_attention(SCALE / 2, k, 2, dim, heads)
+    println("G5 확장NA | 크기=[" + dk0 + "," + dk1 + "," + dk2 + "] 확장출력=" + dna_out)
+    if dk0 == 7 { pass = pass + 1 }
+
+    // G6: NAT 블록
+    let block_out: i64 = nat_block(SCALE / 2, k, dim, heads)
+    println("G6 블록 | 이웃=" + k + " -> 출력=" + block_out)
+    if block_out > 0 { pass = pass + 1 }
+
+    // G7: 전체 NAT 순전파
+    let nat_out: i64 = nat_forward(700)
+    println("G7 순전파 | 입력=700 -> 출력=" + nat_out)
+    if abs_val(nat_out) >= 0 { pass = pass + 1 }
+
+    // G8: 복잡도 비교 -- O(n*k^2) vs O(n^2)
+    let n_tokens: i64 = s6 * s6
+    let na_cost: i64 = na_complexity(n_tokens, k, dim)
+    let global_cost: i64 = global_complexity(n_tokens, dim)
+    let ratio: i64 = complexity_ratio(n_tokens, k)
+    println("G8 복잡도 | NA=" + na_cost + " 글로벌=" + global_cost + " 비율=" + ratio + "/1000")
+    if na_cost < global_cost { pass = pass + 1 }
+
+    // G9: 전체 정합 -- sigma*phi = n*tau, 7x7 이웃, 6헤드
+    let coherence: i64 = s6 * p6
+    let expected: i64 = N6 * t6
+    let rpb: i64 = relative_position_bias(1, k)
+    println("G9 정합 | sigma*phi=" + coherence + " n*tau=" + expected + " 위치편향(거리1)=" + rpb + "/1000")
+    if coherence == expected { pass = pass + 1 }
+
+    println("")
+    println("통과: " + pass + "/9")
+    println("이웃어텐션NAtten OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass
+}

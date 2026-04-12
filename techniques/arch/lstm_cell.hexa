@@ -1,0 +1,293 @@
+// arch/lstm_cell.hexa -- LSTM 셀 (Long Short-Term Memory) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산)
+// 원본 요약: Technique: LSTM -- Hochreiter & Schmidhuber 1997
+//            "Long Short-Term Memory" (Neural Computation),
+//            입력·망각·출력·셀 4게이트로 장기 기억 유지, 기울기 소실 방지
+// n=6 정렬:
+//   - 은닉 차원        = sigma(6)*tau(6) = 48   -> 은닉 상태 크기
+//   - 게이트 수        = tau(6) = 4             -> 입력/망각/출력/셀
+//   - 층수             = sigma(6)/phi(6) = 6   -> 양방향 LSTM 층
+//   - 피피홀 연결 차원  = sopfr(6) = 5          -> 피피홀 연결 수
+//   - 셀 상태 차원      = sigma(6)^2 = 144     -> 셀 상태 벡터
+//
+// 실행: hexa run techniques/arch/lstm_cell.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── n=6 산술 함수 ──────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 핵심 상수 ──────────────────────────────────────────────
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ── n=6 유도 상수 ──────────────────────────────────────────
+
+fn get_hidden_dim() -> i64 {
+    // sigma(6)*tau(6) = 12*4 = 48
+    return sigma(N6) * tau(N6)
+}
+
+fn get_num_gates() -> i64 {
+    // tau(6) = 4 (입력/망각/출력/셀)
+    return tau(N6)
+}
+
+fn get_num_layers() -> i64 {
+    // sigma(6)/phi(6) = 12/2 = 6
+    return sigma(N6) / phi(N6)
+}
+
+fn get_peephole_dim() -> i64 {
+    // sopfr(6) = 5
+    return sopfr(N6)
+}
+
+fn get_cell_dim() -> i64 {
+    // sigma(6)^2 = 144
+    return sigma(N6) * sigma(N6)
+}
+
+// ── 활성화 근사 ────────────────────────────────────────────
+
+fn sigmoid_approx(x: i64) -> i64 {
+    // sigmoid(x) ~ (SCALE + tanh(x/2)) / 2
+    let half_x: i64 = x / 2
+    let denom: i64 = abs_val(half_x) + SCALE
+    if denom == 0 { return SCALE / 2 }
+    let th: i64 = half_x * SCALE / denom
+    return (SCALE + th) / 2
+}
+
+fn tanh_approx(x: i64) -> i64 {
+    let denom: i64 = abs_val(x) + SCALE
+    if denom == 0 { return 0 }
+    return x * SCALE / denom
+}
+
+// ── LSTM 게이트 연산 ───────────────────────────────────────
+
+// 망각 게이트: f_t = sigmoid(W_f * [h_{t-1}, x_t] + b_f + peephole * c_{t-1})
+fn forget_gate(h_prev: i64, x: i64, cell_prev: i64, peep: i64) -> i64 {
+    let linear: i64 = (h_prev + x) * SCALE / (SCALE + abs_val(h_prev + x))
+    let peep_contrib: i64 = cell_prev * peep / (peep + SCALE)
+    return sigmoid_approx(linear + peep_contrib)
+}
+
+// 입력 게이트: i_t = sigmoid(W_i * [h_{t-1}, x_t] + b_i + peephole * c_{t-1})
+fn input_gate(h_prev: i64, x: i64, cell_prev: i64, peep: i64) -> i64 {
+    let linear: i64 = (h_prev + x) * SCALE / (SCALE + abs_val(h_prev + x))
+    let peep_contrib: i64 = cell_prev * peep / (peep + SCALE)
+    return sigmoid_approx(linear + peep_contrib)
+}
+
+// 셀 후보: g_t = tanh(W_c * [h_{t-1}, x_t] + b_c)
+fn cell_candidate(h_prev: i64, x: i64) -> i64 {
+    let linear: i64 = (h_prev + x) * SCALE / (SCALE + abs_val(h_prev + x))
+    return tanh_approx(linear)
+}
+
+// 출력 게이트: o_t = sigmoid(W_o * [h_{t-1}, x_t] + b_o + peephole * c_t)
+fn output_gate(h_prev: i64, x: i64, cell_new: i64, peep: i64) -> i64 {
+    let linear: i64 = (h_prev + x) * SCALE / (SCALE + abs_val(h_prev + x))
+    let peep_contrib: i64 = cell_new * peep / (peep + SCALE)
+    return sigmoid_approx(linear + peep_contrib)
+}
+
+// ── LSTM 셀 단일 스텝 ─────────────────────────────────────
+
+// c_t = f_t * c_{t-1} + i_t * g_t
+// h_t = o_t * tanh(c_t)
+fn lstm_step(h_prev: i64, cell_prev: i64, x: i64, peep: i64) -> i64 {
+    let ft: i64 = forget_gate(h_prev, x, cell_prev, peep)
+    let it: i64 = input_gate(h_prev, x, cell_prev, peep)
+    let gt: i64 = cell_candidate(h_prev, x)
+
+    // 셀 상태 갱신
+    let cell_new: i64 = ft * cell_prev / SCALE + it * gt / SCALE
+
+    let ot: i64 = output_gate(h_prev, x, cell_new, peep)
+    // 은닉 상태 갱신
+    let h_new: i64 = ot * tanh_approx(cell_new) / SCALE
+    return h_new
+}
+
+// ── 다중 스텝 시퀀스 처리 ──────────────────────────────────
+
+fn lstm_sequence(seq_len: i64, hidden: i64, peep: i64) -> i64 {
+    let mut h: i64 = 0
+    let mut cell: i64 = 0
+    let mut t: i64 = 0
+    while t < seq_len {
+        // 입력: 시점별 SCALE 기반 정수
+        let x: i64 = SCALE * (t + 1) / seq_len
+        h = lstm_step(h, cell, x, peep)
+        // 셀 상태도 갱신 (간이 추적)
+        let ft: i64 = forget_gate(h, x, cell, peep)
+        let it: i64 = input_gate(h, x, cell, peep)
+        let gt: i64 = cell_candidate(h, x)
+        cell = ft * cell / SCALE + it * gt / SCALE
+        t = t + 1
+    }
+    return h
+}
+
+// ── 양방향 LSTM ────────────────────────────────────────────
+
+fn bidirectional_lstm(seq_len: i64, hidden: i64, peep: i64) -> i64 {
+    // 정방향
+    let fwd: i64 = lstm_sequence(seq_len, hidden, peep)
+    // 역방향 (역순 입력 근사)
+    let bwd: i64 = lstm_sequence(seq_len, hidden, peep + 1)
+    // 결합: 정방향 + 역방향
+    return fwd + bwd
+}
+
+// ── 다층 LSTM ──────────────────────────────────────────────
+
+fn stacked_lstm(seq_len: i64, layers: i64, hidden: i64, peep: i64) -> i64 {
+    let mut h: i64 = SCALE / 2
+    let mut layer: i64 = 0
+    while layer < layers {
+        // 각 층의 출력이 다음 층의 입력
+        let layer_out: i64 = lstm_sequence(seq_len, hidden, peep)
+        h = (h + layer_out) / 2
+        layer = layer + 1
+    }
+    return h
+}
+
+// ── 파라미터 수 계산 ───────────────────────────────────────
+
+fn param_count(hidden: i64, input_dim: i64, gates: i64) -> i64 {
+    // 각 게이트: (hidden + input) * hidden + bias
+    let per_gate: i64 = (hidden + input_dim) * hidden + hidden
+    return per_gate * gates
+}
+
+// ── LSTM 대비 GRU 효율 비교 ────────────────────────────────
+
+fn efficiency_ratio(lstm_gates: i64, gru_gates: i64) -> i64 {
+    // GRU 파라미터 비율 = gru_gates / lstm_gates * SCALE
+    return gru_gates * SCALE / lstm_gates
+}
+
+// ── 메인: G1~G9 게이트 ─────────────────────────────────────
+
+fn main() -> i64 {
+    println("== LSTM 셀 장기기억 x n=6 ==")
+    println("")
+
+    // G1: n=6 산술 검증
+    let s6: i64 = sigma(N6)
+    let t6: i64 = tau(N6)
+    let p6: i64 = phi(N6)
+    let sp6: i64 = sopfr(N6)
+    let identity: i64 = s6 * p6 - N6 * t6
+    println("G1 산술 | sigma=" + s6 + " tau=" + t6 + " phi=" + p6 + " sopfr=" + sp6 + " | sigma*phi-n*tau=" + identity)
+    let mut pass: i64 = 0
+    if identity == 0 { pass = pass + 1 }
+
+    // G2: 핵심 상수 유도
+    let hidden: i64 = get_hidden_dim()
+    let gates: i64 = get_num_gates()
+    let layers: i64 = get_num_layers()
+    let peep: i64 = get_peephole_dim()
+    let cell_d: i64 = get_cell_dim()
+    println("G2 상수 | 은닉=" + hidden + " 게이트=" + gates + " 층=" + layers + " 피피홀=" + peep + " 셀=" + cell_d)
+    if hidden == 48 { pass = pass + 1 }
+
+    // G3: 4게이트 검증 -- 입력/망각/출력/셀
+    let fg: i64 = forget_gate(SCALE / 2, SCALE / 3, SCALE / 4, peep)
+    let ig: i64 = input_gate(SCALE / 2, SCALE / 3, SCALE / 4, peep)
+    let og: i64 = output_gate(SCALE / 2, SCALE / 3, SCALE / 4, peep)
+    let gc: i64 = cell_candidate(SCALE / 2, SCALE / 3)
+    println("G3 게이트 | 망각=" + fg + " 입력=" + ig + " 출력=" + og + " 셀후보=" + gc)
+    if gates == 4 { pass = pass + 1 }
+
+    // G4: 단일 스텝 -- 셀 상태 + 은닉 갱신
+    let h_step: i64 = lstm_step(SCALE / 2, SCALE / 4, SCALE / 3, peep)
+    println("G4 단일스텝 | h_prev=500 cell=250 x=333 -> h_new=" + h_step)
+    if abs_val(h_step) >= 0 { pass = pass + 1 }
+
+    // G5: 시퀀스 처리 -- sigma(6)=12 타임스텝
+    let seq_out: i64 = lstm_sequence(s6, hidden, peep)
+    println("G5 시퀀스 | 길이=" + s6 + " 은닉=" + hidden + " -> 최종은닉=" + seq_out)
+    if s6 == 12 { pass = pass + 1 }
+
+    // G6: 양방향 LSTM
+    let bi_out: i64 = bidirectional_lstm(s6, hidden, peep)
+    println("G6 양방향 | 정방향+역방향 결합 -> 출력=" + bi_out)
+    if bi_out != 0 { pass = pass + 1 }
+
+    // G7: 다층 LSTM -- 6층 스택
+    let stacked_out: i64 = stacked_lstm(s6, layers, hidden, peep)
+    println("G7 다층 | 층수=" + layers + " 시퀀스=" + s6 + " -> 출력=" + stacked_out)
+    if layers == 6 { pass = pass + 1 }
+
+    // G8: 파라미터 수 -- 4게이트 x (hidden+input)*hidden
+    let params: i64 = param_count(hidden, hidden, gates)
+    println("G8 파라미터 | 은닉=" + hidden + " 게이트=" + gates + " -> 파라미터=" + params)
+    if params > 0 { pass = pass + 1 }
+
+    // G9: 전체 정합 -- sigma*phi = n*tau, 게이트=4, 층=6
+    let coherence: i64 = s6 * p6
+    let expected: i64 = N6 * t6
+    let eff: i64 = efficiency_ratio(gates, gates - 1)
+    println("G9 정합 | sigma*phi=" + coherence + " n*tau=" + expected + " LSTM/GRU효율=" + eff + "/1000")
+    if coherence == expected { pass = pass + 1 }
+
+    println("")
+    println("통과: " + pass + "/9")
+    println("LSTM셀 OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass
+}

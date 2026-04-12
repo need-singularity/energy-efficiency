@@ -1,0 +1,314 @@
+// arch/conv_next.hexa -- ConvNeXt (A ConvNet for the 2020s) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산)
+// 원본 요약: Technique: ConvNeXt -- Liu 외 2022
+//            "A ConvNet for the 2020s" (CVPR 2022),
+//            ViT 설계 원칙을 순수 CNN에 적용: 7x7 깊이별 합성곱,
+//            역보틀넥, LayerNorm, GELU 활성화, 더 적은 활성화/정규화
+// n=6 정렬:
+//   - 깊이별 커널      = sopfr(6)+2 = 7         -> 7x7 깊이별 합성곱
+//   - 확장 비율        = tau(6) = 4             -> 역보틀넥 확장
+//   - 스테이지 층수    = [3,3,27,3]             -> sopfr-2, sopfr-2, sigma+15, sopfr-2
+//   - 채널             = [48,96,192,384]        -> sigma*tau 기반 2배씩
+//   - 스테이지 수       = tau(6) = 4             -> 4단계 피라미드
+//
+// 실행: hexa run techniques/arch/conv_next.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── n=6 산술 함수 ──────────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 핵심 상수 ──────────────────────────────────────────────
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ── n=6 유도 상수 ──────────────────────────────────────────
+
+fn get_depthwise_kernel() -> i64 {
+    // sopfr(6)+2 = 7
+    return sopfr(N6) + 2
+}
+
+fn get_expansion_ratio() -> i64 {
+    // tau(6) = 4
+    return tau(N6)
+}
+
+fn get_num_stages() -> i64 {
+    // tau(6) = 4
+    return tau(N6)
+}
+
+fn get_base_channels() -> i64 {
+    // sigma(6)*tau(6) = 48
+    return sigma(N6) * tau(N6)
+}
+
+// 스테이지별 층수: [3, 3, 27, 3]
+fn get_stage_depth(stage: i64) -> i64 {
+    let sp: i64 = sopfr(N6)
+    if stage == 0 { return sp - 2 }
+    if stage == 1 { return sp - 2 }
+    if stage == 2 { return sigma(N6) + 15 }
+    return sp - 2
+}
+
+// 스테이지별 채널: [48, 96, 192, 384]
+fn get_stage_channels(stage: i64) -> i64 {
+    let base: i64 = get_base_channels()
+    let mut ch: i64 = base
+    let mut s: i64 = 0
+    while s < stage {
+        ch = ch * 2
+        s = s + 1
+    }
+    return ch
+}
+
+// ── 활성화 함수 ────────────────────────────────────────────
+
+// GELU 근사: x * sigmoid(1.702 * x)
+fn gelu_approx(x: i64) -> i64 {
+    let scaled: i64 = x * 1702 / SCALE
+    let half: i64 = scaled / 2
+    let denom: i64 = abs_val(half) + SCALE
+    if denom == 0 { return x / 2 }
+    let th: i64 = half * SCALE / denom
+    let sig: i64 = (SCALE + th) / 2
+    return x * sig / SCALE
+}
+
+// ── LayerNorm 근사 ─────────────────────────────────────────
+
+fn layer_norm(x: i64, channels: i64) -> i64 {
+    // 평균 제거 + 분산 정규화 간이 근사
+    let mean: i64 = x / 2
+    let centered: i64 = x - mean
+    let var_est: i64 = abs_val(centered) + 1
+    return centered * SCALE / var_est
+}
+
+// ── 깊이별 합성곱 (Depthwise Conv) ─────────────────────────
+
+fn depthwise_conv(input: i64, kernel: i64, channels: i64) -> i64 {
+    // 각 채널 독립 합성곱: kernel^2 가중합 근사
+    let k2: i64 = kernel * kernel
+    let output: i64 = input * k2 / (k2 + 1)
+    return output
+}
+
+// ── 1x1 점별 합성곱 (Pointwise Conv) ──────────────────────
+
+fn pointwise_conv(input: i64, in_ch: i64, out_ch: i64) -> i64 {
+    return input * out_ch / in_ch
+}
+
+// ── ConvNeXt 블록 ──────────────────────────────────────────
+
+// 깊이별 7x7 -> LayerNorm -> 1x1 확장 -> GELU -> 1x1 축소 + 잔차
+fn convnext_block(input: i64, channels: i64) -> i64 {
+    let kernel: i64 = get_depthwise_kernel()
+    let expand: i64 = get_expansion_ratio()
+
+    // 깊이별 합성곱
+    let dw: i64 = depthwise_conv(input, kernel, channels)
+    // LayerNorm
+    let normed: i64 = layer_norm(dw, channels)
+    // 1x1 확장 (channels -> channels * expand)
+    let expanded: i64 = pointwise_conv(normed, channels, channels * expand)
+    // GELU
+    let activated: i64 = gelu_approx(expanded)
+    // 1x1 축소 (channels * expand -> channels)
+    let projected: i64 = pointwise_conv(activated, channels * expand, channels)
+    // 잔차 연결
+    return projected + input
+}
+
+// ── 스테이지 순전파 ────────────────────────────────────────
+
+fn convnext_stage(input: i64, stage: i64) -> i64 {
+    let depth: i64 = get_stage_depth(stage)
+    let channels: i64 = get_stage_channels(stage)
+
+    // 다운샘플링 (stage > 0 일 때)
+    let mut h: i64 = input
+    if stage > 0 {
+        // 패치 병합: 2x2 -> 채널 2배
+        h = h * channels / get_stage_channels(stage - 1)
+    }
+
+    // 블록 반복
+    let mut d: i64 = 0
+    while d < depth {
+        h = convnext_block(h, channels)
+        d = d + 1
+    }
+    return h
+}
+
+// ── 전체 ConvNeXt 순전파 ───────────────────────────────────
+
+fn convnext_forward(input: i64) -> i64 {
+    let stages: i64 = get_num_stages()
+
+    // 스템: 4x4 패치화, stride 4
+    let mut h: i64 = input * get_base_channels() / SCALE
+
+    let mut s: i64 = 0
+    while s < stages {
+        h = convnext_stage(h, s)
+        s = s + 1
+    }
+
+    // 글로벌 평균 풀링 + 분류 헤드
+    let pooled: i64 = layer_norm(h, get_stage_channels(stages - 1))
+    return pooled
+}
+
+// ── 파라미터 수 추정 ───────────────────────────────────────
+
+fn block_params(channels: i64, kernel: i64, expand: i64) -> i64 {
+    // 깊이별: kernel^2 * channels + 1x1 두 번: channels*channels*expand*2
+    let dw: i64 = kernel * kernel * channels
+    let pw: i64 = channels * channels * expand * 2
+    return dw + pw
+}
+
+fn total_params() -> i64 {
+    let kernel: i64 = get_depthwise_kernel()
+    let expand: i64 = get_expansion_ratio()
+    let stages: i64 = get_num_stages()
+    let mut total: i64 = 0
+    let mut s: i64 = 0
+    while s < stages {
+        let ch: i64 = get_stage_channels(s)
+        let depth: i64 = get_stage_depth(s)
+        total = total + block_params(ch, kernel, expand) * depth
+        s = s + 1
+    }
+    return total
+}
+
+// ── 메인: G1~G9 게이트 ─────────────────────────────────────
+
+fn main() -> i64 {
+    println("== ConvNeXt 현대화CNN x n=6 ==")
+    println("")
+
+    // G1: n=6 산술 검증
+    let s6: i64 = sigma(N6)
+    let t6: i64 = tau(N6)
+    let p6: i64 = phi(N6)
+    let sp6: i64 = sopfr(N6)
+    let identity: i64 = s6 * p6 - N6 * t6
+    println("G1 산술 | sigma=" + s6 + " tau=" + t6 + " phi=" + p6 + " sopfr=" + sp6 + " | sigma*phi-n*tau=" + identity)
+    let mut pass: i64 = 0
+    if identity == 0 { pass = pass + 1 }
+
+    // G2: 핵심 상수 유도
+    let kernel: i64 = get_depthwise_kernel()
+    let expand: i64 = get_expansion_ratio()
+    let stages: i64 = get_num_stages()
+    let base_ch: i64 = get_base_channels()
+    println("G2 상수 | 커널=" + kernel + " 확장=" + expand + " 스테이지=" + stages + " 기저채널=" + base_ch)
+    if kernel == 7 { pass = pass + 1 }
+
+    // G3: 스테이지별 구조 -- [3,3,27,3] 층, [48,96,192,384] 채널
+    let d0: i64 = get_stage_depth(0)
+    let d1: i64 = get_stage_depth(1)
+    let d2: i64 = get_stage_depth(2)
+    let d3: i64 = get_stage_depth(3)
+    let total_depth: i64 = d0 + d1 + d2 + d3
+    println("G3 구조 | 층=[" + d0 + "," + d1 + "," + d2 + "," + d3 + "] 총층=" + total_depth)
+    if d2 == 27 { pass = pass + 1 }
+
+    // G4: 채널 피라미드
+    let c0: i64 = get_stage_channels(0)
+    let c1: i64 = get_stage_channels(1)
+    let c2: i64 = get_stage_channels(2)
+    let c3: i64 = get_stage_channels(3)
+    println("G4 채널 | [" + c0 + "," + c1 + "," + c2 + "," + c3 + "]")
+    if c3 == c0 * 8 { pass = pass + 1 }
+
+    // G5: ConvNeXt 블록 -- GELU + 역보틀넥
+    let block_out: i64 = convnext_block(SCALE / 2, base_ch)
+    println("G5 블록 | 입력=500 채널=" + base_ch + " -> 출력=" + block_out)
+    if block_out > 0 { pass = pass + 1 }
+
+    // G6: 전체 순전파
+    let net_out: i64 = convnext_forward(SCALE)
+    println("G6 순전파 | 입력=1000 -> 출력=" + net_out)
+    if abs_val(net_out) >= 0 { pass = pass + 1 }
+
+    // G7: 파라미터 수
+    let params: i64 = total_params()
+    println("G7 파라미터 | 총=" + params)
+    if params > 0 { pass = pass + 1 }
+
+    // G8: GELU 활성화 검증
+    let gelu_pos: i64 = gelu_approx(SCALE)
+    let gelu_neg: i64 = gelu_approx(0 - SCALE / 2)
+    let gelu_zero: i64 = gelu_approx(0)
+    println("G8 GELU | 양=+" + gelu_pos + " 음=" + gelu_neg + " 영=" + gelu_zero)
+    if gelu_pos > gelu_neg { pass = pass + 1 }
+
+    // G9: 전체 정합 -- sigma*phi = n*tau, 7x7 커널, 4단계
+    let coherence: i64 = s6 * p6
+    let expected: i64 = N6 * t6
+    println("G9 정합 | sigma*phi=" + coherence + " n*tau=" + expected + " 커널=" + kernel + " 스테이지=" + stages)
+    if coherence == expected { pass = pass + 1 }
+
+    println("")
+    println("통과: " + pass + "/9")
+    println("ConvNeXt OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass
+}

@@ -1,0 +1,296 @@
+// compress/channel_pruning.hexa — 채널 프루닝 x n=6
+//
+// 포팅 상태: BODY (의존 없음 — 순수 정수 산술)
+// 원본 요약: Technique: Channel Pruning — He 외 2017
+//            "Channel Pruning for Accelerating Very Deep Neural Networks"
+//            LASSO 기반 채널 선택, 특성맵 재구성 오류 최소화
+//            필터 단위가 아닌 채널 단위 프루닝 → 실제 가속
+//            VGG-16에서 5배 가속, 0.3% 정확도 하락
+// n=6 정렬:
+//   - 프루닝 비율     = sopfr(6)/σ(6) = 5/12 ≈ 0.417
+//   - 입력 채널       = σ² = 144              -> C_in
+//   - 출력 채널       = σ·τ = 48              -> C_out
+//   - LASSO 반복      = σ(6) = 12             -> 최적화 반복
+//   - 커널 크기       = sopfr(6) = 5          -> 5x5 합성곱
+//   - 최소 채널       = φ(6) = 2              -> 프루닝 하한
+//
+// 실행: hexa run techniques/compress/channel_pruning.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ════════════════════════════════════════════════════════════════════
+// 1) n=6 산술 함수
+// ════════════════════════════════════════════════════════════════════
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+const SCALE: i64 = 1000
+const N6: i64 = 6
+
+// ════════════════════════════════════════════════════════════════════
+// 2) 채널 프루닝 핵심 상수 (n=6 도출)
+//    핵심 수식:
+//      min_β ||Y - Σ β_c · X_c · W_c||²  s.t. ||β||_0 <= C'
+//      LASSO 완화: ||β||_0 → ||β||_1
+//      β_c = 0인 채널 제거
+// ════════════════════════════════════════════════════════════════════
+
+// 프루닝 비율 = sopfr/σ = 5/12 = 417/SCALE
+const PRUNE_RATIO: i64 = 417
+
+// 입력 채널 C_in = σ² = 144
+const CH_IN: i64 = 144
+
+// 출력 채널 C_out = σ·τ = 48
+const CH_OUT: i64 = 48
+
+// LASSO 반복 = σ = 12
+const LASSO_ITERS: i64 = 12
+
+// 커널 크기 = sopfr = 5
+const KERNEL: i64 = 5
+
+// 최소 채널 = φ = 2
+const MIN_CH: i64 = 2
+
+// ════════════════════════════════════════════════════════════════════
+// 3) 채널 중요도 점수 — LASSO β 계수 시뮬레이션
+// ════════════════════════════════════════════════════════════════════
+
+fn channel_importance(ch: i64, total: i64) -> i64 {
+    // 채널별 특성맵 재구성 기여도 시뮬레이션
+    // 상위 채널이 더 중요 + 비선형 패턴
+    let base: i64 = (total - ch) * SCALE / total
+    let pattern: i64 = (ch * 11 + 7) % 80
+    return base + pattern
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 4) LASSO 기반 채널 선택
+//    반복적 임계값 갱신으로 β_c → 0인 채널 식별
+// ════════════════════════════════════════════════════════════════════
+
+fn lasso_threshold(num_ch: i64, ratio: i64, iters: i64) -> i64 {
+    let target_remove: i64 = num_ch * ratio / SCALE
+    let mut threshold: i64 = SCALE / 2
+    let mut step_size: i64 = SCALE / 4
+    let mut iter: i64 = 0
+    while iter < iters {
+        // 현재 임계값 아래 채널 수 카운트
+        let mut below: i64 = 0
+        let mut c: i64 = 0
+        while c < num_ch {
+            if channel_importance(c, num_ch) < threshold {
+                below = below + 1
+            }
+            c = c + 1
+        }
+        // 이진 탐색: 목표 제거 수에 수렴
+        if below < target_remove {
+            threshold = threshold + step_size
+        } else {
+            threshold = threshold - step_size
+        }
+        step_size = step_size / 2
+        if step_size < 1 { step_size = 1 }
+        iter = iter + 1
+    }
+    return threshold
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 5) 프루닝 실행 — 생존/제거 채널 분류
+// ════════════════════════════════════════════════════════════════════
+
+fn count_surviving(num_ch: i64, threshold: i64) -> i64 {
+    let mut surviving: i64 = 0
+    let mut c: i64 = 0
+    while c < num_ch {
+        if channel_importance(c, num_ch) >= threshold {
+            surviving = surviving + 1
+        }
+        c = c + 1
+    }
+    return surviving
+}
+
+fn count_pruned(num_ch: i64, threshold: i64) -> i64 {
+    return num_ch - count_surviving(num_ch, threshold)
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 6) 파라미터/FLOP 절감 계산
+//    파라미터: C_in' * C_out * K² (프루닝 후)
+//    FLOP: C_in' * C_out * K² * H * W
+// ════════════════════════════════════════════════════════════════════
+
+fn param_count(ch_in: i64, ch_out: i64, k: i64) -> i64 {
+    return ch_in * ch_out * k * k
+}
+
+fn flop_count(ch_in: i64, ch_out: i64, k: i64, spatial: i64) -> i64 {
+    return ch_in * ch_out * k * k * spatial
+}
+
+fn reduction_pct(original: i64, pruned: i64) -> i64 {
+    if original == 0 { return 0 }
+    return (original - pruned) * SCALE / original
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 7) 특성맵 재구성 오류 시뮬레이션
+//    ||Y - Y'||² / ||Y||² (정규화된 재구성 오류)
+// ════════════════════════════════════════════════════════════════════
+
+fn reconstruction_error(surviving: i64, total: i64) -> i64 {
+    // 오류 ∝ 제거 비율² (비선형 증가)
+    let removed_ratio: i64 = (total - surviving) * SCALE / total
+    return removed_ratio * removed_ratio / SCALE
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 8) 계층별 가속비 — 층마다 다른 프루닝 적용
+// ════════════════════════════════════════════════════════════════════
+
+fn layer_speedup(layer: i64, num_layers: i64) -> i64 {
+    // 깊은 층일수록 높은 프루닝 비율 허용
+    let layer_ratio: i64 = PRUNE_RATIO * (layer + 1) / num_layers
+    let surviving: i64 = CH_IN - CH_IN * layer_ratio / SCALE
+    if surviving < MIN_CH { return SCALE * CH_IN / MIN_CH }
+    return SCALE * CH_IN / surviving
+}
+
+fn total_speedup() -> i64 {
+    let num_layers: i64 = LASSO_ITERS  // σ=12 층
+    let mut sum_speed: i64 = 0
+    let mut l: i64 = 0
+    while l < num_layers {
+        sum_speed = sum_speed + layer_speedup(l, num_layers)
+        l = l + 1
+    }
+    return sum_speed / num_layers
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 9) 게이트 실행 + 벤치마크
+// ════════════════════════════════════════════════════════════════════
+
+fn main() {
+    let sig: i64 = sigma(N6)
+    let t: i64 = tau(N6)
+    let ph: i64 = phi(N6)
+    let sf: i64 = sopfr(N6)
+    let j2: i64 = sig * sig
+    let sig_tau: i64 = sig * t
+
+    println("═══ 채널 프루닝 (He 2017) x n=6 ═══")
+    println("n=6 산술: σ=12 / τ=4 / φ=2 / sopfr=5 / J2=144 / σ·τ=48")
+
+    // G1: σφ=nτ 정점
+    let g1: bool = sig * ph == N6 * t
+    println("G1 σφ=nτ 정점               : " + g1)
+
+    // G2: 프루닝 비율 = sopfr/σ = 5/12 = 417
+    let expected_ratio: i64 = sf * SCALE / sig
+    let g2: bool = abs_val(PRUNE_RATIO - expected_ratio) <= 1
+    println("G2 비율=sopfr/σ=5/12=0.417  : " + g2)
+
+    // G3: 입력채널 = σ² = 144
+    let g3: bool = CH_IN == j2
+    println("G3 입력채널=σ²=144          : " + g3)
+
+    // G4: 출력채널 = σ·τ = 48
+    let g4: bool = CH_OUT == sig_tau
+    println("G4 출력채널=σ·τ=48          : " + g4)
+
+    // G5: LASSO 임계값 유효 + 생존 > 최소
+    let threshold: i64 = lasso_threshold(CH_IN, PRUNE_RATIO, LASSO_ITERS)
+    let surviving: i64 = count_surviving(CH_IN, threshold)
+    let pruned: i64 = count_pruned(CH_IN, threshold)
+    let g5: bool = surviving >= MIN_CH && pruned > 0
+    println("G5 생존=" + surviving + ",제거=" + pruned + "    : " + g5)
+
+    // G6: 파라미터 절감 유효
+    let p_orig: i64 = param_count(CH_IN, CH_OUT, KERNEL)
+    let p_pruned: i64 = param_count(surviving, CH_OUT, KERNEL)
+    let p_red: i64 = reduction_pct(p_orig, p_pruned)
+    let g6: bool = p_red > 0
+    println("G6 파라미터절감=" + p_red + "/1000   : " + g6)
+
+    // G7: 재구성 오류 합리적 범위
+    let recon_err: i64 = reconstruction_error(surviving, CH_IN)
+    let g7: bool = recon_err < 500 && recon_err > 0
+    println("G7 재구성오류=" + recon_err + "/1000   : " + g7)
+
+    // G8: 전체 가속비 > 1.0 (SCALE 기준)
+    let speedup: i64 = total_speedup()
+    let g8: bool = speedup > SCALE
+    println("G8 가속비=" + speedup + "/1000       : " + g8)
+
+    // G9: LASSO 반복 = σ = 12, 커널 = sopfr = 5
+    let g9: bool = LASSO_ITERS == sig && KERNEL == sf
+    println("G9 LASSO=σ=12,커널=sopfr=5  : " + g9)
+
+    // 벤치마크
+    println("--- 벤치마크 ---")
+    println("프루닝비율: " + PRUNE_RATIO + "/1000 (sopfr/σ=5/12)")
+    println("입력채널: " + CH_IN + " (σ²)")
+    println("출력채널: " + CH_OUT + " (σ·τ)")
+    println("LASSO 반복: " + LASSO_ITERS + " (σ)")
+    println("파라미터원본: " + p_orig + ", 프루닝후: " + p_pruned)
+    println("가속비: " + speedup + "/1000")
+    println("SOTA: VGG-16 5배 가속 / ResNet-50 2배 가속, 정확도 -0.3%")
+
+    let all_pass: bool = g1 && g2 && g3 && g4 && g5 && g6 && g7 && g8 && g9
+    if all_pass {
+        println("CHANNEL_PRUNING OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    } else {
+        println("CHANNEL_PRUNING FAIL: 게이트 위반")
+    }
+}
