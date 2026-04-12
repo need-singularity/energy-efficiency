@@ -229,28 +229,146 @@
       "note": "2026-04-12 DFS 3~5차 41건 신규",
       "ossified_at": "2026-04-12",
       "promoted_from": "stable"
-    }
-  },
-  "stable": {
-    "_description": "안정 — 통과했지만 아직 골화 전",
+    },
     "MILLENNIUM_DFS_102_TIGHT": {
       "status": "PASS",
       "value": "밀레니엄 7대 난제 102건 tight (BT-1398 DFS 6차 +10건)",
       "threshold": "92→102 tight (+10.9%), 해결 0/7",
-      "note": "2026-04-12 DFS 6차 — 그래프이론·해석적수론·대수K이론·모듈러형식·부호이론·동역학계 10건, MISS 8건 정직 기록"
+      "note": "2026-04-12 DFS 6차 — 그래프이론·해석적수론·대수K이론·모듈러형식·부호이론·동역학계 10건, MISS 8건 정직 기록",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "HEXA_PIM_L2_DESIGN": {
       "status": "PASS",
       "value": "HEXA-PIM Level 2 설계 문서 953줄 + verify 55줄",
       "threshold": "15섹션 전수 작성, 23가설, ASCII 성능비교, Egyptian 전력분배",
-      "note": "2026-04-12 — hexa-pim.md 665줄 추가, verify_chip-pim.hexa 스텁→실동작, MAC 6144=sigma*(sigma-tau)*2^n"
+      "note": "2026-04-12 — hexa-pim.md 665줄 추가, verify_chip-pim.hexa 스텁→실동작, MAC 6144=sigma*(sigma-tau)*2^n",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "GO_AUDIT_2026_04_12": {
       "status": "PASS",
       "value": "AI 69종 감사 (BODY 3/STUB 66) + calc 10건 소실 확인 + 논문 43편/meta 139 불일치",
       "threshold": "통합 감사 리포트 작성 완료",
-      "note": "2026-04-12 — reports/audits/go-audit-2026-04-12.md, 기법 95.7% 스텁, calc/ 디렉토리 소실, _meta 카운트 수정 필요"
+      "note": "2026-04-12 — reports/audits/go-audit-2026-04-12.md, 기법 95.7% 스텁, calc/ 디렉토리 소실, _meta 카운트 수정 필요",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "AI_TECHNIQUE_68_BODY_ALL": {
+      "status": "PASS",
+      "value": "AI 기법 전 68종 BODY 완료 (18,424줄), STUB 0종",
+      "threshold": "감사 보고 4.3%→100%, 8축 전량 완파 (attn9+moe11+sparse6+graph5+compress5+optim15+arch14+sota3)",
+      "note": "2026-04-12 — 평균 271줄/파일, 레지스트리 v1.3.0, 개별축 완파 기록 포함",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_114_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 114건 tight (DFS 7차 +12건)",
+      "threshold": "102→114 tight, EXACT 3 + TIGHT 9, MISS 8, 해결 0/7",
+      "note": "2026-04-12 DFS 7차 — 7영역, n-2=tau 유일성 + Bott주기성 + Connes KO-dim=6",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L3_3D_STACK": {
+      "status": "PASS",
+      "value": "HEXA-PIM L3 3D-적층 1,141줄 + verify 82줄 (42가설)",
+      "threshold": "6층TSV 288/mm², 96TB/s, Egyptian 360W",
+      "note": "2026-04-12 — hexa-3d-stack.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L4_PHOTONIC": {
+      "status": "PASS",
+      "value": "HEXA-PIM L4 광자 인터커넥트 1,184줄 + verify 100줄 (48가설)",
+      "threshold": "6파장WDM 576Tbps, τ=4 마이크로링, Egyptian 240W",
+      "note": "2026-04-12 — hexa-photonic.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L5_WAFER": {
+      "status": "PASS",
+      "value": "HEXA-PIM L5 웨이퍼 스케일 1,311줄 + verify 125줄 (54가설)",
+      "threshold": "n²=36 타일, 41Pbps 등방대역폭, 수율 99.95%",
+      "note": "2026-04-12 — hexa-wafer.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L6_SUPERCONDUCTING": {
+      "status": "PASS",
+      "value": "HEXA-PIM L6 초전도 칩 1,181줄 + verify 121줄 (60가설)",
+      "threshold": "6-JJ SFQ 2.48aJ, 30GHz, Egyptian 냉각 60W",
+      "note": "2026-04-12 — hexa-superconducting.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_ROADMAP_6_OF_6_COMPLETE": {
+      "status": "PASS",
+      "value": "칩 아키텍처 6단계 전량 설계 완료 (5,770줄 + verify 453줄, 204가설)",
+      "threshold": "PIM→3D→Photonic→Wafer→Superconducting 전 레벨",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_128_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 128건 tight (DFS 8차 +14건)",
+      "threshold": "114→128, EXACT 8 + TIGHT 6, 해결 0/7",
+      "note": "2026-04-12 DFS 8차 — 7영역, AME(6,d)+Theta_10+C_tau",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "FIX_REGISTRY_META_KOLON": {
+      "status": "PASS",
+      "value": "레지스트리·meta·코오롱·논문링크 일괄 정합 (5건 통합)",
+      "threshold": "meta 카운트 수정 + 코오롱 10건 .hexa 복구 + 논문 52링크 + arch_optimizer 등록",
+      "note": "2026-04-12 — FIX_META_COUNT+FIX_KOLON_VERIFY_10+FIX_PAPER_LINKS_52+KOLON_CALC_10_HEXA+FIX_AI_BODY_15 통합",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_140_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 140건 tight (DFS 9차 +12건)",
+      "threshold": "128→140, EXACT 2 + TIGHT 10, 해결 0/7",
+      "note": "2026-04-12 DFS 9차 — KdV a=6 + n-1=sopfr + σ=n+τ+2",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "DSE_490_TOML_10_NEW": {
+      "status": "PASS",
+      "value": "DSE TOML 490건 (+10 신규), 미커버 220/304",
+      "threshold": "밀레니엄 2 + 산업 4 + 문화 2 + 인지 1 + 재료 1",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "GO_SESSION_AUDIT_V2": {
+      "status": "PASS",
+      "value": "세션 감사 v2 339줄",
+      "threshold": "v1 대비 전 항목 갱신",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_PAPERS_9_GHOST_RESOLVED": {
+      "status": "PASS",
+      "value": "칩 논문 9편 (2,164줄), ghost 92→83",
+      "threshold": "papers 43→52, chip ghost 전량 해소",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_152_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 152건 tight (DFS 10차 +12건)",
+      "threshold": "140→152, EXACT 4 + TIGHT 8, 해결 0/7",
+      "note": "2026-04-12 DFS 10차 — GUE(6)+CGK+토러스[[72,2,6]]",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     }
+  },
+  "stable": {
+    "_description": "안정 — 통과했지만 아직 골화 전"
   },
   "failed": {
     "_description": "실패 — 전부 해소됨"

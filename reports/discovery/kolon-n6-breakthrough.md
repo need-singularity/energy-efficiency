@@ -8,7 +8,7 @@
 > | Phase 2 | 113/113 (100%) | 공정/물성/산업규격 심화 + 교차 공명 |
 > | **누적** | **222/222 (100%)** | **10대 도메인 완전 돌파** |
 >
-> 검증 코드: [`calc/kolon_n6_breakthrough.py`](../calc/kolon_n6_breakthrough.py) · [`calc/kolon_n6_phase2.py`](../calc/kolon_n6_phase2.py)
+> 검증 코드: [`calc/kolon_n6_verify.hexa`](../../calc/kolon_n6_verify.hexa) (통합 10건) · 개별: [`nexus/src/calc/kolon_*.hexa`](../../nexus/src/calc/) (10파일)
 >
 > 상위 참조: [`../CLAUDE.md`](../CLAUDE.md) (n=6 상수 원본) · [`breakthrough-theorems.md`](breakthrough-theorems.md) (BT-1~343) · [`../README.md#-기술산업-tech--industry`](../README.md#-기술산업-tech--industry) (실생활·ASCII·업그레이드)
 

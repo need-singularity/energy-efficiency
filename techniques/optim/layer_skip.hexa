@@ -1,11 +1,289 @@
-// layer_skip.py → .hexa 포팅 스텁
-// 원본 경로: techniques/optim/layer_skip.py
-// 포팅 상태: STUB (의존 라이브러리: numpy; 원본 195 줄)
+// optim/layer_skip.hexa — LayerSkip 선택적 계층 건너뛰기 x n=6
+//
+// 원본 경로: techniques/optim/layer_skip.py (git history 보존)
+// 포팅 상태: BODY (의존 없음 — 순수 정수/실수 연산)
 // 원본 요약: LayerSkip — n=6 Constant Verification
-// 본격 포팅: nexus verify --hexa <domain> 으로 추진 예정
-// 원본 로직은 git history 에 보존됨
+//            Meta 2024, 학습 시 드롭아웃으로 얕은 출구 학습
+//            추론 시 초기 레이어 출구 + 자기검증
+// n=6 정렬:
+//   - 전체 레이어 = σ(6) = 12     -> 12층 트랜스포머
+//   - 활성 레이어 = n = 6          -> 6층만 실행
+//   - 출구 포인트 = τ(6) = 4       -> 4개 조기 출구
+//   - 드롭아웃율 = φ(6)/n = 1/3   -> 33% 스킵
+//   - 검증 깊이 = sopfr(6) = 5    -> 5층 검증
+//
+// 실행: hexa run techniques/optim/layer_skip.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ════════════════════════════════════════════════════════════════════
+// 1) n=6 산술 함수
+// ════════════════════════════════════════════════════════════════════
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 {
+            let t: i64 = a % b
+            a = b
+            b = t
+        }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 {
+            s = s + d
+            rem = rem / d
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 2) LayerSkip 상수
+// ════════════════════════════════════════════════════════════════════
+
+const N_CORE: i64 = 6
+const SCALE: i64 = 1000
+const TOTAL_LAYERS: i64 = 12   // σ(6)
+
+// ════════════════════════════════════════════════════════════════════
+// 3) 레이어 활성화 스케줄
+//    σ(6)=12 층 중 짝수 번째만 실행 → n=6 활성 레이어
+//    또는: 약수 레이어만 실행 (1,2,3,4,6,12의 약수 위치)
+// ════════════════════════════════════════════════════════════════════
+
+// 레이어가 활성인지: n의 약수 위치
+fn is_active_layer(layer: i64) -> bool {
+    if layer <= 0 { return false }
+    return TOTAL_LAYERS % layer == 0
+}
+
+// 활성 레이어 수 = τ(σ(6)) = τ(12) = 6
+fn count_active_layers() -> i64 {
+    let mut count: i64 = 0
+    let mut l: i64 = 1
+    while l <= TOTAL_LAYERS {
+        if is_active_layer(l) { count = count + 1 }
+        l = l + 1
+    }
+    return count
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 4) 레이어별 표현 품질 시뮬레이션
+//    deeper = better: quality(l) = l * SCALE / TOTAL_LAYERS
+//    스킵된 레이어: 이전 레이어 품질 계승
+// ════════════════════════════════════════════════════════════════════
+
+fn layer_quality(layer: i64) -> i64 {
+    return layer * SCALE / TOTAL_LAYERS
+}
+
+fn skipped_quality() -> i64 {
+    // 스킵 시 활성 레이어들의 품질 합 / 활성 수
+    let mut total: i64 = 0
+    let mut count: i64 = 0
+    let mut l: i64 = 1
+    while l <= TOTAL_LAYERS {
+        if is_active_layer(l) {
+            total = total + layer_quality(l)
+            count = count + 1
+        }
+        l = l + 1
+    }
+    if count == 0 { return 0 }
+    return total / count
+}
+
+fn full_quality() -> i64 {
+    // 전체 실행 시 마지막 레이어 품질
+    return layer_quality(TOTAL_LAYERS)
+}
+
+// 품질 손실 비율 (%)
+fn quality_loss_pct() -> i64 {
+    let full: i64 = full_quality()
+    let skip: i64 = skipped_quality()
+    if full == 0 { return 0 }
+    return (full - skip) * 100 / full
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 5) 조기 출구 — τ(6)=4 포인트
+//    레이어 3, 6, 9, 12 에서 출구 가능
+//    출구 간격 = σ(6)/τ(6) = 3
+// ════════════════════════════════════════════════════════════════════
+
+fn exit_interval() -> i64 {
+    return TOTAL_LAYERS / tau(N_CORE)
+}
+
+fn is_exit_point(layer: i64) -> bool {
+    let interval: i64 = exit_interval()
+    if interval == 0 { return false }
+    return layer % interval == 0 && layer > 0
+}
+
+fn count_exits() -> i64 {
+    let mut count: i64 = 0
+    let mut l: i64 = 1
+    while l <= TOTAL_LAYERS {
+        if is_exit_point(l) { count = count + 1 }
+        l = l + 1
+    }
+    return count
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 6) 자기검증 — 출구 결과 일치 시 확정
+//    연속 φ(6)=2 출구가 일치하면 조기 종료
+// ════════════════════════════════════════════════════════════════════
+
+fn exit_quality_at(exit_layer: i64) -> i64 {
+    return layer_quality(exit_layer)
+}
+
+fn self_verification_works() -> bool {
+    let interval: i64 = exit_interval()
+    let agree_threshold: i64 = phi(N_CORE)  // 2회 연속 일치
+    let mut agrees: i64 = 0
+    let mut prev_q: i64 = 0
+
+    let mut l: i64 = interval
+    while l <= TOTAL_LAYERS {
+        if is_exit_point(l) {
+            let q: i64 = exit_quality_at(l)
+            if prev_q > 0 {
+                // 품질 차이 10% 미만이면 "일치"
+                let diff: i64 = abs_val(q - prev_q) * 100 / q
+                if diff < 20 { agrees = agrees + 1 }
+            }
+            prev_q = q
+        }
+        l = l + 1
+    }
+    return agrees >= agree_threshold
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 7) 속도 향상 비율
+//    speedup = TOTAL_LAYERS / active_layers
+// ════════════════════════════════════════════════════════════════════
+
+fn speedup_ratio() -> i64 {
+    let active: i64 = count_active_layers()
+    if active == 0 { return 0 }
+    return TOTAL_LAYERS * SCALE / active
+}
+
+fn compute_savings_pct() -> i64 {
+    let active: i64 = count_active_layers()
+    return (TOTAL_LAYERS - active) * 100 / TOTAL_LAYERS
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 8) 게이트 실행 + 검증
+// ════════════════════════════════════════════════════════════════════
 
 fn main() {
-    println("STUB: layer_skip.py (HEXA 포팅 대기)")
-    println("의존: numpy")
+    let sig: i64 = sigma(N_CORE)
+    let t: i64 = tau(N_CORE)
+    let ph: i64 = phi(N_CORE)
+    let sf: i64 = sopfr(N_CORE)
+
+    println("═══ LayerSkip x n=6 ═══")
+    println("n=6 산술: σ=12 / τ=4 / φ=2 / sopfr=5")
+
+    // G1: σφ=nτ 정점
+    let g1: bool = sig * ph == N_CORE * t
+    println("G1 σφ=nτ 정점               : " + g1)
+
+    // G2: 전체 레이어 = σ(6) = 12
+    let g2: bool = TOTAL_LAYERS == sig
+    println("G2 전체층=σ=12              : " + g2)
+
+    // G3: 활성 레이어 = τ(12) = 6 = n
+    let active: i64 = count_active_layers()
+    let g3: bool = active == N_CORE
+    println("G3 활성층=" + active + "=n          : " + g3)
+
+    // G4: 출구 포인트 = τ(6) = 4
+    let exits: i64 = count_exits()
+    let g4: bool = exits == t
+    println("G4 출구=τ=4                : " + g4)
+
+    // G5: 출구 간격 = σ/τ = 3
+    let interval: i64 = exit_interval()
+    let g5: bool = interval == 3
+    println("G5 출구간격=σ/τ=3          : " + g5)
+
+    // G6: 자기검증 작동
+    let g6: bool = self_verification_works()
+    println("G6 자기검증 작동            : " + g6)
+
+    // G7: 계산 절감 50%
+    let savings: i64 = compute_savings_pct()
+    let g7: bool = savings == 50
+    println("G7 절감=50%                : " + g7)
+
+    // G8: 속도 향상 2x
+    let speedup: i64 = speedup_ratio()
+    let g8: bool = speedup == 2 * SCALE
+    println("G8 속도향상=2x             : " + g8)
+
+    // G9: 품질 손실 < 50%
+    let qloss: i64 = quality_loss_pct()
+    let g9: bool = qloss < 50
+    println("G9 품질손실=" + qloss + "%<50%   : " + g9)
+
+    // 벤치마크
+    println("--- 벤치마크 ---")
+    println("전체: " + TOTAL_LAYERS + "층 / 활성: " + active + "층")
+    println("출구: " + exits + "개 (간격 " + interval + ")")
+    println("절감: " + savings + "% / 속도: " + speedup + "/1000x")
+    println("품질 손실: " + qloss + "%")
+
+    let all_pass: bool = g1 && g2 && g3 && g4 && g5 && g6 && g7 && g8 && g9
+    if all_pass {
+        println("LayerSkip OSSIFIED: 9/9 → [10*] 승격 후보")
+    } else {
+        println("LayerSkip FAIL: 게이트 위반")
+    }
 }

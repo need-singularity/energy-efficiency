@@ -1,11 +1,13 @@
-// mamba2_ssm.py → .hexa 포팅 스텁
+// mamba2_ssm.hexa — 구 포팅 스텁 (DEPRECATED)
+// 정본: techniques/sota/mamba2.hexa (S1 Mamba-2 SSD x n=6 BODY)
+// 본 파일은 하위 호환용으로 유지. 신규 작업은 정본 참조.
+//
 // 원본 경로: techniques/arch/mamba2_ssm.py
-// 포팅 상태: STUB (의존 라이브러리: numpy; 원본 118 줄)
+// 포팅 상태: STUB → 정본(sota/mamba2.hexa)으로 이관 완료
 // 원본 요약: Technique 18: Mamba-2 State Space Duality
-// 본격 포팅: nexus verify --hexa <domain> 으로 추진 예정
 // 원본 로직은 git history 에 보존됨
 
 fn main() {
-    println("STUB: mamba2_ssm.py (HEXA 포팅 대기)")
-    println("의존: numpy")
+    println("DEPRECATED: 정본 → techniques/sota/mamba2.hexa 참조")
+    println("본 스텁은 하위 호환용 — hexa run techniques/sota/mamba2.hexa 실행 권장")
 }

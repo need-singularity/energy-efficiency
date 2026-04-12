@@ -1,0 +1,383 @@
+# =============================================================
+# ARAMID DSE 도메인 정의
+# 아라미드 섬유 — n=6 고분자 반복 단위 + sigma=12 GPa 인장강도 + tau=4 제조 단계
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "aramid"
+desc = "아라미드 섬유 DSE — 방향족 폴리아미드, 케블라/트와론, 6원 벤젠 고리 기반 고강도"
+levels = ["Monomer", "Polymerization", "Spinning", "Treatment", "Application"]
+vision = "n=6 기반 궁극 아라미드 — n=6 벤젠 고리 + sigma=12 GPa 강도 + tau=4 제조 단계"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Monomer (단량체) -- 6 후보
+# =============================================================
+[[level]]
+name = "Monomer"
+
+[[candidate]]
+level  = 0
+id     = "PPD_TPC"
+label  = "PPD+TPC (파라 아라미드, 케블라, n=6 벤젠환)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.60
+cost   = 0.55
+notes  = "benzene_C=6=n EXACT, 파라페닐렌디아민+테레프탈로일클로라이드"
+
+[[candidate]]
+level  = 0
+id     = "MPD_IPC"
+label  = "MPD+IPC (메타 아라미드, 노멕스)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.65
+cost   = 0.70
+notes  = "benzene_C=6=n EXACT, 메타페닐렌디아민+이소프탈로일클로라이드, 내열"
+
+[[candidate]]
+level  = 0
+id     = "DAPBI"
+label  = "DAPBI 변형 (이미다졸 함유, 고내열)"
+n6     = 0.75
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "헤테로고리 아라미드, 열분해 온도 상승, 러시아 SVM"
+
+[[candidate]]
+level  = 0
+id     = "Copolymer"
+label  = "공중합 아라미드 (파라+메타 하이브리드, phi=2)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.55
+notes  = "types=2=phi EXACT, 강도+유연 절충, Technora 유형"
+
+[[candidate]]
+level  = 0
+id     = "PBO"
+label  = "PBO (폴리벤조옥사졸, 자이론, 초고강도)"
+n6     = 0.75
+perf   = 0.95
+power  = 0.45
+cost   = 0.35
+notes  = "5.8 GPa 인장강도, 케블라의 1.6배, UV 약점"
+
+[[candidate]]
+level  = 0
+id     = "PIPD_M5"
+label  = "PIPD M5 (수소결합 네트워크, n=6 수소결합)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.40
+cost   = 0.30
+notes  = "H_bonds=6=n EXACT (분자당), 횡방향 강도 혁신, 차세대"
+
+# =============================================================
+# Level 1: Polymerization (중합) -- 6 후보
+# =============================================================
+[[level]]
+name = "Polymerization"
+
+[[candidate]]
+level  = 1
+id     = "Solution_Poly"
+label  = "용액 중합 (NMP/DMAc 용매)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.65
+cost   = 0.65
+notes  = "표준 방법, 고분자량, 용매 회수 필요"
+
+[[candidate]]
+level  = 1
+id     = "Interfacial"
+label  = "계면 중합 (phi=2 상 경계 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.70
+notes  = "phases=2=phi EXACT, 수/유기 계면, 속도 빠름"
+
+[[candidate]]
+level  = 1
+id     = "Vapor_Phase"
+label  = "기상 중합 (CVD 유사, 박막)"
+n6     = 0.50
+perf   = 0.78
+power  = 0.55
+cost   = 0.50
+notes  = "코팅 응용, 초박 아라미드 막"
+
+[[candidate]]
+level  = 1
+id     = "Direct_Poly"
+label  = "직접 중합 (TPA 직접, 비클로라이드)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.75
+cost   = 0.75
+notes  = "HCl 부산물 없음, 친환경, 연구 단계"
+
+[[candidate]]
+level  = 1
+id     = "Continuous_Flow"
+label  = "연속 흐름 반응 (n=6 단계 마이크로리액터)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.60
+cost   = 0.55
+notes  = "stages=6=n EXACT, 균일 반응, 스케일업"
+
+[[candidate]]
+level  = 1
+id     = "Enzymatic"
+label  = "효소 중합 (생체 촉매, 저온)"
+n6     = 0.50
+perf   = 0.72
+power  = 0.80
+cost   = 0.55
+notes  = "친환경, 온화 조건, 분자량 제한"
+
+# =============================================================
+# Level 2: Spinning (방사) -- 6 후보
+# =============================================================
+[[level]]
+name = "Spinning"
+
+[[candidate]]
+level  = 2
+id     = "Dry_Jet_Wet"
+label  = "건식 제트 습식 (에어 갭, 케블라 표준)"
+n6     = 0.75
+perf   = 0.92
+power  = 0.60
+cost   = 0.55
+notes  = "에어 갭에서 사전 배향, 응고욕, 고결정성"
+
+[[candidate]]
+level  = 2
+id     = "Wet_Spinning"
+label  = "습식 방사 (직접 응고, 메타 아라미드)"
+n6     = 0.50
+perf   = 0.80
+power  = 0.70
+cost   = 0.70
+notes  = "단순 공정, 낮은 배향, 노멕스 유형"
+
+[[candidate]]
+level  = 2
+id     = "Gel_Spinning"
+label  = "겔 방사 (초연신, sigma=12x 연신비)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.55
+cost   = 0.50
+notes  = "draw_ratio=12=sigma EXACT, 초고배향, UHMWPE 방식 차용"
+
+[[candidate]]
+level  = 2
+id     = "Electrospinning"
+label  = "전기 방사 (나노 섬유, n=6 kV 전압)"
+n6     = 1.00
+perf   = 0.78
+power  = 0.65
+cost   = 0.55
+notes  = "voltage=6kV=n EXACT, 나노 직경, 필터/복합재"
+
+[[candidate]]
+level  = 2
+id     = "Melt_Blow"
+label  = "멜트 블로운 (열가소성 변형 아라미드)"
+n6     = 0.50
+perf   = 0.72
+power  = 0.75
+cost   = 0.80
+notes  = "부직포, 빠른 생산, 일부 공중합체만 가능"
+
+[[candidate]]
+level  = 2
+id     = "Coaxial_Spinning"
+label  = "동축 방사 (코어-쉘, phi=2 층 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.50
+notes  = "layers=2=phi EXACT, 기능성 다층 섬유, 전도성 코어"
+
+# =============================================================
+# Level 3: Treatment (후처리) -- 6 후보
+# =============================================================
+[[level]]
+name = "Treatment"
+
+[[candidate]]
+level  = 3
+id     = "Heat_Anneal"
+label  = "열처리 (결정화, n=6 초 체류 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.70
+notes  = "residence=6s=n EXACT, 장력하 열처리, 결정성 향상"
+
+[[candidate]]
+level  = 3
+id     = "Surface_Plasma"
+label  = "플라즈마 표면 처리 (접착 향상)"
+n6     = 0.75
+perf   = 0.82
+power  = 0.60
+cost   = 0.55
+notes  = "산소/아르곤 플라즈마, 표면 관능기, 복합재 접착"
+
+[[candidate]]
+level  = 3
+id     = "Sizing_Agent"
+label  = "사이징제 (에폭시 호환, sigma=12% 함량)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.70
+cost   = 0.70
+notes  = "content=12%=sigma EXACT, 섬유-매트릭스 계면 최적화"
+
+[[candidate]]
+level  = 3
+id     = "UV_Stabilizer"
+label  = "UV 안정화 (벤조트리아졸, n=6 고리 EXACT)"
+n6     = 1.00
+perf   = 0.78
+power  = 0.60
+cost   = 0.65
+notes  = "ring_C=6=n EXACT, 자외선 열화 방지, 야외 내구성"
+
+[[candidate]]
+level  = 3
+id     = "Nano_Coating"
+label  = "나노 코팅 (CNT/그래핀 표면 강화)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.40
+notes  = "graphene_C=6=n EXACT, 횡방향 강도 향상, 내마모"
+
+[[candidate]]
+level  = 3
+id     = "Dyeing"
+label  = "염색 (원착사/후염, tau=4 색상군)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.75
+cost   = 0.75
+notes  = "groups=4=tau EXACT (산성/반응/분산/안료), 장식/식별"
+
+# =============================================================
+# Level 4: Application (응용) -- 6 후보
+# =============================================================
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "Body_Armor"
+label  = "방탄 조끼 (n=6 겹 직물 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.65
+cost   = 0.55
+notes  = "plies=6=n EXACT (최소 유효 겹), NIJ Level IIIA"
+
+[[candidate]]
+level  = 4
+id     = "Tire_Cord"
+label  = "타이어 코드 (보강재, sigma=12 코드/cm)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.70
+notes  = "cords=12/cm=sigma EXACT, 고속 타이어, 경량화"
+
+[[candidate]]
+level  = 4
+id     = "Aerospace_Comp"
+label  = "항공 복합재 (경량 구조, 에폭시 매트릭스)"
+n6     = 0.75
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "허니콤 코어, 페어링, 경량 고강도"
+
+[[candidate]]
+level  = 4
+id     = "Fire_Protection"
+label  = "방화복 (메타 아라미드, n=6 층 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "layers=6=n EXACT, 소방복/레이싱 슈트, 내열 400도+"
+
+[[candidate]]
+level  = 4
+id     = "Optical_Cable"
+label  = "광케이블 보강 (인장 부재)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.75
+cost   = 0.75
+notes  = "해저/지하, 무게 대비 최고 강도, 비도전성"
+
+[[candidate]]
+level  = 4
+id     = "Rope_Sling"
+label  = "로프/슬링 (phi=2 편조 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.65
+notes  = "braids=2=phi EXACT (코어+쉬스), 산업/해양/등산"
+
+# =============================================================
+# 호환성 규칙
+# =============================================================
+
+# PBO는 건식 제트 습식 방사 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "PBO"
+then_level = 2
+then_ids   = "Dry_Jet_Wet,Gel_Spinning"
+
+# 전기 방사는 나노 코팅과 호환
+[[rule]]
+type       = "require"
+if_level   = 2
+if_id      = "Electrospinning"
+then_level = 4
+then_ids   = "Aerospace_Comp,Body_Armor"
+
+# 메타 아라미드는 방화 응용 최적
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "MPD_IPC"
+then_level = 4
+then_ids   = "Fire_Protection,Rope_Sling"
+
+# 멜트 블로운은 고강도 응용 제외
+[[rule]]
+type       = "exclude"
+if_level   = 2
+if_id      = "Melt_Blow"
+then_level = 4
+then_ids   = "Body_Armor,Aerospace_Comp"

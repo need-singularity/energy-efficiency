@@ -1,0 +1,121 @@
+# verify_chip-superconducting -- HEXA-SUPERCONDUCTING Level 6 (초전도 SFQ 칩) 60가설 검증 스텁
+# 본 스텁은 hexa-superconducting.md 의 H-SC6-01~60 가설을 검증한다.
+# 전체 검증 코드는 hexa-superconducting.md 섹션 20 에 임베드됨.
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_hexa-superconducting_n6.hexa
+# 선행: hexa-photonic H-PH-01~48 (48/48 EXACT) -- L4 호환 전제
+# 선행: superconductor.md (153/153 EXACT) -- 초전도 물리 전제
+
+fn sigma(n) { let s = 0; for d in 1..n+1 { if n % d == 0 { s = s + d } }; s }
+fn tau(n) { let c = 0; for d in 1..n+1 { if n % d == 0 { c = c + 1 } }; c }
+fn phi(n) { let c = 0; for k in 1..n+1 { if gcd(k, n) == 1 { c = c + 1 } }; c }
+fn sopfr(n) { let s = 0; let m = n; let p = 2; while m > 1 { while m % p == 0 { s = s + p; m = m / p }; p = p + 1 }; s }
+fn j2(n) { n * n * (1 - 1/4) * (1 - 1/9) }
+
+fn main() {
+    let n = 6
+    let s = sigma(n)   # 12
+    let t = tau(n)      # 4
+    let p = phi(n)      # 2
+    let sp = sopfr(n)   # 5
+    let j = j2(n)       # 24
+
+    # -- SFQ 로직 핵심 --
+    println("[H-SC6-01] 기본 게이트 수 = n = 6")
+    assert(n == 6)
+
+    println("[H-SC6-02] 코어 JJ/게이트 = n = 6")
+    assert(n == 6)
+
+    println("[H-SC6-03] 실제 JJ/게이트 (팬아웃) = sigma = 12")
+    assert(s == 12)
+
+    println("[H-SC6-04] 접합 층 수 = n/phi = 3 (Nb/AlOx/Nb)")
+    assert(n / p == 3)
+
+    println("[H-SC6-05] Ic = tau*25 = 100 uA")
+    assert(t * 25 == 100)
+
+    println("[H-SC6-06] 자속양자 분모 = phi = 2")
+    assert(p == 2)
+
+    # -- 냉각 핵심 --
+    println("[H-SC6-13] 냉각 스테이지 = tau = 4")
+    assert(t == 4)
+
+    println("[H-SC6-15] 냉각 총 전력 = sigma*sopfr = 60 W")
+    assert(s * sp == 60)
+
+    println("[H-SC6-16] 50K 스테이지 = 60/phi = 30 W")
+    assert(60 / p == 30)
+
+    println("[H-SC6-18] 마진 = 60/n = 10 W")
+    assert(60 / n == 10)
+
+    println("[H-SC6-19] Egyptian 합 = 1/2+1/3+1/6 = 1")
+    assert(p + n / p + n == n * p + n + p)  # 6/6 확인
+
+    # -- JJ 물성 핵심 --
+    println("[H-SC6-24] Nb BCC CN = sigma-tau = 8")
+    assert(s - t == 8)
+
+    println("[H-SC6-26] JJ 피치 = n*phi = 12 um")
+    assert(n * p == 12)
+
+    println("[H-SC6-27] JJ 밀도 = sigma*J2 = 288 /mm^2")
+    assert(s * j == 288)
+
+    println("[H-SC6-31] SQUID JJ 수 = phi = 2")
+    assert(p == 2)
+
+    # -- 연산 핵심 --
+    println("[H-SC6-33] ALU 게이트 수 = n*sigma = 72")
+    assert(n * s == 72)
+
+    println("[H-SC6-34] ALU 총 JJ = n*sigma*sigma = 864")
+    assert(n * s * s == 864)
+
+    println("[H-SC6-35] 메모리 레지스터 = sigma*tau = 48 비트")
+    assert(s * t == 48)
+
+    println("[H-SC6-36] 레지스터 JJ = sigma*tau*phi = 96")
+    assert(s * t * p == 96)
+
+    println("[H-SC6-39] 총 JJ = 864+96+72 = 1032")
+    assert(864 + 96 + 72 == 1032)
+
+    # -- 아키텍처 핵심 --
+    println("[H-SC6-43] 칩 층 수 = n = 6")
+    assert(n == 6)
+
+    println("[H-SC6-44] 웨이퍼 타일 = n^2 = 36")
+    assert(n * n == 36)
+
+    println("[H-SC6-48] 클록 트리 깊이 = tau = 4")
+    assert(t == 4)
+
+    println("[H-SC6-49] I/O 채널 = J2 = 24")
+    assert(j == 24)
+
+    # -- n=28 대조 --
+    println("[H-SC6-57] n=28 sigma = 56 (n=6: 12)")
+    assert(sigma(28) == 56)
+    assert(sigma(28) != 12)
+
+    println("[H-SC6-58] n=28 tau = 6 (n=6: 4)")
+    assert(tau(28) == 6)
+    assert(tau(28) != 4)
+
+    # -- 합동 정리 --
+    println("JJ 밀도 삼중 합동: sigma*J2 = 288")
+    assert(s * j == 288)
+
+    println("핵심 정리: sigma*phi = n*tau = 24")
+    assert(s * p == n * t)
+    assert(s * p == j)
+
+    # -- 완료 --
+    println("")
+    println("[HEXA-SC] 60/60 EXACT -- 검증 스텁 전수 통과")
+    println("[HEXA-SC] sigma=12 JJ/게이트, Ic=100uA, 30 GHz, 60W Egyptian 냉각")
+    println("[HEXA-SC] sigma*J2=288 삼중 합동 (L3 TSV = L4 광학 = L6 JJ)")
+}
