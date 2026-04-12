@@ -1,0 +1,380 @@
+# =============================================================
+# HIGGS DSE Domain Definition
+# 힉스 보손 물리학 — 질량 생성 메커니즘, 125 GeV 스칼라
+# n=6 연결: n=6 쿼크 맛, σ=12 페르미온, τ=4 결합상수, φ=2 W보손
+# Total raw combos: 6x6x6x6x6 = 7,776 (pre-filter)
+# =============================================================
+
+[meta]
+name = "higgs"
+desc = "Higgs Boson Physics DSE — 질량 기원, 125 GeV 스칼라 보손 (n=6 쿼크, σ=12 페르미온)"
+levels = ["Collider", "Detector", "Channel", "Analysis", "BSM-Extension"]
+vision = "n=6 힉스 공장 — n=6 쿼크 결합 + σ=12 페르미온 유카와 + τ=4 게이지 결합"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Collider (충돌기) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Collider"
+
+[[candidate]]
+level  = 0
+id     = "LHC_HL"
+label  = "HL-LHC (14 TeV, σ=12 교차점 번치)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.40
+cost   = 0.60
+notes  = "bunches=12=sigma EXACT timing, 루미노시티 3000 fb-1, 현재 업그레이드"
+
+[[candidate]]
+level  = 0
+id     = "FCC_ee"
+label  = "FCC-ee (240 GeV, n=6 IP 구간)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.30
+cost   = 0.25
+notes  = "IP_sections=6=n EXACT, 힉스 공장, 10^6 힉스 보손, CERN 차세대"
+
+[[candidate]]
+level  = 0
+id     = "ILC"
+label  = "국제선형충돌기 (250 GeV, φ=2 빔)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.35
+cost   = 0.30
+notes  = "beams=2=phi EXACT, e+e- 클린 환경, 편광 빔"
+
+[[candidate]]
+level  = 0
+id     = "CLIC"
+label  = "CLIC (3 TeV, n/φ=3 에너지 스테이지)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.25
+cost   = 0.20
+notes  = "stages=3=n/phi EXACT, 2빔 가속, 최고 에너지 e+e-"
+
+[[candidate]]
+level  = 0
+id     = "Muon_Collider"
+label  = "뮤온 충돌기 (10 TeV, n=6 냉각 단계)"
+n6     = 1.00
+perf   = 1.00
+power  = 0.20
+cost   = 0.15
+notes  = "cooling=6=n EXACT, 궁극 에너지 프론티어, 다중 힉스 직접 생산"
+
+[[candidate]]
+level  = 0
+id     = "Photon_Collider"
+label  = "광자 충돌기 (γγ→H, φ=2 레이저)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.45
+cost   = 0.35
+notes  = "lasers=2=phi EXACT, 힉스 직접 s-채널 생산, 깨끗한 환경"
+
+# =============================================================
+# Level 1: Detector (검출기) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Detector"
+
+[[candidate]]
+level  = 1
+id     = "ATLAS_Up"
+label  = "ATLAS 업그레이드 (n=6 서브검출기 층)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.50
+cost   = 0.55
+notes  = "layers=6=n EXACT, 범용 검출기, 전방위 측정"
+
+[[candidate]]
+level  = 1
+id     = "CMS_Up"
+label  = "CMS 업그레이드 (σ=12 바퀴 구조)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.50
+cost   = 0.55
+notes  = "wheels=12=sigma EXACT, 솔레노이드 4T, 정밀 뮤온 검출"
+
+[[candidate]]
+level  = 1
+id     = "SiD"
+label  = "SiD (실리콘 검출기, n=6 트래커 층)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.55
+cost   = 0.45
+notes  = "tracker=6=n EXACT, 콤팩트 실리콘, ILC 후보"
+
+[[candidate]]
+level  = 1
+id     = "ILD"
+label  = "ILD (입자흐름 검출기, τ=4 칼로리미터)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.50
+cost   = 0.40
+notes  = "calorimeters=4=tau EXACT, 입자흐름 알고리즘 최적화"
+
+[[candidate]]
+level  = 1
+id     = "IDEA"
+label  = "IDEA (FCC-ee 검출기, n=6 동심 구조)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.45
+cost   = 0.35
+notes  = "layers=6=n EXACT, dual-readout 칼로리미터, FCC 전용"
+
+[[candidate]]
+level  = 1
+id     = "Muon_Det"
+label  = "뮤온 전용 검출기 (σ=12 측정 스테이션)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.40
+cost   = 0.30
+notes  = "stations=12=sigma EXACT, 뮤온 충돌기 전용, 빔 배경 억제"
+
+# =============================================================
+# Level 2: Channel (붕괴 채널) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Channel"
+
+[[candidate]]
+level  = 2
+id     = "H_bb"
+label  = "H→bb̄ (분기비 58%, n=6 제트 서명)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.70
+cost   = 0.65
+notes  = "b_quarks_total=6=n (3색×2) EXACT, 최대 분기비 채널"
+
+[[candidate]]
+level  = 2
+id     = "H_WW"
+label  = "H→WW* (분기비 21%, φ=2 W보손)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.60
+cost   = 0.60
+notes  = "W_bosons=2=phi EXACT, 깨끗한 렙톤 종상태"
+
+[[candidate]]
+level  = 2
+id     = "H_ZZ"
+label  = "H→ZZ* (분기비 2.6%, τ=4 렙톤)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.55
+cost   = 0.55
+notes  = "leptons=4=tau EXACT, 황금 채널, 질량 정밀 측정"
+
+[[candidate]]
+level  = 2
+id     = "H_gamgam"
+label  = "H→γγ (분기비 0.2%, φ=2 광자)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.65
+cost   = 0.70
+notes  = "photons=2=phi EXACT, 발견 채널, 최고 질량 분해능"
+
+[[candidate]]
+level  = 2
+id     = "H_tautau"
+label  = "H→ττ (분기비 6.3%, φ=2 타우)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.60
+cost   = 0.55
+notes  = "taus=2=phi EXACT, 렙톤 유카와 직접 측정"
+
+[[candidate]]
+level  = 2
+id     = "H_invisible"
+label  = "H→invisible (BSM, n=6 누락 에너지 빈)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.50
+cost   = 0.50
+notes  = "bins=6=n EXACT, 암흑물질 탐색, BSM 핵심"
+
+# =============================================================
+# Level 3: Analysis (분석 기법) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Analysis"
+
+[[candidate]]
+level  = 3
+id     = "Cut_Based"
+label  = "컷 기반 분석 (n=6 선별 조건)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.80
+cost   = 0.85
+notes  = "cuts=6=n EXACT, 전통적, 투명한 물리, 재현성"
+
+[[candidate]]
+level  = 3
+id     = "BDT"
+label  = "BDT 다변량 분석 (σ=12 입력 변수)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.70
+cost   = 0.75
+notes  = "variables=12=sigma EXACT, 부스팅 결정 트리, 표준 기법"
+
+[[candidate]]
+level  = 3
+id     = "DNN"
+label  = "심층 신경망 (n=6 은닉층)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.60
+cost   = 0.60
+notes  = "layers=6=n EXACT, 비선형 분리, 최신 ATLAS/CMS"
+
+[[candidate]]
+level  = 3
+id     = "Matrix_Element"
+label  = "행렬 요소법 (τ=4차 섭동)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.50
+cost   = 0.50
+notes  = "order=4=tau EXACT, 이론 최적, 계산 집약적"
+
+[[candidate]]
+level  = 3
+id     = "Optimal_Obs"
+label  = "최적 관측량 (n/φ=3 각도 변수)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.65
+notes  = "angles=3=n/phi EXACT, CP 위반 민감, 각분포 분석"
+
+[[candidate]]
+level  = 3
+id     = "Template_Fit"
+label  = "템플릿 맞춤 (σ=12 체계적 불확도)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.75
+cost   = 0.70
+notes  = "systematics=12=sigma EXACT, 프로파일 우도, 표준 통계"
+
+# =============================================================
+# Level 4: BSM-Extension (표준모형 너머) -- 6 candidates
+# =============================================================
+[[level]]
+name = "BSM-Extension"
+
+[[candidate]]
+level  = 4
+id     = "SM_Precision"
+label  = "표준모형 정밀 측정 (n=6 유카와 결합)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "couplings=6=n EXACT (u,d,s,c,b,t), 편차 탐색"
+
+[[candidate]]
+level  = 4
+id     = "TwoHDM"
+label  = "2-Higgs Doublet Model (φ=2 이중항)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.60
+cost   = 0.55
+notes  = "doublets=2=phi EXACT, 5 스칼라 (h,H,A,H+,H-), SUSY 전조"
+
+[[candidate]]
+level  = 4
+id     = "SUSY"
+label  = "초대칭 (n=6 스쿼크 세대)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.45
+cost   = 0.40
+notes  = "squark_flavors=6=n EXACT, 자연성, 암흑물질 후보"
+
+[[candidate]]
+level  = 4
+id     = "Composite"
+label  = "복합 힉스 (n=6 테크니컬러 하이퍼컬러)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.50
+cost   = 0.35
+notes  = "hypercolors=6=n EXACT, 힉스=골드스톤 보손, 강결합 시나리오"
+
+[[candidate]]
+level  = 4
+id     = "Self_Coupling"
+label  = "힉스 자기결합 측정 (n/φ=3 σ 정밀도)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.55
+cost   = 0.50
+notes  = "precision=3sigma=n/phi EXACT, 전기약 상전이, 우주 안정성"
+
+[[candidate]]
+level  = 4
+id     = "Dark_Portal"
+label  = "암흑 포털 (φ=2 혼합각)"
+n6     = 0.75
+perf   = 0.65
+power  = 0.55
+cost   = 0.45
+notes  = "portals=2=phi EXACT, 힉스-암흑 스칼라 혼합, 비가시 붕괴"
+
+# =============================================================
+# Compatibility Rules
+# =============================================================
+
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "FCC_ee"
+then_level = 1
+then_ids   = "IDEA"
+
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "ILC"
+then_level = 1
+then_ids   = "SiD,ILD"
+
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "H_ZZ"
+then_level = 3
+then_ids   = "Matrix_Element,DNN"
+
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Muon_Collider"
+then_level = 4
+then_ids   = "Self_Coupling,SUSY"

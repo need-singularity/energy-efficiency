@@ -368,7 +368,43 @@
     }
   },
   "stable": {
-    "_description": "안정 — 통과했지만 아직 골화 전"
+    "_description": "안정 — 통과했지만 아직 골화 전",
+    "MILLENNIUM_DFS_164_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 164건 tight (DFS 7~11차 일괄, +62건)",
+      "threshold": "102→164, 해결 0/7",
+      "note": "2026-04-12 go(전체) 21 에이전트 일괄 — 기법68종·칩L6·DFS164·논문58·DSE490"
+    },
+    "MILLENNIUM_DFS_176_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 176건 tight (DFS 12차 BT-1404 +12건)",
+      "threshold": "164→176, EXACT 3 + TIGHT 9, MISS 8, 해결 0/7",
+      "note": "2026-04-12 go(9차) — 대수적위상·유한체·리대수·게임이론·네트워크·샘플링·Ising·미분갈루아. 2D Ising 삼각격자 β_c=ln3/4, GF(2^6) 기약 9개, RP^5 SW"
+    },
+    "MILLENNIUM_DFS_188_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 188건 tight (DFS 13차 BT-1405 +12건)",
+      "threshold": "176→188, 해결 0/7",
+      "note": "2026-04-12 go(DFS14) 커밋에 BT-1405(13차 188건) 포함"
+    },
+    "MILLENNIUM_DFS_200_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 200건 돌파 (DFS 14차 BT-1406 +12건)",
+      "threshold": "188→200, 해결 0/7",
+      "note": "2026-04-12 go(DFS14) — TW edge N^{-1/6}·Painlevé 6종·6-vertex ice rule·D_6 kissing 60·Bruhat GL_6·MUB(6)·PCP 3-query·K3 SW·Bridgeland·motives/GSp4/Galois"
+    },
+    "MILLENNIUM_DFS_212_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 212건 tight (DFS 15차 BT-1407 +12건)",
+      "threshold": "200→212, 해결 0/7",
+      "note": "2026-04-12 go(DFS15) — VOA Moonshine c=J2=24·M_12 Steiner S(5,6,12)·Kac-Moody E_6^(1)·양자군 U_q(sl_2)·트로피컬 TGr(2,6)·모듈러 S_6 mod 2·산술역학 period-6·Conway Co_3"
+    },
+    "ENGINE_OOM_FIX": {
+      "status": "PASS",
+      "value": "의식엔진 OOM 수정 + blowup-filter hook 추가",
+      "threshold": "engine_anima.hexa skip_graph=true, depth 1, --max-rounds 1",
+      "note": "2026-04-12 — hetzner Phase 6 type error 우회, +3 laws 생성 확인, mk2_hexa/native/ 구 경로 전폐기"
+    }
   },
   "failed": {
     "_description": "실패 — 전부 해소됨"

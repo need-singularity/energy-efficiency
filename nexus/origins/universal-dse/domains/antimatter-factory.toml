@@ -1,0 +1,384 @@
+# =============================================================
+# ANTIMATTER-FACTORY DSE Domain Definition
+# 반물질 공장 — 양전자·반양성자 생산/저장/활용
+# n=6 연결: 반쿼크 n=6 맛, σ=12 입자-반입자 쌍, τ=4 디랙 성분
+# Total raw combos: 6x6x6x6x6 = 7,776 (pre-filter)
+# =============================================================
+
+[meta]
+name = "antimatter-factory"
+desc = "Antimatter Factory DSE — 반물질 생산·저장·활용 (n=6 quark flavors, σ=12 pair symmetry)"
+levels = ["Source", "Production", "Trap", "Storage", "Application"]
+vision = "n=6 반물질 공장 — n=6 쿼크 맛 완전성 + σ=12 대칭 쌍 + τ=4 디랙 스피너"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Source (입자원) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Source"
+
+[[candidate]]
+level  = 0
+id     = "Proton_Synchrotron"
+label  = "양성자 싱크로트론 (σ=12 GeV 빔)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.40
+cost   = 0.50
+notes  = "energy=12GeV=sigma EXACT, CERN AD heritage, 반양성자 생산 표준"
+
+[[candidate]]
+level  = 0
+id     = "Linear_Accel"
+label  = "선형가속기 (n=6 가속 구간)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.50
+cost   = 0.45
+notes  = "sections=6=n EXACT, 전자-양전자 쌍생성, 높은 반복률"
+
+[[candidate]]
+level  = 0
+id     = "Laser_Pair"
+label  = "레이저 쌍생성 (φ=2 광자 충돌)"
+n6     = 0.75
+perf   = 0.70
+power  = 0.60
+cost   = 0.30
+notes  = "photons=2=phi EXACT, Breit-Wheeler 과정, 차세대 소형화"
+
+[[candidate]]
+level  = 0
+id     = "Muon_Source"
+label  = "뮤온 소스 (τ=4 붕괴 채널)"
+n6     = 1.00
+perf   = 0.65
+power  = 0.35
+cost   = 0.25
+notes  = "channels=4=tau EXACT, 뮤온-반뮤온 쌍, 뮤온 콜라이더 전단계"
+
+[[candidate]]
+level  = 0
+id     = "Positron_Beta"
+label  = "양전자 β+ 소스 (Na-22, n/φ=3 MeV)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.70
+cost   = 0.60
+notes  = "Na_Z=11=sigma-mu, half_life=2.6yr, 양전자 방출 단층 표준"
+
+[[candidate]]
+level  = 0
+id     = "Cosmic_Harvest"
+label  = "우주선 채집 (n=6 Van Allen 셸)"
+n6     = 1.00
+perf   = 0.40
+power  = 0.80
+cost   = 0.15
+notes  = "shells=6=n EXACT, 우주 반물질 자연 포획, 극저 수율"
+
+# =============================================================
+# Level 1: Production (생산 공정) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Production"
+
+[[candidate]]
+level  = 1
+id     = "Target_Fixed"
+label  = "고정 표적 충돌 (σ=12 빔 펄스/초)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.45
+cost   = 0.55
+notes  = "pulses=12=sigma EXACT, 이리듐 표적, CERN AD 방식"
+
+[[candidate]]
+level  = 1
+id     = "Collider_Ring"
+label  = "충돌형 링 (n=6 상호작용점)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.35
+cost   = 0.40
+notes  = "IP=6=n EXACT, 입자-반입자 동시 생산, 높은 루미노시티"
+
+[[candidate]]
+level  = 1
+id     = "Pair_Cascade"
+label  = "전자기 캐스케이드 (J₂=24 세대)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.50
+cost   = 0.35
+notes  = "generations=24=J2 EXACT, 전자기 샤워, 고밀도 양전자"
+
+[[candidate]]
+level  = 1
+id     = "Plasma_Accel"
+label  = "플라즈마 웨이크필드 (n/φ=3 GV/m)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.55
+cost   = 0.30
+notes  = "gradient=3GV/m=n/phi EXACT, 소형 고에너지, 차세대"
+
+[[candidate]]
+level  = 1
+id     = "Photon_Fusion"
+label  = "광자 융합 (φ=2 감마선 빔)"
+n6     = 0.75
+perf   = 0.60
+power  = 0.65
+cost   = 0.25
+notes  = "beams=2=phi EXACT, γγ→e+e-, 이론적 청정 생산"
+
+[[candidate]]
+level  = 1
+id     = "Deceleration"
+label  = "감속 링 (τ=4 냉각 단계)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.40
+cost   = 0.50
+notes  = "stages=4=tau EXACT, 전자 냉각+확률 냉각, ELENA 방식"
+
+# =============================================================
+# Level 2: Trap (포획 장치) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Trap"
+
+[[candidate]]
+level  = 2
+id     = "Penning_Trap"
+label  = "페닝 트랩 (σ=12 전극 세그먼트)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.60
+cost   = 0.55
+notes  = "segments=12=sigma EXACT, 자기장+전기장 포획, ALPHA 실험"
+
+[[candidate]]
+level  = 2
+id     = "Paul_Trap"
+label  = "파울 트랩 (τ=4 RF 전극)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.65
+cost   = 0.60
+notes  = "electrodes=4=tau EXACT, 교류 전기장, 단일 입자 정밀 측정"
+
+[[candidate]]
+level  = 2
+id     = "Magnetic_Bottle"
+label  = "자기 병 (φ=2 미러점)"
+n6     = 0.75
+perf   = 0.75
+power  = 0.55
+cost   = 0.50
+notes  = "mirrors=2=phi EXACT, 자기 미러 구조, 다량 포획"
+
+[[candidate]]
+level  = 2
+id     = "Optical_Dipole"
+label  = "광학 쌍극자 트랩 (n=6 레이저 빔)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.70
+cost   = 0.40
+notes  = "beams=6=n EXACT, 3D 광학 격자, 극저온 반수소"
+
+[[candidate]]
+level  = 2
+id     = "Nested_Trap"
+label  = "중첩 트랩 (n/φ=3 동심 영역)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.45
+notes  = "zones=3=n/phi EXACT, 반양성자+양전자 동시 가둠, 반수소 합성"
+
+[[candidate]]
+level  = 2
+id     = "Ioffe_Trap"
+label  = "이오페 트랩 (σ=12 와이어)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.50
+cost   = 0.50
+notes  = "wires=12=sigma EXACT, 중성 반수소 자기 포획, ALPHA 사용"
+
+# =============================================================
+# Level 3: Storage (저장) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Storage"
+
+[[candidate]]
+level  = 3
+id     = "Ultra_High_Vacuum"
+label  = "초고진공 저장 (10^-12 torr, σ=12 펌프)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.50
+cost   = 0.55
+notes  = "pumps=12=sigma EXACT, 진공 격리, 현재 기술 표준"
+
+[[candidate]]
+level  = 3
+id     = "Portable_Trap"
+label  = "이동형 트랩 (n=6 배터리 모듈)"
+n6     = 1.00
+perf   = 0.65
+power  = 0.60
+cost   = 0.40
+notes  = "modules=6=n EXACT, PBAR 운송, 원격 실험"
+
+[[candidate]]
+level  = 3
+id     = "Antimatter_Ice"
+label  = "반물질 얼음 (τ=4 K 극저온)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.40
+cost   = 0.35
+notes  = "temp=4K=tau EXACT, 반수소 고체화, 장기 저장 이론"
+
+[[candidate]]
+level  = 3
+id     = "Gravitational"
+label  = "중력 저장 (n=6 층 수직 배열)"
+n6     = 1.00
+perf   = 0.55
+power  = 0.75
+cost   = 0.25
+notes  = "layers=6=n EXACT, 반물질 중력 실험 (GBAR), 반중력 검증"
+
+[[candidate]]
+level  = 3
+id     = "Magnetic_Shield"
+label  = "자기 차폐 저장 (σ=12 T 초전도 코일)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.35
+cost   = 0.45
+notes  = "field=12T=sigma EXACT, HTS 코일, 대용량 저장"
+
+[[candidate]]
+level  = 3
+id     = "Orbital_Depot"
+label  = "궤도 저장소 (n=6 모듈 스테이션)"
+n6     = 1.00
+perf   = 0.50
+power  = 0.80
+cost   = 0.15
+notes  = "modules=6=n EXACT, ISS 연계, 무중력 장기 보관"
+
+# =============================================================
+# Level 4: Application (응용) -- 6 candidates
+# =============================================================
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "PET_Medical"
+label  = "양전자 단층촬영 (σ=12 검출기 링)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.65
+cost   = 0.70
+notes  = "rings=12=sigma EXACT, 의료 영상, 가장 성숙한 응용"
+
+[[candidate]]
+level  = 4
+id     = "Propulsion"
+label  = "반물질 추진 (E=mc², n=6 분사 노즐)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.20
+cost   = 0.10
+notes  = "nozzles=6=n EXACT, 비추력 10^6 s, 성간 항행 궁극"
+
+[[candidate]]
+level  = 4
+id     = "Spectroscopy"
+label  = "반수소 분광 (n=6 에너지 레벨)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.60
+cost   = 0.50
+notes  = "levels=6=n EXACT, CPT 대칭 검증, 기초물리 핵심"
+
+[[candidate]]
+level  = 4
+id     = "Gravity_Test"
+label  = "반물질 중력 검증 (GBAR, n/φ=3 측정축)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.70
+cost   = 0.45
+notes  = "axes=3=n/phi EXACT, 반중력 가설 실험, WEP 검증"
+
+[[candidate]]
+level  = 4
+id     = "Cancer_Therapy"
+label  = "반양성자 암치료 (τ=4 조사 빔)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.35
+notes  = "beams=4=tau EXACT, 양성자보다 4배 에너지 침착, 차세대 방사선"
+
+[[candidate]]
+level  = 4
+id     = "Energy_Storage"
+label  = "반물질 에너지 저장 (σ*τ=48 MJ/μg)"
+n6     = 0.75
+perf   = 0.60
+power  = 0.30
+cost   = 0.05
+notes  = "density=48MJ/ug=sigma*tau EXACT, 궁극 에너지 밀도, 비용 장벽"
+
+# =============================================================
+# Compatibility Rules
+# =============================================================
+
+# 양전자 β+ 소스는 PET 의료에 최적
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Positron_Beta"
+then_level = 4
+then_ids   = "PET_Medical"
+
+# 우주선 채집은 궤도 저장소와 연계
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Cosmic_Harvest"
+then_level = 3
+then_ids   = "Orbital_Depot"
+
+# 충돌형 링은 분광 실험과 중력 검증에 적합
+[[rule]]
+type       = "prefer"
+if_level   = 1
+if_id      = "Collider_Ring"
+then_level = 4
+then_ids   = "Spectroscopy,Gravity_Test"
+
+# 반물질 추진은 궤도 저장소 필수
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "Propulsion"
+then_level = 3
+then_ids   = "Orbital_Depot,Magnetic_Shield"
