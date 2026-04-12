@@ -52,6 +52,11 @@
           {
             "type": "command",
             "command": "/Users/ghost/Dev/hexa-lang/hexa /Users/ghost/Dev/nexus/shared/hooks/hook-entry.hexa post /Users/ghost/Dev/nexus/shared/hooks/hexa-grammar-guard.hexa"
+          },
+          {
+            "type": "command",
+            "command": "/Users/ghost/Dev/hexa-lang/hexa /Users/ghost/Dev/nexus/shared/hooks/hook-entry.hexa bash /Users/ghost/Dev/nexus/shared/hooks/blowup-filter-auto.hexa",
+            "timeout": 5
           }
         ]
       },
