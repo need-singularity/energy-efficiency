@@ -8,6 +8,7 @@
       "count": 11,
       "category": "인체/의료/생물",
       "bt_range": "BT-405~416",
+      "ghost_status": "2026-04-12 전량 해소 -- 10편 신규 작성 (synthetic-biology는 기존 존재)",
       "papers": [
         "papers/n6-hexa-neuro-paper.md",
         "papers/n6-hexa-mind-paper.md",

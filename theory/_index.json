@@ -27,7 +27,7 @@
 
   "breakthroughs": {
     "main": "breakthroughs/breakthrough-theorems.md",
-    "total": 573,
+    "total": 585,
     "extensions": [
       "breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
@@ -50,7 +50,13 @@
       "breakthroughs/bt-1403-millennium-dfs-round11-2026-04-12.md",
       "breakthroughs/bt-1404-millennium-dfs-round12-2026-04-12.md",
       "breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md",
-      "breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md"
+      "breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md",
+      "breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md",
+      "breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md",
+      "breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "breakthroughs/bt-1412-millennium-dfs-round20-2026-04-12.md"
     ],
     "candidates": [
       "breakthroughs/bt-candidates-from-tecs-l.md",

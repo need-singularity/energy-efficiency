@@ -1,0 +1,397 @@
+# =============================================================
+# 고전역학-가속기 DSE 도메인 정의
+# 입자 가속기 물리 + 고전역학 기반 — 가속/집속/검출/제어/응용
+# n=6: 6극 보정자석, sigma=12 섹터, 6자유도 빔 위상공간
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "classical-mechanics-accelerator"
+desc = "가속기 물리+고전역학 DSE (가속/집속/검출/제어/응용)"
+levels = ["Acceleration", "Focusing", "Detection", "BeamControl", "Application"]
+vision = "n=6 가속기 — 6극 보정, sigma=12 섹터, 6자유도 위상공간, 고에너지 물리"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: Acceleration (가속 구조) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Acceleration"
+
+[[candidate]]
+level = 0
+id    = "RF_Cavity"
+label = "RF 공동 가속 (초전도, 주파수 1.3GHz)"
+n6    = 0.80
+perf  = 0.90
+power = 0.70
+cost  = 0.55
+notes = "TESLA 설계, 6셀=n 공동 EXACT, ILC 기반"
+
+[[candidate]]
+level = 0
+id    = "Cyclotron"
+label = "사이클로트론 (나선 궤도, 의료/동위원소)"
+n6    = 0.75
+perf  = 0.75
+power = 0.75
+cost  = 0.70
+notes = "고전 가속기, D전극 phi=2 EXACT, PET 생산"
+
+[[candidate]]
+level = 0
+id    = "Synchrotron"
+label = "싱크로트론 (환형, 고에너지, sigma=12 섹터)"
+n6    = 1.00
+perf  = 0.95
+power = 0.50
+cost  = 0.40
+notes = "sigma=12 섹터 EXACT, LHC/KEK, TeV급"
+
+[[candidate]]
+level = 0
+id    = "Linac"
+label = "선형 가속기 (직선, 전자/양성자)"
+n6    = 0.85
+perf  = 0.88
+power = 0.65
+cost  = 0.50
+notes = "SLAC 3km, 자유전자레이저, 의료 방사선"
+
+[[candidate]]
+level = 0
+id    = "Wakefield"
+label = "플라즈마 웨이크필드 (초고가속도)"
+n6    = 0.70
+perf  = 0.80
+power = 0.40
+cost  = 0.35
+notes = "100GV/m, 차세대, 소형화, TRL=4"
+
+[[candidate]]
+level = 0
+id    = "Betatron"
+label = "베타트론 (자기장 유도 가속)"
+n6    = 0.60
+perf  = 0.60
+power = 0.65
+cost  = 0.65
+notes = "고전적, 교육용, 비파괴검사"
+
+# ============================================================
+# Level 1: Focusing (빔 집속) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Focusing"
+
+[[candidate]]
+level = 1
+id    = "Quadrupole"
+label = "사극자 자석 (FODO, tau=4 극 집속)"
+n6    = 0.95
+perf  = 0.90
+power = 0.80
+cost  = 0.70
+notes = "tau=4 극 EXACT, 교대 기울기, 빔 안정성"
+
+[[candidate]]
+level = 1
+id    = "Sextupole"
+label = "6극자 보정 자석 (n=6 극, 색차 보정)"
+n6    = 1.00
+perf  = 0.85
+power = 0.75
+cost  = 0.65
+notes = "n=6 극 EXACT, 색차 수차 보정, 모든 환형"
+
+[[candidate]]
+level = 1
+id    = "Solenoid"
+label = "솔레노이드 (축방향, 전자 집속)"
+n6    = 0.70
+perf  = 0.78
+power = 0.70
+cost  = 0.70
+notes = "전자 빔, SEM/TEM, 저에너지 수송"
+
+[[candidate]]
+level = 1
+id    = "SC_Dipole"
+label = "초전도 쌍극자 (빔 편향, 8T+)"
+n6    = 0.80
+perf  = 0.92
+power = 0.55
+cost  = 0.45
+notes = "LHC 8.3T, NbTi, sigma=12 m 길이 EXACT"
+
+[[candidate]]
+level = 1
+id    = "PlasmaLens"
+label = "플라즈마 렌즈 (초강력 집속)"
+n6    = 0.65
+perf  = 0.80
+power = 0.50
+cost  = 0.40
+notes = "MT/m 급 구배, 소형 가속기, 차세대"
+
+[[candidate]]
+level = 1
+id    = "Octupole"
+label = "8극자 자석 (비선형 보정)"
+n6    = 0.70
+perf  = 0.75
+power = 0.65
+cost  = 0.60
+notes = "동적 구경 최적화, LHC 필수 보조"
+
+# ============================================================
+# Level 2: Detection (검출기) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Detection"
+
+[[candidate]]
+level = 2
+id    = "SiTracker"
+label = "실리콘 트래커 (위치 검출, 버텍스)"
+n6    = 0.85
+perf  = 0.92
+power = 0.70
+cost  = 0.55
+notes = "sigma=12 um 분해능 EXACT, 픽셀/스트립"
+
+[[candidate]]
+level = 2
+id    = "Calorimeter"
+label = "칼로리미터 (에너지 측정, 6층=n)"
+n6    = 1.00
+perf  = 0.88
+power = 0.75
+cost  = 0.50
+notes = "n=6 층 EXACT, 전자기+강입자, 에너지 분해능"
+
+[[candidate]]
+level = 2
+id    = "MuonChamber"
+label = "뮤온 검출기 (외곽, 관통 입자)"
+n6    = 0.75
+perf  = 0.82
+power = 0.70
+cost  = 0.55
+notes = "가장 바깥, RPC/MDT, 뮤온 식별"
+
+[[candidate]]
+level = 2
+id    = "Cherenkov"
+label = "체렌코프 검출기 (입자 식별, 속도)"
+n6    = 0.70
+perf  = 0.80
+power = 0.65
+cost  = 0.55
+notes = "RICH, 빛 원뿔, 파이온/카온 분리"
+
+[[candidate]]
+level = 2
+id    = "TPC"
+label = "시간투영 챔버 TPC (3D 궤적)"
+n6    = 0.80
+perf  = 0.85
+power = 0.60
+cost  = 0.50
+notes = "ALICE TPC, 3D 추적, dE/dx 입자 식별"
+
+[[candidate]]
+level = 2
+id    = "ScintFiber"
+label = "섬광 섬유 (빠른 신호, 트리거)"
+n6    = 0.75
+perf  = 0.78
+power = 0.75
+cost  = 0.65
+notes = "ns 시간분해능, 트리거 시스템, LHCb"
+
+# ============================================================
+# Level 3: BeamControl (빔 제어) — 6 후보
+# ============================================================
+
+[[level]]
+name = "BeamControl"
+
+[[candidate]]
+level = 3
+id    = "Feedback_6D"
+label = "6D 궤도 피드백 (n=6 자유도)"
+n6    = 1.00
+perf  = 0.90
+power = 0.80
+cost  = 0.60
+notes = "n=6 자유도 EXACT (x,x',y,y',z,delta), 실시간"
+
+[[candidate]]
+level = 3
+id    = "Collimation"
+label = "콜리메이션 (빔 정화, 손실 제어)"
+n6    = 0.80
+perf  = 0.85
+power = 0.75
+cost  = 0.55
+notes = "LHC sigma=12 스테이지 EXACT, 빔 손실 방지"
+
+[[candidate]]
+level = 3
+id    = "RF_Control"
+label = "RF 위상/진폭 제어 (종방향 안정)"
+n6    = 0.85
+perf  = 0.88
+power = 0.78
+cost  = 0.65
+notes = "버킷 안정, 위상 고정, 에너지 분산 제어"
+
+[[candidate]]
+level = 3
+id    = "BPM_Array"
+label = "빔위치 모니터 BPM (궤도 측정)"
+n6    = 0.90
+perf  = 0.85
+power = 0.80
+cost  = 0.70
+notes = "6개=n 그룹 EXACT, um 분해능, 궤도 보정"
+
+[[candidate]]
+level = 3
+id    = "Injection"
+label = "빔 주입 시스템 (킥커/셉텀)"
+n6    = 0.75
+perf  = 0.82
+power = 0.70
+cost  = 0.55
+notes = "tau=4 us 킥 EXACT, 다중 턴 주입, 축적"
+
+[[candidate]]
+level = 3
+id    = "Luminosity"
+label = "루미노시티 최적화 (충돌 빈도)"
+n6    = 0.85
+perf  = 0.92
+power = 0.65
+cost  = 0.45
+notes = "크래빙, 빔-빔 효과, beta* 최소화"
+
+# ============================================================
+# Level 4: Application (가속기 응용) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level = 4
+id    = "HEP_Collider"
+label = "고에너지 충돌기 (LHC/FCC, 기본 입자)"
+n6    = 0.90
+perf  = 0.95
+power = 0.40
+cost  = 0.25
+notes = "TeV급, 힉스 발견, 표준모형 넘어"
+
+[[candidate]]
+level = 4
+id    = "Synchrotron_Light"
+label = "방사광 시설 (X선, 물질 구조)"
+n6    = 0.85
+perf  = 0.90
+power = 0.70
+cost  = 0.55
+notes = "sigma=12 빔라인 EXACT, 단백질/재료/고고학"
+
+[[candidate]]
+level = 4
+id    = "MedicalTherapy"
+label = "의료 양성자/중이온 치료"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.50
+notes = "브래그 피크, 정밀 암치료, 6필드=n 조사"
+
+[[candidate]]
+level = 4
+id    = "FEL"
+label = "자유전자 레이저 FEL (극자외/X선)"
+n6    = 0.85
+perf  = 0.92
+power = 0.55
+cost  = 0.40
+notes = "펨토초, 코히런트 X선, 분자 동영상"
+
+[[candidate]]
+level = 4
+id    = "Isotope"
+label = "동위원소 생산 (PET/의약, F-18)"
+n6    = 0.80
+perf  = 0.78
+power = 0.80
+cost  = 0.65
+notes = "사이클로트론, F-18(반감기 110분), 핵의학"
+
+[[candidate]]
+level = 4
+id    = "NeutronSource"
+label = "중성자원 (스팔레이션, 물질 연구)"
+n6    = 0.75
+perf  = 0.85
+power = 0.65
+cost  = 0.50
+notes = "SNS/J-PARC, 산란 실험, 자기 구조"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 싱크로트론은 사극자+6극자 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Synchrotron"
+then_level = 1
+then_ids   = "Quadrupole,Sextupole"
+
+# 사이클로트론은 동위원소/의료 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Cyclotron"
+then_level = 4
+then_ids   = "Isotope,MedicalTherapy"
+
+# 웨이크필드 가속은 플라즈마 렌즈 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Wakefield"
+then_level = 1
+then_ids   = "PlasmaLens"
+
+# HEP 충돌기는 Si 트래커+칼로리미터 필수
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "HEP_Collider"
+then_level = 2
+then_ids   = "SiTracker,Calorimeter"
+
+# 선형 가속기는 FEL 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Linac"
+then_level = 4
+then_ids   = "FEL,Synchrotron_Light"

@@ -1,0 +1,52 @@
+{
+  "_설명": "discovery_graph.json 메타데이터 캐시. 전체 파싱 없이 그래프 현황 조회용.",
+  "_생성일": "2026-04-12",
+  "_갱신_시점": "그래프 수정 또는 .graph_patch_log.jsonl 병합 직후",
+  "version": "14.0.0",
+  "last_updated": "2026-04-11",
+  "total_lines": 21587,
+  "file_size_kb": 685,
+  "total_nodes": 515,
+  "total_edges": 2087,
+  "노드_타입_분포": {
+    "breakthrough_theorem": 352,
+    "domain": 115,
+    "cross_dse_domain": 16,
+    "axiom": 9,
+    "constant": 7,
+    "breakthrough": 6,
+    "lens": 5,
+    "product": 4,
+    "group": 1
+  },
+  "엣지_타입_분포_상위10": {
+    "uses_constant": 318,
+    "bridges_to": 296,
+    "governed_by": 240,
+    "belongs_to": 191,
+    "cross_link": 146,
+    "grounded_in": 143,
+    "anchors": 123,
+    "extends": 66,
+    "cross_domain": 56,
+    "cross_links": 52
+  },
+  "notes_체인": [
+    "notes_v3_expansion",
+    "notes_v4_expansion",
+    "notes_v5_fix",
+    "notes_v6_speaker",
+    "notes_v7_4th_expansion",
+    "notes_v8_isolation_fix",
+    "notes_v8_expansion",
+    "notes_v9_hygiene",
+    "notes_v10_axiom_chain",
+    "notes_v11_bt381_400",
+    "notes_v12_hexa_lenses",
+    "notes_v12_bt401_420",
+    "notes_v13_bt425_444",
+    "notes_v14_bt445_464",
+    "notes_v15_bt748_752"
+  ],
+  "최상위_키": ["meta", "nodes", "edges", "integrity"]
+}

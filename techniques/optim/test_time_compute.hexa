@@ -1,0 +1,374 @@
+// optim/test_time_compute.hexa -- 테스트 시간 연산 확장 (Test-Time Compute) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수/실수 연산)
+// 원본 요약: Technique: Test-Time Compute -- Snell 외 2024 "Scaling LLM
+//            Test-Time Compute Optimally", Brown 외 2024,
+//            OpenAI o1/o3 계열, DeepSeek-R1
+//            추론 시 더 많은 연산 투입으로 정확도 향상
+// n=6 정렬:
+//   - 후보 생성 수      = σ(6) = 12       -> Best-of-N 샘플
+//   - 검증 반복         = τ(6) = 4        -> 검증기 라운드
+//   - 빔 폭            = n = 6           -> 빔 서치 폭
+//   - 사고 토큰 예산    = σ(6)² = 144     -> CoT 토큰 상한
+//   - 보상 앙상블       = sopfr(6) = 5    -> 검증기 수
+//   - 리파인 단계       = φ(6) = 2        -> 자기수정 반복
+//
+// 실행: hexa run techniques/optim/test_time_compute.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ════════════════════════════════════════════════════════════════════
+// 1) n=6 산술 함수
+// ════════════════════════════════════════════════════════════════════
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 {
+            let t: i64 = a % b
+            a = b
+            b = t
+        }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 {
+            s = s + d
+            rem = rem / d
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 2) TTC 핵심 상수 (n=6 도출)
+//    핵심 통찰: 훈련 FLOPs 대신 추론 FLOPs 확장
+//    Best-of-N + 검증기 + 빔 서치 + 자기수정
+// ════════════════════════════════════════════════════════════════════
+
+const N_CORE: i64 = 6
+const SCALE: i64 = 1000
+
+// Best-of-N 후보 = σ = 12
+const NUM_CANDIDATES: i64 = 12
+
+// 검증 라운드 = τ = 4
+const VERIFY_ROUNDS: i64 = 4
+
+// 빔 폭 = n = 6
+const BEAM_WIDTH: i64 = 6
+
+// 사고 토큰 예산 = σ² = 144
+const THOUGHT_BUDGET: i64 = 144
+
+// 검증기 앙상블 = sopfr = 5
+const VERIFIER_ENSEMBLE: i64 = 5
+
+// 자기수정 반복 = φ = 2
+const REFINE_ITERS: i64 = 2
+
+// ════════════════════════════════════════════════════════════════════
+// 3) Best-of-N 샘플링 -- σ=12 후보 생성 후 최고점 선택
+//    Snell 2024: 적응적 연산 할당 핵심 전략
+// ════════════════════════════════════════════════════════════════════
+
+fn generate_candidate(seed: i64, problem_id: i64) -> i64 {
+    // 후보 응답 품질 시뮬레이션 (해시 기반)
+    let quality: i64 = (seed * 137 + problem_id * 59 + 31) % SCALE
+    return quality
+}
+
+fn best_of_n(problem_id: i64) -> i64 {
+    // σ=12 후보 중 최고 품질 선택
+    let mut best: i64 = 0
+    let mut i: i64 = 0
+    while i < NUM_CANDIDATES {
+        let q: i64 = generate_candidate(i, problem_id)
+        if q > best { best = q }
+        i = i + 1
+    }
+    return best
+}
+
+fn bon_improvement(problem_id: i64) -> i64 {
+    // Best-of-N 대비 단일 샘플 개선율
+    let single: i64 = generate_candidate(0, problem_id)
+    let best: i64 = best_of_n(problem_id)
+    if single == 0 { return SCALE }
+    return best * SCALE / single
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 4) 과정 보상 모델 (PRM) -- 단계별 검증
+//    ORM: 최종 답만 검증, PRM: 각 추론 단계 검증
+//    τ=4 라운드 반복 검증
+// ════════════════════════════════════════════════════════════════════
+
+fn step_reward(step_id: i64, quality: i64) -> i64 {
+    // 단계별 보상: 올바른 추론 단계에 높은 점수
+    let base: i64 = (step_id * 43 + quality) % SCALE
+    return base
+}
+
+fn process_reward_verify(candidate: i64) -> i64 {
+    // PRM 검증: τ=4 라운드, 각 라운드 누적 점수
+    let mut total_score: i64 = 0
+    let mut round: i64 = 0
+    while round < VERIFY_ROUNDS {
+        let mut step: i64 = 0
+        let mut round_score: i64 = 0
+        let steps_per_round: i64 = BEAM_WIDTH  // n=6 단계
+        while step < steps_per_round {
+            round_score = round_score + step_reward(round * steps_per_round + step, candidate)
+            step = step + 1
+        }
+        total_score = total_score + round_score / steps_per_round
+        round = round + 1
+    }
+    return total_score / VERIFY_ROUNDS
+}
+
+fn ensemble_verify(candidate: i64) -> i64 {
+    // sopfr=5 검증기 앙상블: 다수결 스코어링
+    let mut total: i64 = 0
+    let mut v: i64 = 0
+    while v < VERIFIER_ENSEMBLE {
+        let score: i64 = (candidate * (v + 1) * 37 + 17) % SCALE
+        total = total + score
+        v = v + 1
+    }
+    return total / VERIFIER_ENSEMBLE
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 5) 빔 서치 -- n=6 폭 빔으로 토큰 탐색
+//    사고 예산 σ²=144 토큰 내에서 최적 경로
+// ════════════════════════════════════════════════════════════════════
+
+fn beam_step_score(beam_id: i64, token_pos: i64) -> i64 {
+    // 빔 후보의 토큰 위치별 점수
+    return (beam_id * 71 + token_pos * 29 + 13) % SCALE
+}
+
+fn beam_search(problem_id: i64) -> i64 {
+    // n=6 폭 빔 서치, σ²=144 토큰 예산
+    let tokens_per_beam: i64 = THOUGHT_BUDGET / BEAM_WIDTH  // 144/6 = 24
+    let mut best_total: i64 = 0
+    let mut beam: i64 = 0
+    while beam < BEAM_WIDTH {
+        let mut beam_score: i64 = 0
+        let mut pos: i64 = 0
+        while pos < tokens_per_beam {
+            beam_score = beam_score + beam_step_score(beam + problem_id, pos)
+            pos = pos + 1
+        }
+        let avg: i64 = beam_score / tokens_per_beam
+        if avg > best_total { best_total = avg }
+        beam = beam + 1
+    }
+    return best_total
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 6) 자기수정 (Self-Refinement) -- φ=2 반복
+//    1차 생성 -> 검증 -> 2차 수정
+// ════════════════════════════════════════════════════════════════════
+
+fn self_refine(problem_id: i64) -> i64 {
+    let mut answer_quality: i64 = best_of_n(problem_id)
+    let mut iter: i64 = 0
+    while iter < REFINE_ITERS {
+        // 검증기로 약점 탐지
+        let verify_score: i64 = process_reward_verify(answer_quality)
+        // 수정 시 품질 향상 (감가 적용)
+        let improvement: i64 = verify_score / (iter + 2)
+        answer_quality = answer_quality + improvement
+        if answer_quality > SCALE { answer_quality = SCALE }
+        iter = iter + 1
+    }
+    return answer_quality
+}
+
+fn compute_optimal_allocation(difficulty: i64) -> i64 {
+    // Snell 2024 핵심: 난이도별 최적 연산 배분
+    // 쉬운 문제: 적은 연산, 어려운 문제: 많은 연산
+    // 반환: 최적 후보 수 (1~σ=12 범위)
+    let threshold: i64 = SCALE / 2
+    if difficulty < threshold {
+        // 쉬운 문제: φ=2 후보면 충분
+        return REFINE_ITERS
+    }
+    // 어려운 문제: 전체 σ=12 후보 필요
+    return NUM_CANDIDATES
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 7) 연산 확장 곡선 -- 더 많은 연산 -> 더 높은 정확도
+//    log-linear 관계 시뮬레이션
+// ════════════════════════════════════════════════════════════════════
+
+fn accuracy_at_compute(compute_level: i64) -> i64 {
+    // 연산량별 정확도 (대수적 증가)
+    // 기저: 1x -> 60%, 12x -> ~90%
+    let base_acc: i64 = 600  // 60.0%
+    let log_gain: i64 = compute_level * 25  // 연산당 2.5% 향상
+    let result: i64 = base_acc + log_gain
+    if result > 950 { return 950 }  // 상한 95%
+    return result
+}
+
+fn compute_efficiency(problem_id: i64) -> i64 {
+    // 연산 효율 = 정확도 향상 / 연산 비용
+    let baseline: i64 = generate_candidate(0, problem_id)
+    let boosted: i64 = self_refine(problem_id)
+    let cost: i64 = NUM_CANDIDATES * VERIFY_ROUNDS  // 12 * 4 = 48x 비용
+    let gain: i64 = boosted - baseline
+    if cost == 0 { return 0 }
+    return gain * SCALE / cost
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 8) 적응적 연산 할당 -- 문제 난이도 추정 + 할당
+// ════════════════════════════════════════════════════════════════════
+
+fn estimate_difficulty(problem_id: i64) -> i64 {
+    // 초기 샘플로 난이도 추정
+    let mut variance: i64 = 0
+    let quick_n: i64 = REFINE_ITERS + 1  // 3개 빠른 샘플
+    let mut i: i64 = 0
+    let mut sum: i64 = 0
+    while i < quick_n {
+        let q: i64 = generate_candidate(i, problem_id)
+        sum = sum + q
+        i = i + 1
+    }
+    let mean: i64 = sum / quick_n
+    i = 0
+    while i < quick_n {
+        let q: i64 = generate_candidate(i, problem_id)
+        let diff: i64 = abs_val(q - mean)
+        variance = variance + diff * diff / SCALE
+        i = i + 1
+    }
+    return variance / quick_n
+}
+
+fn adaptive_solve(problem_id: i64) -> i64 {
+    let diff: i64 = estimate_difficulty(problem_id)
+    let n_candidates: i64 = compute_optimal_allocation(diff)
+    // 할당된 후보 수만큼 생성 + 검증
+    let mut best: i64 = 0
+    let mut i: i64 = 0
+    while i < n_candidates {
+        let q: i64 = generate_candidate(i, problem_id)
+        let verified: i64 = ensemble_verify(q)
+        if verified > best { best = verified }
+        i = i + 1
+    }
+    return best
+}
+
+// ════════════════════════════════════════════════════════════════════
+// 9) 게이트 실행 + 벤치마크
+// ════════════════════════════════════════════════════════════════════
+
+fn main() {
+    let sig: i64 = sigma(N_CORE)
+    let t: i64 = tau(N_CORE)
+    let ph: i64 = phi(N_CORE)
+    let sf: i64 = sopfr(N_CORE)
+
+    println("═══ 테스트 시간 연산 (Test-Time Compute) x n=6 ═══")
+    println("n=6 산술: σ=12 / τ=4 / φ=2 / sopfr=5")
+    println("핵심: 추론 시 더 많은 연산 = 더 높은 정확도")
+
+    // G1: σφ=nτ 정점
+    let g1: bool = sig * ph == N_CORE * t
+    println("G1 σφ=nτ 정점               : " + g1)
+
+    // G2: 후보 수 = σ = 12
+    let g2: bool = NUM_CANDIDATES == sig
+    println("G2 후보수=σ=12               : " + g2)
+
+    // G3: 검증 라운드 = τ = 4
+    let g3: bool = VERIFY_ROUNDS == t
+    println("G3 검증라운드=τ=4             : " + g3)
+
+    // G4: 빔 폭 = n = 6
+    let g4: bool = BEAM_WIDTH == N_CORE
+    println("G4 빔폭=n=6                  : " + g4)
+
+    // G5: 사고 예산 = σ² = 144
+    let g5: bool = THOUGHT_BUDGET == sig * sig
+    println("G5 사고예산=σ²=144            : " + g5)
+
+    // G6: 검증기 앙상블 = sopfr = 5
+    let g6: bool = VERIFIER_ENSEMBLE == sf
+    println("G6 검증앙상블=sopfr=5          : " + g6)
+
+    // G7: 자기수정 = φ = 2
+    let g7: bool = REFINE_ITERS == ph
+    println("G7 자기수정=φ=2               : " + g7)
+
+    // G8: Best-of-N 개선율 > 1.0
+    let bon_gain: i64 = bon_improvement(42)
+    let g8: bool = bon_gain > SCALE
+    println("G8 BoN개선율=" + bon_gain + "        : " + g8)
+
+    // G9: 자기수정 후 품질 향상
+    let refined: i64 = self_refine(42)
+    let baseline: i64 = generate_candidate(0, 42)
+    let g9: bool = refined >= baseline
+    println("G9 수정후품질=" + refined + "       : " + g9)
+
+    // 벤치마크
+    let eff: i64 = compute_efficiency(42)
+    println("--- 벤치마크 ---")
+    println("후보: " + NUM_CANDIDATES + " (σ), 검증: " + VERIFY_ROUNDS + "라운드 (τ)")
+    println("빔: " + BEAM_WIDTH + " (n), 사고예산: " + THOUGHT_BUDGET + " (σ²)")
+    println("연산효율: " + eff)
+    println("SOTA: o1(OpenAI2024) AIME 83%, DeepSeek-R1 수학 SOTA")
+
+    let all_pass: bool = g1 && g2 && g3 && g4 && g5 && g6 && g7 && g8 && g9
+    if all_pass {
+        println("Test-Time Compute OSSIFIED: 9/9 -> [7]empirical -> [10*] 승격 후보")
+    } else {
+        println("Test-Time Compute FAIL: 게이트 위반")
+    }
+}

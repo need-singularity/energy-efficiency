@@ -1,0 +1,184 @@
+{
+  "_doc": "materials 축 sub-SSOT — 부모: ../_index.json (materials 키). 자동 생성 2026-04-12.",
+  "_axis": "materials",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_count": 19,
+  "_changelog": [
+    "1.0.0 (2026-04-12): materials 축 sub-SSOT 신설. 전체 19개 도메인 등록."
+  ],
+  "domains": [
+    {
+      "slug": "aramid",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "ceramics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "concrete-technology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "concrete",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "epoxy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "fashion-textile",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "gemology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-fabric",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-glass",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-recycle",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "lutherie",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "material-synthesis",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "nylon",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "paper",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "pet-film",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "recycling",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "swordsmithing",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "textile-dyeing",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "tire-cord",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
+  "_note": "materials 축 전체 멤버 목록은 ../_index.json materials 키 SSOT 를 따른다 (중복 등록 금지)."
+}

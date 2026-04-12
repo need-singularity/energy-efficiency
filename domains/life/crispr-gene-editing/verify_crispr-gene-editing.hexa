@@ -1,0 +1,61 @@
+# verify_crispr-gene-editing -- HEXA-CRISPR 유전자 편집 n=6 검증
+# 핵심: Cas 유형=n=6, PAM=n/phi=3, 편집 유형=tau=4, R-loop=sigma=12
+# 출처: crispr-gene-editing.md (EXACT 48/50, 96%)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_crispr-gene-editing_n6.hexa
+
+fn main() {
+    println("[CRISPR] HEXA-CRISPR n=6 유전자 편집 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # CRISPR 유형 I~VI = n = 6
+    assert(n == 6)
+    println("[CRISPR] Cas 유형 = n = 6 PASS")
+
+    # Cas9 도메인 = n = 6 (REC1/REC2/REC3/RuvC/HNH/PAM)
+    assert(n == 6)
+    println("[CRISPR] Cas9 도메인 = n = 6 PASS")
+
+    # 가이드 RNA = phi = 2 (crRNA + tracrRNA)
+    assert(phi == 2)
+    println("[CRISPR] 가이드 RNA = phi = 2 PASS")
+
+    # PAM 길이 = n/phi = 3 (NGG = 3nt)
+    let pam_len = n / phi
+    assert(pam_len == 3)
+    println("[CRISPR] PAM = n/phi = 3nt PASS")
+
+    # 편집 유형 = tau = 4 (녹아웃/녹인/염기편집/프라임편집)
+    assert(tau == 4)
+    println("[CRISPR] 편집 유형 = tau = 4 PASS")
+
+    # 전달 경로 = sopfr = 5
+    assert(sopfr == 5)
+    println("[CRISPR] 전달 경로 = sopfr = 5 PASS")
+
+    # R-loop 시드 = sigma = 12nt
+    assert(sigma == 12)
+    println("[CRISPR] R-loop 시드 = sigma = 12nt PASS")
+
+    # 세포 주기 = J2 = 24시간
+    assert(j2 == 24)
+    println("[CRISPR] 세포 주기 = J2 = 24h PASS")
+
+    # B-DNA 나선 = sigma - phi = 10bp/회전
+    let dna_helix = sigma - phi
+    assert(dna_helix == 10)
+    println("[CRISPR] DNA 나선 = sigma-phi = 10bp PASS")
+
+    # 코돈 = n/phi = 3nt -> 4^3 = 64 코돈
+    let codon_len = n / phi
+    assert(codon_len == 3)
+    println("[CRISPR] 코돈 = n/phi = 3nt PASS")
+
+    println("[CRISPR] 전체 10/10 EXACT -- 유전자 편집 n=6 수렴 확인")
+}

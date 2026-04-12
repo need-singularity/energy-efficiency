@@ -1,0 +1,1079 @@
+{
+  "version": 1,
+  "generated": "2026-04-12",
+  "total_files": 177,
+  "entries": {
+    "domains/compute/chip-3d/verify_chip-3d.hexa": {
+      "mtime": 1775937586,
+      "size": 567,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-3d-stack.hexa": {
+      "mtime": 1775959570,
+      "size": 6420,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-hexa1-digital.hexa": {
+      "mtime": 1775959288,
+      "size": 6349,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-hexa2-pim.hexa": {
+      "mtime": 1775959511,
+      "size": 6946,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-photonic.hexa": {
+      "mtime": 1775959620,
+      "size": 7082,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-quantum-hybrid.hexa": {
+      "mtime": 1775965813,
+      "size": 7667,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-superconducting.hexa": {
+      "mtime": 1775959745,
+      "size": 8006,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-topo-anyon.hexa": {
+      "mtime": 1775966434,
+      "size": 8423,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-design/verify_chip-wafer.hexa": {
+      "mtime": 1775959681,
+      "size": 8548,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-hexa1/verify_chip-hexa1.hexa": {
+      "mtime": 1775937577,
+      "size": 616,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-photonic/verify_chip-photonic.hexa": {
+      "mtime": 1775937708,
+      "size": 576,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-pim/verify_chip-pim.hexa": {
+      "mtime": 1775946911,
+      "size": 2254,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-sc/verify_chip-sc.hexa": {
+      "mtime": 1775937608,
+      "size": 554,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "domains/compute/chip-wafer/verify_chip-wafer.hexa": {
+      "mtime": 1775937603,
+      "size": 580,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/ai-efficiency/verify_ai_algorithm_n6.hexa": {
+      "mtime": 1775832394,
+      "size": 625,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/ai-efficiency/verify_llm_improvement_n6.hexa": {
+      "mtime": 1775832687,
+      "size": 634,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_acceleration_hypotheses.hexa": {
+      "mtime": 1775828336,
+      "size": 471,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_battery_architecture.hexa": {
+      "mtime": 1775828336,
+      "size": 426,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_battery_cascade.hexa": {
+      "mtime": 1775828336,
+      "size": 412,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt105_112.hexa": {
+      "mtime": 1775828336,
+      "size": 423,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1386_standard_model.hexa": {
+      "mtime": 1775935166,
+      "size": 2026,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1387_huckel_aromatic.hexa": {
+      "mtime": 1775935179,
+      "size": 2063,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1388_ionic_octahedral.hexa": {
+      "mtime": 1775935193,
+      "size": 2551,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1389_cube_octahedron_duality.hexa": {
+      "mtime": 1775935219,
+      "size": 2691,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1390_hsv_color_hexad.hexa": {
+      "mtime": 1775935235,
+      "size": 2439,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt1391_photosynthesis_equation.hexa": {
+      "mtime": 1775935252,
+      "size": 3114,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt26.hexa": {
+      "mtime": 1775832405,
+      "size": 533,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt34_35.hexa": {
+      "mtime": 1775832409,
+      "size": 552,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt36_38.hexa": {
+      "mtime": 1775832414,
+      "size": 580,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt372_geology.hexa": {
+      "mtime": 1775910348,
+      "size": 1664,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt373_meteorology.hexa": {
+      "mtime": 1775910356,
+      "size": 1648,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt374_cryosphere.hexa": {
+      "mtime": 1775910365,
+      "size": 1218,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt375_ocean.hexa": {
+      "mtime": 1775910372,
+      "size": 1176,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt376_atmospheric_chem.hexa": {
+      "mtime": 1775910378,
+      "size": 1398,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt377_curvature.hexa": {
+      "mtime": 1775910393,
+      "size": 1437,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt378_warp.hexa": {
+      "mtime": 1775910400,
+      "size": 1207,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt379_extra_dim.hexa": {
+      "mtime": 1775910410,
+      "size": 1538,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt380_meta.hexa": {
+      "mtime": 1775910418,
+      "size": 1573,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt381_wimp_ladder.hexa": {
+      "mtime": 1775910126,
+      "size": 1704,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt382_axion_window.hexa": {
+      "mtime": 1775910139,
+      "size": 1592,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt383_omega_lambda.hexa": {
+      "mtime": 1775910154,
+      "size": 1687,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt384_lqg_spinfoam.hexa": {
+      "mtime": 1775910166,
+      "size": 1671,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt385_adscft_holography.hexa": {
+      "mtime": 1775910184,
+      "size": 1529,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt386_iit_phi.hexa": {
+      "mtime": 1775910190,
+      "size": 1515,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt387_gwt_broadcast.hexa": {
+      "mtime": 1775910199,
+      "size": 1402,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt388_shannon_unification.hexa": {
+      "mtime": 1775910218,
+      "size": 1339,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt389_kolmogorov_complexity.hexa": {
+      "mtime": 1775910225,
+      "size": 1356,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt390_soc_exponent.hexa": {
+      "mtime": 1775910234,
+      "size": 1435,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt391_ba_network_hub.hexa": {
+      "mtime": 1775910242,
+      "size": 1365,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt392_trophic_levels.hexa": {
+      "mtime": 1775910254,
+      "size": 1475,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt393_dunbar_ladder.hexa": {
+      "mtime": 1775910265,
+      "size": 1430,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt394_zipf_pareto.hexa": {
+      "mtime": 1775910276,
+      "size": 1519,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt395_market_tail.hexa": {
+      "mtime": 1775910284,
+      "size": 1387,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt396_may_diversity.hexa": {
+      "mtime": 1775910295,
+      "size": 1178,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt397_city_scaling.hexa": {
+      "mtime": 1775910310,
+      "size": 1785,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt398_fisher_information.hexa": {
+      "mtime": 1775910315,
+      "size": 1441,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt399_game_theory.hexa": {
+      "mtime": 1775910322,
+      "size": 1489,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt400_meta_frontier.hexa": {
+      "mtime": 1775910331,
+      "size": 1470,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt401_quantum_annealer.hexa": {
+      "mtime": 1775910793,
+      "size": 552,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt402_superconductor_Tc.hexa": {
+      "mtime": 1775910797,
+      "size": 511,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt403_neutrino_mass.hexa": {
+      "mtime": 1775910801,
+      "size": 512,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt404_dark_matter_halo.hexa": {
+      "mtime": 1775910803,
+      "size": 472,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt405_graphene_band.hexa": {
+      "mtime": 1775910809,
+      "size": 502,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt406_protein_fold.hexa": {
+      "mtime": 1775910817,
+      "size": 480,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt407_codon_degeneracy.hexa": {
+      "mtime": 1775910821,
+      "size": 489,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt408_microtubule.hexa": {
+      "mtime": 1775910827,
+      "size": 511,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt409_oscillon.hexa": {
+      "mtime": 1775910830,
+      "size": 428,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt410_higgs_width.hexa": {
+      "mtime": 1775910833,
+      "size": 430,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt411_quark_gen.hexa": {
+      "mtime": 1775910840,
+      "size": 407,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt412_lepton_gen.hexa": {
+      "mtime": 1775910845,
+      "size": 410,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt413_ckm_matrix.hexa": {
+      "mtime": 1775910850,
+      "size": 499,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt414_planck_nine.hexa": {
+      "mtime": 1775910853,
+      "size": 495,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt415_chern_simons.hexa": {
+      "mtime": 1775910857,
+      "size": 432,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt416_hexaquark.hexa": {
+      "mtime": 1775910861,
+      "size": 422,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt42_47.hexa": {
+      "mtime": 1775832419,
+      "size": 667,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt445_hexagonal_closepack.hexa": {
+      "mtime": 1775912820,
+      "size": 1433,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt446_benzene_ring.hexa": {
+      "mtime": 1775912827,
+      "size": 1350,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt447_snowflake_symmetry.hexa": {
+      "mtime": 1775912835,
+      "size": 1479,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt448_saturn_hexagon.hexa": {
+      "mtime": 1775912844,
+      "size": 1458,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt449_insect_compound_eye.hexa": {
+      "mtime": 1775912857,
+      "size": 1584,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt450_honeycomb_conjecture.hexa": {
+      "mtime": 1775912867,
+      "size": 1558,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt451_dna_six_base.hexa": {
+      "mtime": 1775912877,
+      "size": 1508,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt452_carbon_hybrid_sp2.hexa": {
+      "mtime": 1775912886,
+      "size": 1476,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt453_quark_color_six.hexa": {
+      "mtime": 1775912900,
+      "size": 1622,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt454_virus_icosahedral.hexa": {
+      "mtime": 1775912909,
+      "size": 1572,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt455_music_hexachord.hexa": {
+      "mtime": 1775912918,
+      "size": 1531,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt456_chess_six_pieces.hexa": {
+      "mtime": 1775912928,
+      "size": 1588,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt457_6sphere_volume.hexa": {
+      "mtime": 1775912943,
+      "size": 1561,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt458_quark_generations.hexa": {
+      "mtime": 1775912953,
+      "size": 1720,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt459_six_planet_resonance.hexa": {
+      "mtime": 1775912962,
+      "size": 1557,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt460_carbon_hexagonal.hexa": {
+      "mtime": 1775912971,
+      "size": 1625,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt48_53.hexa": {
+      "mtime": 1775832681,
+      "size": 633,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt66_73.hexa": {
+      "mtime": 1775828336,
+      "size": 397,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt66_76.hexa": {
+      "mtime": 1775828336,
+      "size": 404,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt77_bitnet.hexa": {
+      "mtime": 1775828336,
+      "size": 433,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt_constants.hexa": {
+      "mtime": 1775828336,
+      "size": 432,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_bt_master.hexa": {
+      "mtime": 1775832402,
+      "size": 559,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_cascade_cross.hexa": {
+      "mtime": 1775828336,
+      "size": 426,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_chinchilla_n6_deep.hexa": {
+      "mtime": 1775832682,
+      "size": 672,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_chip_cache_hierarchy.hexa": {
+      "mtime": 1775906243,
+      "size": 636,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_chip_n6.hexa": {
+      "mtime": 1775828336,
+      "size": 387,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_chip_ultimate.hexa": {
+      "mtime": 1775828336,
+      "size": 451,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_consciousness_chip.hexa": {
+      "mtime": 1775828336,
+      "size": 472,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_diffusion_n6.hexa": {
+      "mtime": 1775828336,
+      "size": 431,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_fusion_predictions.hexa": {
+      "mtime": 1775828336,
+      "size": 420,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_3d.hexa": {
+      "mtime": 1775828336,
+      "size": 409,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_chip.hexa": {
+      "mtime": 1775828336,
+      "size": 418,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_core.hexa": {
+      "mtime": 1775828336,
+      "size": 440,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_gate.hexa": {
+      "mtime": 1775828336,
+      "size": 420,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_ios.hexa": {
+      "mtime": 1775828336,
+      "size": 397,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_macos.hexa": {
+      "mtime": 1775828336,
+      "size": 405,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_material.hexa": {
+      "mtime": 1775828336,
+      "size": 452,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_photon.hexa": {
+      "mtime": 1775828336,
+      "size": 425,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_pim.hexa": {
+      "mtime": 1775828336,
+      "size": 404,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_process.hexa": {
+      "mtime": 1775828336,
+      "size": 448,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_super.hexa": {
+      "mtime": 1775828336,
+      "size": 412,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_system.hexa": {
+      "mtime": 1775828336,
+      "size": 447,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_hexa_wafer.hexa": {
+      "mtime": 1775828336,
+      "size": 412,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_llm_architecture_constants.hexa": {
+      "mtime": 1775832685,
+      "size": 727,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_optimizer_constants_n6.hexa": {
+      "mtime": 1775832692,
+      "size": 714,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_predictions.hexa": {
+      "mtime": 1775828336,
+      "size": 415,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_safety_hypotheses.hexa": {
+      "mtime": 1775828336,
+      "size": 451,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/anomaly/verify_topological_chip.hexa": {
+      "mtime": 1775828336,
+      "size": 433,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_dse_cache_6level.hexa": {
+      "mtime": 1775910474,
+      "size": 1569,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_npu_systolic_6x6.hexa": {
+      "mtime": 1775910456,
+      "size": 1837,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_rtl_6stage_pipeline.hexa": {
+      "mtime": 1775910443,
+      "size": 1501,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_branch_predictor.hexa": {
+      "mtime": 1775910516,
+      "size": 1649,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_dma_6channel.hexa": {
+      "mtime": 1775910972,
+      "size": 417,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_fpu_6lane.hexa": {
+      "mtime": 1775910978,
+      "size": 385,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_hls_6stage.hexa": {
+      "mtime": 1775910980,
+      "size": 406,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_interconnect_6port.hexa": {
+      "mtime": 1775910489,
+      "size": 1675,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_io_6pcie.hexa": {
+      "mtime": 1775910993,
+      "size": 369,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_isa_24ops.hexa": {
+      "mtime": 1775910433,
+      "size": 1507,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_issue_width_6.hexa": {
+      "mtime": 1775910511,
+      "size": 1534,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_mesh_6x6.hexa": {
+      "mtime": 1775910990,
+      "size": 390,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_power_gating_6.hexa": {
+      "mtime": 1775910526,
+      "size": 1790,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_regfile_24_entries.hexa": {
+      "mtime": 1775910499,
+      "size": 1653,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_simd_6way.hexa": {
+      "mtime": 1775910988,
+      "size": 370,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_thermal_6zone.hexa": {
+      "mtime": 1775910996,
+      "size": 435,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_tlb_64entries.hexa": {
+      "mtime": 1775910974,
+      "size": 396,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/chip-verify/verify_xn6_vector_width.hexa": {
+      "mtime": 1775910465,
+      "size": 1648,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_attractor_basin_lens.hexa": {
+      "mtime": 1775910599,
+      "size": 1336,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_bayesian_inference_lens.hexa": {
+      "mtime": 1775910580,
+      "size": 1555,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_category_theory_lens.hexa": {
+      "mtime": 1775911011,
+      "size": 447,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_causal_discovery_lens.hexa": {
+      "mtime": 1775910543,
+      "size": 1735,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_chaos_lyapunov_lens.hexa": {
+      "mtime": 1775911014,
+      "size": 449,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_information_bottleneck_lens.hexa": {
+      "mtime": 1775910617,
+      "size": 1662,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_koopman_operator_lens.hexa": {
+      "mtime": 1775911006,
+      "size": 446,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_manifold_learning_lens.hexa": {
+      "mtime": 1775910570,
+      "size": 1782,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_optimal_transport_lens.hexa": {
+      "mtime": 1775910591,
+      "size": 1406,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_persistence_homology_lens.hexa": {
+      "mtime": 1775910608,
+      "size": 1564,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_quantum_circuit_lens.hexa": {
+      "mtime": 1775911020,
+      "size": 445,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_renormalization_lens.hexa": {
+      "mtime": 1775911008,
+      "size": 427,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_sheaf_cohomology_lens.hexa": {
+      "mtime": 1775911017,
+      "size": 452,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_spectral_graph_lens.hexa": {
+      "mtime": 1775910561,
+      "size": 1734,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_topological_data_lens.hexa": {
+      "mtime": 1775910551,
+      "size": 1669,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/lens-verify/verify_variational_inference_lens.hexa": {
+      "mtime": 1775910623,
+      "size": 1545,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/structural/verify_kstar_barrier4.hexa": {
+      "mtime": 1775832684,
+      "size": 572,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/verify_consciousness_cluster.hexa": {
+      "mtime": 1775828336,
+      "size": 435,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "experiments/verify_special_number_control.hexa": {
+      "mtime": 1775828336,
+      "size": 446,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "nexus/origins/ready-absorber/verify_and_grow.hexa": {
+      "mtime": 1775982764,
+      "size": 16860,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_autonomous_driving.hexa": {
+      "mtime": 1775716334,
+      "size": 3571,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_biology_medical.hexa": {
+      "mtime": 1775828336,
+      "size": 465,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_crystallography_materials.hexa": {
+      "mtime": 1775828336,
+      "size": 480,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_datacenter_fusion.hexa": {
+      "mtime": 1775717099,
+      "size": 3512,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_dram.hexa": {
+      "mtime": 1775716392,
+      "size": 4054,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_hexa_neuro.hexa": {
+      "mtime": 1775828336,
+      "size": 440,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_millennium_dimensions.hexa": {
+      "mtime": 1775750531,
+      "size": 22605,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_millennium_loop57.hexa": {
+      "mtime": 1775828336,
+      "size": 485,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/audits/paper-legacy-verify/verify_thermodynamics.hexa": {
+      "mtime": 1775716363,
+      "size": 3315,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "reports/sessions/specs/verify_kstar_n6.hexa": {
+      "mtime": 1775828336,
+      "size": 428,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/constants/verify_special_numbers.hexa": {
+      "mtime": 1775758506,
+      "size": 11602,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/predictions/verify_bt414_430.hexa": {
+      "mtime": 1775828336,
+      "size": 433,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/predictions/verify_killerapp_tp.hexa": {
+      "mtime": 1775828336,
+      "size": 405,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/predictions/verify_millennium_dfs3.hexa": {
+      "mtime": 1775939642,
+      "size": 3049,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/predictions/verify_millennium_dfs4.hexa": {
+      "mtime": 1775942523,
+      "size": 3306,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    },
+    "theory/predictions/verify_millennium_dfs5.hexa": {
+      "mtime": 1775942535,
+      "size": 2507,
+      "last_result": "RECORDED",
+      "last_run": "2026-04-12T17:35:46"
+    }
+  },
+  "last_batch_run": "2026-04-12T17:35:52",
+  "last_batch_stats": {
+    "total": 177,
+    "skip": 177,
+    "run": 0,
+    "pass": 0,
+    "fail": 0,
+    "error": 0,
+    "missing": 0
+  }
+}

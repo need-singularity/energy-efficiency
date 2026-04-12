@@ -1,0 +1,436 @@
+{
+  "_doc": "life 축 sub-SSOT — 부모: ../_index.json (life 키). 자동 생성 2026-04-12.",
+  "_axis": "life",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_count": 47,
+  "_changelog": [
+    "1.0.0 (2026-04-12): life 축 sub-SSOT 신설. 전체 47개 도메인 등록."
+  ],
+  "domains": [
+    {
+      "slug": "agriculture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "apiculture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "aquaculture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "baking",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "bio-pharma",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "biology-medical",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "biology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cancer-therapy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cheese-dairy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "coffee-science",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "coffee",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cosmetic-surgery",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "crispr-gene-editing",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "dolphin-bioacoustics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "dolphin",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "ecology-agriculture-food",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "ecology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "entomology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "fermentation",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "food-science",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "genetics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hair-regeneration",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "herbalism",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-limb",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-skin",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hiv-treatment",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hiv",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "horticulture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "immunology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "medical-device",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "mens-intimate-cleanser",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "microplastics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "mycology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "neuro",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "neuropharmacology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "neuroscience",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "perfumery",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "pharmacology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "synbio",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "tattoo-removal",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "therapeutic-nanobot",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "vaccine",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "veterinary",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "virology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "viticulture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "wine-enology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "womens-intimate-cleanser",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
+  "_note": "life 축 전체 멤버 목록은 ../_index.json life 키 SSOT 를 따른다 (중복 등록 금지)."
+}

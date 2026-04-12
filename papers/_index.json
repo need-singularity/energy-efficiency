@@ -1,0 +1,1895 @@
+{
+  "_meta": {
+    "설명": "papers/_registry.json 경량 인덱스 (id, name, type만 포함)",
+    "원본": "papers/_registry.json",
+    "생성일": "2026-04-12",
+    "총_항목수": 269,
+    "논문수": 96,
+    "제품수": 173
+  },
+  "entries": [
+    {
+      "id": "paper-001",
+      "name": "n6-hexa-neuro-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-neuro-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-002",
+      "name": "n6-hexa-mind-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-mind-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-003",
+      "name": "n6-hexa-telepathy-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-telepathy-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-004",
+      "name": "n6-hexa-dream-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-dream-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-005",
+      "name": "n6-hexa-skin-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-skin-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-006",
+      "name": "n6-hexa-exo-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-exo-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-007",
+      "name": "n6-hexa-limb-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-limb-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-008",
+      "name": "n6-hexa-olfact-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-olfact-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-009",
+      "name": "n6-entomology-paper",
+      "type": "paper",
+      "path": "papers/n6-entomology-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-010",
+      "name": "n6-synthetic-biology-paper",
+      "type": "paper",
+      "path": "papers/n6-synthetic-biology-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-011",
+      "name": "n6-dolphin-bioacoustics-paper",
+      "type": "paper",
+      "path": "papers/n6-dolphin-bioacoustics-paper.md",
+      "category": "인체/의료/생물"
+    },
+    {
+      "id": "paper-012",
+      "name": "n6-geology-prem-paper",
+      "type": "paper",
+      "path": "papers/n6-geology-prem-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-013",
+      "name": "n6-meteorology-paper",
+      "type": "paper",
+      "path": "papers/n6-meteorology-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-014",
+      "name": "n6-oceanography-paper",
+      "type": "paper",
+      "path": "papers/n6-oceanography-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-015",
+      "name": "n6-curvature-geometry-paper",
+      "type": "paper",
+      "path": "papers/n6-curvature-geometry-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-016",
+      "name": "n6-warp-metric-paper",
+      "type": "paper",
+      "path": "papers/n6-warp-metric-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-017",
+      "name": "n6-extra-dimensions-paper",
+      "type": "paper",
+      "path": "papers/n6-extra-dimensions-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-018",
+      "name": "n6-cross-paradigm-ai-paper",
+      "type": "paper",
+      "path": "papers/n6-cross-paradigm-ai-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-019",
+      "name": "n6-hexa-earphone-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-earphone-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-020",
+      "name": "n6-dimensional-unfolding-paper",
+      "type": "paper",
+      "path": "papers/n6-dimensional-unfolding-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-021",
+      "name": "n6-ai-17-techniques-experimental-paper",
+      "type": "paper",
+      "path": "papers/n6-ai-17-techniques-experimental-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-022",
+      "name": "n6-atlas-promotion-7-to-10-paper",
+      "type": "paper",
+      "path": "papers/n6-atlas-promotion-7-to-10-paper.md",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격"
+    },
+    {
+      "id": "paper-023",
+      "name": "n6-dram-paper",
+      "type": "paper",
+      "path": "papers/n6-dram-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-024",
+      "name": "n6-vnand-paper",
+      "type": "paper",
+      "path": "papers/n6-vnand-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-025",
+      "name": "n6-exynos-paper",
+      "type": "paper",
+      "path": "papers/n6-exynos-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-026",
+      "name": "n6-hexa-asic-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-asic-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-027",
+      "name": "n6-hexa-topo-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-topo-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-028",
+      "name": "n6-performance-chip-paper",
+      "type": "paper",
+      "path": "papers/n6-performance-chip-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-029",
+      "name": "n6-consciousness-chip-paper",
+      "type": "paper",
+      "path": "papers/n6-consciousness-chip-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-030",
+      "name": "n6-chip-design-ladder-paper",
+      "type": "paper",
+      "path": "papers/n6-chip-design-ladder-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-031",
+      "name": "n6-chip-dse-convergence-paper",
+      "type": "paper",
+      "path": "papers/n6-chip-dse-convergence-paper.md",
+      "category": "칩/반도체 ghost 해소"
+    },
+    {
+      "id": "paper-032",
+      "name": "n6-superconductor-paper",
+      "type": "paper",
+      "path": "papers/n6-superconductor-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-033",
+      "name": "n6-particle-cosmology-paper",
+      "type": "paper",
+      "path": "papers/n6-particle-cosmology-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-034",
+      "name": "n6-electromagnetism-paper",
+      "type": "paper",
+      "path": "papers/n6-electromagnetism-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-035",
+      "name": "n6-fluid-dynamics-paper",
+      "type": "paper",
+      "path": "papers/n6-fluid-dynamics-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-036",
+      "name": "n6-topology-paper",
+      "type": "paper",
+      "path": "papers/n6-topology-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-037",
+      "name": "n6-gravity-wave-paper",
+      "type": "paper",
+      "path": "papers/n6-gravity-wave-paper.md",
+      "category": "물리/수학 ghost 해소"
+    },
+    {
+      "id": "paper-038",
+      "name": "n6-ai-ethics-governance-paper",
+      "type": "paper",
+      "path": "papers/n6-ai-ethics-governance-paper.md",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-039",
+      "name": "n6-network-collective-paper",
+      "type": "paper",
+      "path": "papers/n6-network-collective-paper.md",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-040",
+      "name": "n6-jurisprudence-paper",
+      "type": "paper",
+      "path": "papers/n6-jurisprudence-paper.md",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-041",
+      "name": "n6-optics-paper",
+      "type": "paper",
+      "path": "papers/n6-optics-paper.md",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-042",
+      "name": "n6-acoustics-paper",
+      "type": "paper",
+      "path": "papers/n6-acoustics-paper.md",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-043",
+      "name": "n6-hydrology-paper",
+      "type": "paper",
+      "path": "papers/n6-hydrology-paper.md",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-044",
+      "name": "n6-mechanical-engineering-paper",
+      "type": "paper",
+      "path": "papers/n6-mechanical-engineering-paper.md",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-045",
+      "name": "n6-ai-techniques-68-integrated-paper",
+      "type": "paper",
+      "path": "papers/n6-ai-techniques-68-integrated-paper.md",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)"
+    },
+    {
+      "id": "paper-046",
+      "name": "n6-chip-6stages-integrated-paper",
+      "type": "paper",
+      "path": "papers/n6-chip-6stages-integrated-paper.md",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)"
+    },
+    {
+      "id": "paper-047",
+      "name": "n6-millennium-dfs-1-12-integrated-paper",
+      "type": "paper",
+      "path": "papers/n6-millennium-dfs-1-12-integrated-paper.md",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)"
+    },
+    {
+      "id": "paper-048",
+      "name": "n6-religion-mythology-paper",
+      "type": "paper",
+      "path": "papers/n6-religion-mythology-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-049",
+      "name": "n6-writing-systems-paper",
+      "type": "paper",
+      "path": "papers/n6-writing-systems-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-050",
+      "name": "n6-wine-enology-paper",
+      "type": "paper",
+      "path": "papers/n6-wine-enology-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-051",
+      "name": "n6-dance-choreography-paper",
+      "type": "paper",
+      "path": "papers/n6-dance-choreography-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-052",
+      "name": "n6-construction-structural-paper",
+      "type": "paper",
+      "path": "papers/n6-construction-structural-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-053",
+      "name": "n6-carbon-capture-paper",
+      "type": "paper",
+      "path": "papers/n6-carbon-capture-paper.md",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-054",
+      "name": "n6-game-theory-paper",
+      "type": "paper",
+      "path": "papers/n6-game-theory-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-055",
+      "name": "n6-cryptography-paper",
+      "type": "paper",
+      "path": "papers/n6-cryptography-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-056",
+      "name": "n6-music-theory-paper",
+      "type": "paper",
+      "path": "papers/n6-music-theory-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-057",
+      "name": "n6-horology-paper",
+      "type": "paper",
+      "path": "papers/n6-horology-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-058",
+      "name": "n6-cartography-paper",
+      "type": "paper",
+      "path": "papers/n6-cartography-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-059",
+      "name": "n6-pharmacology-paper",
+      "type": "paper",
+      "path": "papers/n6-pharmacology-paper.md",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-060",
+      "name": "n6-aquaculture-paper",
+      "type": "paper",
+      "path": "papers/n6-aquaculture-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-061",
+      "name": "n6-forensic-science-paper",
+      "type": "paper",
+      "path": "papers/n6-forensic-science-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-062",
+      "name": "n6-textile-engineering-paper",
+      "type": "paper",
+      "path": "papers/n6-textile-engineering-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-063",
+      "name": "n6-battery-energy-storage-paper",
+      "type": "paper",
+      "path": "papers/n6-battery-energy-storage-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-064",
+      "name": "n6-soil-science-paper",
+      "type": "paper",
+      "path": "papers/n6-soil-science-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-065",
+      "name": "n6-polymer-engineering-paper",
+      "type": "paper",
+      "path": "papers/n6-polymer-engineering-paper.md",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)"
+    },
+    {
+      "id": "paper-066",
+      "name": "n6-advanced-packaging-paper",
+      "type": "paper",
+      "path": "papers/n6-advanced-packaging-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-067",
+      "name": "n6-consciousness-soc-paper",
+      "type": "paper",
+      "path": "papers/n6-consciousness-soc-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-068",
+      "name": "n6-hexa-3d-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-3d-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-069",
+      "name": "n6-hexa-photon-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-photon-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-070",
+      "name": "n6-hexa-pim-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-pim-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-071",
+      "name": "n6-hexa-super-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-super-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-072",
+      "name": "n6-hexa-wafer-paper",
+      "type": "paper",
+      "path": "papers/n6-hexa-wafer-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-073",
+      "name": "n6-unified-soc-paper",
+      "type": "paper",
+      "path": "papers/n6-unified-soc-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-074",
+      "name": "n6-anima-soc-paper",
+      "type": "paper",
+      "path": "papers/n6-anima-soc-paper.md",
+      "category": "칩/반도체"
+    },
+    {
+      "id": "paper-075",
+      "name": "n6-sota-ssm-paper",
+      "type": "paper",
+      "path": "papers/n6-sota-ssm-paper.md",
+      "category": "AI/ML"
+    },
+    {
+      "id": "paper-076",
+      "name": "n6-thermodynamics-paper",
+      "type": "paper",
+      "path": "papers/n6-thermodynamics-paper.md",
+      "category": "에너지"
+    },
+    {
+      "id": "paper-077",
+      "name": "n6-control-automation-paper",
+      "type": "paper",
+      "path": "papers/n6-control-automation-paper.md",
+      "category": "로봇"
+    },
+    {
+      "id": "paper-078",
+      "name": "n6-classical-mechanics-accelerator-paper",
+      "type": "paper",
+      "path": "papers/n6-classical-mechanics-accelerator-paper.md",
+      "category": "물리/수학"
+    },
+    {
+      "id": "paper-079",
+      "name": "n6-pure-mathematics-paper",
+      "type": "paper",
+      "path": "papers/n6-pure-mathematics-paper.md",
+      "category": "물리/수학"
+    },
+    {
+      "id": "paper-080",
+      "name": "n6-quantum-computing-paper",
+      "type": "paper",
+      "path": "papers/n6-quantum-computing-paper.md",
+      "category": "물리/수학"
+    },
+    {
+      "id": "paper-081",
+      "name": "n6-governance-safety-urban-paper",
+      "type": "paper",
+      "path": "papers/n6-governance-safety-urban-paper.md",
+      "category": "안전"
+    },
+    {
+      "id": "paper-082",
+      "name": "n6-games-sports-paper",
+      "type": "paper",
+      "path": "papers/n6-games-sports-paper.md",
+      "category": "유희"
+    },
+    {
+      "id": "paper-083",
+      "name": "n6-aerospace-transport-paper",
+      "type": "paper",
+      "path": "papers/n6-aerospace-transport-paper.md",
+      "category": "우주항공"
+    },
+    {
+      "id": "paper-084",
+      "name": "n6-space-systems-paper",
+      "type": "paper",
+      "path": "papers/n6-space-systems-paper.md",
+      "category": "우주항공"
+    },
+    {
+      "id": "paper-085",
+      "name": "n6-therapeutic-nanobot-paper",
+      "type": "paper",
+      "path": "papers/n6-therapeutic-nanobot-paper.md",
+      "category": "최전선/대발견"
+    },
+    {
+      "id": "paper-086",
+      "name": "n6-archaeology-paper",
+      "type": "paper",
+      "path": "papers/n6-archaeology-paper.md",
+      "category": "문명/인문"
+    },
+    {
+      "id": "paper-087",
+      "name": "n6-fermentation-paper",
+      "type": "paper",
+      "path": "papers/n6-fermentation-paper.md",
+      "category": "생활/문화"
+    },
+    {
+      "id": "paper-088",
+      "name": "n6-visual-arts-paper",
+      "type": "paper",
+      "path": "papers/n6-visual-arts-paper.md",
+      "category": "생활/문화"
+    },
+    {
+      "id": "paper-089",
+      "name": "n6-ecology-agriculture-food-paper",
+      "type": "paper",
+      "path": "papers/n6-ecology-agriculture-food-paper.md",
+      "category": "자연과학"
+    },
+    {
+      "id": "paper-090",
+      "name": "n6-calendar-time-geography-paper",
+      "type": "paper",
+      "path": "papers/n6-calendar-time-geography-paper.md",
+      "category": "인지/사회"
+    },
+    {
+      "id": "paper-091",
+      "name": "n6-cognitive-social-psychology-paper",
+      "type": "paper",
+      "path": "papers/n6-cognitive-social-psychology-paper.md",
+      "category": "인지/사회"
+    },
+    {
+      "id": "paper-092",
+      "name": "n6-working-memory-paper",
+      "type": "paper",
+      "path": "papers/n6-working-memory-paper.md",
+      "category": "인지/사회"
+    },
+    {
+      "id": "paper-093",
+      "name": "n6-telecom-linguistics-paper",
+      "type": "paper",
+      "path": "papers/n6-telecom-linguistics-paper.md",
+      "category": "인지/사회"
+    },
+    {
+      "id": "paper-094",
+      "name": "n6-economics-finance-paper",
+      "type": "paper",
+      "path": "papers/n6-economics-finance-paper.md",
+      "category": "인지/사회"
+    },
+    {
+      "id": "paper-095",
+      "name": "n6-autonomous-driving-paper",
+      "type": "paper",
+      "path": "papers/n6-autonomous-driving-paper.md",
+      "category": "이동/수송"
+    },
+    {
+      "id": "paper-096",
+      "name": "n6-manufacturing-quality-paper",
+      "type": "paper",
+      "path": "papers/n6-manufacturing-quality-paper.md",
+      "category": "제조 품질관리"
+    },
+    {
+      "id": "product-001",
+      "name": "궁극의 핵융합 발전소",
+      "type": "product",
+      "section_id": "fusion",
+      "section_title": "핵융합"
+    },
+    {
+      "id": "product-002",
+      "name": "KSTAR-N6",
+      "type": "product",
+      "section_id": "fusion",
+      "section_title": "핵융합"
+    },
+    {
+      "id": "product-003",
+      "name": "진화 Mk.I~V",
+      "type": "product",
+      "section_id": "fusion",
+      "section_title": "핵융합"
+    },
+    {
+      "id": "product-004",
+      "name": "발견 + 예측 + 가설v5",
+      "type": "product",
+      "section_id": "fusion",
+      "section_title": "핵융합"
+    },
+    {
+      "id": "product-005",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "fusion",
+      "section_title": "핵융합"
+    },
+    {
+      "id": "product-006",
+      "name": "HEXA 칩 7단",
+      "type": "product",
+      "section_id": "chip",
+      "section_title": "칩/반도체"
+    },
+    {
+      "id": "product-007",
+      "name": "ANIMA-SOC",
+      "type": "product",
+      "section_id": "chip",
+      "section_title": "칩/반도체"
+    },
+    {
+      "id": "product-008",
+      "name": "HEXA-TOPO",
+      "type": "product",
+      "section_id": "chip",
+      "section_title": "칩/반도체"
+    },
+    {
+      "id": "product-009",
+      "name": "HEXA-ASIC",
+      "type": "product",
+      "section_id": "chip",
+      "section_title": "칩/반도체"
+    },
+    {
+      "id": "product-010",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "chip",
+      "section_title": "칩/반도체"
+    },
+    {
+      "id": "product-011",
+      "name": "66 Techniques",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-012",
+      "name": "Full N6 Pipeline",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-013",
+      "name": "N6 Inevitability Engine",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-014",
+      "name": "AI Energy Savings Guide",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-015",
+      "name": "Chip Architecture Guide",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-016",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-017",
+      "name": "Next-Gen AI 8-Paradigm Blowup",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-018",
+      "name": "AI 6-Domain Sweep",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-019",
+      "name": "N6 Reverse-Engineering Suite",
+      "type": "product",
+      "section_id": "ai",
+      "section_title": "AI/ML"
+    },
+    {
+      "id": "product-020",
+      "name": "궁극의 배터리 8단",
+      "type": "product",
+      "section_id": "energy",
+      "section_title": "에너지"
+    },
+    {
+      "id": "product-021",
+      "name": "궁극의 태양전지",
+      "type": "product",
+      "section_id": "energy",
+      "section_title": "에너지"
+    },
+    {
+      "id": "product-022",
+      "name": "궁극의 에너지 통합",
+      "type": "product",
+      "section_id": "energy",
+      "section_title": "에너지"
+    },
+    {
+      "id": "product-023",
+      "name": "궁극의 데이터센터 원자로",
+      "type": "product",
+      "section_id": "energy",
+      "section_title": "에너지"
+    },
+    {
+      "id": "product-024",
+      "name": "HEXA-AUTO 자동차배터리",
+      "type": "product",
+      "section_id": "energy",
+      "section_title": "에너지"
+    },
+    {
+      "id": "product-025",
+      "name": "궁극의 환경보호 8단",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-026",
+      "name": "HEXA-MICROPLASTICS",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-027",
+      "name": "궁극의 탄소포집 8단",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-028",
+      "name": "진화 Mk.I~V",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-029",
+      "name": "예측 + 검증",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-030",
+      "name": "궁극의 재활용 — HEXA-RECYCLE",
+      "type": "product",
+      "section_id": "environment",
+      "section_title": "환경보호"
+    },
+    {
+      "id": "product-031",
+      "name": "궁극의 물질합성 8단",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-032",
+      "name": "BT-85~88 + BT-128~135",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-033",
+      "name": "가설 36/36 100%EXACT",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-034",
+      "name": "산업검증 20소재+12금속",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-035",
+      "name": "실험검증 + TP 28/28",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-036",
+      "name": "물리한계 증명",
+      "type": "product",
+      "section_id": "materials",
+      "section_title": "물질합성"
+    },
+    {
+      "id": "product-037",
+      "name": "궁극의 로봇 8단",
+      "type": "product",
+      "section_id": "robotics",
+      "section_title": "로봇"
+    },
+    {
+      "id": "product-038",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "robotics",
+      "section_title": "로봇"
+    },
+    {
+      "id": "product-039",
+      "name": "궁극의 초전도체",
+      "type": "product",
+      "section_id": "physics",
+      "section_title": "물리/수학"
+    },
+    {
+      "id": "product-040",
+      "name": "궁극의 순수수학",
+      "type": "product",
+      "section_id": "physics",
+      "section_title": "물리/수학"
+    },
+    {
+      "id": "product-041",
+      "name": "궁극의 우주론/입자",
+      "type": "product",
+      "section_id": "physics",
+      "section_title": "물리/수학"
+    },
+    {
+      "id": "product-042",
+      "name": "궁극의 상온 초전도체",
+      "type": "product",
+      "section_id": "physics",
+      "section_title": "물리/수학"
+    },
+    {
+      "id": "product-043",
+      "name": "차원펼침 돌파 — 텐서/mod3/로그",
+      "type": "product",
+      "section_id": "physics",
+      "section_title": "물리/수학"
+    },
+    {
+      "id": "product-044",
+      "name": "궁극의 프로그래밍언어",
+      "type": "product",
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라"
+    },
+    {
+      "id": "product-045",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라"
+    },
+    {
+      "id": "product-046",
+      "name": "궁극의 macOS",
+      "type": "product",
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라"
+    },
+    {
+      "id": "product-047",
+      "name": "궁극의 iOS",
+      "type": "product",
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라"
+    },
+    {
+      "id": "product-048",
+      "name": "궁극의 네트워크 프로토콜",
+      "type": "product",
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라"
+    },
+    {
+      "id": "product-049",
+      "name": "궁극의 디스플레이 8단",
+      "type": "product",
+      "section_id": "display",
+      "section_title": "디스플레이"
+    },
+    {
+      "id": "product-050",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "display",
+      "section_title": "디스플레이"
+    },
+    {
+      "id": "product-051",
+      "name": "궁극의 오디오 7단",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-052",
+      "name": "천장확인",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-053",
+      "name": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-054",
+      "name": "HEXA-EAR Ultimate",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-055",
+      "name": "HEXA-BONE 골전도 이어폰",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-056",
+      "name": "HEXA-EAR-CELL 이어폰 배터리",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-057",
+      "name": "HEXA-SPEAKER 궁극 스피커",
+      "type": "product",
+      "section_id": "audio",
+      "section_title": "오디오"
+    },
+    {
+      "id": "product-058",
+      "name": "궁극의 안전 8단",
+      "type": "product",
+      "section_id": "safety",
+      "section_title": "안전"
+    },
+    {
+      "id": "product-059",
+      "name": "가설 30+극한 20",
+      "type": "product",
+      "section_id": "safety",
+      "section_title": "안전"
+    },
+    {
+      "id": "product-060",
+      "name": "궁극의 펀카",
+      "type": "product",
+      "section_id": "play",
+      "section_title": "유희"
+    },
+    {
+      "id": "product-061",
+      "name": "궁극의 바이크",
+      "type": "product",
+      "section_id": "play",
+      "section_title": "유희"
+    },
+    {
+      "id": "product-062",
+      "name": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+      "type": "product",
+      "section_id": "aerospace",
+      "section_title": "우주항공"
+    },
+    {
+      "id": "product-063",
+      "name": "궁극의 UFO 비행접시 (HEXA-UFO)",
+      "type": "product",
+      "section_id": "sf",
+      "section_title": "UFO/비행접시"
+    },
+    {
+      "id": "product-064",
+      "name": "HEXA-NEURO 뇌-기계 인터페이스",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-065",
+      "name": "HEXA-GRAV 중력파 검출/통신",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-066",
+      "name": "HEXA-CLOAK 투명망토/스텔스",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-067",
+      "name": "HEXA-DEFENSE 지구방어 시스템",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-068",
+      "name": "HEXA-TELEPORT 양자얽힘 통신망",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-069",
+      "name": "HEXA-HOVER 개인 호버보드",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-070",
+      "name": "HEXA-MRAM 초전도 비휘발 메모리",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-071",
+      "name": "HEXA-SEABED 대륙간 해저 송전",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-072",
+      "name": "HEXA-ACCEL 소형 입자가속기",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-073",
+      "name": "HEXA-WEATHER 대기 전자기 제어",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-074",
+      "name": "HEXA-MIND 의식 업로드",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-075",
+      "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-076",
+      "name": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-077",
+      "name": "HEXA-DREAM 꿈 기록/재생",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-078",
+      "name": "HEXA-SKYWAY 공중 고속도로망",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-079",
+      "name": "HEXA-TSUNAMI 해일 방지기",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-080",
+      "name": "HEXA-ANTIMATTER 반물질 공장",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-081",
+      "name": "HEXA-COSMIC 초기우주 관측망",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-082",
+      "name": "HEXA-DESAL 초전도 담수화",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-083",
+      "name": "HEXA-ORACLE 양자 예측기",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-084",
+      "name": "HEXA-ONE 통합 웨어러블",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-085",
+      "name": "HEXA-GLASS AI 안경",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-086",
+      "name": "HEXA-EAR AI 이어폰",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-087",
+      "name": "HEXA-EXO AI 외골격",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-088",
+      "name": "HEXA-LIMB AI 의수/의족",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-089",
+      "name": "HEXA-SKIN 전자 피부",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-090",
+      "name": "HEXA-FABRIC AI 의류",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-091",
+      "name": "HEXA-OLFACT 디지털 후각",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-092",
+      "name": "HEXA-DREAM 꿈 인터페이스",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-093",
+      "name": "HEXA-EMPATH 감정 공유",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-094",
+      "name": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-095",
+      "name": "곤충학 n=6 Hexapoda 완전 생물학",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-096",
+      "name": "균류학 n=6 포자-발효 아키텍처",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-097",
+      "name": "광업/광물학 n=6 경도-결정 아키텍처",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-098",
+      "name": "수의학 n=6 동물해부 보편성",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-099",
+      "name": "원예학 n=6 식물 성장 아키텍처",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-100",
+      "name": "HEXA-SIM 우주 시뮬레이션",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-101",
+      "name": "크로스 도메인 메가 브릿지",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-102",
+      "name": "HEXA-NANOBOT 치료 나노봇",
+      "type": "product",
+      "section_id": "frontier",
+      "section_title": "최전선/대발견"
+    },
+    {
+      "id": "product-103",
+      "name": "종교/신화 n=6 보편 구조",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-104",
+      "name": "법학/사법 n=6 정의 아키텍처",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-105",
+      "name": "한글/문자체계 n=6 인코딩",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-106",
+      "name": "고고학/문명사 n=6 기원",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-107",
+      "name": "화폐/경제사 n=6 통화 래더",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-108",
+      "name": "무용/안무 n=6 공간 기하학",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-109",
+      "name": "시계학/호롤로지 n=6 시간 아키텍처",
+      "type": "product",
+      "section_id": "civilization",
+      "section_title": "문명/인문"
+    },
+    {
+      "id": "product-110",
+      "name": "발효/양조 n=6 완전수 화학양론",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-111",
+      "name": "와인/소믈리에 n=6 테이스팅",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-112",
+      "name": "패션/섬유 n=6 직조 구조",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-113",
+      "name": "수산/양식 n=6 해양 생태",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-114",
+      "name": "보험/보험계리 n=6 리스크 구조",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-115",
+      "name": "돌고래 n=6 생물음향 아키텍처",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-116",
+      "name": "커피과학 n=6 추출 아키텍처",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-117",
+      "name": "향수/향료 n=6 피라미드 구조",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-118",
+      "name": "도자기/세라믹 n=6 소성 래더",
+      "type": "product",
+      "section_id": "life-culture",
+      "section_title": "생활/문화"
+    },
+    {
+      "id": "product-119",
+      "name": "반도체 패키징 n=6 적층 래더",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-120",
+      "name": "합성생물학 n=6 이중 완전수",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-121",
+      "name": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-122",
+      "name": "디지털 트윈 n=6 동기화",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-123",
+      "name": "건축/구조공학 n=6 하중 보편성",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-124",
+      "name": "지하공간/터널 n=6 굴착 구조",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-125",
+      "name": "전자상거래/핀테크 n=6 결제 보안",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-126",
+      "name": "나일론 6/6,6 폴리아미드",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-127",
+      "name": "아라미드 (Heracron)",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-128",
+      "name": "타이어코드",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-129",
+      "name": "에폭시/페놀 수지",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-130",
+      "name": "PET 광학필름",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-131",
+      "name": "에어백",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-132",
+      "name": "수처리 멤브레인",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-133",
+      "name": "PEMFC 수소 연료전지",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-134",
+      "name": "건설 콘크리트",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-135",
+      "name": "바이오 약물전달/제약",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-136",
+      "name": "HVAC 냉난방 n=6 COP 최적화",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-137",
+      "name": "내진설계 n=6 DOF 보편성",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-138",
+      "name": "콘크리트+탄소포집 n=6 광물화",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-139",
+      "name": "스마트시티 통합 n=6 도시 시스템",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-140",
+      "name": "토목/구조역학 kissing number 사슬",
+      "type": "product",
+      "section_id": "tech-industry",
+      "section_title": "기술/산업"
+    },
+    {
+      "id": "product-141",
+      "name": "바이러스 구조-분류 완전 n=6 맵",
+      "type": "product",
+      "section_id": "virology",
+      "section_title": "바이러스학"
+    },
+    {
+      "id": "product-142",
+      "name": "바이러스 게놈 분절-유전자 n=6 래더",
+      "type": "product",
+      "section_id": "virology",
+      "section_title": "바이러스학"
+    },
+    {
+      "id": "product-143",
+      "name": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+      "type": "product",
+      "section_id": "virology",
+      "section_title": "바이러스학"
+    },
+    {
+      "id": "product-144",
+      "name": "진화 Mk.I~V",
+      "type": "product",
+      "section_id": "virology",
+      "section_title": "바이러스학"
+    },
+    {
+      "id": "product-145",
+      "name": "HEXA-HIV 6축 완전 치료 체인",
+      "type": "product",
+      "section_id": "hiv-treatment",
+      "section_title": "HIV 치료"
+    },
+    {
+      "id": "product-146",
+      "name": "HEXA-BIO n=6 생명 아키텍처",
+      "type": "product",
+      "section_id": "natural-science",
+      "section_title": "자연과학"
+    },
+    {
+      "id": "product-147",
+      "name": "HEXA-AGRI n=6 농업과학",
+      "type": "product",
+      "section_id": "natural-science",
+      "section_title": "자연과학"
+    },
+    {
+      "id": "product-148",
+      "name": "HEXA-FOOD n=6 식품과학",
+      "type": "product",
+      "section_id": "natural-science",
+      "section_title": "자연과학"
+    },
+    {
+      "id": "product-149",
+      "name": "HEXA-OCEAN n=6 해양과학",
+      "type": "product",
+      "section_id": "natural-science",
+      "section_title": "자연과학"
+    },
+    {
+      "id": "product-150",
+      "name": "HEXA-COGNI n=6 인지 아키텍처",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-151",
+      "name": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-152",
+      "name": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-153",
+      "name": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-154",
+      "name": "HEXA-LING n=6 언어 아키텍처",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-155",
+      "name": "HEXA-ECON n=6 경제학",
+      "type": "product",
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회"
+    },
+    {
+      "id": "product-156",
+      "name": "HEXA-DRIVE n=6 자율주행",
+      "type": "product",
+      "section_id": "mobility",
+      "section_title": "이동/수송"
+    },
+    {
+      "id": "product-157",
+      "name": "HEXA-WING n=6 항공공학",
+      "type": "product",
+      "section_id": "mobility",
+      "section_title": "이동/수송"
+    },
+    {
+      "id": "product-158",
+      "name": "HEXA-BROWSER 특이점 브라우저",
+      "type": "product",
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기"
+    },
+    {
+      "id": "product-159",
+      "name": "HEXA-MED n=6 의료기기",
+      "type": "product",
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기"
+    },
+    {
+      "id": "product-160",
+      "name": "HEXA-AESTHETIC n=6 성형외과",
+      "type": "product",
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기"
+    },
+    {
+      "id": "product-161",
+      "name": "HEXA-MKT 마케팅 불변의 법칙",
+      "type": "product",
+      "section_id": "marketing",
+      "section_title": "마케팅"
+    },
+    {
+      "id": "product-162",
+      "name": "HEXA-NEXUS 서비스 플랫폼",
+      "type": "product",
+      "section_id": "marketing",
+      "section_title": "마케팅"
+    },
+    {
+      "id": "product-163",
+      "name": "HEXA-ANIMA 감성 서비스",
+      "type": "product",
+      "section_id": "marketing",
+      "section_title": "마케팅"
+    },
+    {
+      "id": "product-164",
+      "name": "HEXA-UNIFIED 완전인지 플랫폼",
+      "type": "product",
+      "section_id": "marketing",
+      "section_title": "마케팅"
+    },
+    {
+      "id": "product-165",
+      "name": "남성청결제 n=6 피부과학 아키텍처",
+      "type": "product",
+      "section_id": "hygiene",
+      "section_title": "위생"
+    },
+    {
+      "id": "product-166",
+      "name": "여성청결제 n=6 질내생태계 아키텍처",
+      "type": "product",
+      "section_id": "hygiene",
+      "section_title": "위생"
+    },
+    {
+      "id": "product-167",
+      "name": "타투 제거 n=6 면역학적 아키텍처",
+      "type": "product",
+      "section_id": "tattoo-removal",
+      "section_title": "타투 제거"
+    },
+    {
+      "id": "product-168",
+      "name": "키보드 n=6 인체공학 아키텍처",
+      "type": "product",
+      "section_id": "keyboard",
+      "section_title": "키보드"
+    },
+    {
+      "id": "product-169",
+      "name": "HEXA-MOUSE n=6 인체공학 마우스",
+      "type": "product",
+      "section_id": "mouse",
+      "section_title": "마우스"
+    },
+    {
+      "id": "product-170",
+      "name": "HEXA-QC 제조 품질관리 아키텍처",
+      "type": "product",
+      "section_id": "manufacturing-quality",
+      "section_title": "제조 품질관리"
+    },
+    {
+      "id": "product-171",
+      "name": "HEXA-NET 네트워크 아키텍처",
+      "type": "product",
+      "section_id": "network",
+      "section_title": "네트워크"
+    },
+    {
+      "id": "product-172",
+      "name": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "type": "product",
+      "section_id": "quantum-computer",
+      "section_title": "양자컴퓨터"
+    },
+    {
+      "id": "product-173",
+      "name": "시계학 n=6 시간 산술 아키텍처",
+      "type": "product",
+      "section_id": "horology",
+      "section_title": "시계학"
+    }
+  ]
+}

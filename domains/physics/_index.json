@@ -1,0 +1,346 @@
+{
+  "_doc": "physics 축 sub-SSOT — 부모: ../_index.json (physics 키). 자동 생성 2026-04-12.",
+  "_axis": "physics",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_count": 37,
+  "_changelog": [
+    "1.0.0 (2026-04-12): physics 축 sub-SSOT 신설. 전체 37개 도메인 등록."
+  ],
+  "domains": [
+    {
+      "slug": "antimatter-factory",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "classical-mechanics-accelerator",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cosmic-observatory",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cosmology-particle",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cosmology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "crystallography-materials",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "crystallography",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "electromagnetism",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "fluid",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "gravity-wave",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-topo",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "higgs",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "holography",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "light-optics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-bsd",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-hodge",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-navier-stokes",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-p-vs-np",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-poincare",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-riemann",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "millennium-yang-mills",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "mini-accelerator",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "optics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "particle-cosmology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "plasma-fusion-deep",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "plasma-physics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "plasma",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "pure-mathematics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "quantum-computer",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "quantum-computing",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "quantum-gravity-sensor",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "quantum-network",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "quantum-oracle",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "simulation-theory",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "tachyon",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "thermodynamics",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "topology",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
+  "_note": "physics 축 전체 멤버 목록은 ../_index.json physics 키 SSOT 를 따른다 (중복 등록 금지)."
+}

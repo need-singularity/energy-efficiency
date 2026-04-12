@@ -1,0 +1,85 @@
+{
+  "_doc": "space 축 sub-SSOT — 부모: ../_index.json (space 키). 자동 생성 2026-04-12.",
+  "_axis": "space",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_count": 8,
+  "_changelog": [
+    "1.0.0 (2026-04-12): space 축 sub-SSOT 신설. 전체 8개 도메인 등록."
+  ],
+  "domains": [
+    {
+      "slug": "aerospace-transport",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "aerospace",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "astronomy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-cosmic",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-starship",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "observational-astronomy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "space-engineering",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "space-systems",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
+  "_note": "space 축 전체 멤버 목록은 ../_index.json space 키 SSOT 를 따른다 (중복 등록 금지)."
+}

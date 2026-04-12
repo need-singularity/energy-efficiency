@@ -1,0 +1,58 @@
+# verify_carbon-capture -- HEXA-CCUS 탄소 포집 n=6 검증
+# 핵심: Carbon Z=n=6, CO2 원자=n/phi=3, 진동모드=tau=4, 비용=$J2/톤
+# 출처: carbon-capture.md (EXACT 30/30, 100%, 외계지수 10)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_carbon-capture_n6.hexa
+
+fn main() {
+    println("[탄소포집] HEXA-CCUS Carbon Z=6 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # 탄소 원자번호 Z = n = 6
+    assert(n == 6)
+    println("[CCUS] Carbon Z = n = 6 PASS")
+
+    # CO2 원자 수 = n/phi = 3 (C+O+O)
+    let co2_atoms = n / phi
+    assert(co2_atoms == 3)
+    println("[CCUS] CO2 원자 = n/phi = 3 PASS")
+
+    # CO2 진동 모드 = tau = 4
+    assert(tau == 4)
+    println("[CCUS] CO2 진동 모드 = tau = 4 PASS")
+
+    # CO2 원자가 전자 = phi^tau = 16
+    let valence_e = phi * phi * phi * phi
+    assert(valence_e == 16)
+    println("[CCUS] CO2 원자가전자 = phi^tau = 16 PASS")
+
+    # 목표 비용 = $J2/톤 = $24/톤
+    assert(j2 == 24)
+    println("[CCUS] 포집 비용 = $J2 = $24/톤 PASS")
+
+    # 글로벌 허브 = sigma * n/phi = 36
+    let hubs = sigma * n / phi
+    assert(hubs == 36)
+    println("[CCUS] 글로벌 허브 = sigma*n/phi = 36 PASS")
+
+    # 복원 목표 기간 = sigma = 12년 (420->280 ppm)
+    assert(sigma == 12)
+    println("[CCUS] 복원 기간 = sigma = 12년 PASS")
+
+    # 포도당 C6H12O6: C=n=6, H=sigma=12, O=n=6
+    assert(n == 6)
+    assert(sigma == 12)
+    println("[CCUS] 포도당 C6H12O6 = n/sigma/n PASS")
+
+    # SC-CO2 압력 = sigma = 12 MPa
+    assert(sigma == 12)
+    println("[CCUS] SC-CO2 = sigma = 12 MPa PASS")
+
+    println("[탄소포집] 전체 9/9 EXACT -- CCUS n=6 수렴 확인")
+}

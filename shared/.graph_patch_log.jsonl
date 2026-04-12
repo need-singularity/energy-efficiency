@@ -1,0 +1,2 @@
+{"_설명":"discovery_graph.json 증분 패치 로그. 한 줄 = 한 변경. 전체 재직렬화 대신 이 파일에 append 후 일괄 적용.","_생성일":"2026-04-12","_형식":"각 줄은 독립 JSON 객체. op: add_node|add_edge|update_node|update_edge|delete_node|delete_edge","_사용법":"새 노드/엣지 추가 시 이 파일에 append -> 주기적으로 그래프에 병합 -> 병합 후 이 파일 비움"}
+{"op":"init","timestamp":"2026-04-12T00:00:00Z","graph_version":"14.0.0","nodes":515,"edges":2087,"설명":"증분 패치 로그 초기화. 이 시점의 그래프 상태를 기준점으로 사용."}

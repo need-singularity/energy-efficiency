@@ -1,0 +1,805 @@
+{
+  "_meta": {
+    "설명": "papers/_registry.json에서 분리한 논문 전용 레지스트리",
+    "원본": "papers/_registry.json",
+    "생성일": "2026-04-12",
+    "총_논문수": 96,
+    "ghost_해소": "2026-04-12 chunk_c 10편 전량 작성 완료 (ghost 0편)",
+    "출처": "papers_chunk (meta) + sections.products.links (논문 label)"
+  },
+  "papers": [
+    {
+      "path": "papers/n6-hexa-neuro-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-mind-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-telepathy-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-dream-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-skin-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-exo-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-limb-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-olfact-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-entomology-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-synthetic-biology-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-dolphin-bioacoustics-paper.md",
+      "chunk": "papers_chunk_c_2026-04-08",
+      "category": "인체/의료/생물",
+      "bt_range": "BT-405~416",
+      "status": "",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-geology-prem-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-372",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-meteorology-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-373",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-oceanography-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-375",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-curvature-geometry-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-377",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-warp-metric-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-378, BT-351~360",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-extra-dimensions-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-379",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-cross-paradigm-ai-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-380 메타, BT-381~390",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-hexa-earphone-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-402, BT-403",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-dimensional-unfolding-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-361~365",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-ai-17-techniques-experimental-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "BT-26,34,54,58,64,77",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-atlas-promotion-7-to-10-paper.md",
+      "chunk": "papers_chunk_d_2026-04-11",
+      "category": "지구·물리 확장 + AI 메타 + 칩 오디오 + atlas 승격",
+      "bt_range": "atlas 프로토콜",
+      "status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)",
+      "target_id_range": "N6-046 ~ N6-056"
+    },
+    {
+      "path": "papers/n6-dram-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-36, BT-58, BT-112, BT-215",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-vnand-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-170~175, BT-260~266",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-exynos-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-90, BT-55, BT-93",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-hexa-asic-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-28, BT-53, BT-58, BT-59",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-hexa-topo-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-90, BT-91, BT-92",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-performance-chip-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-28, BT-37, BT-55, BT-90, BT-93",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-consciousness-chip-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-90, BT-55, BT-344~346",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-chip-design-ladder-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-28, BT-55, BT-90, BT-1104",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-chip-dse-convergence-paper.md",
+      "chunk": "papers_chunk_e_2026-04-12",
+      "category": "칩/반도체 ghost 해소",
+      "bt_range": "BT-28, BT-1104",
+      "status": "시드 완성 -- 검증코드 임베드 완료",
+      "target_id_range": "N6-057 ~ N6-065"
+    },
+    {
+      "path": "papers/n6-superconductor-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-135~142, BT-299~306",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-particle-cosmology-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-36, BT-49, BT-51, BT-53, BT-97, BT-105, BT-109, BT-112, BT-143, BT-167",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-electromagnetism-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-440, BT-441, BT-145, BT-189",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-fluid-dynamics-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-193, BT-201, BT-149",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-topology-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-9, BT-91, BT-92, BT-109, BT-232, BT-304",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-gravity-wave-paper.md",
+      "chunk": "papers_chunk_f_2026-04-12",
+      "category": "물리/수학 ghost 해소",
+      "bt_range": "BT-130, BT-143, BT-167, BT-189, BT-201, BT-299~306",
+      "status": "시드 완성 -- hexa 검증 스텁 포함",
+      "target_id_range": "N6-066 ~ N6-071"
+    },
+    {
+      "path": "papers/n6-ai-ethics-governance-paper.md",
+      "chunk": "papers_chunk_g_2026-04-12",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-380, BT-ET-01~06 (EU AI Act, NIST RMF, ISO 42001, IEEE EAD, OECD, GDPR)",
+      "status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드",
+      "target_id_range": "N6-072 ~ N6-074",
+      "exact_stats": "34/37 EXACT (91.9%)"
+    },
+    {
+      "path": "papers/n6-network-collective-paper.md",
+      "chunk": "papers_chunk_g_2026-04-12",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-NET-01~05 (Milgram, Dunbar, 멀티에이전트 LLM, 조직)",
+      "status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드",
+      "target_id_range": "N6-072 ~ N6-074",
+      "exact_stats": "30/39 EXACT (76.9%, NEAR 포함 92.3%)"
+    },
+    {
+      "path": "papers/n6-jurisprudence-paper.md",
+      "chunk": "papers_chunk_g_2026-04-12",
+      "category": "AI·문명·인지 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-374 확장 + BT-JUR-01~05 (영미/대륙/국제/헌법/역사 법전)",
+      "status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드",
+      "target_id_range": "N6-072 ~ N6-074",
+      "exact_stats": "35/41 EXACT (85.4%)"
+    },
+    {
+      "path": "papers/n6-optics-paper.md",
+      "chunk": "papers_chunk_h_2026-04-12",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-145 편광, BT-189 전자기 스펙트럼, BT-380 메타, BT-440 광결합, BT-441 광경로, BT-97 스펙트럼 경계",
+      "status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함",
+      "target_id_range": "N6-075 ~ N6-078",
+      "exact_stats": "38/44 EXACT (86.4%), 4 NEAR, 2 MISS"
+    },
+    {
+      "path": "papers/n6-acoustics-paper.md",
+      "chunk": "papers_chunk_h_2026-04-12",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143 진동 모드, BT-189 파동 매질, BT-201 경계조건, BT-299 공명, BT-402 이어폰 음장, BT-403 공간음향",
+      "status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함",
+      "target_id_range": "N6-075 ~ N6-078",
+      "exact_stats": "39/45 EXACT (86.7%), 4 NEAR, 2 MISS"
+    },
+    {
+      "path": "papers/n6-hydrology-paper.md",
+      "chunk": "papers_chunk_h_2026-04-12",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-193 유체 경계, BT-201 순환 평형, BT-149 상변화, BT-373 기상 재현, BT-375 해양 경계",
+      "status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함",
+      "target_id_range": "N6-075 ~ N6-078",
+      "exact_stats": "34/39 EXACT (87.2%), 3 NEAR, 2 MISS (water-boiling-point atlas 식 재검증 필요)"
+    },
+    {
+      "path": "papers/n6-mechanical-engineering-paper.md",
+      "chunk": "papers_chunk_h_2026-04-12",
+      "category": "자연과학·공학 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143 탄성 한계, BT-201 평형 방정식, BT-149 응력-변형, BT-189 진동 모드, BT-130 균열 전파, BT-167 피로 한계",
+      "status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함",
+      "target_id_range": "N6-075 ~ N6-078",
+      "exact_stats": "35/40 EXACT (87.5%), 3 NEAR, 2 MISS"
+    },
+    {
+      "path": "papers/n6-ai-techniques-68-integrated-paper.md",
+      "chunk": "papers_chunk_i_2026-04-12",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)",
+      "bt_range": "BT-380 메타, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73, BT-1394 σ-sopfr 3축",
+      "status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합",
+      "target_id_range": "N6-075 ~ N6-077"
+    },
+    {
+      "path": "papers/n6-chip-6stages-integrated-paper.md",
+      "chunk": "papers_chunk_i_2026-04-12",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)",
+      "bt_range": "BT-28, BT-36, BT-55, BT-90, BT-93, BT-260~266, BT-344~346, BT-1104",
+      "status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합",
+      "target_id_range": "N6-075 ~ N6-077"
+    },
+    {
+      "path": "papers/n6-millennium-dfs-1-12-integrated-paper.md",
+      "chunk": "papers_chunk_i_2026-04-12",
+      "category": "통합 메타 논문 (AI 68기법 · 칩 6단 · 밀레니엄 DFS 1~12)",
+      "bt_range": "BT-541~547 (1~2차 51 tight), BT-1394 (3차 +14), BT-1395 (4차 +15), BT-1396 (5차 +12), BT-1398 (6차 +10), BT-1399 (7차 +12), BT-1400 (8차 +14), BT-1401 (9차 +12), BT-1402 (10차 +12), BT-1403 (11차 +12), BT-1404 (12차 +12)",
+      "status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합",
+      "target_id_range": "N6-075 ~ N6-077"
+    },
+    {
+      "path": "papers/n6-religion-mythology-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-7, BT-5, BT-370 (종교/신화 성수)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "20/30 EXACT (66.7%)"
+    },
+    {
+      "path": "papers/n6-writing-systems-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-73, BT-197, BT-227, BT-262, BT-329, BT-340 (문자체계/인코딩)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "20/20 EXACT (100%)"
+    },
+    {
+      "path": "papers/n6-wine-enology-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-27, BT-101, BT-103, BT-192, BT-265, BT-371 (발효/양조)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "20/21 EXACT (95.2%)"
+    },
+    {
+      "path": "papers/n6-dance-choreography-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-123, BT-124, BT-135, BT-108, BT-201, BT-233 (SE(3)/라반/안무)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "20/20 EXACT (100%)"
+    },
+    {
+      "path": "papers/n6-construction-structural-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143, BT-201, BT-149, BT-189, BT-130, BT-167, BT-377 (건축/구조)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "22/25 EXACT (88%)"
+    },
+    {
+      "path": "papers/n6-carbon-capture-paper.md",
+      "chunk": "papers_chunk_j_2026-04-12",
+      "category": "문명·문화·환경·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-27, BT-85, BT-93, BT-103, BT-38 (탄소 Z=6/CCUS)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-079 ~ N6-084",
+      "exact_stats": "30/30 EXACT (100%)"
+    },
+    {
+      "path": "papers/n6-game-theory-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-201, BT-380, BT-9 (평형/다중패러다임/위상고정점)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "17/20 EXACT (85.0%)"
+    },
+    {
+      "path": "papers/n6-cryptography-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-73, BT-197, BT-227 (인코딩/정보스택/이진체계)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "16/20 EXACT (80.0%)"
+    },
+    {
+      "path": "papers/n6-music-theory-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143, BT-189, BT-402, BT-403 (진동모드/파동매질/이어폰/공간음���)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "22/25 EXACT (88.0%)"
+    },
+    {
+      "path": "papers/n6-horology-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-370, BT-73 (성수주기/인코딩구조)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "19/22 EXACT (86.4%)"
+    },
+    {
+      "path": "papers/n6-cartography-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-370, BT-377, BT-372 (지리주기/곡률기하/지질PREM)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "17/20 EXACT (85.0%)"
+    },
+    {
+      "path": "papers/n6-pharmacology-paper.md",
+      "chunk": "papers_chunk_k_2026-04-12",
+      "category": "���명·문화·자연과학·산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-15, BT-1391, BT-404 (생물화학양론/광합성/치료나노봇)",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-085 ~ N6-090",
+      "exact_stats": "18/22 EXACT (81.8%)"
+    },
+    {
+      "path": "papers/n6-aquaculture-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-375 해양경계, BT-193 유체경계, BT-149 상변화, BT-15 생물화학양론",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "20/25 EXACT (80.0%)"
+    },
+    {
+      "path": "papers/n6-forensic-science-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-374 법학, BT-73 인코딩, BT-197 정보스택, BT-15 생물화학양론",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "19/24 EXACT (79.2%)"
+    },
+    {
+      "path": "papers/n6-textile-engineering-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-143 진동모드, BT-201 평형방정식, BT-149 응력변형, BT-130 균열전파",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "18/22 EXACT (81.8%)"
+    },
+    {
+      "path": "papers/n6-battery-energy-storage-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-27 에너지기초, BT-85 전기화학, BT-93 소재, BT-440 전자기",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "20/24 EXACT (83.3%)"
+    },
+    {
+      "path": "papers/n6-soil-science-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-372 지질PREM, BT-373 기상, BT-375 해양, BT-149 상변화",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "18/22 EXACT (81.8%)"
+    },
+    {
+      "path": "papers/n6-polymer-engineering-paper.md",
+      "chunk": "papers_chunk_l_2026-04-12",
+      "category": "자연과학·에너지·기술산업 ghost 해소 (ghost→v1)",
+      "bt_range": "BT-93 소재, BT-143 탄성한계, BT-149 응력변형, BT-130 균열전파",
+      "status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함",
+      "target_id_range": "N6-091 ~ N6-096",
+      "exact_stats": "19/24 EXACT (79.2%)"
+    },
+    {
+      "path": "papers/n6-advanced-packaging-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-consciousness-soc-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-3d-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-photon-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-pim-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-super-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-hexa-wafer-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-unified-soc-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-anima-soc-paper.md",
+      "chunk": "section:chip",
+      "category": "칩/반도체",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-sota-ssm-paper.md",
+      "chunk": "section:ai",
+      "category": "AI/ML",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-thermodynamics-paper.md",
+      "chunk": "section:energy",
+      "category": "에너지",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-control-automation-paper.md",
+      "chunk": "section:robotics",
+      "category": "로봇",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-classical-mechanics-accelerator-paper.md",
+      "chunk": "section:physics",
+      "category": "물리/수학",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-pure-mathematics-paper.md",
+      "chunk": "section:physics",
+      "category": "물리/수학",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-quantum-computing-paper.md",
+      "chunk": "section:physics",
+      "category": "물리/수학",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-governance-safety-urban-paper.md",
+      "chunk": "section:safety",
+      "category": "안전",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-games-sports-paper.md",
+      "chunk": "section:play",
+      "category": "유희",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-aerospace-transport-paper.md",
+      "chunk": "section:aerospace",
+      "category": "우주항공",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-space-systems-paper.md",
+      "chunk": "section:aerospace",
+      "category": "우주항공",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-therapeutic-nanobot-paper.md",
+      "chunk": "section:frontier",
+      "category": "최전선/대발견",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-archaeology-paper.md",
+      "chunk": "section:civilization",
+      "category": "문명/인문",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-fermentation-paper.md",
+      "chunk": "section:life-culture",
+      "category": "생활/문화",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-visual-arts-paper.md",
+      "chunk": "section:life-culture",
+      "category": "생활/문화",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-ecology-agriculture-food-paper.md",
+      "chunk": "section:natural-science",
+      "category": "자연과학",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-calendar-time-geography-paper.md",
+      "chunk": "section:cognitive-social",
+      "category": "인지/사회",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-cognitive-social-psychology-paper.md",
+      "chunk": "section:cognitive-social",
+      "category": "인지/사회",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-working-memory-paper.md",
+      "chunk": "section:cognitive-social",
+      "category": "인지/사회",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-telecom-linguistics-paper.md",
+      "chunk": "section:cognitive-social",
+      "category": "인지/사회",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-economics-finance-paper.md",
+      "chunk": "section:cognitive-social",
+      "category": "인지/사회",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-autonomous-driving-paper.md",
+      "chunk": "section:mobility",
+      "category": "이동/수송",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    },
+    {
+      "path": "papers/n6-manufacturing-quality-paper.md",
+      "chunk": "section:manufacturing-quality",
+      "category": "제조 품질관리",
+      "bt_range": "",
+      "status": "sections 참조",
+      "target_id_range": ""
+    }
+  ]
+}

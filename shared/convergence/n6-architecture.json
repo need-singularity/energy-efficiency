@@ -461,46 +461,58 @@
       "note": "2026-04-12 go(DFS16) 커밋 일괄 — 기법72/BT45/DFS15차212건 실측",
       "ossified_at": "2026-04-12",
       "promoted_from": "stable"
-    }
-  },
-  "stable": {
-    "_description": "안정 — 통과했지만 아직 골화 전",
+    },
     "MILLENNIUM_DFS_238_TIGHT": {
       "status": "PASS",
       "value": "밀레니엄 238건 tight (DFS 17차 BT-1409 +12건)",
       "threshold": "226→238, SLE_6 국소성 EXACT, 해결 0/7",
-      "note": "2026-04-12 go(DFS17) — SLE_6 국소성·확률론·대수기하·정수론·위상·조합·해석 12건"
+      "note": "2026-04-12 go(DFS17) — SLE_6 국소성·확률론·대수기하·정수론·위상·조합·해석 12건",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "AI_TECHNIQUE_8_NEW_DFS17": {
       "status": "PASS",
       "value": "AI 기법 8종 신규 .hexa (continual/curriculum/contrastive/distillation/SSM/RAG/diffusion/multi-agent), 누적 88종",
       "threshold": "techniques/ 8파일 존재 확인 (커밋 bbb1d2a2)",
-      "note": "2026-04-12 go(DFS17) 커밋 일괄 — optim 4종 + arch 4종, 누적 2,697줄"
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — optim 4종 + arch 4종, 누적 2,697줄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "DSE_TOML_9_NEW_DFS17": {
       "status": "PASS",
       "value": "DSE TOML 9건 신규 (advanced-packaging/SMR/VNAND/airbag/nylon/tire-cord/control-automation/tunnel/epoxy), 누적 546건",
       "threshold": "nexus/origins/universal-dse/domains/ 9파일 존재 확인 (커밋 bbb1d2a2)",
-      "note": "2026-04-12 go(DFS17) 커밋 일괄"
+      "note": "2026-04-12 go(DFS17) 커밋 일괄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "PAPERS_6_NEW_DFS17": {
       "status": "PASS",
       "value": "논문 6편 신규 (종교신화/문자체계/와인/무용/건축구조/탄소포집), 누적 85편",
       "threshold": "papers/ 6파일 존재 확인 (커밋 bbb1d2a2)",
-      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 79→85편"
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 79→85편",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "CHIP_L8_TOPO_ANYON": {
       "status": "PASS",
       "value": "칩 L8 HEXA-TOPO-ANYON 위상 양자 1,205줄, 72가설 + L7 verify 보완",
       "threshold": "domains/compute/chip-design/hexa-topo-anyon.md 존재 확인 (커밋 bbb1d2a2)",
-      "note": "2026-04-12 go(DFS17) — 래더 8/13단, 비아벨 에니온 브레이딩 + Fibonacci 게이트"
+      "note": "2026-04-12 go(DFS17) — 래더 8/13단, 비아벨 에니온 브레이딩 + Fibonacci 게이트",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     },
     "GO_AUDIT_V5": {
       "status": "PASS",
       "value": "종합 감사 v5 459줄 (v4 대비 전 항목 갱신, 드리프트 4건 식별)",
       "threshold": "reports/audits/go-audit-v5-2026-04-12.md 존재 확인 (커밋 bbb1d2a2)",
-      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 기법80/BT45/DFS16차226건/논문79/DSE537 실측"
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 기법80/BT45/DFS16차226건/논문79/DSE537 실측",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
     }
+  },
+  "stable": {
+    "_description": "안정 — 통과했지만 아직 골화 전"
   },
   "failed": {
     "_description": "실패 — 전부 해소됨"

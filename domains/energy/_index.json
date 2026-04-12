@@ -1,0 +1,157 @@
+{
+  "_doc": "energy 축 sub-SSOT — 부모: ../_index.json (energy 키). 자동 생성 2026-04-12.",
+  "_axis": "energy",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_count": 16,
+  "_changelog": [
+    "1.0.0 (2026-04-12): energy 축 sub-SSOT 신설. 전체 16개 도메인 등록."
+  ],
+  "domains": [
+    {
+      "slug": "battery-architecture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "battery-energy",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "datacenter-reactor",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "energy-architecture",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "energy-efficiency",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "fusion-powerplant",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "fusion",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hvac-system",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "nuclear-reactor",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "pemfc",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "power-grid",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "room-temp-sc",
+      "files": 15,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": false,
+      "status": "부분"
+    },
+    {
+      "slug": "smr-datacenter",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "solar-architecture",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": false,
+      "status": "부분"
+    },
+    {
+      "slug": "superconductor",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "thermal-management",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
+  "_note": "energy 축 전체 멤버 목록은 ../_index.json energy 키 SSOT 를 따른다 (중복 등록 금지)."
+}

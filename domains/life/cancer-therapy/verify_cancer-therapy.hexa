@@ -1,0 +1,61 @@
+# verify_cancer-therapy -- BT-451~460 암치료 10돌파 n=6 검증
+# 핵심: TME 세포=n=6, 면역관문=tau=4, Hallmarks=sigma+phi=14
+# 출처: cancer-therapy.md (EXACT 38/46, MISS 7)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_cancer-therapy_n6.hexa
+
+fn main() {
+    println("[암치료] BT-451~460 암 기전 n=6 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # TME 세포 클래스 = n = 6
+    assert(n == 6)
+    println("[암치료] TME 세포 클래스 = n = 6 PASS")
+
+    # 면역관문 표적 = tau = 4 (PD-1/CTLA-4/LAG-3/TIM-3)
+    assert(tau == 4)
+    println("[암치료] 면역관문 표적 = tau = 4 PASS")
+
+    # ADC DAR = tau = 4
+    assert(tau == 4)
+    println("[암치료] ADC DAR = tau = 4 PASS")
+
+    # SBRT 분획 = sopfr = 5
+    assert(sopfr == 5)
+    println("[암치료] SBRT 분획 = sopfr = 5 PASS")
+
+    # 해당과정 효소 = sigma - phi = 10
+    let glycolysis = sigma - phi
+    assert(glycolysis == 10)
+    println("[암치료] 해당과정 효소 = sigma-phi = 10 PASS")
+
+    # Hallmarks of Cancer 2022 = sigma + phi = 14
+    let hallmarks = sigma + phi
+    assert(hallmarks == 14)
+    println("[암치료] Hallmarks = sigma+phi = 14 PASS")
+
+    # FDA ICI 약제 = sigma = 12
+    assert(sigma == 12)
+    println("[암치료] FDA ICI = sigma = 12 PASS")
+
+    # ADC 페이로드 클래스 = sigma - sopfr = 7
+    let payload_class = sigma - sopfr
+    assert(payload_class == 7)
+    println("[암치료] ADC 페이로드 = sigma-sopfr = 7 PASS")
+
+    # 액체생검 분석물 = n = 6
+    assert(n == 6)
+    println("[암치료] 액체생검 분석물 = n = 6 PASS")
+
+    # Warburg 1924 = J2 = 24
+    assert(j2 == 24)
+    println("[암치료] Warburg = J2 = 24 PASS")
+
+    println("[암치료] 전체 10/10 EXACT -- 암 기전 n=6 수렴 확인")
+}

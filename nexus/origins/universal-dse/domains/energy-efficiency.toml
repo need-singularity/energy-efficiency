@@ -1,0 +1,389 @@
+# =============================================================
+# 에너지 효율 DSE 도메인 정의
+# 에너지 소비 최적화 — 건물·산업·수송·조명·냉난방
+# n=6: 6대 소비 섹터, sigma=12 효율 등급, Carnot COP=n/phi=3
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "energy-efficiency"
+desc = "에너지 효율 최적화 DSE (건물/산업/수송/조명/냉난방)"
+levels = ["Building", "Industrial", "Transport", "Lighting", "HVAC"]
+vision = "n=6 에너지 효율 — 6대 섹터 통합, COP=n/phi=3 히트펌프, LED 6배 효율"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: Building (건물 효율) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Building"
+
+[[candidate]]
+level = 0
+id    = "PassiveHouse"
+label = "패시브하우스 (연간 12kWh/m2=sigma 난방)"
+n6    = 1.00
+perf  = 0.92
+power = 0.90
+cost  = 0.55
+notes = "12kWh/m2=sigma EXACT, 단열+기밀+열회수환기"
+
+[[candidate]]
+level = 0
+id    = "ZEB"
+label = "제로에너지빌딩 (연간 순소비 0)"
+n6    = 0.85
+perf  = 0.90
+power = 0.95
+cost  = 0.45
+notes = "BIPV+단열+히트펌프, 그리드 균형, J2=24시간 자급"
+
+[[candidate]]
+level = 0
+id    = "SmartBldg"
+label = "스마트빌딩 (AI BEMS, 6구역 제어=n)"
+n6    = 0.90
+perf  = 0.85
+power = 0.80
+cost  = 0.60
+notes = "n=6 구역 EXACT, 실시간 최적화, 재실감지"
+
+[[candidate]]
+level = 0
+id    = "DeepRetrofit"
+label = "심층 리트로핏 (기존 건물 60%=sigma*sopfr 절감)"
+n6    = 0.80
+perf  = 0.80
+power = 0.75
+cost  = 0.50
+notes = "60% 절감=sigma*sopfr EXACT, 단열+창호+설비 교체"
+
+[[candidate]]
+level = 0
+id    = "BioClimatic"
+label = "바이오클라이매틱 (자연환기+채광, 6면 외피=n)"
+n6    = 0.85
+perf  = 0.75
+power = 0.85
+cost  = 0.70
+notes = "6면 외피=n EXACT, 자연력 활용, 기후 적응"
+
+[[candidate]]
+level = 0
+id    = "PrefabModule"
+label = "프리팹 모듈 (공장제작, 6모듈 조합=n)"
+n6    = 0.80
+perf  = 0.70
+power = 0.70
+cost  = 0.80
+notes = "n=6 모듈 EXACT, 현장 공기 단축, 품질 일관성"
+
+# ============================================================
+# Level 1: Industrial (산업 효율) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Industrial"
+
+[[candidate]]
+level = 1
+id    = "WasteHeatRecovery"
+label = "폐열 회수 (6단 카스케이드=n, ORC)"
+n6    = 0.90
+perf  = 0.85
+power = 0.80
+cost  = 0.60
+notes = "n=6 카스케이드 EXACT, ORC/열전/히트펌프 조합"
+
+[[candidate]]
+level = 1
+id    = "VFD_6Pulse"
+label = "6-pulse VFD 모터 제어 (n=6 펄스)"
+n6    = 1.00
+perf  = 0.88
+power = 0.85
+cost  = 0.75
+notes = "n=6 펄스 EXACT, 모터 에너지 30% 절감, n/phi=3상"
+
+[[candidate]]
+level = 1
+id    = "ProcessInteg"
+label = "공정 통합 (핀치 분석, 6교환기=n)"
+n6    = 0.85
+perf  = 0.82
+power = 0.75
+cost  = 0.65
+notes = "n=6 열교환기 EXACT, 핀치 온도 최적화"
+
+[[candidate]]
+level = 1
+id    = "CHP"
+label = "열병합 발전 (전기+열 60%=sigma*sopfr 효율)"
+n6    = 0.90
+perf  = 0.90
+power = 0.70
+cost  = 0.55
+notes = "60% 효율=sigma*sopfr EXACT, 전기+열 동시 이용"
+
+[[candidate]]
+level = 1
+id    = "ElectrifyHeat"
+label = "산업용 전기화 (히트펌프, 전기로)"
+n6    = 0.70
+perf  = 0.80
+power = 0.75
+cost  = 0.50
+notes = "COP=n/phi=3 EXACT 산업 히트펌프, 탈탄소"
+
+[[candidate]]
+level = 1
+id    = "DigitalTwin"
+label = "디지털 트윈 (공장 시뮬레이션 최적화)"
+n6    = 0.65
+perf  = 0.85
+power = 0.70
+cost  = 0.45
+notes = "6계층 모델=n, 실시간 에너지 최적화, AI 기반"
+
+# ============================================================
+# Level 2: Transport (수송 효율) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Transport"
+
+[[candidate]]
+level = 2
+id    = "BEV"
+label = "배터리 전기차 (효율 90%+, 6셀 모듈=n)"
+n6    = 0.90
+perf  = 0.90
+power = 0.85
+cost  = 0.60
+notes = "내연기관 대비 3배=n/phi 효율 EXACT, 6S 모듈"
+
+[[candidate]]
+level = 2
+id    = "FCEV"
+label = "수소 연료전지차 (LHV=120=sigma*(sigma-phi))"
+n6    = 0.85
+perf  = 0.75
+power = 0.70
+cost  = 0.45
+notes = "LHV=120 EXACT, 장거리 상용차, 6스택=n"
+
+[[candidate]]
+level = 2
+id    = "RailElectric"
+label = "전기 철도 (회생제동, sigma=12 객차)"
+n6    = 0.80
+perf  = 0.85
+power = 0.90
+cost  = 0.70
+notes = "sigma=12 객차 EXACT, 회생제동 30% 회수, 대량수송"
+
+[[candidate]]
+level = 2
+id    = "eVTOL"
+label = "eVTOL (6로터=n, 도심항공교통)"
+n6    = 1.00
+perf  = 0.70
+power = 0.60
+cost  = 0.35
+notes = "n=6 로터 EXACT, UAM, 전기 추진, 수직이착륙"
+
+[[candidate]]
+level = 2
+id    = "Shipping_LNG"
+label = "LNG 선박 (CH4 탄소 Z=6 포함, 이중연료)"
+n6    = 0.75
+perf  = 0.75
+power = 0.65
+cost  = 0.55
+notes = "CH4: C Z=6=n, 저탄소 전환, 이중연료 엔진"
+
+[[candidate]]
+level = 2
+id    = "Hyperloop"
+label = "하이퍼루프 (진공튜브, 마찰 최소)"
+n6    = 0.60
+perf  = 0.65
+power = 0.50
+cost  = 0.25
+notes = "phi=2 방향 양방향 EXACT, 마찰 근접 0, TRL=3"
+
+# ============================================================
+# Level 3: Lighting (조명 효율) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Lighting"
+
+[[candidate]]
+level = 3
+id    = "LED_6500K"
+label = "LED 6500K 주광색 (6500=sigma*sopfr*... 근사)"
+n6    = 0.80
+perf  = 0.92
+power = 0.95
+cost  = 0.85
+notes = "200lm/W 달성, 백열 대비 6배=n 효율"
+
+[[candidate]]
+level = 3
+id    = "OLED_Panel"
+label = "OLED 면광원 (6층 구조=n, 균일 조도)"
+n6    = 0.85
+perf  = 0.80
+power = 0.80
+cost  = 0.50
+notes = "n=6 박막층 EXACT, 면발광, 눈부심 없음"
+
+[[candidate]]
+level = 3
+id    = "Daylight"
+label = "자연채광 (6면 창=n, 채광선반)"
+n6    = 0.90
+perf  = 0.85
+power = 0.95
+cost  = 0.75
+notes = "n=6 채광면 EXACT, 에너지 소비 0, 생체리듬 최적"
+
+[[candidate]]
+level = 3
+id    = "SmartLighting"
+label = "스마트 조명 (재실+조도 센서, 6구역=n 디밍)"
+n6    = 0.85
+perf  = 0.88
+power = 0.85
+cost  = 0.65
+notes = "n=6 구역 EXACT, 자동 디밍, 60% 절감=sigma*sopfr"
+
+[[candidate]]
+level = 3
+id    = "LaserLighting"
+label = "레이저 조명 (고효율 스팟, sigma=12 cd/W)"
+n6    = 0.70
+perf  = 0.75
+power = 0.70
+cost  = 0.35
+notes = "극소 발산각, 장거리 조명, 차량 헤드램프"
+
+[[candidate]]
+level = 3
+id    = "BioLuminescent"
+label = "생물발광 (ATP 기반, 제로 전력)"
+n6    = 0.75
+perf  = 0.45
+power = 0.50
+cost  = 0.30
+notes = "C6 포도당 대사 에너지=n, 무전력 비상등, TRL=2"
+
+# ============================================================
+# Level 4: HVAC (냉난방 효율) — 6 후보
+# ============================================================
+
+[[level]]
+name = "HVAC"
+
+[[candidate]]
+level = 4
+id    = "HeatPump_COP3"
+label = "히트펌프 COP=3=n/phi (공기열원)"
+n6    = 1.00
+perf  = 0.85
+power = 0.85
+cost  = 0.70
+notes = "COP=3=n/phi EXACT, 전기 직접 가열 대비 3배 효율"
+
+[[candidate]]
+level = 4
+id    = "GSHP"
+label = "지열 히트펌프 (COP=4=tau, 지중열)"
+n6    = 0.90
+perf  = 0.92
+power = 0.90
+cost  = 0.55
+notes = "COP=4=tau EXACT, 안정 열원, 6공=n 보어홀"
+
+[[candidate]]
+level = 4
+id    = "VRF_6Zone"
+label = "VRF 6구역 시스템 (n=6 실내기)"
+n6    = 1.00
+perf  = 0.88
+power = 0.80
+cost  = 0.65
+notes = "n=6 실내기 EXACT, 개별 제어, 부분 부하 효율 우수"
+
+[[candidate]]
+level = 4
+id    = "RadiantCool"
+label = "복사냉방 (천장 패널, 저에너지)"
+n6    = 0.70
+perf  = 0.80
+power = 0.88
+cost  = 0.55
+notes = "대류 대비 30% 절감, 쾌적성 우수, 결로 관리"
+
+[[candidate]]
+level = 4
+id    = "ERV"
+label = "전열교환 환기 (열회수 80%+)"
+n6    = 0.80
+perf  = 0.82
+power = 0.85
+cost  = 0.70
+notes = "열회수 효율 80%, 6채널=n 분배, 패시브하우스 필수"
+
+[[candidate]]
+level = 4
+id    = "AbsorptionChiller"
+label = "흡수식 냉동기 (폐열 구동, COP=1.2=sigma/(sigma-phi))"
+n6    = 0.95
+perf  = 0.75
+power = 0.70
+cost  = 0.50
+notes = "COP=1.2=sigma/(sigma-phi) EXACT, 폐열/태양열 구동"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 패시브하우스는 ERV 환기 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "PassiveHouse"
+then_level = 4
+then_ids   = "ERV,HeatPump_COP3"
+
+# 제로에너지빌딩은 스마트 조명 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "ZEB"
+then_level = 3
+then_ids   = "LED_6500K,SmartLighting,Daylight"
+
+# CHP는 흡수식 냉동기 선호 (폐열 활용)
+[[rule]]
+type       = "prefer"
+if_level   = 1
+if_id      = "CHP"
+then_level = 4
+then_ids   = "AbsorptionChiller"
+
+# eVTOL은 산업 VFD와 호환 불가 (스케일 불일치)
+[[rule]]
+type       = "exclude"
+if_level   = 2
+if_id      = "eVTOL"
+then_level = 1
+then_ids   = "ProcessInteg,CHP"

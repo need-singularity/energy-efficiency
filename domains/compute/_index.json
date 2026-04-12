@@ -1,14 +1,15 @@
 {
-  "_doc": "compute 축 sub-SSOT — 부모: ../_index.json (compute 키). 본 파일은 칩 6단계 로드맵 추가(2026-04-12) 시점에 신설된 sub-index.",
+  "_doc": "compute 축 sub-SSOT — 부모: ../_index.json (compute 키). 디스크 실측 기반 자동 생성.",
   "_axis": "compute",
   "_parent": "../_index.json",
-  "_version": "1.0.0",
-  "_count": 57,
+  "_version": "1.1.0",
+  "_count": 58,
   "_changelog": [
-    "1.0.0 (2026-04-12): compute 축 sub-SSOT 신설. 칩 6단계 로드맵 6 도메인 등록 (chip-hexa1, chip-pim, chip-3d, chip-photonic, chip-wafer, chip-sc). project_chip_architecture_goal.md 출처."
+    "1.0.0 (2026-04-12): compute 축 sub-SSOT 신설. 칩 6단계 로드맵 6 도메인 등록 (chip-hexa1, chip-pim, chip-3d, chip-photonic, chip-wafer, chip-sc). project_chip_architecture_goal.md 출처.",
+    "1.1.0 (2026-04-12): 전체 58 도메인 domains 배열 추가 (디스크 실측). chip-design 누락 보정. 타 카테고리 sub-SSOT 포맷 통일."
   ],
   "chip_6stage_roadmap": {
-    "_doc": "HEXA-1 → PIM → 3D → Photonic → Wafer → Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-n6-architecture/memory/project_chip_architecture_goal.md",
+    "_doc": "HEXA-1 -> PIM -> 3D -> Photonic -> Wafer -> Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-n6-architecture/memory/project_chip_architecture_goal.md",
     "stages": [
       {"stage": 1, "slug": "chip-hexa1",    "name": "HEXA-1 디지털 통합 SoC",  "ceiling_axis": "베이스라인",     "alien_index": 7, "closure_grade": 7, "sibling_product": null},
       {"stage": 2, "slug": "chip-pim",      "name": "HEXA-PIM 메모리 내 연산", "ceiling_axis": "메모리 벽 제거", "alien_index": 8, "closure_grade": 7, "sibling_product": "hexa-pim"},
@@ -20,5 +21,529 @@
     "ceiling_proof": "tau(6) + phi(6) = 4 + 2 = 6 = n -- 6단(HEXA-SC)이 천장이며 그 너머는 정의상 존재하지 않음",
     "core_theorem": "sigma(n)*phi(n) = n*tau(n) iff n=6 (atlas.n6 thm-1, [10*])"
   },
+  "domains": [
+    {
+      "slug": "5g-6g-network",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "advanced-packaging",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "ai-efficiency",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": false,
+      "status": "부분"
+    },
+    {
+      "slug": "blockchain",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "browser",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "chip-3d",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-architecture",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "chip-design",
+      "files": 19,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-dse-pipeline",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "chip-hexa1",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-isa-n6",
+      "files": 5,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": false,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-npu-n6",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "chip-photonic",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-pim",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-rtl-gen",
+      "files": 5,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": false,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-sc",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "chip-wafer",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "compiler-os",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "consciousness-chip",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "consciousness-soc",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "cryptography",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "digital-twin",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "display",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "display-8stack",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "dram",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "exynos",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-3d",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-accel",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-asic",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-holo",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-ios",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-macos",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-mram",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-netproto",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-one",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-photon",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-pim",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-proglang",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-super",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "hexa-wafer",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "isocell-comms",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "keyboard",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "learning-algorithm",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "mouse",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "network",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "nexus-breakthrough-gate",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "nexus-service",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "performance-chip",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "programming-language",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "sc-memory",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "semiconductor-lithography",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "부분"
+    },
+    {
+      "slug": "software-crypto",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "software-design",
+      "files": 3,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "spatial-computing",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "unified-service",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "unified-soc",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    },
+    {
+      "slug": "vnand",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "기초"
+    }
+  ],
   "_note": "compute 축 전체 멤버 목록은 ../_index.json compute 키 SSOT 를 따른다 (중복 등록 금지)."
 }

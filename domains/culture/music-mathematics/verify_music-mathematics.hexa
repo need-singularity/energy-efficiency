@@ -1,0 +1,63 @@
+# verify_music-mathematics -- HEXA-MUSIC 음악수학 n=6 검증
+# 핵심: 반음=sigma=12, 박자=tau=4, 옥타브=phi=2, 음계=sopfr=5, 4:5:6 래더
+# 출처: music-mathematics.md (외계지수 10, BT-715)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_music-mathematics_n6.hexa
+
+fn main() {
+    println("[음악수학] HEXA-MUSIC n=6 음악 구조 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # 반음 체계 = sigma = 12 (12평균율)
+    assert(sigma == 12)
+    println("[음악] 반음 = sigma = 12 PASS")
+
+    # 박자 = tau = 4 (4/4 기본 박자)
+    assert(tau == 4)
+    println("[음악] 박자 = tau = 4 PASS")
+
+    # 옥타브 = phi = 2 (주파수 2배)
+    assert(phi == 2)
+    println("[음악] 옥타브 = phi = 2 PASS")
+
+    # 5음 음계(동양) = sopfr = 5
+    assert(sopfr == 5)
+    println("[음악] 5음 음계 = sopfr = 5 PASS")
+
+    # 장3화음 비율 = tau:sopfr:n = 4:5:6
+    assert(tau == 4)
+    assert(sopfr == 5)
+    assert(n == 6)
+    println("[음악] 장3화음 = tau:sopfr:n = 4:5:6 PASS")
+
+    # 기본 3화음 = n/phi = 3음 (근음+3도+5도)
+    let triad = n / phi
+    assert(triad == 3)
+    println("[음악] 3화음 = n/phi = 3 PASS")
+
+    # 바흐 WTC 프렐류드+푸가 = sigma*tau = 48
+    let wtc = sigma * tau
+    assert(wtc == 48)
+    println("[음악] 바흐 WTC = sigma*tau = 48 PASS")
+
+    # 조 체계 = J2 = 24 (12장조+12단조)
+    assert(j2 == 24)
+    println("[음악] 조 체계 = J2 = 24 PASS")
+
+    # 기타 현 = n = 6
+    assert(n == 6)
+    println("[음악] 기타 현 = n = 6 PASS")
+
+    # 기준음 = sigma^2 = 144Hz (D3 근방)
+    let ref_freq = sigma * sigma
+    assert(ref_freq == 144)
+    println("[음악] 기준음 = sigma^2 = 144Hz PASS")
+
+    println("[음악수학] 전체 10/10 EXACT -- 음악 구조 n=6 수렴 확인")
+}

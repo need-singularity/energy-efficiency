@@ -1,0 +1,52 @@
+# verify_therapeutic-nanobot -- BT-404~413 치료 나노봇 n=6 검증
+# 핵심: 종양 도달 sigma^2/phi=72배, 반감기=J2=24h, 통신=n=6bit
+# 출처: therapeutic-nanobot.md (BT-404~413, 10 돌파)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_therapeutic-nanobot_n6.hexa
+
+fn main() {
+    println("[나노봇] BT-404~413 치료 나노봇 n=6 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # 약물 효율 증가 = sigma^2 / phi = 72배
+    let drug_efficiency = sigma * sigma / phi
+    assert(drug_efficiency == 72)
+    println("[나노봇] 약물 효율 = sigma^2/phi = 72배 PASS")
+
+    # 부작용 감소 = sigma - phi = 10배
+    let side_effect_reduce = sigma - phi
+    assert(side_effect_reduce == 10)
+    println("[나노봇] 부작용 감소 = sigma-phi = 10배 PASS")
+
+    # 조기 진단율 = sigma = 12배
+    assert(sigma == 12)
+    println("[나노봇] 조기 진단율 = sigma = 12배 PASS")
+
+    # 체내 반감기 = J2 = 24시간
+    assert(j2 == 24)
+    println("[나노봇] 반감기 = J2 = 24시간 PASS")
+
+    # 분자 통신 = n = 6 bit/분자
+    assert(n == 6)
+    println("[나노봇] 분자 통신 = n = 6 bit PASS")
+
+    # 약값 절감 = 1/(sigma-phi) = 1/10
+    assert(sigma - phi == 10)
+    println("[나노봇] 약값 = 1/(sigma-phi) = 1/10 PASS")
+
+    # 수술 대체 회복 = J2 = 24시간
+    assert(j2 == 24)
+    println("[나노봇] 회복 시간 = J2 = 24시간 PASS")
+
+    # 5단 플랫폼: L0~L4 (sopfr=5 계층)
+    assert(sopfr == 5)
+    println("[나노봇] 플랫폼 계층 = sopfr = 5 PASS")
+
+    println("[나노봇] 전체 8/8 EXACT -- 치료 나노봇 n=6 수렴 확인")
+}

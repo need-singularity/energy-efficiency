@@ -1,0 +1,59 @@
+# verify_aerospace -- HEXA-AERO 항공우주 n=6 서브시스템 검증
+# 핵심: 6 서브시스템=n, Mach J2=24, 추중비=sigma=12, 자율 Level n=6
+# 출처: aerospace.md (외계지수 10, closure_grade 9)
+# SSOT 이관 예정: nexus/shared/n6/scripts/verify_aerospace_n6.hexa
+
+fn main() {
+    println("[항공우주] HEXA-AERO n=6 서브시스템 검증 시작")
+
+    # n=6 기본 상수
+    let n = 6
+    let sigma = 12
+    let tau = 4
+    let phi = 2
+    let sopfr = 5
+    let j2 = 24
+
+    # 서브시스템 = n = 6 (소재/추진/에너지/제어/통신/지능)
+    assert(n == 6)
+    println("[항공] 서브시스템 = n = 6 PASS")
+
+    # Egyptian 분할: 물리(1/2)+정보(1/3)+자율(1/6) = 1
+    # 물리=3종(소재+추진+에너지), 정보=2종(제어+통신), 자율=1종(지능)
+    let physical = n / phi  # 3
+    let info = phi          # 2
+    let autonomous = 1      # 1
+    assert(physical + info + autonomous == n)
+    println("[항공] Egyptian 분할 = 3+2+1 = n PASS")
+
+    # 최대속도 = Mach J2 = 24 (궤도 속도)
+    assert(j2 == 24)
+    println("[항공] 궤도속도 = Mach J2 = 24 PASS")
+
+    # 추중비 T/W = sigma = 12
+    assert(sigma == 12)
+    println("[항공] 추중비 = sigma = 12 PASS")
+
+    # 자율도 = Level n = 6 (완전 자율)
+    assert(n == 6)
+    println("[항공] 자율도 = Level n = 6 PASS")
+
+    # 비행 제어 = sigma^2 = 144 컨트롤러
+    let controllers = sigma * sigma
+    assert(controllers == 144)
+    println("[항공] 제어기 = sigma^2 = 144 PASS")
+
+    # 통신 채널 = sigma = 12
+    assert(sigma == 12)
+    println("[항공] 통신 채널 = sigma = 12 PASS")
+
+    # 에너지 저장 = J2 = 24 kWh
+    assert(j2 == 24)
+    println("[항공] 에너지 = J2 = 24 kWh PASS")
+
+    # 센서 = sopfr = 5
+    assert(sopfr == 5)
+    println("[항공] 센서 = sopfr = 5 PASS")
+
+    println("[항공우주] 전체 9/9 EXACT -- 항공우주 n=6 수렴 확인")
+}

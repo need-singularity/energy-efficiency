@@ -1,0 +1,398 @@
+# =============================================================
+# 광업 DSE 도메인 정의
+# 광업 전반 — 탐사/채굴/선광/환경/자동화
+# n=6: 6면 채굴블록, sigma=12 시추공, tau=4 광종(금속/비금속/석탄/보석)
+# C Z=6 다이아몬드 비트, 6대 희토류 응용
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "mining"
+desc = "광업 통합 DSE (탐사/채굴/선광/환경/자동화)"
+levels = ["Exploration", "Extraction", "Processing", "Environmental", "Automation"]
+vision = "n=6 광업 — 6면 블록모델, sigma=12 시추공, C Z=6 다이아몬드 비트, 자율 채굴"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: Exploration (탐사) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Exploration"
+
+[[candidate]]
+level = 0
+id    = "DiamondDrill"
+label = "다이아몬드 시추 (C Z=6 비트, 코어채취)"
+n6    = 1.00
+perf  = 0.90
+power = 0.70
+cost  = 0.55
+notes = "C Z=6=n EXACT, 코어 분석, 품위 확인"
+
+[[candidate]]
+level = 0
+id    = "Geophysics"
+label = "물리탐사 (중력/자력/전기/탄성/방사능/전자기)"
+n6    = 1.00
+perf  = 0.82
+power = 0.80
+cost  = 0.70
+notes = "n=6 물리탐사법 EXACT, 비파괴, 광역"
+
+[[candidate]]
+level = 0
+id    = "Geochemistry"
+label = "지화학 탐사 (토양/수질/가스 분석)"
+n6    = 0.75
+perf  = 0.78
+power = 0.75
+cost  = 0.70
+notes = "원소 분포, 이상대 식별, 저비용"
+
+[[candidate]]
+level = 0
+id    = "RemoteSensing"
+label = "원격탐사 (위성/드론, 광물 매핑)"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.65
+notes = "분광 분석, 6밴드=n 다중분광 EXACT"
+
+[[candidate]]
+level = 0
+id    = "AI_Targeting"
+label = "AI 광체 예측 (머신러닝 타겟팅)"
+n6    = 0.85
+perf  = 0.88
+power = 0.70
+cost  = 0.55
+notes = "다변량 분석, 성공률 향상, 데이터 통합"
+
+[[candidate]]
+level = 0
+id    = "RC_Drill"
+label = "역순환 시추 RC (칩 샘플, 고속)"
+n6    = 0.80
+perf  = 0.80
+power = 0.75
+cost  = 0.65
+notes = "6인치=n 직경 EXACT, 고속 천공, 벌크 품위"
+
+# ============================================================
+# Level 1: Extraction (채굴) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Extraction"
+
+[[candidate]]
+level = 1
+id    = "OpenPit"
+label = "노천 채굴 (대규모, 트럭/굴삭기)"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.70
+notes = "6벤치=n 단면 EXACT, 대규모 금/구리"
+
+[[candidate]]
+level = 1
+id    = "Underground"
+label = "갱내 채굴 (심부, 블록케이빙)"
+n6    = 0.85
+perf  = 0.80
+power = 0.65
+cost  = 0.50
+notes = "6레벨=n 수갱 EXACT, 심부 광맥, 안전"
+
+[[candidate]]
+level = 1
+id    = "CutAndFill"
+label = "절채-충전 (선택적, 고품위)"
+n6    = 0.75
+perf  = 0.78
+power = 0.70
+cost  = 0.55
+notes = "선택 채굴, 고품위 광맥, 사후 충전"
+
+[[candidate]]
+level = 1
+id    = "InSituLeach"
+label = "현지 침출 ISL (우라늄, 비파괴)"
+n6    = 0.70
+perf  = 0.72
+power = 0.75
+cost  = 0.65
+notes = "우라늄/구리, 표면 교란 최소"
+
+[[candidate]]
+level = 1
+id    = "Dredging"
+label = "준설 채광 (해사/사금/석광)"
+n6    = 0.65
+perf  = 0.70
+power = 0.70
+cost  = 0.60
+notes = "수중 채취, 준설선, 해양 광물"
+
+[[candidate]]
+level = 1
+id    = "ContinuousMiner"
+label = "연속 채광기 (석탄, TBM식)"
+n6    = 0.80
+perf  = 0.82
+power = 0.75
+cost  = 0.60
+notes = "석탄/암염, 연속 작업, 벨트 컨베이어"
+
+# ============================================================
+# Level 2: Processing (선광/제련) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Processing"
+
+[[candidate]]
+level = 2
+id    = "Crushing"
+label = "파쇄/분쇄 (6단계=n, 미분 제조)"
+n6    = 1.00
+perf  = 0.80
+power = 0.70
+cost  = 0.70
+notes = "n=6 단계 EXACT (1차~6차 파쇄), 입도 조절"
+
+[[candidate]]
+level = 2
+id    = "Flotation"
+label = "부유선광 (표면 화학, 정선)"
+n6    = 0.80
+perf  = 0.88
+power = 0.72
+cost  = 0.60
+notes = "구리/아연/납, 기포-광물 부착, 정선 90%+"
+
+[[candidate]]
+level = 2
+id    = "GravitySep"
+label = "비중선별 (지그/테이블, 금/주석)"
+n6    = 0.75
+perf  = 0.78
+power = 0.80
+cost  = 0.75
+notes = "비중차 이용, 사금, 화학약품 불필요"
+
+[[candidate]]
+level = 2
+id    = "Hydromet"
+label = "습식제련 (침출/SX-EW, 구리)"
+n6    = 0.80
+perf  = 0.85
+power = 0.68
+cost  = 0.55
+notes = "산 침출, 전기채취, 저품위 구리"
+
+[[candidate]]
+level = 2
+id    = "Pyrometallurgy"
+label = "건식제련 (용광로/전기로, 고온)"
+n6    = 0.75
+perf  = 0.82
+power = 0.55
+cost  = 0.50
+notes = "고온 환원, 철/구리/니켈, 에너지 집약"
+
+[[candidate]]
+level = 2
+id    = "MagneticSep"
+label = "자력선별 (Fe 광석, 자성 광물)"
+n6    = 0.80
+perf  = 0.80
+power = 0.78
+cost  = 0.70
+notes = "철광석 정선, sigma=12 kG 자장 EXACT"
+
+# ============================================================
+# Level 3: Environmental (환경 관리) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Environmental"
+
+[[candidate]]
+level = 3
+id    = "Tailings"
+label = "광미 댐 관리 (안전+환경)"
+n6    = 0.85
+perf  = 0.85
+power = 0.80
+cost  = 0.60
+notes = "6단계=n 모니터링 EXACT, 붕괴 방지, 필터 프레스"
+
+[[candidate]]
+level = 3
+id    = "AMD"
+label = "산성 광산 배수 처리 (pH 관리)"
+n6    = 0.80
+perf  = 0.82
+power = 0.75
+cost  = 0.55
+notes = "석회 중화, 습지처리, 장기 관리"
+
+[[candidate]]
+level = 3
+id    = "Rehabilitation"
+label = "폐광 복원 (토양/식생, 생태계)"
+n6    = 0.85
+perf  = 0.80
+power = 0.80
+cost  = 0.55
+notes = "6단계=n 복원 EXACT, 표토→배수→식재→모니터→인도"
+
+[[candidate]]
+level = 3
+id    = "DustControl"
+label = "분진 제어 (살수/방진막)"
+n6    = 0.75
+perf  = 0.78
+power = 0.80
+cost  = 0.70
+notes = "PM10/PM2.5, 작업자 건강, 규폐증 예방"
+
+[[candidate]]
+level = 3
+id    = "WaterRecycle"
+label = "용수 재활용 (순환수, 0방류)"
+n6    = 0.80
+perf  = 0.82
+power = 0.78
+cost  = 0.60
+notes = "90%+ 재활용, 6단계=n 처리, 방류 최소화"
+
+[[candidate]]
+level = 3
+id    = "ESG_Mining"
+label = "ESG 광업 (지역사회, 투명성)"
+n6    = 0.70
+perf  = 0.75
+power = 0.70
+cost  = 0.55
+notes = "지역 동의, 이익 공유, 인권, 보고"
+
+# ============================================================
+# Level 4: Automation (자동화) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Automation"
+
+[[candidate]]
+level = 4
+id    = "AutonomousTruck"
+label = "자율주행 운반 트럭 (노천, 무인)"
+n6    = 0.90
+perf  = 0.90
+power = 0.75
+cost  = 0.55
+notes = "6대=n 편대 EXACT, Caterpillar/Komatsu, 24시간"
+
+[[candidate]]
+level = 4
+id    = "RemoteOpsDrill"
+label = "원격 시추 (무인 드릴, 텔레오퍼레이션)"
+n6    = 0.85
+perf  = 0.85
+power = 0.72
+cost  = 0.55
+notes = "위험구역 무인화, GPS 정밀도, 안전"
+
+[[candidate]]
+level = 4
+id    = "MineDigitalTwin"
+label = "광산 디지털 트윈 (3D, 실시간)"
+n6    = 0.85
+perf  = 0.88
+power = 0.70
+cost  = 0.50
+notes = "6계층=n 데이터 EXACT, 생산 최적화, 안전"
+
+[[candidate]]
+level = 4
+id    = "AI_GradeControl"
+label = "AI 품위 관리 (실시간 분석)"
+n6    = 0.80
+perf  = 0.88
+power = 0.75
+cost  = 0.55
+notes = "XRF/LIBS 실시간, 선별 최적화, 희석 최소"
+
+[[candidate]]
+level = 4
+id    = "DroneFleet"
+label = "드론 함대 (측량/안전/환경)"
+n6    = 0.80
+perf  = 0.82
+power = 0.78
+cost  = 0.60
+notes = "6대=n 동시 비행 EXACT, 매핑/검사/가스감지"
+
+[[candidate]]
+level = 4
+id    = "ElectricMine"
+label = "전기화 광산 (무배출, BEV 장비)"
+n6    = 0.85
+perf  = 0.80
+power = 0.70
+cost  = 0.50
+notes = "디젤 탈피, 환기 60%=sigma*sopfr 절감, 지하"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 갱내 채굴은 분진 제어 필수
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Underground"
+then_level = 3
+then_ids   = "DustControl,WaterRecycle"
+
+# AI 품위관리는 파쇄+부유선광 선호
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "AI_GradeControl"
+then_level = 2
+then_ids   = "Crushing,Flotation"
+
+# 노천 채굴은 자율주행 트럭 선호
+[[rule]]
+type       = "prefer"
+if_level   = 1
+if_id      = "OpenPit"
+then_level = 4
+then_ids   = "AutonomousTruck,DroneFleet"
+
+# ISL 침출은 AMD 처리 필수
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "InSituLeach"
+then_level = 3
+then_ids   = "AMD,WaterRecycle"
+
+# 전기화 광산은 갱내 채굴 선호
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "ElectricMine"
+then_level = 1
+then_ids   = "Underground,CutAndFill"
