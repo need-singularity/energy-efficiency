@@ -60,7 +60,7 @@
           },
           {
             "type": "command",
-            "command": "R=$(git rev-parse --show-toplevel 2>/dev/null) && [ -f \"$R/.shared/hooks/drift-guard-post-commit.hexa\" ] && hexa \"$R/.shared/hooks/drift-guard-post-commit.hexa\" || true",
+            "command": "R=$(git rev-parse --show-toplevel 2>/dev/null) && [ -f \"$R/.shared/hooks/loop-post-commit.hexa\" ] && hexa \"$R/.shared/hooks/loop-post-commit.hexa\" || true",
             "timeout": 10
           }
         ]
