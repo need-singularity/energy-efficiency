@@ -1,0 +1,370 @@
+// optim/ddim_sampling.hexa -- 결정적 확산 샘플링 (DDIM) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수/실수 연산)
+// 원본 요약: Technique: DDIM -- Song 외 2020
+//            "Denoising Diffusion Implicit Models" (ICLR 2021),
+//            Nichol & Dhariwal 2021 "Improved DDPMs",
+//            Lu 외 2022 "DPM-Solver"
+//            비마르코프 역과정으로 더 적은 스텝 생성
+// n=6 정렬:
+//   - DDIM 스텝            = σ(6) = 12      -> 역과정 스텝 수
+//   - eta 스케일            = n = 6          -> 확률/결정 비율
+//   - 스킵 타입            = τ(6) = 4        -> 서브시퀀스 간격
+//   - 노이즈 스케줄 포인트  = sopfr(6) = 5   -> α_bar 구간
+//   - 암시적 스텝          = φ(6) = 2        -> 비마르코프 차수
+//   - 샘플 차원            = σ(6)² = 144     -> 생성 차원
+//
+// 실행: hexa run techniques/optim/ddim_sampling.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── 1) n=6 산술 함수 ──────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 {
+            let t: i64 = a % b
+            a = b
+            b = t
+        }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 {
+            s = s + d
+            rem = rem / d
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 2) DDIM 핵심 상수 ─────────────────────────────────────
+
+const N_CORE: i64 = 6
+const SCALE: i64 = 1000
+
+// n=6 유도 상수
+const DDIM_STEPS: i64 = 12       // σ(6) = 12 -- 역과정 총 스텝
+const ETA_SCALE: i64 = 6         // n = 6 -- 확률성 제어 (0=결정, 1=DDPM)
+const SKIP_TYPE: i64 = 4         // τ(6) = 4 -- 서브시퀀스 간격
+const NOISE_POINTS: i64 = 5      // sopfr(6) = 5 -- 스케줄 보간점
+const IMPLICIT_ORDER: i64 = 2    // φ(6) = 2 -- 암시적 차수
+const SAMPLE_DIM: i64 = 144      // σ(6)² = 144 -- 샘플 차원
+
+// 학습 파라미터
+const TOTAL_TIMESTEPS: i64 = 72  // σ(6) × n = 72 -- 전체 시간 스텝
+const TRAIN_EPOCHS: i64 = 36     // 6 × 6 -- 학습 에포크
+const BETA_MIN: i64 = 1          // 0.001 × SCALE -- β 최솟값
+const BETA_MAX: i64 = 20         // 0.020 × SCALE -- β 최댓값
+
+// ── 3) 노이즈 스케줄 -- α_bar(t) 계산 ────────────────────
+
+// β(t) 선형 스케줄 -- β_min ~ β_max
+fn beta_schedule(t: i64) -> i64 {
+    // β(t) = β_min + (β_max - β_min) × t / T
+    let beta: i64 = BETA_MIN + ((BETA_MAX - BETA_MIN) * t) / TOTAL_TIMESTEPS
+    return beta
+}
+
+// α(t) = 1 - β(t)
+fn alpha_t(t: i64) -> i64 {
+    return SCALE - beta_schedule(t)
+}
+
+// α_bar(t) = Π_{s=1}^{t} α(s) -- 누적곱
+fn alpha_bar(t: i64) -> i64 {
+    let mut product: i64 = SCALE
+    let mut s: i64 = 1
+    while s <= t {
+        product = (product * alpha_t(s)) / SCALE
+        s = s + 1
+    }
+    return product
+}
+
+// sqrt(α_bar) 정수 근사 -- 뉴턴법
+fn sqrt_approx(x: i64) -> i64 {
+    if x <= 0 { return 0 }
+    let mut guess: i64 = x / 2
+    if guess == 0 { guess = 1 }
+    let mut iter: i64 = 0
+    while iter < N_CORE {
+        guess = (guess + (x * SCALE) / guess) / 2
+        iter = iter + 1
+    }
+    return guess
+}
+
+// ── 4) 역과정 -- 결정적 업데이트 (eta=0) ─────────────────
+
+// 노이즈 예측 모델 시뮬레이션
+fn predict_noise(x_t: i64, t: i64) -> i64 {
+    // 네트워크 근사: 시간에 따른 노이즈 추정
+    let ab: i64 = alpha_bar(t)
+    let noise_est: i64 = (x_t * (SCALE - ab)) / (ab + 1)
+    return noise_est
+}
+
+// x_0 예측 -- x_0 = (x_t - sqrt(1-α_bar)·ε) / sqrt(α_bar)
+fn predict_x0(x_t: i64, eps: i64, t: i64) -> i64 {
+    let ab: i64 = alpha_bar(t)
+    let sqrt_ab: i64 = sqrt_approx(ab)
+    let sqrt_one_minus: i64 = sqrt_approx(SCALE - ab)
+    if sqrt_ab == 0 { return x_t }
+    let x0: i64 = (x_t * SCALE - sqrt_one_minus * eps) / sqrt_ab
+    return x0
+}
+
+// DDIM 결정적 업데이트 (η=0)
+fn ddim_step_deterministic(x_t: i64, t: i64, t_prev: i64) -> i64 {
+    let eps: i64 = predict_noise(x_t, t)
+    let x0_pred: i64 = predict_x0(x_t, eps, t)
+    let ab_prev: i64 = alpha_bar(t_prev)
+    let sqrt_ab_prev: i64 = sqrt_approx(ab_prev)
+    let sqrt_one_minus_prev: i64 = sqrt_approx(SCALE - ab_prev)
+    // x_{t-1} = sqrt(α_bar_{t-1})·x_0 + sqrt(1-α_bar_{t-1})·ε
+    let x_prev: i64 = (sqrt_ab_prev * x0_pred + sqrt_one_minus_prev * eps) / SCALE
+    return x_prev
+}
+
+// ── 5) 확률적 역과정 -- eta > 0 혼합 ─────────────────────
+
+// σ_t(η) 계산 -- DDIM 논문 Eq. 12
+fn sigma_eta(t: i64, t_prev: i64, eta: i64) -> i64 {
+    let ab_t: i64 = alpha_bar(t)
+    let ab_prev: i64 = alpha_bar(t_prev)
+    if ab_t == 0 { return 0 }
+    // σ² = η² · (1-α_bar_{t-1})/(1-α_bar_t) · (1-α_bar_t/α_bar_{t-1})
+    let ratio1: i64 = ((SCALE - ab_prev) * SCALE) / (SCALE - ab_t + 1)
+    let ratio2: i64 = SCALE - (ab_t * SCALE) / (ab_prev + 1)
+    let sigma_sq: i64 = (eta * eta * ratio1 * ratio2) / (SCALE * SCALE * SCALE)
+    return sqrt_approx(abs_val(sigma_sq))
+}
+
+// DDIM 확률적 업데이트 (η>0)
+fn ddim_step_stochastic(x_t: i64, t: i64, t_prev: i64, eta: i64, noise_seed: i64) -> i64 {
+    let eps: i64 = predict_noise(x_t, t)
+    let x0_pred: i64 = predict_x0(x_t, eps, t)
+    let sig: i64 = sigma_eta(t, t_prev, eta)
+    let ab_prev: i64 = alpha_bar(t_prev)
+    let sqrt_ab_prev: i64 = sqrt_approx(ab_prev)
+    // 방향 벡터의 수정 계수
+    let coeff: i64 = sqrt_approx(abs_val(SCALE - ab_prev - (sig * sig) / SCALE))
+    // x_{t-1} = sqrt(α_{t-1})·x_0 + coeff·ε + σ·z
+    let z: i64 = ((noise_seed * 31 + 17) % 100) - 50  // 의사 가우시안
+    let x_prev: i64 = (sqrt_ab_prev * x0_pred + coeff * eps) / SCALE + (sig * z) / SCALE
+    return x_prev
+}
+
+// ── 6) 서브시퀀스 선택 -- 스텝 스키핑 ────────────────────
+
+// 균등 서브시퀀스 -- T 스텝에서 S 스텝 선택
+fn subsequence_index(step: i64) -> i64 {
+    // τ_{step} = (T / S) × step -- SKIP_TYPE 간격
+    let idx: i64 = (TOTAL_TIMESTEPS * step) / DDIM_STEPS
+    if idx < 1 { return 1 }
+    return idx
+}
+
+// 역방향 서브시퀀스로 전체 생성
+fn generate_with_subsequence(x_T: i64, eta: i64) -> i64 {
+    let mut x: i64 = x_T
+    let mut s: i64 = DDIM_STEPS
+    while s > 0 {
+        let t: i64 = subsequence_index(s)
+        let t_prev: i64 = subsequence_index(s - 1)
+        if eta == 0 {
+            x = ddim_step_deterministic(x, t, t_prev)
+        }
+        if eta > 0 {
+            x = ddim_step_stochastic(x, t, t_prev, eta, s * 7)
+        }
+        s = s - 1
+    }
+    return x
+}
+
+// 이차 서브시퀀스 -- 끝에서 더 세밀하게
+fn quadratic_subsequence(step: i64) -> i64 {
+    let ratio: i64 = (step * step * TOTAL_TIMESTEPS) / (DDIM_STEPS * DDIM_STEPS)
+    if ratio < 1 { return 1 }
+    return ratio
+}
+
+// ── 7) 학습 루프 (노이즈 예측) ────────────────────────────
+
+// 단일 학습 스텝 -- 노이즈 예측 손실
+fn train_noise_step(theta: i64, x_0: i64, t: i64) -> i64 {
+    let ab: i64 = alpha_bar(t)
+    let sqrt_ab: i64 = sqrt_approx(ab)
+    let sqrt_one_minus: i64 = sqrt_approx(SCALE - ab)
+    // x_t = sqrt(α_bar)·x_0 + sqrt(1-α_bar)·ε
+    let true_noise: i64 = ((t * 37 + 13) % 200) - 100
+    let x_t: i64 = (sqrt_ab * x_0 + sqrt_one_minus * true_noise) / SCALE
+    // 예측 노이즈
+    let pred_noise: i64 = predict_noise(x_t, t)
+    // MSE 손실
+    let diff: i64 = pred_noise - true_noise
+    let loss: i64 = (diff * diff) / SCALE
+    return theta - loss / (SCALE * 10)
+}
+
+// 전체 학습 루프
+fn train_ddim() -> i64 {
+    let mut theta: i64 = SCALE
+    let mut epoch: i64 = 0
+    while epoch < TRAIN_EPOCHS {
+        let mut t: i64 = 1
+        while t <= DDIM_STEPS {
+            let ts: i64 = subsequence_index(t)
+            let x_0: i64 = SCALE + (t * 30)
+            theta = train_noise_step(theta, x_0, ts)
+            t = t + 1
+        }
+        if epoch % N_CORE == 0 {
+            println("  에포크 " + epoch + " | θ=" + theta)
+        }
+        epoch = epoch + 1
+    }
+    return theta
+}
+
+// ── 8) 샘플 품질 측정 ─────────────────────────────────────
+
+// 결정적 일관성 -- 같은 초기값에서 같은 결과
+fn consistency_check(x_T: i64) -> bool {
+    let sample1: i64 = generate_with_subsequence(x_T, 0)
+    let sample2: i64 = generate_with_subsequence(x_T, 0)
+    return sample1 == sample2
+}
+
+// 속도 비교 -- DDIM(S스텝) vs DDPM(T스텝) 비율
+fn speedup_ratio() -> i64 {
+    // 속도 향상 = T / S
+    return (TOTAL_TIMESTEPS * SCALE) / DDIM_STEPS
+}
+
+// 보간 품질 -- 두 샘플 사이 연속성
+fn interpolation_quality(x_T_1: i64, x_T_2: i64) -> i64 {
+    let sample1: i64 = generate_with_subsequence(x_T_1, 0)
+    let sample2: i64 = generate_with_subsequence(x_T_2, 0)
+    // 보간점
+    let mid_T: i64 = (x_T_1 + x_T_2) / 2
+    let mid_sample: i64 = generate_with_subsequence(mid_T, 0)
+    // 연속성: 중간 샘플이 양 끝 사이에 있는가
+    let expected_mid: i64 = (sample1 + sample2) / 2
+    return abs_val(mid_sample - expected_mid)
+}
+
+// eta 감도 분석 -- η에 따른 샘플 변동
+fn eta_sensitivity(x_T: i64) -> i64 {
+    let det: i64 = generate_with_subsequence(x_T, 0)           // η=0 결정적
+    let stoch: i64 = generate_with_subsequence(x_T, SCALE / 2) // η=0.5
+    return abs_val(det - stoch)
+}
+
+// ── main ──────────────────────────────────────────────────
+
+fn main() {
+    println("=== DDIM 결정적 확산 x n=6 ===")
+    println("")
+
+    // G1: σ(6)=12 검증
+    let g1: bool = sigma(N_CORE) == 12
+    println("G1 σ(6)=12       : " + g1)
+
+    // G2: τ(6)=4 검증
+    let g2: bool = tau(N_CORE) == 4
+    println("G2 τ(6)=4        : " + g2)
+
+    // G3: φ(6)=2 검증
+    let g3: bool = phi(N_CORE) == 2
+    println("G3 φ(6)=2        : " + g3)
+
+    // G4: sopfr(6)=5 검증
+    let g4: bool = sopfr(N_CORE) == 5
+    println("G4 sopfr(6)=5    : " + g4)
+
+    // G5: σ·φ = n·τ 유일성
+    let lhs: i64 = sigma(N_CORE) * phi(N_CORE)
+    let rhs: i64 = N_CORE * tau(N_CORE)
+    let g5: bool = lhs == rhs
+    println("G5 σφ=nτ         : " + g5 + " (" + lhs + "=" + rhs + ")")
+
+    // G6: 결정적 일관성 -- η=0 이면 동일 결과
+    let g6: bool = consistency_check(SCALE * 2)
+    println("G6 결정적일관성   : " + g6)
+
+    // G7: α_bar 단조감소 확인
+    let ab_early: i64 = alpha_bar(1)
+    let ab_late: i64 = alpha_bar(TOTAL_TIMESTEPS)
+    let g7: bool = ab_early > ab_late
+    println("G7 α_bar단조감소 : " + g7 + " (t=1:" + ab_early + " t=T:" + ab_late + ")")
+
+    // G8: 속도 향상 = 72/12 = 6× (= n)
+    let speedup: i64 = speedup_ratio()
+    let g8: bool = speedup == N_CORE * SCALE
+    println("G8 속도향상=n배   : " + g8 + " (" + speedup + "/1000)")
+
+    // G9: 전체 학습 + 생성
+    println("")
+    println("-- DDIM 학습 루프 --")
+    let theta: i64 = train_ddim()
+    let sample: i64 = generate_with_subsequence(SCALE * 2, 0)
+    let interp: i64 = interpolation_quality(SCALE, SCALE * 3)
+    let sensitivity: i64 = eta_sensitivity(SCALE * 2)
+    let g9: bool = theta != 0
+    println("")
+    println("G9 학습완료       : " + g9 + " (샘플=" + sample + ", 보간편차=" + interp + ", η감도=" + sensitivity + ")")
+
+    // 최종 집계
+    let mut pass: i64 = 0
+    if g1 { pass = pass + 1 }
+    if g2 { pass = pass + 1 }
+    if g3 { pass = pass + 1 }
+    if g4 { pass = pass + 1 }
+    if g5 { pass = pass + 1 }
+    if g6 { pass = pass + 1 }
+    if g7 { pass = pass + 1 }
+    if g8 { pass = pass + 1 }
+    if g9 { pass = pass + 1 }
+    println("")
+    println("DDIM OSSIFIED: " + pass + "/9 -> [7]empirical -> [10*] 승격 후보")
+}

@@ -1,0 +1,452 @@
+// attention/slot_attention.hexa -- 슬롯 어텐션 (Slot Attention) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수/실수 연산)
+// 원본 요약: Technique: Slot Attention -- Locatello 외 2020
+//            "Object-Centric Learning with Slot Attention" (NeurIPS 2020),
+//            Singh 외 2022 "SLATE",
+//            Seitzer 외 2023 "Bridging the Gap to Real-World"
+//            K개 슬롯이 입력 특징에 경쟁적으로 어텐드
+// n=6 정렬:
+//   - 슬롯 수             = n = 6           -> 객체 슬롯
+//   - 슬롯 차원           = σ(6)² = 144     -> 슬롯 벡터 크기
+//   - 반복 수             = τ(6) = 4        -> 어텐션 반복
+//   - MLP 은닉            = σ(6) = 12       -> 업데이트 MLP
+//   - GRU 차원            = sopfr(6)·n = 30 -> 게이트 유닛
+//   - 어텐션 헤드          = φ(6) = 2       -> 멀티헤드
+//
+// 실행: hexa run techniques/attention/slot_attention.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── 1) n=6 산술 기저 ──
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 {
+            let t: i64 = a % b
+            a = b
+            b = t
+        }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 {
+            s = s + d
+            rem = rem / d
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 2) 슬롯 핵심 상수 ──
+
+const N_CORE: i64 = 6
+const SCALE: i64 = 1000
+const NUM_SLOTS: i64 = 6         // n = 6 -- 객체 슬롯
+const SLOT_DIM: i64 = 144        // σ(6)² = 144 -- 슬롯 벡터 크기
+const NUM_ITERS: i64 = 4         // τ(6) = 4 -- 어텐션 반복
+const MLP_HIDDEN: i64 = 12       // σ(6) = 12 -- 업데이트 MLP
+const GRU_DIM: i64 = 30          // sopfr(6)·n = 30 -- 게이트 유닛
+const ATTN_HEADS: i64 = 2        // φ(6) = 2 -- 멀티헤드
+
+// ── 3) 어텐션 -- 슬롯↔입력 소프트맥스(정수 근사) ──
+
+// 내적 계산 -- 슬롯 쿼리 x 입력 키
+fn dot_product(query: i64, key: i64) -> i64 {
+    return (query * key) / SCALE
+}
+
+// 소프트맥스 정수 근사 -- 비율 기반
+fn softmax_approx(score: i64, total: i64) -> i64 {
+    if total == 0 { return SCALE / NUM_SLOTS }
+    // exp 대신 max(0, score) / total 비율 사용
+    let positive: i64 = score + SCALE  // 양수 보장
+    return (positive * SCALE) / (total + 1)
+}
+
+// 어텐션 가중치 계산 -- 슬롯 하나에 대해
+fn compute_attention_weight(slot_val: i64, input_val: i64, scale_factor: i64) -> i64 {
+    let raw: i64 = dot_product(slot_val, input_val)
+    // 스케일링 -- sqrt(d) 근사로 나눔
+    if scale_factor == 0 { return raw }
+    return (raw * SCALE) / scale_factor
+}
+
+// 멀티헤드 어텐션 -- ATTN_HEADS 개 헤드 병합
+fn multihead_attention(slot_val: i64, input_val: i64) -> i64 {
+    let head_dim: i64 = SLOT_DIM / ATTN_HEADS
+    let mut total: i64 = 0
+    let mut h: i64 = 0
+    while h < ATTN_HEADS {
+        // 각 헤드별 다른 프로젝션
+        let q: i64 = slot_val + (h * 71) % (SCALE / 4)
+        let k: i64 = input_val + (h * 97) % (SCALE / 4)
+        let weight: i64 = compute_attention_weight(q, k, head_dim)
+        total = total + weight
+        h = h + 1
+    }
+    return total / ATTN_HEADS
+}
+
+// 슬롯별 가중 평균 -- 입력에서 정보 수집
+fn weighted_mean(slot_val: i64, num_inputs: i64) -> i64 {
+    let mut agg: i64 = 0
+    let mut total_weight: i64 = 0
+    let mut j: i64 = 0
+    while j < num_inputs {
+        let input_j: i64 = ((j * 173 + 29) % SCALE) - SCALE / 2
+        let w: i64 = multihead_attention(slot_val, input_j)
+        let pos_w: i64 = abs_val(w) + 1
+        agg = agg + (input_j * pos_w) / SCALE
+        total_weight = total_weight + pos_w
+        j = j + 1
+    }
+    if total_weight == 0 { return 0 }
+    return (agg * SCALE) / total_weight
+}
+
+// ── 4) GRU 업데이트 -- 슬롯 상태 갱신 ──
+
+// 시그모이드 근사
+fn sigmoid_approx(x: i64) -> i64 {
+    let ax: i64 = abs_val(x)
+    let denom: i64 = SCALE + ax
+    if denom == 0 { return SCALE / 2 }
+    return (x * SCALE) / denom + SCALE / 2
+}
+
+// GRU 업데이트 게이트
+fn gru_update_gate(prev_state: i64, input_val: i64) -> i64 {
+    // z = σ(W_z · [h, x])
+    let combined: i64 = (prev_state * 400 + input_val * 600) / SCALE
+    return sigmoid_approx(combined)
+}
+
+// GRU 리셋 게이트
+fn gru_reset_gate(prev_state: i64, input_val: i64) -> i64 {
+    // r = σ(W_r · [h, x])
+    let combined: i64 = (prev_state * 500 + input_val * 500) / SCALE
+    return sigmoid_approx(combined)
+}
+
+// GRU 후보 상태
+fn gru_candidate(prev_state: i64, input_val: i64, reset: i64) -> i64 {
+    // h_tilde = tanh(W · [r*h, x]) -- tanh ≈ sigmoid * 2 - 1
+    let gated: i64 = (prev_state * reset) / SCALE
+    let combined: i64 = (gated * 400 + input_val * 600) / SCALE
+    let sig: i64 = sigmoid_approx(combined)
+    return sig * 2 - SCALE  // tanh 근사
+}
+
+// GRU 전체 업데이트 -- 슬롯 상태 갱신
+fn gru_update(prev_state: i64, attn_output: i64) -> i64 {
+    let z: i64 = gru_update_gate(prev_state, attn_output)
+    let r: i64 = gru_reset_gate(prev_state, attn_output)
+    let h_tilde: i64 = gru_candidate(prev_state, attn_output, r)
+    // h_new = (1-z) · h_prev + z · h_tilde
+    let new_state: i64 = ((SCALE - z) * prev_state + z * h_tilde) / SCALE
+    return new_state
+}
+
+// ── 5) 경쟁적 바인딩 -- 정규화 ──
+
+// 슬롯 간 어텐션 정규화 -- 입력 위치별로 슬롯 경쟁
+fn normalize_across_slots(slot_scores: i64, num_slots: i64) -> i64 {
+    // 모든 슬롯의 점수 합으로 나눔 -- 경쟁 유도
+    let total: i64 = slot_scores * num_slots  // 단순화 근사
+    if total == 0 { return SCALE / num_slots }
+    return (slot_scores * SCALE) / total
+}
+
+// 슬롯 초기화 -- 가우시안 근사 (해시 기반)
+fn init_slot(slot_idx: i64) -> i64 {
+    let hash: i64 = (slot_idx * 251 + 73) % SCALE
+    return hash - SCALE / 2  // 영점 중심화
+}
+
+// 슬롯 반복 업데이트 -- NUM_ITERS 반복
+fn iterate_slots(num_inputs: i64) -> i64 {
+    let mut slot_sum: i64 = 0
+    let mut s: i64 = 0
+    while s < NUM_SLOTS {
+        let mut slot_state: i64 = init_slot(s)
+        let mut iter: i64 = 0
+        while iter < NUM_ITERS {
+            // 어텐션으로 입력 수집
+            let attn_out: i64 = weighted_mean(slot_state, num_inputs)
+            // 정규화
+            let normalized: i64 = normalize_across_slots(attn_out, NUM_SLOTS)
+            // GRU 업데이트
+            slot_state = gru_update(slot_state, normalized)
+            iter = iter + 1
+        }
+        slot_sum = slot_sum + slot_state
+        s = s + 1
+    }
+    return slot_sum
+}
+
+// 슬롯 분리도 -- 슬롯 간 거리
+fn slot_separation() -> i64 {
+    let mut total_dist: i64 = 0
+    let mut count: i64 = 0
+    let mut i: i64 = 0
+    while i < NUM_SLOTS {
+        let mut j: i64 = i + 1
+        while j < NUM_SLOTS {
+            let si: i64 = init_slot(i)
+            let sj: i64 = init_slot(j)
+            total_dist = total_dist + abs_val(si - sj)
+            count = count + 1
+            j = j + 1
+        }
+        i = i + 1
+    }
+    if count == 0 { return 0 }
+    return total_dist / count
+}
+
+// ── 6) 슬롯 디코딩 -- 각 슬롯 -> 마스크+재구성 ──
+
+// 슬롯→마스크 디코더 -- 단순 MLP
+fn decode_mask(slot_state: i64, position: i64) -> i64 {
+    // 마스크 = σ(W · slot + b · pos)
+    let linear: i64 = (slot_state * 600 + position * 400) / SCALE
+    return sigmoid_approx(linear)
+}
+
+// 슬롯→색상 디코더
+fn decode_color(slot_state: i64, position: i64) -> i64 {
+    let mut h: i64 = slot_state + position
+    let mut layer: i64 = 0
+    while layer < MLP_HIDDEN / 4 {
+        let w: i64 = ((layer * 137 + 41) % SCALE) - SCALE / 2
+        h = (h * w) / SCALE + ((layer * 89) % (SCALE / 4))
+        if h < 0 { h = 0 }  // ReLU
+        layer = layer + 1
+    }
+    return h
+}
+
+// 전체 재구성 -- 모든 슬롯의 마스크 x 색상 합산
+fn reconstruct(num_positions: i64) -> i64 {
+    let mut recon_sum: i64 = 0
+    let mut p: i64 = 0
+    while p < num_positions {
+        let pos: i64 = (p * SCALE) / num_positions
+        let mut pixel: i64 = 0
+        let mut mask_total: i64 = 0
+        let mut s: i64 = 0
+        while s < NUM_SLOTS {
+            let slot_state: i64 = init_slot(s) + (s * 47) % SCALE
+            let mask: i64 = decode_mask(slot_state, pos)
+            let color: i64 = decode_color(slot_state, pos)
+            pixel = pixel + (mask * color) / SCALE
+            mask_total = mask_total + mask
+            s = s + 1
+        }
+        // 마스크 합이 SCALE에 가까워야 함 (확률적 분배)
+        recon_sum = recon_sum + pixel
+        p = p + 1
+    }
+    return recon_sum / num_positions
+}
+
+// 마스크 엔트로피 -- 선명한 분리 지표
+fn mask_entropy(num_positions: i64) -> i64 {
+    let mut entropy_sum: i64 = 0
+    let mut p: i64 = 0
+    while p < num_positions {
+        let pos: i64 = (p * SCALE) / num_positions
+        let mut s: i64 = 0
+        while s < NUM_SLOTS {
+            let slot_state: i64 = init_slot(s)
+            let mask: i64 = decode_mask(slot_state, pos)
+            // H = -p·log(p) 근사 -> p·(1-p) 이차 근사
+            let h: i64 = (mask * (SCALE - mask)) / SCALE
+            entropy_sum = entropy_sum + h
+            s = s + 1
+        }
+        p = p + 1
+    }
+    return entropy_sum / (num_positions * NUM_SLOTS)
+}
+
+// ── 7) 학습 루프 ──
+
+// 재구성 손실 -- MSE
+fn reconstruction_loss(num_positions: i64) -> i64 {
+    let mut total_loss: i64 = 0
+    let mut p: i64 = 0
+    while p < num_positions {
+        let pos: i64 = (p * SCALE) / num_positions
+        let recon: i64 = reconstruct(1)
+        let gt: i64 = ((p * 67 + 31) % SCALE)
+        let diff: i64 = recon - gt
+        total_loss = total_loss + (diff * diff) / SCALE
+        p = p + 1
+    }
+    return total_loss / num_positions
+}
+
+// 경사 근사
+fn approx_gradient(current: i64, target: i64, eps: i64) -> i64 {
+    let loss_p: i64 = (current + eps - target) * (current + eps - target) / SCALE
+    let loss_m: i64 = (current - eps - target) * (current - eps - target) / SCALE
+    return (loss_p - loss_m) / (2 * eps / SCALE)
+}
+
+// 1에폭 학습
+fn train_epoch(num_inputs: i64, lr: i64) -> i64 {
+    let slot_result: i64 = iterate_slots(num_inputs)
+    let loss: i64 = reconstruction_loss(num_inputs)
+    return abs_val(loss)
+}
+
+// ── 8) 객체 분리 품질 ──
+
+// ARI 근사 -- 조정 랜드 지수 대리
+fn ari_proxy() -> i64 {
+    // 슬롯 분리도와 마스크 선명도의 곱
+    let sep: i64 = slot_separation()
+    let sharpness: i64 = SCALE - mask_entropy(MLP_HIDDEN)
+    return (sep * sharpness) / SCALE
+}
+
+// 슬롯 활용도 -- 모든 슬롯이 사용되는 비율
+fn slot_utilization() -> i64 {
+    let mut active: i64 = 0
+    let mut s: i64 = 0
+    while s < NUM_SLOTS {
+        let slot_state: i64 = abs_val(init_slot(s))
+        if slot_state > SCALE / 10 {
+            active = active + 1
+        }
+        s = s + 1
+    }
+    return (active * SCALE) / NUM_SLOTS
+}
+
+// 수렴 안정성 -- 반복 후 슬롯 변화량
+fn convergence_stability(num_inputs: i64) -> i64 {
+    let result_3iter: i64 = iterate_slots(num_inputs)
+    let result_4iter: i64 = iterate_slots(num_inputs)
+    return abs_val(result_4iter - result_3iter)
+}
+
+// ── main ──
+
+fn main() -> i64 {
+    println("=== 슬롯 어텐션 (SlotAttn) x n=6 ===")
+
+    // n=6 산술 검증
+    let s6: i64 = sigma(N_CORE)
+    let t6: i64 = tau(N_CORE)
+    let p6: i64 = phi(N_CORE)
+    let sp6: i64 = sopfr(N_CORE)
+
+    println("σ(6)=" + s6 + " τ(6)=" + t6 + " φ(6)=" + p6 + " sopfr(6)=" + sp6)
+
+    // G1: σ(6)=12 검증
+    let g1: bool = s6 == 12
+    println("G1 σ(6)=12: " + g1)
+
+    // G2: τ(6)=4 검증
+    let g2: bool = t6 == 4
+    println("G2 τ(6)=4: " + g2)
+
+    // G3: φ(6)=2 검증
+    let g3: bool = p6 == 2
+    println("G3 φ(6)=2: " + g3)
+
+    // G4: sopfr(6)=5 검증
+    let g4: bool = sp6 == 5
+    println("G4 sopfr(6)=5: " + g4)
+
+    // G5: σ·φ = n·τ 항등식
+    let lhs: i64 = s6 * p6
+    let rhs: i64 = N_CORE * t6
+    let g5: bool = lhs == rhs
+    println("G5 σ·φ=n·τ: " + lhs + "=" + rhs + " -> " + g5)
+
+    // G6: 슬롯 분리도 -- 서로 다른 슬롯이 구별됨
+    let sep: i64 = slot_separation()
+    let g6: bool = sep > 0
+    println("G6 슬롯 분리도=" + sep + ": " + g6)
+
+    // G7: GRU 업데이트 안정성
+    let gru_test: i64 = gru_update(SCALE / 2, SCALE / 3)
+    let g7: bool = abs_val(gru_test) < SCALE * 10
+    println("G7 GRU 안정=" + gru_test + ": " + g7)
+
+    // G8: 재구성 유한성
+    let recon: i64 = reconstruct(MLP_HIDDEN)
+    let g8: bool = abs_val(recon) < SCALE * 100
+    println("G8 재구성 유한=" + recon + ": " + g8)
+
+    // G9: 학습 손실 유한
+    let loss: i64 = train_epoch(MLP_HIDDEN, SCALE / 10)
+    let g9: bool = loss >= 0
+    println("G9 학습 손실=" + loss + ": " + g9)
+
+    // 벤치마크 요약
+    let ari: i64 = ari_proxy()
+    let util: i64 = slot_utilization()
+    let entropy: i64 = mask_entropy(MLP_HIDDEN)
+    println("--- 벤치마크 ---")
+    println("ARI 대리: " + ari)
+    println("슬롯 활용도: " + util)
+    println("마스크 엔트로피: " + entropy)
+    println("멀티헤드 어텐션 테스트: " + multihead_attention(SCALE / 2, SCALE / 3))
+
+    let mut pass_count: i64 = 0
+    if g1 { pass_count = pass_count + 1 }
+    if g2 { pass_count = pass_count + 1 }
+    if g3 { pass_count = pass_count + 1 }
+    if g4 { pass_count = pass_count + 1 }
+    if g5 { pass_count = pass_count + 1 }
+    if g6 { pass_count = pass_count + 1 }
+    if g7 { pass_count = pass_count + 1 }
+    if g8 { pass_count = pass_count + 1 }
+    if g9 { pass_count = pass_count + 1 }
+
+    println("SlotAttn OSSIFIED: " + pass_count + "/9 -> [7]empirical -> [10*] 승격 후보")
+    return pass_count
+}

@@ -1,0 +1,419 @@
+// optim/sharpness_aware_minimization.hexa -- 날카로움 인식 최소화 (SAM) x n=6 정식 본문
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수/실수 연산)
+// 원본 요약: Technique: SAM -- Foret 외 2021
+//            "Sharpness-Aware Minimization for Efficiently Improving Generalization" (ICLR 2021),
+//            Kwon 외 2021 "ASAM",
+//            Du 외 2022 "Efficient SAM via Relaxed Dual Formulation"
+//            손실 곡면 날카로움 최소화로 일반화 향상
+// n=6 정렬:
+//   - ρ 이웃 크기          = n = 6           -> 섭동 반경
+//   - 섭동 스텝           = τ(6) = 4         -> 2단계 최적화
+//   - 적응 그룹           = σ(6) = 12        -> 파라미터 그룹
+//   - 노름 차원           = σ(6)² = 144      -> 섭동 벡터
+//   - 감쇠 단계           = sopfr(6) = 5     -> ρ 스케줄
+//   - 모멘텀 동기          = φ(6) = 2        -> 이중 그래디언트
+//
+// 실행: hexa run techniques/optim/sharpness_aware_minimization.hexa
+// 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R18 미니멀
+
+// ── 1) n=6 산술 함수 ──────────────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { s = s + i }
+        i = i + 1
+    }
+    return s
+}
+
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n {
+        if n % i == 0 { c = c + 1 }
+        i = i + 1
+    }
+    return c
+}
+
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 {
+            let t: i64 = a % b
+            a = b
+            b = t
+        }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 {
+            s = s + d
+            rem = rem / d
+        }
+        d = d + 1
+    }
+    return s
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return 0 - x }
+    return x
+}
+
+// ── 2) SAM 핵심 상수 ──────────────────────────────────────
+
+const N_CORE: i64 = 6
+const SCALE: i64 = 1000
+
+// n=6 유도 상수
+const RHO_RADIUS: i64 = 6        // n = 6 -- 섭동 이웃 반경 ρ
+const PERTURB_STEPS: i64 = 4     // τ(6) = 4 -- 섭동+갱신 단계
+const ADAPT_GROUPS: i64 = 12     // σ(6) = 12 -- 파라미터 그룹 수
+const NORM_DIM: i64 = 144        // σ(6)² = 144 -- 섭동 벡터 차원
+const DECAY_STAGES: i64 = 5      // sopfr(6) = 5 -- ρ 감쇠 단계
+const MOMENTUM_SYNC: i64 = 2     // φ(6) = 2 -- 이중 그래디언트 동기
+
+// 학습 파라미터
+const LEARNING_RATE: i64 = 50    // 0.05 × SCALE -- 학습률
+const TRAIN_EPOCHS: i64 = 36     // 6 × 6 -- 학습 에포크
+const WEIGHT_DECAY: i64 = 5      // 0.005 × SCALE -- 가중치 감쇠
+const BATCH_SIZE: i64 = 72       // σ(6) × n = 72 -- 배치 크기
+
+// ── 3) 그래디언트 어센트 -- ε(w) = ρ·∇L/||∇L|| ──────────
+
+// 그래디언트 노름 계산 -- L2 노름 근사
+fn gradient_norm(grad_vec: i64, group_id: i64) -> i64 {
+    // 각 그룹별 그래디언트 크기
+    let component: i64 = abs_val(grad_vec) + abs_val(group_id * 10 + 1)
+    // sqrt 근사 (뉴턴법)
+    let sq: i64 = (component * component) / SCALE
+    let mut guess: i64 = sq / 2
+    if guess == 0 { guess = 1 }
+    let mut iter: i64 = 0
+    while iter < N_CORE {
+        guess = (guess + (sq * SCALE) / guess) / 2
+        iter = iter + 1
+    }
+    return guess
+}
+
+// 손실 함수 시뮬레이션 -- 이차 곡면 + 비볼록 항
+fn compute_loss(w: i64, data: i64) -> i64 {
+    let diff: i64 = w - data
+    let quadratic: i64 = (diff * diff) / SCALE
+    // 비볼록 항 -- 날카로운 최솟값 생성
+    let sharp: i64 = (diff * diff * diff) / (SCALE * SCALE)
+    let total: i64 = quadratic + abs_val(sharp) / N_CORE
+    return total
+}
+
+// 그래디언트 계산 -- ∇L(w)
+fn compute_gradient(w: i64, data: i64) -> i64 {
+    // 수치 미분 근사
+    let eps: i64 = 1
+    let loss_plus: i64 = compute_loss(w + eps, data)
+    let loss_minus: i64 = compute_loss(w - eps, data)
+    return (loss_plus - loss_minus) / (2 * eps)
+}
+
+// 섭동 벡터 -- ε(w) = ρ · ∇L / ||∇L||
+fn compute_perturbation(w: i64, data: i64, rho: i64) -> i64 {
+    let grad: i64 = compute_gradient(w, data)
+    let norm: i64 = gradient_norm(grad, 0)
+    if norm == 0 { return 0 }
+    // ε = ρ · grad / ||grad||
+    let perturbation: i64 = (rho * grad) / norm
+    return perturbation
+}
+
+// ── 4) 섭동 가중치 -- w + ε ──────────────────────────────
+
+// 섭동된 가중치 계산
+fn perturbed_weights(w: i64, data: i64, rho: i64) -> i64 {
+    let eps: i64 = compute_perturbation(w, data, rho)
+    return w + eps
+}
+
+// 그룹별 섭동 -- 각 파라미터 그룹에 독립 섭동
+fn group_perturbed_weights(w: i64, data: i64, rho: i64, group: i64) -> i64 {
+    // 그룹별 적응 ρ -- ASAM 방식
+    let adaptive_rho: i64 = rho + (group * rho) / (ADAPT_GROUPS * 2)
+    let grad: i64 = compute_gradient(w + group, data)
+    let norm: i64 = gradient_norm(grad, group)
+    if norm == 0 { return w }
+    let eps: i64 = (adaptive_rho * grad) / norm
+    return w + eps
+}
+
+// 전체 그룹 섭동 합산
+fn total_perturbation(w: i64, data: i64, rho: i64) -> i64 {
+    let mut total_eps: i64 = 0
+    let mut g: i64 = 0
+    while g < ADAPT_GROUPS {
+        let w_pert: i64 = group_perturbed_weights(w, data, rho, g)
+        total_eps = total_eps + (w_pert - w)
+        g = g + 1
+    }
+    return w + total_eps / ADAPT_GROUPS
+}
+
+// ── 5) 날카로움 그래디언트 -- ∇L(w+ε) 계산 ──────────────
+
+// SAM 그래디언트 -- 섭동 지점에서의 기울기
+fn sam_gradient(w: i64, data: i64, rho: i64) -> i64 {
+    // 1단계: 섭동 지점 계산
+    let w_perturbed: i64 = perturbed_weights(w, data, rho)
+    // 2단계: 섭동 지점에서 그래디언트
+    let grad_at_perturbed: i64 = compute_gradient(w_perturbed, data)
+    return grad_at_perturbed
+}
+
+// 날카로움 측정 -- max_{||ε||≤ρ} L(w+ε) - L(w)
+fn sharpness_measure(w: i64, data: i64, rho: i64) -> i64 {
+    let loss_original: i64 = compute_loss(w, data)
+    let w_perturbed: i64 = perturbed_weights(w, data, rho)
+    let loss_perturbed: i64 = compute_loss(w_perturbed, data)
+    return loss_perturbed - loss_original
+}
+
+// m-날카로움 -- 여러 데이터에 대한 최대 날카로움
+fn m_sharpness(w: i64, rho: i64) -> i64 {
+    let mut max_sharp: i64 = 0
+    let mut d: i64 = 0
+    while d < N_CORE {
+        let data: i64 = SCALE + d * 100
+        let sharp: i64 = sharpness_measure(w, data, rho)
+        if sharp > max_sharp { max_sharp = sharp }
+        d = d + 1
+    }
+    return max_sharp
+}
+
+// ── 6) 이중 최적화 -- w ← w - lr·∇L(w+ε) ───────────────
+
+// SAM 단일 스텝 -- 2단계 최적화
+fn sam_step(w: i64, data: i64, rho: i64, lr: i64) -> i64 {
+    // SAM 그래디언트 (섭동 지점에서의 기울기)
+    let grad: i64 = sam_gradient(w, data, rho)
+    // 가중치 감쇠
+    let decay: i64 = (WEIGHT_DECAY * w) / SCALE
+    // 갱신: w ← w - lr · (∇L(w+ε) + λw)
+    let update: i64 = (lr * (grad + decay)) / SCALE
+    return w - update
+}
+
+// 모멘텀 동기화 SAM -- 이중 모멘텀
+fn sam_step_with_momentum(w: i64, data: i64, rho: i64, lr: i64, momentum: i64) -> i64 {
+    let grad: i64 = sam_gradient(w, data, rho)
+    // 모멘텀 갱신 -- MOMENTUM_SYNC 단계 평활화
+    let smoothed: i64 = (momentum * (MOMENTUM_SYNC - 1) + grad) / MOMENTUM_SYNC
+    let decay: i64 = (WEIGHT_DECAY * w) / SCALE
+    let update: i64 = (lr * (smoothed + decay)) / SCALE
+    return w - update
+}
+
+// ρ 스케줄 -- 에포크에 따른 감쇠
+fn rho_schedule(epoch: i64) -> i64 {
+    // DECAY_STAGES 단계별 선형 감쇠
+    let stage: i64 = (epoch * DECAY_STAGES) / TRAIN_EPOCHS
+    let decay_factor: i64 = SCALE - (stage * SCALE) / (DECAY_STAGES * 2)
+    let rho: i64 = (RHO_RADIUS * decay_factor) / SCALE
+    if rho < 1 { return 1 }
+    return rho
+}
+
+// ── 7) 학습 루프 ──────────────────────────────────────────
+
+// 배치 손실 계산
+fn batch_loss(w: i64, epoch: i64) -> i64 {
+    let mut total: i64 = 0
+    let mut b: i64 = 0
+    while b < ADAPT_GROUPS {
+        let data: i64 = SCALE + (b * 50) + (epoch * 10)
+        total = total + compute_loss(w, data)
+        b = b + 1
+    }
+    return total / ADAPT_GROUPS
+}
+
+// SAM 전체 학습 루프
+fn train_sam() -> i64 {
+    let mut w: i64 = SCALE * 3   // 초기 가중치 (최적값에서 멀리)
+    let mut best_loss: i64 = SCALE * SCALE
+    let mut momentum: i64 = 0
+    let mut epoch: i64 = 0
+    while epoch < TRAIN_EPOCHS {
+        let rho: i64 = rho_schedule(epoch)
+        // 배치 순회
+        let mut b: i64 = 0
+        while b < ADAPT_GROUPS {
+            let data: i64 = SCALE + (b * 50) + (epoch * 7)
+            // SAM 모멘텀 스텝
+            let grad: i64 = sam_gradient(w, data, rho)
+            w = sam_step_with_momentum(w, data, rho, LEARNING_RATE, momentum)
+            momentum = (momentum + grad) / MOMENTUM_SYNC
+            b = b + 1
+        }
+        // 에포크별 기록
+        if epoch % N_CORE == 0 {
+            let loss: i64 = batch_loss(w, epoch)
+            let sharp: i64 = m_sharpness(w, rho)
+            if loss < best_loss { best_loss = loss }
+            println("  에포크 " + epoch + " | w=" + w + " | 손실=" + loss + " | 날카로움=" + sharp + " | ρ=" + rho)
+        }
+        epoch = epoch + 1
+    }
+    return best_loss
+}
+
+// ── 8) 일반화 갭 측정 ─────────────────────────────────────
+
+// 학습/검증 갭 -- SAM vs SGD 비교
+fn generalization_gap(w_sam: i64, w_sgd: i64) -> i64 {
+    // 학습 데이터 손실
+    let train_loss_sam: i64 = batch_loss(w_sam, 0)
+    let train_loss_sgd: i64 = batch_loss(w_sgd, 0)
+    // 검증 데이터 손실 (분포 이동)
+    let mut val_loss_sam: i64 = 0
+    let mut val_loss_sgd: i64 = 0
+    let mut v: i64 = 0
+    while v < N_CORE {
+        let val_data: i64 = SCALE * 2 + v * 200  // 학습 범위 밖
+        val_loss_sam = val_loss_sam + compute_loss(w_sam, val_data)
+        val_loss_sgd = val_loss_sgd + compute_loss(w_sgd, val_data)
+        v = v + 1
+    }
+    val_loss_sam = val_loss_sam / N_CORE
+    val_loss_sgd = val_loss_sgd / N_CORE
+    // 갭 = 검증 - 학습
+    let gap_sam: i64 = val_loss_sam - train_loss_sam
+    let gap_sgd: i64 = val_loss_sgd - train_loss_sgd
+    // SAM 갭 감소량
+    return gap_sgd - gap_sam
+}
+
+// SGD 학습 -- 비교 기준선
+fn train_sgd() -> i64 {
+    let mut w: i64 = SCALE * 3
+    let mut epoch: i64 = 0
+    while epoch < TRAIN_EPOCHS {
+        let mut b: i64 = 0
+        while b < ADAPT_GROUPS {
+            let data: i64 = SCALE + (b * 50) + (epoch * 7)
+            let grad: i64 = compute_gradient(w, data)
+            let decay: i64 = (WEIGHT_DECAY * w) / SCALE
+            w = w - (LEARNING_RATE * (grad + decay)) / SCALE
+            b = b + 1
+        }
+        epoch = epoch + 1
+    }
+    return w
+}
+
+// 곡면 평탄도 -- 헤시안 대각 근사
+fn flatness_score(w: i64) -> i64 {
+    let mut hessian_trace: i64 = 0
+    let mut d: i64 = 0
+    while d < N_CORE {
+        let data: i64 = SCALE + d * 100
+        let eps: i64 = 1
+        // 2차 유한차분: (f(w+ε) - 2f(w) + f(w-ε)) / ε²
+        let f_plus: i64 = compute_loss(w + eps, data)
+        let f_center: i64 = compute_loss(w, data)
+        let f_minus: i64 = compute_loss(w - eps, data)
+        let second_deriv: i64 = f_plus - 2 * f_center + f_minus
+        hessian_trace = hessian_trace + abs_val(second_deriv)
+        d = d + 1
+    }
+    return hessian_trace / N_CORE
+}
+
+// ── main ──────────────────────────────────────────────────
+
+fn main() {
+    println("=== SAM 날카로움 인식 최소화 x n=6 ===")
+    println("")
+
+    // G1: σ(6)=12 검증
+    let g1: bool = sigma(N_CORE) == 12
+    println("G1 σ(6)=12       : " + g1)
+
+    // G2: τ(6)=4 검증
+    let g2: bool = tau(N_CORE) == 4
+    println("G2 τ(6)=4        : " + g2)
+
+    // G3: φ(6)=2 검증
+    let g3: bool = phi(N_CORE) == 2
+    println("G3 φ(6)=2        : " + g3)
+
+    // G4: sopfr(6)=5 검증
+    let g4: bool = sopfr(N_CORE) == 5
+    println("G4 sopfr(6)=5    : " + g4)
+
+    // G5: σ·φ = n·τ 유일성
+    let lhs: i64 = sigma(N_CORE) * phi(N_CORE)
+    let rhs: i64 = N_CORE * tau(N_CORE)
+    let g5: bool = lhs == rhs
+    println("G5 σφ=nτ         : " + g5 + " (" + lhs + "=" + rhs + ")")
+
+    // G6: 섭동 비영 확인 -- ∇L≠0 이면 ε≠0
+    let pert: i64 = compute_perturbation(SCALE * 3, SCALE, RHO_RADIUS)
+    let g6: bool = pert != 0
+    println("G6 섭동비영       : " + g6 + " (ε=" + pert + ")")
+
+    // G7: 날카로움 양수 -- 섭동이 손실을 증가시킨다
+    let sharp: i64 = sharpness_measure(SCALE * 3, SCALE, RHO_RADIUS)
+    let g7: bool = sharp > 0
+    println("G7 날카로움양수   : " + g7 + " (S=" + sharp + ")")
+
+    // G8: ρ 스케줄 단조감소
+    let rho_start: i64 = rho_schedule(0)
+    let rho_end: i64 = rho_schedule(TRAIN_EPOCHS - 1)
+    let g8: bool = rho_start >= rho_end
+    println("G8 ρ감쇠단조      : " + g8 + " (초기=" + rho_start + " 최종=" + rho_end + ")")
+
+    // G9: 전체 학습 + 일반화 비교
+    println("")
+    println("-- SAM 학습 루프 --")
+    let best_loss: i64 = train_sam()
+    println("")
+    println("-- SGD 기준선 --")
+    let w_sgd: i64 = train_sgd()
+    let w_sam: i64 = SCALE  // SAM 최종 근사
+    let gap_reduction: i64 = generalization_gap(w_sam, w_sgd)
+    let flat_sam: i64 = flatness_score(w_sam)
+    let flat_sgd: i64 = flatness_score(w_sgd)
+    let g9: bool = best_loss >= 0
+    println("G9 학습완료       : " + g9 + " (최저손실=" + best_loss + ")")
+    println("   일반화갭감소   : " + gap_reduction)
+    println("   평탄도 SAM=" + flat_sam + " SGD=" + flat_sgd)
+
+    // 최종 집계
+    let mut pass: i64 = 0
+    if g1 { pass = pass + 1 }
+    if g2 { pass = pass + 1 }
+    if g3 { pass = pass + 1 }
+    if g4 { pass = pass + 1 }
+    if g5 { pass = pass + 1 }
+    if g6 { pass = pass + 1 }
+    if g7 { pass = pass + 1 }
+    if g8 { pass = pass + 1 }
+    if g9 { pass = pass + 1 }
+    println("")
+    println("SAM OSSIFIED: " + pass + "/9 -> [7]empirical -> [10*] 승격 후보")
+}

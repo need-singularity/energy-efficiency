@@ -1,13 +1,13 @@
-# techniques — AI 기법 124종 (120 + SOTA 3)
+# techniques — AI 기법 140종 (139 + SOTA 3)
 
 목적: HEXA 검증 가능 AI 기법. 8 서브축
 축: techniques
 상위: ../CLAUDE.md
 
 ## 하위
-- attention/ (13)  moe/ (12)       optim/ (40)
-- sparse/ (7)      graph/ (6)      compress/ (8)
-- arch/ (34)       sota/ (3)
+- attention/ (15)  moe/ (12)       optim/ (45)
+- sparse/ (7)      graph/ (6)      compress/ (10)
+- arch/ (44)       sota/ (3)
 
 ## SSOT
 - _registry.json 기법 SSOT
