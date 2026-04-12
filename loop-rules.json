@@ -1,5 +1,5 @@
 {
-  "_doc": "n6-architecture 드리프트 규칙 — drift-guard.hexa L5 에서 참조",
+  "_doc": "n6-architecture 드리프트 규칙 — loop-guard.hexa L5 에서 참조",
   "rules": [
     {
       "type": "file_count",
