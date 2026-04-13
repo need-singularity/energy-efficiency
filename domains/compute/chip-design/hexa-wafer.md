@@ -1350,7 +1350,7 @@ n=6 좌표 vs 기존 표준.
 | 선행 | 🛸 현재 | 🛸 필요 | 차이 | 링크 |
 |------|---------|---------|------|------|
 | nexus | 🛸7 → 🛸10 | 🛸10 | +3 | [nexus](../../README.md) |
-| atlas | 🛸6 → 🛸9 | 🛸9 | +3 | [atlas](../../papers/n6-atlas-promotion-7-to-10-paper.md) |
+| atlas | 🛸6 → 🛸9 | 🛸9 | +3 | [문서](../../papers/n6-atlas-promotion-7-to-10-paper.md) |
 
 🛸7 → 🛸10 승급은 EXACT 누적과 atlas edge sync 로 닫힌다.
 
