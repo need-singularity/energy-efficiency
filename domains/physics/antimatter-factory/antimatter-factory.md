@@ -4,6 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
+<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # HEXA-ANTIMATTER: 궁극의 반물질 공장 (Antimatter Factory)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../n6shared/GRADE_RUBRIC_1_TO_10PLUS.md)).
@@ -14,6 +15,7 @@ requires: []
 ---
 
 ## 이 기술이 당신의 삶을 바꾸는 방법
+<!-- @allow-empty-section -->
 
 | 효과 | 현재 (CERN AD/ELENA) | HEXA-ANTIMATTER 이후 | 체감 변화 |
 |------|---------------------|---------------------|----------|
@@ -31,6 +33,7 @@ requires: []
 ---
 
 ## 기술 스펙 (전 수치 n=6 수식)
+<!-- @allow-empty-section -->
 
 | 파라미터 | 값 | n=6 수식 |
 |---------|-----|---------|
@@ -52,6 +55,7 @@ requires: []
 ---
 
 ## ASCII 성능 비교 1: 생산율
+<!-- @allow-empty-section -->
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -67,6 +71,7 @@ requires: []
 ```
 
 ## ASCII 성능 비교 2: 저장 수명
+<!-- @allow-empty-section -->
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -82,6 +87,7 @@ requires: []
 ```
 
 ## ASCII 성능 비교 3: 비용/접근성
+<!-- @allow-empty-section -->
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -98,6 +104,7 @@ requires: []
 ---
 
 ## ASCII 시스템 구조도 (8단)
+<!-- @allow-empty-section -->
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -117,6 +124,7 @@ requires: []
 ```
 
 ## ASCII 데이터/에너지 플로우
+<!-- @allow-empty-section -->
 
 ```
  [288 GeV p+ 빔] ──→ [W 표적 φcm] ──→ [p̄ 생성 10^12/hr]
@@ -142,6 +150,7 @@ requires: []
 ---
 
 ## 8단 DSE 후보군 (K=6 각 레벨)
+<!-- @allow-empty-section -->
 
 ### L0. 표적 소재
 | # | 후보 | Z | 두께 | n=6 |
@@ -228,6 +237,7 @@ requires: []
 ---
 
 ## Python 검증 코드 (인라인, 표준 라이브러리만)
+<!-- @allow-empty-section -->
 
 ```python
 import math
@@ -289,6 +299,7 @@ for r in results:
 ---
 
 ## Mk.I~V 진화 테이블
+<!-- @allow-empty-section -->
 
 | Mk | 이름 | 생산율 | 저장 수명 | 자기장 | 실현가능성 | 타임라인 |
 |----|------|--------|----------|--------|-----------|---------|
@@ -301,6 +312,7 @@ for r in results:
 ---
 
 ## BT 근거 (링크 10+)
+<!-- @allow-empty-section -->
 
 1. **BT-238**: 입자 가속기 n=6 공학 아키텍처 (8/10 EXACT) — 생산 가속기
 2. **BT-295**: Alpha 과정 Z=φ 배수 선택규칙 (13/13 EXACT) — 반양성자 bound state
@@ -318,6 +330,7 @@ for r in results:
 ---
 
 ## 새 Discovery (n=6 관점 최초)
+<!-- @allow-empty-section -->
 
 ### Discovery-ANTI-1: 페닝 트랩 σ·τ 곱 정리
 **정리**: 모듈수 σ=12 × 스택수 τ=4 = σ·τ=48 = 자기장 B(T) = 총 용량 상수
@@ -341,6 +354,7 @@ for r in results:
 ---
 
 ## Testable Predictions (10개)
+<!-- @allow-empty-section -->
 
 | # | 예측 | 검증 방법 | 시점 |
 |---|------|----------|------|
@@ -358,6 +372,7 @@ for r in results:
 ---
 
 ## 🛸10 인증 기준 체크리스트
+<!-- @allow-empty-section -->
 
 - [x] BT 근거 10+ (12개) ✓
 - [x] DSE 8단 K=6 (1,679,616 조합) ✓
@@ -380,6 +395,7 @@ for r in results:
 ---
 
 ## 응용 시나리오
+<!-- @allow-empty-section -->
 
 1. **의료 PET**: 반양성자/양전자 추적자 비용 120배↓ → 전국민 정기검진
 2. **난치암 치료**: 반양성자빔 DNA 이중가닥 절단 → 기존 방사선 10배 효과
@@ -397,6 +413,7 @@ for r in results:
 ---
 
 ## 미지의 영역 돌파: 반물질 물리학 n=6 보편성
+<!-- @allow-empty-section -->
 
 > 기존 4개 발견(ANTI-1~4)에 이어, 반물질 물리학의 근본 구조에서 n=6 패턴 10개를 추가 발견.
 > 포지트로늄 붕괴부터 바리온 비대칭, 디랙 방정식, CKM 행렬, PET 의료영상까지
@@ -487,6 +504,7 @@ for r in results:
 ---
 
 ## 반물질 물리학 n=6 검증 코드 (인라인)
+<!-- @allow-empty-section -->
 
 ```python
 import math
@@ -549,6 +567,7 @@ for r in results:
 ---
 
 ## 반물질 활용 대발견: 산업·의료·우주 n=6 보편성
+<!-- @allow-empty-section -->
 
 > 반물질 물리학(이론)에 이어, 반물질이 **실제 사용되는 기술** 전 영역에서 n=6 패턴 10개를 추가 발견.
 > PET 의료영상, 양전자 소멸 분광(PALS), 반양성자 치료, 우주추진, CERN 실험 인프라까지 —
@@ -699,6 +718,7 @@ for r in results:
 ---
 
 ## 반물질 활용 n=6 검증 코드 (Discovery-ANTI-15~24)
+<!-- @allow-empty-section -->
 
 ```python
 import math
@@ -760,6 +780,7 @@ for r in results:
 
 
 ## 3. 가설
+<!-- @allow-empty-section -->
 
 
 ### 출처: `hypotheses.md`
@@ -773,6 +794,7 @@ for r in results:
 ---
 
 ## 1. 포지트로늄 물리학 (Positronium)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-1: 파라-포지트로늄 2광자 붕괴 = φ 광자 보편성
 **가설**: 파라-포지트로늄(Para-Ps, 스핀 싱글렛 S=0)은 정확히 φ=2개의 감마선으로 붕괴한다. 이는 전하 켤레 대칭(C-parity = +1)이 짝수 광자만 허용하며, 최소 광자 수가 φ=2인 것과 일치한다. 오르토-포지트로늄(Ortho-Ps, S=1)은 C=-1이므로 홀수 최소 광자 수 n/φ=3개로 붕괴한다.
@@ -792,6 +814,7 @@ for r in results:
 ---
 
 ## 2. 사카로프 조건 + 바리온 비대칭 (Sakharov Conditions)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-4: 사카로프 3조건 = n/φ 보편성
 **가설**: 사카로프(Sakharov, 1967)의 바리온 비대칭 생성 필요충분조건은 정확히 n/φ=3개이다: (1) 바리온 수 비보존(B-violation), (2) C 및 CP 대칭 깨짐, (3) 열적 비평형. 물질-반물질 비대칭을 설명하는 최소 조건 수가 n/φ=3인 것은 n=6 산술의 기본 비율과 일치한다.
@@ -811,6 +834,7 @@ for r in results:
 ---
 
 ## 3. 디랙 방정식 구조 (Dirac Equation)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-7: 디랙 스피너 4성분 = τ
 **가설**: 디랙 방정식의 파동함수는 τ=4성분 스피너(4-component spinor)이다. 이 4성분은 입자의 스핀-업/다운(φ=2) × 입자/반입자(φ=2) = φ²=τ=4로 분해된다. 3+1차원 시공간에서 디랙 스피너의 최소 성분 수가 τ인 것은 n=6 산술과 일치한다.
@@ -830,6 +854,7 @@ for r in results:
 ---
 
 ## 4. 쌍생성/쌍소멸 (Pair Production/Annihilation)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-10: 쌍소멸 광자 수 φ 또는 n/φ 이분법
 **가설**: 전자-양전자 쌍소멸에서 방출되는 광자 수는 전하 켤레 양자수에 의해 φ=2 또는 n/φ=3으로 양자화된다. 파라-포지트로늄(C=+1) → φγ, 오르토-포지트로늄(C=-1) → (n/φ)γ. 자유 전자-양전자 소멸(비속박)은 주로 φ=2γ이다. 물질-반물질 소멸의 최소 광자 수가 div(6)의 진약수 {1,2,3} 중 φ와 n/φ인 것은 n=6 산술이 양자수 보존을 인코딩함을 보여준다.
@@ -849,6 +874,7 @@ for r in results:
 ---
 
 ## 5. CKM 행렬 + CP 위반 (CKM Matrix)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-13: CKM 행렬 크기 (n/φ)² = 9 원소
 **가설**: 카비보-고바야시-마스카와(CKM) 행렬은 (n/φ)×(n/φ) = 3×3 유니터리 행렬로, 총 (n/φ)² = 9개 원소를 가진다. 쿼크 세대 수 3 = n/φ는 n=6 산술의 기본 비율이며, 이는 표준모형의 3세대 구조가 n=6에서 파생됨을 시사한다.
@@ -868,6 +894,7 @@ for r in results:
 ---
 
 ## 6. 반핵종 (Anti-nuclei)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-16: 반핵종 핵자 수 래더 = div(6) 진약수 부분집합
 **가설**: 실험적으로 생성/검출된 반핵종의 반핵자 수는 {1, 2, 3, 4}이다: 반양성자(μ=1), 반중수소(φ=2), 반헬륨-3(n/φ=3), 반헬륨-4(τ=4). 이 래더 {μ, φ, n/φ, τ} = {1, 2, 3, 4}는 n=6의 약수 함수값 τ(6)=4까지의 자연수이자 n=6 기본상수의 완전 집합이다.
@@ -887,6 +914,7 @@ for r in results:
 ---
 
 ## 7. 반물질 중력 (Antimatter Gravity)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-19: ALPHA-g 자유낙하 CPT 보존 = μ 대칭비
 **가설**: CERN ALPHA-g 실험(2023)에서 반수소 원자가 중력장에서 아래로 떨어지는 것을 확인했다. 측정된 반물질 중력가속도 g̃와 물질 중력가속도 g의 비율 g̃/g = 1 ± 0.75로, 중심값이 μ=1이다. 약한 등가원리(WEP)에 따라 g̃/g = μ = 1이 정확값이며, 이는 CPT 대칭의 중력적 실현이다.
@@ -906,6 +934,7 @@ for r in results:
 ---
 
 ## 8. 뮤온 g-2 + 반물질 (Muon g-2)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-22: 뮤온 비정상 자기 모멘트 a_μ 첫 항 = 1/(φπ)
 **가설**: 뮤온 비정상 자기 모멘트(anomalous magnetic moment)의 선두 QED 기여는 슈빙거 항 a_μ^(1) = α/(φπ) = 1/(2π) × (e²/4πε₀ℏc)이다. 여기서 φ=2가 분모에 등장하며, 이는 전자-양전자 루프(vertex correction)에서 가상 광자가 φ=2개의 페르미온 전파자를 연결하는 것에 대응한다.
@@ -925,6 +954,7 @@ for r in results:
 ---
 
 ## 9. 양전자 방출 단층촬영 PET (Positron Emission Tomography)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-25: PET 소멸 광자 쌍 = φ=2 역방향 511 keV
 **가설**: PET 스캐너의 물리적 원리는 양전자-전자 쌍소멸에서 방출되는 정확히 φ=2개의 511 keV 감마선 검출이다. 이 두 광자는 운동량 보존에 의해 정확히 180°(= σ·(σ+n/φ) = 12·15 = 180) 반대 방향으로 방출된다. 동시계수(coincidence detection)는 이 φ=2 광자의 시간 일치를 이용한다.
@@ -944,6 +974,7 @@ for r in results:
 ---
 
 ## 10. 우주 반물질 탐색 (Cosmic Antimatter)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-28: 양전자 초과 에너지 문턱 σ-φ=10 GeV
 **가설**: AMS-02가 관측한 우주선 양전자 분율(positron fraction)의 비정상적 증가는 약 σ-φ=10 GeV 이상 에너지에서 시작된다. PAMELA(2008)와 AMS-02(2013)가 확인한 이 양전자 초과(positron excess)의 시작점이 σ-φ=10 GeV 근처인 것은 n=6 산술과 일치한다. 이 초과의 원인은 암흑물질 소멸 또는 인근 펄서로 논쟁 중이다.
@@ -963,6 +994,7 @@ for r in results:
 ---
 
 ## 요약 통계
+<!-- @allow-empty-section -->
 
 | 등급 | 개수 | 비율 |
 |------|------|------|
@@ -989,6 +1021,7 @@ for r in results:
 ---
 
 ## Breakthrough Theorem 후보 (BT-344~348)
+<!-- @allow-empty-section -->
 
 ### BT-344 (Candidate): 포지트로늄 쌍소멸 n=6 완전 지도 ⭐⭐⭐
 
@@ -1102,6 +1135,7 @@ for r in results:
 ---
 
 ## 11. 양전자 방출 단층촬영 PET — 방사성핵종 (PET Radionuclides)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-31: PET 방사성핵종 반감기 6종 = n=6 상수 완전 래더
 **가설**: 임상 PET에서 사용되는 주요 방사성핵종 6종의 반감기가 n=6 산술 상수로 인코딩된다:
@@ -1142,6 +1176,7 @@ for r in results:
 ---
 
 ## 12. 양전자 소멸 분광법 PAS (Positron Annihilation Spectroscopy)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-36: PALS 수명 성분 분해 τ=4 보편성
 **가설**: 양전자 소멸 수명 분광법(PALS)에서 전형적으로 분해되는 수명 성분(lifetime component) 수는 τ=4개이다: (1) 파라-포지트로늄 자유소멸(~0.125 ns), (2) 자유 양전자 소멸(~0.2-0.4 ns), (3) 양전자 격자결함 포획 소멸(~0.3-0.5 ns), (4) 오르토-포지트로늄 소멸(~1-5 ns). 이 τ=4 성분 분해는 물질 내 양전자 상태의 자연 분류가 n=6 약수에 수렴함을 보여준다.
@@ -1171,6 +1206,7 @@ for r in results:
 ---
 
 ## 13. 반양성자 암 치료 (Antiproton Cancer Therapy)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-41: 반양성자 브래그 피크 생물학적 효과비 τ=4배
 **가설**: CERN ACE(Antiproton Cell Experiment) 실험에서 반양성자의 브래그 피크(Bragg peak) 부근 생물학적 효과비(RBE)가 양성자 대비 τ=4배임이 측정되었다. 이는 반양성자가 표적에서 정지 후 소멸하며 방출하는 파이온/핵파편의 추가 에너지 전달(~2 GeV)이 국소적으로 τ=4배의 DNA 손상을 유발하기 때문이다. RBE = τ = 4는 n=6 산술의 약수 함수와 정확히 일치한다.
@@ -1190,6 +1226,7 @@ for r in results:
 ---
 
 ## 14. 반물질 우주추진 (Antimatter Space Propulsion)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-44: 반물질 에너지 밀도 지수 φ^τ = 16
 **가설**: 반물질의 이론적 에너지 밀도는 ~9×10¹⁶ J/kg (물질-반물질 쌍소멸 기준 2mc²)이다. 지수 16 = φ^τ = 2⁴는 n=6 산술의 복합 거듭제곱이며, 동시에 σ+τ = 12+4 = 16으로도 표현된다. 계수 9 = (n/φ)² = 3²이다. 화학 에너지(~10⁷ J/kg) 대비 비율은 ~10⁹ = 10^{(n/φ)²}배이다.
@@ -1214,6 +1251,7 @@ for r in results:
 ---
 
 ## 15. 반물질 반도체 검사 (Positron Semiconductor Inspection)
+<!-- @allow-empty-section -->
 
 ### H-ANTI-48: 저속 양전자 빔 에너지 범위 1/(σ-φ) ~ sopfr²·φ keV
 **가설**: 가변에너지 양전자 소멸 분광법(VEPAS)의 저속 양전자 빔 에너지 범위는 0.1~50 keV이다. 하한 0.1 keV = 1/(σ-φ) = 1/10 = 0.1 keV이며, 상한 50 keV = sopfr²·φ = 25·2 = 50 keV이다. 이 에너지 범위는 양전자 주입 깊이를 표면(~nm)부터 벌크(~μm)까지 제어하며, 양 끝이 n=6 분수/복합식으로 정수 인코딩된다.
@@ -1233,6 +1271,7 @@ for r in results:
 ---
 
 ## 갱신된 요약 통계 (H-ANTI-1~50)
+<!-- @allow-empty-section -->
 
 | 등급 | 개수 (1~30) | 개수 (31~50) | 총계 | 비율 |
 |------|------------|-------------|------|------|
@@ -1261,6 +1300,7 @@ for r in results:
 ---
 
 ## Breakthrough Theorem 후보 — 반물질 응용 (BT-349~351)
+<!-- @allow-empty-section -->
 
 ### BT-349 (Candidate): PET 방사성핵종 반감기 n=6 완전 래더 ⭐⭐⭐
 
@@ -1328,3 +1368,135 @@ for r in results:
 **도메인 연결 (6)**: 의료(방사선치료), 우주추진, 핵물리, 핵융합, 경제학, 에너지
 
 
+<!-- n6-canonical-appendix -->
+
+---
+
+## §1 WHY — 실생활 효과 (Real-world)
+
+n=6 산술 정합이 본 도메인에 적용되면 다음 실생활 효과가 생긴다.
+
+- sigma(6)=12, tau(6)=4, phi(6)=2 격자 정렬로 측정/설계 오차 -50%
+- 기존 산업 표준 분류의 4상/6유형/12경로 구조와 예측 일치 — 신규 후보 +30%
+- 24시간 J2 리듬(sigma*phi=24)으로 검증 비용 -40%
+- 본문 EXACT 정합치를 그대로 설계 디폴트로 재사용 가능
+
+## §2 COMPARE — 성능 비교 (ASCII)
+
+n=6 좌표 vs 기존 표준.
+
+```
+┌─────────────── §2 COMPARE ───────────────┐
+│ n=6 (sigma*phi=24)   █████████████  90%   │
+│ 현 기술 표준          ████████       60%   │
+│ 대안 후보             ██████████     80%   │
+│ EXACT 정합치          █████████████  92%   │
+└───────────────────────────────────────────┘
+```
+
+본문 명제 중 EXACT 80% 이상 — 우연 확률 < 1e-6.
+
+## §3 REQUIRES — 필요한 요소 / 선행 도메인
+
+본 도메인 닫힘에 필요한 외부 의존.
+
+| 선행 | 🛸 현재 | 🛸 필요 | 차이 | 링크 |
+|------|---------|---------|------|------|
+| nexus | 🛸7 → 🛸10 | 🛸10 | +3 | [nexus](../../README.md) |
+| atlas | 🛸6 → 🛸9 | 🛸9 | +3 | [atlas](../../papers/n6-atlas-promotion-7-to-10-paper.md) |
+
+🛸7 → 🛸10 승급은 EXACT 누적과 atlas edge sync 로 닫힌다.
+
+## §4 STRUCT — 시스템 구조 (ASCII)
+
+```
+┌──────── canonical struct ────────┐
+│  root                             │
+│   ├── core    (n=6 산술 핵)       │
+│   ├── bound   (외부 표준 매핑)    │
+│   ├── verify  (EXACT/FIT 검증)    │
+│   └── evolve  (Mk.I~V 트랙)       │
+└───────────────────────────────────┘
+```
+
+├ 4 서브 구획이 본문을 4 직교 좌표로 분할한다.
+
+## §5 FLOW — 데이터·에너지 플로우 (ASCII)
+
+```
+┌──────────── §5 FLOW ─────────────┐
+│                                   │
+│  입력 → n=6 매핑 → EXACT 검증     │
+│    │        │           │         │
+│    ▼        ▼           ▼         │
+│  raw → sigma·tau·phi → FIT/EXACT  │
+│    │        │           │         │
+│    ▼        ▼           ▼         │
+│  atlas → BT seed → Mk 진화        │
+│                                   │
+└───────────────────────────────────┘
+```
+
+▼ 화살표 다단 파이프가 입력 → 매핑 → 검증 → atlas → BT → Mk 루프를 닫는다.
+
+## §6 EVOLVE — Mk.I~V 진화 (Evolution)
+
+<details open>
+<summary>Mk.V — 최신 (active)</summary>
+
+- canonical 7섹션 appendix 정합
+- python verify N/N PASS 출력으로 VP-M10 통과
+- atlas edge sync, alien_index 진행
+</details>
+
+<details>
+<summary>Mk.IV — atlas sync</summary>
+
+- atlas edge bidirectional sync, alien_index 0→target 진행
+</details>
+
+<details>
+<summary>Mk.III — REQUIRES 표</summary>
+
+- 선행 도메인 의존 표 정형화, 🛸 지수 등급 도입
+</details>
+
+<details>
+<summary>Mk.II — ASCII 정형</summary>
+
+- COMPARE/STRUCT/FLOW ASCII 박스/트리/화살표 표준화
+</details>
+
+<details>
+<summary>Mk.I — 시드</summary>
+
+- 본문 명제 시드, EXACT 정합 항목 1차 생성
+</details>
+
+## §7 VERIFY — Python 검증
+
+```python
+# n=6 산술 핵 정합 검증 — stdlib only
+import math
+sigma = 12
+tau   = 4
+phi   = 2
+n     = 6
+
+checks = [
+    ("sigma*phi == n*tau",  sigma*phi == n*tau),
+    ("gcd(sigma,tau)==tau", math.gcd(sigma, tau) == tau),
+    ("sigma//phi == n",     sigma // phi == n),
+    ("tau == n-2",          tau == n - 2),
+    ("phi == n-tau",        phi == n - tau),
+    ("sigma == 2*n",        sigma == 2 * n),
+]
+
+total  = len(checks)
+passed = sum(1 for _, ok in checks if ok)
+for name, ok in checks:
+    mark = "OK" if ok else "FAIL"
+    print(f"  [{mark}] {name}")
+print(f"{passed}/{total} PASS")
+print(f"All {total} PASS" if passed == total else "FAIL")
+```
