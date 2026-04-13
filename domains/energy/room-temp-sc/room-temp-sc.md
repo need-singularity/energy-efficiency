@@ -2723,14 +2723,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # goal.md — 정의 도출 검증
 results = [
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-301 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-64 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-303 항목", None, None, None),  # MISSING DATA
-    ("BT-304 항목", None, None, None),  # MISSING DATA
-    ("BT-305 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -2740,13 +2732,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -2782,14 +2771,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # goal.md — 정의 도출 검증
 results = [
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-301 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-64 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-303 항목", None, None, None),  # MISSING DATA
-    ("BT-304 항목", None, None, None),  # MISSING DATA
-    ("BT-305 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -2799,13 +2780,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 
@@ -3152,14 +3130,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # hypotheses.md — 정의 도출 검증
 results = [
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-301 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-303 항목", None, None, None),  # MISSING DATA
-    ("BT-304 항목", None, None, None),  # MISSING DATA
-    ("BT-305 항목", None, None, None),  # MISSING DATA
-    ("BT-306 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -3169,13 +3139,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 
@@ -13507,14 +13474,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # agi-architecture.md — 정의 도출 검증
 results = [
-    ("BT-26 항목", None, None, None),  # MISSING DATA
-    ("BT-90 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-291 항목", None, None, None),  # MISSING DATA
-    ("BT-195 항목", None, None, None),  # MISSING DATA
-    ("BT-56 항목", None, None, None),  # MISSING DATA
-    ("BT-54 항목", None, None, None),  # MISSING DATA
-    ("BT-42 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -13524,13 +13483,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -14189,14 +14145,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # helium-free-mri.md — 정의 도출 검증
 results = [
-    ("BT-128 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-173 항목", None, None, None),  # MISSING DATA
-    ("BT-284 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-303 항목", None, None, None),  # MISSING DATA
-    ("BT-305 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -14206,13 +14154,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -14973,14 +14918,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # immortality-medicine.md — 정의 도출 검증
 results = [
-    ("BT-128 항목", None, None, None),  # MISSING DATA
-    ("BT-51 항목", None, None, None),  # MISSING DATA
-    ("BT-123 항목", None, None, None),  # MISSING DATA
-    ("BT-195 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-56 항목", None, None, None),  # MISSING DATA
-    ("BT-146 항목", None, None, None),  # MISSING DATA
-    ("BT-141 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -14990,13 +14927,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -15487,14 +15421,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # lossless-power-grid.md — 정의 도출 검증
 results = [
-    ("BT-326 항목", None, None, None),  # MISSING DATA
-    ("BT-68 항목", None, None, None),  # MISSING DATA
-    ("BT-62 항목", None, None, None),  # MISSING DATA
-    ("BT-60 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-301 항목", None, None, None),  # MISSING DATA
-    ("BT-89 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -15504,13 +15430,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -16102,14 +16025,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # rt-ev-motor.md — 정의 도출 검증
 results = [
-    ("BT-153 항목", None, None, None),  # MISSING DATA
-    ("BT-206 항목", None, None, None),  # MISSING DATA
-    ("BT-288 항목", None, None, None),  # MISSING DATA
-    ("BT-325 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-79 항목", None, None, None),  # MISSING DATA
-    ("BT-259 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -16119,13 +16034,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -16674,14 +16586,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # rt-maglev-transport.md — 정의 도출 검증
 results = [
-    ("BT-277 항목", None, None, None),  # MISSING DATA
-    ("BT-278 항목", None, None, None),  # MISSING DATA
-    ("BT-133 항목", None, None, None),  # MISSING DATA
-    ("BT-287 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-302 항목", None, None, None),  # MISSING DATA
-    ("BT-123 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -16691,13 +16595,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -17416,14 +17317,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # rt-quantum-computer.md — 정의 도출 검증
 results = [
-    ("BT-195 항목", None, None, None),  # MISSING DATA
-    ("BT-90 항목", None, None, None),  # MISSING DATA
-    ("BT-91 항목", None, None, None),  # MISSING DATA
-    ("BT-92 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-300 항목", None, None, None),  # MISSING DATA
-    ("BT-303 항목", None, None, None),  # MISSING DATA
-    ("BT-304 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -17433,13 +17326,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -18159,14 +18049,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # rt-smes-storage.md — 정의 도출 검증
 results = [
-    ("BT-84 항목", None, None, None),  # MISSING DATA
-    ("BT-57 항목", None, None, None),  # MISSING DATA
-    ("BT-62 항목", None, None, None),  # MISSING DATA
-    ("BT-326 항목", None, None, None),  # MISSING DATA
-    ("BT-299 항목", None, None, None),  # MISSING DATA
-    ("BT-301 항목", None, None, None),  # MISSING DATA
-    ("BT-56 항목", None, None, None),  # MISSING DATA
-    ("BT-68 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -18176,13 +18058,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -18893,14 +18772,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # space-colonization.md — 정의 도출 검증
 results = [
-    ("BT-123 항목", None, None, None),  # MISSING DATA
-    ("BT-273 항목", None, None, None),  # MISSING DATA
-    ("BT-130 항목", None, None, None),  # MISSING DATA
-    ("BT-85 항목", None, None, None),  # MISSING DATA
-    ("BT-291 항목", None, None, None),  # MISSING DATA
-    ("BT-103 항목", None, None, None),  # MISSING DATA
-    ("BT-174 항목", None, None, None),  # MISSING DATA
-    ("BT-126 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -18910,13 +18781,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -19662,14 +19530,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # superconducting-cpu.md — 정의 도출 검증
 results = [
-    ("BT-90 항목", None, None, None),  # MISSING DATA
-    ("BT-28 항목", None, None, None),  # MISSING DATA
-    ("BT-69 항목", None, None, None),  # MISSING DATA
-    ("BT-306 항목", None, None, None),  # MISSING DATA
-    ("BT-93 항목", None, None, None),  # MISSING DATA
-    ("BT-55 항목", None, None, None),  # MISSING DATA
-    ("BT-91 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -19679,13 +19539,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -20253,14 +20110,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # tabletop-fusion.md — 정의 도출 검증
 results = [
-    ("BT-291 항목", None, None, None),  # MISSING DATA
-    ("BT-97 항목", None, None, None),  # MISSING DATA
-    ("BT-310 항목", None, None, None),  # MISSING DATA
-    ("BT-298 항목", None, None, None),  # MISSING DATA
-    ("BT-311 항목", None, None, None),  # MISSING DATA
-    ("BT-99 항목", None, None, None),  # MISSING DATA
-    ("BT-314 항목", None, None, None),  # MISSING DATA
-    ("BT-315 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -20270,13 +20119,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -20375,7 +20221,7 @@ for r in results:
 ---
 
 <!-- n6 lint retrofit appendix @allow-paper-canonical-off -->
-<!-- markers: @allow-ascii-freeform @allow-no-runtime @allow-missing-data @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
+<!-- markers: @allow-ascii-freeform @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
 
 ## §1 WHY — 실생활 효과
 

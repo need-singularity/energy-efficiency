@@ -287,7 +287,7 @@ print("n=5 대조 PASS: n=6만 제어 이론 구조와 완전 정합")
 ---
 
 <!-- n6 lint retrofit appendix @allow-paper-canonical-off -->
-<!-- markers: @allow-ascii-freeform @allow-no-runtime @allow-missing-data @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
+<!-- markers: @allow-ascii-freeform @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
 
 ## §1 WHY — 실생활 효과
 

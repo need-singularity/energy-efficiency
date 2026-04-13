@@ -358,9 +358,7 @@ n=6 산술함수로 분석한다. 기본 재료 수, 발효 단계, 온도,
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

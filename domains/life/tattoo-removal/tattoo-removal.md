@@ -851,7 +851,6 @@ D+7: 약물 중단 → 면역 즉시 복원
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

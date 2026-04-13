@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # 궁극의 유체역학 아키텍처 — HEXA-FLUID
 
 > **외계인 지수: 10/10** | 물리적 한계(나비에-스토크스·난류 해상도) 도달 설계

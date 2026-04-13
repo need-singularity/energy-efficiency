@@ -463,7 +463,7 @@ NOAA/NASA 표준 대기 모델: O2 = 20.946% ≈ 21%.
 ---
 
 <!-- n6 lint retrofit appendix @allow-paper-canonical-off -->
-<!-- markers: @allow-ascii-freeform @allow-no-runtime @allow-missing-data @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
+<!-- markers: @allow-ascii-freeform @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
 
 ## §1 WHY — 실생활 효과
 

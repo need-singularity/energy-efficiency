@@ -2884,7 +2884,7 @@ Mk.IV는 HVDC 글로벌 슈퍼그리드로 σ²=144개국 전력 통합 + 무선
 ---
 
 <!-- n6 lint retrofit appendix @allow-paper-canonical-off -->
-<!-- markers: @allow-ascii-freeform @allow-no-runtime @allow-missing-data @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
+<!-- markers: @allow-ascii-freeform @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
 
 ## §1 WHY — 실생활 효과
 

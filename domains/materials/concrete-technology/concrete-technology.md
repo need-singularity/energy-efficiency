@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # HEXA-CONCRETE — 궁극의 콘크리트 기술
 
 ### 콘크리트 기술 — HEXA-CONCRETE 목표

@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # N6 논문 아카이브 — PAPERS
 
 arXiv paper outlines and academic publications.
@@ -7305,14 +7305,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # n6-calendar-time-geography-paper.md — 정의 도출 검증
 results = [
-    ("BT-138 항목", None, None, None),  # MISSING DATA
-    ("BT-182 항목", None, None, None),  # MISSING DATA
-    ("BT-212 항목", None, None, None),  # MISSING DATA
-    ("BT-233 항목", None, None, None),  # MISSING DATA
-    ("BT-256 항목", None, None, None),  # MISSING DATA
-    ("BT-108 항목", None, None, None),  # MISSING DATA
-    ("BT-62 항목", None, None, None),  # MISSING DATA
-    ("BT-268 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -7322,13 +7314,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ## Appendix: 검증코드 (정의 기반, 동어반복 없음)
@@ -11484,14 +11473,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # n6-consciousness-soc-paper.md — 정의 도출 검증
 results = [
-    ("BT-28 항목", None, None, None),  # MISSING DATA
-    ("BT-33 항목", None, None, None),  # MISSING DATA
-    ("BT-37 항목", None, None, None),  # MISSING DATA
-    ("BT-55 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
-    ("BT-59 항목", None, None, None),  # MISSING DATA
-    ("BT-60 항목", None, None, None),  # MISSING DATA
-    ("BT-69 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -11501,13 +11482,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ### 8.3 DMA Streaming
@@ -48503,12 +48481,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # paper2-cross-domain.md — 정의 도출 검증
 results = [
-    ("BT-18 항목", None, None, None),  # MISSING DATA
-    ("BT-19 항목", None, None, None),  # MISSING DATA
-    ("BT-13 항목", None, None, None),  # MISSING DATA
-    ("BT-15 항목", None, None, None),  # MISSING DATA
-    ("BT-16 항목", None, None, None),  # MISSING DATA
-    ("BT-17 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -48518,13 +48490,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **Appendix B: Monte Carlo Falsifiability Test**

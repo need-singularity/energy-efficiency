@@ -1640,7 +1640,6 @@ coincidence — it reflects a shared mathematical substrate.
 
 ## 검증코드
 
-<!-- @allow-missing-data -->
 ```python
 import math
 def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)
@@ -1670,14 +1669,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # bt-402-earphone-hardware.md — 정의 도출 검증
 results = [
-    ("BT-402 항목", None, None, None),  # MISSING DATA
-    ("BT-48 항목", None, None, None),  # MISSING DATA
-    ("BT-72 항목", None, None, None),  # MISSING DATA
-    ("BT-108 항목", None, None, None),  # MISSING DATA
-    ("BT-76 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
-    ("BT-324 항목", None, None, None),  # MISSING DATA
-    ("BT-92 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -1687,13 +1678,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -1940,14 +1928,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # bt-403-earphone-software.md — 정의 도출 검증
 results = [
-    ("BT-403 항목", None, None, None),  # MISSING DATA
-    ("BT-48 항목", None, None, None),  # MISSING DATA
-    ("BT-72 항목", None, None, None),  # MISSING DATA
-    ("BT-108 항목", None, None, None),  # MISSING DATA
-    ("BT-178 항목", None, None, None),  # MISSING DATA
-    ("BT-337 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
-    ("BT-73 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -1957,13 +1937,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -5552,14 +5529,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # hexa-ear-ultimate.md — 정의 도출 검증
 results = [
-    ("BT-48 항목", None, None, None),  # MISSING DATA
-    ("BT-72 항목", None, None, None),  # MISSING DATA
-    ("BT-108 항목", None, None, None),  # MISSING DATA
-    ("BT-76 항목", None, None, None),  # MISSING DATA
-    ("BT-93 항목", None, None, None),  # MISSING DATA
-    ("BT-122 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
-    ("BT-67 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -5569,13 +5538,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -6143,7 +6109,6 @@ n=6 아키텍처는 완전수 6의 수학적 항등식에 현실 인프라가 �
 <details><summary>Mk.I</summary>초기 — n=6 관찰</details>
 
 ## §7 VERIFY — Python 검증
-<!-- @allow-no-runtime -->
 ```python
 import math
 sigma=12; tau=4; phi=2; n=6

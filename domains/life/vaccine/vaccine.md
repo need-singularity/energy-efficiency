@@ -1312,7 +1312,6 @@ Mk.III (2031~2035) ─ 글로벌 배포
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

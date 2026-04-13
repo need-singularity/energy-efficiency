@@ -387,9 +387,7 @@ DSE 도구: `tools/universal-dse/domains/defense.toml`
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

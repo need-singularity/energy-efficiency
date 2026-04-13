@@ -378,6 +378,5 @@ assert passed == total, "verify failed"
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-paper-canonical -->
 <!-- @allow-dag-sync -->

@@ -358,7 +358,6 @@ print(f"n=5: 영양단계=6≠5, 생물계=6≠5 → 불성립")
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

@@ -497,9 +497,7 @@ NFPA 502 (도로터널 표준) 환기 분류도 3방식.
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

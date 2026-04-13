@@ -1035,7 +1035,6 @@ Mk.V는 실현 여부와 무관하게 다음의 과학적 가치를 가진다:
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

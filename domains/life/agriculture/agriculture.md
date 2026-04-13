@@ -1586,9 +1586,7 @@ BT-30, BT-43, BT-56, BT-58, BT-59, BT-62, BT-63, BT-66, BT-85, BT-86, BT-88, BT-
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

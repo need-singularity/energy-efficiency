@@ -459,7 +459,6 @@ stages, safety categories) testable against n=6 functions.
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

@@ -368,7 +368,6 @@ print(f"n=28 대조: 염기=4≠τ(28)={tau(28)}, DNA=2≠φ(28)={phi(28)}")
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

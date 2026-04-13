@@ -286,9 +286,7 @@ print(f"sopfr 사중 포화: 심도({pelagic_zones}) + 분지({ocean_basins}) + 
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

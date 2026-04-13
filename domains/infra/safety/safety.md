@@ -3058,9 +3058,7 @@ Mk.V는 "설계"가 아닌 "한계 분석"이다. 안전 공학의 물리적 한
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

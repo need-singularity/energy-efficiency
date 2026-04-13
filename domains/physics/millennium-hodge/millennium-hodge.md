@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # BT-545: 호지 추측 -- 대수기하 코호몰로지의 n=6 뼈대
 
 > **BT**: BT-545 | **EXACT**: 14/14 (기존 10+신규 4) | **등급**: Three stars

@@ -374,4 +374,3 @@ print(f"{passed}/{total} PASS")
 print(f"All {total} PASS" if passed == total else "FAIL")
 ```
 
-<!-- @allow-no-runtime -->

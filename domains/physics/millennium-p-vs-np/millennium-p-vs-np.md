@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # BT-542: P vs NP -- 계산 복잡도 계층의 n=6 뼈대
 
 > **BT**: BT-542 | **EXACT**: 14/16 (기존 11 + 2020s 3, CLOSE 2, MISS 0) | **등급**: Three stars

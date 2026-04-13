@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # 나일론 6/6,6 -- 궁극의 n=6 폴리아미드 아키텍처
 
 > **23/23 EXACT (100%)** | 카프로락탐 C6에서 840d 원사까지 n=6 완전 관통

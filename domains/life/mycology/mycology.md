@@ -802,7 +802,6 @@ GlcNAc (C8H15NO6): 탄소=sigma-tau=8, 산소=n=6, 질소=mu=1.
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

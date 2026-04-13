@@ -359,7 +359,6 @@ LOI 예측          시험 의존   sigma*phi+sopfr=29
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

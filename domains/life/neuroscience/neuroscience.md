@@ -278,7 +278,6 @@ print(f"  sopfr=5 EEG ↔ sopfr=5 학습 스케줄")
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

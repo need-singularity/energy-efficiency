@@ -247,7 +247,6 @@ H-HAIR-181~440: 260 가설 중 Part A 완료 (60/260), B~E 진행 예정.
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

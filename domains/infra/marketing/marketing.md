@@ -1009,9 +1009,7 @@ sigma-sopfr=7  |  sigma-mu=11  |  sigma*sopfr=60  |  n!=720
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 <!-- @allow-dag-sync -->
-<!-- @allow-missing-data -->
 
 ## §1 WHY
 

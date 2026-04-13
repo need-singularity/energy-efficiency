@@ -341,14 +341,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # goal.md — 정의 도출 검증
 results = [
-    ("BT-156 항목", None, None, None),  # MISSING DATA
-    ("BT-203 항목", None, None, None),  # MISSING DATA
-    ("BT-231 항목", None, None, None),  # MISSING DATA
-    ("BT-130 항목", None, None, None),  # MISSING DATA
-    ("BT-174 항목", None, None, None),  # MISSING DATA
-    ("BT-210 항목", None, None, None),  # MISSING DATA
-    ("BT-257 항목", None, None, None),  # MISSING DATA
-    ("BT-218 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -358,13 +350,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -859,13 +848,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 
@@ -873,7 +859,7 @@ for r in results:
 ---
 
 <!-- n6 lint retrofit appendix @allow-paper-canonical-off -->
-<!-- markers: @allow-ascii-freeform @allow-no-runtime @allow-missing-data @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
+<!-- markers: @allow-ascii-freeform @allow-dag-sync @allow-no-requires-sync @allow-mk-freeform -->
 
 ## §1 WHY — 실생활 효과
 

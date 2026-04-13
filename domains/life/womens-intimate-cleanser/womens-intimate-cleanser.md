@@ -182,7 +182,6 @@ CST-V:   L. jensenii   (H2O2 생산, crispatus 다음 보호)
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

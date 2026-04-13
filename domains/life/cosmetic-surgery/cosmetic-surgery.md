@@ -447,7 +447,6 @@ BT-56(AI진단), BT-66(Vision AI), BT-113(SW설계), BT-43(CN=6 배위수)
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

@@ -954,7 +954,6 @@ n=6 산술로 분석한다. 향수 피라미드, 테르펜 화학, 후각 수용
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

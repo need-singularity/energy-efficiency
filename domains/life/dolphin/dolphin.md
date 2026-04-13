@@ -734,7 +734,6 @@ div(6)={1,2,3,6}, σ-φ=10, σ-τ=8, σ-μ=11, n/φ=3
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

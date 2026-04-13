@@ -425,7 +425,6 @@ pH 보존 = 전장 (여기가 병목)
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

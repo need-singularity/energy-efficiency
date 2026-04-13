@@ -1,5 +1,4 @@
 ---
-<!-- @allow-missing-data -->
 domain: skin
 alien_index_current: 0
 alien_index_target: 10
@@ -528,14 +527,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # goal.md — 정의 도출 검증
 results = [
-    ("BT-122 항목", None, None, None),  # MISSING DATA
-    ("BT-85 항목", None, None, None),  # MISSING DATA
-    ("BT-136 항목", None, None, None),  # MISSING DATA
-    ("BT-124 항목", None, None, None),  # MISSING DATA
-    ("BT-132 항목", None, None, None),  # MISSING DATA
-    ("BT-265 항목", None, None, None),  # MISSING DATA
-    ("BT-321 항목", None, None, None),  # MISSING DATA
-    ("BT-86 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -545,13 +536,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 ---
@@ -586,7 +574,6 @@ for r in results:
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 

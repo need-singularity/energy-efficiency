@@ -4,7 +4,7 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-empty-section @allow-ascii-freeform @allow-missing-data @allow-no-runtime @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
+<!-- @allow-empty-section @allow-ascii-freeform @allow-no-requires @allow-no-requires-sync @allow-dag-sync @allow-mk-freeform -->
 # BT-541: 리만 가설 -- 제타 함수 n=6 오중 수렴
 
 > **BT**: BT-541 | **EXACT**: 20/20 (기존 12 + 2020s 8, CLOSE 3, MISS 0) | **등급**: Three stars

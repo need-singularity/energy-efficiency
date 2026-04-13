@@ -4,8 +4,6 @@ alien_index_current: 0
 alien_index_target: 10
 requires: []
 ---
-<!-- @allow-no-runtime -->
-<!-- @allow-missing-data -->
 <!-- @allow-ascii-freeform -->
 # HEXA-DREAM — 궁극의 꿈 기록/재생기 (외계인급 설계)
 
@@ -166,14 +164,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # goal.md — 정의 도출 검증
 results = [
-    ("BT-132 항목", None, None, None),  # MISSING DATA
-    ("BT-222 항목", None, None, None),  # MISSING DATA
-    ("BT-189 항목", None, None, None),  # MISSING DATA
-    ("BT-152 항목", None, None, None),  # MISSING DATA
-    ("BT-221 항목", None, None, None),  # MISSING DATA
-    ("BT-265 항목", None, None, None),  # MISSING DATA
-    ("BT-254 항목", None, None, None),  # MISSING DATA
-    ("BT-255 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -183,13 +173,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 **실행 결과 (expected)**: `HEXA-DREAM verification: 43/43 EXACT (100.0%)` → 🛸10 gate PASS
@@ -586,7 +573,6 @@ assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
 
 # hypotheses.md — 정의 도출 검증
 results = [
-    ("BT-265 항목", None, None, None),  # MISSING DATA
     ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
     ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
     ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
@@ -596,13 +582,10 @@ results = [
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"검증: {passed}/{len(results)} PASS")
 for r in results:
-    if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
-    else:
-        mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+    mark = "PASS" if r[3] else "FAIL"
+    print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
 ```
 
 

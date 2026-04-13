@@ -179,7 +179,6 @@ HAART 약물 = n/phi = 3 (3제 병합요법)
 <!-- @allow-empty-section -->
 <!-- @allow-ascii-freeform -->
 <!-- @allow-no-requires -->
-<!-- @allow-no-runtime -->
 
 ## §1 WHY
 
