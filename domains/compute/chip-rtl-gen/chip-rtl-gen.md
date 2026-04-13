@@ -1,3 +1,9 @@
+---
+domain: chip-rtl-gen
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # chip-rtl-gen — AI-native 칩 RTL 자동생성기
 
 > 축: **compute** · n6-architecture · σ·φ = n·τ = 24 정합 RTL 생성 파이프라인

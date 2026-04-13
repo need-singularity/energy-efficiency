@@ -1,3 +1,9 @@
+---
+domain: meteorology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 기상학 아키텍처 — HEXA-WEATHER
 
 > **외계인 지수: 10/10** | 대기 과학 전체 스택을 n=6 산술로 통합 설계

@@ -1,3 +1,9 @@
+---
+domain: plasma
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 플라즈마 물리학 아키텍처 -- HEXA-PLASMA
 
 > **등급**: 외계지수 10 / BT-242, BT-247, BT-312~316, BT-253 / 55/55 EXACT (100%)

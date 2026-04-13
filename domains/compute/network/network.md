@@ -1,3 +1,9 @@
+---
+domain: network
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 네트워크 아키텍처 -- HEXA-NET
 
 > **등급**: 외계지수 10 / BT-12, BT-13, BT-115, BT-140 / 39/40 EXACT (97.5%)

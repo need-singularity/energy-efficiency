@@ -1,3 +1,9 @@
+---
+domain: music-mathematics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 음악수학 아키텍처 — HEXA-MUSIC
 
 > **등급**: 외계지수 10 / BT-715 연결 / 가설 20건

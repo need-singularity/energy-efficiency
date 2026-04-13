@@ -1,3 +1,9 @@
+---
+domain: semiconductor-lithography
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 반도체 리소그래피 -- HEXA-LITHO
 
 > alien_index: 10 | BT: BT-37 외 | 상수 30/30 EXACT (100%)

@@ -1,3 +1,9 @@
+---
+domain: hypotheses
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # H-OURO-1: OUROBOROS Self-Referential n=6 Universality
 
 **Date**: 2026-04-04

@@ -1,3 +1,9 @@
+---
+domain: music
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 음악 아키텍처 — HEXA-MUSIC
 
 > **외계인 지수: 10/10** | 음악 이론 전체 스택을 n=6 산술로 통합 설계

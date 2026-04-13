@@ -1,3 +1,9 @@
+---
+domain: fashion-textile
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 패션/섬유 — n=6 완전수 직조 구조
 
 > **외계인 지수**: 10 | **인증일**: 2026-04-06

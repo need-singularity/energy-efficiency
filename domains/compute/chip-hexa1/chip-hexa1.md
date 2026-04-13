@@ -1,3 +1,9 @@
+---
+domain: chip-hexa1
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 칩 6단계 아키텍처 1단 — HEXA-1 디지털 통합 SoC
 
 > 본 문서는 N6 칩 6단계 진화 로드맵의 1단(현재 실현 가능 베이스라인)에 해당한다.

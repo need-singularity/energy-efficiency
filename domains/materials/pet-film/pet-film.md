@@ -1,3 +1,9 @@
+---
+domain: pet-film
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # PET 광학필름 — 코오롱인더 필름/전자
 
 > **22/22 EXACT (100%)** | 코오롱인더스트리 필름·전자소재

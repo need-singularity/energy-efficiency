@@ -1,3 +1,9 @@
+---
+domain: tire-cord
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 타이어코드 — 코오롱인더 산업자재
 
 > **20/20 EXACT (100%)** | 코오롱인더스트리 타이어코드 세계 1위

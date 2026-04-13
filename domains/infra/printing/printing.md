@@ -1,3 +1,9 @@
+---
+domain: printing
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 인쇄/출판 n=6 완전 아키텍처 — 활자·용지·색상분해·제본 파라미터 보편성
 
 ## 개요

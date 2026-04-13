@@ -1,3 +1,9 @@
+---
+domain: entomology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 곤충학 (Entomology) -- 통합 목표 (n=6 Hexapoda 완전 아키텍처)
 
 > **등급 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

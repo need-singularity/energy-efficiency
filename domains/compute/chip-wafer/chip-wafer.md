@@ -1,3 +1,9 @@
+---
+domain: chip-wafer
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 칩 6단계 아키텍처 5단 — HEXA-WAFER 웨이퍼 스케일 모놀리식
 
 > 본 문서는 N6 칩 6단계 진화 로드맵의 5단(스케일 벽 제거)에 해당한다.

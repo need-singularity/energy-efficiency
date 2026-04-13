@@ -1,3 +1,9 @@
+---
+domain: observational-astronomy
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 관측천문학 — HEXA-Astro 설계 목표
 
 > **등급**: alien_index 8/10, closure_grade 7

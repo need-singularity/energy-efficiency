@@ -1,3 +1,9 @@
+---
+domain: smr-datacenter
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-REACTOR: 데이터센터용 소형 원자로 (SMR) — 궁극의 아키텍처
 
 > **10개 돌파구(BT) | 100/117 EXACT (85.5%) | DSE 3,125 조합 | 시중 6종 벤치마크**

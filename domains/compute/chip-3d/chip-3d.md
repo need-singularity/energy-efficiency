@@ -1,3 +1,9 @@
+---
+domain: chip-3d
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 칩 6단계 아키텍처 3단 — HEXA-3D 수직 적층 컴퓨트온메모리
 
 > 본 문서는 N6 칩 6단계 진화 로드맵의 3단(대역폭 100배, 메모리 벽 완전 제거)에 해당한다.

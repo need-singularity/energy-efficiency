@@ -1,3 +1,9 @@
+---
+domain: fire-science
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 화재과학 — HEXA-Fire 예방·진압·대피
 
 > **등급**: alien_index 7/10, closure_grade 6

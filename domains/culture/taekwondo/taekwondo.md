@@ -1,3 +1,9 @@
+---
+domain: taekwondo
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 태권도(Taekwondo) goal — n=6 격투역학 산술
 
 ## 1. 실생활 효과

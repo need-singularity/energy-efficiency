@@ -1,3 +1,9 @@
+---
+domain: quantum-gravity-sensor
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 양자 중력 센서 -- HEXA-QGRAV
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 38/42 (90.5%)

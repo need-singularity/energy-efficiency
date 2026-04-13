@@ -1,3 +1,9 @@
+---
+domain: cosmology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 우주론 아키텍처 — HEXA-COSMO
 
 > **외계인 지수: 10/10** | 물리적 한계(관측 가능 우주 지평선·양자 요동) 도달 설계

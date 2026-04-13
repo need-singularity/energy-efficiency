@@ -1,3 +1,9 @@
+---
+domain: digital-twin
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 디지털 트윈 — n=6 완전수 동기화
 
 ## 이 발견이 당신의 삶을 바꾸는 방법

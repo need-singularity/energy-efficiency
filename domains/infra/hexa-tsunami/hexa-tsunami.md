@@ -1,3 +1,9 @@
+---
+domain: tsunami
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 쓰나미 방어 아키텍처 — HEXA-TSUNAMI
 
 > **Grade 참조**: alien_index = 제품 성숙도 (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

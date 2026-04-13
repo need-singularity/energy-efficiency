@@ -1,3 +1,9 @@
+---
+domain: millennium-riemann
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # BT-541: 리만 가설 -- 제타 함수 n=6 오중 수렴
 
 > **BT**: BT-541 | **EXACT**: 20/20 (기존 12 + 2020s 8, CLOSE 3, MISS 0) | **등급**: Three stars

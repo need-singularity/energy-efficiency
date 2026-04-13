@@ -1,3 +1,9 @@
+---
+domain: nuclear-reactor
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 원자로 -- HEXA-REACTOR
 
 > alien_index: 10 | BT: BT-60/62/63/68 외 | 상수 22/26 EXACT (84.6%)

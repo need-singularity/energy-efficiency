@@ -1,3 +1,9 @@
+---
+domain: chip-isa-n6
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # chip-isa-n6 — n=6 원시연산 RISC-V 확장 ISA (Xn6)
 
 > 축: **compute** · n6-architecture · RISC-V RV32I/RV64I 확장 명령어 세트

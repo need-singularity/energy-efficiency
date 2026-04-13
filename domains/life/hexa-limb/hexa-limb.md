@@ -1,3 +1,9 @@
+---
+domain: limb
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 AI 의수/의족 -- HEXA-LIMB (신경 직결 보철 시스템)
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

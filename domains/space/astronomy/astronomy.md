@@ -1,3 +1,9 @@
+---
+domain: astronomy
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 천문학 아키텍처 — HEXA-ASTRO
 
 > **외계인 지수: 10/10** | 물리적 한계(광학 회절·양자 감도) 도달 설계

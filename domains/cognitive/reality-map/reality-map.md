@@ -1,3 +1,9 @@
+---
+domain: reality-map
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 현실 지도 (Reality Map) -- n=6 바텀업 인과 매핑
 
 > **도메인**: 전체 (입자~우주론) | **노드**: 3,943개 | **레벨**: 66계층

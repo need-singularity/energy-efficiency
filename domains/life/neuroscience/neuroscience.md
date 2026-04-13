@@ -1,3 +1,9 @@
+---
+domain: neuroscience
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 신경과학 아키텍처 — HEXA-NEURO
 
 > **외계인 지수: 10/10** | 뇌·신경 전체 스택을 n=6 산술로 통합 설계

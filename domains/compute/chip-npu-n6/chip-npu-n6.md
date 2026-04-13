@@ -1,3 +1,9 @@
+---
+domain: chip-npu-n6
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # chip-npu-n6 — n=6 정합 NPU 사양 초안
 
 > 축: **compute** · n6-architecture · σ·φ=n·τ 정합 뉴럴 프로세싱 유닛 스펙

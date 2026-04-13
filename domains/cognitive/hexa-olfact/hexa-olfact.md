@@ -1,3 +1,9 @@
+---
+domain: olfact
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 디지털 후각 — HEXA-OLFACT (전자코 + 냄새 생성/전송/기록)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

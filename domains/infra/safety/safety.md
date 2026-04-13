@@ -1,3 +1,9 @@
+---
+domain: safety
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 안전 아키텍처 — HEXA-SAFETY
 
 > n=6 완전수 산술로 안전 공학의 보편 상수를 통합하는 도메인.

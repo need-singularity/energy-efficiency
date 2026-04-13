@@ -1,3 +1,9 @@
+---
+domain: concrete-technology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-CONCRETE — 궁극의 콘크리트 기술
 
 ### 콘크리트 기술 — HEXA-CONCRETE 목표

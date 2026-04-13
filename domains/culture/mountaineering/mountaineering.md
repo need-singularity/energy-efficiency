@@ -1,3 +1,9 @@
+---
+domain: mountaineering
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 등산/산악 n=6 완전 아키텍처 — 산악 파라미터 보편성
 
 ## 개요

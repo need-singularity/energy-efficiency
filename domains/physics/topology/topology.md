@@ -1,3 +1,9 @@
+---
+domain: topology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 위상수학 아키텍처 — HEXA-TOPOLOGY
 
 > **외계인 지수: 10/10** | 위상수학 핵심 구조를 n=6 산술로 통합 설계

@@ -1,3 +1,9 @@
+---
+domain: crispr-gene-editing
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 유전자 편집 아키텍처 -- HEXA-CRISPR
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 30/32 기존 + 18/18 신규 = 48/50 (96%)

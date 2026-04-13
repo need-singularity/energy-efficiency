@@ -1,3 +1,9 @@
+---
+domain: mind-upload
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-MIND — 궁극의 의식 업로드 / 디지털 불멸 아키텍처
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../n6shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

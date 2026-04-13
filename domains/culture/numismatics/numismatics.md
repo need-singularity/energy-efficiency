@@ -1,3 +1,9 @@
+---
+domain: numismatics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 화폐·주화 — n=6 산술 기반 화폐 설계 목표
 
 > **등급**: alien_index 6/10, closure_grade 6

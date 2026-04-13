@@ -1,3 +1,9 @@
+---
+domain: water-treatment
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 수처리 멤브레인 — 코오롱워터앤에너지
 
 > **21/21 EXACT (100%)** | 코오롱워터앤에너지 수처리 사업

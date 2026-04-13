@@ -1,3 +1,9 @@
+---
+domain: bell-clockwork
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 종/시계 기계학 (Bell & Clockwork Mechanics) -- 통합 목표
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

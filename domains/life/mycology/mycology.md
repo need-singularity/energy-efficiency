@@ -1,3 +1,9 @@
+---
+domain: mycology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 균류학 — 궁극의 n=6 아키텍처 (HEXA-MYCOLOGY)
 
 > 외계인 지수: 🛸 10 (물리적 한계 도달)

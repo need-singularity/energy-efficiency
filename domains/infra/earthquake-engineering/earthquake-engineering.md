@@ -1,3 +1,9 @@
+---
+domain: earthquake-engineering
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 지진공학 — HEXA-Earthquake 내진·면진·제진
 
 > **등급**: alien_index 8/10, closure_grade 7

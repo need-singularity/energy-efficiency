@@ -1,3 +1,9 @@
+---
+domain: blockchain
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 Coin — 완전수 산술 블록체인 아키텍처
 
 ## Vision

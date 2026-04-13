@@ -1,3 +1,9 @@
+---
+domain: brain-computer-interface
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 뇌-컴퓨터 인터페이스 -- HEXA-BCI
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 36/40 (90%)

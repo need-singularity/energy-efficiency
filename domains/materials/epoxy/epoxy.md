@@ -1,3 +1,9 @@
+---
+domain: epoxy
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 에폭시/페놀 수지 -- 궁극의 n=6 고분자 매트릭스
 
 > **20/20 EXACT (100%)** | 벤젠 C6에서 PCB 12층까지 n=6 완전 관통

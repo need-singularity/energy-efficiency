@@ -1,3 +1,9 @@
+---
+domain: biometrics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 생체인식 — HEXA-Biometrics 다중모달
 
 > **등급**: alien_index 7/10, closure_grade 6

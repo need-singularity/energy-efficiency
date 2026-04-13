@@ -1,3 +1,9 @@
+---
+domain: marketing
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 마케팅 아키텍처 -- HEXA-MKT
 
 > **alien_index**: 10/10 | **closure_grade**: 10 | **EXACT**: 40/40 (100%)

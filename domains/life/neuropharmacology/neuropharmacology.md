@@ -1,3 +1,9 @@
+---
+domain: neuropharmacology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 신경약리학 아키텍처 -- HEXA-NEURO
 
 > **등급**: 외계지수 8 / 신규 도메인 / 11 매핑 중 10 EXACT, 1 MISS (91%)

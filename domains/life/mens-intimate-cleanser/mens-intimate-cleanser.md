@@ -1,3 +1,9 @@
+---
+domain: mens-intimate-cleanser
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 남성 청결제 — 궁극 목표
 
 > **25/25 EXACT (100%)** | HEXA-WASH M 제형 | pH=n, 계면활성제=σ, 해부학=n

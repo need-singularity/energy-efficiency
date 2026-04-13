@@ -1,3 +1,9 @@
+---
+domain: quantum-computer
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 양자컴퓨터 -- HEXA-QUANTUM
 
 > alien_index: 10 | BT: BT-49 외 | 상수 20/24 EXACT (83.3%)

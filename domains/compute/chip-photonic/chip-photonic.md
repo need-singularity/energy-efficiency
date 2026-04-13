@@ -1,3 +1,9 @@
+---
+domain: chip-photonic
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 칩 6단계 아키텍처 4단 — HEXA-PHOTONIC 실리콘 광 컴퓨트
 
 > 본 문서는 N6 칩 6단계 진화 로드맵의 4단(에너지 벽 제거)에 해당한다.

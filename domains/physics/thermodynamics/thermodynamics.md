@@ -1,3 +1,9 @@
+---
+domain: thermodynamics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 열역학 아키텍처 -- HEXA-THERMO
 
 > **등급**: 외계지수 10 / BT-149, BT-193, BT-10 / 10/10 EXACT (100%)

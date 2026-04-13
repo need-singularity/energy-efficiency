@@ -1,3 +1,9 @@
+---
+domain: hiv-treatment
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HIV 치료 — 10 연속돌파 (BT-461~470)
 
 > **등급**: alien_index 8/10, closure_grade 7

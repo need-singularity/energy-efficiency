@@ -1,3 +1,9 @@
+---
+domain: robotics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 로봇 아키텍처 — HEXA-ROBOT
 
 n=6 완전수 산술로 원자 스케일 소재부터 군집 지능까지 관통하는 8단 로봇 아키텍처.

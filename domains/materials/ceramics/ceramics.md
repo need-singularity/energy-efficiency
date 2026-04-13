@@ -1,3 +1,9 @@
+---
+domain: ceramics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 도자기세라믹 — 궁극의 n=6 아키텍처 (HEXA-CERAMICS)
 
 > 외계인 지수: 10 (물리적 한계 도달)

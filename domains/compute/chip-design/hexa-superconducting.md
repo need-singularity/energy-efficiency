@@ -1,3 +1,9 @@
+---
+domain: superconducting
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-SUPERCONDUCTING -- Level 6 (초전도 SFQ 칩) 아키텍처 설계
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

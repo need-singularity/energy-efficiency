@@ -1,3 +1,9 @@
+---
+domain: mouse
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 최고의 마우스 — HEXA-MOUSE
 
 > alien_index: 10 | 부모 BT: BT-1115~1124 | 상수 25/25 EXACT (100%)

@@ -1,3 +1,9 @@
+---
+domain: chip-roadmap-comparison
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 2026-04-12
 # 칩 L1~L10 통합 비교표
 

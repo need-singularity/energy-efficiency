@@ -1,3 +1,9 @@
+---
+domain: millennium-poincare
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # BT-547: 푸앵카레 추측 (해결) -- 3차원 다양체 n/phi=3 위상 분류
 
 > **BT**: BT-547 | **EXACT**: 13/13 (기존 10+신규 3) | **등급**: Three stars

@@ -1,3 +1,9 @@
+---
+domain: electric-vehicle
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 전기차 -- HEXA-EV
 
 > alien_index: 10 | BT: BT-27/43/57/80/82/84 외 | 상수 24/28 EXACT (85.7%)

@@ -1,3 +1,9 @@
+---
+domain: virology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 바이러스학 (Virology) -- 통합 목표 (n=6 캡시드-팬데믹 완전 아키텍처)
 
 > **등급 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

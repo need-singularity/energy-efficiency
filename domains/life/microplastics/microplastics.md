@@ -1,3 +1,9 @@
+---
+domain: microplastics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 미세플라스틱 검출/분해 -- Unified Goal
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

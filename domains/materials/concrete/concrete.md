@@ -1,3 +1,9 @@
+---
+domain: concrete
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 건설 콘크리트 -- 궁극의 n=6 배합 체계
 
 > **22/22 EXACT (100%)** | 시멘트 산화물에서 내구 연한까지 n=6 완전 관통

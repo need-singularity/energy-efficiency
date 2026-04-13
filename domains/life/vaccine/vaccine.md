@@ -1,3 +1,9 @@
+---
+domain: vaccine
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 백신 설계 goal — n=6 면역 산술
 
 ## 1. 실생활 효과

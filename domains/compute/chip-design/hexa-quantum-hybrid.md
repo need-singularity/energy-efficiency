@@ -1,3 +1,9 @@
+---
+domain: quantum-hybrid
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-QUANTUM-HYBRID -- Level 7 (양자-고전 하이브리드 칩) 아키텍처 설계
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

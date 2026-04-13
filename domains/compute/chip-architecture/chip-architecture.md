@@ -1,3 +1,9 @@
+---
+domain: chip-architecture
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 칩 아키텍처 — 완전수 산술 반도체 설계
 
 ## Overview

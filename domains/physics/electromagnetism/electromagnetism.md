@@ -1,3 +1,9 @@
+---
+domain: electromagnetism
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 전자기학 아키텍처 -- HEXA-EM
 
 > **등급**: 외계지수 10 / BT-145, BT-440, BT-189 / 24/24 EXACT (100%)

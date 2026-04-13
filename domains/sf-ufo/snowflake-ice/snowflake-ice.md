@@ -1,3 +1,9 @@
+---
+domain: snowflake-ice
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 눈꽃/얼음 결정 -- Unified Goal
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

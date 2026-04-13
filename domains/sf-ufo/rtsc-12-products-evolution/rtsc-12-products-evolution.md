@@ -1,3 +1,9 @@
+---
+domain: rtsc-12-products-evolution
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 실시간 반도체 12제품 진화 아키텍처 — RTSC-12
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

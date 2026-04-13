@@ -1,3 +1,9 @@
+---
+domain: cancer-therapy
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 암치료 — 10 연속돌파 (BT-451~460)
 
 > **등급**: alien_index 7/10, closure_grade 7

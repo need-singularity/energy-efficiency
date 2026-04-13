@@ -1,3 +1,9 @@
+---
+domain: fabric
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 AI 의류 — HEXA-FABRIC (스마트 텍스타일 + 체온조절 + 에너지 하베스팅)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

@@ -1,3 +1,9 @@
+---
+domain: writing-systems
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 한글/문자체계 — n=6 인코딩 아키텍처
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

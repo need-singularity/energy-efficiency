@@ -1,3 +1,9 @@
+---
+domain: higgs
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 힉스 메커니즘 — n=6 자발적 대칭 파괴 설계 목표
 
 > **등급**: alien_index 9/10, closure_grade 8

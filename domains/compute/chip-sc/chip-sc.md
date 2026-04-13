@@ -1,3 +1,9 @@
+---
+domain: chip-sc
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 칩 6단계 아키텍처 6단 — HEXA-SC 초전도 조셉슨 천장
 
 > 본 문서는 N6 칩 6단계 진화 로드맵의 6단(물리 벽 제거, 천장)에 해당한다.

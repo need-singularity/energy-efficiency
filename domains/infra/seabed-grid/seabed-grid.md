@@ -1,3 +1,9 @@
+---
+domain: seabed-grid
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-SEABED — 대륙간 해저 초전도 송전망 (Ultimate SC Submarine Grid)
 
 > **Grade 참조**: alien_index(🛸) = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../n6shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

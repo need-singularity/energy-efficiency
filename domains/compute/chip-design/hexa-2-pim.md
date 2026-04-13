@@ -1,3 +1,9 @@
+---
+domain: 2-pim
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-2-PIM -- Level 2 (메모리 내 연산) 칩 아키텍처 설계
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+).

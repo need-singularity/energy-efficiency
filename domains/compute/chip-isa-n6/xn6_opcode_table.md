@@ -1,3 +1,9 @@
+---
+domain: xn6_opcode_table
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Xn6 Opcode Table — 24 명령 박스 인코딩
 
 > 축: **compute** · n6-architecture · RISC-V R-Type custom-0 (opcode = 0x0B)

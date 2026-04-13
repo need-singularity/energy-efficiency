@@ -1,3 +1,9 @@
+---
+domain: millennium-hodge
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # BT-545: 호지 추측 -- 대수기하 코호몰로지의 n=6 뼈대
 
 > **BT**: BT-545 | **EXACT**: 14/14 (기존 10+신규 4) | **등급**: Three stars

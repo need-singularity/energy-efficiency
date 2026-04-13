@@ -1,3 +1,9 @@
+---
+domain: gemology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 보석·광물학 — n=6 결정 구조 설계 목표
 
 > **등급**: alien_index 8/10, closure_grade 7

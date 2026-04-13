@@ -1,3 +1,9 @@
+---
+domain: millennium-navier-stokes
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # BT-544: 나비에-스토크스 -- 유체역학 n=6 텐서 구조
 
 > **BT**: BT-544 | **EXACT**: 29/29 (기존 16 + 2020s 13, CLOSE 1) | **등급**: Three stars

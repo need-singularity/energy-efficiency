@@ -1,3 +1,9 @@
+---
+domain: ufo
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 UFO 비행접시 아키텍처 — HEXA-UFO
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급 (1~13+, [rubric](../../n6shared/GRADE_RUBRIC_1_TO_10PLUS.md)).

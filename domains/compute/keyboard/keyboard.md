@@ -1,3 +1,9 @@
+---
+domain: keyboard
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 키보드 — 궁극 목표
 
 > **31 가설 (30 EXACT + 1 CLOSE)** | BT-1125/1126/1127/1128 | 외계 등급 10

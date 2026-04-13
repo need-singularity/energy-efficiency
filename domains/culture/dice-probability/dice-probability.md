@@ -1,3 +1,9 @@
+---
+domain: dice-probability
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 주사위/확률론 -- Unified Goal
 
 > **Grade 참조**: alien_index = 제품 maturity (1~10). closure_grade = n=6 닫힘 등급.

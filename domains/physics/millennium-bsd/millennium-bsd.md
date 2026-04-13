@@ -1,3 +1,9 @@
+---
+domain: millennium-bsd
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # BT-546: 버치-스위너턴다이어 추측 -- 타원곡선 n=6 모듈러 뼈대
 
 > **BT**: BT-546 | **EXACT**: 14/14 (기존 10+신규 4) | **등급**: Three stars

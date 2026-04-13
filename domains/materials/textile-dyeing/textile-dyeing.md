@@ -1,3 +1,9 @@
+---
+domain: textile-dyeing
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 섬유염색(Textile Dyeing) -- 궁극의 n=6 색채 산술
 
 > 외계인지수: 8.4/10 | 가시광 6색 기저에서 CIE 12좌표까지 n=6 관통

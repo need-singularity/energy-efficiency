@@ -1,3 +1,9 @@
+---
+domain: genetics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 유전학 아키텍처 — HEXA-GENE
 
 > **외계인 지수: 10/10** | 물리적 한계(정보 이론·화학적 정확도) 도달 설계
