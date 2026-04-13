@@ -5,7 +5,7 @@
 > 도메인: `domains/physics/millennium-*/millennium-*.md` (7개 파일)
 > 작성 원칙: 정직한 검증. 7대 난제 해결: **0/7**
 > 브랜치: `feat/millennium-dfs-92-tight`
-> 기존 현황: `reports/millennium-status-2026-04-12.md` (v1, 20차 274건)
+> 기존 현황: `reports/audits/2026-04-12/millennium-status.md` (v1, 20차 274건)
 > 본 문서: DFS 21차 반영 갱신 (286건)
 
 ---
