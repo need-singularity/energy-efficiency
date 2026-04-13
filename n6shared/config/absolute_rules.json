@@ -145,7 +145,7 @@
       "id": "R14",
       "rule": "규칙 기록은 공통 JSON에만 — CLAUDE.md에 규칙 직접 기록 금지",
       "level": "⛔",
-      "enforcement": "모든 규칙은 shared/config/absolute_rules.json이 단일 진실. CLAUDE.md는 shared/ 참조만 하고 규칙 본문은 박지 않는다. 신규/변경은 JSON 먼저 → sync-claude-rules.sh가 주입"
+      "enforcement": "모든 규칙은 n6shared/config/absolute_rules.json이 단일 진실. CLAUDE.md는 shared/ 참조만 하고 규칙 본문은 박지 않는다. 신규/변경은 JSON 먼저 → sync-claude-rules.sh가 주입"
     },
     {
       "id": "R17",
@@ -197,7 +197,7 @@
     },
     {
       "id": "R24",
-      "rule": "shared/hooks/ 신규 .sh/.py 생성 절대 금지 — .hexa만 허용, hooks-config.json 등록 필수",
+      "rule": "n6shared/hooks/ 신규 .sh/.py 생성 절대 금지 — .hexa만 허용, hooks-config.json 등록 필수",
       "level": "⛔",
       "enforcement": "block-forbidden-ext.hexa PreToolUse 가드",
       "applies_to": "all"
@@ -211,7 +211,7 @@
     },
     {
       "id": "R26",
-      "rule": "공용 훅(shared/hooks/*) 직접 수정 금지 — hooks-config.json 등록 + 사용자 명시 승인 필수",
+      "rule": "공용 훅(n6shared/hooks/*) 직접 수정 금지 — hooks-config.json 등록 + 사용자 명시 승인 필수",
       "level": "⛔",
       "enforcement": "block-forbidden-ext.hexa PreToolUse 가드",
       "applies_to": "all"

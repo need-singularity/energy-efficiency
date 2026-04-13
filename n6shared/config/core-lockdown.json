@@ -79,15 +79,15 @@
       "desc": "논문 39편 SSOT"
     },
     {
-      "path": "shared/config/core-lockdown.json",
+      "path": "n6shared/config/core-lockdown.json",
       "desc": "코어 잠금 체계 자체 — 자기참조 보호"
     },
     {
-      "path": "shared/convergence/n6-architecture.json",
+      "path": "n6shared/convergence/n6-architecture.json",
       "desc": "수렴 추적 — 골화/안정/실패 상태"
     },
     {
-      "path": "shared/config/dse-map.toml",
+      "path": "n6shared/config/dse-map.toml",
       "desc": "DSE 전체 현황 지도"
     },
     {
@@ -103,11 +103,11 @@
       "desc": "훈련/수학 런타임 (.hexa) 디렉토리"
     },
     {
-      "path": "shared/CLAUDE.md",
+      "path": "n6shared/CLAUDE.md",
       "desc": "shared 디렉토리 AI 진입점"
     },
     {
-      "path": "shared/config/CLAUDE.md",
+      "path": "n6shared/config/CLAUDE.md",
       "desc": "config 디렉토리 AI 진입점"
     },
     {
@@ -133,23 +133,23 @@
       "desc": "시점 리포트 — 감사·세션·발견·체인지로그"
     },
     {
-      "path": "shared/loop/",
+      "path": "n6shared/loop/",
       "desc": "성장 루프 설정"
     },
     {
-      "path": "shared/discovery_log.jsonl",
+      "path": "n6shared/discovery_log.jsonl",
       "desc": "발견 로그 스트림"
     },
     {
-      "path": "shared/growth_bus.jsonl",
+      "path": "n6shared/growth_bus.jsonl",
       "desc": "성장 이벤트 스트림"
     },
     {
-      "path": "shared/discovery_graph.json",
+      "path": "n6shared/discovery_graph.json",
       "desc": "발견 그래프 — 노드/엣지"
     },
     {
-      "path": "shared/projects.json",
+      "path": "n6shared/projects.json",
       "desc": "프로젝트 레지스트리"
     }
   ],
@@ -171,15 +171,15 @@
       "desc": "논문 개별 .md (L0 레지스트리 제외)"
     },
     {
-      "path": "shared/logs/",
+      "path": "n6shared/logs/",
       "desc": "로그 디렉토리"
     },
     {
-      "path": "shared/auto_bt.log",
+      "path": "n6shared/auto_bt.log",
       "desc": "자동 BT 로그"
     },
     {
-      "path": "shared/auto_gap.log",
+      "path": "n6shared/auto_gap.log",
       "desc": "자동 갭 로그"
     }
   ],

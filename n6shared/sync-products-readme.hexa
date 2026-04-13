@@ -1,12 +1,12 @@
-// sync_products_readme.hexa — products.json SSOT → README.md 자동 동기화
+// sync-products-readme.hexa — products.json SSOT → README.md 자동 동기화
 // 원본: scripts/sync_products_readme.py (328줄, R1 HEXA-FIRST 포팅 대상)
 // R5 SSOT: products.json 이 원본, README.md 는 생성물
 // R19: 에러 발생 시 stderr 출력 후 non-zero 종료
 // R29 예외: 계산기/검증기 아닌 sync 유틸이므로 n6-architecture/shared/ 유지
 //
 // 사용법:
-//   hexa sync_products_readme.hexa            # 실제 갱신
-//   hexa sync_products_readme.hexa --dry-run  # 변경만 출력, 파일 미수정
+//   hexa sync-products-readme.hexa            # 실제 갱신
+//   hexa sync-products-readme.hexa --dry-run  # 변경만 출력, 파일 미수정
 //
 // 환경변수:
 //   N6_PRODUCTS_JSON  — products.json 경로 (미지정 시 기본 경로)

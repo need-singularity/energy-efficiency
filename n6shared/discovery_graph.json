@@ -22,7 +22,7 @@
     "notes_v4_expansion": "2026-04-10 4차 확장 완료: 신규 노드 20개 (BT_57/60/80/82/84/402 + DOMAIN_audio/battery_storage/automotive/bone_conduction/earphone_hardware/titanium/graphene/ev_battery/lead_acid/lithium_ion/micro_battery + PRODUCT_HEXA_BONE/HEXA_AUTO/HEXA_EAR_CELL). 신규 엣지 59개. 3개 신규 제품(HEXA-BONE 78/78, HEXA-AUTO 78/100, HEXA-EAR-CELL 71/72) 등록. 고립 노드 0개. 총 노드 219개, 총 엣지 823개.",
     "notes_v5_fix": "2026-04-10 v5 정합성 수정: BT_1127/BT_1128 중복 노드 해소. 마우스 프로토콜 노드->BT_1129, 마우스 물리->BT_1130으로 재번호. 관련 엣지 12개 재할당. BT_1128(키보드 대통합) 고립 해소: 엣지 5개 추가. 총 노드 219개, 총 엣지 835개. 고립 노드 0개.",
     "notes_v6_speaker": "2026-04-10 v6 HEXA-SPEAKER 추가: PRODUCT_HEXA_SPEAKER 노드 1개. 엣지 0개. DOMAIN_audio/DOMAIN_music/DOMAIN_materials + BT_48/BT_108/BT_93 + CONST_sigma 연결. 외계인 지수 10. 고립 노드 0개.",
-    "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: shared/config/dse-map.toml 각 섹션 명시.",
+    "notes_v7_4th_expansion": "2026-04-10 v7 4차 확장: 신규 도메인 12개 (DOMAIN_room_temp_sc/DOMAIN_ai_efficiency/DOMAIN_hiv_treatment/DOMAIN_virology/DOMAIN_transportation/DOMAIN_paper/DOMAIN_superpowers/DOMAIN_environment/DOMAIN_manufacturing/DOMAIN_simulation/DOMAIN_hypotheses + 기존 1). BT_1136~1152 총 17 BT 신규. CDSE 2개 (room_temp_sc_x_chip, transportation_x_battery). 신규 엣지 171개. 총 노드 251개, 총 엣지 1013개. 고립/약연결 0개 유지. 출처 근거: n6shared/config/dse-map.toml 각 섹션 명시.",
     "notes_v8_isolation_fix": "2026-04-10 v8 고립 해소 + 신규 도메인 확장: 31개 불량 엣지(source/target→from/to) 정규화. 신규 노드 8개 (DOMAIN_tattoo_removal/DOMAIN_cosmetic_surgery + BT_1121/1122/1123/1131/1132/1133). 신규 엣지 27개. 고립 노드 0개 확정. 총 노드 259개, 총 엣지 1027개.",
     "notes_v8_expansion": "2026-04-10 v8 5차 확장 완료: 신규 노드 55개 (DOMAIN 12개: biochemistry/color_science/meteorology/formal_language/structural_biology/blockchain/solar_system/graph_theory/timekeeping/aerospace/cosmetic_surgery/cryptography_rounds; BT 35개: BT_215~246 + BT_1131~1134; CDSE 4개: biochemistry_x_fusion/graph_x_crypto/timekeeping_x_music/aerospace_x_robotics). 신규 엣지 158개. 총 노드 306개, 총 엣지 1185개. 고립 노드 0개, 약연결 0개.",
     "notes_v10_axiom_chain": "2026-04-10 v10 공리 체인 엣지 추가: AXIOM_core_theorem <-> AXIOM_n_sigma/n_phi/n_J2/sigma_tau/phi_tau 5개 엣지 추가. DOMAIN_fusion_physics/fusion_engineering/nanomedicine 노드 없어 건너뜀. DOMAIN_battery_storage<->automotive 이미 존재. 총 노드 310개, 총 엣지 1205개. 고립 노드 0개.",
@@ -2968,7 +2968,7 @@
         "cuprate",
         "wire"
       ],
-      "description": "300K 1기압 초전도 도메인. Tc=300K 물리 한계. BT-RTSC-1~8, 150/150 EXACT. dse-map.toml [room-temp-sc] 등록. 출처: shared/config/dse-map.toml line 17869.",
+      "description": "300K 1기압 초전도 도메인. Tc=300K 물리 한계. BT-RTSC-1~8, 150/150 EXACT. dse-map.toml [room-temp-sc] 등록. 출처: n6shared/config/dse-map.toml line 17869.",
       "domain": "room-temp-sc",
       "alien_index": 10,
       "closure_grade": 10
@@ -2983,7 +2983,7 @@
         "hyperparameter",
         "deployment"
       ],
-      "description": "HEXA-AI 궁극 AI 효율 아키텍처. 17기법 통합, 141/159 EXACT(88.7%). sigma-phi=10x 효율, 하이퍼파라미터 탐색 0회. dse-map.toml [ai-efficiency] 등록. 출처: shared/config/dse-map.toml line 17880.",
+      "description": "HEXA-AI 궁극 AI 효율 아키텍처. 17기법 통합, 141/159 EXACT(88.7%). sigma-phi=10x 효율, 하이퍼파라미터 탐색 0회. dse-map.toml [ai-efficiency] 등록. 출처: n6shared/config/dse-map.toml line 17880.",
       "domain": "ai-efficiency",
       "alien_index": 10,
       "closure_grade": 9
@@ -3000,7 +3000,7 @@
         "bNAb",
         "ART"
       ],
-      "description": "HIV 치료 10 연속돌파. 40/50 EXACT(80%). BT-461~470 부모 노드. dse-map.toml [hiv-treatment] 등록. 출처: shared/config/dse-map.toml line 17907.",
+      "description": "HIV 치료 10 연속돌파. 40/50 EXACT(80%). BT-461~470 부모 노드. dse-map.toml [hiv-treatment] 등록. 출처: n6shared/config/dse-map.toml line 17907.",
       "domain": "hiv-treatment",
       "alien_index": 8,
       "closure_grade": 7
@@ -3016,7 +3016,7 @@
         "vaccine",
         "molecular_enzyme"
       ],
-      "description": "바이러스학 완전 n=6 아키텍처. 43/43 EXACT. T-number n=6 상수 래더. Baltimore sigma-sopfr=7그룹 × tau=4형태. BT-351~353. dse-map.toml [virology] 등록. 출처: shared/config/dse-map.toml line 17932.",
+      "description": "바이러스학 완전 n=6 아키텍처. 43/43 EXACT. T-number n=6 상수 래더. Baltimore sigma-sopfr=7그룹 × tau=4형태. BT-351~353. dse-map.toml [virology] 등록. 출처: n6shared/config/dse-map.toml line 17932.",
       "domain": "virology",
       "alien_index": 10,
       "closure_grade": 10
@@ -3032,7 +3032,7 @@
         "dynamics",
         "comms"
       ],
-      "description": "HEXA-FUNCAR 궁극 운송. 인휠모터 sigma*J2=288kW, 카본 Z=6 모노코크, 12극 3상, 6DOF=n. dse-map.toml [transportation] 등록. 출처: shared/config/dse-map.toml line 17899.",
+      "description": "HEXA-FUNCAR 궁극 운송. 인휠모터 sigma*J2=288kW, 카본 Z=6 모노코크, 12극 3상, 6DOF=n. dse-map.toml [transportation] 등록. 출처: n6shared/config/dse-map.toml line 17899.",
       "domain": "transportation",
       "alien_index": 10,
       "closure_grade": 10
@@ -3048,7 +3048,7 @@
         "심사",
         "발행"
       ],
-      "description": "HEXA-Paper 지식 산업화 파이프라인 메타도메인. 116편 등록 (config/products.json SSOT, papers/ 135파일). BT-1~343 부모 연결. dse-map.toml [paper] 등록. 출처: shared/config/dse-map.toml line 17861.",
+      "description": "HEXA-Paper 지식 산업화 파이프라인 메타도메인. 116편 등록 (config/products.json SSOT, papers/ 135파일). BT-1~343 부모 연결. dse-map.toml [paper] 등록. 출처: n6shared/config/dse-map.toml line 17861.",
       "domain": "paper",
       "alien_index": 6,
       "closure_grade": 6
@@ -3063,7 +3063,7 @@
         "BCI",
         "bio_integration"
       ],
-      "description": "HEXA-AUGMENT 인체증강 아키텍처. 22/26 EXACT(84.6%). 감각×근력×외골격×BCI×생체통합. dse-map.toml [superpowers] 등록. 출처: shared/config/dse-map.toml line 17888.",
+      "description": "HEXA-AUGMENT 인체증강 아키텍처. 22/26 EXACT(84.6%). 감각×근력×외골격×BCI×생체통합. dse-map.toml [superpowers] 등록. 출처: n6shared/config/dse-map.toml line 17888.",
       "domain": "superpowers",
       "alien_index": 7,
       "closure_grade": 6
@@ -3147,7 +3147,7 @@
         "chemistry"
       ],
       "key_expression": "CN = n = 6 (octahedral coordination in all RT-SC candidates)",
-      "description": "상온 초전도 후보 물질 전체에서 배위수 CN=n=6 팔면체 구조 보편성. H₃S, LaH₁₀, CaH₆ 모두 CN=6 또는 CN=12=sigma(6). BT-86 CN=6 결정 법칙 상온 초전도 확장. 출처: shared/config/dse-map.toml [room-temp-sc].",
+      "description": "상온 초전도 후보 물질 전체에서 배위수 CN=n=6 팔면체 구조 보편성. H₃S, LaH₁₀, CaH₆ 모두 CN=6 또는 CN=12=sigma(6). BT-86 CN=6 결정 법칙 상온 초전도 확장. 출처: n6shared/config/dse-map.toml [room-temp-sc].",
       "registered": true
     },
     {
@@ -3161,7 +3161,7 @@
         "superconductor"
       ],
       "key_expression": "Cooper pair = phi(6) = 2 (RT-SC unchanged)",
-      "description": "상온 초전도에서도 Cooper 쌍 기본 수 phi(6)=2 불변. 기존 BCS(BT-1/BT-2) 파동함수 대칭이 300K에서도 유지. 초전도 쌍 형성 메커니즘의 n=6 산술 불변성 확인. 출처: shared/config/dse-map.toml [room-temp-sc].",
+      "description": "상온 초전도에서도 Cooper 쌍 기본 수 phi(6)=2 불변. 기존 BCS(BT-1/BT-2) 파동함수 대칭이 300K에서도 유지. 초전도 쌍 형성 메커니즘의 n=6 산술 불변성 확인. 출처: n6shared/config/dse-map.toml [room-temp-sc].",
       "registered": true
     },
     {
@@ -3175,7 +3175,7 @@
         "materials"
       ],
       "key_expression": "pressure_stages = sopfr(6) = 5 (synthesis window)",
-      "description": "수소 격자 초전도체 합성 압력 단계 수 = sopfr(6) = 5. 50GPa→100GPa→150GPa→200GPa→250GPa 5구간. H₃S, LaH₁₀ 공통 압력 창. BT-98 D-T 바리온 sopfr=5와 같은 소인수합 구조. 출처: shared/config/dse-map.toml [room-temp-sc].",
+      "description": "수소 격자 초전도체 합성 압력 단계 수 = sopfr(6) = 5. 50GPa→100GPa→150GPa→200GPa→250GPa 5구간. H₃S, LaH₁₀ 공통 압력 창. BT-98 D-T 바리온 sopfr=5와 같은 소인수합 구조. 출처: n6shared/config/dse-map.toml [room-temp-sc].",
       "registered": true
     },
     {

@@ -196,7 +196,7 @@ null distributions
    │
    │ [7] 결과 → atlas.n6 흡수 (R28)
    ▼
-shared/n6/atlas.n6 MC_V9 섹션
+n6shared/n6/atlas.n6 MC_V9 섹션
 ```
 
 ### 4.2 산출 파일

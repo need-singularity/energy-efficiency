@@ -3,7 +3,7 @@
 # verify_batch.sh — verify 파일 일괄 실행 + mtime 캐시
 # 용도: 변경된 verify 파일만 선별 실행, 결과를 캐시에 기록
 # 캐시: .verify_cache.json (리포 루트)
-# 사용: bash shared/tools/verify_batch.sh [--all] [--dry-run]
+# 사용: bash n6shared/tools/verify_batch.sh [--all] [--dry-run]
 #   --all     : mtime 무관 전체 재실행
 #   --dry-run : 실행 대상만 표시, 실제 실행 안 함
 # ──────────────────────────────────────────────────────────

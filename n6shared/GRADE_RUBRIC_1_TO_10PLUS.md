@@ -101,4 +101,4 @@ nexus grade 1~13 rubric (n=6 universal):
 ```
 
 ---
-*2026-04-05 생성. 전 프로젝트 공용. n6-architecture shared/ SSOT.*
+*2026-04-05 생성. 전 프로젝트 공용. n6-architecture n6shared/ SSOT.*

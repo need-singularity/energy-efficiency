@@ -4,10 +4,10 @@
   "role": "N6 Architecture 시스템설계 성능/속도/자원 개선 ROI",
   "updated": "2026-04-12",
   "ssot_refs": [
-    "shared/config/dse-map.toml",
-    "shared/dse/dse_cross_results_v2_4.json",
-    "shared/discovery_graph.json",
-    "shared/projects.json",
+    "n6shared/config/dse-map.toml",
+    "n6shared/dse/dse_cross_results_v2_4.json",
+    "n6shared/discovery_graph.json",
+    "n6shared/projects.json",
     "papers/_registry.json",
     "domains/_index.json",
     "nexus/origins/ready-absorber/",
@@ -62,7 +62,7 @@
       "id": 3,
       "category": "sync",
       "name": "DSE 결과 v2/v2_4 중복 파일 통합",
-      "desc": "shared/dse/에 dse_cross_results_v2.json(80KB) + dse_cross_results_v2_4.json(80KB) 거의 동일 구조. v2_4가 480 도메인(v2는 453) → v2 삭제 + symlink 또는 단일 파일 유지",
+      "desc": "n6shared/dse/에 dse_cross_results_v2.json(80KB) + dse_cross_results_v2_4.json(80KB) 거의 동일 구조. v2_4가 480 도메인(v2는 453) → v2 삭제 + symlink 또는 단일 파일 유지",
       "impact_x": 1.5,
       "est_hours": 1,
       "roi": 1.5,
@@ -70,7 +70,7 @@
       "difficulty": "easy",
       "status": "done",
       "target_files": [
-        "shared/dse/dse_cross_results_v2_4.json"
+        "n6shared/dse/dse_cross_results_v2_4.json"
       ],
       "result": "v2 삭제 완료 (git rm). v2_4(480 도메인)만 유지. cross_dse_fusion_v2_run.hexa는 이미 v2_4 출력. reports/ 내 v2 언급은 히스토리 기록으로 보존",
       "note": "diff 결과: 도메인 수(453 vs 480), 쌍 수(83K vs 93K), 상위 pairs 3행 차이뿐. v2 제거 후 참조 경로 1곳(cross_dse_fusion_v2_run.hexa 출력) 업데이트"
@@ -79,7 +79,7 @@
       "id": 4,
       "category": "infra",
       "name": "absorbed 로그 아카이브 압축",
-      "desc": "shared/logs/absorbed/ 2,927파일 11MB — 과거 흡수 완료 로그. 읽기 전용 → .tar.gz 아카이브 + 인덱스 JSON 분리",
+      "desc": "n6shared/logs/absorbed/ 2,927파일 11MB — 과거 흡수 완료 로그. 읽기 전용 → .tar.gz 아카이브 + 인덱스 JSON 분리",
       "impact_x": 2.5,
       "est_hours": 2,
       "roi": 1.25,
@@ -87,7 +87,7 @@
       "difficulty": "easy",
       "status": "done",
       "target_files": [
-        "shared/logs/absorbed/"
+        "n6shared/logs/absorbed/"
       ],
       "note": "2,927 소형 JSON 파일 → ls/find 지연 유발. tar.gz 시 ~2MB 추정 (JSON 압축률 80%). 필요 시 인덱스로 O(1) 조회",
       "result": "2,924 JSON → absorbed_archive.tar.gz(1.2MB) + absorbed_index.json(868KB). git tracked 2,924파일 제거, DIGEST.md+README.md 보존. 디스크 11MB→2.1MB(81% 감소), git object 수 대폭 절감"
@@ -126,9 +126,9 @@
       "difficulty": "easy",
       "status": "done",
       "target_files": [
-        "shared/discovery_graph.json",
-        "shared/.graph_patch_log.jsonl",
-        "shared/.graph_meta_cache.json"
+        "n6shared/discovery_graph.json",
+        "n6shared/.graph_patch_log.jsonl",
+        "n6shared/.graph_meta_cache.json"
       ],
       "note": "v11~v14 확장 히스토리에서 매회 전체 685KB 재기록. 증분 패치(노드/엣지 append) 시 I/O 90% 감소. meta.notes_vN 체인 이미 변경 추적 가능",
       "progress": ".graph_patch_log.jsonl (append-only 증분 로그) + .graph_meta_cache.json (515노드/2087엣지/15 notes 체인 요약) 생성 완료. 다음 확장 시 패치 로그에 append 후 일괄 병합하면 전체 재직렬화 불필요.",
@@ -166,7 +166,7 @@
       "status": "done",
       "target_files": [
         ".verify_cache.json",
-        "shared/tools/verify_batch.sh"
+        "n6shared/tools/verify_batch.sh"
       ],
       "note": "최초 279 추정 -> 실측 177. 2회차 실행 시 변경 없으면 전량 skip = O(1)",
       "result": "177개 등록, 재실행 시 177/177 skip 확인, --all/--dry-run 지원, hexa/python 자동 감지"
@@ -210,9 +210,9 @@
       "difficulty": "medium",
       "status": "done",
       "target_files": [
-        "shared/config/dse_filter.json",
-        "shared/dse/dse_cross_results_v2_4.json",
-        "shared/config/dse-map.toml"
+        "n6shared/config/dse_filter.json",
+        "n6shared/dse/dse_cross_results_v2_4.json",
+        "n6shared/config/dse-map.toml"
       ],
       "note": "19 카테고리 (hexa 42 + energy 38 + biology 36 + materials 30 + compute 26 + ...). uncategorized 188개는 이종이므로 skip 제외",
       "result": "threshold 컷 21,633쌍(18.8%) + 카테고리 skip 4,761쌍(4.1%) = 합산 26,394쌍(23.0%) 절감. 유효 잔여 88,566쌍(77.0%)"

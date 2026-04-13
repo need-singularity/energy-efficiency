@@ -10,7 +10,7 @@
 ## 복원 방법
 
 ```bash
-cd shared/logs
+cd n6shared/logs
 tar xzf absorbed_archive.tar.gz
 ```
 
