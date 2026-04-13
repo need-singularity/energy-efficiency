@@ -1,0 +1,3 @@
+{"ts":1776111382,"direction":"atlas→n6arch","delta":{"nodes":20502,"edges":21965,"hubs":370,"cur_nodes":20502,"cur_edges":21965,"cur_hubs":370}}
+{"ts":1776111382,"direction":"atlas→n6arch","delta":{"nodes":20502,"edges":21965,"hubs":370,"cur_nodes":20502,"cur_edges":21965,"cur_hubs":370},"status":"pending"}
+{"ts":1776111395,"direction":"blowup→atlas","source":"blowup_test","seed":"sigma_sopfr+j2","result":"new_edge_7->19","status":"pending"}
