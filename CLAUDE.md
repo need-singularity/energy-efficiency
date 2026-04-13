@@ -3,6 +3,7 @@
 commands: n6shared/config/commands.json — autonomous 블록으로 Claude Code가 작업 중 smash/free/todo/go/keep 자율 판단·실행
 rules: n6shared/rules/common.json (R0~R27) + n6shared/rules/n6-architecture.json (N61~N65)
 L0 Guard: `hexa ~/Dev/nexus/shared/harness/l0_guard.hexa <verify|sync|merge|status>`
+loop: 글로벌 `~/.claude/skills/loop` + 엔진 `~/Dev/nexus/shared/harness/loop` — roadmap `~/Dev/nexus/shared/roadmaps/n6-architecture.json` 3-track×phase×gate 자동
 
 atlas.n6 — 현실지도 SSOT:
   경로: $NEXUS/shared/n6/atlas.n6 (단일 파일, 60K+ 줄)
