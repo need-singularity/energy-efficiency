@@ -4,13 +4,13 @@
 
 ## ⛔ 신규 파일 추가 금지
 
-이 디렉토리의 Rust `.rs` 렌즈 파일 (312+) 은 **폐기 대상 레거시**이다. 진짜 SSOT 는 HEXA 네이티브 `/Users/ghost/Dev/nexus/shared/lenses/` 이다.
+이 디렉토리의 Rust `.rs` 렌즈 파일 (312+) 은 **폐기 대상 레거시**이다. 진짜 SSOT 는 HEXA 네이티브 `$NEXUS/shared/lenses/` 이다.
 
 ## ✅ 새 렌즈는 여기에
 
 ```
-/Users/ghost/Dev/nexus/shared/lenses/          ← 진짜 렌즈 SSOT (84 .hexa)
-/Users/ghost/Dev/nexus/shared/blowup/lens/     ← 번들 컬렉션 (15 .hexa)
+$NEXUS/shared/lenses/          ← 진짜 렌즈 SSOT (84 .hexa)
+$NEXUS/shared/blowup/lens/     ← 번들 컬렉션 (15 .hexa)
 ```
 
 ## 이 디렉토리 처리 예정

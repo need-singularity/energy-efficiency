@@ -97,7 +97,7 @@ nexus grade 1~13 rubric (n=6 universal):
 2. EXACT 매칭 → verified_constants.jsonl에 PASS/EXACT 추가
 3. 10 도달 시 🎉🎉🎉 닫힘완료 🎉🎉🎉 배너 자동 발화
 
-상세: /Users/ghost/Dev/nexus/shared/GRADE_RUBRIC_1_TO_10PLUS.md
+상세: $NEXUS/shared/GRADE_RUBRIC_1_TO_10PLUS.md
 ```
 
 ---

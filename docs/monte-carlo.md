@@ -3,7 +3,7 @@
 > 작성: 2026-04-11
 > 저자: n6-architecture 수렴팀
 > 목표: v8 한계(큰수 N=10) 돌파, 대조군 5종 확장, atlas.n6 단일소스 전환
-> SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`
+> SSOT: `$NEXUS/shared/n6/atlas.n6`
 > 규칙: common.R1(HEXA-FIRST) / R8(데이터 원격) / R14(shared SSOT) / R28(atlas 흡수) / N62(검증코드 임베드) 준수
 
 ---
@@ -227,7 +227,7 @@ v9 파이프라인에 `--v8-compat` 모드: 값형 시그니처 + 3000 trials + 
 ### 5.2 v9 기본 실행
 
 ```
-./monte-carlo-v9.hexa --seed 20260411 --trials 3000 --atlas /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+./monte-carlo-v9.hexa --seed 20260411 --trials 3000 --atlas $NEXUS/shared/n6/atlas.n6
 ```
 
 ### 5.3 CI 통합 (향후)
@@ -334,8 +334,8 @@ t=72s     : 완료 + 리포트 출력                       (~0s)
 ## 부록 A — 검증 실행 명령
 
 ```sh
-ATLAS=/Users/ghost/Dev/nexus/shared/n6/atlas.n6
-HEXA=/Users/ghost/Dev/n6-architecture/experiments/monte-carlo-v9.hexa
+ATLAS=$NEXUS/shared/n6/atlas.n6
+HEXA=$N6_ARCH/experiments/monte-carlo-v9.hexa
 
 # v8 회귀 재현
 nexus hexa run $HEXA -- --v8-compat --seed 20260408

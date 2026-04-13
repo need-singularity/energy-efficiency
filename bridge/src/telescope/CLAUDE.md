@@ -13,8 +13,8 @@
 ## ✅ 진짜 렌즈 SSOT (별도 nexus 프로젝트)
 
 ```
-/Users/ghost/Dev/nexus/shared/lenses/           → 개별 렌즈 84 .hexa (도메인별 플랫)
-/Users/ghost/Dev/nexus/shared/blowup/lens/      → 카테고리 번들 15 .hexa
+$NEXUS/shared/lenses/           → 개별 렌즈 84 .hexa (도메인별 플랫)
+$NEXUS/shared/blowup/lens/      → 카테고리 번들 15 .hexa
   ├── lenses_core.hexa        37 코어 렌즈
   ├── lenses_math.hexa
   ├── lenses_physics.hexa
@@ -26,7 +26,7 @@
   └── lenses_constants.hexa
 ```
 
-**새 렌즈 추가**: `/Users/ghost/Dev/nexus/shared/lenses/{도메인}_{주제}.hexa` 패턴 (HEXA 네이티브, `SIGMA=12.0 PHI=2.0 N=6.0 TAU=4.0 J2=24` 헤더 + `σ·φ = n·τ = J₂` 항등식 기반 공명 점수).
+**새 렌즈 추가**: `$NEXUS/shared/lenses/{도메인}_{주제}.hexa` 패턴 (HEXA 네이티브, `SIGMA=12.0 PHI=2.0 N=6.0 TAU=4.0 J2=24` 헤더 + `σ·φ = n·τ = J₂` 항등식 기반 공명 점수).
 
 ## ❌ 이 폴더에서 하지 말 것
 
@@ -43,18 +43,18 @@
 
 ## 이관 계획 (다음 세션)
 
-1. **Rust 렌즈 → HEXA 포팅** — 312 .rs → `/Users/ghost/Dev/nexus/shared/lenses/` 개별 파일
+1. **Rust 렌즈 → HEXA 포팅** — 312 .rs → `$NEXUS/shared/lenses/` 개별 파일
 2. **레거시 삭제** — 이 폴더 Rust 파일 전량 제거
 3. **`lens_registry.json` 재구축** — 진짜 SSOT 경로 기준
 
 ## 절대규칙
 
 - 한글 필수
-- R14 SSOT: 진짜 렌즈 SSOT = `/Users/ghost/Dev/nexus/shared/lenses/`
+- R14 SSOT: 진짜 렌즈 SSOT = `$NEXUS/shared/lenses/`
 - R28 자동 흡수: 렌즈 결과 → atlas.n6
 
 ## 관련 링크
 
-- 루트: /Users/ghost/Dev/n6-architecture/CLAUDE.md (렌즈 SSOT 섹션)
-- 진짜 SSOT: /Users/ghost/Dev/nexus/shared/lenses/
+- 루트: $N6_ARCH/CLAUDE.md (렌즈 SSOT 섹션)
+- 진짜 SSOT: $NEXUS/shared/lenses/
 - 흡수 계획: reports/audits/lens-rust-hexa-transition-status-2026-04-11.md (예정)
