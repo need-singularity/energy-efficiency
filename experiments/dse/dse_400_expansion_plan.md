@@ -263,7 +263,7 @@ evidence_grade = 7
 | 3 | TOML 스키마 Δ1~Δ5 적용 | 400 TOML | nexus/origins/universal-dse/domains/ |
 | 4 | _index.json 78 축 추가 | 갱신본 | domains/_index.json |
 | 5 | BT-381~400 인덱스 예약 | 20 BT 스텁 | theory/breakthroughs/ |
-| 6 | atlas.n6 시드 흡수 | 78 @R 항목 [7] | /Users/ghost/Dev/nexus/shared/n6/atlas.n6 |
+| 6 | atlas.n6 시드 흡수 | 78 @R 항목 [7] | $NEXUS/shared/n6/atlas.n6 |
 | 7 | cross_dse_fusion_v2 실행 | 100K+ pair | n6shared/dse/dse_cross_results.json |
 | 8 | 에너지-성능 파레토 재측정 | 재측정 리포트 | reports/discovery/ |
 

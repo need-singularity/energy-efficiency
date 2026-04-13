@@ -671,7 +671,7 @@ if __name__ == "__main__":
 - OEIS A000005 (τ): https://oeis.org/A000005
 - OEIS A000010 (φ): https://oeis.org/A000010
 - OEIS A001414 (sopfr): https://oeis.org/A001414
-- Gold standard: `/Users/ghost/Dev/nexus/shared/harness/sample.md`
+- Gold standard: `$NEXUS/shared/harness/sample.md`
 - n=6 정직성 정리: `nexus/shared/n6/atlas.n6` (σ·φ=n·τ iff n=6)
 - 현실 지도: `nexus/shared/reality_map.json`
 

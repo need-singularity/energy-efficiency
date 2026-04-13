@@ -103,7 +103,7 @@ shared_constants 8개 (n, phi, n/phi,       동적 추출 (n6_formula 태그 전
 | dse_cross_pilot.hexa          | 927 줄 .py | STUB | git c65d31d9:scripts/dse_cross_pilot.py |
 | dse_cluster_v2.hexa           | 189 줄 .py | STUB | git c65d31d9:scripts/dse_cluster_v2.py |
 
-실제 375 TOML → 67,913 pair 산출 결과가 기록된 `/Users/ghost/Dev/nexus/shared/dse/dse_cross_results.json`(≈1.2M 줄, generated_at 2026-04-10) 는 **정상 상태**. 현 알고리즘이 실제로 돌아간 흔적이며, v2 는 이 출력 형식과 호환을 유지해야 한다.
+실제 375 TOML → 67,913 pair 산출 결과가 기록된 `$NEXUS/shared/dse/dse_cross_results.json`(≈1.2M 줄, generated_at 2026-04-10) 는 **정상 상태**. 현 알고리즘이 실제로 돌아간 흔적이며, v2 는 이 출력 형식과 호환을 유지해야 한다.
 
 ### 4.2 현 알고리즘 요약 (git history 기반 논리 추출)
 
