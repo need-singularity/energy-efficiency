@@ -1,14 +1,208 @@
-// health_check.sh → .hexa 포팅
-// 원본 경로: nexus/scripts/health_check.sh
-// 포팅 상태: STUB (원본 259줄)
-// 원본 요약: NEXUS-6 성장 헬스 체크
-//   체크 항목: launchd / cron / 프로세스 / 최근 성장 / 로그 항목
-//   종료 코드: 0=실행중, 1=중지, 2=자동 시작됨
-//   --start-if-dead: 데몬 자동 시작 (launchd→cron→직접 실행)
-//   --status-only: 상태만 출력
-// 본격 포팅: hexa run 으로 추진 예정
-// 원본 로직은 git history 에 보존됨
+// health_check.hexa — NEXUS-6 성장 데몬 헬스 체크 (원본 health_check.sh 258줄, 미니멀 포팅)
+// 사용: hexa run health_check.hexa [--quiet] [--start-if-dead] [--status-only]
+// 종료 코드: 0=실행중 / 1=중지 / 2=죽어있다가 자동 시작됨
 
-fn main() {
-    println("STUB: nexus/scripts/health_check (HEXA 포팅 대기)")
+// ─── 유틸 ──────────────────────────────────────────────────────────
+fn sh(cmd) {
+    let mut out = ""
+    try { out = to_string(exec(cmd)) } catch e { out = "" }
+    return out
 }
+
+fn sh_trim(cmd) { return sh(cmd).trim() }
+
+fn file_exists_simple(path) -> bool {
+    return sh_trim("test -f '" + path + "' && echo y || echo n") == "y"
+}
+
+fn dir_exists_simple(path) -> bool {
+    return sh_trim("test -d '" + path + "' && echo y || echo n") == "y"
+}
+
+fn pid_alive(pid: string) -> bool {
+    if len(pid) == 0 { return false }
+    return sh_trim("kill -0 " + pid + " 2>/dev/null && echo y || echo n") == "y"
+}
+
+// ─── 경로 상수 ─────────────────────────────────────────────────────
+let HOME = env("HOME")
+let NEXUS_STATE = HOME + "/.nexus"
+let PID_FILE = NEXUS_STATE + "/daemon.pid"
+let GROWTH_LOG = NEXUS_STATE + "/growth_log.jsonl"
+let DAEMON_LOG = NEXUS_STATE + "/daemon.log"
+let NOTIFY_LOG = NEXUS_STATE + "/notifications.log"
+let LAUNCHD_LABEL = "com.nexus.growth"
+let PLIST_USER = HOME + "/Library/LaunchAgents/" + LAUNCHD_LABEL + ".plist"
+let PLIST_SRC = HOME + "/Dev/nexus/shared/launchd/" + LAUNCHD_LABEL + ".plist"
+let SCRIPT_DIR = HOME + "/Dev/n6-architecture/bridge/scripts"
+let DAEMON_SCRIPT = SCRIPT_DIR + "/nexus_growth_daemon.hexa"
+let HEXA_BIN = HOME + "/Dev/nexus/shared/bin/hexa"
+
+// ─── CLI 파싱 ─────────────────────────────────────────────────────
+let argv = args()
+let argc = len(argv)
+let mut QUIET = false
+let mut START_IF_DEAD = false
+let mut STATUS_ONLY = false
+let mut SHOW_HELP = false
+let mut ai: i64 = 2
+while ai < argc {
+    let a = argv[ai]
+    if a == "--quiet" { QUIET = true; ai = ai + 1 }
+    else if a == "--start-if-dead" { START_IF_DEAD = true; ai = ai + 1 }
+    else if a == "--status-only" { STATUS_ONLY = true; ai = ai + 1 }
+    else if a == "-h" || a == "--help" { SHOW_HELP = true; ai = ai + 1 }
+    else { ai = ai + 1 }
+}
+
+if SHOW_HELP {
+    println("NEXUS-6 Growth Health Check")
+    println("")
+    println("Usage: hexa run health_check.hexa [OPTIONS]")
+    println("")
+    println("Options:")
+    println("  --quiet          출력 억제")
+    println("  --start-if-dead  데몬 자동 시작 (launchd 우선, 백그라운드 fallback)")
+    println("  --status-only    상태만 출력")
+    println("")
+    println("Exit codes:")
+    println("  0 = 데몬 실행 중")
+    println("  1 = 데몬 중지")
+    println("  2 = 데몬이 죽어있었고 자동 시작됨")
+    return 0
+}
+
+// ─── 상태 디렉토리 ──────────────────────────────────────────────────
+try { exec("mkdir -p '" + NEXUS_STATE + "/reports'") } catch e {}
+
+// ─── 체크 함수 ──────────────────────────────────────────────────────
+
+// launchd load 여부 — 정확한 라벨 end-of-line 매칭 (growth-tick 등 prefix 충돌 회피)
+fn check_launchd(label: string) -> [string] {
+    // awk 로 마지막 필드 == label 만 카운트
+    let out = sh_trim("launchctl list 2>/dev/null | awk -v L='" + label + "' '$NF==L{n++} END{print n+0}'")
+    let mut v: i64 = 0
+    try { v = to_int(out) } catch e { v = 0 }
+    if v > 0 { return ["y", "loaded (" + label + ")"] }
+    return ["n", "not loaded"]
+}
+
+// 프로세스 살아있는가 (PID 파일 우선 → pgrep fallback)
+fn check_process(pid_file: string) -> [string] {
+    if file_exists_simple(pid_file) {
+        let pid = sh_trim("cat '" + pid_file + "' 2>/dev/null | tr -d '[:space:]'")
+        if len(pid) > 0 && pid_alive(pid) {
+            return ["y", "PID " + pid]
+        }
+    }
+    let pgrep = sh_trim("pgrep -f nexus_growth_daemon 2>/dev/null | head -1")
+    if len(pgrep) > 0 { return ["y", "PID " + pgrep + " (pgrep)"] }
+    return ["n", "not running"]
+}
+
+// 최근 growth_log 활동 (<60분)
+fn check_last_growth(log_file: string) -> [string] {
+    if !file_exists_simple(log_file) { return ["n", "no log file"] }
+    let mod_s = sh_trim("stat -f %m '" + log_file + "' 2>/dev/null")
+    let now_s = sh_trim("date +%s")
+    let mut mod_v: i64 = 0
+    let mut now_v: i64 = 0
+    try { mod_v = to_int(mod_s) } catch e { mod_v = 0 }
+    try { now_v = to_int(now_s) } catch e { now_v = 0 }
+    let age_min = (now_v - mod_v) / 60
+    if age_min < 60 { return ["y", to_string(age_min) + " min ago"] }
+    return ["n", to_string(age_min) + " min ago (stale)"]
+}
+
+// growth_log 엔트리 수
+fn check_growth_entries(log_file: string) -> [string] {
+    if !file_exists_simple(log_file) { return ["n", "no entries"] }
+    let s = sh_trim("wc -l < '" + log_file + "' 2>/dev/null | tr -d ' '")
+    let mut v: i64 = 0
+    try { v = to_int(s) } catch e { v = 0 }
+    if v > 0 { return ["y", to_string(v) + " entries"] }
+    return ["n", "empty"]
+}
+
+// ─── 체크 실행 ─────────────────────────────────────────────────────
+let launchd_res = check_launchd(LAUNCHD_LABEL)
+let process_res = check_process(PID_FILE)
+let growth_res = check_last_growth(GROWTH_LOG)
+let entries_res = check_growth_entries(GROWTH_LOG)
+
+let launchd_ok = launchd_res[0] == "y"
+let process_ok = process_res[0] == "y"
+let growth_ok = growth_res[0] == "y"
+let entries_ok = entries_res[0] == "y"
+
+// healthy = process running OR recent activity
+let is_healthy = process_ok || growth_ok
+
+fn status_icon(ok: bool) -> string {
+    if ok { return "OK" }
+    return "--"
+}
+
+if !QUIET {
+    println("")
+    println("NEXUS-6 Growth System Health Check")
+    println("-----------------------------------")
+    println("  launchd:     " + status_icon(launchd_ok) + "  " + launchd_res[1])
+    println("  process:     " + status_icon(process_ok) + "  " + process_res[1])
+    println("  last growth: " + status_icon(growth_ok) + "  " + growth_res[1])
+    println("  growth log:  " + status_icon(entries_ok) + "  " + entries_res[1])
+    println("-----------------------------------")
+    if is_healthy { println("Status: HEALTHY") }
+    else { println("Status: NOT RUNNING") }
+    println("")
+}
+
+if STATUS_ONLY {
+    if is_healthy { return 0 }
+    return 1
+}
+
+// ─── 자동 시작 ────────────────────────────────────────────────────
+if START_IF_DEAD && !is_healthy {
+    if !QUIET { println("Attempting to start NEXUS-6 growth daemon...") }
+
+    let mut started = false
+
+    // Method 1: launchd — user plist 가 이미 설치되어 있고 미로드면 load
+    if file_exists_simple(PLIST_USER) && !launchd_ok {
+        let rc = sh_trim("launchctl load '" + PLIST_USER + "' 2>&1 && echo ok || echo fail")
+        if rc.contains("ok") {
+            if !QUIET { println("  -> Loaded via launchd (" + LAUNCHD_LABEL + ")") }
+            started = true
+        } else {
+            if !QUIET { println("  -> launchctl load failed: " + rc) }
+        }
+    }
+
+    // Method 2: 직접 백그라운드 실행 (항상 동작)
+    if !started {
+        if file_exists_simple(DAEMON_SCRIPT) {
+            // nohup 백그라운드로 hexa 데몬 기동
+            let cmd = "nohup '" + HEXA_BIN + "' run '" + DAEMON_SCRIPT +
+                      "' --max-cycles 999 --interval 5 --skip-commit" +
+                      " >> '" + NEXUS_STATE + "/growth.log' 2>&1 &"
+            try { exec(cmd) } catch e {
+                if !QUIET { println("  -> ERROR: 백그라운드 기동 실패") }
+            }
+            if !QUIET { println("  -> 데몬 백그라운드 기동 요청 전송") }
+            started = true
+        } else {
+            if !QUIET { println("  -> ERROR: Daemon script not found: " + DAEMON_SCRIPT) }
+        }
+    }
+
+    if started {
+        let ts = sh_trim("date -u +%Y-%m-%dT%H:%M:%SZ")
+        try { exec("printf '[%s] health_check auto-started daemon\\n' '" + ts + "' >> '" + NOTIFY_LOG + "'") } catch e {}
+        return 2
+    }
+    return 1
+}
+
+if is_healthy { return 0 }
+return 1
