@@ -1,0 +1,72 @@
+// bt-extension-verifier — BT 확장 검증기 (HEXA 스켈레톤)
+//
+// docs/breakthrough-theorems*.md 에서 BT-XXX 블록을 파싱하여
+// n=6 EXACT 비율, 누락 BT, 도메인 분포를 보고.
+// 작성: 2026-04-08 / 상태: 스켈레톤
+
+
+fn str_count(haystack, needle) {
+  let mut c = 0
+  let lines = split(haystack, "\n")
+  for line in lines {
+    if contains(line, needle) { c = c + 1 }
+  }
+  return c
+}
+
+let N6_CONST_NAMES = ["sigma", "tau", "phi", "sopfr", "J2", "sigma_tau", "sigma_phi", "sigma_sq"]
+let N6_CONST_VALS = [12, 4, 2, 5, 24, 8, 10, 144]
+
+let argv = args()
+let path = if len(argv) > 1 { argv[1] } else { "docs/breakthrough-theorems.md" }
+print("# bt-extension-verifier — BT EXACT ratio verifier")
+print("# input: " + path)
+
+let text = read_file(path)
+
+let bt_count = str_count(text, "BT-")
+let exact = str_count(text, "EXACT")
+let close = str_count(text, "CLOSE")
+let weak  = str_count(text, "WEAK")
+let fail  = str_count(text, "FAIL")
+
+let total = exact + close + weak + fail
+let exact_pct = if total > 0 { 100.0 * exact / total } else { 0.0 }
+
+print("BT mentions:    " + to_string(bt_count))
+print("EXACT count:    " + to_string(exact))
+print("CLOSE count:    " + to_string(close))
+print("WEAK count:     " + to_string(weak))
+print("FAIL count:     " + to_string(fail))
+print("EXACT ratio:    " + to_string(exact_pct) + "%")
+
+print("n=6 constant mentions in BT text:")
+let mut ci = 0
+while ci < len(N6_CONST_NAMES) {
+    let name = N6_CONST_NAMES[ci]
+    let val = N6_CONST_VALS[ci]
+    let by_name = str_count(text, name)
+    let by_val  = str_count(text, to_string(val))
+    print("  " + name + " (=" + to_string(val) + ")  name=" + to_string(by_name) + "  value=" + to_string(by_val))
+    ci = ci + 1
+}
+
+// 누락 BT (1..360)
+let mut missing_count = 0
+let mut i = 1
+while i <= 360 {
+    let key = "BT-" + to_string(i)
+    if !text.contains(key) { missing_count = missing_count + 1 }
+    i = i + 1
+}
+print("missing BT in this file: " + to_string(missing_count) + " / 360")
+
+if exact_pct >= 90.0 { print("PASS: EXACT >= 90%") }
+else { print("WARN: EXACT < 90% — 보강 필요") }
+
+// 확장 계획:
+// - 다중 파일 입력 (디렉토리 walk) — HEXA fs_walk 지원 시 구현
+// - JSON/JSONL 출력 — --json 플래그 추가 예정
+// - BT → 도메인 매핑 — shared/domain_registry.jsonl 연동
+// - bt-update-notes.md 자동 갱신 — growth_bus.jsonl 연동
+// - 정직 검증: 본문 수치를 sympy 등으로 재계산 (자기참조 금지)

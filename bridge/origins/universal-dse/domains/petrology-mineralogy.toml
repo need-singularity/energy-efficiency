@@ -1,0 +1,353 @@
+# =============================================================
+# PETROLOGY/MINERALOGY DSE 도메인 정의
+# 암석학/광물학 — n=6 광물 결정계 + sigma=12 암석군 + tau=4 변성 등급
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "petrology-mineralogy"
+desc = "암석학/광물학 DSE — 화성·퇴적·변성·결정구조·식별, n=6 결정계"
+levels = ["Crystal", "RockType", "Process", "Identification", "Application"]
+vision = "n=6 기반 궁극 암석학 — n=6 결정계 + sigma=12 암석 + tau=4 등급"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Crystal"
+
+[[candidate]]
+level  = 0
+id     = "Isometric"
+label  = "등축정계 (n=6 축 대칭)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.88
+cost   = 0.85
+notes  = "symmetry=6=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Tetragonal"
+label  = "정방정계 (phi=2 축비 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "axes=a=b!=c=2=phi NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Hexagonal"
+label  = "육방정계 (tau=4 main Miller)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "indices=4=tau NEAR (Miller-Bravais)"
+
+[[candidate]]
+level  = 0
+id     = "Orthorhombic"
+label  = "사방정계 (sigma=12 구조 파라미터)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "params=12=sigma NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Monoclinic"
+label  = "단사정계 (n=6 beta 각 주)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "angles=6=n NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Triclinic"
+label  = "삼사정계 (phi=2 lattice 자유도 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "dims=2=phi NEAR"
+
+[[level]]
+name = "RockType"
+
+[[candidate]]
+level  = 1
+id     = "Igneous_Plut"
+label  = "심성 화성암 (n=6 주요 형태)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "forms=6=n NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Igneous_Volc"
+label  = "화산 화성암 (phi=2 basalt/rhyolite EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "extremes=2=phi NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Sediment_Clastic"
+label  = "쇄설 퇴적 (tau=4 주요 크기 분급)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "sizes=4=tau NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Sediment_Chem"
+label  = "화학 퇴적 (sigma=12 주요 mineral)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "minerals=12=sigma NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Metamorphic_Reg"
+label  = "광역 변성 (n=6 주요 facies)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.70
+notes  = "facies=6~=n NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Metamorphic_Cont"
+label  = "접촉 변성 (phi=2 zone EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "zones=2=phi NEAR"
+
+[[level]]
+name = "Process"
+
+[[candidate]]
+level  = 2
+id     = "Crystal_Frac"
+label  = "결정분화 (tau=4 순서 bowen)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "orders=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Partial_Melt"
+label  = "부분 용융 (phi=2 경로 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "paths=2=phi NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Weathering"
+label  = "풍화 (n=6 주요 기작)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "mechanisms=6=n NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Diagenesis"
+label  = "속성 작용 (sigma=12 km 깊이)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "depth=12km=sigma NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Metamorph_Grade"
+label  = "변성 등급 (tau=4 주요 step)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "steps=4=tau EXACT (low/medium/high/ultra-high)"
+
+[[candidate]]
+level  = 2
+id     = "Hydrothermal"
+label  = "열수 작용 (phi=2 고/저 T EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "Ts=2=phi NEAR"
+
+[[level]]
+name = "Identification"
+
+[[candidate]]
+level  = 3
+id     = "Polarized_Micro"
+label  = "편광 현미경 (phi=2 XPL/PPL EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "modes=2=phi EXACT"
+
+[[candidate]]
+level  = 3
+id     = "XRD_Diffract"
+label  = "XRD (n=6 주요 peak)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "peaks=6~=n NEAR"
+
+[[candidate]]
+level  = 3
+id     = "EMP_MICRO"
+label  = "전자 마이크로프로브 (sigma=12 element)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.60
+notes  = "elements=12=sigma NEAR"
+
+[[candidate]]
+level  = 3
+id     = "SEM_BSE"
+label  = "SEM-BSE (tau=4 contrast)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.65
+notes  = "contrasts=4=tau NEAR"
+
+[[candidate]]
+level  = 3
+id     = "Raman_Spectro"
+label  = "라만 (n=6 fingerprint 밴드)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "bands=6=n NEAR"
+
+[[candidate]]
+level  = 3
+id     = "LA_ICP_MS"
+label  = "LA-ICP-MS (phi=2 solution/laser EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.65
+cost   = 0.50
+notes  = "modes=2=phi EXACT"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "Ore_Deposit"
+label  = "광상 (tau=4 주요 type)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "types=4=tau NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Petroleum_Reservoir"
+label  = "석유 저류층 (sigma=12 주요 trap)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "traps=12=sigma NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Geothermal"
+label  = "지열 (n=6 깊이 km 표준)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.60
+notes  = "depth=6km=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Gem_Grading"
+label  = "보석 등급 (phi=2 지상/인공 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "origins=2=phi NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Building_Stone"
+label  = "건축 석재 (n=6 주요 종)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "types=6=n NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Soil_Classification"
+label  = "토양 분류 (tau=4 USDA order)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "orders=4=tau NEAR"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Igneous_Plut"
+then_level = 2
+then_ids   = "Crystal_Frac,Partial_Melt"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Metamorphic_Reg"
+then_level = 2
+then_ids   = "Metamorph_Grade"
+
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Triclinic"
+then_level = 4
+then_ids   = "Gem_Grading,Building_Stone"

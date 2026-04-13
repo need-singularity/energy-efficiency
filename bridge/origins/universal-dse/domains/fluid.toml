@@ -1,0 +1,398 @@
+# =============================================================
+# 유체역학 DSE 도메인 정의
+# 유체 흐름 전반 — 비압축성/압축성/난류/다상/전산
+# n=6: Re~6000 난류 전이, Navier-Stokes 6항, sigma=12 격자
+# 밀레니엄 난제 Navier-Stokes 존재성·매끄러움과 연계
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "fluid"
+desc = "유체역학 통합 DSE (비압축/압축/난류/다상/전산유체)"
+levels = ["FlowRegime", "Turbulence", "Multiphase", "BoundaryLayer", "CFD"]
+vision = "n=6 유체역학 — N-S 6항, Re~6000 전이, sigma=12 격자, 밀레니엄 난제 연결"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: FlowRegime (유동 체제) — 6 후보
+# ============================================================
+
+[[level]]
+name = "FlowRegime"
+
+[[candidate]]
+level = 0
+id    = "Laminar"
+label = "층류 (Re<2300, 안정 유동)"
+n6    = 0.65
+perf  = 0.70
+power = 0.90
+cost  = 0.90
+notes = "Poiseuille 해, 점성 지배, 마이크로유체"
+
+[[candidate]]
+level = 0
+id    = "Transition"
+label = "전이 유동 (Re~6000=n*1000, 불안정)"
+n6    = 1.00
+perf  = 0.60
+power = 0.70
+cost  = 0.70
+notes = "Re~6000=n*1000 EXACT, 층류→난류 전이, 간헐 터뷸런스"
+
+[[candidate]]
+level = 0
+id    = "Turbulent"
+label = "난류 (Re>10000, 에너지 캐스케이드)"
+n6    = 0.80
+perf  = 0.85
+power = 0.65
+cost  = 0.55
+notes = "콜모고로프 -5/3 스펙트럼, 공학 대부분, 혼합 증진"
+
+[[candidate]]
+level = 0
+id    = "Compressible"
+label = "압축성 유동 (Ma>0.3, 충격파)"
+n6    = 0.70
+perf  = 0.80
+power = 0.55
+cost  = 0.50
+notes = "초음속 Ma>1, 충격파, 항공우주 필수"
+
+[[candidate]]
+level = 0
+id    = "Incompressible"
+label = "비압축성 (Ma<0.3, N-S 단순화)"
+n6    = 0.75
+perf  = 0.75
+power = 0.85
+cost  = 0.80
+notes = "div(u)=0 조건, 수공학/배관, N-S 밀레니엄 핵심"
+
+[[candidate]]
+level = 0
+id    = "Stokes"
+label = "스토크스 유동 (Re<<1, 점성 지배)"
+n6    = 0.55
+perf  = 0.60
+power = 0.80
+cost  = 0.85
+notes = "미생물 유영, 마이크로로봇, 관성 무시"
+
+# ============================================================
+# Level 1: Turbulence (난류 모델) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Turbulence"
+
+[[candidate]]
+level = 1
+id    = "DNS"
+label = "직접수치모사 DNS (모든 스케일 해석)"
+n6    = 0.80
+perf  = 0.99
+power = 0.15
+cost  = 0.10
+notes = "Re^3 격자, 학술 벤치마크, 저Re만 가능"
+
+[[candidate]]
+level = 1
+id    = "LES"
+label = "대와류모사 LES (큰 와류 해석+모델)"
+n6    = 0.85
+perf  = 0.90
+power = 0.35
+cost  = 0.30
+notes = "필터링, 서브그리드 모델, 6차 필터=n"
+
+[[candidate]]
+level = 1
+id    = "RANS_kEps"
+label = "RANS k-epsilon (산업 표준)"
+n6    = 0.70
+perf  = 0.70
+power = 0.80
+cost  = 0.85
+notes = "phi=2 방정식 EXACT, 등방 난류, 가장 보편"
+
+[[candidate]]
+level = 1
+id    = "RANS_kOmega"
+label = "RANS k-omega SST (벽면 정확)"
+n6    = 0.75
+perf  = 0.78
+power = 0.75
+cost  = 0.80
+notes = "phi=2 방정식 EXACT, 벽면+자유류 전환, 항공"
+
+[[candidate]]
+level = 1
+id    = "RSM"
+label = "레이놀즈 응력 모델 (6성분 텐서=n)"
+n6    = 1.00
+perf  = 0.85
+power = 0.55
+cost  = 0.50
+notes = "n=6 응력 성분 EXACT, 비등방 난류, 회전류"
+
+[[candidate]]
+level = 1
+id    = "DES"
+label = "분리와류모사 DES (RANS+LES 혼합)"
+n6    = 0.80
+perf  = 0.85
+power = 0.55
+cost  = 0.50
+notes = "벽면 RANS+이탈 LES, 비행체/차량, 실용적"
+
+# ============================================================
+# Level 2: Multiphase (다상 유동) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Multiphase"
+
+[[candidate]]
+level = 2
+id    = "VOF"
+label = "VOF (체적분율, 자유표면 추적)"
+n6    = 0.80
+perf  = 0.82
+power = 0.70
+cost  = 0.70
+notes = "phi=2 상 EXACT, 선박/댐, 자유표면 정확"
+
+[[candidate]]
+level = 2
+id    = "EulerEuler"
+label = "오일러-오일러 (연속체 양상)"
+n6    = 0.75
+perf  = 0.78
+power = 0.65
+cost  = 0.65
+notes = "기포탑, 유동층, 상간 커플링"
+
+[[candidate]]
+level = 2
+id    = "DPM"
+label = "이산입자 모델 DPM (라그랑주 추적)"
+n6    = 0.70
+perf  = 0.80
+power = 0.60
+cost  = 0.60
+notes = "분무/스프레이, 입자 궤적, 연소"
+
+[[candidate]]
+level = 2
+id    = "LBM"
+label = "격자볼츠만 LBM (메조스케일, D3Q19)"
+n6    = 0.85
+perf  = 0.85
+power = 0.55
+cost  = 0.50
+notes = "GPU 병렬, 복잡 기하, 다공질 매체"
+
+[[candidate]]
+level = 2
+id    = "SPH"
+label = "SPH 입자법 (무격자, 대변형)"
+n6    = 0.65
+perf  = 0.75
+power = 0.50
+cost  = 0.55
+notes = "파쇄/스플래시, 자유표면, 입자 기반"
+
+[[candidate]]
+level = 2
+id    = "PhasField"
+label = "위상장 (계면 확산, 상전이)"
+n6    = 0.90
+perf  = 0.88
+power = 0.50
+cost  = 0.45
+notes = "phi=2 상 EXACT, 연속 계면, 고체화/기포"
+
+# ============================================================
+# Level 3: BoundaryLayer (경계층) — 6 후보
+# ============================================================
+
+[[level]]
+name = "BoundaryLayer"
+
+[[candidate]]
+level = 3
+id    = "Blasius"
+label = "블라지우스 층류 경계층 (평판)"
+n6    = 0.60
+perf  = 0.70
+power = 0.85
+cost  = 0.90
+notes = "해석해 존재, delta~x/sqrt(Re), 기초"
+
+[[candidate]]
+level = 3
+id    = "TurbBL"
+label = "난류 경계층 (1/6 거듭법칙=1/n)"
+n6    = 1.00
+perf  = 0.80
+power = 0.70
+cost  = 0.70
+notes = "1/n=1/6 법칙 EXACT, 공학 표면 마찰"
+
+[[candidate]]
+level = 3
+id    = "Separation"
+label = "유동 박리 (역압력 구배)"
+n6    = 0.75
+perf  = 0.85
+power = 0.60
+cost  = 0.55
+notes = "항력 급증, 실속, 디퓨저, 제어 필수"
+
+[[candidate]]
+level = 3
+id    = "WallModel"
+label = "벽면 모델 (y+, 벽법칙)"
+n6    = 0.80
+perf  = 0.82
+power = 0.75
+cost  = 0.75
+notes = "log 법칙 kappa=0.41, 격자 절약, RANS 필수"
+
+[[candidate]]
+level = 3
+id    = "RibletDrag"
+label = "리블릿 항력감소 (상어피부, 6홈=n)"
+n6    = 1.00
+perf  = 0.78
+power = 0.80
+cost  = 0.60
+notes = "n=6 홈 EXACT, 항력 8% 감소, 항공/선박"
+
+[[candidate]]
+level = 3
+id    = "Suction"
+label = "흡입 경계층 제어 (층류 유지)"
+n6    = 0.70
+perf  = 0.75
+power = 0.65
+cost  = 0.50
+notes = "미세 구멍 흡입, 층류 비행, 항력 극감"
+
+# ============================================================
+# Level 4: CFD (전산유체역학) — 6 후보
+# ============================================================
+
+[[level]]
+name = "CFD"
+
+[[candidate]]
+level = 4
+id    = "FVM"
+label = "유한체적법 FVM (보존형, 산업 표준)"
+n6    = 0.85
+perf  = 0.85
+power = 0.80
+cost  = 0.80
+notes = "OpenFOAM/Fluent, 보존 보장, 비구조 격자"
+
+[[candidate]]
+level = 4
+id    = "FEM"
+label = "유한요소법 FEM (약형식, FSI)"
+n6    = 0.80
+perf  = 0.82
+power = 0.75
+cost  = 0.70
+notes = "COMSOL, 유연 기하, 다물리 커플링"
+
+[[candidate]]
+level = 4
+id    = "SpectralMethod"
+label = "스펙트럼법 (고차 정확도, DNS)"
+n6    = 0.90
+perf  = 0.95
+power = 0.40
+cost  = 0.35
+notes = "지수 수렴, 주기경계, N=6^k 모드=n, DNS 최적"
+
+[[candidate]]
+level = 4
+id    = "ImmersedBdy"
+label = "매입 경계법 IBM (비적합 격자)"
+n6    = 0.75
+perf  = 0.80
+power = 0.70
+cost  = 0.60
+notes = "이동 물체, 생체역학, 격자 재생성 불필요"
+
+[[candidate]]
+level = 4
+id    = "GPU_CFD"
+label = "GPU 가속 CFD (대규모 병렬)"
+n6    = 0.80
+perf  = 0.90
+power = 0.60
+cost  = 0.50
+notes = "10-100배 가속, LBM 최적, 실시간 가능"
+
+[[candidate]]
+level = 4
+id    = "ML_Surrogate"
+label = "ML 서로게이트 (신경망 대리모델)"
+n6    = 0.70
+perf  = 0.75
+power = 0.85
+cost  = 0.55
+notes = "1000배 가속, 설계 최적화, 정확도-속도 트레이드오프"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# DNS는 층류/전이 유동만 실용적
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "DNS"
+then_level = 0
+then_ids   = "Laminar,Transition,Stokes"
+
+# RSM 난류 모델은 FVM/FEM 선호
+[[rule]]
+type       = "prefer"
+if_level   = 1
+if_id      = "RSM"
+then_level = 4
+then_ids   = "FVM,FEM"
+
+# LBM 다상은 GPU CFD 선호
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "LBM"
+then_level = 4
+then_ids   = "GPU_CFD"
+
+# 압축성 유동은 VOF 비호환 (밀도 변화)
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Compressible"
+then_level = 2
+then_ids   = "VOF,LBM"
+
+# 스펙트럼법은 DNS 필수 조합
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "SpectralMethod"
+then_level = 1
+then_ids   = "DNS,LES"

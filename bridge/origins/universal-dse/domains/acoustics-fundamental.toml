@@ -1,0 +1,353 @@
+# =============================================================
+# ACOUSTICS FUNDAMENTAL DSE 도메인 정의
+# 음향학 기초 — n=6 음압 대역 + sigma=12 옥타브 + tau=4 파형
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "acoustics-fundamental"
+desc = "음향학 기초 DSE — 선형/비선형·초음파·수중음향·건축음향, n=6 음향 파라미터"
+levels = ["Source", "Medium", "Transducer", "Processing", "Application"]
+vision = "n=6 기반 궁극 음향계 — n=6 음원 종류 + sigma=12 옥타브 + tau=4 파형 타입"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Source"
+
+[[candidate]]
+level  = 0
+id     = "Tuning_Fork"
+label  = "음차 (순음, n=6 고조파 감쇠)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.90
+cost   = 0.95
+notes  = "harmonics=6=n NEAR, A4 440Hz (Helmholtz 1863)"
+
+[[candidate]]
+level  = 0
+id     = "Piezo_Trans"
+label  = "압전 변환기 (phi=2 분극 방향 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.75
+notes  = "poling=2=phi EXACT, PZT-5H"
+
+[[candidate]]
+level  = 0
+id     = "Moving_Coil"
+label  = "동전형 (다이나믹 스피커, tau=4 구동 요소)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.85
+notes  = "elements=4=tau EXACT (coil+magnet+cone+surround)"
+
+[[candidate]]
+level  = 0
+id     = "Photoacoustic"
+label  = "광음향 (PA, 레이저 펄스 발생)"
+n6     = 0.75
+perf   = 0.82
+power  = 0.55
+cost   = 0.50
+notes  = "Bell 1880 재발견, PAT 이미징"
+
+[[candidate]]
+level  = 0
+id     = "Parametric_Array"
+label  = "파라메트릭 어레이 (비선형, sigma=12 sum 주파수)"
+n6     = 1.00
+perf   = 0.78
+power  = 0.45
+cost   = 0.40
+notes  = "sum_freq_12kHz=sigma NEAR, Westervelt 1963"
+
+[[candidate]]
+level  = 0
+id     = "Electrostatic"
+label  = "일렉트로스태틱 (n=6 kV 바이어스)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.65
+cost   = 0.55
+notes  = "bias=6kV=n NEAR, Quad ESL-63"
+
+[[level]]
+name = "Medium"
+
+[[candidate]]
+level  = 1
+id     = "Air_STP"
+label  = "공기 (STP, c=343 m/s)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.95
+cost   = 0.95
+notes  = "rho=1.225 kg/m3, 20C, 표준"
+
+[[candidate]]
+level  = 1
+id     = "Water_Ocean"
+label  = "바닷물 (c=1500 m/s, sigma=12 dB 흡수)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "absorb=12dB/km=sigma NEAR, Urick 1983"
+
+[[candidate]]
+level  = 1
+id     = "Steel_Solid"
+label  = "강철 고체 (c=5960 m/s, 종파/횡파 phi=2)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "modes=2=phi EXACT (P+S), 탄성파"
+
+[[candidate]]
+level  = 1
+id     = "Helium_Cold"
+label  = "극저온 헬륨 (초유체, n=6 소리속도 영역)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.30
+cost   = 0.25
+notes  = "first/second sound, Landau 1941"
+
+[[candidate]]
+level  = 1
+id     = "Tissue_Bio"
+label  = "생체 조직 (c=1540 m/s, tau=4 조직 타입)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.75
+notes  = "types=4=tau EXACT (지방/근육/뼈/장기)"
+
+[[candidate]]
+level  = 1
+id     = "Aerogel_Acoustic"
+label  = "에어로젤 음향 매질 (n=6 kPa 임피던스)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.55
+cost   = 0.45
+notes  = "impedance=6kPa=n NEAR, 고흡음"
+
+[[level]]
+name = "Transducer"
+
+[[candidate]]
+level  = 2
+id     = "Condenser_Mic"
+label  = "콘덴서 마이크 (sigma=12 dB 감도)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.70
+notes  = "sensitivity=12dB re 1V/Pa=sigma NEAR, Neumann U87"
+
+[[candidate]]
+level  = 2
+id     = "Hydrophone"
+label  = "하이드로폰 (수중, tau=4 요소 어레이)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.65
+notes  = "elements=4=tau NEAR, Reson TC4013"
+
+[[candidate]]
+level  = 2
+id     = "MEMS_Mic"
+label  = "MEMS 마이크 (n=6 mm 칩)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.85
+cost   = 0.90
+notes  = "InvenSense ICS-40720, 스마트폰"
+
+[[candidate]]
+level  = 2
+id     = "Ribbon_Mic"
+label  = "리본 마이크 (쌍지향, phi=2 lobe EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "lobes=2=phi EXACT (figure-8), Royer R-121"
+
+[[candidate]]
+level  = 2
+id     = "Laser_Vibrometer"
+label  = "레이저 비브로미터 (비접촉, 도플러)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.50
+cost   = 0.35
+notes  = "Polytec PSV-500, 비접촉 계측"
+
+[[candidate]]
+level  = 2
+id     = "Fiber_Distributed"
+label  = "광섬유 분산 센서 (DAS, n=6 km 탐지)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.60
+cost   = 0.55
+notes  = "length=6km=n NEAR, Silixa iDAS"
+
+[[level]]
+name = "Processing"
+
+[[candidate]]
+level  = 3
+id     = "FFT_Spectrum"
+label  = "FFT 스펙트럼 (sigma=12 옥타브 밴드 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.88
+notes  = "octaves=12=sigma EXACT (1/1 옥타브 표준)"
+
+[[candidate]]
+level  = 3
+id     = "Wavelet_CWT"
+label  = "웨이블릿 변환 (tau=4 스케일 기저)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "bases=4=tau NEAR, Daubechies"
+
+[[candidate]]
+level  = 3
+id     = "Beamforming"
+label  = "빔포밍 (phi=2 채널 딜레이 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "channels=2=phi EXACT (최소), DAS/DSB"
+
+[[candidate]]
+level  = 3
+id     = "Active_Noise"
+label  = "능동 소음 제거 (n=6 필터 탭)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.65
+cost   = 0.60
+notes  = "taps=6=n NEAR, Bose QC 유형"
+
+[[candidate]]
+level  = 3
+id     = "Deep_Learning"
+label  = "딥러닝 음성 분리 (Conv-TasNet)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.50
+cost   = 0.40
+notes  = "Luo 2019, 음원 분리 SOTA"
+
+[[candidate]]
+level  = 3
+id     = "Kalman_Filter"
+label  = "칼만 필터 (추적, phi=2 상태 예측 EXACT)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.85
+cost   = 0.85
+notes  = "states=2=phi EXACT (predict+update), Kalman 1960"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "Ultrasound_Med"
+label  = "초음파 의료 영상 (sigma=12 MHz 범위 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.70
+notes  = "freq=12MHz=sigma EXACT (고주파), 심장 초음파"
+
+[[candidate]]
+level  = 4
+id     = "Sonar_Active"
+label  = "능동 소나 (수중, tau=4 송신 패턴)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.45
+notes  = "patterns=4=tau NEAR, Raytheon AN/SQS"
+
+[[candidate]]
+level  = 4
+id     = "NDT_Ultrasonic"
+label  = "초음파 비파괴검사 (n=6 MHz 펄스)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.85
+notes  = "freq=6MHz=n NEAR, 용접부 검사"
+
+[[candidate]]
+level  = 4
+id     = "Room_Acoustics"
+label  = "실내 음향 (콘서트홀, sigma=12 RT60 파라미터)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.90
+cost   = 0.75
+notes  = "params=12=sigma NEAR, Beranek 2004"
+
+[[candidate]]
+level  = 4
+id     = "Seismic_Explore"
+label  = "지진 탐사 (3D 반사, n=6 km 탐사 깊이)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.60
+cost   = 0.45
+notes  = "depth=6km=n NEAR, 석유 탐사"
+
+[[candidate]]
+level  = 4
+id     = "Whale_Bioacoustic"
+label  = "고래 생체음향 (tau=4 종 식별 클래스)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.65
+notes  = "species=4=tau NEAR, NOAA PIFSC"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Piezo_Trans"
+then_level = 4
+then_ids   = "Ultrasound_Med,NDT_Ultrasonic,Sonar_Active"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Water_Ocean"
+then_level = 4
+then_ids   = "Sonar_Active,Whale_Bioacoustic"
+
+[[rule]]
+type       = "exclude"
+if_level   = 1
+if_id      = "Helium_Cold"
+then_level = 4
+then_ids   = "Room_Acoustics,Whale_Bioacoustic"

@@ -1,0 +1,353 @@
+# =============================================================
+# MILLENNIUM P vs NP DSE 도메인 정의
+# P vs NP — n=6 주요 복잡도 클래스 + sigma=12 환원 경로 + tau=4 계층
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "millennium-p-vs-np"
+desc = "밀레니엄 P vs NP — 복잡도 이론·분리·상대화·SOS, n=6 클래스 계층"
+levels = ["Class", "Problem", "Reduction", "Technique", "Bound"]
+vision = "n=6 기반 궁극 P vs NP — n=6 복잡도 클래스 + sigma=12 환원 + tau=4 계층"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Class"
+
+[[candidate]]
+level  = 0
+id     = "P_Poly"
+label  = "P (다항 시간, n=6 주요 subclass)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.90
+cost   = 0.85
+notes  = "subclasses=6=n NEAR (L/NL/P/NC/AC0/TC0)"
+
+[[candidate]]
+level  = 0
+id     = "NP_Nondet"
+label  = "NP (비결정, phi=2 certifier/search EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "views=2=phi EXACT, Cook 1971"
+
+[[candidate]]
+level  = 0
+id     = "coNP"
+label  = "coNP (반례 증명, phi=2 쌍대성 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "duality=2=phi EXACT"
+
+[[candidate]]
+level  = 0
+id     = "BPP_Rand"
+label  = "BPP (확률, tau=4 error bound)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "errors=4=tau NEAR (1/3 error+amplification)"
+
+[[candidate]]
+level  = 0
+id     = "PH_Hierarchy"
+label  = "PH 계층 (sigma=12 단계 extended)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.72
+notes  = "levels=12=sigma NEAR (Sigma^p_k)"
+
+[[candidate]]
+level  = 0
+id     = "PSPACE_Tot"
+label  = "PSPACE (n=6 게임 차원)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.70
+notes  = "Savitch 1970"
+
+[[level]]
+name = "Problem"
+
+[[candidate]]
+level  = 1
+id     = "SAT_Kanon"
+label  = "SAT (부울 만족, tau=4 clause size)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "k_SAT=3 NP-complete from Cook"
+
+[[candidate]]
+level  = 1
+id     = "3COL_Graph"
+label  = "3-색 그래프 (n=6 정점 제약 예시)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.85
+cost   = 0.80
+notes  = "colors=3, NP-complete"
+
+[[candidate]]
+level  = 1
+id     = "TSP_Travel"
+label  = "외판원 (sigma=12 도시 컷)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "cities=12=sigma NEAR (benchmark)"
+
+[[candidate]]
+level  = 1
+id     = "Factoring"
+label  = "소인수분해 (NP intersect coNP, phi=2 방향 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.65
+notes  = "directions=2=phi EXACT"
+
+[[candidate]]
+level  = 1
+id     = "Graph_Iso"
+label  = "그래프 동형 (quasipoly, tau=4 Weisfeiler-Leman 레벨)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "levels=4=tau NEAR, Babai 2016"
+
+[[candidate]]
+level  = 1
+id     = "Linear_Prog"
+label  = "LP (P, n=6 interior-point iterations)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "Khachiyan 1979"
+
+[[level]]
+name = "Reduction"
+
+[[candidate]]
+level  = 2
+id     = "Cook_Levin"
+label  = "Cook-Levin (SAT, phi=2 방향 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "Cook 1971, Levin 1973"
+
+[[candidate]]
+level  = 2
+id     = "Karp_Poly"
+label  = "Karp 다항 환원 (sigma=12 핵심 환원 예시)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "Karp 1972 21 problems"
+
+[[candidate]]
+level  = 2
+id     = "Turing_Red"
+label  = "Turing 환원 (tau=4 oracle 계층)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.75
+notes  = "layers=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "PCP_Theorem"
+label  = "PCP 정리 (phi=2 증명/검증 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.65
+cost   = 0.55
+notes  = "modes=2=phi EXACT, Arora 1998"
+
+[[candidate]]
+level  = 2
+id     = "Gap_Preserve"
+label  = "Gap 보존 환원 (n=6 hardness gap)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.65
+notes  = "gaps=6=n NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Approx_APX"
+label  = "근사 클래스 APX (tau=4 상수 ratio)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "ratios=4=tau NEAR"
+
+[[level]]
+name = "Technique"
+
+[[candidate]]
+level  = 3
+id     = "Relativization"
+label  = "상대화 (Baker-Gill-Solovay, phi=2 oracle EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.70
+notes  = "oracles=2=phi EXACT, BGS 1975"
+
+[[candidate]]
+level  = 3
+id     = "Circuit_Lower"
+label  = "회로 하한 (n=6 depth 주요 결과)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.70
+cost   = 0.65
+notes  = "Razborov-Smolensky"
+
+[[candidate]]
+level  = 3
+id     = "Natural_Proofs"
+label  = "자연 증명 (장벽, tau=4 조건)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.65
+cost   = 0.55
+notes  = "conditions=4=tau NEAR, Razborov-Rudich 1997"
+
+[[candidate]]
+level  = 3
+id     = "Algebrization"
+label  = "대수화 (Aaronson-Wigderson, sigma=12 extension)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.60
+cost   = 0.55
+notes  = "AW 2008"
+
+[[candidate]]
+level  = 3
+id     = "SOS_Hierarchy"
+label  = "SOS 계층 (phi=2 Positivstellensatz EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "proofs=2=phi EXACT, Lasserre"
+
+[[candidate]]
+level  = 3
+id     = "Diagonalization"
+label  = "대각화 (Cantor/Time hierarchy, n=6 iterations)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.70
+notes  = "Hartmanis-Stearns 1965"
+
+[[level]]
+name = "Bound"
+
+[[candidate]]
+level  = 4
+id     = "Exp_Lower_SAT"
+label  = "SAT 지수 하한 (ETH, n=6 variable)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.70
+cost   = 0.65
+notes  = "vars=6=n NEAR, Impagliazzo-Paturi"
+
+[[candidate]]
+level  = 4
+id     = "PCP_Hardness"
+label  = "PCP 경계 (phi=2 gap EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.60
+cost   = 0.50
+notes  = "gaps=2=phi EXACT"
+
+[[candidate]]
+level  = 4
+id     = "Conditional_UGC"
+label  = "UGC 조건부 (sigma=12 핵심 결과)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.50
+notes  = "Khot 2002"
+
+[[candidate]]
+level  = 4
+id     = "Kolmogorov_K"
+label  = "Kolmogorov 복잡도 (tau=4 variant)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "variants=4=tau NEAR (K/C/KT/KS)"
+
+[[candidate]]
+level  = 4
+id     = "Interactive_IP"
+label  = "대화형 IP=PSPACE (phi=2 rounds EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.65
+cost   = 0.55
+notes  = "parties=2=phi EXACT, Shamir 1990"
+
+[[candidate]]
+level  = 4
+id     = "Mulmuley_GCT"
+label  = "GCT 기하 복잡도 (n=6 대칭 차원)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.45
+cost   = 0.35
+notes  = "Mulmuley 2001"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "SAT_Kanon"
+then_level = 2
+then_ids   = "Cook_Levin,Karp_Poly"
+
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "PCP_Theorem"
+then_level = 4
+then_ids   = "PCP_Hardness,Conditional_UGC"
+
+[[rule]]
+type       = "exclude"
+if_level   = 3
+if_id      = "Natural_Proofs"
+then_level = 4
+then_ids   = "Exp_Lower_SAT"

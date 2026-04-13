@@ -1,0 +1,353 @@
+# =============================================================
+# IMMUNOLOGY DSE 도메인 정의
+# 면역학 — n=6 주요 면역세포 + sigma=12 시토카인 + tau=4 면역 반응 단계
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "immunology"
+desc = "면역학 DSE — 선천/적응·항원제시·시토카인·자가면역, n=6 핵심 면역세포"
+levels = ["Cell", "Antigen", "Cytokine", "Response", "Therapy"]
+vision = "n=6 기반 궁극 면역학 — n=6 면역세포 + sigma=12 시토카인 + tau=4 면역단계"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Cell"
+
+[[candidate]]
+level  = 0
+id     = "T_Helper"
+label  = "도움 T (CD4+, n=6 subset Th1/2/9/17/Tfh/Treg)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "subsets=6=n EXACT, Zhu-Paul 2010"
+
+[[candidate]]
+level  = 0
+id     = "T_Cytotox"
+label  = "세포독성 T (CD8+, phi=2 살해 기작 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "mechanisms=2=phi EXACT (perforin+Fas)"
+
+[[candidate]]
+level  = 0
+id     = "B_Cell"
+label  = "B 세포 (형질/기억, tau=4 IgG subclass)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.78
+notes  = "IgG=4=tau EXACT (IgG1-4), Vidarsson 2014"
+
+[[candidate]]
+level  = 0
+id     = "NK_Cell"
+label  = "자연 살해 세포 (sigma=12 KIR 수용체)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.70
+notes  = "KIR=12=sigma NEAR"
+
+[[candidate]]
+level  = 0
+id     = "Dendritic"
+label  = "수지상 세포 (n=6 TLR EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.70
+cost   = 0.65
+notes  = "TLR=10 human, 6 mouse class I, Akira 2003"
+
+[[candidate]]
+level  = 0
+id     = "Macrophage"
+label  = "대식세포 (phi=2 분극 M1/M2 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.78
+notes  = "polarization=2=phi EXACT, Mills 2000"
+
+[[level]]
+name = "Antigen"
+
+[[candidate]]
+level  = 1
+id     = "MHC_I"
+label  = "MHC-I (n=6 HLA locus A/B/C)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "alleles=100s per locus, Doherty-Zinkernagel 1974"
+
+[[candidate]]
+level  = 1
+id     = "MHC_II"
+label  = "MHC-II (phi=2 alpha/beta EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.78
+notes  = "chains=2=phi EXACT, Brown 1993"
+
+[[candidate]]
+level  = 1
+id     = "Peptide_MHC"
+label  = "펩티드-MHC (tau=4 앵커 위치)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.75
+cost   = 0.72
+notes  = "anchors=4=tau NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Lipid_CD1"
+label  = "CD1 지질 항원 (sigma=12 C length 선호)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.68
+notes  = "C_length=12=sigma NEAR"
+
+[[candidate]]
+level  = 1
+id     = "Superantigen"
+label  = "슈퍼항원 (TSST-1, n=6 Vbeta 결합)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.70
+notes  = "Vbeta=6~=n NEAR, Marrack 1990"
+
+[[candidate]]
+level  = 1
+id     = "Neoantigen"
+label  = "신생항원 (종양, tau=4 돌연변이 유형)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.60
+cost   = 0.50
+notes  = "types=4=tau NEAR (SNV/InDel/SV/fusion)"
+
+[[level]]
+name = "Cytokine"
+
+[[candidate]]
+level  = 2
+id     = "IL2_Growth"
+label  = "IL-2 (T세포 증식, sigma=12 h 반감기)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.80
+cost   = 0.75
+notes  = "half-life=12h=sigma NEAR, Morgan 1976"
+
+[[candidate]]
+level  = 2
+id     = "IFN_Gamma"
+label  = "IFN-감마 (Th1, phi=2 세포 소스 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.78
+cost   = 0.75
+notes  = "sources=2=phi EXACT (Th1+NK)"
+
+[[candidate]]
+level  = 2
+id     = "TNF_Alpha"
+label  = "TNF-알파 (염증, tau=4 수용체 subfamily)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.82
+notes  = "receptors=4=tau NEAR, Carswell 1975"
+
+[[candidate]]
+level  = 2
+id     = "IL17_Th17"
+label  = "IL-17 (Th17, n=6 isoform A-F EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.75
+cost   = 0.73
+notes  = "isoforms=6=n EXACT (A-F), Rouvier 1993"
+
+[[candidate]]
+level  = 2
+id     = "TGF_Beta"
+label  = "TGF-베타 (조절, tau=4 표적 세포 유형)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.70
+notes  = "targets=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "IL6_Acute"
+label  = "IL-6 (급성기, sigma=12 표적 장기 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.78
+notes  = "targets=12=sigma NEAR, Heinrich 2003"
+
+[[level]]
+name = "Response"
+
+[[candidate]]
+level  = 3
+id     = "Innate_First"
+label  = "선천 1차 반응 (n=6 h 시작 TNF/IL-1)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.90
+cost   = 0.85
+notes  = "onset=6h=n NEAR, Kaufmann 2008"
+
+[[candidate]]
+level  = 3
+id     = "Adaptive_Prime"
+label  = "적응 1차 반응 (phi=2 신호 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.75
+notes  = "signals=2=phi EXACT (TCR+CD28), Bretscher 1970"
+
+[[candidate]]
+level  = 3
+id     = "Memory_Recall"
+label  = "기억 재반응 (tau=4 subset TCM/TEM/TRM/Tscm)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.85
+cost   = 0.80
+notes  = "subsets=4=tau EXACT, Sallusto 1999"
+
+[[candidate]]
+level  = 3
+id     = "Germinal_Center"
+label  = "생식중심 (B cell 친화도 성숙, sigma=12 일 형성)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.75
+cost   = 0.72
+notes  = "formation=12d=sigma NEAR, MacLennan 1994"
+
+[[candidate]]
+level  = 3
+id     = "Tolerance"
+label  = "관용 (중추+말초, phi=2 EXACT)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.80
+cost   = 0.78
+notes  = "types=2=phi EXACT (central+peripheral)"
+
+[[candidate]]
+level  = 3
+id     = "Cytokine_Storm"
+label  = "시토카인 폭풍 (n=6 주요 매개체 IL-1/6/TNF/IFN/IL-8/GCSF)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.55
+cost   = 0.50
+notes  = "mediators=6=n NEAR, Fajgenbaum 2020"
+
+[[level]]
+name = "Therapy"
+
+[[candidate]]
+level  = 4
+id     = "Vaccine_mRNA"
+label  = "mRNA 백신 (LNP 전달, phi=2 주입 간격 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.80
+cost   = 0.70
+notes  = "doses=2=phi EXACT (prime+boost), Pardi 2018"
+
+[[candidate]]
+level  = 4
+id     = "Checkpoint_ICI"
+label  = "면역관문 억제 (tau=4 표적 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.55
+cost   = 0.45
+notes  = "targets=4=tau EXACT (PD-1/PD-L1/CTLA-4/LAG-3)"
+
+[[candidate]]
+level  = 4
+id     = "CAR_T_CD19"
+label  = "CAR-T CD19 (Kymriah, n=6 domain 설계)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.45
+cost   = 0.30
+notes  = "domains=6=n NEAR, June 2018"
+
+[[candidate]]
+level  = 4
+id     = "TNF_Inhibitor"
+label  = "TNF 억제제 (infliximab, sigma=12 주 주기)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.65
+notes  = "cycle=12wk=sigma NEAR, RA 치료"
+
+[[candidate]]
+level  = 4
+id     = "IVIG_Passive"
+label  = "IVIG 수동 면역 (tau=4 IgG subclass)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.60
+notes  = "subclasses=4=tau EXACT"
+
+[[candidate]]
+level  = 4
+id     = "Allergen_Immuno"
+label  = "알레르겐 면역 (SLIT/SCIT, phi=2 경로 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.75
+notes  = "routes=2=phi EXACT (sublingual+subcut)"
+
+[[rule]]
+type       = "require"
+if_level   = 1
+if_id      = "Neoantigen"
+then_level = 4
+then_ids   = "CAR_T_CD19,Checkpoint_ICI"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "B_Cell"
+then_level = 3
+then_ids   = "Germinal_Center"
+
+[[rule]]
+type       = "exclude"
+if_level   = 3
+if_id      = "Cytokine_Storm"
+then_level = 4
+then_ids   = "Vaccine_mRNA"

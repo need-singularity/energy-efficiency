@@ -1,0 +1,302 @@
+# =============================================================
+# 합성생물학 n=6 이중 완전수 DSE
+# BT-355: CRISPR n=6유형/XNA n=6종/코돈 2^n=64
+# 총 조합 수: 6x6x4x5x4 = 2,880
+# =============================================================
+
+[meta]
+name = "synthetic-biology"
+desc = "합성생물학 이중 완전수 DSE (BT-355)"
+levels = ["EditTool", "GeneticCode", "Metabolism", "Chassis", "Application"]
+vision = "n=6 합성생물학 -- 유전자 편집에서 대사 공학까지 완전 n=6 체인"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# Level 0: 편집 도구 (6 후보 = n=6 CRISPR 유형)
+[[level]]
+name = "EditTool"
+
+[[candidate]]
+level = 0
+id    = "CasType1"
+label = "CRISPR Type I (Cascade)"
+n6    = 0.83
+perf  = 0.70
+power = 0.65
+cost  = 0.60
+notes = "Type I: 다중 Cas 단백질 복합체, Cascade"
+
+[[candidate]]
+level = 0
+id    = "CasType2"
+label = "CRISPR Type II (Cas9)"
+n6    = 1.00
+perf  = 0.95
+power = 0.90
+cost  = 0.90
+notes = "Type II: Cas9=sopfr+τ=9, 가장 보편적, SpCas9 1368aa"
+
+[[candidate]]
+level = 0
+id    = "CasType3"
+label = "CRISPR Type III (Csm/Cmr)"
+n6    = 0.67
+perf  = 0.75
+power = 0.60
+cost  = 0.55
+notes = "Type III: RNA 표적, Csm/Cmr 복합체"
+
+[[candidate]]
+level = 0
+id    = "CasType5"
+label = "CRISPR Type V (Cas12)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.85
+notes = "Type V: Cas12=σ, 단일 가이드 RNA, 진단 응용(DETECTR)"
+
+[[candidate]]
+level = 0
+id    = "CasType6"
+label = "CRISPR Type VI (Cas13)"
+n6    = 1.00
+perf  = 0.85
+power = 0.80
+cost  = 0.80
+notes = "Type VI: Cas13=σ+μ, RNA 표적 전문, SHERLOCK 진단"
+
+[[candidate]]
+level = 0
+id    = "BaseEditor"
+label = "염기 편집기 (Base Editor)"
+n6    = 0.83
+perf  = 0.88
+power = 0.85
+cost  = 0.80
+notes = "CBE/ABE: 단일 염기 치환, DSB 없이 편집"
+
+# Level 1: 유전 코드 (6 후보 = XNA n=6종)
+[[level]]
+name = "GeneticCode"
+
+[[candidate]]
+level = 1
+id    = "DNA"
+label = "DNA (자연 코드)"
+n6    = 1.00
+perf  = 0.95
+power = 0.90
+cost  = 0.95
+notes = "자연 DNA: 4염기=τ, 코돈 64=2^n, 아미노산 20=J₂-τ"
+
+[[candidate]]
+level = 1
+id    = "RNA"
+label = "RNA (자연 코드)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.90
+notes = "자연 RNA: U 치환, mRNA 백신 플랫폼"
+
+[[candidate]]
+level = 1
+id    = "HNA"
+label = "HNA (1,5-안하이드로헥시톨)"
+n6    = 0.83
+perf  = 0.70
+power = 0.50
+cost  = 0.40
+notes = "XNA 1/6: 6원자 고리(hexitol), n=6 당"
+
+[[candidate]]
+level = 1
+id    = "TNA"
+label = "TNA (트레오스)"
+n6    = 0.67
+perf  = 0.65
+power = 0.45
+cost  = 0.40
+notes = "XNA 2/6: τ=4 탄소 당"
+
+[[candidate]]
+level = 1
+id    = "PNA"
+label = "PNA (펩타이드 핵산)"
+n6    = 0.83
+perf  = 0.75
+power = 0.55
+cost  = 0.45
+notes = "XNA 3/6: 아미드 백본, 전하 중성"
+
+[[candidate]]
+level = 1
+id    = "LNA"
+label = "LNA (잠금 핵산)"
+n6    = 0.83
+perf  = 0.80
+power = 0.60
+cost  = 0.50
+notes = "XNA 4/6: 리보스 잠금, 높은 결합력"
+
+# Level 2: 대사 경로 (4 후보)
+[[level]]
+name = "Metabolism"
+
+[[candidate]]
+level = 2
+id    = "Glycolysis"
+label = "해당과정 (σ-φ=10 단계)"
+n6    = 1.00
+perf  = 0.90
+power = 0.80
+cost  = 0.85
+notes = "해당과정 σ-φ=10 단계, 포도당→피루브산"
+
+[[candidate]]
+level = 2
+id    = "TCA"
+label = "TCA 회로 (σ-τ=8 단계)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.80
+notes = "시트르산 회로 σ-τ=8 단계"
+
+[[candidate]]
+level = 2
+id    = "MVA"
+label = "메발론산 경로 (테르펜)"
+n6    = 0.83
+perf  = 0.80
+power = 0.70
+cost  = 0.70
+notes = "이소프렌 C₅=sopfr 단위 합성"
+
+[[candidate]]
+level = 2
+id    = "Shikimate"
+label = "시키메이트 경로 (방향족)"
+n6    = 0.67
+perf  = 0.75
+power = 0.70
+cost  = 0.70
+notes = "방향족 아미노산 합성, 식물/미생물"
+
+# Level 3: 섀시 생물 (5 후보)
+[[level]]
+name = "Chassis"
+
+[[candidate]]
+level = 3
+id    = "Ecoli"
+label = "대장균 (E. coli)"
+n6    = 0.83
+perf  = 0.95
+power = 0.90
+cost  = 0.95
+notes = "가장 보편적 섀시, 유전자 도구 풍부"
+
+[[candidate]]
+level = 3
+id    = "Yeast"
+label = "효모 (S. cerevisiae)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.90
+notes = "진핵세포 모델, φ^τ=16 염색체"
+
+[[candidate]]
+level = 3
+id    = "CHO"
+label = "CHO 세포"
+n6    = 0.67
+perf  = 0.85
+power = 0.70
+cost  = 0.60
+notes = "포유류 세포, 항체 생산 표준"
+
+[[candidate]]
+level = 3
+id    = "Bacillus"
+label = "바실러스 (B. subtilis)"
+n6    = 0.50
+perf  = 0.80
+power = 0.80
+cost  = 0.85
+notes = "산업 효소 생산, 분비 능력"
+
+[[candidate]]
+level = 3
+id    = "CellFree"
+label = "무세포 시스템 (Cell-free)"
+n6    = 0.67
+perf  = 0.75
+power = 0.65
+cost  = 0.50
+notes = "세포 없이 전사/번역, 프로토타이핑"
+
+# Level 4: 응용 분야 (4 후보)
+[[level]]
+name = "Application"
+
+[[candidate]]
+level = 4
+id    = "Therapeutics"
+label = "치료제 (mRNA/유전자치료)"
+n6    = 0.83
+perf  = 0.95
+power = 0.60
+cost  = 0.50
+notes = "mRNA 백신, CAR-T, 유전자 편집 치료"
+
+[[candidate]]
+level = 4
+id    = "Biofuel"
+label = "바이오연료/화학"
+n6    = 0.67
+perf  = 0.80
+power = 0.75
+cost  = 0.70
+notes = "에탄올 C₂=φ, 이소프렌 C₅=sopfr"
+
+[[candidate]]
+level = 4
+id    = "Diagnostics"
+label = "진단 (SHERLOCK/DETECTR)"
+n6    = 1.00
+perf  = 0.90
+power = 0.80
+cost  = 0.80
+notes = "Cas12/13 기반 진단, COVID 현장검사"
+
+[[candidate]]
+level = 4
+id    = "Agriculture"
+label = "농업 (GMO/유전자 드라이브)"
+n6    = 0.67
+perf  = 0.85
+power = 0.70
+cost  = 0.75
+notes = "작물 개량, 해충 방제 유전자 드라이브"
+
+# 호환성 규칙
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "CasType6"
+then_level = 1
+then_ids   = "RNA"
+
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "Therapeutics"
+then_level = 3
+then_ids   = "CHO,Ecoli,Yeast,CellFree"

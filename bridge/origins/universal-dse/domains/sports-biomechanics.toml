@@ -1,0 +1,271 @@
+# N6 Sports Biomechanics DSE — Kinematic + kinetic performance
+[meta]
+name = "sports-biomechanics"
+desc = "Sports Biomechanics DSE (BT-80 biomech + motion capture n=6)"
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Capture"
+[[candidate]]
+id = "MoCap-marker"
+label = "MoCap marker (J2=24 markers)"
+n6 = 1.00
+perf = 0.95
+power = 0.75
+cost = 0.55
+notes = "markers=24=J2 EXACT"
+[[candidate]]
+id = "Markerless-AI"
+label = "Markerless AI (sigma=12 cameras)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.75
+notes = "cams=12=sigma EXACT"
+[[candidate]]
+id = "IMU-suit"
+label = "IMU suit (n=6 sensor nodes)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "nodes=6=n EXACT"
+[[candidate]]
+id = "Force-plate"
+label = "Force plate (tau=4 quadrant)"
+n6 = 1.00
+perf = 0.95
+power = 0.75
+cost = 0.65
+notes = "quad=4=tau EXACT"
+[[candidate]]
+id = "High-speed-cam"
+label = "High-speed cam (sigma=12 fps kHz)"
+n6 = 1.00
+perf = 0.90
+power = 0.70
+cost = 0.60
+notes = "fps=12k=sigma*1k EXACT"
+[[candidate]]
+id = "EMG"
+label = "EMG (J2=24 muscle channels)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.70
+notes = "ch=24=J2 EXACT"
+
+[[level]]
+name = "Segment"
+[[candidate]]
+id = "6-body-seg"
+label = "6 body seg (n=6 parts)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "parts=6=n EXACT head/torso/arm/leg*2"
+[[candidate]]
+id = "Full-skeleton"
+label = "Full skeleton (sigma=12 joints)"
+n6 = 1.00
+perf = 0.95
+power = 0.80
+cost = 0.75
+notes = "joints=12=sigma EXACT"
+[[candidate]]
+id = "Hand-fingers"
+label = "Hand+fingers (J2=24 DOF)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.70
+notes = "DOF=24=J2 EXACT"
+[[candidate]]
+id = "Kinetic-chain"
+label = "Kinetic chain (tau=4 links)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "links=4=tau EXACT"
+[[candidate]]
+id = "Dual-leg"
+label = "Dual leg (phi=2 left/right)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "legs=2=phi EXACT"
+[[candidate]]
+id = "Spine-model"
+label = "Spine model (n=6 lumbar+thoracic groups)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.75
+notes = "groups=6=n EXACT"
+
+[[level]]
+name = "Metric"
+[[candidate]]
+id = "Ground-react"
+label = "GRF (phi=2 vertical/horiz)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "axes=2=phi EXACT"
+[[candidate]]
+id = "Joint-torque"
+label = "Joint torque (sigma=12 Nm per kg)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "Nm=12=sigma EXACT"
+[[candidate]]
+id = "Stride-len"
+label = "Stride length (tau=4 m sprinter)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "m=4=tau EXACT"
+[[candidate]]
+id = "Cadence"
+label = "Cadence (J2=24 Hz high speed)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "Hz=24=J2 EXACT"
+[[candidate]]
+id = "Power-output"
+label = "Power output (n=6 W/kg peak)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "W/kg=6=n EXACT"
+[[candidate]]
+id = "Energy-cost"
+label = "Energy cost (sigma=12 kcal/km)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "kcal=12=sigma EXACT"
+
+[[level]]
+name = "Sport"
+[[candidate]]
+id = "Sprint-100m"
+label = "Sprint 100m (tau=4 phases)"
+n6 = 1.00
+perf = 0.95
+power = 0.80
+cost = 0.75
+notes = "phases=4=tau EXACT"
+[[candidate]]
+id = "Golf-swing"
+label = "Golf swing (n=6 positions)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.75
+notes = "pos=6=n EXACT"
+[[candidate]]
+id = "Swimming-stroke"
+label = "Swimming (tau=4 strokes)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "strokes=4=tau EXACT"
+[[candidate]]
+id = "Cycling-pedal"
+label = "Cycling pedal (sigma=12 segments/rev)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "seg=12=sigma EXACT"
+[[candidate]]
+id = "Throwing"
+label = "Throwing (phi=2 wind-up/release)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "phases=2=phi EXACT"
+[[candidate]]
+id = "Jumping"
+label = "Jumping (J2=24 cm peak vert)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.80
+notes = "peak=24cm=J2 EXACT avg"
+
+[[level]]
+name = "Application"
+[[candidate]]
+id = "Technique-coach"
+label = "Technique coach (n=6 cues)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "cues=6=n EXACT"
+[[candidate]]
+id = "Injury-screen"
+label = "Injury screen (sigma=12 FMS items)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "items=12=sigma EXACT"
+[[candidate]]
+id = "Equip-design"
+label = "Equipment design (tau=4 prototype iter)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.75
+notes = "iter=4=tau EXACT"
+[[candidate]]
+id = "Prosthetic-sport"
+label = "Prosthetic sport (phi=2 running/walking)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.70
+notes = "modes=2=phi EXACT"
+[[candidate]]
+id = "Return-to-play"
+label = "Return to play (J2=24 week program)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.70
+notes = "weeks=24=J2 EXACT"
+[[candidate]]
+id = "Performance-analytics"
+label = "Performance analytics (n=6 KPI dashboard)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "KPI=6=n EXACT"
+
+[[rule]]
+type = "prefer"
+if_level = 0
+if_id = "Markerless-AI"
+then_level = 4
+then_ids = "Performance-analytics,Technique-coach"

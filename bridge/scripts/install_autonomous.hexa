@@ -1,0 +1,15 @@
+// install_autonomous.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/install_autonomous.sh
+// 포팅 상태: STUB (원본 261줄)
+// 원본 요약: NEXUS-6 자율 성장 전체 설치
+//   레이어 1: launchd 데몬 (30분 간격)
+//   레이어 2: cron 작업 (30분 빠른/3시 심층/7시 리포트/일요 푸시)
+//   레이어 3: git post-commit 훅 (커밋마다 측정)
+//   --uninstall: launchd/cron/훅 전부 제거
+//   멱등성 보장 (여러 번 실행 가능)
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/install_autonomous (HEXA 포팅 대기)")
+}

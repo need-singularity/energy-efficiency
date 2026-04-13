@@ -1,0 +1,16 @@
+// troubleshoot_update.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/troubleshoot_update.sh
+// 포팅 상태: STUB (원본 338줄)
+// 원본 요약: NEXUS-6 트러블슈팅 자동 갱신
+//   명령: --record-failure / --record-success / --record-solution
+//         --add-rule / --check-rules / --auto-fix / --report
+//   실패 패턴 추적, 쿨다운 관리, 수렴 메트릭 계산
+//   규칙 준수 체크: declare -A 금지, grep -c 글로브 금지, CLAUDE_CLI 변수 등
+//   Claude CLI 로 미해결 문제 자동 수정
+//   데이터: ~/.nexus/troubleshoot.json
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/troubleshoot_update (HEXA 포팅 대기)")
+}

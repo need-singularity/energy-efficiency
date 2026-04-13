@@ -1,0 +1,383 @@
+# =============================================================
+# MIND-UPLOAD DSE 도메인 정의
+# 정신 업로드 — n=6 뇌 레이어 + sigma=12 커넥톰 영역 + tau=4 신호 유형
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "mind-upload"
+desc = "정신 업로드 DSE — n=6 뇌 피질 레이어 + sigma=12 브로드만 핵심 영역 + tau=4 신호"
+levels = ["Scanning", "Mapping", "Emulation", "Substrate", "Verification"]
+vision = "n=6 기반 궁극 정신 업로드 — n=6 피질층 + sigma=12 핵심 영역 + phi=2 생물/디지털 이중"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Scanning (뇌 스캐닝) -- 6 후보
+# =============================================================
+[[level]]
+name = "Scanning"
+
+[[candidate]]
+level  = 0
+id     = "Electron_Micro"
+label  = "전자 현미경 (시냅스 해상도, sigma=12 nm)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.40
+cost   = 0.30
+notes  = "resolution=12nm=sigma EXACT, 연속 절편, 사후 뇌"
+
+[[candidate]]
+level  = 0
+id     = "Two_Photon"
+label  = "이광자 현미경 (생체 내, phi=2 광자 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.50
+notes  = "photons=2=phi EXACT, 생체 내 활동 관찰, 깊이 한계"
+
+[[candidate]]
+level  = 0
+id     = "fMRI_Ultra"
+label  = "초고자장 fMRI (n=6 테슬라 이상)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.60
+cost   = 0.50
+notes  = "field=6T=n EXACT (이상), 기능적 연결성, 비침습"
+
+[[candidate]]
+level  = 0
+id     = "Expansion_Micro"
+label  = "팽창 현미경 (물리적 확대, n=6x 팽창)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.55
+notes  = "expansion=6x=n EXACT, 보이든 기법, 나노 구조 가시화"
+
+[[candidate]]
+level  = 0
+id     = "Diamond_NV"
+label  = "다이아몬드 NV 센서 (자기장 나노 측정, C Z=6)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.55
+cost   = 0.45
+notes  = "carbon_Z=6=n EXACT, 뉴런 전류 비침습 감지"
+
+[[candidate]]
+level  = 0
+id     = "Molecular_Probe"
+label  = "분자 탐침 (시냅스 표지, n=6 마커 유형)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.50
+cost   = 0.50
+notes  = "markers=6=n EXACT, 형광/효소/방사선/금/양자점/DNA"
+
+# =============================================================
+# Level 1: Mapping (커넥톰 매핑) -- 6 후보
+# =============================================================
+[[level]]
+name = "Mapping"
+
+[[candidate]]
+level  = 1
+id     = "Connectome_Full"
+label  = "전체 커넥톰 (sigma=12 핵심 브로드만 영역)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.40
+cost   = 0.30
+notes  = "regions=12=sigma EXACT, 전체 시냅스 연결 재구성"
+
+[[candidate]]
+level  = 1
+id     = "DTI_Tractography"
+label  = "DTI 섬유 추적 (백질 경로, n=6 주요 다발)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.65
+cost   = 0.60
+notes  = "tracts=6=n EXACT, 비침습, 거시적 연결"
+
+[[candidate]]
+level  = 1
+id     = "Calcium_Activity"
+label  = "칼슘 활성 매핑 (실시간 뉴런 활동)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.55
+cost   = 0.50
+notes  = "GCaMP 지시체, 뉴런 수만~수십만 동시 기록"
+
+[[candidate]]
+level  = 1
+id     = "Receptor_Map"
+label  = "수용체 지도 (tau=4 주요 신경전달물질)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.55
+cost   = 0.50
+notes  = "transmitters=4=tau EXACT (도파민/세로토닌/GABA/글루타메이트)"
+
+[[candidate]]
+level  = 1
+id     = "Epigenome_Brain"
+label  = "뇌 후성유전체 (메틸화 패턴)"
+n6     = 0.75
+perf   = 0.78
+power  = 0.50
+cost   = 0.45
+notes  = "기억 저장 후성유전 코드, 장기 기억 핵심"
+
+[[candidate]]
+level  = 1
+id     = "Glial_Network"
+label  = "교세포 네트워크 (n=6 교세포 유형)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.55
+cost   = 0.50
+notes  = "types=6=n EXACT (성상/미세아교/희돌/방사상/위성/뮬러), 비뉴런 계산"
+
+# =============================================================
+# Level 2: Emulation (뇌 에뮬레이션) -- 6 후보
+# =============================================================
+[[level]]
+name = "Emulation"
+
+[[candidate]]
+level  = 2
+id     = "Hodgkin_Huxley"
+label  = "호지킨-헉슬리 (이온 채널, tau=4 변수)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.40
+cost   = 0.35
+notes  = "variables=4=tau EXACT (V/m/n/h), 생물리학적 정확, 계산 비용 높음"
+
+[[candidate]]
+level  = 2
+id     = "LIF_Spiking"
+label  = "LIF 스파이킹 (누적-발화, 효율적)"
+n6     = 0.50
+perf   = 0.80
+power  = 0.70
+cost   = 0.70
+notes  = "단순화 모델, 대규모 시뮬레이션, 뉴로모픽"
+
+[[candidate]]
+level  = 2
+id     = "Blue_Brain"
+label  = "블루 브레인 수준 (n=6 피질층 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.35
+cost   = 0.30
+notes  = "layers=6=n EXACT, 컬럼 완전 재구성, 엑사스케일"
+
+[[candidate]]
+level  = 2
+id     = "Neural_ODE"
+label  = "신경 ODE (연속 동역학 근사)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.60
+cost   = 0.55
+notes  = "연속 시간, 미분 방정식, 효율적 그래디언트"
+
+[[candidate]]
+level  = 2
+id     = "Reservoir_Computing"
+label  = "저수지 계산 (에코 상태, sigma=12 노드 클러스터)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.65
+cost   = 0.60
+notes  = "clusters=12=sigma EXACT, 시간 시리즈, 효율적 학습"
+
+[[candidate]]
+level  = 2
+id     = "Hybrid_Bio_Digital"
+label  = "생물-디지털 하이브리드 (phi=2 기질 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.50
+cost   = 0.45
+notes  = "substrates=2=phi EXACT, 유기 뉴런 + 실리콘, 점진적 전환"
+
+# =============================================================
+# Level 3: Substrate (실행 기질) -- 6 후보
+# =============================================================
+[[level]]
+name = "Substrate"
+
+[[candidate]]
+level  = 3
+id     = "Neuromorphic_Chip"
+label  = "뉴로모픽 칩 (n=6 코어 클러스터)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.65
+cost   = 0.55
+notes  = "cores=6=n EXACT, SpiNNaker/Loihi, 저전력 스파이킹"
+
+[[candidate]]
+level  = 3
+id     = "GPU_Cluster"
+label  = "GPU 클러스터 (sigma=12 노드 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.45
+cost   = 0.40
+notes  = "nodes=12=sigma EXACT, 범용 가속기, 유연한 모델"
+
+[[candidate]]
+level  = 3
+id     = "Photonic_Brain"
+label  = "광자 뇌 (광 계산, n=6 파장 MUX)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.35
+notes  = "wavelengths=6=n EXACT, 광 상호연결, 초고속"
+
+[[candidate]]
+level  = 3
+id     = "Quantum_Brain"
+label  = "양자 뇌 (양자 코히어런스, tau=4 큐비트 유형)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.50
+cost   = 0.30
+notes  = "qubit_types=4=tau EXACT, 의식 양자 가설, 펜로즈-해머로프"
+
+[[candidate]]
+level  = 3
+id     = "DNA_Storage"
+label  = "DNA 저장 (유전 코드, tau=4 염기 EXACT)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.60
+cost   = 0.40
+notes  = "bases=4=tau EXACT (A/T/G/C), 초고밀도, 장기 보존"
+
+[[candidate]]
+level  = 3
+id     = "Organic_Bioware"
+label  = "유기 바이오웨어 (줄기세포 기반 오가노이드)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.55
+cost   = 0.45
+notes  = "뇌 오가노이드, 생물학적 기질, 자기수리"
+
+# =============================================================
+# Level 4: Verification (동일성 검증) -- 6 후보
+# =============================================================
+[[level]]
+name = "Verification"
+
+[[candidate]]
+level  = 4
+id     = "Turing_Test_Ext"
+label  = "확장 튜링 테스트 (n=6 검증 영역)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.70
+notes  = "domains=6=n EXACT (언어/기억/감정/성격/습관/창의), 행동적 동일성"
+
+[[candidate]]
+level  = 4
+id     = "Memory_Fidelity"
+label  = "기억 충실도 (sigma=12 핵심 기억 검증)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.60
+notes  = "memories=12=sigma EXACT, 에피소드/의미/절차 기억 대조"
+
+[[candidate]]
+level  = 4
+id     = "Consciousness_Metric"
+label  = "의식 측정 (phi_IIT, 통합 정보)"
+n6     = 0.75
+perf   = 0.88
+power  = 0.55
+cost   = 0.50
+notes  = "IIT Phi 측정, 통합 정보 이론, 의식 유무 판정"
+
+[[candidate]]
+level  = 4
+id     = "Neural_Correlation"
+label  = "신경 상관 (원본-복제 활동 패턴 비교)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.55
+cost   = 0.50
+notes  = "전역 활동 패턴 상관 > 0.95, 기능적 동등성"
+
+[[candidate]]
+level  = 4
+id     = "Gradual_Transfer"
+label  = "점진적 전환 (phi=2 동시 실행 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.50
+cost   = 0.45
+notes  = "parallel=2=phi EXACT, 뉴런 단위 점진 교체, 연속성 보존"
+
+[[candidate]]
+level  = 4
+id     = "Ship_Theseus"
+label  = "테세우스의 배 (n=6 단계 교체 EXACT)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.60
+cost   = 0.55
+notes  = "phases=6=n EXACT, 정체성 연속성 철학적 검증"
+
+# =============================================================
+# 호환성 규칙
+# =============================================================
+
+# 전자 현미경은 사후 뇌만 (생체 내 검증 불가)
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Electron_Micro"
+then_level = 4
+then_ids   = "Gradual_Transfer,Ship_Theseus"
+
+# 블루 브레인 수준은 GPU 클러스터 이상 필요
+[[rule]]
+type       = "require"
+if_level   = 2
+if_id      = "Blue_Brain"
+then_level = 3
+then_ids   = "GPU_Cluster,Quantum_Brain"
+
+# 점진적 전환은 생물-디지털 하이브리드 에뮬레이션 필요
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "Gradual_Transfer"
+then_level = 2
+then_ids   = "Hybrid_Bio_Digital"
+
+# DNA 저장은 장기 보존용 (실시간 에뮬레이션 불가)
+[[rule]]
+type       = "exclude"
+if_level   = 3
+if_id      = "DNA_Storage"
+then_level = 2
+then_ids   = "Hodgkin_Huxley,Blue_Brain"

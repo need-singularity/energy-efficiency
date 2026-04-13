@@ -1,0 +1,15 @@
+// monitor_scan.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/monitor_scan.sh
+// 포팅 상태: STUB (원본 167줄)
+// 원본 요약: NEXUS-6 모니터링 — 주기적 스캔
+//   체크포인트 가중치 SSH 추출 또는 로컬 탐색
+//   nexus verify 로 n6 검사, Phi 비율/안정성 계산
+//   임계값 미만 시 경고 (기본 0.1)
+//   결과: ~/.nexus/monitoring.jsonl 에 기록
+//   옵션: --interval 초, --target 호스트:포트, --threshold
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/monitor_scan (HEXA 포팅 대기)")
+}

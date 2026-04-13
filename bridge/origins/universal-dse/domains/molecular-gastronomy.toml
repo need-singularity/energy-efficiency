@@ -1,0 +1,296 @@
+# N6 Molecular Gastronomy DSE (n=6 technique + Hervé This)
+[meta]
+name = "molecular-gastronomy"
+desc = "Molecular Gastronomy DSE (n=6 technique + Hervé This)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Technique"
+
+[[candidate]]
+id = "Spherification"
+label = "Spherification (phi=2 basic/reverse)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "m=2=phi"
+
+[[candidate]]
+id = "Foam-siphon"
+label = "Foam siphon (n=6 lecithin%)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "pct=6=n"
+
+[[candidate]]
+id = "Gelification"
+label = "Gelification (sigma=12 hydrocoll)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "h=12=sigma"
+
+[[candidate]]
+id = "Sous-vide"
+label = "Sous vide (tau=4 C precision)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "C=4=tau"
+
+[[candidate]]
+id = "Liquid-N2"
+label = "Liquid N2 (J2=24 s freeze)"
+n6 = 1.0
+perf = 0.95
+power = 0.75
+cost = 0.65
+notes = "s=24=J2"
+
+[[candidate]]
+id = "Smoke-gun"
+label = "Smoke gun (n=6 wood chip)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "ch=6=n"
+
+[[level]]
+name = "Hydrocolloid"
+
+[[candidate]]
+id = "Agar-agar"
+label = "Agar agar (sigma=12 g/L firm)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "g/L=12=sigma"
+
+[[candidate]]
+id = "Sodium-alginate"
+label = "Na alginate (phi=2% basic)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "pct=2=phi"
+
+[[candidate]]
+id = "Gellan"
+label = "Gellan (tau=4 type)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "t=4=tau"
+
+[[candidate]]
+id = "Xanthan"
+label = "Xanthan (n=6 g/L stabilize)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "g/L=6=n"
+
+[[candidate]]
+id = "Iota-carrag"
+label = "Iota carr (J2=24 C setup)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "C=24=J2"
+
+[[candidate]]
+id = "Methylcellulose"
+label = "Methylcel (phi=2 hot/cold gel)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "m=2=phi"
+
+[[level]]
+name = "Presentation"
+
+[[candidate]]
+id = "Plating-6pt"
+label = "Plating 6-point (n=6 element)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.9
+notes = "el=6=n"
+
+[[candidate]]
+id = "Deconstruct"
+label = "Deconstruct (phi=2 classic/new)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "p=2=phi"
+
+[[candidate]]
+id = "Color-contrast"
+label = "Color contrast (tau=4 Lab axis)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "a=4=tau"
+
+[[candidate]]
+id = "Edible-flower"
+label = "Edible flower (sigma=12 variety)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "v=12=sigma"
+
+[[candidate]]
+id = "Smoke-dome"
+label = "Smoke dome (J2=24 s)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "s=24=J2"
+
+[[candidate]]
+id = "Tableware-IR"
+label = "Tableware IR (phi=2 heat/cold)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "t=2=phi"
+
+[[level]]
+name = "Science"
+
+[[candidate]]
+id = "Starch-retrograde"
+label = "Starch retrograde (tau=4 hr)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "hr=4=tau"
+
+[[candidate]]
+id = "Protein-denat"
+label = "Protein denat (sigma=12 C egg)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "C=12=sigma*5"
+
+[[candidate]]
+id = "Emulsion-hydrophil"
+label = "Emulsion HLB (n=6 scale)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "sc=6=n"
+
+[[candidate]]
+id = "pH-flavor"
+label = "pH flavor (phi=2 acid/base)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "a=2=phi"
+
+[[candidate]]
+id = "Crystal-fat-poly"
+label = "Fat crystal (tau=4 poly)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "p=4=tau"
+
+[[candidate]]
+id = "Maillard-golden"
+label = "Maillard golden (J2=24 min)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "min=24=J2"
+
+[[level]]
+name = "Equipment"
+
+[[candidate]]
+id = "Immersion-circ"
+label = "Immersion circ (sigma=12 L bath)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "L=12=sigma"
+
+[[candidate]]
+id = "Rotary-evap"
+label = "Rotary evap (n=6 C vacuum)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "C=6=n"
+
+[[candidate]]
+id = "Centrifuge"
+label = "Centrifuge (J2=24 k rpm)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "rpm=24=J2"
+
+[[candidate]]
+id = "Ultrasound-bath"
+label = "Ultrasound bath (tau=4 kHz)"
+n6 = 1.0
+perf = 0.9
+power = 0.8
+cost = 0.75
+notes = "kHz=4=tau"
+
+[[candidate]]
+id = "Freeze-dryer"
+label = "Freeze dryer (phi=2 cycle)"
+n6 = 1.0
+perf = 0.95
+power = 0.75
+cost = 0.6
+notes = "c=2=phi"
+
+[[candidate]]
+id = "Tabletop-3D-print"
+label = "Tabletop 3D print (n=6 nozzle)"
+n6 = 1.0
+perf = 0.9
+power = 0.75
+cost = 0.65
+notes = "noz=6=n"
+

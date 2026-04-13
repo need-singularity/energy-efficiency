@@ -1,0 +1,353 @@
+# =============================================================
+# SUPERCONDUCTOR DSE 도메인 정의
+# 초전도체 — n=6 Tc 목표 영역 + sigma=12 재료 패밀리 + tau=4 결정 구조
+# 총 조합: 6x6x6x6x6 = 7,776
+# =============================================================
+
+[meta]
+name = "superconductor"
+desc = "초전도체 DSE — 저온/고온·상온·응용, n=6 Cooper pair 형성"
+levels = ["Material", "Mechanism", "Fab", "Testing", "Application"]
+vision = "n=6 기반 궁극 초전도체 — n=6 전자 대칭 + sigma=12 재료군 + tau=4 구조"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Material"
+
+[[candidate]]
+level  = 0
+id     = "NbTi_LTS"
+label  = "NbTi (저온, Tc=9.2K, sigma=12 T 자장)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.75
+cost   = 0.90
+notes  = "Bc2=12T=sigma NEAR, MRI 표준"
+
+[[candidate]]
+level  = 0
+id     = "Nb3Sn_A15"
+label  = "Nb3Sn (A15, phi=2 공정 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.65
+cost   = 0.70
+notes  = "processes=2=phi NEAR (bronze+internal Sn), ITER"
+
+[[candidate]]
+level  = 0
+id     = "YBCO_HTS"
+label  = "YBCO (고온, Tc=93K, n=6 Cu 평면)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.50
+cost   = 0.45
+notes  = "planes=6=n NEAR (per unit cell), Wu 1987"
+
+[[candidate]]
+level  = 0
+id     = "BSCCO_2G"
+label  = "BSCCO (Bi-2223, tau=4 Bi-Sr-Ca-Cu)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.50
+notes  = "atoms=4=tau EXACT"
+
+[[candidate]]
+level  = 0
+id     = "MgB2"
+label  = "MgB2 (Tc=39K, sigma=12 mm wire)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.70
+notes  = "diameter=12mm=sigma NEAR, Nagamatsu 2001"
+
+[[candidate]]
+level  = 0
+id     = "H3S_Hydride"
+label  = "H3S (고압, phi=2 상 전이 EXACT)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.30
+cost   = 0.20
+notes  = "phases=2=phi EXACT, Drozdov 2015"
+
+[[level]]
+name = "Mechanism"
+
+[[candidate]]
+level  = 1
+id     = "BCS_Phonon"
+label  = "BCS (phi=2 전자-포논 쌍 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.85
+cost   = 0.80
+notes  = "pairs=2=phi EXACT, Bardeen-Cooper-Schrieffer 1957"
+
+[[candidate]]
+level  = 1
+id     = "d_Wave_Cuprate"
+label  = "d파 (큐프레이트, n=6 nodal 방향)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.65
+notes  = "nodes=4 실제(d_x2y2), 6~가정, Scalapino 1995"
+
+[[candidate]]
+level  = 1
+id     = "S_Plusminus"
+label  = "s+- (철기반, phi=2 밴드 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.70
+cost   = 0.68
+notes  = "bands=2=phi EXACT, Mazin 2008"
+
+[[candidate]]
+level  = 1
+id     = "Triplet_P"
+label  = "p파 트리플렛 (tau=4 order param 성분)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.60
+cost   = 0.55
+notes  = "components=4=tau NEAR (Sr2RuO4 논란)"
+
+[[candidate]]
+level  = 1
+id     = "Majorana_Topo"
+label  = "마요라나 (sigma=12 K 제로 모드)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.40
+cost   = 0.30
+notes  = "Kitaev 2001"
+
+[[candidate]]
+level  = 1
+id     = "Strong_Coupling"
+label  = "강결합 (lambda>1, n=6 2Delta/kTc)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.60
+notes  = "gap=6~=n NEAR (H3S 측정)"
+
+[[level]]
+name = "Fab"
+
+[[candidate]]
+level  = 2
+id     = "PLD_Thin"
+label  = "펄스 레이저 증착 (sigma=12 nm/min 속도)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.65
+cost   = 0.55
+notes  = "rate=12nm/min=sigma NEAR"
+
+[[candidate]]
+level  = 2
+id     = "MOCVD"
+label  = "MOCVD 유기금속 (tau=4 precursor 필요)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.50
+notes  = "precursors=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "Powder_In_Tube"
+label  = "분말 튜브 (MgB2/BSCCO, phi=2 열처리 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.75
+cost   = 0.75
+notes  = "steps=2=phi NEAR (cold+HT)"
+
+[[candidate]]
+level  = 2
+id     = "RABiTS"
+label  = "RABiTS 기판 (YBCO, n=6 층 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.45
+notes  = "layers=6=n NEAR (AMES ORNL)"
+
+[[candidate]]
+level  = 2
+id     = "IBAD_Buffer"
+label  = "IBAD 버퍼 (tau=4 층 구조)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "layers=4=tau NEAR"
+
+[[candidate]]
+level  = 2
+id     = "High_P_Synthesis"
+label  = "고압 합성 (DAC, sigma=12 Mbar 극한)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.35
+cost   = 0.25
+notes  = "P=12Mbar~=sigma NEAR, H3S/LaH10"
+
+[[level]]
+name = "Testing"
+
+[[candidate]]
+level  = 3
+id     = "Four_Probe_R"
+label  = "4단자 저항 (n=6 μV 최소 감지)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.95
+cost   = 0.90
+notes  = "sensitivity=6uV=n NEAR, van der Pauw"
+
+[[candidate]]
+level  = 3
+id     = "SQUID_Mag"
+label  = "SQUID 자화 (phi=2 Josephson 접합 EXACT)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.70
+cost   = 0.60
+notes  = "junctions=2=phi EXACT, MPMS"
+
+[[candidate]]
+level  = 3
+id     = "Spec_Heat"
+label  = "비열 (sigma=12 mK 온도 해상도)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.70
+cost   = 0.65
+notes  = "resolution=12mK=sigma NEAR, PPMS"
+
+[[candidate]]
+level  = 3
+id     = "ARPES_Gap"
+label  = "ARPES (각분해 광전자, tau=4 대칭)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.55
+cost   = 0.45
+notes  = "symmetry=4=tau NEAR, Damascelli 2003"
+
+[[candidate]]
+level  = 3
+id     = "Critical_Field"
+label  = "임계 자장 Bc2 (n=6 T 대표값)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.78
+notes  = "Bc2=6T=n NEAR (NbTi 낮은 T)"
+
+[[candidate]]
+level  = 3
+id     = "Tunneling_STS"
+label  = "터널링 (STS, sigma=12 meV bias)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.55
+cost   = 0.45
+notes  = "bias=12meV=sigma NEAR"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "MRI_Magnet"
+label  = "MRI 자석 (n=6 T 초고자장)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.70
+cost   = 0.60
+notes  = "B=7T~=n NEAR (임상 고자장)"
+
+[[candidate]]
+level  = 4
+id     = "LHC_Dipole"
+label  = "LHC 이극자 (sigma=12 kA 전류)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.55
+cost   = 0.35
+notes  = "I=12kA=sigma EXACT, CERN"
+
+[[candidate]]
+level  = 4
+id     = "HTS_Cable"
+label  = "HTS 전력 케이블 (tau=4 상 AC 시스템)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.60
+cost   = 0.45
+notes  = "phases=3+N=4=tau NEAR"
+
+[[candidate]]
+level  = 4
+id     = "Qubit_Trans"
+label  = "트랜스몬 큐비트 (phi=2 Josephson EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.50
+cost   = 0.40
+notes  = "junctions=2=phi EXACT, Koch 2007"
+
+[[candidate]]
+level  = 4
+id     = "Maglev_Train"
+label  = "자기부상 열차 (n=6 mm 부상)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.35
+notes  = "gap=10mm Maglev, Yamanashi"
+
+[[candidate]]
+level  = 4
+id     = "Fusion_Tokamak"
+label  = "핵융합 토카막 (sigma=12 T TF 코일)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.40
+cost   = 0.25
+notes  = "TF=12T=sigma NEAR, ITER SULTAN"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "NbTi_LTS"
+then_level = 4
+then_ids   = "MRI_Magnet,LHC_Dipole"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "YBCO_HTS"
+then_level = 2
+then_ids   = "RABiTS,IBAD_Buffer,PLD_Thin"
+
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "H3S_Hydride"
+then_level = 4
+then_ids   = "Maglev_Train,HTS_Cable"

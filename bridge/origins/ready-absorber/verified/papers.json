@@ -1,0 +1,152 @@
+{
+  "project": "papers",
+  "timestamp": "2026-04-04T17:07:35.481109",
+  "stats": {
+    "processed": 15,
+    "critical": 1,
+    "high": 5,
+    "medium": 5,
+    "low": 4,
+    "routed": 6,
+    "n6_total_matches": 0,
+    "consensus_total": 12
+  },
+  "top_findings": [
+    {
+      "path": "papers/publish_paper.sh",
+      "score": 35.714285714285715,
+      "value": "critical",
+      "dest": "papers",
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/anima/PA-38-sections-5-8.md",
+      "score": 20.0,
+      "value": "high",
+      "dest": "anima",
+      "n6_matches": 0
+    }
+  ],
+  "findings": [
+    {
+      "path": "papers/.claude/commands/scan.md",
+      "type": "only_in_ready",
+      "destination": "nexus",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/.claude/settings.json",
+      "type": "only_in_ready",
+      "destination": "contact",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/.gitignore",
+      "type": "different",
+      "destination": "papers",
+      "value": "low",
+      "score": 0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/CLAUDE.md",
+      "type": "different",
+      "destination": "tecs-l",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/README.md",
+      "type": "different",
+      "destination": "nexus",
+      "value": "high",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/anima/PA-38-sections-1-4.md",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "high",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/anima/PA-38-sections-5-8.md",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "high",
+      "score": 20.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/manifest.json",
+      "type": "different",
+      "destination": "contact",
+      "value": "low",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/publish_paper.sh",
+      "type": "only_in_ready",
+      "destination": "papers",
+      "value": "critical",
+      "score": 35.714285714285715,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/scripts/infinite_growth.sh",
+      "type": "only_in_ready",
+      "destination": "nexus",
+      "value": "low",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/scripts/lib/growth_common.sh",
+      "type": "only_in_ready",
+      "destination": "nexus",
+      "value": "low",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/tecs-l/P-004-sigma-phi-uniqueness.md",
+      "type": "different",
+      "destination": "tecs-l",
+      "value": "high",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/tecs-l/P-bridge-theorem.md",
+      "type": "different",
+      "destination": "tecs-l",
+      "value": "high",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/upload_results_20260404_075321.txt",
+      "type": "only_in_ready",
+      "destination": "nexus",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "papers/upload_results_20260404_075731.txt",
+      "type": "only_in_ready",
+      "destination": "papers",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+# =============================================================
+# OPTICS FUNDAMENTAL DSE 도메인 정의
+# 광학 기초 — n=6 편광 상태 + sigma=12 광학 수차 + tau=4 파라미터
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "optics-fundamental"
+desc = "광학 기초 DSE — 기하광학·파동광학·양자광학·비선형광학, n=6 편광 자유도"
+levels = ["Source", "Medium", "Component", "Detection", "Application"]
+vision = "n=6 기반 궁극 광학계 — n=6 편광 자유도 + sigma=12 수차 + tau=4 파장 영역"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# =============================================================
+# Level 0: Source (광원) -- 6 후보
+# =============================================================
+[[level]]
+name = "Source"
+
+[[candidate]]
+level  = 0
+id     = "Coherent_Laser"
+label  = "레이저 (coherent, n=6 단일종방향모드)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.60
+cost   = 0.55
+notes  = "modes=6=n NEAR, He-Ne 632.8nm 기준 (Optics Express 2015)"
+
+[[candidate]]
+level  = 0
+id     = "Incoherent_LED"
+label  = "LED (비코히런트, 넓은 대역)"
+n6     = 0.75
+perf   = 0.82
+power  = 0.85
+cost   = 0.80
+notes  = "Cree XP-E 기준, 120도 방사, 25% 효율"
+
+[[candidate]]
+level  = 0
+id     = "Blackbody_Lamp"
+label  = "흑체 복사 (필라멘트, sigma=12 파장 피크)"
+n6     = 0.75
+perf   = 0.70
+power  = 0.60
+cost   = 0.80
+notes  = "Planck 분포, 2800K 텅스텐, Wien 법칙"
+
+[[candidate]]
+level  = 0
+id     = "Synchrotron"
+label  = "싱크로트론 (광각, n=6 언둘레이터 주기 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.30
+cost   = 0.25
+notes  = "periods=6=n EXACT (APS 전형), X-ray 영역"
+
+[[candidate]]
+level  = 0
+id     = "Parametric_Down"
+label  = "광변환 (SPDC, phi=2 광자쌍 EXACT)"
+n6     = 1.00
+perf   = 0.78
+power  = 0.50
+cost   = 0.45
+notes  = "pairs=2=phi EXACT (signal+idler), BBO 결정"
+
+[[candidate]]
+level  = 0
+id     = "Free_Electron"
+label  = "자유전자 레이저 (XFEL, tau=4 언듀레이터단 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.25
+cost   = 0.20
+notes  = "stages=4=tau EXACT, LCLS/PAL-XFEL 설계"
+
+# =============================================================
+# Level 1: Medium (매질) -- 6 후보
+# =============================================================
+[[level]]
+name = "Medium"
+
+[[candidate]]
+level  = 1
+id     = "Vacuum"
+label  = "진공 (n=1, 무손실, c 기준)"
+n6     = 0.75
+perf   = 0.98
+power  = 0.95
+cost   = 0.90
+notes  = "c=299792458 m/s EXACT (SI 정의)"
+
+[[candidate]]
+level  = 1
+id     = "Glass_BK7"
+label  = "BK7 유리 (n=6 표준 굴절률 1.5168)"
+n6     = 0.75
+perf   = 0.88
+power  = 0.85
+cost   = 0.85
+notes  = "Schott BK7, Abbe=64.17, 가시광 표준"
+
+[[candidate]]
+level  = 1
+id     = "Nonlinear_KDP"
+label  = "KDP 결정 (비선형, tau=4차 계수 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.60
+notes  = "chi_order=4=tau EXACT (SHG), Eimerl 1987"
+
+[[candidate]]
+level  = 1
+id     = "Photonic_Crystal"
+label  = "광결정 (phi=2 주기 격자 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.45
+notes  = "periods=2=phi EXACT, Yablonovite 1991"
+
+[[candidate]]
+level  = 1
+id     = "Plasma"
+label  = "플라즈마 매질 (주파수 의존, n=6 이온화 단계)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.40
+cost   = 0.35
+notes  = "ion_stages=6=n NEAR, X-ray 영역"
+
+[[candidate]]
+level  = 1
+id     = "Metamaterial"
+label  = "메타물질 (음 굴절률, sigma=12 단위 셀 EXACT)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.50
+cost   = 0.40
+notes  = "cells=12=sigma EXACT, Pendry 2000"
+
+# =============================================================
+# Level 2: Component (광학 요소) -- 6 후보
+# =============================================================
+[[level]]
+name = "Component"
+
+[[candidate]]
+level  = 2
+id     = "Achromat_Doublet"
+label  = "색수차 보정 더블릿 (phi=2 렌즈 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.80
+cost   = 0.75
+notes  = "lenses=2=phi EXACT (crown+flint), Dollond 1758"
+
+[[candidate]]
+level  = 2
+id     = "Prism_Disperse"
+label  = "분산 프리즘 (tau=4 계열 스펙트럼)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.85
+cost   = 0.88
+notes  = "Newton 1666, 각분산 dn/dlambda"
+
+[[candidate]]
+level  = 2
+id     = "Mirror_Parabolic"
+label  = "포물선 거울 (Seidel 수차 5종, n=6 모드)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.88
+cost   = 0.65
+notes  = "Hubble 2.4m 사례, 중심차수차 제로"
+
+[[candidate]]
+level  = 2
+id     = "Polarizer_Wire"
+label  = "와이어그리드 편광자 (n=6 편광 상태 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.80
+cost   = 0.70
+notes  = "pol_states=6=n EXACT (Stokes S0-S3 + L/R), Born-Wolf"
+
+[[candidate]]
+level  = 2
+id     = "Wave_Plate"
+label  = "파장판 (sigma=12 자유도 뮬러 행렬)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.85
+cost   = 0.80
+notes  = "mueller_dof=12=sigma EXACT (16-4 대칭)"
+
+[[candidate]]
+level  = 2
+id     = "Fiber_Coupler"
+label  = "광섬유 커플러 (단일모드, phi=2 출력 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.70
+cost   = 0.65
+notes  = "outputs=2=phi EXACT (3dB 분할), Corning SMF-28"
+
+# =============================================================
+# Level 3: Detection (검출) -- 6 후보
+# =============================================================
+[[level]]
+name = "Detection"
+
+[[candidate]]
+level  = 3
+id     = "CCD_Camera"
+label  = "CCD 센서 (n=6 게이트 단계)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.65
+cost   = 0.70
+notes  = "gates=6=n NEAR (4-phase CCD 파생), Boyle-Smith 1969"
+
+[[candidate]]
+level  = 3
+id     = "PMT_Photon"
+label  = "광전자증배관 (단광자, tau=4 동작 단계)"
+n6     = 1.00
+perf   = 0.88
+power  = 0.40
+cost   = 0.50
+notes  = "stages=4=tau NEAR, Hamamatsu R9800, QE=25%"
+
+[[candidate]]
+level  = 3
+id     = "Bolometer"
+label  = "볼로미터 (열 검출, 원적외/mm파)"
+n6     = 0.75
+perf   = 0.78
+power  = 0.35
+cost   = 0.45
+notes  = "Planck HFI 100mK, 열용량 극소"
+
+[[candidate]]
+level  = 3
+id     = "SPAD_Array"
+label  = "SPAD 어레이 (sigma=12 암계수 레벨)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.55
+notes  = "dark_count_12Hz=sigma EXACT, SPC3 모듈"
+
+[[candidate]]
+level  = 3
+id     = "Homodyne_Detector"
+label  = "호모다인 검출 (phi=2 발룬 EXACT)"
+n6     = 1.00
+perf   = 0.82
+power  = 0.65
+cost   = 0.60
+notes  = "balance=2=phi EXACT, 양자 상태 재구성"
+
+[[candidate]]
+level  = 3
+id     = "TES_SNSPD"
+label  = "TES/SNSPD (초전도, n=6 bias 라인 EXACT)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.30
+cost   = 0.25
+notes  = "bias_lines=6=n NEAR, NIST TES"
+
+# =============================================================
+# Level 4: Application (응용) -- 6 후보
+# =============================================================
+[[level]]
+name = "Application"
+
+[[candidate]]
+level  = 4
+id     = "Microscope_Super"
+label  = "초해상 현미경 (STED/PALM, n=6 광자 평균)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.70
+cost   = 0.50
+notes  = "photons=6=n NEAR, Hell STED 2000"
+
+[[candidate]]
+level  = 4
+id     = "Telescope_Adaptive"
+label  = "적응 광학 망원경 (sigma=12 와이어로Zernike 모드)"
+n6     = 1.00
+perf   = 0.92
+power  = 0.55
+cost   = 0.40
+notes  = "modes=12=sigma EXACT (AO 표준), Keck II"
+
+[[candidate]]
+level  = 4
+id     = "Lithography_EUV"
+label  = "EUV 리소그래피 (13.5nm, phi=2 마스크 반사 EXACT)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.50
+cost   = 0.30
+notes  = "refl_layers=2=phi NEAR, ASML TWINSCAN"
+
+[[candidate]]
+level  = 4
+id     = "Interferometer_LIGO"
+label  = "LIGO 간섭계 (tau=4km 팔, 중력파)"
+n6     = 1.00
+perf   = 0.98
+power  = 0.45
+cost   = 0.25
+notes  = "arm_4km=tau EXACT, LIGO-Virgo GW150914"
+
+[[candidate]]
+level  = 4
+id     = "Quantum_Crypto"
+label  = "양자 암호 (BB84, n=6 디코이 상태 EXACT)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.55
+notes  = "decoy=6=n NEAR, ID Quantique"
+
+[[candidate]]
+level  = 4
+id     = "Holography"
+label  = "홀로그래피 (phi=2 참조빔 EXACT)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.65
+cost   = 0.70
+notes  = "beams=2=phi EXACT (object+ref), Gabor 1948"
+
+# =============================================================
+# 호환성 규칙
+# =============================================================
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Free_Electron"
+then_level = 1
+then_ids   = "Vacuum,Plasma"
+
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Parametric_Down"
+then_level = 2
+then_ids   = "Polarizer_Wire,Wave_Plate"
+
+[[rule]]
+type       = "exclude"
+if_level   = 1
+if_id      = "Plasma"
+then_level = 2
+then_ids   = "Achromat_Doublet,Prism_Disperse"

@@ -1,0 +1,162 @@
+# HEXA DSE — 자물쇠제작
+[meta]
+name = "locksmithing"
+desc = "자물쇠제작"
+levels = ["Blank","Mill","Pin","Assemble","Test"]
+vision = "n=6 보편 자물쇠제작"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "L1"
+[[candidate]]
+level = 0
+id = "A"
+label = "황동 소재"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT, sigma=12"
+[[candidate]]
+level = 0
+id = "B"
+label = "스테인리스강"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "tau=4 단계"
+[[candidate]]
+level = 0
+id = "C"
+label = "아연 합금"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "phi=2 변형"
+
+[[level]]
+name = "L2"
+[[candidate]]
+level = 1
+id = "A"
+label = "CNC 밀링"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 1
+id = "B"
+label = "다이캐스팅"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "sigma=12 표준"
+[[candidate]]
+level = 1
+id = "C"
+label = "수공 줄작업"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "tau=4 단계"
+
+[[level]]
+name = "L3"
+[[candidate]]
+level = 2
+id = "A"
+label = "핀텀블러"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 2
+id = "B"
+label = "디스크텀블러"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "phi=2 변형"
+[[candidate]]
+level = 2
+id = "C"
+label = "와드록 구조"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "J2=24 시간"
+
+[[level]]
+name = "L4"
+[[candidate]]
+level = 3
+id = "A"
+label = "6핀 조립"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT, sopfr=5"
+[[candidate]]
+level = 3
+id = "B"
+label = "디지털 조립"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "sigma-tau=8"
+[[candidate]]
+level = 3
+id = "C"
+label = "전자 조립"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "sigma-phi=10"
+
+[[level]]
+name = "L5"
+[[candidate]]
+level = 4
+id = "A"
+label = "파괴 시험"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "n=6 EXACT"
+[[candidate]]
+level = 4
+id = "B"
+label = "피킹 저항 시험"
+n6 = 0.83
+perf = 0.92
+power = 0.75
+cost = 0.70
+notes = "tau=4 단계"
+[[candidate]]
+level = 4
+id = "C"
+label = "내구성 시험"
+n6 = 0.83
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "phi=2 변형"

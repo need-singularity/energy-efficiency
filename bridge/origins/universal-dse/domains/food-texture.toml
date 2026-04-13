@@ -1,0 +1,296 @@
+# N6 Food Texture DSE (rheology + sensory n=6)
+[meta]
+name = "food-texture"
+desc = "Food Texture DSE (rheology + sensory n=6)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Instrument"
+
+[[candidate]]
+id = "TA-XT"
+label = "TA-XT (sigma=12 probe)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "probe=12=sigma"
+
+[[candidate]]
+id = "Warner-Bratzler"
+label = "WB shear (tau=4 blade)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "blade=4=tau"
+
+[[candidate]]
+id = "Kramer-shear"
+label = "Kramer shear (n=6 plate)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "plate=6=n"
+
+[[candidate]]
+id = "Rheometer"
+label = "Rheometer (phi=2 parallel/cone)"
+n6 = 1.0
+perf = 0.95
+power = 0.75
+cost = 0.65
+notes = "geom=2=phi"
+
+[[candidate]]
+id = "Viscometer"
+label = "Viscometer (J2=24 rpm spindle)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "rpm=24=J2"
+
+[[candidate]]
+id = "Penetrometer"
+label = "Penetrometer (n=6 cm travel)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.9
+notes = "cm=6=n"
+
+[[level]]
+name = "Attribute"
+
+[[candidate]]
+id = "Hardness"
+label = "Hardness (sigma=12 N peak)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.9
+notes = "N=12=sigma"
+
+[[candidate]]
+id = "Chew"
+label = "Chewiness (J2=24 cycle)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "cyc=24=J2"
+
+[[candidate]]
+id = "Spring"
+label = "Springiness (phi=2 ratio)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "r=2=phi"
+
+[[candidate]]
+id = "Cohesion"
+label = "Cohesion (tau=4 area ratio)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "ratio=4=tau"
+
+[[candidate]]
+id = "Gumminess"
+label = "Gumminess (n=6 class)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "class=6=n"
+
+[[candidate]]
+id = "Resilience"
+label = "Resilience (sigma=12% rebound)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "pct=12=sigma"
+
+[[level]]
+name = "Structure"
+
+[[candidate]]
+id = "Gel-elastic"
+label = "Elastic gel (phi=2 G'/G'')"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "G=2=phi"
+
+[[candidate]]
+id = "Foam-stable"
+label = "Foam stable (J2=24 min half-life)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "min=24=J2"
+
+[[candidate]]
+id = "Emulsion"
+label = "Emulsion (n=6 μm avg drop)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "μm=6=n"
+
+[[candidate]]
+id = "Crystal-fat"
+label = "Fat crystal (tau=4 polymorph)"
+n6 = 1.0
+perf = 0.9
+power = 0.8
+cost = 0.8
+notes = "poly=4=tau"
+
+[[candidate]]
+id = "Starch-gel"
+label = "Starch gel (sigma=12% w/v)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "pct=12=sigma"
+
+[[candidate]]
+id = "Fiber-matrix"
+label = "Fiber matrix (n=6 strand)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "str=6=n"
+
+[[level]]
+name = "Sensory"
+
+[[candidate]]
+id = "Crisp"
+label = "Crisp (n=6 panelist)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "p=6=n"
+
+[[candidate]]
+id = "Juicy"
+label = "Juicy (sigma=12 ml release)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "ml=12=sigma"
+
+[[candidate]]
+id = "Creamy"
+label = "Creamy (tau=4 score)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "sc=4=tau"
+
+[[candidate]]
+id = "Grit"
+label = "Grit (J2=24 particle μm)"
+n6 = 1.0
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "μm=24=J2"
+
+[[candidate]]
+id = "Melt"
+label = "Melt-mouth (phi=2 T body temp)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "T=2=phi"
+
+[[candidate]]
+id = "Chewy"
+label = "Chewy (n=6 descriptor)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "d=6=n"
+
+[[level]]
+name = "Design"
+
+[[candidate]]
+id = "3D-print-food"
+label = "3D print food (sigma=12 nozzle)"
+n6 = 1.0
+perf = 0.95
+power = 0.75
+cost = 0.65
+notes = "noz=12=sigma"
+
+[[candidate]]
+id = "Extruder"
+label = "Extruder twin (phi=2 screw)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "screw=2=phi"
+
+[[candidate]]
+id = "Mould-textured"
+label = "Mould textured (n=6 cavity)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "cav=6=n"
+
+[[candidate]]
+id = "Hydrocolloid"
+label = "Hydrocolloid (tau=4 blend)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "bl=4=tau"
+
+[[candidate]]
+id = "Spray-dry"
+label = "Spray dry (J2=24 ton/h industry)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.8
+notes = "ton=24=J2"
+
+[[candidate]]
+id = "Freeze-dry"
+label = "Freeze dry (sigma=12 h cycle)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.75
+notes = "h=12=sigma"
+

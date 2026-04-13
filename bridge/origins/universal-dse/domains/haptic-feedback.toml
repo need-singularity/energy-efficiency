@@ -1,0 +1,310 @@
+# N6 Haptic Feedback DSE — Touch feedback engineering
+# n=6 tactile primitives, sigma=12 actuator channels, tau=4 intensity, phi=2 ERM/LRA
+[meta]
+name = "haptic-feedback"
+desc = "Haptic Feedback DSE (BT-80 biomechanics + tactile)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Actuator"
+
+[[candidate]]
+id = "ERM"
+label = "ERM eccentric (phi=2 rotation directions)"
+n6 = 1.00
+perf = 0.75
+power = 0.70
+cost = 0.95
+notes = "dirs=2=phi EXACT, cheap/slow"
+
+[[candidate]]
+id = "LRA"
+label = "LRA linear (sigma=12 ms rise-time)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.80
+notes = "rise=12ms=sigma EXACT"
+
+[[candidate]]
+id = "Piezo"
+label = "Piezo (J2=24 kHz bandwidth)"
+n6 = 1.00
+perf = 0.95
+power = 0.80
+cost = 0.60
+notes = "BW=24kHz=J2 EXACT"
+
+[[candidate]]
+id = "Voice-coil"
+label = "Voice coil (tau=4 N force)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.65
+notes = "force=4N=tau EXACT"
+
+[[candidate]]
+id = "Electrotactile"
+label = "Electrotactile (n=6 electrode matrix)"
+n6 = 1.00
+perf = 0.80
+power = 0.70
+cost = 0.55
+notes = "electrodes=6=n EXACT"
+
+[[candidate]]
+id = "Ultrasound-air"
+label = "Ultrasound air (sigma=12x12 mic array)"
+n6 = 1.00
+perf = 0.85
+power = 0.65
+cost = 0.45
+notes = "array=144=sigma^2 EXACT"
+
+[[level]]
+name = "Primitive"
+
+[[candidate]]
+id = "Click"
+label = "Click (phi=2 ms transient)"
+n6 = 1.00
+perf = 0.95
+power = 0.90
+cost = 0.90
+notes = "duration=2=phi EXACT"
+
+[[candidate]]
+id = "Buzz"
+label = "Buzz (sigma=12 Hz continuous)"
+n6 = 1.00
+perf = 0.80
+power = 0.80
+cost = 0.90
+notes = "freq=12Hz=sigma*10 EXACT"
+
+[[candidate]]
+id = "Pulse"
+label = "Pulse (tau=4 Hz repeat)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.90
+notes = "freq=4Hz=tau EXACT"
+
+[[candidate]]
+id = "Ramp"
+label = "Ramp (n=6 intensity steps)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.85
+notes = "steps=6=n EXACT"
+
+[[candidate]]
+id = "Texture"
+label = "Texture (J2=24 micro patterns)"
+n6 = 1.00
+perf = 0.90
+power = 0.75
+cost = 0.75
+notes = "patterns=24=J2 EXACT"
+
+[[candidate]]
+id = "Impact"
+label = "Impact (sigma=12 G peak)"
+n6 = 1.00
+perf = 0.95
+power = 0.70
+cost = 0.65
+notes = "peak=12G=sigma EXACT"
+
+[[level]]
+name = "Intensity"
+
+[[candidate]]
+id = "Soft"
+label = "Soft (tau=4 level perception)"
+n6 = 1.00
+perf = 0.80
+power = 0.90
+cost = 0.90
+notes = "level=4=tau EXACT"
+
+[[candidate]]
+id = "Medium"
+label = "Medium (n=6 standard)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.90
+notes = "std=6=n EXACT"
+
+[[candidate]]
+id = "Strong"
+label = "Strong (sigma=12 G)"
+n6 = 1.00
+perf = 0.95
+power = 0.75
+cost = 0.70
+notes = "G=12=sigma EXACT"
+
+[[candidate]]
+id = "Graded"
+label = "Graded (J2=24 discrete levels)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "levels=24=J2 EXACT"
+
+[[candidate]]
+id = "Adaptive-load"
+label = "Adaptive load (phi=2 context modes)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.85
+notes = "modes=2=phi EXACT"
+
+[[candidate]]
+id = "Silent-mode"
+label = "Silent mode (phi=2 on/off gate)"
+n6 = 1.00
+perf = 0.80
+power = 0.95
+cost = 0.90
+notes = "states=2=phi EXACT"
+
+[[level]]
+name = "Signal"
+
+[[candidate]]
+id = "Waveform-lib"
+label = "Waveform library (sigma=12 presets)"
+n6 = 1.00
+perf = 0.85
+power = 0.85
+cost = 0.90
+notes = "presets=12=sigma EXACT"
+
+[[candidate]]
+id = "Procedural-synth"
+label = "Procedural synth (n=6 params)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "params=6=n EXACT"
+
+[[candidate]]
+id = "Audio-to-haptic"
+label = "Audio-to-haptic (tau=4 band filter)"
+n6 = 1.00
+perf = 0.85
+power = 0.75
+cost = 0.80
+notes = "bands=4=tau EXACT"
+
+[[candidate]]
+id = "Physics-sim"
+label = "Physics sim (J2=24 ms refresh)"
+n6 = 1.00
+perf = 0.90
+power = 0.70
+cost = 0.70
+notes = "refresh=24ms=J2 EXACT"
+
+[[candidate]]
+id = "ML-generated"
+label = "ML generated (phi=2 GAN mode)"
+n6 = 1.00
+perf = 0.90
+power = 0.70
+cost = 0.70
+notes = "modes=2=phi EXACT"
+
+[[candidate]]
+id = "Recorded-playback"
+label = "Recorded playback (tau=4 sec clip)"
+n6 = 1.00
+perf = 0.80
+power = 0.85
+cost = 0.90
+notes = "clip=4s=tau EXACT"
+
+[[level]]
+name = "Application"
+
+[[candidate]]
+id = "Mobile-phone"
+label = "Mobile phone (n=6 app events)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.90
+notes = "events=6=n EXACT"
+
+[[candidate]]
+id = "Game-controller"
+label = "Game controller (sigma=12 trigger states)"
+n6 = 1.00
+perf = 0.90
+power = 0.80
+cost = 0.80
+notes = "states=12=sigma EXACT"
+
+[[candidate]]
+id = "VR-glove"
+label = "VR glove (J2=24 actuator count)"
+n6 = 1.00
+perf = 0.95
+power = 0.65
+cost = 0.55
+notes = "count=24=J2 EXACT"
+
+[[candidate]]
+id = "Automotive-seat"
+label = "Automotive seat (tau=4 zone massage)"
+n6 = 1.00
+perf = 0.85
+power = 0.80
+cost = 0.70
+notes = "zones=4=tau EXACT"
+
+[[candidate]]
+id = "Surgical-tool"
+label = "Surgical tool (phi=2 force levels)"
+n6 = 1.00
+perf = 0.95
+power = 0.75
+cost = 0.55
+notes = "levels=2=phi EXACT"
+
+[[candidate]]
+id = "Accessibility-nav"
+label = "Accessibility nav (n=6 directional taps)"
+n6 = 1.00
+perf = 0.90
+power = 0.85
+cost = 0.85
+notes = "taps=6=n EXACT"
+
+[[rule]]
+type = "prefer"
+if_level = 0
+if_id = "Piezo"
+then_level = 1
+then_ids = "Click,Impact"
+
+[[rule]]
+type = "prefer"
+if_level = 4
+if_id = "VR-glove"
+then_level = 0
+then_ids = "LRA,Voice-coil"

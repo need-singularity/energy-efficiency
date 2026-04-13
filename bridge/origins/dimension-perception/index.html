@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>차원을 느껴봐</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#0a0a12; color:#e8e8f0;
+  font-family:'Noto Sans KR',sans-serif;
+  overflow-x:hidden; overflow-y:auto;
+  min-height:100vh;
+}
+
+/* ── 전체 스테이지 ── */
+.stage {
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:40px 20px; position:relative;
+}
+.stage canvas { border-radius:16px; cursor:pointer; }
+
+/* ── 텍스트 ── */
+h1 { font-size:clamp(28px,5vw,52px); font-weight:900; text-align:center; line-height:1.3; }
+h2 { font-size:clamp(20px,3.5vw,36px); font-weight:700; text-align:center; margin-bottom:16px; }
+.sub { font-size:clamp(14px,2vw,20px); font-weight:300; text-align:center; color:#aab; max-width:600px; line-height:1.7; margin:12px auto; }
+.highlight { color:#ff6b35; font-weight:700; }
+.blue { color:#4ecdc4; }
+.dim-up { color:#ffe66d; font-weight:700; font-size:1.1em; }
+
+/* ── 버튼 ── */
+.btn {
+  display:inline-block; margin-top:24px; padding:14px 36px;
+  background:linear-gradient(135deg,#ff6b35,#f7c948);
+  color:#0a0a12; font-size:18px; font-weight:700;
+  border:none; border-radius:50px; cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s;
+  font-family:inherit;
+}
+.btn:hover { transform:scale(1.05); box-shadow:0 0 30px rgba(255,107,53,0.4); }
+
+/* ── 진행 바 ── */
+#progress {
+  position:fixed; top:0; left:0; height:4px; background:linear-gradient(90deg,#ff6b35,#4ecdc4,#ffe66d);
+  z-index:100; transition:width 0.5s;
+}
+
+/* ── 단계 인디케이터 ── */
+#step-dots {
+  position:fixed; right:20px; top:50%; transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:12px; z-index:50;
+}
+.dot {
+  width:12px; height:12px; border-radius:50%; background:#333;
+  border:2px solid #555; transition:all 0.3s; cursor:pointer;
+}
+.dot.active { background:#ff6b35; border-color:#ff6b35; box-shadow:0 0 12px rgba(255,107,53,0.6); }
+.dot.done { background:#4ecdc4; border-color:#4ecdc4; }
+
+/* ── 드래그 힌트 ── */
+.drag-hint {
+  font-size:14px; color:#888; margin-top:12px;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ── 비교 박스 ── */
+.compare {
+  display:flex; gap:40px; margin-top:24px; flex-wrap:wrap; justify-content:center;
+}
+.compare-box {
+  background:rgba(255,255,255,0.05); border:1px solid #333;
+  border-radius:12px; padding:20px; text-align:center; min-width:200px;
+}
+.compare-box h3 { font-size:16px; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<div id="progress" style="width:0%"></div>
+
+<div id="step-dots">
+  <div class="dot active" data-step="0"></div>
+  <div class="dot" data-step="1"></div>
+  <div class="dot" data-step="2"></div>
+  <div class="dot" data-step="3"></div>
+  <div class="dot" data-step="4"></div>
+  <div class="dot" data-step="5"></div>
+  <div class="dot" data-step="6"></div>
+</div>
+
+<!-- ===== 0. 인트로 ===== -->
+<div class="stage" id="stage0">
+  <h1>너는 <span class="highlight">차원</span>을 이해할 수 있다</h1>
+  <p class="sub">
+    우리는 3D에 갇혀 있다.<br>
+    하지만 <span class="blue">2D 생물</span>도 같은 말을 했을 거다.<br><br>
+    지금부터 차원을 <span class="highlight">직접 느껴본다.</span>
+  </p>
+  <button class="btn" onclick="goStep(1)">시작하기</button>
+</div>
+
+<!-- ===== 1. 차원 쌓기: 점→선→면→큐브→??? ===== -->
+<div class="stage" id="stage1" style="display:none">
+  <h2>차원은 이렇게 <span class="highlight">쌓인다</span></h2>
+  <canvas id="c1" width="700" height="400"></canvas>
+  <p class="drag-hint">클릭해서 다음 차원으로</p>
+  <p class="sub" id="s1-text">점 하나. 0차원.</p>
+</div>
+
+<!-- ===== 2. 납작한 세계: 2D 생물 체험 ===== -->
+<div class="stage" id="stage2" style="display:none">
+  <h2>만약 네가 <span class="blue">납작한 생물</span>이라면</h2>
+  <p class="sub">너는 종이 위에 산다. 위아래를 모른다.<br>누군가 공을 네 세계에 통과시킨다.</p>
+  <canvas id="c2" width="700" height="400"></canvas>
+  <p class="sub" id="s2-text">슬라이더를 움직여봐 &#8595;</p>
+  <input type="range" id="s2-slider" min="0" max="100" value="0" style="width:300px;margin-top:8px">
+</div>
+
+<!-- ===== 3. 이제 네 차례: 4D 공이 3D를 관통 ===== -->
+<div class="stage" id="stage3" style="display:none">
+  <h2><span class="highlight">이제 네 차례</span></h2>
+  <p class="sub">4차원 공이 우리 3D 세계를 관통하면 뭐가 보일까?<br>
+  <span class="dim-up">방금 2D 생물이 본 것과 똑같은 일이 너에게 일어난다.</span></p>
+  <canvas id="c3" width="700" height="500"></canvas>
+  <input type="range" id="s3-slider" min="0" max="100" value="0" style="width:300px;margin-top:8px">
+  <p class="sub" id="s3-text">슬라이더 = 4D 공의 w 위치</p>
+</div>
+
+<!-- ===== 4. 차원 쌓기 실습: 큐브를 끌어서 4D 만들기 ===== -->
+<div class="stage" id="stage4" style="display:none">
+  <h2>직접 <span class="highlight">4차원</span>을 만들어봐</h2>
+  <p class="sub">점을 끌면 선, 선을 끌면 면, 면을 끌면 큐브.<br>
+  <span class="dim-up">큐브를 끌면? 초입방체!</span></p>
+  <canvas id="c4" width="700" height="500"></canvas>
+  <p class="drag-hint">드래그해서 다음 차원으로 끌어</p>
+</div>
+
+<!-- ===== 5. 그림자 비유 ===== -->
+<div class="stage" id="stage5" style="display:none">
+  <h2><span class="blue">그림자</span>로 이해하기</h2>
+  <p class="sub">3D 물체는 2D 그림자를 만든다.<br>
+  <span class="dim-up">4D 물체는 3D 그림자를 만든다.</span><br>
+  우리가 보는 초입방체는 4D의 그림자다.</p>
+  <canvas id="c5" width="700" height="500"></canvas>
+  <p class="sub">자동 회전 중 — 4D에서 회전하면 3D 그림자가 이상하게 변한다</p>
+</div>
+
+<!-- ===== 6. 정리 ===== -->
+<div class="stage" id="stage6" style="display:none">
+  <h1>너는 방금 <span class="highlight">4차원</span>을 느꼈다</h1>
+  <br>
+  <div class="compare">
+    <div class="compare-box">
+      <h3 class="blue">2D 생물이 3D를 만나면</h3>
+      <p>공이 관통 → 원이 커졌다 작아짐<br>"뭐야 이게?!"</p>
+    </div>
+    <div class="compare-box">
+      <h3 class="highlight">우리가 4D를 만나면</h3>
+      <p>초구가 관통 → 구가 커졌다 작아짐<br>"뭐야 이게?!"</p>
+    </div>
+  </div>
+  <br>
+  <p class="sub">
+    <span class="dim-up">똑같은 일이다.</span><br><br>
+    점을 끌면 선. 선을 끌면 면. 면을 끌면 큐브.<br>
+    큐브를 끌면 <span class="highlight">초입방체</span>.<br><br>
+    패턴은 영원히 계속된다.<br>
+    우리가 못 보는 건 <span class="blue">눈의 한계</span>지, 차원의 한계가 아니다.
+  </p>
+  <br>
+  <p class="sub" style="color:#666;font-size:13px">
+    4D 독립 회전면 = C(4,2) = 6 = n<br>
+    Tesseract 면 = 24 = J_2<br>
+    완전광학함수 = 6D = n<br>
+    BT-1108
+  </p>
+  <button class="btn" onclick="goStep(0)">처음부터 다시</button>
+</div>
+
+<script>
+// ── 단계 전환 ──
+let currentStep = 0;
+const totalSteps = 7;
+
+function goStep(n) {
+  document.getElementById('stage' + currentStep).style.display = 'none';
+  currentStep = n;
+  document.getElementById('stage' + n).style.display = 'flex';
+  document.getElementById('progress').style.width = (n / (totalSteps-1) * 100) + '%';
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.remove('active');
+    d.classList.toggle('done', i < n);
+    if (i === n) d.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+  if (n === 1) startStage1();
+  if (n === 2) startStage2();
+  if (n === 3) startStage3();
+  if (n === 4) startStage4();
+  if (n === 5) startStage5();
+}
+
+document.querySelectorAll('.dot').forEach(d => {
+  d.addEventListener('click', () => goStep(parseInt(d.dataset.step)));
+});
+
+// ═══════════════════════════════════
+// 1단계: 차원 쌓기 애니메이션
+// ═══════════════════════════════════
+function startStage1() {
+  const c = document.getElementById('c1');
+  const ctx = c.getContext('2d');
+  let dim = 0;
+  const texts = [
+    '점 하나. 0차원. 위치만 있다.',
+    '점을 끌었다 → 선. 1차원. 길이가 생겼다.',
+    '선을 끌었다 → 면. 2차원. 넓이가 생겼다.',
+    '면을 끌었다 → 큐브. 3차원. 부피가 생겼다.',
+    '큐브를 끌었다 → ??? 4차원. 초부피가 생겼다!'
+  ];
+  const counts = [
+    '꼭짓점: 1',
+    '꼭짓점: 2',
+    '꼭짓점: 4',
+    '꼭짓점: 8',
+    '꼭짓점: 16 = 2^4'
+  ];
+
+  function draw() {
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, 700, 400);
+    const cx = 350, cy = 200;
+
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.fillStyle = '#ff6b35';
+    ctx.lineWidth = 3;
+
+    if (dim === 0) {
+      ctx.beginPath(); ctx.arc(cx, cy, 8, 0, Math.PI*2); ctx.fill();
+    }
+    if (dim === 1) {
+      ctx.beginPath(); ctx.moveTo(cx-80, cy); ctx.lineTo(cx+80, cy); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx-80, cy, 6, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(cx+80, cy, 6, 0, Math.PI*2); ctx.fill();
+    }
+    if (dim === 2) {
+      ctx.strokeRect(cx-80, cy-80, 160, 160);
+      for (let x of [-80,80]) for (let y of [-80,80]) {
+        ctx.beginPath(); ctx.arc(cx+x, cy+y, 5, 0, Math.PI*2); ctx.fill();
+      }
+    }
+    if (dim === 3) {
+      drawCube(ctx, cx, cy, 80, 0);
+    }
+    if (dim >= 4) {
+      drawTesseract(ctx, cx, cy, 80, Date.now() * 0.001);
+    }
+
+    // 텍스트
+    ctx.fillStyle = '#e8e8f0';
+    ctx.font = '16px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText(counts[Math.min(dim, 4)], cx, 370);
+
+    document.getElementById('s1-text').textContent = texts[Math.min(dim, 4)];
+  }
+
+  function drawCube(ctx, cx, cy, s, t) {
+    const off = s * 0.5;
+    // 뒤 면
+    ctx.strokeStyle = 'rgba(78,205,196,0.3)';
+    ctx.strokeRect(cx-s/2+off, cy-s/2-off, s, s);
+    // 앞 면
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.strokeRect(cx-s/2, cy-s/2, s, s);
+    // 연결선
+    const corners = [[-1,-1],[1,-1],[1,1],[-1,1]];
+    ctx.strokeStyle = 'rgba(78,205,196,0.5)';
+    for (const [a,b] of corners) {
+      ctx.beginPath();
+      ctx.moveTo(cx+a*s/2, cy+b*s/2);
+      ctx.lineTo(cx+a*s/2+off, cy+b*s/2-off);
+      ctx.stroke();
+    }
+    // 꼭짓점
+    ctx.fillStyle = '#ff6b35';
+    for (const [a,b] of corners) {
+      ctx.beginPath(); ctx.arc(cx+a*s/2, cy+b*s/2, 4, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(cx+a*s/2+off, cy+b*s/2-off, 4, 0, Math.PI*2); ctx.fill();
+    }
+  }
+
+  function drawTesseract(ctx, cx, cy, s, t) {
+    // 4D 꼭짓점 생성 후 회전+투영
+    const verts4 = [];
+    for (let i = 0; i < 16; i++) {
+      verts4.push([
+        (i&1)?1:-1, (i&2)?1:-1, (i&4)?1:-1, (i&8)?1:-1
+      ]);
+    }
+    // w축 회전
+    const angle = t * 0.5;
+    const cos = Math.cos(angle), sin = Math.sin(angle);
+    const projected = verts4.map(v => {
+      const x = v[0], w = v[3];
+      const rx = x*cos - w*sin;
+      const rw = x*sin + w*cos;
+      const d = 3.5 / (3.5 - rw);
+      return { x: cx + rx*s*0.45*d, y: cy + v[1]*s*0.45*d, z: v[2]*d, w: rw, d };
+    });
+    // 변 그리기
+    for (let i = 0; i < 16; i++)
+      for (let j = i+1; j < 16; j++) {
+        let diff = 0;
+        for (let k=0;k<4;k++) if(verts4[i][k]!==verts4[j][k]) diff++;
+        if (diff === 1) {
+          const a = projected[i], b = projected[j];
+          const w = (a.w+b.w)/2;
+          const t = (w+1)/2;
+          const r = Math.floor(Math.min(255,Math.max(0, t<0.5?0:(t-0.5)*510)));
+          const g = Math.floor(Math.min(255,Math.max(0, t<0.25?t*1020:t>0.75?(1-t)*1020:255)));
+          const bl = Math.floor(Math.min(255,Math.max(0, t<0.5?255-t*510:0)));
+          ctx.strokeStyle = `rgba(${r},${g},${bl},0.6)`;
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    // 꼭짓점
+    for (const p of projected) {
+      const w = (p.w+1)/2;
+      const r = Math.floor(Math.min(255,Math.max(0, w<0.5?0:(w-0.5)*510)));
+      const g = Math.floor(Math.min(255,Math.max(0, w<0.25?w*1020:w>0.75?(1-w)*1020:255)));
+      const b = Math.floor(Math.min(255,Math.max(0, w<0.5?255-w*510:0)));
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4*p.d, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.lineWidth = 3;
+  }
+
+  c.onclick = () => {
+    if (dim < 4) { dim++; draw(); }
+    else goStep(2);
+  };
+
+  draw();
+  // 4단계에서 자동 애니메이션
+  let animId;
+  function anim() {
+    if (dim >= 4 && currentStep === 1) { draw(); }
+    animId = requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+// ═══════════════════════════════════
+// 2단계: 2D 생물 체험 — 공이 평면을 관통
+// ═══════════════════════════════════
+function startStage2() {
+  const c = document.getElementById('c2');
+  const ctx = c.getContext('2d');
+  const slider = document.getElementById('s2-slider');
+  const text = document.getElementById('s2-text');
+  const R = 80; // 구 반지름
+
+  function draw() {
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, 700, 400);
+
+    const t = slider.value / 100; // 0~1
+    const ballY = -R + t * R * 2; // 구 중심의 y (관통 중)
+    const cx = 350;
+
+    // ── 왼쪽: 옆에서 본 모습 (우리 시점) ──
+    ctx.save();
+    // 평면 (2D 세계)
+    ctx.strokeStyle = '#ffe66d';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.moveTo(50, 200); ctx.lineTo(300, 200); ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = '#ffe66d';
+    ctx.font = '12px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText('2D 세계 (종이)', 175, 220);
+    ctx.fillText('3D 시점 (우리)', 175, 30);
+
+    // 구
+    const sphereCy = 200 - ballY;
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(175, sphereCy, R, 0, Math.PI*2); ctx.stroke();
+
+    // 구와 평면의 교차 표시
+    const dFromCenter = ballY; // 구 중심에서 평면까지 거리
+    if (Math.abs(dFromCenter) < R) {
+      const crossR = Math.sqrt(R*R - dFromCenter*dFromCenter);
+      ctx.fillStyle = 'rgba(255,107,53,0.3)';
+      ctx.fillRect(175-crossR, 195, crossR*2, 10);
+      // 교차점 표시
+      ctx.fillStyle = '#ff6b35';
+      ctx.beginPath(); ctx.arc(175-crossR, 200, 5, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(175+crossR, 200, 5, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+
+    // ── 오른쪽: 2D 생물이 보는 것 ──
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,230,109,0.05)';
+    ctx.fillRect(400, 100, 250, 200);
+    ctx.strokeStyle = '#ffe66d';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(400, 100, 250, 200);
+
+    ctx.fillStyle = '#ffe66d';
+    ctx.font = '12px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText('2D 생물이 보는 것', 525, 90);
+
+    if (Math.abs(dFromCenter) < R) {
+      const crossR = Math.sqrt(R*R - dFromCenter*dFromCenter);
+      // 2D 생물은 "선분"만 본다
+      ctx.strokeStyle = '#ff6b35';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(525-crossR, 200);
+      ctx.lineTo(525+crossR, 200);
+      ctx.stroke();
+
+      // 크기 표시
+      ctx.fillStyle = '#ff6b35';
+      ctx.font = '16px "Noto Sans KR"';
+      ctx.fillText('길이: ' + (crossR*2).toFixed(0), 525, 240);
+
+      if (Math.abs(dFromCenter) < 5) {
+        text.innerHTML = '<span style="color:#ff6b35">최대! 구의 적도가 지나간다. 2D 생물: "갑자기 큰 선이?!"</span>';
+      } else if (dFromCenter > 0) {
+        text.innerHTML = '선이 점점 커진다... 2D 생물: "이게 뭐지?"';
+      } else {
+        text.innerHTML = '선이 점점 작아진다... 2D 생물: "사라진다!"';
+      }
+    } else {
+      ctx.fillStyle = '#555';
+      ctx.font = '14px "Noto Sans KR"';
+      ctx.fillText('아무것도 안 보인다', 525, 205);
+      if (t < 0.1) text.textContent = '아직 안 왔다. 슬라이더를 오른쪽으로.';
+      else text.innerHTML = '사라졌다! 2D 생물: <span style="color:#4ecdc4">"어디 간 거야??"</span>';
+    }
+    ctx.restore();
+
+    // 진행 표시
+    ctx.fillStyle = '#888';
+    ctx.font = '11px "Noto Sans KR"';
+    ctx.textAlign = 'left';
+    ctx.fillText('3D 공의 높이(y) = ' + ballY.toFixed(1), 50, 380);
+  }
+
+  slider.oninput = draw;
+  draw();
+
+  // 다 보면 다음 단계 버튼
+  let maxReached = false;
+  slider.addEventListener('input', () => {
+    if (slider.value > 90 && !maxReached) {
+      maxReached = true;
+      setTimeout(() => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = '이제 네 차례 →';
+        btn.onclick = () => goStep(3);
+        document.getElementById('stage2').appendChild(btn);
+      }, 1000);
+    }
+  });
+}
+
+// ═══════════════════════════════════
+// 3단계: 4D 초구가 3D를 관통
+// ═══════════════════════════════════
+function startStage3() {
+  const c = document.getElementById('c3');
+  const ctx = c.getContext('2d');
+  const slider = document.getElementById('s3-slider');
+  const text = document.getElementById('s3-text');
+  const R = 120;
+
+  function draw() {
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, 700, 500);
+
+    const t = slider.value / 100;
+    const w = -R + t * R * 2; // 4D 초구의 w 위치
+    const cx = 350, cy = 250;
+
+    if (Math.abs(w) < R) {
+      const crossR = Math.sqrt(R*R - w*w);
+      const norm = crossR / R; // 0~1
+
+      // 3D 구 그리기 (우리가 보는 것)
+      const gradient = ctx.createRadialGradient(cx-20, cy-20, 0, cx, cy, crossR);
+      const hue = Math.floor(200 - norm * 160); // 파랑→빨강
+      gradient.addColorStop(0, `hsla(${hue},80%,60%,0.8)`);
+      gradient.addColorStop(0.7, `hsla(${hue},80%,40%,0.4)`);
+      gradient.addColorStop(1, `hsla(${hue},80%,30%,0.1)`);
+      ctx.fillStyle = gradient;
+      ctx.beginPath(); ctx.arc(cx, cy, crossR, 0, Math.PI*2); ctx.fill();
+
+      // 외곽선
+      ctx.strokeStyle = `hsla(${hue},80%,60%,0.8)`;
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(cx, cy, crossR, 0, Math.PI*2); ctx.stroke();
+
+      // 크기 표시
+      ctx.fillStyle = '#e8e8f0';
+      ctx.font = '20px "Noto Sans KR"';
+      ctx.textAlign = 'center';
+      ctx.fillText('반지름: ' + crossR.toFixed(0), cx, cy + crossR + 40);
+
+      if (Math.abs(w) < 5) {
+        text.innerHTML = '<span style="color:#ff6b35;font-size:18px">최대! 초구의 적도다. 2D 생물이 본 것과 똑같은 일!</span>';
+      } else if (w > 0) {
+        text.innerHTML = '구가 점점 커진다... 4D에서 뭔가 다가온다!';
+      } else {
+        text.innerHTML = '구가 점점 작아진다... 4D로 빠져나간다...';
+      }
+    } else {
+      ctx.fillStyle = '#555';
+      ctx.font = '18px "Noto Sans KR"';
+      ctx.textAlign = 'center';
+      ctx.fillText('우리 3D 세계에는 아무것도 없다', cx, cy);
+      if (t < 0.1) text.textContent = '4D 초구가 아직 안 왔다. 슬라이더를 움직여봐.';
+      else text.innerHTML = '<span style="color:#4ecdc4">사라졌다. 4차원으로 돌아갔다.</span>';
+    }
+
+    // w 위치 표시
+    ctx.fillStyle = '#888';
+    ctx.font = '13px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText('4D 초구의 w좌표 = ' + w.toFixed(1), cx, 470);
+
+    // 비교 텍스트
+    ctx.fillStyle = '#4ecdc4';
+    ctx.font = '12px "Noto Sans KR"';
+    ctx.fillText('2D에서: 공 관통 → 원이 커졌다 작아짐', cx, 30);
+    ctx.fillStyle = '#ff6b35';
+    ctx.fillText('3D에서: 초구 관통 → 구가 커졌다 작아짐  ← 지금 이거!', cx, 50);
+  }
+
+  slider.oninput = draw;
+  draw();
+
+  let maxReached = false;
+  slider.addEventListener('input', () => {
+    if (slider.value > 90 && !maxReached) {
+      maxReached = true;
+      setTimeout(() => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = '직접 4D를 만들어보자 →';
+        btn.onclick = () => goStep(4);
+        document.getElementById('stage3').appendChild(btn);
+      }, 1000);
+    }
+  });
+}
+
+// ═══════════════════════════════════
+// 4단계: 드래그로 차원 만들기
+// ═══════════════════════════════════
+function startStage4() {
+  const c = document.getElementById('c4');
+  const ctx = c.getContext('2d');
+  let dim = 0;
+  let dragging = false;
+  let dragX = 0, dragY = 0;
+  let startX = 0, startY = 0;
+  const cx = 350, cy = 250;
+
+  const labels = [
+    '0D: 점을 오른쪽으로 끌어봐',
+    '1D: 선을 아래로 끌어봐',
+    '2D: 면을 오른쪽 아래로 끌어봐',
+    '3D: 큐브를 아무 방향으로 끌어봐',
+    '4D 초입방체 완성! 꼭짓점 16 = 2^4'
+  ];
+
+  function draw() {
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, 700, 500);
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.fillStyle = '#ff6b35';
+    ctx.lineWidth = 3;
+
+    const dx = dragging ? dragX - startX : 0;
+    const dy = dragging ? dragY - startY : 0;
+    const pull = Math.sqrt(dx*dx+dy*dy);
+    const progress = Math.min(pull / 120, 1);
+
+    if (dim === 0) {
+      // 점 + 드래그하면 선으로 늘어남
+      ctx.beginPath(); ctx.arc(cx, cy, 8, 0, Math.PI*2); ctx.fill();
+      if (dragging && progress > 0) {
+        ctx.globalAlpha = progress;
+        ctx.strokeStyle = '#4ecdc4';
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx+dx*0.8, cy); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx+dx*0.8, cy, 6, 0, Math.PI*2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+    else if (dim === 1) {
+      const len = 100;
+      ctx.beginPath(); ctx.moveTo(cx-len/2, cy); ctx.lineTo(cx+len/2, cy); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx-len/2, cy, 5, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(cx+len/2, cy, 5, 0, Math.PI*2); ctx.fill();
+      if (dragging && progress > 0) {
+        ctx.globalAlpha = progress;
+        const oy = dy * 0.8;
+        ctx.beginPath(); ctx.moveTo(cx-len/2, cy+oy); ctx.lineTo(cx+len/2, cy+oy); ctx.stroke();
+        ctx.strokeStyle = 'rgba(78,205,196,0.5)';
+        ctx.beginPath(); ctx.moveTo(cx-len/2,cy); ctx.lineTo(cx-len/2,cy+oy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx+len/2,cy); ctx.lineTo(cx+len/2,cy+oy); ctx.stroke();
+        ctx.fillStyle = '#ff6b35';
+        ctx.beginPath(); ctx.arc(cx-len/2, cy+oy, 4, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx+len/2, cy+oy, 4, 0, Math.PI*2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+    else if (dim === 2) {
+      const s = 100;
+      ctx.strokeStyle = '#4ecdc4';
+      ctx.strokeRect(cx-s/2, cy-s/2, s, s);
+      for (let x of [-1,1]) for (let y of [-1,1]) {
+        ctx.beginPath(); ctx.arc(cx+x*s/2, cy+y*s/2, 4, 0, Math.PI*2); ctx.fill();
+      }
+      if (dragging && progress > 0) {
+        ctx.globalAlpha = progress;
+        const ox = dx*0.4, oy = dy*0.4;
+        ctx.strokeStyle = 'rgba(78,205,196,0.6)';
+        ctx.strokeRect(cx-s/2+ox, cy-s/2+oy, s, s);
+        ctx.strokeStyle = 'rgba(78,205,196,0.3)';
+        for (let x of [-1,1]) for (let y of [-1,1]) {
+          ctx.beginPath(); ctx.moveTo(cx+x*s/2,cy+y*s/2); ctx.lineTo(cx+x*s/2+ox,cy+y*s/2+oy); ctx.stroke();
+          ctx.fillStyle = '#ff6b35';
+          ctx.beginPath(); ctx.arc(cx+x*s/2+ox, cy+y*s/2+oy, 3, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+      }
+    }
+    else if (dim === 3) {
+      // 큐브 + 끌면 초입방체로 변환
+      drawStaticCube(ctx, cx, cy, 80);
+      if (dragging && progress > 0) {
+        ctx.globalAlpha = progress * 0.7;
+        drawStaticCube(ctx, cx + dx*0.3, cy + dy*0.3, 80 * (0.7 + progress*0.3));
+        // 연결선
+        ctx.strokeStyle = 'rgba(255,230,109,0.3)';
+        ctx.lineWidth = 1;
+        const s=80, off=s*0.4;
+        const corners1 = getCubeCorners(cx,cy,s,off);
+        const corners2 = getCubeCorners(cx+dx*0.3,cy+dy*0.3,80*(0.7+progress*0.3),off);
+        for (let i = 0; i < corners1.length && i < corners2.length; i++) {
+          ctx.beginPath(); ctx.moveTo(corners1[i][0],corners1[i][1]);
+          ctx.lineTo(corners2[i][0],corners2[i][1]); ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+    }
+    else {
+      // 4D 달성! 회전하는 초입방체
+      drawAnimatedTesseract(ctx, cx, cy, 100, Date.now()*0.001);
+    }
+
+    // 라벨
+    ctx.fillStyle = '#e8e8f0';
+    ctx.font = '16px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText(labels[dim], cx, 470);
+
+    // 진행바
+    if (dim < 4 && dragging) {
+      ctx.fillStyle = '#222';
+      ctx.fillRect(250, 20, 200, 8);
+      ctx.fillStyle = progress >= 1 ? '#ff6b35' : '#4ecdc4';
+      ctx.fillRect(250, 20, 200 * progress, 8);
+    }
+  }
+
+  function drawStaticCube(ctx, cx, cy, s) {
+    const off = s*0.4;
+    ctx.strokeStyle = 'rgba(78,205,196,0.3)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cx-s/2+off, cy-s/2-off, s, s);
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.strokeRect(cx-s/2, cy-s/2, s, s);
+    ctx.strokeStyle = 'rgba(78,205,196,0.5)';
+    for (const [a,b] of [[-1,-1],[1,-1],[1,1],[-1,1]]) {
+      ctx.beginPath(); ctx.moveTo(cx+a*s/2,cy+b*s/2); ctx.lineTo(cx+a*s/2+off,cy+b*s/2-off); ctx.stroke();
+    }
+    ctx.fillStyle = '#ff6b35';
+    for (const [a,b] of [[-1,-1],[1,-1],[1,1],[-1,1]]) {
+      ctx.beginPath(); ctx.arc(cx+a*s/2, cy+b*s/2, 3, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(cx+a*s/2+off, cy+b*s/2-off, 3, 0, Math.PI*2); ctx.fill();
+    }
+  }
+
+  function getCubeCorners(cx,cy,s,off) {
+    const r = [];
+    for (const [a,b] of [[-1,-1],[1,-1],[1,1],[-1,1]]) {
+      r.push([cx+a*s/2, cy+b*s/2]);
+      r.push([cx+a*s/2+off, cy+b*s/2-off]);
+    }
+    return r;
+  }
+
+  function drawAnimatedTesseract(ctx, cx, cy, s, t) {
+    const verts4 = [];
+    for (let i=0;i<16;i++) verts4.push([(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
+    const a = t*0.7, cos=Math.cos(a), sin=Math.sin(a);
+    const proj = verts4.map(v => {
+      const x=v[0]*cos-v[3]*sin, w=v[0]*sin+v[3]*cos;
+      const d=3/(3-w);
+      return {x:cx+x*s*0.4*d, y:cy+v[1]*s*0.4*d, z:v[2]*d, w, d};
+    });
+    for (let i=0;i<16;i++) for(let j=i+1;j<16;j++){
+      let diff=0; for(let k=0;k<4;k++) if(verts4[i][k]!==verts4[j][k]) diff++;
+      if(diff===1){
+        const a=proj[i],b=proj[j];
+        const ww=((a.w+b.w)/2+1)/2;
+        ctx.strokeStyle=`hsla(${Math.floor(240-ww*200)},70%,50%,0.5)`;
+        ctx.lineWidth=2;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+    }
+    for(const p of proj){
+      const ww=(p.w+1)/2;
+      ctx.fillStyle=`hsl(${Math.floor(240-ww*200)},80%,55%)`;
+      ctx.beginPath();ctx.arc(p.x,p.y,3.5*p.d,0,Math.PI*2);ctx.fill();
+    }
+  }
+
+  c.addEventListener('mousedown', e => {
+    if (dim >= 4) { goStep(5); return; }
+    const rect = c.getBoundingClientRect();
+    startX = e.clientX - rect.left;
+    startY = e.clientY - rect.top;
+    dragX = startX; dragY = startY;
+    dragging = true;
+  });
+  c.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const rect = c.getBoundingClientRect();
+    dragX = e.clientX - rect.left;
+    dragY = e.clientY - rect.top;
+    draw();
+  });
+  window.addEventListener('mouseup', () => {
+    if (dragging) {
+      const pull = Math.sqrt((dragX-startX)**2+(dragY-startY)**2);
+      if (pull > 120) dim++;
+      dragging = false;
+      draw();
+    }
+  });
+
+  // 터치 지원
+  c.addEventListener('touchstart', e => {
+    e.preventDefault();
+    if (dim >= 4) { goStep(5); return; }
+    const rect = c.getBoundingClientRect();
+    const touch = e.touches[0];
+    startX = touch.clientX - rect.left;
+    startY = touch.clientY - rect.top;
+    dragX = startX; dragY = startY;
+    dragging = true;
+  });
+  c.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (!dragging) return;
+    const rect = c.getBoundingClientRect();
+    const touch = e.touches[0];
+    dragX = touch.clientX - rect.left;
+    dragY = touch.clientY - rect.top;
+    draw();
+  });
+  c.addEventListener('touchend', () => {
+    if (dragging) {
+      const pull = Math.sqrt((dragX-startX)**2+(dragY-startY)**2);
+      if (pull > 80) dim++;
+      dragging = false;
+      draw();
+    }
+  });
+
+  draw();
+  function anim() {
+    if (dim >= 4 && currentStep === 4) draw();
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+// ═══════════════════════════════════
+// 5단계: 그림자 — 회전하는 초입방체
+// ═══════════════════════════════════
+function startStage5() {
+  const c = document.getElementById('c5');
+  const ctx = c.getContext('2d');
+
+  function draw(t) {
+    if (currentStep !== 5) return;
+    ctx.fillStyle = '#0a0a12';
+    ctx.fillRect(0, 0, 700, 500);
+
+    // 왼쪽: 3D→2D 그림자 비유
+    ctx.fillStyle = '#888';
+    ctx.font = '13px "Noto Sans KR"';
+    ctx.textAlign = 'center';
+    ctx.fillText('3D 큐브의 2D 그림자', 175, 30);
+
+    // 간단한 회전 큐브의 2D 투영
+    const a1 = t * 0.8;
+    const cubeVerts = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+    const rotated = cubeVerts.map(v => {
+      const x = v[0]*Math.cos(a1)-v[2]*Math.sin(a1);
+      const z = v[0]*Math.sin(a1)+v[2]*Math.cos(a1);
+      return [x, v[1], z];
+    });
+    const proj2d = rotated.map(v => {
+      const s = 2.5/(2.5-v[2]);
+      return { x: 175+v[0]*50*s, y: 250+v[1]*50*s, s };
+    });
+    const cubeEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.lineWidth = 2;
+    for (const [a,b] of cubeEdges) {
+      ctx.beginPath(); ctx.moveTo(proj2d[a].x,proj2d[a].y); ctx.lineTo(proj2d[b].x,proj2d[b].y); ctx.stroke();
+    }
+    for (const p of proj2d) {
+      ctx.fillStyle = '#ff6b35';
+      ctx.beginPath(); ctx.arc(p.x,p.y,3*p.s,0,Math.PI*2); ctx.fill();
+    }
+
+    // 오른쪽: 4D→3D 그림자 (초입방체)
+    ctx.fillStyle = '#888';
+    ctx.fillText('4D 초입방체의 3D 그림자', 525, 30);
+
+    const verts4 = [];
+    for (let i=0;i<16;i++) verts4.push([(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
+
+    // 여러 회전면 동시 적용 (6 = n)
+    const a2 = t * 0.5;
+    const a3 = t * 0.3;
+    const proj4 = verts4.map(v => {
+      // XW 회전
+      let x = v[0]*Math.cos(a2)-v[3]*Math.sin(a2);
+      let w = v[0]*Math.sin(a2)+v[3]*Math.cos(a2);
+      // YW 회전
+      let y = v[1]*Math.cos(a3)-w*Math.sin(a3);
+      let w2 = v[1]*Math.sin(a3)+w*Math.cos(a3);
+      const d = 3.2/(3.2-w2);
+      return { x: 525+x*55*d, y: 250+y*55*d, z: v[2]*d, w: w2, d };
+    });
+
+    for (let i=0;i<16;i++) for(let j=i+1;j<16;j++){
+      let diff=0; for(let k=0;k<4;k++) if(verts4[i][k]!==verts4[j][k]) diff++;
+      if(diff===1){
+        const a=proj4[i],b=proj4[j];
+        const ww=((a.w+b.w)/2+1)/2;
+        ctx.strokeStyle=`hsla(${Math.floor(30+ww*180)},75%,50%,0.55)`;
+        ctx.lineWidth=1.5;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+      }
+    }
+    for(const p of proj4){
+      const ww=(p.w+1)/2;
+      ctx.fillStyle=`hsl(${Math.floor(30+ww*180)},85%,55%)`;
+      ctx.beginPath();ctx.arc(p.x,p.y,3*p.d,0,Math.PI*2);ctx.fill();
+    }
+
+    // 중앙 화살표
+    ctx.fillStyle = '#ffe66d';
+    ctx.font = '40px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('=', 350, 260);
+
+    // 하단 설명
+    ctx.fillStyle = '#ffe66d';
+    ctx.font = '15px "Noto Sans KR"';
+    ctx.fillText('큐브를 돌리면 그림자가 이상하게 변한다 → 4D도 마찬가지!', 350, 460);
+    ctx.fillStyle = '#888';
+    ctx.font = '12px "Noto Sans KR"';
+    ctx.fillText('색상 = w좌표 (4번째 차원)', 525, 480);
+
+    requestAnimationFrame(() => draw(t + 0.016));
+  }
+  draw(0);
+
+  // 다음 버튼
+  setTimeout(() => {
+    const existing = document.querySelector('#stage5 .btn');
+    if (!existing) {
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.style.marginTop = '16px';
+      btn.textContent = '정리 →';
+      btn.onclick = () => goStep(6);
+      document.getElementById('stage5').appendChild(btn);
+    }
+  }, 3000);
+}
+</script>
+</body>
+</html>

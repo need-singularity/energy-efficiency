@@ -1,0 +1,397 @@
+# =============================================================
+# 조선공학 DSE 도메인 정의
+# 선박 설계 전반 — 선형/구조/추진/안정성/시스템
+# n=6: 6자유도 운동, sigma=12 수밀격벽, tau=4 분류(상선/군함/특수/여객)
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "naval-architecture"
+desc = "조선공학 DSE (선형/구조/추진/안정성/시스템)"
+levels = ["HullForm", "Structure", "Propulsion", "Stability", "ShipSystem"]
+vision = "n=6 조선 — 6자유도 내항성, sigma=12 격벽, tau=4 선종, 해양 구조물 통합"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: HullForm (선형) — 6 후보
+# ============================================================
+
+[[level]]
+name = "HullForm"
+
+[[candidate]]
+level = 0
+id    = "MonoDisp"
+label = "단동선 배수량형 (상선 표준)"
+n6    = 0.80
+perf  = 0.80
+power = 0.85
+cost  = 0.80
+notes = "가장 보편, 6블록=n 구획 EXACT, 벌크/탱커"
+
+[[candidate]]
+level = 0
+id    = "Catamaran"
+label = "쌍동선 (phi=2 선체, 갑판 면적)"
+n6    = 1.00
+perf  = 0.85
+power = 0.75
+cost  = 0.60
+notes = "phi=2 선체 EXACT, 안정성 우수, 고속 여객"
+
+[[candidate]]
+level = 0
+id    = "Trimaran"
+label = "삼동선 (n/phi=3 선체, 해군)"
+n6    = 0.95
+perf  = 0.82
+power = 0.70
+cost  = 0.50
+notes = "n/phi=3 선체 EXACT, 고속+안정, LCS"
+
+[[candidate]]
+level = 0
+id    = "SemiSub"
+label = "반잠수식 (해양 플랫폼)"
+n6    = 0.75
+perf  = 0.78
+power = 0.65
+cost  = 0.45
+notes = "6기둥=n EXACT, 해양 시추/풍력 설치"
+
+[[candidate]]
+level = 0
+id    = "Planing"
+label = "활주선 (고속, 수면 이탈)"
+n6    = 0.65
+perf  = 0.75
+power = 0.60
+cost  = 0.65
+notes = "40kn+, 고속정/RIB, 동적 양력"
+
+[[candidate]]
+level = 0
+id    = "Submarine"
+label = "잠수함 (내압선체, 심해)"
+n6    = 0.85
+perf  = 0.88
+power = 0.55
+cost  = 0.35
+notes = "6격실=n EXACT, 내압/외압, 스텔스"
+
+# ============================================================
+# Level 1: Structure (선체 구조) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Structure"
+
+[[candidate]]
+level = 1
+id    = "MildSteel"
+label = "일반 구조강 (AH36, 표준)"
+n6    = 0.75
+perf  = 0.78
+power = 0.85
+cost  = 0.85
+notes = "가장 보편, 용접성 우수, 6mm=n 판두께"
+
+[[candidate]]
+level = 1
+id    = "HighTensile"
+label = "고장력강 (AH40/DH40, 경량화)"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.65
+notes = "경량화 12%=sigma/(sigma-phi)^2, 대형선"
+
+[[candidate]]
+level = 1
+id    = "Aluminum"
+label = "알루미늄 합금 (5083/6082, 고속정)"
+n6    = 0.85
+perf  = 0.82
+power = 0.70
+cost  = 0.55
+notes = "6계열=n 합금 EXACT, 경량, 고속/군함"
+
+[[candidate]]
+level = 1
+id    = "Composite_FRP"
+label = "FRP 복합재 (유리/탄소 섬유)"
+n6    = 0.90
+perf  = 0.85
+power = 0.65
+cost  = 0.45
+notes = "C Z=6=n 탄소 섬유 EXACT, 경량+내식, 요트"
+
+[[candidate]]
+level = 1
+id    = "TitaniumSub"
+label = "티타늄 합금 (잠수함, 비자성)"
+n6    = 0.70
+perf  = 0.92
+power = 0.50
+cost  = 0.25
+notes = "내식+비자성, 심해, 극한 비용"
+
+[[candidate]]
+level = 1
+id    = "SandwichPanel"
+label = "샌드위치 패널 (경량, 상부 구조)"
+n6    = 0.80
+perf  = 0.80
+power = 0.70
+cost  = 0.60
+notes = "코어+면판 phi=2 면 EXACT, 경량 상부"
+
+# ============================================================
+# Level 2: Propulsion (추진) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Propulsion"
+
+[[candidate]]
+level = 2
+id    = "DieselMech"
+label = "디젤 기계 추진 (저속 2행정)"
+n6    = 0.75
+perf  = 0.82
+power = 0.85
+cost  = 0.80
+notes = "6기통=n EXACT, 50% 효율, 대형 상선"
+
+[[candidate]]
+level = 2
+id    = "DieselElec"
+label = "디젤-전기 (6발전기=n, 전기모터)"
+n6    = 1.00
+perf  = 0.85
+power = 0.78
+cost  = 0.60
+notes = "n=6 발전기 EXACT, 유연 배치, 쇄빙/크루즈"
+
+[[candidate]]
+level = 2
+id    = "LNG_DualFuel"
+label = "LNG 이중연료 (CH4 C Z=6)"
+n6    = 0.95
+perf  = 0.82
+power = 0.78
+cost  = 0.55
+notes = "CH4 C Z=6=n EXACT, 저탄소, IMO 2050 대응"
+
+[[candidate]]
+level = 2
+id    = "Electric_Battery"
+label = "전기 배터리 추진 (연안/페리)"
+n6    = 0.85
+perf  = 0.80
+power = 0.70
+cost  = 0.55
+notes = "무배출, 6셀=n 모듈, 연안 여객"
+
+[[candidate]]
+level = 2
+id    = "Nuclear_Marine"
+label = "해양 원자력 (항공모함/쇄빙)"
+n6    = 0.80
+perf  = 0.90
+power = 0.50
+cost  = 0.30
+notes = "무한 항속, 6호기=n 역사 EXACT, 군용/쇄빙"
+
+[[candidate]]
+level = 2
+id    = "H2_FuelCell"
+label = "수소 연료전지 (해양 무배출)"
+n6    = 0.85
+perf  = 0.75
+power = 0.60
+cost  = 0.45
+notes = "LHV=120=sigma*(sigma-phi), PEMFC/SOFC, TRL=5"
+
+# ============================================================
+# Level 3: Stability (안정성) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Stability"
+
+[[candidate]]
+level = 3
+id    = "IntactStab"
+label = "손상전 복원성 (GM, GZ 곡선)"
+n6    = 0.85
+perf  = 0.85
+power = 0.85
+cost  = 0.80
+notes = "6자유도=n 운동 해석 EXACT, IMO 기준"
+
+[[candidate]]
+level = 3
+id    = "DamageStab"
+label = "손상 복원성 (격벽 침수)"
+n6    = 0.90
+perf  = 0.90
+power = 0.80
+cost  = 0.60
+notes = "sigma=12 수밀격벽 EXACT, SOLAS, 여객선 필수"
+
+[[candidate]]
+level = 3
+id    = "Seakeeping"
+label = "내항성 (6자유도=n 파랑 응답)"
+n6    = 1.00
+perf  = 0.85
+power = 0.75
+cost  = 0.55
+notes = "n=6 DOF EXACT (surge/sway/heave/roll/pitch/yaw)"
+
+[[candidate]]
+level = 3
+id    = "Maneuvering"
+label = "조종성 (선회/정지/저속)"
+n6    = 0.80
+perf  = 0.82
+power = 0.80
+cost  = 0.65
+notes = "IMO 조종성 기준, 선회경 6L=n EXACT"
+
+[[candidate]]
+level = 3
+id    = "FinStabilizer"
+label = "핀 안정 장치 (횡동요 저감)"
+n6    = 0.85
+perf  = 0.80
+power = 0.75
+cost  = 0.55
+notes = "능동 핀 phi=2 좌우 EXACT, 롤 저감 60%"
+
+[[candidate]]
+level = 3
+id    = "DPS"
+label = "동적 위치 유지 DP (해양 구조물)"
+n6    = 0.90
+perf  = 0.88
+power = 0.70
+cost  = 0.50
+notes = "6 스러스터=n EXACT, DP3 등급, 시추/설치"
+
+# ============================================================
+# Level 4: ShipSystem (선박 시스템) — 6 후보
+# ============================================================
+
+[[level]]
+name = "ShipSystem"
+
+[[candidate]]
+level = 4
+id    = "Navigation"
+label = "항법 시스템 (ECDIS/GPS/레이더)"
+n6    = 0.80
+perf  = 0.88
+power = 0.82
+cost  = 0.70
+notes = "6계기=n 통합 EXACT, 전자해도, 자동항법"
+
+[[candidate]]
+level = 4
+id    = "AutonomousNav"
+label = "자율운항 MASS (AI 항법, 원격제어)"
+n6    = 0.85
+perf  = 0.82
+power = 0.70
+cost  = 0.50
+notes = "IMO 등급 tau=4 EXACT, 무인 화물선"
+
+[[candidate]]
+level = 4
+id    = "CargoHandling"
+label = "화물 적하 시스템 (컨테이너/벌크)"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.65
+notes = "6열=n 적재 EXACT, 크레인/펌프/컨베이어"
+
+[[candidate]]
+level = 4
+id    = "HVAC_Marine"
+label = "선박 공조 (거주구/기관실)"
+n6    = 0.75
+perf  = 0.78
+power = 0.80
+cost  = 0.70
+notes = "6구역=n 독립 EXACT, 화재 통제, 온습도"
+
+[[candidate]]
+level = 4
+id    = "BallastWater"
+label = "밸러스트수 처리 (환경 규제)"
+n6    = 0.80
+perf  = 0.80
+power = 0.75
+cost  = 0.60
+notes = "IMO BWM, UV/전해, 외래종 방지"
+
+[[candidate]]
+level = 4
+id    = "FireSafety"
+label = "선박 소방 (SOLAS, 6구역=n 방화)"
+n6    = 1.00
+perf  = 0.88
+power = 0.85
+cost  = 0.65
+notes = "n=6 방화구역 EXACT, CO2/폼/워터미스트"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 잠수함은 티타늄/고장력강 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Submarine"
+then_level = 1
+then_ids   = "HighTensile,TitaniumSub"
+
+# 쌍동선은 핀 안정장치 불필요
+[[rule]]
+type       = "exclude"
+if_level   = 0
+if_id      = "Catamaran"
+then_level = 3
+then_ids   = "FinStabilizer"
+
+# 해양 원자력은 손상복원성 필수
+[[rule]]
+type       = "require"
+if_level   = 2
+if_id      = "Nuclear_Marine"
+then_level = 3
+then_ids   = "DamageStab,IntactStab"
+
+# LNG 이중연료는 자율운항 선호
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "LNG_DualFuel"
+then_level = 4
+then_ids   = "AutonomousNav,Navigation"
+
+# 반잠수식은 DP 시스템 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "SemiSub"
+then_level = 3
+then_ids   = "DPS"

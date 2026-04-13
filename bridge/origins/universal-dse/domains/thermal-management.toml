@@ -1,0 +1,397 @@
+# =============================================================
+# 열 관리 DSE 도메인 정의
+# 열 설계 전반 — 냉각/방열/열전달/단열/열저장
+# n=6: 6면 방열, sigma=12 히트파이프, tau=4 열전달 모드, 6상 냉매
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "thermal-management"
+desc = "열 관리 통합 DSE (냉각/방열/열전달/단열/열저장)"
+levels = ["CoolingSys", "HeatSink", "HeatTransfer", "Insulation", "ThermalStorage"]
+vision = "n=6 열 관리 — 6면 방열, sigma=12 히트파이프, tau=4 열전달 모드 통합"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: CoolingSys (냉각 시스템) — 6 후보
+# ============================================================
+
+[[level]]
+name = "CoolingSys"
+
+[[candidate]]
+level = 0
+id    = "LiquidCool"
+label = "액냉 (6채널 콜드플레이트=n, 고열유속)"
+n6    = 0.90
+perf  = 0.92
+power = 0.80
+cost  = 0.55
+notes = "n=6 채널 EXACT, 1000W/cm2 대응, GPU/AI칩 필수"
+
+[[candidate]]
+level = 0
+id    = "Immersion"
+label = "침지냉각 (전자불소 냉매, 데이터센터)"
+n6    = 0.75
+perf  = 0.95
+power = 0.85
+cost  = 0.40
+notes = "PUE=1.03→1.0 수렴, 6서버=n 단위 탱크"
+
+[[candidate]]
+level = 0
+id    = "AirCool"
+label = "공냉 (6팬 배열=n, 히트싱크)"
+n6    = 0.85
+perf  = 0.65
+power = 0.70
+cost  = 0.90
+notes = "n=6 팬 EXACT, 가장 단순, TDP<200W"
+
+[[candidate]]
+level = 0
+id    = "TwoPhase"
+label = "2상 냉각 (phi=2 상변화, 히트파이프)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.50
+notes = "phi=2 상변화 EXACT, 잠열 활용, 등온 분배"
+
+[[candidate]]
+level = 0
+id    = "Thermoelectric"
+label = "열전 냉각 (펠티에, 스팟 쿨링)"
+n6    = 0.70
+perf  = 0.60
+power = 0.55
+cost  = 0.45
+notes = "6쌍 p-n=n, 국소 냉각, COP 낮음, 가동부 없음"
+
+[[candidate]]
+level = 0
+id    = "Cryogenic"
+label = "극저온 냉각 (4K=tau, 초전도/양자)"
+n6    = 0.85
+perf  = 0.50
+power = 0.40
+cost  = 0.25
+notes = "tau=4 K EXACT, 양자컴퓨터, MRI, 초전도 마그넷"
+
+# ============================================================
+# Level 1: HeatSink (방열 구조) — 6 후보
+# ============================================================
+
+[[level]]
+name = "HeatSink"
+
+[[candidate]]
+level = 1
+id    = "FinArray"
+label = "핀 배열 (6열 핀=n, 알루미늄/구리)"
+n6    = 0.90
+perf  = 0.75
+power = 0.80
+cost  = 0.85
+notes = "n=6 핀열 EXACT, 표면적 극대화, 공냉 조합"
+
+[[candidate]]
+level = 1
+id    = "VaporChamber"
+label = "베이퍼 챔버 (2D 등온 확산, phi=2 상변화)"
+n6    = 0.95
+perf  = 0.90
+power = 0.85
+cost  = 0.50
+notes = "phi=2 상변화 EXACT, 균일 열분배, 스마트폰~서버"
+
+[[candidate]]
+level = 1
+id    = "HeatPipe_12"
+label = "히트파이프 sigma=12개 배열 (장거리 열수송)"
+n6    = 1.00
+perf  = 0.88
+power = 0.80
+cost  = 0.55
+notes = "sigma=12 파이프 EXACT, 장거리 저열저항, 등온"
+
+[[candidate]]
+level = 1
+id    = "Microchannel"
+label = "마이크로채널 (100um 이하, 고열유속)"
+n6    = 0.80
+perf  = 0.95
+power = 0.75
+cost  = 0.40
+notes = "6채널 그룹=n, 10kW/cm2 가능, 3D칩 적층"
+
+[[candidate]]
+level = 1
+id    = "Radiator"
+label = "라디에이터 (6섹션=n, 차량/우주)"
+n6    = 0.85
+perf  = 0.70
+power = 0.75
+cost  = 0.70
+notes = "n=6 섹션 EXACT, 대류+복사, 차량/위성"
+
+[[candidate]]
+level = 1
+id    = "GrapheneSheet"
+label = "그래핀 시트 (C Z=6, 면내 5300W/mK)"
+n6    = 1.00
+perf  = 0.85
+power = 0.70
+cost  = 0.30
+notes = "Carbon Z=6=n EXACT, 열전도율 최고, 2D 확산"
+
+# ============================================================
+# Level 2: HeatTransfer (열전달 방식) — 6 후보
+# ============================================================
+
+[[level]]
+name = "HeatTransfer"
+
+[[candidate]]
+level = 2
+id    = "ForcedConvection"
+label = "강제 대류 (팬/펌프, Re>6000 난류=n*1000)"
+n6    = 0.80
+perf  = 0.80
+power = 0.70
+cost  = 0.80
+notes = "Re>6000=n*1000 난류 전이, 가장 범용"
+
+[[candidate]]
+level = 2
+id    = "NaturalConvection"
+label = "자연 대류 (무동력, Gr*Pr 기반)"
+n6    = 0.55
+perf  = 0.50
+power = 0.95
+cost  = 0.95
+notes = "무동력, 저소음, 전자기기 밀폐, 저열유속"
+
+[[candidate]]
+level = 2
+id    = "Radiation"
+label = "복사 열전달 (sigma-B=5.67e-8, 우주/고온)"
+n6    = 0.70
+perf  = 0.65
+power = 0.90
+cost  = 0.60
+notes = "Stefan-Boltzmann T^4 법칙, 우주 유일 방열 수단"
+
+[[candidate]]
+level = 2
+id    = "PhaseChange"
+label = "상변화 열전달 (비등/응축, phi=2 상)"
+n6    = 1.00
+perf  = 0.95
+power = 0.85
+cost  = 0.50
+notes = "phi=2 상 EXACT, 잠열 계수 100배, 비등 커브"
+
+[[candidate]]
+level = 2
+id    = "Conduction"
+label = "전도 (구리/은/다이아몬드, 접촉 열저항)"
+n6    = 0.60
+perf  = 0.70
+power = 0.85
+cost  = 0.75
+notes = "다이아몬드 C Z=6=n, 2200W/mK, 접촉저항 최소화"
+
+[[candidate]]
+level = 2
+id    = "JetImpingement"
+label = "제트 충돌 (고열유속 스팟, 6노즐=n)"
+n6    = 0.90
+perf  = 0.92
+power = 0.65
+cost  = 0.40
+notes = "n=6 노즐 EXACT, 국소 고열유속, 터빈 블레이드"
+
+# ============================================================
+# Level 3: Insulation (단열) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Insulation"
+
+[[candidate]]
+level = 3
+id    = "Aerogel"
+label = "에어로겔 (0.015W/mK, 초경량 단열)"
+n6    = 0.75
+perf  = 0.95
+power = 0.95
+cost  = 0.30
+notes = "열전도율 최저급, 우주복/건물/파이프, 다공질"
+
+[[candidate]]
+level = 3
+id    = "VIP"
+label = "진공단열패널 VIP (0.004W/mK)"
+n6    = 0.70
+perf  = 0.98
+power = 0.90
+cost  = 0.25
+notes = "공기 제거, 극한 단열, 냉장고/건축, 수명 이슈"
+
+[[candidate]]
+level = 3
+id    = "PIR_Foam"
+label = "PIR 경질 폼 (0.022W/mK, 건축 표준)"
+n6    = 0.55
+perf  = 0.80
+power = 0.85
+cost  = 0.80
+notes = "건축 표준 단열, 가격 대비 성능, 6인치=n 두께"
+
+[[candidate]]
+level = 3
+id    = "PCM_Capsule"
+label = "PCM 상변화 캡슐 (잠열 저장 겸용)"
+n6    = 0.90
+perf  = 0.82
+power = 0.80
+cost  = 0.50
+notes = "phi=2 상변화 EXACT, 단열+저장 겸용, 건물 외벽"
+
+[[candidate]]
+level = 3
+id    = "MLI"
+label = "다층 단열 MLI (sigma=12 반사층, 우주)"
+n6    = 1.00
+perf  = 0.92
+power = 0.85
+cost  = 0.35
+notes = "sigma=12 반사층 EXACT, 극저온/우주, 복사 차단"
+
+[[candidate]]
+level = 3
+id    = "CeramicFiber"
+label = "세라믹 섬유 (1600C 내열, 산업로)"
+n6    = 0.60
+perf  = 0.78
+power = 0.70
+cost  = 0.65
+notes = "고온 산업로, 내화물, 에너지 절감 30%"
+
+# ============================================================
+# Level 4: ThermalStorage (열저장) — 6 후보
+# ============================================================
+
+[[level]]
+name = "ThermalStorage"
+
+[[candidate]]
+level = 4
+id    = "MoltenSalt"
+label = "용융염 열저장 (CSP, 6시간=n 저장)"
+n6    = 1.00
+perf  = 0.88
+power = 0.80
+cost  = 0.55
+notes = "n=6시간 EXACT, 태양열발전, 565C 고온 저장"
+
+[[candidate]]
+level = 4
+id    = "IceStorage"
+label = "빙축열 (야간전력, phi=2 상변화)"
+n6    = 0.90
+perf  = 0.80
+power = 0.85
+cost  = 0.70
+notes = "phi=2 상변화 EXACT, 피크 절감, 건물 냉방"
+
+[[candidate]]
+level = 4
+id    = "PCM_Tank"
+label = "PCM 탱크 (파라핀/염류, 중온)"
+n6    = 0.85
+perf  = 0.78
+power = 0.75
+cost  = 0.60
+notes = "phi=2 상변화, 건물+산업, 온도 안정화"
+
+[[candidate]]
+level = 4
+id    = "SandBattery"
+label = "모래 열배터리 (600C, 저비용 장기)"
+n6    = 0.70
+perf  = 0.70
+power = 0.80
+cost  = 0.80
+notes = "극저비용, 600C=sigma*sopfr*10, 핀란드 실증"
+
+[[candidate]]
+level = 4
+id    = "ThermoChem"
+label = "열화학 저장 (금속수소화물, 고밀도)"
+n6    = 0.65
+perf  = 0.85
+power = 0.65
+cost  = 0.35
+notes = "에너지 밀도 최고, 계절 저장, 반응열 활용"
+
+[[candidate]]
+level = 4
+id    = "HotWaterTank"
+label = "온수 축열조 (J2=24시간 난방, 가정용)"
+n6    = 0.80
+perf  = 0.65
+power = 0.90
+cost  = 0.85
+notes = "J2=24시간 EXACT, 가장 단순, 히트펌프 조합"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 침지냉각은 상변화 열전달 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Immersion"
+then_level = 2
+then_ids   = "PhaseChange"
+
+# 극저온 냉각은 MLI 단열 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "Cryogenic"
+then_level = 3
+then_ids   = "MLI,VIP"
+
+# 공냉은 자연/강제 대류 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "AirCool"
+then_level = 2
+then_ids   = "ForcedConvection,NaturalConvection"
+
+# 그래핀 시트는 전도 열전달 선호
+[[rule]]
+type       = "prefer"
+if_level   = 1
+if_id      = "GrapheneSheet"
+then_level = 2
+then_ids   = "Conduction,PhaseChange"
+
+# 용융염 저장은 세라믹 단열 선호
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "MoltenSalt"
+then_level = 3
+then_ids   = "CeramicFiber,Aerogel"

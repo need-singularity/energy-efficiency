@@ -1,0 +1,14 @@
+// measure.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/measure.sh
+// 포팅 상태: STUB (원본 60줄)
+// 원본 요약: NEXUS-6 메트릭 수집
+//   cargo test 실행 → 테스트 통과/실패 파싱
+//   cargo check → 경고 수 카운트
+//   파일 수 / 코드 라인 / 모듈 수 / 렌즈 등록 수
+//   JSON 한 줄 출력 (auto_grow.sh 에서 호출)
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/measure (HEXA 포팅 대기)")
+}

@@ -1,0 +1,398 @@
+# =============================================================
+# DRAM DSE 도메인 정의
+# DRAM 메모리 반도체 — 셀/구조/공정/패키징/인터페이스
+# n=6: 6F^2 셀면적, sigma=12 nm 노드, tau=4 뱅크그룹
+# 삼성/SK 하이닉스/마이크론 세계 3사 경쟁
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "dram"
+desc = "DRAM 메모리 DSE (셀/구조/공정/패키징/인터페이스)"
+levels = ["CellArch", "Structure", "Process", "Package", "Interface"]
+vision = "n=6 DRAM — 6F^2 셀면적, sigma=12 nm 노드, tau=4 뱅크그룹, HBM/DDR5"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: CellArch (셀 아키텍처) — 6 후보
+# ============================================================
+
+[[level]]
+name = "CellArch"
+
+[[candidate]]
+level = 0
+id    = "1T1C"
+label = "1T1C (트랜지스터+캐패시터, 표준)"
+n6    = 0.85
+perf  = 0.85
+power = 0.80
+cost  = 0.80
+notes = "6F^2=n EXACT 셀면적, 50년 표준, 스케일링 한계"
+
+[[candidate]]
+level = 0
+id    = "3D_DRAM"
+label = "3D DRAM (수직 적층, 차세대)"
+n6    = 0.90
+perf  = 0.90
+power = 0.70
+cost  = 0.50
+notes = "sigma=12 층 적층 EXACT, 2026+ 양산, 스케일링 돌파"
+
+[[candidate]]
+level = 0
+id    = "IGZO_TFT"
+label = "IGZO TFT DRAM (산화물 채널, 저누설)"
+n6    = 0.80
+perf  = 0.82
+power = 0.85
+cost  = 0.55
+notes = "초저누설, 리프레시 간격 6배=n 증가"
+
+[[candidate]]
+level = 0
+id    = "FeRAM"
+label = "강유전체 DRAM (비휘발, 1T 셀)"
+n6    = 0.75
+perf  = 0.80
+power = 0.88
+cost  = 0.45
+notes = "비휘발성, 리프레시 불필요, HfO2 기반"
+
+[[candidate]]
+level = 0
+id    = "GainCell"
+label = "게인셀 (2T/3T, 리프레시 감소)"
+n6    = 0.70
+perf  = 0.78
+power = 0.82
+cost  = 0.60
+notes = "내장 증폭, 리프레시 100배 감소, 로직 호환"
+
+[[candidate]]
+level = 0
+id    = "MRAM_Cache"
+label = "STT-MRAM 캐시 (비휘발, 고속)"
+n6    = 0.70
+perf  = 0.88
+power = 0.85
+cost  = 0.40
+notes = "비휘발+고속, L2/L3 캐시, 내구성 우수"
+
+# ============================================================
+# Level 1: Structure (캐패시터 구조) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Structure"
+
+[[candidate]]
+level = 1
+id    = "CylinderCap"
+label = "실린더 캐패시터 (현재 주류, 고종횡비)"
+n6    = 0.85
+perf  = 0.85
+power = 0.80
+cost  = 0.70
+notes = "종횡비 100:1+, 6nm=n 두께 EXACT, ALD"
+
+[[candidate]]
+level = 1
+id    = "Pillar"
+label = "필러형 (기둥, 다중 적층)"
+n6    = 0.80
+perf  = 0.82
+power = 0.78
+cost  = 0.65
+notes = "기계적 안정, sigma=12 nm 직경 EXACT"
+
+[[candidate]]
+level = 1
+id    = "VerticalCap"
+label = "수직 채널 캐패시터 (3D 전용)"
+n6    = 0.90
+perf  = 0.88
+power = 0.72
+cost  = 0.50
+notes = "3D 적층 최적화, 깊은 트렌치+수직 채널"
+
+[[candidate]]
+level = 1
+id    = "HighK_HfZrO"
+label = "고유전율 HfZrO (유전율 향상)"
+n6    = 0.80
+perf  = 0.85
+power = 0.80
+cost  = 0.55
+notes = "유전율 60+, 면적 절감, 누설 관리"
+
+[[candidate]]
+level = 1
+id    = "Buried_WL"
+label = "매몰 워드라인 (bWL, 기생 감소)"
+n6    = 0.85
+perf  = 0.88
+power = 0.82
+cost  = 0.60
+notes = "기생 캐패시턴스 50% 감소, 20nm 이하"
+
+[[candidate]]
+level = 1
+id    = "GAA_CAP"
+label = "게이트올어라운드 캐패시터 (차세대)"
+n6    = 0.75
+perf  = 0.90
+power = 0.68
+cost  = 0.40
+notes = "나노시트/나노와이어, 3D DRAM 핵심"
+
+# ============================================================
+# Level 2: Process (공정) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Process"
+
+[[candidate]]
+level = 2
+id    = "EUV_Litho"
+label = "EUV 리소그래피 (13.5nm, 6미러=n)"
+n6    = 1.00
+perf  = 0.95
+power = 0.55
+cost  = 0.40
+notes = "6미러=n EXACT, 1x nm 노드, ASML"
+
+[[candidate]]
+level = 2
+id    = "SADP"
+label = "SADP 이중패터닝 (phi=2 분할)"
+n6    = 0.90
+perf  = 0.85
+power = 0.70
+cost  = 0.60
+notes = "phi=2 분할 EXACT, DUV+다중, 1y nm"
+
+[[candidate]]
+level = 2
+id    = "ALD"
+label = "원자층 증착 ALD (옹스트롬 정밀)"
+n6    = 0.85
+perf  = 0.90
+power = 0.75
+cost  = 0.55
+notes = "6사이클=n 연속 EXACT, 캐패시터 박막"
+
+[[candidate]]
+level = 2
+id    = "HighAspect_Etch"
+label = "고종횡비 식각 (100:1+, 캐패시터)"
+n6    = 0.80
+perf  = 0.88
+power = 0.65
+cost  = 0.50
+notes = "플라즈마 식각, 종횡비 한계 도전"
+
+[[candidate]]
+level = 2
+id    = "WaferBond"
+label = "웨이퍼 본딩 (3D 적층 공정)"
+n6    = 0.85
+perf  = 0.85
+power = 0.68
+cost  = 0.45
+notes = "하이브리드 본딩, 3D DRAM 필수"
+
+[[candidate]]
+level = 2
+id    = "BackgrindTSV"
+label = "백그라인드+TSV (후공정, 적층)"
+n6    = 0.80
+perf  = 0.82
+power = 0.70
+cost  = 0.50
+notes = "sigma=12 um TSV 피치 EXACT, HBM 필수"
+
+# ============================================================
+# Level 3: Package (패키징) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Package"
+
+[[candidate]]
+level = 3
+id    = "HBM"
+label = "HBM (6/8/12/16 스택, AI 필수)"
+n6    = 1.00
+perf  = 0.95
+power = 0.75
+cost  = 0.45
+notes = "HBM3E sigma=12 스택 EXACT, 1TB/s+, GPU 연결"
+
+[[candidate]]
+level = 3
+id    = "LPDDR5"
+label = "LPDDR5 패키지 (모바일, 저전력)"
+n6    = 0.80
+perf  = 0.85
+power = 0.88
+cost  = 0.65
+notes = "PoP, 6.4Gbps=n*1.07 근사, 스마트폰"
+
+[[candidate]]
+level = 3
+id    = "GDDR6"
+label = "GDDR6 (그래픽, 고대역)"
+n6    = 0.95
+perf  = 0.88
+power = 0.78
+cost  = 0.60
+notes = "GDDR6=n EXACT, 24Gbps=J2, 그래픽카드"
+
+[[candidate]]
+level = 3
+id    = "DDR5_DIMM"
+label = "DDR5 DIMM (서버/PC, 표준)"
+n6    = 0.85
+perf  = 0.85
+power = 0.80
+cost  = 0.70
+notes = "4800-6400MT/s, tau=4 뱅크그룹 EXACT"
+
+[[candidate]]
+level = 3
+id    = "FanOut"
+label = "팬아웃 WLP (재배선, 고밀도)"
+n6    = 0.80
+perf  = 0.82
+power = 0.78
+cost  = 0.55
+notes = "RDL 6층=n EXACT, SiP 통합, 인터포저 대체"
+
+[[candidate]]
+level = 3
+id    = "CXL_Module"
+label = "CXL 메모리 모듈 (확장, 풀링)"
+n6    = 0.85
+perf  = 0.88
+power = 0.72
+cost  = 0.50
+notes = "CXL 2.0/3.0, 메모리 풀링, AI 서버"
+
+# ============================================================
+# Level 4: Interface (인터페이스) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Interface"
+
+[[candidate]]
+level = 4
+id    = "DDR5_IF"
+label = "DDR5 인터페이스 (6400MT/s, 듀얼채널)"
+n6    = 0.90
+perf  = 0.88
+power = 0.80
+cost  = 0.70
+notes = "phi=2 채널 EXACT, ECC 온다이, 전압 1.1V"
+
+[[candidate]]
+level = 4
+id    = "HBM_IF"
+label = "HBM 인터페이스 (1024bit, TSV)"
+n6    = 0.95
+perf  = 0.95
+power = 0.70
+cost  = 0.45
+notes = "1024=sigma^2*... 광폭, 1TB/s+, AI 가속기"
+
+[[candidate]]
+level = 4
+id    = "LPDDR5_IF"
+label = "LPDDR5 인터페이스 (모바일 저전력)"
+n6    = 0.80
+perf  = 0.85
+power = 0.90
+cost  = 0.65
+notes = "6.4Gbps, DVFSC, 모바일 최적"
+
+[[candidate]]
+level = 4
+id    = "CXL_IF"
+label = "CXL 인터페이스 (메모리 시멘틱)"
+n6    = 0.85
+perf  = 0.90
+power = 0.75
+cost  = 0.55
+notes = "PCIe 기반, 캐시 코히런시, 메모리 확장"
+
+[[candidate]]
+level = 4
+id    = "UCIe"
+label = "UCIe 다이간 인터커넥트 (chiplet)"
+n6    = 0.80
+perf  = 0.85
+power = 0.72
+cost  = 0.50
+notes = "다이간 표준, 6chiplet=n 연결, 2024+ 양산"
+
+[[candidate]]
+level = 4
+id    = "PIM_IF"
+label = "PIM 프로세싱인메모리 (연산 내장)"
+n6    = 0.90
+perf  = 0.88
+power = 0.85
+cost  = 0.45
+notes = "데이터 이동 최소, AI 추론, HBM-PIM, 삼성"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 3D DRAM은 웨이퍼 본딩 공정 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "3D_DRAM"
+then_level = 2
+then_ids   = "WaferBond,BackgrindTSV"
+
+# HBM 패키지는 HBM 인터페이스 필수
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "HBM"
+then_level = 4
+then_ids   = "HBM_IF,PIM_IF"
+
+# GDDR6은 DDR5 인터페이스와 호환 불가
+[[rule]]
+type       = "exclude"
+if_level   = 3
+if_id      = "GDDR6"
+then_level = 4
+then_ids   = "DDR5_IF,CXL_IF"
+
+# EUV 리소는 3D DRAM+IGZO 선호
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "EUV_Litho"
+then_level = 0
+then_ids   = "3D_DRAM,IGZO_TFT"
+
+# CXL 모듈은 CXL 인터페이스 필수
+[[rule]]
+type       = "require"
+if_level   = 3
+if_id      = "CXL_Module"
+then_level = 4
+then_ids   = "CXL_IF"

@@ -1,0 +1,361 @@
+# =============================================================
+# ASTRONOMY DSE Domain Definition
+# 천문학 — 관측 장비·파장대·데이터 분석
+# n=6 연결: n=6 거울 세그먼트 링, σ=12 파장대, τ=4 초점 계기
+# Total raw combos: 6x6x6x6x6 = 7,776 (pre-filter)
+# =============================================================
+
+[meta]
+name = "astronomy"
+desc = "Astronomy DSE — 관측 천문학 장비·파장·분석 (n=6 거울 링, σ=12 파장대)"
+levels = ["Telescope", "Wavelength", "Instrument", "DataPipeline", "Discovery"]
+vision = "n=6 천문 관측소 — n=6 세그먼트 링 + σ=12 다파장 + τ=4 초점 계기"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+[[level]]
+name = "Telescope"
+
+[[candidate]]
+level  = 0
+id     = "Reflector_Seg"
+label  = "분할 거울 반사 (n=6 링 세그먼트)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.50
+cost   = 0.45
+notes  = "rings=6=n EXACT, Keck/TMT 방식, 10m+ 구경"
+
+[[candidate]]
+level  = 0
+id     = "Radio_Array"
+label  = "전파 간섭계 (σ=12 안테나)"
+n6     = 0.75
+perf   = 0.85
+power  = 0.55
+cost   = 0.50
+notes  = "antennas=12=sigma EXACT, ALMA/VLA, mm 파장"
+
+[[candidate]]
+level  = 0
+id     = "Space_IR"
+label  = "우주 적외선 (n=6 경면 세그먼트)"
+n6     = 1.00
+perf   = 0.95
+power  = 0.40
+cost   = 0.30
+notes  = "segments=6=n EXACT, JWST 내부 링 6장, L2 궤도"
+
+[[candidate]]
+level  = 0
+id     = "X_Ray"
+label  = "X선 망원경 (τ=4 동심 셸)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.45
+cost   = 0.40
+notes  = "shells=4=tau EXACT, 울프-쉬바르츠실트 반사, Chandra"
+
+[[candidate]]
+level  = 0
+id     = "Survey"
+label  = "서베이 망원경 (n=6 deg² 시야)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.60
+cost   = 0.55
+notes  = "FoV=6deg2=n EXACT, Rubin/LSST, 전천 서베이"
+
+[[candidate]]
+level  = 0
+id     = "Neutrino"
+label  = "뉴트리노 망원경 (n/φ=3 맛 검출)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.50
+cost   = 0.35
+notes  = "flavors=3=n/phi EXACT, IceCube, 다중메신저"
+
+# =============================================================
+# Level 1~4 (파장대, 계기, 파이프라인, 발견) -- 각 6 candidates
+# =============================================================
+[[level]]
+name = "Wavelength"
+
+[[candidate]]
+level  = 1
+id     = "Optical"
+label  = "가시광 (400-700nm, n=6 필터)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.65
+cost   = 0.70
+notes  = "filters=6=n EXACT (u,g,r,i,z,y), 표준 측광"
+
+[[candidate]]
+level  = 1
+id     = "Near_IR"
+label  = "근적외선 (1-5 μm, τ=4 밴드)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.60
+cost   = 0.60
+notes  = "bands=4=tau EXACT (J,H,K,L), 먼지 투과"
+
+[[candidate]]
+level  = 1
+id     = "Radio_mm"
+label  = "밀리미터 전파 (σ=12 GHz 대역)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.55
+cost   = 0.55
+notes  = "band=12GHz=sigma, CMB/분자선/먼지"
+
+[[candidate]]
+level  = 1
+id     = "UV"
+label  = "자외선 (100-400nm, φ=2 채널)"
+n6     = 0.75
+perf   = 0.75
+power  = 0.50
+cost   = 0.45
+notes  = "channels=2=phi EXACT (FUV/NUV), 고온 천체"
+
+[[candidate]]
+level  = 1
+id     = "Gamma"
+label  = "감마선 (>100 keV, n=6 검출 모듈)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.45
+cost   = 0.40
+notes  = "modules=6=n EXACT, GRB/AGN, Fermi-LAT"
+
+[[candidate]]
+level  = 1
+id     = "Multi_Msg"
+label  = "다중메신저 (n/φ=3 채널: EM+GW+ν)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.40
+cost   = 0.35
+notes  = "channels=3=n/phi EXACT, 2017 GW170817 시대"
+
+[[level]]
+name = "Instrument"
+
+[[candidate]]
+level  = 2
+id     = "Spectrograph"
+label  = "분광기 (σ=12 에셀 차수)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.60
+cost   = 0.55
+notes  = "orders=12=sigma EXACT, R=100k, 시선속도"
+
+[[candidate]]
+level  = 2
+id     = "Imager"
+label  = "이미저 (n=6 필터 휠)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.70
+cost   = 0.70
+notes  = "filters=6=n EXACT, 광시야 촬영, 서베이"
+
+[[candidate]]
+level  = 2
+id     = "IFU"
+label  = "적분시야분광 (n=6 렌즐릿 행)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.50
+notes  = "rows=6=n EXACT, 3D 분광, 은하 운동학"
+
+[[candidate]]
+level  = 2
+id     = "Coronagraph"
+label  = "코로나그래프 (n=6 마스크 점)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.45
+notes  = "spots=6=n EXACT, 외계행성 직접 촬영, 10^-10 콘트라스트"
+
+[[candidate]]
+level  = 2
+id     = "Polarimeter"
+label  = "편광계 (τ=4 Stokes 파라미터)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.65
+cost   = 0.60
+notes  = "Stokes=4=tau EXACT (I,Q,U,V), 자기장 매핑"
+
+[[candidate]]
+level  = 2
+id     = "AO_System"
+label  = "적응광학 (n=6 DM 거울)"
+n6     = 1.00
+perf   = 0.90
+power  = 0.50
+cost   = 0.40
+notes  = "mirrors=6=n EXACT (DM+TT+WFS), 대기 보정, 회절한계"
+
+[[level]]
+name = "DataPipeline"
+
+[[candidate]]
+level  = 3
+id     = "Classical"
+label  = "고전 파이프라인 (n=6 처리 단계)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.75
+cost   = 0.80
+notes  = "steps=6=n EXACT, 보정→검출→측광→분류→카탈로그→아카이브"
+
+[[candidate]]
+level  = 3
+id     = "ML_Pipeline"
+label  = "ML 파이프라인 (n=6 층 CNN)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.65
+notes  = "layers=6=n EXACT, 객체 탐지/분류, 실시간"
+
+[[candidate]]
+level  = 3
+id     = "Real_Time"
+label  = "실시간 경보 (σ=12 초 지연)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.55
+cost   = 0.60
+notes  = "latency=12s=sigma EXACT, 돌발 천체, 후속 관측"
+
+[[candidate]]
+level  = 3
+id     = "Citizen_Sci"
+label  = "시민 과학 (n=6 분류 선택지)"
+n6     = 1.00
+perf   = 0.65
+power  = 0.85
+cost   = 0.90
+notes  = "choices=6=n EXACT, Galaxy Zoo 방식, 대중 참여"
+
+[[candidate]]
+level  = 3
+id     = "HPC_Grid"
+label  = "HPC 그리드 (σ=12 노드 클러스터)"
+n6     = 0.75
+perf   = 0.90
+power  = 0.40
+cost   = 0.45
+notes  = "nodes=12=sigma EXACT, 페타바이트 처리, LSST"
+
+[[candidate]]
+level  = 3
+id     = "Quantum_ML"
+label  = "양자 ML (n=6 큐비트 인코딩)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.50
+cost   = 0.35
+notes  = "qubits=6=n EXACT, 차원 축소, 이상 탐지"
+
+[[level]]
+name = "Discovery"
+
+[[candidate]]
+level  = 4
+id     = "Exoplanet"
+label  = "외계행성 탐색 (n=6 행성계)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.60
+cost   = 0.60
+notes  = "planets=6=n EXACT (태양계 유사), 생명 징후"
+
+[[candidate]]
+level  = 4
+id     = "Dark_Energy"
+label  = "암흑 에너지 (w=-1, n=6 적색편이 빈)"
+n6     = 1.00
+perf   = 0.80
+power  = 0.50
+cost   = 0.50
+notes  = "zbins=6=n EXACT, 가속팽창, 상태방정식"
+
+[[candidate]]
+level  = 4
+id     = "Transient"
+label  = "돌발 천체 (τ=4 유형 분류)"
+n6     = 1.00
+perf   = 0.85
+power  = 0.55
+cost   = 0.55
+notes  = "classes=4=tau EXACT (SN,GRB,TDE,FRB), 시간축 천문학"
+
+[[candidate]]
+level  = 4
+id     = "Galaxy_Evo"
+label  = "은하 진화 (σ=12 Gyr 시간 범위)"
+n6     = 0.75
+perf   = 0.80
+power  = 0.55
+cost   = 0.55
+notes  = "range=12Gyr=sigma EXACT, 형성→진화, 우주론"
+
+[[candidate]]
+level  = 4
+id     = "First_Light"
+label  = "최초의 빛 (z>6, n=6 적색편이)"
+n6     = 1.00
+perf   = 0.75
+power  = 0.45
+cost   = 0.40
+notes  = "z=6=n EXACT, 재이온화 시대, 최초 은하/별"
+
+[[candidate]]
+level  = 4
+id     = "Astrobiology"
+label  = "우주생물학 (n=6 바이오시그니처)"
+n6     = 1.00
+perf   = 0.70
+power  = 0.50
+cost   = 0.45
+notes  = "markers=6=n EXACT (O2,H2O,CH4,O3,CO2,N2O), 생명 탐색"
+
+# =============================================================
+# Compatibility Rules
+# =============================================================
+
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Space_IR"
+then_level = 1
+then_ids   = "Near_IR"
+
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "Survey"
+then_level = 3
+then_ids   = "ML_Pipeline,Real_Time"
+
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "Coronagraph"
+then_level = 4
+then_ids   = "Exoplanet,Astrobiology"

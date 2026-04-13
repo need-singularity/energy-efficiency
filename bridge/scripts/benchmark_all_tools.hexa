@@ -1,0 +1,13 @@
+// benchmark_all_tools.sh → .hexa 포팅
+// 원본 경로: nexus/scripts/benchmark_all_tools.sh
+// 포팅 상태: STUB (원본 220줄)
+// 원본 요약: 전체 Rust 계산기 통합 벤치마크
+//   - 도구별 기본 인자 매핑, rustc 단일 파일 컴파일+실행
+//   - 컴파일 시간/실행 시간/LOC/출력 라인 측정
+//   - 결과 마크다운 테이블 생성 → experiments/benchmark_results.md
+// 본격 포팅: hexa run 으로 추진 예정
+// 원본 로직은 git history 에 보존됨
+
+fn main() {
+    println("STUB: nexus/scripts/benchmark_all_tools (HEXA 포팅 대기)")
+}

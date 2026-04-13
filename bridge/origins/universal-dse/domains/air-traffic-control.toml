@@ -1,0 +1,296 @@
+# N6 Air Traffic Control DSE (n=6 sector + radar)
+[meta]
+name = "air-traffic-control"
+desc = "Air Traffic Control DSE (n=6 sector + radar)"
+
+[scoring]
+n6 = 0.35
+perf = 0.25
+power = 0.20
+cost = 0.20
+
+[[level]]
+name = "Airspace"
+
+[[candidate]]
+id = "TMA-approach"
+label = "TMA approach (sigma=12 NM radius)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "n=12=sigma"
+
+[[candidate]]
+id = "En-route"
+label = "En route (n=6 FL increment)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "f=6=n"
+
+[[candidate]]
+id = "Ocean-NAT"
+label = "Ocean NAT (J2=24 track)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "t=24=J2"
+
+[[candidate]]
+id = "SID-STAR"
+label = "SID/STAR (phi=2 dep/arr)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "d=2=phi"
+
+[[candidate]]
+id = "Class-A-G"
+label = "Class A-G (tau=4 major)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "c=4=tau"
+
+[[candidate]]
+id = "FAB-europe"
+label = "FAB Europe (sigma=12 FAB)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "f=12=sigma"
+
+[[level]]
+name = "Sensor"
+
+[[candidate]]
+id = "PSR-primary"
+label = "PSR primary (n=6 rpm)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=6=n*2"
+
+[[candidate]]
+id = "SSR-secondary"
+label = "SSR secondary (sigma=12 Hz reply)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "H=12=sigma"
+
+[[candidate]]
+id = "ADS-B"
+label = "ADS-B (phi=2 1090/UAT)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "f=2=phi"
+
+[[candidate]]
+id = "MLAT"
+label = "MLAT (tau=4 receiver)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "r=4=tau"
+
+[[candidate]]
+id = "WAM-wide-area"
+label = "WAM wide area (J2=24 station)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "s=24=J2"
+
+[[candidate]]
+id = "LiDAR-debris"
+label = "LiDAR debris (n=6 scan/s)"
+n6 = 1.0
+perf = 0.9
+power = 0.8
+cost = 0.7
+notes = "s=6=n"
+
+[[level]]
+name = "Comm"
+
+[[candidate]]
+id = "VHF-voice"
+label = "VHF voice (sigma=12 channel)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "c=12=sigma"
+
+[[candidate]]
+id = "CPDLC-data"
+label = "CPDLC data (phi=2 uplink/downlink)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "l=2=phi"
+
+[[candidate]]
+id = "HFDL-long"
+label = "HFDL long (tau=4 ground station)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.8
+notes = "g=4=tau"
+
+[[candidate]]
+id = "SATCOM"
+label = "SATCOM (J2=24 bps)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "b=24=J2"
+
+[[candidate]]
+id = "UAT-978"
+label = "UAT 978 (n=6 MHz band)"
+n6 = 1.0
+perf = 0.9
+power = 0.85
+cost = 0.85
+notes = "M=6=n"
+
+[[candidate]]
+id = "Mode-S"
+label = "Mode S (sigma=12 byte)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "b=12=sigma"
+
+[[level]]
+name = "Automation"
+
+[[candidate]]
+id = "STCA-conflict"
+label = "STCA conflict (n=6 s lookahead)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=6=n"
+
+[[candidate]]
+id = "MTCD-medium"
+label = "MTCD medium (sigma=12 min)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=12=sigma"
+
+[[candidate]]
+id = "AMAN-arrival"
+label = "AMAN arrival (J2=24 aircraft)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "a=24=J2"
+
+[[candidate]]
+id = "DMAN-departure"
+label = "DMAN departure (tau=4 slot)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=4=tau"
+
+[[candidate]]
+id = "TopSky"
+label = "TopSky (phi=2 env)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.7
+notes = "e=2=phi"
+
+[[candidate]]
+id = "Free-route"
+label = "Free route airspace (n=6 sector)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "s=6=n"
+
+[[level]]
+name = "Performance"
+
+[[candidate]]
+id = "Capacity-max"
+label = "Capacity max (sigma=12 mov/h)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=12=sigma*5"
+
+[[candidate]]
+id = "Delay-min"
+label = "Delay min (tau=4 avg)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.8
+notes = "m=4=tau"
+
+[[candidate]]
+id = "Separation"
+label = "Separation (n=6 NM min)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.85
+notes = "n=6=n"
+
+[[candidate]]
+id = "Safety-incidents"
+label = "Safety incidents (J2=24 per M)"
+n6 = 1.0
+perf = 0.95
+power = 0.8
+cost = 0.75
+notes = "M=24=J2"
+
+[[candidate]]
+id = "Fuel-saving"
+label = "Fuel saving (phi=2% optim)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "p=2=phi"
+
+[[candidate]]
+id = "Environment-CO2"
+label = "Environment CO2 (sigma=12 kt/yr)"
+n6 = 1.0
+perf = 0.95
+power = 0.85
+cost = 0.75
+notes = "k=12=sigma"
+

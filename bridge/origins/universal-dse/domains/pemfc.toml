@@ -1,0 +1,398 @@
+# =============================================================
+# PEMFC (고분자전해질막 연료전지) DSE 도메인 정의
+# 수소 연료전지 핵심 — 막/촉매/가스확산층/바이폴라판/스택
+# n=6: 6셀 단위 스택, sigma=12 유로 채널, tau=4 작동 조건
+# C Z=6 탄소 담지체, 백금 촉매, 나피온 막
+# 총 조합: 6x6x6x6x6 = 7,776 (필터 전)
+# =============================================================
+
+[meta]
+name = "pemfc"
+desc = "PEMFC 연료전지 DSE (막/촉매/GDL/바이폴라판/스택)"
+levels = ["Membrane", "Catalyst", "GDL", "BipolarPlate", "Stack"]
+vision = "n=6 PEMFC — 6셀 스택 단위, Carbon Z=6 담지체, sigma=12 유로 채널"
+
+[scoring]
+n6   = 0.35
+perf = 0.25
+power = 0.20
+cost  = 0.20
+
+# ============================================================
+# Level 0: Membrane (전해질 막) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Membrane"
+
+[[candidate]]
+level = 0
+id    = "Nafion"
+label = "나피온 (PFSA, 표준 80C, 6mil 두께=n)"
+n6    = 0.90
+perf  = 0.85
+power = 0.80
+cost  = 0.55
+notes = "6mil=n 두께 EXACT, 프로톤 전도도 0.1S/cm, 표준"
+
+[[candidate]]
+level = 0
+id    = "PFSA_Thin"
+label = "초박막 PFSA (12um=sigma 두께, 고출력)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.45
+notes = "sigma=12 um EXACT, 오믹 손실 최소, 내구성 과제"
+
+[[candidate]]
+level = 0
+id    = "HT_PBI"
+label = "고온 PBI 막 (160-200C, 무가습)"
+n6    = 0.65
+perf  = 0.80
+power = 0.70
+cost  = 0.50
+notes = "고온 운전, CO 내성, 물 관리 불필요, 열병합"
+
+[[candidate]]
+level = 0
+id    = "HC_Membrane"
+label = "탄화수소 막 (저비용, C Z=6 기반)"
+n6    = 0.85
+perf  = 0.70
+power = 0.65
+cost  = 0.70
+notes = "Carbon Z=6=n 기반 EXACT, PFSA 대체, 저비용"
+
+[[candidate]]
+level = 0
+id    = "Composite"
+label = "복합 막 (강화층+이오노머, 기계적 강도)"
+n6    = 0.75
+perf  = 0.85
+power = 0.75
+cost  = 0.55
+notes = "ePTFE 강화, 6um 코팅=n, 내구성 향상"
+
+[[candidate]]
+level = 0
+id    = "AEM"
+label = "음이온 교환막 AEM (알칼리, 비귀금속)"
+n6    = 0.70
+perf  = 0.65
+power = 0.60
+cost  = 0.75
+notes = "비귀금속 촉매 가능, 탈백금, TRL=4"
+
+# ============================================================
+# Level 1: Catalyst (촉매) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Catalyst"
+
+[[candidate]]
+level = 1
+id    = "PtC_Standard"
+label = "Pt/C 표준 (0.4mg/cm2, Carbon Z=6 담지)"
+n6    = 1.00
+perf  = 0.80
+power = 0.75
+cost  = 0.45
+notes = "Carbon Z=6=n 담지 EXACT, 업계 표준, 백금 비용"
+
+[[candidate]]
+level = 1
+id    = "PtAlloy"
+label = "Pt 합금 (PtCo/PtNi, 활성 2배=phi)"
+n6    = 0.90
+perf  = 0.90
+power = 0.80
+cost  = 0.55
+notes = "phi=2배 활성 EXACT, 합금 효과, 용출 관리"
+
+[[candidate]]
+level = 1
+id    = "PtNanoframe"
+label = "Pt 나노프레임 (속이 빈 구조, 극저 로딩)"
+n6    = 0.80
+perf  = 0.95
+power = 0.70
+cost  = 0.50
+notes = "ECSA 극대화, 0.06mg/cm2, 내구성 과제"
+
+[[candidate]]
+level = 1
+id    = "NonPGM"
+label = "비귀금속 촉매 (Fe-N-C, 탈백금)"
+n6    = 0.85
+perf  = 0.60
+power = 0.55
+cost  = 0.85
+notes = "C Z=6=n 기반 EXACT, Fe-N-C, 비용 혁신, TRL=4"
+
+[[candidate]]
+level = 1
+id    = "CoreShell"
+label = "코어-쉘 (Pd@Pt, 백금 절감)"
+n6    = 0.75
+perf  = 0.88
+power = 0.72
+cost  = 0.60
+notes = "Pt 사용량 1/6=1/n, 코어 비용 절감"
+
+[[candidate]]
+level = 1
+id    = "SAC"
+label = "단원자 촉매 SAC (최대 원자 효율)"
+n6    = 0.70
+perf  = 0.85
+power = 0.60
+cost  = 0.65
+notes = "원자 100% 이용, N-도핑 C Z=6=n, 연구단계"
+
+# ============================================================
+# Level 2: GDL (가스확산층) — 6 후보
+# ============================================================
+
+[[level]]
+name = "GDL"
+
+[[candidate]]
+level = 2
+id    = "CarbonPaper"
+label = "탄소 종이 (C Z=6, 표준 GDL)"
+n6    = 1.00
+perf  = 0.80
+power = 0.80
+cost  = 0.75
+notes = "Carbon Z=6=n EXACT, 다공질, 가스+물 수송"
+
+[[candidate]]
+level = 2
+id    = "CarbonCloth"
+label = "탄소 직물 (C Z=6, 유연, 고기공률)"
+n6    = 1.00
+perf  = 0.75
+power = 0.75
+cost  = 0.70
+notes = "Carbon Z=6=n EXACT, 유연성, 곡면 적용"
+
+[[candidate]]
+level = 2
+id    = "MPL"
+label = "미세다공층 MPL (PTFE+카본블랙)"
+n6    = 0.90
+perf  = 0.88
+power = 0.82
+cost  = 0.60
+notes = "물 관리 핵심, 소수성 구배, 6um=n 두께"
+
+[[candidate]]
+level = 2
+id    = "MetalFoam"
+label = "금속 폼 GDL (Ti/SS, 고내구)"
+n6    = 0.60
+perf  = 0.82
+power = 0.70
+cost  = 0.45
+notes = "금속 내구성, 부식 코팅 필요, 고압 대응"
+
+[[candidate]]
+level = 2
+id    = "GradedPore"
+label = "경사 기공 GDL (기공률 구배 최적화)"
+n6    = 0.80
+perf  = 0.90
+power = 0.78
+cost  = 0.50
+notes = "6단계=n 기공 구배, 물 배출 최적화"
+
+[[candidate]]
+level = 2
+id    = "CNT_Forest"
+label = "CNT 포레스트 (C Z=6, 수직 배향)"
+n6    = 1.00
+perf  = 0.92
+power = 0.65
+cost  = 0.35
+notes = "Carbon Z=6=n EXACT, 수직 가스 통로, 최첨단"
+
+# ============================================================
+# Level 3: BipolarPlate (바이폴라 판) — 6 후보
+# ============================================================
+
+[[level]]
+name = "BipolarPlate"
+
+[[candidate]]
+level = 3
+id    = "Graphite"
+label = "흑연 판 (C Z=6, 유로 sigma=12 채널)"
+n6    = 1.00
+perf  = 0.80
+power = 0.75
+cost  = 0.65
+notes = "C Z=6=n, sigma=12 채널 EXACT, 표준, 두껍/무거움"
+
+[[candidate]]
+level = 3
+id    = "MetalBP"
+label = "금속 바이폴라 판 (SS/Ti, 0.1mm 박판)"
+n6    = 0.70
+perf  = 0.88
+power = 0.85
+cost  = 0.55
+notes = "초박형, 대량 스탬핑, 부식 코팅 필수"
+
+[[candidate]]
+level = 3
+id    = "CompositeCarbon"
+label = "복합 탄소 판 (C Z=6 + 수지, 경량)"
+n6    = 0.95
+perf  = 0.82
+power = 0.80
+cost  = 0.70
+notes = "Carbon Z=6=n, 사출 성형, 경량+내식"
+
+[[candidate]]
+level = 3
+id    = "Serpentine"
+label = "서펜타인 유로 (단일 채널, 균일 분배)"
+n6    = 0.80
+perf  = 0.75
+power = 0.70
+cost  = 0.75
+notes = "단일 경로, 물 배출 용이, 압력 손실 큼"
+
+[[candidate]]
+level = 3
+id    = "Interdigitated"
+label = "인터디지테이티드 유로 (강제 대류)"
+n6    = 0.85
+perf  = 0.85
+power = 0.78
+cost  = 0.60
+notes = "강제 대류 물 제거, 고전류 밀도, 6쌍=n"
+
+[[candidate]]
+level = 3
+id    = "3DPrint"
+label = "3D 프린트 유로 (최적화 자유형상)"
+n6    = 0.75
+perf  = 0.90
+power = 0.65
+cost  = 0.40
+notes = "토폴로지 최적화, 6분기=n 프랙탈 유로"
+
+# ============================================================
+# Level 4: Stack (스택 설계) — 6 후보
+# ============================================================
+
+[[level]]
+name = "Stack"
+
+[[candidate]]
+level = 4
+id    = "Standard_6cell"
+label = "6셀 스택 모듈 (n=6 EXACT, 표준)"
+n6    = 1.00
+perf  = 0.80
+power = 0.80
+cost  = 0.70
+notes = "n=6셀 EXACT, 모듈 단위, 직렬 확장"
+
+[[candidate]]
+level = 4
+id    = "HighPower_12"
+label = "12셀 고출력 스택 (sigma=12, 차량용)"
+n6    = 1.00
+perf  = 0.90
+power = 0.85
+cost  = 0.55
+notes = "sigma=12 EXACT, 차량급 100kW+, 냉각 필수"
+
+[[candidate]]
+level = 4
+id    = "Portable_Small"
+label = "소형 포터블 스택 (phi=2셀, 저전력)"
+n6    = 0.80
+perf  = 0.60
+power = 0.65
+cost  = 0.80
+notes = "phi=2셀, 드론/휴대용, 1W~100W"
+
+[[candidate]]
+level = 4
+id    = "Stationary"
+label = "정치용 대형 스택 (J2=24셀, 발전용)"
+n6    = 0.90
+perf  = 0.85
+power = 0.75
+cost  = 0.50
+notes = "J2=24셀 EXACT, 건물/발전소, CHP 열병합"
+
+[[candidate]]
+level = 4
+id    = "AirCooled"
+label = "공냉 스택 (팬 냉각, 소규모)"
+n6    = 0.75
+perf  = 0.65
+power = 0.70
+cost  = 0.75
+notes = "n=6 팬=n, 단순 구조, 5kW 이하"
+
+[[candidate]]
+level = 4
+id    = "LiquidCooled"
+label = "수냉 스택 (6채널=n 냉각판, 고출력)"
+n6    = 0.90
+perf  = 0.92
+power = 0.80
+cost  = 0.55
+notes = "n=6 냉각채널 EXACT, 100kW+, 열관리 필수"
+
+# ============================================================
+# 호환성 규칙
+# ============================================================
+
+# 고온 PBI 막은 비귀금속 촉매 선호
+[[rule]]
+type       = "prefer"
+if_level   = 0
+if_id      = "HT_PBI"
+then_level = 1
+then_ids   = "NonPGM,PtAlloy"
+
+# AEM 막은 비귀금속 촉매 필수
+[[rule]]
+type       = "require"
+if_level   = 0
+if_id      = "AEM"
+then_level = 1
+then_ids   = "NonPGM,SAC"
+
+# CNT 포레스트 GDL은 금속 바이폴라 판 선호
+[[rule]]
+type       = "prefer"
+if_level   = 2
+if_id      = "CNT_Forest"
+then_level = 3
+then_ids   = "MetalBP,3DPrint"
+
+# 소형 스택은 공냉 선호 (냉각 단순화)
+[[rule]]
+type       = "prefer"
+if_level   = 4
+if_id      = "Portable_Small"
+then_level = 0
+then_ids   = "HC_Membrane,AEM"
+
+# 대형 정치용 스택은 수냉 필수
+[[rule]]
+type       = "require"
+if_level   = 4
+if_id      = "Stationary"
+then_level = 3
+then_ids   = "MetalBP,Graphite,CompositeCarbon"

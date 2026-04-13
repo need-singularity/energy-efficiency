@@ -1,0 +1,167 @@
+{
+  "project": "conscious-lm",
+  "timestamp": "2026-04-04T17:07:32.611602",
+  "stats": {
+    "processed": 16,
+    "critical": 2,
+    "high": 2,
+    "medium": 9,
+    "low": 3,
+    "routed": 2,
+    "n6_total_matches": 0,
+    "consensus_total": 8
+  },
+  "top_findings": [
+    {
+      "path": "docs/consciousness-engine.md",
+      "score": 44.44444444444444,
+      "value": "critical",
+      "dest": "anima",
+      "n6_matches": 0
+    },
+    {
+      "path": "conscious_lm_100m.py",
+      "score": 25.0,
+      "value": "critical",
+      "dest": "conscious-lm",
+      "n6_matches": 0
+    },
+    {
+      "path": "README.md",
+      "score": 15.0,
+      "value": "high",
+      "dest": "papers",
+      "n6_matches": 0
+    }
+  ],
+  "findings": [
+    {
+      "path": ".gitignore",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "low",
+      "score": 0,
+      "n6_matches": 0
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "only_in_ready",
+      "destination": "tecs-l",
+      "value": "low",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "LICENSE",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "low",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "README.md",
+      "type": "only_in_ready",
+      "destination": "papers",
+      "value": "high",
+      "score": 15.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "conscious_lm.py",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "conscious_lm_100m.py",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "critical",
+      "score": 25.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "conscious_lm_700m.py",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "docs/H-CLM-bridge-mitosis-divisors.md",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "high",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "docs/anima-consciouslm-integration.md",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "docs/conscious-lm.md",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "docs/consciousness-engine.md",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "critical",
+      "score": 44.44444444444444,
+      "n6_matches": 0
+    },
+    {
+      "path": "growing_conscious_lm.py",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "growing_conscious_lm_700m.py",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "model_pure_field.py",
+      "type": "only_in_ready",
+      "destination": "anima",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "model_utils.py",
+      "type": "only_in_ready",
+      "destination": "tecs-l",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    },
+    {
+      "path": "prepare_korean_sft.py",
+      "type": "only_in_ready",
+      "destination": "conscious-lm",
+      "value": "medium",
+      "score": 0.0,
+      "n6_matches": 0
+    }
+  ]
+}
