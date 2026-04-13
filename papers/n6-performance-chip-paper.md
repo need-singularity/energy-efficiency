@@ -1,3 +1,9 @@
+---
+domain: performance-chip
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-PERF: 완전수 n=6 산술에서 도출된 궁극 고성능 칩 아키텍처
 
 > **저자**: 박민우 (n6-architecture)

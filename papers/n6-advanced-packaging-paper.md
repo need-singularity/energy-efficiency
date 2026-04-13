@@ -1,3 +1,9 @@
+---
+domain: advanced-packaging
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 반도체 패키징 — n=6 적층 래더 시드 논문
 
 > **저자**: 박민우 (n6-architecture)

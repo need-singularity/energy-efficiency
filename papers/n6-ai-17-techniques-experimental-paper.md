@@ -1,3 +1,9 @@
+---
+domain: ai-17-techniques-experimental
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 17 AI 기법 실험: hexa 전환 후 전수 검증
 
 **저자**: M. Park (Independent Research)

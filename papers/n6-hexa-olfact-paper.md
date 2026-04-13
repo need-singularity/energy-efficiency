@@ -1,3 +1,9 @@
+---
+domain: olfact
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 디지털 후각: 전자코/냄새 생성/전송의 산술적 설계
 
 **저자**: M. Park (Independent Research)

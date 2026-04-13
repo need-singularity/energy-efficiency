@@ -1,3 +1,9 @@
+---
+domain: cognitive-social-psychology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Cognitive Science, Social Architecture, and Psychology
 
 ## The n=6 Mind: Universal Convergence across 14 Breakthrough Theorems

@@ -1,3 +1,9 @@
+---
+domain: limb
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 AI 의수/의족: 신경 직결 보철의 산술적 설계
 
 **저자**: M. Park (Independent Research)

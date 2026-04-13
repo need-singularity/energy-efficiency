@@ -1,3 +1,9 @@
+---
+domain: exo
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 AI 외골격: SE(3) 6-DOF 전신 증강 시스템의 산술적 설계
 
 **저자**: M. Park (Independent Research)

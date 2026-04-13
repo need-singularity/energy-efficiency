@@ -1,3 +1,9 @@
+---
+domain: pim
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-PIM: Processing-in-Memory Architecture Derived from Perfect Number 6 Arithmetic
 
 **Authors:** Park, Min Woo (Independent Research)

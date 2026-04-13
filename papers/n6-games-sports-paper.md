@@ -1,3 +1,9 @@
+---
+domain: games-sports
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Games, Sports, and Competitive Systems
 
 ## n=6 Strategy: From Chess to Olympics

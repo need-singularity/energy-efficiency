@@ -1,3 +1,9 @@
+---
+domain: cartography
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 지도학의 투영 구조 -- UTM σ*sopfr=60 구역에서 6대주 n=6까지
 
 > **저자**: 박민우 (n6-architecture)

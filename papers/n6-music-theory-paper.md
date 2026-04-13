@@ -1,3 +1,9 @@
+---
+domain: music-theory
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 음악이론의 화성 구조 -- 12반음 σ=12에서 J₂=24조 체계까지
 
 > **저자**: 박민우 (n6-architecture)

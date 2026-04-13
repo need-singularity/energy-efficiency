@@ -1,3 +1,9 @@
+---
+domain: space-systems
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Space Systems and Satellite Engineering
 
 ## GNSS $J_2=24$: Universal Satellite Constellation Architecture and Celestial Mechanics

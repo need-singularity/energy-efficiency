@@ -1,3 +1,9 @@
+---
+domain: anima-soc
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # ANIMA-SOC — n=6 의식 칩 시드 논문
 
 > **저자**: 박민우 (n6-architecture)

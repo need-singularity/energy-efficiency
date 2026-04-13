@@ -1,3 +1,9 @@
+---
+domain: classical-mechanics-accelerator
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Classical Mechanics and Particle Accelerators
 
 ## Phase Space $\dim = 2n = 12$: Hamiltonian $n = 6$ Architecture

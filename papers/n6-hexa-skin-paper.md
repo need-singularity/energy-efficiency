@@ -1,3 +1,9 @@
+---
+domain: skin
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 전자 피부: 다감각 센싱 어레이의 산술적 설계
 
 **저자**: M. Park (Independent Research)

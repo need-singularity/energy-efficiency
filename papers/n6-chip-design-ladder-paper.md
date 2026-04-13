@@ -1,3 +1,9 @@
+---
+domain: chip-design-ladder
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA 칩 6단계 래더: L1-L6 완전수 n=6 산술 기반 반도체 진화 통합 논문
 
 > **저자**: 박민우 (n6-architecture)

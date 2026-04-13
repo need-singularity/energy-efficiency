@@ -1,3 +1,9 @@
+---
+domain: consciousness-soc
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # ANIMA-SOC: A Three-Phase Consciousness Processor on Unified SoC with Hardware Tension Measurement
 
 **Authors:** TECS-L Research Group

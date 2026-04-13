@@ -1,3 +1,9 @@
+---
+domain: gravity-wave
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 중력파 검출과 통신 — n=6 산술로 설계하는 J_2=24km 간섭계
 
 > **저자**: 박민우 (n6-architecture)

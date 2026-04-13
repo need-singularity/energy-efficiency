@@ -1,3 +1,9 @@
+---
+domain: control-automation
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Control Theory and Automation
 
 ## Feedback Loops: The $n = 6$ Control Architecture

@@ -1,3 +1,9 @@
+---
+domain: acoustics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술이 지배하는 음향학 구조 — 반음 12음률부터 공간 음향 7.1까지
 
 > **저자**: 박민우 (n6-architecture)

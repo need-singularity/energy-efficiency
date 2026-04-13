@@ -1,3 +1,9 @@
+---
+domain: jurisprudence
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 산술이 본 법학과 사법 아키텍처
 
 ## σ(n)·φ(n)=n·τ(n)의 유일해 n=6과 배심원 12·삼심제·안보리 5 상임 구조

@@ -1,3 +1,9 @@
+---
+domain: particle-cosmology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 입자물리와 우주론 — n=6 산술이 조직하는 표준모형과 우주 상수
 
 > **저자**: 박민우 (n6-architecture)

@@ -1,3 +1,9 @@
+---
+domain: game-theory
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 게임이론의 균형 구조 -- 폰 노이만 소행렬 정리에서 Nash τ=4 속성까지
 
 > **저자**: 박민우 (n6-architecture)

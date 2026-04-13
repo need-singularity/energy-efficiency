@@ -1,3 +1,9 @@
+---
+domain: carbon-capture
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 탄소 포집/저장/변환 아키텍처 -- 탄소 Z=n=6에서 CO₂ tau=4 진동 모드까지
 
 > **저자**: 박민우 (n6-architecture)

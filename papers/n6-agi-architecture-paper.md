@@ -1,3 +1,9 @@
+---
+domain: agi-architecture
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 AGI 아키텍처 -- 6축 인지 설계에서 범용 지능까지
 
 > **저자**: 박민우 (n6-architecture)

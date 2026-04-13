@@ -1,3 +1,9 @@
+---
+domain: superconductor
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 궁극의 초전도체 — n=6 산술로 해독하는 Cooper 쌍과 자속 격자
 
 > **저자**: 박민우 (n6-architecture)

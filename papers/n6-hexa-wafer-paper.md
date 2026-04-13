@@ -1,3 +1,9 @@
+---
+domain: wafer
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-WAFER: Wafer-Scale Engine with $\sigma^4 = 20{,}736$ Streaming Multiprocessors
 
 **Authors:** Park, Min Woo (Independent Research)

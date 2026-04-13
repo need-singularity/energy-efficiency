@@ -1,3 +1,9 @@
+---
+domain: meteorology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 대기 과학: 기상학의 산술적 구조
 
 **저자**: M. Park (Independent Research)

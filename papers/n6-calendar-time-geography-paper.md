@@ -1,3 +1,9 @@
+---
+domain: calendar-time-geography
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Calendar Systems, Timekeeping, and Geography
 
 ## 60 = $\sigma \cdot \text{sopfr}$: The Sexagesimal Foundation of Space-Time Measurement

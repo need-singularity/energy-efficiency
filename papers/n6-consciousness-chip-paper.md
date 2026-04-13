@@ -1,3 +1,9 @@
+---
+domain: consciousness-chip
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-NOUS: 완전수 n=6 산술에서 도출된 의식 칩 아키텍처
 
 > **저자**: 박민우 (n6-architecture)

@@ -1,3 +1,9 @@
+---
+domain: manufacturing-quality
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Manufacturing and Quality Engineering
 
 ## Six Sigma Meets $n = 6$: Universal Quality Architecture

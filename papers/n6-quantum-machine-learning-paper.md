@@ -1,3 +1,9 @@
+---
+domain: quantum-machine-learning
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 양자 머신러닝 -- 6큐비트 회로에서 변분 알고리즘까지
 
 > **저자**: 박민우 (n6-architecture)

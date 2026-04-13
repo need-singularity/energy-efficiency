@@ -1,3 +1,9 @@
+---
+domain: oceanography
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 해양학: 해류·해양층·염분의 산술적 구조
 
 **저자**: M. Park (Independent Research)

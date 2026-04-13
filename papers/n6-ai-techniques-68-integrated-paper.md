@@ -1,3 +1,9 @@
+---
+domain: ai-techniques-68-integrated
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # AI 기법 68종 통합 — n=6 산술이 8축 딥러닝 기법을 정렬한다
 
 > **저자**: 박민우 (n6-architecture)

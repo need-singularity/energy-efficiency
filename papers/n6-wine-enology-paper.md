@@ -1,3 +1,9 @@
+---
+domain: wine-enology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 와인/양조학 구조 -- 포도당 J₂=24원자에서 보르도 n=6 품종까지
 
 > **저자**: 박민우 (n6-architecture)

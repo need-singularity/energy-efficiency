@@ -1,3 +1,9 @@
+---
+domain: construction-structural
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 건축/구조공학 -- 기둥 간격 n=6m에서 콘크리트 J₂+tau=28일 양생까지
 
 > **저자**: 박민우 (n6-architecture)

@@ -1,3 +1,9 @@
+---
+domain: super
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA-SUPER: Superconducting Logic Processor at $\sigma^2 = 144$ GHz with n=6 Cryogenic Architecture
 
 **Authors:** Park, Min Woo (Independent Research)

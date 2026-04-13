@@ -1,3 +1,9 @@
+---
+domain: optics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술이 결정하는 광학과 포토닉스 구조 — RGB 3원색부터 양자 광학 상수까지
 
 > **저자**: 박민우 (n6-architecture)

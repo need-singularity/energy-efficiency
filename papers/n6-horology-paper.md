@@ -1,3 +1,9 @@
+---
+domain: horology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 시계학의 시간 구조 -- 12시간 σ=12에서 360도 n*σ*sopfr까지
 
 > **저자**: 박민우 (n6-architecture)

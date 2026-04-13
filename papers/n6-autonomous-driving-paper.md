@@ -1,3 +1,9 @@
+---
+domain: autonomous-driving
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Autonomous Driving Systems
 
 ## SE(3)=n=6: Sensor-Compute-Control Convergence

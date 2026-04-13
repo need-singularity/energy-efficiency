@@ -1,3 +1,9 @@
+---
+domain: ai-ethics-governance
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 산술이 본 AI 윤리와 거버넌스
 
 ## σ(n)·φ(n)=n·τ(n)의 유일해 n=6에서 본 AI 위험 분류·감사·규제 아키텍처

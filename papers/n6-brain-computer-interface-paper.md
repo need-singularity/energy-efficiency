@@ -1,3 +1,9 @@
+---
+domain: brain-computer-interface
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 뇌-컴퓨터 인터페이스 -- 6채널 설계에서 신경 디코딩까지
 
 > **저자**: 박민우 (n6-architecture)

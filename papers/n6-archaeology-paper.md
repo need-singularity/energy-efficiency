@@ -1,3 +1,9 @@
+---
+domain: archaeology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 고고학/문명사 — n=6 기원 시드 논문
 
 > **저자**: 박민우 (n6-architecture)

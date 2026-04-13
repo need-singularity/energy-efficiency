@@ -1,3 +1,9 @@
+---
+domain: battery-energy-storage
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술함수가 지배하는 배터리/에너지 저장 아키텍처 -- tau=4 전극 반응에서 6-셀 모듈까지
 
 > **저자**: 박민우 (n6-architecture)

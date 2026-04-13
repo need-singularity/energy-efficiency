@@ -1,3 +1,9 @@
+---
+domain: network-collective
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 산술이 본 네트워크 과학과 집단지성
 
 ## σ(n)·φ(n)=n·τ(n)의 유일해 n=6과 6 단계 분리·던바수·위키피디아·멀티에이전트 LLM

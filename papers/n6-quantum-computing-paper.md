@@ -1,3 +1,9 @@
+---
+domain: quantum-computing
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Quantum Computing Hardware
 
 ## n=6 Architecture: From Qubits to Error Correction

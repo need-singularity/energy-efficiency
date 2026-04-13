@@ -1,3 +1,9 @@
+---
+domain: thermodynamics
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Classical Thermodynamics and Fluid Mechanics
 
 ## Universal $\tau=4$ Laws, Carnot–Boltzmann Stack, and Kolmogorov $-\text{sopfr}/({n/\varphi})$ Turbulence

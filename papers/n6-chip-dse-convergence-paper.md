@@ -1,3 +1,9 @@
+---
+domain: chip-dse-convergence
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # N6 칩 DSE 수렴 논문: 3,530만 조합에서 n=6 어트랙터 수렴 증거
 
 > **저자**: 박민우 (n6-architecture)

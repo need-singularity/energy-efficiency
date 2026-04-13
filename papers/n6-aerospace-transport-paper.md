@@ -1,3 +1,9 @@
+---
+domain: aerospace-transport
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Aerospace, Aviation, and Transportation Engineering
 
 ## $\sigma(6)\cdot\phi(6) = 6\cdot\tau(6)$: Universal n=6 Architecture across 22 Breakthrough Theorems

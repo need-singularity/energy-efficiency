@@ -1,3 +1,9 @@
+---
+domain: mechanical-engineering
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술이 결정하는 기계공학 — 강체 6 자유도부터 ISO 볼트 6 등급까지
 
 > **저자**: 박민우 (n6-architecture)

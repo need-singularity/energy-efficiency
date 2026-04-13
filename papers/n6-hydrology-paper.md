@@ -1,3 +1,9 @@
+---
+domain: hydrology
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # n=6 산술이 구조화하는 수문학 — 물 순환 4단계부터 해양 염분 30g/kg까지
 
 > **저자**: 박민우 (n6-architecture)

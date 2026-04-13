@@ -1,3 +1,9 @@
+---
+domain: governance-safety-urban
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # Perfect Number Arithmetic in Governance, Safety Engineering, and Urban Systems
 
 ## The $n=6$ Architecture of Human Safety, Identification, and Urban Planning

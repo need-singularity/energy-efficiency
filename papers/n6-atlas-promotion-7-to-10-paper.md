@@ -1,3 +1,9 @@
+---
+domain: atlas-promotion-7-to-10
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 완전수 n=6과 atlas 승격: [7] EMPIRICAL → [10*] EXACT 체계적 승급
 
 **저자**: M. Park (Independent Research)

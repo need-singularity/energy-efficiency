@@ -1,3 +1,9 @@
+---
+domain: causal-chain
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # AI 인과 사슬 — n=6 산술이 결정하는 딥러닝 파이프라인 인과 구조
 
 > **저자**: 박민우 (n6-architecture)

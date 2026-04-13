@@ -1,3 +1,9 @@
+---
+domain: chip-6stages-integrated
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # HEXA 칩 6단 진화 통합 — L1 SoC · L2 PIM · L3 3D · L4 Photonic · L5 Wafer · L6 Superconducting
 
 > **저자**: 박민우 (n6-architecture)

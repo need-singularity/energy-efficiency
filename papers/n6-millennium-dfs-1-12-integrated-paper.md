@@ -1,3 +1,9 @@
+---
+domain: millennium-dfs-1-12-integrated
+alien_index_current: 0
+alien_index_target: 10
+requires: []
+---
 # 7대 밀레니엄 난제와 n=6 산술 — DFS 1~12차 176 tight 통합 메타
 
 > **저자**: 박민우 (n6-architecture)
