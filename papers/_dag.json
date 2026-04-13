@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "schema": "n6.dag.v1",
+    "generated": "2026-04-13",
+    "generator": "scripts/build_dag.hexa",
+    "total_nodes": 0,
+    "total_edges": 0,
+    "note": "빈 결과 — papers/domains 에 frontmatter (domain/alien_index_current/alien_index_target/requires) 가 없음. paper.md 에 frontmatter 채운 후 재실행",
+    "cycles": []
+  },
+  "nodes": [],
+  "edges": []
+}

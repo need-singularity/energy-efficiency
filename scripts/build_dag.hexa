@@ -1,0 +1,462 @@
+// build_dag.hexa — 도메인 의존성 DAG 빌더
+//
+// 입력: papers/*.md + domains/**/*.md
+// 처리: frontmatter (---...---) YAML-ish 파싱
+//   필드: domain / alien_index_current / alien_index_target / requires:
+//   엣지: requires 블록 아래 - to: <name> / alien_min: <N> / reason: <text>
+// 출력: papers/_dag.json (n6.dag.v1)
+//
+// 사용:
+//   hexa run scripts/build_dag.hexa            # 기본 (papers + domains)
+//   hexa run scripts/build_dag.hexa --root /tmp/test_papers   # 테스트 루트
+//
+// 검증:
+//   1) edge.alien_cur 자동 채움 (target 노드 alien_current 참조)
+//   2) blocker = (alien_cur < alien_min)
+//   3) cycle 검출 (DFS, white/gray/black) → _meta.cycles
+//
+// 안전: 예약어 회피 (_node/_graph/_edges), | delimiter 회피, BSD awk 호환
+
+// ─── 경로 구성 ───
+fn repo_root() -> str {
+    let r = exec("git rev-parse --show-toplevel 2>/dev/null").trim()
+    if len(r) > 0 { return r }
+    return exec("pwd").trim()
+}
+
+fn parse_root_arg() -> str {
+    // CLI: --root <path>
+    let raw = exec("printenv N6_DAG_ROOT 2>/dev/null").trim()
+    if len(raw) > 0 { return raw }
+    return ""
+}
+
+// ─── 문자열 search 우회 (str.find 미지원 대비) ───
+fn _str_find(haystack: str, needle: str) -> i64 {
+    let n = len(haystack)
+    let m = len(needle)
+    if m == 0 { return 0 }
+    if m > n { return -1 }
+    let mut i: i64 = 0
+    while i <= n - m {
+        if haystack[i..i+m] == needle { return i }
+        i = i + 1
+    }
+    return -1
+}
+
+// ─── frontmatter 추출 ───
+// 입력: file path
+// 출력: frontmatter 본문 (--- 사이) 또는 ""
+fn extract_frontmatter(path: str) -> str {
+    if file_exists(path) == false { return "" }
+    // awk: 첫 --- 만나면 시작, 두 번째 --- 만나면 종료
+    let cmd = "awk 'BEGIN{n=0;p=0} /^---[[:space:]]*$/{n=n+1; if(n==1){p=1; next} else if(n==2){exit}} p==1{print}' '" + path + "'"
+    let body = exec(cmd)
+    return body
+}
+
+// ─── YAML-ish 단일 키 추출 (top-level) ───
+fn yaml_get(body: str, key: str) -> str {
+    let lines = body.split("\n")
+    let mut i: i64 = 0
+    let prefix = key + ":"
+    while i < len(lines) {
+        let raw = to_string(lines[i])
+        let l = raw.trim()
+        if l.starts_with(prefix) {
+            let v = l[len(prefix)..len(l)].trim()
+            // inline comment 제거 (#)
+            let h = _str_find(v, "#")
+            if h >= 0 { return v[0..h].trim() }
+            return v
+        }
+        i = i + 1
+    }
+    return ""
+}
+
+// ─── requires 블록 파싱 ───
+// 출력: 엣지 list, 각 항목 = "to\tmin\treason"
+fn parse_requires(body: str) -> list {
+    let mut out = []
+    let lines = body.split("\n")
+    let mut i: i64 = 0
+    let mut in_req: bool = false
+    let mut cur_to: str = ""
+    let mut cur_min: str = "0"
+    let mut cur_reason: str = ""
+    let mut have_item: bool = false
+    while i < len(lines) {
+        let raw = to_string(lines[i])
+        let l_trim = raw.trim()
+        if l_trim == "requires:" {
+            in_req = true
+            i = i + 1
+            continue
+        }
+        if in_req == false {
+            i = i + 1
+            continue
+        }
+        // 빈 라인이나 top-level 키 (들여쓰기 없음 + ":") 만나면 종료
+        if len(raw) > 0 {
+            let first = raw[0..1]
+            if first != " " && first != "\t" {
+                if l_trim != "" {
+                    // top-level 키 진입 — flush 후 종료
+                    if have_item {
+                        out = out + [cur_to + "\t" + cur_min + "\t" + cur_reason]
+                        have_item = false
+                    }
+                    in_req = false
+                    continue
+                }
+            }
+        }
+        // - to: <name>
+        if l_trim.starts_with("- to:") {
+            // 이전 항목 flush
+            if have_item {
+                out = out + [cur_to + "\t" + cur_min + "\t" + cur_reason]
+            }
+            cur_to = l_trim[5..len(l_trim)].trim()
+            cur_min = "0"
+            cur_reason = ""
+            have_item = true
+        } else {
+            if l_trim.starts_with("alien_min:") {
+                cur_min = l_trim[10..len(l_trim)].trim()
+            } else {
+                if l_trim.starts_with("reason:") {
+                    cur_reason = l_trim[7..len(l_trim)].trim()
+                    // 따옴표 벗기기
+                    if len(cur_reason) >= 2 {
+                        let f = cur_reason[0..1]
+                        let lst = cur_reason[len(cur_reason)-1..len(cur_reason)]
+                        if (f == "\"" && lst == "\"") || (f == "'" && lst == "'") {
+                            cur_reason = cur_reason[1..len(cur_reason)-1]
+                        }
+                    }
+                }
+            }
+        }
+        i = i + 1
+    }
+    if have_item {
+        out = out + [cur_to + "\t" + cur_min + "\t" + cur_reason]
+    }
+    return out
+}
+
+// ─── 파일 목록 수집 ───
+fn collect_md_files(root: str) -> list {
+    let mut out = []
+    // papers/*.md
+    let p1 = exec("ls -1 " + root + "/papers/*.md 2>/dev/null").trim()
+    if len(p1) > 0 {
+        let arr = p1.split("\n")
+        let mut i: i64 = 0
+        while i < len(arr) {
+            let s = to_string(arr[i]).trim()
+            if len(s) > 0 { out = out + [s] }
+            i = i + 1
+        }
+    }
+    // domains/**/*.md (find 사용 — BSD 호환)
+    let p2 = exec("find " + root + "/domains -type f -name '*.md' 2>/dev/null").trim()
+    if len(p2) > 0 {
+        let arr2 = p2.split("\n")
+        let mut j: i64 = 0
+        while j < len(arr2) {
+            let s = to_string(arr2[j]).trim()
+            if len(s) > 0 { out = out + [s] }
+            j = j + 1
+        }
+    }
+    return out
+}
+
+// ─── JSON 직렬화 헬퍼 ───
+fn json_escape(s: str) -> str {
+    let mut out = ""
+    let mut i: i64 = 0
+    while i < len(s) {
+        let c = s[i..i+1]
+        if c == "\"" { out = out + "\\\"" }
+        else { if c == "\\" { out = out + "\\\\" }
+        else { if c == "\n" { out = out + "\\n" }
+        else { if c == "\r" { out = out + "\\r" }
+        else { if c == "\t" { out = out + "\\t" }
+        else { out = out + c } } } } }
+        i = i + 1
+    }
+    return out
+}
+
+fn node_to_json(_node: list) -> str {
+    // _node = [id, path, alien_current, alien_target]
+    let id = to_string(_node[0])
+    let path = to_string(_node[1])
+    let cur = to_string(_node[2])
+    let tgt = to_string(_node[3])
+    return "    {\"id\": \"" + json_escape(id) + "\", \"path\": \"" + json_escape(path) + "\", \"alien_current\": " + cur + ", \"alien_target\": " + tgt + "}"
+}
+
+fn edge_to_json(_edge: list) -> str {
+    // _edge = [from, to, alien_min, alien_cur, blocker(0/1), reason]
+    let from_s = to_string(_edge[0])
+    let to_s = to_string(_edge[1])
+    let amin = to_string(_edge[2])
+    let acur = to_string(_edge[3])
+    let blk_i = to_int(_edge[4])
+    let reason = to_string(_edge[5])
+    let mut blk_s = "false"
+    if blk_i == 1 { blk_s = "true" }
+    return "    {\"from\": \"" + json_escape(from_s) + "\", \"to\": \"" + json_escape(to_s) + "\", \"alien_min\": " + amin + ", \"alien_cur\": " + acur + ", \"blocker\": " + blk_s + ", \"reason\": \"" + json_escape(reason) + "\"}"
+}
+
+// ─── 노드 lookup (id → alien_current) ───
+fn lookup_alien_current(nodes: list, id: str) -> i64 {
+    let mut i: i64 = 0
+    while i < len(nodes) {
+        let n = nodes[i]
+        if to_string(n[0]) == id {
+            return to_int(n[2])
+        }
+        i = i + 1
+    }
+    return -1
+}
+
+// ─── parallel-list lookup helpers (stage1 hashmap 미지원 우회) ───
+fn _idx_of(keys: list, k: str) -> i64 {
+    let mut i: i64 = 0
+    while i < len(keys) {
+        if to_string(keys[i]) == k { return i }
+        i = i + 1
+    }
+    return -1
+}
+
+fn _set_at(values: list, idx: i64, v: i64) -> list {
+    // list[i]=v no-op 우회 — slice + concat 으로 새 list
+    // hexa stage1 파서 함정: a[x+1..y] 잘못 파싱됨 → 괄호 필수
+    let mut out = []
+    if idx > 0 { out = values[0..idx] }
+    out = out + [v]
+    let next = idx + 1
+    let n = len(values)
+    if next < n { out = out + values[next..n] }
+    return out
+}
+
+// ─── DFS 사이클 검출 (작은 그래프용 O(V*E*depth) — 200 노드 이내 OK) ───
+// state: 10=white 11=gray 12=black
+fn detect_cycles(nodes: list, edges: list) -> list {
+    let mut cycles = []
+    let mut ids = []
+    let mut i: i64 = 0
+    while i < len(nodes) { ids = ids + [to_string(nodes[i][0])]; i = i + 1 }
+    let mut state = []
+    let mut k: i64 = 0
+    while k < len(ids) { state = state + [10]; k = k + 1 }
+
+    let mut sidx: i64 = 0
+    while sidx < len(ids) {
+        let start = to_string(ids[sidx])
+        if to_int(state[sidx]) == 10 {
+            state = _set_at(state, sidx, 11)
+            let mut path = [start]
+            let mut child_idx = [0]
+            while len(path) > 0 {
+                let cur_node = to_string(path[len(path)-1])
+                let ci = to_int(child_idx[len(child_idx)-1])
+                // outgoing neighbors (edges 스캔)
+                let mut neighbors = []
+                let mut ei: i64 = 0
+                while ei < len(edges) {
+                    let f = to_string(edges[ei][0])
+                    if f == cur_node { neighbors = neighbors + [to_string(edges[ei][1])] }
+                    ei = ei + 1
+                }
+                if ci < len(neighbors) {
+                    child_idx = child_idx[0..len(child_idx)-1] + [ci + 1]
+                    let nb = to_string(neighbors[ci])
+                    let nb_idx = _idx_of(ids, nb)
+                    if nb_idx >= 0 {
+                        let nb_st = to_int(state[nb_idx])
+                        if nb_st == 11 {
+                            // gray = cycle
+                            let mut cyc = []
+                            let mut p: i64 = 0
+                            let mut started: bool = false
+                            while p < len(path) {
+                                let pn = to_string(path[p])
+                                if pn == nb { started = true }
+                                if started { cyc = cyc + [pn] }
+                                p = p + 1
+                            }
+                            cyc = cyc + [nb]
+                            cycles = cycles + [cyc]
+                        } else {
+                            if nb_st == 10 {
+                                state = _set_at(state, nb_idx, 11)
+                                path = path + [nb]
+                                child_idx = child_idx + [0]
+                            }
+                        }
+                    }
+                } else {
+                    let cur_idx = _idx_of(ids, cur_node)
+                    if cur_idx >= 0 { state = _set_at(state, cur_idx, 12) }
+                    path = path[0..len(path)-1]
+                    child_idx = child_idx[0..len(child_idx)-1]
+                }
+            }
+        }
+        sidx = sidx + 1
+    }
+    return cycles
+}
+
+// ─── 메인 ───
+fn main() {
+    let mut root = parse_root_arg()
+    if len(root) == 0 { root = repo_root() }
+
+    println("[build_dag] root = " + root)
+
+    let files = collect_md_files(root)
+    println("[build_dag] candidate files: " + to_string(len(files)))
+
+    // 노드/엣지 수집
+    let mut nodes = []        // [id, path, alien_current, alien_target]
+    let mut raw_edges = []    // [from, to, alien_min, reason]
+    let mut seen_ids = []   // [id...] 리스트 — stage1 hashmap 미지원 우회
+
+    let mut i: i64 = 0
+    while i < len(files) {
+        let path = to_string(files[i])
+        let body = extract_frontmatter(path)
+        if len(body) > 0 {
+            let dom = yaml_get(body, "domain")
+            if len(dom) > 0 {
+                let cur_s = yaml_get(body, "alien_index_current")
+                let tgt_s = yaml_get(body, "alien_index_target")
+                let mut cur_i: i64 = 0
+                let mut tgt_i: i64 = 0
+                try { cur_i = to_int(cur_s) } catch _e {}
+                try { tgt_i = to_int(tgt_s) } catch _e {}
+                // 상대 경로
+                let mut rel = path
+                let _rn = len(root) + 1
+                let _rm = len(path)
+                if path.starts_with(root + "/") {
+                    rel = path[_rn.._rm]
+                }
+                if _idx_of(seen_ids, dom) < 0 {
+                    nodes = nodes + [[dom, rel, cur_i, tgt_i]]
+                    seen_ids = seen_ids + [dom]
+                }
+                let reqs = parse_requires(body)
+                let mut k: i64 = 0
+                while k < len(reqs) {
+                    let parts = to_string(reqs[k]).split("\t")
+                    if len(parts) >= 3 {
+                        let to_id = to_string(parts[0])
+                        let amin_s = to_string(parts[1])
+                        let reason = to_string(parts[2])
+                        let mut amin_i: i64 = 0
+                        try { amin_i = to_int(amin_s) } catch _e {}
+                        raw_edges = raw_edges + [[dom, to_id, amin_i, reason]]
+                    }
+                    k = k + 1
+                }
+            }
+        }
+        i = i + 1
+    }
+
+    println("[build_dag] nodes: " + to_string(len(nodes)) + " / raw edges: " + to_string(len(raw_edges)))
+
+    // 엣지 resolve (alien_cur, blocker)
+    let mut edges = []
+    let mut e: i64 = 0
+    while e < len(raw_edges) {
+        let r = raw_edges[e]
+        let to_id = to_string(r[1])
+        let amin = to_int(r[2])
+        let acur = lookup_alien_current(nodes, to_id)
+        let mut acur_use: i64 = acur
+        if acur < 0 { acur_use = 0 }
+        let mut blk: i64 = 0
+        if acur_use < amin { blk = 1 }
+        edges = edges + [[r[0], r[1], amin, acur_use, blk, r[3]]]
+        e = e + 1
+    }
+
+    // 사이클
+    let cycles = detect_cycles(nodes, edges)
+    println("[build_dag] cycles: " + to_string(len(cycles)))
+
+    // 직렬화
+    let date = exec("date +%Y-%m-%d").trim()
+
+    let mut out = "{\n"
+    out = out + "  \"_meta\": {\n"
+    out = out + "    \"schema\": \"n6.dag.v1\",\n"
+    out = out + "    \"generated\": \"" + date + "\",\n"
+    out = out + "    \"generator\": \"scripts/build_dag.hexa\",\n"
+    out = out + "    \"total_nodes\": " + to_string(len(nodes)) + ",\n"
+    out = out + "    \"total_edges\": " + to_string(len(edges)) + ",\n"
+    let mut note = ""
+    if len(nodes) == 0 { note = "빈 결과 — papers/domains 에 frontmatter (domain/alien_index_current/alien_index_target/requires) 가 없음. paper.md 에 frontmatter 채운 후 재실행" }
+    if len(note) > 0 {
+        out = out + "    \"note\": \"" + json_escape(note) + "\",\n"
+    }
+    out = out + "    \"cycles\": ["
+    let mut ci: i64 = 0
+    while ci < len(cycles) {
+        let cyc = cycles[ci]
+        if ci > 0 { out = out + ", " }
+        out = out + "["
+        let mut cj: i64 = 0
+        while cj < len(cyc) {
+            if cj > 0 { out = out + ", " }
+            out = out + "\"" + json_escape(to_string(cyc[cj])) + "\""
+            cj = cj + 1
+        }
+        out = out + "]"
+        ci = ci + 1
+    }
+    out = out + "]\n"
+    out = out + "  },\n"
+
+    out = out + "  \"nodes\": ["
+    let mut ni: i64 = 0
+    while ni < len(nodes) {
+        if ni > 0 { out = out + "," }
+        out = out + "\n" + node_to_json(nodes[ni])
+        ni = ni + 1
+    }
+    if len(nodes) > 0 { out = out + "\n  " }
+    out = out + "],\n"
+
+    out = out + "  \"edges\": ["
+    let mut ei: i64 = 0
+    while ei < len(edges) {
+        if ei > 0 { out = out + "," }
+        out = out + "\n" + edge_to_json(edges[ei])
+        ei = ei + 1
+    }
+    if len(edges) > 0 { out = out + "\n  " }
+    out = out + "]\n"
+    out = out + "}\n"
+
+    let target = root + "/papers/_dag.json"
+    write_file(target, out)
+    println("[build_dag] wrote " + target)
+}
+
+main()

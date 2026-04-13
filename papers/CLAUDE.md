@@ -10,6 +10,9 @@
 
 ## SSOT
 - _registry.json  논문 SSOT
+- _dag.json       도메인 의존성 DAG (n6.dag.v1) — `hexa run scripts/build_dag.hexa` 로 frontmatter 집계
+  schema: nodes[{id,path,alien_current,alien_target}] / edges[{from,to,alien_min,alien_cur,blocker,reason}] / _meta.cycles[]
+  frontmatter 키: domain / alien_index_current / alien_index_target / requires:[{to,alien_min,reason}]
 
 ## 진입 명령
 - nexus analyze sync-papers
