@@ -354,6 +354,58 @@
       color: var(--accent);
       background: var(--bg-card);
     }
+
+    /* H100 dashboard */
+    .h100-section { display: none; }
+    .h100-section.active { display: block; }
+    .h100-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .h100-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.9rem 1rem;
+    }
+    .h100-card .lbl { color: var(--fg-mute); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .h100-card .val { font-size: 1.4rem; font-weight: 700; margin-top: 0.25rem; font-family: var(--mono); }
+    .h100-card .sub { color: var(--fg-dim); font-size: 0.75rem; }
+    .h100-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--bg-card);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .h100-table th, .h100-table td {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .h100-table th { color: var(--fg-mute); font-weight: 600; font-size: 0.8rem; }
+    .h100-table tr:last-child td { border-bottom: none; }
+    .h100-table td.slot { font-family: var(--mono); font-weight: 600; }
+    .h100-table td.num  { font-family: var(--mono); text-align: right; }
+    .h100-action {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .h100-action.ok { background: rgba(16,185,129,0.15); color: #10b981; }
+    .h100-action.grace { background: rgba(148,163,184,0.15); color: #94a3b8; }
+    .h100-action.warn { background: rgba(234,179,8,0.15); color: #eab308; }
+    .h100-action.dispatch_fallback { background: rgba(251,146,60,0.18); color: #fb923c; }
+    .h100-action.terminate { background: rgba(239,68,68,0.18); color: #ef4444; }
+    .h100-over   { color: #ef4444; font-weight: 700; }
+    .h100-under  { color: #10b981; }
   </style>
 </head>
 <body>
@@ -361,6 +413,7 @@
     <a class="rtab" href="#anima" data-proj="anima">🧠 anima</a>
     <a class="rtab" href="#nexus" data-proj="nexus">🔭 nexus</a>
     <a class="rtab" href="#n6-architecture" data-proj="n6-architecture">🏗️ n6-architecture</a>
+    <a class="rtab" href="#h100" data-proj="h100">⚡ H100</a>
   </nav>
   <header>
     <h1 id="page-title">🧠 ANIMA 의식 엔진 로드맵</h1>
@@ -403,6 +456,13 @@
         <div class="skeleton" style="height:3rem"></div>
       </div>
     </section>
+
+    <section class="h100-section" id="h100-section">
+      <h2>⚡ H100 3-Pod 실시간 — ANIMA × HEXA-LANG</h2>
+      <div class="h100-summary" id="h100-summary"></div>
+      <div id="h100-pods-wrap"></div>
+      <div class="note" id="h100-policy-note" style="margin-top:1rem"></div>
+    </section>
   </main>
 
   <footer>
@@ -443,6 +503,15 @@
         joint_h2:   null,
         source:     "nexus/shared/roadmaps/n6-architecture.json",
         ssot_html:  '<a href="https://github.com/need-singularity/nexus/blob/main/shared/roadmaps/n6-architecture.json">nexus · shared/roadmaps/n6-architecture.json</a>'
+      },
+      "h100": {
+        emoji: "⚡",
+        title: "H100 3-Pod 실시간 상태",
+        mode:       "h100",
+        plan_url:   `${NEXUS_RAW}/shared/config/h100_plan.json`,
+        state_url:  `${NEXUS_RAW}/shared/harness/h100_state.json`,
+        source:     "nexus/shared/harness/h100_state.json",
+        ssot_html:  '<a href="https://github.com/need-singularity/nexus/blob/main/shared/config/h100_plan.json">h100_plan.json</a> · <a href="https://github.com/need-singularity/nexus/blob/main/shared/harness/h100_state.json">h100_state.json</a> · <a href="https://github.com/need-singularity/nexus/blob/main/shared/harness/h100_idle_guard.hexa">guard.hexa</a>'
       }
     };
 
@@ -488,8 +557,17 @@
       if (elTitle) elTitle.textContent = `${p.emoji} ${p.title}`;
       if (elSource) elSource.textContent = `source: ${p.source}`;
       if (elFooterSsot) elFooterSsot.innerHTML = p.ssot_html;
+
+      const isH100 = p.mode === "h100";
+      // Roadmap sections hide in H100 mode
+      const roadmapSections = document.querySelectorAll("main > section:not(.h100-section)");
+      roadmapSections.forEach(s => { s.style.display = isH100 ? "none" : ""; });
+      // H100 section shows only in H100 mode
+      const elH100 = document.getElementById("h100-section");
+      if (elH100) elH100.classList.toggle("active", isH100);
+
       const h2 = elJointSection ? elJointSection.querySelector("h2") : null;
-      if (elJointSection) {
+      if (elJointSection && !isH100) {
         if (p.joint_url) {
           elJointSection.style.display = "";
           if (h2 && p.joint_h2) h2.textContent = p.joint_h2;
@@ -668,11 +746,19 @@
       btnRefresh.disabled = true;
       btnRefresh.textContent = "⟳ 가져오는 중...";
       try {
-        const [main, joint] = await Promise.all([
-          fetchJson(p.main_url),
-          p.joint_url ? fetchJson(p.joint_url).catch(() => null) : Promise.resolve(null)
-        ]);
-        render(main, joint);
+        if (p.mode === "h100") {
+          const [plan, state] = await Promise.all([
+            fetchJson(p.plan_url),
+            fetchJson(p.state_url).catch(() => null)
+          ]);
+          renderH100(plan, state);
+        } else {
+          const [main, joint] = await Promise.all([
+            fetchJson(p.main_url),
+            p.joint_url ? fetchJson(p.joint_url).catch(() => null) : Promise.resolve(null)
+          ]);
+          render(main, joint);
+        }
         clearError();
       } catch (e) {
         console.error(e);
@@ -681,6 +767,108 @@
         btnRefresh.disabled = false;
         btnRefresh.textContent = "↻ 새로고침";
       }
+    }
+
+    function fmtAge(sec) {
+      if (sec == null || sec < 0) return "—";
+      if (sec < 60) return sec + "s";
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      if (m < 60) return `${m}m ${s}s`;
+      const h = Math.floor(m / 60);
+      return `${h}h ${m % 60}m`;
+    }
+
+    function renderH100(plan, state) {
+      const m = plan._meta || {};
+      const elSummary = document.getElementById("h100-summary");
+      const elWrap = document.getElementById("h100-pods-wrap");
+      const elNote = document.getElementById("h100-policy-note");
+
+      const limits = plan.limits || {};
+      const cost = plan.cost || {};
+      const st = state || {};
+      const running = st.running_pods != null ? st.running_pods : 0;
+      const costNow = st.cost_per_hr_usd != null ? st.cost_per_hr_usd : 0;
+      const projected = st.projected_24h_usd != null ? st.projected_24h_usd : 0;
+      const daily = st.daily_budget_usd || limits.daily_budget_usd_total || 0;
+      const overBudget = projected > daily;
+      const stateTs = st.ts ? new Date(st.ts) : null;
+      const ageSec = stateTs ? Math.floor((Date.now() - stateTs.getTime()) / 1000) : null;
+
+      elSummary.innerHTML = `
+        <div class="h100-card">
+          <div class="lbl">running pods</div>
+          <div class="val">${running} / ${limits.max_concurrent_pods || 3}</div>
+          <div class="sub">auto-launch ≤ ${limits.auto_launch_authorized || 2}</div>
+        </div>
+        <div class="h100-card">
+          <div class="lbl">cost /hr now</div>
+          <div class="val">$${Number(costNow).toFixed(2)}</div>
+          <div class="sub">SXM secure $${cost.per_hour_usd?.h100_sxm5_80gb_secure ?? "—"} · community $${cost.per_hour_usd?.h100_sxm5_80gb_community ?? "—"}</div>
+        </div>
+        <div class="h100-card">
+          <div class="lbl">24h projection</div>
+          <div class="val ${overBudget ? "h100-over" : "h100-under"}">$${projected}</div>
+          <div class="sub">daily cap $${daily} · monthly $${cost.monthly_cap_usd || "—"}</div>
+        </div>
+        <div class="h100-card">
+          <div class="lbl">state age</div>
+          <div class="val">${fmtAge(ageSec)}</div>
+          <div class="sub">snapshot: ${stateTs ? stateTs.toISOString().replace(".000","").replace("T"," ").replace("Z"," UTC") : "(none)"}</div>
+        </div>
+      `;
+
+      const pods = plan.pods || [];
+      const slotState = {};
+      (st.slots || []).forEach(s => { slotState[s.slot] = s; });
+
+      const rows = pods.map(p => {
+        const s = slotState[p.slot] || {};
+        const age = s.hb_age_sec;
+        const action = s.action || "—";
+        const fb = (p.fallback_queue_keys || [])[0] || "—";
+        return `
+          <tr>
+            <td class="slot">${esc(p.slot)}</td>
+            <td>${esc(p.track)}</td>
+            <td>${esc(p.role)}</td>
+            <td>${esc(p.gpu)}</td>
+            <td class="num">$${p.budget_usd_per_day_max}</td>
+            <td class="num">${p.idle_kill_minutes}min</td>
+            <td class="num">${fmtAge(age)}</td>
+            <td><span class="h100-action ${esc(action)}">${esc(action)}</span></td>
+            <td><span class="mono">${esc(fb)}</span></td>
+          </tr>
+        `;
+      }).join("");
+
+      elWrap.innerHTML = `
+        <table class="h100-table">
+          <thead>
+            <tr>
+              <th>slot</th><th>track</th><th>role</th><th>gpu</th>
+              <th>budget/day</th><th>idle kill</th><th>hb age</th><th>action</th><th>fallback[0]</th>
+            </tr>
+          </thead>
+          <tbody>${rows || `<tr><td colspan="9" style="color:var(--fg-dim)">슬롯 데이터 없음</td></tr>`}</tbody>
+        </table>
+      `;
+
+      const ip = plan.idle_policy || {};
+      const seq = (ip.action_sequence || []).map(a => `<strong>${a.at_minutes}min</strong> → <code>${esc(a.action)}</code>`).join(" · ");
+      const fb = Object.values(plan.fallback_queue || {}).map(f => `<code>${esc(f.id)}</code> ${esc(f.desc)} (~${f.est_hours}h)`).join(" · ");
+      elNote.innerHTML = `
+        <div><strong>idle policy</strong>: ${seq || "(none)"} — window ${ip.window_seconds || 0}s, grace ${ip.grace_minutes_after_launch || 0}min</div>
+        <div style="margin-top:0.5rem"><strong>fallback queue</strong>: ${fb}</div>
+        <div style="margin-top:0.5rem"><strong>principle</strong>: ${esc(m.principle || "")}</div>
+      `;
+
+      // Header state
+      const now = new Date();
+      elUpdated.textContent = `마지막 페치: ${fmtTime(now)}${stateTs ? " · state: " + fmtTime(stateTs) : ""}`;
+      elMeta.innerHTML = `3-pod H100 할당 — enforced by <code>${esc(m.enforced_by || "shared/harness/h100_idle_guard.hexa")}</code>`;
+      elBuildInfo.textContent = `rendered at ${now.toISOString()} · schema ${m.schema_version || "?"} · slots ${(pods || []).length}`;
     }
 
     function scheduleNext() {

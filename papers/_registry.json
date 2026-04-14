@@ -2,8 +2,8 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 97,
-    "_count_verified": "2026-04-12 drift-guard -- 실측 97",
+    "total_papers": 117,
+    "_count_verified": "2026-04-14 PAPER-P1-1 -- 실측 117 (108 기존 + 9 P2 확장)",
     "papers_chunk_c_2026-04-08": {
       "count": 11,
       "category": "인체/의료/생물",
@@ -407,7 +407,161 @@
       },
       "ghost_status_transition": "ghost → v1 (6개 신규 작성: natural-science 3, energy 1, tech-industry 2)"
     },
-    "last_updated": "2026-04-12",
+    "papers_chunk_m_2026-04-14": {
+      "count": 11,
+      "category": "레지스트리 정합화 — 기존 파일 11편 등록 (drift-guard 해소)",
+      "bt_range": "BT-15, BT-27, BT-51, BT-85~88, BT-91~93, BT-101~104, BT-114, BT-122, BT-150, BT-195, BT-198, BT-225, BT-350, BT-366, BT-371, BT-380, BT-404, BT-405, BT-1391",
+      "status": "Complete -- 전편 v2 canonical (2026-04-14), 10 서브섹션 Python 검증 완비",
+      "target_id_range": "N6-097 ~ N6-107",
+      "papers": [
+        "papers/n6-agi-architecture-paper.md",
+        "papers/n6-brain-computer-interface-paper.md",
+        "papers/n6-chemistry-paper.md",
+        "papers/n6-ecology-standalone-paper.md",
+        "papers/n6-genetics-paper.md",
+        "papers/n6-neuromorphic-computing-paper.md",
+        "papers/n6-quantum-error-correction-paper.md",
+        "papers/n6-quantum-machine-learning-paper.md",
+        "papers/n6-reality-map-paper.md",
+        "papers/n6-swarm-intelligence-paper.md",
+        "papers/n6-virology-structure-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-agi-architecture-paper.md": "BT-195, BT-350, BT-371",
+        "n6-brain-computer-interface-paper.md": "BT-195, BT-350, BT-405",
+        "n6-chemistry-paper.md": "BT-85, BT-86, BT-87, BT-88, BT-93",
+        "n6-ecology-standalone-paper.md": "BT-122, BT-225, BT-150, BT-198",
+        "n6-genetics-paper.md": "BT-27, BT-51, BT-101, BT-103, BT-104",
+        "n6-neuromorphic-computing-paper.md": "BT-195, BT-350, BT-91",
+        "n6-quantum-error-correction-paper.md": "BT-195, BT-91, BT-92, BT-114",
+        "n6-quantum-machine-learning-paper.md": "BT-195, BT-91, BT-92",
+        "n6-reality-map-paper.md": "BT-380",
+        "n6-swarm-intelligence-paper.md": "BT-195, BT-350, BT-366",
+        "n6-virology-structure-paper.md": "BT-15, BT-1391, BT-404"
+      },
+      "id_mapping": {
+        "N6-097": "papers/n6-agi-architecture-paper.md",
+        "N6-098": "papers/n6-brain-computer-interface-paper.md",
+        "N6-099": "papers/n6-chemistry-paper.md",
+        "N6-100": "papers/n6-ecology-standalone-paper.md",
+        "N6-101": "papers/n6-genetics-paper.md",
+        "N6-102": "papers/n6-neuromorphic-computing-paper.md",
+        "N6-103": "papers/n6-quantum-error-correction-paper.md",
+        "N6-104": "papers/n6-quantum-machine-learning-paper.md",
+        "N6-105": "papers/n6-reality-map-paper.md",
+        "N6-106": "papers/n6-swarm-intelligence-paper.md",
+        "N6-107": "papers/n6-virology-structure-paper.md"
+      },
+      "exact_stats": {
+        "n6-agi-architecture-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-brain-computer-interface-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-chemistry-paper.md": "34/38 EXACT (89.5%)",
+        "n6-ecology-standalone-paper.md": "36/42 EXACT (85.7%)",
+        "n6-genetics-paper.md": "40/42 EXACT (95.2%)",
+        "n6-neuromorphic-computing-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-quantum-error-correction-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-quantum-machine-learning-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-reality-map-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-swarm-intelligence-paper.md": "0/24 EXACT (시드 - atlas 노드 대기)",
+        "n6-virology-structure-paper.md": "22/28 EXACT (78.6%)"
+      },
+      "keywords": {
+        "n6-agi-architecture-paper.md": ["AGI", "아키텍처", "σ=12축", "τ=4관문", "의식칩 브릿지"],
+        "n6-brain-computer-interface-paper.md": ["BCI", "OpenBCI 16ch", "뉴로피드백", "4D 지각", "brainwire"],
+        "n6-chemistry-paper.md": ["탄소 Z=6", "주기율 σ-sopfr", "화학결합", "스펙트럼", "촉매"],
+        "n6-ecology-standalone-paper.md": ["생태계", "먹이사슬", "τ=4 영양단계", "다양성지수"],
+        "n6-genetics-paper.md": ["DNA 4염기", "코돈 n=6 중복", "CRISPR", "돌연변이율"],
+        "n6-neuromorphic-computing-paper.md": ["스파이크", "시냅스 3-wide", "Loihi", "MemComputing"],
+        "n6-quantum-error-correction-paper.md": ["QEC [[6,1,3]]", "스테빌라이저", "Surface code"],
+        "n6-quantum-machine-learning-paper.md": ["QML", "VQE", "QAOA", "n=6 큐비트 블록"],
+        "n6-reality-map-paper.md": ["atlas.n6", "현실지도", "3477 노드", "BT-380"],
+        "n6-swarm-intelligence-paper.md": ["ACO", "PSO", "Boids", "집단지성", "Dunbar"],
+        "n6-virology-structure-paper.md": ["캡시드 T=1~13", "σ=12 대칭", "HIV gag", "치료 표적"]
+      },
+      "verify_code_status": {
+        "all_papers_have_embedded_python": true,
+        "n62_compliance": "전 11편 본문에 10 서브섹션 (§7.0~§7.10) Python stdlib 검증 임베드",
+        "korean_only": true
+      },
+      "registry_drift_status": "drift-guard 해소 — 97 → 108 레지스트리 정합화 완료"
+    },
+    "papers_chunk_n_2026-04-14": {
+      "count": 9,
+      "category": "P2 확장 — v2→v3→v4 진화 트랙 신규 논문",
+      "bt_range": "BT-195, BT-380, BT-1394~1404, BT-28, BT-90, BT-93, BT-1104",
+      "status": "Draft — v3 진화 시드, 파이썬 검증 임베드, ASCII 비교 차트 포함",
+      "target_id_range": "N6-108 ~ N6-116",
+      "papers": [
+        "papers/n6-arch-quantum-design-paper.md",
+        "papers/n6-arch-selforg-design-paper.md",
+        "papers/n6-arch-adaptive-evolution-paper.md",
+        "papers/n6-cross-dse-matrix-112-paper.md",
+        "papers/n6-nexus6-discovery-engine-paper.md",
+        "papers/n6-speak-v2-4tier-chip-paper.md",
+        "papers/n6-protocol-12-sigma12-coverage-paper.md",
+        "papers/n6-hypotheses-678-mc-verification-paper.md",
+        "papers/n6-attractor-meta-extended-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-arch-quantum-design-paper.md": "BT-91, BT-92, BT-114, BT-195 (양자중첩 설계)",
+        "n6-arch-selforg-design-paper.md": "BT-366, BT-368, BT-195 (자기조직 창발)",
+        "n6-arch-adaptive-evolution-paper.md": "BT-195, BT-370, BT-371 (진화 적응)",
+        "n6-cross-dse-matrix-112-paper.md": "BT-380 메타, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73 (225 기법 × 10 도메인)",
+        "n6-nexus6-discovery-engine-paper.md": "BT-380 메타, BT-195, BT-350 (SEDI + brainwire 통합)",
+        "n6-speak-v2-4tier-chip-paper.md": "BT-28, BT-90, BT-93, BT-1104 (SoC 4-tier)",
+        "n6-protocol-12-sigma12-coverage-paper.md": "BT-73, BT-197, BT-227, BT-380 (σ=12 프로토콜)",
+        "n6-hypotheses-678-mc-verification-paper.md": "BT-380 메타 (가설 975 MC 검증)",
+        "n6-attractor-meta-extended-paper.md": "BT-361, BT-362, BT-363 (어트랙터 확장)"
+      },
+      "id_mapping": {
+        "N6-108": "papers/n6-arch-quantum-design-paper.md",
+        "N6-109": "papers/n6-arch-selforg-design-paper.md",
+        "N6-110": "papers/n6-arch-adaptive-evolution-paper.md",
+        "N6-111": "papers/n6-cross-dse-matrix-112-paper.md",
+        "N6-112": "papers/n6-nexus6-discovery-engine-paper.md",
+        "N6-113": "papers/n6-speak-v2-4tier-chip-paper.md",
+        "N6-114": "papers/n6-protocol-12-sigma12-coverage-paper.md",
+        "N6-115": "papers/n6-hypotheses-678-mc-verification-paper.md",
+        "N6-116": "papers/n6-attractor-meta-extended-paper.md"
+      },
+      "keywords": {
+        "n6-arch-quantum-design-paper.md": ["양자중첩", "arch_quantum.hexa", "σ=12 큐비트 블록", "설계 중첩"],
+        "n6-arch-selforg-design-paper.md": ["자기조직", "창발", "τ=4 관문", "Kuramoto 동기화"],
+        "n6-arch-adaptive-evolution-paper.md": ["진화 적응", "선택압 6-fold", "NEXUS-6 자율성장"],
+        "n6-cross-dse-matrix-112-paper.md": ["cross-DSE", "225×10 매트릭스", "기법×도메인"],
+        "n6-nexus6-discovery-engine-paper.md": ["NEXUS-6", "SEDI", "brainwire", "Discovery Engine"],
+        "n6-speak-v2-4tier-chip-paper.md": ["N6-SPEAK", "4-tier SoC", "τ=4 계층"],
+        "n6-protocol-12-sigma12-coverage-paper.md": ["σ=12 프로토콜", "12 커버리지", "인코딩"],
+        "n6-hypotheses-678-mc-verification-paper.md": ["가설 975", "Monte Carlo", "z=9.97"],
+        "n6-attractor-meta-extended-paper.md": ["어트랙터 메타", "n²=36", "τ=4 고정점"]
+      },
+      "verify_code_status": {
+        "all_papers_have_embedded_python": true,
+        "n62_compliance": "전 9편 본문에 파이썬 검증코드 + ASCII 비교 차트 + 한글 본문",
+        "korean_only": true
+      },
+      "evolution_track": "v2 → v3 (본 chunk) → v4 (다음 chunk 예정)"
+    },
+    "total_papers_breakdown_2026-04-14": {
+      "chunk_c": 11,
+      "chunk_d": 11,
+      "chunk_e": 9,
+      "chunk_f": 6,
+      "chunk_g": 3,
+      "chunk_h": 4,
+      "chunk_i": 3,
+      "chunk_j": 6,
+      "chunk_k": 6,
+      "chunk_l": 6,
+      "chunk_m": 11,
+      "chunk_n": 9,
+      "total_chunked": 85,
+      "earlier_papers_pre_chunk_c": 32,
+      "total_expected": 117,
+      "filesystem_measured": 117,
+      "drift_status": "EXACT — 레지스트리 = 파일시스템"
+    },
+    "last_updated": "2026-04-14",
     "description": "완성제품 SSOT — README 자동 생성용",
     "alien_index_order": [
       "fusion",
