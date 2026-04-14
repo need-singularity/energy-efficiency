@@ -2,10 +2,10 @@
 
 **일자**: 2026-04-14
 **실험 id**: CHIP-P3-3
-**소스**: `experiments/chip-verify/boot_matrix_3x12.hexa` (parse OK)
+**소스**: `experiments/chip-verify/boot_matrix_3x12.hexa` (stage0 실전 실행 OK)
 **원자료**: `experiments/chip-verify/boot_matrix_3x12.json`
 **시드**: LCG seed=42 (재현가능)
-**주의**: 실제 하드웨어 부트 없음 — 휴리스틱 시뮬레이션 only. hexa runtime.c 누락으로 parse 만 수행.
+**주의**: 실제 하드웨어 부트 없음 — 휴리스틱 시뮬레이션 only. stage0 실전 실행 결과 34/36 통과 (2026-04-14 재검증, `experiments/chip-verify/stage0_rerun_report.md`).
 
 ## 1. 매트릭스 요약
 

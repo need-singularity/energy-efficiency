@@ -81,4 +81,18 @@ README: `/Users/ghost/Dev/hexa-lang/examples/regressions/n6/README.md`
 - 2026-04-14 21:00~ hexa-lang handoff 쌍 교환
 - 2026-04-14 21:55 `examples/regressions/n6/` 심볼릭 생성 (역요청 완료)
 
+## 8. stage0 실전 재검증 결과
+
+- 일자: 2026-04-14 (추가 세션)
+- 바이너리: `/Users/ghost/Dev/hexa-lang/build/hexa_stage0` (arm64, 1.8 MB, 21:52 mtime)
+- 리포트: `experiments/chip-verify/stage0_rerun_report.md`
+- 결과: 13 / 13 파일 stage0 실전 실행 rc=0 성공, stderr 0 건
+  - A류 5 파일 (파일 하단 `main()` 호출 포함): 원본 그대로 실행 -> 풍부한 출력 + 검증 통과
+    - arch_quantum (EXACT 10/10), arch_selforg (50 SAMPLE), arch_adaptive (EXACT 10/10 승격), ouroboros_5phase (승격 15 건), ecosystem_9projects (9/9)
+  - B류 1 파일 (main 내부 println 미사용): arch_unified.hexa — rc=0 이지만 stdout 0 (의도된 무출력, main return total)
+  - C류 7 파일 (fn main 은 있으나 하단 `main()` 호출 부재): 임시 복제본 끝에 `main()` 추가 harness 로 재실행 -> 모두 통과
+    - top 7/7, soc_integration 6/6, soc_drc_lvs 12/12, tapeout_gate 15/15, verify_chip-3d 5/5, verify_anima_soc 12/12, boot_matrix_3x12 34/36 (94%)
+- 정정 사항: 과거 P1~P3 산출물 주석/.md 에서 "runtime.c 누락 -> parse 전용 검증" 이라 기술한 부분은 오판이었다. 원인은 구 stage1 `hexa build` 경로의 버그이며, stage0 인터프리터/run 모드는 처음부터 정상 동작. 이후 기준 문구는 "stage0 실전 실행 결과" 이다.
+- 권장: C류 7 파일 원본에 최하단 `main()` 한 줄 추가. arch_unified 는 main 반환값을 println 으로 노출.
+
 문서 끝.

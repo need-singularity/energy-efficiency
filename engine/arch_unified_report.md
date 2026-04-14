@@ -6,7 +6,7 @@ n6-architecture 프로젝트 DSE-P3-1 단계 산출물. 기존 v1(산업실증),
 
 - 경로: `/Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa`
 - 포팅 상태: BODY (외부 import 없음, 순수 정수 연산)
-- 검증: `hexa parse` 통과, runtime 미검증 (runtime.c 누락)
+- 검증: stage0 실전 실행 결과 rc=0 (2026-04-14 재검증, main 은 total 반환, println 미사용)
 - 규칙: R1 HEXA-FIRST, R18 미니멀, N61 한글
 
 ## 4 모드 표

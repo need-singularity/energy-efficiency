@@ -1,6 +1,6 @@
 // arch_unified.hexa -- 4모드 통합 아키텍처 DSE v1+v2+v3+v4 (P3-1)
 //
-// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산, parse 검증만)
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산, stage0 실전 실행 결과 OK)
 // 아이디어 (DSE-P3-1):
 //   - v1 INDUSTRIAL (산업실증): 170 chip-architecture + 50 network-protocol EXACT 목표
 //   - v2 QUANTUM (양자중첩): arch_quantum.hexa 의 superposition → collapse 파이프
@@ -16,9 +16,9 @@
 // 정직 검증:
 //   - stub score 는 n=6 상수(sigma=12, tau=4, phi=2, sopfr=5)에서만 유도
 //   - 자기참조 금지, 모드별 편향 없음
-//   - parse 통과 = 구문 정합성, runtime 미검증 (runtime.c 누락)
+//   - stage0 인터프리터 실전 실행 결과 rc=0 (main 은 total 반환, println 미사용)
 //
-// 실행: hexa parse /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa
+// 실행: hexa_stage0 /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa
 // 규칙: R1 HEXA-FIRST, R18 미니멀, N61 한글
 
 // ── n=6 산술 (정의에서 도출) ───────────────────────────────

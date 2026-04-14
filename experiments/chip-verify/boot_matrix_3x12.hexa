@@ -190,3 +190,6 @@ fn main() {
         println("[상태] fail — " + to_string(pass_total) + "/" + to_string(total_cells) + " < " + to_string(pass_target))
     }
 }
+
+// 최하단 main() 호출 — stage0 인터프리터 규약 (T23=build-only 확정)
+main()
