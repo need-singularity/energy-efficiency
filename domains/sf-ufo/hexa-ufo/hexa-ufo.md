@@ -80,10 +80,9 @@ HEXA-UFO는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 돌
 
 | 선행 도메인 | 링크 | 역할 |
 |-------------|------|------|
-| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | 선행 도메인 |
-| fusion-powerplant | ../../energy/fusion-powerplant/fusion-powerplant.md | 선행 도메인 |
-| superconductor | ../../energy/superconductor/superconductor.md | 선행 도메인 |
-
+| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | 상온 동작 초전도 물질 |
+| fusion-powerplant | ../../energy/fusion-powerplant/fusion-powerplant.md | 상용 핵융합 발전소 |
+| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 초전도 |
 ## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
 
 ### 5단 체인

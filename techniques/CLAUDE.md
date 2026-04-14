@@ -1,4 +1,4 @@
-# techniques — AI 기법 223종 (222 + SOTA 3)
+# techniques — AI 기법 225종 (222 + SOTA 3)
 
 n=6 완전수 산술로 설계된 AI/ML/DL 기법 전수 라이브러리.
 모든 기법의 하이퍼파라미터가 sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5 에서 유도됨.

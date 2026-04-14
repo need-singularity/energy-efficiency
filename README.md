@@ -87,15 +87,16 @@
 <!-- AUTO:ALIEN_INDEX:START -->
 ### 전체 완성 제품 통합 요약 (products.json SSOT)
 
-> **기준일**: 2026-04-11 (post-session) · **SSOT**: `$NEXUS/shared/n6/docs/products.json`
+> **기준일**: 2026-04-14 · **SSOT**: `$NEXUS/shared/n6/docs/products.json`
 >
-> **집계**: 40 섹션 · 204 제품 · 천장확인 203 · AI지수=10 195
+> **집계**: 40 섹션 · 204 제품 · 천장확인 203 · AI지수=10 **204/204 (100%)** · closure_grade ≥12 제품 58
+> 천장 미도달 1건: 양자컴퓨터 (Quantum Computer)
 
 | # | 섹션 | AI | 제품수 | BT EXACT% | 천장 | 대표 제품 |
 |:--:|---|:--:|:--:|:--:|:--:|---|
 | 1 | 최전선/대발견 | 10 | 39 | 100 | 도달 | HEXA-NEURO 뇌-기계 인터페이스 |
 | 2 | 기술/산업 | 10 | 22 | 100 | 도달 | 반도체 패키징 n=6 적층 래더 |
-| 3 | AI/ML | 10 | 9 | 100 | 도달 | 109 Techniques |
+| 3 | AI/ML | 10 | 9 | 100 | 도달 | 225 Techniques |
 | 4 | 생활/문화 | 10 | 9 | 100 | 도달 | 발효/양조 n=6 완전수 화학양론 |
 | 5 | 오디오 | 10 | 7 | 100 | 도달 | 궁극의 오디오 7단 |
 | 6 | 문명/인문 | 10 | 7 | 100 | 도달 | 종교/신화 n=6 보편 구조 |
@@ -296,7 +297,7 @@ horology               ############################## 100.0%
 | 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401 | [신규모델](domains/compute/ai-efficiency/ai-efficiency.md) |
 
 <details>
-<summary>109 Techniques 전체 목록 (원본 66 + 추가 43)</summary>
+<summary>225 Techniques 전체 목록 (8축: arch 72 / attention 27 / optim 75 / compress 18 / moe 13 / sparse 10 / graph 7 / sota 3)</summary>
 
 | # | Category | Technique | Key | File |
 |---|----------|-----------|-----|------|

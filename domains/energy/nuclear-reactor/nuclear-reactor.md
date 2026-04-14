@@ -81,9 +81,8 @@ HEXA-REACTOR는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를
 
 | 선행 도메인 | 링크 | 역할 |
 |-------------|------|------|
-| thermal-management | ../../energy/thermal-management/thermal-management.md | 선행 도메인 |
-| power-grid | ../../energy/power-grid/power-grid.md | 선행 도메인 |
-
+| thermal-management | ../../energy/thermal-management/thermal-management.md | 열 수송·방열 제어 |
+| power-grid | ../../energy/power-grid/power-grid.md | 고안정 전력망 |
 ## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
 
 ### 5단 체인

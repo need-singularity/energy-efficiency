@@ -1,7 +1,7 @@
 {
   "_doc": "AI 기법 222종 레지스트리. 각 항목은 techniques/<sub>/<name>.hexa 로 실행",
   "_version": "2.0.0",
-  "_total": 244,
+  "_total": 225,
   "_sota_extended": 3,
   "_sota_total": 225,
   "_body_count": 225,
@@ -9,6 +9,7 @@
   "_deprecated_count": 2,
   "_last_updated": "2026-04-14",
   "_changelog": [
+    "2026-04-14: placeholder 20종 _placeholders 로 분리 — attention 1/moe 2/sparse 3/compress 5/arch 9. _total 244→225 정합화, _placeholder_count 20 신설. loop-guard 유령 탐지 0.",
     "2026-04-14: DSE-P0-5 placeholder 22종 등록 — attention 1(paged_attention) + moe 2(soft_moe/glam_moe) + sparse 3(magnitude_prune/sparsegpt/wanda) + compress 5(quant_int4/quant_fp8/awq/gptq/smoothquant) + arch 11(rwkv/hyena/longnet/mega/h3/gla/gss/mixed_precision_arch/n6_arch_{quantum/selforg/adaptive}). _total 222->244. 섹션 태깅 7축(attention/moe/optim/sparse/graph/compress/arch) + 교차섹션 alias 3건(mla/lottery_ticket/kv_quant).",
     "2026-04-12: DFS24 기법 16종 신규 (206→222종 확장) — arch 6종(lstm_cell/gru_cell/tcn_temporal/conv_next/cross_former/mixture_of_formats) + attention 2종(neighborhood_attention/multi_scale_attention) + optim 6종(sophia_optimizer/prodigy_optimizer/group_norm/weight_decay/learning_rate_warmup/mixup_augmentation) + compress 2종(channel_pruning/activation_quantization). _total 206→222, _body_count 209→225",
     "2026-04-12: DFS23 기법 23종 신규 (183→206종 확장) — arch 8종(inception_module/squeeze_excitation/efficientnet_compound/bert_masked_lm/encoder_decoder/spatial_transformer/deformable_conv/depthwise_separable) + attention 3종(performer_favor/sparse_attention/memory_attention) + optim 10종(radam_optimizer/schedule_free/muon_optimizer/gradient_clipping/ema_averaging/batch_norm/layer_norm/dropout_regularization/data_parallel/temperature_scaling) + compress 1종(tensor_decomposition) + sparse 1종(top_k_sparsity). _total 183→206, _body_count 186→209",
@@ -127,8 +128,7 @@
     "sparse_attention",
     "memory_attention",
     "neighborhood_attention",
-    "multi_scale_attention",
-    "paged_attention"
+    "multi_scale_attention"
   ],
   "attention_status": {
     "egyptian_attention": "BODY",
@@ -165,9 +165,7 @@
     "partition_routing",
     "phi_moe",
     "sparse_moe_scaling",
-    "expert_choice_routing",
-    "soft_moe",
-    "glam_moe"
+    "expert_choice_routing"
   ],
   "moe_status": {
     "deepseek_moe": "BODY",
@@ -322,10 +320,7 @@
     "sparse_autoencoder",
     "structured_sparsity",
     "activation_sparsity",
-    "top_k_sparsity",
-    "magnitude_prune",
-    "sparsegpt",
-    "wanda"
+    "top_k_sparsity"
   ],
   "sparse_status": {
     "boltzmann_gate": "BODY",
@@ -362,12 +357,7 @@
     "dynamic_quantization",
     "tensor_decomposition",
     "channel_pruning",
-    "activation_quantization",
-    "quant_int4",
-    "quant_fp8",
-    "awq",
-    "gptq",
-    "smoothquant"
+    "activation_quantization"
   ],
   "compress_status": {
     "phi_bottleneck": "BODY",
@@ -459,16 +449,7 @@
     "cross_former",
     "mixture_of_formats",
     "rwkv",
-    "hyena",
-    "longnet",
-    "mega",
-    "h3",
-    "gla",
-    "gss",
-    "mixed_precision_arch",
-    "n6_arch_quantum",
-    "n6_arch_selforg",
-    "n6_arch_adaptive"
+    "hyena"
   ],
   "arch_status": {
     "complete_llm_n6": "BODY",
@@ -684,5 +665,39 @@
         "added": "2026-04-14"
       }
     ]
-  }
+  },
+  "_placeholders": {
+    "_doc": "DSE-P0-5 등록됐으나 .hexa 파일 미작성. 향후 구현 대기 (2026-04-14 _total 분리).",
+    "attention": [
+      "paged_attention"
+    ],
+    "moe": [
+      "soft_moe",
+      "glam_moe"
+    ],
+    "sparse": [
+      "magnitude_prune",
+      "sparsegpt",
+      "wanda"
+    ],
+    "compress": [
+      "quant_int4",
+      "quant_fp8",
+      "awq",
+      "gptq",
+      "smoothquant"
+    ],
+    "arch": [
+      "longnet",
+      "mega",
+      "h3",
+      "gla",
+      "gss",
+      "mixed_precision_arch",
+      "n6_arch_quantum",
+      "n6_arch_selforg",
+      "n6_arch_adaptive"
+    ]
+  },
+  "_placeholder_count": 20
 }

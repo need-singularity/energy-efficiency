@@ -81,9 +81,8 @@ HEXA-DRAGON는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 
 
 | 선행 도메인 | 링크 | 역할 |
 |-------------|------|------|
-| fusion | ../../energy/fusion/fusion.md | 선행 도메인 |
-| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | 선행 도메인 |
-
+| fusion | ../../energy/fusion/fusion.md | 자기구속 D-T 핵융합 |
+| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | 상온 동작 초전도 물질 |
 ## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
 
 ### 5단 체인

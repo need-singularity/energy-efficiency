@@ -82,10 +82,9 @@ HEXA-ENERGY는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 
 
 | 선행 도메인 | 링크 | 역할 |
 |-------------|------|------|
-| fusion | ../../energy/fusion/fusion.md | 선행 도메인 |
-| superconductor | ../../energy/superconductor/superconductor.md | 선행 도메인 |
-| solar-architecture | ../../energy/solar-architecture/solar-architecture.md | 선행 도메인 |
-
+| fusion | ../../energy/fusion/fusion.md | 자기구속 D-T 핵융합 |
+| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 초전도 |
+| solar-architecture | ../../energy/solar-architecture/solar-architecture.md | 태양광 통합 설계 |
 ## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
 
 ### 5단 체인
