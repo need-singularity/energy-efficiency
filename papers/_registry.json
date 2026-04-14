@@ -2,8 +2,34 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 125,
-    "_count_verified": "2026-04-14 PAPER-P2-1 -- 실측 125 (117 + 8 P2-1 v3/v4 자기조직·진화·승격)",
+    "total_papers": 126,
+    "_count_verified": "2026-04-14 PAPER-P3-3 -- 실측 126 (125 + 1 P3-3 atlas 승격 파이프라인 구현 논문)",
+    "papers_chunk_P3_3_2026-04-14": {
+      "count": 1,
+      "category": "P3 atlas 승격 파이프라인 구현 논문 (구현/실행)",
+      "bt_range": "BT-001~005, BT-380, atlas [7] 40 후보",
+      "status": "PAPER-P3-3 신규 -- 선행 P2-1 방법론 프로토콜의 실제 hexa 스크립트 구현 논문",
+      "target_id_range": "N6-126",
+      "roadmap_ref": "PAPER-P3-3",
+      "papers": [
+        "papers/n6-atlas-promotion-pipeline-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-atlas-promotion-pipeline-paper.md": "BT-001~005, BT-380, atlas [7] 40 후보"
+      },
+      "version_tags": {
+        "pipeline_implementation": ["atlas-promotion-pipeline"]
+      },
+      "verify_code_status": {
+        "hexa_script_reference": "scripts/atlas_promote_7_to_10star.hexa (168 라인 실측)",
+        "dry_run_data": "40 [7] 후보 / 0 승격 / fitness 851 avg / 873 max (P2-2 세션 로그 인용)",
+        "n62_compliance": "본문 §4.3 에 hexa 실구현 발췌 포함"
+      },
+      "safety_design_note": "이중 lock (fitness 컷오프 900 + promoted==candidates 전량 통과) + 수동 승인 최종 관문. 현재 fitness 공식상 BT/MC 최대 873 -> 컷오프 900 구조적 불가 -> 항상 dry-run 귀착 (의도된 설계).",
+      "honest_limitations_note": "§4.4 한계 5건 + §4.5 반증 후보 3건. 실측 데이터만 인용 -- 허구 숫자 금지.",
+      "p3_2_link": "experiments/conjecture_to_10star_20.md (20 후보 리스트, PAPER-P3-2 대응)",
+      "total_lines": 249
+    },
     "papers_chunk_P2_1_2026-04-14": {
       "count": 8,
       "category": "P2 v3/v4 자기조직·진화 설계 + atlas 승격 방법론",

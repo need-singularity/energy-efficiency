@@ -1,0 +1,804 @@
+{
+  "_meta": {
+    "schema": "n6-arch.submission.v1",
+    "generated": "2026-04-14",
+    "roadmap_ref": "PAPER-P3-1",
+    "total_papers_source": 126,
+    "source_note": "랭킹 실행 시점 _papers.json 등재 126편 (N6-001..N6-126). N6-126(atlas-promotion-pipeline)는 score 5.80으로 124위 -- 상위 48 미진입. 원 지침 '125편' 은 P3-3 신규 1편 편입 전 기준.",
+    "top_selected": 48,
+    "score_formula": "alien_index * 0.4 + (closure_grade_pct/10) * 0.3 + (citation_depth/3) * 0.3",
+    "doi_scheme": "10.NEXUS6.n6-arch/YYYY-NNN (YYYY=2026, NNN=001..048)",
+    "doi_disclaimer": "시뮬 DOI -- 실제 CrossRef/DataCite 등록 아님. 내부 참조용.",
+    "venue_pool": [
+      "Nature Communications",
+      "Physical Review Letters",
+      "ICML",
+      "NeurIPS",
+      "JAIR",
+      "IEEE TVLSI"
+    ],
+    "format_status_legend": {
+      "template_ready": "포맷 템플릿만 확정 (본문 논문은 기존 상태 유지)",
+      "draft": "템플릿 + 본문 부분 생성",
+      "submitted_sim": "시뮬 제출 상태"
+    },
+    "venue_distribution": {
+      "Nature Communications": 24,
+      "Physical Review Letters": 6,
+      "IEEE TVLSI": 6,
+      "NeurIPS": 5,
+      "JAIR": 5,
+      "ICML": 2
+    }
+  },
+  "submissions": [
+    {
+      "rank": 1,
+      "paper_id": "N6-032",
+      "file": "n6-dance-choreography-paper.md",
+      "domain": "dance-choreography",
+      "title": "[CANONICAL v2] 궁극의 무용·안무 (HEXA-DANCE-CHOREOGRAP) — n=6 산술 좌표 매핑",
+      "score": 9.566,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 100.0,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-001",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 2,
+      "paper_id": "N6-108",
+      "file": "n6-writing-systems-paper.md",
+      "domain": "writing-systems",
+      "title": "[CANONICAL v2] 궁극의 문자 체계 (HEXA-WRITING-SYSTEMS) — n=6 산술 좌표 매핑",
+      "score": 9.566,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 100.0,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-002",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 3,
+      "paper_id": "N6-106",
+      "file": "n6-wine-enology-paper.md",
+      "domain": "wine-enology",
+      "title": "[CANONICAL v2] 궁극의 와인·양조학 (HEXA-WINE-ENOLOGY) — n=6 산술 좌표 매핑",
+      "score": 9.422,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 95.2,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-003",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 4,
+      "paper_id": "N6-016",
+      "file": "n6-carbon-capture-paper.md",
+      "domain": "carbon-capture",
+      "title": "[CANONICAL v2] 궁극의 탄소 포집 (HEXA-CARBON-CAPTURE) — n=6 산술 좌표 매핑",
+      "score": 9.37,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 100.0,
+        "citation_depth": 23.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-004",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 5,
+      "paper_id": "N6-051",
+      "file": "n6-gravity-wave-paper.md",
+      "domain": "gravity-wave",
+      "title": "[CANONICAL v2] 궁극의 중력파 (HEXA-GRAVITY-WAVE) — n=6 산술 좌표 매핑",
+      "score": 9.026,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-005",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 6,
+      "paper_id": "N6-009",
+      "file": "n6-aquaculture-paper.md",
+      "domain": "aquaculture",
+      "title": "[CANONICAL v2] 궁극의 양식/수산 (HEXA-AQUACULTURE) — n=6 산술 좌표 매핑",
+      "score": 8.57,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 80.0,
+        "citation_depth": 21.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-006",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 7,
+      "paper_id": "N6-025",
+      "file": "n6-consciousness-chip-paper.md",
+      "domain": "consciousness-chip",
+      "title": "[CANONICAL v2] 궁극의 의식 칩 (HEXA-CONSCIOUSNESS-CH) — n=6 산술 좌표 매핑",
+      "score": 8.43,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 19.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-007",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 8,
+      "paper_id": "N6-030",
+      "file": "n6-cryptography-paper.md",
+      "domain": "cryptography",
+      "title": "[CANONICAL v2] 궁극의 암호학 (HEXA-CRYPTOGRAPHY) — n=6 산술 좌표 매핑",
+      "score": 8.366,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 80.0,
+        "citation_depth": 19.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-008",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 9,
+      "paper_id": "N6-068",
+      "file": "n6-horology-paper.md",
+      "domain": "horology",
+      "title": "[CANONICAL v2] 궁극의 시계학 (HEXA-HOROLOGY) — n=6 산술 좌표 매핑",
+      "score": 8.358,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 86.4,
+        "citation_depth": 17.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-009",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 10,
+      "paper_id": "N6-007",
+      "file": "n6-ai-techniques-68-integrated-paper.md",
+      "domain": "ai-techniques-68-integrated",
+      "title": "[CANONICAL v2] 궁극의 AI 68기법 통합 (HEXA-AI-TECHNIQUES-68) — n=6 산술 좌표 매핑",
+      "score": 8.26,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 30.0
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-010",
+      "target_venue": "NeurIPS",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 11,
+      "paper_id": "N6-074",
+      "file": "n6-millennium-dfs-1-12-integrated-paper.md",
+      "domain": "millennium-dfs-1-12-integrated",
+      "title": "[CANONICAL v2] 궁극의 밀레니엄 DFS 1~12 통합 (HEXA-MILLENNIUM-DFS-1) — n=6 산술 좌표 매핑",
+      "score": 8.26,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 30.0
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-011",
+      "target_venue": "JAIR",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 12,
+      "paper_id": "N6-080",
+      "file": "n6-particle-cosmology-paper.md",
+      "domain": "particle-cosmology",
+      "title": "[CANONICAL v2] 궁극의 입자·우주론 (HEXA-PARTICLE-COSMOLO) — n=6 산술 좌표 매핑",
+      "score": 8.26,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 30.0
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-012",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 13,
+      "paper_id": "N6-020",
+      "file": "n6-chip-6stages-integrated-paper.md",
+      "domain": "chip-6stages-integrated",
+      "title": "[CANONICAL v2] 궁극의 칩 6단계 통합 (HEXA-CHIP-6STAGES-INT) — n=6 산술 좌표 매핑",
+      "score": 8.23,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 29.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-013",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 14,
+      "paper_id": "N6-093",
+      "file": "n6-superconductor-paper.md",
+      "domain": "superconductor",
+      "title": "[CANONICAL v2] 궁극의 초전도체 (HEXA-SUPERCONDUCTOR) — n=6 산술 좌표 매핑",
+      "score": 8.226,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 17.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-014",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 15,
+      "paper_id": "N6-027",
+      "file": "n6-construction-structural-paper.md",
+      "domain": "construction-structural",
+      "title": "[CANONICAL v2] 궁극의 건설·구조 (HEXA-CONSTRUCTION-STR) — n=6 산술 좌표 매핑",
+      "score": 8.21,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 88.0,
+        "citation_depth": 27.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-015",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 16,
+      "paper_id": "N6-070",
+      "file": "n6-jurisprudence-paper.md",
+      "domain": "jurisprudence",
+      "title": "[CANONICAL v2] 궁극의 법학 (HEXA-JURISPRUDENCE) — n=6 산술 좌표 매핑",
+      "score": 8.128,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 85.4,
+        "citation_depth": 15.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-016",
+      "target_venue": "JAIR",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 17,
+      "paper_id": "N6-078",
+      "file": "n6-oceanography-paper.md",
+      "domain": "oceanography",
+      "title": "[CANONICAL v2] 궁극의 해양학 (HEXA-OCEANOGRAPHY) — n=6 산술 좌표 매핑",
+      "score": 8.026,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 15.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-017",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 18,
+      "paper_id": "N6-072",
+      "file": "n6-mechanical-engineering-paper.md",
+      "domain": "mechanical-engineering",
+      "title": "[CANONICAL v2] 궁극의 기계공학 (HEXA-MECHANICAL-ENGIN) — n=6 산술 좌표 매핑",
+      "score": 7.991,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 87.5,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-018",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 19,
+      "paper_id": "N6-001",
+      "file": "n6-acoustics-paper.md",
+      "domain": "acoustics",
+      "title": "[CANONICAL v2] 궁극의 음향/파동 (HEXA-ACOUSTICS) — n=6 산술 좌표 매핑",
+      "score": 7.971,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 86.7,
+        "citation_depth": 25.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-019",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 20,
+      "paper_id": "N6-089",
+      "file": "n6-religion-mythology-paper.md",
+      "domain": "religion-mythology",
+      "title": "[CANONICAL v2] 궁극의 종교·신화 (HEXA-RELIGION-MYTHOLO) — n=6 산술 좌표 매핑",
+      "score": 7.967,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 66.7,
+        "citation_depth": 19.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-020",
+      "target_venue": "JAIR",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 21,
+      "paper_id": "N6-079",
+      "file": "n6-optics-paper.md",
+      "domain": "optics",
+      "title": "[CANONICAL v2] 궁극의 광학 (HEXA-OPTICS) — n=6 산술 좌표 매핑",
+      "score": 7.958,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 86.4,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-021",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 22,
+      "paper_id": "N6-076",
+      "file": "n6-network-collective-paper.md",
+      "domain": "network-collective",
+      "title": "[CANONICAL v2] 궁극의 네트워크·집단 (HEXA-NETWORK-COLLECTI) — n=6 산술 좌표 매핑",
+      "score": 7.826,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-022",
+      "target_venue": "NeurIPS",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 23,
+      "paper_id": "N6-100",
+      "file": "n6-topology-paper.md",
+      "domain": "topology",
+      "title": "[CANONICAL v2] 궁극의 위상수학 (HEXA-TOPOLOGY) — n=6 산술 좌표 매핑",
+      "score": 7.826,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 25.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-023",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 24,
+      "paper_id": "N6-069",
+      "file": "n6-hydrology-paper.md",
+      "domain": "hydrology",
+      "title": "[CANONICAL v2] 궁극의 수문학 (HEXA-HYDROLOGY) — n=6 산술 좌표 매핑",
+      "score": 7.782,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 87.2,
+        "citation_depth": 23.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-024",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 25,
+      "paper_id": "N6-081",
+      "file": "n6-performance-chip-paper.md",
+      "domain": "performance-chip",
+      "title": "[CANONICAL v2] 궁극의 고성능 칩 (HEXA-PERFORMANCE-CHIP) — n=6 산술 좌표 매핑",
+      "score": 7.626,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 23.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-025",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 26,
+      "paper_id": "N6-075",
+      "file": "n6-music-theory-paper.md",
+      "domain": "music-theory",
+      "title": "[CANONICAL v2] 궁극의 음악이론 (HEXA-MUSIC-THEORY) — n=6 산술 좌표 매핑",
+      "score": 7.606,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 88.0,
+        "citation_depth": 21.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-026",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 27,
+      "paper_id": "N6-004",
+      "file": "n6-agi-architecture-paper.md",
+      "domain": "agi-architecture",
+      "title": "[CANONICAL v2] 궁극의 AGI 아키텍처 (HEXA-AGI-ARCHITECTURE) — n=6 산술 좌표 매핑",
+      "score": 7.496,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.96
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-027",
+      "target_venue": "ICML",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 28,
+      "paper_id": "N6-002",
+      "file": "n6-advanced-packaging-paper.md",
+      "domain": "advanced-packaging",
+      "title": "[CANONICAL v2] 궁극의 첨단 패키징 (HEXA-ADVANCED-PACKAGI) — n=6 산술 좌표 매핑",
+      "score": 7.47,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-028",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 29,
+      "paper_id": "N6-003",
+      "file": "n6-aerospace-transport-paper.md",
+      "domain": "aerospace-transport",
+      "title": "[CANONICAL v2] 궁극의 우주항공/수송 (HEXA-AEROSPACE-TRANSP) — n=6 산술 좌표 매핑",
+      "score": 7.47,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-029",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 30,
+      "paper_id": "N6-010",
+      "file": "n6-archaeology-paper.md",
+      "domain": "archaeology",
+      "title": "[CANONICAL v2] 궁극의 고고학 (HEXA-ARCHAEOLOGY) — n=6 산술 좌표 매핑",
+      "score": 7.47,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-030",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 31,
+      "paper_id": "N6-012",
+      "file": "n6-autonomous-driving-paper.md",
+      "domain": "autonomous-driving",
+      "title": "[CANONICAL v2] 궁극의 자율주행 (HEXA-AUTONOMOUS-DRIVI) — n=6 산술 좌표 매핑",
+      "score": 7.47,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-031",
+      "target_venue": "NeurIPS",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 32,
+      "paper_id": "N6-013",
+      "file": "n6-battery-energy-storage-paper.md",
+      "domain": "battery-energy-storage",
+      "title": "[CANONICAL v2] 궁극의 배터리·에너지 저장 (HEXA-BATTERY-ENERGY-S) — n=6 산술 좌표 매핑",
+      "score": 7.469,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 83.3,
+        "citation_depth": 21.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-032",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 33,
+      "paper_id": "N6-034",
+      "file": "n6-dolphin-bioacoustics-paper.md",
+      "domain": "dolphin-bioacoustics",
+      "title": "[CANONICAL v2] 궁극의 돌고래 생체음향 (HEXA-DOLPHIN-BIOACOUS) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-033",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 34,
+      "paper_id": "N6-036",
+      "file": "n6-ecology-agriculture-food-paper.md",
+      "domain": "ecology-agriculture-food",
+      "title": "[CANONICAL v2] 궁극의 생태·농업·식품 (HEXA-ECOLOGY-AGRICULT) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-034",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 35,
+      "paper_id": "N6-038",
+      "file": "n6-economics-finance-paper.md",
+      "domain": "economics-finance",
+      "title": "[CANONICAL v2] 궁극의 경제·금융 (HEXA-ECONOMICS-FINANC) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-035",
+      "target_venue": "JAIR",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 36,
+      "paper_id": "N6-043",
+      "file": "n6-fermentation-paper.md",
+      "domain": "fermentation",
+      "title": "[CANONICAL v2] 궁극의 발효 (HEXA-FERMENTATION) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-036",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 37,
+      "paper_id": "N6-050",
+      "file": "n6-governance-safety-urban-paper.md",
+      "domain": "governance-safety-urban",
+      "title": "[CANONICAL v2] 궁극의 거버넌스·안전·도시 (HEXA-GOVERNANCE-SAFET) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-037",
+      "target_venue": "JAIR",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 38,
+      "paper_id": "N6-059",
+      "file": "n6-hexa-neuro-paper.md",
+      "domain": "hexa-neuro",
+      "title": "[CANONICAL v2] 궁극의 neuro (HEXA-HEXA-NEURO) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-038",
+      "target_venue": "NeurIPS",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 39,
+      "paper_id": "N6-065",
+      "file": "n6-hexa-telepathy-paper.md",
+      "domain": "hexa-telepathy",
+      "title": "[CANONICAL v2] 궁극의 telepathy (HEXA-HEXA-TELEPATHY) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-039",
+      "target_venue": "ICML",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 40,
+      "paper_id": "N6-071",
+      "file": "n6-manufacturing-quality-paper.md",
+      "domain": "manufacturing-quality",
+      "title": "[CANONICAL v2] 궁극의 제조 품질 (HEXA-MANUFACTURING-QU) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-040",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 41,
+      "paper_id": "N6-077",
+      "file": "n6-neuromorphic-computing-paper.md",
+      "domain": "neuromorphic-computing",
+      "title": "[CANONICAL v2] 궁극의 뉴로모픽 컴퓨팅 (HEXA-NEUROMORPHIC-COM) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-041",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 42,
+      "paper_id": "N6-084",
+      "file": "n6-pure-mathematics-paper.md",
+      "domain": "pure-mathematics",
+      "title": "[CANONICAL v2] 궁극의 순수수학 (HEXA-PURE-MATHEMATICS) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-042",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 43,
+      "paper_id": "N6-085",
+      "file": "n6-quantum-computing-paper.md",
+      "domain": "quantum-computing",
+      "title": "[CANONICAL v2] 궁극의 양자컴퓨팅 (HEXA-QUANTUM-COMPUTIN) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-043",
+      "target_venue": "Physical Review Letters",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 44,
+      "paper_id": "N6-095",
+      "file": "n6-synthetic-biology-paper.md",
+      "domain": "synthetic-biology",
+      "title": "[CANONICAL v2] 궁극의 합성생물학 (HEXA-SYNTHETIC-BIOLOG) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-044",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 45,
+      "paper_id": "N6-096",
+      "file": "n6-telecom-linguistics-paper.md",
+      "domain": "telecom-linguistics",
+      "title": "[CANONICAL v2] 궁극의 통신·언어학 (HEXA-TELECOM-LINGUIST) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-045",
+      "target_venue": "NeurIPS",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 46,
+      "paper_id": "N6-098",
+      "file": "n6-therapeutic-nanobot-paper.md",
+      "domain": "therapeutic-nanobot",
+      "title": "[CANONICAL v2] 궁극의 치료용 나노봇 (HEXA-THERAPEUTIC-NANO) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-046",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 47,
+      "paper_id": "N6-102",
+      "file": "n6-virology-structure-paper.md",
+      "domain": "virology-structure",
+      "title": "[CANONICAL v2] 궁극의 바이러스 구조학 (HEXA-VIROLOGY-STRUCTU) — n=6 산술 좌표 매핑",
+      "score": 7.466,
+      "components": {
+        "alien_index": 10,
+        "closure_grade_pct": 70.0,
+        "citation_depth": 13.66
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-047",
+      "target_venue": "Nature Communications",
+      "format_status": "template_ready"
+    },
+    {
+      "rank": 48,
+      "paper_id": "N6-021",
+      "file": "n6-chip-design-ladder-paper.md",
+      "domain": "chip-design-ladder",
+      "title": "[CANONICAL v2] 궁극의 칩 설계 사다리 (HEXA-CHIP-DESIGN-LADD) — n=6 산술 좌표 매핑",
+      "score": 7.43,
+      "components": {
+        "alien_index": 7,
+        "closure_grade_pct": 82.0,
+        "citation_depth": 21.7
+      },
+      "doi_sim": "10.NEXUS6.n6-arch/2026-048",
+      "target_venue": "IEEE TVLSI",
+      "format_status": "template_ready"
+    }
+  ]
+}

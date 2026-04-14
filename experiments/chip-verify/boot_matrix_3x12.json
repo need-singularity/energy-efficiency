@@ -1,0 +1,79 @@
+{
+  "experiment": "CHIP-P3-3",
+  "title": "3 칩 × 12 프로토콜 부트 매트릭스 시뮬",
+  "date": "2026-04-14",
+  "seed": 42,
+  "simulation_only": true,
+  "note": "실제 하드웨어 부트 없음 — LCG(seed=42) 재현가능 휴리스틱 시뮬",
+  "chips": ["ANIMA-SOC", "HEXA-TOPO", "HEXA-ASIC"],
+  "protocols": ["6G", "5G", "WiFi6", "Starlink", "LoRaWAN", "BT6.0", "PCIe", "USB", "NVMe", "Ethernet", "DisplayPort", "HDMI"],
+  "total_cells": 36,
+  "pass_cells": 34,
+  "pass_pct": 94.4,
+  "threshold": "5/6 = 30/36",
+  "status": "pass",
+  "averages": {
+    "latency_ns": 2225,
+    "throughput_gbps": 55
+  },
+  "per_chip_pass": {
+    "ANIMA-SOC": 12,
+    "HEXA-TOPO": 10,
+    "HEXA-ASIC": 12
+  },
+  "per_grade": {
+    "EXACT": 7,
+    "NEAR": 14,
+    "EMPIRICAL": 15
+  },
+  "best": {
+    "throughput": {"chip": "ANIMA-SOC", "proto": "6G", "latency_ns": 111, "throughput_gbps": 435, "grade": "EXACT"},
+    "latency": {"chip": "HEXA-ASIC", "proto": "PCIe", "latency_ns": 28, "throughput_gbps": 99, "grade": "EXACT"}
+  },
+  "worst": {
+    "throughput": {"chip": "HEXA-TOPO", "proto": "BT6.0", "latency_ns": 3605, "throughput_gbps": 1, "grade": "EMPIRICAL"},
+    "latency": {"chip": "ANIMA-SOC", "proto": "LoRaWAN", "latency_ns": 14403, "throughput_gbps": 2, "grade": "EMPIRICAL"}
+  },
+  "fail_cells": [
+    {"chip": "HEXA-TOPO", "proto": "Starlink", "reason": "NoC 윈도우 초과 — 우주 왕복 지연 > Bott-8 토러스 주기"},
+    {"chip": "HEXA-TOPO", "proto": "LoRaWAN", "reason": "NoC 주파수 불일치 — 저속 장거리 RF 미지원"}
+  ],
+  "cells": [
+    {"chip": "ANIMA-SOC", "proto": "6G", "boot": 1, "latency_ns": 111, "throughput_gbps": 435, "grade": "EXACT"},
+    {"chip": "ANIMA-SOC", "proto": "5G", "boot": 1, "latency_ns": 215, "throughput_gbps": 37, "grade": "EXACT"},
+    {"chip": "ANIMA-SOC", "proto": "WiFi6", "boot": 1, "latency_ns": 416, "throughput_gbps": 22, "grade": "EXACT"},
+    {"chip": "ANIMA-SOC", "proto": "Starlink", "boot": 1, "latency_ns": 8004, "throughput_gbps": 9, "grade": "NEAR"},
+    {"chip": "ANIMA-SOC", "proto": "LoRaWAN", "boot": 1, "latency_ns": 14403, "throughput_gbps": 2, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "BT6.0", "boot": 1, "latency_ns": 3011, "throughput_gbps": 3, "grade": "NEAR"},
+    {"chip": "ANIMA-SOC", "proto": "PCIe", "boot": 1, "latency_ns": 38, "throughput_gbps": 33, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "USB", "boot": 1, "latency_ns": 91, "throughput_gbps": 20, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "NVMe", "boot": 1, "latency_ns": 57, "throughput_gbps": 18, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "Ethernet", "boot": 1, "latency_ns": 144, "throughput_gbps": 27, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "DisplayPort", "boot": 1, "latency_ns": 119, "throughput_gbps": 44, "grade": "EMPIRICAL"},
+    {"chip": "ANIMA-SOC", "proto": "HDMI", "boot": 1, "latency_ns": 89, "throughput_gbps": 24, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "6G", "boot": 1, "latency_ns": 150, "throughput_gbps": 144, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "5G", "boot": 1, "latency_ns": 297, "throughput_gbps": 14, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "WiFi6", "boot": 1, "latency_ns": 578, "throughput_gbps": 6, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "Starlink", "boot": 0, "latency_ns": 9608, "throughput_gbps": 6, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "LoRaWAN", "boot": 0, "latency_ns": 14403, "throughput_gbps": 3, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "BT6.0", "boot": 1, "latency_ns": 3605, "throughput_gbps": 1, "grade": "EMPIRICAL"},
+    {"chip": "HEXA-TOPO", "proto": "PCIe", "boot": 1, "latency_ns": 30, "throughput_gbps": 100, "grade": "EXACT"},
+    {"chip": "HEXA-TOPO", "proto": "USB", "boot": 1, "latency_ns": 74, "throughput_gbps": 42, "grade": "NEAR"},
+    {"chip": "HEXA-TOPO", "proto": "NVMe", "boot": 1, "latency_ns": 41, "throughput_gbps": 49, "grade": "EXACT"},
+    {"chip": "HEXA-TOPO", "proto": "Ethernet", "boot": 1, "latency_ns": 108, "throughput_gbps": 72, "grade": "EXACT"},
+    {"chip": "HEXA-TOPO", "proto": "DisplayPort", "boot": 1, "latency_ns": 98, "throughput_gbps": 83, "grade": "NEAR"},
+    {"chip": "HEXA-TOPO", "proto": "HDMI", "boot": 1, "latency_ns": 73, "throughput_gbps": 49, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "6G", "boot": 1, "latency_ns": 128, "throughput_gbps": 290, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "5G", "boot": 1, "latency_ns": 246, "throughput_gbps": 27, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "WiFi6", "boot": 1, "latency_ns": 486, "throughput_gbps": 15, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "Starlink", "boot": 1, "latency_ns": 8011, "throughput_gbps": 9, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "LoRaWAN", "boot": 1, "latency_ns": 12012, "throughput_gbps": 4, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "BT6.0", "boot": 1, "latency_ns": 3012, "throughput_gbps": 6, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "PCIe", "boot": 1, "latency_ns": 28, "throughput_gbps": 99, "grade": "EXACT"},
+    {"chip": "HEXA-ASIC", "proto": "USB", "boot": 1, "latency_ns": 76, "throughput_gbps": 40, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "NVMe", "boot": 1, "latency_ns": 51, "throughput_gbps": 34, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "Ethernet", "boot": 1, "latency_ns": 132, "throughput_gbps": 48, "grade": "NEAR"},
+    {"chip": "HEXA-ASIC", "proto": "DisplayPort", "boot": 1, "latency_ns": 94, "throughput_gbps": 122, "grade": "EXACT"},
+    {"chip": "HEXA-ASIC", "proto": "HDMI", "boot": 1, "latency_ns": 79, "throughput_gbps": 50, "grade": "NEAR"}
+  ]
+}

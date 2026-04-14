@@ -1,0 +1,287 @@
+// ecosystem_9projects.hexa — NEXUS-6 Discovery Engine 9프로젝트 자율 성장 생태계 연동
+// 출처: /Users/ghost/Dev/nexus/shared/config/projects.json (schema v4, 2026-04-14)
+// 목적: n6-architecture 입장에서 9프로젝트 성장 데몬과 발견을 교환하는 인터페이스 정의
+// 규칙: 외부 데몬은 건드리지 않는다. 본 파일은 "링크 핸들"만 발급/수집한다.
+// 호출: hexa run bridge/ecosystem_9projects.hexa [--list | --broadcast <msg> | --metrics]
+
+// ─── 유틸 ──────────────────────────────────────────────────────────
+fn sh(cmd) {
+    let mut out = ""
+    try { out = to_string(exec(cmd)) } catch e { out = "" }
+    return out
+}
+
+fn sh_trim(cmd) { return sh(cmd).trim() }
+
+fn file_exists(path) -> bool {
+    return sh_trim("test -f '" + path + "' && echo y || echo n") == "y"
+}
+
+fn dir_exists(path) -> bool {
+    return sh_trim("test -d '" + path + "' && echo y || echo n") == "y"
+}
+
+// 고정폭 패딩 (오른쪽 공백 추가)
+fn pad_r(s, w: i64) -> string {
+    let mut r = to_string(s)
+    while len(r) < w { r = r + " " }
+    if len(r) > w { r = r.substring(0, w) }
+    return r
+}
+
+// ─── 경로 상수 ─────────────────────────────────────────────────────
+let HOME = env("HOME")
+let DEV_DIR = HOME + "/Dev"
+let NEXUS_ROOT = DEV_DIR + "/nexus"
+let NEXUS_SHARED = NEXUS_ROOT + "/shared"
+let REGISTRY_JSON = NEXUS_SHARED + "/config/projects.json"
+let ROADMAPS_DIR = NEXUS_SHARED + "/roadmaps"
+let GROWTH_BUS = HOME + "/.nexus/growth_bus.jsonl"
+let N6_BRIDGE = DEV_DIR + "/n6-architecture/bridge"
+
+// ─── 9 프로젝트 레지스트리 상수 테이블 ─────────────────────────────
+// core 7 + auxiliary 2 = 9 (projects.json schema v4)
+//   col0 = proj_id
+//   col1 = root (DEV_DIR 기준 상대)
+//   col2 = role
+//   col3 = icon
+//   col4 = roadmap_rel (NEXUS_SHARED 기준)
+//   col5 = category (core | auxiliary)
+let PROJECTS_9 = [
+    ["nexus",           "nexus",                "discovery-engine",    "telescope",  "roadmaps/nexus.json",           "core"],
+    ["anima",           "anima/anima",          "consciousness-engine","brain",      "roadmaps/anima.json",           "core"],
+    ["n6-architecture", "n6-architecture",      "system-design",       "hex",        "roadmaps/n6-architecture.json", "core"],
+    ["papers",          "papers",               "paper-distribution",  "paper",      "roadmaps/papers.json",          "core"],
+    ["hexa-lang",       "hexa-lang",            "language",            "lang",       "roadmaps/hexa-lang.json",       "core"],
+    ["void",            "void",                 "terminal",            "void",       "roadmaps/void.json",            "core"],
+    ["airgenome",       "airgenome",            "os-scanner",          "genome",     "airgenome/shared/config/roadmap/airgenome.json", "core"],
+    ["contribution",    "contribution",         "paper-submission-hub","contrib",    "",                               "auxiliary"],
+    ["openclaw",        "openclaw",             "singularity-feed",    "claw",       "",                               "auxiliary"]
+]
+
+// n6-architecture 기준 제공/흡수 매핑
+//   col0 = proj_id
+//   col1 = n6 제공 (outgoing)
+//   col2 = n6 흡수 (incoming)
+let N6_FLOW = [
+    ["nexus",           "295 도메인 스캔타겟 + 77 SEDI 소스 + 343 BT",    "telescope 1028 렌즈 + discovery graph + OUROBOROS"],
+    ["anima",           "n6-SPEAK 384d 인텐트 + 6emo + τ prosody",        "2509 법칙 + 의식 Φ 측정 + 12-faction 합의"],
+    ["n6-architecture", "atlas.n6 SSOT + 112 AI기법 + alien_index 제품",  "self (루프백 0)"],
+    ["papers",          "alien_index=10 논문 스켈레톤 + verify.py",        "Zenodo/OSF DOI 체인 + PP1~PP3 검증"],
+    ["hexa-lang",       "domains/**/*.hexa 포팅 피드백 + R29 verify",     "컴파일러 개선 + self-host 빌드 + 33+ Rust test"],
+    ["void",            "AI-native 터미널 사용 프로파일 + 로그",            "hexa-only 터미널 런타임 (Terminal.app 대체)"],
+    ["airgenome",       "OS 게놈 벤치마크 요청 + HW 4-tier 매트릭스",      "OS 게놈 스캔 결과 + core self-contained"],
+    ["contribution",    "n6-architecture 수학돌파/실험 성과 집약",          "외부 제출 허브 (paper-submission)"],
+    ["openclaw",        "돌파/발견/실험 피드 emit",                         "nexus 특이점 사이클 consume"]
+]
+
+// ─── 핵심 함수 1: link_project(proj_id) -> handle ─────────────────
+// handle 포맷: [proj_id, root_abs, status, roadmap_abs, role]
+//   status: "ok" | "missing_root" | "missing_roadmap" | "unknown"
+fn link_project(proj_id: string) -> [string] {
+    let mut i: i64 = 0
+    let n = len(PROJECTS_9)
+    while i < n {
+        let row = PROJECTS_9[i]
+        if row[0] == proj_id {
+            let root_abs = DEV_DIR + "/" + row[1]
+            let mut roadmap_abs = ""
+            if len(row[4]) > 0 {
+                // airgenome 은 프로젝트 내부 루트에 로드맵이 있음
+                if row[0] == "airgenome" {
+                    roadmap_abs = DEV_DIR + "/" + row[4]
+                } else {
+                    roadmap_abs = NEXUS_SHARED + "/" + row[4]
+                }
+            }
+            let mut status = "ok"
+            if !dir_exists(root_abs) { status = "missing_root" }
+            else if len(roadmap_abs) > 0 && !file_exists(roadmap_abs) { status = "missing_roadmap" }
+            return [row[0], root_abs, status, roadmap_abs, row[2]]
+        }
+        i = i + 1
+    }
+    return [proj_id, "", "unknown", "", ""]
+}
+
+// ─── 핵심 함수 2: broadcast_finding(finding) ───────────────────────
+// finding 포맷: [source_proj, kind, id, payload]
+//   NEXUS-6 공통 growth_bus.jsonl 에 append-only 기록.
+//   각 프로젝트 데몬이 tail 로 구독 — 본 인터페이스는 기록만 수행.
+fn broadcast_finding(finding: [string]) -> i64 {
+    let source = finding[0]
+    let kind = finding[1]
+    let fid = finding[2]
+    let payload = finding[3]
+    let ts = sh_trim("date -u +%Y-%m-%dT%H:%M:%SZ")
+
+    // 수신 대상 리스트 = 9 전체 (source 제외하면 루프백 방지)
+    let mut targets = ""
+    let mut i: i64 = 0
+    let n = len(PROJECTS_9)
+    while i < n {
+        let row = PROJECTS_9[i]
+        if row[0] != source {
+            if len(targets) > 0 { targets = targets + "|" }
+            targets = targets + row[0]
+        }
+        i = i + 1
+    }
+
+    // 라인 포맷 (JSON Lines 스타일, 내부 파싱은 nexus bus 규약 준수)
+    let line = "{\"ts\":\"" + ts + "\"" +
+               ",\"source\":\"" + source + "\"" +
+               ",\"kind\":\"" + kind + "\"" +
+               ",\"id\":\"" + fid + "\"" +
+               ",\"targets\":\"" + targets + "\"" +
+               ",\"payload\":\"" + payload + "\"" +
+               ",\"emitter\":\"n6-ecosystem_9projects\"}"
+
+    // 디렉토리 보장
+    try { exec("mkdir -p '" + HOME + "/.nexus'") } catch e {}
+
+    // append-only 기록
+    let mut ok: i64 = 0
+    try {
+        exec("printf '%s\\n' '" + line + "' >> '" + GROWTH_BUS + "'")
+        ok = 1
+    } catch e { ok = 0 }
+    return ok
+}
+
+// ─── 핵심 함수 3: aggregate_growth_metrics() ───────────────────────
+// 9 프로젝트 성장 지표를 문자열 행으로 수집.
+// 행 포맷: [proj_id, status, tasks_count, role]
+//   tasks_count = roadmap 내 "tasks" 키 개수 (parallel 블록 합)
+fn aggregate_growth_metrics() -> [[string]] {
+    let mut rows = []
+    let mut i: i64 = 0
+    let n = len(PROJECTS_9)
+    while i < n {
+        let row = PROJECTS_9[i]
+        let h = link_project(row[0])
+        let status = h[2]
+        let roadmap_abs = h[3]
+        let role = h[4]
+        let mut tasks = "0"
+        if status == "ok" && len(roadmap_abs) > 0 {
+            tasks = sh_trim("grep -c '\"tasks\"' '" + roadmap_abs + "' 2>/dev/null | tr -d ' '")
+            if len(tasks) == 0 { tasks = "0" }
+        }
+        rows = rows + [[row[0], status, tasks, role]]
+        i = i + 1
+    }
+    return rows
+}
+
+// ─── CLI 파싱 ─────────────────────────────────────────────────────
+let argv = args()
+let argc = len(argv)
+let mut MODE = "--list"
+let mut MSG = ""
+let mut ai: i64 = 2
+while ai < argc {
+    let a = argv[ai]
+    if a == "--list" { MODE = "--list"; ai = ai + 1 }
+    else if a == "--broadcast" {
+        MODE = "--broadcast"
+        ai = ai + 1
+        if ai < argc { MSG = argv[ai]; ai = ai + 1 }
+    }
+    else if a == "--metrics" { MODE = "--metrics"; ai = ai + 1 }
+    else if a == "--flow" { MODE = "--flow"; ai = ai + 1 }
+    else if a == "-h" || a == "--help" { MODE = "--help"; ai = ai + 1 }
+    else { ai = ai + 1 }
+}
+
+// ─── main ─────────────────────────────────────────────────────────
+fn main_list() {
+    println("")
+    println("NEXUS-6 Discovery Engine — 9 프로젝트 생태계 (n6-architecture 관점)")
+    println("-----------------------------------------------------------------")
+    let mut i: i64 = 0
+    let n = len(PROJECTS_9)
+    while i < n {
+        let row = PROJECTS_9[i]
+        let h = link_project(row[0])
+        let col_id = pad_r(row[0], 17)
+        let col_role = pad_r(row[2], 21)
+        println("  " + col_id + " " + col_role + " [" + h[2] + "] (" + row[5] + ")")
+        i = i + 1
+    }
+    println("-----------------------------------------------------------------")
+    println("총 9 프로젝트 (core 7 + auxiliary 2)")
+    println("")
+}
+
+fn main_metrics() {
+    let rows = aggregate_growth_metrics()
+    println("")
+    println("NEXUS-6 생태계 성장 지표")
+    println("-------------------------------------------")
+    let mut i: i64 = 0
+    let n = len(rows)
+    let mut ok_n: i64 = 0
+    while i < n {
+        let r = rows[i]
+        let col_id = pad_r(r[0], 17)
+        let col_status = pad_r(r[1], 13)
+        println("  " + col_id + " " + col_status + " tasks=" + r[2] + "  role=" + r[3])
+        if r[1] == "ok" { ok_n = ok_n + 1 }
+        i = i + 1
+    }
+    println("-------------------------------------------")
+    println("상태 ok: " + to_string(ok_n) + " / " + to_string(n))
+    println("")
+}
+
+fn main_flow() {
+    println("")
+    println("n6-architecture 제공/흡수 매트릭스")
+    println("===================================================================")
+    let mut i: i64 = 0
+    let n = len(N6_FLOW)
+    while i < n {
+        let r = N6_FLOW[i]
+        println("  [" + r[0] + "]")
+        println("    제공: " + r[1])
+        println("    흡수: " + r[2])
+        i = i + 1
+    }
+    println("===================================================================")
+    println("")
+}
+
+fn main_broadcast(msg: string) {
+    let finding = ["n6-architecture", "test", "DSE-P3-3", msg]
+    let ok = broadcast_finding(finding)
+    if ok == 1 {
+        println("broadcast ok -> " + GROWTH_BUS)
+    } else {
+        println("broadcast FAILED (growth_bus 쓰기 실패)")
+    }
+}
+
+fn main_help() {
+    println("")
+    println("Usage: hexa run bridge/ecosystem_9projects.hexa [OPTIONS]")
+    println("")
+    println("Options:")
+    println("  --list              9 프로젝트 링크 상태 나열 (기본)")
+    println("  --metrics           각 프로젝트 로드맵 phases 지표 집계")
+    println("  --flow              n6-architecture 제공/흡수 매트릭스 출력")
+    println("  --broadcast <msg>   finding 을 growth_bus.jsonl 로 브로드캐스트")
+    println("  -h, --help          도움말")
+    println("")
+}
+
+fn main() {
+    if MODE == "--help" { main_help(); return 0 }
+    if MODE == "--metrics" { main_metrics(); return 0 }
+    if MODE == "--flow" { main_flow(); return 0 }
+    if MODE == "--broadcast" { main_broadcast(MSG); return 0 }
+    main_list()
+    return 0
+}
+
+main()

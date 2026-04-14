@@ -125,5 +125,28 @@
     "new_dp_exact": 45,
     "new_dp_empirical": 8,
     "new_exact_ratio": "84.9%"
+  },
+  "certificates": {
+    "_meta": {
+      "source": "CHIP-P3-2",
+      "issued": "2026-04-14",
+      "issuer": "NEXUS-6 Discovery Engine Validator",
+      "sigma_coverage": "12 / 12 COMPLETE",
+      "catalog": "./certificates/_catalog.md"
+    },
+    "slots": [
+      { "slot": 1,  "proto": "6G",          "file": "./certificates/6g_cert.md",          "grade": "EXACT",          "status": "PASS" },
+      { "slot": 2,  "proto": "5G_NR",       "file": "./certificates/5g_nr_cert.md",       "grade": "EXACT",          "status": "PASS" },
+      { "slot": 3,  "proto": "WiFi6",       "file": "./certificates/wifi6_cert.md",       "grade": "EXACT",          "status": "PASS" },
+      { "slot": 4,  "proto": "Starlink",    "file": "./certificates/starlink_cert.md",    "grade": "EXACT",          "status": "PASS" },
+      { "slot": 5,  "proto": "LoRaWAN",     "file": "./certificates/lorawan_cert.md",     "grade": "EXACT",          "status": "PASS" },
+      { "slot": 6,  "proto": "BT_6.0",      "file": "./certificates/bt6_0_cert.md",       "grade": "EXACT",          "status": "PASS" },
+      { "slot": 7,  "proto": "PCIe",        "file": "./certificates/pcie_cert.md",        "grade": "EXACT-dominant", "dp": "8/8",   "status": "PASS" },
+      { "slot": 8,  "proto": "USB",         "file": "./certificates/usb_cert.md",         "grade": "EXACT-dominant", "dp": "11/11", "status": "PASS" },
+      { "slot": 9,  "proto": "NVMe",        "file": "./certificates/nvme_cert.md",        "grade": "EXACT-dominant", "dp": "10/11", "status": "PASS" },
+      { "slot": 10, "proto": "Ethernet",    "file": "./certificates/ethernet_cert.md",    "grade": "EXACT-dominant", "dp": "9/11",  "status": "PASS" },
+      { "slot": 11, "proto": "DisplayPort", "file": "./certificates/displayport_cert.md", "grade": "EXACT-majority", "dp": "7/11",  "status": "PASS" },
+      { "slot": 12, "proto": "HDMI",        "file": "./certificates/hdmi_cert.md",        "grade": "EXACT-dominant", "dp": "10/11", "status": "PASS" }
+    ]
   }
 }

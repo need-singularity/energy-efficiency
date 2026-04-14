@@ -1,0 +1,202 @@
+// arch_unified.hexa -- 4모드 통합 아키텍처 DSE v1+v2+v3+v4 (P3-1)
+//
+// 포팅 상태: BODY (의존 없음 -- 순수 정수 연산, parse 검증만)
+// 아이디어 (DSE-P3-1):
+//   - v1 INDUSTRIAL (산업실증): 170 chip-architecture + 50 network-protocol EXACT 목표
+//   - v2 QUANTUM (양자중첩): arch_quantum.hexa 의 superposition → collapse 파이프
+//   - v3 SELFORG (자기조직): arch_selforg.hexa 의 6부품 창발 assembly
+//   - v4 ADAPTIVE (진화적응): arch_adaptive.hexa 의 세대 fitness 선발
+//
+// 통합 원리:
+//   - 단일 오케스트레이터가 환경(input_env)에 따라 모드 선택
+//   - 2 모드 혼합 (fuse_modes) 으로 hybrid 파이프 구성 가능
+//   - 각 모드는 stub 호출 (원본 엔진 외부 import 없음 → parse 자립)
+//   - 결과는 0~1000 SCALE 정수 score 로 통일
+//
+// 정직 검증:
+//   - stub score 는 n=6 상수(sigma=12, tau=4, phi=2, sopfr=5)에서만 유도
+//   - 자기참조 금지, 모드별 편향 없음
+//   - parse 통과 = 구문 정합성, runtime 미검증 (runtime.c 누락)
+//
+// 실행: hexa parse /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa
+// 규칙: R1 HEXA-FIRST, R18 미니멀, N61 한글
+
+// ── n=6 산술 (정의에서 도출) ───────────────────────────────
+
+fn sigma(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut i: i64 = 1
+    while i <= n { if n % i == 0 { s = s + i } i = i + 1 }
+    return s
+}
+fn tau(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut i: i64 = 1
+    while i <= n { if n % i == 0 { c = c + 1 } i = i + 1 }
+    return c
+}
+fn phi(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        let mut a: i64 = k
+        let mut b: i64 = n
+        while b != 0 { let t: i64 = a % b; a = b; b = t }
+        if a == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+fn sopfr(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut rem: i64 = n
+    let mut d: i64 = 2
+    while d <= rem {
+        while rem % d == 0 { s = s + d; rem = rem / d }
+        d = d + 1
+    }
+    return s
+}
+fn abs_val(x: i64) -> i64 { if x < 0 { return 0 - x } return x }
+
+const SCALE: i64 = 1000
+
+// ── 모드 enum (정수 코드로 표현) ───────────────────────────
+// INDUSTRIAL=1, QUANTUM=2, SELFORG=3, ADAPTIVE=4
+const MODE_INDUSTRIAL: i64 = 1
+const MODE_QUANTUM: i64 = 2
+const MODE_SELFORG: i64 = 3
+const MODE_ADAPTIVE: i64 = 4
+
+// ── 환경 입력 해석 ────────────────────────────────────────
+// input_env 3필드 정수 팩:
+//   env_certainty (0~1000): 0=불확실(양자), 1000=확정(산업)
+//   env_drift     (0~1000): 0=정적(자기조직), 1000=동적(진화)
+//   env_scale     (0~1000): 0=국소(양자), 1000=대규모(산업)
+//
+// select_mode 규칙 (의사결정 표):
+//   certainty >= 750 & scale >= 750      -> INDUSTRIAL (v1, 확정대규모)
+//   certainty <  500                     -> QUANTUM    (v2, 불확실)
+//   drift     <  400                     -> SELFORG    (v3, 정적창발)
+//   그 외                                 -> ADAPTIVE   (v4, 동적진화)
+
+fn select_mode(env_certainty: i64, env_drift: i64, env_scale: i64) -> i64 {
+    if env_certainty >= 750 {
+        if env_scale >= 750 { return MODE_INDUSTRIAL }
+    }
+    if env_certainty < 500 { return MODE_QUANTUM }
+    if env_drift < 400 { return MODE_SELFORG }
+    return MODE_ADAPTIVE
+}
+
+// ── 모드별 stub 파이프라인 ────────────────────────────────
+// 각 stub 은 n=6 상수 정렬 거리에서만 score 를 유도.
+// 외부 엔진 호출 없이 parse 자립. runtime 은 추후 연결.
+
+// v1 산업실증 stub: 170+50=220 EXACT 목표, score 는 sigma(6)*tau(6)=48 기반
+fn pipe_industrial(input: i64) -> i64 {
+    let base: i64 = sigma(6) * tau(6)  // 12*4=48
+    let hit: i64 = abs_val(input - base)
+    let mut score: i64 = SCALE - hit * 10
+    if score < 0 { score = 0 }
+    if score > SCALE { score = SCALE }
+    return score
+}
+
+// v2 양자 stub: superposition 3안 중 argmax (간이 버전)
+fn pipe_quantum(input: i64) -> i64 {
+    let t6: i64 = tau(6)  // 4
+    let s6: i64 = sigma(6)  // 12
+    let cand0: i64 = SCALE - abs_val(input - s6) * 20
+    let cand1: i64 = SCALE - abs_val(input - s6 - t6) * 15
+    let cand2: i64 = SCALE - abs_val(input - s6 + t6) * 25
+    let mut best: i64 = cand0
+    if cand1 > best { best = cand1 }
+    if cand2 > best { best = cand2 }
+    if best < 0 { best = 0 }
+    return best
+}
+
+// v3 자기조직 stub: 6부품 집단 정렬도 - 개별 평균
+fn pipe_selforg(input: i64) -> i64 {
+    let p6: i64 = phi(6)  // 2
+    let group: i64 = input * p6 + sigma(6)  // 집단 정렬
+    let solo: i64 = input + sigma(6) / 2   // 개별 평균
+    let gain: i64 = group - solo
+    let mut score: i64 = SCALE / 2 + gain * 5
+    if score < 0 { score = 0 }
+    if score > SCALE { score = SCALE }
+    return score
+}
+
+// v4 진화 stub: fitness = align_n6 + track_env, 세대 3회 간이 모델링
+fn pipe_adaptive(input: i64) -> i64 {
+    let sp: i64 = sopfr(6)  // 5
+    let target: i64 = sigma(6) + tau(6)  // 12+4=16
+    let mut gene: i64 = input
+    let mut gen: i64 = 0
+    while gen < 3 {
+        let diff: i64 = target - gene
+        gene = gene + diff / 2  // 변이+선발
+        gen = gen + 1
+    }
+    let mut score: i64 = SCALE - abs_val(gene - target) * sp * 10
+    if score < 0 { score = 0 }
+    if score > SCALE { score = SCALE }
+    return score
+}
+
+// ── dispatch: 모드 → pipe 호출 ───────────────────────────
+fn run_pipeline(mode: i64, input: i64) -> i64 {
+    if mode == MODE_INDUSTRIAL { return pipe_industrial(input) }
+    if mode == MODE_QUANTUM { return pipe_quantum(input) }
+    if mode == MODE_SELFORG { return pipe_selforg(input) }
+    if mode == MODE_ADAPTIVE { return pipe_adaptive(input) }
+    return 0
+}
+
+// ── fuse_modes: 2 모드 혼합 → hybrid score ─────────────
+// 혼합 전략:
+//   hybrid = (score_a * weight_a + score_b * (10 - weight_a)) / 10
+//   weight_a 는 mode_a 의 성숙도 (INDUSTRIAL=7, QUANTUM=4, SELFORG=5, ADAPTIVE=6)
+fn mode_weight(mode: i64) -> i64 {
+    if mode == MODE_INDUSTRIAL { return 7 }
+    if mode == MODE_QUANTUM { return 4 }
+    if mode == MODE_SELFORG { return 5 }
+    if mode == MODE_ADAPTIVE { return 6 }
+    return 5
+}
+
+fn fuse_modes(mode_a: i64, mode_b: i64, input: i64) -> i64 {
+    let sa: i64 = run_pipeline(mode_a, input)
+    let sb: i64 = run_pipeline(mode_b, input)
+    let wa: i64 = mode_weight(mode_a)
+    let wb: i64 = 10 - wa
+    let hybrid: i64 = (sa * wa + sb * wb) / 10
+    return hybrid
+}
+
+// ── main: 데모 실행 (parse 검증용) ────────────────────────
+fn main() -> i64 {
+    // 1) 4 모드 각 1회 단독 실행
+    let demo_input: i64 = 48  // sigma(6)*tau(6) 기준점
+    let r1: i64 = run_pipeline(MODE_INDUSTRIAL, demo_input)
+    let r2: i64 = run_pipeline(MODE_QUANTUM, sigma(6))  // input=12
+    let r3: i64 = run_pipeline(MODE_SELFORG, tau(6))    // input=4
+    let r4: i64 = run_pipeline(MODE_ADAPTIVE, phi(6))   // input=2
+
+    // 2) select_mode 3 환경 시나리오
+    let m_ind: i64 = select_mode(900, 200, 900)  // 확정대규모 → INDUSTRIAL
+    let m_qnt: i64 = select_mode(300, 500, 500)  // 불확실     → QUANTUM
+    let m_evo: i64 = select_mode(800, 700, 500)  // 동적진화   → ADAPTIVE
+
+    // 3) 2 hybrid 조합 (INDUSTRIAL+QUANTUM, SELFORG+ADAPTIVE)
+    let h1: i64 = fuse_modes(MODE_INDUSTRIAL, MODE_QUANTUM, demo_input)
+    let h2: i64 = fuse_modes(MODE_SELFORG, MODE_ADAPTIVE, demo_input)
+
+    // 4) 총합 반환 (parse 검증 목적상 의미 있는 반환값)
+    let total: i64 = r1 + r2 + r3 + r4 + m_ind + m_qnt + m_evo + h1 + h2
+    return total
+}
+
+main()
