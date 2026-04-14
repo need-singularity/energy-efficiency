@@ -2,8 +2,74 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 127,
-    "_count_verified": "2026-04-14 PAPER-P5-2 -- 실측 127 (126 + 1 P5-2 정직한 한계 메타 논문)",
+    "total_papers": 129,
+    "_count_verified": "2026-04-14 PAPER-P5-2 Mk.III-a -- 실측 129 (128 + 1 boundary-metatheory 4영역 정식화)",
+    "papers_chunk_P5_2_Mk3a_2026-04-14": {
+      "count": 1,
+      "category": "P5 Mk.III-alpha 경계 메타이론 논문 (4영역 B1/B2/B3/B4 정식화)",
+      "bt_range": "Theorem 0 (sigma*phi=n*tau n=6 유일), Theorem B (Bernoulli k=n=6), honest-limitations 10 case",
+      "status": "PAPER-P5-2 Mk.III-a 신규 -- honest-limitations.md 10 case를 4 경계 영역으로 형식화",
+      "target_id_range": "N6-129",
+      "roadmap_ref": "PAPER-P5-2 (DSE-P5-2 n=6 경계 메타이론)",
+      "papers": [
+        "papers/n6-boundary-metatheory-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-boundary-metatheory-paper.md": "Theorem 0, Theorem B, honest-limitations 10 case"
+      },
+      "version_tags": {
+        "meta_theory": ["boundary-metatheory"]
+      },
+      "verify_code_status": {
+        "source_document": "theory/proofs/honest-limitations.md (497 라인)",
+        "reference_theorem_r1": "theory/proofs/theorem-r1-uniqueness.md",
+        "reference_theorem_b": "theory/proofs/bernoulli-boundary-2026-04-11.md",
+        "hexa_stub_path": "experiments/boundary/verify_boundary_4regions.hexa (예정)",
+        "n62_compliance": "본문 §10 boundary_metatheory_verify.hexa 전체 STUB 포함"
+      },
+      "boundary_regions": {
+        "B1": "continuous-parameter process (PVD, ECD, Spin-coat)",
+        "B2": "SI rounding engineering convention (Utility_1GW)",
+        "B3": "prime atomic transition (DUV-ArF 193nm)",
+        "B4": "composition-dependent bandgap (CIGS 1.15 eV)"
+      },
+      "discriminant_count": 4,
+      "prediction_count": 13,
+      "self_limitation_count": 6,
+      "core_claim": "자기한계를 아는 이론이 진짜 이론이다",
+      "honest_limitations_note": "§9 Limitations of the limitations theory 6건 공시. 언어적 자기참조 인정.",
+      "interaction_matrix": "4x4 (B1~B4). 실측 공존 3쌍 + 이론 가능 2쌍",
+      "testable_predictions": 13,
+      "total_lines": 363
+    },
+    "papers_chunk_P5_1_2026-04-14": {
+      "count": 1,
+      "category": "P5 BT-18 Vacuum→Monster 5링크 증명 체인 정식화 논문",
+      "bt_range": "BT-18 (CONJECTURE), BT-5, BT-6, BT-13, BT-15, BT-16, BT-17, BT-19, BT-20",
+      "status": "PAPER-P5-1 신규 -- BT-18 Vacuum Energy Chain 5링크 (E₀→η²⁴→Δ→j→Monster) 정식 논문 / 정직한 장벽 공시",
+      "target_id_range": "N6-128",
+      "roadmap_ref": "PAPER-P5-1",
+      "papers": [
+        "papers/n6-vacuum-monster-chain-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-vacuum-monster-chain-paper.md": "BT-18 (핵심), BT-5, BT-6, BT-13, BT-15, BT-16, BT-17, BT-19, BT-20"
+      },
+      "version_tags": {
+        "vacuum_monster_chain": ["vacuum-monster-chain"]
+      },
+      "verify_code_status": {
+        "hexa_stub": "본문 §8 vacuum_monster_chain_verify.hexa 포함",
+        "chain_links": 5,
+        "n6_coord_full": 3,
+        "n6_coord_partial": 2,
+        "n62_compliance": "본문 §8 hexa STUB + §9 연결 BT·논문 참조"
+      },
+      "safety_design_note": "정직한 장벽 공시 원칙 (honest-limitations-meta-paper.md 계승): L4 744 계수 + L5 196883 n=6 좌표 미확립을 명시적으로 공개. L1/L2/L3 는 완전 성립 링크로 분리 표기.",
+      "honest_limitations_note": "§7 장벽 4건 (L5-A, L4-A, 인과, Moonshine 역방향) + §7.3 체리피킹 위험 평가 + §7.4 본 논문이 주장하지 않는 것 3건.",
+      "testable_predictions": 4,
+      "total_lines": 591
+    },
     "papers_chunk_P3_3_2026-04-14": {
       "count": 1,
       "category": "P3 atlas 승격 파이프라인 구현 논문 (구현/실행)",

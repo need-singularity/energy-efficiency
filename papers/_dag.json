@@ -3,8 +3,8 @@
     "schema": "n6.dag.v1",
     "generated": "2026-04-13",
     "generator": "scripts/build_dag.hexa",
-    "total_nodes": 353,
-    "total_edges": 84,
+    "total_nodes": 356,
+    "total_edges": 91,
     "cycles": [["chip-design-ladder", "chip-6stages-integrated", "chip-design-ladder"], ["advanced-packaging", "chip-design-ladder", "chip-6stages-integrated", "advanced-packaging"], ["aerospace-transport", "classical-mechanics-accelerator", "aerospace-transport"], ["classical-mechanics-accelerator", "chemistry", "classical-mechanics-accelerator"], ["chemistry", "battery-energy-storage", "chemistry"], ["chemistry", "battery-energy-storage", "carbon-capture", "chemistry"], ["battery-energy-storage", "carbon-capture", "battery-energy-storage"], ["agi-architecture", "ai-techniques-68-integrated", "agi-architecture"], ["consciousness-chip", "consciousness-soc", "consciousness-chip"], ["consciousness-soc", "anima-soc", "consciousness-soc"], ["agi-architecture", "consciousness-chip", "consciousness-soc", "anima-soc", "agi-architecture"], ["consciousness-chip", "brain-computer-interface", "consciousness-chip"], ["agi-architecture", "consciousness-chip", "brain-computer-interface", "cognitive-social-psychology", "agi-architecture"], ["brain-computer-interface", "cognitive-social-psychology", "brain-computer-interface"], ["agi-architecture", "consciousness-chip", "brain-computer-interface", "cognitive-social-psychology", "ai-ethics-governance", "agi-architecture"], ["cognitive-social-psychology", "ai-ethics-governance", "cognitive-social-psychology"], ["calendar-time-geography", "cartography", "calendar-time-geography"], ["archaeology", "calendar-time-geography", "archaeology"], ["atlas-promotion-7-to-10", "causal-chain", "atlas-promotion-7-to-10"]]
   },
   "nodes": [
@@ -360,7 +360,10 @@
     {"id": "baduk", "path": "domains/culture/baduk/baduk.md", "alien_current": 0, "alien_target": 10},
     {"id": "library-science", "path": "domains/culture/library-science/library-science.md", "alien_current": 0, "alien_target": 10},
     {"id": "dice-probability", "path": "domains/culture/dice-probability/dice-probability.md", "alien_current": 0, "alien_target": 10},
-    {"id": "bell-clockwork", "path": "domains/culture/bell-clockwork/bell-clockwork.md", "alien_current": 0, "alien_target": 10}
+    {"id": "bell-clockwork", "path": "domains/culture/bell-clockwork/bell-clockwork.md", "alien_current": 0, "alien_target": 10},
+    {"id": "vacuum-monster-chain", "path": "papers/n6-vacuum-monster-chain-paper.md", "alien_current": 8, "alien_target": 10},
+    {"id": "honest-limitations-meta", "path": "papers/n6-honest-limitations-meta-paper.md", "alien_current": 10, "alien_target": 10},
+    {"id": "boundary-metatheory", "path": "papers/n6-boundary-metatheory-paper.md", "alien_current": 10, "alien_target": 11}
   ],
   "edges": [
     {"from": "acoustics", "to": "music-theory", "alien_min": 7, "alien_cur": 0, "blocker": true, "reason": "12음률 기반 주파수비"},
@@ -446,6 +449,13 @@
     {"from": "construction-structural", "to": "chemistry", "alien_min": 5, "alien_cur": 0, "blocker": true, "reason": "콘크리트/강재 화학"},
     {"from": "sf", "to": "room-temp-sc", "alien_min": 0, "alien_cur": 0, "blocker": false, "reason": ""},
     {"from": "sf", "to": "fusion-powerplant", "alien_min": 0, "alien_cur": 0, "blocker": false, "reason": ""},
-    {"from": "sf", "to": "superconductor", "alien_min": 0, "alien_cur": 0, "blocker": false, "reason": ""}
+    {"from": "sf", "to": "superconductor", "alien_min": 0, "alien_cur": 0, "blocker": false, "reason": ""},
+    {"from": "vacuum-monster-chain", "to": "pure-mathematics", "alien_min": 10, "alien_cur": 0, "blocker": true, "reason": "모듈러 형식·Moonshine 기본 정리 전제"},
+    {"from": "vacuum-monster-chain", "to": "particle-cosmology", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "Casimir 진공 에너지·Bosonic string 임계 차원"},
+    {"from": "vacuum-monster-chain", "to": "cryptography", "alien_min": 8, "alien_cur": 0, "blocker": true, "reason": "Golay [24,12,8] 부호의 완전성·자기쌍대"},
+    {"from": "honest-limitations-meta", "to": "atlas-promotion-pipeline", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "atlas dry-run 한계 3번 직접 참조"},
+    {"from": "boundary-metatheory", "to": "honest-limitations-meta", "alien_min": 10, "alien_cur": 10, "blocker": false, "reason": "세션 방법론 한계 9건을 도메인 적용 한계 4영역으로 확장"},
+    {"from": "boundary-metatheory", "to": "atlas-promotion-7-to-10star", "alien_min": 10, "alien_cur": 0, "blocker": true, "reason": "sigma*phi=n*tau 유일성 정리 기반 프로토콜 (Theorem 0)"},
+    {"from": "boundary-metatheory", "to": "reality-map", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "9,206 후보 98.4% 커버리지 통계 출처"}
   ]
 }
