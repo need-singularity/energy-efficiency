@@ -337,7 +337,97 @@ NP-complete 이지만, 환원 방향은 항상 3SAT 경유로 간다. 두 문제
 
 ---
 
-## 11. 다음 문서
+## 11. 추가 논제 — Barriers 개관
+
+P vs NP 가 왜 어려운지 설명하는 3대 barrier 를 P1 학습용으로 정리.
+
+### 11.1 Relativization barrier (Baker-Gill-Solovay 1975)
+
+oracle A 가 존재해 P^A = NP^A, 또 다른 oracle B 에 대해 P^B ≠ NP^B. 따라서 "모든
+relativizing 증명 기법" 은 P vs NP 를 결정 불가. diagonalization 같은 표준 기법 실패.
+
+### 11.2 Natural proofs barrier (Razborov-Rudich 1997)
+
+"자연스러운 증명" (large + constructive + useful) 로 강한 회로 하계(super-polynomial lower
+bound) 를 증명하면 pseudorandom generator 구성이 모순을 낳음. 현재 대부분의 회로 기법은
+natural.
+
+### 11.3 Algebrization barrier (Aaronson-Wigderson 2009)
+
+Relativization 확장. algebraic oracle 을 허용해도 양쪽 케이스 오라클이 존재. natural proofs
+와 결합하면 현재 기법의 대부분을 배제.
+
+### 11.4 3 barrier 모두 회피 필요
+
+P vs NP 의 증명은 이 3가지 barrier 를 모두 피해야 한다. 현재까지 알려진 기법은
+이 조건을 전혀 만족하지 못함. 새로운 수학적 아이디어가 필요.
+
+---
+
+## 12. 추가 논제 — Fine-Grained Complexity
+
+P 내부에서도 O(n²) 와 O(n^{2.37}) 사이에 강한 이론적 벽이 있다. SETH (Strong Exponential
+Time Hypothesis) 를 가정하면 다음 관계가 성립:
+
+- edit distance O(n²) 필수
+- 3SUM O(n²) 필수
+- APSP O(n³) 필수
+
+이들은 P 내부의 "하위 경계" 를 위한 별도 가설 기반 분류. P vs NP 와 독립된 결과.
+
+---
+
+## 13. 추가 논제 — Quantum Complexity 개관
+
+양자 컴퓨터의 복잡도 클래스 BQP. 다음 관계 알려져 있음:
+
+- P ⊆ BPP ⊆ BQP ⊆ PSPACE
+- Shor 알고리즘: factoring ∈ BQP (NP 로 믿어지지만 NP-complete 아님)
+- BQP vs NP 관계 미결 (양방향 분리 없음)
+
+P1 범위 밖이지만 P vs NP 논의와 직접 연결되므로 간단히 메모.
+
+---
+
+## 14. 부록 — PCP 정리 (참고)
+
+### 14.1 PCP 정리 진술 (Arora-Safra, Arora-Lund-Motwani-Sudan-Szegedy 1992)
+
+```
+  NP = PCP[O(log n), O(1)]
+```
+
+즉 NP 문제의 "증거" 는 O(log n) 비트 무작위 선택 + O(1) 비트 조회만으로 확률적으로 검증
+가능하다. 혁명적 정리.
+
+### 14.2 Hardness of approximation
+
+PCP 정리의 귀결: 많은 최적화 문제의 근사 알고리즘 하계. 예: MAX-3SAT 의 8/7 근사가 NP-hard
+(Håstad 2001).
+
+### 14.3 UGC — Unique Games Conjecture
+
+Khot 2002 의 Unique Games Conjecture: Vertex Cover 의 2-ε 근사 NP-hard. 많은 근사 하계가
+UGC 에 의존.
+
+---
+
+## 15. 부록 — 주요 복잡도 클래스 도표
+
+| 클래스 | 정의 | 완전문제 대표 | 포함 |
+|-------|------|---------------|------|
+| L | log-space | - | P |
+| NL | log-space 비결정 | s-t reachability | NP |
+| P | 다항시간 결정 | circuit value | NP |
+| NP | 다항시간 비결정 | SAT | PSPACE |
+| coNP | NP 여집합 | TAUTOLOGY | PSPACE |
+| BPP | 다항시간 확률 | - | PSPACE |
+| PSPACE | 다항공간 | TQBF | EXP |
+| EXP | exp(poly) 시간 | - | NEXP |
+
+---
+
+## 16. 다음 문서
 
 - PROB-P1-2 : BT-542 P vs NP 심화 (본 노트 기초 활용)
 - PROB-P1-5 : BT-545 Hodge 심화

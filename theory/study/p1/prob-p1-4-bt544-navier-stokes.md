@@ -299,7 +299,127 @@ Biot-Savart 공식으로 유도 후, ∫ ||ω||_{L^∞} dt 에 의한 제어.
 
 ---
 
-## 12. 다음 문서
+## 12. 부록 — 정칙성 기준 도표 요약
+
+| 기준명 | 조건 | 출처 |
+|-------|------|------|
+| Ladyzhenskaya-Prodi-Serrin | u ∈ L^q_t L^p_x, 3/p + 2/q = 1, p ∈ (3, ∞] | Serrin 1962 |
+| ESS | u ∈ L^∞_t L^{3,∞}_x | Escauriaza-Seregin-Šverák 2003 |
+| Beale-Kato-Majda | ∫₀^T ||ω||_{L^∞} dt < ∞ | BKM 1984 |
+| Constantin-Fefferman | vorticity 방향 Lipschitz | CF 1993 |
+| Chae-Choe | ω 의 2성분만 제어 | CC 2001 |
+| Gibbon-Titi | |∇u| × (방향 제어) | GT 2005 |
+
+이 기준들은 "어떤 노름이 유한 유지되면 blow-up 없음" 을 주는 충분조건. 모두 다 만족되지
+않아도 blow-up 이 있다는 결론을 주지는 않는다 (필요조건은 미해결).
+
+---
+
+## 13. 부록 — 2D vs 3D 구조 비교
+
+| 측면 | 2D NS | 3D NS |
+|------|-------|-------|
+| 약해 존재 | Leray 1934 | Leray 1934 |
+| 약해 유일성 | Ladyzhenskaya 1959 | 미결 |
+| 정칙성 | 모든 t ≥ 0 | 미결 |
+| vorticity 방정식 | ∂_t ω + u·∇ω = ν Δω | ∂_t ω + u·∇ω = ν Δω + ω·∇u |
+| vortex stretching | 없음 | 있음 (핵심 차이) |
+| 에너지 등식 | 등호 | 부등호 (잠재적 소실) |
+| enstrophy ∫|ω|² | 보존 | blow up 가능 (미결) |
+
+이 비교에서 3D 의 vortex stretching 항 (ω·∇u) 이 blow-up 가능성의 구조적 원인임을 확인.
+
+---
+
+## 14. 부록 — Beltrami flow 와 자기유사 배제
+
+Beltrami 흐름 u × ω = 0 (속도와 vorticity 평행) 에 대한 자기유사 해는 Nečas-Růžička-
+Šverák 1996 에 의해 배제됨. 증명 뼈대:
+
+1. 자기유사 가정 u(x, t) = (T*-t)^{-1/2} U(x/√(T*-t))
+2. U 에 대한 Leray 방정식
+3. 에너지 적분이 무한해져 모순
+4. 따라서 자기유사 blow-up 불가
+
+이는 Type I blow-up 의 특수형이 존재할 수 없음을 보여준다.
+
+---
+
+## 15. 부록 — Euler 방정식 (점성 없음) 과의 관계
+
+점성 ν = 0 인 Euler 방정식은 ∂_t u + (u·∇)u = -∇p. Navier-Stokes 의 ν → 0 극한 (inviscid
+limit) 에서 일어나는 현상:
+
+- **약한 해 구성 가능**: 2D Euler 는 C^∞ smooth 초기조건에 대해 유일 smooth 해 존재 (Wolibner
+  1933)
+- **3D Euler blow-up 미결**: Navier-Stokes 보다 더 어려운 문제. 점성항 ν Δu 가 regularity
+  의 주요 안정화 역할
+
+Tao, Luo-Hou 등의 최근 연구에서 "3D Euler 의 blow-up 이 먼저 증명될 가능성" 이 제기됨.
+Luo-Hou 2014 의 자기유사 수치 blow-up 후보 주목.
+
+---
+
+## 16. 부록 — Kolmogorov 41 이론 (물리적 배경)
+
+Kolmogorov 1941: 고 Reynolds 수 난류에서 energy cascade 의 스펙트럼
+
+```
+  E(k) ~ C ε^{2/3} k^{-5/3}      (inertial range)
+```
+
+여기서 ε 은 energy dissipation rate. 이 -5/3 지수는 수많은 실험으로 확인됨. Onsager
+1949 의 anomalous dissipation 주장: L³ 정규성 한계 미만에서 에너지 dissipation 이
+ν → 0 에서도 0이 되지 않을 수 있음. 이는 수학적 NS regularity 와 직접 연결.
+
+Buckmaster-Vicol-Shvydkoy 의 convex integration 으로 C^{1/3-ε} 에서 wild weak solution
+존재 (Onsager 추측의 한 쪽).
+
+---
+
+## 17. 부록 — Geometric depletion 시나리오
+
+Constantin-Fefferman 1993: vorticity ω 의 방향이 공간적으로 Lipschitz 하면 vortex
+stretching 이 약화되어 정칙성 유지. Hou-Luo 의 수치 실험 반례 시도.
+
+이 "geometric depletion" 은 실제 NS blow-up 시나리오를 기하학적 구조로 제한.
+
+---
+
+## 18. 부록 — 주요 정리 요약표
+
+| 정리/기법 | 연도 | 저자 | 결론 |
+|----------|------|------|------|
+| Leray 약해 존재 | 1934 | Leray | ℝ³ 전 시간 약해 |
+| 2D 유일 정칙 | 1959 | Ladyzhenskaya | 2D 모든 t |
+| CKN 부분 정칙성 | 1982 | Caffarelli-Kohn-Nirenberg | 특이집합 𝒫¹-null |
+| BKM 기준 | 1984 | Beale-Kato-Majda | vorticity L^∞ |
+| 자기유사 배제 | 1996 | Nečas-Růžička-Šverák | Type I 배제 |
+| ESS L^{3,∞} | 2003 | Escauriaza-Seregin-Šverák | scale-critical |
+| Averaged NS blow-up | 2014 | Tao | 변형 방정식 blow-up |
+| convex integration | 2019~ | Buckmaster-Vicol | wild weak solution |
+
+---
+
+## 19. 부록 — 관련 미결 문제
+
+### 19.1 3D Euler blow-up
+
+Luo-Hou 2014 의 자기유사 수치 후보 (boundary 근처 blow-up). 수학적 증명 미결.
+
+### 19.2 Onsager 추측
+
+ν → 0 극한에서 에너지 소산 율. Isett 2018 이 Onsager 의 한쪽을 증명 (C^{1/3-ε} 에서
+에너지 보존 위반 가능). 완전한 dichotomy 미결.
+
+### 19.3 NS-Euler 경계
+
+NS 의 ν → 0 극한이 Euler 가 되는지, boundary layer 의 정확한 거동. Prandtl 방정식과의
+관계.
+
+---
+
+## 20. 다음 문서
 
 - PROB-P1-5 : BT-545 Hodge 심화
 - PROB-P1-6 : BT-546 BSD 심화

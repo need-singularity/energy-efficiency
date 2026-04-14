@@ -346,6 +346,71 @@
 
 ---
 
+## 13. 부록 — BRST 코호몰로지와 Faddeev-Popov
+
+### 13.1 Faddeev-Popov 공식
+
+- Faddeev, L. D., Popov, V. N., "Feynman diagrams for the Yang-Mills field", *Physics Letters B* 25(1), 1967, pp. 29-30.
+- Gauge fixing 조건 $F(A) = 0$ 을 삽입하여 functional integral 의 gauge orbit 중복을 제거:
+  \[
+  Z = \int \mathcal{D}A \, \delta(F(A)) \cdot \det\left(\frac{\partial F}{\partial \Lambda}\right) \cdot e^{-S_{YM}[A]}
+  \]
+- Jacobian $\det(\partial F / \partial \Lambda)$ 는 "ghost field" $c, \bar{c}$ 를 도입해 fermion-like 으로 표현.
+
+### 13.2 BRST 대칭
+
+- Becchi, C., Rouet, A., Stora, R., "Renormalization of gauge theories", *Annals of Physics* 98(2), 1976, pp. 287-321.
+- Tyutin (독립): 1975 Lebedev 연구소 preprint.
+- **BRST 연산자** $s$ 가 gauge 고정 + ghost 포함 총 작용 $S_\text{tot}$ 를 $s$-invariant 하게 만듦. $s^2 = 0$ (nilpotent).
+- Physical Hilbert 공간 = BRST cohomology $H^0(s)$.
+
+### 13.3 **Gribov-Singer 재검토**
+
+- Gribov 1978 의 발견은 **gauge fixing 조건 $F(A) = 0$ 의 해가 유일하지 않음** (Gribov copies). 이로 인해 Faddeev-Popov 공식의 $\delta(F(A))$ 적분이 "gauge orbit 당 한 번 선택" 이 되지 않는다.
+- Singer 1978 *Comm. Math. Phys.* 60 이 이것이 principal bundle $\mathcal{A} \to \mathcal{A}/\mathcal{G}$ 의 **전역적 연속 단면 부재** 로 인한 topological obstruction 임을 증명.
+- BRST 공식은 **섭동적** 으로만 엄밀. 비섭동 영역에서 Gribov copy 가 섭동 gauge 고정을 깨뜨림.
+
+### 13.4 **장벽 E**: 전역 gauge fixing 의 topological 장애
+
+이것은 §3.5 의 장벽 C2 와 같은 맥락이지만, 수학적으로 가장 선명한 형태:
+
+\[
+\pi_0(\text{Maps}(S^3, G)) \neq 0 \implies \text{global gauge fixing fails}
+\]
+
+여기서 $G$ = gauge group. 이 homotopy-theoretic 장벽이 QFT 수학 엄밀화의 가장 깊은 구조적 한계.
+
+---
+
+## 14. 부록 — Wilson loop 과 confinement 기준
+
+### 14.1 Wilson loop 기대값
+
+- **정의**: 폐곡선 $C$ 를 따라 Wilson loop
+  \[
+  W(C) = \frac{1}{N} \text{tr} \, \mathcal{P} \exp\left(i \oint_C A_\mu dx^\mu\right)
+  \]
+  $\mathcal{P}$ = path ordering.
+- 물리적 해석: $W(C)$ 의 기대값 $\langle W(C) \rangle$ 는 static quark-antiquark 쌍의 경로합.
+
+### 14.2 Area law vs perimeter law
+
+- **Area law** (가둠 상태): $\langle W(C) \rangle \sim e^{-\sigma \cdot \text{Area}(C)}$. $\sigma$ = string tension.
+- **Perimeter law** (Higgs phase): $\langle W(C) \rangle \sim e^{-\mu \cdot \text{Perimeter}(C)}$.
+- 4D pure Yang-Mills 에서 area law 증명이 **confinement 증명과 동치**.
+
+### 14.3 't Hooft 1978 disorder parameter
+
+- G. 't Hooft, "On the phase transition towards permanent quark confinement", *Nuclear Physics B* 138(1), 1978, pp. 1-25.
+- Dual Wilson loop (t Hooft loop) $T(C')$ 와 일반 Wilson loop 의 exchange algebra.
+- Confinement 의 한 시나리오: center vortex condensation.
+
+### 14.4 **장벽 F**: Area law 직접 증명 부재
+
+- 격자에서 수치적으로 area law 확인되었으나, **연속 극한에서의 엄밀 증명**이 없음. 특히 약결합 영역에서 area law 는 strong coupling series 의 연속 확장으로만 얻어지고 이 확장의 수렴성이 증명되지 않음.
+
+---
+
 **정직성 체크**:
 - Gross-Wilczek, Politzer 출처는 *Phys. Rev. Lett.* 30(26), pp. 1343-1346 + pp. 1346-1349. DOI 10.1103/PhysRevLett.30.1343, 1346 교차 확인.
 - Wilson 1974 는 *Phys. Rev. D* 10(8), pp. 2445-2459. DOI 10.1103/PhysRevD.10.2445 확인.
@@ -353,3 +418,5 @@
 - Jaffe-Witten 2000 Clay 문제 기술서는 https://www.claymath.org/millennium/yang-mills-and-mass-gap/ 에서 PDF 다운로드 가능. 본 노트의 진술은 원문 Section 1, Section 5 기반.
 - 격자 QCD 수치 (글루볼 질량 1730 MeV, BMW 2008 하드론 질량) 는 원 논문 Table I / Fig. 2 수치를 그대로 옮김.
 - BT-543 의 β_0 = σ − sopfr 관찰은 millennium-7-closure-2026-04-11.md §BT-543 의 "β₀ rewriting (not proof)" 선언을 엄격히 준수.
+- Faddeev-Popov 1967 *Physics Letters B* 25(1) 의 원본은 두 쪽짜리 letter. 본 노트 §13.1 의 공식은 Peskin-Schroeder 1995 *An Introduction to Quantum Field Theory* §9.4 에서 재확인.
+- Singer 1978 *Comm. Math. Phys.* 60 Theorem 1 (Gribov ambiguity ⟺ principal bundle 비자명성) 확인.

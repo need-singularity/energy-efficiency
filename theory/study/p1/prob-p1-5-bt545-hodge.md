@@ -334,7 +334,124 @@ Hdg² 에 analytic 비표현성 발생 구조 정리.
 
 ---
 
-## 12. 다음 문서
+## 12. 부록 — Hodge 구조 (Hodge structure) 정의
+
+### 12.1 순수 Hodge 구조
+
+ℤ-격자 V_ℤ 위에 V_ℂ = V_ℤ ⊗ ℂ 의 분해 V_ℂ = ⊕_{p+q=n} V^{p,q}, V^{q,p} = \overline{V^{p,q}}.
+이것이 **무게 n 순수 Hodge 구조**.
+
+### 12.2 혼합 Hodge 구조 (Deligne 1974)
+
+무게 필터 W_• 와 Hodge 필터 F^• 의 두 층. Deligne "Théorie de Hodge" I, II, III.
+일반(비콤팩트, 특이) 대수다양체에서도 코호몰로지가 혼합 Hodge 구조를 가진다.
+
+### 12.3 period map
+
+계의 유동 s 에 대한 V^{p,q}_s 의 변화 → period domain 에 대한 map. Griffiths transversality
+조건 (1968) 은 이 맵의 기울기 제약.
+
+---
+
+## 13. 부록 — Mumford-Tate 군과 Hodge loci
+
+### 13.1 Mumford-Tate 군
+
+Hodge 구조에 연관된 algebraic group MT(V) ⊂ GL(V). Hodge 류를 보존하는 "자동사상" 군.
+
+### 13.2 Hodge loci
+
+family of varieties X → S 에서, Hdg^k(X_s) 의 특정 원소가 발견되는 s 의 집합.
+Cattani-Deligne-Kaplan 1995: Hodge loci 는 대수적 부분다양체.
+
+### 13.3 함의
+
+Hodge loci 의 대수성 → Hodge 류가 "algebraic family" 를 이루면 이들은 대수적 순환으로
+실현될 강한 구조적 증거.
+
+---
+
+## 14. 부록 — 현재 주요 접근법
+
+### 14.1 Motivic 접근
+
+Grothendieck 동기(motive) 와 André 의 absolute Hodge motive. Hodge 추측을 motivic 언어로
+표현 + standard conjectures 와 통합.
+
+### 14.2 K-이론 접근
+
+Bloch-Beilinson 추측은 K-이론과 motivic cohomology 로 Hodge 를 일반화. Chow 군과 Hodge 류의
+연결 탐색.
+
+### 14.3 Harmonic analysis 접근
+
+L²-Hodge 이론 (Morrey-Kodaira), CR 구조에서의 Hodge. 복소기하 도구로 Hodge 구조 정교화.
+
+---
+
+## 15. 부록 — 주요 Hodge 수 계산 예
+
+### 15.1 ℙ^n
+
+h^{p,p} = 1 (0 ≤ p ≤ n), 기타 0.
+
+### 15.2 타원곡선 E
+
+h^{0,0} = h^{1,1} = 1, h^{1,0} = h^{0,1} = 1. 총 Hodge 다이아몬드 (마름모꼴 1 형태):
+```
+       1
+     1   1
+       1
+```
+
+### 15.3 K3 곡면
+
+h^{0,0} = h^{2,2} = 1, h^{1,1} = 20, h^{2,0} = h^{0,2} = 1. χ = 1 + 20 + 1 = 24.
+Hodge 다이아몬드:
+```
+          1
+       0     0
+    1    20    1
+       0     0
+          1
+```
+
+### 15.4 Calabi-Yau 3-fold
+
+h^{0,0} = h^{3,3} = 1, h^{3,0} = h^{0,3} = 1, h^{2,0} = h^{0,2} = 0,
+h^{1,1} = a, h^{2,1} = h^{1,2} = b. 모듈라이 공간 차원이 b, Kähler class 는 a 차원.
+
+### 15.5 Abelian variety A = E × E
+
+h^{p,q}(A) = binomial(2, p)·binomial(2, q). H²(A; ℚ) = 6 차원, (1,1)-부분 h^{1,1} = 4.
+
+---
+
+## 16. 부록 — Lefschetz (1,1) 증명 재구성
+
+### 16.1 exponential sheaf 열
+
+0 → ℤ → 𝒪_X → 𝒪_X^* → 0 (𝒪_X^* = multiplicative group).
+
+### 16.2 긴 완전열
+
+```
+  H^1(X; 𝒪_X) → H^1(X; 𝒪_X^*) = Pic(X) → H²(X; ℤ) → H²(X; 𝒪_X)
+```
+
+### 16.3 Hodge 분해 활용
+
+H²(X; 𝒪_X) = H^{0,2}(X). 따라서 α ∈ H²(X; ℤ) 가 H^{0,2} 에서 영으로 사상 ⟺ α ∈ im(Pic).
+Hodge 분해로 α ∈ H²(X; ℚ) ∩ H^{1,1} ⟹ α 는 ℤ-계수 배수에서 Hdg¹ 원소이고, H^{0,2} 성분이 0.
+
+### 16.4 결론
+
+Hdg¹(X) 의 모든 원소가 Pic(X) 상으로 실현 ⟹ divisor 의 (ℚ-계수) 선형결합으로 실현.
+∴ (1,1) Hodge 추측 증명.
+
+---
+
+## 17. 다음 문서
 
 - PROB-P1-6 : BT-546 BSD 심화
 - PROB-P1-7 : BT-547 푸앵카레 심화

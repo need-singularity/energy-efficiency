@@ -346,7 +346,61 @@ Perelman 엔트로피 F = ∫(R + |∇f|²)e^{-f} dV 의 monotonicity 로 "scale
 
 ---
 
-## 12. 다음 문서
+## 12. 추가 논제 — Spectral Sequence 맛보기
+
+P1 범위를 넘어서지만, P2 에서 반드시 만나게 되는 **Serre 스펙트럼 수열** 과
+**Adams 스펙트럼 수열** 의 아주 기초만 부록으로 기록한다.
+
+### 12.1 Serre 스펙트럼 수열
+
+파이버(fibration) F → E → B 에 대해
+
+```
+  E_2^{p,q} = H^p(B; H^q(F; G)) ⟹ H^{p+q}(E; G)
+```
+
+이 수열은 E 의 코호몰로지를 B 와 F 의 코호몰로지로부터 "점진적 근사" 로 계산한다.
+페이지 E_r 에서 E_{r+1} 로 가면 d_r 차의 boundary 를 취한다.
+
+대표 예: S¹ → S³ → S² (Hopf 파이버). Serre 로 H^*(S³) 재계산 가능.
+
+### 12.2 Leray 스펙트럼 수열
+
+(연속 사상 f: X → Y 에 대해 일반화) sheaf 코호몰로지에서도 같은 구조가 나타난다.
+
+### 12.3 Adams 스펙트럼 수열
+
+안정 호모토피군 π^s_*(X) 를 Ext_{A}(H*(X; 𝔽_p), 𝔽_p) 에서 근사. Steenrod 대수 A 가
+central. 구체 계산은 매우 복잡.
+
+### 12.4 사용 목표 (P2~P3)
+
+- 구면 안정 호모토피 π^s_n 을 부분적으로 계산
+- K-이론과 복소 cobordism 사이의 관계 추적
+- Seiberg-Witten 과 구조적 연결
+
+---
+
+## 13. 추가 논제 — Kirby 그림과 4-다양체
+
+### 13.1 Kirby 다이어그램
+
+4-다양체를 1-핸들과 2-핸들의 부착으로 그림으로 표현. 2-핸들은 framed knot 로,
+1-핸들은 "dotted unknot" 로. 표준 교재: Gompf-Stipsicz "4-Manifolds and Kirby Calculus"
+AMS 1999.
+
+### 13.2 exotic ℝ⁴
+
+ℝ⁴ 위에 표준 smooth 구조와 비동치인 무한히 많은 smooth 구조 존재. Donaldson 정리 귀결.
+이는 4차원에만 있는 이상 현상.
+
+### 13.3 연결과 P2 예고
+
+PROB-P2 단계에서 Seiberg-Witten 불변량 계산 + 4-다양체 smooth 분류 재도전 논의.
+
+---
+
+## 14. 다음 문서
 
 - PURE-P1-7 : 복잡도 이론 기초 (Cook-Levin, NP-complete)
 - PROB-P1-5 : BT-545 Hodge 추측 심화

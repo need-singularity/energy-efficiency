@@ -384,6 +384,70 @@ H^{1,1}(X, \mathbb{Z}) := H^2(X, \mathbb{Z}) \cap H^{1,1}(X) = \text{Pic}(X) \ca
 
 ---
 
+## 16. 부록 — Hodge 분해의 해석학적 기초
+
+### 16.1 De Rham 정리
+
+- **정리**: 매끄러운 compact 다양체 $M$ 에서 de Rham cohomology $H^*_{\text{dR}}(M)$ 가 singular cohomology $H^*(M, \mathbb{R})$ 와 동형.
+- 증명: Poincaré lemma + partition of unity + 층 이론.
+
+### 16.2 Hodge 정리
+
+- **정리 (Hodge)**: Compact Riemannian 다양체 $M$ 에서 $H^k_{\text{dR}}(M) \cong \mathcal{H}^k(M)$, 여기서 $\mathcal{H}^k = \ker(\Delta)$ 는 harmonic form 공간.
+- 증명 핵심: Hodge Laplacian $\Delta = dd^* + d^*d$ 의 elliptic regularity + compact 작용.
+- 출처: Warner, Frank W., *Foundations of Differentiable Manifolds and Lie Groups*, GTM 94, Springer, 1983. 또는 Griffiths-Harris 1978 Chapter 0.
+
+### 16.3 Kähler 분해
+
+- Kähler 다양체 $X$ 에서 추가 구조 $\Delta_d = 2\Delta_{\bar{\partial}} = 2\Delta_\partial$ 로부터
+  \[
+  \mathcal{H}^k(X) = \bigoplus_{p+q=k} \mathcal{H}^{p,q}(X)
+  \]
+- **Dolbeault cohomology** $H^{p,q}(X) = \ker(\bar{\partial})/\text{im}(\bar{\partial})$ on $(p,q)$-forms.
+- $\mathcal{H}^{p,q}(X) \cong H^{p,q}(X)$ (Dolbeault 정리, Hodge 정리와 평행).
+
+### 16.4 Complex conjugation 대칭
+
+- $H^{p,q}(X) = \overline{H^{q,p}(X)}$ (complex conjugation).
+- 이로 인해 Hodge number $h^{p,q} = h^{q,p}$.
+
+### 16.5 출처
+
+- Claire Voisin, *Hodge Theory and Complex Algebraic Geometry I*, Cambridge Studies 76, 2002. Chapter 5-6 에서 완전 증명.
+
+---
+
+## 17. 부록 — Chow group 과 cycle class map
+
+### 17.1 Chow group 정의
+
+- $X$ = 매끄러운 사영다양체. **Chow group** $\text{CH}^p(X) = Z^p(X) / \sim_{\text{rat}}$:
+  - $Z^p(X)$ = codimension-$p$ algebraic cycle 의 자유 abelian group.
+  - $\sim_{\text{rat}}$ = rational equivalence (cycles that arise as fibers of a correspondence from $\mathbb{P}^1$).
+
+### 17.2 Cycle class map
+
+- **사상** $\text{cl}: \text{CH}^p(X) \to H^{2p}(X, \mathbb{Z})$.
+- 정의: Poincaré dual 을 통해 algebraic subvariety 의 fundamental class 를 보낸다.
+- 이 사상의 image 가 **algebraic cohomology** class.
+
+### 17.3 Hodge 추측의 재진술
+
+- Hodge 추측은 $\text{cl}_\mathbb{Q} = \text{cl} \otimes \mathbb{Q}: \text{CH}^p(X) \otimes \mathbb{Q} \to H^{2p}(X, \mathbb{Q})$ 의 image 가 $H^{p,p}(X, \mathbb{Q})$ 와 일치.
+
+### 17.4 Grothendieck numerical equivalence
+
+- Numerical equivalence: $\alpha \sim_{\text{num}} 0$ iff for all $\beta$, intersection number $\alpha \cdot \beta = 0$.
+- Rational equivalence ⟹ Numerical equivalence (converse not always true).
+- Grothendieck 표준 추측 중 "numerical = homological" 이 포함됨.
+
+### 17.5 출처
+
+- William Fulton, *Intersection Theory*, 2판, Springer, 1998. Chapter 1-2 에서 Chow group 완전 정의.
+- Spencer Bloch, *Lectures on Algebraic Cycles*, 2판, Cambridge, 2010.
+
+---
+
 **정직성 체크**:
 - Lefschetz 1924 *L'analysis situs et la géométrie algébrique* 의 (1,1) 정리는 1930 년 AMS *Topology* 재정리본을 통해 확인. 원 1924 Gauthier-Villars 판은 접근이 어려움.
 - Hodge 1950 ICM 강연 제목은 "The theory and applications of harmonic integrals", 출처 ICM Proc. 1950 Vol. 1, pp. 182-192. ICM 아카이브 https://www.mathunion.org/icm/proceedings 에서 확인 가능.
@@ -392,3 +456,5 @@ H^{1,1}(X, \mathbb{Z}) := H^2(X, \mathbb{Z}) \cap H^{1,1}(X) = \text{Pic}(X) \ca
 - Voisin 2002 *IMRN* Theorem 1 의 Kähler 반례는 Weil 형 Abelian 다양체에 blow-up 을 하는 Section 2 구성.
 - BT-545 의 Enriques 자동 성립은 millennium-7-closure-2026-04-11.md §BT-545 의 "기존 결과의 n=6 표현" 선언 엄격 준수.
 - K3 곡면의 $h^{1,1} = 20$ 에서 $h^{1,1} = J_2 - \tau$ 식은 J_2(6) = 24, τ(6) = 4, 24 − 4 = 20 으로 산술 일치 확인.
+- Hodge 정리 원 증명 (Hodge 1941 *The Theory and Applications of Harmonic Integrals*, Cambridge) 은 elliptic PDE 의 당시 미완성 도구를 사용. 현대적 증명은 Warner 1983 GTM 94 Chapter 6 의 Kodaira 방식이 표준.
+- Chow group 의 rational equivalence 정의는 Fulton 1998 *Intersection Theory* §1.3 에서 확인.

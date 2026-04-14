@@ -365,6 +365,73 @@ Leray 약해는 **에너지 부등식**을 만족:
 
 ---
 
+## 15. 부록 — Scaling 불변성과 supercritical 성질
+
+### 15.1 NS 의 scaling
+
+- 3D NS 방정식의 핵심 변환: $(u, p, u_0)(x, t) \to \lambda (u, \lambda p, \lambda u_0)(\lambda x, \lambda^2 t)$. 즉 $u(x, t) \to \lambda u(\lambda x, \lambda^2 t)$ 가 방정식을 invariant.
+- 이 스케일링 하 노름의 변화:
+  - $\|u\|_{L^2}^2 \to \lambda^{-1} \|u\|_{L^2}^2$ (subcritical)
+  - $\|u\|_{L^3}^3 \to \|u\|_{L^3}^3$ (critical)
+  - $\|u\|_{L^\infty}$ 는 scale-invariant.
+  - $\|\nabla u\|_{L^2}^2 \to \lambda \|\nabla u\|_{L^2}^2$ (supercritical in 3D)
+
+### 15.2 Critical line의 의미
+
+- **Critical**: 노름이 scaling 에 대해 invariant.
+- Critical 공간에서 국소 존재성은 time span 이 초기값 노름에만 의존.
+- **Supercritical**: scaling 이 노름을 감소시킴 — 큰 노름이 작은 scale 을 생성.
+- **Subcritical**: scaling 이 노름을 증가 — 자연스러운 제어.
+
+### 15.3 3D NS 의 supercritical 성격
+
+- Energy inequality 의 $L^2$ 노름은 supercritical.
+- Critical 공간 $L^3$ 은 에너지보다 강한 제어 필요.
+- 현재 아는 방법으로 critical 노름을 시간에 따라 control 할 수 없다. 이것이 3D NS 의 근본 난점.
+
+### 15.4 2D 와 결정적 차이
+
+- 2D NS 의 해당 scaling 에서 energy 노름 $L^2$ 이 critical.
+- 따라서 2D 에서 energy 부등식이 자연스럽게 제어를 주고, 전역 매끄러움이 얻어짐.
+- 3D 는 dimensional analysis 자체가 supercritical → 새 도구가 필요.
+
+### 15.5 출처
+
+- Cannone, Marco, *Harmonic Analysis Tools for Solving the Incompressible Navier-Stokes Equations*, Handbook of Mathematical Fluid Dynamics Vol. 3, Elsevier, 2004. 특히 §2 의 scaling 논의.
+
+---
+
+## 16. 부록 — Besov 공간과 vorticity stretching
+
+### 16.1 Besov 공간의 정의
+
+- $\dot{B}^s_{p,q}(\mathbb{R}^3)$: Littlewood-Paley 분해를 사용한 homogeneous Besov 공간.
+- $s > 0$ 는 smoothness, $p$ 는 integrability, $q$ 는 micro-local summability.
+
+### 16.2 Kato 1984 — Besov 공간 국소 해
+
+- Tosio Kato, "Strong $L^p$-solutions of the Navier-Stokes equations in $\mathbb{R}^m$, with applications to weak solutions", *Mathematische Zeitschrift* 187(4), 1984, pp. 471-480.
+- Critical Besov 공간 $\dot{B}^{-1+3/p}_{p, \infty}$ 에서 국소 존재성.
+
+### 16.3 Koch-Tataru 2001 — $BMO^{-1}$
+
+- Herbert Koch, Daniel Tataru, "Well-posedness for the Navier-Stokes equations", *Advances in Mathematics* 157(1), 2001, pp. 22-35.
+- **정리**: $BMO^{-1}$ 공간에서 NS 국소 해.
+- $BMO^{-1}$ = $BMO$ 의 공간 derivative 공간, gauge-invariant 국소 oscillation 측정.
+
+### 16.4 Vorticity stretching 과 Besov 노름
+
+- Vorticity 방정식의 stretching 항 $(\omega \cdot \nabla) u$ 의 Besov 노름 통제 시도.
+- Beale-Kato-Majda 1984 기준의 refinement.
+- 최신 결과(Planchon 2003): Besov $\dot{B}^0_{\infty, \infty}$ 노름으로 blowup 기준.
+
+### 16.5 **장벽 G**: Besov 임계 공간에서도 제어 부재
+
+- Besov critical 공간에서의 지수 growth 를 제어하는 것도 open.
+- 현대 접근은 대부분 "만약 critical 노름이 bounded 이면..." 조건부 결과.
+
+---
+
 **정직성 체크**:
 - Leray 1934 *Acta Math.* 63 원문(프랑스어)의 서론과 주요 정리는 Ladyzhenskaya 1969 책 서문을 통한 간접 확인 + Lemarié-Rieusset 2002 의 §1.4 요약 교차 확인.
 - CKN 1982 의 $\mathcal{P}^1(\Sigma) = 0$ 결과는 *CPAM* 35, 1982, Theorem A 원문 그대로.
@@ -373,3 +440,5 @@ Leray 약해는 **에너지 부등식**을 만족:
 - Buckmaster-Vicol 2019 *Ann. Math.* 189 Theorem 1 의 약해 클래스가 **에너지 부등식을 만족하지 않는** 분포해임은 논문 §1 Remark 1.3 에서 명시.
 - Onsager 1949 추측의 원출처 *Nuovo Cimento* 6 Supp. 2, 1949, pp. 279-287 은 이탈리아어 저널. Isett 2018 *Ann. Math.* 188 서론에 Onsager 의 역사 재구성.
 - BT-544 의 3중 공명 관찰은 millennium-7-closure-2026-04-11.md §BT-544 의 "n=6 산술이 NS 방정식의 차원 해석학적 환경을 파라미터화" 선언을 엄격히 준수.
+- Koch-Tataru 2001 *Adv. Math.* 157 의 $BMO^{-1}$ 결과는 논문 Theorem 1 에서 확인.
+- Kato 1984 *Math. Z.* 187 Theorem 1 의 Besov 공간 해 존재성.

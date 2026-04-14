@@ -367,7 +367,54 @@ PROB-P1-3 문서(Yang-Mills 질량 갭 심화) 에서는 위 기초를 바탕으
 
 ---
 
-## 10. 다음 문서
+## 10. 부록 — 주요 게이지 이론 용어표
+
+| 수학 용어 | 물리 용어 | 기호 |
+|-----------|-----------|------|
+| 주군 | 게이지 구조 | P → M |
+| 결합 다발 | 물질장 | E = P ×_ρ V |
+| 연결 1-형식 | 게이지 퍼텐셜 | ω, A |
+| 곡률 2-형식 | 장세기 | Ω, F |
+| 공변도함수 | gauge covariant derivative | D, ∇ |
+| 국소단면 | 국소 gauge | s_α |
+| 전이함수 | gauge 변환 | g_{αβ} |
+| 특성류 (Chern) | topological charge | c_k, k |
+| 수평분포 | "가로(게이지) 독립" 방향 | H ⊂ TP |
+| Wilson loop | gauge-invariant 관찰량 | W(C) |
+
+---
+
+## 11. 부록 — 주요 게이지 이론 모형
+
+### 11.1 QED (U(1))
+
+- 게이지군: U(1) (abelian)
+- 장세기: F = dA, 선형
+- 결합: 약 e = √(4πα), α ≈ 1/137
+- 속박 없음, 자유 광자
+
+### 11.2 QCD (SU(3))
+
+- 게이지군: SU(3), dim = 8 (gluon 수)
+- 장세기: F = dA + A ∧ A, 비선형
+- 결합: asymptotic free, Λ_QCD ~ 200 MeV
+- 속박 있음 (confinement), mass gap 있음
+
+### 11.3 전약 (SU(2)_L × U(1)_Y)
+
+- 게이지군: SU(2)_L × U(1)_Y, dim = 4
+- Higgs 메커니즘으로 SU(2) × U(1) → U(1)_EM
+- W^±, Z^0 질량: m_W ≈ 80.4 GeV, m_Z ≈ 91.2 GeV
+
+### 11.4 표준모형 통합
+
+- 총 게이지군: SU(3) × SU(2) × U(1), dim = 12
+- 물질장: quark 6종 + lepton 6종
+- Higgs: SU(2) doublet complex scalar
+
+---
+
+## 12. 다음 문서
 
 - PURE-P1-6 : 위상학 기초 (호모토피/호몰로지/4-다양체)
 - PURE-P1-7 : 복잡도 이론 기초 (P/NP/Cook-Levin)
