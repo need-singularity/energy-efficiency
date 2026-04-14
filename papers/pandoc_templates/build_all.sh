@@ -91,7 +91,8 @@ build_one() {
   VENUE=$(lookup_venue "$INPUT")
 
   START=$(date +%s)
-  if pandoc \
+  # perl alarm 기반 timeout (macOS 기본 gtimeout 부재 대응) — 45s
+  if perl -e 'alarm 45; exec @ARGV' pandoc \
       --metadata-file="papers/pandoc_templates/_pandoc_header.yaml" \
       --metadata-file="$VENUE" \
       --bibliography="papers/pandoc_templates/skeleton.bib" \

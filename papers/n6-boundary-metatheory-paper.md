@@ -100,7 +100,7 @@ $$\sigma(n) \cdot \phi(n) = n \cdot \tau(n) \iff n = 6$$
 
 ### 2.2 9개 기본 상수 집합
 
-$$\mathcal{C}_6 = \{\mu=1,\ \phi=2,\ \sopfr=5,\ n=6,\ \tau=4,\ \sigma=12,\ J_2=24,\ R=1,\ \psi=12\}$$
+$$\mathcal{C}_6 = \{\mu=1,\ \phi=2,\ \mathrm{sopfr}=5,\ n=6,\ \tau=4,\ \sigma=12,\ J_2=24,\ R=1,\ \psi=12\}$$
 
 이 집합에서 **깊이-2 표현**(9²=81 개 정도)이 통계적으로 신뢰 가능하며, **깊이-3
 이상**은 ~800+ 개로 확장되어 1% 이내 random match 확률이 >50% 로 상승(Red Team
@@ -188,7 +188,7 @@ $$v \in B_2 \iff \exists k \in \mathbb{Z},\ v = c \cdot 10^k \ \text{with}\ c \i
 B2 에 해당하는 값은 **문화적 협약** 이지 **물리적 양자화** 가 아님.
 
 전형적 패턴: "utility-scale 1 GW", "consumer 100 W", "µW 센서", "mm 정확도".
-$10^9$(GW) 는 n6 깊이-2 에서 $\{\mu, \phi, n, \tau, \sopfr, \sigma, J_2\}$ 조합
+$10^9$(GW) 는 n6 깊이-2 에서 $\{\mu, \phi, n, \tau, \mathrm{sopfr}, \sigma, J_2\}$ 조합
 으로 근사해도 구조적 의미 없음.
 
 ### 4.3 실측 예시

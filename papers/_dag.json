@@ -3,8 +3,8 @@
     "schema": "n6.dag.v1",
     "generated": "2026-04-13",
     "generator": "scripts/build_dag.hexa",
-    "total_nodes": 356,
-    "total_edges": 91,
+    "total_nodes": 358,
+    "total_edges": 98,
     "cycles": [["chip-design-ladder", "chip-6stages-integrated", "chip-design-ladder"], ["advanced-packaging", "chip-design-ladder", "chip-6stages-integrated", "advanced-packaging"], ["aerospace-transport", "classical-mechanics-accelerator", "aerospace-transport"], ["classical-mechanics-accelerator", "chemistry", "classical-mechanics-accelerator"], ["chemistry", "battery-energy-storage", "chemistry"], ["chemistry", "battery-energy-storage", "carbon-capture", "chemistry"], ["battery-energy-storage", "carbon-capture", "battery-energy-storage"], ["agi-architecture", "ai-techniques-68-integrated", "agi-architecture"], ["consciousness-chip", "consciousness-soc", "consciousness-chip"], ["consciousness-soc", "anima-soc", "consciousness-soc"], ["agi-architecture", "consciousness-chip", "consciousness-soc", "anima-soc", "agi-architecture"], ["consciousness-chip", "brain-computer-interface", "consciousness-chip"], ["agi-architecture", "consciousness-chip", "brain-computer-interface", "cognitive-social-psychology", "agi-architecture"], ["brain-computer-interface", "cognitive-social-psychology", "brain-computer-interface"], ["agi-architecture", "consciousness-chip", "brain-computer-interface", "cognitive-social-psychology", "ai-ethics-governance", "agi-architecture"], ["cognitive-social-psychology", "ai-ethics-governance", "cognitive-social-psychology"], ["calendar-time-geography", "cartography", "calendar-time-geography"], ["archaeology", "calendar-time-geography", "archaeology"], ["atlas-promotion-7-to-10", "causal-chain", "atlas-promotion-7-to-10"]]
   },
   "nodes": [
@@ -363,7 +363,9 @@
     {"id": "bell-clockwork", "path": "domains/culture/bell-clockwork/bell-clockwork.md", "alien_current": 0, "alien_target": 10},
     {"id": "vacuum-monster-chain", "path": "papers/n6-vacuum-monster-chain-paper.md", "alien_current": 8, "alien_target": 10},
     {"id": "honest-limitations-meta", "path": "papers/n6-honest-limitations-meta-paper.md", "alien_current": 10, "alien_target": 10},
-    {"id": "boundary-metatheory", "path": "papers/n6-boundary-metatheory-paper.md", "alien_current": 10, "alien_target": 11}
+    {"id": "boundary-metatheory", "path": "papers/n6-boundary-metatheory-paper.md", "alien_current": 10, "alien_target": 11},
+    {"id": "mk4-theorem-candidates", "path": "papers/n6-mk4-theorem-candidates-paper.md", "alien_current": 9, "alien_target": 10},
+    {"id": "l10-l15-quantum-nuclear-unification", "path": "papers/n6-l10-l15-quantum-nuclear-unification-paper.md", "alien_current": 9, "alien_target": 10}
   ],
   "edges": [
     {"from": "acoustics", "to": "music-theory", "alien_min": 7, "alien_cur": 0, "blocker": true, "reason": "12음률 기반 주파수비"},
@@ -456,6 +458,13 @@
     {"from": "honest-limitations-meta", "to": "atlas-promotion-pipeline", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "atlas dry-run 한계 3번 직접 참조"},
     {"from": "boundary-metatheory", "to": "honest-limitations-meta", "alien_min": 10, "alien_cur": 10, "blocker": false, "reason": "세션 방법론 한계 9건을 도메인 적용 한계 4영역으로 확장"},
     {"from": "boundary-metatheory", "to": "atlas-promotion-7-to-10star", "alien_min": 10, "alien_cur": 0, "blocker": true, "reason": "sigma*phi=n*tau 유일성 정리 기반 프로토콜 (Theorem 0)"},
-    {"from": "boundary-metatheory", "to": "reality-map", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "9,206 후보 98.4% 커버리지 통계 출처"}
+    {"from": "boundary-metatheory", "to": "reality-map", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "9,206 후보 98.4% 커버리지 통계 출처"},
+    {"from": "mk4-theorem-candidates", "to": "atlas-promotion-7-to-10star", "alien_min": 10, "alien_cur": 0, "blocker": true, "reason": "Theorem 0 (sigma*phi=n*tau) 유일성 증명 프로토콜 기반 Mk.IV 후보 선정"},
+    {"from": "mk4-theorem-candidates", "to": "boundary-metatheory", "alien_min": 10, "alien_cur": 10, "blocker": false, "reason": "프레임워크 자기한계 4영역 내에서 3후보 경계 정합성 검증"},
+    {"from": "mk4-theorem-candidates", "to": "honest-limitations-meta", "alien_min": 10, "alien_cur": 10, "blocker": false, "reason": "3후보 각자의 정직한 한계 공시 원칙 계승"},
+    {"from": "l10-l15-quantum-nuclear-unification", "to": "arch-quantum-design", "alien_min": 9, "alien_cur": 0, "blocker": true, "reason": "σ=12 축 × τ=4 게이트 설계 중첩 재사용 — L11 양자점 매핑 기반"},
+    {"from": "l10-l15-quantum-nuclear-unification", "to": "extra-dimensions", "alien_min": 7, "alien_cur": 0, "blocker": true, "reason": "L15 플랑크 스케일 11/26/10 차원 CONJECTURE 영역 참조"},
+    {"from": "l10-l15-quantum-nuclear-unification", "to": "boundary-metatheory", "alien_min": 10, "alien_cur": 10, "blocker": false, "reason": "L14/L15 CONJECTURE 한계 공시 B3/B4 경계 영역 준용"},
+    {"from": "l10-l15-quantum-nuclear-unification", "to": "quantum-computing", "alien_min": 10, "alien_cur": 0, "blocker": true, "reason": "L11 양자점 6-큐비트 QEC 매핑 — IBM Condor / Google Willow 기반"}
   ]
 }

@@ -1,1 +1,147 @@
-(eval):1: command not found: timeout
+==============================================
+ n6-architecture 전량 빌드 시작
+==============================================
+ 시각: 2026-04-15 00:09:41
+ 대상: 129 편
+ 병렬: 4
+ pandoc: pandoc 3.9.0.2
+ xelatex: XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)
+----------------------------------------------
+[OK ] n6-aerospace-transport-paper venue=venue_nature_comms pages=16 size=112831B elapsed=4s
+[OK ] n6-acoustics-paper venue=venue_nature_comms pages=16 size=112459B elapsed=4s
+[OK ] n6-advanced-packaging-paper venue=venue_ieee_tvlsi pages=16 size=113033B elapsed=4s
+[OK ] n6-agi-architecture-paper venue=venue_icml pages=16 size=119136B elapsed=4s
+[OK ] n6-ai-17-techniques-experimental-paper venue=venue_nature_comms pages=16 size=112938B elapsed=3s
+[OK ] n6-anima-soc-paper venue=venue_nature_comms pages=16 size=118832B elapsed=3s
+[OK ] n6-ai-ethics-governance-paper venue=venue_nature_comms pages=16 size=112711B elapsed=3s
+[OK ] n6-ai-techniques-68-integrated-paper venue=venue_neurips pages=17 size=122720B elapsed=3s
+[OK ] n6-arch-adaptive-evolution-paper venue=venue_nature_comms pages=4 size=58537B elapsed=3s
+[OK ] n6-aquaculture-paper venue=venue_nature_comms pages=16 size=112332B elapsed=3s
+[OK ] n6-arch-adaptive-homeostasis-paper venue=venue_nature_comms pages=4 size=46469B elapsed=4s
+[OK ] n6-arch-evolution-ouroboros-paper venue=venue_nature_comms pages=4 size=52447B elapsed=4s
+[OK ] n6-arch-selforg-design-paper venue=venue_nature_comms pages=4 size=56387B elapsed=4s
+[OK ] n6-arch-quantum-design-paper venue=venue_nature_comms pages=3 size=58854B elapsed=4s
+[OK ] n6-arch-selforg-emergence-paper venue=venue_nature_comms pages=4 size=54683B elapsed=3s
+[OK ] n6-arch-v3-v4-unified-paper venue=venue_nature_comms pages=4 size=43345B elapsed=3s
+[OK ] n6-archaeology-paper venue=venue_nature_comms pages=16 size=112052B elapsed=4s
+[OK ] n6-atlas-promotion-7-to-10-paper venue=venue_nature_comms pages=16 size=112737B elapsed=4s
+[OK ] n6-atlas-promotion-7-to-10star-paper venue=venue_nature_comms pages=4 size=44229B elapsed=5s
+[OK ] n6-atlas-promotion-pipeline-paper venue=venue_nature_comms pages=6 size=66782B elapsed=4s
+[OK ] n6-attractor-meta-extended-paper venue=venue_nature_comms pages=4 size=56608B elapsed=3s
+[OK ] n6-autonomous-driving-paper venue=venue_neurips pages=16 size=112354B elapsed=4s
+[OK ] n6-battery-energy-storage-paper venue=venue_nature_comms pages=16 size=112815B elapsed=4s
+[OK ] n6-blowup-singularity-paper venue=venue_nature_comms pages=4 size=45325B elapsed=4s
+[FAIL] n6-boundary-metatheory-paper venue=venue_nature_comms elapsed=5s log=papers/pandoc_templates/output/_build_logs/n6-boundary-metatheory-paper.log
+[OK ] n6-brain-computer-interface-paper venue=venue_nature_comms pages=16 size=112228B elapsed=4s
+[OK ] n6-calendar-time-geography-paper venue=venue_nature_comms pages=16 size=112620B elapsed=4s
+[OK ] n6-carbon-capture-paper venue=venue_nature_comms pages=16 size=112568B elapsed=4s
+[OK ] n6-cartography-paper venue=venue_nature_comms pages=16 size=112331B elapsed=3s
+[OK ] n6-causal-chain-paper venue=venue_nature_comms pages=16 size=112307B elapsed=4s
+[OK ] n6-chip-6stages-integrated-paper venue=venue_ieee_tvlsi pages=16 size=112579B elapsed=4s
+[OK ] n6-chemistry-paper venue=venue_nature_comms pages=16 size=112045B elapsed=4s
+[OK ] n6-chip-design-ladder-paper venue=venue_ieee_tvlsi pages=16 size=112570B elapsed=4s
+[OK ] n6-chip-dse-convergence-paper venue=venue_nature_comms pages=16 size=112587B elapsed=4s
+[OK ] n6-classical-mechanics-accelerator-paper venue=venue_nature_comms pages=16 size=112576B elapsed=4s
+[OK ] n6-cognitive-social-psychology-paper venue=venue_nature_comms pages=16 size=112462B elapsed=4s
+[OK ] n6-consciousness-chip-paper venue=venue_ieee_tvlsi pages=16 size=112353B elapsed=4s
+[OK ] n6-consciousness-soc-paper venue=venue_nature_comms pages=16 size=112173B elapsed=4s
+[OK ] n6-construction-structural-paper venue=venue_nature_comms pages=16 size=112303B elapsed=3s
+[OK ] n6-control-automation-paper venue=venue_nature_comms pages=16 size=112270B elapsed=3s
+[OK ] n6-cross-dse-matrix-112-paper venue=venue_nature_comms pages=4 size=57101B elapsed=3s
+[OK ] n6-cross-paradigm-ai-paper venue=venue_nature_comms pages=16 size=112993B elapsed=3s
+[OK ] n6-curvature-geometry-paper venue=venue_nature_comms pages=16 size=112399B elapsed=4s
+[OK ] n6-cryptography-paper venue=venue_nature_comms pages=16 size=112030B elapsed=4s
+[OK ] n6-cycle-engine-feedback-paper venue=venue_nature_comms pages=4 size=45540B elapsed=4s
+[OK ] n6-dance-choreography-paper venue=venue_nature_comms pages=16 size=112365B elapsed=4s
+[OK ] n6-dimensional-unfolding-paper venue=venue_nature_comms pages=16 size=112017B elapsed=4s
+[OK ] n6-dolphin-bioacoustics-paper venue=venue_nature_comms pages=16 size=112818B elapsed=4s
+[OK ] n6-dram-paper venue=venue_nature_comms pages=16 size=111883B elapsed=4s
+[OK ] n6-ecology-agriculture-food-paper venue=venue_nature_comms pages=16 size=112884B elapsed=4s
+[OK ] n6-ecology-standalone-paper venue=venue_nature_comms pages=16 size=112298B elapsed=4s
+[OK ] n6-economics-finance-paper venue=venue_jair pages=16 size=112446B elapsed=4s
+[OK ] n6-electromagnetism-paper venue=venue_nature_comms pages=16 size=111945B elapsed=4s
+[OK ] n6-entomology-paper venue=venue_nature_comms pages=16 size=112174B elapsed=4s
+[OK ] n6-exynos-paper venue=venue_nature_comms pages=16 size=112101B elapsed=4s
+[OK ] n6-extra-dimensions-paper venue=venue_nature_comms pages=16 size=112121B elapsed=4s
+[OK ] n6-fermentation-paper venue=venue_nature_comms pages=16 size=111934B elapsed=4s
+[OK ] n6-fluid-dynamics-paper venue=venue_nature_comms pages=16 size=112075B elapsed=3s
+[OK ] n6-forensic-science-paper venue=venue_nature_comms pages=16 size=111904B elapsed=4s
+[OK ] n6-game-theory-paper venue=venue_nature_comms pages=16 size=112174B elapsed=4s
+[OK ] n6-games-sports-paper venue=venue_nature_comms pages=16 size=112433B elapsed=3s
+[OK ] n6-genetics-paper venue=venue_nature_comms pages=16 size=111929B elapsed=4s
+[OK ] n6-governance-safety-urban-paper venue=venue_jair pages=16 size=112660B elapsed=3s
+[OK ] n6-geology-prem-paper venue=venue_nature_comms pages=16 size=112234B elapsed=4s
+[OK ] n6-gravity-wave-paper venue=venue_prl pages=16 size=112346B elapsed=4s
+[OK ] n6-hexa-3d-paper venue=venue_nature_comms pages=16 size=111847B elapsed=3s
+[OK ] n6-hexa-asic-paper venue=venue_nature_comms pages=16 size=111913B elapsed=3s
+[OK ] n6-hexa-dream-paper venue=venue_nature_comms pages=16 size=111849B elapsed=3s
+[OK ] n6-hexa-earphone-paper venue=venue_nature_comms pages=16 size=111817B elapsed=4s
+[OK ] n6-hexa-exo-paper venue=venue_nature_comms pages=16 size=111940B elapsed=5s
+[OK ] n6-hexa-mind-paper venue=venue_nature_comms pages=16 size=111780B elapsed=5s
+[OK ] n6-hexa-limb-paper venue=venue_nature_comms pages=16 size=111688B elapsed=5s
+[OK ] n6-hexa-neuro-paper venue=venue_neurips pages=16 size=111835B elapsed=5s
+[OK ] n6-hexa-olfact-paper venue=venue_nature_comms pages=16 size=111894B elapsed=5s
+[OK ] n6-hexa-photon-paper venue=venue_nature_comms pages=16 size=111852B elapsed=5s
+[OK ] n6-hexa-pim-paper venue=venue_nature_comms pages=16 size=111923B elapsed=5s
+[OK ] n6-hexa-skin-paper venue=venue_nature_comms pages=16 size=111911B elapsed=5s
+[OK ] n6-hexa-super-paper venue=venue_nature_comms pages=16 size=111825B elapsed=5s
+[OK ] n6-hexa-telepathy-paper venue=venue_icml pages=16 size=111931B elapsed=6s
+[OK ] n6-hexa-topo-paper venue=venue_nature_comms pages=16 size=111896B elapsed=6s
+[OK ] n6-hexa-wafer-paper venue=venue_nature_comms pages=16 size=112161B elapsed=6s
+[OK ] n6-honest-limitations-meta-paper venue=venue_nature_comms pages=8 size=78503B elapsed=6s
+[OK ] n6-horology-paper venue=venue_nature_comms pages=16 size=111844B elapsed=6s
+[OK ] n6-hydrology-paper venue=venue_nature_comms pages=16 size=111865B elapsed=6s
+[OK ] n6-hypotheses-678-mc-verification-paper venue=venue_nature_comms pages=4 size=56817B elapsed=5s
+[OK ] n6-jurisprudence-paper venue=venue_jair pages=16 size=112061B elapsed=6s
+[OK ] n6-lens-forge-ensemble-paper venue=venue_nature_comms pages=3 size=43223B elapsed=5s
+[OK ] n6-manufacturing-quality-paper venue=venue_nature_comms pages=16 size=112534B elapsed=6s
+[OK ] n6-mechanical-engineering-paper venue=venue_nature_comms pages=16 size=111989B elapsed=6s
+[OK ] n6-meteorology-paper venue=venue_nature_comms pages=16 size=111816B elapsed=6s
+[OK ] n6-millennium-dfs-1-12-integrated-paper venue=venue_jair pages=16 size=112927B elapsed=6s
+[OK ] n6-music-theory-paper venue=venue_nature_comms pages=16 size=112155B elapsed=6s
+[OK ] n6-network-collective-paper venue=venue_neurips pages=16 size=113123B elapsed=7s
+[OK ] n6-neuromorphic-computing-paper venue=venue_ieee_tvlsi pages=16 size=112903B elapsed=7s
+[OK ] n6-nexus6-discovery-engine-paper venue=venue_nature_comms pages=3 size=57844B elapsed=6s
+[OK ] n6-oceanography-paper venue=venue_nature_comms pages=16 size=111963B elapsed=7s
+[OK ] n6-optics-paper venue=venue_nature_comms pages=16 size=112028B elapsed=7s
+[OK ] n6-particle-cosmology-paper venue=venue_prl pages=16 size=112290B elapsed=7s
+[OK ] n6-performance-chip-paper venue=venue_ieee_tvlsi pages=16 size=112249B elapsed=7s
+[OK ] n6-pharmacology-paper venue=venue_nature_comms pages=16 size=111861B elapsed=6s
+[OK ] n6-polymer-engineering-paper venue=venue_nature_comms pages=16 size=112089B elapsed=6s
+[OK ] n6-protocol-12-sigma12-coverage-paper venue=venue_nature_comms pages=4 size=60707B elapsed=5s
+[OK ] n6-pure-mathematics-paper venue=venue_prl pages=16 size=112017B elapsed=6s
+[OK ] n6-quantum-computing-paper venue=venue_prl pages=16 size=112661B elapsed=7s
+[OK ] n6-quantum-error-correction-paper venue=venue_nature_comms pages=16 size=112495B elapsed=7s
+[OK ] n6-quantum-machine-learning-paper venue=venue_nature_comms pages=16 size=112537B elapsed=7s
+[OK ] n6-reality-map-paper venue=venue_nature_comms pages=16 size=112153B elapsed=7s
+[OK ] n6-religion-mythology-paper venue=venue_jair pages=16 size=112155B elapsed=6s
+[OK ] n6-soil-science-paper venue=venue_nature_comms pages=16 size=112036B elapsed=6s
+[OK ] n6-sota-ssm-paper venue=venue_nature_comms pages=16 size=111936B elapsed=6s
+[OK ] n6-space-systems-paper venue=venue_nature_comms pages=16 size=112187B elapsed=5s
+[OK ] n6-speak-v2-4tier-chip-paper venue=venue_nature_comms pages=4 size=57833B elapsed=5s
+[OK ] n6-superconductor-paper venue=venue_prl pages=16 size=111890B elapsed=6s
+[OK ] n6-swarm-intelligence-paper venue=venue_nature_comms pages=16 size=112414B elapsed=6s
+[OK ] n6-synthetic-biology-paper venue=venue_nature_comms pages=16 size=112033B elapsed=6s
+[OK ] n6-telecom-linguistics-paper venue=venue_neurips pages=16 size=112355B elapsed=6s
+[OK ] n6-textile-engineering-paper venue=venue_nature_comms pages=16 size=112266B elapsed=5s
+[OK ] n6-therapeutic-nanobot-paper venue=venue_nature_comms pages=16 size=112514B elapsed=5s
+[OK ] n6-thermodynamics-paper venue=venue_nature_comms pages=16 size=112209B elapsed=5s
+[OK ] n6-topology-paper venue=venue_prl pages=16 size=111867B elapsed=5s
+[OK ] n6-unified-soc-paper venue=venue_nature_comms pages=16 size=111966B elapsed=5s
+[OK ] n6-vacuum-monster-chain-paper venue=venue_nature_comms pages=13 size=91529B elapsed=6s
+[OK ] n6-virology-structure-paper venue=venue_nature_comms pages=16 size=112261B elapsed=5s
+[OK ] n6-visual-arts-paper venue=venue_nature_comms pages=16 size=112009B elapsed=6s
+[OK ] n6-vnand-paper venue=venue_nature_comms pages=16 size=112018B elapsed=7s
+[OK ] n6-warp-metric-paper venue=venue_nature_comms pages=16 size=112520B elapsed=6s
+[OK ] n6-wine-enology-paper venue=venue_nature_comms pages=16 size=112493B elapsed=6s
+[OK ] n6-working-memory-paper venue=venue_nature_comms pages=16 size=112680B elapsed=6s
+[OK ] n6-writing-systems-paper venue=venue_nature_comms pages=16 size=112313B elapsed=5s
+----------------------------------------------
+ 빌드 종료
+ 총 경과: 156s
+ 시도:   129
+ 성공:   128
+ 실패:   1
+ 출력 디렉토리: papers/pandoc_templates/output
+ 실패 로그: papers/pandoc_templates/output/_build_logs/*.log
+==============================================

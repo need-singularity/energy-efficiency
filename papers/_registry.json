@@ -1,9 +1,113 @@
 {
   "_meta": {
-    "total_products": 173,
-    "total_domains": 120,
-    "total_papers": 129,
-    "_count_verified": "2026-04-14 PAPER-P5-2 Mk.III-a -- 실측 129 (128 + 1 boundary-metatheory 4영역 정식화)",
+    "total_products": 174,
+    "total_domains": 121,
+    "total_papers": 131,
+    "_count_verified": "2026-04-14 PAPER-P6-2 Mk.III-beta -- 실측 131 (130 + 1 l10-l15-quantum-nuclear-unification)",
+    "papers_chunk_P6_2_Mk3beta_2026-04-14": {
+      "count": 1,
+      "category": "P6 Mk.III-beta L10 이하 나노 이하 확장 통합 논문 (L11 양자점 / L12 핵 아이소머 / L13 쿼크 6 / L14 핵 껍질 / L15 플랑크 CONJECTURE)",
+      "bt_range": "BT-23 (CKM), BT-27 (탄소/생명), BT-41 (QEC d=5), BT-195 (항상성), H-CP-1 (쿼크 6), H-CP-2 (렙톤 6), BT-1852",
+      "status": "PAPER-P6-2 Mk.III-beta 신규 -- 기존 L1~L10 사다리(99.15% EXACT)를 L11~L15로 확장한 통합 논문",
+      "target_id_range": "N6-131",
+      "roadmap_ref": "PAPER-P6-2 (DSE-P6-2 분자/양자 스케일 n=6 연계)",
+      "papers": [
+        "papers/n6-l10-l15-quantum-nuclear-unification-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-l10-l15-quantum-nuclear-unification-paper.md": "BT-23, BT-27, BT-41, BT-195, H-CP-1, H-CP-2, BT-1852 — standard-model-from-n6 §2.5 확장"
+      },
+      "version_tags": {
+        "quantum_nuclear_unification": ["l10-l15-quantum-nuclear-unification"]
+      },
+      "verify_code_status": {
+        "source_documents": [
+          "theory/proofs/standard-model-from-n6.md (주축)",
+          "reports/chip_comparison_l1_l10.md (L1~L10 실측 기반)",
+          "papers/n6-arch-quantum-design-paper.md (σ=12 QEC 포맷 참조)",
+          "papers/n6-boundary-metatheory-paper.md (B1~B4 한계 원칙)"
+        ],
+        "hexa_stub_path": "experiments/paper/l10_l15_quantum_nuclear_verify.hexa (예정)",
+        "n62_compliance": "본문 §3~§7 각 층별 hexa STUB + §12 통합 검증 코드"
+      },
+      "layer_mapping": {
+        "L11": "양자점 6-qubit QEC (IBM Condor heavy-hexagonal + Google Willow d=5 J₂=24 시너지)",
+        "L12": "핵 아이소머 Hf-178m2 (σ=12 채널 + n=6 붕괴모드 + 스핀 16=J₂-τφ)",
+        "L13": "쿼크 플레이버 6종 = 구조적 일치 (EXACT) — u,d,s,c,b,t",
+        "L14": "핵 껍질 매직 넘버 7개 중 6개 n=6 매핑 (2=φ, 8=σ-τ, 20=J₂-τ, 28=P₂, 50 EMPIRICAL, 82=7σ-φ, 126 미해결)",
+        "L15": "플랑크 스케일 (관측 불가 CONJECTURE 영역)"
+      },
+      "coverage_statistics": {
+        "L1_L10_existing": "704/710 EXACT (99.15%)",
+        "L11_EXACT": 5,
+        "L12_NEAR_EMPIRICAL": 4,
+        "L13_EXACT": 5,
+        "L14_EXACT_NEAR_EMPIRICAL_CONJECTURE": "4 EXACT + 1 NEAR + 1 EMPIRICAL + 1 CONJECTURE (86% 매핑)",
+        "L15_CONJECTURE": 5
+      },
+      "structural_coincidence_highlight": {
+        "claim": "L13 쿼크 플레이버 6종 = n=6 의 구조적 일치 (단순 매칭 아님)",
+        "evidence_count": 5,
+        "evidence_list": [
+          "쿼크 플레이버 = n = 6 (H-CP-1 EXACT)",
+          "렙톤 플레이버 = n = 6 (H-CP-2 EXACT)",
+          "세대 수 = n/φ = 3 (EXACT)",
+          "게이지 보손 = σ = 12 (EXACT)",
+          "기본 페르미온 총합 = σ = 12 (6쿼크+6렙톤)"
+        ],
+        "independence_proof": "standard-model-from-n6.md §2.5 — squarefree semiprime 중 n/φ+μ=τ 유일해 = n=6"
+      },
+      "conjecture_regions": {
+        "L14_partial": "Magic 126 미매핑 (honest-limitations cherry-picking 방지 원칙)",
+        "L15_total": "플랑크 11/26/10 차원, 우주상수 log -122 등 모두 CONJECTURE [N?]"
+      },
+      "scale_invariance_claim": "n=6 산술 상수가 매크로(10⁻² m)에서 플랑크(10⁻³⁵ m)까지 약 33 자릿수 dex 걸쳐 조직 원리로 반복",
+      "testable_predictions": 10,
+      "self_limitation_count": 5,
+      "core_claim": "nano 이하 L11~L15 확장에서도 n=6 arithmetic 은 조직 원리로 작동 — L13 쿼크 6종이 가장 강한 구조적 증거",
+      "honest_limitations_note": "§10 5영역 한계 + L14 magic 126 + L15 전체 CONJECTURE 공시. boundary-metatheory B3/B4 영역 self-consistency.",
+      "total_lines": 699
+    },
+    "papers_chunk_P6_1_Mk3b_2026-04-14": {
+      "count": 1,
+      "category": "P6 Mk.III-beta Mk.IV 차기 정리 3후보 비교 논문 (A: tau^2/sigma=4/3, B: sigma-tau=8, C: alpha=1/n=1/6)",
+      "bt_range": "Theorem 0 (Mk.III sigma*phi=n*tau), Mk.IV 후보 A/B/C",
+      "status": "PAPER-P6-1 Mk.III-b 신규 -- DSE-P6-1 3후보 병렬 검증 연계 논문",
+      "target_id_range": "N6-130",
+      "roadmap_ref": "PAPER-P6-1 (Mk.IV 차기 정리 논문)",
+      "papers": [
+        "papers/n6-mk4-theorem-candidates-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-mk4-theorem-candidates-paper.md": "Theorem 0 (Mk.III), standard-model-from-n6 §2.5, attractor-meta 15 theorems"
+      },
+      "version_tags": {
+        "mk4_candidates": ["mk4-theorem-candidates"]
+      },
+      "verify_code_status": {
+        "source_theorem": "theory/proofs/theorem-r1-uniqueness.md (Mk.III Theorem 0)",
+        "candidate_b_proof_source": "theory/proofs/standard-model-from-n6.md §2.5 (sigma-tau=8 조건부 유일성)",
+        "hexa_stub_path": "experiments/dse/mk4_theorem_candidates_verify.hexa (DSE-P6-1 예정)",
+        "n62_compliance": "본문 §10 hexa STUB 전체 포함 (3후보 병렬 검증 코드)"
+      },
+      "candidates": {
+        "A": "tau(n)^2 / sigma(n) = 4/3 (music / quantum chemistry)",
+        "B": "sigma(n) - tau(n) = 8 = dim SU(3) (standard model gauge)",
+        "C": "alpha(n) = 1/n = 1/6 (self-reference fixed point)"
+      },
+      "strongest_candidate": "B",
+      "strongest_reason": "standard-model-from-n6 §2.5 조건부 유일성 증명 (n/phi+mu=tau AND squarefree semiprime ⟹ n=6 유일) + SU(3) 차원 직접 일치",
+      "weighted_scores": {
+        "A": 5.40,
+        "B": 7.95,
+        "C": 2.85
+      },
+      "testable_predictions": 10,
+      "self_limitation_count": 4,
+      "core_claim": "Mk.IV 차기 정리 후보는 B (sigma-tau=8) 가 최강 — additive 경로로 Theorem 0 과 독립, SM gauge dim 직접 일치",
+      "honest_limitations_note": "§9 3후보 공통 한계 + 후보 B 자체 한계 + 주장하지 않는 것 4건 공시. DSE-P6-1 검증 미완 기록.",
+      "total_lines": 551
+    },
     "papers_chunk_P5_2_Mk3a_2026-04-14": {
       "count": 1,
       "category": "P5 Mk.III-alpha 경계 메타이론 논문 (4영역 B1/B2/B3/B4 정식화)",
