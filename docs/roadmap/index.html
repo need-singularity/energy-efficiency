@@ -406,6 +406,23 @@
     .h100-action.terminate { background: rgba(239,68,68,0.18); color: #ef4444; }
     .h100-over   { color: #ef4444; font-weight: 700; }
     .h100-under  { color: #10b981; }
+    .h100-table td.lanes { font-size: 0.82rem; line-height: 1.55; }
+    .h100-table td.lanes div + div { margin-top: 0.2rem; }
+    .lane-tag {
+      display: inline-block; padding: 0.05rem 0.4rem; border-radius: 0.25rem;
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+      margin-right: 0.35rem; letter-spacing: 0.04em;
+    }
+    .lane-alm     { background: rgba(59,130,246,0.18);  color: #60a5fa; }
+    .lane-clm     { background: rgba(168,85,247,0.18);  color: #c084fc; }
+    .lane-physics { background: rgba(34,197,94,0.18);   color: #4ade80; }
+    .lane-hexa    { background: rgba(245,158,11,0.18);  color: #fbbf24; }
+    .track-badge {
+      display: inline-block; padding: 0.1rem 0.5rem; border-radius: 0.3rem;
+      background: rgba(99,102,241,0.18); color: #a5b4fc;
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.04em;
+    }
   </style>
 </head>
 <body>
@@ -827,18 +844,23 @@
         const s = slotState[p.slot] || {};
         const age = s.hb_age_sec;
         const action = s.action || "—";
-        const fb = (p.fallback_queue_keys || [])[0] || "—";
+        const fbList = (p.fallback_queue_keys || []).join(" → ") || "—";
+        const dl = p.dual_lanes || {};
+        const laneEntries = Object.entries(dl);
+        const lanesHtml = laneEntries.length
+          ? laneEntries.map(([k, v]) => `<div><span class="lane-tag lane-${esc(k)}">${esc(k.toUpperCase())}</span> ${esc(v)}</div>`).join("")
+          : `<div style="color:var(--fg-dim)">${esc(p.role || "")}</div>`;
         return `
           <tr>
             <td class="slot">${esc(p.slot)}</td>
-            <td>${esc(p.track)}</td>
-            <td>${esc(p.role)}</td>
+            <td><span class="track-badge">${esc(p.track)}</span></td>
+            <td class="lanes">${lanesHtml}</td>
             <td>${esc(p.gpu)}</td>
             <td class="num">$${p.budget_usd_per_day_max}</td>
             <td class="num">${p.idle_kill_minutes}min</td>
             <td class="num">${fmtAge(age)}</td>
             <td><span class="h100-action ${esc(action)}">${esc(action)}</span></td>
-            <td><span class="mono">${esc(fb)}</span></td>
+            <td><span class="mono" style="font-size:0.78rem">${esc(fbList)}</span></td>
           </tr>
         `;
       }).join("");
@@ -847,8 +869,8 @@
         <table class="h100-table">
           <thead>
             <tr>
-              <th>slot</th><th>track</th><th>role</th><th>gpu</th>
-              <th>budget/day</th><th>idle kill</th><th>hb age</th><th>action</th><th>fallback[0]</th>
+              <th>slot</th><th>track</th><th>lanes (ALM+CLM 듀얼)</th><th>gpu</th>
+              <th>budget/day</th><th>idle kill</th><th>hb age</th><th>action</th><th>fallback queue</th>
             </tr>
           </thead>
           <tbody>${rows || `<tr><td colspan="9" style="color:var(--fg-dim)">슬롯 데이터 없음</td></tr>`}</tbody>
