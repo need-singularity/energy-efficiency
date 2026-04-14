@@ -1,0 +1,195 @@
+# verify_millennium_axes.hexa
+# 7대 난제 서브프로젝트 축 체계 검증 파이프라인
+# 입력: Y1~Y9 9축 세트 (axis-final-millennium.md §1)
+# 출력: 6 서브테스트 결과 맵 + 요약 문자열
+
+@module verify_millennium_axes
+@version 1.0
+@ssot /Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-final-millennium.md
+
+# --- 데이터 구조 ---
+
+type Axis = {
+  id:            string,      # Y1~Y9
+  name:          string,
+  score:         float,       # 유리성 0~10
+  primary_bt:    list[int],   # 주 BT 목록
+  secondary_bt:  list[int],
+  coverage:      map[int,int],# BT → 강도 0~10
+  evidence:      list[string],# 증거 파일 경로
+  bottleneck:    string,
+}
+
+type PhaseMap = {
+  phase_id:      string,      # P0~P6, PΩ
+  leading_axes:  list[string],# Y-id
+  target_bt:     list[int],
+  status:        string,      # done / in-progress / pending
+}
+
+# --- 서브테스트 ---
+
+fn test_bt_coverage(axes: list[Axis]) -> bool {
+  # BT-541~546 각각 최소 1 축에서 강도 ≥ 8
+  let bts = [541, 542, 543, 544, 545, 546]
+  let pass_count = 0
+  for bt in bts {
+    let max_strength = 0
+    for ax in axes {
+      let s = ax.coverage.get(bt, 0)
+      if s > max_strength { max_strength = s }
+    }
+    if max_strength >= 8 { pass_count = pass_count + 1 }
+  }
+  return pass_count == 6
+}
+
+fn test_evidence_integrity(axes: list[Axis]) -> bool {
+  # 증거 파일 존재율 ≥ 95%
+  let total = 0
+  let exists = 0
+  for ax in axes {
+    for path in ax.evidence {
+      total = total + 1
+      if file_exists(path) { exists = exists + 1 }
+    }
+  }
+  if total == 0 { return false }
+  let rate = exists * 100 / total
+  return rate >= 95
+}
+
+fn test_orthogonality(axes: list[Axis]) -> bool {
+  # 9×9 중복도 임계치 ≤ 7 (필연 중복 승인 예외 ≤ 2)
+  let approved_exceptions = [("Y4", "Y9"), ("Y9", "Y4")]
+  let violations = 0
+  for a in axes {
+    for b in axes {
+      if a.id == b.id { continue }
+      let overlap = compute_overlap(a, b)
+      if overlap > 7 {
+        let pair = (a.id, b.id)
+        if not approved_exceptions.contains(pair) {
+          violations = violations + 1
+        }
+      }
+    }
+  }
+  return violations == 0
+}
+
+fn test_honesty(axes: list[Axis]) -> bool {
+  # BT 해결 수 == 0 (Perelman BT-547 제외)
+  let solved_count = 0
+  for ax in axes {
+    for path in ax.evidence {
+      let content = read_file(path)
+      # "해결" 주장 탐지 (한글)
+      if content.contains("해결됨") or content.contains("증명됨") {
+        if not content.contains("Perelman") and not content.contains("회고") {
+          solved_count = solved_count + 1
+        }
+      }
+    }
+  }
+  # PARTIAL 3 태그 유지 확인
+  let partial_tags = ["SEED-06", "SEED-15", "SEED-21"]
+  let tag_found = 0
+  for tag in partial_tags {
+    if any_axis_evidence_contains(axes, tag) { tag_found = tag_found + 1 }
+  }
+  return solved_count == 0 and tag_found == 3
+}
+
+fn test_phase_consistency(axes: list[Axis], phases: list[PhaseMap]) -> bool {
+  # N=8 Phase + 주도 축 매핑 완결
+  if phases.len != 8 { return false }
+  let expected = [
+    ("P0", []),
+    ("P1", []),  # 전체 가동
+    ("P2", ["Y1"]),
+    ("P3", ["Y4"]),
+    ("P4", ["Y5", "Y6"]),
+    ("P5", ["Y7", "Y8"]),
+    ("P6", []),
+    ("PΩ", ["Y9"]),
+  ]
+  for (pid, expected_leads) in expected {
+    let found = phases.find(p => p.phase_id == pid)
+    if found == none { return false }
+    if expected_leads.len > 0 and found.leading_axes != expected_leads {
+      return false
+    }
+  }
+  return true
+}
+
+fn test_r3_final(axes: list[Axis]) -> bool {
+  # 신규 축 수 == 0, 흡수율 == 100%
+  let r3_path = "/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
+  let content = read_file(r3_path)
+  let final_declared = content.contains("FINAL 선언") and content.contains("100%")
+  let new_axes_zero = content.contains("R3 신규 축 0")
+  return final_declared and new_axes_zero
+}
+
+# --- 메인 ---
+
+fn verify_all(axes: list[Axis], phases: list[PhaseMap]) -> (map[string,bool], string) {
+  let results = {
+    "bt_coverage":     test_bt_coverage(axes),
+    "evidence":        test_evidence_integrity(axes),
+    "orthogonality":   test_orthogonality(axes),
+    "honesty":         test_honesty(axes),
+    "phase_consistency": test_phase_consistency(axes, phases),
+    "r3_final":        test_r3_final(axes),
+  }
+  let pass = results.values.all(v => v == true)
+  let summary = if pass {
+    "PASS 6/6 — 축 체계 FINAL 검증 통과"
+  } else {
+    let failed = results.filter((_, v) => v == false).keys.join(", ")
+    "FAIL — " + failed
+  }
+  return (results, summary)
+}
+
+# --- 헬퍼 ---
+
+fn file_exists(path: string) -> bool {
+  return shell("test -f " + path) == 0
+}
+
+fn read_file(path: string) -> string {
+  return shell_capture("cat " + path)
+}
+
+fn compute_overlap(a: Axis, b: Axis) -> int {
+  # 증거 경로 교집합 + BT 공유
+  let ev_overlap = a.evidence.intersect(b.evidence).len
+  let bt_shared = a.coverage.keys.intersect(b.coverage.keys).len
+  return ev_overlap * 2 + bt_shared
+}
+
+fn any_axis_evidence_contains(axes: list[Axis], tag: string) -> bool {
+  for ax in axes {
+    for path in ax.evidence {
+      let c = read_file(path)
+      if c.contains(tag) { return true }
+    }
+  }
+  return false
+}
+
+# --- 실행 엔트리 ---
+
+fn main() {
+  let axes = load_axes_from_ssot()  # axis-final-millennium.md §1
+  let phases = load_phases_from_ssot()  # §3
+  let (results, summary) = verify_all(axes, phases)
+  print(summary)
+  for (name, pass) in results {
+    print(name + ": " + if pass { "PASS" } else { "FAIL" })
+  }
+  return if results.values.all(v => v == true) { 0 } else { 1 }
+}
