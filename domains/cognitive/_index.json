@@ -36,12 +36,17 @@
     },
     {
       "slug": "brain-computer-interface",
-      "files": 2,
+      "files": 4,
       "has_claude_md": true,
       "has_domain_md": true,
-      "has_hexa": false,
-      "has_verify": false,
-      "status": "기초"
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "완성",
+      "extra_docs": [
+        "bci_6ch_n6_mapping.md"
+      ],
+      "chip_verify_hexa": "experiments/chip-verify/verify_bci_6ch_n6.hexa",
+      "chip_p2_4_result": "brainwire 3 lenses 연결 + 6채널 n=6 매핑 5/6 EXACT + 15/15 도메인 검증"
     },
     {
       "slug": "causal-chain",

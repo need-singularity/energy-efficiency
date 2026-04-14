@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "총편수": 117,
+    "총편수": 125,
     "소스": "papers/ 디렉토리 .md 실측 + _registry.json._meta.papers_chunk_* 병합",
     "분리일": "2026-04-14",
     "선행": "papers/_registry.json.bak",
@@ -9,7 +9,8 @@
       "chunk에_인덱싱됨": 65,
       "chunk_미등재": 43
     },
-    "업데이트_2026-04-14b": "unregistered 9편 등록 → 117편 (N6-109~117 신규)"
+    "업데이트_2026-04-14b": "unregistered 9편 등록 → 117편 (N6-109~117 신규)",
+    "업데이트_2026-04-14c_P2_1": "PAPER-P2-1 8편 추가 → 125편 (N6-118~125 신규 v3/v4 자기조직·진화 + atlas 7→10* 승격 방법론)"
   },
   "papers": [
     {
@@ -1200,6 +1201,102 @@
       "type": "paper",
       "bt_ref": "BT-28, BT-90, BT-93, BT-1104",
       "chunk_status": "v1 — paper self-label N6-113; registry canon N6-117"
+    },
+    {
+      "id": "N6-118",
+      "title": "HEXA-ARCH-SELFORG-EMERGENCE — 자기조립 창발 설계 논문 (arch-selforg-emergence)",
+      "domain": "arch-selforg-emergence",
+      "category": "arch-selforg-emergence — P2 v3/v4 자기조직 창발 시드",
+      "path": "papers/n6-arch-selforg-emergence-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-366, BT-368, BT-195, BT-1414",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3",
+      "chunk_status": "v3 시드 — 152줄 — PAPER-P2-1 신규. σ=12 창발 모드 상한, τ=4 양자화"
+    },
+    {
+      "id": "N6-119",
+      "title": "HEXA-ARCH-ADAPTIVE-HOMEOSTASIS — 환경 적응 항상성 설계 논문 (arch-adaptive-homeostasis)",
+      "domain": "arch-adaptive-homeostasis",
+      "category": "arch-adaptive-homeostasis — P2 v3/v4 적응 설계 시드",
+      "path": "papers/n6-arch-adaptive-homeostasis-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-195, BT-370, BT-371, BT-404",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3",
+      "chunk_status": "v3 시드 — 158줄 — PAPER-P2-1 신규. 12 생리 채널, τ=4 제어 루프"
+    },
+    {
+      "id": "N6-120",
+      "title": "HEXA-ARCH-EVOLUTION-OUROBOROS — 진화 사이클 우로보로스 설계 논문 (arch-evolution-ouroboros)",
+      "domain": "arch-evolution-ouroboros",
+      "category": "arch-evolution-ouroboros — P2 v3/v4 자기참조 사이클",
+      "path": "papers/n6-arch-evolution-ouroboros-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-195, BT-370, BT-371, BT-1108",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v4",
+      "chunk_status": "v4 시드 — 152줄 — PAPER-P2-1 신규. σφ=24 고정점, 사이클 48"
+    },
+    {
+      "id": "N6-121",
+      "title": "HEXA-ARCH-V3-V4-UNIFIED — v3/v4 진화 설계 통합 메타 논문 (arch-v3-v4-unified)",
+      "domain": "arch-v3-v4-unified",
+      "category": "arch-v3-v4-unified — P2 v3/v4 통합 메타 논문",
+      "path": "papers/n6-arch-v3-v4-unified-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-195, BT-366~371, BT-1108, BT-1414, BT-1415",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3-v4-unified",
+      "chunk_status": "v3/v4 통합 시드 — 154줄 — PAPER-P2-1 신규. 6-fold 계층, σφ=24 운영"
+    },
+    {
+      "id": "N6-122",
+      "title": "HEXA-ATLAS-PROMOTION-7-TO-10STAR — atlas 승격 방법론 논문 (atlas-promotion-7-to-10star)",
+      "domain": "atlas-promotion-7-to-10star",
+      "category": "atlas-promotion-7-to-10star — P2 승격 방법론 시드",
+      "path": "papers/n6-atlas-promotion-7-to-10star-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-001~005, BT-380",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3",
+      "chunk_status": "v3 시드 — 162줄 — PAPER-P2-1 신규. τ=4 관문, sopfr=5 증명 경로, [10*] 승격"
+    },
+    {
+      "id": "N6-123",
+      "title": "HEXA-LENS-FORGE-ENSEMBLE — 렌즈 앙상블 설계 논문 (lens-forge-ensemble)",
+      "domain": "lens-forge-ensemble",
+      "category": "lens-forge-ensemble — P2 렌즈 앙상블 시드",
+      "path": "papers/n6-lens-forge-ensemble-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-380, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3",
+      "chunk_status": "v3 시드 — 157줄 — PAPER-P2-1 신규. 12 렌즈, τ=4 Forge 관문"
+    },
+    {
+      "id": "N6-124",
+      "title": "HEXA-BLOWUP-SINGULARITY — 블로업 특이점 설계 논문 (blowup-singularity)",
+      "domain": "blowup-singularity",
+      "category": "blowup-singularity — P2 블로업 특이점 시드",
+      "path": "papers/n6-blowup-singularity-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-195, BT-380, BT-1108",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v4",
+      "chunk_status": "v4 시드 — 169줄 — PAPER-P2-1 신규. 12 폭발 모드, τ=4 특이점 관문, blowup.hexa Mk.II 연계"
+    },
+    {
+      "id": "N6-125",
+      "title": "HEXA-CYCLE-ENGINE-FEEDBACK — 사이클 피드백 엔진 설계 논문 (cycle-engine-feedback)",
+      "domain": "cycle-engine-feedback",
+      "category": "cycle-engine-feedback — P2 사이클 엔진 시드",
+      "path": "papers/n6-cycle-engine-feedback-paper.md",
+      "type": "paper",
+      "bt_ref": "BT-195, BT-371, BT-404, BT-1108",
+      "chunk_id": "papers_chunk_P2_1_2026-04-14",
+      "version_tag": "v3-v4-unified",
+      "chunk_status": "v3/v4 통합 시드 — 175줄 — PAPER-P2-1 신규. τ=4 메타 관문, loop-guard + roadmap + nexus6 growth 3 엔진 통합"
     }
   ]
 }

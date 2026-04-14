@@ -2,8 +2,47 @@
   "_meta": {
     "total_products": 173,
     "total_domains": 120,
-    "total_papers": 117,
-    "_count_verified": "2026-04-14 PAPER-P1-1 -- 실측 117 (108 기존 + 9 P2 확장)",
+    "total_papers": 125,
+    "_count_verified": "2026-04-14 PAPER-P2-1 -- 실측 125 (117 + 8 P2-1 v3/v4 자기조직·진화·승격)",
+    "papers_chunk_P2_1_2026-04-14": {
+      "count": 8,
+      "category": "P2 v3/v4 자기조직·진화 설계 + atlas 승격 방법론",
+      "bt_range": "BT-195, BT-366~371, BT-380, BT-404, BT-1108, BT-1414, BT-1415, BT-001~005",
+      "status": "v3/v4 시드 -- hexa 검증 STUB + σ/τ/φ/sopfr 좌표 부여",
+      "target_id_range": "N6-118 ~ N6-125",
+      "roadmap_ref": "PAPER-P2-1",
+      "papers": [
+        "papers/n6-arch-selforg-emergence-paper.md",
+        "papers/n6-arch-adaptive-homeostasis-paper.md",
+        "papers/n6-arch-evolution-ouroboros-paper.md",
+        "papers/n6-arch-v3-v4-unified-paper.md",
+        "papers/n6-atlas-promotion-7-to-10star-paper.md",
+        "papers/n6-lens-forge-ensemble-paper.md",
+        "papers/n6-blowup-singularity-paper.md",
+        "papers/n6-cycle-engine-feedback-paper.md"
+      ],
+      "bt_mapping": {
+        "n6-arch-selforg-emergence-paper.md": "BT-366, BT-368, BT-195, BT-1414",
+        "n6-arch-adaptive-homeostasis-paper.md": "BT-195, BT-370, BT-371, BT-404",
+        "n6-arch-evolution-ouroboros-paper.md": "BT-195, BT-370, BT-371, BT-1108",
+        "n6-arch-v3-v4-unified-paper.md": "BT-195, BT-366~371, BT-1108, BT-1414, BT-1415",
+        "n6-atlas-promotion-7-to-10star-paper.md": "BT-001~005, BT-380",
+        "n6-lens-forge-ensemble-paper.md": "BT-380, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73",
+        "n6-blowup-singularity-paper.md": "BT-195, BT-380, BT-1108",
+        "n6-cycle-engine-feedback-paper.md": "BT-195, BT-371, BT-404, BT-1108"
+      },
+      "version_tags": {
+        "v3": ["arch-selforg-emergence", "arch-adaptive-homeostasis", "atlas-promotion-7-to-10star", "lens-forge-ensemble"],
+        "v4": ["arch-evolution-ouroboros", "blowup-singularity"],
+        "v3_v4_unified": ["arch-v3-v4-unified", "cycle-engine-feedback"]
+      },
+      "verify_code_status": {
+        "all_papers_have_hexa_stub": true,
+        "n62_compliance": "전 8편 본문에 hexa 검증 STUB 포함 (§4.3)"
+      },
+      "honest_limitations_note": "전 8편 §4.4 한계 + §4.5 반증 후보 공시. 신규 실험 데이터 생성 금지 — atlas.n6 + BT 실측만 인용.",
+      "total_lines": 1279
+    },
     "papers_chunk_c_2026-04-08": {
       "count": 11,
       "category": "인체/의료/생물",

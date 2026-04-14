@@ -227,3 +227,5 @@ fn main() {
     }
     if cat_pass == 0 { println("arch_adaptive FAIL : EXACT=0 -- 임계값 재조정 필요") }
 }
+
+main()

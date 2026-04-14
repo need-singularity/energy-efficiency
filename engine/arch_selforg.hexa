@@ -211,4 +211,36 @@ fn main() {
         if cat_pass < 10 { println("arch_selforg PARTIAL : EXACT=" + cat_pass + "/10 -> [7]empirical") }
     }
     if cat_pass == 0 { println("arch_selforg FAIL : EXACT=0 -- 임계값 재조정 필요") }
+
+    // ── 50 샘플 상세 출력 (JSON 파싱용 SAMPLE 라인) ─────────────
+    println("")
+    println("---SAMPLES50---")
+    let mut cc: i64 = 0
+    while cc < 10 {
+        let mut ss: i64 = 0
+        while ss < 5 {
+            let p0: i64 = part_value(cc, ss, 0)
+            let p1: i64 = part_value(cc, ss, 1)
+            let p2: i64 = part_value(cc, ss, 2)
+            let p3: i64 = part_value(cc, ss, 3)
+            let p4: i64 = part_value(cc, ss, 4)
+            let p5: i64 = part_value(cc, ss, 5)
+            let sc: i64 = assemble(cc, ss)
+            let ptot: i64 = p0 + p1 + p2 + p3 + p4 + p5
+            // alien_index: 1000 scale 점수를 1~10 등급화
+            let ai: i64 = sc / 100
+            // closure_grade: EXACT(>=900)=10, NEAR(>=800)=9, EMPIRICAL(>=700)=7
+            let mut cg: i64 = 0
+            if sc >= 700 { cg = 7 }
+            if sc >= 800 { cg = 9 }
+            if sc >= 900 { cg = 10 }
+            println("SAMPLE cat=" + cc + " s=" + ss + " parts=[" + p0 + "," + p1 + "," + p2 + "," + p3 + "," + p4 + "," + p5 + "] total=" + ptot + " score=" + sc + " alien=" + ai + " closure=" + cg)
+            ss = ss + 1
+        }
+        cc = cc + 1
+    }
+    println("---END50---")
 }
+
+// hexa 인터프리터는 main() 자동 호출 안 함 — 최상단에서 호출 필수
+main()

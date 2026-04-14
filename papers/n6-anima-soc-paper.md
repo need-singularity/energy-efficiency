@@ -683,3 +683,16 @@ if __name__ == "__main__":
     print(f"{passed}/{total} PASS (n=6 정직성 검증)")
 ```
 
+---
+
+## 부록 A. 인증 체인 + 반례 ≥ 3 (P2-2)
+
+### A.1 증명 자격 인증 참조
+- **physics-math-certification.md** (🛸10 Aggregate, 2026-04-04) — "수학적 증명 11개 영구 진리" 및 "Cross-DSE 13+ 도메인" 조항. 본 논문의 Anima SoC 주장은 S₆ 외부자기동형 + Golay [24,12,8] QEC 구조에 의존하며, 해당 문서의 증명 체인을 그대로 상속.
+- **honest-limitations.md** (10 non-n6 cases) — "physical vapor deposition / spin-coat" 유형의 연속 유체·열역학 파라미터는 n=6 양자화로 복원되지 않음. Anima SoC의 센서 프론트엔드가 이런 연속 물리량에 직결될 때의 한계를 상호 참조.
+
+### A.2 반례 ≥ 3 (실패하는 경계 조건)
+1. **반례 1 — PVD-sputter/ECD 기반 증착 제어 루프**: honest-limitations #4, #5 사례. Anima SoC가 웨이퍼 공정 라인의 증착 챔버 직접 제어를 목표로 할 경우, Faraday 법칙·진공 플라즈마 동역학은 연속 파라미터여서 σ=12 모드 기반 OAM 채널 분리(2·6=12)로 매핑되지 않는다. 결론: Anima SoC는 이산 이벤트 센서 플레인에서만 유효, 연속 유체 층은 외부 PID가 필요.
+2. **반례 2 — Island_DC 오프그리드 토폴로지(n6=0.33)**: honest-limitations #3. Anima SoC가 마이크로그리드 없는 완전 고립 DC 버스에 단독 연결될 때, "grid-sync 다중 모드" σ=12 해석이 사라진다. 원주장의 적용 범위를 "그리드-연결 동기화 가능 환경"으로 축소.
+3. **반례 3 — CIGS 흡수층 밴드갭 1.15 eV(n6=0.33)**: honest-limitations #8. Anima SoC가 태양광 센서 프론트엔드로 CIGS를 채택하면 에너지 고유값이 n=6 좌표에 깨끗이 앉지 않아 φ=2 대칭 분리가 실패한다. 이 반증은 "Anima SoC 광센서는 GaAs(1.42 eV ≈ 4/3, EXACT) 계열로 제한된다"는 설계 경계를 강화한다.
+
