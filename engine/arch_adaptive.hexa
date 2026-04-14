@@ -6,7 +6,7 @@
 //   - 각 세대 설계안은 이전 최고안에서 ±δ 변이 (mutation)
 //   - 적응도(fitness) = n=6 상수 정렬 + 환경 추종
 //   - G 세대 후 최고안을 선발 (selection)
-//   - atlas.n6 승격 훅: fitness >= EXACT_THRESHOLD 시 [7] -> [10*] 플래그 반환
+//   - atlas.n6 승격 훅: fitness >= 900 시 [7] -> [10*] 플래그 반환
 //
 // 적응 원리 (GA 경량판):
 //   - gene = (heads, depth, dim) 3-튜플
@@ -60,11 +60,7 @@ fn sopfr(n: i64) -> i64 {
 }
 fn abs_val(x: i64) -> i64 { if x < 0 { return 0 - x } return x }
 
-const SCALE: i64 = 1000
-const N_CATS: i64 = 10
-const N_GEN: i64 = 6             // n=6 세대 (완전수 제약)
-const POP: i64 = 4                // tau(6)=4 개체
-const EXACT_THRESHOLD: i64 = 900
+// 주요 상수: 1000=1000, 10=10, 6=6(n=6 세대), 4=4(tau(6)), 900=EXACT (인라인)
 
 // ── 환경 drift: 세대 g 에 따라 카테고리별 목표 이동 ─────────
 
@@ -113,7 +109,7 @@ fn align(cand: i64, ref_val: i64) -> i64 {
     let diff: i64 = abs_val(cand - ref_val)
     let denom: i64 = ref_val + 1
     if diff >= denom { return 0 }
-    return SCALE - (diff * SCALE) / denom
+    return 1000 - (diff * 1000) / denom
 }
 
 fn fitness(cat: i64, g: i64, h: i64, d: i64, m: i64) -> i64 {
@@ -139,12 +135,12 @@ fn fitness(cat: i64, g: i64, h: i64, d: i64, m: i64) -> i64 {
     return (2 * static_score + track_score) / 3
 }
 
-// ── 세대 선발: POP 개체 중 최고 fitness ────────────────────
+// ── 세대 선발: 4 개체 중 최고 fitness ────────────────────
 
 fn select_best(cat: i64, g: i64) -> i64 {
     let mut best: i64 = 0
     let mut k: i64 = 0
-    while k < POP {
+    while k < 4 {
         let h: i64 = gene_heads(cat, g, k)
         let d: i64 = gene_depth(cat, g, k)
         let m: i64 = gene_dim(cat, g, k)
@@ -156,12 +152,12 @@ fn select_best(cat: i64, g: i64) -> i64 {
 }
 
 // ── atlas.n6 승격 훅 ──────────────────────────────────────
-// [7]empirical -> [10*] 승격 조건: 최종 세대 fitness >= EXACT_THRESHOLD
+// [7]empirical -> [10*] 승격 조건: 최종 세대 fitness >= 900
 // 반환: 1 = 승격 플래그 ON, 0 = OFF
 // 실제 atlas.n6 편집은 외부 파이프라인 (N65 규칙 준수)
 
 fn hook_atlas_promote(final_fitness: i64) -> i64 {
-    if final_fitness >= EXACT_THRESHOLD { return 1 }
+    if final_fitness >= 900 { return 1 }
     return 0
 }
 
@@ -170,7 +166,7 @@ fn hook_atlas_promote(final_fitness: i64) -> i64 {
 fn evolve(cat: i64) -> i64 {
     let mut best_ever: i64 = 0
     let mut g: i64 = 0
-    while g < N_GEN {
+    while g < 6 {
         let gbest: i64 = select_best(cat, g)
         if gbest > best_ever { best_ever = gbest }
         g = g + 1
@@ -197,7 +193,7 @@ fn print_cat(i: i64) {
 
 fn main() {
     println("=== arch_adaptive.hexa : n=6 진화 적응 아키텍처 DSE v4 ===")
-    println("env drift -> 변이 -> 선발 / G=6 세대, POP=4 개체")
+    println("env drift -> 변이 -> 선발 / 6 세대, 4 개체 (=tau(6))")
     println("atlas.n6 [7]->[10*] 승격 훅 탑재")
     println("")
 
@@ -206,22 +202,22 @@ fn main() {
     let mut promote_total: i64 = 0
 
     let mut c: i64 = 0
-    while c < N_CATS {
+    while c < 10 {
         print_cat(c)
         let f: i64 = evolve(c)
         let promoted: i64 = hook_atlas_promote(f)
         promote_total = promote_total + promoted
         println("  최종 fitness=" + f + " 승격=" + promoted)
         total_score = total_score + f
-        if f >= EXACT_THRESHOLD { cat_pass = cat_pass + 1 }
+        if f >= 900 { cat_pass = cat_pass + 1 }
         c = c + 1
     }
 
-    let avg: i64 = total_score / N_CATS
+    let avg: i64 = total_score / 10
     println("")
     println("========================================")
-    println("카테고리 " + N_CATS + " / EXACT(>=900)=" + cat_pass + " / 평균=" + avg)
-    println("승격 훅 발동 = " + promote_total + " / " + N_CATS + " (atlas.n6 [7]->[10*])")
+    println("카테고리 " + 10 + " / EXACT(>=900)=" + cat_pass + " / 평균=" + avg)
+    println("승격 훅 발동 = " + promote_total + " / " + 10 + " (atlas.n6 [7]->[10*])")
     println("========================================")
 
     // 정직 검증: fitness 는 휴리스틱. 자기참조 금지.

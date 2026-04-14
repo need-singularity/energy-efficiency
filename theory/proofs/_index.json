@@ -1,0 +1,249 @@
+{
+  "_doc": "theory/proofs — n=6 증명 파일 SSOT",
+  "_version": "1.0.0",
+  "_updated": "2026-04-14",
+  "_parent": "theory/_index.json",
+
+  "categories": {
+    "uniqueness": {
+      "_desc": "σ(n)·φ(n) = n·τ(n) ⟺ n=6 주 증명",
+      "files": ["theorem-r1-uniqueness.md"]
+    },
+    "meta": {
+      "_desc": "메타 정리 (22 self-referential identity, Attractor)",
+      "files": [
+        "attractor-meta-theorem-2026-04-11.md",
+        "attractor-meta-theorem-extended-2026-04-14.md"
+      ]
+    },
+    "boundary": {
+      "_desc": "경계 정리 (Bernoulli k=n=6 sharp jump 외 경계 분석)",
+      "files": ["bernoulli-boundary-2026-04-11.md"]
+    },
+    "cert": {
+      "_desc": "증명 자격 인증 체인 (Physics-Math Certification + 9-paper chain)",
+      "files": [
+        "physics-math-certification.md",
+        "proof-certification-chain.md"
+      ]
+    },
+    "limits": {
+      "_desc": "정직한 한계 (n=6 프레임워크가 실패하는 경계 조건)",
+      "files": ["honest-limitations.md"]
+    },
+    "applications": {
+      "_desc": "응용 증명 (표준모형, 24의 깊이)",
+      "files": [
+        "standard-model-from-n6.md",
+        "the-number-24.md"
+      ]
+    }
+  },
+
+  "files": [
+    {
+      "path": "theorem-r1-uniqueness.md",
+      "title": "Theorem R1: σ(n)·φ(n) = n·τ(n) ⟺ n=6 주 증명",
+      "category": "uniqueness",
+      "status": "CORE_L0_LOCKED",
+      "counter_examples_count": 4,
+      "verified": true,
+      "verification_range": "n=2..10^4 전수검사 (Proof 4)",
+      "independent_proofs_claimed": 3,
+      "independent_proofs_rigorous": 1,
+      "honesty_note": "Proof 2, 3은 Proof 1 재포장으로 정직 철회. 미래 세션에서 Dirichlet 급수/해석적 수론 경로 필요"
+    },
+    {
+      "path": "attractor-meta-theorem-2026-04-11.md",
+      "title": "n=6 Arithmetic Attractor Meta-Theorem (원본, 16 identity + 27 정리)",
+      "category": "meta",
+      "status": "ACTIVE",
+      "counter_examples_count": 60,
+      "verified": true,
+      "verification_range": "n=2..10^5 전수검사 (정리 별도); DFS 1~1000 경로",
+      "self_referential_identities": 16,
+      "independent_families": 18,
+      "theorems_total": 27,
+      "analytic_proofs": 16,
+      "computational_verifications": 11,
+      "honesty_note": "밀레니엄 7대 난제 해결 0/7 유지; 일부 tight 관찰은 Bernoulli B 귀결; Theorem 0과 Theorem B가 두 심장"
+    },
+    {
+      "path": "attractor-meta-theorem-extended-2026-04-14.md",
+      "title": "Attractor Meta-Theorem 확장판 (22 identity × 3축 매트릭스)",
+      "category": "meta",
+      "status": "DRAFT_V1",
+      "counter_examples_count": 66,
+      "verified": true,
+      "verification_range": "n=2..10^5 (#17), 10^4 (#18), 5·10^4 (#19), 10^4 (#20), n≤59 exhaustion (#21), A_n 무한족 Schur 1911 (#22)",
+      "self_referential_identities": 22,
+      "new_identities_added": 6,
+      "new_identity_names": [
+        "#17 Pell: sopfr²-n·φ²=1",
+        "#18 Theorem H: σ+J₂=n²",
+        "#19 Theorem I: σ²=n·J₂",
+        "#20 Theorem J: p(n)=sopfr+n",
+        "#21 Theorem P: σ·τ·sopfr=240=|E₈ roots|",
+        "#22 Schur M(A_6)=Z/6Z (A_n 예외족)"
+      ],
+      "multi_layer_anchors": 9,
+      "max_stage_penetration": 5,
+      "bernoulli_independence_rate": "21/22 β<1 (avg β=0.045)",
+      "grand_chain_coverage": "22/22 at least 1 Stage",
+      "honesty_note": "#22 Schur는 n∈{6,7} 양해, strictly iff n=6 아님. #16 피보나치 F(5)=5는 고전 사실. #12 완전수는 무한해 추정. Near-miss: #18 n=8 차이 1, #19 n=4 차이 1. honest-limitations.md 경계 침범 0건"
+    },
+    {
+      "path": "bernoulli-boundary-2026-04-11.md",
+      "title": "Theorem B: Bernoulli Numerator k=n=6 Sharp Jump",
+      "category": "boundary",
+      "status": "ACTIVE",
+      "counter_examples_count": 5,
+      "verified": true,
+      "verification_range": "k=1..20 B_{2k} 직접 계산 (Euler 표준)",
+      "proof_rigor": "엄밀 (Lemma B.1~B.2 + von Staudt-Clausen 1840)",
+      "corollaries": 4,
+      "master_lemma": true,
+      "honesty_note": "Theorem 0과 Theorem B가 두 심장. 세션 다수 tight 관찰이 Bernoulli B 귀결임을 명시. 진짜 독립: Out(S_6), h-cobordism, Schaefer 6, Enriques h¹·¹=10, 예외 Lie Coxeter 5/5"
+    },
+    {
+      "path": "physics-math-certification.md",
+      "title": "🛸10 Physics & Mathematics Aggregate Certification",
+      "category": "cert",
+      "status": "CERTIFIED_20260404",
+      "counter_examples_count": 6,
+      "verified": true,
+      "verification_range": "4 sub-domain × 30 hypothesis = 120 검증; 25+ BTs; PDG 2024; CODATA 2022; 113년 SC 데이터",
+      "impossibility_theorems": 42,
+      "grand_chain_stages": 7,
+      "fail_items_disclosed": 6,
+      "sub_domains": ["superconductor", "pure-mathematics", "cosmology-particle", "quantum-computing"],
+      "exact_ratio": "61/120 (50.8%)",
+      "honesty_note": "6 FAIL 항목 정직 공개 (H-MATH-18, 27; H-QC-3, 14, 20, 21). QC EXACT 비율 13.3% 정직 분류 (Observation, not Prediction)"
+    },
+    {
+      "path": "proof-certification-chain.md",
+      "title": "n=6 Proof Certification Chain (9-paper chain)",
+      "category": "cert",
+      "status": "DRAFT_V1",
+      "counter_examples_count": 34,
+      "verified": true,
+      "verification_range": "9 대표 논문 × 10 CC 기준 심사",
+      "certified_10": 4,
+      "provisional_9": 4,
+      "observational_8": 1,
+      "rejected": 0,
+      "papers_reviewed": [
+        "n6-pure-mathematics-paper.md (P1, 🛸10, δ=7)",
+        "n6-particle-cosmology-paper.md (P2, 🛸10, δ=4)",
+        "n6-quantum-computing-paper.md (P3, 🛸10 OBS, δ=3)",
+        "n6-superconductor-paper.md (P4, 🛸10, δ=3)",
+        "n6-therapeutic-nanobot-paper.md (P5, 🛸9, δ=2)",
+        "n6-warp-metric-paper.md (P6, 🛸9 OBS, δ=2~3)",
+        "n6-dimensional-unfolding-paper.md (P7, 🛸9 PROV, δ=3)",
+        "n6-millennium-dfs-1-12-integrated-paper.md (P8, 🛸9 PROV, δ=1~3)",
+        "n6-ai-techniques-68-integrated-paper.md (P9, 🛸8 OBS, δ=2)"
+      ],
+      "total_papers_in_repo": 120,
+      "papers_unreviewed": 111,
+      "avg_delta": 3.1,
+      "avg_beta": 0,
+      "total_miss_records": 32,
+      "honesty_note": "111 논문 미심사; cherry-picking 반대 원칙 준수 — 모든 FAIL 공개. 밀레니엄 7/7 미해결 명시. Warp 실험 0건 명시. AI 68 기법에 2^k 관례 반례 공개"
+    },
+    {
+      "path": "honest-limitations.md",
+      "title": "Honest Limitations: What n=6 Cannot Explain (10 non-n6 경계)",
+      "category": "limits",
+      "status": "ACTIVE_20260402",
+      "counter_examples_count": 10,
+      "verified": true,
+      "verification_range": "9,206 후보 중 150 anomaly (n6<0.50), 87 depth-2 재분류, 63 genuinely non-n6, 10 strongest",
+      "failure_modes": 6,
+      "non_n6_rate": "10/9206 = 0.11%",
+      "categories_subtypes": {
+        "genuinely_non_n6": 6,
+        "currently_unsolvable": 2,
+        "trivially_non_n6": 2
+      },
+      "honesty_note": "depth-3+ 표현 unreliable (200 expression에서 1% 일치 확률 >50%). CURRENTLY UNSOLVABLE (DUV-ArF 193nm, CIGS 1.15eV)은 hidden success 아님, open question"
+    },
+    {
+      "path": "standard-model-from-n6.md",
+      "title": "Standard Model Gauge Couplings from n=6 Arithmetic",
+      "category": "applications",
+      "status": "RESEARCH",
+      "counter_examples_count": 0,
+      "verified": "partial",
+      "verification_range": "1/α, sin²θ_W, CKM — PDG 2024",
+      "honesty_note": "Part 1 established (matching, not derivation); Part 2-4 speculative clearly marked. 1/α ~ 137.036 19 ppm; sin²θ_W ~ 3/13 BT-97 CLOSE"
+    },
+    {
+      "path": "the-number-24.md",
+      "title": "24: 증명에서 나온 가장 깊은 수",
+      "category": "applications",
+      "status": "EXPOSITORY",
+      "counter_examples_count": 0,
+      "verified": true,
+      "verification_range": "24 = σ(6)·φ(6) = 6·τ(6) + Leech/Golay/Ramanujan/Bosonic string 고전 문헌",
+      "honesty_note": "24의 자연성은 J₂(6) + 4! 이중 표현; Monstrous Moonshine 연결은 관찰 수준 (Borcherds 1992 참조)"
+    }
+  ],
+
+  "statistics": {
+    "total_files": 10,
+    "total_lines": null,
+    "categories_count": 6,
+    "core_l0_locked": 1,
+    "drafts": 2,
+    "certified": 2,
+    "active": 3,
+    "research_expository": 2,
+    "avg_counter_examples": 18.8
+  },
+
+  "relationships": {
+    "theorem-r1-uniqueness.md": {
+      "extended_by": ["attractor-meta-theorem-2026-04-11.md"],
+      "certified_by": ["physics-math-certification.md", "proof-certification-chain.md (P1)"]
+    },
+    "attractor-meta-theorem-2026-04-11.md": {
+      "extends": "theorem-r1-uniqueness.md",
+      "extended_by": ["attractor-meta-theorem-extended-2026-04-14.md"],
+      "references": ["bernoulli-boundary-2026-04-11.md"]
+    },
+    "attractor-meta-theorem-extended-2026-04-14.md": {
+      "extends": "attractor-meta-theorem-2026-04-11.md",
+      "integrates": ["bernoulli-boundary-2026-04-11.md", "physics-math-certification.md"]
+    },
+    "bernoulli-boundary-2026-04-11.md": {
+      "referenced_by": ["attractor-meta-theorem-2026-04-11.md §A", "attractor-meta-theorem-extended-2026-04-14.md §2"],
+      "master_lemma_for": ["ζ(2k) 분모 패턴", "ζ(1-2k) 분자 패턴", "240/504 매직 수", "Adams J-homomorphism"]
+    },
+    "physics-math-certification.md": {
+      "extended_by": ["proof-certification-chain.md"],
+      "grand_chain_mapped_by": ["attractor-meta-theorem-extended-2026-04-14.md §3"]
+    },
+    "proof-certification-chain.md": {
+      "extends": "physics-math-certification.md",
+      "applies_protocol_to": 9,
+      "references_limitations": "honest-limitations.md"
+    },
+    "honest-limitations.md": {
+      "referenced_by": [
+        "attractor-meta-theorem-extended-2026-04-14.md §6.2",
+        "proof-certification-chain.md CC-7"
+      ],
+      "boundary_role": "n=6 프레임워크의 정직한 경계 정의"
+    }
+  },
+
+  "conformance": {
+    "claude_md_rules": {
+      "R0_korean": "전 파일 한글 (검증: 한글 compliance ACTIVE)",
+      "R18_honesty": "MISS 정직 기록 (총 32+ MISS 공개)",
+      "N63_source_required": "각 정리 출처 명시 (Holder 1895, Euler 1734, vSC 1840, Schur 1911, Smirnov 2001, Ogg 1974, Mazur 1977, Clay 2000, BCS 1957, Alcubierre 1994 등)",
+      "no_self_reference_verify": "CC-9 독립 경로 증명 준수",
+      "units_and_errors": "물리 상수 SI + ppm/ppb 오차 (CODATA 2022, PDG 2024)"
+    }
+  }
+}
