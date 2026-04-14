@@ -1,0 +1,259 @@
+// cross_dse_pair_probe_v2_5.hexa
+// ───────────────────────────────────────────────────────────
+// 축     : experiments/dse
+// 목적   : v2_4 SSOT 에 누락된 관심 페어 10개 (chip/battery/fusion/ai/
+//          cognitive/ccus/nanobot/architecture/infra/network) 에 대해
+//          bt_jaccard + n6_closeness 직접 계산 → v2_5 신규 파일 기록.
+// 규칙   : R1 HEXA-FIRST, R12 AI-NATIVE, R28 자동 흡수, 한글 주석/print
+// 정의   :
+//   bt_jaccard      = |A_BT ∩ B_BT| / |A_BT ∪ B_BT|
+//   n6_avg          = mean(n6) — 각 TOML 내 후보별 n6 field
+//   n6_closeness    = 1 - |n6_avg_a - n6_avg_b|
+//   grade          : n6_close >= 0.95 → [10*] EXACT 후보 (검증 대기)
+//                    n6_close >= 0.85 → [9] NEAR
+//                    n6_close >= 0.70 → [7] EMPIRICAL
+//                    else            → [5] LOW
+// 입력   : bridge/origins/universal-dse/domains/*.toml
+// 출력   : n6shared/dse/dse_cross_results_v2_5.json
+// 전제   : 자기참조 금지. n6_avg 는 TOML 공개값 → 외부 근거.
+// ───────────────────────────────────────────────────────────
+
+let mut N6_ARCH = env("N6_ARCH")
+if len(N6_ARCH) == 0 { N6_ARCH = env("HOME") + "/Dev/n6-architecture" }
+let DOMAIN_DIR = N6_ARCH + "/bridge/origins/universal-dse/domains"
+let OUT_PATH   = N6_ARCH + "/n6shared/dse/dse_cross_results_v2_5.json"
+
+// 타겟 페어 (10 카테고리 — 외계지수 7+ 도메인 우선)
+let PAIRS = [
+  ["chip", "battery"],
+  ["chip", "ai-efficiency"],
+  ["fusion", "space-engineering"],
+  ["ai-efficiency", "cognitive-architecture"],
+  ["chip", "network-protocol"],
+  ["carbon-capture-8level", "energy-architecture"],
+  ["therapeutic-nanobot", "ai-efficiency"],
+  ["architecture-history", "space-engineering"],
+  ["fusion", "energy-architecture"],
+  ["chip", "cognitive-architecture"]
+]
+
+fn extract_bt_and_n6(domain_name) {
+  let path = DOMAIN_DIR + "/" + domain_name + ".toml"
+  let cnt = read_file(path)
+  let t = type_of(cnt)
+  if t != "string" {
+    if t != "str" {
+      println("warn: read fail (" + t + ") " + path)
+      return ["", 0.0, 0]
+    }
+  }
+  let lines = split(cnt, "\n")
+  let nl = len(lines)
+  let mut bts = "|"
+  let mut bt_ct = 0
+  let mut n6_sum = 0.0
+  let mut n6_ct = 0
+
+  let mut li = 0
+  while li < nl {
+    let raw = lines[li].trim()
+
+    // BT-NN 토큰 스캔 (간이)
+    if raw.contains("BT-") {
+      let n = len(raw)
+      let mut i = 0
+      while i + 3 <= n {
+        if raw.substring(i, i + 3) == "BT-" {
+          let mut j = i + 3
+          let mut cont = true
+          while cont {
+            if j >= n {
+              cont = false
+            } else {
+              let ch = raw.substring(j, j + 1)
+              if "0123456789".contains(ch) { j = j + 1 }
+              else { cont = false }
+            }
+          }
+          if j > i + 3 {
+            let bt = raw.substring(i, j)
+            let key = "|" + bt + "|"
+            if !bts.contains(key) {
+              bts = bts + bt + "|"
+              bt_ct = bt_ct + 1
+            }
+            i = j
+          } else { i = i + 1 }
+        } else { i = i + 1 }
+      }
+    }
+
+    // n6 = ... (후보 내부)
+    if raw.starts_with("n6") {
+      if raw.contains("=") {
+        let parts = split(raw, "=")
+        if len(parts) >= 2 {
+          let key = parts[0].trim()
+          if key == "n6" {
+            let v_raw = parts[1].trim()
+            // 주석 제거
+            let mut v = v_raw
+            if v.contains("#") {
+              let pc = split(v, "#")
+              v = pc[0].trim()
+            }
+            // 숫자 검증 — to_float 안전 호출
+            let allowed = "0123456789.-+eE"
+            let mut all_ok = true
+            let nv = len(v)
+            if nv == 0 { all_ok = false }
+            let mut vi = 0
+            while vi < nv {
+              let ch = v.substring(vi, vi + 1)
+              if !allowed.contains(ch) { all_ok = false }
+              vi = vi + 1
+            }
+            if all_ok {
+              let f = to_float(v)
+              n6_sum = n6_sum + f
+              n6_ct = n6_ct + 1
+            }
+          }
+        }
+      }
+    }
+
+    li = li + 1
+  }
+
+  let avg = 0.0
+  if n6_ct > 0 {
+    let avgx = n6_sum / to_float(n6_ct)
+    return [bts, avgx, bt_ct]
+  }
+  [bts, 0.0, bt_ct]
+}
+
+fn bt_jaccard(a_set, a_ct, b_set, b_ct) {
+  if a_ct == 0 {
+    if b_ct == 0 { return 0.0 }
+  }
+  // 교집합
+  let mut inter = 0
+  let toks = split(a_set, "|")
+  let nt = len(toks)
+  let mut i = 0
+  while i < nt {
+    let t = toks[i]
+    if len(t) > 0 {
+      if b_set.contains("|" + t + "|") { inter = inter + 1 }
+    }
+    i = i + 1
+  }
+  let uni = a_ct + b_ct - inter
+  if uni == 0 { return 0.0 }
+  to_float(inter) / to_float(uni)
+}
+
+fn abs_f(x) {
+  if x < 0.0 { return 0.0 - x }
+  x
+}
+
+fn grade_label(close) {
+  if close >= 0.95 { return "[10*]" }
+  if close >= 0.85 { return "[9]" }
+  if close >= 0.70 { return "[7]" }
+  "[5]"
+}
+
+// ── 실행 ──────────────────────────────────────────────────
+println("cross_dse_pair_probe v2_5")
+println("DOMAIN_DIR = " + DOMAIN_DIR)
+println("OUT_PATH   = " + OUT_PATH)
+println("")
+
+let npairs = len(PAIRS)
+let mut results = []
+let mut exact_cnt = 0
+let mut near_cnt = 0
+let mut emp_cnt = 0
+let mut low_cnt = 0
+
+let mut pi = 0
+while pi < npairs {
+  let pair = PAIRS[pi]
+  let a = pair[0]
+  let b = pair[1]
+
+  let fa = extract_bt_and_n6(a)
+  let fb = extract_bt_and_n6(b)
+
+  let a_bt = fa[0]
+  let a_n6 = fa[1]
+  let a_bt_ct = fa[2]
+  let b_bt = fb[0]
+  let b_n6 = fb[1]
+  let b_bt_ct = fb[2]
+
+  let jac = bt_jaccard(a_bt, a_bt_ct, b_bt, b_bt_ct)
+  let close = 1.0 - abs_f(a_n6 - b_n6)
+
+  let grade = grade_label(close)
+  if grade == "[10*]" { exact_cnt = exact_cnt + 1 }
+  if grade == "[9]"   { near_cnt = near_cnt + 1 }
+  if grade == "[7]"   { emp_cnt = emp_cnt + 1 }
+  if grade == "[5]"   { low_cnt = low_cnt + 1 }
+
+  println(a + " + " + b)
+  println("  a_n6_avg=" + a_n6 + " b_n6_avg=" + b_n6)
+  println("  bt_jaccard=" + jac + " bt_inter=? close=" + close)
+  println("  grade=" + grade)
+  println("")
+
+  // JSON row 조립
+  let row = "    { \"a\": \"" + a + "\", \"b\": \"" + b + "\""
+    + ", \"a_n6_avg\": " + a_n6
+    + ", \"b_n6_avg\": " + b_n6
+    + ", \"n6_closeness\": " + close
+    + ", \"bt_jaccard\": " + jac
+    + ", \"a_bt_count\": " + a_bt_ct
+    + ", \"b_bt_count\": " + b_bt_ct
+    + ", \"grade\": \"" + grade + "\""
+    + " }"
+  results = results + [row]
+  pi = pi + 1
+}
+
+// ── JSON 조립/기록 ──────────────────────────────────────
+let mut body = "{\n"
+body = body + "  \"generated_at\": \"2026-04-14\",\n"
+body = body + "  \"schema_version\": \"2.5\",\n"
+body = body + "  \"source\": \"bridge/origins/universal-dse/domains/*.toml\",\n"
+body = body + "  \"parent\": \"n6shared/dse/dse_cross_results_v2_4.json\",\n"
+body = body + "  \"probe_pairs\": " + npairs + ",\n"
+body = body + "  \"exact_10star\": " + exact_cnt + ",\n"
+body = body + "  \"near_9\": " + near_cnt + ",\n"
+body = body + "  \"empirical_7\": " + emp_cnt + ",\n"
+body = body + "  \"low_5\": " + low_cnt + ",\n"
+body = body + "  \"exact_ratio\": " + (to_float(exact_cnt) / to_float(npairs)) + ",\n"
+body = body + "  \"notes\": \"n6_closeness = 1 - |avg(a.n6) - avg(b.n6)|. 자기참조 금지 — TOML 공개값.\",\n"
+body = body + "  \"pairs\": [\n"
+let nr = len(results)
+let mut ri = 0
+while ri < nr {
+  body = body + results[ri]
+  if ri + 1 < nr { body = body + "," }
+  body = body + "\n"
+  ri = ri + 1
+}
+body = body + "  ]\n}\n"
+
+write_file(OUT_PATH, body)
+println("─── 요약 ───")
+println("EXACT [10*]    : " + exact_cnt + "/" + npairs)
+println("NEAR  [9]      : " + near_cnt)
+println("EMPIRICAL [7]  : " + emp_cnt)
+println("LOW  [5]       : " + low_cnt)
+println("EXACT 비율     : " + (to_float(exact_cnt) / to_float(npairs)))
+println("OUT            : " + OUT_PATH)

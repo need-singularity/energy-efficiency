@@ -3,6 +3,14 @@
   "_axis": "compute",
   "_parent": "../_index.json",
   "_version": "1.1.0",
+  "_meta": {
+    "_category_name": "컴퓨팅·반도체·칩·네트워크·암호·OS·공간컴퓨팅",
+    "_domains_count": 58,
+    "_verified_count": null,
+    "_alien_index_avg": null,
+    "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
+    "_updated": "2026-04-14"
+  },
   "_count": 58,
   "_changelog": [
     "1.0.0 (2026-04-12): compute 축 sub-SSOT 신설. 칩 6단계 로드맵 6 도메인 등록 (chip-hexa1, chip-pim, chip-3d, chip-photonic, chip-wafer, chip-sc). project_chip_architecture_goal.md 출처.",
@@ -11,12 +19,60 @@
   "chip_6stage_roadmap": {
     "_doc": "HEXA-1 -> PIM -> 3D -> Photonic -> Wafer -> Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-n6-architecture/memory/project_chip_architecture_goal.md",
     "stages": [
-      {"stage": 1, "slug": "chip-hexa1",    "name": "HEXA-1 디지털 통합 SoC",  "ceiling_axis": "베이스라인",     "alien_index": 7, "closure_grade": 7, "sibling_product": null},
-      {"stage": 2, "slug": "chip-pim",      "name": "HEXA-PIM 메모리 내 연산", "ceiling_axis": "메모리 벽 제거", "alien_index": 8, "closure_grade": 7, "sibling_product": "hexa-pim"},
-      {"stage": 3, "slug": "chip-3d",       "name": "HEXA-3D 수직 적층",       "ceiling_axis": "대역폭 100배",   "alien_index": 9, "closure_grade": 7, "sibling_product": "hexa-3d"},
-      {"stage": 4, "slug": "chip-photonic", "name": "HEXA-PHOTONIC 광 컴퓨트", "ceiling_axis": "에너지 벽 제거", "alien_index": 9, "closure_grade": 7, "sibling_product": "hexa-photon"},
-      {"stage": 5, "slug": "chip-wafer",    "name": "HEXA-WAFER 웨이퍼 스케일","ceiling_axis": "스케일 벽 제거", "alien_index": 9, "closure_grade": 7, "sibling_product": "hexa-wafer"},
-      {"stage": 6, "slug": "chip-sc",       "name": "HEXA-SC 초전도 천장",     "ceiling_axis": "물리 벽 천장",   "alien_index": 9, "closure_grade": 8, "sibling_product": "hexa-super"}
+      {
+        "stage": 1,
+        "slug": "chip-hexa1",
+        "name": "HEXA-1 디지털 통합 SoC",
+        "ceiling_axis": "베이스라인",
+        "alien_index": 7,
+        "closure_grade": 7,
+        "sibling_product": null
+      },
+      {
+        "stage": 2,
+        "slug": "chip-pim",
+        "name": "HEXA-PIM 메모리 내 연산",
+        "ceiling_axis": "메모리 벽 제거",
+        "alien_index": 8,
+        "closure_grade": 7,
+        "sibling_product": "hexa-pim"
+      },
+      {
+        "stage": 3,
+        "slug": "chip-3d",
+        "name": "HEXA-3D 수직 적층",
+        "ceiling_axis": "대역폭 100배",
+        "alien_index": 9,
+        "closure_grade": 7,
+        "sibling_product": "hexa-3d"
+      },
+      {
+        "stage": 4,
+        "slug": "chip-photonic",
+        "name": "HEXA-PHOTONIC 광 컴퓨트",
+        "ceiling_axis": "에너지 벽 제거",
+        "alien_index": 9,
+        "closure_grade": 7,
+        "sibling_product": "hexa-photon"
+      },
+      {
+        "stage": 5,
+        "slug": "chip-wafer",
+        "name": "HEXA-WAFER 웨이퍼 스케일",
+        "ceiling_axis": "스케일 벽 제거",
+        "alien_index": 9,
+        "closure_grade": 7,
+        "sibling_product": "hexa-wafer"
+      },
+      {
+        "stage": 6,
+        "slug": "chip-sc",
+        "name": "HEXA-SC 초전도 천장",
+        "ceiling_axis": "물리 벽 천장",
+        "alien_index": 9,
+        "closure_grade": 8,
+        "sibling_product": "hexa-super"
+      }
     ],
     "ceiling_proof": "tau(6) + phi(6) = 4 + 2 = 6 = n -- 6단(HEXA-SC)이 천장이며 그 너머는 정의상 존재하지 않음",
     "core_theorem": "sigma(n)*phi(n) = n*tau(n) iff n=6 (atlas.n6 thm-1, [10*])"

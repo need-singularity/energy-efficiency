@@ -1,0 +1,740 @@
+{
+  "_meta": {
+    "updated": "2026-04-14T03:21:10Z",
+    "total": 146,
+    "cached": 0,
+    "note": "최초 dry-seed (hexa 배치 러너와 동일 로직). batch 모드 실행 시 last_pass 채워짐."
+  },
+  "files": {
+    "experiments/ai-efficiency/verify_ai_algorithm_n6.hexa": {
+      "mtime": "1775832394",
+      "last_pass": false,
+      "deps_hash": "9dde2844"
+    },
+    "experiments/ai-efficiency/verify_llm_improvement_n6.hexa": {
+      "mtime": "1775832687",
+      "last_pass": false,
+      "deps_hash": "559935f3"
+    },
+    "experiments/anomaly/verify_acceleration_hypotheses.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_battery_architecture.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_battery_cascade.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_bt_constants.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_bt_master.hexa": {
+      "mtime": "1775832402",
+      "last_pass": false,
+      "deps_hash": "e825a613"
+    },
+    "experiments/anomaly/verify_bt105_112.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_bt1386_standard_model.hexa": {
+      "mtime": "1775935166",
+      "last_pass": false,
+      "deps_hash": "b56d4174"
+    },
+    "experiments/anomaly/verify_bt1387_huckel_aromatic.hexa": {
+      "mtime": "1775935179",
+      "last_pass": false,
+      "deps_hash": "4f843324"
+    },
+    "experiments/anomaly/verify_bt1388_ionic_octahedral.hexa": {
+      "mtime": "1775935193",
+      "last_pass": false,
+      "deps_hash": "c78fc483"
+    },
+    "experiments/anomaly/verify_bt1389_cube_octahedron_duality.hexa": {
+      "mtime": "1775935219",
+      "last_pass": false,
+      "deps_hash": "ddba3b32"
+    },
+    "experiments/anomaly/verify_bt1390_hsv_color_hexad.hexa": {
+      "mtime": "1775935235",
+      "last_pass": false,
+      "deps_hash": "0f4f9cf7"
+    },
+    "experiments/anomaly/verify_bt1391_photosynthesis_equation.hexa": {
+      "mtime": "1775935252",
+      "last_pass": false,
+      "deps_hash": "d087506a"
+    },
+    "experiments/anomaly/verify_bt26.hexa": {
+      "mtime": "1775832405",
+      "last_pass": false,
+      "deps_hash": "8f8567d1"
+    },
+    "experiments/anomaly/verify_bt34_35.hexa": {
+      "mtime": "1775832409",
+      "last_pass": false,
+      "deps_hash": "dd1ef2a3"
+    },
+    "experiments/anomaly/verify_bt36_38.hexa": {
+      "mtime": "1775832414",
+      "last_pass": false,
+      "deps_hash": "ed88e912"
+    },
+    "experiments/anomaly/verify_bt372_geology.hexa": {
+      "mtime": "1775910348",
+      "last_pass": false,
+      "deps_hash": "52abf8e2"
+    },
+    "experiments/anomaly/verify_bt373_meteorology.hexa": {
+      "mtime": "1775910356",
+      "last_pass": false,
+      "deps_hash": "3e30cf77"
+    },
+    "experiments/anomaly/verify_bt374_cryosphere.hexa": {
+      "mtime": "1775910365",
+      "last_pass": false,
+      "deps_hash": "bdba0acd"
+    },
+    "experiments/anomaly/verify_bt375_ocean.hexa": {
+      "mtime": "1775910372",
+      "last_pass": false,
+      "deps_hash": "73bbbd81"
+    },
+    "experiments/anomaly/verify_bt376_atmospheric_chem.hexa": {
+      "mtime": "1775910378",
+      "last_pass": false,
+      "deps_hash": "e5ca4d01"
+    },
+    "experiments/anomaly/verify_bt377_curvature.hexa": {
+      "mtime": "1775910393",
+      "last_pass": false,
+      "deps_hash": "8f38dd1f"
+    },
+    "experiments/anomaly/verify_bt378_warp.hexa": {
+      "mtime": "1775910400",
+      "last_pass": false,
+      "deps_hash": "d4a0a326"
+    },
+    "experiments/anomaly/verify_bt379_extra_dim.hexa": {
+      "mtime": "1775910410",
+      "last_pass": false,
+      "deps_hash": "b78d7439"
+    },
+    "experiments/anomaly/verify_bt380_meta.hexa": {
+      "mtime": "1775910418",
+      "last_pass": false,
+      "deps_hash": "f715c7fe"
+    },
+    "experiments/anomaly/verify_bt381_wimp_ladder.hexa": {
+      "mtime": "1775910126",
+      "last_pass": false,
+      "deps_hash": "dffcda39"
+    },
+    "experiments/anomaly/verify_bt382_axion_window.hexa": {
+      "mtime": "1775910139",
+      "last_pass": false,
+      "deps_hash": "d6e46368"
+    },
+    "experiments/anomaly/verify_bt383_omega_lambda.hexa": {
+      "mtime": "1775910154",
+      "last_pass": false,
+      "deps_hash": "36cb6b8b"
+    },
+    "experiments/anomaly/verify_bt384_lqg_spinfoam.hexa": {
+      "mtime": "1775910166",
+      "last_pass": false,
+      "deps_hash": "3b13e637"
+    },
+    "experiments/anomaly/verify_bt385_adscft_holography.hexa": {
+      "mtime": "1775910184",
+      "last_pass": false,
+      "deps_hash": "44170326"
+    },
+    "experiments/anomaly/verify_bt386_iit_phi.hexa": {
+      "mtime": "1775910190",
+      "last_pass": false,
+      "deps_hash": "2a365cc6"
+    },
+    "experiments/anomaly/verify_bt387_gwt_broadcast.hexa": {
+      "mtime": "1775910199",
+      "last_pass": false,
+      "deps_hash": "3b1f168e"
+    },
+    "experiments/anomaly/verify_bt388_shannon_unification.hexa": {
+      "mtime": "1775910218",
+      "last_pass": false,
+      "deps_hash": "8f30e1c0"
+    },
+    "experiments/anomaly/verify_bt389_kolmogorov_complexity.hexa": {
+      "mtime": "1775910225",
+      "last_pass": false,
+      "deps_hash": "318b89dd"
+    },
+    "experiments/anomaly/verify_bt390_soc_exponent.hexa": {
+      "mtime": "1775910234",
+      "last_pass": false,
+      "deps_hash": "209acab2"
+    },
+    "experiments/anomaly/verify_bt391_ba_network_hub.hexa": {
+      "mtime": "1775910242",
+      "last_pass": false,
+      "deps_hash": "00dc9128"
+    },
+    "experiments/anomaly/verify_bt392_trophic_levels.hexa": {
+      "mtime": "1775910254",
+      "last_pass": false,
+      "deps_hash": "84fcc36c"
+    },
+    "experiments/anomaly/verify_bt393_dunbar_ladder.hexa": {
+      "mtime": "1775910265",
+      "last_pass": false,
+      "deps_hash": "25172ee6"
+    },
+    "experiments/anomaly/verify_bt394_zipf_pareto.hexa": {
+      "mtime": "1775910276",
+      "last_pass": false,
+      "deps_hash": "cf7b2557"
+    },
+    "experiments/anomaly/verify_bt395_market_tail.hexa": {
+      "mtime": "1775910284",
+      "last_pass": false,
+      "deps_hash": "a22c4f28"
+    },
+    "experiments/anomaly/verify_bt396_may_diversity.hexa": {
+      "mtime": "1775910295",
+      "last_pass": false,
+      "deps_hash": "0c132039"
+    },
+    "experiments/anomaly/verify_bt397_city_scaling.hexa": {
+      "mtime": "1775910310",
+      "last_pass": false,
+      "deps_hash": "ed520082"
+    },
+    "experiments/anomaly/verify_bt398_fisher_information.hexa": {
+      "mtime": "1775910315",
+      "last_pass": false,
+      "deps_hash": "a94d706e"
+    },
+    "experiments/anomaly/verify_bt399_game_theory.hexa": {
+      "mtime": "1775910322",
+      "last_pass": false,
+      "deps_hash": "854a65c2"
+    },
+    "experiments/anomaly/verify_bt400_meta_frontier.hexa": {
+      "mtime": "1775910331",
+      "last_pass": false,
+      "deps_hash": "04ee9aaa"
+    },
+    "experiments/anomaly/verify_bt401_quantum_annealer.hexa": {
+      "mtime": "1775910793",
+      "last_pass": false,
+      "deps_hash": "cc5c2bcf"
+    },
+    "experiments/anomaly/verify_bt402_superconductor_Tc.hexa": {
+      "mtime": "1775910797",
+      "last_pass": false,
+      "deps_hash": "66e450f5"
+    },
+    "experiments/anomaly/verify_bt403_neutrino_mass.hexa": {
+      "mtime": "1775910801",
+      "last_pass": false,
+      "deps_hash": "4f160782"
+    },
+    "experiments/anomaly/verify_bt404_dark_matter_halo.hexa": {
+      "mtime": "1775910803",
+      "last_pass": false,
+      "deps_hash": "20efbc5e"
+    },
+    "experiments/anomaly/verify_bt405_graphene_band.hexa": {
+      "mtime": "1775910809",
+      "last_pass": false,
+      "deps_hash": "15c9caf4"
+    },
+    "experiments/anomaly/verify_bt406_protein_fold.hexa": {
+      "mtime": "1775910817",
+      "last_pass": false,
+      "deps_hash": "95cfada2"
+    },
+    "experiments/anomaly/verify_bt407_codon_degeneracy.hexa": {
+      "mtime": "1775910821",
+      "last_pass": false,
+      "deps_hash": "f0f78079"
+    },
+    "experiments/anomaly/verify_bt408_microtubule.hexa": {
+      "mtime": "1775910827",
+      "last_pass": false,
+      "deps_hash": "eeea7a5c"
+    },
+    "experiments/anomaly/verify_bt409_oscillon.hexa": {
+      "mtime": "1775910830",
+      "last_pass": false,
+      "deps_hash": "179505b6"
+    },
+    "experiments/anomaly/verify_bt410_higgs_width.hexa": {
+      "mtime": "1775910833",
+      "last_pass": false,
+      "deps_hash": "a8bc496a"
+    },
+    "experiments/anomaly/verify_bt411_quark_gen.hexa": {
+      "mtime": "1775910840",
+      "last_pass": false,
+      "deps_hash": "85640aaf"
+    },
+    "experiments/anomaly/verify_bt412_lepton_gen.hexa": {
+      "mtime": "1775910845",
+      "last_pass": false,
+      "deps_hash": "da3bf8ec"
+    },
+    "experiments/anomaly/verify_bt413_ckm_matrix.hexa": {
+      "mtime": "1775910850",
+      "last_pass": false,
+      "deps_hash": "c49de211"
+    },
+    "experiments/anomaly/verify_bt414_planck_nine.hexa": {
+      "mtime": "1775910853",
+      "last_pass": false,
+      "deps_hash": "cc08f642"
+    },
+    "experiments/anomaly/verify_bt415_chern_simons.hexa": {
+      "mtime": "1775910857",
+      "last_pass": false,
+      "deps_hash": "958c3105"
+    },
+    "experiments/anomaly/verify_bt416_hexaquark.hexa": {
+      "mtime": "1775910861",
+      "last_pass": false,
+      "deps_hash": "7a2ec6f4"
+    },
+    "experiments/anomaly/verify_bt42_47.hexa": {
+      "mtime": "1775832419",
+      "last_pass": false,
+      "deps_hash": "3377a748"
+    },
+    "experiments/anomaly/verify_bt445_hexagonal_closepack.hexa": {
+      "mtime": "1775912820",
+      "last_pass": false,
+      "deps_hash": "7c60a70f"
+    },
+    "experiments/anomaly/verify_bt446_benzene_ring.hexa": {
+      "mtime": "1775912827",
+      "last_pass": false,
+      "deps_hash": "b1248245"
+    },
+    "experiments/anomaly/verify_bt447_snowflake_symmetry.hexa": {
+      "mtime": "1775912835",
+      "last_pass": false,
+      "deps_hash": "5640fd30"
+    },
+    "experiments/anomaly/verify_bt448_saturn_hexagon.hexa": {
+      "mtime": "1775912844",
+      "last_pass": false,
+      "deps_hash": "54139b9f"
+    },
+    "experiments/anomaly/verify_bt449_insect_compound_eye.hexa": {
+      "mtime": "1775912857",
+      "last_pass": false,
+      "deps_hash": "60c3aeef"
+    },
+    "experiments/anomaly/verify_bt450_honeycomb_conjecture.hexa": {
+      "mtime": "1775912867",
+      "last_pass": false,
+      "deps_hash": "d1763644"
+    },
+    "experiments/anomaly/verify_bt451_dna_six_base.hexa": {
+      "mtime": "1775912877",
+      "last_pass": false,
+      "deps_hash": "25a2d691"
+    },
+    "experiments/anomaly/verify_bt452_carbon_hybrid_sp2.hexa": {
+      "mtime": "1775912886",
+      "last_pass": false,
+      "deps_hash": "9e5e71b3"
+    },
+    "experiments/anomaly/verify_bt453_quark_color_six.hexa": {
+      "mtime": "1775912900",
+      "last_pass": false,
+      "deps_hash": "be5956c3"
+    },
+    "experiments/anomaly/verify_bt454_virus_icosahedral.hexa": {
+      "mtime": "1775912909",
+      "last_pass": false,
+      "deps_hash": "5a8800d7"
+    },
+    "experiments/anomaly/verify_bt455_music_hexachord.hexa": {
+      "mtime": "1775912918",
+      "last_pass": false,
+      "deps_hash": "6fe82f43"
+    },
+    "experiments/anomaly/verify_bt456_chess_six_pieces.hexa": {
+      "mtime": "1775912928",
+      "last_pass": false,
+      "deps_hash": "8078de13"
+    },
+    "experiments/anomaly/verify_bt457_6sphere_volume.hexa": {
+      "mtime": "1775912943",
+      "last_pass": false,
+      "deps_hash": "fb9306d6"
+    },
+    "experiments/anomaly/verify_bt458_quark_generations.hexa": {
+      "mtime": "1775912953",
+      "last_pass": false,
+      "deps_hash": "5dfda4cf"
+    },
+    "experiments/anomaly/verify_bt459_six_planet_resonance.hexa": {
+      "mtime": "1775912962",
+      "last_pass": false,
+      "deps_hash": "731b4789"
+    },
+    "experiments/anomaly/verify_bt460_carbon_hexagonal.hexa": {
+      "mtime": "1775912971",
+      "last_pass": false,
+      "deps_hash": "5c4fa84c"
+    },
+    "experiments/anomaly/verify_bt48_53.hexa": {
+      "mtime": "1775832681",
+      "last_pass": false,
+      "deps_hash": "f60e2954"
+    },
+    "experiments/anomaly/verify_bt66_73.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_bt66_76.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_bt77_bitnet.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_cascade_cross.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_chinchilla_n6_deep.hexa": {
+      "mtime": "1775832682",
+      "last_pass": false,
+      "deps_hash": "53fbebb2"
+    },
+    "experiments/anomaly/verify_chip_cache_hierarchy.hexa": {
+      "mtime": "1775906243",
+      "last_pass": false,
+      "deps_hash": "83ce2054"
+    },
+    "experiments/anomaly/verify_chip_n6.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_chip_ultimate.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_consciousness_chip.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_diffusion_n6.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_fusion_predictions.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_3d.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_chip.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_core.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_gate.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_ios.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_macos.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_material.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_photon.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_pim.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_process.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_super.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_system.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_hexa_wafer.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_llm_architecture_constants.hexa": {
+      "mtime": "1775832685",
+      "last_pass": false,
+      "deps_hash": "40c10c76"
+    },
+    "experiments/anomaly/verify_optimizer_constants_n6.hexa": {
+      "mtime": "1775832692",
+      "last_pass": false,
+      "deps_hash": "bad658ba"
+    },
+    "experiments/anomaly/verify_predictions.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_safety_hypotheses.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/anomaly/verify_topological_chip.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/chip-verify/verify_dse_cache_6level.hexa": {
+      "mtime": "1775910474",
+      "last_pass": false,
+      "deps_hash": "e8adbec6"
+    },
+    "experiments/chip-verify/verify_npu_systolic_6x6.hexa": {
+      "mtime": "1775910456",
+      "last_pass": false,
+      "deps_hash": "3cf2036b"
+    },
+    "experiments/chip-verify/verify_rtl_6stage_pipeline.hexa": {
+      "mtime": "1775910443",
+      "last_pass": false,
+      "deps_hash": "ea77ea06"
+    },
+    "experiments/chip-verify/verify_xn6_branch_predictor.hexa": {
+      "mtime": "1775910516",
+      "last_pass": false,
+      "deps_hash": "0d3309af"
+    },
+    "experiments/chip-verify/verify_xn6_dma_6channel.hexa": {
+      "mtime": "1775910972",
+      "last_pass": false,
+      "deps_hash": "ed6f0c9a"
+    },
+    "experiments/chip-verify/verify_xn6_fpu_6lane.hexa": {
+      "mtime": "1775910978",
+      "last_pass": false,
+      "deps_hash": "aa311659"
+    },
+    "experiments/chip-verify/verify_xn6_hls_6stage.hexa": {
+      "mtime": "1775910980",
+      "last_pass": false,
+      "deps_hash": "dc5d4887"
+    },
+    "experiments/chip-verify/verify_xn6_interconnect_6port.hexa": {
+      "mtime": "1775910489",
+      "last_pass": false,
+      "deps_hash": "dc221c67"
+    },
+    "experiments/chip-verify/verify_xn6_io_6pcie.hexa": {
+      "mtime": "1775910993",
+      "last_pass": false,
+      "deps_hash": "db958524"
+    },
+    "experiments/chip-verify/verify_xn6_isa_24ops.hexa": {
+      "mtime": "1775910433",
+      "last_pass": false,
+      "deps_hash": "9dbff59f"
+    },
+    "experiments/chip-verify/verify_xn6_issue_width_6.hexa": {
+      "mtime": "1775910511",
+      "last_pass": false,
+      "deps_hash": "b8db7dc7"
+    },
+    "experiments/chip-verify/verify_xn6_mesh_6x6.hexa": {
+      "mtime": "1775910990",
+      "last_pass": false,
+      "deps_hash": "736370fa"
+    },
+    "experiments/chip-verify/verify_xn6_power_gating_6.hexa": {
+      "mtime": "1775910526",
+      "last_pass": false,
+      "deps_hash": "33eb36a8"
+    },
+    "experiments/chip-verify/verify_xn6_regfile_24_entries.hexa": {
+      "mtime": "1775910499",
+      "last_pass": false,
+      "deps_hash": "3f6d888b"
+    },
+    "experiments/chip-verify/verify_xn6_simd_6way.hexa": {
+      "mtime": "1775910988",
+      "last_pass": false,
+      "deps_hash": "69fefc1e"
+    },
+    "experiments/chip-verify/verify_xn6_thermal_6zone.hexa": {
+      "mtime": "1775910996",
+      "last_pass": false,
+      "deps_hash": "c8ac3056"
+    },
+    "experiments/chip-verify/verify_xn6_tlb_64entries.hexa": {
+      "mtime": "1775910974",
+      "last_pass": false,
+      "deps_hash": "2c7a74d4"
+    },
+    "experiments/chip-verify/verify_xn6_vector_width.hexa": {
+      "mtime": "1775910465",
+      "last_pass": false,
+      "deps_hash": "95d05760"
+    },
+    "experiments/lens-verify/verify_attractor_basin_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_bayesian_inference_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_category_theory_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_causal_discovery_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_chaos_lyapunov_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_information_bottleneck_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_koopman_operator_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_manifold_learning_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_optimal_transport_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_persistence_homology_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_quantum_circuit_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_renormalization_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_sheaf_cohomology_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_spectral_graph_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_topological_data_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/lens-verify/verify_variational_inference_lens.hexa": {
+      "mtime": "1776074172",
+      "last_pass": false,
+      "deps_hash": "30d563bd"
+    },
+    "experiments/structural/verify_kstar_barrier4.hexa": {
+      "mtime": "1775832684",
+      "last_pass": false,
+      "deps_hash": "cbd8154e"
+    },
+    "experiments/verify_consciousness_cluster.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    },
+    "experiments/verify_special_number_control.hexa": {
+      "mtime": "1775828336",
+      "last_pass": false,
+      "deps_hash": "2655ffae"
+    }
+  }
+}

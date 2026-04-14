@@ -2,7 +2,7 @@
   "id": "n6-architecture-roi",
   "kind": "roi_sot",
   "role": "N6 Architecture 시스템설계 성능/속도/자원 개선 ROI",
-  "updated": "2026-04-12",
+  "updated": "2026-04-14",
   "ssot_refs": [
     "n6shared/config/dse-map.toml",
     "n6shared/dse/dse_cross_results_v2_4.json",
@@ -37,7 +37,8 @@
         "reports/audits/products-backup-2026-04-12-kolon-resolve.json"
       ],
       "note": "백업 간 diff 매우 작음 (products.json ~170KB x 7 = ~1.2MB 중복). git log 이미 이력 보존 → 최신 1개만 유지, 나머지 삭제",
-      "result": "products-backup 6개 + n6_products-backup 1개 + _registry-backup 1개 = 8파일 git rm 완료. 최신 kolon-resolve만 유지. 약 1.8MB 회수"
+      "result": "products-backup 6개 + n6_products-backup 1개 + _registry-backup 1개 = 8파일 git rm 완료. 최신 kolon-resolve만 유지. 약 1.8MB 회수",
+      "result_2026_04_14": "2차 잔여 정리: backup-brainwire-CLAUDE.md.2026-04-11 (26,861 bytes) + backup-sedi-CLAUDE.md.2026-04-11 (25,563 bytes) + convergence-backup-2026-04-11-ossification.json (8,001 bytes) = 60,425 bytes git rm. 모두 git history 보존 확인."
     },
     {
       "id": 2,
@@ -73,7 +74,8 @@
         "n6shared/dse/dse_cross_results_v2_4.json"
       ],
       "result": "v2 삭제 완료 (git rm). v2_4(480 도메인)만 유지. cross_dse_fusion_v2_run.hexa는 이미 v2_4 출력. reports/ 내 v2 언급은 히스토리 기록으로 보존",
-      "note": "diff 결과: 도메인 수(453 vs 480), 쌍 수(83K vs 93K), 상위 pairs 3행 차이뿐. v2 제거 후 참조 경로 1곳(cross_dse_fusion_v2_run.hexa 출력) 업데이트"
+      "note": "diff 결과: 도메인 수(453 vs 480), 쌍 수(83K vs 93K), 상위 pairs 3행 차이뿐. v2 제거 후 참조 경로 1곳(cross_dse_fusion_v2_run.hexa 출력) 업데이트",
+      "verified_2026_04_14": "재검증: find 스캔 결과 dse_cross_results_v2_4.json (80,623 bytes) 단일. v2.json 파일 부재 확인. dedup 추가 0 bytes — 이미 통합 종료."
     },
     {
       "id": 4,
@@ -196,7 +198,8 @@
         "domains/sf-ufo/_index.json"
       ],
       "note": "681파일/309디렉토리 across 10 카테고리. _index.json 생성 시 도메인 lookup O(1). auto_gap.log(7K행) + auto_bt.log(844행)도 인덱스 연계 가능",
-      "result": "10축 전체 sub-SSOT 검증 완료. 9축 기존 v1.0.0 정합 확인, compute chip-design 누락 보정(57->58). 루트 _index.json v1.0.5 (_total 304->305, _sub_indexes 10축 요약). 디스크 실측 305개 도메인 전수 일치."
+      "result": "10축 전체 sub-SSOT 검증 완료. 9축 기존 v1.0.0 정합 확인, compute chip-design 누락 보정(57->58). 루트 _index.json v1.0.5 (_total 304->305, _sub_indexes 10축 요약). 디스크 실측 305개 도메인 전수 일치.",
+      "result_2026_04_14": "한글 _meta 블록 10 카테고리 전수 삽입 — _category_name/_domains_count/_verified_count/_alien_index_avg/_honesty_note/_updated. verified_count/alien_index_avg 는 소스 부재로 null 정직 기록 (자기참조 금지). 디스크 실측 일치: compute=58 physics=37 life=47 energy=16 infra=57 materials=19 space=8 cognitive=21 culture=25 sf-ufo=17. JSON validity 10/10 OK."
     },
     {
       "id": 10,

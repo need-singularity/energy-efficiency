@@ -1,0 +1,1077 @@
+{
+  "_meta": {
+    "총편수": 108,
+    "소스": "papers/ 디렉토리 .md 실측 + _registry.json._meta.papers_chunk_* 병합",
+    "분리일": "2026-04-14",
+    "선행": "papers/_registry.json.bak",
+    "비고": "_meta.total_papers=97은 chunk 인덱싱된 편수, 실제 디스크는 108편. 43편이 chunk 미등재 상태.",
+    "chunk_지표": {
+      "chunk에_인덱싱됨": 65,
+      "chunk_미등재": 43
+    }
+  },
+  "papers": [
+    {
+      "id": "N6-001",
+      "title": "[CANONICAL v2] 궁극의 음향/파동 (HEXA-ACOUSTICS) — n=6 산술 좌표 매핑",
+      "domain": "acoustics",
+      "category": "acoustics — n=6 산술 시드 논문",
+      "path": "papers/n6-acoustics-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_h_2026-04-12",
+      "bt_ref": "BT-143 진동 모드, BT-189 파동 매질, BT-201 경계조건, BT-299 공명, BT-402 이어폰 음장, BT-403 공간음향",
+      "exact_stat": "39/45 EXACT (86.7%), 4 NEAR, 2 MISS",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함"
+    },
+    {
+      "id": "N6-002",
+      "title": "[CANONICAL v2] 궁극의 첨단 패키징 (HEXA-ADVANCED-PACKAGI) — n=6 산술 좌표 매핑",
+      "domain": "advanced-packaging",
+      "category": "advanced-packaging — n=6 산술 시드 논문",
+      "path": "papers/n6-advanced-packaging-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-003",
+      "title": "[CANONICAL v2] 궁극의 우주항공/수송 (HEXA-AEROSPACE-TRANSP) — n=6 산술 좌표 매핑",
+      "domain": "aerospace-transport",
+      "category": "aerospace-transport — n=6 산술 시드 논문",
+      "path": "papers/n6-aerospace-transport-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-004",
+      "title": "[CANONICAL v2] 궁극의 AGI 아키텍처 (HEXA-AGI-ARCHITECTURE) — n=6 산술 좌표 매핑",
+      "domain": "agi-architecture",
+      "category": "agi-architecture — n=6 산술 시드 논문",
+      "path": "papers/n6-agi-architecture-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-005",
+      "title": "[CANONICAL v2] 궁극의 AI 17기법 실험 (HEXA-AI-17-TECHNIQUES) — n=6 산술 좌표 매핑",
+      "domain": "ai-17-techniques-experimental",
+      "category": "ai-17-techniques-experimental — n=6 산술 시드 논문",
+      "path": "papers/n6-ai-17-techniques-experimental-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-26,34,54,58,64,77",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-006",
+      "title": "[CANONICAL v2] 궁극의 AI 윤리·거버넌스 (HEXA-AI-ETHICS-GOVERN) — n=6 산술 좌표 매핑",
+      "domain": "ai-ethics-governance",
+      "category": "ai-ethics-governance — n=6 산술 시드 논문",
+      "path": "papers/n6-ai-ethics-governance-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_g_2026-04-12",
+      "bt_ref": "BT-380, BT-ET-01~06 (EU AI Act, NIST RMF, ISO 42001, IEEE EAD, OECD, GDPR)",
+      "exact_stat": "34/37 EXACT (91.9%)",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드"
+    },
+    {
+      "id": "N6-007",
+      "title": "[CANONICAL v2] 궁극의 AI 68기법 통합 (HEXA-AI-TECHNIQUES-68) — n=6 산술 좌표 매핑",
+      "domain": "ai-techniques-68-integrated",
+      "category": "ai-techniques-68-integrated — n=6 산술 시드 논문",
+      "path": "papers/n6-ai-techniques-68-integrated-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_i_2026-04-12",
+      "bt_ref": "BT-380 메타, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73, BT-1394 σ-sopfr 3축",
+      "chunk_status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합"
+    },
+    {
+      "id": "N6-008",
+      "title": "[CANONICAL v2] 궁극의 Anima SoC (HEXA-ANIMA-SOC) — n=6 산술 좌표 매핑",
+      "domain": "anima-soc",
+      "category": "anima-soc — n=6 산술 시드 논문",
+      "path": "papers/n6-anima-soc-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-009",
+      "title": "[CANONICAL v2] 궁극의 양식/수산 (HEXA-AQUACULTURE) — n=6 산술 좌표 매핑",
+      "domain": "aquaculture",
+      "category": "aquaculture — n=6 산술 시드 논문",
+      "path": "papers/n6-aquaculture-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-375 해양경계, BT-193 유체경계, BT-149 상변화, BT-15 생물화학양론",
+      "exact_stat": "20/25 EXACT (80.0%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-010",
+      "title": "[CANONICAL v2] 궁극의 고고학 (HEXA-ARCHAEOLOGY) — n=6 산술 좌표 매핑",
+      "domain": "archaeology",
+      "category": "archaeology — n=6 산술 시드 논문",
+      "path": "papers/n6-archaeology-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-011",
+      "title": "[CANONICAL v2] 궁극의 atlas 7→10 승격 (HEXA-ATLAS-PROMOTION-) — n=6 산술 좌표 매핑",
+      "domain": "atlas-promotion-7-to-10",
+      "category": "atlas-promotion-7-to-10 — n=6 산술 시드 논문",
+      "path": "papers/n6-atlas-promotion-7-to-10-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "atlas 프로토콜",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-012",
+      "title": "[CANONICAL v2] 궁극의 자율주행 (HEXA-AUTONOMOUS-DRIVI) — n=6 산술 좌표 매핑",
+      "domain": "autonomous-driving",
+      "category": "autonomous-driving — n=6 산술 시드 논문",
+      "path": "papers/n6-autonomous-driving-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-013",
+      "title": "[CANONICAL v2] 궁극의 배터리·에너지 저장 (HEXA-BATTERY-ENERGY-S) — n=6 산술 좌표 매핑",
+      "domain": "battery-energy-storage",
+      "category": "battery-energy-storage — n=6 산술 시드 논문",
+      "path": "papers/n6-battery-energy-storage-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-27 에너지기초, BT-85 전기화학, BT-93 소재, BT-440 전자기",
+      "exact_stat": "20/24 EXACT (83.3%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-014",
+      "title": "[CANONICAL v2] 궁극의 BCI (HEXA-BRAIN-COMPUTER-I) — n=6 산술 좌표 매핑",
+      "domain": "brain-computer-interface",
+      "category": "brain-computer-interface — n=6 산술 시드 논문",
+      "path": "papers/n6-brain-computer-interface-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-015",
+      "title": "[CANONICAL v2] 궁극의 달력·시간지리 (HEXA-CALENDAR-TIME-GE) — n=6 산술 좌표 매핑",
+      "domain": "calendar-time-geography",
+      "category": "calendar-time-geography — n=6 산술 시드 논문",
+      "path": "papers/n6-calendar-time-geography-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-016",
+      "title": "[CANONICAL v2] 궁극의 탄소 포집 (HEXA-CARBON-CAPTURE) — n=6 산술 좌표 매핑",
+      "domain": "carbon-capture",
+      "category": "carbon-capture — n=6 산술 시드 논문",
+      "path": "papers/n6-carbon-capture-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-27, BT-85, BT-93, BT-103, BT-38 (탄소 Z=6/CCUS)",
+      "exact_stat": "30/30 EXACT (100%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-017",
+      "title": "[CANONICAL v2] 궁극의 지도제작 (HEXA-CARTOGRAPHY) — n=6 산술 좌표 매핑",
+      "domain": "cartography",
+      "category": "cartography — n=6 산술 시드 논문",
+      "path": "papers/n6-cartography-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-370, BT-377, BT-372 (지리주기/곡률기하/지질PREM)",
+      "exact_stat": "17/20 EXACT (85.0%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-018",
+      "title": "[CANONICAL v2] 궁극의 인과 사슬 (HEXA-CAUSAL-CHAIN) — n=6 산술 좌표 매핑",
+      "domain": "causal-chain",
+      "category": "causal-chain — n=6 산술 시드 논문",
+      "path": "papers/n6-causal-chain-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-019",
+      "title": "[CANONICAL v2] 궁극의 화학 (HEXA-CHEMISTRY) — n=6 산술 좌표 매핑",
+      "domain": "chemistry",
+      "category": "chemistry — n=6 산술 시드 논문",
+      "path": "papers/n6-chemistry-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-020",
+      "title": "[CANONICAL v2] 궁극의 칩 6단계 통합 (HEXA-CHIP-6STAGES-INT) — n=6 산술 좌표 매핑",
+      "domain": "chip-6stages-integrated",
+      "category": "chip-6stages-integrated — n=6 산술 시드 논문",
+      "path": "papers/n6-chip-6stages-integrated-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_i_2026-04-12",
+      "bt_ref": "BT-28, BT-36, BT-55, BT-90, BT-93, BT-260~266, BT-344~346, BT-1104",
+      "chunk_status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합"
+    },
+    {
+      "id": "N6-021",
+      "title": "[CANONICAL v2] 궁극의 칩 설계 사다리 (HEXA-CHIP-DESIGN-LADD) — n=6 산술 좌표 매핑",
+      "domain": "chip-design-ladder",
+      "category": "chip-design-ladder — n=6 산술 시드 논문",
+      "path": "papers/n6-chip-design-ladder-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-28, BT-55, BT-90, BT-1104",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-022",
+      "title": "[CANONICAL v2] 궁극의 칩 DSE 수렴 (HEXA-CHIP-DSE-CONVERG) — n=6 산술 좌표 매핑",
+      "domain": "chip-dse-convergence",
+      "category": "chip-dse-convergence — n=6 산술 시드 논문",
+      "path": "papers/n6-chip-dse-convergence-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-28, BT-1104",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-023",
+      "title": "[CANONICAL v2] 궁극의 고전역학 가속기 (HEXA-CLASSICAL-MECHAN) — n=6 산술 좌표 매핑",
+      "domain": "classical-mechanics-accelerator",
+      "category": "classical-mechanics-accelerator — n=6 산술 시드 논문",
+      "path": "papers/n6-classical-mechanics-accelerator-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-024",
+      "title": "[CANONICAL v2] 궁극의 인지·사회심리 (HEXA-COGNITIVE-SOCIAL) — n=6 산술 좌표 매핑",
+      "domain": "cognitive-social-psychology",
+      "category": "cognitive-social-psychology — n=6 산술 시드 논문",
+      "path": "papers/n6-cognitive-social-psychology-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-025",
+      "title": "[CANONICAL v2] 궁극의 의식 칩 (HEXA-CONSCIOUSNESS-CH) — n=6 산술 좌표 매핑",
+      "domain": "consciousness-chip",
+      "category": "consciousness-chip — n=6 산술 시드 논문",
+      "path": "papers/n6-consciousness-chip-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-90, BT-55, BT-344~346",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-026",
+      "title": "[CANONICAL v2] 궁극의 의식 SoC (HEXA-CONSCIOUSNESS-SO) — n=6 산술 좌표 매핑",
+      "domain": "consciousness-soc",
+      "category": "consciousness-soc — n=6 산술 시드 논문",
+      "path": "papers/n6-consciousness-soc-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-027",
+      "title": "[CANONICAL v2] 궁극의 건설·구조 (HEXA-CONSTRUCTION-STR) — n=6 산술 좌표 매핑",
+      "domain": "construction-structural",
+      "category": "construction-structural — n=6 산술 시드 논문",
+      "path": "papers/n6-construction-structural-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-143, BT-201, BT-149, BT-189, BT-130, BT-167, BT-377 (건축/구조)",
+      "exact_stat": "22/25 EXACT (88%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-028",
+      "title": "[CANONICAL v2] 궁극의 제어·자동화 (HEXA-CONTROL-AUTOMATI) — n=6 산술 좌표 매핑",
+      "domain": "control-automation",
+      "category": "control-automation — n=6 산술 시드 논문",
+      "path": "papers/n6-control-automation-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-029",
+      "title": "[CANONICAL v2] 궁극의 크로스 패러다임 AI (HEXA-CROSS-PARADIGM-A) — n=6 산술 좌표 매핑",
+      "domain": "cross-paradigm-ai",
+      "category": "cross-paradigm-ai — n=6 산술 시드 논문",
+      "path": "papers/n6-cross-paradigm-ai-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-380 메타, BT-381~390",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-030",
+      "title": "[CANONICAL v2] 궁극의 암호학 (HEXA-CRYPTOGRAPHY) — n=6 산술 좌표 매핑",
+      "domain": "cryptography",
+      "category": "cryptography — n=6 산술 시드 논문",
+      "path": "papers/n6-cryptography-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-73, BT-197, BT-227 (인코딩/정보스택/이진체계)",
+      "exact_stat": "16/20 EXACT (80.0%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-031",
+      "title": "[CANONICAL v2] 궁극의 곡률·기하 (HEXA-CURVATURE-GEOMET) — n=6 산술 좌표 매핑",
+      "domain": "curvature-geometry",
+      "category": "curvature-geometry — n=6 산술 시드 논문",
+      "path": "papers/n6-curvature-geometry-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-377",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-032",
+      "title": "[CANONICAL v2] 궁극의 무용·안무 (HEXA-DANCE-CHOREOGRAP) — n=6 산술 좌표 매핑",
+      "domain": "dance-choreography",
+      "category": "dance-choreography — n=6 산술 시드 논문",
+      "path": "papers/n6-dance-choreography-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-123, BT-124, BT-135, BT-108, BT-201, BT-233 (SE(3)/라반/안무)",
+      "exact_stat": "20/20 EXACT (100%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-033",
+      "title": "[CANONICAL v2] 궁극의 차원 전개 (HEXA-DIMENSIONAL-UNFO) — n=6 산술 좌표 매핑",
+      "domain": "dimensional-unfolding",
+      "category": "dimensional-unfolding — n=6 산술 시드 논문",
+      "path": "papers/n6-dimensional-unfolding-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-361~365",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-034",
+      "title": "[CANONICAL v2] 궁극의 돌고래 생체음향 (HEXA-DOLPHIN-BIOACOUS) — n=6 산술 좌표 매핑",
+      "domain": "dolphin-bioacoustics",
+      "category": "dolphin-bioacoustics — n=6 산술 시드 논문",
+      "path": "papers/n6-dolphin-bioacoustics-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-035",
+      "title": "[CANONICAL v2] 궁극의 DRAM (HEXA-DRAM) — n=6 산술 좌표 매핑",
+      "domain": "dram",
+      "category": "dram — n=6 산술 시드 논문",
+      "path": "papers/n6-dram-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-36, BT-58, BT-112, BT-215",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-036",
+      "title": "[CANONICAL v2] 궁극의 생태·농업·식품 (HEXA-ECOLOGY-AGRICULT) — n=6 산술 좌표 매핑",
+      "domain": "ecology-agriculture-food",
+      "category": "ecology-agriculture-food — n=6 산술 시드 논문",
+      "path": "papers/n6-ecology-agriculture-food-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-037",
+      "title": "[CANONICAL v2] 궁극의 생태학 (HEXA-ECOLOGY-STANDALO) — n=6 산술 좌표 매핑",
+      "domain": "ecology-standalone",
+      "category": "ecology-standalone — n=6 산술 시드 논문",
+      "path": "papers/n6-ecology-standalone-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-038",
+      "title": "[CANONICAL v2] 궁극의 경제·금융 (HEXA-ECONOMICS-FINANC) — n=6 산술 좌표 매핑",
+      "domain": "economics-finance",
+      "category": "economics-finance — n=6 산술 시드 논문",
+      "path": "papers/n6-economics-finance-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-039",
+      "title": "[CANONICAL v2] 궁극의 전자기학 (HEXA-ELECTROMAGNETISM) — n=6 산술 좌표 매핑",
+      "domain": "electromagnetism",
+      "category": "electromagnetism — n=6 산술 시드 논문",
+      "path": "papers/n6-electromagnetism-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-440, BT-441, BT-145, BT-189",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-040",
+      "title": "[CANONICAL v2] 궁극의 곤충학 (HEXA-ENTOMOLOGY) — n=6 산술 좌표 매핑",
+      "domain": "entomology",
+      "category": "entomology — n=6 산술 시드 논문",
+      "path": "papers/n6-entomology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-041",
+      "title": "[CANONICAL v2] 궁극의 여분 차원 (HEXA-EXTRA-DIMENSIONS) — n=6 산술 좌표 매핑",
+      "domain": "extra-dimensions",
+      "category": "extra-dimensions — n=6 산술 시드 논문",
+      "path": "papers/n6-extra-dimensions-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-379",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-042",
+      "title": "[CANONICAL v2] 궁극의 Exynos (HEXA-EXYNOS) — n=6 산술 좌표 매핑",
+      "domain": "exynos",
+      "category": "exynos — n=6 산술 시드 논문",
+      "path": "papers/n6-exynos-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-90, BT-55, BT-93",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-043",
+      "title": "[CANONICAL v2] 궁극의 발효 (HEXA-FERMENTATION) — n=6 산술 좌표 매핑",
+      "domain": "fermentation",
+      "category": "fermentation — n=6 산술 시드 논문",
+      "path": "papers/n6-fermentation-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-044",
+      "title": "[CANONICAL v2] 궁극의 유체역학 (HEXA-FLUID-DYNAMICS) — n=6 산술 좌표 매핑",
+      "domain": "fluid-dynamics",
+      "category": "fluid-dynamics — n=6 산술 시드 논문",
+      "path": "papers/n6-fluid-dynamics-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-193, BT-201, BT-149",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-045",
+      "title": "[CANONICAL v2] 궁극의 법의학 (HEXA-FORENSIC-SCIENCE) — n=6 산술 좌표 매핑",
+      "domain": "forensic-science",
+      "category": "forensic-science — n=6 산술 시드 논문",
+      "path": "papers/n6-forensic-science-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-374 법학, BT-73 인코딩, BT-197 정보스택, BT-15 생물화학양론",
+      "exact_stat": "19/24 EXACT (79.2%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-046",
+      "title": "[CANONICAL v2] 궁극의 게임이론 (HEXA-GAME-THEORY) — n=6 산술 좌표 매핑",
+      "domain": "game-theory",
+      "category": "game-theory — n=6 산술 시드 논문",
+      "path": "papers/n6-game-theory-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-201, BT-380, BT-9 (평형/다중패러다임/위상고정점)",
+      "exact_stat": "17/20 EXACT (85.0%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-047",
+      "title": "[CANONICAL v2] 궁극의 게임·스포츠 (HEXA-GAMES-SPORTS) — n=6 산술 좌표 매핑",
+      "domain": "games-sports",
+      "category": "games-sports — n=6 산술 시드 논문",
+      "path": "papers/n6-games-sports-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-048",
+      "title": "[CANONICAL v2] 궁극의 유전학 (HEXA-GENETICS) — n=6 산술 좌표 매핑",
+      "domain": "genetics",
+      "category": "genetics — n=6 산술 시드 논문",
+      "path": "papers/n6-genetics-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-049",
+      "title": "[CANONICAL v2] 궁극의 지질·PREM (HEXA-GEOLOGY-PREM) — n=6 산술 좌표 매핑",
+      "domain": "geology-prem",
+      "category": "geology-prem — n=6 산술 시드 논문",
+      "path": "papers/n6-geology-prem-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-372",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-050",
+      "title": "[CANONICAL v2] 궁극의 거버넌스·안전·도시 (HEXA-GOVERNANCE-SAFET) — n=6 산술 좌표 매핑",
+      "domain": "governance-safety-urban",
+      "category": "governance-safety-urban — n=6 산술 시드 논문",
+      "path": "papers/n6-governance-safety-urban-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-051",
+      "title": "[CANONICAL v2] 궁극의 중력파 (HEXA-GRAVITY-WAVE) — n=6 산술 좌표 매핑",
+      "domain": "gravity-wave",
+      "category": "gravity-wave — n=6 산술 시드 논문",
+      "path": "papers/n6-gravity-wave-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-130, BT-143, BT-167, BT-189, BT-201, BT-299~306",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-052",
+      "title": "[CANONICAL v2] 궁극의 3d (HEXA-HEXA-3D) — n=6 산술 좌표 매핑",
+      "domain": "hexa-3d",
+      "category": "3d — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-3d-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-053",
+      "title": "[CANONICAL v2] 궁극의 asic (HEXA-HEXA-ASIC) — n=6 산술 좌표 매핑",
+      "domain": "hexa-asic",
+      "category": "asic — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-asic-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-28, BT-53, BT-58, BT-59",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-054",
+      "title": "[CANONICAL v2] 궁극의 dream (HEXA-HEXA-DREAM) — n=6 산술 좌표 매핑",
+      "domain": "hexa-dream",
+      "category": "dream — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-dream-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-055",
+      "title": "[CANONICAL v2] 궁극의 earphone (HEXA-HEXA-EARPHONE) — n=6 산술 좌표 매핑",
+      "domain": "hexa-earphone",
+      "category": "earphone — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-earphone-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-402, BT-403",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-056",
+      "title": "[CANONICAL v2] 궁극의 exo (HEXA-HEXA-EXO) — n=6 산술 좌표 매핑",
+      "domain": "hexa-exo",
+      "category": "exo — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-exo-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-057",
+      "title": "[CANONICAL v2] 궁극의 limb (HEXA-HEXA-LIMB) — n=6 산술 좌표 매핑",
+      "domain": "hexa-limb",
+      "category": "limb — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-limb-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-058",
+      "title": "[CANONICAL v2] 궁극의 mind (HEXA-HEXA-MIND) — n=6 산술 좌표 매핑",
+      "domain": "hexa-mind",
+      "category": "mind — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-mind-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-059",
+      "title": "[CANONICAL v2] 궁극의 neuro (HEXA-HEXA-NEURO) — n=6 산술 좌표 매핑",
+      "domain": "hexa-neuro",
+      "category": "neuro — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-neuro-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-060",
+      "title": "[CANONICAL v2] 궁극의 olfact (HEXA-HEXA-OLFACT) — n=6 산술 좌표 매핑",
+      "domain": "hexa-olfact",
+      "category": "olfact — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-olfact-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-061",
+      "title": "[CANONICAL v2] 궁극의 photon (HEXA-HEXA-PHOTON) — n=6 산술 좌표 매핑",
+      "domain": "hexa-photon",
+      "category": "photon — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-photon-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-062",
+      "title": "[CANONICAL v2] 궁극의 pim (HEXA-HEXA-PIM) — n=6 산술 좌표 매핑",
+      "domain": "hexa-pim",
+      "category": "pim — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-pim-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-063",
+      "title": "[CANONICAL v2] 궁극의 skin (HEXA-HEXA-SKIN) — n=6 산술 좌표 매핑",
+      "domain": "hexa-skin",
+      "category": "skin — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-skin-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-064",
+      "title": "[CANONICAL v2] 궁극의 super (HEXA-HEXA-SUPER) — n=6 산술 좌표 매핑",
+      "domain": "hexa-super",
+      "category": "super — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-super-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-065",
+      "title": "[CANONICAL v2] 궁극의 telepathy (HEXA-HEXA-TELEPATHY) — n=6 산술 좌표 매핑",
+      "domain": "hexa-telepathy",
+      "category": "telepathy — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-telepathy-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-066",
+      "title": "[CANONICAL v2] 궁극의 topo (HEXA-HEXA-TOPO) — n=6 산술 좌표 매핑",
+      "domain": "hexa-topo",
+      "category": "topo — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-topo-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-90, BT-91, BT-92",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-067",
+      "title": "[CANONICAL v2] 궁극의 wafer (HEXA-HEXA-WAFER) — n=6 산술 좌표 매핑",
+      "domain": "hexa-wafer",
+      "category": "wafer — n=6 산술 시드 논문",
+      "path": "papers/n6-hexa-wafer-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-068",
+      "title": "[CANONICAL v2] 궁극의 시계학 (HEXA-HOROLOGY) — n=6 산술 좌표 매핑",
+      "domain": "horology",
+      "category": "horology — n=6 산술 시드 논문",
+      "path": "papers/n6-horology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-370, BT-73 (성수주기/인코딩구조)",
+      "exact_stat": "19/22 EXACT (86.4%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-069",
+      "title": "[CANONICAL v2] 궁극의 수문학 (HEXA-HYDROLOGY) — n=6 산술 좌표 매핑",
+      "domain": "hydrology",
+      "category": "hydrology — n=6 산술 시드 논문",
+      "path": "papers/n6-hydrology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_h_2026-04-12",
+      "bt_ref": "BT-193 유체 경계, BT-201 순환 평형, BT-149 상변화, BT-373 기상 재현, BT-375 해양 경계",
+      "exact_stat": "34/39 EXACT (87.2%), 3 NEAR, 2 MISS (water-boiling-point atlas 식 재검증 필요)",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함"
+    },
+    {
+      "id": "N6-070",
+      "title": "[CANONICAL v2] 궁극의 법학 (HEXA-JURISPRUDENCE) — n=6 산술 좌표 매핑",
+      "domain": "jurisprudence",
+      "category": "jurisprudence — n=6 산술 시드 논문",
+      "path": "papers/n6-jurisprudence-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_g_2026-04-12",
+      "bt_ref": "BT-374 확장 + BT-JUR-01~05 (영미/대륙/국제/헌법/역사 법전)",
+      "exact_stat": "35/41 EXACT (85.4%)",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드"
+    },
+    {
+      "id": "N6-071",
+      "title": "[CANONICAL v2] 궁극의 제조 품질 (HEXA-MANUFACTURING-QU) — n=6 산술 좌표 매핑",
+      "domain": "manufacturing-quality",
+      "category": "manufacturing-quality — n=6 산술 시드 논문",
+      "path": "papers/n6-manufacturing-quality-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-072",
+      "title": "[CANONICAL v2] 궁극의 기계공학 (HEXA-MECHANICAL-ENGIN) — n=6 산술 좌표 매핑",
+      "domain": "mechanical-engineering",
+      "category": "mechanical-engineering — n=6 산술 시드 논문",
+      "path": "papers/n6-mechanical-engineering-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_h_2026-04-12",
+      "bt_ref": "BT-143 탄성 한계, BT-201 평형 방정식, BT-149 응력-변형, BT-189 진동 모드, BT-130 균열 전파, BT-167 피로 한계",
+      "exact_stat": "35/40 EXACT (87.5%), 3 NEAR, 2 MISS",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함"
+    },
+    {
+      "id": "N6-073",
+      "title": "[CANONICAL v2] 궁극의 기상학 (HEXA-METEOROLOGY) — n=6 산술 좌표 매핑",
+      "domain": "meteorology",
+      "category": "meteorology — n=6 산술 시드 논문",
+      "path": "papers/n6-meteorology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-373",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-074",
+      "title": "[CANONICAL v2] 궁극의 밀레니엄 DFS 1~12 통합 (HEXA-MILLENNIUM-DFS-1) — n=6 산술 좌표 매핑",
+      "domain": "millennium-dfs-1-12-integrated",
+      "category": "millennium-dfs-1-12-integrated — n=6 산술 시드 논문",
+      "path": "papers/n6-millennium-dfs-1-12-integrated-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_i_2026-04-12",
+      "bt_ref": "BT-541~547 (1~2차 51 tight), BT-1394 (3차 +14), BT-1395 (4차 +15), BT-1396 (5차 +12), BT-1398 (6차 +10), BT-1399 (7차 +12), BT-1400 (8차 +14), BT-1401 (9차 +12), BT-1402 (10차 +12), BT-1403 (11차 +12), BT-1404 (12차 +12)",
+      "chunk_status": "v1 시드 완성 — 파이썬 검증코드 임베드, techniques/chip-design/millennium 기존 증거 통합"
+    },
+    {
+      "id": "N6-075",
+      "title": "[CANONICAL v2] 궁극의 음악이론 (HEXA-MUSIC-THEORY) — n=6 산술 좌표 매핑",
+      "domain": "music-theory",
+      "category": "music-theory — n=6 산술 시드 논문",
+      "path": "papers/n6-music-theory-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-143, BT-189, BT-402, BT-403 (진동모드/파동매질/이어폰/공간음���)",
+      "exact_stat": "22/25 EXACT (88.0%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-076",
+      "title": "[CANONICAL v2] 궁극의 네트워크·집단 (HEXA-NETWORK-COLLECTI) — n=6 산술 좌표 매핑",
+      "domain": "network-collective",
+      "category": "network-collective — n=6 산술 시드 논문",
+      "path": "papers/n6-network-collective-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_g_2026-04-12",
+      "bt_ref": "BT-NET-01~05 (Milgram, Dunbar, 멀티에이전트 LLM, 조직)",
+      "exact_stat": "30/39 EXACT (76.9%, NEAR 포함 92.3%)",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 파이썬 검증 임베드"
+    },
+    {
+      "id": "N6-077",
+      "title": "[CANONICAL v2] 궁극의 뉴로모픽 컴퓨팅 (HEXA-NEUROMORPHIC-COM) — n=6 산술 좌표 매핑",
+      "domain": "neuromorphic-computing",
+      "category": "neuromorphic-computing — n=6 산술 시드 논문",
+      "path": "papers/n6-neuromorphic-computing-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-078",
+      "title": "[CANONICAL v2] 궁극의 해양학 (HEXA-OCEANOGRAPHY) — n=6 산술 좌표 매핑",
+      "domain": "oceanography",
+      "category": "oceanography — n=6 산술 시드 논문",
+      "path": "papers/n6-oceanography-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-375",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-079",
+      "title": "[CANONICAL v2] 궁극의 광학 (HEXA-OPTICS) — n=6 산술 좌표 매핑",
+      "domain": "optics",
+      "category": "optics — n=6 산술 시드 논문",
+      "path": "papers/n6-optics-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_h_2026-04-12",
+      "bt_ref": "BT-145 편광, BT-189 전자기 스펙트럼, BT-380 메타, BT-440 광결합, BT-441 광경로, BT-97 스펙트럼 경계",
+      "exact_stat": "38/44 EXACT (86.4%), 4 NEAR, 2 MISS",
+      "chunk_status": "v1 완성 -- hexa 검증 스텁 + 결과표/MISS 공시 포함"
+    },
+    {
+      "id": "N6-080",
+      "title": "[CANONICAL v2] 궁극의 입자·우주론 (HEXA-PARTICLE-COSMOLO) — n=6 산술 좌표 매핑",
+      "domain": "particle-cosmology",
+      "category": "particle-cosmology — n=6 산술 시드 논문",
+      "path": "papers/n6-particle-cosmology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-36, BT-49, BT-51, BT-53, BT-97, BT-105, BT-109, BT-112, BT-143, BT-167",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-081",
+      "title": "[CANONICAL v2] 궁극의 고성능 칩 (HEXA-PERFORMANCE-CHIP) — n=6 산술 좌표 매핑",
+      "domain": "performance-chip",
+      "category": "performance-chip — n=6 산술 시드 논문",
+      "path": "papers/n6-performance-chip-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-28, BT-37, BT-55, BT-90, BT-93",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-082",
+      "title": "[CANONICAL v2] 궁극의 약리학 (HEXA-PHARMACOLOGY) — n=6 산술 좌표 매핑",
+      "domain": "pharmacology",
+      "category": "pharmacology — n=6 산술 시드 논문",
+      "path": "papers/n6-pharmacology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_k_2026-04-12",
+      "bt_ref": "BT-15, BT-1391, BT-404 (생물화학양론/광합성/치료나노봇)",
+      "exact_stat": "18/22 EXACT (81.8%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-083",
+      "title": "[CANONICAL v2] 궁극의 고분자 공학 (HEXA-POLYMER-ENGINEER) — n=6 산술 좌표 매핑",
+      "domain": "polymer-engineering",
+      "category": "polymer-engineering — n=6 산술 시드 논문",
+      "path": "papers/n6-polymer-engineering-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-93 소재, BT-143 탄성한계, BT-149 응력변형, BT-130 균열전파",
+      "exact_stat": "19/24 EXACT (79.2%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-084",
+      "title": "[CANONICAL v2] 궁극의 순수수학 (HEXA-PURE-MATHEMATICS) — n=6 산술 좌표 매핑",
+      "domain": "pure-mathematics",
+      "category": "pure-mathematics — n=6 산술 시드 논문",
+      "path": "papers/n6-pure-mathematics-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-085",
+      "title": "[CANONICAL v2] 궁극의 양자컴퓨팅 (HEXA-QUANTUM-COMPUTIN) — n=6 산술 좌표 매핑",
+      "domain": "quantum-computing",
+      "category": "quantum-computing — n=6 산술 시드 논문",
+      "path": "papers/n6-quantum-computing-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-086",
+      "title": "[CANONICAL v2] 궁극의 양자 오류정정 (HEXA-QUANTUM-ERROR-CO) — n=6 산술 좌표 매핑",
+      "domain": "quantum-error-correction",
+      "category": "quantum-error-correction — n=6 산술 시드 논문",
+      "path": "papers/n6-quantum-error-correction-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-087",
+      "title": "[CANONICAL v2] 궁극의 양자 기계학습 (HEXA-QUANTUM-MACHINE-) — n=6 산술 좌표 매핑",
+      "domain": "quantum-machine-learning",
+      "category": "quantum-machine-learning — n=6 산술 시드 논문",
+      "path": "papers/n6-quantum-machine-learning-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-088",
+      "title": "[CANONICAL v2] 궁극의 현실 지도 (HEXA-REALITY-MAP) — n=6 산술 좌표 매핑",
+      "domain": "reality-map",
+      "category": "reality-map — n=6 산술 시드 논문",
+      "path": "papers/n6-reality-map-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-089",
+      "title": "[CANONICAL v2] 궁극의 종교·신화 (HEXA-RELIGION-MYTHOLO) — n=6 산술 좌표 매핑",
+      "domain": "religion-mythology",
+      "category": "religion-mythology — n=6 산술 시드 논문",
+      "path": "papers/n6-religion-mythology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-7, BT-5, BT-370 (종교/신화 성수)",
+      "exact_stat": "20/30 EXACT (66.7%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-090",
+      "title": "[CANONICAL v2] 궁극의 토양학 (HEXA-SOIL-SCIENCE) — n=6 산술 좌표 매핑",
+      "domain": "soil-science",
+      "category": "soil-science — n=6 산술 시드 논문",
+      "path": "papers/n6-soil-science-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-372 지질PREM, BT-373 기상, BT-375 해양, BT-149 상변화",
+      "exact_stat": "18/22 EXACT (81.8%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-091",
+      "title": "[CANONICAL v2] 궁극의 SOTA SSM (HEXA-SOTA-SSM) — n=6 산술 좌표 매핑",
+      "domain": "sota-ssm",
+      "category": "sota-ssm — n=6 산술 시드 논문",
+      "path": "papers/n6-sota-ssm-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-092",
+      "title": "[CANONICAL v2] 궁극의 우주 시스템 (HEXA-SPACE-SYSTEMS) — n=6 산술 좌표 매핑",
+      "domain": "space-systems",
+      "category": "space-systems — n=6 산술 시드 논문",
+      "path": "papers/n6-space-systems-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-093",
+      "title": "[CANONICAL v2] 궁극의 초전도체 (HEXA-SUPERCONDUCTOR) — n=6 산술 좌표 매핑",
+      "domain": "superconductor",
+      "category": "superconductor — n=6 산술 시드 논문",
+      "path": "papers/n6-superconductor-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-135~142, BT-299~306",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-094",
+      "title": "[CANONICAL v2] 궁극의 군집지능 (HEXA-SWARM-INTELLIGEN) — n=6 산술 좌표 매핑",
+      "domain": "swarm-intelligence",
+      "category": "swarm-intelligence — n=6 산술 시드 논문",
+      "path": "papers/n6-swarm-intelligence-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-095",
+      "title": "[CANONICAL v2] 궁극의 합성생물학 (HEXA-SYNTHETIC-BIOLOG) — n=6 산술 좌표 매핑",
+      "domain": "synthetic-biology",
+      "category": "synthetic-biology — n=6 산술 시드 논문",
+      "path": "papers/n6-synthetic-biology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_c_2026-04-08"
+    },
+    {
+      "id": "N6-096",
+      "title": "[CANONICAL v2] 궁극의 통신·언어학 (HEXA-TELECOM-LINGUIST) — n=6 산술 좌표 매핑",
+      "domain": "telecom-linguistics",
+      "category": "telecom-linguistics — n=6 산술 시드 논문",
+      "path": "papers/n6-telecom-linguistics-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-097",
+      "title": "[CANONICAL v2] 궁극의 섬유공학 (HEXA-TEXTILE-ENGINEER) — n=6 산술 좌표 매핑",
+      "domain": "textile-engineering",
+      "category": "textile-engineering — n=6 산술 시드 논문",
+      "path": "papers/n6-textile-engineering-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_l_2026-04-12",
+      "bt_ref": "BT-143 진동모드, BT-201 평형방정식, BT-149 응력변형, BT-130 균열전파",
+      "exact_stat": "18/22 EXACT (81.8%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-098",
+      "title": "[CANONICAL v2] 궁극의 치료용 나노봇 (HEXA-THERAPEUTIC-NANO) — n=6 산술 좌표 매핑",
+      "domain": "therapeutic-nanobot",
+      "category": "therapeutic-nanobot — n=6 산술 시드 논문",
+      "path": "papers/n6-therapeutic-nanobot-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-099",
+      "title": "[CANONICAL v2] 궁극의 열역학 (HEXA-THERMODYNAMICS) — n=6 산술 좌표 매핑",
+      "domain": "thermodynamics",
+      "category": "thermodynamics — n=6 산술 시드 논문",
+      "path": "papers/n6-thermodynamics-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-100",
+      "title": "[CANONICAL v2] 궁극의 위상수학 (HEXA-TOPOLOGY) — n=6 산술 좌표 매핑",
+      "domain": "topology",
+      "category": "topology — n=6 산술 시드 논문",
+      "path": "papers/n6-topology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_f_2026-04-12",
+      "bt_ref": "BT-9, BT-91, BT-92, BT-109, BT-232, BT-304",
+      "chunk_status": "시드 완성 -- hexa 검증 스텁 포함"
+    },
+    {
+      "id": "N6-101",
+      "title": "[CANONICAL v2] 궁극의 통합 SoC (HEXA-UNIFIED-SOC) — n=6 산술 좌표 매핑",
+      "domain": "unified-soc",
+      "category": "unified-soc — n=6 산술 시드 논문",
+      "path": "papers/n6-unified-soc-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-102",
+      "title": "[CANONICAL v2] 궁극의 바이러스 구조학 (HEXA-VIROLOGY-STRUCTU) — n=6 산술 좌표 매핑",
+      "domain": "virology-structure",
+      "category": "virology-structure — n=6 산술 시드 논문",
+      "path": "papers/n6-virology-structure-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-103",
+      "title": "[CANONICAL v2] 궁극의 시각예술 (HEXA-VISUAL-ARTS) — n=6 산술 좌표 매핑",
+      "domain": "visual-arts",
+      "category": "visual-arts — n=6 산술 시드 논문",
+      "path": "papers/n6-visual-arts-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-104",
+      "title": "[CANONICAL v2] 궁극의 V-NAND (HEXA-VNAND) — n=6 산술 좌표 매핑",
+      "domain": "vnand",
+      "category": "vnand — n=6 산술 시드 논문",
+      "path": "papers/n6-vnand-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_e_2026-04-12",
+      "bt_ref": "BT-170~175, BT-260~266",
+      "chunk_status": "시드 완성 -- 검증코드 임베드 완료"
+    },
+    {
+      "id": "N6-105",
+      "title": "[CANONICAL v2] 궁극의 Warp 계량 (HEXA-WARP-METRIC) — n=6 산술 좌표 매핑",
+      "domain": "warp-metric",
+      "category": "warp-metric — n=6 산술 시드 논문",
+      "path": "papers/n6-warp-metric-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_d_2026-04-11",
+      "bt_ref": "BT-378, BT-351~360",
+      "chunk_status": "Draft — 검증코드 부분 미완성 (hexa 스텁 다수)"
+    },
+    {
+      "id": "N6-106",
+      "title": "[CANONICAL v2] 궁극의 와인·양조학 (HEXA-WINE-ENOLOGY) — n=6 산술 좌표 매핑",
+      "domain": "wine-enology",
+      "category": "wine-enology — n=6 산술 시드 논문",
+      "path": "papers/n6-wine-enology-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-27, BT-101, BT-103, BT-192, BT-265, BT-371 (발효/양조)",
+      "exact_stat": "20/21 EXACT (95.2%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    },
+    {
+      "id": "N6-107",
+      "title": "[CANONICAL v2] 궁극의 작업기억 (HEXA-WORKING-MEMORY) — n=6 산술 좌표 매핑",
+      "domain": "working-memory",
+      "category": "working-memory — n=6 산술 시드 논문",
+      "path": "papers/n6-working-memory-paper.md",
+      "type": "paper"
+    },
+    {
+      "id": "N6-108",
+      "title": "[CANONICAL v2] 궁극의 문자 체계 (HEXA-WRITING-SYSTEMS) — n=6 산술 좌표 매핑",
+      "domain": "writing-systems",
+      "category": "writing-systems — n=6 산술 시드 논문",
+      "path": "papers/n6-writing-systems-paper.md",
+      "type": "paper",
+      "chunk_id": "papers_chunk_j_2026-04-12",
+      "bt_ref": "BT-73, BT-197, BT-227, BT-262, BT-329, BT-340 (문자체계/인코딩)",
+      "exact_stat": "20/20 EXACT (100%)",
+      "chunk_status": "v1 완성 -- hexa 검증 STUB + ASCII 결과표 + MISS 공시 포함"
+    }
+  ]
+}

@@ -1,0 +1,1697 @@
+{
+  "_meta": {
+    "총항목수": 281,
+    "논문수": 108,
+    "제품수": 173,
+    "분리일": "2026-04-14",
+    "소스": "_papers.json + _products.json"
+  },
+  "items": [
+    {
+      "id": "N6-001",
+      "title": "[CANONICAL v2] 궁극의 음향/파동 (HEXA-ACOUSTICS) — n=6 산술 좌표 매핑",
+      "category": "acoustics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-002",
+      "title": "[CANONICAL v2] 궁극의 첨단 패키징 (HEXA-ADVANCED-PACKAGI) — n=6 산술 좌표 매핑",
+      "category": "advanced-packaging — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-003",
+      "title": "[CANONICAL v2] 궁극의 우주항공/수송 (HEXA-AEROSPACE-TRANSP) — n=6 산술 좌표 매핑",
+      "category": "aerospace-transport — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-004",
+      "title": "[CANONICAL v2] 궁극의 AGI 아키텍처 (HEXA-AGI-ARCHITECTURE) — n=6 산술 좌표 매핑",
+      "category": "agi-architecture — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-005",
+      "title": "[CANONICAL v2] 궁극의 AI 17기법 실험 (HEXA-AI-17-TECHNIQUES) — n=6 산술 좌표 매핑",
+      "category": "ai-17-techniques-experimental — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-006",
+      "title": "[CANONICAL v2] 궁극의 AI 윤리·거버넌스 (HEXA-AI-ETHICS-GOVERN) — n=6 산술 좌표 매핑",
+      "category": "ai-ethics-governance — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-007",
+      "title": "[CANONICAL v2] 궁극의 AI 68기법 통합 (HEXA-AI-TECHNIQUES-68) — n=6 산술 좌표 매핑",
+      "category": "ai-techniques-68-integrated — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-008",
+      "title": "[CANONICAL v2] 궁극의 Anima SoC (HEXA-ANIMA-SOC) — n=6 산술 좌표 매핑",
+      "category": "anima-soc — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-009",
+      "title": "[CANONICAL v2] 궁극의 양식/수산 (HEXA-AQUACULTURE) — n=6 산술 좌표 매핑",
+      "category": "aquaculture — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-010",
+      "title": "[CANONICAL v2] 궁극의 고고학 (HEXA-ARCHAEOLOGY) — n=6 산술 좌표 매핑",
+      "category": "archaeology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-011",
+      "title": "[CANONICAL v2] 궁극의 atlas 7→10 승격 (HEXA-ATLAS-PROMOTION-) — n=6 산술 좌표 매핑",
+      "category": "atlas-promotion-7-to-10 — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-012",
+      "title": "[CANONICAL v2] 궁극의 자율주행 (HEXA-AUTONOMOUS-DRIVI) — n=6 산술 좌표 매핑",
+      "category": "autonomous-driving — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-013",
+      "title": "[CANONICAL v2] 궁극의 배터리·에너지 저장 (HEXA-BATTERY-ENERGY-S) — n=6 산술 좌표 매핑",
+      "category": "battery-energy-storage — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-014",
+      "title": "[CANONICAL v2] 궁극의 BCI (HEXA-BRAIN-COMPUTER-I) — n=6 산술 좌표 매핑",
+      "category": "brain-computer-interface — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-015",
+      "title": "[CANONICAL v2] 궁극의 달력·시간지리 (HEXA-CALENDAR-TIME-GE) — n=6 산술 좌표 매핑",
+      "category": "calendar-time-geography — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-016",
+      "title": "[CANONICAL v2] 궁극의 탄소 포집 (HEXA-CARBON-CAPTURE) — n=6 산술 좌표 매핑",
+      "category": "carbon-capture — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-017",
+      "title": "[CANONICAL v2] 궁극의 지도제작 (HEXA-CARTOGRAPHY) — n=6 산술 좌표 매핑",
+      "category": "cartography — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-018",
+      "title": "[CANONICAL v2] 궁극의 인과 사슬 (HEXA-CAUSAL-CHAIN) — n=6 산술 좌표 매핑",
+      "category": "causal-chain — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-019",
+      "title": "[CANONICAL v2] 궁극의 화학 (HEXA-CHEMISTRY) — n=6 산술 좌표 매핑",
+      "category": "chemistry — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-020",
+      "title": "[CANONICAL v2] 궁극의 칩 6단계 통합 (HEXA-CHIP-6STAGES-INT) — n=6 산술 좌표 매핑",
+      "category": "chip-6stages-integrated — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-021",
+      "title": "[CANONICAL v2] 궁극의 칩 설계 사다리 (HEXA-CHIP-DESIGN-LADD) — n=6 산술 좌표 매핑",
+      "category": "chip-design-ladder — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-022",
+      "title": "[CANONICAL v2] 궁극의 칩 DSE 수렴 (HEXA-CHIP-DSE-CONVERG) — n=6 산술 좌표 매핑",
+      "category": "chip-dse-convergence — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-023",
+      "title": "[CANONICAL v2] 궁극의 고전역학 가속기 (HEXA-CLASSICAL-MECHAN) — n=6 산술 좌표 매핑",
+      "category": "classical-mechanics-accelerator — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-024",
+      "title": "[CANONICAL v2] 궁극의 인지·사회심리 (HEXA-COGNITIVE-SOCIAL) — n=6 산술 좌표 매핑",
+      "category": "cognitive-social-psychology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-025",
+      "title": "[CANONICAL v2] 궁극의 의식 칩 (HEXA-CONSCIOUSNESS-CH) — n=6 산술 좌표 매핑",
+      "category": "consciousness-chip — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-026",
+      "title": "[CANONICAL v2] 궁극의 의식 SoC (HEXA-CONSCIOUSNESS-SO) — n=6 산술 좌표 매핑",
+      "category": "consciousness-soc — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-027",
+      "title": "[CANONICAL v2] 궁극의 건설·구조 (HEXA-CONSTRUCTION-STR) — n=6 산술 좌표 매핑",
+      "category": "construction-structural — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-028",
+      "title": "[CANONICAL v2] 궁극의 제어·자동화 (HEXA-CONTROL-AUTOMATI) — n=6 산술 좌표 매핑",
+      "category": "control-automation — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-029",
+      "title": "[CANONICAL v2] 궁극의 크로스 패러다임 AI (HEXA-CROSS-PARADIGM-A) — n=6 산술 좌표 매핑",
+      "category": "cross-paradigm-ai — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-030",
+      "title": "[CANONICAL v2] 궁극의 암호학 (HEXA-CRYPTOGRAPHY) — n=6 산술 좌표 매핑",
+      "category": "cryptography — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-031",
+      "title": "[CANONICAL v2] 궁극의 곡률·기하 (HEXA-CURVATURE-GEOMET) — n=6 산술 좌표 매핑",
+      "category": "curvature-geometry — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-032",
+      "title": "[CANONICAL v2] 궁극의 무용·안무 (HEXA-DANCE-CHOREOGRAP) — n=6 산술 좌표 매핑",
+      "category": "dance-choreography — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-033",
+      "title": "[CANONICAL v2] 궁극의 차원 전개 (HEXA-DIMENSIONAL-UNFO) — n=6 산술 좌표 매핑",
+      "category": "dimensional-unfolding — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-034",
+      "title": "[CANONICAL v2] 궁극의 돌고래 생체음향 (HEXA-DOLPHIN-BIOACOUS) — n=6 산술 좌표 매핑",
+      "category": "dolphin-bioacoustics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-035",
+      "title": "[CANONICAL v2] 궁극의 DRAM (HEXA-DRAM) — n=6 산술 좌표 매핑",
+      "category": "dram — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-036",
+      "title": "[CANONICAL v2] 궁극의 생태·농업·식품 (HEXA-ECOLOGY-AGRICULT) — n=6 산술 좌표 매핑",
+      "category": "ecology-agriculture-food — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-037",
+      "title": "[CANONICAL v2] 궁극의 생태학 (HEXA-ECOLOGY-STANDALO) — n=6 산술 좌표 매핑",
+      "category": "ecology-standalone — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-038",
+      "title": "[CANONICAL v2] 궁극의 경제·금융 (HEXA-ECONOMICS-FINANC) — n=6 산술 좌표 매핑",
+      "category": "economics-finance — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-039",
+      "title": "[CANONICAL v2] 궁극의 전자기학 (HEXA-ELECTROMAGNETISM) — n=6 산술 좌표 매핑",
+      "category": "electromagnetism — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-040",
+      "title": "[CANONICAL v2] 궁극의 곤충학 (HEXA-ENTOMOLOGY) — n=6 산술 좌표 매핑",
+      "category": "entomology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-041",
+      "title": "[CANONICAL v2] 궁극의 여분 차원 (HEXA-EXTRA-DIMENSIONS) — n=6 산술 좌표 매핑",
+      "category": "extra-dimensions — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-042",
+      "title": "[CANONICAL v2] 궁극의 Exynos (HEXA-EXYNOS) — n=6 산술 좌표 매핑",
+      "category": "exynos — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-043",
+      "title": "[CANONICAL v2] 궁극의 발효 (HEXA-FERMENTATION) — n=6 산술 좌표 매핑",
+      "category": "fermentation — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-044",
+      "title": "[CANONICAL v2] 궁극의 유체역학 (HEXA-FLUID-DYNAMICS) — n=6 산술 좌표 매핑",
+      "category": "fluid-dynamics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-045",
+      "title": "[CANONICAL v2] 궁극의 법의학 (HEXA-FORENSIC-SCIENCE) — n=6 산술 좌표 매핑",
+      "category": "forensic-science — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-046",
+      "title": "[CANONICAL v2] 궁극의 게임이론 (HEXA-GAME-THEORY) — n=6 산술 좌표 매핑",
+      "category": "game-theory — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-047",
+      "title": "[CANONICAL v2] 궁극의 게임·스포츠 (HEXA-GAMES-SPORTS) — n=6 산술 좌표 매핑",
+      "category": "games-sports — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-048",
+      "title": "[CANONICAL v2] 궁극의 유전학 (HEXA-GENETICS) — n=6 산술 좌표 매핑",
+      "category": "genetics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-049",
+      "title": "[CANONICAL v2] 궁극의 지질·PREM (HEXA-GEOLOGY-PREM) — n=6 산술 좌표 매핑",
+      "category": "geology-prem — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-050",
+      "title": "[CANONICAL v2] 궁극의 거버넌스·안전·도시 (HEXA-GOVERNANCE-SAFET) — n=6 산술 좌표 매핑",
+      "category": "governance-safety-urban — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-051",
+      "title": "[CANONICAL v2] 궁극의 중력파 (HEXA-GRAVITY-WAVE) — n=6 산술 좌표 매핑",
+      "category": "gravity-wave — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-052",
+      "title": "[CANONICAL v2] 궁극의 3d (HEXA-HEXA-3D) — n=6 산술 좌표 매핑",
+      "category": "3d — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-053",
+      "title": "[CANONICAL v2] 궁극의 asic (HEXA-HEXA-ASIC) — n=6 산술 좌표 매핑",
+      "category": "asic — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-054",
+      "title": "[CANONICAL v2] 궁극의 dream (HEXA-HEXA-DREAM) — n=6 산술 좌표 매핑",
+      "category": "dream — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-055",
+      "title": "[CANONICAL v2] 궁극의 earphone (HEXA-HEXA-EARPHONE) — n=6 산술 좌표 매핑",
+      "category": "earphone — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-056",
+      "title": "[CANONICAL v2] 궁극의 exo (HEXA-HEXA-EXO) — n=6 산술 좌표 매핑",
+      "category": "exo — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-057",
+      "title": "[CANONICAL v2] 궁극의 limb (HEXA-HEXA-LIMB) — n=6 산술 좌표 매핑",
+      "category": "limb — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-058",
+      "title": "[CANONICAL v2] 궁극의 mind (HEXA-HEXA-MIND) — n=6 산술 좌표 매핑",
+      "category": "mind — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-059",
+      "title": "[CANONICAL v2] 궁극의 neuro (HEXA-HEXA-NEURO) — n=6 산술 좌표 매핑",
+      "category": "neuro — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-060",
+      "title": "[CANONICAL v2] 궁극의 olfact (HEXA-HEXA-OLFACT) — n=6 산술 좌표 매핑",
+      "category": "olfact — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-061",
+      "title": "[CANONICAL v2] 궁극의 photon (HEXA-HEXA-PHOTON) — n=6 산술 좌표 매핑",
+      "category": "photon — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-062",
+      "title": "[CANONICAL v2] 궁극의 pim (HEXA-HEXA-PIM) — n=6 산술 좌표 매핑",
+      "category": "pim — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-063",
+      "title": "[CANONICAL v2] 궁극의 skin (HEXA-HEXA-SKIN) — n=6 산술 좌표 매핑",
+      "category": "skin — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-064",
+      "title": "[CANONICAL v2] 궁극의 super (HEXA-HEXA-SUPER) — n=6 산술 좌표 매핑",
+      "category": "super — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-065",
+      "title": "[CANONICAL v2] 궁극의 telepathy (HEXA-HEXA-TELEPATHY) — n=6 산술 좌표 매핑",
+      "category": "telepathy — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-066",
+      "title": "[CANONICAL v2] 궁극의 topo (HEXA-HEXA-TOPO) — n=6 산술 좌표 매핑",
+      "category": "topo — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-067",
+      "title": "[CANONICAL v2] 궁극의 wafer (HEXA-HEXA-WAFER) — n=6 산술 좌표 매핑",
+      "category": "wafer — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-068",
+      "title": "[CANONICAL v2] 궁극의 시계학 (HEXA-HOROLOGY) — n=6 산술 좌표 매핑",
+      "category": "horology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-069",
+      "title": "[CANONICAL v2] 궁극의 수문학 (HEXA-HYDROLOGY) — n=6 산술 좌표 매핑",
+      "category": "hydrology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-070",
+      "title": "[CANONICAL v2] 궁극의 법학 (HEXA-JURISPRUDENCE) — n=6 산술 좌표 매핑",
+      "category": "jurisprudence — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-071",
+      "title": "[CANONICAL v2] 궁극의 제조 품질 (HEXA-MANUFACTURING-QU) — n=6 산술 좌표 매핑",
+      "category": "manufacturing-quality — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-072",
+      "title": "[CANONICAL v2] 궁극의 기계공학 (HEXA-MECHANICAL-ENGIN) — n=6 산술 좌표 매핑",
+      "category": "mechanical-engineering — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-073",
+      "title": "[CANONICAL v2] 궁극의 기상학 (HEXA-METEOROLOGY) — n=6 산술 좌표 매핑",
+      "category": "meteorology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-074",
+      "title": "[CANONICAL v2] 궁극의 밀레니엄 DFS 1~12 통합 (HEXA-MILLENNIUM-DFS-1) — n=6 산술 좌표 매핑",
+      "category": "millennium-dfs-1-12-integrated — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-075",
+      "title": "[CANONICAL v2] 궁극의 음악이론 (HEXA-MUSIC-THEORY) — n=6 산술 좌표 매핑",
+      "category": "music-theory — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-076",
+      "title": "[CANONICAL v2] 궁극의 네트워크·집단 (HEXA-NETWORK-COLLECTI) — n=6 산술 좌표 매핑",
+      "category": "network-collective — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-077",
+      "title": "[CANONICAL v2] 궁극의 뉴로모픽 컴퓨팅 (HEXA-NEUROMORPHIC-COM) — n=6 산술 좌표 매핑",
+      "category": "neuromorphic-computing — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-078",
+      "title": "[CANONICAL v2] 궁극의 해양학 (HEXA-OCEANOGRAPHY) — n=6 산술 좌표 매핑",
+      "category": "oceanography — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-079",
+      "title": "[CANONICAL v2] 궁극의 광학 (HEXA-OPTICS) — n=6 산술 좌표 매핑",
+      "category": "optics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-080",
+      "title": "[CANONICAL v2] 궁극의 입자·우주론 (HEXA-PARTICLE-COSMOLO) — n=6 산술 좌표 매핑",
+      "category": "particle-cosmology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-081",
+      "title": "[CANONICAL v2] 궁극의 고성능 칩 (HEXA-PERFORMANCE-CHIP) — n=6 산술 좌표 매핑",
+      "category": "performance-chip — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-082",
+      "title": "[CANONICAL v2] 궁극의 약리학 (HEXA-PHARMACOLOGY) — n=6 산술 좌표 매핑",
+      "category": "pharmacology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-083",
+      "title": "[CANONICAL v2] 궁극의 고분자 공학 (HEXA-POLYMER-ENGINEER) — n=6 산술 좌표 매핑",
+      "category": "polymer-engineering — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-084",
+      "title": "[CANONICAL v2] 궁극의 순수수학 (HEXA-PURE-MATHEMATICS) — n=6 산술 좌표 매핑",
+      "category": "pure-mathematics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-085",
+      "title": "[CANONICAL v2] 궁극의 양자컴퓨팅 (HEXA-QUANTUM-COMPUTIN) — n=6 산술 좌표 매핑",
+      "category": "quantum-computing — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-086",
+      "title": "[CANONICAL v2] 궁극의 양자 오류정정 (HEXA-QUANTUM-ERROR-CO) — n=6 산술 좌표 매핑",
+      "category": "quantum-error-correction — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-087",
+      "title": "[CANONICAL v2] 궁극의 양자 기계학습 (HEXA-QUANTUM-MACHINE-) — n=6 산술 좌표 매핑",
+      "category": "quantum-machine-learning — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-088",
+      "title": "[CANONICAL v2] 궁극의 현실 지도 (HEXA-REALITY-MAP) — n=6 산술 좌표 매핑",
+      "category": "reality-map — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-089",
+      "title": "[CANONICAL v2] 궁극의 종교·신화 (HEXA-RELIGION-MYTHOLO) — n=6 산술 좌표 매핑",
+      "category": "religion-mythology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-090",
+      "title": "[CANONICAL v2] 궁극의 토양학 (HEXA-SOIL-SCIENCE) — n=6 산술 좌표 매핑",
+      "category": "soil-science — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-091",
+      "title": "[CANONICAL v2] 궁극의 SOTA SSM (HEXA-SOTA-SSM) — n=6 산술 좌표 매핑",
+      "category": "sota-ssm — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-092",
+      "title": "[CANONICAL v2] 궁극의 우주 시스템 (HEXA-SPACE-SYSTEMS) — n=6 산술 좌표 매핑",
+      "category": "space-systems — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-093",
+      "title": "[CANONICAL v2] 궁극의 초전도체 (HEXA-SUPERCONDUCTOR) — n=6 산술 좌표 매핑",
+      "category": "superconductor — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-094",
+      "title": "[CANONICAL v2] 궁극의 군집지능 (HEXA-SWARM-INTELLIGEN) — n=6 산술 좌표 매핑",
+      "category": "swarm-intelligence — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-095",
+      "title": "[CANONICAL v2] 궁극의 합성생물학 (HEXA-SYNTHETIC-BIOLOG) — n=6 산술 좌표 매핑",
+      "category": "synthetic-biology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-096",
+      "title": "[CANONICAL v2] 궁극의 통신·언어학 (HEXA-TELECOM-LINGUIST) — n=6 산술 좌표 매핑",
+      "category": "telecom-linguistics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-097",
+      "title": "[CANONICAL v2] 궁극의 섬유공학 (HEXA-TEXTILE-ENGINEER) — n=6 산술 좌표 매핑",
+      "category": "textile-engineering — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-098",
+      "title": "[CANONICAL v2] 궁극의 치료용 나노봇 (HEXA-THERAPEUTIC-NANO) — n=6 산술 좌표 매핑",
+      "category": "therapeutic-nanobot — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-099",
+      "title": "[CANONICAL v2] 궁극의 열역학 (HEXA-THERMODYNAMICS) — n=6 산술 좌표 매핑",
+      "category": "thermodynamics — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-100",
+      "title": "[CANONICAL v2] 궁극의 위상수학 (HEXA-TOPOLOGY) — n=6 산술 좌표 매핑",
+      "category": "topology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-101",
+      "title": "[CANONICAL v2] 궁극의 통합 SoC (HEXA-UNIFIED-SOC) — n=6 산술 좌표 매핑",
+      "category": "unified-soc — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-102",
+      "title": "[CANONICAL v2] 궁극의 바이러스 구조학 (HEXA-VIROLOGY-STRUCTU) — n=6 산술 좌표 매핑",
+      "category": "virology-structure — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-103",
+      "title": "[CANONICAL v2] 궁극의 시각예술 (HEXA-VISUAL-ARTS) — n=6 산술 좌표 매핑",
+      "category": "visual-arts — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-104",
+      "title": "[CANONICAL v2] 궁극의 V-NAND (HEXA-VNAND) — n=6 산술 좌표 매핑",
+      "category": "vnand — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-105",
+      "title": "[CANONICAL v2] 궁극의 Warp 계량 (HEXA-WARP-METRIC) — n=6 산술 좌표 매핑",
+      "category": "warp-metric — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-106",
+      "title": "[CANONICAL v2] 궁극의 와인·양조학 (HEXA-WINE-ENOLOGY) — n=6 산술 좌표 매핑",
+      "category": "wine-enology — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-107",
+      "title": "[CANONICAL v2] 궁극의 작업기억 (HEXA-WORKING-MEMORY) — n=6 산술 좌표 매핑",
+      "category": "working-memory — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "N6-108",
+      "title": "[CANONICAL v2] 궁극의 문자 체계 (HEXA-WRITING-SYSTEMS) — n=6 산술 좌표 매핑",
+      "category": "writing-systems — n=6 산술 시드 논문",
+      "type": "paper"
+    },
+    {
+      "id": "P-001",
+      "title": "궁극의 핵융합 발전소",
+      "category": "핵융합",
+      "type": "product"
+    },
+    {
+      "id": "P-002",
+      "title": "KSTAR-N6",
+      "category": "핵융합",
+      "type": "product"
+    },
+    {
+      "id": "P-003",
+      "title": "진화 Mk.I~V",
+      "category": "핵융합",
+      "type": "product"
+    },
+    {
+      "id": "P-004",
+      "title": "발견 + 예측 + 가설v5",
+      "category": "핵융합",
+      "type": "product"
+    },
+    {
+      "id": "P-005",
+      "title": "천장확인",
+      "category": "핵융합",
+      "type": "product"
+    },
+    {
+      "id": "P-006",
+      "title": "HEXA 칩 7단",
+      "category": "칩/반도체",
+      "type": "product"
+    },
+    {
+      "id": "P-007",
+      "title": "ANIMA-SOC",
+      "category": "칩/반도체",
+      "type": "product"
+    },
+    {
+      "id": "P-008",
+      "title": "HEXA-TOPO",
+      "category": "칩/반도체",
+      "type": "product"
+    },
+    {
+      "id": "P-009",
+      "title": "HEXA-ASIC",
+      "category": "칩/반도체",
+      "type": "product"
+    },
+    {
+      "id": "P-010",
+      "title": "천장확인",
+      "category": "칩/반도체",
+      "type": "product"
+    },
+    {
+      "id": "P-011",
+      "title": "66 Techniques",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-012",
+      "title": "Full N6 Pipeline",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-013",
+      "title": "N6 Inevitability Engine",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-014",
+      "title": "AI Energy Savings Guide",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-015",
+      "title": "Chip Architecture Guide",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-016",
+      "title": "천장확인",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-017",
+      "title": "Next-Gen AI 8-Paradigm Blowup",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-018",
+      "title": "AI 6-Domain Sweep",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-019",
+      "title": "N6 Reverse-Engineering Suite",
+      "category": "AI/ML",
+      "type": "product"
+    },
+    {
+      "id": "P-020",
+      "title": "궁극의 배터리 8단",
+      "category": "에너지",
+      "type": "product"
+    },
+    {
+      "id": "P-021",
+      "title": "궁극의 태양전지",
+      "category": "에너지",
+      "type": "product"
+    },
+    {
+      "id": "P-022",
+      "title": "궁극의 에너지 통합",
+      "category": "에너지",
+      "type": "product"
+    },
+    {
+      "id": "P-023",
+      "title": "궁극의 데이터센터 원자로",
+      "category": "에너지",
+      "type": "product"
+    },
+    {
+      "id": "P-024",
+      "title": "HEXA-AUTO 자동차배터리",
+      "category": "에너지",
+      "type": "product"
+    },
+    {
+      "id": "P-025",
+      "title": "궁극의 환경보호 8단",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-026",
+      "title": "HEXA-MICROPLASTICS",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-027",
+      "title": "궁극의 탄소포집 8단",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-028",
+      "title": "진화 Mk.I~V",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-029",
+      "title": "예측 + 검증",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-030",
+      "title": "궁극의 재활용 — HEXA-RECYCLE",
+      "category": "환경보호",
+      "type": "product"
+    },
+    {
+      "id": "P-031",
+      "title": "궁극의 물질합성 8단",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-032",
+      "title": "BT-85~88 + BT-128~135",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-033",
+      "title": "가설 36/36 100%EXACT",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-034",
+      "title": "산업검증 20소재+12금속",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-035",
+      "title": "실험검증 + TP 28/28",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-036",
+      "title": "물리한계 증명",
+      "category": "물질합성",
+      "type": "product"
+    },
+    {
+      "id": "P-037",
+      "title": "궁극의 로봇 8단",
+      "category": "로봇",
+      "type": "product"
+    },
+    {
+      "id": "P-038",
+      "title": "천장확인",
+      "category": "로봇",
+      "type": "product"
+    },
+    {
+      "id": "P-039",
+      "title": "궁극의 초전도체",
+      "category": "물리/수학",
+      "type": "product"
+    },
+    {
+      "id": "P-040",
+      "title": "궁극의 순수수학",
+      "category": "물리/수학",
+      "type": "product"
+    },
+    {
+      "id": "P-041",
+      "title": "궁극의 우주론/입자",
+      "category": "물리/수학",
+      "type": "product"
+    },
+    {
+      "id": "P-042",
+      "title": "궁극의 상온 초전도체",
+      "category": "물리/수학",
+      "type": "product"
+    },
+    {
+      "id": "P-043",
+      "title": "차원펼침 돌파 — 텐서/mod3/로그",
+      "category": "물리/수학",
+      "type": "product"
+    },
+    {
+      "id": "P-044",
+      "title": "궁극의 프로그래밍언어",
+      "category": "소프트웨어/인프라",
+      "type": "product"
+    },
+    {
+      "id": "P-045",
+      "title": "천장확인",
+      "category": "소프트웨어/인프라",
+      "type": "product"
+    },
+    {
+      "id": "P-046",
+      "title": "궁극의 macOS",
+      "category": "소프트웨어/인프라",
+      "type": "product"
+    },
+    {
+      "id": "P-047",
+      "title": "궁극의 iOS",
+      "category": "소프트웨어/인프라",
+      "type": "product"
+    },
+    {
+      "id": "P-048",
+      "title": "궁극의 네트워크 프로토콜",
+      "category": "소프트웨어/인프라",
+      "type": "product"
+    },
+    {
+      "id": "P-049",
+      "title": "궁극의 디스플레이 8단",
+      "category": "디스플레이",
+      "type": "product"
+    },
+    {
+      "id": "P-050",
+      "title": "천장확인",
+      "category": "디스플레이",
+      "type": "product"
+    },
+    {
+      "id": "P-051",
+      "title": "궁극의 오디오 7단",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-052",
+      "title": "천장확인",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-053",
+      "title": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-054",
+      "title": "HEXA-EAR Ultimate",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-055",
+      "title": "HEXA-BONE 골전도 이어폰",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-056",
+      "title": "HEXA-EAR-CELL 이어폰 배터리",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-057",
+      "title": "HEXA-SPEAKER 궁극 스피커",
+      "category": "오디오",
+      "type": "product"
+    },
+    {
+      "id": "P-058",
+      "title": "궁극의 안전 8단",
+      "category": "안전",
+      "type": "product"
+    },
+    {
+      "id": "P-059",
+      "title": "가설 30+극한 20",
+      "category": "안전",
+      "type": "product"
+    },
+    {
+      "id": "P-060",
+      "title": "궁극의 펀카",
+      "category": "유희",
+      "type": "product"
+    },
+    {
+      "id": "P-061",
+      "title": "궁극의 바이크",
+      "category": "유희",
+      "type": "product"
+    },
+    {
+      "id": "P-062",
+      "title": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+      "category": "우주항공",
+      "type": "product"
+    },
+    {
+      "id": "P-063",
+      "title": "궁극의 UFO 비행접시 (HEXA-UFO)",
+      "category": "UFO/비행접시",
+      "type": "product"
+    },
+    {
+      "id": "P-064",
+      "title": "HEXA-NEURO 뇌-기계 인터페이스",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-065",
+      "title": "HEXA-GRAV 중력파 검출/통신",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-066",
+      "title": "HEXA-CLOAK 투명망토/스텔스",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-067",
+      "title": "HEXA-DEFENSE 지구방어 시스템",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-068",
+      "title": "HEXA-TELEPORT 양자얽힘 통신망",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-069",
+      "title": "HEXA-HOVER 개인 호버보드",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-070",
+      "title": "HEXA-MRAM 초전도 비휘발 메모리",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-071",
+      "title": "HEXA-SEABED 대륙간 해저 송전",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-072",
+      "title": "HEXA-ACCEL 소형 입자가속기",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-073",
+      "title": "HEXA-WEATHER 대기 전자기 제어",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-074",
+      "title": "HEXA-MIND 의식 업로드",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-075",
+      "title": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-076",
+      "title": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-077",
+      "title": "HEXA-DREAM 꿈 기록/재생",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-078",
+      "title": "HEXA-SKYWAY 공중 고속도로망",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-079",
+      "title": "HEXA-TSUNAMI 해일 방지기",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-080",
+      "title": "HEXA-ANTIMATTER 반물질 공장",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-081",
+      "title": "HEXA-COSMIC 초기우주 관측망",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-082",
+      "title": "HEXA-DESAL 초전도 담수화",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-083",
+      "title": "HEXA-ORACLE 양자 예측기",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-084",
+      "title": "HEXA-ONE 통합 웨어러블",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-085",
+      "title": "HEXA-GLASS AI 안경",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-086",
+      "title": "HEXA-EAR AI 이어폰",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-087",
+      "title": "HEXA-EXO AI 외골격",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-088",
+      "title": "HEXA-LIMB AI 의수/의족",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-089",
+      "title": "HEXA-SKIN 전자 피부",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-090",
+      "title": "HEXA-FABRIC AI 의류",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-091",
+      "title": "HEXA-OLFACT 디지털 후각",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-092",
+      "title": "HEXA-DREAM 꿈 인터페이스",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-093",
+      "title": "HEXA-EMPATH 감정 공유",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-094",
+      "title": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-095",
+      "title": "곤충학 n=6 Hexapoda 완전 생물학",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-096",
+      "title": "균류학 n=6 포자-발효 아키텍처",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-097",
+      "title": "광업/광물학 n=6 경도-결정 아키텍처",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-098",
+      "title": "수의학 n=6 동물해부 보편성",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-099",
+      "title": "원예학 n=6 식물 성장 아키텍처",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-100",
+      "title": "HEXA-SIM 우주 시뮬레이션",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-101",
+      "title": "크로스 도메인 메가 브릿지",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-102",
+      "title": "HEXA-NANOBOT 치료 나노봇",
+      "category": "최전선/대발견",
+      "type": "product"
+    },
+    {
+      "id": "P-103",
+      "title": "종교/신화 n=6 보편 구조",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-104",
+      "title": "법학/사법 n=6 정의 아키텍처",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-105",
+      "title": "한글/문자체계 n=6 인코딩",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-106",
+      "title": "고고학/문명사 n=6 기원",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-107",
+      "title": "화폐/경제사 n=6 통화 래더",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-108",
+      "title": "무용/안무 n=6 공간 기하학",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-109",
+      "title": "시계학/호롤로지 n=6 시간 아키텍처",
+      "category": "문명/인문",
+      "type": "product"
+    },
+    {
+      "id": "P-110",
+      "title": "발효/양조 n=6 완전수 화학양론",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-111",
+      "title": "와인/소믈리에 n=6 테이스팅",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-112",
+      "title": "패션/섬유 n=6 직조 구조",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-113",
+      "title": "수산/양식 n=6 해양 생태",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-114",
+      "title": "보험/보험계리 n=6 리스크 구조",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-115",
+      "title": "돌고래 n=6 생물음향 아키텍처",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-116",
+      "title": "커피과학 n=6 추출 아키텍처",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-117",
+      "title": "향수/향료 n=6 피라미드 구조",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-118",
+      "title": "도자기/세라믹 n=6 소성 래더",
+      "category": "생활/문화",
+      "type": "product"
+    },
+    {
+      "id": "P-119",
+      "title": "반도체 패키징 n=6 적층 래더",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-120",
+      "title": "합성생물학 n=6 이중 완전수",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-121",
+      "title": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-122",
+      "title": "디지털 트윈 n=6 동기화",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-123",
+      "title": "건축/구조공학 n=6 하중 보편성",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-124",
+      "title": "지하공간/터널 n=6 굴착 구조",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-125",
+      "title": "전자상거래/핀테크 n=6 결제 보안",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-126",
+      "title": "나일론 6/6,6 폴리아미드",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-127",
+      "title": "아라미드 (Heracron)",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-128",
+      "title": "타이어코드",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-129",
+      "title": "에폭시/페놀 수지",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-130",
+      "title": "PET 광학필름",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-131",
+      "title": "에어백",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-132",
+      "title": "수처리 멤브레인",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-133",
+      "title": "PEMFC 수소 연료전지",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-134",
+      "title": "건설 콘크리트",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-135",
+      "title": "바이오 약물전달/제약",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-136",
+      "title": "HVAC 냉난방 n=6 COP 최적화",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-137",
+      "title": "내진설계 n=6 DOF 보편성",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-138",
+      "title": "콘크리트+탄소포집 n=6 광물화",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-139",
+      "title": "스마트시티 통합 n=6 도시 시스템",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-140",
+      "title": "토목/구조역학 kissing number 사슬",
+      "category": "기술/산업",
+      "type": "product"
+    },
+    {
+      "id": "P-141",
+      "title": "바이러스 구조-분류 완전 n=6 맵",
+      "category": "바이러스학",
+      "type": "product"
+    },
+    {
+      "id": "P-142",
+      "title": "바이러스 게놈 분절-유전자 n=6 래더",
+      "category": "바이러스학",
+      "type": "product"
+    },
+    {
+      "id": "P-143",
+      "title": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+      "category": "바이러스학",
+      "type": "product"
+    },
+    {
+      "id": "P-144",
+      "title": "진화 Mk.I~V",
+      "category": "바이러스학",
+      "type": "product"
+    },
+    {
+      "id": "P-145",
+      "title": "HEXA-HIV 6축 완전 치료 체인",
+      "category": "HIV 치료",
+      "type": "product"
+    },
+    {
+      "id": "P-146",
+      "title": "HEXA-BIO n=6 생명 아키텍처",
+      "category": "자연과학",
+      "type": "product"
+    },
+    {
+      "id": "P-147",
+      "title": "HEXA-AGRI n=6 농업과학",
+      "category": "자연과학",
+      "type": "product"
+    },
+    {
+      "id": "P-148",
+      "title": "HEXA-FOOD n=6 식품과학",
+      "category": "자연과학",
+      "type": "product"
+    },
+    {
+      "id": "P-149",
+      "title": "HEXA-OCEAN n=6 해양과학",
+      "category": "자연과학",
+      "type": "product"
+    },
+    {
+      "id": "P-150",
+      "title": "HEXA-COGNI n=6 인지 아키텍처",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-151",
+      "title": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-152",
+      "title": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-153",
+      "title": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-154",
+      "title": "HEXA-LING n=6 언어 아키텍처",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-155",
+      "title": "HEXA-ECON n=6 경제학",
+      "category": "인지/사회",
+      "type": "product"
+    },
+    {
+      "id": "P-156",
+      "title": "HEXA-DRIVE n=6 자율주행",
+      "category": "이동/수송",
+      "type": "product"
+    },
+    {
+      "id": "P-157",
+      "title": "HEXA-WING n=6 항공공학",
+      "category": "이동/수송",
+      "type": "product"
+    },
+    {
+      "id": "P-158",
+      "title": "HEXA-BROWSER 특이점 브라우저",
+      "category": "디지털/의료기기",
+      "type": "product"
+    },
+    {
+      "id": "P-159",
+      "title": "HEXA-MED n=6 의료기기",
+      "category": "디지털/의료기기",
+      "type": "product"
+    },
+    {
+      "id": "P-160",
+      "title": "HEXA-AESTHETIC n=6 성형외과",
+      "category": "디지털/의료기기",
+      "type": "product"
+    },
+    {
+      "id": "P-161",
+      "title": "HEXA-MKT 마케팅 불변의 법칙",
+      "category": "마케팅",
+      "type": "product"
+    },
+    {
+      "id": "P-162",
+      "title": "HEXA-NEXUS 서비스 플랫폼",
+      "category": "마케팅",
+      "type": "product"
+    },
+    {
+      "id": "P-163",
+      "title": "HEXA-ANIMA 감성 서비스",
+      "category": "마케팅",
+      "type": "product"
+    },
+    {
+      "id": "P-164",
+      "title": "HEXA-UNIFIED 완전인지 플랫폼",
+      "category": "마케팅",
+      "type": "product"
+    },
+    {
+      "id": "P-165",
+      "title": "남성청결제 n=6 피부과학 아키텍처",
+      "category": "위생",
+      "type": "product"
+    },
+    {
+      "id": "P-166",
+      "title": "여성청결제 n=6 질내생태계 아키텍처",
+      "category": "위생",
+      "type": "product"
+    },
+    {
+      "id": "P-167",
+      "title": "타투 제거 n=6 면역학적 아키텍처",
+      "category": "타투 제거",
+      "type": "product"
+    },
+    {
+      "id": "P-168",
+      "title": "키보드 n=6 인체공학 아키텍처",
+      "category": "키보드",
+      "type": "product"
+    },
+    {
+      "id": "P-169",
+      "title": "HEXA-MOUSE n=6 인체공학 마우스",
+      "category": "마우스",
+      "type": "product"
+    },
+    {
+      "id": "P-170",
+      "title": "HEXA-QC 제조 품질관리 아키텍처",
+      "category": "제조 품질관리",
+      "type": "product"
+    },
+    {
+      "id": "P-171",
+      "title": "HEXA-NET 네트워크 아키텍처",
+      "category": "네트워크",
+      "type": "product"
+    },
+    {
+      "id": "P-172",
+      "title": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "category": "양자컴퓨터",
+      "type": "product"
+    },
+    {
+      "id": "P-173",
+      "title": "시계학 n=6 시간 산술 아키텍처",
+      "category": "시계학",
+      "type": "product"
+    }
+  ]
+}
