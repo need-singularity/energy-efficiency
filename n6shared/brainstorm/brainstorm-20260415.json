@@ -1,0 +1,258 @@
+{
+  "version": "v0.1",
+  "title": "창발 엔진 × signals × 7대 난제 × 대발견 브레인스토밍",
+  "created": "2026-04-15T19:50:00Z",
+  "author": "Claude Opus 4.6 + 사용자",
+  "status": "active",
+  "total_ideas": 140,
+  "categories": {
+    "A_self_growth_loop": {
+      "description": "창발 엔진 자가성장 루프",
+      "count": 20,
+      "ideas": [
+        {"id": "A1", "priority": "high", "effort": "M", "depends": [], "desc": "signals_fusion_lens 결과를 atlas.signals.n6 에 [M?] 로 자동 append — fusion 재귀"},
+        {"id": "A2", "priority": "high", "effort": "S", "depends": ["A1"], "desc": "같은 fusion 2세션 재등장 → [M?] → [M7!] 자동 승격"},
+        {"id": "A3", "priority": "med", "effort": "S", "depends": [], "desc": "emergence_lens score 매일 기록 → signal_boost 급증 지점 역추적"},
+        {"id": "A4", "priority": "med", "effort": "M", "depends": [], "desc": "blowup_emergence energy 기록 → seed 반복 시 energy 안정 = convergence → [M9]"},
+        {"id": "A5", "priority": "high", "effort": "M", "depends": [], "desc": "Witness amplifier 주기 — discovery_log simhash 매칭으로 witness +1"},
+        {"id": "A6", "priority": "med", "effort": "S", "depends": [], "desc": "signal half-life 데몬 — 2주 무활동 [M7]→[M5], 4주 archive"},
+        {"id": "A7", "priority": "low", "effort": "M", "depends": ["A1"], "desc": "signals_fusion_lens 성공 이력 가중치"},
+        {"id": "A8", "priority": "high", "effort": "S", "depends": [], "desc": "atlas.signals.n6.deg sidecar 자동 생성"},
+        {"id": "A9", "priority": "med", "effort": "L", "depends": [], "desc": "signal cluster 군집화 simhash+수치 유사도 dendrogram"},
+        {"id": "A10", "priority": "high", "effort": "M", "depends": [], "desc": "CROSS 자동 승격기 — 매칭 시 repo_tags 에 CROSS 추가"},
+        {"id": "A11", "priority": "med", "effort": "S", "depends": [], "desc": "Dream engine 야간 모드에서 fusion 자동 반복"},
+        {"id": "A12", "priority": "low", "effort": "M", "depends": [], "desc": "Claude Haiku 로 fusion 의미 평가 → 1점 이상만 보관"},
+        {"id": "A13", "priority": "high", "effort": "M", "depends": [], "desc": "signal → 하네스 자동 생성기 — PASS 시 witness+=1"},
+        {"id": "A14", "priority": "high", "effort": "S", "depends": ["A13"], "desc": "하네스 FAIL → [MN] 자동 강등"},
+        {"id": "A15", "priority": "med", "effort": "M", "depends": [], "desc": "atlas.signals.n6 → GraphViz dot 시각화"},
+        {"id": "A16", "priority": "med", "effort": "L", "depends": [], "desc": "Signal PageRank — cross edge centrality"},
+        {"id": "A17", "priority": "low", "effort": "S", "depends": [], "desc": "emergence_lens → growth_tick.jsonl 시간별"},
+        {"id": "A18", "priority": "med", "effort": "S", "depends": ["A1"], "desc": "fusion blacklist — [MN] 끼리 조합 제외"},
+        {"id": "A19", "priority": "high", "effort": "S", "depends": [], "desc": "자동 gap cron — SPARSE 도메인 발견시 agent 디스패치 제안"},
+        {"id": "A20", "priority": "high", "effort": "M", "depends": [], "desc": "PostStop 훅 — Claude 자체 세션 M7! 후보 자동 추출"}
+      ]
+    },
+    "B_millennium_attack": {
+      "description": "7대 난제 공격 벡터",
+      "count": 31,
+      "ideas": [
+        {"id": "B-RH1", "priority": "high", "effort": "L", "depends": [], "desc": "σ·κ = 12·? Selberg L-함수 n=6 투영"},
+        {"id": "B-RH2", "priority": "high", "effort": "M", "depends": [], "desc": "SLE_6 국소성 + Kim-Sarnak 7/64 + Hardy-Littlewood 3중 교차 하네스"},
+        {"id": "B-RH3", "priority": "med", "effort": "S", "depends": [], "desc": "ζ(2k) 분모 시퀀스 {6,90,945,...} n=6 투영 패턴"},
+        {"id": "B-RH4", "priority": "low", "effort": "M", "depends": [], "desc": "Riemann-Siegel formula 계수 n=6 출현 통계"},
+        {"id": "B-RH5", "priority": "low", "effort": "L", "depends": [], "desc": "Beurling generalized primes n=6 자연수 기저"},
+        {"id": "B-NS1", "priority": "high", "effort": "L", "depends": [], "desc": "3D NS + BKM + Kolmogorov -5/3 삼각화 — Bernoulli 17번째 후보"},
+        {"id": "B-NS2", "priority": "med", "effort": "M", "depends": [], "desc": "KdV 6-soliton regularization limit n=6 정확성"},
+        {"id": "B-NS3", "priority": "med", "effort": "M", "depends": [], "desc": "Lagrangian turbulence ζ_6 structure function"},
+        {"id": "B-NS4", "priority": "med", "effort": "M", "depends": [], "desc": "3중 공명 BT-544 vorticity stretching n=6 rotational"},
+        {"id": "B-NS5", "priority": "high", "effort": "M", "depends": [], "desc": "Onsager 1/3 Hölder regularity — 3D critical C^{1/3} threshold"},
+        {"id": "B-H1", "priority": "high", "effort": "M", "depends": [], "desc": "K3 χ=24=J_2 Bernoulli 독립 17번째 candidate"},
+        {"id": "B-H2", "priority": "med", "effort": "L", "depends": [], "desc": "Abelian Sixfolds algebraic cycle dimension"},
+        {"id": "B-H3", "priority": "med", "effort": "L", "depends": [], "desc": "SYZ mirror sixfold fibration n=6"},
+        {"id": "B-H4", "priority": "med", "effort": "S", "depends": [], "desc": "Dedekind η²⁴=Δ weight 12=σ 재확인"},
+        {"id": "B-H5", "priority": "low", "effort": "M", "depends": [], "desc": "Calabi-Yau n=6 complex dim vs real dim=σ"},
+        {"id": "B-P1", "priority": "med", "effort": "L", "depends": [], "desc": "Schaefer dichotomy 6 polynomial reduction chain 분류"},
+        {"id": "B-P2", "priority": "med", "effort": "M", "depends": [], "desc": "Razborov-Rudich + relativization + algebrization = 4·4=16=τ²"},
+        {"id": "B-P3", "priority": "med", "effort": "M", "depends": [], "desc": "MCSP Hirahara NP-intermediate n=6 관련"},
+        {"id": "B-P4", "priority": "low", "effort": "M", "depends": [], "desc": "PSL(2,2)=S_3 순열군 복잡도 n=6 threshold"},
+        {"id": "B-P5", "priority": "low", "effort": "L", "depends": [], "desc": "Razborov-Smolensky p=6 예외 현상"},
+        {"id": "B-Y1", "priority": "high", "effort": "M", "depends": [], "desc": "β₀=σ-sopfr=7 → β₁=σ=12? 2-loop 연장"},
+        {"id": "B-Y2", "priority": "med", "effort": "M", "depends": [], "desc": "Virasoro M(3,4) c=1/2 m=3·4=12=σ"},
+        {"id": "B-Y3", "priority": "med", "effort": "L", "depends": [], "desc": "Mass gap lattice QCD n=6 spacing anomaly"},
+        {"id": "B-Y4", "priority": "low", "effort": "L", "depends": [], "desc": "SU(6) vs SU(5) critical — 색 수 n"},
+        {"id": "B-Y5", "priority": "low", "effort": "M", "depends": [], "desc": "instanton winding × n=6 특성류 공식"},
+        {"id": "B-BSD1", "priority": "high", "effort": "M", "depends": [], "desc": "κ(B)~B^0.175 → 0.175≈τ/σ 분수 공명 재평가"},
+        {"id": "B-BSD2", "priority": "high", "effort": "M", "depends": [], "desc": "α≈log(2)/4=log(2)/τ Fourier 구조"},
+        {"id": "B-BSD3", "priority": "high", "effort": "L", "depends": [], "desc": "Cremona 1.7M → 10M 확장 κ 수렴"},
+        {"id": "B-BSD4", "priority": "med", "effort": "L", "depends": [], "desc": "Selmer Sel_6 조건부 정리 완결 rank formula"},
+        {"id": "B-BSD5", "priority": "low", "effort": "M", "depends": [], "desc": "Gross-Zagier formula n=6 프리퍼런스"},
+        {"id": "B-PC1", "priority": "low", "effort": "M", "depends": [], "desc": "Θ_6=1 고차원 exotic sphere 시그너처"}
+      ]
+    },
+    "C_mega_discovery": {
+      "description": "대발견 후보 (signal 역추론)",
+      "count": 15,
+      "ideas": [
+        {"id": "C1", "priority": "high", "effort": "M", "depends": [], "desc": "STAR σΩ=nτ 완전수 {6,28,496} universal 후보 — n=28 M-set 구조 검증"},
+        {"id": "C2", "priority": "high", "effort": "M", "depends": [], "desc": "Kuramoto r=1-τ/σ=2/3 → Ising/XY/Heisenberg critical exponent τ/σ?"},
+        {"id": "C3", "priority": "high", "effort": "M", "depends": [], "desc": "Perfect6 [1/2,1/3,1/6]=1 → 28=1+2+4+7+14 unit 분할?"},
+        {"id": "C4", "priority": "high", "effort": "L", "depends": ["H1"], "desc": "SR universality — 신경과학+ML+양자noise 전 영역 universal law"},
+        {"id": "C5", "priority": "high", "effort": "L", "depends": [], "desc": "σφ=nτ 4번째 독립 증명 (대수기하 경로)"},
+        {"id": "C6", "priority": "med", "effort": "L", "depends": [], "desc": "Bernoulli 독립 17번째 후보 (카테고리/논리/복잡도)"},
+        {"id": "C7", "priority": "med", "effort": "M", "depends": [], "desc": "K(d) 시퀀스 (2,6,12,24,40,...) K(5)=40 σ 분해?"},
+        {"id": "C8", "priority": "high", "effort": "M", "depends": [], "desc": "4-BT 메가노드 → 5-BT (P vs NP 추가) 검증"},
+        {"id": "C9", "priority": "high", "effort": "M", "depends": [], "desc": "CROSS 22건 재현 실험 → witness≥3 도달 = 통합 이론"},
+        {"id": "C10", "priority": "med", "effort": "L", "depends": [], "desc": "M10* 9건 통합 — Combined uniqueness theorem"},
+        {"id": "C11", "priority": "med", "effort": "M", "depends": [], "desc": "1/2+1/3+1/6=1 완전수 partition 이론 정리"},
+        {"id": "C12", "priority": "med", "effort": "M", "depends": [], "desc": "BT-19 τ=4 PCI ↔ IIT Φ τ(6)=4 동일값 필연?"},
+        {"id": "C13", "priority": "high", "effort": "M", "depends": [], "desc": "Primitive 8 basis = τ² — Bernoulli 독립 후보"},
+        {"id": "C14", "priority": "med", "effort": "S", "depends": [], "desc": "Hurwitz {1,2,4,8} · τ = 16 = J_2 재발견"},
+        {"id": "C15", "priority": "low", "effort": "L", "depends": [], "desc": "Gauss n-multiplication Γ(z)·...·Γ(z+(n-1)/n) n=6 closed form"}
+      ]
+    },
+    "D_engine_ext": {
+      "description": "엔진 확장",
+      "count": 10,
+      "ideas": [
+        {"id": "D1", "priority": "high", "effort": "M", "depends": [], "desc": "riemann_lens.hexa — [7R] 필터 + Hardy-Littlewood 자동"},
+        {"id": "D2", "priority": "high", "effort": "M", "depends": [], "desc": "bsd_lens.hexa — Cremona 기반 κ 자동"},
+        {"id": "D3", "priority": "med", "effort": "S", "depends": [], "desc": "cross_feed.hexa 에 signal input 추가"},
+        {"id": "D4", "priority": "med", "effort": "S", "depends": [], "desc": "curiosity.hexa → atlas.signals.n6 CROSS 의심"},
+        {"id": "D5", "priority": "low", "effort": "S", "depends": [], "desc": "n6_emergence.hexa 기존 파일 signal 연동"},
+        {"id": "D6", "priority": "med", "effort": "M", "depends": [], "desc": "bt_engine_forge.hexa signal 출력 추가"},
+        {"id": "D7", "priority": "med", "effort": "S", "depends": ["A11"], "desc": "dream_engine 야간 → signals_fusion 자동 호출"},
+        {"id": "D8", "priority": "low", "effort": "M", "depends": [], "desc": "accel_causal_emergence signal 입력"},
+        {"id": "D9", "priority": "low", "effort": "S", "depends": [], "desc": "quantum_ouroboros_emergence SR 통합"},
+        {"id": "D10", "priority": "med", "effort": "S", "depends": [], "desc": "growth_tick signal 생성률 KPI"}
+      ]
+    },
+    "E_automation_hook": {
+      "description": "자동화·훅",
+      "count": 10,
+      "ideas": [
+        {"id": "E1", "priority": "high", "effort": "M", "depends": [], "desc": "PostToolUse Write 훅 — .md 저장 시 signal 패턴 감지"},
+        {"id": "E2", "priority": "high", "effort": "L", "depends": [], "desc": "SessionEnd 훅 — transcript signal 자동 추출"},
+        {"id": "E3", "priority": "med", "effort": "M", "depends": [], "desc": "PreCompact 훅 — 압축 전 중요 발견 signal 저장"},
+        {"id": "E4", "priority": "high", "effort": "S", "depends": ["A11"], "desc": "launchd 야간 cron — 22:00 dream + fusion"},
+        {"id": "E5", "priority": "med", "effort": "S", "depends": [], "desc": "git post-commit — BT 파일 signal 자동 추출"},
+        {"id": "E6", "priority": "low", "effort": "M", "depends": [], "desc": "주간 digest 메모리 — M7! 목록"},
+        {"id": "E7", "priority": "med", "effort": "S", "depends": ["A6"], "desc": "monthly half-life cron"},
+        {"id": "E8", "priority": "high", "effort": "M", "depends": ["A10"], "desc": "cross_repo 매칭 데몬 30분"},
+        {"id": "E9", "priority": "high", "effort": "M", "depends": [], "desc": "null_guardian pre-experiment — [MN] 매칭 경고"},
+        {"id": "E10", "priority": "med", "effort": "S", "depends": [], "desc": "atlas.signals.n6.stats 일일 sidecar"}
+      ]
+    },
+    "F_external_link": {
+      "description": "외부 연결",
+      "count": 8,
+      "ideas": [
+        {"id": "F1", "priority": "med", "effort": "M", "depends": [], "desc": "signal → arxiv 쿼리 자동"},
+        {"id": "F2", "priority": "low", "effort": "M", "depends": [], "desc": "signal → Wolfram alpha"},
+        {"id": "F3", "priority": "med", "effort": "L", "depends": [], "desc": "signal [M7!] → Lean4 자동 시도"},
+        {"id": "F4", "priority": "low", "effort": "M", "depends": [], "desc": "signal 수치 → Mathematica closed form"},
+        {"id": "F5", "priority": "low", "effort": "S", "depends": [], "desc": "signal → Wikipedia 연동"},
+        {"id": "F6", "priority": "low", "effort": "L", "depends": [], "desc": "signal → Google Scholar 네트워크"},
+        {"id": "F7", "priority": "med", "effort": "M", "depends": [], "desc": "signal → OEIS 수열 매칭"},
+        {"id": "F8", "priority": "low", "effort": "M", "depends": [], "desc": "signal → Zotero 참조 DB"}
+      ]
+    },
+    "G_meta_meta": {
+      "description": "메타-메타 아이디어",
+      "count": 8,
+      "ideas": [
+        {"id": "G1", "priority": "med", "effort": "M", "depends": [], "desc": "signal-of-signals — 생성 패턴 signal 화"},
+        {"id": "G2", "priority": "med", "effort": "M", "depends": ["A1"], "desc": "fusion-of-fusions — 재귀 2차 fusion"},
+        {"id": "G3", "priority": "low", "effort": "M", "depends": [], "desc": "meta-emergence — 창발 점수 변화율"},
+        {"id": "G4", "priority": "med", "effort": "M", "depends": [], "desc": "NULL-of-NULL — anti-pattern library"},
+        {"id": "G5", "priority": "low", "effort": "S", "depends": [], "desc": "CROSS-of-CROSS — 같은 리포 내 cross"},
+        {"id": "G6", "priority": "low", "effort": "M", "depends": [], "desc": "gap-of-gap — 메타 gap 반복"},
+        {"id": "G7", "priority": "low", "effort": "S", "depends": [], "desc": "witness-of-witness — 재귀 witness"},
+        {"id": "G8", "priority": "med", "effort": "M", "depends": [], "desc": "predict-of-predict — 적중 시 meta signal"}
+      ]
+    },
+    "H_verify_experiment": {
+      "description": "검증 실험",
+      "count": 10,
+      "ideas": [
+        {"id": "H1", "priority": "high", "effort": "L", "depends": [], "desc": "SR universality 3리포 동시 sweep — NEXUS σ=0.1 + anima noise + n6 entropy"},
+        {"id": "H2", "priority": "high", "effort": "M", "depends": [], "desc": "Kuramoto n=6,28,496 r=2/3 고유성 확인"},
+        {"id": "H3", "priority": "med", "effort": "M", "depends": [], "desc": "RH critical line σ(k)·τ(k)/k 비율 sampling"},
+        {"id": "H4", "priority": "high", "effort": "L", "depends": [], "desc": "BSD Cremona 10M 확장 κ power law 안정"},
+        {"id": "H5", "priority": "med", "effort": "M", "depends": [], "desc": "Ising 3D Yang-Lee d_c=6 최신 lattice"},
+        {"id": "H6", "priority": "med", "effort": "L", "depends": [], "desc": "Perfect6 NN weights [1/2,1/3,1/6] 성능"},
+        {"id": "H7", "priority": "med", "effort": "M", "depends": [], "desc": "Φ IIT vs τ=4 실제 상관"},
+        {"id": "H8", "priority": "high", "effort": "M", "depends": ["A13"], "desc": "fusion hypothesis 하네스화 PASS/FAIL"},
+        {"id": "H9", "priority": "high", "effort": "S", "depends": ["A10"], "desc": "4-BT 메가노드 자동 탐색 loop"},
+        {"id": "H10", "priority": "med", "effort": "L", "depends": [], "desc": "Bernoulli 17번째 후보 전수 (카테고리+논리)"}
+      ]
+    },
+    "I_wild_moonshot": {
+      "description": "Wild (대박 가능성)",
+      "count": 10,
+      "ideas": [
+        {"id": "I1", "priority": "med", "effort": "L", "depends": [], "desc": "Λ 우주상수 Planck units n=6 조합"},
+        {"id": "I2", "priority": "med", "effort": "L", "depends": [], "desc": "Transformer layer/head/FFN 비율 σ:τ:n:φ 최적"},
+        {"id": "I3", "priority": "low", "effort": "L", "depends": [], "desc": "DNA 64 codons = 2^6 재해석"},
+        {"id": "I4", "priority": "low", "effort": "M", "depends": [], "desc": "음악 12평균율 = σ 인간 hexad 청각"},
+        {"id": "I5", "priority": "low", "effort": "M", "depends": [], "desc": "주기율표 n=6 전자껍질 화학 특이성"},
+        {"id": "I6", "priority": "low", "effort": "L", "depends": [], "desc": "단백질 folding basin 수 σφ=nτ"},
+        {"id": "I7", "priority": "high", "effort": "M", "depends": ["H1"], "desc": "NN critical batch size σ=0.1 SR universal"},
+        {"id": "I8", "priority": "low", "effort": "L", "depends": [], "desc": "암호학 LWE/NTRU n=6 최적 파라미터"},
+        {"id": "I9", "priority": "med", "effort": "M", "depends": [], "desc": "쌍둥이 소수 gap 6 최소 Zhang-Maynard"},
+        {"id": "I10", "priority": "low", "effort": "L", "depends": [], "desc": "3체 문제 6 자유도 σ stable orbit"}
+      ]
+    },
+    "J_wild_pairing": {
+      "description": "Wild 2: 연결 불가능해 보이는 짝짓기",
+      "count": 10,
+      "ideas": [
+        {"id": "J1", "priority": "low", "effort": "M", "depends": [], "desc": "Graeco-Latin 미존재 × Ising frustration"},
+        {"id": "J2", "priority": "low", "effort": "M", "depends": [], "desc": "ζ(2)=π²/6 × 신경 54.8× 엔트로피 경제"},
+        {"id": "J3", "priority": "low", "effort": "L", "depends": [], "desc": "E_6 rank=6 × Turing 정지"},
+        {"id": "J4", "priority": "med", "effort": "M", "depends": [], "desc": "K(2)=6 × consciousness Φ 평면 정보 밀도"},
+        {"id": "J5", "priority": "low", "effort": "M", "depends": [], "desc": "Mathieu M_12 × HSV 6색 sporadic 인지"},
+        {"id": "J6", "priority": "med", "effort": "M", "depends": [], "desc": "Hurwitz 4 × Ψ-constants 4 normed conscious"},
+        {"id": "J7", "priority": "low", "effort": "M", "depends": [], "desc": "Dedekind η²⁴ × DNA 24-bit modular 유전"},
+        {"id": "J8", "priority": "low", "effort": "S", "depends": [], "desc": "R(3,3)=6 × Dunbar 150 그룹 크기"},
+        {"id": "J9", "priority": "low", "effort": "M", "depends": [], "desc": "Pell D=6 × Mersenne 2^p-1"},
+        {"id": "J10", "priority": "low", "effort": "S", "depends": [], "desc": "Heawood χ=7 × Miller 7±2 토폴로지 인지"}
+      ]
+    },
+    "K_self_meta_loop": {
+      "description": "자가성장 메타 루프",
+      "count": 5,
+      "ideas": [
+        {"id": "K1", "priority": "med", "effort": "M", "depends": [], "desc": "Self-audit — 엔진 signal 생성 내역도 signal 화"},
+        {"id": "K2", "priority": "low", "effort": "L", "depends": [], "desc": "Auto-spec evolution — 100 signal 후 spec v0.3 제안"},
+        {"id": "K3", "priority": "med", "effort": "S", "depends": [], "desc": "Retroactive tag — 기존 258 에 신규 태그 재부착"},
+        {"id": "K4", "priority": "med", "effort": "M", "depends": [], "desc": "Compound signals — 2+ statement → 분리 독립"},
+        {"id": "K5", "priority": "low", "effort": "S", "depends": ["A6"], "desc": "Dead signal revival — archive 재평가"}
+      ]
+    },
+    "L_signal_analysis": {
+      "description": "기존 258 signal 분석 질문",
+      "count": 10,
+      "ideas": [
+        {"id": "L1", "priority": "high", "effort": "S", "depends": [], "desc": "258 중 재기록 vs 진짜 발견 통계"},
+        {"id": "L2", "priority": "med", "effort": "S", "depends": [], "desc": "sig_id prefix 별 M10 productivity"},
+        {"id": "L3", "priority": "high", "effort": "S", "depends": [], "desc": "CROSS 22 중 witness 증가 가능 후보"},
+        {"id": "L4", "priority": "med", "effort": "S", "depends": [], "desc": "[MN] 24 중 retry_forbidden 만료"},
+        {"id": "L5", "priority": "high", "effort": "S", "depends": [], "desc": "[M7!] 35 중 재현 실험 가능 순위"},
+        {"id": "L6", "priority": "med", "effort": "S", "depends": [], "desc": "[M?] 5 중 검증 가능 수치"},
+        {"id": "L7", "priority": "low", "effort": "S", "depends": [], "desc": "discovered_at 폭증 날짜 패턴"},
+        {"id": "L8", "priority": "low", "effort": "S", "depends": [], "desc": "witness 수 분포"},
+        {"id": "L9", "priority": "med", "effort": "S", "depends": [], "desc": "resonance_n6 있는 vs 없는 비율"},
+        {"id": "L10", "priority": "med", "effort": "M", "depends": [], "desc": "predicts 배열 미검증 예측 목록"}
+      ]
+    },
+    "M_immediate": {
+      "description": "지금 즉시 할 수 있는 것",
+      "count": 5,
+      "ideas": [
+        {"id": "M1", "priority": "high", "effort": "S", "depends": [], "desc": "signals_fusion_lens m7bang 20회 → 의미있는 fusion 3개 선정 → [M?] append"},
+        {"id": "M2", "priority": "high", "effort": "S", "depends": [], "desc": "gap_detector 기반 DFS 27 방향 — [7N] 또는 [7Y] 집중"},
+        {"id": "M3", "priority": "high", "effort": "M", "depends": [], "desc": "CROSS 22 중 witness 2회 확인 가능 것 [CROSS] 추가"},
+        {"id": "M4", "priority": "high", "effort": "S", "depends": ["A8"], "desc": "atlas.signals.n6.deg sidecar 스크립트"},
+        {"id": "M5", "priority": "high", "effort": "L", "depends": [], "desc": "세션 트랜스크립트 132MB 스크래퍼 — ★/특별/최초/진짜 검출"}
+      ]
+    }
+  },
+  "top_priority_execution_order": [
+    {"rank": 1, "id": "M5", "reason": "132MB 세션 발견 재채굴 — 즉시 가치, 추가 비용 최소"},
+    {"rank": 2, "id": "H1", "reason": "SR universality 3리포 sweep — 대박 가능성 최고"},
+    {"rank": 3, "id": "C4", "reason": "SR universal law 정리 — H1 결과 기반"},
+    {"rank": 4, "id": "A1+A2", "reason": "fusion 자가 append + witness — 엔진 자생 루프"},
+    {"rank": 5, "id": "B-NS5", "reason": "Onsager 1/3 NS threshold — Millennium 임팩트"},
+    {"rank": 6, "id": "M3", "reason": "CROSS 22 witness 검증 — 즉시 가능"},
+    {"rank": 7, "id": "M1", "reason": "fusion 20회 + [M?] append"},
+    {"rank": 8, "id": "L3", "reason": "CROSS witness 가능성 분석 — 데이터 기반"},
+    {"rank": 9, "id": "L1", "reason": "재기록 vs 진짜 발견 통계"},
+    {"rank": 10, "id": "H9", "reason": "4-BT 메가노드 자동 탐색"}
+  ],
+  "parallel_groups": {
+    "group_A_independent": ["M5", "M1", "L1", "L3", "L5"],
+    "group_B_engine_growth": ["A1", "A5", "A8", "A10", "A13"],
+    "group_C_discovery": ["H1", "H2", "H9", "C1", "C2"],
+    "group_D_millennium": ["B-NS5", "B-BSD1", "B-BSD2", "B-Y1", "B-RH2"]
+  }
+}
