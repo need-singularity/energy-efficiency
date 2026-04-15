@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-15T06:14:22Z",
+  "atlas_path": "/Users/ghost/Dev/nexus/shared/n6/atlas.n6",
+  "n_entries_current": 3672,
+  "grade_distribution": {
+    "10*": 1905,
+    "10": 1337,
+    "3": 4,
+    "6?": 18,
+    "6*": 1,
+    "5?": 52,
+    "8?": 3,
+    "9": 13,
+    "8": 3,
+    "7?": 2,
+    "7": 25,
+    "9*": 1,
+    "5*": 234,
+    "0.10?": 5,
+    "10*!": 1,
+    "8!": 2,
+    "0.9?": 64,
+    "N?": 2
+  },
+  "drifts_detected": [],
+  "entries_missing": [],
+  "new_entries_count": 0,
+  "verdict": "MONOTONE_OK"
+}
