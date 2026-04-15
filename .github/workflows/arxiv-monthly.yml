@@ -1,0 +1,69 @@
+name: arXiv Millennium 월간 서베이 (v3 E6)
+
+on:
+  schedule:
+    # 매월 1일 00:00 UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch:  # 수동 실행 허용
+
+jobs:
+  arxiv-survey:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run arXiv millennium survey
+        run: |
+          python3 scripts/empirical/arxiv_millennium_survey.py
+          ls -la data/arxiv/
+
+      - name: Generate month summary
+        run: |
+          python3 - <<'EOF'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+
+          src = Path("data/arxiv/millennium_survey_6bt.json")
+          if not src.exists():
+              print("[WARN] arxiv survey JSON missing"); exit(0)
+          d = json.load(src.open())
+          recent = d.get("recent_2024_plus", {})
+
+          lines = [f"# arXiv 월간 서베이 — {datetime.utcnow().strftime('%Y-%m')}", ""]
+          lines.append("| BT | 2024+ papers |")
+          lines.append("|----|-------------|")
+          for bt, data in recent.items():
+              n = data.get("n_papers_2024_plus", 0)
+              lines.append(f"| {bt} | {n} |")
+          lines.append("")
+          lines.append("## 최신 3건 (BT별)")
+          for bt, data in recent.items():
+              lines.append(f"### {bt}")
+              for p in data.get("papers", [])[:3]:
+                  lines.append(f"- [{p['published'][:10]}] arxiv:{p['id']} — {p['title']}")
+              lines.append("")
+
+          out = Path(f"reports/arxiv-monthly-{datetime.utcnow().strftime('%Y-%m')}.md")
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text("\n".join(lines), encoding="utf-8")
+          print(f"[생성] {out}")
+          EOF
+
+      - name: Commit + push (if changes)
+        run: |
+          git config user.name "v3-arxiv-bot"
+          git config user.email "noreply@anthropic.com"
+          if [[ -n "$(git status --porcelain reports/arxiv-monthly-*.md data/arxiv/)" ]]; then
+            git add reports/arxiv-monthly-*.md data/arxiv/millennium_survey_6bt.json
+            git commit -m "chore(v3-E6): arXiv 월간 서베이 자동 업데이트 $(date +%Y-%m)"
+            git push origin main
+          else
+            echo "[skip] 변경 없음"
+          fi

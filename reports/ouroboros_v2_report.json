@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-04-15T08:41:34Z",
+  "version": "v2_namespace_aware",
+  "atlas_path": "/Users/ghost/Dev/nexus/shared/n6/atlas.n6",
+  "n_entries": 3725,
+  "total_cycles": 20,
+  "total_self_loops": 0,
+  "severity_distribution": {
+    "CRITICAL": 0,
+    "ADVISORY": 0,
+    "DATA_OK": 20,
+    "UNKNOWN": 0
+  },
+  "namespace_entry_counts": {
+    "CRITICAL": 0,
+    "ADVISORY": 0,
+    "DATA_OK": 83,
+    "UNKNOWN": 0
+  },
+  "critical_cycles": [],
+  "advisory_cycles": [],
+  "data_ok_cycles": [
+    {
+      "size": 19,
+      "nodes": [
+        "L8-virgo-cluster-mass-Msun",
+        "L8-virgo-infall-velocity-kms",
+        "L8-cmb-dipole-velocity-kms",
+        "L8-great-attractor-distance-mly",
+        "L8-shapley-supercluster-distance-mly"
+      ]
+    },
+    {
+      "size": 7,
+      "nodes": [
+        "L8-omega-lambda",
+        "L8-lambda-cosmological-constant",
+        "L8-dark-energy-acceleration-z",
+        "L8-universe-age-gyr",
+        "L8-mw-age-gyr"
+      ]
+    },
+    {
+      "size": 7,
+      "nodes": [
+        "L8-m33-mass-Msun",
+        "L8-m33-distance-mly",
+        "L8-m31-merger-time-gyr",
+        "L8-m31-approach-velocity-kms",
+        "L8-m31-distance-mly"
+      ]
+    },
+    {
+      "size": 2,
+      "nodes": [
+        "L8-type-Irr-II-example",
+        "L8-type-Irr-I-example"
+      ]
+    },
+    {
+      "size": 2,
+      "nodes": [
+        "L8-lmc-mass-Msun",
+        "L8-lmc-distance-kly"
+      ]
+    },
+    {
+      "size": 10,
+      "nodes": [
+        "L8-type-Sc-example",
+        "L8-type-Sb-example",
+        "L8-type-Sa-example",
+        "L8-type-S0-example",
+        "L8-type-E7-example"
+      ]
+    },
+    {
+      "size": 3,
+      "nodes": [
+        "L8-ngc5128-type",
+        "L8-ngc5128-bh-mass-Msun",
+        "L8-ngc5128-distance-mly"
+      ]
+    },
+    {
+      "size": 2,
+      "nodes": [
+        "L8-type-starburst-example",
+        "L8-m82-sfr-Msun-yr"
+      ]
+    },
+    {
+      "size": 3,
+      "nodes": [
+        "L8-coma-cluster-velocity-dispersion-kms",
+        "L8-coma-cluster-mass-Msun",
+        "L8-coma-cluster-distance-mly"
+      ]
+    },
+    {
+      "size": 4,
+      "nodes": [
+        "L8-el-gordo-distance-gly",
+        "L8-el-gordo-mass-Msun",
+        "L8-bullet-cluster-mass-Msun",
+        "L8-bullet-cluster-distance-mly"
+      ]
+    }
+  ],
+  "verdict": "R14_CLEAN",
+  "severity_policy": {
+    "CRITICAL_prefixes": [
+      "MILL-",
+      "BT-"
+    ],
+    "ADVISORY_prefixes": [
+      "L0-",
+      "L1-",
+      "L2-",
+      "L3-",
+      "L4-",
+      "L5-",
+      "L6-",
+      "L7-"
+    ],
+    "DATA_OK_prefixes": [
+      "L8-",
+      "L9-",
+      "L10-"
+    ]
+  }
+}
