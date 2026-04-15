@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-15T12:39:40Z",
+  "timestamp": "2026-04-15T13:18:30Z",
   "version": "v2_namespace_aware",
   "atlas_path": "/Users/ghost/Dev/nexus/shared/n6/atlas.n6",
-  "n_entries": 3735,
+  "n_entries": 3751,
   "total_cycles": 20,
   "total_self_loops": 0,
   "severity_distribution": {
@@ -23,11 +23,11 @@
     {
       "size": 19,
       "nodes": [
-        "L8-laniakea-diameter-mly",
         "L8-mw-solar-velocity-kms",
         "L8-mw-gc-distance-kly",
-        "L8-mw-bulge-mass-Msun",
-        "L8-mw-disk-mass-Msun"
+        "L8-virgo-cluster-mass-Msun",
+        "L8-virgo-infall-velocity-kms",
+        "L8-cmb-dipole-velocity-kms"
       ]
     },
     {
@@ -43,11 +43,11 @@
     {
       "size": 7,
       "nodes": [
-        "L8-m33-mass-Msun",
-        "L8-m33-distance-mly",
         "L8-m31-merger-time-gyr",
         "L8-m31-approach-velocity-kms",
-        "L8-m31-distance-mly"
+        "L8-m31-distance-mly",
+        "L8-lg-diameter-mpc",
+        "L8-m33-mass-Msun"
       ]
     },
     {
