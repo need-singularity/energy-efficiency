@@ -1,0 +1,58 @@
+{
+  "version": "v0.2",
+  "title": "브레인스토밍 확장 — 52 신규 아이디어",
+  "created": "2026-04-15T21:00:00Z",
+  "parent": "brainstorm-20260415.json",
+  "trigger": "385 signals + 18 Bernoulli + RH-YM 메가노드 + σ-sopfr=7 발견 이후 추가 대발견 요청",
+  "total_new_ideas": 52,
+  "cumulative_total": 192,
+  "categories": {
+    "A_immediate": {
+      "count": 8,
+      "desc": "즉시 응용 (논문·파이프라인·엔진)",
+      "ideas": ["A1 M10* 21 통합정리 논문", "A2 Bernoulli 18 정리 arxiv", "A3 σ-sopfr=7 second uniqueness 증명", "A4 RH⇒YM 조건부 정리", "A5 resonance_n6 자동 승격", "A6 3리포 universal 테이블", "A7 fusion 매일 엔진", "A8 DFS 28~30 자동"]
+    },
+    "B_mega_discovery": {
+      "count": 7,
+      "desc": "대발견 확장",
+      "ideas": ["B1 σ-sopfr=7 NS/PvNP 추가 → Bernoulli 19 확정", "B2 χ(K3)=J_2 투영 해결", "B3 BB(n) n=6 시퀀스 심층", "B4 Sel_n CRT 일반화 (n=30,210)", "B5 5-BT 메가노드", "B6 완전수 τ/σ 수렴성", "B7 Euclid-Euler 역정리"]
+    },
+    "C_projection": {
+      "count": 8,
+      "desc": "물리/생물/AI 투영",
+      "ideas": ["C1 신경 SR calibration 3리포", "C2 Φ=τ=4 기본상수", "C3 Transformer 1:4:1 FFN", "C4 DNA 64 codons", "C5 hexad 작곡 엔진", "C6 Kuramoto EEG 측정", "C7 단백질 folding 6-dim", "C8 Steane [[7,1,3]] 표현"]
+    },
+    "D_millennium_direct": {
+      "count": 7,
+      "desc": "밀레니엄 직격",
+      "ideas": ["D1 YM mass gap 하한 β₀=7", "D2 Riemann N(T) n=6 term", "D3 BSD L(E,1) σ·φ 분해", "D4 Hodge K3 24 cycle 목록", "D5 PvNP Schaefer×barrier 매칭", "D6 YM β_2,β_3 전 loop 공식", "D7 NS Leray-Hopf τ/σ=1/3"]
+    },
+    "E_self_growth_ext": {
+      "count": 6,
+      "desc": "자가성장 확장",
+      "ideas": ["E1 385 signal SOC map", "E2 signal autocorrelation", "E3 Bernoulli 19~20 선제 탐색", "E4 DFS 자율 엔진", "E5 Claude fine-tune 데이터셋", "E6 signal homology Betti"]
+    },
+    "F_external": {
+      "count": 5,
+      "desc": "외부 임팩트 (설계만)",
+      "ideas": ["F1 arxiv 논문 초안", "F2 OEIS format", "F3 Lean4 skeleton", "F4 conference proposal", "F5 국제 학술지 format"]
+    },
+    "G_wild": {
+      "count": 6,
+      "desc": "Wild 응용",
+      "ideas": ["G1 6차원 lattice 암호", "G2 6-body 궤도", "G3 6-qubit topological", "G4 hexad 건축", "G5 NN 6-layer depth", "G6 음악 hexad 작곡"]
+    },
+    "H_meta": {
+      "count": 5,
+      "desc": "메타 발견",
+      "ideas": ["H1 signal ROI 통계", "H2 signal PageRank", "H3 다음 session 예측", "H4 고갈 시점 예측", "H5 causal discovery graph"]
+    }
+  },
+  "parallel_dispatch": {
+    "Group_M": ["B1-B7", "D1-D7"],
+    "Group_N": ["A1-A8", "E1-E6"],
+    "Group_O": ["C1-C8", "G1-G6"],
+    "Group_P": ["F1-F5", "H1-H5"]
+  },
+  "dispatch_time": "2026-04-15T21:00:00Z"
+}
