@@ -1,28 +1,14 @@
 # Anthropic Fellows 2026 — AI Safety 연구 프로그램
 
-> **171종 연구 아이디어 / 6 도메인** + **즉시 검증 가능한 성능 기법 4종**
+> **171종 연구 아이디어 / 6 도메인** + **225종 즉시 검증 가능 기법 라이브러리**
 >
 > 상위: [`../CLAUDE.md`](../CLAUDE.md)
 
 ---
 
-# 즉시 검증 가능 — 성능/자원/속도
-
-> 돌려보면 바로 결과가 나오는 것들. Anthropic 인프라에서 즉시 재현 가능.
-
 | 천장확인 | ver | 완성제품 | 핵심 | 문서 |
 |:--:|:---:|---------|------|------|
-| ✅ | v6 | **225 Techniques** | 8축 222기법+SOTA 3 — arch 72, optim 75, attention 27, compress 18, moe 13, sparse 10, graph 7, sota 3 | [문서](../../techniques/CLAUDE.md) |
-| ✅ | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [문서](../../experiments/experiment_full_n6_pipeline.py) |
-| ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [문서](../../domains/compute/ai-efficiency/ai-efficiency.md) |
-| ✅ | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 매핑 — 31/31 PASS | [문서](../../reports/discovery/ai-energy-savings-guide.md) |
-
----
-
-# AI Safety 연구 도메인 — 171종
-
-| 천장확인 | ver | 완성제품 | 핵심 | 문서 |
-|:--:|:---:|---------|------|------|
+| ✅ | v6 | **225 AI Techniques** | 8축 222+SOTA 3 기법 라이브러리. 통합 파이프라인: 50% param↓, 50% FLOPs↓, 46% 희소성 (32/32 PASS). 열역학 엔진: Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens (26/26 PASS). 에너지 절감: AdamW 5중쌍+LR+Inference 전수 매핑 (31/31 PASS) | [문서](../../techniques/CLAUDE.md) |
 | ✅ | v1 | **해석가능성** | SAE 차세대 15 + 회로 매핑 12 + 해석 도구 12 = 39종 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
 | ✅ | v1 | **정렬** | 정렬 기법 비교 12 + 모델 유기체 10 + 확장 감독 10 = 32종 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
 | ✅ | v1 | **적대적 강건성** | 안전 평가 12 + 기만 탐지 8 + 에이전트 안전 10 + 아키텍처 6 = 36종 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
