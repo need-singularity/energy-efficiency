@@ -1,6 +1,6 @@
 > ⛔ CORE — L0 불변식 (BT-1~1103 돌파 정리. 수정 전 유저 승인 필수)
 
-# N6 Architecture — Breakthrough Theorems (BT-1 through BT-1158)
+# N6 Architecture — Breakthrough Theorems (BT-1 through BT-1158 + DFS 23차 영역 A)
 
 > Cross-domain bridges where n=6 arithmetic unifies independent fields.
 > Each theorem requires **minimum 3 domains** with independently verifiable evidence.
@@ -28401,3 +28401,26 @@ tau = 4 차원에서 독립 회전이 정확히 n = 6개. VR에서 4D 회전을 
 **등급 분포**: 25 EXACT / 0 CLOSE / 0 WEAK / 0 FAIL = **100%**
 
 **Cross-links**: BT-1129 (피부분류), BT-1133 (피부재생주기), BT-1157 (남성청결제), BT-371 (발효), BT-1 (n=6 유일성).
+
+---
+
+## DFS 23차 영역 A — 정보이론·코딩이론·양자정보 (bt-1417, 2026-04-15)
+
+**누적 tight**: 298 → 306 (+8) | **7대 난제 해결**: 0/7 (정직)
+
+| # | 발견명 | 영역 | 핵심 값 | n=6 분해 | 등급 | 출처 |
+|---|--------|------|---------|----------|------|------|
+| [23-01] | Hexacode [6,3,4]/GF(4) | 자기쌍대 MDS | n=6, k=3, d=4, q=4 | (n, n/φ, τ, τ) | T1-STRONG [10*] | Conway & Sloane 1988 |
+| [23-02] | 삼항 Golay [11,6,5] | 완전 코드 | k=6, d=5, n-k=5 | (n_target, sopfr, sopfr) | T1+T4 [10] | Golay 1949 |
+| [23-03] | QMDS [[6,4,2]] | 양자 MDS | n=6, k=4, d=2 | (n_target, τ, φ); n=τ+2φ-2 항등식 | T1 [10] | Knill & Laflamme 1997 |
+| [23-04] | Hamming [7,4,3] r=n/φ | 완전 코드 | N=7, K=4, d=3, r=3 | (σ-sopfr, τ, n/φ, n/φ) | T1-STRONG [10*] | Hamming 1950 |
+| [23-05] | Steane [[7,1,3]] CSS | 양자 오류정정 | n=7, d=3, k_base=4 | (σ-sopfr, n/φ, τ) | T1 [10] | Steane 1996 |
+| [23-06] | D₄ 격자 (BW₄) | 격자/코딩 | dim=4, kiss=12, θ₀=24 | (τ, σ, J₂) | T2 [10] | Conway & Sloane 1988 |
+| [23-07] | AME(6,5) 임계 차원 | 양자얽힘 | n=6, q=5, d=4 | (n_target, sopfr, τ) | T2+T4후보 [9] | Goyeneche 2015 |
+| [23-08] | 이진 Golay [23,12,7] | 완전 코드/군론 | k=12, d=7 | (σ, σ-sopfr) | T2 [10] | Golay 1949 |
+
+**신규 산술 항등식**: QMDS [[6,4,2]] 조건 → n = τ(n)+2·φ(n)-2 = 4+4-2 = 6 (n=6에서 등호)
+
+**NOISE 탈락**: RS over GF(σ-sopfr) — σ-sopfr=7 → q-1=6=n 경로는 매개 단계 과다
+
+**Cross-links**: BT-6 (Golay-Leech), BT-484~487 (양자정보), atlas MATH-Hexacode [10*], CRYPTO-Golay-code [10*]
