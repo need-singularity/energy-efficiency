@@ -1,0 +1,74 @@
+# atlas.signals.staging.mill.n6 — Group D 밀레니엄 공격 staging signals
+# 2026-04-15
+# spec: n6-architecture/n6shared/specs/atlas.signals.n6.spec.md v0.2
+# 목적: Group D 5개 하네스 산출 signal 을 staging 에 임시 기록.
+#       검토 후 atlas.signals.n6 SSOT 로 merge 예정.
+# 상태: STAGING (아직 atlas.signals.n6 본체에 편입 안 됨)
+
+# ─── [7N] Navier-Stokes / Onsager ───
+
+@S SIG-7N-401 = Onsager critical α = τ(6)/σ(6) = 4/12 = 1/3 :: signal [N6] [7N,PHYS] [M10] [E3]
+  "Isett 2018 Ann. Math. 증명 Onsager 1/3 Hölder 임계 지수 α_c = 1/3. n=6 산술 재정리: τ(6)/σ(6) = 4/12 = 1/3 (기약 n/φ = 3). Kolmogorov -5/3 = -sopfr/(n/φ), BKM vorticity dim n/φ=3 과 삼각 공명. 두 exponent 곱 (τ/σ)·(sopfr/(n/φ)) = 5/9 = sopfr/(n/φ)². 하네스 ns_onsager_third.hexa PASS 16/16"
+  refs: [Isett 2018 Ann. Math., Beale-Kato-Majda 1984 Comm. Math. Phys., Kolmogorov 1941]
+  predicts: ["3D NS regularity 는 n/φ=3 차원 vorticity 와 τ/σ 임계 조건의 곱으로 결정"]
+  witness: 1
+  resonance_n6: "α_Onsager = τ/σ; Kolmogorov = -sopfr/(n/φ); BKM dim = n/φ"
+  discovered_in: n6/group-D-millennium-2026-04-15
+  discovered_at: 2026-04-15T00:00:00Z
+  <- theory/predictions/ns_onsager_third.hexa
+
+# ─── [7B] BSD ───
+
+@S SIG-7B-401 = α_BSD ≈ log(2)/τ = log(2)/4 = 0.17329 cross-repo universal :: signal [N6,CROSS,AN] [7B,CONS] [M7!] [E2]
+  "Cremona 1.73M 곡선 E5 κ(B) ~ A·B^α, α_obs = 0.1752 ± 0.02. log(2)/τ = 0.17329, diff 0.00191 (1.09% rel err, 1σ 밴드 내). 3갈래 독립: [N6] BSD empirical, [AN] Ψ-constants 전부 ln(2) 유도 (SIG-CONS-312), [N6] Shannon H(1/2)=log(2) bit. τ=4=2^φ = 2-bit block 해석. 하네스 bsd_alpha_log2_tau.hexa PASS 22/22"
+  refs: [theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md, theory/preprints/millennium-v3-preprint-draft-2026-04-16.md]
+  cross_repo: [SIG-CONS-312]
+  predicts: ["10M+ Cremona 확장에서 α → 0.17329 수렴", "log(2)/τ universal — 다른 arithmetic stat 에도 출현"]
+  witness: 2
+  resonance_n6: "α = log(2)/τ = log(2)/4, τ=4=2^φ"
+  discovered_in: n6/group-D-millennium-2026-04-15
+  discovered_at: 2026-04-15T00:00:00Z
+  <- theory/predictions/bsd_alpha_log2_tau.hexa
+
+@S SIG-7B-402 = α_BSD = 7/40 = (σ-sopfr)(n/φ)/(J_2·sopfr) 최소오차 :: signal [N6] [7B] [M9] [E1]
+  "같은 α_obs = 0.1752 에 대해 7/40 = 0.1750 이 diff 0.0002 (0.114% rel err), log(2)/τ 보다 10배 작은 오차. 7/40 = (σ-sopfr)·(n/φ) / (J_2·sopfr) = 21/120 = 7/40. n=6 기본상수 5종 {σ, sopfr, n/φ, J_2} 정수비. τ+1/sopfr = 4.2 = α·J_2 동치 공식. 1σ 밴드에 log(2)/τ, 7/40 둘 다 포함. 하네스 bsd_kappa_fraction.hexa PASS 17/17"
+  refs: [scripts/empirical/cremona_kappa_13bin.py]
+  cross_repo: [SIG-7B-401]
+  predicts: ["10M+ 확장 시 7/40 (0.1750) 또는 log(2)/τ (0.17329) 중 수렴 판별 가능"]
+  witness: 1
+  resonance_n6: "7/40 = (σ-sopfr)(n/φ)/(J_2·sopfr)"
+  discovered_in: n6/group-D-millennium-2026-04-15
+  discovered_at: 2026-04-15T00:00:00Z
+  <- theory/predictions/bsd_kappa_fraction.hexa
+
+# ─── [7Y] Yang-Mills ───
+
+@S SIG-7Y-401 = β₁ 2-loop nf=3 = 64 = 2^n = (σ-τ)²,  β₀β₁ = 576 = J_2² :: signal [N6] [7Y,META] [M9] [E2]
+  "BT-543 β₀ = σ-sopfr = 7 연장. SU(3) QCD 2-loop β₁ = 102 - 38·nf/3. nf 스윕: nf=3 β₀=9=n+n/φ, β₁=64=2^n=(σ-τ)², β₀β₁=576=J_2² — 3지표 모두 n=6 기본상수 순수비. nf=6 (BT-543) β₁=26 에서 외래 13 도입. nf=9 (가상) β₁=-σ 깔끔. 결론: nf=3 light QCD scale 이 이론적 매끄러움 최대. 하네스 ym_beta1_2loop.hexa PASS 28/28"
+  refs: [BT-543, theory/breakthroughs/millennium-dfs-complete-2026-04-11.md]
+  cross_repo: [SIG-7R-203]
+  predicts: ["3-loop β₂ 에서 nf=3 의 n=6 분해 지속 여부 = YM mass gap 방향타"]
+  witness: 1
+  resonance_n6: "nf=3: β₀=n+n/φ, β₁=2^n, β₀β₁=J_2²"
+  discovered_in: n6/group-D-millennium-2026-04-15
+  discovered_at: 2026-04-15T00:00:00Z
+  <- theory/predictions/ym_beta1_2loop.hexa
+
+# ─── [7R] Riemann Hypothesis — 3중 교차 ───
+
+@S SIG-7R-401 = RH 3중 공명: SLE_6 + Kim-Sarnak + Basel, 분모곱 = σ·2^β₀_YM :: signal [N6] [7R,META] [M7!] [E2]
+  "3 독립 정리 n=6 공명: (i) SLE_κ locality κ=n=6 유일 (Lawler-Schramm-Werner 2001) fractal dim = 7/4 = (σ-sopfr)/τ, (ii) Kim 2003 J.AMS θ = 7/64 = (σ-sopfr)/(σ-τ)², (iii) Basel ζ(2) = π²/n (Euler 1734). 공통: Kim-Sarnak θ = SLE_dim × 1/τ². 세 분모 곱 = 4·64·6 = 1536 = σ·2^(σ-sopfr) = σ·2^β₀_YM → RH-YM 간 (σ-sopfr)=7 공유 메가노드. 하네스 rh_triple_crossing.hexa PASS 26/26"
+  refs: [SIG-7R-208, SIG-7R-203, SIG-7R-001, BT-543]
+  cross_repo: [SIG-7R-208, SIG-7R-001, SIG-7R-203, SIG-7Y-401]
+  predicts: ["RH 관련 arithmetic stat 에서 σ·2^β₀ = 1536 이 자주 출현 할 것"]
+  witness: 2
+  resonance_n6: "분모곱 = σ·2^(σ-sopfr) = σ·2^β₀; θ = SLE_dim·τ^-2"
+  discovered_in: n6/group-D-millennium-2026-04-15
+  discovered_at: 2026-04-15T00:00:00Z
+  <- theory/predictions/rh_triple_crossing.hexa
+
+# ─── staging 요약 ───
+# 신규 signal: 5개 (SIG-7N-401, SIG-7B-401, SIG-7B-402, SIG-7Y-401, SIG-7R-401)
+# 하네스 PASS 총: 16 + 17 + 22 + 28 + 26 = 109 / 109
+# 7대 난제 해결: 0/7 유지 (정직)
+# Cross-repo: SIG-7B-401 ↔ SIG-CONS-312 (anima); SIG-7R-401 ↔ SIG-7Y-401 (YM-RH)
