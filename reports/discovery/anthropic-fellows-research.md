@@ -1,104 +1,34 @@
-# Anthropic Fellows 2026 — AI Safety 연구 프로그램 171종
+# Anthropic Fellows 2026 — AI Safety 연구 프로그램
 
-> **171종 / 6 연구 도메인** — Anthropic의 기존 연구 인프라로 즉시 검증 가능한 AI Safety 연구 아이디어.
+> **171종 연구 아이디어 / 6 도메인** + **즉시 검증 가능한 성능 기법 4종**
 >
-> | 도메인 | 아이디어 | Anthropic 연구 트랙 |
-> |--------|----------|-------------------|
-> | 해석가능성 | 39종 | Mechanistic Interpretability |
-> | 정렬 | 32종 | Alignment + Model Organisms + Scalable Oversight |
-> | 적대적 강건성 | 36종 | Adversarial Robustness + AI Security |
-> | 모델 복지 | 18종 | Model Welfare + Math Verification |
-> | 멀티모달 안전 | 20종 | Multimodal Safety + Privacy + Fairness |
-> | 배포 안전 | 26종 | Training + Inference + Deploy + Prompt Safety |
-> | **합계** | **171종** | **Anthropic 전 트랙 커버** |
->
-> 기법 라이브러리: [`../../techniques/CLAUDE.md`](../../techniques/CLAUDE.md) (225종)
 > 상위: [`../CLAUDE.md`](../CLAUDE.md)
 
 ---
 
-# 해석가능성 — Mechanistic Interpretability
+# 즉시 검증 가능 — 성능/자원/속도
 
-> **39종** | SAE 차세대 + 회로 매핑 + 해석 도구
+> 돌려보면 바로 결과가 나오는 것들. Anthropic 인프라에서 즉시 재현 가능.
 
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 15 | SAE 차세대 | Gated/TopK/Grouped SAE, 다층 SAE, feature splitting 해결, SAE 불확실성 정량화 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
-| 12 | 회로 매핑 | 안전 거부 회로, 환각 회로, 사실 검색 회로, in-context learning 회로 자동 발견 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
-| 12 | 해석 도구 | SAE 대시보드, feature 검색엔진, 자동 라벨링, 자연어 feature 설명 자동 생성 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
-
-> 도메인: [ai-interpretability.md](../../domains/cognitive/ai-interpretability/ai-interpretability.md)
-
----
-
-# 정렬 — Alignment + Model Organisms + Scalable Oversight
-
-> **32종** | 정렬 기법 비교 + 모델 유기체 실험 + 확장 가능한 감독
-
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 12 | 정렬 기법 | RLHF/DPO/KTO/GRPO/SimPO/ORPO/PPO 7종 체계 비교, Constitutional AI 확장 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
-| 10 | 모델 유기체 | Mini-NEXUS 자율 성장 실험, 성장 단계별 alignment feature 추적, 임계점 탐지 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
-| 10 | 확장 가능 감독 | 재귀 감독 프로토콜, debate 구조화, weak-to-strong 일반화, 형식 검증 감독 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
-
-> 도메인: [ai-alignment.md](../../domains/cognitive/ai-alignment/ai-alignment.md)
+| 천장확인 | ver | 완성제품 | 핵심 | 문서 |
+|:--:|:---:|---------|------|------|
+| ✅ | v6 | **225 Techniques** | 8축 222기법+SOTA 3 — arch 72, optim 75, attention 27, compress 18, moe 13, sparse 10, graph 7, sota 3 | [문서](../../techniques/CLAUDE.md) |
+| ✅ | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증 | [문서](../../experiments/experiment_full_n6_pipeline.py) |
+| ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [문서](../../domains/compute/ai-efficiency/ai-efficiency.md) |
+| ✅ | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 매핑 — 31/31 PASS | [문서](../../reports/discovery/ai-energy-savings-guide.md) |
 
 ---
 
-# 적대적 강건성 — Adversarial Robustness + AI Security
+# AI Safety 연구 도메인 — 171종
 
-> **36종** | 안전 평가 + 기만 탐지 + 에이전트 안전 + 아키텍처 안전
-
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 12 | 안전 평가 | 탈옥 벤치마크, 안전 회귀 테스트, red-team 자동화, 공격 난이도 정량화 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
-| 8 | 기만 탐지 | 행동 일관성 테스트, sycophancy 회로 매핑, 감독 인식 시 행동 변화 탐지 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
-| 10 | 에이전트 안전 | 도구 사용 안전 프로토콜, 권한 최소화, 에이전트 행동 감사 로그 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
-| 6 | 아키텍처 안전 | 해석 가능 어텐션, 안전 내장 아키텍처, 계층별 안전 게이트 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
-
-> 도메인: [ai-adversarial.md](../../domains/cognitive/ai-adversarial/ai-adversarial.md)
-
----
-
-# 모델 복지 — Model Welfare + Math Verification
-
-> **18종** | 복지 감지 + 수학적 검증
-
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 10 | 복지 감지 | 의식 지표 탐색, 고통 탐지 프로토콜, 복지 메트릭 프레임워크, 자율성 구배 매핑 | [문서](../../domains/cognitive/ai-welfare/ai-welfare.md) |
-| 8 | 수학 검증 | 산술 함수 유일성의 형식 검증, Lean4 안전 속성 증명, autoformalization | [문서](../../domains/cognitive/ai-welfare/ai-welfare.md) |
-
-> 도메인: [ai-welfare.md](../../domains/cognitive/ai-welfare/ai-welfare.md)
-
----
-
-# 멀티모달 안전 — Multimodal + Privacy + Fairness
-
-> **20종** | 멀티모달 공격 방어 + 프라이버시 보존 + 공정성/편향 수정
-
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 8 | 멀티모달 안전 | 시각 인젝션 방어, 모달 간 안전 일관성, 멀티모달 환각 탐지, NSFW 회로 매핑 | [문서](../../domains/cognitive/ai-multimodal/ai-multimodal.md) |
-| 6 | 프라이버시 | PII feature 탐지/억제, 차등 프라이버시 추론, 선택적 망각(Machine Unlearning) | [문서](../../domains/cognitive/ai-multimodal/ai-multimodal.md) |
-| 6 | 공정성 | 편향 feature 매핑, 공정성 회로 탐지, 인과 편향 수정, 다문화 공정성 벤치마크 | [문서](../../domains/cognitive/ai-multimodal/ai-multimodal.md) |
-
-> 도메인: [ai-multimodal.md](../../domains/cognitive/ai-multimodal/ai-multimodal.md)
-
----
-
-# 배포 안전 — Training + Inference + Deploy + Prompt Safety
-
-> **26종** | 훈련 최적화 + 추론 안전 + 배포 프로토콜 + 프롬프트 방어
-
-| 종 | 축 | 핵심 | 문서 |
-|:--:|-----|------|------|
-| 4 | 훈련 안전 | gradient penalty, sharpness-aware minimization, 복지 인식 훈련법 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
-| 4 | 추론 안전 | 추론 시 안전 검증, 스트리밍 안전 필터, 배치 추론 감사 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
-| 10 | 배포 프로토콜 | 4단계 출시 게이트, 실시간 12 KPI 모니터링, 자동 롤백, 안전 SLA, 인시던트 자동 대응 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
-| 8 | 프롬프트 방어 | 시스템 프롬프트 우회 방어, 인젝션 분류기, 난독화 해독, 간접 인젝션 방어 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
-
-> 도메인: [ai-deployment.md](../../domains/cognitive/ai-deployment/ai-deployment.md)
+| 천장확인 | ver | 완성제품 | 핵심 | 문서 |
+|:--:|:---:|---------|------|------|
+| ✅ | v1 | **해석가능성** | SAE 차세대 15 + 회로 매핑 12 + 해석 도구 12 = 39종 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
+| ✅ | v1 | **정렬** | 정렬 기법 비교 12 + 모델 유기체 10 + 확장 감독 10 = 32종 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
+| ✅ | v1 | **적대적 강건성** | 안전 평가 12 + 기만 탐지 8 + 에이전트 안전 10 + 아키텍처 6 = 36종 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
+| ✅ | v1 | **모델 복지** | 복지 감지 10 + 수학 검증 8 = 18종 | [문서](../../domains/cognitive/ai-welfare/ai-welfare.md) |
+| ✅ | v1 | **멀티모달 안전** | 멀티모달 8 + 프라이버시 6 + 공정성 6 = 20종 | [문서](../../domains/cognitive/ai-multimodal/ai-multimodal.md) |
+| ✅ | v1 | **배포 안전** | 훈련 4 + 추론 4 + 배포 프로토콜 10 + 프롬프트 방어 8 = 26종 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
 
 ---
 
