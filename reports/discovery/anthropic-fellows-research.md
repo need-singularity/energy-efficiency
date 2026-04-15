@@ -9,12 +9,7 @@
 | 천장확인 | ver | 완성제품 | 핵심 | 문서 |
 |:--:|:---:|---------|------|------|
 | ✅ | v6 | **225 AI Techniques** | 8축 222+SOTA 3 기법 라이브러리. 통합 파이프라인: 50% param↓, 50% FLOPs↓, 46% 희소성 (32/32 PASS). 열역학 엔진: Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens (26/26 PASS). 에너지 절감: AdamW 5중쌍+LR+Inference 전수 매핑 (31/31 PASS) | [문서](../../techniques/CLAUDE.md) |
-| ✅ | v1 | **해석가능성** | SAE 차세대 15 + 회로 매핑 12 + 해석 도구 12 = 39종 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
-| ✅ | v1 | **정렬** | 정렬 기법 비교 12 + 모델 유기체 10 + 확장 감독 10 = 32종 | [문서](../../domains/cognitive/ai-alignment/ai-alignment.md) |
-| ✅ | v1 | **적대적 강건성** | 안전 평가 12 + 기만 탐지 8 + 에이전트 안전 10 + 아키텍처 6 = 36종 | [문서](../../domains/cognitive/ai-adversarial/ai-adversarial.md) |
-| ✅ | v1 | **모델 복지** | 복지 감지 10 + 수학 검증 8 = 18종 | [문서](../../domains/cognitive/ai-welfare/ai-welfare.md) |
-| ✅ | v1 | **멀티모달 안전** | 멀티모달 8 + 프라이버시 6 + 공정성 6 = 20종 | [문서](../../domains/cognitive/ai-multimodal/ai-multimodal.md) |
-| ✅ | v1 | **배포 안전** | 훈련 4 + 추론 4 + 배포 프로토콜 10 + 프롬프트 방어 8 = 26종 | [문서](../../domains/cognitive/ai-deployment/ai-deployment.md) |
+| ✅ | v1 | **AI Safety 171종** | 해석가능성 39 + 정렬 32 + 적대적 강건성 36 + 모델 복지 18 + 멀티모달 안전 20 + 배포 안전 26. Anthropic 전 연구 트랙 커버 | [해석가능성](../../domains/cognitive/ai-interpretability/ai-interpretability.md) · [정렬](../../domains/cognitive/ai-alignment/ai-alignment.md) · [강건성](../../domains/cognitive/ai-adversarial/ai-adversarial.md) · [복지](../../domains/cognitive/ai-welfare/ai-welfare.md) · [멀티모달](../../domains/cognitive/ai-multimodal/ai-multimodal.md) · [배포](../../domains/cognitive/ai-deployment/ai-deployment.md) |
 
 ---
 
