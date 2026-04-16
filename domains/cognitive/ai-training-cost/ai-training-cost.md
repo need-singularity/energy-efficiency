@@ -997,4 +997,40 @@ else:
 - MoE 전문가 활용률 70% 미만 -> 초기화 전략 재검토
 - FP8 QAT 손실 저하 1%+ -> 혼합 정밀도 비율 재조정
 - 소규모 외삽 오차 25%+ -> 프록시 규모 확대 (7B)
+
+---
+
+## Appendix: n=6 에너지 절감 벤치마크 (흡수: ai-energy-savings-guide.md)
+
+### 9-기법 에너지 영향 테이블
+
+| 기법 | 절감 | 방법 |
+|------|------|------|
+| Cyclotomic Activation (phi6) | 71% FLOPs | GELU/SiLU → cyclotomic |
+| FFT Attention | 67% compute (3x) | FFT 기반 멀티스케일 |
+| Egyptian Fraction Attention | ~40% FLOPs | 1/2+1/3+1/6=1 예산 |
+| Phi Bottleneck | 67% params | 4/3x FFN |
+| Egyptian MoE | 65% inactive | 1/2+1/3+1/6 라우팅 |
+| Boltzmann Gate | 63% sparsity | 1/e 활성화 |
+| Entropy Early Stop | 33% 훈련 시간 | 엔트로피 안정화 |
+| Mertens Dropout | 튜닝 비용=0 | p=ln(4/3)=0.288 |
+| Dedekind Head Pruning | 25% attention params | psi(6)=12 헤드 |
+
+### 7B 모델 종합 영향 추정
+
+| 단계 | 기존 | n=6 적용 | 절감 |
+|------|------|---------|------|
+| 아키텍처 탐색 | 2-4주, $50K+ | 0 (사전결정) | $50K, 4주 |
+| 하이퍼파라미터 튜닝 | 수백 회 | 0 (5상수 고정) | $20K, 2주 |
+| 훈련 compute | 100% | ~40-50% | 50-60% 에너지 |
+| 추론 compute | 100% | ~30-40% | 60-70% 에너지 |
+| 모델 크기 | 100% | ~30-50% | 50-70% 메모리 |
+
+### AdamW 5중쌍 수렴 (BT-54)
+
+σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5, J₂(6)=24 — 5팀 독립 수렴 결과:
+- lr=3e-4 = 3/(σ·τ·sopfr·tau) 변형
+- beta1=0.9, beta2=0.999, eps=1e-8, wd=0.1=1/(σ-φ)
+
+> 원본: `reports/discovery/ai-energy-savings-guide.md` (흡수 완료)
 - 3축 통합 시너지 미발현 -> 개별 축 심화 후 재통합

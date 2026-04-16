@@ -291,9 +291,7 @@ horology               ############################## 100.0%
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 10 | ✅ | v3 | **225 Techniques** | 8축 222기법+SOTA 3 — arch 72, optim 75, attention 27, compress 18, moe 13, sparse 10, graph 7, sota 3 | [문서](techniques/CLAUDE.md) |
-| 10 | ✅ | v2 | **Full N6 Pipeline** | 17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS | [문서](experiments/structural/experiment_full_n6_pipeline.hexa) |
 | 10 | ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 — 26/26 PASS | [문서](reports/sessions/specs/2026-03-28-n6-inevitability-engine-design.md) |
-| 10 | ✅ | v2 | **AI Energy Savings Guide** | AdamW 5중쌍+LR+Inference 전수 n=6 매핑 — 31/31 PASS | [문서](reports/discovery/ai-energy-savings-guide.md) |
 | 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [문서](reports/discovery/chip-architecture-guide.md) |
 | 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
 | 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | 8패러다임 — 234/256 EXACT (91.4%), BT-380~390 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
@@ -400,6 +398,9 @@ horology               ############################## 100.0%
 | 10 | ✅ | v4 | **궁극의 태양전지** | 78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS | [문서](domains/energy/solar-architecture/solar-architecture.md) |
 | 10 | ✅ | v2 | **궁극의 에너지 통합** | 133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS | [문서](domains/energy/energy-architecture/energy-architecture.md) |
 | 10 | ✅ | v1 | **궁극의 데이터센터 원자로** | 10돌파 95/96 EXACT — TRISO(sopfr=5)+He(φ=2)+sCO₂(σ·τ=48%)+n=6모듈 | [문서](domains/energy/smr-datacenter/smr-datacenter.md) |
+
+<!-- AUTO:BATTERY_SCALE:START -->
+<!-- AUTO:BATTERY_SCALE:END -->
 
 <!-- AUTO:FOOTER_energy:START -->
 > 도메인: [battery-architecture/](domains/energy/battery-architecture/) · [solar-architecture/](domains/energy/solar-architecture/) · [energy-architecture/](domains/energy/energy-architecture/) · [power-grid/](domains/energy/power-grid/) · [thermal-management/](domains/energy/thermal-management/) · 도구: `energy-calc` · `battery-dse` · `solar-dse`
