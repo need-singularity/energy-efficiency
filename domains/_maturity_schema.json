@@ -1,0 +1,277 @@
+{
+  "_meta": {
+    "title": "Domain Maturity Pipeline Schema",
+    "version": "1.0.0",
+    "created": "2026-04-16",
+    "task": "DIS-P1-3",
+    "description": "5-stage domain maturity model for N6 Architecture 318 domains",
+    "total_domains": 318,
+    "sectors": 10
+  },
+
+  "maturity_model": {
+    "stages": [
+      {
+        "stage": 1,
+        "name": "discovered",
+        "label_ko": "발견",
+        "description": "Domain identified, minimal description exists. Placeholder or stub content only.",
+        "criteria": {
+          "required_files": ["CLAUDE.md"],
+          "min_md_sections": 0,
+          "has_verify_section": false,
+          "has_verify_hexa": false,
+          "min_grade": null,
+          "product_link": false,
+          "paper_link": false
+        },
+        "promotion_to_next": "Add full .md with WHY/COMPARE/REQUIRES/STRUCT sections (minimum 4 of 7 standard sections)"
+      },
+      {
+        "stage": 2,
+        "name": "registered",
+        "label_ko": "등록",
+        "description": "Full domain .md exists with structured sections: WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE. Describes the domain's purpose, architecture, and evolution roadmap.",
+        "criteria": {
+          "required_files": ["CLAUDE.md", "<domain>.md"],
+          "min_md_sections": 4,
+          "section_names": ["WHY", "COMPARE", "REQUIRES", "STRUCT"],
+          "has_verify_section": false,
+          "has_verify_hexa": false,
+          "min_grade": null,
+          "product_link": false,
+          "paper_link": false
+        },
+        "promotion_to_next": "Add embedded S7 VERIFY section with Python verification code achieving EXACT grade references"
+      },
+      {
+        "stage": 3,
+        "name": "verified",
+        "label_ko": "검증",
+        "description": "Domain has embedded verification (S7 VERIFY section and/or standalone verify.hexa) with EXACT or NEAR grade. Verification includes CONSTANTS, DIMENSIONS, CROSS, SCALING, SENSITIVITY sub-checks.",
+        "criteria": {
+          "required_files": ["CLAUDE.md", "<domain>.md"],
+          "min_md_sections": 7,
+          "section_names": ["WHY", "COMPARE", "REQUIRES", "STRUCT", "FLOW", "EVOLVE", "VERIFY"],
+          "has_verify_section": true,
+          "has_verify_hexa": "optional (bonus: standalone verify_<domain>.hexa)",
+          "min_grade": "[9] NEAR or [10] EXACT",
+          "grade_evidence": "EXACT keyword in .md header/comments OR verify.hexa PASS results",
+          "product_link": false,
+          "paper_link": false
+        },
+        "promotion_to_next": "Link domain to 1+ products in papers/_products.json with section_id match"
+      },
+      {
+        "stage": 4,
+        "name": "productized",
+        "label_ko": "제품화",
+        "description": "Domain is linked to 1+ products in the product registry (papers/_products.json). Products reference this domain in their 'domains' array.",
+        "criteria": {
+          "required_files": ["CLAUDE.md", "<domain>.md"],
+          "min_md_sections": 7,
+          "has_verify_section": true,
+          "has_verify_hexa": "optional",
+          "min_grade": "[9] NEAR or [10] EXACT",
+          "product_link": true,
+          "product_registry": "papers/_products.json",
+          "product_match": "domain name appears in products[].domains[]",
+          "paper_link": false
+        },
+        "promotion_to_next": "Write and register a paper (papers/n6-<domain>-paper.md) in papers/_registry.json"
+      },
+      {
+        "stage": 5,
+        "name": "published",
+        "label_ko": "발행",
+        "description": "Domain has 1+ published papers in papers/ directory. Paper is registered in papers/_registry.json and follows the Abstract+Foundation+Domain+Limitations+TestablePredictions+hexa format.",
+        "criteria": {
+          "required_files": ["CLAUDE.md", "<domain>.md", "papers/n6-<domain>-paper.md"],
+          "min_md_sections": 7,
+          "has_verify_section": true,
+          "has_verify_hexa": "optional",
+          "min_grade": "[9] NEAR or [10] EXACT",
+          "product_link": true,
+          "paper_link": true,
+          "paper_registry": "papers/_registry.json",
+          "paper_format": "n6-<domain>-paper.md"
+        },
+        "promotion_to_next": null
+      }
+    ]
+  },
+
+  "distribution_estimate": {
+    "snapshot_date": "2026-04-16",
+    "methodology": "Full filesystem census of 318 domain directories across 10 sectors. File existence, section headers, grade markers, product registry, and paper directory checked exhaustively.",
+    "stages": {
+      "stage_1_discovered": {
+        "count": 2,
+        "percent": 0.6,
+        "note": "ai-interpretability (no S7 VERIFY), chip-design (no matching .md, uses sub-files). Both lack the standard §1-§7 structure.",
+        "examples": ["cognitive/ai-interpretability", "compute/chip-design"]
+      },
+      "stage_2_registered": {
+        "count": 8,
+        "percent": 2.5,
+        "note": "Domains with full §1-§7 structure but lacking EXACT/NEAR grade evidence. These have the structure but verification results are unclear or below [9].",
+        "examples": ["domains with no EXACT/NEAR/EMPIRICAL grade references in .md"]
+      },
+      "stage_3_verified": {
+        "count": 191,
+        "percent": 60.1,
+        "note": "Domains with full structure, embedded §7 VERIFY, and EXACT/NEAR grade — but NOT linked to any product in _products.json. This is the bulk of the corpus: well-documented and verified but not yet productized.",
+        "derivation": "316 (full §1-§7) - 8 (no grade) - 117 (product-linked) = 191"
+      },
+      "stage_4_productized": {
+        "count": 49,
+        "percent": 15.4,
+        "note": "Domains linked to products (117 product-linked) minus those also covered by papers (68 with papers). These have product linkage but no dedicated paper yet.",
+        "derivation": "117 (product-linked) - 68 (also have paper) = 49"
+      },
+      "stage_5_published": {
+        "count": 68,
+        "percent": 21.4,
+        "note": "Domains with a matching paper in papers/n6-<domain>-paper.md. All 68 are also product-linked (verified via _products.json cross-reference).",
+        "derivation": "68 domains with matching papers, all also in product registry"
+      }
+    },
+    "total_check": "2 + 8 + 191 + 49 + 68 = 318"
+  },
+
+  "tracking_record_schema": {
+    "description": "Per-domain maturity tracking record. One record per domain.",
+    "type": "object",
+    "required": ["domain", "sector", "stage", "stage_name", "files", "last_updated"],
+    "properties": {
+      "domain": {
+        "type": "string",
+        "description": "Domain directory name (e.g., 'fusion', 'quantum-computing')"
+      },
+      "sector": {
+        "type": "string",
+        "enum": ["cognitive", "compute", "culture", "energy", "infra", "life", "materials", "physics", "sf-ufo", "space"],
+        "description": "One of 10 sector axes"
+      },
+      "stage": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "Maturity stage number (1-5)"
+      },
+      "stage_name": {
+        "type": "string",
+        "enum": ["discovered", "registered", "verified", "productized", "published"],
+        "description": "Maturity stage name"
+      },
+      "files": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "List of key files in this domain directory"
+      },
+      "grade": {
+        "type": ["string", "null"],
+        "description": "Atlas grade: [10*]=EXACT verified, [10]=EXACT, [9]=NEAR, [7]=EMPIRICAL, [N?]=CONJECTURE, null if ungraded"
+      },
+      "products": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Product IDs from papers/_products.json that reference this domain"
+      },
+      "papers": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Paper filenames in papers/ covering this domain"
+      },
+      "verify_embedded": {
+        "type": "boolean",
+        "description": "True if .md has embedded S7 VERIFY section"
+      },
+      "verify_hexa": {
+        "type": ["string", "null"],
+        "description": "Filename of standalone verify_<domain>.hexa if it exists, null otherwise"
+      },
+      "last_updated": {
+        "type": "string",
+        "format": "date",
+        "description": "ISO date of last maturity assessment"
+      }
+    }
+  },
+
+  "tracking_record_examples": [
+    {
+      "domain": "fusion",
+      "sector": "energy",
+      "stage": 5,
+      "stage_name": "published",
+      "files": ["CLAUDE.md", "fusion.md", "verify_fusion.hexa"],
+      "grade": "[10]",
+      "products": ["P-001", "P-002", "P-003", "P-004"],
+      "papers": ["n6-fluid-dynamics-paper.md"],
+      "verify_embedded": true,
+      "verify_hexa": "verify_fusion.hexa",
+      "last_updated": "2026-04-16"
+    },
+    {
+      "domain": "ceramics",
+      "sector": "materials",
+      "stage": 3,
+      "stage_name": "verified",
+      "files": ["CLAUDE.md", "ceramics.md"],
+      "grade": "[10]",
+      "products": [],
+      "papers": [],
+      "verify_embedded": true,
+      "verify_hexa": null,
+      "last_updated": "2026-04-16"
+    },
+    {
+      "domain": "ai-interpretability",
+      "sector": "cognitive",
+      "stage": 1,
+      "stage_name": "discovered",
+      "files": ["CLAUDE.md", "ai-interpretability.md"],
+      "grade": null,
+      "products": [],
+      "papers": [],
+      "verify_embedded": false,
+      "verify_hexa": null,
+      "last_updated": "2026-04-16"
+    },
+    {
+      "domain": "autonomous-driving",
+      "sector": "infra",
+      "stage": 4,
+      "stage_name": "productized",
+      "files": ["CLAUDE.md", "autonomous-driving.md"],
+      "grade": "[10]",
+      "products": ["P-029"],
+      "papers": [],
+      "verify_embedded": true,
+      "verify_hexa": null,
+      "last_updated": "2026-04-16"
+    },
+    {
+      "domain": "quantum-computing",
+      "sector": "physics",
+      "stage": 5,
+      "stage_name": "published",
+      "files": ["CLAUDE.md", "quantum-computing.md"],
+      "grade": "[10]",
+      "products": ["P-057"],
+      "papers": ["n6-quantum-computing-paper.md"],
+      "verify_embedded": true,
+      "verify_hexa": null,
+      "last_updated": "2026-04-16"
+    }
+  ],
+
+  "pipeline_operations": {
+    "assess": "Scan domain directory -> check files/sections/grades -> assign stage",
+    "promote": "When criteria for next stage met, update stage + last_updated",
+    "batch_scan": "nexus scan <sector> to assess all domains in a sector",
+    "gate_check": "Before promotion: verify all criteria for target stage are met",
+    "report": "Generate distribution table by sector x stage"
+  }
+}

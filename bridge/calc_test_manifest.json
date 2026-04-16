@@ -1,0 +1,402 @@
+{
+  "_doc": "ENG-P1-3: Bridge calc 20-tool test manifest. 20 calc 도구 연기 테스트 감사 결과.",
+  "generated": "2026-04-16",
+  "task_id": "ENG-P1-3",
+  "runtime": {
+    "binary": "$NEXUS/shared/bin/hexa",
+    "binary_version": "hexa 0.1.0-stage1",
+    "invocation_pattern": "hexa run bridge/origins/<origin>/main.hexa",
+    "note": "HEXA-ONLY (Rust/Python deprecated 2026-04-12). No Cargo.toml, no cargo test."
+  },
+  "tools": [
+    {
+      "name": "optics",
+      "origin": "bridge/origins/optics-calc/main.hexa",
+      "command": "nexus calc optics",
+      "test_command": "hexa run bridge/origins/optics-calc/main.hexa",
+      "lines_of_code": 171,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 90,
+        "expected_contains": ["N6 OPTICS CALCULATOR", "EXACT=", "LENS DESIGN"],
+        "test_args": ["--lens", "--telescope", "--tokamak-optics"]
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "3 sub-modes: lens, telescope, tokamak-optics. Default runs all."
+    },
+    {
+      "name": "energy",
+      "origin": "bridge/origins/energy-calc/main.hexa",
+      "command": "nexus calc energy",
+      "test_command": "hexa run bridge/origins/energy-calc/main.hexa",
+      "lines_of_code": 228,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 100,
+        "expected_contains": ["N6 Energy Strategy Calculator", "Shockley-Queisser", "Battery Voltage", "Hydrogen Energy Density"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Covers BT-30 solar, BT-35/43 battery, BT-38 hydrogen, BT-29 IEEE519, BT-36 grand chain."
+    },
+    {
+      "name": "gpu-arch",
+      "origin": "bridge/origins/gpu-arch-calc/main.hexa",
+      "command": "nexus calc gpu-arch",
+      "test_command": "hexa run bridge/origins/gpu-arch-calc/main.hexa",
+      "lines_of_code": 386,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 240,
+        "expected_contains": ["N6 GPU/HBM Architecture Calculator", "sigma(6)=12"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "GPU SM, HBM architecture constants verification."
+    },
+    {
+      "name": "crypto",
+      "origin": "bridge/origins/crypto-calc/main.hexa",
+      "command": "nexus calc crypto",
+      "test_command": "hexa run bridge/origins/crypto-calc/main.hexa",
+      "lines_of_code": 182,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 60,
+        "expected_contains": ["N6 Crypto", "BT-53", "BT-41"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Crypto/blockchain n=6 universality. P1 CHIP-P1-4 integrated."
+    },
+    {
+      "name": "quantum",
+      "origin": "bridge/origins/quantum-calc/main.hexa",
+      "command": "nexus calc quantum",
+      "test_command": "hexa run bridge/origins/quantum-calc/main.hexa",
+      "lines_of_code": 272,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 120,
+        "expected_contains": ["quantum-calc", "BT-41", "BT-49", "BT-92", "EXACT:", "TOTAL:"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "QEC, kissing numbers, Bott periodicity. Self-grading EXACT/CLOSE/WEAK/FAIL."
+    },
+    {
+      "name": "carbon-capture",
+      "origin": "bridge/origins/carbon-capture-calc/main.hexa",
+      "command": "nexus calc carbon-capture",
+      "test_command": "hexa run bridge/origins/carbon-capture-calc/main.hexa",
+      "lines_of_code": 559,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 150,
+        "expected_contains": ["HEXA-CCUS", "Carbon Capture"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": true,
+      "test_exists": false,
+      "notes": "Parse errors at line 223 (FloatLit in comparison). Still produces output (~180 lines). Needs hexa parser fix."
+    },
+    {
+      "name": "semiconductor",
+      "origin": "bridge/origins/semiconductor-calc/main.hexa",
+      "command": "nexus calc semiconductor",
+      "test_command": "hexa run bridge/origins/semiconductor-calc/main.hexa",
+      "lines_of_code": 151,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 55,
+        "expected_contains": ["N6 Semiconductor Calculator", "BT-28", "BT-37"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "BT-28 GPU SM, BT-37 process nodes, BT-55 HBM, BT-69 chiplet, BT-75 HBM interface. P1 CHIP-P1-4."
+    },
+    {
+      "name": "chip-n6",
+      "origin": "bridge/origins/chip-n6-calc/main.hexa",
+      "command": "nexus calc chip-n6",
+      "test_command": "hexa run bridge/origins/chip-n6-calc/main.hexa",
+      "lines_of_code": 600,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 350,
+        "expected_contains": ["N6 CHIP PARAMETER GENERATOR", "ANIMA-HEXA", "HEXA-OMEGA", "HEXA-EDGE", "GRAND TOTAL"],
+        "test_args": ["anima", "omega", "edge", "custom 200"]
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Largest calc tool. 3 chip profiles (ANIMA/OMEGA/EDGE) + custom TDP mode. P1 CHIP-P1-4."
+    },
+    {
+      "name": "chip-power",
+      "origin": "bridge/origins/chip-power-calc/main.hexa",
+      "command": "nexus calc chip-power",
+      "test_command": "hexa run bridge/origins/chip-power-calc/main.hexa",
+      "lines_of_code": 219,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 280,
+        "expected_contains": ["N6 Chip Power", "Egyptian Fraction", "1/2 + 1/3 + 1/6 = 1"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Egyptian fraction power distribution simulator."
+    },
+    {
+      "name": "chip-perf",
+      "origin": "bridge/origins/chip-perf-calc/main.hexa",
+      "command": "nexus calc chip-perf",
+      "test_command": "hexa run bridge/origins/chip-perf-calc/main.hexa",
+      "lines_of_code": 805,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 460,
+        "expected_contains": ["N6 Chip Performance Estimator", "Roofline Model"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Roofline model perf estimator. Largest by LOC (805)."
+    },
+    {
+      "name": "interconnect",
+      "origin": "bridge/origins/interconnect-calc/main.hexa",
+      "command": "nexus calc interconnect",
+      "test_command": "hexa run bridge/origins/interconnect-calc/main.hexa",
+      "lines_of_code": 308,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 140,
+        "expected_contains": ["N6 INTERCONNECT CALCULATOR", "PCIe", "NVLink"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "PCIe, UCIe, CXL, HBM interface, NVLink, DDR verification. P1 CHIP-P1-4."
+    },
+    {
+      "name": "photonic-energy",
+      "origin": "bridge/origins/photonic-energy-calc/main.hexa",
+      "command": "nexus calc photonic-energy",
+      "test_command": "hexa run bridge/origins/photonic-energy-calc/main.hexa",
+      "lines_of_code": 319,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 70,
+        "expected_contains": ["Photonic-Energy Bridge Calculator", "n=6 thermal-power"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Photonic vs electronic computing power savings."
+    },
+    {
+      "name": "tokamak-shape",
+      "origin": "bridge/origins/tokamak-shape/main.hexa",
+      "command": "nexus calc tokamak-shape",
+      "test_command": "hexa run bridge/origins/tokamak-shape/main.hexa",
+      "lines_of_code": 274,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 90,
+        "expected_contains": ["Tokamak Shape Optimizer"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": true,
+      "test_exists": false,
+      "notes": "Parse errors at line 55 (FloatLit in comparison). Still produces partial output (~104 lines). Needs hexa parser fix."
+    },
+    {
+      "name": "kstar",
+      "origin": "bridge/origins/kstar-calc/main.hexa",
+      "command": "nexus calc kstar",
+      "test_command": "hexa run bridge/origins/kstar-calc/main.hexa",
+      "lines_of_code": 486,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 230,
+        "expected_contains": ["KSTAR", "Korea Superconducting Tokamak"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "KSTAR tokamak deep n=6 analysis."
+    },
+    {
+      "name": "nobel",
+      "origin": "bridge/origins/nobel-calc/main.hexa",
+      "command": "nexus calc nobel",
+      "test_command": "hexa run bridge/origins/nobel-calc/main.hexa",
+      "lines_of_code": 583,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 200,
+        "expected_contains": ["N6 Nobel-Level Constants Calculator", "BT-20", "BT-21", "BT-22"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Gauge couplings (BT-20), PMNS mixing (BT-21), inflation (BT-22)."
+    },
+    {
+      "name": "consciousness",
+      "origin": "bridge/origins/consciousness-calc/main.hexa",
+      "command": "nexus calc consciousness",
+      "test_command": "hexa run bridge/origins/consciousness-calc/main.hexa",
+      "lines_of_code": 169,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 55,
+        "expected_contains": ["N6 CONSCIOUSNESS CHIP CALCULATOR", "PureField", "10D Vector"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Consciousness chip architecture parameters."
+    },
+    {
+      "name": "dimension-perception",
+      "origin": "bridge/origins/dimension-perception-calc/main.hexa",
+      "command": "nexus calc dimension-perception",
+      "test_command": "hexa run bridge/origins/dimension-perception-calc/main.hexa",
+      "lines_of_code": 192,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 45,
+        "expected_contains": ["N6 DIMENSION PERCEPTION CALCULATOR"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Human visual/spatial perception dimension axes vs n=6 constants."
+    },
+    {
+      "name": "fusion",
+      "origin": "bridge/origins/fusion-calc/main.hexa",
+      "command": "nexus calc fusion",
+      "test_command": "hexa run bridge/origins/fusion-calc/main.hexa",
+      "lines_of_code": 254,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 95,
+        "expected_contains": ["N6 FUSION CALCULATOR"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Nuclear fusion parameter verification."
+    },
+    {
+      "name": "gut",
+      "origin": "bridge/origins/gut-calc-rust/main.hexa",
+      "command": "nexus calc gut",
+      "test_command": "hexa run bridge/origins/gut-calc-rust/main.hexa",
+      "lines_of_code": 202,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 90,
+        "expected_contains": ["N6 GUT Gauge Group Calculator", "Grand Unified Theory"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "GUT hierarchy verification vs n=6 arithmetic."
+    },
+    {
+      "name": "cross-dse",
+      "origin": "bridge/origins/cross-dse-calc/main.hexa",
+      "command": "nexus calc cross-dse",
+      "test_command": "hexa run bridge/origins/cross-dse-calc/main.hexa",
+      "lines_of_code": 419,
+      "smoke_test": {
+        "expected_exit_code": 0,
+        "expected_output_lines_min": 30,
+        "expected_contains": ["Cross-DSE Analysis"],
+        "test_args": []
+      },
+      "status": "exists",
+      "parse_errors": false,
+      "test_exists": false,
+      "notes": "Cross-domain pair compatibility scoring. Smallest output (37 lines)."
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "existing": 20,
+    "missing": 0,
+    "tested": 0,
+    "passing": 0,
+    "failing": 0,
+    "with_parse_errors": 2,
+    "parse_error_tools": ["carbon-capture", "tokamak-shape"],
+    "total_lines_of_code": 7269,
+    "avg_output_lines": 167,
+    "has_ci_integration": false,
+    "has_test_files": false,
+    "benchmark_stub": true,
+    "grow_tests_stub": true
+  },
+  "ci_status": {
+    "current_ci_yml": ".github/workflows/ci.yml",
+    "rust_job_status": "stale (references tools/nexus Cargo.toml which no longer exists)",
+    "hexa_test_job": "missing (no HEXA smoke test job in CI)",
+    "recommended_action": "Add hexa-smoke-tests job to ci.yml that runs all 20 calc tools via hexa run and checks exit code + expected_contains strings"
+  },
+  "parse_error_details": {
+    "carbon-capture-calc": {
+      "file": "bridge/origins/carbon-capture-calc/main.hexa",
+      "error": "Parse error at 223:39: expected identifier, got FloatLit ('0.20')",
+      "cause": "hexa 0.1.0-stage1 parser does not support float literals in comparison context",
+      "workaround": "Replace `< 0.20` with `< float_var` where float_var = 0.20",
+      "output_lines": 180,
+      "partial_execution": true
+    },
+    "tokamak-shape": {
+      "file": "bridge/origins/tokamak-shape/main.hexa",
+      "error": "Parse error at 55:28: expected identifier, got FloatLit ('0.01')",
+      "cause": "Same hexa float literal comparison parser limitation",
+      "workaround": "Same pattern: extract float to named variable",
+      "output_lines": 104,
+      "partial_execution": true
+    }
+  },
+  "recommendations": [
+    "1. (P0) 2 parse error 도구(carbon-capture, tokamak-shape) float 리터럴 비교문 수정 → 변수 추출 패턴 적용",
+    "2. (P1) CI ci.yml 에 hexa-smoke-tests job 추가: 20 도구 exit code 0 + expected_contains 문자열 검증",
+    "3. (P1) benchmark_all_tools.hexa STUB → 실제 구현 (도구별 hexa run + 시간 측정 + 출력 라인 검증)",
+    "4. (P2) grow_tests.hexa STUB → 실제 구현 (테스트 부족 모듈 자동 보강)",
+    "5. (P2) chip-n6 sub-mode 테스트 (anima, omega, edge, custom 200) 개별 검증",
+    "6. (P2) optics sub-mode 테스트 (--lens, --telescope, --tokamak-optics) 개별 검증",
+    "7. (P3) self-grading 도구(quantum-calc 등) EXACT rate regression 테스트 추가"
+  ]
+}

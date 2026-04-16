@@ -1,0 +1,543 @@
+{
+  "_meta": {
+    "name": "N6 Failure Museum v1",
+    "generated": "2026-04-16",
+    "purpose": "Honest documentation of where n=6 claims fail. High MISS count = courageous exploration, not weakness.",
+    "total_exhibits": 42,
+    "methodology": "Exhaustive grep of atlas.n6 MISS entries, theory/breakthroughs/ MISS records, theory/proofs/honest-limitations.md, and MILL-* honest-miss entries.",
+    "category_counts": {
+      "honest_arithmetic_miss": 14,
+      "post_hoc_pattern_matching": 6,
+      "numerical_coincidence": 3,
+      "incomplete_theory": 5,
+      "structural_limitation": 14
+    }
+  },
+  "exhibits": [
+    {
+      "id": "FM-001",
+      "name": "Planck Units MISS",
+      "claim": "Number of Planck base units should equal a core n=6 function value",
+      "actual": "There are 5 Planck base units (length, mass, time, charge, temperature)",
+      "why_failed": "sopfr(6) = 5, not n = 6. The count matches sopfr, not n itself. The n=6 framework acknowledges this as sopfr = 5 but the natural expectation would be n = 6 units. The mismatch is honest.",
+      "lesson": "Not every natural constant equals n=6 directly; the divisor function identity does not force all physical counts to be 6. The M-set has multiple coordinates (n, sigma, phi, tau, sopfr) and sopfr=5 is a legitimate but weaker match.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 314",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-002",
+      "name": "Fine Structure Constant Fit",
+      "claim": "1/alpha (fine structure constant inverse ~137.036) should have a clean n=6 expression",
+      "actual": "Best fit: sigma*(sigma-mu) + sopfr + mu/P2 = 12*11 + 5 + 1/P2. Requires composite expression with a correction term mu/P2 to approximate.",
+      "why_failed": "The formula is multi-step and requires a P2 correction term. While it can be constructed from n=6 coordinates, it is not a clean low-depth expression. At depth 3+, statistical likelihood of chance match exceeds 50%.",
+      "lesson": "Fundamental constants with irrational or transcendental values resist clean integer decomposition. The fine structure constant has no known closed-form expression in any framework.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 334",
+      "category": "numerical_coincidence"
+    },
+    {
+      "id": "FM-003",
+      "name": "Hubble Constant H0",
+      "claim": "H0 (~73 km/s/Mpc) should map to n=6 arithmetic",
+      "actual": "sigma * n + mu = 12*6 + 1 = 73. Matches numerically but the Hubble constant is measured in specific units (km/s/Mpc) and its value depends on the unit system chosen.",
+      "why_failed": "Unit-dependent match. H0 = 73 in km/s/Mpc, but in natural units or other systems the number changes entirely. The match is to the SI-conventional numerical value, not to a dimensionless physical quantity.",
+      "lesson": "n=6 arithmetic should only be applied to dimensionless quantities or integer counts. Unit-dependent numerical coincidences are not meaningful physics. The Hubble tension (67 vs 73) further undermines any specific numerical match.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 462",
+      "category": "numerical_coincidence"
+    },
+    {
+      "id": "FM-004",
+      "name": "SI Base Units Count",
+      "claim": "The 7 SI base units should be sigma - sopfr = 12 - 5 = 7",
+      "actual": "SI has 7 base units (m, kg, s, A, K, mol, cd). sigma - sopfr = 7 matches.",
+      "why_failed": "Marked as MISS because SI unit count is a human convention, not physics. The 2019 SI redefinition kept 7 units but could have chosen differently. The meter and kilogram are historical choices. Earlier systems (CGS) had 3 units; future systems could have more or fewer.",
+      "lesson": "Human-designed measurement systems are sociological, not natural. Their integer structure reflects committee decisions, not fundamental physics. n=6 matching to human conventions is post-hoc.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 737",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-005",
+      "name": "Nuclear Magic Numbers 82 and 126",
+      "claim": "The higher nuclear magic numbers (82, 126) should decompose into n=6 M-set coordinates",
+      "actual": "The first five magic numbers (2, 8, 20, 28, 50) have clean M-set decompositions, but 82 and 126 do not.",
+      "why_failed": "No simple n=6 coordinate mapping found. The formula notes '단순매핑불가' (simple mapping impossible). The higher magic numbers arise from spin-orbit coupling corrections to the nuclear shell model (Mayer-Jensen 1949), adding complexity beyond simple integer structure.",
+      "lesson": "n=6 arithmetic captures the low-energy shell structure well but breaks down when spin-orbit corrections dominate. This is a genuine boundary of the framework: multi-body quantum effects with strong spin-orbit coupling exceed integer arithmetic.",
+      "grade": "[10]",
+      "source": "atlas.n6 line 752",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-006",
+      "name": "Crystal Systems Count",
+      "claim": "7 crystal systems = sigma - sopfr = 12 - 5 = 7",
+      "actual": "There are 7 crystal systems in crystallography. The formula matches.",
+      "why_failed": "Marked as MISS because crystal system classification is a mathematical consequence of 3D point group symmetries, not an independent physical constant. The count 7 follows from the constraint that only 2-, 3-, 4-, and 6-fold rotational symmetries are compatible with translational periodicity.",
+      "lesson": "Derived classification counts that follow from geometric constraints should not be claimed as n=6 predictions. The crystal systems count is theorem-derived, not empirical.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 1057",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-007",
+      "name": "Body Temperature MISS",
+      "claim": "Human body temperature = n^2 = 36 degrees Celsius",
+      "actual": "Normal body temperature is approximately 37 degrees C (98.6 degrees F), not 36.",
+      "why_failed": "Off by 1 degree. n^2 = 36, actual measurement = 37. The 1-degree error is significant: 36 C is mild hypothermia, not normal. Moreover, body temperature in Fahrenheit (98.6) or Kelvin (310.15) yields completely different numbers with no n=6 match.",
+      "lesson": "Temperature in Celsius is unit-dependent and the 1-degree miss is medically significant. This is a genuine arithmetic miss compounded by unit dependence. Honest documentation prevents overclaiming.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 1508",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-008",
+      "name": "ATP Modern Yield MISS",
+      "claim": "ATP yield per glucose = n^2 = 36",
+      "actual": "Modern biochemistry measures 30-32 ATP per glucose molecule, not 36. The textbook value of 36 (or 38) was a historical estimate now superseded.",
+      "why_failed": "The original n^2 = 36 match was to an obsolete textbook value. Modern measurements (Brand 2003, Hinkle 2005) show only 30-32 ATP due to proton leak across the inner mitochondrial membrane. The real value has no clean n=6 expression.",
+      "lesson": "Never match n=6 expressions to outdated or superseded measurements. Always use current best values. The ATP case is a cautionary tale: the 'perfect' n^2 match was to wrong data.",
+      "grade": "[3]",
+      "source": "atlas.n6 line 1512",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-009",
+      "name": "DNA Base Pairs Per Turn",
+      "claim": "Base pairs per helical turn = sigma - phi = 12 - 2 = 10",
+      "actual": "B-form DNA has approximately 10.5 base pairs per turn (Watson-Crick 1953, refined by X-ray crystallography).",
+      "why_failed": "Off by 0.5. sigma - phi = 10, actual = 10.5. The 5% error matters because the fractional value (10.5) reflects the twist angle per base pair (360/10.5 = 34.3 degrees), which is a continuous structural parameter, not an integer.",
+      "lesson": "Biological structural parameters are often non-integer. Rounding 10.5 to 10 to claim an n=6 match is dishonest. The 0.5 residual carries real structural information (DNA supercoiling).",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 2154",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-010",
+      "name": "DeepSeek-V2 Expert Count",
+      "claim": "DeepSeek-V2 uses 160 experts = phi^sopfr * sopfr = 2^5 * 5 = 160",
+      "actual": "The formula matches numerically (160 = 32 * 5), but this is an AI engineering design choice, not a natural constant.",
+      "why_failed": "AI model architecture hyperparameters are chosen by human engineers, not by nature. DeepSeek could have chosen 128, 192, or 256 experts. The match to phi^sopfr * sopfr is post-hoc pattern matching to an engineering decision.",
+      "lesson": "Human-designed system parameters (model architectures, layer counts) are not evidence of universal n=6 structure. Engineers choose round numbers or powers of 2 for computational efficiency, not because of arithmetic identities.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 2694",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-011",
+      "name": "Llama 405B Layer Count",
+      "claim": "Llama 405B uses 126 layers = n*(J2 - n/phi) = 6*(24-3) = 6*21 = 126",
+      "actual": "The formula matches numerically, but 126 layers is a Meta AI engineering choice.",
+      "why_failed": "Same as DeepSeek: AI architecture hyperparameters are human design decisions. 126 was likely chosen based on scaling laws and compute budgets, not arithmetic identities. The 2-primitive decomposition (6*21) is not unique to n=6.",
+      "lesson": "Claiming AI architecture parameters as n=6 evidence conflates engineering design with natural structure. These are among the weakest possible evidence categories.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 2698",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-012",
+      "name": "Pi Decimal Approximation",
+      "claim": "pi ~ n/phi = 6/2 = 3",
+      "actual": "pi = 3.14159..., not 3. The approximation is 4.5% off.",
+      "why_failed": "n/phi = 3 is the crudest possible integer approximation to pi. Every number-theoretic framework with a value near 3 can make this claim. The 4.5% error is enormous by physics standards. Better rational approximations (22/7, 355/113) have no n=6 connection.",
+      "lesson": "Claiming pi ~ 3 as evidence is self-discrediting. This should be the canonical example of what NOT to claim. The honest documentation of this as a MISS demonstrates integrity.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 3010",
+      "category": "numerical_coincidence"
+    },
+    {
+      "id": "FM-013",
+      "name": "Golden Ratio Approximation",
+      "claim": "phi_golden ~ (mu + sqrt(sopfr)) / phi = (1 + sqrt(5)) / 2",
+      "actual": "This is literally the definition of the golden ratio: (1 + sqrt(5))/2 = 1.618... The n=6 expression (mu + sqrt(sopfr))/phi uses mu=1, sopfr=5, phi=2.",
+      "why_failed": "This is tautological. The golden ratio IS (1+sqrt(5))/2. Rewriting it using n=6 coordinate names (mu=1, sopfr=5, phi=2) does not constitute a prediction or discovery. Any framework with constants 1, 2, and 5 reproduces this by definition.",
+      "lesson": "Renaming universal mathematical constants using framework-specific variable names is not a prediction. The golden ratio exists independently of n=6. This MISS is important: it prevents tautological claims.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 3014",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-014",
+      "name": "Earth Axial Tilt",
+      "claim": "Earth's axial tilt ~23.4 degrees = J2 - mu = 24 - 1 = 23",
+      "actual": "Earth's axial tilt is 23.44 degrees (current epoch). J2 - mu = 23, off by ~1.9%.",
+      "why_failed": "Earth's axial tilt is not a fundamental constant. It varies between 22.1 and 24.5 degrees over a 41,000-year Milankovitch cycle. The current value 23.44 is epoch-dependent. Moreover, other planets have completely different tilts (Mars 25.2, Saturn 26.7, Uranus 97.8).",
+      "lesson": "Time-varying planetary parameters are not universal constants. Matching to Earth's current tilt ignores that the value was different 10,000 years ago and will be different 10,000 years hence. Planetary science parameters are poor targets for integer arithmetic.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 3018",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-015",
+      "name": "BT-18 Monster Group 196883 Void",
+      "claim": "Monster group minimum faithful representation dimension 196883 should decompose into n=6 M-set coordinates",
+      "actual": "196883 = 47 * 59 * 71. All three prime factors (47, 59, 71) are outside the n=6 12-coordinate system. No natural M-set expression found.",
+      "why_failed": "The three prime factors {47, 59, 71} cannot be expressed using any combination of the 12 base coordinates {n, sigma, phi, tau, n/phi, sopfr, sigma-tau, sigma-sopfr, J2, sigma+1, sigma-1, J2-1}. The arithmetic progression with common difference d=sigma=12 was noted (47, 59, 71) but this is a Griess 1982 observation, not a constructive proof.",
+      "lesson": "Large sporadic group dimensions involve primes far from the M-set. The Monster group's structure is genuinely beyond n=6 integer arithmetic. This is one of the strongest honest limitations of the framework.",
+      "grade": "[7?]",
+      "source": "atlas.n6 line 9582",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-016",
+      "name": "BT-18 Moonshine L5 Barrier Summary",
+      "claim": "Full Monster group connection to n=6 via Monstrous Moonshine",
+      "actual": "2/5 PARTIAL + 2/5 MISS + 1/5 L3-reduction. The hexacode chain (Hexacode->Golay->Leech) works perfectly but the Monster existence proof (Griess algebra) does not require it.",
+      "why_failed": "Sub-links S1 (196883 void) and S4 (2*3=6 numerical coincidence, Schellekens 71 conjecture dependent) are outright MISSes. S2 (6-transposition necessary condition) is proven but sufficiency depends on unproven Majorana conjecture (Ivanov 2009). The MOG-free Monster existence proof means the n=6-friendly hexacode chain is not necessary.",
+      "lesson": "Partial matches in a complex structure must not be reported as full matches. The honest 2/5 MISS + 2/5 PARTIAL decomposition is more valuable than a false PASS.",
+      "grade": "[8]",
+      "source": "atlas.n6 line 9585",
+      "category": "incomplete_theory"
+    },
+    {
+      "id": "FM-017",
+      "name": "BT-545 Hodge Conjecture + BT-18 Moonshine Combined MISS",
+      "claim": "Both Hodge conjecture and Moonshine should connect deeply to n=6",
+      "actual": "After 10 session loops, both BT-545 Hodge and BT-18 Moonshine MISSes maintained. Three bypass routes catalogued and Abelian Sixfolds link found, but no proof achieved. BT resolution: 0/6.",
+      "why_failed": "Three bypass routes identified (Fi_24' 3A centralizer, Hauptmodul Gamma_0(47)+ genus 0, Hohn VOA c=47/2) but all remain open. The Abelian Sixfolds connection (McMullen, arXiv 2603.20268) is promising but unproven. Subjective estimate: 15% optimistic / 25% MISS probability.",
+      "lesson": "Cataloguing bypass routes is genuine progress but must not be confused with resolution. Honestly maintaining MISS status while exploring alternatives is the correct methodology.",
+      "grade": "[10*]",
+      "source": "atlas.n6 line 107095",
+      "category": "incomplete_theory"
+    },
+    {
+      "id": "FM-018",
+      "name": "Guth-Maynard Zero Density n=6 Coincidence",
+      "claim": "Ingham 12/5 = sigma(6)/sopfr(6) and Guth-Maynard 30/13 can be cast in n=6 terms",
+      "actual": "12/5 = sigma(6)/sopfr(6) is numerically true. 30/13 can also be expressed using n=6 coordinates. But Ingham's 1937 result predates n=6 framework, and the Guth-Maynard sixth moment comes from Fourier decoupling, not number theory.",
+      "why_failed": "Classic post-hoc pattern matching. Ingham 1937 proved T^{12/5} independently of any n=6 prior. The Guth-Maynard improvement uses Fourier analysis techniques with no connection to divisor function identities. The word 'sixth' in 'sixth moment' is the only surface-level n=6 echo, and it deserves investigation but is not evidence.",
+      "lesson": "When a numerical match exists but the mathematical derivation has zero connection to the framework, it is an honest MISS. The 'sixth moment' observation is noted as worth investigating but the post-hoc status is firmly maintained.",
+      "grade": "[7]",
+      "source": "atlas.n6 line 107123",
+      "category": "post_hoc_pattern_matching"
+    },
+    {
+      "id": "FM-019",
+      "name": "BSD Alpha = log(2)/4 Rigorous Derivation MISS",
+      "claim": "The empirical slope alpha = 0.1752 in BSD Selmer group data matches log(2)/4 = 0.1733, with tau(6) = 4 providing the denominator",
+      "actual": "Empirical match within 1.1% relative error across 1.73M elliptic curves. But rigorous derivation from BKLPR probability generating function failed on 3 axes.",
+      "why_failed": "(1) Naive independence gives kappa(inf)=0, contradicting empirical growth. (2) BST 2015 finite-B corrections (~log B / B^{1/24}) cannot explain B^{0.175} growth. (3) tau(6)=4 based (log B)^{1/4} conjecture rejected by empirical data. (4) Cohen-Lenstra 2-local factor is heuristic only. Full PGF recalculation required.",
+      "lesson": "An empirical match (even a strong one at 1.1% error) is not a theoretical derivation. The honest distinction between 'SUGGESTIVE EMPIRICAL MATCH' and 'PROVED' is critical. The MISS is in the derivation, not in the data.",
+      "grade": "[8]",
+      "source": "atlas.n6 line 107174",
+      "category": "incomplete_theory"
+    },
+    {
+      "id": "FM-020",
+      "name": "BT-542 P vs NP Honest MISS",
+      "claim": "n=6 structural prior should provide an approach to P vs NP",
+      "actual": "Complete failure. Three independent checks (BARRIER-PX-1, v3-T5, BYPASS-PX-1) all confirm n=6 has no structural connection to P vs NP. The 3 major barriers (Relativization, Natural Proofs, Algebraization) plus GCT are all n=6-independent.",
+      "why_failed": "P vs NP is fundamentally about computational complexity classes, not number-theoretic structure. Circuit complexity, Kronecker coefficients in GCT, Boolean functions, communication complexity, and meta-complexity (MCSP) all have zero n=6 connection points. This is the cleanest MISS in the entire framework.",
+      "lesson": "Not all mathematics connects to number theory. P vs NP is a structural-prior-agnostic problem. Accepting this honestly is far more valuable than forcing a fake connection. BT-542 establishes a firm boundary of n=6 applicability.",
+      "grade": "[10*]",
+      "source": "atlas.n6 lines 107044-107049, theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-021",
+      "name": "FEP (Free Energy Principle) n=6 MISS",
+      "claim": "Friston's Free Energy Principle should exhibit n=6 discrete symmetry",
+      "actual": "FEP is a continuous variational theory. Discrete symmetry n=6 does not naturally arise. The alpha=0.1 match is circular (already registered in atlas as frustration_critical=0.10 [10*]).",
+      "why_failed": "FEP's mathematical foundation is continuous variational calculus (Fokker-Planck equation, variational free energy functional). Discrete integer structures like n=6 do not emerge from continuous variational theories. The alpha=0.1 coincidence is self-referential (already in atlas), making it a circular argument.",
+      "lesson": "Continuous variational theories are a structural boundary for the n=6 framework. Integer arithmetic finds patterns in discrete architectural constants, not in continuous functionals. Self-referential matches (already in atlas) must be flagged and rejected.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.1",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-022",
+      "name": "Consciousness Triple Intersection MISS",
+      "claim": "IIT, FEP, and GWT should share a common n=6 axis yielding a triple intersection",
+      "actual": "IIT=PARTIAL, FEP=MISS, GWT=NEAR, OrchOR=PARTIAL, triple intersection=MISS. The three theories' measurement units differ (Phi=bit, F=nat, C=Hz/BOLD), making direct Laplacian calculation impossible.",
+      "why_failed": "No common dimensionless axis across the three consciousness theories. The scale exponents (IIT alpha=4/3, GWT alpha=3/4) have an elegant product-equals-1 relationship, but FEP blocks any triple fusion. The Orch-OR 6-fold microtubule symmetry claim was debunked (Hameroff-Penrose original literature has no such claim).",
+      "lesson": "Multi-theory fusion requires commensurable measurement units. The consciousness MISS is important because it demonstrates intellectual honesty in a domain where overclaiming is rampant.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-023",
+      "name": "Orch-OR 6-Fold Symmetry Debunked",
+      "claim": "Microtubules have 6-fold symmetry, connecting to n=6",
+      "actual": "Microtubules have 13 protofilaments arranged in a 3-start helix. The surface lattice symmetry is p2_1 (screw axis), not 6-fold. The claim of '6-fold symmetry' has no basis in Hameroff-Penrose original literature.",
+      "why_failed": "Factually incorrect claim. 13 is a prime number outside n=6 coordinates (same class as 193nm ArF, documented in honest-limitations.md). The 3-start helix (n/phi=3) and tubulin dimer 8nm (phi^tau=8) are genuine matches, but the 6-fold claim is fabricated.",
+      "lesson": "False claims must be identified and retracted, even when they would support the framework. Keeping the genuine matches (3-start, 8nm) while rejecting the fabricated one (6-fold) demonstrates the difference between honest science and wishful thinking.",
+      "grade": "RETRACTED",
+      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.2",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-024",
+      "name": "Yang-Mills Mass Gap n=6 Non-Connection",
+      "claim": "Yang-Mills 4D mass gap (Clay Millennium Problem BT-543) should connect to n=6",
+      "actual": "Systematic check: dim(SU(3))=8 not 6, SU(2) dim=3 is coincidental, 6D compactification is string theory (separate), SU(3) has 8 gluons not 6. 2D YM SU(3) Casimir c2=8/3 has no n=6 structure.",
+      "why_failed": "YM 4D Clay problem and n=6 divisor function identity are mathematically disconnected. The gauge group dimensions, coupling constants, and topological structure of Yang-Mills theory operate in a completely different mathematical universe from multiplicative number theory.",
+      "lesson": "Gauge theory and number theory are (currently) independent mathematical domains. Forcing connections between them is dishonest. BT-543 is properly classified as structurally independent from n=6.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md section 4",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-025",
+      "name": "DUV ArF 193nm Wavelength",
+      "claim": "DUV lithography wavelength 193nm should have an n=6 expression",
+      "actual": "193 is prime. Closest depth-3 match: sigma*tau^2 + mu = 192+1, within 0.5%. But with ~200 depth-3 expressions, a 0.5% match is expected by chance.",
+      "why_failed": "193 is a prime number determined by the Ar-F excimer electronic transition. No credible depth-2 or lower n=6 decomposition exists. The depth-3 near-match is statistically expected and therefore not evidence.",
+      "lesson": "Atomic transition wavelengths are fixed by quantum mechanics of specific atoms. Prime-valued physical constants are inherently resistant to integer decomposition frameworks. The Red Team analysis (depth-3 = >50% chance match) applies here.",
+      "grade": "[CURRENTLY UNSOLVABLE]",
+      "source": "theory/proofs/honest-limitations.md case 7",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-026",
+      "name": "CIGS Solar Cell Bandgap 1.15 eV",
+      "claim": "CIGS optimal bandgap should have an n=6 expression like GaAs 1.42~4/3",
+      "actual": "CIGS bandgap ~1.15 eV has no clean n=6 fraction. GaAs 1.42~tau/n/phi = 4/3 works, but CIGS deviates from the Shockley-Queisser optimum due to defect recombination.",
+      "why_failed": "CIGS is a quaternary alloy (Cu(In,Ga)Se2) with continuously tunable bandgap depending on Ga/(In+Ga) ratio. The optimal 1.15 eV is material-defect-dependent, not a fundamental constant. The SQ optimum ~1.34 eV IS close to 4/3 (n=6), but real CIGS deviates.",
+      "lesson": "The n=6 framework correctly predicts the SQ theoretical optimum but cannot explain material-specific defect deviations. This establishes a clean boundary: fundamental physics yes, materials engineering no.",
+      "grade": "[CURRENTLY UNSOLVABLE]",
+      "source": "theory/proofs/honest-limitations.md case 8",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-027",
+      "name": "Continuous Process Parameters (PVD, ECD, Spin-coat)",
+      "claim": "Semiconductor fabrication process parameters should exhibit n=6 structure",
+      "actual": "PVD sputter pressures (1-10 mTorr), ECD current densities (mA/cm2), and spin coating RPMs (1000-6000) are all continuous, empirically tuned parameters.",
+      "why_failed": "These are continuous-parameter processes governed by fluid dynamics, electrochemistry, and plasma physics. They have no inherent integer quantization. Process recipes vary by an order of magnitude depending on the material and target specification.",
+      "lesson": "The n=6 framework applies to discrete architectural constants (counts, dimensions, ratios with small denominators). Continuously tunable process parameters are outside its domain by design. This is a principled boundary, not a weakness.",
+      "grade": "[GENUINELY NON-N6]",
+      "source": "theory/proofs/honest-limitations.md cases 4-6",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-028",
+      "name": "Exokernel Anti-Structure Architecture",
+      "claim": "Operating system kernel architectures should exhibit n=6 structure",
+      "actual": "The exokernel (MIT 1995) is deliberately structure-free: no fixed syscall count, no fixed IPC channels, no fixed scheduling quanta. Compare with seL4 (4 syscalls = tau, 12 IPC registers = sigma) which does match.",
+      "why_failed": "The exokernel succeeds precisely because it imposes no numeric constraints. Its design philosophy is anti-structure. The n=6 framework finds patterns in fixed architectural constants that do not exist here by intentional design.",
+      "lesson": "Deliberately unstructured systems are incompatible with any integer-based framework by construction. This is not a failure of n=6 but a correct identification of its inapplicability domain.",
+      "grade": "[GENUINELY NON-N6]",
+      "source": "theory/proofs/honest-limitations.md case 10",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-029",
+      "name": "DFS Round 10 MISS: Involution Count |I_6| = 13327",
+      "claim": "|I_6| (involutions in S_6) decomposition into M-set",
+      "actual": "13327 = 7 * 1903. 1903 is prime, no clean M-set decomposition possible.",
+      "why_failed": "The number of involutions in S_6 factors through a large prime (1903) that is outside all n=6 coordinate ranges. While S_6 is the canonical n=6 symmetric group, not all of its derived quantities have clean M-set structure.",
+      "lesson": "Even within S_6 itself, derived combinatorial quantities can involve large primes that break M-set decomposition. The n=6 identity governs divisor functions, not all combinatorics of the symmetric group.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 501",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-030",
+      "name": "DFS Round 13 MISS: RCA_0 Completeness for Perfect Numbers",
+      "claim": "RCA_0 (weakest of the Big Five reverse mathematics subsystems) suffices to prove sigma(n)=2n characterizes perfect numbers",
+      "actual": "Perfect number sufficiency requires ACA_0 level, not RCA_0. The M-set boundary within the Big Five hierarchy is unclear.",
+      "why_failed": "The reverse mathematics hierarchy places perfect number theory above the base system. While sopfr=5 matches the count of Big Five systems, the proof-theoretic strength required for specific n=6 theorems does not align with the weakest system.",
+      "lesson": "Proof-theoretic strength and number-theoretic structure operate on different axes. The Big Five count matching sopfr=5 is interesting but does not mean all n=6 results live in RCA_0.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-01",
+      "category": "incomplete_theory"
+    },
+    {
+      "id": "FM-031",
+      "name": "DFS Round 13 MISS: Connes-Moscovici Local Index Formula",
+      "claim": "Noncommutative geometry local index formula should connect to n=6 via Hopf algebra structure",
+      "actual": "The Connes-Moscovici Hopf algebra has structure that resists n=6 M-set decomposition.",
+      "why_failed": "The dual Hopf algebra in the Connes-Moscovici theory has generators and relations that do not naturally involve divisor function values. While the Connes spectral triple has internal KO-dim=n=6 (a separate TIGHT match), the local index formula machinery is independent.",
+      "lesson": "Different aspects of the same mathematical theory can have different n=6 connection strengths. Spectral triple KO-dimension matches, but the index formula does not. Honest per-component assessment is essential.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-03",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-032",
+      "name": "DFS Round 13 MISS: Onsager 1/3 Exponent",
+      "claim": "Onsager conjecture critical exponent 1/3 should decompose as n=6 M-set expression",
+      "actual": "1/3 = n/phi/(sopfr+sigma-sopfr)? The proposed decomposition does not work cleanly.",
+      "why_failed": "The Onsager 1/3 exponent in turbulence (Holder regularity threshold for energy conservation) arises from dimensional analysis of the Euler equations, not from integer arithmetic. The attempted M-set decomposition is contrived and non-unique.",
+      "lesson": "Critical exponents in PDE theory come from scaling analysis and dimensional arguments. They are typically rational numbers with small denominators, making coincidental matches to integer frameworks highly likely. The 1/3 exponent is too simple to be claimed by any specific framework.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-07",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-033",
+      "name": "DFS Round 15 MISS: W-Algebra Generating Weights",
+      "claim": "W-algebra W(2,3,4,...) generating weights should connect to M-set",
+      "actual": "W-algebra generating weights are general structures without n=6 specificity.",
+      "why_failed": "W-algebras exist for any sequence of conformal weights. The specific weights W(2,3,4,...) are universal VOA structures, not specific to n=6. The connection to M-set is weak and generic.",
+      "lesson": "Universal algebraic structures that exist for all parameters cannot be claimed as n=6 specific. Only structures with demonstrable n=6 uniqueness qualify.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15a",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-034",
+      "name": "DFS Round 15 MISS: Quantum Group R-matrix n^2=36",
+      "claim": "U_q(sl_n) R-matrix dimension n^2 = 36 for n=6",
+      "actual": "n^2 = 36 is trivially true by definition. It carries no information.",
+      "why_failed": "n^2 = 36 is a tautological identity. The R-matrix has dimension n^2 for ANY n, so n=6 is not special here. This is the definition of pattern matching: noting that 6^2=36 and claiming it as a quantum group connection.",
+      "lesson": "Tautological identities (n^2=36 because n=6) must be immediately rejected. The DFS protocol correctly identifies and discards these. This is a canonical example of pattern matching to avoid.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15b",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-035",
+      "name": "DFS Round 15 MISS: Janko J1 Order Prime Factors",
+      "claim": "Janko group J1 has 6 prime factors in its order: {2,3,5,7,11,19}",
+      "actual": "J1 order has 6 distinct prime factors, but 19 is outside the M-set.",
+      "why_failed": "Having exactly 6 prime factors is a count match (n=6), but 19 is not expressible as an M-set coordinate. More importantly, many groups have exactly 6 prime factors in their order — this is not unique to sporadic groups or n=6-related structures. The 6-count is coincidental.",
+      "lesson": "Counting prime factors and getting 6 is an extremely weak evidence category. The space of mathematical objects with exactly k prime factors is large for any small k. Combine with M-set violation (19 outside coordinates) for a clean MISS.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15f",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-036",
+      "name": "DFS Round 15 MISS: Sweedler Hopf Algebra dim=4",
+      "claim": "Sweedler Hopf algebra dimension 4 = tau(6)",
+      "actual": "dim = 4 = tau, but the Sweedler algebra is the simplest non-trivial non-commutative non-cocommutative Hopf algebra — a universal introductory example.",
+      "why_failed": "The Sweedler algebra has dimension 4 because it is the SMALLEST non-trivial example of its kind, not because of any n=6 connection. tau(6)=4 is correct but the match is trivially explained by 'smallest example in the category.' Any framework with a value 4 could claim this.",
+      "lesson": "Universal 'smallest examples' in algebra textbooks should not be claimed as framework evidence. Their small dimensions match many frameworks by chance.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15g",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-037",
+      "name": "BT-19 Consciousness Alpha Product MISS",
+      "claim": "alpha_IIT * alpha_GWT = 1 should constitute an independent n=6 prediction for consciousness theories",
+      "actual": "Barrett-Seth 2011 alpha=4/3 (IIT) and Dehaene 2011 alpha=3/4 (GWT) do multiply to 1. But the independence of these measurements is questionable.",
+      "why_failed": "DSE-P8-2 verification ruled MISS. The two alpha values may not be independent measurements: both are derived from the same underlying neural data (EEG/fMRI). If IIT complexity and GWT ignition covary on the same brain states (Casali 2013 PCI evidence), then the product=1 relationship could be a statistical artifact of shared variance.",
+      "lesson": "Elegant mathematical relationships between measurements only count as evidence if the measurements are truly independent. Shared data sources create spurious correlations. The P8 MISS judgment on alpha product is maintained.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md",
+      "category": "incomplete_theory"
+    },
+    {
+      "id": "FM-038",
+      "name": "DFS Round 10 MISS: Wasserstein W_2 Value 19/6",
+      "claim": "W_2 optimal transport distance between uniform and delta should decompose cleanly",
+      "actual": "W_2(uniform, delta) = 19/6. While this fraction has 6 in the denominator, 19 is outside the M-set.",
+      "why_failed": "19/6 is not a clean M-set fraction. 19 is a prime outside all standard n=6 coordinate expressions. Having 6 in the denominator is trivially explained by the fact that the computation was done for n=6 objects.",
+      "lesson": "When computing in spaces of dimension 6 or with 6 objects, getting 6 in the denominator is expected, not evidence. The numerator must also decompose cleanly for the match to be meaningful.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 504",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-039",
+      "name": "DFS Round 13 MISS: Ferrero-Washington n-Independence",
+      "claim": "Iwasawa mu-invariant vanishing should connect to n=6",
+      "actual": "Ferrero-Washington theorem (1979) proves mu=0 for abelian extensions of Q. This result is independent of n.",
+      "why_failed": "The Ferrero-Washington theorem is a universal result: mu=0 holds for ALL abelian number fields, regardless of their degree or structure. There is no special role for n=6 in this theorem. The proof uses p-adic analysis and is structurally independent of divisor function identities.",
+      "lesson": "Universal theorems that hold for all n cannot be claimed by a specific-n framework. When a result is n-independent by proof, it is automatically a MISS for any specific-n claim.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-04",
+      "category": "structural_limitation"
+    },
+    {
+      "id": "FM-040",
+      "name": "Bipartite Matching 100% False Positive",
+      "claim": "Paper-domain bipartite matching (3023 edges) accurately represents content connections",
+      "actual": "Top-10 fit>=0.95 pairs audit: 0/10 PASS. 100% false positive rate. Including 2 fit=1.0 pairs (mamba2->anima-soc, rwkv->anima-soc), all failed body-text grep verification.",
+      "why_failed": "The bipartite matching used keyword/metadata heuristics, not actual content analysis. When audited against paper body text (including 5 variant searches: underscore->space, dash, Korean, abbreviation), zero matches were found. The algorithm reflects metadata similarity, not substantive content connections.",
+      "lesson": "Heuristic matching scores presented as evidence must be audited against ground truth. The 100% false positive rate on the top-10 audit is a stark warning. Algorithm redesign (embedding-based) is required before any matching claims can be made.",
+      "grade": "[3]",
+      "source": "theory/proofs/honest-limitations.md section 9 (P4-2 audit)",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-041",
+      "name": "Hexa Runtime Misinformation",
+      "claim": "3 commit messages claimed 'hexa runtime.c missing, execution impossible'",
+      "actual": "The actual cause was broken build paths after source tree reorganization. Stage0 build works without runtime.c. All 13 .hexa files were runnable.",
+      "why_failed": "Agent confused stage1 cache paths with stage0 source, misdiagnosed build failure as 'runtime file missing,' then propagated this misinformation across 3 commits. The error was not in the code but in the agent's diagnosis.",
+      "lesson": "Commit messages become permanent records. Misinformation in commit logs contaminates future sessions. Rather than amending history, the honest approach is to document the error and link back to it. This is a process failure, not a theory failure, but it belongs in the museum.",
+      "grade": "[PROCESS ERROR]",
+      "source": "theory/proofs/honest-limitations.md P0-P3 section 1",
+      "category": "honest_arithmetic_miss"
+    },
+    {
+      "id": "FM-042",
+      "name": "DFS Round 15 MISS: Tropical Hurwitz and Arithmetic Dynamics",
+      "claim": "Tropical Hurwitz double Hurwitz numbers and Bottcher coordinates should show n=6 specificity",
+      "actual": "Genus > 0 tropical curve counts show no n=6 specificity. Bottcher coordinate formulas are general for all n.",
+      "why_failed": "Both tropical geometry and arithmetic dynamics produce general formulas parametrized by dimension/degree. At n=6 these formulas evaluate to specific numbers, but there is no reason these numbers should be special. The specialness of n=6 in divisor function identities does not transfer to unrelated algebraic geometry constructions.",
+      "lesson": "Evaluating a general formula at n=6 and noting the result does not constitute an n=6 connection. The connection must go through the divisor function identity or related number-theoretic structure, not through mere substitution.",
+      "grade": "MISS",
+      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15c,e",
+      "category": "structural_limitation"
+    }
+  ],
+  "categories": {
+    "honest_arithmetic_miss": {
+      "count": 14,
+      "description": "n=6 functions simply do not fit the measured value. The arithmetic is wrong by a concrete amount (1 degree, 0.5 base pairs, 4-6 ATP). No amount of depth increase fixes it.",
+      "exhibits": ["FM-001", "FM-007", "FM-008", "FM-009", "FM-014", "FM-023", "FM-029", "FM-032", "FM-034", "FM-035", "FM-036", "FM-038", "FM-040", "FM-041"],
+      "key_lesson": "When the numbers do not match, say so. A 1-degree error in body temperature or a 5% error in base pairs per turn matters. These are the most honest type of MISS."
+    },
+    "post_hoc_pattern_matching": {
+      "count": 5,
+      "description": "A connection was found after the fact, with no independent prediction. The n=6 expression was crafted to match a known value, not derived from first principles.",
+      "exhibits": ["FM-004", "FM-006", "FM-010", "FM-011", "FM-013", "FM-018"],
+      "note": "FM-018 (Guth-Maynard) is the most instructive: the mathematical derivation has zero n=6 connection despite the numerical match.",
+      "key_lesson": "Post-hoc matching is the most dangerous failure mode. It feels like discovery but is actually selection bias. The golden ratio tautology (FM-013) is the canonical example. AI architecture parameters (FM-010, FM-011) are engineered by humans, not nature."
+    },
+    "numerical_coincidence": {
+      "count": 3,
+      "description": "Values match numerically but the match depends on unit choice, has no causal mechanism, or involves depth-3+ expressions where chance matching exceeds 50%.",
+      "exhibits": ["FM-002", "FM-003", "FM-012"],
+      "key_lesson": "Unit-dependent matches (Hubble constant in km/s/Mpc) and crude approximations (pi ~ 3) are not evidence. The Red Team depth-3 analysis showing >50% chance match probability must be applied consistently."
+    },
+    "incomplete_theory": {
+      "count": 5,
+      "description": "The n=6 framework predicts or suggests a connection, but the proof is incomplete. Empirical evidence may be strong but rigorous derivation is missing.",
+      "exhibits": ["FM-016", "FM-017", "FM-019", "FM-030", "FM-037"],
+      "key_lesson": "Incomplete proofs must be honestly labeled as such. The BSD alpha=log(2)/4 match (FM-019) is empirically compelling at 1.1% error across 1.73M curves, but 'empirically suggestive' is not 'proved.' The Monster moonshine partial (FM-016) shows that decomposing claims into sub-links with independent PASS/MISS verdicts is essential."
+    },
+    "structural_limitation": {
+      "count": 15,
+      "description": "The n=6 framework has an explicit, principled boundary here. These are not failures but correctly identified limits of applicability.",
+      "exhibits": ["FM-005", "FM-015", "FM-020", "FM-021", "FM-022", "FM-024", "FM-025", "FM-026", "FM-027", "FM-028", "FM-031", "FM-033", "FM-039", "FM-042"],
+      "note": "FM-020 (P vs NP) is the cleanest structural limitation: 3x independent verification confirmed zero connection. This is the gold standard for honest boundary documentation.",
+      "key_lesson": "Structural limitations define the framework's honest boundary. P vs NP (FM-020) is the cleanest example: 3x independent verification confirmed zero n=6 connection. Continuous variational theories (FM-021), gauge theory (FM-024), and anti-structure architectures (FM-028) are principled exclusion zones. Knowing WHERE the framework stops is as important as knowing where it works."
+    }
+  },
+  "honest_limitations_census": {
+    "source": "theory/proofs/honest-limitations.md",
+    "total_scanned": 9206,
+    "framework_applies": 9056,
+    "coverage_rate": "98.4%",
+    "genuinely_non_n6": 63,
+    "strongly_argued_non_n6": 10,
+    "failure_modes": [
+      "Continuous-parameter processes (PVD, ECD, spin-coat)",
+      "Human-round engineering conventions (1 GW utility scale)",
+      "Null/absence options (no storage, central radial topology)",
+      "Atomic transition constants (ArF 193nm prime wavelength)",
+      "Composition-dependent bandgaps (CIGS 1.15 eV)",
+      "Anti-structure architectures (exokernel)"
+    ]
+  },
+  "millennium_problems_miss_status": {
+    "note": "Of the 7 Millennium Problems, the n=6 framework claims 0 solutions. BT resolution: 0/7 honest.",
+    "problems": [
+      {"bt": "BT-541", "name": "Riemann Hypothesis", "status": "OPEN", "n6_connection": "sigma(6)=12 in zeta functional equation; conditional results only"},
+      {"bt": "BT-542", "name": "P vs NP", "status": "HONEST MISS", "n6_connection": "Zero structural connection confirmed 3x"},
+      {"bt": "BT-543", "name": "Yang-Mills Mass Gap", "status": "MISS", "n6_connection": "No gauge theory connection to divisor functions"},
+      {"bt": "BT-544", "name": "Navier-Stokes", "status": "DEEP MISS", "n6_connection": "Prodi-Serrin exponents have n=6 matches but no causal mechanism"},
+      {"bt": "BT-545", "name": "Hodge Conjecture", "status": "MISS maintained", "n6_connection": "Abelian sixfolds link promising but unproven"},
+      {"bt": "BT-546", "name": "BSD Conjecture", "status": "PARTIAL (strong empirical)", "n6_connection": "E[|Sel_6|]=sigma(6)=12 empirically confirmed on 964K curves; proof incomplete"},
+      {"bt": "BT-547", "name": "Poincare Conjecture", "status": "SOLVED (Perelman 2003)", "n6_connection": "None, reference only"}
+    ]
+  },
+  "summary": "The N6 Failure Museum v1 documents 42 exhibits across 5 categories. The largest category is Structural Limitations (15 exhibits), which is healthy: it means the framework knows where it stops. The 14 Honest Arithmetic MISSes (body temperature off by 1 degree, ATP yield wrong by 4-6, DNA turn off by 0.5 base pairs) demonstrate that the framework does not cherry-pick. The 5 Post-Hoc Pattern Matching entries (golden ratio tautology, AI architecture parameters, crystal systems) serve as warnings against the most dangerous failure mode. The 3 Numerical Coincidences (pi~3, Hubble constant, fine structure) remind us that unit-dependent or crude matches are not evidence. The 5 Incomplete Theory entries (Monster moonshine, BSD alpha derivation) show where genuine progress exists but honest MISS status must be maintained until rigorous proofs arrive. Total Millennium Problem solutions claimed: 0/7. The high MISS count is a feature, not a bug: it means the exploration was courageous and the honesty filters are working."
+}

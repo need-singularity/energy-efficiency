@@ -1,0 +1,169 @@
+{
+  "generated": "2026-04-16",
+  "task": "DIS-P1-2",
+  "purpose": "Honest boundaries of n=6 framework — adversarial domain search",
+  "methodology": "Read 20 domain .md files across 8 sectors, cross-referenced atlas.n6 MISS entries (18 documented), read honest-limitations.md (10 documented failures + 9 P0-P3 session limitations), analyzed structural patterns across domain templates",
+
+  "adversarial_domains": [
+    {
+      "domain": "topology",
+      "sector": "physics",
+      "file": "domains/physics/topology/topology.md",
+      "why_n6_fails": "Bott periodicity has period 8, not 6. The domain summary itself admits this: 'Bott periodicity n=8, K-theory n=6 구조'. The framework cherry-picks K-theory (where 6 appears in some contexts) while downplaying that the most fundamental periodicity theorem in algebraic topology is n=8. Homotopy groups of classical groups repeat with period 8 (real) or 2 (complex). Neither is 6.",
+      "competing_number": 8,
+      "honest_assessment": "PARTIAL",
+      "lesson": "When a domain has a competing structural number, the framework selectively highlights the n=6-compatible subset and ignores the dominant pattern. Bott periodicity 8 is a harder mathematical fact than any K-theory connection to 6."
+    },
+    {
+      "domain": "baduk (Go)",
+      "sector": "culture",
+      "file": "domains/culture/baduk/baduk.md",
+      "why_n6_fails": "Go board is 19x19 (=361 intersections). The fundamental constants are: 19 (board side, prime), 361 (intersections), liberties max 4 (=tau, but this is a grid geometry fact true of any square lattice), 9 star points (hoshi), 9 dan ranks. The domain claims tau=4 for liberties and sigma-phi=9 for dan/hoshi, but: (a) liberties=4 comes from 2D grid adjacency, not from tau(6); (b) 9=sigma-phi=12-2-1? Actually sigma(6)-sopfr(6)=12-5=7, not 9. The domain uses sigma-phi=10, not 9 either. The number 9 in Go (dan ranks, star points) has NO clean n=6 expression at depth<=2. The board size 19 is prime — completely opaque to n=6.",
+      "competing_number": 19,
+      "honest_assessment": "FORCED",
+      "lesson": "Go's fundamental structure is governed by 19 (prime) and 361=19^2. The n=6 connection to liberties=4 is geometrically trivial (any square grid gives 4 neighbors). The domain document uses the identical boilerplate template as 200+ other domains, not domain-specific analysis."
+    },
+    {
+      "domain": "yoga",
+      "sector": "culture",
+      "file": "domains/culture/yoga/yoga.md",
+      "why_n6_fails": "Yoga has 7 chakras (not 6), 8 limbs of Ashtanga (not 6), 108 beads in a mala (108=2^2*3^3, not a simple n=6 expression), 5 yamas, 5 niyamas. The domain claims '차크라 7(σ-sopfr)' — meaning 7 = sigma(6) - sopfr(6) = 12-5. This is a depth-2 expression. By the framework's own Red Team analysis, depth-2 yields ~80 expressions covering most small integers. Any system with 7 components can be 'explained' as sigma-sopfr. The 8 limbs of yoga are completely ignored. Patanjali's Yoga Sutras organize around 4 chapters (pada) and 196 sutras — neither aligns.",
+      "competing_number": 8,
+      "honest_assessment": "FORCED",
+      "lesson": "The classical eightfold path of yoga (Ashtanga = 'eight limbs') directly contradicts n=6 organizing structure. The framework selectively reports 7 chakras via sigma-sopfr while ignoring the more fundamental 8-limb structure."
+    },
+    {
+      "domain": "jurisprudence",
+      "sector": "infra",
+      "file": "domains/infra/jurisprudence/jurisprudence.md",
+      "why_n6_fails": "The document proposes n=6 tiers of courts and claims 'HEXA 6심' (6-tier judicial system). In reality: most countries use 3 tiers (trial, appeals, supreme). The US has a well-established 3-tier federal system. Proposing 6 tiers would ADD bureaucracy, not optimize. The document also claims '12 법원 레벨' via sigma=12, which is absurd — no legal system has 12 levels of courts. The n=6 parameter mapping table is the IDENTICAL boilerplate used for every other domain, with no legal content whatsoever.",
+      "competing_number": 3,
+      "honest_assessment": "FORCED",
+      "lesson": "Legal systems worldwide converge on 3 tiers for good structural reasons (trial fact-finding, legal review, constitutional review). Proposing 6 or 12 tiers to match n=6 would degrade, not improve, the system. This domain demonstrates the danger of forcing n=6 onto systems with well-understood non-6 structure."
+    },
+    {
+      "domain": "gemology",
+      "sector": "materials",
+      "file": "domains/materials/gemology/gemology.md",
+      "why_n6_fails": "The Mohs hardness scale has 10 levels (not 6, 12, or any n=6 derivative). The standard round brilliant diamond cut has 57 or 58 facets (not 12). The 4C grading system (Cut, Color, Clarity, Carat) has 4 parameters = tau(6), but this is post-hoc — GIA chose 4C for mnemonic alliteration, not number theory. Crystal systems number 7 (not 6). The domain's claim 'σ=12 round brilliant 최적 굴절율' is factually incorrect — the round brilliant has 57-58 facets, and optimal refractive index varies by material.",
+      "competing_number": 10,
+      "honest_assessment": "FORCED",
+      "lesson": "Gemology's core constants (10 Mohs levels, 7 crystal systems, 57 facets, 4C grading) do not align with n=6. The 4C=tau match is coincidental alliteration by GIA."
+    },
+    {
+      "domain": "cryptography",
+      "sector": "compute",
+      "file": "domains/compute/cryptography/cryptography.md",
+      "why_n6_fails": "Real cryptographic constants are: AES key sizes 128/192/256 bits (powers of 2, not n=6 related), SHA-256/512 (powers of 2), RSA typical 2048/4096 (powers of 2), elliptic curve order ~2^256. Post-quantum: Kyber lattice dimension 256 (=2^8), Dilithium uses parameters like 1024, 2048. The entire field is dominated by powers of 2 for efficiency on binary hardware. The document claims 'HEXA-CRYPTO 288000 ops/s' and '144 byte keys' — these are fictional n=6-derived numbers with no cryptographic justification. Real cryptographic security is measured in bits of security (128, 192, 256), all powers of 2.",
+      "competing_number": 2,
+      "honest_assessment": "MISS",
+      "lesson": "Cryptography is fundamentally a powers-of-2 domain due to binary computation. Key sizes, block sizes, hash output sizes are all 2^k. Forcing n=6 arithmetic onto crypto parameters would compromise security guarantees that depend on specific bit-length relationships."
+    },
+    {
+      "domain": "quantum-computing",
+      "sector": "physics",
+      "file": "domains/physics/quantum-computing/quantum-computing.md",
+      "why_n6_fails": "The Golay code [[23,12,7]] is the domain's stated n=6 hook — its parameters include 12 and 24 (extended Golay). However: (a) Qubits are fundamentally binary (n=2 states). (b) The surface code, dominant in real QC, uses distance d which is odd (3,5,7...). (c) Google's Sycamore: 53 qubits (prime). IBM Eagle: 127 qubits (prime). IBM Condor: 1121 qubits. (d) Error threshold ~1% has no n=6 expression. (e) T-gate magic state distillation — the key resource — involves 15-to-1 or 20-to-4 protocols, not n=6 related. The [[24,12,8]] connection is real but narrow — it is one code among many, and not the dominant one in practice.",
+      "competing_number": 2,
+      "honest_assessment": "PARTIAL",
+      "lesson": "Quantum computing is built on n=2 (qubit = 2 states). The Golay code connection is genuine but not the dominant code in practical QC. Actual qubit counts in real hardware follow no n=6 pattern."
+    },
+    {
+      "domain": "perfumery",
+      "sector": "life",
+      "file": "domains/life/perfumery/perfumery.md",
+      "why_n6_fails": "Classic perfumery uses a 3-note structure (top/middle/base), not 6. The domain forces '향 노트 3단 + 3 보조 = n=6' — inventing 3 'auxiliary' categories to reach 6. The fragrance wheel by Michael Edwards has 4 main families (not 6). The olfactory system has ~400 receptor types (no n=6 relation). Perfume concentration categories: 5 types (parfum, EDP, EDT, EDC, eau fraiche). None of the established structures in perfumery are n=6.",
+      "competing_number": 3,
+      "honest_assessment": "FORCED",
+      "lesson": "When a domain has n=3 structure, the framework doubles it to reach 6 by inventing complementary categories. This '3+3=6' trick is a systematic forced-fit pattern."
+    }
+  ],
+
+  "forced_fit_patterns": [
+    {
+      "pattern_id": "FF-1",
+      "name": "Boilerplate template flooding",
+      "description": "At least 12 of the 20 domains examined use IDENTICAL boilerplate parameter mapping tables. The §4 STRUCT section maps abstract labels (기본 단위, 확장 단위, 주기 수, etc.) to n=6 constants (n=6, sigma=12, tau=4, phi=2, sopfr=5) with EXACT verdicts — regardless of whether the domain actually contains those numbers. Baduk, yoga, taekwondo, gemology, numismatics, dice-probability, perfumery all share the SAME parameter table verbatim. This table maps n=6 constants to THEMSELVES, not to domain-specific measurements. The 'EXACT' verdicts mean 'sigma=12 equals sigma=12', which is tautologically true but tells us nothing about whether 12 appears in the actual domain.",
+      "severity": "CRITICAL",
+      "affected_count": "200+ domains (estimated from pattern consistency)",
+      "example": "In baduk.md: '기본 단위 | n | N=6 | EXACT' — but Go has no fundamental unit of 6. The board is 19x19. In yoga.md: '확장 단위 | σ=12 | EXACT' — but yoga has no structure of 12. In jurisprudence.md: '처리량 | 288 | σ·J₂ | EXACT' — courts do not have 'throughput 288'."
+    },
+    {
+      "pattern_id": "FF-2",
+      "name": "sigma(6)=12 coincidence harvesting",
+      "description": "12 is a very common number in human systems (12 months, 12 hours, 12 semitones, 12 zodiac signs, 12 inches, 12 apostles, 12 jurors, 12 Olympic gods...). Many of these '12s' predate number theory and arise from independent historical/cultural factors (Babylonian base-60 counting, duodecimal fraction convenience). The framework treats every occurrence of 12 as evidence for sigma(6)=12, but: (a) 12 = 2^2 * 3, making it highly composite and thus naturally frequent in human design; (b) the 'there are 12 of X' claim works equally well for n=12 (tau(12)=6, sigma(12)=28) or just '12 is a convenient highly composite number'. The framework conflates 'sigma(6)=12' with '12 is a useful number', which is a much weaker claim.",
+      "severity": "HIGH",
+      "affected_count": "Nearly all domains cite sigma=12 as a core match",
+      "example": "Music: 12 semitones (true, but this comes from 2^(7/12) approximating 3/2, a Pythagorean tuning problem, not from sigma(6)). Architecture: 12 channels (arbitrary). Jurisprudence: 12 court levels (fictional)."
+    },
+    {
+      "pattern_id": "FF-3",
+      "name": "Depth-2 expression overfitting",
+      "description": "With 9 base constants {mu=1, phi=2, n=6, tau=4, sopfr=5, sigma=12, J2=24, R=1, psi=12} and basic operations (+, -, *, /), depth-2 yields ~80 distinct values. These cover most small integers and common fractions. ANY domain with parameters in the range 1-48 will have 'EXACT' depth-2 matches. The framework's own Red Team acknowledges this: 'At depth-3, the probability of a random real number having a match within 1% is >50%.' But even at depth-2, the coverage of small integers is nearly complete: 1=mu, 2=phi, 3=n/phi, 4=tau, 5=sopfr, 6=n, 7=sigma-sopfr, 8=sigma-tau, 9=sigma-n/phi, 10=sigma-phi, 11=sigma-mu, 12=sigma, 24=J2. This means any human system with parameters 1-12 will have 100% EXACT n=6 matches.",
+      "severity": "HIGH",
+      "affected_count": "Systemic — affects the entire 98.4% coverage claim",
+      "example": "Yoga 7 chakras = sigma-sopfr. Taekwondo 9 poomsae = sigma-n/phi. Coffee 6 tastes = n. These are ALL depth-2 expressions that would match ANY small integer to the n=6 palette."
+    },
+    {
+      "pattern_id": "FF-4",
+      "name": "Domain-agnostic 'daily scenario' templating",
+      "description": "Multiple domains use IDENTICAL 'daily scenario' text blocks where domain-specific content should appear. The particle-cosmology domain literally describes a daily schedule with '오전 6:00 입자-우주론 결합 시스템 기동' and '장비 크기: 0.1 L' — a cosmology laboratory cannot fit in 0.1 liters. The thermodynamics domain uses identical text. These are clearly template artifacts where domain-specific content was never filled in, yet the documents claim 'n=6 EXACT' throughout.",
+      "severity": "MEDIUM",
+      "affected_count": "12+ domains observed with identical daily scenarios",
+      "example": "particle-cosmology, optics, thermodynamics, quantum-computing all share identical daily scenario, performance table, and barrier analysis text — differing only in the domain name insertion."
+    },
+    {
+      "pattern_id": "FF-5",
+      "name": "The 3+3=6 doubling trick",
+      "description": "When a domain naturally has n=3 structure, the framework invents 3 complementary/auxiliary categories to reach 6. Examples: Perfumery (3 note layers + 3 invented 'auxiliary' = 6), various others. This is unfalsifiable — any n=3 domain can be made n=6 by 'discovering' that each of the 3 has a dual/complement.",
+      "severity": "MEDIUM",
+      "affected_count": "Multiple domains with natural n=3 structure",
+      "example": "Perfumery: '향 노트 3 단 + 3 보조 = n=6'. The 3 auxiliaries (booster, fixer, sensory) are not standard perfumery categories."
+    }
+  ],
+
+  "atlas_miss_summary": {
+    "total_documented_MISS": 18,
+    "key_misses": [
+      "MISS-planck-units: sopfr=5, not 6 — Planck system has 5 base units, governed by 5 fundamental constants (c, G, hbar, kB, epsilon0). n=6 framework cannot explain why nature chose 5.",
+      "MISS-fine-structure: alpha ~ 1/137, 137 is prime. Requires depth-3+ expression (sigma*(sigma-mu) + sopfr + mu/P2) which is contrived.",
+      "MISS-H0-Hubble: Hubble constant ~73 km/s/Mpc. Expression sigma*n+mu=73 is depth-2 but physically unmotivated.",
+      "MISS-SI-base-units: 7 SI base units = sigma-sopfr. Acknowledged as a miss despite having depth-2 expression, because the 7 is historically contingent.",
+      "MISS-magic-82-126: Nuclear magic numbers 82 and 126 have no simple n=6 mapping. These are fundamental to nuclear physics.",
+      "MISS-body-temperature: n^2=36 vs actual 37C. Off by 1. A genuine physical constant that n=6 gets wrong.",
+      "MISS-ATP-modern: n^2=36 vs actual 30-32 ATP per glucose. Scored [3] — the worst rating in the MISS set.",
+      "MISS-base-pairs-per-turn: sigma-phi=10 vs actual 10.5. Close but not exact.",
+      "MISS-Earth-tilt-23.4: J2-mu=23, actual 23.4 degrees. Close but approximation.",
+      "MISS-pi-decimal: n/phi=3, actual pi=3.14159... The most fundamental mathematical constant is not an n=6 expression.",
+      "MISS-golden-ratio: phi_math=(1+sqrt5)/2=1.618..., no clean n=6 form. Another fundamental constant that escapes n=6.",
+      "MILL-V3-T4-n6-numerical-coincidence-honest-miss: Self-acknowledged post-hoc pattern matching on Ingham 12/5 exponent."
+    ]
+  },
+
+  "honest_boundaries": {
+    "where_n6_genuinely_works": [
+      "Carbon chemistry (Z=6 is a physical fact, CN=6 coordination is real)",
+      "Hexagonal close packing (a=6 neighbors is a geometric theorem)",
+      "The sigma(6)*phi(6)=n*tau(6) identity (proven mathematical theorem)",
+      "Benzene ring C6H6 (real molecular structure)",
+      "Some error-correcting codes (Golay [24,12,8] genuinely has n=6 arithmetic)",
+      "Egyptian fraction 1=1/2+1/3+1/6 (elegant mathematical fact)",
+      "12 semitones (strong case, though rooted in Pythagorean tuning, not sigma(6))"
+    ],
+    "where_n6_is_claimed_but_questionable": [
+      "Any domain where the parameter mapping table is copied verbatim from template",
+      "Any 'sigma=12 match' where 12 is better explained as a highly composite number",
+      "Any depth-2 match on small integers (1-12) which are trivially covered",
+      "Any domain where the 'daily scenario' is template text, not domain-specific",
+      "Performance claims (sigma^2=144x improvement) with no physical mechanism",
+      "Domains with natural competing numbers (8 in topology, 2 in crypto, 19 in Go)"
+    ],
+    "systemic_concerns": [
+      "The 98.4% coverage claim is inflated by: (a) depth-2 expressions covering all small integers, (b) boilerplate templates claiming EXACT on abstract labels not tied to measurements, (c) post-hoc selection of which domain feature to match",
+      "The framework's own acknowledged MISS list (18 entries) is much smaller than the actual number of failures, because failures in soft domains (yoga, jurisprudence, perfumery) are not measured against real domain constants",
+      "Template-generated domains (estimated 200+) have no domain-specific validation — they map n=6 constants to themselves, not to measured quantities"
+    ]
+  },
+
+  "recommendation": "The n=6 framework has genuine mathematical content (the sigma*phi=n*tau uniqueness theorem, carbon Z=6, hexagonal packing) and some strong empirical matches (12 semitones, Golay code, benzene). However, the current 318-domain claim is severely inflated by: (1) boilerplate templates that map abstract labels to n=6 constants tautologically, (2) depth-2 overfitting that trivially covers all small integers, (3) selective feature highlighting that ignores competing numbers. RECOMMENDED ACTIONS: (a) Separate the ~30 domains with genuine, non-tautological n=6 connections from the ~288 with template-only matches. (b) For each domain, require at least one MEASURED quantity that matches an n=6 expression with physical justification — not just 'sigma=12 channels' with no measurement. (c) Acknowledge competing numbers explicitly (Bott 8, crypto powers of 2, Go 19, etc.). (d) Restate coverage as: '30 domains with strong n=6 connections, ~100 with plausible connections, ~190 with template-only claims' rather than '98.4% coverage'. This honest restatement would make the framework MORE credible, not less."
+}

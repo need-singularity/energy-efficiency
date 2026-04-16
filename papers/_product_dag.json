@@ -1,0 +1,3224 @@
+{
+  "_meta": {
+    "schema": "n6.product-dag.v1",
+    "generated": "2026-04-16",
+    "generator": "PRD-P1-2 product dependency DAG",
+    "total_products": 173,
+    "total_edges": 142,
+    "max_depth": 5,
+    "root_count": 70,
+    "leaf_count": 120,
+    "critical_path": [
+      "P-031",
+      "P-020",
+      "P-022",
+      "P-001",
+      "P-003",
+      "P-005"
+    ]
+  },
+  "nodes": {
+    "P-001": {
+      "name": "궁극의 핵융합 발전소",
+      "sector": "fusion",
+      "section_title": "핵융합",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-020",
+        "P-022"
+      ],
+      "enables": [
+        "P-002",
+        "P-003",
+        "P-004",
+        "P-005",
+        "P-062"
+      ]
+    },
+    "P-002": {
+      "name": "KSTAR-N6",
+      "sector": "fusion",
+      "section_title": "핵융합",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-001"
+      ],
+      "enables": []
+    },
+    "P-003": {
+      "name": "진화 Mk.I~V",
+      "sector": "fusion",
+      "section_title": "핵융합",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-001"
+      ],
+      "enables": [
+        "P-005"
+      ]
+    },
+    "P-004": {
+      "name": "발견 + 예측 + 가설v5",
+      "sector": "fusion",
+      "section_title": "핵융합",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-001"
+      ],
+      "enables": [
+        "P-005"
+      ]
+    },
+    "P-005": {
+      "name": "천장확인",
+      "sector": "fusion",
+      "section_title": "핵융합",
+      "alien_index": 10,
+      "layer": 5,
+      "deps": [
+        "P-001",
+        "P-003",
+        "P-004"
+      ],
+      "enables": []
+    },
+    "P-006": {
+      "name": "HEXA 칩 7단",
+      "sector": "chip",
+      "section_title": "칩/반도체",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011",
+        "P-031"
+      ],
+      "enables": [
+        "P-007",
+        "P-008",
+        "P-009",
+        "P-010",
+        "P-049",
+        "P-064",
+        "P-070",
+        "P-084",
+        "P-119"
+      ]
+    },
+    "P-007": {
+      "name": "ANIMA-SOC",
+      "sector": "chip",
+      "section_title": "칩/반도체",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": [
+        "P-010",
+        "P-064",
+        "P-151"
+      ]
+    },
+    "P-008": {
+      "name": "HEXA-TOPO",
+      "sector": "chip",
+      "section_title": "칩/반도체",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": [
+        "P-010"
+      ]
+    },
+    "P-009": {
+      "name": "HEXA-ASIC",
+      "sector": "chip",
+      "section_title": "칩/반도체",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": [
+        "P-010"
+      ]
+    },
+    "P-010": {
+      "name": "천장확인",
+      "sector": "chip",
+      "section_title": "칩/반도체",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-006",
+        "P-007",
+        "P-008",
+        "P-009"
+      ],
+      "enables": []
+    },
+    "P-011": {
+      "name": "66 Techniques",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-006",
+        "P-012",
+        "P-013",
+        "P-014",
+        "P-015",
+        "P-019",
+        "P-037",
+        "P-064",
+        "P-150"
+      ]
+    },
+    "P-012": {
+      "name": "Full N6 Pipeline",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011"
+      ],
+      "enables": [
+        "P-016",
+        "P-017",
+        "P-018",
+        "P-019",
+        "P-037",
+        "P-102",
+        "P-156",
+        "P-157",
+        "P-159",
+        "P-162",
+        "P-170"
+      ]
+    },
+    "P-013": {
+      "name": "N6 Inevitability Engine",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011"
+      ],
+      "enables": [
+        "P-016"
+      ]
+    },
+    "P-014": {
+      "name": "AI Energy Savings Guide",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011"
+      ],
+      "enables": [
+        "P-016"
+      ]
+    },
+    "P-015": {
+      "name": "Chip Architecture Guide",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011"
+      ],
+      "enables": [
+        "P-016"
+      ]
+    },
+    "P-016": {
+      "name": "천장확인",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-012",
+        "P-013",
+        "P-014",
+        "P-015",
+        "P-017",
+        "P-018"
+      ],
+      "enables": []
+    },
+    "P-017": {
+      "name": "Next-Gen AI 8-Paradigm Blowup",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": [
+        "P-016"
+      ]
+    },
+    "P-018": {
+      "name": "AI 6-Domain Sweep",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": [
+        "P-016"
+      ]
+    },
+    "P-019": {
+      "name": "N6 Reverse-Engineering Suite",
+      "sector": "ai",
+      "section_title": "AI/ML",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-011",
+        "P-012"
+      ],
+      "enables": []
+    },
+    "P-020": {
+      "name": "궁극의 배터리 8단",
+      "sector": "energy",
+      "section_title": "에너지",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-031"
+      ],
+      "enables": [
+        "P-001",
+        "P-022",
+        "P-024"
+      ]
+    },
+    "P-021": {
+      "name": "궁극의 태양전지",
+      "sector": "energy",
+      "section_title": "에너지",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-022"
+      ]
+    },
+    "P-022": {
+      "name": "궁극의 에너지 통합",
+      "sector": "energy",
+      "section_title": "에너지",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-020",
+        "P-021"
+      ],
+      "enables": [
+        "P-001",
+        "P-023"
+      ]
+    },
+    "P-023": {
+      "name": "궁극의 데이터센터 원자로",
+      "sector": "energy",
+      "section_title": "에너지",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-022"
+      ],
+      "enables": []
+    },
+    "P-024": {
+      "name": "HEXA-AUTO 자동차배터리",
+      "sector": "energy",
+      "section_title": "에너지",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-020"
+      ],
+      "enables": []
+    },
+    "P-025": {
+      "name": "궁극의 환경보호 8단",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-028",
+        "P-029",
+        "P-030"
+      ]
+    },
+    "P-026": {
+      "name": "HEXA-MICROPLASTICS",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-028"
+      ]
+    },
+    "P-027": {
+      "name": "궁극의 탄소포집 8단",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-028",
+        "P-029",
+        "P-030"
+      ]
+    },
+    "P-028": {
+      "name": "진화 Mk.I~V",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-025",
+        "P-026",
+        "P-027"
+      ],
+      "enables": []
+    },
+    "P-029": {
+      "name": "예측 + 검증",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-025",
+        "P-027"
+      ],
+      "enables": []
+    },
+    "P-030": {
+      "name": "궁극의 재활용 — HEXA-RECYCLE",
+      "sector": "environment",
+      "section_title": "환경보호",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-025",
+        "P-027"
+      ],
+      "enables": []
+    },
+    "P-031": {
+      "name": "궁극의 물질합성 8단",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-006",
+        "P-020",
+        "P-032",
+        "P-033",
+        "P-034",
+        "P-036",
+        "P-039",
+        "P-102"
+      ]
+    },
+    "P-032": {
+      "name": "BT-85~88 + BT-128~135",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-031"
+      ],
+      "enables": [
+        "P-035"
+      ]
+    },
+    "P-033": {
+      "name": "가설 36/36 100%EXACT",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-031"
+      ],
+      "enables": [
+        "P-035"
+      ]
+    },
+    "P-034": {
+      "name": "산업검증 20소재+12금속",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-031"
+      ],
+      "enables": [
+        "P-035"
+      ]
+    },
+    "P-035": {
+      "name": "실험검증 + TP 28/28",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-032",
+        "P-033",
+        "P-034"
+      ],
+      "enables": [
+        "P-036"
+      ]
+    },
+    "P-036": {
+      "name": "물리한계 증명",
+      "sector": "materials",
+      "section_title": "물질합성",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-031",
+        "P-035"
+      ],
+      "enables": []
+    },
+    "P-037": {
+      "name": "궁극의 로봇 8단",
+      "sector": "robotics",
+      "section_title": "로봇",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-011",
+        "P-012"
+      ],
+      "enables": [
+        "P-038"
+      ]
+    },
+    "P-038": {
+      "name": "천장확인",
+      "sector": "robotics",
+      "section_title": "로봇",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-037"
+      ],
+      "enables": []
+    },
+    "P-039": {
+      "name": "궁극의 초전도체",
+      "sector": "physics",
+      "section_title": "물리/수학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-031",
+        "P-040",
+        "P-041"
+      ],
+      "enables": [
+        "P-042"
+      ]
+    },
+    "P-040": {
+      "name": "궁극의 순수수학",
+      "sector": "physics",
+      "section_title": "물리/수학",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-039",
+        "P-043",
+        "P-100",
+        "P-172"
+      ]
+    },
+    "P-041": {
+      "name": "궁극의 우주론/입자",
+      "sector": "physics",
+      "section_title": "물리/수학",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-039",
+        "P-043"
+      ]
+    },
+    "P-042": {
+      "name": "궁극의 상온 초전도체",
+      "sector": "physics",
+      "section_title": "물리/수학",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-039"
+      ],
+      "enables": [
+        "P-062",
+        "P-063",
+        "P-065",
+        "P-066",
+        "P-069",
+        "P-070",
+        "P-071",
+        "P-072",
+        "P-073",
+        "P-082"
+      ]
+    },
+    "P-043": {
+      "name": "차원펼침 돌파 — 텐서/mod3/로그",
+      "sector": "physics",
+      "section_title": "물리/수학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-040",
+        "P-041"
+      ],
+      "enables": [
+        "P-101"
+      ]
+    },
+    "P-044": {
+      "name": "궁극의 프로그래밍언어",
+      "sector": "software",
+      "section_title": "소프트웨어/인프라",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-045",
+        "P-046",
+        "P-047",
+        "P-048",
+        "P-158"
+      ]
+    },
+    "P-045": {
+      "name": "천장확인",
+      "sector": "software",
+      "section_title": "소프트웨어/인프라",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-044",
+        "P-046",
+        "P-047",
+        "P-048"
+      ],
+      "enables": []
+    },
+    "P-046": {
+      "name": "궁극의 macOS",
+      "sector": "software",
+      "section_title": "소프트웨어/인프라",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-044"
+      ],
+      "enables": [
+        "P-045"
+      ]
+    },
+    "P-047": {
+      "name": "궁극의 iOS",
+      "sector": "software",
+      "section_title": "소프트웨어/인프라",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-044"
+      ],
+      "enables": [
+        "P-045"
+      ]
+    },
+    "P-048": {
+      "name": "궁극의 네트워크 프로토콜",
+      "sector": "software",
+      "section_title": "소프트웨어/인프라",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-044"
+      ],
+      "enables": [
+        "P-045",
+        "P-171"
+      ]
+    },
+    "P-049": {
+      "name": "궁극의 디스플레이 8단",
+      "sector": "display",
+      "section_title": "디스플레이",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": [
+        "P-050"
+      ]
+    },
+    "P-050": {
+      "name": "천장확인",
+      "sector": "display",
+      "section_title": "디스플레이",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-049"
+      ],
+      "enables": []
+    },
+    "P-051": {
+      "name": "궁극의 오디오 7단",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-052",
+        "P-053",
+        "P-054",
+        "P-055",
+        "P-057"
+      ]
+    },
+    "P-052": {
+      "name": "천장확인",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-051"
+      ],
+      "enables": []
+    },
+    "P-053": {
+      "name": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-051"
+      ],
+      "enables": []
+    },
+    "P-054": {
+      "name": "HEXA-EAR Ultimate",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-051"
+      ],
+      "enables": [
+        "P-056"
+      ]
+    },
+    "P-055": {
+      "name": "HEXA-BONE 골전도 이어폰",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-051"
+      ],
+      "enables": []
+    },
+    "P-056": {
+      "name": "HEXA-EAR-CELL 이어폰 배터리",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-054"
+      ],
+      "enables": []
+    },
+    "P-057": {
+      "name": "HEXA-SPEAKER 궁극 스피커",
+      "sector": "audio",
+      "section_title": "오디오",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-051"
+      ],
+      "enables": []
+    },
+    "P-058": {
+      "name": "궁극의 안전 8단",
+      "sector": "safety",
+      "section_title": "안전",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-059"
+      ]
+    },
+    "P-059": {
+      "name": "가설 30+극한 20",
+      "sector": "safety",
+      "section_title": "안전",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-058"
+      ],
+      "enables": []
+    },
+    "P-060": {
+      "name": "궁극의 펀카",
+      "sector": "play",
+      "section_title": "유희",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-061"
+      ]
+    },
+    "P-061": {
+      "name": "궁극의 바이크",
+      "sector": "play",
+      "section_title": "유희",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-060"
+      ],
+      "enables": []
+    },
+    "P-062": {
+      "name": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+      "sector": "aerospace",
+      "section_title": "우주항공",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-001",
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-063": {
+      "name": "궁극의 UFO 비행접시 (HEXA-UFO)",
+      "sector": "sf",
+      "section_title": "UFO/비행접시",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-064": {
+      "name": "HEXA-NEURO 뇌-기계 인터페이스",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-006",
+        "P-007",
+        "P-011"
+      ],
+      "enables": [
+        "P-074",
+        "P-075",
+        "P-077",
+        "P-092",
+        "P-093"
+      ]
+    },
+    "P-065": {
+      "name": "HEXA-GRAV 중력파 검출/통신",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-066": {
+      "name": "HEXA-CLOAK 투명망토/스텔스",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-067": {
+      "name": "HEXA-DEFENSE 지구방어 시스템",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-068": {
+      "name": "HEXA-TELEPORT 양자얽힘 통신망",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-172"
+      ],
+      "enables": []
+    },
+    "P-069": {
+      "name": "HEXA-HOVER 개인 호버보드",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-070": {
+      "name": "HEXA-MRAM 초전도 비휘발 메모리",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-006",
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-071": {
+      "name": "HEXA-SEABED 대륙간 해저 송전",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-072": {
+      "name": "HEXA-ACCEL 소형 입자가속기",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-073": {
+      "name": "HEXA-WEATHER 대기 전자기 제어",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-074": {
+      "name": "HEXA-MIND 의식 업로드",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-064"
+      ],
+      "enables": []
+    },
+    "P-075": {
+      "name": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-064"
+      ],
+      "enables": []
+    },
+    "P-076": {
+      "name": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-077": {
+      "name": "HEXA-DREAM 꿈 기록/재생",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-064"
+      ],
+      "enables": []
+    },
+    "P-078": {
+      "name": "HEXA-SKYWAY 공중 고속도로망",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-079": {
+      "name": "HEXA-TSUNAMI 해일 방지기",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-080": {
+      "name": "HEXA-ANTIMATTER 반물질 공장",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-081": {
+      "name": "HEXA-COSMIC 초기우주 관측망",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-082": {
+      "name": "HEXA-DESAL 초전도 담수화",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-042"
+      ],
+      "enables": []
+    },
+    "P-083": {
+      "name": "HEXA-ORACLE 양자 예측기",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-172"
+      ],
+      "enables": []
+    },
+    "P-084": {
+      "name": "HEXA-ONE 통합 웨어러블",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": [
+        "P-085",
+        "P-086",
+        "P-087",
+        "P-088",
+        "P-089",
+        "P-090",
+        "P-091"
+      ]
+    },
+    "P-085": {
+      "name": "HEXA-GLASS AI 안경",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-086": {
+      "name": "HEXA-EAR AI 이어폰",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-087": {
+      "name": "HEXA-EXO AI 외골격",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-088": {
+      "name": "HEXA-LIMB AI 의수/의족",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-089": {
+      "name": "HEXA-SKIN 전자 피부",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-090": {
+      "name": "HEXA-FABRIC AI 의류",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-091": {
+      "name": "HEXA-OLFACT 디지털 후각",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-084"
+      ],
+      "enables": []
+    },
+    "P-092": {
+      "name": "HEXA-DREAM 꿈 인터페이스",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-064"
+      ],
+      "enables": []
+    },
+    "P-093": {
+      "name": "HEXA-EMPATH 감정 공유",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-064"
+      ],
+      "enables": []
+    },
+    "P-094": {
+      "name": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-141"
+      ]
+    },
+    "P-095": {
+      "name": "곤충학 n=6 Hexapoda 완전 생물학",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-096": {
+      "name": "균류학 n=6 포자-발효 아키텍처",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-097": {
+      "name": "광업/광물학 n=6 경도-결정 아키텍처",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-098": {
+      "name": "수의학 n=6 동물해부 보편성",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-099": {
+      "name": "원예학 n=6 식물 성장 아키텍처",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-100": {
+      "name": "HEXA-SIM 우주 시뮬레이션",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-040",
+        "P-172"
+      ],
+      "enables": []
+    },
+    "P-101": {
+      "name": "크로스 도메인 메가 브릿지",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-043"
+      ],
+      "enables": []
+    },
+    "P-102": {
+      "name": "HEXA-NANOBOT 치료 나노봇",
+      "sector": "frontier",
+      "section_title": "최전선/대발견",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012",
+        "P-031"
+      ],
+      "enables": []
+    },
+    "P-103": {
+      "name": "종교/신화 n=6 보편 구조",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-104": {
+      "name": "법학/사법 n=6 정의 아키텍처",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-105": {
+      "name": "한글/문자체계 n=6 인코딩",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-106": {
+      "name": "고고학/문명사 n=6 기원",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-107": {
+      "name": "화폐/경제사 n=6 통화 래더",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-108": {
+      "name": "무용/안무 n=6 공간 기하학",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-109": {
+      "name": "시계학/호롤로지 n=6 시간 아키텍처",
+      "sector": "civilization",
+      "section_title": "문명/인문",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-110": {
+      "name": "발효/양조 n=6 완전수 화학양론",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-111": {
+      "name": "와인/소믈리에 n=6 테이스팅",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-112": {
+      "name": "패션/섬유 n=6 직조 구조",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-113": {
+      "name": "수산/양식 n=6 해양 생태",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-114": {
+      "name": "보험/보험계리 n=6 리스크 구조",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-115": {
+      "name": "돌고래 n=6 생물음향 아키텍처",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-116": {
+      "name": "커피과학 n=6 추출 아키텍처",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-117": {
+      "name": "향수/향료 n=6 피라미드 구조",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-118": {
+      "name": "도자기/세라믹 n=6 소성 래더",
+      "sector": "life-culture",
+      "section_title": "생활/문화",
+      "alien_index": 5,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-119": {
+      "name": "반도체 패키징 n=6 적층 래더",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-006"
+      ],
+      "enables": []
+    },
+    "P-120": {
+      "name": "합성생물학 n=6 이중 완전수",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-121": {
+      "name": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-122": {
+      "name": "디지털 트윈 n=6 동기화",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-123": {
+      "name": "건축/구조공학 n=6 하중 보편성",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-124": {
+      "name": "지하공간/터널 n=6 굴착 구조",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-125": {
+      "name": "전자상거래/핀테크 n=6 결제 보안",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-126": {
+      "name": "나일론 6/6,6 폴리아미드",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-127": {
+      "name": "아라미드 (Heracron)",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-128": {
+      "name": "타이어코드",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-129": {
+      "name": "에폭시/페놀 수지",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-130": {
+      "name": "PET 광학필름",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-131": {
+      "name": "에어백",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-132": {
+      "name": "수처리 멤브레인",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-133": {
+      "name": "PEMFC 수소 연료전지",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-134": {
+      "name": "건설 콘크리트",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-135": {
+      "name": "바이오 약물전달/제약",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-136": {
+      "name": "HVAC 냉난방 n=6 COP 최적화",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-137": {
+      "name": "내진설계 n=6 DOF 보편성",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-138": {
+      "name": "콘크리트+탄소포집 n=6 광물화",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-139": {
+      "name": "스마트시티 통합 n=6 도시 시스템",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-140": {
+      "name": "토목/구조역학 kissing number 사슬",
+      "sector": "tech-industry",
+      "section_title": "기술/산업",
+      "alien_index": 9,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-141": {
+      "name": "바이러스 구조-분류 완전 n=6 맵",
+      "sector": "virology",
+      "section_title": "바이러스학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-094"
+      ],
+      "enables": [
+        "P-142",
+        "P-143"
+      ]
+    },
+    "P-142": {
+      "name": "바이러스 게놈 분절-유전자 n=6 래더",
+      "sector": "virology",
+      "section_title": "바이러스학",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-141"
+      ],
+      "enables": [
+        "P-144"
+      ]
+    },
+    "P-143": {
+      "name": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+      "sector": "virology",
+      "section_title": "바이러스학",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-141"
+      ],
+      "enables": [
+        "P-144"
+      ]
+    },
+    "P-144": {
+      "name": "진화 Mk.I~V",
+      "sector": "virology",
+      "section_title": "바이러스학",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-142",
+        "P-143"
+      ],
+      "enables": [
+        "P-145"
+      ]
+    },
+    "P-145": {
+      "name": "HEXA-HIV 6축 완전 치료 체인",
+      "sector": "hiv-treatment",
+      "section_title": "HIV 치료",
+      "alien_index": 10,
+      "layer": 4,
+      "deps": [
+        "P-144"
+      ],
+      "enables": []
+    },
+    "P-146": {
+      "name": "HEXA-BIO n=6 생명 아키텍처",
+      "sector": "natural-science",
+      "section_title": "자연과학",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-147",
+        "P-148",
+        "P-149"
+      ]
+    },
+    "P-147": {
+      "name": "HEXA-AGRI n=6 농업과학",
+      "sector": "natural-science",
+      "section_title": "자연과학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-146"
+      ],
+      "enables": []
+    },
+    "P-148": {
+      "name": "HEXA-FOOD n=6 식품과학",
+      "sector": "natural-science",
+      "section_title": "자연과학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-146"
+      ],
+      "enables": []
+    },
+    "P-149": {
+      "name": "HEXA-OCEAN n=6 해양과학",
+      "sector": "natural-science",
+      "section_title": "자연과학",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-146"
+      ],
+      "enables": []
+    },
+    "P-150": {
+      "name": "HEXA-COGNI n=6 인지 아키텍처",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-011"
+      ],
+      "enables": [
+        "P-151",
+        "P-152",
+        "P-153",
+        "P-154",
+        "P-155"
+      ]
+    },
+    "P-151": {
+      "name": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-007",
+        "P-150"
+      ],
+      "enables": []
+    },
+    "P-152": {
+      "name": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-150"
+      ],
+      "enables": []
+    },
+    "P-153": {
+      "name": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-150"
+      ],
+      "enables": []
+    },
+    "P-154": {
+      "name": "HEXA-LING n=6 언어 아키텍처",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-150"
+      ],
+      "enables": []
+    },
+    "P-155": {
+      "name": "HEXA-ECON n=6 경제학",
+      "sector": "cognitive-social",
+      "section_title": "인지/사회",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-150"
+      ],
+      "enables": []
+    },
+    "P-156": {
+      "name": "HEXA-DRIVE n=6 자율주행",
+      "sector": "mobility",
+      "section_title": "이동/수송",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": []
+    },
+    "P-157": {
+      "name": "HEXA-WING n=6 항공공학",
+      "sector": "mobility",
+      "section_title": "이동/수송",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": []
+    },
+    "P-158": {
+      "name": "HEXA-BROWSER 특이점 브라우저",
+      "sector": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "alien_index": 7,
+      "layer": 1,
+      "deps": [
+        "P-044"
+      ],
+      "enables": []
+    },
+    "P-159": {
+      "name": "HEXA-MED n=6 의료기기",
+      "sector": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": []
+    },
+    "P-160": {
+      "name": "HEXA-AESTHETIC n=6 성형외과",
+      "sector": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-161": {
+      "name": "HEXA-MKT 마케팅 불변의 법칙",
+      "sector": "marketing",
+      "section_title": "마케팅",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": [
+        "P-162",
+        "P-163"
+      ]
+    },
+    "P-162": {
+      "name": "HEXA-NEXUS 서비스 플랫폼",
+      "sector": "marketing",
+      "section_title": "마케팅",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012",
+        "P-161"
+      ],
+      "enables": [
+        "P-164"
+      ]
+    },
+    "P-163": {
+      "name": "HEXA-ANIMA 감성 서비스",
+      "sector": "marketing",
+      "section_title": "마케팅",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-161"
+      ],
+      "enables": [
+        "P-164"
+      ]
+    },
+    "P-164": {
+      "name": "HEXA-UNIFIED 완전인지 플랫폼",
+      "sector": "marketing",
+      "section_title": "마케팅",
+      "alien_index": 10,
+      "layer": 3,
+      "deps": [
+        "P-162",
+        "P-163"
+      ],
+      "enables": []
+    },
+    "P-165": {
+      "name": "남성청결제 n=6 피부과학 아키텍처",
+      "sector": "hygiene",
+      "section_title": "위생",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-166": {
+      "name": "여성청결제 n=6 질내생태계 아키텍처",
+      "sector": "hygiene",
+      "section_title": "위생",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-167": {
+      "name": "타투 제거 n=6 면역학적 아키텍처",
+      "sector": "tattoo-removal",
+      "section_title": "타투 제거",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-168": {
+      "name": "키보드 n=6 인체공학 아키텍처",
+      "sector": "keyboard",
+      "section_title": "키보드",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-169": {
+      "name": "HEXA-MOUSE n=6 인체공학 마우스",
+      "sector": "mouse",
+      "section_title": "마우스",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    },
+    "P-170": {
+      "name": "HEXA-QC 제조 품질관리 아키텍처",
+      "sector": "manufacturing-quality",
+      "section_title": "제조 품질관리",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-012"
+      ],
+      "enables": []
+    },
+    "P-171": {
+      "name": "HEXA-NET 네트워크 아키텍처",
+      "sector": "network",
+      "section_title": "네트워크",
+      "alien_index": 10,
+      "layer": 2,
+      "deps": [
+        "P-048"
+      ],
+      "enables": []
+    },
+    "P-172": {
+      "name": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "sector": "quantum-computer",
+      "section_title": "양자컴퓨터",
+      "alien_index": 10,
+      "layer": 1,
+      "deps": [
+        "P-040"
+      ],
+      "enables": [
+        "P-068",
+        "P-083",
+        "P-100"
+      ]
+    },
+    "P-173": {
+      "name": "시계학 n=6 시간 산술 아키텍처",
+      "sector": "horology",
+      "section_title": "시계학",
+      "alien_index": 10,
+      "layer": 0,
+      "deps": [],
+      "enables": []
+    }
+  },
+  "edges": [
+    {
+      "from": "P-001",
+      "to": "P-003",
+      "reason": "핵융합 발전소 → 진화 로드맵"
+    },
+    {
+      "from": "P-001",
+      "to": "P-004",
+      "reason": "핵융합 발전소 → 발견/예측"
+    },
+    {
+      "from": "P-001",
+      "to": "P-002",
+      "reason": "핵융합 설계 → KSTAR-N6 적용"
+    },
+    {
+      "from": "P-001",
+      "to": "P-005",
+      "reason": "핵융합 발전소 → 천장확인"
+    },
+    {
+      "from": "P-003",
+      "to": "P-005",
+      "reason": "진화 완료 → 천장확인"
+    },
+    {
+      "from": "P-004",
+      "to": "P-005",
+      "reason": "발견/예측 → 천장확인"
+    },
+    {
+      "from": "P-006",
+      "to": "P-007",
+      "reason": "HEXA 칩 7단 → ANIMA-SOC 의식칩"
+    },
+    {
+      "from": "P-006",
+      "to": "P-008",
+      "reason": "HEXA 칩 7단 → HEXA-TOPO"
+    },
+    {
+      "from": "P-006",
+      "to": "P-009",
+      "reason": "HEXA 칩 7단 → HEXA-ASIC"
+    },
+    {
+      "from": "P-006",
+      "to": "P-010",
+      "reason": "HEXA 칩 7단 → 천장확인"
+    },
+    {
+      "from": "P-007",
+      "to": "P-010",
+      "reason": "ANIMA-SOC → 천장확인"
+    },
+    {
+      "from": "P-008",
+      "to": "P-010",
+      "reason": "HEXA-TOPO → 천장확인"
+    },
+    {
+      "from": "P-009",
+      "to": "P-010",
+      "reason": "HEXA-ASIC → 천장확인"
+    },
+    {
+      "from": "P-011",
+      "to": "P-012",
+      "reason": "66 Techniques → Full N6 Pipeline (기법 통합)"
+    },
+    {
+      "from": "P-011",
+      "to": "P-013",
+      "reason": "66 Techniques → Inevitability Engine (기법 11~16)"
+    },
+    {
+      "from": "P-011",
+      "to": "P-014",
+      "reason": "66 Techniques → AI Energy Savings Guide"
+    },
+    {
+      "from": "P-011",
+      "to": "P-015",
+      "reason": "66 Techniques → Chip Architecture Guide"
+    },
+    {
+      "from": "P-012",
+      "to": "P-016",
+      "reason": "Full Pipeline → 천장확인"
+    },
+    {
+      "from": "P-012",
+      "to": "P-017",
+      "reason": "Full Pipeline → 8-Paradigm Blowup"
+    },
+    {
+      "from": "P-012",
+      "to": "P-018",
+      "reason": "Full Pipeline → 6-Domain Sweep"
+    },
+    {
+      "from": "P-013",
+      "to": "P-016",
+      "reason": "Inevitability Engine → 천장확인"
+    },
+    {
+      "from": "P-014",
+      "to": "P-016",
+      "reason": "Energy Guide → 천장확인"
+    },
+    {
+      "from": "P-015",
+      "to": "P-016",
+      "reason": "Chip Guide → 천장확인"
+    },
+    {
+      "from": "P-017",
+      "to": "P-016",
+      "reason": "8-Paradigm → 천장확인"
+    },
+    {
+      "from": "P-018",
+      "to": "P-016",
+      "reason": "6-Domain → 천장확인"
+    },
+    {
+      "from": "P-011",
+      "to": "P-019",
+      "reason": "66 Techniques → Reverse-Engineering Suite"
+    },
+    {
+      "from": "P-020",
+      "to": "P-022",
+      "reason": "배터리 8단 → 에너지 통합"
+    },
+    {
+      "from": "P-021",
+      "to": "P-022",
+      "reason": "태양전지 → 에너지 통합"
+    },
+    {
+      "from": "P-020",
+      "to": "P-024",
+      "reason": "배터리 8단 → 자동차배터리"
+    },
+    {
+      "from": "P-022",
+      "to": "P-023",
+      "reason": "에너지 통합 → 데이터센터 원자로"
+    },
+    {
+      "from": "P-025",
+      "to": "P-028",
+      "reason": "환경보호 8단 → 진화 Mk.I~V"
+    },
+    {
+      "from": "P-027",
+      "to": "P-028",
+      "reason": "탄소포집 → 진화"
+    },
+    {
+      "from": "P-026",
+      "to": "P-028",
+      "reason": "미세플라스틱 → 진화"
+    },
+    {
+      "from": "P-025",
+      "to": "P-029",
+      "reason": "환경보호 → 예측+검증"
+    },
+    {
+      "from": "P-027",
+      "to": "P-029",
+      "reason": "탄소포집 → 예측+검증"
+    },
+    {
+      "from": "P-025",
+      "to": "P-030",
+      "reason": "환경보호 → 재활용"
+    },
+    {
+      "from": "P-027",
+      "to": "P-030",
+      "reason": "탄소포집 → 재활용"
+    },
+    {
+      "from": "P-031",
+      "to": "P-032",
+      "reason": "물질합성 8단 → BT 돌파정리"
+    },
+    {
+      "from": "P-031",
+      "to": "P-033",
+      "reason": "물질합성 8단 → 가설 검증"
+    },
+    {
+      "from": "P-031",
+      "to": "P-034",
+      "reason": "물질합성 8단 → 산업검증"
+    },
+    {
+      "from": "P-032",
+      "to": "P-035",
+      "reason": "BT 돌파 → 실험검증"
+    },
+    {
+      "from": "P-033",
+      "to": "P-035",
+      "reason": "가설 → 실험검증"
+    },
+    {
+      "from": "P-034",
+      "to": "P-035",
+      "reason": "산업검증 → 실험검증"
+    },
+    {
+      "from": "P-031",
+      "to": "P-036",
+      "reason": "물질합성 → 물리한계 증명"
+    },
+    {
+      "from": "P-035",
+      "to": "P-036",
+      "reason": "실험검증 → 물리한계 증명"
+    },
+    {
+      "from": "P-037",
+      "to": "P-038",
+      "reason": "로봇 8단 → 천장확인"
+    },
+    {
+      "from": "P-039",
+      "to": "P-042",
+      "reason": "초전도체 → 상온 초전도체"
+    },
+    {
+      "from": "P-040",
+      "to": "P-043",
+      "reason": "순수수학 → 차원펼침 돌파"
+    },
+    {
+      "from": "P-041",
+      "to": "P-043",
+      "reason": "우주론/입자 → 차원펼침 돌파"
+    },
+    {
+      "from": "P-044",
+      "to": "P-045",
+      "reason": "프로그래밍언어 → 천장확인"
+    },
+    {
+      "from": "P-044",
+      "to": "P-046",
+      "reason": "프로그래밍언어 → macOS"
+    },
+    {
+      "from": "P-044",
+      "to": "P-047",
+      "reason": "프로그래밍언어 → iOS"
+    },
+    {
+      "from": "P-044",
+      "to": "P-048",
+      "reason": "프로그래밍언어 → 네트워크 프로토콜"
+    },
+    {
+      "from": "P-046",
+      "to": "P-045",
+      "reason": "macOS → 천장확인"
+    },
+    {
+      "from": "P-047",
+      "to": "P-045",
+      "reason": "iOS → 천장확인"
+    },
+    {
+      "from": "P-048",
+      "to": "P-045",
+      "reason": "네트워크 → 천장확인"
+    },
+    {
+      "from": "P-049",
+      "to": "P-050",
+      "reason": "디스플레이 8단 → 천장확인"
+    },
+    {
+      "from": "P-051",
+      "to": "P-052",
+      "reason": "오디오 7단 → 천장확인"
+    },
+    {
+      "from": "P-051",
+      "to": "P-053",
+      "reason": "오디오 → HEXA-SPEAK"
+    },
+    {
+      "from": "P-051",
+      "to": "P-054",
+      "reason": "오디오 → HEXA-EAR Ultimate"
+    },
+    {
+      "from": "P-051",
+      "to": "P-055",
+      "reason": "오디오 → HEXA-BONE"
+    },
+    {
+      "from": "P-054",
+      "to": "P-056",
+      "reason": "이어폰 → 이어폰 배터리"
+    },
+    {
+      "from": "P-051",
+      "to": "P-057",
+      "reason": "오디오 → HEXA-SPEAKER"
+    },
+    {
+      "from": "P-058",
+      "to": "P-059",
+      "reason": "안전 8단 → 가설+극한"
+    },
+    {
+      "from": "P-060",
+      "to": "P-061",
+      "reason": "펀카 설계 공유 → 바이크 (같은 차량 역학 기반)"
+    },
+    {
+      "from": "P-141",
+      "to": "P-142",
+      "reason": "바이러스 구조 → 게놈 분절"
+    },
+    {
+      "from": "P-141",
+      "to": "P-143",
+      "reason": "바이러스 구조 → 역학/백신/효소"
+    },
+    {
+      "from": "P-142",
+      "to": "P-144",
+      "reason": "게놈 → 진화"
+    },
+    {
+      "from": "P-143",
+      "to": "P-144",
+      "reason": "역학 → 진화"
+    },
+    {
+      "from": "P-094",
+      "to": "P-141",
+      "reason": "바이러스학 아키텍처 → 바이러스 구조 맵"
+    },
+    {
+      "from": "P-150",
+      "to": "P-151",
+      "reason": "인지 아키텍처 → 의식 프로세서"
+    },
+    {
+      "from": "P-150",
+      "to": "P-152",
+      "reason": "인지 아키텍처 → 사회 아키텍처"
+    },
+    {
+      "from": "P-150",
+      "to": "P-153",
+      "reason": "인지 아키텍처 → 시간 아키텍처"
+    },
+    {
+      "from": "P-150",
+      "to": "P-154",
+      "reason": "인지 아키텍처 → 언어 아키텍처"
+    },
+    {
+      "from": "P-150",
+      "to": "P-155",
+      "reason": "인지 아키텍처 → 경제학"
+    },
+    {
+      "from": "P-146",
+      "to": "P-147",
+      "reason": "생명 아키텍처 → 농업과학"
+    },
+    {
+      "from": "P-146",
+      "to": "P-148",
+      "reason": "생명 아키텍처 → 식품과학"
+    },
+    {
+      "from": "P-146",
+      "to": "P-149",
+      "reason": "생명 아키텍처 → 해양과학"
+    },
+    {
+      "from": "P-161",
+      "to": "P-162",
+      "reason": "마케팅 법칙 → 서비스 플랫폼"
+    },
+    {
+      "from": "P-161",
+      "to": "P-163",
+      "reason": "마케팅 → 감성 서비스"
+    },
+    {
+      "from": "P-162",
+      "to": "P-164",
+      "reason": "서비스 플랫폼 → 완전인지 플랫폼"
+    },
+    {
+      "from": "P-163",
+      "to": "P-164",
+      "reason": "감성 서비스 → 완전인지 플랫폼"
+    },
+    {
+      "from": "P-011",
+      "to": "P-006",
+      "reason": "AI 66기법 → 칩 설계 가속기 요구"
+    },
+    {
+      "from": "P-011",
+      "to": "P-015",
+      "reason": "AI 66기법 → Chip Architecture Guide"
+    },
+    {
+      "from": "P-012",
+      "to": "P-037",
+      "reason": "Full Pipeline → 로봇 AI 기반"
+    },
+    {
+      "from": "P-012",
+      "to": "P-156",
+      "reason": "Full Pipeline → 자율주행 AI"
+    },
+    {
+      "from": "P-006",
+      "to": "P-049",
+      "reason": "칩 7단 → 디스플레이 프로세서"
+    },
+    {
+      "from": "P-006",
+      "to": "P-084",
+      "reason": "칩 7단 → 통합 웨어러블"
+    },
+    {
+      "from": "P-006",
+      "to": "P-070",
+      "reason": "칩 7단 → MRAM 초전도 메모리"
+    },
+    {
+      "from": "P-020",
+      "to": "P-001",
+      "reason": "배터리 기술 → 핵융합 에너지 저장"
+    },
+    {
+      "from": "P-022",
+      "to": "P-001",
+      "reason": "에너지 통합 → 핵융합 통합"
+    },
+    {
+      "from": "P-042",
+      "to": "P-063",
+      "reason": "상온 초전도 → UFO (Meissner 부양)"
+    },
+    {
+      "from": "P-042",
+      "to": "P-065",
+      "reason": "상온 초전도 → 중력파 검출"
+    },
+    {
+      "from": "P-042",
+      "to": "P-066",
+      "reason": "상온 초전도 → 투명망토"
+    },
+    {
+      "from": "P-042",
+      "to": "P-069",
+      "reason": "상온 초전도 → 호버보드"
+    },
+    {
+      "from": "P-042",
+      "to": "P-070",
+      "reason": "상온 초전도 → MRAM"
+    },
+    {
+      "from": "P-042",
+      "to": "P-071",
+      "reason": "상온 초전도 → 해저 송전"
+    },
+    {
+      "from": "P-042",
+      "to": "P-072",
+      "reason": "상온 초전도 → 소형 가속기"
+    },
+    {
+      "from": "P-042",
+      "to": "P-073",
+      "reason": "상온 초전도 → 날씨 제어"
+    },
+    {
+      "from": "P-042",
+      "to": "P-082",
+      "reason": "상온 초전도 → 담수화"
+    },
+    {
+      "from": "P-031",
+      "to": "P-006",
+      "reason": "물질합성 → 칩 소재"
+    },
+    {
+      "from": "P-031",
+      "to": "P-020",
+      "reason": "물질합성 → 배터리 소재"
+    },
+    {
+      "from": "P-031",
+      "to": "P-039",
+      "reason": "물질합성 → 초전도체 소재"
+    },
+    {
+      "from": "P-040",
+      "to": "P-039",
+      "reason": "순수수학 → 초전도체 이론"
+    },
+    {
+      "from": "P-041",
+      "to": "P-039",
+      "reason": "우주론/입자 → 초전도체 물리"
+    },
+    {
+      "from": "P-064",
+      "to": "P-074",
+      "reason": "뇌-기계 인터페이스 → 의식 업로드"
+    },
+    {
+      "from": "P-064",
+      "to": "P-075",
+      "reason": "뇌-기계 인터페이스 → 텔레파시"
+    },
+    {
+      "from": "P-064",
+      "to": "P-077",
+      "reason": "뇌-기계 인터페이스 → 꿈 기록"
+    },
+    {
+      "from": "P-064",
+      "to": "P-092",
+      "reason": "뇌-기계 인터페이스 → 꿈 인터페이스"
+    },
+    {
+      "from": "P-064",
+      "to": "P-093",
+      "reason": "뇌-기계 인터페이스 → 감정 공유"
+    },
+    {
+      "from": "P-007",
+      "to": "P-064",
+      "reason": "ANIMA-SOC → 뇌-기계 인터페이스"
+    },
+    {
+      "from": "P-007",
+      "to": "P-151",
+      "reason": "ANIMA-SOC → 의식 프로세서"
+    },
+    {
+      "from": "P-011",
+      "to": "P-150",
+      "reason": "AI 기법 → 인지 아키텍처"
+    },
+    {
+      "from": "P-011",
+      "to": "P-037",
+      "reason": "AI 기법 → 로봇"
+    },
+    {
+      "from": "P-012",
+      "to": "P-019",
+      "reason": "Full Pipeline → 역설계 Suite"
+    },
+    {
+      "from": "P-084",
+      "to": "P-085",
+      "reason": "통합 웨어러블 → AI 안경"
+    },
+    {
+      "from": "P-084",
+      "to": "P-086",
+      "reason": "통합 웨어러블 → AI 이어폰"
+    },
+    {
+      "from": "P-084",
+      "to": "P-087",
+      "reason": "통합 웨어러블 → AI 외골격"
+    },
+    {
+      "from": "P-084",
+      "to": "P-088",
+      "reason": "통합 웨어러블 → AI 의수/의족"
+    },
+    {
+      "from": "P-084",
+      "to": "P-089",
+      "reason": "통합 웨어러블 → 전자 피부"
+    },
+    {
+      "from": "P-084",
+      "to": "P-090",
+      "reason": "통합 웨어러블 → AI 의류"
+    },
+    {
+      "from": "P-084",
+      "to": "P-091",
+      "reason": "통합 웨어러블 → 디지털 후각"
+    },
+    {
+      "from": "P-031",
+      "to": "P-102",
+      "reason": "물질합성 → 나노봇 소재"
+    },
+    {
+      "from": "P-012",
+      "to": "P-102",
+      "reason": "AI Pipeline → 나노봇 AI 제어"
+    },
+    {
+      "from": "P-043",
+      "to": "P-101",
+      "reason": "차원펼침 → 크로스 도메인 메가 브릿지"
+    },
+    {
+      "from": "P-144",
+      "to": "P-145",
+      "reason": "바이러스 진화 → HIV 치료"
+    },
+    {
+      "from": "P-006",
+      "to": "P-119",
+      "reason": "칩 7단 → 반도체 패키징"
+    },
+    {
+      "from": "P-040",
+      "to": "P-172",
+      "reason": "순수수학 → 양자컴퓨터"
+    },
+    {
+      "from": "P-172",
+      "to": "P-068",
+      "reason": "양자컴퓨터 → 양자 얽힘 통신"
+    },
+    {
+      "from": "P-172",
+      "to": "P-083",
+      "reason": "양자컴퓨터 → 양자 예측기"
+    },
+    {
+      "from": "P-172",
+      "to": "P-100",
+      "reason": "양자컴퓨터 → 우주 시뮬레이션"
+    },
+    {
+      "from": "P-001",
+      "to": "P-062",
+      "reason": "핵융합 → 재사용 발사체 (추진 에너지)"
+    },
+    {
+      "from": "P-042",
+      "to": "P-062",
+      "reason": "상온 초전도 → 발사체 (마그넷)"
+    },
+    {
+      "from": "P-040",
+      "to": "P-100",
+      "reason": "순수수학 → 우주 시뮬레이션"
+    },
+    {
+      "from": "P-012",
+      "to": "P-157",
+      "reason": "Full Pipeline → 항공공학 AI"
+    },
+    {
+      "from": "P-044",
+      "to": "P-158",
+      "reason": "프로그래밍언어 → 브라우저"
+    },
+    {
+      "from": "P-012",
+      "to": "P-159",
+      "reason": "Full Pipeline → 의료기기 AI"
+    },
+    {
+      "from": "P-012",
+      "to": "P-162",
+      "reason": "Full Pipeline → 서비스 플랫폼"
+    },
+    {
+      "from": "P-006",
+      "to": "P-064",
+      "reason": "칩 7단 → HEXA-NEURO"
+    },
+    {
+      "from": "P-011",
+      "to": "P-064",
+      "reason": "AI 기법 → HEXA-NEURO AI"
+    },
+    {
+      "from": "P-048",
+      "to": "P-171",
+      "reason": "네트워크 프로토콜 → 네트워크 아키텍처"
+    },
+    {
+      "from": "P-012",
+      "to": "P-170",
+      "reason": "Full Pipeline → 제조 품질관리 AI"
+    }
+  ],
+  "layers": {
+    "0": [
+      "P-011",
+      "P-021",
+      "P-025",
+      "P-026",
+      "P-027",
+      "P-031",
+      "P-040",
+      "P-041",
+      "P-044",
+      "P-051",
+      "P-058",
+      "P-060",
+      "P-067",
+      "P-076",
+      "P-078",
+      "P-079",
+      "P-080",
+      "P-081",
+      "P-094",
+      "P-095",
+      "P-096",
+      "P-097",
+      "P-098",
+      "P-099",
+      "P-103",
+      "P-104",
+      "P-105",
+      "P-106",
+      "P-107",
+      "P-108",
+      "P-109",
+      "P-110",
+      "P-111",
+      "P-112",
+      "P-113",
+      "P-114",
+      "P-115",
+      "P-116",
+      "P-117",
+      "P-118",
+      "P-120",
+      "P-121",
+      "P-122",
+      "P-123",
+      "P-124",
+      "P-125",
+      "P-126",
+      "P-127",
+      "P-128",
+      "P-129",
+      "P-130",
+      "P-131",
+      "P-132",
+      "P-133",
+      "P-134",
+      "P-135",
+      "P-136",
+      "P-137",
+      "P-138",
+      "P-139",
+      "P-140",
+      "P-146",
+      "P-160",
+      "P-161",
+      "P-165",
+      "P-166",
+      "P-167",
+      "P-168",
+      "P-169",
+      "P-173"
+    ],
+    "1": [
+      "P-006",
+      "P-012",
+      "P-013",
+      "P-014",
+      "P-015",
+      "P-020",
+      "P-028",
+      "P-029",
+      "P-030",
+      "P-032",
+      "P-033",
+      "P-034",
+      "P-039",
+      "P-043",
+      "P-046",
+      "P-047",
+      "P-048",
+      "P-052",
+      "P-053",
+      "P-054",
+      "P-055",
+      "P-057",
+      "P-059",
+      "P-061",
+      "P-141",
+      "P-147",
+      "P-148",
+      "P-149",
+      "P-150",
+      "P-158",
+      "P-163",
+      "P-172"
+    ],
+    "2": [
+      "P-007",
+      "P-008",
+      "P-009",
+      "P-017",
+      "P-018",
+      "P-019",
+      "P-022",
+      "P-024",
+      "P-035",
+      "P-037",
+      "P-042",
+      "P-045",
+      "P-049",
+      "P-056",
+      "P-068",
+      "P-083",
+      "P-084",
+      "P-100",
+      "P-101",
+      "P-102",
+      "P-119",
+      "P-142",
+      "P-143",
+      "P-152",
+      "P-153",
+      "P-154",
+      "P-155",
+      "P-156",
+      "P-157",
+      "P-159",
+      "P-162",
+      "P-170",
+      "P-171"
+    ],
+    "3": [
+      "P-001",
+      "P-010",
+      "P-016",
+      "P-023",
+      "P-036",
+      "P-038",
+      "P-050",
+      "P-063",
+      "P-064",
+      "P-065",
+      "P-066",
+      "P-069",
+      "P-070",
+      "P-071",
+      "P-072",
+      "P-073",
+      "P-082",
+      "P-085",
+      "P-086",
+      "P-087",
+      "P-088",
+      "P-089",
+      "P-090",
+      "P-091",
+      "P-144",
+      "P-151",
+      "P-164"
+    ],
+    "4": [
+      "P-002",
+      "P-003",
+      "P-004",
+      "P-062",
+      "P-074",
+      "P-075",
+      "P-077",
+      "P-092",
+      "P-093",
+      "P-145"
+    ],
+    "5": [
+      "P-005"
+    ]
+  },
+  "roots": [
+    "P-011",
+    "P-021",
+    "P-025",
+    "P-026",
+    "P-027",
+    "P-031",
+    "P-040",
+    "P-041",
+    "P-044",
+    "P-051",
+    "P-058",
+    "P-060",
+    "P-067",
+    "P-076",
+    "P-078",
+    "P-079",
+    "P-080",
+    "P-081",
+    "P-094",
+    "P-095",
+    "P-096",
+    "P-097",
+    "P-098",
+    "P-099",
+    "P-103",
+    "P-104",
+    "P-105",
+    "P-106",
+    "P-107",
+    "P-108",
+    "P-109",
+    "P-110",
+    "P-111",
+    "P-112",
+    "P-113",
+    "P-114",
+    "P-115",
+    "P-116",
+    "P-117",
+    "P-118",
+    "P-120",
+    "P-121",
+    "P-122",
+    "P-123",
+    "P-124",
+    "P-125",
+    "P-126",
+    "P-127",
+    "P-128",
+    "P-129",
+    "P-130",
+    "P-131",
+    "P-132",
+    "P-133",
+    "P-134",
+    "P-135",
+    "P-136",
+    "P-137",
+    "P-138",
+    "P-139",
+    "P-140",
+    "P-146",
+    "P-160",
+    "P-161",
+    "P-165",
+    "P-166",
+    "P-167",
+    "P-168",
+    "P-169",
+    "P-173"
+  ],
+  "leaves": [
+    "P-002",
+    "P-005",
+    "P-010",
+    "P-016",
+    "P-019",
+    "P-023",
+    "P-024",
+    "P-028",
+    "P-029",
+    "P-030",
+    "P-036",
+    "P-038",
+    "P-045",
+    "P-050",
+    "P-052",
+    "P-053",
+    "P-055",
+    "P-056",
+    "P-057",
+    "P-059",
+    "P-061",
+    "P-062",
+    "P-063",
+    "P-065",
+    "P-066",
+    "P-067",
+    "P-068",
+    "P-069",
+    "P-070",
+    "P-071",
+    "P-072",
+    "P-073",
+    "P-074",
+    "P-075",
+    "P-076",
+    "P-077",
+    "P-078",
+    "P-079",
+    "P-080",
+    "P-081",
+    "P-082",
+    "P-083",
+    "P-085",
+    "P-086",
+    "P-087",
+    "P-088",
+    "P-089",
+    "P-090",
+    "P-091",
+    "P-092",
+    "P-093",
+    "P-095",
+    "P-096",
+    "P-097",
+    "P-098",
+    "P-099",
+    "P-100",
+    "P-101",
+    "P-102",
+    "P-103",
+    "P-104",
+    "P-105",
+    "P-106",
+    "P-107",
+    "P-108",
+    "P-109",
+    "P-110",
+    "P-111",
+    "P-112",
+    "P-113",
+    "P-114",
+    "P-115",
+    "P-116",
+    "P-117",
+    "P-118",
+    "P-119",
+    "P-120",
+    "P-121",
+    "P-122",
+    "P-123",
+    "P-124",
+    "P-125",
+    "P-126",
+    "P-127",
+    "P-128",
+    "P-129",
+    "P-130",
+    "P-131",
+    "P-132",
+    "P-133",
+    "P-134",
+    "P-135",
+    "P-136",
+    "P-137",
+    "P-138",
+    "P-139",
+    "P-140",
+    "P-145",
+    "P-147",
+    "P-148",
+    "P-149",
+    "P-151",
+    "P-152",
+    "P-153",
+    "P-154",
+    "P-155",
+    "P-156",
+    "P-157",
+    "P-158",
+    "P-159",
+    "P-160",
+    "P-164",
+    "P-165",
+    "P-166",
+    "P-167",
+    "P-168",
+    "P-169",
+    "P-170",
+    "P-171",
+    "P-173"
+  ],
+  "critical_path": {
+    "path": [
+      "P-031",
+      "P-020",
+      "P-022",
+      "P-001",
+      "P-003",
+      "P-005"
+    ],
+    "length": 6,
+    "description": "P-031(궁극의 물질합성 8단) -> P-020(궁극의 배터리 8단) -> P-022(궁극의 에너지 통합) -> P-001(궁극의 핵융합 발전소) -> P-003(진화 Mk.I~V) -> P-005(천장확인)"
+  },
+  "top20_connected": [
+    {
+      "id": "P-012",
+      "name": "Full N6 Pipeline",
+      "connections": 12
+    },
+    {
+      "id": "P-042",
+      "name": "궁극의 상온 초전도체",
+      "connections": 11
+    },
+    {
+      "id": "P-006",
+      "name": "HEXA 칩 7단",
+      "connections": 11
+    },
+    {
+      "id": "P-011",
+      "name": "66 Techniques",
+      "connections": 9
+    },
+    {
+      "id": "P-064",
+      "name": "HEXA-NEURO 뇌-기계 인터페이스",
+      "connections": 8
+    },
+    {
+      "id": "P-084",
+      "name": "HEXA-ONE 통합 웨어러블",
+      "connections": 8
+    },
+    {
+      "id": "P-031",
+      "name": "궁극의 물질합성 8단",
+      "connections": 8
+    },
+    {
+      "id": "P-001",
+      "name": "궁극의 핵융합 발전소",
+      "connections": 7
+    },
+    {
+      "id": "P-016",
+      "name": "천장확인",
+      "connections": 6
+    },
+    {
+      "id": "P-150",
+      "name": "HEXA-COGNI n=6 인지 아키텍처",
+      "connections": 6
+    },
+    {
+      "id": "P-044",
+      "name": "궁극의 프로그래밍언어",
+      "connections": 5
+    },
+    {
+      "id": "P-051",
+      "name": "궁극의 오디오 7단",
+      "connections": 5
+    },
+    {
+      "id": "P-035",
+      "name": "실험검증 + TP 28/28",
+      "connections": 4
+    },
+    {
+      "id": "P-010",
+      "name": "천장확인",
+      "connections": 4
+    },
+    {
+      "id": "P-040",
+      "name": "궁극의 순수수학",
+      "connections": 4
+    },
+    {
+      "id": "P-172",
+      "name": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "connections": 4
+    },
+    {
+      "id": "P-039",
+      "name": "궁극의 초전도체",
+      "connections": 4
+    },
+    {
+      "id": "P-045",
+      "name": "천장확인",
+      "connections": 4
+    },
+    {
+      "id": "P-007",
+      "name": "ANIMA-SOC",
+      "connections": 4
+    },
+    {
+      "id": "P-022",
+      "name": "궁극의 에너지 통합",
+      "connections": 4
+    }
+  ]
+}
