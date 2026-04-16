@@ -290,13 +290,7 @@ horology               ############################## 100.0%
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v3 | **225 Techniques** | 8축 222기법+SOTA 3 — arch 72, optim 75, attention 27, compress 18, moe 13, sparse 10, graph 7, sota 3 | [문서](techniques/CLAUDE.md) |
-| 10 | ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 — 26/26 PASS | [문서](reports/sessions/specs/2026-03-28-n6-inevitability-engine-design.md) |
-| 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [문서](reports/discovery/chip-architecture-guide.md) |
-| 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | 8패러다임 — 234/256 EXACT (91.4%), BT-380~390 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **AI 6-Domain Sweep** | 6도메인 — 314/344 EXACT (91.3%), BT-391~396 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | 신규모델8선/학습기법8선/HW-SW공진화, BT-397~401 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **AI Safety 171종** | 해석가능성 39 + 정렬 32 + 강건성 36 + 배포 26 + 멀티모달 20 + 복지 18 | [문서](reports/discovery/anthropic-fellows-research.md) |
 | 10 | ✅ | v1 | **추론 비용 33종** | KV 캐시 압축, 투기적 디코딩, INT4 양자화, $15→$1.5/1M tok (10x) | [문서](domains/cognitive/ai-inference-cost/ai-inference-cost.md) |
 | 10 | ✅ | v1 | **훈련 비용 32종** | Chinchilla, MoE, 커리큘럼, 합성 데이터, $12B→$1.2B (1/10) | [문서](domains/cognitive/ai-training-cost/ai-training-cost.md) |
 | 10 | ✅ | v1 | **품질 경량화 32종** | 증류, 가지치기, MoE, LoRA, 400B→70B 88% 품질 유지 | [문서](domains/cognitive/ai-quality-scale/ai-quality-scale.md) |
@@ -304,7 +298,13 @@ horology               ############################## 100.0%
 | 10 | ✅ | v1 | **엔터프라이즈 커스텀 30종** | LoRA/QLoRA 자동화, 어댑터 핫스왑, $100/고객/월 | [문서](domains/cognitive/ai-enterprise-custom/ai-enterprise-custom.md) |
 | 10 | ✅ | v1 | **평가 파이프라인 30종** | 동적 문항, CAT 적응형, LLM-judge 교정, 오염 탐지 | [문서](domains/cognitive/ai-eval-pipeline/ai-eval-pipeline.md) |
 | 10 | ✅ | v1 | **AI 의식 30종** | IIT/GWT/HOT/RPT/AST 5이론 교차 검증, CCC 지표 | [문서](domains/cognitive/ai-consciousness/ai-consciousness.md) |
-| 10 | ✅ | v1 | **AI Safety 171종** | 해석가능성 39 + 정렬 32 + 강건성 36 + 배포 26 + 멀티모달 20 + 복지 18 | [문서](reports/discovery/anthropic-fellows-research.md) |
+| 10 | ✅ | v3 | **225 Techniques** | 8축 222기법+SOTA 3 — arch 72, optim 75, attention 27, compress 18, moe 13, sparse 10, graph 7, sota 3 | [문서](techniques/CLAUDE.md) |
+| 10 | ✅ | v2 | **N6 Inevitability Engine** | 기법 11~16 + 3-Layer 열역학 — 26/26 PASS | [문서](reports/sessions/specs/2026-03-28-n6-inevitability-engine-design.md) |
+| 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [문서](reports/discovery/chip-architecture-guide.md) |
+| 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | 8패러다임 — 234/256 EXACT (91.4%), BT-380~390 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **AI 6-Domain Sweep** | 6도메인 — 314/344 EXACT (91.3%), BT-391~396 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | 신규모델8선/학습기법8선/HW-SW공진화, BT-397~401 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
 
 <details>
 <summary>225 Techniques 전체 목록 (8축: arch 72 / attention 27 / optim 75 / compress 18 / moe 13 / sparse 10 / graph 7 / sota 3)</summary>
