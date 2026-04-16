@@ -275,10 +275,9 @@ fn render_battery_scale_block(sec) {
         let usage    = to_string(get_or(s, "usage", ""))
         let n6_key   = to_string(get_or(s, "n6_key", ""))
         let link     = to_string(get_or(s, "link", ""))
-        let label    = to_string(get_or(s, "link_label", "문서"))
         let mut link_str = ""
         if len(link) > 0 {
-            link_str = "[" + label + "](" + link + ")"
+            link_str = "[문서](" + link + ")"
         }
         out = out + "\n| " + stage + " | " + ufo + " | " + ceil + " | " + scale + " | **" + capacity + "** | " + usage + " | " + n6_key + " | " + link_str + " |"
         i = i + 1
