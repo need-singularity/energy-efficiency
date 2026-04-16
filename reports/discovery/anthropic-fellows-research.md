@@ -22,7 +22,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v1 | **AI Safety 171종** | 해석가능성 39 + 정렬 32 + 적대적 강건성 36 + 배포 안전 26 + 멀티모달 안전 20 + 모델 복지 18. Anthropic 전 연구 트랙 커버. 15섹션+10검증코드 ×6 | [해석가능성](../../domains/cognitive/ai-interpretability/ai-interpretability.md) · [정렬](../../domains/cognitive/ai-alignment/ai-alignment.md) · [강건성](../../domains/cognitive/ai-adversarial/ai-adversarial.md) · [배포](../../domains/cognitive/ai-deployment/ai-deployment.md) · [멀티모달](../../domains/cognitive/ai-multimodal/ai-multimodal.md) · [복지](../../domains/cognitive/ai-welfare/ai-welfare.md) |
+| 10 | ✅ | v1 | **AI Safety 171종** | 해석가능성 39 + 정렬 32 + 적대적 강건성 36 + 배포 안전 26 + 멀티모달 안전 20 + 모델 복지 18. Anthropic 전 연구 트랙 커버. 15섹션+10검증코드 ×6 | [문서](../../domains/cognitive/ai-interpretability/ai-interpretability.md) |
 
 ---
 
