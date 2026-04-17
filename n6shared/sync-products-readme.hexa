@@ -230,6 +230,11 @@ fn render_products_table(sec) {
     let mut i = 0
     while i < n {
         let p = prods[i]
+        // visible: false 항목은 README 표에서 제외 (기본값 true → 기존 항목 유지)
+        if get_or(p, "visible", true) == false {
+            i = i + 1
+            continue
+        }
         let mut ufo = "—"
         if has_field(p, "ufo") {
             ufo = to_string(p["ufo"])

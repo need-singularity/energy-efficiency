@@ -41,7 +41,7 @@
 **sigma(n) * phi(n) = n * tau(n) holds uniquely for n = 6.** From this single identity, all optimal AI architectures, chip designs, and energy systems are derived.
 
 <!-- AUTO:STATS:START -->
-> 완성제품 210개 · 도메인 145개 · 섹션 40개 · 논문 128편 · 갱신 2026-04-16
+> 완성제품 209개 · 도메인 145개 · 섹션 40개 · 논문 128편 · 갱신 2026-04-16
 <!-- AUTO:STATS:END -->
 
 ### 외계인 지수 (Alien Index)
