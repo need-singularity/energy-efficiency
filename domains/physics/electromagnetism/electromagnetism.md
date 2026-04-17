@@ -725,3 +725,29 @@ L0~L4 5단 통합. n=6 EXACT 93% 이상 검증. 유인/상용 인증.
 스케일 모델 τ=4 단위. 부품 단계 — 통합은 Mk.II 이후.
 
 </details>
+
+## §N SSCB 적용 — 턴오프 서지 / 동축 current-loop
+
+선행 도메인으로서 [SSCB](../../compute/sscb/sscb.md) 의 §7.3 dv/dt 오버슈트 검증에 직접 맞물린다.
+
+**전자기 모델**:
+
+```
+v_over = L_stray · di/dt = L_stray · I_SC / t_off
+```
+
+mk1: L_stray=15 nH, I_SC=5 kA, t_off=600 ns → di/dt=8.33 GA/s → v_over=125 V (한계 240 V, PASS).
+
+**돌파 경로 (smash seed — EM × packaging)**:
+루프 면적 최소화 = L_stray 직선 감소. 동축 current-loop PCB (신호·귀환 수직 적층)
+로 L_stray 15→3 nH 달성 시 v_over=25 V. 스너버 회로 영구 제거 (BOM -$2).
+
+**SSCB 역매핑**:
+
+| SSCB 항목 | 전자기 원리 | 정량 연결 |
+|---|---|---|
+| §7.3 dv/dt 오버슈트 | Faraday v = -L·di/dt | 루프면적·귀환경로 |
+| §7.1 턴오프 예산 | 게이트 충전 Q=∫i·dt | 푸시풀 I_drv 상한 |
+| Mk.II 동축 loop | 상호 M 최대화 | 신호/귀환 반대방향 |
+
+본 도메인이 SSCB 의 전자기 경계조건 SSOT. L_stray·dv/dt 변경 시 본 §N 동기화.

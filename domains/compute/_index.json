@@ -5,16 +5,17 @@
   "_version": "1.1.0",
   "_meta": {
     "_category_name": "컴퓨팅·반도체·칩·네트워크·암호·OS·공간컴퓨팅",
-    "_domains_count": 58,
+    "_domains_count": 59,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
     "_updated": "2026-04-14"
   },
-  "_count": 58,
+  "_count": 59,
   "_changelog": [
     "1.0.0 (2026-04-12): compute 축 sub-SSOT 신설. 칩 6단계 로드맵 6 도메인 등록 (chip-hexa1, chip-pim, chip-3d, chip-photonic, chip-wafer, chip-sc). project_chip_architecture_goal.md 출처.",
-    "1.1.0 (2026-04-12): 전체 58 도메인 domains 배열 추가 (디스크 실측). chip-design 누락 보정. 타 카테고리 sub-SSOT 포맷 통일."
+    "1.1.0 (2026-04-12): 전체 58 도메인 domains 배열 추가 (디스크 실측). chip-design 누락 보정. 타 카테고리 sub-SSOT 포맷 통일.",
+    "1.2.0 (2026-04-17): sscb 도메인 등록 (59). §7 작동성 검증 10/10 PASS, BOM $31.5, Mk-∞ 사양, smash/free Mk.II 주입."
   ],
   "chip_6stage_roadmap": {
     "_doc": "HEXA-1 -> PIM -> 3D -> Photonic -> Wafer -> Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-n6-architecture/memory/project_chip_architecture_goal.md",
@@ -545,6 +546,16 @@
       "has_hexa": true,
       "has_verify": true,
       "status": "부분"
+    },
+    {
+      "slug": "sscb",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": true,
+      "status": "완성",
+      "_note": "SSCB (Solid-State Circuit Breaker) — 48V/100A SiC, 600ns 차단, BOM $31.5, §7 작동성 검증 10/10 PASS (mk1). Mk-∞ 특이점 사양 포함. smash/free 돌파 3종 Mk.II 주입."
     },
     {
       "slug": "software-crypto",

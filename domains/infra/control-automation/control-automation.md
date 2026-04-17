@@ -407,6 +407,39 @@ if __name__ == "__main__":
 
 ---
 
+## §N SSCB 적용 — Σ-Δ ADC + ADC-internal analog trip
+
+선행 도메인으로서 [SSCB](../../compute/sscb/sscb.md) 의 §7.1 턴오프 예산 / §7.7 ADC 대역 / §7.8
+IRQ 레이턴시에 공통으로 맞물린다.
+
+**mk1 제어 체인 (600 ns 예산)**:
+
+```
+션트 → Σ-Δ ADC (f_s 100 MHz, OSR 100, f_BW 500 kHz)
+     → aналог 비교기 trip (50 ns)
+     → MCU IRQ (Cortex-M4 120 MHz × 16 cycle = 133 ns)
+     → 게이트 드라이버 OFF (30 ns)
+     → SiC MOSFET 채널 차단 (52 ns)
+총 t_off = 266 ns (예산 600 ns, 55% 여유)
+```
+
+**돌파 경로 (smash seed — control × quantum)**:
+Mk.II 에서는 ADC-internal analog comparator trip 직접 게이트 드라이버 구동 (MCU 우회).
+t_comp 50→30 ns, IRQ 경로 제거 → 전체 t_off 266→220 ns. MCU 는 post-fault 로깅·재폐로만.
+
+**SSCB 역매핑**:
+
+| SSCB 항목 | 제어 원리 | 정량 연결 |
+|---|---|---|
+| §7.1 턴오프 예산 | 직렬 체인 레이턴시 | Σ t_i ≤ 600 ns |
+| §7.7 ADC 대역 | Nyquist f_BW = f_s/(2·OSR) | 500 kHz ≥ 400 kHz |
+| §7.8 IRQ 레이턴시 | N_cycle / f_clk | 16/120MHz = 133 ns |
+| Mk.II trip path | analog-direct | MCU 우회 20 ns 절감 |
+
+본 도메인이 SSCB 의 제어 레이턴시 SSOT. MCU 클럭·IRQ 사이클 변경 시 본 §N 및 SSCB §7.8 동시 갱신.
+
+---
+
 - **정직성 강령**: 본 문서는 `sample.md` gold-standard 를 따르며, 반례와 falsifier 를 반드시 명시.
 - **한글 필수**: 전 본문 한글, 영어 혼용 최소화.
 - **HEXA-FIRST**: Python stdlib 만 사용, 외부 의존성 없음.
