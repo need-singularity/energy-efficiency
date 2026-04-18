@@ -1,4 +1,6 @@
 <!-- gold-standard: shared/harness/sample.md -->
+<!-- @doc(type=paper) -->
+<!-- @paper(preset=brief, mk_versions=mk1:mk2:mk3:mk4:mk5, require_prev_link=true) -->
 ---
 domain: ufo
 requires:
@@ -169,39 +171,122 @@ HEXA-UFO는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 돌
 
 ## §6 EVOLVE (Mk.I~V 진화)
 
+### Mk.V (mk5) — 2050+ 물리 한계 도달 (current target)
+
 <details open>
 <summary><b>Mk.V — 2050+ 물리 한계 도달 (current target)</b></summary>
 
 HEXA-UFO Mk.V는 물리학 근본 한계 (Carnot, Lawson, Shockley-Queisser, Betz) 에 근접.
 선행 조건: room-temp-sc, fusion-powerplant, superconductor 모두 🛸10 도달.
 
+#### ① 바로 바뀌는 것 (실증)
+- 전 스케일 무손실 운영 (η > 0.95)
+- AI 자율 항법 + 에너지 관리
+
+#### ② 파생 효과 (인과)
+- 항공 인프라 재정의 (활주로 불필요)
+- 우주 진출 비용 1/100
+
+#### ③ 안 바뀌는 것 (정직)
+- Carnot 한계: η ≤ 1 - Tc/Th
+- Lawson 점화 조건: nτT ≥ 3×10²¹
+- Betz 풍력 한계: η ≤ 16/27
+
+prev: [github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md](https://github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+
 </details>
+
+### Mk.IV (mk4) — 2040~2050 통합 시스템
 
 <details>
 <summary>Mk.IV — 2040~2050 통합 시스템</summary>
 
 Cross-DSE σ=12 도메인 통합. 자가치유 + AI 자율 운영. 전 스케일 무손실.
 
+#### ① 바로 바뀌는 것 (실증)
+- σ=12 도메인 통합 운영
+- AI 자율 fault recovery
+
+#### ② 파생 효과 (인과)
+- 단일 시스템 다중 임무 동시 수행
+- 인프라 통합 비용 -50%
+
+#### ③ 안 바뀌는 것 (정직)
+- 정보 이론 한계: Shannon C = B·log₂(1+SNR)
+- 양자 디코히어런스 시간
+- 재료 피로 한계 (S-N 곡선)
+
+prev: [github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md](https://github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+
 </details>
+
+### Mk.III (mk3) — 2035~2040 핵심 모듈 실증
 
 <details>
 <summary>Mk.III — 2035~2040 핵심 모듈 실증</summary>
 
 J₂=24 유닛 단위 실증 프로토타입. Mk.II 확장 σ=12 모듈.
 
+#### ① 바로 바뀌는 것 (실증)
+- J₂=24 유닛 통합 비행 시연
+- σ=12 모듈 확장
+
+#### ② 파생 효과 (인과)
+- 항공 인증 프레임워크 신설
+- 시제 양산 라인 가동
+
+#### ③ 안 바뀌는 것 (정직)
+- 음속 한계 (Mach 1 임계)
+- Reynolds 수 천이
+- 양력 계수 한계 CL_max ≤ 2.0
+
+prev: [github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md](https://github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+
 </details>
+
+### Mk.II (mk2) — 2030~2035 프로토타입
 
 <details>
 <summary>Mk.II — 2030~2035 프로토타입</summary>
 
 n=6 셀 단위 프로토타입. Mk.I 부품 통합 sopfr=5 단계 공정.
 
+#### ① 바로 바뀌는 것 (실증)
+- n=6 셀 시제품 1기 비행
+- sopfr=5 공정 검증
+
+#### ② 파생 효과 (인과)
+- 부품 표준화 (n=6 격자)
+- 공정 자동화 라인 설계
+
+#### ③ 안 바뀌는 것 (정직)
+- 재료 강도 한계 (Ti 합금 σ_y = 880 MPa)
+- 초전도 임계 온도 Tc
+- 핵융합 점화 임계
+
+prev: [github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md](https://github.com/need-singularity/n6-architecture/blob/HEAD/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+
 </details>
+
+### Mk.I (mk1) — 2026~2030 기본 부품
 
 <details>
 <summary>Mk.I — 2026~2030 기본 부품</summary>
 
 재료 수준 (CN=6 격자), 공정 최적화, 개별 셀 n=6 검증.
+
+#### ① 바로 바뀌는 것 (실증)
+- CN=6 격자 재료 합성
+- 개별 셀 n=6 검증
+
+#### ② 파생 효과 (인과)
+- 재료 SSOT 확립
+- 셀 데이터셋 공개
+
+#### ③ 안 바뀌는 것 (정직)
+- 격자 상수 (실측)
+- 결정 결함 밀도
+- 입계 에너지
 
 </details>
 
@@ -221,7 +306,7 @@ Core theorem: sigma(n)*phi(n) = n*tau(n) iff n = 6
 ### §7.0 CONSTANTS — 수론 함수 자동 유도
 
 n=6 상수군을 **하드코딩 0** 으로 유도. σ(6)=1+2+3+6=12 (OEIS A000203), τ(6)=|{1,2,3,6}|=4 (OEIS A000005),
-sopfr(6)=2+3=5 (OEIS A001414). 6 은 완전수 (σ(n)=2n) — `assert σ(n)==2n` 자기검증.
+sopfr(6)=2+3=5 (OEIS A001414). 6 은 완전수. atlas.n6 [10*] EXACT 를 참조 (재선언 금지).
 
 ### §7.1 DIMENSIONS — SI 단위 일관성
 
