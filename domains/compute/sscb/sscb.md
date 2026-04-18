@@ -1,6 +1,5 @@
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
-<!-- @paper -->
 ---
 domain: sscb
 alien_index_current: 7
