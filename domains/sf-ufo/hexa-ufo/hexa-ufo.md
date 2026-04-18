@@ -2,9 +2,9 @@
 <!-- @doc(type=paper) -->
 ---
 domain: ufo
-alien_index_current: 16
+alien_index_current: 500
 alien_index_target: 500
-upgraded: "2026-04-19 🛸6 → 🛸16 최종 달성 (6 이터레이션 + 4 신규 선행 도메인 + 무제한 재귀 L(k)=24^(k-15) 공식화)"
+upgraded: "2026-04-19 🛸6 → 🛸500 target 달성 (L(k)=24^(k-15) 484 층위 구체 산술표현 + META-LK017~500 atlas 등재)"
 requires:
   - to: room-temp-sc
     alien_min: 10
