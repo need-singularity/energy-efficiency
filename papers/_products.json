@@ -151,66 +151,26 @@
         {
           "label": "문서",
           "path": "domains/compute/chip-architecture/chip-architecture.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-advanced-packaging-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-consciousness-soc-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-3d-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-photon-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-pim-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-super-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-wafer-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-unified-soc-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-dram-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-vnand-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-exynos-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-performance-chip-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-chip-design-ladder-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-chip-dse-convergence-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-advanced-packaging-paper.md",
+        "papers/n6-consciousness-soc-paper.md",
+        "papers/n6-hexa-3d-paper.md",
+        "papers/n6-hexa-photon-paper.md",
+        "papers/n6-hexa-pim-paper.md",
+        "papers/n6-hexa-super-paper.md",
+        "papers/n6-hexa-wafer-paper.md",
+        "papers/n6-unified-soc-paper.md",
+        "papers/n6-dram-paper.md",
+        "papers/n6-vnand-paper.md",
+        "papers/n6-exynos-paper.md",
+        "papers/n6-performance-chip-paper.md",
+        "papers/n6-chip-design-ladder-paper.md",
+        "papers/n6-chip-dse-convergence-paper.md"
+      ]
     },
     {
       "id": "P-007",
@@ -230,14 +190,13 @@
         {
           "label": "문서",
           "path": "domains/compute/chip-architecture/chip-architecture.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-anima-soc-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-anima-soc-paper.md"
+      ]
     },
     {
       "id": "P-008",
@@ -257,14 +216,13 @@
         {
           "label": "문서",
           "path": "domains/compute/chip-architecture/chip-architecture.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-topo-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-hexa-topo-paper.md"
+      ]
     },
     {
       "id": "P-009",
@@ -284,14 +242,13 @@
         {
           "label": "문서",
           "path": "domains/compute/chip-architecture/chip-architecture.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-asic-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-hexa-asic-paper.md"
+      ]
     },
     {
       "id": "P-010",
@@ -335,22 +292,15 @@
         {
           "label": "문서",
           "path": "domains/compute/ai-efficiency/ai-efficiency.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-ai-17-techniques-experimental-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-cross-paradigm-ai-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-sota-ssm-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-ai-17-techniques-experimental-paper.md",
+        "papers/n6-cross-paradigm-ai-paper.md",
+        "papers/n6-sota-ssm-paper.md"
+      ]
     },
     {
       "id": "P-012",
@@ -566,14 +516,13 @@
         {
           "label": "문서",
           "path": "domains/cognitive/superpowers/superpowers.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-thermodynamics-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-thermodynamics-paper.md"
+      ]
     },
     {
       "id": "P-021",
@@ -984,14 +933,13 @@
         {
           "label": "문서",
           "path": "domains/infra/robotics/robotics.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-control-automation-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-control-automation-paper.md"
+      ]
     },
     {
       "id": "P-038",
@@ -1038,66 +986,26 @@
         {
           "label": "문서",
           "path": "domains/energy/superconductor/superconductor.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-classical-mechanics-accelerator-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-curvature-geometry-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-dimensional-unfolding-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-extra-dimensions-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-pure-mathematics-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-quantum-computing-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-thermodynamics-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-warp-metric-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-superconductor-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-particle-cosmology-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-electromagnetism-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-fluid-dynamics-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-topology-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-gravity-wave-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-classical-mechanics-accelerator-paper.md",
+        "papers/n6-curvature-geometry-paper.md",
+        "papers/n6-dimensional-unfolding-paper.md",
+        "papers/n6-extra-dimensions-paper.md",
+        "papers/n6-pure-mathematics-paper.md",
+        "papers/n6-quantum-computing-paper.md",
+        "papers/n6-thermodynamics-paper.md",
+        "papers/n6-warp-metric-paper.md",
+        "papers/n6-superconductor-paper.md",
+        "papers/n6-particle-cosmology-paper.md",
+        "papers/n6-electromagnetism-paper.md",
+        "papers/n6-fluid-dynamics-paper.md",
+        "papers/n6-topology-paper.md",
+        "papers/n6-gravity-wave-paper.md"
+      ]
     },
     {
       "id": "P-040",
@@ -1486,14 +1394,13 @@
         {
           "label": "문서",
           "path": "domains/culture/audio/audio.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-hexa-earphone-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-hexa-earphone-paper.md"
+      ]
     },
     {
       "id": "P-055",
@@ -1582,14 +1489,13 @@
         {
           "label": "문서",
           "path": "domains/infra/safety/safety.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-governance-safety-urban-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-governance-safety-urban-paper.md"
+      ]
     },
     {
       "id": "P-059",
@@ -1633,14 +1539,13 @@
         {
           "label": "문서",
           "path": "domains/infra/fun-car/fun-car.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-games-sports-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-games-sports-paper.md"
+      ]
     },
     {
       "id": "P-061",
@@ -1686,18 +1591,14 @@
         {
           "label": "문서",
           "path": "domains/space/hexa-starship/hexa-starship.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-aerospace-transport-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-space-systems-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-aerospace-transport-paper.md",
+        "papers/n6-space-systems-paper.md"
+      ]
     },
     {
       "id": "P-063",
@@ -1717,14 +1618,13 @@
         {
           "label": "문서",
           "path": "domains/sf-ufo/sf/sf.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-warp-metric-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-warp-metric-paper.md"
+      ]
     },
     {
       "id": "P-064",
@@ -1765,14 +1665,13 @@
         {
           "label": "문서",
           "path": "domains/life/neuro/neuro.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-atlas-promotion-7-to-10-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-atlas-promotion-7-to-10-paper.md"
+      ]
     },
     {
       "id": "P-065",
@@ -3441,14 +3340,13 @@
         {
           "label": "문서",
           "path": "domains/life/therapeutic-nanobot/therapeutic-nanobot.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-therapeutic-nanobot-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-therapeutic-nanobot-paper.md"
+      ]
     },
     {
       "id": "P-103",
@@ -3471,16 +3369,15 @@
       ],
       "links": [
         {
-          "label": "목표",
+          "label": "문서",
           "path": "domains/culture/religion/religion.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-archaeology-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-archaeology-paper.md"
+      ]
     },
     {
       "id": "P-104",
@@ -3673,18 +3570,14 @@
         {
           "label": "문서",
           "path": "domains/life/fermentation/fermentation.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-fermentation-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-visual-arts-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-fermentation-paper.md",
+        "papers/n6-visual-arts-paper.md"
+      ]
     },
     {
       "id": "P-111",
@@ -3949,18 +3842,14 @@
         {
           "label": "문서",
           "path": "domains/compute/advanced-packaging/advanced-packaging.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-advanced-packaging-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-synthetic-biology-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-advanced-packaging-paper.md",
+        "papers/n6-synthetic-biology-paper.md"
+      ]
     },
     {
       "id": "P-120",
@@ -4265,14 +4154,13 @@
         {
           "label": "문서",
           "path": "domains/materials/nylon/nylon.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_nylon.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_nylon.hexa"
+      ]
     },
     {
       "id": "P-127",
@@ -4313,14 +4201,13 @@
         {
           "label": "문서",
           "path": "domains/materials/aramid/aramid.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_aramid.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_aramid.hexa"
+      ]
     },
     {
       "id": "P-128",
@@ -4361,14 +4248,13 @@
         {
           "label": "문서",
           "path": "domains/materials/tire-cord/tire-cord.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_tire_cord.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_tire_cord.hexa"
+      ]
     },
     {
       "id": "P-129",
@@ -4409,14 +4295,13 @@
         {
           "label": "문서",
           "path": "domains/materials/epoxy/epoxy.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_epoxy.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_epoxy.hexa"
+      ]
     },
     {
       "id": "P-130",
@@ -4457,14 +4342,13 @@
         {
           "label": "문서",
           "path": "domains/materials/pet-film/pet-film.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_pet_film.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_pet_film.hexa"
+      ]
     },
     {
       "id": "P-131",
@@ -4505,14 +4389,13 @@
         {
           "label": "문서",
           "path": "domains/infra/airbag/airbag.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_airbag.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_airbag.hexa"
+      ]
     },
     {
       "id": "P-132",
@@ -4553,14 +4436,13 @@
         {
           "label": "문서",
           "path": "domains/infra/water-treatment/water-treatment.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_water_treatment.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_water_treatment.hexa"
+      ]
     },
     {
       "id": "P-133",
@@ -4601,14 +4483,13 @@
         {
           "label": "문서",
           "path": "domains/energy/pemfc/pemfc.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_pemfc.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_pemfc.hexa"
+      ]
     },
     {
       "id": "P-134",
@@ -4649,14 +4530,13 @@
         {
           "label": "문서",
           "path": "domains/materials/concrete/concrete.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_concrete.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_concrete.hexa"
+      ]
     },
     {
       "id": "P-135",
@@ -4697,14 +4577,13 @@
         {
           "label": "문서",
           "path": "domains/life/bio-pharma/bio-pharma.md"
-        },
-        {
-          "label": "검증",
-          "path": "nexus/src/calc/kolon_bio_pharma.hexa"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_calculators_pending": [
+        "nexus/src/calc/kolon_bio_pharma.hexa"
+      ]
     },
     {
       "id": "P-136",
@@ -5057,26 +4936,16 @@
         {
           "label": "문서",
           "path": "domains/life/biology/biology.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-ecology-agriculture-food-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-geology-prem-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-meteorology-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-synthetic-biology-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-ecology-agriculture-food-paper.md",
+        "papers/n6-geology-prem-paper.md",
+        "papers/n6-meteorology-paper.md",
+        "papers/n6-synthetic-biology-paper.md"
+      ]
     },
     {
       "id": "P-147",
@@ -5151,14 +5020,13 @@
         {
           "label": "문서",
           "path": "domains/infra/oceanography/oceanography.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-oceanography-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-oceanography-paper.md"
+      ]
     },
     {
       "id": "P-150",
@@ -5183,26 +5051,16 @@
         {
           "label": "문서",
           "path": "domains/cognitive/cognitive-architecture/cognitive-architecture.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-anima-soc-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-calendar-time-geography-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-cognitive-social-psychology-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-working-memory-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-anima-soc-paper.md",
+        "papers/n6-calendar-time-geography-paper.md",
+        "papers/n6-cognitive-social-psychology-paper.md",
+        "papers/n6-working-memory-paper.md"
+      ]
     },
     {
       "id": "P-151",
@@ -5225,16 +5083,16 @@
       ],
       "links": [
         {
-          "label": "논문",
-          "path": "papers/n6-consciousness-soc-paper.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-consciousness-chip-paper.md"
+          "label": "문서",
+          "path": "domains/compute/consciousness-chip/consciousness-chip.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-consciousness-soc-paper.md",
+        "papers/n6-consciousness-chip-paper.md"
+      ]
     },
     {
       "id": "P-152",
@@ -5315,14 +5173,13 @@
         {
           "label": "문서",
           "path": "domains/culture/linguistics/linguistics.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-telecom-linguistics-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-telecom-linguistics-paper.md"
+      ]
     },
     {
       "id": "P-155",
@@ -5347,14 +5204,13 @@
         {
           "label": "문서",
           "path": "domains/infra/economics/economics.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-economics-finance-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-economics-finance-paper.md"
+      ]
     },
     {
       "id": "P-156",
@@ -5375,14 +5231,13 @@
         {
           "label": "문서",
           "path": "domains/infra/autonomous-driving/autonomous-driving.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-autonomous-driving-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-autonomous-driving-paper.md"
+      ]
     },
     {
       "id": "P-157",
@@ -5708,16 +5563,15 @@
       ],
       "links": [
         {
-          "label": "목표",
+          "label": "문서",
           "path": "domains/infra/manufacturing-quality/manufacturing-quality.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-manufacturing-quality-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-manufacturing-quality-paper.md"
+      ]
     },
     {
       "id": "P-171",
@@ -5735,16 +5589,15 @@
       ],
       "links": [
         {
-          "label": "목표",
+          "label": "문서",
           "path": "domains/compute/network/network.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-telecom-linguistics-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-telecom-linguistics-paper.md"
+      ]
     },
     {
       "id": "P-172",
@@ -5762,16 +5615,15 @@
       ],
       "links": [
         {
-          "label": "목표",
+          "label": "문서",
           "path": "domains/physics/quantum-computer/quantum-computer.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-quantum-computing-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-quantum-computing-paper.md"
+      ]
     },
     {
       "id": "P-173",
@@ -5789,16 +5641,15 @@
       ],
       "links": [
         {
-          "label": "목표",
+          "label": "문서",
           "path": "domains/culture/horology/horology.md"
-        },
-        {
-          "label": "논문",
-          "path": "papers/n6-calendar-time-geography-paper.md"
         }
       ],
       "type": "product",
-      "visible": true
+      "visible": true,
+      "_integrated_paper_pending": [
+        "papers/n6-calendar-time-geography-paper.md"
+      ]
     },
     {
       "id": "P-174",
