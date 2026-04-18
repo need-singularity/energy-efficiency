@@ -1,0 +1,5765 @@
+{
+  "_meta": {
+    "schema": "n6_domains/2.0",
+    "updated": 1776527094,
+    "note": "마이그레이션 from papers/_products.json (2026-04-19). SSOT 단일화."
+  },
+  "entries": [
+    {
+      "id": "dog-robot-test",
+      "axis": "life",
+      "name_ko": "강아지 로봇",
+      "product_line": "강아지 로봇",
+      "mk_current": "mk2",
+      "mk_target": "mk1",
+      "alien_now": 7,
+      "alien_target": 10,
+      "path": "domains/life/dog-robot-test/dog-robot-test.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "dog-robot-test-mk1-v1.0",
+          "at": 1776510042
+        }
+      ]
+    },
+    {
+      "id": "P-001",
+      "axis": "energy",
+      "name_ko": "궁극의 핵융합 발전소",
+      "product_line": "궁극의 핵융합 발전소",
+      "mk_current": "mk5",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/fusion/fusion.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk5",
+          "tag": "P-001-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "fusion",
+      "section_title": "핵융합",
+      "section_heading": "핵융합 (Fusion)",
+      "icon": "🔥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "122/122 EXACT (v4 42 보편핵물리 + v5 80 공학층 신규), BT-97~102+291~298+1169~1174, Cross-DSE 12, TP42, Python 80/80 PASS, 12 Fusion Archetype 폐쇄 증명",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/fusion/fusion.md"
+        }
+      ]
+    },
+    {
+      "id": "P-002",
+      "axis": "cognitive",
+      "name_ko": "KSTAR-N6",
+      "product_line": "KSTAR-N6",
+      "mk_current": "mk3.1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/superpowers/superpowers.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3.1",
+          "tag": "P-002-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "fusion",
+      "section_title": "핵융합",
+      "section_heading": "핵융합 (Fusion)",
+      "icon": "🔥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "45/45 EXACT(100%) + Q→∞ Singularity, 물리한계10/10, 24BT, 12/12 Steady-State EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/superpowers/superpowers.md"
+        }
+      ]
+    },
+    {
+      "id": "P-003",
+      "axis": "energy",
+      "name_ko": "진화 Mk.I~V",
+      "product_line": "진화 Mk.I~V",
+      "mk_current": "mk3",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/fusion/fusion.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3",
+          "tag": "P-003-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "fusion",
+      "section_title": "핵융합",
+      "section_heading": "핵융합 (Fusion)",
+      "icon": "🔥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/fusion/fusion.md"
+        }
+      ]
+    },
+    {
+      "id": "P-004",
+      "axis": "energy",
+      "name_ko": "발견 + 예측 + 가설v5",
+      "product_line": "발견 + 예측 + 가설v5",
+      "mk_current": "mk4",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/fusion/fusion.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk4",
+          "tag": "P-004-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "fusion",
+      "section_title": "핵융합",
+      "section_heading": "핵융합 (Fusion)",
+      "icon": "🔥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/fusion/fusion.md"
+        }
+      ]
+    },
+    {
+      "id": "P-005",
+      "axis": "energy",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk3",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/fusion/fusion.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3",
+          "tag": "P-005-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "fusion",
+      "section_title": "핵융합",
+      "section_heading": "핵융합 (Fusion)",
+      "icon": "🔥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/fusion/fusion.md"
+        }
+      ]
+    },
+    {
+      "id": "P-006",
+      "axis": "compute",
+      "name_ko": "HEXA 칩 7단",
+      "product_line": "HEXA 칩 7단",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-hexa-chip-7dan-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-006-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "칩/반도체",
+      "section_heading": "칩 / 반도체 (Chip)",
+      "icon": "💻",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-hexa-chip-7dan-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-007",
+      "axis": "compute",
+      "name_ko": "ANIMA-SOC",
+      "product_line": "ANIMA-SOC",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/chip-architecture/chip-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-007-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "칩/반도체",
+      "section_heading": "칩 / 반도체 (Chip)",
+      "icon": "💻",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/chip-architecture/chip-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-008",
+      "axis": "compute",
+      "name_ko": "HEXA-TOPO",
+      "product_line": "HEXA-TOPO",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/chip-architecture/chip-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-008-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "칩/반도체",
+      "section_heading": "칩 / 반도체 (Chip)",
+      "icon": "💻",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/chip-architecture/chip-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-009",
+      "axis": "compute",
+      "name_ko": "HEXA-ASIC",
+      "product_line": "HEXA-ASIC",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/chip-architecture/chip-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-009-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "칩/반도체",
+      "section_heading": "칩 / 반도체 (Chip)",
+      "icon": "💻",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/chip-architecture/chip-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-010",
+      "axis": "compute",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/chip-architecture/chip-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-010-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "칩/반도체",
+      "section_heading": "칩 / 반도체 (Chip)",
+      "icon": "💻",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "170/170검증PASS, 물리한계14, 산업6벤더92.6%, TP28, 발견12, Z>27sigma, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/chip-architecture/chip-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-011",
+      "axis": "cognitive",
+      "name_ko": "66 Techniques",
+      "product_line": "66 Techniques",
+      "mk_current": "mk3",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-66-techniques-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3",
+          "tag": "P-011-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "71% FLOPs↓, 3x 속도↑, 67% 파라미터↓ — 66기법 통합문서 (Core17+BT12+Model21+Vision8+GNN4+Other4)",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-66-techniques-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-012",
+      "axis": "cognitive",
+      "name_ko": "Full N6 Pipeline",
+      "product_line": "Full N6 Pipeline",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "experiments/experiment_full_n6_pipeline.py",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-012-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "17기법 통합: 50% 파라미터↓, 50% FLOPs↓, 46% 희소성 — 32/32 PASS 검증",
+      "links": [
+        {
+          "label": "문서",
+          "path": "experiments/experiment_full_n6_pipeline.py"
+        }
+      ]
+    },
+    {
+      "id": "P-013",
+      "axis": "cognitive",
+      "name_ko": "N6 Inevitability Engine",
+      "product_line": "N6 Inevitability Engine",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/superpowers/superpowers.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-013-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "기법 11~16 + 3-Layer 열역학 (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/superpowers/superpowers.md"
+        }
+      ]
+    },
+    {
+      "id": "P-014",
+      "axis": "cognitive",
+      "name_ko": "AI Energy Savings Guide",
+      "product_line": "AI Energy Savings Guide",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "reports/discovery/ai-energy-savings-guide.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-014-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "AdamW 5중쌍+LR+Inference 하이퍼파라미터 전수 n=6 매핑 — 31/31 PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "reports/discovery/ai-energy-savings-guide.md"
+        }
+      ]
+    },
+    {
+      "id": "P-015",
+      "axis": "cognitive",
+      "name_ko": "Chip Architecture Guide",
+      "product_line": "Chip Architecture Guide",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "reports/discovery/chip-architecture-guide.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-015-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "reports/discovery/chip-architecture-guide.md"
+        }
+      ]
+    },
+    {
+      "id": "P-016",
+      "axis": "compute",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/ai-efficiency/ai-efficiency.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-016-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/ai-efficiency/ai-efficiency.md"
+        }
+      ]
+    },
+    {
+      "id": "P-017",
+      "axis": "compute",
+      "name_ko": "Next-Gen AI 8-Paradigm Blowup",
+      "product_line": "Next-Gen AI 8-Paradigm Blowup",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/ai-efficiency/ai-efficiency.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-017-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "추론/비디오/과학FM/뉴로모픽/에이전트/신규아키/로보틱스/의료 8패러다임 — 234/256 EXACT (91.4%), BT-380~390",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/ai-efficiency/ai-efficiency.md"
+        }
+      ]
+    },
+    {
+      "id": "P-018",
+      "axis": "compute",
+      "name_ko": "AI 6-Domain Sweep",
+      "product_line": "AI 6-Domain Sweep",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/ai-efficiency/ai-efficiency.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-018-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "코드생성/RL게임/추천시계열/SSL·NLU/서빙컴파일러/멀티모달 6도메인 — 314/344 EXACT (91.3%), BT-391~396",
+      "links": [
+        {
+          "label": "코드생성",
+          "path": "domains/compute/ai-efficiency/ai-efficiency.md"
+        }
+      ]
+    },
+    {
+      "id": "P-019",
+      "axis": "compute",
+      "name_ko": "N6 Reverse-Engineering Suite",
+      "product_line": "N6 Reverse-Engineering Suite",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/ai-efficiency/ai-efficiency.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-019-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "ai",
+      "section_title": "AI/ML",
+      "section_heading": "AI / ML",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401",
+      "links": [
+        {
+          "label": "신규모델",
+          "path": "domains/compute/ai-efficiency/ai-efficiency.md"
+        }
+      ]
+    },
+    {
+      "id": "P-020",
+      "axis": "cognitive",
+      "name_ko": "궁극의 배터리 8단",
+      "product_line": "궁극의 배터리 8단",
+      "mk_current": "mk3",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/superpowers/superpowers.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3",
+          "tag": "P-020-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "energy",
+      "section_title": "에너지",
+      "section_heading": "에너지 (Energy)",
+      "icon": "⚡",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "131/131 EXACT, BT-27+43+57+80+83+84, 10불가능성정리, 6대제조사, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/superpowers/superpowers.md"
+        }
+      ]
+    },
+    {
+      "id": "P-021",
+      "axis": "energy",
+      "name_ko": "궁극의 태양전지",
+      "product_line": "궁극의 태양전지",
+      "mk_current": "mk4",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/solar-architecture/solar-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk4",
+          "tag": "P-021-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "energy",
+      "section_title": "에너지",
+      "section_heading": "에너지 (Energy)",
+      "icon": "⚡",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "78/78 EXACT, BT-30+63+62+60+74+111+161, 물리한계5, 산업8사, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/solar-architecture/solar-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-022",
+      "axis": "energy",
+      "name_ko": "궁극의 에너지 통합",
+      "product_line": "궁극의 에너지 통합",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/energy-architecture/energy-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-022-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "energy",
+      "section_title": "에너지",
+      "section_heading": "에너지 (Energy)",
+      "icon": "⚡",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "133/133 EXACT, 19BT, 14불가능성정리, 5도메인Cross-DSE, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/energy-architecture/energy-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-023",
+      "axis": "energy",
+      "name_ko": "궁극의 데이터센터 원자로",
+      "product_line": "궁극의 데이터센터 원자로",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/smr-datacenter/smr-datacenter.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-023-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "energy",
+      "section_title": "에너지",
+      "section_heading": "에너지 (Energy)",
+      "icon": "⚡",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10돌파 95/96 EXACT — TRISO(sopfr=5)+He(φ=2)+sCO₂(σ·τ=48%)+n=6모듈",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/smr-datacenter/smr-datacenter.md"
+        }
+      ]
+    },
+    {
+      "id": "P-024",
+      "axis": "energy",
+      "name_ko": "HEXA-AUTO 자동차배터리",
+      "product_line": "HEXA-AUTO 자동차배터리",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/battery-architecture/battery-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-024-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "energy",
+      "section_title": "에너지",
+      "section_heading": "에너지 (Energy)",
+      "icon": "⚡",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "궁극의 자동차배터리 SLI+EV 통합 설계 — 6셀=n 납축/96S=sigma*(sigma-tau) EV/100 파라미터, 78/100 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/battery-architecture/battery-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-025",
+      "axis": "infra",
+      "name_ko": "궁극의 환경보호 8단",
+      "product_line": "궁극의 환경보호 8단",
+      "mk_current": "mk4",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/environmental-protection/",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk4",
+          "tag": "P-025-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "센서→모니터→포집→정화→복원→순환→생태계→Omega, 120/120 EXACT 전수검증",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/environmental-protection/"
+        }
+      ]
+    },
+    {
+      "id": "P-026",
+      "axis": "infra",
+      "name_ko": "HEXA-MICROPLASTICS",
+      "product_line": "HEXA-MICROPLASTICS",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/environmental-protection/environmental-protection.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-026-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "6단 파이프라인, 36/36=100%EXACT, 6-nines제거, CN=6촉매삼위일체, 전수검증",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/environmental-protection/environmental-protection.md"
+        }
+      ]
+    },
+    {
+      "id": "P-027",
+      "axis": "infra",
+      "name_ko": "궁극의 탄소포집 8단",
+      "product_line": "궁극의 탄소포집 8단",
+      "mk_current": "mk5",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/carbon-capture/carbon-capture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk5",
+          "tag": "P-027-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "**30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/carbon-capture/carbon-capture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-028",
+      "axis": "infra",
+      "name_ko": "진화 Mk.I~V",
+      "product_line": "진화 Mk.I~V",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/environmental-protection/",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-028-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/environmental-protection/"
+        }
+      ]
+    },
+    {
+      "id": "P-029",
+      "axis": "infra",
+      "name_ko": "예측 + 검증",
+      "product_line": "예측 + 검증",
+      "mk_current": "mk3",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/environmental-protection/environmental-protection.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk3",
+          "tag": "P-029-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/environmental-protection/environmental-protection.md"
+        }
+      ]
+    },
+    {
+      "id": "P-030",
+      "axis": "materials",
+      "name_ko": "궁극의 재활용 — HEXA-RECYCLE",
+      "product_line": "궁극의 재활용 — HEXA-RECYCLE",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/recycling/recycling.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-030-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "environment",
+      "section_title": "환경보호",
+      "section_heading": "환경보호 (Environment)",
+      "icon": "🌍",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "6R 순환 + σ=12 분류 + J₂=24 추적 + 5-DSE 통합 (35,424 조합)",
+      "links": [
+        {
+          "label": "설계",
+          "path": "domains/materials/recycling/recycling.md"
+        }
+      ]
+    },
+    {
+      "id": "P-031",
+      "axis": "materials",
+      "name_ko": "궁극의 물질합성 8단",
+      "product_line": "궁극의 물질합성 8단",
+      "mk_current": "mk6",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk6",
+          "tag": "P-031-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "소재→공정→조립기→제어→공장→변환→만능→궁극, DSE 3,600, 12 BT 179/179 EXACT, 36 가설 100%",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-032",
+      "axis": "materials",
+      "name_ko": "BT-85~88 + BT-128~135",
+      "product_line": "BT-85~88 + BT-128~135",
+      "mk_current": "mk7",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk7",
+          "tag": "P-032-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "결정학+합금+세라믹+고분자+상전이+결함+박막+완전지도 (12 BT, **179/179 EXACT**)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-033",
+      "axis": "materials",
+      "name_ko": "가설 36/36 100%EXACT",
+      "product_line": "가설 36/36 100%EXACT",
+      "mk_current": "mk6",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk6",
+          "tag": "P-033-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "H-MS-01~36 전수 검증 완료 (고분자+세라믹+합금+박막 확장), CrossDSE 8도메인 (94.1% n6)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-034",
+      "axis": "materials",
+      "name_ko": "산업검증 20소재+12금속",
+      "product_line": "산업검증 20소재+12금속",
+      "mk_current": "mk6",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk6",
+          "tag": "P-034-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20양산소재 + 12산업금속 Z n=6검증(91.7%) + BT-85~88,93 상세매핑 + DSE 3,600 + CrossDSE 8도메인(93.0%), 229/229 verify",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-035",
+      "axis": "materials",
+      "name_ko": "실험검증 + TP 28/28",
+      "product_line": "실험검증 + TP 28/28",
+      "mk_current": "mk7",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk7",
+          "tag": "P-035-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "79건 전수검증 (51 CONFIRMED + 22 VERIFIED + 6 PARTIAL, 0 FAIL) + BT-85~93 교차확인 + 노벨14건, 229/229 verify",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-036",
+      "axis": "materials",
+      "name_ko": "물리한계 증명",
+      "product_line": "물리한계 증명",
+      "mk_current": "mk5",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/material-synthesis/material-synthesis.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk5",
+          "tag": "P-036-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "materials",
+      "section_title": "물질합성",
+      "section_heading": "물질합성 (Materials)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10 불가능성 정리 (75/75 EXACT 100%) + Mk.V 수학적 한계, 229/229 verify",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/material-synthesis/material-synthesis.md"
+        }
+      ]
+    },
+    {
+      "id": "P-037",
+      "axis": "infra",
+      "name_ko": "궁극의 로봇 8단",
+      "product_line": "궁극의 로봇 8단",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/robotics/robotics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-037-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "robotics",
+      "section_title": "로봇",
+      "section_heading": "로봇 (Robotics)",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 불가능성정리, 114/115 산업검증, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/robotics/robotics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-038",
+      "axis": "infra",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/robotics/robotics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-038-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "robotics",
+      "section_title": "로봇",
+      "section_heading": "로봇 (Robotics)",
+      "icon": "🤖",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10 불가능성정리, SE(3)=6/k(3)=12/Thue=6, Mk.V 물리천장 증명, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/robotics/robotics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-039",
+      "axis": "physics",
+      "name_ko": "궁극의 초전도체",
+      "product_line": "궁극의 초전도체",
+      "mk_current": "mk5",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-ultimate-superconductor-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk5",
+          "tag": "P-039-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "physics",
+      "section_title": "물리/수학",
+      "section_heading": "물리·수학 (Physics & Math)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "153/153 EXACT (v4 73 + v5 80 신규), BT-299~306 + BT-1163~1168, CrossDSE 16도메인, TP35, Python 80/80 PASS",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-ultimate-superconductor-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-040",
+      "axis": "physics",
+      "name_ko": "궁극의 순수수학",
+      "product_line": "궁극의 순수수학",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/pure-mathematics/pure-mathematics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-040-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "physics",
+      "section_title": "물리/수학",
+      "section_heading": "물리·수학 (Physics & Math)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/pure-mathematics/pure-mathematics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-041",
+      "axis": "physics",
+      "name_ko": "궁극의 우주론/입자",
+      "product_line": "궁극의 우주론/입자",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/cosmology-particle/cosmology-particle.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-041-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "physics",
+      "section_title": "물리/수학",
+      "section_heading": "물리·수학 (Physics & Math)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/cosmology-particle/cosmology-particle.md"
+        }
+      ]
+    },
+    {
+      "id": "P-042",
+      "axis": "energy",
+      "name_ko": "궁극의 상온 초전도체",
+      "product_line": "궁극의 상온 초전도체",
+      "mk_current": "mk5",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/room-temp-sc/room-temp-sc.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk5",
+          "tag": "P-042-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "physics",
+      "section_title": "물리/수학",
+      "section_heading": "물리·수학 (Physics & Math)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "325/325 EXACT (이론150+실현76+Mk.I합성48+Mk.II소재51), 9소재후보+6Mk.II후보, Mk.I정밀레시피(6소재P-T경로+Phase1/2실험$6.18M), Mk.II상압후보(La,Ce,Y,Sc)H24고엔트로피Pareto1위, 2685줄",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/room-temp-sc/room-temp-sc.md"
+        }
+      ]
+    },
+    {
+      "id": "P-043",
+      "axis": "physics",
+      "name_ko": "차원펼침 돌파 — 텐서/mod3/로그",
+      "product_line": "차원펼침 돌파 — 텐서/mod3/로그",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-043-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "physics",
+      "section_title": "물리/수학",
+      "section_heading": "물리·수학 (Physics & Math)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-361~365: n²=36어트랙터9/9, 텐서삼중3/3, mod3부동점10/10, 1/3효율8/8, Ω_Λ=24/35(0.148%)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
+        }
+      ]
+    },
+    {
+      "id": "P-044",
+      "axis": "compute",
+      "name_ko": "궁극의 프로그래밍언어",
+      "product_line": "궁극의 프로그래밍언어",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/programming-language/programming-language.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-044-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라",
+      "section_heading": "소프트웨어·인프라 (Software & Infra)",
+      "icon": "💬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10불가능성정리, DSE 7,560",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/programming-language/programming-language.md"
+        }
+      ]
+    },
+    {
+      "id": "P-045",
+      "axis": "compute",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/software-design/software-design.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-045-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라",
+      "section_heading": "소프트웨어·인프라 (Software & Infra)",
+      "icon": "💬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "96/96 PASS, 16 불가능성정리, BT-113~117 61/61 전수검증, 암호래더 완전성, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/software-design/software-design.md"
+        }
+      ]
+    },
+    {
+      "id": "P-046",
+      "axis": "compute",
+      "name_ko": "궁극의 macOS",
+      "product_line": "궁극의 macOS",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/hexa-macos/hexa-macos.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-046-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라",
+      "section_heading": "소프트웨어·인프라 (Software & Infra)",
+      "icon": "💬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "80/80 EXACT, BT-115/162/180/344~346 + BT-347~349 후보, 8단 DSE, GCD QoS=n=6, Egyptian 캐시, 물리한계 6증명",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/hexa-macos/hexa-macos.md"
+        }
+      ]
+    },
+    {
+      "id": "P-047",
+      "axis": "compute",
+      "name_ko": "궁극의 iOS",
+      "product_line": "궁극의 iOS",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/hexa-ios/hexa-ios.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-047-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라",
+      "section_heading": "소프트웨어·인프라 (Software & Infra)",
+      "icon": "💬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "86/86 EXACT, BT-115/162/180/48/58/66/113/123/211 10BT교차, iPhone CPU=n=6·GPU=n=6·Screen=n=6\", 8단 DSE 1024조합, 물리한계 6증명, macOS 자매 165/165",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/hexa-ios/hexa-ios.md"
+        }
+      ]
+    },
+    {
+      "id": "P-048",
+      "axis": "compute",
+      "name_ko": "궁극의 네트워크 프로토콜",
+      "product_line": "궁극의 네트워크 프로토콜",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/network-protocol/network-protocol.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-048-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "software",
+      "section_title": "소프트웨어/인프라",
+      "section_heading": "소프트웨어·인프라 (Software & Infra)",
+      "icon": "💬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "50/50 EXACT (천장돌파), 6G/5G NR/WiFi6/Starlink/LoRaWAN/BT6.0, σ=12 서브캐리어, J₂=24 WiFi채널, τ=4 TCP/IP",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/network-protocol/network-protocol.md"
+        }
+      ]
+    },
+    {
+      "id": "P-049",
+      "axis": "compute",
+      "name_ko": "궁극의 디스플레이 8단",
+      "product_line": "궁극의 디스플레이 8단",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/display/display.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-049-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "display",
+      "section_title": "디스플레이",
+      "section_heading": "디스플레이 (Display)",
+      "icon": "📺",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "소재→패널→드라이버→프로세서→시스템→몰입→홀로→Omega",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/display/display.md"
+        }
+      ]
+    },
+    {
+      "id": "P-050",
+      "axis": "compute",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/display/display.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-050-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "display",
+      "section_title": "디스플레이",
+      "section_heading": "디스플레이 (Display)",
+      "icon": "📺",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT 86%EXACT + 물리한계10 + 산업6사81% + 실험93.9% + TP14",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/display/display.md"
+        }
+      ]
+    },
+    {
+      "id": "P-051",
+      "axis": "culture",
+      "name_ko": "궁극의 오디오 7단",
+      "product_line": "궁극의 오디오 7단",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-051-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-052",
+      "axis": "culture",
+      "name_ko": "천장확인",
+      "product_line": "천장확인",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-052-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-053",
+      "axis": "cognitive",
+      "name_ko": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+      "product_line": "HEXA-SPEAK (AI 음성출력 Non-TTS)",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/hexa-speak/hexa-speak.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-053-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "의식→음성 직접 합성 (Non-TTS). 7-stage 파이프라인: 감정 6종/운율 4종/12D 운율/384d 인코딩/8-stage RVQ. 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n. v2: HEXA 엔진 구현 완료 (d038afcc)",
+      "links": [
+        {
+          "label": "도메인 문서",
+          "path": "domains/cognitive/hexa-speak/hexa-speak.md"
+        }
+      ]
+    },
+    {
+      "id": "P-054",
+      "axis": "culture",
+      "name_ko": "HEXA-EAR Ultimate",
+      "product_line": "HEXA-EAR Ultimate",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-054-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "궁극의 이어폰 8단 설계 — DLC+그래핀/8way 하이브리드/48dB ANC/6ms BLE/HRTF 144방향, 65/65 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-055",
+      "axis": "culture",
+      "name_ko": "HEXA-BONE 골전도 이어폰",
+      "product_line": "HEXA-BONE 골전도 이어폰",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-055-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "100% 골전도 전용 8단 설계 — Ti+그래핀 듀얼진동자/AI 골밀도보정/뇌파연동, 78/78 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-056",
+      "axis": "culture",
+      "name_ko": "HEXA-EAR-CELL 이어폰 배터리",
+      "product_line": "HEXA-EAR-CELL 이어폰 배터리",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-056-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "궁극의 이어폰 배터리 6단 설계 — sigma=12h 수명/J2=24h 총수명/72 파라미터, 71/72 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-057",
+      "axis": "culture",
+      "name_ko": "HEXA-SPEAKER 궁극 스피커",
+      "product_line": "HEXA-SPEAKER 궁극 스피커",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/audio/audio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-057-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "audio",
+      "section_title": "오디오",
+      "section_heading": "오디오 (Audio)",
+      "icon": "🎵",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "궁극의 스피커 6단 설계 — CNT 열음향/sigma=12 드라이버 어레이/이집트 분수 대역분할/LR4 크로스오버/ClassD 576W/144 공간객체, 36/36 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/audio/audio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-058",
+      "axis": "infra",
+      "name_ko": "궁극의 안전 8단",
+      "product_line": "궁극의 안전 8단",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/safety/safety.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-058-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "safety",
+      "section_title": "안전",
+      "section_heading": "안전 (Safety)",
+      "icon": "🛡️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "79/79 PASS, 12 불가능성정리, 13 Cross-DSE, 174년 산업검증, H-SF 20/30+H-SFX 14/20 EXACT, Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/safety/safety.md"
+        }
+      ]
+    },
+    {
+      "id": "P-059",
+      "axis": "infra",
+      "name_ko": "가설 30+극한 20",
+      "product_line": "가설 30+극한 20",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/safety/safety.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-059-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "safety",
+      "section_title": "안전",
+      "section_heading": "안전 (Safety)",
+      "icon": "🛡️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 총 54/72 EXACT(75%), Python검증PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/safety/safety.md"
+        }
+      ]
+    },
+    {
+      "id": "P-060",
+      "axis": "infra",
+      "name_ko": "궁극의 펀카",
+      "product_line": "궁극의 펀카",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/fun-car/fun-car.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-060-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "play",
+      "section_title": "유희",
+      "section_heading": "유희 (Play)",
+      "icon": "🎪",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "133/133 EXACT, BT-287/289/290/288/277/280/206/271/153, 16카테고리 n=6 100%, DSE 155,520, flat-6+7DCT+Ti-6Al-4V",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/fun-car/fun-car.md"
+        }
+      ]
+    },
+    {
+      "id": "P-061",
+      "axis": "infra",
+      "name_ko": "궁극의 바이크",
+      "product_line": "궁극의 바이크",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/motorcycle/motorcycle.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-061-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "play",
+      "section_title": "유희",
+      "section_heading": "유희 (Play)",
+      "icon": "🎪",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "76/76 EXACT, BT-287/289/290/123/271/277/288/327/328, IMU 6축+σ²=144kg+J₂=24km/L, DSE 5,400",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/motorcycle/motorcycle.md"
+        }
+      ]
+    },
+    {
+      "id": "P-062",
+      "axis": "space",
+      "name_ko": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+      "product_line": "궁극의 재사용 발사체 (HEXA-STARSHIP)",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-hexa-starship-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-062-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "aerospace",
+      "section_title": "우주항공",
+      "section_heading": "우주항공 (Aerospace)",
+      "icon": "🚀",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "150/150 EXACT (100%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-hexa-starship-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-063",
+      "axis": "sf-ufo",
+      "name_ko": "궁극의 UFO 비행접시 (HEXA-UFO)",
+      "product_line": "궁극의 UFO 비행접시 (HEXA-UFO)",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/sf-ufo/sf/sf.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-063-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "sf",
+      "section_title": "UFO/비행접시",
+      "section_heading": "UFO 비행접시 (HEXA-UFO RT-SC VTOL)",
+      "icon": "🛸",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "RT-SC 기반 원반형 VTOL. Meissner 무동력 부양 + MHD 추진 Mach σ-φ=10 + 탁상 핵융합 Q=σ-φ=10. D=J₂=24m, n=6 승무원, Isp=σ·J₂·10³=288,000s, 소음 J₂=24dB. 49/49 EXACT PASS",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/sf-ufo/sf/sf.md"
+        }
+      ]
+    },
+    {
+      "id": "P-064",
+      "axis": "life",
+      "name_ko": "HEXA-NEURO 뇌-기계 인터페이스",
+      "product_line": "HEXA-NEURO 뇌-기계 인터페이스",
+      "mk_current": "mk6",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/neuro/neuro.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk6",
+          "tag": "P-064-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "202/202 EXACT (25카테고리), 측두골 클립 3.6g×φ=2 + 스마트폰/웨어러블10기기/15질환 통합, n/φ=3점고정(이어훅+자석+접착), IPX n=6 방수",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/neuro/neuro.md"
+        }
+      ]
+    },
+    {
+      "id": "P-065",
+      "axis": "physics",
+      "name_ko": "HEXA-GRAV 중력파 검출/통신",
+      "product_line": "HEXA-GRAV 중력파 검출/통신",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/gravity-wave/gravity-wave.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-065-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "72/72 EXACT, J₂=24km 팔, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440배, Q=10¹²=10^σ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/gravity-wave/gravity-wave.md"
+        }
+      ]
+    },
+    {
+      "id": "P-066",
+      "axis": "sf-ufo",
+      "name_ko": "HEXA-CLOAK 투명망토/스텔스",
+      "product_line": "HEXA-CLOAK 투명망토/스텔스",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/sf-ufo/cloak/cloak.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-066-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "59/59 EXACT, RT-SC 메타물질 n<0, σ-τ=8옥타브, σ-φ=10nm 피치, RCS감쇠 σ·J₂=288배",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/sf-ufo/cloak/cloak.md"
+        }
+      ]
+    },
+    {
+      "id": "P-067",
+      "axis": "infra",
+      "name_ko": "HEXA-DEFENSE 지구방어 시스템",
+      "product_line": "HEXA-DEFENSE 지구방어 시스템",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/earth-defense/earth-defense.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-067-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "67/67 EXACT, Δv=σ·10⁻³=0.012m/s, 탐지 σ²=144LD, J₂=24년 선제대응, 3중방어",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/earth-defense/earth-defense.md"
+        }
+      ]
+    },
+    {
+      "id": "P-068",
+      "axis": "physics",
+      "name_ko": "HEXA-TELEPORT 양자얽힘 통신망",
+      "product_line": "HEXA-TELEPORT 양자얽힘 통신망",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/quantum-network/quantum-network.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-068-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "41/41 EXACT, 2^σ=4096 큐빗, σ²=144km/홉, 99.65% 충실도, σ·J₂=288Mbps",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/quantum-network/quantum-network.md"
+        }
+      ]
+    },
+    {
+      "id": "P-069",
+      "axis": "sf-ufo",
+      "name_ko": "HEXA-HOVER 개인 호버보드",
+      "product_line": "HEXA-HOVER 개인 호버보드",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/sf-ufo/hover/hover.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-069-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "52/52 EXACT, σ-φ=10cm 부양, (σ-φ)²·n=600kg, σ·τ=48km/h, σ²=144km 거리",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/sf-ufo/hover/hover.md"
+        }
+      ]
+    },
+    {
+      "id": "P-070",
+      "axis": "compute",
+      "name_ko": "HEXA-MRAM 초전도 비휘발 메모리",
+      "product_line": "HEXA-MRAM 초전도 비휘발 메모리",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/sc-memory/sc-memory.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-070-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "46/46 EXACT, 조셉슨접합, τ=4ps 쓰기, 10aJ/bit, σ·J₂=288Gbit/cm², 2^σ=4096년",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/sc-memory/sc-memory.md"
+        }
+      ]
+    },
+    {
+      "id": "P-071",
+      "axis": "infra",
+      "name_ko": "HEXA-SEABED 대륙간 해저 송전",
+      "product_line": "HEXA-SEABED 대륙간 해저 송전",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/seabed-grid/seabed-grid.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-071-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "45/45 EXACT, J₂·10³=24,000km, ±800kV, σ²·J₂=3,456GW, 0% 손실",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/seabed-grid/seabed-grid.md"
+        }
+      ]
+    },
+    {
+      "id": "P-072",
+      "axis": "physics",
+      "name_ko": "HEXA-ACCEL 소형 입자가속기",
+      "product_line": "HEXA-ACCEL 소형 입자가속기",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/mini-accelerator/mini-accelerator.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-072-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "48/48 EXACT, σ·J₂=288GeV, σ-φ=10m(LHC/2700), σ·τ=48T, σ²=144 센서",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/mini-accelerator/mini-accelerator.md"
+        }
+      ]
+    },
+    {
+      "id": "P-073",
+      "axis": "infra",
+      "name_ko": "HEXA-WEATHER 대기 전자기 제어",
+      "product_line": "HEXA-WEATHER 대기 전자기 제어",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/weather-control/weather-control.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-073-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "51/52 EXACT (98%), σ²=144km² 어레이, 1,200GW, J₂·10=240km 반경, η=1-1/e",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/weather-control/weather-control.md"
+        }
+      ]
+    },
+    {
+      "id": "P-074",
+      "axis": "cognitive",
+      "name_ko": "HEXA-MIND 의식 업로드",
+      "product_line": "HEXA-MIND 의식 업로드",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/mind-upload/mind-upload.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-074-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "53/54 EXACT (98%), 10^11 뉴런+10^14 시냅스 스캔, 2^σ=4096년 저장, AGI에뮬 99.65%",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/mind-upload/mind-upload.md"
+        }
+      ]
+    },
+    {
+      "id": "P-075",
+      "axis": "cognitive",
+      "name_ko": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "product_line": "HEXA-TELEPATHY 뇌-뇌 직접통신",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/telepathy/telepathy.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-075-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "57/57 EXACT, 2^σ=4096 얽힘쌍, σ²=144Mbps, μ=1ms, σ-τ=8 감각, 동기 1-1/e",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/telepathy/telepathy.md"
+        }
+      ]
+    },
+    {
+      "id": "P-076",
+      "axis": "physics",
+      "name_ko": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "product_line": "HEXA-HOLO 홀로그래픽 디스플레이",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/holography/holography.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-076-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "42/42 EXACT, σ·J₂=288ppi×3D, σ²=144 레이어, σ-φ=10' 각해상, J₂=24Hz 갱신",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/holography/holography.md"
+        }
+      ]
+    },
+    {
+      "id": "P-077",
+      "axis": "cognitive",
+      "name_ko": "HEXA-DREAM 꿈 기록/재생",
+      "product_line": "HEXA-DREAM 꿈 기록/재생",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/dream-recorder/dream-recorder.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-077-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "42/42 EXACT, σ²=144k 시각피질, σ·τ=48Hz, σ=12 REM사이클, 윤리 5조항",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/dream-recorder/dream-recorder.md"
+        }
+      ]
+    },
+    {
+      "id": "P-078",
+      "axis": "infra",
+      "name_ko": "HEXA-SKYWAY 공중 고속도로망",
+      "product_line": "HEXA-SKYWAY 공중 고속도로망",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/skyway/skyway.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-078-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km²",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/skyway/skyway.md"
+        }
+      ]
+    },
+    {
+      "id": "P-079",
+      "axis": "infra",
+      "name_ko": "HEXA-TSUNAMI 해일 방지기",
+      "product_line": "HEXA-TSUNAMI 해일 방지기",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/tsunami-shield/tsunami-shield.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-079-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/tsunami-shield/tsunami-shield.md"
+        }
+      ]
+    },
+    {
+      "id": "P-080",
+      "axis": "physics",
+      "name_ko": "HEXA-ANTIMATTER 반물질 공장",
+      "product_line": "HEXA-ANTIMATTER 반물질 공장",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/antimatter-factory/antimatter-factory.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-080-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/antimatter-factory/antimatter-factory.md"
+        }
+      ]
+    },
+    {
+      "id": "P-081",
+      "axis": "physics",
+      "name_ko": "HEXA-COSMIC 초기우주 관측망",
+      "product_line": "HEXA-COSMIC 초기우주 관측망",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/cosmic-observatory/cosmic-observatory.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-081-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/cosmic-observatory/cosmic-observatory.md"
+        }
+      ]
+    },
+    {
+      "id": "P-082",
+      "axis": "infra",
+      "name_ko": "HEXA-DESAL 초전도 담수화",
+      "product_line": "HEXA-DESAL 초전도 담수화",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/desalination/desalination.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-082-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/desalination/desalination.md"
+        }
+      ]
+    },
+    {
+      "id": "P-083",
+      "axis": "physics",
+      "name_ko": "HEXA-ORACLE 양자 예측기",
+      "product_line": "HEXA-ORACLE 양자 예측기",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/quantum-oracle/quantum-oracle.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-083-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/quantum-oracle/quantum-oracle.md"
+        }
+      ]
+    },
+    {
+      "id": "P-084",
+      "axis": "compute",
+      "name_ko": "HEXA-ONE 통합 웨어러블",
+      "product_line": "HEXA-ONE 통합 웨어러블",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/hexa-one/hexa-one.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-084-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "144 EXACT (100%) + 24 물리한계 EXACT, 14카테고리 sigma^2=144 파라미터, 8단 DSE 1,679,616 조합, BT-350~357 8건",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/hexa-one/hexa-one.md"
+        }
+      ]
+    },
+    {
+      "id": "P-085",
+      "axis": "materials",
+      "name_ko": "HEXA-GLASS AI 안경",
+      "product_line": "HEXA-GLASS AI 안경",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/hexa-glass/hexa-glass.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-085-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "84 EXACT, 14/14 물리한계 증명, 56 가설 100%, AR/MR σ·(σ-φ)=120° FOV",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/hexa-glass/hexa-glass.md"
+        }
+      ]
+    },
+    {
+      "id": "P-086",
+      "axis": "cognitive",
+      "name_ko": "HEXA-EAR AI 이어폰",
+      "product_line": "HEXA-EAR AI 이어폰",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/hexa-ear/hexa-ear.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-086-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "62/62 EXACT 100%, σ·τ=48kHz/J₂=24bit, 14 물리한계 증명, 28 발견, 11 BT 연결",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/hexa-ear/hexa-ear.md"
+        }
+      ]
+    },
+    {
+      "id": "P-087",
+      "axis": "infra",
+      "name_ko": "HEXA-EXO AI 외골격",
+      "product_line": "HEXA-EXO AI 외골격",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/hexa-exo/hexa-exo.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-087-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "13 EXACT, SE(3)=n=6 DOF, σ=12배 근력 증강, 보행재활",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/hexa-exo/hexa-exo.md"
+        }
+      ]
+    },
+    {
+      "id": "P-088",
+      "axis": "life",
+      "name_ko": "HEXA-LIMB AI 의수/의족",
+      "product_line": "HEXA-LIMB AI 의수/의족",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/hexa-limb/hexa-limb.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-088-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "120/120 EXACT, sopfr=5 손가락, sigma-tau=8 감각, 6 물리한계 증명, 14 카테고리 특이점 돌파",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/hexa-limb/hexa-limb.md"
+        }
+      ]
+    },
+    {
+      "id": "P-089",
+      "axis": "life",
+      "name_ko": "HEXA-SKIN 전자 피부",
+      "product_line": "HEXA-SKIN 전자 피부",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/hexa-skin/hexa-skin.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-089-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "96/96 EXACT, σ-τ=8 감각 + σ²=144/cm² + 물리한계 증명 완료",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/hexa-skin/hexa-skin.md"
+        }
+      ]
+    },
+    {
+      "id": "P-090",
+      "axis": "materials",
+      "name_ko": "HEXA-FABRIC AI 의류",
+      "product_line": "HEXA-FABRIC AI 의류",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/hexa-fabric/hexa-fabric.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-090-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15 EXACT, 육각 격자 직물, 체온조절, 자세교정",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/hexa-fabric/hexa-fabric.md"
+        }
+      ]
+    },
+    {
+      "id": "P-091",
+      "axis": "cognitive",
+      "name_ko": "HEXA-OLFACT 디지털 후각",
+      "product_line": "HEXA-OLFACT 디지털 후각",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/hexa-olfact/hexa-olfact.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-091-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "133/133 EXACT, 물리한계 증명 6정리, σ=12 수용체 + 2^σ=4096 패턴 + 17카테고리 전수",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/hexa-olfact/hexa-olfact.md"
+        }
+      ]
+    },
+    {
+      "id": "P-092",
+      "axis": "cognitive",
+      "name_ko": "HEXA-DREAM 꿈 인터페이스",
+      "product_line": "HEXA-DREAM 꿈 인터페이스",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/hexa-dream/hexa-dream.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-092-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "80/80 EXACT, sopfr=5 수면사이클+σ=12 EEG+물리한계 증명, 자각몽 유도/기록/공유",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/hexa-dream/hexa-dream.md"
+        }
+      ]
+    },
+    {
+      "id": "P-093",
+      "axis": "cognitive",
+      "name_ko": "HEXA-EMPATH 감정 공유",
+      "product_line": "HEXA-EMPATH 감정 공유",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/hexa-empath/hexa-empath.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-093-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "12 EXACT, 피질 n=6층, 바이오피드백, 감정 직접 전송",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/hexa-empath/hexa-empath.md"
+        }
+      ]
+    },
+    {
+      "id": "P-094",
+      "axis": "life",
+      "name_ko": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+      "product_line": "바이러스학 n=6 캡시드-팬데믹 아키텍처",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/virology/virology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-094-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "43/43 EXACT (100%), BT-351~353 3연속돌파, 이십면체 σ=12 pentamer/T-number {μ,n/φ,τ,σ-sopfr}/Baltimore σ-sopfr=7/게놈분절래더/역학-백신-효소 완전폐쇄, Mk.I~V 5세대 진화",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/life/virology/virology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-095",
+      "axis": "life",
+      "name_ko": "곤충학 n=6 Hexapoda 완전 생물학",
+      "product_line": "곤충학 n=6 Hexapoda 완전 생물학",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/entomology/entomology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-095-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "23/23 EXACT (100%), BT-352 곤충학 완전 n=6 아키텍처, 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30, Mk.I~V 5세대 진화",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/life/entomology/entomology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-096",
+      "axis": "life",
+      "name_ko": "균류학 n=6 포자-발효 아키텍처",
+      "product_line": "균류학 n=6 포자-발효 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/life/mycology/mycology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-096-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "14/14 EXACT (100%), 담자포자 τ=4/자낭포자 σ-τ=8/키틴 C₈=σ-τ/에탄올 발효 n=6계수/균근 n/φ=3/β-락탐 τ=4",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/mycology/mycology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-097",
+      "axis": "infra",
+      "name_ko": "광업/광물학 n=6 경도-결정 아키텍처",
+      "product_line": "광업/광물학 n=6 경도-결정 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/infra/mining/mining.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-097-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "16/16 EXACT (100%), Mohs σ-φ=10/24K=J₂/결정계 σ-sopfr=7/FCC CN=σ=12/보석 4C=τ/벽개 div(6)",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/infra/mining/mining.md"
+        }
+      ]
+    },
+    {
+      "id": "P-098",
+      "axis": "life",
+      "name_ko": "수의학 n=6 동물해부 보편성",
+      "product_line": "수의학 n=6 동물해부 보편성",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/life/veterinary/veterinary.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-098-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "16/16 EXACT (100%), 경추 σ-sopfr=7/반추위 τ=4/성견치아 (σ-sopfr)·n=42/성묘치아 n·sopfr=30/가축 n=6/개수명 σ=12",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/veterinary/veterinary.md"
+        }
+      ]
+    },
+    {
+      "id": "P-099",
+      "axis": "life",
+      "name_ko": "원예학 n=6 식물 성장 아키텍처",
+      "product_line": "원예학 n=6 식물 성장 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/life/horticulture/horticulture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-099-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15/15 EXACT (100%), 광합성 n=6/꽃기관 τ=4/호르몬 sopfr=5/조직계 n/φ=3/단쌍자엽 φ=2/계절 τ=4",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/horticulture/horticulture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-100",
+      "axis": "physics",
+      "name_ko": "HEXA-SIM 우주 시뮬레이션",
+      "product_line": "HEXA-SIM 우주 시뮬레이션",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/simulation-theory/simulation-theory.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-100-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "65/65 EXACT (100%), Planck 지수 래더 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, 차원 래더 τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/simulation-theory/simulation-theory.md"
+        }
+      ]
+    },
+    {
+      "id": "P-101",
+      "axis": "infra",
+      "name_ko": "크로스 도메인 메가 브릿지",
+      "product_line": "크로스 도메인 메가 브릿지",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-101-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-366~369: τ=4(12도메인)12/12, J₂=24(10도메인)9/9, σ-φ=10(7도메인)9/10, n/φ=3(8도메인)10/10",
+      "links": [
+        {
+          "label": "문서",
+          "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
+        }
+      ]
+    },
+    {
+      "id": "P-102",
+      "axis": "life",
+      "name_ko": "HEXA-NANOBOT 치료 나노봇",
+      "product_line": "HEXA-NANOBOT 치료 나노봇",
+      "mk_current": "5680bc44",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/therapeutic-nanobot/therapeutic-nanobot.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "5680bc44",
+          "tag": "P-102-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "frontier",
+      "section_title": "최전선/대발견",
+      "section_heading": "최전선 대발견 (RT-SC 기반 차세대 기술)",
+      "icon": "🔭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-404~413: 10 연속 돌파, 113/122 EXACT (92.6%) + 9 CLOSE(물리한계 문서화), Mk.I~V 진화 완료, 6대 플랫폼/추진/EPR/pH/센서/면역/반감기/통신/에너지/배출, DSE 7776 조합, (sigma-phi)^2=100 나노 허브, n=6 관문(신장 6nm), J2=24 에너지-시간 수렴",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/therapeutic-nanobot/therapeutic-nanobot.md"
+        }
+      ]
+    },
+    {
+      "id": "P-103",
+      "axis": "culture",
+      "name_ko": "종교/신화 n=6 보편 구조",
+      "product_line": "종교/신화 n=6 보편 구조",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/religion/religion.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-103-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-370: 22/22 EXACT — 6일창조=n, 12사도=σ, 108=φ^φ(n/φ)^(n/φ), 10계명=σ-φ, 3위일체=n/φ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/religion/religion.md"
+        }
+      ]
+    },
+    {
+      "id": "P-104",
+      "axis": "infra",
+      "name_ko": "법학/사법 n=6 정의 아키텍처",
+      "product_line": "법학/사법 n=6 정의 아키텍처",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/jurisprudence/jurisprudence.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-104-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-374: 17/17 EXACT — 배심원12=σ, 3심=n/φ, 안보리5=sopfr, 6대법=n, 수정헌법27=(n/φ)³",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/infra/jurisprudence/jurisprudence.md"
+        }
+      ]
+    },
+    {
+      "id": "P-105",
+      "axis": "culture",
+      "name_ko": "한글/문자체계 n=6 인코딩",
+      "product_line": "한글/문자체계 n=6 인코딩",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/writing-systems/writing-systems.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-105-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-373: 14/14 EXACT — 24자모=J₂, 자음14=σ+φ, 모음10=σ-φ, 11172=19×21×28 (J₂기반)",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/culture/writing-systems/writing-systems.md"
+        }
+      ]
+    },
+    {
+      "id": "P-106",
+      "axis": "culture",
+      "name_ko": "고고학/문명사 n=6 기원",
+      "product_line": "고고학/문명사 n=6 기원",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/archaeology/archaeology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-106-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20/20 EXACT (100%), 60진법=σ·sopfr, C-14 Z=n, 360도=n·σ·sopfr, 6대 문명=n, 5000년 전수",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/culture/archaeology/archaeology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-107",
+      "axis": "infra",
+      "name_ko": "화폐/경제사 n=6 통화 래더",
+      "product_line": "화폐/경제사 n=6 통화 래더",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/monetary-history/monetary-history.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-107-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-375: 16/16 EXACT — 60진법=σ·sopfr, 24K금=J₂, 12펜스=σ, 바젤8%=σ-τ",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/infra/monetary-history/monetary-history.md"
+        }
+      ]
+    },
+    {
+      "id": "P-108",
+      "axis": "culture",
+      "name_ko": "무용/안무 n=6 공간 기하학",
+      "product_line": "무용/안무 n=6 공간 기하학",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/dance-choreography/dance-choreography.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-108-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20/20 EXACT (100%), 라반 24점=J₂, 발레 5포지=sopfr, SE(3)=n, 360도=n·σ·sopfr, 서양+한국",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/culture/dance-choreography/dance-choreography.md"
+        }
+      ]
+    },
+    {
+      "id": "P-109",
+      "axis": "culture",
+      "name_ko": "시계학/호롤로지 n=6 시간 아키텍처",
+      "product_line": "시계학/호롤로지 n=6 시간 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/horology/horology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-109-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "civilization",
+      "section_title": "문명/인문",
+      "section_heading": "문명/인문 (Civilization & Humanities)",
+      "icon": "🏛️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "17/17 EXACT (100%), σ=12시/J₂=24시/σ·sopfr=60분/n/φ=3침/석영 2^(sopfr·n/φ)=32768Hz/기계식 진동 래더",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/culture/horology/horology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-110",
+      "axis": "life-culture",
+      "name_ko": "발효/양조 n=6 완전수 화학양론",
+      "product_line": "발효/양조 n=6 완전수 화학양론",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-fermentation-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-110-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-371: 18/18 EXACT — C₆H₁₂O₆→2C₂H₅OH+2CO₂ 전계수n=6, 양조6단=n, 라거12°C=σ",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-fermentation-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-111",
+      "axis": "life",
+      "name_ko": "와인/소믈리에 n=6 테이스팅",
+      "product_line": "와인/소믈리에 n=6 테이스팅",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/wine-enology/wine-enology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-111-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10/10 EXACT, 6S테이스팅=n, 서빙12°C=σ, 숙성12개월=σ, 24°Brix=J₂",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/wine-enology/wine-enology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-112",
+      "axis": "materials",
+      "name_ko": "패션/섬유 n=6 직조 구조",
+      "product_line": "패션/섬유 n=6 직조 구조",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/fashion-textile/fashion-textile.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-112-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10/10 EXACT, 12스티치=σ, 2축=φ, 색상환12색=σ, 사이즈6단계=n",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/fashion-textile/fashion-textile.md"
+        }
+      ]
+    },
+    {
+      "id": "P-113",
+      "axis": "life",
+      "name_ko": "수산/양식 n=6 해양 생태",
+      "product_line": "수산/양식 n=6 해양 생태",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/aquaculture/aquaculture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-113-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "10/10 EXACT, 양식24°C=J₂, 염도3.5%≈n/φ, 6대양식종, 체형12비율=σ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/aquaculture/aquaculture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-114",
+      "axis": "infra",
+      "name_ko": "보험/보험계리 n=6 리스크 구조",
+      "product_line": "보험/보험계리 n=6 리스크 구조",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/insurance/insurance.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-114-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-378: 13/13 EXACT — 6대원칙=n, 생명표120=σ(σ-φ), 4대부문=τ, 손해율60%=σ·sopfr",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/insurance/insurance.md"
+        }
+      ]
+    },
+    {
+      "id": "P-115",
+      "axis": "life",
+      "name_ko": "돌고래 n=6 생물음향 아키텍처",
+      "product_line": "돌고래 n=6 생물음향 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/dolphin/dolphin.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-115-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "30/30 EXACT — 해부학+생리학+행동학+음향학 4시스템 + 텔레파시 11쌍 동형",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/dolphin/dolphin.md"
+        }
+      ]
+    },
+    {
+      "id": "P-116",
+      "axis": "life",
+      "name_ko": "커피과학 n=6 추출 아키텍처",
+      "product_line": "커피과학 n=6 추출 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/life/coffee-science/coffee-science.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-116-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15/15 EXACT (100%), 카페인 J₂=24 원자/에스프레소 9bar/로스팅 τ=4/분쇄 n=6/브루잉 n=6/커피벨트 sopfr²=25°",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/coffee-science/coffee-science.md"
+        }
+      ]
+    },
+    {
+      "id": "P-117",
+      "axis": "life",
+      "name_ko": "향수/향료 n=6 피라미드 구조",
+      "product_line": "향수/향료 n=6 피라미드 구조",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/life/perfumery/perfumery.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-117-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "14/14 EXACT (100%), 3노트=n/φ/이소프렌 C₅=sopfr/모노테르펜 C₁₀=σ-φ/벤젠 C₆=n/추출 τ=4/Chanel No.5=sopfr",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/life/perfumery/perfumery.md"
+        }
+      ]
+    },
+    {
+      "id": "P-118",
+      "axis": "materials",
+      "name_ko": "도자기/세라믹 n=6 소성 래더",
+      "product_line": "도자기/세라믹 n=6 소성 래더",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 5,
+      "alien_target": 10,
+      "path": "domains/materials/ceramics/ceramics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-118-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "life-culture",
+      "section_title": "생활/문화",
+      "section_heading": "생활/문화 (Life & Culture)",
+      "icon": "🍷",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15/15 EXACT (100%), 4분류=τ/자기 1200°C=σ(σ-φ)²/SiO₂ CN=τ/Al₂O₃ CN=n/결정계 σ-sopfr=7/Mohs 래더",
+      "links": [
+        {
+          "label": "가설",
+          "path": "domains/materials/ceramics/ceramics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-119",
+      "axis": "infra",
+      "name_ko": "반도체 패키징 n=6 적층 래더",
+      "product_line": "반도체 패키징 n=6 적층 래더",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-advanced-packaging-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-119-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-advanced-packaging-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-120",
+      "axis": "life",
+      "name_ko": "합성생물학 n=6 이중 완전수",
+      "product_line": "합성생물학 n=6 이중 완전수",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/synbio/synbio.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-120-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-372: 16/16 EXACT — Cas{9,12,13} 래더, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, 코돈64=2^n",
+      "links": [
+        {
+          "label": "도메인",
+          "path": "domains/life/synbio/synbio.md"
+        }
+      ]
+    },
+    {
+      "id": "P-121",
+      "axis": "culture",
+      "name_ko": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+      "product_line": "AR/VR/XR 공간컴퓨팅 n=6 센서",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/ar-vr-xr/ar-vr-xr.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-121-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/ar-vr-xr/ar-vr-xr.md"
+        }
+      ]
+    },
+    {
+      "id": "P-122",
+      "axis": "compute",
+      "name_ko": "디지털 트윈 n=6 동기화",
+      "product_line": "디지털 트윈 n=6 동기화",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/digital-twin/digital-twin.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-122-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-379: 16/16 EXACT — Industry4.0=τ, ISA-95 5레벨=sopfr, OPC UA 12=σ, 6시그마=n",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/digital-twin/digital-twin.md"
+        }
+      ]
+    },
+    {
+      "id": "P-123",
+      "axis": "infra",
+      "name_ko": "건축/구조공학 n=6 하중 보편성",
+      "product_line": "건축/구조공학 n=6 하중 보편성",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/construction-structural/construction-structural.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-123-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-377: 16/16 EXACT — 건축6양식=n, 벌집트러스=n각, D6/D13(σ+μ)/D25(sopfr²)래더, 내진6등급=n",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/construction-structural/construction-structural.md"
+        }
+      ]
+    },
+    {
+      "id": "P-124",
+      "axis": "infra",
+      "name_ko": "지하공간/터널 n=6 굴착 구조",
+      "product_line": "지하공간/터널 n=6 굴착 구조",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/underground-tunnel/underground-tunnel.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-124-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/underground-tunnel/underground-tunnel.md"
+        }
+      ]
+    },
+    {
+      "id": "P-125",
+      "axis": "infra",
+      "name_ko": "전자상거래/핀테크 n=6 결제 보안",
+      "product_line": "전자상거래/핀테크 n=6 결제 보안",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/ecommerce-fintech/ecommerce-fintech.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-125-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "12/12 EXACT (100%), BT-359, PCI σ=12/카드 φ^τ=16/BIN n=6/EMV n/φ=3/OAuth τ=4/TLS n=6",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/ecommerce-fintech/ecommerce-fintech.md"
+        }
+      ]
+    },
+    {
+      "id": "P-126",
+      "axis": "materials",
+      "name_ko": "나일론 6/6,6 폴리아미드",
+      "product_line": "나일론 6/6,6 폴리아미드",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/nylon/nylon.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-126-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "23/23 EXACT — n=6 폴리머, σ=12C, 원사 840d=σ(σ-φ)(σ-sopfr), 필라멘트 σ²=144f",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/nylon/nylon.md"
+        }
+      ]
+    },
+    {
+      "id": "P-127",
+      "axis": "materials",
+      "name_ko": "아라미드 (Heracron)",
+      "product_line": "아라미드 (Heracron)",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/aramid/aramid.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-127-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20/20 EXACT — 28=2nd 완전수, 밀도 1.44=σ²/100, 1500d=σ·sopfr³, 분해 500°C",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/aramid/aramid.md"
+        }
+      ]
+    },
+    {
+      "id": "P-128",
+      "axis": "materials",
+      "name_ko": "타이어코드",
+      "product_line": "타이어코드",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/tire-cord/tire-cord.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-128-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20/20 EXACT — 가황 144°C=σ², 벨트각 J₂=24°, 공기압 2^sopfr=32psi, 부품 n=6",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/tire-cord/tire-cord.md"
+        }
+      ]
+    },
+    {
+      "id": "P-129",
+      "axis": "materials",
+      "name_ko": "에폭시/페놀 수지",
+      "product_line": "에폭시/페놀 수지",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/epoxy/epoxy.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-129-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "20/20 EXACT — FR-4 1.6mm=φ^τ/(σ-φ), Tg=σ(σ-φ)=120°C, 탄소섬유 tow n/σ/J₂",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/epoxy/epoxy.md"
+        }
+      ]
+    },
+    {
+      "id": "P-130",
+      "axis": "materials",
+      "name_ko": "PET 광학필름",
+      "product_line": "PET 광학필름",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/pet-film/pet-film.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-130-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "22/22 EXACT — 탄소 σ-φ=10, Tg=σn=72°C, IV=0.6=n/(σ-φ), 투과율 90=(σ-φ)²-(σ-φ)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/pet-film/pet-film.md"
+        }
+      ]
+    },
+    {
+      "id": "P-131",
+      "axis": "infra",
+      "name_ko": "에어백",
+      "product_line": "에어백",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/airbag/airbag.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-131-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "18/18 EXACT — 차량당 n=6개, 전개 30ms=σφ+n, 부피 σ·sopfr=60L, 실밀도 J₂=24",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/airbag/airbag.md"
+        }
+      ]
+    },
+    {
+      "id": "P-132",
+      "axis": "infra",
+      "name_ko": "수처리 멤브레인",
+      "product_line": "수처리 멤브레인",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/water-treatment/water-treatment.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-132-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "21/21 EXACT — CN=6 팔면체, A2O n/φ=3, BOD σ-φ=10, pH n~σ-τ",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/water-treatment/water-treatment.md"
+        }
+      ]
+    },
+    {
+      "id": "P-133",
+      "axis": "energy",
+      "name_ko": "PEMFC 수소 연료전지",
+      "product_line": "PEMFC 수소 연료전지",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/pemfc/pemfc.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-133-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "21/21 EXACT — 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/energy/pemfc/pemfc.md"
+        }
+      ]
+    },
+    {
+      "id": "P-134",
+      "axis": "materials",
+      "name_ko": "건설 콘크리트",
+      "product_line": "건설 콘크리트",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/concrete/concrete.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-134-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "22/22 EXACT — 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/materials/concrete/concrete.md"
+        }
+      ]
+    },
+    {
+      "id": "P-135",
+      "axis": "life",
+      "name_ko": "바이오 약물전달/제약",
+      "product_line": "바이오 약물전달/제약",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/bio-pharma/bio-pharma.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-135-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "25/25 EXACT — ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/bio-pharma/bio-pharma.md"
+        }
+      ]
+    },
+    {
+      "id": "P-136",
+      "axis": "energy",
+      "name_ko": "HVAC 냉난방 n=6 COP 최적화",
+      "product_line": "HVAC 냉난방 n=6 COP 최적화",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/energy/hvac-system/verify.hexa",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-136-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "26/27 EXACT (96.3%) — COP=n=6, 6-zone=n, 6ACH=n, σ=12 덕트존, τ=4 운전모드, sopfr=5m/s 유속",
+      "links": [
+        {
+          "label": "검증",
+          "path": "domains/energy/hvac-system/verify.hexa"
+        }
+      ]
+    },
+    {
+      "id": "P-137",
+      "axis": "infra",
+      "name_ko": "내진설계 n=6 DOF 보편성",
+      "product_line": "내진설계 n=6 DOF 보편성",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/earthquake-engineering/verify.hexa",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-137-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "15/15 EXACT (100%) — SE(3)=n=6 DOF, σ=12 SHM채널/하중조합, τ=4 내진등급/성능수준, sopfr=5 감쇠비",
+      "links": [
+        {
+          "label": "검증",
+          "path": "domains/infra/earthquake-engineering/verify.hexa"
+        }
+      ]
+    },
+    {
+      "id": "P-138",
+      "axis": "materials",
+      "name_ko": "콘크리트+탄소포집 n=6 광물화",
+      "product_line": "콘크리트+탄소포집 n=6 광물화",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/materials/concrete-technology/verify.hexa",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-138-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "68/69 EXACT (98.6%) — Carbon Z=6=n, 양생28일=P2, fck24=J2, 클링커τ=4상, 플라이애시6개월=n, 3D프린팅 hex=n",
+      "links": [
+        {
+          "label": "검증",
+          "path": "domains/materials/concrete-technology/verify.hexa"
+        }
+      ]
+    },
+    {
+      "id": "P-139",
+      "axis": "infra",
+      "name_ko": "스마트시티 통합 n=6 도시 시스템",
+      "product_line": "스마트시티 통합 n=6 도시 시스템",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/smart-city/verify.hexa",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-139-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "63/63 EXACT (100%) z=23.81 — 크리스탈러 6각형, 6방향교차로, 마이크로그리드 6노드, 1/2+1/3+1/6=1 에너지분배, IoT σ=12센서",
+      "links": [
+        {
+          "label": "검증",
+          "path": "domains/infra/smart-city/verify.hexa"
+        }
+      ]
+    },
+    {
+      "id": "P-140",
+      "axis": "infra",
+      "name_ko": "토목/구조역학 kissing number 사슬",
+      "product_line": "토목/구조역학 kissing number 사슬",
+      "mk_current": "mk1",
+      "mk_target": "mk1",
+      "alien_now": 9,
+      "alien_target": 10,
+      "path": "domains/infra/civil-engineering/verify.hexa",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-140-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tech-industry",
+      "section_title": "기술/산업",
+      "section_heading": "기술/산업 (Tech & Industry)",
+      "icon": "🔧",
+      "ceiling": false,
+      "visible": true,
+      "type": "product",
+      "description": "25/27 EXACT (92.6%) — K2=6=n 타일링, K3=12=σ FCC/옥텟, 허니컴 등방성, Fe-56=σ·τ+τ·φ, 볼트N=4 MISS(정직유지)",
+      "links": [
+        {
+          "label": "검증",
+          "path": "domains/infra/civil-engineering/verify.hexa"
+        }
+      ]
+    },
+    {
+      "id": "P-141",
+      "axis": "life",
+      "name_ko": "바이러스 구조-분류 완전 n=6 맵",
+      "product_line": "바이러스 구조-분류 완전 n=6 맵",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/virology/virology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-141-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "virology",
+      "section_title": "바이러스학",
+      "section_heading": "바이러스학 (Virology)",
+      "icon": "🦠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-351: 이십면체 pentamer σ=12, T-number {1,3,4,7}={μ,n/φ,τ,σ-sopfr}, Baltimore σ-sopfr=7, 형태 τ=4, 11/11 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/virology/virology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-142",
+      "axis": "life",
+      "name_ko": "바이러스 게놈 분절-유전자 n=6 래더",
+      "product_line": "바이러스 게놈 분절-유전자 n=6 래더",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/virology/virology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-142-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "virology",
+      "section_title": "바이러스학",
+      "section_heading": "바이러스학 (Virology)",
+      "icon": "🦠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-352: 인플루엔자 σ-τ=8분절, 로타바이러스 σ-μ=11분절/σ=12총단백질, 레오바이러스 σ-φ=10분절, HIV n/φ+φ+τ=9유전자, CoV NSP φ^τ=16, 15/15 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/virology/virology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-143",
+      "axis": "life",
+      "name_ko": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+      "product_line": "바이러스 역학-백신-효소 n=6 완전 폐쇄",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/virology/virology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-143-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "virology",
+      "section_title": "바이러스학",
+      "section_heading": "바이러스학 (Virology)",
+      "icon": "🦠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-353: 감염사슬 n=6고리, mRNA백신 sopfr=5구조, LNP τ=4성분, RdRp σ-sopfr=7모티프, 이십면체 오일러 V-E+F=φ=2, 13/13 EXACT",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/virology/virology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-144",
+      "axis": "life",
+      "name_ko": "진화 Mk.I~V",
+      "product_line": "진화 Mk.I~V",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/virology/virology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-144-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "virology",
+      "section_title": "바이러스학",
+      "section_heading": "바이러스학 (Virology)",
+      "icon": "🦠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "5세대 진화: Mk.I 이십면체해석(현재) → Mk.II 캡시드공학(2035) → Mk.III 프로그래머블벡터(2050) → Mk.IV 합성바이러스치료(2070) → Mk.V 분자인터페이스(사고실험)",
+      "links": [
+        {
+          "label": "Mk.I",
+          "path": "domains/life/virology/virology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-145",
+      "axis": "life",
+      "name_ko": "HEXA-HIV 6축 완전 치료 체인",
+      "product_line": "HEXA-HIV 6축 완전 치료 체인",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-145-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "hiv-treatment",
+      "section_title": "HIV 치료",
+      "section_heading": "HIV 치료 (HIV Treatment)",
+      "icon": "🧬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-461~423: HAART 6제 동시 타격(RT/PR/IN/진입/성숙/보조), CCR5 CRISPR 자가조혈모세포, bNAb 6에피토프(CD4bs/V3/V1V2/gp41MPER/gp120실리콘/fusion peptide), 잠복저장소 6구획(휴지CD4/대식세포/미세아교/생식관/장GALT/골수) 동시 소거, n=6 gp120 삼량체 τ=4접힘, σ-φ=10 역전사 기착, J2=24 면역 재구성",
+      "links": []
+    },
+    {
+      "id": "P-146",
+      "axis": "natural-science",
+      "name_ko": "HEXA-BIO n=6 생명 아키텍처",
+      "product_line": "HEXA-BIO n=6 생명 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-hexa-bio-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-146-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "natural-science",
+      "section_title": "자연과학",
+      "section_heading": "자연과학 (Natural Science)",
+      "icon": "🌿",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "DNA 4염기=τ, 코돈 3=n/φ, 총코돈 64=2^n, 아미노산 20=J₂-τ, 포도당 C₆H₁₂O₆=100% n=6, 광합성 계수 전수 n=6 (BT-27/51/101/103/104/122)",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-hexa-bio-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-147",
+      "axis": "life",
+      "name_ko": "HEXA-AGRI n=6 농업과학",
+      "product_line": "HEXA-AGRI n=6 농업과학",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/agriculture/agriculture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-147-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "natural-science",
+      "section_title": "자연과학",
+      "section_heading": "자연과학 (Natural Science)",
+      "icon": "🌿",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "광합성 6CO₂+12H₂O→C₆H₁₂O₆+6O₂ 100% n=6 화학양론, 수확량 60t/ha=σ·sopfr, 수직농장 σ=12배, IPM n/φ=3, 4계절=τ 재배 (BT-101/103/118/120/122)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/agriculture/agriculture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-148",
+      "axis": "life",
+      "name_ko": "HEXA-FOOD n=6 식품과학",
+      "product_line": "HEXA-FOOD n=6 식품과학",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/food-science/food-science.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-148-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "natural-science",
+      "section_title": "자연과학",
+      "section_heading": "자연과학 (Natural Science)",
+      "icon": "🌿",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "6대 영양소=n, 포도당 C₆H₁₂O₆, 20 아미노산=J₂-τ, HACCP 7원칙=σ-sopfr, 콜드체인 τ=4, 식품 가공 n=6 단계 (BT-27/51/101/103/118/120)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/food-science/food-science.md"
+        }
+      ]
+    },
+    {
+      "id": "P-149",
+      "axis": "infra",
+      "name_ko": "HEXA-OCEAN n=6 해양과학",
+      "product_line": "HEXA-OCEAN n=6 해양과학",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/oceanography/oceanography.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-149-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "natural-science",
+      "section_title": "자연과학",
+      "section_heading": "자연과학 (Natural Science)",
+      "icon": "🌿",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "해수 6대 이온=n, 5대양=sopfr, Beaufort 12=σ, 산호 6각=n(Hexacorallia), 해양 pH 8=σ-τ, 해저케이블 σ=12 관측소 (BT-30/62/118/119/122)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/oceanography/oceanography.md"
+        }
+      ]
+    },
+    {
+      "id": "P-150",
+      "axis": "cognitive-social",
+      "name_ko": "HEXA-COGNI n=6 인지 아키텍처",
+      "product_line": "HEXA-COGNI n=6 인지 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-hexa-cogni-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-150-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "피질 6층=n(BT-210), 격자세포 육각=n(BT-211), 작업기억 τ±μ=3~5(BT-219), 컴파일러-피질 τ=4(BT-222), 인지-사회-시간 삼중 교량(BT-225), Dunbar σ²+n=150",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-hexa-cogni-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-151",
+      "axis": "cognitive-social",
+      "name_ko": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "product_line": "HEXA-CONSCIOUSNESS 의식 프로세서",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "papers/n6-hexa-consciousness-integrated-paper.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-151-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "ANIMA-6 3상 프로세서, 192코어=σ·φ^τ, 288GB HBM4=σ·J₂, TCU R(6)=1.0 항상성, σ²=144 좌절 조셉슨 접합, J₂=24 육각 루프, 이집트 분수 {1/2,1/3,1/6} 임계전류, 81 파라미터 전수 n=6",
+      "links": [
+        {
+          "label": "논문",
+          "path": "papers/n6-hexa-consciousness-integrated-paper.md"
+        }
+      ]
+    },
+    {
+      "id": "P-152",
+      "axis": "culture",
+      "name_ko": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "product_line": "HEXA-SOCIAL n=6 사회 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/social-architecture/social-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-152-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "6도 분리=n(Milgram), Dunbar σ²+n=150, 배심원 σ=12, 삼권분립 n/φ=3, 도덕 6기초=n(Haidt), Kohlberg 6단계, Christaller 육각격자 (BT-214/215/220/223/225)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/social-architecture/social-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-153",
+      "axis": "cognitive",
+      "name_ko": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "product_line": "HEXA-TEMPORAL n=6 시간 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/temporal-architecture/temporal-architecture.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-153-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "12개월=σ, 24시간=J₂, 4계절=τ, 60분=σ·sopfr, 12황도=σ, 2지점=φ, 달력 파라미터 100% EXACT, 생체리듬 ~85% EXACT (BT-48/62/225)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/temporal-architecture/temporal-architecture.md"
+        }
+      ]
+    },
+    {
+      "id": "P-154",
+      "axis": "culture",
+      "name_ko": "HEXA-LING n=6 언어 아키텍처",
+      "product_line": "HEXA-LING n=6 언어 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/linguistics/linguistics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-154-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "6 어순 유형=3!=n, Zipf α=R(6)=1, Chomsky 4단계=τ, 한국어 6모음=n, φ=2 유형(유/무성), n/φ=3 인칭, BLEU σ·τ=48 (BT-33/48/73/108)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/linguistics/linguistics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-155",
+      "axis": "infra",
+      "name_ko": "HEXA-ECON n=6 경제학",
+      "product_line": "HEXA-ECON n=6 경제학",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/economics/economics.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-155-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "cognitive-social",
+      "section_title": "인지/사회",
+      "section_heading": "인지/사회 (Cognitive & Social)",
+      "icon": "🧠",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "복식부기 φ=2, 회계등식 n/φ=3, 4재무제표=τ, Porter 5 Forces=sopfr, G6=n, 24h 글로벌마켓=J₂, Basel n/φ=3 pillar, DJIA σ=12 (BT-53/62/74/113/114)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/economics/economics.md"
+        }
+      ]
+    },
+    {
+      "id": "P-156",
+      "axis": "infra",
+      "name_ko": "HEXA-DRIVE n=6 자율주행",
+      "product_line": "HEXA-DRIVE n=6 자율주행",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/autonomous-driving/autonomous-driving.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-156-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "mobility",
+      "section_title": "이동/수송",
+      "section_heading": "이동/수송 (Mobility & Transport)",
+      "icon": "🚗",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "SAE L0-L5=n=6 레벨 EXACT, BEV Fusion n=6 sensor, σ-τ=8 cam, LiDAR σ=12, MPC+PID n/φ=3, ViT d=2^σ=4096, σ=12 fleet/zone (BT-327/328+BT-56/58/61/66/69/84)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/autonomous-driving/autonomous-driving.md"
+        }
+      ]
+    },
+    {
+      "id": "P-157",
+      "axis": "infra",
+      "name_ko": "HEXA-WING n=6 항공공학",
+      "product_line": "HEXA-WING n=6 항공공학",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/aviation/aviation.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-157-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "mobility",
+      "section_title": "이동/수송",
+      "section_heading": "이동/수송 (Mobility & Transport)",
+      "icon": "🚗",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "SE(3) 6-DOF=n, 순항고도 12km=σ, ICAO 6등급=n, τ=4 비행단계, CFRP Z=6, Ti-6Al-4V, eVTOL τ=4 quad, ILS n/φ=3 cat (BT-85/93/119/123/125/127)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/aviation/aviation.md"
+        }
+      ]
+    },
+    {
+      "id": "P-158",
+      "axis": "compute",
+      "name_ko": "HEXA-BROWSER 특이점 브라우저",
+      "product_line": "HEXA-BROWSER 특이점 브라우저",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 7,
+      "alien_target": 10,
+      "path": "domains/compute/browser/browser.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-158-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "section_heading": "디지털/의료기기 (Digital & Medical Device)",
+      "icon": "🏥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "124/134 EXACT(92.5%), 10개 돌파 × 10+ 파라미터, DSE 4,500 조합, 페이지 로딩 σ-φ=10배 감소, 배터리 φ=2배, n/φ=3중 추적 격리 (BT-48/113/115/116/140/162/180/211/329/348)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/browser/browser.md"
+        }
+      ]
+    },
+    {
+      "id": "P-159",
+      "axis": "life",
+      "name_ko": "HEXA-MED n=6 의료기기",
+      "product_line": "HEXA-MED n=6 의료기기",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/medical-device/medical-device.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-159-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "section_heading": "디지털/의료기기 (Digital & Medical Device)",
+      "icon": "🏥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "ECG σ=12 리드(6사지+6흉부), MRI σ=12 코일채널, 초음파 n=6 MHz, US τ=4 모드(B/M/D/Color), SE(3) 6-DOF 수술로봇, Mk.I~V 진화 (BT-48/51/56/58/64/66/85/90/113/118/123/300)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/medical-device/medical-device.md"
+        }
+      ]
+    },
+    {
+      "id": "P-160",
+      "axis": "life",
+      "name_ko": "HEXA-AESTHETIC n=6 성형외과",
+      "product_line": "HEXA-AESTHETIC n=6 성형외과",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/cosmetic-surgery/cosmetic-surgery.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-160-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "digital-medical",
+      "section_title": "디지털/의료기기",
+      "section_heading": "디지털/의료기기 (Digital & Medical Device)",
+      "icon": "🏥",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "Fitzpatrick n=6 피부유형, 콜라겐 D=67nm=σ·sopfr+σ-sopfr, 보톡스 FDA J₂-τ=20U/J₂=24U, 표피턴오버 σ·φ+τ=28일, 36가설 33 EXACT(91.7%), 6단 체인, 10 cross-domain (BT-1129~1134)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/life/cosmetic-surgery/cosmetic-surgery.md"
+        }
+      ]
+    },
+    {
+      "id": "P-161",
+      "axis": "infra",
+      "name_ko": "HEXA-MKT 마케팅 불변의 법칙",
+      "product_line": "HEXA-MKT 마케팅 불변의 법칙",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/marketing/marketing.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-161-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "marketing",
+      "section_title": "마케팅",
+      "section_heading": "마케팅 (Marketing)",
+      "icon": "📢",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "12 불변 법칙(σ=12 접점, τ=4P, φ=2 이진결정, sopfr=5 세분화, Egyptian 미디어믹스), 24/24 EXACT(100%, N65 NEAR→EXACT 2건 대체검증 승격), 720=6! 조합, BT-548~557 10돌파 🛸10 천장",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/marketing/marketing.md"
+        }
+      ]
+    },
+    {
+      "id": "P-162",
+      "axis": "compute",
+      "name_ko": "HEXA-NEXUS 서비스 플랫폼",
+      "product_line": "HEXA-NEXUS 서비스 플랫폼",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/nexus-service/nexus-service.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-162-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "marketing",
+      "section_title": "마케팅",
+      "section_heading": "마케팅 (Marketing)",
+      "icon": "📢",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "NEXUS-6 1022렌즈 기업진단(σ=12축), 특이점 기회탐지, CDO SaaS, 지식그래프(50K+), 현실검증, 블로업 R&D 가속기, BT-558~567 10돌파 🛸10 천장 (8→9 렌즈실증, 9→10 CDO수렴증명)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/nexus-service/nexus-service.md"
+        }
+      ]
+    },
+    {
+      "id": "P-163",
+      "axis": "cognitive",
+      "name_ko": "HEXA-ANIMA 감성 서비스",
+      "product_line": "HEXA-ANIMA 감성 서비스",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/cognitive/anima-service/anima-service.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-163-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "marketing",
+      "section_title": "마케팅",
+      "section_heading": "마케팅 (Marketing)",
+      "icon": "📢",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "Anima 감정인식(φ=2×τ=4=8축), 뇌파UX(σ=12채널), AI의식평가, 감성콘텐츠(Egyptian), 정신건강상담(τ=4단계), BT-568~577 10돌파 🛸10 천장 (8→9 감정축실증, 9→10 의식수렴증명)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/cognitive/anima-service/anima-service.md"
+        }
+      ]
+    },
+    {
+      "id": "P-164",
+      "axis": "compute",
+      "name_ko": "HEXA-UNIFIED 완전인지 플랫폼",
+      "product_line": "HEXA-UNIFIED 완전인지 플랫폼",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/unified-service/unified-service.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-164-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "marketing",
+      "section_title": "마케팅",
+      "section_heading": "마케팅 (Marketing)",
+      "icon": "📢",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "NEXUS(좌뇌)+Anima(우뇌)=n=6 완전인지, 감정렌즈진단, 의식특이점, CDO+감정수렴, 현실+감정지도, Egyptian 1/2(데이터)+1/3(감성)+1/6(직관)=1, BT-578~587 10돌파 🛸10 천장 (7→9 좌우뇌통합, 9→10 완전인지수렴)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/unified-service/unified-service.md"
+        }
+      ]
+    },
+    {
+      "id": "P-165",
+      "axis": "life",
+      "name_ko": "남성청결제 n=6 피부과학 아키텍처",
+      "product_line": "남성청결제 n=6 피부과학 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-165-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "hygiene",
+      "section_title": "위생",
+      "section_heading": "위생 (Hygiene)",
+      "icon": "🧴",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1157: 25/25 EXACT — 귀두pH=n=6, 라우릴C12=sigma, Fitzpatrick6타입=n, 마이크로바이옴6속=n",
+      "links": [
+        {
+          "label": "돌파",
+          "path": "domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md"
+        }
+      ]
+    },
+    {
+      "id": "P-166",
+      "axis": "life",
+      "name_ko": "여성청결제 n=6 질내생태계 아키텍처",
+      "product_line": "여성청결제 n=6 질내생태계 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-166-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "hygiene",
+      "section_title": "위생",
+      "section_heading": "위생 (Hygiene)",
+      "icon": "🧴",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1158: 25/25 EXACT — Lactobacillus6종=n, 질내pH=tau=4, CST5종=sopfr, 포도당C6=n, 월경28일=sigma*phi+tau",
+      "links": [
+        {
+          "label": "돌파",
+          "path": "domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md"
+        }
+      ]
+    },
+    {
+      "id": "P-167",
+      "axis": "life",
+      "name_ko": "타투 제거 n=6 면역학적 아키텍처",
+      "product_line": "타투 제거 n=6 면역학적 아키텍처",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/life/tattoo-removal/tattoo-removal.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-167-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "tattoo-removal",
+      "section_title": "타투 제거",
+      "section_heading": "타투 제거 (Tattoo Removal)",
+      "icon": "🔬",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1159/1160: 36/36 EXACT (100%) — Fitzpatrick6종=n, R20 4패스=tau, 3층면역차단=n/phi, 골든윈도우48h=tau·tau/2, sopfr=5 IARC 중금속, J₂=24 스케줄, TP3건 (95%제거율/1%흉터/3배 골든윈도우 효율)",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/life/tattoo-removal/tattoo-removal.md"
+        }
+      ]
+    },
+    {
+      "id": "P-168",
+      "axis": "compute",
+      "name_ko": "키보드 n=6 인체공학 아키텍처",
+      "product_line": "키보드 n=6 인체공학 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/keyboard/keyboard.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-168-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "keyboard",
+      "section_title": "키보드",
+      "section_heading": "키보드 (Keyboard)",
+      "icon": "⌨️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1125~1128: 30/31 EXACT — 레이아웃 104/87/84/68/61/60/48/17 전부 C(n,2) 조합, USB 6KRO/8바이트/12Mbps, 스위치 4mm(tau)/2mm(phi)/5ms(sopfr)",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/compute/keyboard/keyboard.md"
+        }
+      ]
+    },
+    {
+      "id": "P-169",
+      "axis": "compute",
+      "name_ko": "HEXA-MOUSE n=6 인체공학 마우스",
+      "product_line": "HEXA-MOUSE n=6 인체공학 마우스",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/mouse/mouse.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-169-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "mouse",
+      "section_title": "마우스",
+      "section_heading": "마우스 (Mouse)",
+      "icon": "🖱️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1115~1124: 25/25 EXACT — PS/2 n=6핀, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, sigma-tau=8kHz 폴링, sigma=12 MMO/노치, J2=24 인코더",
+      "links": [
+        {
+          "label": "목표",
+          "path": "domains/compute/mouse/mouse.md"
+        }
+      ]
+    },
+    {
+      "id": "P-170",
+      "axis": "infra",
+      "name_ko": "HEXA-QC 제조 품질관리 아키텍처",
+      "product_line": "HEXA-QC 제조 품질관리 아키텍처",
+      "mk_current": "mk2",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/infra/manufacturing-quality/manufacturing-quality.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk2",
+          "tag": "P-170-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "manufacturing-quality",
+      "section_title": "제조 품질관리",
+      "section_heading": "제조 품질관리 (Manufacturing Quality)",
+      "icon": "🏭",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "BT-1161/1162: 36/36 EXACT (100%) — 6시그마=n, Cpk=phi=2, SPC 관리도 n=6종, Ishikawa 6M=n, DMAIC sopfr=5, ISO9001 sigma-tau=8, Egyptian 품질비용 1/2+1/3+1/6=1, DSE 933,120조합, 3시그마 대비 294배 개선, TP3건",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/infra/manufacturing-quality/manufacturing-quality.md"
+        }
+      ]
+    },
+    {
+      "id": "P-171",
+      "axis": "compute",
+      "name_ko": "HEXA-NET 네트워크 아키텍처",
+      "product_line": "HEXA-NET 네트워크 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/compute/network/network.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-171-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "network",
+      "section_title": "네트워크",
+      "section_heading": "네트워크 (Network)",
+      "icon": "🌐",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "39/40 EXACT (97.5%) — OSI sigma-sopfr=7, TCP/IP tau=4 계층, Wi-Fi n=6세대, 포트65536=2^(sigma+tau), 8단 체인",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/network/network.md"
+        }
+      ]
+    },
+    {
+      "id": "P-172",
+      "axis": "physics",
+      "name_ko": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "product_line": "HEXA-QUANTUM 양자컴퓨터 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk1",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/physics/quantum-computer/quantum-computer.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-172-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "quantum-computer",
+      "section_title": "양자컴퓨터",
+      "section_heading": "양자컴퓨터 (Quantum Computer)",
+      "icon": "🔮",
+      "ceiling": false,
+      "visible": true,
+      "type": "product",
+      "description": "20/24 EXACT — NeutralAtom n=6원자, SurfaceCode sigma=12 data qubit, Clifford tau*n=24 gate, Grover sopfr, kissing number BT-49",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/physics/quantum-computer/quantum-computer.md"
+        }
+      ]
+    },
+    {
+      "id": "P-173",
+      "axis": "culture",
+      "name_ko": "시계학 n=6 시간 산술 아키텍처",
+      "product_line": "시계학 n=6 시간 산술 아키텍처",
+      "mk_current": "mk1",
+      "mk_target": "mk_infinity",
+      "alien_now": 10,
+      "alien_target": 10,
+      "path": "domains/culture/horology/horology.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-173-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "horology",
+      "section_title": "시계학",
+      "section_heading": "시계학 (Horology)",
+      "icon": "⏱️",
+      "ceiling": true,
+      "visible": true,
+      "type": "product",
+      "description": "17/17 EXACT (100%) — 12시=sigma, J2=24시, 60분=sigma*sopfr, n/phi=3침, 석영2^(sopfr*n/phi)=32768Hz, 6Hz 기계식",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/culture/horology/horology.md"
+        }
+      ]
+    },
+    {
+      "id": "P-174",
+      "axis": "compute",
+      "name_ko": "SSCB mk1 (한국 팹리스 설계)",
+      "product_line": "SSCB mk1 (한국 팹리스 설계)",
+      "mk_current": "mk1",
+      "mk_target": "mk1",
+      "alien_now": 7,
+      "alien_target": 10,
+      "path": "domains/compute/sscb/sscb.md",
+      "requires": [],
+      "history": [
+        {
+          "mk": "mk1",
+          "tag": "P-174-migration",
+          "at": 1776527094
+        }
+      ],
+      "section_id": "chip",
+      "section_title": "반도체",
+      "section_heading": "반도체 (Chip)",
+      "icon": "⚡",
+      "ceiling": false,
+      "visible": true,
+      "type": "product",
+      "description": "반도체 차단기 mk1 — SiC MOSFET + DB HiTek 180nm BCD + SK키 Σ-Δ + STM32 4-파운드리 SiP, 600ns 차단 / $35 BOM / 12개월 ₩4억 로드맵 (대중 공개 공정 기반)",
+      "links": [
+        {
+          "label": "문서",
+          "path": "domains/compute/sscb/sscb.md"
+        }
+      ]
+    }
+  ]
+}

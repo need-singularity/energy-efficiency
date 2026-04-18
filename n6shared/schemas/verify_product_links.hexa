@@ -1,6 +1,7 @@
 // verify_product_links.hexa — 제품 링크 단일화 규칙 강제 (pure HEXA, 외부의존 0)
 //
-// 규칙: papers/_products.json 각 product 는 links 배열에 항목 1개만 허용.
+// SSOT: n6shared/n6/docs/domains.json (2026-04-19 이전 완료. papers/_products.json 폐기).
+// 규칙: 각 entry 는 links 배열에 항목 1개만 허용 (엄격).
 // 다중 논문 → "통합 논문 1개" 를 .doc-rules.json paper 규칙(21섹션)으로 수동 작성 후 연결.
 //
 // 역할: 탐지 + 에러 반환. 자동 병합 없음.
@@ -19,7 +20,7 @@
 //   OK total=<N>
 //   exit 0
 
-let TARGET = "papers/_products.json"
+let TARGET = "n6shared/n6/docs/domains.json"
 
 fn count_substr(haystack: string, needle: string) -> int {
     let parts = haystack.split(needle)
@@ -89,7 +90,7 @@ println("SUMMARY total=" + to_string(total) + " violations=" + to_string(violati
 
 if violations > 0 {
     println("RULE links-single")
-    println("FIX manual: 통합 논문 1개(.doc-rules.json paper 21섹션) 작성 → _products.json links 교체")
+    println("FIX manual: 통합 논문 1개(.doc-rules.json paper 21섹션) 작성 → domains.json links 교체")
     exit(1)
 }
 
