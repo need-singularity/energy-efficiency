@@ -628,8 +628,8 @@ R4 에서 드러난 **최종 잔여 영역**을 R5 후보로 정리.
 
 ### 10.1 subrepo 세부 깊이 (anima + n6 + nexus + hexa-lang 내부 디렉토리)
 
-**R5-C1: n6-architecture 내부 서브모듈 세부 (n6shared/harness/bridge/engine 등 아직 분야 아닌 서브)**
-- 경로: `/Users/ghost/Dev/n6-architecture/bridge/`, `/engine/`, `/n6shared/harness/` 등.
+**R5-C1: n6-architecture 내부 서브모듈 세부 (bridge/engine 등 아직 분야 아닌 서브; harness 는 $NEXUS/shared/harness SSOT 로 통합)**
+- 경로: `/Users/ghost/Dev/n6-architecture/bridge/`, `/engine/`, `$NEXUS/shared/harness/` 등.
 - 잠재: 5~8 분야.
 
 ### 10.2 3-hop 잔여 사슬

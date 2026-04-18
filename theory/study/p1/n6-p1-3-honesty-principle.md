@@ -391,7 +391,7 @@ MMR 백신-자폐증 연관 주장 — 데이터 조작·MISS 숨김·Bayesian p
 - MISS 섹션 미작성 차단
 - 소수 대조표 자동 생성 (R27)
 
-등 구현 (n6shared/harness 참조).
+등 구현 ($NEXUS/shared/harness 참조).
 
 ---
 
