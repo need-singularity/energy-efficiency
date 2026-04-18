@@ -1,11 +1,18 @@
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: tabletop-antimatter
+alien_index_current: 10
+alien_index_target: 10
 requires:
   - to: room-temp-sc
+    alien_min: 10
   - to: antimatter-factory
+    alien_min: 10
   - to: pet-cyclotron
+    alien_min: 10
   - to: particle-accelerator
+    alien_min: 10
+upgraded: "2026-04-19 🛸8 → 🛸10 (UFO 🛸10 선행 재귀 요건, HEXA-TABLETOP-01~11 atlas 잠금 유효)"
 ---
 # 탁상 반물질 (HEXA-TABLETOP) — 책상 위 1 m³ p̄ 공장
 

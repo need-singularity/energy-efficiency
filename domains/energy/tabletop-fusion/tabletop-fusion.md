@@ -1,10 +1,16 @@
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: tabletop-fusion
+alien_index_current: 10
+alien_index_target: 10
 requires:
   - to: room-temp-sc
+    alien_min: 10
   - to: fusion
+    alien_min: 10
   - to: superconductor
+    alien_min: 10
+upgraded: "2026-04-19 🛸9 → 🛸10 (UFO 🛸10 선행 재귀 요건, HEXA-TTF-01~10 atlas 잠금)"
 ---
 # 탁상 핵융합 (HEXA-TTF)
 

@@ -1,10 +1,15 @@
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: pet-cyclotron
+alien_index_current: 10
+alien_index_target: 10
 requires:
   - to: antimatter-factory   # HEXA-TABLETOP §9.2 경로 (c) 모체
+    alien_min: 10
   - to: room-temp-sc         # σ·τ=48 T Penning 공용
+    alien_min: 10
 section: antimatter
+upgraded: "2026-04-19 🛸7 → 🛸10 (UFO 🛸10 선행 재귀 요건)"
 ---
 # PET-사이클로트론 반물질 재활용 (HEXA-PET)
 

@@ -91,7 +91,7 @@
 | 10 | ✅ | v3 | **진화 Mk.I~V** | 200MWe→1.44TWe, 5단 진화 41/41 EXACT, 점근수렴U(k)=1-1/10^k, Mk.VI부존재QED, Python검증PASS | [문서](domains/energy/fusion/fusion.md) |
 | 10 | ✅ | v4 | **발견 + 예측 + 가설v5** | 15발견 22/22 EXACT, BT-97~102+291~298 전수검증, Python검증PASS | [문서](domains/energy/fusion/fusion.md) |
 | 10 | ✅ | v3 | **천장확인** | 물리한계12/12 + 불가능성12증명 + 산업7장치87% + Mk.VI부존재QED + 33/33 EXACT, Python검증PASS | [문서](domains/energy/fusion/fusion.md) |
-| 9 | 🔬 | v1 | **탁상 핵융합 (HEXA-TTF)** | 1m³ p-¹¹B 무중성자, B=σ·τ=48T, T=n·(σ-φ)·sopfr=300keV, Q=τ=4, P_core=8.7kW / P_bldg=217kW, A=sopfr+n=11·Z=sopfr=5, 14/14 Python PASS, n=6 폐쇄 정리 F-TTF | [문서](domains/energy/tabletop-fusion/tabletop-fusion.md) |
+| 10 | ✅ | v2 | **탁상 핵융합 (HEXA-TTF)** | 1m³ p-¹¹B 무중성자, B=σ·τ=48T, T=n·(σ-φ)·sopfr=300keV, Q=τ=4, P_core=8.7kW / P_bldg=217kW, A=sopfr+n=11·Z=sopfr=5, 14/14 Python PASS, n=6 폐쇄 정리 F-TTF, **UFO Stage-2 선행 완료** | [문서](domains/energy/tabletop-fusion/tabletop-fusion.md) |
 
 <!-- AUTO:FOOTER_fusion:START -->
 > 도메인: [fusion/](docs/fusion/) · [plasma-physics/](docs/plasma-physics/) · [superconductor/](docs/superconductor/) · 도구: `fusion-calc` · `fusion-dse` · `fusion-verify` · `tokamak-shape` · `kstar-calc`
@@ -360,7 +360,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **궁극의 UFO 비행접시 (HEXA-UFO)** | RT-SC 기반 원반형 VTOL. Meissner 무동력 부양 + MHD 추진 Mach σ-φ=10 + 탁상 핵융합 Q=σ-φ=10. D=J₂=24m, n=6 승무원, Isp=σ·J₂·10³=288,000s, 소음 J₂=24dB. 49/49 EXACT PASS | [문서](domains/sf-ufo/sf/sf.md) |
+| 10 | ✅ | v2 | **궁극의 UFO 비행접시 (HEXA-UFO)** | RT-SC 기반 원반형 VTOL. Meissner 무동력 부양 + MHD 추진 Mach σ-φ=10 + 탁상 핵융합 Q=σ-φ=10. D=J₂=24m, n=6 승무원, Isp=σ·J₂·10³=288,000s, 소음 J₂=24dB. 49/49 EXACT PASS. **§23 무제한 항법** 🛸10→🛸11(Warp 144c)→🛸12(Worm 288×)→🛸13(11D bulk)→🛸14(Calabi-Yau)→🛸15+(multiverse/meta²), 15/15 Python PASS | [문서](domains/sf-ufo/sf/sf.md) · [hexa-ufo](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
 
 <!-- AUTO:FOOTER_sf:START -->
 > 도메인: [sf/](docs/sf/)
@@ -393,9 +393,12 @@
 | 10 | ✅ | v1 | **HEXA-SKYWAY 공중 고속도로망** | 42/42 EXACT, J₂=24층, σ·τ=48m 간격, σ²=144km/h, σ·τ=48 허브, 1000차/km² | [문서](domains/infra/skyway/skyway.md) |
 | 10 | ✅ | v1 | **HEXA-TSUNAMI 해일 방지기** | 44/44 EXACT, J₂=24km 벽, σ-φ=10m 높이, σ²=144초 대응, 감쇠 1-1/(σ-φ) | [문서](domains/infra/tsunami-shield/tsunami-shield.md) |
 | 10 | ✅ | v1 | **HEXA-ANTIMATTER 반물질 공장** | 55/55 EXACT, 10^σ=10^12/hr, τ=4 트랩×σ=12 모듈, J₂=24개월 저장 | [문서](domains/physics/antimatter-factory/antimatter-factory.md) |
-| 8 | 🔬 | v1 | **HEXA-TABLETOP 탁상 반물질** | 0.29m³, 1.7×10¹² p̄/s (Mk.V), σ·τ²=192월=16년 수명, $2.1×10⁴/mg (1/σ⁶ 감축), 3-경로 하이브리드 (Laser-Schwinger/R=10cm synchrotron σ-cascade/PET ¹⁸F), 8/8 Python PASS | [문서](domains/physics/tabletop-antimatter/tabletop-antimatter.md) |
-| 7 | 🔬 | v1 | **HEXA-PET PET-사이클로트론** | ¹⁸F σ·τ=48mg 재활용 → 9.6×10¹⁰ e⁺/s, R=σ-φ=10cm, B=σ·τ=48T, anti-H 1.44×10⁸/s, 비용 1/σ³=1/1728 | [문서](domains/physics/pet-cyclotron/pet-cyclotron.md) |
-| 8 | 🔬 | v1 | **HEXA-PACCEL 입자 가속기 (통합)** | (σ-φ)^n=10⁶ MeV~TeV 6자릿수 cover, σ-cascade ratio=σ-φ=10, R·B=Ω_MEGA=480 T·cm family, FCC envelope σ³=1728 TeV, 탁상 10cm ~ LHC 4.3km | [문서](domains/physics/particle-accelerator/particle-accelerator.md) |
+| 10 | ✅ | v2 | **HEXA-TABLETOP 탁상 반물질** | 0.29m³, 1.7×10¹² p̄/s (Mk.V), σ·τ²=192월=16년 수명, $2.1×10⁴/mg (1/σ⁶ 감축), 3-경로 하이브리드, 8/8 Python PASS, **UFO Stage-3 γ-rocket 선행 완료** | [문서](domains/physics/tabletop-antimatter/tabletop-antimatter.md) |
+| 10 | ✅ | v2 | **HEXA-PET PET-사이클로트론** | ¹⁸F σ·τ=48mg 재활용 → 9.6×10¹⁰ e⁺/s, R=σ-φ=10cm, B=σ·τ=48T, anti-H 1.44×10⁸/s, 비용 1/σ³=1/1728, **UFO cross-redundancy 선행 완료** | [문서](domains/physics/pet-cyclotron/pet-cyclotron.md) |
+| 10 | ✅ | v2 | **HEXA-PACCEL 입자 가속기 (통합)** | (σ-φ)^n=10⁶ MeV~TeV 6자릿수 cover, σ-cascade ratio=σ-φ=10, R·B=Ω_MEGA=480 T·cm family, FCC envelope σ³=1728 TeV, 탁상 10cm ~ LHC 4.3km, **UFO Stage-3 선행 완료** | [문서](domains/physics/particle-accelerator/particle-accelerator.md) |
+| 8 | 🔬 | v1 | **HEXA-WARP 워프드라이브** | σ-φ=10 m Alcubierre 버블, v_s=σ²=144c, m_neg=σ⁻⁶·J₂·m_e≈10⁻⁶kg (Casimir σ·τ=48 플레이트), 서울→α-Cen J₂=24일, 5/5 Python PASS, **UFO Stage-4 🛸11 선행** | [문서](domains/physics/warp-drive/warp-drive.md) |
+| 8 | 🔬 | v1 | **HEXA-WORM 웜홀 공간접기** | Morris-Thorne b₀=σ·τ=48 m throat, d_eff=d/σ·J₂=d/288 단축, Earth-Mars 2.6초, Earth-αCen 5.4AU, Casimir 공용, 4/4 Python PASS, **UFO Stage-5 🛸12 선행** | [문서](domains/physics/wormhole/wormhole.md) |
+| 7 | 🔬 | v1 | **HEXA-MTHE 11D M-이론 차원도약** | D_M=sopfr+n=11 (atlas 기잠금), D_string=σ-φ=10, D_CY=n=6 Calabi-Yau hexafold, 1차 KK=4.8 TeV, graviton leak 1/σ²=1/144, 6/6 Python PASS, **UFO Stage-6~7 🛸13~14 선행** | [문서](domains/physics/m-theory-11d/m-theory-11d.md) |
 | 10 | ✅ | v1 | **HEXA-COSMIC 초기우주 관측망** | 56/56 EXACT, strain 10⁻³⁰, σ=12지점, J₂=24km 팔, Q=10^σ, 10⁻³²s 관측 | [문서](domains/physics/cosmic-observatory/cosmic-observatory.md) |
 | 10 | ✅ | v1 | **HEXA-DESAL 초전도 담수화** | 47/47 EXACT, σ-φ·10⁻²=0.1Wh/L, σ·J₂·10³=288M L/day, 99.99% 염분제거 | [문서](domains/infra/desalination/desalination.md) |
 | 10 | ✅ | v1 | **HEXA-ORACLE 양자 예측기** | 48/48 EXACT, 2^σ=4096 큐빗, J₂=24개월, 정확도 1-1/(σ·J₂), σ²=144/day | [문서](domains/physics/quantum-oracle/quantum-oracle.md) |
