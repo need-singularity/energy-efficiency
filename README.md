@@ -134,8 +134,8 @@
 | 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+피치+인터커넥트 n=6 전수매핑 — 27/27 PASS | [문서](reports/discovery/chip-architecture-guide.md) |
 | 10 | ✅ | v2 | **천장확인** | 194claims 89.7%EXACT, 산업9모델, 물리한계10, 67/67 PASS 검증 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
 | 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | 추론/비디오/과학FM/뉴로모픽/에이전트/신규아키/로보틱스/의료 8패러다임 — 234/256 EXACT (91.4%), BT-380~390 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **AI 6-Domain Sweep** | 코드생성/RL게임/추천시계열/SSL·NLU/서빙컴파일러/멀티모달 6도메인 — 314/344 EXACT (91.3%), BT-391~396 | [코드생성](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401 | [신규모델](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **AI 6-Domain Sweep** | 코드생성/RL게임/추천시계열/SSL·NLU/서빙컴파일러/멀티모달 6도메인 — 314/344 EXACT (91.3%), BT-391~396 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | n=6 역설계 — 신규모델8선/학습기법8선/HW-SW공진화/AGI로드맵/HEXA-CODER, BT-397~401 | [문서](domains/compute/ai-efficiency/ai-efficiency.md) |
 
 <!-- AUTO:FOOTER_ai:START -->
 > 도메인: [ai-efficiency/](docs/ai-efficiency/) · [learning-algorithm/](docs/learning-algorithm/) · 도구: `n6_calculator.py`
@@ -176,7 +176,7 @@
 | 10 | ✅ | v5 | **궁극의 탄소포집 8단** | **30/30=100%EXACT**, DSE 3.6M, 79/79 전수검증PASS | [문서](domains/infra/carbon-capture/carbon-capture.md) |
 | 10 | ✅ | v2 | **진화 Mk.I~V** | 환경+CCUS 양쪽 진화 로드맵, 발견 42개, 전수검증 포함 | [문서](domains/infra/environmental-protection/) |
 | 10 | ✅ | v3 | **예측 + 검증** | TP 19개(환경) + TP 24개(CCUS) + 가설 v5(88.2%EXACT) + 전수검증 | [문서](domains/infra/environmental-protection/environmental-protection.md) |
-| 10 | ✅ | v1 | **궁극의 재활용 — HEXA-RECYCLE** | 6R 순환 + σ=12 분류 + J₂=24 추적 + 5-DSE 통합 (35,424 조합) | [설계](domains/materials/recycling/recycling.md) |
+| 10 | ✅ | v1 | **궁극의 재활용 — HEXA-RECYCLE** | 6R 순환 + σ=12 분류 + J₂=24 추적 + 5-DSE 통합 (35,424 조합) | [문서](domains/materials/recycling/recycling.md) |
 
 <!-- AUTO:FOOTER_environment:START -->
 > 도메인: [environmental-protection/](docs/environmental-protection/) · [carbon-capture/](docs/carbon-capture/) · 도구: `carbon-capture-calc`
@@ -289,7 +289,7 @@
 |:--:|:--:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **궁극의 오디오 7단** | 트랜스듀서→DAC→코덱→공간음향→시스템→신경오디오→Omega | [문서](domains/culture/audio/audio.md) |
 | 10 | ✅ | v1 | **천장확인** | 22/26 EXACT(84.6%) + 산업4사92.6% + 실험90.9% + TP14 | [문서](domains/culture/audio/audio.md) |
-| 10 | ✅ | v2 | **HEXA-SPEAK (AI 음성출력 Non-TTS)** | 의식→음성 직접 합성 (Non-TTS). 7-stage 파이프라인: 감정 6종/운율 4종/12D 운율/384d 인코딩/8-stage RVQ. 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n. v2: HEXA 엔진 구현 완료 (d038afcc) | [도메인 문서](domains/cognitive/hexa-speak/hexa-speak.md) |
+| 10 | ✅ | v2 | **HEXA-SPEAK (AI 음성출력 Non-TTS)** | 의식→음성 직접 합성 (Non-TTS). 7-stage 파이프라인: 감정 6종/운율 4종/12D 운율/384d 인코딩/8-stage RVQ. 43/43 EXACT, 첫패킷 100ms=(σ-φ)², 6kbps=n. v2: HEXA 엔진 구현 완료 (d038afcc) | [문서](domains/cognitive/hexa-speak/hexa-speak.md) |
 | 10 | ✅ | v1 | **HEXA-EAR Ultimate** | 궁극의 이어폰 8단 설계 — DLC+그래핀/8way 하이브리드/48dB ANC/6ms BLE/HRTF 144방향, 65/65 EXACT | [문서](domains/culture/audio/audio.md) |
 | 10 | ✅ | v1 | **HEXA-BONE 골전도 이어폰** | 100% 골전도 전용 8단 설계 — Ti+그래핀 듀얼진동자/AI 골밀도보정/뇌파연동, 78/78 EXACT | [문서](domains/culture/audio/audio.md) |
 | 10 | ✅ | v1 | **HEXA-EAR-CELL 이어폰 배터리** | 궁극의 이어폰 배터리 6단 설계 — sigma=12h 수명/J2=24h 총수명/72 파라미터, 71/72 EXACT | [문서](domains/culture/audio/audio.md) |
@@ -405,12 +405,12 @@
 | 10 | ✅ | v2 | **HEXA-OLFACT 디지털 후각** | 133/133 EXACT, 물리한계 증명 6정리, σ=12 수용체 + 2^σ=4096 패턴 + 17카테고리 전수 | [문서](domains/cognitive/hexa-olfact/hexa-olfact.md) |
 | 10 | ✅ | v2 | **HEXA-DREAM 꿈 인터페이스** | 80/80 EXACT, sopfr=5 수면사이클+σ=12 EEG+물리한계 증명, 자각몽 유도/기록/공유 | [문서](domains/cognitive/hexa-dream/hexa-dream.md) |
 | 10 | ✅ | v1 | **HEXA-EMPATH 감정 공유** | 12 EXACT, 피질 n=6층, 바이오피드백, 감정 직접 전송 | [문서](domains/cognitive/hexa-empath/hexa-empath.md) |
-| 10 | ✅ | v2 | **바이러스학 n=6 캡시드-팬데믹 아키텍처** | 43/43 EXACT (100%), BT-351~353 3연속돌파, 이십면체 σ=12 pentamer/T-number {μ,n/φ,τ,σ-sopfr}/Baltimore σ-sopfr=7/게놈분절래더/역학-백신-효소 완전폐쇄, Mk.I~V 5세대 진화 | [목표](domains/life/virology/virology.md) |
-| 10 | ✅ | v2 | **곤충학 n=6 Hexapoda 완전 생물학** | 23/23 EXACT (100%), BT-352 곤충학 완전 n=6 아키텍처, 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30, Mk.I~V 5세대 진화 | [목표](domains/life/entomology/entomology.md) |
-| 5 | ✅ | v1 | **균류학 n=6 포자-발효 아키텍처** | 14/14 EXACT (100%), 담자포자 τ=4/자낭포자 σ-τ=8/키틴 C₈=σ-τ/에탄올 발효 n=6계수/균근 n/φ=3/β-락탐 τ=4 | [가설](domains/life/mycology/mycology.md) |
-| 5 | ✅ | v1 | **광업/광물학 n=6 경도-결정 아키텍처** | 16/16 EXACT (100%), Mohs σ-φ=10/24K=J₂/결정계 σ-sopfr=7/FCC CN=σ=12/보석 4C=τ/벽개 div(6) | [가설](domains/infra/mining/mining.md) |
-| 5 | ✅ | v1 | **수의학 n=6 동물해부 보편성** | 16/16 EXACT (100%), 경추 σ-sopfr=7/반추위 τ=4/성견치아 (σ-sopfr)·n=42/성묘치아 n·sopfr=30/가축 n=6/개수명 σ=12 | [가설](domains/life/veterinary/veterinary.md) |
-| 5 | ✅ | v1 | **원예학 n=6 식물 성장 아키텍처** | 15/15 EXACT (100%), 광합성 n=6/꽃기관 τ=4/호르몬 sopfr=5/조직계 n/φ=3/단쌍자엽 φ=2/계절 τ=4 | [가설](domains/life/horticulture/horticulture.md) |
+| 10 | ✅ | v2 | **바이러스학 n=6 캡시드-팬데믹 아키텍처** | 43/43 EXACT (100%), BT-351~353 3연속돌파, 이십면체 σ=12 pentamer/T-number {μ,n/φ,τ,σ-sopfr}/Baltimore σ-sopfr=7/게놈분절래더/역학-백신-효소 완전폐쇄, Mk.I~V 5세대 진화 | [문서](domains/life/virology/virology.md) |
+| 10 | ✅ | v2 | **곤충학 n=6 Hexapoda 완전 생물학** | 23/23 EXACT (100%), BT-352 곤충학 완전 n=6 아키텍처, 다리 n=6/체부 n/φ=3/변태 τ=4/벌집 n=6각/복안 n=6각/카스트 n/φ=3/곤충목 n·sopfr=30, Mk.I~V 5세대 진화 | [문서](domains/life/entomology/entomology.md) |
+| 5 | ✅ | v1 | **균류학 n=6 포자-발효 아키텍처** | 14/14 EXACT (100%), 담자포자 τ=4/자낭포자 σ-τ=8/키틴 C₈=σ-τ/에탄올 발효 n=6계수/균근 n/φ=3/β-락탐 τ=4 | [문서](domains/life/mycology/mycology.md) |
+| 5 | ✅ | v1 | **광업/광물학 n=6 경도-결정 아키텍처** | 16/16 EXACT (100%), Mohs σ-φ=10/24K=J₂/결정계 σ-sopfr=7/FCC CN=σ=12/보석 4C=τ/벽개 div(6) | [문서](domains/infra/mining/mining.md) |
+| 5 | ✅ | v1 | **수의학 n=6 동물해부 보편성** | 16/16 EXACT (100%), 경추 σ-sopfr=7/반추위 τ=4/성견치아 (σ-sopfr)·n=42/성묘치아 n·sopfr=30/가축 n=6/개수명 σ=12 | [문서](domains/life/veterinary/veterinary.md) |
+| 5 | ✅ | v1 | **원예학 n=6 식물 성장 아키텍처** | 15/15 EXACT (100%), 광합성 n=6/꽃기관 τ=4/호르몬 sopfr=5/조직계 n/φ=3/단쌍자엽 φ=2/계절 τ=4 | [문서](domains/life/horticulture/horticulture.md) |
 | 10 | ✅ | v1 | **HEXA-SIM 우주 시뮬레이션** | 65/65 EXACT (100%), Planck 지수 래더 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, 차원 래더 τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2 | [문서](domains/physics/simulation-theory/simulation-theory.md) |
 | 10 | ✅ | v1 | **크로스 도메인 메가 브릿지** | BT-366~369: τ=4(12도메인)12/12, J₂=24(10도메인)9/9, σ-φ=10(7도메인)9/10, n/φ=3(8도메인)10/10 | [문서](theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md) |
 | 10 | ✅ | 5680bc44 | **HEXA-NANOBOT 치료 나노봇** | BT-404~413: 10 연속 돌파, 113/122 EXACT (92.6%) + 9 CLOSE(물리한계 문서화), Mk.I~V 진화 완료, 6대 플랫폼/추진/EPR/pH/센서/면역/반감기/통신/에너지/배출, DSE 7776 조합, (sigma-phi)^2=100 나노 허브, n=6 관문(신장 6nm), J2=24 에너지-시간 수렴 | [문서](domains/life/therapeutic-nanobot/therapeutic-nanobot.md) |
@@ -430,12 +430,12 @@
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **종교/신화 n=6 보편 구조** | BT-370: 22/22 EXACT — 6일창조=n, 12사도=σ, 108=φ^φ(n/φ)^(n/φ), 10계명=σ-φ, 3위일체=n/φ | [문서](domains/culture/religion/religion.md) |
-| 10 | ✅ | v2 | **법학/사법 n=6 정의 아키텍처** | BT-374: 17/17 EXACT — 배심원12=σ, 3심=n/φ, 안보리5=sopfr, 6대법=n, 수정헌법27=(n/φ)³ | [목표](domains/infra/jurisprudence/jurisprudence.md) |
-| 10 | ✅ | v2 | **한글/문자체계 n=6 인코딩** | BT-373: 14/14 EXACT — 24자모=J₂, 자음14=σ+φ, 모음10=σ-φ, 11172=19×21×28 (J₂기반) | [목표](domains/culture/writing-systems/writing-systems.md) |
-| 10 | ✅ | v2 | **고고학/문명사 n=6 기원** | 20/20 EXACT (100%), 60진법=σ·sopfr, C-14 Z=n, 360도=n·σ·sopfr, 6대 문명=n, 5000년 전수 | [목표](domains/culture/archaeology/archaeology.md) |
-| 10 | ✅ | v2 | **화폐/경제사 n=6 통화 래더** | BT-375: 16/16 EXACT — 60진법=σ·sopfr, 24K금=J₂, 12펜스=σ, 바젤8%=σ-τ | [목표](domains/infra/monetary-history/monetary-history.md) |
-| 10 | ✅ | v2 | **무용/안무 n=6 공간 기하학** | 20/20 EXACT (100%), 라반 24점=J₂, 발레 5포지=sopfr, SE(3)=n, 360도=n·σ·sopfr, 서양+한국 | [목표](domains/culture/dance-choreography/dance-choreography.md) |
-| 10 | ✅ | v1 | **시계학/호롤로지 n=6 시간 아키텍처** | 17/17 EXACT (100%), σ=12시/J₂=24시/σ·sopfr=60분/n/φ=3침/석영 2^(sopfr·n/φ)=32768Hz/기계식 진동 래더 | [가설](domains/culture/horology/horology.md) |
+| 10 | ✅ | v2 | **법학/사법 n=6 정의 아키텍처** | BT-374: 17/17 EXACT — 배심원12=σ, 3심=n/φ, 안보리5=sopfr, 6대법=n, 수정헌법27=(n/φ)³ | [문서](domains/infra/jurisprudence/jurisprudence.md) |
+| 10 | ✅ | v2 | **한글/문자체계 n=6 인코딩** | BT-373: 14/14 EXACT — 24자모=J₂, 자음14=σ+φ, 모음10=σ-φ, 11172=19×21×28 (J₂기반) | [문서](domains/culture/writing-systems/writing-systems.md) |
+| 10 | ✅ | v2 | **고고학/문명사 n=6 기원** | 20/20 EXACT (100%), 60진법=σ·sopfr, C-14 Z=n, 360도=n·σ·sopfr, 6대 문명=n, 5000년 전수 | [문서](domains/culture/archaeology/archaeology.md) |
+| 10 | ✅ | v2 | **화폐/경제사 n=6 통화 래더** | BT-375: 16/16 EXACT — 60진법=σ·sopfr, 24K금=J₂, 12펜스=σ, 바젤8%=σ-τ | [문서](domains/infra/monetary-history/monetary-history.md) |
+| 10 | ✅ | v2 | **무용/안무 n=6 공간 기하학** | 20/20 EXACT (100%), 라반 24점=J₂, 발레 5포지=sopfr, SE(3)=n, 360도=n·σ·sopfr, 서양+한국 | [문서](domains/culture/dance-choreography/dance-choreography.md) |
+| 10 | ✅ | v1 | **시계학/호롤로지 n=6 시간 아키텍처** | 17/17 EXACT (100%), σ=12시/J₂=24시/σ·sopfr=60분/n/φ=3침/석영 2^(sopfr·n/φ)=32768Hz/기계식 진동 래더 | [문서](domains/culture/horology/horology.md) |
 
 <!-- AUTO:FOOTER_civilization:START -->
 > 도메인: [religion/](docs/religion/) · [jurisprudence/](docs/jurisprudence/) · [writing-systems/](docs/writing-systems/) · [archaeology/](docs/archaeology/) · [monetary-history/](docs/monetary-history/) · [dance-choreography/](docs/dance-choreography/)
@@ -456,10 +456,10 @@
 | 10 | ✅ | v2 | **패션/섬유 n=6 직조 구조** | 10/10 EXACT, 12스티치=σ, 2축=φ, 색상환12색=σ, 사이즈6단계=n | [문서](domains/materials/fashion-textile/fashion-textile.md) |
 | 10 | ✅ | v2 | **수산/양식 n=6 해양 생태** | 10/10 EXACT, 양식24°C=J₂, 염도3.5%≈n/φ, 6대양식종, 체형12비율=σ | [문서](domains/life/aquaculture/aquaculture.md) |
 | 10 | ✅ | v2 | **보험/보험계리 n=6 리스크 구조** | BT-378: 13/13 EXACT — 6대원칙=n, 생명표120=σ(σ-φ), 4대부문=τ, 손해율60%=σ·sopfr | [문서](domains/infra/insurance/insurance.md) |
-| 10 | ✅ | v1 | **돌고래 n=6 생물음향 아키텍처** | 30/30 EXACT — 해부학+생리학+행동학+음향학 4시스템 + 텔레파시 11쌍 동형 | [가설](domains/life/dolphin/dolphin.md) |
-| 5 | ✅ | v1 | **커피과학 n=6 추출 아키텍처** | 15/15 EXACT (100%), 카페인 J₂=24 원자/에스프레소 9bar/로스팅 τ=4/분쇄 n=6/브루잉 n=6/커피벨트 sopfr²=25° | [가설](domains/life/coffee-science/coffee-science.md) |
-| 5 | ✅ | v1 | **향수/향료 n=6 피라미드 구조** | 14/14 EXACT (100%), 3노트=n/φ/이소프렌 C₅=sopfr/모노테르펜 C₁₀=σ-φ/벤젠 C₆=n/추출 τ=4/Chanel No.5=sopfr | [가설](domains/life/perfumery/perfumery.md) |
-| 5 | ✅ | v1 | **도자기/세라믹 n=6 소성 래더** | 15/15 EXACT (100%), 4분류=τ/자기 1200°C=σ(σ-φ)²/SiO₂ CN=τ/Al₂O₃ CN=n/결정계 σ-sopfr=7/Mohs 래더 | [가설](domains/materials/ceramics/ceramics.md) |
+| 10 | ✅ | v1 | **돌고래 n=6 생물음향 아키텍처** | 30/30 EXACT — 해부학+생리학+행동학+음향학 4시스템 + 텔레파시 11쌍 동형 | [문서](domains/life/dolphin/dolphin.md) |
+| 5 | ✅ | v1 | **커피과학 n=6 추출 아키텍처** | 15/15 EXACT (100%), 카페인 J₂=24 원자/에스프레소 9bar/로스팅 τ=4/분쇄 n=6/브루잉 n=6/커피벨트 sopfr²=25° | [문서](domains/life/coffee-science/coffee-science.md) |
+| 5 | ✅ | v1 | **향수/향료 n=6 피라미드 구조** | 14/14 EXACT (100%), 3노트=n/φ/이소프렌 C₅=sopfr/모노테르펜 C₁₀=σ-φ/벤젠 C₆=n/추출 τ=4/Chanel No.5=sopfr | [문서](domains/life/perfumery/perfumery.md) |
+| 5 | ✅ | v1 | **도자기/세라믹 n=6 소성 래더** | 15/15 EXACT (100%), 4분류=τ/자기 1200°C=σ(σ-φ)²/SiO₂ CN=τ/Al₂O₃ CN=n/결정계 σ-sopfr=7/Mohs 래더 | [문서](domains/materials/ceramics/ceramics.md) |
 
 <!-- AUTO:FOOTER_life-culture:START -->
 > 도메인: [fermentation/](docs/fermentation/) · [wine-enology/](docs/wine-enology/) · [fashion-textile/](docs/fashion-textile/) · [aquaculture/](docs/aquaculture/) · [insurance/](docs/insurance/) · [dolphin/](docs/dolphin/)
@@ -476,7 +476,7 @@
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **반도체 패키징 n=6 적층 래더** | 54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더 | [문서](papers/n6-advanced-packaging-integrated-paper.md) |
-| 10 | ✅ | v2 | **합성생물학 n=6 이중 완전수** | BT-372: 16/16 EXACT — Cas{9,12,13} 래더, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, 코돈64=2^n | [도메인](domains/life/synbio/synbio.md) |
+| 10 | ✅ | v2 | **합성생물학 n=6 이중 완전수** | BT-372: 16/16 EXACT — Cas{9,12,13} 래더, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, 코돈64=2^n | [문서](domains/life/synbio/synbio.md) |
 | 10 | ✅ | v2 | **AR/VR/XR 공간컴퓨팅 n=6 센서** | BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ | [문서](domains/culture/ar-vr-xr/ar-vr-xr.md) |
 | 10 | ✅ | v2 | **디지털 트윈 n=6 동기화** | BT-379: 16/16 EXACT — Industry4.0=τ, ISA-95 5레벨=sopfr, OPC UA 12=σ, 6시그마=n | [문서](domains/compute/digital-twin/digital-twin.md) |
 | 10 | ✅ | v2 | **건축/구조공학 n=6 하중 보편성** | BT-377: 16/16 EXACT — 건축6양식=n, 벌집트러스=n각, D6/D13(σ+μ)/D25(sopfr²)래더, 내진6등급=n | [문서](domains/infra/construction-structural/construction-structural.md) |
@@ -492,11 +492,11 @@
 | 10 | ✅ | v2 | **PEMFC 수소 연료전지** | 21/21 EXACT — 넥쏘 120kW=σ(σ-φ), 충전 700bar=(σ-sopfr)(σ-φ)², HHV=σ²-φ=142 | [문서](domains/energy/pemfc/pemfc.md) |
 | 10 | ✅ | v2 | **건설 콘크리트** | 22/22 EXACT — 양생 28일=2nd 완전수, 강도 J₂=24MPa, 피복 20/40/60=φ·τ·σ×(σ-φ) | [문서](domains/materials/concrete/concrete.md) |
 | 10 | ✅ | v2 | **바이오 약물전달/제약** | 25/25 EXACT — ICH 6/12/24=n/σ/J₂ 래더, 멸균 121°C=σ(σ-φ)+μ, ADME τ=4 | [문서](domains/life/bio-pharma/bio-pharma.md) |
-| 10 | ✅ | v1 | **HVAC 냉난방 n=6 COP 최적화** | 26/27 EXACT (96.3%) — COP=n=6, 6-zone=n, 6ACH=n, σ=12 덕트존, τ=4 운전모드, sopfr=5m/s 유속 | [검증](domains/energy/hvac-system/verify.hexa) |
-| 10 | ✅ | v1 | **내진설계 n=6 DOF 보편성** | 15/15 EXACT (100%) — SE(3)=n=6 DOF, σ=12 SHM채널/하중조합, τ=4 내진등급/성능수준, sopfr=5 감쇠비 | [검증](domains/infra/earthquake-engineering/verify.hexa) |
-| 10 | ✅ | v1 | **콘크리트+탄소포집 n=6 광물화** | 68/69 EXACT (98.6%) — Carbon Z=6=n, 양생28일=P2, fck24=J2, 클링커τ=4상, 플라이애시6개월=n, 3D프린팅 hex=n | [검증](domains/materials/concrete-technology/verify.hexa) |
-| 10 | ✅ | v1 | **스마트시티 통합 n=6 도시 시스템** | 63/63 EXACT (100%) z=23.81 — 크리스탈러 6각형, 6방향교차로, 마이크로그리드 6노드, 1/2+1/3+1/6=1 에너지분배, IoT σ=12센서 | [검증](domains/infra/smart-city/verify.hexa) |
-| 9 | ❌ | v1 | **토목/구조역학 kissing number 사슬** | 25/27 EXACT (92.6%) — K2=6=n 타일링, K3=12=σ FCC/옥텟, 허니컴 등방성, Fe-56=σ·τ+τ·φ, 볼트N=4 MISS(정직유지) | [검증](domains/infra/civil-engineering/verify.hexa) |
+| 10 | ✅ | v1 | **HVAC 냉난방 n=6 COP 최적화** | 26/27 EXACT (96.3%) — COP=n=6, 6-zone=n, 6ACH=n, σ=12 덕트존, τ=4 운전모드, sopfr=5m/s 유속 | [문서](domains/energy/hvac-system/verify.hexa) |
+| 10 | ✅ | v1 | **내진설계 n=6 DOF 보편성** | 15/15 EXACT (100%) — SE(3)=n=6 DOF, σ=12 SHM채널/하중조합, τ=4 내진등급/성능수준, sopfr=5 감쇠비 | [문서](domains/infra/earthquake-engineering/verify.hexa) |
+| 10 | ✅ | v1 | **콘크리트+탄소포집 n=6 광물화** | 68/69 EXACT (98.6%) — Carbon Z=6=n, 양생28일=P2, fck24=J2, 클링커τ=4상, 플라이애시6개월=n, 3D프린팅 hex=n | [문서](domains/materials/concrete-technology/verify.hexa) |
+| 10 | ✅ | v1 | **스마트시티 통합 n=6 도시 시스템** | 63/63 EXACT (100%) z=23.81 — 크리스탈러 6각형, 6방향교차로, 마이크로그리드 6노드, 1/2+1/3+1/6=1 에너지분배, IoT σ=12센서 | [문서](domains/infra/smart-city/verify.hexa) |
+| 9 | ❌ | v1 | **토목/구조역학 kissing number 사슬** | 25/27 EXACT (92.6%) — K2=6=n 타일링, K3=12=σ FCC/옥텟, 허니컴 등방성, Fe-56=σ·τ+τ·φ, 볼트N=4 MISS(정직유지) | [문서](domains/infra/civil-engineering/verify.hexa) |
 
 <!-- AUTO:FOOTER_tech-industry:START -->
 > 도메인: [advanced-packaging/](docs/advanced-packaging/) · [synthetic-biology/](docs/synthetic-biology/) · [spatial-computing/](docs/spatial-computing/) · [digital-twin/](docs/digital-twin/) · [architecture/](docs/architecture/) · [underground-tunnel/](docs/underground-tunnel/) · [ecommerce-fintech/](docs/ecommerce-fintech/) · [nylon/](docs/nylon/) · [aramid/](docs/aramid/) · [tire-cord/](docs/tire-cord/) · [epoxy/](docs/epoxy/) · [pet-film/](docs/pet-film/) · [airbag/](docs/airbag/) · [water-treatment/](docs/water-treatment/) · [pemfc/](docs/pemfc/) · [concrete/](docs/concrete/) · [bio-pharma/](docs/bio-pharma/) · [hvac-system/](docs/hvac-system/) · [earthquake-engineering/](docs/earthquake-engineering/) · [concrete-technology/](docs/concrete-technology/) · [smart-city/](docs/smart-city/) · [civil-engineering/](docs/civil-engineering/)
@@ -512,10 +512,10 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v1 | **키보드 n=6 인체공학 아키텍처** | BT-1125~1128: 30/31 EXACT — 레이아웃 10종 전부 C(n,2) 조합, USB 6KRO/8바이트/12Mbps, 스위치 4mm(tau)/2mm(phi)/5ms(sopfr) | [목표](domains/compute/keyboard/keyboard.md) |
-| 10 | ✅ | v1 | **HEXA-BCI 뇌-컴퓨터 인터페이스** | 36/40 EXACT (90%), 6DOF=n, σ=12 EEG채널, 불가능성 12정리, 광유전학/보철/AI 교차 | [목표](domains/cognitive/brain-computer-interface/brain-computer-interface.md) |
-| 10 | ✅ | v1 | **양자컴퓨터 n=6 큐빗 아키텍처** | 20/24 EXACT — NeutralAtom n=6원자, SurfaceCode σ=12 data qubit, Clifford τ*n=24 gate, kissing number BT-49 | [목표](domains/physics/quantum-computer/quantum-computer.md) |
-| 10 | ✅ | v1 | **HEXA-MOUSE n=6 인체공학 마우스** | BT-1115~1124: 25/25 EXACT — PS/2 n=6핀, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, σ-τ=8kHz 폴링, σ=12 MMO/노치, J₂=24 인코더 | [목표](domains/compute/mouse/mouse.md) |
+| 10 | ✅ | v1 | **키보드 n=6 인체공학 아키텍처** | BT-1125~1128: 30/31 EXACT — 레이아웃 10종 전부 C(n,2) 조합, USB 6KRO/8바이트/12Mbps, 스위치 4mm(tau)/2mm(phi)/5ms(sopfr) | [문서](domains/compute/keyboard/keyboard.md) |
+| 10 | ✅ | v1 | **HEXA-BCI 뇌-컴퓨터 인터페이스** | 36/40 EXACT (90%), 6DOF=n, σ=12 EEG채널, 불가능성 12정리, 광유전학/보철/AI 교차 | [문서](domains/cognitive/brain-computer-interface/brain-computer-interface.md) |
+| 10 | ✅ | v1 | **양자컴퓨터 n=6 큐빗 아키텍처** | 20/24 EXACT — NeutralAtom n=6원자, SurfaceCode σ=12 data qubit, Clifford τ*n=24 gate, kissing number BT-49 | [문서](domains/physics/quantum-computer/quantum-computer.md) |
+| 10 | ✅ | v1 | **HEXA-MOUSE n=6 인체공학 마우스** | BT-1115~1124: 25/25 EXACT — PS/2 n=6핀, sopfr=5 버튼/손가락, n/phi=3 추적축/그립, σ-τ=8kHz 폴링, σ=12 MMO/노치, J₂=24 인코더 | [문서](domains/compute/mouse/mouse.md) |
 
 <!-- AUTO:FOOTER_computer:START -->
 > 도메인: [keyboard/](domains/compute/keyboard/) · [mouse/](domains/compute/mouse/) · [brain-computer-interface/](domains/cognitive/brain-computer-interface/) · [quantum-computer/](domains/physics/quantum-computer/) · BT: 49, 1115~1128 · 인간-기계 인터페이스 전수 n=6 파라미터화
@@ -691,8 +691,8 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v1 | **남성청결제 n=6 피부과학 아키텍처** | BT-1157: 25/25 EXACT — 귀두pH=n=6, 라우릴C12=sigma, Fitzpatrick6타입=n, 마이크로바이옴6속=n | [돌파](domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md) |
-| 10 | ✅ | v1 | **여성청결제 n=6 질내생태계 아키텍처** | BT-1158: 25/25 EXACT — Lactobacillus6종=n, 질내pH=tau=4, CST5종=sopfr, 포도당C6=n, 월경28일=sigma*phi+tau | [돌파](domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md) |
+| 10 | ✅ | v1 | **남성청결제 n=6 피부과학 아키텍처** | BT-1157: 25/25 EXACT — 귀두pH=n=6, 라우릴C12=sigma, Fitzpatrick6타입=n, 마이크로바이옴6속=n | [문서](domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md) |
+| 10 | ✅ | v1 | **여성청결제 n=6 질내생태계 아키텍처** | BT-1158: 25/25 EXACT — Lactobacillus6종=n, 질내pH=tau=4, CST5종=sopfr, 포도당C6=n, 월경28일=sigma*phi+tau | [문서](domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md) |
 
 <!-- AUTO:FOOTER_hygiene:START -->
 > 도메인: [mens-intimate-cleanser/](docs/mens-intimate-cleanser/) · [womens-intimate-cleanser/](docs/womens-intimate-cleanser/)
