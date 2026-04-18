@@ -149,28 +149,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/compute/chip-architecture/chip-architecture.md"
+          "label": "논문",
+          "path": "papers/n6-hexa-chip-7dan-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-advanced-packaging-paper.md",
-        "papers/n6-consciousness-soc-paper.md",
-        "papers/n6-hexa-3d-paper.md",
-        "papers/n6-hexa-photon-paper.md",
-        "papers/n6-hexa-pim-paper.md",
-        "papers/n6-hexa-super-paper.md",
-        "papers/n6-hexa-wafer-paper.md",
-        "papers/n6-unified-soc-paper.md",
-        "papers/n6-dram-paper.md",
-        "papers/n6-vnand-paper.md",
-        "papers/n6-exynos-paper.md",
-        "papers/n6-performance-chip-paper.md",
-        "papers/n6-chip-design-ladder-paper.md",
-        "papers/n6-chip-dse-convergence-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-007",
@@ -290,17 +274,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/compute/ai-efficiency/ai-efficiency.md"
+          "label": "논문",
+          "path": "papers/n6-66-techniques-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-ai-17-techniques-experimental-paper.md",
-        "papers/n6-cross-paradigm-ai-paper.md",
-        "papers/n6-sota-ssm-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-012",
@@ -984,28 +963,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/energy/superconductor/superconductor.md"
+          "label": "논문",
+          "path": "papers/n6-ultimate-superconductor-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-classical-mechanics-accelerator-paper.md",
-        "papers/n6-curvature-geometry-paper.md",
-        "papers/n6-dimensional-unfolding-paper.md",
-        "papers/n6-extra-dimensions-paper.md",
-        "papers/n6-pure-mathematics-paper.md",
-        "papers/n6-quantum-computing-paper.md",
-        "papers/n6-thermodynamics-paper.md",
-        "papers/n6-warp-metric-paper.md",
-        "papers/n6-superconductor-paper.md",
-        "papers/n6-particle-cosmology-paper.md",
-        "papers/n6-electromagnetism-paper.md",
-        "papers/n6-fluid-dynamics-paper.md",
-        "papers/n6-topology-paper.md",
-        "papers/n6-gravity-wave-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-040",
@@ -1589,16 +1552,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/space/hexa-starship/hexa-starship.md"
+          "label": "논문",
+          "path": "papers/n6-hexa-starship-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-aerospace-transport-paper.md",
-        "papers/n6-space-systems-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-063",
@@ -3568,16 +3527,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/life/fermentation/fermentation.md"
+          "label": "논문",
+          "path": "papers/n6-fermentation-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-fermentation-paper.md",
-        "papers/n6-visual-arts-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-111",
@@ -3840,16 +3795,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/compute/advanced-packaging/advanced-packaging.md"
+          "label": "논문",
+          "path": "papers/n6-advanced-packaging-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-advanced-packaging-paper.md",
-        "papers/n6-synthetic-biology-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-120",
@@ -4934,18 +4885,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/life/biology/biology.md"
+          "label": "논문",
+          "path": "papers/n6-hexa-bio-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-ecology-agriculture-food-paper.md",
-        "papers/n6-geology-prem-paper.md",
-        "papers/n6-meteorology-paper.md",
-        "papers/n6-synthetic-biology-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-147",
@@ -5049,18 +4994,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/cognitive/cognitive-architecture/cognitive-architecture.md"
+          "label": "논문",
+          "path": "papers/n6-hexa-cogni-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-anima-soc-paper.md",
-        "papers/n6-calendar-time-geography-paper.md",
-        "papers/n6-cognitive-social-psychology-paper.md",
-        "papers/n6-working-memory-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-151",
@@ -5083,16 +5022,12 @@
       ],
       "links": [
         {
-          "label": "문서",
-          "path": "domains/compute/consciousness-chip/consciousness-chip.md"
+          "label": "논문",
+          "path": "papers/n6-hexa-consciousness-integrated-paper.md"
         }
       ],
       "type": "product",
-      "visible": true,
-      "_integrated_paper_pending": [
-        "papers/n6-consciousness-soc-paper.md",
-        "papers/n6-consciousness-chip-paper.md"
-      ]
+      "visible": true
     },
     {
       "id": "P-152",
