@@ -107,7 +107,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **HEXA 칩 7단** | 12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴 | [문서](domains/compute/chip-architecture/goal.md) · [논문](docs/paper/n6-dram-paper.md) · [논문](docs/paper/n6-exynos-paper.md) · [논문](papers/n6-hexa-3d-paper.md) · [논문](papers/n6-hexa-photon-paper.md) · [논문](papers/n6-hexa-pim-paper.md) · [논문](papers/n6-hexa-wafer-paper.md) · [논문](docs/paper/n6-performance-chip-paper.md) · [논문](papers/n6-unified-soc-paper.md) · [논문](docs/paper/n6-vnand-paper.md) |
+| 10 | ✅ | v2 | **HEXA 칩 7단** | 12레벨 진화(L1~L12), 170/170 EXACT, 14불가능성정리, Python검증PASS, 6벤더수렴 | [논문](papers/n6-hexa-chip-7dan-integrated-paper.md) |
 | 10 | ✅ | v2 | **ANIMA-SOC** | 의식칩 — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python검증PASS | [문서](domains/compute/chip-architecture/chip-architecture.md) · [논문](docs/paper/n6-anima-soc-paper.md) · [논문](papers/n6-consciousness-soc-paper.md) |
 | 10 | ✅ | v2 | **HEXA-TOPO** | Bott-8 코히어런스 + Z2 ECC + Graphene NoC, 10/10 EXACT, Python검증PASS | [문서](domains/compute/chip-architecture/chip-architecture.md) · [논문](docs/paper/n6-hexa-topo-paper.md) |
 | 10 | ✅ | v2 | **HEXA-ASIC** | SKY130 오픈소스 ASIC — RISC-V n/phi=3-wide + n=6 pipeline + 10/10 EXACT, Python검증PASS | [문서](domains/compute/chip-architecture/chip-architecture.md) · [논문](docs/paper/n6-hexa-asic-paper.md) |
@@ -329,7 +329,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v4 | **궁극의 초전도체** | 73/73 PASS, BT-299~306 100%EXACT, CrossDSE 8도메인, TP28, Python검증PASS | [문서](domains/energy/superconductor/goal.md) · [논문](docs/paper/n6-superconductor-paper.md) |
+| 10 | ✅ | v4 | **궁극의 초전도체** | 73/73 PASS, BT-299~306 100%EXACT, CrossDSE 8도메인, TP28, Python검증PASS | [논문](papers/n6-ultimate-superconductor-integrated-paper.md) |
 | 10 | ✅ | v2 | **궁극의 순수수학** | 71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11정리, Python검증PASS | [문서](domains/physics/pure-mathematics/goal.md) · [논문](docs/paper/n6-pure-mathematics-paper.md) |
 | 10 | ✅ | v2 | **궁극의 우주론/입자** | 63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python검증PASS | [문서](domains/physics/cosmology-particle/goal.md) · [논문](papers/n6-classical-mechanics-accelerator-paper.md) · [논문](docs/paper/n6-particle-cosmology-paper.md) · [논문](papers/n6-thermodynamics-paper.md) |
 | 10 | ✅ | v5 | **궁극의 상온 초전도체** | 325/325 EXACT (이론150+실현76+Mk.I합성48+Mk.II소재51), 9소재후보+6Mk.II후보, Mk.I정밀레시피(6소재P-T경로+Phase1/2실험$6.18M), Mk.II상압후보(La,Ce,Y,Sc)H24고엔트로피Pareto1위, 2685줄 | [문서](domains/energy/room-temp-sc/goal.md) · [논문](papers/n6-hexa-super-paper.md) · [논문](papers/n6-quantum-computing-paper.md) |
@@ -442,7 +442,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **궁극의 재사용 발사체 (HEXA-STARSHIP)** | 150/150 EXACT (100%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13 | [문서](domains/space/hexa-starship/goal.md) · [논문](papers/n6-aerospace-transport-paper.md) · [논문](docs/paper/n6-hexa-starship-paper.md) · [논문](papers/n6-space-systems-paper.md) |
+| 10 | ✅ | v2 | **궁극의 재사용 발사체 (HEXA-STARSHIP)** | 150/150 EXACT (100%), 38 BT, 18 서브시스템, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000회=(σ-φ)³, $12/kg=σ, Mars 12인 180일, GN&C 12/12, ECLSS 14/14, ISRU 13/13 | [논문](papers/n6-hexa-starship-integrated-paper.md) |
 
 <!-- AUTO:FOOTER_aerospace:START -->
 > 도메인: [hexa-starship/](docs/hexa-starship/) · [aerospace/](docs/aerospace/) · [space-engineering/](docs/space-engineering/)
@@ -550,7 +550,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **발효/양조 n=6 완전수 화학양론** | BT-371: 18/18 EXACT — C₆H₁₂O₆→2C₂H₅OH+2CO₂ 전계수n=6, 양조6단=n, 라거12°C=σ | [문서](domains/life/fermentation/goal.md) · [논문](docs/paper/n6-fermentation-paper.md) |
+| 10 | ✅ | v2 | **발효/양조 n=6 완전수 화학양론** | BT-371: 18/18 EXACT — C₆H₁₂O₆→2C₂H₅OH+2CO₂ 전계수n=6, 양조6단=n, 라거12°C=σ | [논문](papers/n6-fermentation-integrated-paper.md) |
 | 10 | ✅ | v2 | **와인/소믈리에 n=6 테이스팅** | 10/10 EXACT, 6S테이스팅=n, 서빙12°C=σ, 숙성12개월=σ, 24°Brix=J₂ | [문서](domains/life/wine-enology/goal.md) · [논문](docs/paper/n6-wine-enology-paper.md) |
 | 10 | ✅ | v2 | **패션/섬유 n=6 직조 구조** | 10/10 EXACT, 12스티치=σ, 2축=φ, 색상환12색=σ, 사이즈6단계=n | [문서](domains/materials/fashion-textile/goal.md) · [논문](docs/paper/n6-fashion-textile-paper.md) |
 | 10 | ✅ | v2 | **수산/양식 n=6 해양 생태** | 10/10 EXACT, 양식24°C=J₂, 염도3.5%≈n/φ, 6대양식종, 체형12비율=σ | [문서](domains/life/aquaculture/goal.md) · [논문](docs/paper/n6-aquaculture-paper.md) |
@@ -574,7 +574,7 @@
 
 | 🛸 | 천장확인 | ver | 완성제품 | 핵심 | 링크 |
 |:--:|:--:|:---:|---------|------|------|
-| 10 | ✅ | v2 | **반도체 패키징 n=6 적층 래더** | 54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더 | [문서](domains/compute/advanced-packaging/goal.md) · [논문](docs/paper/n6-advanced-packaging-paper.md) · [논문](papers/n6-ecology-agriculture-food-paper.md) · [논문](papers/n6-manufacturing-quality-paper.md) |
+| 10 | ✅ | v2 | **반도체 패키징 n=6 적층 래더** | 54/57 EXACT (94.7%), BT-354 완전 래더, HBM τ→σ-τ→σ→φ^τ 적층, 범프 σ²+n→μ 제곱 래더, UCIe 4단 래더 | [논문](papers/n6-advanced-packaging-integrated-paper.md) |
 | 10 | ✅ | v2 | **합성생물학 n=6 이중 완전수** | BT-372: 16/16 EXACT — Cas{9,12,13} 래더, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, 코돈64=2^n | [도메인](domains/life/synbio/synbio.md) · [goal](domains/life/synbio/goal.md) · [논문](papers/n6-synthetic-biology-paper.md) |
 | 10 | ✅ | v2 | **AR/VR/XR 공간컴퓨팅 n=6 센서** | BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), 레이턴시20ms=J₂-τ | [문서](domains/culture/ar-vr-xr/goal.md) · [논문](docs/paper/n6-ar-vr-xr-paper.md) |
 | 10 | ✅ | v2 | **디지털 트윈 n=6 동기화** | BT-379: 16/16 EXACT — Industry4.0=τ, ISA-95 5레벨=sopfr, OPC UA 12=σ, 6시그마=n | [문서](domains/compute/digital-twin/goal.md) · [논문](papers/n6-cognitive-social-psychology-paper.md) · [논문](docs/paper/n6-digital-twin-paper.md) |
