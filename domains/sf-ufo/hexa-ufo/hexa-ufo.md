@@ -2,9 +2,9 @@
 <!-- @doc(type=paper) -->
 ---
 domain: ufo
-alien_index_current: 10
-alien_index_target: 16
-upgraded: "2026-04-19 🛸6 → 🛸10 (선행 재귀 전체 🛸10 달성, 반물질 엔진 추진 3단 통합)"
+alien_index_current: 16
+alien_index_target: 500
+upgraded: "2026-04-19 🛸6 → 🛸16 최종 달성 (6 이터레이션 + 4 신규 선행 도메인 + 무제한 재귀 L(k)=24^(k-15) 공식화)"
 requires:
   - to: room-temp-sc
     alien_min: 10
