@@ -9,7 +9,11 @@
   },
   "rules": {
     "paper": {
-      "description": "논문/도메인 명세 — sscb 수준 canonical. brief(§1-§7) + engineering(§8-§20) + impact(§21)",
+      "description": "논문/도메인 명세 — sscb 수준 canonical. brief(§1-§7) + engineering(§8-§20) + impact(§21). Phase 4 이후 @own 하네스가 저수준 강제, legacy toggles 은 @own 미선언 파일만 적용.",
+      "deprecated": true,
+      "deprecated_by": "@own",
+      "deprecated_date": "2026-04-19",
+      "migration_phase": 4,
       "sections": [
         "WHY", "COMPARE", "REQUIRES", "STRUCT", "FLOW", "EVOLVE", "VERIFY",
         "EXEC SUMMARY", "SYSTEM REQUIREMENTS", "ARCHITECTURE", "CIRCUIT DESIGN",

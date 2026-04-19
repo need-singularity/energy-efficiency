@@ -1,6 +1,6 @@
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
-<!-- @own(sections=[WHY, MATH, BRIDGE, EXACT, BOX], prefix="§") -->
+<!-- @own(sections=[WHY, MATH, BRIDGE, EXACT, BOX], strict=true, order=sequential, prefix="§") -->
 ---
 domain: meta-closure-nav
 alien_index_current: 500
