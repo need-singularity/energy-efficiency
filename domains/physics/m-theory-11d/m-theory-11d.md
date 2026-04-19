@@ -1,5 +1,6 @@
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
+<!-- @own(sections=[WHY, MATH, BRIDGE, EXACT, BOX], prefix="§") -->
 ---
 domain: m-theory-11d
 alien_index_current: 13

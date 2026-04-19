@@ -1,5 +1,6 @@
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, EXEC SUMMARY, SYSTEM REQUIREMENTS, ARCHITECTURE, CIRCUIT DESIGN, PCB DESIGN, FIRMWARE, MECHANICAL, MANUFACTURING, TEST, BOM, VENDOR, ACCEPTANCE, APPENDIX, IMPACT], prefix="§") -->
 ---
 domain: sscb
 alien_index_current: 7

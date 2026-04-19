@@ -26,6 +26,16 @@ atlas.n6 — 현실지도 SSOT:
 
 NEXUS-6 CLI: nexus {scan|verify|calc|dse|analyze|hexa|dashboard} <args>
 
+@own 하네스 (self-hosting doc, Phase 2 2026-04-19):
+  문서가 자기구조를 선언 → hexa-lang 저수준 강제 (project JSON/global/builtin 전 경로 미경유)
+  위치: hexa-lang/self/attrs/own.hexa + _own/harness.hexa (L2 파서 + L3 3검증)
+  규약: <!-- @own(sections=[...], strict=bool, order=sequential|free, prefix="§") -->
+  테스트: hexa run hexa-lang/tests/doc/{test_own,verify_n6arch}.hexa
+  규칙: 신규 paper 는 @doc(type=paper) + @own 병기. @own 없으면 legacy path
+  paper 2 스타일:
+    Style A (engineering 21섹션): WHY/COMPARE/REQUIRES/STRUCT/FLOW/EVOLVE/VERIFY/EXEC SUMMARY/SYSTEM REQUIREMENTS/ARCHITECTURE/CIRCUIT DESIGN/PCB DESIGN/FIRMWARE/MECHANICAL/MANUFACTURING/TEST/BOM/VENDOR/ACCEPTANCE/APPENDIX/IMPACT
+    Style B (physics 5섹션):      WHY/MATH/BRIDGE/EXACT/BOX
+
 ref:
   rules     n6shared/rules/common.json                R0~R27
   project   n6shared/rules/n6-architecture.json       N61~N65

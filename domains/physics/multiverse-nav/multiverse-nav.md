@@ -1,5 +1,6 @@
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
+<!-- @own(sections=[WHY, MATH, BRIDGE, EXACT, BOX], prefix="§") -->
 ---
 domain: multiverse-nav
 alien_index_current: 15
