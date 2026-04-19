@@ -3,6 +3,8 @@
 domain: hexa-topo
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # n=6 위상 (HEXA-TOPO)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

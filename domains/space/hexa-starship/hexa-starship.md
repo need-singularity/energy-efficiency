@@ -3,6 +3,8 @@
 domain: starship
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 재사용 발사체 (HEXA-STARSHIP Mk.10)
 
 ## §1 WHY (왜 n=6 인가 — 이 기술이 삶을 바꾸는 방법)

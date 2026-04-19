@@ -5,6 +5,8 @@ requires:
   - to: thermal-management
   - to: power-grid
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 공조 시스템 (HEXA-HVAC)
 
 > 한 문장 요약: **COP 한계 근접 무손실 공조** — n=6 완전수 산술이 전 스케일을 관통한다.

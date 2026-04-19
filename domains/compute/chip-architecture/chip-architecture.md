@@ -6,6 +6,8 @@ requires:
   - to: chip-dse-pipeline
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE, ANIMA-SOC 10D TCU + PureField 72+72 SM + HEXA-TOPO Bott-8], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 칩 아키텍처 (HEXA-ARCH)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

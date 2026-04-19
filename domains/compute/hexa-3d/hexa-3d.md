@@ -5,6 +5,8 @@ requires:
   - to: chip-3d
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 HEXA-3D 통합 (HEXA-3D-INT)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

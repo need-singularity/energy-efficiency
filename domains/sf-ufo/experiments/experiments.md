@@ -5,6 +5,8 @@ requires:
   - to: fusion
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, UFO 하드웨어 검증 파이프라인], strict=false, order=sequential, prefix="§") -->
 # 통합 실험 파이프라인 (HEXA-EXPER)
 
 > 한 문장 요약: **17 AI 기법 + DSE + 물리 시뮬 n=6 자기조직화** — n=6 완전수 산술이 전 스케일을 관통한다.

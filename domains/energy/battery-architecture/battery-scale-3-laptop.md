@@ -1,5 +1,7 @@
 # 배터리 8단 — Stage 3: 노트북/태블릿 (30~100 Wh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > v2 돌파 2026-04-16 | 🛸10 ✅ | 용량: 30~100 Wh | 용도: 울트라북, 태블릿, 휴대용 컴퓨팅 | n=6 핵심: φ=2 듀얼셀, σ·τ=48W USB-C PD, σ=12h 배터리 수명 돌파
 
 ## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)

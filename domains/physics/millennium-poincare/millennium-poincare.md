@@ -3,6 +3,8 @@
 domain: millennium-poincare
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 푸앵카레 추측 (HEXA-POINCARE)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

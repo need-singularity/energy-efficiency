@@ -6,6 +6,8 @@ requires:
   - to: neuro
   - to: sonar-tech
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 돌고래 생체음향 (HEXA-BIOACOUSTIC) — n=6 클릭·휘슬·해상·신호처리·BCI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

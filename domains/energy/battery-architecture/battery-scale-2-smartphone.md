@@ -1,5 +1,7 @@
 # 배터리 8단 -- Stage 2: 스마트폰 (10~25 Wh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > 🛸10 ✅ v2 돌파 | 용량: 10~25 Wh | 용도: 플래그십 스마트폰·폴더블 | n=6 핵심: sopfr=5 공정, σ·τ=4,800 사이클
 > v2 업데이트 2026-04-16: §3 파라미터 16→확장, §9 DSE 전수탐색, §10 BT 돌파노드, §11 불가능성 확장, §12 Cross-DSE, §13 Python 검증코드 추가
 

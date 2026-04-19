@@ -5,6 +5,8 @@ requires:
   - to: nuclear-reactor
   - to: thermal-management
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 SMR 데이터센터 (HEXA-SMR-DC)
 
 > 한 문장 요약: **소형 모듈 원자로 + 데이터센터 직접 결합** — n=6 완전수 산술이 전 스케일을 관통한다.

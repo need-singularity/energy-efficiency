@@ -4,6 +4,8 @@ requires:
   - to: ai-adversarial
   - to: ai-alignment
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, METRICS, APPLICATIONS, RISKS, REFERENCES, GLOSSARY, FAQ, CHANGELOG], strict=false, order=sequential, prefix="§") -->
 # 멀티모달 AI 안전성 연구 (Anthropic Fellows 2026)
 
 ## §1 WHY (왜 멀티모달 안전성인가)

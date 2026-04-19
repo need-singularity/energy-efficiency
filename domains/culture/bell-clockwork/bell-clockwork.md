@@ -3,6 +3,8 @@
 domain: bell-clockwork
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 종·시계 장치 (HEXA-BELL-&-CLOCKWORK) — n=6 체계 완전 관통
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

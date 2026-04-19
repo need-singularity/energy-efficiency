@@ -3,6 +3,8 @@
 domain: tachyon
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 타키온/가상입자 (HEXA-TACHYON)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -6,6 +6,8 @@ requires:
   - to: fermentation
   - to: agriculture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 식품과학 (HEXA-FOOD) — n=6 영양·안전·가공·포장·유통·감각 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

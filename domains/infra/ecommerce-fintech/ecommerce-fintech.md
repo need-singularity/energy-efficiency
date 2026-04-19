@@ -4,6 +4,8 @@ domain: ecommerce-fintech
 requires:
   - to: economics-finance
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 전자상거래/핀테크 (HEXA-ECOMMERCE-FINTECH) — n=6 완전수 아키텍처
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -3,6 +3,8 @@
 domain: anima-service
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 감성/의식 AI 서비스 (HEXA-ANIMA-SVC)
 
 ## §1 WHY (왜 n=6 인가 — 이 기술이 삶을 바꾸는 방법)

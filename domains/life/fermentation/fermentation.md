@@ -6,6 +6,8 @@ requires:
   - to: food-science
   - to: biology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 발효·양조과학 (HEXA-FERMENT) — n=6 효모·유산균·아세트산·곰팡이·온도·pH 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

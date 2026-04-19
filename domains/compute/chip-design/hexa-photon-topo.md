@@ -6,6 +6,8 @@ requires:
   - to: chip-architecture
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 광 위상 칩 HEXA-PHTOPO
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

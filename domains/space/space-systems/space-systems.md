@@ -3,6 +3,8 @@
 domain: space-systems
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 우주 시스템 아키텍처 (HEXA-SPACE-SYS)
 
 ## §1 WHY (왜 n=6 인가 — 이 기술이 삶을 바꾸는 방법)

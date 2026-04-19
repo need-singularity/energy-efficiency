@@ -6,6 +6,8 @@ requires:
   - to: food-science
   - to: chemistry-basic
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 커피과학 (HEXA-COFFEESCI) — n=6 생두·화학·열전달·추출·센서·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

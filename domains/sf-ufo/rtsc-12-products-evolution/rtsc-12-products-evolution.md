@@ -5,6 +5,8 @@ requires:
   - to: room-temp-sc
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # RTSC-12 제품 라인 진화 (HEXA-RTSC-12)
 
 > 한 문장 요약: **σ=12 제품 라인 n=6 진화** — n=6 완전수 산술이 전 스케일을 관통한다.

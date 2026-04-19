@@ -5,6 +5,8 @@ requires:
   - to: thermal-management
   - to: power-grid
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 에너지 효율 (HEXA-ENERGY-EFF)
 
 > 한 문장 요약: **Carnot-Betz 한계 근접 손실 0 설계** — n=6 완전수 산술이 전 스케일을 관통한다.

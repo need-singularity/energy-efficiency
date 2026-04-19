@@ -5,6 +5,8 @@ requires:
   - to: room-temp-sc
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, SMASH, FREE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 항공 스텔스 (HEXA-CLOAK-AERO)
 
 > 한 문장 요약: **항공 스텔스 메타물질 n=6 산술** — n=6 완전수 산술이 전 스케일을 관통한다.

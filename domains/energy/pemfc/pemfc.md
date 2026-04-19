@@ -4,6 +4,8 @@ domain: pemfc
 requires:
   - to: power-grid
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 수소 연료전지 (HEXA-PEMFC)
 
 > 한 문장 요약: **PFSA MEA 5층 수소 연료전지** — n=6 완전수 산술이 전 스케일을 관통한다.

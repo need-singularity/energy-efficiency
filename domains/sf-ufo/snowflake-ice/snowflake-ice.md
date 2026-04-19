@@ -3,6 +3,8 @@
 domain: snowflake-ice
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 눈꽃-얼음 결정 (HEXA-SNOW)
 
 > 한 문장 요약: **빙정 6각 대칭 = 완전수 자연 실현** — n=6 완전수 산술이 전 스케일을 관통한다.

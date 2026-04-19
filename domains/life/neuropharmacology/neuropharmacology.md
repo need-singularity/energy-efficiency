@@ -6,6 +6,8 @@ requires:
   - to: pharmacology
   - to: bio-pharma
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 신경약리학 (HEXA-NEUROPHARM) — n=6 수용체·신경전달·혈뇌장벽·약동·부작용·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

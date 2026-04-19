@@ -6,6 +6,8 @@ requires:
   - to: hexa-skin
   - to: medical-device
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 뉴로 BCI 아키텍처 (HEXA-NEURO) — n=6 BCI·뉴로피드백·AI·센서·웨어러블·의료 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

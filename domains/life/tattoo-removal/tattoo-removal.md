@@ -6,6 +6,8 @@ requires:
   - to: medical-device
   - to: immunology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 타투 제거 (HEXA-TATTOO) — n=6 레이저·피부·안료·면역·수술·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

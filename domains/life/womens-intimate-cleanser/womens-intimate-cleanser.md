@@ -6,6 +6,8 @@ requires:
   - to: immunology
   - to: mens-intimate-cleanser
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 여성 청결제 (HEXA-WOMENS-CLEAN) — n=6 pH·미생물·점막·천연·안전·임상 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

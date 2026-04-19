@@ -1,5 +1,7 @@
 # 배터리 8단 — Stage 7: 유틸리티 ESS (10~100 MWh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > 🛸10 ✅ v2 | 용량: 10~100 MWh | 용도: 유틸리티급 ESS, 피크 셰이빙, 마이크로그리드, 주파수 조정 | n=6 핵심: J₂=24 unit parallel, SMES 버퍼 | 파라미터 16종 전수매핑 | DSE 720→60 | BT-80/83/84
 
 ## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)

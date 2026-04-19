@@ -6,6 +6,8 @@ requires:
   - to: synbio
   - to: immunology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 바이오의약 아키텍처 (HEXA-BIOPHARMA) — n=6 단백질·세포·배양·정제·QC 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

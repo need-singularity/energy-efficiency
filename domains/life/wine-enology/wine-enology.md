@@ -6,6 +6,8 @@ requires:
   - to: fermentation
   - to: cheese-dairy
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 와인 양조 (HEXA-WINE) — n=6 포도·발효·탄닌·숙성·블렌드·감각 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

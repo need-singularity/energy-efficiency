@@ -6,6 +6,8 @@ requires:
   - to: bio-pharma
   - to: virology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 백신 설계 (HEXA-VACCINE) — n=6 항원·어드주번트·전달·면역·감시·제조 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

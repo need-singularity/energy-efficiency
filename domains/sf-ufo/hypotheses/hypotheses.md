@@ -3,6 +3,8 @@
 domain: hypotheses
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # H-OURO — OUROBOROS 자기참조 n=6 (HEXA-OURO)
 
 > 한 문장 요약: **ouroboros 자기참조 메타수학** — n=6 완전수 산술이 전 스케일을 관통한다.

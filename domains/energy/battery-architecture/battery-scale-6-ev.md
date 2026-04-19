@@ -1,5 +1,7 @@
 # 배터리 8단 — Stage 6: 전기차 EV (60~100 kWh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > **v2 돌파** | 🛸10 ✅ | 용량: 60~100 kWh | 용도: 승용차·트럭·버스 EV 구동 | n=6 핵심: 96S=σ×(σ-τ) 아키텍처, Li-air 3,600 Wh/kg, σ·J₂=2,880km 주행거리 | 파라미터 16종 전수 EXACT | DSE 720→60 축소 | BT 4건 | 불가능 정리 4건 | Cross-DSE 4도메인 | Python 전수 검증
 
 ## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)

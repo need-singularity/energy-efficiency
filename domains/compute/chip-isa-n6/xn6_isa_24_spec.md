@@ -5,6 +5,8 @@ requires:
   - to: chip-isa-n6
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 XN6 24비트 ISA 스펙 (HEXA-ISA24)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

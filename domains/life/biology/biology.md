@@ -6,6 +6,8 @@ requires:
   - to: biology-medical
   - to: ecology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 생물학 아키텍처 (HEXA-BIO) — n=6 세포·조직·기관·개체·생태·진화 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

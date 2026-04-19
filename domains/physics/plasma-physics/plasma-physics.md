@@ -3,6 +3,8 @@
 domain: plasma-physics
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 플라즈마 물리 (HEXA-PLASMA-PHY)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

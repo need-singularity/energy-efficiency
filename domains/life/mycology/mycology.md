@@ -6,6 +6,8 @@ requires:
   - to: fermentation
   - to: herbalism
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 균류학 (HEXA-MYCOLOGY) — n=6 균사·포자·공생·발효·약리·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

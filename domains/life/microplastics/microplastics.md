@@ -6,6 +6,8 @@ requires:
   - to: mycology
   - to: synbio
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 미세플라스틱 검출·분해 (HEXA-MICROPLASTIC) — n=6 검출·분류·필터·효소·AI·추적 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

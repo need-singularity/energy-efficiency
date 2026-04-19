@@ -1,5 +1,7 @@
 # 배터리 8단 — Stage 5: 가정용 ESS (5~15 kWh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > **v2 돌파** | 🛸10 ✅ | 용량: 5~15 kWh | 용도: 가정 에너지 저장·태양광 자가소비·비상전원·V2H | n=6 핵심: 6-모듈 스택, σ=12 kWh, 이집트 분수 1/2+1/3+1/6=1 에너지 분배 | 파라미터 16종 전수 EXACT | DSE 720→60 축소 | BT 3건 | 불가능 정리 4건 | Cross-DSE 4도메인 | Python 전수 검증
 
 ## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)

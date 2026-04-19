@@ -6,6 +6,8 @@ requires:
   - to: pharmacology
   - to: biology-medical
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 약초·한의학 (HEXA-HERBAL) — n=6 약성·경락·음양·오행+1·조제·임상 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

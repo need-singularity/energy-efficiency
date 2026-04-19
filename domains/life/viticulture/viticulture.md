@@ -6,6 +6,8 @@ requires:
   - to: horticulture
   - to: agriculture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 포도재배 (HEXA-VITI) — n=6 토양·가지치기·수분·기후·수확·양조 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -3,6 +3,8 @@
 domain: empath
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 감정 공유 디바이스 (HEXA-EMPATH)
 
 ## §1 WHY (왜 n=6 인가 — 이 기술이 삶을 바꾸는 방법)

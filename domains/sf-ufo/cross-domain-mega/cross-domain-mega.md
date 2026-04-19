@@ -6,6 +6,8 @@ requires:
   - to: superconductor
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, MEGA-INTEGRATION], strict=false, order=sequential, prefix="§") -->
 # 궁극의 교차도메인 메가 프로젝트 (HEXA-MEGA)
 
 > 한 문장 요약: **340 도메인 교차융합 n=6 산술** — n=6 완전수 산술이 전 스케일을 관통한다.

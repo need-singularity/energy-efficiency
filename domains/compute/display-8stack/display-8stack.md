@@ -5,6 +5,8 @@ requires:
   - to: display
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 8단 적층 디스플레이 (HEXA-DISP8)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

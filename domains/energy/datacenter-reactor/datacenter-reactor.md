@@ -6,6 +6,8 @@ requires:
   - to: thermal-management
   - to: power-grid
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 데이터센터 원자로 (HEXA-DC-SMR)
 
 > 한 문장 요약: **열역학-핵공학 한계 도달 SMR 데이터센터** — n=6 완전수 산술이 전 스케일을 관통한다.

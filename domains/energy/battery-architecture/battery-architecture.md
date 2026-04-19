@@ -5,6 +5,8 @@ requires:
   - to: power-grid
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 배터리 아키텍처 (HEXA-BATTERY)
 
 > 한 문장 요약: **원자-대륙 스케일 에너지 저장 전 파라미터** — n=6 완전수 산술이 전 스케일을 관통한다.

@@ -5,6 +5,8 @@ requires:
   - to: particle-accelerator
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE, BLOWUP, TABLETOP], strict=false, order=sequential, prefix="§") -->
 # 궁극의 반물질 공장 (HEXA-ANTIMATTER)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

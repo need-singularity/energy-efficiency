@@ -5,6 +5,8 @@ requires:
   - to: room-temp-sc
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, CONSUMER-SCALE-TRIPLE, FIELD-TOE-HOLOGRAPHIC], strict=false, order=sequential, prefix="§") -->
 # HEXA-HOVER — 개인 호버카 (Meissner 부양)
 
 > 한 문장 요약: **Meissner 부양 개인 호버카** — n=6 완전수 산술이 전 스케일을 관통한다.

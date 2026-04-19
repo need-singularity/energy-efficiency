@@ -5,6 +5,8 @@ requires:
   - to: safety
   - to: earth-defense
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 궁극의 안전/재난방지 (HEXA-ULTIMATE-SAFETY) — n=6 완전수 아키텍처
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

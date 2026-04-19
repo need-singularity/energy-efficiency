@@ -4,6 +4,8 @@ domain: superconductor
 requires:
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BREAKTHROUGH], strict=false, order=sequential, prefix="§") -->
 # 궁극의 초전도체 (HEXA-SC)
 
 > 한 문장 요약: **Cooper pair φ=2 Abrikosov CN=6 격자** — n=6 완전수 산술이 전 스케일을 관통한다.

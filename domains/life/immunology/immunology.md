@@ -6,6 +6,8 @@ requires:
   - to: vaccine
   - to: bio-pharma
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 면역학 아키텍처 (HEXA-IMMUNE) — n=6 T세포·B세포·선천·후천·면역기억·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

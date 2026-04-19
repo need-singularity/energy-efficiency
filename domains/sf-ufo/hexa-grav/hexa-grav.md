@@ -4,6 +4,8 @@ domain: hexa-grav
 requires:
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BREAKTHROUGH], strict=false, order=sequential, prefix="§") -->
 # 궁극의 중력파 (HEXA-GRAV)
 
 > 한 문장 요약: **중력파 검출-통신 LIGO급 SC 간섭계** — n=6 완전수 산술이 전 스케일을 관통한다.

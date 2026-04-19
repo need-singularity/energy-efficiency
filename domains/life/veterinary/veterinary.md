@@ -6,6 +6,8 @@ requires:
   - to: medical-device
   - to: aquaculture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 수의학 (HEXA-VET) — n=6 진단·외과·약리·번식·영상·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

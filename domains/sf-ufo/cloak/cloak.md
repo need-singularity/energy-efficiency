@@ -5,6 +5,8 @@ requires:
   - to: room-temp-sc
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 투명망토 (HEXA-CLOAK)
 
 > 한 문장 요약: **RT-SC 메타물질 n=6 육각 셀 음굴절 전대역** — n=6 완전수 산술이 전 스케일을 관통한다.

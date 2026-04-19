@@ -6,6 +6,8 @@ requires:
   - to: superconductor
   - to: solar-architecture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 에너지 통합 (HEXA-ENERGY)
 
 > 한 문장 요약: **생산-소비 전 스케일 통합** — n=6 완전수 산술이 전 스케일을 관통한다.

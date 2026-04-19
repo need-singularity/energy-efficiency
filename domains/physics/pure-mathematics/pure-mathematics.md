@@ -3,6 +3,8 @@
 domain: pure-mathematics
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 순수수학 (HEXA-PURE-MATH)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

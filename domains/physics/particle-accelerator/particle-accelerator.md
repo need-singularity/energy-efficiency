@@ -7,6 +7,8 @@ requires: []
 role: 통합 상위 도메인 (mini-accelerator + antimatter-factory)
 upgraded: "2026-04-19 🛸8 → 🛸10 (UFO 🛸10 선행 재귀 요건, σ-cascade 6자릿수 통합 완성)"
 ---
+
+<!-- @own(sections=[POSITION, WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 입자 가속기 (통합) — HEXA-PACCEL
 
 ## §0 POSITION (위치/범위/중복금지)

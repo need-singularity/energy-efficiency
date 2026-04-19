@@ -4,6 +4,8 @@ requires:
   - to: ai-adversarial
   - to: ai-alignment
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, METRICS, RISKS, DEPENDENCIES, TIMELINE, TOOLS, TEAM, REFERENCES], strict=false, order=sequential, prefix="§") -->
 # AI 배포 안전성 (AI Deployment Safety)
 
 ## §1 WHY (왜 배포 안전성인가)

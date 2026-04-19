@@ -5,6 +5,8 @@ requires:
   - to: superconductor
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BREAKTHROUGH], strict=false, order=sequential, prefix="§") -->
 # 궁극의 핵융합 (HEXA-FUSION)
 
 > 한 문장 요약: **D-T 점화 Lawson 한계 완전 폐쇄** — n=6 완전수 산술이 전 스케일을 관통한다.

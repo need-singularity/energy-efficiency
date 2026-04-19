@@ -5,6 +5,8 @@ requires:
   - to: superconductor
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BREAKTHROUGH], strict=false, order=sequential, prefix="§") -->
 # 궁극의 양자 텔레포트 (HEXA-TELEPORT)
 
 > 한 문장 요약: **양자 상태 BB84 기반 n=6 엔탱글먼트** — n=6 완전수 산술이 전 스케일을 관통한다.

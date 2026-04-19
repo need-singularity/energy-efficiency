@@ -4,6 +4,8 @@ requires:
   - to: ai-interpretability
   - to: ai-alignment
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, RISKS, METRICS, TEAM, TIMELINE, PRIOR ART, ETHICAL, OUTPUT], strict=false, order=sequential, prefix="§") -->
 # AI 모델 복지 연구 (AI Model Welfare)
 
 Anthropic Fellows 2026 연구 도메인. 2개 하위 영역, 18개 연구 아이디어.

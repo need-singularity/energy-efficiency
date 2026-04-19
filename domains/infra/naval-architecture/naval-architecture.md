@@ -5,6 +5,8 @@ requires:
   - to: oceanography
   - to: civil-engineering
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 조선/선박공학 (HEXA-NAVAL-ARCHITECTURE) — n=6 완전수 아키텍처
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

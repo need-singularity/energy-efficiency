@@ -6,6 +6,8 @@ requires:
   - to: bio-pharma
   - to: crispr-gene-editing
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 HIV 치료 (HEXA-HIV-TX) — n=6 다중요법·CAR-T·유전자·완치·모니터 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -6,6 +6,8 @@ requires:
   - to: ecology
   - to: apiculture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 곤충학 (HEXA-ENTOMO) — n=6 Hexapoda 삼체절·육각안·6다리·대사·생태 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

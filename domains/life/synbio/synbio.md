@@ -6,6 +6,8 @@ requires:
   - to: crispr-gene-editing
   - to: bio-pharma
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 합성생물학 (HEXA-SYNBIO) — n=6 회로·codon·chassis·metabolic·safety·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

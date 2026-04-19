@@ -6,6 +6,8 @@ requires:
   - to: food-science
   - to: mycology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 향수향료학 (HEXA-PERFUMERY) — n=6 탑·미들·베이스·부스터·픽서·감각 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

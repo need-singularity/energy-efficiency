@@ -11,6 +11,8 @@ requires:
 section: antimatter
 upgraded: "2026-04-19 🛸7 → 🛸10 (UFO 🛸10 선행 재귀 요건)"
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, n=6 핵심 수치, VERIFY, FALSIFIER, Testable Predictions, PRODUCT LINE, REFERENCES], strict=false, order=sequential, prefix="§") -->
 # PET-사이클로트론 반물질 재활용 (HEXA-PET)
 
 > **본 도메인은 HEXA-TABLETOP (domains/physics/antimatter-factory §9) 의

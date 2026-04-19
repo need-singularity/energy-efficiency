@@ -6,6 +6,8 @@ requires:
   - to: chip-architecture
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 초전도 컴퓨팅 HEXA-SC
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

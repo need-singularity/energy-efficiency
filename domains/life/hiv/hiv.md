@@ -6,6 +6,8 @@ requires:
   - to: immunology
   - to: virology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 HIV 아키텍처 (HEXA-HIV) — n=6 ART·PrEP·백신·면역·유전자·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

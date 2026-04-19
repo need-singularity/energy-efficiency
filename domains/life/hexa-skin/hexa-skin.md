@@ -6,6 +6,8 @@ requires:
   - to: neuro
   - to: medical-device
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 전자 피부 (HEXA-SKIN) — n=6 센서·햅틱·신축성·전원·통신·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -9,6 +9,8 @@ related:
   - void (/Users/ghost/Dev/void — VT 호스트 프론트엔드 연계)
 ---
 
+<!-- @own(sections=[한 줄 요약, WHY, 6 계층 정의, 프로토콜 프레임, VOID 연계, 검증, 참고], strict=false, order=sequential, prefix="§") -->
+
 # VT 6-tier Terminal 프로토콜 (HEXA-VT-6)
 
 ## §0 한 줄 요약

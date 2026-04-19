@@ -3,6 +3,8 @@
 domain: vampire
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 뱀파이어-혈액 생체역학 (HEXA-HEMO)
 
 > 한 문장 요약: **혈액 장수 생화학 n=6 헤모 산술** — n=6 완전수 산술이 전 스케일을 관통한다.

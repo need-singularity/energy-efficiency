@@ -4,6 +4,8 @@ domain: room-temp-sc
 requires:
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, 새 돌파 정리], strict=false, order=sequential, prefix="§") -->
 # 궁극의 상온 초전도체 (HEXA-RTSC)
 
 > 한 문장 요약: **Tc=300K, R=0 상온 완전 초전도** — n=6 완전수 산술이 전 스케일을 관통한다.

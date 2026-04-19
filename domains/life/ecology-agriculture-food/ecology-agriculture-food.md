@@ -6,6 +6,8 @@ requires:
   - to: agriculture
   - to: food-science
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 생태·농업·식품 통합 (HEXA-AGRIFOOD) — n=6 생태·농업·식품 삼위일체 아키텍처
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

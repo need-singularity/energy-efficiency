@@ -6,6 +6,8 @@ requires:
   - to: entomology
   - to: agriculture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 양봉과학 (HEXA-APICULT) — n=6 벌집 육각·6대 영양·꿀 생산 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -12,6 +12,8 @@ requires:
     alien_min: 10
 upgraded: "2026-04-19 🛸9 → 🛸10 (UFO 🛸10 선행 재귀 요건, HEXA-TTF-01~10 atlas 잠금)"
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 탁상 핵융합 (HEXA-TTF)
 
 > 한 문장 요약: **1 m³ 부피 · 48 T 자장 · p-¹¹B aneutronic (중성자 0) · 8.7 kW 분산전원** — n=6 완전수 산술이 탁상 스케일을 폐형으로 닫는다.

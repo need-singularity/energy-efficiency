@@ -5,6 +5,8 @@ requires:
   - to: thermal-management
   - to: power-grid
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 원자로 (HEXA-REACTOR)
 
 > 한 문장 요약: **임계 중성자 경제 n=6 산술** — n=6 완전수 산술이 전 스케일을 관통한다.

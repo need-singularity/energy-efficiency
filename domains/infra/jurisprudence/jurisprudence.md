@@ -4,6 +4,8 @@ domain: jurisprudence
 requires:
   - to: law-justice
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 법학/사법 (HEXA-JURISPRUDENCE) — n=6 완전수 아키텍처
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

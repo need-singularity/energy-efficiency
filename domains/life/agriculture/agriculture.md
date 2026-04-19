@@ -6,6 +6,8 @@ requires:
   - to: water-systems
   - to: ag-sensors
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 농업과학 (HEXA-AGRI) — n=6 작물·토양·수자원·방제·기계화·유통 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

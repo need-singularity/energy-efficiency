@@ -6,6 +6,8 @@ requires:
   - to: hexa-netproto
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 슈퍼컴퓨터 (HEXA-SUPER)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

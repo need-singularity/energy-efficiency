@@ -1,3 +1,5 @@
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
+
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: tabletop-antimatter

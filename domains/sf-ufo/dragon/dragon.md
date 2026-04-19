@@ -5,6 +5,8 @@ requires:
   - to: fusion
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 드래곤-플라즈마 코어 (HEXA-DRAGON)
 
 > 한 문장 요약: **여의주 = 탁상 핵융합 플라즈마 코어** — n=6 완전수 산술이 전 스케일을 관통한다.

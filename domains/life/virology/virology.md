@@ -6,6 +6,8 @@ requires:
   - to: vaccine
   - to: hiv
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 바이러스학 (HEXA-VIROLOGY) — n=6 캡시드·숙주·복제·진단·백신·팬데믹 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

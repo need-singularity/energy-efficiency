@@ -5,6 +5,8 @@ requires:
   - to: room-temp-sc
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, MEISSNER-LEVITATION, SELF-STABLE-FIELD], strict=false, order=sequential, prefix="§") -->
 # 궁극의 호버보드 (HEXA-HOVER-BOARD)
 
 > 한 문장 요약: **개인 자이로 + 자기부상 호버보드** — n=6 완전수 산술이 전 스케일을 관통한다.

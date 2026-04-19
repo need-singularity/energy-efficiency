@@ -5,6 +5,8 @@ requires:
   - to: chip-architecture
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE, VT 6-tier Terminal + VOID 연계], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 iOS 기반 SoC (HEXA-IOS)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

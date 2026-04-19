@@ -3,6 +3,8 @@
 domain: light-optics
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 광학 (HEXA-LIGHT-OPT)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

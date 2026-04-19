@@ -6,6 +6,8 @@ requires:
   - to: bio-pharma
   - to: therapeutic-nanobot
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 유전자 편집 아키텍처 (HEXA-CRISPR) — n=6 sgRNA·Cas·HDR·오프타겟·전달·효과 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

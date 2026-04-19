@@ -1,5 +1,7 @@
 # 배터리 8단 -- Stage 1: 이어폰/웨어러블/IoT (0.05~2 Wh)
 
+<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+
 > 🛸10 ✅ v2 돌파 | 용량: 0.05~2 Wh | 용도: TWS 이어버드·스마트워치·IoT 센서 | n=6 핵심: μ=1 마이크로셀, CN=6 고체전해질
 > v2 업데이트 2026-04-16: §3 파라미터 16→확장, §9 DSE 전수탐색, §10 BT 돌파노드, §11 불가능성 확장, §12 Cross-DSE, §13 Python 검증코드 추가
 

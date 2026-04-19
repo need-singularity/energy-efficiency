@@ -3,6 +3,8 @@
 domain: cosmic-observatory
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 우주 관측소 (HEXA-COSMIC-OBS)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

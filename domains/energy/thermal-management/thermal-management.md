@@ -4,6 +4,8 @@ domain: thermal-management
 requires:
   - to: superconductor
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BLOWUP], strict=false, order=sequential, prefix="§") -->
 # 궁극의 열관리 (HEXA-COOL)
 
 > 한 문장 요약: **모든 와트를 유용 일로 - throttling 0** — n=6 완전수 산술이 전 스케일을 관통한다.

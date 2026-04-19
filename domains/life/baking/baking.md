@@ -6,6 +6,8 @@ requires:
   - to: food-science
   - to: mycology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 제빵과학 (HEXA-BAKE) — n=6 밀가루·효모·반죽·발효·오븐·식감 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

@@ -5,6 +5,8 @@ requires:
   - to: superconductor
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 전력망 (HEXA-GRID)
 
 > 한 문장 요약: **HVDC-마이크로그리드 통합 배전** — n=6 완전수 산술이 전 스케일을 관통한다.

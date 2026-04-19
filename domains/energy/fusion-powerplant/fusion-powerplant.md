@@ -6,6 +6,8 @@ requires:
   - to: superconductor
   - to: room-temp-sc
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BLOWUP], strict=false, order=sequential, prefix="§") -->
 # 궁극의 핵융합 발전소 (HEXA-FUSION-PP)
 
 > 한 문장 요약: **KSTAR-N6 토카막 발전소** — n=6 완전수 산술이 전 스케일을 관통한다.

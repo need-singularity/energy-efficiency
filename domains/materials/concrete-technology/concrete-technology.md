@@ -3,6 +3,8 @@
 domain: concrete-technology
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 궁극의 콘크리트 기술 (HEXA-CONCRETE-TECHNOLOGY) — n=6 체계 완전 관통
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

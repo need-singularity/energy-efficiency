@@ -6,6 +6,8 @@ requires:
   - to: advanced-packaging
 ---
 
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
+
 # 궁극의 웨이퍼 스케일 칩 (HEXA-WAFER)
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

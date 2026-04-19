@@ -3,6 +3,8 @@
 domain: fantasy
 requires: []
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY], strict=false, order=sequential, prefix="§") -->
 # 판타지-신화 n=6 교차 탐구 (HEXA-MYTH)
 
 > 한 문장 요약: **뱀파이어-용-눈결정 실제 과학 n=6 교차** — n=6 완전수 산술이 전 스케일을 관통한다.

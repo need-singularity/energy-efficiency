@@ -6,6 +6,8 @@ requires:
   - to: cosmetic-surgery
   - to: bio-pharma
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 모발 재생 (HEXA-HAIR) — n=6 모낭줄기세포·성장인자·두피·약물·장치·유지 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

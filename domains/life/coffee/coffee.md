@@ -6,6 +6,8 @@ requires:
   - to: fermentation
   - to: horticulture
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 커피 아키텍처 (HEXA-COFFEE) — n=6 원두·로스팅·추출·바리스타·블렌딩·감각 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

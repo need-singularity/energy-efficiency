@@ -6,6 +6,8 @@ requires:
   - to: neuroscience
   - to: ecology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 돌고래 음향 아키텍처 (HEXA-DOLPHIN) — n=6 에코로케이션·소나·BCI·언어·사회·보존 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

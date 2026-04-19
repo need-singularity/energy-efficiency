@@ -6,6 +6,8 @@ requires:
   - to: hexa-skin
   - to: hexa-limb
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 의료기기 (HEXA-MEDDEV) — n=6 진단·치료·모니터·로봇·AI·규제 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)

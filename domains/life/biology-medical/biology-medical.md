@@ -6,6 +6,8 @@ requires:
   - to: pharmacology
   - to: immunology
 ---
+
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 # 궁극의 의생명과학 아키텍처 (HEXA-BIOMED) — n=6 진단·치료·예방·재생·모니터·AI 통합
 
 ## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
