@@ -1,0 +1,39 @@
+# n6-architecture /.ext — external resource declarations
+# SSOT — 이 프로젝트가 의존하는 모든 외부 자원 (SSH host, API endpoint, service, submodule, binary) 명시적 선언.
+# 포맷 스펙: hexa-lang self/raw_loader.hexa (L0/.raw 와 동일 문법, id namespace 독립)
+# 상속: hexa-lang/.raw raw#14 ext-ssot whitelist (kind ∈ {ssh, api, service, binary, submodule, pod})
+#
+# 포맷:
+#   ext <id> <status> "<name>"
+#     kind      <ssh|api|service|binary|submodule|pod>
+#     <key>     <value...>
+#
+# status (5 잠금): live warn new deferred convention
+#
+# 필수 key (kind 별):
+#   ssh       : addr use (why)
+#   api       : endpoint auth use (rate-limit)
+#   service   : url health use
+#   binary    : path version use
+#   submodule : path commit url
+#   pod       : host image use
+#
+# 표준 key (공통): why proof note deprecated-at
+
+ext 1 live "atlas-canonical — nexus CLI entry"
+  kind     binary
+  subkind  cli
+  path     $HOME/core/nexus/cli/run.hexa
+  alias    nexus
+  use      drill, atlas, meta2 — shared runtime driver
+  why      n6-architecture invokes nexus CLI for atlas/drill/meta2 workflows. canonical entry.
+  proof    test -x $HOME/.hx/bin/nexus && nexus --help
+  alive    static
+
+ext 2 live "shared — nexus/shared symlink"
+  kind     submodule
+  path     .shared
+  target   ../nexus/shared
+  use      atlas.n6, hexa_grammar.jsonl, growth_bus.jsonl shared artifacts
+  why      n6-architecture reads shared atlas data via symlink to /Users/ghost/core/nexus/shared.
+  proof    readlink .shared == "../nexus/shared"
