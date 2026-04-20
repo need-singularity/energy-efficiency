@@ -742,9 +742,19 @@ ALD HfO₂ 24 cycle 레시피 실제 장비 검증.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 공정 파라미터 라이브러리</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-30 공정 파라미터 χ² p-value > 0.05 검증. Fraction 정확 Egyptian 증명.
-`chip-process` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 공정 기준: EUV 0.33NA 성숙 + High-NA 준비 + SF2 2nm GAAFET 양산 진입**
+
+- EUV 0.33NA (현 양산): ASML NXE:3800E, SF3P/SF2 적용, wavelength 13.5 nm, NA 0.33, CD ~16 nm half-pitch
+- EUV High-NA (준비): ASML Twinscan EXE:5000 (NA 0.55), 2026 reserach wafer, 삼성 기흥 R&D 라인 2025 도입, SF1.4 부터 적용 예정
+- 노드: SF3P (3nm GAAFET 2세대, 양산) → SF2 (2nm GAAFET, 2026 양산 목표) → SF1.4 (1.4nm, 2027)
+- 에칭: 원자층 에칭 ALE (AMAT Sym3 Y, LAM Kiyo F series), aspect ratio 60:1 for HAR
+- 박막: ALD HfO₂ (EOT 0.7 nm), CVD Co liner, PVD barrier
+- CMP: Cu CMP + oxide STI, pitch variation <3 nm
+- Annealing: Laser Spike Anneal (LSA) + Flash, millisecond thermal budget
+- BEOL: 14~16 metal layer, Cu + Co hybrid (Metal 0~3 Co, Metal 4+ Cu)
+- 30 공정 파라미터 χ² p-value > 0.05 검증, Fraction 정확 Egyptian 증명 유지
+- `chip-process` canonical v1 확정
 
 </details>

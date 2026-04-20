@@ -726,10 +726,18 @@ HBM3e 12단 스택 σ 정규.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 패키지 라이브러리</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-25 패키지 파라미터 χ² p-value > 0.05 검증.
-Egyptian thermal 분배 Fraction 정확 증명.
-`chip-packaging` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 패키징 기준: FO-PLP + I-Cube (CoWoS 경쟁) + X-Cube (3D TSV)**
+
+- FO-PLP (Fan-Out Panel Level Packaging): 삼성 RDL-first, 600mm × 600mm 패널, 스마트폰 AP/PMIC 양산 적용
+- I-Cube (Interposer-Cube): 2.5D 실리콘 인터포저 + HBM 2~4 stack + 로직 다이, HBM3E 12H 지원 (CoWoS-L 경쟁), 2024 양산
+- I-Cube4/I-Cube8 로드맵: HBM 4~8 스택, 5000 mm² 인터포저 면적 2026~2027
+- X-Cube (3D TSV): SRAM-on-logic 스택, TSV pitch 40 μm (via-middle Cu), 2023 양산
+- Hybrid Bonding (Cu-Cu): 2026 파일럿 라인 준비, pitch 2~9 μm 목표 (TSMC SoIC / Intel Foveros Direct 경쟁)
+- HBM MR-MUF: Samsung Advanced Packaging, 12H HBM3E 양산 (pitch ~48 μm 범프)
+- UCIe 인터커넥트: 1.1 스펙 지원 (2024), advanced 패키지 32 GT/s
+- 25 패키지 파라미터 χ² p-value > 0.05 검증, Egyptian thermal 분배 Fraction 정확 증명 유지
+- `chip-packaging` canonical v1 확정
 
 </details>

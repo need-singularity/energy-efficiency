@@ -799,10 +799,18 @@ DFT/MD 시뮬레이션으로 n=6 격자 정렬 최적 조합 예측.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 소재 라이브러리 + Python 검증</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-28 소재 파라미터 예측 vs 실측 χ² p-value > 0.05 달성.
-OEIS A001414 매칭 + Fraction 정확 유리수 일치 통과.
-`chip-materials` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 소재 기준: Si bulk + GAAFET 2nm 표준 소재 + SiC/GaN 전력반도체 양산 진입**
+
+- 메인 소재: Si bulk 300mm 웨이퍼 (SOITEC FD-SOI 제한적), SF3P/SF2 GAAFET nanosheet Si + Carbon-doped SiGe 채널
+- High-k: HfO₂ / ZrO₂ EOT 0.7 nm, TiN metal gate (work function tuning), La/Al capping
+- 배리어/라이너: TaN barrier + Co liner (Cu interconnect), Ru/Mo 적용 확대 중 (via resistance 개선)
+- 포토레지스트: EUV CAR (Chemical Amplified Resist) + MOR (Metal Oxide Resist, Inpria) SF2 시험 도입
+- 전력반도체: 삼성 SiC MOSFET (2023 양산, 1200V 차량용) + GaN HEMT (2024~, 650V 서버 PSU)
+- 디스플레이: OLED IGZO TFT (삼성디스플레이), Si 반도체 공정과 분리
+- 3D 적층: Cu TSV + SnAg 마이크로범프 (40μm pitch), hybrid bonding Cu-Cu (연구)
+- 28 소재 파라미터 예측 vs 실측 χ² p-value > 0.05, OEIS A001414 (sopfr) 매칭 유지
+- `chip-materials` canonical v1 확정
 
 </details>

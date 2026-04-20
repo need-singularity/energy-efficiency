@@ -794,9 +794,23 @@ HEXA-VRM (σ=12 phase) 설계 라이브러리 오픈.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 수학 레퍼런스</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Python stdlib 검증 코드. Egyptian Fraction 정확 증명.
-§7 10 서브섹션 정직성 검증 통과. `chip-thermal-power` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 열/전원 기준: 서버 CPU air+liquid hybrid, Exynos 모바일 vapor chamber**
+
+- 냉각 (air + liquid hybrid):
+  - 서버: 공랭 (heatsink + fan) + 수냉 D2C (Direct-to-Chip), 데이터센터 HBM3E + AI 서버 TDP 700~1000 W
+  - 삼성 서버 CPU SPARC 및 파트너 CXL 모듈: Asetek/CoolIT loop, ΔT <15°C at 600 W TDP
+- 모바일: Exynos 2500 vapor chamber (~0.4 mm 두께), 그래파이트 TIM, passive cooling
+- TIM (Thermal Interface Material): Indium solder (IHS), phase-change TIM (PCM45), PGS graphite sheet
+- Immersion cooling (파일럿): 3M Novec 7100 단상 / two-phase, 서버 랙당 50+ kW 방열, 2025 시험도입
+- Cryo: 삼성 양산 전무 (IBM/SeeQC 레퍼런스, 300K → 77K → 4K → 20mK τ=4 stage, Bluefors 희석냉동기)
+- 전원 (PDN):
+  - BSPDN (Backside Power Delivery): SF2 (2nm) 부터 적용, IR drop 30% 감소
+  - VRM: Infineon TDA / Monolithic MPS + OCP Orv3, 다상 VRM 24~48-phase
+  - Egyptian 1/2+1/3+1/6 TDP 분배: 코어(50%) + 메모리+I/O(33.3%) + 기타(16.7%) 현 실측 근사
+- 12-phase VRM (σ=12 ideal) 는 서버 CPU 에서 24~48-phase (확장형)
+- Python stdlib 검증 코드 + Egyptian Fraction 정확 증명, §7 10 서브섹션 정직성 검증 통과
+- `chip-thermal-power` canonical v1 확정
 
 </details>

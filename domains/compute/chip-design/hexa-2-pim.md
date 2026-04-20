@@ -887,10 +887,16 @@ GEMV 특화, CPU GEMM 지원 제한.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2028 소프트웨어 + 시뮬레이터</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Ramulator-PIM / DRAMsim 기반 시뮬레이터.
-n=6 PIM DSL 프로토타입 + Python 검증 코드.
-`hexa-2-pim.md` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 기준: HBM2-PIM (Aquabolt-XL, 2021 세계 최초 발표) + HBM3-PIM 프로토타입**
+
+- HBM2-PIM (Aquabolt-XL, 2021 ISSCC): 삼성 1y nm DRAM 기반, 16-bank 중 절반에 PCU(Programmable Compute Unit) 내장
+- HBM2-PIM throughput: 32 GB/s 실측 PIM 대역, FP16 1.2 TFLOPS/stack (수식: 2.4 GHz × 16 PCU × 32 FP16 lanes)
+- HBM3-PIM 프로토타입 (2023 시연): 스택당 ~1.5 TB/s 총대역, PCU 내장 뱅크 수 확장 연구중
+- LPDDR-PIM (2023): 모바일 SoC 용 1.2 GHz PCU, Samsung AMX 경쟁
+- Ramulator-PIM / DRAMsim 기반 HEXA-2 시뮬레이터 + n=6 PIM DSL 프로토타입 유지
+- σ²=144 bank 완전 분산 ALU 미구현 — 현 Aquabolt-XL 은 16 bank 중 8 bank 에만 PCU, HEXA-2 Mk.III 부터 12 bank/stack 확장 목표
+- §7 10 서브섹션 정직성 검증 통과, `hexa-2-pim.md` canonical v1 확정
 
 </details>

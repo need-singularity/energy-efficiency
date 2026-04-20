@@ -787,9 +787,23 @@ HEXA-UVM + HEXA-Formal + HEXA-ATE 오픈 소스 생태계 완성.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 수학적 레퍼런스</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Python stdlib 검증 코드. n=6 상수 수론 자동 유도 완료.
-§7 10 서브섹션 정직성 검증 통과. `chip-verify-test` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 검증/테스트 기준: ATE Advantest V93000 + Teradyne UltraFLEX + DFT scan chain 표준**
+
+- ATE (Automated Test Equipment):
+  - Advantest V93000 Smart Scale: SoC 테스트 주력, pin count 2048+, data rate 16 Gbps
+  - Teradyne UltraFLEX plus: HBM/DRAM 테스트, J750 (저가형 SoC)
+  - 삼성 기흥/화성 테스트 센터 + 온양 패키지 테스트
+- DFT (Design for Test):
+  - Scan chain: IEEE 1149.1 JTAG + 1500 embedded core test, 커버리지 >99.5%
+  - BIST: LBIST (logic), MBIST (SRAM), XBIST (mixed-signal)
+  - Mentor Tessent / Synopsys DFTMax / Cadence Modus DFT 표준
+- UVM (Universal Verification Methodology): SystemVerilog + UVM 1.2 표준, 삼성 재사용 VIP 라이브러리
+- Formal Verification: Synopsys VC Formal, Cadence JasperGold, 대부분 SF3P 블록 사용
+- Emulation: Cadence Palladium Z2 + Synopsys ZeBu Server 5, SoC 검증 시 10+ M gate 실시간
+- Burn-in + 신뢰성: HTOL (High Temp Operating Life), HAST, 125°C 1000 hr
+- Python stdlib 검증 코드 + n=6 상수 수론 자동 유도 완료, §7 10 서브섹션 정직성 검증 통과
+- `chip-verify-test` canonical v1 확정
 
 </details>

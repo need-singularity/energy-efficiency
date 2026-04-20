@@ -809,9 +809,18 @@ DSE 2400 압축 + Pareto Top-6 자동 선정 소프트웨어 프로토.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 소프트웨어 레퍼런스</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Python stdlib 검증 코드. n=6 상수 수론 자동 유도 완료.
-§7 10 서브섹션 정직성 검증 통과. `chip-eda` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 EDA 기준: SAFE (Samsung Advanced Foundry Ecosystem) + Synopsys/Cadence/Siemens 풀 파트너쉽**
+
+- Samsung SAFE (2018~): 공정 PDK, IP, EDA, 클라우드 통합 에코시스템, SF3P/SF2 인증 IP 2000+
+- Synopsys: Fusion Compiler (합성+P&R 통합), PrimeTime (STA), VCS (시뮬), Proteus (OPC), Formality (equiv check), SF2 인증
+- Cadence: Genus (합성), Innovus (P&R), Tempus (STA), Xcelium (시뮬), Quantus (parasitic), SF2 인증
+- Siemens EDA (구 Mentor): Calibre (DRC/LVS/RET), Questa (시뮬), Tessent (DFT), SF2 DRC 풀 지원
+- Cloud: Samsung Foundry Cloud (AWS/Azure), peak 10K+ tapeout 병렬
+- AI EDA: Synopsys DSO.ai, Cadence Cerebrus (RL 기반 P&R), 삼성 파일럿 적용 (3nm ~ 2nm)
+- 사인오프: 14~16 메탈 레이어 DRC, SI/PI 통합 분석, monte carlo STA (σ²=144 PVT corner 실 검증)
+- Python stdlib 검증 코드 + n=6 상수 수론 자동 유도 완료, §7 10 서브섹션 정직성 검증 통과
+- `chip-eda` canonical v1 확정
 
 </details>

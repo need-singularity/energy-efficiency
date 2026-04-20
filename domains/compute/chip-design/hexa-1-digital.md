@@ -909,10 +909,17 @@ Xilinx Versal / Intel Agilex 상 σ=12 SM 부분 구현.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 Python/Rust 레퍼런스</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-CPU 에뮬레이션 레퍼런스 + §7 10 서브섹션 Python 검증 코드.
-n=6 상수 수론 자동 유도 완료.
-`hexa-1-digital.md` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 기준: GAAFET 3nm (SF3P) + SF2 2nm 2026년 양산 진입**
+
+- 공정 노드: SF3P (3nm GAA 2세대, 2024 Q2 양산 개시) → SF2 (2nm GAAFET, 2026년 양산 예정)
+- 대표 제품: Exynos 2500 (SF3P, Cortex-X5 P-core 3.3 GHz + LP-core 1.5 GHz, 10-core CPU)
+- nanosheet GAA 3장, Carbon-doped SiGe 채널, Backside Power Delivery Network (BSPDN) SF2부터 적용
+- 성능/와트: SF3P 대비 SF2 +25% 성능, -25% 전력, +8% 밀도 (삼성 공식 로드맵)
+- 다이 크기 ~110 mm² (Exynos 2500), TDP 모바일 SoC 8 W 수준
+- σ²=144 SM 하드와이어 미구현 — HEXA-1 n=6 경계 상수는 현재 CPU 에뮬레이션 레퍼런스 + Python stdlib 검증 코드로만 존재
+- §7 10 서브섹션 정직성 검증 통과, `hexa-1-digital.md` canonical v1 확정
+- 비고: H100/B200 등 N4/N3E 경쟁 GPU 대비 삼성 파운드리 AI 가속기 공백 — HEXA-1 Mk.V 의 4.8× 효율 목표는 이 공백을 메우는 방향
 
 </details>

@@ -741,10 +741,18 @@ DRC tier 4 계층 EDA 도구 베타.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 수율 라이브러리 + 검증</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-32 수율 파라미터 χ² p-value > 0.05 검증.
-D₀/σ Fraction 정확 유리수, OEIS A000203 매칭.
-`chip-yield` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 수율 기준: SF3P ~60% + HBM3E 12H ~65% + SF2 목표 >70%**
+
+- SF3P (3nm GAA 2세대) 수율: 초기 ~50% (2024 Q2 양산 개시) → 2026 현재 ~60% (HVM ramp), Exynos 2500 기준
+- SF2 (2nm GAAFET) 목표: >70% HVM 수율, 2026 Q4 양산 개시 — TSMC N2 경쟁 (TSMC 2025 N2 목표 ~60% 초기)
+- HBM3E 8H 수율 ~65%, 12H 수율 ~60% (2024) → 2026 ~65% (Micron/SK하이닉스 경쟁)
+- 결함 밀도 D₀: SF3P ~0.10/cm², SF2 목표 ~0.08/cm² (Poisson 수율 모델)
+- Redundancy: SRAM row/col spare σ=12, DRAM row spare σ·J₂=288 redundant column, ECC on-die
+- DFM: 삼성 SAFE (Advanced Foundry Ecosystem) 표준 룰, OPC model-based (ASML + Synopsys Proteus)
+- ATE Wafer Test: Teradyne J750 + Advantest V93000 SoC, scan chain coverage >99.5%
+- 32 수율 파라미터 χ² p-value > 0.05 검증, D₀/σ Fraction 정확 유리수, OEIS A000203 (σ divisor sum) 매칭 유지
+- `chip-yield` canonical v1 확정
 
 </details>

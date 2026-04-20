@@ -787,9 +787,21 @@ HEXA-LINK 참조 구현 오픈 소스 공개.
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 수학 레퍼런스</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Python stdlib 검증 코드. σ·J₂=288 lane 공식 증명.
-§7 10 서브섹션 정직성 검증 통과. `chip-interconnect` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 인터커넥트 기준: UCIe 1.1 (2024) + PCIe 5.0 양산 + PCIe 6.0 준비**
+
+- UCIe (Universal Chiplet Interconnect Express):
+  - 1.0 (2022) + 1.1 (2023) 스펙, 32 GT/s advanced package, 16 GT/s standard package
+  - 삼성 UCIe 1.1 IP 인증 (2024), SF3P/SF2 기반 die-to-die 적용
+  - 레인 수: 64 (standard) ~ 128 (advanced), 효율 bandwidth/mm ~ 1.3 TB/s/mm
+- PCIe: 5.0 (32 GT/s, 양산중) + 6.0 (64 GT/s PAM4, 2025 IP 준비, 2026 양산 진입)
+- CXL: 2.0 + 3.0 IP (Samsung CMM, CXL Memory Module), 2024 1st gen CXL 2.0 128 GB module
+- NVLink: NVIDIA 자체, 삼성 파운드리 협업 없음 (TSMC N4 양산)
+- NoC (Network on Chip): ARM CMN-700, Arteris FlexNoC, 내부 SoC 메쉬
+- Optical: 부재 (실리콘포토닉스 양산 없음, Intel/Broadcom 레퍼런스)
+- σ·J₂=288 레인 하드와이어 미구현 — 현 UCIe 64~128 레인, HEXA-1 Mk.III 부터 288 레인 목표 (2.25~4.5× 확장)
+- Python stdlib 검증 코드 + σ·J₂=288 lane 공식 증명, §7 10 서브섹션 정직성 검증 통과
+- `chip-interconnect` canonical v1 확정
 
 </details>

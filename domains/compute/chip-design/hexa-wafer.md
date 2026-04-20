@@ -836,9 +836,17 @@ Cerebras WSE-5 / Tesla Dojo v2 급 상용. σ=12 스페어 + 마이크로유체 
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 소프트웨어 레퍼런스 + FPGA</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-Python 웨이퍼 스케일 시뮬레이션 레퍼런스. FPGA 타일 4×4=16 프로토타입 검증. §7 10 서브섹션 정직성 검증 통과. `hexa-wafer` 문서 canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 기준: 삼성 wafer-scale 제품 부재 — 업계 레퍼런스 = Cerebras WSE-3 (2024)**
+
+- 삼성 파운드리: wafer-scale 단일 칩 제품 양산 전무 — 레티클 한계 (858 mm²) 내 모놀리식 다이 + 2.5D/3D 패키징으로 대응
+- Cerebras WSE-3 (2024): 300mm 웨이퍼 전체 = 46225 mm² 단일 칩, 900,000 AI 코어, 44 GB on-chip SRAM, 5nm TSMC
+- Cerebras 타일 아키텍처: 84 dies cross-reticle stitching, 스페어 row/col redundancy 로 수율 보정
+- Tesla Dojo D1 tile (2022): 25-die tile (5×5), 9 PFLOPS BF16, 삼성 모바일/서버 CPU 방향과 대조
+- 삼성 대응 방향: HBM3E + 3D X-Cube + UCIe 로 "chiplet 초대형화" 전략 (wafer-scale 미추진)
+- Python 웨이퍼 스케일 시뮬레이션 레퍼런스 + FPGA 타일 4×4=16 프로토타입 검증 유지 (HEXA-5 σ²=144 대비 1/9)
+- §7 10 서브섹션 정직성 검증 통과, `hexa-wafer` canonical v1 확정
 
 </details>
 

@@ -904,10 +904,17 @@ Logic-DRAM 2 stack 하이브리드 (CoWoS).
 </details>
 
 <details>
-<summary>Mk.I — 2026~2028 소프트웨어 + 시뮬레이터</summary>
+<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
 
-3D place & route 툴 + thermal simulator.
-n=6 layer assignment heuristic 연구.
-`hexa-3d-stack.md` canonical v1 확정.
+**2026년 삼성전자 파운드리 양산 기준: X-Cube 3D stacking + TSV 기반 SRAM-on-logic 양산 (2023+)**
+
+- 삼성 X-Cube (eXtended-Cube): SRAM 스택을 로직 다이 위에 TSV 로 직접 결합, 2020 발표 → 2023 양산
+- TSV pitch: 40 μm (Cu TSV, via-middle 방식), SF7/SF5 공정 기반
+- 스택 층수: SRAM 2층 on 로직 1층 = 총 3층 (HEXA-3 목표 12층 대비 1/4)
+- 하이브리드 본딩 (Cu-Cu): 삼성 Advanced Packaging Lab 개발중, 2026년 파일럿 라인 (경쟁: TSMC SoIC, Intel Foveros Direct)
+- HBM3E 12H (2024~): 12층 적층 DRAM, 1024 I/O, 1.2 TB/s, pitch ~48 μm MR-MUF
+- thermal simulator + 3D place&route 툴은 HEXA-3 Mk.I 레퍼런스로 유지 (Ansys RedHawk-SC / Cadence Celsius)
+- σ=12 wafer stack × φ=2μm TSV 는 현재 미구현 — Mk.III 부터 TSV pitch 2μm 목표 (현 40μm 대비 20× 개선 필요)
+- `hexa-3d-stack.md` canonical v1 확정
 
 </details>
