@@ -1,0 +1,5 @@
+# .hexa-init/stamp — idempotency marker
+init-version: hexa-ssot-init/1
+installed-at: 2026-04-21T18:48:41Z
+project:      n6-architecture
+scaffold:     .raw-ref .own .roadmap .loop (create-if-absent)

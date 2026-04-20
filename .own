@@ -1,0 +1,3 @@
+# n6-architecture /.own — L1 project-local (0 rules)
+# SSOT — 프로젝트 고유 절대 규칙. L0(hexa-lang /.raw) 와 병렬, 독립 id namespace.
+# 포맷 스펙: hexa-lang self/raw_loader.hexa (L0 와 동일 문법)
