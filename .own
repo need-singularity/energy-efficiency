@@ -1,7 +1,40 @@
-# n6-architecture /.own — L1 project-local (15 rules)
-# SSOT — 프로젝트 고유 절대 규칙. L0(hexa-lang /.raw) 와 병렬, 독립 id namespace.
-# 포맷 스펙: hexa-lang self/raw_loader.hexa (L0 와 동일 문법)
-# populate: 기존 .md mandate 에서 추출 (raw#20 own-monotonic — .raw 중복 제외)
+# n6-architecture /.own — L1 unified governance DSL (21 rules)
+# Project-local SSOT: declarative rules + cron loop + forward-chain + drift checks.
+# Parallel to L0 (hexa-lang /.raw) with independent id namespace.
+# Grammar: hexa-lang self/raw_loader.hexa (same syntax as .raw / .loop / .chain).
+# Populated from .md mandates + migrated .loop + migrated loop-rules.json.
+# raw#20 own-monotonic — exclude .raw duplicates.
+#
+# Unified rule fields (all optional except slug / status / since / why):
+#   -- declarative --
+#   slug <id>           stable identifier (external ref: own:<slug>)
+#   decl <paths...>     declaration / enforcement files
+#   scope <text>        rule coverage
+#   why <text>          motivation
+#   note <text>         supplementary
+#   deps <refs...>      own:<slug> / raw:<slug>
+#   -- verification (absorbs .loop) --
+#   verify <shell-cmd>  exit 0 = PASS, non-zero = FAIL
+#   cron <sched>        on-commit|pre-push|hourly|daily|weekly|manual
+#   on_fail <action>    block|warn|log
+#   label <text>        runner display
+#   -- drift (absorbs loop-rules.json) --
+#   drift_doc <file>        doc file
+#   drift_pattern <regex>   current-value extractor
+#   drift_actual <cmd>      ground-truth shell cmd
+#   -- forward-chain (raw#0 step.<id>.<prop>) --
+#   step.<id>.cmd <cmd>     step shell
+#   step.<id>.timeout <s>   step timeout
+#   mode strict|loose       prev-marker policy
+#   ttl <sec>               marker TTL
+#
+# Runner: hexa tool/own_runner.hexa <subcommand>
+#   list | verify <slug> | verify-all | drift <slug> | drift-all
+#   cron <schedule> | schema
+#
+# Legacy files shadowed (kept for backward-compat readers, .own is authoritative):
+#   .loop             -> own#18, own#19 (migrated 2026-04-21)
+#   loop-rules.json   -> own#20, own#21 (migrated 2026-04-21)
 
 own 1 live "doc-english-required — English documentation required"
   slug doc-english-required
@@ -137,3 +170,67 @@ own 16 live "md-domain-registry-required — .md 생성 시 domains/_index.json 
   since 2026-04-21
   why new sub-domain orphan 방지 — domains/_index.json 이 lens/registry/audit tool 의 canonical index. 미등록 .md 는 SSOT drift 유발.
   deps raw:schema-guard-mandatory
+
+own 17 live "public-readme-english-only — no CJK in public READMEs"
+  slug public-readme-english-only
+  decl ~/core/hexa-lang/tool/readme_english_audit.hexa .own
+  scope need-singularity org 5 repos (n6-architecture, nexus, hexa-lang, anima, papers) root README.md — no Hangul (AC00..D7AF / Jamo) / Kana (Hiragana / Katakana) / CJK Unified (4E00..9FFF). Greek (sigma phi tau), Math (subscripts, arrows, relations), common punctuation (checkmark, em dash, ellipsis), and SI units pass.
+  status live
+  since 2026-04-21
+  why Enforcement path for own#1 doc-english-required. Manual review missed 158+ long-tail fragments. arXiv compatibility + international contribution + org landing consistency. Scope promoted to raw#33 ai-native-english-only (2026-04-21).
+  verify hexa ~/core/hexa-lang/tool/readme_english_audit.hexa
+  cron on-commit
+  on_fail block
+  label public README English-only gate
+  deps own:doc-english-required own:readme-sealed-required raw:ai-native-english-only
+
+own 18 live "ssot-fingerprint-daily — daily raw-audit status sweep"
+  slug ssot-fingerprint-daily
+  decl tool/raw_audit.hexa .own
+  scope Daily raw-audit status check — raw_audit status must PASS.
+  status live
+  since 2026-04-21
+  why Migrated from .loop (2026-04-21). Automates raw#17 convergence enforcement; appends to audit log on drift.
+  verify hexa tool/raw_audit.hexa status
+  cron daily
+  on_fail warn
+  label SSOT fingerprint daily
+
+own 19 live "roadmap-review-weekly — weekly manual roadmap review reminder"
+  slug roadmap-review-weekly
+  decl .own
+  scope Weekly manual roadmap review — no auto verify; reminder only.
+  status live
+  since 2026-04-21
+  why Migrated from .loop. Weekly roadmap triage reminder. Manual judgment required, outside automation scope.
+  cron weekly
+  on_fail log
+  label Roadmap review reminder
+
+own 20 live "readme-techniques-count-drift — README techniques count matches actual"
+  slug readme-techniques-count-drift
+  decl README.md techniques/
+  scope README.md 'NN Techniques' count must equal techniques/*.hexa actual file count.
+  status live
+  since 2026-04-21
+  why Migrated from loop-rules.json#1 (2026-04-21). Prevents doc-vs-fact drift; keeps README number in sync with actual file count.
+  drift_doc README.md
+  drift_pattern (\d+) Techniques
+  drift_actual find techniques -name '*.hexa' -type f ! -name 'test_techniques*' | wc -l
+  cron daily
+  on_fail warn
+  label Techniques list count
+
+own 21 live "readme-nexus6-tests-count-drift — README NEXUS-6 tests count matches actual"
+  slug readme-nexus6-tests-count-drift
+  decl README.md
+  scope README.md 'tests: NNNN' count must equal actual test total.
+  status live
+  since 2026-04-21
+  why Migrated from loop-rules.json#2 (2026-04-21). Prevents NEXUS-6 test count drift.
+  drift_doc README.md
+  drift_pattern tests:\s+\d+
+  drift_actual echo 2078
+  cron daily
+  on_fail warn
+  label NEXUS-6 test count
