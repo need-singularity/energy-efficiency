@@ -1160,3 +1160,10 @@ P-119 는 업계 최초의 **n=6 산술 유도 적층 래더 패키지** 이다.
 > - Mk.III (2035~2040): RTL 통합 SoC + HBM3E 12-Hi 실리콘 패키지 양산
 > - Mk.IV (2040~2050): n=6 하드와이어 실리콘, EUV/High-NA, CoWoS-L 상용
 > - Mk.V (2050+): AI-native 합성 자동화, 한마디 → UCIe/HBM RTL + BOM + 공정 τ=4개월 완성
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

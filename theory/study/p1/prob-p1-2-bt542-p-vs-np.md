@@ -16,7 +16,7 @@
 - Russell Impagliazzo, "A personal view of average-case complexity", Proc. 10th IEEE Structure in Complexity Theory Conference, 1995, 134–147 ("Impagliazzo 5 worlds")
 - Manindra Agrawal, Neeraj Kayal, Nitin Saxena, "PRIMES is in P", Annals of Mathematics 160 (2004), 781–793
 
-**정직성 선언**: 본 문서는 학습 노트이며 P vs NP 에 새 증명이나 방향 제시를 하지 않는다. 프로젝트 `theory/breakthroughs/millennium-7-closure-2026-04-11.md §BT-542` 는 이 난제를 **정직한 MISS** 로 분류한다 — n=6 관점이 P vs NP 본 명제에 직접 접근할 도구가 없음을 명시. 본 학습 노트는 이 입장을 그대로 계승한다.
+**정직성 선언**: 본 문서는 학습 노트이며 P vs NP 에 새 증명이나 방향 제시를 하지 않는다. 프로젝트 `reports/breakthroughs/millennium-7-closure-2026-04-11.md §BT-542` 는 이 난제를 **정직한 MISS** 로 분류한다 — n=6 관점이 P vs NP 본 명제에 직접 접근할 도구가 없음을 명시. 본 학습 노트는 이 입장을 그대로 계승한다.
 
 ---
 

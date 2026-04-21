@@ -282,7 +282,7 @@ Mathlib 가 주 target 이지만, 대안:
 ## §6 관련 파일
 
 - `theory/roadmap-v2/millennium-v3-design-2026-04-15.md` §3 T5 / §4 M3 (v3 Lean4 phase)
-- `theory/breakthroughs/external-coordination-infrastructure-2026-04-15.md` §3 (outreach Lean4 parallel)
+- `reports/breakthroughs/external-coordination-infrastructure-2026-04-15.md` §3 (outreach Lean4 parallel)
 - `theory/proofs/theorem-r1-uniqueness.md` (Theorem B 원 증명, 한국어)
 
 ---

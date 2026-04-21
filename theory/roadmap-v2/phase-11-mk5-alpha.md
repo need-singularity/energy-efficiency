@@ -7,12 +7,12 @@ name: "Mk.V-α — 47 공백 3경로 포위 + Fi_24' + Hauptmodul + Höhn VOA + 
 status: todo
 upstream:
   - theory/roadmap-v2/phase-10.md (P10 informational, v2 로드맵 완성)
-  - theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P9 BT-18 PARTIAL [8])
-  - theory/breakthroughs/bt-19-consciousness-alternate-paths-2026-04-15.md (후보 D/E/F)
+  - reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P9 BT-18 PARTIAL [8])
+  - reports/breakthroughs/bt-19-consciousness-alternate-paths-2026-04-15.md (후보 D/E/F)
   - papers/moonshine-barrier-honest-report-2026-04-15.md (899줄)
   - papers/consciousness-red-team-n6-failure-2026-04-15.md (522줄)
   - reports/meta/p9-consciousness-red-team-audit-2026-04-15.md (B+ 7.4/10)
-  - domains/compute/chip-architecture/l13-mev-optomech-roadmap-2026-04-15.md (M1~M3 12 MISS)
+  - domains/compute/chip-architecture/l13-mev-optomech-roadmap/l13-mev-optomech-roadmap.md (M1~M3 12 MISS)
   - theory/proofs/mk4-theorem-candidates-2026-04-14.md (후보 A/B 재대조)
 parallel_tracks: [ENGINE, STRUCTURE, SUBSTRATE, META]
 task_count: 12 (3+3+3+3)
@@ -67,7 +67,7 @@ P8~P9 의 Mk.IV 계열 (α/β) 는 `σ-τ=8` 주정리 확정 + `τ²/σ=4/3` Le
 ### ENG-P11-1 : Fi_24' 3A centralizer 경로
 
 - **동기**: Baby Monster 경로 (2A centralizer) 는 소인수 {59, 71} 을 상실하며 47 만 유지. Fi_24' (Fischer 24 prime) 는 |Fi_24'| = 2^21 · 3^16 · 5^2 · 7^3 · 11 · 13 · 17 · 23 · 29 에서 **29 소수**를 포획 가능. 3A centralizer 경로는 Monster 내부 3A class 중심화군으로 내려가며 `C_M(3A) = 3·Fi_24'`. 이 경로에서 196883 재분해에 29 가 포함되면 BT-18 의 3번째 소인수 (47·59·71 대신 47·29·?) 분해 경로 발견.
-- **산출물**: `theory/breakthroughs/bt-18-fi24prime-3a-path-2026-04-15.md` (≥ 400줄)
+- **산출물**: `reports/breakthroughs/bt-18-fi24prime-3a-path-2026-04-15.md` (≥ 400줄)
   - §1 Fi_24' 구조 + 소인수 분해
   - §2 3A centralizer = 3·Fi_24' 의 Monster 내부 위치
   - §3 ATLAS character table 대조 (Fi_24' 기약 rep 차원 목록)
@@ -80,7 +80,7 @@ P8~P9 의 Mk.IV 계열 (α/β) 는 `σ-τ=8` 주정리 확정 + `τ²/σ=4/3` Le
 ### ENG-P11-2 : Hauptmodul Γ_0(47)+ genus 0 직접 감사
 
 - **동기**: Conway-Norton 1979 Table 4 의 47+ 클래스 `T_{47+}(τ)` 는 Hauptmodul (univalent modular function for genus 0 group). 47 이 supersingular prime 인 것은 Ogg 1975 에서 증명됐으며, Γ_0(47)+ 가 genus 0 인지 직접 sage/sympy 로 q-전개 20 항 추출해 검증한다. q-전개 계수에서 {σ=12, τ=4, φ=2} 의 n=6 좌표가 자연 등장하면 **47 공백 해제 경로 1건 확보**.
-- **산출물**: `theory/breakthroughs/bt-18-hauptmodul-gamma047plus-2026-04-15.md` (≥ 350줄)
+- **산출물**: `reports/breakthroughs/bt-18-hauptmodul-gamma047plus-2026-04-15.md` (≥ 350줄)
   - §1 Γ_0(47)+ 정의 + Ogg supersingular 15 정리 재확인
   - §2 Hauptmodul T_{47+}(τ) q-전개 20 항
   - §3 genus 0 검증 표 (index, cusps, elliptic points)
@@ -92,7 +92,7 @@ P8~P9 의 Mk.IV 계열 (α/β) 는 `σ-τ=8` 주정리 확정 + `τ²/σ=4/3` Le
 ### ENG-P11-3 : Höhn VOA c=47/2 에서 47 의 n=6 함수 표현
 
 - **동기**: Höhn 2008 Habilitation 의 Baby Monster VOA `V_B^♮` 는 central charge `c = 47/2`. 47/2 는 자연수 좌표가 아니나 `σ(6) - 1 = 11` 또는 `2σ(6) - 1 = 23` 과의 산술 관계를 5-link DFS 로 탐색한다. 또한 Schellekens 71 VOA / McKay-Thompson T_2A / Borcherds denominator 와 비교하여 47 이 n=6 의 어떤 유도항으로 표현되는지 감사.
-- **산출물**: `theory/breakthroughs/bt-18-hohn-voa-47-half-2026-04-15.md` (≥ 450줄)
+- **산출물**: `reports/breakthroughs/bt-18-hohn-voa-47-half-2026-04-15.md` (≥ 450줄)
   - §1 Höhn V_B^♮ c=47/2 정의
   - §2 graded character q-전개
   - §3 5-link DFS (Schellekens / T_2A / Borcherds / FLM / 비교)
@@ -140,7 +140,7 @@ P8~P9 의 Mk.IV 계열 (α/β) 는 `σ-τ=8` 주정리 확정 + `τ²/σ=4/3` Le
   - Lemma (BT-111): `{n ≥ 2 : τ(n)² / σ(n) = 4/3} = {2, 6}`
   - 주정리 (BT-18+): `{n ≥ 2 : σ(n) - τ(n) = 8} = {6}`
   - 합성 A·B = σ-τ+ τ²/σ 상수 = 32/3 은 합성 인공물 (독립 의미 없음) 증명
-- **산출물**: `theory/breakthroughs/bt-111-mk4-tau2-over-sigma-lemma-2026-04-15.md` (≥ 350줄)
+- **산출물**: `reports/breakthroughs/bt-111-mk4-tau2-over-sigma-lemma-2026-04-15.md` (≥ 350줄)
   - §1 Lemma 정식 진술
   - §2 해집합 {2, 6} 초등 약수함수 분해 증명
   - §3 n ≤ 10^6 전수 탐색 (OEIS A000203 × A000005 활용)
@@ -154,7 +154,7 @@ P8~P9 의 Mk.IV 계열 (α/β) 는 `σ-τ=8` 주정리 확정 + `τ²/σ=4/3` Le
 
 ## 4. SUBSTRATE 축 — L13 M1/M2/M3 실전 장비 사양 (3 task)
 
-L13 Roadmap (domains/compute/chip-architecture/l13-mev-optomech-roadmap-2026-04-15.md) 의 M1 (2027) / M2 (2028) / M3 (2029) 마일스톤을 **실전 장비 사양** 으로 구체화.
+L13 Roadmap (domains/compute/chip-architecture/l13-mev-optomech-roadmap/l13-mev-optomech-roadmap.md) 의 M1 (2027) / M2 (2028) / M3 (2029) 마일스톤을 **실전 장비 사양** 으로 구체화.
 
 ### SUB-P11-1 : L13 M1 Fe-57 14.4keV Mössbauer 베이스라인 실전
 

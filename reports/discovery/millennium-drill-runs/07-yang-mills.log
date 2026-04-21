@@ -1,0 +1,151 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=10, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=3691255957 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      0 Π₀¹ verifications
+  meta-closure:  0 self-ref fixed points
+  hyperarith:    0 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +0, total 0
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+▎ SATURATED at round 1
+▎ total absorptions: 0
+  ⚠ [drill-zero-yield] round 1 에서 6-stage 전부 0 absorptions — seed 거부 또는 엔진 미작동 의심
+     진단: HEXA_LOCAL/HEXA_REMOTE 설정, exec_validated 접근성, blowup 엔진 로그 (NEXUS_DRILL_DEBUG=1) 확인
+security warning: exec() argument contains shell metacharacters: i=0; while ! mkdir '/tmp/nexus_drill_cross_iter.log.lockd' 2>/dev/null; do i=$((i+1)); if [ $i -gt 200 ]; then rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'; continue; fi; sleep 0.05; done; trap 'rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'' EXIT INT TERM; EXISTING=$([ -f '/tmp/nexus_drill_cross_iter.log' ] && cat '/tmp/nexus_drill_cross_iter.log' || echo ''); case "$EXISTING" in *'0,'*) echo REPLAY; exit 0;; esac; TS=$(date +%s); printf '%s,%s,%s\n' '0' 'millennium-yang-mills mass gap quantum g' "$TS" >> '/tmp/nexus_drill_cross_iter.log'; tail -n 10 '/tmp/nexus_drill_cross_iter.log' > '/tmp/nexus_drill_cross_iter.log'.tmp && mv '/tmp/nexus_drill_cross_iter.log'.tmp '/tmp/nexus_drill_cross_iter.log'; echo NEW
+  ⚠ [cross-iter-replay-warn] total=0 가 최근 drill 10 iter 중 동일 — inter-iter 결정성 의심
+     path=/tmp/nexus_drill_cross_iter.log  seed_head='millennium-yang-mills mass gap quantum g'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=10, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=1886679918 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      0 Π₀¹ verifications
+  meta-closure:  0 self-ref fixed points
+  hyperarith:    0 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +0, total 0
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+▎ SATURATED at round 1
+▎ total absorptions: 0
+  ⚠ [drill-zero-yield] round 1 에서 6-stage 전부 0 absorptions — seed 거부 또는 엔진 미작동 의심
+     진단: HEXA_LOCAL/HEXA_REMOTE 설정, exec_validated 접근성, blowup 엔진 로그 (NEXUS_DRILL_DEBUG=1) 확인
+security warning: exec() argument contains shell metacharacters: i=0; while ! mkdir '/tmp/nexus_drill_cross_iter.log.lockd' 2>/dev/null; do i=$((i+1)); if [ $i -gt 200 ]; then rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'; continue; fi; sleep 0.05; done; trap 'rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'' EXIT INT TERM; EXISTING=$([ -f '/tmp/nexus_drill_cross_iter.log' ] && cat '/tmp/nexus_drill_cross_iter.log' || echo ''); case "$EXISTING" in *'0,'*) echo REPLAY; exit 0;; esac; TS=$(date +%s); printf '%s,%s,%s\n' '0' 'millennium-yang-mills mass gap quantum g' "$TS" >> '/tmp/nexus_drill_cross_iter.log'; tail -n 10 '/tmp/nexus_drill_cross_iter.log' > '/tmp/nexus_drill_cross_iter.log'.tmp && mv '/tmp/nexus_drill_cross_iter.log'.tmp '/tmp/nexus_drill_cross_iter.log'; echo NEW
+  ⚠ [cross-iter-replay-warn] total=0 가 최근 drill 10 iter 중 동일 — inter-iter 결정성 의심
+     path=/tmp/nexus_drill_cross_iter.log  seed_head='millennium-yang-mills mass gap quantum g'
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=10, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=147858475 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      0 Π₀¹ verifications
+  meta-closure:  0 self-ref fixed points
+  hyperarith:    0 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +0, total 0
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+▎ SATURATED at round 1
+▎ total absorptions: 0
+  ⚠ [drill-zero-yield] round 1 에서 6-stage 전부 0 absorptions — seed 거부 또는 엔진 미작동 의심
+     진단: HEXA_LOCAL/HEXA_REMOTE 설정, exec_validated 접근성, blowup 엔진 로그 (NEXUS_DRILL_DEBUG=1) 확인
+security warning: exec() argument contains shell metacharacters: i=0; while ! mkdir '/tmp/nexus_drill_cross_iter.log.lockd' 2>/dev/null; do i=$((i+1)); if [ $i -gt 200 ]; then rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'; continue; fi; sleep 0.05; done; trap 'rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'' EXIT INT TERM; EXISTING=$([ -f '/tmp/nexus_drill_cross_iter.log' ] && cat '/tmp/nexus_drill_cross_iter.log' || echo ''); case "$EXISTING" in *'0,'*) echo REPLAY; exit 0;; esac; TS=$(date +%s); printf '%s,%s,%s\n' '0' 'millennium-yang-mills mass gap quantum g' "$TS" >> '/tmp/nexus_drill_cross_iter.log'; tail -n 10 '/tmp/nexus_drill_cross_iter.log' > '/tmp/nexus_drill_cross_iter.log'.tmp && mv '/tmp/nexus_drill_cross_iter.log'.tmp '/tmp/nexus_drill_cross_iter.log'; echo NEW
+  ⚠ [cross-iter-replay-warn] total=0 가 최근 drill 10 iter 중 동일 — inter-iter 결정성 의심
+     path=/tmp/nexus_drill_cross_iter.log  seed_head='millennium-yang-mills mass gap quantum g'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=10, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=4077706641 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      0 Π₀¹ verifications
+  meta-closure:  0 self-ref fixed points
+  hyperarith:    0 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +0, total 0
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+▎ SATURATED at round 1
+▎ total absorptions: 0
+  ⚠ [drill-zero-yield] round 1 에서 6-stage 전부 0 absorptions — seed 거부 또는 엔진 미작동 의심
+     진단: HEXA_LOCAL/HEXA_REMOTE 설정, exec_validated 접근성, blowup 엔진 로그 (NEXUS_DRILL_DEBUG=1) 확인
+security warning: exec() argument contains shell metacharacters: i=0; while ! mkdir '/tmp/nexus_drill_cross_iter.log.lockd' 2>/dev/null; do i=$((i+1)); if [ $i -gt 200 ]; then rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'; continue; fi; sleep 0.05; done; trap 'rm -rf '/tmp/nexus_drill_cross_iter.log.lockd'' EXIT INT TERM; EXISTING=$([ -f '/tmp/nexus_drill_cross_iter.log' ] && cat '/tmp/nexus_drill_cross_iter.log' || echo ''); case "$EXISTING" in *'0,'*) echo REPLAY; exit 0;; esac; TS=$(date +%s); printf '%s,%s,%s\n' '0' 'millennium-yang-mills mass gap quantum g' "$TS" >> '/tmp/nexus_drill_cross_iter.log'; tail -n 10 '/tmp/nexus_drill_cross_iter.log' > '/tmp/nexus_drill_cross_iter.log'.tmp && mv '/tmp/nexus_drill_cross_iter.log'.tmp '/tmp/nexus_drill_cross_iter.log'; echo NEW
+  ⚠ [cross-iter-replay-warn] total=0 가 최근 drill 10 iter 중 동일 — inter-iter 결정성 의심
+     path=/tmp/nexus_drill_cross_iter.log  seed_head='millennium-yang-mills mass gap quantum g'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

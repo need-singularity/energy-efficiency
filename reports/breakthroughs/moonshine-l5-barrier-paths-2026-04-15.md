@@ -7,7 +7,7 @@ license: CC-BY-SA-4.0
 predecessors:
   - MILL-PX-A12 (atlas L5 BARRIER registered N?)
   - P11 Mk.V-α ENG-P11-{1,2,3} (47 공백 3 경로 설계)
-  - theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md (loop6 Abelian Sixfolds)
+  - reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md (loop6 Abelian Sixfolds)
 ---
 
 # BT-545 + BT-18 — Moonshine L5 BARRIER 해결 경로 탐색
@@ -219,9 +219,9 @@ LATT-PX-1 완료로 **v2.3 의 원래 15 deferred 항목 중 마지막 1건 달�
 ## §7 관련 파일
 
 - `theory/roadmap-v2/phase-11-mk5-alpha.md` (P11 Mk.V-α 설계, ENG-P11-{1,2,3})
-- `theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md` (BT-18 P9 partial)
-- `theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md` (L5 barrier 기존 분석)
-- `theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` §5 (Abelian Sixfolds)
+- `reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md` (BT-18 P9 partial)
+- `reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md` (L5 barrier 기존 분석)
+- `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` §5 (Abelian Sixfolds)
 - atlas MILL-PX-A12 (L5 barrier registered [N?])
 
 ---

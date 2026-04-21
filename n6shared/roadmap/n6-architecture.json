@@ -98,7 +98,7 @@
       "results": {
         "FORMAL-P13-1": { "title": "BSD n=6 Selmer 6-descent + CM conductor 36", "verdict": "EXACT 6건 (회복 완전)", "alien_index": 10, "file": "theory/proofs/formal-p13-1-bsd-n6-2026-04-15.md", "note": "Sel_6 CRT + conductor 36=n² + Mazur ℤ/6 + σ·τ=48 Cassels-Tate + CM j=0 unit group=6 + BKLPR 평균 σ(6)=12" },
         "EMBODY-P13-1": { "title": "QKD 6-state 프로토콜", "verdict": "DESIGN COMPLETE", "alien_index": 10, "file": "papers/embody-p13-1-qkd-6state-design-2026-04-15.md", "note": "Bloch 3×2=6 state, 1000km 1.43Gbps, Micius 대비 2×10⁵×" },
-        "TRANSCEND-P13-1": { "title": "BT-19 완전수 [N?]→NEAR [9] 승격", "verdict": "NEAR [9] 9.2/10", "alien_index": 9.2, "file": "theory/breakthroughs/bt-19-perfect-number-near-promotion-2026-04-15.md", "note": "수학 EXACT 4건 + Damasio 3층 의식 매핑 + 검증 프로토콜 3건" },
+        "TRANSCEND-P13-1": { "title": "BT-19 완전수 [N?]→NEAR [9] 승격", "verdict": "NEAR [9] 9.2/10", "alien_index": 9.2, "file": "reports/breakthroughs/bt-19-perfect-number-near-promotion-2026-04-15.md", "note": "수학 EXACT 4건 + Damasio 3층 의식 매핑 + 검증 프로토콜 3건" },
         "TRANSCEND-P13-2": { "title": "Discovery Engine Mk.III 15→6-axis", "verdict": "DESIGN COMPLETE", "alien_index": 10, "file": "reports/transcend-p13-2-discovery-engine-mk3-2026-04-15.md", "note": "6-axis × 2-fiber + HEXA-GATE Mk.III + OUROBOROS B_2, 6.0× throughput" }
       },
       "exhaustion_status": {

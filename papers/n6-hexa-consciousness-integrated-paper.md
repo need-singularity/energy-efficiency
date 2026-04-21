@@ -1627,3 +1627,10 @@ mk1 통합 paper  -> 단일 엔지니어링 팀이 칩/SoC 양쪽 기획 가능
 
 atlas.n6 상 본 통합 노드는 `consciousness-chip` 38/42 + `consciousness-soc` 0/24 =
 38/66 EXACT (57.6 %) 로 Mk.I seed 단계. Mk.II TestChip 검증에서 75 % 초과가 목표.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

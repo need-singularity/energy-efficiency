@@ -9,6 +9,12 @@ n6_anchor: sigma*tau=48
 parent: bt-1423-ai-quality-scale-mk5-2026-04-20
 ---
 
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
+
 # BT-1424 — AI 에이전트 서빙 Mk.V 승격
 
 ## 요약

@@ -123,3 +123,65 @@ G1~G5 = 10 전극 (5 쌍 × 좌우 = 2·5 = sopfr·φ). G6 = 6-DoF IMU = n. 총 
 - 가중치 합계: J₂ = 24 = σ·φ = n·τ EXACT
 - 렌즈 연결: 3/3 (brainwire_eeg_n6_dse + brain_map + brain_neural)
 - closure_grade: EXACT (5/6 축 + J₂ 합계 EXACT)
+
+
+## §1 WHY
+
+This section covers why for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §2 COMPARE
+
+This section covers compare for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §3 REQUIRES
+
+This section covers requires for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §4 STRUCT
+
+This section covers struct for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §6 EVOLVE
+
+This section covers evolve for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §7 VERIFY
+
+This section covers verify for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

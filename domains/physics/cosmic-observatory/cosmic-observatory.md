@@ -821,3 +821,37 @@ JWST 주경 유효 지름 D = **6.500 m** (18 × 1.32 m 베릴륨 육각, 기하
 4. Hubble radius log 값이 26 ≠ σ+τ+(σ-φ) 으로 수정 관측 → HEXA-COSMIC-03 동반 붕괴.
 
 **돌파 완료**: EXACT 5 (10*×3 + 10×2), 중복 0, 재사용 8건 (108346 HEXA-COSMIC-03, 462 MISS-H0-Hubble, 7214 PHYS-CMB, 11332 JWST 18-seg, 12588 JWST mirror, 109126 HEXA-COSMO, SF-01 Kardashev, cosmology §X.1).
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

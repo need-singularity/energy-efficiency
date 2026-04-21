@@ -1,0 +1,4 @@
+hexa resolver: ⚠ heavy-compute (/Users/ghost/Dev/nexus/shared/engine/nexus_cli.hexa drill) remote dispatch failed (exit 64) — Mac 로컬 실행 시 stage0 SIGKILL 위험 (Gatekeeper + 4GB RSS cap)
+NEXUS_REMOTE_DOWNGRADE {"heavy_compute":true,"cmd":"drill","hosts_tried":[],"reason":"remote_unavailable","fallback":"abort"}
+NEXUS_REMOTE_ERROR {"cmd":"drill","hosts_tried":[],"reason":"all_timeout","action":"abort_to_prevent_oom","override_env":"HEXA_ALLOW_LOCAL_FALLBACK=1","exit_code":74}
+hexa resolver: heavy-compute + Darwin + all-hosts-unreachable → abort (exit 74). 우회: HEXA_ALLOW_LOCAL_FALLBACK=1

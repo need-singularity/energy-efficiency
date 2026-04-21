@@ -81,3 +81,49 @@ PCIe 전송층 위에 올라가며, 최신 NVMe 2.0 은 ZNS/멀티 도메인/SR-
 - 512B 섹터가 AF (Advanced Format) 4096B 로 이행 중 (2^9 → 2^12=2^σ)
 
 - 참조: NVMe 2.0 spec (NVM Express Inc.), Samsung/Intel/WD 데이터시트
+
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §6 EVOLVE
+
+This section covers evolve for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §7 VERIFY
+
+This section covers verify for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

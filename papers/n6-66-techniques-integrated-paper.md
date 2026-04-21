@@ -1175,3 +1175,10 @@ source (3 논문) ──► 합본 (본 논문) ──► lint (markdown) ──
 **끝.** 본 논문은 P-011 "66 Techniques" 제품의 캐노니컬 통합 스펙이며,
 3 소스 논문 (17-exp / cross-paradigm / SOTA-SSM) 의 재조합 + §8~§21 엔지니어링 확장이다.
 모든 주장은 §7 stdlib 검증 + §7.10 FALSIFIER 8건으로 반증 가능성 확보.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

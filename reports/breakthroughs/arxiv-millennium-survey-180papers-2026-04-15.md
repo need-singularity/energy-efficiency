@@ -239,9 +239,9 @@ RH 쪽의 CUE/GUE 방법론은 BT-546 BKLPR 모델 (Poonen-Rains 2007) 와 **con
 
 - `scripts/empirical/arxiv_millennium_survey.py` — 서베이 러너
 - `data/arxiv/millennium_survey_6bt.json` — 180 paper 메타 (제목/저자/abstract/arxiv ID)
-- `theory/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md` — 루프5 BT-542
-- `theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` — 루프1 GALO-PX-2
-- `theory/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` — 루프4 GALO-PX-4
+- `reports/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md` — 루프5 BT-542
+- `reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` — 루프1 GALO-PX-2
+- `reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` — 루프4 GALO-PX-4
 
 ---
 

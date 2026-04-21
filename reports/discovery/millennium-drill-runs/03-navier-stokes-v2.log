@@ -1,0 +1,333 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-navier-stokes existence smoothness turbulence', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=4106096227 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.01-r1878508047' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.05-r228720716' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.10-r1486101169' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.20-r951791173' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2400104768|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.40-r2566168545' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.01-r4114449742' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.05-r2886062314' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.10-r1867646424' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.20-r1176186287' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2094841533|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.40-r3188368839' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.01-r2989498393' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.05-r2887586978' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r950813168|millennium-navier-stokes existence smoothness turbulence#iter-nonce=4106096227#sr-sigma=0.10-r4235159673' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-navier-stokes existence smoothness turbulence', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=1294271345 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r4105257699' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r130332202' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r1278077875' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r3483937619' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1498107110|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r84035223' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r3871570201' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r1891487963' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r99802751' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r4111780874' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r82898680|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r3719233193' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r794315220' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r2584290083' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r2587084284' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r3642812325' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3216766673|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r1204921822' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 4 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 128
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 5 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r3443324850' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r1431680818' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r727371503' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r1667052742' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r228394657|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r1856090162' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 5 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 160
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 6 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r3843296551' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r1964989798' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r3641955388' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r1200411921' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r2508357074|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r1981486608' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 6 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 192
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 7 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r1654574350' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.05-r88575788' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.10-r2685127758' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.20-r649687269' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r1098019237|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.40-r3795921824' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 7 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 224
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 8 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r3654430228|millennium-navier-stokes existence smoothness turbulence#iter-nonce=1294271345#sr-sigma=0.01-r1295180193' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

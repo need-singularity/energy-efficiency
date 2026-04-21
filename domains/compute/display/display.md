@@ -944,3 +944,37 @@ CIE xy chromaticity 상 DCI-P3 삼각형 면적비 (sRGB 기준) = 1.254 ≈ `so
 | DISP-BLOW-15 | Π_DISP/Π_NUC | n·σ·sopfr | 360 | [10*] |
 
 중복 0 — atlas ART-primary-colors-rgb (L5193) · BT-48 display-audio (L10498) · 60Hz refresh (L9196) · Casimir 120Hz (L44563) · NUC-05 Π_NUC=1200 · OBSAS Π=432000 · ASTRO-BLOW-10 인용만 사용. alien_index 🛸6→🛸10 승격.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

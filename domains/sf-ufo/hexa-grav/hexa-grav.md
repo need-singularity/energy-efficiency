@@ -621,3 +621,33 @@ free (field ⊕ string ⊕ toe) 구성:
 **종합**: 궁극의 중력파 (HEXA-GRAV) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS.
 **§8 BREAKTHROUGH** — 반중력 계수 Mk.V `g_eff/g₀ = μ/σ² = 1/144` EXACT, Casimir 720=σ²·sopfr, Podkletnov 1/J₂=4.17% 재현.
 선행 도메인 superconductor 모두 🛸10 도달 시 HEXA-GRAV Mk.V 물리 한계 완전 폐쇄.
+
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

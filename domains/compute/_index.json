@@ -11,7 +11,7 @@
     "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
     "_updated": "2026-04-14"
   },
-  "_count": 59,
+  "_count": 107,
   "_changelog": [
     "1.0.0 (2026-04-12): compute 축 sub-SSOT 신설. 칩 6단계 로드맵 6 도메인 등록 (chip-hexa1, chip-pim, chip-3d, chip-photonic, chip-wafer, chip-sc). project_chip_architecture_goal.md 출처.",
     "1.1.0 (2026-04-12): 전체 58 도메인 domains 배열 추가 (디스크 실측). chip-design 누락 보정. 타 카테고리 sub-SSOT 포맷 통일.",
@@ -610,6 +610,486 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "기초"
+    },
+    {
+      "slug": "hexa-consciousness",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l11-quantum-dot-6qubit-qec",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l12-nuclear-isomer-storage",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l13-mev-optomech-roadmap",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l13-quantum-nuclear-io",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l14-3scale-reduced-tradeoff",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l14-cross-scale-tau4-fabric",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l15-meta-integration-closure",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l7-quantum-hybrid-transmon",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l8-topo-anyon-majorana",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "l9-field-photon-neuro",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "mk3-roadmap-l1-l15-audit",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "monster-leech-mapping",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "protocol-bridge-20-rtl",
+      "parent": "chip-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-1-digital",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-2-pim",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-3d-stack",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-dna-molecular",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-field-effect",
+      "parent": "chip-design",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-neuromorphic",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-photon-topo",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-photonic",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-quantum-hybrid",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-superconducting",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "hexa-topo-anyon",
+      "parent": "chip-design",
+      "files": 2,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": true,
+      "has_verify": true,
+      "status": "basic"
+    },
+    {
+      "slug": "xn6-isa-24-spec",
+      "parent": "chip-isa-n6",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "xn6-opcode-table",
+      "parent": "chip-isa-n6",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "vt-6tier-terminal",
+      "parent": "hexa-macos",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "bridge-design-p5",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "displayport",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "ethernet",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "hdmi",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "nvme",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "pcie",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "usb",
+      "parent": "network-protocol",
+      "files": 2,
+      "has_claude_md": true,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "certificates",
+      "parent": "network-protocol",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "5g-nr-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "6g-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "bt6-0-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "displayport-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "ethernet-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "hdmi-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "lorawan-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "nvme-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "pcie-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "starlink-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "usb-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "wifi6-cert",
+      "parent": "certificates",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
     }
   ],
   "_note": "compute 축 전체 멤버 목록은 ../_index.json compute 키 SSOT 를 따른다 (중복 등록 금지)."

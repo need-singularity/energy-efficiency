@@ -16,7 +16,7 @@ verdict: PARTIAL (12/15)
 - **임무**: CHIP-P7-2 — Mk.III 칩 로드맵 L1~L15 총괄 정합성 검사 + 크로스 레벨 매트릭스
 - **대상 문서**: 12 개 (chip-architecture 본문 + 6 레벨 도메인 + 4 초안 스펙 + 1 비교표)
 - **산출물**:
-  1. `domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md` (상세 감사, 370+ 줄)
+  1. `domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md` (상세 감사, 370+ 줄)
   2. `reports/chip-roadmap-mk3-2026-04-15.md` (본 요약)
 
 ---
@@ -122,11 +122,11 @@ L14→L15: 1 (TODO)
 
 ## 8. 참고 문서
 
-- `domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md` — 상세 감사 (본 리포트 근거)
+- `domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md` — 상세 감사 (본 리포트 근거)
 - `domains/compute/chip-architecture/chip-architecture.md` — L0~L4 기본
-- `domains/compute/chip-architecture/monster-leech-mapping-2026-04-14.md` — L10
-- `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md` — L11
-- `domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md` — L12
+- `domains/compute/chip-architecture/monster-leech-mapping/monster-leech-mapping.md` — L10
+- `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` — L11
+- `domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` — L12
 - `reports/chip_comparison_l1_l10.md` — L7~L9 유일 근거 (2026-04-12)
 - `domains/compute/chip-hexa1/ ... chip-sc/` — L1~L6 도메인 .md 6 개
 

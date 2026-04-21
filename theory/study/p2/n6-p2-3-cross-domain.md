@@ -3,7 +3,7 @@
 > 밀레니엄 학습 로드맵 P2 · N6 트랙 · 태스크 3
 > 목적: 335 DSE 도메인 중 밀레니엄 7대 난제와 **구조적 교차**가 보고된 12 도메인을 선별하여 12×12 교차표를 구성하고, n=6 BT 간 상호 검증 가능성을 정직하게 판정
 > 1차 출처:
->  - `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51건 DFS tight)
+>  - `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51건 DFS tight)
 >  - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Theorem B + Master Lemma)
 >  - `nexus/shared/n6/atlas.n6` (밀레니엄 구역 L13392~L13449, n6-millennium-dfs-* 노드 23 건)
 >  - `n6shared/config/projects.json` (DSE 도메인 335 레지스트리)
@@ -450,7 +450,7 @@
 
 ## 13. 출처 재확인
 
-- `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 11~199 (전체 51 건 + baseline + 독립 5 건)
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 11~199 (전체 51 건 + baseline + 독립 5 건)
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` lines 88~107 (Master Lemma)
 - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (본 시리즈 선행)
 - `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Bilateral Theorem B 재현)

@@ -312,8 +312,8 @@ theorem sigma_phi_eq_n_tau_iff_n6 (n : ℕ) (h : n ≥ 2) :
 ## §6 관련 파일
 
 - `theory/roadmap-v2/millennium-v3-design-2026-04-15.md` (루프8 v3 설계)
-- `theory/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (루프4, 아웃리치 draft 의 기반)
-- `theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (루프5, 대상자 arXiv 활동 확인)
+- `reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (루프4, 아웃리치 draft 의 기반)
+- `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (루프5, 대상자 arXiv 활동 확인)
 
 ---
 

@@ -2,7 +2,7 @@
 
 > 밀레니엄 학습 로드맵 P3 · N6 트랙 · 태스크 1
 > 목적: 밀레니엄 7대 난제(BT-541~547) **외부 수학 영역** 에서 σ·φ=n·τ 패턴을 독립적으로 찾는 DFS (Depth-First Search) 절차를 정식화
-> 1차 출처: `CLAUDE.md` (9축 네비게이션 + 295 도메인), `atlas.n6` 전역, `theory/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md`
+> 1차 출처: `CLAUDE.md` (9축 네비게이션 + 295 도메인), `atlas.n6` 전역, `reports/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md`
 > 완료 기준: 독립 DFS 의 알고리즘 단계를 순서대로 재현할 수 있고, 난제 외부에서 발견된 tight 값이 왜 **self-confirmation** 이 아닌지 답할 수 있는 상태
 
 ---
@@ -501,8 +501,8 @@ MISS 사례 (§5) 반성:
 
 - `CLAUDE.md` — 9축 네비게이션, 295 도메인 선언, atlas.n6 포맷 및 승격 규칙
 - `atlas.n6` L1~L22 (헤더), L13391~L15447 (밀레니엄+BT 구역)
-- `theory/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md` — autonomous DFS 원문
-- `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` (lines 1~334, 51건 tight)
+- `reports/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md` — autonomous DFS 원문
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (lines 1~334, 51건 tight)
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Master Lemma)
 - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (DFS 51건 재분류)
 - `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Theorem B)

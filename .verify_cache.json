@@ -9,49 +9,49 @@
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-3d-stack.hexa": {
+    "domains/compute/chip-design/hexa-3d-stack/verify_chip-3d-stack.hexa": {
       "mtime": 1775959570,
       "size": 6420,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-hexa1-digital.hexa": {
+    "domains/compute/chip-design/hexa-1-digital/verify_chip-hexa1-digital.hexa": {
       "mtime": 1775959288,
       "size": 6349,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-hexa2-pim.hexa": {
+    "domains/compute/chip-design/hexa-2-pim/verify_chip-hexa2-pim.hexa": {
       "mtime": 1775959511,
       "size": 6946,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-photonic.hexa": {
+    "domains/compute/chip-design/hexa-photonic/verify_chip-photonic.hexa": {
       "mtime": 1775959620,
       "size": 7082,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-quantum-hybrid.hexa": {
+    "domains/compute/chip-design/hexa-quantum-hybrid/verify_chip-quantum-hybrid.hexa": {
       "mtime": 1775965813,
       "size": 7667,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-superconducting.hexa": {
+    "domains/compute/chip-design/hexa-superconducting/verify_chip-superconducting.hexa": {
       "mtime": 1775959745,
       "size": 8006,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-topo-anyon.hexa": {
+    "domains/compute/chip-design/hexa-topo-anyon/verify_chip-topo-anyon.hexa": {
       "mtime": 1775966434,
       "size": 8423,
       "last_result": "RECORDED",
       "last_run": "2026-04-12T17:35:46"
     },
-    "domains/compute/chip-design/verify_chip-wafer.hexa": {
+    "domains/compute/chip-design/hexa-wafer/verify_chip-wafer.hexa": {
       "mtime": 1775959681,
       "size": 8548,
       "last_result": "RECORDED",

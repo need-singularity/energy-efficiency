@@ -150,9 +150,9 @@ theorem six_is_perfect : sigma 6 = 2 * 6 := by decide
 - Lean4: `lean4-n6/N6/Verification.lean` + `lean4-n6/Main.lean`
 - Script: `scripts/empirical/cremona_kappa_bootstrap.py`
 - Report: `reports/v3/kappa_bootstrap_2026-04-16.json`
-- 전 T3: `theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
-- 전 E5: `theory/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md`
-- 전 M3: `theory/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md`
+- 전 T3: `reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
+- 전 E5: `reports/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md`
+- 전 M3: `reports/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md`
 
 ---
 

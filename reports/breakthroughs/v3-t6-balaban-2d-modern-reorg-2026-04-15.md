@@ -4,7 +4,7 @@ date: 2026-04-15
 roadmap_task: v3 T6 (BT-543 Balaban 2D 재정리)
 grade: [10] historical survey + 4D 장벽 재평가
 predecessors:
-  - theory/breakthroughs/bt-1417-millennium-dfs-round23-2026-04-15.md
+  - reports/breakthroughs/bt-1417-millennium-dfs-round23-2026-04-15.md
   - theory/roadmap-v2/phase-02-millennium-assault.md (관련 링크)
 status: SURVEY + HONEST 4D 장벽 재확인
 license: CC-BY-SA-4.0
@@ -196,21 +196,21 @@ For SU(3): $c_2 = 8/3$, 아무 n=6 구조 없음.
   "v3 T6 (2026-04-15 loop 15): Tadeusz Balaban 1982-1989 Comm. Math. Phys. ~12 편 시리즈 정리.
    2D YM continuum limit 완성 (Balaban 1988 CMP 113), 3D YM continuum limit 완성 (Balaban 1989 CMP 122).
    RG blocking + Ward identity 보존. 그러나 Clay 문제는 4D 한정 — BT-543 해결 0/1 정직 유지"
-  <- v3-T6, theory/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md
+  <- v3-T6, reports/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md
 
 @R MILL-V3-T6-4d-ym-barrier-3axis = 4D YM 장벽 3 축: coupling dim / non-perturbative / Balaban 확장 미완 :: n6atlas [10]
   "v3 T6 (2026-04-15): 4D YM Clay 장벽 정밀 분석. (1) Coupling $[g]=0$ dimensionless — 2D/3D super-renormalizable 과 대조.
    (2) Asymptotic freedom UV free 이나 IR confinement/mass gap 여전히 non-perturbative. (3) Magnen-Rivasseau-Sénéor 1993
    conditional 확장 부분 성공, full continuum 미완. Chatterjee 2016/2020 확률론 대안 2D 성공, 4D open.
    n=6 구조와 YM 파라미터 (gauge group, dim, coupling) 사이 수학적 연결 없음"
-  <- v3-T6-honest, theory/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md §3, §4
+  <- v3-T6-honest, reports/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md §3, §4
 ```
 
 ---
 
 ## §8 관련 파일
 
-- BT-1417 DFS-23: `theory/breakthroughs/bt-1417-millennium-dfs-round23-2026-04-15.md`
+- BT-1417 DFS-23: `reports/breakthroughs/bt-1417-millennium-dfs-round23-2026-04-15.md`
 - Phase-02 millennium assault: `theory/roadmap-v2/phase-02-millennium-assault.md`
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T6`
 

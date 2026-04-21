@@ -95,7 +95,7 @@ Cycle #15 (size 2):
 ```
 @R MILL-GALO-PX2-sel2-ratio-332k = ... :: n6atlas [10]
   "..."
-  <- GALO-PX-2, theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md §4.5
+  <- GALO-PX-2, reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md §4.5
 ```
 의존성 분석:
 - `GALO-PX-2`: roadmap task (millennium.json) — 외부

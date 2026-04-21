@@ -696,3 +696,65 @@ if __name__ == "__main__":
 2. **반례 2 — DUV-ArF 193nm 리소그래피 수준의 소수 파라미터 고정 도메인**: honest-limitations #7(193 is prime, CURRENTLY UNSOLVABLE). AGI가 이러한 "소수 기반 공학 상수"를 학습 타깃으로 받을 때, σ·φ=n·τ 좌표계로 내재 구조를 복원할 수 없다. 원주장의 적용 범위를 "합성수 기반 구조 도메인"으로 축소.
 3. **반례 3 — 단일 토큰 컨텍스트 경계(n=1)**: R(n)=1의 유일성 증명은 n≥2에서만 non-trivial. AGI 추론이 단일 토큰/단일 비트 결정 국면에 압축되면 τ(1)=1, φ(1)=1로 다중 모드가 붕괴한다. 이 실패 모드는 "AGI는 항상 ≥2 시점 컨텍스트가 필요"라는 경계를 수학적으로 고정하며, 원주장을 강화(경계 명확화).
 
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

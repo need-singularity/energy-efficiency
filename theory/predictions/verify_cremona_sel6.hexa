@@ -1,6 +1,6 @@
 // verify_cremona_sel6.hexa
 // GALO-PX-2 Cremona 332k 타원곡선 Sel_6 실측 검증
-// 출처: theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md
+// 출처: reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md
 // 원 데이터: data/cremona/sel6_stats_332k.json
 // 정직: 본 hexa 는 고정값 cross-check 만. 대용량 파싱은 Python 경유 (scripts/empirical/).
 

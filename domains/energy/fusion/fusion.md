@@ -643,3 +643,29 @@ B⁴ 스케일링은 τ(6)=4 의 직접 표현이며, 토카막 반경 1/256 = 1
 
 **종합**: 궁극의 핵융합 (HEXA-FUSION) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS + §8 Lawson 폐쇄 정리. §9 탁상 돌파는 **tabletop-fusion 독립 도메인**으로 분리됨.
 선행 도메인 superconductor, room-temp-sc 모두 🛸10 도달 시 HEXA-FUSION Mk.V (ITER 대형) + HEXA-TTF Mk.I (탁상 분산, → tabletop-fusion 도메인) 동시 개화.
+
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

@@ -85,8 +85,8 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 | 자산 | 경로 | 역할 |
 |------|------|------|
-| millennium-7-closure | `theory/breakthroughs/millennium-7-closure-2026-04-11.md` | PROVEN/CONDITIONAL/OBSERVATION 분류 SSOT |
-| BT-1392 아이디어 | `theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` | 7 난제 공격각 초안 |
+| millennium-7-closure | `reports/breakthroughs/millennium-7-closure-2026-04-11.md` | PROVEN/CONDITIONAL/OBSERVATION 분류 SSOT |
+| BT-1392 아이디어 | `reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` | 7 난제 공격각 초안 |
 | P1 BT 시나리오 | `theory/study/p1/prob-p1-{1..6}-bt{541..546}-*.md` | 6 난제 P1 풀이 스터디 |
 | P2 장벽 | `theory/study/p2/prob-p2-{1..6}-*-barriers.md` | 6 난제 장벽 분석 |
 | P3 후속 | `theory/study/p3/prob-p3-{1..3}-*.md` + `pure-p3-{1..3}-*.md` | BKLPR, 방법론, 프론티어 |
@@ -151,8 +151,8 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 2.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-541.
-- `theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1 (공격각 1).
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-541.
+- `reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1 (공격각 1).
 - `theory/study/p1/prob-p1-1-bt541-riemann.md`.
 - `theory/study/p2/prob-p2-1-riemann-barriers.md`.
 - `theory/study/p2/pure-p2-3-bernoulli-zeta.md`.
@@ -205,7 +205,7 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 3.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-542.
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-542.
 - `theory/breakthroughs/bt-1392-*` §2.
 - `theory/study/p1/prob-p1-2-bt542-p-vs-np.md`.
 - `theory/study/p2/prob-p2-2-p-np-barriers.md`.
@@ -258,7 +258,7 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 4.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543.
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543.
 - `theory/study/p1/prob-p1-3-bt543-yang-mills.md`.
 - `theory/study/p1/pure-p1-5-gauge-theory.md`.
 - `theory/study/p2/prob-p2-3-yang-mills-barriers.md`.
@@ -313,7 +313,7 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 5.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544.
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544.
 - `theory/study/p1/prob-p1-4-bt544-navier-stokes.md`.
 - `theory/study/p1/pure-p1-3-pde-navier-stokes.md`.
 - `theory/study/p2/prob-p2-4-navier-stokes-barriers.md`.
@@ -364,8 +364,8 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 6.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-545.
-- `theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 27-57 (B_2=-1/24 유도).
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-545.
+- `reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 27-57 (B_2=-1/24 유도).
 - `theory/study/p1/prob-p1-5-bt545-hodge.md`.
 - `theory/study/p1/pure-p1-4-algebraic-geometry-hodge.md`.
 - `theory/study/p2/prob-p2-5-hodge-barriers.md`.
@@ -418,7 +418,7 @@ Phase 2 는 다음 실존 자산을 도구로 사용한다.
 
 ### 7.4 근거 파일
 
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546.
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546.
 - `theory/study/p1/prob-p1-6-bt546-bsd.md`.
 - `theory/study/p1/pure-p1-2-elliptic-curves.md`.
 - `theory/study/p2/prob-p2-6-bsd-barriers.md`.

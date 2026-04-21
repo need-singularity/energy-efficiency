@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `geology` domain (axis: `infra`) in the n6-architecture repository.
+Canonical documentation: `domains/infra/geology/geology.md`.
+Registry: `domains/_index.json`.
+
 # geology — infra 도메인
 
 files:  geology.md (15섹션, 검증코드 인라인)

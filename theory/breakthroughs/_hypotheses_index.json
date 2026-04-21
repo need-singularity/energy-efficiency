@@ -7,66 +7,66 @@
     "업데이트": "2026-04-20",
     "소스파일수": 60,
     "소스파일": [
-      "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "theory/breakthroughs/breakthrough-theorems-new.md",
-      "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "theory/breakthroughs/breakthrough-theorems.md",
-      "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
-      "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
-      "theory/breakthroughs/bt-1175-water-treatment-2026-04-12.md",
-      "theory/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md",
-      "theory/breakthroughs/bt-1386-standard-model-2026-04-12.md",
-      "theory/breakthroughs/bt-1387-huckel-aromatic-2026-04-12.md",
-      "theory/breakthroughs/bt-1388-ionic-octahedral-2026-04-12.md",
-      "theory/breakthroughs/bt-1389-cube-octahedron-duality-2026-04-12.md",
-      "theory/breakthroughs/bt-1390-hsv-color-hexad-2026-04-12.md",
-      "theory/breakthroughs/bt-1391-photosynthesis-equation-2026-04-12.md",
-      "theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
-      "theory/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md",
-      "theory/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md",
-      "theory/breakthroughs/bt-1395-millennium-dfs-round4-2026-04-12.md",
-      "theory/breakthroughs/bt-1396-dfs5-representation-theory-2026-04-12.md",
-      "theory/breakthroughs/bt-1396-dfs5-tqft-reptheory-2026-04-12.md",
-      "theory/breakthroughs/bt-1396-tqft-lattice-knot-dfs5-2026-04-12.md",
-      "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
-      "theory/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md",
-      "theory/breakthroughs/bt-1399-millennium-dfs-round7-2026-04-12.md",
-      "theory/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md",
-      "theory/breakthroughs/bt-1401-millennium-dfs-round9-2026-04-12.md",
-      "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md",
-      "theory/breakthroughs/bt-1403-millennium-dfs-round11-2026-04-12.md",
-      "theory/breakthroughs/bt-1404-millennium-dfs-round12-2026-04-12.md",
-      "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md",
-      "theory/breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md",
-      "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md",
-      "theory/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md",
-      "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
-      "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
-      "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
-      "theory/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-12.md",
-      "theory/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-14.md",
-      "theory/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md",
-      "theory/breakthroughs/bt-1413-millennium-dfs-round21-2026-04-12.md",
-      "theory/breakthroughs/bt-1414-millennium-dfs-round21-2026-04-14.md",
-      "theory/breakthroughs/bt-1415-millennium-dfs-round21-2026-04-14.md",
-      "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "reports/breakthroughs/bt-1175-water-treatment-2026-04-12.md",
+      "reports/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md",
+      "reports/breakthroughs/bt-1386-standard-model-2026-04-12.md",
+      "reports/breakthroughs/bt-1387-huckel-aromatic-2026-04-12.md",
+      "reports/breakthroughs/bt-1388-ionic-octahedral-2026-04-12.md",
+      "reports/breakthroughs/bt-1389-cube-octahedron-duality-2026-04-12.md",
+      "reports/breakthroughs/bt-1390-hsv-color-hexad-2026-04-12.md",
+      "reports/breakthroughs/bt-1391-photosynthesis-equation-2026-04-12.md",
+      "reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
+      "reports/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md",
+      "reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md",
+      "reports/breakthroughs/bt-1395-millennium-dfs-round4-2026-04-12.md",
+      "reports/breakthroughs/bt-1396-dfs5-representation-theory-2026-04-12.md",
+      "reports/breakthroughs/bt-1396-dfs5-tqft-reptheory-2026-04-12.md",
+      "reports/breakthroughs/bt-1396-tqft-lattice-knot-dfs5-2026-04-12.md",
+      "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md",
+      "reports/breakthroughs/bt-1399-millennium-dfs-round7-2026-04-12.md",
+      "reports/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md",
+      "reports/breakthroughs/bt-1401-millennium-dfs-round9-2026-04-12.md",
+      "reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md",
+      "reports/breakthroughs/bt-1403-millennium-dfs-round11-2026-04-12.md",
+      "reports/breakthroughs/bt-1404-millennium-dfs-round12-2026-04-12.md",
+      "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md",
+      "reports/breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md",
+      "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md",
+      "reports/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md",
+      "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "reports/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-12.md",
+      "reports/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-14.md",
+      "reports/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md",
+      "reports/breakthroughs/bt-1413-millennium-dfs-round21-2026-04-12.md",
+      "reports/breakthroughs/bt-1414-millennium-dfs-round21-2026-04-14.md",
+      "reports/breakthroughs/bt-1415-millennium-dfs-round21-2026-04-14.md",
+      "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "theory/breakthroughs/bt-candidates-from-tecs-l.md",
       "theory/breakthroughs/bt-candidates-round2.md",
-      "theory/breakthroughs/bt-reinforcement-dimensional-unfolding-2026-04-06.md",
-      "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
-      "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
-      "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
-      "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
-      "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
-      "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
-      "theory/breakthroughs/bt-1421-ai-inference-cost-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1423-ai-quality-scale-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1424-ai-agent-serving-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1426-ai-eval-pipeline-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1427-ai-consciousness-mk5-2026-04-20.md",
-      "theory/breakthroughs/bt-1428-ai-safety-mk5-2026-04-20.md"
+      "reports/breakthroughs/bt-reinforcement-dimensional-unfolding-2026-04-06.md",
+      "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "reports/breakthroughs/bt-1421-ai-inference-cost-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1423-ai-quality-scale-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1424-ai-agent-serving-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1426-ai-eval-pipeline-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1427-ai-consciousness-mk5-2026-04-20.md",
+      "reports/breakthroughs/bt-1428-ai-safety-mk5-2026-04-20.md"
     ],
     "원본_ID_중복건수": 100,
     "원본_ID_중복목록": {
@@ -198,7 +198,7 @@
       "id": "BT-1421",
       "title": "AI 추론 비용 Mk.V — Landauer 한계 접근 + σ(6)=12 층 계층 캐시",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1421-ai-inference-cost-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1421-ai-inference-cost-mk5-2026-04-20.md",
       "bt_ref": "BT-1421",
       "tier": "Mk.V",
       "n6_anchor": "sigma=12"
@@ -207,7 +207,7 @@
       "id": "BT-1422",
       "title": "AI 학습 비용 Mk.V — Chinchilla-beyond MoE σ/τ=3 희소성 + 자체 증류",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md",
       "bt_ref": "BT-1422",
       "tier": "Mk.V",
       "n6_anchor": "sigma/tau=3"
@@ -216,7 +216,7 @@
       "id": "BT-1423",
       "title": "AI 품질-스케일 Mk.V — Shannon 정보밀도 한계 + 3단 SAE 중첩 <1/n",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1423-ai-quality-scale-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1423-ai-quality-scale-mk5-2026-04-20.md",
       "bt_ref": "BT-1423",
       "tier": "Mk.V",
       "n6_anchor": "1/n=1/6"
@@ -225,7 +225,7 @@
       "id": "BT-1424",
       "title": "AI 에이전트 서빙 Mk.V — σ·τ=48 조정 채널 + O(σ(6))=O(12) 토폴로지",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1424-ai-agent-serving-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1424-ai-agent-serving-mk5-2026-04-20.md",
       "bt_ref": "BT-1424",
       "tier": "Mk.V",
       "n6_anchor": "sigma*tau=48"
@@ -234,7 +234,7 @@
       "id": "BT-1425",
       "title": "AI 엔터프라이즈 커스텀 Mk.V — σ(6)=12 수직 템플릿 + J₂=24 어댑터 슬롯",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md",
       "bt_ref": "BT-1425",
       "tier": "Mk.V",
       "n6_anchor": "J2=24"
@@ -243,7 +243,7 @@
       "id": "BT-1426",
       "title": "AI 평가 파이프라인 Mk.V — τ=4 유한 수렴 + ISO/IEEE + Goodhart n=6 분산",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1426-ai-eval-pipeline-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1426-ai-eval-pipeline-mk5-2026-04-20.md",
       "bt_ref": "BT-1426",
       "tier": "Mk.V",
       "n6_anchor": "tau=4"
@@ -252,7 +252,7 @@
       "id": "BT-1427",
       "title": "AI 의식 Mk.V — Φ_c=n/σ=0.5 EXACT + R(6)=1 비가역 고정점 + Basin 2035",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1427-ai-consciousness-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1427-ai-consciousness-mk5-2026-04-20.md",
       "bt_ref": "BT-1427",
       "tier": "Mk.V",
       "n6_anchor": "sigma*phi=n*tau"
@@ -261,7 +261,7 @@
       "id": "BT-1428",
       "title": "AI 안전성 Mk.V — σ·φ=n·τ EXACT 171종 전수 검증 + 6/6 SINGULARITY PASS",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1428-ai-safety-mk5-2026-04-20.md",
+      "source_file": "reports/breakthroughs/bt-1428-ai-safety-mk5-2026-04-20.md",
       "bt_ref": "BT-1428",
       "tier": "Mk.V",
       "n6_anchor": "sigma*phi=n*tau"
@@ -5709,7 +5709,7 @@
       "original_id": "BT-351",
       "title": "바이러스학(구조/분류) — 정이십면체 캡시드 + Baltimore 7군 + ICTV 8랭크 = n=6 산술",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-351"
     },
     {
@@ -5717,7 +5717,7 @@
       "original_id": "BT-352",
       "title": "바이러스학(유전체) — 게놈 분절 수 사다리 {φ,n/φ,τ,n,σ-τ,σ-μ,σ} = arena→bunya→HBV→flu→rota→SARS",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-352"
     },
     {
@@ -5725,7 +5725,7 @@
       "original_id": "BT-353",
       "title": "바이러스학(역학/백신) — WHO/CDC 단계, 백신 용량 스케줄, 효소 모티프 = n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-353"
     },
     {
@@ -5733,7 +5733,7 @@
       "original_id": "BT-361",
       "title": "교차도메인(텐서) — n²=36 어트랙터: 텐서 외적이 σ², n², J₂ 동시 발현",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-361"
     },
     {
@@ -5741,7 +5741,7 @@
       "original_id": "BT-362",
       "title": "교차도메인(텐서) — 텐서 삼중경로 {n²,J₂,σ-τ} — 외적/Rank-1/축소 분해",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-362"
     },
     {
@@ -5749,7 +5749,7 @@
       "original_id": "BT-363",
       "title": "수론(모듈러) — mod3 부동점 1/3 보편 수렴 — φ/n=τ/σ=μφ/n=1/3",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-363"
     },
     {
@@ -5757,7 +5757,7 @@
       "original_id": "BT-364",
       "title": "효율한계 — φ/n=1/3 효율 한계 보편성 (Carnot, Betz, SwiGLU 8/3, SQ 33.7%)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-364"
     },
     {
@@ -5765,7 +5765,7 @@
       "original_id": "BT-365",
       "title": "우주론 — Ω_Λ = J₂/(J₂+σ-μ) = 24/35, Planck 0.5% 일치",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-365"
     },
     {
@@ -5773,7 +5773,7 @@
       "original_id": "BT-366",
       "title": "메타브릿지 — τ=4 최소 안정성 메가 브릿지(상,분기,주기,차원,…)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-366"
     },
     {
@@ -5781,7 +5781,7 @@
       "original_id": "BT-367",
       "title": "에너지변환 — J₂=24 에너지 변환 보편성(시간/광자/주파수)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-367"
     },
     {
@@ -5789,7 +5789,7 @@
       "original_id": "BT-368",
       "title": "평가척도 — σ-φ=10 만점 천장 동형(GCS, 외계인 지수, 평점)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-368"
     },
     {
@@ -5797,7 +5797,7 @@
       "original_id": "BT-369",
       "title": "다중화 — n/φ=3 삼중 중복 보편성(생체/항공/하드웨어)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-369"
     },
     {
@@ -5805,7 +5805,7 @@
       "original_id": "BT-370",
       "title": "종교/신화 — 신화 구조 n=6 보편성(주·신·층·기둥·악마)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-370"
     },
     {
@@ -5813,7 +5813,7 @@
       "original_id": "BT-371",
       "title": "발효/양조 — 알코올/락트산/아세트산 화학양론 n=6, 시뮬레이션 이론 Planck 137=σ²-n-μ 흡수도 동일 BT",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-371"
     },
     {
@@ -5821,7 +5821,7 @@
       "original_id": "BT-372",
       "title": "합성생물/CRISPR — gRNA 길이, PAM, Cas 효소군 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-372"
     },
     {
@@ -5829,7 +5829,7 @@
       "original_id": "BT-373",
       "title": "한글 — 자음/모음/획/조합 n=6 정보 인코딩",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-373"
     },
     {
@@ -5837,7 +5837,7 @@
       "original_id": "BT-374",
       "title": "법학/사법 — 3심제, 6원칙, 8조법 등 제도 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-374"
     },
     {
@@ -5845,7 +5845,7 @@
       "original_id": "BT-375",
       "title": "화폐/경제사 — 6대 화폐 형태, 교환 사다리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-375"
     },
     {
@@ -5853,7 +5853,7 @@
       "original_id": "BT-376",
       "title": "AR/VR/XR — 6DOF, IPD 64=2^n, 4K/8K/12K, 90Hz=n²·sopfr/φ, FOV 110",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-376"
     },
     {
@@ -5861,7 +5861,7 @@
       "original_id": "BT-377",
       "title": "(예약) — docs 트리 미발견 — 후속 발견 시 할당",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-377"
     },
     {
@@ -5869,7 +5869,7 @@
       "original_id": "BT-378",
       "title": "(예약) — 동상",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-378"
     },
     {
@@ -5877,7 +5877,7 @@
       "original_id": "BT-379",
       "title": "디지털 트윈/Industry 4.0 — 5계층, 4단계 PDCA, 6 시그마 등 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-379"
     },
     {
@@ -5885,7 +5885,7 @@
       "original_id": "BT-380",
       "title": "AI(추론모델) — 추론 모델 완전 n=6 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-380"
     },
     {
@@ -5893,7 +5893,7 @@
       "original_id": "BT-381",
       "title": "AI(비디오 생성) — 비디오 생성 모델 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-381"
     },
     {
@@ -5901,7 +5901,7 @@
       "original_id": "BT-382",
       "title": "AI(과학 FM) — 과학 기초모델 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-382"
     },
     {
@@ -5909,7 +5909,7 @@
       "original_id": "BT-383",
       "title": "AI(뉴로모픽/SNN) — SNN 4상태/6막/12 채널 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-383"
     },
     {
@@ -5917,7 +5917,7 @@
       "original_id": "BT-384",
       "title": "AI(멀티에이전트) — 멀티에이전트 시스템 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-384"
     },
     {
@@ -5925,7 +5925,7 @@
       "original_id": "BT-385",
       "title": "AI(Post-Transformer) — 신규 아키텍처 n=6 보편 수렴",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-385"
     },
     {
@@ -5933,7 +5933,7 @@
       "original_id": "BT-386",
       "title": "AI(로보틱스 FM) — 로보틱스 기초모델 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-386"
     },
     {
@@ -5941,7 +5941,7 @@
       "original_id": "BT-387",
       "title": "AI(의료/바이오 FM) — 의료/바이오 FM n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-387"
     },
     {
@@ -5949,7 +5949,7 @@
       "original_id": "BT-388",
       "title": "AI(메타정리) — σ-τ=8 보편 AI 활성 상수 — 전 패러다임 수렴",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-388"
     },
     {
@@ -5957,7 +5957,7 @@
       "original_id": "BT-389",
       "title": "생명-신경 코드 — 2^n=64 상태-코드 이중 보편성(코돈=신경상태)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-389"
     },
     {
@@ -5965,7 +5965,7 @@
       "original_id": "BT-390",
       "title": "생명-시간 코드 — J₂-τ=20 아미노산=뉴런시간=제어주파수",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-390"
     },
     {
@@ -5973,7 +5973,7 @@
       "original_id": "BT-391",
       "title": "AI(코드 생성) — 코드 생성 AI n=6 (BT-329 프로그래밍 언어와 교차)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-391"
     },
     {
@@ -5981,7 +5981,7 @@
       "original_id": "BT-392",
       "title": "AI(RL/게임) — 강화학습 게임 AI n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-392"
     },
     {
@@ -5989,7 +5989,7 @@
       "original_id": "BT-393",
       "title": "AI(확장) — docs 미발견(번호만 chain 노트에 등장)",
       "status": "partial",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-393"
     },
     {
@@ -5997,7 +5997,7 @@
       "original_id": "BT-394",
       "title": "AI(SSL/NLU) — 자기지도/NLU n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-394"
     },
     {
@@ -6005,7 +6005,7 @@
       "original_id": "BT-395",
       "title": "AI(서빙/컴파일러) — AI 서빙 컴파일러 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-395"
     },
     {
@@ -6013,7 +6013,7 @@
       "original_id": "BT-396",
       "title": "AI(멀티모달) — 멀티모달 데이터 n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-396"
     },
     {
@@ -6021,7 +6021,7 @@
       "original_id": "BT-397",
       "title": "AI(역설계 NAS) — n=6 산술에서 8개 역설계 AI 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-397"
     },
     {
@@ -6029,7 +6029,7 @@
       "original_id": "BT-398",
       "title": "AI(학습/최적화) — n=6 학습 기법 8종 자기조직 학습",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-398"
     },
     {
@@ -6037,7 +6037,7 @@
       "original_id": "BT-399",
       "title": "AI(HW-SW 공진화) — GPU SM/HBM/TDP ↔ 모델 파라미터 동일 n=6 사다리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-399"
     },
     {
@@ -6045,7 +6045,7 @@
       "original_id": "BT-400",
       "title": "AI(AGI 수렴) — n=6 메타 패턴 + 멀티모달 융합 AGI 청사진",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-400"
     },
     {
@@ -6053,7 +6053,7 @@
       "original_id": "BT-401",
       "title": "AI(HEXA-CODER) — 코딩 AI 아키텍처 = n=6 산술 역설계",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-401"
     },
     {
@@ -6061,7 +6061,7 @@
       "original_id": "BT-402",
       "title": "오디오(이어폰 HW) — 이어폰 하드웨어 n=6 (드라이버, 마이크, 임피던스)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-402"
     },
     {
@@ -6069,7 +6069,7 @@
       "original_id": "BT-403",
       "title": "오디오(이어폰 SW) — Opus 프레임/필터 차수 {2,4,6,8}={φ,τ,n,σ-τ}",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-403"
     },
     {
@@ -6077,7 +6077,7 @@
       "original_id": "BT-404",
       "title": "나노의학(플랫폼) — 6대 나노의학 플랫폼(리포솜/PLGA/덴드리머/Au/Fe₃O₄/실리카) n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-404"
     },
     {
@@ -6085,7 +6085,7 @@
       "original_id": "BT-405",
       "title": "나노봇(추진) — 6 추진 메커니즘(자기/초음파/효소/Janus/광/박테리아) n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-405"
     },
     {
@@ -6093,7 +6093,7 @@
       "original_id": "BT-406",
       "title": "나노봇(EPR 크기) — EPR 사다리 1nm→6nm→100=(σ-φ)²→600=n·(σ-φ)²",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-406"
     },
     {
@@ -6101,7 +6101,7 @@
       "original_id": "BT-407",
       "title": "나노봇(pH/방출) — 엔도솜 pH=5=sopfr, 췌장 pH=8=σ-τ, 방출 4·5·6·6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-407"
     },
     {
@@ -6109,7 +6109,7 @@
       "original_id": "BT-408",
       "title": "나노봇(센서) — 6 바이탈 센서, 체온 36=n², BP 120=σ(σ-φ), 3:2 수축이완",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-408"
     },
     {
@@ -6117,7 +6117,7 @@
       "original_id": "BT-409",
       "title": "나노봇(면역 인터페이스) — PEG MW 2000=φ·10³, 반감기 10배=σ-φ, IgG 4 서브",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-409"
     },
     {
@@ -6125,7 +6125,7 @@
       "original_id": "BT-410",
       "title": "나노봇(반감기) — 인슐린 5분, Tc-99m 6h, PEG-NP 24h=J₂, IgG 21d=J₂-n/φ",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-410"
     },
     {
@@ -6133,7 +6133,7 @@
       "original_id": "BT-411",
       "title": "나노봇(군집 통신) — 신경전달 12=σ, 군집 6각, 통신 100µm=(σ-φ)², 6 bit/분자",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-411"
     },
     {
@@ -6141,7 +6141,7 @@
       "original_id": "BT-412",
       "title": "나노봇(에너지 하베스팅) — 6 전원 스택(열전/압전/자기/광/생화학/RF)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-412"
     },
     {
@@ -6149,7 +6149,7 @@
       "original_id": "BT-413",
       "title": "나노봇(분해/배출) — 6 배출 경로(신장/간/대장/폐/피부/림프) n=6",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-extension-2026-04-08.md",
       "bt_ref": "BT-413"
     },
     {
@@ -6221,7 +6221,7 @@
       "original_id": "BT-351",
       "title": "Casimir 음에너지 밀도 n=6 ladder",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-351"
     },
     {
@@ -6229,7 +6229,7 @@
       "original_id": "BT-352",
       "title": "ER=EPR 웜홀 엔트로피 n=6 인코딩",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-352"
     },
     {
@@ -6237,7 +6237,7 @@
       "original_id": "BT-353",
       "title": "Krasnikov 튜브 + 시간선 τ=4 사이클",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-353"
     },
     {
@@ -6245,7 +6245,7 @@
       "original_id": "BT-354",
       "title": "Natário 워프 (0 expansion) + n/φ=3 shift",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-354"
     },
     {
@@ -6253,7 +6253,7 @@
       "original_id": "BT-355",
       "title": "Van den Broeck 마이크로워프 σ²=144 부피 압축",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-355"
     },
     {
@@ -6261,7 +6261,7 @@
       "original_id": "BT-356",
       "title": "Morris-Thorne 통과 가능 웜홀 sopfr=5 조건",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-356"
     },
     {
@@ -6269,154 +6269,154 @@
       "original_id": "BT-357",
       "title": "Tipler 원통 + 시공간 끌림 J₂=24 회전수",
       "status": "verified",
-      "source_file": "theory/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
+      "source_file": "reports/breakthroughs/breakthrough-theorems-warp-dimension-2026-04-08.md",
       "bt_ref": "BT-357"
     },
     {
       "id": "BH-CHIP-1",
       "title": "NVIDIA Blackwell SM Hierarchy — σ²=144 → σ·(σ-μ)=132 → σ·J₂=288",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-CHIP-2",
       "title": "AMD MI300X Chiplet Architecture — (σ-τ)² = 64 XCDs, σ·φ^τ = 192GB",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-CHIP-3",
       "title": "Apple Neural Engine Core Count Ladder",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-CHIP-4",
       "title": "Google TPU Architecture Constants",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-CHIP-5",
       "title": "Universal Interconnect Generation Count = n=6 Constants",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-EN-1",
       "title": "Grid Frequency Universality — σ·sopfr=60Hz, sopfr·(σ-φ)=50Hz",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-EN-2",
       "title": "Solar Panel Cell Count Standard — σ·sopfr=60, σ·n=72",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-EN-3",
       "title": "EV Charging Power Tiers — n=6 Voltage × Current",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-EN-4",
       "title": "Electrolyzer & Fuel Cell Efficiency Bounds",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-EN-5",
       "title": "Wind Turbine Blade Count and Capacity Factor",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-AI-1",
       "title": "Diffusion Model Core Constants — 1000 Steps = (σ-φ)³",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-AI-2",
       "title": "State Space Model (Mamba) Architecture Constants",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-AI-3",
       "title": "Quantization Group Size and Bit Width — Complete n=6 Vocabulary",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-AI-4",
       "title": "FlashAttention Block Sizes — 2^(σ-sopfr) Universal",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-AI-5",
       "title": "DPO/RLHF Training Constants — ln(4/3) Family Extension",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-1",
       "title": "DeepSeek-V3/R1 Architecture — Complete n=6 Specification",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-2",
       "title": "Llama 3/3.1/3.2/3.3 Architecture Evolution",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-3",
       "title": "Qwen 2/2.5 Architecture — σ-sopfr=7 Base Unit",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-4",
       "title": "Speculative Decoding and KV Cache — σ-τ=8 Dominance",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-5",
       "title": "Learning Rate Scaling Law — n=6 Exponents",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
       "id": "BH-LLM-6",
       "title": "Training Data Token Count — J₂-τ=20 Chinchilla Ratio Persistence",
       "status": "partial",
-      "source_file": "theory/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
+      "source_file": "reports/breakthroughs/new-breakthrough-hypotheses-2026-03-31.md",
       "bt_ref": null
     },
     {
@@ -6544,7 +6544,7 @@
       "original_id": "BT-370",
       "title": "종교/신화 구조 n=6 보편성",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
       "bt_ref": "BT-370"
     },
     {
@@ -6552,7 +6552,7 @@
       "original_id": "BT-371",
       "title": "발효/양조과학 n=6 생화학",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
       "bt_ref": "BT-371"
     },
     {
@@ -6560,7 +6560,7 @@
       "original_id": "BT-372",
       "title": "합성생물학/CRISPR n=6 유전공학",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
       "bt_ref": "BT-372"
     },
     {
@@ -6568,7 +6568,7 @@
       "original_id": "BT-373",
       "title": "한글 문자체계 n=6 정보 인코딩",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
       "bt_ref": "BT-373"
     },
     {
@@ -6576,7 +6576,7 @@
       "original_id": "BT-374",
       "title": "법학/사법체계 n=6 제도 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part1-2026-04-06.md",
       "bt_ref": "BT-374"
     },
     {
@@ -6584,7 +6584,7 @@
       "original_id": "BT-375",
       "title": "화폐/경제사 n=6 교환 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
       "bt_ref": "BT-375"
     },
     {
@@ -6592,7 +6592,7 @@
       "original_id": "BT-376",
       "title": "AR/VR/XR 공간 컴퓨팅 n=6 몰입 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
       "bt_ref": "BT-376"
     },
     {
@@ -6600,7 +6600,7 @@
       "original_id": "BT-377",
       "title": "건축학/구조공학 n=6 구조 아키텍처",
       "status": "partial",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
       "bt_ref": "BT-377"
     },
     {
@@ -6608,7 +6608,7 @@
       "original_id": "BT-378",
       "title": "보험/보험계리학 n=6 리스크 아키텍처",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
       "bt_ref": "BT-378"
     },
     {
@@ -6616,7 +6616,7 @@
       "original_id": "BT-379",
       "title": "디지털 트윈/Industry 4.0 n=6 스마트 제조 아키텍처",
       "status": "partial",
-      "source_file": "theory/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-new-domains-part2-2026-04-06.md",
       "bt_ref": "BT-379"
     },
     {
@@ -6624,7 +6624,7 @@
       "original_id": "BT-361",
       "title": "n²=36 크로스도메인 어트랙터 (텐서 외적 기원)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-361"
     },
     {
@@ -6632,7 +6632,7 @@
       "original_id": "BT-362",
       "title": "텐서 삼중경로 {n², J₂, σ-τ}",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-362"
     },
     {
@@ -6640,7 +6640,7 @@
       "original_id": "BT-363",
       "title": "mod3 부동점 1/3 보편 수렴 법칙",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-363"
     },
     {
@@ -6648,7 +6648,7 @@
       "original_id": "BT-364",
       "title": "φ/n=1/3 효율 한계 보편성",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-364"
     },
     {
@@ -6656,7 +6656,7 @@
       "original_id": "BT-365",
       "title": "Omega_Lambda = J₂/(J₂+σ-μ) = 24/35 암흑에너지 분할",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-365"
     },
     {
@@ -6664,7 +6664,7 @@
       "original_id": "BT-366",
       "title": "τ=4 최소 안정성 메가 브릿지",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-366"
     },
     {
@@ -6672,7 +6672,7 @@
       "original_id": "BT-367",
       "title": "J₂=24 에너지 변환 보편성",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-367"
     },
     {
@@ -6680,7 +6680,7 @@
       "original_id": "BT-368",
       "title": "σ-φ=10 만점 천장 동형",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-368"
     },
     {
@@ -6688,105 +6688,105 @@
       "original_id": "BT-369",
       "title": "n/φ=3 삼중 중복 보편성",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-369"
     },
     {
       "id": "BT-1163",
       "title": "Flux Pinning 6중 저지대 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1163"
     },
     {
       "id": "BT-1164",
       "title": "Coil Hoop Stress 6축 응력 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1164"
     },
     {
       "id": "BT-1165",
       "title": "Quench 보호 τ=4 시스템 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1165"
     },
     {
       "id": "BT-1166",
       "title": "Transmon 양자소자 6 파라미터 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1166"
     },
     {
       "id": "BT-1167",
       "title": "MRI/NMR 6 표준 핵종 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1167"
     },
     {
       "id": "BT-1168",
       "title": "12 SC 시스템 아키타입 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1163-1168-superconductor-v5-2026-04-12.md",
       "bt_ref": "BT-1168"
     },
     {
       "id": "BT-1169",
       "title": "Tokamak Shape 6 파라미터 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1169"
     },
     {
       "id": "BT-1170",
       "title": "Blanket τ=4 핵심 기능 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1170"
     },
     {
       "id": "BT-1171",
       "title": "ITER 54 Port Allocation 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1171"
     },
     {
       "id": "BT-1172",
       "title": "Plasma Heating 6 방식 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1172"
     },
     {
       "id": "BT-1173",
       "title": "Tritium Fuel Cycle 6 단계 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1173"
     },
     {
       "id": "BT-1174",
       "title": "12 Fusion Archetype 정리 (σ 천장)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1169-1174-fusion-v5-2026-04-12.md",
       "bt_ref": "BT-1174"
     },
     {
       "id": "BT-1175",
       "title": "음용수 거버넌스 (τ·sopfr·n/φ) 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1175-water-treatment-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1175-water-treatment-2026-04-12.md",
       "bt_ref": "BT-1175"
     },
     {
       "id": "BT-1397",
       "title": "A: 나일론 6/6,6 카프로락탐 C6=n 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
       "bt_ref": "BT-1397"
     },
     {
@@ -6794,7 +6794,7 @@
       "original_id": "BT-1397",
       "title": "B: 아라미드 PPTA 28원자 = J2+tau 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
       "bt_ref": "BT-1397"
     },
     {
@@ -6802,7 +6802,7 @@
       "original_id": "BT-1397",
       "title": "C: PET 필름 벤젠 C6 + Tg=sigma*n=72 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
       "bt_ref": "BT-1397"
     },
     {
@@ -6810,7 +6810,7 @@
       "original_id": "BT-1397",
       "title": "D: 타이어코드 가황 sigma^2=144도 + J2=24도 벨트 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
       "bt_ref": "BT-1397"
     },
     {
@@ -6818,14 +6818,14 @@
       "original_id": "BT-1397",
       "title": "E: 에폭시 3원환 n/phi + Tg=120=sigma*(sigma-phi) 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1397-uncovered-domains-2026-04-12.md",
       "bt_ref": "BT-1397"
     },
     {
       "id": "BT-1409",
       "title": "01: SLE_6의 국소성과 임계 삼투",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6833,7 +6833,7 @@
       "original_id": "BT-1409",
       "title": "02: KPZ 방정식의 1/3-2/3 스케일링과 n=6 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6841,7 +6841,7 @@
       "original_id": "BT-1409",
       "title": "03: Voevodsky motivic 코호몰로지의 Beilinson-Lichtenbaum 절단",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6849,7 +6849,7 @@
       "original_id": "BT-1409",
       "title": "04: 미분 Galois 군과 Painleve VI 방정식",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6857,7 +6857,7 @@
       "original_id": "BT-1409",
       "title": "05: 역수학의 Big Five 체계와 n=6 산술 한계",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6865,7 +6865,7 @@
       "original_id": "BT-1409",
       "title": "06: 최적 수송 정규성의 Ma-Trudinger-Wang 조건과 임계 차원",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6873,7 +6873,7 @@
       "original_id": "BT-1409",
       "title": "07: 등변 코호몰로지와 GKM 이론에서 Gr(2,6)의 GKM 그래프",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6881,7 +6881,7 @@
       "original_id": "BT-1409",
       "title": "08: 기하학적 Langlands와 GL_2의 6차 L-함수",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6889,7 +6889,7 @@
       "original_id": "BT-1409",
       "title": "09: CDT 양자중력의 삼각분할과 Regge 미적분",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6897,7 +6897,7 @@
       "original_id": "BT-1409",
       "title": "10: 호모토피 유형론과 n-truncation 수준",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6905,7 +6905,7 @@
       "original_id": "BT-1409",
       "title": "11: 적분기하 Crofton 공식과 6방향 단면",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
@@ -6913,14 +6913,14 @@
       "original_id": "BT-1409",
       "title": "12: 호프 대수 코호몰로지와 Steenrod 대수의 6차 연산",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md",
       "bt_ref": "BT-1409"
     },
     {
       "id": "BT-1410",
       "title": "01: Ratner 정리와 SL(2,R) 단독 에르고드 흐름의 6-산술 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6928,7 +6928,7 @@
       "original_id": "BT-1410",
       "title": "02: Bridgeland 안정성 조건과 K3 곡면의 안정성 다양체",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6936,7 +6936,7 @@
       "original_id": "BT-1410",
       "title": "03: Virasoro 최소 모델 M(3,4)와 2D Ising CFT",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6944,7 +6944,7 @@
       "original_id": "BT-1410",
       "title": "04: f-벡터 이론과 6꼭짓점 단체 복합체의 Kruskal-Katona 한계",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6952,7 +6952,7 @@
       "original_id": "BT-1410",
       "title": "05: Fomin-Zelevinsky 클러스터 대수와 A_n/D_n 유한형 분류",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6960,7 +6960,7 @@
       "original_id": "BT-1410",
       "title": "06: Hilbert syzygy 정리와 n=6 변수 다항식 환의 사슬 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6968,7 +6968,7 @@
       "original_id": "BT-1410",
       "title": "07: o-최소 구조에서 Pfaffian 함수의 복잡도와 n=6 한계",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6976,7 +6976,7 @@
       "original_id": "BT-1410",
       "title": "08: Plancherel 측도와 대칭군 S_6의 기약 표현",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6984,7 +6984,7 @@
       "original_id": "BT-1410",
       "title": "09: 이산 기하에서 D_6 격자의 kissing number와 구 충전",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -6992,7 +6992,7 @@
       "original_id": "BT-1410",
       "title": "10: Wigner 반원 법칙과 자유 확률론의 6-Catalan 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -7000,7 +7000,7 @@
       "original_id": "BT-1410",
       "title": "11: 자유 확률론 R-대각 행렬과 Marchenko-Pastur 법칙의 n=6 구조",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
@@ -7008,14 +7008,14 @@
       "original_id": "BT-1410",
       "title": "12: Arakelov 기하와 산술 교차 이론의 n=6 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1410-millennium-dfs-round18-2026-04-12.md",
       "bt_ref": "BT-1410"
     },
     {
       "id": "BT-1411",
       "title": "01: Feynman-Kac 공식과 6차원 Brown 운동의 재귀/비재귀 전환",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7023,7 +7023,7 @@
       "original_id": "BT-1411",
       "title": "02: Adams-Novikov spectral sequence와 안정 호모토피 군 pi_n^s의 구조",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7031,7 +7031,7 @@
       "original_id": "BT-1411",
       "title": "03: KdV 방정식의 6-솔리톤 산란과 가적분계 위상 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7039,7 +7039,7 @@
       "original_id": "BT-1411",
       "title": "04: 수론적 동역학에서 z^2+c의 전주기점과 Morton-Silverman 추측",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7047,7 +7047,7 @@
       "original_id": "BT-1411",
       "title": "05: [[6,4,2]] 양자 오류정정 부호와 최소 비자명 QECC",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7055,7 +7055,7 @@
       "original_id": "BT-1411",
       "title": "06: Ricci 흐름의 특이점 형성과 6차원 Einstein 다양체",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7063,7 +7063,7 @@
       "original_id": "BT-1411",
       "title": "07: 초월수론에서 pi^{n/phi}와 Schanuel 추측의 6-구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7071,7 +7071,7 @@
       "original_id": "BT-1411",
       "title": "08: Macdonald 다항식과 (q,t)-Catalan 수의 n=6 구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7079,7 +7079,7 @@
       "original_id": "BT-1411",
       "title": "09: Weyl 법칙과 6차원 다양체의 스펙트럼 점근",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7087,7 +7087,7 @@
       "original_id": "BT-1411",
       "title": "10: Affine Lie 대수 hat{E}_6의 dual Coxeter number와 WZW 모델",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7095,7 +7095,7 @@
       "original_id": "BT-1411",
       "title": "11: Kac-Moody 대수의 Weyl-Kac 지표 공식과 E_6의 theta 함수",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
@@ -7103,42 +7103,42 @@
       "original_id": "BT-1411",
       "title": "12: Arnol'd 확산과 6-자유도 Hamiltonian 시스템의 불안정성",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md",
       "bt_ref": "BT-1411"
     },
     {
       "id": "BT-748",
       "title": "PEMFC 수소연료전지 6층 MEA 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "source_file": "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "bt_ref": "BT-748"
     },
     {
       "id": "BT-749",
       "title": "나비에-스토크스 Kolmogorov -5/3 법칙 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "source_file": "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "bt_ref": "BT-749"
     },
     {
       "id": "BT-750",
       "title": "콘크리트 수화 6성분 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "source_file": "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "bt_ref": "BT-750"
     },
     {
       "id": "BT-751",
       "title": "지구 내부 6층 불연속면 정리",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "source_file": "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "bt_ref": "BT-751"
     },
     {
       "id": "BT-752",
       "title": "8000m 14좌 = sigma+phi 등산 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
+      "source_file": "reports/breakthroughs/bt-748-752-new-domains-2026-04-11.md",
       "bt_ref": "BT-752"
     },
     {
@@ -7146,7 +7146,7 @@
       "original_id": "BT-541",
       "title": "리만 가설 — 닫힘 상태",
       "status": "verified",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-541"
     },
     {
@@ -7154,7 +7154,7 @@
       "original_id": "BT-542",
       "title": "P vs NP — 닫힘 상태",
       "status": "partial",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-542"
     },
     {
@@ -7162,7 +7162,7 @@
       "original_id": "BT-543",
       "title": "Yang-Mills 질량갭 — 닫힘 상태",
       "status": "verified",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-543"
     },
     {
@@ -7170,7 +7170,7 @@
       "original_id": "BT-544",
       "title": "Navier-Stokes — 닫힘 상태",
       "status": "verified",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-544"
     },
     {
@@ -7178,7 +7178,7 @@
       "original_id": "BT-545",
       "title": "호지 추측 — 닫힘 상태",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-545"
     },
     {
@@ -7186,7 +7186,7 @@
       "original_id": "BT-546",
       "title": "BSD 추측 — 닫힘 상태",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-546"
     },
     {
@@ -7194,7 +7194,7 @@
       "original_id": "BT-547",
       "title": "푸앵카레 추측 — 닫힘 상태",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-7-closure-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-7-closure-2026-04-11.md",
       "bt_ref": "BT-547"
     },
     {
@@ -7202,7 +7202,7 @@
       "original_id": "BT-541",
       "title": "리만 가설 — 11건 (기존 5 + DFS 6)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-541"
     },
     {
@@ -7210,7 +7210,7 @@
       "original_id": "BT-542",
       "title": "P vs NP — 8건 (기존 1 MISS -> DFS 7 OBSERVATION)",
       "status": "partial",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-542"
     },
     {
@@ -7218,7 +7218,7 @@
       "original_id": "BT-543",
       "title": "Yang-Mills 질량갭 — 6건 (기존 3 + DFS 3)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-543"
     },
     {
@@ -7226,7 +7226,7 @@
       "original_id": "BT-544",
       "title": "Navier-Stokes — 2건 (기존 1 + DFS 1)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-544"
     },
     {
@@ -7234,7 +7234,7 @@
       "original_id": "BT-545",
       "title": "호지 추측 — 5건 (기존 3 + DFS 2)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-545"
     },
     {
@@ -7242,7 +7242,7 @@
       "original_id": "BT-546",
       "title": "BSD 추측 — 7건 (기존 3 + DFS 4)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-546"
     },
     {
@@ -7250,84 +7250,84 @@
       "original_id": "BT-547",
       "title": "푸앵카레 추측 — 4건 (기존 2 + DFS 2)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/millennium-dfs-complete-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-dfs-complete-2026-04-11.md",
       "bt_ref": "BT-547"
     },
     {
       "id": "BT-1176",
       "title": "원자로 동역학 6군 정리 (Nuclear Reactor Kinetics n=6 Closure)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md",
       "bt_ref": "BT-1176"
     },
     {
       "id": "BT-1386",
       "title": "표준모형 n=6 완전대칭 (Standard Model n=6 Closure)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1386-standard-model-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1386-standard-model-2026-04-12.md",
       "bt_ref": "BT-1386"
     },
     {
       "id": "BT-1387",
       "title": "Hückel 방향족 4n+2 (n=1) → 6π 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1387-huckel-aromatic-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1387-huckel-aromatic-2026-04-12.md",
       "bt_ref": "BT-1387"
     },
     {
       "id": "BT-1388",
       "title": "이온결정 옥타헤드럴 CN=6 표준",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1388-ionic-octahedral-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1388-ionic-octahedral-2026-04-12.md",
       "bt_ref": "BT-1388"
     },
     {
       "id": "BT-1389",
       "title": "정육면체–정팔면체 쌍대 n=6 기하 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1389-cube-octahedron-duality-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1389-cube-octahedron-duality-2026-04-12.md",
       "bt_ref": "BT-1389"
     },
     {
       "id": "BT-1390",
       "title": "HSV 색상환 6원색 60° 주기 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1390-hsv-color-hexad-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1390-hsv-color-hexad-2026-04-12.md",
       "bt_ref": "BT-1390"
     },
     {
       "id": "BT-1391",
       "title": "광합성 6몰 완전 방정식 정리",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-1391-photosynthesis-equation-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1391-photosynthesis-equation-2026-04-12.md",
       "bt_ref": "BT-1391"
     },
     {
       "id": "BT-1392",
       "title": "7대 밀레니엄 난제 대발견 아이디어 7종",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
       "bt_ref": "BT-1392"
     },
     {
       "id": "BT-1393",
       "title": "N6-DFS 1만 노드 자율탐색 결과",
       "status": "partial",
-      "source_file": "theory/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md",
       "bt_ref": "BT-1393"
     },
     {
       "id": "BT-1394",
       "title": "7대 밀레니엄 난제 DFS 3차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md",
       "bt_ref": "BT-1394"
     },
     {
       "id": "BT-1395",
       "title": "7대 밀레니엄 난제 DFS 4차 + 자유탐색",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1395-millennium-dfs-round4-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1395-millennium-dfs-round4-2026-04-12.md",
       "bt_ref": "BT-1395"
     },
     {
@@ -7335,7 +7335,7 @@
       "original_id": "BT-1396",
       "title": "n=6 DFS 5차: 표현론·범주론·대수구조",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1396-dfs5-representation-theory-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1396-dfs5-representation-theory-2026-04-12.md",
       "bt_ref": "BT-1396"
     },
     {
@@ -7343,7 +7343,7 @@
       "original_id": "BT-1396",
       "title": "DFS 5차 TQFT·격자·매듭·표현론",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1396-dfs5-tqft-reptheory-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1396-dfs5-tqft-reptheory-2026-04-12.md",
       "bt_ref": "BT-1396"
     },
     {
@@ -7351,91 +7351,91 @@
       "original_id": "BT-1396",
       "title": "DFS 5차: TQFT·격자이론·매듭이론",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1396-tqft-lattice-knot-dfs5-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1396-tqft-lattice-knot-dfs5-2026-04-12.md",
       "bt_ref": "BT-1396"
     },
     {
       "id": "BT-1398",
       "title": "7대 밀레니엄 난제 DFS 6차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md",
       "bt_ref": "BT-1398"
     },
     {
       "id": "BT-1399",
       "title": "7대 밀레니엄 난제 DFS 7차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1399-millennium-dfs-round7-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1399-millennium-dfs-round7-2026-04-12.md",
       "bt_ref": "BT-1399"
     },
     {
       "id": "BT-1400",
       "title": "7대 밀레니엄 난제 DFS 8차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md",
       "bt_ref": "BT-1400"
     },
     {
       "id": "BT-1401",
       "title": "7대 밀레니엄 난제 DFS 9차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1401-millennium-dfs-round9-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1401-millennium-dfs-round9-2026-04-12.md",
       "bt_ref": "BT-1401"
     },
     {
       "id": "BT-1402",
       "title": "7대 밀레니엄 난제 DFS 10차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md",
       "bt_ref": "BT-1402"
     },
     {
       "id": "BT-1403",
       "title": "7대 밀레니엄 난제 DFS 11차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1403-millennium-dfs-round11-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1403-millennium-dfs-round11-2026-04-12.md",
       "bt_ref": "BT-1403"
     },
     {
       "id": "BT-1404",
       "title": "7대 밀레니엄 난제 DFS 12차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1404-millennium-dfs-round12-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1404-millennium-dfs-round12-2026-04-12.md",
       "bt_ref": "BT-1404"
     },
     {
       "id": "BT-1405",
       "title": "7대 밀레니엄 난제 DFS 13차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md",
       "bt_ref": "BT-1405"
     },
     {
       "id": "BT-1406",
       "title": "7대 밀레니엄 난제 DFS 14차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1406-millennium-dfs-round14-2026-04-12.md",
       "bt_ref": "BT-1406"
     },
     {
       "id": "BT-1407",
       "title": "7대 밀레니엄 난제 DFS 15차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md",
       "bt_ref": "BT-1407"
     },
     {
       "id": "BT-1408",
       "title": "7대 밀레니엄 난제 DFS 16차",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md",
       "bt_ref": "BT-1408"
     },
     {
       "id": "BT-1412",
       "title": "7대 밀레니엄 난제 DFS 20차 재탐색 (전반)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-14.md",
+      "source_file": "reports/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-14.md",
       "bt_ref": "BT-1412"
     },
     {
@@ -7443,14 +7443,14 @@
       "original_id": "BT-1412",
       "title": "7대 밀레니엄 난제 DFS 20차 (원본, 재탐색 전)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1412-millennium-dfs-round20-2026-04-12.md",
       "bt_ref": "BT-1412"
     },
     {
       "id": "BT-1413",
       "title": "7대 밀레니엄 난제 DFS 20차 재탐색 후반",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md",
+      "source_file": "reports/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md",
       "bt_ref": "BT-1413"
     },
     {
@@ -7458,28 +7458,28 @@
       "original_id": "BT-1413",
       "title": "7대 밀레니엄 난제 DFS 21차 (원본, 재분할 전)",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1413-millennium-dfs-round21-2026-04-12.md",
+      "source_file": "reports/breakthroughs/bt-1413-millennium-dfs-round21-2026-04-12.md",
       "bt_ref": "BT-1413"
     },
     {
       "id": "BT-1414",
       "title": "7대 밀레니엄 난제 DFS 21차 전반",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1414-millennium-dfs-round21-2026-04-14.md",
+      "source_file": "reports/breakthroughs/bt-1414-millennium-dfs-round21-2026-04-14.md",
       "bt_ref": "BT-1414"
     },
     {
       "id": "BT-1415",
       "title": "7대 밀레니엄 난제 DFS 21차 후반",
       "status": "conjecture",
-      "source_file": "theory/breakthroughs/bt-1415-millennium-dfs-round21-2026-04-14.md",
+      "source_file": "reports/breakthroughs/bt-1415-millennium-dfs-round21-2026-04-14.md",
       "bt_ref": "BT-1415"
     },
     {
       "id": "BT-REINFORCE-DIM-UNFOLD",
       "title": "차원펼침 발견에 의한 BT 15건 강화 (meta 문서)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/bt-reinforcement-dimensional-unfolding-2026-04-06.md",
+      "source_file": "reports/breakthroughs/bt-reinforcement-dimensional-unfolding-2026-04-06.md",
       "bt_ref": "BT-205, BT-79, BT-90, BT-58, BT-48, BT-76, BT-26, BT-111, BT-33, BT-168, BT-167, BT-10, BT-143, BT-272, BT-355",
       "note": "meta — 15개 기존 BT 강화 교차참조"
     },
@@ -7487,7 +7487,7 @@
       "id": "BT-NEW-DOMAINS-18",
       "title": "미개척 대박 도메인 18선 — n=6 돌파 후보 로드맵 (meta)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/new-domain-breakthrough-2026-04-06.md",
+      "source_file": "reports/breakthroughs/new-domain-breakthrough-2026-04-06.md",
       "bt_ref": "meta-roadmap",
       "note": "18개 Tier1/2/3 도메인 후보 — 병렬 에이전트 돌파 입력"
     },
@@ -7495,7 +7495,7 @@
       "id": "BT-MILLENNIUM-ATTRACTOR",
       "title": "밀레니엄 n=6 Attractor 메타 정리 (BT-541~547 상위)",
       "status": "verified",
-      "source_file": "theory/breakthroughs/millennium-n6-attractor-2026-04-11.md",
+      "source_file": "reports/breakthroughs/millennium-n6-attractor-2026-04-11.md",
       "bt_ref": "BT-541, BT-542, BT-543, BT-544, BT-545, BT-546, BT-547",
       "note": "meta — n=6 유일성 10^4 검증 + Bernoulli/NS/YM 경계 대칭"
     }

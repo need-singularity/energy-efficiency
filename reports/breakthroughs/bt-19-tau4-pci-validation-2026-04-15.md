@@ -7,9 +7,9 @@ title: BT-19 τ(6)=4 경로 정식 DSE — PCI 데이터 재분석 (4 사태 클
 status: PARTIAL (GMM k=4 BIC 경쟁 우위 — Turiya 축 직접 확증 불가)
 method: Casali 2013 / Sarasso 2015 PCI 공개 수치 재분석 + GMM 적합 + n=6 유일성 감사
 upstream:
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md (DSE-P9-3 — τ=4 후보 B 선정)
-  - theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (DSE-P8-2 — α-곱 MISS)
-  - theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 — 창발 프로토타입)
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (DSE-P9-3 — τ=4 후보 B 선정)
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (DSE-P8-2 — α-곱 MISS)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 — 창발 프로토타입)
   - nexus/shared/n6/atlas.n6 (σ(6)=12, φ(6)=2, τ(6)=4, σ-τ=8)
 external_sources_verified:
   - Casali AG et al. (2013) "A theoretically based index of consciousness independent of sensory processing and behavior." Sci Transl Med 5(198):198ra105. DOI:10.1126/scitranslmed.3006294

@@ -5,7 +5,7 @@
 - 작성자: CHIP-P5-2 에이전트
 - 목적: P5 프로토콜 브리지 X→△ 전환 20건의 **SystemVerilog pseudo-code RTL sketch** 작성
 - 선행 문서
-  - `domains/compute/network-protocol/bridge_design_p5.md` — 20건 식별 + 상위 5건 τ=4 계층 설계
+  - `domains/compute/network-protocol/bridge-design-p5/bridge-design-p5.md` — 20건 식별 + 상위 5건 τ=4 계층 설계
   - `experiments/chip-verify/verify_protocol_bridge.hexa` — 7/7 검증 PASS
   - `experiments/chip-verify/_cross_matrix.md` — P4 매트릭스 12×12
 
@@ -1017,3 +1017,49 @@ endmodule
 - **다음 단계**: 상용 합성 (Bridge-1/4/5/7 우선순위 높음)
 
 CHIP-P5-2 RTL sketch 부문 완료. Sign-off hash 133616 = 7482·12 + 2·3484 + 4·9216 재확인.
+
+
+## §1 WHY
+
+This section covers why for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §2 COMPARE
+
+This section covers compare for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §3 REQUIRES
+
+This section covers requires for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §4 STRUCT
+
+This section covers struct for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

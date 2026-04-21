@@ -650,3 +650,29 @@ Thermal signature δT = T_body · (1 − η_AdS) / J₂ → 0 (η_AdS → 1)
 §8 SMASH (RT-SC 메타물질 ε<0, μ<0 폐형) + §9 FREE (field+holographic+string 삼중 합성) 으로
 전 주파수 RCS→0, 열시그니처→0, Meissner χ=−1 동시 달성. 5 예측 [N?] 제시.
 선행 도메인 room-temp-sc, superconductor 모두 🛸10 도달 시 HEXA-CLOAK-AERO Mk.V 물리 한계 완전 폐쇄.
+
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

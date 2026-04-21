@@ -4,8 +4,8 @@ date: 2026-04-16
 roadmap_task: v4 T1_v4 (α=log(2)/4 BKLPR 이론 유도 시도)
 grade: [8] structural analysis + HONEST PARTIAL MISS
 predecessors:
-  - theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
-  - theory/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md
+  - reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
+  - reports/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md
 status: STRUCTURAL ANALYSIS + HONEST MISS (full derivation 미완)
 license: CC-BY-SA-4.0
 ---
@@ -198,15 +198,15 @@ BT-546 (BSD) 해결: **0/1 정직 유지**.
    B^{0.175} 성장 설명 불가. (3) τ(6)=4 기반 (log B)^{1/4} 추측 → empirical 불일치 로 기각.
    (4) Cohen-Lenstra 2-local factor + Gauss-Kuzmin random lattice 가 log 2 자연 등장 후보 — heuristic only.
    α = log(2)/4 의 rigorous 유도는 HONEST MISS — BKLPR full 확률 생성함수 재계산 필요. v4 T4_v4 + E4_v4 후속"
-  <- v4-T1, theory/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md
+  <- v4-T1, reports/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md
 ```
 
 ---
 
 ## §7 관련 파일
 
-- v3 T3: `theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
-- v3 bootstrap: `theory/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md`
+- v3 T3: `reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
+- v3 bootstrap: `reports/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md`
 - 원 논문: Bhargava-Kane-Lenstra-Poonen-Rains 2013 (Camb. J. Math. 3)
 - BST 2015: Bhargava-Shankar-Tsimerman "On the Davenport-Heilbronn theorems" (Duke)
 - Cohen-Lenstra 1983: "Heuristics on class groups of number fields"

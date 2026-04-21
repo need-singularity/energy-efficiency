@@ -255,9 +255,9 @@ v3 가 11 loops (loop 12-22) 에서 수행됐다. v4 는 더 **depth** 지향이
 ## §8 관련 파일
 
 - **v3 design**: `theory/roadmap-v2/millennium-v3-design-2026-04-15.md`
-- **v3 saturation**: `theory/breakthroughs/v3-saturation-adjacent-2026-04-16.md`
-- **v3 T3 (A3″)**: `theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
-- **v3 loop 19 bootstrap**: `theory/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md`
+- **v3 saturation**: `reports/breakthroughs/v3-saturation-adjacent-2026-04-16.md`
+- **v3 T3 (A3″)**: `reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
+- **v3 loop 19 bootstrap**: `reports/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md`
 - **Pari wrapper**: `scripts/empirical/pari_wrapper.py`
 - **Lean4**: `lean4-n6/`
 - **roadmap**: `shared/roadmaps/millennium.json` → `_v4_meta` + `_v4_phases`

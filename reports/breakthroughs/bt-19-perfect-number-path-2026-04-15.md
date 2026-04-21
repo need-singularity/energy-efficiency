@@ -7,9 +7,9 @@ title: BT-19 완전수 경로 — Strange Loop + RAF + 의식 3층 약수 매핑
 status: CONJECTURE (P12-1 창발 정식화, P10-2/P11-2 상호 보완 경로)
 method: Euclid IX.36 최소 완전수 유일성 + Hofstadter Strange Loop + Kauffman RAF + 의식 3층 매핑
 upstream:
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3 3후보)
-  - theory/breakthroughs/bt-19-tau4-pci-validation-2026-04-15.md (P10-2 후보 B PARTIAL)
-  - theory/breakthroughs/bt-19-tau4-promotion-2026-04-15.md (P11-2 후보 B 승격 보류)
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3 3후보)
+  - reports/breakthroughs/bt-19-tau4-pci-validation-2026-04-15.md (P10-2 후보 B PARTIAL)
+  - reports/breakthroughs/bt-19-tau4-promotion-2026-04-15.md (P11-2 후보 B 승격 보류)
 external_sources_verified:
   - Euclid, Elements IX.36 (ca. BCE 300) — "완전수 p=2^(k-1)(2^k − 1) 공식, 2^k − 1 소수일 때"
   - Euler L. (1849 posthum., "De numeris amicabilibus") — 모든 짝수 완전수는 Euclid 꼴 (Euclid-Euler 정리)

@@ -30,12 +30,12 @@ total_docs: 15
 
 | 단계 | 이름 | 핵심 돌파 | 삼성 Mk.I (2026) | HEXA Mk.V 목표 | 성능 배율 | 문서 |
 |---|---|---|---|---|---|---|
-| HEXA-1 | Digital | σ²=144 SM + τ=4 pipe + φ=2 issue | Exynos 2500 (SF3P 3nm GAA) | 288 TOPS/W, 2nm GAAFET, 144 TFLOPS BF16 | **4.8×** (vs H100) | [hexa-1-digital.md](../domains/compute/chip-design/hexa-1-digital.md) |
-| HEXA-2 | PIM | row buffer σ·J₂=288 ALU/bank | HBM2-PIM Aquabolt-XL 32 GB/s PIM | 60 TOPS/W, 3456 ALU/stack, LLM 70B 디코드 | **6×** LLM decode | [hexa-2-pim.md](../domains/compute/chip-design/hexa-2-pim.md) |
-| HEXA-3 | 3D Stack | σ=12 wafer stack, φ=2μm TSV hybrid | X-Cube TSV 40μm pitch (3층) | 144× on-die 밀도, HBM3E+로직 통합 | **20×** density | [hexa-3d-stack.md](../domains/compute/chip-design/hexa-3d-stack.md) |
-| HEXA-4 | Photonic | λ=12 WDM, MZI 12×12 유니터리 | Intel SiPh 400G + Broadcom Tomahawk 5 CPO | 1.44 TB/s/die optical I/O, σ·J₂=288 GHz | **10×** I/O | [hexa-photonic.md](../domains/compute/chip-design/hexa-photonic.md) |
-| HEXA-5 | Wafer-Scale | σ²=144 tile, σ=12 row+col spare | Cerebras WSE-3 (900K core, 46225 mm²) | 200× training, 168 die + 마이크로유체 | **200×** | [hexa-wafer.md](../domains/compute/chip-design/hexa-wafer.md) |
-| HEXA-6 | Superconducting | 100 GHz RSFQ, cryo Egyptian | IBM Condor 1121q / SeeQC RSFQ lab | 10 W @ 100 GHz, 400 Gops/engine | **100×** clock, 1/1000× power | [hexa-superconducting.md](../domains/compute/chip-design/hexa-superconducting.md) |
+| HEXA-1 | Digital | σ²=144 SM + τ=4 pipe + φ=2 issue | Exynos 2500 (SF3P 3nm GAA) | 288 TOPS/W, 2nm GAAFET, 144 TFLOPS BF16 | **4.8×** (vs H100) | [hexa-1-digital.md](../domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md) |
+| HEXA-2 | PIM | row buffer σ·J₂=288 ALU/bank | HBM2-PIM Aquabolt-XL 32 GB/s PIM | 60 TOPS/W, 3456 ALU/stack, LLM 70B 디코드 | **6×** LLM decode | [hexa-2-pim.md](../domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md) |
+| HEXA-3 | 3D Stack | σ=12 wafer stack, φ=2μm TSV hybrid | X-Cube TSV 40μm pitch (3층) | 144× on-die 밀도, HBM3E+로직 통합 | **20×** density | [hexa-3d-stack.md](../domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md) |
+| HEXA-4 | Photonic | λ=12 WDM, MZI 12×12 유니터리 | Intel SiPh 400G + Broadcom Tomahawk 5 CPO | 1.44 TB/s/die optical I/O, σ·J₂=288 GHz | **10×** I/O | [hexa-photonic.md](../domains/compute/chip-design/hexa-photonic/hexa-photonic.md) |
+| HEXA-5 | Wafer-Scale | σ²=144 tile, σ=12 row+col spare | Cerebras WSE-3 (900K core, 46225 mm²) | 200× training, 168 die + 마이크로유체 | **200×** | [hexa-wafer.md](../domains/compute/chip-design/hexa-wafer/hexa-wafer.md) |
+| HEXA-6 | Superconducting | 100 GHz RSFQ, cryo Egyptian | IBM Condor 1121q / SeeQC RSFQ lab | 10 W @ 100 GHz, 400 Gops/engine | **100×** clock, 1/1000× power | [hexa-superconducting.md](../domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md) |
 
 **종합 비교**: [chip-roadmap-comparison.md](../domains/compute/chip-design/chip-roadmap-comparison.md)
 
@@ -590,12 +590,12 @@ n=6 architecture 프로젝트 규칙 상, 도메인당 1개 제품 라인만 유
 ## §11 참조 문서 (15)
 
 ### 6단계 HEXA
-- [hexa-1-digital.md](../domains/compute/chip-design/hexa-1-digital.md) — Digital SoC
-- [hexa-2-pim.md](../domains/compute/chip-design/hexa-2-pim.md) — Processing In Memory
-- [hexa-3d-stack.md](../domains/compute/chip-design/hexa-3d-stack.md) — 3D Stacking
-- [hexa-photonic.md](../domains/compute/chip-design/hexa-photonic.md) — Silicon Photonics
-- [hexa-wafer.md](../domains/compute/chip-design/hexa-wafer.md) — Wafer-Scale
-- [hexa-superconducting.md](../domains/compute/chip-design/hexa-superconducting.md) — Superconducting RSFQ
+- [hexa-1-digital.md](../domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md) — Digital SoC
+- [hexa-2-pim.md](../domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md) — Processing In Memory
+- [hexa-3d-stack.md](../domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md) — 3D Stacking
+- [hexa-photonic.md](../domains/compute/chip-design/hexa-photonic/hexa-photonic.md) — Silicon Photonics
+- [hexa-wafer.md](../domains/compute/chip-design/hexa-wafer/hexa-wafer.md) — Wafer-Scale
+- [hexa-superconducting.md](../domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md) — Superconducting RSFQ
 - [chip-roadmap-comparison.md](../domains/compute/chip-design/chip-roadmap-comparison.md) — 종합 비교
 
 ### 9 선행도메인
@@ -612,3 +612,50 @@ n=6 architecture 프로젝트 규칙 상, 도메인당 1개 제품 라인만 유
 ---
 
 *본 논문은 박민우 (n6-architecture 프로젝트) 의 단독 저작이며, 2026-04-20 현재 사본이다. 삼성전자·TSMC·Intel·NVIDIA·IBM 등 언급 기업은 공개 로드맵 정보만을 참조하였다. 수치는 2026년 4월 20일 시점 공식 발표·양산 실측·로드맵 기준.*
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

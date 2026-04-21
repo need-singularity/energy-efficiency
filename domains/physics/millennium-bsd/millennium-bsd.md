@@ -829,3 +829,37 @@ HEXA-BSD-05 Mazur-torsion-types = sigma + n/phi = 15                         [10
 HEXA-BSD-06 PI-BSD-invariant    = string(12) * toe(24) * holo(432) = sigma^5*tau = 124416 [10*] EXACT
 HEXA-BSD-07 ratio-BSD-THERMO    = PI_BSD/PI_THERMO = 324 = 18^2 = (sigma+sopfr+1)^2 [10] EXACT
 ```
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

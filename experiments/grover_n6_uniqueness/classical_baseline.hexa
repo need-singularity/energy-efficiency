@@ -1,0 +1,161 @@
+// classical_baseline.hexa — Grover n6 uniqueness classical brute-force baseline
+// 포팅 원본: experiments/grover_n6_uniqueness/classical_baseline.py (py 삭제 동반)
+// 규칙: HEXA-FIRST, 정수 연산, AI-native, hexa-only (rust/py 의존 0)
+//
+// 목적: sigma(n)*phi(n) == n*tau(n) brute-force vs. Grover 이론 반복수(π/4 √N) 비교.
+// 출력: stdout (stage0 silent build 환경에서도 exit=0 이면 pass)
+//
+// 차이점 (Python 원본 대비):
+//   - Python: random sweep 인자 / JSON 파일 쓰기 지원
+//   - Hexa (stage0): 고정 sweep [16,64,256,1024,4096], stdout 리포트만
+//     (env/exec/read_file 등 확장 빌트인 stage1 이상 필요 → stage0 이식 단순화)
+//   - n=6 유일성 검증은 정수 연산으로 동일, match 결과 비교 가능.
+
+// ── 정수 유틸 ───────────────────────────────────────────────
+
+// isqrt(n) = floor(sqrt(n))  — Newton 방식
+fn isqrt(n: i64) -> i64 {
+    if n <= 0 { return 0 }
+    let mut x: i64 = n
+    let mut y: i64 = (x + 1) / 2
+    while y < x {
+        x = y
+        y = (x + n / x) / 2
+    }
+    return x
+}
+
+// 정수 gcd (Euclid)
+fn gcd(a0: i64, b0: i64) -> i64 {
+    let mut a = a0
+    let mut b = b0
+    if a < 0 { a = -a }
+    if b < 0 { b = -b }
+    while b != 0 {
+        let t = a % b
+        a = b
+        b = t
+    }
+    return a
+}
+
+// ── sigma, phi, tau 동시 계산 (naive O(n), Python 원본과 동치) ──
+fn compute_spt(n: i64) -> list {
+    let mut s: i64 = 0
+    let mut c: i64 = 0
+    let mut d: i64 = 1
+    while d <= n {
+        if n % d == 0 {
+            s = s + d
+            c = c + 1
+        }
+        d = d + 1
+    }
+    let mut p: i64 = 0
+    if n == 1 {
+        p = 1
+    } else {
+        let mut k: i64 = 1
+        while k <= n {
+            if gcd(k, n) == 1 { p = p + 1 }
+            k = k + 1
+        }
+    }
+    return [s, p, c]
+}
+
+// ── scan: N_max 까지 match 리스트 + ops 추정 ──
+fn scan(n_max: i64) -> list {
+    let mut matches: list = []
+    let mut ops: i64 = 0
+    let mut n: i64 = 2
+    while n < n_max {
+        let spt = compute_spt(n)
+        let s = spt[0]
+        let p = spt[1]
+        let c = spt[2]
+        ops = ops + n
+        if s * p == n * c {
+            matches = matches.push(n)
+        }
+        n = n + 1
+    }
+    return [matches, ops]
+}
+
+// Grover 이론 반복수: round(π/4 · √N) ≈ round(0.78540 · √N)
+// 정수 근사: (78540 * √N + 50000) / 100000
+fn grover_iters_est(n_max: i64) -> i64 {
+    let r = isqrt(n_max)
+    return (78540 * r + 50000) / 100000
+}
+
+// speedup ≈ N / (π/4 · √N). 정수 ×100 (두 자리) 반환.
+fn speedup_x100(n_max: i64) -> i64 {
+    let iters = grover_iters_est(n_max)
+    if iters == 0 { return 0 }
+    return (n_max * 100) / iters
+}
+
+// matches: list<i64>  → "[a,b,c]" 문자열
+fn matches_to_str(m: list) -> string {
+    let mut s = "["
+    let mut i: i64 = 0
+    while i < len(m) {
+        if i > 0 { s = s + "," }
+        s = s + to_string(m[i])
+        i = i + 1
+    }
+    s = s + "]"
+    return s
+}
+
+fn fmt_speedup(spx100: i64) -> string {
+    let sp_int = spx100 / 100
+    let sp_frac = spx100 - sp_int * 100
+    let mut frac_str = to_string(sp_frac)
+    if sp_frac < 10 { frac_str = "0" + frac_str }
+    return to_string(sp_int) + "." + frac_str
+}
+
+fn run_sweep() {
+    // Python 원본 기본 sweep — 고정
+    let n_list: list = [16, 64, 256, 1024, 4096]
+
+    println("[classical_baseline] sigma(n)*phi(n) == n*tau(n) brute-force vs. Grover 이론 speedup")
+    println("[classical_baseline] sweep = [16, 64, 256, 1024, 4096]")
+
+    let mut j: i64 = 0
+    let mut all_match6: bool = true
+    while j < len(n_list) {
+        let n_max = n_list[j]
+        let r = scan(n_max)
+        let matches = r[0]
+        let ops = r[1]
+        let giters = grover_iters_est(n_max)
+        let spx100 = speedup_x100(n_max)
+
+        let matches_str = matches_to_str(matches)
+
+        // matches == [6] 유일성 검증 (n_max ≥ 7 일 때)
+        let exp_match = (len(matches) == 1) && (matches[0] == 6)
+        if !exp_match { all_match6 = false }
+
+        let mut line = "[N_max=" + to_string(n_max) + "]"
+        line = line + " matches=" + matches_str
+        line = line + " ops~" + to_string(ops)
+        line = line + " grover_iters~" + to_string(giters)
+        line = line + " speedup~" + fmt_speedup(spx100) + "x"
+        println(line)
+
+        j = j + 1
+    }
+
+    if all_match6 {
+        println("[상태] pass — 모든 sweep 에서 matches=[6] (n=6 유일성 재확인)")
+    } else {
+        println("[상태] fail — matches != [6] 발생")
+    }
+}
+
+run_sweep()

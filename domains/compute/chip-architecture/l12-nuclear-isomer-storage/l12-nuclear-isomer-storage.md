@@ -8,7 +8,7 @@ verdict: SPECULATIVE
 grade_attempt: "[N?] CONJECTURE — 물리 기반 EXACT + 공학 실현은 SPECULATIVE"
 sources:
   - theory/proofs/the-number-24.md (σ=12, J2=24)
-  - theory/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md
+  - reports/breakthroughs/bt-1176-nuclear-reactor-kinetics-2026-04-12.md
   - domains/energy/nuclear-reactor/nuclear-reactor.md
   - domains/compute/chip-architecture/chip-architecture.md
 ---
@@ -454,3 +454,17 @@ print(f"에너지 배율: {ratio:.0f}× (Li-ion)")
 ---
 
 **문서 상태**: CONCEPT / SPECULATIVE — 정식 로드맵 반영 보류, 학술 기록 전용.
+
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

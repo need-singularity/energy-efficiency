@@ -696,3 +696,65 @@ if __name__ == "__main__":
 2. **반례 2 — Island_DC 오프그리드 토폴로지(n6=0.33)**: honest-limitations #3. Anima SoC가 마이크로그리드 없는 완전 고립 DC 버스에 단독 연결될 때, "grid-sync 다중 모드" σ=12 해석이 사라진다. 원주장의 적용 범위를 "그리드-연결 동기화 가능 환경"으로 축소.
 3. **반례 3 — CIGS 흡수층 밴드갭 1.15 eV(n6=0.33)**: honest-limitations #8. Anima SoC가 태양광 센서 프론트엔드로 CIGS를 채택하면 에너지 고유값이 n=6 좌표에 깨끗이 앉지 않아 φ=2 대칭 분리가 실패한다. 이 반증은 "Anima SoC 광센서는 GaAs(1.42 eV ≈ 4/3, EXACT) 계열로 제한된다"는 설계 경계를 강화한다.
 
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

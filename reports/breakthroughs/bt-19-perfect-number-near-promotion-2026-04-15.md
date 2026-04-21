@@ -7,8 +7,8 @@ title: BT-19 완전수 경로 NEAR [9] 승격 — 수학 엄밀화 4건 + 검증
 status: NEAR [9] 후보 — 수학 EXACT 4건 확정 + 검증 프로토콜 3건 명시 (실 데이터 未實行)
 method: Euclid-Euler 완전수 유일성 + 삼각수 T_3 + σ 자기환원 + 의식 3층 신경과학 매핑 + RNN/RAF/Gödel 프로토콜
 upstream:
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3, 3후보 비교)
-  - theory/breakthroughs/bt-19-perfect-number-path-2026-04-15.md (P12-1, CONJECTURE 8.9)
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3, 3후보 비교)
+  - reports/breakthroughs/bt-19-perfect-number-path-2026-04-15.md (P12-1, CONJECTURE 8.9)
 external_sources_verified:
   - Euclid, Elements IX.36 (ca. BCE 300) — 짝수 완전수 공식 p=2^(k-1)(2^k-1)
   - Euler L. (1747 증명 / 1849 posthum. 발표, "De numeris amicabilibus") — Euclid-Euler 정리 역방향

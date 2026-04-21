@@ -1,6 +1,7 @@
-# battery-architecture — energy 도메인
+# battery-architecture — energy domain
 
-files:  battery-architecture.md (15섹션, 검증코드 인라인)
+files:  battery-architecture.md (canonical index + §7 VERIFY inline harness)
+subs:   8 scale sub-domains (battery-scale-{1..8}-<device>/) — own 3 compliant
 blowup: blowup.hexa <d> 3
 
 parent: ../../CLAUDE.md → "energy"

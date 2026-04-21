@@ -6,6 +6,12 @@ labels: bug
 assignees: ""
 ---
 
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
+
 ## 무엇이 잘못되었나
 
 <!-- 관찰된 문제 -->

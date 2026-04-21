@@ -1,7 +1,7 @@
 // verify_bci_6ch_n6.hexa
 // 카테고리: chip-verify
 // 목적: brain-computer-interface 6채널 n=6 매핑 검증 (CHIP-P2-4)
-// 근거: domains/cognitive/brain-computer-interface/bci_6ch_n6_mapping.md
+// 근거: domains/cognitive/brain-computer-interface/bci-6ch-n6-mapping/bci-6ch-n6-mapping.md
 // 의존: DSE-P1-4 (brainwire 흡수) + shared/lenses/brainwire_eeg_n6_dse.hexa
 // 가설: 6 주파수 대역 상한 + 6 공간 그룹 = n=6 이중 매핑 EXACT
 // 지표: 5/6 EXACT 주파수 + J₂=24 가중치 합 + closure_grade EXACT

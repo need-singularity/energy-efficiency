@@ -9,9 +9,9 @@ status: roadmap-concept
 verdict: SPECULATIVE-EXPERIMENT-PROPOSAL
 grade_attempt: "[7] EMPIRICAL — 베이스라인(M1)은 문헌 재현, 본안(M2/M3)은 CONJECTURE"
 sources:
-  - domains/compute/chip-architecture/l13-quantum-nuclear-io-2026-04-15.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
+  - domains/compute/chip-architecture/l13-quantum-nuclear-io/l13-quantum-nuclear-io.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
   - theory/proofs/mk4-trident-final-verdict-2026-04-15.md (σ-τ=8 주정리)
   - nexus/shared/n6/atlas.n6 (@R L12-Hf178m2-K-ISOMER, @L l13-neet-cascade, @L l13-shielding-W)
 refs_external:
@@ -330,3 +330,29 @@ USDOE Hf-178m2 샘플 활용) 설계로 축소 재개정된다.
 로드맵 제출자: n6-architecture 설계팀
 일자: 2026-04-15
 판정: **SPECULATIVE-EXPERIMENT-PROPOSAL** (Mk.III-δ L13 후속)
+
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

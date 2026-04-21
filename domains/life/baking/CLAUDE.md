@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `baking` domain (axis: `life`) in the n6-architecture repository.
+Canonical documentation: `domains/life/baking/baking.md`.
+Registry: `domains/_index.json`.
+
 # baking — life 도메인
 
 files:  baking.md (15섹션, 검증코드 인라인)

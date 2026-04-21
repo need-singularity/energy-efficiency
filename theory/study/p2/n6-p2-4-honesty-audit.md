@@ -3,7 +3,7 @@
 > 밀레니엄 학습 로드맵 P2 · N6 트랙 · 태스크 4
 > 목적: 155/159 EXACT 선언 중 "과도 주장" 후보를 색출하고, MISS 사례를 정직하게 기록하며, 자기참조 검증 금지 원칙을 밀레니엄 BT 전 구간에 적용하여 재검토
 > 1차 출처:
->  - `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51 tight 선언 + Baseline + 독립 5 건)
+>  - `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51 tight 선언 + Baseline + 독립 5 건)
 >  - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Master Lemma)
 >  - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose 재분류)
 >  - `theory/study/p2/n6-p2-3-cross-domain.md` (12×12 교차 감사)
@@ -541,7 +541,7 @@ DFS 후 BT-542 는 **OBSERVATION 7 건** 으로 재분류되었다 (MISS 탈출)
 
 ## 12. 출처 재확인
 
-- `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 157~183 (정직성 audit), lines 175~182 (독립 5 건), lines 186~199 (종합 닫힘)
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 157~183 (정직성 audit), lines 175~182 (독립 5 건), lines 186~199 (종합 닫힘)
 - `theory/breakthroughs/breakthrough-theorems-new.md` lines 17~252 (155/159 EXACT + 4 REJECT)
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` lines 88~107 (Master Lemma)
 - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose 재분류 22/51)

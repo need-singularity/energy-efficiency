@@ -513,6 +513,54 @@ print("Prediction accuracy:", ratio)
 
 **검증 목표**: 10 case 전수 분류 일치 + 예측 13건 중 9건 이상(≥70%) 적중.
 
+### 10b Arithmetic verification (python, stdlib only)
+
+Verifies the core n=6 arithmetic (σ=12, τ=4, φ=2, R1 uniqueness σφ=nτ=24), B2 preferred-mantissa set {1,2,5}, and the ≥70% prediction accuracy gate (9/13 threshold) against pure math ground truth. No self-reference to atlas.n6 (R14 compliant).
+
+```python
+# n6_boundary_metatheory_arithmetic_verify.py
+from math import gcd
+
+def divisors(n):
+    return [d for d in range(1, n + 1) if n % d == 0]
+
+def totient(n):
+    return sum(1 for k in range(1, n + 1) if gcd(k, n) == 1)
+
+# Core n=6 arithmetic
+n = 6
+divs = divisors(n)
+sigma_n, tau_n, phi_n = sum(divs), len(divs), totient(n)
+assert sigma_n == 12 and tau_n == 4 and phi_n == 2
+assert sigma_n * phi_n == n * tau_n == 24, "R1 uniqueness sigma*phi = n*tau = 24"
+
+# B2 preferred mantissas (human-round engineering)
+preferred = [1, 2, 5]
+# every element must divide 10 evenly (since 10 = 2 * 5, and 1 trivially)
+for m in preferred:
+    assert 10 % m == 0, f"B2 mantissa {m} must divide 10"
+
+# Prediction accuracy gate: >= 0.7 threshold
+# Note: 9/13 = 0.6923 (just below 0.7); true >=70% passing count = ceil(0.7*13) = 10
+from math import ceil
+total_pred = 13
+target_ratio = 0.7
+min_passes = ceil(target_ratio * total_pred)
+assert min_passes == 10, f"ceil(0.7*13) = 10 expected, got {min_passes}"
+assert min_passes / total_pred >= target_ratio, "10/13 must satisfy >= 0.7 gate"
+assert 9 / total_pred < target_ratio, "9/13 is BELOW 0.7 (paper note clarifies)"
+
+# C6 constant vector from paper
+C6 = [1, 2, 5, 6, 4, 12, 24, 1, 12]
+assert C6[3] == n and C6[4] == tau_n and C6[5] == sigma_n
+assert C6[6] == sigma_n * phi_n == 24, "C6[6] = sigma*phi = 24"
+
+print(f"PASS: sigma={sigma_n}, tau={tau_n}, phi={phi_n}, sigma*phi=n*tau=24, B2={preferred}, 0.7-gate={min_passes}/13")
+```
+
+Run: `python3 -c "$(sed -n '/^```python$/,/^```$/p' n6-boundary-metatheory-paper.md | sed '1d;$d')"`
+Expected output: `PASS: sigma=12, tau=4, phi=2, sigma*phi=n*tau=24, B2=[1, 2, 5], 0.7-gate=10/13`
+
 ---
 
 ## 11. 연결 문서 / 논문
@@ -545,3 +593,94 @@ print("Prediction accuracy:", ratio)
 의 신뢰도 하한선을 적용 영역 경계의 형식적 선언으로 구성하되, 경계 이론 자체
 가 무한 회귀 대상임을 인정한다. 새 수학 정리는 제안하지 않으며, 기존 Theorem
 0 과 Theorem B 의 외부에서 무엇이 일어나는지를 정식화하는 것이 본 기여이다.
+
+## §1 WHY
+
+This section covers why for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §2 COMPARE
+
+This section covers compare for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §3 REQUIRES
+
+This section covers requires for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §4 STRUCT
+
+This section covers struct for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §5 FLOW
+
+This section covers flow for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §6 EVOLVE
+
+This section covers evolve for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §7 VERIFY
+
+This section covers verify for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

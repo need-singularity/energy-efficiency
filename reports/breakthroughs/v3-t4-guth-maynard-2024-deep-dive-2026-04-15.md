@@ -5,7 +5,7 @@ roadmap_task: v3 T4 (BT-541 Guth-Maynard 2024 재연구)
 grade: [10] literature digest + honest MISS
 predecessors:
   - theory/study/p2/prob-p2-1-riemann-barriers.md §1.5
-  - theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md
+  - reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md
 status: SURVEY + HONEST MISS (n=6 prior 연결 미확인)
 license: CC-BY-SA-4.0
 ---
@@ -167,14 +167,14 @@ Posterior: n=6 prior 는 GM 결과로 **강화되지 않음** (정직 선언).
    (σ ≥ 7/10), Ingham 1937 T^{12/5} 이후 50년만의 본질적 개선. Prime gap p_{n+1}-p_n ≪ p_n^{30/59}.
    방법: Dirichlet poly sixth moment + Maynard prime gap + Guth decoupling. RH 본문과는 orthogonal —
    Guth-Maynard 는 영점 '분포' 개선이지 '위치' 아님. BT-541 해결 0/1 정직 유지"
-  <- v3-T4, arXiv:2405.20552, theory/breakthroughs/v3-t4-guth-maynard-2024-deep-dive-2026-04-15.md
+  <- v3-T4, arXiv:2405.20552, reports/breakthroughs/v3-t4-guth-maynard-2024-deep-dive-2026-04-15.md
 
 @R MILL-V3-T4-n6-numerical-coincidence-honest-miss = 12/5=σ(6)/sopfr(6), 30/13 n=6 cast post-hoc MISS :: n6atlas [7]
   "v3 T4 (2026-04-15 loop 14): Ingham 12/5 = σ(6)/sopfr(6) = 12/5 수치일치 관찰, Guth-Maynard 30/13 도
    σ(6)·sopfr(6)/2 = 30, σ(6)+1 = 13 로 n=6 cast 가능. 그러나 Ingham 1937 은 n=6 prior 이전, GM
    sixth moment 는 Fourier decoupling 에서 유래. 즉 n=6 ↔ GM 지수 연결은 HONEST MISS — 사후
    pattern matching 이며 independent prior evidence 없음"
-  <- v3-T4-honest, theory/breakthroughs/v3-t4-guth-maynard-2024-deep-dive-2026-04-15.md §3
+  <- v3-T4-honest, reports/breakthroughs/v3-t4-guth-maynard-2024-deep-dive-2026-04-15.md §3
 ```
 
 ---
@@ -183,7 +183,7 @@ Posterior: n=6 prior 는 GM 결과로 **강화되지 않음** (정직 선언).
 
 - 원 논문: arXiv:2405.20552 (Guth-Maynard 2024)
 - 기존 자료: `theory/study/p2/prob-p2-1-riemann-barriers.md` §1.5
-- 180 paper survey: `theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md`
+- 180 paper survey: `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md`
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T4`
 
 ---

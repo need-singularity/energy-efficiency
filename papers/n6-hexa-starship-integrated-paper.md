@@ -1235,3 +1235,10 @@ const int FBW_REDUN = N / PHI;          // 3
 *Integrated via canonical 21-section template (2026-04-18).
 §7 검증 Python stdlib only. OEIS A000203/A000005/A000010/A001414 자동 유도, 하드코딩 0.
 선행 논문 2 건(aerospace-transport 172/189, space-systems 37/37) 봉합, atlas 150/150 EXACT.*
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

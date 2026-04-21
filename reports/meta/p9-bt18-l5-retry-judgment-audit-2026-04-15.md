@@ -6,8 +6,8 @@ task: BT-18 L5 재도전 판정 감사 — NEAR/MISS 기준 일관성 확인
 status: completed
 auditor: meta-layer (loop)
 upstream:
-  - theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md (P8 DSE-P8-1)
-  - theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P9 ENG-P9-1)
+  - reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md (P8 DSE-P8-1)
+  - reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P9 ENG-P9-1)
   - papers/moonshine-barrier-honest-report-2026-04-15.md (PAPER-P8-1, §6.4 P9 보강)
 ---
 
@@ -124,6 +124,6 @@ P9 보강 후 BT-18 종합 등급
 ## 참고
 
 - atlas.n6 엔트리 line 9587~9592 (BT-18-L5-Baby\*, BT-18-L5-Supersingular\*)
-- 원 P8 barrier 문서: theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md
-- P9 재도전 문서: theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md
+- 원 P8 barrier 문서: reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md
+- P9 재도전 문서: reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md
 - §6.4 논문 통합: papers/moonshine-barrier-honest-report-2026-04-15.md (line 633~696)

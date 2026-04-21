@@ -11,8 +11,8 @@ honesty_grade: "B+ (정직성 높음, 경미한 반례 누락 5건)"
 license: CC-BY-SA-4.0
 upstream:
   - papers/consciousness-red-team-n6-failure-2026-04-15.md (감사 대상)
-  - theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md
 ---
 
 # Consciousness Red Team 논문 정직성 메타 감사 (META-P9-2)

@@ -11,7 +11,7 @@
 - `theory/study/p1/prob-p1-1-bt541-riemann.md` (BT-541 학습 노트 · 279줄)
 - `theory/study/p2/prob-p2-1-riemann-barriers.md` (현대 장벽 · 285줄)
 - `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Theorem B 재구성 · 428줄)
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` (§BT-541 닫힘)
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` (§BT-541 닫힘)
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Theorem B 원문)
 - `theory/proofs/formal-p10-1-riemann-sigma-tau-2026-04-15.md` (ζ 영점 ↔ σ-τ=8 대응 MISS)
 - `theory/proofs/formal-p11-1-selberg-ingham-2026-04-15.md` (Ingham 4차 모멘트 EXACT)

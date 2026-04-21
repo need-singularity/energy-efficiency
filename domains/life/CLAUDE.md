@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # domains/life — 생명·의학·농·축산·식품·약학
 
 목적: life 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)

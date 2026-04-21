@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # reports — 시점 리포트
 
 목적: 감사·세션·발견·체인지로그. 시점 기록만. 이론은 theory/로

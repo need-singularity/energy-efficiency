@@ -6,7 +6,7 @@ date: 2026-04-15
 title: "Monstrous Moonshine BARRIER — n=6 좌표 필연성 미증명에 대한 정직한 보고"
 parallel_dse: DSE-P8-1 (BT-18 L5 정면 돌파 시도, 진행중)
 upstream:
-  - theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md
+  - reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md
   - papers/n6-vacuum-monster-chain-paper.md
   - papers/n6-mk3-synthesis-paper.md (§11.2)
 status: honest-report
@@ -358,7 +358,7 @@ Leech 격자의 Steiner 시스템 구조) 에 의해 설명되어야 한다.
 ### 5.1 P5 (Mk.III-α, 2026-04-14) — 5 링크 정식화
 
 **산출물**:
-- `theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md`: 5 링크 DFS
+- `reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md`: 5 링크 DFS
   감사. 각 링크의 "n=6 필연성 보조정리 시도" 를 PROVEN/PARTIAL/BARRIER 로 등급화.
 - `papers/n6-vacuum-monster-chain-paper.md`: 5 링크 정식화 논문. 각 링크의 수식,
   $n=6$ 좌표, 증명/장벽 3 항목 분해.
@@ -636,7 +636,7 @@ Riemann 추측은 100 년 넘게 미해결. 본 프로젝트의 BT-18 L5 가 미
 > 추가 통합한 것이다. 원 §6.1 의 **PARTIAL [8] 등급 판정은 유지**되며, 본 절은
 > **196883 의 Baby Monster 경로 부분 포획 3 건** 을 정직하게 기록한다.
 >
-> 근거 문서: `theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md`
+> 근거 문서: `reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md`
 > (BT-18 P10 감사, 5 sub-task 평가). 외부 원전: Conway-Norton 1979 / Höhn 2008 /
 > Schellekens 1993 / ATLAS 1985 / Ogg 1975.
 
@@ -1183,3 +1183,94 @@ B_hits = [n for n in range(2, 10001)
 > **본 보고는 본 프로젝트의 "최대 약점" 을 정직하게 기록한 자기 보고서이다.**
 > **성공의 기록보다 실패의 기록이 후속 연구에 더 큰 가치를 제공할 수 있다는**
 > **인식 하 작성되었다. — 박민우, 2026-04-15.**
+
+## §1 WHY
+
+This section covers why for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §2 COMPARE
+
+This section covers compare for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §3 REQUIRES
+
+This section covers requires for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §4 STRUCT
+
+This section covers struct for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §5 FLOW
+
+This section covers flow for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §6 EVOLVE
+
+This section covers evolve for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §7 VERIFY
+
+This section covers verify for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

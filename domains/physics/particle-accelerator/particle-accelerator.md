@@ -239,3 +239,37 @@ PACCEL-08 generation-ratio    = E_LHC/E_Tev ≈ sigma-phi, E_FCC/E_LHC ≈ sigma
 3. 세대 간 비 = σ-φ = 10, R·B 불변량 = Ω_MEGA = 480 T·cm family.
 4. Tevatron seed σ·J₂=288 GeV, FCC envelope Ω_ACCEL=σ³=1728.
 5. 하위 수식 중복 금지 — HEXA-ACCEL / HEXA-TABLETOP 인용만.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

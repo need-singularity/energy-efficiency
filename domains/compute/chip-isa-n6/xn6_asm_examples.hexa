@@ -15,8 +15,8 @@
 //   - 한글 주석           : 모든 설명 한글
 //
 // 연결:
-//   - 스펙      : domains/compute/chip-isa-n6/xn6_isa_24_spec.md
-//   - 박스 표   : domains/compute/chip-isa-n6/xn6_opcode_table.md
+//   - 스펙      : domains/compute/chip-isa-n6/xn6-isa-24-spec/xn6-isa-24-spec.md
+//   - 박스 표   : domains/compute/chip-isa-n6/xn6-opcode-table/xn6-opcode-table.md
 //   - Phase 1   : domains/compute/chip-isa-n6/chip-isa-n6.md
 //   - 대상 NPU  : domains/compute/chip-npu-n6/chip-npu-n6.md
 // ==========================================================

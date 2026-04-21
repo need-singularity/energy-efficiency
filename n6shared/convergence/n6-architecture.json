@@ -449,7 +449,7 @@
     "CHIP_L7_QUANTUM_HYBRID": {
       "status": "PASS",
       "value": "칩 L7 양자-고전 하이브리드 설계 1,195줄, 66/66 EXACT, BT-QH7-01~10",
-      "threshold": "domains/compute/chip-design/hexa-quantum-hybrid.md 존재 확인",
+      "threshold": "domains/compute/chip-design/hexa-quantum-hybrid/hexa-quantum-hybrid.md 존재 확인",
       "note": "2026-04-12 go(DFS16) — 6큐비트 hexagonal 모듈 + surface code d=6 + 5,308,416 DSE 조합",
       "ossified_at": "2026-04-12",
       "promoted_from": "stable"
@@ -497,7 +497,7 @@
     "CHIP_L8_TOPO_ANYON": {
       "status": "PASS",
       "value": "칩 L8 HEXA-TOPO-ANYON 위상 양자 1,205줄, 72가설 + L7 verify 보완",
-      "threshold": "domains/compute/chip-design/hexa-topo-anyon.md 존재 확인 (커밋 bbb1d2a2)",
+      "threshold": "domains/compute/chip-design/hexa-topo-anyon/hexa-topo-anyon.md 존재 확인 (커밋 bbb1d2a2)",
       "note": "2026-04-12 go(DFS17) — 래더 8/13단, 비아벨 에니온 브레이딩 + Fibonacci 게이트",
       "ossified_at": "2026-04-12",
       "promoted_from": "stable"
@@ -560,13 +560,13 @@
     "CHIP_L9_NEUROMORPHIC": {
       "status": "PASS",
       "value": "칩 L9 뉴로모픽 HEXA-NEURO 1,623줄 + verify 273줄",
-      "threshold": "domains/compute/chip-design/hexa-neuromorphic.md 존재 확인",
+      "threshold": "domains/compute/chip-design/hexa-neuromorphic/hexa-neuromorphic.md 존재 확인",
       "note": "2026-04-12 — 6-멤리스터 시냅스 타일, Egyptian 전력분배, BT-N9-01~10"
     },
     "CHIP_L10_DNA_MOLECULAR": {
       "status": "PASS",
       "value": "칩 L10 DNA/분자 컴퓨팅 HEXA-DNA 1,670줄 + verify 292줄",
-      "threshold": "domains/compute/chip-design/hexa-dna-molecular.md 존재 확인",
+      "threshold": "domains/compute/chip-design/hexa-dna-molecular/hexa-dna-molecular.md 존재 확인",
       "note": "2026-04-12 — 6-뉴클레오타이드 논리게이트, 분자 자기조립, 칩 아키텍처 10단계 완성"
     },
     "CHIP_ROADMAP_10_OF_10_COMPLETE": {

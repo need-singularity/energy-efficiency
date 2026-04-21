@@ -11,7 +11,7 @@
     "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
     "_updated": "2026-04-14"
   },
-  "_count": 16,
+  "_count": 24,
   "_changelog": [
     "1.0.0 (2026-04-12): energy 축 sub-SSOT 신설. 전체 16개 도메인 등록."
   ],
@@ -159,6 +159,86 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "기초"
+    },
+    {
+      "slug": "battery-scale-1-earphone",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-2-smartphone",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-3-laptop",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-4-drone",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-5-home-ess",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-6-ev",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-7-ess",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
+    },
+    {
+      "slug": "battery-scale-8-grid",
+      "parent": "battery-architecture",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "basic"
     }
   ],
   "_note": "energy 축 전체 멤버 목록은 ../_index.json energy 키 SSOT 를 따른다 (중복 등록 금지)."

@@ -4,8 +4,8 @@ date: 2026-04-16
 roadmap_task: v4 loop 3 (M3 prime case + E6 uniqueness scan)
 grade: [10*] FORMAL PROOF + EMPIRICAL CONFIRMATION
 predecessors:
-  - theory/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
-  - theory/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md
+  - reports/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
+  - reports/breakthroughs/v3-loop19-lean4-extended-kappa-bootstrap-2026-04-16.md
 status: M3 prime case Lean4 증명 완료 (sorry 없음) + E6 n≤1000 uniqueness
 license: CC-BY-SA-4.0
 ---

@@ -7,9 +7,9 @@ title: BT-19 τ(6)=4 경로 승격 시도 — Turiya 프록시 5 후보 통합 +
 status: PARTIAL (승격 보류 — NEAR [9] 미달, [7] 유지 + 프록시 보강)
 method: DMT/psilocybin/LSD/명상 LZc·γ-동기 프록시 통합 → Turiya PCI 재추정 → GMM k=4 재검증
 upstream:
-  - theory/breakthroughs/bt-19-tau4-pci-validation-2026-04-15.md (P10-2 PARTIAL [7])
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3 후보 3건)
-  - theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 MISS)
+  - reports/breakthroughs/bt-19-tau4-pci-validation-2026-04-15.md (P10-2 PARTIAL [7])
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-3 후보 3건)
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 MISS)
 external_sources_verified:
   - Timmermann C et al. (2019) "Neural correlates of the DMT experience assessed with multivariate EEG." Sci Rep 9:16324. DOI:10.1038/s41598-019-51974-4 — Lempel-Ziv complexity baseline 대비 +22% (p<0.001)
   - Schartner MM et al. (2017) "Increased spontaneous MEG signal diversity for psychoactive doses of ketamine, LSD and psilocybin." Sci Rep 7:46421. DOI:10.1038/srep46421 — LZc LSD +7.1%, psilocybin +6.7%, ketamine +6.4%

@@ -5,8 +5,8 @@ parent_bt: BT-546
 roadmap_task: GALO-PX-4 (세션 유기 확장)
 grade: [9] NEAR (BKLPR σ(n) 경험 확정, (A3) 반박)
 predecessors:
-  - theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md (GALO-PX-2)
-  - theory/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md (GALO-PX-1)
+  - reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md (GALO-PX-2)
+  - reports/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md (GALO-PX-1)
 atlas_target: MILL-PX-A9 + MILL-GALO-PX1/PX2 개정
 license: CC-BY-SA-4.0
 ---

@@ -4,7 +4,7 @@ date: 2026-04-15
 roadmap_task: v3 E4 + E5
 grade: [9] empirical power law
 predecessors:
-  - theory/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md (v2 loop4, 3 bin)
+  - reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md (v2 loop4, 3 bin)
 ---
 
 # v3 E5 — κ(B) 7-bin 점근 분석 + ratio_6 지속 증가 관측

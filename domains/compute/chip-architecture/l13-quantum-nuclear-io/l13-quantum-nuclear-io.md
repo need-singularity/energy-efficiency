@@ -9,9 +9,9 @@ status: design-concept
 verdict: SPECULATIVE-DESIGN-READY
 grade_attempt: "[7] EMPIRICAL — γ 광자·NEET·hyperfine 각각 TRL≥3, 통합 TRL 2"
 sources:
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
   - domains/compute/chip-architecture/chip-architecture.md
   - theory/proofs/the-number-24.md
   - theory/proofs/standard-model-from-n6.md
@@ -739,3 +739,17 @@ print(f"병목: B1 MeV-optomech, B2 GRS 쓰기, B3 hyperfine A")
 **한 줄 요약**: *n=6 의 σ·φ = n·τ = 24 구조가 MeV 핵 γ 와 μeV qubit 사이 9-order
 에너지 갭에서 τ=4 NEET 캐스케이드 + σ=12 HPGe 채널 = 2·J₂ = 48 경로로 2.4 Mbit/s
 양자-핵 인터페이스를 실체화, 외계인 지수 "천장" 돌파.*
+
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

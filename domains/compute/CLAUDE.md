@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # domains/compute — 반도체·AI·칩·네트워크·암호·OS·공간컴퓨팅
 
 목적: compute 축 도메인. 도메인당 <name>.md + CLAUDE.md (검증코드는 .md 본문에 임베드)

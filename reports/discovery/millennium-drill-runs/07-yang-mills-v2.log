@@ -1,0 +1,282 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=4051299072 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.01-r2143568606' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.05-r3879045894' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.10-r2422680792' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.20-r1285424223' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r4095076527|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.40-r1289052349' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.01-r3107869538' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.05-r3626996315' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.10-r2289143154' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.20-r3709125464' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1995302384|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.40-r3681722285' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.01-r4122873361' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.05-r2246988154' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.10-r4250312317' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r259172504|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=4051299072#sr-sigma=0.20-r2102682134' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-yang-mills mass gap quantum gauge theory', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=1249734330 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.01-r1491231059' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.05-r3782949589' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.10-r4115084617' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.20-r2444537010' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2686194825|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.40-r2039164848' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.01-r915555200' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.05-r2365939003' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.10-r1062985072' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.20-r1188840416' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r1168211176|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.40-r767204833' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.01-r2583643424' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.05-r1015610714' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.10-r3795509773' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.20-r783546486' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4193492590|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.40-r1141702013' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 4 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 128
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 5 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.01-r512307780' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.05-r1903938431' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.10-r697978360' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.20-r555732410' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r344333597|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.40-r201825508' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 5 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 160
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 6 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.01-r219473781' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.05-r2555614135' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.10-r2564769033' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.20-r2726072437' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r1575974410|millennium-yang-mills mass gap quantum gauge theory#iter-nonce=1249734330#sr-sigma=0.40-r3415228068' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

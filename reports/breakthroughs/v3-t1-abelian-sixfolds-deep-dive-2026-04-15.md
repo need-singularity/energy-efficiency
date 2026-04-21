@@ -4,8 +4,8 @@ date: 2026-04-15
 roadmap_task: v3 T1 (BT-545 Abelian Sixfolds deep dive)
 grade: [9] arXiv abstract digest + suggestive n=6 connection
 predecessors:
-  - theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md §5
-  - theory/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md §2
+  - reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md §5
+  - reports/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md §2
   - atlas MILL-PX-A11 Enriques surface entry
 status: ABSTRACT-LEVEL DIGEST + structural suggestion (full-text DEFERRED)
 license: CC-BY-SA-4.0
@@ -205,14 +205,14 @@ n=6 prior 관점에서 suggestive:
    for Abelian Sixfolds' 정밀 분석. McMullen curve 로 parameterized 된 abelian 6-fold family 에서
    Weil-type Hodge class + positivity 조건 아래 Hodge conjecture CONDITIONAL 증명. 일반 6-fold 는
    여전히 OPEN. 6 = 2·3 = Weil locus 최소 non-trivial dimension (수학적 필연)"
-  <- v3-T1, theory/breakthroughs/v3-t1-abelian-sixfolds-deep-dive-2026-04-15.md
+  <- v3-T1, reports/breakthroughs/v3-t1-abelian-sixfolds-deep-dive-2026-04-15.md
 
 @R MILL-V3-T1-enriques-abelian-6fold-structural-link = Enriques K3-cover ↔ Abelian 6-fold 6 factor 공통 :: n6atlas [7]
   "v3 T1 (2026-04-15): MILL-PX-A11 Enriques surface (dim 2, K3 double cover) 와 Abelian 6-fold (dim 6)
    사이 structural 공통점 3축: (1) 6 = 2·3 factor (Enriques 2-fold × 3, Abelian 6-fold middle degree 3).
    (2) CM/Hodge 구조 활용. (3) Galois group (S_3, S_6) 대칭. 정직 한계: heuristic suggestion only,
    full-text 확인 미완, 논문 저자 직접 확인 필요 (v3 M2). BT-545 해결 0/1 유지"
-  <- v3-T1-structural, theory/breakthroughs/v3-t1-abelian-sixfolds-deep-dive-2026-04-15.md §4
+  <- v3-T1-structural, reports/breakthroughs/v3-t1-abelian-sixfolds-deep-dive-2026-04-15.md §4
 ```
 
 ---
@@ -220,8 +220,8 @@ n=6 prior 관점에서 suggestive:
 ## §8 관련 파일
 
 - arXiv:2603.20268 (2026-03-14 preprint)
-- 이전 digest: `theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` §5
-- Moonshine L5: `theory/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md` §2
+- 이전 digest: `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` §5
+- Moonshine L5: `reports/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md` §2
 - atlas MILL-PX-A11 Enriques 엔트리 (atlas.n6)
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T1`
 

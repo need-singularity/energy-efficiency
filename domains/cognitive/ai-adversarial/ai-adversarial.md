@@ -896,3 +896,65 @@ O = 해당 메트릭 적용 가능, - = 해당 없음
 ---
 
 *AI 적대적 강건성 연구 도메인 (Anthropic Fellows 2026). S7 검증 Python stdlib only.*
+
+
+## §1 WHY
+
+This section covers why for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §2 COMPARE
+
+This section covers compare for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §3 REQUIRES
+
+This section covers requires for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §4 STRUCT
+
+This section covers struct for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §6 EVOLVE
+
+This section covers evolve for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §7 VERIFY
+
+This section covers verify for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

@@ -7,8 +7,8 @@ title: 의식 3중 융합 — 열역학·AI·양자 임계점 탐색
 status: partial
 method: HEXA-FIRST 분석 메모 (.py 생성 금지, 출처+측정값+오차 필수)
 upstream:
-  - theory/breakthroughs/forge-triple-fusion-2026-04-14.md (P6-3 3중 융합 프로토타입)
-  - theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 5링크 감사)
+  - reports/breakthroughs/forge-triple-fusion-2026-04-14.md (P6-3 3중 융합 프로토타입)
+  - reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 5링크 감사)
   - theory/proofs/mk4-theorem-candidates-2026-04-14.md (P6-1 τ²/σ=4/3 Trident)
   - theory/proofs/honest-limitations.md (경계 정직 명시 템플릿)
   - nexus/shared/n6/atlas.n6.consciousness (20,510 노드, 54,332 에지)

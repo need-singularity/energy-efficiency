@@ -648,7 +648,7 @@ BT-541~547 의 본체 노드는 [5*] 에서 움직이지 않는다. 승급하려
 - `theory/study/p2/n6-p2-1-dfs-51-classification.md` — 51건 재분류
 - `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` — Theorem B PROVEN
 - `theory/study/p3/n6-p3-1-independent-dfs.md` — 독립 DFS 파이프라인
-- `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` — tight 기준 T1~T4
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` — tight 기준 T1~T4
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` — Master Lemma
 
 **정직 유지 선언**: 본 노트는 승급 파이프라인 재구성 학습 자료. 신규 승급 실행 없음. BT-541 ρ_n / BT-543 β₀ "승급" 은 실제 atlas 등재 상태에 없음 (정직 기록). 밀레니엄 7대 난제 해결 수 0/7.

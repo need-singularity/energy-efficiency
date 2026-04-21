@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `fluid` domain (axis: `physics`) in the n6-architecture repository.
+Canonical documentation: `domains/physics/fluid/fluid.md`.
+Registry: `domains/_index.json`.
+
 # fluid — physics 도메인
 
 files:  fluid.md (15섹션, 검증코드 인라인)

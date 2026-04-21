@@ -174,7 +174,7 @@ v3 → v4 승격은 **evolve_gate** 에서 평가:
    v4 승격은 사용자 결정 또는 external 해결 후. v3 고유 산출: α≈log(2)/4 CONSISTENT (bootstrap),
    (A3″) conjecture, Pari-GP + Lean4 toolchain, preprint draft v0.1, CONTRIBUTING infra.
    정직성 헌장 4 원칙 유지, BT 해결 0/6"
-  <- v3-loop20, theory/breakthroughs/v3-saturation-adjacent-2026-04-16.md
+  <- v3-loop20, reports/breakthroughs/v3-saturation-adjacent-2026-04-16.md
 ```
 
 ---

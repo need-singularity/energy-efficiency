@@ -738,3 +738,13 @@ print(f"Core Theorem σ·φ=n·τ: {sigma(n)}·{phi(n)}={n}·{tau(n)}={sigma(n)*
 print(f"n=6 유일성: 2~10000 범위 확인 완료 ✓")
 print(f"DSE: {dse_total} → {dse_filtered} (통과율 1/σ=1/12) ✓")
 ```
+
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

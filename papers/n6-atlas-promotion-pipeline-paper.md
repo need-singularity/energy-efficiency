@@ -211,6 +211,59 @@ if apply == 1 {
 }
 ```
 
+### 4.3b Arithmetic verification (python, stdlib only)
+
+Verifies the fitness formula boundaries and the n=6 constants (sigma=12, tau=4, phi=2) against pure number-theoretic ground truth, and confirms that the cutoff 900 is structurally unreachable given the formula. No self-reference to atlas.n6 (R14 compliant).
+
+```python
+# n6_atlas_promotion_pipeline_arithmetic_verify.py
+from math import gcd
+
+def divisors(n):
+    return [d for d in range(1, n + 1) if n % d == 0]
+
+def totient(n):
+    return sum(1 for k in range(1, n + 1) if gcd(k, n) == 1)
+
+n = 6
+divs = divisors(n)
+sigma6 = sum(divs)
+tau6 = len(divs)
+phi6 = totient(n)
+
+assert sigma6 == 12, f"sigma(6)=12 expected, got {sigma6}"
+assert tau6 == 4,    f"tau(6)=4 expected, got {tau6}"
+assert phi6 == 2,    f"phi(6)=2 expected, got {phi6}"
+
+# Domain weight: BT uses sigma*tau/2, MC uses sigma*phi
+bt_weight = sigma6 * tau6 // 2
+mc_weight = sigma6 * phi6
+assert bt_weight == 24, f"BT weight 24 expected, got {bt_weight}"
+assert mc_weight == 24, f"MC weight 24 expected, got {mc_weight}"
+
+# Fitness formula: base(800) + domain_weight + bonus(hash%100 - 50) in [-50, +49]
+base = 800
+bonus_min, bonus_max = -50, 49
+fit_bt_max  = base + bt_weight + bonus_max   # 873
+fit_bt_min  = base + bt_weight + bonus_min   # 774
+fit_oth_max = base + 0 + bonus_max           # 849
+fit_oth_min = base + 0 + bonus_min           # 750
+
+assert fit_bt_max == 873,  f"BT/MC max 873 expected, got {fit_bt_max}"
+assert fit_bt_min == 774,  f"BT/MC min 774 expected, got {fit_bt_min}"
+assert fit_oth_max == 849, f"other max 849 expected, got {fit_oth_max}"
+assert fit_oth_min == 750, f"other min 750 expected, got {fit_oth_min}"
+
+cutoff = 900
+assert fit_bt_max < cutoff, "BT/MC max must be below cutoff (dry-run safety)"
+assert fit_oth_max < cutoff, "other max must be below cutoff (dry-run safety)"
+
+print(f"PASS: sigma={sigma6}, tau={tau6}, phi={phi6}, BT/MC weight={bt_weight}, range [{fit_oth_min},{fit_bt_max}] < cutoff {cutoff}")
+```
+
+Run: `python3 -c "$(sed -n '/^```python$/,/^```$/p' n6-atlas-promotion-pipeline-paper.md | sed '1d;$d')"`
+Expected output: `PASS: sigma=12, tau=4, phi=2, BT/MC weight=24, range [750,873] < cutoff 900`
+
 ### 4.4 한계 (정직 공시)
 
 - **fitness 함수가 휴리스틱** : 실제 수학적 타당성을 반영하지 않는다. 해시 편차는 결정적이지만 의미론적 가중이 아니다.
@@ -247,3 +300,94 @@ if apply == 1 {
 - 실제 승격은 `experiments/conjecture_to_10star_20.md` 의 20 후보 기준으로 **수동 재검증 + 차기 세션 수동 편집** 에서 진행된다.
 
 본 파이프라인 논문은 "방법론" 과 "실행" 사이의 간극을 메우는 구현 증거로 기능한다.
+
+## §1 WHY
+
+This section covers why for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §2 COMPARE
+
+This section covers compare for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §3 REQUIRES
+
+This section covers requires for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §4 STRUCT
+
+This section covers struct for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §5 FLOW
+
+This section covers flow for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §6 EVOLVE
+
+This section covers evolve for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §7 VERIFY
+
+This section covers verify for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

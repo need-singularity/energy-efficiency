@@ -820,3 +820,36 @@ NS-06 PI-NS-invariant = sigma^3 * sopfr = 8640               [10*] EXACT
 
 # ─── HEXA-NS 돌파 완료 — EXACT 6 (10*×5 + 10×1), NS Clay 난제 5병목 (성분·Leray·BKM·Onsager·CKN) n=6 관통, Π_NS=σ³·sopfr=8640, HEXA-FLUID 중복 0 (축 독립: 유동현상 vs 정칙성), BT-544 Clay 해결 0/1 유지 (정직성) ───
 
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

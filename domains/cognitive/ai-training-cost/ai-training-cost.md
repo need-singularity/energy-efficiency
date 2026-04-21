@@ -155,7 +155,7 @@ ai-training-cost
 - **Mk.IV (4개월)**: 3축 통합 파이프라인 + 70B 프록시 최종 검증 + 논문 작성 + 비용 절감 보고서
 - **Mk.V (장기 / 물리 한계)**: Chinchilla-beyond 조 파라미터(1T+) 사전학습 100x 절감 ($12B → $120M) + 자체-증류 합성 데이터 루프 + MoE 희소성 σ·τ=48 EXACT + Landauer 열역학 하한까지 단위 FLOP 에너지 접근 + 차세대 상호연결(광학/NVLink-Fusion)로 통신 병목 해소. 전역 스케일링 법칙 재정립 논문.
 
-> **BT 역링크**: `BT-1422` — `theory/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md` (Mk.V 승격 노드, fellows-research.md 양방향 연결)
+> **BT 역링크**: `BT-1422` — `reports/breakthroughs/bt-1422-ai-training-cost-mk5-2026-04-20.md` (Mk.V 승격 노드, fellows-research.md 양방향 연결)
 
 ## S7 VERIFY (학습 비용 검증 코드 -- Python stdlib only)
 
@@ -1862,3 +1862,65 @@ print(f"\n{'='*60}")
 print(f"[Mk.V] {PASS}/{TOTAL} MK5 PASS — 학습 비용 장기 한계 self-check")
 print(f"{'='*60}")
 ```
+
+
+## §1 WHY
+
+This section covers why for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §2 COMPARE
+
+This section covers compare for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §3 REQUIRES
+
+This section covers requires for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §4 STRUCT
+
+This section covers struct for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §6 EVOLVE
+
+This section covers evolve for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §7 VERIFY
+
+This section covers verify for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

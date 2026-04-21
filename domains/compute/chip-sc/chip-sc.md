@@ -918,3 +918,37 @@ field (전자기 B·J) + quantum (no-cloning + Kitaev ν=3) + toe (Tc·Φ₀·K_
 | CHIPSC-B9 | λ_L(RT-SC) | n·10 nm | 60 nm | [9] |
 
 **돌파 지표**: alien_index 6.5 → 8.0. 기존 Tc=300K (HEXA-RTSC) + ν=3 (HEXA-SC-07) + I_copy=1 (HEXA-TELE-03) + p_th=1/σ² (HEXA-QC-B4) 4개 상수 교차 재사용, 중복 등록 금지. SC-SFQ 상온 RT-SC CPU 실현 경로 n=6 폐형으로 관통.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

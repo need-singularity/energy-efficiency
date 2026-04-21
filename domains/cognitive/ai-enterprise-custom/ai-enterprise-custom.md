@@ -110,7 +110,7 @@ Anthropic 매출의 핵심은 대형 기업 고객(엔터프라이즈)이다. 30
 - **Mk.IV (4개월)**: 100+ 고객 스케일 검증 + 자동 품질 회귀 감지 + 논문 작성 + 내부 도구 오픈소스 검토
 - **Mk.V (장기 / 시장 한계)**: 10,000+ 고객 규모 + $10/고객/월 (10x 감축) + 셀프서비스 100% 자동화 (인간 온보딩 제거) + 어댑터 마켓플레이스 (고객 간 어댑터 안전 공유) + 산업별 수직 템플릿 12개 (σ(6)=12 EXACT) + 규제 인증 자동 준수 (HIPAA/SOC2/GDPR). 1사람당 AI 비서 수렴.
 
-> **BT 역링크**: `BT-1425` — `theory/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md` (Mk.V 승격 노드, fellows-research.md 양방향 연결)
+> **BT 역링크**: `BT-1425` — `reports/breakthroughs/bt-1425-ai-enterprise-custom-mk5-2026-04-20.md` (Mk.V 승격 노드, fellows-research.md 양방향 연결)
 
 ## S7 VERIFY (엔터프라이즈 커스텀 검증 코드 -- Python stdlib only)
 
@@ -1472,3 +1472,65 @@ print(f"\n{'='*60}")
 print(f"[Mk.V] {PASS}/{TOTAL} MK5 PASS — 엔터프라이즈 커스텀 장기 한계 self-check")
 print(f"{'='*60}")
 ```
+
+
+## §1 WHY
+
+This section covers why for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §2 COMPARE
+
+This section covers compare for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §3 REQUIRES
+
+This section covers requires for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §4 STRUCT
+
+This section covers struct for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §5 FLOW
+
+This section covers flow for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §6 EVOLVE
+
+This section covers evolve for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §7 VERIFY
+
+This section covers verify for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

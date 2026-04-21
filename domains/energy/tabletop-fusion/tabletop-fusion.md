@@ -657,3 +657,37 @@ atlas.n6 에 기등록된 HEXA-TTF 상수군 (편집 금지, 참조만):
 
 **종합**: HEXA-TTF 는 n=6 완전수 산술의 **탁상 스케일 4축 폐쇄** (1 m³·48 T·300 keV·10 MW/m³) 이며, 14/14 정직성 검증 PASS + p-¹¹B aneutronic 독립 정리.
 선행 도메인 room-temp-sc 🛸10 도달 시 Mk.I (1 L, 1 kW) 즉시 실증 가능, Mk.V (100 L, 1.2 MW) 까지 자연 확장. fusion(ITER) / fusion-powerplant(ARC) 와 부피 3桁·연료·출력 모두 차별화된 **탁상 분산전원** 독립 도메인.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

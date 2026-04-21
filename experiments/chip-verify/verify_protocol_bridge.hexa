@@ -3,7 +3,7 @@
 // 목적: CHIP-P5-1 프로토콜 브리지 X→△ 전환 20건 검증
 // 근거:
 //   - domains/compute/network-protocol/certificates/_cross_matrix.md (P4 매트릭스)
-//   - domains/compute/network-protocol/bridge_design_p5.md (P5 브리지 설계)
+//   - domains/compute/network-protocol/bridge-design-p5/bridge-design-p5.md (P5 브리지 설계)
 // 가설:
 //   P4 매트릭스 X=80 셀 중 20건이 브리지 설계로 △(조건부 호환) 전환 가능.
 //   전환 조건: (1) 산업 표준 존재 (2) 대역 수용 가능 (3) 지연 허용 가능 (4) n=6 정합

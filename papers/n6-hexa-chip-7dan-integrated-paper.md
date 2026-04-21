@@ -1609,3 +1609,10 @@ Mk.I (현재, 수론 매핑 완료) → Mk.V (2045+, 7층 실리콘 완성) 의 
 ---
 
 **문서 끝. atlas.n6 hexa-chip-7dan-integrated 170/170 EXACT [10*].**
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

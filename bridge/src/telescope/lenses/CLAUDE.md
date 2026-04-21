@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # telescope/lenses/ — ⛔ 레거시 Rust 렌즈 (신규 금지)
 
 > 상위: ../CLAUDE.md (telescope 폴더 전체 폐기 경고)

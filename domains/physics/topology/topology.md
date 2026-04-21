@@ -801,3 +801,36 @@ KO^n(pt) period 8 (Bott real) + K^n(pt) period 2 (Bott complex) = **8+2 = (σ-τ
 
 **EXACT 6 + EMPIRICAL 2 + NEAR 1 = 9 entries**. n=6 유일성 σ(n)·φ_E(n) = n·τ(n) 정리가 위상 5-축(호모토피·Betti·Euler·genus·AZ) 전체를 관통. 중복 0 (Kitaev ν=3, σ-φ=10 은 명시 재사용). 하네스 PASS.
 
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

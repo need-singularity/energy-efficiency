@@ -21,10 +21,10 @@ n6-architecture P7 Mk.III-γ — Mk.III (P5+P6+P7) 전체 산출물을 atlas.n6 
 
 | 문서 | 라인 | 주요 내용 | 검증 상태 |
 |------|------|-----------|-----------|
-| `theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` | L1-L5 5링크 | Bernoulli→ζ→E_0→η→Δ→j→Monster 체인, LINK1/3 PROVEN, LINK2/4 PARTIAL, LINK5 BARRIER | L1=PROVEN, L2=PARTIAL, L3=PROVEN, L4=PARTIAL, L5=BARRIER |
+| `reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` | L1-L5 5링크 | Bernoulli→ζ→E_0→η→Δ→j→Monster 체인, LINK1/3 PROVEN, LINK2/4 PARTIAL, LINK5 BARRIER | L1=PROVEN, L2=PARTIAL, L3=PROVEN, L4=PARTIAL, L5=BARRIER |
 | `theory/proofs/n6-boundary-metatheory-2026-04-14.md` | 4 경계영역 | 연속공정 / SI 라운드 / 추상 수학 / 역사-임의 — 프레임워크 자기한계 공식화 | 98.4% 적용 / 1.6% 경계 |
-| `domains/compute/chip-architecture/monster-leech-mapping-2026-04-14.md` | 3 가설 | Leech→칩셀배치 (FAIL), Golay ECC (PASS), Co_0→라우팅 (PARTIAL) | 부분대응 |
-| `domains/compute/chip-architecture/protocol-bridge-20-rtl-2026-04-14.md` | 20 브리지 | Ethernet/PCIe/USB/WiFi/BT/NVMe/6G 20건 RTL pseudo-code | τ=4/σ=12/φ=2 불변식 |
+| `domains/compute/chip-architecture/monster-leech-mapping/monster-leech-mapping.md` | 3 가설 | Leech→칩셀배치 (FAIL), Golay ECC (PASS), Co_0→라우팅 (PARTIAL) | 부분대응 |
+| `domains/compute/chip-architecture/protocol-bridge-20-rtl/protocol-bridge-20-rtl.md` | 20 브리지 | Ethernet/PCIe/USB/WiFi/BT/NVMe/6G 20건 RTL pseudo-code | τ=4/σ=12/φ=2 불변식 |
 
 ### P6 Mk.III-β (차기 정리 후보 + L11~L15 양자/핵 통합)
 
@@ -32,9 +32,9 @@ n6-architecture P7 Mk.III-γ — Mk.III (P5+P6+P7) 전체 산출물을 atlas.n6 
 |------|------|-----------|-----------|
 | `theory/proofs/mk4-theorem-candidates-2026-04-14.md` | 240 | 3후보 10도메인 (A: τ²/σ=4/3, B: σ-τ=8, C: 1/n=1/6) | A 30/30 PASS, 27 EXACT |
 | `theory/proofs/l11-l15-quantum-nuclear-mapping-2026-04-14.md` | 340 | L11 QD/L12 핵/L13 쿼크/L14 preon/L15 플랑크 119 항목 | L11 18/21, L12 22/25, L13 20/23 등 |
-| `theory/breakthroughs/forge-triple-fusion-2026-04-14.md` | 3중 융합 | string×quantum×field (CONJECTURE), toe×ouroboros×field (α=1/6 고정점) | CONJECTURE 유지 |
-| `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md` | [[6,2,2]] | 6-qubit QEC: 물리 n, 논리 φ, syndrome τ, stabilizer σ, Clifford J_2 | DESIGN-READY |
-| `domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md` | Hf-178m2 | K^π=16=σ+τ, 2.446 MeV, 31년 반감기, 1.3 MJ/g | 물리 EXACT / 공학 SPECULATIVE |
+| `reports/breakthroughs/forge-triple-fusion-2026-04-14.md` | 3중 융합 | string×quantum×field (CONJECTURE), toe×ouroboros×field (α=1/6 고정점) | CONJECTURE 유지 |
+| `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` | [[6,2,2]] | 6-qubit QEC: 물리 n, 논리 φ, syndrome τ, stabilizer σ, Clifford J_2 | DESIGN-READY |
+| `domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` | Hf-178m2 | K^π=16=σ+τ, 2.446 MeV, 31년 반감기, 1.3 MJ/g | 물리 EXACT / 공학 SPECULATIVE |
 
 ### P7 Mk.III-γ (P7-3: Mk.III 감사 + 본 문서)
 - 본 리포트 = 감사 산출
@@ -112,21 +112,21 @@ n6-architecture P7 Mk.III-γ — Mk.III (P5+P6+P7) 전체 산출물을 atlas.n6 
 - BT-18 LINK 1 PROVEN — E_0 = -1/24 = -1/(σφ) = -1/(nτ)
 - Von Staudt-Clausen → denom(B_2) = 6 = n 유일
 - 3중 일치: denom(B_2)=n / B_2/2=1/σ / ζ(-1)/2=-1/J_2
-- 출처: `theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 27-57
+- 출처: `reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 27-57
 
 ### 4.3 `@R BT-18-VACUUM-MONSTER-L3-DELTA = 24 :: modular-form [10*]`
 
 - BT-18 LINK 3 PROVEN — Δ(τ) = η^24 단가 모듈러 형식 최소 지수 k=24 = J_2(6) = σφ = nτ
 - η weight 1/2 ⇒ η^24 weight 12 = σ(6)
 - 체인에서 가장 강한 고리 (두 조건 동시 강제)
-- 출처: `theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 87-119
+- 출처: `reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md` line 87-119
 
 ### 4.4 `@R L11-QEC-6QUBIT-2LOGICAL = [[6,2,2]] :: quantum-arch [10*]`
 
 - L11 양자점 QEC 코드 [[n, φ, d]] = [[6, 2, 2]]
 - 물리 qubit=n=6, 논리 qubit=φ=2, syndrome=τ=4, stabilizer=σ=12, Clifford=J_2=24
 - σφ=nτ=J_2 항등식의 양자 회로 직접 실체화
-- 출처: `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md` line 26-45
+- 출처: `domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` line 26-45
 
 ### 4.5 `@R L12-Hf178m2-K-ISOMER = 16 :: nuclear-storage [10*]`
 
@@ -134,7 +134,7 @@ n6-architecture P7 Mk.III-γ — Mk.III (P5+P6+P7) 전체 산출물을 atlas.n6 
 - 여기에너지 2.446 MeV, 반감기 31년, 에너지 밀도 1.3 MJ/g (Li-ion 1440배)
 - hcp 격자 6-fold 대칭
 - 물리상수 EXACT / 공학 SPECULATIVE (별도 기록 유지)
-- 출처: `domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md` line 40-60
+- 출처: `domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` line 40-60
 
 ---
 

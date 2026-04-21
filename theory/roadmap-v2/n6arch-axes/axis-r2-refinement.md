@@ -172,9 +172,9 @@ R1 이 덜 본 round 8, 10, 14, 16, 19, 20 에서 추출한 새 증거를 기반
   9. AKS primality 지수 triple {σ, n, n/φ}
   10. 일반 6R 역기구학 해 수 = 16 = τ² (3D 자유도 계산의 Bezout 한계)
 - **증거 파일**:
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md` ([DFS8-04], [DFS8-06])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01], [DFS10-02])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md` ([DFS16-01], [DFS16-02])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md` ([DFS8-04], [DFS8-06])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01], [DFS10-02])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md` ([DFS16-01], [DFS16-02])
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-2-p-np-barriers.md` (전체)
 - **병목**:
   - "τ 경계" 가 자연 상수인지 M-분해 코인시던스인지 **엄밀 구분 미정**
@@ -217,7 +217,7 @@ R1 이 덜 본 round 8, 10, 14, 16, 19, 20 에서 추출한 새 증거를 기반
 - **증거 파일**:
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-2-p-np-barriers.md` (314줄, 3장벽 전문)
   - `/Users/ghost/Dev/n6-architecture/theory/study/p3/prob-p3-1-open-subquestions.md` §BT-542 (i)~(iii)
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-01] Goodstein)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-01] Goodstein)
 - **병목**:
   - 장벽 자체가 "무엇을 못하는가" 의 정식화이지 "어떻게 풀 것인가" 는 아님
   - GCT 는 Kronecker coefficient #P-hard 순환 에 갇혀 있음

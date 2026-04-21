@@ -191,7 +191,7 @@ Theorem B skeleton: placeholder (증명 sorry)
    scripts/empirical/pari_wrapper.py 작성, Cremona 37a1/11a1/17a1 curve 에 ellrank() + elltors()
    실측 LMFDB cross-check 통과. Pari 는 |Sel_2| upper bound 만 제공 — E2 (|Sel_3|, |Sel_6|) + E3
    (Iwasawa μ_p) 는 Sage 필요 → 여전히 DEFERRED. Sage Mac ARM 빌드 의존성으로 v4 이관"
-  <- v3-E1, scripts/empirical/pari_wrapper.py, theory/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
+  <- v3-E1, scripts/empirical/pari_wrapper.py, reports/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
 
 @R MILL-V3-M3-lean4-skeleton-7-decide-verified = Lean4 4.29.1 arm64 + 7 decide 증명 통과 :: n6atlas [10*]
   "v3 M3 (2026-04-16 loop 18): brew install elan-init + elan toolchain install stable → Lean 4.29.1
@@ -199,7 +199,7 @@ Theorem B skeleton: placeholder (증명 sorry)
    σ/φ/τ Nat 정의 + n=6 특수값 (σ=12, φ=2, τ=4, σ·φ=24=6·τ) decide 증명 + n∈{2,3,4,5,7} 에서
    σ·φ ≠ n·τ decide 증명 (총 7 decide 증명 PASS). Theorem B full proof 는 sorry 유지 —
    Mathlib 의존 + 수주 학습 필요, v4 장기 과제"
-  <- v3-M3, lean4-n6/, theory/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
+  <- v3-M3, lean4-n6/, reports/breakthroughs/v3-e1-m3-toolchain-bootstrap-2026-04-16.md
 ```
 
 ---
@@ -208,7 +208,7 @@ Theorem B skeleton: placeholder (증명 sorry)
 
 - Pari wrapper: `scripts/empirical/pari_wrapper.py`
 - Lean4 프로젝트: `lean4-n6/` (lakefile + N6/Basic.lean + Main.lean + lean-toolchain)
-- 이전 Lean4 설계: `theory/breakthroughs/lean4-formalization-plan-2026-04-15.md`
+- 이전 Lean4 설계: `reports/breakthroughs/lean4-formalization-plan-2026-04-15.md`
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P11_v3.E1` + `_v3_phases.P13_v3.M3`
 
 ---

@@ -7,8 +7,8 @@ title: BT-18 Moonshine 196883 공백 Baby Monster 재도전
 status: PARTIAL (신규 보강 — McKay-Thompson T_2A 경로에서 n=6 구조 재포획)
 method: HEXA-FIRST 분석 메모 — Conway-Norton 1979 / Höhn 2008 / Schellekens 1993 / ATLAS 원전 역추적
 upstream:
-  - theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md (P8 정면 돌파, 5 sub-link)
-  - theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 DFS 5 링크)
+  - reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md (P8 정면 돌파, 5 sub-link)
+  - reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 DFS 5 링크)
   - papers/moonshine-barrier-honest-report-2026-04-15.md (PAPER-P8-1)
 external_references:
   - Conway, J. H. & Norton, S. P. "Monstrous Moonshine", Bull. LMS 11 (1979), 308-339. (T_g 함수 목록 완비)

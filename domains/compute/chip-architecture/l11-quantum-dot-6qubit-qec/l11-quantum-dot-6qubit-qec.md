@@ -11,7 +11,7 @@ sources:
   - theory/proofs/the-number-24.md
   - theory/proofs/standard-model-from-n6.md
   - domains/compute/chip-architecture/chip-architecture.md
-  - domains/compute/chip-architecture/monster-leech-mapping-2026-04-14.md
+  - domains/compute/chip-architecture/monster-leech-mapping/monster-leech-mapping.md
 refs_external:
   - Shor P.W. 1995 [[9,1,3]] QEC code
   - Laflamme R. 1996 [[5,1,3]] perfect code
@@ -524,3 +524,29 @@ code의 **최소 반복 단위** (plaquette+vertex = 6 qubit) 로서의 역할�
 - [standard-model-from-n6.md](../../../theory/proofs/standard-model-from-n6.md) — 5/42, σ=12
 - [monster-leech-mapping-2026-04-14.md](./monster-leech-mapping-2026-04-14.md) — Golay [24,12,8] ≡ n=6
 - [chip-architecture.md](./chip-architecture.md) — L0~L4 기반, 2 pJ/op
+
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

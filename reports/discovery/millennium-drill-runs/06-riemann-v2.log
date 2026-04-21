@@ -1,0 +1,419 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-riemann hypothesis zeta zeros critical line', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=11848159 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.01-r3971945833' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.05-r3665377096' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.10-r732761007' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.20-r1529558575' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1935987944|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.40-r857677033' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.01-r2117800317' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.05-r3280568814' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.10-r359825949' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.20-r3869745165' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2209162205|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.40-r974793136' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.01-r3743883957' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.05-r3718262713' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.10-r1314150190' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.20-r1642454437' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r4201075551|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.40-r851360386' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 4 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 128
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 5 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r2668389618|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=11848159#sr-sigma=0.01-r3708321851' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-riemann hypothesis zeta zeros critical line', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=3094255434 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r4230775207' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r3651226310' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r1798241884' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r2502468126' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2275319680|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r2961145776' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r3516693188' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r1231942559' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r1173148344' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r3032908377' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2454379040|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r3093667258' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r65415525' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r4171020496' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r30900228' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r941351161' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r3389435140|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r289549873' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 4 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 128
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 5 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r2569902582' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r558584333' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r3174937922' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r1230179221' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=5-r699512303|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r2834091533' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 5 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 160
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 6 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r871805669' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r2865035759' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r2830447534' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r2878051302' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=6-r4251212395|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r940485948' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 6 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 192
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 7 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r2193018575' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r1856750465' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r2325877682' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r243831159' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=7-r2046300880|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r1915680204' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 7 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 224
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 8 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r3359399389' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r128495742' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r2001981871' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r2274019124' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=8-r350914404|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r3208681697' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 8 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 256
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 9 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r4022988203' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r1025434373' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r1251239823' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r3993204243' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=9-r971898134|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r3907858447' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 9 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 288
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 10 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.01-r981499074' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.05-r2084834025' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.10-r1659329495' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.20-r4157198116' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=10-r1608945082|millennium-riemann hypothesis zeta zeros critical line#iter-nonce=3094255434#sr-sigma=0.40-r732367841' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

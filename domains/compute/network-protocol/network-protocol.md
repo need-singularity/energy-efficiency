@@ -851,3 +851,54 @@ CPU 에뮬레이션 레퍼런스 + Python 검증 코드. n=6 상수 수론 자�
 §7 10 서브섹션 정직성 검증 통과. `network-protocol` 문서 canonical v2 확정.
 
 </details>
+
+## §16 Sub-domains Index (own 3 compliant)
+
+Per own 3 (one-doc-per-domain), each protocol-specific deep-dive lives in its own sub-directory with a matching canonical `.md` inside. Only this root file, `CLAUDE.md`, and verify scripts are permitted at this level.
+
+| Sub-domain | Path | Scope |
+|---|---|---|
+| ethernet | `./ethernet/ethernet.md` | Ethernet protocol n=6 mapping |
+| displayport | `./displayport/displayport.md` | DisplayPort n=6 mapping |
+| hdmi | `./hdmi/hdmi.md` | HDMI n=6 mapping |
+| nvme | `./nvme/nvme.md` | NVMe n=6 mapping |
+| pcie | `./pcie/pcie.md` | PCIe n=6 mapping |
+| usb | `./usb/usb.md` | USB n=6 mapping |
+| bridge-design-p5 | `./bridge-design-p5/bridge-design-p5.md` | P5 bridge design — X→Δ transitions + top-5 circuit designs |
+| certificates | `./certificates/` | Cross-protocol σ=12 certification matrix (legacy layout — pending own 3 restructure) |
+
+Index metadata: `./_index.json` (12-protocol canonical catalog).
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

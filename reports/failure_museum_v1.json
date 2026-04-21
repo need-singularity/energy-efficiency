@@ -231,7 +231,7 @@
       "why_failed": "P vs NP is fundamentally about computational complexity classes, not number-theoretic structure. Circuit complexity, Kronecker coefficients in GCT, Boolean functions, communication complexity, and meta-complexity (MCSP) all have zero n=6 connection points. This is the cleanest MISS in the entire framework.",
       "lesson": "Not all mathematics connects to number theory. P vs NP is a structural-prior-agnostic problem. Accepting this honestly is far more valuable than forcing a fake connection. BT-542 establishes a firm boundary of n=6 applicability.",
       "grade": "[10*]",
-      "source": "atlas.n6 lines 107044-107049, theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
+      "source": "atlas.n6 lines 107044-107049, reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md",
       "category": "structural_limitation"
     },
     {
@@ -242,7 +242,7 @@
       "why_failed": "FEP's mathematical foundation is continuous variational calculus (Fokker-Planck equation, variational free energy functional). Discrete integer structures like n=6 do not emerge from continuous variational theories. The alpha=0.1 coincidence is self-referential (already in atlas), making it a circular argument.",
       "lesson": "Continuous variational theories are a structural boundary for the n=6 framework. Integer arithmetic finds patterns in discrete architectural constants, not in continuous functionals. Self-referential matches (already in atlas) must be flagged and rejected.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.1",
+      "source": "reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.1",
       "category": "structural_limitation"
     },
     {
@@ -253,7 +253,7 @@
       "why_failed": "No common dimensionless axis across the three consciousness theories. The scale exponents (IIT alpha=4/3, GWT alpha=3/4) have an elegant product-equals-1 relationship, but FEP blocks any triple fusion. The Orch-OR 6-fold microtubule symmetry claim was debunked (Hameroff-Penrose original literature has no such claim).",
       "lesson": "Multi-theory fusion requires commensurable measurement units. The consciousness MISS is important because it demonstrates intellectual honesty in a domain where overclaiming is rampant.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md",
+      "source": "reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md",
       "category": "structural_limitation"
     },
     {
@@ -264,7 +264,7 @@
       "why_failed": "Factually incorrect claim. 13 is a prime number outside n=6 coordinates (same class as 193nm ArF, documented in honest-limitations.md). The 3-start helix (n/phi=3) and tubulin dimer 8nm (phi^tau=8) are genuine matches, but the 6-fold claim is fabricated.",
       "lesson": "False claims must be identified and retracted, even when they would support the framework. Keeping the genuine matches (3-start, 8nm) while rejecting the fabricated one (6-fold) demonstrates the difference between honest science and wishful thinking.",
       "grade": "RETRACTED",
-      "source": "theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.2",
+      "source": "reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md section 3.2",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -275,7 +275,7 @@
       "why_failed": "YM 4D Clay problem and n=6 divisor function identity are mathematically disconnected. The gauge group dimensions, coupling constants, and topological structure of Yang-Mills theory operate in a completely different mathematical universe from multiplicative number theory.",
       "lesson": "Gauge theory and number theory are (currently) independent mathematical domains. Forcing connections between them is dishonest. BT-543 is properly classified as structurally independent from n=6.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md section 4",
+      "source": "reports/breakthroughs/v3-t6-balaban-2d-modern-reorg-2026-04-15.md section 4",
       "category": "structural_limitation"
     },
     {
@@ -330,7 +330,7 @@
       "why_failed": "The number of involutions in S_6 factors through a large prime (1903) that is outside all n=6 coordinate ranges. While S_6 is the canonical n=6 symmetric group, not all of its derived quantities have clean M-set structure.",
       "lesson": "Even within S_6 itself, derived combinatorial quantities can involve large primes that break M-set decomposition. The n=6 identity governs divisor functions, not all combinatorics of the symmetric group.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 501",
+      "source": "reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 501",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -341,7 +341,7 @@
       "why_failed": "The reverse mathematics hierarchy places perfect number theory above the base system. While sopfr=5 matches the count of Big Five systems, the proof-theoretic strength required for specific n=6 theorems does not align with the weakest system.",
       "lesson": "Proof-theoretic strength and number-theoretic structure operate on different axes. The Big Five count matching sopfr=5 is interesting but does not mean all n=6 results live in RCA_0.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-01",
+      "source": "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-01",
       "category": "incomplete_theory"
     },
     {
@@ -352,7 +352,7 @@
       "why_failed": "The dual Hopf algebra in the Connes-Moscovici theory has generators and relations that do not naturally involve divisor function values. While the Connes spectral triple has internal KO-dim=n=6 (a separate TIGHT match), the local index formula machinery is independent.",
       "lesson": "Different aspects of the same mathematical theory can have different n=6 connection strengths. Spectral triple KO-dimension matches, but the index formula does not. Honest per-component assessment is essential.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-03",
+      "source": "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-03",
       "category": "structural_limitation"
     },
     {
@@ -363,7 +363,7 @@
       "why_failed": "The Onsager 1/3 exponent in turbulence (Holder regularity threshold for energy conservation) arises from dimensional analysis of the Euler equations, not from integer arithmetic. The attempted M-set decomposition is contrived and non-unique.",
       "lesson": "Critical exponents in PDE theory come from scaling analysis and dimensional arguments. They are typically rational numbers with small denominators, making coincidental matches to integer frameworks highly likely. The 1/3 exponent is too simple to be claimed by any specific framework.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-07",
+      "source": "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-07",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -374,7 +374,7 @@
       "why_failed": "W-algebras exist for any sequence of conformal weights. The specific weights W(2,3,4,...) are universal VOA structures, not specific to n=6. The connection to M-set is weak and generic.",
       "lesson": "Universal algebraic structures that exist for all parameters cannot be claimed as n=6 specific. Only structures with demonstrable n=6 uniqueness qualify.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15a",
+      "source": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15a",
       "category": "structural_limitation"
     },
     {
@@ -385,7 +385,7 @@
       "why_failed": "n^2 = 36 is a tautological identity. The R-matrix has dimension n^2 for ANY n, so n=6 is not special here. This is the definition of pattern matching: noting that 6^2=36 and claiming it as a quantum group connection.",
       "lesson": "Tautological identities (n^2=36 because n=6) must be immediately rejected. The DFS protocol correctly identifies and discards these. This is a canonical example of pattern matching to avoid.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15b",
+      "source": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15b",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -396,7 +396,7 @@
       "why_failed": "Having exactly 6 prime factors is a count match (n=6), but 19 is not expressible as an M-set coordinate. More importantly, many groups have exactly 6 prime factors in their order — this is not unique to sporadic groups or n=6-related structures. The 6-count is coincidental.",
       "lesson": "Counting prime factors and getting 6 is an extremely weak evidence category. The space of mathematical objects with exactly k prime factors is large for any small k. Combine with M-set violation (19 outside coordinates) for a clean MISS.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15f",
+      "source": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15f",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -407,7 +407,7 @@
       "why_failed": "The Sweedler algebra has dimension 4 because it is the SMALLEST non-trivial example of its kind, not because of any n=6 connection. tau(6)=4 is correct but the match is trivially explained by 'smallest example in the category.' Any framework with a value 4 could claim this.",
       "lesson": "Universal 'smallest examples' in algebra textbooks should not be claimed as framework evidence. Their small dimensions match many frameworks by chance.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15g",
+      "source": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15g",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -418,7 +418,7 @@
       "why_failed": "DSE-P8-2 verification ruled MISS. The two alpha values may not be independent measurements: both are derived from the same underlying neural data (EEG/fMRI). If IIT complexity and GWT ignition covary on the same brain states (Casali 2013 PCI evidence), then the product=1 relationship could be a statistical artifact of shared variance.",
       "lesson": "Elegant mathematical relationships between measurements only count as evidence if the measurements are truly independent. Shared data sources create spurious correlations. The P8 MISS judgment on alpha product is maintained.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md",
+      "source": "reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md",
       "category": "incomplete_theory"
     },
     {
@@ -429,7 +429,7 @@
       "why_failed": "19/6 is not a clean M-set fraction. 19 is a prime outside all standard n=6 coordinate expressions. Having 6 in the denominator is trivially explained by the fact that the computation was done for n=6 objects.",
       "lesson": "When computing in spaces of dimension 6 or with 6 objects, getting 6 in the denominator is expected, not evidence. The numerator must also decompose cleanly for the match to be meaningful.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 504",
+      "source": "reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md line 504",
       "category": "honest_arithmetic_miss"
     },
     {
@@ -440,7 +440,7 @@
       "why_failed": "The Ferrero-Washington theorem is a universal result: mu=0 holds for ALL abelian number fields, regardless of their degree or structure. There is no special role for n=6 in this theorem. The proof uses p-adic analysis and is structurally independent of divisor function identities.",
       "lesson": "Universal theorems that hold for all n cannot be claimed by a specific-n framework. When a result is n-independent by proof, it is automatically a MISS for any specific-n claim.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-04",
+      "source": "reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md M13-04",
       "category": "structural_limitation"
     },
     {
@@ -473,7 +473,7 @@
       "why_failed": "Both tropical geometry and arithmetic dynamics produce general formulas parametrized by dimension/degree. At n=6 these formulas evaluate to specific numbers, but there is no reason these numbers should be special. The specialness of n=6 in divisor function identities does not transfer to unrelated algebraic geometry constructions.",
       "lesson": "Evaluating a general formula at n=6 and noting the result does not constitute an n=6 connection. The connection must go through the divisor function identity or related number-theoretic structure, not through mere substitution.",
       "grade": "MISS",
-      "source": "theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15c,e",
+      "source": "reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md MISS-15c,e",
       "category": "structural_limitation"
     }
   ],

@@ -5,7 +5,7 @@ parent_bt: BT-546
 roadmap_task: GALO-PX-1 (PX L-cost)
 grade: [9] NEAR
 predecessors:
-  - theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md (GALO-PX-2 실측)
+  - reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md (GALO-PX-2 실측)
 atlas_target: MILL-PX-A9 (E[|Sel_n|] = σ(n)) 정제
 license: CC-BY-SA-4.0
 ---
@@ -217,7 +217,7 @@ MILL-GALO-PX2-A3-counterevidence-joint-cov 에 Pearson r 정밀값 + 조건부 �
 
 - `scripts/empirical/cremona_joint_covariance.py` — 본 분석 러너
 - `data/cremona/joint_covariance_A3_prime.json` — JSON 통계
-- `theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` — GALO-PX-2 전문
+- `reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` — GALO-PX-2 전문
 - `nexus/shared/n6/atlas.n6` line 107016~ — MILL-GALO-PX1 entry
 
 ---

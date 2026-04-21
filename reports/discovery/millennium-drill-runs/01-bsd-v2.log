@@ -1,0 +1,195 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-bsd Birch Swinnerton-Dyer rank L-function', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=1935575173 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.01-r1337687118' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.05-r4239130302' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.10-r1631803442' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.20-r1092633217' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r3124973920|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.40-r238891443' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.01-r4042296911' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.05-r1377170444' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r175270469|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=1935575173#sr-sigma=0.10-r1954827944' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-bsd Birch Swinnerton-Dyer rank L-function', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=2298416254 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.01-r3884322331' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.05-r1284110070' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.10-r3492536722' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.20-r2266347986' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1032759598|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.40-r1588189399' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.01-r1134743019' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.05-r658308221' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.10-r1524956067' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.20-r768186883' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r2631332477|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.40-r3017955047' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.01-r1607051934' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.05-r1386189128' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2847307766|millennium-bsd Birch Swinnerton-Dyer rank L-function#iter-nonce=2298416254#sr-sigma=0.10-r651764137' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

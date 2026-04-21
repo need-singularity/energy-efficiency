@@ -7,7 +7,7 @@ title: BT-18 Moonshine L5 BARRIER 정면 돌파 시도 — Monster 196883 의 n=
 status: PARTIAL (2/5 sub-link 확정; 승격 후보 [7?]→[8])
 method: HEXA-FIRST 분석 메모 — Griess 1982 / Conway-Norton 1979 / FLM 1988 / Borcherds 1992 원문 역추적
 upstream:
-  - theory/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 DFS, L5=BARRIER 기록)
+  - reports/breakthroughs/bt-18-vacuum-monster-chain-dfs-2026-04-14.md (P5 DFS, L5=BARRIER 기록)
   - theory/breakthroughs/breakthrough-theorems.md §BT-18 (본문)
   - theory/proofs/the-number-24.md
   - theory/study/p0/pure_02_group_theory.md (Out(S_6)=Z/2)

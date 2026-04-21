@@ -1,0 +1,194 @@
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-hodge conjecture algebraic cycle cohomology', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=2108029855 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.01-r4225644390' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.05-r2645298081' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.10-r2612266235' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.20-r1458077118' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r1729387827|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.40-r2614949697' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.01-r3076157905' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.05-r1554497056' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.10-r348452378' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r3404540974|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=2108029855#sr-sigma=0.20-r2142459357' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+hexa_remote: host=ubu2 실패: DNS 해석 실패
+hexa_remote: host=ubu 실패: DNS 해석 실패
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: remote dispatch returned 64, running locally
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: [ -f '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' ] && echo y || echo n
+security warning: exec() argument contains shell metacharacters: grep -o 'G1_saturation_verdict[^,}]*' '/root/Dev/nexus/shared/state/sweep_p5_progress_20260420.json' | head -1
+🛸 nexus drill — seed='millennium-hodge conjecture algebraic cycle cohomology', max_rounds=50, engine=mk9
+    smash → free → absolute → meta-closure → hyperarithmetic → resonance 사슬 (Mk.IX 6-stage)
+    [counter-replay guard Day-1] round ≥2 seed 에 round-salt 주입 (intra-iter)
+    [counter-replay guard Day-2] iter-nonce=1869873501 모든 round 에 suffix 주입 (inter-iter)
+
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+═══ round 1 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+  smash:         +0 absorptions
+  free:          +0 absorptions
+  absolute:      8 Π₀¹ verifications
+  meta-closure:  8 self-ref fixed points
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  round +32, total 32
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 2 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.01-r3052828239' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.05-r1959010538' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.10-r2117506235' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.20-r3959262725' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=2-r2771320822|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.40-r3404733967' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 2 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 64
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 3 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.01-r4242352486' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.05-r2088622376' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.10-r182100481' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.20-r2279426801' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=3-r709400341|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.40-r3163598162' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+  resonance:     +0 absorptions (σ=0.01)
+  [resonance] optimal σ=0.01 — bonus +0 absorptions
+  ⚠ [replay-warn] round 3 5-stage 수치가 round 1 과 완전 동일 — 엔진 결정성 / salt 미반영 의심
+  round +32, total 96
+security warning: exec() argument contains shell metacharacters: ps -axo comm 2>/dev/null | grep -c hexa_stage0 || echo 0
+
+═══ round 4 ═══
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 3 2>&1
+  smash:         +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' free_dfs 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/compose.hexa' --modules all --dfs 3 2>&1
+  free:          +0 absorptions
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' absolute 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_absolute.hexa' 2>&1
+  absolute:      8 Π₀¹ verifications
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' meta_closure 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_meta_closure.hexa' 2>&1
+  meta-closure:  8 self-ref fixed points
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' hyperarithmetic 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501' '/root/Dev/nexus/shared/blowup/modules/blowup_hyperarithmetic.hexa' 2>&1
+  hyperarith:    16 Π₀² bounded/proven
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: head -c 4 /dev/urandom | od -An -vtu4 | tr -d ' \n'
+security warning: exec() argument contains shell metacharacters: '/root/Dev/nexus/shared/harness/exec_validated' smash 'round=4-r2446138630|millennium-hodge conjecture algebraic cycle cohomology#iter-nonce=1869873501#sr-sigma=0.01-r2830097225' '/root/Dev/nexus/shared/blowup/core/blowup.hexa' 1 2>&1
+Killed
+PERF: 101 string concatenations detected — likely O(n^2) loop. Use parts.push() + .join() instead.

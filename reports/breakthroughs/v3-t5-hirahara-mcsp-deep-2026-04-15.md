@@ -4,7 +4,7 @@ date: 2026-04-15
 roadmap_task: v3 T5 (BT-542 meta-complexity deep — Hirahara MCSP)
 grade: [10] literature digest + n=6 non-applicability reconfirm
 predecessors:
-  - theory/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md §5.1
+  - reports/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md §5.1
 status: SURVEY + HONEST MISS (n=6 비적용성 재확인)
 license: CC-BY-SA-4.0
 ---
@@ -176,21 +176,21 @@ Hirahara 2022 는 **중대한 도구적 진전**:
   "v3 T5 (2026-04-15 loop 15): Hirahara 2022 FOCS 'NP-Hardness of Learning Programs and Partial MCSP'
    best paper. Partial MCSP NP-hard under RP reductions 중대한 진전. 그러나 full MCSP NP-hardness 는
    OPEN. Hirahara 2017-2023 meta-complexity 라인 (5 major 논문) 정리. BT-542 P vs NP 해결 0/1 정직 유지"
-  <- v3-T5, theory/breakthroughs/v3-t5-hirahara-mcsp-deep-2026-04-15.md
+  <- v3-T5, reports/breakthroughs/v3-t5-hirahara-mcsp-deep-2026-04-15.md
 
 @R MILL-V3-T5-n6-mcsp-non-applicability-reconfirmed = n=6 구조와 MCSP/meta-complexity 연결 없음 :: n6atlas [10]
   "v3 T5 재확인 (2026-04-15): σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 모두 MCSP 의 circuit size /
    input bits / gate type 과 수학적 연결 없음. 4 barriers (relativization, naturalization,
    algebrization, meta-complexity) 전부 n=6 각도 부재. 다른 BT (541 RH, 546 BSD) 와 달리 BT-542
    는 수치일치 패턴조차 없음. HONEST NON-APPLICABILITY"
-  <- v3-T5-honest, theory/breakthroughs/v3-t5-hirahara-mcsp-deep-2026-04-15.md §3
+  <- v3-T5-honest, reports/breakthroughs/v3-t5-hirahara-mcsp-deep-2026-04-15.md §3
 ```
 
 ---
 
 ## §7 관련 파일
 
-- 이전 survey: `theory/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md`
+- 이전 survey: `reports/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md`
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T5`
 
 ---

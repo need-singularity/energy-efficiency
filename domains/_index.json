@@ -1,7 +1,7 @@
 {
   "_doc": "도메인 SSOT — 304 도메인을 10축으로 분류. 축 변경 시 이 파일만 수정.",
   "_version": "1.0.5",
-  "_total": 306,
+  "_total": 378,
   "_axes": 10,
   "_changelog": [
     "1.0.1 (2026-04-11): compute 축에 4 도메인 추가 — chip-rtl-gen, chip-dse-pipeline, chip-isa-n6, chip-npu-n6 (칩 설계 축 확장)",
@@ -19,7 +19,7 @@
     "_doc": "각 축별 sub-SSOT 파일 요약. 디스크 기준 실측.",
     "physics": {
       "path": "physics/_index.json",
-      "count": 37
+      "count": 38
     },
     "life": {
       "path": "life/_index.json",
@@ -27,11 +27,11 @@
     },
     "energy": {
       "path": "energy/_index.json",
-      "count": 16
+      "count": 24
     },
     "compute": {
       "path": "compute/_index.json",
-      "count": 58
+      "count": 107
     },
     "materials": {
       "path": "materials/_index.json",
@@ -47,7 +47,7 @@
     },
     "cognitive": {
       "path": "cognitive/_index.json",
-      "count": 21
+      "count": 36
     },
     "culture": {
       "path": "culture/_index.json",

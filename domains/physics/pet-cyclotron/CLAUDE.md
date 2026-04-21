@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `pet-cyclotron` domain (axis: `physics`) in the n6-architecture repository.
+Canonical documentation: `domains/physics/pet-cyclotron/pet-cyclotron.md`.
+Registry: `domains/_index.json`.
+
 # pet-cyclotron — physics 도메인
 
 files:  pet-cyclotron.md (15섹션, 검증코드 인라인)

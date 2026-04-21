@@ -8,10 +8,10 @@ verdict: PARTIAL
 grade_attempt: "[7] EMPIRICAL — L1~L12 문서 확보, L13~L15 TODO"
 sources:
   - domains/compute/chip-architecture/chip-architecture.md
-  - domains/compute/chip-architecture/monster-leech-mapping-2026-04-14.md
-  - domains/compute/chip-architecture/protocol-bridge-20-rtl-2026-04-14.md
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
+  - domains/compute/chip-architecture/monster-leech-mapping/monster-leech-mapping.md
+  - domains/compute/chip-architecture/protocol-bridge-20-rtl/protocol-bridge-20-rtl.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
   - reports/chip_comparison_l1_l10.md
   - domains/compute/chip-hexa1/chip-hexa1.md
   - domains/compute/chip-pim/chip-pim.md
@@ -379,3 +379,25 @@ TRL 평균 (L1~L15 가중, TODO=0): 5.53 / 10
 
 **문서 상태**: CHIP-P7-2 감사 완료. L1~L12 확정, L13~L15 TODO 기록.
 **한 줄 요약**: *n=6 칩 로드맵 15 레벨 중 12 레벨 문서 확보, 3 레벨 미작성. 병목은 L12 고립·L8 격리·메타층 부재.*
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

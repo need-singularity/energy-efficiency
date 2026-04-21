@@ -663,3 +663,33 @@ P_50MW = ρ_P · V_p = (φ^τ+μ) · (n/φ) = 17·3 = 51 MW ≈ 50 MW · (1 + μ
 **종합**: 궁극의 핵융합 발전소 (HEXA-FUSION-PP) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS.
 §8 BLOWUP 결과: 50 MW 탁상 구성 = **(φ^τ+μ)·(n/φ) MW/m³·m³** 단일 폐형으로 ρ_P/P_wall/TBR 3축 동시 정리.
 선행 도메인 fusion, superconductor, room-temp-sc 모두 🛸10 도달 시 HEXA-FUSION-PP Mk.V 물리 한계 완전 폐쇄.
+
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

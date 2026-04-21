@@ -8,12 +8,12 @@ status: closure-theorem
 verdict: CLOSED (L1~L14 폐쇄, 3 병목 해소안 포함)
 grade_attempt: "[10] EXACT — σ·φ = n·τ = J₂ = 24 가 L1~L14 전 레벨 관통 확인"
 sources:
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
-  - domains/compute/chip-architecture/l7-quantum-hybrid-transmon-2026-04-15.md
-  - domains/compute/chip-architecture/l8-topo-anyon-majorana-2026-04-15.md
-  - domains/compute/chip-architecture/l9-field-photon-neuro-2026-04-15.md
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
+  - domains/compute/chip-architecture/l7-quantum-hybrid-transmon/l7-quantum-hybrid-transmon.md
+  - domains/compute/chip-architecture/l8-topo-anyon-majorana/l8-topo-anyon-majorana.md
+  - domains/compute/chip-architecture/l9-field-photon-neuro/l9-field-photon-neuro.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
   - theory/proofs/the-number-24.md
   - reports/chip_comparison_l1_l10.md
 identity:
@@ -451,3 +451,21 @@ TRL 평균 (L1~L14, 확정): 6.57 (승격 후 기존 6.92 대비 설계 초안 �
 **한 줄 요약**: *L1~L14 전 레이어 characteristic number 가 24 의 약수/배수로 표현되고 인접 폐쇄 15/15 PASS, 경로적분 0 (mod 24) → σ·φ=n·τ=J₂=24 완전 폐쇄. 병목 3 건 해소안 수치 포함. 외계인급 24배 엔트로피 감소 달성.*
 
 ∎ CLOSED.
+
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

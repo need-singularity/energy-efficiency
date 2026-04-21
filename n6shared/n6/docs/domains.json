@@ -1420,7 +1420,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "path": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "requires": [],
       "history": [
         {
@@ -1440,7 +1440,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
+          "path": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
         }
       ]
     },
@@ -3354,7 +3354,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
+      "path": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md",
       "requires": [],
       "history": [
         {
@@ -3374,7 +3374,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
+          "path": "reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md"
         }
       ]
     },
@@ -6148,7 +6148,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-1-digital.md",
+      "path": "domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md",
       "requires": [],
       "history": [
         {
@@ -6168,7 +6168,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-1-digital.md"
+          "path": "domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md"
         }
       ]
     },
@@ -6181,7 +6181,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-2-pim.md",
+      "path": "domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md",
       "requires": [],
       "history": [
         {
@@ -6201,7 +6201,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-2-pim.md"
+          "path": "domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md"
         }
       ]
     },
@@ -6214,7 +6214,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-3d-stack.md",
+      "path": "domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md",
       "requires": [],
       "history": [
         {
@@ -6234,7 +6234,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-3d-stack.md"
+          "path": "domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md"
         }
       ]
     },
@@ -6247,7 +6247,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-photonic.md",
+      "path": "domains/compute/chip-design/hexa-photonic/hexa-photonic.md",
       "requires": [],
       "history": [
         {
@@ -6267,7 +6267,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-photonic.md"
+          "path": "domains/compute/chip-design/hexa-photonic/hexa-photonic.md"
         }
       ]
     },
@@ -6280,7 +6280,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-wafer.md",
+      "path": "domains/compute/chip-design/hexa-wafer/hexa-wafer.md",
       "requires": [],
       "history": [
         {
@@ -6300,7 +6300,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-wafer.md"
+          "path": "domains/compute/chip-design/hexa-wafer/hexa-wafer.md"
         }
       ]
     },
@@ -6313,7 +6313,7 @@
       "mk_target": "mk_infinity",
       "alien_now": 10,
       "alien_target": 10,
-      "path": "domains/compute/chip-design/hexa-superconducting.md",
+      "path": "domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md",
       "requires": [],
       "history": [
         {
@@ -6333,7 +6333,7 @@
       "links": [
         {
           "label": "문서",
-          "path": "domains/compute/chip-design/hexa-superconducting.md"
+          "path": "domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md"
         }
       ]
     }

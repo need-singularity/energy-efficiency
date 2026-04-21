@@ -860,3 +860,13 @@ print(f"이집트 분수 전력: {float(audio_frac):.1f}+{float(anc_frac):.3f}+{
 print(f"DSE: {dse_total} → {dse_filtered} (통과율 1/σ=1/12) ✓")
 print(f"σ=12h 재생: {capacity_wh}Wh ÷ {avg_power_w}W = {calc_hours}h ✓")
 ```
+
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

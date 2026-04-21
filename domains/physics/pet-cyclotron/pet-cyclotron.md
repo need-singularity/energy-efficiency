@@ -166,3 +166,25 @@ HEXA-PET-06  anti-H 합성률         = σ²·10⁶ H̄/s         = 1.44×10⁸ 
 - atlas.n6 HEXA-PET-01~06 (append)
 - CERN ALPHA/AEgIS anti-H 합성 표준 (ALPHA 2011 Nature 468)
 - Varian/IBA 병원 PET 사이클로트론 스펙 (외부 참조)
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

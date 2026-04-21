@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `paper` domain (axis: `materials`) in the n6-architecture repository.
+Canonical documentation: `domains/materials/paper/paper.md`.
+Registry: `domains/_index.json`.
+
 # paper — materials 도메인
 
 files:  paper.md (15섹션, 검증코드 인라인)

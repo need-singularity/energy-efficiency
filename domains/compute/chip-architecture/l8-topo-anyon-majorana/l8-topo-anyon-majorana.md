@@ -9,7 +9,7 @@ verdict: DESIGN-READY
 grade_attempt: "[6] EMPIRICAL — Microsoft Topological Core 2024 근거 + Kitaev 이론"
 sources:
   - reports/chip_comparison_l1_l10.md (L8 행)
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
   - theory/proofs/the-number-24.md
 refs_external:
   - Kitaev A. 2003 Fault-tolerant quantum by anyons
@@ -263,3 +263,25 @@ L8→L4→L1 의 2-hop 라우팅 으로 digital 층 연결 회복 (호환도 0�
 
 **문서 상태**: CHIP-P8-3 승격 완료. L8 PARTIAL → OK.
 **한 줄 요약**: *6-MZM × τ=4 braid × B₆ 생성자 24 = J₂ 정렬, 외계인급 토폴로지 보호 60 ms (12배↑).*
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

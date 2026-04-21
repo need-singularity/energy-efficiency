@@ -4,7 +4,7 @@ date: 2026-04-16
 roadmap_task: v4 loop 9 (M3 case 4b(ii) Theorem B n=p^a·q^b odd·odd)
 grade: [10*] FORMAL PROOF case 4b(ii) (n = p^a·q^b, both odd primes distinct)
 predecessors:
-  - theory/breakthroughs/v4-loop8-M3-case4b-i-2026-04-16.md
+  - reports/breakthroughs/v4-loop8-M3-case4b-i-2026-04-16.md
 status: M3 case 4b(ii) FORMAL — Theorem B coverage ≈ 98%; case 2b 도 포함
 license: CC-BY-SA-4.0
 ---

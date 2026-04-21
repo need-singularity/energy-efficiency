@@ -10,8 +10,8 @@ verdict: DESIGN-READY
 grade_attempt: "[7] EMPIRICAL — 3개 서브모듈 중 BCI/엔트로피는 TRL≥5, OUROBOROS 온칩은 TRL 3"
 sources:
   - domains/compute/chip-architecture/chip-architecture.md
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
   - domains/cognitive/brain-computer-interface/brain-computer-interface.md
   - bridge/ouroboros_5phase.hexa
   - nexus/shared/n6/atlas.n6 (@L consciousness_structure, alpha_coupling=0.014)
@@ -484,8 +484,8 @@ PASS 시 append 될 상수 (제작 가능성이 TRL 5 이상이므로 조건부 
 ## §10 참고 파일 링크
 
 - `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/chip-architecture.md` (전체 L1~L6 로드맵)
-- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md` (L11 QEC)
-- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md` (L12 저장)
+- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` (L11 QEC)
+- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 저장)
 - `/Users/ghost/Dev/n6-architecture/domains/cognitive/brain-computer-interface/brain-computer-interface.md` (BCI SSOT)
 - `/Users/ghost/Dev/n6-architecture/bridge/ouroboros_5phase.hexa` (5-phase 오케스트레이터)
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (의식·BCI 상수)
@@ -494,3 +494,25 @@ PASS 시 append 될 상수 (제작 가능성이 TRL 5 이상이므로 조건부 
 
 **verdict**: DESIGN-READY (개념 설계 완료). 시제품화는 2027~2030 단계적 진행.
 **grade**: [7] EMPIRICAL — TRL 5 수준 개념 설계, 수치 시뮬 후 [10*] 승격 대상.
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

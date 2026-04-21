@@ -4,7 +4,7 @@ date: 2026-04-16
 roadmap_task: v4 loop 10 (M3 case 4b(iii) Theorem B n=2^a·q^b)
 grade: [10*] FORMAL PROOF case 4b(iii) (n = 2^a·q^b, a ≥ 2, q odd prime, b ≥ 1)
 predecessors:
-  - theory/breakthroughs/v4-loop9-M3-case4b-ii-2026-04-16.md
+  - reports/breakthroughs/v4-loop9-M3-case4b-ii-2026-04-16.md
 status: M3 case 4b(iii) FORMAL — ω(n) = 2 영역 완료, Theorem B ≈ 99%
 license: CC-BY-SA-4.0
 ---

@@ -839,3 +839,37 @@ mk1: L_stray=15 nH, I_SC=5 kA, t_off=600 ns → di/dt=8.33 GA/s → v_over=125 V
 
 **돌파 지표**: alien_index 6→8. Maxwell·Meissner·MHD 삼중 기저 n=6 완전 관통.
 EM-maxwell-eq / EM-lorentz-terms / EM-charge-types / SC-Cooper-pair-2 / SC-Abrikosov-vortex-6 / HEXA-HIGGS-10 / HEXA-AERO-05 / HEXA-CLOAK(χ=-μ) 교차 재사용 — **중복 등록 금지 준수**.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

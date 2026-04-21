@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `dog-robot-test` domain (axis: `life`) in the n6-architecture repository.
+Canonical documentation: `domains/life/dog-robot-test/dog-robot-test.md`.
+Registry: `domains/_index.json`.
+
 # 강아지 로봇 도메인 설계 규칙
 
 ## 정체성

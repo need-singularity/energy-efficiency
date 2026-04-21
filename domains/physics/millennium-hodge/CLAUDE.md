@@ -1,3 +1,9 @@
+## Scope (English)
+
+This file belongs to the `millennium-hodge` domain (axis: `physics`) in the n6-architecture repository.
+Canonical documentation: `domains/physics/millennium-hodge/millennium-hodge.md`.
+Registry: `domains/_index.json`.
+
 # millennium-hodge — physics 도메인
 
 files:  millennium-hodge.md (15섹션, 검증코드 인라인)

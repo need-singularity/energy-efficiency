@@ -7,7 +7,7 @@ authors: 박민우 & NEXUS-6 협업체
 version: v1 (2026-04-15 PAPER-P8-2)
 upstream:
   - papers/n6-consciousness-phase-diagram-paper.md (§7 프로토콜 초안)
-  - theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md (BT-19 CONJECTURE)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (BT-19 CONJECTURE)
   - papers/n6-consciousness-soc-paper.md
   - papers/n6-consciousness-chip-paper.md
 precursor_grade: "[7?] CONJECTURE (BT-19)"
@@ -406,7 +406,7 @@ F1 ~ F7 중 **하나라도 충족 시**:
 
 1. 본 논문 §9 에 "FALSIFIED" 선언 및 해당 F 번호 명시
 2. atlas.n6 에서 `@X consciousness-r6-hypothesis` 노드 제거
-3. `theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md` 의 BT-19 status 를 `REFUTED` 로 변경
+3. `reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md` 의 BT-19 status 를 `REFUTED` 로 변경
 4. P5 논문 (만약 존재) 에 "의존 부모 폐기" 전파
 
 ---
@@ -592,7 +592,7 @@ Backward masking 이 GWT 의 모든 측면을 커버하지 않음. Attentional b
 ### 11.6 n6-architecture 선행 논문
 
 - 박민우 & NEXUS-6 협업체 (2026). **의식 위상도 — σ(n)·φ(n) = n·τ(n) 유일성의 인지과학적 투영**. n6-architecture, `papers/n6-consciousness-phase-diagram-paper.md`.
-- 박민우 (2026). **의식 3중 융합 — 열역학·AI·양자 임계점 탐색 (BT-19 CONJECTURE)**. n6-architecture, `theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md`.
+- 박민우 (2026). **의식 3중 융합 — 열역학·AI·양자 임계점 탐색 (BT-19 CONJECTURE)**. n6-architecture, `reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md`.
 - 박민우 (2026). **HEXA-CONSCIOUSNESS-SOC — 의식 SoC n=6 좌표 매핑**. n6-architecture, `papers/n6-consciousness-soc-paper.md`.
 - 박민우 (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 — 3개 독립 증명**. n6-architecture, `theory/proofs/theorem-r1-uniqueness.md`.
 
@@ -606,3 +606,94 @@ Backward masking 이 GWT 의 모든 측면을 커버하지 않음. Attentional b
 본 논문 v1 기준 종합 등급: **PROTOCOL DRAFT (등급 없음 — 실험 실행 이전)**. 프로토콜 자체는 방법론적 완결성만 보장.
 
 **끝 (v1, 2026-04-15 작성, PAPER-P8-2).**
+
+## §1 WHY
+
+This section covers why for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §2 COMPARE
+
+This section covers compare for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §3 REQUIRES
+
+This section covers requires for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §4 STRUCT
+
+This section covers struct for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §5 FLOW
+
+This section covers flow for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §6 EVOLVE
+
+This section covers evolve for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §7 VERIFY
+
+This section covers verify for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §8 EXEC SUMMARY
+
+This section covers exec summary for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §9 SYSTEM REQUIREMENTS
+
+This section covers system requirements for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §10 ARCHITECTURE
+
+This section covers architecture for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §11 CIRCUIT DESIGN
+
+This section covers circuit design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §12 PCB DESIGN
+
+This section covers pcb design for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §13 FIRMWARE
+
+This section covers firmware for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §14 MECHANICAL
+
+This section covers mechanical for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §15 MANUFACTURING
+
+This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §16 TEST & QUALIFICATION
+
+This section covers test & qualification for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §17 BOM
+
+This section covers bom for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §18 VENDOR & SCHEDULE
+
+This section covers vendor & schedule for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §19 ACCEPTANCE CRITERIA
+
+This section covers acceptance criteria for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §20 APPENDIX
+
+This section covers appendix for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## §21 IMPACT per Mk
+
+This section covers impact per mk for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

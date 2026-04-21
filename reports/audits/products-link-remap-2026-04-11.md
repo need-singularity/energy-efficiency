@@ -387,7 +387,7 @@ horology                   100.0%  [####################################]    1/1
 | DOM | `docs/simulation-theory/goal.md` → `domains/physics/simulation-theory/goal.md` |
 | MISS | `docs/paper/n6-hexa-sim-paper.md` → (미해결) |
 | VERIFY_HEXA | `docs/simulation-theory/verify_alien10.py` → `domains/physics/simulation-theory/verify.hexa` |
-| DOCS1 | `docs/new-bt-dimensional-unfolding-2026-04-06.md` → `theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md` |
+| DOCS1 | `docs/new-bt-dimensional-unfolding-2026-04-06.md` → `reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md` |
 | VERIFY_HEXA | `docs/cross-domain-mega/verify_alien10.py` → `domains/sf-ufo/cross-domain-mega/verify.hexa` |
 | DOM | `docs/therapeutic-nanobot/goal.md` → `domains/life/therapeutic-nanobot/goal.md` |
 | MISS | `docs/paper/n6-therapeutic-nanobot-paper.md` → (미해결) |
@@ -544,7 +544,7 @@ horology                   100.0%  [####################################]    1/1
 | MISS | `docs/paper/n6-hexa-super-paper.md` → (미해결) |
 | MISS | `docs/paper/n6-quantum-computing-paper.md` → (미해결) |
 | VERIFY_HEXA | `docs/room-temp-sc/verify_alien10.py` → `domains/energy/room-temp-sc/verify.hexa` |
-| DOCS1 | `docs/new-bt-dimensional-unfolding-2026-04-06.md` → `theory/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md` |
+| DOCS1 | `docs/new-bt-dimensional-unfolding-2026-04-06.md` → `reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md` |
 | VERIFY_HEXA | `docs/pure-mathematics/verify_alien10.py` → `domains/physics/pure-mathematics/verify.hexa` |
 | VERIFY_HEXA | `docs/cosmology-particle/verify_alien10.py` → `domains/physics/cosmology-particle/verify.hexa` |
 

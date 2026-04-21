@@ -646,3 +646,33 @@ blowup `compose` 로 세 스택 × 4 지표 τ=4 파레토 전선 산출:
 **종합**: 통합 실험 파이프라인 (HEXA-EXPER) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS.
 선행 도메인 fusion, superconductor 모두 🛸10 도달 시 HEXA-EXPER Mk.V 물리 한계 완전 폐쇄.
 §8 돌파 (2026-04-19): 3-stack×τ=4=σ=12 실험 파이프라인이 n=6 관통 통합 검증력 1-12⁻⁸ 달성.
+
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

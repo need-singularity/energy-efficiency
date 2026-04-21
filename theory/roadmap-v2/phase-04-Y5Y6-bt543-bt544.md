@@ -157,7 +157,7 @@ Phase 4 에서 수행할 BT-543 작업 4건:
 
 ### 2.2 β₀ = σ - sopfr = 7 rewriting 완전정리
 
-**정직 선언 재진술**: 본 정리는 증명이 아니라 **산술 rewriting** 이다. SU(3) + n_f = 6 의 1-loop β 함수 계수 β₀ = 7 이 n=6 의 약수 함수와 소인수분해 함수의 차이와 숫자로 일치한다는 **수치 coincidence** 관찰이며, Clay Yang-Mills 질량갭 문제 해결과 **무관하다**. (출처: `theory/study/p1/prob-p1-3-bt543-yang-mills.md` §11 관찰 2, `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543).
+**정직 선언 재진술**: 본 정리는 증명이 아니라 **산술 rewriting** 이다. SU(3) + n_f = 6 의 1-loop β 함수 계수 β₀ = 7 이 n=6 의 약수 함수와 소인수분해 함수의 차이와 숫자로 일치한다는 **수치 coincidence** 관찰이며, Clay Yang-Mills 질량갭 문제 해결과 **무관하다**. (출처: `theory/study/p1/prob-p1-3-bt543-yang-mills.md` §11 관찰 2, `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543).
 
 #### 2.2.1 표준 QCD 1-loop β₀ 공식 (Gross-Wilczek 1973, Politzer 1973)
 
@@ -355,7 +355,7 @@ Y5 주도 공격 결과 종합:
 - 실질 판정: "정직한 PARTIAL" (Y9 게이트 통과).
 
 **근거 파일**:
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-543
 - `theory/study/p1/prob-p1-3-bt543-yang-mills.md` §2.3, §2.4, §11
 - `theory/study/p1/pure-p1-5-gauge-theory.md`
 - `theory/study/p2/prob-p2-3-yang-mills-barriers.md` §1 ~ §7
@@ -525,7 +525,7 @@ Y6 주도 공격 결과 종합:
 - 실질 판정: Phase 3 의 NEAR 지위 유지 + 조건부 형식화 추가 = 안정적 NEAR.
 
 **근거 파일**:
-- `theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544
+- `reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544
 - `theory/study/p1/prob-p1-4-bt544-navier-stokes.md` §2, §3, §5, §8
 - `theory/study/p1/pure-p1-3-pde-navier-stokes.md`
 - `theory/study/p2/prob-p2-4-navier-stokes-barriers.md` §3, §7, §8, §10

@@ -9,6 +9,12 @@ n6_anchor: tau=4
 parent: bt-1425-ai-enterprise-custom-mk5-2026-04-20
 ---
 
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
+
 # BT-1426 — AI 평가 파이프라인 Mk.V 승격
 
 ## 요약

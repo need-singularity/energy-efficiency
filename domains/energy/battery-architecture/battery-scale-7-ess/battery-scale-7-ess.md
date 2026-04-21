@@ -568,3 +568,13 @@ else:
     print(f"FAIL 존재 — {total - passed}건 재확인 필요")
 print("=" * 60)
 ```
+
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

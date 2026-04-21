@@ -2,7 +2,7 @@
 
 > 밀레니엄 학습 로드맵 P2 · N6 트랙 · 태스크 1
 > 목적: 2026-04-11 DFS 루프 결과 (21 기존 + 30 DFS = 51건) 를 정직하게 tight/loose/borderline 으로 재분류
-> 1차 출처: `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md`
+> 1차 출처: `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md`
 > 완료 기준: 51건 각각의 분류 판정 이유를 말할 수 있고, 진정한 tight vs baseline 구별이 가능한 상태
 
 ---

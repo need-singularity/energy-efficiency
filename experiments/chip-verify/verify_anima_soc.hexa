@@ -3,7 +3,7 @@
 // 목적: CHIP-P2-2 ANIMA-SOC 10D TCU + PureField 72+72 SM 실리콘 검증
 //        + HEXA-TOPO Bott-8 주기성 NoC 매핑 검증
 // 근거: domains/compute/chip-architecture/chip-architecture.md §6 Mk.IV 실리콘
-//        domains/compute/chip-design/hexa-topo-anyon.md (Bott 주기성)
+//        domains/compute/chip-design/hexa-topo-anyon/hexa-topo-anyon.md (Bott 주기성)
 // 가설:
 //   1) ANIMA-SOC TCU 10 차원 텐서 = 2·σ-φ·φ = 10 (즉 sigma-tau+phi 구조)
 //      10 = 2·5 = sopfr(6)·2 이며 차원 레이아웃이 n=6 약수 격자에 정렬

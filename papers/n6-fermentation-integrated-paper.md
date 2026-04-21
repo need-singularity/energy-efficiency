@@ -1033,3 +1033,10 @@ C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂          (EMP glycolysis)
 **최종 한 문장**: σ(n)·φ(n) = n·τ(n) 이 n=6 에서만 유일하게 성립한다는 순수 수론 정리가,
 C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂ 라는 발효의 가장 기본적 화학양론과 동일한 24 에 수렴한다 —
 이것은 **우연이 아니라 수론적 필연**이며, 본 P-110 이 그 첫 좌표 매핑이다.
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

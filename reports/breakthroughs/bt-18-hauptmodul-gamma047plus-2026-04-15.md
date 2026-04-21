@@ -7,8 +7,8 @@ title: "BT-18 Moonshine 47 — Hauptmodul Γ₀(47)+ genus 0 직접 감사"
 status: PARTIAL
 method: HEXA-FIRST — Ogg 1975 / Conway-Norton 1979 / Cummins-Gannon 1997 원전 기반
 upstream:
-  - theory/breakthroughs/bt-18-fi24prime-3a-path-2026-04-15.md (P11 Fi_24' PARTIAL)
-  - theory/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P10 BM PARTIAL)
+  - reports/breakthroughs/bt-18-fi24prime-3a-path-2026-04-15.md (P11 Fi_24' PARTIAL)
+  - reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P10 BM PARTIAL)
 external_references:
   - Ogg, A. P. "Automorphismes de courbes modulaires", Séminaire Delange-Pisot-Poitou 16e année (1974/75).
   - Conway, J. H. & Norton, S. P. "Monstrous Moonshine", Bull. LMS 11 (1979), 308-339.

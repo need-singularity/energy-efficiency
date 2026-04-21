@@ -693,3 +693,33 @@ e-phonon 결합상수 λ 는 n=6 약수로 3 영역 구획:
 3. **[N?] 2Δ/kTc 상한 = 6 (= σ/φ)**: 현재 관측 최대 5.5 (Ba122 pnictide). 어떤 실제 SC 도 6 초과 불가.
 4. **[N?] λ_eff 상한 = 2 = φ(6)**: 그 이상은 bipolaron 붕괴 → SC 실패. LaH₁₀ λ≈2.6 의 실측 재검증 대상.
 5. **[N?] AZ 10-class 외 SC 부존재**: 10 = σ−φ 폐쇄. 11번째 SC 위상 클래스 발견 시 n=6 관통 정리 기각.
+
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

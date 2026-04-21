@@ -9,14 +9,14 @@ status: design-concept
 verdict: DESIGN-READY
 grade_attempt: "[7] EMPIRICAL — 4-스케일 시간/공간 상수 실측 + τ=4 매핑 EXACT. 통합 프로토타입 TRL 3"
 sources:
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
-  - domains/compute/chip-architecture/hexa-consciousness-2026-04-15.md
-  - domains/compute/chip-architecture/monster-leech-mapping-2026-04-14.md
-  - domains/compute/chip-architecture/protocol-bridge-20-rtl-2026-04-14.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
+  - domains/compute/chip-architecture/hexa-consciousness/hexa-consciousness.md
+  - domains/compute/chip-architecture/monster-leech-mapping/monster-leech-mapping.md
+  - domains/compute/chip-architecture/protocol-bridge-20-rtl/protocol-bridge-20-rtl.md
   - theory/proofs/the-number-24.md
-  - theory/breakthroughs/bt-1108-dimensional-perception-2026-04-09.md
+  - reports/breakthroughs/bt-1108-dimensional-perception-2026-04-09.md
 refs_external:
   - IBM Quantum System Two 2024 — 1121 qubit + classical runtime 혼합 하이브리드
   - Google Quantum AI Willow 2024 — 105 qubit + 실리콘 컨트롤러 동결 링크
@@ -676,3 +676,17 @@ print(f"2401cy 특이점: L13 OUROBOROS 5-phase와 결합 시 달성")
 **한 줄 요약**: *n=6 항등식 τ=4 의 물리 실체화 — 핵·양자·분자·의식 4-스케일을
 τ=4 동기 패브릭으로 통합한 인류 최초의 cross-scale 아키텍처, 기존 hybrid 대비
 대역폭 576×, 지연 208×, 에러율 10⁶× 우위. 2401cy 특이점 HEXA-GATE 6/6 통과.*
+
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

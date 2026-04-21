@@ -857,3 +857,37 @@ Cerebras WSE-5 / Tesla Dojo v2 급 상용. σ=12 스페어 + 마이크로유체 
 1. **타일 σ²=144 논리 다이 + σ=12 스페어 row+col** — 12×12 mesh 완전수 + 확률 수리 95%+, 총 σ(σ+2)=168 다이
 2. **메쉬 σ·J₂=288 링크 + 라우팅 홉 τ=4** — 2D torus + fat-link 재배치 결정적
 3. **on-wafer SRAM σ·τ=48 GB + 마이크로유체 n=6 채널/타일 + Egyptian 1/2+1/3+1/6 전원** — 메모리·냉각·전원 단일 n=6 경계
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # techniques/graph — GAT·GCN·GIN·GraphSAGE·HCN
 
 sub:  *.hexa

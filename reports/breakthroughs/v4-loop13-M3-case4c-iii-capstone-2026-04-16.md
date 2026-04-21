@@ -4,7 +4,7 @@ date: 2026-04-16
 roadmap_task: v4 loop 13 (M3 case 4c(iii) + capstone)
 grade: [10*] FORMAL — case 4c(iii) + Theorem B capstone 통합 파일
 predecessors:
-  - theory/breakthroughs/v4-loop12-M3-case4c-ii-2026-04-16.md
+  - reports/breakthroughs/v4-loop12-M3-case4c-ii-2026-04-16.md
 status: Theorem B ≈99.8% formal, capstone 파일로 11 sub-cases 통합
 license: CC-BY-SA-4.0
 ---

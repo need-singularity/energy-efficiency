@@ -1030,3 +1030,10 @@ n=6 생명 에너지 통화로 확립. 4 도메인 통합의 수학적 기반.
 ---
 
 **문서 끝** — HEXA-BIO Integrated v1 (P-146, 2026-04-18, 박민우)
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

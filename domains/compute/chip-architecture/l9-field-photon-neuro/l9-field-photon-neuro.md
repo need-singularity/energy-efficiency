@@ -9,7 +9,7 @@ verdict: DESIGN-READY (L9b/L9c) + CONCEPT (L9a)
 grade_attempt: "[7] EMPIRICAL — Intel Loihi 2 + Xanadu Borealis 실증, L9a 이론"
 sources:
   - reports/chip_comparison_l1_l10.md (L9a/L9b/L9c 3 행)
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
   - theory/proofs/the-number-24.md
 refs_external:
   - Intel Loihi 2 2024 (뉴로모픽)
@@ -269,3 +269,29 @@ L9b 의 **SPDC 광원 + SNSPD 검출기** 는 L12 핵 감마와 경쟁할 수 �
 
 **문서 상태**: CHIP-P8-3 승격 완료. L9 (3 서브층) PARTIAL → OK.
 **한 줄 요약**: *L9a+L9b+L9c 세 매질 이종 혼성층이 n=6 관통으로 한 레이어로 통합, 외계인급 신경형 80 pJ/op 12배↓ + 광양자 864 모드.*
+
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

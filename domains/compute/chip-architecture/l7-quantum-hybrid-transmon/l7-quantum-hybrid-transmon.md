@@ -9,8 +9,8 @@ verdict: DESIGN-READY
 grade_attempt: "[7] EMPIRICAL — IBM/Google transmon + Delft spin-qubit 재인용"
 sources:
   - reports/chip_comparison_l1_l10.md (L7 행)
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit-2026-04-15.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/mk3-roadmap-l1-l15-audit/mk3-roadmap-l1-l15-audit.md
   - theory/proofs/the-number-24.md
 refs_external:
   - IBM Condor 1121-qubit transmon 2023
@@ -263,3 +263,25 @@ L7 이 `σ·φ = n·τ = J₂ = 24` 를 관통하는 **5 경로**:
 
 **문서 상태**: CHIP-P8-3 승격 완료. L7 PARTIAL → OK.
 **한 줄 요약**: *6-qubit hexagonal + σ=12 coupling + d=6 surface = J₂=24 관통, 외계인급 논리밀도 10 logical qubit/mm².*
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

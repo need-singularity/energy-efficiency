@@ -470,8 +470,8 @@ atlas.n6 L15424~L15444:
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` — 전 구역 실측 (106,899 줄, 2026-04-15)
 - `theory/proofs/theorem-r1-uniqueness.md` — σ·φ=n·τ 3 증명 원문
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` — Theorem B
-- `theory/breakthroughs/millennium-dfs-complete-2026-04-11.md` — DFS 51건
-- `theory/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md` — autonomous DFS
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` — DFS 51건
+- `reports/breakthroughs/bt-1393-n6-dfs-10k-autonomous-2026-04-12.md` — autonomous DFS
 - `theory/study/p0/` — 9 건
 - `theory/study/p1/` — 9 건
 - `theory/study/p2/` — 6 건

@@ -1673,3 +1673,10 @@ const int QUENCH_REDUN = N / PHI;          // 3
 §7 검증 Python stdlib only. OEIS A000203/A000005/A000010/A001414/A000396 자동 유도, 하드코딩 0.
 선행 논문 14 건 봉합 (이론 5 + 물리 5 + 측정 2 + 제품 2), atlas 325/325 EXACT.
 핵심 정리 σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2) 14 논문 전역 재확인 완료.*
+
+## mk_history
+
+- Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
+- Mk.II: pending — fill per-section content with domain expert review.
+- Mk.III: pending — full verification data + external citations.
+

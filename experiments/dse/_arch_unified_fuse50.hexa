@@ -1,0 +1,503 @@
+// _arch_unified_fuse50.hexa — DSE-P4-2 arch_unified 4-mode fuse 상위 50셀 시뮬
+// 포팅 원본: experiments/dse/_arch_unified_fuse50.py (py 삭제 동반)
+// 규칙: HEXA-FIRST, AI-NATIVE, 정수 연산, 결정적(재현), atlas 비편집.
+//
+// 목적: cross_matrix_v3_full.json 의 상위 50 셀에 대해
+//   arch_unified.hexa 의 4-mode dispatch (INDUSTRIAL/QUANTUM/SELFORG/ADAPTIVE) +
+//   fuse_modes(가중합) 을 적용하여 hybrid_score 분포/요약을 생성.
+//
+// 입력 : experiments/dse/cross_matrix_v3_full.json   (read-only)
+// 출력 : experiments/dse/arch_unified_fuse50.json    (JSON payload)
+//         experiments/dse/arch_unified_fuse50_report.md (요약 MD)
+//
+// 전제: stage1+ hexa 런타임에서 read_file / json_parse / write_file 지원.
+//       stage0 로컬 런에서는 compile 통과만 검증.
+
+// ── n=6 상수 (arch_unified.hexa 와 동일) ─────────────────────
+let SIGMA6: i64 = 12
+let TAU6: i64 = 4
+let PHI6: i64 = 2
+let SOPFR6: i64 = 5
+let SCALE: i64 = 1000
+
+let MODE_INDUSTRIAL: i64 = 1
+let MODE_QUANTUM: i64 = 2
+let MODE_SELFORG: i64 = 3
+let MODE_ADAPTIVE: i64 = 4
+
+let SEED: i64 = 42
+
+fn mode_name(m: i64) -> string {
+    if m == MODE_INDUSTRIAL { return "INDUSTRIAL" }
+    if m == MODE_QUANTUM { return "QUANTUM" }
+    if m == MODE_SELFORG { return "SELFORG" }
+    if m == MODE_ADAPTIVE { return "ADAPTIVE" }
+    return "UNKNOWN"
+}
+
+fn mode_weight(m: i64) -> i64 {
+    if m == MODE_INDUSTRIAL { return 7 }
+    if m == MODE_QUANTUM { return 4 }
+    if m == MODE_SELFORG { return 5 }
+    if m == MODE_ADAPTIVE { return 6 }
+    return 0
+}
+
+fn abs_val(x: i64) -> i64 {
+    if x < 0 { return -x }
+    return x
+}
+
+fn clamp01k(v: i64) -> i64 {
+    if v < 0 { return 0 }
+    if v > SCALE { return SCALE }
+    return v
+}
+
+// ── pipe_* (arch_unified.hexa 의 Python 포팅과 동일 로직) ───────
+
+fn pipe_industrial(inp: i64) -> i64 {
+    let base = SIGMA6 * TAU6   // 48
+    let hit = abs_val(inp - base)
+    let score = SCALE - hit * 10
+    return clamp01k(score)
+}
+
+fn pipe_quantum(inp: i64) -> i64 {
+    let c0 = SCALE - abs_val(inp - SIGMA6) * 20
+    let c1 = SCALE - abs_val(inp - SIGMA6 - TAU6) * 15
+    let c2 = SCALE - abs_val(inp - SIGMA6 + TAU6) * 25
+    let mut best = c0
+    if c1 > best { best = c1 }
+    if c2 > best { best = c2 }
+    if best < 0 { return 0 }
+    return best
+}
+
+fn pipe_selforg(inp: i64) -> i64 {
+    let group = inp * PHI6 + SIGMA6
+    let solo = inp + SIGMA6 / 2
+    let gain = group - solo
+    let score = SCALE / 2 + gain * 5
+    return clamp01k(score)
+}
+
+fn pipe_adaptive(inp: i64) -> i64 {
+    let target = SIGMA6 + TAU6  // 16
+    let mut gene = inp
+    let mut k: i64 = 0
+    while k < 3 {
+        let diff = target - gene
+        gene = gene + diff / 2
+        k = k + 1
+    }
+    let score = SCALE - abs_val(gene - target) * SOPFR6 * 10
+    return clamp01k(score)
+}
+
+fn run_pipeline(mode: i64, inp: i64) -> i64 {
+    if mode == MODE_INDUSTRIAL { return pipe_industrial(inp) }
+    if mode == MODE_QUANTUM    { return pipe_quantum(inp) }
+    if mode == MODE_SELFORG    { return pipe_selforg(inp) }
+    if mode == MODE_ADAPTIVE   { return pipe_adaptive(inp) }
+    return 0
+}
+
+fn fuse_modes(mode_a: i64, mode_b: i64, inp: i64) -> i64 {
+    let sa = run_pipeline(mode_a, inp)
+    let sb = run_pipeline(mode_b, inp)
+    let wa = mode_weight(mode_a)
+    let wb = 10 - wa
+    return (sa * wa + sb * wb) / 10
+}
+
+// ── 결정적 해시 (Python hash() 재현성 확보용 복제) ────────────
+// Python: h = (h * 131 + ord(ch)) & 0xFFFFFFFF
+fn stable_hash(key: string) -> i64 {
+    let mut h: i64 = 0
+    let n = len(key)
+    let mut i: i64 = 0
+    while i < n {
+        let ch = key.char_code_at(i)
+        h = (h * 131 + ch) & 0xFFFFFFFF
+        i = i + 1
+    }
+    return h
+}
+
+// ── 셀 → mode_pair 매핑 (원본 select_mode_pair 와 동일 규칙) ──
+// fit 단위: 원본은 float 0~1. 여기서는 f_milli = round(fit * 1000).
+//   fit > 0.9  ↔ f_milli > 900
+//   fit > 0.8  ↔ f_milli > 800
+//   fit > 0.7  ↔ f_milli > 700
+fn select_mode_pair(f_milli: i64, tech: string, domain: string) -> list {
+    let key = tech + "|" + domain
+    let h = stable_hash(key) % 3
+    if f_milli > 900 {
+        // IND + [QNT, ADP, SLF][h]
+        let subs: list = [MODE_QUANTUM, MODE_ADAPTIVE, MODE_SELFORG]
+        return [MODE_INDUSTRIAL, subs[h]]
+    }
+    if f_milli > 800 {
+        let subs: list = [MODE_ADAPTIVE, MODE_SELFORG, MODE_INDUSTRIAL]
+        return [MODE_QUANTUM, subs[h]]
+    }
+    if f_milli > 700 {
+        let subs: list = [MODE_ADAPTIVE, MODE_INDUSTRIAL, MODE_QUANTUM]
+        return [MODE_SELFORG, subs[h]]
+    }
+    let subs: list = [MODE_INDUSTRIAL, MODE_QUANTUM, MODE_ADAPTIVE]
+    return [MODE_SELFORG, subs[h]]
+}
+
+// ── 셀 → pipe 입력 정수 (결정적) ─────────────────────────────
+// base = round(fit * SIGMA6*TAU6) + alien
+// pert = (stable_hash(tech) + cell_idx) % (2*TAU6 + 1) - TAU6
+// inp = base + pert
+// fit 은 0~1 float → f_milli/1000 로 곱 재현 (round).
+fn cell_input(f_milli: i64, alien: i64, cell_idx: i64, tech: string) -> i64 {
+    let scale_t = SIGMA6 * TAU6  // 48
+    // round(fit * 48) = (f_milli * 48 + 500) / 1000
+    let base = (f_milli * scale_t + 500) / 1000 + alien
+    let h = stable_hash(tech)
+    let modn = 2 * TAU6 + 1
+    let mut pert = (h + cell_idx) % modn - TAU6
+    return base + pert
+}
+
+// ── IO 유틸 (stage1+ 빌트인 전제) ──────────────────────────────
+fn _str(x) -> string {
+    let t = type_of(x)
+    if t == "str" || t == "string" { return x }
+    return ""
+}
+
+fn get_or(obj, key: string, default_val) {
+    try {
+        let v = obj[key]
+        let t = type_of(v)
+        if t == "null" { return default_val }
+        if t == "nil"  { return default_val }
+        return v
+    } catch err {
+        return default_val
+    }
+}
+
+fn repo_root() -> string {
+    // env("N6_ARCH") 가능하면 우선, 아니면 HOME/Dev/n6-architecture
+    let e = env("N6_ARCH")
+    if len(e) > 0 { return e }
+    return env("HOME") + "/Dev/n6-architecture"
+}
+
+fn json_escape(s: string) -> string {
+    let mut r = s
+    r = r.replace("\\", "\\\\")
+    r = r.replace("\"", "\\\"")
+    return r
+}
+
+// fit float → 밀리정수 (round)
+fn fit_to_milli(fit) -> i64 {
+    let t = type_of(fit)
+    if t == "int" || t == "i64" { return to_int(fit) * 1000 }
+    // float: int(round(f*1000)) 재현 (하드코딩 없이 to_int(f*1000 + 0.5))
+    let fmul = fit * 1000.0 + 0.5
+    return to_int(fmul)
+}
+
+// ── 메인 ─────────────────────────────────────────────────────
+fn run_fuse50() {
+    let ROOT = repo_root()
+    let MATRIX = ROOT + "/experiments/dse/cross_matrix_v3_full.json"
+    let OUT_JSON = ROOT + "/experiments/dse/arch_unified_fuse50.json"
+    let OUT_MD = ROOT + "/experiments/dse/arch_unified_fuse50_report.md"
+
+    println("[DSE-P4-2] cross_matrix 로드: " + MATRIX)
+    let raw = read_file(MATRIX)
+    if len(raw) == 0 {
+        println("[DSE-P4-2] ERR: cross_matrix 비어있음 또는 읽기 실패")
+        return
+    }
+    let data = json_parse(raw)
+    let cells = get_or(data, "cells", [])
+    let total_cells = len(cells)
+    println("[DSE-P4-2] 총 셀: " + to_string(total_cells))
+
+    // 1) fit 내림차순 stable sort — 원본 리스트는 무수정.
+    //    인덱싱 배열 만들고 selection sort (N=86240 이면 O(N²) 위험 →
+    //    단순히 top 50 만 뽑는 전략: k-th largest partial sort).
+    //    여기선 하나의 pass 로 top-50 유지 (heap 대신 정렬된 배열).
+    let mut top_idx: list = []   // cell indices
+    let mut top_fit_milli: list = [] // 대응 f_milli
+    let KEEP: i64 = 50
+
+    let mut i: i64 = 0
+    while i < total_cells {
+        let cell = cells[i]
+        let fit = get_or(cell, "f", 0)
+        let fmil = fit_to_milli(fit)
+
+        // insert by (fit desc, idx asc) tie-breaker (원본 key=(-f, idx))
+        let cur_len = len(top_idx)
+        if cur_len < KEEP {
+            // append then bubble into position
+            top_idx = top_idx.push(i)
+            top_fit_milli = top_fit_milli.push(fmil)
+            let mut j = len(top_idx) - 1
+            while j > 0 {
+                let prev = j - 1
+                let pf = top_fit_milli[prev]
+                if pf > fmil { break }
+                if pf == fmil && top_idx[prev] < i { break }
+                // swap
+                top_fit_milli[j] = top_fit_milli[prev]
+                top_fit_milli[prev] = fmil
+                top_idx[j] = top_idx[prev]
+                top_idx[prev] = i
+                j = prev
+            }
+        } else {
+            let last = KEEP - 1
+            let lf = top_fit_milli[last]
+            let li = top_idx[last]
+            // better than last?
+            let better = (fmil > lf) || (fmil == lf && i < li)
+            if better {
+                top_fit_milli[last] = fmil
+                top_idx[last] = i
+                let mut j = last
+                while j > 0 {
+                    let prev = j - 1
+                    let pf = top_fit_milli[prev]
+                    let pi = top_idx[prev]
+                    let swap_needed = (pf < fmil) || (pf == fmil && pi > top_idx[j])
+                    if !swap_needed { break }
+                    top_fit_milli[j] = pf
+                    top_fit_milli[prev] = fmil
+                    top_idx[j] = pi
+                    top_idx[prev] = top_idx[j + 1]   // original i
+                    j = prev
+                }
+            }
+        }
+
+        i = i + 1
+    }
+
+    // 2) top 50 셀에 대해 fuse
+    let mut entries_json = ""
+    let mut entries_md_rows = ""
+    let mut pair_keys: list = []
+    let mut pair_counts: list = []
+    let mut hybrid_min: i64 = SCALE + 1
+    let mut hybrid_max: i64 = -1
+    let mut hybrid_sum: i64 = 0
+
+    let mut rank: i64 = 1
+    let n_top = len(top_idx)
+    let mut r: i64 = 0
+    while r < n_top {
+        let cell_idx = top_idx[r]
+        let cell = cells[cell_idx]
+        let tech = _str(get_or(cell, "t", ""))
+        let domain = _str(get_or(cell, "d", ""))
+        let source = _str(get_or(cell, "s", ""))
+        let fit = get_or(cell, "f", 0)
+        let alien = to_int(get_or(cell, "a", 0))
+        let fmil = fit_to_milli(fit)
+
+        let pair = select_mode_pair(fmil, tech, domain)
+        let mode_a = pair[0]
+        let mode_b = pair[1]
+        let wa = mode_weight(mode_a)
+        let wb = 10 - wa
+
+        let inp = cell_input(fmil, alien, cell_idx, tech)
+        let score_a = run_pipeline(mode_a, inp)
+        let score_b = run_pipeline(mode_b, inp)
+        let hybrid = fuse_modes(mode_a, mode_b, inp)
+
+        if hybrid < hybrid_min { hybrid_min = hybrid }
+        if hybrid > hybrid_max { hybrid_max = hybrid }
+        hybrid_sum = hybrid_sum + hybrid
+
+        let pair_name = mode_name(mode_a) + "+" + mode_name(mode_b)
+
+        // pair_counts 업데이트
+        let mut pi: i64 = 0
+        let mut found: bool = false
+        while pi < len(pair_keys) {
+            if pair_keys[pi] == pair_name {
+                pair_counts[pi] = pair_counts[pi] + 1
+                found = true
+                break
+            }
+            pi = pi + 1
+        }
+        if !found {
+            pair_keys = pair_keys.push(pair_name)
+            pair_counts = pair_counts.push(1)
+        }
+
+        // entries JSON 누적
+        let fit_str = to_string(fit)
+        let mut je = "\n    {"
+        je = je + "\"rank\":" + to_string(rank) + ","
+        je = je + "\"cell_idx\":" + to_string(cell_idx) + ","
+        je = je + "\"tech\":\"" + json_escape(tech) + "\","
+        je = je + "\"domain\":\"" + json_escape(domain) + "\","
+        je = je + "\"source\":\"" + json_escape(source) + "\","
+        je = je + "\"fit\":" + fit_str + ","
+        je = je + "\"alien_idx\":" + to_string(alien) + ","
+        je = je + "\"input\":" + to_string(inp) + ","
+        je = je + "\"mode_a\":\"" + mode_name(mode_a) + "\","
+        je = je + "\"mode_b\":\"" + mode_name(mode_b) + "\","
+        je = je + "\"weight_a\":" + to_string(wa) + ","
+        je = je + "\"weight_b\":" + to_string(wb) + ","
+        je = je + "\"score_a\":" + to_string(score_a) + ","
+        je = je + "\"score_b\":" + to_string(score_b) + ","
+        je = je + "\"hybrid_score\":" + to_string(hybrid)
+        je = je + "}"
+        if entries_json != "" { entries_json = entries_json + "," }
+        entries_json = entries_json + je
+
+        // MD 표 행
+        let mut mdr = "| " + to_string(rank) + " | " + to_string(cell_idx)
+        mdr = mdr + " | `" + tech + "` | " + domain + " | `" + source + "` | "
+        mdr = mdr + fit_str + " | " + to_string(alien)
+        mdr = mdr + " | " + mode_name(mode_a) + "(" + to_string(wa) + ")"
+        mdr = mdr + " | " + mode_name(mode_b) + "(" + to_string(wb) + ")"
+        mdr = mdr + " | " + to_string(score_a) + " | " + to_string(score_b)
+        mdr = mdr + " | " + to_string(hybrid) + " |\n"
+        entries_md_rows = entries_md_rows + mdr
+
+        rank = rank + 1
+        r = r + 1
+    }
+
+    let hybrid_mean_x100 = if n_top > 0 { hybrid_sum * 100 / n_top } else { 0 }
+    let hm_int = hybrid_mean_x100 / 100
+    let hm_frac = hybrid_mean_x100 - hm_int * 100
+
+    // 3) 출력 JSON 조립
+    let mut pair_json = ""
+    // sort by -count
+    let mut pjkeys: list = []
+    let mut pjcnts: list = []
+    let mut k: i64 = 0
+    while k < len(pair_keys) {
+        pjkeys = pjkeys.push(pair_keys[k])
+        pjcnts = pjcnts.push(pair_counts[k])
+        k = k + 1
+    }
+    // selection-sort desc by count
+    let mut ii: i64 = 0
+    while ii < len(pjcnts) {
+        let mut best = ii
+        let mut jj = ii + 1
+        while jj < len(pjcnts) {
+            if pjcnts[jj] > pjcnts[best] { best = jj }
+            jj = jj + 1
+        }
+        if best != ii {
+            let tc = pjcnts[ii]
+            let tk = pjkeys[ii]
+            pjcnts[ii] = pjcnts[best]
+            pjkeys[ii] = pjkeys[best]
+            pjcnts[best] = tc
+            pjkeys[best] = tk
+        }
+        ii = ii + 1
+    }
+    let mut pk: i64 = 0
+    while pk < len(pjkeys) {
+        if pair_json != "" { pair_json = pair_json + "," }
+        pair_json = pair_json + "\"" + json_escape(pjkeys[pk]) + "\":" + to_string(pjcnts[pk])
+        pk = pk + 1
+    }
+
+    let mut json_out = "{\n"
+    json_out = json_out + "  \"meta\": {\n"
+    json_out = json_out + "    \"doc\": \"DSE-P4-2 arch_unified fuse50 — 상위 50셀 hybrid 선택 시뮬\",\n"
+    json_out = json_out + "    \"date\": \"2026-04-14\",\n"
+    json_out = json_out + "    \"seed\": " + to_string(SEED) + ",\n"
+    json_out = json_out + "    \"source_matrix\": \"cross_matrix_v3_full.json\",\n"
+    json_out = json_out + "    \"source_cells\": " + to_string(total_cells) + ",\n"
+    json_out = json_out + "    \"engine\": \"engine/arch_unified.hexa (hexa 포팅)\",\n"
+    json_out = json_out + "    \"rule\": \"fit 대역 → 2 mode pair (INDUSTRIAL/QUANTUM/SELFORG/ADAPTIVE)\",\n"
+    json_out = json_out + "    \"n6_constants\": {\"sigma\":" + to_string(SIGMA6)
+    json_out = json_out + ",\"tau\":" + to_string(TAU6)
+    json_out = json_out + ",\"phi\":" + to_string(PHI6)
+    json_out = json_out + ",\"sopfr\":" + to_string(SOPFR6)
+    json_out = json_out + ",\"SCALE\":" + to_string(SCALE) + "}\n"
+    json_out = json_out + "  },\n"
+    json_out = json_out + "  \"stats\": {\n"
+    json_out = json_out + "    \"pair_distribution\": {" + pair_json + "},\n"
+    json_out = json_out + "    \"hybrid_score_min\": " + to_string(hybrid_min) + ",\n"
+    json_out = json_out + "    \"hybrid_score_max\": " + to_string(hybrid_max) + ",\n"
+    let mut hm_frac_str = to_string(hm_frac)
+    if hm_frac < 10 { hm_frac_str = "0" + hm_frac_str }
+    json_out = json_out + "    \"hybrid_score_mean\": " + to_string(hm_int) + "." + hm_frac_str + "\n"
+    json_out = json_out + "  },\n"
+    json_out = json_out + "  \"entries\": [" + entries_json + "\n  ]\n"
+    json_out = json_out + "}\n"
+
+    write_file(OUT_JSON, json_out)
+    println("[DSE-P4-2] JSON 작성: " + OUT_JSON)
+
+    // 4) MD 요약
+    let mut md = ""
+    md = md + "# DSE-P4-2 — arch_unified 4-mode fuse 시뮬 (상위 50셀)\n\n"
+    md = md + "**작성일**: 2026-04-14  \n"
+    md = md + "**엔진**: `engine/arch_unified.hexa` (INDUSTRIAL / QUANTUM / SELFORG / ADAPTIVE)  \n"
+    md = md + "**소스**: `cross_matrix_v3_full.json` — " + to_string(total_cells) + " 셀 중 fit 내림차순 상위 50  \n"
+    md = md + "**seed**: " + to_string(SEED) + "  \n"
+    md = md + "**규칙**: fit 대역별 2 모드 선정 → 가중합 hybrid_score\n\n"
+    md = md + "## 매핑 규칙 (fit → mode pair)\n\n"
+    md = md + "주 분기는 fit 대역, 서브 분기는 `hash(tech|domain) % 3` 결정적 해시로 mode_b 를 3 갈래 분산.\n\n"
+    md = md + "| fit 대역 | mode_a | mode_b 후보 (sub=0/1/2) | 의도 |\n"
+    md = md + "|---|---|---|---|\n"
+    md = md + "| > 0.9 | INDUSTRIAL (w=7) | QUANTUM / ADAPTIVE / SELFORG | 확정 주축 + 다양탐색 |\n"
+    md = md + "| 0.8~0.9 | QUANTUM (w=4) | ADAPTIVE / SELFORG / INDUSTRIAL | 불확실 진화 |\n"
+    md = md + "| 0.7~0.8 | SELFORG (w=5) | ADAPTIVE / INDUSTRIAL / QUANTUM | 정적창발 보강 |\n"
+    md = md + "| ≤ 0.7 | SELFORG (w=5) | INDUSTRIAL / QUANTUM / ADAPTIVE | 저확신 보수혼합 |\n\n"
+    md = md + "## 모드 쌍 분포 (상위 50셀)\n\n"
+    md = md + "| 모드 쌍 | 빈도 | 비율 |\n|---|---|---|\n"
+    let mut p2: i64 = 0
+    while p2 < len(pjkeys) {
+        let c = pjcnts[p2]
+        let pct_x10 = c * 1000 / KEEP
+        let pct_int = pct_x10 / 10
+        md = md + "| " + pjkeys[p2] + " | " + to_string(c) + " | " + to_string(pct_int) + "% |\n"
+        p2 = p2 + 1
+    }
+    md = md + "\n## 50 셀 전체 표\n\n"
+    md = md + "| # | cell_idx | tech | domain | source | fit | alien | mode_a(wa) | mode_b(wb) | score_a | score_b | hybrid |\n"
+    md = md + "|---|---|---|---|---|---|---|---|---|---|---|---|\n"
+    md = md + entries_md_rows
+    md = md + "\n## hybrid_score 통계\n\n"
+    md = md + "- min: " + to_string(hybrid_min) + "\n"
+    md = md + "- max: " + to_string(hybrid_max) + "\n"
+    md = md + "- mean: " + to_string(hm_int) + "." + hm_frac_str + "\n\n"
+    md = md + "## 검증 노트\n\n"
+    md = md + "- `arch_unified.hexa` 의 `run_pipeline`/`fuse_modes`/`mode_weight` 를 1:1 hexa 포팅 (정수만).\n"
+    md = md + "- n=6 상수(σ=12, τ=4, φ=2, sopfr=5) 외 임의 값 없음.\n"
+    md = md + "- cross_matrix_v3_full.json 원본 미수정 (read-only).\n"
+    md = md + "- seed=" + to_string(SEED) + ", sort stable → 재현 가능.\n"
+
+    write_file(OUT_MD, md)
+    println("[DSE-P4-2] MD 작성: " + OUT_MD)
+
+    println("")
+    println("=== 모드 쌍 분포 ===")
+    let mut p3: i64 = 0
+    while p3 < len(pjkeys) {
+        println("  " + pjkeys[p3] + " " + to_string(pjcnts[p3]))
+        p3 = p3 + 1
+    }
+    println("hybrid min/mean/max = " + to_string(hybrid_min) + " / " + to_string(hm_int) + "." + hm_frac_str + " / " + to_string(hybrid_max))
+}
+
+run_fuse50()

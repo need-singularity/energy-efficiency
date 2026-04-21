@@ -756,3 +756,13 @@ print(f"  DSE: {dse_total} → n=6 필터 → {dse_filtered}")
 print(f"  모든 assert 통과 — EXACT 판정 확인")
 print("=" * 60)
 ```
+
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

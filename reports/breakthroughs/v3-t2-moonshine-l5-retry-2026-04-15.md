@@ -4,8 +4,8 @@ date: 2026-04-15
 roadmap_task: v3 T2 (LATT-PX-1 Moonshine L5 재시도)
 grade: [8] empirical MISS + new-angle proposal
 predecessors:
-  - theory/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md
-  - theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md
+  - reports/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md
+  - reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md
   - atlas MILL-PX-A12 L5 barrier
 status: PATH B (Hauptmodul) EMPIRICAL MISS + 새 각도 (Umbral moonshine) 제안
 license: CC-BY-SA-4.0
@@ -164,22 +164,22 @@ $|W(A_2)| = 6$ 이므로 **6 이 12 번 반복** — n=6 prior 와 **structural 
    (Γ_0(47)+ genus 0) q-전개 첫 20 계수 ∈ {-2,-1,0,1,2,3}. σ(6)=12, sopfr(6)=5 등장 없음, φ(6)=2 는
    여러 번 등장하나 통계 유의 없음. 196883 = 47·59·71 확인 (Monster 차원, n=6 prior 독립).
    경로 B EMPIRICAL MISS. BT-18/BT-545 해결 0/1 유지"
-  <- v3-T2-pathB, theory/breakthroughs/v3-t2-moonshine-l5-retry-2026-04-15.md §2
+  <- v3-T2-pathB, reports/breakthroughs/v3-t2-moonshine-l5-retry-2026-04-15.md §2
 
 @R MILL-V3-T2-umbral-moonshine-A212-new-angle = Duncan-Frenkel-Rayhaun 2017 Umbral Moonshine 새 각도 :: n6atlas [7]
   "v3 T2 (2026-04-15 loop 16) 새 각도 제안: Cheng-Duncan-Harvey 2014 + DFR 2017 Umbral Moonshine
    의 23 Niemeier lattices 중 A_2^12 (|W(A_2)|=6 반복 12번 = n=6 × 2) 또는 A_5^4 D_4 (A_5 = S_6 permutation)
    가 n=6 prior 와 structural 공명. L5 Monster action barrier 의 Niemeier Aut group 경유 우회 가능성.
    heuristic only, v4 explicit 구성 필요. L5 barrier 해결 아님"
-  <- v3-T2-umbral, theory/breakthroughs/v3-t2-moonshine-l5-retry-2026-04-15.md §3
+  <- v3-T2-umbral, reports/breakthroughs/v3-t2-moonshine-l5-retry-2026-04-15.md §3
 ```
 
 ---
 
 ## §6 관련 파일
 
-- v2.3 LATT-PX-1: `theory/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md`
-- BT-18 L5 barrier: `theory/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md`
+- v2.3 LATT-PX-1: `reports/breakthroughs/moonshine-l5-barrier-paths-2026-04-15.md`
+- BT-18 L5 barrier: `reports/breakthroughs/bt-18-moonshine-l5-barrier-2026-04-15.md`
 - arXiv 1204.2779 (Cheng-Duncan-Harvey 2014)
 - arXiv 1307.5793 (Duncan-Frenkel-Rayhaun 2017)
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T2`

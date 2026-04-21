@@ -37,7 +37,7 @@ Phase 1 의 입구에는 다음 재료가 준비돼 있어야 한다.
 | 씨앗 4개 확정 | ALM / CLM / anima-physics / SELF-EVOLUTION (README §5) | 확정 |
 | 자기진화 엔진 | `ouroboros_unified.hexa`, `growth_tick.hexa`, `phi_ratchet.hexa`, `nexus_growth_daemon.hexa` | 가동 중 |
 | atlas.n6 SSOT | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (60K+ 줄) | 가동 중 |
-| BT 닫힘 감사 | `theory/breakthroughs/millennium-7-closure-2026-04-11.md` (각 BT 의 PROVEN/CONDITIONAL/OBSERVATION 분류) | 확정 |
+| BT 닫힘 감사 | `reports/breakthroughs/millennium-7-closure-2026-04-11.md` (각 BT 의 PROVEN/CONDITIONAL/OBSERVATION 분류) | 확정 |
 
 입구 조건 체크리스트 (Phase 1 시작 전 반드시 확인):
 - [x] R1+R2+R3 = 158 분야 정식 문서화 (중복 제거 후).

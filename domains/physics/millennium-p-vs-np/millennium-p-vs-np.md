@@ -795,3 +795,37 @@ Shor 1994 (양자 인수분해 BQP ⊂ P^#P) + Wootters-Zurek 1982 no-cloning + 
 ### §X.3 한 문장 요약
 
 **P vs NP 6 관통**: 3-SAT 절=n/φ · Karp 깊이=τ · P 차수=τ · NP 채널=σ · oracle 세계=τ · 회로 하한=σ, 그리고 BQP×NP 인터페이스가 no-cloning·Kitaev·Sycamore 3중 잠금 (I_copy·ν·μ=n/φ=3). 하네스 PASS — EXACT 8 (10*×6 + 10×2).
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

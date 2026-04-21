@@ -3,13 +3,13 @@
 # 포맷 스펙: hexa-lang self/raw_loader.hexa (L0 와 동일 문법)
 # populate: 기존 .md mandate 에서 추출 (raw#20 own-monotonic — .raw 중복 제외)
 
-own 1 live "doc-korean-required — 모든 .md/주석/커밋 한글 필수"
-  slug doc-korean-required
-  decl CLAUDE.md (domains/, engine/, theory/, theory/*, reports/, experiments/, papers/, bridge/, n6shared/, 각 chip-* domain)
-  scope .md 문서, 소스 내 한글 주석, git commit message
+own 1 live "doc-english-required — English documentation required"
+  slug doc-english-required
+  decl CLAUDE.md (domains/, engine/, theory/, theory/*, reports/, experiments/, papers/, bridge/, n6shared/, each chip-* domain)
+  scope .md documents, source comments, git commit messages — English required
   status live
   since 2026-04-21
-  why CLAUDE.md 22개 이상에서 "한글 필수 (.md/주석/커밋)" 명시. n6-architecture 언어 정책 — 영어 공존은 허용되나 한국어 primary.
+  why n6-architecture language policy (2026-04-21) — documents, comments, commits must be English primary. arXiv compatibility + international contribution priority.
   note hexa-lang /.raw 에 없음 — 프로젝트 고유 (hexa-lang 자체는 언어 중립).
 
 own 2 live "n6-master-identity — σ·φ = n·τ = J₂ = 24 준수"
@@ -128,3 +128,12 @@ own 15 live "paper-canonical-sections — 논문 문서 21섹션 canonical + ver
   status live
   since 2026-04-21
   why .doc-rules.json rules.paper — paper=sscb 수준 canonical 문서 포맷. deprecated_by=@own 2026-04-19 Phase 4 — legacy toggles 은 @own 미선언 파일만 적용하므로 본 .own 선언이 enforce path.
+
+own 16 live "md-domain-registry-required — .md 생성 시 domains/_index.json 등록 필수 + 섹션 자동 생성"
+  slug md-domain-registry-required
+  decl CLAUDE.md domains/_index.json domains/*/_index.json
+  scope domains/<axis>/<name>/ 하위 새 .md (canonical or sub-domain) 생성 시, domains/_index.json axis 섹션 및 domains/<axis>/_index.json domains 배열에 엔트리 등록 필수. 해당 axis 섹션이 없으면 _index.json 에 새로 생성 (axis 추가 + sub-SSOT 파일 생성).
+  status live
+  since 2026-04-21
+  why new sub-domain orphan 방지 — domains/_index.json 이 lens/registry/audit tool 의 canonical index. 미등록 .md 는 SSOT drift 유발.
+  deps raw:schema-guard-mandatory

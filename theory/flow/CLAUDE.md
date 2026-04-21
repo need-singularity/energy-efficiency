@@ -1,3 +1,8 @@
+## Scope (English)
+
+This file is part of the n6-architecture repository.
+See `README.md` and `domains/_index.json` for overall context.
+
 # theory/flow — 설계 흐름
 
 목적: 외계인급 설계 파이프라인, anima 법칙, 설계 흐름

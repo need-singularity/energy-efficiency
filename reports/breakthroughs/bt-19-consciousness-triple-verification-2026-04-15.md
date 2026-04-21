@@ -7,7 +7,7 @@ title: BT-19 의식 3중 융합 — CONJECTURE 독립 검증 (α_IIT·α_GWT=1)
 status: MISS (조건부 PARTIAL)
 method: 외부 문헌 독립 검증 (자기참조 금지, PubMed/Nature/PLOS/Science 기반)
 upstream:
-  - theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 CONJECTURE 제안)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 CONJECTURE 제안)
   - nexus/shared/n6/atlas.n6 (BT-19 기존 [10*] = GUT Hierarchy — 이름 충돌 주의)
 external_sources_verified:
   - Casali AG et al. (2013) "A theoretically based index of consciousness independent of sensory processing and behavior." Sci Transl Med 5(198):198ra105. DOI:10.1126/scitranslmed.3006294

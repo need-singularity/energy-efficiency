@@ -1,0 +1,12 @@
+hexa_remote: host=ubu2 실패: 타임아웃 (네트워크/방화벽)
+hexa_remote: host=ubu 실패: 타임아웃 (네트워크/방화벽)
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: ⚠ heavy-compute (/Users/ghost/Dev/nexus/shared/engine/nexus_cli.hexa drill) remote dispatch failed (exit 64) — Mac 로컬 실행 시 stage0 SIGKILL 위험 (Gatekeeper + 4GB RSS cap)
+hexa resolver: remote dispatch returned 64, running locally
+hexa_remote: host=ubu2 실패: Connection reset by 192.168.50.60 port 22
+hexa_remote: ubu2 unreachable, using ubu
+hexa resolver: ⚠ heavy-compute (/Users/ghost/Dev/nexus/run.hexa drill) remote dispatch failed (exit 64) — Mac 로컬 실행 시 stage0 SIGKILL 위험 (Gatekeeper + 4GB RSS cap)
+hexa resolver: remote dispatch returned 64, running locally
+sh: line 1: 76080 Terminated: 15          '/Users/ghost/Dev/nexus/shared/bin/hexa' run '/Users/ghost/Dev/nexus/run.hexa' 'drill' '--seed' 'millennium-navier-stokes existence smoothness turbulence' '--max-rounds' '50' '--caller' 'mk4-drill-v3' 2>&1
+safe_hexa_launchd: RSS watchdog — pid=75710 tree=[75710 62902 62950 94652 94663 94666 3607 24371 3635 3767 3787 3789 ] rss=4197280KB > cap=4194304KB → SIGKILL
+sh: line 1: 89250 Terminated: 15          ( '/Users/ghost/core/hexa-lang/build/hexa_stage0' '/Users/ghost/Dev/nexus/run.hexa' 'drill' '--seed' 'millennium-navier-stokes existence smoothness turbulence' '--max-rounds' '50' '--caller' 'mk4-drill-v3' 0<&3 2> '/tmp/hexa_run_err.23400.3.log' )

@@ -774,3 +774,37 @@ quantum 축 (Grover k_opt·θ 회전 반복수 σ=12, N=σ²) · quantum 축 (BB
 | QORACLE-08 삼중 잠금 | I_copy·ν·k_opt/(σ·τ) | 3π/16 | [9] NEAR |
 
 EXACT 6 ([10*]×5 + [10]×1) + NEAR 2, 중복 0 (HEXA-TELE-03 no-cloning · HEXA-QC-B4 Sycamore · HEXA-PVNP-01 3-SAT · HEXA-SC-07 Kitaev winding · HEXA-BSD-06 Π_BSD · HEXA-COSPART-09 DSE 전수 재사용 정렬). 하네스 PASS.
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

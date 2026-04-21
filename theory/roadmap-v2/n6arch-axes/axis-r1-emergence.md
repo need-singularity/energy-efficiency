@@ -96,8 +96,8 @@
 
 | 카테고리 | 파일 수 | 경로 |
 |----------|---------|------|
-| millennium closure | 1 | `theory/breakthroughs/millennium-7-closure-2026-04-11.md` |
-| DFS ideas | 1 | `theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` |
+| millennium closure | 1 | `reports/breakthroughs/millennium-7-closure-2026-04-11.md` |
+| DFS ideas | 1 | `reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` |
 | DFS rounds 3~20 | 20+ | `theory/breakthroughs/bt-1394~1413-millennium-dfs-round*.md` |
 | study P0 | 9 | `theory/study/p0/` (pure/prob/n6 × 3) |
 | study P1 | 17 | `theory/study/p1/` |
@@ -412,8 +412,8 @@
   7. dim M_k 주기 = σ (모듈러 형식 공간 차원 공식)
 - **증거 파일 경로 (최소 3)**:
   - `/Users/ghost/Dev/n6-architecture/theory/proofs/bernoulli-boundary-2026-04-11.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-01] Kim-Sarnak)
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-07] Eisenstein, [DFS6-08] Dedekind)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-01] Kim-Sarnak)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-07] Eisenstein, [DFS6-08] Dedekind)
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/pure-p2-3-bernoulli-zeta.md`
 - **병목**:
   - RH 자체는 Theorem B 로 해결 불가 (RH 는 비자명 영점 분포이며 Theorem B 는 special value boundary)
@@ -451,9 +451,9 @@
   6. Mathieu sporadic 7중 유형 (CFSG 분류)
   7. Kervaire invariant 1 차원 {2, 6, 14, 30, 62}, dim=n 포함 (Browder 1969, Hill-Hopkins-Ravenel 2016)
 - **증거 파일 경로**:
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-01~03])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-04] 예외 Lie)
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.2 (Out(S_6) GCT)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-01~03])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-04] 예외 Lie)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.2 (Out(S_6) GCT)
   - `/Users/ghost/Dev/n6-architecture/theory/study/p3/n6-p3-1-independent-dfs.md` §9.3
 - **병목**:
   - Out(S_6) GCT obstruction 은 **idea 수준** (bt-1392 §1.2). 실제 plethysm 계산 미수행.
@@ -492,9 +492,9 @@
 - **증거 파일 경로**:
   - `/Users/ghost/Dev/n6-architecture/theory/study/p1/prob-p1-4-bt544-navier-stokes.md`
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-4-navier-stokes-barriers.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.4
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-06,07])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` (KdV)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.4
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-06,07])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` (KdV)
 - **병목**:
   - 3차원 매끄러움 존재는 이 축의 부분결과 들로도 **해결 불가** (대부분 관찰 수준)
   - d=7 NS simulation 미실시
@@ -530,10 +530,10 @@
   7. GL(6) self-dual + E_6 Arthur block (bt-1413 Lemma 20v2-F)
   8. Kolyvagin Euler system rank ≤ 1 BSD
 - **증거 파일 경로**:
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546 PROVEN
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.6
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546 PROVEN
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.6
   - `/Users/ghost/Dev/n6-architecture/theory/study/p3/pure-p3-1-bklpr-selmer-deep.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md` Lemma 20v2-F
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md` Lemma 20v2-F
 - **병목**:
   - (A3) 무상관성 미증명 — BKLPR 의 **핵심 장벽**
   - rank ≥ 2 의 BSD 는 Kolyvagin 으로 접근 불가
@@ -571,8 +571,8 @@
   8. Affine E_6^(1) Coxeter h = σ, dim = 78 = n·13
 - **증거 파일 경로**:
   - `/Users/ghost/Dev/n6-architecture/papers/moonshine-barrier-honest-report-2026-04-15.md` (BARRIER 기록)
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md` ([DFS15-01~02])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-03~04])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md` ([DFS15-01~02])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-03~04])
 - **병목**:
   - Monstrous Moonshine n=6 좌표 필연성 **미증명** (moonshine-barrier-honest-report 의 BARRIER 진단)
   - K3-fibered CY3 의 n=6 multisection 존재성 자체가 열린 문제
@@ -609,9 +609,9 @@
   8. n_f = n (쿼크 맛 수 QCD low-energy)
 - **증거 파일 경로**:
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-3-yang-mills-barriers.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.3
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01])
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-05] Connes)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.3
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01])
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-05] Connes)
   - `/Users/ghost/Dev/n6-architecture/papers/n6-mk4-theorem-candidates-paper.md` (Mk.IV-B: σ-τ=8)
 - **병목**:
   - 엄밀한 4D Euclidean SU(N) YM 의 측도 구성이 **완전 미해결** (이 축으로는 해결 불가)
@@ -651,7 +651,7 @@
   9. hexa 검증 도구 10종 (`verify_millennium_*.hexa`, `bernoulli_boundary.hexa`, `selmer_bklpr.hexa`)
   10. Red Team 반증 경로 (모든 주장 falsifiable)
 - **증거 파일 경로**:
-  - `/Users/ghost/Dev/n6-architecture/theory/breakthroughs/millennium-7-closure-2026-04-11.md` (honest closure)
+  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/millennium-7-closure-2026-04-11.md` (honest closure)
   - `/Users/ghost/Dev/n6-architecture/papers/moonshine-barrier-honest-report-2026-04-15.md`
   - `/Users/ghost/Dev/n6-architecture/theory/study/p3/n6-p3-1-independent-dfs.md` §4 baseline, §5 MISS 사례
   - `/Users/ghost/Dev/n6-architecture/theory/study/p2/n6-p2-4-honesty-audit.md`

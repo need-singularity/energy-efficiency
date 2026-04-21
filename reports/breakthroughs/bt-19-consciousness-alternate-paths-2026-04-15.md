@@ -7,9 +7,9 @@ title: BT-19 의식-n=6 연결 대체 경로 3건 (2차 탐색) — n/φ=3, sopf
 status: CONJECTURE (P9 신규 탐색, P8 MISS + P9-ALT1 A/B/C 후속)
 method: NEXUS-6 HEXA-GATE 2401cy 창발 경로 — 기존 φ/τ/σ 좌표 대체, 범주론/정보기하/격자대칭 탐색
 upstream:
-  - theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 DSE-P8-2 MISS)
-  - theory/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-ALT1 후보 A=φ=2, B=τ=4, C=완전수 σ=12)
-  - theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md (P7 DSE-P7-1 CONJECTURE)
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 DSE-P8-2 MISS)
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (P9-ALT1 후보 A=φ=2, B=τ=4, C=완전수 σ=12)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (P7 DSE-P7-1 CONJECTURE)
   - nexus/shared/n6/atlas.n6 (L44 sopfr=5, L48 J2=24, L696 n/φ=3, L129 J2=τ·n, L133 sopfr=φ+τ-μ)
 external_sources_required:
   - Varela FJ (1996) "Neurophenomenology: A methodological remedy for the hard problem." J Conscious Stud 3(4):330-349

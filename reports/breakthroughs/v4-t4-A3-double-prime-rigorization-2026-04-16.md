@@ -4,8 +4,8 @@ date: 2026-04-16
 roadmap_task: v4 T4_v4 ((A3″) formulation 엄밀화)
 grade: [10] precise conjecture + falsifiable predictions
 predecessors:
-  - theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
-  - theory/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md
+  - reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
+  - reports/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md
 status: RIGOROUS CONJECTURE + TESTABLE PREDICTIONS
 license: CC-BY-SA-4.0
 ---
@@ -247,15 +247,15 @@ BST 2015 upper bound $\log B / B^{1/24}$ 은:
    (A3″-Power): κ(B) = A·B^α power law. 4 falsifiable prediction: P1 (variance Var(η) scaling),
    P2 (다른 coprime (m,n)), P3 (bin refinement robustness), P4 (sign change monotonicity).
    BKLPR (A3) 의 weakening. log(2)/τ(n) 로 일반화 추측 (section 5.2). 증명 미완, testable roadmap 완성"
-  <- v4-T4, theory/breakthroughs/v4-t4-A3-double-prime-rigorization-2026-04-16.md
+  <- v4-T4, reports/breakthroughs/v4-t4-A3-double-prime-rigorization-2026-04-16.md
 ```
 
 ---
 
 ## §8 관련 파일
 
-- v3 T3: `theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
-- v4 T1 partial: `theory/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md`
+- v3 T3: `reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md`
+- v4 T1 partial: `reports/breakthroughs/v4-t1-alpha-log2-over-4-derivation-attempt-2026-04-16.md`
 - BKLPR 2013 (ref)
 - BST 2015 (Bhargava-Shankar-Tsimerman, Duke 164)
 - roadmap: `shared/roadmaps/millennium.json` → `_v4_phases.P15_v4.T4_v4`

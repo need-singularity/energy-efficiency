@@ -1,0 +1,6 @@
+hexa_remote: host=ubu2 실패: 타임아웃 (네트워크/방화벽)
+hexa_remote: host=ubu 실패: 타임아웃 (네트워크/방화벽)
+hexa_remote: all hosts unreachable (tried: ubu2 ubu), falling back to local
+hexa resolver: ⚠ heavy-compute (/Users/ghost/Dev/nexus/shared/engine/nexus_cli.hexa drill) remote dispatch failed (exit 64) — Mac 로컬 실행 시 stage0 SIGKILL 위험 (Gatekeeper + 4GB RSS cap)
+hexa resolver: remote dispatch returned 64, running locally
+safe_hexa_launchd: RSS watchdog — pid=81270 tree=[81270 81796 81813 22350 22363 22365 22848 63259 22856 22969 22984 22985 ] rss=5398160KB > cap=4194304KB → SIGKILL

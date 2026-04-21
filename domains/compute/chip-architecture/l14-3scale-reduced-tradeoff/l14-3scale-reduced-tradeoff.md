@@ -9,12 +9,12 @@ status: tradeoff-concept
 verdict: ALTERNATIVE-DESIGN-CONJECTURE
 grade_attempt: "[5~7] 중간 — 3-scale 구조 수학적 정합성 부분 확인, n=6 자연성은 약해짐"
 sources:
-  - domains/compute/chip-architecture/l14-cross-scale-tau4-fabric-2026-04-15.md
-  - domains/compute/chip-architecture/l13-mev-optomech-roadmap-2026-04-15.md
-  - domains/compute/chip-architecture/l13-quantum-nuclear-io-2026-04-15.md
-  - domains/compute/chip-architecture/l12-nuclear-isomer-hf178m2-storage-2026-04-14.md
-  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec-2026-04-14.md
-  - domains/compute/chip-architecture/hexa-consciousness-2026-04-15.md
+  - domains/compute/chip-architecture/l14-cross-scale-tau4-fabric/l14-cross-scale-tau4-fabric.md
+  - domains/compute/chip-architecture/l13-mev-optomech-roadmap/l13-mev-optomech-roadmap.md
+  - domains/compute/chip-architecture/l13-quantum-nuclear-io/l13-quantum-nuclear-io.md
+  - domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md
+  - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
+  - domains/compute/chip-architecture/hexa-consciousness/hexa-consciousness.md
   - theory/proofs/mk4-trident-final-verdict-2026-04-15.md
 refs_external:
   - Shvyd'ko Y.V. 2022 Nature — Fe-57 14.4 keV 감마 저장
@@ -565,3 +565,25 @@ fabric 이 그 정리의 **물리적 실증** 이라는 자연성 논거는 3-sc
 제출자: n6-architecture 설계팀
 일자: 2026-04-15
 판정: **ALTERNATIVE-DESIGN-CONJECTURE** (조건부 contingency)
+
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

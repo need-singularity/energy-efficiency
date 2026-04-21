@@ -263,12 +263,12 @@ v3 는 v2.3 의 16 axis × 13 phase 구조를 **유지** 하고, **신규 P-tier
 ## §7 관련 파일
 
 - `shared/roadmaps/millennium.json` (v2.3, parent)
-- `theory/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` (loop1)
-- `theory/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md` (loop2)
-- `theory/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (loop4)
-- `theory/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md` (loop3)
-- `theory/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (loop5)
-- `theory/breakthroughs/ouroboros-atlas-audit-2026-04-15.md` (loop6)
+- `reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md` (loop1)
+- `reports/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md` (loop2)
+- `reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (loop4)
+- `reports/breakthroughs/bt-542-p-vs-np-4-barriers-survey-2026-04-15.md` (loop3)
+- `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (loop5)
+- `reports/breakthroughs/ouroboros-atlas-audit-2026-04-15.md` (loop6)
 - `scripts/empirical/*.py` (5 files)
 - `scripts/monotone/*.py` (2 files)
 

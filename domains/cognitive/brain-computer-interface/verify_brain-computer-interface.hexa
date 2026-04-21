@@ -57,7 +57,7 @@ fn main() {
     println("[BCI] 전극 수명 = phi*sigma = 24년 PASS")
 
     # === CHIP-P2-4 추가: 6채널 n=6 매핑 축 (brainwire 흡수 연결) ===
-    # 근거: domains/cognitive/brain-computer-interface/bci_6ch_n6_mapping.md
+    # 근거: domains/cognitive/brain-computer-interface/bci-6ch-n6-mapping/bci-6ch-n6-mapping.md
 
     # 11. 6채널 수 = sigma/phi = 12/2 = 6 = n
     let ch_count = sigma / phi

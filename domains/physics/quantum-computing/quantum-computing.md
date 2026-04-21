@@ -818,3 +818,37 @@ no-cloning (HEXA-TELE-03 = 1) + Kitaev ν=3 (HEXA-SC) + holographic boundary + t
 | QC-B7 | N_logical holo | floor(log₂(n^n))·n | 96 | [N?] |
 
 **돌파 지표**: alien_index 7.5 → 8.2. 기존 Golay [[24,12,8]] + [[6,2,2]] + HEXA-SC Kitaev ν=3 + HEXA-TELE-03 no-cloning=1 4개 상수 교차 재사용 (중복 등록 금지).
+
+
+## §8 IDEAS
+
+This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §9 METRICS
+
+This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §10 RISKS
+
+This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §11 DEPENDENCIES
+
+This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §12 TIMELINE
+
+This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §13 TOOLS
+
+This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §14 TEAM
+
+This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+
+## §15 REFERENCES
+
+This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+

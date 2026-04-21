@@ -4,8 +4,8 @@ date: 2026-04-15
 roadmap_task: v3 T3 (GALO-PX-4 (A3) joint distribution 수학적 모델링)
 grade: [9] empirical + conjecture
 predecessors:
-  - theory/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md
-  - theory/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md
+  - reports/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md
+  - reports/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md
 status: SUGGESTIVE, NOT PROVED
 license: CC-BY-SA-4.0
 ---
@@ -168,7 +168,7 @@ Bhargava-Shankar 가 n=2,3 따로 증명. n=6 는 아직 unconditional 증명 �
    log(2)/4 = 0.1733 와 오차 0.0019 (1.1% rel err). τ(6) = 4 와 log 2 의 n=6 자연 조합 제안.
    SUGGESTIVE EMPIRICAL MATCH, NOT PROVED. 이론적 유도 미완 — v3 T4+M3 으로 연결.
    (A3″) conjecture: B-dependent coupling coefficient, curve-level η(E) 정의"
-  <- v3-T3, theory/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
+  <- v3-T3, reports/breakthroughs/v3-t3-joint-distribution-modeling-2026-04-15.md
 ```
 
 ---
@@ -177,8 +177,8 @@ Bhargava-Shankar 가 n=2,3 따로 증명. n=6 는 아직 unconditional 증명 �
 
 - 데이터: `data/cremona/kappa_10bin_results.json` (v3 E5 산출)
 - 스크립트: `scripts/empirical/cremona_kappa_10bin.py`
-- 전 결과: `theory/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md`
-- 모체: `theory/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md`
+- 전 결과: `reports/breakthroughs/v3-e5-kappa-7bin-power-law-2026-04-15.md`
+- 모체: `reports/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md`
 - roadmap: `shared/roadmaps/millennium.json` → `_v3_phases.P12_v3.T3`
 
 ---

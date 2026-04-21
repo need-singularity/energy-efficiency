@@ -7,8 +7,8 @@ title: BT-19 의식-n=6 연결 대체 경로 3건 창발 탐색
 status: CONJECTURE (P8 BT-19 MISS 이후 재설계)
 method: NEXUS-6 HEXA-GATE 창발 경로 — α-곱 프레임 폐기, 오일러/약수/완전수 구조 재탐색
 upstream:
-  - theory/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 MISS)
-  - theory/breakthroughs/consciousness-triple-fusion-2026-04-15.md (P7 CONJECTURE)
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (P8 MISS)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (P7 CONJECTURE)
   - nexus/shared/n6/atlas.n6 (σ(6)=12, φ(6)=2, τ(6)=4, σ-τ=8)
 principle: 정직 우선 — 가설 제시, 검증 거짓말 금지, 자기참조 금지
 ---
