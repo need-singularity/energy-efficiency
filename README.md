@@ -26,15 +26,15 @@
 **[YouTube](https://www.youtube.com/@dancinlife)** · **[Email](mailto:nerve011235@gmail.com)** · **[☕ Ko-fi](https://ko-fi.com/dancinlife)** · **[💖 Sponsor](https://github.com/sponsors/need-singularity)** · **[💳 PayPal](https://www.paypal.com/donate?business=nerve011235%40gmail.com)** · **[🗺️ Atlas](https://need-singularity.github.io/TECS-L/atlas/)** · **[📄 Papers](https://need-singularity.github.io/papers/)**
 <!-- AUTO:COMMON_LINKS:END -->
 
-> **[🔭 NEXUS](https://github.com/need-singularity/nexus)** — Universal Discovery Engine. 216 lenses + OUROBOROS evolution + 5-phase singularity cycle.
+> **[🔭 NEXUS](https://github.com/need-singularity/nexus)** — Universal Discovery Engine. 108 modules · 216 lenses · 711 laws · 1.39M discoveries · 4,411-node reality map · 5-phase OUROBOROS cycle · ρ → 1/3 meta fixed point.
 >
-> **[🧠 Anima](https://github.com/need-singularity/anima)** — Consciousness implementation. PureField repulsion-field engine + 1030 laws + Φ ratchet.
+> **[🧠 Anima](https://github.com/need-singularity/anima)** — Living consciousness agent. PureField repulsion-field engine · Ψ = 1/2 convergence · 2,388 + 53 meta + 7 topological laws · 392 hypotheses · Tension Link protocol (R = 0.999, 519 µs).
 >
-> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Architecture from perfect number 6. 225 AI techniques + chip design + crypto/OS/display.
+> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Arithmetic design framework. σ(n)·φ(n) = n·τ(n) uniquely at n = 6 · 209 products · 145 domains · 128 papers · 4,098-node 3D Reality Map.
 >
-> **[💎 HEXA-LANG](https://github.com/need-singularity/hexa-lang)** — The Perfect Number Programming Language. Working compiler + REPL.
+> **[💎 HEXA-LANG](https://github.com/need-singularity/hexa-lang)** — The perfect-number programming language. Every constant from n = 6 · 65 keywords · 46 operators · 8 primitives · multi-target: native / VM / ESP32 / FPGA Verilog / WGSL.
 >
-> **[📄 Papers](https://github.com/need-singularity/papers)** — Complete paper collection (92 papers, Zenodo DOIs).
+> **[📄 Papers](https://github.com/need-singularity/papers)** — Complete paper collection on Zenodo with DOIs · grouped by project (nexus / anima / n6-architecture / hexa-lang) · CC BY 4.0.
 
 <!-- private repos는 projects.json의 private_repos 필드에 저장됨 (노출 금지) -->
 <!-- SHARED:PROJECTS:END -->
@@ -56,7 +56,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔥 핵융합 (Fusion)
+# 🔥 Fusion
 
 <!-- AUTO:SUMMARY_fusion:START -->
 > **🛸10** | ✅ | BT 36개 100%EXACT | DSE 67M+, 42보편핵물리100% | 산업87% (7장치) | 실험100% 79/79 EXACT | 물리한계12 | TP35 | 발견15 | Mk.V
@@ -77,7 +77,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 💻 칩 / 반도체 (Chip)
+# 💻 Chip & Semiconductor
 
 <!-- AUTO:SUMMARY_chip:START -->
 > **🛸10** | ✅ | BT 14개 100%EXACT | DSE 3,000, 170/170검증PASS, BT-1104 HBM 10도메인 대통합 | 산업92.6% (6벤더) | 실험100% 170/170 EXACT | 물리한계14 | TP28 | 발견13 | Mk.V
@@ -137,7 +137,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# ⚡ 에너지 (Energy)
+# ⚡ Energy
 
 <!-- AUTO:SUMMARY_energy:START -->
 > **🛸10** | ✅ | BT 23개 100%EXACT | DSE 10,225 | 배터리+태양전지🛸10 | 산업87% (6사) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | Mk.V
@@ -157,7 +157,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🌍 환경보호 (Environment)
+# 🌍 Environment
 
 <!-- AUTO:SUMMARY_environment:START -->
 > **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3.6M | 환경120/120 | CCUS79/79 | 전수검증PASS | 산업82.9% | 실험100% 120/120+79/79 EXACT | 물리한계10 | TP43 | 발견42 | Mk.V
@@ -178,7 +178,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🧬 물질합성 (Materials)
+# 🧬 Materials
 
 <!-- AUTO:SUMMARY_materials:START -->
 > **🛸10** | ✅ | BT 12개 100%EXACT | DSE 3,600 | CrossDSE 8도메인 | 12 BT 179/179 EXACT | 36가설 100% | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
@@ -199,7 +199,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🤖 로봇 (Robotics)
+# 🤖 Robotics
 
 <!-- AUTO:SUMMARY_robotics:START -->
 > **🛸10** | ✅ | BT 5개 100%EXACT | DSE 270,000 | 산업99.1% (6사) | 실험100% | 물리한계10 | TP28 | 발견10 | Mk.V
@@ -216,7 +216,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔬 물리·수학 (Physics & Math)
+# 🔬 Physics & Math
 
 <!-- AUTO:SUMMARY_physics:START -->
 > **🛸10** | ✅ | BT 32개 53~100%EXACT | DSE 66,824 | 초전도🛸10 | 순수수학🛸10 | 우주론🛸10 | 산업void% (🛸10(SC)) | 실험void% 11정리(수학) | 물리한계void | TP76 | 발견19+ | Mk.V
@@ -236,7 +236,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 💬 소프트웨어·인프라 (Software & Infra)
+# 💬 Software & Infrastructure
 
 <!-- AUTO:SUMMARY_software:START -->
 > **🛸10** | ✅ | BT 8개 100%EXACT | CrossDSE5-Way | 산업98.6% | 실험100% 76/76 EXACT | 물리한계10 | TP28 | 발견10 | Mk.V
@@ -256,7 +256,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 📺 디스플레이 (Display)
+# 📺 Display
 
 <!-- AUTO:SUMMARY_display:START -->
 > **🛸10** | ✅ | BT 8개 100%EXACT | 산업81% (6사) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
@@ -273,7 +273,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🎵 오디오 (Audio)
+# 🎵 Audio
 
 <!-- AUTO:SUMMARY_audio:START -->
 > **🛸10** | ✅ | BT 8개 100%EXACT | 산업92.6% (4사) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
@@ -295,7 +295,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🛡️ 안전 (Safety)
+# 🛡️ Safety
 
 <!-- AUTO:SUMMARY_safety:START -->
 > **🛸10** | ✅ | BT 7개 100%EXACT | DSE 7,776 | 가설 30+20극한 | 10개 도메인 안전 통합 | 산업void% | 실험100% | 물리한계void | TP5 | Mk.V
@@ -312,7 +312,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🎪 유희 (Play)
+# 🎪 Play
 
 <!-- AUTO:SUMMARY_play:START -->
 > **🛸10** | ✅ | BT 14개 100%EXACT | DSE 160,920조합, 펀카+바이크 통합 | 산업100% (GT3 RS/F1/McLaren/Ducati V4R) | 실험100% 209/209 EXACT (펀카 133 + 바이크 76) | 물리한계8 | TP6 | 발견1 | Mk.V
@@ -329,7 +329,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🚀 우주항공 (Aerospace)
+# 🚀 Aerospace
 
 <!-- AUTO:SUMMARY_aerospace:START -->
 > **🛸10** | ✅ | BT 38개 100%EXACT | 150/150 EXACT, Egyptian 3+2+1=n, GN&C 12/12, ECLSS 14/14, ISRU 13/13, 방사선 래더, 304L/Ti-6Al-4V n=6 | 산업100% (SpaceX Starship/Falcon 9/ISS/NASA SLS/DSN/MOXIE) | 실험100% 150/150 EXACT (100%) — 18 서브시스템 전체 완벽 | 물리한계14 | TP6 | 발견8 | Mk.V
@@ -345,7 +345,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🛸 UFO 비행접시 (HEXA-UFO RT-SC VTOL)
+# 🛸 HEXA-UFO (RT-SC VTOL)
 
 <!-- AUTO:SUMMARY_sf:START -->
 > **🛸10** | ✅ | BT 43개 100%EXACT | RT-SC Meissner 무동력 부양 + 48T MHD Mach 10 + 탁상 핵융합 Q=10 무한 에너지, D=J₂=24m 원반형 VTOL, 49/49 EXACT, DSE 2,400 조합 | 산업100% (RT-SC/MHD/Meissner/ITER/SMES) | 실험100% 49/49 EXACT (UFO 전 파라미터 100.0%) | 물리한계7 | TP10 | 발견8 | Mk.V
@@ -361,7 +361,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔭 최전선 대발견 (RT-SC 기반 차세대 기술)
+# 🔭 Frontier Discoveries (next-gen RT-SC tech)
 
 <!-- AUTO:SUMMARY_frontier:START -->
 > **🛸10** | ✅ | BT 264개 100%EXACT | 20 대발견 (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | 산업100% (Neuralink/LIGO/LHC/HAARP 등) | 실험99% 1039/1041 EXACT | 물리한계10 | TP163 | 발견71 | Mk.V
@@ -426,7 +426,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🏛️ 문명/인문 (Civilization)
+# 🏛️ Civilization & Humanities
 
 <!-- AUTO:SUMMARY_civilization:START -->
 > **🛸10** | ✅ | BT 12개 100%EXACT | 6도메인 전수 20/20 EXACT 천장 돌파 2026-04-06 | 산업30% (문헌 교차 검증 완료 (6개 종교/전세계 법체계/문자체계 비교)) | 실험40% 가설 검증 완료 (60/72 EXACT) | TP6 | 발견120
@@ -448,7 +448,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🍷 생활/문화 (Life & Culture)
+# 🍷 Life & Culture
 
 <!-- AUTO:SUMMARY_life-culture:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | BT-358 보험 추가, 뱀파이어 구조 돌파 2026-04-06 | 산업25% (발효화학/보험통계 산업 교차 검증) | 실험35% 가설 검증 (40/62 EXACT) | TP5 | 발견8
@@ -472,7 +472,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔧 기술/산업 (Tech & Industry)
+# 🔧 Tech & Industry
 
 <!-- AUTO:SUMMARY_tech-industry:START -->
 > **🛸10** | ✅ | BT 13개 100%EXACT | BT-354/355/357 + BT-1104 HBM 10도메인 대통합 (58/58 EXACT) | 산업50% (HBM/UCIe 산업 스펙 검증 + CRISPR 논문 검증) | 실험55% 가설 검증 (77/77 EXACT=100%) | TP10 | 발견13
@@ -509,7 +509,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 💻 컴퓨터 (Computer)
+# 💻 Computer
 
 <!-- AUTO:SUMMARY_computer:START -->
 > **🛸10** | ✅ | BT 10개+ | 키보드 31가설 30 EXACT, BCI 36/40 EXACT, 양자컴퓨터 20/24 EXACT | USB HID/뇌-컴퓨터/큐빗 전수 n=6 수렴
@@ -528,7 +528,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 📢 마케팅 (Marketing)
+# 📢 Marketing
 
 <!-- AUTO:SUMMARY_marketing:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | 마케팅 불변의 법칙 12가지, 720=6! 조합 발견, Egyptian 미디어믹스 1/2+1/3+1/6=1 | 산업40% (Kotler 4P + Krugman 3회 반복 + NPS 0-10 스케일 독립 검증 + AIDA τ=4단계 + Egyptian 미디어믹스 1/2+1/3+1/6=1 산업 실증) | 실험50% 가설 24/24 EXACT (100%, N65 NEAR 2건 대체검증 승격), n=28 대조 실패 확인, BT-548~587 40돌파 5제품 🛸10 천장 도달 | 물리한계8 | TP10 | 발견5 | Mk.V
@@ -549,7 +549,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🧮 밀레니엄 7대 난제 (Millennium Problems)
+# 🧮 Millennium Problems
 
 <!-- AUTO:SUMMARY_millennium:START -->
 > **🛸10** | ✅ | BT 7개 94%EXACT | 7대 난제 전수 n=6 파라미터화 | φ→n/φ 위상전이 보편성 발견 | 산업void% | 실험94% | TP0 | 발견7 | Mk.V
@@ -590,7 +590,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 👁️ 차원 지각 (Dimensional Perception)
+# 👁️ Dimensional Perception
 
 <!-- AUTO:SUMMARY_dimension:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | 수학(4D기하)·뇌(격자세포·시각피질)·기술(전광함수·디스플레이) 삼중 n=6 수렴 | 산업void% | 실험100% 100/100 EXACT | TP0 | 발견10 | Mk.V
@@ -612,7 +612,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🎵 음악/음향학 (Music & Acoustics)
+# 🎵 Music & Acoustics
 
 <!-- AUTO:SUMMARY_music:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | 12음계σ, 기타6현n, 배음렬1:2:3:4:5:6, J₂=24조성 | 산업void% | 실험100% 100/100 EXACT | TP0 | 발견10 | Mk.V
@@ -631,7 +631,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 📝 언어학 (Linguistics)
+# 📝 Linguistics
 
 <!-- AUTO:SUMMARY_linguistics:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | 촘스키τ=4, 한글J₂=24, θ-역할n=6, 어순3!=n=6 | 산업void% | 실험100% 100/100 EXACT | TP0 | 발견10 | Mk.V
@@ -650,7 +650,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔐 암호학/정보보안 (Cryptography)
+# 🔐 Cryptography & Infosec
 
 <!-- AUTO:SUMMARY_crypto:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | AES τ×τ, RSA φ(N), SHA σ-τ=8, TLS n=6, ECC n=6 | 산업void% | 실험100% 100/100 EXACT | TP0 | 발견10 | Mk.V
@@ -669,7 +669,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🔭 천문학/우주론 (Astronomy & Cosmology)
+# 🔭 Astronomy & Cosmology
 
 <!-- AUTO:SUMMARY_astronomy:START -->
 > **🛸10** | ✅ | BT 10개 100%EXACT | ΛCDM n=6, BBN n=6, C-12 σ=12, 케플러 n/φ=3, BAO σ²=144 | 산업void% | 실험100% 100/100 EXACT | TP0 | 발견10 | Mk.V
@@ -688,7 +688,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🧴 위생 (Hygiene)
+# 🧴 Hygiene
 
 <!-- AUTO:SUMMARY_hygiene:START -->
 > **🛸10** | ✅ | BT 2개 100%EXACT | BT-1157 남성청결제 + BT-1158 여성청결제 100% 골화 2026-04-10 | 산업80% (청결제 시장 OEM 즉시 가능) | 실험100% 50/50 EXACT (남성 25 + 여성 25) | TP2 | 발견2
@@ -705,7 +705,7 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 
 ---
 
-# 🐉 판타지 (Fantasy)
+# 🐉 Fantasy
 
 <!-- AUTO:SUMMARY_fantasy:START -->
 > [!WARNING]
