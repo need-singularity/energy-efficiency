@@ -62,8 +62,8 @@ The two axes are independent: alien_index measures product maturity; closure_gra
 # Install hexa-lang (ships `hexa` + `hx` package manager)
 curl -fsSL https://raw.githubusercontent.com/need-singularity/hexa-lang/main/install.sh | bash
 
-# Install n6-architecture
-hx install n6-architecture
+# Install n6
+hx install n6
 ```
 
 ## Run
