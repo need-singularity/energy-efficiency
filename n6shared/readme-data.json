@@ -1,10 +1,13 @@
 {
   "_meta": {
-    "description": "README SSOT — 이 JSON이 유일한 데이터 원본. scripts/sync-readme.py가 마커 기반으로 README 자동 생성",
+    "description": "README SSOT — This JSON is the sole data source. scripts/sync-readme.py auto-generates README via markers",
     "version": 2,
     "updated": "2026-04-03",
     "markers": [
-      "AUTO:BADGE", "AUTO:STATS", "AUTO:ROADMAP", "AUTO:REFERENCE",
+      "AUTO:BADGE",
+      "AUTO:STATS",
+      "AUTO:ROADMAP",
+      "AUTO:REFERENCE",
       "AUTO:SUMMARY_<domain_id>  (per-domain summary blockquote)",
       "AUTO:FOOTER_<domain_id>   (per-domain footer links)"
     ]
@@ -25,70 +28,106 @@
     {
       "id": "fusion",
       "emoji": "🔥",
-      "name": "핵융합",
+      "name": "Fusion",
       "name_en": "Fusion",
-      "anchor": "-핵융합-fusion",
+      "anchor": "-Fusion-fusion",
       "alien": 8,
       "ceiling": true,
       "bt_count": 9,
       "bt_exact_pct": 82.2,
       "dse_count": "2,400+1M",
       "industry_pct": 87,
-      "industry_detail": "7장치",
+      "industry_detail": "7 devices",
       "experiment_pct": 43,
-      "experiment_detail": "TP확인",
+      "experiment_detail": "TP confirmed",
       "physical_limits": 10,
       "tp": 35,
       "discoveries": 15,
-      "extras": ["Cross-DSE 8도메인", "진화 5단계", "Mk.V"],
-      "docs": ["fusion/", "plasma-physics/", "superconductor/"],
-      "tools": ["fusion-calc", "fusion-dse", "fusion-verify", "tokamak-shape", "kstar-calc"],
+      "extras": [
+        "Cross-DSE 8 domains",
+        "evolution 5stages",
+        "Mk.V"
+      ],
+      "docs": [
+        "fusion/",
+        "plasma-physics/",
+        "superconductor/"
+      ],
+      "tools": [
+        "fusion-calc",
+        "fusion-dse",
+        "fusion-verify",
+        "tokamak-shape",
+        "kstar-calc"
+      ],
       "footer_extra": null
     },
     {
       "id": "chip",
       "emoji": "💻",
-      "name": "칩/반도체",
+      "name": "Chip/Semiconductor",
       "name_en": "Chip",
-      "anchor": "-칩--반도체-chip",
+      "anchor": "-칩--Semiconductor-chip",
       "alien": 7,
       "ceiling": true,
       "bt_count": 13,
       "bt_exact_pct": 74.5,
       "dse_count": "3,000",
       "industry_pct": 92.6,
-      "industry_detail": "6벤더",
+      "industry_detail": "6 vendors",
       "experiment_pct": null,
       "experiment_detail": null,
       "physical_limits": 10,
       "tp": 28,
       "discoveries": 12,
-      "extras": ["Mk.V"],
-      "docs": ["chip-architecture/"],
-      "tools": ["gpu-arch-calc", "chip-n6-calc", "dse-calc", "semiconductor-calc"],
+      "extras": [
+        "Mk.V"
+      ],
+      "docs": [
+        "chip-architecture/"
+      ],
+      "tools": [
+        "gpu-arch-calc",
+        "chip-n6-calc",
+        "dse-calc",
+        "semiconductor-calc"
+      ],
       "footer_extra": null
     },
     {
       "id": "energy",
       "emoji": "⚡",
-      "name": "에너지",
+      "name": "Energy",
       "name_en": "Energy",
-      "anchor": "-에너지-energy",
+      "anchor": "-Energy-energy",
       "alien": 8,
       "ceiling": true,
       "bt_count": 13,
       "bt_exact_pct": 88.7,
       "dse_count": "10,225",
       "industry_pct": 87,
-      "industry_detail": "6사",
+      "industry_detail": "6 companies",
       "experiment_pct": 88,
       "experiment_detail": null,
       "physical_limits": 10,
       "tp": "28+19",
       "discoveries": "10+8",
-      "extras": ["배터리+태양전지🛸10", "Mk.V"],
-      "docs": ["battery-architecture/", "solar-architecture/", "energy-architecture/", "power-grid/", "thermal-management/"],
-      "tools": ["energy-calc", "battery-dse", "solar-dse"],
+      "extras": [
+        "Battery+solarallbranch🛸10",
+        "Mk.V"
+      ],
+      "docs": [
+        "battery-architecture/",
+        "solar-architecture/",
+        "energy-architecture/",
+        "power-grid/",
+        "thermal-management/"
+      ],
+      "tools": [
+        "energy-calc",
+        "battery-dse",
+        "solar-dse"
+      ],
       "footer_extra": null
     },
     {
@@ -103,23 +142,31 @@
       "bt_exact_pct": 89.7,
       "dse_count": null,
       "industry_pct": 88.7,
-      "industry_detail": "9모델",
+      "industry_detail": "9 models",
       "experiment_pct": 96.2,
       "experiment_detail": null,
       "physical_limits": 10,
       "tp": 28,
       "discoveries": 12,
-      "extras": ["Mk.V", "CrossDSE"],
-      "docs": ["ai-efficiency/", "learning-algorithm/"],
-      "tools": ["n6_calculator.py"],
+      "extras": [
+        "Mk.V",
+        "CrossDSE"
+      ],
+      "docs": [
+        "ai-efficiency/",
+        "learning-algorithm/"
+      ],
+      "tools": [
+        "n6_calculator.py"
+      ],
       "footer_extra": null
     },
     {
       "id": "environment",
       "emoji": "🌍",
-      "name": "환경보호",
+      "name": "Environment",
       "name_en": "Environment",
-      "anchor": "-환경보호-environment",
+      "anchor": "-Environment-environment",
       "alien": 8,
       "ceiling": true,
       "bt_count": 5,
@@ -132,17 +179,26 @@
       "physical_limits": 10,
       "tp": 43,
       "discoveries": 42,
-      "extras": ["미세플라스틱🛸10", "CCUS100%EXACT", "Mk.V"],
-      "docs": ["environmental-protection/", "carbon-capture/"],
-      "tools": ["carbon-capture-calc"],
+      "extras": [
+        "미세플라스틱🛸10",
+        "CCUS100%EXACT",
+        "Mk.V"
+      ],
+      "docs": [
+        "environmental-protection/",
+        "carbon-capture/"
+      ],
+      "tools": [
+        "carbon-capture-calc"
+      ],
       "footer_extra": null
     },
     {
       "id": "physics",
       "emoji": "🔬",
-      "name": "물리·수학",
+      "name": "Physics & Math",
       "name_en": "Physics & Math",
-      "anchor": "-물리수학-physics--math",
+      "anchor": "-physicscount학-physics--math",
       "alien": 7,
       "ceiling": true,
       "bt_count": 14,
@@ -151,21 +207,35 @@
       "industry_pct": null,
       "industry_detail": "🛸10(SC)",
       "experiment_pct": null,
-      "experiment_detail": "11정리(수학)",
+      "experiment_detail": "11theorems(count학)",
       "physical_limits": null,
       "tp": 52,
       "discoveries": "19+",
-      "extras": ["초전도🛸10", "순수수학🛸10", "우주론🛸9"],
-      "docs": ["superconductor/", "pure-mathematics/", "cosmology-particle/", "quantum-computing/"],
-      "tools": ["sc-dse", "gut-calc-rust", "quantum-calc", "optics-calc"],
+      "extras": [
+        "Superconducting🛸10",
+        "순countcount학🛸10",
+        "Universe론🛸9"
+      ],
+      "docs": [
+        "superconductor/",
+        "pure-mathematics/",
+        "cosmology-particle/",
+        "quantum-computing/"
+      ],
+      "tools": [
+        "sc-dse",
+        "gut-calc-rust",
+        "quantum-calc",
+        "optics-calc"
+      ],
       "footer_extra": null
     },
     {
       "id": "materials",
       "emoji": "🧬",
-      "name": "물질합성",
+      "name": "Materials",
       "name_en": "Materials",
-      "anchor": "-물질합성-materials",
+      "anchor": "-Materials-materials",
       "alien": 10,
       "ceiling": true,
       "bt_count": 11,
@@ -178,40 +248,54 @@
       "physical_limits": 10,
       "tp": 28,
       "discoveries": 10,
-      "extras": ["CrossDSE 8도메인", "Mk.V"],
-      "docs": ["material-synthesis/"],
-      "tools": ["material-dse"],
+      "extras": [
+        "CrossDSE 8domains",
+        "Mk.V"
+      ],
+      "docs": [
+        "material-synthesis/"
+      ],
+      "tools": [
+        "material-dse"
+      ],
       "footer_extra": null
     },
     {
       "id": "robotics",
       "emoji": "🤖",
-      "name": "로봇",
+      "name": "Robotics",
       "name_en": "Robotics",
-      "anchor": "-로봇-robotics",
+      "anchor": "-Robotics-robotics",
       "alien": 5,
       "ceiling": true,
       "bt_count": 5,
       "bt_exact_pct": 97.1,
       "dse_count": "270,000",
       "industry_pct": 99.1,
-      "industry_detail": "6사",
+      "industry_detail": "6 companies",
       "experiment_pct": 97.1,
       "experiment_detail": null,
       "physical_limits": 10,
       "tp": 28,
       "discoveries": 10,
-      "extras": ["Mk.V"],
-      "docs": ["robotics/", "learning-algorithm/"],
-      "tools": ["robot-dse"],
+      "extras": [
+        "Mk.V"
+      ],
+      "docs": [
+        "robotics/",
+        "learning-algorithm/"
+      ],
+      "tools": [
+        "robot-dse"
+      ],
       "footer_extra": null
     },
     {
       "id": "software",
       "emoji": "💬",
-      "name": "소프트웨어",
+      "name": "small프트웨어",
       "name_en": "Software & Infra",
-      "anchor": "-소프트웨어인프라-software--infra",
+      "anchor": "-small프트웨어인프라-software--infra",
       "alien": 6,
       "ceiling": true,
       "bt_count": 5,
@@ -224,63 +308,85 @@
       "physical_limits": 10,
       "tp": 28,
       "discoveries": 10,
-      "extras": ["Mk.V", "CrossDSE5-Way"],
-      "docs": ["programming-language/", "compiler-os/", "software-design/", "cryptography/", "network-protocol/", "blockchain/"],
-      "tools": ["lang-dse", "crypto-calc", "interconnect-calc"],
+      "extras": [
+        "Mk.V",
+        "CrossDSE5-Way"
+      ],
+      "docs": [
+        "programming-language/",
+        "compiler-os/",
+        "software-design/",
+        "cryptography/",
+        "network-protocol/",
+        "blockchain/"
+      ],
+      "tools": [
+        "lang-dse",
+        "crypto-calc",
+        "interconnect-calc"
+      ],
       "footer_extra": null
     },
     {
       "id": "display",
       "emoji": "📺",
-      "name": "디스플레이",
+      "name": "Display",
       "name_en": "Display",
-      "anchor": "-디스플레이-display",
+      "anchor": "-Display-display",
       "alien": 5,
       "ceiling": true,
       "bt_count": 3,
       "bt_exact_pct": 86.0,
       "dse_count": null,
       "industry_pct": 81.0,
-      "industry_detail": "6사",
+      "industry_detail": "6 companies",
       "experiment_pct": 93.9,
       "experiment_detail": null,
       "physical_limits": 10,
       "tp": 14,
       "discoveries": 8,
-      "extras": ["Mk.V"],
-      "docs": ["display/"],
+      "extras": [
+        "Mk.V"
+      ],
+      "docs": [
+        "display/"
+      ],
       "tools": [],
       "footer_extra": "BT-48 (J₂=24fps), BT-66 (ViT/CLIP), BT-71 (NeRF/3DGS)"
     },
     {
       "id": "audio",
       "emoji": "🎵",
-      "name": "오디오",
+      "name": "Audio",
       "name_en": "Audio",
-      "anchor": "-오디오-audio",
+      "anchor": "-Audio-audio",
       "alien": 5,
       "ceiling": true,
       "bt_count": 4,
       "bt_exact_pct": 86.0,
       "dse_count": null,
       "industry_pct": 92.6,
-      "industry_detail": "4사",
+      "industry_detail": "4 companies",
       "experiment_pct": 90.9,
       "experiment_detail": null,
       "physical_limits": 8,
       "tp": 14,
       "discoveries": 12,
-      "extras": ["Mk.V"],
-      "docs": ["audio/"],
+      "extras": [
+        "Mk.V"
+      ],
+      "docs": [
+        "audio/"
+      ],
       "tools": [],
-      "footer_extra": "BT-48 (σ·τ=48kHz, σ=12 semitones), BT-72 (EnCodec), BT-108 (협화음), BT-76 (48 attractor)"
+      "footer_extra": "BT-48 (σ·τ=48kHz, σ=12 semitones), BT-72 (EnCodec), BT-108 (협chord), BT-76 (48 attractor)"
     },
     {
       "id": "safety",
       "emoji": "🛡️",
-      "name": "안전",
+      "name": "Safety",
       "name_en": "Safety",
-      "anchor": "-안전-safety",
+      "anchor": "-Safety-safety",
       "alien": 3,
       "ceiling": false,
       "bt_count": 0,
@@ -293,48 +399,305 @@
       "physical_limits": null,
       "tp": 5,
       "discoveries": 0,
-      "extras": ["가설 30+20극한", "10개 도메인 안전 통합"],
-      "docs": ["safety/"],
+      "extras": [
+        "hypotheses 30+20극한",
+        "10 domains Safety Integrated"
+      ],
+      "docs": [
+        "safety/"
+      ],
       "tools": [],
-      "footer_extra": "n=6 안전 등식: (1/10)^6 = 10⁻⁶ (방호계층=n, 위험감소=σ-φ)"
+      "footer_extra": "n=6 Safety etc식: (1/10)^6 = 10⁻⁶ (roomnumberhierarchy=n, 위험reduction=σ-φ)"
     }
   ],
   "roadmap": [
-    { "rank": 0, "year": "2035", "name": "궁극의 AGI", "impact": 6, "tier": "🔄", "dse": "→ [Anima](https://github.com/need-singularity/anima)" },
-    { "rank": 0, "year": "2040", "name": "궁극의 의식", "impact": 6, "tier": "🔄", "dse": "→ [Anima](https://github.com/need-singularity/anima)" },
-    { "rank": 0, "year": "2050", "name": "궁극의 불멸", "impact": 6, "tier": "🔄", "dse": "→ [Anima](https://github.com/need-singularity/anima) + cognitive/brain-computer-interface" },
-    { "rank": 0, "year": "✅", "name": "궁극의 에너지", "impact": 6, "tier": "✅", "dse": "10,225 조합 → [⚡ 에너지](#-에너지-energy)" },
-    { "rank": 0, "year": "2040", "name": "궁극의 우주진출", "impact": 6, "tier": "T3", "dse": "[goal](domains/space/space-engineering/space-engineering.md)" },
-    { "rank": 0, "year": "✅", "name": "궁극의 물질합성", "impact": 6, "tier": "✅", "dse": "3,600 조합 🛸10 → [🧬 물질합성](#-물질합성-materials)" },
-    { "rank": 1, "year": "2030", "name": "궁극의 소재", "impact": 5, "tier": "T1", "dse": "—" },
-    { "rank": 2, "year": "2028", "name": "궁극의 공정", "impact": 5, "tier": "T1", "dse": "—" },
-    { "rank": 3, "year": "✅", "name": "궁극의 코어", "impact": 5, "tier": "✅", "dse": "3,000 조합 → [💻 칩](#-칩--반도체-chip)" },
-    { "rank": 4, "year": "✅", "name": "궁극의 칩", "impact": 5, "tier": "✅", "dse": "3,000 조합 → [💻 칩](#-칩--반도체-chip)" },
-    { "rank": 5, "year": "✅", "name": "궁극의 배터리", "impact": 5, "tier": "✅", "dse": "1,908 조합 → [⚡ 에너지](#-에너지-energy)" },
-    { "rank": 6, "year": "✅", "name": "궁극의 태양전지", "impact": 5, "tier": "✅", "dse": "1,584 조합 🛸10 → [⚡ 에너지](#-에너지-energy)" },
-    { "rank": 7, "year": "2035", "name": "궁극의 핵융합", "impact": 5, "tier": "✅", "dse": "2,400 조합 → [🔥 핵융합](#-핵융합-fusion)" },
-    { "rank": 8, "year": "✅", "name": "궁극의 학습알고리즘", "impact": 4, "tier": "T2", "dse": "—" },
-    { "rank": 9, "year": "2030", "name": "궁극의 네트워크", "impact": 4, "tier": "T2", "dse": "—" },
-    { "rank": 10, "year": "✅", "name": "궁극의 로봇", "impact": 4, "tier": "✅", "dse": "🛸10 270,000 조합 → [🤖 로봇](#-로봇-robotics)" },
-    { "rank": 11, "year": "✅", "name": "궁극의 송전망", "impact": 4, "tier": "✅", "dse": "[⚡ 에너지](#-에너지-energy)" },
-    { "rank": 12, "year": "2035", "name": "궁극의 생명공학", "impact": 4, "tier": "T3", "dse": "[biology/](domains/life/biology/)" },
-    { "rank": 13, "year": "✅", "name": "궁극의 디스플레이", "impact": 3, "tier": "✅", "dse": "H-DISP 10개 → [📺 디스플레이](#-디스플레이-display)" },
-    { "rank": 14, "year": "✅", "name": "궁극의 오디오", "impact": 3, "tier": "✅", "dse": "H-AUD 18개 → [🎵 오디오](#-오디오-audio)" },
-    { "rank": 15, "year": "✅", "name": "궁극의 열관리", "impact": 3, "tier": "T3", "dse": "—" },
-    { "rank": 16, "year": "✅", "name": "궁극의 암호", "impact": 3, "tier": "T3", "dse": "—" },
-    { "rank": 17, "year": "2035", "name": "궁극의 양자컴퓨터", "impact": 3, "tier": "T1", "dse": "—" },
-    { "rank": 18, "year": "✅", "name": "궁극의 초전도체", "impact": 3, "tier": "✅", "dse": "🛸10 36파일 17,399줄 + BT11 + CrossDSE5 + TP27 + 물리한계증명 → [🔬 물리·수학](#-물리수학-physics--math)" },
-    { "rank": 19, "year": "✅", "name": "궁극의 블록체인", "impact": 2, "tier": "T3", "dse": "—" },
-    { "rank": 20, "year": "✅", "name": "궁극의 컴파일러/OS", "impact": 2, "tier": "T3", "dse": "—" },
-    { "rank": 21, "year": "✅", "name": "궁극의 프로그래밍언어", "impact": 2, "tier": "✅", "dse": "6,480 조합 → [💬 소프트웨어](#-소프트웨어인프라-software--infra)" },
-    { "rank": 22, "year": "✅", "name": "궁극의 초전도자석", "impact": 3, "tier": "✅", "dse": "🛸10 SC 내 통합 (hexa-magnet/coil/cool/fusion) → [🔬 물리·수학](#-물리수학-physics--math)" },
-    { "rank": 23, "year": "✅", "name": "궁극의 순수수학", "impact": 1, "tier": "✅", "dse": "🛸10 11불가능성정리 → [🔬 물리·수학](#-물리수학-physics--math)" },
-    { "rank": 24, "year": "✅", "name": "궁극의 우주론/입자", "impact": 1, "tier": "✅", "dse": "🛸9 53.3%EXACT+TP28 → [🔬 물리·수학](#-물리수학-physics--math)" },
-    { "rank": "—", "year": "✅", "name": "궁극의 환경보호", "impact": 4, "tier": "✅", "dse": "1.68M 조합 → [🌍 환경보호](#-환경보호-environment)" },
-    { "rank": "—", "year": "✅", "name": "궁극의 탄소포집", "impact": 4, "tier": "✅", "dse": "→ [🌍 환경보호](#-환경보호-environment)" },
-    { "rank": "—", "year": "2030", "name": "궁극의 농업", "impact": 3, "tier": "T3", "dse": "[goal](domains/life/agriculture/agriculture.md)" },
-    { "rank": "—", "year": "2030", "name": "궁극의 자율주행", "impact": 3, "tier": "T3", "dse": "[goal](domains/infra/autonomous-driving/autonomous-driving.md)" },
-    { "rank": "—", "year": "2030", "name": "궁극의 의료기기", "impact": 4, "tier": "T3", "dse": "[goal](domains/life/medical-device/medical-device.md)" },
-    { "rank": "—", "year": "✅", "name": "궁극의 안전", "impact": 4, "tier": "T3", "dse": "7,776 조합 → [🛡️ 안전](#-안전-safety)" }
+    {
+      "rank": 0,
+      "year": "2035",
+      "name": "Ultimate AGI",
+      "impact": 6,
+      "tier": "🔄",
+      "dse": "→ [Anima](https://github.com/need-singularity/anima)"
+    },
+    {
+      "rank": 0,
+      "year": "2040",
+      "name": "Ultimate 의식",
+      "impact": 6,
+      "tier": "🔄",
+      "dse": "→ [Anima](https://github.com/need-singularity/anima)"
+    },
+    {
+      "rank": 0,
+      "year": "2050",
+      "name": "Ultimate fire멸",
+      "impact": 6,
+      "tier": "🔄",
+      "dse": "→ [Anima](https://github.com/need-singularity/anima) + cognitive/brain-computer-interface"
+    },
+    {
+      "rank": 0,
+      "year": "✅",
+      "name": "Ultimate Energy",
+      "impact": 6,
+      "tier": "✅",
+      "dse": "10,225 combos → [⚡ Energy](#-Energy-energy)"
+    },
+    {
+      "rank": 0,
+      "year": "2040",
+      "name": "Ultimate Universe진출",
+      "impact": 6,
+      "tier": "T3",
+      "dse": "[goal](domains/space/space-engineering/space-engineering.md)"
+    },
+    {
+      "rank": 0,
+      "year": "✅",
+      "name": "Ultimate Materials",
+      "impact": 6,
+      "tier": "✅",
+      "dse": "3,600 combos 🛸10 → [🧬 Materials](#-Materials-materials)"
+    },
+    {
+      "rank": 1,
+      "year": "2030",
+      "name": "Ultimate Material",
+      "impact": 5,
+      "tier": "T1",
+      "dse": "—"
+    },
+    {
+      "rank": 2,
+      "year": "2028",
+      "name": "Ultimate Process",
+      "impact": 5,
+      "tier": "T1",
+      "dse": "—"
+    },
+    {
+      "rank": 3,
+      "year": "✅",
+      "name": "Ultimate 코어",
+      "impact": 5,
+      "tier": "✅",
+      "dse": "3,000 combos → [💻 칩](#-칩--Semiconductor-chip)"
+    },
+    {
+      "rank": 4,
+      "year": "✅",
+      "name": "Ultimate 칩",
+      "impact": 5,
+      "tier": "✅",
+      "dse": "3,000 combos → [💻 칩](#-칩--Semiconductor-chip)"
+    },
+    {
+      "rank": 5,
+      "year": "✅",
+      "name": "Ultimate Battery",
+      "impact": 5,
+      "tier": "✅",
+      "dse": "1,908 combos → [⚡ Energy](#-Energy-energy)"
+    },
+    {
+      "rank": 6,
+      "year": "✅",
+      "name": "Ultimate Solar Cell",
+      "impact": 5,
+      "tier": "✅",
+      "dse": "1,584 combos 🛸10 → [⚡ Energy](#-Energy-energy)"
+    },
+    {
+      "rank": 7,
+      "year": "2035",
+      "name": "Ultimate Fusion",
+      "impact": 5,
+      "tier": "✅",
+      "dse": "2,400 combos → [🔥 Fusion](#-Fusion-fusion)"
+    },
+    {
+      "rank": 8,
+      "year": "✅",
+      "name": "Ultimate 학습알고리즘",
+      "impact": 4,
+      "tier": "T2",
+      "dse": "—"
+    },
+    {
+      "rank": 9,
+      "year": "2030",
+      "name": "Ultimate 네트워크",
+      "impact": 4,
+      "tier": "T2",
+      "dse": "—"
+    },
+    {
+      "rank": 10,
+      "year": "✅",
+      "name": "Ultimate Robotics",
+      "impact": 4,
+      "tier": "✅",
+      "dse": "🛸10 270,000 combos → [🤖 Robotics](#-Robotics-robotics)"
+    },
+    {
+      "rank": 11,
+      "year": "✅",
+      "name": "Ultimate transmission망",
+      "impact": 4,
+      "tier": "✅",
+      "dse": "[⚡ Energy](#-Energy-energy)"
+    },
+    {
+      "rank": 12,
+      "year": "2035",
+      "name": "Ultimate 생명공학",
+      "impact": 4,
+      "tier": "T3",
+      "dse": "[biology/](domains/life/biology/)"
+    },
+    {
+      "rank": 13,
+      "year": "✅",
+      "name": "Ultimate Display",
+      "impact": 3,
+      "tier": "✅",
+      "dse": "H-DISP 10 → [📺 Display](#-Display-display)"
+    },
+    {
+      "rank": 14,
+      "year": "✅",
+      "name": "Ultimate Audio",
+      "impact": 3,
+      "tier": "✅",
+      "dse": "H-AUD 18 → [🎵 Audio](#-Audio-audio)"
+    },
+    {
+      "rank": 15,
+      "year": "✅",
+      "name": "Ultimate thermal관리",
+      "impact": 3,
+      "tier": "T3",
+      "dse": "—"
+    },
+    {
+      "rank": 16,
+      "year": "✅",
+      "name": "Ultimate crypto",
+      "impact": 3,
+      "tier": "T3",
+      "dse": "—"
+    },
+    {
+      "rank": 17,
+      "year": "2035",
+      "name": "Ultimate quantumComputer",
+      "impact": 3,
+      "tier": "T1",
+      "dse": "—"
+    },
+    {
+      "rank": 18,
+      "year": "✅",
+      "name": "Ultimate Superconductor",
+      "impact": 3,
+      "tier": "✅",
+      "dse": "🛸10 36파d 17,399줄 + BT11 + CrossDSE5 + TP27 + physical-limitproof → [🔬 Physics & Math](#-physicscount학-physics--math)"
+    },
+    {
+      "rank": 19,
+      "year": "✅",
+      "name": "Ultimate 블록체인",
+      "impact": 2,
+      "tier": "T3",
+      "dse": "—"
+    },
+    {
+      "rank": 20,
+      "year": "✅",
+      "name": "Ultimate 컴파d러/OS",
+      "impact": 2,
+      "tier": "T3",
+      "dse": "—"
+    },
+    {
+      "rank": 21,
+      "year": "✅",
+      "name": "Ultimate Programming Language",
+      "impact": 2,
+      "tier": "✅",
+      "dse": "6,480 combos → [💬 small프트웨어](#-small프트웨어인프라-software--infra)"
+    },
+    {
+      "rank": 22,
+      "year": "✅",
+      "name": "Ultimate Superconductingmagnet",
+      "impact": 3,
+      "tier": "✅",
+      "dse": "🛸10 SC 내 Integrated (hexa-magnet/coil/cool/fusion) → [🔬 Physics & Math](#-physicscount학-physics--math)"
+    },
+    {
+      "rank": 23,
+      "year": "✅",
+      "name": "Ultimate Pure Mathematics",
+      "impact": 1,
+      "tier": "✅",
+      "dse": "🛸10 11impossibility-theorem → [🔬 Physics & Math](#-physicscount학-physics--math)"
+    },
+    {
+      "rank": 24,
+      "year": "✅",
+      "name": "Ultimate Cosmology/Particle",
+      "impact": 1,
+      "tier": "✅",
+      "dse": "🛸9 53.3%EXACT+TP28 → [🔬 Physics & Math](#-physicscount학-physics--math)"
+    },
+    {
+      "rank": "—",
+      "year": "✅",
+      "name": "Ultimate Environment",
+      "impact": 4,
+      "tier": "✅",
+      "dse": "1.68M combos → [🌍 Environment](#-Environment-environment)"
+    },
+    {
+      "rank": "—",
+      "year": "✅",
+      "name": "Ultimate 탄small포집",
+      "impact": 4,
+      "tier": "✅",
+      "dse": "→ [🌍 Environment](#-Environment-environment)"
+    },
+    {
+      "rank": "—",
+      "year": "2030",
+      "name": "Ultimate 농업",
+      "impact": 3,
+      "tier": "T3",
+      "dse": "[goal](domains/life/agriculture/agriculture.md)"
+    },
+    {
+      "rank": "—",
+      "year": "2030",
+      "name": "Ultimate 자율weekly행",
+      "impact": 3,
+      "tier": "T3",
+      "dse": "[goal](domains/infra/autonomous-driving/autonomous-driving.md)"
+    },
+    {
+      "rank": "—",
+      "year": "2030",
+      "name": "Ultimate 의료devices",
+      "impact": 4,
+      "tier": "T3",
+      "dse": "[goal](domains/life/medical-device/medical-device.md)"
+    },
+    {
+      "rank": "—",
+      "year": "✅",
+      "name": "Ultimate Safety",
+      "impact": 4,
+      "tier": "T3",
+      "dse": "7,776 combos → [🛡️ Safety](#-Safety-safety)"
+    }
   ]
 }
