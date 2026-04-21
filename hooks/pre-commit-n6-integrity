@@ -22,7 +22,7 @@ fi
 
 R=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
 AUDIT="$R/tool/fellows_registry_audit.hexa"
-SPEC="$R/shared/config/n6_fellows_registry_spec.json"
+SPEC="$R/n6shared/config/n6_fellows_registry_spec.json"
 
 [ -f "$AUDIT" ] || exit 0
 [ -f "$SPEC" ] || exit 0

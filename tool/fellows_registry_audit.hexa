@@ -8,7 +8,7 @@
 //   hexa tool/fellows_registry_audit.hexa
 //
 // 입력:
-//   shared/config/n6_fellows_registry_spec.json — 6 group / 42 item 명세 (raw#15: no hardcode)
+//   n6shared/config/n6_fellows_registry_spec.json — 6 group / 42 item 명세 (raw#15: no hardcode)
 //
 // 출력:
 //   stdout — per-item PASS/FAIL 표 + Integrity Score %
@@ -51,7 +51,7 @@ fn find_repo_root() -> string {
     if envr != "" && dir_exists(envr) { return envr }
     // git rev-parse 로 polylith 내부 worktree 에서도 정상 동작
     let git_root = sh("git rev-parse --show-toplevel")
-    if git_root != "" && file_exists(git_root + "/shared/config/n6_fellows_registry_spec.json") {
+    if git_root != "" && file_exists(git_root + "/n6shared/config/n6_fellows_registry_spec.json") {
         return git_root
     }
     // common-dir 폴백: worktree 가 있는 경우 실제 메인 체크아웃 위치
@@ -67,7 +67,7 @@ if REPO == "" {
     exit(2)
 }
 
-let SPEC = REPO + "/shared/config/n6_fellows_registry_spec.json"
+let SPEC = REPO + "/n6shared/config/n6_fellows_registry_spec.json"
 if !file_exists(SPEC) {
     eprintln("N6_AUDIT_FAIL {\"group\":\"_init\",\"item\":\"spec\",\"reason\":\"spec missing: " + SPEC + "\"}")
     exit(2)
