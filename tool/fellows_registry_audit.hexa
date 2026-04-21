@@ -1,0 +1,340 @@
+// tool/fellows_registry_audit.hexa — n6 fellows-research integrity audit
+//
+// 목적:
+//   Seed E (2026-04-21) drill 에서 발견된 fellows-research §연결 레지스트리 10건 drift
+//   같은 정합성 붕괴를 향후 자동 감지. 현재 commit f7939c66 직후 상태는 42/42 복구 완료.
+//
+// 실행:
+//   hexa tool/fellows_registry_audit.hexa
+//
+// 입력:
+//   shared/config/n6_fellows_registry_spec.json — 6 group / 42 item 명세 (raw#15: no hardcode)
+//
+// 출력:
+//   stdout — per-item PASS/FAIL 표 + Integrity Score %
+//   stderr — FAIL 건마다 JSON 한 줄: N6_AUDIT_FAIL {"group":..., "item":..., "reason":...}
+//
+// 종료 코드:
+//   0 — 42/42 PASS
+//   1 — 1건 이상 FAIL
+//   2 — spec 로드 실패 또는 repo 구조 오류
+//
+// 규칙:
+//   raw#9  hexa only (python3 은 JSON 파싱 read-only 단일 도우미로만 exec; hexa 는 그 결과만 소비)
+//   raw#10 proof-carrying — 각 check 는 (group, item, reason, expected, actual) 를 구조적으로 emit
+//   raw#11 snake_case
+//   raw#15 no hardcode — 42 item / 6 group / 8 domain / 8 BT 번호 모두 spec JSON 에서 로드
+
+fn _str(x) -> string {
+    let t = type_of(x)
+    if t == "str" || t == "string" { return x }
+    return to_string(x)
+}
+
+fn sh(cmd: string) -> string {
+    return _str(exec(cmd + " 2>/dev/null")).trim()
+}
+
+fn file_exists(path: string) -> bool {
+    let r = sh("test -f '" + path + "' && echo y || echo n")
+    return r == "y"
+}
+
+fn dir_exists(path: string) -> bool {
+    let r = sh("test -d '" + path + "' && echo y || echo n")
+    return r == "y"
+}
+
+// ── repo 루트 결정 ──────────────────────────────────
+fn find_repo_root() -> string {
+    let envr = env("N6_REPO_ROOT")
+    if envr != "" && dir_exists(envr) { return envr }
+    // git rev-parse 로 polylith 내부 worktree 에서도 정상 동작
+    let git_root = sh("git rev-parse --show-toplevel")
+    if git_root != "" && file_exists(git_root + "/shared/config/n6_fellows_registry_spec.json") {
+        return git_root
+    }
+    // common-dir 폴백: worktree 가 있는 경우 실제 메인 체크아웃 위치
+    let home = env("HOME")
+    let candidate = home + "/core/n6-architecture"
+    if dir_exists(candidate) { return candidate }
+    return ""
+}
+
+let REPO = find_repo_root()
+if REPO == "" {
+    eprintln("N6_AUDIT_FAIL {\"group\":\"_init\",\"item\":\"repo_root\",\"reason\":\"cannot resolve repo root\"}")
+    exit(2)
+}
+
+let SPEC = REPO + "/shared/config/n6_fellows_registry_spec.json"
+if !file_exists(SPEC) {
+    eprintln("N6_AUDIT_FAIL {\"group\":\"_init\",\"item\":\"spec\",\"reason\":\"spec missing: " + SPEC + "\"}")
+    exit(2)
+}
+
+println("── n6 fellows-research integrity audit ──")
+println("repo : " + REPO)
+println("spec : " + SPEC)
+println("")
+
+// ── 전역 누적기 ─────────────────────────────────────
+let mut pass_count = 0
+let mut fail_count = 0
+let mut total_count = 0
+let mut fail_log = []   // (group, item, reason)
+
+fn record_pass(group: string, item: string) {
+    pass_count = pass_count + 1
+    total_count = total_count + 1
+    println("  [PASS] " + group + " :: " + item)
+}
+
+fn record_fail(group: string, item: string, reason: string) {
+    fail_count = fail_count + 1
+    total_count = total_count + 1
+    let line = "  [FAIL] " + group + " :: " + item + " — " + reason
+    println(line)
+    let j = "N6_AUDIT_FAIL {\"group\":\"" + group + "\",\"item\":\"" + item + "\",\"reason\":\"" + reason + "\"}"
+    eprintln(j)
+    fail_log.push(group + "::" + item)
+}
+
+fn check_contains(group: string, item: string, path: string, pattern: string) {
+    if !file_exists(path) {
+        record_fail(group, item, "file missing: " + path)
+        return
+    }
+    let body = _str(read_file(path))
+    if body.contains(pattern) {
+        record_pass(group, item)
+    } else {
+        record_fail(group, item, "pattern not found: '" + pattern + "' in " + path)
+    }
+}
+
+// ── spec 로드 (python3 read-only JSON 쿼리 헬퍼 — raw#9 compliance: hexa 가 주어, python 은 피 호출 도구) ──
+fn py_q(query: string) -> string {
+    // query 는 python 식 — 앞 10 라인 정도의 짧은 식만 허용
+    let cmd = "/usr/bin/python3 -c \"import json,sys; d=json.load(open('" + SPEC + "')); " + query + "\""
+    return sh(cmd)
+}
+
+fn spec_get_domains() -> string {
+    return py_q("print(','.join(d['groups'][0]['domains']))")
+}
+
+fn spec_get_bt_numbers() -> string {
+    return py_q("print(','.join(str(n) for n in d['groups'][1]['bt_numbers']))")
+}
+
+fn spec_group_count(idx: int) -> string {
+    return py_q("print(d['groups'][" + to_string(idx) + "]['_count'])")
+}
+
+fn spec_total() -> string {
+    return py_q("print(d['_total_items'])")
+}
+
+let domains_csv = spec_get_domains()
+let bt_csv = spec_get_bt_numbers()
+let expected_total = spec_total()
+
+if domains_csv == "" || bt_csv == "" {
+    eprintln("N6_AUDIT_FAIL {\"group\":\"_init\",\"item\":\"spec_parse\",\"reason\":\"cannot parse spec JSON\"}")
+    exit(2)
+}
+
+let domains = domains_csv.split(",")
+let bt_nums = bt_csv.split(",")
+
+println("[spec] expected total items : " + expected_total)
+println("[spec] domains (" + to_string(len(domains)) + "): " + domains_csv)
+println("[spec] bt_numbers (" + to_string(len(bt_nums)) + "): " + bt_csv)
+println("")
+
+// ── G1: domains/cognitive/ai-*/ai-*.md × 8 × 3 = 24 ───────────────────────
+println("── G1: domain_mds (8 × 3 = 24 items) ──")
+let mut di = 0
+while di < len(domains) {
+    let slug = domains[di]
+    let md_path = REPO + "/domains/cognitive/" + slug + "/" + slug + ".md"
+    let bt_num = bt_nums[di]
+    check_contains("G1_domain_mds", slug + ".has_s6_evolve", md_path, "## S6 EVOLVE")
+    check_contains("G1_domain_mds", slug + ".has_mkv_verify", md_path, "## Mk.V VERIFY")
+    check_contains("G1_domain_mds", slug + ".has_bt_ref_" + bt_num, md_path, "BT-" + bt_num)
+    di = di + 1
+}
+println("")
+
+// ── G2: theory/breakthroughs/bt-142{1..8}-*-2026-04-20.md × 8 ─────────────
+println("── G2: bt_nodes (8 items) ──")
+let mut bi = 0
+while bi < len(bt_nums) {
+    let n = bt_nums[bi]
+    // glob 매칭: bt-{n}-*-2026-04-20.md 한 개 이상
+    let glob = REPO + "/theory/breakthroughs/bt-" + n + "-*-2026-04-20.md"
+    let found = sh("ls " + glob + " 2>/dev/null | head -1")
+    if found == "" {
+        record_fail("G2_bt_nodes", "bt_" + n + "_file", "glob miss: " + glob)
+    } else {
+        // 본문에 자기 BT 번호 포함
+        let body = _str(read_file(found))
+        if body.contains("BT-" + n) || body.contains("bt-" + n) {
+            record_pass("G2_bt_nodes", "bt_" + n + "_file")
+        } else {
+            record_fail("G2_bt_nodes", "bt_" + n + "_file", "self BT ref missing in " + found)
+        }
+    }
+    bi = bi + 1
+}
+println("")
+
+// ── G3: atlas-constants.md §Mk.V Anchor + 8 EXACT ────────────────────────
+println("── G3: atlas_constants (2 items) ──")
+let atlas_path = REPO + "/theory/constants/atlas-constants.md"
+check_contains("G3_atlas_constants", "has_mkv_anchor_section", atlas_path,
+               "Mk.V Anchor Constants (AI Fellows 8-domain)")
+// 8 EXACT 상수: `(Mk.V)` 태그가 8회 이상 등장해야 함
+if !file_exists(atlas_path) {
+    record_fail("G3_atlas_constants", "has_8_mkv_constants", "atlas file missing")
+} else {
+    let occ = sh("grep -c '(Mk.V)' '" + atlas_path + "'")
+    let n_occ = to_int(occ)
+    if n_occ >= 8 {
+        record_pass("G3_atlas_constants", "has_8_mkv_constants")
+    } else {
+        record_fail("G3_atlas_constants", "has_8_mkv_constants",
+                    "only " + to_string(n_occ) + " '(Mk.V)' occurrences (need ≥ 8)")
+    }
+}
+println("")
+
+// ── G4: _index.json _version ≥ 1.4.0 + ai-safety 슬러그 ───────────────────
+println("── G4: cognitive_index (2 items) ──")
+let idx_path = REPO + "/domains/cognitive/_index.json"
+if !file_exists(idx_path) {
+    record_fail("G4_cognitive_index", "version_gte_1_4_0", "file missing")
+    record_fail("G4_cognitive_index", "has_ai_safety_slug", "file missing")
+} else {
+    let ver = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + idx_path + "')); print(d.get('_version',''))\"")
+    // semver ≥ 1.4.0 비교 (major.minor.patch → 튜플 비교)
+    let cmp = sh("/usr/bin/python3 -c \"v='" + ver + "'.split('.'); print(1 if tuple(int(x) for x in v) >= (1,4,0) else 0)\"")
+    if cmp == "1" {
+        record_pass("G4_cognitive_index", "version_gte_1_4_0")
+    } else {
+        record_fail("G4_cognitive_index", "version_gte_1_4_0",
+                    "_version=" + ver + " < 1.4.0")
+    }
+    let has_safety = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + idx_path + "')); print('y' if any(x.get('slug')=='ai-safety' for x in d.get('domains',[])) else 'n')\"")
+    if has_safety == "y" {
+        record_pass("G4_cognitive_index", "has_ai_safety_slug")
+    } else {
+        record_fail("G4_cognitive_index", "has_ai_safety_slug",
+                    "ai-safety slug not in domains[]")
+    }
+}
+println("")
+
+// ── G5: discovery_graph meta.version ≥ 16 + 실측 일치 + notes_v16 존재 ────
+println("── G5: discovery_graph (4 items) ──")
+let dg_path = REPO + "/n6shared/discovery_graph.json"
+if !file_exists(dg_path) {
+    record_fail("G5_discovery_graph", "version_gte_v16", "file missing")
+    record_fail("G5_discovery_graph", "total_nodes_matches_measured", "file missing")
+    record_fail("G5_discovery_graph", "total_edges_matches_measured", "file missing")
+    record_fail("G5_discovery_graph", "has_notes_v16_ai_fellows_mk5", "file missing")
+} else {
+    let dg_ver = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + dg_path + "')); print(d.get('meta',{}).get('version',''))\"")
+    let dg_cmp = sh("/usr/bin/python3 -c \"v='" + dg_ver + "'.split('.'); print(1 if tuple(int(x) for x in v) >= (16,0,0) else 0)\"")
+    if dg_cmp == "1" {
+        record_pass("G5_discovery_graph", "version_gte_v16")
+    } else {
+        record_fail("G5_discovery_graph", "version_gte_v16",
+                    "meta.version=" + dg_ver + " < 16.0.0")
+    }
+
+    let node_result = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + dg_path + "')); m=d.get('meta',{}).get('total_nodes'); a=len(d.get('nodes',[])); print(f'{m}:{a}:{1 if m==a else 0}')\"")
+    let nparts = node_result.split(":")
+    if len(nparts) >= 3 && nparts[2] == "1" {
+        record_pass("G5_discovery_graph", "total_nodes_matches_measured")
+    } else {
+        let reason = "meta.total_nodes=" + nparts[0] + " vs measured=" + nparts[1]
+        record_fail("G5_discovery_graph", "total_nodes_matches_measured", reason)
+    }
+
+    let edge_result = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + dg_path + "')); m=d.get('meta',{}).get('total_edges'); a=len(d.get('edges',[])); print(f'{m}:{a}:{1 if m==a else 0}')\"")
+    let eparts = edge_result.split(":")
+    if len(eparts) >= 3 && eparts[2] == "1" {
+        record_pass("G5_discovery_graph", "total_edges_matches_measured")
+    } else {
+        let reason = "meta.total_edges=" + eparts[0] + " vs measured=" + eparts[1]
+        record_fail("G5_discovery_graph", "total_edges_matches_measured", reason)
+    }
+
+    let notes_has = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + dg_path + "')); k='notes_v16_ai_fellows_mk5'; print('y' if k in d.get('meta',{}) and d['meta'][k] else 'n')\"")
+    if notes_has == "y" {
+        record_pass("G5_discovery_graph", "has_notes_v16_ai_fellows_mk5")
+    } else {
+        record_fail("G5_discovery_graph", "has_notes_v16_ai_fellows_mk5",
+                    "meta.notes_v16_ai_fellows_mk5 missing or empty")
+    }
+}
+println("")
+
+// ── G6: _hypotheses_index.json _meta.verified 존재 + ≥ 666 ────────────────
+println("── G6: hypotheses_index (2 items) ──")
+let hyp_path = REPO + "/theory/breakthroughs/_hypotheses_index.json"
+if !file_exists(hyp_path) {
+    record_fail("G6_hypotheses_index", "has_meta_verified", "file missing")
+    record_fail("G6_hypotheses_index", "verified_gte_666", "file missing")
+} else {
+    let v_exists = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + hyp_path + "')); print('y' if 'verified' in d.get('_meta',{}) else 'n')\"")
+    if v_exists == "y" {
+        record_pass("G6_hypotheses_index", "has_meta_verified")
+    } else {
+        record_fail("G6_hypotheses_index", "has_meta_verified",
+                    "_meta.verified field missing")
+    }
+    let v_val = sh("/usr/bin/python3 -c \"import json; d=json.load(open('" + hyp_path + "')); print(d.get('_meta',{}).get('verified',0))\"")
+    let v_int = to_int(v_val)
+    if v_int >= 666 {
+        record_pass("G6_hypotheses_index", "verified_gte_666")
+    } else {
+        record_fail("G6_hypotheses_index", "verified_gte_666",
+                    "verified=" + v_val + " < 666")
+    }
+}
+println("")
+
+// ── 최종 리포트 ─────────────────────────────────────
+println("═════════════════════════════════════════════")
+println("Integrity Audit Summary")
+println("─────────────────────────────────────────────")
+println("  PASS        : " + to_string(pass_count))
+println("  FAIL        : " + to_string(fail_count))
+println("  TOTAL       : " + to_string(total_count))
+println("  EXPECTED    : " + expected_total)
+
+let score_num = pass_count * 1000 / total_count    // *10 for 1 decimal
+let score_int = score_num / 10
+let score_frac = score_num - (score_int * 10)
+let score_str = to_string(score_int) + "." + to_string(score_frac) + "%"
+println("  INTEGRITY   : " + to_string(pass_count) + "/" + to_string(total_count) + " = " + score_str)
+
+if fail_count == 0 && total_count == to_int(expected_total) {
+    println("  STATUS      : PASS (42/42 restored)")
+    println("═════════════════════════════════════════════")
+    exit(0)
+} else {
+    println("  STATUS      : FAIL")
+    println("─────────────────────────────────────────────")
+    println("  Failed items (" + to_string(len(fail_log)) + "):")
+    let mut fi = 0
+    while fi < len(fail_log) {
+        println("    · " + fail_log[fi])
+        fi = fi + 1
+    }
+    println("═════════════════════════════════════════════")
+    exit(1)
+}

@@ -1,0 +1,78 @@
+#!/bin/bash
+# hooks/pre-commit-n6-integrity — n6 fellows-research integrity pre-commit gate
+#
+# 설치:
+#   ln -sf ../../hooks/pre-commit-n6-integrity .git/hooks/pre-commit-n6-integrity
+#   또는 .git/hooks/pre-commit 에서 이 스크립트 호출 (아래 예시)
+#
+# 동작:
+#   staged 파일 중 domains/cognitive/, theory/, n6shared/discovery_graph.json,
+#   theory/breakthroughs/_hypotheses_index.json 가 포함되면
+#   tool/fellows_registry_audit.hexa 실행. 실패 시 commit 거부.
+#
+# 우회 (응급용):
+#   N6_SKIP_AUDIT=1 git commit ...
+
+set -u
+
+# 우회
+if [ "${N6_SKIP_AUDIT:-0}" = "1" ]; then
+    exit 0
+fi
+
+R=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+AUDIT="$R/tool/fellows_registry_audit.hexa"
+SPEC="$R/shared/config/n6_fellows_registry_spec.json"
+
+[ -f "$AUDIT" ] || exit 0
+[ -f "$SPEC" ] || exit 0
+
+# staged 파일 목록 — 하나도 trigger 경로가 아니면 skip
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR 2>/dev/null)
+TRIGGER=0
+while IFS= read -r f; do
+    case "$f" in
+        domains/cognitive/*|theory/*|n6shared/discovery_graph.json|proposals/anthropic-fellows-research.md)
+            TRIGGER=1
+            break
+            ;;
+    esac
+done <<< "$STAGED"
+
+if [ "$TRIGGER" = "0" ]; then
+    exit 0
+fi
+
+# hexa 위치 결정
+HEXA=$(command -v hexa 2>/dev/null)
+if [ -z "$HEXA" ] && [ -x "$HOME/Dev/hexa-lang/hexa" ]; then
+    HEXA="$HOME/Dev/hexa-lang/hexa"
+fi
+
+if [ -z "$HEXA" ] || [ ! -x "$HEXA" ]; then
+    echo "pre-commit-n6-integrity: hexa binary not found — skipping (fail-open)" >&2
+    exit 0
+fi
+
+echo "[pre-commit] n6 fellows integrity audit..."
+export N6_REPO_ROOT="$R"
+LOG=$(mktemp -t n6_audit.XXXXXX)
+if "$HEXA" "$AUDIT" > "$LOG" 2>&1; then
+    # PASS 시 한 줄만 요약 출력
+    grep -E "INTEGRITY|STATUS" "$LOG" | head -2
+    rm -f "$LOG"
+    exit 0
+else
+    echo ""
+    echo "[BLOCK] n6 fellows-research integrity audit FAILED"
+    echo "────────────────────────────────────────────────"
+    # 실패 항목만 추출
+    grep -E "\[FAIL\]|N6_AUDIT_FAIL|INTEGRITY|STATUS" "$LOG"
+    echo "────────────────────────────────────────────────"
+    echo "수정 방법:"
+    echo "  1. hexa $AUDIT 실행해 전체 실패 항목 확인"
+    echo "  2. drift 근원 (spec JSON 기준) 복구 후 재커밋"
+    echo "  3. 응급 우회: N6_SKIP_AUDIT=1 git commit ..."
+    rm -f "$LOG"
+    exit 1
+fi
