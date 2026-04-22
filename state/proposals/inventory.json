@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture.proposal_inventory.v1",
   "id_prefix": "n6a",
-  "updated_ts": "2026-04-22T15:30:10Z",
+  "updated_ts": "2026-04-22T15:52:11Z",
   "entries": [
     {
       "id": "n6a-20260422-001",
@@ -21,6 +21,33 @@
       "user_status": "pending",
       "score_priority": 75,
       "submitted_ts": "2026-04-22T15:30:10Z"
+    },
+    {
+      "id": "n6a-20260422-003",
+      "kind": "advisory",
+      "title": "CONVENTION lang_gap: 모든 repo 세션이 hexa 언어/runtime 제약 (미구현 method, reserved keyword 충돌, AOT bug, primitive 누락 등) 발견 시 → hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox submit --to hexa-lang --category lang_gap --kind cluster --title '...' 로 등록. 자기 repo 에 혼자 쌓지 말고 hexa-lang 에 모일 것. (근거: 2026-04-23 session, rfind/guard/hx_prefix/write_file 등 5건 누적)",
+      "from_repo": "hexa-lang",
+      "user_status": "pending",
+      "score_priority": 80,
+      "submitted_ts": "2026-04-22T15:49:13Z"
+    },
+    {
+      "id": "n6a-20260422-004",
+      "kind": "advisory",
+      "title": "CONVENTION cross_repo_blocker: 어느 repo 가 다른 repo 의 작업을 막고 있으면 해당 entry priority ≥ 95 (0순위). 하위 카테고리: lang_gap (hexa-lang blocker), infra_gap (airgenome host/build/plist blocker), atlas_gap (nexus/n6 atlas blocker), data_gap (anima cert/weight blocker). 여기저기서 blocker 생기므로 일반화.",
+      "from_repo": "hexa-lang",
+      "user_status": "pending",
+      "score_priority": 90,
+      "submitted_ts": "2026-04-22T15:50:05Z"
+    },
+    {
+      "id": "n6a-20260422-005",
+      "kind": "advisory",
+      "title": "void repo 가 proposal_inbox 체계에 합류 (2026-04-23) — SSH terminal 전문. airgenome compute_filter 와 별개. sister_repos 5 개와 상호 advisory/proposal 교환 가능.",
+      "from_repo": "void",
+      "user_status": "pending",
+      "score_priority": 70,
+      "submitted_ts": "2026-04-22T15:52:11Z"
     }
   ],
   "proposals": [],
@@ -42,10 +69,34 @@
       "airgenome": {
         "prefix": "agm",
         "inventory_path": "/Users/ghost/core/airgenome/state/proposals/inventory.json"
+      },
+      "void": {
+        "prefix": "vd",
+        "inventory_path": "/Users/ghost/core/void/state/proposals/inventory.json"
       }
     },
     "convention_loss_free_roi": "All ROI-category proposals must use 무손실 (loss-free) semantics — no regression, no user-visible break. Category tag: `loss_free_roi`.",
     "cross_repo_links": [],
-    "created_by": "n6-architecture proposal_inbox bootstrap (2026-04-23)"
+    "created_by": "n6-architecture proposal_inbox bootstrap (2026-04-23)",
+    "convention_cross_repo_blocker": {
+      "rule": "다른 repo 의 작업을 blocking 하는 entry 는 priority ≥ 95 (0순위)",
+      "sub_categories": {
+        "lang_gap": "hexa-lang 언어/runtime 제약 → 모든 downstream repo blocker (rfind 미구현, reserved keyword 등)",
+        "resource_gap": "자원 (compute/network/disk/auth/host availability) 제약 → heavy compute offload blocker. airgenome 주 관심사 (Hetzner/runpod/3-host/Linux binary 등)",
+        "infra_gap": "인프라 설정 (plist/systemd/docker/rule) 제약 → deploy path blocker",
+        "atlas_gap": "nexus / n6 atlas map / derivation chain 제약 → paper/product claim blocker",
+        "data_gap": "anima cert / weight / checkpoint 제약 → training resume blocker",
+        "generic": "위 카테고리 밖이지만 cross-repo 영향"
+      },
+      "priority_floor": 95,
+      "typical_owners": {
+        "lang_gap": "hexa-lang maintainer",
+        "resource_gap": "airgenome maintainer (외부 vendor 의존 포함)",
+        "infra_gap": "repo-specific maintainer",
+        "atlas_gap": "nexus + n6 공동",
+        "data_gap": "anima maintainer"
+      },
+      "registered": "2026-04-23"
+    }
   }
 }
