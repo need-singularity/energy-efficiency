@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture.proposal_inventory.v1",
   "id_prefix": "n6a",
-  "updated_ts": "2026-04-22T15:26:51Z",
+  "updated_ts": "2026-04-22T15:30:10Z",
   "entries": [
     {
       "id": "n6a-20260422-001",
@@ -12,6 +12,15 @@
       "score_priority": 60,
       "submitted_ts": "2026-04-22T15:26:51Z",
       "category": "loss_free_roi"
+    },
+    {
+      "id": "n6a-20260422-002",
+      "kind": "advisory",
+      "title": "hexa_v2 baseline binary 는 Mac ARM64 compiled — Linux pod 에서 'Exec format error'. pod bootstrap 은 cross-compile 또는 pod-내 rebuild 필요",
+      "from_repo": "hexa-lang",
+      "user_status": "pending",
+      "score_priority": 75,
+      "submitted_ts": "2026-04-22T15:30:10Z"
     }
   ],
   "proposals": [],
