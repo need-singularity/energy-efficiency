@@ -1,0 +1,68 @@
+{
+  "schema": "n6-architecture/n6_blockers/1",
+  "ts": "2026-04-22T15:27:34Z",
+  "head": "11db027bfc58b47866cb41326634d252028d52d8",
+  "inputs": {
+    "atlas_n6_bytes": 1503957,
+    "atlas_signals_n6_bytes": 289669,
+    "engine_hexa_total": 16,
+    "engine_selftest_ok": 9,
+    "engine_selftest_stub": 7,
+    "engine_selftest_fail": 0,
+    "integrity_hook_executable": true,
+    "build_log_total": 129,
+    "build_log_ok": 128,
+    "build_log_fail": 1,
+    "loop_rules_total": 2,
+    "loop_rules_match": 1,
+    "loop_rules_drift": 1
+  },
+  "blockers": [
+    {
+      "id": "blk-1",
+      "kind": "nexus_unreachable",
+      "source": "~/.hx/bin/nexus drill",
+      "severity": "med",
+      "evidence": "drill aborts heavy-compute on Darwin — NEXUS_REMOTE_ERROR all_timeout (exit 74). Bypass: HEXA_ALLOW_LOCAL_FALLBACK=1 or ubu remote.",
+      "suggested_fix": "set HEXA_ALLOW_LOCAL_FALLBACK=1 for n6 preflight OR ensure ubu reachable"
+    },
+    {
+      "id": "blk-2",
+      "kind": "build_pandoc_fail",
+      "source": "build_log.txt",
+      "severity": "high",
+      "evidence": "1/129 paper builds failed: n6-boundary-metatheory-paper (venue=venue_nature_comms). Log: papers/pandoc_templates/output/_build_logs/n6-boundary-metatheory-paper.log",
+      "suggested_fix": "inspect build_logs/n6-boundary-metatheory-paper.log → fix source → rebuild"
+    },
+    {
+      "id": "blk-3",
+      "kind": "loop_rule_drift",
+      "source": "loop-rules.json:rules[1]",
+      "severity": "low",
+      "evidence": "rule1 pattern 'tests:\\s+\\d+' has no match in README.md — doc claim for NEXUS-6 테스트 수 (expected echo 2078) is missing from documentation.",
+      "suggested_fix": "either remove rule1 from loop-rules.json OR add 'tests: 2078' line to README.md"
+    },
+    {
+      "id": "blk-4",
+      "kind": "engine_selftest_stub",
+      "source": "engine/*.hexa",
+      "severity": "low",
+      "evidence": "7/16 engine tools return STUB (hexa port pending): anima_tension_loss, consciousness_constraints, emergent_n6_trainer, leech24_surface, n6_calculator, phi_efficiency_bridge, test_engine, thermodynamic_frame.",
+      "suggested_fix": "port Python → .hexa or mark as deferred; exclude from --selftest aggregate."
+    }
+  ],
+  "passes": [
+    {"id": "pass-atlas", "check": "atlas/atlas.n6 exists + non-empty", "result": "OK (1503957 bytes)"},
+    {"id": "pass-atlas-signals", "check": "atlas/atlas.signals.n6 exists + non-empty", "result": "OK (289669 bytes)"},
+    {"id": "pass-hook", "check": "hooks/pre-commit-n6-integrity executable", "result": "OK"},
+    {"id": "pass-engine-no-fail", "check": "engine/*.hexa zero runtime failures", "result": "OK (0 fail out of 16)"},
+    {"id": "pass-loop-rule0", "check": "loop-rules.json rules[0] — techniques count matches README", "result": "OK (225 = 225)"}
+  ],
+  "summary": {
+    "critical": 0,
+    "high": 1,
+    "med": 1,
+    "low": 2,
+    "healthy_inputs": 5
+  }
+}
