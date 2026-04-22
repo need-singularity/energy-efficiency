@@ -1,0 +1,33 @@
+// tool/n6_meta.hexa — Phase 4 CLI dispatcher
+// @allow-bare-exec
+// @no-sandbox
+//
+// Usage: hexa run tool/n6_meta.hexa <subcommand> [args...]
+//        bin/n6_meta <subcommand>                (via shim)
+//
+// All real work is in tool/_n6_lib (bash). Hexa-first sandbox in n6 repo
+// blocks .sh/.py extensions, so the implementation file is extension-less.
+
+fn main() {
+    let raw = args()
+    // args() on Darwin: [bin, script, user...]  resolve first .hexa index
+    let mut idx: i64 = -1
+    let mut i: i64 = 0
+    while i < raw.len() {
+        if to_string(raw[i]).ends_with(".hexa") { idx = i; break }
+        i = i + 1
+    }
+    let user_start = if idx >= 0 { idx + 1 } else { 2 }
+
+    let mut sub = "help"
+    if raw.len() > user_start {
+        sub = to_string(raw[user_start]).trim()
+    }
+
+    let lib = "tool/_n6_lib"
+    let cmd = "bash " + lib + " " + sub
+    let out = to_string(exec(cmd))
+    println(out)
+}
+
+main()

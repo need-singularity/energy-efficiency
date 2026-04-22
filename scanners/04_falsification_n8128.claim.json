@@ -1,0 +1,10 @@
+{
+  "id": "falsification.n_eq_8128",
+  "type": "falsification",
+  "description": "n=8128 (4th perfect number) must NOT satisfy sigma*phi == n*tau",
+  "actual_cmd": "python3 -c 'from math import gcd; sigma=lambda n:sum(i for i in range(1,n+1) if n%i==0); tau=lambda n:sum(1 for i in range(1,n+1) if n%i==0); phi=lambda n:sum(1 for k in range(1,n+1) if gcd(k,n)==1); print(int(sigma(8128)*phi(8128)==8128*tau(8128)))'",
+  "expected": "0",
+  "must_fail": false,
+  "recheck_cadence": "monthly",
+  "owner": "arithmetic_core"
+}

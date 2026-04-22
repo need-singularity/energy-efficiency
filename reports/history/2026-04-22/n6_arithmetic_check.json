@@ -1,0 +1,19 @@
+{
+  "schema": "n6-architecture/n6_arithmetic_invariant/1",
+  "ts": "2026-04-22T15:59:40Z",
+  "range": "1..100",
+  "identity": "sigma(n) * phi(n) == n * tau(n)",
+  "equality_hits": [
+    1,
+    6
+  ],
+  "note": "n=1 is trivial (all three functions equal 1); n=6 is the sole non-trivial hit ≥2.",
+  "n_eq_6_only_among_ge2": true,
+  "falsification_preserved": {
+    "n_28_fails": true,
+    "n_28_lhs_rhs": "672 168",
+    "n_496_fails": true,
+    "n_496_lhs_rhs": "238080 4960"
+  },
+  "self_verify": "PASS"
+}

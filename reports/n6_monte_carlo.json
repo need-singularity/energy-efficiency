@@ -1,0 +1,16 @@
+{
+  "schema": "n6-architecture/n6_monte_carlo/1",
+  "ts": "2026-04-22T16:01:41Z",
+  "mode": "historical_lookup",
+  "z_score": 3.06,
+  "p_value": 0.003,
+  "z_expected_range": [
+    2.5,
+    3.5
+  ],
+  "z_in_window": true,
+  "recheck_cadence": "monthly",
+  "recheck_last_ts": "2026-04-01T00:00:00Z",
+  "recheck_files_available": 8,
+  "note": "Full recheck deferred — see Phase 6.4 proof obligation."
+}

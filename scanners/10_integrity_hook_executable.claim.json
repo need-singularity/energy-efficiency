@@ -1,0 +1,10 @@
+{
+  "id": "hook.integrity_executable",
+  "type": "existence",
+  "description": "hooks/pre-commit-n6-integrity exists and is executable",
+  "actual_cmd": "bash -c '[ -x hooks/pre-commit-n6-integrity ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "infra"
+}

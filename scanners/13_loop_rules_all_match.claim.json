@@ -1,0 +1,10 @@
+{
+  "id": "loop_rules.all_match",
+  "type": "drift",
+  "description": "loop-rules.json rules: drift count == 0",
+  "actual_cmd": "bash tool/_n6_lib loop_rules >/dev/null 2>&1; jq -r '.drift' reports/n6_loop_rules.json",
+  "expected": "0",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "infra"
+}

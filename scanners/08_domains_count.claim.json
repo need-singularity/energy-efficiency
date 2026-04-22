@@ -1,0 +1,10 @@
+{
+  "id": "domains.count_gte_318",
+  "type": "atlas_count",
+  "description": "domain subdirectory count ≥ 318 (Phase P1 lock baseline)",
+  "actual_cmd": "bash -c 'c=$(find domains -maxdepth 2 -mindepth 2 -type d | wc -l | tr -d \" \"); [ $c -ge 318 ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "weekly",
+  "owner": "discovery"
+}

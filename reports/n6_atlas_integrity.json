@@ -1,0 +1,25 @@
+{
+  "schema": "n6-architecture/n6_atlas_integrity/1",
+  "ts": "2026-04-22T16:01:07Z",
+  "atlas": {
+    "bytes": 1503957,
+    "sha256": "54a7e3cf13fb1d7fa10afcb5d40a5305746977b0965498d7e83ab9779a75ad55"
+  },
+  "signals": {
+    "bytes": 289669,
+    "sha256": "a5f52d0c4b0f424d878a98076f31ab105ebf28b9352b13bf5bd75568cc8175db"
+  },
+  "counts": {
+    "nodes": 9612,
+    "edges": 2222,
+    "cross_layer_edges": 1515
+  },
+  "readme_claims": {
+    "nodes": 9612,
+    "edges": 2222
+  },
+  "drift": {
+    "nodes": 0,
+    "edges": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "atlas.file_present_nonempty",
+  "type": "existence",
+  "description": "atlas/atlas.n6 exists and has bytes > 100000",
+  "actual_cmd": "bash -c '[ -f atlas/atlas.n6 ] && [ $(stat -f %z atlas/atlas.n6 2>/dev/null || echo 0) -gt 100000 ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "atlas_team"
+}

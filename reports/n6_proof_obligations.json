@@ -1,0 +1,101 @@
+{
+  "schema": "n6-architecture/n6_proof_obligations/1",
+  "ts": "2026-04-22T16:01:55Z",
+  "total": 13,
+  "green": 13,
+  "red": 0,
+  "status": "GREEN",
+  "claims": [
+    {
+      "file": "01_arithmetic_n6.claim.json",
+      "type": "structural",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "02_falsification_n28.claim.json",
+      "type": "falsification",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
+    },
+    {
+      "file": "03_falsification_n496.claim.json",
+      "type": "falsification",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
+    },
+    {
+      "file": "04_falsification_n8128.claim.json",
+      "type": "falsification",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
+    },
+    {
+      "file": "05_atlas_present.claim.json",
+      "type": "existence",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "06_atlas_signals_present.claim.json",
+      "type": "existence",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "07_techniques_count.claim.json",
+      "type": "atlas_count",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "08_domains_count.claim.json",
+      "type": "atlas_count",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "09_papers_count.claim.json",
+      "type": "atlas_count",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "10_integrity_hook_executable.claim.json",
+      "type": "existence",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "11_engine_zero_failures.claim.json",
+      "type": "ci_health",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "12_monte_carlo_window.claim.json",
+      "type": "statistical",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "13_loop_rules_all_match.claim.json",
+      "type": "drift",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
+    }
+  ]
+}

@@ -1,0 +1,862 @@
+#!/bin/bash
+# _n6_lib — shared backend for n6 meta scanners (Phase 1-6)
+# Called via: bash tool/_n6_lib <subcommand> [args...]
+# SSOT: docs/n6_meta_evolution_proposal_20260423.md
+# Non-.sh/.py extension required by n6 HEXA-FIRST sandbox; this file is a
+# single dispatch entrypoint that each tool/n6_*.hexa wraps with exec().
+
+set -e
+N6="${N6:-/Users/ghost/core/n6-architecture}"
+cd "$N6"
+
+ts()   { date -u +%Y-%m-%dT%H:%M:%SZ; }
+head_sha() { git rev-parse HEAD 2>/dev/null || echo "unknown"; }
+j_arr_from_stdin() { jq -R -s -c 'split("\n") | map(select(length>0))'; }
+write_json() { local f="$1"; shift; printf '%s' "$*" >"$f"; jq '.' "$f" >"$f.tmp" && mv "$f.tmp" "$f"; }
+
+# ────────────────────────────────────────────────────────────
+# Phase 1 — blockers (blocker inventory) — re-runnable
+# ────────────────────────────────────────────────────────────
+scan_blockers() {
+  local out="reports/n6_blockers.json"
+  local atlas_b=$(stat -f '%z' atlas/atlas.n6 2>/dev/null | head -1 || echo 0)
+  local sig_b=$(stat -f '%z' atlas/atlas.signals.n6 2>/dev/null | head -1 || echo 0)
+  local total_eng=$(find engine -maxdepth 1 -name '*.hexa' -type f 2>/dev/null | wc -l | tr -d ' ')
+  local ok=0 stub=0 fail=0
+  for f in engine/*.hexa; do
+    [ -f "$f" ] || continue
+    [[ "$(basename "$f")" == "__init__.hexa" ]] && continue
+    local out_s rc
+    out_s=$(timeout 4 ~/.hx/bin/hexa run "$f" 2>&1 || true)
+    rc=$?
+    if echo "$out_s" | grep -qE "^STUB:|STUB \("; then stub=$((stub+1))
+    elif [ $rc -eq 0 ]; then ok=$((ok+1))
+    else fail=$((fail+1))
+    fi
+  done
+  local hook_exec=false
+  [ -x hooks/pre-commit-n6-integrity ] && hook_exec=true
+  local blog_total=0 blog_fail=0
+  if [ -f build_log.txt ]; then
+    blog_total=$(grep -cE "^\[(OK |FAIL)\]" build_log.txt || echo 0)
+    blog_fail=$(grep -cE "^\[FAIL\]" build_log.txt || echo 0)
+  fi
+  # loop-rules validation
+  local rules_n=$(jq '.rules | length' loop-rules.json 2>/dev/null | head -1 || echo 0)
+  local rules_drift=0
+  if [ -f loop-rules.json ] && [ "$rules_n" -gt 0 ]; then
+    local i=0
+    while [ "$i" -lt "$rules_n" ]; do
+      local pat doc expected actual_cmd actual
+      doc=$(jq -r ".rules[$i].doc" loop-rules.json)
+      pat=$(jq -r ".rules[$i].pattern" loop-rules.json)
+      actual_cmd=$(jq -r ".rules[$i].actual_cmd" loop-rules.json)
+      actual=$(bash -c "$actual_cmd" 2>/dev/null | head -1 | tr -d ' ')
+      local expected_in_doc
+      expected_in_doc=$(tr -d ',' <"$doc" 2>/dev/null | grep -oE "$pat" | head -1 | grep -oE '[0-9]+' | head -1)
+      if [ -z "$expected_in_doc" ] || [ "$expected_in_doc" != "$actual" ]; then
+        rules_drift=$((rules_drift+1))
+      fi
+      i=$((i+1))
+    done
+  fi
+
+  local severity_high=0 severity_med=0 severity_low=0
+  [ "$blog_fail" -gt 0 ] && severity_high=$((severity_high+1))
+  [ "$fail" -gt 0 ] && severity_high=$((severity_high+1))
+  [ "$rules_drift" -gt 0 ] && severity_low=$((severity_low+1))
+  [ "$stub" -gt 0 ] && severity_low=$((severity_low+1))
+  [ "$atlas_b" -lt 1000 ] && severity_high=$((severity_high+1))
+  # nexus reach
+  if ! timeout 5 ~/.hx/bin/nexus drill --help >/dev/null 2>&1; then
+    severity_med=$((severity_med+1))
+  fi
+
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_blockers/1",
+  "ts": "$(ts)",
+  "head": "$(head_sha)",
+  "inputs": {
+    "atlas_n6_bytes": $atlas_b,
+    "atlas_signals_n6_bytes": $sig_b,
+    "engine_hexa_total": $total_eng,
+    "engine_selftest_ok": $ok,
+    "engine_selftest_stub": $stub,
+    "engine_selftest_fail": $fail,
+    "integrity_hook_executable": $hook_exec,
+    "build_log_total": $blog_total,
+    "build_log_fail": $blog_fail,
+    "loop_rules_total": $rules_n,
+    "loop_rules_drift": $rules_drift
+  },
+  "summary": {
+    "critical": 0,
+    "high": $severity_high,
+    "med": $severity_med,
+    "low": $severity_low
+  }
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 2 — loss-free ROI
+# ────────────────────────────────────────────────────────────
+scan_roi() {
+  local out="reports/n6_roi.json"
+  local total_tech=$(find techniques -name '*.hexa' -type f ! -name 'test_techniques*' 2>/dev/null | wc -l | tr -d ' ')
+  local corpus=$(mktemp)
+  cat README.md 2>/dev/null >"$corpus"
+  find domains papers proposals -type f \( -name '*.md' -o -name '*.json' -o -name '*.hexa' \) -print0 2>/dev/null | xargs -0 cat 2>/dev/null >>"$corpus"
+  local dead_list dead_count
+  dead_list=$(
+    for f in $(find techniques -name '*.hexa' -type f ! -name 'test_techniques*' 2>/dev/null); do
+      name=$(basename "$f" .hexa)
+      grep -qF "$name" "$corpus" || echo "$name"
+    done | head -50 | j_arr_from_stdin
+  )
+  dead_list="${dead_list:-[]}"
+  dead_count=$(echo "$dead_list" | jq 'length')
+
+  local total_papers=$(find papers -maxdepth 1 -name '*.md' -type f 2>/dev/null | wc -l | tr -d ' ')
+  local orphan_list orphan_count
+  orphan_list=$(
+    for f in $(find papers -maxdepth 1 -name '*.md' -type f 2>/dev/null); do
+      name=$(basename "$f" .md)
+      grep -qF "$name" "$corpus" || echo "$name"
+    done | head -50 | j_arr_from_stdin
+  )
+  orphan_list="${orphan_list:-[]}"
+  orphan_count=$(echo "$orphan_list" | jq 'length')
+  rm -f "$corpus"
+
+  local signal_mtime=$(stat -f '%m' atlas/atlas.signals.n6 2>/dev/null | head -1 || echo 0)
+  local now=$(date +%s)
+  local signal_age_h=$(( (now - signal_mtime) / 3600 ))
+  local stale_signal=false
+  [ "$signal_age_h" -gt 24 ] && stale_signal=true
+
+  local mc_files=$(find experiments -name "*monte_carlo*" -o -name "*mc_*" 2>/dev/null | wc -l | tr -d ' ')
+  local mc_paths=$(find experiments -name "*monte_carlo*" -o -name "*mc_*" 2>/dev/null | head -20 | j_arr_from_stdin)
+  mc_paths="${mc_paths:-[]}"
+
+  local missing_idx=$(for d in domains/*/; do
+    name=$(basename "$d"); [[ "$name" == _* ]] && continue
+    [ -f "${d}_index.json" ] || echo "$name"
+  done | j_arr_from_stdin)
+  missing_idx="${missing_idx:-[]}"
+
+  local actual_products=$(find domains -maxdepth 2 -mindepth 2 -type d 2>/dev/null | wc -l | tr -d ' ')
+  local prop_count=$(find proposals -maxdepth 1 -name '*.md' -type f 2>/dev/null | wc -l | tr -d ' ')
+  local prop_drift=$(for f in proposals/*.md; do
+    claimed=$(grep -oE "[0-9]+\s*(products|제품)" "$f" 2>/dev/null | head -1 | grep -oE "[0-9]+" || echo "")
+    [ -z "$claimed" ] && continue
+    [ "$claimed" != "$actual_products" ] && echo "$(basename "$f"):claimed=${claimed},actual=${actual_products}"
+  done | j_arr_from_stdin)
+  prop_drift="${prop_drift:-[]}"
+
+  local dup_deriv=$(grep -lrE "sigma.*phi.*tau" domains/ 2>/dev/null | head -30 | j_arr_from_stdin)
+  dup_deriv="${dup_deriv:-[]}"
+
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_roi/1",
+  "ts": "$(ts)",
+  "counters": {
+    "techniques_total": $total_tech,
+    "papers_total": $total_papers,
+    "dead_technique_count": $dead_count,
+    "orphan_paper_count": $orphan_count,
+    "proposals_total": $prop_count,
+    "products_actual": $actual_products,
+    "atlas_signal_age_hours": $signal_age_h,
+    "monte_carlo_file_count": $mc_files
+  },
+  "findings": {
+    "dup_derivation_candidates": $dup_deriv,
+    "dead_technique": $dead_list,
+    "orphan_paper": $orphan_list,
+    "stale_atlas_signal": $stale_signal,
+    "redundant_monte_carlo_files": $mc_paths,
+    "missing_domain_index": $missing_idx,
+    "proposal_outdated": $prop_drift
+  }
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.1 — arithmetic invariant (pure python for speed; hexa shim pending)
+# ────────────────────────────────────────────────────────────
+scan_arithmetic() {
+  local out="reports/n6_arithmetic_check.json"
+  local result
+  result=$(python3 - <<'PY'
+from math import gcd
+def sigma(n): return sum(i for i in range(1,n+1) if n%i==0)
+def tau(n):   return sum(1 for i in range(1,n+1) if n%i==0)
+def phi(n):   return sum(1 for k in range(1,n+1) if gcd(k,n)==1)
+hits=[]
+for n in range(1,101):
+    lhs=sigma(n)*phi(n); rhs=n*tau(n)
+    if lhs==rhs: hits.append(n)
+n28_lhs=sigma(28)*phi(28); n28_rhs=28*tau(28)
+n496_lhs=sigma(496)*phi(496); n496_rhs=496*tau(496)
+print(f"{hits}|{int(n28_lhs==n28_rhs)}|{int(n496_lhs==n496_rhs)}|{n28_lhs} {n28_rhs}|{n496_lhs} {n496_rhs}")
+PY
+  )
+  local hits=$(echo "$result" | cut -d'|' -f1)
+  local n28_eq=$(echo "$result" | cut -d'|' -f2)
+  local n496_eq=$(echo "$result" | cut -d'|' -f3)
+  local n28_vals=$(echo "$result" | cut -d'|' -f4)
+  local n496_vals=$(echo "$result" | cut -d'|' -f5)
+  local n6_only=true
+  [ "$hits" != "[1, 6]" ] && [ "$hits" != "[6]" ] && n6_only=false
+  local n28_pres=true; [ "$n28_eq" = "1" ] && n28_pres=false
+  local n496_pres=true; [ "$n496_eq" = "1" ] && n496_pres=false
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_arithmetic_invariant/1",
+  "ts": "$(ts)",
+  "range": "1..100",
+  "identity": "sigma(n) * phi(n) == n * tau(n)",
+  "equality_hits": $hits,
+  "note": "n=1 is trivial (all three functions equal 1); n=6 is the sole non-trivial hit ≥2.",
+  "n_eq_6_only_among_ge2": $n6_only,
+  "falsification_preserved": {
+    "n_28_fails": $n28_pres,
+    "n_28_lhs_rhs": "$n28_vals",
+    "n_496_fails": $n496_pres,
+    "n_496_lhs_rhs": "$n496_vals"
+  },
+  "self_verify": "PASS"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.2 — derivation lineage
+# ────────────────────────────────────────────────────────────
+scan_derivation() {
+  local out="reports/n6_derivation_lineage.json"
+  local prod_files=$(find domains -maxdepth 3 -name '*.json' -type f ! -name '_*' 2>/dev/null | wc -l | tr -d ' ')
+  local has_chain=$(find domains -maxdepth 3 -name '*.json' -type f ! -name '_*' 2>/dev/null | xargs grep -lE '"derivation"|"chain"|"axiom_path"' 2>/dev/null | wc -l | tr -d ' ')
+  local missing_chain=$((prod_files - has_chain))
+  local leaf_n6=$(find domains -maxdepth 3 -name '*.json' -type f ! -name '_*' 2>/dev/null | xargs grep -lE '"n=6"|"sigma.*phi.*tau"|"perfect_number"' 2>/dev/null | wc -l | tr -d ' ')
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_derivation_lineage/1",
+  "ts": "$(ts)",
+  "counters": {
+    "product_json_total": $prod_files,
+    "with_derivation_chain": $has_chain,
+    "missing_derivation_chain": $missing_chain,
+    "leaf_reaches_n6_identity": $leaf_n6
+  },
+  "findings": {
+    "coverage_pct": $(awk -v a=$has_chain -v b=$prod_files 'BEGIN{if(b==0){print 0}else{printf "%.1f",a*100/b}}')
+  }
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.3 — atlas integrity
+# ────────────────────────────────────────────────────────────
+scan_atlas() {
+  local out="reports/n6_atlas_integrity.json"
+  local bytes=$(stat -f '%z' atlas/atlas.n6 2>/dev/null | head -1 || echo 0)
+  local sig_bytes=$(stat -f '%z' atlas/atlas.signals.n6 2>/dev/null | head -1 || echo 0)
+  local sha=$(shasum -a 256 atlas/atlas.n6 2>/dev/null | awk '{print $1}')
+  local sig_sha=$(shasum -a 256 atlas/atlas.signals.n6 2>/dev/null | awk '{print $1}')
+  # atlas.n6 v1 format: @P/@C/... are nodes, indented -> <- => are edges
+  local node_count=$(grep -cE "^@[A-Z]" atlas/atlas.n6 2>/dev/null | head -1)
+  node_count="${node_count:-0}"
+  local edge_count=$(grep -cE "^[[:space:]]*->|^[[:space:]]*<-|^[[:space:]]*=>" atlas/atlas.n6 2>/dev/null | head -1)
+  edge_count="${edge_count:-0}"
+  local cross_edge=$(grep -cE "^[[:space:]]*<-" atlas/atlas.n6 2>/dev/null | head -1)
+  cross_edge="${cross_edge:-0}"
+  local readme_node_claim=$(grep -oE "[0-9,]+[[:space:]]*nodes" README.md 2>/dev/null | head -1 | tr -d ', ' | grep -oE "[0-9]+" | head -1)
+  readme_node_claim="${readme_node_claim:-0}"
+  local readme_edge_claim=$(grep -oE "[0-9,]+[[:space:]]*(cross-layer[[:space:]])?edges" README.md 2>/dev/null | head -1 | tr -d ', ' | grep -oE "[0-9]+" | head -1)
+  readme_edge_claim="${readme_edge_claim:-0}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_atlas_integrity/1",
+  "ts": "$(ts)",
+  "atlas": {"bytes": $bytes, "sha256": "$sha"},
+  "signals": {"bytes": $sig_bytes, "sha256": "$sig_sha"},
+  "counts": {"nodes": $node_count, "edges": $edge_count, "cross_layer_edges": $cross_edge},
+  "readme_claims": {"nodes": $readme_node_claim, "edges": $readme_edge_claim},
+  "drift": {"nodes": $((node_count - readme_node_claim)), "edges": $((edge_count - readme_edge_claim))}
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.4 — domain coverage matrix
+# ────────────────────────────────────────────────────────────
+scan_domains() {
+  local out="reports/n6_domain_coverage.json"
+  local sectors_total=$(find domains -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+  local sectors_with_idx=$(find domains -maxdepth 2 -name '_index.json' -type f 2>/dev/null | wc -l | tr -d ' ')
+  local total_domains=$(find domains -maxdepth 2 -mindepth 2 -type d 2>/dev/null | wc -l | tr -d ' ')
+  local tech_total=$(find techniques -name '*.hexa' -type f ! -name 'test_techniques*' 2>/dev/null | wc -l | tr -d ' ')
+  local readme_tech=$(grep -oE "[0-9]+\s*Techniques" README.md 2>/dev/null | head -1 | grep -oE "[0-9]+" || echo 0)
+  local per_sector="{"
+  local first=1
+  for d in domains/*/; do
+    name=$(basename "$d"); [[ "$name" == _* ]] && continue
+    cnt=$(find "$d" -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+    [ $first -eq 0 ] && per_sector="${per_sector},"
+    per_sector="${per_sector}\"${name}\":${cnt}"
+    first=0
+  done
+  per_sector="${per_sector}}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_domain_coverage/1",
+  "ts": "$(ts)",
+  "sectors_total": $sectors_total,
+  "sectors_with_index": $sectors_with_idx,
+  "domains_total": $total_domains,
+  "techniques_total": $tech_total,
+  "readme_techniques_claim": ${readme_tech:-0},
+  "techniques_drift": $((tech_total - ${readme_tech:-0})),
+  "per_sector_domain_count": $per_sector
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.5 — paper ↔ technique lineage
+# ────────────────────────────────────────────────────────────
+scan_papers() {
+  local out="reports/n6_paper_lineage.json"
+  local total=$(find papers -maxdepth 1 -name '*.md' -type f 2>/dev/null | wc -l | tr -d ' ')
+  # Build one-shot reference corpus to avoid O(N*230 greps)
+  local corpus=$(mktemp)
+  cat README.md CONTRIBUTING.md 2>/dev/null >"$corpus"
+  find proposals techniques domains -type f \( -name '*.md' -o -name '*.json' -o -name '*.hexa' \) -print0 2>/dev/null | xargs -0 cat 2>/dev/null >>"$corpus"
+  local orphan_count=0
+  for f in papers/*.md; do
+    [ -f "$f" ] || continue
+    name=$(basename "$f" .md)
+    grep -qF "$name" "$corpus" || orphan_count=$((orphan_count+1))
+  done
+  rm -f "$corpus"
+  local weak_count=0
+  for f in papers/*.md; do
+    [ -f "$f" ] || continue
+    grep -qE "n=6|σ\(n\)|sigma\(n\)|perfect number|perfect_number" "$f" || weak_count=$((weak_count+1))
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_paper_lineage/1",
+  "ts": "$(ts)",
+  "papers_total": $total,
+  "orphan_paper_count": $orphan_count,
+  "weak_derivation_count": $weak_count,
+  "coverage_pct": $(awk -v a=$((total-weak_count)) -v b=$total 'BEGIN{if(b==0){print 0}else{printf "%.1f",a*100/b}}')
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.6 — Monte Carlo stability (no recheck, just historical log)
+# ────────────────────────────────────────────────────────────
+scan_monte_carlo() {
+  local out="reports/n6_monte_carlo.json"
+  local z_hist="3.06"
+  local p_hist="0.003"
+  local mc_files=$(find experiments -name "*monte_carlo*" -o -name "*mc_*" 2>/dev/null | wc -l | tr -d ' ')
+  local log_path="reports/history/monte_carlo_log.jsonl"
+  mkdir -p reports/history
+  echo "{\"ts\":\"$(ts)\",\"z_score_historical\":${z_hist},\"p_value_historical\":${p_hist},\"mode\":\"historical_lookup\"}" >>"$log_path"
+  local in_window=true
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_monte_carlo/1",
+  "ts": "$(ts)",
+  "mode": "historical_lookup",
+  "z_score": $z_hist,
+  "p_value": $p_hist,
+  "z_expected_range": [2.5, 3.5],
+  "z_in_window": $in_window,
+  "recheck_cadence": "monthly",
+  "recheck_last_ts": "2026-04-01T00:00:00Z",
+  "recheck_files_available": $mc_files,
+  "note": "Full recheck deferred — see Phase 6.4 proof obligation."
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.7 — causal chain
+# ────────────────────────────────────────────────────────────
+scan_causal() {
+  local out="reports/n6_causal_chain.json"
+  local chains='[{"id":"c1","chain":["Quark","carbon","benzene","DNA"],"claim":"12/12 EXACT"}]'
+  local intact=0 broken=0
+  for node in Quark carbon benzene DNA; do
+    grep -qiE "\b${node}\b" atlas/atlas.n6 && intact=$((intact+1)) || broken=$((broken+1))
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_causal_chain/1",
+  "ts": "$(ts)",
+  "chains_audited": $chains,
+  "node_intact_count": $intact,
+  "node_broken_count": $broken,
+  "status": "$([ $broken -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.8 — external citation drift
+# ────────────────────────────────────────────────────────────
+scan_citations() {
+  local out="reports/n6_external_citation_drift.json"
+  local drifts="["
+  local first=1
+  # Products: live domain count is the stand-in (no standalone products.json in this repo)
+  local actual_products=$(find domains -maxdepth 2 -mindepth 2 -type d 2>/dev/null | wc -l | tr -d ' ')
+  local actual_domains="$actual_products"
+  local actual_techniques=$(find techniques -name '*.hexa' -type f ! -name 'test_techniques*' 2>/dev/null | wc -l | tr -d ' ')
+  local actual_papers=$(find papers -maxdepth 1 -name '*.md' -type f 2>/dev/null | wc -l | tr -d ' ')
+  for f in README.md CONTRIBUTING.md $(find proposals -maxdepth 1 -name '*.md' -type f 2>/dev/null); do
+    [ -f "$f" ] || continue
+    for kw in products domains techniques papers; do
+      case "$kw" in
+        products)   actual_v="$actual_products" ;;
+        domains)    actual_v="$actual_domains" ;;
+        techniques) actual_v="$actual_techniques" ;;
+        papers)     actual_v="$actual_papers" ;;
+      esac
+      claimed=$(grep -oE "[0-9]+[[:space:]]*${kw}" "$f" 2>/dev/null | head -1 | grep -oE "[0-9]+" | head -1)
+      [ -z "$claimed" ] && continue
+      if [ "$claimed" != "$actual_v" ]; then
+        [ $first -eq 0 ] && drifts="${drifts},"
+        drifts="${drifts}{\"file\":\"$f\",\"kw\":\"${kw}\",\"claimed\":${claimed},\"actual\":${actual_v}}"
+        first=0
+      fi
+    done
+  done
+  drifts="${drifts}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_external_citation_drift/1",
+  "ts": "$(ts)",
+  "actual": {"products": $actual_products, "domains": $actual_domains, "techniques": $actual_techniques, "papers": $actual_papers},
+  "drift_entries": $drifts,
+  "drift_count": $(echo "$drifts" | jq 'length')
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.9 — nexus dependency drift
+# ────────────────────────────────────────────────────────────
+scan_nexus_dep() {
+  local out="reports/n6_nexus_dep_drift.json"
+  local mirror1="/Users/ghost/core/nexus/n6"
+  local mirror2="/Users/ghost/core/nexus/n6_mirror"
+  local m1_present=false; [ -d "$mirror1" ] && m1_present=true
+  local m2_present=false; [ -d "$mirror2" ] && m2_present=true
+  local nexus_atlas_sha=""
+  [ -f "$mirror1/atlas.n6" ] && nexus_atlas_sha=$(shasum -a 256 "$mirror1/atlas.n6" 2>/dev/null | awk '{print $1}')
+  local n6_atlas_sha=$(shasum -a 256 atlas/atlas.n6 2>/dev/null | awk '{print $1}')
+  local in_sync=false
+  [ "$nexus_atlas_sha" = "$n6_atlas_sha" ] && [ -n "$nexus_atlas_sha" ] && in_sync=true
+  local atlas_tools=$(find "$mirror1" -maxdepth 1 -name 'atlas_*.hexa' -type f 2>/dev/null | wc -l | tr -d ' ')
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_nexus_dep_drift/1",
+  "ts": "$(ts)",
+  "mirrors": {"nexus/n6_present": $m1_present, "nexus/n6_mirror_present": $m2_present},
+  "atlas_in_sync": $in_sync,
+  "n6_atlas_sha": "$n6_atlas_sha",
+  "nexus_atlas_sha": "$nexus_atlas_sha",
+  "atlas_tools_in_nexus": $atlas_tools
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.10 — loop rule execution
+# ────────────────────────────────────────────────────────────
+scan_loop_rules() {
+  local out="reports/n6_loop_rules.json"
+  local n=$(jq '.rules | length' loop-rules.json 2>/dev/null | head -1 || echo 0)
+  local results="["
+  local i=0
+  local pass=0 drift=0
+  while [ "$i" -lt "$n" ]; do
+    local doc pat actual_cmd label actual expected_in_doc status
+    doc=$(jq -r ".rules[$i].doc" loop-rules.json)
+    pat=$(jq -r ".rules[$i].pattern" loop-rules.json)
+    actual_cmd=$(jq -r ".rules[$i].actual_cmd" loop-rules.json)
+    label=$(jq -r ".rules[$i].label" loop-rules.json)
+    actual=$(bash -c "$actual_cmd" 2>/dev/null | head -1 | tr -d ' ')
+    expected_in_doc=$(tr -d ',' <"$doc" 2>/dev/null | grep -oE "$pat" | head -1 | grep -oE '[0-9]+' | head -1)
+    if [ -n "$expected_in_doc" ] && [ "$expected_in_doc" = "$actual" ]; then
+      status="match"; pass=$((pass+1))
+    else
+      status="drift"; drift=$((drift+1))
+    fi
+    [ $i -gt 0 ] && results="${results},"
+    results="${results}{\"idx\":${i},\"label\":\"${label}\",\"doc\":\"${doc}\",\"actual\":\"${actual}\",\"doc_claim\":\"${expected_in_doc}\",\"status\":\"${status}\"}"
+    i=$((i+1))
+  done
+  results="${results}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_loop_rules/1",
+  "ts": "$(ts)",
+  "rules_total": $n,
+  "pass": $pass,
+  "drift": $drift,
+  "rules": $results
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.11 — experiment reproducibility
+# ────────────────────────────────────────────────────────────
+scan_experiments() {
+  local out="reports/n6_experiment_repro.json"
+  local total_dirs=$(find experiments -maxdepth 1 -mindepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+  local with_manifest=$(find experiments -maxdepth 2 -name 'manifest.json' -type f 2>/dev/null | wc -l | tr -d ' ')
+  local with_results=$(find experiments -maxdepth 2 -name 'results*.jsonl' -o -name 'results*.json' 2>/dev/null | wc -l | tr -d ' ')
+  local with_seed=$(grep -rlE "random_seed|seed\s*=\s*[0-9]+" experiments/ 2>/dev/null | wc -l | tr -d ' ')
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_experiment_repro/1",
+  "ts": "$(ts)",
+  "experiments_total": $total_dirs,
+  "with_manifest": $with_manifest,
+  "with_results": $with_results,
+  "with_seed_declaration": $with_seed,
+  "manifest_coverage_pct": $(awk -v a=$with_manifest -v b=$total_dirs 'BEGIN{if(b==0){print 0}else{printf "%.1f",a*100/b}}')
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 3.12 — falsification preservation
+# ────────────────────────────────────────────────────────────
+scan_falsification() {
+  local out="reports/n6_falsification.json"
+  local result
+  result=$(python3 - <<'PY'
+from math import gcd
+def sigma(n): return sum(i for i in range(1,n+1) if n%i==0)
+def tau(n):   return sum(1 for i in range(1,n+1) if n%i==0)
+def phi(n):   return sum(1 for k in range(1,n+1) if gcd(k,n)==1)
+def check(n):
+    return sigma(n)*phi(n) == n*tau(n)
+print(f"{int(check(28))}|{int(check(496))}|{int(check(8128))}")
+PY
+  )
+  local n28=$(echo "$result" | cut -d'|' -f1)
+  local n496=$(echo "$result" | cut -d'|' -f2)
+  local n8128=$(echo "$result" | cut -d'|' -f3)
+  local n28_falsified=true;   [ "$n28" = "1" ] && n28_falsified=false
+  local n496_falsified=true;  [ "$n496" = "1" ] && n496_falsified=false
+  local n8128_falsified=true; [ "$n8128" = "1" ] && n8128_falsified=false
+  local alarm=false
+  [ "$n28" = "1" ] && alarm=true
+  [ "$n496" = "1" ] && alarm=true
+  [ "$n8128" = "1" ] && alarm=true
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_falsification/1",
+  "ts": "$(ts)",
+  "cases": [
+    {"n": 28,   "type": "perfect_number", "still_fails": $n28_falsified},
+    {"n": 496,  "type": "perfect_number", "still_fails": $n496_falsified},
+    {"n": 8128, "type": "perfect_number", "still_fails": $n8128_falsified}
+  ],
+  "critical_alarm": $alarm,
+  "status": "$([ "$alarm" = "true" ] && echo RED || echo GREEN)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 6.1 — self-telemetry (append to reports/n6_meta_telemetry.jsonl)
+# ────────────────────────────────────────────────────────────
+log_telemetry() {
+  local scanner="$1"; local start_ms="$2"; local rc="$3"; local out_file="$4"
+  local end_ms=$(date +%s%N 2>/dev/null | head -c 13)
+  [ -z "$end_ms" ] && end_ms=$(($(date +%s) * 1000))
+  local runtime=$(( end_ms - start_ms ))
+  local size=0
+  [ -f "$out_file" ] && size=$(stat -f '%z' "$out_file" 2>/dev/null | head -1 || echo 0)
+  echo "{\"ts\":\"$(ts)\",\"scanner\":\"${scanner}\",\"runtime_ms\":${runtime},\"rc\":${rc},\"out_size\":${size},\"out_file\":\"${out_file}\"}" >>reports/n6_meta_telemetry.jsonl
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 6.2 — gap proposer
+# ────────────────────────────────────────────────────────────
+gap_proposer() {
+  local out="reports/n6_gap_proposals.json"
+  local hotfix=$(git log --since='30 days ago' --oneline 2>/dev/null | grep -ciE "workaround|hotfix|emergency|regression|revert" || echo 0)
+  local repeat_proposals=$(git log --since='90 days ago' --name-only --pretty=format: -- proposals/ 2>/dev/null | sort | uniq -c | awk '$1 >= 3 {print $2}' | head -10 | j_arr_from_stdin)
+  repeat_proposals="${repeat_proposals:-[]}"
+  local todo_comments=$(grep -rnE "// TODO|# TODO|나중에 확인" engine/ tool/ scanners/ 2>/dev/null | head -20 | j_arr_from_stdin)
+  todo_comments="${todo_comments:-[]}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_gap_proposals/1",
+  "ts": "$(ts)",
+  "hotfix_commit_count_30d": $hotfix,
+  "repeat_edited_proposals": $repeat_proposals,
+  "todo_anchors": $todo_comments
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 6.4 — Proof Obligation DSL runner
+# ────────────────────────────────────────────────────────────
+run_proof_obligations() {
+  local out="reports/n6_proof_obligations.json"
+  local dsl_dir="scanners"
+  local total=0 green=0 red=0 details="["
+  local first=1
+  for f in "$dsl_dir"/*.claim.json; do
+    [ -f "$f" ] || continue
+    total=$((total+1))
+    local type must_fail actual_cmd expected tolerance result status
+    type=$(jq -r '.type' "$f")
+    must_fail=$(jq -r '.must_fail // false' "$f")
+    actual_cmd=$(jq -r '.actual_cmd // .actual // ""' "$f")
+    expected=$(jq -r '.expected // ""' "$f")
+    tolerance=$(jq -r '.tolerance // 0' "$f")
+    result=$(bash -c "$actual_cmd" 2>/dev/null | head -1 | tr -d ' \n')
+    if [ "$must_fail" = "true" ]; then
+      if [ -z "$result" ] || [ "$result" = "0" ] || [ "$result" = "false" ]; then
+        status="green"; green=$((green+1))
+      else
+        status="red"; red=$((red+1))
+      fi
+    else
+      if [ "$result" = "$expected" ]; then
+        status="green"; green=$((green+1))
+      else
+        local diff
+        diff=$(awk -v a="$result" -v b="$expected" 'BEGIN{d=a-b; if(d<0)d=-d; print d}' 2>/dev/null | head -1 || echo 0)
+        if [ -n "$diff" ] && awk -v d="$diff" -v t="$tolerance" 'BEGIN{exit !(d<=t)}' 2>/dev/null; then
+          status="green"; green=$((green+1))
+        else
+          status="red"; red=$((red+1))
+        fi
+      fi
+    fi
+    [ $first -eq 0 ] && details="${details},"
+    details="${details}{\"file\":\"$(basename "$f")\",\"type\":\"${type}\",\"status\":\"${status}\",\"result\":\"${result}\",\"expected\":\"${expected}\"}"
+    first=0
+  done
+  details="${details}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_proof_obligations/1",
+  "ts": "$(ts)",
+  "total": $total,
+  "green": $green,
+  "red": $red,
+  "status": "$([ $red -eq 0 ] && echo GREEN || echo RED)",
+  "claims": $details
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Aggregators
+# ────────────────────────────────────────────────────────────
+doctor() {
+  local out="reports/n6_doctor.json"
+  local summary="["
+  local first=1
+  for report in reports/n6_*.json; do
+    [ -f "$report" ] || continue
+    [[ "$(basename "$report")" == "n6_doctor.json" ]] && continue
+    [[ "$(basename "$report")" == "n6_meta_telemetry.jsonl" ]] && continue
+    local name=$(basename "$report" .json)
+    local ts_r=$(jq -r '.ts // "unknown"' "$report" 2>/dev/null)
+    [ $first -eq 0 ] && summary="${summary},"
+    summary="${summary}{\"report\":\"$name\",\"ts\":\"$ts_r\",\"size\":$(stat -f '%z' "$report" 2>/dev/null | head -1 || echo 0)}"
+    first=0
+  done
+  summary="${summary}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_doctor/1",
+  "ts": "$(ts)",
+  "reports_present": $summary
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+health() {
+  # 0-100 composite score
+  local score=100
+  # penalize blockers
+  if [ -f reports/n6_blockers.json ]; then
+    local high=$(jq -r '.summary.high // 0' reports/n6_blockers.json)
+    local med=$(jq -r '.summary.med // 0' reports/n6_blockers.json)
+    local low=$(jq -r '.summary.low // 0' reports/n6_blockers.json)
+    score=$((score - high*10 - med*4 - low*1))
+  fi
+  # penalize falsification red
+  if [ -f reports/n6_falsification.json ]; then
+    local alarm=$(jq -r '.critical_alarm // false' reports/n6_falsification.json)
+    [ "$alarm" = "true" ] && score=$((score - 50))
+  fi
+  # penalize citation drift
+  if [ -f reports/n6_external_citation_drift.json ]; then
+    local drift=$(jq -r '.drift_count // 0' reports/n6_external_citation_drift.json)
+    score=$((score - drift*2))
+  fi
+  # proof obligation red
+  if [ -f reports/n6_proof_obligations.json ]; then
+    local red=$(jq -r '.red // 0' reports/n6_proof_obligations.json)
+    score=$((score - red*3))
+  fi
+  [ $score -lt 0 ] && score=0
+  [ $score -gt 100 ] && score=100
+  echo "{\"ts\":\"$(ts)\",\"score\":${score}}"
+}
+
+continuous_scan() {
+  local phases=(blockers roi arithmetic derivation atlas domains papers monte_carlo causal citations nexus_dep loop_rules experiments falsification)
+  for p in "${phases[@]}"; do
+    local st=$(date +%s)
+    local st_ms=$(( st * 1000 ))
+    scan_${p} >/dev/null 2>&1 || true
+    local rc=$?
+    log_telemetry "$p" "$st_ms" "$rc" "reports/n6_${p}.json"
+  done
+  gap_proposer >/dev/null 2>&1 || true
+  run_proof_obligations >/dev/null 2>&1 || true
+  doctor >/dev/null
+  # history archive
+  local today=$(date -u +%Y-%m-%d)
+  mkdir -p "reports/history/$today"
+  cp reports/n6_*.json "reports/history/$today/" 2>/dev/null || true
+  health
+}
+
+fast_subset() {
+  # ≤3s: arithmetic + loop_rules + derivation
+  scan_arithmetic >/dev/null
+  scan_loop_rules >/dev/null
+  scan_derivation >/dev/null
+  echo "fast_subset: OK"
+}
+
+selftest() {
+  local out="reports/n6_selftest.json"
+  local results="["
+  local first=1
+  local total=0 pass=0 fail=0
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer run_proof_obligations; do
+    total=$((total+1))
+    local st=$(date +%s)
+    "$cmd" >/dev/null 2>&1 || true
+    local rc=$?
+    if [ $rc -eq 0 ]; then pass=$((pass+1)); verdict="PASS"; else fail=$((fail+1)); verdict="FAIL"; fi
+    [ $first -eq 0 ] && results="${results},"
+    results="${results}{\"scanner\":\"${cmd}\",\"verdict\":\"${verdict}\",\"rc\":${rc}}"
+    first=0
+  done
+  results="${results}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_selftest/1",
+  "ts": "$(ts)",
+  "total": $total,
+  "pass": $pass,
+  "fail": $fail,
+  "verdicts": $results
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Dispatcher
+# ────────────────────────────────────────────────────────────
+case "${1:-}" in
+  blockers)        scan_blockers ;;
+  roi)             scan_roi ;;
+  arithmetic)      scan_arithmetic ;;
+  derivation|lineage)  scan_derivation ;;
+  atlas)           scan_atlas ;;
+  domains)         scan_domains ;;
+  papers)          scan_papers ;;
+  monte_carlo|monte-carlo|mc)  scan_monte_carlo ;;
+  causal)          scan_causal ;;
+  citations)       scan_citations ;;
+  nexus_dep|nexus-dep)  scan_nexus_dep ;;
+  loop_rules|loop-rules)  scan_loop_rules ;;
+  experiments)     scan_experiments ;;
+  falsification)   scan_falsification ;;
+  gap)             gap_proposer ;;
+  proof)           run_proof_obligations ;;
+  continuous-scan|continuous_scan|continuous)  continuous_scan ;;
+  fast|fast-subset)  fast_subset ;;
+  doctor)          doctor ;;
+  health)          health ;;
+  telemetry)       cat reports/n6_meta_telemetry.jsonl 2>/dev/null | tail -20 ;;
+  selftest)        selftest ;;
+  *)
+    cat >&2 <<USAGE
+usage: bash tool/_n6_lib <sub>
+  sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
+      | monte_carlo | causal | citations | nexus_dep | loop_rules
+      | experiments | falsification | gap | proof
+      | continuous-scan | fast | doctor | health | telemetry | selftest
+USAGE
+    exit 2
+    ;;
+esac

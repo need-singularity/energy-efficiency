@@ -1,0 +1,10 @@
+{
+  "id": "atlas.signals_present",
+  "type": "existence",
+  "description": "atlas/atlas.signals.n6 exists and has bytes > 50000",
+  "actual_cmd": "bash -c '[ -f atlas/atlas.signals.n6 ] && [ $(stat -f %z atlas/atlas.signals.n6 2>/dev/null || echo 0) -gt 50000 ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "daily",
+  "owner": "atlas_team"
+}

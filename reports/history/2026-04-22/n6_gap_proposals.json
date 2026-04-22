@@ -1,0 +1,9 @@
+{
+  "schema": "n6-architecture/n6_gap_proposals/1",
+  "ts": "2026-04-22T16:00:12Z",
+  "hotfix_commit_count_30d": 7,
+  "repeat_edited_proposals": [],
+  "todo_anchors": [
+    "tool/_n6_lib:638:  local todo_comments=$(grep -rnE \"// TODO|# TODO|나중에 확인\" engine/ tool/ scanners/ 2>/dev/null | head -20 | j_arr_from_stdin)"
+  ]
+}

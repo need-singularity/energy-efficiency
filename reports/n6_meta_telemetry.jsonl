@@ -1,0 +1,14 @@
+{"ts":"2026-04-22T15:59:10Z","scanner":"blockers","runtime_ms":4293,"rc":0,"out_size":568,"out_file":"reports/n6_blockers.json"}
+{"ts":"2026-04-22T15:59:40Z","scanner":"roi","runtime_ms":30284,"rc":0,"out_size":4981,"out_file":"reports/n6_roi.json"}
+{"ts":"2026-04-22T15:59:40Z","scanner":"arithmetic","runtime_ms":395,"rc":0,"out_size":0,"out_file":"reports/n6_arithmetic.json"}
+{"ts":"2026-04-22T15:59:40Z","scanner":"derivation","runtime_ms":477,"rc":0,"out_size":0,"out_file":"reports/n6_derivation.json"}
+{"ts":"2026-04-22T15:59:40Z","scanner":"atlas","runtime_ms":627,"rc":0,"out_size":0,"out_file":"reports/n6_atlas.json"}
+{"ts":"2026-04-22T15:59:40Z","scanner":"domains","runtime_ms":751,"rc":0,"out_size":0,"out_file":"reports/n6_domains.json"}
+{"ts":"2026-04-22T16:00:05Z","scanner":"papers","runtime_ms":25556,"rc":0,"out_size":0,"out_file":"reports/n6_papers.json"}
+{"ts":"2026-04-22T16:00:05Z","scanner":"monte_carlo","runtime_ms":655,"rc":0,"out_size":402,"out_file":"reports/n6_monte_carlo.json"}
+{"ts":"2026-04-22T16:00:05Z","scanner":"causal","runtime_ms":699,"rc":0,"out_size":0,"out_file":"reports/n6_causal.json"}
+{"ts":"2026-04-22T16:00:05Z","scanner":"citations","runtime_ms":936,"rc":0,"out_size":0,"out_file":"reports/n6_citations.json"}
+{"ts":"2026-04-22T16:00:06Z","scanner":"nexus_dep","runtime_ms":1028,"rc":0,"out_size":0,"out_file":"reports/n6_nexus_dep.json"}
+{"ts":"2026-04-22T16:00:06Z","scanner":"loop_rules","runtime_ms":132,"rc":0,"out_size":529,"out_file":"reports/n6_loop_rules.json"}
+{"ts":"2026-04-22T16:00:12Z","scanner":"experiments","runtime_ms":5997,"rc":0,"out_size":0,"out_file":"reports/n6_experiments.json"}
+{"ts":"2026-04-22T16:00:12Z","scanner":"falsification","runtime_ms":54,"rc":0,"out_size":411,"out_file":"reports/n6_falsification.json"}

@@ -1,0 +1,10 @@
+{
+  "id": "monte_carlo.z_in_window",
+  "type": "statistical",
+  "description": "Monte Carlo z-score (historical lookup) in [2.5, 3.5]",
+  "actual_cmd": "bash -c 'z=$(jq -r .z_score reports/n6_monte_carlo.json 2>/dev/null); python3 -c \"z=float($z); print(int(2.5<=z<=3.5))\"'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "monthly",
+  "owner": "verify"
+}

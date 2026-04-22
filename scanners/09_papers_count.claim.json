@@ -1,0 +1,10 @@
+{
+  "id": "papers.count_gte_131",
+  "type": "atlas_count",
+  "description": "papers/*.md count ≥ 131 (Phase P0 lock baseline)",
+  "actual_cmd": "bash -c 'c=$(find papers -maxdepth 1 -name \"*.md\" -type f | wc -l | tr -d \" \"); [ $c -ge 131 ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "weekly",
+  "owner": "publish"
+}

@@ -1,0 +1,11 @@
+// tool/n6_arithmetic_invariant.hexa — n6 meta scanner (delegates to tool/_n6_lib)
+// SSOT: docs/n6_meta_evolution_proposal_20260423.md
+// @allow-bare-exec
+// @no-sandbox
+
+fn main() {
+    let out = to_string(exec("bash tool/_n6_lib arithmetic"))
+    println(out)
+}
+
+main()

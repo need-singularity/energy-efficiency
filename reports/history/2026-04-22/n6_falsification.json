@@ -1,0 +1,23 @@
+{
+  "schema": "n6-architecture/n6_falsification/1",
+  "ts": "2026-04-22T16:00:12Z",
+  "cases": [
+    {
+      "n": 28,
+      "type": "perfect_number",
+      "still_fails": true
+    },
+    {
+      "n": 496,
+      "type": "perfect_number",
+      "still_fails": true
+    },
+    {
+      "n": 8128,
+      "type": "perfect_number",
+      "still_fails": true
+    }
+  ],
+  "critical_alarm": false,
+  "status": "GREEN"
+}

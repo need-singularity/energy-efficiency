@@ -1,0 +1,91 @@
+{
+  "schema": "n6-architecture/n6_doctor/1",
+  "ts": "2026-04-22T16:00:16Z",
+  "reports_present": [
+    {
+      "report": "n6_arithmetic_check",
+      "ts": "2026-04-22T15:59:40Z",
+      "size": 507
+    },
+    {
+      "report": "n6_atlas_integrity",
+      "ts": "2026-04-22T15:59:40Z",
+      "size": 529
+    },
+    {
+      "report": "n6_blockers",
+      "ts": "2026-04-22T15:59:10Z",
+      "size": 568
+    },
+    {
+      "report": "n6_causal_chain",
+      "ts": "2026-04-22T16:00:05Z",
+      "size": 337
+    },
+    {
+      "report": "n6_derivation_lineage",
+      "ts": "2026-04-22T15:59:40Z",
+      "size": 286
+    },
+    {
+      "report": "n6_domain_coverage",
+      "ts": "2026-04-22T15:59:40Z",
+      "size": 467
+    },
+    {
+      "report": "n6_experiment_repro",
+      "ts": "2026-04-22T16:00:11Z",
+      "size": 221
+    },
+    {
+      "report": "n6_external_citation_drift",
+      "ts": "2026-04-22T16:00:05Z",
+      "size": 555
+    },
+    {
+      "report": "n6_falsification",
+      "ts": "2026-04-22T16:00:12Z",
+      "size": 411
+    },
+    {
+      "report": "n6_gap_proposals",
+      "ts": "2026-04-22T16:00:12Z",
+      "size": 335
+    },
+    {
+      "report": "n6_loop_rules",
+      "ts": "2026-04-22T16:00:16Z",
+      "size": 529
+    },
+    {
+      "report": "n6_monte_carlo",
+      "ts": "2026-04-22T16:00:05Z",
+      "size": 402
+    },
+    {
+      "report": "n6_nexus_dep_drift",
+      "ts": "2026-04-22T16:00:06Z",
+      "size": 404
+    },
+    {
+      "report": "n6_paper_lineage",
+      "ts": "2026-04-22T16:00:05Z",
+      "size": 191
+    },
+    {
+      "report": "n6_proof_obligations",
+      "ts": "2026-04-22T16:00:16Z",
+      "size": 2232
+    },
+    {
+      "report": "n6_roi",
+      "ts": "2026-04-22T15:59:40Z",
+      "size": 4981
+    },
+    {
+      "report": "n6_selftest",
+      "ts": "2026-04-22T15:49:19Z",
+      "size": 1531
+    }
+  ]
+}

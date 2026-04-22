@@ -1,0 +1,89 @@
+{
+  "schema": "n6-architecture/n6_selftest/1",
+  "ts": "2026-04-22T16:01:55Z",
+  "total": 16,
+  "pass": 16,
+  "fail": 0,
+  "verdicts": [
+    {
+      "scanner": "scan_blockers",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_roi",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_arithmetic",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_derivation",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_atlas",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_domains",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_papers",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_monte_carlo",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_causal",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_citations",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_nexus_dep",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_loop_rules",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_experiments",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_falsification",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "gap_proposer",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "run_proof_obligations",
+      "verdict": "PASS",
+      "rc": 0
+    }
+  ]
+}

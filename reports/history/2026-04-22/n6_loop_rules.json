@@ -1,0 +1,25 @@
+{
+  "schema": "n6-architecture/n6_loop_rules/1",
+  "ts": "2026-04-22T16:00:16Z",
+  "rules_total": 2,
+  "pass": 2,
+  "drift": 0,
+  "rules": [
+    {
+      "idx": 0,
+      "label": "Techniques 목록 카운트",
+      "doc": "README.md",
+      "actual": "225",
+      "doc_claim": "225",
+      "status": "match"
+    },
+    {
+      "idx": 1,
+      "label": "Atlas 노드 수 (@P/@C/... 라인 — Phase 3.3 과 연동)",
+      "doc": "README.md",
+      "actual": "9612",
+      "doc_claim": "9612",
+      "status": "match"
+    }
+  ]
+}

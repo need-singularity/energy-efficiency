@@ -1,0 +1,10 @@
+{
+  "id": "techniques.count_gte_225",
+  "type": "atlas_count",
+  "description": "techniques/*.hexa count ≥ 225 (matches README claim)",
+  "actual_cmd": "bash -c 'c=$(find techniques -name \"*.hexa\" -type f ! -name \"test_techniques*\" | wc -l | tr -d \" \"); [ $c -ge 225 ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "weekly",
+  "owner": "techniques_team"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "n6-architecture/n6_experiment_repro/1",
+  "ts": "2026-04-22T16:00:11Z",
+  "experiments_total": 13,
+  "with_manifest": 0,
+  "with_results": 0,
+  "with_seed_declaration": 64,
+  "manifest_coverage_pct": 0.0
+}

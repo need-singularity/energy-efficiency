@@ -1,0 +1,19 @@
+{
+  "schema": "n6-architecture/n6_causal_chain/1",
+  "ts": "2026-04-22T16:00:05Z",
+  "chains_audited": [
+    {
+      "id": "c1",
+      "chain": [
+        "Quark",
+        "carbon",
+        "benzene",
+        "DNA"
+      ],
+      "claim": "12/12 EXACT"
+    }
+  ],
+  "node_intact_count": 4,
+  "node_broken_count": 0,
+  "status": "GREEN"
+}

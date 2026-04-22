@@ -61,7 +61,6 @@ if "$HEXA" "$AUDIT" > "$LOG" 2>&1; then
     # PASS 시 한 줄만 요약 출력
     grep -E "INTEGRITY|STATUS" "$LOG" | head -2
     rm -f "$LOG"
-    exit 0
 else
     echo ""
     echo "[BLOCK] n6 fellows-research integrity audit FAILED"
@@ -76,3 +75,30 @@ else
     rm -f "$LOG"
     exit 1
 fi
+
+# n6_meta fast subset (Phase 5) — arithmetic + loop_rules + derivation (≤3s)
+META_LIB="$R/tool/_n6_lib"
+if [ -x "$R/bin/n6_meta" ] && [ -f "$META_LIB" ]; then
+    META_LOG=$(mktemp -t n6_meta.XXXXXX)
+    if timeout 5 bash "$META_LIB" fast >"$META_LOG" 2>&1; then
+        :
+    else
+        echo "[pre-commit] n6_meta fast subset failed (non-blocking)" >&2
+        head -5 "$META_LOG" >&2
+    fi
+    # falsification hard-gate: red = block commit
+    if [ -f "$R/reports/n6_falsification.json" ]; then
+        ALARM=$(jq -r '.critical_alarm // false' "$R/reports/n6_falsification.json" 2>/dev/null)
+        if [ "$ALARM" = "true" ]; then
+            echo ""
+            echo "[BLOCK] n6 falsification alarm — n=28/496/8128 no longer falsified"
+            echo "reports/n6_falsification.json 확인 후 근본 재검토 필요"
+            echo "응급 우회: N6_SKIP_AUDIT=1 (사용 시 반드시 redo)"
+            rm -f "$META_LOG"
+            exit 1
+        fi
+    fi
+    rm -f "$META_LOG"
+fi
+
+exit 0

@@ -1,0 +1,12 @@
+{
+  "schema": "n6-architecture/n6_nexus_dep_drift/1",
+  "ts": "2026-04-22T16:00:06Z",
+  "mirrors": {
+    "nexus/n6_present": true,
+    "nexus/n6_mirror_present": true
+  },
+  "atlas_in_sync": false,
+  "n6_atlas_sha": "54a7e3cf13fb1d7fa10afcb5d40a5305746977b0965498d7e83ab9779a75ad55",
+  "nexus_atlas_sha": "a0e27b25eed705fc1da8b8418db0900fb513f0dff916e506a62715b2f33f2c6c",
+  "atlas_tools_in_nexus": 13
+}

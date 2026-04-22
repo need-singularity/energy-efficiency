@@ -1,19 +1,20 @@
 {
-  "_doc": "n6-architecture 드리프트 규칙 — loop-guard.hexa L5 에서 참조",
+  "_doc": "n6-architecture 드리프트 규칙 — loop-guard.hexa L5 + tool/_n6_lib loop_rules 참조",
+  "_updated": "2026-04-23",
   "rules": [
     {
       "type": "inline_number",
       "doc": "README.md",
-      "pattern": "(\\d+) Techniques 전체",
+      "pattern": "(\\d+) Techniques",
       "actual_cmd": "find techniques -name '*.hexa' -type f ! -name 'test_techniques*' | wc -l",
       "label": "Techniques 목록 카운트"
     },
     {
       "type": "inline_number",
       "doc": "README.md",
-      "pattern": "tests:\\s+\\d+",
-      "actual_cmd": "echo 2078",
-      "label": "NEXUS-6 테스트 수"
+      "pattern": "(\\d+)\\s*nodes",
+      "actual_cmd": "grep -cE '^@[A-Z]' atlas/atlas.n6 | head -1",
+      "label": "Atlas 노드 수 (@P/@C/... 라인 — Phase 3.3 과 연동)"
     }
   ]
 }

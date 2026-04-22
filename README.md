@@ -17,7 +17,7 @@
 
 > From this single identity, optimal AI architectures, chip designs, energy systems, and network protocols are **derived** — not chosen.
 
-🗺️ **[3D Reality Map](https://need-singularity.github.io/nexus/)** — 4,098 nodes, bottom-up causal mapping, 1,485 cross-layer edges. Quark → carbon → benzene → DNA causal chain 12/12 EXACT. Monte Carlo z = 3.06 (p = 0.003). n = 28 and n = 496 fail the check → only n = 6 survives.
+🗺️ **[3D Reality Map](https://need-singularity.github.io/nexus/)** — 9,612 nodes, bottom-up causal mapping, 2,222 cross-layer edges. Quark → carbon → benzene → DNA causal chain 12/12 EXACT. Monte Carlo z = 3.06 (p = 0.003). n = 28 and n = 496 fail the check → only n = 6 survives.
 
 🔴 **[Live roadmap (nexus SSOT)](https://need-singularity.github.io/nexus/roadmap/)**
 
