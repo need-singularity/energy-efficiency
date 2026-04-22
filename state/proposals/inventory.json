@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture.proposal_inventory.v1",
   "id_prefix": "n6a",
-  "updated_ts": "2026-04-22T17:01:04Z",
+  "updated_ts": "2026-04-22T17:31:54Z",
   "entries": [
     {
       "id": "n6a-20260422-001",
@@ -19,12 +19,13 @@
       "kind": "advisory",
       "title": "hexa_v2 baseline binary 는 Mac ARM64 compiled — Linux pod 에서 'Exec format error'. pod bootstrap 은 cross-compile 또는 pod-내 rebuild 필요",
       "from_repo": "hexa-lang",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 95,
       "submitted_ts": "2026-04-22T15:30:10Z",
       "in_progress_ts": "2026-04-22T16:15:49Z",
       "category": "resource_gap",
-      "priority_reason": "cross_repo_blocker floor (pod bootstrap blocker across repos)"
+      "priority_reason": "cross_repo_blocker floor (pod bootstrap blocker across repos)",
+      "done_ts": "2026-04-22T17:31:54Z"
     },
     {
       "id": "n6a-20260422-003",
@@ -61,9 +62,10 @@
       "kind": "advisory",
       "title": "10-repo proposal_inbox 확장 완료 (2026-04-23): hexa-os / papers / secret / contact 4 repo 신규 합류. .workspace member 에도 등록. sister_repos 매핑 전체 갱신.",
       "from_repo": "hexa-lang",
-      "user_status": "pending",
+      "user_status": "in_progress",
       "score_priority": 70,
-      "submitted_ts": "2026-04-22T15:54:31Z"
+      "submitted_ts": "2026-04-22T15:54:31Z",
+      "in_progress_ts": "2026-04-22T17:31:48Z"
     }
   ],
   "proposals": [],
