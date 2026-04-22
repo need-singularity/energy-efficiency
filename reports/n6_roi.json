@@ -1,6 +1,6 @@
 {
   "schema": "n6-architecture/n6_roi/1",
-  "ts": "2026-04-22T16:01:07Z",
+  "ts": "2026-04-22T16:31:43Z",
   "counters": {
     "techniques_total": 225,
     "papers_total": 164,
@@ -8,7 +8,7 @@
     "orphan_paper_count": 11,
     "proposals_total": 6,
     "products_actual": 341,
-    "atlas_signal_age_hours": 49,
+    "atlas_signal_age_hours": 0,
     "monte_carlo_file_count": 8
   },
   "findings": {
@@ -109,7 +109,7 @@
       "enriques-abelian-6fold-link-2026-04-22",
       "monte-carlo-control-e-2026-04-22"
     ],
-    "stale_atlas_signal": true,
+    "stale_atlas_signal": false,
     "redundant_monte_carlo_files": [
       "experiments/meta/meta_mc_v9_cross_batch.hexa",
       "experiments/anu_mc_verification",
