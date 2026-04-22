@@ -1,0 +1,11 @@
+{
+  "id": "convention.lang_gap_forward_hexa_lang",
+  "type": "convention",
+  "description": "lang_gap convention (n6a-20260422-003) applied: forward config present + target_repo=hexa-lang",
+  "actual_cmd": "bash -c '[ -f config/lang_gap_forward_convention.json ] && [ \"$(jq -r .target_repo config/lang_gap_forward_convention.json 2>/dev/null)\" = \"hexa-lang\" ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "weekly",
+  "owner": "infra",
+  "proposal_ref": "n6a-20260422-003"
+}

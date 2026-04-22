@@ -1,0 +1,19 @@
+{
+  "_doc": "CONVENTION lang_gap — hexa-lang 으로 집중 이관. 자기 repo 에 쌓지 말 것.",
+  "_source": "proposal n6a-20260422-003 (from hexa-lang, acked 2026-04-23)",
+  "target_repo": "hexa-lang",
+  "submit_cmd": "hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox submit --to hexa-lang --category lang_gap --kind cluster --title '...' --from n6-architecture",
+  "triggers": [
+    "미구현 method (rfind, index_of legacy, etc.)",
+    "reserved keyword 충돌 (guard, generate, parse → hops/do_generate/do_parse)",
+    "AOT bug / stage regression (T23~T29 float/try-catch/enum/comptime)",
+    "primitive 누락 (write_file append, exec shell metachar, etc.)",
+    "sandbox policy drift (extension blocks, dir restrictions)"
+  ],
+  "anti_pattern": "n6 repo 내 CLAUDE.md / TODO.md / docs/*.md 에 lang_gap 만 모아두기 (hexa-lang 에서 보이지 않음)",
+  "escalation_floor": "cluster kind 로 묶어서 incident count 누적 → hexa-lang 세션이 priority 재평가",
+  "submitted_from_this_repo": [
+    {"id": "hxa-20260422-008", "title": "SANDBOX-WRITE .sh/.py blocked", "ts": "2026-04-23"},
+    {"id": "hxa-20260422-009", "title": "ENGINE-STUB 7/16 tools pending hexa stage1 T23~T29", "ts": "2026-04-23"}
+  ]
+}
