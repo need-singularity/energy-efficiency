@@ -1,0 +1,11 @@
+{
+  "id": "audit_trail.integrity_monotonic",
+  "type": "self_consistency",
+  "description": "Phase 15 scan_audit_summary trail_integrity: the reports/n6_meta_audit.jsonl must be append-only in practice — ts non-decreasing across entries AND engine_version never downgrades (semver). Any non-zero count signals the trail was rewritten/truncated/back-dated, invalidating the audit chain.",
+  "actual_cmd": "bash -c '[ -f reports/n6_audit_summary.json ] && jq -r \"if (.trail_integrity.ts_regressions == 0) and (.trail_integrity.version_downgrades == 0) then 1 else 0 end\" reports/n6_audit_summary.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-15-trail-integrity"
+}

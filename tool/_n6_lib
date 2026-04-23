@@ -1007,6 +1007,9 @@ append_audit_trail() {
 #     - last_engine_version_matches_current (continuity claim)
 #     - last_entry_is_current_head (optional — true iff this run's head matches last entry's head)
 #   consumer claim 은 scanners/24_audit_summary_continuity.claim.json 로 fix.
+# Phase 15 — trail integrity (ts 비감소 + engine_version 비다운그레이드).
+#   같은 함수(scan_audit_summary) 안에서 trail_integrity 필드 추가.
+#   claim: scanners/26_audit_trail_integrity.claim.json (두 카운트 == 0)
 # ────────────────────────────────────────────────────────────
 # ────────────────────────────────────────────────────────────
 # Phase 14 — gate alignment
@@ -1087,22 +1090,43 @@ scan_audit_summary() {
     last_selftest_fail=$(echo "$last_line" | jq -r '.selftest.fail // 0')
     # aggregates across all lines (historical observability — NOT gating)
     local aggs
-    aggs=$(jq -s '{
-      h_min: (map(.health // 0) | min // 0),
-      h_max: (map(.health // 0) | max // 0),
-      h_avg: ((map(.health // 0) | add // 0) / (length | if . == 0 then 1 else . end) | floor),
-      any_red_proof: (any(.[]; (.proof.red // 0) > 0)),
-      any_selftest_fail: (any(.[]; (.selftest.fail // 0) > 0))
-    }' "$src" 2>/dev/null)
+    aggs=$(jq -s '
+      # Phase 15 integrity: ts must be monotonically non-decreasing,
+      # engine_version must never downgrade (semver-compare on dot-ints).
+      def semver_tuple: split(".") | map(try tonumber catch 0);
+      def cmp_semver(a; b):
+        (a | semver_tuple) as $x |
+        (b | semver_tuple) as $y |
+        ($x[0] - $y[0]) as $d0 |
+        (if $d0 != 0 then $d0
+         else ($x[1] // 0) - ($y[1] // 0) as $d1 |
+              (if $d1 != 0 then $d1
+               else ($x[2] // 0) - ($y[2] // 0) end)
+         end);
+      . as $all |
+      {
+        h_min: (map(.health // 0) | min // 0),
+        h_max: (map(.health // 0) | max // 0),
+        h_avg: ((map(.health // 0) | add // 0) / (length | if . == 0 then 1 else . end) | floor),
+        any_red_proof: (any(.[]; (.proof.red // 0) > 0)),
+        any_selftest_fail: (any(.[]; (.selftest.fail // 0) > 0)),
+        ts_regressions: ([range(1; length) as $i | select(($all[$i].ts // "") < ($all[$i-1].ts // ""))] | length),
+        version_downgrades: ([range(1; length) as $i | select(cmp_semver($all[$i].engine_version // "0"; $all[$i-1].engine_version // "0") < 0)] | length)
+      }
+    ' "$src" 2>/dev/null)
     h_min=$(echo "$aggs" | jq -r '.h_min')
     h_max=$(echo "$aggs" | jq -r '.h_max')
     h_avg=$(echo "$aggs" | jq -r '.h_avg')
     any_red_proof=$(echo "$aggs" | jq -r '.any_red_proof')
     any_selftest_fail=$(echo "$aggs" | jq -r '.any_selftest_fail')
+    ts_regressions=$(echo "$aggs" | jq -r '.ts_regressions // 0')
+    version_downgrades=$(echo "$aggs" | jq -r '.version_downgrades // 0')
     # continuity
     [ "$last_ver" = "${ENGINE_VERSION}" ] && ver_match="true"
     [ "$last_head" = "$(head_sha)" ] && head_match="true"
   fi
+  : "${ts_regressions:=0}"
+  : "${version_downgrades:=0}"
 
   cat >"$out" <<JEOF
 {
@@ -1127,6 +1151,10 @@ scan_audit_summary() {
   "historical": {
     "any_red_proof_ever": $any_red_proof,
     "any_selftest_fail_ever": $any_selftest_fail
+  },
+  "trail_integrity": {
+    "ts_regressions": $ts_regressions,
+    "version_downgrades": $version_downgrades
   },
   "continuity": {
     "last_engine_version_matches_current": $ver_match,

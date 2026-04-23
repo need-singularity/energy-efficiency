@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T04:51:27Z",
-  "total": 25,
-  "green": 25,
+  "ts": "2026-04-23T04:58:01Z",
+  "total": 26,
+  "green": 26,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -176,6 +176,13 @@
     },
     {
       "file": "25_gate_alignment.claim.json",
+      "type": "self_consistency",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "26_audit_trail_integrity.claim.json",
       "type": "self_consistency",
       "status": "green",
       "result": "1",
