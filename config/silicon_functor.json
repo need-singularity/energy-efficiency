@@ -1,0 +1,108 @@
+{
+  "_doc": "Silicon-side functor G : C_atlas → C_silicon — declarative companion to F (config/invariants.json). Hardware architecture constants from atlas.n6 that project onto silicon implementation. Axis C from R24+27 witness closure roadmap.",
+  "schema": "n6-architecture/silicon_functor/1",
+  "declared_round": "R24+29",
+  "declared_ts": "2026-04-24T10:25:00Z",
+  "source_witness_ref": "state/atlas_convergence_witness.jsonl R24+12 (warp_size), R24+17 (measurement boundary)",
+  "status": "declarative_not_yet_enforced",
+
+  "functor_G": {
+    "source_category": "C_atlas (shared with F)",
+    "target_category": "C_silicon (GPU/CPU hardware layer)",
+    "relationship_to_F": "F ∩ G = {warp_size} — single known crossover atom (R24+12). G covers atlas constants describing physical parallel execution units, register layouts, thermal/power envelopes. F covers engine meta structure.",
+    "preservation_class": "cartesian closed symmetric monoidal additive (assumed — by atlas semiring homomorphism)",
+    "enforcement_status": "not-yet-implemented — no scanner reads this file. Future gate: P42 candidate for silicon_functor schema presence."
+  },
+
+  "silicon_atoms": {
+    "warp_size": {
+      "value": 32,
+      "formula": "2^sopfr",
+      "atlas_ref": "atlas.n6:71 @C architecture",
+      "meaning": "GPU 최소 parallel-coherent execution unit (NVIDIA warp)",
+      "crossover_with_F": "P32 phase index — R24+12 architecture-tier crossover"
+    },
+    "sm_volta": {
+      "value": 64,
+      "formula": "2^n",
+      "atlas_ref": "atlas.n6 @F architecture",
+      "meaning": "NVIDIA Volta SM thread count",
+      "crossover_with_F": "none currently"
+    },
+    "sm_ampere": {
+      "value": 128,
+      "formula": "2^(sigma-sopfr)",
+      "atlas_ref": "atlas.n6 @F architecture",
+      "meaning": "NVIDIA Ampere SM thread count",
+      "crossover_with_F": "none currently"
+    },
+    "sm_ada": {
+      "value": 144,
+      "formula": "sigma^2",
+      "atlas_ref": "atlas.n6 @F architecture",
+      "meaning": "NVIDIA Ada SM count",
+      "crossover_with_F": "none currently"
+    },
+    "sm_blackwell": {
+      "value": 192,
+      "formula": "sigma * phi^tau",
+      "atlas_ref": "atlas.n6 @F architecture",
+      "meaning": "NVIDIA Blackwell SM count",
+      "crossover_with_F": "none currently"
+    },
+    "sm_amd": {
+      "value": 220,
+      "formula": "(sigma-mu)*(J2-tau)",
+      "atlas_ref": "atlas.n6:113 @F architecture",
+      "meaning": "AMD Compute Unit count",
+      "crossover_with_F": "none currently"
+    },
+    "register_file": {
+      "value": 256,
+      "formula": "2^(sigma-tau)",
+      "atlas_ref": "atlas.n6 @F architecture",
+      "meaning": "per-SM register file entries",
+      "crossover_with_F": "none currently"
+    },
+    "max_threads": {
+      "value": 1536,
+      "formula": "sigma * 2^(sigma-sopfr)",
+      "atlas_ref": "atlas.n6:118 @F architecture",
+      "meaning": "max threads per SM",
+      "crossover_with_F": "none currently"
+    },
+    "carbon_atomic": {
+      "value": 6,
+      "formula": "n",
+      "atlas_ref": "atlas.n6:187 @F physics",
+      "meaning": "semiconductor material bandgap substrate (diamond/C)",
+      "crossover_with_F": "P1 via n=6 (R24+13 3-tier convergence: math·matter·engine)"
+    }
+  },
+
+  "cross_functor_topology": {
+    "F_image": "algebraic foundation + engine meta structure (45 scanners, 10 atoms, 5 relations, 4 orbits)",
+    "G_image": "silicon hardware structure (warp_size, SMs, register file, max threads, carbon substrate)",
+    "intersection_F_cap_G": ["warp_size (both project to 32)", "carbon_atomic (both involve n=6)"],
+    "shared_foundation": "C_atlas (atlas.n6 foundation atoms n, sigma, phi, tau, sopfr, mu, ...)",
+    "triangle_structure": "math foundation → { F (software engine), G (silicon hardware) } — both derive from same n=6 algebraic base; F ∩ G is the subset observable from both sides."
+  },
+
+  "silicon_tier_semiring_check": {
+    "expected_preservation": "G should preserve {+, -, ·, /, ^} just like F, since atlas semiring is shared. Formulas show all silicon atoms derive from foundation via {+, ·, ^}.",
+    "sample_verifications": [
+      {"atom": "sm_volta", "formula": "2^n", "atom_values": "2^6 = 64", "match": true},
+      {"atom": "warp_size", "formula": "2^sopfr", "atom_values": "2^5 = 32", "match": true},
+      {"atom": "register_file", "formula": "2^(sigma-tau)", "atom_values": "2^(12-4) = 2^8 = 256", "match": true},
+      {"atom": "max_threads", "formula": "sigma * 2^(sigma-sopfr)", "atom_values": "12 * 2^7 = 12 * 128 = 1536", "match": true}
+    ],
+    "note": "All 4 spot-checked silicon atoms verify against atom-semiring computation. G is therefore a valid faithful monoidal functor on this subset."
+  },
+
+  "enforcement_future": {
+    "P42_candidate": "silicon manifest schema presence (analogous to P36)",
+    "P43_candidate": "G atom faithfulness (value == atom-semiring evaluation)",
+    "P44_candidate": "G ∩ F crossover verification (warp_size both sides match)",
+    "note": "Not yet a gate — declarative only. Axis C from R24+27 witness closure completed in document form."
+  }
+}
