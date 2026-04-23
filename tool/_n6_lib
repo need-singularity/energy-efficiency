@@ -1797,6 +1797,48 @@ JEOF
   echo "OK: $out  (total=$total flagged=$flag_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 35 — claim .type enum gate.
+#   P17 은 .type 의 존재만 확인한다. 값 자체는 free-form 이었지만 실제론
+#   13개 genre 로 수렴해 있다 — 새로운 type string (오타 포함) 이 들어오면
+#   consumer (doctor, invariants 등) 가 group 로직에서 기존 genre 와 섞이지
+#   못하고 조용히 빠진다. enum 으로 좁혀 정적으로 gate.
+#   claim: scanners/45_claim_type_enum.claim.json
+# ────────────────────────────────────────────────────────────
+scan_claim_type_enum() {
+  local out="reports/n6_claim_type_enum.json"
+  local allowed="atlas_count ci_health convention cross_consistency determinism drift existence falsification regression schema self_consistency statistical structural"
+  local total=0 flag_count=0 entries="" first=1
+  for f in scanners/*.claim.json; do
+    [ -f "$f" ] || continue
+    total=$((total+1))
+    local ty base
+    base=$(basename "$f")
+    ty=$(jq -r '.type // ""' "$f")
+    if ! echo " $allowed " | grep -qE " ${ty} " 2>/dev/null; then
+      flag_count=$((flag_count+1))
+      [ $first -eq 0 ] && entries="${entries},"
+      entries="${entries}{\"file\":\"${base}\",\"type\":\"${ty}\"}"
+      first=0
+    fi
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_claim_type_enum/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "total_claims": $total,
+  "flagged_count": $flag_count,
+  "flagged": [$entries],
+  "allowed_types": "$allowed",
+  "note": "Phase 35 — .type must be in the allowlist. Consumers group by type; a free-form typo silently drops the claim from its genre. Gate: flagged_count == 0.",
+  "status": "$([ $flag_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (total=$total flagged=$flag_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2620,6 +2662,8 @@ continuous_scan() {
   scan_recheck_cadence_enum >/dev/null 2>&1 || true
   # Phase 34 — must_fail ↔ expected pair consistency.
   scan_must_fail_expected_pair >/dev/null 2>&1 || true
+  # Phase 35 — claim .type enum gate.
+  scan_claim_type_enum >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2643,7 +2687,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2711,6 +2755,7 @@ case "${1:-}" in
   version-alignment|ver-align)  scan_version_phase_alignment ;;
   cadence-enum|cadence)  scan_recheck_cadence_enum ;;
   mf-expected|pair-consistency)  scan_must_fail_expected_pair ;;
+  type-enum|claim-type)  scan_claim_type_enum ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2730,7 +2775,7 @@ usage: bash tool/_n6_lib <sub>
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
-      | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected
+      | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected | type-enum
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

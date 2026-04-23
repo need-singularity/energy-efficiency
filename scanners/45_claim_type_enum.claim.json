@@ -1,0 +1,11 @@
+{
+  "id": "claim_meta.type_enum",
+  "type": "schema",
+  "description": "Phase 35 scan_claim_type_enum: .type must be one of the fixed allowlist (atlas_count, ci_health, convention, cross_consistency, determinism, drift, existence, falsification, regression, schema, self_consistency, statistical, structural). P17 only enforces presence; P35 gates the value. Consumers group claims by type — a free-form typo drops the claim from its intended genre without complaint. Extending the allowlist is a ceremony (edit scan_claim_type_enum in tool/_n6_lib), not something one-off claims can do unilaterally.",
+  "actual_cmd": "bash -c '[ -f reports/n6_claim_type_enum.json ] && jq -r \"if .flagged_count == 0 then 1 else 0 end\" reports/n6_claim_type_enum.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-35-claim-type-enum"
+}
