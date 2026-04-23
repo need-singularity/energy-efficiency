@@ -1,12 +1,12 @@
 {
   "schema": "n6-architecture/n6_roi/1",
-  "ts": "2026-04-23T01:51:38Z",
+  "ts": "2026-04-23T01:55:04Z",
   "counters": {
     "techniques_total": 225,
     "papers_total": 164,
     "dead_technique_count": 50,
-    "orphan_paper_count": 11,
-    "proposals_total": 6,
+    "orphan_paper_count": 0,
+    "proposals_total": 7,
     "products_actual": 341,
     "atlas_signal_age_hours": 9,
     "monte_carlo_file_count": 8
@@ -96,19 +96,7 @@
       "ema_averaging",
       "sophia_optimizer"
     ],
-    "orphan_paper": [
-      "_submission_top48_template",
-      "doob-talagrand-tau-2026-04-22",
-      "embody-p12-1-probe-mk1-design-2026-04-15",
-      "bernoulli-18-arxiv-stub-2026-04-15",
-      "moonshine-barrier-honest-report-2026-04-15",
-      "yang-mills-beta0-rewriting-2026-04-22",
-      "bernoulli-b6-sign-2026-04-22",
-      "plunnecke-6-2026-04-22",
-      "lemmas-A3-A4-conditional-2026-04-15",
-      "enriques-abelian-6fold-link-2026-04-22",
-      "monte-carlo-control-e-2026-04-22"
-    ],
+    "orphan_paper": [],
     "stale_atlas_signal": false,
     "redundant_monte_carlo_files": [
       "experiments/meta/meta_mc_v9_cross_batch.hexa",
