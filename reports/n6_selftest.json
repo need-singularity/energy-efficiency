@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_selftest/1",
-  "ts": "2026-04-23T04:47:38Z",
-  "total": 24,
-  "pass": 24,
+  "ts": "2026-04-23T04:51:27Z",
+  "total": 25,
+  "pass": 25,
   "fail": 0,
   "verdicts": [
     {
@@ -107,6 +107,11 @@
     },
     {
       "scanner": "scan_engine_integrity",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_gate_alignment",
       "verdict": "PASS",
       "rc": 0
     },

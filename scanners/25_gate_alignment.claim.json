@@ -1,0 +1,11 @@
+{
+  "id": "gate_alignment.manifest_vs_hook",
+  "type": "self_consistency",
+  "description": "Phase 14 scan_gate_alignment: every predicate key declared in config/engine_manifest.json pre_commit_hard_gates / pre_commit_advisory must appear as a grep-match in hooks/pre-commit-n6-integrity. Catches drift where gates are declared but never enforced.",
+  "actual_cmd": "bash -c '[ -f reports/n6_gate_alignment.json ] && jq -r \"if (.hook_present == true) and (.unmatched_count == 0) then 1 else 0 end\" reports/n6_gate_alignment.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-14-gate-alignment"
+}

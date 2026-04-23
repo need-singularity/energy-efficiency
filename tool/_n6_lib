@@ -1008,6 +1008,62 @@ append_audit_trail() {
 #     - last_entry_is_current_head (optional — true iff this run's head matches last entry's head)
 #   consumer claim 은 scanners/24_audit_summary_continuity.claim.json 로 fix.
 # ────────────────────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────
+# Phase 14 — gate alignment
+#   scan_gate_alignment():
+#     manifest 의 pre_commit_hard_gates / pre_commit_advisory 에 선언된
+#     모든 predicate 의 핵심 식별자(예: "critical_alarm", "regression") 가
+#     hooks/pre-commit-n6-integrity 파일에 grep 으로 존재하는지 확인.
+#     선언만 있고 집행이 없는 drift 를 잡는다.
+#   claim: scanners/25_gate_alignment.claim.json  (unmatched_count == 0)
+# ────────────────────────────────────────────────────────────
+scan_gate_alignment() {
+  local out="reports/n6_gate_alignment.json"
+  local mf="config/engine_manifest.json"
+  local hook="hooks/pre-commit-n6-integrity"
+  local hard advisory
+  hard=$(jq -r '.pre_commit_hard_gates[]? // empty' "$mf" 2>/dev/null)
+  advisory=$(jq -r '.pre_commit_advisory[]? // empty' "$mf" 2>/dev/null)
+  local unmatched=0
+  local items="["
+  local first=1
+  _check_gate() {
+    local kind="$1" gate="$2"
+    # predicate key = 문자열 중 첫 '.' 뒤 영숫자_밑줄 토큰 (예: "falsification.critical_alarm == false" -> "critical_alarm")
+    local key
+    key=$(echo "$gate" | sed -nE 's/^[^.]+\.([A-Za-z_][A-Za-z0-9_]*).*/\1/p')
+    [ -z "$key" ] && key="$gate"
+    local matched="false"
+    if [ -f "$hook" ] && grep -q "$key" "$hook"; then
+      matched="true"
+    else
+      unmatched=$((unmatched+1))
+    fi
+    [ $first -eq 0 ] && items="${items},"
+    items="${items}{\"kind\":\"${kind}\",\"gate\":\"${gate}\",\"key\":\"${key}\",\"matched\":${matched}}"
+    first=0
+  }
+  while IFS= read -r g; do [ -n "$g" ] && _check_gate "hard" "$g"; done <<< "$hard"
+  while IFS= read -r g; do [ -n "$g" ] && _check_gate "advisory" "$g"; done <<< "$advisory"
+  items="${items}]"
+  local hook_present="false"
+  [ -f "$hook" ] && hook_present="true"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_gate_alignment/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "hook_path": "$hook",
+  "hook_present": $hook_present,
+  "gates": $items,
+  "unmatched_count": $unmatched,
+  "status": "$([ $unmatched -eq 0 ] && [ "$hook_present" = "true" ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (unmatched=$unmatched)"
+}
+
 scan_audit_summary() {
   local src="reports/n6_meta_audit.jsonl"
   local out="reports/n6_audit_summary.json"
@@ -1573,6 +1629,7 @@ continuous_scan() {
   scan_manifest >/dev/null 2>&1 || true
   scan_schemas >/dev/null 2>&1 || true
   scan_engine_integrity >/dev/null 2>&1 || true
+  scan_gate_alignment >/dev/null 2>&1 || true
   run_proof_obligations >/dev/null 2>&1 || true
   doctor >/dev/null
   # trend must come AFTER doctor (reads doctor's score) and BEFORE history
@@ -1603,7 +1660,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_audit_summary scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_gate_alignment scan_audit_summary scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -1656,6 +1713,7 @@ case "${1:-}" in
   integrity|engine-integrity)  scan_engine_integrity ;;
   audit|audit-trail)  append_audit_trail ;;
   audit-summary|asum)  scan_audit_summary ;;
+  gate-alignment|gates)  scan_gate_alignment ;;
   trend|regression)  scan_trend ;;
   proof)           run_proof_obligations ;;
   continuous-scan|continuous_scan|continuous)  continuous_scan ;;
@@ -1670,7 +1728,8 @@ usage: bash tool/_n6_lib <sub>
   sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
       | monte_carlo | causal | citations | nexus_dep | loop_rules
       | experiments | falsification | gap | propose | promote | invariants
-      | idempotence | manifest | schemas | integrity | audit | audit-summary | trend | proof
+      | idempotence | manifest | schemas | integrity | audit | audit-summary
+      | gate-alignment | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

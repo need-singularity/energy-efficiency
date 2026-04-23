@@ -1,15 +1,15 @@
 {
   "schema": "n6-architecture/n6_audit_summary/1",
-  "ts": "2026-04-23T04:47:33Z",
-  "engine_version": "0.13.0",
+  "ts": "2026-04-23T04:51:22Z",
+  "engine_version": "0.14.0",
   "source": "reports/n6_meta_audit.jsonl",
-  "entries_total": 3,
+  "entries_total": 4,
   "last_entry": {
-    "ts": "2026-04-23T04:44:14Z",
-    "engine_version": "0.13.0",
-    "head": "c1050ec0e66c8e6ad8af15175d380c65d8f00377",
-    "health": 97,
-    "proof_red": 1,
+    "ts": "2026-04-23T04:49:50Z",
+    "engine_version": "0.14.0",
+    "head": "f43d10fcfb09a6de258b61956092de045aefb4f9",
+    "health": 100,
+    "proof_red": 0,
     "selftest_fail": 0
   },
   "health": {
