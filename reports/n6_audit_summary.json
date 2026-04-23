@@ -1,6 +1,6 @@
 {
   "schema": "n6-architecture/n6_audit_summary/1",
-  "ts": "2026-04-23T05:13:08Z",
+  "ts": "2026-04-23T05:18:13Z",
   "engine_version": "0.15.0",
   "source": "reports/n6_meta_audit.jsonl",
   "entries_total": 5,

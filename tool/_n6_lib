@@ -688,10 +688,23 @@ gap_proposer() {
   # NEW: match only conventional-commit type prefixes —
   #      `revert:` / `revert(` / `Revert "` / `hotfix:` / `hotfix(` /
   #      `emergency:` / `emergency(` / `workaround:`  (or `workaround `).
+  # Also cancel `Revert "X"` commits that have a matching later `Reapply "X"`
+  # — those are compensating pairs, net zero impact.
   # See proposals/auto_hotfix_pattern_2026_04_23.md for the driving audit.
-  local hotfix=$(git log --since='30 days ago' --oneline 2>/dev/null \
+  local raw_hotfix
+  raw_hotfix=$(git log --since='30 days ago' --oneline 2>/dev/null \
     | grep -cE '^[a-f0-9]+ (Revert "|revert:|revert\(|hotfix:|hotfix\(|emergency:|emergency\(|workaround[: ])' \
     || echo 0)
+  local revert_subjs reapply_subjs compensated
+  revert_subjs=$(git log --since='30 days ago' --format='%s' 2>/dev/null | grep -oE '^Revert "[^"]+"' | sort -u)
+  reapply_subjs=$(git log --since='30 days ago' --format='%s' 2>/dev/null | grep -oE '^Reapply "[^"]+"' | sed 's/^Reapply /Revert /' | sort -u)
+  if [ -n "$revert_subjs" ] && [ -n "$reapply_subjs" ]; then
+    compensated=$(comm -12 <(echo "$revert_subjs") <(echo "$reapply_subjs") | wc -l | tr -d ' ')
+  else
+    compensated=0
+  fi
+  local hotfix=$(( raw_hotfix - compensated ))
+  [ $hotfix -lt 0 ] && hotfix=0
   local repeat_proposals=$(git log --since='90 days ago' --name-only --pretty=format: -- proposals/ 2>/dev/null | sort | uniq -c | awk '$1 >= 3 {print $2}' | head -10 | j_arr_from_stdin)
   repeat_proposals="${repeat_proposals:-[]}"
   # Exclude this library itself (it contains the TODO regex literal) to
@@ -706,6 +719,8 @@ gap_proposer() {
   "schema": "n6-architecture/n6_gap_proposals/1",
   "ts": "$(ts)",
   "hotfix_commit_count_30d": $hotfix,
+  "hotfix_raw_count_30d": $raw_hotfix,
+  "hotfix_compensated_pairs": $compensated,
   "hotfix_threshold": 5,
   "repeat_edited_proposals": $repeat_proposals,
   "repeat_threshold": 1,
