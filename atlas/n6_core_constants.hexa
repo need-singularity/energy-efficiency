@@ -1,0 +1,40 @@
+// atlas/n6_core_constants.hexa -- CANONICAL n=6 core constants (SSOT)
+//
+// This is the single source of truth for the n=6 derivation constants.
+// Every per-domain verify_*.hexa file inlines these values because the
+// current hexa stage does not yet support stable `import`/`include` of
+// typed constants across compilation units (tracked in hxa-20260422-???
+// lang_gap). Until that lands, keep the inlined copies in sync with
+// THIS file; treat this file as the reviewer's diff target.
+//
+// Identity: sigma(6) * phi(6) == 6 * tau(6) == 12
+//
+// If you update any value here, a matching update in each
+// dup_derivation_candidates entry (see reports/n6_roi.json) is required.
+// `proposals/dup_derivation_consolidation_2026_04_23.md` documents the
+// consolidation plan that will replace the inlining once import lands.
+
+fn n6_core_constants() {
+    let n     = 6     // candidate integer — the sole ≥2 hit for the identity
+    let sigma = 12    // sum of divisors of 6 = 1 + 2 + 3 + 6
+    let tau   = 4     // count of divisors of 6 = {1, 2, 3, 6}
+    let phi   = 2     // Euler totient of 6 = |{1, 5}|
+    let sopfr = 5     // sum-of-prime-factors-with-repetition of 6 = 2 + 3
+    let j2    = 24    // J_2(6) = Jordan totient order 2 (used in several domain checks)
+
+    // identity asserts
+    assert(sigma * phi == n * tau)      // 12 * 2 == 6 * 4  ->  24 == 24
+    assert(sigma * phi == 24)
+    assert(n * tau     == 24)
+
+    // falsification sanity — perfect numbers 28, 496 must NOT satisfy the identity
+    // (documented here to remind inliners; each verify_*.hexa may re-assert)
+    // sigma(28)*phi(28) = 56 * 12  = 672   vs  28 * tau(28) = 28 * 6 = 168     (fail OK)
+    // sigma(496)*phi(496) = 992 * 240 = 238080 vs  496 * tau(496) = 496 * 10 = 4960  (fail OK)
+
+    println("[n6_core_constants] SSOT OK  n=6 sigma=12 tau=4 phi=2  ->  sigma*phi == n*tau == 24")
+}
+
+fn main() {
+    n6_core_constants()
+}

@@ -168,7 +168,9 @@ scan_roi() {
   done | j_arr_from_stdin)
   prop_drift="${prop_drift:-[]}"
 
-  local dup_deriv=$(grep -lrE "sigma.*phi.*tau" domains/ 2>/dev/null | head -30 | j_arr_from_stdin)
+  # dup_derivation: only code paths that RE-IMPLEMENT the identity count as duplicates.
+  # Markdown/verse reference files mention the pattern descriptively and are NOT dupes.
+  local dup_deriv=$(grep -lrE "sigma.*phi.*tau" domains/ 2>/dev/null | grep -E '\.(hexa|py|rs|ts|js|go)$' | head -30 | j_arr_from_stdin)
   dup_deriv="${dup_deriv:-[]}"
 
   cat >"$out" <<JEOF
