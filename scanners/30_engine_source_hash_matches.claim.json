@@ -1,0 +1,11 @@
+{
+  "id": "engine.source_hash_matches_stamp",
+  "type": "self_consistency",
+  "description": "Phase 20 scan_engine_hash: sha256(tool/_n6_lib) must match the stamp in config/engine_manifest.json at engine.source_hash. Mismatch means either (a) the engine was intentionally modified and the author must rotate the stamp before commit, or (b) tamper-evidence — investigate the diff. Rotation ceremony forces a conscious ack on every engine change.",
+  "actual_cmd": "bash -c '[ -f reports/n6_engine_hash.json ] && jq -r \"if .matches == true then 1 else 0 end\" reports/n6_engine_hash.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-20-source-hash"
+}

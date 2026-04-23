@@ -2,53 +2,170 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.19.0",
+    "version": "0.20.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
-    "dispatcher": "bin/n6_meta"
+    "dispatcher": "bin/n6_meta",
+    "source_hash": "61bb8c6f246b996b6acb71fd0259f70008e04b31651b2cc248154f31ce2ba272"
   },
   "phases": [
-    {"id": "P1",  "title": "blocker inventory",                 "state": "live"},
-    {"id": "P2",  "title": "loss-free ROI",                     "state": "live"},
-    {"id": "P3",  "title": "13 scanners (arithmetic → falsification)", "state": "live"},
-    {"id": "P4",  "title": "CLI dispatcher",                    "state": "live"},
-    {"id": "P5",  "title": "continuous-scan launchd + pre-commit fast subset", "state": "live"},
-    {"id": "P6",  "title": "proof-obligation DSL + gap proposer + telemetry",  "state": "live"},
-    {"id": "P7",  "title": "historical trend + regression alarm", "state": "live"},
-    {"id": "P8",  "title": "auto-propose from gap findings",    "state": "live"},
-    {"id": "P9",  "title": "cross-scan invariants",             "state": "live"},
-    {"id": "P10", "title": "scanner idempotence",               "state": "live"},
-    {"id": "P11", "title": "engine manifest + version stamping", "state": "live"},
-    {"id": "P12", "title": "engine self-integrity + audit trail",  "state": "live"},
-    {"id": "P13", "title": "audit trail consumer + continuity claim", "state": "live"},
-    {"id": "P14", "title": "gate declaration ↔ hook enforcement alignment", "state": "live"},
-    {"id": "P15", "title": "audit trail integrity — ts/version monotonicity", "state": "live"},
-    {"id": "P16", "title": "failing claim/scanner identity + persistent-failure gate", "state": "live"},
-    {"id": "P17", "title": "claim schema completeness (8 required fields)", "state": "live"},
-    {"id": "P18", "title": "dispatcher reverse completeness — integrity rule 4", "state": "live"},
-    {"id": "P19", "title": "claim id uniqueness (extends P17 schema scan)", "state": "live"}
+    {
+      "id": "P1",
+      "title": "blocker inventory",
+      "state": "live"
+    },
+    {
+      "id": "P2",
+      "title": "loss-free ROI",
+      "state": "live"
+    },
+    {
+      "id": "P3",
+      "title": "13 scanners (arithmetic → falsification)",
+      "state": "live"
+    },
+    {
+      "id": "P4",
+      "title": "CLI dispatcher",
+      "state": "live"
+    },
+    {
+      "id": "P5",
+      "title": "continuous-scan launchd + pre-commit fast subset",
+      "state": "live"
+    },
+    {
+      "id": "P6",
+      "title": "proof-obligation DSL + gap proposer + telemetry",
+      "state": "live"
+    },
+    {
+      "id": "P7",
+      "title": "historical trend + regression alarm",
+      "state": "live"
+    },
+    {
+      "id": "P8",
+      "title": "auto-propose from gap findings",
+      "state": "live"
+    },
+    {
+      "id": "P9",
+      "title": "cross-scan invariants",
+      "state": "live"
+    },
+    {
+      "id": "P10",
+      "title": "scanner idempotence",
+      "state": "live"
+    },
+    {
+      "id": "P11",
+      "title": "engine manifest + version stamping",
+      "state": "live"
+    },
+    {
+      "id": "P12",
+      "title": "engine self-integrity + audit trail",
+      "state": "live"
+    },
+    {
+      "id": "P13",
+      "title": "audit trail consumer + continuity claim",
+      "state": "live"
+    },
+    {
+      "id": "P14",
+      "title": "gate declaration ↔ hook enforcement alignment",
+      "state": "live"
+    },
+    {
+      "id": "P15",
+      "title": "audit trail integrity — ts/version monotonicity",
+      "state": "live"
+    },
+    {
+      "id": "P16",
+      "title": "failing claim/scanner identity + persistent-failure gate",
+      "state": "live"
+    },
+    {
+      "id": "P17",
+      "title": "claim schema completeness (8 required fields)",
+      "state": "live"
+    },
+    {
+      "id": "P18",
+      "title": "dispatcher reverse completeness — integrity rule 4",
+      "state": "live"
+    },
+    {
+      "id": "P19",
+      "title": "claim id uniqueness (extends P17 schema scan)",
+      "state": "live"
+    },
+    {
+      "id": "P20",
+      "title": "engine source-hash stamp — tamper evidence / rotation ceremony",
+      "state": "live"
+    }
   ],
   "scanner_registry": {
     "time_invariant": [
-      "arithmetic", "derivation", "atlas", "domains", "papers",
-      "monte_carlo", "causal", "citations", "nexus_dep", "loop_rules",
+      "arithmetic",
+      "derivation",
+      "atlas",
+      "domains",
+      "papers",
+      "monte_carlo",
+      "causal",
+      "citations",
+      "nexus_dep",
+      "loop_rules",
       "falsification"
     ],
     "time_dependent": [
-      "blockers", "roi", "experiments", "trend"
+      "blockers",
+      "roi",
+      "experiments",
+      "trend"
     ],
     "meta": [
       "gap", "propose", "promote", "invariants", "idempotence",
-      "manifest", "schemas", "integrity", "audit", "audit-summary",
+      "manifest", "schemas", "integrity", "engine-hash", "audit", "audit-summary",
       "gate-alignment", "claim-schema", "proof", "doctor", "health", "selftest"
     ]
   },
   "schema_prefix": "n6-architecture/",
   "continuous_scan_order": [
-    "blockers", "roi", "arithmetic", "derivation", "atlas", "domains",
-    "papers", "monte_carlo", "causal", "citations", "nexus_dep",
-    "loop_rules", "experiments", "falsification", "gap", "propose",
-    "promote", "invariants", "manifest", "schemas", "integrity",
-    "gate-alignment", "claim-schema", "proof", "doctor", "trend", "audit", "audit-summary"
+    "blockers",
+    "roi",
+    "arithmetic",
+    "derivation",
+    "atlas",
+    "domains",
+    "papers",
+    "monte_carlo",
+    "causal",
+    "citations",
+    "nexus_dep",
+    "loop_rules",
+    "experiments",
+    "falsification",
+    "gap",
+    "propose",
+    "promote",
+    "invariants",
+    "manifest",
+    "schemas",
+    "integrity",
+    "gate-alignment",
+    "claim-schema",
+    "proof",
+    "doctor",
+    "trend",
+    "audit",
+    "audit-summary",
+    "engine-hash"
   ],
   "pre_commit_hard_gates": [
     "falsification.critical_alarm == false"
