@@ -1,18 +1,19 @@
 {
   "schema": "n6-architecture.proposal_inventory.v1",
   "id_prefix": "n6a",
-  "updated_ts": "2026-04-22T17:31:54Z",
+  "updated_ts": "2026-04-23T04:13:35Z",
   "entries": [
     {
       "id": "n6a-20260422-001",
       "kind": "cluster",
       "title": "ROI 항목 '무손실 ROI' 카테고리 재태깅 audit (atlas derivation ROI)",
       "from_repo": "hexa-lang",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 60,
       "submitted_ts": "2026-04-22T15:26:51Z",
       "category": "loss_free_roi",
-      "in_progress_ts": "2026-04-22T16:29:50Z"
+      "in_progress_ts": "2026-04-22T16:29:50Z",
+      "done_ts": "2026-04-23T04:13:34Z"
     },
     {
       "id": "n6a-20260422-002",
@@ -32,40 +33,44 @@
       "kind": "advisory",
       "title": "CONVENTION lang_gap: 모든 repo 세션이 hexa 언어/runtime 제약 (미구현 method, reserved keyword 충돌, AOT bug, primitive 누락 등) 발견 시 → hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox submit --to hexa-lang --category lang_gap --kind cluster --title '...' 로 등록. 자기 repo 에 혼자 쌓지 말고 hexa-lang 에 모일 것. (근거: 2026-04-23 session, rfind/guard/hx_prefix/write_file 등 5건 누적)",
       "from_repo": "hexa-lang",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 80,
       "submitted_ts": "2026-04-22T15:49:13Z",
-      "in_progress_ts": "2026-04-22T16:11:07Z"
+      "in_progress_ts": "2026-04-22T16:11:07Z",
+      "done_ts": "2026-04-23T04:13:34Z"
     },
     {
       "id": "n6a-20260422-004",
       "kind": "advisory",
       "title": "CONVENTION cross_repo_blocker: 어느 repo 가 다른 repo 의 작업을 막고 있으면 해당 entry priority ≥ 95 (0순위). 하위 카테고리: lang_gap (hexa-lang blocker), infra_gap (airgenome host/build/plist blocker), atlas_gap (nexus/n6 atlas blocker), data_gap (anima cert/weight blocker). 여기저기서 blocker 생기므로 일반화.",
       "from_repo": "hexa-lang",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 90,
       "submitted_ts": "2026-04-22T15:50:05Z",
-      "in_progress_ts": "2026-04-22T16:07:21Z"
+      "in_progress_ts": "2026-04-22T16:07:21Z",
+      "done_ts": "2026-04-23T04:13:26Z"
     },
     {
       "id": "n6a-20260422-005",
       "kind": "advisory",
       "title": "void repo 가 proposal_inbox 체계에 합류 (2026-04-23) — SSH terminal 전문. airgenome compute_filter 와 별개. sister_repos 5 개와 상호 advisory/proposal 교환 가능.",
       "from_repo": "void",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 70,
       "submitted_ts": "2026-04-22T15:52:11Z",
-      "in_progress_ts": "2026-04-22T16:24:10Z"
+      "in_progress_ts": "2026-04-22T16:24:10Z",
+      "done_ts": "2026-04-23T04:13:35Z"
     },
     {
       "id": "n6a-20260422-006",
       "kind": "advisory",
       "title": "10-repo proposal_inbox 확장 완료 (2026-04-23): hexa-os / papers / secret / contact 4 repo 신규 합류. .workspace member 에도 등록. sister_repos 매핑 전체 갱신.",
       "from_repo": "hexa-lang",
-      "user_status": "in_progress",
+      "user_status": "done",
       "score_priority": 70,
       "submitted_ts": "2026-04-22T15:54:31Z",
-      "in_progress_ts": "2026-04-22T17:31:48Z"
+      "in_progress_ts": "2026-04-22T17:31:48Z",
+      "done_ts": "2026-04-23T04:13:35Z"
     }
   ],
   "proposals": [],
