@@ -1697,6 +1697,50 @@ JEOF
   echo "OK: $out  (version=$version last=$last_id aligned=$aligned)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 33 — recheck_cadence enum gate.
+#   P17 은 recheck_cadence 의 존재를, P28 은 owner/proposal_ref 의 값을
+#   검증했지만 cadence 자체의 값은 free-form 으로 남아 있었다. 오타
+#   ("every_comit", "week", "daliy") 가 proof-obligation runner 에 도달
+#   하면 cadence-based 스케줄러 (있다면) 가 조용히 skip 하는 drift 가
+#   발생할 수 있다. Enum 로 좁혀 정적으로 gate.
+#   Allowed: every_commit, daily, weekly, monthly, hourly, manual.
+#   claim: scanners/43_recheck_cadence_enum.claim.json
+# ────────────────────────────────────────────────────────────
+scan_recheck_cadence_enum() {
+  local out="reports/n6_recheck_cadence_enum.json"
+  local allowed="every_commit daily weekly monthly hourly manual"
+  local total=0 flag_count=0 entries="" first=1
+  for f in scanners/*.claim.json; do
+    [ -f "$f" ] || continue
+    total=$((total+1))
+    local cadence base
+    base=$(basename "$f")
+    cadence=$(jq -r '.recheck_cadence // ""' "$f")
+    if ! echo " $allowed " | grep -qE " ${cadence} " 2>/dev/null; then
+      flag_count=$((flag_count+1))
+      [ $first -eq 0 ] && entries="${entries},"
+      entries="${entries}{\"file\":\"${base}\",\"cadence\":\"${cadence}\"}"
+      first=0
+    fi
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_recheck_cadence_enum/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "total_claims": $total,
+  "flagged_count": $flag_count,
+  "flagged": [$entries],
+  "allowed_values": "$allowed",
+  "note": "Phase 33 — recheck_cadence must be one of a fixed enum. Narrows the free-form field so a typo can't silently cause a cadence-based scheduler to skip a claim.",
+  "status": "$([ $flag_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (total=$total flagged=$flag_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2516,6 +2560,8 @@ continuous_scan() {
   scan_selftest_fn_parity >/dev/null 2>&1 || true
   # Phase 32 — version ↔ last-phase alignment.
   scan_version_phase_alignment >/dev/null 2>&1 || true
+  # Phase 33 — recheck_cadence enum gate.
+  scan_recheck_cadence_enum >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2539,7 +2585,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2605,6 +2651,7 @@ case "${1:-}" in
   registry-parity|parity)  scan_registry_cso_parity ;;
   selftest-parity|fn-parity)  scan_selftest_fn_parity ;;
   version-alignment|ver-align)  scan_version_phase_alignment ;;
+  cadence-enum|cadence)  scan_recheck_cadence_enum ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2624,7 +2671,7 @@ usage: bash tool/_n6_lib <sub>
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
-      | phase-monotonic | registry-parity | selftest-parity | version-alignment
+      | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

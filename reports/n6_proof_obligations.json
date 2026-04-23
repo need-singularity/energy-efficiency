@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T17:07:59Z",
-  "total": 42,
-  "green": 42,
+  "ts": "2026-04-23T17:20:27Z",
+  "total": 43,
+  "green": 43,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -295,6 +295,13 @@
     },
     {
       "file": "42_version_phase_alignment.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "43_recheck_cadence_enum.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

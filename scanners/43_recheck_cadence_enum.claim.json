@@ -1,0 +1,11 @@
+{
+  "id": "claim_meta.recheck_cadence_enum",
+  "type": "schema",
+  "description": "Phase 33 scan_recheck_cadence_enum: every claim's recheck_cadence must be one of {every_commit, daily, weekly, monthly, hourly, manual}. P17 only enforces presence; P33 narrows the free-form value to a fixed enum so a typo ('every_comit', 'week', 'daliy') can't silently cause a cadence-based scheduler to skip the claim. Extending the enum requires editing scan_recheck_cadence_enum in tool/_n6_lib — a deliberate ceremony.",
+  "actual_cmd": "bash -c '[ -f reports/n6_recheck_cadence_enum.json ] && jq -r \"if .flagged_count == 0 then 1 else 0 end\" reports/n6_recheck_cadence_enum.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-33-recheck-cadence-enum"
+}

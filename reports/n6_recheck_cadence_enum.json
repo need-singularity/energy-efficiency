@@ -1,0 +1,11 @@
+{
+  "schema": "n6-architecture/n6_recheck_cadence_enum/1",
+  "ts": "2026-04-23T17:19:43Z",
+  "engine_version": "0.33.0",
+  "total_claims": 43,
+  "flagged_count": 0,
+  "flagged": [],
+  "allowed_values": "every_commit daily weekly monthly hourly manual",
+  "note": "Phase 33 — recheck_cadence must be one of a fixed enum. Narrows the free-form field so a typo can't silently cause a cadence-based scheduler to skip a claim.",
+  "status": "GREEN"
+}
