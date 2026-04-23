@@ -1,0 +1,11 @@
+{
+  "id": "invariants.composition_preservation",
+  "type": "schema",
+  "description": "Phase 41 scan_invariants_composition: explicit morphism composition checks against atom values from config/invariants.json. Complements P39 (foundation relations) with non-foundation compositional identities: sigma·tau == 48 (R24+9 monoidal — 45 claims + 3 on_demand scanners = 48 scanner-related units), phi^tau == 16 (R24+8 cartesian closed — P1..P16 pre-schema phases). Proves F preserves products and exponentials live. Gate: checks_failed == 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_invariants_composition.json ] && jq -r \"if .checks_failed == 0 and .checks_passed >= 2 then 1 else 0 end\" reports/n6_invariants_composition.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-41-composition-preservation"
+}

@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T19:49:18Z",
-  "total": 50,
-  "green": 50,
+  "ts": "2026-04-23T19:52:08Z",
+  "total": 51,
+  "green": 51,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -351,6 +351,13 @@
     },
     {
       "file": "50_generator_orbits_verified.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "51_composition_preservation.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

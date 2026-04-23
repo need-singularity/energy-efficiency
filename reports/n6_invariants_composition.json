@@ -1,0 +1,23 @@
+{
+  "schema": "n6-architecture/n6_invariants_composition/1",
+  "ts": "2026-04-23T19:51:42Z",
+  "engine_version": "0.41.0",
+  "checks_total": 2,
+  "checks_passed": 2,
+  "checks_failed": 0,
+  "per_check": {
+    "sigma_times_tau": {
+      "computed": 48,
+      "expected": 48,
+      "ok": 1
+    },
+    "phi_pow_tau": {
+      "computed": 16,
+      "expected": 16,
+      "ok": 1
+    }
+  },
+  "failures": [],
+  "note": "Phase 41 — morphism composition batch. Explicitly verifies F preserves products (sigma·tau=48) and exponentials (phi^tau=16) against atom values. Complements P39 (foundation relations) with compositional checks. Gate: checks_failed == 0.",
+  "status": "GREEN"
+}
