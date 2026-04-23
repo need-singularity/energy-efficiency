@@ -1,6 +1,6 @@
 {
   "schema": "n6-architecture/n6_roi/1",
-  "ts": "2026-04-23T02:20:48Z",
+  "ts": "2026-04-23T02:39:42Z",
   "counters": {
     "techniques_total": 225,
     "papers_total": 164,
@@ -8,7 +8,7 @@
     "orphan_paper_count": 0,
     "proposals_total": 11,
     "products_actual": 341,
-    "atlas_signal_age_hours": 9,
+    "atlas_signal_age_hours": 10,
     "monte_carlo_file_count": 5
   },
   "findings": {

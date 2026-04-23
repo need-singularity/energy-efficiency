@@ -84,7 +84,9 @@ scan_blockers() {
   [ "$blog_fail" -gt 0 ] && { severity_high=$((severity_high+1)); cross_repo_high=$((cross_repo_high+1)); }
   [ "$fail" -gt 0 ] && { severity_high=$((severity_high+1)); cross_repo_high=$((cross_repo_high+1)); }
   [ "$rules_drift" -gt 0 ] && severity_low=$((severity_low+1))
-  [ "$stub" -gt 0 ] && severity_low=$((severity_low+1))
+  # engine_selftest_stub is a forwarded lang_gap (convention n6a-20260422-003,
+  # hxa-20260422-009): stage1 AOT regression outside n6's control. Do not
+  # count it as an n6 health blocker; surface it in inputs for transparency.
   [ "$atlas_b" -lt 1000 ] && { severity_high=$((severity_high+1)); cross_repo_high=$((cross_repo_high+1)); }
   # nexus reach (atlas_gap per convention) — try remote first, then local fallback
   local nexus_reach=true
@@ -492,7 +494,10 @@ scan_citations() {
         techniques) actual_v="$actual_techniques" ;;
         papers)     actual_v="$actual_papers" ;;
       esac
-      claimed=$(grep -oE "[0-9]+[[:space:]]*${kw}" "$f" 2>/dev/null | head -1 | grep -oE "[0-9]+" | head -1)
+      # Require at least one space between the number and the keyword so we
+      # only capture deliberate claim statements ("209 products"), not glommed
+      # breakthrough shorthand in tables ("20domains", "6domains", "10domains").
+      claimed=$(grep -oE "[0-9]+[[:space:]]+${kw}" "$f" 2>/dev/null | head -1 | grep -oE "[0-9]+" | head -1)
       [ -z "$claimed" ] && continue
       if [ "$claimed" != "$actual_v" ]; then
         [ $first -eq 0 ] && drifts="${drifts},"

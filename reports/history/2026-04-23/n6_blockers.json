@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_blockers/1",
-  "ts": "2026-04-23T02:19:50Z",
-  "head": "881d7bd7434f766f6140aeeb205afeee95a6d7e1",
+  "ts": "2026-04-23T02:38:53Z",
+  "head": "48c3353f126ec6bc4f3b18a032a6691d56491d2c",
   "inputs": {
     "atlas_n6_bytes": 1503957,
     "atlas_signals_n6_bytes": 289669,
@@ -22,7 +22,7 @@
     "critical": 0,
     "high": 0,
     "med": 0,
-    "low": 1,
+    "low": 0,
     "cross_repo_blocker_count": 0,
     "cross_repo_priority_floor": 95
   },
