@@ -1,0 +1,17 @@
+{
+  "schema": "n6-architecture/n6_registry_cso_parity/1",
+  "ts": "2026-04-23T16:51:52Z",
+  "engine_version": "0.30.0",
+  "registry_total": 42,
+  "cso_total": 39,
+  "unregistered_count": 0,
+  "unregistered": [],
+  "on_demand_count": 3,
+  "on_demand_allowlist": [
+    "health",
+    "idempotence",
+    "selftest"
+  ],
+  "note": "Phase 30 — every continuous_scan_order entry must be in scanner_registry (declaration ↔ execution parity). Registry entries absent from CSO are allowed only if in {health, idempotence, selftest} — they are intentionally on-demand. Any other registry-only entry is orphan (declared but never run in continuous scan). Gate: unregistered_count == 0.",
+  "status": "GREEN"
+}

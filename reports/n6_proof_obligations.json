@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T16:32:09Z",
-  "total": 39,
-  "green": 39,
+  "ts": "2026-04-23T16:52:18Z",
+  "total": 40,
+  "green": 40,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -274,6 +274,13 @@
     },
     {
       "file": "39_manifest_phase_monotonic.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "40_registry_cso_parity.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

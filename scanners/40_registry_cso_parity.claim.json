@@ -1,0 +1,11 @@
+{
+  "id": "manifest.registry_cso_parity",
+  "type": "schema",
+  "description": "Phase 30 scan_registry_cso_parity: every entry in continuous_scan_order must be declared in scanner_registry (time_invariant OR time_dependent OR meta). Registry entries missing from CSO are allowed only if in the on-demand allowlist {health, idempotence, selftest}. Catches two drift modes: a new scanner added to the continuous run without registry declaration (silent execution of undeclared code), and a registry entry that exists only on paper (declared but never executed). Gate: unregistered_count == 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_registry_cso_parity.json ] && jq -r \"if .unregistered_count == 0 then 1 else 0 end\" reports/n6_registry_cso_parity.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-30-registry-cso-parity"
+}

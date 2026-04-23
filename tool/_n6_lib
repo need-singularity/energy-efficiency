@@ -1550,6 +1550,70 @@ JEOF
   echo "OK: $out  (total=$total last=P$prev gaps=$gap_count ooo=$ooo_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 30 — scanner registry ↔ continuous_scan_order parity.
+#   continuous_scan_order 에 있는 모든 scanner 는 scanner_registry (의
+#   time_invariant/time_dependent/meta 중 하나) 에 선언되어야 한다. 역방향
+#   (registry 에만 있는 scanner) 은 allowlist — health/idempotence/selftest
+#   은 on-demand 로 돌아서 CSO 에 없는 게 정상. unlisted scanner 가 CSO 에
+#   들어오면 registry 에 정식 등록 없이 실행되는 상태 — phase 선언-집행 drift.
+#   Gate: unregistered_in_cso == 0.
+#   claim: scanners/40_registry_cso_parity.claim.json
+# ────────────────────────────────────────────────────────────
+scan_registry_cso_parity() {
+  local out="reports/n6_registry_cso_parity.json"
+  local mf="config/engine_manifest.json"
+  local on_demand="health idempotence selftest"
+  local reg cso unreg="" unreg_count=0 on_demand_count=0 on_demand_list=""
+  reg=$(jq -r '(.scanner_registry.time_invariant + .scanner_registry.time_dependent + .scanner_registry.meta)[]' "$mf" 2>/dev/null | sort -u)
+  cso=$(jq -r '.continuous_scan_order[]' "$mf" 2>/dev/null | sort -u)
+  local reg_total cso_total
+  reg_total=$(echo "$reg" | grep -c . | tr -d ' ')
+  cso_total=$(echo "$cso" | grep -c . | tr -d ' ')
+  while IFS= read -r s; do
+    [ -z "$s" ] && continue
+    if ! echo "$reg" | grep -qxF "$s"; then
+      unreg="${unreg}${s} "
+      unreg_count=$((unreg_count+1))
+    fi
+  done <<< "$cso"
+  # Registry entries not in CSO = expected on-demand OR unexpected orphan
+  while IFS= read -r s; do
+    [ -z "$s" ] && continue
+    if ! echo "$cso" | grep -qxF "$s"; then
+      if echo " $on_demand " | grep -qE " ${s} "; then
+        on_demand_list="${on_demand_list}${s} "
+        on_demand_count=$((on_demand_count+1))
+      else
+        unreg="${unreg}registry_only(${s}) "
+        unreg_count=$((unreg_count+1))
+      fi
+    fi
+  done <<< "$reg"
+  local unreg_json on_demand_json
+  unreg_json=$(echo "$unreg" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  unreg_json="${unreg_json:-[]}"
+  on_demand_json=$(echo "$on_demand_list" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  on_demand_json="${on_demand_json:-[]}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_registry_cso_parity/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "registry_total": $reg_total,
+  "cso_total": $cso_total,
+  "unregistered_count": $unreg_count,
+  "unregistered": $unreg_json,
+  "on_demand_count": $on_demand_count,
+  "on_demand_allowlist": $on_demand_json,
+  "note": "Phase 30 — every continuous_scan_order entry must be in scanner_registry (declaration ↔ execution parity). Registry entries absent from CSO are allowed only if in {health, idempotence, selftest} — they are intentionally on-demand. Any other registry-only entry is orphan (declared but never run in continuous scan). Gate: unregistered_count == 0.",
+  "status": "$([ $unreg_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (reg=$reg_total cso=$cso_total unregistered=$unreg_count on_demand=$on_demand_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2363,6 +2427,8 @@ continuous_scan() {
   scan_claim_meta_hygiene >/dev/null 2>&1 || true
   # Phase 29 — manifest phase id monotonicity.
   scan_manifest_phase_monotonic >/dev/null 2>&1 || true
+  # Phase 30 — scanner registry ↔ continuous_scan_order parity.
+  scan_registry_cso_parity >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2386,7 +2452,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2449,6 +2515,7 @@ case "${1:-}" in
   claim-purity|purity)  scan_claim_cmd_purity ;;
   claim-meta|meta-hygiene)  scan_claim_meta_hygiene ;;
   phase-monotonic|monotonic)  scan_manifest_phase_monotonic ;;
+  registry-parity|parity)  scan_registry_cso_parity ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2468,7 +2535,7 @@ usage: bash tool/_n6_lib <sub>
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
-      | phase-monotonic | gate-alignment | claim-schema | trend | proof
+      | phase-monotonic | registry-parity | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2
