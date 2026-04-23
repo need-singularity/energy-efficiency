@@ -1,0 +1,14 @@
+{
+  "schema": "n6-architecture/n6_silicon_functor_manifest/1",
+  "ts": "2026-04-23T19:57:55Z",
+  "engine_version": "0.42.0",
+  "manifest_path": "config/silicon_functor.json",
+  "exists": true,
+  "atom_count": 9,
+  "atom_field_deficient_count": 0,
+  "atom_field_deficient": [],
+  "missing_top_keys": [],
+  "healthy": true,
+  "note": "Phase 42 — schema presence check for config/silicon_functor.json (axis C manifest, R24+29). Parallels P36 for invariants.json. Value/semiring verification reserved for future P43/P44.",
+  "status": "GREEN"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "silicon_functor.manifest_well_formed",
+  "type": "schema",
+  "description": "Phase 42 scan_silicon_functor_manifest: config/silicon_functor.json (R24+29 axis C manifest) must exist with required top-level keys {schema, functor_G, silicon_atoms, cross_functor_topology, silicon_tier_semiring_check}, at least 1 silicon atom, and every atom carrying {value, formula, atlas_ref} fields. Parallels P36 for invariants.json. Gate: healthy == true.",
+  "actual_cmd": "bash -c '[ -f reports/n6_silicon_functor_manifest.json ] && jq -r \"if .healthy == true then 1 else 0 end\" reports/n6_silicon_functor_manifest.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-42-silicon-functor-manifest"
+}
