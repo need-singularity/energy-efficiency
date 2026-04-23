@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T04:06:44Z",
-  "total": 22,
-  "green": 22,
+  "ts": "2026-04-23T04:11:32Z",
+  "total": 23,
+  "green": 23,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -159,6 +159,13 @@
       "status": "green",
       "result": "1",
       "expected": "1"
+    },
+    {
+      "file": "23_engine_integrity_aligned.claim.json",
+      "type": "self_consistency",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
     }
   ]
 }

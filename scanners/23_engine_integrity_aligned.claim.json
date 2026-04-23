@@ -1,0 +1,11 @@
+{
+  "id": "integrity.manifest_vs_source_aligned",
+  "type": "self_consistency",
+  "description": "Phase 12 scan_engine_integrity: manifest phases live count must equal `# Phase <N>` comment count in tool/_n6_lib; every name in scanner_registry must exist in the dispatcher; manifest claims_total must equal scanners/*.claim.json file count. drift_count must be 0.",
+  "actual_cmd": "jq -r '.drift_count' reports/n6_engine_integrity.json",
+  "expected": "0",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-12-integrity"
+}

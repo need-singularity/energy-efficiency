@@ -900,6 +900,105 @@ JEOF
 }
 
 # ────────────────────────────────────────────────────────────
+# Phase 12 — engine self-integrity + audit trail
+#   scan_engine_integrity():
+#     매니페스트(config/engine_manifest.json)와 실제 구현의 일치 여부 검증.
+#       - phases live 개수 == tool/_n6_lib 의 "Phase <N>" 헤더 주석 개수
+#       - scanner_registry 에 나열된 이름이 dispatcher case 에 존재
+#       - claims_total (live 집계) == scanners/*.claim.json 실제 파일 수
+#     불일치 시 drift 로 기록.
+#   append_audit_trail():
+#     reports/n6_meta_audit.jsonl 에 현재 실행의 한 줄 스냅샷 append.
+#     (ts / engine_version / head_sha / health / proof / selftest / blockers)
+# ────────────────────────────────────────────────────────────
+scan_engine_integrity() {
+  local out="reports/n6_engine_integrity.json"
+  local mf="config/engine_manifest.json"
+  local drifts="["
+  local first=1
+  local drift_count=0
+  _idrift() {
+    [ $first -eq 0 ] && drifts="${drifts},"
+    drifts="${drifts}{\"rule\":\"$1\",\"manifest\":$2,\"actual\":$3}"
+    first=0
+    drift_count=$((drift_count+1))
+  }
+
+  # rule 1: phases.live vs "Phase N" 주석 카운트
+  local phases_live
+  phases_live=$(jq -r '[.phases[] | select(.state=="live")] | length' "$mf" 2>/dev/null)
+  local phase_headers
+  phase_headers=$(grep -cE "^# Phase [0-9]+" tool/_n6_lib | head -1)
+  # 주석이 각 Phase 별로 여러 줄 있을 수 있으니, '# Phase <N>' 고유 N 수로 측정
+  local phase_ids
+  phase_ids=$(grep -oE "# Phase [0-9]+" tool/_n6_lib | sort -u | wc -l | tr -d ' ')
+  [ "$phase_ids" != "$phases_live" ] && _idrift "phases.live_vs_source" "$phases_live" "$phase_ids"
+
+  # rule 2: scanner_registry 이름들이 dispatcher 에 존재
+  local missing_dispatch=0
+  local all_names
+  all_names=$(jq -r '.scanner_registry.time_invariant + .scanner_registry.time_dependent + .scanner_registry.meta | .[]' "$mf" 2>/dev/null)
+  while IFS= read -r n; do
+    [ -z "$n" ] && continue
+    # dispatcher case 체크: "  <name>)" 또는 "|<name>)" 이 존재
+    grep -qE "(^|[|\( ])${n}(\||\))" tool/_n6_lib || missing_dispatch=$((missing_dispatch+1))
+  done <<EOF_NAMES
+$all_names
+EOF_NAMES
+  [ "$missing_dispatch" -gt 0 ] && _idrift "scanner_registry.dispatch_missing" "0" "$missing_dispatch"
+
+  # rule 3: claims_total (매니페스트 manifest report 에 기록된 값) == 실제 파일 수
+  local claims_declared
+  claims_declared=$(jq -r '.claims_total // 0' reports/n6_manifest.json 2>/dev/null)
+  local claims_actual
+  claims_actual=$(ls scanners/*.claim.json 2>/dev/null | wc -l | tr -d ' ')
+  [ "$claims_declared" != "$claims_actual" ] && _idrift "claims.declared_vs_actual" "$claims_declared" "$claims_actual"
+
+  drifts="${drifts}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_engine_integrity/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "checks": {
+    "phases_live_declared": $phases_live,
+    "phases_live_in_source": $phase_ids,
+    "scanner_dispatch_missing": $missing_dispatch,
+    "claims_declared": $claims_declared,
+    "claims_actual": $claims_actual
+  },
+  "drift_count": $drift_count,
+  "drifts": $drifts,
+  "status": "$([ $drift_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (drift=$drift_count)"
+}
+
+append_audit_trail() {
+  local out="reports/n6_meta_audit.jsonl"
+  local score
+  score=$(jq -r '.score // 0' reports/n6_health.json 2>/dev/null)
+  local p_green p_red p_total
+  p_green=$(jq -r '.green // 0' reports/n6_proof_obligations.json 2>/dev/null)
+  p_red=$(jq -r '.red // 0'   reports/n6_proof_obligations.json 2>/dev/null)
+  p_total=$(jq -r '.total // 0' reports/n6_proof_obligations.json 2>/dev/null)
+  local s_pass s_fail
+  s_pass=$(jq -r '.pass // 0' reports/n6_selftest.json 2>/dev/null)
+  s_fail=$(jq -r '.fail // 0' reports/n6_selftest.json 2>/dev/null)
+  local b_high b_med b_low
+  b_high=$(jq -r '.summary.high // 0' reports/n6_blockers.json 2>/dev/null)
+  b_med=$(jq -r '.summary.med // 0'   reports/n6_blockers.json 2>/dev/null)
+  b_low=$(jq -r '.summary.low // 0'   reports/n6_blockers.json 2>/dev/null)
+  local line
+  line=$(printf '{"ts":"%s","engine_version":"%s","head":"%s","health":%s,"proof":{"total":%s,"green":%s,"red":%s},"selftest":{"pass":%s,"fail":%s},"blockers":{"high":%s,"med":%s,"low":%s}}\n' \
+    "$(ts)" "${ENGINE_VERSION}" "$(head_sha)" "${score:-0}" "${p_total:-0}" "${p_green:-0}" "${p_red:-0}" "${s_pass:-0}" "${s_fail:-0}" "${b_high:-0}" "${b_med:-0}" "${b_low:-0}")
+  echo "$line" >>"$out"
+  echo "OK: audit += $(echo "$line" | jq -c '{ts,engine_version,health}')"
+}
+
+# ────────────────────────────────────────────────────────────
 # Phase 11 — engine manifest + schema audit
 #   scan_manifest():  emit live summary pinned to config/engine_manifest.json
 #   scan_schemas():   audit every reports/n6_*.json for a well-formed
@@ -1370,6 +1469,9 @@ health() {
   echo "$payload"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 5 — continuous scan driver (pairs with launchd 12h plist)
+# ────────────────────────────────────────────────────────────
 continuous_scan() {
   local phases=(blockers roi arithmetic derivation atlas domains papers monte_carlo causal citations nexus_dep loop_rules experiments falsification)
   for p in "${phases[@]}"; do
@@ -1385,11 +1487,14 @@ continuous_scan() {
   scan_invariants >/dev/null 2>&1 || true
   scan_manifest >/dev/null 2>&1 || true
   scan_schemas >/dev/null 2>&1 || true
+  scan_engine_integrity >/dev/null 2>&1 || true
   run_proof_obligations >/dev/null 2>&1 || true
   doctor >/dev/null
   # trend must come AFTER doctor (reads doctor's score) and BEFORE history
   # archive (so today's trend is what gets snapshotted).
   scan_trend >/dev/null 2>&1 || true
+  # audit trail: one line per continuous_scan run
+  append_audit_trail >/dev/null 2>&1 || true
   # history archive
   local today=$(date -u +%Y-%m-%d)
   mkdir -p "reports/history/$today"
@@ -1410,7 +1515,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -1436,7 +1541,7 @@ JEOF
 }
 
 # ────────────────────────────────────────────────────────────
-# Dispatcher
+# Phase 4 — Dispatcher (subcommand routing)
 # ────────────────────────────────────────────────────────────
 case "${1:-}" in
   blockers)        scan_blockers ;;
@@ -1460,6 +1565,8 @@ case "${1:-}" in
   idempotence|idem)  scan_idempotence ;;
   manifest)        scan_manifest ;;
   schemas|schema-audit)  scan_schemas ;;
+  integrity|engine-integrity)  scan_engine_integrity ;;
+  audit|audit-trail)  append_audit_trail ;;
   trend|regression)  scan_trend ;;
   proof)           run_proof_obligations ;;
   continuous-scan|continuous_scan|continuous)  continuous_scan ;;
@@ -1474,7 +1581,7 @@ usage: bash tool/_n6_lib <sub>
   sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
       | monte_carlo | causal | citations | nexus_dep | loop_rules
       | experiments | falsification | gap | propose | promote | invariants
-      | idempotence | manifest | schemas | trend | proof
+      | idempotence | manifest | schemas | integrity | audit | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2
