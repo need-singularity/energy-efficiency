@@ -1331,6 +1331,53 @@ JEOF
   echo "OK: $out  (dirs=${#watched[@]} files=$grand_files bytes=$grand_bytes)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 26 — emission completeness (dual of P22 orphan).
+#   P22 는 emitter 없는 reports/n6_*.json (orphan) 을 잡았다. 그 역 —
+#   tool/_n6_lib 안에 out="reports/n6_<name>.json" 패턴으로 선언됐지만
+#   실제 파일이 존재하지 않는 emitter. scan 함수가 runtime 중간에 죽어
+#   출력이 안 나온 경우 (예: P24 구현 중 내가 직접 겪은 set -e 탈출)
+#   를 탐지한다. P22 가 "고아 산출물" 이라면 P26 은 "유산이 없는 산모".
+#   Gate on: missing_count == 0 (실제 gating).
+#   claim: scanners/36_emission_completeness.claim.json
+# ────────────────────────────────────────────────────────────
+scan_emission_completeness() {
+  local out="reports/n6_emission_completeness.json"
+  local declared
+  # Exclude self: this scanner's own output is written AFTER the check below,
+  # so without the grep -v it would always report missing=1 for itself.
+  declared=$(grep -oE 'out="reports/n6_[a-z_]+\.json"' tool/_n6_lib | awk -F'"' '{print $2}' | grep -vx "$out" | sort -u)
+  local total=0 present=0 missing_count=0 missing=""
+  while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    total=$((total+1))
+    if [ -f "$f" ]; then
+      present=$((present+1))
+    else
+      missing="${missing}${f} "
+      missing_count=$((missing_count+1))
+    fi
+  done <<< "$declared"
+  local missing_json
+  missing_json=$(echo "$missing" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  missing_json="${missing_json:-[]}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_emission_completeness/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "declared_emitter_count": $total,
+  "present_count": $present,
+  "missing_count": $missing_count,
+  "missing": $missing_json,
+  "note": "Phase 26 — dual of P22. Declared emitter (out=reports/n6_<name>.json pattern) whose output file is absent signals a scan function that silently died mid-run (common: set -e triggered on zero-match grep exit=1) or that the dispatcher never called it this cycle. missing_count>0 is AMBER — investigate immediately.",
+  "status": "$([ $missing_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (declared=$total present=$present missing=$missing_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2137,6 +2184,9 @@ continuous_scan() {
   scan_dir_inventory >/dev/null 2>&1 || true
   # Phase 24 — reverse coverage map (observe-only).
   scan_coverage_map >/dev/null 2>&1 || true
+  # Phase 26 — emission completeness (MUST run last: every declared
+  # emitter must have produced its file by now for the check to be valid).
+  scan_emission_completeness >/dev/null 2>&1 || true
   # history archive
   local today=$(date -u +%Y-%m-%d)
   mkdir -p "reports/history/$today"
@@ -2157,7 +2207,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2216,6 +2266,7 @@ case "${1:-}" in
   claim-effectiveness|effectiveness)  scan_claim_effectiveness ;;
   coverage-map|coverage)  scan_coverage_map ;;
   dir-inventory|inventory)  scan_dir_inventory ;;
+  emission-completeness|emission)  scan_emission_completeness ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2234,7 +2285,8 @@ usage: bash tool/_n6_lib <sub>
       | experiments | falsification | gap | propose | promote | invariants
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
-      | coverage-map | dir-inventory | gate-alignment | claim-schema | trend | proof
+      | coverage-map | dir-inventory | emission-completeness
+      | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

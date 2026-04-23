@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T15:17:53Z",
-  "total": 35,
-  "green": 35,
+  "ts": "2026-04-23T15:46:40Z",
+  "total": 36,
+  "green": 36,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -246,6 +246,13 @@
     },
     {
       "file": "35_unobserved_inventory.claim.json",
+      "type": "self_consistency",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "36_emission_completeness.claim.json",
       "type": "self_consistency",
       "status": "green",
       "result": "1",

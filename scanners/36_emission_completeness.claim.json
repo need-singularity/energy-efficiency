@@ -1,0 +1,11 @@
+{
+  "id": "emission.no_missing",
+  "type": "self_consistency",
+  "description": "Phase 26 scan_emission_completeness: every emitter declared in tool/_n6_lib (via out=\"reports/n6_<name>.json\" pattern) must have produced its output file after a continuous-scan run. Dual of P22 (orphan detection) — P22 catches reports without emitters, P26 catches emitters without reports. A missing file usually means the scan function silently died mid-run (common cause: set -e triggered on a bare `var=$(grep ... )` when grep exits 1 for zero matches) or that the dispatcher never called it. Real gate: missing_count must be 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_emission_completeness.json ] && jq -r \"if .missing_count == 0 then 1 else 0 end\" reports/n6_emission_completeness.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-26-emission-completeness"
+}
