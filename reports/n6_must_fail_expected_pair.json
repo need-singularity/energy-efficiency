@@ -1,0 +1,14 @@
+{
+  "schema": "n6-architecture/n6_must_fail_expected_pair/1",
+  "ts": "2026-04-23T17:25:01Z",
+  "engine_version": "0.34.0",
+  "total_claims": 44,
+  "flagged_count": 0,
+  "flagged": [],
+  "rules": [
+    "must_fail=true  AND expected!=\"\" → dead config (expected is unused)",
+    "must_fail=false AND expected==\"\" → vacuous compare (always matches empty)"
+  ],
+  "note": "Phase 34 — run_proof_obligations evaluates the two fields as a pair. Mismatches pass structural/enum gates but are semantically broken. Gate: flagged_count == 0.",
+  "status": "GREEN"
+}

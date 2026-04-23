@@ -1741,6 +1741,62 @@ JEOF
   echo "OK: $out  (total=$total flagged=$flag_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 34 — must_fail ↔ expected pair consistency.
+#   run_proof_obligations 의 판정 로직:
+#     must_fail=true  → result 가 비어있거나 "0"/"false" 면 green (expected
+#                        는 참조되지 않음 — 비어있어야 정상)
+#     must_fail=false → result == expected 이면 green (expected 이 비어있
+#                        으면 의미없는 비교 — 항상 "" 와 match)
+#   두 대조 값이 엇나가면 config 는 정적으로는 통과하지만 의미상으론 dead
+#   하거나 misleading 하다. Gate 로 예방.
+#   Rules:
+#     must_fail=true  AND expected≠""   → flagged (dead expected)
+#     must_fail=false AND expected==""  → flagged (vacuous compare)
+#   claim: scanners/44_must_fail_expected_pair.claim.json
+# ────────────────────────────────────────────────────────────
+scan_must_fail_expected_pair() {
+  local out="reports/n6_must_fail_expected_pair.json"
+  local total=0 flag_count=0 entries="" first=1
+  for f in scanners/*.claim.json; do
+    [ -f "$f" ] || continue
+    total=$((total+1))
+    local mf exp base reason=""
+    base=$(basename "$f")
+    mf=$(jq -r '.must_fail // false' "$f")
+    exp=$(jq -r '.expected // ""' "$f")
+    if [ "$mf" = "true" ] && [ -n "$exp" ] && [ "$exp" != "null" ]; then
+      reason="must_fail_true_with_nonempty_expected"
+    elif [ "$mf" = "false" ] && { [ -z "$exp" ] || [ "$exp" = "null" ]; }; then
+      reason="must_fail_false_with_empty_expected"
+    fi
+    if [ -n "$reason" ]; then
+      flag_count=$((flag_count+1))
+      [ $first -eq 0 ] && entries="${entries},"
+      entries="${entries}{\"file\":\"${base}\",\"must_fail\":${mf},\"expected\":\"${exp}\",\"reason\":\"${reason}\"}"
+      first=0
+    fi
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_must_fail_expected_pair/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "total_claims": $total,
+  "flagged_count": $flag_count,
+  "flagged": [$entries],
+  "rules": [
+    "must_fail=true  AND expected!=\"\" → dead config (expected is unused)",
+    "must_fail=false AND expected==\"\" → vacuous compare (always matches empty)"
+  ],
+  "note": "Phase 34 — run_proof_obligations evaluates the two fields as a pair. Mismatches pass structural/enum gates but are semantically broken. Gate: flagged_count == 0.",
+  "status": "$([ $flag_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (total=$total flagged=$flag_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2562,6 +2618,8 @@ continuous_scan() {
   scan_version_phase_alignment >/dev/null 2>&1 || true
   # Phase 33 — recheck_cadence enum gate.
   scan_recheck_cadence_enum >/dev/null 2>&1 || true
+  # Phase 34 — must_fail ↔ expected pair consistency.
+  scan_must_fail_expected_pair >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2585,7 +2643,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2652,6 +2710,7 @@ case "${1:-}" in
   selftest-parity|fn-parity)  scan_selftest_fn_parity ;;
   version-alignment|ver-align)  scan_version_phase_alignment ;;
   cadence-enum|cadence)  scan_recheck_cadence_enum ;;
+  mf-expected|pair-consistency)  scan_must_fail_expected_pair ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2671,7 +2730,7 @@ usage: bash tool/_n6_lib <sub>
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
-      | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum
+      | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

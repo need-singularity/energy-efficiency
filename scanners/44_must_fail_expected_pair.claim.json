@@ -1,0 +1,11 @@
+{
+  "id": "claim_meta.must_fail_expected_pair",
+  "type": "schema",
+  "description": "Phase 34 scan_must_fail_expected_pair: must_fail and expected are evaluated as a pair in run_proof_obligations. must_fail=true ignores expected (result must be empty/0/false to be green); must_fail=false compares result to expected (empty expected yields a vacuous always-empty-match compare). Mismatched pairs pass structural and enum gates but are semantically dead or misleading. Rules: must_fail=true with non-empty expected is dead config; must_fail=false with empty expected is vacuous. Gate: flagged_count == 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_must_fail_expected_pair.json ] && jq -r \"if .flagged_count == 0 then 1 else 0 end\" reports/n6_must_fail_expected_pair.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-34-must-fail-expected-pair"
+}
