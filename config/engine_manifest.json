@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.26.0",
+    "version": "0.27.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "b6a69f356de363c1086ab5fd19963efae06f697b7cea6ede9ad2012dc7ed0821"
+    "source_hash": "828206de3a9b5069dbe5f7d22471692fbb3332756321c0946b9e3ece654c7e97"
   },
   "phases": [
     {
@@ -137,6 +137,11 @@
       "id": "P26",
       "title": "emission completeness — dual of P22 (declared emitter produces output)",
       "state": "live"
+    },
+    {
+      "id": "P27",
+      "title": "claim cmd purity — no wall-clock/network/random/PID/tmp/abspath in actual_cmd",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -179,6 +184,7 @@
       "coverage-map",
       "dir-inventory",
       "emission-completeness",
+      "claim-purity",
       "proof",
       "doctor",
       "health",
@@ -221,6 +227,7 @@
     "claim-effectiveness",
     "dir-inventory",
     "coverage-map",
+    "claim-purity",
     "emission-completeness"
   ],
   "pre_commit_hard_gates": [

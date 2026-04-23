@@ -1,0 +1,18 @@
+{
+  "schema": "n6-architecture/n6_claim_purity/1",
+  "ts": "2026-04-23T16:02:10Z",
+  "engine_version": "0.27.0",
+  "total_claims": 37,
+  "flagged_count": 0,
+  "flagged": [],
+  "patterns_checked": [
+    "date",
+    "network(curl/wget/http)",
+    "random($RANDOM)",
+    "pid($$)",
+    "tmp(/tmp/)",
+    "abspath(/Users/|/home/)"
+  ],
+  "note": "Phase 27 — each claim's actual_cmd must be a pure function of repo state so that verdicts are reproducible. Patterns above mark dependence on wall clock, network, PID, random, mutable shared fs, or env-specific abs path — each breaks 'same HEAD → same verdict'. Gating: flagged_count must be 0.",
+  "status": "GREEN"
+}

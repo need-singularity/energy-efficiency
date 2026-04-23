@@ -1378,6 +1378,56 @@ JEOF
   echo "OK: $out  (declared=$total present=$present missing=$missing_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 27 — claim cmd purity.
+#   Proof obligation 의 verdict 는 "같은 repo state → 같은 결과" 라는 재현성
+#   가정 위에 서 있다. 그러나 actual_cmd 가 wall-clock (date), network
+#   (curl/wget/http), PID ($$), random ($RANDOM), shared mutable fs (/tmp),
+#   환경 고유 절대경로 (/Users/, /home/) 에 의존하면 그 가정이 깨진다 —
+#   같은 HEAD 에서도 run 마다 verdict 가 달라질 수 있다. Static pattern
+#   scan 으로 이런 의존성을 잡고 gate (flagged_count == 0).
+#   claim: scanners/37_claim_cmd_purity.claim.json
+# ────────────────────────────────────────────────────────────
+scan_claim_cmd_purity() {
+  local out="reports/n6_claim_purity.json"
+  local total=0 flag_count=0 entries="" first=1
+  for f in scanners/*.claim.json; do
+    [ -f "$f" ] || continue
+    total=$((total+1))
+    local cmd flags base
+    base=$(basename "$f")
+    cmd=$(jq -r '.actual_cmd // .actual // ""' "$f")
+    flags=""
+    echo "$cmd" | grep -qE '\bdate\b'                    && flags="${flags}date "
+    echo "$cmd" | grep -qE '\bcurl\b|\bwget\b|https?://' && flags="${flags}network "
+    echo "$cmd" | grep -qE '\$RANDOM'                    && flags="${flags}random "
+    echo "$cmd" | grep -qE '\$\$'                        && flags="${flags}pid "
+    echo "$cmd" | grep -qE '/tmp/'                       && flags="${flags}tmp "
+    echo "$cmd" | grep -qE '/Users/|/home/'              && flags="${flags}abspath "
+    if [ -n "$flags" ]; then
+      flag_count=$((flag_count+1))
+      [ $first -eq 0 ] && entries="${entries},"
+      entries="${entries}{\"file\":\"${base}\",\"flags\":\"${flags% }\"}"
+      first=0
+    fi
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_claim_purity/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "total_claims": $total,
+  "flagged_count": $flag_count,
+  "flagged": [$entries],
+  "patterns_checked": ["date", "network(curl/wget/http)", "random(\$RANDOM)", "pid(\$\$)", "tmp(/tmp/)", "abspath(/Users/|/home/)"],
+  "note": "Phase 27 — each claim's actual_cmd must be a pure function of repo state so that verdicts are reproducible. Patterns above mark dependence on wall clock, network, PID, random, mutable shared fs, or env-specific abs path — each breaks 'same HEAD → same verdict'. Gating: flagged_count must be 0.",
+  "status": "$([ $flag_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (total=$total flagged=$flag_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2184,6 +2234,9 @@ continuous_scan() {
   scan_dir_inventory >/dev/null 2>&1 || true
   # Phase 24 — reverse coverage map (observe-only).
   scan_coverage_map >/dev/null 2>&1 || true
+  # Phase 27 — claim cmd purity (static scan of scanners/*.claim.json,
+  # no dependency on other reports; runs before emission-completeness).
+  scan_claim_cmd_purity >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2207,7 +2260,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2267,6 +2320,7 @@ case "${1:-}" in
   coverage-map|coverage)  scan_coverage_map ;;
   dir-inventory|inventory)  scan_dir_inventory ;;
   emission-completeness|emission)  scan_emission_completeness ;;
+  claim-purity|purity)  scan_claim_cmd_purity ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2285,7 +2339,7 @@ usage: bash tool/_n6_lib <sub>
       | experiments | falsification | gap | propose | promote | invariants
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
-      | coverage-map | dir-inventory | emission-completeness
+      | coverage-map | dir-inventory | emission-completeness | claim-purity
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

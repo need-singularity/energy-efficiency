@@ -1,0 +1,11 @@
+{
+  "id": "claim_purity.no_external_state",
+  "type": "self_consistency",
+  "description": "Phase 27 scan_claim_cmd_purity: every scanners/*.claim.json actual_cmd must be a pure function of repo state. Flags patterns that break reproducibility — date (wall clock), curl/wget/http (network), $RANDOM (nondeterministic), $$ (PID), /tmp/ (shared mutable fs), absolute /Users/ or /home/ paths (env-specific). Gate: flagged_count must be 0. Ensures 'same HEAD → same verdict' — without this, proof-obligation results drift across runs even when the code doesn't change.",
+  "actual_cmd": "bash -c '[ -f reports/n6_claim_purity.json ] && jq -r \"if .flagged_count == 0 then 1 else 0 end\" reports/n6_claim_purity.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-27-claim-cmd-purity"
+}
