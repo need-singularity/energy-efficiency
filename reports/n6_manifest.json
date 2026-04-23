@@ -1,16 +1,16 @@
 {
   "schema": "n6-architecture/n6_manifest/1",
-  "ts": "2026-04-23T17:28:43Z",
-  "engine_version": "0.35.0",
+  "ts": "2026-04-23T19:34:28Z",
+  "engine_version": "0.36.0",
   "phases": {
-    "live": 35,
-    "total": 35
+    "live": 36,
+    "total": 36
   },
   "scanners": {
     "time_invariant": 11,
     "time_dependent": 4,
-    "meta": 32
+    "meta": 33
   },
-  "claims_total": 45,
+  "claims_total": 46,
   "pre_commit_hard_gates": 1
 }

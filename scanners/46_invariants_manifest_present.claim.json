@@ -1,0 +1,11 @@
+{
+  "id": "invariants.manifest_well_formed",
+  "type": "schema",
+  "description": "Phase 36 scan_invariants_manifest: config/invariants.json (R24+26 formalization of atlas↔engine functor F) must exist and have a well-formed schema — top-level keys {schema, atoms, semiring_operations, foundation_relations, euclid_euler_generator, closing_theorem} present, at least 10 atoms, and every atom has {value, atlas_ref, engine_count, engine_value} fields. P36 is presence-only; value verification (does engine_value match live structural count?) is reserved for a future P37 gate. Gate: healthy == true.",
+  "actual_cmd": "bash -c '[ -f reports/n6_invariants_manifest.json ] && jq -r \"if .healthy == true then 1 else 0 end\" reports/n6_invariants_manifest.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-36-invariants-manifest"
+}

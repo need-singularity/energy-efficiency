@@ -1839,6 +1839,71 @@ JEOF
   echo "OK: $out  (total=$total flagged=$flag_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 36 — invariants manifest schema presence.
+#   R24+26 에서 config/invariants.json 을 atlas↔engine functor 의 machine-
+#   readable manifest 로 생성. P36 은 그 manifest 의 schema presence 만 gate
+#   (값 자체 verify 는 P37 이후 예약). 검사: file 존재, 필수 top-level key 존재,
+#   atoms 10개 이상 & 각 atom 이 {value, atlas_ref, engine_count, engine_value}
+#   필드 보유.
+#   claim: scanners/46_invariants_manifest_present.claim.json
+# ────────────────────────────────────────────────────────────
+scan_invariants_manifest() {
+  local out="reports/n6_invariants_manifest.json"
+  local mf="config/invariants.json"
+  local exists="false" atom_count=0 atom_deficient=0 deficient_list=""
+  local required_top="schema atoms semiring_operations foundation_relations euclid_euler_generator closing_theorem"
+  local missing_top=""
+  if [ -f "$mf" ]; then
+    exists="true"
+    for k in $required_top; do
+      if ! jq -e "has(\"$k\")" "$mf" >/dev/null 2>&1; then
+        missing_top="${missing_top}${k} "
+      fi
+    done
+    atom_count=$(jq '.atoms | length' "$mf" 2>/dev/null || echo 0)
+    # Per-atom field presence check
+    local req_fields="value atlas_ref engine_count engine_value"
+    local atom_keys
+    atom_keys=$(jq -r '.atoms | keys[]' "$mf" 2>/dev/null)
+    for a in $atom_keys; do
+      for f in $req_fields; do
+        if ! jq -e ".atoms[\"$a\"] | has(\"$f\")" "$mf" >/dev/null 2>&1; then
+          deficient_list="${deficient_list}${a}.${f} "
+          atom_deficient=$((atom_deficient+1))
+        fi
+      done
+    done
+  fi
+  local missing_top_json deficient_json
+  missing_top_json=$(echo "$missing_top" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  missing_top_json="${missing_top_json:-[]}"
+  deficient_json=$(echo "$deficient_list" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  deficient_json="${deficient_json:-[]}"
+  local healthy="false"
+  if [ "$exists" = "true" ] && [ -z "$missing_top" ] && [ "$atom_count" -ge 10 ] && [ "$atom_deficient" -eq 0 ]; then
+    healthy="true"
+  fi
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_invariants_manifest/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "manifest_path": "$mf",
+  "exists": $exists,
+  "atom_count": $atom_count,
+  "atom_field_deficient_count": $atom_deficient,
+  "atom_field_deficient": $deficient_json,
+  "missing_top_keys": $missing_top_json,
+  "healthy": $healthy,
+  "note": "Phase 36 — schema presence check for config/invariants.json. Does NOT verify atom values match live engine counts (reserved for future P37). Just ensures the manifest exists with 10+ atoms and required top-level structure.",
+  "status": "$([ "$healthy" = "true" ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (exists=$exists atoms=$atom_count deficient=$atom_deficient)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2664,6 +2729,8 @@ continuous_scan() {
   scan_must_fail_expected_pair >/dev/null 2>&1 || true
   # Phase 35 — claim .type enum gate.
   scan_claim_type_enum >/dev/null 2>&1 || true
+  # Phase 36 — invariants manifest schema presence.
+  scan_invariants_manifest >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2687,7 +2754,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2756,6 +2823,7 @@ case "${1:-}" in
   cadence-enum|cadence)  scan_recheck_cadence_enum ;;
   mf-expected|pair-consistency)  scan_must_fail_expected_pair ;;
   type-enum|claim-type)  scan_claim_type_enum ;;
+  inv-manifest|invariants-manifest)  scan_invariants_manifest ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2776,7 +2844,7 @@ usage: bash tool/_n6_lib <sub>
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
       | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected | type-enum
-      | gate-alignment | claim-schema | trend | proof
+      | inv-manifest | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2
