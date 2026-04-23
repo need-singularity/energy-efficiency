@@ -1,0 +1,11 @@
+{
+  "id": "dir_inventory.unobserved_closed",
+  "type": "self_consistency",
+  "description": "Phase 25 scan_dir_inventory: reports/n6_dir_inventory.json must exist with status=GREEN AND reports/n6_coverage_map.json.unobserved_count must be 0. Pair-closes P24's open finding — P24 flagged theory/bridge/calc as name-unreferenced, and P25 references all three by doing a minimal inventory (file count, total bytes, newest mtime), driving unobserved_count to zero. A future drift (sudden file-count delta, mtime jump) will at least be visible in the inventory report.",
+  "actual_cmd": "bash -c '[ -f reports/n6_dir_inventory.json ] || { echo 0; exit 0; }; s=$(jq -r .status reports/n6_dir_inventory.json 2>/dev/null); u=$(jq -r \".unobserved_count\" reports/n6_coverage_map.json 2>/dev/null); [ \"$s\" = \"GREEN\" ] && [ \"$u\" = \"0\" ] && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-25-unobserved-inventory"
+}

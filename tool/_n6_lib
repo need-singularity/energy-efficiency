@@ -1285,6 +1285,52 @@ JEOF
   echo "OK: $out  (observed=$observed_count/$total unobserved=$unobserved_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 25 — unobserved-dir inventory (closes P24's open finding).
+#   P24 가 "어떤 scanner 도 이름조차 언급 않는 canonical dir" 로 theory/ ·
+#   bridge/ · calc/ 3개를 뽑았다. 이 phase 는 해당 3개에 대해 최소 inventory
+#   (file count / total bytes / newest mtime) 를 emit — 즉 내용 자체를 깊이
+#   검증하지는 않지만 이름을 참조함으로써 (a) P24 unobserved_count=0 으로
+#   수렴, (b) 다음 run 에서 파일 수나 최신 mtime 급변(=content drift) 이
+#   관측 가능한 표면이 된다.
+#   claim: scanners/35_unobserved_inventory.claim.json
+# ────────────────────────────────────────────────────────────
+scan_dir_inventory() {
+  local out="reports/n6_dir_inventory.json"
+  # Dirs that P24 flagged as unobserved (bridge/theory/calc). Listing them
+  # here also makes them referenced for P24's name-proxy heuristic.
+  local watched=(theory bridge calc)
+  local entries="" first=1 grand_files=0 grand_bytes=0
+  for d in "${watched[@]}"; do
+    [ -d "$d" ] || continue
+    local files bytes newest
+    files=$(find "$d" -type f 2>/dev/null | wc -l | tr -d ' ')
+    bytes=$(find "$d" -type f -exec stat -f '%z' {} + 2>/dev/null | awk '{s+=$1} END{print s+0}')
+    newest=$(find "$d" -type f -exec stat -f '%m' {} + 2>/dev/null | sort -n | tail -1)
+    newest="${newest:-0}"
+    grand_files=$((grand_files + files))
+    grand_bytes=$((grand_bytes + bytes))
+    [ $first -eq 0 ] && entries="${entries},"
+    entries="${entries}{\"dir\":\"${d}\",\"files\":${files},\"bytes\":${bytes},\"newest_mtime\":${newest}}"
+    first=0
+  done
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_dir_inventory/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "watched": $(printf '%s\n' "${watched[@]}" | jq -R -s -c 'split("\n") | map(select(length>0))'),
+  "dirs": [$entries],
+  "grand_files": $grand_files,
+  "grand_bytes": $grand_bytes,
+  "note": "Phase 25 — minimal inventory for dirs that P24 flagged unobserved. Not a semantic check; a baseline surface so future drift (sudden file-count or mtime shift) is at least visible. Pairs with P24 to close the coverage gap it opened.",
+  "status": "GREEN"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (dirs=${#watched[@]} files=$grand_files bytes=$grand_bytes)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2086,6 +2132,9 @@ continuous_scan() {
   # Phase 23 — claim effectiveness (observe-only). Must come after audit
   # trail is written so this run's red_claims are included in the window.
   scan_claim_effectiveness >/dev/null 2>&1 || true
+  # Phase 25 — inventory for P24-flagged unobserved dirs (must come BEFORE
+  # coverage-map so the references added here are picked up in the same run).
+  scan_dir_inventory >/dev/null 2>&1 || true
   # Phase 24 — reverse coverage map (observe-only).
   scan_coverage_map >/dev/null 2>&1 || true
   # history archive
@@ -2108,7 +2157,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_coverage_map scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2166,6 +2215,7 @@ case "${1:-}" in
   audit-summary|asum)  scan_audit_summary ;;
   claim-effectiveness|effectiveness)  scan_claim_effectiveness ;;
   coverage-map|coverage)  scan_coverage_map ;;
+  dir-inventory|inventory)  scan_dir_inventory ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2184,7 +2234,7 @@ usage: bash tool/_n6_lib <sub>
       | experiments | falsification | gap | propose | promote | invariants
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
-      | coverage-map | gate-alignment | claim-schema | trend | proof
+      | coverage-map | dir-inventory | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

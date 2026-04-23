@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.24.0",
+    "version": "0.25.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "04d565585046f8eb9ad28975ad82880612759a837e1e7acb7e557420c1a26203"
+    "source_hash": "798a1fa1e616ecdd7c11c5e32a1f67e57a851cd0729289f35469052f48c427da"
   },
   "phases": [
     {
@@ -127,6 +127,11 @@
       "id": "P24",
       "title": "reverse coverage map — unobserved source dirs (observe-only)",
       "state": "live"
+    },
+    {
+      "id": "P25",
+      "title": "unobserved-dir inventory — closes P24 (theory/bridge/calc)",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -167,6 +172,7 @@
       "claim-schema",
       "claim-effectiveness",
       "coverage-map",
+      "dir-inventory",
       "proof",
       "doctor",
       "health",
@@ -207,6 +213,7 @@
     "engine-hash",
     "emitter-registry",
     "claim-effectiveness",
+    "dir-inventory",
     "coverage-map"
   ],
   "pre_commit_hard_gates": [

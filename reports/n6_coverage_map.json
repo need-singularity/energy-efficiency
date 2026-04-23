@@ -1,15 +1,11 @@
 {
   "schema": "n6-architecture/n6_coverage_map/1",
-  "ts": "2026-04-23T15:12:23Z",
-  "engine_version": "0.24.0",
+  "ts": "2026-04-23T15:17:03Z",
+  "engine_version": "0.25.0",
   "must_observe_count": 12,
-  "observed_count": 9,
-  "unobserved_count": 3,
-  "unobserved": [
-    "theory",
-    "bridge",
-    "calc"
-  ],
+  "observed_count": 12,
+  "unobserved_count": 0,
+  "unobserved": [],
   "dirs": [
     {
       "dir": "atlas",
@@ -25,8 +21,8 @@
     },
     {
       "dir": "scanners",
-      "references": 27,
-      "files": 34,
+      "references": 28,
+      "files": 35,
       "status": "observed"
     },
     {
@@ -67,21 +63,21 @@
     },
     {
       "dir": "theory",
-      "references": 0,
+      "references": 3,
       "files": 275,
-      "status": "unobserved"
+      "status": "observed"
     },
     {
       "dir": "bridge",
-      "references": 0,
+      "references": 3,
       "files": 777,
-      "status": "unobserved"
+      "status": "observed"
     },
     {
       "dir": "calc",
-      "references": 0,
+      "references": 3,
       "files": 1,
-      "status": "unobserved"
+      "status": "observed"
     }
   ],
   "note": "Observe-only (P24). Static proxy: a dir is 'observed' iff its bare name appears as a word in tool/_n6_lib. references=0 means no scan function mentions the dir, so content drift there goes unnoticed. Not a semantic coverage check — only name-reference presence.",
