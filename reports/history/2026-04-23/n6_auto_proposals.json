@@ -1,0 +1,13 @@
+{
+  "schema": "n6-architecture/n6_auto_proposals/1",
+  "ts": "2026-04-23T03:42:04Z",
+  "triggers_fired": {
+    "hotfix": true,
+    "repeat": false,
+    "todo": false
+  },
+  "created": [],
+  "skipped": [
+    "proposals/auto_hotfix_pattern_2026_04_23.md (already exists)"
+  ]
+}

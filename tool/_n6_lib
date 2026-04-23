@@ -684,13 +684,173 @@ gap_proposer() {
   # tool/ scanners/; skip _n6_lib where the pattern string lives.
   local todo_comments=$(grep -rnE "// TODO|# TODO|나중에 확인" engine/ tool/ scanners/ 2>/dev/null | grep -v "^tool/_n6_lib:" | head -20 | j_arr_from_stdin)
   todo_comments="${todo_comments:-[]}"
+  local todo_count=$(echo "$todo_comments" | jq 'length')
+  local repeat_count=$(echo "$repeat_proposals" | jq 'length')
   cat >"$out" <<JEOF
 {
   "schema": "n6-architecture/n6_gap_proposals/1",
   "ts": "$(ts)",
   "hotfix_commit_count_30d": $hotfix,
+  "hotfix_threshold": 5,
   "repeat_edited_proposals": $repeat_proposals,
-  "todo_anchors": $todo_comments
+  "repeat_threshold": 1,
+  "todo_anchors": $todo_comments,
+  "todo_threshold": 5,
+  "triggers": {
+    "hotfix_over_threshold":  $([ "$hotfix" -ge 5 ] && echo true || echo false),
+    "repeat_over_threshold":  $([ "$repeat_count" -ge 1 ] && echo true || echo false),
+    "todo_over_threshold":    $([ "$todo_count" -ge 5 ] && echo true || echo false)
+  }
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 8 — auto-propose from gap findings
+#   Reads reports/n6_gap_proposals.json. For each trigger that fires,
+#   drafts a proposals/auto_<topic>_<date>.md skeleton *if not already
+#   present*. Idempotent (filename is date-stamped; re-runs skip).
+#   Records outcomes in reports/n6_auto_proposals.json.
+# ────────────────────────────────────────────────────────────
+propose_from_gaps() {
+  local out="reports/n6_auto_proposals.json"
+  local today=$(date -u +%Y_%m_%d)
+  local created="[]"
+  local skipped="[]"
+  local c_items=""
+  local s_items=""
+
+  [ -f reports/n6_gap_proposals.json ] || {
+    echo "{\"schema\":\"n6-architecture/n6_auto_proposals/1\",\"ts\":\"$(ts)\",\"note\":\"n6_gap_proposals.json missing — run gap first\",\"created\":[],\"skipped\":[]}" >"$out"
+    echo "SKIP: gap report missing"
+    return 0
+  }
+
+  local hotfix=$(jq -r '.hotfix_commit_count_30d // 0' reports/n6_gap_proposals.json)
+  local repeat_count=$(jq -r '.repeat_edited_proposals | length' reports/n6_gap_proposals.json)
+  local todo_count=$(jq -r '.todo_anchors | length' reports/n6_gap_proposals.json)
+
+  # ── trigger 1: hotfix pattern ──────────────────────────────
+  if [ "$hotfix" -ge 5 ]; then
+    local f="proposals/auto_hotfix_pattern_${today}.md"
+    if [ -f "$f" ]; then
+      s_items="${s_items}\"$f (already exists)\","
+    else
+      cat >"$f" <<MD
+# AUTO: Hotfix pattern audit — ${today//_/-}
+
+**source**: Phase 8 propose_from_gaps (hotfix_commit_count_30d=${hotfix} ≥ 5)
+
+The last 30 days include ${hotfix} commits whose subject matches one of
+\`workaround | hotfix | emergency | regression | revert\`. Review whether
+these cluster around a single module/file; if they do, promote the
+underlying cause to a ROI item.
+
+## Action checklist
+
+- [ ] \`git log --since='30 days ago' --grep='workaround\\|hotfix\\|emergency\\|regression\\|revert' --name-only\` — inspect.
+- [ ] Identify the top-3 hottest paths.
+- [ ] If one module shows ≥3 hits: open a root-cause ROI item and link back here.
+- [ ] Otherwise mark this audit closed (no clustering).
+
+## Resolution
+
+<!-- fill in when this audit closes -->
+
+## Meta
+
+- Generated automatically. Delete or fill in manually.
+- Re-running \`bin/n6_meta propose\` on a different day creates a new
+  audit file; same-day runs are idempotent.
+MD
+      c_items="${c_items}\"$f\","
+    fi
+  fi
+
+  # ── trigger 2: repeat-edited proposals ─────────────────────
+  if [ "$repeat_count" -ge 1 ]; then
+    local f="proposals/auto_proposal_stability_${today}.md"
+    if [ -f "$f" ]; then
+      s_items="${s_items}\"$f (already exists)\","
+    else
+      local repeat_list=$(jq -r '.repeat_edited_proposals[]' reports/n6_gap_proposals.json | sed 's/^/  - /')
+      cat >"$f" <<MD
+# AUTO: Proposal stability review — ${today//_/-}
+
+**source**: Phase 8 propose_from_gaps
+(repeat_edited_proposals ≥ 1 within 90 days)
+
+The following proposal files were edited ≥3 times in the last 90 days.
+Frequent edits suggest unsettled scope — either convert to a living doc
+(move content into a stable SSOT) or close them with a resolution note.
+
+## Files
+
+${repeat_list}
+
+## Action
+
+- [ ] For each file above: is the churn caused by new information, or
+      is the original proposal half-finished?
+- [ ] If half-finished → close with resolution note + open a clean
+      successor proposal.
+- [ ] If living content → migrate into an SSOT JSON/config and leave
+      only a pointer.
+
+## Resolution
+
+<!-- fill in -->
+MD
+      c_items="${c_items}\"$f\","
+    fi
+  fi
+
+  # ── trigger 3: TODO anchor backlog ─────────────────────────
+  if [ "$todo_count" -ge 5 ]; then
+    local f="proposals/auto_todo_backlog_${today}.md"
+    if [ -f "$f" ]; then
+      s_items="${s_items}\"$f (already exists)\","
+    else
+      local anchor_list=$(jq -r '.todo_anchors[]' reports/n6_gap_proposals.json | sed 's/^/  - /')
+      cat >"$f" <<MD
+# AUTO: TODO anchor backlog — ${today//_/-}
+
+**source**: Phase 8 propose_from_gaps (todo_anchors=${todo_count} ≥ 5)
+
+## Anchors
+
+${anchor_list}
+
+## Action
+
+- [ ] Bulk-resolve: can any anchor be closed as stale?
+- [ ] Hot anchors (touched recently): promote to a ROI item.
+- [ ] Convert \`# TODO\` → explicit gap proposal if structural.
+
+## Resolution
+
+<!-- fill in -->
+MD
+      c_items="${c_items}\"$f\","
+    fi
+  fi
+
+  c_items="${c_items%,}"; s_items="${s_items%,}"
+  created="[${c_items}]"; skipped="[${s_items}]"
+
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_auto_proposals/1",
+  "ts": "$(ts)",
+  "triggers_fired": {
+    "hotfix": $([ "$hotfix" -ge 5 ] && echo true || echo false),
+    "repeat": $([ "$repeat_count" -ge 1 ] && echo true || echo false),
+    "todo":   $([ "$todo_count" -ge 5 ] && echo true || echo false)
+  },
+  "created": $created,
+  "skipped": $skipped
 }
 JEOF
   jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
@@ -729,6 +889,165 @@ promote_cross_repo() {
   "candidate_count": $count,
   "candidates": $candidates,
   "note": "Listed items should be flipped status: todo → running (human-gated)."
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 10 — scanner idempotence
+#   Run each time-invariant scanner twice and verify its output (after
+#   stripping volatile keys: ts, anything ending in _ts, runtime_ms)
+#   is byte-identical. A mismatch means the scanner is non-deterministic
+#   and must be fixed before its numbers can be trusted across time.
+# ────────────────────────────────────────────────────────────
+scan_idempotence() {
+  local out="reports/n6_idempotence.json"
+  # Only scanners that are pure functions of repo state (no network,
+  # no wall-clock age, no git-log since-now). Exclude:
+  #   blockers  — nexus_reach probes network
+  #   roi       — atlas_signal_age_hours depends on wall clock
+  #   experiments — bench runs may vary
+  #   trend     — compares today vs prior (time-dependent by design)
+  #   proof / selftest / doctor / health — meta-level composites
+  local targets=(arithmetic derivation atlas domains papers monte_carlo causal citations nexus_dep loop_rules falsification)
+  local results="["
+  local first=1
+  local total=0 pass=0 fail=0
+  for s in "${targets[@]}"; do
+    total=$((total+1))
+    local report="reports/n6_${s}.json"
+    # Map sub name → report path for ones that don't follow n6_<s>.json exactly.
+    case "$s" in
+      monte_carlo) report="reports/n6_monte_carlo.json" ;;
+      citations)   report="reports/n6_external_citation_drift.json" ;;
+      nexus_dep)   report="reports/n6_nexus_dep_drift.json" ;;
+      loop_rules)  report="reports/n6_loop_rules.json" ;;
+      domains)     report="reports/n6_domain_coverage.json" ;;
+      papers)      report="reports/n6_paper_lineage.json" ;;
+      derivation)  report="reports/n6_derivation_lineage.json" ;;
+      causal)      report="reports/n6_causal_chain.json" ;;
+      atlas)       report="reports/n6_atlas_integrity.json" ;;
+      arithmetic)  report="reports/n6_arithmetic_check.json" ;;
+      falsification) report="reports/n6_falsification.json" ;;
+    esac
+    # First run
+    scan_"$s" >/dev/null 2>&1 || true
+    local h1
+    h1=$(jq 'del(.ts) | del(.. | .ts? // empty)' "$report" 2>/dev/null | shasum -a 256 | awk '{print $1}')
+    # Second run
+    scan_"$s" >/dev/null 2>&1 || true
+    local h2
+    h2=$(jq 'del(.ts) | del(.. | .ts? // empty)' "$report" 2>/dev/null | shasum -a 256 | awk '{print $1}')
+    local verdict="PASS"
+    if [ -z "$h1" ] || [ "$h1" != "$h2" ]; then
+      verdict="FAIL"; fail=$((fail+1))
+    else
+      pass=$((pass+1))
+    fi
+    [ $first -eq 0 ] && results="${results},"
+    results="${results}{\"scanner\":\"${s}\",\"h1\":\"${h1:0:12}\",\"h2\":\"${h2:0:12}\",\"verdict\":\"${verdict}\"}"
+    first=0
+  done
+  results="${results}]"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_idempotence/1",
+  "ts": "$(ts)",
+  "total": $total,
+  "pass": $pass,
+  "fail": $fail,
+  "results": $results,
+  "status": "$([ $fail -eq 0 ] && echo GREEN || echo RED)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (${pass}/${total} idempotent)"
+}
+
+# ────────────────────────────────────────────────────────────
+# Phase 9 — cross-scan invariants
+#   Numbers reported by multiple scanners must agree. A disagreement
+#   means one scanner is stale (or the repo changed between scans).
+#   We compare the three load-bearing counts (domains, techniques,
+#   papers) across scan_roi + scan_citations + scan_domains.
+#   Also checks ROI SSOT vs live n6_roi.json (items with status=done
+#   in SSOT shouldn't reappear as findings).
+# ────────────────────────────────────────────────────────────
+scan_invariants() {
+  local out="reports/n6_invariants.json"
+  local drifts="["
+  local first=1
+  local drift_count=0
+
+  # helper: emit one drift entry
+  _drift() {
+    local metric="$1" a_src="$2" a_val="$3" b_src="$4" b_val="$5"
+    [ $first -eq 0 ] && drifts="${drifts},"
+    drifts="${drifts}{\"metric\":\"${metric}\",\"a\":{\"source\":\"${a_src}\",\"value\":${a_val}},\"b\":{\"source\":\"${b_src}\",\"value\":${b_val}}}"
+    first=0
+    drift_count=$((drift_count+1))
+  }
+
+  # read once
+  local roi_domains  roi_techniques roi_papers
+  local cit_domains  cit_techniques cit_papers
+  local dom_total    dom_techniques
+  roi_domains=$(jq -r '.counters.products_actual // 0'    reports/n6_roi.json 2>/dev/null)
+  roi_techniques=$(jq -r '.counters.techniques_total // 0' reports/n6_roi.json 2>/dev/null)
+  roi_papers=$(jq -r '.counters.papers_total // 0'        reports/n6_roi.json 2>/dev/null)
+
+  cit_domains=$(jq -r '.actual.domains // 0'    reports/n6_external_citation_drift.json 2>/dev/null)
+  cit_techniques=$(jq -r '.actual.techniques // 0' reports/n6_external_citation_drift.json 2>/dev/null)
+  cit_papers=$(jq -r '.actual.papers // 0'      reports/n6_external_citation_drift.json 2>/dev/null)
+
+  dom_total=$(jq -r '.domains_total // 0'      reports/n6_domain_coverage.json 2>/dev/null)
+  dom_techniques=$(jq -r '.techniques_total // 0' reports/n6_domain_coverage.json 2>/dev/null)
+
+  # rule 1: domains count triad (roi · citations · domain_coverage)
+  [ "$roi_domains" != "$cit_domains" ] && _drift "domains" "n6_roi.counters.products_actual" "$roi_domains" "n6_external_citation_drift.actual.domains" "$cit_domains"
+  [ "$roi_domains" != "$dom_total" ]   && _drift "domains" "n6_roi.counters.products_actual" "$roi_domains" "n6_domain_coverage.domains_total" "$dom_total"
+
+  # rule 2: techniques triad
+  [ "$roi_techniques" != "$cit_techniques" ]  && _drift "techniques" "n6_roi.counters.techniques_total" "$roi_techniques" "n6_external_citation_drift.actual.techniques" "$cit_techniques"
+  [ "$roi_techniques" != "$dom_techniques" ]  && _drift "techniques" "n6_roi.counters.techniques_total" "$roi_techniques" "n6_domain_coverage.techniques_total" "$dom_techniques"
+
+  # rule 3: papers pair
+  [ "$roi_papers" != "$cit_papers" ] && _drift "papers" "n6_roi.counters.papers_total" "$roi_papers" "n6_external_citation_drift.actual.papers" "$cit_papers"
+
+  # rule 4: SSOT vs live — items marked status=done in the nexus ROI SSOT
+  # must NOT be re-flagged in today's findings.
+  local ssot="/Users/ghost/core/nexus/config/roi/n6-architecture.json"
+  if [ -f "$ssot" ]; then
+    # Example: orphan_paper done in SSOT ⇒ findings.orphan_paper length should be 0.
+    local orphan_done=$(jq -r '.items[] | select(.id=="n6-roi-004" and .status=="done") | .id' "$ssot" 2>/dev/null)
+    if [ -n "$orphan_done" ]; then
+      local live_orphan=$(jq -r '.findings.orphan_paper | length' reports/n6_roi.json 2>/dev/null)
+      [ "${live_orphan:-0}" -gt 0 ] && _drift "ssot_vs_live.orphan_paper" "nexus/config/roi.n6-roi-004.status" "\"done\"" "n6_roi.findings.orphan_paper.length" "$live_orphan"
+    fi
+    local dead_done=$(jq -r '.items[] | select(.id=="n6-roi-005" and .status=="done") | .id' "$ssot" 2>/dev/null)
+    if [ -n "$dead_done" ]; then
+      local live_dead=$(jq -r '.findings.dead_technique | length' reports/n6_roi.json 2>/dev/null)
+      [ "${live_dead:-0}" -gt 0 ] && _drift "ssot_vs_live.dead_technique" "nexus/config/roi.n6-roi-005.status" "\"done\"" "n6_roi.findings.dead_technique.length" "$live_dead"
+    fi
+  fi
+
+  drifts="${drifts}]"
+
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_invariants/1",
+  "ts": "$(ts)",
+  "checked": {
+    "domains_triad":    ["n6_roi", "n6_external_citation_drift", "n6_domain_coverage"],
+    "techniques_triad": ["n6_roi", "n6_external_citation_drift", "n6_domain_coverage"],
+    "papers_pair":      ["n6_roi", "n6_external_citation_drift"],
+    "ssot_vs_live":     ["n6-roi-004 orphan_paper", "n6-roi-005 dead_technique"]
+  },
+  "drift_count": $drift_count,
+  "drifts": $drifts,
+  "status": "$([ $drift_count -eq 0 ] && echo GREEN || echo AMBER)"
 }
 JEOF
   jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
@@ -975,7 +1294,9 @@ continuous_scan() {
     log_telemetry "$p" "$st_ms" "$rc" "reports/n6_${p}.json"
   done
   gap_proposer >/dev/null 2>&1 || true
+  propose_from_gaps >/dev/null 2>&1 || true
   promote_cross_repo >/dev/null 2>&1 || true
+  scan_invariants >/dev/null 2>&1 || true
   run_proof_obligations >/dev/null 2>&1 || true
   doctor >/dev/null
   # trend must come AFTER doctor (reads doctor's score) and BEFORE history
@@ -1001,7 +1322,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer promote_cross_repo scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -1045,7 +1366,10 @@ case "${1:-}" in
   experiments)     scan_experiments ;;
   falsification)   scan_falsification ;;
   gap)             gap_proposer ;;
+  propose|auto-propose)  propose_from_gaps ;;
   promote|cross-repo-promote|promote_cross_repo)  promote_cross_repo ;;
+  invariants|invariant)  scan_invariants ;;
+  idempotence|idem)  scan_idempotence ;;
   trend|regression)  scan_trend ;;
   proof)           run_proof_obligations ;;
   continuous-scan|continuous_scan|continuous)  continuous_scan ;;
@@ -1059,7 +1383,8 @@ case "${1:-}" in
 usage: bash tool/_n6_lib <sub>
   sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
       | monte_carlo | causal | citations | nexus_dep | loop_rules
-      | experiments | falsification | gap | promote | trend | proof
+      | experiments | falsification | gap | propose | promote | invariants
+      | idempotence | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

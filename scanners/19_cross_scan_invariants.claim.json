@@ -1,0 +1,11 @@
+{
+  "id": "invariants.cross_scan_triads",
+  "type": "cross_consistency",
+  "description": "Phase 9 scan_invariants: domain/technique/paper counts reported by scan_roi, scan_citations, scan_domains must agree; SSOT-done items must not reappear in live findings.",
+  "actual_cmd": "jq -r '.drift_count' reports/n6_invariants.json",
+  "expected": "0",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-9-invariants"
+}

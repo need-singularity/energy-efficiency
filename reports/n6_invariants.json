@@ -1,0 +1,27 @@
+{
+  "schema": "n6-architecture/n6_invariants/1",
+  "ts": "2026-04-23T03:42:04Z",
+  "checked": {
+    "domains_triad": [
+      "n6_roi",
+      "n6_external_citation_drift",
+      "n6_domain_coverage"
+    ],
+    "techniques_triad": [
+      "n6_roi",
+      "n6_external_citation_drift",
+      "n6_domain_coverage"
+    ],
+    "papers_pair": [
+      "n6_roi",
+      "n6_external_citation_drift"
+    ],
+    "ssot_vs_live": [
+      "n6-roi-004 orphan_paper",
+      "n6-roi-005 dead_technique"
+    ]
+  },
+  "drift_count": 0,
+  "drifts": [],
+  "status": "GREEN"
+}

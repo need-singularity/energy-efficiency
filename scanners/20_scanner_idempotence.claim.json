@@ -1,0 +1,11 @@
+{
+  "id": "idempotence.all_scanners_deterministic",
+  "type": "determinism",
+  "description": "Phase 10 scan_idempotence: every time-invariant scanner must return byte-identical output (after ts stripping) on two consecutive runs. The scanner is slow (~90s) and is not part of continuous_scan — it's triggered via `bin/n6_meta idempotence` (daily launchd or manual). If the report exists, fail count must be 0.",
+  "actual_cmd": "bash -c 'if [ -f reports/n6_idempotence.json ]; then jq -r .fail reports/n6_idempotence.json; else echo 0; fi'",
+  "expected": "0",
+  "must_fail": false,
+  "recheck_cadence": "daily",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-10-idempotence"
+}

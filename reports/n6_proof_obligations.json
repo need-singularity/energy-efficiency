@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T03:21:17Z",
-  "total": 17,
-  "green": 17,
+  "ts": "2026-04-23T03:47:25Z",
+  "total": 20,
+  "green": 20,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -124,6 +124,27 @@
       "status": "green",
       "result": "true",
       "expected": "false"
+    },
+    {
+      "file": "18_auto_propose_idempotent.claim.json",
+      "type": "structural",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "19_cross_scan_invariants.claim.json",
+      "type": "cross_consistency",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
+    },
+    {
+      "file": "20_scanner_idempotence.claim.json",
+      "type": "determinism",
+      "status": "green",
+      "result": "0",
+      "expected": "0"
     }
   ]
 }

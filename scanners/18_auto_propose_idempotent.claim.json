@@ -1,0 +1,11 @@
+{
+  "id": "auto_propose.idempotent_and_valid",
+  "type": "structural",
+  "description": "Phase 8 propose_from_gaps must emit a valid n6_auto_proposals.json with triggers_fired and created+skipped arrays.",
+  "actual_cmd": "bash -c '[ -f reports/n6_auto_proposals.json ] && [ \"$(jq -r \".schema\" reports/n6_auto_proposals.json 2>/dev/null)\" = \"n6-architecture/n6_auto_proposals/1\" ] && jq -e \".triggers_fired and (.created|type==\\\"array\\\") and (.skipped|type==\\\"array\\\")\" reports/n6_auto_proposals.json >/dev/null && echo 1 || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-8-auto-propose"
+}
