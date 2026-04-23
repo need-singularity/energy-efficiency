@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.20.0",
+    "version": "0.21.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "61bb8c6f246b996b6acb71fd0259f70008e04b31651b2cc248154f31ce2ba272"
+    "source_hash": "d4895b0df18a704c0fa8ca1ae1d6da059cb7c46c87365ff76854a327d95c524f"
   },
   "phases": [
     {
@@ -107,6 +107,11 @@
       "id": "P20",
       "title": "engine source-hash stamp — tamper evidence / rotation ceremony",
       "state": "live"
+    },
+    {
+      "id": "P21",
+      "title": "audit trail retention — bounded jsonl + dated archive",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -130,9 +135,24 @@
       "trend"
     ],
     "meta": [
-      "gap", "propose", "promote", "invariants", "idempotence",
-      "manifest", "schemas", "integrity", "engine-hash", "audit", "audit-summary",
-      "gate-alignment", "claim-schema", "proof", "doctor", "health", "selftest"
+      "gap",
+      "propose",
+      "promote",
+      "invariants",
+      "idempotence",
+      "manifest",
+      "schemas",
+      "integrity",
+      "engine-hash",
+      "audit",
+      "audit-summary",
+      "audit-retention",
+      "gate-alignment",
+      "claim-schema",
+      "proof",
+      "doctor",
+      "health",
+      "selftest"
     ]
   },
   "schema_prefix": "n6-architecture/",
@@ -165,6 +185,7 @@
     "trend",
     "audit",
     "audit-summary",
+    "audit-retention",
     "engine-hash"
   ],
   "pre_commit_hard_gates": [

@@ -1063,6 +1063,58 @@ JEOF
   echo "OK: $out  (matches=$matches)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 21 — audit trail retention (rotation + claim).
+#   audit jsonl 이 MAX (기본 1000) 을 넘으면 가장 오래된 (count-KEEP) 줄을
+#   reports/history/audit_archive_YYYY-MM-DD.jsonl 로 append 하고 main 에는
+#   최신 KEEP 줄만 남긴다. 방어적으로만 동작 — MAX 이하일 때 no-op.
+#   claim: scanners/31_audit_retention_bounded.claim.json
+# ────────────────────────────────────────────────────────────
+scan_audit_retention() {
+  local out="reports/n6_audit_retention.json"
+  local src="reports/n6_meta_audit.jsonl"
+  local max="${N6_AUDIT_MAX:-1000}"
+  local keep="${N6_AUDIT_KEEP:-500}"
+  local entries=0 archived=0 kept=0
+  local archive_path="(none)"
+  if [ -s "$src" ]; then
+    entries=$(wc -l < "$src" | tr -d ' ')
+    if [ "$entries" -gt "$max" ]; then
+      local today
+      today=$(date -u +%Y-%m-%d)
+      archive_path="reports/history/audit_archive_${today}.jsonl"
+      mkdir -p reports/history
+      local cutoff=$(( entries - keep ))
+      head -n "$cutoff" "$src" >>"$archive_path"
+      tail -n "$keep" "$src" >"${src}.tmp" && mv "${src}.tmp" "$src"
+      archived=$cutoff
+      kept=$keep
+    else
+      kept=$entries
+    fi
+  fi
+  local within_bound
+  [ "$kept" -le "$max" ] && within_bound="true" || within_bound="false"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_audit_retention/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "source": "$src",
+  "max_entries": $max,
+  "keep_after_rotation": $keep,
+  "entries_before": $entries,
+  "entries_archived_this_run": $archived,
+  "entries_in_main_after": $kept,
+  "archive_path": "$archive_path",
+  "within_bound": $within_bound,
+  "status": "$([ "$within_bound" = "true" ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (kept=$kept, archived_this_run=$archived)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -1854,6 +1906,9 @@ continuous_scan() {
   scan_trend >/dev/null 2>&1 || true
   # audit trail: one line per continuous_scan run
   append_audit_trail >/dev/null 2>&1 || true
+  # Phase 21 — retention rotation runs BEFORE summary so the summary's
+  # entries_total reflects the post-rotation file (not pre-rotation).
+  scan_audit_retention >/dev/null 2>&1 || true
   # Phase 13 — audit summary MUST come after append_audit_trail so the
   # just-appended entry is reflected in entries_total and last_entry.
   scan_audit_summary >/dev/null 2>&1 || true
@@ -1877,7 +1932,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_gate_alignment scan_claim_schema scan_audit_summary scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -1929,6 +1984,7 @@ case "${1:-}" in
   schemas|schema-audit)  scan_schemas ;;
   integrity|engine-integrity)  scan_engine_integrity ;;
   engine-hash|hash)  scan_engine_hash ;;
+  audit-retention|retention)  scan_audit_retention ;;
   audit|audit-trail)  append_audit_trail ;;
   audit-summary|asum)  scan_audit_summary ;;
   gate-alignment|gates)  scan_gate_alignment ;;
@@ -1947,7 +2003,7 @@ usage: bash tool/_n6_lib <sub>
   sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
       | monte_carlo | causal | citations | nexus_dep | loop_rules
       | experiments | falsification | gap | propose | promote | invariants
-      | idempotence | manifest | schemas | integrity | engine-hash | audit | audit-summary
+      | idempotence | manifest | schemas | integrity | engine-hash | audit | audit-summary | audit-retention
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

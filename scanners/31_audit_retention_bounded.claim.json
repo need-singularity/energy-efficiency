@@ -1,0 +1,11 @@
+{
+  "id": "audit_retention.bounded",
+  "type": "self_consistency",
+  "description": "Phase 21 scan_audit_retention: reports/n6_meta_audit.jsonl must stay within N6_AUDIT_MAX (default 1000) entries. The scanner rotates excess to reports/history/audit_archive_YYYY-MM-DD.jsonl (keep_after_rotation=500). Claim verifies entries_in_main_after <= max_entries, preventing unbounded growth.",
+  "actual_cmd": "bash -c '[ -f reports/n6_audit_retention.json ] && jq -r \"if .within_bound == true then 1 else 0 end\" reports/n6_audit_retention.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-21-audit-retention"
+}
