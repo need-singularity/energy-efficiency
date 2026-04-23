@@ -1,0 +1,11 @@
+{
+  "id": "manifest.phase_ids_monotonic",
+  "type": "schema",
+  "description": "Phase 29 scan_manifest_phase_monotonic: config/engine_manifest.json phases[] must be P1..Pn contiguous with no gaps and no out-of-order entries. Append-only is the structural invariant of the phase evolution model — a gap (e.g. P1..P26, P28 skipping P27) signals a deleted phase, and an out-of-order entry signals mid-history insertion. Either breaks the assumption that phase N's commit lands after phase N-1's.",
+  "actual_cmd": "bash -c '[ -f reports/n6_manifest_phase_monotonic.json ] && jq -r \"if .gap_count == 0 and .out_of_order_count == 0 then 1 else 0 end\" reports/n6_manifest_phase_monotonic.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-29-manifest-phase-monotonic"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "n6-architecture/n6_manifest_phase_monotonic/1",
+  "ts": "2026-04-23T16:31:09Z",
+  "engine_version": "0.29.0",
+  "total_phases": 29,
+  "last_id": "P29",
+  "gap_count": 0,
+  "gaps": [],
+  "out_of_order_count": 0,
+  "out_of_order": [],
+  "note": "Phase 29 — phases[] must be P1..Pn contiguous. Gap or out-of-order signals the phase history has drifted from actual commit sequence (e.g. a phase was deleted, or an insertion landed between existing ones).",
+  "status": "GREEN"
+}

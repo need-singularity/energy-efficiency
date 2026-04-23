@@ -1483,6 +1483,73 @@ JEOF
   echo "OK: $out  (total=$total flagged=$flag_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 29 — manifest phase id monotonicity.
+#   config/engine_manifest.json 의 phases[].id 는 P1, P2, ..., Pn 으로
+#   gap 없이 단조 증가해야 한다. append-only 라는 진화 모델의 구조적 불변.
+#   gap 이 생기면 "P27 이 빠지고 P28 이 있다" 같은 상태가 생길 수 있는데,
+#   이는 phase history 가 실제 commit 히스토리와 어긋난다는 신호.
+#   Gate: gap_count == 0 AND out_of_order_count == 0.
+#   claim: scanners/39_manifest_phase_monotonic.claim.json
+# ────────────────────────────────────────────────────────────
+scan_manifest_phase_monotonic() {
+  local out="reports/n6_manifest_phase_monotonic.json"
+  local mf="config/engine_manifest.json"
+  local total gaps="" gap_count=0 ooo="" ooo_count=0 prev=0
+  local ids
+  ids=$(jq -r '.phases[].id' "$mf" 2>/dev/null)
+  total=$(echo "$ids" | grep -c . | tr -d ' ')
+  local expected=1
+  while IFS= read -r id; do
+    [ -z "$id" ] && continue
+    local n
+    n=$(echo "$id" | sed -E 's/^P([0-9]+)$/\1/')
+    if ! [[ "$n" =~ ^[0-9]+$ ]]; then
+      ooo="${ooo}${id} "
+      ooo_count=$((ooo_count+1))
+      continue
+    fi
+    if [ "$n" -ne "$expected" ]; then
+      # Either a gap (n > expected) or out-of-order (n < expected or equal-to-prev)
+      if [ "$n" -gt "$expected" ]; then
+        local miss=$expected
+        while [ "$miss" -lt "$n" ]; do
+          gaps="${gaps}P${miss} "
+          gap_count=$((gap_count+1))
+          miss=$((miss+1))
+        done
+      else
+        ooo="${ooo}${id} "
+        ooo_count=$((ooo_count+1))
+      fi
+    fi
+    expected=$((n+1))
+    prev=$n
+  done <<< "$ids"
+  local gaps_json ooo_json
+  gaps_json=$(echo "$gaps" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  gaps_json="${gaps_json:-[]}"
+  ooo_json=$(echo "$ooo" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  ooo_json="${ooo_json:-[]}"
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_manifest_phase_monotonic/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "total_phases": $total,
+  "last_id": "P${prev}",
+  "gap_count": $gap_count,
+  "gaps": $gaps_json,
+  "out_of_order_count": $ooo_count,
+  "out_of_order": $ooo_json,
+  "note": "Phase 29 — phases[] must be P1..Pn contiguous. Gap or out-of-order signals the phase history has drifted from actual commit sequence (e.g. a phase was deleted, or an insertion landed between existing ones).",
+  "status": "$([ $gap_count -eq 0 ] && [ $ooo_count -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (total=$total last=P$prev gaps=$gap_count ooo=$ooo_count)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2294,6 +2361,8 @@ continuous_scan() {
   scan_claim_cmd_purity >/dev/null 2>&1 || true
   # Phase 28 — claim meta hygiene (owner enum + proposal_ref pattern).
   scan_claim_meta_hygiene >/dev/null 2>&1 || true
+  # Phase 29 — manifest phase id monotonicity.
+  scan_manifest_phase_monotonic >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2317,7 +2386,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2379,6 +2448,7 @@ case "${1:-}" in
   emission-completeness|emission)  scan_emission_completeness ;;
   claim-purity|purity)  scan_claim_cmd_purity ;;
   claim-meta|meta-hygiene)  scan_claim_meta_hygiene ;;
+  phase-monotonic|monotonic)  scan_manifest_phase_monotonic ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2398,7 +2468,7 @@ usage: bash tool/_n6_lib <sub>
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
-      | gate-alignment | claim-schema | trend | proof
+      | phase-monotonic | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2
