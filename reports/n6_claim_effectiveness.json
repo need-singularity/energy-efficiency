@@ -1,0 +1,178 @@
+{
+  "schema": "n6-architecture/n6_claim_effectiveness/1",
+  "ts": "2026-04-23T14:04:09Z",
+  "engine_version": "0.23.0",
+  "audit_source": "reports/n6_meta_audit.jsonl",
+  "audit_entries_scanned": 10,
+  "claims_total": 33,
+  "claims_silent_count": 32,
+  "claims": [
+    {
+      "file": "01_arithmetic_n6.claim.json",
+      "id": "arithmetic.n6_identity",
+      "fail_count": 0
+    },
+    {
+      "file": "02_falsification_n28.claim.json",
+      "id": "falsification.n_eq_28",
+      "fail_count": 0
+    },
+    {
+      "file": "03_falsification_n496.claim.json",
+      "id": "falsification.n_eq_496",
+      "fail_count": 0
+    },
+    {
+      "file": "04_falsification_n8128.claim.json",
+      "id": "falsification.n_eq_8128",
+      "fail_count": 0
+    },
+    {
+      "file": "05_atlas_present.claim.json",
+      "id": "atlas.file_present_nonempty",
+      "fail_count": 0
+    },
+    {
+      "file": "06_atlas_signals_present.claim.json",
+      "id": "atlas.signals_present",
+      "fail_count": 0
+    },
+    {
+      "file": "07_techniques_count.claim.json",
+      "id": "techniques.count_gte_225",
+      "fail_count": 0
+    },
+    {
+      "file": "08_domains_count.claim.json",
+      "id": "domains.count_gte_318",
+      "fail_count": 0
+    },
+    {
+      "file": "09_papers_count.claim.json",
+      "id": "papers.count_gte_131",
+      "fail_count": 0
+    },
+    {
+      "file": "10_integrity_hook_executable.claim.json",
+      "id": "hook.integrity_executable",
+      "fail_count": 0
+    },
+    {
+      "file": "11_engine_zero_failures.claim.json",
+      "id": "engine.zero_runtime_failures",
+      "fail_count": 1
+    },
+    {
+      "file": "12_monte_carlo_window.claim.json",
+      "id": "monte_carlo.z_in_window",
+      "fail_count": 0
+    },
+    {
+      "file": "13_loop_rules_all_match.claim.json",
+      "id": "loop_rules.all_match",
+      "fail_count": 0
+    },
+    {
+      "file": "14_cross_repo_blocker_priority.claim.json",
+      "id": "cross_repo_blocker.priority_floor_applied",
+      "fail_count": 0
+    },
+    {
+      "file": "15_lang_gap_forward_convention.claim.json",
+      "id": "convention.lang_gap_forward_hexa_lang",
+      "fail_count": 0
+    },
+    {
+      "file": "16_cross_repo_auto_promote.claim.json",
+      "id": "cross_repo_blocker.auto_promote_report_present",
+      "fail_count": 0
+    },
+    {
+      "file": "17_trend_no_regression.claim.json",
+      "id": "trend.no_regression",
+      "fail_count": 0
+    },
+    {
+      "file": "18_auto_propose_idempotent.claim.json",
+      "id": "auto_propose.idempotent_and_valid",
+      "fail_count": 0
+    },
+    {
+      "file": "19_cross_scan_invariants.claim.json",
+      "id": "invariants.cross_scan_triads",
+      "fail_count": 0
+    },
+    {
+      "file": "20_scanner_idempotence.claim.json",
+      "id": "idempotence.all_scanners_deterministic",
+      "fail_count": 0
+    },
+    {
+      "file": "21_schema_audit_clean.claim.json",
+      "id": "schemas.all_reports_prefixed",
+      "fail_count": 0
+    },
+    {
+      "file": "22_engine_version_stamped.claim.json",
+      "id": "manifest.version_matches_live",
+      "fail_count": 0
+    },
+    {
+      "file": "23_engine_integrity_aligned.claim.json",
+      "id": "integrity.manifest_vs_source_aligned",
+      "fail_count": 0
+    },
+    {
+      "file": "24_audit_summary_continuity.claim.json",
+      "id": "audit_summary.continuity_green",
+      "fail_count": 0
+    },
+    {
+      "file": "25_gate_alignment.claim.json",
+      "id": "gate_alignment.manifest_vs_hook",
+      "fail_count": 0
+    },
+    {
+      "file": "26_audit_trail_integrity.claim.json",
+      "id": "audit_trail.integrity_monotonic",
+      "fail_count": 0
+    },
+    {
+      "file": "27_no_persistent_failures.claim.json",
+      "id": "audit_summary.no_persistent_failures",
+      "fail_count": 0
+    },
+    {
+      "file": "28_claim_schema_complete.claim.json",
+      "id": "claim_schema.all_required_fields_present",
+      "fail_count": 0
+    },
+    {
+      "file": "29_dispatcher_no_orphans.claim.json",
+      "id": "integrity.dispatcher_no_orphans",
+      "fail_count": 0
+    },
+    {
+      "file": "30_engine_source_hash_matches.claim.json",
+      "id": "engine.source_hash_matches_stamp",
+      "fail_count": 0
+    },
+    {
+      "file": "31_audit_retention_bounded.claim.json",
+      "id": "audit_retention.bounded",
+      "fail_count": 0
+    },
+    {
+      "file": "32_reports_no_orphans.claim.json",
+      "id": "reports.no_orphan_files",
+      "fail_count": 0
+    },
+    {
+      "file": "33_claim_effectiveness_observed.claim.json",
+      "id": "claim_effectiveness.observer_present",
+      "fail_count": 0
+    }
+  ],
+  "note": "Observe-only (P23). fail_count=0 means the claim has not flagged any run in the retained audit trail window. Do NOT prune silent claims until the window is long enough to trust silence ⇒ ineffective.",
+  "status": "GREEN"
+}

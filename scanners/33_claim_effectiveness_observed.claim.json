@@ -1,0 +1,11 @@
+{
+  "id": "claim_effectiveness.observer_present",
+  "type": "self_consistency",
+  "description": "Phase 23 scan_claim_effectiveness: reports/n6_claim_effectiveness.json must exist with status=GREEN. Aggregates per-claim fail_count across the audit trail retention window (red_claims[] identity from P16). fail_count=0 flags 'silent' claims — scanners that have never caught a failure in the observed window. Observe-only in P23; a future phase can gate on claims_silent_count once the window is long enough to trust silence ⇒ ineffective.",
+  "actual_cmd": "bash -c '[ -f reports/n6_claim_effectiveness.json ] && jq -r \"if .status == \\\"GREEN\\\" then 1 else 0 end\" reports/n6_claim_effectiveness.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-23-claim-effectiveness"
+}

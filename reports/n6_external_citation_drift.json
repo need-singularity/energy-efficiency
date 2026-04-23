@@ -1,12 +1,19 @@
 {
   "schema": "n6-architecture/n6_external_citation_drift/1",
-  "ts": "2026-04-23T05:38:27Z",
+  "ts": "2026-04-23T14:03:57Z",
   "actual": {
     "products": 354,
     "domains": 354,
     "techniques": 225,
     "papers": 164
   },
-  "drift_entries": [],
-  "drift_count": 0
+  "drift_entries": [
+    {
+      "file": "README.md",
+      "kw": "papers",
+      "claimed": 92,
+      "actual": 164
+    }
+  ],
+  "drift_count": 1
 }

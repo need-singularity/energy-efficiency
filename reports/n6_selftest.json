@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_selftest/1",
-  "ts": "2026-04-23T05:39:20Z",
-  "total": 26,
-  "pass": 26,
+  "ts": "2026-04-23T14:04:16Z",
+  "total": 30,
+  "pass": 30,
   "fail": 0,
   "verdicts": [
     {
@@ -111,6 +111,16 @@
       "rc": 0
     },
     {
+      "scanner": "scan_engine_hash",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_emitter_registry",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
       "scanner": "scan_gate_alignment",
       "verdict": "PASS",
       "rc": 0
@@ -121,7 +131,17 @@
       "rc": 0
     },
     {
+      "scanner": "scan_audit_retention",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
       "scanner": "scan_audit_summary",
+      "verdict": "PASS",
+      "rc": 0
+    },
+    {
+      "scanner": "scan_claim_effectiveness",
       "verdict": "PASS",
       "rc": 0
     },

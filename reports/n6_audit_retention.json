@@ -1,13 +1,13 @@
 {
   "schema": "n6-architecture/n6_audit_retention/1",
-  "ts": "2026-04-23T11:02:24Z",
-  "engine_version": "0.21.0",
+  "ts": "2026-04-23T14:04:08Z",
+  "engine_version": "0.23.0",
   "source": "reports/n6_meta_audit.jsonl",
   "max_entries": 1000,
   "keep_after_rotation": 500,
-  "entries_before": 9,
+  "entries_before": 10,
   "entries_archived_this_run": 0,
-  "entries_in_main_after": 9,
+  "entries_in_main_after": 10,
   "archive_path": "(none)",
   "within_bound": true,
   "status": "GREEN"

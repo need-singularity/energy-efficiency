@@ -1174,6 +1174,59 @@ JEOF
   echo "OK: $out  (orphans=$orphan_count, actual=$actual_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 23 — claim effectiveness (observe-only).
+#   Phase 16 이 append_audit_trail 에 red_claims[] / fail_scanners[] identity
+#   를 기록하기 시작한 덕분에, 이제 "한 번도 울리지 않은 알람" 을 식별할 수 있다.
+#   각 scanners/*.claim.json 에 대해 audit jsonl window 안의 fail_count 를 집계.
+#   fail_count == 0 인 claim 은 silent — 아직 효과가 관측된 적 없다는 뜻.
+#   이 phase 는 지표만 emit 하고 gate 하지 않는다 (retention window 가 신뢰
+#   가능한 수준까지 누적되어야 silence ⇒ ineffective 추론이 가능).
+#   claim: scanners/33_claim_effectiveness_observed.claim.json
+# ────────────────────────────────────────────────────────────
+scan_claim_effectiveness() {
+  local out="reports/n6_claim_effectiveness.json"
+  local src="reports/n6_meta_audit.jsonl"
+  local total_entries=0
+  [ -s "$src" ] && total_entries=$(wc -l < "$src" | tr -d ' ')
+  local claim_fail_map="{}"
+  if [ "$total_entries" -gt 0 ]; then
+    claim_fail_map=$(jq -c -s '[.[].proof.red_claims // [] | .[]] | group_by(.) | map({(.[0]): length}) | add // {}' "$src" 2>/dev/null)
+  fi
+  [ -z "$claim_fail_map" ] && claim_fail_map="{}"
+  local claims_json
+  claims_json=$(
+    for f in scanners/*.claim.json; do
+      [ -f "$f" ] || continue
+      local base cid fc
+      base=$(basename "$f")
+      cid=$(jq -r '.id // ""' "$f")
+      fc=$(echo "$claim_fail_map" | jq -r --arg k "$base" '.[$k] // 0')
+      printf '{"file":"%s","id":"%s","fail_count":%s}\n' "$base" "$cid" "$fc"
+    done | jq -s -c '.'
+  )
+  [ -z "$claims_json" ] && claims_json="[]"
+  local claims_total silent_count
+  claims_total=$(echo "$claims_json" | jq 'length')
+  silent_count=$(echo "$claims_json" | jq '[.[] | select(.fail_count == 0)] | length')
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_claim_effectiveness/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "audit_source": "$src",
+  "audit_entries_scanned": $total_entries,
+  "claims_total": $claims_total,
+  "claims_silent_count": $silent_count,
+  "claims": $claims_json,
+  "note": "Observe-only (P23). fail_count=0 means the claim has not flagged any run in the retained audit trail window. Do NOT prune silent claims until the window is long enough to trust silence ⇒ ineffective.",
+  "status": "GREEN"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (claims=$claims_total silent=$silent_count entries=$total_entries)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -1972,6 +2025,9 @@ continuous_scan() {
   # Phase 13 — audit summary MUST come after append_audit_trail so the
   # just-appended entry is reflected in entries_total and last_entry.
   scan_audit_summary >/dev/null 2>&1 || true
+  # Phase 23 — claim effectiveness (observe-only). Must come after audit
+  # trail is written so this run's red_claims are included in the window.
+  scan_claim_effectiveness >/dev/null 2>&1 || true
   # history archive
   local today=$(date -u +%Y-%m-%d)
   mkdir -p "reports/history/$today"
@@ -1992,7 +2048,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2048,6 +2104,7 @@ case "${1:-}" in
   audit-retention|retention)  scan_audit_retention ;;
   audit|audit-trail)  append_audit_trail ;;
   audit-summary|asum)  scan_audit_summary ;;
+  claim-effectiveness|effectiveness)  scan_claim_effectiveness ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2065,7 +2122,7 @@ usage: bash tool/_n6_lib <sub>
       | monte_carlo | causal | citations | nexus_dep | loop_rules
       | experiments | falsification | gap | propose | promote | invariants
       | idempotence | manifest | schemas | integrity | engine-hash | emitter-registry
-      | audit | audit-summary | audit-retention
+      | audit | audit-summary | audit-retention | claim-effectiveness
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

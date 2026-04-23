@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.22.0",
+    "version": "0.23.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "ddf0db145064e8c5c562304676866096fe1dd080d02d7b3f0dba4697c95a5433"
+    "source_hash": "4671dce321b8747b0592d29353e6030dac52ff0447848f508156fc30aab54bc6"
   },
   "phases": [
     {
@@ -117,6 +117,11 @@
       "id": "P22",
       "title": "reports emitter registry — orphan detection",
       "state": "live"
+    },
+    {
+      "id": "P23",
+      "title": "claim effectiveness — silent-scanner telemetry (observe-only)",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -155,6 +160,7 @@
       "audit-retention",
       "gate-alignment",
       "claim-schema",
+      "claim-effectiveness",
       "proof",
       "doctor",
       "health",
@@ -193,7 +199,8 @@
     "audit-summary",
     "audit-retention",
     "engine-hash",
-    "emitter-registry"
+    "emitter-registry",
+    "claim-effectiveness"
   ],
   "pre_commit_hard_gates": [
     "falsification.critical_alarm == false"
