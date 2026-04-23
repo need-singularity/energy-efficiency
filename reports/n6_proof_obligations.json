@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T03:00:22Z",
-  "total": 16,
-  "green": 16,
+  "ts": "2026-04-23T03:18:31Z",
+  "total": 17,
+  "green": 17,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -117,6 +117,13 @@
       "status": "green",
       "result": "1",
       "expected": "1"
+    },
+    {
+      "file": "17_trend_no_regression.claim.json",
+      "type": "regression",
+      "status": "green",
+      "result": "true",
+      "expected": "false"
     }
   ]
 }

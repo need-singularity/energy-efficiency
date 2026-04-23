@@ -736,6 +736,117 @@ JEOF
 }
 
 # ────────────────────────────────────────────────────────────
+# Phase 7 — historical trend + regression alarm
+#   Compare today's key metrics against the most recent prior snapshot in
+#   reports/history/YYYY-MM-DD/. Emit reports/n6_trend.json with deltas,
+#   and set regression=true if any of the guardrails fire:
+#     - health score dropped by more than HEALTH_REGRESS_MAX (default 5)
+#     - proof obligations red count increased
+#     - blocker high count increased
+#     - falsification critical_alarm newly true
+#   regression=true is a soft signal (surfaced in reports + claim); it is
+#   NOT a hard commit block. The pre-commit hook still hard-blocks only on
+#   falsification critical_alarm; trend regression is advisory only.
+# ────────────────────────────────────────────────────────────
+scan_trend() {
+  local out="reports/n6_trend.json"
+  local history_root="reports/history"
+  local regress_max="${HEALTH_REGRESS_MAX:-5}"
+
+  # locate prior snapshot (latest date dir that isn't today)
+  local today=$(date -u +%Y-%m-%d)
+  local prior_dir=""
+  if [ -d "$history_root" ]; then
+    prior_dir=$(find "$history_root" -maxdepth 1 -mindepth 1 -type d \
+      ! -name "$today" 2>/dev/null | sort | tail -1)
+  fi
+
+  # today's metrics (from live reports)
+  local today_score today_proof_red today_high today_alarm
+  today_score=$(jq -r '.score // 0' reports/n6_health.json 2>/dev/null)
+  [ -z "$today_score" ] && today_score=0
+  today_proof_red=$(jq -r '.red // 0' reports/n6_proof_obligations.json 2>/dev/null)
+  today_high=$(jq -r '.summary.high // 0' reports/n6_blockers.json 2>/dev/null)
+  today_alarm=$(jq -r '.critical_alarm // false' reports/n6_falsification.json 2>/dev/null)
+
+  # prior metrics
+  local prior_score=null prior_proof_red=null prior_high=null prior_alarm=null prior_date=null
+  if [ -n "$prior_dir" ] && [ -d "$prior_dir" ]; then
+    prior_date="\"$(basename "$prior_dir")\""
+    if [ -f "$prior_dir/n6_health.json" ]; then
+      prior_score=$(jq -r '.score // empty' "$prior_dir/n6_health.json" 2>/dev/null)
+    fi
+    [ -z "$prior_score" ] && prior_score=null
+    prior_proof_red=$(jq -r '.red // 0' "$prior_dir/n6_proof_obligations.json" 2>/dev/null)
+    [ -z "$prior_proof_red" ] && prior_proof_red=null
+    prior_high=$(jq -r '.summary.high // 0' "$prior_dir/n6_blockers.json" 2>/dev/null)
+    [ -z "$prior_high" ] && prior_high=null
+    prior_alarm=$(jq -r '.critical_alarm // false' "$prior_dir/n6_falsification.json" 2>/dev/null)
+    [ -z "$prior_alarm" ] && prior_alarm=false
+  fi
+
+  # deltas + regression detection (guard against "null" / non-numeric prior)
+  local delta_score=0 delta_proof_red=0 delta_high=0
+  local regression=false
+  local reasons="[]"
+  local r_items=""
+  _is_num() { case "$1" in ''|*[!0-9-]*) return 1;; *) return 0;; esac; }
+  if _is_num "$prior_score" && _is_num "$prior_proof_red" && _is_num "$prior_high"; then
+    delta_score=$(( today_score - prior_score ))
+    delta_proof_red=$(( today_proof_red - prior_proof_red ))
+    delta_high=$(( today_high - prior_high ))
+    if [ "$delta_score" -lt "-${regress_max}" ]; then
+      regression=true
+      r_items="${r_items}\"health drop ${delta_score} > allowed -${regress_max}\","
+    fi
+    if [ "$delta_proof_red" -gt 0 ]; then
+      regression=true
+      r_items="${r_items}\"proof red increased by ${delta_proof_red}\","
+    fi
+    if [ "$delta_high" -gt 0 ]; then
+      regression=true
+      r_items="${r_items}\"blocker high increased by ${delta_high}\","
+    fi
+    if [ "$today_alarm" = "true" ] && [ "$prior_alarm" != "true" ]; then
+      regression=true
+      r_items="${r_items}\"falsification critical_alarm newly true\","
+    fi
+    r_items="${r_items%,}"
+    reasons="[${r_items}]"
+  fi
+
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_trend/1",
+  "ts": "$(ts)",
+  "prior_snapshot": ${prior_date:-null},
+  "today": {
+    "score": $today_score,
+    "proof_red": $today_proof_red,
+    "blocker_high": $today_high,
+    "falsification_alarm": $today_alarm
+  },
+  "prior": {
+    "score": ${prior_score:-null},
+    "proof_red": ${prior_proof_red:-null},
+    "blocker_high": ${prior_high:-null},
+    "falsification_alarm": ${prior_alarm:-false}
+  },
+  "delta": {
+    "score": $delta_score,
+    "proof_red": $delta_proof_red,
+    "blocker_high": $delta_high
+  },
+  "regress_max_allowed_drop": $regress_max,
+  "regression": $regression,
+  "regression_reasons": $reasons
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out"
+}
+
+# ────────────────────────────────────────────────────────────
 # Phase 6.4 — Proof Obligation DSL runner
 # ────────────────────────────────────────────────────────────
 run_proof_obligations() {
@@ -848,7 +959,10 @@ health() {
   fi
   [ $score -lt 0 ] && score=0
   [ $score -gt 100 ] && score=100
-  echo "{\"ts\":\"$(ts)\",\"score\":${score}}"
+  local payload="{\"ts\":\"$(ts)\",\"score\":${score}}"
+  # Also persist so scan_trend (and other consumers) can read it back.
+  echo "$payload" >reports/n6_health.json
+  echo "$payload"
 }
 
 continuous_scan() {
@@ -864,6 +978,9 @@ continuous_scan() {
   promote_cross_repo >/dev/null 2>&1 || true
   run_proof_obligations >/dev/null 2>&1 || true
   doctor >/dev/null
+  # trend must come AFTER doctor (reads doctor's score) and BEFORE history
+  # archive (so today's trend is what gets snapshotted).
+  scan_trend >/dev/null 2>&1 || true
   # history archive
   local today=$(date -u +%Y-%m-%d)
   mkdir -p "reports/history/$today"
@@ -884,7 +1001,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer promote_cross_repo run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer promote_cross_repo scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -929,6 +1046,7 @@ case "${1:-}" in
   falsification)   scan_falsification ;;
   gap)             gap_proposer ;;
   promote|cross-repo-promote|promote_cross_repo)  promote_cross_repo ;;
+  trend|regression)  scan_trend ;;
   proof)           run_proof_obligations ;;
   continuous-scan|continuous_scan|continuous)  continuous_scan ;;
   fast|fast-subset)  fast_subset ;;
@@ -941,7 +1059,7 @@ case "${1:-}" in
 usage: bash tool/_n6_lib <sub>
   sub ∈ blockers | roi | arithmetic | derivation | atlas | domains | papers
       | monte_carlo | causal | citations | nexus_dep | loop_rules
-      | experiments | falsification | gap | promote | proof
+      | experiments | falsification | gap | promote | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

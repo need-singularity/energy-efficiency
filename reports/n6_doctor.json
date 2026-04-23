@@ -1,65 +1,70 @@
 {
   "schema": "n6-architecture/n6_doctor/1",
-  "ts": "2026-04-23T03:00:22Z",
+  "ts": "2026-04-23T03:18:32Z",
   "reports_present": [
     {
       "report": "n6_arithmetic_check",
-      "ts": "2026-04-23T02:59:50Z",
+      "ts": "2026-04-23T03:17:55Z",
       "size": 507
     },
     {
       "report": "n6_atlas_integrity",
-      "ts": "2026-04-23T02:59:50Z",
+      "ts": "2026-04-23T03:17:55Z",
       "size": 529
     },
     {
       "report": "n6_blockers",
-      "ts": "2026-04-23T02:58:42Z",
+      "ts": "2026-04-23T03:17:05Z",
       "size": 823
     },
     {
       "report": "n6_causal_chain",
-      "ts": "2026-04-23T03:00:12Z",
+      "ts": "2026-04-23T03:18:20Z",
       "size": 337
     },
     {
       "report": "n6_cross_repo_promotions",
-      "ts": "2026-04-23T03:00:17Z",
+      "ts": "2026-04-23T03:18:26Z",
       "size": 358
     },
     {
       "report": "n6_derivation_lineage",
-      "ts": "2026-04-23T02:59:50Z",
+      "ts": "2026-04-23T03:17:55Z",
       "size": 286
     },
     {
       "report": "n6_domain_coverage",
-      "ts": "2026-04-23T02:59:50Z",
+      "ts": "2026-04-23T03:17:55Z",
       "size": 468
     },
     {
       "report": "n6_experiment_repro",
-      "ts": "2026-04-23T03:00:17Z",
+      "ts": "2026-04-23T03:18:26Z",
       "size": 221
     },
     {
       "report": "n6_external_citation_drift",
-      "ts": "2026-04-23T03:00:12Z",
+      "ts": "2026-04-23T03:18:20Z",
       "size": 239
     },
     {
       "report": "n6_falsification",
-      "ts": "2026-04-23T03:00:17Z",
+      "ts": "2026-04-23T03:18:26Z",
       "size": 411
     },
     {
       "report": "n6_gap_proposals",
-      "ts": "2026-04-23T03:00:17Z",
+      "ts": "2026-04-23T03:18:26Z",
       "size": 172
     },
     {
+      "report": "n6_health",
+      "ts": "2026-04-23T03:16:46Z",
+      "size": 42
+    },
+    {
       "report": "n6_loop_rules",
-      "ts": "2026-04-23T03:00:21Z",
+      "ts": "2026-04-23T03:18:31Z",
       "size": 529
     },
     {
@@ -69,33 +74,38 @@
     },
     {
       "report": "n6_monte_carlo",
-      "ts": "2026-04-23T03:00:12Z",
+      "ts": "2026-04-23T03:18:20Z",
       "size": 402
     },
     {
       "report": "n6_nexus_dep_drift",
-      "ts": "2026-04-23T03:00:12Z",
+      "ts": "2026-04-23T03:18:20Z",
       "size": 404
     },
     {
       "report": "n6_paper_lineage",
-      "ts": "2026-04-23T03:00:12Z",
+      "ts": "2026-04-23T03:18:20Z",
       "size": 191
     },
     {
       "report": "n6_proof_obligations",
-      "ts": "2026-04-23T03:00:22Z",
-      "size": 2732
+      "ts": "2026-04-23T03:18:31Z",
+      "size": 2899
     },
     {
       "report": "n6_roi",
-      "ts": "2026-04-23T02:59:50Z",
+      "ts": "2026-04-23T03:17:55Z",
       "size": 2146
     },
     {
       "report": "n6_selftest",
       "ts": "2026-04-23T02:19:38Z",
       "size": 1622
+    },
+    {
+      "report": "n6_trend",
+      "ts": "2026-04-23T03:16:46Z",
+      "size": 496
     }
   ]
 }
