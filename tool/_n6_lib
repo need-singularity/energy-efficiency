@@ -1997,6 +1997,76 @@ JEOF
   echo "OK: $out  (total=$total faithful=$faithful unfaithful=$unfaithful_count)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 39 — foundation relation live verification.
+#   config/invariants.json 의 foundation_relations (5개) 각각을 atom
+#   value 로 eval 해서 성립하는지 check:
+#     perfect_number   : sigma == 2·n
+#     sigma_decomp     : sigma == phi·n
+#     J2_decomp        : J2    == tau·n
+#     sopfr_phi_tau    : sopfr == phi + tau - mu
+#     granville_smooth : n     == 2·3 (raw factors)
+#   Gate: all 5 relations evaluate true.
+#   claim: scanners/49_invariants_relations_live.claim.json
+# ────────────────────────────────────────────────────────────
+scan_invariants_relations_live() {
+  local out="reports/n6_invariants_relations_live.json"
+  local mf="config/invariants.json"
+  local total=5 passed=0 failures="" first=1
+  local entries="{}"
+  if [ -f "$mf" ]; then
+    local n sigma phi tau sopfr mu J2
+    n=$(jq -r '.atoms.n.value' "$mf")
+    sigma=$(jq -r '.atoms.sigma.value' "$mf")
+    phi=$(jq -r '.atoms.phi.value' "$mf")
+    tau=$(jq -r '.atoms.tau.value' "$mf")
+    sopfr=$(jq -r '.atoms.sopfr.value' "$mf")
+    mu=$(jq -r '.atoms.mu.value' "$mf")
+    J2=$(jq -r '.atoms.J2.value' "$mf")
+    # 1. perfect_number: sigma == 2·n
+    local r1_exp=$((2 * n))
+    local r1_ok=0
+    [ "$sigma" -eq "$r1_exp" ] && r1_ok=1 && passed=$((passed+1)) || failures="${failures}perfect_number(${sigma}!=${r1_exp}) "
+    # 2. sigma_decomp: sigma == phi·n
+    local r2_exp=$((phi * n))
+    local r2_ok=0
+    [ "$sigma" -eq "$r2_exp" ] && r2_ok=1 && passed=$((passed+1)) || failures="${failures}sigma_decomp(${sigma}!=${r2_exp}) "
+    # 3. J2_decomp: J2 == tau·n
+    local r3_exp=$((tau * n))
+    local r3_ok=0
+    [ "$J2" -eq "$r3_exp" ] && r3_ok=1 && passed=$((passed+1)) || failures="${failures}J2_decomp(${J2}!=${r3_exp}) "
+    # 4. sopfr_phi_tau: sopfr == phi + tau - mu
+    local r4_exp=$((phi + tau - mu))
+    local r4_ok=0
+    [ "$sopfr" -eq "$r4_exp" ] && r4_ok=1 && passed=$((passed+1)) || failures="${failures}sopfr_phi_tau(${sopfr}!=${r4_exp}) "
+    # 5. granville_smooth: n == 2·3
+    local r5_exp=6
+    local r5_ok=0
+    [ "$n" -eq "$r5_exp" ] && r5_ok=1 && passed=$((passed+1)) || failures="${failures}granville_smooth(${n}!=${r5_exp}) "
+    entries="{\"perfect_number\":${r1_ok},\"sigma_decomp\":${r2_ok},\"J2_decomp\":${r3_ok},\"sopfr_phi_tau\":${r4_ok},\"granville_smooth\":${r5_ok}}"
+  fi
+  local failures_json
+  failures_json=$(echo "$failures" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  failures_json="${failures_json:-[]}"
+  local failed=$((total - passed))
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_invariants_relations_live/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "relations_total": $total,
+  "relations_passed": $passed,
+  "relations_failed": $failed,
+  "per_relation": $entries,
+  "failures": $failures_json,
+  "note": "Phase 39 — evaluates each foundation relation against live atom values from invariants.json. Asserts functor F preserves equalities. Gate: all 5 relations pass.",
+  "status": "$([ $failed -eq 0 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (passed=$passed failed=$failed)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2828,6 +2898,8 @@ continuous_scan() {
   scan_invariants_atom_values >/dev/null 2>&1 || true
   # Phase 38 — atom object-level faithfulness (value == engine_value).
   scan_invariants_atom_faithful >/dev/null 2>&1 || true
+  # Phase 39 — foundation relation live verification (5 relations eval).
+  scan_invariants_relations_live >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2851,7 +2923,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_invariants_atom_values scan_invariants_atom_faithful scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_invariants_atom_values scan_invariants_atom_faithful scan_invariants_relations_live scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2923,6 +2995,7 @@ case "${1:-}" in
   inv-manifest|invariants-manifest)  scan_invariants_manifest ;;
   inv-values|atom-values)  scan_invariants_atom_values ;;
   atom-faithful|faithful)  scan_invariants_atom_faithful ;;
+  relations-live|inv-relations)  scan_invariants_relations_live ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2943,7 +3016,7 @@ usage: bash tool/_n6_lib <sub>
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
       | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected | type-enum
-      | inv-manifest | inv-values | atom-faithful | gate-alignment | claim-schema | trend | proof
+      | inv-manifest | inv-values | atom-faithful | relations-live | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2

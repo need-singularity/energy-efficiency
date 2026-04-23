@@ -1,0 +1,11 @@
+{
+  "id": "invariants.foundation_relations_live",
+  "type": "schema",
+  "description": "Phase 39 scan_invariants_relations_live: evaluate all 5 foundation relations in config/invariants.json against live atom values. Verifies functor F preserves equality — the morphism side of faithfulness (P38 was object side). Relations checked: perfect_number (sigma=2n), sigma_decomp (sigma=phi·n), J2_decomp (J2=tau·n), sopfr_phi_tau (sopfr=phi+tau-mu), granville_smooth (n=2·3). Gate: relations_failed == 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_invariants_relations_live.json ] && jq -r \"if .relations_failed == 0 and .relations_passed >= 5 then 1 else 0 end\" reports/n6_invariants_relations_live.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-39-invariants-relations-live"
+}
