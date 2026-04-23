@@ -1,0 +1,11 @@
+{
+  "id": "invariants.atom_values_verified",
+  "type": "schema",
+  "description": "Phase 37 scan_invariants_atom_values: verify that config/invariants.json atom engine_value fields match live engine structural counts. Minimum viable: currently checks sigma only (sigma=12 must equal count of phases with id number <= 12). Future phases expand coverage to other atoms (n ↔ Banach, tau ↔ declaration_spaces, etc.) as they become live-computable. Gate: atoms_verified_count >= 1 AND mismatched_count == 0.",
+  "actual_cmd": "bash -c '[ -f reports/n6_invariants_atom_values.json ] && jq -r \"if .mismatched_count == 0 and .atoms_verified_count >= 1 then 1 else 0 end\" reports/n6_invariants_atom_values.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-37-invariants-atom-values"
+}

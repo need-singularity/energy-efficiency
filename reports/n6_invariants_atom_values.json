@@ -1,0 +1,17 @@
+{
+  "schema": "n6-architecture/n6_invariants_atom_values/1",
+  "ts": "2026-04-23T19:37:41Z",
+  "engine_version": "0.37.0",
+  "atoms_verified_count": 1,
+  "mismatched_count": 0,
+  "checks": [
+    {
+      "atom": "sigma",
+      "declared": 12,
+      "live": 12,
+      "ok": true
+    }
+  ],
+  "coverage_note": "P37 minimum viable — verifies sigma atom only. Future P38/P39/... expand to other atoms (n=6 ↔ Banach, tau=4 ↔ decl_spaces, etc.) as they become computable from engine state.",
+  "status": "GREEN"
+}

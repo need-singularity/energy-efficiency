@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T19:34:56Z",
-  "total": 46,
-  "green": 46,
+  "ts": "2026-04-23T19:38:10Z",
+  "total": 47,
+  "green": 47,
   "red": 0,
   "status": "GREEN",
   "claims": [
@@ -323,6 +323,13 @@
     },
     {
       "file": "46_invariants_manifest_present.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "47_invariants_atom_values.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

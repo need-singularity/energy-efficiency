@@ -1904,6 +1904,52 @@ JEOF
   echo "OK: $out  (exists=$exists atoms=$atom_count deficient=$atom_deficient)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 37 — invariants atom VALUE verification.
+#   P36 은 config/invariants.json 의 schema presence 만 gate. P37 은
+#   live computable 한 atom engine_value 가 실제 structural count 와
+#   일치하는지 verify. 지금 단계에선 sigma=12 (= phases with id<=12 count)
+#   만 check — 최소 viable enforcement. 이후 phase 에서 다른 atom 추가.
+#   Gate: atoms_verified_count >= 1 AND mismatches == 0.
+#   claim: scanners/47_invariants_atom_values.claim.json
+# ────────────────────────────────────────────────────────────
+scan_invariants_atom_values() {
+  local out="reports/n6_invariants_atom_values.json"
+  local mf="config/invariants.json"
+  local em="config/engine_manifest.json"
+  local verified=0 mismatched=0 checks="" first=1
+  if [ -f "$mf" ] && [ -f "$em" ]; then
+    # sigma atom: engine_value should equal count of phases with id.num <= 12
+    local sigma_declared
+    sigma_declared=$(jq -r '.atoms.sigma.engine_value' "$mf" 2>/dev/null)
+    local sigma_live
+    sigma_live=$(jq '[.phases[] | select((.id | sub("P";"") | tonumber) <= 12)] | length' "$em" 2>/dev/null)
+    sigma_declared="${sigma_declared:-0}"
+    sigma_live="${sigma_live:-0}"
+    local sigma_ok="false"
+    [ "$sigma_declared" = "$sigma_live" ] && sigma_ok="true"
+    verified=$((verified+1))
+    [ "$sigma_ok" = "false" ] && mismatched=$((mismatched+1))
+    [ $first -eq 0 ] && checks="${checks},"
+    checks="${checks}{\"atom\":\"sigma\",\"declared\":$sigma_declared,\"live\":$sigma_live,\"ok\":$sigma_ok}"
+    first=0
+  fi
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_invariants_atom_values/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "atoms_verified_count": $verified,
+  "mismatched_count": $mismatched,
+  "checks": [$checks],
+  "coverage_note": "P37 minimum viable — verifies sigma atom only. Future P38/P39/... expand to other atoms (n=6 ↔ Banach, tau=4 ↔ decl_spaces, etc.) as they become computable from engine state.",
+  "status": "$([ $mismatched -eq 0 ] && [ $verified -ge 1 ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (verified=$verified mismatched=$mismatched)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -2731,6 +2777,8 @@ continuous_scan() {
   scan_claim_type_enum >/dev/null 2>&1 || true
   # Phase 36 — invariants manifest schema presence.
   scan_invariants_manifest >/dev/null 2>&1 || true
+  # Phase 37 — invariants atom VALUE verification (sigma atom).
+  scan_invariants_atom_values >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -2754,7 +2802,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_invariants_atom_values scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -2824,6 +2872,7 @@ case "${1:-}" in
   mf-expected|pair-consistency)  scan_must_fail_expected_pair ;;
   type-enum|claim-type)  scan_claim_type_enum ;;
   inv-manifest|invariants-manifest)  scan_invariants_manifest ;;
+  inv-values|atom-values)  scan_invariants_atom_values ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -2844,7 +2893,7 @@ usage: bash tool/_n6_lib <sub>
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
       | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected | type-enum
-      | inv-manifest | gate-alignment | claim-schema | trend | proof
+      | inv-manifest | inv-values | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE
     exit 2
