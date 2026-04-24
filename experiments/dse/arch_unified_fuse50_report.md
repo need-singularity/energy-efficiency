@@ -1,32 +1,32 @@
-# DSE-P4-2 — arch_unified 4-mode fuse 시뮬 (상위 50셀)
+# DSE-P4-2 — arch_unified 4-mode fuse simulation (top 50 cells)
 
-**작성일**: 2026-04-14  
-**엔진**: `engine/arch_unified.hexa` (INDUSTRIAL / QUANTUM / SELFORG / ADAPTIVE)  
-**소스**: `cross_matrix_v3_full.json` — 86,240 셀 중 fit 내림차순 상위 50  
+**Date**: 2026-04-14  
+**Engine**: `engine/arch_unified.hexa` (INDUSTRIAL / QUANTUM / SELFORG / ADAPTIVE)  
+**Source**: `cross_matrix_v3_full.json` — top 50 by fit (descending) out of 86,240 cells  
 **seed**: 42  
-**규칙**: fit 대역별 2 모드 선정 → 가중합 hybrid_score
+**Rule**: pick 2 modes per fit band -> weighted-sum hybrid_score
 
-## 매핑 규칙 (fit → mode pair)
+## Mapping rules (fit -> mode pair)
 
-주 분기는 fit 대역, 서브 분기는 `hash(tech|domain) % 3` 결정적 해시로 mode_b 를 3 갈래 분산 (tie 다양성 확보).
+Primary branching uses the fit band; sub-branching uses the deterministic hash `hash(tech|domain) % 3` to distribute mode_b across 3 lanes (preserving tie diversity).
 
-| fit 대역 | mode_a | mode_b 후보 (sub=0/1/2) | 의도 |
+| fit band | mode_a | mode_b candidates (sub=0/1/2) | Intent |
 |---|---|---|---|
-| > 0.9 | INDUSTRIAL (w=7) | QUANTUM / ADAPTIVE / SELFORG | 확정 주축 + 다양탐색 |
-| 0.8~0.9 | QUANTUM (w=4) | ADAPTIVE / SELFORG / INDUSTRIAL | 불확실 진화 |
-| 0.7~0.8 | SELFORG (w=5) | ADAPTIVE / INDUSTRIAL / QUANTUM | 정적창발 보강 |
-| ≤ 0.7 | SELFORG (w=5) | INDUSTRIAL / QUANTUM / ADAPTIVE | 저확신 보수혼합 |
+| > 0.9 | INDUSTRIAL (w=7) | QUANTUM / ADAPTIVE / SELFORG | Fixed main axis + diverse exploration |
+| 0.8~0.9 | QUANTUM (w=4) | ADAPTIVE / SELFORG / INDUSTRIAL | Uncertainty evolution |
+| 0.7~0.8 | SELFORG (w=5) | ADAPTIVE / INDUSTRIAL / QUANTUM | Static emergence reinforcement |
+| <= 0.7 | SELFORG (w=5) | INDUSTRIAL / QUANTUM / ADAPTIVE | Low-confidence conservative blend |
 
-## 모드 쌍 분포 (상위 50셀)
+## Mode pair distribution (top 50 cells)
 
-| 모드 쌍 | 빈도 | 비율 |
+| Mode pair | Count | Ratio |
 |---|---|---|
 | INDUSTRIAL+QUANTUM | 26 | 52% |
 | INDUSTRIAL+ADAPTIVE | 24 | 48% |
 
-## 상위 10 hybrid_score
+## Top 10 hybrid_score
 
-| 순위 | cell_idx | tech | domain | fit | 모드쌍 | hybrid |
+| Rank | cell_idx | tech | domain | fit | Mode pair | hybrid |
 |---|---|---|---|---|---|---|
 | 29 | 84 | `additive_attention` | compute | 1.0000 | INDUSTRIAL+ADAPTIVE | 869 |
 | 43 | 120 | `additive_attention` | compute | 1.0000 | INDUSTRIAL+ADAPTIVE | 869 |
@@ -39,7 +39,7 @@
 | 48 | 131 | `additive_attention` | compute | 1.0000 | INDUSTRIAL+ADAPTIVE | 855 |
 | 30 | 87 | `additive_attention` | compute | 1.0000 | INDUSTRIAL+ADAPTIVE | 848 |
 
-## 50 셀 전체 표
+## Full table of 50 cells
 
 | # | cell_idx | tech | domain | source | fit | alien | mode_a(wa) | mode_b(wb) | score_a | score_b | hybrid |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -94,15 +94,15 @@
 | 49 | 132 | `additive_attention` | compute | `compress::atlas` | 1.0000 | 12 | INDUSTRIAL(7) | ADAPTIVE(3) | 890 | 750 | 848 |
 | 50 | 133 | `additive_attention` | compute | `compress::papers` | 1.0000 | 12 | INDUSTRIAL(7) | ADAPTIVE(3) | 880 | 750 | 841 |
 
-## hybrid_score 통계
+## hybrid_score statistics
 
 - min: 672
 - max: 869
 - mean: 774.1
 
-## 검증 노트
+## Verification notes
 
-- 계산은 `arch_unified.hexa` 의 `run_pipeline`/`fuse_modes`/`mode_weight` 를 Python으로 1:1 포팅 (정수 연산만).
-- n=6 상수(σ=12, τ=4, φ=2, sopfr=5) 외 임의 값 없음.
-- cross_matrix_v3_full.json 원본 미수정 (read-only).
-- seed=42, sort stable → 재현 가능.
+- The computation ports `run_pipeline`/`fuse_modes`/`mode_weight` from `arch_unified.hexa` 1:1 into Python (integer arithmetic only).
+- No arbitrary values beyond the n=6 constants (sigma=12, tau=4, phi=2, sopfr=5).
+- cross_matrix_v3_full.json source untouched (read-only).
+- seed=42, stable sort -> reproducible.

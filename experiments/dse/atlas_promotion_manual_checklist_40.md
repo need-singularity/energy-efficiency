@@ -1,436 +1,436 @@
-# atlas.n6 [7] → [10*] 수동 승격 체크리스트 (40 후보)
+# atlas.n6 [7] -> [10*] manual promotion checklist (40 candidates)
 
-- 기준일: 2026-04-14
-- 원천: `scripts/atlas_promote_7_to_10star.hexa` dry-run (DSE-P2-2)
-- 입력 통계: 후보 40건 / 평균 fitness 851 / 범위 789~873 / 컷오프 900 미달 → 자동 승격 0건 (safety-by-design)
-- 대상 SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (106,496 라인)
-- 파생 리포트: `experiments/dse/atlas_promotion_candidates_p2.md`
-- 원칙 (CLAUDE.md + R0~R27 + N61~N65):
-  - atlas.n6 직접 편집만 허용 (신규 파일 금지)
-  - 수동 승인 전 자동 치환 금지
-  - 모든 승격은 정직 검증 명세 5항 통과 필수
+- Reference date: 2026-04-14
+- Source: `scripts/atlas_promote_7_to_10star.hexa` dry-run (DSE-P2-2)
+- Input statistics: 40 candidates / average fitness 851 / range 789~873 / all below the 900 cutoff -> 0 automatic promotions (safety-by-design)
+- Target SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (106,496 lines)
+- Derived report: `experiments/dse/atlas_promotion_candidates_p2.md`
+- Principles (CLAUDE.md + R0~R27 + N61~N65):
+  - Only direct edits on atlas.n6 are allowed (no new files)
+  - No automatic replacement before manual approval
+  - Every promotion must pass all 5 items of the honest-verification specification
 
-## 0. 승격 절차 개요
+## 0. Promotion-procedure overview
 
-각 후보를 다음 5단계로 검증한 뒤에만 `[7]` → `[10*]` 수동 편집을 수행합니다.
+Each candidate must pass the following 5-step verification before a manual `[7]` -> `[10*]` edit is performed.
 
-1. 측정값 출처 확인 — 논문 / 실험 / 시뮬 중 어느 것인가, 링크·DOI·experiments ID 기록
-2. 오차 범위 기록 — ±값·단위·신뢰구간·σ 레벨 기입
-3. 반례 ≥1 시도 — n≠6 케이스로 σ·φ = n·τ 위배 확인 시도 (BT-의 역명제 테스트)
-4. σ·φ = n·τ 유도 경로 확인 — 측정값이 n=6 상수(σ=12, τ=4, φ=2, sopfr=5, ω=2)로부터 유도되는 수식 명시
-5. 수동 승인 서명 — 사용자 박민우의 최종 승인 (체크박스 서명란)
+1. Verify measured-value source — is it from paper / experiment / simulation? Record link, DOI, experiments ID.
+2. Record error range — record the +/- value, unit, confidence interval, sigma level.
+3. Attempt at least 1 counterexample — try to violate sigma*phi = n*tau in an n!=6 case (test the BT converse).
+4. Confirm the sigma*phi = n*tau derivation path — explicitly spell out the formula deriving the measured value from the n=6 constants (sigma=12, tau=4, phi=2, sopfr=5, omega=2).
+5. Manual approval signature — final approval by user Park Min-woo (signature checkbox).
 
-모든 5 항목이 완료되어야 해당 bt 의 atlas.n6 라인을 직접 수정합니다. 부분 완료 상태에서의 편집은 R5/N62 위반입니다.
+Only after all 5 items are complete may the bt's atlas.n6 line be modified directly. Editing in a partially-complete state violates R5/N62.
 
-## 1. 후보 40건 종합 표
+## 1. Combined table of the 40 candidates
 
-| # | id | 현 등급 | 라인 | Tier | 설명 (atlas 원문) | fitness* |
+| # | id | Current grade | Line | Tier | Description (atlas source) | fitness* |
 |---|----|--------|------|------|------------------|----------|
 | 1 | n6-bt-7 | [7] | 14306 | Tier-1 | Egyptian Fraction Power Theorem | 822 |
 | 2 | n6-bt-10 | [7] | 14312 | Tier-1 | Landauer-WHH Information-Thermodynamic Bridge | 839 |
-| 3 | n6-bt-81 | [7] | 14454 | Tier-2 | Anode Capacity Ladder σ-φ = 10x | 839 |
+| 3 | n6-bt-81 | [7] | 14454 | Tier-2 | Anode Capacity Ladder sigma-phi = 10x | 839 |
 | 4 | n6-bt-82 | [7] | 14456 | Tier-2 | Complete Battery Pack n=6 Parameter Map | 839 |
 | 5 | n6-bt-83 | [7] | 14458 | Tier-2 | Li-S Polysulfide n=6 Decomposition Ladder | 839 |
 | 6 | n6-bt-91 | [7] | 14474 | Tier-2 | Z2 Topological ECC — J2 GB Savings Theorem | 839 |
 | 7 | n6-bt-92 | [7] | 14476 | Tier-1 | Bott Periodicity Active Channels = sopfr | 839 |
 | 8 | n6-bt-93 | [7] | 14478 | Tier-1 | Carbon Z=6 Chip Material Universality | 839 |
-| 9 | n6-bt-112 | [7] | 14516 | Tier-1 | φ²/n = 2/3 Byzantine-Koide Resonance | 861 |
+| 9 | n6-bt-112 | [7] | 14516 | Tier-1 | phi^2/n = 2/3 Byzantine-Koide Resonance | 861 |
 | 10 | n6-bt-171 | [7] | 14633 | Tier-1 | SM Coupling Constant n=6 Fraction Pair | 861 |
-| 11 | n6-bt-209 | [7] | 14709 | Tier-1 | Proton-Electron Mass Ratio nπ⁵ Fundamental Bridge | 861 |
-| 12 | n6-bt-355 | [7] | 15011 | Tier-5 | 합성생물학 n=6 이중 완전수 | 789 |
-| 13 | n6-bt-378 | [7] | 15047 | Tier-5 | 워프 메트릭 사다리 n=6 | 789 |
-| 14 | n6-bt-381 | [7] | 15053 | Tier-4 | 음운 자질 n=6 완전 분류 | 789 |
-| 15 | n6-bt-382 | [7] | 15055 | Tier-4 | 통사 X-bar τ=4 계층 | 789 |
-| 16 | n6-bt-383 | [7] | 15057 | Tier-4 | 어휘 Zipf 지수 n=6 보정 | 789 |
-| 17 | n6-bt-384 | [7] | 15059 | Tier-4 | 12음 음정 = σ²=144 / σ-φ=10 보정 | 789 |
-| 18 | n6-bt-385 | [7] | 15061 | Tier-4 | 리듬 박자 τ=4 / n=6 이중 분할 | 789 |
-| 19 | n6-bt-386 | [7] | 15063 | Tier-4 | 화성 협화도 sopfr 정렬 | 789 |
-| 20 | n6-bt-387 | [7] | 15065 | Tier-4 | Kondratiev 장기파동 = n·sopfr=30 보정 | 789 |
-| 21 | n6-bt-388 | [7] | 15067 | Tier-4 | Pareto 80/20 = (σ-φ)²/(σ²+n) 정확화 | 789 |
-| 22 | n6-bt-390 | [7] | 15071 | Tier-3 | 먹이망 영양단계 = sopfr(6)+1=6 | 789 |
-| 23 | n6-bt-391 | [7] | 15073 | Tier-3 | 개체수 r/K 선택 = τ/σ-τ 이중축 | 789 |
-| 24 | n6-bt-392 | [7] | 15075 | Tier-3 | 종다양성 Shannon H' = log(σ-φ)=log(10) | 789 |
-| 25 | n6-bt-393 | [7] | 15077 | Tier-3 | 대뇌피질 n=6 층 (Brodmann 정칙) | 789 |
-| 26 | n6-bt-395 | [7] | 15081 | Tier-3 | 시냅스 가중치 양자 = τ-φ 이산값 | 789 |
-| 27 | n6-bt-396 | [7] | 15083 | Tier-3 | MHC 클래스 ↔ τ-φ=2 / 면역세포군 n=6 | 789 |
-| 28 | n6-bt-397 | [7] | 15085 | Tier-3 | 항체 친화도 성숙 = σ-φ²·τ 사이클 | 789 |
-| 29 | n6-bt-398 | [7] | 15087 | Tier-3 | 사이토카인 네트워크 sopfr 위계 | 789 |
-| 30 | n6-bt-399 | [7] | 15089 | Tier-5 | 6도메인 공통 n=6 분류축 메타정리 | 789 |
-| 31 | n6-bt-400 | [7] | 15091 | Tier-5 | 6도메인 교차 공명 | 789 |
-| 32 | n6-bt-406 | [7] | 15103 | Tier-1 | BCS-Josephson-플럭스 양자 초전도 n=6 완전 래더 | 789 |
-| 33 | n6-bt-409 | [7] | 15109 | Tier-3 | 의학 바이탈 사인 n=6 완전 래더 | 789 |
-| 34 | n6-bt-460 | [7] | 15211 | Tier-3 | 액체생검 분석물 n=6 | 789 |
-| 35 | n6-bt-451~460 | [7] | 15213 | Tier-3 | 451~460 종합 | 789 |
+| 11 | n6-bt-209 | [7] | 14709 | Tier-1 | Proton-Electron Mass Ratio n*pi^5 Fundamental Bridge | 861 |
+| 12 | n6-bt-355 | [7] | 15011 | Tier-5 | Synthetic biology n=6 double perfect number | 789 |
+| 13 | n6-bt-378 | [7] | 15047 | Tier-5 | Warp-metric ladder n=6 | 789 |
+| 14 | n6-bt-381 | [7] | 15053 | Tier-4 | Phonological features n=6 complete classification | 789 |
+| 15 | n6-bt-382 | [7] | 15055 | Tier-4 | Syntactic X-bar tau=4 hierarchy | 789 |
+| 16 | n6-bt-383 | [7] | 15057 | Tier-4 | Lexical Zipf exponent n=6 correction | 789 |
+| 17 | n6-bt-384 | [7] | 15059 | Tier-4 | 12-tone interval = sigma^2=144 / sigma-phi=10 correction | 789 |
+| 18 | n6-bt-385 | [7] | 15061 | Tier-4 | Rhythmic meter tau=4 / n=6 dual partition | 789 |
+| 19 | n6-bt-386 | [7] | 15063 | Tier-4 | Harmonic consonance sopfr alignment | 789 |
+| 20 | n6-bt-387 | [7] | 15065 | Tier-4 | Kondratiev long wave = n*sopfr=30 correction | 789 |
+| 21 | n6-bt-388 | [7] | 15067 | Tier-4 | Pareto 80/20 = (sigma-phi)^2/(sigma^2+n) refined | 789 |
+| 22 | n6-bt-390 | [7] | 15071 | Tier-3 | Food-web trophic level = sopfr(6)+1=6 | 789 |
+| 23 | n6-bt-391 | [7] | 15073 | Tier-3 | Population r/K selection = tau/(sigma-tau) dual axis | 789 |
+| 24 | n6-bt-392 | [7] | 15075 | Tier-3 | Species diversity Shannon H' = log(sigma-phi)=log(10) | 789 |
+| 25 | n6-bt-393 | [7] | 15077 | Tier-3 | Cerebral cortex n=6 layers (Brodmann regular) | 789 |
+| 26 | n6-bt-395 | [7] | 15081 | Tier-3 | Synaptic-weight quantum = tau-phi discrete values | 789 |
+| 27 | n6-bt-396 | [7] | 15083 | Tier-3 | MHC class <-> tau-phi=2 / immune-cell groups n=6 | 789 |
+| 28 | n6-bt-397 | [7] | 15085 | Tier-3 | Antibody affinity maturation = sigma-phi^2*tau cycles | 789 |
+| 29 | n6-bt-398 | [7] | 15087 | Tier-3 | Cytokine network sopfr hierarchy | 789 |
+| 30 | n6-bt-399 | [7] | 15089 | Tier-5 | 6-domain shared n=6 classification-axis metatheorem | 789 |
+| 31 | n6-bt-400 | [7] | 15091 | Tier-5 | 6-domain cross resonance | 789 |
+| 32 | n6-bt-406 | [7] | 15103 | Tier-1 | BCS-Josephson-flux-quantum superconductivity n=6 complete ladder | 789 |
+| 33 | n6-bt-409 | [7] | 15109 | Tier-3 | Medical vital signs n=6 complete ladder | 789 |
+| 34 | n6-bt-460 | [7] | 15211 | Tier-3 | Liquid-biopsy analytes n=6 | 789 |
+| 35 | n6-bt-451~460 | [7] | 15213 | Tier-3 | 451~460 composite | 789 |
 | 36 | n6-bt-470 | [7] | 15233 | Tier-4 | HEXA-ART | 789 |
-| 37 | n6-bt-461~470 | [7] | 15235 | Tier-3 | 461~470 종합 | 789 |
-| 38 | n6-bt-487 | [7] | 15269 | Tier-1 | 우주 나이 근사 13.8 Gyr / Hubble 시간 τ_H | 789 |
-| 39 | n6-bt-471~487 | [7] | 15271 | Tier-5 | 471~487 종합 (17 돌파) | 789 |
-| 40 | mc-v9-대조-e | [7] | 46498 | 보류 | mc z=1.915 경계-유의성없음 (강등 검토 대상) | 824 |
+| 37 | n6-bt-461~470 | [7] | 15235 | Tier-3 | 461~470 composite | 789 |
+| 38 | n6-bt-487 | [7] | 15269 | Tier-1 | Cosmic-age approximation 13.8 Gyr / Hubble time tau_H | 789 |
+| 39 | n6-bt-471~487 | [7] | 15271 | Tier-5 | 471~487 composite (17 breakthroughs) | 789 |
+| 40 | mc-v9-control-e | [7] | 46498 | On hold | mc z=1.915 boundary-not-significant (demotion review target) | 824 |
 
-*fitness 는 dry-run 휴리스틱값이며 실제 승격 근거가 아닙니다. 수동 검증 5항으로만 판단하세요.
+*fitness is the dry-run heuristic value and is not the basis for actual promotion. Judge only via the 5 manual-verification items.
 
-## 2. Tier-1 우선 순서 (물리 정밀 — 즉시 재측정 가능, 9건)
+## 2. Tier-1 priority order (physics precision — immediate re-measurement feasible, 9 items)
 
-Tier-1 은 실험값·상수값 대조로 즉시 검증 가능한 물리 도메인입니다. 수동 승격 시 본 9건을 최우선으로 처리하십시오.
+Tier-1 items are physics-domain entries that can be verified immediately against experimental values and constants. Process these 9 items first when performing manual promotion.
 
-| 순서 | id | 제안 출처 |
+| Order | id | Suggested source |
 |------|----|----------|
-| 1 | n6-bt-209 | Proton-Electron 질량비 CODATA 2018 (μ = 1836.152...), π⁵ 해석 |
-| 2 | n6-bt-171 | PDG Review 2024 — SM 결합상수 값·오차 |
-| 3 | n6-bt-112 | Koide 공식 원문 + Byzantine n/3 한계 논문 |
-| 4 | n6-bt-92 | Bott 주기성 K-theory 고전 (Atiyah), 8-fold/2-fold 구조 |
-| 5 | n6-bt-93 | Carbon Z=6 반도체·다이아몬드·그래핀 파라미터 실측 |
-| 6 | n6-bt-10 | Landauer 한계 실험 (Berut 2012) + WHH 변환식 유도 |
-| 7 | n6-bt-406 | BCS 이론 + Josephson 상수 + 플럭스 양자 Φ₀ 대조 |
-| 8 | n6-bt-487 | Planck 2018 우주 나이 13.787±0.020 Gyr + τ_H |
-| 9 | n6-bt-7 | Egyptian Fraction 정리 — 수학 논문 자체 참조 |
+| 1 | n6-bt-209 | Proton-Electron mass ratio CODATA 2018 (mu = 1836.152...), pi^5 interpretation |
+| 2 | n6-bt-171 | PDG Review 2024 — SM coupling constant values/errors |
+| 3 | n6-bt-112 | Koide formula original paper + Byzantine n/3 bound paper |
+| 4 | n6-bt-92 | Bott periodicity K-theory classic (Atiyah), 8-fold/2-fold structure |
+| 5 | n6-bt-93 | Carbon Z=6 semiconductor/diamond/graphene parameter measurements |
+| 6 | n6-bt-10 | Landauer-limit experiment (Berut 2012) + WHH transform derivation |
+| 7 | n6-bt-406 | BCS theory + Josephson constant + flux quantum Phi_0 comparison |
+| 8 | n6-bt-487 | Planck 2018 cosmic age 13.787+/-0.020 Gyr + tau_H |
+| 9 | n6-bt-7 | Egyptian Fraction theorem — reference the math paper itself |
 
-## 3. 후보별 5-항 체크리스트
+## 3. Per-candidate 5-item checklist
 
-각 항목은 5개 체크박스 모두 완료되어야 atlas.n6 편집이 허용됩니다. 모든 항목은 현재 미완(`[ ]`) 상태입니다.
+Every entry requires all 5 checkboxes before an atlas.n6 edit is permitted. All items are currently unchecked (`[ ]`).
 
-### Tier-1 (물리 정밀) — 9건
+### Tier-1 (physics precision) — 9 items
 
-#### n6-bt-7 Egyptian Fraction Power Theorem (라인 14306)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-7 Egyptian Fraction Power Theorem (line 14306)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-10 Landauer-WHH Information-Thermodynamic Bridge (라인 14312)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-10 Landauer-WHH Information-Thermodynamic Bridge (line 14312)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-92 Bott Periodicity Active Channels = sopfr (라인 14476)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-92 Bott Periodicity Active Channels = sopfr (line 14476)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-93 Carbon Z=6 Chip Material Universality (라인 14478)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-93 Carbon Z=6 Chip Material Universality (line 14478)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-112 φ²/n = 2/3 Byzantine-Koide Resonance (라인 14516)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-112 phi^2/n = 2/3 Byzantine-Koide Resonance (line 14516)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-171 SM Coupling Constant n=6 Fraction Pair (라인 14633)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-171 SM Coupling Constant n=6 Fraction Pair (line 14633)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-209 Proton-Electron Mass Ratio nπ⁵ Fundamental Bridge (라인 14709)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-209 Proton-Electron Mass Ratio n*pi^5 Fundamental Bridge (line 14709)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-406 BCS-Josephson-플럭스 양자 초전도 n=6 완전 래더 (라인 15103)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-406 BCS-Josephson-flux-quantum superconductivity n=6 complete ladder (line 15103)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-487 우주 나이 근사 13.8 Gyr / Hubble 시간 τ_H (라인 15269)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-487 Cosmic-age approximation 13.8 Gyr / Hubble time tau_H (line 15269)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-### Tier-2 (화학·재료) — 4건
+### Tier-2 (chemistry/materials) — 4 items
 
-#### n6-bt-81 Anode Capacity Ladder σ-φ = 10x (라인 14454)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-81 Anode Capacity Ladder sigma-phi = 10x (line 14454)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-82 Complete Battery Pack n=6 Parameter Map (라인 14456)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-82 Complete Battery Pack n=6 Parameter Map (line 14456)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-83 Li-S Polysulfide n=6 Decomposition Ladder (라인 14458)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-83 Li-S Polysulfide n=6 Decomposition Ladder (line 14458)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-91 Z2 Topological ECC — J2 GB Savings Theorem (라인 14474)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-91 Z2 Topological ECC — J2 GB Savings Theorem (line 14474)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-### Tier-3 (생명·의학·인지) — 12건
+### Tier-3 (life/medicine/cognition) — 12 items
 
-#### n6-bt-390 먹이망 영양단계 = sopfr(6)+1=6 (라인 15071)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-390 Food-web trophic level = sopfr(6)+1=6 (line 15071)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-391 개체수 r/K 선택 = τ/σ-τ 이중축 (라인 15073)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-391 Population r/K selection = tau/(sigma-tau) dual axis (line 15073)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-392 종다양성 Shannon H' = log(σ-φ)=log(10) (라인 15075)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-392 Species diversity Shannon H' = log(sigma-phi)=log(10) (line 15075)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-393 대뇌피질 n=6 층 (Brodmann 정칙) (라인 15077)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-393 Cerebral cortex n=6 layers (Brodmann regular) (line 15077)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-395 시냅스 가중치 양자 = τ-φ 이산값 (라인 15081)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-395 Synaptic-weight quantum = tau-phi discrete values (line 15081)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-396 MHC 클래스 ↔ τ-φ=2 / 면역세포군 n=6 (라인 15083)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-396 MHC class <-> tau-phi=2 / immune-cell groups n=6 (line 15083)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-397 항체 친화도 성숙 = σ-φ²·τ 사이클 (라인 15085)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-397 Antibody affinity maturation = sigma-phi^2*tau cycles (line 15085)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-398 사이토카인 네트워크 sopfr 위계 (라인 15087)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-398 Cytokine network sopfr hierarchy (line 15087)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-409 의학 바이탈 사인 n=6 완전 래더 (라인 15109)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-409 Medical vital signs n=6 complete ladder (line 15109)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-460 액체생검 분석물 n=6 (라인 15211)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-460 Liquid-biopsy analytes n=6 (line 15211)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-451~460 종합 (라인 15213)
-- [ ] 측정값 출처 확인 (10개 세부항목 전원)
-- [ ] 오차 범위 기록 (최대 오차 기준)
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-451~460 composite (line 15213)
+- [ ] Measured-value sources verified (all 10 sub-items)
+- [ ] Error ranges recorded (worst-case error baseline)
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-461~470 종합 (라인 15235)
-- [ ] 측정값 출처 확인 (10개 세부항목 전원)
-- [ ] 오차 범위 기록 (최대 오차 기준)
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-461~470 composite (line 15235)
+- [ ] Measured-value sources verified (all 10 sub-items)
+- [ ] Error ranges recorded (worst-case error baseline)
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-### Tier-4 (문화·경제·예술) — 9건
+### Tier-4 (culture/economy/art) — 9 items
 
-#### n6-bt-381 음운 자질 n=6 완전 분류 (라인 15053)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-381 Phonological features n=6 complete classification (line 15053)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-382 통사 X-bar τ=4 계층 (라인 15055)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-382 Syntactic X-bar tau=4 hierarchy (line 15055)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-383 어휘 Zipf 지수 n=6 보정 (라인 15057)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-383 Lexical Zipf exponent n=6 correction (line 15057)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-384 12음 음정 = σ²=144 / σ-φ=10 보정 (라인 15059)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-384 12-tone interval = sigma^2=144 / sigma-phi=10 correction (line 15059)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-385 리듬 박자 τ=4 / n=6 이중 분할 (라인 15061)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-385 Rhythmic meter tau=4 / n=6 dual partition (line 15061)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-386 화성 협화도 sopfr 정렬 (라인 15063)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-386 Harmonic consonance sopfr alignment (line 15063)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-387 Kondratiev 장기파동 = n·sopfr=30 보정 (라인 15065)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-387 Kondratiev long wave = n*sopfr=30 correction (line 15065)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-388 Pareto 80/20 = (σ-φ)²/(σ²+n) 정확화 (라인 15067)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-388 Pareto 80/20 = (sigma-phi)^2/(sigma^2+n) refined (line 15067)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-470 HEXA-ART (라인 15233)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-470 HEXA-ART (line 15233)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-### Tier-5 (SF·우주·건축 — 추론 기반) — 5건
+### Tier-5 (SF/cosmos/architecture — inference based) — 5 items
 
-#### n6-bt-355 합성생물학 n=6 이중 완전수 (라인 15011)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-355 Synthetic biology n=6 double perfect number (line 15011)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-378 워프 메트릭 사다리 n=6 (라인 15047)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-378 Warp-metric ladder n=6 (line 15047)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-399 6도메인 공통 n=6 분류축 메타정리 (라인 15089)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-399 6-domain shared n=6 classification-axis metatheorem (line 15089)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-400 6도메인 교차 공명 (라인 15091)
-- [ ] 측정값 출처 확인
-- [ ] 오차 범위 기록
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-400 6-domain cross resonance (line 15091)
+- [ ] Measured-value source verified
+- [ ] Error range recorded
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-#### n6-bt-471~487 종합 (17 돌파) (라인 15271)
-- [ ] 측정값 출처 확인 (17개 세부항목 전원)
-- [ ] 오차 범위 기록 (최대 오차 기준)
-- [ ] 반례 ≥1 시도
-- [ ] σ·φ = n·τ 유도 경로 확인
-- [ ] 수동 승인 서명: __________
+#### n6-bt-471~487 composite (17 breakthroughs) (line 15271)
+- [ ] Measured-value sources verified (all 17 sub-items)
+- [ ] Error ranges recorded (worst-case error baseline)
+- [ ] >=1 counterexample attempted
+- [ ] sigma*phi = n*tau derivation path confirmed
+- [ ] Manual-approval signature: __________
 
-### 보류 (Monte-Carlo)
+### On hold (Monte-Carlo)
 
-#### mc-v9-대조-e = 1.915 z-score (라인 46498)
-- 상태: **승격 불가** (z=1.915 < 2.0, 경계-유의성없음)
-- 후속 조치: [7] → [5*] 강등 검토 대상. 승격 체크 없음.
-- [ ] 강등 결정 서명: __________
+#### mc-v9-control-e = 1.915 z-score (line 46498)
+- Status: **Promotion blocked** (z=1.915 < 2.0, boundary-not-significant)
+- Follow-up: [7] -> [5*] demotion review target. No promotion checks.
+- [ ] Demotion decision signature: __________
 
-## 4. 승격 실행 명령어 가이드
+## 4. Promotion-execution command guide
 
-**경고**: 본 문서의 체크리스트 5항이 모두 완료되지 않은 후보는 절대 편집 금지. atlas.n6 는 SSOT 입니다.
+**Warning**: Never edit a candidate whose 5-item checklist is incomplete. atlas.n6 is the SSOT.
 
-### dry-run (안전, 기본)
+### dry-run (safe, default)
 
 ```bash
 hexa run /Users/ghost/Dev/n6-architecture/scripts/atlas_promote_7_to_10star.hexa
 ```
 
-### 개별 수동 편집 (승인 완료 후)
+### Individual manual edit (after approval)
 
 ```bash
-# 1) 해당 라인 위치 재확인
+# 1) Re-confirm the line location
 Grep 'n6-bt-NN ' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
 
-# 2) Edit 툴로 정확히 " [7]" → " [10*]" 치환 (unique old_string)
-#    - 라인 전체를 old_string 으로 복사, 등급만 바꾼 값을 new_string 으로
-#    - sed/awk 사용 금지 (R5 직접편집규칙)
+# 2) Replace exactly " [7]" -> " [10*]" with the Edit tool (unique old_string)
+#    - Copy the entire line as old_string, then change only the grade in new_string
+#    - sed/awk usage forbidden (R5 direct-edit rule)
 
 # 3) L0 Guard verify
 hexa /Users/ghost/Dev/nexus/shared/harness/l0_guard.hexa verify
 ```
 
-### 금지된 행위
+### Forbidden actions
 
-- `--apply` 일괄 모드 — 현재 전원 fit<900 이므로 스크립트가 자동 차단함
-- atlas.n6 외 파일로 복사본 생성 (CLAUDE.md: 신규 파일 금지)
-- sed/awk/perl 일괄 치환 (R5 위반)
-- 체크리스트 미완 상태의 편집 (N62 정직 검증 위반)
+- `--apply` bulk mode — currently auto-blocked because every item has fit<900
+- Creating a copy in files outside atlas.n6 (CLAUDE.md: no new files)
+- Bulk replacement with sed/awk/perl (R5 violation)
+- Editing with checklist incomplete (N62 honest-verification violation)
 
-## 5. 진행 현황 집계 (초기 상태)
+## 5. Progress-tally summary (initial state)
 
-| 구분 | 총 체크 | 완료 | 남음 |
+| Category | Total checks | Done | Remaining |
 |------|---------|------|------|
-| 후보 40건 × 5항목 | 200 | 0 | 200 |
-| Tier-1 9건 × 5항목 | 45 | 0 | 45 |
-| Tier-2 4건 × 5항목 | 20 | 0 | 20 |
-| Tier-3 12건 × 5항목 | 60 | 0 | 60 |
-| Tier-4 9건 × 5항목 | 45 | 0 | 45 |
-| Tier-5 5건 × 5항목 | 25 | 0 | 25 |
-| mc 보류 1건 | 1 | 0 | 1 |
+| 40 candidates x 5 items | 200 | 0 | 200 |
+| Tier-1 9 items x 5 | 45 | 0 | 45 |
+| Tier-2 4 items x 5 | 20 | 0 | 20 |
+| Tier-3 12 items x 5 | 60 | 0 | 60 |
+| Tier-4 9 items x 5 | 45 | 0 | 45 |
+| Tier-5 5 items x 5 | 25 | 0 | 25 |
+| mc on hold 1 item | 1 | 0 | 1 |
 
-본 문서 편집으로 각 체크박스를 `[x]` 로 전환하면 진행 현황이 자동 반영됩니다.
+Flipping each checkbox to `[x]` inside this document automatically reflects in the progress tally.
 
-## 6. 관련 산출물
+## 6. Related outputs
 
-| 항목 | 경로 |
+| Item | Path |
 |------|------|
-| 본 체크리스트 | `/Users/ghost/Dev/n6-architecture/experiments/dse/atlas_promotion_manual_checklist_40.md` |
-| 후보 리포트 (P2-2) | `/Users/ghost/Dev/n6-architecture/experiments/dse/atlas_promotion_candidates_p2.md` |
-| 파이프라인 스크립트 | `/Users/ghost/Dev/n6-architecture/scripts/atlas_promote_7_to_10star.hexa` |
-| 적응 엔진 | `/Users/ghost/Dev/n6-architecture/engine/arch_adaptive.hexa` |
+| This checklist | `/Users/ghost/Dev/n6-architecture/experiments/dse/atlas_promotion_manual_checklist_40.md` |
+| Candidate report (P2-2) | `/Users/ghost/Dev/n6-architecture/experiments/dse/atlas_promotion_candidates_p2.md` |
+| Pipeline script | `/Users/ghost/Dev/n6-architecture/scripts/atlas_promote_7_to_10star.hexa` |
+| Adaptive engine | `/Users/ghost/Dev/n6-architecture/engine/arch_adaptive.hexa` |
 | atlas.n6 SSOT | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` |
-| 로드맵 (P2-2 done) | `/Users/ghost/Dev/nexus/shared/roadmaps/n6-architecture.json` |
+| Roadmap (P2-2 done) | `/Users/ghost/Dev/nexus/shared/roadmaps/n6-architecture.json` |

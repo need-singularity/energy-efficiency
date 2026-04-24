@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 1025,
+    "count": 1015,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -79,6 +79,12 @@
         "removed": 5,
         "scope": "experiments batch 2-4 (dse back)",
         "batch": "phase-2-4"
+      },
+      {
+        "date": "2026-04-24",
+        "removed": 5,
+        "scope": "experiments batch 2-3 (dse front)",
+        "batch": "phase-2-3"
       }
     ]
   },
@@ -500,11 +506,6 @@
     "domains/space/space-engineering/space-engineering.md",
     "domains/space/space-medicine/space-medicine.md",
     "domains/space/space-systems/space-systems.md",
-    "experiments/dse/arch_unified_fuse50_report.md",
-    "experiments/dse/atlas_promotion_candidates_p2.md",
-    "experiments/dse/atlas_promotion_manual_checklist_40.md",
-    "experiments/dse/cross_dse_fusion_v2_design.md",
-    "experiments/dse/cross_matrix_112x10_summary.md",
     "papers/M10star-21-unified-theorem-2026-04-15.md",
     "papers/bernoulli-18-arxiv-stub-2026-04-15.md",
     "papers/consciousness-measurement-protocol-2026-04-15.md",

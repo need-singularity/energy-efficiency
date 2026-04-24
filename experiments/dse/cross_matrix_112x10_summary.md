@@ -1,22 +1,22 @@
-# DSE-P1-3 Cross-DSE Matrix 112 x 10 요약
+# DSE-P1-3 Cross-DSE Matrix 112 x 10 summary
 
-- 생성일: 2026-04-14
-- 기법: 112 (7 섹션 비례)
-- 도메인 카테: 10 (cognitive, compute, culture, energy, infra, life, materials, physics, sf-ufo, space)
-- 총 셀: 1,120
-- 재현 seed: 42 (해시 기반 결정적)
-- 휴리스틱 공식 (재현용):
+- Created: 2026-04-14
+- Techniques: 112 (proportional across 7 sections)
+- Domain categories: 10 (cognitive, compute, culture, energy, infra, life, materials, physics, sf-ufo, space)
+- Total cells: 1,120
+- Reproduction seed: 42 (hash-based deterministic)
+- Heuristic formulas (for reproduction):
   - `fit = clamp(base_affinity[sec][dom] + bonus_10star[dom] + hash_variation, 0, 1)`
-  - `bonus_10star = min(0.08, atlas.n6 [10*] / total * 0.15)` (도메인별)
+  - `bonus_10star = min(0.08, atlas.n6 [10*] / total * 0.15)` (per domain)
   - `hash_variation = (abs(hash("{sec}:{tech}:{dom}")) % 80 / 1000) - 0.04`  (-0.04~+0.04)
-  - `alien_idx = round(fit * 12)` (0~12, n6 sigma 상한)
-  - `lens_candidates`: NEXUS/shared/lenses/ 도메인 키워드 버킷 → tech:dom 해시 seed 로 3개 결정적 샘플
-- 기법 선택: 레지스트리 `_registry.json` 7 섹션 알파벳 정렬 후 quota 상위 N 결정적 컷
-- 소스: `techniques/_registry.json` + `$NEXUS/shared/n6/atlas.n6` + `$NEXUS/shared/lenses/*.hexa`
+  - `alien_idx = round(fit * 12)` (0~12, n6 sigma upper bound)
+  - `lens_candidates`: NEXUS/shared/lenses/ domain-keyword buckets -> deterministic sample of 3, seeded by the tech:dom hash
+- Technique selection: registry `_registry.json` — 7 sections alphabetically sorted, then deterministic top-N cut per quota
+- Source: `techniques/_registry.json` + `$NEXUS/shared/n6/atlas.n6` + `$NEXUS/shared/lenses/*.hexa`
 
-## 섹션별 quota
+## Per-section quota
 
-| 섹션 | 선택 | 원본 |
+| Section | Selected | Source |
 |---|---:|---:|
 | attention | 14 | 27 |
 | moe | 6 | 13 |
@@ -25,11 +25,11 @@
 | graph | 4 | 7 |
 | compress | 9 | 18 |
 | arch | 37 | 74 |
-| **합계** | **112** | **224** |
+| **Total** | **112** | **224** |
 
-## 섹션 평균 fit
+## Average fit per section
 
-| 섹션 | avg fit |
+| Section | avg fit |
 |---|---:|
 | attention | 0.736 |
 | moe | 0.731 |
@@ -39,9 +39,9 @@
 | compress | 0.756 |
 | arch | 0.778 |
 
-## 도메인 평균 fit
+## Average fit per domain
 
-| 도메인 | avg fit |
+| Domain | avg fit |
 |---|---:|
 | cognitive | 0.808 |
 | compute | 0.922 |
@@ -54,9 +54,9 @@
 | sf-ufo | 0.642 |
 | space | 0.748 |
 
-## 섹션 x 카테 평균 fit 행렬
+## Section x category average-fit matrix
 
-| 섹션 \\ 도메인 | cognitive | compute | culture | energy | infra | life | materials | physics | sf-ufo | space |
+| Section \\ Domain | cognitive | compute | culture | energy | infra | life | materials | physics | sf-ufo | space |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | attention | 0.97 | 0.99 | 0.68 | 0.56 | 0.79 | 0.77 | 0.59 | 0.72 | 0.65 | 0.63 |
 | moe | 0.80 | 0.99 | 0.62 | 0.70 | 0.93 | 0.69 | 0.58 | 0.64 | 0.61 | 0.75 |
@@ -66,9 +66,9 @@
 | compress | 0.66 | 0.97 | 0.53 | 0.90 | 0.89 | 0.63 | 0.83 | 0.76 | 0.58 | 0.80 |
 | arch | 0.82 | 0.93 | 0.63 | 0.72 | 0.80 | 0.80 | 0.76 | 0.85 | 0.68 | 0.78 |
 
-## 최고 fit Top 20
+## Top 20 by fit
 
-| 순위 | 섹션 | 기법 | 도메인 | fit | alien | 렌즈 |
+| Rank | Section | Technique | Domain | fit | alien | Lenses |
 |---:|---|---|---|---:|---:|---|
 | 1 | attention | alibi_attention | compute | 1.000 | 12 | accel_architecture_search, cross_emergent_architecture, tecs_transform_chain |
 | 2 | attention | differential_transformer | compute | 1.000 | 12 | frontier_architectural_proportion, frontier_neural_architecture, archaeology_lens |
@@ -91,9 +91,9 @@
 | 19 | attention | cross_attention | cognitive | 0.994 | 12 | anima_attentional_blink, consciousness_lens, accel_neuromorphic_chip |
 | 20 | moe | expert_choice_routing | compute | 0.993 | 12 | accel_dataflow_architecture, archaeology_lens, frontier_neural_architecture |
 
-## atlas.n6 신호 (카테별 노드 수 / [10*])
+## atlas.n6 signal (node count per category / [10*])
 
-| 도메인 | 총 노드 | [10*]+ | 비율 |
+| Domain | Total nodes | [10*]+ | Ratio |
 |---|---:|---:|---:|
 | cognitive | 294 | 259 | 88.1% |
 | compute | 745 | 743 | 99.7% |
@@ -106,8 +106,8 @@
 | sf-ufo | 20 | 12 | 60.0% |
 | space | 201 | 196 | 97.5% |
 
-## 산출물
+## Outputs
 
 - JSON: `experiments/dse/cross_matrix_112x10.json`
-- 요약: `experiments/dse/cross_matrix_112x10_summary.md` (본 문서)
-- 로드맵: `$NEXUS/shared/roadmaps/n6-architecture.json` DSE-P1-3 done
+- Summary: `experiments/dse/cross_matrix_112x10_summary.md` (this document)
+- Roadmap: `$NEXUS/shared/roadmaps/n6-architecture.json` DSE-P1-3 done
