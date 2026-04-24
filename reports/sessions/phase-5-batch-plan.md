@@ -2066,6 +2066,67 @@ At the end of a 14-way window ten residual stashes remained (`phase-4-2` through
 - 32 or fewer commits (deferrals skip the second shrink commit for those files)
 - Phase 6 scope updated with D deferred paths
 
+## 10. Post-Phase-5 Reconciliation Checklist (template)
+
+Run this checklist exactly once, after the last of the 16 batches has landed on `origin/main` and all sibling batch agents have reported "done or deferred." This is the Phase 5 closure gate. Copy this block into the session log at closure time and fill in the measured values.
+
+### 10.1 CJK audit — 317 file set
+
+Goal: confirm every Phase 5 in-scope file reaches CJK = 0 (or is explicitly on the deferred list).
+
+- [ ] Enumerate the 317 in-scope paths from section 2.1 / 2.2 / 2.3 into a newline-delimited list `/tmp/phase-5-paths.txt`.
+- [ ] For each path, measure CJK: `python3 tool/own_doc_lint.py --rule 1 --paths-from /tmp/phase-5-paths.txt` and capture the JSON output.
+- [ ] Verify `len(violations) == len(deferred)`. Any file with CJK > 0 that is NOT on the per-batch deferred list is a regression — re-open the owning batch and re-translate.
+- [ ] Global lint re-run: `python3 tool/own_doc_lint.py --rule 1` repo-wide, exit 0 required (non-Phase-5 files were already CJK = 0 at the Phase-4-closure snapshot).
+
+### 10.2 Allowlist parity
+
+Goal: confirm the allowlist shrink on disk exactly equals (534 − 317 + D) = 217 + D.
+
+- [ ] Count on-disk: `jq '.allowlist | length' tool/own1_legacy_allowlist.json`. Target = 217 (zero deferrals) or 217 + D.
+- [ ] Set-compare: compute set-difference between the Phase-4-closure allowlist snapshot (534 entries) and the current on-disk allowlist. Removed set must equal the 317 in-scope paths minus the D deferred paths.
+- [ ] Confirm no NEW entries were silently added by any batch (sibling-race re-introduction regression).
+- [ ] Commit hash check: last allowlist-touching commit on `origin/main` must be a `feat(own): shrink own#1 allowlist phase-5-{N}` from one of the 16 batches.
+
+### 10.3 Stash hygiene
+
+Goal: zero residual stashes (matches Phase-4-closure discipline at `dc999770`).
+
+- [ ] `git stash list` — expected empty. If non-empty, inspect each (`git stash show -p stash@{N}`) and classify as DROP-SAFE or REQUIRES-INSPECTION.
+- [ ] For each DROP-SAFE (HEAD fully supersedes the stashed state) — drop with `git stash drop stash@{N}`.
+- [ ] For each REQUIRES-INSPECTION — stop, document, and resolve before declaring Phase 5 closed.
+
+### 10.4 Session log update
+
+Goal: close Phase 5 in the single running session log file.
+
+- [ ] Append a new section `11.8 Phase 5 closure (2026-04-?? or later)` to `reports/sessions/hard-english-only-session-2026-04-24.md` with:
+  - Batch landing order (actual merge order on `origin/main`).
+  - Per-batch CJK baseline vs post counts.
+  - Deferrals list (path, reason, proposed Phase 6 disposition).
+  - Any race events observed (stash-wipeout, allowlist re-introduction, hook lock) with mitigations applied.
+  - Final allowlist count (217 + D) and final repo-wide CJK count (should be 0 + deferred-CJK).
+- [ ] Update the "Verification snapshot" table at the top of the session log with the new allowlist count and date.
+- [ ] Commit: `docs(session): phase-5 closure — <N> deferrals, allowlist 534 -> <final>` (no `--no-verify`; closure commits run clean pre-commit hooks).
+
+### 10.5 CI re-verify
+
+Goal: 9/9 CI green on `origin/main` at the Phase-5-closure tip.
+
+- [ ] Push the session-log closure commit on its own (no batched push).
+- [ ] Watch CI: all 9 checks must pass. If any check fails (own#1 doc-english-hard is the expected failure vector), halt and re-audit.
+- [ ] Tag the closure commit: `git tag -a phase-5-closure -m "Phase 5 closure: allowlist 534 -> <final>, <N> deferrals" && git push origin phase-5-closure`.
+
+### 10.6 Phase 6 scope handoff (conditional)
+
+Goal: if D > 0, seed Phase 6 scope file with the deferred set.
+
+- [ ] Create / update `proposals/own1-phase-6-scope-<date>.md` with:
+  - Deferred paths list (D entries).
+  - Per-file deferral reason (terminology confidence gap, notation ambiguity, spec cross-ref).
+  - Suggested Phase 6 mitigation (human-in-the-loop review, AST-grounded translation, targeted subject-matter reference).
+- [ ] Link the scope file from the roadmap (`proposals/own1-hard-english-only-translation-roadmap-2026-04-24.md`).
+
 ---
 
 _End of Phase 5 batch plan._
