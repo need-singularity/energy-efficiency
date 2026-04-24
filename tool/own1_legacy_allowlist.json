@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 26,
+    "count": 23,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -547,6 +547,25 @@
         "date": "2026-04-25",
         "removed": 1,
         "note": "sibling-wipeout regression — entry was restored after bd70a12d shrink, file remained CJK=0"
+      },
+      {
+        "phase": "phase-6-D-B13-n6-advanced-packaging",
+        "batch": "phase-6-D-B13-n6-advanced-packaging",
+        "date": "2026-04-25",
+        "removed": 1,
+        "entry": "papers/n6-advanced-packaging-integrated-paper.md",
+        "new_count": 24,
+        "note": "B13 wave 2 - n6-advanced-packaging-integrated-paper.md (1169L canonical paper) translated KR->EN, CJK=0 verified."
+      },
+      {
+        "phase": "phase-6-D-B13-n6-66-techniques",
+        "batch": "phase-6-D-B13-n6-66-techniques",
+        "date": "2026-04-25",
+        "removed": 1,
+        "entry": "papers/n6-66-techniques-integrated-paper.md",
+        "before": 24,
+        "after": 23,
+        "note": "B13 wave 2 - n6-66-techniques-integrated-paper.md (1184L, CJK 5696 -> 0) translated. P-011 HEXA-66-TECHNIQUES canonical 21-section integrated spec (17 exp + 49 cross+SSM). own#11 softeners applied."
       }
     ]
   },
@@ -561,8 +580,6 @@
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
     "papers/moonshine-barrier-honest-report-2026-04-15.md",
-    "papers/n6-66-techniques-integrated-paper.md",
-    "papers/n6-advanced-packaging-integrated-paper.md",
     "papers/n6-hexa-chip-7dan-integrated-paper.md",
     "papers/n6-hexa-consciousness-integrated-paper.md",
     "papers/n6-hexa-starship-integrated-paper.md",
@@ -575,10 +592,19 @@
     "theory/roadmap-v2/_archive-phase-01-forced-3-axes.md",
     "theory/roadmap-v2/n6arch-axes/axis-r1-emergence.md",
     "theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md",
-    "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md",
-    "theory/roadmap-v2/round-03-emergence-saturation.md"
+    "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
   ],
   "shrink_history": [
+    {
+      "phase": "phase-6-D-B12B-round-03",
+      "date": "2026-04-25",
+      "removed": [
+        "theory/roadmap-v2/round-03-emergence-saturation.md"
+      ],
+      "count_before": 26,
+      "count_after": 25,
+      "note": "B12 part B Wave 2 - round-03-emergence-saturation translated KR->EN, CJK=0 verified, lint exit 0."
+    },
     {
       "phase": "phase-6-D-B12-hexa-one",
       "date": "2026-04-25",
