@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 97,
+    "count": 98,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -222,9 +222,9 @@
         "phase": "phase-6-6",
         "batch": "phase-6-6-sf-ufo-yellow",
         "date": "2026-04-25",
-        "removed": 9,
-        "new_count": 97,
-        "note": "B6 YELLOW - 7 sf-ufo translated (cross-domain-mega, experiments, hexa-sim, hexa-cloak, hexa-hover, hexa-teleport, hover) + 2 stale CJK=0 (cloak, hexa-speak). Remaining B6 (hypotheses, sf, ai-safety) deferred."
+        "removed": 8,
+        "new_count": 98,
+        "note": "B6 YELLOW - 7 sf-ufo translated (cross-domain-mega, experiments, hexa-sim, hexa-cloak, hexa-hover, hexa-teleport, hover) + 1 stale CJK=0 (cloak). hexa-speak deferred — still has 2938 CJK chars. Remaining B6 (hypotheses, sf, ai-safety, hexa-speak) deferred."
       }
     ]
   },
@@ -238,6 +238,7 @@
     "domains/cognitive/ai-quality-scale/ai-quality-scale.md",
     "domains/cognitive/ai-safety/ai-safety.md",
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
+    "domains/cognitive/hexa-speak/hexa-speak.md",
     "domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md",
     "domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md",
     "domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md",
