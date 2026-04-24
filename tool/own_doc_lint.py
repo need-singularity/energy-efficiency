@@ -27,6 +27,12 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OWN_FILE = REPO_ROOT / ".own"
 REPORT_PATH = REPO_ROOT / "reports" / "n6_own_doc_lint.json"
+# own#1 HARD-block allowlist sidecar — loaded lazily by check_rule_1.
+OWN1_ALLOWLIST_PATH = REPO_ROOT / "tool" / "own1_legacy_allowlist.json"
+
+# own#1 is promoted to HARD block (2026-04-24) per user 'hard go' directive.
+# Any own#1 violation causes overall exit 1 regardless of other rules.
+HARD_RULES: set[int] = {1}
 
 # Target rule IDs — the 14 DOC-ONLY rules this linter enforces.
 TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16]
@@ -100,41 +106,123 @@ def _walk_md(root: Path, skip_dirs: set[str] | None = None) -> list[Path]:
     return hits
 
 
-# own#1 doc-english-required — scan for CJK in public .md docs (root + common dirs).
-# Narrow scope: only flag high-signal docs to avoid noise from legacy Korean domain docs.
+# own#1 doc-english-required — HARD block (promoted 2026-04-24 via 'hard go').
+#
+# Scope (matches .own own#1 decl): repo-root public docs + full decl path set
+# (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/).
+# Threshold: CJK density 0% — not even a single Korean/Japanese/Han character
+# in a new .md file under these paths. Matches own#17's standard for root
+# READMEs; now extended to the entire documented corpus.
+#
+# Legacy files (>1k existing CJK-containing .md docs as of promotion date)
+# are grandfathered via OWN1_LEGACY_ALLOWLIST — a frozen sidecar JSON that
+# must be pruned (not grown) over time. Pattern reuses own#5 OWN5_LEGACY_ALLOWLIST
+# approach. The allowlist is FROZEN at 1050 entries — new CJK .md files under
+# own#1 decl scope will fail the HARD check and block merges.
 CJK_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿가-힯]")
+
+# own#1 decl scope directories (relative to repo root). These are the
+# directories where .md files must be English-only going forward.
+OWN1_SCOPE_DIRS = (
+    "domains",
+    "theory",
+    "reports",
+    "experiments",
+    "papers",
+    "bridge",
+    "n6shared",
+)
+# Root-level public READMEs are owned by own#17 (public-readme-english-only),
+# which runs its own HARD audit via hexa-lang/tool/readme_english_audit.hexa.
+# We do NOT re-enforce them here to avoid double-jeopardy and to keep each
+# rule's scope crisp. own#1 = in-tree corpus under decl scope.
+OWN1_ROOT_DOCS: tuple[str, ...] = ()
+
+
+def _load_own1_allowlist() -> set[str]:
+    """Load the frozen grandfather list of legacy CJK .md files.
+
+    Sidecar: tool/own1_legacy_allowlist.json (generated 2026-04-24 from pre-scan
+    of 1050 CJK-containing .md files in own#1 decl scope). Missing file is
+    treated as an empty set — HARD check then flags everything, which is the
+    intended fail-loud behaviour if the allowlist is accidentally removed.
+    """
+    if not OWN1_ALLOWLIST_PATH.is_file():
+        return set()
+    try:
+        data = json.loads(OWN1_ALLOWLIST_PATH.read_text(encoding="utf-8"))
+        entries = data.get("allowlist", [])
+        return {str(p) for p in entries if isinstance(p, str) and p.strip()}
+    except Exception:
+        return set()
+
+
+OWN1_LEGACY_ALLOWLIST: set[str] = _load_own1_allowlist()
 
 
 def check_rule_1_doc_english(rules: dict[int, dict[str, Any]]) -> list[dict[str, str]]:
+    """own#1 HARD enforcement — 0% CJK in .md under decl scope (new files).
+
+    Legacy files listed in OWN1_LEGACY_ALLOWLIST are grandfathered (no flag).
+    Any other .md with one or more CJK chars is a violation — this is HARD,
+    violations trigger process exit 1 via main().
+    """
     violations: list[dict[str, str]] = []
-    # Public-facing docs that must be English-primary per own#1 + own#17 overlap.
-    candidates = [
-        REPO_ROOT / "README.md",
-        REPO_ROOT / "CONTRIBUTING.md",
-        REPO_ROOT / "CLAUDE.md",
-    ]
-    for path in candidates:
+    seen: set[Path] = set()
+
+    # Root-level public docs (missing-file check retained for own#17 overlap).
+    for name in OWN1_ROOT_DOCS:
+        path = REPO_ROOT / name
         if not path.is_file():
             violations.append({
                 "rule": "own#1",
-                "path": str(path.relative_to(REPO_ROOT)),
+                "path": name,
                 "detail": "required English-primary doc is missing",
             })
             continue
-        text = path.read_text(encoding="utf-8", errors="replace")
-        # Flag if CJK density > 5% of non-space chars (accepts stray terms, rejects body text).
-        non_space = re.sub(r"\s+", "", text)
-        if not non_space:
-            continue
-        cjk_chars = CJK_RE.findall(non_space)
-        density = len(cjk_chars) / max(1, len(non_space))
-        if density > 0.05:
+        seen.add(path.resolve())
+        rel = str(path.relative_to(REPO_ROOT))
+        cjk_count = _count_cjk(path)
+        if cjk_count > 0 and rel not in OWN1_LEGACY_ALLOWLIST:
             violations.append({
                 "rule": "own#1",
-                "path": str(path.relative_to(REPO_ROOT)),
-                "detail": f"CJK density {density:.1%} exceeds 5% threshold ({len(cjk_chars)} CJK chars)",
+                "path": rel,
+                "detail": f"CJK present ({cjk_count} chars) — English-only required",
             })
+
+    # Full own#1 decl scope — every .md under the seven listed roots.
+    for scope in OWN1_SCOPE_DIRS:
+        root = REPO_ROOT / scope
+        if not root.is_dir():
+            continue
+        for md in _walk_md(root):
+            resolved = md.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            rel = str(md.relative_to(REPO_ROOT))
+            if rel in OWN1_LEGACY_ALLOWLIST:
+                # Grandfathered legacy file — acknowledged exception.
+                continue
+            cjk_count = _count_cjk(md)
+            if cjk_count > 0:
+                violations.append({
+                    "rule": "own#1",
+                    "path": rel,
+                    "detail": (
+                        f"CJK present ({cjk_count} chars) — new .md must be "
+                        f"English-only (own#1 HARD since 2026-04-24)"
+                    ),
+                })
     return violations
+
+
+def _count_cjk(path: Path) -> int:
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return 0
+    return len(CJK_RE.findall(text))
 
 
 # own#3 one-doc-per-domain — each domain dir should contain exactly one body doc
@@ -807,11 +895,39 @@ CHECKERS = [
 ]
 
 
+def _parse_rule_filter(argv: list[str]) -> set[int] | None:
+    """Parse `--rule N` (may repeat / be comma-separated). None = all rules."""
+    wanted: set[int] = set()
+    i = 1
+    while i < len(argv):
+        arg = argv[i]
+        if arg in ("--rule", "-r"):
+            i += 1
+            if i >= len(argv):
+                break
+            for tok in argv[i].split(","):
+                tok = tok.strip().lstrip("#").lstrip("own").lstrip("#")
+                if tok.isdigit():
+                    wanted.add(int(tok))
+        elif arg.startswith("--rule="):
+            for tok in arg.split("=", 1)[1].split(","):
+                tok = tok.strip().lstrip("#").lstrip("own").lstrip("#")
+                if tok.isdigit():
+                    wanted.add(int(tok))
+        i += 1
+    return wanted or None
+
+
 def main(argv: list[str]) -> int:
+    rule_filter = _parse_rule_filter(argv)
     rules = parse_own_file(OWN_FILE)
     all_violations: list[dict[str, str]] = []
     per_rule_counts: dict[str, int] = {}
     for rule_id, fn in CHECKERS:
+        # rule_id looks like "own#N" — extract the numeric id for filter match.
+        rid_num = int(rule_id.split("#", 1)[1])
+        if rule_filter is not None and rid_num not in rule_filter:
+            continue
         try:
             found = fn(rules)
         except Exception as exc:  # defensive — no single checker should abort the rest
@@ -824,6 +940,10 @@ def main(argv: list[str]) -> int:
         for rid in sorted(MANUAL_ONLY)
     }
 
+    # Separate HARD (own#1, promoted 2026-04-24) from SOFT rules for exit-code logic.
+    hard_violations = [v for v in all_violations if v.get("rule") in {f"own#{n}" for n in HARD_RULES}]
+    soft_violations = [v for v in all_violations if v not in hard_violations]
+
     report = {
         "_meta": {
             "tool": "own_doc_lint.py",
@@ -831,28 +951,53 @@ def main(argv: list[str]) -> int:
             "target_rules": [f"own#{n}" for n in TARGET_RULES],
             "auto_verifiable": [f"own#{n}" for n in sorted(AUTO_VERIFIABLE)],
             "manual_only": manual_rule_slugs,
+            "hard_rules": [f"own#{n}" for n in sorted(HARD_RULES)],
+            "rule_filter": sorted(rule_filter) if rule_filter else None,
             "note": "own#13/#15/#17..#21 handled by existing verifiers — not re-checked here.",
         },
         "summary": {
             "total_violations": len(all_violations),
+            "hard_violations": len(hard_violations),
+            "soft_violations": len(soft_violations),
             "per_rule": per_rule_counts,
         },
         "violations": all_violations,
     }
 
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    REPORT_PATH.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    # Only write the full report when running the unfiltered pass — targeted
+    # `--rule N` invocations are for CI / local dev and should not clobber the
+    # canonical report with partial data.
+    if rule_filter is None:
+        REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        REPORT_PATH.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # Human-readable stdout summary.
+    filter_label = (
+        f"[own_doc_lint] rule filter : {sorted(rule_filter)}"
+        if rule_filter else
+        f"[own_doc_lint] rule filter : (none — full run)"
+    )
+    print(filter_label)
     print(f"[own_doc_lint] target rules: {[f'own#{n}' for n in TARGET_RULES]}")
     print(f"[own_doc_lint] auto-verifiable: {[f'own#{n}' for n in sorted(AUTO_VERIFIABLE)]}")
     print(f"[own_doc_lint] manual-only    : {[f'own#{n}' for n in sorted(MANUAL_ONLY)]}")
+    print(f"[own_doc_lint] HARD rules     : {[f'own#{n}' for n in sorted(HARD_RULES)]}")
     for rule_id, count in per_rule_counts.items():
         marker = "OK" if count == 0 else f"FAIL ({count})"
         print(f"  {rule_id:<8} {marker}")
-    print(f"[own_doc_lint] report: {REPORT_PATH.relative_to(REPO_ROOT)}")
-    print(f"[own_doc_lint] total violations: {len(all_violations)}")
+    if rule_filter is None:
+        print(f"[own_doc_lint] report: {REPORT_PATH.relative_to(REPO_ROOT)}")
+    print(
+        f"[own_doc_lint] total violations: {len(all_violations)} "
+        f"(HARD={len(hard_violations)}, SOFT={len(soft_violations)})"
+    )
 
+    # Exit policy (2026-04-24 promotion):
+    #   - own#1 (HARD) violations -> exit 1 (merge blocker).
+    #   - SOFT-only violations    -> exit 1 preserved for backward compat with
+    #     existing runs; no regression relative to pre-promotion behaviour.
+    # This means the overall contract is: zero violations => 0, else 1.
+    # The split is exposed in the JSON report for downstream triage / dashboards.
     return 1 if all_violations else 0
 
 
