@@ -1,53 +1,56 @@
-# 검증 체인: chip-3d → smr-datacenter → digital-twin
+# Verification chain: chip-3d → smr-datacenter → digital-twin
 
-- 작성일: 2026-04-14
-- 로드맵: CHIP-P1-3
-- 트리거: `experiments/chip-verify/verify_chip-3d.hexa`
-- 피드백 대상: `n6shared/config/dse-map.toml` ([chip-3d.feedback], [smr-datacenter.feedback], [digital-twin.feedback], [cross-dse.chip-3d-x-smr-x-twin])
+- Date: 2026-04-14
+- Roadmap: CHIP-P1-3
+- Trigger: `experiments/chip-verify/verify_chip-3d.hexa`
+- Feedback target: `n6shared/config/dse-map.toml` ([chip-3d.feedback], [smr-datacenter.feedback], [digital-twin.feedback], [cross-dse.chip-3d-x-smr-x-twin])
 
-## §1 체인 개요
+## §1 Chain overview
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  [hop 1] chip-3d         │  HEXA-3D-CHIP n=6 산술 정렬 5축 검증       │
-│         │                │  → 메탈 6, SM σ²=144, MAC σ·J₂=288,        │
-│         │                │     파이프 τ=4, 전원 σ-τ=8                  │
-│         ▼                │                                            │
-│  [hop 2] smr-datacenter  │  SMR 6 모듈 데이터센터 — 전력/열 인터페이스 │
-│         │                │  → 1/2+1/3+1/6 Egyptian × n=6 모듈          │
-│         ▼                │                                            │
-│  [hop 3] digital-twin    │  τ=4 시뮬 단계 × σ=12 채널 × J₂=24 센서 폭  │
-│                          │  → 검증값 트윈 모니터에 반영                │
+│  [hop 1] chip-3d         │  HEXA-3D-CHIP n=6 arithmetic alignment    │
+│         │                │   5-axis verification                     │
+│         │                │  → metal 6, SM σ²=144, MAC σ·J₂=288,      │
+│         │                │     pipe τ=4, power σ-τ=8                 │
+│         ▼                │                                           │
+│  [hop 2] smr-datacenter  │  SMR 6-module datacenter — power/thermal  │
+│         │                │   interface                               │
+│         │                │  → 1/2+1/3+1/6 Egyptian × n=6 modules     │
+│         ▼                │                                           │
+│  [hop 3] digital-twin    │  τ=4 sim stages × σ=12 channels ×         │
+│                          │   J₂=24 sensor width                      │
+│                          │  → verified values reflected in twin mon. │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-## §2 hop 별 산출 인터페이스
+## §2 Output interfaces per hop
 
-### hop 1 — chip-3d 검증
+### hop 1 — chip-3d verification
 
-| 항목 | 측정 | n=6 수식 | 판정 |
+| Item | Measurement | n=6 formula | Verdict |
 |------|------|---------|------|
-| 메탈 레이어 | 6 | n | EXACT |
-| SM 배열 | 144 | σ² | EXACT |
-| MAC 어레이 | 288 | σ·J₂ | EXACT |
-| 파이프 단 | 4 | τ | EXACT |
-| 전원 도메인 | 8 | σ-τ | EXACT |
+| metal layers | 6 | n | EXACT |
+| SM array | 144 | σ² | EXACT |
+| MAC array | 288 | σ·J₂ | EXACT |
+| pipe stages | 4 | τ | EXACT |
+| power domains | 8 | σ-τ | EXACT |
 
-총합 5/5 EXACT → 다운스트림 호출 권한 획득.
+Total 5/5 EXACT → downstream call permission granted.
 
-### hop 2 — smr-datacenter 인수
+### hop 2 — smr-datacenter acceptance
 
-- 입력: chip-3d 의 σ-τ=8 전원 도메인 + Egyptian 1/2+1/3+1/6 분배
-- 매핑: SMR 6 unit 모듈 ↔ n=6 데이터센터 토폴로지
-- 결과: SMR 모듈 1 개당 chip-3d 클러스터 σ²/n = 24 SM 공급, 6 unit × 24 = 144 SM 완전 일치
+- Input: chip-3d's σ-τ=8 power domains + Egyptian 1/2+1/3+1/6 distribution
+- Mapping: SMR 6-unit module ↔ n=6 datacenter topology
+- Result: each SMR module supplies a chip-3d cluster with σ²/n = 24 SMs; 6 units × 24 = 144 SMs, exact match
 
-### hop 3 — digital-twin 입수
+### hop 3 — digital-twin ingestion
 
-- 입력: smr-datacenter 의 전력/열 시계열 + chip-3d 의 144 SM 가용성
-- 매핑: τ=4 시뮬 스테이지 × σ=12 트윈 채널 × J₂=24 센서 폭
-- 결과: 트윈이 chip-3d 검증값을 5축 모두 EXACT 로 모니터 — 드리프트 발생 시 dse-map 의 chip-3d.feedback 갱신 신호 발행
+- Input: smr-datacenter's power/thermal timeseries + chip-3d's 144 SM availability
+- Mapping: τ=4 sim stages × σ=12 twin channels × J₂=24 sensor width
+- Result: the twin monitors chip-3d's verified values at EXACT on all 5 axes — on drift, emits an update signal for dse-map's chip-3d.feedback
 
-## §3 피드백 메커니즘
+## §3 Feedback mechanism
 
 ```
 verify_chip-3d.hexa  ──pass=5/5──>  dse-map.toml [chip-3d.feedback]
@@ -59,19 +62,19 @@ verify_chip-3d.hexa  ──pass=5/5──>  dse-map.toml [chip-3d.feedback]
                                               └─> [cross-dse.chip-3d-x-smr-x-twin]
 ```
 
-- 갱신 트리거: 도메인별 `verified_at` 필드 비교
-- 회귀: 어느 hop 이라도 fail 시 전체 체인 status = "regression" 으로 전환
-- 추가 검증: hop 2/3 는 본 1차 라운드에서 chip-3d.hexa 결과를 직접 인수 (정적 검증). 동적 hexa 스텁은 P1-4 단계에서 추가 예정.
+- Update trigger: compare per-domain `verified_at` field
+- Regression: if any hop fails, the whole chain status flips to "regression"
+- Additional verification: in this first round, hops 2/3 directly accept chip-3d.hexa results (static verification). Dynamic hexa stubs planned for P1-4.
 
-## §4 BT 연결
+## §4 BT linkage
 
-| BT | 연결점 |
+| BT | Link point |
 |----|-------|
-| BT-28 | 캐시 계위 Egyptian — chip-3d ↔ smr-datacenter 전력 분배 |
-| BT-56 | GPU 산술 σ²=144 SM — chip-3d ↔ digital-twin 자원 모델 |
-| BT-1414 | A1 검증 인증 체인 — 본 chain 의 인증 메타 |
+| BT-28 | Cache-hierarchy Egyptian — chip-3d ↔ smr-datacenter power distribution |
+| BT-56 | GPU arithmetic σ²=144 SM — chip-3d ↔ digital-twin resource model |
+| BT-1414 | A1 verification certification chain — certification metadata for this chain |
 
-## §5 다음 단계
+## §5 Next steps
 
-- P1-3 종료 (이 문서 작성 + dse-map feedback 3 entry append)
-- P1-4 진입 시: smr-datacenter / digital-twin 각각 verify_*.hexa 동적 스텁 추가
+- Close P1-3 (author this doc + append 3 dse-map feedback entries)
+- On entering P1-4: add dynamic verify_*.hexa stubs for smr-datacenter / digital-twin
