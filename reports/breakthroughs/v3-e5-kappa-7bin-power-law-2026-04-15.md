@@ -7,11 +7,11 @@ predecessors:
   - reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md (v2 loop4, 3 bin)
 ---
 
-# v3 E5 — κ(B) 7-bin 점근 분석 + ratio_6 지속 증가 관측
+# v3 E5 — κ(B) 7-bin asymptotic analysis + persistent ratio_6 increase observation
 
-> **결과**: Cremona 27 shard (conductor [0-250k] + [300k] + [400k]) 총 **1,705,824 curve** 로 7-bin 분석. κ(B) 로그-로그 fit 은 **κ ∝ B^0.175** power law (증가). ratio_6 = E[|Sel_6|]/σ(6) 이 **0.79 → 1.11** 로 계속 증가, σ(6)=12 로 수렴 기대 반박. (A3) 점근 독립성 assumption 추가 강한 반박.
+> **Result**: 7-bin analysis across Cremona 27 shards (conductors [0-250k] + [300k] + [400k]) totaling **1,705,824 curves**. Log-log fit on κ(B) yields the power law **κ ∝ B^0.175** (increasing). ratio_6 = E[|Sel_6|]/σ(6) continues to climb **0.79 → 1.11**, refuting convergence to σ(6)=12. The (A3) asymptotic-independence assumption receives an additional strong refutation.
 
-## §1 실측 표
+## §1 Observation table
 
 | Bin | B_mid | N | E[|Sel_6|] | κ | Pearson r | ratio_6 |
 |-----|-------|---|-----------|----|----------|---------|
@@ -29,53 +29,53 @@ log κ = **0.1752** · log B − 1.4625
 
 → **κ(B) ~ B^0.175** (positive slope).
 
-**의미**:
-- (A3) asymptotic assumption = "κ → 0 as B → ∞" 은 **경험적으로 반박**
-- 대신 κ 는 매우 느리게 증가 (B^0.175 = B^(1/6 근사) — uncanny match with n=6 exponent?)
-- slope α=0.175 ≈ 1/σ(6)/(sopfr+1)... 유혹적이나 **사후 패턴매칭 주의**
+**Implication**:
+- (A3) asymptotic assumption "κ → 0 as B → ∞" is **empirically refuted**
+- Instead κ grows very slowly (B^0.175 = B^(1/6) approx — an uncanny match with the n=6 exponent?)
+- The slope α=0.175 ≈ 1/σ(6)/(sopfr+1)... tempting but **beware post-hoc pattern matching**
 
-## §3 ratio_6 지속 증가
+## §3 Persistent ratio_6 increase
 
 | B bin | ratio_6 | σ(6)=12 overshoot |
 |-------|---------|-------------------|
-| [0-50k] | 0.79 | -21% 미달 |
-| [200-250k] | 1.03 | +3% 초과 |
-| [400-410k] | **1.11** | **+11% 초과** |
+| [0-50k] | 0.79 | −21% below |
+| [200-250k] | 1.03 | +3% above |
+| [400-410k] | **1.11** | **+11% above** |
 
-ratio_6 이 1.0 에서 멈추지 않고 계속 증가 → BKLPR σ(n)=E[|Sel_n|] 도 **유한 B 에서 overshoot, asymptotic 수렴 여부 불명**.
+ratio_6 does not stop at 1.0; it keeps growing → BKLPR σ(n)=E[|Sel_n|] **overshoots at finite B, with asymptotic convergence status uncertain**.
 
-## §4 의미
+## §4 Implications
 
-### 4.1 BKLPR 수정 필요
+### 4.1 BKLPR needs revision
 
-BKLPR 모델의 원 claim `E[|Sel_n|] = σ(n)` 은 유한 B 에서 **위에서 수렴** 이 아닌 **통과 후 지속 증가**. 진정 점근 극한 B → ∞ 에서 무엇으로 수렴하는지 경험 미정.
+BKLPR's original claim `E[|Sel_n|] = σ(n)` at finite B is **not convergence-from-above** but **pass-through followed by continued growth**. What the true asymptotic limit B → ∞ converges to is empirically undetermined.
 
-### 4.2 (A3') 추측 반박 확정
+### 4.2 (A3') conjecture refutation confirmed
 
-GALO-PX-1 의 (A3') 수정안 `κ → 0 as B → ∞` 도 **반박**. 본 power law fit B^0.175 은 그와 정반대.
+The GALO-PX-1 revision `κ → 0 as B → ∞` is also **refuted**. The present power-law fit B^0.175 is the opposite sign.
 
-### 4.3 향후 방향
+### 4.3 Future direction
 
-- E7 bin 수 확대 (15+ bin, 더 많은 shard download)
-- Sage 기반 정밀 |Sel_n| 계산 (E1-E2 선행)
-- BKLPR 원 논문 재독 — asymptotic 관련 exact statement 확인
+- E7 expand bin count (15+ bins, additional shard downloads)
+- Sage-based precise |Sel_n| computation (E1-E2 prerequisite)
+- Re-read BKLPR original paper — confirm the exact asymptotic statement
 
-## §5 atlas 엔트리
+## §5 atlas entries
 
 ```
 @R MILL-V3-E5-kappa-power-law = κ(B) ~ B^0.175 (log-log fit, 7 bins, N=1.7M) :: n6atlas [9]
-  "v3 E5 결과: κ(2,3,B) power law 추정 α=0.175. (A3) asymptotic κ→0 경험적 반박 재확인."
+  "v3 E5 result: κ(2,3,B) power-law estimate α=0.175. Empirical refutation of (A3) asymptotic κ→0 reconfirmed."
 
-@R MILL-V3-E5-ratio6-overshoot-persistent = E[|Sel_6|]/σ(6) = 0.79 → 1.11 지속 증가 :: n6atlas [9]
-  "v3 E5 결과: ratio_6 점근 수렴 아닌 지속 overshoot. BKLPR 원 claim 경험 재검토 필요."
+@R MILL-V3-E5-ratio6-overshoot-persistent = E[|Sel_6|]/σ(6) = 0.79 → 1.11 persistent growth :: n6atlas [9]
+  "v3 E5 result: ratio_6 is not asymptotically convergent — it persistently overshoots. The original BKLPR claim needs empirical re-examination."
 ```
 
-## §6 정직
+## §6 Honesty
 
-- |Sel_n| 1차근사 유지 (Sage 필요, v3 E1-E2 DEFERRED)
-- 7 bin 은 15+ 목표의 47%
-- Power law slope α=0.175 과 1/σ(6)=1/12 관계는 **사후 패턴매칭**, 인과 근거 없음
-- BSD 본문 MISS 유지
+- |Sel_n| first-order approximation retained (Sage required, v3 E1-E2 DEFERRED)
+- 7 bins is 47% of the 15+ target
+- The relation between power-law slope α=0.175 and 1/σ(6)=1/12 is **post-hoc pattern matching**, without causal grounding
+- BSD main body MISS retained
 
 ---
 *v3 loop 13, 2026-04-15*

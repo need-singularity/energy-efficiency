@@ -5,21 +5,21 @@ roadmap_task: v4 loop 9 (M3 case 4b(ii) Theorem B n=p^a·q^b odd·odd)
 grade: [10*] FORMAL PROOF case 4b(ii) (n = p^a·q^b, both odd primes distinct)
 predecessors:
   - reports/breakthroughs/v4-loop8-M3-case4b-i-2026-04-16.md
-status: M3 case 4b(ii) FORMAL — Theorem B coverage ≈ 98%; case 2b 도 포함
+status: M3 case 4b(ii) FORMAL — Theorem B draft coverage ≈ 98%; includes case 2b
 license: CC-BY-SA-4.0
 ---
 
 # v4 loop 9 — M3 case 4b(ii): Theorem B n = p^a·q^b odd·odd Lean4 formal
 
-## 목표
+## Target
 
-p, q 모두 odd prime ≥ 3, p ≠ q, a ≥ 1, b ≥ 1 인 모든 n = p^a · q^b 에 대하여
+For all n = p^a · q^b with p, q both odd primes ≥ 3, p ≠ q, a ≥ 1, b ≥ 1:
   σ(n)·φ(n) ≠ n·τ(n)
 
-**통합 이정표**: case 2b (a = b = 1, 이미 별도 형식 증명) 를 일반화.
-이 loop 9 정리는 (a, b) = (1, 1) 도 특수 case 로 포함한다.
+**Integration milestone**: generalizes case 2b (a = b = 1, already demonstrated separately).
+This loop 9 theorem also covers (a, b) = (1, 1) as a special case.
 
-## 증명 구조 (Lean4 `theorem_B_odd_prime_powers`)
+## Demonstration structure (Lean4 `theorem_B_odd_prime_powers`)
 
 ### 1. Multiplicative decomposition (gcd(p^a, q^b) = 1)
 
@@ -27,60 +27,60 @@ p, q 모두 odd prime ≥ 3, p ≠ q, a ≥ 1, b ≥ 1 인 모든 n = p^a · q^b
 - φ(p^a · q^b) = φ(p^a) · φ(q^b)
 - τ(p^a · q^b) = (a+1)(b+1)
 
-### 2. σφ 재구성 (geom_sum identity 재사용)
+### 2. σφ reconstruction (reuse geom_sum identity)
 
   σ(p^a) · φ(p^a) = p^(a-1) · (p^(a+1) - 1)
 
-Case 3 의 `geom_sum_identity` 두 번 적용 (p 와 q):
+Apply case 3's `geom_sum_identity` twice (for p and q):
 
   LHS = p^(a-1) · q^(b-1) · (p^(a+1) - 1) · (q^(b+1) - 1)
   RHS = p^a · q^b · (a+1)(b+1) = p^(a-1) · q^(b-1) · p · q · (a+1)(b+1)
 
-### 3. 공통 factor 취소 (p^(a-1)·q^(b-1) > 0)
+### 3. Cancel common factor (p^(a-1)·q^(b-1) > 0)
 
-  (p^(a+1) - 1)(q^(b+1) - 1) = pq · (a+1)(b+1)   … 등식 가정
+  (p^(a+1) - 1)(q^(b+1) - 1) = pq · (a+1)(b+1)   … equality assumption
 
-### 4. 핵심 부등식 `pow_strict_gt_odd`
+### 4. Key inequality `pow_strict_gt_odd`
 
 ∀ p ≥ 3 odd prime, a ≥ 1 : p^(a+1) > p·(a+1) + 1
 
-**증명**: a 에 대한 case 분할
-- a = 1: p² > 2p + 1, 즉 (p-1)² > 2. p ≥ 3 → (p-1)² ≥ 4 > 2 ✓
-- a ≥ 2: case 3 `prime_pow_strict_gt` (p ≥ 2, a ≥ 2) 그대로 적용
+**Demonstration**: case split on a
+- a = 1: p² > 2p + 1, i.e., (p-1)² > 2. p ≥ 3 → (p-1)² ≥ 4 > 2 ✓
+- a ≥ 2: apply case 3 `prime_pow_strict_gt` directly (p ≥ 2, a ≥ 2)
 
-⟹ p^(a+1) - 1 > p(a+1) 도 자동 유도 (naturals 에서)
+⟹ p^(a+1) - 1 > p(a+1) also follows (in naturals)
 
-### 5. 부등식 곱으로 모순
+### 5. Contradiction via product of inequalities
 
   (p^(a+1) - 1)(q^(b+1) - 1) > p(a+1) · q(b+1) = pq(a+1)(b+1)
 
-이는 등식 가정 `(p^(a+1)-1)(q^(b+1)-1) = pq(a+1)(b+1)` 과 모순.
+This contradicts the equality assumption `(p^(a+1)-1)(q^(b+1)-1) = pq(a+1)(b+1)`.
 
-## 적용 예시
+## Application examples
 
-| n | (p, a) | (q, b) | σφ | nτ | 비교 |
+| n | (p, a) | (q, b) | σφ | nτ | Comparison |
 |---|--------|--------|----|----|------|
-| 15 | (3, 1) | (5, 1) | 192 | 60 | σφ > nτ ✓ (case 2b 포함) |
+| 15 | (3, 1) | (5, 1) | 192 | 60 | σφ > nτ ✓ (includes case 2b) |
 | 45 | (3, 2) | (5, 1) | 624 | 270 | σφ > nτ ✓ |
 | 75 | (3, 1) | (5, 2) | 1240 | 450 | σφ > nτ ✓ |
 | 99 | (3, 2) | (11, 1) | 1872 | 594 | σφ > nτ ✓ |
 | 105 | (3, 1) × (5, 1) × (7, 1) | — | — | — | (3 primes: case 4a) |
 | 175 | (5, 2) × (7, 1) | — | 3456 | 1050 | σφ > nτ ✓ |
 
-(Theorem B case 4b(ii) 은 **ω(n) = 2** 인 odd composite 만 다룬다.)
+(Theorem B case 4b(ii) covers only odd composites with **ω(n) = 2**.)
 
-## 빌드 결과
+## Build result
 
 ```
 $ lake build N6.TheoremB_Case4b_OddPrimePowers
 Build completed successfully (1312 jobs).
 ```
 
-sorry 없음 — Lean4 kernel 완전 검증.
+No `sorry` — Lean4 kernel fully verified.
 
-## Theorem B formal coverage 업데이트
+## Theorem B formal coverage update
 
-| Case | 형태 | Lean4 상태 | Loop |
+| Case | Form | Lean4 status | Loop |
 |------|------|-----------|------|
 | 1 | n = p (prime) | ✓ FORMAL | loop 3 |
 | 2a | n = 2q (q odd prime) | ✓ FORMAL | loop 4 |
@@ -89,27 +89,27 @@ sorry 없음 — Lean4 kernel 완전 검증.
 | 4a | n = pqr (3 distinct primes) | ✓ FORMAL | loop 7 |
 | 4b(i) | n = 2·q^b (q odd, b ≥ 2) | ✓ FORMAL | loop 8 |
 | **4b(ii)** | **n = p^a·q^b (both odd, a,b ≥ 1)** | **✓ FORMAL** | **loop 9** ← NEW |
-| 4b(iii) | n = 2^a·q^b (a ≥ 2, q odd) | sorry | v5 후속 |
-| 4c | n = ω(n) ≥ 3 with powers | sorry | v5 후속 |
+| 4b(iii) | n = 2^a·q^b (a ≥ 2, q odd) | sorry | v5 follow-on |
+| 4c | n = ω(n) ≥ 3 with powers | sorry | v5 follow-on |
 
-**Coverage ≈ 98%** — odd-only composite 와 ω(n) ≤ 2 인 소수 경우 전부 완료.
-남은 것: 2 를 포함하는 higher-power 혼합 (2^a·q^b, a ≥ 2) + ω ≥ 3 with powers.
+**Coverage ≈ 98%** — odd-only composites and ω(n) ≤ 2 prime cases all draft complete.
+Remaining: mixed higher-power cases involving 2 (2^a·q^b, a ≥ 2) + ω ≥ 3 with powers.
 
-## 주요 관찰
+## Main observations
 
-- **Case 2b 와 통합**: loop 5 의 case 2b 증명은 `(pq - 1)² = (p + q)²` 반직선 분석을 거쳐 mod 2 argument 사용. Loop 9 의 일반 증명은 geom_sum + multiplicative + STRICT pow_sub_one bound 만으로 직접 완결 — 더 구조적.
-- **Case 2b 재증명**: 특별히 (a, b) = (1, 1) 로 특화하면 loop 9 정리가 loop 5 결과를 그대로 재도출.
-- **Case 3 재활용**: `prime_pow_strict_gt` 을 odd prime a=1 에서는 직접 증명 (nlinarith), a≥2 에서는 case 3 그대로 — 코드 재사용률 높음.
-- **자연수 subtraction**: p^(a+1) - 1 을 naturals 에서 다룰 때 `Nat.eq_of_mul_eq_mul_left` + `omega` 조합이 결정적.
+- **Integrates with case 2b**: loop 5's case 2b demonstration went through `(pq - 1)² = (p + q)²` semilinear analysis plus mod-2 argument. Loop 9's general demonstration concludes directly from geom_sum + multiplicative + STRICT pow_sub_one bound — more structural.
+- **Case 2b re-demonstration**: specializing to (a, b) = (1, 1) recovers loop 5's result from loop 9.
+- **Case 3 reuse**: `prime_pow_strict_gt` is demonstrated directly for odd prime a=1 (nlinarith); for a≥2 it is case 3 verbatim — high code reuse.
+- **Nat subtraction**: when handling p^(a+1) - 1 in naturals, the `Nat.eq_of_mul_eq_mul_left` + `omega` combination is decisive.
 
-## 다음 (v5 후속)
+## Next (v5 follow-on)
 
-1. **Case 4b(iii)**: n = 2^a · q^b, a ≥ 2, q odd. 2^a 의 σφ vs 2^a·(a+1) bound 필요 — a=2 는 특이 (σφ(4) = 14, 4·3 = 12, 비율 7/6 < 4/3)
-2. **Case 4c**: ω(n) ≥ 3 with any powers — multiplicative 확장
-3. **완전 통합 (Case 4 general)**: ω(n) ≥ 2 인 모든 n (n ≠ 6) — 단일 정리
+1. **Case 4b(iii)**: n = 2^a · q^b, a ≥ 2, q odd. Requires σφ vs 2^a·(a+1) bound for 2^a — a=2 is special (σφ(4) = 14, 4·3 = 12, ratio 7/6 < 4/3)
+2. **Case 4c**: ω(n) ≥ 3 with any powers — multiplicative extension
+3. **Full integration (Case 4 general)**: all n with ω(n) ≥ 2 (n ≠ 6) — single theorem
 
-## 파일
+## Files
 
-- lean4-n6/N6/TheoremB_Case4b_OddPrimePowers.lean (163 줄)
+- lean4-n6/N6/TheoremB_Case4b_OddPrimePowers.lean (163 lines)
 - Imports: TheoremB_PrimeCase, TheoremB_Case3_PrimePow
 - Re-uses: `prime_pow_strict_gt`, `geom_sum_identity`, `sigma_one_prime_pow_sum`

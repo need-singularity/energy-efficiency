@@ -15,24 +15,24 @@ This file is part of the n6-architecture repository.
 See `README.md` and `domains/_index.json` for overall context.
 
 
-# BT-1426 — AI 평가 파이프라인 Mk.V 승격
+# BT-1426 — AI evaluation-pipeline Mk.V promotion
 
-## 요약
-메타평가 τ=4 유한 수렴 + ISO/IEEE 산업 표준 채택. Goodhart 법칙 저항을 6개 독립 보상 분산으로 달성. 평가 과적합 이론 한계 내 수렴 확인.
+## Summary
+Meta-evaluation τ=4 finite convergence + ISO/IEEE industry-standard adoption. Goodhart-law resistance achieved via 6 independent reward axes. Convergence confirmed within the evaluation-overfit theoretical limit.
 
-## Mk.V 한계 축
-측정 한계 — Goodhart 법칙: "측정이 목표가 되면 더 이상 좋은 측정이 아님". τ=4 메타평가 계층이 유한 수렴을 보장. 6개 독립 보상 축이 Goodhart 기대 왜곡을 1/n로 희석.
+## Mk.V limit axis
+Measurement limit — Goodhart's law: "when a measure becomes a target, it ceases to be a good measure." The τ=4 meta-evaluation hierarchy guarantees finite convergence. 6 independent reward axes dilute Goodhart-driven distortion by 1/n.
 
-## n=6 돌파 경로
-- τ=4 메타평가 계층: 벤치마크→메타평가→메타메타평가→표준위원회 = 4단계 수렴
-- 독립 보상 축 n=6: 정확도/안전성/효율성/공정성/설명가능성/견고성 — 단일 지표 과적합 방지
-- 표준화 슬롯 J₂=24: ISO/IEEE 공동 24개 평가 기준 후보 (σ=12 AI + τ·n=24 일반 IT)
-- 수렴 증명: τ=4 반복으로 Cauchy 수열 → ε < 1/σ = 1/12 수준 오차 이내 확정
-- Goodhart 저항지수 = n/(n-1) = 6/5 ≈ 1.2 — 기존 단일 지표 대비 20% 왜곡 억제
+## n=6 breakthrough path
+- τ=4 meta-evaluation hierarchy: benchmark → meta-evaluation → meta-meta-evaluation → standards committee = 4 convergence stages
+- Independent reward axes n=6: accuracy / safety / efficiency / fairness / explainability / robustness — prevents single-metric overfit
+- Standardization slots J₂=24: 24 joint ISO/IEEE evaluation-criterion candidates (σ=12 AI + τ·n=24 general IT)
+- Convergence demonstration: τ=4 iterations → Cauchy sequence → error confined within ε < 1/σ = 1/12
+- Goodhart-resistance index = n/(n−1) = 6/5 ≈ 1.2 — 20% distortion suppression vs. legacy single-metric
 
-## 검증
+## Verification
 - claim <= limit self-check: domains/cognitive/ai-eval/ai-eval.md §Mk.V VERIFY
-- Atlas 상수: theory/constants/atlas-constants.md Mk.V Anchor 섹션
+- Atlas constants: theory/constants/atlas-constants.md Mk.V Anchor section
 
-## 돌파 등급
-TRANSCEND — τ=4 유한 수렴 EXACT 증명으로 측정 한계(Goodhart)를 원리적으로 초월. 6개 직교 보상 분산 구조가 단일 지표 과적합을 수학적으로 봉쇄.
+## Breakthrough grade
+TRANSCEND — the τ=4 finite-convergence EXACT demonstration transcends the measurement (Goodhart) limit on principle. The 6 orthogonal reward-variance structure mathematically forecloses single-metric overfit.

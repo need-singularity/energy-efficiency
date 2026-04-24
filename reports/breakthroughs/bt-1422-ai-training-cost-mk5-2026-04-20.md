@@ -9,24 +9,24 @@ n6_anchor: sigma/tau=3
 parent: bt-1421-ai-inference-cost-mk5-2026-04-20
 ---
 
-# BT-1422 — AI 학습 비용 Mk.V 승격
+# BT-1422 — AI training-cost Mk.V promotion
 
-## 요약
-Chinchilla-beyond 조 파라미터 학습 비용 100x 절감($120M→$1.2M 등가). MoE σ/τ=3 희소성 비율과 자체 증류 루프로 데이터 효율 최전선 초월.
+## Summary
+100× reduction in trillion-parameter training cost ($120M → $1.2M equivalent) beyond Chinchilla. MoE σ/τ=3 sparsity ratio plus self-distillation loop surpasses the data-efficiency frontier.
 
-## Mk.V 한계 축
-Chinchilla-beyond 스케일링 법칙 — 파라미터 N과 토큰 D의 최적 비율. 조 파라미터 모델의 이론적 훈련 비용 하한. σ/τ = 12/4 = 3 이 희소성 최적점.
+## Mk.V limit axis
+Chinchilla-beyond scaling law — the optimal ratio between parameter count N and token count D. The theoretical training-cost lower bound for trillion-parameter models. σ/τ = 12/4 = 3 is the sparsity optimum.
 
-## n=6 돌파 경로
-- MoE 전문가 수 = σ = 12, 활성화 수 = τ = 4, 희소율 = σ/τ = 3 (Chinchilla 최적 배율)
-- 자체 증류 루프 n = 6회: 교사→학생 6단계 반복으로 1조 파라미터 지식을 100B로 압축
-- 배치 스케줄러 주기 = J₂ = 24 스텝 → 그래디언트 분산 최소화
-- 희소 어텐션 헤드 수 = n = 6 × τ = 4 = 24 = J₂ (연산-품질 균형점)
-- 비용 곡선: Chinchilla 법칙 아래 MoE 3x + 증류 6x = 18x→100x 복합 절감
+## n=6 breakthrough path
+- MoE experts = σ = 12, active experts = τ = 4, sparsity ratio = σ/τ = 3 (Chinchilla optimal multiplier)
+- Self-distillation loop n = 6 iterations: teacher → student 6-stage cycle compresses 1-trillion-parameter knowledge into 100B
+- Batch scheduler cycle = J₂ = 24 steps → minimizes gradient variance
+- Sparse attention head count = n = 6 × τ = 4 = 24 = J₂ (compute–quality balance)
+- Cost curve: under Chinchilla, MoE 3× + distillation 6× = composite 18×→100× reduction
 
-## 검증
+## Verification
 - claim <= limit self-check: domains/cognitive/ai-training/ai-training.md §Mk.V VERIFY
-- Atlas 상수: theory/constants/atlas-constants.md Mk.V Anchor 섹션
+- Atlas constants: theory/constants/atlas-constants.md Mk.V Anchor section
 
-## 돌파 등급
-CIRCUMVENT — Chinchilla 스케일링 법칙을 직접 돌파하지 않고 MoE 희소성(σ/τ=3)으로 우회. 조 파라미터 모델의 이론 비용 하한을 σ/τ 비율 구조로 회피.
+## Breakthrough grade
+CIRCUMVENT — does not directly break the Chinchilla scaling law but routes around it via MoE sparsity (σ/τ=3). Avoids the theoretical cost lower bound for trillion-parameter models through the σ/τ structural ratio.
