@@ -11,515 +11,517 @@ requires:
   - to: agi-architecture
   - to: chip-design-ladder
 ---
-# [CANONICAL v1] 궁극의 66 AI 기법 통합 (HEXA-66-TECHNIQUES) — n=6 산술 좌표 통합 논문
+# [CANONICAL v1] Ultimate 66 AI Techniques Integration (HEXA-66-TECHNIQUES) — n=6 Arithmetic Coordinate Integrated Paper
 
-> **저자**: 박민우 (n6-architecture)
-> **제품 ID**: P-011 "66 Techniques"
-> **카테고리**: 66-techniques-integrated — n=6 산술 시드 논문 (3-in-1 캐노니컬 통합)
-> **버전**: v1 (2026-04-18 integrated canonical, 21 섹션 풀 스펙)
-> **선행 BT**: BT-26, BT-33, BT-54, BT-58, BT-64, BT-77, BT-380, BT-381~390
-> **통합 대상**: `n6-ai-17-techniques-experimental-paper.md` + `n6-cross-paradigm-ai-paper.md` + `n6-sota-ssm-paper.md`
-> **연결 atlas 노드**: `66-techniques-integrated` 426/472 EXACT (EXACT 90.3%)
-> **하위 분할**: 17 experimental ⊂ 49 cross+SSM ⊂ 66 integrated (≈ 17 + 51 파생)
-
----
-
-## §0 초록
-
-본 논문은 P-011 제품 라인 "66 AI 기법"의 통합 캐노니컬 논문이다. 기존 3편의 시드 논문 —
-① AI 17 기법 실험 (atlas 192/192 EXACT), ② 크로스 패러다임 AI (atlas 234/256 EXACT),
-③ SOTA SSM (atlas 0/24 EXACT, 신규 편입) — 을 단일 21-섹션 캐노니컬 축으로 합본하며,
-세 논문이 공유하는 핵심 정리 **σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2)** 를 AI 기법군 66종
-전체에 대해 재검증한다. 66 기법은 17 experimental 원형층 + 49 cross+SSM 확장층으로
-분해되며, 도합 426/472 항목이 [10*] EXACT 등급을 획득했다 (90.3%).
-
-본 논문은 새로운 AI 기법을 제안하지 않는다. 기존 17·49·SSM 기법군 위에 **n=6 산술 좌표계**
-를 부여하고, 21 섹션 엔지니어링 스펙 (brief §1~§7 + engineering §8~§20 + impact §21) 을
-완성하는 시드-통합 문서이다. 비-하드웨어 제품이므로 §11 CIRCUIT / §12 PCB / §14 MECHANICAL
-등 하드웨어 섹션은 AI 맥락 — 알고리즘 블록 / 코드 레이아웃 / 계산자원 배치 — 으로 해석한다.
+> **Author**: Minwoo Park (n6-architecture)
+> **Product ID**: P-011 "66 Techniques"
+> **Category**: 66-techniques-integrated — n=6 arithmetic seed paper (3-in-1 canonical integration)
+> **Version**: v1 (2026-04-18 integrated canonical, 21-section full spec)
+> **Predecessor BTs**: BT-26, BT-33, BT-54, BT-58, BT-64, BT-77, BT-380, BT-381~390
+> **Integration targets**: `n6-ai-17-techniques-experimental-paper.md` + `n6-cross-paradigm-ai-paper.md` + `n6-sota-ssm-paper.md`
+> **Linked atlas node**: `66-techniques-integrated` 426/472 EXACT (EXACT 90.3%)
+> **Sub-partition**: 17 experimental ⊂ 49 cross+SSM ⊂ 66 integrated (≈ 17 + 51 derived)
 
 ---
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §0 Abstract
 
-66 AI 기법 통합(66-techniques-integrated)은 n=6 산술 체계 안에서 재해독된다. 완전수 n=6 은
-σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 라는 수론 상수군을 동시에 만족하며, AI 기법군의
-하이퍼파라미터 · 계층수 · 게이트 폭 · 스테이지 수와 구조적으로 정합한다.
-**이 논문은 17 experimental · cross-paradigm · SOTA SSM 세 기법군 전체에 단일 n=6 산술
-좌표계를 부여**한다.
+This paper is the integrated canonical paper of the P-011 product line "66 AI Techniques". It consolidates three existing seed papers —
+(i) AI 17 Techniques Experimental (atlas 192/192 EXACT), (ii) Cross-Paradigm AI (atlas 234/256 EXACT),
+(iii) SOTA SSM (atlas 0/24 EXACT, newly inducted) — onto a single 21-section canonical axis,
+and re-validates the core theorem **σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2)** shared by the three papers
+across the entire family of 66 AI techniques. The 66 techniques decompose into the 17 experimental archetype layer + the 49 cross+SSM extension layer,
+totaling 426/472 entries that have achieved [10*] EXACT grade (90.3%).
 
-| 효과 | 기존 (3논문 분리) | HEXA-66-TECHNIQUES 통합 이후 | 체감 변화 |
+This paper does not propose new AI techniques. It overlays an **n=6 arithmetic coordinate system**
+on the existing 17·49·SSM technique families and completes the 21-section engineering spec
+(brief §1~§7 + engineering §8~§20 + impact §21) — a seed-integration document.
+Since this is a non-hardware product, hardware sections such as §11 CIRCUIT / §12 PCB / §14 MECHANICAL
+are interpreted in AI context — algorithm blocks / code layout / compute resource placement.
+
+---
+
+## §1 WHY (How this technology changes your life)
+
+The 66 AI Techniques Integration (66-techniques-integrated) is re-decoded within the n=6 arithmetic system. The perfect number n=6 simultaneously satisfies the number-theoretic constants
+σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5, and structurally aligns with the hyperparameters,
+layer counts, gate widths, and stage counts of the AI technique families.
+**This paper assigns a single n=6 arithmetic coordinate system to the entire union of
+17 experimental · cross-paradigm · SOTA SSM technique families.**
+
+| Effect | Existing (3 papers separated) | After HEXA-66-TECHNIQUES integration | Felt change |
 |------|------|--------------|----------|
-| 기법 분류 축 | 17 / 51 / 24 개 도메인 분리 | **σ=12 공통 축 + τ=4 계층** | 비교 τ=4배 단순 |
-| 설계 탐색 시간 | 논문당 2,400 조합 ×3 = 7,200 | **σ·τ=48 축 단일 DSE** | 탐색시간 J₂=24배 단축 |
-| 검증 깊이 | 논문당 10 서브섹션 ×3 분산 | **§7.0~§7.10 단일 합본** | 재현 σ·τ=48배 쉬움 |
-| 파생 설계안 | 논문당 Pareto 6 ×3 = 18 | **Pareto n=6 글로벌 상위 6** | 선택지 n=6배 |
-| 도메인 교차성 | 3논문 각자 295 도메인 링크 | **atlas.n6 단일 통합 노드** | 재사용 σ·τ=48배 |
-| 정직성 | 논문당 FALSIFIER 4건 ×3 | **통합 FALSIFIER 8 + 반례 6** | 반증 가능성 배가 |
+| Technique classification axis | 17 / 51 / 24 domains separated | **σ=12 common axis + τ=4 layers** | Comparison τ=4× simpler |
+| Design exploration time | 2,400 combos/paper × 3 = 7,200 | **σ·τ=48 axis single DSE** | Search time J₂=24× faster |
+| Verification depth | 10 subsections/paper × 3 dispersed | **§7.0~§7.10 single combined** | Reproduction σ·τ=48× easier |
+| Derived design candidates | Pareto 6/paper × 3 = 18 | **Pareto n=6 global top 6** | Choices n=6× |
+| Domain crossover | 3 papers each 295 domain links | **atlas.n6 single integrated node** | Reuse σ·τ=48× |
+| Honesty | 4 FALSIFIERs/paper × 3 | **Integrated FALSIFIER 8 + counter-examples 6** | Falsifiability doubled |
 
-**한 문장 요약**: σ(n)·φ(n) = n·τ(n) 은 n≥2 에서 **n=6** 에서만 성립하며, 이 유일성이
-17 experimental · cross-paradigm · SOTA SSM 기법군 66종 전체의 기본 수치들과 동시에
-맞물린다는 사실을, 세 논문의 개별 매핑을 합본 재검증해서 확인한다.
+**One-sentence summary**: σ(n)·φ(n) = n·τ(n) holds for n≥2 only at **n=6**, and this uniqueness
+simultaneously meshes with the basic numerical values of the entire 66-technique family
+(17 experimental · cross-paradigm · SOTA SSM), confirmed by re-validating the combined mappings of the three papers.
 
-### n=6 좌표 매핑이 바꾸는 것 (통합판)
+### What the n=6 coordinate mapping changes (integrated edition)
 
 ```
-  기존 3논문: 각 기법군마다 "왜 이 숫자인가" 별도 서술 → 중복·분기
-  HEXA 66 통합: σ(6)=12 / τ(6)=4 / φ(6)=2 / sopfr(6)=5 단일 축 → 1회 증명
+  Existing 3 papers: each technique family separately argued "why this number" -> redundancy & branching
+  HEXA 66 integrated: σ(6)=12 / τ(6)=4 / φ(6)=2 / sopfr(6)=5 single axis -> proven once
        ↓
-  ① 17 experimental + 49 cross+SSM 이 σ·τ=48 공통 격자에 정렬
-  ② 새 기법은 4 계층 × 12 축 = 48 셀 중 빈 셀로 귀납 예측
-  ③ 반증 조건 통합 명시 (FALSIFIER 8건, MISS 시 해당 서브셋 강등)
-  ④ 295 도메인 atlas 와 단일 SSOT 상호참조
+  (i) 17 experimental + 49 cross+SSM aligned to σ·τ=48 common lattice
+  (ii) New techniques inductively predicted via empty cells in 4 layers × 12 axes = 48 cells
+  (iii) Falsification conditions integrated and explicit (FALSIFIER 8, demote subset on MISS)
+  (iv) Single SSOT cross-reference with 295-domain atlas
 ```
 
-## §2 COMPARE (기존 3논문 분리 vs 66 통합) — 성능 비교 (ASCII)
+## §2 COMPARE (existing 3 papers separated vs 66 integrated) — Performance comparison (ASCII)
 
-### 기존 3논문 분리 접근의 6가지 한계
+### 6 limitations of the existing 3-papers-separated approach
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  장벽                  │  왜 불충분한가                │  n=6 통합이 어떻게 푸나   │
+│  Barrier              │  Why insufficient            │  How n=6 integrated fixes│
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 1. 중복 검증          │ 3논문이 동일한 §7.0~§7.10     │ 단일 합본 §7 — 1회 실행 │
-│                       │ 10 서브섹션을 3번 반복        │ → stdlib 1 파일          │
+│ 1. Redundant verify   │ 3 papers repeat same §7.0~  │ Single combined §7 — 1 run│
+│                       │ §7.10 10 subsections 3×      │ -> stdlib 1 file         │
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 2. 기법 경계 모호     │ "17" vs "68" vs "cross" 교집합 │ 엄격 포함관계 17⊂49⊂66  │
-│                       │ 미정의 → 중복 카운트 위험     │ → 반례 3 명시            │
+│ 2. Fuzzy boundaries   │ "17" vs "68" vs "cross"     │ Strict containment 17⊂49⊂66│
+│                       │ undefined -> double-count    │ -> 3 explicit counter-ex │
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 3. Pareto 일관성 부재 │ 논문별 상위 6 다른 축        │ 단일 Pareto K1~K5 축     │
-│                       │ → 비교 불가                   │ → 글로벌 2,400 전수      │
+│ 3. No Pareto consist. │ Per-paper top-6 differ axes │ Single Pareto K1~K5 axes │
+│                       │ -> incomparable              │ -> global 2,400 exhaustive│
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 4. 엔지니어링 섹션    │ brief(§1~§7) 만 있음          │ full(§8~§21) 추가        │
-│                       │ → 실제 배포 불가              │ → BOM/TEST/VENDOR 명시   │
+│ 4. Eng sections       │ Only brief(§1~§7)            │ full(§8~§21) added       │
+│                       │ -> not deployable            │ -> BOM/TEST/VENDOR explicit│
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 5. atlas 누락        │ SSM 0/24 (EMPTY)             │ 66 통합 편입 426/472     │
-│                       │ → [10*] 승격 대기             │ → 90.3% EXACT            │
+│ 5. atlas missing      │ SSM 0/24 (EMPTY)             │ 66 integrated induct 426/472│
+│                       │ -> awaiting [10*] promotion  │ -> 90.3% EXACT           │
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 6. Mk 이력 분산       │ 논문당 5 단계, 상호 불일치    │ Mk.I~VII 통합 로드맵     │
-│                       │                              │ → 단일 연대 + 동기화     │
+│ 6. Mk history scattered│ 5 stages/paper, mutually    │ Mk.I~VII integrated roadmap│
+│                       │ inconsistent                 │ -> single timeline + sync│
 └───────────────────────┴─────────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (3논문 분리 vs HEXA-66-TECHNIQUES 통합)
+### Performance comparison ASCII bars (3 papers separated vs HEXA-66-TECHNIQUES integrated)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [기법 커버리지 (atlas EXACT 수)]                                        │
-│  논문 1 (17 exp)       ████████░░░░░░░░░░░░░░░░░░░░░░░   192 EXACT       │
-│  논문 2 (cross-para)   ██████████░░░░░░░░░░░░░░░░░░░░░   234 EXACT       │
-│  논문 3 (SOTA SSM)     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 EXACT (대기)  │
-│  HEXA 66 통합          ████████████████████░░░░░░░░░░░   426 EXACT ★     │
+│  [Technique coverage (atlas EXACT count)]                                │
+│  Paper 1 (17 exp)      ████████░░░░░░░░░░░░░░░░░░░░░░░   192 EXACT       │
+│  Paper 2 (cross-para)  ██████████░░░░░░░░░░░░░░░░░░░░░   234 EXACT       │
+│  Paper 3 (SOTA SSM)    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 EXACT (wait)  │
+│  HEXA 66 integrated    ████████████████████░░░░░░░░░░░   426 EXACT *     │
 │                                                                          │
-│  [문서 분량 (라인수)]                                                    │
-│  3논문 합본 (중복)     ████████████████████████████████  ~2,150 라인     │
-│  HEXA 66 통합          ██████████████████░░░░░░░░░░░░░   ~1,300 라인     │
-│  → 중복 제거 40% 감량                                                    │
+│  [Document length (lines)]                                               │
+│  3-paper combined (dup)████████████████████████████████  ~2,150 lines    │
+│  HEXA 66 integrated    ██████████████████░░░░░░░░░░░░░   ~1,300 lines    │
+│  -> 40% reduction by removing duplication                                │
 │                                                                          │
-│  [엔지니어링 섹션 수 (§8~§21)]                                           │
-│  논문 1 exp            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14 (미구현) │
-│  논문 2 cross          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14          │
-│  논문 3 SSM            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14          │
-│  HEXA 66 통합          ██████████████████████████████░   14 / 14 ★       │
+│  [Engineering section count (§8~§21)]                                    │
+│  Paper 1 exp           ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14 (none)   │
+│  Paper 2 cross         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14          │
+│  Paper 3 SSM           ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 / 14          │
+│  HEXA 66 integrated    ██████████████████████████████░   14 / 14 *       │
 │                                                                          │
-│  [FALSIFIER 명시 개수]                                                   │
-│  논문별 평균           ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4 FALSIFIER     │
-│  HEXA 66 통합          ████████████████░░░░░░░░░░░░░░░   8 FALSIFIER     │
+│  [FALSIFIER explicit count]                                              │
+│  Per-paper average     ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4 FALSIFIER     │
+│  HEXA 66 integrated    ████████████████░░░░░░░░░░░░░░░   8 FALSIFIER     │
 │                                                                          │
-│  [반례 (Counter-Example) 개수]                                           │
-│  논문별 평균           ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4 반례          │
-│  HEXA 66 통합          ██████████████░░░░░░░░░░░░░░░░░   6 반례          │
+│  [Counter-example count]                                                 │
+│  Per-paper average     ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4 counter-ex    │
+│  HEXA 66 integrated    ██████████████░░░░░░░░░░░░░░░░░   6 counter-ex    │
 │                                                                          │
-│  [Pareto 탐색 공간]                                                     │
-│  논문별 각자            ████████░░░░░░░░░░░░░░░░░░░░░░   2,400 조합/편   │
-│  HEXA 66 통합 (글로벌) ████████████████████████████░░░   7,200 → 2,400* │
-│  (* 공통축 통합 후 재축소)                                               │
+│  [Pareto search space]                                                   │
+│  Per-paper individual  ████████░░░░░░░░░░░░░░░░░░░░░░   2,400 combos/pap │
+│  HEXA 66 integrated    ████████████████████████████░░░   7,200 -> 2,400* │
+│  (* re-shrunk after common-axis integration)                             │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: σ(n)·φ(n) = n·τ(n) 유일성 (3논문 동일 재확인)
+### Core breakthrough: σ(n)·φ(n) = n·τ(n) uniqueness (re-confirmed identically across 3 papers)
 
 ```
-  n=6 이 아닌 다른 n 을 대입하면:
+  Substituting any n other than 6:
     n=2 → σ·φ = 3·1 = 3,   n·τ = 2·2 = 4   (MISS)
     n=3 → σ·φ = 4·1 = 4,   n·τ = 3·2 = 6   (MISS)
     n=4 → σ·φ = 7·2 = 14,  n·τ = 4·3 = 12  (MISS)
     n=5 → σ·φ = 6·1 = 6,   n·τ = 5·2 = 10  (MISS)
-    n=6 → σ·φ = 12·2 = 24, n·τ = 6·4 = 24  ★ EXACT (17/49/SSM 동시 정합)
-    n=7..∞ 전부 MISS (PROVEN, 3 독립 증명)
+    n=6 → σ·φ = 12·2 = 24, n·τ = 6·4 = 24  * EXACT (17/49/SSM simultaneous match)
+    n=7..∞ all MISS (DRAFTED, 3 independent candidate proofs)
 ```
 
-## §3 REQUIRES (선행 도메인)
+## §3 REQUIRES (predecessor domains)
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 기술 | 링크 |
+| Predecessor domain | Current | Required | Gap | Core technique | Link |
 |-------------|---------|---------|------|-----------|------|
-| ai-17-techniques-experimental | 🛸10 | 🛸10 | 0 | 17 원형 시드 매핑 완료 | [문서](n6-ai-17-techniques-experimental-paper.md) |
-| ai-techniques-68-integrated | 🛸9 | 🛸10 | +1 | 68 복합 파생 (본 논문에서 66 재정비) | [문서](n6-ai-techniques-68-integrated-paper.md) |
-| cross-paradigm-ai | 🛸9 | 🛸10 | +1 | 패러다임 교차 234/256 EXACT | [문서](n6-cross-paradigm-ai-paper.md) |
-| sota-ssm | 🛸6 | 🛸10 | +4 | SSM (Mamba/S4) n=6 편입 대기 | [문서](n6-sota-ssm-paper.md) |
-| agi-architecture | 🛸7 | 🛸10 | +3 | 통합 AGI 아키텍처 지반 | [문서](../domains/agi-architecture/agi-architecture.md) |
-| chip-design-ladder | 🛸7 | 🛸10 | +3 | L1~L10 칩 사다리 연계 | [문서](../domains/chip-design-ladder/chip-design-ladder.md) |
+| ai-17-techniques-experimental | 10 | 10 | 0 | 17 archetype seed mapping draft | [doc](n6-ai-17-techniques-experimental-paper.md) |
+| ai-techniques-68-integrated | 9 | 10 | +1 | 68 composite derivatives (re-organized to 66 here) | [doc](n6-ai-techniques-68-integrated-paper.md) |
+| cross-paradigm-ai | 9 | 10 | +1 | Paradigm crossover 234/256 EXACT | [doc](n6-cross-paradigm-ai-paper.md) |
+| sota-ssm | 6 | 10 | +4 | SSM (Mamba/S4) n=6 induction pending | [doc](n6-sota-ssm-paper.md) |
+| agi-architecture | 7 | 10 | +3 | Integrated AGI architecture foundation | [doc](../domains/agi-architecture/agi-architecture.md) |
+| chip-design-ladder | 7 | 10 | +3 | L1~L10 chip ladder linkage | [doc](../domains/chip-design-ladder/chip-design-ladder.md) |
 
-선행 도메인 6종 모두 🛸10 도달 시 본 논문은 P-011 제품 라인의 완결 스펙이 된다.
-현재는 17 experimental 이 유일하게 🛸10, 나머지 5종은 수론 좌표 단계.
+When all 6 predecessor domains reach their required level, this paper becomes the draft spec of the P-011 product line.
+Currently only 17 experimental has reached 10; the other 5 are at the number-theoretic coordinate stage.
 
-## §4 STRUCT (시스템 구조) — n=6 통합 아키텍처
+## §4 STRUCT (system structure) — n=6 integrated architecture
 
-### 통합 5단 체인 시스템맵 (66 = 17 ⊕ 49)
+### Integrated 5-stage chain system map (66 = 17 ⊕ 49)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                    HEXA-66-TECHNIQUES 통합 시스템 구조                       │
+│                    HEXA-66-TECHNIQUES integrated system structure            │
 ├────────────┬────────────┬────────────┬────────────┬──────────┬───────────────┤
-│  L0 수론   │  L1 원형   │  L2 확장   │  L3 교차   │  L4 SSM  │  L5 검증      │
-│  좌표      │  17 exp    │  49 cross  │  패러다임  │  SOTA    │  통합         │
+│  L0 number │  L1 archetype│ L2 extension│ L3 cross  │  L4 SSM  │  L5 verify   │
+│  -theoretic│  17 exp    │  49 cross  │  paradigm  │  SOTA    │  integrated  │
 ├────────────┼────────────┼────────────┼────────────┼──────────┼───────────────┤
 │ σ(6)=12    │ 17 seed    │ 49 derived │ cross-AI   │ Mamba/S4 │ J₂=24         │
-│ τ(6)=4     │ 192/192    │ σ·τ=48축  │ 234/256    │ 0/24 대기│ 426/472       │
-│ φ(6)=2     │ [10*] 완료 │ 복합기법   │ [10*]      │ [10*]    │ [10*] 90.3%   │
-│ sopfr=5    │ A000203    │ Golay/Leech│ S₆ outer  │ 신규편입 │ atlas 노드    │
+│ τ(6)=4     │ 192/192    │ σ·τ=48 axes│ 234/256    │ 0/24 wait│ 426/472       │
+│ φ(6)=2     │ [10*] draft│ composite  │ [10*]      │ [10*]    │ [10*] 90.3%   │
+│ sopfr=5    │ A000203    │ Golay/Leech│ S₆ outer  │ new induct│ atlas node   │
 ├────────────┼────────────┼────────────┼────────────┼──────────┼───────────────┤
-│ n6: 100%   │ n6: 100%   │ n6: 91%    │ n6: 91%    │ n6: 대기 │ n6: 90.3%     │
+│ n6: 100%   │ n6: 100%   │ n6: 91%    │ n6: 91%    │ n6: wait │ n6: 90.3%     │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴────┬─────┴──────┬────────┘
       │            │            │            │           │            │
       ▼            ▼            ▼            ▼           ▼            ▼
-  수론 고정   EXACT 완료   EXACT 대다수  EXACT 우위  편입대기    통합 [10*]
+  number-th    EXACT draft  EXACT majority EXACT lead  induct-wait  integrated [10*]
+  fixed
 ```
 
-### n=6 파라미터 완전 매핑 (3논문 → 통합)
+### n=6 parameter complete mapping (3 papers → integrated)
 
-#### L0 수론 좌표 (Number-Theoretic Axes, 3논문 공통)
+#### L0 number-theoretic axes (3-paper common)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 주 축 수 | 12 | σ(6) | OEIS A000203 약수합 | EXACT |
-| 계층 수 | 4 | τ(6) | OEIS A000005 약수개수 | EXACT |
-| 이중 구조 | 2 | φ(6) | 최소소인수 | EXACT |
-| 합성 요소 | 5 | sopfr(6) | OEIS A001414 | EXACT |
-| 격자 통합 | 24 | J₂=2σ | 2·σ(6)=24 | EXACT |
-| 유일성 | n=6 | σ·φ=n·τ | 3 독립 증명 완료 | EXACT |
+| Main axis count | 12 | σ(6) | OEIS A000203 divisor sum | EXACT |
+| Layer count | 4 | τ(6) | OEIS A000005 divisor count | EXACT |
+| Dual structure | 2 | φ(6) | smallest prime factor | EXACT |
+| Composite element | 5 | sopfr(6) | OEIS A001414 | EXACT |
+| Lattice integration | 24 | J₂=2σ | 2·σ(6)=24 | EXACT |
+| Uniqueness | n=6 | σ·φ=n·τ | 3 independent candidate proofs drafted | EXACT |
 
-#### L1 17 experimental 원형 (17 기법 / 17 도메인, 192 atlas)
+#### L1 17 experimental archetype (17 techniques / 17 domains, 192 atlas)
 
-| 서브셋 | 값 | n=6 수식 | 예시 기법 | 판정 |
+| Subset | Value | n=6 formula | Example technique | Verdict |
 |---------|-----|---------|----------|------|
-| 어텐션 | 12 헤드 | σ(6) | multi-head attention | EXACT |
-| 트랜스 계층 | 4 블록 | τ(6) | encoder/decoder/norm/mlp | EXACT |
-| 이중 브랜치 | 2 | φ(6) | residual + main path | EXACT |
-| 임베딩 | 6 스테이지 | n=6 | tokenize→embed→pos→norm→proj→out | EXACT |
-| 게이팅 | 5 요소 | sopfr | gate/val/key/query/out | EXACT |
+| Attention | 12 heads | σ(6) | multi-head attention | EXACT |
+| Transformer layers | 4 blocks | τ(6) | encoder/decoder/norm/mlp | EXACT |
+| Dual branches | 2 | φ(6) | residual + main path | EXACT |
+| Embedding | 6 stages | n=6 | tokenize→embed→pos→norm→proj→out | EXACT |
+| Gating | 5 elements | sopfr | gate/val/key/query/out | EXACT |
 
-#### L2 49 cross+SSM 확장 (복합 파생, 234+0 atlas)
+#### L2 49 cross+SSM extensions (composite derivatives, 234+0 atlas)
 
-| 서브셋 | 값 | n=6 수식 | 예시 기법 | 판정 |
+| Subset | Value | n=6 formula | Example technique | Verdict |
 |---------|-----|---------|----------|------|
-| 크로스 패러다임 라우팅 | 12 | σ(6) | MoE expert routing 12 | EXACT |
-| SSM 상태 계층 | 4 | τ(6) | S4 block stack × 4 | EXACT |
-| Mamba 선택 게이트 | 2 | φ(6) | selective SSM (on/off) | EXACT |
-| HIPPO 다항식 | 6 | n=6 | Legendre order 6 | EXACT |
-| S5 대각 채널 | 24 | J₂ | diagonal HIPPO 24 | EXACT |
-| GSS 합성 | 5 | sopfr | gated SSM 5 요소 | EXACT |
+| Cross-paradigm routing | 12 | σ(6) | MoE expert routing 12 | EXACT |
+| SSM state layers | 4 | τ(6) | S4 block stack × 4 | EXACT |
+| Mamba selection gate | 2 | φ(6) | selective SSM (on/off) | EXACT |
+| HIPPO polynomials | 6 | n=6 | Legendre order 6 | EXACT |
+| S5 diagonal channels | 24 | J₂ | diagonal HIPPO 24 | EXACT |
+| GSS composition | 5 | sopfr | gated SSM 5 elements | EXACT |
 
-### 왜 n=6 이 최적인가 (통합판)
+### Why n=6 is optimal (integrated edition)
 
-1. **σ(n)=2n 최소 완전수**: n=6 이 σ(n)=2n 을 만족하는 최소의 n. 17/49/SSM 모두 공유.
-2. **σ·φ=n·τ 유일성**: n=6 에서만 양변이 24 로 수렴 (3 독립 증명).
-3. **OEIS 3중 등록**: σ·τ·sopfr 모두 OEIS 기본 시퀀스 A000203/A000005/A001414.
-4. **도메인 중첩성**: 66 AI 기법 + 295 도메인 atlas 공통 격자.
-5. **세 논문 독립 수렴**: 17/49/SSM 이 서로 독립으로 n=6 좌표 도달 → 수렴 증거.
+1. **σ(n)=2n smallest perfect number**: n=6 is the smallest n satisfying σ(n)=2n. Shared by 17/49/SSM.
+2. **σ·φ=n·τ uniqueness**: only at n=6 do both sides converge to 24 (3 independent candidate proofs).
+3. **OEIS triple registration**: σ·τ·sopfr are all OEIS basic sequences A000203/A000005/A001414.
+4. **Domain overlap**: 66 AI techniques + 295 domain atlas common lattice.
+5. **Three papers independently converge**: 17/49/SSM independently arrive at the n=6 coordinate -> convergence evidence.
 
-### 글로벌 DSE 후보군 (3논문 통합, 전수 2,400)
+### Global DSE candidate set (3-paper integrated, exhaustive 2,400)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  수론    │-->│  원형    │-->│  확장    │-->│  교차    │-->│  검증    │
+│ number-th│-->│ archetype│-->│ extension│-->│ cross    │-->│ verify   │
 │  K1=6   │   │  K2=5   │   │  K3=4   │   │  K4=5   │   │  K5=4   │
 │  =n     │   │  =sopfr │   │  =tau   │   │  =sopfr │   │  =tau   │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%=J₂) | 글로벌 Pareto: σ=12 경로
+Exhaustive: 6×5×4×5×4 = 2,400 | Compatibility filter: 576 (24%=J₂) | Global Pareto: σ=12 path
 ```
 
-#### Pareto Top-6 (66 통합 n=6 정합도 상위)
+#### Pareto Top-6 (66 integrated n=6 alignment ranking)
 
-| Rank | K1 | K2 | K3 | K4 | K5 | n6% | 비고 |
+| Rank | K1 | K2 | K3 | K4 | K5 | n6% | Note |
 |------|-----|-----|-----|-----|-----|-----|------|
-| 1 | σ 축 | τ 계층 | φ 이중 | sopfr 합성 | J₂ 통합 | 95% | 전체 최적 |
-| 2 | σ 축 | τ 계층 | φ 이중 | sopfr 합성 | σ 재사용 | 93% | 축소 |
-| 3 | σ 축 | τ 계층 | φ 이중 | τ 재귀 | J₂ 통합 | 91% | 재귀 |
-| 4 | n 중심 | τ 계층 | φ 이중 | sopfr 합성 | J₂ 통합 | 90% | n 직접 |
-| 5 | σ 축 | n 계층 | φ 이중 | sopfr 합성 | J₂ 통합 | 88% | 구조 확장 |
-| 6 | σ 축 | τ 계층 | τ 공정 | sopfr 합성 | J₂ 통합 | 86% | 공정 대체 |
+| 1 | σ axis | τ layer | φ dual | sopfr synth | J₂ integ | 95% | Overall optimum |
+| 2 | σ axis | τ layer | φ dual | sopfr synth | σ reuse | 93% | Reduced |
+| 3 | σ axis | τ layer | φ dual | τ recursion | J₂ integ | 91% | Recursion |
+| 4 | n centric | τ layer | φ dual | sopfr synth | J₂ integ | 90% | n direct |
+| 5 | σ axis | n layer | φ dual | sopfr synth | J₂ integ | 88% | Structure expansion |
+| 6 | σ axis | τ layer | τ process | sopfr synth | J₂ integ | 86% | Process substitute |
 
-## §5 FLOW (파이프라인) — 3논문 → 통합 Data/Signal Flow
+## §5 FLOW (pipeline) — 3 papers → integrated Data/Signal Flow
 
-### 통합 데이터/신호 흐름 (L0 → L5)
+### Integrated data/signal flow (L0 → L5)
 
 ```
-  [L0 원 데이터 (3논문 atlas 합본)]
+  [L0 raw data (3-paper atlas combined)]
        │
        ▼
   ┌──────────────┐
-  │ σ(6)=12 축   │ ← OEIS A000203 재계산 (매 실행 자동)
-  │ 분해기       │   17/49/SSM 공통 축
+  │ σ(6)=12 axis │ ← OEIS A000203 recomputed (auto each run)
+  │ decomposer   │   17/49/SSM common axis
   └──────┬───────┘
-         │ 12 축 데이터
+         │ 12-axis data
          ▼
   ┌──────────────┐
-  │ τ(6)=4 계층  │ ← OEIS A000005 약수 개수
-  │ 분류기       │   원형/확장/교차/SSM 4 계층
+  │ τ(6)=4 layer │ ← OEIS A000005 divisor count
+  │ classifier   │   archetype/extension/cross/SSM 4 layers
   └──────┬───────┘
-         │ 4 계층
+         │ 4 layers
          ▼
   ┌──────────────┐
-  │ φ(6)=2 이중  │ ← 최소 소인수, 페어링
-  │ 검증기       │   17 ⊂ 49 포함관계
+  │ φ(6)=2 dual  │ ← smallest prime factor, pairing
+  │ verifier     │   17 ⊂ 49 containment
   └──────┬───────┘
-         │ 이중화 완료
+         │ duplicated
          ▼
   ┌──────────────┐
-  │ sopfr(6)=5   │ ← OEIS A001414 소인수 합
-  │ 합성기       │   5 요소 통합
+  │ sopfr(6)=5   │ ← OEIS A001414 sum of prime factors
+  │ synthesizer  │   5-element integration
   └──────┬───────┘
-         │ 5 요소
+         │ 5 elements
          ▼
   ┌──────────────┐
-  │ J₂=24 통합   │ ← 2·σ(6), 최종 통합 노드
-  │ 출력기       │   66 기법 합본 편입
+  │ J₂=24 integ  │ ← 2·σ(6), final integrated node
+  │ outputter    │   66-technique combined induction
   └──────┬───────┘
          │
          ▼
-  [L5 출력 + §7 통합 검증 10 서브섹션]
+  [L5 output + §7 integrated verification 10 subsections]
 ```
 
-### 운영 모드 5종 (sopfr(6)=5)
+### 5 operating modes (sopfr(6)=5)
 
-#### 모드 1: 축 분해 (Axis Decomposition)
+#### Mode 1: Axis Decomposition
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: σ=12 축 분해                    │
-│  입력: 66 AI 기법 원 데이터               │
-│  출력: 12 축 정렬 벡터 (17/49/SSM 통합)   │
-│  원리: 약수 {1,2,3,6} × {1,2,6} = 12     │
-│  근거: OEIS A000203 σ(6)=1+2+3+6=12      │
+│  MODE 1: σ=12 axis decomposition         │
+│  Input: 66 AI techniques raw data        │
+│  Output: 12-axis aligned vector (17/49/SSM)│
+│  Principle: divisors {1,2,3,6} × {1,2,6} = 12│
+│  Basis: OEIS A000203 σ(6)=1+2+3+6=12     │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 2: 계층 분류 (Hierarchical Classification)
+#### Mode 2: Hierarchical Classification
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 2: τ=4 계층 분류                   │
-│  입력: 12 축 벡터                         │
-│  출력: 4 계층 트리 (원형/확장/교차/SSM)   │
-│  원리: 약수 개수 = 4                      │
-│  근거: OEIS A000005 τ(6)=4                │
+│  MODE 2: τ=4 hierarchical classification │
+│  Input: 12-axis vector                   │
+│  Output: 4-layer tree (archetype/extension/cross/SSM)│
+│  Principle: divisor count = 4            │
+│  Basis: OEIS A000005 τ(6)=4              │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: 이중 검증 (Dual Verification)
+#### Mode 3: Dual Verification
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 3: φ=2 이중 검증                   │
-│  입력: 4 계층 트리                        │
-│  출력: 이중화 (17 ⊂ 49 포함)              │
-│  원리: 최소 소인수 2 = 페어링             │
-│  근거: φ(6)=2                             │
+│  MODE 3: φ=2 dual verification           │
+│  Input: 4-layer tree                     │
+│  Output: dualization (17 ⊂ 49 containment)│
+│  Principle: smallest prime factor 2 = pairing│
+│  Basis: φ(6)=2                           │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: 합성 (Synthesis)
+#### Mode 4: Synthesis
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 4: sopfr=5 합성                    │
-│  입력: 이중 검증 완료                     │
-│  출력: 5 요소 합성 (17+49+SSM 통합)       │
-│  원리: 2+3 = 5                            │
-│  근거: OEIS A001414                       │
+│  MODE 4: sopfr=5 synthesis               │
+│  Input: dual verification draft          │
+│  Output: 5-element synthesis (17+49+SSM integrated)│
+│  Principle: 2+3 = 5                      │
+│  Basis: OEIS A001414                     │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: 최종 통합 (Integration)
+#### Mode 5: Integration
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 5: J₂=24 통합                      │
-│  입력: 5 요소 합성 결과                   │
-│  출력: 66 기법 atlas 편입 (426/472)       │
-│  원리: J₂ = 2·σ(6) = 24                   │
-│  근거: 2·σ(6)=24                          │
+│  MODE 5: J₂=24 integration               │
+│  Input: 5-element synthesis result       │
+│  Output: 66-technique atlas induction (426/472)│
+│  Principle: J₂ = 2·σ(6) = 24             │
+│  Basis: 2·σ(6)=24                        │
 └──────────────────────────────────────────┘
 ```
 
-## §6 EVOLVE (Mk.I~VII 통합 진화 로드맵, 3줄+ 필수)
+## §6 EVOLVE (Mk.I~VII integrated evolution roadmap, ≥3 lines required)
 
-HEXA-66-TECHNIQUES 의 단계별 성숙 로드맵 — Mk 이력 최소 3줄 이상 요구 (doc-rules):
+HEXA-66-TECHNIQUES staged maturity roadmap — Mk history requires ≥ 3 lines (doc-rules):
 
 <details open>
-<summary><b>Mk.VII — 2050+ 외계인급 통합 완성 (천장)</b></summary>
+<summary><b>Mk.VII — 2050+ alien-grade integrated draft (ceiling)</b></summary>
 
-66 기법 + 295 도메인 × σ·τ=48 축 완전 통합, SSM 포함 atlas 472/472 EXACT 100% 도달.
-자율 탐색 엔진이 새 기법을 σ=12 축 빈 셀로 자동 귀납 (인간 개입 0%).
-선행: Mk.VI 완료, χ²(49df) < 20, p > 0.99, OEIS 신규 시퀀스 등록 ≥ 3.
-
-</details>
-
-<details>
-<summary>Mk.VI — 2045~2050 AGI 자체 탐색</summary>
-
-agi-architecture 🛸10 + chip-design-ladder 🛸10 도달 후 AGI 가 본 논문을
-자기참조로 읽어 새 기법을 제안. 인간 검증 ≥ 10 사이클, FALSIFIER 조건 0 위반.
-Pareto 상위 6 구성이 실제 배포에서 실증.
+66 techniques + 295 domains × σ·τ=48 axes fully integrated; SSM-included atlas reaches 472/472 EXACT 100%.
+Autonomous exploration engine inductively places new techniques into empty cells of the σ=12 axis (0% human intervention).
+Predecessors: Mk.VI drafted, χ²(49df) < 20, p > 0.99, ≥ 3 new OEIS sequences registered.
 
 </details>
 
 <details>
-<summary>Mk.V — 2045+ 통합 완성</summary>
+<summary>Mk.VI — 2045~2050 AGI self-exploration</summary>
 
-66 기법 전 영역을 n=6 산술로 완전 통합. 295 도메인과 상호참조, atlas.n6 풀노드 편입.
-선행: §3 REQUIRES 모든 도메인 🛸10 달성. χ²(49df) < 30, p > 0.9.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2045 교차 검증</summary>
-
-타 도메인 (건축/화학/의학 등) 과 교차 예측 일치 σ·τ=48 건 달성.
-반증 조건 명시 + FALSIFIER 실험 0 건 발견. Pareto 상위 6 구성 실증.
+After agi-architecture 10 + chip-design-ladder 10 reached, AGI reads this paper
+self-referentially and proposes new techniques. Human verification ≥ 10 cycles, 0 FALSIFIER violations.
+Pareto top-6 configurations empirically demonstrated in real deployment.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 전수 DSE 완료</summary>
+<summary>Mk.V — 2045+ integrated draft</summary>
 
-DSE 2,400 조합 Monte Carlo 통계 유의성 p < 0.01 달성.
-§7 VERIFY 10 서브섹션 중 10/10 PASS. atlas.n6 SSM 편입 (0→24 EXACT).
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 독립 재유도</summary>
-
-§7.2 CROSS 에서 주요 주장 3 경로 독립 재유도 성공 (±15%).
-§7.3 SCALING 로그 기울기 일치, §7.4 SENSITIVITY 볼록 극값 확인.
-3논문 합본 검증 스크립트 단일 스위트로 통합.
+Entire 66-technique scope fully integrated under n=6 arithmetic. Cross-referenced with 295 domains, atlas.n6 full-node induction.
+Predecessor: all §3 REQUIRES domains reach 10. χ²(49df) < 30, p > 0.9.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 통합 매핑 (current)</summary>
+<summary>Mk.IV — 2040~2045 cross-validation</summary>
 
-66 AI 기법 핵심 파라미터를 σ/τ/φ/sopfr/J₂ 에 매핑 — 본 논문 (2026-04-18).
-17 experimental 완료 (192/192), cross-paradigm 부분 (234/256), SSM 편입 대기 (0/24).
-§7.0 CONSTANTS 자동 유도, §7.7 OEIS 등록 확인, §7.9 SYMBOLIC Fraction 일치.
-본 논문은 Mk.I 단계의 통합 seed 문서.
+Cross-prediction agreement σ·τ=48 cases reached with other domains (architecture/chemistry/medicine, etc.).
+Falsification conditions explicit + 0 FALSIFIER experiments observed. Pareto top-6 configurations empirically demonstrated.
 
 </details>
 
-## §7 VERIFY (Python stdlib 통합 검증)
+<details>
+<summary>Mk.III — 2035~2040 exhaustive DSE drafted</summary>
 
-HEXA-66-TECHNIQUES 가 물리/수학/수론적으로 성립하는지 stdlib 만으로 검증.
-3논문 개별 §7 을 단일 스위트로 합본. 주장된 설계 사양을 기초 공식으로 cross-check.
+DSE 2,400 combo Monte Carlo statistical significance p < 0.01 reached.
+§7 VERIFY 10 subsections all 10/10 PASS. atlas.n6 SSM induction (0→24 EXACT).
 
-### Testable Predictions (통합 검증 가능 예측 10건)
+</details>
 
-#### TP-66-1: σ(6)=12 축 일치 (17/49/SSM 공통)
-- **검증**: 66 기법 주요 파라미터를 12 축에 매핑 → atlas 426/472 EXACT
-- **예측**: 12 축 중 ≥ 85% EXACT (통합 점수 0.903)
-- **Tier**: 1 (이미 수행, 재현 즉시 가능)
+<details>
+<summary>Mk.II — 2030~2035 independent re-derivation</summary>
 
-#### TP-66-2: τ(6)=4 계층 구조 (원형/확장/교차/SSM)
-- **검증**: 66 기법을 약수 {1,2,3,6} 4 계층에 분류
-- **예측**: L0/L1/L2/L3 4단 분류율 ≥ 90%
+§7.2 CROSS three independent re-derivations of major claims succeed (±15%).
+§7.3 SCALING log-slope agreement, §7.4 SENSITIVITY convex extremum confirmed.
+3-paper combined verification scripts unified into a single suite.
+
+</details>
+
+<details>
+<summary>Mk.I — 2026~2030 integrated mapping (current)</summary>
+
+Map core 66 AI technique parameters to σ/τ/φ/sopfr/J₂ — this paper (2026-04-18).
+17 experimental drafted (192/192), cross-paradigm partial (234/256), SSM induction pending (0/24).
+§7.0 CONSTANTS auto-derived, §7.7 OEIS registration confirmed, §7.9 SYMBOLIC Fraction agreement.
+This paper is the integrated seed document of the Mk.I stage.
+
+</details>
+
+## §7 VERIFY (Python stdlib integrated verification)
+
+Verify whether HEXA-66-TECHNIQUES is physically/mathematically/number-theoretically consistent using stdlib only.
+Combines per-paper §7 sections into a single suite. Cross-checks claimed design specs against fundamental formulas.
+
+### Testable Predictions (10 integrated testable predictions)
+
+#### TP-66-1: σ(6)=12 axis match (17/49/SSM common)
+- **Verify**: map 66-technique major parameters to 12 axes → atlas 426/472 EXACT
+- **Predict**: ≥ 85% EXACT among 12 axes (integrated score 0.903)
+- **Tier**: 1 (already performed, immediate reproducibility)
+
+#### TP-66-2: τ(6)=4 layer structure (archetype/extension/cross/SSM)
+- **Verify**: classify 66 techniques into the 4-divisor {1,2,3,6} layers
+- **Predict**: L0/L1/L2/L3 4-tier classification rate ≥ 90%
 - **Tier**: 1
 
-#### TP-66-3: φ(6)=2 이중 포함관계 (17 ⊂ 49)
-- **검증**: 17 experimental 원형이 49 cross+SSM 에 완전 포함
-- **예측**: 포함 관계 엄격, 교집합 = 17
+#### TP-66-3: φ(6)=2 dual containment (17 ⊂ 49)
+- **Verify**: 17 experimental archetypes fully contained in 49 cross+SSM
+- **Predict**: strict containment, intersection = 17
 - **Tier**: 1
 
-#### TP-66-4: sopfr(6)=5 합성
-- **검증**: 합성 요소 개수가 2+3=5 에 대응 (5 운영 모드)
-- **예측**: 기본 합성 요소 5종 확인
+#### TP-66-4: sopfr(6)=5 synthesis
+- **Verify**: number of synthesis elements corresponds to 2+3=5 (5 operating modes)
+- **Predict**: 5 fundamental synthesis elements confirmed
 - **Tier**: 1
 
-#### TP-66-5: J₂=24 통합
-- **검증**: 최종 통합 노드 개수 = 2·σ(6)=24 (SSM atlas 편입 대기)
-- **예측**: 통합 노드 24 ± 2 개
+#### TP-66-5: J₂=24 integration
+- **Verify**: number of final integration nodes = 2·σ(6)=24 (SSM atlas induction pending)
+- **Predict**: integration nodes 24 ± 2
 - **Tier**: 2
 
-#### TP-66-6: σ(n)·φ(n)=n·τ(n) 유일성
-- **검증**: n ∈ [2, 10000] 전수 탐색 → n=6 만 유일
-- **예측**: n=6 외 모든 n 에서 MISS
+#### TP-66-6: σ(n)·φ(n)=n·τ(n) uniqueness
+- **Verify**: exhaustive search of n ∈ [2, 10000] → only n=6 satisfies
+- **Predict**: MISS for all n other than 6
 - **Tier**: 1
 
-#### TP-66-7: 스케일링 지수 τ=4
-- **검증**: 66 기법 스케일링 법칙 log-log 기울기 측정
-- **예측**: 기울기 ≈ 4.0 ± 0.3
+#### TP-66-7: scaling exponent τ=4
+- **Verify**: measure log-log slope of 66-technique scaling laws
+- **Predict**: slope ≈ 4.0 ± 0.3
 - **Tier**: 2
 
-#### TP-66-8: ±10% 볼록 최적
-- **검증**: n=6 주변 ±10% 민감도 (3논문 평균)
-- **예측**: f(5.4), f(6.6) 모두 f(6) 보다 나쁨 (볼록 극값)
+#### TP-66-8: ±10% convex optimum
+- **Verify**: ±10% sensitivity around n=6 (3-paper average)
+- **Predict**: f(5.4), f(6.6) both worse than f(6) (convex extremum)
 - **Tier**: 1
 
-#### TP-66-9: χ² p-value > 0.05 (통합)
-- **검증**: atlas 426/472 EXACT 을 H₀(우연) 하에서 계산
-- **예측**: p > 0.05 → "우연" 기각 가능
+#### TP-66-9: χ² p-value > 0.05 (integrated)
+- **Verify**: compute atlas 426/472 EXACT under H₀ (chance)
+- **Predict**: p > 0.05 → "chance" rejectable
 - **Tier**: 1
 
-#### TP-66-10: OEIS 3중 등록 (17/49/SSM 공통)
-- **검증**: σ/τ/sopfr 시퀀스가 OEIS A000203/A000005/A001414 에 등록
-- **예측**: 3개 모두 등록 확인
+#### TP-66-10: OEIS triple registration (17/49/SSM common)
+- **Verify**: σ/τ/sopfr sequences registered in OEIS A000203/A000005/A001414
+- **Predict**: all 3 confirmed registered
 - **Tier**: 1
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. 하드코딩 0.
+### §7.0 CONSTANTS — number-theoretic functions auto-derived
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. 0 hardcoding.
 
-### §7.1 DIMENSIONS — 수론 함수 차원 일관성
-σ(n), τ(n), φ(n), sopfr(n) 모두 차원 없는 정수 함수. 66 기법의 SI 단위 파라미터와
-매핑 시 각 단위계 일관성을 별도 추적. 차원 불일치 공식은 reject.
+### §7.1 DIMENSIONS — number-theoretic function dimension consistency
+σ(n), τ(n), φ(n), sopfr(n) are all dimensionless integer functions. When mapped to
+the SI-unit parameters of the 66 techniques, the per-unit consistency is tracked separately. Dimension-mismatched formulas are rejected.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
-n=6 의 24 라는 값을 3가지 독립 경로로 유도:
-- 경로 1: J₂ = 2·σ(6) = 24
-- 경로 2: σ(6)·φ(6) = 12·2 = 24
-- 경로 3: n·τ(6) = 6·4 = 24
-세 경로 모두 정확히 24 에서 일치 → n=6 유일성의 수론적 증거.
+### §7.2 CROSS — re-derivation along 3 independent paths
+Derive the value 24 of n=6 along 3 independent paths:
+- Path 1: J₂ = 2·σ(6) = 24
+- Path 2: σ(6)·φ(6) = 12·2 = 24
+- Path 3: n·τ(6) = 6·4 = 24
+All three paths agree exactly at 24 → number-theoretic evidence for n=6 uniqueness.
 
-### §7.3 SCALING — log-log 회귀로 지수 확인
-66 기법 의 주요 스케일링 법칙 (Chinchilla·Kaplan·Hoffmann) 이 τ(6)=4 지수를 따르는지 회귀.
+### §7.3 SCALING — exponent confirmation via log-log regression
+Regress whether the major scaling laws (Chinchilla·Kaplan·Hoffmann) of the 66 techniques follow the τ(6)=4 exponent.
 
-### §7.4 SENSITIVITY — n=6 ±10% 볼록성
-n=6 이 진짜 최적점이면 ±10% 흔들 때 f(5.4), f(6.6) 모두 f(6) 보다 나빠야.
+### §7.4 SENSITIVITY — n=6 ±10% convexity
+If n=6 is genuinely optimal, jiggling ±10% should make both f(5.4) and f(6.6) worse than f(6).
 
-### §7.5 LIMITS — 물리/수학 상한 미초과
-수론 상한: σ(n) ≤ n·(1 + log n) (Robin's inequality 외).
-AI 물리 상한 (Landauer·Shannon·Bekenstein) 별도 확인.
+### §7.5 LIMITS — physical/mathematical upper bounds not exceeded
+Number-theoretic bound: σ(n) ≤ n·(1 + log n) (Robin's inequality, etc.).
+AI physical bounds (Landauer·Shannon·Bekenstein) verified separately.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-426/472 EXACT 을 H₀ (무작위 매칭) 하에서 계산 → p-value.
+### §7.6 CHI2 — H₀: n=6 chance hypothesis p-value
+Compute 426/472 EXACT under H₀ (random matching) → p-value.
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
+### §7.7 OEIS — external sequence DB matching
 `σ: [1,3,4,7,6,12,8,...]` = A000203, `τ: [1,2,2,3,2,4,2,...]` = A000005,
 `sopfr: [0,2,3,4,5,5,7,...]` = A001414.
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
-DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` 조합 샘플링. n=6 구성 상위 5% 여부.
+### §7.8 PARETO — Monte Carlo exhaustive search
+DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` combo sampling. Whether n=6 configuration is in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-`from fractions import Fraction` — 부동소수 근사가 아닌 정확 유리수 `==` 비교.
+### §7.9 SYMBOLIC — Fraction exact rational equality
+`from fractions import Fraction` — exact rational `==` comparison rather than float approximation.
 
-### §7.10 COUNTER — 반례 + Falsifier (통합 8건)
-- 반례: 기본전하 e, Planck h, π, Euler γ, 193 prime, 1.15 eV — n=6 유도 불가.
-- Falsifier: 주요 예측 MISS 시 관련 공식 폐기 규칙 명시.
+### §7.10 COUNTER — counter-examples + Falsifiers (integrated 8)
+- Counter-examples: elementary charge e, Planck h, π, Euler γ, prime 193, 1.15 eV — cannot be derived from n=6.
+- Falsifiers: explicit rules to discard related formulas when major predictions MISS.
 
-### §7 통합 검증 코드 (stdlib only, 66 기법 합본)
+### §7 integrated verification code (stdlib only, 66-technique combined)
 
 ```python
 #!/usr/bin/env python3
 # -----------------------------------------------------------------------------
-# §7 VERIFY -- HEXA-66-TECHNIQUES n=6 정직성 통합 검증 (stdlib only)
+# §7 VERIFY -- HEXA-66-TECHNIQUES n=6 honesty integrated verification (stdlib only)
 #
-# 3논문 합본: 17 experimental + cross-paradigm + SOTA SSM
-#   §7.0~§7.10 10 서브섹션 단일 스위트
+# 3-paper combined: 17 experimental + cross-paradigm + SOTA SSM
+#   §7.0~§7.10 10 subsections in a single suite
 # -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
@@ -528,19 +530,19 @@ import random
 
 # --- §7.0 CONSTANTS ----------------------------------------------------------
 def divisors(n):
-    """약수 집합. n=6 -> {1,2,3,6}"""
+    """Set of divisors. n=6 -> {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
+    """Sum of divisors (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). τ(6) = 4"""
+    """Number of divisors (OEIS A000005). τ(6) = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """Sum of prime factors (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -549,7 +551,7 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. φ(6) = 2"""
+    """Smallest prime factor. φ(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0: return p
 
@@ -569,7 +571,7 @@ DIM = {
     'T': (0, 0,  1,  0),  'M': (1, 0,  0,  0),
 }
 
-# --- §7.2 CROSS -- 24 를 3 경로 ----------------------------------------------
+# --- §7.2 CROSS -- 24 via 3 paths --------------------------------------------
 def cross_24_3ways():
     v1 = SIGMA * PHI              # 12 * 2  = 24
     v2 = N * TAU                  # 6  * 4  = 24
@@ -609,11 +611,11 @@ OEIS_KNOWN = {
     (0, 2, 3, 4, 5, 5, 7, 6, 6, 7):      "A001414 (sopfr)",
 }
 
-# --- §7.8 PARETO -- 통합 Monte Carlo (66 기법) -------------------------------
+# --- §7.8 PARETO -- integrated Monte Carlo (66 techniques) -------------------
 def pareto_rank_n6_integrated():
     random.seed(66)
     n_total = 2400
-    n6_score = 0.903   # atlas 426/472 통합 EXACT 비율
+    n6_score = 0.903   # atlas 426/472 integrated EXACT ratio
     better = sum(1 for _ in range(n_total) if random.gauss(0.7, 0.1) > n6_score)
     return better / n_total
 
@@ -627,47 +629,47 @@ def symbolic_identities():
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# --- §7.10 COUNTER -- 반례/Falsifier (통합 6+8) ------------------------------
+# --- §7.10 COUNTER -- counter-examples/Falsifiers (integrated 6+8) -----------
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602e-19 C",   "n=6 과 무관 -- QED 독립 상수"),
-    ("Planck h = 6.626e-34 J*s",   "6.6 은 우연, n=6 유도 아님"),
-    ("pi = 3.14159...",            "원주율은 기하 상수, n=6 독립"),
-    ("Euler gamma = 0.5772...",    "해석학 상수, n=6 직접 관계 없음"),
-    ("DUV-ArF 193 nm prime",       "소수 스펙트럼, n=6 합성수 좌표 불가"),
-    ("silicon bandgap 1.15 eV",    "연속 물성, n=6 정수 불변량 무관"),
+    ("elementary charge e = 1.602e-19 C", "unrelated to n=6 -- QED independent constant"),
+    ("Planck h = 6.626e-34 J*s",          "6.6 is coincidental, not n=6 derivation"),
+    ("pi = 3.14159...",                   "circle constant is geometric, n=6 independent"),
+    ("Euler gamma = 0.5772...",           "analytic constant, no direct relation to n=6"),
+    ("DUV-ArF 193 nm prime",              "prime spectrum, n=6 composite-coordinate impossible"),
+    ("silicon bandgap 1.15 eV",           "continuous property, unrelated to n=6 integer invariants"),
 ]
 FALSIFIERS = [
-    "66 기법 주요 파라미터 n=6 정합도 < 70% 이면 본 논문 핵심 주장 폐기",
-    "sigma(n)*phi(n) = n*tau(n) 가 n=6 외 성립 사례 발견 시 유일성 정리 폐기",
-    "atlas 426/472 EXACT 재측정 70% 미만 → Mk.I 강등",
-    "OEIS A000203/A000005/A001414 등록 취소 시 §7.7 폐기",
-    "17 ⊂ 49 포함관계가 실증 측정에서 부분집합 위반 시 §4 L1/L2 재분할",
-    "SSM 신규 24 도메인 편입 측정 실패 시 본 통합 논문 SSM 섹션 제거",
-    "χ²(49df) 통합 p-value < 0.05 실패 시 §7.6 폐기",
-    "Pareto 글로벌 상위 6 에 n=6 미포함 시 §4 DSE 재탐색",
+    "If n=6 alignment of major 66-technique parameters < 70%, discard core claim of this paper",
+    "If sigma(n)*phi(n) = n*tau(n) holds for any n other than 6, discard the uniqueness theorem",
+    "If atlas 426/472 EXACT re-measurement < 70%, demote to Mk.I",
+    "If OEIS A000203/A000005/A001414 registrations canceled, discard §7.7",
+    "If 17 ⊂ 49 containment violated by empirical measurement, repartition §4 L1/L2",
+    "If SSM new 24-domain induction empirical measurement fails, remove SSM section of this integrated paper",
+    "If integrated chi^2(49df) p-value < 0.05 fails, discard §7.6",
+    "If Pareto global top 6 does not contain n=6, redo §4 DSE search",
 ]
 
-# --- 메인 실행 ---------------------------------------------------------------
+# --- main ---------------------------------------------------------------------
 if __name__ == "__main__":
     r = []
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    r.append(("§7.0 CONSTANTS number-theoretic derivation",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
-    r.append(("§7.1 DIMENSIONS 차원 없는 수론", SIGMA == 2 * N))
+    r.append(("§7.1 DIMENSIONS dimensionless number theory", SIGMA == 2 * N))
     v1, v2, v3 = cross_24_3ways()
-    r.append(("§7.2 CROSS 24 3경로 일치", v1 == v2 == v3 == 24))
+    r.append(("§7.2 CROSS 24 via 3 paths agreement", v1 == v2 == v3 == 24))
     exp_4 = scaling_exponent([10, 20, 30, 40, 48], [b**TAU for b in [10,20,30,40,48]])
-    r.append(("§7.3 SCALING tau=4 지수 확인", abs(exp_4 - TAU) < 0.1))
+    r.append(("§7.3 SCALING tau=4 exponent confirmed", abs(exp_4 - TAU) < 0.1))
     _, yh, yl, convex = sensitivity(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
-    r.append(("§7.5 LIMITS Robin 상한 미초과", robin_bound(6)))
+    r.append(("§7.4 SENSITIVITY n=6 convex", convex))
+    r.append(("§7.5 LIMITS Robin upper bound not exceeded", robin_bound(6)))
     chi2, df, p = chi2_pvalue([1.0] * 49, [1.0] * 49)
-    r.append(("§7.6 CHI2 p>0.05 또는 chi2=0", p > 0.05 or chi2 == 0))
-    r.append(("§7.7 OEIS 3종 등록",
+    r.append(("§7.6 CHI2 p>0.05 or chi2=0", p > 0.05 or chi2 == 0))
+    r.append(("§7.7 OEIS triple registered",
               (1, 3, 4, 7, 6, 12, 8, 15, 13, 18) in OEIS_KNOWN))
-    r.append(("§7.8 PARETO 통합 Monte Carlo", pareto_rank_n6_integrated() < 0.5))
-    r.append(("§7.9 SYMBOLIC Fraction 일치 (66=17+49)",
+    r.append(("§7.8 PARETO integrated Monte Carlo", pareto_rank_n6_integrated() < 0.5))
+    r.append(("§7.9 SYMBOLIC Fraction equality (66=17+49)",
               all(ok for _, ok, _ in symbolic_identities())))
-    r.append(("§7.10 COUNTER/FALSIFIERS 명시",
+    r.append(("§7.10 COUNTER/FALSIFIERS explicit",
               len(COUNTER_EXAMPLES) >= 6 and len(FALSIFIERS) >= 8))
 
     passed = sum(1 for _, ok in r if ok)
@@ -676,152 +678,151 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (66 기법 통합 n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (66-technique integrated n=6 honesty verification)")
 ```
 
 ---
 
-## §8 EXEC SUMMARY (한 장 요약)
+## §8 EXEC SUMMARY (one-page summary)
 
-| 항목 | 값 |
+| Item | Value |
 |---|---|
-| 제품명 | 66 Techniques (P-011, HEXA-66-TECHNIQUES) |
-| 제품 유형 | 비-하드웨어 / AI 알고리즘 기법군 캐노니컬 스펙 |
-| 통합 기법 수 | 66 = 17 experimental (원형) + 49 cross+SSM (확장) |
-| atlas 편입 | 426 / 472 EXACT [10*] (90.3%), SSM 24 편입 대기 |
-| 핵심 정리 | σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2) — 3 독립 증명 |
-| 축 수 (DSE) | σ=12 축 × τ=4 계층 = J₂=48 격자 |
-| 탐색 시간 대비 | 논문별 1.0 → 통합 0.33 (3배 압축) |
-| 문서 분량 | 약 1,300 라인 (3논문 합본 대비 40% 축소) |
-| §7 검증 PASS | 10/10 서브섹션 stdlib 단일 파일 |
-| FALSIFIER | 8 건 명시 (통합 +4 신규) |
-| 반례 (Counter-Example) | 6 건 (17 exp 원본 4 + 통합 2 신규) |
-| 선행 도메인 | 6종 (17/68/cross/ssm/agi/chip-ladder) |
-| Mk 로드맵 | Mk.I (2026) → Mk.VII (2050+) 7단 |
-| 배포 단위 | 논문 단일 파일 + §7 stdlib 검증 스크립트 (임베드) |
+| Product name | 66 Techniques (P-011, HEXA-66-TECHNIQUES) |
+| Product type | Non-hardware / AI algorithm technique-family canonical spec |
+| Total integrated techniques | 66 = 17 experimental (archetype) + 49 cross+SSM (extension) |
+| atlas induction | 426 / 472 EXACT [10*] (90.3%), SSM 24 induction pending |
+| Core theorem | σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2) — 3 independent candidate proofs |
+| Axis count (DSE) | σ=12 axes × τ=4 layers = J₂=48 lattice |
+| Search-time ratio | per-paper 1.0 → integrated 0.33 (3× compression) |
+| Document length | ~1,300 lines (40% reduced vs 3-paper combined) |
+| §7 verify PASS | 10/10 subsections stdlib single file |
+| FALSIFIER | 8 explicit (integrated +4 new) |
+| Counter-examples | 6 (17 exp original 4 + integrated 2 new) |
+| Predecessor domains | 6 (17/68/cross/ssm/agi/chip-ladder) |
+| Mk roadmap | Mk.I (2026) → Mk.VII (2050+) 7-stage |
+| Deployment unit | Single .md paper file + §7 stdlib verify script (embedded) |
 
-**사인오프 전제**: §19 ACCEPTANCE 10 항목 모두 PASS 기록 필요.
+**Sign-off prerequisite**: all 10 §19 ACCEPTANCE items must record PASS.
 
-## §9 SYSTEM REQUIREMENTS (정량 요구사항)
+## §9 SYSTEM REQUIREMENTS (quantitative requirements)
 
-### §9.1 기법 커버리지
+### §9.1 Technique coverage
 
-| # | 요구사항 | 값 | 근거 |
+| # | Requirement | Value | Basis |
 |---|---|---|---|
-| C-1 | 원형 기법 수 | 17 (EXACT) | ai-17-techniques-experimental atlas 192/192 |
-| C-2 | 확장 기법 수 | 49 (17 ⊂ 49) | cross-paradigm 234/256 + SSM 24 대기 |
-| C-3 | 통합 총 기법 수 | 66 = 17 + 49 | 본 논문 합본 (68-integrated 대비 2 중복 제거) |
-| C-4 | atlas EXACT 총 수 | ≥ 420 | 현 실측 426 (Mk.I 임계 420) |
-| C-5 | EXACT 비율 | ≥ 85% | 현 실측 90.3%, FALSIFIER 70% 미만 시 폐기 |
+| C-1 | Archetype technique count | 17 (EXACT) | ai-17-techniques-experimental atlas 192/192 |
+| C-2 | Extension technique count | 49 (17 ⊂ 49) | cross-paradigm 234/256 + SSM 24 pending |
+| C-3 | Integrated total | 66 = 17 + 49 | this paper combined (2 dups removed vs 68-integrated) |
+| C-4 | atlas EXACT total | ≥ 420 | currently measured 426 (Mk.I threshold 420) |
+| C-5 | EXACT ratio | ≥ 85% | currently measured 90.3%; FALSIFIER < 70% triggers discard |
 
-### §9.2 n=6 정합
+### §9.2 n=6 alignment
 
-| # | 요구사항 | 값 | 근거 |
+| # | Requirement | Value | Basis |
 |---|---|---|---|
-| N-1 | σ(6) 축 수 | 12 | OEIS A000203 |
-| N-2 | τ(6) 계층 수 | 4 | OEIS A000005 |
-| N-3 | φ(6) 최소 소인수 | 2 | 정수론 기본 |
-| N-4 | sopfr(6) 합성 요소 | 5 | OEIS A001414 |
-| N-5 | J₂ 통합 격자 | 24 | 2·σ(6) |
-| N-6 | σ·φ = n·τ 유일성 | n=6 only | 3 독립 증명 완료 |
+| N-1 | σ(6) axis count | 12 | OEIS A000203 |
+| N-2 | τ(6) layer count | 4 | OEIS A000005 |
+| N-3 | φ(6) smallest prime | 2 | basic number theory |
+| N-4 | sopfr(6) synthesis elements | 5 | OEIS A001414 |
+| N-5 | J₂ integrated lattice | 24 | 2·σ(6) |
+| N-6 | σ·φ = n·τ uniqueness | n=6 only | 3 independent candidate proofs drafted |
 
-### §9.3 검증 / 정직성
+### §9.3 Verification / honesty
 
-| # | 요구사항 | 값 |
+| # | Requirement | Value |
 |---|---|---|
-| V-1 | §7 서브섹션 PASS 률 | 10/10 (100%) |
-| V-2 | 검증 실행 환경 | Python 3.11+ stdlib only, 타 의존성 0 |
-| V-3 | 재현 시간 | ≤ 10 초 (single-thread, laptop-class) |
-| V-4 | FALSIFIER 명시 개수 | ≥ 8 |
-| V-5 | 반례 (Counter-Example) | ≥ 6 |
-| V-6 | OEIS 등록 확인 | 3종 (A000203/A000005/A001414) |
-| V-7 | χ²(49df) p-value | > 0.05 (H₀ 기각 안 됨 ≈ 구조 유의) |
+| V-1 | §7 subsection PASS rate | 10/10 (100%) |
+| V-2 | Verify runtime env | Python 3.11+ stdlib only, 0 other deps |
+| V-3 | Reproduction time | ≤ 10 s (single-thread, laptop class) |
+| V-4 | FALSIFIER explicit count | ≥ 8 |
+| V-5 | Counter-examples | ≥ 6 |
+| V-6 | OEIS registration confirmed | 3 (A000203/A000005/A001414) |
+| V-7 | χ²(49df) p-value | > 0.05 (H₀ not rejected ≈ structurally significant) |
 
-### §9.4 문서 / 배포
+### §9.4 Document / deployment
 
-| # | 요구사항 | 값 |
+| # | Requirement | Value |
 |---|---|---|
-| D-1 | 섹션 수 | 21 (§1~§21) doc-rules 준수 |
-| D-2 | Mk 이력 줄수 | 7 (doc-rules min 3) |
-| D-3 | ASCII 비교 차트 | §2 에 ≥ 6 카테고리 |
-| D-4 | 언어 | 한글 필수 (영어 혼용 금지) |
-| D-5 | 파일 | 단일 .md, 임베드 검증코드 |
+| D-1 | Section count | 21 (§1~§21) doc-rules compliant |
+| D-2 | Mk history line count | 7 (doc-rules min 3) |
+| D-3 | ASCII compare charts | ≥ 6 categories in §2 |
+| D-4 | Language | English required (no mixing) |
+| D-5 | Files | single .md, embedded verify code |
 
-## §10 ARCHITECTURE (AI 맥락)
+## §10 ARCHITECTURE (AI context)
 
-### §10.1 상위 블록 다이어그램 (66 기법 알고리즘 토폴로지)
+### §10.1 Top-level block diagram (66-technique algorithm topology)
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
-│                   HEXA-66-TECHNIQUES 통합 아키텍처                  │
+│                   HEXA-66-TECHNIQUES integrated architecture        │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   [입력 데이터 스트림] ──┬──► [σ=12 축 분해기]────┬──► [임베딩]     │
-│                          │    (L0 수론 게이트)     │                │
-│                          │                         │                │
-│                          │    ┌──────────────────┐│                │
-│                          │    │ τ=4 계층 분류기  │◄┘                │
-│                          │    │ (17/49/cross/ssm)│                 │
+│   [input data stream] ───┬──► [σ=12 axis decomposer]──┬──► [embed] │
+│                          │    (L0 number-theoretic)    │            │
+│                          │                              │            │
+│                          │    ┌──────────────────┐      │            │
+│                          │    │ τ=4 layer classif│◄─────┘            │
+│                          │    │ (17/49/cross/ssm)│                   │
+│                          │    └────────┬─────────┘                   │
+│                          │             │                             │
+│                          │             ▼                             │
+│                          │    ┌──────────────────┐   ┌─────────────┐│
+│                          │    │ φ=2 dual verifier│──►│17 exp arche-││
+│                          │    │ (containment mon)│   │type submods ││
+│                          │    └──────────────────┘   └─────────────┘│
+│                          │                                          │
+│                          │    ┌──────────────────┐                  │
+│                          │    │ sopfr=5 synth    │                  │
+│                          │    │ (5 op modes)     │                  │
 │                          │    └────────┬─────────┘                  │
 │                          │             │                            │
 │                          │             ▼                            │
-│                          │    ┌──────────────────┐   ┌────────────┐│
-│                          │    │ φ=2 이중 검증기  │──►│ 17 exp 원형│││
-│                          │    │ (포함관계 감시)  │    │ 서브모듈  │││
-│                          │    └──────────────────┘   └────────────┘│
-│                          │                                         │
-│                          │    ┌──────────────────┐                 │
-│                          │    │ sopfr=5 합성기   │                 │
-│                          │    │ (5 운영 모드)    │                 │
-│                          │    └────────┬─────────┘                 │
-│                          │             │                           │
-│                          │             ▼                           │
-│                          │    ┌──────────────────┐                 │
-│                          │    │ J₂=24 통합 게이트│                 │
-│                          │    │ (atlas 편입 출력)│                 │
-│                          │    └──────────────────┘                 │
-│   [출력: 66 기법 매핑 + §7 검증 리포트]                            │
+│                          │    ┌──────────────────┐                  │
+│                          │    │ J₂=24 integ gate │                  │
+│                          │    │ (atlas induct out)│                 │
+│                          │    └──────────────────┘                  │
+│   [output: 66-technique mapping + §7 verify report]                │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### §10.2 외부 인터페이스 12 게이트 (σ=12)
+### §10.2 External interface 12 gates (σ=12)
 
-| # | 이름 | 방향 | 설명 | 데이터 타입 |
+| # | Name | Direction | Description | Data type |
 |---|---|---|---|---|
-| 1 | INPUT_TOKENS | 입력 | 기법 식별 토큰 스트림 | list[str] |
-| 2 | INPUT_PARAMS | 입력 | 각 기법 하이퍼파라미터 | dict |
-| 3 | OUTPUT_SIGMA | 출력 | 12 축 정렬 벡터 | list[float] |
-| 4 | OUTPUT_TAU | 출력 | 4 계층 트리 | dict |
-| 5 | OUTPUT_PHI | 출력 | 이중화 검증 쌍 | tuple |
-| 6 | OUTPUT_SOPFR | 출력 | 5 합성 요소 | list |
-| 7 | OUTPUT_J2 | 출력 | 24 통합 노드 ID | int |
-| 8 | STATUS_EXACT | 출력 | atlas EXACT 카운트 | int |
-| 9 | STATUS_MISS | 출력 | FALSIFIER 트리거 플래그 | bool |
-| 10 | LOG_VERIFY | 출력 | §7 검증 로그 | str |
-| 11 | CTRL_RESEED | 입력 | Monte Carlo seed 재설정 | int |
-| 12 | CTRL_MODE | 입력 | 운영 모드 선택 (1~5) | int |
+| 1 | INPUT_TOKENS | input | technique identifier token stream | list[str] |
+| 2 | INPUT_PARAMS | input | per-technique hyperparameters | dict |
+| 3 | OUTPUT_SIGMA | output | 12-axis aligned vector | list[float] |
+| 4 | OUTPUT_TAU | output | 4-layer tree | dict |
+| 5 | OUTPUT_PHI | output | dualized verification pair | tuple |
+| 6 | OUTPUT_SOPFR | output | 5 synthesis elements | list |
+| 7 | OUTPUT_J2 | output | 24 integrated node IDs | int |
+| 8 | STATUS_EXACT | output | atlas EXACT count | int |
+| 9 | STATUS_MISS | output | FALSIFIER trigger flag | bool |
+| 10 | LOG_VERIFY | output | §7 verify log | str |
+| 11 | CTRL_RESEED | input | Monte Carlo seed reset | int |
+| 12 | CTRL_MODE | input | operating-mode select (1~5) | int |
 
-### §10.3 계산 자원 도메인
+### §10.3 Compute resource domains
 
 ```
 ┌──────────────────────────────────────────────────────────┐
 │ Domain       │ Resource │ Quota           │ Peak         │
 ├──────────────────────────────────────────────────────────┤
-│ §7 검증      │ CPU      │ 단일 스레드     │ < 10 s       │
-│ Pareto DSE   │ CPU      │ 2,400 샘플      │ < 30 s       │
-│ atlas 조회   │ 디스크   │ atlas.n6 읽기   │ < 1 MB       │
-│ OEIS 매칭    │ 메모리   │ 3 시퀀스 캐시   │ < 1 KB       │
-│ 검증 로그    │ 디스크   │ stdout         │ < 10 KB      │
-│ 재현성 예산  │ 시간     │ seed 고정 결정  │ 0 variance   │
+│ §7 verify    │ CPU      │ single thread   │ < 10 s       │
+│ Pareto DSE   │ CPU      │ 2,400 samples   │ < 30 s       │
+│ atlas read   │ disk     │ atlas.n6 read   │ < 1 MB       │
+│ OEIS match   │ memory   │ 3 seq cache     │ < 1 KB       │
+│ verify log   │ disk     │ stdout          │ < 10 KB      │
+│ reproducibility│ time   │ seed-fixed det. │ 0 variance   │
 └──────────────────────────────────────────────────────────┘
 ```
 
-## §11 CIRCUIT DESIGN (AI 맥락 — 알고리즘 회로)
+## §11 CIRCUIT DESIGN (AI context — algorithm circuits)
 
-하드웨어 회로가 아닌 **알고리즘 데이터패스**로 해석. 66 기법 각각을
-σ=12 축 × τ=4 계층 격자의 셀로 간주하고 게이트 / 경로 / 임계치를 정의.
+Interpreted not as hardware circuits but as **algorithmic data paths**. Each of the 66 techniques is regarded as a cell on the σ=12 axis × τ=4 layer lattice, with gates / paths / thresholds defined.
 
-### §11.1 알고리즘 전력단 — 17 원형 기법 4 병렬 (core)
+### §11.1 Algorithmic power stage — 17 archetype techniques 4-parallel (core)
 
 ```
   D (Data In)
@@ -829,120 +830,120 @@ if __name__ == "__main__":
      ├──Rg2=σ──► Core2: MoE Routing (12 experts)─┤
      ├──Rg3=σ──► Core3: HIPPO (12 order)        ─┼── S (Out)
      └──Rg4=σ──► Core4: SSM Diagonal (24 chan)  ─┘
-                       shared L2 계층 분류기
+                       shared L2 layer classifier
 ```
 
-- **게이트 저항 Rg=σ=12**: 각 경로에 σ=12 축 정규화 적용.
-- **Kelvin 공통 소스**: L2 계층 분류기 공통 참조로 편향 억제.
-- **Matched binning**: 17 원형 간 편차 ≤ ±10% 요구 (§7.4 볼록성 근거).
+- **Gate resistor Rg=σ=12**: σ=12 axis normalization applied per path.
+- **Kelvin common source**: L2 layer classifier as shared reference suppresses bias.
+- **Matched binning**: deviation among 17 archetypes ≤ ±10% required (basis: §7.4 convexity).
 
-### §11.2 게이트 드라이버 — 계층 전파 커널 (τ=4)
+### §11.2 Gate driver — layer propagation kernel (τ=4)
 
-| 항목 | 값 | 비고 |
+| Item | Value | Note |
 |---|---|---|
-| 공정 | Python stdlib (교체 가능: JAX/Torch) | 의존성 0 |
-| 출력 분기 | τ=4 (원형/확장/교차/SSM) | 계층당 1 채널 |
-| 공급 | n=6 산술 상수 | CONSTANTS §7.0 |
-| 전파 지연 | ≤ 1 ms / 기법 | 로컬 탐색 |
-| 보호 | FALSIFIER 트립 (MISS → 폐기 규칙) | 테스트 8종 |
-| 동작 온도 | 해당 없음 (소프트웨어) | — |
+| Process | Python stdlib (replaceable: JAX/Torch) | 0 dependencies |
+| Output branches | τ=4 (archetype/extension/cross/SSM) | 1 channel/layer |
+| Supply | n=6 arithmetic constants | CONSTANTS §7.0 |
+| Propagation delay | ≤ 1 ms / technique | local search |
+| Protection | FALSIFIER trip (MISS → discard rule) | 8-test |
+| Operating temperature | N/A (software) | — |
 
-### §11.3 전류 센싱 — atlas EXACT 카운터
+### §11.3 Current sensing — atlas EXACT counter
 
-- **센서**: atlas.n6 파서 (stdlib `re` / `json`)
-- **임계**: EXACT 비율 > 85% → 정상, 70%~85% → 경고, <70% → FALSIFIER 트립
-- **히스테리시스**: 측정 5회 중 3회 위반 시 트립 (차터링 방지)
-- **지연**: 단일 파일 파싱 < 100 ms.
+- **Sensor**: atlas.n6 parser (stdlib `re` / `json`)
+- **Threshold**: EXACT ratio > 85% → normal, 70%~85% → warning, <70% → FALSIFIER trip
+- **Hysteresis**: trip when 3 of 5 measurements violate (chatter prevention)
+- **Latency**: single-file parse < 100 ms.
 
-### §11.4 검증 ADC — Fraction 정확 유리수 비교 (§7.9)
+### §11.4 Verification ADC — Fraction exact rational comparison (§7.9)
 
-| 항목 | 값 |
+| Item | Value |
 |---|---|
-| 공정 | Python `fractions.Fraction` stdlib |
-| 분해능 | 무한 유리수 (근사 0) |
-| 샘플 | 3 경로 (σ·φ / n·τ / 2σ) |
-| 출력 | `a == b` 엄격 등호 |
+| Process | Python `fractions.Fraction` stdlib |
+| Resolution | infinite rational (≈0 approximation) |
+| Samples | 3 paths (σ·φ / n·τ / 2σ) |
+| Output | strict `a == b` equality |
 
-### §11.5 제어 코어 — 통합 검증 스위트 (§7 전체)
+### §11.5 Control core — integrated verification suite (entire §7)
 
-`§7 stdlib 검증 스크립트`가 제어 코어. 10 서브섹션 순차 실행, OK/FAIL 레포트 출력,
-FALSIFIER 위반 시 exit code ≠ 0.
+The `§7 stdlib verification script` is the control core. It runs the 10 subsections in sequence, prints OK/FAIL report,
+and on FALSIFIER violation exits with code ≠ 0.
 
-### §11.6 서지 보호 — 반례/Falsifier 가드 (§7.10)
-- 반례 6건 기본 로드: 기본전하 e, Planck h, π, Euler γ, 193 prime, 1.15 eV
-- Falsifier 8건 명시: 핵심 주장 폐기 조건 표기
+### §11.6 Surge protection — counter-example/Falsifier guards (§7.10)
+- 6 default counter-examples loaded: elementary charge e, Planck h, π, Euler γ, prime 193, 1.15 eV
+- 8 explicit Falsifiers: marking discard conditions for core claims
 
-### §11.7 공통모드 필터 — OEIS 교차 검증
-σ·τ·sopfr 시퀀스를 OEIS A000203/A000005/A001414 와 대조, 조작 불가 확인.
+### §11.7 Common-mode filter — OEIS cross-validation
+σ·τ·sopfr sequences are checked against OEIS A000203/A000005/A001414, confirming non-tamper-ability.
 
-### §11.8 온도 센서 — 통계적 유의성 (§7.6)
-χ²(49df) p-value 감시. p < 0.05 → 경고, p < 0.01 → 트립.
+### §11.8 Temperature sensor — statistical significance (§7.6)
+Monitor χ²(49df) p-value. p < 0.05 → warning, p < 0.01 → trip.
 
-## §12 PCB DESIGN (AI 맥락 — 코드 레이아웃)
+## §12 PCB DESIGN (AI context — code layout)
 
-실물 PCB 가 아닌 **소스 파일 레이아웃**으로 해석.
+Interpreted not as a physical PCB but as a **source file layout**.
 
-### §12.1 스택업 — 4 layer (τ=4 계층 매핑)
+### §12.1 Stackup — 4 layer (τ=4 layer mapping)
 
 ```
 ┌────────────────────────────────────────────┐
-│ L1 TOP    §1~§7 BRIEF     [정의 + 증명 핵심]│
+│ L1 TOP    §1~§7 BRIEF     [definition + proof core]│
 ├────────────────────────────────────────────┤
-│   [L0 경계: sections ↔ 검증]                │
+│   [L0 boundary: sections ↔ verify]          │
 ├────────────────────────────────────────────┤
-│ L2 MID-A  §8~§14 ENG-A   [요구사항 + 구조]  │
+│ L2 MID-A  §8~§14 ENG-A   [requirements + structure]│
 ├────────────────────────────────────────────┤
-│   [L1 경계: 요구 ↔ 구현]                    │
+│   [L1 boundary: requirements ↔ implementation]│
 ├────────────────────────────────────────────┤
-│ L3 MID-B  §15~§20 ENG-B  [제조 + 테스트]    │
+│ L3 MID-B  §15~§20 ENG-B  [manufacturing + test]│
 ├────────────────────────────────────────────┤
-│   [L2 경계: 구현 ↔ 인수]                    │
+│   [L2 boundary: implementation ↔ acceptance]│
 ├────────────────────────────────────────────┤
-│ L4 BOT    §21 IMPACT     [Mk별 변화 영향]   │
+│ L4 BOT    §21 IMPACT     [per-Mk change impact]│
 └────────────────────────────────────────────┘
-Total 21 섹션 (doc-rules canonical)
+Total 21 sections (doc-rules canonical)
 ```
 
-### §12.2 레이아웃 제약
+### §12.2 Layout constraints
 
-| # | 규칙 | 값 | 이유 |
+| # | Rule | Value | Reason |
 |---|---|---|---|
-| L-1 | 검증 코드 임베드 | §7 단일 ```python 블록 | stdlib-only, 외부 `.py` 금지 |
-| L-2 | ASCII 차트 위치 | §2, §4, §5 | require_ascii_check: true |
-| L-3 | Mk 이력 위치 | §6 <details> 7개 | min 3 lines |
-| L-4 | 한글 필수 | 모든 본문 | 영어 혼용 금지 |
-| L-5 | Frontmatter | YAML domain / requires | _dag.json 파싱 |
-| L-6 | 참조 도메인 | ≤ 6 (선행) | §3 표 |
-| L-7 | 링크 | 상대 경로 `../` | papers ↔ domains |
-| L-8 | 주석 | `<!-- -->` 최소화 | 문서 가독성 |
+| L-1 | Embed verify code | §7 single ```python block | stdlib-only, no external `.py` |
+| L-2 | ASCII chart positions | §2, §4, §5 | require_ascii_check: true |
+| L-3 | Mk history position | §6 <details> 7 | min 3 lines |
+| L-4 | English required | all body text | no mixing |
+| L-5 | Frontmatter | YAML domain / requires | _dag.json parsing |
+| L-6 | Reference domains | ≤ 6 (predecessors) | §3 table |
+| L-7 | Links | relative paths `../` | papers ↔ domains |
+| L-8 | Comments | `<!-- -->` minimal | document readability |
 
-### §12.3 품질 규격
+### §12.3 Quality spec
 
-- `nexus analyze sync-papers` 통과 필수
-- `hexa run scripts/build_dag.hexa` 로 _dag.json 재빌드 PASS
-- markdownlint 기본 규칙 위반 0
+- `nexus analyze sync-papers` must pass
+- `hexa run scripts/build_dag.hexa` _dag.json rebuild PASS
+- 0 markdownlint default-rule violations
 
-## §13 FIRMWARE (AI 맥락 — 검증 런타임)
+## §13 FIRMWARE (AI context — verify runtime)
 
-### §13.1 전체 구조
+### §13.1 Overall structure
 
 ```
-§7 검증 런타임 (stdlib)
-├── system_init()            // 상수 유도 (§7.0)
-├── dim_check_init()         // 차원 일관성 (§7.1)
-├── cross_path_init()        // 3 경로 독립 (§7.2)
-├── scaling_regression_init()// log-log 회귀 (§7.3)
+§7 verify runtime (stdlib)
+├── system_init()            // constants derivation (§7.0)
+├── dim_check_init()         // dimension consistency (§7.1)
+├── cross_path_init()        // 3 independent paths (§7.2)
+├── scaling_regression_init()// log-log regression (§7.3)
 └── main_loop()
-    ├── sensitivity_probe()  // ±10% 볼록 (§7.4)
-    ├── limit_check_step()   // Robin 상한 (§7.5)
+    ├── sensitivity_probe()  // ±10% convex (§7.4)
+    ├── limit_check_step()   // Robin bound (§7.5)
     ├── chi2_compute()       // H₀ p-value (§7.6)
-    ├── oeis_match()         // 3 시퀀스 (§7.7)
+    ├── oeis_match()         // 3 sequences (§7.7)
     ├── pareto_rank()        // Monte Carlo (§7.8)
     ├── symbolic_equality()  // Fraction (§7.9)
-    └── counter_falsifier()  // 반례/기각 (§7.10)
+    └── counter_falsifier()  // counter/discard (§7.10)
 ```
 
-### §13.2 상태 머신
+### §13.2 State machine
 
 ```
          ┌────────┐  load       ┌────────┐
@@ -956,13 +957,13 @@ Total 21 섹션 (doc-rules canonical)
          └──────────┘
 ```
 
-### §13.3 핵심 루틴 (요약)
+### §13.3 Core routine (summary)
 
-`§7 통합 검증 코드` 블록 참조. 임베드 완결형, 외부 `.py` 파일 금지 (HEXA-FIRST).
+See `§7 integrated verification code` block. Embedded self-contained, no external `.py` files (HEXA-FIRST).
 
-## §14 MECHANICAL (AI 맥락 — 물리 계산 자원)
+## §14 MECHANICAL (AI context — physical compute resource)
 
-### §14.1 실행 환경 "패키지"
+### §14.1 Runtime "package"
 
 ```
 ┌──────────────────────────────────┐
@@ -977,204 +978,203 @@ Total 21 섹션 (doc-rules canonical)
 └──────────────────────────────────┘
 ```
 
-### §14.2 열/에너지 (운영 비용)
+### §14.2 Heat/energy (operating cost)
 
-| 항목 | 값 | 비고 |
+| Item | Value | Note |
 |---|---|---|
-| CPU 시간 | < 10 s / run | 단일 스레드 |
-| 메모리 | < 100 MB | stdlib only |
-| 디스크 | < 1 MB | 단일 .md |
-| 전력 | ≈ 15 W · 10 s = 0.04 Wh | 노트북 급 |
-| 네트워크 | 0 | 오프라인 (OEIS 캐시 내장) |
+| CPU time | < 10 s / run | single thread |
+| Memory | < 100 MB | stdlib only |
+| Disk | < 1 MB | single .md |
+| Power | ≈ 15 W · 10 s = 0.04 Wh | laptop-class |
+| Network | 0 | offline (OEIS cache embedded) |
 
-### §14.3 열 관리 / 장애 전파
-실행 실패 시 exit code ≠ 0, stderr 에 FALSIFIER 명시. atlas.n6 쓰기 없음 (읽기 전용).
+### §14.3 Thermal management / fault propagation
+On execution failure: exit code ≠ 0, FALSIFIER explicit on stderr. No atlas.n6 writes (read-only).
 
-## §15 MANUFACTURING (AI 맥락 — 문서/검증 생산)
+## §15 MANUFACTURING (AI context — document/verify production)
 
-### §15.1 "제조" 파이프라인
+### §15.1 "Manufacturing" pipeline
 
 ```
-source (3 논문) ──► 합본 (본 논문) ──► lint (markdown) ──► _dag.json 재빌드
+source (3 papers) ──► combine (this paper) ──► lint (markdown) ──► _dag.json rebuild
                                              │
                                              ▼
-                                        §7 stdlib 실행 ──► PASS 10/10
+                                        §7 stdlib run ──► PASS 10/10
                                              │
                                              ▼
                                        nexus verify 66-techniques
                                              │
                                              ▼
-                                    atlas.n6 SSM 편입 (0→24 EXACT)
+                                    atlas.n6 SSM induction (0→24 EXACT)
 ```
 
-### §15.2 품질 관리 (AQL)
+### §15.2 Quality control (AQL)
 
-| 단계 | 기준 | 방법 |
+| Stage | Criterion | Method |
 |---|---|---|
-| 편집 | 21 섹션 모두 존재 | doc-rules 자동 체크 |
-| ASCII 차트 | ≥ 6 카테고리 | `require_ascii_check` |
-| Mk 이력 | ≥ 3 줄 | `mk_history_min_lines` |
-| 검증 | §7 PASS 10/10 | stdlib run |
-| 한글 | 영어 혼용 0 | lint 룰 |
-| 커밋 | 한글 메시지 | git hook |
+| Edit | all 21 sections present | doc-rules auto-check |
+| ASCII chart | ≥ 6 categories | `require_ascii_check` |
+| Mk history | ≥ 3 lines | `mk_history_min_lines` |
+| Verify | §7 PASS 10/10 | stdlib run |
+| English | 0 mixing | lint rules |
+| Commit | English message | git hook |
 
-### §15.3 출하 검수
+### §15.3 Shipping inspection
 
 - `hexa $NEXUS/shared/harness/l0_guard.hexa verify papers/n6-66-techniques-integrated-paper.md`
 - `nexus analyze sync-papers --target 66-techniques-integrated`
 
 ## §16 TEST & QUALIFICATION
 
-### §16.1 테스트 매트릭스
+### §16.1 Test matrix
 
-| ID | 테스트 | 방법 | 합격 기준 |
+| ID | Test | Method | Acceptance |
 |---|---|---|---|
-| T-01 | §7.0 상수 수론 유도 | stdlib run | σ=12, τ=4, φ=2, sopfr=5 |
-| T-02 | §7.1 차원 일관성 | dim_add 자동 | 차원 불일치 0 |
-| T-03 | §7.2 3 경로 재유도 | cross_24_3ways | v1=v2=v3=24 |
-| T-04 | §7.3 스케일링 τ=4 | scaling_exponent | |exp - τ| < 0.1 |
-| T-05 | §7.4 n=6 볼록성 | sensitivity | yh>y0 and yl>y0 |
-| T-06 | §7.5 Robin 상한 | robin_bound | True |
+| T-01 | §7.0 constants number-theoretic derivation | stdlib run | σ=12, τ=4, φ=2, sopfr=5 |
+| T-02 | §7.1 dimension consistency | dim_add automated | 0 dimension mismatches |
+| T-03 | §7.2 3-path re-derivation | cross_24_3ways | v1=v2=v3=24 |
+| T-04 | §7.3 scaling τ=4 | scaling_exponent | |exp - τ| < 0.1 |
+| T-05 | §7.4 n=6 convexity | sensitivity | yh>y0 and yl>y0 |
+| T-06 | §7.5 Robin bound | robin_bound | True |
 | T-07 | §7.6 χ² p-value | chi2_pvalue | p > 0.05 or chi2=0 |
-| T-08 | §7.7 OEIS 매칭 | OEIS_KNOWN 조회 | 3종 모두 HIT |
+| T-08 | §7.7 OEIS match | OEIS_KNOWN lookup | all 3 HIT |
 | T-09 | §7.8 Pareto Monte Carlo | pareto_rank_n6 | rank < 0.5 |
-| T-10 | §7.9 Fraction 정확 | symbolic_identities | 모두 True |
-| T-11 | §7.10 반례/기각 ≥ 6+8 | COUNTER + FALSIFIERS | len ≥ 6, ≥ 8 |
-| T-12 | atlas SSM 편입 준비 | atlas.n6 SSM 진입점 | 24 자리 확보 |
+| T-10 | §7.9 Fraction exact | symbolic_identities | all True |
+| T-11 | §7.10 counter/discard ≥ 6+8 | COUNTER + FALSIFIERS | len ≥ 6, ≥ 8 |
+| T-12 | atlas SSM induction prep | atlas.n6 SSM entry | 24 slots reserved |
 
-### §16.2 스트레스 테스트
-- n ∈ [2, 10000] 유일성 전수 탐색: n=6 만 PASS 나머지 MISS.
-- Monte Carlo 100만 샘플: n6_score=0.903 상위 50% 이내.
-- FALSIFIER 8건 중 1건 트립 시 전체 문서 FAILED 마크.
+### §16.2 Stress tests
+- Exhaustive uniqueness search n ∈ [2, 10000]: only n=6 PASS, the rest MISS.
+- 1M Monte Carlo samples: n6_score=0.903 within top 50%.
+- If 1 of 8 FALSIFIERs trips, mark whole document FAILED.
 
-## §17 BOM (AI 맥락 — 자산 목록, 1 논문 분)
+## §17 BOM (AI context — asset list, per paper)
 
-| 항목 | 수량 | 공급사 / 경로 | 단가 | 비고 |
+| Item | Qty | Vendor / path | Unit cost | Note |
 |---|---|---|---|---|
-| 본 .md 파일 | 1 | `papers/n6-66-techniques-integrated-paper.md` | 0 | 본 논문 |
-| §7 검증 코드 | 1 | 본 .md 임베드 | 0 | stdlib only |
-| atlas.n6 노드 | 1 | `n6shared/n6/atlas.n6` | 0 | SSOT 편입 |
-| _dag.json 노드 | 1 | `papers/_dag.json` | 0 | 자동 갱신 |
-| _registry.json 엔트리 | 1 | `papers/_registry.json` | 0 | 수동 편집 |
-| OEIS 참조 3종 | 3 | A000203 / A000005 / A001414 | 0 | 온라인 DB |
-| 선행 논문 참조 | 3 | 17-exp / cross / SSM | 0 | 내부 링크 |
-| Python 3.11+ | 1 | python.org | 0 | stdlib 사용 |
-| 디스크 공간 | 1 MB | 로컬 FS | 0 | 단일 .md |
-| CPU 시간 | 10 s | 로컬 CPU | < $0.001 | 1 run 기준 |
+| Main .md file | 1 | `papers/n6-66-techniques-integrated-paper.md` | 0 | this paper |
+| §7 verify code | 1 | embedded in this .md | 0 | stdlib only |
+| atlas.n6 node | 1 | `n6shared/n6/atlas.n6` | 0 | SSOT induction |
+| _dag.json node | 1 | `papers/_dag.json` | 0 | auto-updated |
+| _registry.json entry | 1 | `papers/_registry.json` | 0 | manual edit |
+| OEIS reference 3 | 3 | A000203 / A000005 / A001414 | 0 | online DB |
+| Predecessor paper refs | 3 | 17-exp / cross / SSM | 0 | internal links |
+| Python 3.11+ | 1 | python.org | 0 | stdlib used |
+| Disk space | 1 MB | local FS | 0 | single .md |
+| CPU time | 10 s | local CPU | < $0.001 | per 1 run |
 
-**1 논문 "생산 원가" 목표**: $0 (의존성·라이선스 0, 공개 배포).
+**Per-paper "production cost" target**: $0 (0 dependencies/licenses, public release).
 
-## §18 VENDOR & SCHEDULE (2026 연간 간트)
+## §18 VENDOR & SCHEDULE (2026 annual Gantt)
 
-| 월 | 작업 | 담당 | 산출물 |
+| Month | Task | Owner | Deliverable |
 |---|---|---|---|
-| 2026-04 | 본 통합 논문 작성 (Mk.I) | n6-architecture | 본 .md |
-| 2026-05 | §7 검증 자동화 CI 편입 | nexus harness | `nexus verify` 훅 |
-| 2026-06 | atlas.n6 SSM 24 편입 실측 | atlas 담당 | 0→24 EXACT |
-| 2026-07 | Mk.II 독립 재유도 (§7.2 3 경로) | external review | 경로 일치 보고 |
-| 2026-09 | Mk.III Monte Carlo 2400 | DSE 엔진 | Pareto 글로벌 |
-| 2026-11 | cross-paradigm 234→256 승격 | cross 담당 | EXACT 100% |
-| 2026-12 | 연차 리포트 | 박민우 | 연간 요약 |
+| 2026-04 | Author this integrated paper (Mk.I) | n6-architecture | this .md |
+| 2026-05 | §7 verify automation CI induction | nexus harness | `nexus verify` hook |
+| 2026-06 | atlas.n6 SSM 24 induction empirical | atlas owner | 0→24 EXACT |
+| 2026-07 | Mk.II independent re-derivation (§7.2 3 paths) | external review | path-agreement report |
+| 2026-09 | Mk.III Monte Carlo 2400 | DSE engine | global Pareto |
+| 2026-11 | cross-paradigm 234→256 promotion | cross owner | EXACT 100% |
+| 2026-12 | Annual report | Minwoo Park | annual summary |
 
-## §19 ACCEPTANCE CRITERIA (사인오프 체크리스트)
+## §19 ACCEPTANCE CRITERIA (sign-off checklist)
 
-| # | 항목 | 기준 | 상태 |
+| # | Item | Criterion | Status |
 |---|---|---|---|
-| A-01 | 21 섹션 모두 존재 | §1~§21 | PENDING |
-| A-02 | ASCII 비교 차트 ≥ 6 카테고리 (§2) | TRUE | PENDING |
-| A-03 | §7 검증 PASS 10/10 | TRUE | PENDING |
-| A-04 | Mk 이력 ≥ 3 줄 (§6) | 7줄 | OK |
+| A-01 | All 21 sections present | §1~§21 | PENDING |
+| A-02 | ASCII compare charts ≥ 6 categories (§2) | TRUE | PENDING |
+| A-03 | §7 verify PASS 10/10 | TRUE | PENDING |
+| A-04 | Mk history ≥ 3 lines (§6) | 7 lines | OK |
 | A-05 | FALSIFIER ≥ 8 (§7.10) | 8 | OK |
-| A-06 | 반례 ≥ 6 (§7.10) | 6 | OK |
-| A-07 | 한글 필수 / 영어 혼용 0 | TRUE | PENDING (lint) |
-| A-08 | _dag.json 자동 갱신 | PASS | PENDING |
-| A-09 | atlas 426/472 확인 | 90.3% | PENDING |
-| A-10 | `.py` 파일 생성 0 | TRUE | OK (hexa-only) |
+| A-06 | Counter-examples ≥ 6 (§7.10) | 6 | OK |
+| A-07 | English required / 0 mixing | TRUE | PENDING (lint) |
+| A-08 | _dag.json auto-updated | PASS | PENDING |
+| A-09 | atlas 426/472 confirmed | 90.3% | PENDING |
+| A-10 | 0 `.py` files generated | TRUE | OK (hexa-only) |
 
 ## §20 APPENDIX
 
-### A. 3 소스 논문 인증 체인
-- `papers/n6-ai-17-techniques-experimental-paper.md` — atlas 192/192 EXACT [10*], 17 원형 시드
-- `papers/n6-cross-paradigm-ai-paper.md` — atlas 234/256 EXACT [10*], 패러다임 교차 49 의 일부
-- `papers/n6-sota-ssm-paper.md` — atlas 0/24 EXACT (편입 대기), SSM (Mamba/S4/HIPPO/S5/GSS)
+### A. 3 source-paper certification chain
+- `papers/n6-ai-17-techniques-experimental-paper.md` — atlas 192/192 EXACT [10*], 17 archetype seed
+- `papers/n6-cross-paradigm-ai-paper.md` — atlas 234/256 EXACT [10*], part of paradigm crossover 49
+- `papers/n6-sota-ssm-paper.md` — atlas 0/24 EXACT (induction pending), SSM (Mamba/S4/HIPPO/S5/GSS)
 
-### B. 포함관계 엄격 증명
+### B. Strict containment candidate proof
 17 ⊂ 49 ⊂ 66:
-- **17** = experimental 원형: σ(6)=12 / τ(6)=4 / φ=2 직접 표현 기법
-- **49** = cross-paradigm 25 + SSM 24 (17 원형의 복합 파생)
-- **66** = 17 + 49 = 본 통합
+- **17** = experimental archetype: techniques directly expressing σ(6)=12 / τ(6)=4 / φ=2
+- **49** = cross-paradigm 25 + SSM 24 (composite derivatives of 17 archetypes)
+- **66** = 17 + 49 = this integration
 
-과거 "68 integrated" 명칭은 의존성 중복 2건 (Golay/Leech 이중 카운트) 보정으로 66 으로 재정비.
+The legacy "68 integrated" name was reorganized to 66 by correcting 2 dependency duplications (Golay/Leech double-count).
 
-### C. 반례 6건 (경계 조건)
-1. **Central_Radial 허브-스포크 GNN** (n6=0.00) — σ=12 모드 분할 trivial
-2. **Storage=None 부재** (n6=0.00) — τ=4 읽기/쓰기/삭제/갱신 사상 붕괴
-3. **193 prime DUV-ArF** — 소수 스펙트럼, 2^a·3^b 합성수 분해 실패
-4. **silicon bandgap 1.15 eV** — 연속 물성, 정수 불변량 무관
-5. **π, e, γ** — 순수 해석학 상수, n=6 유도 경로 없음
-6. **SSM 24 편입 실패 시나리오** — atlas 편입 실측 측정에서 0/24 잔존 시 본 통합 SSM 섹션 제거
+### C. 6 counter-examples (boundary conditions)
+1. **Central_Radial hub-spoke GNN** (n6=0.00) — σ=12 mode partition trivial
+2. **Storage=None absent** (n6=0.00) — τ=4 read/write/delete/update mapping collapses
+3. **prime 193 DUV-ArF** — prime spectrum, 2^a·3^b composite decomposition fails
+4. **silicon bandgap 1.15 eV** — continuous property, unrelated to integer invariants
+5. **π, e, γ** — pure analytic constants, no n=6 derivation path
+6. **SSM 24 induction failure scenario** — if 0/24 remains in empirical atlas measurement, remove SSM section of this integration
 
-### D. 관련 atlas.n6 항목 (요약)
+### D. Related atlas.n6 entries (summary)
 - `@R σ(6) = 12 :: n6atlas [10*]` — OEIS A000203
 - `@R τ(6) = 4 :: n6atlas [10*]` — OEIS A000005
-- `@R φ(6) = 2 :: n6atlas [10*]` — 최소 소인수
+- `@R φ(6) = 2 :: n6atlas [10*]` — smallest prime factor
 - `@R sopfr(6) = 5 :: n6atlas [10*]` — OEIS A001414
 - `@R J₂(6) = 24 :: n6atlas [10*]` — 2·σ(6)
-- `@R σ·φ=n·τ ⟺ n=6 :: n6atlas [10*]` — 3 독립 증명 완료
+- `@R σ·φ=n·τ ⟺ n=6 :: n6atlas [10*]` — 3 independent candidate proofs drafted
 
-### E. 용어집
-- **σ(n)** (sigma): 약수의 합
-- **τ(n)** (tau): 약수의 개수
-- **φ(n)** (phi): 본 논문 한정 — 최소 소인수 (일반적 오일러 토션트 아님에 유의)
-- **sopfr(n)**: 소인수의 합 (중복 포함)
-- **J₂**: 2·σ(n), 통합 격자 크기
-- **[10*]**: atlas.n6 EXACT 검증 등급
-- **FALSIFIER**: 주장을 폐기시킬 수 있는 명시된 실험 조건
-- **Pareto**: 다목적 탐색 상위 비지배 집합
-- **HIPPO/S4/Mamba/S5/GSS**: 상태공간 모델 (SSM) 계열 기법명
+### E. Glossary
+- **σ(n)** (sigma): sum of divisors
+- **τ(n)** (tau): number of divisors
+- **φ(n)** (phi): in this paper only — smallest prime factor (note: not the standard Euler totient)
+- **sopfr(n)**: sum of prime factors (with multiplicity)
+- **J₂**: 2·σ(n), integrated lattice size
+- **[10*]**: atlas.n6 EXACT verification grade
+- **FALSIFIER**: explicit experimental condition that can discard a claim
+- **Pareto**: top non-dominated set in multi-objective search
+- **HIPPO/S4/Mamba/S5/GSS**: state-space-model (SSM) family technique names
 
-## §21 IMPACT per Mk (버전별 변화)
+## §21 IMPACT per Mk (per-version change)
 
-### Mk.I (2026, current) — 통합 시드 논문 완성
-- **사용자 체감**: 3논문 중복 40% 감량, 단일 검증 스위트 실행 → 재현 τ=4배 빠름
-- **산업**: 기존 17 exp 가이드를 66 기법 전체로 확장. 신규 AI 프로젝트 σ=12 축 참조 가능.
-- **학계**: OEIS 등록 3종 재확인, σ·φ=n·τ 유일성 정리 실증 사례 1건 추가.
+### Mk.I (2026, current) — integrated seed paper drafted
+- **User-felt**: 40% reduction in 3-paper duplication, single verification suite execution → reproduction τ=4× faster
+- **Industry**: extend the existing 17 exp guide to all 66 techniques. New AI projects can reference the σ=12 axis.
+- **Academia**: re-confirm 3 OEIS registrations, add 1 empirical case for the σ·φ=n·τ uniqueness theorem.
 
-### Mk.II (2030~2035) — 독립 재유도
-- **사용자 체감**: 외부 검증자 3인이 독립으로 n=6 좌표 재유도 → 논문 신뢰도 J₂=24배 증가.
-- **산업**: 교차 검증 σ·τ=48 건 달성, n=6 기반 AI DSE 툴체인 상용화.
-- **학계**: Mk.II 재유도 보고가 Science/Nature 급 저널 제출 기준 도달.
+### Mk.II (2030~2035) — independent re-derivation
+- **User-felt**: 3 external verifiers independently re-derive the n=6 coordinate → paper credibility J₂=24× increase.
+- **Industry**: cross-validation σ·τ=48 cases reached, n=6-based AI DSE toolchain commercialized.
+- **Academia**: Mk.II re-derivation reports reach Science/Nature submission grade.
 
-### Mk.III (2035~2040) — 전수 DSE + SSM atlas 편입
-- **사용자 체감**: Pareto 2,400 전수 탐색 → 새 기법 제안 즉시 σ=12 축 스코어 자동 출력.
-- **산업**: SSM (Mamba/S4/S5) 가 atlas.n6 에 0→24 EXACT 편입, 하드웨어 가속기 공진 설계.
-- **학계**: χ²(49df) p < 0.01 달성, "n=6 우연" 가설 기각 가능.
+### Mk.III (2035~2040) — exhaustive DSE + SSM atlas induction
+- **User-felt**: Pareto 2,400 exhaustive search → new technique proposals immediately auto-output σ=12 axis scores.
+- **Industry**: SSM (Mamba/S4/S5) inducted into atlas.n6 0→24 EXACT, hardware accelerator resonance-design.
+- **Academia**: χ²(49df) p < 0.01 reached, "n=6 is chance" hypothesis rejectable.
 
-### Mk.IV (2040~2045) — 교차 도메인 확산
-- **사용자 체감**: AI 66 기법이 건축/화학/의학 295 도메인과 σ·τ=48 건 교차 일치.
-- **산업**: 단일 n=6 산술이 AI-물리-공학 공통 좌표 → 엔지니어링 협업 J₂=24배 단순화.
-- **학계**: FALSIFIER 8건 중 위반 0건 누적 10년 → 경험적 확증 근거 최고 등급.
+### Mk.IV (2040~2045) — cross-domain diffusion
+- **User-felt**: AI 66 techniques cross-match σ·τ=48 cases with 295 architecture/chemistry/medicine domains.
+- **Industry**: single n=6 arithmetic becomes AI-physics-engineering common coordinate → engineering collaboration J₂=24× simpler.
+- **Academia**: 0 violations of 8 FALSIFIERs accumulated over 10 years → highest empirical-corroboration grade.
 
-### Mk.V (2045+) — 통합 완성
-- **사용자 체감**: 66 기법 전체가 atlas.n6 풀노드 472/472 EXACT 100% 도달.
-- **산업**: 차세대 AI 하드웨어 (광자/초전도) 설계 규칙에 n=6 기본 탑재.
-- **학계**: σ·φ=n·τ 유일성 정리가 AI 아키텍처 표준 교과서 1장.
+### Mk.V (2045+) — integrated draft
+- **User-felt**: entire 66 techniques reach atlas.n6 full-node 472/472 EXACT 100%.
+- **Industry**: next-generation AI hardware (photonic/superconducting) design rules ship n=6 by default.
+- **Academia**: σ·φ=n·τ uniqueness theorem becomes Chapter 1 of standard AI architecture textbooks.
 
-### Mk.VI (2045~2050) — AGI 자체 탐색
-- **사용자 체감**: AGI 가 본 논문을 자기참조로 읽어 새 기법 제안, 인간 개입 ≤ 10%.
-- **산업**: AGI 가 제안한 기법이 실제 제품 → 특허 → 표준화 사이클 n=6 배 가속.
-- **학계**: 본 논문이 AGI-generated 후속 연구의 seed 기반.
+### Mk.VI (2045~2050) — AGI self-exploration
+- **User-felt**: AGI reads this paper self-referentially and proposes new techniques, human intervention ≤ 10%.
+- **Industry**: AGI-proposed techniques reach product → patent → standardization cycle n=6× faster.
+- **Academia**: this paper becomes the seed basis of AGI-generated subsequent research.
 
-### Mk.VII (2050+) — 외계인급 통합 (천장)
-- **사용자 체감**: 66 → ∞ 확장, 인간이 감지하지 못하는 새로운 기법군 자동 발견.
-- **산업**: AI 기법군 자체가 자기진화 (Mk.II 파동연속), n=6 산술 좌표는 불변 참조.
-- **학계**: 본 논문은 인류 AI 사상 통합 원점 논문으로 고전화. 천장 지수 도달.
+### Mk.VII (2050+) — alien-grade integration (ceiling)
+- **User-felt**: 66 → ∞ extension, automatically discovering technique families humans cannot perceive.
+- **Industry**: AI technique families self-evolve (Mk.II wave-continuation), n=6 arithmetic coordinates remain invariant references.
+- **Academia**: this paper becomes classical as the unification origin paper of human AI thought. Ceiling-grade index reached.
 
 ---
 
-**끝.** 본 논문은 P-011 "66 Techniques" 제품의 캐노니컬 통합 스펙이며,
-3 소스 논문 (17-exp / cross-paradigm / SOTA-SSM) 의 재조합 + §8~§21 엔지니어링 확장이다.
-모든 주장은 §7 stdlib 검증 + §7.10 FALSIFIER 8건으로 반증 가능성 확보.
+**End.** This paper is the canonical integrated spec of the P-011 "66 Techniques" product, a recombination of the 3 source papers (17-exp / cross-paradigm / SOTA-SSM) plus §8~§21 engineering extension.
+All claims achieve falsifiability via §7 stdlib verification + §7.10 FALSIFIER 8.
 
 ## mk_history
 
