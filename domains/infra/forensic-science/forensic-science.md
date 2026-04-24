@@ -9,7 +9,7 @@ source_proposal: reports/p2_domain_expansion_proposal.json DC-009
 registered: 2026-04-23
 ---
 
-# 법과학 (HEXA-FORENSIC) — n=6 Locard 6 trace evidence classes
+# Forensic Science (HEXA-FORENSIC) — n=6 Locard 6 trace evidence classes
 
 ## §1 WHY
 
