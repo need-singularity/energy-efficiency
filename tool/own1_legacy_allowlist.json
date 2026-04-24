@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 132,
+    "count": 119,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -29,6 +29,14 @@
         "action": "scope_expansion",
         "directive": "user 'hard!!! 모두 english only'",
         "details": "Added proposals/ to OWN1_SCOPE_DIRS and CONTRIBUTING.md to OWN1_ROOT_DOCS. 9 CJK-containing proposals/*.md grandfathered into the allowlist (1050 -> 1059) — including the own1-hard-english-only-translation-roadmap-2026-04-24.md proposal co-landed by the parallel roadmap agent. Allowlist policy hardened to FROZEN, SHRINK-ONLY (no new grandfather)."
+      },
+      {
+        "phase": "phase-6-10-cont",
+        "batch": "phase-6-10-cont-compute-13",
+        "date": "2026-04-25",
+        "removed": 13,
+        "new_count": 119,
+        "note": "B10 YELLOW continuation - 13 compute files translated (network, nexus-breakthrough-gate, nexus-service, performance-chip, programming-language, sc-memory, semiconductor-lithography, software-crypto, software-design, spatial-computing, unified-service, unified-soc, vnand). sscb deferred (unique paper-style 1315L structure)."
       }
     ],
     "shrink_history": [
@@ -249,20 +257,7 @@
     "domains/compute/hexa-proglang/hexa-proglang.md",
     "domains/compute/hexa-super/hexa-super.md",
     "domains/compute/hexa-wafer/hexa-wafer.md",
-    "domains/compute/network/network.md",
-    "domains/compute/nexus-breakthrough-gate/nexus-breakthrough-gate.md",
-    "domains/compute/nexus-service/nexus-service.md",
-    "domains/compute/performance-chip/performance-chip.md",
-    "domains/compute/programming-language/programming-language.md",
-    "domains/compute/sc-memory/sc-memory.md",
-    "domains/compute/semiconductor-lithography/semiconductor-lithography.md",
-    "domains/compute/software-crypto/software-crypto.md",
-    "domains/compute/software-design/software-design.md",
-    "domains/compute/spatial-computing/spatial-computing.md",
     "domains/compute/sscb/sscb.md",
-    "domains/compute/unified-service/unified-service.md",
-    "domains/compute/unified-soc/unified-soc.md",
-    "domains/compute/vnand/vnand.md",
     "domains/physics/antimatter-factory/antimatter-factory.md",
     "domains/physics/classical-mechanics-accelerator/classical-mechanics-accelerator.md",
     "domains/physics/cosmic-observatory/cosmic-observatory.md",
