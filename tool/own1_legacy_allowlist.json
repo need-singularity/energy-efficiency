@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 68,
+    "count": 66,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -233,6 +233,19 @@
         "removed": 8,
         "new_count": 98,
         "note": "B6 YELLOW - 7 sf-ufo translated (cross-domain-mega, experiments, hexa-sim, hexa-cloak, hexa-hover, hexa-teleport, hover) + 1 stale CJK=0 (cloak). hexa-speak deferred — still has 2938 CJK chars. Remaining B6 (hypotheses, sf, ai-safety, hexa-speak) deferred."
+      },
+      {
+        "phase": "phase-6-B11-carry-hexa-field-effect",
+        "date": "2026-04-25",
+        "removed": 1,
+        "before": 68,
+        "after": 67
+      },
+      {
+        "phase": "phase-6-B11-carry-hexa-photon-topo",
+        "removed": 1,
+        "new_count": 66,
+        "date": "2026-04-25"
       }
     ]
   },
@@ -251,9 +264,7 @@
     "domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md",
     "domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md",
     "domains/compute/chip-design/hexa-dna-molecular/hexa-dna-molecular.md",
-    "domains/compute/chip-design/hexa-field-effect/hexa-field-effect.md",
     "domains/compute/chip-design/hexa-neuromorphic/hexa-neuromorphic.md",
-    "domains/compute/chip-design/hexa-photon-topo/hexa-photon-topo.md",
     "domains/compute/chip-design/hexa-photonic/hexa-photonic.md",
     "domains/compute/chip-design/hexa-quantum-hybrid/hexa-quantum-hybrid.md",
     "domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md",
