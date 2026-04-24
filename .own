@@ -196,13 +196,14 @@ own 18 live "ssot-fingerprint-daily — daily raw-audit status sweep"
   on_fail warn
   label SSOT fingerprint daily
 
-own 19 live "roadmap-review-weekly — weekly manual roadmap review reminder"
+own 19 live "roadmap-review-weekly — weekly roadmap review runner"
   slug roadmap-review-weekly
-  decl .own
-  scope Weekly manual roadmap review — no auto verify; reminder only.
+  decl .own tool/own_roadmap_review.py .github/workflows/own-roadmap-review.yml
+  scope Weekly roadmap review — runs tool/own_roadmap_review.py as SOFT reminder (on_fail=log).
   status live
   since 2026-04-21
-  why Migrated from .loop. Weekly roadmap triage reminder. Manual judgment required, outside automation scope.
+  why Migrated from .loop (2026-04-21). Stub replaced 2026-04-24 with real Python runner (commit 74b22775 added tool/own_roadmap_review.py + .github/workflows/own-roadmap-review.yml). SOFT reminder — surfaces drift without blocking.
+  verify python3 tool/own_roadmap_review.py
   cron weekly
   on_fail log
   label Roadmap review reminder
