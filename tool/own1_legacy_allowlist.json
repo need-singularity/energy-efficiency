@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 46,
+    "count": 44,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -402,6 +402,23 @@
         "removed": 1,
         "new_count": 46,
         "note": "B12 part A - chip-materials.md translated (KR->EN, 850L), CJK=0 verified."
+      },
+      {
+        "phase": "phase-6-D-B12-hexa-asic",
+        "removed": [
+          "domains/compute/hexa-asic/hexa-asic.md"
+        ],
+        "count_after": 45,
+        "date": "2026-04-25"
+      },
+      {
+        "phase": "phase-6-D-B12-xn6-isa-24-spec",
+        "batch": "phase-6-D-B12-xn6-isa-24-spec",
+        "date": "2026-04-25",
+        "removed": 1,
+        "new_count": 44,
+        "note": "B12 part A wave 1 - xn6-isa-24-spec.md (Ultimate XN6 24-bit ISA Spec, HEXA-ISA24) translated KR->EN, CJK=0 verified.",
+        "entry": "domains/compute/chip-isa-n6/xn6-isa-24-spec/xn6-isa-24-spec.md"
       }
     ]
   },
@@ -414,7 +431,6 @@
     "domains/cognitive/ai-interpretability/ai-interpretability.md",
     "domains/cognitive/ai-quality-scale/ai-quality-scale.md",
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
-    "domains/compute/chip-isa-n6/xn6-isa-24-spec/xn6-isa-24-spec.md",
     "domains/compute/chip-npu-n6/chip-npu-n6.md",
     "domains/compute/chip-photonic/chip-photonic.md",
     "domains/compute/chip-rtl-gen/chip-rtl-gen.md",
@@ -422,7 +438,6 @@
     "domains/compute/chip-wafer/chip-wafer.md",
     "domains/compute/hexa-3d/hexa-3d.md",
     "domains/compute/hexa-accel/hexa-accel.md",
-    "domains/compute/hexa-asic/hexa-asic.md",
     "domains/compute/hexa-holo/hexa-holo.md",
     "domains/compute/hexa-ios/hexa-ios.md",
     "domains/compute/hexa-macos/hexa-macos.md",
