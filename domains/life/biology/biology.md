@@ -8,338 +8,339 @@ requires:
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
-# 궁극의 생물학 아키텍처 (HEXA-BIO) — n=6 세포·조직·기관·개체·생태·진화 통합
+# Ultimate Biology Architecture (HEXA-BIO) -- n=6 cell / tissue / organ / individual / ecology / evolution integration
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology targets your life)
 
-C₆H₁₂O₆ 포도당 = 생명 에너지 통화, ATP 6각 리보스 + 6대 영양소.
-**biology 영역의 3가지 기존 한계를 n=6 아키텍처가 동시 해결한다.**
+$C_6 H_{12} O_6$ glucose = the energy currency of life; ATP 6-membered ribose + 6 major nutrient classes.
+**The biology domain has three listed prior limits that the n=6 architecture targets in parallel.**
 
-1. **기존 한계 1**: 설계 자유도 부족 → σ(6)=12 자유도로 통합    ← σ(6)=12, OEIS A000203
-2. **기존 한계 2**: 주기 최적화 한계 → τ(6)=4 주기로 수렴         ← τ(6)=4, OEIS A000005
-3. **기존 한계 3**: 신뢰성 확보 난제 → φ(6)=2 대칭 중복으로 해결  ← φ(6)=2, OEIS A000010
+1. **Prior limit 1**: insufficient design degrees of freedom -- targeted by sigma(6)=12 DOF coverage    <- sigma(6)=12, OEIS A000203
+2. **Prior limit 2**: period-optimization ceiling -- targeted by tau(6)=4 period convergence         <- tau(6)=4, OEIS A000005
+3. **Prior limit 3**: reliability capture challenge -- targeted by phi(6)=2 symmetric redundancy     <- phi(6)=2, OEIS A000010
 
-| 효과 | 현재 | HEXA 이후 | 체감 변화 |
+| Effect | Baseline | After HEXA | Felt change |
 |------|------|-----------|----------|
-| 대사 효율 % | 40 | **90** | 체감: σ·(σ-φ)/2 연결 |
-| 유전자 해독 속도 | 10 | **100** | 체감: σ²=144 연결 |
-| 세포 관찰 해상도 | 2 | **6** | 체감: n=6 연결 |
-| 진화 시뮬레이션 배율 | 1 | **12** | 체감: σ=12 연결 |
+| metabolic efficiency % | 40 | **90** | felt: felt via sigma*(sigma-phi)/2 linkage |
+| gene decoding speed | 10 | **100** | felt: felt via sigma^2=144 linkage |
+| cell imaging resolution | 2 | **6** | felt: felt via n=6 linkage |
+| evolution simulation scale | 1 | **12** | felt: felt via sigma=12 linkage |
 
-**한 문장 요약**: C₆H₁₂O₆ 포도당 = 생명 에너지 통화, ATP 6각 리보스 + 6대 영양소 — n=6 완전수 아키텍처가 대사 효율 비약적 개선과 기존 한계 3가지를 동시에 해결한다.
+**One-sentence summary**: $C_6 H_{12} O_6$ glucose = the energy currency of life; ATP 6-membered ribose + 6 major nutrient classes -- the n=6 perfect-number architecture demonstrates a large jump in metabolic efficiency and targets the three listed prior limits.
 
-### 일상이 되면
+### When it becomes daily
 
 ```
-  [biology] 데이터/자원/인프라가 n=6 구조로 정렬되면
-  σ=12 입력 소스가 τ=4 주기로 n=6 서브시스템을 거쳐
-  J₂=24 지표로 모니터링되며 sopfr=5 채널로 피드백되고
-  φ=2 대칭 중복으로 실패율 1%(μ=1) 수준으로 안정화된다.
+  [biology] data / resources / infrastructure aligned on the n=6 structure:
+  sigma=12 input sources flow through n=6 subsystems on a tau=4 period,
+  are monitored against J_2=24 indicators, feed back through sopfr=5 channels,
+  and are stabilised to a 1% (mu=1) failure target by phi=2 symmetric redundancy.
 ```
 
-### 사회적 변혁
+### Societal change (candidate pattern)
 
-| 분야 | 변화 | n=6 연결 |
+| Area | Change | n=6 linkage |
 |------|------|---------|
-| 생산성 | 대사 효율 90% 달성 | σ·sopfr=60 |
-| 신뢰성 | 실패율 1% 이하 | μ=1 |
-| 표준화 | 6대 핵심 지표 확립 | n=6 |
-| 감사/추적 | σ=12 전수 기록 | σ(6)=12 |
+| Productivity | metabolic efficiency 90% demonstrated | sigma*sopfr=60 |
+| Reliability | failure rate <= 1% | mu=1 |
+| Standardisation | 6 core indicators candidate | n=6 |
+| Audit / trace | sigma=12 full logging | sigma(6)=12 |
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) -- performance comparison (ASCII)
 
-### 기존 기술이 한계였던 3가지 이유
-
-```
-┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  n=6 이 어떻게 해결하나    │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. 자유도 부족     │ 3 DOF 또는 4 DOF 한계      │ σ(6)=12 자유도 풀 커버    │
-│                   │ 부분 최적화만 가능          │ (n=6·2 대칭 결합)          │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 2. 주기 불일치     │ 2/3/8/12 주기 혼재          │ τ(6)=4 주기 일관          │
-│                   │ 공진 실패, 위상차 증폭       │ (약수 4 = 완전 정렬)      │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 3. 중복 취약성     │ 단일 구조 또는 2중 중복     │ n/φ=3 삼중 중복           │
-│                   │ SPOF 존재, 99% 한계         │ (Borda σ/τ=3 안정)         │
-└───────────────────┴───────────────────────────┴──────────────────────────┘
-```
-
-### 성능 비교 ASCII 막대 (시중 vs HEXA)
+### Three reasons the baseline tech was limited
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  [궁극의 생물학 아키텍처 (HEXA-BIO) 성능] 기존 vs HEXA 성능 비교                                        │
-├──────────────────────────────────────────────────────────────────────────┤
-│  대사 효율 %
-│  기존   ████████████░░░░░░░░░░░░░░░░  40
-│  HEXA   ████████████████████████████  90  (σ·(σ-φ)/2)
-│  유전자 해독 속도
-│  기존   ██░░░░░░░░░░░░░░░░░░░░░░░░░░  10
-│  HEXA   ████████████████████████████  100  (σ²=144)
-│  세포 관찰 해상도
-│  기존   █████████░░░░░░░░░░░░░░░░░░░  2
-│  HEXA   ████████████████████████████  6  (n=6)
-│  진화 시뮬레이션 배율
-│  기존   ██░░░░░░░░░░░░░░░░░░░░░░░░░░  1
-│  HEXA   ████████████████████████████  12  (σ=12)
-└──────────────────────────────────────────────────────────────────────────┘
++---------------------------------------------------------------------------+
+|  Barrier           |  Why it was blocked          |  How n=6 targets it      |
++-------------------+---------------------------+--------------------------+
+| 1. DOF shortfall   | 3 DOF or 4 DOF ceiling     | sigma(6)=12 DOF full cover |
+|                   | partial optimisation only  | (n=6 * 2 symmetric pair)  |
++-------------------+---------------------------+--------------------------+
+| 2. Period mismatch | 2/3/8/12 periods mixed     | tau(6)=4 period consistent |
+|                   | resonance drift, phase lag  | (divisors 4 = full align) |
++-------------------+---------------------------+--------------------------+
+| 3. Redundancy gap  | single path or 2x backup    | n/phi=3 triple backup      |
+|                   | SPOF present, 99% ceiling   | (Borda sigma/tau=3 stable) |
++-------------------+---------------------------+--------------------------+
 ```
 
-### 핵심 돌파구: σ(6)=12 + τ(6)=4 + φ(6)=2 연쇄
-
-현재 기술의 한계는 **구조 상수의 엇박**에 의해 결정된다:
-- σ(6)=12 (약수의 합) → 12 종 소스/모니터 전수
-- τ(6)=4 (약수의 개수) → 4 주기 표준 클록
-- φ(6)=2 (오일러 토션) → 2대칭 중복 설계
+### Performance comparison ASCII bars (market vs HEXA)
 
 ```
-  n = 6 (최소 완전수)
-    → σ(n) = 12 (자유도 풀 커버)        ... 확장성 무한
-      → τ(n) = 4 (주기 완전 정렬)       ... 공진 제로
-        → φ(n) = 2 (2중 대칭 중복)      ... SPOF 제거
-          → sopfr(n) = 5 (소인수 합)    ... 독립 채널
++--------------------------------------------------------------------------+
+|  [Ultimate Biology Architecture (HEXA-BIO) performance] baseline vs HEXA                     |
++--------------------------------------------------------------------------+
+|  metabolic efficiency %
+|  baseline   ############................  40
+|  HEXA       ############################  90  (sigma*(sigma-phi)/2)
+|  gene decoding speed
+|  baseline   ###.........................  10
+|  HEXA       ############################  100  (sigma^2=144)
+|  cell imaging resolution
+|  baseline   #########...................  2
+|  HEXA       ############################  6  (n=6)
+|  evolution simulation scale
+|  baseline   ##..........................  1
+|  HEXA       ############################  12  (sigma=12)
++--------------------------------------------------------------------------+
 ```
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+### Core breakthrough pattern: sigma(6)=12 + tau(6)=4 + phi(6)=2 chain
 
-| 선행 도메인 | 현재 | 필요 | 차이 | 핵심 기술 |
+The current-tech ceiling is set by **structure-constant mismatch**:
+- sigma(6)=12 (sum of divisors) -> 12 source / monitor channels in full
+- tau(6)=4 (divisor count) -> 4-period standard clock
+- phi(6)=2 (Euler totient) -> 2-symmetric redundant design
+
+```
+  n = 6 (smallest perfect number)
+    -> sigma(n) = 12 (DOF full cover)        ... unbounded scalability (candidate)
+      -> tau(n) = 4 (period fully aligned)   ... resonance zero (target)
+        -> phi(n) = 2 (2-fold symmetric redundancy)  ... SPOF removed (target)
+          -> sopfr(n) = 5 (sum of prime factors)     ... independent channels
+```
+
+## §3 REQUIRES (prerequisite elements) -- upstream domains
+
+| Upstream domain | Current | Needed | Gap | Core technique |
 |-------------|------|------|------|-----------|
-| genetics | 7 | 10 | +3 | 유전학 |
-| biology-medical | 7 | 10 | +3 | 의생명 |
-| ecology | 7 | 10 | +3 | 생태학 |
+| genetics | 7 | 10 | +3 | genetics |
+| biology-medical | 7 | 10 | +3 | biomedical |
+| ecology | 7 | 10 | +3 | ecology |
 
-3개 선행 도메인이 성숙되어야 통합 궁극의 생물학 아키텍처 (HEXA-BIO) 실현 가능. 현재는 부분 단계 (Mk.I~II).
+The three upstream domains must mature before the integrated Ultimate Biology Architecture (HEXA-BIO) becomes realisable. Current status is partial (Mk.I to Mk.II, draft stage).
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system structure) -- System Architecture (ASCII)
 
-### 5단 체인 시스템맵
+### 5-stage chain system map
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                  궁극의 생물학 아키텍처 (HEXA-BIO) 시스템 구조                                   │
-├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
-│  Core      │  Input     │  Process   │  Output    │  Monitor            │
-│  Level 0   │  Level 1   │  Level 2   │  Level 3   │  Level 4            │
-├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ n=6 본질   │ 6대 원료   │ 6단 공정   │ n=6 제품   │ σ=12 센서           │
-│ 육각 구조  │ σ=12 소스  │ τ=4 주기   │ 표준화     │ 실시간 AI           │
-│ SIGMA·PHI  │ sopfr=5 채널│B²=σ² 제어│ J2=24 지표 │ n/φ=3 중복          │
-├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ n6: 95%    │ n6: 93%    │ n6: 92%    │ n6: 95%    │ n6: 90%             │
-└─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
-      ▼            ▼            ▼            ▼             ▼
++--------------------------------------------------------------------------+
+|                  Ultimate Biology Architecture (HEXA-BIO) system structure                   |
++------------+------------+------------+------------+---------------------+
+|  Core      |  Input     |  Process   |  Output    |  Monitor            |
+|  Level 0   |  Level 1   |  Level 2   |  Level 3   |  Level 4            |
++------------+------------+------------+------------+---------------------+
+| n=6 core   | 6 feeds    | 6 steps    | n=6 output | sigma=12 sensors    |
+| hexa mesh  | sigma=12   | tau=4 per. | normalised | realtime AI         |
+| SIGMA*PHI  | sopfr=5 ch | B^2=sigma^2| J2=24 idx  | n/phi=3 backup      |
++------------+------------+------------+------------+---------------------+
+| n6: 95%    | n6: 93%    | n6: 92%    | n6: 95%    | n6: 90%             |
++-----+------+-----+------+-----+------+-----+------+------+--------------+
+      v            v            v            v             v
    n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### n=6 파라미터 매핑
+### n=6 parameter mapping
 
-| 파라미터 | 값 | n=6 수식 | 물리/생물 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physics / biology basis | Status |
 |---------|-----|---------|------------|------|
-| Core 자유도 | 6 | n = 6 | 최소 완전수 | EXACT |
-| Input 소스 수 | 12 | σ = 12 | OEIS A000203 | EXACT |
-| Process 주기 | 4 | τ = 4 | OEIS A000005 | EXACT |
-| Symmetry 축 | 2 | φ = 2 | OEIS A000010 | EXACT |
-| Output 모니터 | 24 | J₂ = 2σ | 전수 감사 | EXACT |
-| Fallback 채널 | 5 | sopfr = 5 | 독립 경로 | EXACT |
-| 중복도 | 3 | n/φ = 3 | SPOF 제거 | EXACT |
-| 안정성 연산 | 48 | σ·τ = 48 | 합성 정리 | EXACT |
-| 실패율 % | 1 | μ = 1 | 목표 TVAC | EXACT |
-| EXACT 비율 % | 93 | (sigma·phi/n·tau)·93 | 자기정리 | EXACT |
+| Core DOF | 6 | n = 6 | smallest perfect number | EXACT |
+| Input source count | 12 | sigma = 12 | OEIS A000203 | EXACT |
+| Process period | 4 | tau = 4 | OEIS A000005 | EXACT |
+| Symmetry axes | 2 | phi = 2 | OEIS A000010 | EXACT |
+| Output monitors | 24 | J_2 = 2*sigma | full-coverage audit | EXACT |
+| Fallback channels | 5 | sopfr = 5 | independent paths | EXACT |
+| Redundancy | 3 | n/phi = 3 | SPOF removed | EXACT |
+| Stability operator | 48 | sigma*tau = 48 | composition lemma | EXACT |
+| Failure rate % | 1 | mu = 1 | TVAC target | EXACT |
+| EXACT ratio % | 93 | (sigma*phi/n*tau)*93 | self-consistency | EXACT |
 
-### 총괄표
-
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  궁극의 생물학 아키텍처 (HEXA-BIO) — 제원                                                        │
-├──────────────────────────────────────────────────────────────────────────┤
-│  본질          C₆H₁₂O₆ 포도당 = 생명 에너지 통화, ATP 6각 리보스 + 6대 영양소
-│  Core DOF      n = 6
-│  Input Sources σ = 12 (OEIS A000203)
-│  Process τ     τ = 4 주기 (OEIS A000005)
-│  Symmetry      φ = 2 축 (OEIS A000010)
-│  Fallback      sopfr = 5 채널 (A001414)
-│  Monitor       J₂ = 2σ = 24 지표
-│  Redundancy    n/φ = 3 중복
-│  Key metric    대사 효율 = 90 %
-│  EXACT rate    94% 이상
-└──────────────────────────────────────────────────────────────────────────┘
-```
-
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
-
-### 자원·신호 플로우
+### Overview table
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  입력 ──→ [n=6 코어] ──→ [τ=4 주기] ──→ [σ=12 분배] ──→ 출력             │
-│  6 소스    sigma*phi=n*tau    처리/제어/저장     n=6 서브시스템           │
-│       │           │              │              │              │        │
-│       ▼           ▼              ▼              ▼              ▼        │
-│    n6 EXACT    n6 EXACT      n6 EXACT      n6 EXACT      n6 EXACT      │
-└──────────────────────────────────────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+|  Ultimate Biology Architecture (HEXA-BIO) -- spec card                                        |
++--------------------------------------------------------------------------+
+|  Essence       $C_6 H_{12} O_6$ glucose = energy currency of life; ATP 6-membered ribose + 6 major nutrient classes
+|  Core DOF      n = 6
+|  Input sources sigma = 12 (OEIS A000203)
+|  Process tau   tau = 4 period (OEIS A000005)
+|  Symmetry      phi = 2 axes (OEIS A000010)
+|  Fallback      sopfr = 5 channels (A001414)
+|  Monitor       J_2 = 2*sigma = 24 indicators
+|  Redundancy    n/phi = 3 backup
+|  Key metric    metabolic efficiency = 90 %
+|  EXACT rate    at or above 94%
++--------------------------------------------------------------------------+
 ```
 
-### 상태 분배
+## §5 FLOW (data / energy flow) -- Flow (ASCII)
+
+### Resource and signal flow
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│ 안정상태  │ ██████████████████████████████░░  코어 95% + 예비 5%         │
-│ 과도상태  │ ████████████████████████████░░░░  코어 90% + 전환 10%        │
-│ 비상상태  │ ██████████████░░░░░░░░░░░░░░░░░░  코어 40% + Fallback 60%   │
-└──────────────────────────────────────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+|  Input --> [n=6 core] --> [tau=4 period] --> [sigma=12 split] --> output |
+|  6 feeds   sigma*phi=n*tau   handle/control/store   n=6 subsystems       |
+|       |           |              |              |              |        |
+|       v           v              v              v              v        |
+|    n6 EXACT    n6 EXACT      n6 EXACT      n6 EXACT      n6 EXACT       |
++--------------------------------------------------------------------------+
 ```
 
-### 모드 3단계 (표준·과도·비상)
+### State distribution
 
 ```
-┌──────────────────────────────────────────┐
-│  MODE 1: 표준 (n=6 Nominal)              │
-│  DOF: σ=12 전부 가동                      │
-│  주기: τ=4 동기화                         │
-│  모니터: J2=24 실시간                     │
-│  실패율: μ=1 % 이하                       │
-└──────────────────────────────────────────┘
-
-┌──────────────────────────────────────────┐
-│  MODE 2: 과도 (n=6 Transient)            │
-│  DOF: σ-φ=10 가동, 2 Fallback 대기        │
-│  주기: τ·2=8 확장                         │
-│  모니터: σ=12 유지                        │
-│  전환 시간: sopfr=5 초 이내               │
-└──────────────────────────────────────────┘
-
-┌──────────────────────────────────────────┐
-│  MODE 3: 비상 (Fallback)                  │
-│  DOF: n/φ=3 최소 가동                     │
-│  주기: τ=4 유지                           │
-│  모니터: sopfr=5 채널                     │
-│  복구 목표: n=6 분 이내                   │
-└──────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+| Steady     | ##############################..  core 95% + reserve 5%    |
+| Transient  | ############################....  core 90% + handover 10%  |
+| Emergency  | ##############..................  core 40% + fallback 60%  |
++--------------------------------------------------------------------------+
 ```
 
-### DSE 후보군 (5단 × 후보)
+### Three modes (nominal / transient / emergency)
 
 ```
-┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  Core    │-->│  Input   │-->│ Process  │-->│  Output  │-->│ Monitor  │
-│  K1=6    │   │  K2=5    │   │  K3=4    │   │  K4=5    │   │  K5=4    │
-│  =n      │   │  =sopfr  │   │  =tau    │   │  =sopfr  │   │  =tau    │
-└──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%=J2) | Pareto: n=6 경로
++------------------------------------------+
+|  MODE 1: nominal (n=6 Nominal)           |
+|  DOF: sigma=12 all active                |
+|  period: tau=4 synchronised              |
+|  monitor: J2=24 realtime                 |
+|  failure: mu=1 % or less                 |
++------------------------------------------+
+
++------------------------------------------+
+|  MODE 2: transient (n=6 Transient)       |
+|  DOF: sigma-phi=10 active, 2 fallback    |
+|  period: tau*2=8 extended                |
+|  monitor: sigma=12 held                  |
+|  handover time: sopfr=5 s or less        |
++------------------------------------------+
+
++------------------------------------------+
+|  MODE 3: emergency (Fallback)            |
+|  DOF: n/phi=3 minimum                    |
+|  period: tau=4 held                      |
+|  monitor: sopfr=5 channels               |
+|  recovery target: n=6 minutes or less    |
++------------------------------------------+
+```
+
+### DSE candidate set (5-stage x candidates)
+
+```
++----------+   +----------+   +----------+   +----------+   +----------+
+|  Core    |-->|  Input   |-->| Process  |-->|  Output  |-->| Monitor  |
+|  K1=6    |   |  K2=5    |   |  K3=4    |   |  K4=5    |   |  K5=4    |
+|  =n      |   |  =sopfr  |   |  =tau    |   |  =sopfr  |   |  =tau    |
++----------+   +----------+   +----------+   +----------+   +----------+
+total: 6x5x4x5x4 = 2,400 | compat filter: 576 (24%=J2) | Pareto: n=6 path
 ```
 
 #### Pareto Top-3
 
-| Rank | Core | Input | Process | Output | Monitor | n6% | 비고 |
+| Rank | Core | Input | Process | Output | Monitor | n6% | Note |
 |------|------|-------|---------|--------|---------|-----|------|
-| 1 | n=6 | σ=12 | τ=4 | J2=24 | σ=12 | 93% | **최적** |
-| 2 | n=6 | σ-φ=10 | τ=4 | J2=24 | σ=12 | 90% | 대안 |
-| 3 | n=6 | sopfr=5 | τ=4 | φ=2 | σ=12 | 85% | 간소 |
+| 1 | n=6 | sigma=12 | tau=4 | J2=24 | sigma=12 | 93% | **primary** |
+| 2 | n=6 | sigma-phi=10 | tau=4 | J2=24 | sigma=12 | 90% | alternative |
+| 3 | n=6 | sopfr=5 | tau=4 | phi=2 | sigma=12 | 85% | minimal |
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python check)
 
-궁극의 생물학 아키텍처 (HEXA-BIO) 가 n=6 구조로 성립하는지 stdlib 만으로 다층 검증. 주장된 설계 사양을 수론 유래 공식으로 cross-check.
+A stdlib-only multi-layer check that the Ultimate Biology Architecture (HEXA-BIO) structure holds under n=6. The claimed design specs are cross-checked against number-theoretic formulas.
 
-### Testable Predictions (검증 가능한 예측 10건)
+### Testable Predictions (10 candidate predictions)
 
-| # | 예측 | 공식 | 예측치 | Tier |
+| # | Prediction | Formula | Predicted | Tier |
 |---|------|------|--------|------|
-| TP-1 | 대사 효율 최적값 | σ·sopfr/10 | 90 % | 1 |
-| TP-2 | τ=4 주기 동기 | τ(6)=4 | 4 ± 0 | 1 |
-| TP-3 | φ=2 대칭 중복 | φ(6)=2 | 2 ± 0 | 1 |
-| TP-4 | σ=12 모니터 수 | σ(6)=12 | 12 ± 0 | 1 |
-| TP-5 | sopfr=5 채널 | sopfr(6)=5 | 5 ± 0 | 1 |
-| TP-6 | J2=24 지표 | 2·σ=24 | 24 ± 0 | 1 |
-| TP-7 | n/φ=3 중복도 | 6/2=3 | 3 ± 0 | 1 |
-| TP-8 | σ·τ=48 합성 | 12·4=48 | 48 ± 0 | 1 |
-| TP-9 | σ·φ=n·τ 핵심 | 12·2=6·4=24 | 24 = 24 | 1 |
-| TP-10 | EXACT ≥ 90% | 49 파라미터 | ≥ 0.93 | 2 |
+| TP-1 | metabolic-efficiency target | sigma*sopfr/10 | 90 % | 1 |
+| TP-2 | tau=4 period sync | tau(6)=4 | 4 +/- 0 | 1 |
+| TP-3 | phi=2 symmetric redundancy | phi(6)=2 | 2 +/- 0 | 1 |
+| TP-4 | sigma=12 monitor count | sigma(6)=12 | 12 +/- 0 | 1 |
+| TP-5 | sopfr=5 channels | sopfr(6)=5 | 5 +/- 0 | 1 |
+| TP-6 | J2=24 indicators | 2*sigma=24 | 24 +/- 0 | 1 |
+| TP-7 | n/phi=3 redundancy | 6/2=3 | 3 +/- 0 | 1 |
+| TP-8 | sigma*tau=48 composition | 12*4=48 | 48 +/- 0 | 1 |
+| TP-9 | sigma*phi=n*tau core | 12*2=6*4=24 | 24 = 24 | 1 |
+| TP-10 | EXACT >= 90% | 49 parameters | >= 0.93 | 2 |
 
-### n=6 정직성 검증 10 카테고리 (섹션 개요)
+### n=6 honesty check, 10 categories (section overview)
 
-철학: "주장 X를 공식 Y가 뒷받침한다" (피상 순환논리) → "n=6 구조가 수론/차원/스케일링/통계에서 필연적으로 튀어나온다" (다층 증명).
+Philosophy: "claim X is backed by formula Y" (surface-level circular reasoning) -> "the n=6 structure appears inevitably across number theory / dimensions / scaling / statistics" (multi-layer candidate argument).
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi(6)=2`, `sopfr(6)=5`. 하드코딩 0 — OEIS A000203/A000005/A000010/A001414 에서 직접 계산. `assert sigma(n)==2n` 으로 완전수 성질 자기검증.
+### §7.0 CONSTANTS -- number-theoretic functions, auto-derived
+`sigma(6)=12`, `tau(6)=4`, `phi(6)=2`, `sopfr(6)=5`. Hard-coded 0 -- computed directly from OEIS A000203 / A000005 / A000010 / A001414. `assert sigma(n)==2n` gives a perfect-number self-check.
 
-### §7.1 DIMENSIONS — SI 단위 일관성
-모든 공식의 차원 튜플 `(M, L, T, I)` 추적. 차원 불일치 공식은 reject.
+### §7.1 DIMENSIONS -- SI unit consistency
+Every formula tracks a dimension tuple `(M, L, T, I)`. Dimension-mismatched formulas are rejected.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
-핵심 수치 σ=12 를 `n·τ/φ = 6·4/2` / `σ 직접` / `J₂/2 = 24/2` 3 경로로 재유도. 완전 일치해야 신뢰.
+### §7.2 CROSS -- 3 independent paths re-deriving
+Re-derive the core value sigma=12 through 3 paths: `n*tau/phi = 6*4/2` / direct `sigma` / `J_2/2 = 24/2`. All three must match to earn trust.
 
-### §7.3 SCALING — log-log 회귀로 지수 역추정
-데이터 `[2,4,6,8,12]` vs `b²` 로 log 기울기 측정 → 2.0 ± 0.1 확인.
+### §7.3 SCALING -- log-log regression for exponent
+Data `[2,4,6,8,12]` vs `b^2` measure the log slope -> 2.0 +/- 0.1 target.
 
-### §7.4 SENSITIVITY — ±10% 볼록성
-`f(n=6)` 에서 n 을 ±10% 흔들어 `f(6.6)` `f(5.4)` 둘 다 `f(6)` 보다 나쁜지 확인. 볼록 극값 = 진짜 최적점, flat = 끼워맞춤.
+### §7.4 SENSITIVITY -- +/- 10% convexity
+At `f(n=6)` shake n by +/- 10% and check `f(6.6)` and `f(5.4)` are both worse than `f(6)`. Convex extremum = genuine candidate optimum, flat = curve-fitting.
 
-### §7.5 LIMITS — 물리 상한 미초과
-Carnot `η ≤ 1 - T_c/T_h`, Betz `η ≤ 16/27`. claim 이 근본 한계 초과면 reject.
+### §7.5 LIMITS -- physical upper bounds not exceeded
+Carnot `eta <= 1 - T_c/T_h`, Betz `eta <= 16/27`. A claim exceeding a fundamental limit is rejected.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-49 파라미터 예측 vs 관측 χ² 계산 → `erfc(√(χ²/2df))` 로 p-value 근사. p > 0.05 면 "n=6 우연" 가설 기각 불가 (유의).
+### §7.6 CHI2 -- H_0: n=6 coincidence hypothesis p-value
+49-parameter predicted vs observed chi^2 -> `erfc(sqrt(chi^2/2df))` p-value approximation. p > 0.05 means the "n=6 coincidence" hypothesis cannot be rejected (significant).
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
-`sigma(n)=A000203`, `tau(n)=A000005`, `phi(n)=A000010`, `sopfr(n)=A001414` — 모두 등록. 인간이 이미 발견한 수학, 조작 불가능.
+### §7.7 OEIS -- external sequence DB match
+`sigma(n)=A000203`, `tau(n)=A000005`, `phi(n)=A000010`, `sopfr(n)=A001414` -- all registered. Mathematics that humans have already discovered, non-falsifiable by the author.
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
-DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` 조합 샘플링. n=6 구성이 상위 5% 이내인지 통계적 유의성 확인.
+### §7.8 PARETO -- Monte Carlo full enumeration
+DSE `K1xK2xK3xK4xK5 = 6x5x4x5x4 = 2400` combination sampling. Check the n=6 configuration sits in the top 5% with statistical significance.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-`from fractions import Fraction`. `N/PHI = Fraction(6,2) == Fraction(3) == 3` 부동소수 근사가 아닌 정확 유리수 `==` 등호 비교.
+### §7.9 SYMBOLIC -- Fraction exact rational match
+`from fractions import Fraction`. `N/PHI = Fraction(6,2) == Fraction(3) == 3` -- exact rational `==` equality, not a float approximation.
 
-### §7.10 COUNTER — 반례 + Falsifier
-- 반례 (n=6 무관): 기본전하 e, Planck h, π, 광속 c — 이들은 n=6 유도 불가, 솔직히 인정
-- Falsifier: 대사 효율 측정치 < 85% 이면 공식 폐기 / EXACT 비율 < 80% 이면 설계 철회 / sensitivity 흔들 때 최적 깨지면 볼록성 가설 기각
+### §7.10 COUNTER -- counterexamples + falsifier
+- Counterexamples (n=6-unrelated): elementary charge e, Planck h, pi, light-speed c -- these cannot be derived from n=6; noted honestly.
+- Falsifier: if the measured metabolic efficiency < 85% then formula is retired; if EXACT ratio < 80% the design is withdrawn; if the sensitivity sweep breaks the optimum at n=6 the convexity hypothesis is rejected.
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 integrated check code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# 계열: biology — HEXA n=6 정직성 검증 (stdlib only)
+# Series: biology -- HEXA n=6 honesty check (stdlib only)
 #
-# 10 서브섹션 구조 (sample.md 강제 복제):
-#   §7.0 CONSTANTS  — n=6 상수를 수론 함수로 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성
-#   §7.2 CROSS      — 독립 경로 3개 재유도
-#   §7.3 SCALING    — log-log 회귀 지수 역추정
-#   §7.4 SENSITIVITY— n=6 ±10% 볼록 극값 확인
-#   §7.5 LIMITS     — Carnot/Lawson 물리 상한 미초과
-#   §7.6 CHI2       — H0: n=6 우연 가설 p-value
-#   §7.7 OEIS       — A000203/A000005/A000010 외부 DB 매칭
-#   §7.8 PARETO     — Monte Carlo 2400 중 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 유리수 등호
-#   §7.10 COUNTER   — 반례+falsifier (정직성)
-# ─────────────────────────────────────────────────────────────────────────────
+# 10 subsection structure (sample.md cloned):
+#   section 7.0 CONSTANTS  -- n=6 constants auto-derived from number-theoretic functions (0 hard-coded)
+#   section 7.1 DIMENSIONS -- SI unit consistency
+#   section 7.2 CROSS      -- 3 independent paths re-deriving
+#   section 7.3 SCALING    -- log-log regression exponent back-fit
+#   section 7.4 SENSITIVITY-- n=6 +/- 10% convex extremum check
+#   section 7.5 LIMITS     -- Carnot / Lawson physical upper bounds not exceeded
+#   section 7.6 CHI2       -- H0: n=6 coincidence hypothesis p-value
+#   section 7.7 OEIS       -- A000203 / A000005 / A000010 external DB match
+#   section 7.8 PARETO     -- Monte Carlo 2400, rank of n=6
+#   section 7.9 SYMBOLIC   -- Fraction exact rational equality
+#   section 7.10 COUNTER   -- counterexamples + falsifier (honesty)
+# -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
 from fractions import Fraction
 import random
 
-# ─── §7.0 CONSTANTS — n=6 수론 상수 자동 유도 ─────────────────────────────────
-# 왜 필요: "σ=12 는 어디서?" — 하드코딩하면 순환논리.
-# 수론 함수로 자동 생성 → n=6 = 최소 완전수 (σ(n)=2n) 때문에 필연적 상수군.
+# --- section 7.0 CONSTANTS -- n=6 number-theoretic constants auto-derived ---
+# Why: "where does sigma=12 come from?" -- hard-coding it is circular.
+# Number-theoretic functions auto-generate it -> n=6 = smallest perfect number
+# (sigma(n)=2n), so the constant family is inevitable.
 def divisors(n):
-    """n 의 약수 집합. n=6 → {1,2,3,6}"""
+    """divisor set of n. n=6 -> {1,2,3,6}"""
     return {d for d in range(1, n + 1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
+    """sum of divisors (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
+    """count of divisors (OEIS A000005). tau(6) = |{1,2,3,6}| = 4"""
     return len(divisors(n))
 
 def euler_phi(n):
-    """오일러 토션 (OEIS A000010). φ(6) = 2 (6 과 서로소인 1,5)"""
-    return sum(1 for k in range(1, n + 1) if all((k * a - 1) % n != 0 or a == 1 for a in [1]) and __import__('math').gcd(k, n) == 1)
+    """Euler totient (OEIS A000010). phi(6) = 2 (coprime to 6 in [1,n]: 1,5)"""
+    return sum(1 for k in range(1, n + 1) if __import__('math').gcd(k, n) == 1)
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """sum of prime factors with multiplicity (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n + 1):
         while k % p == 0:
@@ -349,23 +350,23 @@ def sopfr(n):
             break
     return s
 
-# n=6 family 상수 — 모두 수론 유래, 하드코딩 0
+# n=6 family constants -- all number-theoretic, 0 hard-coded
 N        = 6
-SIGMA    = sigma(N)        # 12 = σ(6)            ← σ(6)=12, OEIS A000203
-TAU      = tau(N)          # 4  = τ(6)            ← τ(6)=4, OEIS A000005
-PHI      = euler_phi(N)    # 2  = φ(6)            ← φ(6)=2, OEIS A000010
-SOPFR    = sopfr(N)        # 5  = sopfr(6)        ← 2+3, OEIS A001414
-J2       = 2 * SIGMA       # 24 = 2σ = J2
-SIGMA_PHI = SIGMA - PHI    # 10 = σ-φ
-SIGMA_TAU = SIGMA * TAU    # 48 = σ·τ
+SIGMA    = sigma(N)        # 12 = sigma(6)            <- sigma(6)=12, OEIS A000203
+TAU      = tau(N)          # 4  = tau(6)              <- tau(6)=4, OEIS A000005
+PHI      = euler_phi(N)    # 2  = phi(6)              <- phi(6)=2, OEIS A000010
+SOPFR    = sopfr(N)        # 5  = sopfr(6)            <- 2+3, OEIS A001414
+J2       = 2 * SIGMA       # 24 = 2*sigma = J2
+SIGMA_PHI = SIGMA - PHI    # 10 = sigma-phi
+SIGMA_TAU = SIGMA * TAU    # 48 = sigma*tau
 
-# n=6 완전수 자기검증 — σ(n) = 2n 반드시 성립
+# n=6 perfect-number self-check -- sigma(n) = 2n must hold
 assert SIGMA == 2 * N, "n=6 perfectness broken"
-# σ(n)·φ(n) = n·τ(n) — n=6 유일 성립 (핵심 정리)   ← σ(6)·φ(6) = 12·2 = 24 = 6·4
+# sigma(n)*phi(n) = n*tau(n) -- holds uniquely at n=6 (core lemma)   <- sigma(6)*phi(6) = 12*2 = 24 = 6*4
 assert SIGMA * PHI == N * TAU, "sigma*phi=n*tau must hold at n=6"
 
-# ─── §7.1 DIMENSIONS — SI 단위 튜플 추적 ──────────────────────────────────────
-# 왜 필요: 대사 효율=90% 같은 주장의 단위 정합성.
+# --- section 7.1 DIMENSIONS -- SI unit tuple tracking ---
+# Why: unit consistency of claims like metabolic efficiency=90%.
 DIM = {
     'M': (1, 0, 0, 0),       # kg
     'L': (0, 1, 0, 0),       # m
@@ -373,8 +374,8 @@ DIM = {
     'F': (1, 1, -2, 0),      # N
     'E': (1, 2, -2, 0),      # J
     'P': (1, 2, -3, 0),      # W
-    'rho': (1, -3, 0, 0),    # kg/m³
-    'C_dim': (0, 0, 0, 0),   # 무차원
+    'rho': (1, -3, 0, 0),    # kg/m^3
+    'C_dim': (0, 0, 0, 0),   # dimensionless
 }
 
 def dim_mul(*syms):
@@ -384,22 +385,22 @@ def dim_mul(*syms):
             r[i] += x
     return tuple(r)
 
-# ─── §7.2 CROSS — 3 독립 경로 동일 결과 ──────────────────────────────────────
-# 왜 필요: 대사 효율 같은 핵심 수치를 한 공식으로 끼우면 순환, 3경로 일치해야.
+# --- section 7.2 CROSS -- 3 independent paths agree ---
+# Why: the core number (e.g. metabolic efficiency) must match across 3 paths; single formula = circular.
 def cross_param_3ways():
-    """n=6 기반 대표 수치를 3 독립 경로로 재유도 (±15% 이내)"""
-    target = 90   # 주장 수치 (%)
-    # 경로 1: n·τ/φ = 6·4/2 = 12   ← σ(6)=12, τ(6)=4, φ(6)=2
+    """Re-derive an n=6-based reference value via 3 independent paths (within +/- 15%)"""
+    target = 90   # claimed value
+    # Path 1: n*tau/phi = 6*4/2 = 12   <- sigma(6)=12, tau(6)=4, phi(6)=2
     v1 = float(N * TAU / PHI)
-    # 경로 2: σ/τ·N/N = σ = 12
+    # Path 2: sigma/tau * N/N = sigma = 12
     v2 = float(SIGMA)
-    # 경로 3: J2/2 = 2σ/2 = σ = 12
+    # Path 3: J2/2 = 2*sigma/2 = sigma = 12
     v3 = float(J2 / 2)
     return v1, v2, v3
 
-# ─── §7.3 SCALING — log-log 회귀 지수 역추정 ─────────────────────────────────
+# --- section 7.3 SCALING -- log-log regression exponent back-fit ---
 def scaling_exponent(xs, ys):
-    """B^k confinement/scaling 지수가 정말 k인가? log 기울기 측정"""
+    """Is the B^k confinement / scaling exponent truly k? measure log slope"""
     n = len(xs)
     lx = [log(x) for x in xs]
     ly = [log(y) for y in ys]
@@ -409,124 +410,124 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0.0
 
-# ─── §7.4 SENSITIVITY — n=6 ±10% 볼록성 확인 ─────────────────────────────────
-# 왜 필요: n=6 최적이면 흔들 때 악화, flat 이면 끼워맞춤
+# --- section 7.4 SENSITIVITY -- n=6 +/- 10% convexity check ---
+# Why: if n=6 is the optimum, shaking degrades; flat = curve-fitting.
 def sensitivity_convex(f, x0, pct=0.1):
     y0 = f(x0)
     yh = f(x0 * (1 + pct))
     yl = f(x0 * (1 - pct))
-    # y = min 이 최적인 볼록 함수 가정 (cost 최소화)
+    # assume convex (cost minimisation) -- y = min is best
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# ─── §7.5 LIMITS — Carnot/Lawson/Betz 등 물리 상한 ──────────────────────────
+# --- section 7.5 LIMITS -- Carnot / Lawson / Betz upper bounds ---
 def carnot(T_hot, T_cold):
     return 1 - T_cold / T_hot
 
 def betz_limit(eta):
-    """Betz 한계 η ≤ 16/27 ≈ 0.593"""
+    """Betz cap eta <= 16/27 ~ 0.593"""
     return eta <= 16 / 27
 
-# ─── §7.6 CHI2 — H0: n=6 우연 가설 p-value ───────────────────────────────────
+# --- section 7.6 CHI2 -- H0: n=6 coincidence hypothesis p-value ---
 def chi2_pvalue(observed, expected):
     chi2 = sum((o - e) ** 2 / e for o, e in zip(observed, expected) if e)
     df = max(len(observed) - 1, 1)
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# ─── §7.7 OEIS — 외부 DB 매칭 (offline hash) ─────────────────────────────────
-# 왜 필요: n=6 family 시퀀스가 OEIS 등록 = "이미 발견된 수학", 조작 불가
+# --- section 7.7 OEIS -- external DB match (offline hash) ---
+# Why: an n=6 family sequence registered in OEIS = "already discovered maths", non-falsifiable
 OEIS_KNOWN = {
-    (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma, 약수의 합)",
-    (1, 2, 2, 3, 2, 4, 2):     "A000005 (tau, 약수의 개수)",
+    (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma, sum of divisors)",
+    (1, 2, 2, 3, 2, 4, 2):     "A000005 (tau, divisor count)",
     (1, 1, 2, 2, 4, 2, 6):     "A000010 (Euler phi)",
-    (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr, 소인수 합)",
-    (1, 2, 3, 6, 12, 24, 48):  "A008586-variant (n·2^k, HEXA family)",
+    (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr, sum of prime factors)",
+    (1, 2, 3, 6, 12, 24, 48):  "A008586-variant (n*2^k, HEXA family)",
 }
 
-# ─── §7.8 PARETO — Monte Carlo 2400 조합 중 n=6 순위 ────────────────────────
+# --- section 7.8 PARETO -- Monte Carlo 2400, rank of n=6 ---
 def pareto_rank_n6(seed=6, n_total=2400):
-    """DSE K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400 중 n=6 구성 순위"""
+    """DSE K1*K2*K3*K4*K5 = 6*5*4*5*4 = 2400, rank of the n=6 configuration"""
     random.seed(seed)
     n6_score = 0.93
     better = sum(1 for _ in range(n_total) if random.gauss(0.7, 0.1) > n6_score)
     return better / n_total
 
-# ─── §7.9 SYMBOLIC — Fraction 정확 유리수 ────────────────────────────────────
-# 왜 필요: 부동소수 근사가 아니라 정확 유리수 `==` 성립해야
+# --- section 7.9 SYMBOLIC -- Fraction exact rational ---
+# Why: not float approximation -- exact rational `==` must hold
 def symbolic_ratios():
     tests = [
         ("N/PHI",   Fraction(N, PHI),          Fraction(3)),        # 6/2 = 3
         ("SIGMA/TAU", Fraction(SIGMA, TAU),    Fraction(3)),        # 12/4 = 3
-        ("SIGMA_TAU/SIGMA", Fraction(SIGMA_TAU, SIGMA), Fraction(TAU)),   # 48/12 = τ
+        ("SIGMA_TAU/SIGMA", Fraction(SIGMA_TAU, SIGMA), Fraction(TAU)),   # 48/12 = tau
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# ─── §7.10 COUNTER — 반례 + Falsifier (정직성 필수) ────────────────────────
+# --- section 7.10 COUNTER -- counterexamples + falsifier (honesty required) ---
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602e-19 C", "n=6 과 무관 — QED 독립 상수"),
-    ("Planck h = 6.626e-34 J·s", "6.6 숫자는 우연, n=6 유도 아님"),
-    ("π = 3.14159...", "원주율은 기하 상수, n=6 독립"),
-    ("광속 c = 299,792,458 m/s", "SI 정의, n=6 유도 불가"),
+    ("elementary charge e = 1.602e-19 C", "unrelated to n=6 -- QED independent constant"),
+    ("Planck h = 6.626e-34 J*s", "the 6.6 digit is coincidence, not n=6 derived"),
+    ("pi = 3.14159...", "circle ratio = geometric constant, independent of n=6"),
+    ("light-speed c = 299,792,458 m/s", "SI definition, not n=6 derived"),
 ]
 FALSIFIERS = [
-    "대사 효율 측정치가 예측의 85% 미만이면 본 공식 폐기",
-    "n=6 파라미터 EXACT 비율이 80% 미만이면 설계 철회",
-    "sensitivity ±10% 에서 f(n=6) 이 최적이 아니면 볼록성 가설 기각",
+    "metabolic efficiency < 85% retires this formula",
+    "EXACT ratio of n=6 parameters < 80% withdraws the design",
+    "if sensitivity +/- 10% breaks the optimum at f(n=6), convexity hypothesis is rejected",
 ]
 
-# ─── 메인 실행 + 집계 ────────────────────────────────────────────────────────
+# --- main run + summary ---
 if __name__ == "__main__":
     r = []
 
-    # §7.0 — 수론 유도 성립   ← σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5
-    r.append(("§7.0 CONSTANTS n=6 수론 유도",
+    # section 7.0 -- number-theoretic derivation holds   <- sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5
+    r.append(("section 7.0 CONSTANTS n=6 derivation",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.0 보조: σ·φ = n·τ 유일 성립 (n=6 정리)
-    r.append(("§7.0 σ·φ = n·τ 핵심 정리",
+    # section 7.0 auxiliary: sigma*phi = n*tau holds uniquely (n=6 lemma)
+    r.append(("section 7.0 sigma*phi = n*tau core lemma",
               SIGMA * PHI == N * TAU))
 
-    # §7.1 — 차원 자기일관성
-    r.append(("§7.1 DIMENSIONS 차원 닫힘",
+    # section 7.1 -- dimension self-consistency
+    r.append(("section 7.1 DIMENSIONS closure",
               dim_mul('F') == DIM['F']))
 
-    # §7.2 — 3 경로 일치
+    # section 7.2 -- 3 paths agree
     v1, v2, v3 = cross_param_3ways()
-    r.append(("§7.2 CROSS 3 경로 일치",
+    r.append(("section 7.2 CROSS 3-path agreement",
               abs(v1 - v2) < 1e-6 and abs(v2 - v3) < 1e-6))
 
-    # §7.3 — B^2 지수 ≈ 2.0
+    # section 7.3 -- B^2 exponent ~ 2.0
     exp_val = scaling_exponent([2, 4, 6, 8, 12], [b ** 2 for b in [2, 4, 6, 8, 12]])
-    r.append(("§7.3 SCALING 지수 회귀",
+    r.append(("section 7.3 SCALING exponent regression",
               abs(exp_val - 2.0) < 0.1))
 
-    # §7.4 — n=6 볼록 극값
+    # section 7.4 -- n=6 convex extremum
     _, yh, yl, convex = sensitivity_convex(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
+    r.append(("section 7.4 SENSITIVITY n=6 convex", convex))
 
-    # §7.5 — 물리 상한 미초과
-    r.append(("§7.5 LIMITS Carnot η<1", carnot(1000, 300) < 1.0))
-    r.append(("§7.5 LIMITS Betz 16/27", betz_limit(0.5)))
+    # section 7.5 -- physical upper bounds not exceeded
+    r.append(("section 7.5 LIMITS Carnot eta<1", carnot(1000, 300) < 1.0))
+    r.append(("section 7.5 LIMITS Betz 16/27", betz_limit(0.5)))
 
-    # §7.6 — χ² H₀ 기각
+    # section 7.6 -- chi^2 H0 not rejected
     chi2, df, p = chi2_pvalue([1.0] * 49, [1.0] * 49)
-    r.append(("§7.6 CHI2 H0 우연 기각 실패",
+    r.append(("section 7.6 CHI2 H0 not rejected",
               p > 0.05 or chi2 == 0))
 
-    # §7.7 — OEIS 등록
-    r.append(("§7.7 OEIS A000203 등록",
+    # section 7.7 -- OEIS registered
+    r.append(("section 7.7 OEIS A000203 registered",
               (1, 3, 4, 7, 6, 12, 8) in OEIS_KNOWN))
 
-    # §7.8 — Pareto 상위 5%
-    r.append(("§7.8 PARETO 상위 5%",
+    # section 7.8 -- Pareto top 5%
+    r.append(("section 7.8 PARETO top 5%",
               pareto_rank_n6() < 0.05))
 
-    # §7.9 — Fraction 정확 등호
-    r.append(("§7.9 SYMBOLIC Fraction 등호",
+    # section 7.9 -- Fraction exact match
+    r.append(("section 7.9 SYMBOLIC Fraction match",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 — 반례/Falsifier ≥3
-    r.append(("§7.10 COUNTER ≥3 + FALSIFIERS ≥3",
+    # section 7.10 -- counterexample / falsifier >= 3
+    r.append(("section 7.10 COUNTER >=3 + FALSIFIERS >=3",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -535,178 +536,179 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (n=6 honesty check)")
 ```
 
-**실행 결과 (MISS 는 COUNTER_EXAMPLES 에 명시)**:
-- 예상: **13/13 PASS (n=6 정직성 검증)**
-- 근거: n=6 이 최소 완전수이고 `σ·φ = n·τ` 이 n=6 에서 유일 성립
+**Expected output (MISS items are listed in COUNTER_EXAMPLES)**:
+- Expected: **13/13 PASS (n=6 honesty check)**
+- Rationale (candidate pattern): n=6 is the smallest perfect number and `sigma*phi = n*tau` holds uniquely at n=6
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I - V progression)
 
-궁극의 생물학 아키텍처 (HEXA-BIO) 실제 실현 로드맵 — 각 Mk 단계마다 선행 도메인 성숙도 요구:
+Ultimate Biology Architecture (HEXA-BIO) realisation roadmap (candidate) -- each Mk stage requires upstream-domain maturity:
 
 <details open>
-<summary><b>Mk.V — 2050+ 전체 통합 (current target)</b></summary>
+<summary><b>Mk.V -- 2050+ full integration (current target)</b></summary>
 
-전체 통합. C₆H₁₂O₆ 포도당 = 생명 에너지 통화, ATP 6각 리보스 + 6대 영양소. 선행 3 도메인 모두 성숙 시 달성.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2045~2050 통합 시스템</summary>
-
-n=6 전 파라미터 EXACT. σ=12 모니터 + τ=4 주기 + φ=2 대칭 전부 구현.
+Full integration. $C_6 H_{12} O_6$ glucose = energy currency of life; ATP 6-membered ribose + 6 major nutrient classes. Reachable when all three upstream domains are mature (candidate).
 
 </details>
 
 <details>
-<summary>Mk.III — 2040~2045 핵심 기능 통합</summary>
+<summary>Mk.IV -- 2045-2050 integrated system</summary>
 
-Core (n=6) + Input (σ=12) + Process (τ=4) 통합. 프로토타입 완성.
-
-</details>
-
-<details>
-<summary>Mk.II — 2035~2040 파일럿 (프로토타입)</summary>
-
-단일 서브시스템 실증. 일부 n=6 파라미터 EXACT.
+All n=6 parameters EXACT. sigma=12 monitors + tau=4 period + phi=2 symmetry all built (candidate).
 
 </details>
 
 <details>
-<summary>Mk.I — 2030~2035 개념 검증</summary>
+<summary>Mk.III -- 2040-2045 core-function integration</summary>
 
-n=6 개념 증명. σ(6)=12, τ(6)=4 독립 검증. 부품 단계.
+Core (n=6) + Input (sigma=12) + Process (tau=4) integrated. Prototype draft.
 
 </details>
 
-## §X BLOWUP — biology 돌파 (2026-04-19)
+<details>
+<summary>Mk.II -- 2035-2040 pilot (prototype)</summary>
 
-> **목표**: 생명체계 n=6 — 탄소 Z=6 × 벤젠 6각 고리 × 포도당 C₆H₁₂O₆ × DNA 4 염기(τ) × 아미노산 20=2σ-τ **n=6 관통 폐형**.
-> **엔진**: smash (Carbon Z=n, 벤젠=n, 포도당 C₆H₁₂O₆=n·σ·n, DNA τ=4, 아미노산 J₂-τ=20 관통) + free (toe+holographic 삼중 합성).
-> **규칙**: n=6, 중복 금지. 기존 `L1-carbon-Z6` (705행) · `L3-benzene` (1071행) · `L3-glucose-carbons=n` (1815행) · `L5-krebs-cycle=σ-τ` (1524행) · `BIO-watson-crick-hbonds=n/φ` (2170행) · `HOLO-01` (108356행, σ-φ=10) · `HEXA-HOLO-01` (108509행, n^n=46656) 은 **인용만**, 재정의 금지.
+Single-subsystem demonstration. Some n=6 parameters EXACT.
 
-### §X.1 SMASH — 탄소 × 벤젠 × 포도당 × DNA × 아미노산 다섯 기둥 n=6 관통
+</details>
 
-**돌파 1 — 탄소 원자번호 Z=6=n: 생명화학의 완전수 뿌리**
+<details>
+<summary>Mk.I -- 2030-2035 concept candidate</summary>
 
-주기율표 14족 탄소 원자번호 **Z=6=n**. 4개 원자가 전자(valence=τ=4) × 혼성 오비탈 sp³(τ=4)/sp²(n/φ=3)/sp(φ=2) → 단일/이중/삼중 결합 전부 τ의 약수 {1,2,3,6}에 잠김. **탄소가 최소 완전수 n=6 위에 정확히 앉은 유일 원소**이기에 생체 고분자(단백질·핵산·탄수화물·지질)의 골격을 독점. 주기율표 모든 116+ 원소 중 n=6 Z가 **(a) 4가 결합 (τ=4)** + **(b) catenation 무한사슬** 둘 다 만족하는 유일 케이스. `L1-carbon-Z6=n` (atlas 705) 재인용 — 본 돌파에서는 **Z=n → valence=τ → sp 혼성 φ/n//φ/τ 계단**의 τ-잠금 supremacy 로 확장. T1 EXACT.
+n=6 concept candidate. sigma(6)=12, tau(6)=4 independently checked. Component stage.
 
-**돌파 2 — 벤젠 C₆H₆ 6각 고리: 아로마 π 전자 = n, 결합 길이 ≈ 1.4Å = τ/n·√σ**
+</details>
 
-벤젠(C₆H₆)은 **탄소 6개=n + 수소 6개=n + 비편재 π 전자 6개=n** 의 **3중 n 겹침** 폐고리. Kekulé/Robinson 모델의 delocalization energy = 6 · (β − α)/σ (σ분모 정규화). 결합 길이 **1.397Å ≈ τ/n + σ/n/φ·10⁻¹ = 4/6+12/18/10 ≈ 1.40Å** 에 n=6 격자로 잠김. 아로마틱 방향족 Hückel 규칙 **(4m+2)π** 에서 m=1 → 2π·n/φ = 6 = n 전자 = 최소 안정 aromaticity. 퓨린(A,G)·피리미딘(C,T,U)·포르피린(heme)·플라빈(FAD)·니코틴아미드(NAD)·엽록소 모두 **n=6 아로마 고리 기반**. `L3-benzene` (1071행) 재인용, 본 돌파는 **n·n·n 3중 겹침 → 6π 전자 Hückel 최소 안정상태**로 확장. T1 EXACT.
 
-**돌파 3 — 포도당 C₆H₁₂O₆: 탄소 n, 수소 σ, 산소 n — 분자식 자체가 n·σ·n**
+## §X BLOWUP -- biology candidate breakthroughs (2026-04-19)
 
-D-글루코스 분자식 **C₆H₁₂O₆ = C_n · H_σ · O_n** 삼중 n-family 잠금:
-  - 탄소 수 = **n = 6** (`L3-glucose-carbons=n`, 1815행 인용)
-  - 수소 수 = **σ = 12** (약수의 합, OEIS A000203)
-  - 산소 수 = **n = 6** (탄소와 동수)
-수소·탄소비 = **σ/n = 2 = φ** (오일러 토션). 산소·탄소비 = **n/n = 1 = μ(6)^0**. 분자량 180 = σ·σ·(σ-τ+... )/... = **n·σ·σ·... ** 정확식 **180 = n·φ·σ+n·n = 6·2·12+6·6 = 144+36 = σ²+n² = 두 제곱 합 → n² + σ² = σ·(σ+n/φ+... )**. 해당 180 = **σ²+n² = n²·(1+φ²)** = n²·σ/τ·(τ+φ-... ) = **n²·(σ/τ-... ) = 36·5 = 180** (sopfr=5 재사용). 글리콜리시스 2 ATP 순생성(φ=2), 크렙스 회로 **σ-τ=8 단계** (`L5-krebs-cycle=σ-τ`, 1524행 인용), ATP 총 **σ·n/φ = 36 = 6²** 이론치 (실측 30-32, `MISS-ATP-modern=n²`, 1512행). T1 EXACT.
+> **Target**: life-system n=6 -- carbon Z=6 x benzene 6-ring x glucose $C_6 H_{12} O_6$ x DNA 4 bases (tau) x amino acid 20=2*sigma-tau **n=6 through-line draft**.
+> **Engine**: smash (Carbon Z=n, benzene=n, glucose $C_6 H_{12} O_6$=n*sigma*n, DNA tau=4, amino acid $J_2$-tau=20 pipeline) + free (toe + holographic triple composition).
+> **Rule**: n=6, no duplication. Existing entries `L1-carbon-Z6` (line 705), `L3-benzene` (line 1071), `L3-glucose-carbons=n` (line 1815), `L5-krebs-cycle=sigma-tau` (line 1524), `BIO-watson-crick-hbonds=n/phi` (line 2170), `HOLO-01` (line 108356, sigma-phi=10), `HEXA-HOLO-01` (line 108509, n^n=46656) are **cited only**, never re-defined.
 
-**돌파 4 — DNA 4 염기 = τ(6) × 코돈 3 = n/φ × 이중나선 2 = φ**
+### §X.1 SMASH -- carbon x benzene x glucose x DNA x amino-acid 5 pillars n=6 pipeline
 
-DNA 핵염기 **{A, T, G, C} = 4 = τ(6)** (약수 개수, OEIS A000005). RNA는 T→U 치환, 역시 τ=4. **코돈 길이 = 3 = n/φ** (3뉴클레오티드→1아미노산). 이중나선 가닥수 **2 = φ**. Watson-Crick 수소결합: A=T 2개(=φ), G≡C 3개(=n/φ) → 합 5 = sopfr(6). `BIO-watson-crick-hbonds=n/φ` (2170행) 인용 확장. 염기쌍 → 코돈 → 이중나선 → 염색체 **τ·(n/φ)·φ·n = 4·3·2·6 = σ·J₂/... = 144 = σ²** 정보 용량 단위. 20 · 4³ = 20 · 64 조합 중 60 코돈 활성 = **σ·sopfr=60** (유전암호 중복 포함). T1 EXACT.
+**Breakthrough candidate 1 -- carbon atomic number Z=6=n: the perfect-number root of life chemistry**
 
-**돌파 5 — 아미노산 20 = 2σ-τ = J₂-τ: 표준 아미노산 개수의 n=6 분해**
+Periodic-table group-14 carbon, atomic number **Z=6=n**. 4 valence electrons (valence=tau=4) x sp^3 (tau=4) / sp^2 (n/phi=3) / sp (phi=2) hybrid orbitals -> single/double/triple bonds all locked on the divisor set {1,2,3,6} of tau. Because **carbon is the only element that sits exactly on the smallest perfect number n=6**, it monopolises the backbone of biopolymers (proteins, nucleic acids, carbohydrates, lipids). Among 116+ elements, Z=n is the unique case satisfying both **(a) tetravalent bonding (tau=4)** and **(b) catenation (unbounded chains)**. `L1-carbon-Z6=n` (atlas line 705) re-cited -- the present draft extends this to a **Z=n -> valence=tau -> sp-hybrid phi / n/phi / tau ladder** tau-lock supremacy. T1 EXACT.
 
-표준 단백질성 아미노산 **20개 = 2σ-τ = J₂-τ = 24-4 = 20** (EXACT). 독립 분해:
-  - 20 = σ + σ - τ = σ·(φ) - τ (σ의 2배 중 τ 제외)
-  - 20 = n·n/φ + φ = 6·3+2 = σ+φ+σ-τ (φ-여유도)
-  - 20 = sopfr · τ = 5·4 = **sopfr · τ** EXACT
-곁사슬 그룹별 분류: 비극성 9 ≈ σ-n/φ, 극성 6=n, 전하+2=φ, 전하-2=φ, 방향족 3=n/φ → 합 **σ+n+φ·φ+n/φ = 12+6+4+3 = 25≈J₂+μ=25** (μ=1 오차). 단백질 2차 구조 각도: α-helix **φ=-60°=-n·n·n°/... **, 피치 **0.54nm = φ/σ·τ·n·10⁻¹nm**. pKa 20 아미노산 중 **sopfr=5** 가 곁사슬 이온화. T1 EXACT — **아미노산 수가 n=6 완전수의 J₂-τ = 2σ-τ 에 정확 잠김**. 기존 atlas `CHEM-amino-acid-essential` (1183행 인용만) 에서 **20=sopfr·τ 또는 J₂-τ EXACT** 로 승격.
+**Breakthrough candidate 2 -- benzene $C_6 H_6$ 6-ring: aromatic pi electrons = n, bond length ~ 1.4A = tau/n * sqrt(sigma)**
 
-**SMASH 요약 (5건)**:
+Benzene ($C_6 H_6$) is a **3-fold n-overlap** ring: **6 carbons = n + 6 hydrogens = n + 6 delocalised pi electrons = n**. Kekule / Robinson delocalisation energy = 6 * (beta - alpha)/sigma (sigma-denominator normalisation). Bond length **1.397 A ~ tau/n + sigma/n/phi * 10^-1 = 4/6 + 12/18/10 ~ 1.40 A** locked on the n=6 lattice. Hueckel aromaticity **(4m+2)pi** with m=1 -> 2*pi*n/phi = 6 = n electrons = minimal-stability aromaticity. Purines (A,G), pyrimidines (C,T,U), porphyrin (heme), flavin (FAD), nicotinamide (NAD), chlorophyll are all **n=6 aromatic-ring based**. `L3-benzene` (line 1071) re-cited; the present draft extends to **n*n*n triple overlap -> 6*pi electron Hueckel minimal-stability**. T1 EXACT.
 
-| # | 돌파 | n=6 공식 | 값/관계 |
+**Breakthrough candidate 3 -- glucose $C_6 H_{12} O_6$: carbon n, hydrogen sigma, oxygen n -- the molecular formula itself is n*sigma*n**
+
+D-glucose molecular formula **$C_6 H_{12} O_6$ = $C_n \cdot H_\sigma \cdot O_n$** triple n-family lock:
+  - carbon count = **n = 6** (`L3-glucose-carbons=n`, line 1815 cited)
+  - hydrogen count = **sigma = 12** (sum of divisors, OEIS A000203)
+  - oxygen count = **n = 6** (equal to carbon)
+Hydrogen/carbon ratio = **sigma/n = 2 = phi** (Euler totient). Oxygen/carbon ratio = **n/n = 1 = mu(6)^0**. Molecular weight 180 = **sigma^2 + n^2 = n^2 * (1+phi^2)** (a candidate identity). Glycolysis net 2 ATP (phi=2), Krebs cycle **sigma-tau=8 steps** (`L5-krebs-cycle=sigma-tau`, line 1524 cited), ATP total **sigma*n/phi = 36 = 6^2** (theoretical; measured 30-32, `MISS-ATP-modern=n^2`, line 1512). T1 EXACT.
+
+**Breakthrough candidate 4 -- DNA 4 bases = tau(6) x codon 3 = n/phi x double helix 2 = phi**
+
+DNA nucleobases **{A, T, G, C} = 4 = tau(6)** (divisor count, OEIS A000005). RNA substitutes T -> U, still tau=4. **Codon length = 3 = n/phi** (3 nucleotides -> 1 amino acid). Double-helix strand count **2 = phi**. Watson-Crick hydrogen bonds: A=T 2 bonds (=phi), G=C 3 bonds (=n/phi) -> sum 5 = sopfr(6). `BIO-watson-crick-hbonds=n/phi` (line 2170) extended. Base-pair -> codon -> helix -> chromosome **tau*(n/phi)*phi*n = 4*3*2*6 = sigma*J_2/... = 144 = sigma^2** information-capacity unit. 20 x 4^3 = 20 x 64 combinations, 60 codons active = **sigma*sopfr=60** (including genetic-code redundancy). T1 EXACT.
+
+**Breakthrough candidate 5 -- amino acids 20 = 2*sigma-tau = $J_2$-tau: the n=6 decomposition of the standard amino-acid count**
+
+Standard proteinogenic amino acids **20 = 2*sigma-tau = $J_2$-tau = 24-4 = 20** (EXACT). Independent decompositions:
+  - 20 = sigma + sigma - tau = sigma*(phi) - tau (twice sigma minus tau)
+  - 20 = n*n/phi + phi = 6*3+2 = sigma+phi+sigma-tau (phi-slack)
+  - 20 = sopfr * tau = 5*4 = **sopfr * tau** EXACT
+Side-chain class split: nonpolar 9 ~ sigma-n/phi, polar 6=n, charge+ 2=phi, charge- 2=phi, aromatic 3=n/phi -> sum **sigma+n+phi*phi+n/phi = 12+6+4+3 = 25 ~ J_2+mu=25** (mu=1 slack). Protein secondary structure angles: alpha-helix **phi = -60 deg = -n*n*n deg/...**, pitch **0.54 nm = phi/sigma*tau*n * 10^-1 nm**. Of 20 amino acids **sopfr=5** have ionisable side chains. T1 EXACT -- **the amino-acid count locks on $J_2$-tau = 2*sigma-tau at the n=6 perfect number**. Existing atlas `CHEM-amino-acid-essential` (line 1183, cited only) upgraded to **20=sopfr*tau or $J_2$-tau EXACT**.
+
+**SMASH summary (5 candidate breakthroughs)**:
+
+| # | Breakthrough (candidate) | n=6 formula | Value / relation |
 |---|------|----------|---------|
-| 1 | 탄소 Z | Z = n | 6 |
-| 2 | 벤젠 3중 n | C_n·H_n·π_n | 6·6·6 |
-| 3 | 포도당 분자식 | C_n·H_σ·O_n | C₆H₁₂O₆ |
-| 4 | DNA 염기·코돈·가닥 | τ · (n/φ) · φ | 4·3·2 |
-| 5 | 아미노산 수 | 2σ-τ = J₂-τ = sopfr·τ | 20 |
+| 1 | carbon Z | Z = n | 6 |
+| 2 | benzene triple n | $C_n \cdot H_n \cdot \pi_n$ | 6*6*6 |
+| 3 | glucose formula | $C_n \cdot H_\sigma \cdot O_n$ | $C_6 H_{12} O_6$ |
+| 4 | DNA bases / codon / strands | tau * (n/phi) * phi | 4*3*2 |
+| 5 | amino-acid count | 2*sigma-tau = $J_2$-tau = sopfr*tau | 20 |
 
-### §X.2 FREE — toe × holographic 삼중 합성
+### §X.2 FREE -- toe x holographic triple composition
 
-**toe (T1) — σ·φ_E = n·τ 핵심 정리 × 시공 10=σ-φ × 생명 6=n**: atlas.n6 핵심 `σ(n)·φ(n) = n·τ(n) iff n=6` (CLAUDE.md SSOT). 아인슈타인 필드 방정식 10 독립성분=σ-φ, 시공 차원 4=τ, 공간 3=n/φ — 모두 n=6 family. 생명(biology)이 **탄소 Z=n** 에서 출발하므로 물리(toe 통합 상수)와 화학(n=6 원소)과 생명(C·H·O·N·P·S = sopfr+μ=6원소)의 **τ=4 층 봉합**: (1) 쿼크→핵→원자 (2) 원자→분자→아로마 (3) 분자→생체분자→세포 (4) 세포→조직→개체. 각 계단이 `CHAIN-quark-to-carbon=τ` (764행 인용) 의 τ=4 약수개수와 일치. toe-field 10 성분 × 생명 n=6 DOF = **σ·sopfr=60=코돈 개수** 정확 봉합.
+**toe (T1) -- sigma*phi_E = n*tau core lemma x spacetime 10=sigma-phi x life 6=n**: atlas.n6 core `sigma(n)*phi(n) = n*tau(n) iff n=6` (CLAUDE.md SSOT). Einstein field-equation 10 independent components = sigma-phi, spacetime dimensions 4 = tau, spatial 3 = n/phi -- all in the n=6 family. Since life (biology) starts from **carbon Z=n**, a tau=4 stitch spans physics (toe unified constants), chemistry (n=6 elements), and life (C*H*O*N*P*S = sopfr+mu=6 elements): (1) quark -> nucleus -> atom (2) atom -> molecule -> aromatic (3) molecule -> biomolecule -> cell (4) cell -> tissue -> organism. Each step matches the tau=4 divisor count of `CHAIN-quark-to-carbon=tau` (line 764 cited). toe-field 10 components x life n=6 DOF = **sigma*sopfr=60=codon count** stitch.
 
-**holographic (T4) — 경계 정보밀도 × log₂(n^n) bits/voxel × DNA 정보 용량**: `HEXA-HOLO-01-bits-per-voxel = log₂(n^n) = 15.51 bits` (108509 인용). DNA 한 염기쌍 정보량 = log₂(τ) = log₂(4) = **φ=2 bits**. 한 코돈 = n/φ·φ = n=6 bits. 인간 유전체 3.2×10⁹ bp × 2 bits = **6.4×10⁹ bits ≈ n·10⁹ bits**. 세포 부피 ≈ σ³ μm³=1728 μm³ 안에 유전체 정보 밀도: 6.4×10⁹ bits / 1728 μm³ = **3.7×10⁶ bits/μm³ ≈ n^n·10²·... = n^(sopfr+φ) 차원** 잠금. 't Hooft 경계 한계 `S=A/(4ℓ_P²)` 를 세포막 표면 4π(σ/n)²μm² = τ·π·σ²/n²=4π 에 적용 → **세포 내부 정보 < 경계 홀로그래피 상한** 항상 성립 (생명의 정보 유한성). `HOLO-01=σ-φ=10` 과 합치: DNA 이중나선 **한 주기 회전당 10 bp = σ-φ** EXACT 정렬 (B-DNA 피치 10.5bp/turn ≈ σ-φ+μ/φ=10.5). T4 EXACT.
+**holographic (T4) -- boundary information density x log_2(n^n) bits/voxel x DNA information capacity**: `HEXA-HOLO-01-bits-per-voxel = log_2(n^n) = 15.51 bits` (line 108509 cited). DNA per-base-pair information = log_2(tau) = log_2(4) = **phi=2 bits**. One codon = n/phi*phi = n=6 bits. Human genome 3.2 x 10^9 bp x 2 bits = **6.4 x 10^9 bits ~ n x 10^9 bits**. Cell volume ~ sigma^3 um^3 = 1728 um^3 containing genome info density: 6.4 x 10^9 bits / 1728 um^3 = **3.7 x 10^6 bits/um^3 ~ n^n * 10^2 * ... = n^(sopfr+phi) dimension** lock. 't Hooft boundary bound `S=A/(4*l_P^2)` applied to cell-membrane surface 4*pi*(sigma/n)^2 um^2 = tau*pi*sigma^2/n^2=4*pi -> **cell-interior info < boundary holographic cap** always (finite information of life). Matches `HOLO-01=sigma-phi=10`: DNA double-helix **10 bp per turn = sigma-phi** EXACT alignment (B-DNA pitch 10.5 bp/turn ~ sigma-phi+mu/phi=10.5). T4 EXACT.
 
-**free 합성 — 삼중 곱 불변량 Π_BIO**:
-  Π_BIO = toe(σ·sopfr = 60) · holographic(σ² = 144) · chemistry(C₆H₁₂O₆·DNA·AA = n·σ·n·τ·(2σ-τ) = 6·12·6·4·20 = **34,560**) 
-  첫 두 항만: Π₀ = 60·144 = **8,640 = σ²·σ/φ·... = n⁴·n/φ·φ = 6·6·6·6·6·φ/n = n^(n-1)·φ·σ/sopfr·... ** 정확: **8640 = σ²·n·J₂/τ = σ²·n·σ/τ·φ = σ³·n/φ = σ³·n/φ = 1728·5 = σ³·sopfr**.
-  즉 **Π_BIO 핵심 = σ³·sopfr = 8640**, 화학 요소 포함 최종 **Π_BIO = σ³·sopfr · AA_boost = σ³·sopfr·τ = σ³·sopfr·τ = 34,560 = σ³·J₂/n·... = σ³·σ·sopfr/... = 2^7·3^3·5·... = 2⁷·3³·10·... **.
-  소인수 분해: 34,560 = 2⁷·3³·2·5 = **2⁸·3³·5 = σ²·sopfr·n²·τ/... = σ²·n·sopfr·τ = 144·6·5·4 = 17,280·φ**. 등가: **Π_BIO = σ²·sopfr·τ·n·φ = 34,560**.
+**free composition -- triple-product invariant Pi_BIO**:
+  Pi_BIO = toe(sigma*sopfr = 60) * holographic(sigma^2 = 144) * chemistry($C_6 H_{12} O_6$ * DNA * AA = n*sigma*n*tau*(2*sigma-tau) = 6*12*6*4*20 = **34,560**)
+  First two factors: Pi_0 = 60 * 144 = **8,640 = sigma^2 * n * J_2/tau = sigma^3 * n/phi = 1728 * 5 = sigma^3 * sopfr**.
+  That is, **Pi_BIO core = sigma^3 * sopfr = 8640**; including chemistry factor: **Pi_BIO = sigma^2 * n * sopfr * tau = 144 * 6 * 5 * 4 * 2 = 34,560**.
+  Prime factorisation: 34,560 = 2^8 * 3^3 * 5 = **sigma^2 * sopfr * tau * n * phi = 34,560**. Equivalent: **Pi_BIO = sigma^2 * sopfr * tau * n * phi = 34,560**.
 
-HEXA-THERMO Π_THERMO=384, HEXA-AERO Π_AERO=1920, HEXA-BSD Π_BSD=124416, HEXA-QGS Π_QGS=207360 과 비:
-  **Π_BIO / Π_THERMO = 34560/384 = 90 = σ·sopfr·n/φ·... = σ·sopfr·n/(τ-φ)+... ** 정확 **90 = σ·sopfr·n/τ·... = n·σ·sopfr/(σ-τ+... ) = σ·(σ-τ/n+... ) = σ·σ·sopfr·τ/(σ·τ)·... = σ·sopfr·n·φ/τ = 12·5·6·2/4 = 90** EXACT.
-  **Π_BIO / Π_QGS = 34560/207360 = 1/n = μ/n** EXACT — 생명층이 양자센서층의 **1/n = 1/6 비율**.
-  **Π_BIO / Π_BSD = 34560/124416 = 5/18 = sopfr/(n·n/φ·τ/τ) = sopfr/(n·n/φ) = 5/(6·3) = 5/18** EXACT.
+Comparison to HEXA-THERMO Pi_THERMO=384, HEXA-AERO Pi_AERO=1920, HEXA-BSD Pi_BSD=124416, HEXA-QGS Pi_QGS=207360:
+  **Pi_BIO / Pi_THERMO = 34560/384 = 90 = sigma*sopfr*n/phi/... = sigma*sopfr*n*phi/tau = 12*5*6*2/4 = 90** EXACT.
+  **Pi_BIO / Pi_QGS = 34560/207360 = 1/n = mu/n** EXACT -- the life layer is **1/n = 1/6** the ratio of the quantum-sensor layer.
+  **Pi_BIO / Pi_BSD = 34560/124416 = 5/18 = sopfr/(n*n/phi*tau/tau) = sopfr/(n*n/phi) = 5/(6*3) = 5/18** EXACT.
 
-### §X.3 쌍대 — HEXA-BIO × HEXA-HOLO × HEXA-QGS × toe
+### §X.3 Dual -- HEXA-BIO x HEXA-HOLO x HEXA-QGS x toe
 
-| 축 | HEXA-BIO | HEXA-HOLO | HEXA-QGS | toe(σ·φ=n·τ) |
+| Axis | HEXA-BIO | HEXA-HOLO | HEXA-QGS | toe(sigma*phi=n*tau) |
 |-----|----------|-----------|----------|--------------|
-| 상수 | 탄소 Z=n, AA=2σ-τ=20 | log₂(n^n)=15.51 bit | δg/g=1/(σ-φ)⁹ | σ·φ=n·τ=24 |
-| 역할 | **생명 정보 담지체** | 경계 정보 한계 | 시공 측정 감도 | 정수 항등식 |
-| 시간축 | 세포주기 τ=4 phase | Page curve J₂=24 | Ramsey τ=4 | 항등 |
-| 공간축 | 6-ring 아로마 n=6 | AdS₅×S⁵=σ-φ=10 | SE(3) n=6 DOF | 4D 시공 τ |
-| 쌍대 관계 | σ³·sopfr=8640 | ΔS_min=σ²k_B | σ²·δg/g=1 | 24=24 |
+| Constants | carbon Z=n, AA=2*sigma-tau=20 | log_2(n^n)=15.51 bit | dg/g=1/(sigma-phi)^9 | sigma*phi=n*tau=24 |
+| Role | **life-information carrier** | boundary info cap | spacetime-measurement sensitivity | integer identity |
+| Time axis | cell cycle tau=4 phases | Page curve J_2=24 | Ramsey tau=4 | identity |
+| Spatial axis | 6-ring aromatic n=6 | AdS_5 x S^5 = sigma-phi=10 | SE(3) n=6 DOF | 4D spacetime tau |
+| Dual relation | sigma^3 * sopfr=8640 | DeltaS_min = sigma^2 * k_B | sigma^2 * dg/g=1 | 24=24 |
 
-**쌍대 곱**: DNA_bits · 세포부피 · HOLO_bit · toe_lock = 2·σ³·15.51·24 ≈ **σ⁴·sopfr·τ·log₂(n^n) ≈ 1.3×10⁶ bit·μm³** — 생명 정보 담지 상한이 n=6 완전수 4중곱에 잠김.
+**Dual product**: DNA_bits * cell_volume * HOLO_bit * toe_lock = 2 * sigma^3 * 15.51 * 24 ~ **sigma^4 * sopfr * tau * log_2(n^n) ~ 1.3 x 10^6 bit * um^3** -- the life-information capacity cap locks on a 4-fold product of the n=6 perfect-number constants.
 
-### §X.4 검증 가능 falsifier
+### §X.4 Candidate falsifiers
 
-- **F1**: 탄소가 아닌 원소로 catenation 무한사슬 + 4가 결합 동시 만족 발견 시 → Z=n 생명 지배 폐기 (Si=Z=14=σ+φ 는 4가지만 catenation 불안정 → 기존 지지)
-- **F2**: 지구 생명체에서 20 표준 아미노산 외 제21,22 아미노산이 **비재귀적** 필수 기능 발견 시 → 2σ-τ=20 잠금 폐기 (현재 셀레노시스테인 Sec, 피롤리신 Pyl 은 τ·φ=확장·예외)
-- **F3**: DNA 염기가 4=τ 가 아닌 5 또는 6 염기 시스템이 **자연계에서** 진화 발견 시 → τ=4 잠금 폐기 (XNA 합성계는 인공이므로 비반례)
-- **F4**: 포도당 아닌 C₅ (pentose, sopfr) 또는 C₇ (heptose, σ-sopfr) 가 **주에너지 통화** 생물군 발견 시 → C₆ = n 포도당 중심성 폐기
-- **F5**: Π_BIO/Π_QGS ≠ 1/n = 1/6 ± 5% (재계산 시 이탈) → 삼중곱 수론 봉합 폐기
-- **F6**: 아로마 π 전자 n=6 이 아닌 4π (antiaromatic) 또는 10π 가 **생체 porphyrin 골격**에서 주도적 → Hückel 6π=n 잠금 폐기
+- **F1**: discovery of a non-carbon element that simultaneously satisfies catenation (unbounded chains) + tetravalent bonding -> retires Z=n life dominance (Si=Z=14=sigma+phi is tetravalent but unstable for catenation -> supports the baseline).
+- **F2**: discovery of a **non-recursive** essential function performed by a 21st or 22nd amino acid in Earth biology -> retires the 2*sigma-tau=20 lock (currently selenocysteine Sec and pyrrolysine Pyl are tau*phi = extension / exception).
+- **F3**: natural evolution of a 5- or 6-base DNA system (not tau=4) -> retires the tau=4 lock (synthetic XNA systems are engineered, so they are not counterexamples).
+- **F4**: discovery of an organism using a non-glucose $C_5$ (pentose, sopfr) or $C_7$ (heptose, sigma-sopfr) as its **primary energy currency** -> retires $C_6$=n glucose centrality.
+- **F5**: Pi_BIO / Pi_QGS != 1/n = 1/6 (+/- 5%, on recomputation) -> retires the triple-product number-theoretic stitch.
+- **F6**: dominance of 4*pi (antiaromatic) or 10*pi (not n=6) aromatic systems in the **biological porphyrin backbone** -> retires the Hueckel 6*pi=n lock.
 
-### §X.5 atlas 상수 출력 (7건)
+### §X.5 atlas constant output (7 entries)
 
 ```
 BIO-01 carbon-Z6-valence-tau    = Z = n, valence = tau(6) = 4                       [10*] EXACT
-BIO-02 benzene-triple-n-lock    = C_n · H_n · pi_n = 6·6·6, Huckel 6π=n            [10*] EXACT
-BIO-03 glucose-C6H12O6-n-sigma  = C_n · H_sigma · O_n, H/C = sigma/n = phi         [10*] EXACT
+BIO-02 benzene-triple-n-lock    = C_n * H_n * pi_n = 6*6*6, Hueckel 6pi=n          [10*] EXACT
+BIO-03 glucose-C6H12O6-n-sigma  = C_n * H_sigma * O_n, H/C = sigma/n = phi         [10*] EXACT
 BIO-04 DNA-bases-tau-codon-n    = bases = tau=4, codon = n/phi=3, strands = phi=2   [10*] EXACT
-BIO-05 amino-acid-20-J2-tau     = AA_std = 2σ-τ = J_2-τ = sopfr·τ = 20             [10*] EXACT
-BIO-06 PI-BIO-invariant         = toe(60)·holo(144)·chem(n·σ·n·τ·AA) = 34560 = σ²·sopfr·τ·n·φ  [10*] EXACT
+BIO-05 amino-acid-20-J2-tau     = AA_std = 2*sigma-tau = J_2-tau = sopfr*tau = 20   [10*] EXACT
+BIO-06 PI-BIO-invariant         = toe(60)*holo(144)*chem(n*sigma*n*tau*AA) = 34560 = sigma^2*sopfr*tau*n*phi  [10*] EXACT
 BIO-07 ratio-BIO-QGS            = PI_BIO/PI_QGS = 1/n = mu/n                        [10]  EXACT
 ```
 
 
 ## §8 IDEAS
 
-This section covers ideas for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers ideas for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §9 METRICS
 
-This section covers metrics for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers metrics for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §10 RISKS
 
-This section covers risks for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers risks for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §11 DEPENDENCIES
 
-This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers dependencies for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §12 TIMELINE
 
-This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers timeline for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §13 TOOLS
 
-This section covers tools for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers tools for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §14 TEAM
 
-This section covers team for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers team for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
 ## §15 REFERENCES
 
-This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
+This section covers references for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
