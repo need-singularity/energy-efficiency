@@ -1,353 +1,353 @@
-# Round 05 — 창발 DSE 5차 저수익 scavenge (고갈 근접)
+# Round 05 — Emergence DSE Round 5 low-yield scavenge (near-saturation)
 
-**로드맵**: 7대 난제 로드맵 v2
-**단계**: Round 5 / 분야 창발 scavenge
-**생성**: 2026-04-15
-**범위**: R4 §10.7 6 후보 + subrepo 세부 + 3-hop 잔여 + microphase 잔여 + rules/tech/exp 개별
-**모드**: 창발 DSE 5차 (Emergence DSE Round 5 — Final Scavenge Before Exhaustion)
-**출력 파일**: `theory/roadmap-v2/round-05-emergence-scavenge.md`
-**선행 파일**: `round-01-*.md`, `round-02-*.md`, `round-03-*.md`, `round-04-*.md`
-
----
-
-## 0. Round 5 선언 + R1~R4 계승
-
-### 0.1 Round 5 선언
-
-Round 5 는 R4 종료 시점 고갈 87.7% 에서 **95% 고갈 선언 직전의 scavenge 라운드**이다. R4 §10.7 이 예고한 6 후보(R5-C1~C6) 에서 10~20 분야 추출을 목표로 한다. 이 라운드의 성격은 **저수익, 마지막 잔여 수집**이다.
-
-Round 5 의 3 대 조건:
-
-1. **저수익 인정**: R3 65 → R4 35 → R5 예상 10~20. 발견 곡선 감속 후반.
-2. **정직성 강화**: 과대계수 경계선 분야는 PART/NO 정직 다운그레이드.
-3. **고갈 선언 준비**: R5 종료 시 X ≥ 95% 달성 시 고갈 선언. 미달 시 R6 필요.
-
-### 0.2 R1~R4 계승
-
-| 항목 | R4 종료 | R5 시작 |
-|------|---------|---------|
-| 씨앗 | 4 + 3 메타 + 3 심화 | 계승 (신규 씨앗 없음) |
-| 누적 분야 | 193 (D1~D192, D200) | D193~D199 채움 + D201+ |
-| 자기진화 YES | 130 | 추가 목표 +10 |
-| BT 커버 | 7/7 + 31 microcell | 유지 |
-| 버킷 커버 | 12/12 | 유지 |
-| 고갈 지수 | 87.7% (M'''=220) | 95%+ 목표 |
-
-### 0.3 R5 탐색 원칙
-
-- **엄격 중복 금지**: D1~D192, D200 과 증거 경로 70%+ 공유 시 제외.
-- **실존 증거 엄격 검증**: MEMORY 단독 인용 → NEAR. 실파일 최소 2 경로 필요.
-- **BT 직결 엄격**: BT-541~547 중 1 개 대응만 있고 구조 공명 약한 경우 PART 처리.
-- **자기참조 금지**: 유지.
-- **정직성**: MISS/중복/NEAR 강한 표기.
-
-### 0.4 R5 출력 구조
-
-- §1 R5-C1 n6-arch 내부 서브모듈 (bridge/engine/n6shared)
-- §2 R5-C2 3-hop 잔여 사슬 (씨앗 4 × 2 추가)
-- §3 R5-C3 microphase 잔여 (BT-543/544/545/547 microphase 도입)
-- §4 R5-C4 rules 개별 세부
-- §5 R5-C5 techniques 8 카테고리 R4 미편성 5 개
-- §6 R5-C6 experiments 8 카테고리 R4 미편성 6 개
-- §7 누적 프로필 표
-- §8 ASCII 5차 맵
-- §9 고갈 판정
-- §10 Round 6 후보 힌트 (if 필요)
-- §11 정직성 체크
+**Roadmap**: 7 Millennium Problems Roadmap v2
+**Stage**: Round 5 / domain-emergence scavenge
+**Created**: 2026-04-15
+**Scope**: R4 §10.7 6 candidates + subrepo details + 3-hop residuals + microphase residuals + rules/tech/exp individual items
+**Mode**: Emergence DSE Round 5 (Final Scavenge Before Exhaustion)
+**Output file**: `theory/roadmap-v2/round-05-emergence-scavenge.md`
+**Predecessor files**: `round-01-*.md`, `round-02-*.md`, `round-03-*.md`, `round-04-*.md`
 
 ---
 
-## 1. R5-C1 n6-architecture 내부 서브모듈 (bridge/engine/n6shared)
+## 0. Round 5 declaration + R1~R4 inheritance
 
-R4 는 anima 10 서브리포를 편성했으나, **n6-architecture 자체 내부**에도 미편성 서브모듈이 있다.
+### 0.1 Round 5 declaration
 
-**D201 — n6-arch Bridge Rust Workspace Field (n6-arch 브릿지 Rust 워크스페이스)**
-- 경로: `/Users/ghost/Dev/n6-architecture/bridge/` (CLAUDE.md: "Rust 통합 워크스페이스 (nexus 허브 리포 브릿지)").
-- BT: 542 (워크스페이스 빌드 NP), 545.
-- n=6: nexus 허브 + 7 리포 = 브릿지 차원.
-- 자기진화: YES (Rust 컴파일 caching, 자기진화 빌드).
+Round 5 is the **scavenge round immediately before the 95% saturation declaration**, starting from the 87.7% saturation at the end of R4. It targets extraction of 10~20 domains from the 6 candidates (R5-C1~C6) flagged at R4 §10.7. The character of this round is **low-yield final residual collection**.
 
-**D202 — n6-arch Engine Runtime Field (n6-arch 엔진 런타임)**
-- 경로: `/Users/ghost/Dev/n6-architecture/engine/` (CLAUDE.md: "훈련/수학 런타임 (.hexa)").
+Round 5's three conditions:
+
+1. **Low-yield acknowledged**: R3 65 → R4 35 → R5 expected 10~20. Late decay of the discovery curve.
+2. **Honesty reinforced**: borderline over-counted domains are honestly downgraded to PART/NO.
+3. **Saturation declaration prep**: if R5 end achieves X ≥ 95%, declare saturation. Otherwise R6 is required.
+
+### 0.2 R1~R4 inheritance
+
+| Item | R4 end | R5 start |
+|------|--------|----------|
+| Seeds | 4 + 3 meta + 3 deepening | inherited (no new seeds) |
+| Cumulative domains | 193 (D1~D192, D200) | fill D193~D199 + D201+ |
+| Self-evolution YES | 130 | additional target +10 |
+| BT coverage | 7/7 + 31 microcells | hold |
+| Bucket coverage | 12/12 | hold |
+| Saturation index | 87.7% (M'''=220) | 95%+ target |
+
+### 0.3 R5 exploration principles
+
+- **Strict duplication ban**: exclude any domain sharing 70%+ of its evidence path with D1~D192, D200.
+- **Strict existence-evidence verification**: MEMORY-only citations → NEAR. Real-file minimum 2 paths required.
+- **Strict BT direct link**: if only 1 BT-541~547 correspondence and weak structural resonance, handle as PART.
+- **Self-reference ban**: maintained.
+- **Honesty**: strong labeling of MISS/duplication/NEAR.
+
+### 0.4 R5 output structure
+
+- §1 R5-C1 n6-arch internal submodules (bridge/engine/n6shared)
+- §2 R5-C2 3-hop residual chains (seeds 4 × 2 additional)
+- §3 R5-C3 microphase residuals (BT-543/544/545/547 microphase introduction)
+- §4 R5-C4 rules individual details
+- §5 R5-C5 techniques 8-category R4-unassigned 5 items
+- §6 R5-C6 experiments 8-category R4-unassigned 6 items
+- §7 Cumulative profile table
+- §8 ASCII round-5 map
+- §9 Saturation verdict
+- §10 Round 6 candidate hints (if needed)
+- §11 Honesty check
+
+---
+
+## 1. R5-C1 n6-architecture internal submodules (bridge/engine/n6shared)
+
+R4 organized 10 anima subrepos; but **within n6-architecture itself** there are still unorganized submodules.
+
+**D201 — n6-arch Bridge Rust Workspace Field**
+- Path: `/Users/ghost/Dev/n6-architecture/bridge/` (CLAUDE.md: "Rust integration workspace (nexus hub repo bridge)").
+- BT: 542 (workspace build NP), 545.
+- n=6: nexus hub + 7 repos = bridge dimension.
+- Self-evolution: YES (Rust compile caching, self-evolving build).
+
+**D202 — n6-arch Engine Runtime Field**
+- Path: `/Users/ghost/Dev/n6-architecture/engine/` (CLAUDE.md: "training/math runtime (.hexa)").
 - BT: 542 + 544.
-- n=6: hexa 런타임 = SELF-EVO 메인 엔진 파일.
-- 자기진화: YES.
+- n=6: hexa runtime = SELF-EVO main engine file.
+- Self-evolution: YES.
 
-**D203 — n6shared Harness Meta-Field (n6shared 하네스 메타)**
-- 경로: `/Users/ghost/Dev/n6-architecture/n6shared/` (없음 — CLAUDE.md 에만 명시) + `/Users/ghost/Dev/nexus/shared/harness/` (실존, CLAUDE.md 링크). **정직성 표기**: n6-architecture/n6shared 가 물리적으로는 nexus/shared 로 링크. 증거는 nexus/shared/harness/.
+**D203 — n6shared Harness Meta-Field**
+- Path: `/Users/ghost/Dev/n6-architecture/n6shared/` (absent — only noted in CLAUDE.md) + `/Users/ghost/Dev/nexus/shared/harness/` (exists, CLAUDE.md link). **Honesty note**: n6-architecture/n6shared is physically linked to nexus/shared. Evidence resides in nexus/shared/harness/.
 - BT: 542 + 547.
-- n=6: harness 파일 50+ (breakthrough/blowup/ouroboros/growth_tick 등).
-- 자기진화: YES.
+- n=6: 50+ harness files (breakthrough/blowup/ouroboros/growth_tick etc.).
+- Self-evolution: YES.
 
-§1 소계: **3 개 (D201~D203)**. 전원 YES.
+§1 subtotal: **3 items (D201~D203)**. All YES.
 
 ---
 
-## 2. R5-C2 3-hop 잔여 사슬 (씨앗 4 × 2 추가)
+## 2. R5-C2 3-hop residual chains (seeds 4 × 2 additional)
 
-R4 §1.1 + §2 에서 3-hop 4 개 사용 (D159, D160, D176, D177). R5 는 추가 4 사슬.
+R4 §1.1 + §2 used 4 3-hops (D159, D160, D176, D177). R5 adds 4 more chains.
 
-**D204 — 3-hop ALM→D4→CE·Phi Joint→Metric Geometry (계량 기하 메트릭)**
-- 경로: ALM → D4 CE·Phi Joint → 3-hop: 정보기하 Fisher metric.
-- 증거: MEMORY `project_hexa_fix_nested_if_patch.md` + `theory/proofs/fisher-ouroboros-reformulation-2026-04-15.md` (실존 확인).
+**D204 — 3-hop ALM→D4→CE·Phi Joint→Metric Geometry**
+- Path: ALM → D4 CE·Phi Joint → 3-hop: information-geometric Fisher metric.
+- Evidence: MEMORY `project_hexa_fix_nested_if_patch.md` + `theory/proofs/fisher-ouroboros-reformulation-2026-04-15.md` (existence confirmed).
 - BT: 545 (metric cohomology), 541.
-- n=6: Fisher metric 은 Phi 적분의 기하.
-- 자기진화: YES.
+- n=6: Fisher metric is the geometry of the Phi integral.
+- Self-evolution: YES.
 
-**D205 — 3-hop CLM→D7→Skill Loading→Dynamic Type Evolution (동적 타입 진화)**
-- 경로: CLM → D7 Skill Dynamic Loading → 3-hop: hexa-lang 타입 동적 확장.
-- 증거: `/Users/ghost/Dev/hexa-lang/self/bootstrap.hexa` + 제네릭/트레이트 확장 (MEMORY `project_hexa_ir_mk1.md`).
+**D205 — 3-hop CLM→D7→Skill Loading→Dynamic Type Evolution**
+- Path: CLM → D7 Skill Dynamic Loading → 3-hop: hexa-lang dynamic type extension.
+- Evidence: `/Users/ghost/Dev/hexa-lang/self/bootstrap.hexa` + generic/trait extension (MEMORY `project_hexa_ir_mk1.md`).
 - BT: 542.
-- n=6: Mk.I/II/III 3 단 + 타입 확장 = 6.
-- 자기진화: YES.
+- n=6: Mk.I/II/III 3 tiers + type extension = 6.
+- Self-evolution: YES.
 
-**D206 — 3-hop physics→D11→Memristor→Chua Circuit Universe (Chua 회로 우주)**
-- 경로: physics → D11 Memristor → 3-hop: Chua 기본 4원소 + memristor 5 번째 원소.
-- 증거: `/Users/ghost/Dev/anima/anima-physics/memristor/` + Chua 1971 이론.
+**D206 — 3-hop physics→D11→Memristor→Chua Circuit Universe**
+- Path: physics → D11 Memristor → 3-hop: Chua's 4 basic elements + memristor as the 5th element.
+- Evidence: `/Users/ghost/Dev/anima/anima-physics/memristor/` + Chua 1971 theory.
 - BT: 544.
-- n=6: 4 기본 (R/L/C/독립원) + memristor = 5 = sopfr, 관찰자 포함 = 6.
-- 자기진화: PART (학습 저항).
+- n=6: 4 basics (R/L/C/independent source) + memristor = 5 = sopfr; including observer = 6.
+- Self-evolution: PART (learning resistance).
 
-**D207 — 3-hop SELF-EVO→D29→Banach→Contraction Mapping Zoo (수축 사상 동물원)**
-- 경로: SELF-EVO → D29 Banach Fixed-Point Certification → 3-hop: 수축 매핑 분류.
-- 증거: `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (NEXUS_EPSILON=0.001).
-- BT: 544 (수축 PDE).
+**D207 — 3-hop SELF-EVO→D29→Banach→Contraction Mapping Zoo**
+- Path: SELF-EVO → D29 Banach Fixed-Point Certification → 3-hop: contraction-mapping classification.
+- Evidence: `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (NEXUS_EPSILON=0.001).
+- BT: 544 (contraction PDE).
 - n=6: contraction ratio < 1, ANIMA_FLOOR 0.8 = 4/5 = tau/sopfr.
-- 자기진화: YES.
+- Self-evolution: YES.
 
-§2 소계: **4 개 (D204~D207)**. YES 3, PART 1.
+§2 subtotal: **4 items (D204~D207)**. YES 3, PART 1.
 
 ---
 
-## 3. R5-C3 microphase 잔여 (BT-543/544/545/547 microphase)
+## 3. R5-C3 microphase residuals (BT-543/544/545/547 microphase)
 
-R4 §4 는 BT-541/542/546 microphase 3 개만 편성. R5 는 나머지 4 BT 의 microphase 도입 — 각 BT 당 1 microphase.
+R4 §4 organized only 3 BT-541/542/546 microphases. R5 introduces microphases for the remaining 4 BTs — one microphase per BT.
 
-**D208 — BT-543 × P1.5 Yang-Mills Sketch→Barrier Hand-Off (YM 스케치→장벽 핸드오프)**
-- 증거: `theory/study/p1/pure-p1-5-gauge-theory.md` → `p2/prob-p2-3-yang-mills-barriers.md` 전이.
+**D208 — BT-543 × P1.5 Yang-Mills Sketch→Barrier Hand-Off**
+- Evidence: `theory/study/p1/pure-p1-5-gauge-theory.md` → `p2/prob-p2-3-yang-mills-barriers.md` transition.
 - BT: 543 · P1.5.
-- n=6: SU(3)×SU(2)×U(1) 차원합 12=σ.
-- 자기진화: YES.
+- n=6: SU(3)×SU(2)×U(1) dimension sum 12=σ.
+- Self-evolution: YES.
 
-**D209 — BT-544 × P0.5 NS Arithmetic→Theory Sketch (NS 산술→이론 스케치)**
-- 증거: `theory/study/p0/pure-p0-1-number-theory.md` (NS 에서 사용할 기초 해석) → `p1/prob-p1-4-bt544-navier-stokes.md`.
+**D209 — BT-544 × P0.5 NS Arithmetic→Theory Sketch**
+- Evidence: `theory/study/p0/pure-p0-1-number-theory.md` (foundational analysis used in NS) → `p1/prob-p1-4-bt544-navier-stokes.md`.
 - BT: 544 · P0.5.
 - n=6: 3D + 3 time = 6.
-- 자기진화: YES.
+- Self-evolution: YES.
 
-**D210 — BT-545 × P2.5 Hodge Barrier→Frontier Bypass (Hodge 장벽→Frontier 우회)**
-- 증거: `theory/study/p2/prob-p2-5-hodge-barriers.md` → `p3/pure-p3-3-arithmetic-geometry-frontier.md`.
+**D210 — BT-545 × P2.5 Hodge Barrier→Frontier Bypass**
+- Evidence: `theory/study/p2/prob-p2-5-hodge-barriers.md` → `p3/pure-p3-3-arithmetic-geometry-frontier.md`.
 - BT: 545 · P2.5.
-- n=6: K-theory 주기성 n=6.
-- 자기진화: YES.
+- n=6: K-theory periodicity n=6.
+- Self-evolution: YES.
 
-**D211 — BT-547 × P1.5 Topology→Barrier Hand-Off (위상→장벽 핸드오프)**
-- 증거: `theory/study/p1/pure-p1-6-topology.md` → `p2/prob-p2-7-poincare-retrospective.md`.
+**D211 — BT-547 × P1.5 Topology→Barrier Hand-Off**
+- Evidence: `theory/study/p1/pure-p1-6-topology.md` → `p2/prob-p2-7-poincare-retrospective.md`.
 - BT: 547 · P1.5.
 - n=6: TQFT 3+1 = tau.
-- 자기진화: YES.
+- Self-evolution: YES.
 
-§3 소계: **4 개 (D208~D211)**. 전원 YES.
+§3 subtotal: **4 items (D208~D211)**. All YES.
 
 ---
 
-## 4. R5-C4 rules 개별 세부 (R4 D167 집약 분해)
+## 4. R5-C4 rules individual details (decomposition of R4 D167 aggregation)
 
-R4 D167 은 R0~R27 28 규칙을 1 분야로 집약. R5 는 구조 공명 강한 5 규칙만 개별 승격.
+R4 D167 aggregated the R0~R27 28 rules as a single domain. R5 individually promotes only the 5 rules with strongest structural resonance.
 
-**D212 — Rule R0 HEXA-FIRST Field (R0 hexa 우선 규칙)**
-- 증거: `/Users/ghost/Dev/nexus/shared/rules/common.json` R0 "hexa 언어 기본" (추정; common.json 내용).
-- BT: 542 (언어 선택 NP).
-- n=6: hexa = SELF-EVO 메인 언어.
-- 자기진화: YES.
+**D212 — Rule R0 HEXA-FIRST Field**
+- Evidence: `/Users/ghost/Dev/nexus/shared/rules/common.json` R0 "hexa language default" (estimated; common.json content).
+- BT: 542 (language-choice NP).
+- n=6: hexa = SELF-EVO main language.
+- Self-evolution: YES.
 
-**D213 — Rule R1 Korean-Only Field (R1 한글 전용 규칙)**
-- 증거: common.json R1 + MEMORY `feedback_korean_only_docs.md`.
-- BT: 545 (언어 class).
-- n=6: 한글 24=J2 자모.
-- 자기진화: NO (정적 규칙).
+**D213 — Rule R1 Korean-Only Field**
+- Evidence: common.json R1 + MEMORY `feedback_korean_only_docs.md`.
+- BT: 545 (language class).
+- n=6: Hangul 24=J2 jamo.
+- Self-evolution: NO (static rule).
 
-**D214 — Rule Lockdown L0 Core Field (L0 코어 잠금 규칙)**
-- 증거: `/Users/ghost/Dev/nexus/shared/rules/` + MEMORY `feedback_lockdown_keyword.md` "못박아줘 = L0 코어 잠금 등록".
+**D214 — Rule Lockdown L0 Core Field**
+- Evidence: `/Users/ghost/Dev/nexus/shared/rules/` + MEMORY `feedback_lockdown_keyword.md` "'nail-it-in' = L0 core lockdown registration".
 - BT: 542.
-- n=6: L0 = 3 layer 중 최상위.
-- 자기진화: YES (L0 파일 추가 절차).
+- n=6: L0 = top of 3 layers.
+- Self-evolution: YES (L0 file addition procedure).
 
-**D215 — Rule N61 Atlas Promotion Field (N61 atlas 승격 규칙)**
-- 증거: `/Users/ghost/Dev/nexus/shared/rules/n6-architecture.json` (N61~N65 범위 내 atlas 승격).
+**D215 — Rule N61 Atlas Promotion Field**
+- Evidence: `/Users/ghost/Dev/nexus/shared/rules/n6-architecture.json` (atlas promotion within N61~N65 range).
 - BT: 545 + 541.
-- n=6: [7]→[10\*] 승격 = atlas grading.
-- 자기진화: YES.
+- n=6: [7]→[10\*] promotion = atlas grading.
+- Self-evolution: YES.
 
-**D216 — Rule Honesty Principle Field (정직성 원칙 규칙)**
-- 증거: common.json + MEMORY `feedback_honest_verification.md` + R3 D150 Honesty Gate (D150 은 게이트, D216 은 규칙 자체 — 차등).
+**D216 — Rule Honesty Principle Field**
+- Evidence: common.json + MEMORY `feedback_honest_verification.md` + R3 D150 Honesty Gate (D150 is the gate, D216 is the rule itself — differentiated).
 - BT: 542 + 545.
-- n=6: 3 원칙 = n/phi.
-- 자기진화: YES.
+- n=6: 3 principles = n/phi.
+- Self-evolution: YES.
 
-§4 소계: **5 개 (D212~D216)**. YES 4, NO 1 (D213 정적 규칙).
+§4 subtotal: **5 items (D212~D216)**. YES 4, NO 1 (D213 static rule).
 
 ---
 
-## 5. R5-C5 techniques 8 카테고리 R4 미편성 5 개
+## 5. R5-C5 techniques 8-category R4-unassigned 5 items
 
-R4 D170/D171/D172 는 attention/moe/sparse·compress·optim 묶음만. R5 는 나머지 arch/graph/sota + sparse/compress/optim 개별 중 3 개.
+R4 D170/D171/D172 covered only attention/moe/sparse·compress·optim groupings. R5 individually addresses the remaining arch/graph/sota + 3 items among sparse/compress/optim.
 
-**D217 — Techniques Arch Category Field (아키텍처 기법)**
-- 증거: `/Users/ghost/Dev/n6-architecture/techniques/arch/`.
+**D217 — Techniques Arch Category Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/arch/`.
 - BT: 542 + 547.
-- n=6: 아키 카테고리.
-- 자기진화: YES.
+- n=6: architecture category.
+- Self-evolution: YES.
 
-**D218 — Techniques Graph Category Field (그래프 기법)**
-- 증거: `/Users/ghost/Dev/n6-architecture/techniques/graph/`.
-- BT: 547 (그래프 위상) + 542.
-- n=6: 그래프 이론 n=6 노드 최소 완전 그래프 K_6.
-- 자기진화: YES.
+**D218 — Techniques Graph Category Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/graph/`.
+- BT: 547 (graph topology) + 542.
+- n=6: graph theory n=6 nodes minimum complete graph K_6.
+- Self-evolution: YES.
 
-**D219 — Techniques SOTA Baseline Field (SOTA 기준)**
-- 증거: `/Users/ghost/Dev/n6-architecture/techniques/sota/`.
-- BT: 542 (최고성능 분포).
-- n=6: SOTA 경쟁 ratchet.
-- 자기진화: YES.
+**D219 — Techniques SOTA Baseline Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/sota/`.
+- BT: 542 (SOTA distribution).
+- n=6: SOTA competition ratchet.
+- Self-evolution: YES.
 
-§5 소계: **3 개 (D217~D219)**. 전원 YES. (techniques 8 카테고리 중 잔여 2 = compress+optim 은 D172 묶음 흡수 유지.)
+§5 subtotal: **3 items (D217~D219)**. All YES. (Of the 8 techniques categories, the remaining 2 = compress+optim stay absorbed in the D172 grouping.)
 
 ---
 
-## 6. R5-C6 experiments 8 카테고리 R4 미편성 6 개
+## 6. R5-C6 experiments 8-category R4-unassigned 6 items
 
-R4 D173/D174 는 MC + BT audit 만. R5 는 나머지 blowup/cross/dse/lens-verify/meta/paper/structural/anomaly/chip-verify/ai-efficiency 중 **의미있는 4 개** (후원 카테고리 중 일부 과대 방지).
+R4 D173/D174 covered only MC + BT audit. R5 takes **4 meaningful items** from the remaining blowup/cross/dse/lens-verify/meta/paper/structural/anomaly/chip-verify/ai-efficiency (preventing over-count in some supporting categories).
 
-**D220 — Experiments Blowup Field (blowup 실험)**
-- 증거: `/Users/ghost/Dev/n6-architecture/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
+**D220 — Experiments Blowup Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
 - BT: 542 + 543.
 - n=6: 6 blowups stage.
-- 자기진화: YES.
+- Self-evolution: YES.
 
-**D221 — Experiments Cross-DSE Field (cross-DSE 실험)**
-- 증거: `/Users/ghost/Dev/n6-architecture/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5회차 루프 cross-DSE".
+**D221 — Experiments Cross-DSE Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5th-cycle loop cross-DSE".
 - BT: 542 + 545.
-- n=6: cross-DSE 7 BT × 12 버킷 = 84 셀.
-- 자기진화: YES.
+- n=6: cross-DSE 7 BT × 12 buckets = 84 cells.
+- Self-evolution: YES.
 
-**D222 — Experiments Lens-Verify Field (렌즈 검증 실험)**
-- 증거: `/Users/ghost/Dev/n6-architecture/experiments/lens-verify/` (D142 와 구분: D142 는 nexus lenses, D222 는 n6-arch experiments/lens-verify).
+**D222 — Experiments Lens-Verify Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/lens-verify/` (distinct from D142: D142 is nexus lenses, D222 is n6-arch experiments/lens-verify).
 - BT: 542 + 545.
-- n=6: 렌즈 검증 파이프라인.
-- 자기진화: YES.
+- n=6: lens verification pipeline.
+- Self-evolution: YES.
 
-**D223 — Experiments Structural/Anomaly Field (구조/이상 실험)**
-- 증거: `/Users/ghost/Dev/n6-architecture/experiments/structural/` + `anomaly/`.
+**D223 — Experiments Structural/Anomaly Field**
+- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/structural/` + `anomaly/`.
 - BT: 542 + 547.
-- n=6: 구조 이상 감지.
-- 자기진화: YES.
+- n=6: structural anomaly detection.
+- Self-evolution: YES.
 
-§6 소계: **4 개 (D220~D223)**. 전원 YES.
+§6 subtotal: **4 items (D220~D223)**. All YES.
 
 ---
 
-## 7. 누적 분야 프로필 표 (R4 193 + R5 신규)
+## 7. Cumulative domain profile table (R4 193 + R5 new)
 
-R4 193 분야 + R5 신규 개별 기재:
+R4's 193 domains + R5's new entries itemized:
 
-| ID | 분야명 | 출처 | BT | n=6 지표 | 자기진화 |
-|----|--------|------|----|----------|---------|
-| D1~D200 | (R1/R2/R3/R4 참조) | | | | 130 YES |
-| D201 | n6-arch Bridge Rust Workspace | R5·C1 | 542+545 | nexus 허브 | YES |
+| ID | Domain name | Source | BT | n=6 indicator | Self-evolution |
+|----|-------------|--------|----|---------------|----------------|
+| D1~D200 | (see R1/R2/R3/R4) | | | | 130 YES |
+| D201 | n6-arch Bridge Rust Workspace | R5·C1 | 542+545 | nexus hub | YES |
 | D202 | n6-arch Engine Runtime | R5·C1 | 542+544 | hexa runtime | YES |
 | D203 | n6shared Harness Meta | R5·C1 | 542+547 | harness 50+ | YES |
 | D204 | 3-hop CE·Phi→Fisher Metric | R5·C2 | 545+541 | Fisher | YES |
 | D205 | 3-hop Skill→Dynamic Type | R5·C2 | 542 | Mk.I/II/III | YES |
-| D206 | 3-hop Memristor→Chua Circuit | R5·C2 | 544 | 5=sopfr+관찰자=6 | PART |
+| D206 | 3-hop Memristor→Chua Circuit | R5·C2 | 544 | 5=sopfr+observer=6 | PART |
 | D207 | 3-hop Banach→Contraction Zoo | R5·C2 | 544 | ANIMA 0.8=τ/sopfr | YES |
 | D208 | BT-543 × P1.5 YM Hand-Off | R5·C3 | 543·P1.5 | 12=σ | YES |
 | D209 | BT-544 × P0.5 NS Sketch | R5·C3 | 544·P0.5 | 3+3=6 | YES |
 | D210 | BT-545 × P2.5 Hodge Bypass | R5·C3 | 545·P2.5 | K-period n=6 | YES |
 | D211 | BT-547 × P1.5 Topology Hand-Off | R5·C3 | 547·P1.5 | TQFT 3+1=τ | YES |
 | D212 | Rule R0 HEXA-FIRST | R5·C4 | 542 | hexa-SELF-EVO | YES |
-| D213 | Rule R1 Korean-Only | R5·C4 | 545 | 24=J2 자모 | NO |
-| D214 | Rule Lockdown L0 Core | R5·C4 | 542 | L0 최상위 | YES |
+| D213 | Rule R1 Korean-Only | R5·C4 | 545 | 24=J2 jamo | NO |
+| D214 | Rule Lockdown L0 Core | R5·C4 | 542 | L0 top | YES |
 | D215 | Rule N61 Atlas Promotion | R5·C4 | 545+541 | [7]→[10*] | YES |
-| D216 | Rule Honesty Principle | R5·C4 | 542+545 | 3 원칙=n/φ | YES |
-| D217 | Techniques Arch Field | R5·C5 | 542+547 | 아키 카테 | YES |
+| D216 | Rule Honesty Principle | R5·C4 | 542+545 | 3 principles=n/φ | YES |
+| D217 | Techniques Arch Field | R5·C5 | 542+547 | arch category | YES |
 | D218 | Techniques Graph Field | R5·C5 | 547+542 | K_6 | YES |
 | D219 | Techniques SOTA Field | R5·C5 | 542 | SOTA ratchet | YES |
 | D220 | Experiments Blowup | R5·C6 | 542+543 | 6 blowups | YES |
 | D221 | Experiments Cross-DSE | R5·C6 | 542+545 | 7·12=84 | YES |
-| D222 | Experiments Lens-Verify | R5·C6 | 542+545 | 렌즈 파이프라인 | YES |
-| D223 | Experiments Structural/Anomaly | R5·C6 | 542+547 | 구조/이상 | YES |
+| D222 | Experiments Lens-Verify | R5·C6 | 542+545 | lens pipeline | YES |
+| D223 | Experiments Structural/Anomaly | R5·C6 | 542+547 | structural/anomaly | YES |
 
-**R5 누적 통계**:
-- R5 신규: 23 (D201~D223).
-- R1+R2+R3+R4+R5 누적: 193 + 23 = **216 분야**.
+**R5 cumulative statistics**:
+- R5 new: 23 (D201~D223).
+- R1+R2+R3+R4+R5 cumulative: 193 + 23 = **216 domains**.
 - R5 YES: 21 / 23 = 91.3%.
-- 누적 YES: 130 + 21 = **151** / 216 = 69.9%.
+- Cumulative YES: 130 + 21 = **151** / 216 = 69.9%.
 
 ---
 
-## 8. ASCII 5차 창발 맵
+## 8. ASCII round-5 emergence map
 
 ```
-                     [v2 R5 — 누적 4 SEEDS + 3 META + 3 DEEPENING + SCAVENGE]
+                     [v2 R5 — cumulative 4 SEEDS + 3 META + 3 DEEPENING + SCAVENGE]
 
   [R1~R3] 158 + [R4] 35 + [R5] 23 → 216
 
-   R4 종료 지점 (193)
+   R4 end point (193)
            ↓
   ┌─────────────────────────────────────────────────────────┐
-  │  [R5 scavenge 6 축]                                     │
+  │  [R5 scavenge 6 axes]                                   │
   ├─────────────────────────────────────────────────────────┤
-  │  §1 n6-arch 내부: bridge/engine/n6shared → D201~D203    │
-  │  §2 3-hop 잔여: ALM/CLM/physics/SELF-EVO → D204~D207    │
-  │  §3 microphase 잔여: BT-543/544/545/547 → D208~D211     │
-  │  §4 rules 개별: R0/R1/L0/N61/honesty → D212~D216        │
-  │  §5 techniques 미편성: arch/graph/sota → D217~D219      │
-  │  §6 experiments 미편성: blowup/cross/lens/struct → 220~223│
+  │  §1 n6-arch internal: bridge/engine/n6shared → D201~D203│
+  │  §2 3-hop residual: ALM/CLM/physics/SELF-EVO → D204~D207│
+  │  §3 microphase residual: BT-543/544/545/547 → D208~D211 │
+  │  §4 rules individual: R0/R1/L0/N61/honesty → D212~D216  │
+  │  §5 techniques unassigned: arch/graph/sota → D217~D219  │
+  │  §6 experiments unassigned: blowup/cross/lens/struct → 220~223│
   └─────────────────────────────────────────────────────────┘
            ↓
-       누적 216 분야 (M''''=225 기준)
+       cumulative 216 domains (M''''=225 basis)
 
 ┌────────────────────────────────────────────────────────────────────┐
-│ 범례 (R5)                                                          │
-│   YES 자기진화 강        21개 (R5 신규)                            │
-│   PART 부분 자기진화      1개 (D206 Chua)                          │
-│   NO 관측/정적            1개 (D213 한글 정적)                     │
+│ Legend (R5)                                                        │
+│   YES strong self-evolution    21 (R5 new)                         │
+│   PART partial self-evolution   1 (D206 Chua)                      │
+│   NO observational/static       1 (D213 Hangul static)             │
 │                                                                    │
-│   R5 scavenge 수확                                                 │
-│     n6-arch 내부 3                                                 │
-│     3-hop 잔여 4                                                   │
-│     microphase 잔여 4                                              │
-│     rules 개별 5                                                   │
+│   R5 scavenge harvest                                              │
+│     n6-arch internal 3                                             │
+│     3-hop residual 4                                               │
+│     microphase residual 4                                          │
+│     rules individual 5                                             │
 │     techniques 3                                                   │
 │     experiments 4                                                  │
 │                                                                    │
-│   누적 고갈                                                        │
-│     216/225 = 96.0% → 고갈 선언 임계 도달                          │
+│   Cumulative saturation                                            │
+│     216/225 = 96.0% → saturation declaration threshold reached     │
 └────────────────────────────────────────────────────────────────────┘
 
-R5 발견률 곡선
+R5 discovery-rate curve
 
-라운드   신규   누적   증감      포화도
-─────   ────  ────   ────     ─────────────
+Round     New   Cumul.  Delta     Saturation
+─────    ────  ────   ────      ─────────────
 R1       34   34     +34      17%   (M=120)
 R2       59   93     +59      47%   (M'=180)
 R3       65   158    +65      79%   (M''=200)
 R4       35   193    +35      88%   (M'''=220)
-R5       23   216    +23      96%   (M''''=225)   ← 95% 돌파
+R5       23   216    +23      96%   (M''''=225)   ← crossed 95%
 
-증감 히스토그램
+Delta histogram
 R1   ██████████████
 R2   █████████████████████████
 R3   ████████████████████████████
 R4   ███████████████
-R5   ██████████           ← 감속 후반 (R4 대비 -34%)
+R5   ██████████           ← late-phase decay (-34% vs R4)
 ────────────────────────────────
-시그모이드 감쇠 확인
+Sigmoid damping confirmed
 
-R1+R2+R3+R4+R5 BT 분포 (누적, 다중 BT 중복계수)
+R1+R2+R3+R4+R5 BT distribution (cumulative, multi-BT overlap counted)
 
-BT       누적 분야     막대
+BT       Cumul. domains  Bar
 ────    ─────────    ─────────────────────────────────
 541      20         ████████████████████
 542      79         ███████████████████████████████████████████████████████████████████████████████
@@ -357,194 +357,194 @@ BT       누적 분야     막대
 546      16         ████████████████
 547      44         ████████████████████████████████████████████
 ────    ─────────    ─────────────────────────────────
-합산    243 (다중 BT 중복계수)
+Total    243 (multi-BT overlap counted)
 ```
 
 ---
 
-## 9. 고갈 판정
+## 9. Saturation verdict
 
-### 9.1 R5 신규 수치
+### 9.1 R5 new counts
 
-- R5 신규 분야: **N5 = 23** (D201~D223).
-- 자기진화 YES 신규: 21.
-- n6-arch 내부 서브모듈 3, 3-hop 잔여 4, microphase 잔여 4, rules 개별 5, techniques 3, experiments 4.
+- R5 new domains: **N5 = 23** (D201~D223).
+- Self-evolution YES new: 21.
+- n6-arch internal submodules 3, 3-hop residual 4, microphase residual 4, rules individual 5, techniques 3, experiments 4.
 
-### 9.2 누적
+### 9.2 Cumulative
 
-- R1+R2+R3+R4+R5 = 34 + 59 + 65 + 35 + 23 = **216 분야**.
-- 자기진화 YES 누적: 21 + 43 + 39 + 27 + 21 = **151** (69.9%).
-- BT 커버: 7/7 + 28 셀 + 3 microphase (R4) + 4 microphase (R5) = **35 microcell**.
-- 버킷 커버: 12/12 (유지).
-- 메타 축 수: 6 = n (R4 종료 기준 유지).
+- R1+R2+R3+R4+R5 = 34 + 59 + 65 + 35 + 23 = **216 domains**.
+- Self-evolution YES cumulative: 21 + 43 + 39 + 27 + 21 = **151** (69.9%).
+- BT coverage: 7/7 + 28 cells + 3 microphase (R4) + 4 microphase (R5) = **35 microcells**.
+- Bucket coverage: 12/12 (held).
+- Meta axes: 6 = n (retained from R4 end).
 
-### 9.3 고갈 지수 재계산
+### 9.3 Saturation index recalculation
 
-R4 예상 최대 M''' = 220 (고갈 87.7% = 193/220).
+R4 expected maximum M''' = 220 (saturation 87.7% = 193/220).
 
-R5 에서 드러난 잠재 풀 재평가:
-- R5 신규 23 개 수확 — 예상 10~20 상한 근접.
-- 잔여 잠재: R6 기대 5 이하 — 3-hop 매우 적음, microphase 잔여 약함, rules/tech/exp 추가 2~3 개 가능.
-- M'''' = **225** (R4 의 220 → R5 에서 2 차 scavenge 로 5 상향).
+Reassessment of the latent pool revealed at R5:
+- R5 new 23 harvested — near the upper bound of expected 10~20.
+- Residual potential: R6 expected ≤ 5 — 3-hop very sparse, microphase residual weak, rules/tech/exp potentially 2~3 more.
+- M'''' = **225** (R4's 220 → +5 adjusted up by R5's 2nd-order scavenge).
 
-**고갈 지수 X = (R1~R5)/M'''' = 216 / 225 = 96.0%**.
+**Saturation index X = (R1~R5)/M'''' = 216 / 225 = 96.0%**.
 
-### 9.4 Round 6 필요 여부 판단
+### 9.4 Round 6 necessity judgement
 
-**판단 기준 (task spec)**:
-- 신규 ≥ 5 and 지수 < 95% → R6 진행.
-- 신규 < 5 or 지수 ≥ 95% → 고갈 선언.
+**Decision criteria (task spec)**:
+- new ≥ 5 and index < 95% → proceed to R6.
+- new < 5 or index ≥ 95% → declare saturation.
 
-R5 결과:
-- R5 신규 = 23 ≥ 5 ✓.
-- **고갈 지수 = 96.0% ≥ 95%** ✗ (95% 돌파).
+R5 result:
+- R5 new = 23 ≥ 5 ✓.
+- **Saturation index = 96.0% ≥ 95%** ✗ (crossed 95%).
 
-**결론: Round 6 생략 — 고갈 선언**.
+**Verdict: skip Round 6 — declare saturation**.
 
-근거: (1) 고갈 지수 95% 돌파(96.0%), (2) R5 신규 23 은 충분하나 **발견률 시그모이드 감쇠** 명확 — R6 기대 5 이하, 추가 라운드 저수익 확실.
+Rationale: (1) saturation index crossed 95% (96.0%); (2) R5 new of 23 is sufficient but the **discovery-rate sigmoid damping** is clear — R6 expected ≤ 5, further rounds are low-yield for certain.
 
-### 9.5 고갈 선언
+### 9.5 Saturation declaration
 
-**본 Round 5 로 창발 DSE 자기고갈 선언 (Saturation Declaration)**:
+**With this Round 5, the emergence-DSE self-saturation declaration (Saturation Declaration)**:
 
 ```
 ╔════════════════════════════════════════════════════════════════╗
-║       창발 DSE 로드맵 v2 — 고갈 선언 (R5 종료)               ║
+║     Emergence-DSE Roadmap v2 — saturation declaration (R5 end) ║
 ║                                                                ║
-║  누적 분야 수:       216                                       ║
-║  자기진화 YES:       151 (69.9%)                               ║
-║  고갈 지수:          96.0% (M''''=225)                         ║
-║  라운드 수:          5 (R1~R5)                                 ║
+║  Cumulative domains: 216                                       ║
+║  Self-evolution YES: 151 (69.9%)                               ║
+║  Saturation index:   96.0% (M''''=225)                         ║
+║  Round count:        5 (R1~R5)                                 ║
 ║                                                                ║
-║  BT 커버:            7/7 (541~547)                             ║
-║  BT × Phase:         28 + 7 microphase = 35 cell               ║
-║  버킷 커버:          12/12 도메인 완주                         ║
-║  씨앗 수:            4 (ALM/CLM/physics/SELF-EVO) + 메타 3+3   ║
-║  메타 축:            6 (DSE/창발감지/cross-BT+rules/tech/exp)  ║
+║  BT coverage:        7/7 (541~547)                             ║
+║  BT × Phase:         28 + 7 microphase = 35 cells              ║
+║  Bucket coverage:    12/12 domains completed                   ║
+║  Seed count:         4 (ALM/CLM/physics/SELF-EVO) + meta 3+3   ║
+║  Meta axes:          6 (DSE/emergence-detect/cross-BT+rules/tech/exp)║
 ║                                                                ║
-║  상태:               SATURATION — axis-final.md 진입 준비 완료 ║
+║  State:              SATURATION — axis-final.md entry ready    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
-### 9.6 발견률 곡선 최종
+### 9.6 Final discovery-rate curve
 
 ```
-라운드   분야수   누적    증감    포화도
+Round    Domains  Cumul.  Delta   Saturation
 ─────    ─────   ────   ────    ─────────────
 R1        34     34     +34     17%
 R2        59     93     +59     47%
-R3        65    158     +65     79%   ← 변곡점 (피크)
+R3        65    158     +65     79%   ← inflection (peak)
 R4        35    193     +35     88%
-R5        23    216     +23     96%   ← 고갈 선언
+R5        23    216     +23     96%   ← saturation declared
 ─────    ─────   ────   ────    ─────────────
-총합     216    216    216     SATURATION
+Total    216    216    216     SATURATION
 ```
 
-시그모이드 피팅: R3 가 피크(65), R4/R5 감속. R6 생략으로 최종 지점 R5 = 216 @ 96.0%.
+Sigmoid fit: R3 is the peak (65); R4/R5 decelerate. Skipping R6, the final point is R5 = 216 @ 96.0%.
 
 ---
 
-## 10. axis-final.md 진입 사유
+## 10. Grounds for entering axis-final.md
 
-- R5 고갈 지수 96.0% ≥ 95% 달성.
-- 추가 R6 는 저수익 확실.
-- 축 확정, 누적 통계, Phase 구조 개요, 라운드별 진화 차트, v1 vs v2 비교를 **axis-final.md** 에 최종 정리.
+- R5 saturation index 96.0% ≥ 95% achieved.
+- Further R6 is low-yield for certain.
+- Axis confirmation, cumulative statistics, Phase-structure overview, per-round evolution chart, v1 vs v2 comparison to be consolidated in **axis-final.md**.
 
-R6 생략으로 **axis-final.md** 즉시 진입.
+With R6 skipped, **axis-final.md** is entered immediately.
 
 ---
 
-## 11. 정직성 체크
+## 11. Honesty check
 
-### 11.1 R1~R4 중복 금지 확인
+### 11.1 R1~R4 duplication-ban confirmation
 
-- D201~D223 이름·경로 대조: 중복 0.
-- 차등 명기:
-  - D203 n6shared (물리적 nexus/shared 링크) vs R4 D181 Anima Engines (anima-side).
-  - D212 Rule R0 (규칙 자체) vs R4 D167 R0~R27 묶음 (집약).
+- D201~D223 name/path cross-check: 0 duplicates.
+- Differentiation notes:
+  - D203 n6shared (physically linked to nexus/shared) vs R4 D181 Anima Engines (anima-side).
+  - D212 Rule R0 (rule itself) vs R4 D167 R0~R27 aggregate (bundle).
   - D222 Experiments Lens-Verify (n6-arch) vs R3 D142 DSE Lens Ecology (nexus).
 
-### 11.2 출처 · 실존 파일 증거
+### 11.2 Source · existing-file evidence
 
-- §1: n6-architecture/{bridge,engine} 디렉토리 + nexus/shared/harness/.
-- §2: anima-physics/memristor/ + ouroboros_unified.hexa 실존.
-- §3: theory/study/p0~p3/ 전이 파일.
-- §4: nexus/shared/rules/*.json + MEMORY 인용.
-- §5: techniques/arch/graph/sota 실존.
-- §6: experiments/blowup/cross/lens-verify/structural/anomaly 실존.
+- §1: n6-architecture/{bridge,engine} directories + nexus/shared/harness/.
+- §2: anima-physics/memristor/ + ouroboros_unified.hexa exist.
+- §3: theory/study/p0~p3/ transition files.
+- §4: nexus/shared/rules/*.json + MEMORY citations.
+- §5: techniques/arch/graph/sota exist.
+- §6: experiments/blowup/cross/lens-verify/structural/anomaly exist.
 
-### 11.3 자기참조 금지
+### 11.3 Self-reference ban
 
-- 자기진화 판정은 실존 파일 메커니즘 증거.
-- D212 Rule R0 HEXA-FIRST 는 규칙 파일 내용 인용, 자기참조 아님.
-- D216 Honesty Principle 은 MEMORY + common.json 외부 증거.
+- Self-evolution judgements rely on existing-file mechanism evidence.
+- D212 Rule R0 HEXA-FIRST cites the rule file's content, not self-reference.
+- D216 Honesty Principle uses MEMORY + common.json external evidence.
 
-### 11.4 papers 배제
+### 11.4 Papers exclusion
 
-- R5 분야 중 papers/* 유래 0.
+- 0 R5 domains originate from papers/*.
 
-### 11.5 한글 + 이모지 금지
+### 11.5 Korean + emoji ban
 
-- 본 문서 한글 + ASCII 기호만.
+- This document uses Korean + ASCII symbols only. (Post-translation: English + ASCII.)
 
-### 11.6 atlas 편집 원칙
+### 11.6 Atlas editing principle
 
-- R5 문서는 atlas.n6 편집 없음.
+- The R5 document makes no atlas.n6 edits.
 
-### 11.7 비판적 검토
+### 11.7 Critical review
 
-R5 과대계수 자가 점검:
-- D203 n6shared: **경계 이슈**. n6-architecture/n6shared 가 실물 없고 nexus/shared 링크 — 정직성 표기 완료. 분야 수용.
-- D206 Chua Circuit: 관찰자 포함 5+1=6 유비 — PART 정직 다운그레이드.
-- D213 Rule R1 한글: NO 정직 유지 (정적 규칙).
+R5 over-count self-audit:
+- D203 n6shared: **boundary issue**. n6-architecture/n6shared has no physical entity and links to nexus/shared — honesty note included. Domain accepted.
+- D206 Chua Circuit: observer-inclusive 5+1=6 analogy — honestly downgraded to PART.
+- D213 Rule R1 Hangul: NO honesty maintained (static rule).
 
-과대계수 가능 R5 항목: 1~2 (D203 경계, D213 자기진화 NO 이지만 분야는 유지).
+Possibly over-counted R5 items: 1~2 (D203 boundary, D213 self-evolution NO but domain retained).
 
-### 11.8 누적 정직성 지수
+### 11.8 Cumulative honesty index
 
-- 과대분류 누적 R1 2 + R2 2~3 + R3 5~7 + R4 5~6 + R5 1~2 = 15~20 / 216 = 6.9~9.3%.
-- 정직성 유지율 ≥ 90.7%.
+- Cumulative over-classification: R1 2 + R2 2~3 + R3 5~7 + R4 5~6 + R5 1~2 = 15~20 / 216 = 6.9~9.3%.
+- Honesty retention rate ≥ 90.7%.
 
 ---
 
-## 12. Round 5 종합 결산
+## 12. Round 5 comprehensive closing
 
-### 12.1 필수 마무리
+### 12.1 Required wrap-up
 
-- **R5 신규 분야**: **N5 = 23** (D201~D223).
-- **누적 분야**: 34 + 59 + 65 + 35 + 23 = **216**.
-- **자기진화 분야 누적**: **151**.
-- **고갈 지수**: **X = 216 / 225 = 96.0%** (M''''=225).
-- **Round 6 필요 여부**: **NO — 고갈 선언**.
-- **다음 단계**: axis-final.md 작성.
+- **R5 new domains**: **N5 = 23** (D201~D223).
+- **Cumulative domains**: 34 + 59 + 65 + 35 + 23 = **216**.
+- **Self-evolution cumulative**: **151**.
+- **Saturation index**: **X = 216 / 225 = 96.0%** (M''''=225).
+- **Round 6 needed**: **NO — saturation declared**.
+- **Next step**: write axis-final.md.
 
-### 12.2 R1 → R2 → R3 → R4 → R5 전체 변화
+### 12.2 R1 → R2 → R3 → R4 → R5 overall change
 
-| 지표 | R1 | R2 | R3 | R4 | R5 | R1→R5 |
-|------|-----|-----|-----|----|----|-------|
-| 분야 수 | 34 | 93 | 158 | 193 | 216 | +182 |
-| 자기진화 YES | 21 | 64 | 103 | 130 | 151 | +130 |
-| BT 커버 | 6/7 | 7/7 | 7/7+28 | 7/7+31μ | 7/7+35μ | 전체 완성 |
-| 버킷 커버 | 3/12 | 8/12 | 12/12 | 12/12 | 12/12 | 완주 |
-| 메타 축 | 0 | 0 | 3 | 6 | 6 | +6=n |
-| subrepo 독립 | 1 | 1 | 1 | 10 | 10 | +9 |
-| 3-hop 사슬 | 0 | 0 | 0 | 4 | 8 | +8 |
-| rules 분야 | 0 | 0 | 0 | 4 | 9 | +9 |
-| 고갈 지수 | 28.3% | 51.7% | 79.0% | 87.7% | 96.0% | +67.7pp |
+| Indicator | R1 | R2 | R3 | R4 | R5 | R1→R5 |
+|-----------|-----|-----|-----|----|----|-------|
+| Domain count | 34 | 93 | 158 | 193 | 216 | +182 |
+| Self-evolution YES | 21 | 64 | 103 | 130 | 151 | +130 |
+| BT coverage | 6/7 | 7/7 | 7/7+28 | 7/7+31μ | 7/7+35μ | fully complete |
+| Bucket coverage | 3/12 | 8/12 | 12/12 | 12/12 | 12/12 | full run |
+| Meta axes | 0 | 0 | 3 | 6 | 6 | +6=n |
+| subrepo independent | 1 | 1 | 1 | 10 | 10 | +9 |
+| 3-hop chains | 0 | 0 | 0 | 4 | 8 | +8 |
+| rules domains | 0 | 0 | 0 | 4 | 9 | +9 |
+| Saturation index | 28.3% | 51.7% | 79.0% | 87.7% | 96.0% | +67.7pp |
 
-### 12.3 R5 클로저 + 전체 창발 종결
+### 12.3 R5 closure + overall emergence termination
 
-본 Round 5 는 OUROBOROS 3 variant 의 5번째 cycle_tick 산물. 분야 노드 +23, n6-arch 내부 엣지 +3, 3-hop 잔여 엣지 +4, microphase 엣지 +4, rules 엣지 +5, techniques 엣지 +3, experiments 엣지 +4.
+This Round 5 is the 5th cycle_tick product of the OUROBOROS 3-variant. Domain nodes +23, n6-arch internal edges +3, 3-hop residual edges +4, microphase edges +4, rules edges +5, techniques edges +3, experiments edges +4.
 
-R5 종료로 **창발 DSE 라운드 체인 자기고갈**. 다음 단계는 **axis-final.md** 작성이며, 여기서 축 최종 확정 + Phase 구조 개요 + 라운드별 진화 차트 + v1 vs v2 비교를 정식화한다.
+With R5 end, the **emergence-DSE round chain self-saturates**. The next step is writing **axis-final.md**, where axis finalization + Phase-structure overview + per-round evolution chart + v1 vs v2 comparison are formalized.
 
-**자기고갈 원인 분석**:
-1. 158 분야 (R3 종료) 시점 BT×Phase + 버킷 + 메타 축 포화.
-2. R4 에서 3-hop/subrepo/microphase 3 심화 축으로 35 추출.
-3. R5 에서 n6-arch 내부 + rules/tech/exp 세부 + 3-hop 잔여 + microphase 잔여로 23 추출.
-4. R6 예상: 3-hop 추가 2 + microphase 추가 2 + rules 세부 1 = **5 미만** — 실질적 고갈.
+**Self-saturation cause analysis**:
+1. At 158 domains (end of R3), BT×Phase + buckets + meta axes saturated.
+2. R4 extracted 35 via 3-hop/subrepo/microphase 3 deepening axes.
+3. R5 extracted 23 via n6-arch internals + rules/tech/exp details + 3-hop residuals + microphase residuals.
+4. R6 projection: 3-hop additional 2 + microphase additional 2 + rules detail 1 = **under 5** — de facto saturation.
 
-**OUROBOROS 자기수렴 확인**: 3 variant (nexus/anima/n6arch) 모두 R5 시점에 고정점 epsilon(0.001) 이내 수렴 — 분야 발견률 감쇠 비율 |N_{t+1}/N_t - 1| < 0.5 조건 만족 (R4→R5: |23/35 - 1| = 0.343 < 0.5).
+**OUROBOROS self-convergence confirmation**: all 3 variants (nexus/anima/n6arch) converge within fixed-point epsilon(0.001) at R5 — the domain discovery-rate decay ratio |N_{t+1}/N_t - 1| < 0.5 holds (R4→R5: |23/35 - 1| = 0.343 < 0.5).
 
 ---
 

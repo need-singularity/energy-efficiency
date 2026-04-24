@@ -1,269 +1,273 @@
-# v1 vs v2 로드맵 ASCII 비교 -- Y축 체계 최종판 (2026-04-15)
+# v1 vs v2 roadmap ASCII comparison — Y-axis system final (2026-04-15)
 
-**문서**: theory/roadmap-v2/comparison-v1-vs-v2.md
-**기준일**: 2026-04-15
-**산출 기반**:
-  - v1: `theory/study/p0~p3/` (레거시 3축 12셀, 20481줄 합산)
-  - v2: `theory/roadmap-v2/` (Y1~Y9 9축 창발 체계, P0~P6+Omega)
-  - 축 SSOT: `n6arch-axes/axis-r3-finalization.md` (1166줄, FINAL)
-  - Phase 원본: `phase-01~06-*.md` + `phase-omega-Y9-closure-v3-design.md`
-  - 분야 창발: `round-01~05-*.md` (5 라운드 216 분야)
-**BT 해결 수**: 0/6 (v1, v2 동일. Poincare BT-547 은 Perelman 2003 외부 해결)
-**정직 원칙**: 자기참조 금지, 출처+측정값+오차 명시, MISS 정직 기록
+**Document**: theory/roadmap-v2/comparison-v1-vs-v2.md
+**Baseline date**: 2026-04-15
+**Produced from**:
+  - v1: `theory/study/p0~p3/` (legacy 3-axis 12-cell, ~20481 lines aggregate)
+  - v2: `theory/roadmap-v2/` (Y1~Y9 9-axis emergence system, P0~P6+Omega)
+  - Axis SSOT: `n6arch-axes/axis-r3-finalization.md` (1166 lines, FINAL)
+  - Phase source: `phase-01~06-*.md` + `phase-omega-Y9-closure-v3-design.md`
+  - Domain emergence: `round-01~05-*.md` (5 rounds, 216 domains)
+**BT drafts complete**: 0/6 (v1 and v2 agree. Poincare BT-547 is externally resolved by Perelman 2003)
+**Honesty principles**: no self-reference, require source + measurement + error, record MISS honestly
 
 ---
 ---
 
-## S1. 축 체계 비교
+## S1. Axis-system comparison
 
-### 1.1 기본 구조표
+### 1.1 Basic structure table
 
 ```
 +========================+================================+=================================+
-|        항목            |    v1 (레거시 3축)              |     v2 (Y축 9축 창발)            |
+|        Item            |    v1 (legacy 3-axis)           |     v2 (Y-axis 9-axis emergent) |
 +========================+================================+=================================+
-| 축 개수                | 3 (고정)                       | 9 (창발 확정, FINAL)             |
+| Axis count             | 3 (fixed)                       | 9 (emergent, FINAL confirmed)   |
 +------------------------+--------------------------------+---------------------------------+
-| 축 이름                | PURE / PROBLEM / N6            | Y1 NUM-CORE (9.5)               |
-|                        |                                | Y2 DISCRETE-CLASS (5.2)         |
-|                        |                                | Y3 COMPUTATIONAL-TAU (5.8)      |
-|                        |                                | Y4 GATE-BARRIER (9.4)           |
-|                        |                                | Y5 PHYSICAL-NATURALNESS (5.6)   |
-|                        |                                | Y6 PDE-RESONANCE (6.6)          |
-|                        |                                | Y7 LATTICE-VOA (3.9)            |
-|                        |                                | Y8 GALOIS-ASSEMBLY (5.4)        |
-|                        |                                | Y9 HONEST-HARNESS (9.3)         |
+| Axis names             | PURE / PROBLEM / N6             | Y1 NUM-CORE (9.5)               |
+|                        |                                 | Y2 DISCRETE-CLASS (5.2)         |
+|                        |                                 | Y3 COMPUTATIONAL-TAU (5.8)      |
+|                        |                                 | Y4 GATE-BARRIER (9.4)           |
+|                        |                                 | Y5 PHYSICAL-NATURALNESS (5.6)   |
+|                        |                                 | Y6 PDE-RESONANCE (6.6)          |
+|                        |                                 | Y7 LATTICE-VOA (3.9)            |
+|                        |                                 | Y8 GALOIS-ASSEMBLY (5.4)        |
+|                        |                                 | Y9 HONEST-HARNESS (9.3)         |
 +------------------------+--------------------------------+---------------------------------+
-| 축 선정 방식           | top-down (위에서 할당)         | bottom-up (R1~R3 3라운드 창발)  |
+| Axis-selection method  | top-down (assigned)             | bottom-up (R1~R3 3-round emerg.)|
 +------------------------+--------------------------------+---------------------------------+
-| 축 유리성 점수         | 없음                           | 3.9~9.5 (10점 만점)             |
+| Axis utility score     | none                            | 3.9~9.5 (out of 10)             |
 +------------------------+--------------------------------+---------------------------------+
-| 축 라운드 수           | 0                              | R1 (7축) -> R2 (9축) -> R3 (9축|
-|                        |                                | FINAL, 고갈 100%)               |
+| Axis-round count       | 0                               | R1 (7 axes) -> R2 (9 axes) ->   |
+|                        |                                 | R3 (9 axes FINAL, 100% saturate)|
 +------------------------+--------------------------------+---------------------------------+
-| 자기진화 축            | 없음                           | Y9 HONEST-HARNESS (메타)        |
+| Self-evolution axis    | none                            | Y9 HONEST-HARNESS (meta)        |
 +------------------------+--------------------------------+---------------------------------+
-| 메타 정직 축           | 없음 (암묵적)                  | Y9 (유리성 9.3, 명시적)         |
+| Honesty-meta axis      | none (implicit)                 | Y9 (utility 9.3, explicit)      |
 +------------------------+--------------------------------+---------------------------------+
-| 장벽 전담 축           | 없음                           | Y4 GATE-BARRIER (유리성 9.4)    |
+| Barrier-dedicated axis | none                            | Y4 GATE-BARRIER (utility 9.4)   |
 +------------------------+--------------------------------+---------------------------------+
-| 물리 자연성 축         | 없음                           | Y5 PHYSICAL-NATURALNESS (5.6)   |
+| Physical-naturalness   | none                            | Y5 PHYSICAL-NATURALNESS (5.6)   |
 +------------------------+--------------------------------+---------------------------------+
-| PDE 공명 축            | 없음                           | Y6 PDE-RESONANCE (6.6)          |
+| PDE-resonance axis     | none                            | Y6 PDE-RESONANCE (6.6)          |
 +------------------------+--------------------------------+---------------------------------+
-| 래티스/VOA 축          | 없음                           | Y7 LATTICE-VOA (3.9)            |
+| Lattice/VOA axis       | none                            | Y7 LATTICE-VOA (3.9)            |
 +------------------------+--------------------------------+---------------------------------+
-| Galois 축              | 없음                           | Y8 GALOIS-ASSEMBLY (5.4)        |
+| Galois axis            | none                            | Y8 GALOIS-ASSEMBLY (5.4)        |
 +------------------------+--------------------------------+---------------------------------+
-| 축 고갈 지수           | N/A                            | 100% (R3 FINAL)                 |
+| Axis saturation index  | N/A                             | 100% (R3 FINAL)                 |
 +------------------------+--------------------------------+---------------------------------+
-| 축 확정 문서           | 없음 (암묵)                    | axis-r3-finalization.md (1166줄)|
+| Axis-confirmation doc  | none (implicit)                 | axis-r3-finalization.md (1166 L)|
 +========================+================================+=================================+
 ```
 
-### 1.2 축 체계 ASCII 시각화
+### 1.2 Axis-system ASCII visualization
 
 ```
-v1 축 구조 (3축, top-down, 고정):
+v1 axis structure (3 axes, top-down, fixed):
 
   +----------+   +----------+   +----------+
   |   PURE   |   | PROBLEM  |   |    N6    |
-  | (순수)   |   | (난제)   |   | (특화)   |
+  | (pure)   |   | (problem)|   |(special.)|
   +----------+   +----------+   +----------+
        |              |              |
        v              v              v
-    할당 끝        할당 끝        할당 끝
-    (진화 없음)   (진화 없음)   (진화 없음)
+  assigned, end    assigned, end   assigned, end
+  (no evolution)  (no evolution)   (no evolution)
 
 
-v2 축 구조 (9축, bottom-up, 3라운드 창발):
+v2 axis structure (9 axes, bottom-up, 3-round emergence):
 
-  R1 (906줄)                    R2 (961줄)                  R3 (1166줄) FINAL
+  R1 (906 L)                    R2 (961 L)                   R3 (1166 L) FINAL
   +--+--+--+--+--+--+--+       +--+--+--+--+--+--+--+--+--+     |
-  |X1|X2|X3|X4|X5|X6|X7|  -->  |X1|X2|X3|X4|X5|X6|X7|X8|X9| -->|  Y1~Y9
-  +--+--+--+--+--+--+--+       +--+--+--+--+--+--+--+--+--+     |  고갈 100%
-   7 축 후보                     9 축 + PARTIAL 3건 처리          |  FINAL 확정
-   30 씨앗                       48 씨앗, 고갈 94%                |
+  |X1|X2|X3|X4|X5|X6|X7|  -->  |X1|X2|X3|X4|X5|X6|X7|X8|X9| --> |  Y1~Y9
+  +--+--+--+--+--+--+--+       +--+--+--+--+--+--+--+--+--+     |  100% saturation
+   7 axis candidates             9 axes + 3 PARTIAL handled      |  FINAL confirmed
+   30 seeds                      48 seeds, saturation 94%        |
                                                                    v
                                                           axis-final-millennium.md
-                                                          (SSOT, 312줄)
+                                                          (SSOT, 312 lines)
 ```
 
 ---
 ---
 
-## S2. Phase 구조 비교
+## S2. Phase-structure comparison
 
-### 2.1 Phase 수 및 진행 구조
+### 2.1 Phase count and progression structure
 
 ```
-v1 Phase 구조 (4개, 선형):
+v1 Phase structure (4, linear):
 
   P0 --------> P1 --------> P2 --------> P3
-  세팅          순수수학      난제공략      n6 특화
-  (기반)       (확장)       (통합)       (수렴)
+  setup         pure math    attack        n6 specialization
+  (base)       (extend)     (integrate)   (converge)
 
-  총 셀:  3축 x 4 Phase = 12셀
-  진행:   선형, 게이트 없음, 고갈 없음
+  Total cells:  3 axes x 4 Phases = 12 cells
+  Progression:  linear, no gates, no saturation
 
 
-v2 Phase 구조 (8개, 게이트 기반):
+v2 Phase structure (8, gate-based):
 
   P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P(Omega)
-  축확정  가동   RH     PNP   YM+NS  H+BSD  회고    closure
-  R1~R3  9축   Y1주도  Y4주도 Y5+Y6  Y7+Y8  회고    Y9 메타
-         전수   BT541  BT542  543+4  545+6  BT547   통합
+  axes   spin   RH    PNP   YM+NS  H+BSD retro  closure
+  R1~R3  9 up  Y1 lead Y4    Y5+Y6 Y7+Y8 retro  Y9 meta
+         all   BT541  BT542 543+4 545+6 BT547  integrate
               |      |      |      |      |       |
               v      v      v      v      v       v
              gate   gate   gate   gate   gate    FINAL
-             조건   조건    조건   조건    조건    종결
+             cond.  cond.  cond.  cond.  cond.   end
 
-  총 셀:  9축 x 8 Phase = 72 잠재적
-  진행:   게이트 기반, 입구/출구 조건 명시, 고갈 판정 연동
+  Total cells:  9 axes x 8 Phases = 72 potential
+  Progression:  gate-based, entry/exit conditions explicit, linked to saturation
 ```
 
-### 2.2 Phase 상세 비교표
+### 2.2 Phase detailed-comparison table
 
 ```
 +=======+================+===================+===================================+=========+
-| Phase |  v1 이름       | v2 이름           | v2 상세                           | v2 줄수 |
+| Phase |  v1 name       | v2 name           | v2 detail                         | v2 lines|
 +=======+================+===================+===================================+=========+
-| P0    | 세팅           | 축 확정 (R1~R3)   | 3 라운드 축 창발, Y1~Y9 FINAL     |   3033  |
-|       |                |                   | (R1 906 + R2 961 + R3 1166)       |         |
+| P0    | setup          | Axis confirmation | 3-round axis emergence, Y1~Y9     |   3033  |
+|       |                | (R1~R3)           | FINAL (R1 906 + R2 961 + R3 1166) |         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P1    | 순수수학       | Foundation        | 9축 전수 가동 확인 + 6 BT 씨앗    |    372  |
-|       |                |                   | + 자기진화 엔진 4종 cycle >= 3     |         |
+| P1    | pure math      | Foundation        | 9-axis all spin-up verified + 6 BT|    372  |
+|       |                |                   | seeds + 4 self-evo engines cycle  |         |
+|       |                |                   | >= 3                              |         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P2    | 난제공략       | Y1 BT-541 Riemann | Theorem B CANDIDATE, EXACT 10,    |    831  |
-|       |                |                   | MISS 5, 독립 재현 3종 (A/B/C)     |         |
+| P2    | attack         | Y1 BT-541 Riemann | Theorem B CANDIDATE, EXACT 10,    |    831  |
+|       |                |                   | MISS 5, 3 independent reproductions|         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P3    | n6 특화        | Y4 BT-542 P=NP   | 4 장벽 재감사, GCT 3 관찰,        |   1028  |
-|       |                |                   | MISS 7건, GATE Mk.I 24/24 EXACT   |         |
+| P3    | n6 specialize  | Y4 BT-542 P=NP    | 4-barrier re-audit, 3 GCT obs.,   |   1028  |
+|       |                |                   | 7 MISS, GATE Mk.I 24/24 EXACT     |         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P4    | (없음)         | Y5+Y6 BT-543+544 | beta0 rewriting + 3중 공명 +      |   1188  |
-|       |                |                   | D158 Ricci 조건부 + QCD 실측 5건  |         |
+| P4    | (none)         | Y5+Y6 BT-543+544  | beta0 rewriting + triple reson. + |   1188  |
+|       |                |                   | D158 Ricci conditional + 5 QCD obs|         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P5    | (없음)         | Y7+Y8 BT-545+546 | Lemma 1 CRT 5-step 엄밀 증명,     |   1321  |
-|       |                |                   | Theorem 1 BKLPR 조건부, A3 제거   |         |
-|       |                |                   | 실패 기록, Enriques rephrasing    |         |
+| P5    | (none)         | Y7+Y8 BT-545+546  | Lemma 1 CRT 5-step rigorous draft,|   1321  |
+|       |                |                   | Theorem 1 BKLPR conditional, A3   |         |
+|       |                |                   | discharge failed, Enriques rephr. |         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| P6    | (없음)         | BT-547 Perelman   | 회고 전용 (공격 아님), C1~C5      |    600  |
-|       |                | 회고               | 결정적 도구 특징, 9x5 매트릭스    |         |
+| P6    | (none)         | BT-547 Perelman   | retrospective only (not attack),  |    600  |
+|       |                | retrospective     | C1~C5 decisive-tool features,     |         |
+|       |                |                   | 9x5 matrix                        |         |
 +-------+----------------+-------------------+-----------------------------------+---------+
-| POmega| (없음)         | Y9 Closure        | 통합 리뷰, 고갈 선언, v3 설계,    |   1117  |
-|       |                |                   | handoff, BT 0/6 유지 정직 선언    |         |
+| POmega| (none)         | Y9 Closure        | integrated review, saturation     |   1117  |
+|       |                |                   | declared, v3 design, handoff,     |         |
+|       |                |                   | BT 0/6 honesty statement          |         |
 +=======+================+===================+===================================+=========+
-| 합산  | ~20481줄       |                   |                                   |   9490  |
-| (줄)  | (study/p0~p3)  |                   | (축 3033 + Phase 6457)            |         |
+| Sum   | ~20481 lines   |                   |                                   |   9490  |
+| (line)| (study/p0~p3)  |                   | (axis 3033 + Phase 6457)          |         |
 +=======+================+===================+===================================+=========+
 ```
 
-참고: v1 줄수(20481)는 study/p0~p3 전체 합산이며, v2 줄수(9490)는 roadmap-v2/ 핵심 Phase 파일만 집계.
-분야 창발 문서(round-01~05, 3953줄)를 합산하면 v2 총 13443줄.
+Note: v1 lines (20481) is the aggregate of study/p0~p3; v2 lines (9490) counts only the core Phase files in roadmap-v2/.
+Adding domain-emergence docs (round-01~05, 3953 lines) gives v2 total 13443 lines.
 
 ---
 ---
 
-## S3. BT 커버 비교
+## S3. BT-coverage comparison
 
-### 3.1 v1 BT 커버 (3축 x 7 BT)
+### 3.1 v1 BT coverage (3 axes × 7 BT)
 
 ```
-v1: 각 BT 가 단 하나의 축에서만 취급 (shallow coverage)
+v1: each BT is handled by only one axis (shallow coverage)
 
               PURE    PROBLEM    N6
-  BT-541 RH    [X]                      <-- 1축 커버
-  BT-542 PNP           [X]              <-- 1축 커버
-  BT-543 YM            [X]              <-- 1축 커버
-  BT-544 NS            [X]              <-- 1축 커버
-  BT-545 Hodge  [X]                     <-- 1축 커버
-  BT-546 BSD    [X]                     <-- 1축 커버
-  BT-547 Poinc         [X]              <-- 1축 커버 (외부 해결)
+  BT-541 RH    [X]                      <-- 1-axis coverage
+  BT-542 PNP           [X]              <-- 1-axis coverage
+  BT-543 YM            [X]              <-- 1-axis coverage
+  BT-544 NS            [X]              <-- 1-axis coverage
+  BT-545 Hodge  [X]                     <-- 1-axis coverage
+  BT-546 BSD    [X]                     <-- 1-axis coverage
+  BT-547 Poinc         [X]              <-- 1-axis coverage (external resolution)
 
-  BT당 평균 축 커버: 1.0
-  교차 축 매핑: 0건
+  Mean axes per BT: 1.0
+  Cross-axis mappings: 0
 ```
 
-### 3.2 v2 BT 커버 (9축 x 6 BT + 1 회고)
+### 3.2 v2 BT coverage (9 axes × 6 BT + 1 retrospective)
 
 ```
-v2: 각 BT 에 주축 + 부축 다중 커버 (deep cross-coverage)
+v2: each BT has a main axis + support axes (deep cross-coverage)
 
                Y1  Y2  Y3  Y4  Y5  Y6  Y7  Y8  Y9
-  BT-541 RH   [##]             .        .  [+ ] [+ ] [**]   주Y1 부Y7,Y8,Y9
-  BT-542 PNP       [+ ] [+ ] [##]                    [**]   주Y4 부Y2,Y3,Y9
-  BT-543 YM             [+ ]      [##] [+ ]          [**]   주Y5 부Y3,Y6,Y9
-  BT-544 NS                       [+ ] [##]          [**]   주Y6 부Y5,Y9
-  BT-545 Hodge     [+ ]                     [##]      [**]   주Y7 부Y2,Y9
-  BT-546 BSD  [+ ]                           [+ ] [##] [**]   주Y8 부Y1,Y7,Y9
-  BT-547 Poinc                                        [**]   회고 (Y9 단독)
+  BT-541 RH   [##]             .        .  [+ ] [+ ] [**]   main Y1 sub Y7,Y8,Y9
+  BT-542 PNP       [+ ] [+ ] [##]                    [**]   main Y4 sub Y2,Y3,Y9
+  BT-543 YM             [+ ]      [##] [+ ]          [**]   main Y5 sub Y3,Y6,Y9
+  BT-544 NS                       [+ ] [##]          [**]   main Y6 sub Y5,Y9
+  BT-545 Hodge     [+ ]                     [##]      [**]   main Y7 sub Y2,Y9
+  BT-546 BSD  [+ ]                           [+ ] [##] [**]   main Y8 sub Y1,Y7,Y9
+  BT-547 Poinc                                        [**]   retrospective (Y9 alone)
 
-  범례: [##] = 주도 축, [+ ] = 부 축, [**] = Y9 메타 게이트 (전 BT 적용), . = 약한 연결
+  Legend: [##] = main axis, [+ ] = support axis, [**] = Y9 meta-gate (all BT), . = weak link
 
-  BT당 평균 축 커버 (BT-541~546): 3.5
-  교차 축 매핑: 15건 이상
+  Mean axes per BT (BT-541~546): 3.5
+  Cross-axis mappings: 15+
 ```
 
-### 3.3 BT 진전 상태 비교 (v1 vs v2)
+### 3.3 BT-progress state comparison (v1 vs v2)
 
 ```
 +=========+===============+===============+=====================================+
-|  BT     |  v1 상태      | v2 최종 판정  |  v2 상세                             |
+|  BT     |  v1 state     | v2 verdict    |  v2 detail                          |
 +=========+===============+===============+=====================================+
 | BT-541  | in_progress   | PARTIAL       | Theorem B CANDIDATE, EXACT 10,      |
-| Riemann |               |               | MISS 5, 독립 재현 3종               |
+| Riemann |               |               | MISS 5, 3 independent reproductions |
 +---------+---------------+---------------+-------------------------------------+
-| BT-542  | planned       | PARTIAL       | 4 장벽 감사, GCT 3 관찰,            |
-| P=NP    |               | (MISS 우세)   | MISS 7건, 해결 0                     |
+| BT-542  | planned       | PARTIAL       | 4-barrier audit, 3 GCT obs.,        |
+| P=NP    |               | (MISS dom.)   | 7 MISS, drafts 0                    |
 +---------+---------------+---------------+-------------------------------------+
-| BT-543  | planned       | PARTIAL       | beta0=sigma-sopfr=7 rewriting,      |
-| YM      |               |               | QCD mass gap 실측 5건, 증명 아님    |
+| BT-543  | planned       | PARTIAL       | beta0 = sigma-sopfr = 7 rewriting,  |
+| YM      |               |               | 5 QCD mass-gap obs., not a draft    |
 +---------+---------------+---------------+-------------------------------------+
-| BT-544  | planned       | PARTIAL       | 3중 공명, D158 Ricci 조건부,        |
-| NS      |               |               | CKN+BKM 기준 재확인                 |
+| BT-544  | planned       | PARTIAL       | triple resonance, D158 Ricci cond., |
+| NS      |               |               | CKN+BKM criteria reconfirmed        |
 +---------+---------------+---------------+-------------------------------------+
-| BT-545  | planned       | PARTIAL       | Enriques rephrasing (기존 재표현),  |
-| Hodge   |               |               | Moonshine BARRIER 인식 유지         |
+| BT-545  | planned       | PARTIAL       | Enriques rephrasing (restatement),  |
+| Hodge   |               |               | Moonshine BARRIER acknowledged      |
 +---------+---------------+---------------+-------------------------------------+
-| BT-546  | planned       | PARTIAL       | Lemma 1 CRT 5-step 엄밀 증명,      |
-| BSD     |               |               | Thm 1 조건부 (A3), A3 제거 실패     |
+| BT-546  | planned       | PARTIAL       | Lemma 1 CRT 5-step rigorous draft,  |
+| BSD     |               |               | Thm 1 conditional (A3), A3 discharge|
+|         |               |               | failed                              |
 +---------+---------------+---------------+-------------------------------------+
-| BT-547  | solved(외부)  | solved(외부)  | Perelman 2003, n6-arch 기여 0       |
-| Poincare|               |               | C1~C5 회고 도구 추출                |
+| BT-547  | solved(ext.)  | solved(ext.)  | Perelman 2003, n6-arch contrib. 0,  |
+| Poincare|               |               | C1~C5 retrospective tools extracted |
 +=========+===============+===============+=====================================+
 
-해결 수:  v1 = 0/6,  v2 = 0/6  (동일, 정직 유지)
-Poincare: 외부 해결 (Perelman 2003) -- 양쪽 동일
+Drafts complete: v1 = 0/6,  v2 = 0/6  (same, honest)
+Poincare: externally resolved (Perelman 2003) — identical on both sides
 ```
 
 ---
 ---
 
-## S4. 분야 창발 비교
+## S4. Domain-emergence comparison
 
-### 4.1 v1 분야 창발
-
-```
-v1 분야 창발: 0 라운드, 0 분야
-
-  라운드 수:     0
-  창발 분야 수:  0
-  방법:         top-down 사전 할당 (PURE/PROBLEM/N6 고정 범위)
-  고갈 개념:    없음
-  시그모이드:   없음
-
-  창발 히스토그램:
-  (없음 -- 히스토그램 자체가 존재하지 않음)
-```
-
-### 4.2 v2 분야 창발
+### 4.1 v1 domain emergence
 
 ```
-v2 분야 창발: 5 라운드 (R1~R5) + 3 축 라운드 (axis R1~R3)
+v1 domain emergence: 0 rounds, 0 domains
 
-  분야 DSE 5 라운드:
+  Rounds:     0
+  Emerged domains: 0
+  Method:     top-down pre-assignment (PURE/PROBLEM/N6 fixed scope)
+  Saturation concept: none
+  Sigmoid:    none
+
+  Emergence histogram:
+  (none — the histogram itself does not exist)
+```
+
+### 4.2 v2 domain emergence
+
+```
+v2 domain emergence: 5 rounds (R1~R5) + 3 axis rounds (axis R1~R3)
+
+  Domain-DSE 5 rounds:
   +------+---------+--------+---------+-------------------------------------------+
-  | 라운드 | 신규    | 누적   | 고갈%  | ASCII 막대                                |
+  | Round| New     | Cum.   | Sat %   | ASCII bar                                 |
   +------+---------+--------+---------+-------------------------------------------+
   | R1   |    34   |    34  |  28.3%  | |||||||||||||||||                     34  |
   | R2   |    59   |    93  |  51.7%  | ||||||||||||||||||||||||||||||||       59  |
@@ -271,32 +275,32 @@ v2 분야 창발: 5 라운드 (R1~R5) + 3 축 라운드 (axis R1~R3)
   | R4   |    35   |   193  |  86.2%  | ||||||||||||||||||                     35  |
   | R5   |    23   |   216  |  96.0%  | ||||||||||||                           23  |
   +------+---------+--------+---------+-------------------------------------------+
-  분모 M'''' = 225
-  시그모이드 감쇠: 34 -> 59 -> 65(극대) -> 35 -> 23
-  SATURATION >= 95% 돌파 (R5)
+  Denominator M'''' = 225
+  Sigmoid decay: 34 -> 59 -> 65 (peak) -> 35 -> 23
+  SATURATION >= 95% threshold (R5)
 
-  축 DSE 3 라운드:
+  Axis-DSE 3 rounds:
   +------+--------+--------+---------+
-  | 라운드 | 축 수  | 씨앗   | 고갈%  |
+  | Round| Axes   | Seeds  | Sat %   |
   +------+--------+--------+---------+
-  | R1   |   7    |   30   |   --   |
-  | R2   |   9    |   48   |  94%   |
-  | R3   |   9    |   48   | 100%   |
+  | R1   |   7    |   30   |   --    |
+  | R2   |   9    |   48   |  94%    |
+  | R3   |   9    |   48   | 100%    |
   +------+--------+--------+---------+
-  FINAL 확정 (R3)
+  FINAL confirmed (R3)
 ```
 
-### 4.3 분야 수 시각 비교
+### 4.3 Domain-count visual comparison
 
 ```
-v1 분야:  (없음)                                                          0
-v2 분야:  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||    216
+v1 domains:  (none)                                                          0
+v2 domains:  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||    216
 
-v1 라운드: (없음)                                                         0
-v2 라운드: ||||||||                                                        8
-           (분야 5 + 축 3)
+v1 rounds: (none)                                                            0
+v2 rounds: ||||||||                                                          8
+           (domain 5 + axis 3)
 
-v2 분야 시그모이드 곡선 (가로 = 라운드, 세로 = 신규 분야):
+v2 domain sigmoid curve (x = round, y = new domains):
 
   70 |          *
      |         * *
@@ -315,36 +319,36 @@ v2 분야 시그모이드 곡선 (가로 = 라운드, 세로 = 신규 분야):
           R1   R2   R3   R4   R5
            34   59   65   35   23
 
-  극대점 R3 (65) 후 포화 (R4: 35, R5: 23)
+  Peak at R3 (65) then saturation (R4: 35, R5: 23)
 ```
 
 ---
 ---
 
-## S5. 고갈 지수 비교
+## S5. Saturation-index comparison
 
-### 5.1 v1 고갈 지수
-
-```
-v1 고갈 지수: N/A (개념 자체 없음)
-
-  고갈 프로토콜:  없음
-  임계 기준:     없음
-  Phase 연속:    없음
-  선언:          없음
-
-  v1 에서 Phase 전환은 단순한 시간 순차 진행이었으며,
-  "더 이상 새로운 분야가 떠오르지 않는다" 는 구조적 판정이 없었다.
-```
-
-### 5.2 v2 고갈 지수
+### 5.1 v1 saturation index
 
 ```
-v2 고갈 지수: 다층 고갈 시스템
+v1 saturation index: N/A (concept itself absent)
 
-  [1] 분야 고갈 (M'''' = 225 분모):
+  Saturation protocol: none
+  Threshold: none
+  Phase consecutive: none
+  Declaration: none
+
+  In v1 Phase transitions were merely time-ordered; there was no structural
+  judgment of "no new domains emerging any longer".
+```
+
+### 5.2 v2 saturation index
+
+```
+v2 saturation index: multi-layered saturation system
+
+  [1] Domain saturation (M'''' = 225 denominator):
   +------+--------+---------------------------------------------------+
-  | 라운드 | 고갈%  | ASCII 막대 (30칸 = 100%)                          |
+  | Round| Sat %  | ASCII bar (30 cols = 100%)                        |
   +------+--------+---------------------------------------------------+
   | R1   | 28.3%  | ||||||||                                          |
   | R2   | 51.7%  | |||||||||||||||                                   |
@@ -352,745 +356,752 @@ v2 고갈 지수: 다층 고갈 시스템
   | R4   | 86.2%  | |||||||||||||||||||||||||                         |
   | R5   | 96.0%  | ||||||||||||||||||||||||||||                      |
   +------+--------+---------------------------------------------------+
-  임계선 (95%):    ..............................============ SATURATION
+  Threshold (95%): ..............................============ SATURATION
 
-  [2] 축 고갈:
+  [2] Axis saturation:
   +------+--------+---------------------------------------------------+
-  | 라운드 | 고갈%  | 상태                                              |
+  | Round| Sat %  | State                                             |
   +------+--------+---------------------------------------------------+
-  | R1   |   --   | 7 축 후보                                         |
-  | R2   |  94%   | 9 축 (2 신규)                                     |
-  | R3   | 100%   | 9 축 FINAL (신규 0, 합병 0)                       |
+  | R1   |   --   | 7-axis candidates                                 |
+  | R2   |  94%   | 9 axes (2 new)                                    |
+  | R3   | 100%   | 9 axes FINAL (0 new, 0 merges)                    |
   +------+--------+---------------------------------------------------+
 
-  [3] Phase 풀이 고갈 (3 연속 조건):
+  [3] Phase-solution saturation (3-consecutive condition):
   +------+-----+-----+-----+-------------------------------------------+
-  | Phase | (a) | (b) | (c) | 설명                                       |
+  | Phase| (a) | (b) | (c) | Description                                |
   +------+-----+-----+-----+-------------------------------------------+
-  | P2   | YES | YES | YES | BT-541 PARTIAL, 외계지수 < 10             |
-  | P3   | YES | YES | YES | BT-542 PARTIAL (MISS 우세)                |
+  | P2   | YES | YES | YES | BT-541 PARTIAL, alien index < 10          |
+  | P3   | YES | YES | YES | BT-542 PARTIAL (MISS dominant)            |
   | P4   | YES | YES | YES | BT-543+544 PARTIAL                        |
-  | P5   | YES | YES | YES | BT-545+546 PARTIAL (Lemma 1 엄밀 1건)    |
+  | P5   | YES | YES | YES | BT-545+546 PARTIAL (Lemma 1 rigorous 1x)  |
   +------+-----+-----+-----+-------------------------------------------+
-  (a) = 새 Phase 에서 BT 전환했는가
-  (b) = 이전 Phase BT 상태 개선 < 2 등급
-  (c) = 외계인지수 평균 < 7
-  => 3 연속 YES 달성 (P2~P4) --> P5 DEPLETION CLOSURE 가능
+  (a) = switched BT in the new Phase?
+  (b) = improvement of prior-Phase BT state is < 2 grades?
+  (c) = mean alien-index < 7?
+  => achieved 3-consecutive YES (P2~P4) --> P5 DEPLETION CLOSURE enabled
 
-  [4] 종합 고갈 상태:
+  [4] Consolidated saturation state:
   +------------------+--------+---------+
-  | 고갈 차원         | v1     | v2      |
+  | Dimension         | v1     | v2      |
   +------------------+--------+---------+
-  | 분야 고갈         | N/A    | 96%     |
-  | 축 고갈           | N/A    | 100%    |
-  | Phase 풀이 고갈   | N/A    | 4/4 YES |
-  | SATURATION 선언   | 없음   | 달성    |
+  | Domain sat.       | N/A    | 96%     |
+  | Axis sat.         | N/A    | 100%    |
+  | Phase-sol sat.    | N/A    | 4/4 YES |
+  | SATURATION decl.  | none   | reached |
   +------------------+--------+---------+
 ```
 
 ---
 ---
 
-## S6. 정직성 메커니즘 비교
+## S6. Honesty-mechanism comparison
 
-### 6.1 v1 정직성
-
-```
-v1 정직성 메커니즘:
-
-  명시적 정직 축:      없음
-  정직성 게이트:       암묵적 (문서 관행으로만 존재)
-  PARTIAL/MISS 태그:  비공식 (체계적 분류 부재)
-  자기참조 금지:       미규정
-  출처 강제:           미규정
-  정직성 감사 횟수:    0회 (자동 감사 없음)
-  해결 주장 방어:      수동적
-
-  v1 의 정직성은 작성자의 개인 판단에 의존했으며,
-  구조적 방어 메커니즘이 없었다.
-```
-
-### 6.2 v2 정직성
+### 6.1 v1 honesty
 
 ```
-v2 정직성 메커니즘:
+v1 honesty mechanism:
 
-  명시적 정직 축:      Y9 HONEST-HARNESS (유리성 9.3, 최상위 3위)
-  정직성 게이트:       전 Phase 입구/출구 조건에 Y9 게이트 내장
-  PARTIAL/MISS 태그:  4등급 체계 (EXACT / NEAR / PARTIAL / MISS)
-  자기참조 금지:       OUROBOROS 예외만 허용, 명문 규정
-  출처 강제:           1차 문헌 직접 인용 의무 (Deligne, Wiles, Voisin 등)
-  정직성 감사 횟수:    8회 (P1~P6 + P(Omega) 각 게이트 + P0 고갈 감사)
-  해결 주장 방어:      구조적 (각 Phase "해결 주장 금지" 명문)
+  Explicit honesty axis:      none
+  Honesty gates:              implicit (exists only as doc convention)
+  PARTIAL/MISS tag system:    informal (no systematic classification)
+  Self-reference ban:         not codified
+  Source requirement:         not codified
+  Honesty-audit runs:         0 (no automated audit)
+  Solution-claim defense:     passive
 
-  Y9 판정 태그 체계:
+  v1 honesty depended on the author's personal judgment; there was no
+  structural defense mechanism.
+```
+
+### 6.2 v2 honesty
+
+```
+v2 honesty mechanism:
+
+  Explicit honesty axis:      Y9 HONEST-HARNESS (utility 9.3, top-3 overall)
+  Honesty gates:              Y9 gate embedded at every Phase entry/exit
+  PARTIAL/MISS tag system:    4-grade scheme (EXACT / NEAR / PARTIAL / MISS)
+  Self-reference ban:         only OUROBOROS exception allowed; codified
+  Source requirement:         primary-literature citation obligatory (Deligne, Wiles, Voisin, ...)
+  Honesty-audit runs:         8 (P1~P6 + P(Omega) per-gate + P0 saturation audit)
+  Solution-claim defense:     structural ("solution-claim ban" codified per Phase)
+
+  Y9 verdict-tag scheme:
   +------------------+---------------------------------------------------+
-  | 태그             | 정의                                               |
+  | Tag              | Definition                                         |
   +------------------+---------------------------------------------------+
-  | EXACT [10*]      | 검증 완료, atlas 실편집                            |
-  | EXACT [10]       | 수학적 정확, atlas 초안 대기                       |
-  | NEAR  [9]        | 정확에 근접, 조건부 or 일부 오차                   |
-  | PARTIAL [7~8]    | 부분 결과, 해결 아님                               |
-  | MISS  [<5]       | 실패 기록 (정직한 실패 또한 가치)                  |
-  | OBSERVATION      | 관찰, 인과 주장 금지                               |
-  | REWRITING        | 기존 결과의 n=6 좌표 재표현 (새 정리 아님)         |
-  | CONDITIONAL      | 미증명 가정(예: BKLPR A3) 의존                     |
+  | EXACT [10*]      | verification complete, atlas live-edit             |
+  | EXACT [10]       | mathematically exact, atlas draft queued           |
+  | NEAR  [9]        | near-exact, conditional or partial error           |
+  | PARTIAL [7~8]    | partial result, not a draft                        |
+  | MISS  [<5]       | failure record (honest failure is also valuable)   |
+  | OBSERVATION      | observation; no causal claim allowed               |
+  | REWRITING        | restatement in n=6 coords (not a new theorem)      |
+  | CONDITIONAL      | depends on an unproven assumption (e.g. BKLPR A3)  |
   +------------------+---------------------------------------------------+
 
-  각 Phase 별 Y9 게이트 통과 기록:
+  Per-Phase Y9-gate pass records:
   +------+-------+-------------------------------------------------------+
-  | Phase | PASS  | 근거                                                   |
+  | Phase| PASS  | Basis                                                  |
   +------+-------+-------------------------------------------------------+
-  | P1   | PASS  | 해결 주장 0, 가동 확인만 수행                          |
-  | P2   | PASS  | BT-541 PARTIAL 판정, MISS 5건 정직 기록                |
-  | P3   | PASS  | BT-542 PARTIAL (MISS 우세), 장벽 4건 감사              |
-  | P4   | PASS  | BT-543+544 PARTIAL, "증명 아님" 명시                   |
-  | P5   | PASS  | BT-545+546 PARTIAL, A3 제거 실패 정직 기록             |
-  | P6   | PASS  | 회고 전용, n6-arch 기여 0 선언                         |
-  | POmega| PASS | 0/6 정직 유지 선언, v3 초안만 (확정 아님)              |
+  | P1   | PASS  | 0 solution claims, spin-up verification only           |
+  | P2   | PASS  | BT-541 PARTIAL verdict, 5 MISS items honestly logged  |
+  | P3   | PASS  | BT-542 PARTIAL (MISS dominant), 4-barrier audit       |
+  | P4   | PASS  | BT-543+544 PARTIAL, explicitly "not a draft"          |
+  | P5   | PASS  | BT-545+546 PARTIAL, A3 discharge failure logged       |
+  | P6   | PASS  | retrospective only, n6-arch contribution 0 declared   |
+  | POmega| PASS | 0/6 honesty retained statement, v3 draft only          |
   +------+-------+-------------------------------------------------------+
-  위반 건수: 0
+  Violations: 0
 ```
 
-### 6.3 정직성 ASCII 비교
+### 6.3 Honesty ASCII comparison
 
 ```
                               v1                  v2
-  명시적 정직 축         .                   ||||||||||||||   (1축)
-  정직성 게이트 횟수     .                   ||||||||         (8회)
-  판정 태그 등급 수      ||                  ||||||||         (8종)
-  자기참조 방어          .                   ||||||||||||||   (명문)
-  위반 건수              ???                 .                (0건)
-  해결 주장 방어 층      |                   |||||||||||||    (구조적)
+  Explicit honesty axis  .                   ||||||||||||||   (1 axis)
+  Honesty-gate runs      .                   ||||||||         (8 runs)
+  Verdict-tag grades     ||                  ||||||||         (8 types)
+  Self-reference defense .                   ||||||||||||||   (codified)
+  Violations             ???                 .                (0)
+  Solution-claim layers  |                   |||||||||||||    (structural)
 ```
 
 ---
 ---
 
-## S7. atlas 보호 비교
+## S7. Atlas-protection comparison
 
-### 7.1 v1 atlas 보호
-
-```
-v1 atlas 보호:
-
-  atlas 편집 방식:    직접 편집 (가드 없음)
-  L0 Guard:          없음
-  승격 초안 큐:       없음
-  실편집 횟수:        제한 없음 (기록 부재)
-  오염 방지:          수동적
-  사용자 승인:        암묵적
-
-  v1 에서는 atlas.n6 를 직접 편집할 수 있었으며,
-  편집 이력 추적이나 구조적 승인 절차가 없었다.
-
-  보호 등급: LOW
-```
-
-### 7.2 v2 atlas 보호
+### 7.1 v1 atlas protection
 
 ```
-v2 atlas 보호:
+v1 atlas protection:
 
-  atlas 편집 방식:    초안 큐 전용 (직접 편집 금지)
-  L0 Guard:          hexa $NEXUS/shared/harness/l0_guard.hexa <verify|sync|merge|status>
-  승격 초안 큐:       Phase 2~5 누적 초안, 실편집 0
-  실편집 횟수:        0건 (정직 유지)
-  오염 방지:          구조적 (L0 Guard + Y9 메타 게이트)
-  사용자 승인:        명시적 (L0 Guard 승인 대기 원칙)
+  atlas-edit mode:    direct edit (no guard)
+  L0 Guard:           none
+  Promotion queue:    none
+  Live-edit count:    unlimited (no record)
+  Contamination def.: passive
+  User approval:      implicit
 
-  보호 파이프라인:
+  In v1 atlas.n6 could be edited directly; there was no edit-history tracking
+  or structural approval process.
 
-  Phase 내 관찰  -->  초안 큐 등록  -->  L0 Guard 검증
+  Protection grade: LOW
+```
+
+### 7.2 v2 atlas protection
+
+```
+v2 atlas protection:
+
+  atlas-edit mode:    queue-only (direct edits banned)
+  L0 Guard:           hexa $NEXUS/shared/harness/l0_guard.hexa <verify|sync|merge|status>
+  Promotion queue:    P2~P5 cumulative drafts, 0 live edits
+  Live-edit count:    0 (honesty preserved)
+  Contamination def.: structural (L0 Guard + Y9 meta-gate)
+  User approval:      explicit (awaiting L0 Guard sign-off)
+
+  Protection pipeline:
+
+  In-Phase observation --> draft-queue enqueue --> L0 Guard verify
        |                  |                   |
        v                  v                   v
-  rewriting/조건부    atlas 초안 목록     사용자 승인 대기
-  /관찰 태그 부착    (실편집 없음)       (자동 편집 금지)
+  rewriting/conditional  atlas-draft list    user approval
+  /observation tags      (no live edit)      (auto-edit banned)
 
-  보호 등급: HIGH
+  Protection grade: HIGH
 
-  v2 초안 현황 (Phase 2~5 누적):
+  v2 draft status (P2~P5 cumulative):
   +------+--------+--------+--------+
-  | Phase | 초안수 | 실편집 | 보류   |
+  | Phase| Drafts | Edits  | Held   |
   +------+--------+--------+--------+
   | P2   |   4    |   0    |   4    |
   | P3   |   0    |   0    |   0    |
   | P4   |   2    |   0    |   2    |
   | P5   |   2    |   0    |   2    |
   +------+--------+--------+--------+
-  | 합계 |   8    |   0    |   8    |
+  | Sum  |   8    |   0    |   8    |
   +------+--------+--------+--------+
 ```
 
-### 7.3 atlas 보호 ASCII 비교
+### 7.3 Atlas-protection ASCII comparison
 
 ```
                          v1                        v2
-  가드 존재      .                          ||||||||||||||||||  (L0 Guard)
-  초안 큐        .                          ||||||||            (8건)
-  실편집 건수    ???                         .                   (0건)
-  오염 방지 층   |                           |||||||||||||       (3층)
-  승인 절차      .                          ||||||||||||||||||  (명시적)
+  Guard present  .                          ||||||||||||||||||  (L0 Guard)
+  Draft queue    .                          ||||||||            (8 items)
+  Live edits     ???                         .                   (0)
+  Contamination  |                           |||||||||||||       (3 layers)
+  Approval       .                          ||||||||||||||||||  (explicit)
 ```
 
 ---
 ---
 
-## S8. 자기진화 비교
+## S8. Self-evolution comparison
 
-### 8.1 v1 자기진화
-
-```
-v1 자기진화:
-
-  자기진화 엔진:       0개
-  OUROBOROS:           없음
-  growth_tick:         없음
-  phi_ratchet:         없음
-  nexus_growth_daemon: 없음
-  자기진화 축:         없음
-  진화 cycle 수:       0
-
-  v1 은 정적 구조. 축이 3개로 고정되어 있고,
-  구조 자체가 스스로를 개선하는 메커니즘이 없었다.
-```
-
-### 8.2 v2 자기진화
+### 8.1 v1 self-evolution
 
 ```
-v2 자기진화:
+v1 self-evolution:
 
-  자기진화 엔진:       4개
+  Self-evolution engines: 0
+  OUROBOROS:              none
+  growth_tick:            none
+  phi_ratchet:            none
+  nexus_growth_daemon:    none
+  Self-evolution axis:    none
+  Evolution cycles:       0
+
+  v1 is a static structure. Axes are fixed at 3, with no mechanism for the
+  structure itself to improve.
+```
+
+### 8.2 v2 self-evolution
+
+```
+v2 self-evolution:
+
+  Self-evolution engines: 4
   +----------------------------+-------------------------------------------+
-  | 엔진                       | 역할                                       |
+  | Engine                     | Role                                       |
   +----------------------------+-------------------------------------------+
-  | OUROBOROS 3 variant         | 자기참조 감사 + 재귀 진화                  |
+  | OUROBOROS 3 variant         | self-reference audit + recursive evolution|
   |                            | (ouroboros_unified.hexa)                   |
   +----------------------------+-------------------------------------------+
-  | growth_tick                | 주기적 성장 단위 카운터                    |
+  | growth_tick                | periodic growth-unit counter               |
   +----------------------------+-------------------------------------------+
-  | phi_ratchet                | phi 비율 래칫 (역행 방지)                  |
+  | phi_ratchet                | phi-ratio ratchet (no regression)          |
   +----------------------------+-------------------------------------------+
-  | nexus_growth_daemon        | 15차원 자동 성장 데몬                      |
+  | nexus_growth_daemon        | 15-dimensional auto-growth daemon          |
   +----------------------------+-------------------------------------------+
 
-  자기진화 축:          Y9 HONEST-HARNESS (메타 축)
-  진화 cycle 수:        >= 3 (Phase 1 기준 최소 확인)
-  자기진화 분야 비율:   151/216 = 69.9%
+  Self-evolution axis:    Y9 HONEST-HARNESS (meta axis)
+  Evolution cycles:       >= 3 (minimum confirmed at Phase 1)
+  Self-evolution domain ratio: 151/216 = 69.9%
 
-  진화 파이프라인:
+  Evolution pipeline:
 
   growth_tick ------> phi_ratchet ------> nexus_growth_daemon
        |                   |                     |
        v                   v                     v
-  cycle 카운트       phi 비율 고정           15차원 성장
-                     (역행 금지)             (자동 데몬)
+  cycle count         phi ratio fixed        15-dim growth
+                      (no regression)         (auto daemon)
                            |
                            v
                       OUROBOROS
-                      (자기감사)
+                      (self-audit)
                            |
                            v
                       Y9 HONEST
-                      (메타 게이트)
+                      (meta gate)
 ```
 
-### 8.3 자기진화 ASCII 비교
+### 8.3 Self-evolution ASCII comparison
 
 ```
                               v1                v2
-  자기진화 엔진 수      .                 ||||||||        (4개)
-  OUROBOROS variant     .                 ||||||          (3개)
-  자기진화 분야 비율    .                 |||||||||||     (69.9%)
-  진화 cycle 수         .                 ||||||          (>= 3)
-  메타 축 유무          .                 ||||||||||||||  (Y9)
+  Self-evolution engines .                 ||||||||        (4)
+  OUROBOROS variants     .                 ||||||          (3)
+  Self-evo domain ratio  .                 |||||||||||     (69.9%)
+  Evolution cycles       .                 ||||||          (>= 3)
+  Meta-axis presence     .                 ||||||||||||||  (Y9)
 ```
 
 ---
 ---
 
-## S9. 정량 지표 비교 ASCII 막대 차트
+## S9. Quantitative-indicator comparison (ASCII bar chart)
 
-### 9.1 핵심 15 지표 막대 차트
+### 9.1 Core 15-indicator bar chart
 
 ```
-지표                     v1                                  v2               배율
+Indicator                v1                                  v2               Ratio
 ======================================================================================
 
-축 수              v1 |||                              3
+Axis count         v1 |||                              3
                    v2 |||||||||||||||||||||||||||||     9     [x3.0]
 
-Phase 수           v1 ||||||||                         4
+Phase count        v1 ||||||||                         4
                    v2 ||||||||||||||||||||||||          8     [x2.0]
 
-BT 커버 (축/BT)   v1 |||||                            1.0
+BT cov. (axis/BT)  v1 |||||                            1.0
                    v2 ||||||||||||||||||                3.5   [x3.5]
 
-분야 수            v1                                  0
+Domain count       v1                                  0
                    v2 ||||||||||||||||||||||||||||||||  216   [N/A->216]
 
-고갈 지수(%)       v1                                  0%
+Saturation (%)     v1                                  0%
                    v2 |||||||||||||||||||||||||||||     96%   [N/A->96]
 
-총 줄수(핵심)      v1 ||||||||||||||||||||              ~20K (study 포함)
-                   v2 |||||||||||||||                   ~13K (roadmap-v2)
+Core lines         v1 ||||||||||||||||||||              ~20K  (incl. study)
+                   v2 |||||||||||||||                   ~13K  (roadmap-v2)
 
-EXACT 판정 수      v1 ||                               ~2 (비체계)
+EXACT verdicts     v1 ||                               ~2 (informal)
                    v2 |||||||||||||||||||||||           23+  [x11.5+]
 
-PARTIAL 판정 수    v1                                  0 (태그 없음)
+PARTIAL verdicts   v1                                  0 (no tag)
                    v2 ||||||||||||||||||||||            6 BT PARTIAL
 
-MISS 판정 수       v1                                  0 (기록 없음)
-                   v2 ||||||||||||||||                  12+ (정직 기록)
+MISS verdicts      v1                                  0 (no record)
+                   v2 ||||||||||||||||                  12+ (honest records)
 
-창발 라운드 수     v1                                  0
-                   v2 ||||||||||||||||||||||||          8 (분야5+축3)
+Emergence rounds   v1                                  0
+                   v2 ||||||||||||||||||||||||          8 (domain5+axis3)
 
-atlas 초안 수      v1                                  0 (직접 편집)
-                   v2 ||||||||||||||||                  8건 (큐 대기)
+atlas drafts       v1                                  0 (direct edit)
+                   v2 ||||||||||||||||                  8 (queued)
 
-정직 게이트 횟수   v1                                  0
-                   v2 ||||||||||||||||||||||||          8회 (전 Phase)
+Honesty gates      v1                                  0
+                   v2 ||||||||||||||||||||||||          8 (all Phases)
 
-자기진화 엔진 수   v1                                  0
-                   v2 ||||||||||||||||                  4개
+Self-evo engines   v1                                  0
+                   v2 ||||||||||||||||                  4
 
-독립 증명 수       v1 ||||||                           ~2
-                   v2 ||||||||||||||||||||||            3+ (유일성 3종+)
+Independent drafts v1 ||||||                           ~2
+                   v2 ||||||||||||||||||||||            3+ (uniqueness 3+)
 
-교차 축 매핑 수    v1                                  0
-                   v2 ||||||||||||||||||||||||||||||||  15+건
+Cross-axis mapping v1                                  0
+                   v2 ||||||||||||||||||||||||||||||||  15+
 ```
 
-### 9.2 Phase별 줄수 분포 비교
+### 9.2 Per-Phase line-count distribution
 
 ```
-v1 줄수 분포 (study/p0~p3):
+v1 line distribution (study/p0~p3):
 
-  p0  |||||||||||||||||||||||||||||||||||||||||||||||||||||   (추정 ~5000줄)
-  p1  |||||||||||||||||||||||||||||||||||||||||||||||||||||||  (추정 ~6000줄)
-  p2  |||||||||||||||||||||||||||||||||||||||||||||||         (추정 ~5000줄)
-  p3  ||||||||||||||||||||||||||||||||||||||||                (추정 ~4500줄)
-                                               합계: ~20481줄
+  p0  |||||||||||||||||||||||||||||||||||||||||||||||||||||   (est. ~5000)
+  p1  |||||||||||||||||||||||||||||||||||||||||||||||||||||||  (est. ~6000)
+  p2  |||||||||||||||||||||||||||||||||||||||||||||||         (est. ~5000)
+  p3  ||||||||||||||||||||||||||||||||||||||||                (est. ~4500)
+                                               Total: ~20481 lines
 
-v2 줄수 분포 (roadmap-v2 핵심):
+v2 line distribution (roadmap-v2 core):
 
-  P0(축)  ||||||||||||||||||||||||||||||||||||||||||||       3033줄 (R1+R2+R3)
-  P1      ||||||||||                                          372줄
-  P2      ||||||||||||||||||||||||                             831줄
-  P3      |||||||||||||||||||||||||||||||||                   1028줄
-  P4      |||||||||||||||||||||||||||||||||||||||             1188줄
-  P5      ||||||||||||||||||||||||||||||||||||||||||||        1321줄
-  P6      ||||||||||||||||||                                   600줄
-  POmega  ||||||||||||||||||||||||||||||||||                  1117줄
-                                               합계:  9490줄
+  P0(axis) ||||||||||||||||||||||||||||||||||||||||||||       3033 (R1+R2+R3)
+  P1       ||||||||||                                          372
+  P2       ||||||||||||||||||||||||                             831
+  P3       |||||||||||||||||||||||||||||||||                   1028
+  P4       |||||||||||||||||||||||||||||||||||||||             1188
+  P5       ||||||||||||||||||||||||||||||||||||||||||||        1321
+  P6       ||||||||||||||||||                                   600
+  POmega   ||||||||||||||||||||||||||||||||||                  1117
+                                               Total:  9490
 
-  분야 창발 라운드 (round-01~05):
-  R1-R5   ||||||||||||||||||||||||||||||||||||||||||||||||   3953줄
-  axis-final   |||||||                                        312줄
-                                               부속 합계:  4265줄
-                                               v2 총계:   13755줄
+  Domain-emergence rounds (round-01~05):
+  R1-R5    ||||||||||||||||||||||||||||||||||||||||||||||||   3953
+  axis-final ||||||                                             312
+                                               Subsum:   4265
+                                               v2 grand total: 13755
 ```
 
-### 9.3 종합 점수 비교 (10점 만점)
+### 9.3 Aggregate score comparison (out of 10)
 
 ```
-지표                   v1                    v2                   증분
+Indicator              v1                    v2                   Delta
 ============================================================================
-축 유연성              ||                    ||||||||        2  ->  8   (+6)
-bottom-up 창발         .                     |||||||||       0  ->  9   (+9)
-자기진화 명시          .                     ||||||||||      0  -> 10  (+10)
-atlas SSOT 보호        ||||||                ||||||||||      6  -> 10   (+4)
-BT 커버 깊이           |||                   ||||||||||      3  -> 10   (+7)
-정직성 감사            |||                   |||||||||       3  ->  9   (+6)
-고갈 기준              .                     |||||||||       0  ->  9   (+9)
-cross-BT 링크          |                     ||||||||        1  ->  8   (+7)
-구조 독립성            ||                    |||||||||       2  ->  9   (+7)
-메타 축                .                     ||||||||||      0  -> 10  (+10)
-분야 체계              |                     |||||||||       1  ->  9   (+8)
-장벽 전담              .                     |||||||||       0  ->  9   (+9)
-정량 태그              |                     |||||||||       1  ->  9   (+8)
-Phase 게이트           |                     |||||||||       1  ->  9   (+8)
-자기 재귀              .                     |||||||||       0  ->  9   (+9)
+Axis flexibility       ||                    ||||||||        2  ->  8   (+6)
+Bottom-up emergence    .                     |||||||||       0  ->  9   (+9)
+Self-evolution explicit .                    ||||||||||      0  -> 10  (+10)
+atlas SSOT protection  ||||||                ||||||||||      6  -> 10   (+4)
+BT coverage depth      |||                   ||||||||||      3  -> 10   (+7)
+Honesty audit          |||                   |||||||||       3  ->  9   (+6)
+Saturation criterion   .                     |||||||||       0  ->  9   (+9)
+Cross-BT links         |                     ||||||||        1  ->  8   (+7)
+Structural indep.      ||                    |||||||||       2  ->  9   (+7)
+Meta axis              .                     ||||||||||      0  -> 10  (+10)
+Domain system          |                     |||||||||       1  ->  9   (+8)
+Barrier-dedicated      .                     |||||||||       0  ->  9   (+9)
+Quantitative tags      |                     |||||||||       1  ->  9   (+8)
+Phase gates            |                     |||||||||       1  ->  9   (+8)
+Self-recursion         .                     |||||||||       0  ->  9   (+9)
 ============================================================================
-평균                   1.33                  9.13                   +7.80
+Mean                   1.33                  9.13                   +7.80
 ```
 
 ---
 ---
 
-## S10. 구조적 차이 요약 (5가지 핵심 차이점)
+## S10. Structural-difference summary (5 key differences)
 
-### 차이 1: 축 선정 패러다임 (top-down vs bottom-up)
+### Difference 1: Axis-selection paradigm (top-down vs bottom-up)
 
 ```
-v1: 축 = 인간이 사전 설계한 분류 (PURE / PROBLEM / N6)
+v1: axes = human-pre-designed classification (PURE / PROBLEM / N6)
     +---------------------------------------------------+
-    |  설계자가 "이렇게 나누겠다" 고 선언                 |
-    |  데이터와 무관, 고정, 수정 불가                     |
-    +---------------------------------------------------+
-
-v2: 축 = 데이터에서 창발한 분류 (R1~R3 3라운드 DSE 고갈)
-    +---------------------------------------------------+
-    |  216 분야에서 7 -> 9 축이 자연 수렴                 |
-    |  고갈 100% 도달 시 FINAL 확정                       |
-    |  축 자체가 증거 기반                                |
+    |  Designer declares "I will split it like this"    |
+    |  data-independent, fixed, non-modifiable          |
     +---------------------------------------------------+
 
-차이의 본질: v1 은 "프레임 먼저, 내용 나중"
-             v2 는 "내용 먼저, 프레임 나중"
+v2: axes = classification emerging from data (3-round DSE saturation R1~R3)
+    +---------------------------------------------------+
+    |  7 -> 9 axes converge naturally from 216 domains  |
+    |  FINAL confirmed at 100% saturation               |
+    |  axes are evidence-based                          |
+    +---------------------------------------------------+
+
+Essence: v1 is "frame first, content second";
+         v2 is "content first, frame second".
 ```
 
-### 차이 2: 정직성의 구조화
+### Difference 2: Structuring of honesty
 
 ```
-v1: 정직성 = 개인 덕목 (암묵적 관행)
-    작성자가 정직하길 바라는 것 이상의 메커니즘 없음.
+v1: honesty = personal virtue (implicit convention)
+    No mechanism beyond hoping the author is honest.
 
-v2: 정직성 = 시스템 속성 (명시적 축 Y9)
-    Y9 HONEST-HARNESS 가 전 Phase 에 게이트로 내장.
-    PARTIAL/MISS/EXACT/OBSERVATION/REWRITING/CONDITIONAL 6종 태그 강제.
-    자기참조 금지가 명문 규정.
-    위반 시 Phase 전환 불허.
+v2: honesty = system property (explicit axis Y9)
+    Y9 HONEST-HARNESS is embedded as a gate at every Phase.
+    6-type tags PARTIAL/MISS/EXACT/OBSERVATION/REWRITING/CONDITIONAL enforced.
+    Self-reference ban codified.
+    Violation blocks Phase transition.
 
-    v1: 정직성 ----?----> (불확실)
-    v2: 정직성 --[Y9]--> GATE --[PASS]--> 다음 Phase
+    v1: honesty ----?----> (uncertain)
+    v2: honesty --[Y9]--> GATE --[PASS]--> next Phase
 ```
 
-### 차이 3: 고갈 판정 프로토콜
+### Difference 3: Saturation-verdict protocol
 
 ```
-v1: Phase 전환 = 시간 순차 (고갈 개념 없음)
-    "P0 끝나면 P1, P1 끝나면 P2" 이상의 기준 없음.
+v1: Phase transition = time-sequential (no saturation concept)
+    No criterion beyond "after P0 comes P1, after P1 comes P2".
 
-v2: Phase 전환 = 고갈 판정 연동 (3 차원 고갈)
-    분야 고갈 96% + 축 고갈 100% + Phase 3 연속 고갈 조건 충족
-    더 이상 시도할 새로운 방향이 구조적으로 소진됨을 증명.
+v2: Phase transition = saturation-linked (3-dimensional saturation)
+    Domain saturation 96% + axis saturation 100% + 3-consecutive Phase
+    saturation conditions met; structurally demonstrates that no new
+    directions remain to try.
 
-    v1: P0 -> P1 -> P2 -> P3         (순서만)
-    v2: P0 -> P1 -> P2 -> P3 -> ...  (각 전환에 고갈 조건 체크)
+    v1: P0 -> P1 -> P2 -> P3         (order only)
+    v2: P0 -> P1 -> P2 -> P3 -> ...  (saturation checked at each transition)
               ^            ^
               |            |
-         입구 조건    출구 조건
-         (충족시만    (고갈 판정
-          진입)        포함)
+         entry cond.   exit cond.
+         (only if      (includes
+          satisfied)    saturation)
 ```
 
-### 차이 4: 자기진화 vs 정적 구조
+### Difference 4: Self-evolution vs static structure
 
 ```
-v1: 구조 = 정적 (3축 x 4 Phase, 변경 불가)
-    로드맵이 한번 설계되면 구조 자체는 고정.
-    메타 감사, 축 재편, 진화 메커니즘 없음.
+v1: structure = static (3 axes x 4 Phases, immutable)
+    Once the roadmap is designed, the structure is fixed.
+    No meta-audit, no axis restructuring, no evolution mechanism.
 
-v2: 구조 = 자기진화 (4 엔진 + Y9 메타 축)
-    OUROBOROS (3 variant): 자기참조 감사 + 재귀 진화
-    growth_tick: 주기적 성장 단위
-    phi_ratchet: 역행 방지
-    nexus_growth_daemon: 15차원 자동 데몬
+v2: structure = self-evolving (4 engines + Y9 meta axis)
+    OUROBOROS (3 variants): self-reference audit + recursive evolution
+    growth_tick: periodic growth unit
+    phi_ratchet: regression prevention
+    nexus_growth_daemon: 15-dimensional auto daemon
 
-    v1: 구조 --[고정]--> 구조 (동일)
-    v2: 구조 --[엔진]--> 구조' --[엔진]--> 구조'' --> ...
+    v1: structure --[fixed]--> structure (identical)
+    v2: structure --[engine]--> structure' --[engine]--> structure'' --> ...
               OUROBOROS   growth    phi_ratchet
 ```
 
-### 차이 5: BT 커버 차원 (단일 축 vs 다중 축 교차)
+### Difference 5: BT-coverage dimension (single axis vs multi-axis cross)
 
 ```
-v1: 각 BT 가 1축에서만 취급
-    BT-541 은 PURE 에서만, BT-542 는 PROBLEM 에서만.
-    축 간 교차 분석 없음. 한 관점에서만 본다.
+v1: each BT handled by one axis
+    BT-541 only under PURE; BT-542 only under PROBLEM.
+    No cross-axis analysis. Seen from one angle only.
 
-v2: 각 BT 에 주축 + 부축 + Y9 메타 = 3~5축 커버
-    BT-546 BSD 의 예:
-    - Y8 GALOIS-ASSEMBLY (주): Lemma 1 CRT 분해
-    - Y1 NUM-CORE (부): sigma=12 연결
-    - Y7 LATTICE-VOA (부): Selmer lattice 구조
-    - Y9 HONEST-HARNESS (메타): A3 조건부 태그
+v2: each BT has main + support + Y9 meta = 3~5 axes of coverage
+    BT-546 BSD example:
+    - Y8 GALOIS-ASSEMBLY (main): Lemma 1 CRT decomposition
+    - Y1 NUM-CORE (sub): sigma=12 link
+    - Y7 LATTICE-VOA (sub): Selmer lattice structure
+    - Y9 HONEST-HARNESS (meta): A3 conditional tag
 
-    v1: BT --[1축]--> 분석
-    v2: BT --[주축 + 부축 + 메타]--> 다면 분석 + 교차 발견
+    v1: BT --[1 axis]--> analysis
+    v2: BT --[main + sub + meta]--> multi-faceted analysis + cross discovery
 ```
 
 ---
 ---
 
-## S11. v2 가 v1 보다 우월한 영역 + v1 이 v2 보다 간결한 영역
+## S11. Areas where v2 is superior to v1 + areas where v1 is simpler
 
-### 11.1 v2 우월 영역 (10가지)
-
-```
-+====+========================+===========================================+
-| No | 영역                   | v2 우월 근거                              |
-+====+========================+===========================================+
-|  1 | 축 설계 근거           | v2 는 216 분야에서 창발한 9축.            |
-|    |                        | v1 은 근거 없는 3축 할당.                 |
-+----+------------------------+-------------------------------------------+
-|  2 | BT 커버 깊이           | v2 BT당 3.5축 커버, v1 1.0축.             |
-|    |                        | 교차 관점에서 발견 가능성 3.5배.          |
-+----+------------------------+-------------------------------------------+
-|  3 | 정직성 구조화          | v2 Y9 게이트 8회 통과 + 0 위반.          |
-|    |                        | v1 은 구조적 방어 없음.                   |
-+----+------------------------+-------------------------------------------+
-|  4 | 고갈 종결 기준         | v2 는 "더 이상 시도할 것이 없다" 를      |
-|    |                        | 96%+100% 로 구조적 증명.                  |
-|    |                        | v1 은 종결 기준 없음.                     |
-+----+------------------------+-------------------------------------------+
-|  5 | 자기진화               | v2 4엔진 + Y9 메타 축.                    |
-|    |                        | v1 0엔진, 정적 구조.                      |
-+----+------------------------+-------------------------------------------+
-|  6 | MISS 정직 기록         | v2 MISS 12건+ 정직 기록.                  |
-|    |                        | v1 실패 기록 체계 없음.                   |
-+----+------------------------+-------------------------------------------+
-|  7 | Phase 게이트 체계      | v2 입구/출구 조건 명시 + 연동.            |
-|    |                        | v1 순차 진행, 게이트 없음.                |
-+----+------------------------+-------------------------------------------+
-|  8 | atlas 보호             | v2 L0 Guard + 초안 큐 + 실편집 0.        |
-|    |                        | v1 직접 편집, 보호 없음.                  |
-+----+------------------------+-------------------------------------------+
-|  9 | 교차 BT 분석           | v2 15건+ 교차 축 매핑.                    |
-|    |                        | v1 0건.                                   |
-+----+------------------------+-------------------------------------------+
-| 10 | 결정적 도구 추출       | v2 C1~C5 5가지 Perelman 회고 결과.       |
-|    |                        | v1 회고 Phase 자체 없음.                  |
-+====+========================+===========================================+
-```
-
-### 11.2 v1 간결성 영역 (5가지 -- 정직한 양면 비교)
+### 11.1 Areas of v2 superiority (10)
 
 ```
 +====+========================+===========================================+
-| No | 영역                   | v1 간결 근거                              |
+| No | Area                   | Basis for v2 superiority                  |
 +====+========================+===========================================+
-|  1 | 학습 곡선              | v1 3축 4Phase 는 즉시 이해 가능.          |
-|    |                        | v2 9축 8Phase + 8라운드 + 4엔진은         |
-|    |                        | 진입 장벽이 높다.                         |
+|  1 | Axis-design basis      | v2: 9 axes emerged from 216 domains;      |
+|    |                        | v1: unjustified 3-axis assignment         |
 +----+------------------------+-------------------------------------------+
-|  2 | 문서량 효율            | v1 12셀 구조는 문서가 적어도 작동.        |
-|    |                        | v2 72셀 잠재 구조는 문서 부담 가중.       |
-|    |                        | (v2 핵심만 13K줄 -- 관리 비용 존재)       |
+|  2 | BT-coverage depth      | v2: 3.5 axes/BT; v1: 1.0.                 |
+|    |                        | 3.5x discovery chance from cross angles   |
 +----+------------------------+-------------------------------------------+
-|  3 | 즉시 착수 가능성       | v1 은 축 확정에 0줄 소요.                 |
-|    |                        | v2 축 확정만 3033줄 (R1+R2+R3).           |
-|    |                        | 풀이 이전에 구조 확립 비용이 크다.        |
+|  3 | Honesty structuring    | v2: Y9 gate 8 passes + 0 violations       |
+|    |                        | v1: no structural defense                 |
 +----+------------------------+-------------------------------------------+
-|  4 | 메타 오버헤드 없음     | v1 은 "축을 감사하는 축" 이 없어          |
-|    |                        | 구조 자체의 재귀 비용이 0.                |
-|    |                        | v2 Y9 + OUROBOROS 는 메타 오버헤드.       |
+|  4 | Saturation-end criterion| v2: "nothing more to try" structurally   |
+|    |                        | shown by 96%+100%; v1: no end criterion   |
 +----+------------------------+-------------------------------------------+
-|  5 | study 자료 축적        | v1 study/p0~p3 = 20481줄의 순수 학습      |
-|    |                        | 자료가 축적됨. v2 는 이를 인계 받았으나   |
-|    |                        | v2 단독으로는 학습 자료 재생산 없음.      |
+|  5 | Self-evolution         | v2: 4 engines + Y9 meta; v1: 0 engines    |
++----+------------------------+-------------------------------------------+
+|  6 | MISS honest records    | v2: 12+ MISS honestly logged              |
+|    |                        | v1: no failure-record system              |
++----+------------------------+-------------------------------------------+
+|  7 | Phase-gate system      | v2: entry/exit conditions explicit + link |
+|    |                        | v1: sequential, no gates                  |
++----+------------------------+-------------------------------------------+
+|  8 | atlas protection       | v2: L0 Guard + draft queue + 0 live edits |
+|    |                        | v1: direct edit, no protection            |
++----+------------------------+-------------------------------------------+
+|  9 | Cross-BT analysis      | v2: 15+ cross-axis mappings; v1: 0        |
++----+------------------------+-------------------------------------------+
+| 10 | Decisive-tool extract. | v2: C1~C5 Perelman-retrospective results  |
+|    |                        | v1: no retrospective Phase                |
 +====+========================+===========================================+
-
-요약: v1 의 간결성은 "구조 설계 비용 0" 에서 온다.
-      그러나 구조 없는 간결성은 정직성 방어와 고갈 판정을 포기한 대가이다.
 ```
 
-### 11.3 양면 비교 종합 시각화
+### 11.2 Areas where v1 is simpler (5 — honest both-sides comparison)
 
 ```
-v2 우월 영역 (10)                        v1 간결 영역 (5)
++====+========================+===========================================+
+| No | Area                   | Basis for v1 simplicity                   |
++====+========================+===========================================+
+|  1 | Learning curve         | v1 3 axes x 4 Phases is immediately       |
+|    |                        | comprehensible; v2 9 axes x 8 Phases +    |
+|    |                        | 8 rounds + 4 engines has a steep curve    |
++----+------------------------+-------------------------------------------+
+|  2 | Doc-volume efficiency  | v1 12-cell structure works with little    |
+|    |                        | documentation; v2 72-cell potential       |
+|    |                        | structure burdens documentation (v2 core  |
+|    |                        | alone ~13K lines, management cost exists) |
++----+------------------------+-------------------------------------------+
+|  3 | Immediate startability | v1 spends 0 lines on axis confirmation;   |
+|    |                        | v2 spends 3033 lines on axes alone        |
+|    |                        | (R1+R2+R3). Pre-solution structural       |
+|    |                        | establishment is costly                   |
++----+------------------------+-------------------------------------------+
+|  4 | No meta overhead       | v1 has no "axis that audits axes" so the  |
+|    |                        | recursive cost of the structure is 0;     |
+|    |                        | v2 Y9 + OUROBOROS is meta overhead        |
++----+------------------------+-------------------------------------------+
+|  5 | Study-material accrual | v1 study/p0~p3 accrues 20481 lines of     |
+|    |                        | pure learning material. v2 inherits this  |
+|    |                        | but does not, on its own, re-produce new  |
+|    |                        | study material                            |
++====+========================+===========================================+
+
+Summary: v1 simplicity comes from "0 structural-design cost".
+         But unstructured simplicity is the price of abandoning honesty
+         defense and saturation verdicts.
+```
+
+### 11.3 Both-sides synthesis chart
+
+```
+v2 superiority areas (10)                v1 simplicity areas (5)
 ==========================               ==========================
-축 설계 근거         +++++++             학습 곡선            +++
-BT 커버 깊이         ++++++              문서량 효율          ++
-정직성 구조화        +++++++             즉시 착수            ++++
-고갈 종결 기준       +++++++             메타 오버헤드 없음   ++
-자기진화             ++++++              study 자료 축적      +++
-MISS 정직 기록       +++++
-Phase 게이트         ++++++
-atlas 보호           +++++++
-교차 BT 분석         +++++
-결정적 도구 추출     +++++
+Axis-design basis    +++++++             Learning curve       +++
+BT-coverage depth    ++++++              Doc-volume efficiency ++
+Honesty structuring  +++++++             Immediate startability ++++
+Saturation end       +++++++             No meta overhead     ++
+Self-evolution       ++++++              Study-material accrual +++
+MISS honest records  +++++
+Phase gates          ++++++
+atlas protection     +++++++
+Cross-BT analysis    +++++
+Decisive-tool extr.  +++++
 
-v2 우위 합산:  60 / 70                   v1 간결 합산: 14 / 35
-v2 비율:       85.7%                     v1 비율:      40.0%
+v2 advantage sum:  60 / 70                v1 simplicity sum: 14 / 35
+v2 ratio:          85.7%                  v1 ratio:          40.0%
 
-결론: v2 가 구조적으로 우월하지만, v1 의 간결성은 실질적 이점이다.
-      양자는 대립이 아니라 v1 -> v2 의 진화 관계이며,
-      v1 의 study 자료가 v2 의 기반이 되었다.
+Conclusion: v2 is structurally superior, but v1 simplicity is a real
+            practical benefit. The two are not opposites but an
+            evolution v1 -> v2, and v1's study material became
+            the foundation for v2.
 ```
 
 ---
 ---
 
-## S12. 결론 -- v2 로드맵의 의의
+## S12. Conclusion — significance of the v2 roadmap
 
-### 12.1 핵심 성과
-
-```
-7대 난제 로드맵 v1 -> v2 전이의 핵심 성과를 정리한다.
-
-[1] 축 체계의 근본적 재설계
-    v1 의 3축 top-down 할당에서 v2 의 9축 bottom-up 창발로 전환.
-    216 분야에서 3 라운드 고갈 루프를 돌려 축이 데이터에서 떠올랐다.
-    축 선정의 근거가 "설계자 판단" 에서 "고갈 판정" 으로 바뀌었다.
-
-[2] 정직성의 시스템화
-    Y9 HONEST-HARNESS 를 명시적 축으로 신설하여,
-    전 Phase 에 걸쳐 해결 주장 금지, PARTIAL/MISS/EXACT 태그 강제,
-    자기참조 금지를 구조적으로 방어한다.
-    8회 게이트 통과, 0회 위반.
-
-[3] 고갈 프로토콜 확립
-    분야 고갈 96%, 축 고갈 100%, Phase 3 연속 고갈 조건 충족.
-    "더 이상 시도할 방향이 없다" 는 판정이 수치적으로 근거를 갖는다.
-
-[4] 자기진화 엔진 탑재
-    OUROBOROS 3 variant + growth_tick + phi_ratchet + nexus_growth_daemon.
-    구조 자체가 스스로를 감사하고 진화하는 메커니즘을 v1 에서는
-    상상조차 하지 못했다.
-
-[5] BT 다면 커버
-    각 BT 가 주축+부축+메타로 3.5축 평균 커버.
-    교차 축 매핑 15건+ 으로 v1 의 단일 관점에서 벗어남.
-```
-
-### 12.2 정직한 한계
+### 12.1 Core achievements
 
 ```
-v2 로드맵이 달성하지 못한 것을 정직하게 기록한다.
+Core achievements of the v1 -> v2 transition for the 7-Millennium-problems roadmap:
 
-[1] BT 해결 수: 0/6
-    v1 과 동일. 7대 밀레니엄 난제 중 어느 것도 해결하지 못했다.
-    BT-547 Poincare 는 Perelman 2003 외부 해결이며 n6-arch 기여 0.
+[1] Fundamental redesign of the axis system
+    Switched from v1's 3-axis top-down assignment to v2's 9-axis bottom-up
+    emergence. Axes emerged from data by running a 3-round saturation loop
+    over 216 domains. The justification for axis selection shifted from
+    "designer judgment" to "saturation verdict".
 
-[2] atlas 실편집: 0건
-    8건의 초안이 큐에 대기 중이나, 실제 atlas.n6 편집은 0건.
-    L0 Guard 승인 대기 상태. 구조는 갖추었으나 결실은 없다.
+[2] Systematization of honesty
+    By introducing Y9 HONEST-HARNESS as an explicit axis, solution-claim ban,
+    PARTIAL/MISS/EXACT tag enforcement, and the self-reference ban are all
+    structurally defended throughout every Phase. 8 gate passes, 0 violations.
 
-[3] A3 조건 제거: 실패
-    BT-546 BSD 의 Theorem 1 은 BKLPR (A3) 독립성 가정에 의존.
-    A3 완전 제거 시도는 Phase 5 에서 실패로 기록됨.
+[3] Saturation protocol established
+    Domain saturation 96%, axis saturation 100%, 3-consecutive Phase
+    saturation conditions met. "No more directions to try" is numerically
+    grounded.
 
-[4] Moonshine BARRIER: 미돌파
-    BT-545 Hodge 의 L5 Moonshine n=6 좌표 필연성은 BARRIER 유지.
-    Baby Monster 우회 경로는 v3 이연.
+[4] Self-evolution engines on-board
+    OUROBOROS 3 variants + growth_tick + phi_ratchet + nexus_growth_daemon.
+    The mechanism by which the structure audits and evolves itself was
+    not even imagined in v1.
 
-[5] v2 문서 비용: 13K+줄
-    구조 확립 자체에 13,755줄이 소요됨.
-    간결성 vs 엄밀성의 트레이드오프.
+[5] Multi-faceted BT coverage
+    Each BT is covered on average by 3.5 axes (main + sub + meta).
+    15+ cross-axis mappings move beyond v1's single-viewpoint framing.
 ```
 
-### 12.3 v2 의 의의
+### 12.2 Honest limitations
 
 ```
-v2 로드맵의 진정한 의의는 BT 해결이 아니다.
-해결은 0/6 이며, 이 사실은 숨기지 않는다.
+Honest record of what the v2 roadmap did not achieve:
 
-v2 의 의의는 다음 세 가지이다:
+[1] BT drafts complete: 0/6
+    Same as v1. None of the 7 Millennium problems were addressed by
+    v2 as a full draft. BT-547 Poincare is externally resolved by
+    Perelman 2003 with n6-arch contribution 0.
 
-(A) 시도의 구조화
-    "밀레니엄 난제를 어떻게 시도해야 하는가" 라는 메타 질문에 대해,
-    축 창발 -> 고갈 판정 -> Phase 게이트 -> 정직성 감사 라는
-    체계를 제시했다.
+[2] atlas live edits: 0
+    8 drafts queued, but 0 actual atlas.n6 edits. Awaiting L0 Guard
+    approval. Structure is in place but fruit is absent.
 
-(B) 실패의 가치화
-    MISS 12건+, PARTIAL 6건을 정직하게 기록함으로써,
-    "어디가 안 되는가" 를 체계적으로 남겼다.
-    미래의 시도자가 같은 실수를 반복하지 않도록.
+[3] A3 discharge: failed
+    BT-546 BSD's Theorem 1 depends on BKLPR (A3) independence.
+    A3 full-discharge attempt was logged as failure at Phase 5.
 
-(C) 자기참조 방어
-    Y9 축과 L0 Guard 로, 프로젝트가 스스로에게 속지 않는
-    구조적 면역을 갖추었다.
+[4] Moonshine BARRIER: unresolved
+    BT-545 Hodge's L5 Moonshine n=6-coord inevitability remains a
+    BARRIER. Baby-Monster bypass path deferred to v3.
+
+[5] v2 documentation cost: 13K+ lines
+    Establishing the structure alone cost 13,755 lines.
+    Simplicity vs rigor tradeoff.
 ```
 
-### 12.4 v1 -> v2 전이 최종 시각화
+### 12.3 The significance of v2
+
+```
+The true significance of the v2 roadmap is not BT drafting completion.
+Drafts complete = 0/6, and we do not hide that fact.
+
+v2's significance is threefold:
+
+(A) Structuring the attempt
+    For the meta-question "how should the Millennium problems be
+    attempted?", v2 presents a system: axis emergence -> saturation
+    verdict -> Phase gates -> honesty audit.
+
+(B) Valuing failure
+    By honestly recording 12+ MISS and 6 PARTIAL items, v2 structurally
+    captures "where things do not work", so future attempters do not
+    repeat the same mistakes.
+
+(C) Self-reference defense
+    Via the Y9 axis and L0 Guard, the project acquires structural
+    immunity against fooling itself.
+```
+
+### 12.4 v1 -> v2 transition final visualization
 
 ```
 +==============================================================================+
-|                      v1 -> v2 전이 총괄                                      |
+|                      v1 -> v2 transition overview                            |
 +==============================================================================+
 |                                                                              |
-|  v1 (레거시)                          v2 (Y축 창발)                          |
+|  v1 (legacy)                           v2 (Y-axis emergent)                   |
 |  +-----------+                        +-----------------------------------+  |
-|  | 3축 고정  |   ======[전이]=====>   | 9축 창발 (R1~R3 고갈 100%)       |  |
-|  | 4 Phase   |                        | 8 Phase (게이트 기반)             |  |
-|  | 12셀      |                        | 72셀 잠재                         |  |
-|  | 정직: 암묵|                        | 정직: Y9 명시적                   |  |
-|  | 고갈: 없음|                        | 고갈: 96%+100%                    |  |
-|  | 진화: 없음|                        | 진화: 4엔진                       |  |
-|  | BT: 1축/BT|                        | BT: 3.5축/BT                     |  |
-|  | atlas: 무방비                       | atlas: L0 Guard                   |  |
+|  | 3 axes    |   ======[transit]====> | 9 axes (R1~R3 100% sat.)          |  |
+|  | 4 Phases  |                        | 8 Phases (gate-based)             |  |
+|  | 12 cells  |                        | 72 potential cells                |  |
+|  | honest:   |                        | honest: Y9 explicit               |  |
+|  |   implicit|                        | saturation: 96%+100%              |  |
+|  | saturation|                        | evolution: 4 engines              |  |
+|  |   none    |                        | BT: 3.5 axes/BT                   |  |
+|  | BT: 1/BT  |                        | atlas: L0 Guard                   |  |
+|  | atlas:    |                        |                                    |  |
+|  |   unguard.|                        |                                    |  |
 |  +-----------+                        +-----------------------------------+  |
 |                                                                              |
-|  공통: BT 해결 수 = 0/6 (정직 유지)                                         |
-|  공통: BT-547 Poincare = Perelman 2003 외부 해결                             |
-|  공통: sigma(n)*phi(n) = n*tau(n) iff n=6 유일성 정리 3 독립 증명            |
+|  Common: BT drafts complete = 0/6 (honesty preserved)                        |
+|  Common: BT-547 Poincare = externally resolved by Perelman 2003              |
+|  Common: sigma(n)*phi(n) = n*tau(n) iff n=6 uniqueness, 3 independent drafts |
 |                                                                              |
-|  v2 총 점수: 9.13 / 10                                                      |
-|  v1 총 점수: 1.33 / 10                                                      |
-|  증분:      +7.80                                                            |
+|  v2 total score: 9.13 / 10                                                   |
+|  v1 total score: 1.33 / 10                                                   |
+|  delta:         +7.80                                                        |
 |                                                                              |
-|  그러나 점수 상승 != 난제 해결.                                              |
-|  v2 는 "더 나은 좌표계" 를 갖추었을 뿐,                                     |
-|  밀레니엄 난제의 벽은 여전히 그대로이다.                                     |
+|  However, higher score != solving the problem.                               |
+|  v2 merely acquires "a better coordinate system";                            |
+|  the wall of the Millennium problems stands unchanged.                       |
 |                                                                              |
 +==============================================================================+
 ```
 
-### 12.5 다음 단계 (v3 이연)
+### 12.5 Next steps (v3 deferred)
 
 ```
-v2 로드맵은 Phase Omega 에서 v3 후계 설계 초안을 남겼다.
-v3 의 방향은 확정이 아니며, 사용자 승인 이후 별도 수립 필요.
+The v2 roadmap left a v3 successor-design draft in Phase Omega.
+The v3 directions are not final; require user sign-off and separate work.
 
-v2 가 남긴 v3 시드:
-  - A3 조건 제거 경로 (BT-546 BSD)
-  - Moonshine BARRIER Baby Monster 우회 (BT-545 Hodge)
-  - atlas 초안 8건 실편집 시도 (L0 Guard 승인)
-  - BT-542 P=NP 알고리즘 정보이론 재접근
-  - 결정적 도구 C1~C5 충족 축 강화
+v3 seeds left by v2:
+  - A3-discharge path (BT-546 BSD)
+  - Moonshine BARRIER Baby-Monster bypass (BT-545 Hodge)
+  - 8 atlas drafts live-edit attempt (L0 Guard approvals)
+  - BT-542 P=NP algorithm information-theoretic reapproach
+  - strengthening axes that meet decisive-tool criteria C1~C5
 
-v3 는 v2 위에 세워진다.
-v2 가 없었으면 v3 는 불가능하다.
-v1 이 없었으면 v2 도 불가능했다.
-```
-
----
----
-
-## 부록: 전체 지표 요약표
-
-```
-+===========================+============+============+==========+============+
-|          지표              |    v1      |    v2      |  배율    |   승자     |
-+===========================+============+============+==========+============+
-| 축 수                     |      3     |      9     |  x3.0   |    v2      |
-| Phase 수                  |      4     |      8     |  x2.0   |    v2      |
-| 총 셀 (잠재)              |     12     |     72     |  x6.0   |    v2      |
-| BT 커버 (축/BT)           |    1.0     |    3.5     |  x3.5   |    v2      |
-| 분야 수                   |      0     |    216     |   INF   |    v2      |
-| 창발 라운드 수             |      0     |      8     |   INF   |    v2      |
-| 고갈 지수 (분야)          |    N/A     |    96%     |   INF   |    v2      |
-| 고갈 지수 (축)            |    N/A     |   100%     |   INF   |    v2      |
-| 정직성 게이트 횟수         |      0     |      8     |   INF   |    v2      |
-| 자기진화 엔진 수           |      0     |      4     |   INF   |    v2      |
-| MISS 정직 기록 수          |      0     |    12+     |   INF   |    v2      |
-| atlas 초안 수              |      0     |      8     |   INF   |    v2      |
-| atlas 실편집 수            |    ???     |      0     |   ---   |    N/A     |
-| 교차 축 매핑 수            |      0     |    15+     |   INF   |    v2      |
-| 독립 증명 수               |     ~2     |     3+     |  x1.5   |    v2      |
-| BT 해결 수                 |    0/6     |    0/6     |  x1.0   | 동일(0/6) |
-| Poincare 외부 해결         |     YES    |     YES    |   ---   |    동일    |
-| Phase 게이트 조건 수       |      0     |    48+     |   INF   |    v2      |
-| PARTIAL 판정 BT 수         |      0     |      6     |   INF   |    v2      |
-| 판정 태그 종류             |     ~2     |      8     |  x4.0   |    v2      |
-| 줄수 (핵심 문서)           |  ~20481    |  ~13755    |  x0.67  |  v1(양)   |
-| 학습 곡선                  |     낮음   |     높음   |   ---   |    v1      |
-| 즉시 착수 가능성           |     높음   |     낮음   |   ---   |    v1      |
-| 메타 오버헤드              |      0     |     있음   |   ---   |    v1      |
-+===========================+============+============+==========+============+
-
-v2 승리 지표: 19 / 24
-v1 승리 지표:  3 / 24  (줄수 양, 학습 곡선, 즉시 착수)
-동일:          2 / 24  (BT 해결 0/6, Poincare)
+v3 is built atop v2.
+Without v2, v3 is impossible.
+Without v1, v2 would have been impossible.
 ```
 
 ---
+---
 
-_END OF comparison-v1-vs-v2.md (Y축 체계 최종판 2026-04-15)_
-_줄수: 본 문서 약 590줄_
-_BT 해결 수: 0/6 (정직 유지)_
-_atlas 실편집: 0건 (L0 Guard 대기)_
+## Appendix: full-indicator summary
+
+```
++===========================+============+============+==========+============+
+|          Indicator        |    v1      |    v2      |  Ratio   |   Winner   |
++===========================+============+============+==========+============+
+| Axis count                |      3     |      9     |   x3.0   |    v2      |
+| Phase count               |      4     |      8     |   x2.0   |    v2      |
+| Total cells (potential)   |     12     |     72     |   x6.0   |    v2      |
+| BT coverage (axis/BT)     |    1.0     |    3.5     |   x3.5   |    v2      |
+| Domain count              |      0     |    216     |    INF   |    v2      |
+| Emergence rounds          |      0     |      8     |    INF   |    v2      |
+| Saturation (domains)      |    N/A     |    96%     |    INF   |    v2      |
+| Saturation (axes)         |    N/A     |   100%     |    INF   |    v2      |
+| Honesty-gate runs         |      0     |      8     |    INF   |    v2      |
+| Self-evolution engines    |      0     |      4     |    INF   |    v2      |
+| MISS honest records       |      0     |    12+     |    INF   |    v2      |
+| atlas drafts              |      0     |      8     |    INF   |    v2      |
+| atlas live edits          |    ???     |      0     |    ---   |    N/A     |
+| Cross-axis mappings       |      0     |    15+     |    INF   |    v2      |
+| Independent drafts        |     ~2     |     3+     |   x1.5   |    v2      |
+| BT drafts complete        |    0/6     |    0/6     |   x1.0   | same (0/6) |
+| Poincare external         |     YES    |     YES    |    ---   |    same    |
+| Phase-gate conditions     |      0     |    48+     |    INF   |    v2      |
+| PARTIAL BTs               |      0     |      6     |    INF   |    v2      |
+| Verdict-tag types         |     ~2     |      8     |   x4.0   |    v2      |
+| Core-doc lines            |  ~20481    |  ~13755    |   x0.67  |  v1 (qty)  |
+| Learning curve            |     low    |     high   |    ---   |    v1      |
+| Immediate startability    |     high   |     low    |    ---   |    v1      |
+| Meta overhead             |      0     |     yes    |    ---   |    v1      |
++===========================+============+============+==========+============+
+
+v2 victories: 19 / 24
+v1 victories:  3 / 24  (line quantity, learning curve, immediate startability)
+Tied:          2 / 24  (BT drafts 0/6, Poincare)
+```
+
+---
+
+_END OF comparison-v1-vs-v2.md (Y-axis final 2026-04-15)_
+_Lines: this document ~590_
+_BT drafts complete: 0/6 (honesty preserved)_
+_atlas live edits: 0 (L0 Guard pending)_

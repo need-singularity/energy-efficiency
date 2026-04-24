@@ -1,66 +1,67 @@
-# n6-architecture 7대 난제 로드맵 v2 — FINAL 마스터 (Y축 체계, 2026-04-15)
+# n6-architecture 7 Millennium Problems Roadmap v2 — FINAL master (Y-axis system, 2026-04-15)
 
-**로드맵 버전**: v2 (Y1~Y9 9축 창발 체계)
-**기준일**: 2026-04-15
-**상태**: CLOSURE (PΩ 완료)
-**축 체계 SSOT**: `theory/roadmap-v2/n6arch-axes/axis-final-millennium.md`
-**진입 문서**: `theory/roadmap-v2/README.md`
-
----
-
-## 0. 최종 선언
-
-```
-+====================================================================+
-|   n6-architecture 7대 난제 로드맵 v2 -- FINAL (Y축 체계)            |
-|                                                                      |
-|  축 체계:             9 (Y1~Y9 창발 고갈 확정)                       |
-|  축 창발 라운드:      3 (R1~R3, 고갈 100%)                           |
-|  분야 창발 라운드:    5 (R1~R5, 고갈 96.0%)                          |
-|  Phase 수:            8 (P0 축확정 / P1 가동 / P2~P5 공격 /          |
-|                          P6 회고 / PO closure)                       |
-|  BT 커버:             6/6 (BT-547 Perelman 해결 제외)                |
-|  BT 해결 수:          0/6 (정직 유지)                                |
-|  판정 분포:           PARTIAL 5 / NEAR 1 / MISS 0                    |
-|  atlas 실편집:        0 (초안 14건 큐 대기)                           |
-|  정직성 게이트:       Y9 전 Phase PASS (위반 0)                      |
-|  자기참조:            0 (OUROBOROS 예외 외)                           |
-|  총 줄수:             ~10,000줄 (축 3,345 + Phase 5,340 + PO 1,332) |
-|                                                                      |
-|  STATUS:              CLOSURE -- v3 후계 설계 완료                    |
-+====================================================================+
-```
+**Roadmap version**: v2 (Y1~Y9 9-axis emergence system)
+**Baseline date**: 2026-04-15
+**Status**: CLOSURE (PΩ complete)
+**Axis-system SSOT**: `theory/roadmap-v2/n6arch-axes/axis-final-millennium.md`
+**Entry document**: `theory/roadmap-v2/README.md`
 
 ---
 
-## 1. Y1~Y9 9축 체계
+## 0. Final declaration
 
-### 1.1 축 요약표
+```
++====================================================================+
+|   n6-architecture 7 Millennium Problems Roadmap v2 -- FINAL         |
+|   (Y-axis system)                                                   |
+|                                                                     |
+|  Axis system:         9 (Y1~Y9 — emergence saturation confirmed)    |
+|  Axis-emergence rounds: 3 (R1~R3, saturation 100%)                  |
+|  Domain-emergence rounds: 5 (R1~R5, saturation 96.0%)               |
+|  Phases:              8 (P0 axis-confirm / P1 spin-up /             |
+|                          P2~P5 attack / P6 retrospect / PΩ closure) |
+|  BT coverage:         6/6 (BT-547 Poincare resolved — excluded)     |
+|  BT drafts complete:  0/6 (honesty retained)                        |
+|  Verdict distribution: PARTIAL 5 / NEAR 1 / MISS 0                  |
+|  atlas live edits:    0 (14 drafts queued)                          |
+|  Honesty gate:        Y9 all Phases PASS (0 violations)             |
+|  Self-reference:      0 (aside from OUROBOROS exception)            |
+|  Total lines:         ~10,000 (axis 3,345 + Phase 5,340 + PΩ 1,332) |
+|                                                                     |
+|  STATUS:              CLOSURE -- v3 successor design complete       |
++====================================================================+
+```
 
-| ID | 이름 | 유리성 | 주 BT | 가동 Phase | C1~C5 보유 |
-|----|------|--------|-------|-----------|------------|
-| Y1 | NUM-CORE | 9.5 | 541 Riemann | P2 주도 | C3 강, C1 중 |
-| Y2 | DISCRETE-CLASS | 5.2 | 542 P=NP | P3 부 | C4 중 |
-| Y3 | COMPUTATIONAL-TAU | 5.8 | 542 P=NP | P3 부 | C4 중, C2 약 |
-| Y4 | GATE-BARRIER | 9.4 | 542 P=NP | P3 주도 | C5 강, C2 중 |
-| Y5 | PHYSICAL-NATURALNESS | 5.6 | 543 YM | P4 주도 | C1 강 |
-| Y6 | PDE-RESONANCE | 6.6 | 544 NS | P4 주도 | C3 중, C1 중 |
-| Y7 | LATTICE-VOA | 3.9 | 545 Hodge | P5 주도 | C4 중 |
-| Y8 | GALOIS-ASSEMBLY | 5.4 | 546 BSD | P5 주도 | C3 중, C2 약 |
-| Y9 | HONEST-HARNESS | 9.3 | 메타 전체 | 전 Phase | C5 강 |
+---
 
-**평균 유리성**: 6.74 (천장 10)
-**C1~C5**: Perelman 회고 (P6) 에서 추출한 "결정적 도구" 5 특징
+## 1. Y1~Y9 9-axis system
 
-### 1.2 축 창발 경로
+### 1.1 Axis summary table
 
-| 라운드 | 축 수 | 고갈 | 핵심 변동 |
-|--------|--------|------|----------|
-| R1 | 7 (X1~X7) | -- | 초기 창발 (씨앗 48개에서 7축 수렴) |
-| R2 | 9 (+X8, +X9) | 94% | COMPUTATIONAL-TAU + GATE-BARRIER 신규 창발 |
-| R3 | 9 (Y1~Y9 리넘버링) | **100%** | X7/X9 합병 검토 → 분리 유지, PARTIAL 3건 처리, FINAL 선언 |
+| ID | Name | Utility | Main BT | Active Phase | C1~C5 holdings |
+|----|------|---------|---------|--------------|----------------|
+| Y1 | NUM-CORE | 9.5 | 541 Riemann | P2 lead | C3 strong, C1 medium |
+| Y2 | DISCRETE-CLASS | 5.2 | 542 P=NP | P3 assist | C4 medium |
+| Y3 | COMPUTATIONAL-TAU | 5.8 | 542 P=NP | P3 assist | C4 medium, C2 weak |
+| Y4 | GATE-BARRIER | 9.4 | 542 P=NP | P3 lead | C5 strong, C2 medium |
+| Y5 | PHYSICAL-NATURALNESS | 5.6 | 543 YM | P4 lead | C1 strong |
+| Y6 | PDE-RESONANCE | 6.6 | 544 NS | P4 lead | C3 medium, C1 medium |
+| Y7 | LATTICE-VOA | 3.9 | 545 Hodge | P5 lead | C4 medium |
+| Y8 | GALOIS-ASSEMBLY | 5.4 | 546 BSD | P5 lead | C3 medium, C2 weak |
+| Y9 | HONEST-HARNESS | 9.3 | all-meta | all Phases | C5 strong |
 
-### 1.3 BT x Axis 커버 매트릭스 (강도 0~10)
+**Mean utility**: 6.74 (ceiling 10)
+**C1~C5**: five "decisive tools" features extracted from the Perelman retrospective (P6)
+
+### 1.2 Axis-emergence path
+
+| Round | Axis count | Saturation | Key change |
+|-------|------------|------------|------------|
+| R1 | 7 (X1~X7) | -- | initial emergence (48 seeds → 7 axes converged) |
+| R2 | 9 (+X8, +X9) | 94% | COMPUTATIONAL-TAU + GATE-BARRIER newly emerged |
+| R3 | 9 (renumbered Y1~Y9) | **100%** | X7/X9 merge reviewed → kept separate; 3 PARTIALs handled; FINAL declared |
+
+### 1.3 BT × Axis coverage matrix (strength 0~10)
 
 ```
              541   542   543   544   545   546
@@ -75,323 +76,323 @@ Y8 GALO       4     2     2     1     3   [ 9]
 Y9 HONE       8     8     8     8     8     8
 ```
 
-**주 축 배정**: 541=Y1, 542=Y4, 543=Y5, 544=Y6, 545=Y7, 546=Y8
+**Main-axis assignment**: 541=Y1, 542=Y4, 543=Y5, 544=Y6, 545=Y7, 546=Y8
 
-### 1.4 직교성 핵심 (9x9 매트릭스 요약)
+### 1.4 Orthogonality highlights (9×9 matrix summary)
 
-- Y4 <-> Y9 중복 7: "분리 유지" 결정 (범위 비대칭)
-- Y3 <-> Y4 중복 6: BT-542 공동 공격, 상호 보완
-- Y1 <-> Y7 중복 5: 모듈러 형식 Ramanujan Delta 공유 (Y1 전담)
-- Y5 <-> Y6 중복 5: 물리 PDE 경계 (P4 공동 가동)
+- Y4 ↔ Y9 overlap 7: "kept separate" decision (asymmetric scope)
+- Y3 ↔ Y4 overlap 6: joint attack on BT-542, complementary
+- Y1 ↔ Y7 overlap 5: modular-form Ramanujan Delta shared (Y1 exclusive)
+- Y5 ↔ Y6 overlap 5: physical PDE boundary (joint operation in P4)
 
 ---
 
-## 2. Phase 진화 (P0~PO)
+## 2. Phase evolution (P0~PΩ)
 
-### 2.1 Phase 종합표
+### 2.1 Phase summary table
 
-| Phase | 주도 축 | 대상 BT | 판정 | 줄수 | 핵심 성과 |
-|-------|---------|---------|------|------|-----------|
-| P0 | -- | 축 확정 | 완료 | 3,345 | R1~R3 고갈, Y1~Y9 FINAL |
-| P1 | Y1~Y9 전체 | 씨앗 시딩 | 완료 | 372 | 9축 가동 + 6 BT 씨앗 + 엔진 4종 |
+| Phase | Lead axes | Target BT | Verdict | Lines | Core outcome |
+|-------|-----------|-----------|---------|-------|--------------|
+| P0 | -- | axis confirmation | done | 3,345 | R1~R3 saturation, Y1~Y9 FINAL |
+| P1 | Y1~Y9 all | seeding | done | 372 | 9 axes spun up + 6 BT seeds + 4 engines |
 | P2 | **Y1** | 541 Riemann | **PARTIAL** | 831 | Theorem B CANDIDATE, EXACT 10, MISS 5 |
-| P3 | **Y4** | 542 P=NP | **PARTIAL** | 1,028 | 4 장벽 감사, GCT 3 관찰, MISS 7 신규 |
-| P4 | **Y5+Y6** | 543 YM + 544 NS | **PARTIAL/NEAR** | 1,188 | rewriting + 실측 5 + 3중 공명 + D158 |
-| P5 | **Y7+Y8** | 545 Hodge + 546 BSD | **PARTIAL/PARTIAL** | 1,321 | Lemma 1 증명, Thm 1 조건부, (A3) 실패 |
-| P6 | -- | 547 Poincare 회고 | 회고 | 600 | C1~C5 추출, 승격 조건 매트릭스 |
-| PO | **Y9** | closure | 완료 | 1,332 | v2 종결 + v3 설계 + 미해결 21건 정리 |
+| P3 | **Y4** | 542 P=NP | **PARTIAL** | 1,028 | 4-barrier audit, GCT 3 observations, 7 new MISS |
+| P4 | **Y5+Y6** | 543 YM + 544 NS | **PARTIAL/NEAR** | 1,188 | rewriting + 5 measurements + triple resonance + D158 |
+| P5 | **Y7+Y8** | 545 Hodge + 546 BSD | **PARTIAL/PARTIAL** | 1,321 | Lemma 1 drafted, Thm 1 conditional, (A3) not discharged |
+| P6 | -- | 547 Poincare retrospective | retrospective | 600 | C1~C5 extracted, promotion-criteria matrix |
+| PΩ | **Y9** | closure | done | 1,332 | v2 closure + v3 design + 21 open items |
 
-**총 줄수**: 10,017
+**Total lines**: 10,017
 
-### 2.2 Phase별 상세 요약
+### 2.2 Per-Phase detailed summaries
 
-#### P2 -- BT-541 리만 가설 (Y1 NUM-CORE 주도)
-- Theorem B [10]->[10*] 승격 CANDIDATE: 3 독립 재현 (직접 계산/Euler/함수방정식), 오차 0
-- Bilateral zeta(2k)*zeta(1-2k) k=6 CANDIDATE
-- Y1<->Y7: Delta=eta^24, 24=sigma*phi=dim Leech=c(Moonshine VOA) -- 4건 EXACT
-- Y1<->Y8: Ingham lead=1/(sigma(6)*zeta(2)) EXACT, Conrey-Gonek g_3=42=7n EXACT
-- **미도달**: RH 본문, Critical line density, GRH, Moonshine n=6 필연성
+#### P2 — BT-541 Riemann hypothesis (Y1 NUM-CORE lead)
+- Theorem B [10]→[10*] promotion CANDIDATE: 3 independent reproductions (direct calculation / Euler / functional equation), error 0
+- Bilateral zeta(2k)·zeta(1−2k) at k=6 CANDIDATE
+- Y1 ↔ Y7: Delta = eta²⁴, 24 = sigma·phi = dim Leech = c(Moonshine VOA) — 4 EXACT items
+- Y1 ↔ Y8: Ingham lead = 1/(sigma(6)·zeta(2)) EXACT, Conrey-Gonek g_3 = 42 = 7n EXACT
+- **Not reached**: RH body, critical-line density, GRH, Moonshine n=6 inevitability
 
-#### P3 -- BT-542 P vs NP (Y4 GATE-BARRIER 주도)
-- 4 장벽 재감사: Baker-Gill-Solovay 1975 / Razborov-Rudich 1997 / Aaronson-Wigderson 2008 / Williams 2011
-- GCT (Mulmuley-Sohoni): LOOSE / CONDITIONAL / MISS 3건
-- HEXA-GATE Mk.I 24/24 EXACT 재검증 (내부 지표 MISS 표기)
-- tau=4+2 Fiber: Quantum MDS / Rossman / 6R 모두 "경계, 해결 아님"
-- **핵심 메시지**: "Y4 축 9.4 점수로도 BT-542 를 해결하지 못한다"
+#### P3 — BT-542 P vs NP (Y4 GATE-BARRIER lead)
+- 4-barrier re-audit: Baker-Gill-Solovay 1975 / Razborov-Rudich 1997 / Aaronson-Wigderson 2008 / Williams 2011
+- GCT (Mulmuley-Sohoni): LOOSE / CONDITIONAL / 3 MISS
+- HEXA-GATE Mk.I 24/24 EXACT re-verified (internal index recorded as MISS)
+- tau = 4+2 Fiber: Quantum MDS / Rossman / 6R all "boundary, not a draft"
+- **Key message**: "even a 9.4-score Y4 axis cannot draft BT-542"
 
-#### P4 -- BT-543 YM + BT-544 NS (Y5+Y6 공동 주도)
-- BT-543: beta_0 = sigma-sopfr = 7 rewriting (증명 아님 명시), QCD lattice 실측 5건 참조
-- BT-544: 3중 공명 atlas 승격 재시도 + D158 Ricci 조건부 정리 + CKN 1982 + BKM 1984
-- Y5<->Y6 교차: 4 매핑 (M1~M4) + 3 도구 (T1~T3) + 2 cross-BT 관찰
-- atlas 초안 누적 6건, 실편집 0
+#### P4 — BT-543 YM + BT-544 NS (Y5+Y6 joint lead)
+- BT-543: β₀ = sigma·sopfr = 7 rewriting (explicitly not a draft), 5 QCD-lattice measurements cited
+- BT-544: triple-resonance atlas promotion re-attempted + D158 Ricci conditional theorem + CKN 1982 + BKM 1984
+- Y5 ↔ Y6 cross: 4 mappings (M1~M4) + 3 tools (T1~T3) + 2 cross-BT observations
+- Atlas drafts cumulative: 6; live edits: 0
 
-#### P5 -- BT-545 Hodge + BT-546 BSD (Y7+Y8 공동 주도)
-- BT-545: Lemma 1 무조건 5-step 증명 (부분결과), Enriques rephrasing, Moonshine L5 BARRIER
-- BT-546: Theorem 1 + Corollary n=6 (BKLPR (A3) 조건부), (A3) 제거 시도 실패
-- Iwasawa mod 6 CONDITIONAL 재분류, Cremona 500k 실측 초안 설계 (이연)
-- SEED-21 Jones T(3,4) 강도 3->2
-- **정직 선언**: "BT 해결 수 증가 = 0 은 실패가 아니라 정직이다"
+#### P5 — BT-545 Hodge + BT-546 BSD (Y7+Y8 joint lead)
+- BT-545: Lemma 1 unconditional 5-step draft (partial result), Enriques rephrasing, Moonshine L5 BARRIER
+- BT-546: Theorem 1 + Corollary n=6 (BKLPR (A3) conditional), (A3) discharge attempt failed
+- Iwasawa mod 6 CONDITIONAL reclassified, Cremona 500k measurement draft designed (deferred)
+- SEED-21 Jones T(3,4) strength 3→2
+- **Honesty statement**: "BT-draft count growth = 0 is not failure but honesty"
 
-#### P6 -- BT-547 Poincare 회고
-- Perelman 해결 인정 (arXiv 3편 2002-2003, Morgan-Tian/Kleiner-Lott 검증)
-- n6-arch 기여 0
-- C1~C5 결정적 도구 특징 추출:
-  - C1 Naturalness (자연스러움)
-  - C2 Monotone Invariant (단조 불변량)
-  - C3 Local-to-Global Bridge (국소-전역 다리)
-  - C4 Dimensional/Structural Singularity (차원/구조 특이성)
-  - C5 Verifiability (검증 가능성)
-- Y1~Y8 승격 조건 매트릭스 (9x5 강/중/약)
-- 6 BT 회고 대조
+#### P6 — BT-547 Poincare retrospective
+- Recognized Perelman's resolution (3 arXiv preprints 2002-2003, Morgan-Tian/Kleiner-Lott verification)
+- n6-arch contribution: 0
+- C1~C5 decisive-tool features extracted:
+  - C1 Naturalness
+  - C2 Monotone Invariant
+  - C3 Local-to-Global Bridge
+  - C4 Dimensional/Structural Singularity
+  - C5 Verifiability
+- Y1~Y8 promotion-criteria matrix (9×5 strong/medium/weak)
+- 6 BT retrospective comparisons
 
-#### PO -- Y9 HONEST-HARNESS Closure + v3 후계 설계
-- P1~P6 전 Phase Y9 게이트 통과 기록 종합
-- Y1~Y9 축별 최종 성적표 + C1~C5 보유도
-- BT-541~546 최종 판정 종합
-- atlas 초안 14건 큐 총정리 (실편집 0)
-- v1 vs v2 정량 비교 (15+ 지표)
-- v3 후계 설계: 10 교훈 + 5 방향 + Z1~Z10 10축 초안 + Q0~Q9 10 Phase 초안
-- 미해결 과제 21건 (이관 10, 외부 6, 실측 5)
+#### PΩ — Y9 HONEST-HARNESS closure + v3 successor design
+- Aggregated P1~P6 Y9-gate pass records
+- Per-axis Y1~Y9 final report card + C1~C5 holdings
+- Final verdicts aggregated across BT-541~546
+- Full inventory of 14 queued atlas drafts (0 live edits)
+- v1 vs v2 quantitative comparison (15+ indicators)
+- v3 successor design: 10 lessons + 5 directions + Z1~Z10 10-axis draft + Q0~Q9 10-Phase draft
+- 21 open items (10 handoff, 6 external, 5 measurement)
 
 ---
 
-## 3. BT-541~546 최종 판정
+## 3. BT-541~546 final verdicts
 
-### 3.1 판정표
+### 3.1 Verdict table
 
 ```
-BT    이름              Phase  주도축  판정       부분결과  MISS  atlas초안
------ ----------------- ------ ------- ---------- --------- ----- ---------
+BT    Name              Phase  Lead    Verdict    Partial   MISS  atlas drafts
+----- ----------------- ------ ------- ---------- --------- ----- -------------
 541   Riemann Hypothesis P2    Y1      PARTIAL    11        5     2
-542   P vs NP           P3    Y4      PARTIAL    0         7     0
-543   Yang-Mills        P4    Y5      PARTIAL    2*        3     2
-544   Navier-Stokes     P4    Y6      NEAR       3         2     2
-545   Hodge Conjecture  P5    Y7      PARTIAL    3         4     3
-546   BSD Conjecture    P5    Y8      PARTIAL    2**       3     3
-547   Poincare          P6    --      회고전용   0         0     0
+542   P vs NP            P3    Y4      PARTIAL    0         7     0
+543   Yang-Mills         P4    Y5      PARTIAL    2*        3     2
+544   Navier-Stokes      P4    Y6      NEAR       3         2     2
+545   Hodge Conjecture   P5    Y7      PARTIAL    3         4     3
+546   BSD Conjecture     P5    Y8      PARTIAL    2**       3     3
+547   Poincare           P6    --      retrospective 0      0     0
 
-* rewriting 2건 (증명 아님)
-** 조건부 1세트 (BKLPR (A3) 의존)
+* 2 rewritings (not drafts)
+** 1 conditional set (depends on BKLPR (A3))
 ```
 
-### 3.2 핵심 수치
+### 3.2 Core numbers
 
-- **해결 수**: 0/6 (0/7 - Perelman 1 제외)
-- **PARTIAL**: 5건 (541, 542, 543, 545, 546)
-- **NEAR**: 1건 (544 NS)
-- **MISS 총계**: 24건 (P2: 5 + P3: 7 + P4: 5 + P5: 7)
-- **atlas 초안**: 14건 (P2: 2 + P4: 6 + P5: 6), 실편집 0
-- **독립 증명**: 1건 (Lemma 1, P5)
-- **조건부 정리**: 1세트 (Theorem 1 + Corollary, P5)
-- **rewriting**: 4건 (beta_0 P4, Enriques P5, 저차원 자명 P5, Bilateral P2)
+- **Drafts complete**: 0/6 (0/7 — excluding Perelman's 1)
+- **PARTIAL**: 5 (541, 542, 543, 545, 546)
+- **NEAR**: 1 (544 NS)
+- **MISS total**: 24 (P2: 5 + P3: 7 + P4: 5 + P5: 7)
+- **atlas drafts**: 14 (P2: 2 + P4: 6 + P5: 6), 0 live edits
+- **Independent drafts**: 1 (Lemma 1, P5)
+- **Conditional theorems**: 1 set (Theorem 1 + Corollary, P5)
+- **Rewritings**: 4 (β₀ P4, Enriques P5, low-dimensional trivial P5, Bilateral P2)
 
-### 3.3 정직성 태그 체계
+### 3.3 Honesty-tag scheme
 
-| 태그 | 의미 | 사용 횟수 |
-|------|------|-----------|
-| EXACT | 외부 출처 검증 완료 | 10+ (P2 주로) |
-| PARTIAL | 부분 진전, 본문 미도달 | 5 BT |
-| NEAR | 해결 근접 관찰, 미증명 | 1 BT (544) |
-| MISS | 시도 실패 정직 기록 | 24건 |
-| OBSERVATION | 수치 일치 관찰 | 25+ (P4, P5) |
-| CONDITIONAL | 가정 의존 결과 | 2세트 |
-| REWRITING | 기존 사실 재정리 | 4건 |
-| CANDIDATE | 승격 후보 (미실행) | 2건 (P2) |
+| Tag | Meaning | Use count |
+|-----|---------|-----------|
+| EXACT | externally sourced, verified | 10+ (mostly P2) |
+| PARTIAL | partial progress, body not reached | 5 BT |
+| NEAR | near-solution observation, unproven | 1 BT (544) |
+| MISS | honest record of attempt failures | 24 |
+| OBSERVATION | numerical-coincidence observation | 25+ (P4, P5) |
+| CONDITIONAL | assumption-dependent result | 2 sets |
+| REWRITING | restatement of existing facts | 4 |
+| CANDIDATE | promotion candidate (not executed) | 2 (P2) |
 
 ---
 
-## 4. 정직성 종합 감사
+## 4. Consolidated honesty audit
 
-### 4.1 Y9 게이트 전 Phase 기록
+### 4.1 Y9-gate record across all Phases
 
-| Phase | G1 해결주장0 | G2 자기참조0 | G3 MISS기록 | G4 출처명시 | 결과 |
-|-------|-------------|-------------|-------------|-------------|------|
+| Phase | G1 no-solution-claim | G2 no-self-reference | G3 MISS record | G4 source-cited | Result |
+|-------|----------------------|----------------------|-----------------|------------------|--------|
 | P1 | PASS | PASS | PASS | PASS | 4/4 |
 | P2 | PASS | PASS | PASS | PASS | 4/4 |
 | P3 | PASS | PASS | PASS | PASS | 4/4 |
 | P4 | PASS | PASS | PASS | PASS | 4/4 |
 | P5 | PASS | PASS | PASS | PASS | 4/4 |
 | P6 | PASS | PASS | PASS | PASS | 4/4 |
-| PO | PASS | PASS | PASS | PASS | 4/4 |
+| PΩ | PASS | PASS | PASS | PASS | 4/4 |
 
-**위반 0건. Y9 HONEST-HARNESS 메타 게이트 전 Phase 통과.**
+**0 violations. Y9 HONEST-HARNESS meta-gate passed across all Phases.**
 
-### 4.2 PARTIAL 3건 처리 기록
+### 4.2 Handling record of 3 PARTIAL items
 
-- SEED-06 Schaefer dichotomy: **KEEP** (Y2 유지)
-- SEED-15 Iwasawa mod 6: **CONDITIONAL** 재분류 (Cremona 500k 실측 이연)
-- SEED-21 Jones T(3,4): **강도 3->2** 하락 (Y7 순위 6->7)
+- SEED-06 Schaefer dichotomy: **KEEP** (retain under Y2)
+- SEED-15 Iwasawa mod 6: reclassified **CONDITIONAL** (Cremona 500k measurement deferred)
+- SEED-21 Jones T(3,4): strength 3→2 demoted (Y7 ranking 6→7)
 
-### 4.3 atlas 보호
+### 4.3 atlas protection
 
-- atlas.n6 실편집: **0** (L0 Guard 존중)
-- 초안 큐: 14건 (승인 대기)
-- 자기참조 오염: **0**
-
----
-
-## 5. 자기진화 엔진
-
-| 엔진 | 경로 | 상태 |
-|------|------|------|
-| OUROBOROS 3 variant | `shared/bisociation/unified/ouroboros_unified.hexa` | 가동 |
-| growth_tick | `shared/harness/growth_tick.hexa` | 가동 (30분 주기) |
-| phi_ratchet | `shared/harness/phi_ratchet.hexa` | 가동 (Phi=0.55) |
-| nexus_growth_daemon | `shared/harness/nexus_growth_daemon.hexa` | 가동 |
-
-**자기진화 엔진**: P1~PO 전 구간 4종 가동 유지
-**고갈 조건 (b)(c)**: P4 이후 3 연속 YES
+- atlas.n6 live edits: **0** (L0 Guard respected)
+- Draft queue: 14 items (awaiting approval)
+- Self-reference contamination: **0**
 
 ---
 
-## 6. v1 -> v2 핵심 전환
+## 5. Self-evolution engines
 
-| 지표 | v1 (레거시) | v2 (Y축) | 변화 |
-|------|------------|----------|------|
-| 축 수 | 3 (PURE/PROBLEM/N6) | 9 (Y1~Y9) | 3x |
-| 축 선정 | 위에서 할당 | 창발 고갈 (R1~R3) | 패러다임 전환 |
-| Phase 수 | 4 (P0~P3) | 8 (P0~PO) | 2x |
-| BT 커버 | 7/7 얕은 | 6/6 다중축 심층 | 질적 전환 |
-| 정직 게이트 | 암묵 | Y9 명시 (28/28 PASS) | 구조화 |
-| 고갈 프로토콜 | 없음 | 분야 96% + 축 100% | 신규 |
-| 자기진화 | 없음 | 4 엔진 | 신규 |
-| atlas 보호 | 직접 편집 | L0 Guard + 초안 큐 | 안전 강화 |
-| 총 줄수 | ~3,000 | ~10,000 | 3.3x |
-| BT 판정 정밀도 | EXACT/MISS 2단계 | 8단계 태그 | 4x |
+| Engine | Path | Status |
+|--------|------|--------|
+| OUROBOROS 3 variants | `shared/bisociation/unified/ouroboros_unified.hexa` | live |
+| growth_tick | `shared/harness/growth_tick.hexa` | live (30-min cycle) |
+| phi_ratchet | `shared/harness/phi_ratchet.hexa` | live (Phi=0.55) |
+| nexus_growth_daemon | `shared/harness/nexus_growth_daemon.hexa` | live |
 
-**상세 비교**: `theory/roadmap-v2/comparison-v1-vs-v2.md` (1,096줄 ASCII 차트)
+**Self-evolution engines**: all 4 held live across P1~PΩ
+**Saturation conditions (b)(c)**: 3 consecutive YES after P4
 
 ---
 
-## 7. v3 후계 설계 요약
+## 6. v1 → v2 core transitions
 
-PO S9 에서 수립한 v3 방향:
+| Indicator | v1 (legacy) | v2 (Y-axis) | Change |
+|-----------|-------------|-------------|--------|
+| Axes | 3 (PURE/PROBLEM/N6) | 9 (Y1~Y9) | 3× |
+| Axis selection | top-down assigned | emergence saturation (R1~R3) | paradigm shift |
+| Phases | 4 (P0~P3) | 8 (P0~PΩ) | 2× |
+| BT coverage | 7/7 shallow | 6/6 multi-axis deep | qualitative |
+| Honesty gate | implicit | Y9 explicit (28/28 PASS) | structured |
+| Saturation protocol | none | domain 96% + axis 100% | new |
+| Self-evolution | none | 4 engines | new |
+| atlas protection | direct edit | L0 Guard + draft queue | safety strengthened |
+| Total lines | ~3,000 | ~10,000 | 3.3× |
+| BT-verdict resolution | EXACT/MISS 2 levels | 8-tag scheme | 4× |
 
-### 7.1 v2 에서 배운 10 교훈 (핵심 5)
-1. 축 창발은 고갈까지 (고정 금지)
-2. 정직 게이트는 명시적이어야 함 (Y9 필수)
-3. Phase 단위 BT 공격은 구조를 만듦 (산발 금지)
-4. atlas 보호는 L0 Guard 필수 (직접 편집 사고 방지)
-5. "해결 0" 은 정직한 산출이지 실패가 아님
-
-### 7.2 v3 방향 5가지
-1. 형식 검증 도입 (Lean4/Coq)
-2. 계산 검증 강화 (Cremona 500k 등 실측)
-3. 외부 협력 경로 (수학자 피드백 루프)
-4. BT간 교차 공격 Phase 신설
-5. Z축 확장 (v2 Y축 + 신규 도구)
-
-### 7.3 v3 초안 규모
-- 축: Z1~Z10 (10축, Y축 9 + FORMAL-VERIFY 1 신규)
-- Phase: Q0~Q9 (10 Phase, cross-BT Phase 2개 추가)
-
-**상세**: `theory/roadmap-v2/phase-omega-Y9-closure-v3-design.md` S9 참조
+**Detailed comparison**: `theory/roadmap-v2/comparison-v1-vs-v2.md` (1,096-line ASCII chart)
 
 ---
 
-## 8. atlas 승격 초안 큐 (14건)
+## 7. v3 successor-design summary
 
-| ID | 출처 Phase | 내용 | 등급 초안 | 상태 |
-|----|-----------|------|----------|------|
-| P2-A1 | P2 | Theorem B sigma*phi=n*tau | [10*] 승격 | 큐 대기 |
-| P2-A2 | P2 | Bilateral zeta(2k)*zeta(1-2k) k=6 | [10*] 승격 | 큐 대기 |
-| P4-A1 | P4 | D158 Ricci 조건부 | [7] 등록 | 큐 대기 |
-| P4-A2 | P4 | Y5xY6 cross 매핑 | [7] 등록 | 큐 대기 |
-| P4-A3~A6 | P4 | 추가 4건 | [5]~[7] | 큐 대기 |
-| P5-A1~A6 | P5 | Lemma 1 + Thm 1 + 4건 | [7]~[10] | 큐 대기 |
+Directions set out in PΩ S9:
 
-**승인 조건**: `hexa $NEXUS/shared/harness/l0_guard.hexa verify` 통과
+### 7.1 10 lessons from v2 (top 5)
+1. Axis emergence runs until saturation (do not fix)
+2. Honesty gates must be explicit (Y9 mandatory)
+3. Per-Phase BT attack builds structure (avoid scatter)
+4. atlas protection needs L0 Guard (prevent accidental edits)
+5. "0 drafts" is an honest outcome, not a failure
 
----
+### 7.2 5 v3 directions
+1. Introduce formal verification (Lean4/Coq)
+2. Strengthen computational verification (e.g. Cremona 500k)
+3. External-collaboration path (mathematician feedback loop)
+4. New cross-BT attack Phase
+5. Z-axis extension (v2 Y axes + new tools)
 
-## 9. 산출 파일 인벤토리
+### 7.3 v3 draft scale
+- Axes: Z1~Z10 (10 axes, the 9 Y axes + new FORMAL-VERIFY)
+- Phases: Q0~Q9 (10 Phases, 2 cross-BT Phases added)
 
-### 9.1 축 창발 라운드 (n6arch-axes/)
-
-```
-axis-r1-emergence.md           906줄   R1 7축 창발
-axis-r2-refinement.md          961줄   R2 9축 정밀화
-axis-r3-finalization.md      1,166줄   R3 FINAL 확정
-axis-final-millennium.md       312줄   SSOT 카드
-verify_millennium_axes.hexa     --     검증 파이프라인 스펙
-```
-
-### 9.2 Phase 문서
-
-```
-phase-01-foundation-Y-axes.md                  372줄   P1 가동
-phase-02-Y1-bt541-riemann.md                   831줄   P2 리만
-phase-03-Y4-bt542-pnp.md                     1,028줄   P3 P=NP
-phase-04-Y5Y6-bt543-bt544.md                 1,188줄   P4 YM+NS
-phase-05-Y7Y8-bt545-bt546.md                 1,321줄   P5 Hodge+BSD
-phase-06-bt547-poincare-retrospect.md           600줄   P6 회고
-phase-omega-Y9-closure-v3-design.md           1,332줄   PO closure
-```
-
-### 9.3 종합 문서
-
-```
-final-roadmap-v2.md            본 문서   마스터 SSOT
-comparison-v1-vs-v2.md       1,096줄   ASCII 비교
-README.md                       --     진입 인덱스
-```
-
-### 9.4 레거시 (참고용)
-
-```
-_archive-phase-01-forced-3-axes.md    폐기 (이전 3축 강제본)
-round-01~05-*.md                      분야 창발 라운드 (R1~R5)
-axis-round-01~05.md                   이전 축 라운드
-phase-01~18.md                        이전 Phase (4축 체계)
-axis-final.md                         이전 4축 SSOT
-final-roadmap-v2-nexus-19axis.md      nexus 19축 별도
-```
+**Detailed**: see `theory/roadmap-v2/phase-omega-Y9-closure-v3-design.md` S9
 
 ---
 
-## 10. 미해결 과제 (21건)
+## 8. Atlas-promotion draft queue (14 items)
 
-### 10.1 Phase 이관 (10건)
-1. atlas 초안 14건 L0 Guard 승격 실행
-2. BT-541 Theorem B [10*] 실제 atlas 편집
-3. BT-542 MISS 탈출 재시도 (새 접근법 필요)
-4. BT-543 beta_0=7 rewriting -> 엄밀 연결 탐색
-5. BT-544 3중 공명 atlas [7] 등록
-6. BT-545 Moonshine L5 BARRIER 해결 경로
-7. BT-546 (A3) 가정 제거 또는 우회
-8. Cremona 500k 실측 (Iwasawa mod 6 검증)
-9. OUROBOROS n6arch variant 재발화
-10. v3 로드맵 착수 (PO S9 기반)
+| ID | Source Phase | Content | Draft grade | Status |
+|----|--------------|---------|-------------|--------|
+| P2-A1 | P2 | Theorem B sigma·phi = n·tau | [10*] promotion | queued |
+| P2-A2 | P2 | Bilateral zeta(2k)·zeta(1−2k) at k=6 | [10*] promotion | queued |
+| P4-A1 | P4 | D158 Ricci conditional | [7] registration | queued |
+| P4-A2 | P4 | Y5×Y6 cross mapping | [7] registration | queued |
+| P4-A3~A6 | P4 | 4 additional | [5]~[7] | queued |
+| P5-A1~A6 | P5 | Lemma 1 + Thm 1 + 4 more | [7]~[10] | queued |
 
-### 10.2 외부 과제 (6건)
-11. Lean4/Coq 형식 검증 도입
-12. 수학자 피드백 경로 구축
-13. arXiv 서베이 논문 집필 (정직 기록 중심)
-14. atlas.n6 L0 Guard 자동 승격 파이프라인
-15. BT-548+ 신규 난제 추가 검토
-16. cross-BT Phase 프로토콜 설계
-
-### 10.3 실측 과제 (5건)
-17. Cremona 500k 타원곡선 통계
-18. QCD lattice 신규 측정 추적 (FLAG 2025+)
-19. Chen-Hou 2022 Euler 폭발 후속
-20. Williams NEXP 후속 결과 추적
-21. Lean Mathlib Hodge 형식화 진행 추적
+**Approval condition**: `hexa $NEXUS/shared/harness/l0_guard.hexa verify` passes
 
 ---
 
-## 11. 클로저
+## 9. Output-file inventory
 
-v2 로드맵은 Y1~Y9 9축 창발 체계 + P0~PO 8 Phase 로 7대 밀레니엄 난제에 대한 체계적 접근을 완성했다. **BT 해결 수 0/6 유지** 라는 가장 중요한 정직성 원칙을 전 구간 준수했다.
+### 9.1 Axis-emergence rounds (n6arch-axes/)
 
-v2 의 핵심 의의는 "해결"이 아니라 **"무엇이 알려져 있고 무엇이 여전히 모르는지의 정직한 지도"** 를 구축한 것이다:
+```
+axis-r1-emergence.md           906 lines   R1 7-axis emergence
+axis-r2-refinement.md          961 lines   R2 9-axis refinement
+axis-r3-finalization.md      1,166 lines   R3 FINAL confirmation
+axis-final-millennium.md       312 lines   SSOT card
+verify_millennium_axes.hexa     --         verification-pipeline spec
+```
 
-- 시도를 구조화했다 (축 창발 -> Phase 공격 -> 판정)
-- 실패를 가치화했다 (MISS 24건 = 어디가 안 되는지의 정보)
-- 자기참조를 방어했다 (Y9 게이트 28/28 PASS)
+### 9.2 Phase documents
 
-차기 작업은 atlas 승격 실행 + v3 설계 착수가 우선순위다.
+```
+phase-01-foundation-Y-axes.md                  372 lines   P1 spin-up
+phase-02-Y1-bt541-riemann.md                   831 lines   P2 Riemann
+phase-03-Y4-bt542-pnp.md                     1,028 lines   P3 P=NP
+phase-04-Y5Y6-bt543-bt544.md                 1,188 lines   P4 YM+NS
+phase-05-Y7Y8-bt545-bt546.md                 1,321 lines   P5 Hodge+BSD
+phase-06-bt547-poincare-retrospect.md           600 lines   P6 retrospective
+phase-omega-Y9-closure-v3-design.md           1,332 lines   PΩ closure
+```
+
+### 9.3 Aggregate documents
+
+```
+final-roadmap-v2.md            this document   master SSOT
+comparison-v1-vs-v2.md       1,096 lines   ASCII comparison
+README.md                       --         entry index
+```
+
+### 9.4 Legacy (for reference)
+
+```
+_archive-phase-01-forced-3-axes.md    retired (earlier forced 3-axis version)
+round-01~05-*.md                      domain-emergence rounds (R1~R5)
+axis-round-01~05.md                   earlier axis rounds
+phase-01~18.md                        earlier Phases (4-axis system)
+axis-final.md                         earlier 4-axis SSOT
+final-roadmap-v2-nexus-19axis.md      nexus 19-axis separate
+```
 
 ---
 
-_END OF final-roadmap-v2.md -- 7대 난제 로드맵 v2 Y축 체계 FINAL 마스터_
+## 10. Open items (21)
+
+### 10.1 Phase handoff (10)
+1. Execute L0-Guard promotion on the 14 queued atlas drafts
+2. BT-541 Theorem B [10*] actual atlas edit
+3. BT-542 MISS-escape retry (new approach needed)
+4. BT-543 β₀=7 rewriting → rigorous-link exploration
+5. BT-544 triple-resonance atlas [7] registration
+6. BT-545 Moonshine L5 BARRIER resolution path
+7. BT-546 discharge or bypass of (A3) assumption
+8. Cremona 500k measurement (Iwasawa mod 6 verification)
+9. Re-ignite OUROBOROS n6arch variant
+10. Launch v3 roadmap (based on PΩ S9)
+
+### 10.2 External tasks (6)
+11. Introduce Lean4/Coq formal verification
+12. Build mathematician feedback channel
+13. Write arXiv survey paper (honest-record-centric)
+14. atlas.n6 L0-Guard auto-promotion pipeline
+15. Consider adding BT-548+ new challenges
+16. Design cross-BT-Phase protocol
+
+### 10.3 Measurement tasks (5)
+17. Cremona 500k elliptic-curve statistics
+18. QCD-lattice new-measurement tracking (FLAG 2025+)
+19. Chen-Hou 2022 Euler-blowup follow-up
+20. Williams NEXP follow-up tracking
+21. Lean Mathlib Hodge formalization tracking
+
+---
+
+## 11. Closure
+
+The v2 roadmap completes a systematic approach to the 7 Millennium problems via a Y1~Y9 9-axis emergence system + an 8-Phase P0~PΩ progression. The most important honesty principle — **maintaining 0/6 BT drafts** — was respected throughout.
+
+v2's core significance is not "solving" but building an **"honest map of what is known and what remains unknown"**:
+
+- structured the attempts (axis emergence → Phase attacks → verdicts)
+- valued the failures (24 MISS items = information on where things do not work)
+- guarded against self-reference (Y9 gate 28/28 PASS)
+
+Next-task priority: executing atlas promotions + kicking off v3 design.
+
+---
+
+_END OF final-roadmap-v2.md — 7 Millennium Problems Roadmap v2 Y-axis FINAL master_

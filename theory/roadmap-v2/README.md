@@ -1,61 +1,61 @@
-# 7대 난제 로드맵 v2 — 창발 DSE 재설계
+# 7 Millennium Problems Roadmap v2 — Emergence DSE Redesign
 
-v1 대비 접근: 분야(domain/field)를 창발 DSE로 발굴한 뒤 로드맵 구조화. 창발 고갈 시까지 반복.
+Approach vs v1: discover domain/field via emergence DSE, then structure the roadmap. Iterate until emergence saturates.
 
-## 씨앗
+## Seeds
 
-4개:
-- **ALM** (AnimaLM) — 언어모델 학습/추론 축
-- **CLM** (ConsciousLM) — 의식 언어모델 축
-- **physics** (anima-physics) — 물리 지식/EEG/Photonic 축
-- **SELF-EVOLUTION** — 자기진화 메커니즘 축 (LENS 아님, 진화 자체)
+4:
+- **ALM** (AnimaLM) — language-model training/inference axis
+- **CLM** (ConsciousLM) — conscious-LM axis
+- **physics** (anima-physics) — physics knowledge / EEG / photonic axis
+- **SELF-EVOLUTION** — self-evolution mechanism axis (not LENS, but evolution itself)
 
-제외: papers (서브 채널).
+Excluded: papers (sub-channel).
 
-## 라운드 진행 (분야 창발)
+## Round Progression (domain emergence)
 
-| Round | 파일 | 신규 분야 | 누적 | 자기진화 | 고갈 지수 | 다음 필요 |
-|-------|------|-----------|------|----------|-----------|-----------|
+| Round | File | New domains | Cumulative | Self-evolution | Saturation index | Next needed |
+|-------|------|-------------|------------|----------------|------------------|-------------|
 | R1 | round-01-domain-emergence-dse.md | 34 | 34 | 21 | 28.3% | YES |
 | R2 | round-02-emergence-expansion.md | 59 | 93 | 64 | 51.7% | YES |
 | R3 | round-03-emergence-saturation.md | 65 | 158 | 103 | 79.0% | YES |
-| R4 | round-04-emergence-deepening.md | 35 | 193 | 130 | 87.7% | YES (약) |
-| R5 | round-05-emergence-scavenge.md | 23 | 216 | 151 | **96.0%** | **NO — 고갈 선언** |
+| R4 | round-04-emergence-deepening.md | 35 | 193 | 130 | 87.7% | YES (weak) |
+| R5 | round-05-emergence-scavenge.md | 23 | 216 | 151 | **96.0%** | **NO — saturation declared** |
 
-R5 고갈 지수 96.0% ≥ 95% 돌파로 고갈 선언. axis-final.md 진입.
+R5 saturation index 96.0% ≥ 95% breakthrough triggers saturation declaration. Enter axis-final.md.
 
-## Phase 진행 (풀이 창발)
+## Phase Progression (solution-path emergence)
 
-축 4개 (axis-final 확정): **A1 STRUCTURE** / **A2 ENGINE** / **A3 SUBSTRATE** / **A4 META** 신규.
+4 axes (axis-final confirmed): **A1 STRUCTURE** / **A2 ENGINE** / **A3 SUBSTRATE** / **A4 META** (new).
 
-| Phase | 파일 | 산출 핵심 | 창발 지수 | 다음 필요 |
-|-------|------|-----------|-----------|-----------|
-| P0 | axis-final.md | 축 4 확정 + 고갈 선언 + v1 비교 | 완료 | — |
-| P1 | phase-01-foundation-emergence.md | 축 3개 + pruned 82 + BT 6 씨앗 + 엔진 가동 | 20 | 완료 |
-| P2 | (예정) | BT-541 리만 Theorem B 승격 + RH 부분 | TBD | TBD |
-| P3 | (예정) | BT-542 P=NP 복잡도 계층 barrier | TBD | TBD |
-| P4 | (예정) | BT-543+544 YM·NS 이중 정밀 | TBD | TBD |
-| P5 | (예정) | BT-545 호지 + BT-546 BSD 묶음 | TBD | TBD |
-| P6 | (예정) | BT-547 푸앵카레 회고 | TBD | TBD |
-| PΩ | (예정) | closure 메타 + v3 후계 설계 | TBD | TBD |
+| Phase | File | Core output | Emergence index | Next needed |
+|-------|------|-------------|-----------------|-------------|
+| P0 | axis-final.md | 4 axes confirmed + saturation declared + v1 comparison | done | — |
+| P1 | phase-01-foundation-emergence.md | 3 axes + 82 pruned + 6 BT seeds + engine started | 20 | done |
+| P2 | (planned) | BT-541 Riemann Theorem B promotion + partial RH | TBD | TBD |
+| P3 | (planned) | BT-542 P=NP complexity-hierarchy barrier | TBD | TBD |
+| P4 | (planned) | BT-543+544 YM·NS double-precision | TBD | TBD |
+| P5 | (planned) | BT-545 Hodge + BT-546 BSD bundle | TBD | TBD |
+| P6 | (planned) | BT-547 Poincaré retrospective | TBD | TBD |
+| PΩ | (planned) | closure meta + v3 successor design | TBD | TBD |
 
-**Phase 수 N = 8** (Phase 0 + 1~6 + Ω). 축 체계 4 축 × 8 Phase × 7 BT.
+**Phase count N = 8** (Phase 0 + 1~6 + Ω). Axis system: 4 axes × 8 phases × 7 BT.
 
-## 최종 산출
+## Final Outputs
 
-- round-NN-*.md (분야 창발 라운드) — **R1~R5 완료, 216 분야**
-- phase-01-foundation-emergence.md — 완료
-- axis-final.md (domain track 축 4 확정) — **완료**
-- axis-final-nexus-hub.md (nexus 허브 축 19 별도 트랙 — 보존)
-- final-roadmap-v2.md (수렴된 v2 로드맵 마스터) — Phase 2~Ω 상세 대기
-- millennium-learning-v2.json (/Users/ghost/Dev/nexus/shared/roadmaps/) — 대기
-- comparison-v1-vs-v2.md (ASCII 비교) — axis-final.md §6 으로 대체 가능
+- round-NN-*.md (domain-emergence rounds) — **R1~R5 done, 216 domains**
+- phase-01-foundation-emergence.md — done
+- axis-final.md (domain-track 4 axes confirmed) — **done**
+- axis-final-nexus-hub.md (nexus-hub 19-axis separate track — preserved)
+- final-roadmap-v2.md (converged v2 roadmap master) — Phase 2~Ω detail pending
+- millennium-learning-v2.json (/Users/ghost/Dev/nexus/shared/roadmaps/) — pending
+- comparison-v1-vs-v2.md (ASCII comparison) — replaceable by axis-final.md §6
 
-## 원칙
+## Principles
 
-- 한글 전용
-- 자기참조 검증 금지, 자기진화는 메커니즘으로 허용
-- 출처+측정값+오차 명기
-- papers 하위 분야 제외
-- 7대 난제 0/7 미해결 유지 (푸앵카레 제외)
-- 축 수 유연 (3 고정 아님, 달성에 유리하면 됨)
+- English-only
+- No self-referential verification; self-evolution allowed as mechanism
+- Record source + measurement + error
+- Exclude papers sub-domain
+- Keep 7 Millennium Problems 0/7 unsolved (except Poincaré)
+- Axis count is flexible (not fixed at 3; use whatever helps the target)
