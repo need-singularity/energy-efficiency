@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 189,
+    "count": 184,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -179,6 +179,12 @@
         "removed": 18,
         "scope": "compute non-chip half 1 (5g-6g, advanced-packaging, ai-efficiency, blockchain, browser, compiler-os, consciousness-chip/soc, cryptography, digital-twin, display/8stack, dram, exynos, isocell-comms, keyboard, learning-algorithm, mouse)",
         "batch": "phase-6-B9"
+      },
+      {
+        "date": "2026-04-25",
+        "removed": 3,
+        "scope": "phase-6-10 YELLOW (network-protocol/, 3 partial)",
+        "batch": "phase-6-10"
       }
     ]
   },
@@ -263,9 +269,6 @@
     "domains/compute/hexa-proglang/hexa-proglang.md",
     "domains/compute/hexa-super/hexa-super.md",
     "domains/compute/hexa-wafer/hexa-wafer.md",
-    "domains/compute/network-protocol/bridge-design-p5/bridge-design-p5.md",
-    "domains/compute/network-protocol/certificates/certificates.md",
-    "domains/compute/network-protocol/network-protocol.md",
     "domains/compute/network/network.md",
     "domains/compute/nexus-breakthrough-gate/nexus-breakthrough-gate.md",
     "domains/compute/nexus-service/nexus-service.md",
@@ -280,7 +283,6 @@
     "domains/compute/unified-service/unified-service.md",
     "domains/compute/unified-soc/unified-soc.md",
     "domains/compute/vnand/vnand.md",
-    "domains/energy/battery-architecture/battery-architecture.md",
     "domains/energy/battery-architecture/battery-scale-1-earphone/battery-scale-1-earphone.md",
     "domains/energy/battery-architecture/battery-scale-2-smartphone/battery-scale-2-smartphone.md",
     "domains/energy/battery-architecture/battery-scale-3-laptop/battery-scale-3-laptop.md",
@@ -289,7 +291,6 @@
     "domains/energy/battery-architecture/battery-scale-6-ev/battery-scale-6-ev.md",
     "domains/energy/battery-architecture/battery-scale-7-ess/battery-scale-7-ess.md",
     "domains/energy/battery-architecture/battery-scale-8-grid/battery-scale-8-grid.md",
-    "domains/energy/energy-architecture/energy-architecture.md",
     "domains/energy/fusion-powerplant/fusion-powerplant.md",
     "domains/energy/fusion/fusion.md",
     "domains/energy/nuclear-reactor/nuclear-reactor.md",
