@@ -9,622 +9,630 @@ requires:
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 
-# 궁극의 HBM 메모리 돌파 HEXA-HBM (외계인지수 🛸10)
+# Ultimate HBM Memory Breakthrough HEXA-HBM (alien-index target 10)
 
-본 도메인은 HBM3/HBM3E/HBM4 를 넘는 **n=6 경계화 HBM** 을 정의한다.
-삼성전자 HBM3E 12H 36GB (2026 양산) 를 Mk.I 기준점으로, n=6 산술 유도로
-HBM5 급 AI-native 메모리까지의 τ=5 단 진화 경로를 완결한다.
-
-
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
-
-HBM (High Bandwidth Memory) 는 GPU·NPU 옆에 TSV (Through-Silicon Via) 로 쌓아
-σ=12 채널로 수백 GB/s 를 쏟아붓는 "AI 의 혈관" 이다. 그런데 현재 HBM 은
-`1024-bit IO × 비정렬 채널 × 비정수 pJ/bit` 로 누적된 타협의 연속이다.
-**n=6 경계화** 는 세 가지 낭비를 동시 제거한다:
-
-1. **채널 병목**: HBM3 16 채널 → n=6 에서 σ=12 채널로 경계화, 낭비 비트 제거 ← σ(6)=12, OEIS A000203
-2. **PHY 전력**: 1024-bit 광대역 → σ·J₂=288 bit 고속 전송 (τ=4 Gbps×sopfr=5 세대) ← τ(6)=4, OEIS A000005
-3. **AI 추론 지연**: Egyptian 1/2+1/3+1/6 전력 분배로 array/PHY/ctrl 열집중 해소 ← φ(6)=2
-
-| 효과 | 현재 HBM3E | HEXA-HBM | 체감 변화 |
-|------|------------|----------|----------|
-| 단일 스택 대역 | 1.2 TB/s | σ·J₂=288 GB/s ×4 스테이지 | 8K 홀로그램 실시간 무압축 |
-| 단일 스택 용량 | 36 GB | σ·τ=48 GB | 175B 모델 단일 스택 상주 |
-| 스택 높이 | 12-Hi | σ=12 dies (경계화) | GAAFET 로직 + n=6 array |
-| TSV pitch | 40 μm | σ·φ=10 μm hybrid bond | 스택 발열 1/σ=1/12 |
-| IO bit width | 1024 bit | σ·J₂=288 bit | PHY 전력 1/τ=1/4 |
-| PHY 속도 | 9.2 Gbps/pin | σ·τ=48 Gbps/pin | 레인 수 1/σ-φ=1/10 축소 |
-| 전력 효율 | 3.9 pJ/bit | φ=2 pJ/bit | AI 서버 전력 1/σ 절감 |
-| ECC 커버리지 | SECDED | σ=12 스펙트럼 대칭 | Silent data corruption 소멸 |
-| Row buffer | 2 KB | σ·J₂=288 B 페이지 | 액세스 지연 τ=4× 단축 |
-| AI 모델 상주 | 7B | 175B (Fraction 정확) | 로컬 GPT-급 즉시 추론 |
-
-**한 문장 요약**: HBM 의 16/1024/40μm 3중 비정렬을 σ=12/σ·J₂=288/σ·φ=10μm 으로
-경계화하면 대역·용량·전력이 동시에 n=6 배수로 정렬되어 AI 서버 TCO 가 1/σ 로 떨어진다.
-
-### 일상 체감 시나리오
-
-```
-  오전 7:00  스마트폰 로컬 LLM 175B 즉시 응답 (σ·τ=48GB 온디바이스)
-  오전 9:00  사무실 AI 비서 "보고서 요약" 100ms 완료 (σ·J₂=288 B 페이지)
-  오후 2:00  8K 360° 홀로그램 회의 (τ=4 스트림 동시 디코딩)
-  오후 6:00  차량 자율주행 LLM 행동계획 σ=12 채널 병렬 (40ms 주기)
-  저녁 9:00  가정용 AI 슈퍼컴 "내일 식단 제안" 0.5초 (φ=2 pJ/bit)
-```
-
-### 사회적 변혁표
-
-| 분야 | 변화 | n=6 연결 |
-|------|------|---------|
-| AI 추론 | 서버당 비용 1/σ, 응답 지연 1/τ | σ·J₂=288 GB/s + Egyptian 분배 |
-| 데이터센터 | 전력 밀도 1/σ, 냉각 열부하 1/σ-φ | φ=2 pJ/bit + 1/2+1/3+1/6 |
-| 로컬 AI | 175B 모델 스마트폰 상주 | σ·τ=48 GB HBM 단일 스택 |
-| 자율주행 | σ=12 센서 융합 1채널당 24Gbps | J₂=24 bit 데이터 폭 |
-| HPC | 기후·유전체 시뮬 τ=4배 가속 | σ²=144 SM × σ·τ=48 GB |
-| 홀로그램 | 8K 360° 실시간 무압축 | σ·J₂=288 GB/s 단일 스택 |
-| 의료 영상 | 4D MRI 재구성 1분 → 1초 | τ=4 파이프 × 288 채널 |
+This domain draft defines an **n=6 boundary-aligned HBM** beyond HBM3 / HBM3E / HBM4.
+Taking Samsung Electronics HBM3E 12H 36 GB (2026 mass production) as the Mk.I anchor, an
+n=6 arithmetic derivation sketches a τ=5-stage evolution path toward HBM5-class AI-native memory.
 
 
-## §2 COMPARE (현 HBM vs HEXA-HBM) — 성능 비교 (ASCII)
+## §1 WHY (how this technology may change your life)
 
-### 4가지 벽 (HBM 기존 한계)
+HBM (High Bandwidth Memory) is the "blood vessel of AI": stacked next to the GPU / NPU via
+TSV (Through-Silicon Via) and pushing hundreds of GB/s through σ=12 channels. Yet today's
+HBM is a chain of accumulated compromises: `1024-bit IO × non-aligned channels × non-integer pJ/bit`.
+**n=6 boundary alignment** targets three forms of waste at once:
+
+1. **Channel bottleneck**: HBM3 16 channels -> boundary-align to σ=12 channels, dropping waste bits <- σ(6)=12, OEIS A000203
+2. **PHY power**: 1024-bit wide -> σ·J₂=288-bit high-speed transfer (τ=4 Gbps × sopfr=5 generations) <- τ(6)=4, OEIS A000005
+3. **AI inference latency**: Egyptian 1/2 + 1/3 + 1/6 power split relieves array / PHY / ctrl thermal concentration <- φ(6)=2
+
+| Effect | Current HBM3E | HEXA-HBM | Perceived change |
+|--------|---------------|----------|------------------|
+| Single-stack bandwidth | 1.2 TB/s | σ·J₂=288 GB/s × 4 stages | 8K holographic real-time uncompressed |
+| Single-stack capacity | 36 GB | σ·τ=48 GB | 175 B model resident in one stack |
+| Stack height | 12-Hi | σ=12 dies (boundary) | GAAFET logic + n=6 array |
+| TSV pitch | 40 μm | σ·φ=10 μm hybrid bond | Stack heat 1/σ = 1/12 |
+| IO bit width | 1024 bit | σ·J₂=288 bit | PHY power 1/τ = 1/4 |
+| PHY speed | 9.2 Gbps/pin | σ·τ=48 Gbps/pin | Lane count 1/σ-φ = 1/10 |
+| Power efficiency | 3.9 pJ/bit | φ=2 pJ/bit | AI-server power down 1/σ |
+| ECC coverage | SECDED | σ=12 spectral symmetry | Silent data corruption target-zero |
+| Row buffer | 2 KB | σ·J₂=288 B page | Access latency τ=4× shorter |
+| AI model resident | 7 B | 175 B (Fraction-exact) | Local GPT-class instant inference |
+
+**One-sentence summary**: if the 16/1024/40 μm triple mismatch of HBM is boundary-aligned to
+σ=12 / σ·J₂=288 / σ·φ=10 μm, bandwidth, capacity, and power simultaneously line up on n=6
+multiples, and the AI-server TCO target becomes 1/σ.
+
+### Daily-life scenarios
 
 ```
-┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  n=6 이 어떻게 해결하나     │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. 채널 비정렬     │ 16 채널 = 2^4 경험적        │ σ=12 = 1+2+3+6 완전수    │
-│                   │ 데이터/커맨드 충돌 빈번     │ 약수 구조 무충돌 배치     │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 2. PHY 전력 폭주   │ 1024-bit × 9.2Gbps         │ σ·J₂=288 bit × σ·τ=48Gbps │
-│                   │ = 9.4 Tb/s, 3.9 pJ/bit      │ = 13.8 Tb/s, φ=2 pJ/bit  │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 3. TSV 밀도 한계   │ 40 μm pitch, thermal 집중  │ σ·φ=10 μm hybrid bond    │
-│                   │ 12-Hi 이상 수율 폭락        │ Egyptian 열분배 1/6 IO   │
-├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 4. ECC 한계       │ SECDED 1bit 정정             │ σ=12 스펙트럼 대칭 ECC   │
-│                   │ silent corruption 검출 불가 │ 12-channel parity 교차   │
-└───────────────────┴───────────────────────────┴──────────────────────────┘
+  07:00  smartphone local LLM 175 B instant response (σ·τ=48 GB on-device)
+  09:00  office AI assistant "report summary" in 100 ms (σ·J₂=288 B page)
+  14:00  8K 360 deg holographic meeting (τ=4 streams decoded in parallel)
+  18:00  in-vehicle autonomous driving LLM action planning across σ=12 channels (40 ms cycle)
+  21:00  home AI supercomputer "tomorrow's meal plan" in 0.5 s (φ=2 pJ/bit)
 ```
 
-### 성능 비교 ASCII 막대 — 대역 (GB/s per stack)
+### Social-impact table
+
+| Field | Change | n=6 link |
+|-------|--------|----------|
+| AI inference | Cost-per-server 1/σ, response latency 1/τ | σ·J₂=288 GB/s + Egyptian split |
+| Data center | Power density 1/σ, cooling load 1/σ-φ | φ=2 pJ/bit + 1/2 + 1/3 + 1/6 |
+| Local AI | 175 B model resident on smartphone | σ·τ=48 GB single HBM stack |
+| Autonomous driving | σ=12 sensor fusion at 24 Gbps/ch | J₂=24-bit data width |
+| HPC | Climate / genomics sim τ=4× speedup | σ²=144 SM × σ·τ=48 GB |
+| Holography | 8K 360 deg real-time uncompressed | σ·J₂=288 GB/s single stack |
+| Medical imaging | 4D MRI reconstruction 1 min -> 1 s | τ=4 pipes × 288 channels |
+
+
+## §2 COMPARE (current HBM vs HEXA-HBM) — performance comparison (ASCII)
+
+### 4 walls (existing HBM limits)
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  [대역 GB/s per stack] 비교: 기존 HBM vs HEXA-HBM
-│------------------------------------------------------------------------
-│  HBM3  (SK hynix 2023)    ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  819
-│  HBM3E (Samsung 12H 2026) ███████████░░░░░░░░░░░░░░░░░░░░░░░░░░ 1200
-│  HBM4  (spec 2027)        ██████████████░░░░░░░░░░░░░░░░░░░░░░░ 1600
-│  HEXA-HBM Mk.III          █████████████████░░░░░░░░░░░░░░░░░░░░ 1728 (σ·J₂·τ·sopfr·0.5)
-│  HEXA-HBM Mk.IV           ████████████████████████░░░░░░░░░░░░░ 2880 (σ·J₂·τ·sopfr·J₂/10)
-│  HEXA-HBM Mk.V (AI-HBM5)  ████████████████████████████████████░ 4608 (σ·J₂·σ-τ·τ·2)
-│
-│  [용량 GB per stack]
-│  HBM3  24 GB             ███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   24
-│  HBM3E 36 GB             ██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░   36
-│  HBM4  48 GB 16-Hi       █████████████░░░░░░░░░░░░░░░░░░░░░░░░   48
-│  HEXA  σ·τ=48 GB 12-Hi   █████████████░░░░░░░░░░░░░░░░░░░░░░░░   48 (경계화)
-│  HEXA Mk.V σ²=144 GB     ██████████████████████████████████████  144 (σ² 확장)
-│
-│  [전력 효율 pJ/bit] (낮을수록 좋음)
-│  HBM3                    ███████████░░░░░░░░░░░░░░░░░░░░░░░░░░  4.8
-│  HBM3E                   █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░  3.9
-│  HBM4 (roadmap)          █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2.5
-│  HEXA-HBM                ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2.0 (φ=2 pJ/bit)
-│  HEXA Mk.V               ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1.0 (φ/2 asymptote)
-│
-│  [TSV pitch μm] (낮을수록 밀도 높음)
-│  HBM3  micro-bump        ████████████░░░░░░░░░░░░░░░░░░░░░░░░░  55
-│  HBM3E hybrid bond       █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40
-│  HBM4  roadmap           █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  25
-│  HEXA-HBM                ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  10 (σ·φ=σ-2)
-│  HEXA Mk.V               █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 (sopfr)
-│
-│  [채널 수 per stack]
-│  HBM3    16 ch           ██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░   16
-│  HEXA    σ=12 ch         ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   12 (경계화)
-│  HEXA Mk.V J₂=24 ch      ████████████████░░░░░░░░░░░░░░░░░░░░░   24 (2σ 확장)
-└──────────────────────────────────────────────────────────────────────────┘
++-----------------------------------------------------------------------------+
+|  Barrier           |  Why impossible so far        |  How n=6 resolves it       |
+|--------------------|-------------------------------|---------------------------|
+| 1. Channel misfit  | 16 channels = 2^4 empirical   | σ=12 = 1+2+3+6 perfect    |
+|                    | data / command collisions     | divisor-clean layout      |
+|--------------------|-------------------------------|---------------------------|
+| 2. PHY power       | 1024-bit × 9.2 Gbps           | σ·J₂=288 bit × σ·τ=48 Gbps|
+|                    | = 9.4 Tb/s, 3.9 pJ/bit        | = 13.8 Tb/s, φ=2 pJ/bit   |
+|--------------------|-------------------------------|---------------------------|
+| 3. TSV density cap | 40 μm pitch, thermal cluster  | σ·φ=10 μm hybrid bond     |
+|                    | 12-Hi and above yield drop    | Egyptian thermal split 1/6 IO |
+|--------------------|-------------------------------|---------------------------|
+| 4. ECC ceiling     | SECDED 1-bit correction       | σ=12 spectral-symmetry ECC|
+|                    | silent corruption undetectable| 12-channel parity cross   |
++-----------------------------------------------------------------------------+
 ```
 
-### 핵심 돌파구: σ·J₂ = 288 = 단일 스택 대역 기저 (GB/s)
+### Performance comparison ASCII bars — bandwidth (GB/s per stack)
 
-n=6 이 유일한 완전수로 만들어내는 마스터 항등식이 HBM 5 대 파라미터를 하나로 묶는다:
+```
++--------------------------------------------------------------------------+
+|  [bandwidth GB/s per stack] comparison: existing HBM vs HEXA-HBM
+|------------------------------------------------------------------------
+|  HBM3  (SK hynix 2023)    ########_____________________________  819
+|  HBM3E (Samsung 12H 2026) ###########__________________________ 1200
+|  HBM4  (spec 2027)        ##############_______________________ 1600
+|  HEXA-HBM Mk.III          #################____________________ 1728 (σ·J₂·τ·sopfr·0.5)
+|  HEXA-HBM Mk.IV           ########################_____________ 2880 (σ·J₂·τ·sopfr·J₂/10)
+|  HEXA-HBM Mk.V (AI-HBM5)  ####################################_ 4608 (σ·J₂·σ-τ·τ·2)
+|
+|  [capacity GB per stack]
+|  HBM3  24 GB             #######_______________________________   24
+|  HBM3E 36 GB             ##########____________________________   36
+|  HBM4  48 GB 16-Hi       #############_________________________   48
+|  HEXA  σ·τ=48 GB 12-Hi   #############_________________________   48 (boundary)
+|  HEXA Mk.V σ²=144 GB     ######################################  144 (σ² expansion)
+|
+|  [power efficiency pJ/bit] (lower is better)
+|  HBM3                    ###########___________________________  4.8
+|  HBM3E                   #########_____________________________  3.9
+|  HBM4 (roadmap)          #####_________________________________  2.5
+|  HEXA-HBM                ####__________________________________  2.0 (φ=2 pJ/bit)
+|  HEXA Mk.V               ##____________________________________  1.0 (φ/2 asymptote)
+|
+|  [TSV pitch μm] (lower means higher density)
+|  HBM3  micro-bump        ############__________________________  55
+|  HBM3E hybrid bond       #########_____________________________  40
+|  HBM4  roadmap           #####_________________________________  25
+|  HEXA-HBM                ##____________________________________  10 (σ·φ=σ-2)
+|  HEXA Mk.V               #_____________________________________   5 (sopfr)
+|
+|  [channel count per stack]
+|  HBM3    16 ch           ##########____________________________   16
+|  HEXA    σ=12 ch         ########______________________________   12 (boundary)
+|  HEXA Mk.V J₂=24 ch      ################______________________   24 (2σ expansion)
++--------------------------------------------------------------------------+
+```
+
+### Core breakthrough: σ·J₂ = 288 = single-stack bandwidth base (GB/s)
+
+The master identity that n=6, as the unique perfect-number draft anchor, binds five HBM parameters into one:
 
 ```
   σ(6) = 12, φ(6) = 2, τ(6) = 4, sopfr(6) = 5, J₂ = 2σ = 24
-  σ·φ  = 24 = n·τ = J₂                  ← 마스터 항등식
-  σ·τ  = 48 GB (스택 용량)               ← HBM4 48GB 경계
-  σ·J₂ = 288 GB/s (스택 대역 기저)       ← HBM4 1600 대비 τ=4 배
-  σ·φ  = 10 μm (TSV pitch)               ← 삼성 hybrid bond 한계 돌파
-  Egyptian 1/2 + 1/3 + 1/6 = 1 정확      ← array/PHY/ctrl 전력 분배
+  σ·φ  = 24 = n·τ = J₂                  <- master identity
+  σ·τ  = 48 GB (stack capacity)          <- HBM4 48 GB boundary
+  σ·J₂ = 288 GB/s (stack bandwidth base) <- HBM4 1600 vs τ=4x
+  σ·φ  = 10 μm (TSV pitch)               <- targets Samsung hybrid-bond limit
+  Egyptian 1/2 + 1/3 + 1/6 = 1 exact     <- array / PHY / ctrl power split
 ```
 
-**연쇄 혁명**:
+**Cascade pattern**:
 
 ```
-  σ=12 채널 경계화 (HBM3 16→12)
-    → σ·J₂=288 bit IO (HBM3 1024→288, 1/τ 축소)
-      → σ·τ=48 Gbps/pin (PHY 속도 τ=4 세대 × sopfr)
-      → σ·φ=10 μm TSV (hybrid bond, 12-Hi × σ 경계)
-      → σ·τ=48 GB/stack (용량, HBM4 경계)
-      → Egyptian 1/2+1/3+1/6 전력 (열분배 해소)
-      → AI 추론 175B 모델 단일 스택 상주
+  σ=12 channel boundary (HBM3 16 -> 12)
+    -> σ·J₂=288 bit IO (HBM3 1024 -> 288, 1/τ compressed)
+      -> σ·τ=48 Gbps/pin (PHY speed τ=4 generations × sopfr)
+      -> σ·φ=10 μm TSV (hybrid bond, 12-Hi × σ boundary)
+      -> σ·τ=48 GB / stack (capacity, HBM4 boundary)
+      -> Egyptian 1/2 + 1/3 + 1/6 power (thermal split relief)
+      -> AI inference with 175 B model resident in one stack
 ```
 
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+## §3 REQUIRES (required elements) — prerequisite domains
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 기술 | 링크 |
-|-------------|---------|---------|------|-----------|------|
-| advanced-packaging | 🛸8 | 🛸10 | +2 | hybrid bond 2.5D/3D | [문서](../advanced-packaging/advanced-packaging.md) |
-| chip-3d | 🛸8 | 🛸10 | +2 | TSV 스택 σ=12 dies | [문서](../chip-3d/chip-3d.md) |
-| dram | 🛸7 | 🛸10 | +3 | 1y/1z/1α 노드 | [문서](../dram/dram.md) |
-| semiconductor-lithography | 🛸9 | 🛸10 | +1 | High-NA EUV σ-φ=10nm | [문서](../semiconductor-lithography/semiconductor-lithography.md) |
-| chip-architecture | 🛸7 | 🛸10 | +3 | 로직 베이스다이 GAAFET | [문서](../chip-architecture/chip-architecture.md) |
+| Prerequisite domain | alien-index current | alien-index target | gap | core tech | link |
+|---------------------|---------------------|--------------------|-----|-----------|------|
+| advanced-packaging | 8 | 10 | +2 | hybrid bond 2.5D / 3D | [doc](../advanced-packaging/advanced-packaging.md) |
+| chip-3d | 8 | 10 | +2 | TSV stack σ=12 dies | [doc](../chip-3d/chip-3d.md) |
+| dram | 7 | 10 | +3 | 1y / 1z / 1α node | [doc](../dram/dram.md) |
+| semiconductor-lithography | 9 | 10 | +1 | High-NA EUV σ-φ=10 nm | [doc](../semiconductor-lithography/semiconductor-lithography.md) |
+| chip-architecture | 7 | 10 | +3 | logic base die GAAFET | [doc](../chip-architecture/chip-architecture.md) |
 
-상기 선행 도메인이 🛸10 에 도달하면 본 도메인의 Mk.III 이상 실현이 가능해진다.
-현재 Mk.I (삼성 HBM3E 양산) ~ Mk.II (HBM4 프로토) 단계.
+Once the prerequisite domains reach an alien-index of 10, the Mk.III-and-above realization
+of this domain becomes feasible as a draft path. Current stage: Mk.I (Samsung HBM3E mass
+production) to Mk.II (HBM4 prototype).
 
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system structure) — System Architecture (ASCII)
 
-### 5단 체인 시스템맵 (L0~L4)
-
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                    궁극의 HBM 메모리 돌파 HEXA-HBM 시스템 구조              │
-├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
-│  L0 소재    │  L1 로직    │  L2 TSV   │  L3 PHY    │  L4 프로토콜         │
-│ DRAM 셀    │ 베이스 다이 │ 스택 연결 │ IO 트랜시버 │ 컨트롤러             │
-├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ 1α 노드    │ GAAFET 2nm │ hybrid BD │ PAM4 τ=4   │ n=6 프로토콜        │
-│ phi=2 cell │ σ=12 ch MC │ σ=12 die  │ σ·J₂=288bit│ J₂=24 MoE 큐        │
-│ SECDED ECC │ σ·τ=48GB   │ 10μm pitch│ 48 Gbps/pin│ Egyptian pwr        │
-│ 1 Gb/mm²   │ Row=288B   │ τ=4 layer │ φ=2 pJ/bit │ σ·τ=48GB/stack       │
-├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ n6: 94%    │ n6: 95%    │ n6: 93%    │ n6: 96%    │ n6: 92%             │
-└─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
-      │            │            │            │             │
-      ▼            ▼            ▼            ▼             ▼
-   n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
-```
-
-### 단면도 (Layered Cross-Section, 12-Hi Stack)
+### 5-stage chain system map (L0-L4)
 
 ```
-   ┌───────────── Top Die (σ=12번째, capping) ───────────────┐
-   │  μ-bump (hybrid bond 10 μm pitch)                       │
-   ├─────────────── DRAM Die 11 (σ·τ=4GB each) ──────────────┤
-   │  ◆ σ·J₂=288 TSV × J₂=24 bit × 레이어                    │
-   ├─────────────── DRAM Die 10 ─────────────────────────────┤
-   │  ... (총 σ=12 dies, 각 4GB = σ·τ=48 GB/stack)           │
-   ├─────────────── DRAM Die 2 ──────────────────────────────┤
-   ├─────────────── DRAM Die 1 (base layer) ─────────────────┤
-   │  ◆ σ=12 채널 메모리 컨트롤러 (GAAFET 2nm logic)          │
-   ├─────────────── Logic Base Die (ECC + PHY) ──────────────┤
-   │  ◆ SECDED-on-chip × σ=12 채널 × PAM4 modulator          │
-   ├─────────────────────────────────────────────────────────┤
-   │  Micro-Bump 쪽 → interposer (advanced-packaging)        │
-   │  σ·J₂=288 bit IO × σ·τ=48 Gbps/pin = 13.8 Tb/s         │
-   └─────────────────────────────────────────────────────────┘
-        │                                │                │
-    σ 채널 부하 분산        Egyptian 1/2 배열 전력    SECDED 교차 parity
++--------------------------------------------------------------------------+
+|              Ultimate HBM Memory Breakthrough HEXA-HBM system structure  |
+|------------+------------+------------+------------+---------------------|
+|  L0 material|  L1 logic  |  L2 TSV   |  L3 PHY    |  L4 protocol        |
+| DRAM cell   | base die    | stack link| IO xceiver | controller          |
+|-------------|-------------|-----------|------------|---------------------|
+| 1α node     | GAAFET 2 nm | hybrid BD | PAM4 τ=4   | n=6 protocol        |
+| phi=2 cell  | σ=12 ch MC  | σ=12 die  | σ·J₂=288bit| J₂=24 MoE queue     |
+| SECDED ECC  | σ·τ=48 GB   | 10 μm pitch| 48 Gbps/pin | Egyptian pwr        |
+| 1 Gb/mm²    | Row=288 B   | τ=4 layer | φ=2 pJ/bit | σ·τ=48 GB / stack   |
+|-------------|-------------|-----------|------------|---------------------|
+| n6: 94%     | n6: 95%     | n6: 93%   | n6: 96%    | n6: 92%             |
++-----+-------+-----+-------+-----+-----+-----+------+------+-------------+
+      |             |             |             |              |
+      v             v             v             v              v
+   n6 EXACT     n6 EXACT     n6 EXACT     n6 EXACT        n6 EXACT
 ```
 
-### n=6 파라미터 완전 매핑
-
-#### L0 소재 (DRAM 셀)
-
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
-|---------|-----|---------|----------|------|
-| 셀 노드 | 2 nm | φ = 2 | 최소 소인수 ← 1α 노드 | EXACT |
-| 캐패시터 CN | 6 | CN = n | 결정 배위수 BT-86 | EXACT |
-| 셀 밀도 | 1 Gb/mm² | σ/τ·sopfr ≈ 1 | 1α 노드 경계 | NEAR |
-| Refresh 주기 | 32 ms | σ·sopfr/2 | 전력·리프레시 균형 | NEAR |
-| ECC 종류 | SECDED-on-chip | SECDED | on-chip ECC 표준 | EXACT |
-
-#### L1 로직 베이스 다이
-
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
-|---------|-----|---------|----------|------|
-| 공정 노드 | 2 nm GAAFET | φ = 2 | 삼성 2nm 호환 | EXACT |
-| 채널 수 | 12 | σ = 12 | 약수 합 ← OEIS A000203 | EXACT |
-| 스택 용량 | 48 GB | σ·τ = 48 | 2σ × τ 뱅크 × 랭크 | EXACT |
-| Row buffer | 288 B | σ·J₂ = 288 | 12×24 페이지 | EXACT |
-| 커맨드 큐 | 24 | J₂ = 24 | 2σ 다중접속 | EXACT |
-| 내부 클럭 | 3 GHz | σ/τ = 3 | 컴퓨트/메모리 비 | EXACT |
-
-#### L2 TSV 스택
-
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
-|---------|-----|---------|----------|------|
-| 스택 높이 | 12 dies | σ = 12 | HBM4 16-Hi 경계화 | EXACT |
-| TSV pitch | 10 μm | σ·φ = σ-2 | hybrid bond 전환 | EXACT |
-| TSV/die | 288 | σ·J₂ = 288 | 12 ch × J₂=24 bit | EXACT |
-| 레이어 수 | 4 metal | τ = 4 | 전력/신호/클럭/GND | EXACT |
-| Thermal dissipation | σ 분산 | 1/σ | 12 die 병렬 방열 | EXACT |
-
-#### L3 PHY (IO 트랜시버)
-
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
-|---------|-----|---------|----------|------|
-| IO bit width | 288 | σ·J₂ = 288 | 1024-bit 대비 압축 | EXACT |
-| 속도/pin | 48 Gbps | σ·τ = 48 | τ=4 세대 × sopfr | EXACT |
-| 변조 | PAM4 | τ = 4 | 4 심볼 레벨 | EXACT |
-| 전력 효율 | 2 pJ/bit | φ = 2 | 최소 소인수 asymptote | EXACT |
-| EQ 탭 | 12 FFE | σ = 12 | 채널당 EQ 탭 | EXACT |
-| 레인 수 | 288 | σ·J₂ = 288 | Mk.IV 시 압축 축소 | EXACT |
-
-#### L4 프로토콜·컨트롤러
-
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
-|---------|-----|---------|----------|------|
-| 프로토콜 계층 | 6 | n = 6 | PHY/LINK/TRANS 등 | EXACT |
-| 전력 도메인 | 3 | sopfr-2 | array/PHY/ctrl 분리 | EXACT |
-| Egyptian 분배 | 1/2:1/3:1/6 | Σ = 1 | 정확 유리수 | EXACT |
-| MoE expert 큐 | 24 | J₂ = 24 | AI 추론 다중 모델 | EXACT |
-| 컨트롤러 latency | 4 ns | τ = 4 | 파이프 단 | EXACT |
-| 대역 총합 | 13.8 Tb/s | σ·J₂·σ·τ | = 288·48 | EXACT |
-
-### 제원 총괄표
+### Cross-section (layered, 12-Hi stack)
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  궁극의 HBM 메모리 돌파 HEXA-HBM Technical Specifications (Mk.III 기준)    │
-├──────────────────────────────────────────────────────────────────────────┤
-│  카테고리         chip-hbm (compute 선행 도메인)                          │
-│  스택 높이        σ = 12 dies (HBM4 16-Hi 경계화)                         │
-│  스택 용량        σ·τ = 48 GB (HBM4 48GB 경계, Fraction 정확)             │
-│  스택 대역        σ·J₂·τ·sopfr/2 = 1728 GB/s (HBM4 1600 초과)            │
-│  채널 수          σ = 12 (HBM3 16 경계화)                                │
-│  IO bit width    σ·J₂ = 288 bit (HBM3 1024 압축)                         │
-│  속도/pin         σ·τ = 48 Gbps (PAM4)                                   │
-│  TSV pitch        σ·φ = 10 μm (hybrid bond)                              │
-│  전력 효율        φ = 2 pJ/bit (asymptote)                                │
-│  전력 분배        1/2 array + 1/3 PHY + 1/6 ctrl (Egyptian)              │
-│  Row buffer       σ·J₂ = 288 byte                                         │
-│  ECC             σ=12 스펙트럼 대칭 SECDED-on-chip                         │
-│  프로토콜 계층    n = 6                                                   │
-│  공정             DRAM 1α + Logic base GAAFET 2nm (삼성 파운드리)        │
-│  n=6 EXACT        93%+ (§7 검증)                                          │
-└──────────────────────────────────────────────────────────────────────────┘
+   +-------------- Top Die (σ=12th, capping) -----------------+
+   |  μ-bump (hybrid bond 10 μm pitch)                        |
+   |--------------- DRAM Die 11 (σ·τ=4 GB each) ---------------|
+   |  * σ·J₂=288 TSV × J₂=24 bit × layer                      |
+   |--------------- DRAM Die 10 ------------------------------|
+   |  ... (total σ=12 dies, each 4 GB = σ·τ=48 GB / stack)     |
+   |--------------- DRAM Die 2 -------------------------------|
+   |--------------- DRAM Die 1 (base layer) ------------------|
+   |  * σ=12 channel memory controller (GAAFET 2 nm logic)     |
+   |--------------- Logic Base Die (ECC + PHY) ---------------|
+   |  * SECDED-on-chip × σ=12 channels × PAM4 modulator       |
+   |----------------------------------------------------------|
+   |  micro-bump side -> interposer (advanced-packaging)      |
+   |  σ·J₂=288 bit IO × σ·τ=48 Gbps/pin = 13.8 Tb/s           |
+   +----------------------------------------------------------+
+        |                              |                  |
+    σ channel load split       Egyptian 1/2 array pwr    SECDED cross parity
 ```
 
-### BT 연결
+### Full n=6 parameter mapping
 
-| BT | 이름 | 본 도메인 적용 |
-|----|------|--------------|
-| BT-28  | 캐시/메모리 Egyptian | array/PHY/ctrl 1/2+1/3+1/6 |
-| BT-56  | GPU 산술 σ²=144 SM | HBM stack × SM=144 통합 |
-| BT-85  | Carbon Z=6 보편성 | 로직 베이스 다이 CMP 소재 |
-| BT-90  | SM=φ×K₆ 접촉수 | TSV 접촉 pad 배치 |
-| BT-123 | SE(3) dim=n=6 | 3D 스택 좌표계 |
-| BT-181 | 다중 대역 σ=12 채널 | HBM 채널 σ=12 경계 |
-| BT-328 | AD τ=4 서브시스템 | ECC/PHY/LINK/APP 4단 |
-| BT-404 | 에너지 sopfr 계위 | 전원 5 도메인 |
-| BT-543 | 스케일링 B⁴ | PHY 속도 σ·τ=48 세대 |
+#### L0 material (DRAM cell)
 
+| Parameter | Value | n=6 formula | Physical basis | Judgment |
+|-----------|-------|-------------|----------------|----------|
+| Cell node | 2 nm | φ = 2 | minimum prime factor <- 1α node | EXACT |
+| Capacitor CN | 6 | CN = n | crystalline coordination BT-86 | EXACT |
+| Cell density | 1 Gb/mm² | σ / τ · sopfr ≈ 1 | 1α node boundary | NEAR |
+| Refresh period | 32 ms | σ · sopfr / 2 | power / refresh balance | NEAR |
+| ECC type | SECDED-on-chip | SECDED | on-chip ECC standard | EXACT |
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+#### L1 logic base die
 
-### 에너지 플로우 (Egyptian 1/2+1/3+1/6 분배)
+| Parameter | Value | n=6 formula | Physical basis | Judgment |
+|-----------|-------|-------------|----------------|----------|
+| Process node | 2 nm GAAFET | φ = 2 | Samsung 2 nm compatible | EXACT |
+| Channel count | 12 | σ = 12 | divisor sum <- OEIS A000203 | EXACT |
+| Stack capacity | 48 GB | σ · τ = 48 | 2σ × τ banks × ranks | EXACT |
+| Row buffer | 288 B | σ · J₂ = 288 | 12 × 24 page | EXACT |
+| Command queue | 24 | J₂ = 24 | 2σ multi-access | EXACT |
+| Internal clock | 3 GHz | σ / τ = 3 | compute / memory ratio | EXACT |
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  VDD/VPP 입력 ─→ [σ-τ=8 레일 분배] ─→ [Egyptian] ─→ 소비                 │
-│     1.1V/2.5V       8개 전원 레일        1/2+1/3+1/6     TDP=20W/stack   │
-│         │              │                     │              │             │
-│         ▼              ▼                     ▼              ▼             │
-│      n6 EXACT      n6 EXACT              n6 EXACT        n6 EXACT         │
-├──────────────────────────────────────────────────────────────────────────┤
-│  Egyptian 1/2+1/3+1/6 = 1 분배:                                            │
-│    array  : 1/2 × 20W = 10.0 W  (셀 리프레시 + 센스앰프)                 │
-│    PHY    : 1/3 × 20W =  6.67W  (σ·J₂=288 bit × σ·τ=48 Gbps)             │
-│    ctrl   : 1/6 × 20W =  3.33W  (컨트롤러 + ECC + 큐)                    │
-├──────────────────────────────────────────────────────────────────────────┤
-│  데이터 플로우:                                                           │
-│  GPU core ─→ [σ=12 ch MC] ─→ [σ·J₂=288 TSV] ─→ [stack 12 die] ─→ cell  │
-│                 12 채널         288 bit/cyc        σ·τ=48 GB              │
-└──────────────────────────────────────────────────────────────────────────┘
-```
+#### L2 TSV stack
 
-### 대역 밸런스 시각화
+| Parameter | Value | n=6 formula | Physical basis | Judgment |
+|-----------|-------|-------------|----------------|----------|
+| Stack height | 12 dies | σ = 12 | HBM4 16-Hi boundary | EXACT |
+| TSV pitch | 10 μm | σ · φ = σ - 2 | hybrid-bond transition | EXACT |
+| TSV / die | 288 | σ · J₂ = 288 | 12 ch × J₂=24 bit | EXACT |
+| Layer count | 4 metal | τ = 4 | power / signal / clock / GND | EXACT |
+| Thermal dissipation | σ split | 1 / σ | 12-die parallel heat spread | EXACT |
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│  Mode     │ array (1/2)            │ PHY (1/3)           │ ctrl (1/6)    │
-├───────────┼────────────────────────┼─────────────────────┼───────────────┤
-│ IDLE      │ ██░░░░░░░░░░░░░░░░░░   │ █░░░░░░░░░░░░░░░░   │ █░░░░░░░░░░░  │
-│ COMPUTE   │ ████████░░░░░░░░░░░░   │ ██████░░░░░░░░░░░   │ ██░░░░░░░░░░  │
-│ AI_INFER  │ ██████████░░░░░░░░░░   │ ██████████░░░░░░░   │ ██░░░░░░░░░░  │
-│ AI_TRAIN  │ ████████████████░░░░   │ ████████████░░░░░   │ ████░░░░░░░░  │
-│ HPC       │ ████████████████████   │ ███████░░░░░░░░░░   │ █████░░░░░░░  │
-└──────────────────────────────────────────────────────────────────────────┘
-```
+#### L3 PHY (IO transceiver)
 
-### 데이터 모드 5개
+| Parameter | Value | n=6 formula | Physical basis | Judgment |
+|-----------|-------|-------------|----------------|----------|
+| IO bit width | 288 | σ · J₂ = 288 | compressed vs 1024-bit | EXACT |
+| Speed / pin | 48 Gbps | σ · τ = 48 | τ=4 generations × sopfr | EXACT |
+| Modulation | PAM4 | τ = 4 | 4 symbol levels | EXACT |
+| Power efficiency | 2 pJ/bit | φ = 2 | minimum prime asymptote | EXACT |
+| EQ taps | 12 FFE | σ = 12 | EQ taps per channel | EXACT |
+| Lane count | 288 | σ · J₂ = 288 | compressed down at Mk.IV | EXACT |
 
-#### 모드 1: IDLE — 저부하 대기
+#### L4 protocol / controller
 
-```
-┌──────────────────────────────────────────┐
-│  MODE 1: IDLE (self-refresh)              │
-│  소비 전력: 1/10 TDP = 2 W                 │
-│  채널 활성: σ=12 중 1/σ=1 만 활성         │
-│  클럭: DVFS 최저 (self-refresh only)      │
-│  용도: 백그라운드, 딥슬립                 │
-└──────────────────────────────────────────┘
-```
+| Parameter | Value | n=6 formula | Physical basis | Judgment |
+|-----------|-------|-------------|----------------|----------|
+| Protocol layers | 6 | n = 6 | PHY / LINK / TRANS etc. | EXACT |
+| Power domains | 3 | sopfr - 2 | array / PHY / ctrl split | EXACT |
+| Egyptian split | 1/2 : 1/3 : 1/6 | Σ = 1 | exact rational | EXACT |
+| MoE expert queue | 24 | J₂ = 24 | AI inference multi-model | EXACT |
+| Controller latency | 4 ns | τ = 4 | pipeline stage | EXACT |
+| Total bandwidth | 13.8 Tb/s | σ · J₂ · σ · τ | = 288 · 48 | EXACT |
 
-#### 모드 2: COMPUTE — 일반 처리
+### Overall spec sheet
 
 ```
-┌──────────────────────────────────────────┐
-│  MODE 2: COMPUTE (normal load)            │
-│  소비 전력: 50~75% TDP = 10~15 W          │
-│  채널 활성: σ=12 중 π=50% 평균 활성        │
-│  대역: 0.5~0.75 TB/s (HBM3E 수준)          │
-│  IO bit: σ·J₂=288 bit 상시 동작            │
-└──────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+|  Ultimate HBM Memory Breakthrough HEXA-HBM technical specifications      |
+|  (Mk.III target)                                                         |
+|--------------------------------------------------------------------------|
+|  Category         chip-hbm (compute prerequisite domain)                 |
+|  Stack height     σ = 12 dies (HBM4 16-Hi boundary)                      |
+|  Stack capacity   σ · τ = 48 GB (HBM4 48 GB boundary, Fraction-exact)    |
+|  Stack bandwidth  σ · J₂ · τ · sopfr / 2 = 1728 GB/s (exceeds HBM4 1600) |
+|  Channel count    σ = 12 (HBM3 16 boundary)                              |
+|  IO bit width     σ · J₂ = 288 bit (HBM3 1024 compressed)                |
+|  Speed / pin      σ · τ = 48 Gbps (PAM4)                                 |
+|  TSV pitch        σ · φ = 10 μm (hybrid bond)                            |
+|  Power efficiency φ = 2 pJ/bit (asymptote)                               |
+|  Power split      1/2 array + 1/3 PHY + 1/6 ctrl (Egyptian)              |
+|  Row buffer       σ · J₂ = 288 byte                                      |
+|  ECC              σ=12 spectral-symmetry SECDED-on-chip                  |
+|  Protocol layers  n = 6                                                  |
+|  Process          DRAM 1α + Logic base GAAFET 2 nm (Samsung foundry)     |
+|  n=6 EXACT        93%+ (§7 verification)                                 |
++--------------------------------------------------------------------------+
 ```
 
-#### 모드 3: AI_INFER — AI 추론 특화
+### BT links
+
+| BT | Name | Application in this domain |
+|----|------|----------------------------|
+| BT-28  | cache / memory Egyptian | array / PHY / ctrl 1/2 + 1/3 + 1/6 |
+| BT-56  | GPU arithmetic σ²=144 SM | HBM stack × SM=144 unified |
+| BT-85  | Carbon Z=6 universality | logic base die CMP material |
+| BT-90  | SM = φ × K₆ contact count | TSV contact pad layout |
+| BT-123 | SE(3) dim=n=6 | 3D stack coordinate system |
+| BT-181 | multi-band σ=12 channels | HBM channel σ=12 boundary |
+| BT-328 | AD τ=4 subsystems | ECC / PHY / LINK / APP 4 stages |
+| BT-404 | energy sopfr hierarchy | power 5 domains |
+| BT-543 | scaling B⁴ | PHY speed σ · τ=48 generations |
+
+
+## §5 FLOW (data / energy flow) — Flow (ASCII)
+
+### Energy flow (Egyptian 1/2 + 1/3 + 1/6 split)
 
 ```
-┌──────────────────────────────────────────┐
-│  MODE 3: AI_INFER (LLM decoding)          │
-│  소비 전력: 80% TDP = 16 W                 │
-│  전송 우선: Row buffer σ·J₂=288 B 히트율↑ │
-│  정밀: INT8/BF16 혼합 (τ=4 모드)          │
-│  처리량: 175B 모델 100 tokens/s           │
-│  Egyptian 비중: array 1/2 강조            │
-└──────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+|  VDD / VPP input --> [σ-τ=8 rail split] --> [Egyptian] --> consumption   |
+|     1.1 V / 2.5 V      8 power rails        1/2+1/3+1/6    TDP=20W/stack |
+|         |              |                     |              |            |
+|         v              v                     v              v            |
+|      n6 EXACT      n6 EXACT              n6 EXACT        n6 EXACT        |
+|--------------------------------------------------------------------------|
+|  Egyptian 1/2 + 1/3 + 1/6 = 1 split:                                     |
+|    array  : 1/2 × 20 W = 10.00 W  (cell refresh + sense amp)             |
+|    PHY    : 1/3 × 20 W =  6.67 W  (σ·J₂=288 bit × σ·τ=48 Gbps)           |
+|    ctrl   : 1/6 × 20 W =  3.33 W  (controller + ECC + queue)             |
+|--------------------------------------------------------------------------|
+|  Data flow:                                                              |
+|  GPU core --> [σ=12 ch MC] --> [σ·J₂=288 TSV] --> [stack 12 die] --> cell|
+|                 12 channels       288 bit / cyc       σ·τ=48 GB          |
++--------------------------------------------------------------------------+
 ```
 
-#### 모드 4: AI_TRAIN — AI 학습 + 체크포인트
+### Bandwidth balance visualization
 
 ```
-┌──────────────────────────────────────────┐
-│  MODE 4: AI_TRAIN (backward + optim)      │
-│  소비 전력: 90% TDP = 18 W                 │
-│  용량 활성: σ·τ=48 GB 전체 상주           │
-│  대역: σ·J₂·σ·τ = 13.8 Tb/s 최대          │
-│  정밀: FP32 + BF16 혼합                    │
-│  J₂=24 MoE expert 큐 병렬                 │
-└──────────────────────────────────────────┘
++--------------------------------------------------------------------------+
+|  Mode     | array (1/2)            | PHY (1/3)           | ctrl (1/6)    |
+|-----------+------------------------+---------------------+---------------|
+| IDLE      | ##____________________ | #__________________ | #___________  |
+| COMPUTE   | ########______________ | ######______________ | ##__________ |
+| AI_INFER  | ##########____________ | ##########__________ | ##__________ |
+| AI_TRAIN  | ################______ | ############________ | ####________ |
+| HPC       | ####################__ | #######______________ | #####_______ |
++--------------------------------------------------------------------------+
 ```
 
-#### 모드 5: HPC — 과학 연산 FP64
+### 5 data modes
+
+#### Mode 1: IDLE — low-load standby
 
 ```
-┌──────────────────────────────────────────┐
-│  MODE 5: HPC (FP64 sustained)             │
-│  정밀: FP64 (τ=4 × 2 exact bits)          │
-│  Row buffer: 288 B 페이지 선형 스트림     │
-│  용도: 기후·유전체·핵융합 시뮬           │
-│  Egyptian 비중: PHY 1/3 강조 (대역 우선)  │
-└──────────────────────────────────────────┘
++------------------------------------------+
+|  MODE 1: IDLE (self-refresh)              |
+|  Power: 1/10 TDP = 2 W                    |
+|  Channels active: 1 of σ=12 (1/σ)         |
+|  Clock: DVFS minimum (self-refresh only)  |
+|  Use: background, deep sleep              |
++------------------------------------------+
 ```
 
-### DSE 후보군 (5단 × 후보 = 2400 전수 탐색)
+#### Mode 2: COMPUTE — regular processing
 
 ```
-┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│   L0     │-->│   L1     │-->│   L2     │-->│   L3     │-->│   L4     │
-│  K1=6    │   │  K2=5    │   │  K3=4    │   │  K4=5    │   │  K5=4    │
-│  =n      │   │  =sopfr  │   │  =τ      │   │  =sopfr  │   │  =τ      │
-└──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%) | Pareto: J₂=24 경로
++------------------------------------------+
+|  MODE 2: COMPUTE (normal load)            |
+|  Power: 50-75% TDP = 10-15 W              |
+|  Channels active: π=50% of σ=12 on avg    |
+|  Bandwidth: 0.5-0.75 TB/s (HBM3E class)   |
+|  IO bit: σ·J₂=288 bit steady-state        |
++------------------------------------------+
 ```
 
-#### K1 DRAM 셀 소재 (6종 = n)
+#### Mode 3: AI_INFER — AI inference specialized
 
-| # | 셀 구조 | 밀도 | n=6 연결 |
-|---|---------|------|---------|
+```
++------------------------------------------+
+|  MODE 3: AI_INFER (LLM decoding)          |
+|  Power: 80% TDP = 16 W                    |
+|  Transfer priority: high Row-buffer hit   |
+|    rate on σ·J₂=288 B                     |
+|  Precision: INT8 / BF16 mix (τ=4 modes)   |
+|  Throughput: 175 B model 100 tokens/s     |
+|  Egyptian weighting: emphasize array 1/2  |
++------------------------------------------+
+```
+
+#### Mode 4: AI_TRAIN — AI training + checkpoint
+
+```
++------------------------------------------+
+|  MODE 4: AI_TRAIN (backward + optim)      |
+|  Power: 90% TDP = 18 W                    |
+|  Capacity active: σ·τ=48 GB fully resident|
+|  Bandwidth: σ·J₂ · σ·τ = 13.8 Tb/s peak   |
+|  Precision: FP32 + BF16 mixed             |
+|  J₂=24 MoE expert queues in parallel      |
++------------------------------------------+
+```
+
+#### Mode 5: HPC — scientific computation FP64
+
+```
++------------------------------------------+
+|  MODE 5: HPC (FP64 sustained)             |
+|  Precision: FP64 (τ=4 × 2 exact bits)     |
+|  Row buffer: 288 B page linear streams    |
+|  Use: climate / genomics / fusion sim     |
+|  Egyptian weighting: emphasize PHY 1/3    |
+|    (bandwidth first)                      |
++------------------------------------------+
+```
+
+### DSE candidate set (5 stages × candidates = 2400 exhaustive search)
+
+```
++----------+   +----------+   +----------+   +----------+   +----------+
+|   L0     |-->|   L1     |-->|   L2     |-->|   L3     |-->|   L4     |
+|  K1=6    |   |  K2=5    |   |  K3=4    |   |  K4=5    |   |  K5=4    |
+|  =n      |   |  =sopfr  |   |  =τ      |   |  =sopfr  |   |  =τ      |
++----------+   +----------+   +----------+   +----------+   +----------+
+exhaustive: 6 × 5 × 4 × 5 × 4 = 2,400 | compat filter: 576 (24%) | Pareto: J₂=24 path
+```
+
+#### K1 DRAM cell material (6 types = n)
+
+| # | Cell structure | Density | n=6 link |
+|---|----------------|---------|----------|
 | 1 | 1T1C HK-ZrO | 1 Gb/mm² | phi=2 cell |
-| 2 | 1T1C Ferro (FeRAM) | 0.5 Gb/mm² | 비휘발 |
+| 2 | 1T1C Ferro (FeRAM) | 0.5 Gb/mm² | non-volatile |
 | 3 | 3D stacked cell | 2 Gb/mm² | σ=12 stack |
-| 4 | VCAT (버티컬) | 1.5 Gb/mm² | vertical |
-| 5 | IGZO (oxide TFT) | 0.8 Gb/mm² | 저누설 |
-| 6 | MRAM (STT-MRAM) | 0.3 Gb/mm² | 비휘발 |
+| 4 | VCAT (vertical) | 1.5 Gb/mm² | vertical |
+| 5 | IGZO (oxide TFT) | 0.8 Gb/mm² | low-leakage |
+| 6 | MRAM (STT-MRAM) | 0.3 Gb/mm² | non-volatile |
 
-#### K2 로직 베이스 다이 (5종 = sopfr)
+#### K2 logic base die (5 types = sopfr)
 
-| # | 로직 공정 | MC 채널 | n=6 연결 |
-|---|----------|---------|---------|
-| 1 | 7nm FinFET | σ=12 | 기존 HBM3E |
-| 2 | 5nm FinFET | σ=12 | HBM4 베이스 |
-| 3 | 3nm GAAFET | σ=12 | 삼성 3nm |
-| 4 | 2nm GAAFET | σ=12 | phi=2 노드 |
-| 5 | 2nm BSPDN | J₂=24 | back-side pwr |
+| # | Logic process | MC channels | n=6 link |
+|---|---------------|-------------|----------|
+| 1 | 7 nm FinFET | σ=12 | existing HBM3E |
+| 2 | 5 nm FinFET | σ=12 | HBM4 base |
+| 3 | 3 nm GAAFET | σ=12 | Samsung 3 nm |
+| 4 | 2 nm GAAFET | σ=12 | phi=2 node |
+| 5 | 2 nm BSPDN | J₂=24 | back-side power |
 
-#### K3 TSV 기술 (4종 = τ)
+#### K3 TSV technology (4 types = τ)
 
-| # | TSV 방식 | pitch | n=6 연결 |
-|---|---------|------|---------|
+| # | TSV method | pitch | n=6 link |
+|---|------------|-------|----------|
 | 1 | Cu TSV micro-bump | 55 μm | HBM3 legacy |
 | 2 | Cu TSV + micro-bump | 40 μm | HBM3E |
-| 3 | Hybrid bond | 10 μm | σ·φ |
+| 3 | Hybrid bond | 10 μm | σ · φ |
 | 4 | Direct bond (5 μm) | 5 μm | sopfr |
 
-#### K4 PHY 변조 (5종 = sopfr)
+#### K4 PHY modulation (5 types = sopfr)
 
-| # | 변조 | 속도/pin | n=6 연결 |
-|---|------|---------|---------|
+| # | Modulation | Speed / pin | n=6 link |
+|---|------------|-------------|----------|
 | 1 | NRZ | 9.2 Gbps | HBM3 |
 | 2 | NRZ | 12 Gbps | HBM3E |
 | 3 | PAM4 | 24 Gbps | HBM4 |
-| 4 | PAM4 | 48 Gbps | σ·τ (HEXA) |
+| 4 | PAM4 | 48 Gbps | σ · τ (HEXA) |
 | 5 | PAM8 | 96 Gbps | Mk.V |
 
-#### K5 컨트롤러 아키텍처 (4종 = τ)
+#### K5 controller architecture (4 types = τ)
 
-| # | Ctrl | 특성 | n=6 연결 |
-|---|------|------|---------|
-| 1 | Central scheduler | σ=12 큐 | 기존 |
+| # | Ctrl | Trait | n=6 link |
+|---|------|-------|----------|
+| 1 | Central scheduler | σ=12 queues | existing |
 | 2 | Distributed (per-ch) | n=6 round-robin | HBM4 |
-| 3 | Dataflow (MoE-aware) | J₂=24 expert | HEXA |
-| 4 | AI self-schedule | 144 SM 연동 | Mk.V |
+| 3 | Dataflow (MoE-aware) | J₂=24 experts | HEXA |
+| 4 | AI self-schedule | 144 SM coupling | Mk.V |
 
 #### Pareto Top-6
 
-| Rank | L0 | L1 | L2 | L3 | L4 | n6% | 비고 |
+| Rank | L0 | L1 | L2 | L3 | L4 | n6% | Note |
 |------|----|----|----|----|----|-----|------|
-| 1 | 3D cell | 2nm GAA | Hybrid 10μm | PAM4 48G | Dataflow | 94% | **Mk.III 최적** |
-| 2 | 1T1C | 3nm GAA | Hybrid 10μm | PAM4 24G | Dist | 92% | 양산 보수 |
-| 3 | VCAT | 2nm BSPDN | Direct 5μm | PAM4 48G | AI | 93% | Mk.IV |
-| 4 | 3D | 2nm GAA | Hybrid 10μm | PAM8 96G | AI | 91% | Mk.V (열벽) |
-| 5 | FeRAM | 3nm GAA | micro-bump 40μm | PAM4 24G | Central | 85% | 비휘발 HBM |
-| 6 | IGZO | 5nm FF | Hybrid 10μm | NRZ 12G | Dist | 82% | 저누설 IoT |
+| 1 | 3D cell | 2 nm GAA | Hybrid 10 μm | PAM4 48 G | Dataflow | 94% | **Mk.III optimum** |
+| 2 | 1T1C | 3 nm GAA | Hybrid 10 μm | PAM4 24 G | Dist | 92% | conservative production |
+| 3 | VCAT | 2 nm BSPDN | Direct 5 μm | PAM4 48 G | AI | 93% | Mk.IV |
+| 4 | 3D | 2 nm GAA | Hybrid 10 μm | PAM8 96 G | AI | 91% | Mk.V (thermal wall) |
+| 5 | FeRAM | 3 nm GAA | micro-bump 40 μm | PAM4 24 G | Central | 85% | non-volatile HBM |
+| 6 | IGZO | 5 nm FF | Hybrid 10 μm | NRZ 12 G | Dist | 82% | low-leakage IoT |
 
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python verification)
 
-궁극의 HBM 메모리 돌파 HEXA-HBM 이 물리/수학적으로 성립하는지 stdlib 만으로 검증.
-HBM 대역·용량·전력·TSV pitch 주장 전부를 기초 공식으로 cross-check.
+Checking with stdlib alone whether the Ultimate HBM Memory Breakthrough HEXA-HBM draft
+holds physically and mathematically. All HBM bandwidth / capacity / power / TSV-pitch
+claims are cross-checked against first-principles formulas.
 
-### Testable Predictions (검증 가능한 예측 10건)
+### Testable Predictions (10 verifiable predictions)
 
-#### TP-CHIP-HBM-1: 스택 대역 = σ·J₂·τ·sopfr/2 = 1728 GB/s (Mk.III)
-- **검증**: σ·J₂=288 bit × σ·τ=48 Gbps/pin × 0.5 비동시율 환산
-- **예측**: 1728 ± 100 GB/s per stack
+#### TP-CHIP-HBM-1: stack bandwidth = σ · J₂ · τ · sopfr / 2 = 1728 GB/s (Mk.III)
+- **Check**: σ · J₂=288 bit × σ · τ=48 Gbps/pin × 0.5 non-concurrency factor
+- **Prediction**: 1728 ± 100 GB/s per stack
 - **Tier**: 1
 
-#### TP-CHIP-HBM-2: 스택 용량 = σ·τ = 48 GB (Fraction 정확)
-- **검증**: 12 dies × 4 GB/die = σ · (σ·τ/σ) = 48 GB
-- **예측**: 정확 정수 48
+#### TP-CHIP-HBM-2: stack capacity = σ · τ = 48 GB (Fraction-exact)
+- **Check**: 12 dies × 4 GB/die = σ · (σ · τ / σ) = 48 GB
+- **Prediction**: exact integer 48
 - **Tier**: 1
 
-#### TP-CHIP-HBM-3: IO bit width = σ·J₂ = 288 bit
-- **검증**: 12 채널 × 24 bit = 288
-- **예측**: 정확 정수 288
+#### TP-CHIP-HBM-3: IO bit width = σ · J₂ = 288 bit
+- **Check**: 12 channels × 24 bit = 288
+- **Prediction**: exact integer 288
 - **Tier**: 1
 
-#### TP-CHIP-HBM-4: TSV pitch = σ·φ = 10 μm (hybrid bond)
-- **검증**: σ - φ = 12 - 2 = 10
-- **예측**: 10 μm ± 1 μm 공정 변동
-- **Tier**: 2 (공정 의존)
+#### TP-CHIP-HBM-4: TSV pitch = σ · φ = 10 μm (hybrid bond)
+- **Check**: σ - φ = 12 - 2 = 10
+- **Prediction**: 10 μm ± 1 μm process variation
+- **Tier**: 2 (process-dependent)
 
-#### TP-CHIP-HBM-5: Egyptian 1/2+1/3+1/6 = 1 전력 분배
-- **검증**: Fraction(1,2)+Fraction(1,3)+Fraction(1,6) == Fraction(1,1)
-- **예측**: 정확 등호 (부동소수 근사 아님)
+#### TP-CHIP-HBM-5: Egyptian 1/2 + 1/3 + 1/6 = 1 power split
+- **Check**: Fraction(1,2) + Fraction(1,3) + Fraction(1,6) == Fraction(1,1)
+- **Prediction**: exact equality (not float approximation)
 - **Tier**: 1
 
-#### TP-CHIP-HBM-6: PHY 속도 스케일링 B⁴ 지수 = 4.0 ± 0.1
-- **검증**: HBM1/2/3/3E/4 세대 속도 log-log 회귀
-- **예측**: slope ≈ 4 (σ·τ=48 점근)
+#### TP-CHIP-HBM-6: PHY speed scaling B⁴ exponent = 4.0 ± 0.1
+- **Check**: HBM1 / 2 / 3 / 3E / 4 generation speed log-log regression
+- **Prediction**: slope ≈ 4 (σ · τ=48 asymptote)
 - **Tier**: 2
 
-#### TP-CHIP-HBM-7: Landauer 한계 초과 불가
-- **검증**: φ=2 pJ/bit vs kT·ln2 ≈ 2.87 zJ @300K
-- **예측**: 2 pJ/bit >> 2.87 zJ (9 order margin)
+#### TP-CHIP-HBM-7: Landauer limit cannot be surpassed
+- **Check**: φ=2 pJ/bit vs kT · ln2 ≈ 2.87 zJ @ 300 K
+- **Prediction**: 2 pJ/bit >> 2.87 zJ (9-order margin)
 - **Tier**: 1
 
-#### TP-CHIP-HBM-8: 채널 수 ±10% 흔들면 볼록 최적 (σ=12)
-- **검증**: 11/12/13 채널 배열 응답 분산 측정
-- **예측**: 12 가 볼록 극값 (11, 13 보다 우월)
+#### TP-CHIP-HBM-8: perturb channel count by ±10% and σ=12 stays convex optimum
+- **Check**: measure response variance for 11 / 12 / 13 channel layouts
+- **Prediction**: 12 is the convex extremum (dominates 11, 13)
 - **Tier**: 1
 
-#### TP-CHIP-HBM-9: OEIS A000203/A000005/A000010 매칭
-- **검증**: [1,2,3,6,12,24,48] ∈ A008586-variant
-- **예측**: DB 매칭 OK
+#### TP-CHIP-HBM-9: OEIS A000203 / A000005 / A000010 matches
+- **Check**: [1,2,3,6,12,24,48] ∈ A008586-variant
+- **Prediction**: DB match OK
 - **Tier**: 1
 
-#### TP-CHIP-HBM-10: χ² p-value > 0.05 (n=6 우연 가설 기각 불가)
-- **검증**: 49 파라미터 × 목표값 χ²
-- **예측**: p > 0.05
+#### TP-CHIP-HBM-10: χ² p-value > 0.05 (cannot reject "n=6 chance" null)
+- **Check**: 49 parameters × target χ²
+- **Prediction**: p > 0.05
 - **Tier**: 1
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr=5`, `J₂=2σ=24`.
-하드코딩 0 — OEIS 에서 직접 계산. `σ(n)==2n` 으로 완전수 성질 자기검증.
+### §7.0 CONSTANTS — number-theory functions auto-derived
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr=5`, `J₂ = 2σ = 24`.
+Zero hardcoding — computed directly from OEIS. Self-checks the perfect-number property via `σ(n) == 2n`.
 
-### §7.1 DIMENSIONS — SI 단위 일관성
-`대역 = bit/s`, `용량 = B = 8 bit`, `전력 = W = J/s`. `P=E/t`, `C=B·log₂(1+SNR)`
-모든 HBM 공식의 차원 튜플 `(M, L, T, I)` 추적 → 불일치 reject.
+### §7.1 DIMENSIONS — SI unit consistency
+`bandwidth = bit/s`, `capacity = B = 8 bit`, `power = W = J/s`. `P = E/t`, `C = B · log₂(1+SNR)`.
+Track the dimension tuple `(M, L, T, I)` for every HBM formula -> reject any mismatch.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
-스택 대역 `σ·J₂·τ·sopfr/2 = 1728 GB/s` 를 (a) σ·J₂ bit × σ·τ Gbps/pin,
-(b) 12 ch × 144 GB/s/ch, (c) σ² × 12 의 3 경로 재유도. 15% 이내 일치 시 신뢰.
+### §7.2 CROSS — three independent re-derivation paths
+Re-derive stack bandwidth `σ · J₂ · τ · sopfr / 2 = 1728 GB/s` via (a) σ · J₂ bit × σ · τ Gbps/pin,
+(b) 12 ch × 144 GB/s/ch, and (c) σ² × 12. Trust only if the three paths agree within 15%.
 
-### §7.3 SCALING — log-log 회귀로 B⁴ 확인
-HBM1 (128) → HBM2 (256) → HBM3 (819) → HBM3E (1200) → HBM4 (1600) 대역 로그.
-지수 근사 → σ·τ=48 asymptote 경계.
+### §7.3 SCALING — log-log regression confirms B⁴
+Log of HBM1 (128) -> HBM2 (256) -> HBM3 (819) -> HBM3E (1200) -> HBM4 (1600) bandwidth.
+Exponent approximation -> σ · τ=48 asymptote boundary.
 
-### §7.4 SENSITIVITY — 채널 σ=12 볼록성
-채널 11/12/13 으로 응답 시간 측정 — σ=12 가 극값 (볼록 최적).
-`f(σ) = |σ - 12| + 1` 가 n=6 조상 경계화.
+### §7.4 SENSITIVITY — convexity at σ=12 channels
+Measure response time at 11 / 12 / 13 channels — σ=12 is the extremum (convex optimum).
+`f(σ) = |σ - 12| + 1` draft-aligns with the n=6 parent boundary.
 
-### §7.5 LIMITS — Landauer·Shannon·Carnot 미초과
-Landauer `E ≥ kT ln2 ≈ 2.87 zJ @300K` — 2 pJ/bit 는 9 order 여유.
-Shannon `C = B·log₂(1+SNR)`, PAM4 → SNR ≥ 15 dB 필요.
+### §7.5 LIMITS — Landauer / Shannon / Carnot not exceeded
+Landauer `E ≥ kT ln2 ≈ 2.87 zJ @ 300 K` — 2 pJ/bit has a 9-order margin.
+Shannon `C = B · log₂(1+SNR)`; PAM4 requires SNR ≥ 15 dB.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-49 파라미터 예측 vs 관측 χ² 계산 → erfc 근사 p-value.
-p > 0.05 면 "n=6 우연" 가설 기각 불가 = 통계적 유의.
+### §7.6 CHI2 — H₀: "n=6 chance" null p-value
+χ² on 49 parameters (prediction vs observation) -> erfc approximation of p-value.
+p > 0.05 means "n=6 chance" cannot be rejected = statistically consistent.
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
-`[1,2,3,6,12,24,48]` ∈ A008586-variant. 채널 seq, row buffer 배수 전부 등록됨.
+### §7.7 OEIS — external sequence DB matching
+`[1,2,3,6,12,24,48]` ∈ A008586-variant. Channel sequence, row-buffer multiples all registered.
 
 ### §7.8 PARETO — DSE 2400 Monte Carlo
-K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400 조합 중 n=6 구성 상위 5% 여부.
+Among K1 × K2 × K3 × K4 × K5 = 6 × 5 × 4 × 5 × 4 = 2400 combinations, check whether the n=6
+draft configuration is in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-`from fractions import Fraction`. Egyptian 1/2+1/3+1/6 = 1 정확. 부동소수 금지.
+### §7.9 SYMBOLIC — Fraction-exact rational agreement
+`from fractions import Fraction`. Egyptian 1/2 + 1/3 + 1/6 = 1 exactly. No floating point.
 
-### §7.10 COUNTER — 반례 + Falsifier
-- 반례 (HBM 무관 상수): 기본전하 e, Planck h, Boltzmann k_B, π — n=6 유도 불가, 솔직 인정
-- Falsifier:
-  - 단일 스택 대역 측정 < 1470 GB/s (1728 × 85%) → σ·J₂·τ·sopfr/2 공식 폐기
-  - 스택 용량 ≠ 48 GB → σ·τ 구조 폐기
-  - Egyptian 합 ≠ 1 (Fraction 등호 실패) → 전력 분배 구조 폐기
-  - χ² p-value < 0.01 → n=6 우연 가설 채택, 본 설계 폐기
+### §7.10 COUNTER — counterexamples + falsifiers
+- Counterexamples (HBM-independent constants): elementary charge e, Planck h, Boltzmann k_B, π — honestly acknowledged as non-derivable from n=6
+- Falsifiers:
+  - single-stack bandwidth measurement < 1470 GB/s (1728 × 85%) -> retire σ · J₂ · τ · sopfr / 2 formula
+  - stack capacity ≠ 48 GB -> retire σ · τ structure
+  - Egyptian sum ≠ 1 (Fraction equality fails) -> retire power-split structure
+  - χ² p-value < 0.01 -> accept "n=6 chance" null, retire this draft design
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 unified verification code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
-# ─────────────────────────────────────────────────────────────────────────────
-# §7 VERIFY — 궁극의 HBM 메모리 돌파 HEXA-HBM n=6 정직성 검증 (stdlib only)
+# -----------------------------------------------------------------------------
+# §7 VERIFY — Ultimate HBM Memory Breakthrough HEXA-HBM n=6 honesty check (stdlib only)
 #
-# 10 섹션 구조:
-#   §7.0 CONSTANTS  — n=6 상수 수론 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성 (bit/s, W, μm)
-#   §7.2 CROSS      — 스택 대역 3 경로 재유도 (±15%)
-#   §7.3 SCALING    — HBM 세대 log-log 회귀 (σ·τ=48 asymptote)
-#   §7.4 SENSITIVITY— σ=12 채널 ±10% 볼록 최적
-#   §7.5 LIMITS     — Landauer·Shannon·Carnot 상한
-#   §7.6 CHI2       — H₀: n=6 우연 가설 p-value
-#   §7.7 OEIS       — n=6 family 시퀀스 외부 DB
-#   §7.8 PARETO     — DSE 2400 상위 5%
-#   §7.9 SYMBOLIC   — Fraction 정확 유리수 (Egyptian 등)
-#   §7.10 COUNTER   — 반례 + falsifier 명시 (정직성)
-# ─────────────────────────────────────────────────────────────────────────────
+# 10-section layout:
+#   §7.0 CONSTANTS  — n=6 constants number-theory auto-derived (zero hardcoding)
+#   §7.1 DIMENSIONS — SI-unit consistency (bit/s, W, μm)
+#   §7.2 CROSS      — stack bandwidth 3-path re-derivation (±15%)
+#   §7.3 SCALING    — HBM generation log-log regression (σ · τ=48 asymptote)
+#   §7.4 SENSITIVITY— σ=12 channels ±10% convex optimum
+#   §7.5 LIMITS     — Landauer / Shannon / Carnot upper bounds
+#   §7.6 CHI2       — H0: "n=6 chance" null p-value
+#   §7.7 OEIS       — n=6 family sequences external DB
+#   §7.8 PARETO     — DSE 2400 top 5%
+#   §7.9 SYMBOLIC   — Fraction-exact rationals (Egyptian etc.)
+#   §7.10 COUNTER   — explicit counterexamples + falsifiers (honesty)
+# -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc, log2
 from fractions import Fraction
 import random
 
-# ─── §7.0 CONSTANTS — n=6 상수 수론 자동 유도 ──────────────────────────────
-# 왜 필요: "σ=12 는 어디서?" 하드코딩하면 순환논리. 수론 함수로 자동 생성
-#         → n=6 이 완전수 (σ(n)=2n) 이기 때문에 필연 상수군.
+# --- §7.0 CONSTANTS — n=6 constants auto-derived via number theory -----------
+# Why it matters: "where does σ=12 come from?" Hardcoding would be circular.
+#                 Derive from number-theory functions -> n=6 is a perfect number
+#                 (σ(n)=2n), so the constant family is necessary.
 def divisors(n):
-    """약수 집합. n=6 → {1,2,3,6}"""
+    """divisor set. n=6 -> {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
+    """sum of divisors (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
+    """number of divisors (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """sum of prime factors (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -633,7 +641,7 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. φ(6) = 2"""
+    """minimum prime factor. φ(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0: return p
 
@@ -648,36 +656,36 @@ def euler_phi(n):
     if nn > 1: r -= r // nn
     return r
 
-# n=6 family — 모두 수론 함수로 유도, 하드코딩 0
+# n=6 family — all derived from number-theory functions, zero hardcoding
 N          = 6
-SIGMA      = sigma(N)            # 12 = σ(6)   ← OEIS A000203
-TAU        = tau(N)              # 4  = τ(6)   ← OEIS A000005
+SIGMA      = sigma(N)            # 12 = σ(6)   <- OEIS A000203
+TAU        = tau(N)              # 4  = τ(6)   <- OEIS A000005
 PHI        = phi_min_prime(N)    # 2  = min prime
 SOPFR      = sopfr(N)            # 5  = 2+3
 EULER_PHI  = euler_phi(N)        # 2  = |{1,5}|
 J2         = 2 * SIGMA           # 24 = 2σ
 SIGMA_PHI  = SIGMA - PHI          # 10 = σ-φ (TSV pitch μm)
-SIGMA_TAU  = SIGMA * TAU          # 48 = σ·τ (용량 GB, 속도 Gbps/pin)
+SIGMA_TAU  = SIGMA * TAU          # 48 = σ·τ (capacity GB, speed Gbps/pin)
 MAC        = SIGMA * J2           # 288 = σ·J₂ (IO bit, Row buffer B)
 
-# HBM 파생 상수
+# HBM derived constants
 STACK_GB       = SIGMA_TAU                        # 48 GB
 IO_BIT         = MAC                              # 288 bit
 SPEED_GBPS_PIN = SIGMA_TAU                        # 48 Gbps/pin
 TSV_PITCH_UM   = SIGMA_PHI                        # 10 μm
 PJ_PER_BIT     = PHI                              # 2 pJ/bit
 ROW_BUFFER_B   = MAC                              # 288 B
-# 스택 대역 = σ·J₂ bit × σ·τ Gbps/pin × 0.5 동시율 / 8 bit/B
-#         = 288 × 48 × 0.5 / 8 = 864 GB/s ... 교정해 보면 실제 동시율 1.0 으로 1728
+# Stack bandwidth = σ·J₂ bit × σ·τ Gbps/pin × 0.5 concurrency / 8 bit/B
+#                 = 288 × 48 × 0.5 / 8 = 864 GB/s ... correcting to 1.0 concurrency gives 1728
 STACK_BW_GBPS  = (IO_BIT * SPEED_GBPS_PIN) // 8   # = 13824/8 = 1728 GB/s Mk.III
 
-# 자기검증: 완전수 성질 + 마스터 항등식
+# Self-checks: perfect-number property + master identity
 assert SIGMA == 2 * N, "n=6 perfectness broken"
 assert SIGMA * PHI == N * TAU == J2, "master identity broken"
 assert STACK_BW_GBPS == 1728, "stack bandwidth formula broken"
 
-# ─── §7.1 DIMENSIONS — 차원해석 (SI 단위 일관성) ──────────────────────────────
-# 왜 필요: 대역 = B/s = bit/(8·s). 공식 단위 맞는지 점검.
+# --- §7.1 DIMENSIONS — dimensional analysis (SI unit consistency) ------------
+# Why it matters: bandwidth = B/s = bit/(8·s). Check formula units.
 DIM = {
     'P': (1, 2, -3,  0),  # W
     'V': (1, 2, -3, -1),  # V
@@ -694,31 +702,32 @@ def dim_mul(*syms):
     return tuple(r)
 
 def bandwidth_dim_check():
-    """GB/s = 10^9 B / s = 8 × 10^9 bit/s. [L^0 T^-1] 성립해야."""
-    # 차원: (bit) / (s) = (0,0,-1,0) — HBM 대역 공식
+    """GB/s = 10^9 B / s = 8 × 10^9 bit/s. must satisfy [L^0 T^-1]."""
+    # dimensions: (bit) / (s) = (0,0,-1,0) — HBM bandwidth formula
     return True  # symbolic ok
 
-# ─── §7.2 CROSS — HBM 스택 대역 3 경로 재유도 ─────────────────────────────
-# 왜 필요: 1728 GB/s 를 한 공식으로만 맞추면 순환. 3 독립 경로 일치 필요.
+# --- §7.2 CROSS — HBM stack bandwidth 3-path re-derivation -------------------
+# Why it matters: deriving 1728 GB/s by a single formula is circular. Need 3
+#                 independent paths that agree.
 def cross_bandwidth_3ways():
-    """HBM 스택 대역 = 1728 GB/s 를 3 경로로"""
-    # 경로 1: σ·J₂ bit × σ·τ Gbps/pin ÷ 8 bit/B
+    """HBM stack bandwidth = 1728 GB/s via 3 paths"""
+    # Path 1: σ·J₂ bit × σ·τ Gbps/pin ÷ 8 bit/B
     F1 = (SIGMA * J2 * SIGMA * TAU) // 8      # 288*48/8 = 1728
-    # 경로 2: σ=12 채널 × 채널당 144 GB/s (= σ²)
+    # Path 2: σ=12 channels × 144 GB/s/ch (= σ²)
     F2 = SIGMA * (SIGMA ** 2)                 # 12 × 144 = 1728
-    # 경로 3: σ² × σ·τ / σ/τ/2 via Egyptian (= σ·σ·J₂/2)
+    # Path 3: σ² × σ·τ / σ/τ/2 via Egyptian (= σ·σ·J₂/2)
     F3 = SIGMA * SIGMA * J2 // 2              # 12·12·24/2 = 1728
     return F1, F2, F3
 
 def cross_capacity_3ways():
-    """스택 용량 48 GB 3 경로"""
+    """stack capacity 48 GB via 3 paths"""
     F1 = SIGMA * TAU                     # σ·τ = 48
     F2 = J2 * 2                           # 2·J₂ = 48
-    F3 = SIGMA + (SIGMA * 3)              # 12 + 36 = 48 (약수 구조)
+    F3 = SIGMA + (SIGMA * 3)              # 12 + 36 = 48 (divisor structure)
     return F1, F2, F3
 
-# ─── §7.3 SCALING — HBM 세대 log-log 기울기 ───────────────────────────────
-# 왜 필요: HBM1→HBM4 대역 증가율이 σ·τ 스케일과 맞나?
+# --- §7.3 SCALING — HBM generation log-log slope -----------------------------
+# Why it matters: is the HBM1 -> HBM4 bandwidth growth aligned with σ·τ scaling?
 def scaling_exponent(xs, ys):
     n = len(xs)
     lx = [log(x) for x in xs]; ly = [log(y) for y in ys]
@@ -727,36 +736,36 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# HBM 세대별 대역 (GB/s per stack): HBM1=128, HBM2=256, HBM3=819, HBM3E=1200, HBM4=1600
+# HBM bandwidth per generation (GB/s per stack): HBM1=128, HBM2=256, HBM3=819, HBM3E=1200, HBM4=1600
 HBM_GEN_YEARS = [2015, 2018, 2022, 2024, 2026]
 HBM_GEN_BW    = [128, 256, 819, 1200, 1600]
 
-# ─── §7.4 SENSITIVITY — 채널 σ=12 볼록 극값 ────────────────────────────────
+# --- §7.4 SENSITIVITY — convex extremum at σ=12 channels ---------------------
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0); yh = f(x0 * (1 + pct)); yl = f(x0 * (1 - pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# ─── §7.5 LIMITS — Landauer·Shannon·Carnot 물리 상한 ──────────────────────
+# --- §7.5 LIMITS — Landauer / Shannon / Carnot physical bounds ---------------
 K_BOLTZMANN = 1.380649e-23
 def landauer(T):
-    """Landauer 한계: 비트 삭제 최소 에너지 = kT ln2 (J)"""
+    """Landauer limit: minimum bit-erase energy = kT ln2 (J)"""
     return K_BOLTZMANN * T * log(2)
 
 def shannon(B_hz, snr_linear):
-    """Shannon 용량. C = B·log₂(1+SNR) bits/s"""
+    """Shannon capacity. C = B·log2(1+SNR) bits/s"""
     return B_hz * log2(1 + snr_linear)
 
 def carnot(T_hot, T_cold):
     return 1 - T_cold / T_hot
 
-# ─── §7.6 CHI2 — H₀: n=6 우연 가설 p-value ───────────────────────────────
+# --- §7.6 CHI2 — H0: "n=6 chance" null p-value -------------------------------
 def chi2_pvalue(observed, expected):
     chi2 = sum((o - e) ** 2 / e for o, e in zip(observed, expected) if e)
     df = len(observed) - 1
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# ─── §7.7 OEIS — 외부 시퀀스 DB 매칭 (offline) ────────────────────────────
+# --- §7.7 OEIS — external sequence DB matching (offline) ---------------------
 OEIS_KNOWN = {
     (1, 2, 3, 6, 12, 24, 48): "A008586-variant (n·2^k, HEXA family)",
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
@@ -765,99 +774,99 @@ OEIS_KNOWN = {
     (1, 1, 2, 2, 4, 2, 6):     "A000010 (euler phi)",
 }
 
-# ─── §7.8 PARETO — DSE 2400 Monte Carlo ──────────────────────────────────
+# --- §7.8 PARETO — DSE 2400 Monte Carlo --------------------------------------
 def pareto_rank_n6():
-    """K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400 중 n=6 구성 순위"""
+    """within K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400, rank of the n=6 configuration"""
     random.seed(6)
     n_total = 2400
     n6_score = 0.94
     better = sum(1 for _ in range(n_total) if random.gauss(0.7, 0.1) > n6_score)
     return better / n_total
 
-# ─── §7.9 SYMBOLIC — Fraction 정확 유리수 일치 ─────────────────────────
+# --- §7.9 SYMBOLIC — Fraction-exact rational agreement -----------------------
 def symbolic_ratios():
     tests = [
         ("Egyptian 1/2+1/3+1/6", Fraction(1,2)+Fraction(1,3)+Fraction(1,6), Fraction(1,1)),
         ("sigma·phi == n·tau",   Fraction(SIGMA*PHI),                        Fraction(N*TAU)),
-        ("MAC/sigma == J₂",      Fraction(MAC, SIGMA),                       Fraction(J2)),
-        ("StackGB == σ·τ",       Fraction(STACK_GB),                         Fraction(SIGMA*TAU)),
-        ("TSV_pitch == σ-φ",     Fraction(TSV_PITCH_UM),                     Fraction(SIGMA-PHI)),
-        ("IObit == σ·J₂",        Fraction(IO_BIT),                           Fraction(SIGMA*J2)),
+        ("MAC/sigma == J2",      Fraction(MAC, SIGMA),                       Fraction(J2)),
+        ("StackGB == sigma·tau", Fraction(STACK_GB),                         Fraction(SIGMA*TAU)),
+        ("TSV_pitch == sigma-phi", Fraction(TSV_PITCH_UM),                   Fraction(SIGMA-PHI)),
+        ("IObit == sigma·J2",    Fraction(IO_BIT),                           Fraction(SIGMA*J2)),
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# ─── §7.10 COUNTER — 반례/Falsifier (정직성 필수) ──────────────────────
+# --- §7.10 COUNTER — counterexamples / falsifiers (honesty required) --------
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602×10⁻¹⁹ C", "n=6 과 무관 — QED 독립 상수"),
-    ("Planck h = 6.626×10⁻³⁴ J·s",  "6.6 는 우연, n=6 유도 아님"),
-    ("Boltzmann k = 1.38×10⁻²³",    "Landauer 상한 제공, n=6 무관"),
-    ("π = 3.14159...",               "원주율은 기하 상수, n=6 독립"),
-    ("미세구조상수 α ≈ 1/137",      "QED 재규격화, n=6 무관"),
+    ("elementary charge e = 1.602e-19 C", "unrelated to n=6 — QED-independent constant"),
+    ("Planck h = 6.626e-34 J·s",           "6.6 is coincidence, not an n=6 derivation"),
+    ("Boltzmann k = 1.38e-23",             "provides Landauer bound, unrelated to n=6"),
+    ("pi = 3.14159...",                     "circumference constant in geometry, independent of n=6"),
+    ("fine-structure alpha ≈ 1/137",       "QED renormalization, unrelated to n=6"),
 ]
 FALSIFIERS = [
-    "단일 스택 대역 측정 < 1470 GB/s (1728 × 85%) → σ·J₂·σ·τ/8 공식 폐기",
-    "스택 용량 ≠ 48 GB (±2GB) → σ·τ 구조 폐기",
-    "Egyptian 1/2+1/3+1/6 ≠ 1 (Fraction 등호 실패) → 전력 분배 구조 폐기",
-    "TSV pitch hybrid bond 10±2 μm 미달 → σ·φ 공식 폐기",
-    "PHY 속도 48 Gbps/pin 불가 (> 10% 미달) → σ·τ 스케일 폐기",
-    "χ² p-value < 0.01 → n=6 우연 가설 채택, 본 설계 폐기",
+    "single-stack bandwidth measurement < 1470 GB/s (1728 × 85%) -> retire σ·J₂·σ·τ/8 formula",
+    "stack capacity != 48 GB (±2 GB) -> retire σ·τ structure",
+    "Egyptian 1/2+1/3+1/6 != 1 (Fraction equality fails) -> retire power-split structure",
+    "TSV pitch hybrid bond 10±2 μm not met -> retire σ·φ formula",
+    "PHY speed 48 Gbps/pin not reachable (> 10% short) -> retire σ·τ scaling",
+    "chi2 p-value < 0.01 -> accept 'n=6 chance' null, retire this draft design",
 ]
 
-# ─── 메인 실행 + 집계 ────────────────────────────────────────────────────
+# --- main run + aggregate ----------------------------------------------------
 if __name__ == "__main__":
     r = []
 
-    # §7.0 상수 수론 유도
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    # §7.0 constants number-theory derivation
+    r.append(("§7.0 CONSTANTS number-theory derivation",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5 and J2 == 24))
 
-    # §7.1 단위 일관성 (bandwidth)
+    # §7.1 dimension consistency (bandwidth)
     r.append(("§7.1 DIMENSIONS bandwidth bit/s", bandwidth_dim_check()))
 
-    # §7.2 스택 대역 3 경로 ±15% 일치
+    # §7.2 stack bandwidth 3 paths within ±15%
     F1, F2, F3 = cross_bandwidth_3ways()
-    r.append(("§7.2 CROSS stack bandwidth 3경로",
+    r.append(("§7.2 CROSS stack bandwidth 3 paths",
               all(abs(F - 1728) / 1728 < 0.15 for F in [F1, F2, F3])))
-    # 용량 3 경로
+    # capacity 3 paths
     C1, C2, C3 = cross_capacity_3ways()
-    r.append(("§7.2 CROSS capacity 3경로",
+    r.append(("§7.2 CROSS capacity 3 paths",
               all(abs(C - 48) / 48 < 0.15 for C in [C1, C2, C3])))
 
-    # §7.3 HBM 세대 로그 회귀 (단조 증가 확인)
+    # §7.3 HBM generation log regression (monotonic-increase check)
     exp_hbm = scaling_exponent(HBM_GEN_YEARS, HBM_GEN_BW)
-    r.append(("§7.3 SCALING HBM 세대 증가 기울기 > 0.3", exp_hbm > 0.3))
-    # B⁴ 스케일 역검증
+    r.append(("§7.3 SCALING HBM generation slope > 0.3", exp_hbm > 0.3))
+    # B^4 scaling back-check
     exp_B = scaling_exponent([10, 20, 30, 40, 48], [b**4 for b in [10,20,30,40,48]])
-    r.append(("§7.3 SCALING B⁴ 지수 ≈ 4", abs(exp_B - 4.0) < 0.1))
+    r.append(("§7.3 SCALING B^4 exponent ≈ 4", abs(exp_B - 4.0) < 0.1))
 
-    # §7.4 σ=12 볼록 최적
+    # §7.4 σ=12 convex optimum
     _, yh, yl, convex = sensitivity(lambda x: abs(x - 12) + 1, 12)
-    r.append(("§7.4 SENSITIVITY σ=12 볼록", convex))
+    r.append(("§7.4 SENSITIVITY σ=12 convex", convex))
 
-    # §7.5 물리 상한
+    # §7.5 physical bounds
     landauer_J = landauer(300)                           # ≈ 2.87e-21 J
     pj_per_bit_J = PJ_PER_BIT * 1e-12                    # 2 pJ = 2e-12 J
     r.append(("§7.5 LIMITS Landauer margin > 10^8",
               pj_per_bit_J / landauer_J > 1e8))
-    r.append(("§7.5 LIMITS Carnot η < 1", carnot(1e3, 300) < 1.0))
+    r.append(("§7.5 LIMITS Carnot eta < 1", carnot(1e3, 300) < 1.0))
 
-    # §7.6 χ² p-value > 0.05 (H₀ 기각 안 됨 = n=6 유의)
+    # §7.6 chi2 p-value > 0.05 (H0 not rejected = n=6 consistent)
     chi2, df, p = chi2_pvalue([1.0] * 49, [1.0] * 49)
-    r.append(("§7.6 CHI2 H₀ 기각 안 됨", p > 0.05 or chi2 == 0))
+    r.append(("§7.6 CHI2 H0 not rejected", p > 0.05 or chi2 == 0))
 
-    # §7.7 OEIS 등록
-    r.append(("§7.7 OEIS n·2^k 등록",
+    # §7.7 OEIS registration
+    r.append(("§7.7 OEIS n·2^k registered",
               (1, 2, 3, 6, 12, 24, 48) in OEIS_KNOWN))
 
-    # §7.8 Pareto 상위 5%
-    r.append(("§7.8 PARETO n=6 상위 5%", pareto_rank_n6() < 0.05))
+    # §7.8 Pareto top 5%
+    r.append(("§7.8 PARETO n=6 top 5%", pareto_rank_n6() < 0.05))
 
-    # §7.9 Fraction 정확 유리수 일치
-    r.append(("§7.9 SYMBOLIC Fraction 정확 일치",
+    # §7.9 Fraction-exact rational agreement
+    r.append(("§7.9 SYMBOLIC Fraction-exact match",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 반례/Falsifier 존재 = 정직성
-    r.append(("§7.10 COUNTER/FALSIFIERS 명시",
+    # §7.10 counterexamples / falsifiers listed = honesty
+    r.append(("§7.10 COUNTER / FALSIFIERS listed",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -866,74 +875,80 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{('OK' if ok else 'FAIL')}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (HEXA-HBM n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (HEXA-HBM n=6 honesty check)")
 ```
 
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I to Mk.V evolution)
 
-궁극의 HBM 메모리 돌파 HEXA-HBM 실현 로드맵 — Mk.I 은 **삼성전자 HBM3E 12H 양산 (2026)**
-을 출발점으로, 각 단계마다 공정·패키징·컨트롤러 성숙도 요구.
+Ultimate HBM Memory Breakthrough HEXA-HBM realization roadmap — Mk.I anchors on
+**Samsung Electronics HBM3E 12H mass production (2026)**, with each subsequent stage
+requiring matched process, packaging, and controller maturity.
 
 <details open>
-<summary><b>Mk.V — 2050+ AI-native HBM5 (current target, 외계인지수 🛸10)</b></summary>
+<summary><b>Mk.V — 2050+ AI-native HBM5 (current target, alien-index 10)</b></summary>
 
-**사양**: 스택 대역 4608 GB/s = σ·J₂·(σ-τ)·τ·2, 용량 σ²=144 GB/stack, 3D stacked cell,
-         PAM8 96 Gbps/pin, Direct bond 5 μm, AI self-schedule 컨트롤러.
-**돌파**: HBM stack 내부에 MoE expert J₂=24 큐 내장, AI 모델 가중치가 HBM 에 직접 상주.
-         NPU/GPU 와 σ²=144 SM 대 대칭 결합.
-**선행 조건**: chip-architecture 🛸10, chip-3d 🛸10, advanced-packaging 🛸10 전부 도달.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2050 n=6 경계화 HBM (풀 하드와이어)</summary>
-
-**사양**: σ·J₂=288 bit × σ·τ=48 Gbps/pin, 스택 대역 2880 GB/s, σ² MC 확장.
-         Back-Side Power Delivery (BSPDN) + σ·φ=10 μm hybrid bond 전면.
-**돌파**: Egyptian 1/2+1/3+1/6 전력 분배 RTL 하드와이어, Fraction 정확 유리수.
-         σ=12 스펙트럼 대칭 ECC 내장, silent data corruption 소멸.
-**공정**: 2nm GAAFET BSPDN logic + DRAM 1α 노드 (삼성 파운드리 + 메모리 이중).
+**Spec target**: stack bandwidth 4608 GB/s = σ · J₂ · (σ - τ) · τ · 2, capacity σ² = 144 GB/stack,
+         3D stacked cell, PAM8 96 Gbps/pin, Direct bond 5 μm, AI self-schedule controller.
+**Candidate breakthrough**: J₂=24 MoE expert queues embedded inside the HBM stack, so AI model
+         weights reside directly in HBM. Symmetric coupling with an NPU / GPU σ²=144 SM.
+**Prerequisite**: chip-architecture alien-index 10, chip-3d alien-index 10, advanced-packaging
+         alien-index 10 all reached.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 12-Hi σ=12 stack 제품화</summary>
+<summary>Mk.IV — 2040-2050 n=6 boundary-aligned HBM (full hardwiring)</summary>
 
-**사양**: 스택 12 dies × 4 GB = σ·τ=48 GB, σ·J₂·τ·sopfr/2 = 1728 GB/s,
-         σ·J₂=288 bit IO, σ·τ=48 Gbps/pin PAM4, Hybrid bond σ·φ=10 μm.
-**돌파**: n=6 경계화 HBM 최초 양산. σ=12 채널 경계화 + Row buffer σ·J₂=288 B 페이지.
-**공정**: 3nm GAAFET 로직 base-die + DRAM 1α 노드. 삼성/SK hynix 공동 표준.
-
-</details>
-
-<details>
-<summary>Mk.II — 2028~2035 HBM4 16-Hi 48GB + FPGA 프로토</summary>
-
-**사양**: HBM4 16-Hi 48GB, 1600 GB/s, PAM4 24 Gbps/pin, Hybrid bond 25 μm,
-         n=6 경계화 FPGA 프로토타입 (σ=12 채널 에뮬레이션).
-**돌파**: HBM4 표준 공식화 + n=6 참조 구현. σ·J₂=288 bit IO 프로토 검증.
-**공정**: 5nm FinFET 로직 + DRAM 1z 노드. 기존 파운드리 호환.
+**Spec target**: σ · J₂=288 bit × σ · τ=48 Gbps/pin, stack bandwidth 2880 GB/s, σ² MC expansion.
+         Back-Side Power Delivery (BSPDN) + σ · φ=10 μm hybrid bond throughout.
+**Candidate breakthrough**: Egyptian 1/2 + 1/3 + 1/6 power split hardwired in RTL,
+         Fraction-exact rationals. σ=12 spectral-symmetry ECC embedded; target: silent data
+         corruption reduced toward zero.
+**Process**: 2 nm GAAFET BSPDN logic + DRAM 1α node (Samsung foundry + memory duo).
 
 </details>
 
 <details>
-<summary><b>Mk.I — 2026 (현재) 삼성전자 HBM3E 12H 36GB 양산 기준</b></summary>
+<summary>Mk.III — 2035-2040 12-Hi σ=12 stack productization</summary>
 
-**현 실존 사양 (삼성전자 2026 양산)**:
-- **제품**: Samsung HBM3E 12H 36GB
-- **대역**: 1.2 TB/s per stack (36 GB/s/pin × 1024 bit)
-- **스택**: 12-Hi (3GB/die × 12 = 36GB)
-- **공정**: DRAM 1β 노드 + Logic Base Die 8nm LPP
+**Spec target**: stack of 12 dies × 4 GB = σ · τ=48 GB, σ · J₂ · τ · sopfr / 2 = 1728 GB/s,
+         σ · J₂=288 bit IO, σ · τ=48 Gbps/pin PAM4, hybrid bond σ · φ=10 μm.
+**Candidate breakthrough**: first-production-draft of n=6 boundary-aligned HBM. σ=12 channel
+         boundary + Row buffer σ · J₂=288 B page.
+**Process**: 3 nm GAAFET logic base die + DRAM 1α node. Samsung / SK hynix joint-standard draft.
+
+</details>
+
+<details>
+<summary>Mk.II — 2028-2035 HBM4 16-Hi 48 GB + FPGA prototype</summary>
+
+**Spec target**: HBM4 16-Hi 48 GB, 1600 GB/s, PAM4 24 Gbps/pin, hybrid bond 25 μm,
+         n=6 boundary-aligned FPGA prototype (σ=12 channel emulation).
+**Candidate breakthrough**: HBM4 standard formalization draft + n=6 reference implementation.
+         σ · J₂=288 bit IO prototype verification.
+**Process**: 5 nm FinFET logic + DRAM 1z node. Existing-foundry compatible.
+
+</details>
+
+<details>
+<summary><b>Mk.I — 2026 (current) Samsung Electronics HBM3E 12H 36 GB mass production anchor</b></summary>
+
+**Current real-world spec (Samsung Electronics 2026 mass production)**:
+- **Product**: Samsung HBM3E 12H 36 GB
+- **Bandwidth**: 1.2 TB/s per stack (36 GB/s/pin × 1024 bit)
+- **Stack**: 12-Hi (3 GB/die × 12 = 36 GB)
+- **Process**: DRAM 1β node + Logic Base Die 8 nm LPP
 - **TSV**: micro-bump 40 μm pitch (non-hybrid)
-- **IO**: 1024-bit × 9.2 Gbps/pin
-- **전력**: 3.9 pJ/bit
-- **패키지**: 2.5D interposer + CoWoS-S (TSMC) / I-Cube (Samsung)
-- **파운드리 호환**: Samsung GAAFET 3nm/2nm, TSMC N3/N2
-- **로드맵**: HBM4 16-Hi 48GB 2027+ 본격 양산 연계
+- **IO**: 1024 bit × 9.2 Gbps/pin
+- **Power**: 3.9 pJ/bit
+- **Package**: 2.5D interposer + CoWoS-S (TSMC) / I-Cube (Samsung)
+- **Foundry compatibility**: Samsung GAAFET 3 nm / 2 nm, TSMC N3 / N2
+- **Roadmap**: HBM4 16-Hi 48 GB 2027+ full mass-production linkage
 
-**HEXA 참조 구현**: §7 통합 검증 코드 (stdlib Python) + n=6 상수 수론 자동 유도.
-`chip-hbm` canonical v1 확정. Mk.II~V 는 n=6 경계화로 점진 돌파.
+**HEXA reference implementation**: §7 unified verification code (stdlib Python) + n=6 constant
+number-theory auto-derivation. `chip-hbm` canonical v1 confirmed. Mk.II-V evolve via incremental
+n=6 boundary-alignment drafts.
 
 </details>
 
@@ -969,4 +984,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-
