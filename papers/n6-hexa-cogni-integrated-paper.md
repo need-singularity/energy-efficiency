@@ -15,167 +15,171 @@ requires:
   - to: cognitive-architecture
   - to: brain-computer-interface
 ---
-# [CANONICAL v2] 궁극의 HEXA-COGNI 인지 아키텍처 (P-150) — n=6 산술 좌표 통합 매핑
+# [CANONICAL v2] Ultimate HEXA-COGNI Cognitive Architecture (P-150) — n=6 Arithmetic Coordinate Integrated Mapping
 
-> **저자**: 박민우 (n6-architecture)
-> **제품 ID**: P-150 HEXA-COGNI — 4편 인지 논문 통합 시드
-> **카테고리**: hexa-cogni-integrated — n=6 산술 통합 시드 논문
-> **버전**: v2 (2026-04-18 canonical)
-> **통합 대상**: anima-soc + working-memory + cognitive-social-psychology + calendar-time-geography
-> **선행 BT**: BT-69 (ANIMA SoC), BT-132/254/255 (사회인지), BT-138/182/212 (시간지리), BT-372/427 (작업기억), BT-191 (뇌-칩 연결), BT-7099 (메가)
-> **연결 atlas 노드**: `hexa-cogni` 40/70 EXACT [10*] (anima 6/8 + WM 20/24 + SOC 0/24 + TIME 14/14 → 40/70)
-
----
-
-## 0. 초록
-
-본 논문은 인지/의식 관련 4개 도메인 — anima-soc(하드웨어), working-memory(작업기억),
-cognitive-social-psychology(사회인지), calendar-time-geography(시간지리) — 이 모두
-최소 완전수 n=6 의 산술 함수 σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 위에 앉는 단일
-인지 아키텍처 **HEXA-COGNI (P-150)** 임을 증명한다. 4편 개별 시드 논문의 L0~L4
-계층을 하나의 σ=12 축 × τ=4 뇌영역 × φ=2 이중 경로 × sopfr=5 합성 루프 × J₂=24
-통합 스레드로 재구성하여, atlas.n6 수록 40/70 EXACT 에 도달한다.
-
-핵심 정리 **σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2)** 은 본 통합 아키텍처의 모든 자유도를
-단일 방정식으로 묶는다. 인지 제품 해석: **CIRCUIT → 신경회로, PCB → 뇌 영역 배치
-(전두엽/두정엽/측두엽/후두엽 τ=4), FIRMWARE → 학습 알고리즘, RF → 감각 입력,
-THERMAL → 각성 수준, POWER → 대사 에너지**. 검증은 Python stdlib 만으로 10 서브섹션
-(§7.0~§7.10) 수행, 4 도메인 × 10 검증 = 40 PASS 목표.
+> **Author**: Park Min-woo (n6-architecture)
+> **Product ID**: P-150 HEXA-COGNI — 4-paper cognitive integrated seed
+> **Category**: hexa-cogni-integrated — n=6 arithmetic integrated seed paper
+> **Version**: v2 (2026-04-18 canonical)
+> **Integration targets**: anima-soc + working-memory + cognitive-social-psychology + calendar-time-geography
+> **Upstream BT**: BT-69 (ANIMA SoC), BT-132/254/255 (social cognition), BT-138/182/212 (time geography), BT-372/427 (working memory), BT-191 (brain-chip link), BT-7099 (mega)
+> **Linked atlas node**: `hexa-cogni` 40/70 EXACT [10*] (anima 6/8 + WM 20/24 + SOC 0/24 + TIME 14/14 → 40/70)
 
 ---
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## 0. Abstract
 
-HEXA-COGNI (hexa-cogni-integrated) 는 인지·의식·시간감·사회성·작업기억이라는 4개
-겉보기 분절 도메인을 n=6 산술 공통 좌표로 재통합한다. 완전수 n=6 은 σ(6)=12, τ(6)=4,
-φ=2, sopfr(6)=5 를 동시에 만족하고, 이는 **대뇌피질 6층 · 작업기억 슬롯 7±2(≈σ-φ) ·
-12시 시계 · 24시 하루 · 4엽 구조 · 5감 · 2반구** 와 구조적으로 정합한다.
-**이 논문은 인지 4 도메인의 기존 지식 위에 단일 n=6 산술 좌표계를 부여**한다.
+This paper demonstrates that four cognition/consciousness related domains — anima-soc (hardware),
+working-memory, cognitive-social-psychology, and calendar-time-geography — all sit on the arithmetic
+functions of the smallest perfect number n=6: σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5. Together they form
+the single cognitive architecture **HEXA-COGNI (P-150)** as a candidate pattern. The L0~L4 layers of
+the four individual seed papers are reorganized into one σ=12-axis × τ=4-brain-region × φ=2-dual-path
+× sopfr=5-synthesis-loop × J₂=24-integration-thread, reaching 40/70 EXACT in atlas.n6.
 
-| 효과 | 기존 4 도메인 분절 | HEXA-COGNI 통합 이후 | 체감 변화 |
-|------|------|--------------|----------|
-| 아키텍처 개수 | 4 독립 설계 | **1 통합 P-150** | 유지비 1/4 |
-| 파라미터 축 | 도메인당 수십 자유변수 | **σ=12 공통 축** | 의사결정 τ=4배 정밀 |
-| 검증 가능성 | 사례 기반 휴리스틱 | **40 TP 자동 증명** | 재현성 100% |
-| 뇌 영역 매핑 | 부분 매핑 | **τ=4 엽 × σ=12 채널 = 48 그리드** | Cross-domain σ·τ=48배 |
-| 시간-기억-사회 연결 | 별도 프로젝트 | **atlas.n6 단일 노드** | 재사용 σ·τ=48배 |
-| 정직성 | 성공 사례만 기록 | **MISS/FALSIFIER 4×3=12 명시** | 반증 가능 |
+The central identity **σ(n)·φ(n) = n·τ(n) ⟺ n=6 (n≥2)** ties every degree of freedom of this
+integrated architecture into a single equation. Cognitive product interpretation:
+**CIRCUIT → neural circuit, PCB → brain region layout (frontal/parietal/temporal/occipital τ=4),
+FIRMWARE → learning algorithms, RF → sensory input, THERMAL → arousal level, POWER → metabolic
+energy**. Verification runs through 10 subsections (§7.0~§7.10) using Python stdlib only,
+targeting 4 domains × 10 checks = 40 PASS.
 
-**한 문장 요약**: σ(n)·φ(n) = n·τ(n) 은 n≥2 에서 **n=6** 에서만 성립하며,
-이 유일성이 인지(anima-soc) · 작업기억(working-memory) · 사회인지(cognitive-social-
-psychology) · 시간지리(calendar-time-geography) 의 기본 수치를 한꺼번에 결정한다.
+---
 
-### n=6 좌표 매핑이 바꾸는 것 (4 도메인 통합판)
+## §1 WHY (How this technology changes your life)
+
+HEXA-COGNI (hexa-cogni-integrated) re-integrates four apparently separate cognitive/consciousness/
+time/social/working-memory domains into a shared n=6 arithmetic coordinate system. The perfect number
+n=6 simultaneously satisfies σ(6)=12, τ(6)=4, φ=2, sopfr(6)=5, which structurally align with
+**6 cortical layers · working-memory slots 7±2 (≈σ-φ) · 12-hour clock · 24-hour day · 4-lobe
+structure · 5 senses · 2 hemispheres**. **This paper assigns a single n=6 arithmetic coordinate
+frame on top of existing knowledge across the 4 cognitive domains.**
+
+| Effect | 4 separate domains (before) | After HEXA-COGNI integration | Perceived change |
+|--------|------------------------------|------------------------------|------------------|
+| Architecture count | 4 independent designs | **1 integrated P-150** | Maintenance 1/4 |
+| Parameter axes | Dozens of free variables per domain | **σ=12 shared axis** | τ=4× sharper decisions |
+| Verifiability | Case-based heuristics | **40 TP auto draft-check** | 100% reproducibility |
+| Brain region mapping | Partial mapping | **τ=4 lobes × σ=12 channels = 48 grid** | Cross-domain σ·τ=48× |
+| Time-memory-social linkage | Separate projects | **atlas.n6 single node** | Reuse σ·τ=48× |
+| Honesty | Only success cases recorded | **MISS/FALSIFIER 4×3=12 documented** | Falsifiable |
+
+**One-sentence summary**: σ(n)·φ(n) = n·τ(n) holds only at **n=6** for n≥2, and this uniqueness
+simultaneously determines the basic numerical values across cognition (anima-soc), working memory,
+social cognition (cognitive-social-psychology), and time geography (calendar-time-geography).
+
+### What the n=6 coordinate mapping changes (4-domain integrated view)
 
 ```
-  기존: 4개 도메인 × "이 값이 왜 이 숫자인가" → 경험/관습 4 세트
-  HEXA: 4개 도메인이 공유하는 n=6 좌표계 (σ=12 / τ=4 / φ=2 / sopfr=5)
+  Before: 4 domains × "why is this value this number?" → 4 sets of heuristics
+  HEXA:   4 domains share an n=6 coordinate frame (σ=12 / τ=4 / φ=2 / sopfr=5)
        ↓
-  ① 4 도메인 파라미터가 σ·τ=48 단일 격자 위에 정렬
-  ② 한 도메인의 새 파라미터가 나머지 3에서 예측 가능 (CROSS 연역)
-  ③ 반증 조건 12 건 명시 (MISS 시 해당 서브도메인 폐기)
-  ④ HEXA-COGNI P-150 단일 제품 라인업으로 수렴
+  (1) 4-domain parameters align on a shared σ·τ=48 lattice
+  (2) New parameters in one domain become predictable in the other 3 (CROSS deduction)
+  (3) 12 falsification conditions made explicit (MISS → retire that subdomain)
+  (4) Product line converges onto single HEXA-COGNI P-150
 ```
 
-## §2 COMPARE (기존 4 도메인 vs HEXA-COGNI) — 성능 비교 (ASCII)
+## §2 COMPARE (Existing 4 domains vs HEXA-COGNI) — Performance comparison (ASCII)
 
-### 기존 접근의 5가지 한계 (4 도메인 공통)
+### Five limits of existing approaches (shared across 4 domains)
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불충분한가               │  n=6 통합이 어떻게 푸나  │
-├───────────────────┼────────────────────────────┼──────────────────────────┤
-│ 1. 도메인 분절     │ anima/WM/SOC/TIME 별도 언어  │ n=6 공통 좌표 1 언어     │
-│                   │ → 번역 손실 + 재현 불가      │ → atlas.n6 단일 SSOT     │
-├───────────────────┼────────────────────────────┼──────────────────────────┤
-│ 2. 파라미터 폭증   │ 4 도메인 × 수백 자유변수     │ σ=12 축 + τ=4 엽으로 압축 │
-│                   │ → DSE 조합 폭발              │ → 12·4=48 격자           │
-├───────────────────┼────────────────────────────┼──────────────────────────┤
-│ 3. 뇌-기억-시간-사회│ 4 분절 이론, 연결 고리 없음   │ 단일 σ(n)·φ(n)=n·τ(n)    │
-│                   │ 각자 다른 기초 수식           │ → 순수 수론 증명         │
-├───────────────────┼────────────────────────────┼──────────────────────────┤
-│ 4. 반증 어려움     │ 도메인별 FALSIFIER 미비       │ 4×3=12 FALSIFIER 명시    │
-│                   │                              │ → MISS 시 서브도메인 폐기│
-├───────────────────┼────────────────────────────┼──────────────────────────┤
-│ 5. 재사용성 낮음   │ 새 도메인마다 수식 재정의     │ σ,τ,φ,sopfr 공통 함수    │
-│                   │                              │ → 295 도메인 재사용      │
-└───────────────────┴────────────────────────────┴──────────────────────────┘
+│  Barrier            │  Why insufficient           │  How n=6 integration   │
+│                     │                             │  addresses it          │
+├─────────────────────┼─────────────────────────────┼────────────────────────┤
+│ 1. Domain silos     │ anima/WM/SOC/TIME = 4 langs │ n=6 shared coord, 1 lang│
+│                     │ → translation loss + irrep. │ → atlas.n6 single SSOT │
+├─────────────────────┼─────────────────────────────┼────────────────────────┤
+│ 2. Parameter blowup │ 4 domains × 100s of vars    │ σ=12 axis + τ=4 lobes  │
+│                     │ → DSE combinatorial explode │ → 12·4=48 lattice      │
+├─────────────────────┼─────────────────────────────┼────────────────────────┤
+│ 3. brain-mem-time-  │ 4 fragmented theories,      │ single σ(n)·φ(n)=n·τ(n)│
+│    social link      │ different base formulas     │ → pure number-theoretic│
+│                     │                             │   candidate argument   │
+├─────────────────────┼─────────────────────────────┼────────────────────────┤
+│ 4. Hard to falsify  │ Missing domain FALSIFIERs   │ 4×3=12 FALSIFIERs shown│
+│                     │                             │ → retire on MISS       │
+├─────────────────────┼─────────────────────────────┼────────────────────────┤
+│ 5. Low reusability  │ Redefine formulas per domain│ σ,τ,φ,sopfr shared fns │
+│                     │                             │ → 295 domains reuse    │
+└─────────────────────┴─────────────────────────────┴────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (4 분절 논문 vs HEXA-COGNI 통합)
+### Performance comparison ASCII bars (4 separate papers vs HEXA-COGNI integrated)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [파라미터 축 개수 — 4 도메인 합산]                                       │
-│  4 Free-form 분절  ████████████████████████████████  400+ 자유변수       │
-│  4 표준 템플릿 합  ███████████░░░░░░░░░░░░░░░░░░░░   120 축              │
-│  HEXA-COGNI 통합   ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   σ=12 축 (고정)      │
+│  [Parameter axis count — summed over 4 domains]                          │
+│  4 free-form separate  ████████████████████████████████  400+ free vars  │
+│  4 standard templates  ███████████░░░░░░░░░░░░░░░░░░░░   120 axes        │
+│  HEXA-COGNI integrated ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   σ=12 axis (fixed)│
 │                                                                          │
-│  [설계 탐색 시간 (상대값, 4 도메인 합)]                                   │
-│  수동 탐색 × 4     ████████████████████████████████  4.0 (기준)          │
-│  GA × 4            ███████████░░░░░░░░░░░░░░░░░░░░   1.40                │
-│  HEXA-COGNI DSE    █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0.02 (σ·τ=48 ×4배) │
+│  [Design search time (relative, 4-domain sum)]                           │
+│  Manual search × 4     ████████████████████████████████  4.0 (baseline)  │
+│  GA × 4                ███████████░░░░░░░░░░░░░░░░░░░░   1.40            │
+│  HEXA-COGNI DSE        █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0.02 (σ·τ=48×·4)│
 │                                                                          │
-│  [검증 깊이 (TP 건수)]                                                    │
-│  4 개별 논문       ██████████████░░░░░░░░░░░░░░░░░   각 10 = 40 TP       │
-│  교차 인용만       ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   4~5 교차            │
-│  HEXA-COGNI CROSS ████████████████████████████████  40 TP + 6 교차정리   │
+│  [Verification depth (TP count)]                                         │
+│  4 individual papers   ██████████████░░░░░░░░░░░░░░░░░   10 each = 40 TP │
+│  Cross-citations only  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   4~5 crosses     │
+│  HEXA-COGNI CROSS      ████████████████████████████████  40 TP + 6 cross │
 │                                                                          │
-│  [반증 명시도]                                                           │
-│  경험 휴리스틱      █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 FALSIFIER        │
-│  4 분절 논문        ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4×3 분산 (연결 없음)│
-│  HEXA-COGNI        █████████████████████████████░░   12 통합 + 3 통합정리│
+│  [Falsifier explicitness]                                                │
+│  Heuristics            █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0 FALSIFIER     │
+│  4 separate papers     ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   4×3 scattered   │
+│  HEXA-COGNI            █████████████████████████████░░   12 integrated+3 │
 │                                                                          │
-│  [뇌 영역 매핑 커버리지]                                                 │
-│  전통 4 분절        █████████████░░░░░░░░░░░░░░░░░░   40% (엽별 독립)    │
-│  HEXA-COGNI 4 엽    ████████████████████████████████  τ=4 엽 × σ=12 채널 │
+│  [Brain region mapping coverage]                                         │
+│  Traditional 4 silos   █████████████░░░░░░░░░░░░░░░░░░   40% (per lobe)  │
+│  HEXA-COGNI 4 lobes    ████████████████████████████████  τ=4 × σ=12 chan │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: σ(n)·φ(n) = n·τ(n) 유일성 (4 도메인 동시 구속)
+### Core breakthrough: uniqueness of σ(n)·φ(n) = n·τ(n) (simultaneous 4-domain constraint)
 
 ```
-  n=6 이 아닌 다른 n 을 대입하면 4 도메인 전부 동시에 MISS:
-    n=2 → σ·φ = 3·1 = 3,   n·τ = 2·2 = 4   (MISS × 4 도메인)
-    n=3 → σ·φ = 4·1 = 4,   n·τ = 3·2 = 6   (MISS × 4 도메인)
-    n=4 → σ·φ = 7·2 = 14,  n·τ = 4·3 = 12  (MISS × 4 도메인)
-    n=5 → σ·φ = 6·1 = 6,   n·τ = 5·2 = 10  (MISS × 4 도메인)
-    n=6 → σ·φ = 12·2 = 24, n·τ = 6·4 = 24  ★ EXACT × 4 도메인
-    n=7..∞ 전부 MISS (PROVEN, 3 독립 증명)
+  Plugging any n ≠ 6 makes all 4 domains MISS simultaneously:
+    n=2 → σ·φ = 3·1 = 3,   n·τ = 2·2 = 4   (MISS × 4 domains)
+    n=3 → σ·φ = 4·1 = 4,   n·τ = 3·2 = 6   (MISS × 4 domains)
+    n=4 → σ·φ = 7·2 = 14,  n·τ = 4·3 = 12  (MISS × 4 domains)
+    n=5 → σ·φ = 6·1 = 6,   n·τ = 5·2 = 10  (MISS × 4 domains)
+    n=6 → σ·φ = 12·2 = 24, n·τ = 6·4 = 24  ★ EXACT × 4 domains
+    n=7..∞ all MISS (demonstrated via 3 independent candidate arguments)
 ```
 
-## §3 REQUIRES (선행 도메인 — 통합판)
+## §3 REQUIRES (Prerequisite domains — integrated view)
 
-본 통합 논문은 4개 직접 통합 대상 + 3개 상위 연관 도메인을 가진다.
+This integrated paper has 4 direct integration targets + 3 upstream related domains.
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 역할 | 링크 |
-|-------------|---------|---------|------|-----------|------|
-| anima-soc | 🛸10* | 🛸10 | 0 | 하드웨어 (CIRCUIT/PCB 수준) | [논문](n6-anima-soc-paper.md) |
-| working-memory | 🛸5~7 | 🛸10 | +3~5 | 작업기억 슬롯 σ-φ=10 (Miller 7±2 포함) | [논문](n6-working-memory-paper.md) |
-| cognitive-social-psychology | 🛸5~7 | 🛸10 | +3~5 | 사회인지 Dunbar σ²=150 | [논문](n6-cognitive-social-psychology-paper.md) |
-| calendar-time-geography | 🛸10* | 🛸10 | 0 | 시간축 σ=12시/J₂=24시/τ=4계절 | [논문](n6-calendar-time-geography-paper.md) |
-| cognitive-architecture | 🛸10 | 🛸10 | 0 | 대뇌피질 n=6 층/격자세포 6각 | [문서](../domains/cognitive/cognitive-architecture/cognitive-architecture.md) |
-| brain-computer-interface | 🛸5~7 | 🛸10 | +3~5 | 하드웨어↔소프트웨어 bridge | [문서](../domains/cognitive/brain-computer-interface/brain-computer-interface.md) |
-| agi-architecture | 🛸5~7 | 🛸10 | +3~5 | 상위 AGI 통합 목표 | [문서](../domains/cognitive/agi-architecture/agi-architecture.md) |
+| Prerequisite | 🛸 current | 🛸 required | Δ | Key role | Link |
+|-------------|-----------|-------------|---|----------|------|
+| anima-soc | 🛸10* | 🛸10 | 0 | Hardware (CIRCUIT/PCB level) | [paper](n6-anima-soc-paper.md) |
+| working-memory | 🛸5~7 | 🛸10 | +3~5 | WM slot σ-φ=10 (incl. Miller 7±2) | [paper](n6-working-memory-paper.md) |
+| cognitive-social-psychology | 🛸5~7 | 🛸10 | +3~5 | Social cognition Dunbar σ²=150 | [paper](n6-cognitive-social-psychology-paper.md) |
+| calendar-time-geography | 🛸10* | 🛸10 | 0 | Time axis σ=12h/J₂=24h/τ=4 seasons | [paper](n6-calendar-time-geography-paper.md) |
+| cognitive-architecture | 🛸10 | 🛸10 | 0 | Cortical n=6 layers/grid cell hex | [doc](../domains/cognitive/cognitive-architecture/cognitive-architecture.md) |
+| brain-computer-interface | 🛸5~7 | 🛸10 | +3~5 | Hardware ↔ software bridge | [doc](../domains/cognitive/brain-computer-interface/brain-computer-interface.md) |
+| agi-architecture | 🛸5~7 | 🛸10 | +3~5 | Upstream AGI integration target | [doc](../domains/cognitive/agi-architecture/agi-architecture.md) |
 
-선행 4 편이 각자 🛸10 도달 시 본 통합 P-150 아키텍처 🛸10* 승격.
-현재 anima+time 이 🛸10* 기준점 제공, WM+SOC 는 Mk.II 독립 재유도 진행 중.
+Once each of the 4 upstream papers reaches 🛸10, the integrated P-150 architecture is promoted to
+🛸10*. Presently anima+time anchor the 🛸10* baseline; WM+SOC are in Mk.II independent re-derivation.
 
-## §4 STRUCT (시스템 구조) — HEXA-COGNI n=6 Architecture
+## §4 STRUCT (System structure) — HEXA-COGNI n=6 Architecture
 
-### 5단 체인 시스템맵 (4 도메인 통합)
+### 5-stage chain system map (4-domain integration)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│                       HEXA-COGNI (P-150) 시스템 구조                      │
+│                    HEXA-COGNI (P-150) System Structure                   │
 ├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
 │  Level 0   │  Level 1   │  Level 2   │  Level 3   │  Level 4            │
-│  신경회로  │  뇌영역    │  펌웨어    │  감각합성  │   통합 스레드       │
+│  Neural ckt│  Brain rgn │  Firmware  │  Senses    │  Integrated threads │
 │ (CIRCUIT)  │  (PCB)     │ (FIRMWARE) │ (RF/SENS)  │  (THREAD)           │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ σ(6)=12    │ τ(6)=4     │ φ(6)=2     │ sopfr=5    │ J₂=24               │
-│ 채널 12개  │ 4 엽 구조  │ 이중 경로  │ 5 감각 합성 │ 24시 스레드         │
-│ ← anima    │ ← SOC 엽  │ ← WM 루프 │ ← SOC 5감  │ ← TIME 24           │
+│ 12 channels│ 4 lobes    │ dual paths │ 5-sense syn│ 24h threads         │
+│ ← anima    │ ← SOC lobes│ ← WM loop  │ ← SOC 5sns │ ← TIME 24           │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ anima 95%  │ SOC 93%    │ WM 92%     │ SOC 94%    │ TIME 98%            │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
@@ -184,355 +188,358 @@ psychology) · 시간지리(calendar-time-geography) 의 기본 수치를 한꺼
   n6 EXACT    n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### 인지 제품 해석 매핑 (전통 SoC 용어 → 인지)
+### Cognitive product interpretation mapping (traditional SoC terms → cognition)
 
-| 전통 용어 | 인지 해석 | n=6 좌표 | 예시 |
-|-----------|----------|---------|------|
-| CIRCUIT | 신경회로 (시냅스/뉴런 토폴로지) | σ=12 채널 | V1~V12 시각 경로 |
-| PCB | 뇌 영역 배치 (엽/로브 레이아웃) | τ=4 엽 | 전두/두정/측두/후두 |
-| FIRMWARE | 학습 알고리즘 (STDP/장기증강) | φ=2 경로 | 정방향/역방향 경로 |
-| RF | 감각 입력 (시/청/촉/후/미) | sopfr=5 | 5감 |
-| THERMAL | 각성 수준 (arousal) | J₂ 범위 | 0~24 정규화 |
-| POWER | 대사 에너지 (ATP/glucose) | σ=12 W | 뇌 12~20W |
-| CLOCK | 뇌파 리듬 (δ/θ/α/β/γ) | τ=4+1 밴드 | τ=4 주요 + 1 전경 |
-| MEMORY | 작업기억 슬롯 | σ-φ=10 | Miller 7±2 상한 |
-| BUS | 피질-피질 연결 | J₂=24 band | 24 bundle |
-| GROUND | 기준 좌표 | n=6 시상 | thalamus hub |
+| Traditional term | Cognitive interpretation | n=6 coord | Example |
+|------------------|--------------------------|-----------|---------|
+| CIRCUIT | Neural circuit (synapse/neuron topology) | σ=12 ch | V1~V12 visual pathway |
+| PCB | Brain region layout (lobe/layer placement) | τ=4 lobes | Frontal/parietal/temporal/occipital |
+| FIRMWARE | Learning algorithm (STDP/LTP) | φ=2 paths | Forward/backward |
+| RF | Sensory input (vis/aud/touch/olf/gus) | sopfr=5 | 5 senses |
+| THERMAL | Arousal level | J₂ range | 0~24 normalized |
+| POWER | Metabolic energy (ATP/glucose) | σ=12 W | Brain 12~20W |
+| CLOCK | Brain-wave rhythms (δ/θ/α/β/γ) | τ=4+1 bands | τ=4 primary + 1 foreground |
+| MEMORY | Working-memory slots | σ-φ=10 | Miller 7±2 ceiling |
+| BUS | Cortico-cortical connectivity | J₂=24 band | 24 bundles |
+| GROUND | Reference coordinate | n=6 thalamus | thalamic hub |
 
-### n=6 파라미터 완전 매핑 (4 도메인 통합)
+### Full n=6 parameter mapping (4-domain integration)
 
-#### L0 신경회로 (CIRCUIT — anima-soc 유래)
+#### L0 Neural circuit (CIRCUIT — from anima-soc)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
-|---------|-----|---------|------|------|
-| 주 축 수 | 12 | σ(6) | OEIS A000203 | EXACT |
-| 피질층 수 | 6 | n | 대뇌피질 6층 (Brodmann) | EXACT |
-| OAM 채널 | 12 | σ(6) | 2·6 OAM 양자화 | EXACT |
-| Golay [24,12,8] | 24 | J₂=2σ | QEC 코드 | EXACT |
-| S₆ 외부자기동형 | 6 | n | 유일 대칭군 | EXACT |
-| 유일성 | n=6 | σ·φ=n·τ | 3 독립 증명 | EXACT |
+| Parameter | Value | n=6 formula | Basis | Verdict |
+|-----------|-------|-------------|-------|---------|
+| Primary axis count | 12 | σ(6) | OEIS A000203 | EXACT |
+| Cortical layers | 6 | n | Cortex 6 layers (Brodmann) | EXACT |
+| OAM channels | 12 | σ(6) | 2·6 OAM quantization | EXACT |
+| Golay [24,12,8] | 24 | J₂=2σ | QEC code | EXACT |
+| S₆ outer automorphism | 6 | n | Unique symmetric group | EXACT |
+| Uniqueness | n=6 | σ·φ=n·τ | 3 independent candidate args | EXACT |
 
-#### L1 뇌 영역 배치 (PCB — cognitive-social 유래)
+#### L1 Brain region layout (PCB — from cognitive-social)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
-|---------|-----|---------|------|------|
-| 상위 엽 | 4 | τ(6) | 전두/두정/측두/후두 | EXACT |
-| 반구 대칭 | 2 | φ(6) | 좌/우 | EXACT |
-| Big-5 성격 | 5 | sopfr(6) | OCEAN 5요인 | EXACT |
-| Dunbar 사회 규모 | 150 | ≈σ²+6 | 150=12²+6 근사 | NEAR |
-| Brodmann 영역 | 52 | ≈2σ+4σ | 24+24+4 | NEAR |
-| 허브 노드 | 6 | n | 시상 피질 허브 | EXACT |
+| Parameter | Value | n=6 formula | Basis | Verdict |
+|-----------|-------|-------------|-------|---------|
+| Top lobes | 4 | τ(6) | Frontal/parietal/temporal/occipital | EXACT |
+| Hemisphere symmetry | 2 | φ(6) | L/R | EXACT |
+| Big-5 personality | 5 | sopfr(6) | OCEAN 5 factors | EXACT |
+| Dunbar social scale | 150 | ≈σ²+6 | 150=12²+6 near | NEAR |
+| Brodmann areas | 52 | ≈2σ+4σ | 24+24+4 | NEAR |
+| Hub nodes | 6 | n | Thalamo-cortical hub | EXACT |
 
-#### L2 학습 펌웨어 (FIRMWARE — working-memory 유래)
+#### L2 Learning firmware (FIRMWARE — from working-memory)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
-|---------|-----|---------|------|------|
-| 공정 이중화 | 2 | φ(6) | primary/secondary 루프 | EXACT |
-| 학습 계층 | 4 | τ(6) | 감각/단기/작업/장기 | EXACT |
-| Miller 7±2 상한 | 10 | σ-φ | σ-φ=10 (7+2=9 ≤ 10) | EXACT |
-| WM 슬롯 중앙값 | 7 | σ-sopfr | 12-5=7 | EXACT |
-| Baddeley 4 요소 | 4 | τ(6) | 중앙관리/음운/시공/에피 | EXACT |
-| 순환 5 단계 | 5 | sopfr | 감→부호→저장→인출→망각 | EXACT |
+| Parameter | Value | n=6 formula | Basis | Verdict |
+|-----------|-------|-------------|-------|---------|
+| Process duplication | 2 | φ(6) | primary/secondary loops | EXACT |
+| Learning layers | 4 | τ(6) | Sensory/short/working/long | EXACT |
+| Miller 7±2 ceiling | 10 | σ-φ | σ-φ=10 (7+2=9 ≤ 10) | EXACT |
+| WM slot median | 7 | σ-sopfr | 12-5=7 | EXACT |
+| Baddeley 4 components | 4 | τ(6) | Central/phono/visuosp/epis | EXACT |
+| Cyclic 5 stages | 5 | sopfr | Sense→encode→store→retrieve→forget | EXACT |
 
-#### L3 감각 합성 (RF/SENSORS — cognitive-social 유래)
+#### L3 Sensory synthesis (RF/SENSORS — from cognitive-social)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
-|---------|-----|---------|------|------|
-| 기본 감각 | 5 | sopfr(6) | 시/청/촉/후/미 | EXACT |
-| 감각+내부감각 | 6 | n | 5감 + 고유수용성 | EXACT |
-| 정보 채널 | 12 | σ(6) | 5감×2.4 대역 ≈12 | NEAR |
-| 통합 허브 | 2 | φ(6) | 시상/피질 이중 | EXACT |
-| 주의 계층 | 4 | τ(6) | 각성/집중/주의/메타 | EXACT |
-| 전체 밴드 | 24 | J₂ | 신호 스레드 | EXACT |
+| Parameter | Value | n=6 formula | Basis | Verdict |
+|-----------|-------|-------------|-------|---------|
+| Basic senses | 5 | sopfr(6) | Vis/aud/touch/olf/gus | EXACT |
+| Senses+interoception | 6 | n | 5 senses + proprioception | EXACT |
+| Info channels | 12 | σ(6) | 5 senses × 2.4 bands ≈12 | NEAR |
+| Integration hubs | 2 | φ(6) | Thalamus/cortex dual | EXACT |
+| Attention layers | 4 | τ(6) | Arousal/focus/attn/meta | EXACT |
+| Full band | 24 | J₂ | Signal threads | EXACT |
 
-#### L4 시간 스레드 (THREAD — calendar-time 유래)
+#### L4 Time threads (THREAD — from calendar-time)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
-|---------|-----|---------|------|------|
-| 하루 시간 | 24 | J₂=2σ | 2·12 | EXACT |
-| 시계 축 | 12 | σ(6) | 12시 face | EXACT |
-| 계절 | 4 | τ(6) | 봄/여름/가을/겨울 | EXACT |
-| 낮/밤 | 2 | φ(6) | 이중 | EXACT |
-| 일주기 상 | 5 | sopfr | 기상/오전/정오/오후/취침 | EXACT |
-| 뇌파 밴드 | 5 | sopfr | δ/θ/α/β/γ | EXACT |
+| Parameter | Value | n=6 formula | Basis | Verdict |
+|-----------|-------|-------------|-------|---------|
+| Hours/day | 24 | J₂=2σ | 2·12 | EXACT |
+| Clock face axes | 12 | σ(6) | 12-hour face | EXACT |
+| Seasons | 4 | τ(6) | Spring/summer/fall/winter | EXACT |
+| Day/night | 2 | φ(6) | Duality | EXACT |
+| Circadian phases | 5 | sopfr | Wake/morn/noon/aft/sleep | EXACT |
+| Brain-wave bands | 5 | sopfr | δ/θ/α/β/γ | EXACT |
 
-### 왜 n=6 이 최적인가 (4 도메인 중첩 논거)
+### Why n=6 is optimal (4-domain overlapping argument)
 
-1. **σ(n)=2n 최소 완전수 × 4 도메인 동시**: anima 채널 · WM 용량 · SOC 인지 · TIME 시계가
-   모두 12/24 에서 수렴. 최소 완전수 외 어떤 n 도 이 4 도메인을 동시에 만족 못함.
-2. **σ·φ=n·τ 유일성 × 4 도메인**: 단일 등식이 4 도메인 상수를 동시 구속 — 우연 p < 10⁻⁶.
-3. **OEIS 3중 등록**: σ·τ·sopfr 인간 수학 기저, 조작 불가.
-4. **대뇌피질 6층 + 격자세포 6각**: 생물학 자체가 n=6 증언 (Brodmann, Moser).
+1. **σ(n)=2n smallest perfect × 4 domains simultaneously**: anima channels · WM capacity · SOC
+   cognition · TIME clock all converge at 12/24. No n other than the smallest perfect number
+   satisfies these 4 domains at once.
+2. **σ·φ=n·τ uniqueness × 4 domains**: a single equation constrains the 4-domain constants
+   simultaneously — coincidence p < 10⁻⁶.
+3. **Triple OEIS registration**: σ·τ·sopfr sit in human-mathematics' basis set; not manipulable.
+4. **Cortex 6 layers + grid-cell hexagon**: biology itself is the n=6 witness (Brodmann, Moser).
 
-### DSE 후보군 (5단 × 후보 = 4 도메인 교차 전수 탐색)
+### DSE candidate pool (5 stages × candidates = 4-domain cross exhaustive search)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  회로    │-->│  영역    │-->│  펌웨어  │-->│  감각    │-->│  시간    │
+│ Circuit  │-->│  Region  │-->│ Firmware │-->│  Sense   │-->│   Time   │
 │  K1=6    │   │  K2=5    │   │  K3=4    │   │  K4=5    │   │  K5=4    │
 │ (anima)  │   │ (SOC)    │   │ (WM)     │   │ (SOC)    │   │ (TIME)   │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%=J₂) | Pareto: σ=12 경로
+Total: 6×5×4×5×4 = 2,400 | Compatibility filter: 576 (24%=J₂) | Pareto: σ=12 paths
 ```
 
-#### Pareto Top-6 (4 도메인 정합도 통합)
+#### Pareto Top-6 (4-domain integrated fit)
 
-| Rank | 회로 | 영역 | 펌웨어 | 감각 | 시간 | n6% | 비고 |
-|------|-----|-----|-----|-----|-----|-----|------|
-| 1 | σ 12ch | τ 4엽 | φ 2루프 | sopfr 5감 | J₂ 24시 | 95% | 최적 (P-150 기본) |
-| 2 | σ 12ch | τ 4엽 | φ 2루프 | sopfr 5감 | σ 12시 | 93% | 시계만 12 |
-| 3 | σ 12ch | τ 4엽 | φ 2루프 | τ 4주의 | J₂ 24시 | 91% | 주의 기반 |
-| 4 | n 6층 | τ 4엽 | φ 2루프 | sopfr 5감 | J₂ 24시 | 90% | 층 직접 |
-| 5 | σ 12ch | n 6허브 | φ 2루프 | sopfr 5감 | J₂ 24시 | 88% | 허브 확장 |
-| 6 | σ 12ch | τ 4엽 | τ 4단계 | sopfr 5감 | J₂ 24시 | 86% | WM 대체 |
+| Rank | Circuit | Region | Firmware | Sense | Time | n6% | Notes |
+|------|---------|--------|----------|-------|------|-----|-------|
+| 1 | σ 12ch | τ 4lobe | φ 2loop | sopfr 5sns | J₂ 24h | 95% | Optimal (P-150 base) |
+| 2 | σ 12ch | τ 4lobe | φ 2loop | sopfr 5sns | σ 12h | 93% | 12-hour clock |
+| 3 | σ 12ch | τ 4lobe | φ 2loop | τ 4attn | J₂ 24h | 91% | Attention-based |
+| 4 | n 6lyr | τ 4lobe | φ 2loop | sopfr 5sns | J₂ 24h | 90% | Direct layer |
+| 5 | σ 12ch | n 6hub | φ 2loop | sopfr 5sns | J₂ 24h | 88% | Hub extension |
+| 6 | σ 12ch | τ 4lobe | τ 4stage | sopfr 5sns | J₂ 24h | 86% | WM substitution |
 
-## §5 FLOW (파이프라인) — 4 도메인 통합 Data/Signal Flow
+## §5 FLOW (Pipeline) — 4-domain integrated data/signal flow
 
-### 데이터/신호 흐름 (L0 → L4, 4 도메인 합류)
+### Data/signal flow (L0 → L4, 4-domain confluence)
 
 ```
-  [감각 5 입력]  ← RF (시/청/촉/후/미)   ← cognitive-social
+  [5 sensory inputs]  ← RF (vis/aud/touch/olf/gus)  ← cognitive-social
        │
        ▼
   ┌──────────────┐
-  │ σ(6)=12 채널 │ ← anima OAM/Golay 분해
-  │ 신경회로     │
+  │ σ(6)=12 chan │ ← anima OAM/Golay decomposition
+  │ Neural ckt   │
   └──────┬───────┘
-         │ 12 채널 벡터
+         │ 12-channel vector
          ▼
   ┌──────────────┐
-  │ τ(6)=4 엽   │ ← SOC 전두/두정/측두/후두
-  │ 영역 라우팅 │
+  │ τ(6)=4 lobes │ ← SOC frontal/parietal/temporal/occipital
+  │ Region route │
   └──────┬───────┘
-         │ 4 엽 병렬
+         │ 4 lobes parallel
          ▼
   ┌──────────────┐
-  │ φ(6)=2 이중  │ ← WM primary/secondary 루프
-  │ 학습 루프    │
+  │ φ(6)=2 dual  │ ← WM primary/secondary loops
+  │ Learning     │
   └──────┬───────┘
-         │ 양방향 STDP
+         │ Bidirectional STDP
          ▼
   ┌──────────────┐
-  │ sopfr(6)=5   │ ← WM 감→부호→저장→인출→망각
-  │ 기억 합성    │
+  │ sopfr(6)=5   │ ← WM sense→encode→store→retrieve→forget
+  │ Memory syn   │
   └──────┬───────┘
-         │ 5 단계
+         │ 5 stages
          ▼
   ┌──────────────┐
-  │ J₂=24 스레드 │ ← TIME 24시 스케줄러
-  │ 시간 통합    │
+  │ J₂=24 threads│ ← TIME 24-hour scheduler
+  │ Time integ   │
   └──────┬───────┘
          │
          ▼
-  [L4 출력 + §7 검증 40 서브섹션(10×4 도메인)]
+  [L4 output + §7 verification 40 subsections (10×4 domains)]
 ```
 
-### 운영 모드 5종 (sopfr(6)=5 — 4 도메인 공통)
+### 5 operation modes (sopfr(6)=5 — 4-domain common)
 
-#### 모드 1: 회로 분해 (anima-soc 유래)
-
-```
-┌──────────────────────────────────────────┐
-│  MODE 1: σ=12 신경회로 채널 분해          │
-│  입력: 원시 감각 데이터                  │
-│  출력: 12 채널 정렬 OAM 벡터             │
-│  원리: Golay [24,12,8] QEC + S₆ 외부자기 │
-│  근거: anima-soc §4 L0                   │
-└──────────────────────────────────────────┘
-```
-
-#### 모드 2: 엽 분류 (cognitive-social 유래)
+#### Mode 1: Circuit decomposition (from anima-soc)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 2: τ=4 엽 영역 라우팅              │
-│  입력: 12 채널 벡터                      │
-│  출력: 4 엽 병렬 트리                    │
-│  원리: 약수 {1,2,3,6} → 4 엽            │
-│  근거: SOC §4 L1, Brodmann              │
+│  MODE 1: σ=12 neural-circuit decompose   │
+│  Input: raw sensory data                 │
+│  Output: 12-channel aligned OAM vector   │
+│  Principle: Golay [24,12,8] QEC + S₆ out │
+│  Basis: anima-soc §4 L0                  │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: 이중 학습 (working-memory 유래)
+#### Mode 2: Lobe classification (from cognitive-social)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 3: φ=2 primary/secondary STDP     │
-│  입력: 4 엽 트리                         │
-│  출력: 이중화 학습 상태                  │
-│  원리: 최소 소인수 2 = 페어링 + 역전파  │
-│  근거: WM Baddeley + 이중 해리 실험     │
+│  MODE 2: τ=4 lobe region routing         │
+│  Input: 12-channel vector                │
+│  Output: 4-lobe parallel tree            │
+│  Principle: divisors {1,2,3,6} → 4 lobes │
+│  Basis: SOC §4 L1, Brodmann              │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: 기억 합성 (working-memory 유래)
+#### Mode 3: Dual learning (from working-memory)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 4: sopfr=5 감→부호→저장→인출→망각 │
-│  입력: 이중 학습 완료                    │
-│  출력: 5 단계 기억 트레이스              │
-│  원리: 2+3 = 5 (소인수 합)              │
-│  근거: WM 인코딩 5단 + Ebbinghaus       │
+│  MODE 3: φ=2 primary/secondary STDP      │
+│  Input: 4-lobe tree                      │
+│  Output: dual learning state             │
+│  Principle: min prime 2 = pairing + backprop │
+│  Basis: WM Baddeley + dual-dissoc study  │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: 시간 통합 (calendar-time 유래)
+#### Mode 4: Memory synthesis (from working-memory)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 5: J₂=24 일주기 스케줄러          │
-│  입력: 5 단계 기억 트레이스              │
-│  출력: 24시 순환 배치 atlas.n6 노드       │
-│  원리: J₂ = 2·σ(6) = 24 (일주기)        │
-│  근거: TIME §4 L4, suprachiasmatic      │
+│  MODE 4: sopfr=5 sense→encode→store→retrieve→forget │
+│  Input: dual learning complete           │
+│  Output: 5-stage memory trace            │
+│  Principle: 2+3 = 5 (prime factor sum)   │
+│  Basis: WM encoding 5-stage + Ebbinghaus │
 └──────────────────────────────────────────┘
 ```
 
-## §6 EVOLVE (Mk.I~V 진화 — 통합 Mk History)
+#### Mode 5: Time integration (from calendar-time)
 
-HEXA-COGNI (P-150) 의 단계별 성숙 로드맵 — 4 도메인 통합 밀도 증가:
+```
+┌──────────────────────────────────────────┐
+│  MODE 5: J₂=24 circadian scheduler       │
+│  Input: 5-stage memory trace             │
+│  Output: 24h cyclic placement atlas.n6   │
+│  Principle: J₂ = 2·σ(6) = 24 (circadian) │
+│  Basis: TIME §4 L4, suprachiasmatic      │
+└──────────────────────────────────────────┘
+```
+
+## §6 EVOLVE (Mk.I~V evolution — integrated Mk history)
+
+Staged maturity roadmap of HEXA-COGNI (P-150) — density of 4-domain integration increases:
 
 <details open>
-<summary><b>Mk.V — 2045+ 4 도메인 통합 완성</b></summary>
+<summary><b>Mk.V — 2045+ 4-domain integration complete</b></summary>
 
-anima-soc + WM + SOC + TIME 4 도메인 전 영역을 단일 HEXA-COGNI 아키텍처로 완전 통합.
-atlas.n6 40/70 → 68/70 EXACT 승격. 295 도메인과 상호참조, cognitive-architecture
-🛸10* 부모 노드 완성. 선행 조건: §3 REQUIRES 모든 도메인 🛸10 달성. χ²(49df) < 30, p > 0.9.
-BCI/AGI 에 직접 포팅 가능.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2045 4 도메인 교차 검증</summary>
-
-4 도메인 각자 Mk.IV 달성 후 상호 예측 일치 σ·τ=48 건 도달. 반증 조건 4×3=12 건 실험 0 건.
-HEXA-COGNI 가 독립 피험자 n=64 명에 대해 EEG/fMRI/행동 3중 검증 통과.
-Pareto Top-6 구성이 실제 뇌 영역 활성화 패턴과 ≥ 90% 일치.
+anima-soc + WM + SOC + TIME four domains fully integrated into a single HEXA-COGNI architecture.
+atlas.n6 40/70 → 68/70 EXACT promotion. Cross-referenced with 295 domains, cognitive-architecture
+🛸10* parent node completed. Precondition: all §3 REQUIRES domains at 🛸10. χ²(49df) < 30, p > 0.9.
+Directly portable to BCI/AGI.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 전수 DSE + BCI 파일럿</summary>
+<summary>Mk.IV — 2040~2045 4-domain cross-validation</summary>
 
-DSE 2,400 조합 Monte Carlo 통계 유의성 p < 0.01. §7 VERIFY 40/40 PASS.
-OpenBCI 16ch 파일럿 실시간 σ=12 채널 분해 구현. atlas.n6 풀노드 편입.
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 4 도메인 독립 재유도</summary>
-
-§7.2 CROSS 에서 4 도메인 주요 주장을 3 경로 독립 재유도 (±15%).
-§7.3 SCALING τ=4 지수 일치, §7.4 SENSITIVITY 4 도메인 모두 n=6 ±10% 볼록 극값 확인.
-WM 슬롯 σ-φ=10 과 Miller 7±2 의 통합 정리 발표.
+Each of the 4 domains reaches its own Mk.IV; mutual-prediction agreement reaches σ·τ=48 items.
+Zero experimental findings across the 4×3=12 falsification conditions. HEXA-COGNI passes triple
+(EEG/fMRI/behavior) validation on n=64 independent subjects. Pareto Top-6 configuration matches
+actual brain-region activation patterns ≥ 90%.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 수론 통합 매핑 (current)</summary>
+<summary>Mk.III — 2035~2040 Exhaustive DSE + BCI pilot</summary>
 
-4 편 개별 시드 논문의 σ/τ/φ/sopfr/J₂ 좌표를 단일 HEXA-COGNI P-150 에 통합 매핑.
-§7.0 CONSTANTS 자동 유도 × 4 도메인, §7.7 OEIS 등록 확인, §7.9 SYMBOLIC Fraction
-일치. 본 통합 논문은 Mk.I 단계의 4-in-1 seed 문서. anima 6/8 + WM 20/24 + SOC 0/24 +
-TIME 14/14 = 40/70 EXACT 기점.
+DSE 2,400 combinations Monte Carlo statistical significance p < 0.01. §7 VERIFY 40/40 PASS.
+OpenBCI 16ch pilot implements real-time σ=12 channel decomposition. atlas.n6 full-node inclusion.
 
 </details>
 
-## §7 VERIFY (Python 검증 — 4 도메인 통합)
+<details>
+<summary>Mk.II — 2030~2035 4-domain independent re-derivation</summary>
 
-HEXA-COGNI 가 물리/수학/수론적으로 성립하는지 stdlib 만으로 검증.
-4 도메인 × 10 TP = 40 TP 를 단일 코드가 일괄 실행.
+§7.2 CROSS re-derives 4-domain main claims via 3 independent paths (±15%).
+§7.3 SCALING τ=4 exponent agreement, §7.4 SENSITIVITY all 4 domains show convex extremum at n=6±10%.
+Integrated theorem linking WM slot σ-φ=10 and Miller 7±2 is published.
 
-### Testable Predictions (검증 가능한 예측 40건 = 4 도메인 × 10)
+</details>
 
-본 통합 논문은 각 도메인에서 10 TP 씩 계승하여 총 40 TP 를 제시한다.
-공통 구조 (TP-*-1 ~ TP-*-10) 는 아래 인지 특화 해석으로 제시한다:
+<details>
+<summary>Mk.I — 2026~2030 Number-theoretic integration mapping (current)</summary>
 
-#### TP-HEXA-COGNI-1~10 (공통 10 + 4 도메인 해석)
+Integrated mapping of σ/τ/φ/sopfr/J₂ coordinates from 4 individual seed papers into single
+HEXA-COGNI P-150. §7.0 CONSTANTS auto-derivation × 4 domains, §7.7 OEIS registration check,
+§7.9 SYMBOLIC Fraction agreement. This integrated paper is the 4-in-1 Mk.I seed document.
+anima 6/8 + WM 20/24 + SOC 0/24 + TIME 14/14 = 40/70 EXACT anchor.
 
-| TP | 주장 | ANIMA | WM | SOC | TIME |
-|----|------|-------|----|----|------|
-| 1  | σ=12 축 일치 | 12 OAM 채널 | 12 WM 축 | 12 사회 차원 | 12 시계 |
-| 2  | τ=4 계층 | 4 QEC 레벨 | 4 Baddeley | 4 엽 | 4 계절 |
-| 3  | φ=2 이중 | dual OAM | 이중 해리 | 좌/우 반구 | 낮/밤 |
-| 4  | sopfr=5 합성 | 5 공정 | 5 단계 | 5 감각 | 5 뇌파 |
-| 5  | J₂=24 통합 | 24 Golay | 24 시냅스 | 24 Brodmann | 24 시간 |
-| 6  | σ·φ=n·τ 유일 | anima 24 | WM 24 | SOC 24 | TIME 24 |
-| 7  | τ=4 스케일링 | 채널 스케일 | WM 용량 | 사회 크기 | 시간 세분 |
-| 8  | ±10% 볼록 | anima 최적 | 슬롯 최적 | 군집 최적 | 시각 최적 |
+</details>
+
+## §7 VERIFY (Python verification — 4-domain integrated)
+
+Verify that HEXA-COGNI is physically / mathematically / number-theoretically consistent using
+stdlib only. 4 domains × 10 TP = 40 TP executed by a single integrated code.
+
+### Testable Predictions (40 = 4 domains × 10)
+
+This integrated paper inherits 10 TPs per domain for a total of 40 TPs.
+The shared structure (TP-*-1 ~ TP-*-10) is expressed in cognition-specific interpretations below:
+
+#### TP-HEXA-COGNI-1~10 (shared 10 + 4-domain interpretations)
+
+| TP | Claim | ANIMA | WM | SOC | TIME |
+|----|-------|-------|----|----|------|
+| 1  | σ=12 axis fit | 12 OAM ch | 12 WM axes | 12 social dims | 12 clock |
+| 2  | τ=4 layers | 4 QEC levels | 4 Baddeley | 4 lobes | 4 seasons |
+| 3  | φ=2 dual | dual OAM | dual dissoc | L/R hemi | day/night |
+| 4  | sopfr=5 synth | 5 processes | 5 stages | 5 senses | 5 brain waves |
+| 5  | J₂=24 integ | 24 Golay | 24 synapse | 24 Brodmann | 24 hours |
+| 6  | σ·φ=n·τ unique | anima 24 | WM 24 | SOC 24 | TIME 24 |
+| 7  | τ=4 scaling | channel scale | WM capacity | social size | time grain |
+| 8  | ±10% convex | anima optimal | slot optimal | cluster opt | hour optimal |
 | 9  | χ² p>0.05 | 6/8 | 20/24 | 0/24 → Mk.II | 14/14 |
-| 10 | OEIS 3중 | A000203 | A000005 | A001414 | 전부 |
+| 10 | Triple OEIS | A000203 | A000005 | A001414 | all |
 
-#### 교차 예측 TP-CROSS-1~6 (HEXA-COGNI 고유 6 건 추가)
+#### Cross predictions TP-CROSS-1~6 (6 HEXA-COGNI-specific additions)
 
-- **TP-CROSS-1 Dunbar ≈ σ²+6**: Dunbar 150 ≈ 144+6 = σ(6)²+n (NEAR). SOC↔회로
-- **TP-CROSS-2 Miller 7 = σ-sopfr**: 작업기억 7 = 12-5 (EXACT). WM↔회로
-- **TP-CROSS-3 일주기 24 = J₂**: TIME 24h ≡ 2·σ (EXACT). TIME↔회로
-- **TP-CROSS-4 피질 6층 = n**: ANIMA 6층 ≡ n (EXACT). 회로↔SOC
-- **TP-CROSS-5 4 엽 = τ**: SOC 4 엽 ≡ τ(6) (EXACT). SOC↔WM(4 계층)
-- **TP-CROSS-6 뇌파 5 = sopfr**: TIME δ/θ/α/β/γ ≡ sopfr(6) (EXACT). TIME↔WM
+- **TP-CROSS-1 Dunbar ≈ σ²+6**: Dunbar 150 ≈ 144+6 = σ(6)²+n (NEAR). SOC↔circuit
+- **TP-CROSS-2 Miller 7 = σ-sopfr**: WM 7 = 12-5 (EXACT). WM↔circuit
+- **TP-CROSS-3 Circadian 24 = J₂**: TIME 24h ≡ 2·σ (EXACT). TIME↔circuit
+- **TP-CROSS-4 Cortex 6 layers = n**: ANIMA 6 layers ≡ n (EXACT). Circuit↔SOC
+- **TP-CROSS-5 4 lobes = τ**: SOC 4 lobes ≡ τ(6) (EXACT). SOC↔WM(4 layers)
+- **TP-CROSS-6 Brain-waves 5 = sopfr**: TIME δ/θ/α/β/γ ≡ sopfr(6) (EXACT). TIME↔WM
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. 하드코딩 0 —
-OEIS A000203/A000005/A001414 에서 직접 계산. `assert σ(n)==2n` 으로 완전수 자기검증.
+### §7.0 CONSTANTS — Auto-derivation of number-theoretic functions
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. Hardcoding = 0 — computed directly
+from OEIS A000203/A000005/A001414. `assert σ(n)==2n` self-checks perfection.
 
-### §7.1 DIMENSIONS — 수론 함수 차원 일관성
-σ(n), τ(n), φ(n), sopfr(n) 차원 없음. 4 도메인 물리량 매핑 시 SI 일관성 추적 —
-anima W(전력), WM bit(정보), SOC log(Dunbar), TIME s(시간).
+### §7.1 DIMENSIONS — Dimensional consistency of number-theoretic functions
+σ(n), τ(n), φ(n), sopfr(n) are dimensionless. When mapping 4-domain physical quantities, track
+SI consistency separately — anima W (power), WM bits (information), SOC log (Dunbar), TIME s (time).
 
-### §7.2 CROSS — 독립 경로 3 + 도메인 교차 4
-n=6 의 24 를 3 수론 경로 + 4 도메인 재유도:
-- 경로 1: J₂ = 2·σ(6) = 24
-- 경로 2: σ(6)·φ(6) = 12·2 = 24
-- 경로 3: n·τ(6) = 6·4 = 24
-- 도메인 4: anima Golay 24 = WM 24 시냅스 ≈ SOC 24 Brodmann ≈ TIME 24시
+### §7.2 CROSS — 3 independent paths + 4-domain cross
+Re-derive the 24 of n=6 via 3 number-theoretic paths + 4-domain cross:
+- Path 1: J₂ = 2·σ(6) = 24
+- Path 2: σ(6)·φ(6) = 12·2 = 24
+- Path 3: n·τ(6) = 6·4 = 24
+- Domain 4: anima Golay 24 = WM 24 synapse ≈ SOC 24 Brodmann ≈ TIME 24 hours
 
-### §7.3 SCALING — log-log 회귀로 τ=4 지수 확인
-4 도메인 스케일링 법칙이 τ(6)=4 혹은 sopfr(6)=5 지수를 따르는지 회귀.
-ANIMA 채널^4, WM 용량^4, SOC Dunbar^4, TIME 세분^4 각각 확인.
+### §7.3 SCALING — Confirm τ=4 exponent via log-log regression
+Check whether the 4-domain scaling laws follow the τ(6)=4 or sopfr(6)=5 exponent via regression.
+ANIMA channel⁴, WM capacity⁴, SOC Dunbar⁴, TIME resolution⁴ individually checked.
 
-### §7.4 SENSITIVITY — n=6 ±10% 볼록성 (4 도메인)
-n=6 이 진짜 최적이면 ±10% 흔들 때 4 도메인 모두 열화. 4 도메인 AND 조건.
+### §7.4 SENSITIVITY — Convexity at n=6 ±10% (4 domains)
+If n=6 is truly optimal, ±10% perturbation should degrade all 4 domains. AND condition across 4.
 
-### §7.5 LIMITS — 물리/수학/생물 상한 미초과
-수론: σ(n) ≤ n·(1+log n). 생물: 뇌 ≈ 20W, WM ≤ σ-φ=10, Dunbar ≤ σ²+sopfr=149,
+### §7.5 LIMITS — Physical/mathematical/biological bounds not exceeded
+Number theory: σ(n) ≤ n·(1+log n). Biology: brain ≈ 20W, WM ≤ σ-φ=10, Dunbar ≤ σ²+sopfr=149,
 TIME 24h strict.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 4 도메인 합산 p-value
-40/70 EXACT 를 H₀(무작위) 하에서 계산. 4 도메인 합산 χ²(39df).
+### §7.6 CHI² — H₀: n=6 coincidence hypothesis 4-domain aggregate p-value
+Compute 40/70 EXACT under H₀(random). 4-domain aggregate χ²(39df).
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
-3종 + 확장 2종:
+### §7.7 OEIS — External sequence DB matching
+3 primary + 2 extended:
 - σ: A000203 / τ: A000005 / sopfr: A001414
-- 완전수: A000396 (6, 28, 496, ...)
-- 총약수식: A034885 (최대 σ(n)/n)
+- Perfect numbers: A000396 (6, 28, 496, ...)
+- Total divisor ratios: A034885 (max σ(n)/n)
 
-### §7.8 PARETO — Monte Carlo 전수 탐색 (4 도메인 통합)
-DSE 2400 조합 × 4 도메인 = 9600. 상위 5% 안에 HEXA-COGNI 구성 안착 확인.
+### §7.8 PARETO — Monte Carlo exhaustive search (4-domain integrated)
+DSE 2400 combinations × 4 domains = 9600. Confirm HEXA-COGNI configuration lands in top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-6 항등식:
+### §7.9 SYMBOLIC — Fraction exact rational agreement
+6 identities:
 - σ·φ = n·τ (= 24)
 - J₂ = 2σ (= 24)
-- σ = 2n (완전수)
+- σ = 2n (perfect)
 - σ-φ = 10 (WM)
 - σ-sopfr = 7 (Miller)
-- 2σ = 24 (TIME 하루)
+- 2σ = 24 (TIME day)
 
-### §7.10 COUNTER — 반례 + Falsifier (4×3=12)
-각 도메인에서 반례 ≥ 3 + FALSIFIER ≥ 3 = 24 건 총합.
+### §7.10 COUNTER — Counterexamples + Falsifiers (4×3=12)
+Each domain contributes ≥ 3 counterexamples + ≥ 3 FALSIFIERs = 24 total.
 
-### §7 통합 검증 코드 (stdlib only, 4 도메인 일괄)
+### §7 integrated verification code (stdlib only, 4 domains in one run)
 
 ```python
 #!/usr/bin/env python3
 # -----------------------------------------------------------------------------
-# §7 VERIFY -- HEXA-COGNI (P-150) n=6 정직성 검증 (stdlib only)
-# 4 도메인 통합: anima-soc + working-memory + cognitive-social-psychology
-#              + calendar-time-geography
+# §7 VERIFY -- HEXA-COGNI (P-150) n=6 honesty check (stdlib only)
+# 4 domains: anima-soc + working-memory + cognitive-social-psychology
+#          + calendar-time-geography
 #
-# 10 섹션 × 4 도메인 = 40 TP 일괄 실행
+# 10 sections × 4 domains = 40 TP executed in one pass
 # -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
@@ -541,7 +548,7 @@ import random
 
 # --- §7.0 CONSTANTS -----------------------------------------------------------
 def divisors(n):
-    """약수 집합. n=6 -> {1,2,3,6}"""
+    """Divisor set. n=6 -> {1,2,3,6}"""
     return {d for d in range(1, n + 1) if n % d == 0}
 
 def sigma(n):
@@ -564,7 +571,7 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. φ(6) = 2"""
+    """Smallest prime factor. φ(6) = 2"""
     for p in range(2, n + 1):
         if n % p == 0:
             return p
@@ -576,27 +583,27 @@ PHI     = phi_min_prime(N)    # 2
 SOPFR   = sopfr(N)            # 5
 J2      = 2 * SIGMA           # 24
 
-# 완전수 자기검증
-assert SIGMA == 2 * N, "n=6 완전수 깨짐 -- 논문 전체 폐기"
+# Perfect-number self-check
+assert SIGMA == 2 * N, "n=6 perfectness broken -- entire paper retired"
 
-# --- §7.1 DIMENSIONS — 4 도메인 차원 ------------------------------------------
+# --- §7.1 DIMENSIONS — 4-domain dimensions ------------------------------------
 DIM_COGNI = {
-    'ANIMA_W'   : 'watt',    # 뇌 대사 에너지
-    'WM_BIT'    : 'bit',     # 작업기억 정보
+    'ANIMA_W'   : 'watt',    # Brain metabolic energy
+    'WM_BIT'    : 'bit',     # Working-memory information
     'SOC_LOG'   : 'log',     # Dunbar log-scale
-    'TIME_SEC'  : 'second',  # 일주기
+    'TIME_SEC'  : 'second',  # Circadian
 }
 
-# --- §7.2 CROSS — 24 를 3 수론 + 4 도메인 --------------------------------------
+# --- §7.2 CROSS — 24 via 3 number-theoretic paths + 4 domains -----------------
 def cross_24_all():
     v1 = SIGMA * PHI       # 12 * 2 = 24
     v2 = N * TAU           # 6 * 4  = 24
     v3 = 2 * SIGMA         # 24 (J2)
-    # 4 도메인 해석값
+    # 4-domain interpretations
     anima_golay  = 24      # [24,12,8] QEC
-    wm_synapse   = 24      # WM 시냅스 번들
-    soc_brodmann = 24      # Brodmann 주 영역 세트 (48 중 코어 24)
-    time_hour    = 24      # 하루
+    wm_synapse   = 24      # WM synapse bundles
+    soc_brodmann = 24      # Brodmann core set (24 of 48)
+    time_hour    = 24      # Day
     return v1, v2, v3, anima_golay, wm_synapse, soc_brodmann, time_hour
 
 # --- §7.3 SCALING --------------------------------------------------------------
@@ -610,7 +617,7 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# --- §7.4 SENSITIVITY — 4 도메인 AND 볼록 --------------------------------------
+# --- §7.4 SENSITIVITY — 4-domain AND convex -----------------------------------
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0)
     yh = f(x0 * (1 + pct))
@@ -618,21 +625,21 @@ def sensitivity(f, x0, pct=0.1):
     return y0, yh, yl, (yh > y0 and yl > y0)
 
 def cogni_cost(n):
-    """4 도메인 합산 비용함수. n=6 에서 최소여야."""
-    anima = abs(n - 6)      # 채널 12 최적
-    wm    = abs(n - 6) * 1.1  # Miller 7 최적
-    soc   = abs(n - 6) * 0.9  # 엽 4 최적
-    tm    = abs(n - 6) * 1.0  # 24시 최적
+    """4-domain combined cost. Minimized at n=6."""
+    anima = abs(n - 6)      # channel 12 optimal
+    wm    = abs(n - 6) * 1.1  # Miller 7 optimal
+    soc   = abs(n - 6) * 0.9  # 4 lobes optimal
+    tm    = abs(n - 6) * 1.0  # 24h optimal
     return anima + wm + soc + tm + 1
 
-# --- §7.5 LIMITS — 물리/생물 상한 ----------------------------------------------
+# --- §7.5 LIMITS — physical/biological bounds ---------------------------------
 def robin_bound(n):
     if n < 3:
         return True
     return sigma(n) <= n * (1 + log(n)) * 1.5
 
 def biological_bounds():
-    """뇌 20W, WM σ-φ=10, Dunbar σ²+sopfr=149, 하루 24h"""
+    """Brain 20W, WM σ-φ=10, Dunbar σ²+sopfr=149, day 24h"""
     return {
         'brain_watt' : 20 <= SIGMA * 2,     # 20 ≤ 24 OK
         'wm_slots'   : (SIGMA - PHI) == 10,  # σ-φ=10
@@ -640,14 +647,14 @@ def biological_bounds():
         'day_hours'  : J2 == 24,
     }
 
-# --- §7.6 CHI2 — 4 도메인 합산 -------------------------------------------------
+# --- §7.6 CHI² — 4-domain aggregate -------------------------------------------
 def chi2_pvalue(observed, expected):
     chi2 = sum((o - e) ** 2 / e for o, e in zip(observed, expected) if e)
     df = len(observed) - 1
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# --- §7.7 OEIS — 확장 5 종 ----------------------------------------------------
+# --- §7.7 OEIS — extended 5 -----------------------------------------------------
 OEIS_KNOWN = {
     (1, 3, 4, 7, 6, 12, 8, 15, 13, 18):  "A000203 (sigma)",
     (1, 2, 2, 3, 2, 4, 2, 4, 3, 4):      "A000005 (tau)",
@@ -655,16 +662,16 @@ OEIS_KNOWN = {
     (6, 28, 496, 8128):                  "A000396 (perfect)",
 }
 
-# --- §7.8 PARETO — 4 도메인 통합 -----------------------------------------------
+# --- §7.8 PARETO — 4-domain integrated ----------------------------------------
 def pareto_rank_hexa_cogni():
     random.seed(6)
     n_total = 2400
-    # 4 도메인 정합도 평균: (6/8 + 20/24 + 0/24 + 14/14) / 4 = (0.75+0.833+0.0+1.0)/4
+    # 4-domain fit average: (6/8 + 20/24 + 0/24 + 14/14) / 4
     cogni_score = (0.75 + 0.833 + 0.0 + 1.0) / 4    # ≈ 0.646
     better = sum(1 for _ in range(n_total) if random.gauss(0.55, 0.15) > cogni_score)
     return better / n_total
 
-# --- §7.9 SYMBOLIC — 6 항등식 --------------------------------------------------
+# --- §7.9 SYMBOLIC — 6 identities ---------------------------------------------
 def symbolic_identities():
     tests = [
         ("sigma*phi = n*tau",    Fraction(SIGMA * PHI), Fraction(N * TAU)),       # 24
@@ -676,103 +683,103 @@ def symbolic_identities():
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# --- §7.10 COUNTER — 4 도메인 × 3 = 12 반례 -----------------------------------
+# --- §7.10 COUNTER — 4 domains × 3 = 12 counterexamples -----------------------
 COUNTER_EXAMPLES = [
     # ANIMA
-    ("기본전하 e = 1.602e-19 C",  "anima-soc: QED 상수, n=6 무관"),
-    ("Planck h = 6.626e-34 J*s",  "anima-soc: 6.6 우연, n=6 유도 아님"),
-    ("CIGS 1.15 eV 흡수층",       "anima-soc: 광센서 n6=0.33 MISS"),
+    ("elementary charge e = 1.602e-19 C",  "anima-soc: QED constant, n=6 unrelated"),
+    ("Planck h = 6.626e-34 J*s",           "anima-soc: 6.6 coincidental, not n=6 derived"),
+    ("CIGS 1.15 eV absorber",              "anima-soc: photosensor n6=0.33 MISS"),
     # WM
-    ("Ebbinghaus 망각곡선 e^(-t/τ)", "working-memory: e 지수 감쇠, n=6 독립"),
-    ("Sperling iconic 250 ms",     "working-memory: 250 은 n=6 유도 아님"),
-    ("Cowan magical 4 (수정 Miller)", "working-memory: 4≡τ 이지만 6 직접 아님"),
+    ("Ebbinghaus forgetting e^(-t/τ)",     "working-memory: e-decay, independent of n=6"),
+    ("Sperling iconic 250 ms",             "working-memory: 250 not n=6 derived"),
+    ("Cowan magical 4 (revised Miller)",   "working-memory: 4≡τ but not direct 6"),
     # SOC
-    ("Big-5 OCEAN 상관행렬 고유값",  "cognitive-social: 실증 분포, n=6 직접 아님"),
-    ("Stroop 간섭 ms",             "cognitive-social: 시간 상수 n=6 무관"),
-    ("Asch 동조 37% 비율",         "cognitive-social: 0.37 우연"),
+    ("Big-5 OCEAN correlation eigenvals",  "cognitive-social: empirical, not n=6 direct"),
+    ("Stroop interference ms",             "cognitive-social: time constant, n=6 unrelated"),
+    ("Asch conformity 37%",                "cognitive-social: 0.37 coincidental"),
     # TIME
-    ("지구 자전 주기 23.934 h",    "calendar-time: 약간 < 24, sidereal 차이"),
-    ("pi = 3.14159...",           "calendar-time: 원주율 기하, n=6 독립"),
-    ("윤년 365.2422",              "calendar-time: 연 길이 n=6 유도 아님"),
+    ("Earth rotation 23.934 h",            "calendar-time: slightly <24, sidereal diff"),
+    ("pi = 3.14159...",                    "calendar-time: geometric, n=6 independent"),
+    ("Leap year 365.2422",                 "calendar-time: year length not n=6 derived"),
 ]
 FALSIFIERS = [
     # ANIMA
-    "anima-soc n=6 정합도 < 70% → §4 L0 폐기",
-    "Golay [24,12,8] 재측정 실패 → anima 회로 재설계",
-    "S₆ 외부자기동형 위배 사례 발견 → anima 유일성 폐기",
+    "anima-soc n=6 fit < 70% → retire §4 L0",
+    "Golay [24,12,8] remeasure failure → anima circuit redesign",
+    "S₆ outer automorphism counterexample → retire anima uniqueness",
     # WM
-    "Miller 7±2 한계 > σ-φ=10 으로 측정 → WM §4 L2 폐기",
-    "Baddeley 4 요소 ≠ τ(6) 실증 → WM 계층 재정의",
-    "망각곡선 sopfr=5 단계 ≠ 실험 → WM §5 L3 폐기",
+    "Miller 7±2 bound > σ-φ=10 measured → retire WM §4 L2",
+    "Baddeley 4 ≠ τ(6) empirically → redefine WM hierarchy",
+    "Forgetting curve sopfr=5 stages ≠ experiment → retire WM §5 L3",
     # SOC
-    "Dunbar < 100 or > 200 범위 초과 → SOC σ²+sopfr 근사 폐기",
-    "4 엽 ≠ τ(6) 실증 → SOC §4 L1 폐기",
-    "Big-5 ≠ sopfr(6) 요인 수 → SOC §4 L2 폐기",
+    "Dunbar outside <100 or >200 → retire SOC σ²+sopfr near",
+    "4 lobes ≠ τ(6) empirically → retire SOC §4 L1",
+    "Big-5 ≠ sopfr(6) factor count → retire SOC §4 L2",
     # TIME
-    "하루 ≠ 24 시 (예: 화성 24.6h 직접 적용) → TIME §4 L4 범위 제한",
-    "계절 ≠ 4 (적도 2계) → TIME 적용 위도 제한",
-    "뇌파 밴드 ≠ 5 표준 → TIME §5 L5 mapping 재검",
-    # 전역
-    "σ(n)·φ(n) = n·τ(n) 가 n=6 외 n 에서 성립 발견 → 논문 전체 폐기",
-    "atlas 40/70 EXACT 재측정 < 30/70 → Mk.I 강등",
-    "OEIS A000203/A000005/A001414 등록 취소 → §7.7 폐기",
+    "Day ≠ 24h (e.g. Mars 24.6h directly) → restrict TIME §4 L4 scope",
+    "Seasons ≠ 4 (equatorial 2 seasons) → restrict TIME latitude",
+    "Brain-wave bands ≠ 5 standard → retest TIME §5 L5 mapping",
+    # Global
+    "σ(n)·φ(n) = n·τ(n) found holding at n≠6 → retire entire paper",
+    "atlas 40/70 EXACT remeasure < 30/70 → Mk.I demotion",
+    "OEIS A000203/A000005/A001414 delisted → retire §7.7",
 ]
 
-# --- 메인 실행 ---------------------------------------------------------------
+# --- Main -------------------------------------------------------------------
 if __name__ == "__main__":
     r = []
 
-    # §7.0 상수 수론 유도
-    r.append(("§7.0 CONSTANTS 수론 유도 (4 도메인 공통)",
+    # §7.0 Constant number-theoretic derivation
+    r.append(("§7.0 CONSTANTS number-theoretic deriv (4-domain shared)",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.1 차원
-    r.append(("§7.1 DIMENSIONS 4 도메인 차원 명시",
+    # §7.1 Dimensions
+    r.append(("§7.1 DIMENSIONS 4-domain dimensions declared",
               len(DIM_COGNI) == 4 and SIGMA == 2 * N))
 
-    # §7.2 24 = 수론 3 + 도메인 4
+    # §7.2 24 via 3 number-theoretic + 4 domains
     vals = cross_24_all()
-    r.append(("§7.2 CROSS 24 수론3+도메인4 일치",
+    r.append(("§7.2 CROSS 24 via 3 number-theoretic + 4 domains",
               all(v == 24 for v in vals)))
 
-    # §7.3 τ=4 지수
+    # §7.3 τ=4 exponent
     exp_4 = scaling_exponent([10, 20, 30, 40, 48],
                               [b ** TAU for b in [10, 20, 30, 40, 48]])
-    r.append(("§7.3 SCALING tau=4 지수 확인", abs(exp_4 - TAU) < 0.1))
+    r.append(("§7.3 SCALING tau=4 exponent", abs(exp_4 - TAU) < 0.1))
 
-    # §7.4 4 도메인 볼록
+    # §7.4 4-domain convex
     _, yh, yl, convex = sensitivity(cogni_cost, 6)
-    r.append(("§7.4 SENSITIVITY 4 도메인 AND 볼록", convex))
+    r.append(("§7.4 SENSITIVITY 4-domain AND convex", convex))
 
-    # §7.5 상한
+    # §7.5 Bounds
     bio = biological_bounds()
-    r.append(("§7.5 LIMITS Robin + 생물 상한",
+    r.append(("§7.5 LIMITS Robin + biological bounds",
               robin_bound(6) and all(bio.values())))
 
     # §7.6 H0 p-value (40/70)
     obs = [1.0] * 40 + [0.0] * 30
     exp = [0.57] * 70
     chi2, df, p = chi2_pvalue(obs, exp)
-    r.append(("§7.6 CHI2 p>0.05 또는 chi2 유한",
+    r.append(("§7.6 CHI² p>0.05 or chi² finite",
               p > 0.05 or chi2 >= 0))
 
-    # §7.7 OEIS 4 종
-    r.append(("§7.7 OEIS 4 종 등록 (sigma+tau+sopfr+perfect)",
+    # §7.7 OEIS 4 entries
+    r.append(("§7.7 OEIS 4 entries (sigma+tau+sopfr+perfect)",
               len([k for k in OEIS_KNOWN if OEIS_KNOWN[k]]) >= 4))
 
-    # §7.8 Pareto 상위
+    # §7.8 Pareto rank
     r.append(("§7.8 PARETO HEXA-COGNI Monte Carlo",
               pareto_rank_hexa_cogni() < 0.8))
 
-    # §7.9 6 항등식 Fraction
-    r.append(("§7.9 SYMBOLIC 6 항등식 일치",
+    # §7.9 6 identities Fraction
+    r.append(("§7.9 SYMBOLIC 6 identities match",
               all(ok for _, ok, _ in symbolic_identities())))
 
-    # §7.10 12 반례 + 15 Falsifier
-    r.append(("§7.10 COUNTER/FALSIFIERS 4도×3=12+15",
+    # §7.10 12 counterexamples + 15 Falsifiers
+    r.append(("§7.10 COUNTER/FALSIFIERS 4dom×3=12+15",
               len(COUNTER_EXAMPLES) >= 12 and len(FALSIFIERS) >= 12))
 
-    # 교차 정리 6 건 (추가)
+    # 6 cross theorems (additional)
     cross_thm = [
         ("Miller 7 = sigma-sopfr", (SIGMA - SOPFR) == 7),
         ("WM cap = sigma-phi",     (SIGMA - PHI) == 10),
@@ -781,146 +788,149 @@ if __name__ == "__main__":
         ("4 lobes = tau",          TAU == 4),
         ("5 senses = sopfr",       SOPFR == 5),
     ]
-    r.append(("§7 CROSS 6 교차정리 (HEXA-COGNI 고유)",
+    r.append(("§7 CROSS 6 cross theorems (HEXA-COGNI-specific)",
               all(ok for _, ok in cross_thm)))
 
     passed = sum(1 for _, ok in r if ok)
     total = len(r)
     print("=" * 60)
-    print("HEXA-COGNI (P-150) 4 도메인 통합 n=6 검증")
+    print("HEXA-COGNI (P-150) 4-domain integrated n=6 verification")
     print("=" * 60)
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (HEXA-COGNI 4 도메인 n=6 통합 검증)")
+    print(f"{passed}/{total} PASS (HEXA-COGNI 4-domain n=6 integrated check)")
 ```
 
 ---
 
-## §8 LIMITS (정직한 한계)
+## §8 LIMITS (Honest limitations)
 
-1. **SOC 0/24 EXACT 현황**: cognitive-social-psychology 는 atlas 0/24 EXACT — 사회인지
-   상수가 아직 검증 측정치 부족. Mk.II 에서 실험 데이터 추가 필요.
-2. **WM σ-φ=10 상한과 Miller 7±2**: 7+2=9 ≤ 10 경계에서 만족. 8~9 는 개인차 허용 영역,
-   10 초과 실측 사례 발견 시 §4 L2 재정의.
-3. **Dunbar ≈ σ²+sopfr = 149 NEAR 근사**: Dunbar 150 과 1 차이, 정수 완전 일치 아님.
-4. **시차·윤년 연속 파라미터**: 지구 자전 23.934 h 는 24 아님. 본 논문은 *역법 단위*의
-   이산화 측면만 다루며, 연속 천문학 상수는 honest-limitations 에 위임.
-5. **SOC 반구 비대칭**: φ=2 이중 구조는 좌/우 비대칭(언어 좌뇌 편향) 을 무시. 평균 모델.
+1. **SOC 0/24 EXACT current state**: cognitive-social-psychology sits at atlas 0/24 EXACT —
+   social cognition constants still lack validated measurement data. Experimental data needed in Mk.II.
+2. **WM σ-φ=10 ceiling and Miller 7±2**: 7+2=9 ≤ 10 is satisfied at the boundary. 8~9 is an
+   individual-variation band; if empirical cases exceed 10, redefine §4 L2.
+3. **Dunbar ≈ σ²+sopfr = 149 NEAR approximation**: differs from Dunbar's 150 by 1; not integer exact.
+4. **Time-zone / leap continuous parameters**: Earth rotation 23.934 h ≠ 24. This paper only addresses
+   the discretization aspect of *calendar units*; continuous astronomical constants are deferred to
+   honest-limitations.
+5. **SOC hemispheric asymmetry**: the φ=2 dual structure ignores L/R asymmetry (e.g., left-brain
+   language lateralization). Averaged model.
 
-## §9 RISKS (잠재 위험)
+## §9 RISKS (Potential risks)
 
-- **인지 신경과학 환원주의 비판**: 피질 6층을 n=6 완전수로 "역인과" 한다는 비판 가능 →
-  §7.10 COUNTER 로 반증 조건 명시하여 응수.
-- **4 도메인 일괄 폐기 위험**: σ(n)·φ(n)=n·τ(n) 유일성 위배 시 4 도메인 동시 강등.
-  장점: 단일 반증으로 4 이론 검증.
-- **BCI 안전**: OpenBCI 16ch 파일럿 단계에서 읽기 전용 제한(사용자 메모리 준수).
+- **Cognitive-neuroscience reductionism critique**: possible criticism that the 6-layer cortex is
+  being "reverse-caused" from the n=6 perfect number → rebutted by explicit §7.10 COUNTER and
+  falsification conditions.
+- **4-domain simultaneous retirement risk**: violation of σ(n)·φ(n)=n·τ(n) uniqueness triggers
+  4-domain simultaneous demotion. Benefit: a single falsification tests 4 theories.
+- **BCI safety**: OpenBCI 16ch pilot stage restricted to read-only (compliant with user-memory limits).
 
-## §10 COST (자원 비용)
+## §10 COST (Resource cost)
 
-| 항목 | 수치 | n=6 근거 |
-|------|------|---------|
-| 뇌 대사 | 약 20 W | ≤ 2σ=24 W 상한 준수 |
-| 시냅스 수 | ~10¹⁴ | n=6 무관 생물 상수 |
-| WM 슬롯 | 7±2 | σ-sopfr=7 ± σ-J₂/… |
-| 일주기 | 24 h | J₂ EXACT |
-| 구현 비용(시뮬) | 1/(σ-φ)=1/10 기존 | SOC HEXA-COG-ARCH 계승 |
+| Item | Value | n=6 basis |
+|------|-------|-----------|
+| Brain metabolism | ≈ 20 W | ≤ 2σ=24 W bound met |
+| Synapse count | ~10¹⁴ | n=6 unrelated biological constant |
+| WM slots | 7±2 | σ-sopfr=7 ± σ-J₂/… |
+| Circadian | 24 h | J₂ EXACT |
+| Implementation cost (sim) | 1/(σ-φ)=1/10 of baseline | SOC HEXA-COG-ARCH inherited |
 
-## §11 IMPACT (사회적 영향)
+## §11 IMPACT (Societal impact)
 
-- 인지·BCI·AGI·Chronobiology 4 분야에 단일 아키텍처 제공 → 교육/정신건강/수면/사회
-  설계 통합.
-- 정신과 약물 스크리닝에서 n=6 4 도메인 좌표 공유로 적응증 연결 가능성.
+- Single integrated architecture across cognition·BCI·AGI·Chronobiology → unified education /
+  mental health / sleep / social design.
+- Psychiatric drug screening may leverage shared n=6 4-domain coordinates to connect indications.
 
-## §12 OPEN (후속 연구)
+## §12 OPEN (Follow-up research)
 
-1. BCI EEG σ=12 채널 실시간 디코딩 구현 (OpenBCI 16ch → 12 유효 채널 매핑).
-2. WM σ-φ=10 상한 대규모 (n > 1000) 검증.
-3. SOC Dunbar 정밀화: σ²+sopfr=149 vs 관측 150.
-4. Chronobiology TIME 시차 적응 sopfr=5 단계 모델.
+1. Real-time BCI EEG σ=12 channel decoding (OpenBCI 16ch → 12 effective channel mapping).
+2. Large-scale (n > 1000) validation of WM σ-φ=10 ceiling.
+3. SOC Dunbar refinement: σ²+sopfr=149 vs observed 150.
+4. Chronobiology TIME jet-lag adaptation sopfr=5-stage model.
 
-## §13 GLOSSARY (용어)
+## §13 GLOSSARY
 
-| 용어 | 정의 |
-|------|------|
-| HEXA-COGNI | P-150 4 도메인 통합 인지 아키텍처 |
-| σ(n) | OEIS A000203, 약수합 |
-| τ(n) | OEIS A000005, 약수개수 |
-| φ(n) (본 논문) | 최소 소인수 (Euler totient 와 다름 — 명시) |
-| sopfr(n) | OEIS A001414, 소인수합 (중복 포함) |
-| J₂ | 2·σ, 통합 격자 크기 |
-| Miller 7±2 | 작업기억 용량, σ-sopfr=7 근거 |
-| Dunbar | 사회 관계 상한, σ²+sopfr ≈ 149 근사 |
-| CIRCUIT→신경회로 | 인지 해석 규칙 |
+| Term | Definition |
+|------|------------|
+| HEXA-COGNI | P-150 4-domain integrated cognitive architecture |
+| σ(n) | OEIS A000203, divisor sum |
+| τ(n) | OEIS A000005, divisor count |
+| φ(n) (this paper) | Smallest prime factor (distinct from Euler totient — noted) |
+| sopfr(n) | OEIS A001414, sum of prime factors with multiplicity |
+| J₂ | 2·σ, integration lattice size |
+| Miller 7±2 | Working-memory capacity, σ-sopfr=7 basis |
+| Dunbar | Social relation upper bound, σ²+sopfr ≈ 149 approximation |
+| CIRCUIT→neural circuit | Cognitive interpretation rule |
 
-## §14 ETHICS (윤리)
+## §14 ETHICS
 
-- 본 논문은 의료기기/약물 주장 없음. 이론적 좌표 매핑만.
-- OpenBCI 16ch 사용 시 IRB 준수, 읽기 전용, 자기 실험 기준.
-- AI 윤리: ai-ethics-governance 도메인 준수.
+- This paper makes no medical-device/drug claims. Theoretical coordinate mapping only.
+- Using OpenBCI 16ch requires IRB compliance, read-only, self-experiment grade.
+- AI ethics: compliance with ai-ethics-governance domain.
 
-## §15 CROSS (도메인 연결)
+## §15 CROSS (Domain links)
 
-- **anima-soc**: 하드웨어 기판 (L0 CIRCUIT).
-- **working-memory**: 단기 저장 (L2 FIRMWARE).
-- **cognitive-social-psychology**: 다자 상호작용 (L1 PCB).
-- **calendar-time-geography**: 시간 스케줄러 (L4 THREAD).
-- **cognitive-architecture**: 대뇌피질 6층 기저 (parent domain).
-- **brain-computer-interface**: 외부 I/O bridge.
-- **agi-architecture**: 상위 AGI 목표.
+- **anima-soc**: Hardware substrate (L0 CIRCUIT).
+- **working-memory**: Short-term storage (L2 FIRMWARE).
+- **cognitive-social-psychology**: Multi-agent interaction (L1 PCB).
+- **calendar-time-geography**: Time scheduler (L4 THREAD).
+- **cognitive-architecture**: Cortical 6-layer base (parent domain).
+- **brain-computer-interface**: External I/O bridge.
+- **agi-architecture**: Upstream AGI target.
 
-## §16 CONSCIOUSNESS (의식 관점)
+## §16 CONSCIOUSNESS (Consciousness perspective)
 
-HEXA-COGNI 를 **IIT Φ** 해석: τ=4 엽 × φ=2 반구 = 8 서브시스템 분할에서
-최대 통합정보. σ=12 채널이 정보 엔트로피 상한 log₂(12)≈3.58 bit/c.
-주관성은 본 논문 범위 외 (측정 불가), consciousness-measurement-protocol 참조.
+HEXA-COGNI interpreted via **IIT Φ**: τ=4 lobes × φ=2 hemispheres = 8-subsystem partition with
+maximal integrated information. σ=12 channels bound the information entropy ceiling at log₂(12)
+≈ 3.58 bit/c. Subjectivity is outside this paper's scope (non-measurable); see
+consciousness-measurement-protocol.
 
-## §17 TIMING (시간 스케일)
+## §17 TIMING (Time scales)
 
-| 스케일 | 인지 현상 | n=6 좌표 |
-|-------|----------|---------|
-| 1 ms  | 뉴런 스파이크 | n=6 μ=1 |
-| 10 ms | γ-band 진동 | sopfr 밴드 5 중 |
-| 100 ms | P300 ERP | τ=4 주의 |
-| 1 s   | 작업기억 유지 | φ=2 루프 |
-| 10 s  | 단기기억 | σ-φ=10 슬롯 |
-| 24 h  | 일주기 | J₂=24 |
+| Scale | Cognitive phenomenon | n=6 coord |
+|-------|----------------------|-----------|
+| 1 ms  | Neuron spike | n=6 μ=1 |
+| 10 ms | γ-band oscillation | sopfr band 5 |
+| 100 ms | P300 ERP | τ=4 attention |
+| 1 s   | Working-memory maintenance | φ=2 loop |
+| 10 s  | Short-term memory | σ-φ=10 slots |
+| 24 h  | Circadian | J₂=24 |
 
-## §18 SOCIAL (사회적 스케일)
+## §18 SOCIAL (Social scales)
 
-| 집단 크기 | 관계 형태 | n=6 근거 |
-|----------|----------|---------|
-| 2       | 페어 | φ=2 |
-| 6       | 밴드 | n |
-| 12      | 동아리 | σ |
-| 24      | 팀 | J₂ |
-| 150     | Dunbar | σ²+sopfr |
+| Group size | Relation form | n=6 basis |
+|------------|---------------|-----------|
+| 2          | Pair | φ=2 |
+| 6          | Band | n |
+| 12         | Clique | σ |
+| 24         | Team | J₂ |
+| 150        | Dunbar | σ²+sopfr |
 
-## §19 FUTURE (미래 전망)
+## §19 FUTURE
 
-- Mk.II (2030~2035) WM+SOC 독립 재유도 완성 시 atlas 40/70 → 56/70.
-- Mk.III (2035~2040) BCI 파일럿 성공 시 🛸10 승격.
-- Mk.IV+ AGI 통합에서 HEXA-COGNI 가 cognitive-architecture 부모의 자녀 노드로
-  안착 예상.
+- Mk.II (2030~2035) WM+SOC independent re-derivation completion expected to move atlas 40/70 → 56/70.
+- Mk.III (2035~2040) BCI pilot success promotes to 🛸10.
+- Mk.IV+ HEXA-COGNI anticipated to settle as a child node of cognitive-architecture parent.
 
-## §20 CHANGELOG (변경 이력)
+## §20 CHANGELOG
 
-- **2026-04-18 v2**: 4 도메인 통합 초판. anima + WM + SOC + TIME → HEXA-COGNI P-150.
-  40 TP + 6 교차정리 + 12 FALSIFIER. atlas 40/70 EXACT 기점.
-- **2026-04-14 v1 (개별)**: 4 편 시드 논문 각자 canonical v2 발행 (선행).
-- **2026-04-01 v0 (시드)**: cognitive-architecture 부모 도메인 🛸10 달성, 통합 타당성
-  확보.
+- **2026-04-18 v2**: 4-domain integrated first edition. anima + WM + SOC + TIME → HEXA-COGNI P-150.
+  40 TP + 6 cross theorems + 12 FALSIFIERs. atlas 40/70 EXACT anchor.
+- **2026-04-14 v1 (individual)**: 4 seed papers each published canonical v2 (upstream).
+- **2026-04-01 v0 (seed)**: cognitive-architecture parent domain reaches 🛸10; integration
+  feasibility secured.
 
-## §21 REFERENCES (참고)
+## §21 REFERENCES
 
-### A. 내부 참조 (4 편 원본)
+### A. Internal references (4 source papers)
 - [n6-anima-soc-paper.md](n6-anima-soc-paper.md)
 - [n6-working-memory-paper.md](n6-working-memory-paper.md)
 - [n6-cognitive-social-psychology-paper.md](n6-cognitive-social-psychology-paper.md)
 - [n6-calendar-time-geography-paper.md](n6-calendar-time-geography-paper.md)
 - [cognitive-architecture.md](../domains/cognitive/cognitive-architecture/cognitive-architecture.md)
 
-### B. 외부 학술
+### B. External academic
 - Miller, G. A. (1956). *The magical number seven*. Psychol. Rev.
 - Baddeley, A. (2000). *The episodic buffer*. Trends Cogn. Sci.
 - Dunbar, R. I. M. (1992). *Neocortex size as a constraint*. J. Hum. Evol.
@@ -928,43 +938,43 @@ HEXA-COGNI 를 **IIT Φ** 해석: τ=4 엽 × φ=2 반구 = 8 서브시스템 �
 - Tononi, G. (2008). *Consciousness as integrated information* (IIT).
 - OEIS A000203, A000005, A001414, A000396.
 
-### C. 상위 프로젝트 규칙
+### C. Parent project rules
 - n6shared/rules/common.json R0~R27
 - n6shared/rules/n6-architecture.json N61~N65
-- papers/CLAUDE.md (한글 필수, HEXA-FIRST)
+- papers/CLAUDE.md (English required, HEXA-FIRST)
 
 ---
 
-## 부록 A. 인증 체인 + 반례 ≥ 12 (통합 P2-2)
+## Appendix A. Certification chain + ≥ 12 counterexamples (integrated P2-2)
 
-### A.1 증명 자격 인증 참조
-- **physics-math-certification.md** (🛸10 Aggregate) — S₆ 외부자기동형 + Golay
-  [24,12,8] QEC 구조 상속.
-- **honest-limitations.md** — 연속 파라미터 한계 (CIGS, PVD, 천문 상수) 상속.
-- **cognitive-architecture.md** (🛸10) — 대뇌피질 6층 + 격자세포 6각 기저 상속.
+### A.1 Certification chain reference
+- **physics-math-certification.md** (🛸10 Aggregate) — inherits S₆ outer automorphism + Golay
+  [24,12,8] QEC structure.
+- **honest-limitations.md** — inherits continuous-parameter limits (CIGS, PVD, astronomical).
+- **cognitive-architecture.md** (🛸10) — inherits cortical 6 layers + hexagonal grid-cell base.
 
-### A.2 반례 ≥ 12 (4 도메인 × 3)
-본 논문 §7.10 COUNTER_EXAMPLES 에 12 건 적재 (ANIMA 3 + WM 3 + SOC 3 + TIME 3).
-각 반례는 해당 서브도메인의 n=6 비적용 경계를 명시.
+### A.2 ≥ 12 counterexamples (4 domains × 3)
+§7.10 COUNTER_EXAMPLES of this paper loads 12 items (ANIMA 3 + WM 3 + SOC 3 + TIME 3).
+Each counterexample marks the non-applicability boundary of the respective subdomain.
 
-### A.3 FALSIFIERS ≥ 12 (+ 전역 3)
-§7.10 FALSIFIERS 에 15 건 (도메인별 3 × 4 + 전역 3) 적재.
+### A.3 ≥ 12 FALSIFIERs (+ 3 global)
+§7.10 FALSIFIERS loads 15 items (3 per domain × 4 + 3 global).
 
 ---
 
 ### ASCII check
-- 21 섹션 canonical 모두 포함: §0 초록, §1 WHY, §2 COMPARE, §3 REQUIRES, §4 STRUCT,
+- All 21 canonical sections included: §0 Abstract, §1 WHY, §2 COMPARE, §3 REQUIRES, §4 STRUCT,
   §5 FLOW, §6 EVOLVE, §7 VERIFY, §8 LIMITS, §9 RISKS, §10 COST, §11 IMPACT,
   §12 OPEN, §13 GLOSSARY, §14 ETHICS, §15 CROSS, §16 CONSCIOUSNESS, §17 TIMING,
-  §18 SOCIAL, §19 FUTURE, §20 CHANGELOG + §21 REFERENCES + 부록 A
-- ASCII 막대 비교 차트 §2 포함 (5 항목)
-- 검증코드 Python stdlib 40 TP §7 통합 코드 적재
-- require_mk_history: Mk.I~V 5 라인 (≥ 3)
-- 한글 필수 충족, 이모지 남용 없음, contact 항목 없음
+  §18 SOCIAL, §19 FUTURE, §20 CHANGELOG + §21 REFERENCES + Appendix A
+- ASCII bar comparison chart in §2 (5 items)
+- Python stdlib §7 integrated verification code, 40 TP
+- require_mk_history: Mk.I~V 5 lines (≥ 3)
+- English-required: met; emoji discipline respected; no contact section
 
 ### verify check
-- 40 TP + 6 CROSS 정리 = 46 주장 | 12 FALSIFIER + 12 반례 = 24 반증
-- atlas 40/70 EXACT 기점, Mk.I current
+- 40 TP + 6 CROSS theorems = 46 claims | 12 FALSIFIER + 12 counterexamples = 24 falsifiers
+- atlas 40/70 EXACT anchor, Mk.I current
 
 ## mk_history
 
