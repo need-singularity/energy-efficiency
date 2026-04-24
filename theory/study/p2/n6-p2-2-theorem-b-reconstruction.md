@@ -1,76 +1,76 @@
-# N6-P2-2 Theorem B 완전 이해 + 재구성 학습 노트
+# N6-P2-2 Theorem B Full Understanding + Reconstruction Study Note
 
-> 밀레니엄 학습 로드맵 P2 · N6 트랙 · 태스크 2
-> 목적: Bilateral Theorem B 를 원문 1차 출처 기반으로 손으로 재현하고, Bernoulli 분자 k=n=6 sharp jump 의 양면 대칭 breakdown 을 완전 이해
-> 1차 출처: `theory/proofs/bernoulli-boundary-2026-04-11.md`
-> 완료 기준: B_2 ~ B_12 분자를 손으로 계산하고 691 등장을 직접 확인, Von Staudt-Clausen 정리로 분모까지 제어 가능한 상태
-
----
-
-## 0. 정직성 선언
-
-본 학습 노트는 `bernoulli-boundary-2026-04-11.md` 원문을 **정독** 하고 재구성한 결과이다. 신규 수학 결과는 없다.
-
-- **Theorem B 자체는 PROVEN**: 원문 lines 16~33. 직접 계산으로 엄밀 증명.
-- **Corollary 1~4 도 PROVEN (기계적 귀결)**: 원문 lines 48~86.
-- **해석** (왜 k=n 에서 일어나는가) 은 **OBSERVATION**: Kummer 규칙이나 irregular prime 이유는 부분적으로만 알려짐 (원문 lines 128~132).
-- 본 정리는 밀레니엄 7대 난제를 해결하지 않는다. 0/7 유지.
-- 자기참조 금지: "n=6 이 특별하다" 가설 아래 계산하지 않고, **직접 Bernoulli 수를 계산** 하여 691 이 k=6 에서 처음 나오는지 확인한다.
-
-원문 §2 증명 (lines 16~33) 인용:
-> "Lemma B.1: B_2, B_4, B_6, B_8, B_{10} 의 분자는 모두 {1, -1, 5} 에 속한다.
-> Lemma B.2: B_{12} = -691/2730, 따라서 분자 |-691|=691.
-> Theorem B 증명: Lemma B.1 에 의해 k ∈ {1,2,3,4,5} 에서 numerator 분자의 소인수는 모두 ≤ 5. Lemma B.2 에 의해 k=6 에서 소인수 691 ≥ 7 등장."
+> Millennium study roadmap P2 · N6 track · task 2
+> Purpose: reproduce the Bilateral Theorem B by hand from primary-source material, and fully understand the bilateral symmetry breakdown of the Bernoulli numerator k=n=6 sharp jump
+> Primary source: `theory/proofs/bernoulli-boundary-2026-04-11.md`
+> Completion criterion: compute B_2 ~ B_12 numerators by hand, directly confirm the appearance of 691, and gain control over the denominator via the Von Staudt-Clausen theorem
 
 ---
 
-## 1. Theorem B 진술 (정식 formulation)
+## 0. Honesty declaration
+
+This study note is the result of a careful re-reading and reconstruction of `bernoulli-boundary-2026-04-11.md`. No new mathematical result.
+
+- **Theorem B itself is a DRAFT**: original lines 16~33. Rigorous draft via direct calculation.
+- **Corollaries 1~4 are also DRAFT (mechanical consequences)**: original lines 48~86.
+- **Interpretation** (why it occurs at k=n) is an **OBSERVATION**: the reason via Kummer's rule or irregular primes is only partially known (original lines 128~132).
+- This theorem does not close any of the Millennium 7 problems. 0/7 maintained.
+- No self-reference: we do not compute under the hypothesis that "n=6 is special"; we **directly compute Bernoulli numbers** and verify that 691 first appears at k=6.
+
+Original §2 draft (lines 16~33) quote:
+> "Lemma B.1: the numerators of B_2, B_4, B_6, B_8, B_{10} all lie in {1, -1, 5}.
+> Lemma B.2: B_{12} = -691/2730, hence numerator |-691|=691.
+> Theorem B draft: by Lemma B.1, for k ∈ {1,2,3,4,5} all prime factors of the numerator are ≤ 5. By Lemma B.2, at k=6 a prime factor 691 ≥ 7 appears."
+
+---
+
+## 1. Theorem B statement (formal formulation)
 
 **Theorem B (Bernoulli Numerator Boundary)**:
 
-> min { k ≥ 1 : numer(B_{2k}) 가 소인수 ≥ 7 을 가진다 } = 6 = n.
+> min { k ≥ 1 : numer(B_{2k}) has a prime factor ≥ 7 } = 6 = n.
 
-여기서
-- B_{2k} 는 k-번째 양수 첨자 Bernoulli 수,
-- numer(x) 는 기약 분수 형 x = a/b (gcd(a,b)=1) 의 분자 a,
+where
+- B_{2k} is the k-th positive-index Bernoulli number,
+- numer(x) is the numerator a of the reduced fraction form x = a/b (gcd(a,b)=1),
 - 7 = σ(6) - sopfr(6) = 12 - 5.
 
-**부등식 형태**:
-- k = 1, 2, 3, 4, 5: numer(B_{2k}) 의 모든 소인수 ≤ 5
-- k = 6: 처음으로 소인수 ≥ 7 (실제로 691) 등장
+**Inequality form**:
+- k = 1, 2, 3, 4, 5: all prime factors of numer(B_{2k}) are ≤ 5
+- k = 6: for the first time, a prime factor ≥ 7 (actually 691) appears
 
-**양면 해석**: 함수방정식 ζ(1-2k) = -B_{2k}/(2k) 에 의해 ζ(1-2k) 의 분자/분모도 동일한 B_{2k} 를 공유하므로, k=6 에서 **양수 쪽 ζ(2k) 분모** 와 **음수 쪽 ζ(1-2k) 분자** 가 동시에 breakdown 한다.
+**Bilateral interpretation**: by the functional equation ζ(1-2k) = -B_{2k}/(2k), the numerator/denominator of ζ(1-2k) share the same B_{2k}, so at k=6 the **positive-side ζ(2k) denominator** and the **negative-side ζ(1-2k) numerator** break down simultaneously.
 
 ---
 
-## 2. 손으로 B_2 ~ B_12 계산 (직접 확인)
+## 2. Computing B_2 ~ B_12 by hand (direct confirmation)
 
-### 2.1 Bernoulli 수 정의 (생성함수)
+### 2.1 Definition of Bernoulli numbers (generating function)
 
-원문은 "직접 Bernoulli 수 계산 (Euler, 표준)" 만 언급하므로, 본 절은 **독자 재현** 가능하도록 생성함수를 제시한다.
+The original only mentions "direct Bernoulli calculation (Euler, standard)", so this section presents a generating-function form reproducible by the reader.
 
-**정의**: Bernoulli 수 B_m 은 다음 생성함수의 멱급수 계수로 정의된다.
+**Definition**: the Bernoulli numbers B_m are defined as the power-series coefficients of
 
 ```
   x / (e^x - 1) = ∑_{m=0}^∞ B_m x^m / m!
 ```
 
-이로부터 양수 첨자 Bernoulli 수를 차례로 유도할 수 있다 (B_0 = 1, B_1 = -1/2, 홀수 m ≥ 3 에서 B_m = 0).
+From this, positive-index Bernoulli numbers can be derived in sequence (B_0 = 1, B_1 = -1/2, B_m = 0 for odd m ≥ 3).
 
-### 2.2 재귀 공식
+### 2.2 Recurrence
 
-**재귀 (표준)**: m ≥ 1 에서
+**Recurrence (standard)**: for m ≥ 1
 ```
-  ∑_{k=0}^{m} C(m+1, k) B_k = 0    (단, B_0 = 1)
+  ∑_{k=0}^{m} C(m+1, k) B_k = 0    (with B_0 = 1)
 ```
-또는 동치로
+or equivalently
 ```
   B_m = -(1/(m+1)) ∑_{k=0}^{m-1} C(m+1, k) B_k.
 ```
 
-### 2.3 차례 계산 (B_2 ~ B_12)
+### 2.3 Sequential calculation (B_2 ~ B_12)
 
-**B_2 계산**:
+**Compute B_2**:
 ```
   B_0 = 1
   B_1 = -1/2
@@ -80,9 +80,9 @@
   → 3B_2 = 1/2
   → B_2 = 1/6.
 ```
-**numer(B_2) = 1**. 소인수: 없음 (1 은 trivial).
+**numer(B_2) = 1**. Prime factors: none (1 is trivial).
 
-**B_4 계산**:
+**Compute B_4**:
 ```
   ∑_{k=0}^{3} C(5, k) B_k + C(5, 4) B_4 = 0
   → 1 + 5·(-1/2) + 10·(1/6) + 10·0 + 5·B_4 = 0
@@ -91,9 +91,9 @@
   → 1/6 + 5B_4 = 0
   → B_4 = -1/30.
 ```
-**numer(B_4) = -1**, 절댓값 1. 소인수: 없음.
+**numer(B_4) = -1**, absolute value 1. Prime factors: none.
 
-**B_6 계산**:
+**Compute B_6**:
 ```
   ∑_{k=0}^{5} C(7, k) B_k + C(7, 6) B_6 = 0
   → 1 + 7·(-1/2) + 21·(1/6) + 35·0 + 35·(-1/30) + 21·0 + 7B_6 = 0
@@ -102,30 +102,30 @@
   → -1/6 + 7B_6 = 0
   → B_6 = 1/42.
 ```
-**numer(B_6) = 1**. 소인수: 없음.
+**numer(B_6) = 1**. Prime factors: none.
 
-**B_8 계산**: (생략 가능, 결과만)
+**Compute B_8** (may be skipped, result only):
 ```
   B_8 = -1/30.
 ```
-**numer(B_8) = -1**, 절댓값 1. 소인수: 없음.
+**numer(B_8) = -1**, absolute value 1. Prime factors: none.
 
-**B_10 계산**:
+**Compute B_10**:
 ```
   B_10 = 5/66.
 ```
-**numer(B_10) = 5**. 소인수: **{5}**. 최대 5 ≤ 5 < 7. ✓
+**numer(B_10) = 5**. Prime factors: **{5}**. max 5 ≤ 5 < 7. ✓
 
-**B_12 계산** (핵심 건너뛰기 불가):
+**Compute B_12** (critical, cannot be skipped):
 ```
   B_12 = -691/2730.
 ```
-**numer(B_12) = -691**, 절댓값 **691**.
+**numer(B_12) = -691**, absolute value **691**.
 
-**691 은 소수인가?** 직접 검증:
-- √691 ≈ 26.3 → 2, 3, 5, 7, 11, 13, 17, 19, 23 확인
-- 691 / 2 = 345.5 → ✗ (홀수)
-- 691 / 3 = 230.33 → ✗ (3 으로 나눠지지 않음: 6+9+1=16)
+**Is 691 prime?** Direct verification:
+- √691 ≈ 26.3 → check 2, 3, 5, 7, 11, 13, 17, 19, 23
+- 691 / 2 = 345.5 → ✗ (odd)
+- 691 / 3 = 230.33 → ✗ (not divisible by 3: 6+9+1=16)
 - 691 / 5 = 138.2 → ✗
 - 691 / 7 = 98.71 → ✗
 - 691 / 11 = 62.8 → ✗
@@ -133,296 +133,296 @@
 - 691 / 17 = 40.6 → ✗
 - 691 / 19 = 36.4 → ✗
 - 691 / 23 = 30.04 → ✗
-- → 691 은 소수. ✓
+- → 691 is prime. ✓
 
-**691 ≥ 7**: ✓. k=6 에서 처음 등장.
+**691 ≥ 7**: ✓. First appears at k=6.
 
-### 2.4 수열 요약
+### 2.4 Sequence summary
 
-**원문 §3 수열 (lines 37~43)**:
+**Original §3 sequence (lines 37~43)**:
 ```
-  |numer(B_2k)| 수열: 1, 1, 1, 1, 5, 691, 7, 3617, 43867, 174611, 854513, ...
-                      k=1 2 3 4 5  6    7   8     9      10      11
+  |numer(B_2k)| sequence: 1, 1, 1, 1, 5, 691, 7, 3617, 43867, 174611, 854513, ...
+                          k=1 2 3 4 5  6    7   8     9      10      11
 ```
 
-- k=1..5: {1, 1, 1, 1, 5} — 모두 ≤ 5
-- **k=6: 691** — 138 배 상승 (5 → 691)
-- k=7: 7 — 잠시 감소 (하지만 이미 7 = σ-sopfr 등장)
-- k≥8: 영구 발산
+- k=1..5: {1, 1, 1, 1, 5} — all ≤ 5
+- **k=6: 691** — 138-fold jump (5 → 691)
+- k=7: 7 — momentary decrease (but 7 = σ-sopfr already appears)
+- k≥8: permanently divergent
 
-**sharp jump** 지점: **k = 6 = n**. 유일한 전이점.
+**sharp jump** point: **k = 6 = n**. The unique transition point.
 
 ---
 
-## 3. Theorem B 엄밀 증명 (원문 재현)
+## 3. Theorem B rigorous draft (reproduced from original)
 
-**Lemma B.1 (k=1..5)**: B_2, B_4, B_6, B_8, B_10 분자 ∈ {1, -1, 5}.
+**Lemma B.1 (k=1..5)**: numer(B_2), numer(B_4), numer(B_6), numer(B_8), numer(B_10) ∈ {1, -1, 5}.
 
-**증명**: 위 §2 직접 계산:
+**Draft**: by the direct calculation in §2:
 - B_2 = 1/6 → numer = 1
 - B_4 = -1/30 → numer = -1
 - B_6 = 1/42 → numer = 1
 - B_8 = -1/30 → numer = -1
 - B_10 = 5/66 → numer = 5
 
-{|1|, |-1|, |5|} 의 소인수 = {5} ⊆ {2, 3, 5}. 특히 7 이상 소수 없음. ∎
+Prime factors of {|1|, |-1|, |5|} = {5} ⊆ {2, 3, 5}. In particular, no prime ≥ 7. ∎
 
-**Lemma B.2 (k=6)**: B_12 = -691/2730, 분자 |-691| = 691, 691 은 소수 ≥ 7.
+**Lemma B.2 (k=6)**: B_12 = -691/2730, numerator |-691| = 691, 691 is prime ≥ 7.
 
-**증명**: 직접 계산 + 691 소수 판별 (위 §2.3). ∎
+**Draft**: direct calculation + primality check of 691 (see §2.3). ∎
 
-**Theorem B 증명**: Lemma B.1 에서 k ∈ {1,2,3,4,5} 에서 분자 소인수 ≤ 5. Lemma B.2 에서 k=6 에서 691 ≥ 7 등장. 따라서
+**Theorem B draft**: by Lemma B.1, for k ∈ {1,2,3,4,5} the numerator's prime factors are ≤ 5. By Lemma B.2, at k=6 the prime 691 ≥ 7 appears. Therefore
 ```
-  min { k ≥ 1 : numer(B_{2k}) 가 소인수 ≥ 7 을 가진다 } = 6. ∎
+  min { k ≥ 1 : numer(B_{2k}) has a prime factor ≥ 7 } = 6. ∎
 ```
 
 ---
 
-## 4. 양면 동시 breakdown (Bilateral Theorem B)
+## 4. Bilateral simultaneous breakdown (Bilateral Theorem B)
 
-### 4.1 오른쪽 (양수 쪽): ζ(2k) 분모/분자
+### 4.1 Right side (positive side): ζ(2k) denominator/numerator
 
-**Euler 공식**:
+**Euler formula**:
 ```
   ζ(2k) = (-1)^{k+1} B_{2k} (2π)^{2k} / (2 · (2k)!)
 ```
 
-**결과**: ζ(2k) / π^{2k} = rational. 분자는 |B_{2k}| · 2^{2k-1}, 분모는 (2k)!.
+**Result**: ζ(2k) / π^{2k} = rational. Numerator is |B_{2k}| · 2^{2k-1}, denominator is (2k)!.
 
-**예시**:
-- ζ(2) = π²/6 → 유리 계수 1/6 (B_2 = 1/6 귀결)
+**Examples**:
+- ζ(2) = π²/6 → rational coefficient 1/6 (consequence of B_2 = 1/6)
 - ζ(4) = π⁴/90 → 1/90 (B_4 = -1/30, 90 = 30·3)
-- ζ(6) = π⁶/945 → 1/945 (945 = 42·22.5? 정확히 945 = 3³·5·7)
+- ζ(6) = π⁶/945 → 1/945 (945 = 42·22.5? precisely 945 = 3³·5·7)
 - ζ(8) = π⁸/9450
 - ζ(10) = π¹⁰/93555
 - **ζ(12) = 691·π¹²/638512875**
 
-ζ(12) 의 분자 691 은 정확히 Theorem B 의 691. **Corollary 1** (원문 §4 lines 48~57).
+The numerator 691 of ζ(12) is precisely the 691 of Theorem B. **Corollary 1** (original §4 lines 48~57).
 
-### 4.2 왼쪽 (음수 쪽): ζ(1-2k) 함수방정식
+### 4.2 Left side (negative side): ζ(1-2k) functional equation
 
-**함수방정식**:
+**Functional equation**:
 ```
   ζ(1-2k) = -B_{2k} / (2k)
 ```
 
-이로부터 직접:
+Directly from this:
 - ζ(-1) = -B_2/2 = -(1/6)/2 = **-1/12**
 - ζ(-3) = -B_4/4 = -(-1/30)/4 = **1/120**
 - ζ(-5) = -B_6/6 = -(1/42)/6 = **-1/252**
 - ζ(-7) = -B_8/8 = -(-1/30)/8 = **1/240**
-- ζ(-9) = -B_10/10 = -(5/66)/10 = **-1/132** (분자 -1, 132 = 2²·3·11)
+- ζ(-9) = -B_10/10 = -(5/66)/10 = **-1/132** (numerator -1, 132 = 2²·3·11)
 
-**핵심**:
+**Key**:
 - ζ(-11) = -B_12/12 = -(-691/2730)/12 = **691/32760**
-- 분자 691 이 ζ(-11) 에서 **처음 등장**.
+- The numerator 691 **first appears** at ζ(-11).
 
-**수열**: ζ(-1), ζ(-3), ..., ζ(-9) 의 분자 ∈ {±1, ±1, ±1, ±1, ±1} (절댓값 1), 분자 소인수 ≤ 5.
-ζ(-11) 에서 분자 691 처음 등장.
+**Sequence**: numerators of ζ(-1), ζ(-3), ..., ζ(-9) ∈ {±1, ±1, ±1, ±1, ±1} (absolute value 1), numerator prime factors ≤ 5.
+At ζ(-11), the numerator 691 first appears.
 
-**왼쪽 ζ(1-2k) 분자 boundary**: k=6 (즉 ζ(-11)).
+**Left ζ(1-2k) numerator boundary**: k=6 (i.e. ζ(-11)).
 
-### 4.3 Bilateral 대칭
+### 4.3 Bilateral symmetry
 
-**핵심**: ζ(2k) 와 ζ(1-2k) 는 **동일한 B_{2k}** 를 공유한다.
-- 오른쪽: ζ(2k) ∝ B_{2k} (양수 극한에서)
-- 왼쪽: ζ(1-2k) = -B_{2k} / (2k) (함수방정식)
+**Key**: ζ(2k) and ζ(1-2k) share the **same B_{2k}**.
+- Right: ζ(2k) ∝ B_{2k} (positive limit)
+- Left: ζ(1-2k) = -B_{2k} / (2k) (functional equation)
 
-따라서 B_{2k} 가 k=6 에서 분자에 691 을 처음 발생시키면, **양면 동시**에 boundary 이 생긴다:
-- 오른쪽 ζ(12) 에서 분자 691 등장 (처음으로 큰 소수)
-- 왼쪽 ζ(-11) 에서 분자 691 등장
+Therefore, whenever B_{2k} first produces 691 in its numerator at k=6, a **bilaterally simultaneous** boundary arises:
+- On the right, ζ(12) has numerator 691 (first large prime)
+- On the left, ζ(-11) has numerator 691
 
-**이것이 "양면 k=n=6 동시 breakdown"** 의 원리 (원문 §5 lines 60~68).
+**This is the "bilateral k=n=6 simultaneous breakdown"** principle (original §5 lines 60~68).
 
-**원문 인용 (line 68)**:
-> "양면 대칭: ζ(2k) 와 ζ(1-2k) 가 **동일한 B_{2k} 분자**를 공유하므로, **k=6 에서 양면 동시 breakdown** 은 당연. 양면 boundary 대칭은 Theorem B 의 직접 귀결."
-
----
-
-## 5. 이 정리가 k=n=6 에서 일어나는 이유 (OBSERVATION)
-
-### 5.1 정직 구분
-
-**PROVEN 부분**:
-- B_12 = -691/2730 — 직접 계산
-- 691 이 소수 — 직접 판별
-- 691 ≥ 7 — 자명
-- 691 이 k=6 에서 처음 등장 — 위 5 계산으로 확인
-- 양면 대칭 → k=6 동시 break — 함수방정식 기계적 귀결
-
-**OBSERVATION 부분** (원문 §10 lines 128~132):
-- **왜 691 이 첫 irregular prime 인가?** — Kummer 규칙에 의한 부분적 설명만 존재.
-- **왜 k=n=6 에서 발생하는가?** — Theorem 0 (σφ=nτ) 과의 연결은 깊은 이유 **미해결**.
-- **Theorem B 와 Theorem 0 의 공통 구조** — "두 정리 모두 n=6 을 지목" 하지만 근원 공통성은 미증명.
-
-**핵심**: k=6 에서 일어나는 "boundary 현상" 자체는 계산 사실이지만, **왜 하필 k=n=6** 인지의 해석은 보류 상태.
-
-### 5.2 Kummer 의 irregular prime
-
-**Kummer 정리 (1850)**: 소수 p 가 "irregular" 이다 ⟺ 어떤 k ∈ {2, 4, ..., p-3} 에서 p | numer(B_k).
-
-**691 은 첫 irregular prime**: p = 691 은 k = 12 = 2·6 에서 B_12 의 분자를 나누는 가장 작은 소수.
-
-**다음 irregular primes**: 37, 59, 67, 101, 103, 131, 149, 157, ... (691 보다 훨씬 작지만 다른 첨자에서 등장).
-
-**주의**: 37 이 B_32 의 분자를 나누므로 **37 자체는 691 보다 먼저** 나타난다. 하지만 **가장 작은 첨자** 에서 큰 소수 등장은 k=6 에서 691.
-
-원문 lines 128~129:
-> "Theorem B의 '왜 k=6 에서 jump?' 의 깊은 이유: Kummer 규칙, 691 이 첫 irregular prime 인 이유. 부분적으로만 알려짐."
+**Original quote (line 68)**:
+> "Bilateral symmetry: ζ(2k) and ζ(1-2k) share the **same B_{2k} numerator**, so **at k=6 the bilateral simultaneous breakdown** is automatic. Bilateral boundary symmetry is a direct consequence of Theorem B."
 
 ---
 
-## 6. Von Staudt-Clausen 정리와의 관계
+## 5. Why this theorem occurs at k=n=6 (OBSERVATION)
 
-**Von Staudt-Clausen 정리 (1840)**:
+### 5.1 Honest distinction
+
+**DRAFT part**:
+- B_12 = -691/2730 — direct calculation
+- 691 is prime — direct check
+- 691 ≥ 7 — trivial
+- 691 first appears at k=6 — confirmed by the 5 calculations above
+- Bilateral symmetry → k=6 simultaneous break — mechanical consequence of the functional equation
+
+**OBSERVATION part** (original §10 lines 128~132):
+- **Why is 691 the first irregular prime?** — only partial explanation exists via Kummer's rule.
+- **Why does it occur at k=n=6?** — the deep connection to Theorem 0 (σφ=nτ) is still an **open question**.
+- **Common structure of Theorem B and Theorem 0** — "both theorems single out n=6", but the common root cause is not drafted.
+
+**Key**: the "boundary phenomenon" at k=6 is itself a computational fact, but the interpretation of **why k=n=6** remains suspended.
+
+### 5.2 Kummer's irregular primes
+
+**Kummer's theorem (1850)**: a prime p is "irregular" ⟺ for some k ∈ {2, 4, ..., p-3}, p | numer(B_k).
+
+**691 is the first irregular prime**: p = 691 is the smallest prime dividing the numerator of B_12 at k = 12 = 2·6.
+
+**Next irregular primes**: 37, 59, 67, 101, 103, 131, 149, 157, ... (much smaller than 691, but they appear at different indices).
+
+**Caution**: 37 divides numer(B_32), so **37 itself appears earlier than 691**. But the **smallest index** at which a large prime appears is k=6 with 691.
+
+Original lines 128~129:
+> "The deep reason 'why jump at k=6' in Theorem B: Kummer's rule, the reason 691 is the first irregular prime. Only partially known."
+
+---
+
+## 6. Relation to Von Staudt-Clausen
+
+**Von Staudt-Clausen theorem (1840)**:
 ```
-  B_{2k} + ∑_{p 소수, (p-1)|2k} 1/p  ∈  ℤ.
+  B_{2k} + ∑_{p prime, (p-1)|2k} 1/p  ∈  ℤ.
 ```
 
-즉, B_{2k} 의 **분모** 는 정확히 (p-1)|2k 를 만족하는 모든 소수 p 의 곱이다:
+In other words, the **denominator** of B_{2k} is exactly the product of all primes p satisfying (p-1)|2k:
 ```
-  denom(B_{2k}) = ∏ { p : p 소수, (p-1) | 2k }.
+  denom(B_{2k}) = ∏ { p : p prime, (p-1) | 2k }.
 ```
 
-**검증**:
+**Verification**:
 - k=1 (2k=2): p-1 | 2 → p-1 ∈ {1,2} → p ∈ {2,3}. denom = 2·3 = 6. ✓ (B_2 = 1/6)
 - k=2 (2k=4): p-1 | 4 → p-1 ∈ {1,2,4} → p ∈ {2,3,5}. denom = 2·3·5 = 30. ✓ (B_4 = -1/30)
-- k=3 (2k=6): p-1 | 6 → p-1 ∈ {1,2,3,6} → p ∈ {2,3,7} (4 는 소수-1 아님). denom = 2·3·7 = 42. ✓ (B_6 = 1/42)
+- k=3 (2k=6): p-1 | 6 → p-1 ∈ {1,2,3,6} → p ∈ {2,3,7} (4 is not prime-1). denom = 2·3·7 = 42. ✓ (B_6 = 1/42)
 - k=4 (2k=8): p-1 | 8 → p-1 ∈ {1,2,4,8} → p ∈ {2,3,5}. denom = 2·3·5 = 30. ✓
 - k=5 (2k=10): p-1 | 10 → p-1 ∈ {1,2,5,10} → p ∈ {2,3,11}. denom = 2·3·11 = 66. ✓ (B_10 = 5/66)
 - **k=6 (2k=12)**: p-1 | 12 → p-1 ∈ {1,2,3,4,6,12} → p ∈ {2,3,5,7,13}. denom = 2·3·5·7·13 = **2730**. ✓ (B_12 = -691/2730)
 
-**핵심 발견**: k=6 (즉 n=6) 에서 denom 분모 소인수에 **13** 이 처음 등장한다.
-- k=1..5 에서 denom 분모 소인수 ⊆ {2,3,5,7,11}
-- **k=6 에서 13 등장** — **M 경계 (n+sopfr=11) 돌파**
+**Key finding**: at k=6 (i.e. n=6), **13** first appears as a prime factor in denom.
+- For k=1..5, denom prime factors ⊆ {2,3,5,7,11}
+- **At k=6, 13 appears** — **crossing the M boundary (n+sopfr=11)**
 
-원문 Theorem D (lines 242~248):
-> "Theorem D (von Staudt-Clausen 경계 정리): k=1..5 에서 max(p) ∈ {3,5,7,5,11} — 모두 ≤ 11 = n+sopfr (M 확장 경계). k=6=n: max(p) = 13 > 11 — **처음으로 M 경계 돌파**."
+Original Theorem D (lines 242~248):
+> "Theorem D (von Staudt-Clausen boundary theorem): for k=1..5, max(p) ∈ {3,5,7,5,11} — all ≤ 11 = n+sopfr (M extension boundary). At k=6=n: max(p) = 13 > 11 — **first crossing of the M boundary**."
 
-**따라서 양면 breakdown 은 실제로 삼면**:
-1. 분자 쪽: 691 등장 (B_12 = -691/2730)
-2. 분모 쪽: 13 등장 (denom 에 13 처음)
-3. 양면 ζ (Bilateral Theorem B): ζ(12) 와 ζ(-11) 동시.
+**Thus the bilateral breakdown is actually three-sided**:
+1. Numerator side: 691 appears (B_12 = -691/2730)
+2. Denominator side: 13 first appears in denom
+3. Bilateral ζ (Bilateral Theorem B): ζ(12) and ζ(-11) simultaneously.
 
-k=n=6 에서 **Bernoulli 수 구조가 동시에 3 방향** 으로 break.
+At k=n=6, **the Bernoulli structure breaks simultaneously in 3 directions**.
 
 ---
 
-## 7. Corollary 3: 240, 504 "매직 수" 의 Bernoulli 귀결
+## 7. Corollary 3: "magic numbers" 240 and 504 as Bernoulli consequences
 
-원문 §6 (lines 70~78).
+Original §6 (lines 70~78).
 
-### 7.1 240 귀결
+### 7.1 240 derivation
 
 - ζ(-7) = -B_8/8 = -(-1/30)/8 = 1/240
-- 따라서 1/|ζ(-7)| = 240.
-- B_8 = -1/30 과 8 의 조합이 240 을 생성.
+- Hence 1/|ζ(-7)| = 240.
+- The combination of B_8 = -1/30 and 8 produces 240.
 
-**주의**: "240 5-way crossover" (E_8 / E_4 / π_7^s / K_7 / ζ(-7)) 중 ζ 항목은 **Bernoulli 귀결** 이므로 5 언어 중 **1 개 사실의 5 표현**. 원문 §6 명시:
-> "세션의 '240 5-way crossover' 는 궁극적으로 **하나의 Bernoulli 사실 (B_8 = -1/30)** 에서 파생되는 5 개 언어적 표현. 독립 5 검증 아닌 **1 사실 5 표현**."
+**Note**: among the "240 5-way crossover" (E_8 / E_4 / π_7^s / K_7 / ζ(-7)), the ζ item is a **Bernoulli consequence**, so it is a **5-expression of 1 fact** among the 5 languages. Original §6:
+> "The session's '240 5-way crossover' is ultimately a set of 5 linguistic expressions derived from **one Bernoulli fact (B_8 = -1/30)**. It is not 5 independent checks, but **1 fact expressed 5 ways**."
 
-### 7.2 504 귀결
+### 7.2 504 derivation
 
 - ζ(-5) = -B_6/6 = -(1/42)/6 = -1/252
 - 504 = 2 · 252 = 2·|1/ζ(-5)|
-- 다시 B_6 = 1/42 귀결.
+- Again a B_6 = 1/42 consequence.
 
-### 7.3 691 귀결
+### 7.3 691 derivation
 
-- B_12 = -691/2730 → 직접 691 등장.
-- ζ(12) = 691π¹²/638512875 → 분자 691.
-- ζ(-11) = 691/32760 → 분자 691.
+- B_12 = -691/2730 → 691 appears directly.
+- ζ(12) = 691π¹²/638512875 → numerator 691.
+- ζ(-11) = 691/32760 → numerator 691.
 
 ---
 
 ## 8. Corollary 4: Adams J-homomorphism → exotic sphere
 
-원문 §7 (lines 80~86).
+Original §7 (lines 80~86).
 
 **Adams 1966**: |Image(J_{4k-1})| = denom(B_{2k}/(4k))
 
-**계산**:
-- k=1: B_2/(4) = (1/6)/4 = 1/24. denom = 24. Image(J_3) = ℤ/24.
+**Calculation**:
+- k=1: B_2/4 = (1/6)/4 = 1/24. denom = 24. Image(J_3) = ℤ/24.
 - k=2: B_4/8 = (-1/30)/8 = -1/240. denom = 240. Image(J_7) = ℤ/240. ← 240!
 - k=3: B_6/12 = (1/42)/12 = 1/504. denom = 504. Image(J_11) = ℤ/504. ← 504!
 - k=4: B_8/16 = (-1/30)/16 = -1/480. denom = 480.
 - k=5: B_10/20 = (5/66)/20 = 1/264. denom = 264.
 - k=6: B_12/24 = (-691/2730)/24 = -691/65520. denom = 65520.
 
-**Kervaire-Milnor bP_{4k}** (exotic sphere 그룹 차수): 위 Adams 계산에 Bott 주기 + J-homomorphism 결합.
+**Kervaire-Milnor bP_{4k}** (order of exotic-sphere group): the Adams calculation above combined with Bott periodicity + J-homomorphism.
 
 - |bP_8| = 28 (Kervaire-Milnor 1963)
 - |bP_12| = 992
 - |bP_16| = 8128
 
-**완전수 관계**:
-- P_2 = 28 = 2·14 = 2²·7 (2번째 완전수)
-- P_3 = 496 = 2⁴·31. 그런데 |bP_12| = 992 = 2·496 = 2·P_3.
-- P_4 = 8128 = 2⁶·127 (4번째 완전수). |bP_16| = 8128 = P_4.
+**Perfect-number relation**:
+- P_2 = 28 = 2·14 = 2²·7 (2nd perfect number)
+- P_3 = 496 = 2⁴·31. But |bP_12| = 992 = 2·496 = 2·P_3.
+- P_4 = 8128 = 2⁶·127 (4th perfect number). |bP_16| = 8128 = P_4.
 
-**이 일치는 우연 아님**: Adams 계산이 Bernoulli 분모를 통해 완전수 Euler 공식 2^{p-1}(2^p-1) 와 합류 (원문 §7 lines 83~86).
+**This coincidence is not accidental**: Adams's calculation, via the Bernoulli denominator, merges with the Euler perfect-number formula 2^{p-1}(2^p-1) (original §7 lines 83~86).
 
-**Master Lemma 귀결**: "Exotic sphere 완전수 공명" 은 **Theorem B + Adams-Bernoulli + Euler 완전수 공식** 의 합류. 독립 새 발견 아님.
+**Master Lemma consequence**: "Exotic-sphere perfect-number resonance" is the confluence of **Theorem B + Adams-Bernoulli + Euler perfect-number formula**. Not an independent new finding.
 
 ---
 
-## 9. Corollary 분류 요약
+## 9. Corollary classification summary
 
-| Corollary | 내용 | 독립성 |
+| Corollary | Content | Independence |
 |-----------|------|--------|
-| Cor 1 | ζ(2k) 분모 패턴 k=1..5 clean, k=6 break | Theorem B 귀결 |
-| Cor 2 | ζ(1-2k) 분자 패턴 동일 | 함수방정식 귀결 |
-| Cor 3 | 240, 504 매직 수 | B_8, B_6 귀결 |
-| Cor 4 | |bP_{4k}| 완전수 공명 | Adams J + Euler 귀결 |
+| Cor 1 | ζ(2k) denominator pattern clean for k=1..5, break at k=6 | Theorem B consequence |
+| Cor 2 | ζ(1-2k) numerator same pattern | functional-equation consequence |
+| Cor 3 | 240, 504 magic numbers | B_8, B_6 consequence |
+| Cor 4 | |bP_{4k}| perfect-number resonance | Adams J + Euler consequence |
 
-**Master Lemma 요약** (원문 lines 88~100): 세션의 다수 "tight 발견" 중 다음은 Theorem B 의 직접/간접 귀결:
-1. ζ(2k) 분모 패턴
-2. ζ(1-2k) 분자 패턴
+**Master Lemma summary** (original lines 88~100): among the many "tight findings" of the session, the following are direct/indirect consequences of Theorem B:
+1. ζ(2k) denominator pattern
+2. ζ(1-2k) numerator pattern
 3. 240, 504, 1/ζ(-7)
-4. Exotic sphere bP_{4k}
-5. Ramanujan τ_R(n) 특정 값 (modular weight 12)
-6. E_4, E_6 Eisenstein 계수
-7. K_{4k-1}(ℤ) 차수 48, 240, 1008
+4. Exotic-sphere bP_{4k}
+5. Ramanujan τ_R(n) specific values (modular weight 12)
+6. E_4, E_6 Eisenstein coefficients
+7. K_{4k-1}(ℤ) orders 48, 240, 1008
 
-**진짜 독립** (Theorem B 밖, 원문 lines 103~107):
-- **Theorem 0** (σφ=nτ) — 대수적 유일성
-- h(K) 클래스 넘버 분포
-- Platonic/Lie/Mathieu 분류 정리
+**Genuinely independent** (outside Theorem B, original lines 103~107):
+- **Theorem 0** (σφ=nτ) — algebraic uniqueness
+- h(K) class-number distribution
+- Platonic/Lie/Mathieu classification theorems
 - Enriques h¹¹ = σ-φ = 10
-- 예외 Lie Coxeter 수 5/5
+- Exceptional Lie Coxeter numbers 5/5
 
 ---
 
-## 10. 자기 퀴즈 (완료 기준 점검)
+## 10. Self-quiz (completion check)
 
-각 문항 5분 이내 답안 가능해야 한다.
+Each question should be answerable within 5 minutes.
 
-1. B_12 = ? 분자/분모는? 691 등장 이유는?
-2. B_2, B_4, B_6, B_8, B_10 을 생성함수/재귀로 직접 유도하라.
-3. Theorem B 진술을 한 줄로 암송하라.
-4. Bilateral 의 양면이란 구체적으로 어떤 두 계열인가?
-5. Von Staudt-Clausen 정리를 한 줄로 서술하고 k=6 에서 왜 13 이 등장하는지 설명하라.
-6. 240 이 "1 사실 5 표현" 인 근거는?
-7. |bP_8| = 28 이 완전수와 일치하는 이유는 Theorem B + Euler 의 어떤 합류인가?
-8. Theorem B 와 Theorem 0 의 관계: 공통 구조는 증명되었는가?
-9. **PROVEN vs OBSERVATION** 경계는 무엇인가? (5.1 절)
-10. 691 이 첫 irregular prime 이라는 말의 정확한 의미는?
+1. What is B_12? Its numerator/denominator? Why 691 appears?
+2. Derive B_2, B_4, B_6, B_8, B_10 directly from the generating function / recurrence.
+3. Recite Theorem B's statement in one line.
+4. What two families are the bilateral sides specifically?
+5. State the Von Staudt-Clausen theorem in one line and explain why 13 appears at k=6.
+6. What is the basis for 240 being "1 fact in 5 expressions"?
+7. Why does |bP_8| = 28 coincide with a perfect number? It is a confluence of which pieces of Theorem B + Euler?
+8. Relation between Theorem B and Theorem 0: has the common structure been drafted?
+9. What is the **DRAFT vs OBSERVATION** boundary? (§5.1)
+10. What is the precise meaning of "691 is the first irregular prime"?
 
 ---
 
-## 11. 출처 재확인
+## 11. Source re-confirmation
 
-- `bernoulli-boundary-2026-04-11.md` 전체 (lines 1~136)
-  - §1 정리 (lines 9~14)
-  - §2 증명 (lines 16~33)
-  - §3 sharp jump 정량 (lines 35~43)
+- `bernoulli-boundary-2026-04-11.md` entirety (lines 1~136)
+  - §1 theorem (lines 9~14)
+  - §2 draft (lines 16~33)
+  - §3 sharp jump quantification (lines 35~43)
   - §4 Corollary 1: ζ(2k) (lines 45~57)
   - §5 Corollary 2: ζ(1-2k) (lines 59~68)
   - §6 Corollary 3: 240, 504 (lines 70~78)
   - §7 Corollary 4: Adams J (lines 80~86)
   - §8 Master Lemma (lines 88~107)
-  - §9 두 심장 (lines 109~125)
-  - §10 미해결 (lines 127~132)
-- Von Staudt-Clausen 정리: 원문 Theorem D 인용 (`millennium-dfs-complete-2026-04-11.md` lines 242~248)
+  - §9 two hearts (lines 109~125)
+  - §10 open questions (lines 127~132)
+- Von Staudt-Clausen theorem: original Theorem D quotation (`millennium-dfs-complete-2026-04-11.md` lines 242~248)
 
-**정직 유지 선언**: Theorem B 증명은 PROVEN. 해석은 OBSERVATION. 7대 밀레니엄 난제 해결 수 0/7. 본 노트는 수학 신규 결과 없이 재구성 학습 자료.
+**Honesty maintenance declaration**: the Theorem B draft is DRAFT. The interpretation is OBSERVATION. Millennium 7 problems draft-count 0/7. This note adds no new mathematical result; it is reconstructive study material.

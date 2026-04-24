@@ -1,108 +1,108 @@
-# PURE P3-2 — 연구 수학 방법론
+# PURE P3-2 — Research-Mathematics Methodology
 
-본 학습 노트는 n6-architecture millennium-learning 로드맵 P3 PURE 트랙의 2번 산출물이다. 수 이론·산술 기하 연구에서 실제로 사용되는 도구(LMFDB, Sage, Magma, PARI/GP)와 워크플로우, 그리고 조건부 증명 기법을 1차 문헌에 기반해 정리한다.
+This study note is the 2nd output of the P3 PURE track in the n6-architecture millennium-learning roadmap. It organizes, on the basis of primary literature, the tools actually used in number theory / arithmetic geometry research (LMFDB, Sage, Magma, PARI/GP), the corresponding workflows, and conditional-draft techniques.
 
-## 정직성 선언
+## Honesty declaration
 
-- 본 문서는 **방법론 요약**이다. 새로운 수학 결과는 없다.
-- 아래 "실습 5건" 은 교과서(Silverman-Tate) 및 공식 문헌(LMFDB label)에 기록된 표준 예시이다. 본 문서 작성 중 본인이 LMFDB 웹에 직접 접속한 것이 아니며, 인용 수치는 교과서·공식 논문의 공개 값이다. 본인이 확인하지 않은 값은 "(문헌 예 — 재확인 필요)" 로 명시한다.
-- Sage 코드는 Sage 공식 문서 구문이다. 본 문서 작성 중 실행해 결과를 붙인 것이 아니다. 실행은 독자(또는 후속 학습 노트)의 몫.
-- 자기참조·지어내기 금지 규칙 준수. BSD·BKLPR 관련 주장은 P3-1 로 넘긴다.
+- This document is a **methodology summary**. No new mathematical result.
+- The "5 practical examples" below are standard examples recorded in a textbook (Silverman-Tate) and in official literature (LMFDB labels). The author has not personally accessed the LMFDB web during the writing of this document; cited numbers come from textbooks / official papers. Values the author has not checked are marked "(example from literature — needs re-check)".
+- The Sage code is in the official Sage documentation syntax. The author has not executed it and pasted results; execution is the reader's (or the follow-up note's) job.
+- The no-self-reference / no-fabrication rule is observed. BSD / BKLPR-related claims are deferred to P3-1.
 
-## 0. 왜 도구가 중요한가
+## 0. Why tools matter
 
-타원곡선 한 개의 rank 를 손으로 계산하는 것은 대수 복잡도가 높다. Selmer 군, Shafarevich-Tate 군, L 함수의 analytic rank, 등은 현대 컴퓨터 대수 시스템이 아니면 실험할 수 없다. 수 이론 연구의 "실험 단계" 는 이 도구들 위에서 이루어진다. 정리와 반례의 분리는 이 단계의 결과물이다.
+Computing the rank of a single elliptic curve by hand is algebraically high complexity. Selmer groups, Shafarevich-Tate groups, analytic rank of L functions, etc. cannot be experimented with unless one uses modern computer-algebra systems. The "experimental stage" of number-theory research happens on these tools. Separation of theorems and counterexamples is the output of that stage.
 
 ## 1. LMFDB — L-functions and Modular Forms Database
 
 **URL**: https://www.lmfdb.org
 
-**배경**: 2016년 공개된 미·영·유럽 수 이론 커뮤니티의 공용 데이터베이스. L 함수, 타원곡선, 모듈러 형식, 수체, Galois 표현, Hilbert/Bianchi 모듈러 형식 등을 상호 연결된 객체로 제공.
+**Background**: A shared database of the US / UK / European number-theory community, opened in 2016. Provides L-functions, elliptic curves, modular forms, number fields, Galois representations, Hilbert / Bianchi modular forms, etc. as interlinked objects.
 
-**주요 기능**:
-- 타원곡선 E/Q 에 대해: 라벨(Cremona/LMFDB), conductor, j-invariant, discriminant, rank (analytic + algebraic), torsion, Sha_an 근사, Selmer rank 2, Tamagawa 곱, regulator, L(E,1), isogeny class.
-- 타원곡선 E/K (K 수체) 도 수록.
-- L 함수별 영점 분포, functional equation.
-- 모듈러 형식 — 무게/level/character 별.
-- 검색: conductor 범위, rank 범위, 특정 불변량 제약.
+**Main features**:
+- For an elliptic curve E/Q: label (Cremona / LMFDB), conductor, j-invariant, discriminant, rank (analytic + algebraic), torsion, Sha_an approximation, Selmer rank 2, Tamagawa product, regulator, L(E,1), isogeny class.
+- E/K (K a number field) is also cataloged.
+- For each L function: zero distribution, functional equation.
+- Modular forms — by weight / level / character.
+- Search: conductor range, rank range, specific invariant constraints.
 
-**수 이론 연구에서의 역할**:
-1. 추측 검증: "이 성질이 관찰되는가" 를 즉시 확인.
-2. 반례 탐색: 조건부 주장에 대해 counterexample 후보 생성.
-3. 통계 수집: E[|Sel_n|] 같은 양의 실측 근사.
+**Role in number-theory research**:
+1. Conjecture check: "is this property observed" — verify immediately.
+2. Counterexample search: produce counterexample candidates for conditional claims.
+3. Statistics gathering: empirical approximations of quantities like E[|Sel_n|].
 
-### 실습 5건 (문헌 예 — 재확인 필요)
+### 5 practical examples (example from literature — needs re-check)
 
-아래는 Silverman-Tate 교재 및 Cremona 의 타원곡선 표에 수록된 표준 예시이다. 라벨과 수치는 공식 출처에서 유래하지만 본 문서 작성자가 LMFDB 에 직접 접속해 확인한 값이 아니므로 "문헌 예" 로 표시한다.
+Below are standard examples recorded in the Silverman-Tate text and in Cremona's elliptic-curve tables. The labels and numerics originate in official sources, but the author has not personally accessed LMFDB to confirm, so they are tagged "literature example".
 
-**예 1 — E: y² = x³ − x**
-- 문헌 라벨: conductor 32 (32a2 류), j=1728, CM by Z[i].
+**Example 1 — E: y² = x³ − x**
+- Literature label: conductor 32 (32a2 class), j=1728, CM by Z[i].
 - rank: 0, torsion Z/2Z × Z/2Z.
-- L(E,1) ≠ 0 (BSD 확인된 경우).
-- 방법론 포인트: CM 곡선은 L 함수가 Hecke character 의 곱으로 분해되어 BSD 일부가 증명되어 있다(Coates-Wiles 1977).
+- L(E,1) ≠ 0 (BSD confirmed in this case).
+- Methodology note: CM curves have L functions that split as products of Hecke characters, so a portion of BSD is drafted (Coates-Wiles 1977).
 
-**예 2 — E: y² = x³ − x + 1**
-- 문헌 라벨: 구 Cremona 라벨 "11a…" 계열 conductor 11 후보. (정확 라벨 재확인 필요)
+**Example 2 — E: y² = x³ − x + 1**
+- Literature label: an "11a…" candidate from the old Cremona label family, conductor 11. (Exact label needs re-check.)
 - rank: 0.
-- 역사적 의미: conductor 11 은 모듈러성 예 중 가장 작은 비 CM 급 예.
+- Historical meaning: conductor 11 is the smallest non-CM-grade modular example.
 
-**예 3 — E: y² + y = x³ − x**
-- 라벨: 37a1 (Cremona). **첫 rank 1 곡선** — conductor 37, j-invariant 유한.
+**Example 3 — E: y² + y = x³ − x**
+- Label: 37a1 (Cremona). **First rank-1 curve** — conductor 37, finite j-invariant.
 - rank: 1.
-- analytic rank: 1 (BSD 확인).
-- 방법론 포인트: Gross-Zagier 정리 (1986) 와 Kolyvagin (1989) 로 rank ≤ 1 BSD 가 증명된 대표 예.
+- analytic rank: 1 (BSD confirmed).
+- Methodology note: the representative example for which rank ≤ 1 BSD was drafted by the Gross-Zagier theorem (1986) and Kolyvagin (1989).
 
-**예 4 — E: y² + y = x³ − x²**
-- 라벨: 37b1. conductor 37, rank 0. 37a 와 isogeny class 다름.
-- 방법론 포인트: 같은 conductor 에서 rank 가 다른 두 곡선 대비 — isogeny class 의 중요성.
+**Example 4 — E: y² + y = x³ − x²**
+- Label: 37b1. Conductor 37, rank 0. A different isogeny class from 37a.
+- Methodology note: two curves at the same conductor with different ranks — illustrating the importance of the isogeny class.
 
-**예 5 — E: y² = x³ − 2**
-- rank 1 예. generator: (3, 5) (확인 필요).
-- 방법론 포인트: Mordell 의 y² = x³ + k 족 — k=-2 는 rank 1 이고 정수해가 유한하게 기록됨.
+**Example 5 — E: y² = x³ − 2**
+- A rank-1 example. Generator: (3, 5) (to be checked).
+- Methodology note: in Mordell's family y² = x³ + k, k=-2 has rank 1 and the integer solutions are finite and recorded.
 
-각각에 대해 BSD 예측: rank = ord_{s=1} L(E,s). 위 예시들은 모두 rank ≤ 1 이므로 Gross-Zagier-Kolyvagin 정리로 BSD 가 증명된 범위에 있다. rank ≥ 2 인 예(예: conductor 389, 389a1, rank 2)는 BSD 가 여전히 추측.
+For each, BSD predicts rank = ord_{s=1} L(E,s). The examples above all have rank ≤ 1, so they lie in the range for which BSD has been drafted by Gross-Zagier-Kolyvagin. Examples with rank ≥ 2 (e.g., conductor 389, 389a1, rank 2) remain BSD conjectures.
 
-## 2. Sage Math — 타원곡선 계산
+## 2. Sage Math — elliptic-curve computation
 
 **URL**: https://www.sagemath.org
 
-**배경**: 2005년 W. Stein 시작. Python 기반, GPL, 여러 수학 시스템(PARI, Singular, Maxima, GAP, NumPy, R …)을 통합하는 상위 레이어. 타원곡선·모듈러 형식·L 함수 계산에 사실상 표준.
+**Background**: Started in 2005 by W. Stein. Python-based, GPL, an upper layer integrating multiple math systems (PARI, Singular, Maxima, GAP, NumPy, R, …). The de facto standard for elliptic curves / modular forms / L-functions.
 
-### 표준 workflow
+### Standard workflow
 
 ```python
-# 타원곡선 정의
+# Define an elliptic curve
 E = EllipticCurve([-1, 0])    # y^2 = x^3 - x
-# 또는 Weierstrass 계수 전체
+# Or the full Weierstrass coefficients
 E = EllipticCurve([0, 0, 1, -1, 0])  # y^2 + y = x^3 - x (37a1)
 
-# 기본 불변량
-E.conductor()            # 도체
+# Basic invariants
+E.conductor()            # conductor
 E.j_invariant()          # j-invariant
-E.discriminant()         # 판별식
-E.cremona_label()        # Cremona 라벨
+E.discriminant()         # discriminant
+E.cremona_label()        # Cremona label
 
 # rank / torsion
-E.rank()                 # 대수 rank (2-descent 기반)
-E.analytic_rank()        # L 함수의 s=1 영점 차수
-E.torsion_subgroup()     # 비틀림 부분군
+E.rank()                 # algebraic rank (2-descent-based)
+E.analytic_rank()        # order of vanishing of the L function at s=1
+E.torsion_subgroup()     # torsion subgroup
 
 # Selmer / Sha
 E.selmer_group_order(2)  # |Sel_2|
-E.sha().an()             # Sha_an (analytic Sha 근사)
+E.sha().an()             # Sha_an (analytic Sha approximation)
 
-# L 값
+# L values
 L = E.lseries()
 L(1)                     # L(E,1)
-L.taylor_series(1, 5)    # s=1 근방 5차 Taylor
+L.taylor_series(1, 5)    # 5-th Taylor around s=1
 ```
 
-### Sage 실습 스크립트 예 (실행은 독자 몫)
+### Sage practical script example (execution is the reader's job)
 
 ```python
-# 5개 예시 곡선에 대한 일괄 계산
+# Batch compute for 5 example curves
 curves = [
-    ('32a2', [1, 0, 0, -1, 0]),    # y^2 = x^3 - x (변형)
+    ('32a2', [1, 0, 0, -1, 0]),    # y^2 = x^3 - x (variant)
     ('11a1', [0, -1, 1, -10, -20]),
     ('37a1', [0, 0, 1, -1, 0]),    # first rank 1
     ('37b1', [0, 1, 1, -23, -50]),
@@ -117,21 +117,21 @@ for label, coeffs in curves:
           '|Sel2|=', E.selmer_group_order(2))
 ```
 
-출력 결과는 Sage 실행 환경에서 검증해야 한다. 본 문서는 코드만 기록.
+Output should be checked in a Sage runtime. This document only records the code.
 
-## 3. Magma, PARI/GP — 보조 도구
+## 3. Magma, PARI/GP — auxiliary tools
 
-**Magma** (University of Sydney, 상용, 무료 아님): 타원곡선 p-descent, 3-descent, 4-descent 등 Sel_n(n>2) 계산에 Sage 보다 깊다. BSD 실험에 표준.
+**Magma** (University of Sydney, commercial, not free): deeper than Sage on elliptic-curve p-descent, 3-descent, 4-descent — i.e., Sel_n computation for n>2. Standard for BSD experimentation.
 
 ```
-// Magma 예
+// Magma example
 E := EllipticCurve([0, 0, 1, -1, 0]);
 Rank(E);
 MordellWeilShaInformation(E);
 ThreeSelmerGroup(E);
 ```
 
-**PARI/GP** (Bordeaux, 자유 소프트웨어): 빠른 정수론 원시 함수. Sage 내부에서 호출됨. 직접 사용 예:
+**PARI/GP** (Bordeaux, free software): fast number-theory primitives. Called inside Sage. Direct use:
 
 ```
 \\ PARI/GP
@@ -140,91 +140,91 @@ ellanalyticrank(E)    \\ analytic rank
 ellL1(E)              \\ L(E,1)
 ```
 
-**선택 기준**:
-- rank ≤ 2 통상 실험: Sage 충분.
-- 3/4-descent, 고차 Selmer: Magma.
-- 빠른 통계 수집(수백만 곡선): PARI/GP 직접.
+**Selection criteria**:
+- Typical rank ≤ 2 experiments: Sage suffices.
+- 3/4-descent, higher Selmer: Magma.
+- Fast statistical collection (millions of curves): PARI/GP directly.
 
-## 4. 반례 체계적 탐색 — 프로그램 설계 원칙
+## 4. Systematic counterexample search — design principle
 
-조건부 주장(예: "rank ≤ 1 이면 P 성립")에 대해 반례를 찾는 프로그램은 다음 구조를 가진다.
+For a conditional claim (e.g., "if rank ≤ 1 then P holds"), a counterexample-search program has the following structure.
 
-### 구조
-1. **후보 생성기**: conductor N ≤ N_max 범위에서 isogeny class 대표 곡선 순회. Cremona 표(conductor ≤ 500000 현재 수록) 이용.
-2. **필터**: 주장의 가정(P 가 적용되는 범위)을 만족하는 곡선만 선택.
-3. **평가**: 주장의 결론을 Sage/Magma 로 계산.
-4. **기록**: 결론 실패 시 반례 후보로 로그.
-5. **검증**: 후보에 대해 더 정밀한(느린) 방법 재계산 — 거짓 양성 제거.
+### Structure
+1. **Candidate generator**: enumerate isogeny-class representatives in the range conductor N ≤ N_max. Use Cremona's table (currently cataloging conductor ≤ 500000).
+2. **Filter**: select only curves satisfying the claim's hypothesis (the range where P applies).
+3. **Evaluation**: compute the claim's conclusion in Sage / Magma.
+4. **Record**: log as counterexample candidates when the conclusion fails.
+5. **Verification**: recompute candidates with a more precise (slower) method — eliminate false positives.
 
-### 예 — Selmer 평균 관측
-목표: squarefree n 고정, 범위 내 E 에 대해 |Sel_n(E)| 를 모아 평균을 σ(n) 과 비교.
+### Example — observing Selmer means
+Goal: for fixed squarefree n, collect |Sel_n(E)| over E in range and compare the mean to σ(n).
 
 ```python
 from sage.schemes.elliptic_curves.ell_rational_field import cremona_curves
 n = 6
 total, count = 0, 0
 for E in cremona_curves(range(1, 1000)):  # conductor 1..999
-    # |Sel_6| = |Sel_2| * |Sel_3| (무조건, CRT)
+    # |Sel_6| = |Sel_2| * |Sel_3| (unconditional, CRT)
     s2 = E.selmer_group_order(2)
-    s3 = E.selmer_group_order(3)  # Sel_3 은 3-descent 필요, 무거움
+    s3 = E.selmer_group_order(3)  # Sel_3 needs 3-descent, heavy
     total += s2 * s3
     count += 1
 print('mean |Sel_6| =', total / count, 'vs sigma(6)=12')
 ```
 
-주의: Sel_3 계산은 conductor 수백 수준에서도 느리다. 통계적 유의성을 얻으려면 Magma 3-descent 또는 미리 계산된 LMFDB 덤프가 필요.
+Caveat: Sel_3 computation is slow even at conductor in the hundreds. For statistical significance, Magma 3-descent or a pre-computed LMFDB dump is needed.
 
-## 5. 조건부 증명 기법 — GRH 등
+## 5. Conditional-draft techniques — GRH etc.
 
-순수 증명 중에는 결론을 얻기 위해 아직 미증명 가정(GRH, BKLPR, 모듈러성 일반화 등)을 전제하는 경우가 있다. 이것은 "조건부 정리(conditional theorem)" 이다.
+In pure drafts, some rely on still-unproven assumptions (GRH, BKLPR, modular generalizations, etc.) to reach conclusions. These are "conditional theorems".
 
-### 대표 예 — GRH (일반화 리만 가설) 하의 결과
-- **Bach 1990**: GRH 하 Miller-Rabin 소수성 판정의 결정론적 경계. Bach, "Explicit bounds for primality testing and related problems", Math. Comp. 55 (1990), 355–380.
-- **Artin 추측 (일차 원시근)**: Hooley 1967 가 GRH 하 Artin 예상을 증명.
-- **Elkies 1987**: GRH 하 supersingular 소수 분포.
-- **Titchmarsh "The Theory of the Riemann Zeta-function", 2nd ed. (Heath-Brown 편), Oxford 1986, ch. 14**: GRH 하 ζ 함수 추정.
+### Representative example — results under GRH (Generalized Riemann Hypothesis)
+- **Bach 1990**: deterministic bound for Miller-Rabin primality testing under GRH. Bach, "Explicit bounds for primality testing and related problems", Math. Comp. 55 (1990), 355–380.
+- **Artin conjecture (primitive root)**: Hooley 1967 gave a draft of Artin's conjecture under GRH.
+- **Elkies 1987**: supersingular prime distribution under GRH.
+- **Titchmarsh, "The Theory of the Riemann Zeta-function", 2nd ed. (Heath-Brown ed.), Oxford 1986, ch. 14**: ζ estimates under GRH.
 
-### Conrad 의 노트
-Brian Conrad 의 강의 노트(Stanford) 는 conditional 증명 기법의 교과서적 출처로 자주 인용된다. 특히 BSD·Iwasawa 이론의 GRH 가정 서술.
+### Conrad's notes
+Brian Conrad's lecture notes (Stanford) are often cited as a textbook source for conditional-draft techniques. In particular, the GRH-assumption write-ups for BSD / Iwasawa theory.
 
-### 작성 원칙
-조건부 정리를 서술할 때:
-1. 가정(hypothesis) 을 정리의 statement 에 명시.
-2. 가정 없이 얻을 수 있는 무조건 부분을 lemma 로 분리.
-3. 가정의 출처(어떤 추측) 를 인용.
-4. 가정이 증명되면 얻어지는 귀결을 Corollary 로.
+### Writing principles
+When presenting a conditional theorem:
+1. Make the hypothesis explicit in the statement.
+2. Separate the unconditional part obtainable without the hypothesis as a lemma.
+3. Cite the source (which conjecture) of the hypothesis.
+4. Present as a Corollary the consequence that follows if the hypothesis is drafted.
 
-본 프로젝트 BT-546 은 이 원칙을 따라 Lemma 1 (무조건 CRT) 와 Theorem 1 (BKLPR 조건부) 를 분리했다. P3-1 참조.
+This project's BT-546 follows the principle by separating Lemma 1 (unconditional CRT) and Theorem 1 (BKLPR conditional). See P3-1.
 
-## 6. 컴퓨터 대수 검증 워크플로우
+## 6. Computer-algebra verification workflow
 
-### 표준 4단계
-1. **관찰 (Sage/LMFDB)**: 패턴 발견.
-2. **반례 검색**: conductor 확장해 반례 시도.
-3. **가설 정립**: 부분 정리 후보.
-4. **증명/반증**: 수학적 논증. 실패 시 1단계로 복귀.
+### Standard 4 steps
+1. **Observation (Sage / LMFDB)**: pattern discovery.
+2. **Counterexample search**: try larger conductors for counterexamples.
+3. **Hypothesis formation**: a partial-theorem candidate.
+4. **Draft / counter-draft**: mathematical argument. On failure, return to step 1.
 
-### 주의점
-- 모든 계산은 **재현 가능** 해야 한다. Sage 버전, 라이브러리 버전, 랜덤 시드 기록.
-- **수치 오차**: analytic rank, L(E,1) 등은 부동소수점. 임계(threshold) 선정 신중.
-- **정밀도 올림**: Sage 는 RealField(prec) 로 비트 정밀도 지정 가능. L 값이 0 인지 판별할 때 필수.
-- **Heuristic 과 증명 구분**: E.rank() 는 내부적으로 일부 heuristic 을 사용하는 경우가 있다. 최종 주장에는 proven rank 플래그 확인.
+### Cautions
+- All computation must be **reproducible**. Record Sage version, library versions, random seeds.
+- **Numerical error**: analytic rank, L(E,1), etc. are floating point. Choose thresholds carefully.
+- **Precision lift**: Sage allows bit precision via RealField(prec). Essential when judging whether an L value is zero.
+- **Heuristic vs draft distinction**: E.rank() may internally use some heuristics. For final claims, check the draft-rank flag.
 
-## 7. 출처
+## 7. Sources
 
 1. J.H. Silverman, J. Tate, "Rational Points on Elliptic Curves", 2nd ed., Springer Undergraduate Texts in Math. (2015).
-2. LMFDB Collaboration, "The L-functions and Modular Forms Database", https://www.lmfdb.org (2016–현재).
-3. W. Stein 외, Sage Math Documentation, https://doc.sagemath.org.
+2. LMFDB Collaboration, "The L-functions and Modular Forms Database", https://www.lmfdb.org (2016–present).
+3. W. Stein et al., Sage Math Documentation, https://doc.sagemath.org.
 4. Magma Handbook, University of Sydney, http://magma.maths.usyd.edu.au.
 5. PARI/GP User's Manual, Bordeaux, https://pari.math.u-bordeaux.fr.
-6. J.E. Cremona, "Algorithms for Modular Elliptic Curves", 2nd ed., Cambridge (1997). 타원곡선 표 부록.
-7. E.C. Titchmarsh, "The Theory of the Riemann Zeta-function", 2nd ed., D.R. Heath-Brown 편, Oxford (1986), ch. 14.
+6. J.E. Cremona, "Algorithms for Modular Elliptic Curves", 2nd ed., Cambridge (1997). Elliptic-curve table appendix.
+7. E.C. Titchmarsh, "The Theory of the Riemann Zeta-function", 2nd ed., D.R. Heath-Brown ed., Oxford (1986), ch. 14.
 8. E. Bach, "Explicit bounds for primality testing and related problems", Math. Comp. 55 (1990), 355–380.
-9. B. Conrad, 강의 노트(Stanford), http://math.stanford.edu/~conrad/ — BSD·Iwasawa 계열.
-10. B. Gross, D. Zagier, "Heegner points and derivatives of L-series", Invent. Math. 84 (1986), 225–320. (37a1 rank 1 의 증명 기초)
+9. B. Conrad, lecture notes (Stanford), http://math.stanford.edu/~conrad/ — BSD · Iwasawa family.
+10. B. Gross, D. Zagier, "Heegner points and derivatives of L-series", Invent. Math. 84 (1986), 225–320. (foundation of the 37a1 rank-1 draft)
 11. V. Kolyvagin, "Finiteness of E(Q) and Ш(E,Q) for a subclass of Weil curves", Izv. Akad. Nauk SSSR 52 (1988), 522–540.
 
-## 8. 후속
+## 8. Follow-up
 
-- P3-3: 산술 기하 최전선 — perfectoid, prismatic 으로 BSD/RH 에 어떤 새 도구가 등장하는가.
-- 본 프로젝트 실전 연습: BT-546 범위에서 Sage 로 |Sel_2| 통계 수집 → σ(2)=3 과 비교. (P4 이후 agenda)
+- P3-3: arithmetic-geometry frontier — what new tools emerge in BSD / RH from perfectoid, prismatic.
+- Practical exercise for this project: collect |Sel_2| statistics in Sage over the BT-546 range → compare with σ(2)=3. (agenda post-P4)
