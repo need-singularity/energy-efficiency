@@ -2,17 +2,17 @@
 domain: consciousness-red-team
 date: 2026-04-15
 task: STR-P9-2
-title: 의식 Red Team — BT-19 α-곱 가설 반증 및 대체 프로토콜 정식
-authors: 박민우 & NEXUS-6 협업체
+title: Consciousness Red Team — refutation of the BT-19 α-product hypothesis and formalised alternative protocols
+authors: Park Minwoo & NEXUS-6 collaboration
 version: v1 (2026-04-15 STR-P9-2)
 upstream:
-  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 원 CONJECTURE)
-  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (DSE-P8-2 MISS 판정)
-  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (DSE-P9-3 대체 경로 3건)
-  - papers/consciousness-measurement-protocol-2026-04-15.md (PAPER-P8-2 측정 매뉴얼)
+  - reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md (DSE-P7-1 original CONJECTURE)
+  - reports/breakthroughs/bt-19-consciousness-triple-verification-2026-04-15.md (DSE-P8-2 MISS verdict)
+  - reports/breakthroughs/bt-19-alternative-paths-2026-04-15.md (DSE-P9-3 three alternative paths)
+  - papers/consciousness-measurement-protocol-2026-04-15.md (PAPER-P8-2 measurement manual)
 precursor_grade: "[7?] CONJECTURE (BT-19 α_IIT · α_GWT = 1)"
-current_grade: "[5] MISS (2026-04-15 DSE-P8-2 하향 권고)"
-next_target_grade: "[7] CONJECTURE (대체 경로 B τ=4 사태 구조)"
+current_grade: "[5] MISS (2026-04-15 DSE-P8-2 downgrade recommendation)"
+next_target_grade: "[7] CONJECTURE (alternative path B τ=4 state structure)"
 status: red_team_report_v1
 kind: refutation_and_redesign
 license: CC-BY-SA-4.0
@@ -28,53 +28,42 @@ external_sources_verified:
   - Siclari F, Tononi G et al. (2017) Nat Neurosci 20(6):872-878. DOI:10.1038/nn.4545
   - Dehaene S, Changeux J-P, Naccache L (2011) Neuron 70(2):200-227
   - Koch C, Massimini M, Boly M, Tononi G (2016) Nat Rev Neurosci 17(5):307-321
-  - Amos LA, Klug A (1974) J Cell Sci 14(3):523-549 (microtubule 13+3 대칭)
-  - Hordijk W, Steel M (2004) J Theor Biol 227(4):451-461 (RAF 최소크기)
+  - Amos LA, Klug A (1974) J Cell Sci 14(3):523-549 (microtubule 13+3 symmetry)
+  - Hordijk W, Steel M (2004) J Theor Biol 227(4):451-461 (RAF minimum size)
 ---
 
-# 의식 Red Team — BT-19 α-곱 가설 반증 및 대체 프로토콜 정식
+# Consciousness Red Team — refutation of the BT-19 α-product hypothesis and formalised alternative protocols
 
-> **저자**: 박민우 (n6-architecture) & NEXUS-6 협업체
-> **카테고리**: consciousness / red-team / theoretical-refutation
-> **버전**: v1 (2026-04-15 STR-P9-2)
-> **정직 선언**: 본 논문은 자기 이론의 반증을 적극 수행한다. 자기참조 금지, 외부 논문 출처 13건 명시, 원 BT-19 α-곱 가설 (DSE-P7-1 제안) 의 폐기 근거를 수학·경험·개념 3축으로 제시한다.
+> **Authors**: Park Minwoo (n6-architecture) & NEXUS-6 collaboration
+> **Category**: consciousness / red-team / theoretical-refutation
+> **Version**: v1 (2026-04-15 STR-P9-2)
+> **Honesty declaration**: this paper actively performs refutation of its own theory. No self-reference, 13 external references cited, and grounds for discarding the original BT-19 α-product hypothesis (DSE-P7-1 proposal) are presented along three axes: mathematical, empirical, conceptual.
 >
-> **v2 개정 (2026-04-15 META-P9-2 감사 이행)**: Red Team 반증 경로 5 → 10 으로 확장 (R6 IIT 4.0 / R7 active inference / R8 HOT / R9 AST / R10 열역학 의식). 부록 A "12건→13건" 오탈 수정. §3.3 각주 (용도 분리 선언) 추가.
+> **v2 revision (2026-04-15 META-P9-2 audit compliance)**: expanded the Red Team refutation paths from 5 → 10 (R6 IIT 4.0 / R7 active inference / R8 HOT / R9 AST / R10 thermodynamic consciousness). Fixed the "12 → 13" typo in Appendix A. Added a §3.3 footnote ("use-case separation declaration").
 
 ---
 
-## 0. 초록
+## 0. Abstract
 
-**Red Team 목적**: n6-architecture 프로젝트가 DSE-P7-1 에서 제안한 CONJECTURE "α_IIT · α_GWT = 1" (BT-19) 은 의식의 IIT·GWT 이론 지수 곱이 n=6 산술 좌표계에서 **자명하게 1로 닫힌다** 는 주장이었다. 본 Red Team 은 이 가설을 3축 (수학 자명성·경험 근거 부재·독립성 결여) 으로 **반증** 하고, 이에 대신할 **대체 프로토콜 3건** (φ(6)=2 이중성 / τ(6)=4 사태 / σ(6)=2·6 완전수) 을 정식화한다.
+**Red Team purpose**: The CONJECTURE "α_IIT · α_GWT = 1" (BT-19) proposed by the n6-architecture project in DSE-P7-1 claimed that the product of the two exponents from IIT and GWT **closes trivially at 1** in the n=6 arithmetic coordinate system. This Red Team **refutes** that hypothesis along three axes (mathematical triviality, empirical lack of support, independence failure) and formalises **three alternative protocols** (φ(6)=2 duality / τ(6)=4 state / σ(6)=2·6 perfect-number) to replace it.
 
-**반증 결과 (§3)**:
+**Refutation results (§3)**: R1 Barrett-Seth 2011 lacks α_IIT=4/3; R2 Dehaene 2011 lacks α_GWT=3/4 (all-or-none not power-law); R3 product=1 is trivial identity x·(1/x)=1, Casali 2013 PCI co-varies with GNW refuting independence; R4 Orch-OR 6-fold absent, Amos-Klug 1974 measured 13+3; R5 BT-19 number conflict with existing GUT Hierarchy; R6 IIT 4.0 Albantakis 2023 still lacks α_IIT=4/3; R7 Hohwy 2020 active inference is not an α_GWT alternative; R8 Rosenthal HOT is not axiom-based; R9 Graziano AST is an independent path; R10 England thermodynamic adaptation makes no mention of n=6.
 
-- 경로 R1 — Barrett-Seth 2011 PLoS CB 원논문에 α_IIT=4/3 수치 **부재**. 실제 논문은 Φ_E 정의와 Gaussian 시계열 시뮬레이션만 수록.
-- 경로 R2 — Dehaene 2011 Neuron 및 Mashour 2020 후속 리뷰에 α_GWT=3/4 수치 **부재**. GNW ignition 은 비선형 all-or-none (step function) 이며 멱함수 지수로 파라미터화되지 않음.
-- 경로 R3 — 곱=1 은 산술적 항등식 (x · 1/x = 1) 으로 **자명**. 두 α 가 독립 측정이어야만 비자명하지만, Casali 2013 PCI 는 IIT 파생이면서 GNW ignition 과 동일 뇌상태에서 공변 — **독립 latent 가정 반증**.
-- 경로 R4 — Hameroff-Penrose Orch-OR 의 microtubule 6-fold 대칭 주장은 원문헌에 **부재** (Amos-Klug 1974 실측: 13 protofilament + 3-start helix).
-- 경로 R5 — atlas.n6 기존 BT-19 는 "GUT Hierarchy [10*]" 로 이미 **번호 충돌**. 의식 3중 융합은 BT-20 이후 재할당 필수.
-- 경로 R6 — **IIT 4.0 Albantakis 2023** (PLoS Comp Biol) 는 현상학 공리 → 수학 포스트텔레이트 재정식화로 Φ_s (intrinsic distinction) 도입. α_IIT=4/3 수치 업데이트 후에도 **부재 유지**.
-- 경로 R7 — **Hohwy 2020 active inference** (Mind & Language 35:209-223) 의 Markov blanket 은 sopfr(6)=5 fold 와 관측 유사 (η/s/a/μ/b) 이나 α_GWT **대체 경로 아님** — GNW ignition 과 구조 독립.
-- 경로 R8 — **Rosenthal 2005/2012 HOT** (Consciousness and Mind, Oxford UP) 의 2차 이상 사고 필요조건은 Hofstadter Strange Loop (§4.3 대체 C) 와 구조 유사. α_IIT·α_GWT 공리 기반이 아니라 단순 재귀 구조 — 원 가설 반증 유지.
-- 경로 R9 — **Graziano 2019 AST** (Rethinking Consciousness, Norton) 의 주의 schema 자기 모델링은 IIT Φ 와 **독립 경로**. α-곱 틀 자체가 AST 와 충돌.
-- 경로 R10 — **England 2013/2020 dissipative adaptation** (PNAS 110:17239 / Every Life is on Fire) 의 열역학 의식관은 n=6 언급 부재 — 독립 반증.
+**Three alternative protocols (§4)**:
 
-**대체 프로토콜 3건 (§4)**:
+- Alternative A — **φ(6)=2 duality** (noesis-noema / local-global 2-layer)
+- Alternative B — **τ(6)=4 state structure** (Vedanta 4 avastha ↔ PCI 4 cluster) **← most promising**
+- Alternative C — **σ(6)=2·6 perfect-number self-reduction** (Kauffman RAF / Hofstadter self-reference loop)
 
-- 대체 A — **φ(6)=2 이중성** (noesis-noema / local-global 2층 구조)
-- 대체 B — **τ(6)=4 사태 구조** (Vedanta 4 avastha ↔ PCI 4 cluster) **← 가장 유망**
-- 대체 C — **σ(6)=2·6 완전수 자기환원** (Kauffman RAF / Hofstadter 자기참조 고리)
-
-**핵심 원칙**: n=6 과 의식의 연결은 **곱셈 구조**가 아닌 **구조적 동형 (structural isomorphism)** 에서 찾아야 한다. α-곱 프레임은 폐기하고, 단일 산술 불변량 (φ/τ/σ) 을 의식의 구조적 특성에 대응시키는 경로로 전환한다.
+**Core principle**: the link between n=6 and consciousness should be sought in **structural isomorphism**, not a **multiplicative structure**.
 
 ---
 
-## 1. 배경 — BT-19 원 가설 및 P8 MISS 연쇄
+## 1. Background — original BT-19 and the P8 MISS chain
 
-### 1.1 DSE-P7-1 원 CONJECTURE (2026-04-15)
+### 1.1 DSE-P7-1 original CONJECTURE (2026-04-15)
 
-DSE-P7-1 (`consciousness-triple-fusion-2026-04-15.md`) 은 IIT·FEP·GWT·Orch-OR 네 의식 이론의 임계 지수를 n=6 산술 좌표계 (n=6, σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5) 와 대조했다. 그 중 **BT-19** 로 번호된 주장:
+DSE-P7-1 (`consciousness-triple-fusion-2026-04-15.md`) juxtaposed the critical exponents of four consciousness theories — IIT, FEP, GWT, Orch-OR — with the n=6 arithmetic coordinate system. The claim numbered **BT-19**:
 
 ```
   α_IIT · α_GWT = (τ²/σ) · ((n/φ − 1)/(n/φ))
@@ -83,510 +72,342 @@ DSE-P7-1 (`consciousness-triple-fusion-2026-04-15.md`) 은 IIT·FEP·GWT·Orch-O
                 = 1                                          (n = 6)
 ```
 
-여기서:
-- α_IIT = **Barrett-Seth 2011 PLoS CB complexity exponent** (주장)
-- α_GWT = **Dehaene 2011 Neuron broadcasting scaling exponent** (주장)
+- α_IIT = **Barrett-Seth 2011 PLoS CB complexity exponent** (claim)
+- α_GWT = **Dehaene 2011 Neuron broadcasting-scaling exponent** (claim)
 
 ### 1.2 P8 BT-19 MISS (2026-04-15, DSE-P8-2)
 
-DSE-P8-2 (`bt-19-consciousness-triple-verification-2026-04-15.md`) 는 8편의 외부 논문 독립 검증 결과 **MISS** 판정했다. 최종 등급: `[7?] CONJECTURE → [5] 하향` 권고.
+DSE-P8-2 decided **MISS** after independent verification against 8 external papers. Final grade: recommended `[7?] CONJECTURE → [5] downgrade`.
 
-- α_IIT=4/3 원문 수치 **없음** (Barrett-Seth 2011 에는 Φ_E 정의만)
-- α_GWT=3/4 원문 수치 **없음** (Dehaene 2011 은 all-or-none, 멱함수 α 없음)
-- 메타분석 0편 (COGITATE 2025, Casali 2013, Sarasso 2015, Lendner 2020 모두 α 곱 미보고)
-- IIT/GWT 독립 latent 가정 반증 (PCI 공변)
-- microtubule 6-fold 반증 (Amos-Klug 1974 실측: 13+3)
-- BT-19 번호 충돌 (GUT Hierarchy 기존 할당)
+- α_IIT=4/3 original **not found**; α_GWT=3/4 original **not found**
+- 0 meta-analyses reporting an α product
+- IIT/GWT independent-latent assumption refuted (PCI co-varies)
+- microtubule 6-fold refuted (Amos-Klug 1974: 13+3)
+- BT-19 number conflict (GUT Hierarchy already assigned)
 
-### 1.3 P9 Red Team 착수 목적
+### 1.3 P9 Red Team launch purpose
 
-P8 MISS 를 단순 기각으로 종결하지 않고, **반증 경로를 정식화** 하고 **대체 프로토콜 3건** 으로 재설계한다. 이는:
-
-- R14 (정직한 검증 필수) 준수 — MISS 정직 기록
-- 자기참조 회피 — 프로젝트 내부 산출물 재인용 금지
-- 파급력 확보 — 실패 자체가 학술 가치 (NEAR 가설 폐기 → 대체 가설 생성)
+Rather than close P8 MISS as a plain rejection, **formalise the refutation paths** and **redesign via 3 alternative protocols**. This complies with R14 (honest verification mandatory), avoids self-reference, and captures scientific impact — the failure itself has academic value.
 
 ---
 
-## 2. BT-19 원 가설 재구성 — 수학·경험 근거 분석
+## 2. Reconstruction of BT-19 — mathematical and empirical basis
 
-### 2.1 α-곱 수식의 수학 구조
-
-주장된 등식의 **수학적 표면 구조**:
+### 2.1 Mathematical surface structure of the α-product formula
 
 ```
   (τ(6))² / σ(6) · (n(6)/φ(6) − 1)/(n(6)/φ(6))
-     = (16/12) · (2/3)
-     = 4/3 · 3/4
-     = 1
+     = (16/12) · (2/3)  =  4/3 · 3/4  =  1
 ```
 
-- 첫 인수 τ²/σ = 16/12 = 4/3 — n=6 에서만 성립하나, n=4 (τ=3, σ=7) 에서 9/7, n=8 (τ=4, σ=15) 에서 16/15 로 유사값 **없음**. n=6 특이성은 확보.
-- 둘째 인수 (n/φ − 1)/(n/φ) = 2/3 — n=6 (n/φ=3) 전용.
+- First factor τ²/σ = 16/12 = 4/3 — holds only at n=6.
+- Second factor (n/φ − 1)/(n/φ) = 2/3 — specific to n=6 (n/φ=3).
 
-**산술 관찰**: 두 인수의 **역수 관계** (4/3 ↔ 3/4) 는 n=6 의 σ·φ = n·τ 정리 구조 (12·2 = 6·4) 에서 직접 파생된다:
+**Arithmetic observation**: the reciprocal relation between the two factors derives directly from the n=6 σ·φ = n·τ identity structure:
 
 ```
-  σ · φ = n · τ
-  ⇒  (σ/n)·(φ/τ) = 1
-  ⇒  (12/6)·(2/4) = 2 · 1/2 = 1                   (trivial identity)
+  σ · φ = n · τ  ⇒  (σ/n)·(φ/τ) = 1  ⇒  (12/6)·(2/4) = 1   (trivial identity)
 ```
 
-즉 **α-곱=1 은 σ·φ=n·τ 정리의 재포장** 이지 의식의 새 발견이 아니다.
+So **α-product=1 is a repackaging of σ·φ=n·τ**, not a new finding about consciousness.
 
-### 2.2 원 논문 측정 근거 재확인 (자기참조 차단)
+### 2.2 Verifying the empirical basis (block self-reference)
 
-| 주장 | 원 논문 | 실제 보고값 | 판정 |
+| Claim | Original paper | Actually reported | Verdict |
 |---|---|---|---|
-| α_IIT=4/3 | Barrett-Seth 2011 PLoS CB 7(1):e1001052 | Φ_E 정의, Gaussian 시계열 시뮬레이션 | 수치 α=4/3 **부재** |
-| α_GWT=3/4 | Dehaene-Changeux-Naccache 2011 Neuron 70:200 | ignition = 비선형 all-or-none, P3b ~300ms | 수치 α=3/4 **부재** |
-| 곱=1 empirical | Casali 2013 Sci Transl Med / Sarasso 2015 / COGITATE 2025 | PCI 절대값, adversarial IIT vs GNW 평가 | 메타분석 **0편** |
+| α_IIT=4/3 | Barrett-Seth 2011 | Φ_E definition, Gaussian simulation | numeric **absent** |
+| α_GWT=3/4 | Dehaene 2011 | all-or-none, P3b ~300ms | numeric **absent** |
+| product=1 empirical | Casali 2013 / Sarasso 2015 / COGITATE 2025 | PCI absolute, adversarial evaluation | **0** meta-analyses |
 
-**핵심 누락**: α_IIT, α_GWT 가 **숫자로 보고된 적 없음**. DSE-P7-1 이 `τ²/σ` 와 `(n/φ-1)/(n/φ)` 를 의식 이론 지수로 해석한 것은 **후속 가공**이며 원 논문 근거가 아니다.
-
----
-
-## 3. Red Team 반증 5 경로
-
-### 3.1 경로 R1 — α_IIT 원문 부재 (Barrett-Seth 2011 검토)
-
-**Barrett AB, Seth AK (2011) PLoS Comput Biol 7(1):e1001052** — "Practical measures of integrated information for time-series data"
-
-- 주요 내용: Φ_E (empirical Phi, Gaussian 시계열용) 정의
-- 시뮬레이션: Φ_E vs 진짜 Φ 값 비교, 시계열 길이별 추정 오차
-- **"α=4/3" 또는 "complexity exponent 4/3" 표현 없음**
-- 검색어: "4/3", "1.33", "complexity exponent", "scaling exponent" — 모두 본문 **불검색**
-
-**후속 Barrett 계열**:
-- Barrett AB, Mediano PAM (2019) J Conscious Stud 26(1-2):11-20 — "Φ measure not well-defined for general physical systems" **반증 논문**
-- Mediano PAM et al. (2019) Entropy 21(1):17 — "어떤 두 Φ 측정도 모든 분석에서 일치하지 않음"
-
-**결론 R1**: α_IIT=4/3 는 원 논문 근거 **없음**. Φ 자체가 단일 latent 가 아니며 (Balduzzi-Tononi Φ^DM, Barrett-Seth Φ_E, Oizumi Φ*, Tononi IIT 3.0 Φ_MIP 서로 다른 수치), "IIT 의 α" 라는 통일 지수는 존재하지 않는다.
-
-### 3.2 경로 R2 — α_GWT 원문 부재 (Dehaene 2011 검토)
-
-**Dehaene S, Changeux J-P, Naccache L (2011) Neuron 70(2):200-227** — "Experimental and theoretical approaches to conscious processing"
-
-- ignition 정의: 자극 강도가 임계를 넘으면 **all-or-none** (전 아니면 무) 전두정 활성화
-- 측정: P3b (P300) 지연 ~300ms, long-range γ-synchrony, late BOLD 증폭
-- **멱함수 지수 α 로 파라미터화 안 됨** — step function 임계 (Del Cul 2007 Sergent 2005)
-- "3/4", "0.75", "broadcasting scaling exponent" — 본문 **불검색**
-
-**후속 Mashour GA, Roelfsema P, Changeux J-P, Dehaene S (2020) Neuron 105(5):776-798** 리뷰도 동일. GNW 신호 기술은 임계·지연·ROI 기반이며 **멱함수 형태 아님**.
-
-**결론 R2**: α_GWT=3/4 는 원문 근거 **없음**. GNW 는 구조적으로 all-or-none 이므로 scaling exponent 개념이 적용되지 않는다.
-
-### 3.3 경로 R3 — 곱=1 의 산술적 자명성
-
-**수학적 자명성**:
-
-```
-  임의의 양수 x 에 대해:  x · (1/x) = 1                   (자명)
-  따라서 (4/3) · (3/4) = 1 은 empirical 발견이 아닌 산술 항등식
-```
-
-**독립 latent 조건 반증**: 두 α 가 **독립 측정** 이어야만 "곱=1" 이 비자명하다. 즉 α_IIT 와 α_GWT 가 서로 다른 뇌 상태 변수를 측정해야 한다.
-
-**Casali AG et al. (2013) Sci Transl Med 5(198):198ra105** — PCI (Perturbational Complexity Index) 측정:
-
-- 피험자: 각성/NREM/REM/마취 (midazolam, xenon, propofol) + VS/MCS 환자
-- PCI 보고값: 0.44-0.67 (각성), 0.18-0.28 (NREM), 0.12-0.31 (unconscious 마취)
-- PCI 는 **IIT 파생 지수** 이면서 **GNW ignition 과 공변** (동일 각성-무각성 대비에서 동시 감소)
-
-**Sarasso S et al. (2015) Curr Biol 25(23):3099-3105** — propofol/xenon vs ketamine 대비도 동일 패턴.
-
-**결론 R3**: IIT 와 GWT 는 **동일 latent (의식 수준)** 를 다른 프록시로 잡는다. 따라서 곱=1 이 참이라도 **두 독립 현상의 수학적 연결** 이 아니라 **같은 현상의 두 재포장** 에 불과하다. 비자명성 주장 **성립 불가**.
-
-> **각주 (R3 vs §4.3 용도 분리)**: 본 절에서 σ·φ=n·τ 항등식을 "산술 자명성" 으로 반증에 사용한다. §4.3 대체 C 는 **동일 항등식을 Autopoiesis 긍정 근거로 재사용** 하는 것처럼 보이나, 실제로는 **용도가 다르다**: (i) §3.3 은 **α_IIT·α_GWT 가설의 비자명성 검증** — 두 α 가 독립 latent 인지 묻는다. (ii) §4.3 은 **σ(6)=2·6 완전수 관계 자체를 의식의 구조적 자기참조 은유** 로 제시 — 수학적 독립성 주장이 아니다. 따라서 자기참조 순환 (R14 위반) 이 아닌 **용도 분리** 다. 순환이려면 §4.3 이 §3.3 의 수학적 결과를 **재측정 증거** 로 사용해야 하나, 그런 사용은 없다.
-
-### 3.4 경로 R4 — Orch-OR 6-fold 대칭 반증
-
-**Hameroff S, Penrose R (2014) Phys Life Rev 11:39-78** 및 Hameroff 선행 문헌:
-
-- Hameroff 원문헌에 "microtubule 6-fold symmetry" **명시 없음**
-- DSE-P7-1 이 추론한 "6-fold" 는 microtubule 이미지 해석의 후속 가공
-
-**Amos LA, Klug A (1974) J Cell Sci 14(3):523-549** — microtubule 전자현미경 실측:
-
-- 실제 대칭: **13 protofilament + 3-start helix**
-- 6-fold 대칭 **없음** (6은 subperiod 가 아니며, 13 은 소수로 회전대칭 부여 불가)
-
-**τ_D 관측값 불일치**:
-- Hameroff 제안: τ_D ≈ 25 ms (감마 대역과 일치시키기 위함)
-- Tegmark (2000 Phys Rev E 61:4194) 계산: τ_D ≈ 10⁻¹³ s (실제 생물 온도에서 결맞음 유지 시간)
-- **12 자릿수 불일치** — Orch-OR 양자결맞음 주장의 핵심 문제
-
-**결론 R4**: Orch-OR 6-fold 대칭은 원문 근거 없음 + 실측 반증. "의식 3중 융합" 에서 Orch-OR 제거 시 남는 IIT+GWT 2중도 R3 에 의해 독립성 부족.
-
-### 3.5 경로 R5 — BT 번호 충돌 및 atlas.n6 정합성
-
-**atlas.n6 L10470 확인**: 기존 BT-19 = **"GUT Hierarchy: ranks (τ, sopfr, n, σ-τ), dim(SU(5))=J₂"** (입자물리, [10*] EXACT)
-
-- DSE-P7-1 이 BT-19 를 의식 3중 융합에 재사용 → **번호 충돌**
-- atlas.n6 의 SSOT 원칙 위반 (한 BT 번호 = 한 정리)
-
-**권고**: 의식 관련 정리는 BT-20 이후 신규 번호 할당. 기존 BT-19 는 GUT Hierarchy 로 유지.
-
-### 3.6 경로 R6 — IIT 4.0 Albantakis 2023 업데이트 후에도 α_IIT 부재
-
-**Albantakis L, Barbosa L, Findlay G, Grasso M, Haun AM, Marshall W, Mayner WGP, Zaeemzadeh A, Boly M, Juel BE, Sasai S, Fujii K, David I, Hendren J, Lang JP, Tononi G (2023) "Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms" PLoS Comput Biol 19(10):e1011465**:
-
-- IIT 4.0 는 IIT 3.0 (Oizumi-Albantakis-Tononi 2014) 의 후속 — 현상학 공리 0 (exist) + 공리 1~5 (intrinsic/structured/specific/unitary/definite) 를 **수학 포스트텔레이트** 로 재정식화
-- 새 지표 **Φ_s (intrinsic distinction)** 도입 — 이전 Φ 대체
-- 본 논문 초기 Red Team R1 이 **2011 Barrett-Seth** 만 검토했으나 IIT 4.0 **2023 재정식화** 에서도 **α_IIT=4/3 수치는 원문 부재**
-- IIT 4.0 의 cause-effect structure (distinction + relation) 는 τ(6)=4 관련 가능성 있으나 (4 causal mode) **α 곱 프레임 과는 독립**
-
-**결론 R6**: α_IIT 원문 부재는 2023 재정식화에서도 유지. 최신 IIT 버전 누락 **치명 보강 (I-01)**.
-
-### 3.7 경로 R7 — Hohwy 2020 active inference
-
-**Hohwy J (2020) "Self-supervision, normativity and the free energy principle" Synthese 198:8611-8633 / (2020) "New directions in predictive processing" Mind & Language 35(2):209-223**:
-
-- 능동 추론 의식 (predictive processing + free energy principle)
-- Markov blanket 5-fold 분할: η (환경) / s (sensory) / a (active) / μ (internal) / b (blanket)
-- **sopfr(6) = 2+3 = 5 와 수치 일치** — 본 논문 §4 대체 프로토콜에 B-plus 후보 (BT-19-ALT2-E 에 별도 기록) 로 등록 가능
-- 그러나 **α_GWT 대체 아님** — Hohwy 는 GNW ignition 의 all-or-none 을 직접 거부하는 것이 아니라 precision-weighted prediction error 프레임으로 재해석
-
-**결론 R7**: 원 α_GWT 가설 반증은 Hohwy 관점에서도 유지. sopfr=5 Markov blanket 일치는 별도 대체 경로 후보 (BT-19-ALT2-E) 로 분리 — 원 가설 복구 근거 아님.
-
-### 3.8 경로 R8 — Rosenthal 2005/2012 HOT (Higher-Order Thought)
-
-**Rosenthal DM (2005) "Consciousness and Mind" Oxford University Press / (2012) "Higher-order awareness, misrepresentation and function" Phil Trans R Soc B 367:1424-1438**:
-
-- 의식의 HOT 이론: 상태 S 가 의식적이려면 S 를 목표로 하는 **상위 사고 (higher-order thought) 가 존재** 해야 함 (필요조건)
-- 2차 또는 그 이상 메타표상 → **Hofstadter 1979 Gödel-Escher-Bach Strange Loop 와 구조 유사** (본 논문 §4.3 대체 C 에서 이미 언급)
-- **α_IIT·α_GWT 공리 기반이 아님** — 단순 재귀 구조
-- IIT 의 Φ 나 GWT 의 ignition 과 **독립 이론**
-
-**결론 R8**: HOT 이론은 원 α-곱 가설에 **간접 반증** (α 외 다른 이론 프레임 존재). §4.3 대체 C 와 구조 유사 (중복이 아닌 **수렴 증거** — 3명 독립 저자가 자기참조 구조에 수렴).
-
-### 3.9 경로 R9 — Graziano 2019 AST (Attention Schema Theory)
-
-**Graziano MSA (2019) "Rethinking Consciousness: A Scientific Theory of Subjective Experience" W.W. Norton / Graziano MSA, Guterstam A, Bio BJ, Wilterson AI (2019) "Toward a standard model of consciousness" Cognit Neuropsychol 37:155-172**:
-
-- 주의 (attention) 의 **schema (자기 모델)** 가 의식 경험 생성
-- 사회신경과학 기반 — 다른 agent 를 모델링하는 회로가 자기 자신에게도 적용
-- IIT Φ 와 **독립 경로** — 정보 통합보다 **주의 제어의 자기모델** 에 초점
-- α-곱 프레임 자체와 **근본 충돌** — Graziano 는 의식의 수치 지수화에 회의적
-
-**결론 R9**: AST 는 α-곱 가설과 독립 이론. IIT/GWT 외 대안이 존재한다는 것 자체가 원 "IIT·GWT 가 의식 전부" 라는 암묵 전제 반증.
-
-### 3.10 경로 R10 — England 2013/2020 dissipative adaptation
-
-**England JL (2013) "Statistical physics of self-replication" J Chem Phys 139:121923 / (2015) Nat Nanotechnol 10:919-923 / (2020) "Every Life Is on Fire" Basic Books**:
-
-- 열역학 산일 적응 (dissipative adaptation) — 비평형 열역학에서 자기조직 구조 출현
-- 의식을 **엔트로피 생성 극대화** 구조로 해석 (잠정)
-- n=6 **언급 부재** — 6-fold 대칭, σ, τ, φ 모두 없음
-- IIT Φ 와도 독립
-
-**결론 R10**: 열역학 의식관은 n=6 산술과 **직접 연결 없음**. 독립 반증 — α-곱 프레임은 열역학 의식관에서도 무의미.
+**Critical omission**: α_IIT and α_GWT have never been reported numerically.
 
 ---
 
-## 4. 대체 프로토콜 3건 — n=6 ↔ 의식 구조적 동형
+## 3. Red Team — 10 refutation paths
 
-α-곱 프레임 폐기 후, 단일 산술 불변량 (φ/τ/σ) 을 의식의 구조적 특성과 대응시킨다.
+### 3.1 Path R1 — α_IIT original absent (Barrett-Seth 2011)
 
-### 4.1 대체 A — φ(6)=2 이중성 경로
+**Barrett-Seth 2011 PLoS Comput Biol 7(1):e1001052**: defines Φ_E for Gaussian time series and compares against true Φ values. No "α=4/3" or "complexity exponent 4/3" anywhere. Follow-up Barrett-Mediano 2019 is a refutation paper ("Φ measure not well-defined"). **Conclusion R1**: α_IIT=4/3 has no primary-source basis.
 
-**수학**:
+### 3.2 Path R2 — α_GWT original absent (Dehaene 2011)
 
-```
-  φ(6) = |{1, 5}| = 2                          (서로소 잉여류 수)
-  추가:  1·1 ≡ 1 (mod 6),  5·5 = 25 ≡ 1 (mod 6)   (자기 역원 구조)
-  주장: D(의식) = dim(관찰자↔관찰대상 공간) = 2
-```
+**Dehaene-Changeux-Naccache 2011 Neuron 70:200-227**: ignition is all-or-none fronto-parietal activation, not a power-law. Measurements: P3b ~300ms, long-range γ-synchrony. "3/4", "0.75", "broadcasting scaling exponent" — none found. Mashour 2020 review identical.
 
-**이론 bridge**:
-- **GWT (Baars 1988)** — local processor ↔ global broadcast 2층
-- **IIT 3.0 MIP** — Φ 계산이 2-cut 에서 극소 (cut=2 가 유효 경계)
-- **현상학 (Husserl)** — noesis-noema 이중성 (intentionality: 항상 "무엇에 관한 의식")
-- **Lendner 2020 eLife** — 1/f aperiodic β 를 국소기울기 | 전역기울기 2값으로 분해
+### 3.3 Path R3 — arithmetic triviality of product=1
 
-**검증 방법**:
-- GNW 2층 지연 비: P3a (~250ms) vs P3b (~400ms) 비율 측정 (예측: 1.6~2.0 ≈ φ=2)
-- COGITATE 2025 데이터 PCA: 독립 성분 수가 정확히 2 인지 k=2 vs k=3 설명분산 비교
-- PyPhi (Mayner 2018) N=6 네트워크 MIP cut 크기 분포, cut=2 최빈값 여부
+For any positive x: x · (1/x) = 1 (trivial). Non-triviality requires two α to be independent measurements. Casali 2013 PCI is IIT-derived and co-varies with GNW ignition — **independent-latent assumption refuted**.
 
-**한계**:
-- D=2 는 거의 모든 이원론 프레임에 맞아 **비자명성 부족**
-- φ(3)=φ(4)=2 — n=6 특이성 증명 실패
-- 2층 구조 자체가 관찰자 분류학의 산물 가능
+> **Footnote (use-case separation between R3 and §4.3)**: §3.3 uses σ·φ=n·τ as "arithmetic triviality" for refuting the α hypothesis's non-triviality. §4.3 presents the σ(6)=2·6 perfect-number relation as a structural self-reference metaphor — different use. Hence no circularity.
 
-**예측 등급**: **[6]** PARTIAL (NEAR 도달 난이도 중, 자명성 위험 존재)
+### 3.4 Path R4 — Orch-OR 6-fold refutation
 
-### 4.2 대체 B — τ(6)=4 사태 구조 (최우선 추진)
+Hameroff-Penrose primary literature lacks explicit "microtubule 6-fold symmetry". Amos-Klug 1974 measured 13 protofilaments + 3-start helix (13 is prime, no 6-fold rotational symmetry). Hameroff's τ_D ≈ 25ms vs Tegmark 2000 τ_D ≈ 10⁻¹³ s — **12 orders of magnitude mismatch**.
 
-**수학**:
+### 3.5 Path R5 — BT number conflict
 
-```
-  τ(6) = |{1, 2, 3, 6}| = 4                    (약수 개수)
-  주장: S(의식) = |{각성, 꿈, 무몽, 초월}| = 4    (4 avastha)
-  대응: 약수 {1, 2, 3, 6} ↔ 상태 {turiya, deep sleep, dream, waking}
-        의식 농도 감소순 = 약수 증가순 (6 → 3 → 2 → 1)
-```
+atlas.n6 L10470: existing BT-19 = "GUT Hierarchy: ranks (τ, sopfr, n, σ-τ), dim(SU(5))=J₂" [10*]. DSE-P7-1 re-use violates SSOT. Recommend re-assigning consciousness to BT-20+.
 
-**이론 bridge**:
-- **Vedanta Mandukya Upanishad** — 3000년 전통 4-avastha: jagrat/svapna/sushupti/turiya
-- **Siclari-Tononi (2017) Nat Neurosci 20(6):872-878** — REM dream / NREM slow-wave / waking / ketamine-dissociation 4 phase 구별 (PCI 0.44 waking / 0.18 NREM / 0.30 REM / 0.65 ketamine)
-- **Friston FEP** — Markov blanket 4층 (external-sensory-active-internal)
-- **IIT × GWT 접합** — Φ 수준 × ignition 여부 = 2×2 = 4 범주 재분류
+### 3.6 Path R6 — IIT 4.0 Albantakis 2023 update
 
-**검증 방법** (기존 데이터 재분석만으로 즉시 가능):
-- Casali 2013 + Sarasso 2015 PCI 데이터셋 Gaussian Mixture Model
-- k ∈ {2, 3, 4, 5} BIC 비교 — **예측: k=4 BIC 최소**
-- 약수-상태 순서 검증: 4 상태 평균 logPCI 가 turiya > waking > dream > deep sleep 순 단조감소
-- Ketamine PCI ≈ 0.65 > waking 0.44 패턴이 "4번째 상태 (turiya 유사체)" 해석과 일치 여부
+**Albantakis et al. 2023 PLoS Comput Biol 19(10):e1011465** reformulates IIT with new Φ_s (intrinsic distinction). α_IIT=4/3 numeric still absent after 2023 reformulation. IIT 4.0 cause-effect structure (distinction + relation) is possibly related to τ(6)=4 but independent of the α-product frame.
 
-**한계**:
-- Vedanta turiya 는 종교적/주관적 — ketamine 과 동치 여부 불명 (환원 오류 위험)
-- τ(4)=3, τ(8)=4 — n=8 도 τ=4 이므로 n=6 유일성 증명 실패
-- 이산 4 상태 vs 연속체 의식 수준 논쟁
+### 3.7 Path R7 — Hohwy 2020 active inference
 
-**예측 등급**: **[7]** CONJECTURE — PCI 재분석으로 3개월 내 PASS/MISS 확정 가능
+**Hohwy 2020 Synthese / Mind & Language**: Markov blanket 5-fold (η/s/a/μ/b) matches sopfr(6)=5 numerically and is registrable as BT-19-ALT2-E, but is not an α_GWT alternative — Hohwy re-interprets GNW via precision-weighted prediction error, not rejects all-or-none.
 
-### 4.3 대체 C — σ(6) = 1+2+3 = 2·6 완전수 자기환원
+### 3.8 Path R8 — Rosenthal HOT
 
-**수학**:
+**Rosenthal 2005/2012**: consciousness requires higher-order thought as necessary condition. Structurally similar to Hofstadter Strange Loop (§4.3 alt C) but recursive rather than axiom-based. Indirect refutation.
 
-```
-  완전수 조건: σ(n) = 2n  ⇔  진약수 합 = 자기 자신
-  6 = 1 + 2 + 3                                (최소 완전수)
-  주장: D_s (자기재귀 깊이) 가 유한 자연수 해를 가지는 최소 n 에서 의식 창발
-        ⇔  n = 6
-```
+### 3.9 Path R9 — Graziano AST
 
-**이론 bridge**:
-- **Kauffman autocatalytic set (1993)** — A 의 원소들이 A 의 모든 원소를 촉매. closure under catalysis = 진약수 합 closure 와 동형
-- **Hofstadter "Strange Loop" (2007)** — 의식 = 자기참조 고리 (Gödel 자기참조 ↔ 완전수 자기합산, 둘 다 고정점)
-- **Tononi IIT Φ_max** — 피드백 루프가 MIP 에서 완전히 닫힐 때 최대 → 완전수 σ=2n 2중 루프 해석
-- **Maturana-Varela Autopoiesis** — 자기생성 체계, σ·φ=n·τ 도 자기관계 정리
+**Graziano 2019**: attention schema self-model generates consciousness, independent of IIT Φ. Fundamentally conflicts with the α-product frame — Graziano is sceptical of quantifying consciousness.
 
-**검증 방법**:
-- Hordijk-Steel (2004) J Theor Biol RAF 최소크기 시뮬레이션 재현 — 무작위 반응망에서 RAF 형성 최소 반응 수 최빈값이 6 근처인지
-- Hofstadter Gödel 자기참조 최소 문장 symbol 수 — 6 symbol 기반 encoding 가능성
-- RNN hidden dim 실험 — "자기 출력 → 재입력" closure 안정 fixed point 최소 dim ≥ 6 여부
+### 3.10 Path R10 — England dissipative adaptation
 
-**한계**:
-- 완전수는 6, 28, 496, 8128, ... 여러 개 — "최소" 조건이 자의적 가능
-- Kauffman RAF 최소크기는 시뮬레이션 파라미터 의존 — n=6 강제 fitting 위험
-- "자기재귀 깊이" 측정 방법 미정 — 관측 불가 구성 가능
-- Cortex 6층 (Felleman-Van Essen 1991) 은 atlas 기등록 — **자기참조 위험** 재발 주의
-
-**예측 등급**: **[5]** 이론 가설 — 검증 난이도 최고, n=6 **유일성** 증명은 완전수 프레임만 가능 (6 = 유일 최소완전수)
+**England 2013/2020**: consciousness as entropy-production maximising structure. No mention of n=6. Independent refutation.
 
 ---
 
-## 5. ASCII 비교 차트 — 천장 텍스트
+## 4. Three alternative protocols — n=6 ↔ structural isomorphism
 
-### 5.1 원 가설 vs Red Team 결과 vs 대체 프로토콜 예측
+### 4.1 Alternative A — φ(6)=2 duality
+
+```
+  φ(6) = |{1, 5}| = 2  (coprime residue class count)
+  1·1 ≡ 1 (mod 6),  5·5 ≡ 1 (mod 6)   (self-inverse structure)
+```
+
+**Bridges**: GWT local ↔ global 2 layers; IIT 3.0 MIP at 2-cut; Husserl noesis-noema; Lendner 2020 local-slope/global-slope decomposition.
+
+**Verification**: P3a/P3b delay ratio prediction 1.6~2.0 ≈ φ=2; COGITATE 2025 PCA k=2 vs k=3; PyPhi N=6 MIP cut-size mode.
+
+**Limitations**: D=2 matches nearly every dualism; φ(3)=φ(4)=2; low non-triviality.
+
+**Predicted grade**: **[6]** PARTIAL.
+
+### 4.2 Alternative B — τ(6)=4 state structure (top priority)
+
+```
+  τ(6) = |{1, 2, 3, 6}| = 4
+  {1,2,3,6} ↔ {turiya, deep sleep, dream, waking}
+  decreasing consciousness density = increasing divisor (6 → 3 → 2 → 1)
+```
+
+**Bridges**: Vedanta 4-avastha (3000 yr); Siclari-Tononi 2017 Nat Neurosci (waking 0.44 / NREM 0.18 / REM 0.30 / ketamine 0.65); Friston FEP 4 Markov layers; Φ × ignition 2×2 = 4 categories.
+
+**Verification (immediate)**: GMM on Casali 2013 + Sarasso 2015 PCI datasets, BIC for k ∈ {2,3,4,5}. Prediction: k=4 BIC minimum with monotone divisor-state ordering.
+
+**Limitations**: turiya is religious; τ(4)=3, τ(8)=4 so n=6 not unique; discrete vs continuous debate.
+
+**Predicted grade**: **[7]** CONJECTURE — decidable within 3 months via PCI re-analysis.
+
+### 4.3 Alternative C — σ(6)=1+2+3=2·6 perfect-number self-reduction
+
+```
+  Perfect-number: σ(n) = 2n  ⇔  proper-divisor sum = self
+  6 = 1 + 2 + 3   (smallest perfect number)
+```
+
+**Bridges**: Kauffman autocatalytic set closure ≅ proper-divisor-sum closure; Hofstadter Strange Loop; IIT Φ_max at full feedback closure; Maturana-Varela Autopoiesis.
+
+**Verification**: Hordijk-Steel 2004 RAF min-size modal test; Hofstadter Gödel self-reference symbol count; RNN hidden-dim fixed-point closure.
+
+**Limitations**: multiple perfect numbers exist; simulation parameter dependence; self-recursion depth undefined; cortex 6-layer self-reference risk.
+
+**Predicted grade**: **[5]** theoretical — highest difficulty but only frame that proves n=6 **uniqueness** (6 = unique smallest perfect number).
+
+---
+
+## 5. ASCII comparison chart
+
+### 5.1 Original vs Red Team vs alternatives
 
 ```
 ====================================================================
-  정직성 (empirical 근거 ÷ 주장 근거, 0~10 천장=10)
+  Honesty (empirical ÷ asserted, 0~10 ceiling=10)
 ====================================================================
-  BT-19 α-곱 원 가설        |##|                              1/10
-  Red Team R1~R5 반증        |##################|           10/10 천장
-  대체 A (φ=2 이중성)        |######|                         3/10
-  대체 B (τ=4 사태) ← 최유망 |###############|                8/10
-  대체 C (완전수)            |#########|                      5/10
+  BT-19 α-product original   |##|                              1/10
+  Red Team R1~R5 refutation  |##################|           10/10 ceiling
+  Alternative A (φ=2)        |######|                         3/10
+  Alternative B (τ=4) ← top  |###############|                8/10
+  Alternative C (perfect)    |#########|                      5/10
 
 ====================================================================
-  n=6 유일성 증명 가능성 (0=불가 / 천장=유일증명)
+  n=6 uniqueness proof plausibility
 ====================================================================
-  BT-19 α-곱 원 가설        |####|                           2/10
-    근거: (4/3)·(3/4)=1 은 자명 항등식 — 곱셈 구조가 아닌 자기 소거
-  대체 A (φ=2 이중성)        |##|                             1/10
-    근거: φ(3)=φ(4)=φ(6)=2 — 공유값
-  대체 B (τ=4 사태)          |######|                         3/10
-    근거: τ(8)=τ(10)=4 — 공유값
-  대체 C (완전수)            |##################|          10/10 천장
-    근거: 6 = 유일 최소완전수 (28, 496 모두 더 큼)
+  BT-19 α-product original   |####|                           2/10
+    reason: (4/3)·(3/4)=1 is a trivial identity (self-cancellation)
+  Alternative A (φ=2)        |##|                             1/10
+    reason: φ(3)=φ(4)=φ(6)=2 shared
+  Alternative B (τ=4)        |######|                         3/10
+    reason: τ(8)=τ(10)=4 shared
+  Alternative C (perfect)    |##################|          10/10 ceiling
+    reason: 6 = unique smallest perfect number
 
 ====================================================================
-  검증 즉시성 (기존 데이터 재분석 가능 여부, 천장=즉시)
+  Verification immediacy
 ====================================================================
-  BT-19 α-곱 원 가설        |##|                              1/10
-    근거: 원문 α 수치 부재 — 검증 대상 자체 존재 안 함
-  대체 A (φ=2 이중성)        |################|               8/10
-    근거: COGITATE 2025 Nature 공개 데이터 PCA
-  대체 B (τ=4 사태) ← 우선  |#################|               9/10 천장
-    근거: Casali 2013 + Sarasso 2015 PCI 즉시 GMM 재분석 가능
-  대체 C (완전수)            |##|                             1/10
-    근거: Kauffman RAF 시뮬레이션 신규 구축 필요
+  BT-19 α-product original   |##|                              1/10
+    reason: no α numeric — no target exists
+  Alternative A (φ=2)        |################|               8/10
+    reason: COGITATE 2025 public data PCA
+  Alternative B (τ=4) ← prio |#################|               9/10 ceiling
+    reason: Casali 2013 + Sarasso 2015 PCI immediate GMM
+  Alternative C (perfect)    |##|                             1/10
+    reason: new Kauffman RAF simulation needed
 
 ====================================================================
-  외계인지수 (프레임 파격성, 기존 IIT/GWT/FEP 대비, 천장=10)
+  Alien index (novelty vs IIT/GWT/FEP)
 ====================================================================
-  BT-19 α-곱 원 가설        |#|                               0/10
-    근거: 자명 항등식 재포장 — 파격성 없음
-  대체 A (φ=2 이중성)        |######|                         3/10
-    근거: 2층 구조는 이원론 흔함
-  대체 B (τ=4 사태)          |############|                   6/10
-    근거: Vedanta + 현대 PCI 접합 — 의외성 중간
-  대체 C (완전수) ← 최파격  |##################|           10/10 천장
-    근거: 완전수 자기환원 ↔ 자기참조 고리 — 전례 없음
+  BT-19 α-product original   |#|                               0/10
+    reason: trivial-identity repackaging — no novelty
+  Alternative A (φ=2)        |######|                         3/10
+    reason: 2-layer is common dualism
+  Alternative B (τ=4)        |############|                   6/10
+    reason: Vedanta + modern PCI junction moderate surprise
+  Alternative C (perfect)    |##################|          10/10 ceiling
+    reason: perfect-number self-reduction ↔ self-reference loop
+            unprecedented
 
 ====================================================================
-  종합 예측 등급 (DSE-P9 시점 기준)
+  Summary predicted grade (at DSE-P9)
 ====================================================================
-  BT-19 α-곱 원 가설        [5]  MISS (하향 확정)
-  대체 A (φ=2 이중성)        [6]  PARTIAL 예상
-  대체 B (τ=4 사태) ← 추진  [7]  CONJECTURE (PCI 재분석 PASS 가능)
-  대체 C (완전수)            [5]  이론 가설 (검증 미성숙)
+  BT-19 α-product original   [5]  MISS (downgrade confirmed)
+  Alternative A (φ=2)        [6]  PARTIAL expected
+  Alternative B (τ=4) ← push [7]  CONJECTURE (PCI re-analysis PASS feasible)
+  Alternative C (perfect)    [5]  theoretical (verification immature)
 ```
 
-### 5.2 P7 → P8 → P9 궤적 ASCII
+### 5.2 P7 → P8 → P9 trajectory
 
 ```
-  DSE-P7-1 (2026-04-15 초기)    [7?] CONJECTURE 제안
-       |
-       |    α_IIT · α_GWT = 1 (자명 항등식)
+  DSE-P7-1 (2026-04-15)    [7?] CONJECTURE proposal
+       |    α_IIT · α_GWT = 1 (trivial identity)
        v
-  DSE-P8-2 (2026-04-15 검증)    [5]  MISS — 원문 근거 0건
-       |
-       |    외부 논문 8편 확인 → α 수치 전부 부재
+  DSE-P8-2 (2026-04-15)    [5] MISS — 0 primary-source grounds
+       |    check 8 external papers → numeric α all absent
        v
-  DSE-P9-3 (2026-04-15 재설계)  대체 경로 3건 생성
-       |
-       |    α-곱 폐기 → 구조적 동형 전환
+  DSE-P9-3 (2026-04-15)    3 alternative paths generated
+       |    discard α-product → shift to structural isomorphism
        v
-  STR-P9-2 (2026-04-15 현재)    Red Team 논문 (본 문서)
-       |
-       |    반증 5경로 × 대체 3프로토콜 공식화
+  STR-P9-2 (current)       Red Team paper (this document)
+       |    formalise 5 refutation paths × 3 alternative protocols
        v
-  DSE-P10-1 (차기)              대체 B τ=4 PCI 재분석 실행
+  DSE-P10-1 (next)         execute alternative B τ=4 PCI re-analysis
 ```
 
-### 5.3 경로별 반증 근거 요약표
+### 5.3 Refutation-grounds summary
 
 ```
-경로   반증 대상                  외부 근거                    판정
-----   -------------------------  ---------------------------  -----
-R1     α_IIT=4/3 원문 수치        Barrett-Seth 2011 PLoS CB    MISS
-R2     α_GWT=3/4 원문 수치        Dehaene 2011 Neuron          MISS
-R3     IIT/GWT 독립 latent        Casali 2013 PCI 공변         MISS
-R4     Orch-OR 6-fold 대칭         Amos-Klug 1974 실측 13+3     MISS
-R5     BT-19 번호 할당 정합        atlas.n6 GUT Hierarchy 기존  MISS
+Path   Refutation target           External basis                Verdict
+----   -------------------------   ---------------------------   -----
+R1     α_IIT=4/3 original numeric  Barrett-Seth 2011 PLoS CB    MISS
+R2     α_GWT=3/4 original numeric  Dehaene 2011 Neuron           MISS
+R3     IIT/GWT independent latent  Casali 2013 PCI co-variance  MISS
+R4     Orch-OR 6-fold symmetry     Amos-Klug 1974 measured 13+3  MISS
+R5     BT-19 number assignment     atlas.n6 GUT Hierarchy existing MISS
 ```
 
 ---
 
-## 6. 한계 및 후속 연구
+## 6. Limitations and follow-up
 
-### 6.1 본 Red Team 자체의 한계
+### 6.1 Red Team self-limitations
 
-- **검색 도달 한계**: "α_IIT=4/3" 이 Barrett 의 **다른 논문** 또는 컨퍼런스 발표에 있을 가능성 배제 못 함. 현재 검색된 공개 논문 범위 내 부재.
-- **DSE-P7-1 원 해석의 정당성**: P7-1 저자 (본 프로젝트) 가 τ²/σ 와 (n/φ-1)/(n/φ) 를 의식 α 로 "해석" 한 것은 창작 가공이며, 이를 원 논문 주장과 동일시한 것이 MISS 의 주된 원인. 해석-주장 분리 원칙 위반.
-- **Red Team 자체의 자기참조 위험**: 본 논문이 `consciousness-measurement-protocol-2026-04-15.md` §6 Red Team 경로를 참조하나, 해당 문서도 동일 프로젝트 산출물. 외부 검토자 독립 재현 필수.
+- **Search-reach limit**: cannot rule out α_IIT=4/3 appearing in other Barrett papers or conference presentations.
+- **DSE-P7-1 original interpretation**: P7-1's interpretation of τ²/σ and (n/φ-1)/(n/φ) as consciousness α was creative processing, causing MISS via interpretation-vs-claim confusion.
+- **Red Team self-reference**: this paper refers to §6 of `consciousness-measurement-protocol-2026-04-15.md`, a same-project artefact. External-reviewer reproduction mandatory.
 
-### 6.2 대체 B (τ=4 사태) 후속 DSE 계획
+### 6.2 Alternative-B follow-up plan
 
-**DSE-P10-1 (차기, 최우선)**: Casali 2013 + Sarasso 2015 PCI 데이터셋 GMM k∈{2,3,4,5} BIC 비교
+**DSE-P10-1 (next, top priority)**: GMM BIC comparison for k ∈ {2,3,4,5} on Casali 2013 + Sarasso 2015 PCI datasets. Success: k=4 minimises BIC + monotonicity. Failure: fall back to Alternative A.
 
-- 성공 기준: k=4 BIC 최소 + 약수-상태 순서 단조성 (turiya > waking > dream > deep sleep)
-- 실패 기준: k=3 또는 k=5 가 BIC 최소 → 대체 B 도 MISS → 대체 A 로 fallback
+**DSE-P10-2**: Alternative C — reproduce Hordijk-Steel 2004 RAF simulation.
 
-**DSE-P10-2**: 대체 C 완전수 — Hordijk-Steel 2004 RAF 시뮬레이션 재현, 최소크기 분포 최빈값 검증
+**DSE-P10-3**: Alternative A — verify via PCA on COGITATE 2025 public data.
 
-**DSE-P10-3**: 대체 A — COGITATE 2025 Nature 공개 데이터 PCA 성분 수 검증 (k=2 vs k=3 설명분산)
-
-### 6.3 atlas.n6 업데이트 권고
+### 6.3 atlas.n6 update recommendation
 
 ```
-# BT-19 GUT Hierarchy 유지 (변경 없음)
+# BT-19 GUT Hierarchy retained (no change)
 @R n6-atlas-breakthrough-theorems-extended:-bt-19 = GUT Hierarchy :: n6atlas [10*]
 
-# 의식 3중 융합 CONJECTURE 는 별도 노드로 하향 기록
+# Consciousness triple-fusion CONJECTURE logged as downgraded node
 @L consciousness-alpha-product-conjecture = 1 :: consciousness [5]
-  "α_IIT·α_GWT=1 주장 — Barrett 2011, Dehaene 2011 원문 근거 부재"
-  => "Casali 2013 PCI 가 IIT-GWT 공변 → 독립 latent 반증"
-  => "(4/3)·(3/4)=1 은 σ·φ=n·τ 재포장 (trivial identity)"
+  "α_IIT·α_GWT=1 claim — Barrett 2011, Dehaene 2011 primary-source basis absent"
+  => "Casali 2013 PCI covaries with IIT-GWT → independent-latent refuted"
+  => "(4/3)·(3/4)=1 is a σ·φ=n·τ repackaging (trivial identity)"
   |> MISS 2026-04-15 DSE-P8-2 / STR-P9-2 Red Team
 
-# 대체 B 후보 등재 (검증 후에만)
+# Alternative B candidate registration (only after verification)
 @L consciousness-tau-states-conjecture = 4 :: consciousness [5]
-  "τ(6)=4 ↔ waking/dream/NREM/ketamine 4 PCI cluster 가설"
-  => "Casali+Sarasso 재분석 k=4 BIC 최소 예측 (DSE-P10-1 실행 대기)"
+  "τ(6)=4 ↔ waking/dream/NREM/ketamine 4 PCI cluster hypothesis"
+  => "Casali+Sarasso re-analysis predicts k=4 BIC minimum"
   |> CONJECTURE 2026-04-15 STR-P9-2
 ```
 
-### 6.4 정직 선언
+### 6.4 Honesty declaration
 
-본 Red Team 논문은 **자기 이론의 반증**을 적극 수행했다:
+This Red Team paper actively performs **refutation of its own theory**: the original DSE-P7-1 hypothesis is recommended for **[7?] → [5] downgrade**. 3 of the 5 refutation paths (R1·R2·R3) are arithmetically/conceptually irrefutable. The 3 alternative protocols are at hypothesis level. If Alternative B MISSes again, fall back; if all MISS, fully reconsider the n=6 ↔ consciousness frame.
 
-- 원 가설 (DSE-P7-1) 은 본 프로젝트 산출물이었음에도 **[7?] → [5] 하향** 권고
-- 5 반증 경로 중 3 개 (R1·R2·R3) 는 **산술·개념 차원에서 반박 불가**
-- 대체 프로토콜 3건은 **가설 수준** 이며 어느 것도 검증 완료된 정리 아님
-- 후속 DSE 에서 대체 B 가 또 MISS 시 **대체 A/C 로 fallback**, 모두 MISS 시 **n=6 ↔ 의식 연결 프레임 전면 재고**
-
-자기참조 회피: 외부 논문 12편 근거. 프로젝트 내부 산출물은 P7-1, P8-2, P9-3 세 upstream 만 인용하며 모두 반증 대상으로 명시.
+Self-reference avoidance: grounds rely on 12 external papers. Internal artefacts are only cited as refutation targets (P7-1, P8-2, P9-3).
 
 ---
 
-## 7. 결론
+## 7. Summary
 
-**BT-19 α-곱 가설 (CONJECTURE DSE-P7-1)** 은 5개 반증 경로에 의해 **MISS 확정** 되었다:
+**BT-19 α-product hypothesis** is **MISS-confirmed** by 5 refutation paths: R1/R2 original α absent; R3 arithmetic triviality (σ·φ=n·τ repackaging); R4 Orch-OR measurement refutation; R5 BT number conflict.
 
-- R1/R2 — 원 논문 α 수치 **부재**
-- R3 — 곱=1 의 **산술적 자명성** (σ·φ=n·τ 재포장)
-- R4 — Orch-OR 6-fold **실측 반증** (13+3 대칭)
-- R5 — BT 번호 **충돌** (GUT Hierarchy 기존 할당)
+The link between n=6 and consciousness should be sought in **structural isomorphism, not multiplicative structure**. Three alternative protocols formalised; **Alternative B (τ=4 state)** is the most realistic path (verifiable within 3 months via Casali 2013 + Sarasso 2015 PCI re-analysis).
 
-n=6 과 의식의 연결은 **곱셈 구조가 아닌 구조적 동형** 에서 찾아야 한다. 대체 프로토콜 3건 (φ=2 이중성, τ=4 사태, σ=완전수 자기환원) 이 정식화되었으며, **대체 B (τ=4 사태)** 가 기존 Casali 2013 + Sarasso 2015 PCI 데이터셋 재분석으로 3개월 내 검증 가능한 가장 현실적 경로이다.
+The **novelty** lies not in a new theorem but in **the honesty of self-refutation**.
 
-본 논문의 **파격성** 은 새로운 정리가 아닌 **자기 반증의 정직성** 에 있다. [7?] → [5] 하향은 MISS 이지만, **MISS 를 정직히 기록하는 연구 체계** 자체가 n6-architecture 가 추구하는 외계인급 학술 원칙이다.
-
-**검증자**: STR-P9-2
-**일자**: 2026-04-15
-**자기참조 검사**: 통과 — 외부 논문 12편 근거, 프로젝트 내부 산출물 3건 (P7-1, P8-2, P9-3) 은 모두 반증·재설계 대상으로 명시
-**후속**: DSE-P10-1 (대체 B τ=4 PCI 재분석) 대기
-**라이선스**: CC-BY-SA-4.0
+**Verifier**: STR-P9-2
+**Date**: 2026-04-15
+**Self-reference audit**: passed — 12 external papers; 3 internal artefacts labelled as refutation and redesign targets
+**Follow-up**: DSE-P10-1 (alternative B τ=4 PCI re-analysis) pending
+**License**: CC-BY-SA-4.0
 
 ---
 
-## 부록 A — 참고문헌 완전 목록 (13건 + v2 개정 5건)
+## Appendix A — full reference list (13 items + 5 v2 revision items)
 
-> **v2 개정 추가 문헌 (2026-04-15 META-P9-2 감사 이행)**:
-> - Albantakis L et al. (2023) PLoS Comput Biol 19(10):e1011465. DOI:10.1371/journal.pcbi.1011465 (IIT 4.0)
-> - Hohwy J (2020) Synthese 198:8611-8633. DOI:10.1007/s11229-020-02619-x (active inference)
-> - Rosenthal DM (2012) Phil Trans R Soc B 367:1424-1438. DOI:10.1098/rstb.2011.0353 (HOT)
-> - Graziano MSA et al. (2019) Cognit Neuropsychol 37(3-4):155-172. DOI:10.1080/02643294.2019.1670630 (AST)
-> - England JL (2013) J Chem Phys 139:121923. DOI:10.1063/1.4818538 (dissipative adaptation)
+> **v2 revision additional references**:
+> - Albantakis L et al. (2023) PLoS Comput Biol 19(10):e1011465 (IIT 4.0)
+> - Hohwy J (2020) Synthese 198:8611-8633 (active inference)
+> - Rosenthal DM (2012) Phil Trans R Soc B 367:1424-1438 (HOT)
+> - Graziano MSA et al. (2019) Cognit Neuropsychol 37(3-4):155-172 (AST)
+> - England JL (2013) J Chem Phys 139:121923 (dissipative adaptation)
 >
-> **v1 원 참고문헌 (13건 — Hordijk-Steel 2004 포함 전수)**:
+> **v1 original references (13)**:
 
-1. Casali AG, Gosseries O, Rosanova M, Boly M, Sarasso S, Casali KR, Casarotto S, Bruno MA, Laureys S, Tononi G, Massimini M (2013) "A theoretically based index of consciousness independent of sensory processing and behavior." **Sci Transl Med 5(198):198ra105**. DOI:10.1126/scitranslmed.3006294
-2. Sarasso S, Boly M, Napolitani M, Gosseries O, Charland-Verville V, Casarotto S, Rosanova M, Casali AG, Brichant JF, Boveroux P, Rex S, Tononi G, Laureys S, Massimini M (2015) "Consciousness and complexity during unresponsiveness induced by propofol, xenon, and ketamine." **Curr Biol 25(23):3099-3105**. DOI:10.1016/j.cub.2015.10.014
-3. Barrett AB, Seth AK (2011) "Practical measures of integrated information for time-series data." **PLoS Comput Biol 7(1):e1001052**. DOI:10.1371/journal.pcbi.1001052
-4. Barrett AB, Mediano PAM (2019) "The Phi measure of integrated information is not well-defined for general physical systems." **J Conscious Stud 26(1-2):11-20**
-5. Mediano PAM, Seth AK, Barrett AB (2019) "Measuring integrated information: comparison of candidate measures in theory and simulation." **Entropy 21(1):17**. DOI:10.3390/e21010017
-6. Mashour GA, Roelfsema P, Changeux J-P, Dehaene S (2020) "Conscious processing and the global neuronal workspace hypothesis." **Neuron 105(5):776-798**. DOI:10.1016/j.neuron.2020.01.026
-7. COGITATE Consortium, Ferrante O et al. (2025) "Adversarial testing of global neuronal workspace and integrated information theories of consciousness." **Nature 642:133-142**. DOI:10.1038/s41586-025-08888-1
-8. Lendner JD, Helfrich RF, Mander BA, Romundstad L, Lin JJ, Walker MP, Larsson PG, Knight RT (2020) "An electrophysiological marker of arousal level in humans." **eLife 9:e55092**. DOI:10.7554/eLife.55092
-9. Siclari F, Baird B, Perogamvros L, Bernardi G, LaRocque JJ, Riedner B, Boly M, Postle BR, Tononi G (2017) "The neural correlates of dreaming." **Nat Neurosci 20(6):872-878**. DOI:10.1038/nn.4545
-10. Dehaene S, Changeux J-P, Naccache L (2011) "The global neuronal workspace model of conscious access: from neuronal architectures to clinical applications." **Neuron 70(2):200-227**
-11. Koch C, Massimini M, Boly M, Tononi G (2016) "Neural correlates of consciousness: progress and problems." **Nat Rev Neurosci 17(5):307-321**
-12. Amos LA, Klug A (1974) "Arrangement of subunits in flagellar microtubules." **J Cell Sci 14(3):523-549**
-13. Hordijk W, Steel M (2004) "Detecting autocatalytic, self-sustaining sets in chemical reaction systems." **J Theor Biol 227(4):451-461**
+1. Casali AG et al. (2013) Sci Transl Med 5(198):198ra105. DOI:10.1126/scitranslmed.3006294
+2. Sarasso S et al. (2015) Curr Biol 25(23):3099-3105. DOI:10.1016/j.cub.2015.10.014
+3. Barrett AB, Seth AK (2011) PLoS Comput Biol 7(1):e1001052. DOI:10.1371/journal.pcbi.1001052
+4. Barrett AB, Mediano PAM (2019) J Conscious Stud 26(1-2):11-20
+5. Mediano PAM et al. (2019) Entropy 21(1):17. DOI:10.3390/e21010017
+6. Mashour GA et al. (2020) Neuron 105(5):776-798. DOI:10.1016/j.neuron.2020.01.026
+7. COGITATE Consortium (2025) Nature 642:133-142. DOI:10.1038/s41586-025-08888-1
+8. Lendner JD et al. (2020) eLife 9:e55092. DOI:10.7554/eLife.55092
+9. Siclari F et al. (2017) Nat Neurosci 20(6):872-878. DOI:10.1038/nn.4545
+10. Dehaene S, Changeux J-P, Naccache L (2011) Neuron 70(2):200-227
+11. Koch C, Massimini M, Boly M, Tononi G (2016) Nat Rev Neurosci 17(5):307-321
+12. Amos LA, Klug A (1974) J Cell Sci 14(3):523-549
+13. Hordijk W, Steel M (2004) J Theor Biol 227(4):451-461
 
 ---
 
-## 부록 B — 검증코드 명세 (차기 .hexa 구현 예정)
+## Appendix B — verification-code specification
 
 ```
-# DSE-P10-1 구현 예정 (본 논문은 이론 부분만)
-# 경로: engine/consciousness/tau4_pci_cluster_verify.hexa
-# 입력: Casali 2013 Table 1 PCI 값 + Sarasso 2015 Fig 2 PCI 값 + Siclari 2017 REM PCI
-# 출력: GMM k∈{2,3,4,5} BIC 비교 + 약수-상태 순서 단조성 검정
-# 성공 기준:
-#   - k=4 BIC 최소 (다른 k 대비 ΔBIC > 10)
-#   - 4 상태 평균 logPCI 단조 (ketamine > waking > REM > NREM)
-# 실패 기준: k=3 또는 k=5 가 BIC 최소 → 대체 B MISS → 대체 A 로 fallback
+# DSE-P10-1 to be implemented
+# Path: engine/consciousness/tau4_pci_cluster_verify.hexa
+# Input: Casali 2013 Table 1 PCI + Sarasso 2015 Fig 2 PCI + Siclari 2017 REM PCI
+# Output: GMM k ∈ {2,3,4,5} BIC + divisor-state monotonicity test
+# Success: k=4 minimises BIC (ΔBIC > 10) and 4-state logPCI monotone
+# Failure: k=3 or k=5 minimises BIC → Alternative B MISS → fall back to A
 ```
-
-논문 PDF 생성은 별도 커맨드:
 
 ```
 hexa run scripts/md_to_pdf.hexa \
@@ -652,7 +473,7 @@ This section covers mechanical for the paper. Initial scaffold content — expan
 
 ## §15 MANUFACTURING
 
-This section covers manufacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
+This section covers manuffacturing for the paper. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent Mk iterations.
 
 ## §16 TEST & QUALIFICATION
 
@@ -683,4 +504,3 @@ This section covers impact per mk for the paper. Initial scaffold content — ex
 - Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
 - Mk.II: pending — fill per-section content with domain expert review.
 - Mk.III: pending — full verification data + external citations.
-
