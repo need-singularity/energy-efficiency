@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.43.0",
+    "version": "0.44.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "6d7e1cc47b03a5eed2fa1a76242d9f4346f87d734f066d38718a4feebbd203bd"
+    "source_hash": "6d161da47d03fdb2046682763221dac52e30fa1fed71ba5c0221169f54809684"
   },
   "phases": [
     {
@@ -222,6 +222,11 @@
       "id": "P43",
       "title": "measurement_boundary manifest schema presence (axis D enforcement)",
       "state": "live"
+    },
+    {
+      "id": "P44",
+      "title": "thermodynamic_closure manifest schema presence (axis E enforcement)",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -281,6 +286,7 @@
       "composition",
       "silicon-manifest",
       "measurement-manifest",
+      "thermodynamic-closure-manifest",
       "proof",
       "doctor",
       "health",
@@ -340,6 +346,7 @@
     "composition",
     "silicon-manifest",
     "measurement-manifest",
+    "thermodynamic-closure-manifest",
     "emission-completeness"
   ],
   "pre_commit_hard_gates": [

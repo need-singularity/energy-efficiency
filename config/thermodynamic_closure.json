@@ -1,0 +1,77 @@
+{
+  "_doc": "Thermodynamic closure — directional (entropy-monotone) engine operations and their algebraic witnesses. Axis E3 manifest. Complements F (equality-preserving) with a direction-preserving sub-functor. Bridges atlas.n6 @F physics tier to engine @meta append-only semantics.",
+  "schema": "n6-architecture/thermodynamic_closure/1",
+  "declared_round": "R24+31",
+  "declared_ts": "2026-04-24T..Z",
+  "status": "declarative_not_yet_enforced",
+
+  "closure_principle": {
+    "F_scope": "F preserves equality — every atom has a fixed value",
+    "thermo_scope": "a sub-functor F_dir preserves directional inequality — atoms whose value monotonically increases across engine-time",
+    "reason": "P15 (audit monotonicity), P20 (hash stamp), P29 (phase id monotonicity), P32 (version alignment) are all live evidence that the engine already enforces an arrow of time. Until now the arrow was implicit per-scanner; this manifest makes it a first-class atlas↔engine crossover.",
+    "categorical_statement": "F_dir : C_atlas_ordered → C_engine_ordered is a faithful monotone functor on the subcategory of atoms with defined direction"
+  },
+
+  "monotone_atoms": {
+    "phase_count": {
+      "value": 43,
+      "atlas_ref": "config/engine_manifest.json phases.length",
+      "direction": "non-decreasing",
+      "closure_predicate": "phase_count(t+1) >= phase_count(t)",
+      "enforced_by_phase": "P29 manifest_phase_monotonic",
+      "formula": "J2 + sigma + mu + ... (compositional, not foundation-atom direct)",
+      "crossover_with_F": "phase_count mod sigma = 43 mod 12 = 7 = M3"
+    },
+    "audit_row_count": {
+      "value": "runtime",
+      "atlas_ref": "state/audit.jsonl length",
+      "direction": "strictly-increasing",
+      "closure_predicate": "append-only, never rewritten",
+      "enforced_by_phase": "P15 audit_ts_monotonic",
+      "formula": "unbounded accumulation",
+      "crossover_with_F": "domain of F_dir"
+    },
+    "engine_version_minor": {
+      "value": 43,
+      "atlas_ref": "config/engine_manifest.json engine.version",
+      "direction": "strictly-increasing on phase add",
+      "closure_predicate": "0.<N>.0 where N == last_phase_id",
+      "enforced_by_phase": "P32 version_phase_alignment",
+      "formula": "= phase_count (tight bijection)",
+      "crossover_with_F": "identity with phase_count"
+    },
+    "source_hash_generation": {
+      "value": "runtime",
+      "atlas_ref": "config/engine_manifest.json engine.source_hash",
+      "direction": "rotation-ceremony-only",
+      "closure_predicate": "changes only on source-set change AND ceremony commit",
+      "enforced_by_phase": "P20 engine_source_hash_stamp",
+      "formula": "sha256(tool/_n6_lib + scanners/*.claim.json)",
+      "crossover_with_F": "boundary — hash is not an F atom, it is F's fingerprint"
+    }
+  },
+
+  "closure_policy": {
+    "append_only": ["audit_row_count", "phase_count"],
+    "strict_increase": ["engine_version_minor"],
+    "rotation_gated": ["source_hash_generation"],
+    "reversible": ["config edits that do not touch phases, version, or audit"],
+    "default_stance": "direction-closure is live via P15/P20/P29/P32; this manifest makes the closure explicit and machine-readable.",
+    "policy_gate_future": "A scanner could enumerate monotone_atoms and confirm each is defended by the named enforced_by_phase gate — closes the loop between thermodynamic declaration and runtime defense."
+  },
+
+  "semiring_extension": {
+    "expected_preservation": "F_dir preserves {+, max} on monotone atoms; does not preserve {-, /} (those can decrease). Partial semiring.",
+    "sample_verifications": [
+      {"atom": "engine_version_minor", "operation": "+1 on phase-add", "preserved": true},
+      {"atom": "phase_count mod sigma", "atom_values": "43 mod 12 = 7 = M3", "match": true}
+    ],
+    "note": "Additive-only subfunctor — intentionally weaker than F. Direction matters more than ring closure."
+  },
+
+  "enforcement_future": {
+    "P44_candidate": "thermodynamic_closure schema presence (analog of P36/P42/P43)",
+    "P45_candidate": "monotone_atoms.enforced_by_phase back-reference — every atom cites a live phase",
+    "P46_candidate": "closure_policy coverage — every live append-only/strict-increase/rotation-gated surface in the engine appears in exactly one policy bucket"
+  }
+}

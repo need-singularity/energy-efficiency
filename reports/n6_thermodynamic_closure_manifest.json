@@ -1,0 +1,14 @@
+{
+  "schema": "n6-architecture/n6_thermodynamic_closure_manifest/1",
+  "ts": "2026-04-24T07:52:37Z",
+  "engine_version": "0.44.0",
+  "manifest_path": "config/thermodynamic_closure.json",
+  "exists": true,
+  "atom_count": 4,
+  "atom_field_deficient_count": 0,
+  "atom_field_deficient": [],
+  "missing_top_keys": [],
+  "healthy": true,
+  "note": "Phase 44 — schema presence check for config/thermodynamic_closure.json (axis E3 manifest, R24+31). Parallels P36/P42/P43. F_dir sub-functor back-reference audit reserved for future P45.",
+  "status": "GREEN"
+}

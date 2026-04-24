@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-24T06:57:40Z",
-  "total": 53,
-  "green": 52,
+  "ts": "2026-04-24T07:48:46Z",
+  "total": 54,
+  "green": 53,
   "red": 1,
   "status": "RED",
   "claims": [
@@ -372,6 +372,13 @@
     },
     {
       "file": "53_measurement_boundary_manifest.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "54_thermodynamic_closure_manifest.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

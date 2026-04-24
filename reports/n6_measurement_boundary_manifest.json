@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_measurement_boundary_manifest/1",
-  "ts": "2026-04-24T06:57:30Z",
-  "engine_version": "0.43.0",
+  "ts": "2026-04-24T07:48:40Z",
+  "engine_version": "0.44.0",
   "manifest_path": "config/measurement_boundary.json",
   "exists": true,
   "atom_count": 2,

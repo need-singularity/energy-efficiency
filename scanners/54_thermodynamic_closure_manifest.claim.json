@@ -1,0 +1,11 @@
+{
+  "id": "thermodynamic_closure.manifest_well_formed",
+  "type": "schema",
+  "description": "Phase 44 scan_thermodynamic_closure_manifest: config/thermodynamic_closure.json (R24+31 axis E3 manifest) must exist with required top-level keys {schema, closure_principle, monotone_atoms, closure_policy, semiring_extension}, at least 1 monotone atom, and every atom carrying {value, atlas_ref, direction, closure_predicate, enforced_by_phase} fields. Parallels P36 (invariants), P42 (silicon), and P43 (measurement). Gate: healthy == true.",
+  "actual_cmd": "bash -c '[ -f reports/n6_thermodynamic_closure_manifest.json ] && jq -r \"if .healthy == true then 1 else 0 end\" reports/n6_thermodynamic_closure_manifest.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-44-axis-e-candidates-2026-04-24"
+}

@@ -1,9 +1,9 @@
 {
   "schema": "n6-architecture/n6_emission_completeness/1",
-  "ts": "2026-04-24T06:57:30Z",
-  "engine_version": "0.43.0",
-  "declared_emitter_count": 52,
-  "present_count": 52,
+  "ts": "2026-04-24T07:48:40Z",
+  "engine_version": "0.44.0",
+  "declared_emitter_count": 53,
+  "present_count": 53,
   "missing_count": 0,
   "missing": [],
   "note": "Phase 26 — dual of P22. Declared emitter (out=reports/n6_<name>.json pattern) whose output file is absent signals a scan function that silently died mid-run (common: set -e triggered on zero-match grep exit=1) or that the dispatcher never called it this cycle. missing_count>0 is AMBER — investigate immediately.",
