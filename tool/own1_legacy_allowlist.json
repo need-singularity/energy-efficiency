@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 354,
+    "count": 293,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -157,6 +157,14 @@
         "removed": 20,
         "scope": "audits tail + sessions head (phase-4-9)",
         "batch": "phase-4-9"
+      },
+      {
+        "phase": "phase-5-8",
+        "batch": "phase-5-8-papers-quantum-super-groupP-pandoc-other",
+        "date": "2026-04-25",
+        "removed": 14,
+        "new_count": 293,
+        "note": "14 files translated in this session (3 deferred: moonshine-barrier, ultimate-superconductor-integrated, remain CJK>0)"
       }
     ]
   },
@@ -378,15 +386,6 @@
     "domains/space/observational-astronomy/observational-astronomy.md",
     "domains/space/space-engineering/space-engineering.md",
     "domains/space/space-systems/space-systems.md",
-    "papers/M10star-21-unified-theorem-2026-04-15.md",
-    "papers/consciousness-measurement-protocol-2026-04-15.md",
-    "papers/consciousness-red-team-n6-failure-2026-04-15.md",
-    "papers/group-P/F1-arxiv-bernoulli-independent-via-n6-2026-04-15.md",
-    "papers/group-P/F2-oeis-submission-format-2026-04-15.md",
-    "papers/group-P/F4-conference-proposal-2026-04-15.md",
-    "papers/group-P/F5-journal-submission-format-2026-04-15.md",
-    "papers/hexa-chip-6stage-unified.md",
-    "papers/lemmas-A3-A4-conditional-2026-04-15.md",
     "papers/moonshine-barrier-honest-report-2026-04-15.md",
     "papers/n6-66-techniques-integrated-paper.md",
     "papers/n6-advanced-packaging-integrated-paper.md",
@@ -394,12 +393,7 @@
     "papers/n6-hexa-cogni-integrated-paper.md",
     "papers/n6-hexa-consciousness-integrated-paper.md",
     "papers/n6-hexa-starship-integrated-paper.md",
-    "papers/n6-quantum-computing-paper.md",
-    "papers/n6-quantum-error-correction-paper.md",
-    "papers/n6-quantum-machine-learning-paper.md",
-    "papers/n6-superconductor-paper.md",
     "papers/n6-ultimate-superconductor-integrated-paper.md",
-    "papers/n=6-convergence-80-domains-2026-04-19.md",
     "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
     "reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md",
     "reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md",
