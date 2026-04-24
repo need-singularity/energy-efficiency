@@ -157,3 +157,195 @@ jobs:
           else:
               print(f"\nAll {len(json_files)} JSON files valid.")
           PYEOF
+
+  # ── Job 4: own#17 — Public README English-only audit (HARD block) ──
+  # Enforces .own rule #17 (doc-english-required) across the 5-repo org.
+  # Tool: hexa-lang/tool/readme_english_audit.hexa (sister repo).
+  # Strategy: checkout hexa-lang alongside n6-architecture into a
+  # layout that mirrors $HOME/core/{repo}/ — the audit tool reads
+  # README.md from that fixed prefix (see tool header TARGETS block).
+  # hexa CLI is bootstrapped from hexa-lang source (same chain as
+  # hexa-lang/.github/workflows/bootstrap.yml Stage 0/1).
+  readme-english-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout n6-architecture
+        uses: actions/checkout@v4
+        with:
+          path: n6-architecture
+
+      - name: Checkout hexa-lang (sister repo, tool source)
+        uses: actions/checkout@v4
+        with:
+          repository: need-singularity/hexa-lang
+          path: hexa-lang
+
+      - name: Checkout nexus (audit target)
+        uses: actions/checkout@v4
+        with:
+          repository: need-singularity/nexus
+          path: nexus
+        continue-on-error: true
+
+      - name: Checkout anima (audit target)
+        uses: actions/checkout@v4
+        with:
+          repository: need-singularity/anima
+          path: anima
+        continue-on-error: true
+
+      - name: Checkout papers (audit target)
+        uses: actions/checkout@v4
+        with:
+          repository: need-singularity/papers
+          path: papers
+        continue-on-error: true
+
+      - name: Cache hexa CLI binary
+        uses: actions/cache@v4
+        id: hexa-cache
+        with:
+          path: |
+            ${{ github.workspace }}/hexa-lang/hexa
+            ${{ github.workspace }}/hexa-lang/self/native/hexa_v2
+            ${{ github.workspace }}/hexa-lang/build
+          key: hexa-cli-${{ runner.os }}-${{ hashFiles('hexa-lang/self/**') }}
+          restore-keys: |
+            hexa-cli-${{ runner.os }}-
+
+      - name: Bootstrap hexa CLI (from hexa-lang source)
+        if: steps.hexa-cache.outputs.cache-hit != 'true'
+        shell: bash
+        working-directory: hexa-lang
+        run: |
+          set -euo pipefail
+          mkdir -p self/native build/stage1
+          gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+              -I self self/native/hexa_cc.c \
+              -o self/native/hexa_v2 \
+              -lm -ldl
+          ./self/native/hexa_v2 self/main.hexa build/stage1/main.c
+          gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+              -I self build/stage1/main.c \
+              -o hexa \
+              -lm -ldl
+
+      - name: Expose hexa CLI on PATH
+        shell: bash
+        working-directory: hexa-lang
+        run: |
+          set -euo pipefail
+          test -x ./hexa || { echo "::error::hexa binary missing after cache+bootstrap"; exit 1; }
+          echo "$GITHUB_WORKSPACE/hexa-lang" >> "$GITHUB_PATH"
+
+      - name: Expose $HOME/core layout expected by audit tool
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/core"
+          ln -sfn "$GITHUB_WORKSPACE/n6-architecture" "$HOME/core/n6-architecture"
+          ln -sfn "$GITHUB_WORKSPACE/hexa-lang"       "$HOME/core/hexa-lang"
+          [ -d "$GITHUB_WORKSPACE/nexus"  ] && ln -sfn "$GITHUB_WORKSPACE/nexus"  "$HOME/core/nexus"  || true
+          [ -d "$GITHUB_WORKSPACE/anima"  ] && ln -sfn "$GITHUB_WORKSPACE/anima"  "$HOME/core/anima"  || true
+          [ -d "$GITHUB_WORKSPACE/papers" ] && ln -sfn "$GITHUB_WORKSPACE/papers" "$HOME/core/papers" || true
+          ls -la "$HOME/core"
+
+      - name: Public README English-only audit (own#17)
+        shell: bash
+        working-directory: hexa-lang
+        run: hexa tool/readme_english_audit.hexa
+
+  # ── Job 5: own#20 — .own drift detection (SOFT warn) ──
+  # Enforces .own rule #20 (drift-tracked). Tool: hexa-lang/tool/own_runner.hexa.
+  # SOFT: continue-on-error: true — drift is a lagging signal, not a merge
+  # blocker. Failure surfaces in Actions UI for triage.
+  own-drift-daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true
+    steps:
+      - name: Checkout n6-architecture
+        uses: actions/checkout@v4
+        with:
+          path: n6-architecture
+
+      - name: Checkout hexa-lang (tool source)
+        uses: actions/checkout@v4
+        with:
+          repository: need-singularity/hexa-lang
+          path: hexa-lang
+
+      - name: Cache hexa CLI binary
+        uses: actions/cache@v4
+        id: hexa-cache
+        with:
+          path: |
+            ${{ github.workspace }}/hexa-lang/hexa
+            ${{ github.workspace }}/hexa-lang/self/native/hexa_v2
+            ${{ github.workspace }}/hexa-lang/build
+          key: hexa-cli-${{ runner.os }}-${{ hashFiles('hexa-lang/self/**') }}
+          restore-keys: |
+            hexa-cli-${{ runner.os }}-
+
+      - name: Bootstrap hexa CLI (from hexa-lang source)
+        if: steps.hexa-cache.outputs.cache-hit != 'true'
+        shell: bash
+        working-directory: hexa-lang
+        run: |
+          set -euo pipefail
+          mkdir -p self/native build/stage1
+          gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+              -I self self/native/hexa_cc.c \
+              -o self/native/hexa_v2 \
+              -lm -ldl
+          ./self/native/hexa_v2 self/main.hexa build/stage1/main.c
+          gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+              -I self build/stage1/main.c \
+              -o hexa \
+              -lm -ldl
+
+      - name: Expose hexa CLI on PATH
+        shell: bash
+        working-directory: hexa-lang
+        run: |
+          set -euo pipefail
+          test -x ./hexa || { echo "::error::hexa binary missing after cache+bootstrap"; exit 1; }
+          echo "$GITHUB_WORKSPACE/hexa-lang" >> "$GITHUB_PATH"
+
+      - name: Drift detection — techniques + tests count (own#20)
+        shell: bash
+        working-directory: n6-architecture
+        # own_runner.hexa lives in hexa-lang; invoked by absolute path.
+        # Runs from n6-architecture PWD so raw_loader picks up the local .own.
+        run: hexa "$GITHUB_WORKSPACE/hexa-lang/tool/own_runner.hexa" drift-all
+
+  # ── Job 6: own#13 — OUROBOROS CRITICAL=0 enforcement (HARD block) ──
+  # Enforces .own rule #13 (R14 atlas acyclicity for CRITICAL prefixes).
+  # Tool: scripts/monotone/ouroboros_detector_v2.py.
+  # The script exits 1 when any CRITICAL cycle is detected and exits 0
+  # otherwise (ADVISORY cycles are warn-only); no --exit-on-critical
+  # flag is needed — that behaviour is the default contract.
+  # Pre-flight existence check prevents silent-pass if the script is
+  # absent on a branch (e.g., not yet merged from a worktree).
+  ouroboros-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Detector existence precheck
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f scripts/monotone/ouroboros_detector_v2.py ]; then
+            echo "::error::scripts/monotone/ouroboros_detector_v2.py missing — cannot enforce own#13"
+            exit 1
+          fi
+
+      - name: OUROBOROS CRITICAL=0 enforcement (own#13)
+        run: python3 scripts/monotone/ouroboros_detector_v2.py
