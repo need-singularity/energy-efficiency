@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 65,
+    "count": 64,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -253,6 +253,14 @@
           "domains/compute/chip-design/hexa-wafer/hexa-wafer.md"
         ],
         "count_after": 65
+      },
+      {
+        "phase": "phase-6-B11-carry-hexa-neuromorphic",
+        "removed": 1,
+        "before": 65,
+        "after": 64,
+        "date": "2026-04-25",
+        "note": "B11 carry - hexa-neuromorphic.md translated (Korean -> English), CJK=0 verified."
       }
     ]
   },
@@ -271,7 +279,6 @@
     "domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md",
     "domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md",
     "domains/compute/chip-design/hexa-dna-molecular/hexa-dna-molecular.md",
-    "domains/compute/chip-design/hexa-neuromorphic/hexa-neuromorphic.md",
     "domains/compute/chip-design/hexa-photonic/hexa-photonic.md",
     "domains/compute/chip-design/hexa-quantum-hybrid/hexa-quantum-hybrid.md",
     "domains/compute/chip-design/hexa-superconducting/hexa-superconducting.md",
