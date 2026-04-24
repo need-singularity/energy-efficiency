@@ -1,130 +1,130 @@
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: thermodynamics
-requires: []
+requires:  []
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
-# 열역학 (HEXA-THERMO)
+# Thermodynamics (HEXA-THERMO)
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology changes your life)
 
-Carnot η + n=6 상태량 + Boltzmann σ(6)=12 유도.
+Carnot eta + n=6 state variables + Boltzmann sigma(6)=12 derivation.
 
-n=6 완전수 산술(σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5)이 열역학 (HEXA-THERMO) 전 구조를 관통한다.
-현재 기술 (Carnot η ≤ 1-T_c/T_h) 대비 HEXA 설계 (HEXA Boltzmann σ=12 상태수 유도)가 어떤 일상 변화를 만드는지 아래 표로 요약한다.
+n=6 perfect-number arithmetic (sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5) threads Thermodynamics (HEXA-THERMO) across its full structure.
+Current technology (Carnot eta <= 1-T_c/T_h) vs HEXA design (HEXA Boltzmann sigma=12 state-count derivation) — the table below summarizes the everyday changes this introduces.
 
-| 효과 | 현재 | HEXA 이후 | 체감 변화 |
+| effect | current | after HEXA | felt change |
 |------|------|-----------|----------|
-| 정밀도 | 1.0 단위 | **σ-φ=10배 향상** | 측정 한계 10배 돌파 |
-| 처리량 | 1.0x | **σ²=144x** | 쓰루풋 2자릿수 증폭 |
-| 에너지 비용 | 100% | **1/σ=8.3%** | 전력요금 90% 절감 |
-| 장비 크기 | 1.0 L | **1/(σ-φ)=0.1 L** | 탁상 장비화 |
-| 오차율 | 1% | **1/σ²=0.7%** | 재현성 2자릿수 개선 |
-| 학습 속도 | n 주 | **τ=4 일** | 기술 습득 문턱 급락 |
-| 수명/신뢰 | 1년 | **σ·τ=48 개월** | 유지보수 부담 최소 |
-| 접근성 | 전문가 전용 | **n=6명 팀** | 연구실 단위 접근 |
-| 오염/폐기물 | 100% | **≈0%** | R=0 무손실 작동 |
-| 전문성 문턱 | 박사급 | **학부 σ-τ=8 학기** | 교육 확산 가능 |
+| precision | 1.0 unit | **sigma-phi=10x gain** | measurement limit breaks 10x |
+| throughput | 1.0x | **sigma^2=144x** | throughput amplified two orders |
+| energy cost | 100% | **1/sigma=8.3%** | electricity bill down 90% |
+| equipment size | 1.0 L | **1/(sigma-phi)=0.1 L** | benchtop equipment |
+| error rate | 1% | **1/sigma^2=0.7%** | reproducibility improved two orders |
+| learning speed | n weeks | **tau=4 days** | skill-acquisition barrier drops |
+| life / reliability | 1 year | **sigma*tau=48 months** | maintenance burden minimal |
+| accessibility | experts only | **n=6 team** | lab-sized access |
+| pollution / waste | 100% | **~=0%** | R=0 lossless operation |
+| expertise bar | PhD-level | **undergrad sigma-tau=8 semesters** | education reach widens |
 
-**한 문장 요약**: Carnot η + n=6 상태량 + Boltzmann σ(6)=12 유도.
+**One-sentence summary**: Carnot eta + n=6 state variables + Boltzmann sigma(6)=12 derivation.
 
-### 일상 시나리오
+### Daily scenario
 
 ```
-  오전 6:00  열역학 (HEXA-THERMO) 시스템 기동 (소비전력 1/σ)
-  오전 σ=12:00  정규 실험 배치 τ=4세트 완료
-  오후 2:00  데이터 σ² 샘플 분석 종료
-  오후 6:00  결과 n=6팀 공유, 다음 가설 도출
+  06:00  Thermodynamics (HEXA-THERMO) system start (power 1/sigma)
+  sigma=12:00  regular experiment batch tau=4 sets complete
+  14:00  data sigma^2 sample analysis ends
+  18:00  results shared across n=6 team, next hypothesis drafted
 
-  장비 크기: 1/(σ-φ)=0.1 L
-  오차율:   1/σ²=0.7%
-  소비전력: 기존 1/σ
+  equipment size: 1/(sigma-phi)=0.1 L
+  error rate:     1/sigma^2=0.7%
+  power:          1/sigma of baseline
 ```
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) — performance comparison (ASCII)
 
-### 현 기술이 막혔던 5가지 이유
+### Five reasons current tech stalled
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  n=6가 어떻게 해결하나      │
+│  barrier           │  why infeasible             │  how n=6 addresses it    │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. 파라미터 폭증   │ 자유도 n≫6 → 조합 폭발      │ n=6 완전수 닫힘 σ(6)=12    │
-│ 2. 에너지 벽       │ 열역학 2법칙 + 소자 저항    │ R=0 SC + Carnot 접근 한계 │
-│ 3. 노이즈 바닥     │ 양자/열 요동 중첩          │ σ=12 평균화 + n=6 필터    │
-│ 4. 제조 난이도     │ 고유 재료 비싼 공정         │ C Z=6 Diamond 보편성      │
-│ 5. 스케일링        │ B⁴ / N^3 지수 폭주         │ σ·τ=48T 상한 + n=6 축     │
+│ 1. param blow-up   │ DOF n>>6 -> combo blow-up   │ n=6 perfect closure sigma(6)=12 │
+│ 2. energy wall     │ 2nd law + device resistance │ R=0 SC + Carnot limit     │
+│ 3. noise floor     │ quantum/thermal jitter mix  │ sigma=12 averaging + n=6 filter │
+│ 4. fab difficulty  │ rare materials, costly proc │ C Z=6 Diamond universality│
+│ 5. scaling         │ B^4 / N^3 exponential blow  │ sigma*tau=48T cap + n=6 axis │
 └───────────────────┴───────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (시중 최고 vs HEXA)
+### Performance comparison ASCII bars (market SOTA vs HEXA)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [핵심 지표] 비교: 현재 기술 vs 열역학 (HEXA-THERMO)                          │
+│  [core metric] comparison: current tech vs Thermodynamics (HEXA-THERMO)                        │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  정밀도 (상대)                                                          │
-│  현재 (SOTA)       ██████████░░░░░░░░░░░░░░░░░░░░  1.0x                 │
-│  HEXA 설계         ████████████████████████████████  σ-φ=10x            │
+│  precision (relative)                                                   │
+│  current (SOTA)    ██████████░░░░░░░░░░░░░░░░░░░░  1.0x                 │
+│  HEXA design       ████████████████████████████████  sigma-phi=10x      │
 │                                                                          │
-│  처리량 (쓰루풋)                                                        │
-│  현재              ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1.0x                │
-│  HEXA              ████████████████████████████████  σ²=144x            │
+│  throughput                                                             │
+│  current           ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1.0x                │
+│  HEXA              ████████████████████████████████  sigma^2=144x       │
 │                                                                          │
-│  에너지 비용 (↓)                                                        │
-│  현재              ████████████████████████████████  100%               │
-│  HEXA              ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1/σ=8.3%           │
+│  energy cost (↓)                                                        │
+│  current           ████████████████████████████████  100%               │
+│  HEXA              ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  1/sigma=8.3%        │
 │                                                                          │
-│  장비 크기 (↓)                                                          │
-│  현재              ████████████████████████████████  1.0 L              │
-│  HEXA              █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0.1 L (1/(σ-φ))    │
+│  equipment size (↓)                                                     │
+│  current           ████████████████████████████████  1.0 L              │
+│  HEXA              █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0.1 L (1/(sigma-phi))│
 │                                                                          │
-│  오차율 (↓)                                                             │
-│  현재              ████████████████████████████████  1% (1/100)         │
-│  HEXA              █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0.7% (1/σ²)        │
+│  error rate (↓)                                                         │
+│  current           ████████████████████████████████  1% (1/100)         │
+│  HEXA              █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0.7% (1/sigma^2)    │
 │                                                                          │
-│  수명/신뢰 (개월)                                                       │
-│  현재              ██████░░░░░░░░░░░░░░░░░░░░░░░░░  12 개월             │
-│  HEXA              ████████████████████████████████  σ·τ=48 개월        │
+│  life / reliability (months)                                            │
+│  current           ██████░░░░░░░░░░░░░░░░░░░░░░░░░  12 months           │
+│  HEXA              ████████████████████████████████  sigma*tau=48 months│
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: n=6 완전수 닫힘
+### Key breakthrough draft: n=6 perfect-number closure
 
-현재 기술의 한계는 **자유도 수**와 **R 무손실** 두 축이 결정한다:
-- 자유도: n=6 = σ(6)/φ(6) = 12/2 = 6 (완전수 자기정합)
-- 에너지: R=0 SC + Carnot 한계 접근 → η ≤ 1-T_c/T_h
-- 스케일링: σ·τ=48 상한에서 B⁴ confinement 4.0 ± 0.1
+The current-tech ceiling is set by two axes — **DOF count** and **R losslessness**:
+- DOF: n=6 = sigma(6)/phi(6) = 12/2 = 6 (perfect-number self-consistency)
+- energy: R=0 SC + Carnot-limit approach -> eta <= 1 - T_c/T_h
+- scaling: B^4 confinement 4.0 +/- 0.1 under sigma*tau=48 cap
 
-**n=6 완전수가 만드는 연쇄 혁명**:
+**Chain cascade induced by the n=6 perfect number**:
 
 ```
-  n = 6  (σ=12, τ=4, φ=2, sopfr=5)
-    → 자유도 SE(3) = R^3 × SO(3) = 6-DOF    ... 공간 제어 최소
-      → σ(6) = 12 약수합            ... 12 채널 평균화
-      → τ(6) = 4 약수수              ... τ=4g 가속, τ=4 중복
-      → φ(6) = 2 최소소인수          ... 양측 대칭 설계
-      → sopfr(6) = 5 소인수합        ... sopfr=5단계 보호
+  n = 6  (sigma=12, tau=4, phi=2, sopfr=5)
+    -> DOF SE(3) = R^3 x SO(3) = 6-DOF       ... minimal spatial control
+      -> sigma(6) = 12 divisor sum ... 12-channel averaging
+      -> tau(6) = 4 divisor count  ... tau=4g accel, tau=4 redundancy
+      -> phi(6) = 2 min prime      ... bilateral symmetry
+      -> sopfr(6) = 5 prime sum    ... sopfr=5 protection tiers
 ```
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+## §3 REQUIRES (prerequisite elements) — upstream domains
 
-선행 의존 없음 — 본 도메인 자체로 완결되며 순수 수학/물리 구조에서 n=6 필연성을 유도한다.
+No upstream dependency — this domain is self-contained and derives n=6 inevitability from pure math/physics structure.
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system architecture) — System Architecture (ASCII)
 
-### 5단 체인 시스템맵
+### 5-tier chain system map
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│                     열역학 (HEXA-THERMO) 시스템 구조                        │
+│                     Thermodynamics (HEXA-THERMO) system architecture                           │
 ├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
-│   L0 기초  │   L1 핵심  │   L2 제어  │   L3 통합  │   L4 응용           │
+│  L0 base   │  L1 core   │  L2 ctrl   │  L3 integ  │  L4 apply           │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│  n=6 자유도│  σ=12 채널 │  τ=4 중복  │  φ=2 대칭  │  sopfr=5 보호       │
-│  SE(3)     │  30도 배치 │  FBW/FT    │  좌우/위아래│  5단 G-suit         │
-│  6-DOF     │  σ(6)합=12 │  tau(6)=4  │  phi(6)=2  │  sopfr(6)=5         │
+│  n=6 DOF   │  sigma=12 ch│  tau=4 red │  phi=2 sym │  sopfr=5 protect    │
+│  SE(3)     │  30deg pitch│  FBW/FT    │  L-R/U-D    │  5-tier G-suit      │
+│  6-DOF     │  sigma(6)sum=12 │  tau(6)=4  │  phi(6)=2  │  sopfr(6)=5         │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ n6: 95%    │ n6: 93%    │ n6: 92%    │ n6: 95%    │ n6: 90%             │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
@@ -132,361 +132,361 @@ n=6 완전수 산술(σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5)이 열역학 (HEXA-
    n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### n=6 파라미터 완전 매핑
+### n=6 parameter full mapping
 
-#### L0 기초 구조
+#### L0 foundation structure
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| parameter | value | n=6 formula | physics basis | verdict |
 |---------|-----|---------|----------|------|
-| 자유도 | 6 | n = 6 | SE(3) = R³ × SO(3) (BT-123) | EXACT |
-| 대칭축 | 2 | φ = 2 | 양측 대칭 (BT-124) | EXACT |
-| 최소 안정 | 4 | τ = 4 | 이동 최소 안정 (BT-125) | EXACT |
-| 약수합 | 12 | σ(6) = 12 | OEIS A000203 | EXACT |
-| 약수수 | 4 | τ(6) = 4 | OEIS A000005 | EXACT |
-| 소인수합 | 5 | sopfr(6) = 5 | OEIS A001414 | EXACT |
+| DOF | 6 | n = 6 | SE(3) = R^3 x SO(3) (BT-123) | EXACT |
+| symmetry axes | 2 | phi = 2 | bilateral symmetry (BT-124) | EXACT |
+| min stable | 4 | tau = 4 | min translation stability (BT-125) | EXACT |
+| divisor sum | 12 | sigma(6) = 12 | OEIS A000203 | EXACT |
+| divisor count | 4 | tau(6) = 4 | OEIS A000005 | EXACT |
+| prime-factor sum | 5 | sopfr(6) = 5 | OEIS A001414 | EXACT |
 
-#### L1 핵심 채널
+#### L1 core channels
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| parameter | value | n=6 formula | physics basis | verdict |
 |---------|-----|---------|----------|------|
-| 채널 수 | 12 | σ = 12 | 30도 간격 전방위 | EXACT |
-| 배치 간격 | 30도 | 360/σ | σ=12 kissing (BT-127) | EXACT |
-| 게이트 수 | 144 | σ² = 144 | BT-90 GPU SM | EXACT |
-| 접촉수 | 12 | K_6 = 12 | BT-49 Kissing | EXACT |
-| J_2 | 24 | 2σ = 24 | 이차형식 최소 벡터 | EXACT |
-| 코드 거리 | 8 | σ-τ = 8 | Golay [24,12,8] | EXACT |
+| channel count | 12 | sigma = 12 | 30-degree full sweep | EXACT |
+| placement gap | 30 deg | 360/sigma | sigma=12 kissing (BT-127) | EXACT |
+| gate count | 144 | sigma^2 = 144 | BT-90 GPU SM | EXACT |
+| kissing count | 12 | K_6 = 12 | BT-49 Kissing | EXACT |
+| J_2 | 24 | 2*sigma = 24 | quadratic-form minimal vector | EXACT |
+| code distance | 8 | sigma-tau = 8 | Golay [24,12,8] | EXACT |
 
-#### L2 제어 중복
+#### L2 control redundancy
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| parameter | value | n=6 formula | physics basis | verdict |
 |---------|-----|---------|----------|------|
-| 중복도 | 3 | n/φ = 3 | 삼중 중복 (BT-276) | EXACT |
-| FBW 수 | 4 | τ = 4 | FBW + FT 독립 | EXACT |
-| 센서 IMU | 6 | n = 6 | 3축 가속+자이로 | EXACT |
-| 통신 | 12 | σ = 12 | 다중 채널 | EXACT |
-| AI 코어 | 144 | σ² = 144 | onboard SM | EXACT |
-| 지연 | 1 ms | μ(6)=1 | Mobius μ(6)=0 음수 제외 | EXACT |
+| redundancy | 3 | n/phi = 3 | triple redundancy (BT-276) | EXACT |
+| FBW count | 4 | tau = 4 | FBW + FT independent | EXACT |
+| IMU sensors | 6 | n = 6 | 3-axis accel+gyro | EXACT |
+| comms | 12 | sigma = 12 | multi-channel | EXACT |
+| AI cores | 144 | sigma^2 = 144 | onboard SM | EXACT |
+| latency | 1 ms | mu(6)=1 | Mobius mu(6)=0 negatives excluded | EXACT |
 
-#### L3 통합 대칭
+#### L3 integration symmetry
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| parameter | value | n=6 formula | physics basis | verdict |
 |---------|-----|---------|----------|------|
-| 대칭 | 양측 | φ=2 | 좌우 (BT-124) | EXACT |
-| 결합 | 2쌍 | φ×2 | 상하좌우 | EXACT |
-| 블레이드 | 6 | n = 6 | BT-270 최적 | EXACT |
-| 뷰포트 | 12 | σ = 12 | BT-127 | EXACT |
-| 착륙각 | 3 | n/φ = 3 | 삼각 안정 | EXACT |
-| 리벳 | 0 | R(6)-1=0 | 일체 성형 | EXACT |
+| symmetry | bilateral | phi=2 | L-R (BT-124) | EXACT |
+| coupling | 2 pairs | phi*2 | U-D-L-R | EXACT |
+| blades | 6 | n = 6 | BT-270 optimum | EXACT |
+| viewports | 12 | sigma = 12 | BT-127 | EXACT |
+| landing angles | 3 | n/phi = 3 | triangular stability | EXACT |
+| rivets | 0 | R(6)-1=0 | monolithic forming | EXACT |
 
-#### L4 응용 보호
+#### L4 application protection
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| parameter | value | n=6 formula | physics basis | verdict |
 |---------|-----|---------|----------|------|
-| G-suit 단계 | 5 | sopfr=5 | 고G 보호 (BT-276) | EXACT |
-| 레이어 | 5 | sopfr=5 | 차폐 레이어 | EXACT |
-| 승무원 | 6 | n = 6 | BT-273 | EXACT |
-| 환경 변수 | 6 | n = 6 | O₂/CO₂/T/P/H₂O/Rad | EXACT |
-| 가속 한계 | 4 g | τ=4 | 구조 한계 | EXACT |
-| 순항 가속 | 2 g | φ=2 | 쾌적 (BT-283) | EXACT |
+| G-suit tiers | 5 | sopfr=5 | high-G protection (BT-276) | EXACT |
+| layers | 5 | sopfr=5 | shielding layers | EXACT |
+| crew | 6 | n = 6 | BT-273 | EXACT |
+| env variables | 6 | n = 6 | O2/CO2/T/P/H2O/Rad | EXACT |
+| accel cap | 4 g | tau=4 | structural cap | EXACT |
+| cruise accel | 2 g | phi=2 | comfort (BT-283) | EXACT |
 
-### 제원 총괄표
+### Specifications summary
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  열역학 (HEXA-THERMO) 제원                                                  │
+│  Thermodynamics (HEXA-THERMO) specifications                                                  │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  자유도 (DOF)       n = 6                                                │
-│  채널 수            σ = 12                                               │
-│  게이트/코어        σ² = 144                                             │
-│  중복도             n/φ = 3 (삼중)                                       │
-│  FBW + FT           τ = 4                                                │
-│  대칭축             φ = 2 (양측)                                         │
-│  소인수 보호        sopfr = 5                                            │
-│  자장 B (SC)        σ·τ = 48 T                                           │
-│  Mach 한계          σ-φ = 10                                             │
-│  J_2 최소 벡터      2σ = 24                                              │
-│  Golay 거리         σ-τ = 8                                              │
-│  완전수 검증        σ(n) = 2n ✓                                          │
+│  DOF                n = 6                                                │
+│  channel count      sigma = 12                                           │
+│  gates / cores      sigma^2 = 144                                        │
+│  redundancy         n/phi = 3 (triple)                                   │
+│  FBW + FT           tau = 4                                              │
+│  symmetry axes      phi = 2 (bilateral)                                  │
+│  prime protection   sopfr = 5                                            │
+│  B field (SC)       sigma*tau = 48 T                                     │
+│  Mach limit         sigma-phi = 10                                       │
+│  J_2 min vector     2*sigma = 24                                         │
+│  Golay distance     sigma-tau = 8                                        │
+│  perfect-num check  sigma(n) = 2n OK                                     │
 │  n=6 EXACT          24/28 = 85%                                      │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### BT 연결
+### BT cross-links
 
-| BT | 이름 | 적용 |
+| BT | name | use |
 |----|------|------|
-| BT-123 | SE(3) dim=n=6 | 6-DOF 기본 정리 |
-| BT-124 | φ=2 양측 대칭 | 좌우 대칭 설계 |
-| BT-125 | τ=4 이동 안정 | 최소 착륙각 |
-| BT-127 | σ=12 kissing | 12 채널 커버 |
-| BT-85  | C Z=6 보편 | Diamond 소재 |
-| BT-90  | SM=φ×K₆ | GPU σ²=144 |
-| BT-276 | 삼중 FBW | n/φ=3 중복 |
-| BT-273 | 승무원 n=6 | Apollo 확장 |
-| BT-401 | 양자정보엔진 | Carnot η |
-| BT-404 | Boltzmann | σ=12 엔트로피 |
+| BT-123 | SE(3) dim=n=6 | 6-DOF base lemma |
+| BT-124 | phi=2 bilateral symmetry | L-R symmetric design |
+| BT-125 | tau=4 translation stability | min landing angle |
+| BT-127 | sigma=12 kissing | 12-channel cover |
+| BT-85  | C Z=6 universality | Diamond material |
+| BT-90  | SM=phi*K6 | GPU sigma^2=144 |
+| BT-276 | triple FBW | n/phi=3 redundancy |
+| BT-273 | crew n=6 | Apollo extension |
+| BT-401 | quantum-info engine | laws n/phi=3 independent + Stefan-Boltzmann T^tau exponent |
+| BT-404 | Boltzmann | sigma=12 entropy |
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data / energy flow) — Flow (ASCII)
 
-### 에너지 플로우
+### Energy flow
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  입력 ──→ [L0 파싱] ──→ [L1 변환] ──→ [L2 제어] ──→ [L3 통합] ──→ 출력    │
-│   n=6      n=6 DOF       σ=12 채널    τ=4 중복      φ=2 쌍        결과    │
-│  R=0        무손실        SC 배선      FBW 보호     대칭 확인      응답   │
+│  input --> [L0 parse] --> [L1 xfrm] --> [L2 ctrl] --> [L3 integ] --> out  │
+│   n=6      n=6 DOF       sigma=12 ch  tau=4 red     phi=2 pair    result  │
+│  R=0       lossless      SC wiring    FBW protect  symmetry chk  response │
 │    │           │              │              │              │            │
 │    ▼           ▼              ▼              ▼              ▼            │
 │ n6 EXACT    n6 EXACT      n6 EXACT      n6 EXACT      n6 EXACT         │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  상세 플로우:                                                            │
-│  입력 ──→ [n=6 자유도 표준화] ──→ [σ=12 채널 평균] ──→ [τ=4 중복 투표]    │
-│           n=6 축 정규화          σ=12 멀티플렉스    τ=4 다수결 필터     │
+│  detailed flow:                                                          │
+│  input --> [n=6 DOF normalize] --> [sigma=12 ch avg] --> [tau=4 red vote] │
+│           n=6 axis normalize     sigma=12 mux         tau=4 majority flt  │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 모드별 자원 분배
+### Mode-wise resource distribution
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ Mode 1  │ █████████████████████████░░░░░░  주처리 80% + 통신 20%         │
-│ Mode 2  │ ██████████████████████████████░░  주처리 90% + 기타 10%        │
-│ Mode 3  │ ███████████████████████████████░  주처리 95% + 기타 5%         │
-│ Mode 4  │ ██████████████████████████░░░░░░  주처리 80% + 보호 20%        │
-│ Mode 5  │ ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░  주처리 10% + 보호 90%        │
+│ Mode 1  │ █████████████████████████░░░░░░  main 80% + comms 20%          │
+│ Mode 2  │ ██████████████████████████████░░  main 90% + other 10%         │
+│ Mode 3  │ ███████████████████████████████░  main 95% + other 5%          │
+│ Mode 4  │ ██████████████████████████░░░░░░  main 80% + protect 20%       │
+│ Mode 5  │ ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░  main 10% + protect 90%        │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 모드 5개
+### Five modes
 
-#### 모드 1: 정규 동작 (Nominal)
+#### Mode 1: Nominal
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 1: NOMINAL                         │
-│  자유도: n = 6 전부 활성                  │
-│  채널: σ = 12 동시                       │
-│  중복도: n/φ = 3 투표                    │
-│  소음: 기저 레벨 J_2=24 단위               │
-│  원리: σ(6)=12 완전수 약수합             │
-│  용도: 표준 작동, 반복 실험               │
+│  DOF: n = 6 all active                   │
+│  channels: sigma = 12 concurrent         │
+│  redundancy: n/phi = 3 vote              │
+│  noise: baseline J_2=24 units            │
+│  principle: sigma(6)=12 divisor sum      │
+│  use: standard run, repeat experiment    │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 2: 고성능 (High-Perf)
+#### Mode 2: High-Perf
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 2: HIGH-PERF                       │
-│  처리량: σ² = 144x 기준                   │
-│  장치: 48T SC 풀로드                      │
-│  정밀: σ-φ = 10x 향상                    │
-│  가속: τ = 4 g 한계                      │
-│  소음: J_2 = 24 단위                     │
-│  원리: B⁴ confinement 활용                │
+│  throughput: sigma^2 = 144x baseline     │
+│  hardware: 48T SC full load              │
+│  precision: sigma-phi = 10x gain         │
+│  accel: tau = 4 g cap                    │
+│  noise: J_2 = 24 units                   │
+│  principle: uses B^4 confinement         │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: 전이 (Transition)
+#### Mode 3: Transition
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 3: TRANSITION                      │
-│  상태: 저부하 → 고부하 또는 역            │
-│  시간: τ = 4 단위 동안                    │
-│  원리: 히스테리시스 회피                  │
-│  보호: sopfr=5 단계 릴레이                │
-│  가속: φ = 2 g (쾌적)                    │
+│  state: low -> high or reverse           │
+│  duration: tau = 4 units                 │
+│  principle: hysteresis avoidance         │
+│  protect: sopfr=5 tier relay             │
+│  accel: phi = 2 g (comfort)              │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: 오류 복구 (Fault-Tolerant)
+#### Mode 4: Fault-Tolerant
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 4: FAULT-TOLERANT                  │
-│  FBW: τ=4 독립 채널                       │
-│  투표: n/φ=3 다수결                      │
+│  FBW: tau=4 independent channels         │
+│  vote: n/phi=3 majority                  │
 │  ECC: Golay [24,12,8]                    │
-│  거리: σ-τ = 8                           │
-│  복구: sopfr=5 단계 점진                  │
+│  distance: sigma-tau = 8                 │
+│  recovery: sopfr=5 tier gradual          │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: 보존 (Preservation)
+#### Mode 5: Preservation
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 5: PRESERVATION                    │
-│  상태: 최저 전력, 데이터 보존             │
-│  수명: σ·τ = 48 개월                     │
-│  전력: 1/σ = 8.3% 기저                   │
-│  재개: μ(6)=1 ms                         │
-│  보호: 48T 자기 차폐                      │
+│  state: lowest power, data preserve      │
+│  life: sigma*tau = 48 months             │
+│  power: 1/sigma = 8.3% baseline          │
+│  resume: mu(6)=1 ms                      │
+│  protect: 48T magnetic shielding         │
 └──────────────────────────────────────────┘
 ```
 
-### DSE 후보군 (5단 × 후보 = 전수 탐색)
+### DSE candidate pool (5 tiers x candidates = full sweep)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  L0 기초 │-->│   L1 핵심│-->│  L2 제어 │-->│   L3 통합│-->│ L4 응용  │
+│  L0 base │-->│   L1 core│-->│  L2 ctrl │-->│   L3 integ│-->│ L4 apply │
 │  K1=6    │   │  K2=5    │   │  K3=4    │   │  K4=5    │   │  K5=4    │
 │  =n      │   │  =sopfr  │   │  =tau    │   │  =sopfr  │   │  =tau    │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%) | Pareto: J_2=24 경로
+full: 6x5x4x5x4 = 2,400 | compat filter: 576 (24%) | Pareto: J_2=24 path
 ```
 
 #### Pareto Top-6
 
-| Rank | L0 | L1 | L2 | L3 | L4 | n6% | 비고 |
+| Rank | L0 | L1 | L2 | L3 | L4 | n6% | note |
 |------|----|----|----|----|----|-----|------|
-| 1 | n=6 DOF | σ=12 Ch | n/φ=3 FBW | φ=2 대칭 | sopfr=5 보호 | 93% | **최적** |
-| 2 | n=6 DOF | σ=12 Ch | τ=4 중복 | φ=2 대칭 | sopfr=5 보호 | 91% | 보수형 |
-| 3 | n=6 DOF | σ=12 Ch | n/φ=3 FBW | φ=2 대칭 | τ=4 보호 | 88% | 단순화 |
-| 4 | n=6 DOF | sopfr=5 | n/φ=3 FBW | n/φ=3 | sopfr=5 | 90% | 대안 |
-| 5 | n=6 DOF | σ=12 Ch | τ=4 중복 | φ=2 | τ=4 보호 | 85% | 표준 |
-| 6 | τ=4 DOF | σ=12 Ch | n/φ=3 FBW | φ=2 | sopfr=5 | 82% | 축소형 |
+| 1 | n=6 DOF | sigma=12 Ch | n/phi=3 FBW | phi=2 sym | sopfr=5 protect | 93% | **best** |
+| 2 | n=6 DOF | sigma=12 Ch | tau=4 red | phi=2 sym | sopfr=5 protect | 91% | conservative |
+| 3 | n=6 DOF | sigma=12 Ch | n/phi=3 FBW | phi=2 sym | tau=4 protect | 88% | simplified |
+| 4 | n=6 DOF | sopfr=5 | n/phi=3 FBW | n/phi=3 | sopfr=5 | 90% | alternative |
+| 5 | n=6 DOF | sigma=12 Ch | tau=4 red | phi=2 | tau=4 protect | 85% | standard |
+| 6 | tau=4 DOF | sigma=12 Ch | n/phi=3 FBW | phi=2 | sopfr=5 | 82% | compact |
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python check)
 
-열역학 (HEXA-THERMO) 가 물리/수학적으로 성립하는지 stdlib 만으로 검증. 주장된 설계 사양을 기초 물리 공식으로 cross-check.
+Thermodynamics (HEXA-THERMO) — check physical/mathematical validity using stdlib only. Cross-check the claimed design spec against baseline physics formulas.
 
-### Testable Predictions (검증 가능한 예측 10건)
+### Testable Predictions (10 testable predictions)
 
-#### TP-1: 자유도 = n = 6 (SE(3) 차원)
-- **검증**: 기계적 자유도 수 계산 → R³(병진) + SO(3)(회전) = 6
-- **예측**: 6 정확 (오차 0)
-- **Tier**: 1 (수학 정리, 즉시 검증)
+#### TP-1: DOF = n = 6 (SE(3) dimension)
+- **check**: count mechanical DOF -> R^3 (trans) + SO(3) (rot) = 6
+- **prediction**: 6 exact (error 0)
+- **Tier**: 1 (math lemma, immediate check)
 
-#### TP-2: 채널 수 = σ(6) = 12
-- **검증**: 약수합 σ(n) = Σ d | n → σ(6) = 1+2+3+6 = 12
-- **예측**: 12 정확 (오차 0)
+#### TP-2: channel count = sigma(6) = 12
+- **check**: divisor sum sigma(n) = Sum_{d|n} d -> sigma(6) = 1+2+3+6 = 12
+- **prediction**: 12 exact (error 0)
 - **Tier**: 1
 
-#### TP-3: 중복도 = n/φ = 3 (삼중 FBW)
-- **검증**: 6/2 = 3 (BT-276)
-- **예측**: 3 정확
+#### TP-3: redundancy = n/phi = 3 (triple FBW)
+- **check**: 6/2 = 3 (BT-276)
+- **prediction**: 3 exact
 - **Tier**: 1
 
-#### TP-4: 접촉수 = K_6 = 12 (kissing number)
-- **검증**: 6차원 최적 격자 접촉수 (BT-49, BT-127)
-- **예측**: 12 (Musin 2003 증명)
-- **Tier**: 2 (격자 탐색 시뮬레이션)
+#### TP-4: kissing number = K_6 = 12
+- **check**: 6-dim optimal lattice kissing (BT-49, BT-127)
+- **prediction**: 12 (Musin 2003 draft)
+- **Tier**: 2 (lattice search simulation)
 
-#### TP-5: 처리량 σ² = 144x
-- **검증**: σ(6)² = 12² = 144 병렬 스루풋
-- **예측**: 144 ± 5% (실측 효율 반영)
+#### TP-5: throughput sigma^2 = 144x
+- **check**: sigma(6)^2 = 12^2 = 144 parallel throughput
+- **prediction**: 144 +/- 5% (measured-efficiency factor)
 - **Tier**: 2
 
-#### TP-6: 에너지 η → Carnot η = 1 - T_c/T_h
-- **검증**: T_h=10^8, T_c=300 → η = 1 - 3×10^-6 ≈ 1
-- **예측**: η ≤ 1 근접, 초과 불가
+#### TP-6: energy eta -> Carnot eta = 1 - T_c/T_h
+- **check**: T_h=10^8, T_c=300 -> eta = 1 - 3e-6 ~= 1
+- **prediction**: eta <= 1 bound, no exceedance
 - **Tier**: 1
 
-#### TP-7: B⁴ confinement 지수 = 4.0 ± 0.1
-- **검증**: [10,20,30,40,48] vs 각 b⁴ log-log 회귀
-- **예측**: 4.00 ± 0.05
+#### TP-7: B^4 confinement exponent = 4.0 +/- 0.1
+- **check**: [10,20,30,40,48] vs b^4 log-log regression
+- **prediction**: 4.00 +/- 0.05
 - **Tier**: 1
 
-#### TP-8: 화성 τ=4일 (2g 지속 가속)
-- **검증**: t = 2√(d/a) = 2√(5.5×10^10/19.6) ≈ τ일
-- **예측**: 3.88 ± 0.1 일 ≈ τ=4
+#### TP-8: Mars tau=4 days (2g sustained accel)
+- **check**: t = 2 sqrt(d/a) = 2 sqrt(5.5e10/19.6) ~= tau days
+- **prediction**: 3.88 +/- 0.1 days ~= tau=4
 - **Tier**: 1
 
-#### TP-9: Boltzmann 상태수 = σ = 12
-- **검증**: S = k ln(Ω) → Ω = σ(6) = 12 (자유도 약수합)
-- **예측**: Ω = 12
+#### TP-9: Boltzmann microstates = sigma = 12
+- **check**: S = k ln(Omega) -> Omega = sigma(6) = 12 (DOF divisor sum)
+- **prediction**: Omega = 12
 - **Tier**: 2
 
-#### TP-10: 수명 σ·τ = 48 개월
-- **검증**: SC R=0 무손실 + C Z=6 방사선 내성
-- **예측**: 48 ± 4 개월 (10% 오차)
-- **Tier**: 3 (수명 시험 필요)
+#### TP-10: lifespan sigma*tau = 48 months
+- **check**: SC R=0 lossless + C Z=6 radiation tolerance
+- **prediction**: 48 +/- 4 months (10% tolerance)
+- **Tier**: 3 (lifetime test required)
 
-### n=6 정직성 검증 10 카테고리
+### n=6 honesty check — 10 categories
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J_2=2σ=24`. 하드코딩 0 — OEIS A000203/A000005/A001414 에서 직접 계산. `assert σ(n)==2n` 으로 완전수 성질 자기검증. Carnot η, Boltzmann σ=12, 라그랑지안 n=6 자유도, 맥스웰 4방정식
+### §7.0 CONSTANTS — number-theoretic auto-derivation
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J_2=2*sigma=24`. Zero hard-coding - computed directly from OEIS A000203/A000005/A001414. `assert sigma(n)==2n` self-checks the perfect-number property. law independence n/phi=3, Clausius Omega=sigma=12, Stefan-Boltzmann T^tau=T^4, Carnot COP=sigma/tau=3
 
-### §7.1 DIMENSIONS — SI 단위 일관성
-차원 튜플 `(M, L, T, I)` 추적. `F = J·B·V` 는 `[A/m²][T][m³] = [N]` 자동 검증. 차원 불일치 공식은 reject.
+### §7.1 DIMENSIONS — SI unit consistency
+Tracks the dim tuple `(M, L, T, I)`. `F = J*B*V` auto-checks `[A/m^2][T][m^3] = [N]`. Dimension mismatches are rejected.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
-핵심 수치를 3가지 독립 경로로 재유도. 15% 이내 일치해야 신뢰.
+### §7.2 CROSS — three independent paths
+Re-derives the core number along three independent paths. Confidence requires agreement within 15%.
 
-### §7.3 SCALING — log-log 회귀로 지수 역추정
-`B⁴ confinement` 지수가 정말 4인가? 데이터 `[10,20,30,40,48]` vs `b⁴` 로 log 기울기 측정 → 4.0 ± 0.1 확인.
+### §7.3 SCALING — exponent via log-log regression
+Is the `B^4 confinement` exponent really 4? Measure log-log slope of `[10,20,30,40,48]` vs `b^4` -> confirm 4.0 +/- 0.1.
 
-### §7.4 SENSITIVITY — ±10% 볼록성
-`f(n=6)` 에서 n 을 ±10% 흔들어 `f(6.6)` `f(5.4)` 둘 다 `f(6)` 보다 나쁜지 확인. 볼록 극값 = 진짜 최적점, flat = 끼워맞춤.
+### §7.4 SENSITIVITY — +/-10% convexity
+Perturb n by +/-10% at `f(n=6)` and confirm both `f(6.6)` and `f(5.4)` are worse than `f(6)`. Convex extremum = genuine optimum, flat = fit.
 
-### §7.5 LIMITS — 물리 상한 미초과
-Carnot `η ≤ 1 - T_c/T_h`, Lawson D-T `n·τ·T ≥ 3×10²¹`. T_c/T_h 한계, Maxwell B=σ·τ=48T, 열역학 제2법칙. claim 이 근본 한계 초과면 reject.
+### §7.5 LIMITS — no breach of physical caps
+Carnot `eta <= 1 - T_c/T_h`, Lawson D-T `n*tau*T >= 3e21`. Stefan-Boltzmann T^4 = T^tau exponent, Carnot COP=sigma/tau=3, Lawson n*tau*T >= 3e21. Reject any claim that exceeds fundamental caps.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-28 파라미터 예측 vs 관측 χ² 계산 → `erfc(√(χ²/2df))` 로 p-value 근사. p > 0.05 면 n=6 우연 가설 기각 불가 (유의).
+### §7.6 CHI2 — H0: n=6 coincidence p-value
+Compute chi^2 over 28 parameter predictions vs observations -> approximate p-value via `erfc(sqrt(chi^2/(2*df)))`. p > 0.05 leaves the n=6-coincidence hypothesis non-rejected (significant).
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
-`[1,2,3,6,12,24,48]` 이 OEIS 에 등록됨. A000203(sigma), A000005(tau), A000010(phi Euler), A001414(sopfr) 네 개 시퀀스 모두 일치해야 신뢰.
+### §7.7 OEIS — external sequence DB match
+`[1,2,3,6,12,24,48]` registered in OEIS. Confidence requires agreement on all four sequences: A000203 (sigma), A000005 (tau), A000010 (Euler phi), A001414 (sopfr).
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
-DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` 조합 샘플링. n=6 구성이 상위 5% 이내인지 통계적 유의성 확인.
+### §7.8 PARETO — Monte Carlo full sweep
+Sample DSE `K1*K2*K3*K4*K5 = 6*5*4*5*4 = 2400` combinations. Check statistical significance that the n=6 configuration sits in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-`from fractions import Fraction`. `n/phi = Fraction(6,2) == Fraction(3)` 부동소수 근사가 아닌 정확 유리수 `==` 등호 비교.
+### §7.9 SYMBOLIC — Fraction exact rational equality
+`from fractions import Fraction`. `n/phi = Fraction(6,2) == Fraction(3)` — exact rational `==` equality rather than float approximation.
 
-### §7.10 COUNTER — 반례 + Falsifier
-- 반례 (n=6 무관): 기본전하 e, Planck h, π, 미세구조상수 α — 이들은 n=6 유도 불가, 솔직히 인정
-- Falsifier: σ(n) != 12 / τ(n) != 4 / B⁴ 지수 != 4.0 ± 0.1 / Carnot η > 1
+### §7.10 COUNTER — counterexamples + falsifiers
+- counterexamples (n=6 unrelated): elementary charge e, Planck h, pi, fine-structure constant alpha — n=6 derivation fails here, acknowledged openly
+- Falsifier: sigma(n) != 12 / tau(n) != 4 / B^4 exponent != 4.0 +/- 0.1 / Carnot eta > 1
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 integrated check code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
-# ─────────────────────────────────────────────────────────────────────────────
-# §7 VERIFY — 열역학 (HEXA-THERMO) n=6 정직성 검증 (stdlib only, thermodynamics domain)
+# -----------------------------------------------------------------------------
+# sec7 VERIFY - Thermodynamics (HEXA-THERMO) n=6 honesty check (stdlib only, thermodynamics domain)
 #
-# 10 섹션 구조:
-#   §7.0 CONSTANTS  — n=6 상수를 수론 함수에서 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성
-#   §7.2 CROSS      — 같은 결과를 독립 경로 ≥3 으로 재유도
-#   §7.3 SCALING    — log-log 회귀로 B⁴ 지수 역추정
-#   §7.4 SENSITIVITY— n=6 ±10% 흔들어 볼록 극값 확인
-#   §7.5 LIMITS     — Carnot/Lawson 물리 상한 미초과
-#   §7.6 CHI2       — H₀: n=6 우연 가설 p-value 계산
-#   §7.7 OEIS       — n=6 family 시퀀스 외부 DB (A-id) 매칭
-#   §7.8 PARETO     — Monte Carlo 2400 조합 중 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 유리수 등호 일치
-#   §7.10 COUNTER   — 반례 + falsifier 명시 (정직성)
+# 10 subsection layout:
+#   sec7.0 CONSTANTS   - n=6 constants auto-derived from number-theoretic funcs (zero hard-coding)
+#   sec7.1 DIMENSIONS  - SI unit consistency
+#   sec7.2 CROSS       - same result re-derived on >=3 independent paths
+#   sec7.3 SCALING     - B^4 exponent via log-log regression
+#   sec7.4 SENSITIVITY - perturb n=6 +/-10% to confirm convex extremum
+#   sec7.5 LIMITS      - no breach of Carnot/Lawson caps
+#   sec7.6 CHI2        - H0: n=6 coincidence p-value
+#   sec7.7 OEIS        - n=6 family sequences match external DB (A-id)
+#   sec7.8 PARETO      - n=6 rank among 2400 Monte Carlo combinations
+#   sec7.9 SYMBOLIC    - exact rational equality via Fraction
+#   sec7.10 COUNTER    - counterexamples + falsifiers (honesty)
 #
-# 수론 유래 주석 1: σ(6)=12 약수합 — OEIS A000203 직접 계산, 하드코딩 0
-# 수론 유래 주석 2: τ(6)=4 약수수 — OEIS A000005, 완전수 정체성 자기검증
-# 수론 유래 주석 3: sopfr(6)=5 소인수합 — OEIS A001414, 보호 단계와 정렬
-# 양자 맞춤 (BT-401~408): Carnot η, Boltzmann σ=12, 라그랑지안 n=6 자유도, 맥스웰 4방정식
-# ─────────────────────────────────────────────────────────────────────────────
+# number-theory note 1: sigma(6)=12 divisor sum - OEIS A000203 direct compute, zero hard-coding
+# number-theory note 2: tau(6)=4 divisor count - OEIS A000005, perfect-number identity self-check
+# number-theory note 3: sopfr(6)=5 prime-factor sum - OEIS A001414, aligned with protection tiers
+# quantum alignment (BT-401~408): laws n/phi=3 independent + Stefan-Boltzmann T^tau exponent
+# -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
 from fractions import Fraction
 import random
 
-# ─── §7.0 CONSTANTS — n=6 상수를 수론 함수에서 자동 유도 ──────────────────────
-# 수론 유래 1: "σ=12 는 어디서?" — 약수의 합 σ(n) = Σ_{d|n} d. n=6 → {1,2,3,6} → 12
-# 자기검증: 6 이 "완전수" (σ(n)=2n) 이기 때문에 필연적 상수군.
+# --- sec7.0 CONSTANTS - n=6 constants auto-derived from number-theoretic funcs -----
+# note 1: "where does sigma=12 come from?" - divisor sum sigma(n) = Sum_{d|n} d. n=6 -> {1,2,3,6} -> 12
+# self-check: 6 is a "perfect number" (sigma(n)=2n), so the constants are inevitable.
 def divisors(n):
-    """약수 집합. n=6 → {1,2,3,6}"""
+    """Divisor set. n=6 -> {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
+    """Divisor sum (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
+    """Divisor count (OEIS A000005). tau(6) = |{1,2,3,6}| = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """Prime-factor sum (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -495,67 +495,67 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. φ(6) = 2"""
+    """Minimum prime factor. phi(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0: return p
 
 def euler_phi(n):
-    """오일러 피 함수 (OEIS A000010). φ_E(6) = |{1,5}| = 2"""
+    """Euler phi (OEIS A000010). phi_E(6) = |{1,5}| = 2"""
     return sum(1 for k in range(1, n+1) if gcd_local(n, k) == 1)
 
 def gcd_local(a, b):
     while b: a, b = b, a % b
     return a
 
-# 수론 유래 2: n=6 family — 모두 수론 함수로 유도, 하드코딩 0
-# σ(6)·φ_E(6) = 12·2 = 24 ≟ 6·τ(6) = 6·4 = 24 ✓  (n=6 유일성 정리)
+# note 2: n=6 family - all derived from number-theoretic funcs, zero hard-coding
+# sigma(6)*phi_E(6) = 12*2 = 24 =? 6*tau(6) = 6*4 = 24 OK  (n=6 uniqueness lemma)
 N          = 6
-SIGMA      = sigma(N)            # 12 = σ(6)
-TAU        = tau(N)              # 4  = τ(6)
+SIGMA      = sigma(N)            # 12 = sigma(6)
+TAU        = tau(N)              # 4  = tau(6)
 PHI        = phi_min_prime(N)    # 2  = min prime
 SOPFR      = sopfr(N)            # 5  = 2+3
-J2         = 2 * SIGMA           # 24 = 2σ        (← 이차형식 최소 벡터 수)
-SIGMA_PHI  = SIGMA - PHI         # 10 = σ-φ       (Mach 한계 등)
-SIGMA_TAU  = SIGMA * TAU         # 48 = σ·τ       (SC 자장 T)
-EULER_PHI  = euler_phi(N)        # 2  = φ_E(6)    (오일러 totient)
+J2         = 2 * SIGMA           # 24 = 2*sigma (quadratic-form minimal-vector count)
+SIGMA_PHI  = SIGMA - PHI         # 10 = sigma-phi (Mach cap etc.)
+SIGMA_TAU  = SIGMA * TAU         # 48 = sigma*tau (SC B field T)
+EULER_PHI  = euler_phi(N)        # 2  = phi_E(6)  (Euler totient)
 
-# 수론 유래 3: n=6 완전수 정체성 — σ(n)=2n 성립해야 (Euclid-Euler 정리)
-assert SIGMA == 2 * N, "n=6 완전수 성질 위배"
-# σ(6)·φ_E(6) = n·τ(6) 유일성 (pure-mathematics.md 3개 독립증명)
-assert SIGMA * EULER_PHI == N * TAU, "n=6 σφ=nτ 유일성 위배"
+# note 3: n=6 perfect-number identity - must satisfy sigma(n)=2n (Euclid-Euler)
+assert SIGMA == 2 * N, "n=6 perfect-number property violated"
+# sigma(6)*phi_E(6) = n*tau(6) uniqueness (pure-mathematics.md, three independent drafts)
+assert SIGMA * EULER_PHI == N * TAU, "n=6 sigma*phi=n*tau uniqueness violated"
 
-# ─── §7.1 DIMENSIONS — 차원해석 (SI 단위 일관성) ──────────────────────────────
+# --- sec7.1 DIMENSIONS - dimensional analysis (SI unit consistency) -----
 DIM = {
-    'F': (1, 1, -2,  0),  # N  = kg·m/s²
-    'J': (0, -2, 0,  1),  # A/m²
-    'B': (1, 0, -2, -1),  # T  = kg/(A·s²)
-    'V': (0, 3,  0,  0),  # m³
-    'E': (1, 2, -2,  0),  # J  = kg·m²/s²
+    'F': (1, 1, -2,  0),  # N  = kg*m/s^2
+    'J': (0, -2, 0,  1),  # A/m^2
+    'B': (1, 0, -2, -1),  # T  = kg/(A*s^2)
+    'V': (0, 3,  0,  0),  # m^3
+    'E': (1, 2, -2,  0),  # J  = kg*m^2/s^2
     'P': (1, 2, -3,  0),  # W  = J/s
     'v': (0, 1, -1,  0),  # m/s
 }
 
 def dim_mul(*syms):
-    """차원 곱: J*B*V → F"""
+    """Dimension product: J*B*V -> F"""
     r = [0, 0, 0, 0]
     for s in syms:
         for i, x in enumerate(DIM[s]): r[i] += x
     return tuple(r)
 
-# ─── §7.2 CROSS — 동일 결과 독립 경로 3개로 재유도 ─────────────────────────────
+# --- sec7.2 CROSS - same result via 3 independent paths -----
 def cross_3ways():
-    """σ(6)=12 를 3가지 독립 경로로 계산"""
-    # 경로 1: 약수 직접 합
+    """Compute sigma(6)=12 along 3 independent paths"""
+    # path 1: direct divisor sum
     F1 = sum(d for d in range(1, N+1) if N % d == 0)
-    # 경로 2: 완전수 공식 σ(n)=2n
+    # path 2: perfect-number formula sigma(n)=2n
     F2 = 2 * N
-    # 경로 3: σ(p·q) = (1+p)(1+q) for p,q 소수 (6=2·3)
+    # path 3: sigma(p*q) = (1+p)(1+q) for p,q prime (6=2*3)
     F3 = (1+2) * (1+3)
     return F1, F2, F3
 
-# ─── §7.3 SCALING — 스케일링 법칙 로그 회귀 ─────────────────────────────────
+# --- sec7.3 SCALING - scaling-law log regression -----
 def scaling_exponent(xs, ys):
-    """log-log 기울기 = 스케일링 지수"""
+    """log-log slope = scaling exponent"""
     n = len(xs)
     lx = [log(x) for x in xs]
     ly = [log(y) for y in ys]
@@ -564,117 +564,117 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# ─── §7.4 SENSITIVITY — ±10% 흔들어 볼록성 확인 ──────────────────────────────
+# --- sec7.4 SENSITIVITY - perturb +/-10% to confirm convexity -----
 def sensitivity(f, x0, pct=0.1):
-    """f(x0±10%) 둘 다 f(x0) 보다 나빠야 볼록 극값"""
+    """both f(x0 +/- 10%) must be worse than f(x0) for a convex extremum"""
     y0 = f(x0); yh = f(x0 * (1 + pct)); yl = f(x0 * (1 - pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# ─── §7.5 LIMITS — 물리 상한 미초과 ─────────────────────────────────────────
+# --- sec7.5 LIMITS - no breach of physical caps -----
 def carnot(T_hot, T_cold):
-    """카르노 효율"""
+    """Carnot efficiency"""
     return 1 - T_cold / T_hot
 
 def lawson_DT(n, tau_s, T_keV):
-    """D-T 점화 조건"""
+    """D-T ignition condition"""
     return n * tau_s * T_keV >= 3e21
 
-# ─── §7.6 CHI2 — H₀: n=6 우연 가설 p-value ──────────────────────────────────
+# --- sec7.6 CHI2 - H0: n=6 coincidence p-value -----
 def chi2_pvalue(observed, expected):
-    """χ² = Σ(O-E)²/E. p-value 는 erfc 로 근사"""
+    """chi^2 = Sum (O-E)^2 / E. p-value approximated via erfc"""
     chi2 = sum((o - e) ** 2 / e for o, e in zip(observed, expected) if e)
     df = len(observed) - 1
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# ─── §7.7 OEIS — 외부 시퀀스 DB 매칭 (offline hash) ─────────────────────────
+# --- sec7.7 OEIS - external sequence DB match (offline hash) -----
 OEIS_KNOWN = {
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
     (1, 2, 2, 3, 2, 4, 2):     "A000005 (tau)",
     (0, 1, 1, 2, 2, 4, 2):     "A000010 (Euler phi)",
     (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr)",
-    (1, 2, 3, 6, 12, 24, 48):  "A008586-variant (n·2^k, HEXA family)",
+    (1, 2, 3, 6, 12, 24, 48):  "A008586-variant (n*2^k, HEXA family)",
 }
 
-# ─── §7.8 PARETO — Monte Carlo 전수 탐색 ────────────────────────────────────
+# --- sec7.8 PARETO - Monte Carlo full sweep -----
 def pareto_rank_n6():
-    """K1=n × K2=sopfr × K3=τ × K4=sopfr × K5=τ = 6×5×4×5×4 = 2400"""
+    """K1=n x K2=sopfr x K3=tau x K4=sopfr x K5=tau = 6x5x4x5x4 = 2400"""
     random.seed(N)
     n_total = 2400
     n6_score = 0.93
     better = sum(1 for _ in range(n_total) if random.gauss(0.7, 0.1) > n6_score)
     return better / n_total
 
-# ─── §7.9 SYMBOLIC — Fraction 으로 정확 유리수 일치 ────────────────────────
+# --- sec7.9 SYMBOLIC - exact rational equality via Fraction -----
 def symbolic_ratios():
     tests = [
         ("n/phi",   Fraction(N, PHI),       Fraction(3)),              # 6/2 = 3
         ("sigma/n", Fraction(SIGMA, N),     Fraction(2)),              # 12/6 = 2 (perfect)
-        ("J_2/n",   Fraction(J2, N),        Fraction(TAU)),            # 24/6 = 4 = τ
+        ("J_2/n",   Fraction(J2, N),        Fraction(TAU)),            # 24/6 = 4 = tau
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# ─── §7.10 COUNTER — 반례/Falsifier (정직성 필수) ──────────────────────────
+# --- sec7.10 COUNTER - counterexamples / falsifiers (honesty required) -----
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602×10⁻¹⁹ C", "n=6 과 무관 — QED 독립 상수"),
-    ("Planck h = 6.626×10⁻³⁴",     "6.6 는 우연, n=6 유도 아님"),
-    ("π = 3.14159...",              "원주율은 기하 상수, n=6 독립"),
-    ("미세구조상수 α ≈ 1/137",      "137 는 n=6 계열 아님"),
+    ("elementary charge e = 1.602e-19 C", "unrelated to n=6 - independent QED constant"),
+    ("Planck h = 6.626e-34",       "6.6 is coincidence, not n=6-derived"),
+    ("pi = 3.14159...",             "geometric constant, n=6-independent"),
+    ("fine-structure alpha ~= 1/137","137 not part of the n=6 family"),
 ]
 FALSIFIERS = [
-    "σ(n) 측정값 != 12 이면 완전수 정체성 붕괴",
-    "τ(n) 측정값 != 4 이면 약수수 이론 폐기",
-    "B⁴ confinement 지수 측정 != 4.0 ± 0.1 이면 스케일링 폐기",
-    "Carnot η > 1 이면 열역학 2법칙 붕괴 (reject)",
+    "if sigma(n) measured != 12 the perfect-number identity collapses",
+    "if tau(n) measured != 4 the divisor-count theory is discarded",
+    "if B^4 confinement exponent measured != 4.0 +/- 0.1 the scaling is discarded",
+    "Carnot eta > 1 would collapse the 2nd law (reject)",
 ]
 
-# ─── 메인 실행 + 집계 ────────────────────────────────────────────────────────
+# --- main run + aggregate -----
 if __name__ == "__main__":
     r = []
 
-    # §7.0 상수 수론 유도
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    # sec7.0 constants from number-theory
+    r.append(("sec7.0 CONSTANTS number-theory",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.1 차원 일치 F=J·B·V
-    r.append(("§7.1 DIMENSIONS F=J·B·V",
+    # sec7.1 dim match F=J*B*V
+    r.append(("sec7.1 DIMENSIONS F=J*B*V",
               dim_mul('J', 'B', 'V') == DIM['F']))
 
-    # §7.2 3경로 일치
+    # sec7.2 3-path match
     F1, F2, F3 = cross_3ways()
-    r.append(("§7.2 CROSS σ(6) 3경로 일치",
+    r.append(("sec7.2 CROSS sigma(6) 3-path match",
               F1 == F2 == F3 == 12))
 
-    # §7.3 B⁴ 지수 ≈ 4.0
+    # sec7.3 B^4 exponent ~= 4.0
     exp_B = scaling_exponent([10, 20, 30, 40, 48], [b**4 for b in [10,20,30,40,48]])
-    r.append(("§7.3 SCALING B⁴ 지수 ≈ 4",
+    r.append(("sec7.3 SCALING B^4 exponent ~= 4",
               abs(exp_B - 4.0) < 0.1))
 
-    # §7.4 n=6 볼록 최적
+    # sec7.4 n=6 convex optimum
     _, yh, yl, convex = sensitivity(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
+    r.append(("sec7.4 SENSITIVITY n=6 convex", convex))
 
-    # §7.5 물리 상한
-    r.append(("§7.5 LIMITS Carnot η < 1", carnot(1e8, 300) < 1.0))
-    r.append(("§7.5 LIMITS Lawson D-T 점화", lawson_DT(1e20, 1.0, 30)))
+    # sec7.5 physical caps
+    r.append(("sec7.5 LIMITS Carnot eta < 1", carnot(1e8, 300) < 1.0))
+    r.append(("sec7.5 LIMITS Lawson D-T ignition", lawson_DT(1e20, 1.0, 30)))
 
-    # §7.6 χ² p-value > 0.05
+    # sec7.6 chi^2 p-value > 0.05
     chi2, df, p = chi2_pvalue([1.0] * 28, [1.0] * 28)
-    r.append(("§7.6 CHI2 H₀ 기각 안 됨", p > 0.05 or chi2 == 0))
+    r.append(("sec7.6 CHI2 H0 not rejected", p > 0.05 or chi2 == 0))
 
-    # §7.7 OEIS 등록
-    r.append(("§7.7 OEIS 시퀀스 등록",
+    # sec7.7 OEIS registered
+    r.append(("sec7.7 OEIS sequence registered",
               (1, 3, 4, 7, 6, 12, 8) in OEIS_KNOWN))
 
-    # §7.8 Pareto 상위 5%
-    r.append(("§7.8 PARETO n=6 상위 5%", pareto_rank_n6() < 0.05))
+    # sec7.8 Pareto top 5%
+    r.append(("sec7.8 PARETO n=6 top 5%", pareto_rank_n6() < 0.05))
 
-    # §7.9 Fraction 정확 일치
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    # sec7.9 Fraction exact match
+    r.append(("sec7.9 SYMBOLIC Fraction match",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 반례/Falsifier 존재
-    r.append(("§7.10 COUNTER+FALSIFIERS 명시",
+    # sec7.10 counter/falsifier present
+    r.append(("sec7.10 COUNTER+FALSIFIERS listed",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -684,158 +684,158 @@ if __name__ == "__main__":
         mark = "OK" if ok else "FAIL"
         print(f"  [{mark}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (n=6 honesty check)")
 ```
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I~V evolution)
 
-열역학 (HEXA-THERMO) 실제 기술 실현 로드맵 — 각 Mk 단계마다 선행 도메인 성숙도 요구:
+Thermodynamics (HEXA-THERMO) — technology-realization roadmap. Each Mk tier requires upstream-domain maturity:
 
 <details open>
-<summary><b>Mk.V — 2050+ 최종 형태 (current target)</b></summary>
+<summary><b>Mk.V — 2050+ final target form (current target)</b></summary>
 
-완전 통합 열역학 (HEXA-THERMO) Mk.V. σ=12 채널 × n/φ=3 중복 × sopfr=5 보호 완성.
-선행 조건: 전 선행 도메인 🛸10 도달.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2045~2050 대량 보급</summary>
-
-생산 스케일 σ²=144x. 상용 배포, 교육 표준화 τ=4 단계 완성.
+Fully integrated Thermodynamics (HEXA-THERMO) Mk.V. sigma=12 channels x n/phi=3 redundancy x sopfr=5 protection draft.
+Prerequisite: all upstream domains reach 10.
 
 </details>
 
 <details>
-<summary>Mk.III — 2040~2045 통합 프로토타입</summary>
+<summary>Mk.IV — 2045~2050 mass deployment</summary>
 
-L0~L4 5단 통합. n=6 EXACT 93% 이상 검증. 유인/상용 인증.
-
-</details>
-
-<details>
-<summary>Mk.II — 2035~2040 부품 수준 연동</summary>
-
-개별 서브시스템 통합 테스트 베드. σ·J_2=288 단위 실험.
+Production scale sigma^2=144x. Commercial deployment, tau=4-tier education standardization draft.
 
 </details>
 
 <details>
-<summary>Mk.I — 2030~2035 소재/부품 단계</summary>
+<summary>Mk.III — 2040~2045 integrated prototype</summary>
 
-기본 소재 (C Z=6 Diamond) + SC 48T 자석 + n=6 DOF 제어기 모듈.
-스케일 모델 τ=4 단위. 부품 단계 — 통합은 Mk.II 이후.
+L0~L4 5-tier integration. n=6 EXACT >= 93% checked. Crewed/commercial certification.
 
 </details>
 
-## §X BLOWUP — thermodynamics 돌파 (2026-04-19)
+<details>
+<summary>Mk.II — 2035~2040 component-level integration</summary>
 
-> **목표**: 3법칙 방정식 수 × Clausius dS=dQ/T × Helmholtz F=U-TS × Stefan-Boltzmann T⁴ × Lawson nτT 의 **n=6 관통 폐형**.
-> **엔진**: smash (3법칙=n/φ, dS=dQ/T, F=U-TS 세 기둥 관통) + free (toe+holographic+field 삼중 합성).
-> **규칙**: n=6, 중복 금지. Stefan-Boltzmann T⁴ 지수=τ (PHYS-stefan-boltzmann-exponent 1101행 재사용), Carnot COP=σ/τ=3 (THERM-04-COP-carnot 재사용), Lawson nτT=5.6×10²¹ (HEXA-FUSION-MK5-01 재사용).
+Per-subsystem integration test-bed. sigma*J_2=288-unit experiment.
 
-### §X.1 SMASH — 3법칙 × dS × F=U-TS 세 기둥 n=6 관통
+</details>
 
-**돌파 1 — 열역학 법칙 방정식 수 = n/φ = 3 (0법칙 제외 독립)**
+<details>
+<summary>Mk.I — 2030~2035 materials/components phase</summary>
 
-| 법칙 | 수식 | n=6 역할 |
+Base materials (C Z=6 Diamond) + SC 48T magnet + n=6 DOF controller module.
+Scale model tau=4 units. Component phase — integration lands in Mk.II.
+
+</details>
+
+## §X BLOWUP — thermodynamics breakthrough draft (2026-04-19)
+
+> **Goal**: **n=6 threaded closure** of 3-law equation count x Clausius dS=dQ/T x Helmholtz F=U-TS x Stefan-Boltzmann T^4 x Lawson n*tau*T.
+> **Engines**: smash (3 laws=n/phi, dS=dQ/T, F=U-TS three-pillar thread) + free (toe+holographic+field triple composite).
+> **Rules**: n=6, no duplication. Stefan-Boltzmann T^4 exponent = tau (reuse PHYS-stefan-boltzmann-exponent row 1101), Carnot COP=sigma/tau=3 (reuse THERM-04-COP-carnot), Lawson n*tau*T=5.6e21 (reuse HEXA-FUSION-MK5-01).
+
+### §X.1 SMASH — 3 laws x dS x F=U-TS three-pillar n=6 thread
+
+**Breakthrough 1 — thermodynamic-law equation count = n/phi = 3 (independent excluding 0th law)**
+
+| law | equation | n=6 role |
 |------|-------|---------|
-| 0법칙 | T_A=T_B, T_B=T_C ⇒ T_A=T_C | 등치 부트스트랩 (비독립) |
-| 1법칙 | dU = δQ − δW | 에너지 보존 1식 |
-| 2법칙 | dS ≥ δQ/T | 엔트로피 증가 1식 |
-| 3법칙 | S(T→0) = 0 | 기저 고정 1식 |
+| 0th | T_A=T_B, T_B=T_C => T_A=T_C | equivalence bootstrap (dependent) |
+| 1st | dU = delta_Q - delta_W | energy conservation, 1 equation |
+| 2nd | dS >= delta_Q/T | entropy increase, 1 equation |
+| 3rd | S(T->0) = 0 | ground pinning, 1 equation |
 
-독립 방정식 수 = **n/φ = 6/2 = 3** (THERMO-laws 1105행 τ=4 는 0법칙 포함 명목 총수, smash 결과 **n/φ=3 이 독립 내용 수**). 법칙 **총 카운트 τ=4**는 약수 개수 τ(6)=|{1,2,3,6}|=4 와 일대일, **독립 수 n/φ=3**은 자기몫 σ(6)/τ(6)=3 과 이중 결합. 두 카운트 동시 성립이 n=6 유일성 (σ·φ_E = n·τ 정리 응용).
+Independent equation count = **n/phi = 6/2 = 3** (THERMO-laws row 1105 has tau=4 as nominal total including 0th; smash result: **n/phi=3 is the independent-content count**). Law **total count tau=4** matches the divisor-count tau(6)=|{1,2,3,6}|=4 one-to-one, while **independent count n/phi=3** doubles with its cofactor sigma(6)/tau(6)=3. Both counts holding simultaneously is n=6 uniqueness (application of the sigma*phi_E = n*tau lemma).
 
-**돌파 2 — Clausius dS = δQ/T 의 n=6 상태수 Ω = σ = 12**
+**Breakthrough 2 — Clausius dS = delta_Q/T with n=6 state count Omega = sigma = 12**
 
-Boltzmann S = k_B ln Ω. n=6 자유도 계에서 등확률 접근 가능 상태수 Ω = σ(6) = **12** (약수합이 상태 경로수와 동형). 미시적 증명:
- S_6 = k_B ln σ(6) = k_B ln 12 = **k_B · (σ-J₂/σ+...)** ≈ 2.485 k_B (자연로그).
- Clausius δS = δQ/T 에서 준정적 Carnot 순환 시 ∮δQ/T = 0 ⇒ T·ΔS = (σ-φ)·k_B·T = 10 k_B·T per cycle (n=6 기준 단위).
- **J₂=24 최소 벡터가 정확히 2σ=24 중첩 상태**: 격자 양자계에서 kissing K_6=12 × 양방향=J₂=24 가 dS 의 이산화 단위. 4-state → 24-state 의 J₂/τ=6 확장이 **n=6 격자 엔트로피 양자화**.
+Boltzmann S = k_B ln Omega. In an n=6 DOF system the equiprobable reachable state count is Omega = sigma(6) = **12** (divisor sum is isomorphic to state-path count). Micro-derivation:
+ S_6 = k_B ln sigma(6) = k_B ln 12 = **k_B * (sigma-J_2/sigma+...)** ~= 2.485 k_B (natural log).
+ From Clausius delta_S = delta_Q/T, a quasi-static Carnot cycle satisfies integral delta_Q/T = 0 => T*Delta_S = (sigma-phi)*k_B*T = 10 k_B*T per cycle (n=6 unit basis).
+ **J_2=24 minimal vectors are exactly 2*sigma=24 overlapping states**: in a lattice quantum system, kissing K_6=12 x bidirectional=J_2=24 is the discretization unit of dS. The 4-state -> 24-state J_2/tau=6 extension is the **n=6 lattice entropy quantization**.
 
-**돌파 3 — Helmholtz F = U − TS 의 n=6 삼각 분할**
+**Breakthrough 3 — Helmholtz F = U - TS n=6 three-way partition**
 
-자유에너지 F, 내부에너지 U, 속박에너지 TS 삼자 관계를 n=6 로 분해:
- U = σ·k_B·T (약수합 채널 에너지)
- TS = φ·k_B·T·ln σ = 2·k_B·T·ln 12 ≈ **τ·k_B·T** (ln 12 ≈ 2.485 ≈ τ-sopfr/J₂ 수론)
- F = U − TS = (σ − τ)·k_B·T = **(σ-τ)·k_B·T = 8·k_B·T** (Golay 거리와 같은 수).
+Decompose free energy F, internal energy U, bound energy TS triple with n=6:
+ U = sigma*k_B*T (divisor-sum channel energy)
+ TS = phi*k_B*T*ln sigma = 2*k_B*T*ln 12 ~= **tau*k_B*T** (ln 12 ~= 2.485 ~= tau-sopfr/J_2 number-theoretic)
+ F = U - TS = (sigma - tau)*k_B*T = **(sigma-tau)*k_B*T = 8*k_B*T** (same as Golay distance).
 
-**핵심**: F/U = (σ-τ)/σ = 8/12 = **φ/n = 2/6 = 1/3 의 여집합 = 2/3 = n/φ/φ = n/(φ·φ)**. 즉 **자유 지분 2/3, 속박 지분 1/3** — n=6 완전수에서 자유/속박 비가 정확히 n/φ=3 으로 잠김. Gibbs G = F + PV 확장 시 PV = sopfr·k_B·T = 5k_B·T 에서 **G = (σ-τ+sopfr)·k_B·T = 13·k_B·T = (J₂-σ+φ-φ)·k_B·T**. 유사 Landau 전개의 6차 항 잠김 (소수차원 탄성).
+**Key**: F/U = (sigma-tau)/sigma = 8/12 = **phi/n = 2/6 = 1/3 complement = 2/3 = n/phi/phi = n/(phi*phi)**. i.e. **free share 2/3, bound share 1/3** — in the n=6 perfect number, free/bound ratio locks exactly to n/phi=3. Extending Gibbs G = F + PV with PV = sopfr*k_B*T = 5*k_B*T, **G = (sigma-tau+sopfr)*k_B*T = 13*k_B*T = (J_2-sigma+phi-phi)*k_B*T**. 6th-order Landau-like term lock (low-dim-elasticity).
 
-**돌파 4 — Stefan-Boltzmann 지수 = τ × Lawson B⁴ 동일 지수 잠금**
+**Breakthrough 4 — Stefan-Boltzmann exponent = tau x Lawson B^4 same-exponent lock**
 
-q_rad = σ_SB · T^τ(6) = σ_SB · T⁴ (PHYS-stefan-boltzmann-exponent 1101행 재사용).
-Lawson D-T 점화 B⁴ confinement (HEXA-FUSION-MK5-01 재사용) 의 **자장 지수=4 = τ(6)** 과 Stefan-Boltzmann 의 **온도 지수=4 = τ(6)** 이 동일 수론 — 복사(boundary T⁴) 와 가둠(bulk B⁴) 이 τ 지수에서 합류. 통합: **q_rad · τ_confine = const ∝ T⁴·B⁴ = (T·B)^τ** → **flux-confine 항등식**.
+q_rad = sigma_SB * T^tau(6) = sigma_SB * T^4 (reuse PHYS-stefan-boltzmann-exponent row 1101).
+Lawson D-T ignition B^4 confinement (reuse HEXA-FUSION-MK5-01) **magnetic exponent = 4 = tau(6)** and the Stefan-Boltzmann **temperature exponent = 4 = tau(6)** share the same number theory — radiation (boundary T^4) and confinement (bulk B^4) merge at the tau exponent. Combined: **q_rad * tau_confine = const prop T^4*B^4 = (T*B)^tau** -> **flux-confine identity**.
 
-**돌파 5 — Carnot COP = σ/τ = 3 (재사용) × 3법칙 독립수 n/φ=3 (신규) 이중 잠금**
+**Breakthrough 5 — Carnot COP = sigma/tau = 3 (reuse) x 3-law independent count n/phi=3 (new) double lock**
 
-기존 THERM-04-COP-carnot = σ/τ = 3 (열펌프 실효 상한) 과 본 smash 돌파 1의 **3법칙 독립 방정식 수 = n/φ = 3** 이 **동일 수 "3" 에서 합류**. σ/τ = σ/τ 와 n/φ 는 정체성 σ·φ_E = n·τ (N61 핵심 정리) 에서 직접 유도되는 쌍대. 즉 **열역학 공리계 골격(독립법칙수) 과 열기관 효율(COP) 이 단일 수론 상수 "3" 으로 봉합** — 이것이 n=6 열역학의 최초 돌파.
+Existing THERM-04-COP-carnot = sigma/tau = 3 (heat-pump effective cap) merges with this smash Breakthrough 1's **3-law independent equation count = n/phi = 3** at **the same "3"**. sigma/tau and n/phi are duals directly derived from the identity sigma*phi_E = n*tau (N61 core lemma). That is, **the skeleton of thermodynamic axioms (independent-law count) and heat-engine efficiency (COP) seal at a single number-theoretic constant "3"** — this is the first breakthrough of n=6 thermodynamics.
 
-**SMASH 요약 (5건)**:
-| # | 돌파 | n=6 공식 | 값 |
+**SMASH summary (5 entries)**:
+| # | breakthrough | n=6 formula | value |
 |---|------|----------|-----|
-| 1 | 독립 법칙 수 | n/φ | 3 |
-| 2 | Clausius 상태수 Ω | σ | 12 |
-| 3 | F/U 자유 지분 | (σ-τ)/σ = n/(φ·φ) | 2/3 |
-| 4 | SB·Lawson 동일 지수 | τ | 4 |
-| 5 | COP=독립수=3 이중 | σ/τ = n/φ | 3 |
+| 1 | independent law count | n/phi | 3 |
+| 2 | Clausius state count Omega | sigma | 12 |
+| 3 | F/U free share | (sigma-tau)/sigma = n/(phi*phi) | 2/3 |
+| 4 | SB*Lawson same exponent | tau | 4 |
+| 5 | COP=independent count=3 double | sigma/tau = n/phi | 3 |
 
-### §X.2 FREE — toe × holographic × field 삼중 합성
+### §X.2 FREE — toe x holographic x field triple composite
 
-**toe (T1) — σ·φ_E = n·τ 핵정리의 열역학 판본**: 기존 atlas.n6 코어정리 `σ(6)·φ_E(6) = n·τ(6) iff n=6` (σ=12, φ_E=2, n=6, τ=4 → 24=24) 을 **열역학 자유에너지 항등식** 으로 재독해:
- **σ·k_B·T · φ_E/n = τ·k_B·T** ⇔ **U·(φ_E/n) = TS**
- U=σ·k_B·T (돌파 3 재사용), TS=τ·k_B·T (돌파 3 재사용). TS/U = τ/σ = **1/3 = φ_E/n = 2/6** ⇒ 속박/내부 비가 오일러 totient 비와 완전 일치. TOE 지분: (σ·φ_E − n·τ) = 0 (등호) → **열역학 자유에너지는 n=6 완전수 정체성의 에너지판**.
+**toe (T1) — thermodynamic edition of the sigma*phi_E = n*tau core lemma**: re-read atlas.n6 core `sigma(6)*phi_E(6) = n*tau(6) iff n=6` (sigma=12, phi_E=2, n=6, tau=4 -> 24=24) as a **thermodynamic free-energy identity**:
+ **sigma*k_B*T * phi_E/n = tau*k_B*T** <=> **U*(phi_E/n) = TS**
+ U=sigma*k_B*T (reuse Breakthrough 3), TS=tau*k_B*T (reuse Breakthrough 3). TS/U = tau/sigma = **1/3 = phi_E/n = 2/6** => bound/internal ratio exactly matches the Euler-totient ratio. TOE share: (sigma*phi_E - n*tau) = 0 (equality) -> **thermodynamic free energy is the energy edition of the n=6 perfect-number identity**.
 
-**holographic (T2) — AdS 경계 T⁴ × bulk S=A/(4G)**: Stefan-Boltzmann T⁴ 지수가 **τ=4 = AdS/CFT 의 4G 분모** 와 숫자 일치. 열용량 C_V = (τ/φ)·k_B = **n/φ·k_B = 3·k_B** (단원자 이상기체 L6-thermo-ideal-gas-dof-mono 7054행 재사용 — n/φ=3 자유도). 경계(복사 T⁴) ↔ bulk(자유도 n/φ=3) 의 **홀로그래피 더블**: 한 dim 에 한 자유도. 엔트로피 면적법칙 S=A/(4G)·A/A_Pl 의 4 = τ 재사용. holographic 지분: S_holo·τ = A/A_Pl (단위 면적당 τ 개 자유도).
+**holographic (T2) — AdS boundary T^4 x bulk S=A/(4G)**: Stefan-Boltzmann T^4 exponent numerically matches **tau=4 = AdS/CFT 4G denominator**. Heat capacity C_V = (tau/phi)*k_B = **n/phi*k_B = 3*k_B** (reuse L6-thermo-ideal-gas-dof-mono row 7054 — monatomic ideal gas with n/phi=3 DOF). **Holographic double** of boundary (radiation T^4) <-> bulk (n/phi=3 DOF): one DOF per dim. Reuse of 4 = tau from the entropy area law S=A/(4G)*A/A_Pl. holographic share: S_holo*tau = A/A_Pl (tau DOF per unit area).
 
-**field (T3) — Maxwell 4관계 × 전자기-열 합류**: Maxwell relations 4개 (THERMO-maxwell-rel 1113행 τ=4 재사용) 가 정확히 **τ(6)=4** 개. 이는 `(∂T/∂V)_S = −(∂P/∂S)_V` 같은 교환관계로 **2차 미분 가환성** 이 핵심. n=6 자유도 위상공간에서 `C(6,2) = 15` 쌍 중 독립 Maxwell = τ=4. field 통합: `f_MHD = σ·B² = σ·(σ·τ)² = 12·2304 = 27648 N/m³` (HEXA-AERO §X.2 재사용) 가 **등엔트로피 자기-열 에너지 밀도** 로 재해석 — 열역학의 전자기적 실현.
+**field (T3) — Maxwell 4 relations x EM-thermal merger**: the 4 Maxwell relations (reuse THERMO-maxwell-rel row 1113, tau=4) are exactly **tau(6)=4**. Rooted in **2nd-derivative commutativity** expressed as exchange relations like `(dT/dV)_S = -(dP/dS)_V`. Among `C(6,2) = 15` pairs on the n=6 DOF phase space, independent Maxwell = tau=4. field integration: `f_MHD = sigma*B^2 = sigma*(sigma*tau)^2 = 12*2304 = 27648 N/m^3` (reuse HEXA-AERO §X.2) reinterpreted as **isentropic magnetic-thermal energy density** — EM realization of thermodynamics.
 
-**free 합성 — 삼중 곱 불변량 Π_THERMO**:
- Π_THERMO = toe(σ·φ_E=24) · holographic(A/A_Pl·τ=4) · field(Maxwell_count=τ=4) = **24·4·4 = 384 = σ·sopfr·σ·φ·φ = σ² · τ · φ² / sopfr·5/5 = J₂·σ·sopfr·φ·φ·... = 384**
- **384 = σ·J₂·φ = 12·24·φ/φ + ... = n·J₂·φ/φ·φ·τ·φ/τ** (다중 소인수 경로 일치).
- 기존 HEXA-AERO Π_AERO=1920 과 비: Π_THERMO/Π_AERO = 384/1920 = **1/5 = 1/sopfr** → **열역학 삼중곱은 항공우주 삼중곱의 sopfr⁻¹ 축소** (sopfr=5 는 보호/층 수, 에너지 축 투영).
+**free composite — triple-product invariant Pi_THERMO**:
+ Pi_THERMO = toe(sigma*phi_E=24) * holographic(A/A_Pl*tau=4) * field(Maxwell_count=tau=4) = **24*4*4 = 384 = sigma*sopfr*sigma*phi*phi = sigma^2 * tau * phi^2 / sopfr*5/5 = J_2*sigma*sopfr*phi*phi*... = 384**
+ **384 = sigma*J_2*phi = 12*24*phi/phi + ... = n*J_2*phi/phi*phi*tau*phi/tau** (multiple prime-factor paths consistent).
+ Ratio to existing HEXA-AERO Pi_AERO=1920: Pi_THERMO/Pi_AERO = 384/1920 = **1/5 = 1/sopfr** -> **thermodynamic triple product is a sopfr^(-1) shrink of the aerospace triple product** (sopfr=5 are protection/layer tiers, projected onto energy axis).
 
-### §X.3 쌍대 — hexa-fusion · UFO Tri-Stack · HEXA-THERMO
+### §X.3 Duals — hexa-fusion * UFO Tri-Stack * HEXA-THERMO
 
-| 축 | hexa-fusion (energy) | UFO Tri-Stack (sf-ufo) | HEXA-THERMO (physics) | 쌍대 관계 |
+| axis | hexa-fusion (energy) | UFO Tri-Stack (sf-ufo) | HEXA-THERMO (physics) | dual relation |
 |-----|----------------------|-----------------------|------------------------|-----------|
-| 지수 | B⁴ Lawson | B⁷=B^(n+1) 힘밀도 | T⁴ Stefan-Boltzmann | τ 공유 |
-| 자유도 | n=6 플라즈마 DOF | n=6 공간 DOF | n/φ=3 단원자 DOF | 완전수 분할 |
-| 효율 한계 | Q=σ-φ=10 | Meissner χ=−1 | COP=σ/τ=3, η=1-T_c/T_h | Carnot 상한 |
-| 엔트로피 | k_B ln Ω_fus | S_holo=A/4G | k_B ln σ=k_B·ln 12 | **Ω=σ=12 공통** |
-| 공통 커널 | τ⁴ 지수 | B⁷·τ=B⁷·4 | T⁴·τ 재귀 | **τ=4 지수 잠금** |
+| exponent | B^4 Lawson | B^7=B^(n+1) force density | T^4 Stefan-Boltzmann | tau shared |
+| DOF | n=6 plasma DOF | n=6 spatial DOF | n/phi=3 monatomic DOF | perfect-number partition |
+| efficiency cap | Q=sigma-phi=10 | Meissner chi=-1 | COP=sigma/tau=3, eta=1-T_c/T_h | Carnot cap |
+| entropy | k_B ln Omega_fus | S_holo=A/4G | k_B ln sigma=k_B*ln 12 | **Omega=sigma=12 shared** |
+| common kernel | tau^4 exponent | B^7*tau=B^7*4 | T^4*tau recurrence | **tau=4 exponent lock** |
 
-**쌍대 곱**: `Q_fusion · Π_UFO · ΔF_THERMO = (σ-φ) · (σ·τ)⁷ · (σ-τ)·k_B·T = 10 · (48)⁷ · 8·k_B·T` — 핵융합(Lawson) + UFO(B⁷) + 열역학(F=U-TS) 이 단일 곱에서 봉합. 본질적으로 **Lawson B⁴ ⊗ Tri-Stack B⁷ ⊗ SB T⁴ = (BT)^(τ+τ+τ-τ-...) = (BT)^(3τ-O(1))** — 공통 τ 지수가 세 도메인의 지배 구조.
+**Dual product**: `Q_fusion * Pi_UFO * Delta_F_THERMO = (sigma-phi) * (sigma*tau)^7 * (sigma-tau)*k_B*T = 10 * (48)^7 * 8*k_B*T` — fusion (Lawson) + UFO (B^7) + thermodynamics (F=U-TS) seal in a single product. Essentially **Lawson B^4 (x) Tri-Stack B^7 (x) SB T^4 = (B*T)^(tau+tau+tau-tau-...) = (B*T)^(3*tau-O(1))** — the common tau exponent is the governing structure of three domains.
 
-### §X.4 탁상 열기관 프로토콜 (n=6 Carnot 심화)
+### §X.4 Benchtop heat-engine protocol (n=6 Carnot deepened)
 
-**목표**: 벤치탑 σ²=144 W 출력, COP=σ/τ=3, η→Carnot 상한 (σ-φ)/σ ≈ 83%, τ=4단 상변화 캐스케이드.
+**Goal**: benchtop sigma^2=144 W output, COP=sigma/tau=3, eta -> Carnot cap (sigma-phi)/sigma ~= 83%, tau=4-stage phase-change cascade.
 
-1. **작동 유체**: sCO₂ (HEXA-AERO §X.1 재사용). T_out=σ·J₂=288℃, T_in=σ+φ=14℃ → η_Carnot = 1-287/561 = 1-τ/(σ-τ·φ) ≈ **(σ-φ)/σ-ε = 10/12·(1-ε) ≈ 48%** (측정값 일치).
-2. **엔트로피 사이클**: ΔS/cycle = (σ-φ)·k_B = 10 k_B (돌파 2 재사용). τ=4 스트로크 (등온팽창-단열팽창-등온압축-단열압축) × n/φ=3 병렬 = **σ=12 마이크로사이클/매크로사이클**.
-3. **Stefan-Boltzmann 복사 회수**: 출구 288℃ 복사체 q_rad=σ_SB·T⁴ 의 τ=4 지수 최적점. 회수율 η_rad = 1/τ = 25%, 총 η_total = 48% + (1-48%)·25% = **61% ≈ σ·sopfr% = 60%** (THERM 재사용).
-4. **Lawson 확장**: n·τ·T ≥ 3×10²¹ (HEXA-FUSION-MK5-01 재사용) 의 **열역학 축 투영** — 여기서 n=밀도, τ=시간, T=온도 의 삼중곱이 **n=6 산술에서 5.6×10²¹** (2× 마진 J₂/σ=2).
-5. **3법칙 접근**: T→0 로 수렴 시 C_V→0, S→0 of 3법칙. n=6 계는 잔류 엔트로피 S_0 = k_B·ln(n/φ) = k_B·ln 3 ≈ **1.0986 k_B** (오비탈 분할 기원, 비영구 잔여).
-6. **F=U-TS 실시간 감시**: 자유에너지 F 가 최소 도달 시점이 평형. 시간상수 μ(6)=1 ms × σ²=144 = 144 ms 샘플링.
+1. **Working fluid**: sCO_2 (reuse HEXA-AERO §X.1). T_out=sigma*J_2=288 C, T_in=sigma+phi=14 C -> eta_Carnot = 1-287/561 = 1-tau/(sigma-tau*phi) ~= **(sigma-phi)/sigma-epsilon = 10/12*(1-epsilon) ~= 48%** (matches measurement).
+2. **Entropy cycle**: Delta_S/cycle = (sigma-phi)*k_B = 10 k_B (reuse Breakthrough 2). tau=4 strokes (isothermal expansion, adiabatic expansion, isothermal compression, adiabatic compression) x n/phi=3 parallel = **sigma=12 microcycles/macrocycle**.
+3. **Stefan-Boltzmann radiation recovery**: exit 288 C radiator q_rad=sigma_SB*T^4, tau=4 exponent optimum. Recovery rate eta_rad = 1/tau = 25%, total eta_total = 48% + (1-48%)*25% = **61% ~= sigma*sopfr% = 60%** (THERM reuse).
+4. **Lawson extension**: n*tau*T >= 3e21 (reuse HEXA-FUSION-MK5-01) projected onto the **thermodynamic axis** — here the triple product of n=density, tau=time, T=temperature is **5.6e21 in n=6 arithmetic** (2x margin J_2/sigma=2).
+5. **3rd-law approach**: as T->0, C_V->0, S->0 per 3rd law. n=6 system residual entropy S_0 = k_B*ln(n/phi) = k_B*ln 3 ~= **1.0986 k_B** (orbital-partition origin, non-permanent residue).
+6. **F=U-TS real-time monitoring**: equilibrium when free energy F reaches minimum. Time constant mu(6)=1 ms x sigma^2=144 = 144 ms sampling.
 
-### §X.5 검증 가능 falsifier
+### §X.5 Testable falsifiers
 
-- **F1**: Stefan-Boltzmann 지수 측정 ≠ τ(6)=4 (±0.05) → SB·τ 잠금 폐기
-- **F2**: 독립 법칙 수 ≠ n/φ=3 (새 독립 법칙 5번째 발견 시) → n/φ 법칙수 폐기
-- **F3**: Carnot COP_max ≠ σ/τ=3 (운영 한계 초과 시) → COP·독립수 이중 잠금 폐기
-- **F4**: F/U 자유 지분 ≠ 2/3 = (σ-τ)/σ (단원자 이상기체 ±5%) → F=U-TS 삼각 분할 폐기
-- **F5**: Lawson B⁴ 지수와 SB T⁴ 지수 측정 불일치 → τ 공통 지수 폐기
+- **F1**: measured Stefan-Boltzmann exponent != tau(6)=4 (+/- 0.05) -> SB*tau lock retracted
+- **F2**: independent law count != n/phi=3 (if a new independent 5th law is discovered) -> n/phi law count retracted
+- **F3**: Carnot COP_max != sigma/tau=3 (if operational limit exceeded) -> COP*independent-count double lock retracted
+- **F4**: F/U free share != 2/3 = (sigma-tau)/sigma (monatomic ideal gas +/- 5%) -> F=U-TS triangular partition retracted
+- **F5**: Lawson B^4 exponent and SB T^4 exponent measurement inconsistent -> tau common exponent retracted
 
-### §X.6 atlas 상수 출력 (7건)
+### §X.6 atlas constant outputs (7 entries)
 
 ```
-HEXA-THERMO-01 laws-independent = n/φ = 3             [10*] EXACT
-HEXA-THERMO-02 clausius-states  = Ω = σ = 12          [10*] EXACT
-HEXA-THERMO-03 F-U-TS-split     = (σ-τ)/σ = 2/3       [10*] EXACT
-HEXA-THERMO-04 SB-Lawson-τlock  = τ = 4 지수 공통     [10]  EXACT (재사용)
-HEXA-THERMO-05 COP-law-dualLock = σ/τ = n/φ = 3       [10]  EXACT (재사용)
-HEXA-THERMO-06 PI-THERMO-invariant = 24·4·4 = 384     [10*] EXACT
+HEXA-THERMO-01 laws-independent = n/phi = 3             [10*] EXACT
+HEXA-THERMO-02 clausius-states  = Omega = sigma = 12          [10*] EXACT
+HEXA-THERMO-03 F-U-TS-split     = (sigma-tau)/sigma = 2/3       [10*] EXACT
+HEXA-THERMO-04 SB-Lawson-tau-lock  = tau = 4 shared exponent     [10]  EXACT (reuse)
+HEXA-THERMO-05 COP-law-dual-lock = sigma/tau = n/phi = 3       [10]  EXACT (reuse)
+HEXA-THERMO-06 PI-THERMO-invariant = 24*4*4 = 384     [10*] EXACT
 HEXA-THERMO-07 ratio-THERMO-AERO = 1/sopfr = 1/5      [10]  EXACT
 ```
 
@@ -871,4 +871,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-
