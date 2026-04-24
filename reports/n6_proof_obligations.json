@@ -1,10 +1,10 @@
 {
   "schema": "n6-architecture/n6_proof_obligations/1",
-  "ts": "2026-04-23T19:58:23Z",
-  "total": 52,
+  "ts": "2026-04-24T06:57:40Z",
+  "total": 53,
   "green": 52,
-  "red": 0,
-  "status": "GREEN",
+  "red": 1,
+  "status": "RED",
   "claims": [
     {
       "file": "01_arithmetic_n6.claim.json",
@@ -170,8 +170,8 @@
     {
       "file": "24_audit_summary_continuity.claim.json",
       "type": "self_consistency",
-      "status": "green",
-      "result": "1",
+      "status": "red",
+      "result": "0",
       "expected": "1"
     },
     {
@@ -365,6 +365,13 @@
     },
     {
       "file": "52_silicon_functor_manifest.claim.json",
+      "type": "schema",
+      "status": "green",
+      "result": "1",
+      "expected": "1"
+    },
+    {
+      "file": "53_measurement_boundary_manifest.claim.json",
       "type": "schema",
       "status": "green",
       "result": "1",

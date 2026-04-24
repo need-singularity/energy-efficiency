@@ -2239,6 +2239,68 @@ JEOF
   echo "OK: $out  (exists=$exists atoms=$atom_count deficient=$atom_deficient)"
 }
 
+# ────────────────────────────────────────────────────────────
+# Phase 43 — measurement_boundary manifest schema presence.
+#   R24+30 의 config/measurement_boundary.json 이 well-formed 한지 gate.
+#   P36 (invariants) · P42 (silicon) 과 analogous — schema presence only.
+#   boundary_policy.default_stance enforcement 은 future P46 에 예약.
+#   claim: scanners/53_measurement_boundary_manifest.claim.json
+# ────────────────────────────────────────────────────────────
+scan_measurement_boundary_manifest() {
+  local out="reports/n6_measurement_boundary_manifest.json"
+  local mf="config/measurement_boundary.json"
+  local exists="false" atom_count=0 atom_deficient=0 deficient_list=""
+  local required_top="schema boundary_principle measurement_atoms boundary_policy adapter_design_notes"
+  local missing_top=""
+  if [ -f "$mf" ]; then
+    exists="true"
+    for k in $required_top; do
+      if ! jq -e "has(\"$k\")" "$mf" >/dev/null 2>&1; then
+        missing_top="${missing_top}${k} "
+      fi
+    done
+    atom_count=$(jq '.measurement_atoms | length' "$mf" 2>/dev/null || echo 0)
+    local req_fields="value atlas_ref nature"
+    local atom_keys
+    atom_keys=$(jq -r '.measurement_atoms | keys[]' "$mf" 2>/dev/null)
+    for a in $atom_keys; do
+      for f in $req_fields; do
+        if ! jq -e ".measurement_atoms[\"$a\"] | has(\"$f\")" "$mf" >/dev/null 2>&1; then
+          deficient_list="${deficient_list}${a}.${f} "
+          atom_deficient=$((atom_deficient+1))
+        fi
+      done
+    done
+  fi
+  local missing_top_json deficient_json
+  missing_top_json=$(echo "$missing_top" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  missing_top_json="${missing_top_json:-[]}"
+  deficient_json=$(echo "$deficient_list" | tr ' ' '\n' | grep -v '^$' | jq -R -s -c 'split("\n") | map(select(length>0))')
+  deficient_json="${deficient_json:-[]}"
+  local healthy="false"
+  if [ "$exists" = "true" ] && [ -z "$missing_top" ] && [ "$atom_count" -ge 1 ] && [ "$atom_deficient" -eq 0 ]; then
+    healthy="true"
+  fi
+  cat >"$out" <<JEOF
+{
+  "schema": "n6-architecture/n6_measurement_boundary_manifest/1",
+  "ts": "$(ts)",
+  "engine_version": "${ENGINE_VERSION}",
+  "manifest_path": "$mf",
+  "exists": $exists,
+  "atom_count": $atom_count,
+  "atom_field_deficient_count": $atom_deficient,
+  "atom_field_deficient": $deficient_json,
+  "missing_top_keys": $missing_top_json,
+  "healthy": $healthy,
+  "note": "Phase 43 — schema presence check for config/measurement_boundary.json (axis D manifest, R24+30). Parallels P36/P42. Policy enforcement reserved for future P46.",
+  "status": "$([ "$healthy" = "true" ] && echo GREEN || echo AMBER)"
+}
+JEOF
+  jq '.' "$out" >"$out.tmp" && mv "$out.tmp" "$out"
+  echo "OK: $out  (exists=$exists atoms=$atom_count deficient=$atom_deficient)"
+}
+
 append_audit_trail() {
   local out="reports/n6_meta_audit.jsonl"
   local score
@@ -3078,6 +3140,8 @@ continuous_scan() {
   scan_invariants_composition >/dev/null 2>&1 || true
   # Phase 42 — silicon_functor manifest schema presence.
   scan_silicon_functor_manifest >/dev/null 2>&1 || true
+  # Phase 43 — measurement_boundary manifest schema presence.
+  scan_measurement_boundary_manifest >/dev/null 2>&1 || true
   # Phase 26 — emission completeness (MUST run last: every declared
   # emitter must have produced its file by now for the check to be valid).
   scan_emission_completeness >/dev/null 2>&1 || true
@@ -3101,7 +3165,7 @@ selftest() {
   local results="["
   local first=1
   local total=0 pass=0 fail=0
-  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_invariants_atom_values scan_invariants_atom_faithful scan_invariants_relations_live scan_invariants_generator_orbits scan_invariants_composition scan_silicon_functor_manifest scan_emission_completeness scan_trend run_proof_obligations; do
+  for cmd in scan_blockers scan_roi scan_arithmetic scan_derivation scan_atlas scan_domains scan_papers scan_monte_carlo scan_causal scan_citations scan_nexus_dep scan_loop_rules scan_experiments scan_falsification gap_proposer propose_from_gaps promote_cross_repo scan_invariants scan_manifest scan_schemas scan_engine_integrity scan_engine_hash scan_emitter_registry scan_gate_alignment scan_claim_schema scan_audit_retention scan_audit_summary scan_claim_effectiveness scan_dir_inventory scan_coverage_map scan_claim_cmd_purity scan_claim_meta_hygiene scan_manifest_phase_monotonic scan_registry_cso_parity scan_selftest_fn_parity scan_version_phase_alignment scan_recheck_cadence_enum scan_must_fail_expected_pair scan_claim_type_enum scan_invariants_manifest scan_invariants_atom_values scan_invariants_atom_faithful scan_invariants_relations_live scan_invariants_generator_orbits scan_invariants_composition scan_silicon_functor_manifest scan_measurement_boundary_manifest scan_emission_completeness scan_trend run_proof_obligations; do
     total=$((total+1))
     local st=$(date +%s)
     "$cmd" >/dev/null 2>&1 || true
@@ -3177,6 +3241,7 @@ case "${1:-}" in
   generator-orbits|orbits)  scan_invariants_generator_orbits ;;
   composition|morphism)  scan_invariants_composition ;;
   silicon-manifest|silicon)  scan_silicon_functor_manifest ;;
+  measurement-manifest|boundary)  scan_measurement_boundary_manifest ;;
   gate-alignment|gates)  scan_gate_alignment ;;
   claim-schema|claims)  scan_claim_schema ;;
   trend|regression)  scan_trend ;;
@@ -3197,7 +3262,7 @@ usage: bash tool/_n6_lib <sub>
       | audit | audit-summary | audit-retention | claim-effectiveness
       | coverage-map | dir-inventory | emission-completeness | claim-purity | claim-meta
       | phase-monotonic | registry-parity | selftest-parity | version-alignment | cadence-enum | mf-expected | type-enum
-      | inv-manifest | inv-values | atom-faithful | relations-live | generator-orbits | composition | silicon-manifest
+      | inv-manifest | inv-values | atom-faithful | relations-live | generator-orbits | composition | silicon-manifest | measurement-manifest
       | gate-alignment | claim-schema | trend | proof
       | continuous-scan | fast | doctor | health | telemetry | selftest
 USAGE

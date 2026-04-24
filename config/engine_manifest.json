@@ -2,10 +2,10 @@
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
     "name": "n6-architecture/meta-engine",
-    "version": "0.42.0",
+    "version": "0.43.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
-    "source_hash": "7a36b7ba933d7934a02392898b237d300c6aed5177098d6cbd940c0d048ebe79"
+    "source_hash": "6d7e1cc47b03a5eed2fa1a76242d9f4346f87d734f066d38718a4feebbd203bd"
   },
   "phases": [
     {
@@ -217,6 +217,11 @@
       "id": "P42",
       "title": "silicon_functor manifest schema presence (axis C enforcement)",
       "state": "live"
+    },
+    {
+      "id": "P43",
+      "title": "measurement_boundary manifest schema presence (axis D enforcement)",
+      "state": "live"
     }
   ],
   "scanner_registry": {
@@ -275,6 +280,7 @@
       "generator-orbits",
       "composition",
       "silicon-manifest",
+      "measurement-manifest",
       "proof",
       "doctor",
       "health",
@@ -333,6 +339,7 @@
     "generator-orbits",
     "composition",
     "silicon-manifest",
+    "measurement-manifest",
     "emission-completeness"
   ],
   "pre_commit_hard_gates": [

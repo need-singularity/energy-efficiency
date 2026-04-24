@@ -1,0 +1,14 @@
+{
+  "schema": "n6-architecture/n6_measurement_boundary_manifest/1",
+  "ts": "2026-04-24T06:57:30Z",
+  "engine_version": "0.43.0",
+  "manifest_path": "config/measurement_boundary.json",
+  "exists": true,
+  "atom_count": 2,
+  "atom_field_deficient_count": 0,
+  "atom_field_deficient": [],
+  "missing_top_keys": [],
+  "healthy": true,
+  "note": "Phase 43 — schema presence check for config/measurement_boundary.json (axis D manifest, R24+30). Parallels P36/P42. Policy enforcement reserved for future P46.",
+  "status": "GREEN"
+}

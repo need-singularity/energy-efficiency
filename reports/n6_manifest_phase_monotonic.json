@@ -1,9 +1,9 @@
 {
   "schema": "n6-architecture/n6_manifest_phase_monotonic/1",
-  "ts": "2026-04-23T16:31:09Z",
-  "engine_version": "0.29.0",
-  "total_phases": 29,
-  "last_id": "P29",
+  "ts": "2026-04-24T06:57:25Z",
+  "engine_version": "0.43.0",
+  "total_phases": 43,
+  "last_id": "P43",
   "gap_count": 0,
   "gaps": [],
   "out_of_order_count": 0,

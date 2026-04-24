@@ -1,0 +1,11 @@
+{
+  "id": "measurement_boundary.manifest_well_formed",
+  "type": "schema",
+  "description": "Phase 43 scan_measurement_boundary_manifest: config/measurement_boundary.json (R24+30 axis D manifest) must exist with required top-level keys {schema, boundary_principle, measurement_atoms, boundary_policy, adapter_design_notes}, at least 1 measurement atom, and every atom carrying {value, atlas_ref, nature} fields. Parallels P36 (invariants) and P42 (silicon). Gate: healthy == true.",
+  "actual_cmd": "bash -c '[ -f reports/n6_measurement_boundary_manifest.json ] && jq -r \"if .healthy == true then 1 else 0 end\" reports/n6_measurement_boundary_manifest.json 2>/dev/null || echo 0'",
+  "expected": "1",
+  "must_fail": false,
+  "recheck_cadence": "every_commit",
+  "owner": "meta-engine",
+  "proposal_ref": "phase-43-measurement-boundary-manifest"
+}
