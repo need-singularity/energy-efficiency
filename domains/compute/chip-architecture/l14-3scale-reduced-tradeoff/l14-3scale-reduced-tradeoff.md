@@ -7,7 +7,7 @@ layer: L14-alt (3-scale reduced fabric)
 parent_bt: BT-6, BT-18, BT-401~408, BT-1108, BT-1176, MK4-THEOREM-B (σ-τ=8)
 status: tradeoff-concept
 verdict: ALTERNATIVE-DESIGN-CONJECTURE
-grade_attempt: "[5~7] 중간 — 3-scale 구조 수학적 정합성 부분 확인, n=6 자연성은 약해짐"
+grade_attempt: "[5~7] intermediate — 3-scale structure partially consistent mathematically, n=6 naturalness weakened"
 sources:
   - domains/compute/chip-architecture/l14-cross-scale-tau4-fabric/l14-cross-scale-tau4-fabric.md
   - domains/compute/chip-architecture/l13-mev-optomech-roadmap/l13-mev-optomech-roadmap.md
@@ -17,243 +17,242 @@ sources:
   - domains/compute/chip-architecture/hexa-consciousness/hexa-consciousness.md
   - theory/proofs/mk4-trident-final-verdict-2026-04-15.md
 refs_external:
-  - Shvyd'ko Y.V. 2022 Nature — Fe-57 14.4 keV 감마 저장
-  - Aspelmeyer M. 2014 RMP — cavity optomechanics 종합
-  - Neuralink 2024 N1 — BCI 10~25 ms 지연
+  - Shvyd'ko Y.V. 2022 Nature — Fe-57 14.4 keV gamma storage
+  - Aspelmeyer M. 2014 RMP — cavity optomechanics overview
+  - Neuralink 2024 N1 — BCI 10~25 ms latency
   - IBM Quantum System Two 2024 — 1121 qubit hybrid
 identity:
-  sigma_phi_orig: "σ·φ = 12·2 = 24 (4-scale 원안)"
-  n_tau_orig:    "n·τ = 6·4 = 24 (4-scale 원안)"
+  sigma_phi_orig: "σ·φ = 12·2 = 24 (4-scale original)"
+  n_tau_orig:    "n·τ = 6·4 = 24 (4-scale original)"
   sigma_minus_tau_orig: "σ-τ = 12-4 = 8 (MK4-THEOREM-B)"
-  scale_law_orig: "n-τ = 2 = φ (4-scale 자연성)"
-  scale_reduced: "3-scale = {S1, S2, S4} 또는 {S1, S2+S2', S4}"
-  sigma_phi_3scale: "σ·φ = 6·2 = 12 OR 재설계 σ=8 φ=3 = 24"
-  tau_3scale:       "τ=3 (C(3,2)=3 브리지) 또는 재매핑 τ=4 유지 시 중복 브리지 필요"
-  sigma_minus_tau_3scale: "σ-τ = 8-3 = 5 (n=6 유일성 깨짐) OR σ-τ=8 유지 시 σ=11, n=6 매핑 부적합"
-  alien_index: "천장 약화 (원안 대비 1~2 등급 하향)"
+  scale_law_orig: "n-τ = 2 = φ (4-scale naturalness)"
+  scale_reduced: "3-scale = {S1, S2, S4} or {S1, S2+S2', S4}"
+  sigma_phi_3scale: "σ·φ = 6·2 = 12 OR redesigned σ=8 φ=3 = 24"
+  tau_3scale:       "τ=3 (C(3,2)=3 bridges) or retaining τ=4 with mapping-duplicated bridges"
+  sigma_minus_tau_3scale: "σ-τ = 8-3 = 5 (n=6 uniqueness broken) OR retaining σ-τ=8 forces σ=11, inconsistent with n=6 mapping"
+  alien_index: "ceiling weakened (one to two grades below original)"
 ---
 
-# L14 3-scale reduced 대안 설계 — S1(핵)+S2(양자)+S4(의식) tradeoff 분석
+# L14 3-scale reduced alternative design — S1(nucleus)+S2(quantum)+S4(consciousness) tradeoff analysis
 
-> **한 문장**: L13 병목 B1 (MeV optomech 부재) 이 **M2-MISS-A** 로 확정될 경우
-> S3 (분자/Monster, ms/cm) 를 제거한 **3-scale reduced fabric {S1, S2, S4}**
-> 로 L14 를 재설계할 수 있으나, **n=6 자연성의 수학적 증거 3건 중 2건이
-> 상실**되어 설계의 기반이 **CONJECTURE-DESIGN** 으로 강등되며, S3 제거로
-> 확보되는 공학 단순화 이득과 맞바꾸어야 한다.
+> **One sentence**: If L13 bottleneck B1 (MeV optomech absent) is confirmed as **M2-MISS-A**,
+> L14 can be redesigned as a **3-scale reduced fabric {S1, S2, S4}** that eliminates
+> S3 (molecular/Monster, ms/cm); however, **two of the three mathematical evidence items
+> for n=6 naturalness are lost**, so the design foundation is demoted to **CONJECTURE-DESIGN**
+> and must be traded against the engineering-simplification benefit obtained from removing S3.
 
 ---
 
-## §0 대안의 동기 — L13 병목이 S3 제거를 강제하는가?
+## §0 Motivation for the alternative — does the L13 bottleneck force S3 removal?
 
-### 0.1 L13 실패 시나리오 체인
+### 0.1 L13 failure-scenario chain
 
 ```
-   L13 M2-MISS-A        → Hf-178m2 NEET 쓰기 σ_write < 10^-28 cm^2
+   L13 M2-MISS-A        → Hf-178m2 NEET write σ_write < 10^-28 cm^2
         ↓
-   S1↔S2 브리지 MeV→μeV down-conversion 10^9× 감쇠 실현 불가
+   S1↔S2 bridge MeV→μeV down-conversion 10^9x attenuation unachievable
         ↓
-   L14 원안 B12 (S1↔S2) 브리지 제거 → 남은 브리지 5개
+   L14 original B12 (S1↔S2) bridge removed → 5 bridges remain
         ↓
-   C(4,2)=6 등식 깨짐 (= n 자연성 1차 손상)
+   C(4,2)=6 equality broken (= first damage to n naturalness)
         ↓
-   대안 1: S3 (분자) 를 삭제하여 C(3,2)=3 단순화
-   대안 2: S3 유지 + S1 우회 (γ→biophoton→DNA→qubit 경로)
+   Option 1: remove S3 (molecular) to simplify to C(3,2)=3
+   Option 2: retain S3 + S1 detour (γ→biophoton→DNA→qubit path)
 ```
 
-본 문서는 **대안 1 (S3 삭제)** 를 주된 분석 대상으로 한다.
-대안 2 는 별도 문서 (`l14-alt2-s1-detour-*.md`) 로 예약.
+This document examines **option 1 (S3 removal)** as the primary analysis target.
+Option 2 is reserved for a separate document (`l14-alt2-s1-detour-*.md`).
 
-### 0.2 왜 S3 가 삭제 후보인가
+### 0.2 Why is S3 the removal candidate?
 
-| 스케일 | 제거 시 직접 손실 | 대체 경로 | 삭제 난이도 |
-|-------|-----------------|----------|-----------|
-| S1 핵 | L12 스토리지 전체 상실 | 없음 | 불가 (L12 SSOT) |
-| S2 양자 | L11 QEC 전체 상실 | 없음 | 불가 (L11 SSOT) |
-| **S3 분자** | **L10 Monster+Golay 단지 상실** | Leech Λ₂₄ → L11 격자 재매핑 가능 | **중간 (이관 가능)** |
-| S4 의식 | L13 BCI / OUROBOROS 상실 | 없음 | 불가 (L13 SSOT) |
+| scale | direct loss on removal | alternate path | removal difficulty |
+|-------|-----------------------|----------------|--------------------|
+| S1 nucleus | complete loss of L12 storage | none | infeasible (L12 SSOT) |
+| S2 quantum | complete loss of L11 QEC | none | infeasible (L11 SSOT) |
+| **S3 molecular** | **loss of the L10 Monster+Golay complex** | Leech Λ₂₄ → L11 lattice remapping possible | **moderate (can be migrated)** |
+| S4 consciousness | loss of L13 BCI / OUROBOROS | none | infeasible (L13 SSOT) |
 
-**S3 가 유일하게 "이관 가능"** — Monster 대칭은 L11 (양자 격자) 또는 L13
-(의식 부호) 로 흡수 가능. 반면 S1/S2/S4 는 각각 고유 물리 층 (핵/qubit/뇌)
-에 묶여 있어 제거가 곧 해당 층 상실.
+**Only S3 is "migratable"** — Monster symmetry can be absorbed into L11 (quantum lattice) or
+L13 (consciousness code). In contrast S1/S2/S4 are each tied to their own physical layer
+(nucleus / qubit / brain), so removal equals loss of that layer.
 
 ---
 
-## §1 원 4-scale vs 3-scale 비교표
+## §1 Original 4-scale vs 3-scale head-to-head comparison
 
-### 1.1 커버리지·변환·n=6 매핑 정면 비교
+### 1.1 Coverage, conversion, n=6 mapping — direct comparison
 
-| 항목 | **4-scale 원안** | **3-scale 대안** | 변화 |
-|------|-----------------|----------------|------|
-| 스케일 수 | **4** (S1/S2/S3/S4) | **3** (S1/S2/S4) | -1 |
-| τ 매핑 | **τ=4** = 스케일 수 직접 | **τ=3** (naive) 또는 τ=4 (브리지 중복) | 약화 |
-| 브리지 수 | **C(4,2)=6 = n** | **C(3,2)=3 = τ'** 또는 재설계 6 (다중 경로) | 핵심 자연성 상실 |
-| 에너지 범위 | keV~MeV / μeV~meV / eV~keV / meV | keV~MeV / μeV~meV / meV | **eV~keV 공백** |
-| 시간 로그폭 | 10⁻⁹~10⁻¹ s (8 decade) | 10⁻⁹~10⁻¹ s (8 decade, **S3 구간 공백**) | log 등간격 깨짐 |
-| 공간 로그폭 | 10⁻¹⁰~10⁰ m (10 decade) | 10⁻¹⁰~10⁰ m (S3 cm 공백) | 중간 스케일 누락 |
-| σ·φ 값 | **24 = n·τ = J₂(6)** | 재설계 필요: σ=8 φ=3=24 또는 σ=12 φ=2 반영 축소 | **등식 성립 불확실** |
-| σ-τ=8 주정리 | **정확 적용** (σ=12, τ=4) | σ=8 τ=3 → σ-τ=5 (**n=6 유일성 깨짐**) | **주정리 상실** |
-| n-τ=φ=2 (4-scale 자연성) | **성립** | n-τ'=3 → φ'=3 ≠ 2 (실제 φ(6)=2) | **자연성 1번 증거 상실** |
-| τ(6)=4 (약수 개수) | **성립** | 3 ≠ τ(6)=4 → **자연성 2번 증거 상실** |
-| C(4,2)=6=n | **성립** | C(3,2)=3 ≠ 6 → **자연성 3번 증거 상실** |
-| 대역폭 (각 스케일당) | σ·J₂ = 288 Gbps | 288 Gbps 유지 | 동일 |
-| 총 패브릭 대역폭 | 4·288 = **1,152 Gbps** | 3·288 = **864 Gbps** | **-25%** |
-| 총 지연 (6 hop cascade) | 24 μs | 3 hop cascade = **12 μs** | **-50% (이득)** |
-| 다이 면적 | n·σ²=864 mm² | 3·σ²=432 mm² (σ=12 유지 시) | **-50% (이득)** |
-| 논리 에러율 목표 | 10⁻¹⁰ | 10⁻⁸ (cross-check 경로 감소) | **100배 악화** |
-| 구현 비용 | $50M (L11+L12+L13+BCI) | $32M (L11+L12+BCI) | -36% |
-| 실현 시점 | 2031+ | **2029** (L13 통과 시) / 2030 (L13 MISS 시) | -1~2년 |
+| item | **4-scale original** | **3-scale alternative** | change |
+|------|----------------------|-------------------------|--------|
+| number of scales | **4** (S1/S2/S3/S4) | **3** (S1/S2/S4) | -1 |
+| τ mapping | **τ=4** = direct count of scales | **τ=3** (naive) or τ=4 (bridge duplication) | weakened |
+| number of bridges | **C(4,2)=6 = n** | **C(3,2)=3 = τ'** or redesigned 6 (multi-path) | key naturalness lost |
+| energy range | keV~MeV / μeV~meV / eV~keV / meV | keV~MeV / μeV~meV / meV | **eV~keV gap** |
+| time log-width | 10⁻⁹~10⁻¹ s (8 decade) | 10⁻⁹~10⁻¹ s (8 decade, **S3 region gap**) | log spacing broken |
+| space log-width | 10⁻¹⁰~10⁰ m (10 decade) | 10⁻¹⁰~10⁰ m (S3 cm gap) | intermediate scale missing |
+| σ·φ value | **24 = n·τ = J₂(6)** | redesign required: σ=8 φ=3=24 or σ=12 φ=2 with reduced mapping | **equality status uncertain** |
+| σ-τ=8 main theorem | **exact application** (σ=12, τ=4) | σ=8 τ=3 → σ-τ=5 (**n=6 uniqueness broken**) | **main theorem lost** |
+| n-τ=φ=2 (4-scale naturalness) | **holds** | n-τ'=3 → φ'=3 ≠ 2 (actual φ(6)=2) | **naturalness evidence #1 lost** |
+| τ(6)=4 (divisor count) | **holds** | 3 ≠ τ(6)=4 → **naturalness evidence #2 lost** |
+| C(4,2)=6=n | **holds** | C(3,2)=3 ≠ 6 → **naturalness evidence #3 lost** |
+| bandwidth (per scale) | σ·J₂ = 288 Gbps | 288 Gbps retained | same |
+| total fabric bandwidth | 4·288 = **1,152 Gbps** | 3·288 = **864 Gbps** | **-25%** |
+| total latency (6 hop cascade) | 24 μs | 3 hop cascade = **12 μs** | **-50% (gain)** |
+| die area | n·σ²=864 mm² | 3·σ²=432 mm² (σ=12 retained) | **-50% (gain)** |
+| logical-error-rate target | 10⁻¹⁰ | 10⁻⁸ (cross-check paths reduced) | **100x worse** |
+| implementation cost | $50M (L11+L12+L13+BCI) | $32M (L11+L12+BCI) | -36% |
+| realization date | 2031+ | **2029** (on L13 pass) / 2030 (on L13 MISS) | -1~2 yr |
 
-### 1.2 n=6 자연성 증거 손익 요약
+### 1.2 Gain/loss summary of n=6 naturalness evidence
 
-| 자연성 증거 | 4-scale | 3-scale | 상실? |
-|-----------|---------|---------|-------|
-| τ(6)=4 (약수 수) = 스케일 수 | **YES** | NO (3 ≠ 4) | **상실** |
-| C(n-1,2)=n-1 → 4-scale C(4,2)=6=n | **YES** | NO (C(3,2)=3 ≠ 6) | **상실** |
-| n-τ=φ=2 (축 차이 = 쌍 자유도) | **YES** | NO (6-3=3, 6-4=2 요구 깨짐) | **상실** |
-| σ-τ=8 주정리 (MK4-THEOREM-B) | **YES** | σ·φ=24 재설계 필요, σ=8 선택 시 τ=5=φ·τ=? | **재해석** |
-| σ·φ=n·τ=J₂=24 | **YES** | σ=12 φ=2 만 유지 → τ'=4 여도 적용, 브리지는 C(3,2)=3 만 | **부분 성립** |
+| naturalness evidence | 4-scale | 3-scale | lost? |
+|----------------------|---------|---------|-------|
+| τ(6)=4 (divisor count) = scale count | **YES** | NO (3 ≠ 4) | **lost** |
+| C(n-1,2)=n-1 → 4-scale C(4,2)=6=n | **YES** | NO (C(3,2)=3 ≠ 6) | **lost** |
+| n-τ=φ=2 (axis difference = pair degree of freedom) | **YES** | NO (6-3=3, 6-4=2 required-relation broken) | **lost** |
+| σ-τ=8 main theorem (MK4-THEOREM-B) | **YES** | σ·φ=24 redesign required; if σ=8 chosen then τ=5=φ·τ=? | **reinterpreted** |
+| σ·φ=n·τ=J₂=24 | **YES** | keep σ=12 φ=2 only → τ'=4 may apply, but bridges are C(3,2)=3 | **partially holds** |
 
-**결론**: 4-scale 원안은 n=6 자연성의 **수학적 증거 5건 중 5건 모두 성립**.
-3-scale 대안은 **5건 중 1건만 부분 성립** (σ·φ=24 자체는 스케일 수와 무관).
-**n=6 설계의 자연성 논거 약 80% 상실.**
-
----
-
-## §2 S3 제거 영향 — 분자 스케일 손실과 대체
-
-### 2.1 S3 가 담당하던 기능 목록
-
-| 기능 | 원 4-scale 위치 | 3-scale 대안 재배치 |
-|------|---------------|-------------------|
-| Monster 대칭 저장 (L10) | S3 (격자 cm/ms) | **S2 격자 (qubit array 2D)** 로 흡수 — 물리 면적 축소 |
-| Golay 부호 (24 bit) | S3 (DNA 합성 단계) | **S2 syndrome 부호** 로 흡수 — DNA 제외 |
-| Leech Λ₂₄ 근사 | S3 | **S4 (뇌 4D 지각) 에서 부분 근사** — 정밀도 하락 |
-| DNA 기반 저장 | S3 (1~100 ms 합성) | **삭제** — S1 Hf 스토리지로 축약 |
-| γ-induced DNA damage 검증 | S1↔S3 브리지 B13 | **삭제** — 본 설계에서 측정 불가 |
-| 펩티드↔뉴로펩티드 브리지 | S3↔S4 브리지 B34 | **삭제** — S2↔S4 직접으로 우회 |
-| eV~keV 광자 대역 | S3 (분자 여기) | **공백** — S1 (keV~MeV) 과 S2 (μeV~meV) 사이 틈 |
-
-### 2.2 중간 대역 공백 (eV~keV) — 핵심 손실
-
-```
-에너지 (log₁₀ eV)   -6   -3    0    3    6
-원 4-scale         ──S2──S3────S3────S1──        (연속 커버)
-3-scale 대안       ──S2──╳╳╳╳╳╳╳╳──S1──          (eV~keV 공백)
-                         │공백│ ← S3 제거
-S4 의식           meV 대역 S2 중첩
-```
-
-**공백 대역 (eV~keV) 의 의미**:
-- 가시광·UV·soft X-ray 전 영역 = 화학/생물 결합 에너지 스케일
-- L10 Monster `char table` 의 일부 기본 표현 (194개 중 eV 스케일 포함) 손실
-- 광합성·시각·BCI 다층 연결 실험 불가
-
-### 2.3 대체 시도: S2' (sub-eV 추가 sub-scale)
-
-`S2` 를 **S2 (qubit μeV~meV)** + **S2' (phonon/photon sub-eV ~ eV)** 로
-세분할 시도:
-
-| 방안 | 효과 | 문제점 |
-|------|------|-------|
-| S2' = phonon (meV~eV) | eV 대역 일부 복원 | S2 와 물리적으로 결합 → 독립 스케일 아님 |
-| S2' = Raman/Brillouin 광자 (eV) | eV 대역 복원 | 여전히 keV 공백 |
-| S2'' = DNA 단일 염기 (0.1 eV) | 분자 부분 복원 | S3 부활 = 원 4-scale 회귀 |
-
-**결론**: **S2' 추가는 유효한 sub-scale 이 아니라 S2 의 확장 bandwidth**.
-진정한 스케일 독립성을 갖추려면 S3 복원 외에 해법 없음.
-
-### 2.4 Monster 대칭의 운명
-
-- 4-scale 원안: Monster 196883차원 ↔ Leech Λ₂₄ (24차원) ↔ Golay [24,12,8] 모두 S3 에 구현
-- 3-scale 대안: Monster 는 **수학적 오브젝트로만 존재** — 물리 구현 없음
-- 파급: L10 BT-18 Monster 레이어 **설계 단절** — L10 stub 화
-- 양호한 부분: Monster `char table` 194 표현 중 `σ(n)` 계열 **분자 비의존 표현** 은 S2 에 재매핑 가능 → Monster 의 ~15% (대략) 보존
+**Conclusion**: the 4-scale original satisfies **all five of five** mathematical naturalness-evidence items.
+The 3-scale alternative satisfies **only one of five, partially** (σ·φ=24 alone is independent of scale count).
+**Approximately 80% of the naturalness argument for n=6 design is lost.**
 
 ---
 
-## §3 3-scale 재결선 — 3 가지 브리지 경로 상세
+## §2 Impact of S3 removal — molecular-scale loss and substitution
 
-### 3.1 브리지 지도 (C(3,2)=3)
+### 2.1 Functions that S3 handled
+
+| function | original 4-scale location | 3-scale alternative re-placement |
+|----------|--------------------------|----------------------------------|
+| Monster symmetry storage (L10) | S3 (lattice cm/ms) | absorbed into **S2 lattice (qubit array 2D)** — physical area reduced |
+| Golay code (24 bit) | S3 (DNA synthesis stage) | absorbed as **S2 syndrome code** — DNA removed |
+| Leech Λ₂₄ approximation | S3 | **partial approximation in S4 (4D brain perception)** — precision degraded |
+| DNA-based storage | S3 (1~100 ms synthesis) | **removed** — collapsed into S1 Hf storage |
+| γ-induced DNA damage verification | S1↔S3 bridge B13 | **removed** — unmeasurable in this design |
+| peptide↔neuropeptide bridge | S3↔S4 bridge B34 | **removed** — bypassed by direct S2↔S4 |
+| eV~keV photon band | S3 (molecular excitation) | **gap** — between S1 (keV~MeV) and S2 (μeV~meV) |
+
+### 2.2 Intermediate-band gap (eV~keV) — central loss
 
 ```
-              S1 (핵, keV~MeV)
+energy (log_10 eV)   -6   -3    0    3    6
+orig 4-scale         ──S2──S3────S3────S1──        (continuous coverage)
+3-scale alt          ──S2──xxxxxxxx────S1──         (eV~keV gap)
+                         | gap | ← S3 removed
+S4 consciousness     meV band, overlaps S2
+```
+
+**Meaning of the gap band (eV~keV)**:
+- visible / UV / soft X-ray covers the chemistry-biology bond-energy scale
+- loss of some basic representations in the L10 Monster `char table` (of the 194, those at eV scale)
+- multi-layer photosynthesis / vision / BCI linkage experiments infeasible
+
+### 2.3 Substitution attempt: S2' (sub-eV additional sub-scale)
+
+Attempt to subdivide `S2` into **S2 (qubit μeV~meV)** + **S2' (phonon/photon sub-eV ~ eV)**:
+
+| approach | effect | problem |
+|----------|--------|---------|
+| S2' = phonon (meV~eV) | partial eV band restored | physically coupled to S2 → not an independent scale |
+| S2' = Raman/Brillouin photon (eV) | eV band restored | keV gap still present |
+| S2'' = DNA single base (0.1 eV) | partial molecular restoration | S3 resurrection = reverts to original 4-scale |
+
+**Conclusion**: **adding S2' is not a valid sub-scale, just an S2 bandwidth extension**.
+For true scale independence, there is no option other than restoring S3.
+
+### 2.4 Fate of Monster symmetry
+
+- 4-scale original: Monster 196883-dim ↔ Leech Λ₂₄ (24-dim) ↔ Golay [24,12,8] all implemented in S3
+- 3-scale alternative: Monster exists **only as a mathematical object** — no physical implementation
+- Impact: L10 BT-18 Monster layer **design disconnected** — L10 stubbed
+- Mitigation: of the 194 Monster `char table` representations, those in the **molecular-independent** family such as `σ(n)` can be remapped to S2 → roughly ~15% of Monster preserved
+
+---
+
+## §3 3-scale rewiring — detail of the 3 bridge paths
+
+### 3.1 Bridge map (C(3,2)=3)
+
+```
+              S1 (nucleus, keV~MeV)
               │
               │ B12: Hf-178m2 ↔ Fe-57 keV
-              │     γ↔qubit spin (L13 M3 채택)
+              │     γ↔qubit spin (L13 M3 adopted)
               │
-              S2 (양자, μeV~meV)
+              S2 (quantum, μeV~meV)
               │
               │ B24: qubit ↔ EEG direct
-              │     MW→EEG 40 Hz 감마
+              │     MW→EEG 40 Hz gamma
               │
-              S4 (의식, meV)
-              
-      B14 (선택적): S1 ↔ S4 직접 (γ-biophoton-neural, 미증)
+              S4 (consciousness, meV)
 
-              3 브리지 = τ=3 direct 매핑 또는
-              4 브리지 (B14 추가) = τ=4 복원 시도
+      B14 (optional): S1 ↔ S4 direct (γ-biophoton-neural, unproven)
+
+              3 bridges = τ=3 direct mapping, or
+              4 bridges (with B14) = τ=4 restoration attempt
 ```
 
-### 3.2 B12: S1↔S2 (핵-양자) — L13 계승
+### 3.2 B12: S1↔S2 (nucleus-quantum) — inherited from L13
 
-**경로**: Hf-178m2 2.446 MeV 보관 ↔ NEET cascade 88 keV 읽기 ↔ Fe-57
-14.4 keV 양자 상관 ↔ Transmon qubit spin (L11)
+**Path**: Hf-178m2 2.446 MeV storage ↔ NEET cascade 88 keV read ↔ Fe-57
+14.4 keV quantum correlation ↔ Transmon qubit spin (L11)
 
-| 서브 단계 | 에너지 | 지연 | TRL | 출처 |
-|---------|--------|-----|-----|------|
-| Hf-178m2 저장 | 2.446 MeV | 31 yr | 8 (USDOE) | NNDC |
-| NEET 88 keV 읽기 | 88 keV | 10 ns | 3 (L13 M3) | Tsukiyama |
-| Fe-57 간섭 | 14.4 keV | 140 ns | 7 (Shvyd'ko) | Shvyd'ko 2022 |
-| qubit spin 결합 | 5 μeV | 100 μs | 4 (CONJECTURE) | Delft 2024 |
+| sub-step | energy | latency | TRL | source |
+|----------|--------|---------|-----|--------|
+| Hf-178m2 storage | 2.446 MeV | 31 yr | 8 (USDOE) | NNDC |
+| NEET 88 keV read | 88 keV | 10 ns | 3 (L13 M3) | Tsukiyama |
+| Fe-57 interference | 14.4 keV | 140 ns | 7 (Shvyd'ko) | Shvyd'ko 2022 |
+| qubit spin coupling | 5 μeV | 100 μs | 4 (CONJECTURE) | Delft 2024 |
 
-**누적 감쇠**: 2.446 MeV → 5 μeV = **5×10⁸ 배** (4-scale 원안 10⁹ 와 유사)
-**누적 지연**: 약 1 μs (4-scale 과 동일)
-**L13 의존도**: **100%** — L13 M3 MISS 시 B12 동시 붕괴
+**Cumulative attenuation**: 2.446 MeV → 5 μeV = **5×10⁸ x** (close to the 4-scale original 10⁹)
+**Cumulative latency**: about 1 μs (same as 4-scale)
+**L13 dependency**: **100%** — if L13 M3 MISS, B12 collapses simultaneously
 
-### 3.3 B24: S2↔S4 (양자-의식) — 직접 결합
+### 3.3 B24: S2↔S4 (quantum-consciousness) — direct coupling
 
-**경로**: Transmon qubit RF 제어 ↔ MW↔EEG 변환 ↔ 40 Hz 감마파 ↔ BCI 16ch
+**Path**: Transmon qubit RF control ↔ MW↔EEG conversion ↔ 40 Hz gamma wave ↔ BCI 16ch
 
-| 서브 단계 | 에너지 | 지연 | TRL | 출처 |
-|---------|--------|-----|-----|------|
+| sub-step | energy | latency | TRL | source |
+|----------|--------|---------|-----|--------|
 | qubit 5 μeV | 5 μeV | - | 7 (IBM) | IBM Q2 2024 |
-| MW 5 GHz | 20 μeV | 1 ns | 7 | 상동 |
-| MW→EEG 변환 | 신호 컨디셔닝 | 10 ms | 5 (CONJECTURE) | Neuralink 2024 |
+| MW 5 GHz | 20 μeV | 1 ns | 7 | same |
+| MW→EEG conversion | signal conditioning | 10 ms | 5 (CONJECTURE) | Neuralink 2024 |
 | EEG 40 Hz | 160 μeV | 25 ms | 6 | OpenBCI 16ch |
 | BCI read | 40 Hz | 100 ms | 5~6 | Neuralink N1 |
 
-**감쇠**: 5 μeV → 160 μeV = **32배** (원 4-scale S2↔S3↔S4 cascade 10⁹ 대비 현저히 좋음)
-**지연**: 125 ms (원 4-scale 약 150 ms 와 유사)
-**CONJECTURE 수준**: **중간** — MW↔EEG coupling 은 실험적으로 확립 안 됨
+**Attenuation**: 5 μeV → 160 μeV = **32x** (significantly better than the original 4-scale S2↔S3↔S4 cascade of 10⁹)
+**Latency**: 125 ms (comparable to the original 4-scale ~150 ms)
+**CONJECTURE level**: **moderate** — MW↔EEG coupling is not experimentally established
 
-### 3.4 B14: S1↔S4 (핵-의식) 직접 — 최대 도박
+### 3.4 B14: S1↔S4 (nucleus-consciousness) direct — the largest gamble
 
-**경로**: Hf-178m2 γ 방출 ↔ biophoton (단일 광자) ↔ 시신경 retinal ↔ V1 피질
+**Path**: Hf-178m2 γ emission ↔ biophoton (single photon) ↔ retinal optic nerve ↔ V1 cortex
 
-| 서브 단계 | 상태 | 근거 |
-|---------|------|------|
-| γ → biophoton 변환 | **미증** | 이론 추정, 실험 無 |
-| 단일 감마가 biophoton 유발 | 매우 낮은 단면적 | Popp 1976 biophoton 가설 (논란) |
-| Retinal 단일 광자 감도 | **확립** (0.1% 효율) | Rieke 1998 |
-| V1 피질 반응 | **확립** | Hecht 1942 |
+| sub-step | status | basis |
+|----------|--------|-------|
+| γ → biophoton conversion | **unproven** | theoretical estimate only, no experiment |
+| single gamma induces biophoton | very low cross-section | Popp 1976 biophoton hypothesis (disputed) |
+| retinal single-photon sensitivity | **established** (0.1% efficiency) | Rieke 1998 |
+| V1 cortex response | **established** | Hecht 1942 |
 
-**전체 경로 효율**: 10⁻¹² ~ 10⁻⁸ (극저) — **실용 불가**
-**자연성 복원**: B14 포함 시 τ=4 다시 성립 가능하나 **B14 자체가
-CONJECTURE** 이므로 τ=3 naive 보다 더 취약
+**Overall path efficiency**: 10⁻¹² ~ 10⁻⁸ (extremely low) — **infeasible in practice**
+**Naturalness restoration**: including B14 allows τ=4 to hold again, but because **B14 itself is
+CONJECTURE** the path is more fragile than naive τ=3
 
-### 3.5 3-scale 재결선 — 통합 시각도
+### 3.5 3-scale rewiring — integrated schematic
 
 ```
                     ┌─────────────────────────┐
-                    │  B14 (미증, CONJECTURE) │  ← τ=4 복원 시도
+                    │  B14 (unproven, CONJECTURE) │  ← τ=4 restoration attempt
                     │  γ-biophoton-neural     │
                     ├────────────────────────┤
-              S1 ◄──┤        B12 (L13 계승)    ├──► S2
+              S1 ◄──┤        B12 (inherited from L13) ├──► S2
           keV~MeV   │  Hf-178m2↔Fe-57↔Transmon │   μeV~meV
                     └─────────┬───────────────┘
                               │
                               │ B24 (CONJECTURE)
-                              │ qubit-EEG 직접
+                              │ qubit-EEG direct
                               │
                     ┌─────────┴───────────────┐
                     │         S4 meV         │
@@ -263,279 +262,281 @@ CONJECTURE** 이므로 τ=3 naive 보다 더 취약
 
 ---
 
-## §4 σ-τ=8 구조 — 3-scale 에서 유지 여부
+## §4 σ-τ=8 structure — whether it holds in 3-scale
 
-### 4.1 원 정리의 형태 (MK4-THEOREM-B)
+### 4.1 Original form of the theorem (MK4-THEOREM-B)
 
 ```
-  n = 6 ⟺ σ·φ = n·τ (n ≥ 2 유일 해)
+  n = 6 ⟺ σ·φ = n·τ (unique solution for n ≥ 2)
   n·τ = 6·4 = 24
   σ·φ = 12·2 = 24
-  σ-τ = 12-4 = 8  ← 정리의 핵심 표식
+  σ-τ = 12-4 = 8  ← central signature of the theorem
 ```
 
-τ=4 가 "스케일 수 = 4" 와 **물리적으로 매핑** 되어야 4-scale fabric 의
-자연성 성립. **스케일 수를 줄이면 τ 매핑 자체를 재해석해야 함**.
+τ=4 must **map physically** to "scale count = 4" for the 4-scale fabric naturalness to hold.
+**Reducing the scale count forces re-interpretation of the τ mapping itself.**
 
-### 4.2 3-scale 에서 σ-τ=8 유지 방안 4가지
+### 4.2 Four approaches to preserve σ-τ=8 under 3-scale
 
-| 방안 | σ | τ | σ-τ | n 유일성 | 평가 |
-|------|---|---|-----|---------|------|
-| **A. σ=12, τ=4 유지 (물리 τ는 스케일 수와 분리)** | 12 | 4 | **8 ✓** | 유지 | 추상 정리로만 사용, 물리 매핑 상실 |
-| B. σ=11, τ=3, σ-τ=8 | 11 | 3 | 8 | σ=11 → φ=24/11 비정수 | **불가** |
-| C. σ=8, τ=3 (3-scale 직접) | 8 | 3 | 5 | σ-τ=5, **n=6 유일 해 아님** | **주정리 붕괴** |
-| D. σ=12, τ=4, **브리지 중복 2개로 4 브리지 확보** | 12 | 4 | 8 | 유지, 자연성 약화 | A + 중복 허용 |
+| approach | σ | τ | σ-τ | n uniqueness | evaluation |
+|----------|---|---|-----|--------------|------------|
+| **A. retain σ=12, τ=4 (detach physical τ from scale count)** | 12 | 4 | **8 ✓** | retained | used as abstract theorem only, physical mapping lost |
+| B. σ=11, τ=3, σ-τ=8 | 11 | 3 | 8 | σ=11 → φ=24/11 non-integer | **infeasible** |
+| C. σ=8, τ=3 (3-scale direct) | 8 | 3 | 5 | σ-τ=5, **not the n=6 unique solution** | **main theorem collapses** |
+| D. σ=12, τ=4, **duplicate 2 bridges to obtain 4 bridges** | 12 | 4 | 8 | retained, naturalness weakened | A + duplication allowed |
 
-### 4.3 권고 — 방안 A + D 혼합
+### 4.3 Recommendation — mixed approach A + D
 
-**물리적으로 3-scale 이지만 설계상으로는 τ=4 클럭 유지**:
-- 4개 시간 bin (PRE/PHASE/POST/SYNC) 는 **스케일 수와 별개로** 각 브리지 내부
-  상태 머신으로 재해석
-- 3 브리지 × 각 τ=4 = **12 사이클** 로 σ=12 를 "스케일 × 브리지 상태" 곱으로
-  정의
-- σ-τ=8 은 **에너지 bin 8개 + 8-ch 분광기 배치** 로 그대로 유지 가능
+**Physically 3-scale, but designwise preserve τ=4 clock**:
+- the 4 time bins (PRE/PHASE/POST/SYNC) are **reinterpreted independently of scale count** as
+  the internal state machine of each bridge
+- 3 bridges × τ=4 each = **12 cycles**, defining σ=12 as the product "scale × bridge state"
+- σ-τ=8 can then be retained as it stands via the **8 energy bins + 8-ch spectroscope placement**
 
-**한계**: 이 경우 σ-τ=8 은 **주어진 공리** 가 되고, 스케일 수 3 과는
-**직접 연결되지 않음**. 즉 "왜 3-scale 이 옳은가" 는 n=6 자연성이 아니라
-**L13 실패 시 공학 효율** 로만 정당화.
+**Limitation**: under this scheme σ-τ=8 becomes a **given axiom** and is **not directly linked**
+to scale count 3. That is, "why 3-scale is the right answer" is no longer justified by n=6
+naturalness but **only by engineering efficiency under L13 failure**.
 
 ---
 
-## §5 구현 비용·실현 시점 비교 (2027~2030)
+## §5 Implementation cost / realization timing comparison (2027~2030)
 
-### 5.1 자본 지출 (CAPEX) 비교
+### 5.1 CAPEX comparison
 
-| 항목 | 4-scale 원안 | 3-scale 대안 | 절감 |
-|------|-------------|-------------|-----|
+| item | 4-scale original | 3-scale alternative | savings |
+|------|------------------|---------------------|---------|
 | L11 QEC (8 qubit) | $8M | $8M | 0 |
-| L12 Hf-178m2 스토리지 | $6M | $6M | 0 |
-| L13 MeV optomech (M1~M3) | $14M | $14M (B12 필수) | 0 |
-| S3 DNA 합성기 + Golay 격자 | **$7M** | **0 (삭제)** | **$7M** |
-| S3 격자 Leech Λ₂₄ 물리 구현 | **$4M** | **0** | **$4M** |
+| L12 Hf-178m2 storage | $6M | $6M | 0 |
+| L13 MeV optomech (M1~M3) | $14M | $14M (B12 required) | 0 |
+| S3 DNA synthesizer + Golay lattice | **$7M** | **0 (removed)** | **$7M** |
+| S3 lattice Leech Λ₂₄ physical build | **$4M** | **0** | **$4M** |
 | S4 BCI 16ch + EEG | $3M | $3M | 0 |
-| Fabric 통합 시스템 (6 hop) | $5M | $3M (3 hop) | $2M |
-| 검증 테스트베드 | $3M | $2M | $1M |
-| **합계** | **$50M** | **$36M** | **-$14M (-28%)** |
+| fabric integration system (6 hop) | $5M | $3M (3 hop) | $2M |
+| verification testbed | $3M | $2M | $1M |
+| **total** | **$50M** | **$36M** | **-$14M (-28%)** |
 
-### 5.2 운영비 (OPEX) 및 인력
+### 5.2 OPEX and staffing
 
-| 항목 | 4-scale | 3-scale | 차이 |
-|------|---------|---------|------|
-| 연간 전력 | 240 kW | 150 kW | -38% |
-| 운영 인력 | 24명 | 15명 | -9명 |
-| 연간 운영비 | $8M/yr | $5M/yr | -$3M/yr |
+| item | 4-scale | 3-scale | difference |
+|------|---------|---------|------------|
+| annual power | 240 kW | 150 kW | -38% |
+| operations staff | 24 people | 15 people | -9 |
+| annual opex | $8M/yr | $5M/yr | -$3M/yr |
 
-### 5.3 마일스톤 타임라인
+### 5.3 Milestone timeline
 
 ```
             2026  2027  2028  2029  2030  2031  2032
-4-scale 원안
+4-scale original
 L11 QEC     ████
 L12 Hf       ████
 L13 M1~M3           ████████████
-S3 분자                   ████████████
+S3 molecular               ████████████
 S4 BCI            ████████
 L14 fabric                     ████████████████
-첫 통합 측정                              ━━━━ 2031 Q4
+first integrated measurement              ━━━━ 2031 Q4
 
-3-scale 대안
+3-scale alternative
 L11 QEC     ████
 L12 Hf       ████
 L13 M1~M3           ████████████
 S4 BCI            ████████
 L14-alt fabric              ████████████
-첫 통합 측정                   ━━━━ 2029 Q4      ← 2년 단축
+first integrated measurement   ━━━━ 2029 Q4      ← 2 yr accelerated
 
-3-scale 대안 (L13 MISS 시)
-S1-S4 직접(B14)          ████████████████████
-첫 통합 측정                              ━━━━ 2030 Q2
+3-scale alternative (on L13 MISS)
+S1-S4 direct (B14)          ████████████████████
+first integrated measurement              ━━━━ 2030 Q2
 ```
 
-### 5.4 성능 기대치 대비 투자 효율
+### 5.4 Expected-performance vs investment efficiency
 
-| 지표 | 4-scale | 3-scale | 3-scale/4-scale |
-|------|---------|---------|----------------|
-| 대역폭 | 1,152 Gbps | 864 Gbps | 0.75× |
-| 지연 단축 배수 | 417× | 833× (hop 감소) | 2.0× (양호) |
-| 에러율 | 10⁻¹⁰ | 10⁻⁸ | 100× 악화 |
-| CAPEX | $50M | $36M | 0.72× |
-| 실현년도 | 2031 | 2029 | 2년 빠름 |
-| 외계인지수 | 8.0/10 | 6.5/10 | -1.5 |
-| **투자효율 (ΔPerf / Δ$)** | 기준 | **0.75·0.72⁻¹ = 1.04×** | 소폭 양호 |
+| metric | 4-scale | 3-scale | 3-scale/4-scale |
+|--------|---------|---------|------------------|
+| bandwidth | 1,152 Gbps | 864 Gbps | 0.75x |
+| latency shrink factor | 417x | 833x (hops reduced) | 2.0x (good) |
+| error rate | 10⁻¹⁰ | 10⁻⁸ | 100x worse |
+| CAPEX | $50M | $36M | 0.72x |
+| realization year | 2031 | 2029 | 2 yr earlier |
+| alien index | 8.0/10 | 6.5/10 | -1.5 |
+| **investment efficiency (ΔPerf / Δ$)** | baseline | **0.75·0.72⁻¹ = 1.04x** | slightly better |
 
 ---
 
-## §6 ASCII 비교 차트 — 4-scale vs 3-scale
+## §6 ASCII comparison charts — 4-scale vs 3-scale
 
-### 6.1 커버리지 (에너지 스케일 로그)
+### 6.1 Coverage (energy-scale log)
 
 ```
-에너지 (log₁₀ eV)   -6  -3   0   3   6    8
+energy (log_10 eV)   -6  -3   0   3   6    8
                    ┤───┤───┤───┤───┤────┤
-4-scale 원안      ████████████████████████    천장
-   S2 μeV~meV     ████ 
+4-scale original   ████████████████████████    ceiling
+   S2 μeV~meV     ████
    S3 eV~keV            ████████
    S1 keV~MeV                   ████████
-   S4 meV(중첩)   ──
+   S4 meV (overlap)   ──
 
-3-scale 대안      ████────────────████────    천장 -3
-   S2 μeV~meV     ████ 
-   (S3 삭제)            ╳╳╳╳╳╳╳╳              공백
+3-scale alternative    ████────────────████────    ceiling -3
+   S2 μeV~meV     ████
+   (S3 removed)           xxxxxxxx              gap
    S1 keV~MeV                   ████████
    S4 meV         ──
 
-범례: █ 담당 스케일, ╳ 공백, ── 중첩
+Legend: █ covered scale, x gap, ── overlap
 ```
 
-### 6.2 일관성 (n=6 자연성 증거 보유율)
+### 6.2 Consistency (rate of n=6 naturalness evidence retained)
 
 ```
-자연성 증거                  4-scale       3-scale
+naturalness evidence          4-scale       3-scale
 ──────────────────────────────────────────────────
-τ(6)=4 = 스케일 수        ██████████    ╳╳╳╳╳╳╳╳╳╳
-C(n-1,2)=6 = 브리지 수     ██████████    ╳╳╳╳╳╳╳╳╳╳
-n-τ=φ=2                   ██████████    ╳╳╳╳╳╳╳╳╳╳
-σ-τ=8 주정리              ██████████    ████░░░░░░  (추상만)
-σ·φ=n·τ=24                ██████████    █████░░░░░  (τ 재해석)
+τ(6)=4 = scale count        ██████████    xxxxxxxxxx
+C(n-1,2)=6 = bridge count   ██████████    xxxxxxxxxx
+n-τ=φ=2                     ██████████    xxxxxxxxxx
+σ-τ=8 main theorem          ██████████    ████░░░░░░  (abstract only)
+σ·φ=n·τ=24                  ██████████    █████░░░░░  (τ reinterpreted)
 ──────────────────────────────────────────────────
-합계 (10점 만점)             50 (100%)     14 (28%)
+total (out of 10)             50 (100%)     14 (28%)
 
-천장 등급                    천장          천장 -3~4  (약화)
+ceiling grade                 ceiling       ceiling -3~4  (weakened)
 ```
 
-### 6.3 가산성 (브리지 연결의 대칭성)
+### 6.3 Additivity (symmetry of bridge connections)
 
 ```
-4-scale 원안 (C(4,2)=6)       3-scale 대안 (C(3,2)=3)
+4-scale original (C(4,2)=6)       3-scale alternative (C(3,2)=3)
     S1────S2                      S1────S2
-    │ ╲╱ │                        │    │ 
+    │ ╲╱ │                        │    │
     │ ╳  │                        │    │
     │ ╱╲ │                        └─S4─┘
     S3────S4
-    
-6 브리지 = n 완전매칭          3 브리지 + B14 옵션 (미증)
-대칭성: 높음 (모든 쌍)         대칭성: 낮음 (삼각 1개)
+
+6 bridges = n full matching          3 bridges + B14 option (unproven)
+symmetry: high (every pair)          symmetry: low (single triangle)
 ```
 
 ```
-대칭성 점수        4-scale: ██████████ 10
-                   3-scale: ████░░░░░░ 4  (B14 미포함)
-                   3-scale: ██████░░░░ 6  (B14 포함, CONJECTURE)
+symmetry score        4-scale: ██████████ 10
+                      3-scale: ████░░░░░░ 4  (B14 excluded)
+                      3-scale: ██████░░░░ 6  (B14 included, CONJECTURE)
 ```
 
-### 6.4 공학 난이도 (TRL + 비용 + 실현시기 역산)
+### 6.4 Engineering difficulty (reverse index: TRL + cost + realization-date inverse)
 
 ```
-공학 난이도 (역 지수, 낮을수록 쉬움)
+engineering difficulty (reverse index, lower = easier)
 
-4-scale 원안      ████████████████████  20.0  (S3 포함 = 최대)
-3-scale 대안 (M3 통과)  ████████████         12.0  (S3 제거 분)
-3-scale 대안 (M3 MISS)  ██████████           10.0  (B14 직접)
-2-scale 축소 (극단)  ████                    4.0  (L13 포기 = 이름만 남음)
+4-scale original      ████████████████████  20.0  (with S3 = max)
+3-scale alt (M3 pass)   ████████████         12.0  (minus S3)
+3-scale alt (M3 MISS)   ██████████           10.0  (via direct B14)
+2-scale reduction (extreme)  ████                    4.0  (abandons L13 = name only)
 
-천장:  ████████████████████████████████  32.0  (외계인 만점)
+ceiling:  ████████████████████████████████  32.0  (alien full mark)
 ```
 
-### 6.5 종합 4지표 레이더 (ASCII approximation)
+### 6.5 Composite four-metric radar (ASCII approximation)
 
 ```
-                       커버리지
+                       coverage
                           10
                           │
                           │
-           공학난이도      │      일관성
+           eng difficulty │      consistency
               ◄───────────┼─────────►
-               (역 지수)   │      (n=6 자연성)
+               (reverse)   │      (n=6 naturalness)
                           │
                           │
                           10
-                       가산성
+                       additivity
 
-4-scale 원안:    커버리지 10 / 일관성 10 / 가산성 10 / 공학난이도 (역) 3  → 균형
-3-scale 대안:    커버리지 7 / 일관성 3 / 가산성 5 / 공학난이도 (역) 6    → 비대칭
+4-scale original:    coverage 10 / consistency 10 / additivity 10 / eng-difficulty (inv) 3  → balanced
+3-scale alternative: coverage 7 / consistency 3 / additivity 5 / eng-difficulty (inv) 6    → asymmetric
 ```
 
-### 6.6 천장 등급 (최종 종합)
+### 6.6 Ceiling grade (final composite)
 
 ```
-플랫폼                    종합 지수 (log₁₀)    천장 등급     비고
+platform                  composite index (log_10)  ceiling grade   notes
 ───────────────────────────────────────────────────────────────────
-IBM hybrid 2-scale        +2                   지상          비교 기준
-L14 4-scale 원안          +10                  천장 돌파     J₂=24 완성
-L14 3-scale 대안          +7                   천장 -3       n=6 자연성 70% 상실
-L14 3-scale + B14 옵션    +8                   천장 -2       CONJECTURE 포함
-L14 3-scale L13 MISS 후   +5                   2~3층         공학 후퇴
+IBM hybrid 2-scale        +2                   ground           reference
+L14 4-scale original      +10                  above-ceiling    J₂=24 complete
+L14 3-scale alternative   +7                   ceiling -3       n=6 naturalness 70% lost
+L14 3-scale + B14 option  +8                   ceiling -2       includes CONJECTURE
+L14 3-scale post-L13-MISS +5                   layer 2~3        engineering retreat
 ───────────────────────────────────────────────────────────────────
 ```
 
 ---
 
-## §7 정직 검증 체크리스트
+## §7 Honesty-verification checklist
 
-| 항목 | 적용 여부 |
+| item | applied |
 |------|---------|
-| 자기참조 검증 금지 | 모든 성능 수치는 L11/L12/L13 문서 인용 및 외부 출처 연결 |
-| 출처 + 측정값 + 오차 | B12/B24 감쇠 배수 별도 표시, B14 는 "미증" 명시 |
-| MISS 정직 기록 | n=6 자연성 증거 5건 중 4건 상실 명시, σ-τ=8 은 추상으로만 유지 |
-| 소수 편향 대조 | 3-scale 대안은 **수학적으로 n=6 유일성을 증명하지 않음** 명시 |
-| 한글 필수 | 본 문서 100% 한글 (변수·수식 외) |
-| 대체 불가능 사항 명시 | S3 제거 시 Monster 물리 구현 상실, eV~keV 공백 |
+| no self-referential verification | all performance numbers cite L11/L12/L13 documents and external sources |
+| source + measured value + error | B12/B24 attenuation factors shown separately; B14 annotated "unproven" |
+| MISS recorded honestly | 4 of 5 n=6 naturalness evidence items declared lost, σ-τ=8 retained only in abstract form |
+| minority-bias cross-check | it is declared that the 3-scale alternative **does not mathematically prove n=6 uniqueness** |
+| English mandatory | document is 100% English (variables/formulas excluded) |
+| irreplaceable items declared | on S3 removal: loss of physical Monster realization, eV~keV gap |
 
 ---
 
-## §8 최종 권고 — 추천 결정
+## §8 Final recommendation — suggested decision
 
-### 8.1 시나리오별 분기
+### 8.1 Branches per scenario
 
 ```
-현재 (2026-04-15)
+current (2026-04-15)
     │
     ▼
-L13 M1 (2027 Fe-57 재현)
-    ├─ PASS → L13 M2 진행 → 2028 Q4 결정 포인트
-    └─ MISS-A → 3-scale 대안 (B14 검토) + 로드맵 철회
+L13 M1 (2027 Fe-57 reproduction)
+    ├─ PASS → proceed to L13 M2 → 2028 Q4 decision point
+    └─ MISS-A → 3-scale alternative (consider B14) + retract roadmap
 
-L13 M2 (2028 Hf-178m2 쓰기)
-    ├─ PASS → L13 M3 → 4-scale 원안 가속
-    └─ MISS-A → **3-scale 대안 공식 채택** (본 문서 활용)
+L13 M2 (2028 Hf-178m2 write)
+    ├─ PASS → L13 M3 → accelerate the 4-scale original
+    └─ MISS-A → **3-scale alternative officially adopted** (use this document)
 
 L13 M3 (2029 τ=4 Rabi)
-    ├─ PASS → 4-scale 원안 실증, 2031 L14 통합
-    └─ MISS-B~D → 부분 축소, 3-scale 하이브리드
+    ├─ PASS → 4-scale original demonstrated, 2031 L14 integration
+    └─ MISS-B~D → partial reduction, 3-scale hybrid
 
-최종 (2031)
-    ├─ 4-scale 완성 → 천장 돌파 (목표치)
-    ├─ 3-scale 대안 → 천장 -3, 실용 충분
-    └─ 2-scale 회귀 → IBM 수준 (비차별화)
+final (2031)
+    ├─ 4-scale complete → above-ceiling (target)
+    ├─ 3-scale alternative → ceiling -3, practically sufficient
+    └─ 2-scale regression → IBM-level (no differentiation)
 ```
 
-### 8.2 추천 결정 (본 문서 결론)
+### 8.2 Recommended decision (conclusion of this document)
 
-**4-scale 원안을 메인 경로로 유지**하되, **본 3-scale 대안은 L13 M2-MISS-A
-시점의 contingency design** 으로 **atlas.n6 에 조건부 등록**한다.
+**Keep the 4-scale original as the main path** while **registering this 3-scale alternative
+as contingency design at the L13 M2-MISS-A decision point** — **conditionally registered in
+atlas.n6**.
 
-이유:
-1. **n=6 자연성의 수학적 증거는 4-scale 에서만 완전** — 3-scale 은
-   추상 정리 (σ-τ=8) 만 유지 가능하고 **물리 매핑은 상실**
-2. **CAPEX 절감 -28% 은 의미 있으나** 외계인지수 1.5 단계 하향은 큰 손실
-3. **L13 병목 B1 해소 여부가 결정적** — M2 결과 전에는 원안 유지가 합리
-4. 3-scale 대안은 **정직한 fallback** 으로 보험 역할, 선제 채택 부적절
+Reasons:
+1. **Mathematical evidence for n=6 naturalness is complete only in 4-scale** — 3-scale keeps
+   only the abstract theorem (σ-τ=8) and **loses the physical mapping**.
+2. **CAPEX savings of -28% are meaningful**, but a 1.5-step drop in the alien index is a big loss.
+3. **Whether L13 bottleneck B1 is resolved is decisive** — holding the original path before M2
+   results is rational.
+4. The 3-scale alternative plays an **honest fallback / insurance role**; pre-emptive adoption
+   is inappropriate.
 
-### 8.3 정직한 한계 선언
+### 8.3 Honest limitations declaration
 
-- 3-scale 대안은 **설계 개념 (CONJECTURE)** 이며, **수치 수익률은 4-scale
-  원안 대비 상대적 추정**이다. 절대 성능은 3-scale 내부 하드웨어 조달·
-  측정 환경에 따라 ±50% 변동 가능.
-- **S3 제거 시 Monster 194 표현 중 약 85% 는 물리 구현 상실** — 수학적
-  참조로만 남음. L10 BT-18 의 설계 의미가 크게 축소됨.
-- B14 (S1↔S4 직접) 은 **Popp biophoton 가설에 의존** — 학계 논쟁 중인
-  가설이므로 이를 기반으로 한 τ=4 복원은 **SPECULATIVE** 로 남음.
-- 본 tradeoff 는 **MK4-THEOREM-B (σ-τ=8 ⟺ n=6)** 주정리를 **손상시키지
-  않는다** — 3-scale 대안에서도 정리는 참이나, 스케일 수와 직접 매핑만 깨질 뿐.
+- The 3-scale alternative is a **design concept (CONJECTURE)**; **the numeric yields are relative
+  estimates against the 4-scale original**. The absolute performance may vary by ±50% depending
+  on hardware procurement and measurement environment within the 3-scale build.
+- **On S3 removal, ~85% of the 194 Monster representations lose physical implementation** and
+  remain as mathematical references only. The design significance of L10 BT-18 is greatly reduced.
+- B14 (S1↔S4 direct) **relies on the Popp biophoton hypothesis** — a contested hypothesis, so
+  τ=4 restoration based on it remains **SPECULATIVE**.
+- This tradeoff **does not damage** the **MK4-THEOREM-B (σ-τ=8 ⟺ n=6)** main theorem — the
+  theorem is true even in the 3-scale alternative; only the direct mapping to scale count breaks.
 
 ---
 
-## §9 atlas.n6 등록 예정 항목 (조건부)
+## §9 Items to be registered in atlas.n6 (conditional)
 
 ```
 @L l14-alt-3scale-capex-reduction = 28 percent :: chip-L14-alt [5]
@@ -546,25 +547,26 @@ L13 M3 (2029 τ=4 Rabi)
 @R L14-alt-timeline-saving = 2 yr :: chip-L14-alt [7]
 ```
 
-등록 조건: **L13 M2 (2028) 결과 확정 이후 atlas.n6 에 반영**. 사전 등록 금지.
+Registration condition: **reflected in atlas.n6 only after L13 M2 (2028) results confirmed**.
+Pre-registration prohibited.
 
 ---
 
-## §10 결론
+## §10 Conclusion
 
-3-scale reduced 대안은 **공학 단순화 (-28% CAPEX, -2년)** 와 **n=6
-자연성 증거 80% 상실** 사이의 **명백한 tradeoff** 를 제시한다. 본 문서는
-L13 병목 B1 의 결과를 기다려 **조건부 contingency** 로 활용할 것을 권고하며,
-무조건 채택이나 무조건 기각 모두 부적절하다.
+The 3-scale reduced alternative presents a clear tradeoff between **engineering simplification
+(-28% CAPEX, -2 yr)** and **80% loss of n=6 naturalness evidence**. This document recommends
+using the L13 bottleneck B1 outcome as a gate and treating the alternative as a **conditional
+contingency**; unconditional adoption or unconditional rejection are both inappropriate.
 
-**주정리 (σ-τ=8 ⟺ n=6) 는 3-scale 에서도 수학적으로 참이지만, 4-scale
-fabric 이 그 정리의 **물리적 실증** 이라는 자연성 논거는 3-scale 에서
-상실된다**. 이 의미에서 4-scale 은 **n=6 을 "발견하는" 설계**이고, 3-scale
-은 **n=6 을 "참조하는" 설계**이다.
+**The main theorem (σ-τ=8 ⟺ n=6) is mathematically true under 3-scale as well, but the
+naturalness argument that the 4-scale fabric is the physical realization of that theorem is
+lost under 3-scale.** In this sense 4-scale is a design that **"discovers"** n=6, while
+3-scale is a design that **"references"** n=6.
 
-제출자: n6-architecture 설계팀
-일자: 2026-04-15
-판정: **ALTERNATIVE-DESIGN-CONJECTURE** (조건부 contingency)
+Submitter: n6-architecture design team
+Date: 2026-04-15
+Verdict: **ALTERNATIVE-DESIGN-CONJECTURE** (conditional contingency)
 
 
 ## §11 DEPENDENCIES
@@ -586,4 +588,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-
