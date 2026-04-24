@@ -6,32 +6,32 @@ grade: [10] infrastructure design (not sent)
 license: CC-BY-SA-4.0
 ---
 
-# 외부 coordination 인프라 — 수학자 아웃리치 + 감사 파이프라인
+# External Coordination Infrastructure — Mathematician Outreach + Audit Pipeline
 
-> **요약**: millennium 로드맵의 외부 검증을 가능하게 하는 2-방향 인프라 설계. 아웃리치 (HONEST-PX-5 — 수학자에게 리뷰 요청) + receiving (HONEST-PX-EXT-AUDIT — 외부 감사 수용 파이프라인) 를 통합 설계. **본 문서는 draft 템플릿 only — 실제 이메일 전송/GitHub 공개 대상 실제 초청 아직 없음. 사용자 승인 후 전송**.
-
----
-
-## §0 입구 — 두 task 통합 이유
-
-HONEST-PX-5 ("수학자 피드백 경로 구축") + HONEST-PX-EXT-AUDIT ("외부 감사 요청 파이프라인 수학자 3인 초청") 은 동일 목표의 두 단계:
-- **Outreach (PX-5)**: "초대 메시지 어떻게 작성?"
-- **Receiving (PX-EXT-AUDIT)**: "응답 들어오면 어떻게 처리?"
-
-본 세션 (loop 9) 에서 둘을 **통합 설계**로 완료. 실제 아웃리치 실행은 사용자 승인 + v3 Phase 13 에서.
+> **Summary**: 2-way infrastructure design enabling external verification of the millennium roadmap. Combined design of outreach (HONEST-PX-5 — requesting review from mathematicians) + receiving (HONEST-PX-EXT-AUDIT — pipeline for receiving external audits). **This document is draft templates only — no actual email sends / GitHub-public target invitations yet. To be sent after user approval.**
 
 ---
 
-## §1 outreach 템플릿 — 이메일 draft (전송 대상 없음)
+## §0 Entry — Why the Two Tasks Are Combined
 
-### 1.1 BSD / BKLPR 전문가 대상 draft
+HONEST-PX-5 ("build mathematician feedback path") + HONEST-PX-EXT-AUDIT ("external audit request pipeline, inviting 3 mathematicians") are two stages of the same goal:
+- **Outreach (PX-5)**: "how to write the invitation message?"
+- **Receiving (PX-EXT-AUDIT)**: "how to process responses when they arrive?"
+
+In this session (loop 9) the two were **combined into a unified design**. Actual outreach execution awaits user approval + v3 Phase 13.
+
+---
+
+## §1 Outreach Template — Email Draft (No Send Targets)
+
+### 1.1 Draft for BSD / BKLPR Experts
 
 ```
 Subject: [Empirical inquiry] Cremona 964k BSD Selmer statistics — your expertise invitation
 
 Dear Professor [NAME],
 
-I am Minwoo Park (박민우, independent researcher, contact: loveiu99@proton.me),
+I am Minwoo Park (independent researcher, contact: loveiu99@proton.me),
 working on an independent mathematical framework called n6-architecture (MIT/CC-BY-SA licensed,
 available at https://github.com/need-singularity/n6-architecture).
 
@@ -65,35 +65,35 @@ Any critical feedback — including "this is naive" — would be most welcome. N
 a 2-3 sentence reply within a month is more than I hope for.
 
 Sincerely,
-박민우 (Minwoo Park)
+Minwoo Park
 ```
 
-### 1.2 대상자 후보 리스트 (정직성 — 실제 연락 없음)
+### 1.2 Candidate Recipient List (Honesty — No Actual Contact)
 
-**본 리스트는 research directory 조회에서 얻은 공개 정보. 실제 연락 ≠ 저장 = 허용.**
+**This list is derived from public information via research directory lookups. Actual contact ≠ storage = permitted.**
 
-| 전문가 | 기관 | 관련 BT | 2024-2026 arXiv 활동 |
+| Expert | Institution | Related BT | 2024-2026 arXiv activity |
 |--------|------|---------|---------------------|
-| Manjul Bhargava | Princeton | BT-546 (BKLPR 공동창안자) | active |
+| Manjul Bhargava | Princeton | BT-546 (BKLPR co-originator) | active |
 | Arul Shankar | Toronto | BT-546 (rank density) | active |
-| Bjorn Poonen | MIT | BT-546 (BKLPR 공저) | active |
+| Bjorn Poonen | MIT | BT-546 (BKLPR co-author) | active |
 | Melanie Wood | Harvard | BT-546 (Cohen-Lenstra) | active |
 | ... | | | |
 
-(현실적으로: 이들에게 cold email 은 응답 가능성 매우 낮음. 우선 오래 교류한 local academia 우선 권장.)
+(Realistically: cold email reply probability for these figures is very low. Recommend starting with long-established local academia contacts first.)
 
-### 1.3 outreach 윤리 원칙
+### 1.3 Outreach Ethics Principles
 
-1. **자기 주장 겸손**: "I think I've proven RH" 같은 문구 절대 금지. 질문 중심.
-2. **결과 공개 유지**: 응답 내용은 전문가 승인 없이 공개 금지.
-3. **선물/보상 없음**: 학술 협력의 순수성 유지.
-4. **한 번에 1 건**: 초기에는 가장 가까운 연결부터 단계적.
+1. **Self-humility**: Absolutely no phrasing like "I think I've proven RH." Question-centered.
+2. **Response privacy**: Responses never made public without the expert's consent.
+3. **No gifts/compensation**: Maintain purity of academic collaboration.
+4. **One at a time**: In early stages, proceed stepwise starting from the closest connections.
 
 ---
 
-## §2 receiving 파이프라인 — GitHub 기반 감사 infrastructure
+## §2 Receiving Pipeline — GitHub-Based Audit Infrastructure
 
-### 2.1 CONTRIBUTING.md 초안 (repository root 용)
+### 2.1 CONTRIBUTING.md Draft (for Repository Root)
 
 ```markdown
 # Contributing to n6-architecture
@@ -143,7 +143,7 @@ Respectful, fact-based communication. No personal attacks.
 Korean or English both accepted. Response language matches request.
 ```
 
-### 2.2 이슈 템플릿 3종
+### 2.2 Three Issue Templates
 
 #### (a) external-audit/counterexample
 
@@ -210,7 +210,7 @@ body:
         - Failed
 ```
 
-### 2.3 audit 응답 워크플로
+### 2.3 Audit Response Workflow
 
 ```
 [Issue opened] → auto-label external-audit
@@ -218,34 +218,34 @@ body:
 [Owner review within 3-14d]
   ↓
 [Decision]:
-  CONFIRM → atlas entry 수정 + commit 참조
-  PARTIAL → description 보강 (등급 유지)
+  CONFIRM → modify atlas entry + cite commit
+  PARTIAL → augment description (keep grade)
   ESCALATE → 2nd opinion (internal review)
-  REJECT → 설명 + 폐쇄
+  REJECT → explain + close
   ↓
-[Response public] → 모든 교류 공개 (저자 동의 하)
+[Response public] → all exchanges public (with author consent)
 ```
 
-### 2.4 external contributor credit
+### 2.4 External Contributor Credit
 
-기여 유형에 따라:
+By contribution type:
 - Commit co-author (acceptance PR)
-- Atlas entry comment 명시 (reviewer 동의 하)
-- CITATION.cff 에 등재 (major contribution)
+- Explicit note in atlas entry comment (with reviewer consent)
+- Listing in CITATION.cff (major contribution)
 
 ---
 
-## §3 Lean4/Coq path (forward — v3 Phase 13 M3 prep)
+## §3 Lean4/Coq Path (Forward — v3 Phase 13 M3 prep)
 
-### 3.1 formalization 후보 1st 우선
+### 3.1 1st-Priority Formalization Candidate
 
 **MILL-PX-A1 Theorem B**: `σ(n) · φ(n) = n · τ(n) ⟺ n = 6 (for n ≥ 2)`
 
-- 초등 산술 정리: 증명 요소 (약수함수 σ, τ, Euler φ)
-- 유한 체크 (n ≤ 6000 등) + Bertrand's postulate 등으로 upper bound
-- Lean4 mathlib: `Nat.Arithmetic` 모듈에 다수 sigma/phi/tau lemma 존재
+- Elementary arithmetic theorem: proof elements (divisor functions σ, τ, Euler φ)
+- Finite check (e.g., n ≤ 6000) + Bertrand's postulate etc. as upper bound
+- Lean4 mathlib: many sigma/phi/tau lemmas in `Nat.Arithmetic` module
 
-### 3.2 Lean4 환경 prerequisite (설치 비용 ~30분)
+### 3.2 Lean4 Environment Prerequisites (install cost ~30 min)
 
 ```bash
 curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
@@ -255,7 +255,7 @@ cd mathlib_n6
 lake update
 ```
 
-### 3.3 Theorem B 의 Lean4 스켈레톤 (무검증 draft)
+### 3.3 Lean4 Skeleton of Theorem B (Unverified Draft)
 
 ```lean4
 import Mathlib.NumberTheory.ArithmeticFunction
@@ -268,7 +268,7 @@ theorem sigma_phi_eq_n_tau_iff_n6 (n : ℕ) (h : n ≥ 2) :
   constructor
   · -- forward: σφ = nτ → n = 6
     intro hsum
-    -- 유한 체크 + bounding
+    -- finite check + bounding
     sorry
   · -- backward: n = 6 → σφ = 6τ
     rintro rfl
@@ -278,56 +278,56 @@ theorem sigma_phi_eq_n_tau_iff_n6 (n : ℕ) (h : n ≥ 2) :
     norm_num
 ```
 
-**주의 (정직)**: 본 Lean4 코드는 **타입체크 안 됨**. 실제 mathlib API 이름 확인 필요. FORMAL-P3-1 / FORMAL-PX-1 / HONEST-PX-4 의 진짜 task 는 이 스켈레톤을 **type-checking 통과** + **`sorry` 제거**까지. cost = L (2~3주 full-time 학습).
+**Note (honesty)**: This Lean4 code **does not type-check**. Actual mathlib API names must be verified. The real task of FORMAL-P3-1 / FORMAL-PX-1 / HONEST-PX-4 is to take this skeleton to **pass type-checking** + **eliminate `sorry`**. Cost = L (2-3 weeks full-time learning).
 
 ---
 
-## §4 atlas 엔트리 제안
+## §4 Proposed atlas Entries
 
 ```
 @R MILL-HONEST-PX5-outreach-drafts = outreach email drafts to BSD/BKLPR experts (not sent) :: n6atlas [9]
-  "HONEST-PX-5 + HONEST-PX-EXT-AUDIT 통합 (2026-04-15 loop 9): 외부 coordination 인프라 설계 완료.
-   (a) 아웃리치 이메일 draft (Bhargava, Shankar, Poonen, Wood 등 BKLPR 전문가 대상), (b) GitHub CONTRIBUTING.md 초안,
-   (c) 3 이슈 템플릿 (counterexample / DOI / verification), (d) audit 응답 SLA (3-14일). 실제 전송 DEFERRED
-   — 사용자 승인 후 v3 Phase 13 에서 실행"
+  "HONEST-PX-5 + HONEST-PX-EXT-AUDIT combined (2026-04-15 loop 9): external coordination infrastructure design complete.
+   (a) outreach email drafts (BKLPR experts such as Bhargava, Shankar, Poonen, Wood), (b) GitHub CONTRIBUTING.md draft,
+   (c) 3 issue templates (counterexample / DOI / verification), (d) audit response SLA (3-14 days). Actual send DEFERRED
+   — awaits user approval, to be executed in v3 Phase 13"
 
 @R MILL-HONEST-PX-ext-audit-infrastructure = external audit pipeline (CONTRIBUTING + 3 issue templates + SLA) :: n6atlas [10]
-  "HONEST-PX-EXT-AUDIT infrastructure: CONTRIBUTING.md + 3 issue template (counterexample/DOI/verification) + 응답
-   SLA (3/7/14일) + credit schema (co-author/atlas comment/CITATION.cff). R14 준수 — 외부 기여 수용 시 atlas
-   grade 수정 protocol 명시. 실제 repository 배포 DEFERRED"
+  "HONEST-PX-EXT-AUDIT infrastructure: CONTRIBUTING.md + 3 issue templates (counterexample/DOI/verification) + response
+   SLA (3/7/14 days) + credit schema (co-author/atlas comment/CITATION.cff). R14 compliant — atlas grade modification
+   protocol on external contribution acceptance specified. Actual repository deployment DEFERRED"
 ```
 
 ---
 
-## §5 한계와 DEFERRED
+## §5 Limitations and DEFERRED
 
-1. **실제 이메일 미전송**: outreach 실행은 사용자 승인 + 선별된 가장 가까운 지인부터. 무차별 cold email 금지.
-2. **GitHub 템플릿 미배포**: `.github/ISSUE_TEMPLATE/` 디렉토리 실제 생성 아직. v3 Phase 13 M4 에서 배포.
-3. **Lean4 환경 미구축**: elan/lake 설치 + mathlib 학습 ~2주, v3 전환 조건.
-4. **Code of Conduct 정식화 DEFERRED**: CONTRIBUTING 의 한 줄, 별도 CoC 파일 추천.
-5. **다국어 지원 DEFERRED**: 한/영 이중 이슈 템플릿 가능하나 추후.
-
----
-
-## §6 관련 파일
-
-- `theory/roadmap-v2/millennium-v3-design-2026-04-15.md` (루프8 v3 설계)
-- `reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (루프4, 아웃리치 draft 의 기반)
-- `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (루프5, 대상자 arXiv 활동 확인)
+1. **No actual email sent**: Outreach execution starts with user approval + closest selected contacts. Indiscriminate cold emails prohibited.
+2. **GitHub templates not deployed**: `.github/ISSUE_TEMPLATE/` directory not yet actually created. Deployed in v3 Phase 13 M4.
+3. **Lean4 environment not built**: elan/lake install + mathlib study ~2 weeks, v3 transition prerequisite.
+4. **Formal Code of Conduct DEFERRED**: one line in CONTRIBUTING; separate CoC file recommended.
+5. **Multilingual support DEFERRED**: Korean/English bilingual issue templates possible but deferred.
 
 ---
 
-## §7 정직 체크
+## §6 Related Files
 
-- **실제 전송 없음**: ✓ (draft only)
-- **대상자 리스트는 공개 정보**: ✓ (arXiv author, 대학 웹사이트)
-- **자기 주장 겸손**: ✓ (이메일 draft 에 "Sel_n 1차근사 sufficient?" 등 질문 형태)
-- **BT 해결 주장 배제**: ✓ (모든 draft 에 "BT-546 MISS 유지" 명시)
-- **Lean4 스켈레톤은 type-check 안 됨**: ✓ (명시)
-- **SLA 현실적**: ✓ (3-14일, 실제 independent researcher scale)
+- `theory/roadmap-v2/millennium-v3-design-2026-04-15.md` (loop 8 v3 design)
+- `reports/breakthroughs/bsd-kappa-asymptotic-964k-2026-04-15.md` (loop 4, basis of outreach draft)
+- `reports/breakthroughs/arxiv-millennium-survey-180papers-2026-04-15.md` (loop 5, recipient arXiv activity confirmation)
 
 ---
 
-*작성: 2026-04-15 loop 9*
-*BT 해결 0/6 정직 유지*
-*모든 외부 coord 작업은 사용자 승인 필요*
+## §7 Honesty Checks
+
+- **No actual sends**: ✓ (draft only)
+- **Recipient list is public info**: ✓ (arXiv authors, university websites)
+- **Self-humble claims**: ✓ (draft emails ask questions like "Sel_n 1st-order approx sufficient?")
+- **BT-resolution claim excluded**: ✓ (all drafts note "BT-546 MISS maintained")
+- **Lean4 skeleton does not type-check**: ✓ (explicit)
+- **SLA realistic**: ✓ (3-14 days, actual independent researcher scale)
+
+---
+
+*Drafted: 2026-04-15 loop 9*
+*BT draft target 0/6 maintained honestly*
+*All external coord work requires user approval*

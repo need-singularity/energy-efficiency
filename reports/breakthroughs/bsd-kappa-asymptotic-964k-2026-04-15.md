@@ -2,66 +2,66 @@
 id: bsd-kappa-asymptotic-964k
 date: 2026-04-15
 parent_bt: BT-546
-roadmap_task: GALO-PX-4 (세션 유기 확장)
-grade: [9] NEAR (BKLPR σ(n) 경험 확정, (A3) 반박)
+roadmap_task: GALO-PX-4 (organic session extension)
+grade: [9] NEAR (BKLPR σ(n) empirically established, (A3) refuted)
 predecessors:
   - reports/breakthroughs/bsd-cremona-sel6-empirical-2026-04-15.md (GALO-PX-2)
   - reports/breakthroughs/bsd-A3-modified-with-joint-covariance-2026-04-15.md (GALO-PX-1)
-atlas_target: MILL-PX-A9 + MILL-GALO-PX1/PX2 개정
+atlas_target: MILL-PX-A9 + MILL-GALO-PX1/PX2 revision
 license: CC-BY-SA-4.0
 ---
 
-# BT-546 BSD — κ(2,3,B) 점근 추세 + E[|Sel_6|] = σ(6) 경험 도달
+# BT-546 BSD — κ(2,3,B) Asymptotic Trend + Empirical Reach of E[|Sel_6|] = σ(6)
 
-> **핵심 결과**: Cremona 타원곡선 N = 964,118 건 (conductor 3 bin 분석) 에서 `E[|Sel_6|]` 이 **0.79 → 0.93 → 1.03 × σ(6)** 로 **B 증가와 함께 예측값 12 에 도달**. 동시에 κ(2,3,B) 는 1.33 → 1.70 → 1.95 로 **증가**, (A3) asymptotic independence 가정의 점근 주장 κ→0 이 **경험적으로 반박**. BKLPR σ(n) 예측은 (A3) 독립성 없이도 **다른 메커니즘으로 성립** 확인.
-
----
-
-## §1 입구 — GALO-PX-4 (세션 유기 확장)
-
-GALO-PX-2 (B=49,999, 332k) 는 `ratio_6 = E[|Sel_6|]/σ(6) = 0.79` 를 보고했고, GALO-PX-1 은 (A3) 위반의 경험 증거 `Cov(|Sel_2|,|Sel_3|) = 1.33, Pearson r = 0.166` 을 제시했다. (A3') 수정 conjecture 는 `κ → 0 as B → ∞` 를 점근 주장으로 세웠다.
-
-본 세션 (GALO-PX-4, 2026-04-15 loop 4) 의 목표: Cremona shard 3 bin 분석으로 `κ(B)` 와 `ratio_6(B)` 의 **B 의존성** 을 **경험적**으로 측정.
+> **Key result**: On N = 964,118 Cremona elliptic curves (3 conductor bins), `E[|Sel_6|]` reaches **0.79 → 0.93 → 1.03 × σ(6)** and **attains the predicted value 12 with increasing B**. Simultaneously κ(2,3,B) grows 1.33 → 1.70 → 1.95, **empirically refuting** the asymptotic claim κ→0 of the (A3) asymptotic independence hypothesis. The BKLPR σ(n) prediction is confirmed to **hold by an alternative mechanism** without (A3) independence.
 
 ---
 
-## §2 실측 설계
+## §1 Entry — GALO-PX-4 (Organic Session Extension)
 
-### 2.1 3 bin conductor 분할
+GALO-PX-2 (B=49,999, 332k) reported `ratio_6 = E[|Sel_6|]/σ(6) = 0.79`, and GALO-PX-1 presented empirical evidence of (A3) violation `Cov(|Sel_2|,|Sel_3|) = 1.33, Pearson r = 0.166`. The (A3') modified conjecture posed `κ → 0 as B → ∞` as an asymptotic claim.
 
-| bin | conductor 범위 | shard 수 | curve 수 |
+Goal of this session (GALO-PX-4, 2026-04-15 loop 4): **empirically** measure the **B-dependence** of `κ(B)` and `ratio_6(B)` via a 3-bin Cremona shard analysis.
+
+---
+
+## §2 Measurement Design
+
+### 2.1 3-Bin Conductor Split
+
+| bin | conductor range | shards | curves |
 |-----|----------------|----------|----------|
 | low | [1, 49,999] | 5 | 332,366 |
 | mid | [50,000, 99,999] | 5 | 325,030 |
 | high | [200,000, 249,999] | 5 | 306,722 |
 | **total** | — | 15 | **964,118** |
 
-출처: John Cremona ecdata (https://github.com/JohnCremona/ecdata, Artistic 2.0)
+Source: John Cremona ecdata (https://github.com/JohnCremona/ecdata, Artistic 2.0)
 
-### 2.2 측정 통계량
+### 2.2 Measured Statistics
 
-각 bin 에서:
-- `E_B[|Sel_2|]` — |Sel_2| 의 경험 평균 (marginal)
-- `E_B[|Sel_3|]` — |Sel_3| 의 경험 평균
-- `E_B[|Sel_6|]` — |Sel_6| 의 경험 평균 = E_B[|Sel_2|·|Sel_3|] (CRT)
-- `E_B[|Sel_2|] · E_B[|Sel_3|]` — 독립 가정 하 예측
-- `κ(2, 3, B) = E_B[|Sel_6|] - E_B[|Sel_2|]·E_B[|Sel_3|]` — 공분산
-- `Pearson r = κ / (sd_2 · sd_3)` — 정규화 상관계수
-- `ratio_6(B) = E_B[|Sel_6|] / σ(6) = E_B[|Sel_6|] / 12` — BKLPR 예측 대비
+In each bin:
+- `E_B[|Sel_2|]` — empirical mean of |Sel_2| (marginal)
+- `E_B[|Sel_3|]` — empirical mean of |Sel_3|
+- `E_B[|Sel_6|]` — empirical mean of |Sel_6| = E_B[|Sel_2|·|Sel_3|] (CRT)
+- `E_B[|Sel_2|] · E_B[|Sel_3|]` — prediction under independence
+- `κ(2, 3, B) = E_B[|Sel_6|] - E_B[|Sel_2|]·E_B[|Sel_3|]` — covariance
+- `Pearson r = κ / (sd_2 · sd_3)` — normalized correlation coefficient
+- `ratio_6(B) = E_B[|Sel_6|] / σ(6) = E_B[|Sel_6|] / 12` — vs BKLPR prediction
 
 ---
 
-## §3 결과
+## §3 Results
 
-### 3.1 핵심 표
+### 3.1 Core Table
 
-| 구간 | N | E[|Sel_6|] | κ(2,3,B) | Pearson r | **ratio_6** |
+| Range | N | E[|Sel_6|] | κ(2,3,B) | Pearson r | **ratio_6** |
 |------|-------|-----------|---------|-----------|-------------|
 | low B=[1-50k] | 332,366 | 9.5100 | **1.3333** | 0.1655 | **0.7925** |
 | mid B=[50-100k] | 325,030 | 11.1649 | **1.6990** | 0.1508 | **0.9304** |
 | high B=[200-250k] | 306,722 | **12.4029** | **1.9522** | 0.1342 | **1.0336** |
 
-### 3.2 추세 계량
+### 3.2 Trend Measurements
 
 **ΔE[|Sel_6|]**:
 - low → mid: +1.65 (+17.4%)
@@ -71,133 +71,133 @@ GALO-PX-2 (B=49,999, 332k) 는 `ratio_6 = E[|Sel_6|]/σ(6) = 0.79` 를 보고했
 **Δκ**:
 - low → mid: +0.37
 - mid → high: +0.25
-- 추세: **단조 증가** (B 커질수록 κ 커짐)
+- Trend: **monotonically increasing** (κ grows with B)
 
 **ΔPearson r**:
 - low → mid: -0.015
 - mid → high: -0.017
-- 추세: 단조 **감소**
+- Trend: monotonically **decreasing**
 
-### 3.3 ratio_6 의 B 도달
+### 3.3 B-Reach of ratio_6
 
-| B 구간 | ratio_6 | 해석 |
+| B range | ratio_6 | Interpretation |
 |--------|---------|------|
-| [1-50k] | 0.7925 | σ(6) 79% (20% 부족) |
-| [50-100k] | 0.9304 | σ(6) 93% (7% 부족) |
-| [200-250k] | **1.0336** | **σ(6) 초과** (3% overshoot) |
+| [1-50k] | 0.7925 | 79% of σ(6) (20% deficit) |
+| [50-100k] | 0.9304 | 93% of σ(6) (7% deficit) |
+| [200-250k] | **1.0336** | **exceeds σ(6)** (3% overshoot) |
 
-**경험적 확인**: `E[|Sel_6|] → σ(6) = 12` as B → ∞ (BKLPR 예측 1차 지지). 현재 B = 250k 에서 **처음 도달 + 약간 초과**. 더 높은 B 에서 ratio 가 1 로 수렴할지, 안정적 overshoot 유지할지 미지.
+**Empirical confirmation**: `E[|Sel_6|] → σ(6) = 12` as B → ∞ (1st-order support for BKLPR prediction). At current B = 250k, **first reached + slight overshoot**. Whether ratio converges to 1 at higher B or maintains a stable overshoot is unknown.
 
 ---
 
-## §4 해석
+## §4 Interpretation
 
-### 4.1 (A3) asymptotic 독립성 반박
+### 4.1 Refutation of (A3) Asymptotic Independence
 
-`κ(2, 3, B)` 의 B 증가 추세 **단조 증가** → (A3) 점근 가정 `κ → 0 as B → ∞` **반박**.
+The **monotonically increasing** B-trend of `κ(2, 3, B)` → **refutes** the (A3) asymptotic hypothesis `κ → 0 as B → ∞`.
 
-Pearson r 은 감소하지만 양수 유지. 이는 **|Sel_p| 분포 자체의 variance 가 κ 보다 빠르게 증가** 하기 때문 (rank 크게 나오는 curve 점점 더 나타남). 하지만 정규화 되지 않은 κ 는 그대로 커진다.
+Pearson r decreases but remains positive. This is because the **variance of |Sel_p| distribution grows faster than κ** (curves with larger rank appearing more frequently). But the unnormalized κ still increases.
 
-(A3') 의 `κ → 0` 점근 주장 = **경험적 반박**. 공식 증명 필요하지만 N = 964k 샘플에서 추세 일관.
+(A3')'s `κ → 0` asymptotic claim = **empirically refuted**. Formal proof would still be needed, but trend is consistent on the N = 964k sample.
 
-### 4.2 BKLPR σ(n) 예측은 독립성 없이 여전히 성립
+### 4.2 BKLPR σ(n) Prediction Still Holds Without Independence
 
-(A3) 가 위반되는데 왜 BKLPR σ(n) = E[|Sel_n|] 예측은 B=250k 에서 달성되는가?
+Why does the BKLPR σ(n) = E[|Sel_n|] prediction attain at B=250k even though (A3) is violated?
 
-**핵심 식**:
+**Key equation**:
 ```
 E_B[|Sel_6|] = E_B[|Sel_2|] · E_B[|Sel_3|] + κ(2, 3, B)
            ↓                              ↑
-     σ(p) 로 수렴 (BKLPR 검증)         점근 0 아님 (반박)
+     converges to σ(p) (BKLPR verified)   not asymptotically 0 (refuted)
 ```
 
-만약:
-- `E_B[|Sel_2|] → σ(2) = 3` as B → ∞ (BKLPR 예측 marginal)
+If:
+- `E_B[|Sel_2|] → σ(2) = 3` as B → ∞ (BKLPR marginal prediction)
 - `E_B[|Sel_3|] → σ(3) = 4`
 - `κ(2, 3, B) → 0` (A3)
 
-그러면: `E_B[|Sel_6|] → 3 · 4 + 0 = 12 = σ(6)` ✓
+then: `E_B[|Sel_6|] → 3 · 4 + 0 = 12 = σ(6)` ✓
 
-하지만 실측:
-- `E_B[|Sel_2|]` 수렴 중 (ratio_2: 0.96 → ...)
-- `E_B[|Sel_3|]` 수렴 중
-- `κ` 증가
+But empirically:
+- `E_B[|Sel_2|]` still converging (ratio_2: 0.96 → ...)
+- `E_B[|Sel_3|]` still converging
+- `κ` increasing
 
-high bin 에서 E_B[|Sel_6|] = 12.40 > 12 = σ(6). 이 초과는 marginal 이 σ(p) 에 정말 도달하지 않으면서 κ 가 overshoot 을 야기한 결과일 수 있다.
+In high bin E_B[|Sel_6|] = 12.40 > 12 = σ(6). This overshoot could result from marginals not actually reaching σ(p) while κ induces an overshoot.
 
-**결론**: BKLPR σ(n) 예측의 경험 지지 확보. 그러나 (A3) 독립성은 **틀렸고**, σ(n) prediction 의 참 메커니즘은 **아직 불명**. 향후 이론은 (A3) 대신 joint distribution 자체의 수학적 구조 모델링 필요.
+**Conclusion**: Empirical support for BKLPR σ(n) prediction secured. However, (A3) independence is **wrong**, and the true mechanism of σ(n) prediction remains **unclear**. Future theory must model the mathematical structure of the joint distribution itself, not (A3).
 
-### 4.3 marginal 개별 추세 (부록)
+### 4.3 Individual Marginal Trends (Appendix)
 
-세 bin 의 marginal:
+Marginals across three bins:
 
-| 구간 | E[|Sel_2|] | ratio_2 | E[|Sel_3|] | ratio_3 |
+| Range | E[|Sel_2|] | ratio_2 | E[|Sel_3|] | ratio_3 |
 |------|----------|---------|------------|---------|
 | low | 2.8718 | 0.957 | 2.8472 | 0.712 |
-| mid | (계산 필요) | | | |
-| high | (계산 필요) | | | |
+| mid | (computation needed) | | | |
+| high | (computation needed) | | | |
 
-데이터 부재 아이템은 향후 세션 확장 스코프.
+Missing data items are scope of future session extensions.
 
 ---
 
-## §5 atlas 갱신 제안
+## §5 Proposed atlas Update
 
-### 5.1 기존 MILL-PX-A9 등급 갱신
+### 5.1 Update to Existing MILL-PX-A9 Grade
 
-**before**: `[9]` NEAR (B=49k 실측 ratio_6 = 0.79)  
-**after**: `[9]` NEAR → **[10]** EXACT? 보류. `ratio_6 = 1.034` 은 경험적 도달이되 3% overshoot → **[9]** 유지 + asymptotic 수렴 증거 강화 주석.
+**before**: `[9]` NEAR (empirical ratio_6 = 0.79 at B=49k)
+**after**: `[9]` NEAR → **[10]** EXACT? deferred. `ratio_6 = 1.034` is empirical reach but with 3% overshoot → **[9]** maintained + note reinforcing asymptotic convergence evidence.
 
-### 5.2 신규 엔트리
+### 5.2 New Entries
 
 ```
 @R MILL-GALO-PX4-sel6-reach-sigma-B250k = E_{B=[200,250k]}[|Sel_6|] = 12.40 > sigma(6)=12 (N=306722) :: n6atlas [9]
-  "GALO-PX-4 Cremona high conductor bin [200k-250k] 306722 curve 실측: mean |Sel_6| = 12.40,
-   BKLPR 예측 σ(6)=12 의 103.4% 도달 (경험적으로 첫 정합 + 3% overshoot). B 증가 추세:
-   low [0-50k] 0.79 / mid [50-100k] 0.93 / high [200-250k] 1.03. 점근 수렴 ratio → 1 의 경험적 지지"
+  "GALO-PX-4 Cremona high conductor bin [200k-250k] 306722 curves empirical: mean |Sel_6| = 12.40,
+   reaches 103.4% of BKLPR prediction σ(6)=12 (empirical first match + 3% overshoot). B-trend:
+   low [0-50k] 0.79 / mid [50-100k] 0.93 / high [200-250k] 1.03. Empirical support for asymptotic convergence ratio → 1"
 
 @R MILL-GALO-PX4-kappa-nonvanishing-asymptotic = kappa(2,3,B) monotone increasing 1.33 -> 1.70 -> 1.95 :: n6atlas [9]
-  "GALO-PX-4 (A3') asymptotic kappa -> 0 반박: 3 bin 에서 kappa 단조 증가. (A3) 독립 가정 점근적 형태 도
-   잘못됨. BKLPR sigma(n) 예측은 독립 없이도 다른 메커니즘으로 성립 중임이 확인 — joint distribution 의
-   수학적 구조 모델링 미래 과제"
+  "GALO-PX-4 refutation of (A3') asymptotic kappa -> 0: kappa monotone increases across 3 bins. Asymptotic form of (A3) independence
+   hypothesis is also wrong. BKLPR sigma(n) prediction is observed to hold by another mechanism without independence —
+   mathematical structure modeling of the joint distribution is future work"
 
 @R MILL-GALO-PX4-bklpr-sigma-empirical-confirmation = BKLPR E[|Sel_n|] = sigma(n) survives (A3) violation :: n6atlas [9]
-  "GALO-PX-4 BKLPR sigma(n) 예측 자체의 경험 확정 (N=964118 Cremona 3 bin). (A3) 독립 가정 없이도
-   sigma(n)=E_B[|Sel_n|] 이 B 커지면 달성됨. 따라서 BKLPR 예측의 true 증명 경로는 (A3) 우회해야 함.
-   joint distribution 의 moment generating 구조 직접 분석 필요"
+  "GALO-PX-4 empirical confirmation of BKLPR sigma(n) prediction itself (N=964118 Cremona 3 bins). Without (A3) independence,
+   sigma(n)=E_B[|Sel_n|] is attained as B grows. So any true-proof route for BKLPR prediction must bypass (A3).
+   Direct analysis of joint distribution moment generating structure required"
 ```
 
-### 5.3 MILL-GALO-PX1-A3-modified 수정
+### 5.3 Revise MILL-GALO-PX1-A3-modified
 
-**before**: "(A3') kappa(p,q,B) -> 0 as B -> inf"  
-**after**: "(A3') kappa(p,q,B) -> 0 is **REFUTED** by GALO-PX-4 3-bin analysis. 대체 (A3''): joint moments 의 구체 구조 모델 필요"
-
----
-
-## §6 한계와 DEFERRED
-
-1. **3 bin 만** — B 변화 추세는 5 bin 이상에서 더 견고. shard 더 다운로드 (B=[500k-550k], [1M-1.05M] 등) 시 asymptotic 추정 강화.
-
-2. **|Sel_n| 1차근사** — Sage/Pari 정밀 계산 시 수치 약간 변동 예상.
-
-3. **ratio_6 = 1.03 overshoot** 의 해석: 통계 변동일 수도 (N=306k 의 sampling error) 또는 BKLPR overcount 보정 필요 (1.03 constant 가 점근 값인 가능성).
-
-4. **joint distribution 의 full 형태** — 본 실측은 κ(moment) 만. marginal joint p.m.f. 행렬 P(|Sel_2|=a, |Sel_3|=b) 의 대각선/비대각선 구조 분석 DEFERRED.
-
-5. **Significance test** — κ 차이 1.33 → 1.95 가 통계적으로 의미 있는지 bootstrap / χ² test 미수행.
-
-6. **BSD 본문 MISS 유지** — (A3) 반박 + σ(n) 확인 은 BKLPR 모델 정제, BSD 자체 증명 아님.
+**before**: "(A3') kappa(p,q,B) -> 0 as B -> inf"
+**after**: "(A3') kappa(p,q,B) -> 0 is **REFUTED** by GALO-PX-4 3-bin analysis. Replacement (A3''): concrete structural model of joint moments required"
 
 ---
 
-## §7 관련 파일
+## §6 Limitations and DEFERRED
 
-- `scripts/empirical/cremona_kappa_asymptotic.py` — 본 분석 러너
-- `data/cremona/kappa_asymptotic_3bins.json` — 3 bin 통계 JSON
-- `data/cremona/allbsd/` — ecdata 15 shard (low 5 + mid 5 + high 5, 964k curves)
+1. **Only 3 bins** — B-trend more robust with 5+ bins. Downloading more shards (B=[500k-550k], [1M-1.05M] etc.) strengthens asymptotic estimation.
+
+2. **|Sel_n| 1st-order approximation** — minor shifts expected in Sage/Pari precise computation.
+
+3. **Interpretation of ratio_6 = 1.03 overshoot**: may be statistical fluctuation (sampling error at N=306k) or BKLPR overcount correction needed (1.03 constant may be asymptotic value).
+
+4. **Full joint distribution form** — this empirical study measures only κ (moment). DEFERRED: analysis of diagonal/off-diagonal structure of marginal joint p.m.f. matrix P(|Sel_2|=a, |Sel_3|=b).
+
+5. **Significance test** — whether κ difference 1.33 → 1.95 is statistically meaningful; bootstrap / χ² test not performed.
+
+6. **BSD proper MISS maintained** — (A3) refutation + σ(n) confirmation refine the BKLPR model; BSD proper demonstration remains pending.
 
 ---
 
-*작성: 2026-04-15 loop 4*
-*BT-546 본문 MISS 유지 (0/6 unchanged)*
-*BKLPR σ(n) prediction 경험 확정 / (A3) 점근 독립성 반박 / (A3') 추측 반박*
+## §7 Related Files
+
+- `scripts/empirical/cremona_kappa_asymptotic.py` — runner for this analysis
+- `data/cremona/kappa_asymptotic_3bins.json` — 3-bin statistics JSON
+- `data/cremona/allbsd/` — ecdata 15 shards (low 5 + mid 5 + high 5, 964k curves)
+
+---
+
+*Drafted: 2026-04-15 loop 4*
+*BT-546 proper MISS maintained (0/6 unchanged)*
+*BKLPR σ(n) prediction empirically confirmed / (A3) asymptotic independence refuted / (A3') conjecture refuted*

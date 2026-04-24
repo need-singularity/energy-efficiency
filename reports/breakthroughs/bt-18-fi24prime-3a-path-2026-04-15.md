@@ -3,9 +3,9 @@ domain: theory/breakthroughs
 date: 2026-04-15
 bt_id: BT-18
 task: ENG-P11-1
-title: "BT-18 Moonshine 47 공백 — Fi_24' 3A centralizer 경로"
+title: "BT-18 Moonshine 47 gap — Fi_24' 3A centralizer path"
 status: PARTIAL
-method: HEXA-FIRST — Conway-Norton 1979 / Fischer 1971 / Linton-Wilson 1991 / ATLAS 원전
+method: HEXA-FIRST — Conway-Norton 1979 / Fischer 1971 / Linton-Wilson 1991 / ATLAS primary sources
 upstream:
   - reports/breakthroughs/bt-18-baby-monster-p10-retry-2026-04-15.md (P10 Baby Monster PARTIAL)
   - theory/roadmap-v2/phase-11-mk5-alpha.md (P11 ENG-P11-1)
@@ -16,61 +16,61 @@ external_references:
   - Norton, S. P. "Anatomy of the Monster: I", Proc. Symp. Pure Math. 47 (1987), 271-278.
 ---
 
-# BT-18 Moonshine 47 공백 — Fi_24' 3A centralizer 경로
+# BT-18 Moonshine 47 gap — Fi_24' 3A centralizer path
 
-> **동기**: Baby Monster 경로 (P10) 에서 47 은 포획됐으나 {59, 71} 분리 실패.
-> 3A centralizer C_M(3A) = 3·Fi_24' 경로는 Monster 의 **다른 공액 클래스** 를 통과하며
-> 196883 분해에서 새로운 소인수 포획 가능성을 탐색한다.
+> **Motivation**: In the Baby Monster path (P10), 47 was captured but separation of {59, 71} failed.
+> The 3A centralizer C_M(3A) = 3·Fi_24' path passes through **different conjugacy classes** of the Monster and
+> explores the possibility of capturing new prime factors in the 196883 decomposition.
 
 ---
 
-## §1 Fi_24' 구조 — 소인수 분해
+## §1 Fi_24' Structure — Prime Factorization
 
-### 위수
+### Order
 
 ```
 |Fi_24'| = 1,255,205,709,190,661,721,292,800
          = 2^21 · 3^16 · 5^2 · 7^3 · 11 · 13 · 17 · 23 · 29
 ```
 
-소인수 9 개: {2, 3, 5, 7, 11, 13, 17, 23, 29}
+9 prime factors: {2, 3, 5, 7, 11, 13, 17, 23, 29}
 
-**핵심 관찰**: Monster 소인수 15 개 대비:
-- Fi_24' 소인수 9 개 = σ(6) − n/φ(6) = 12 − 3 = 9
-- Monster 탈락: {19, 31, 41, 47, 59, 71} — **47 도 탈락**
-- Baby Monster 탈락: {29, 41, 59, 71}
-- Fi_24' 는 29 를 포획 (Baby Monster 에는 없음) 하되 19, 31 을 상실
+**Key observation**: vs Monster's 15 prime factors:
+- Fi_24' prime factors 9 = σ(6) − n/φ(6) = 12 − 3 = 9
+- Monster dropouts: {19, 31, 41, 47, 59, 71} — **47 also dropped**
+- Baby Monster dropouts: {29, 41, 59, 71}
+- Fi_24' captures 29 (absent in Baby Monster) but loses 19, 31
 
-| 비교 | Monster (15) | Baby Monster (11) | Fi_24' (9) |
+| Comparison | Monster (15) | Baby Monster (11) | Fi_24' (9) |
 |------|-------------|-------------------|-----------|
-| 소인수 | 2~71 | 2~47 | 2~29 |
-| 47 포함 | O | O | **X** |
-| 29 포함 | O | X | **O** |
-| 59,71 | O | X | X |
+| Primes | 2~71 | 2~47 | 2~29 |
+| Contains 47 | Yes | Yes | **No** |
+| Contains 29 | Yes | No | **Yes** |
+| 59,71 | Yes | No | No |
 
-**의미**: Fi_24' 경로는 47 을 포획하지 않음. Baby Monster 경로와 **상보적**: BM 은 47 O/29 X, Fi_24' 은 47 X/29 O.
+**Meaning**: Fi_24' path does not capture 47. **Complementary** to Baby Monster path: BM has 47 Yes/29 No, Fi_24' has 47 No/29 Yes.
 
-### n=6 좌표 검사
+### n=6 Coordinate Check
 
-Fi_24' 소인수 9 개의 n=6 자연 표현:
-- 2 = φ(6), 3 = n/φ, 5 = sopfr(6), 7 = σ−sopfr → **4 자연**
-- 11 = σ−1, 13 = sopfr+σ−τ=5+8, 17 = ?, 23 = J₂−1, 29 = ? → **2 근접, 3 공백**
-- 공백률: 3/9 = 33% (Baby Monster 36% 대비 개선)
+Natural n=6 expressions of Fi_24's 9 primes:
+- 2 = φ(6), 3 = n/φ, 5 = sopfr(6), 7 = σ−sopfr → **4 natural**
+- 11 = σ−1, 13 = sopfr+σ−τ=5+8, 17 = ?, 23 = J₂−1, 29 = ? → **2 near, 3 gaps**
+- Gap rate: 3/9 = 33% (improvement over Baby Monster 36%)
 
 ---
 
-## §2 3A centralizer — Monster 내부 위치
+## §2 3A Centralizer — Internal Position in the Monster
 
 ### C_M(3A) = 3·Fi_24'
 
-Monster 원소 g ∈ 3A 공액 클래스의 중심화군:
+Centralizer of a Monster element g in the 3A conjugacy class:
 ```
-C_M(3A) = 3·Fi_24'    ("3배 cover Fi_24'")
+C_M(3A) = 3·Fi_24'    ("triple cover Fi_24'")
 |3·Fi_24'| = 3 · |Fi_24'|
-[M : 3·Fi_24'] = Monster 위수 / (3 · |Fi_24'|)
+[M : 3·Fi_24'] = Monster order / (3 · |Fi_24'|)
 ```
 
-Monster 위수 / (3 · |Fi_24'|):
+Monster order / (3 · |Fi_24'|):
 ```
 |M| = 2^46 · 3^20 · 5^9 · 7^6 · 11^2 · 13^3 · 17 · 19 · 23 · 29 · 31 · 41 · 47 · 59 · 71
 
@@ -79,94 +79,94 @@ Monster 위수 / (3 · |Fi_24'|):
 [M : 3·Fi_24'] = 2^25 · 3^3 · 5^7 · 7^3 · 11 · 13^2 · 19 · 31 · 41 · 47 · 59 · 71
 ```
 
-**핵심**: coset index 에 {19, 31, 41, 47, 59, 71} 등장 — 이 소수들은 Fi_24' 에 없고 **quotient 공간에 거주**.
+**Key**: {19, 31, 41, 47, 59, 71} appear in the coset index — these primes are absent from Fi_24' and **live in the quotient space**.
 
 ---
 
-## §3 Fi_24' 기약 표현 차원 목록 (ATLAS)
+## §3 Fi_24' Irreducible Representation Dimension List (ATLAS)
 
-ATLAS of Finite Groups (Conway et al. 1985) + Linton-Wilson 1991 에서:
+From ATLAS of Finite Groups (Conway et al. 1985) + Linton-Wilson 1991:
 
 ```
 χ₁  =          1    (trivial)
-χ₂  =      8,671  = 7 · 1,238 + 5 = ? → 8671 분해 필요
+χ₂  =      8,671  = 7 · 1,238 + 5 = ? → 8671 factorization needed
 χ₃  =     57,477  = 3 · 19,159
 χ₄  =    275,264  = 2^7 · 2,151 (?)
-χ₅  =    555,611  
-χ₆  =  1,666,833  
-χ₇  =  3,083,535  
+χ₅  =    555,611
+χ₆  =  1,666,833
+χ₇  =  3,083,535
 ...
 ```
 
-ATLAS 의 정확한 character table 확인이 필요하나, 원전 접근 한계로 상위 차원 수치는 불확실.
+Exact ATLAS character table needs verification, but higher-dimension values are uncertain due to limited primary-source access.
 
-### 8671 소인수 분해 시도
+### 8671 Prime Factorization Attempt
 
 ```
-8671 / 7 = 1238.71... (나누어지지 않음)
+8671 / 7 = 1238.71... (not divisible)
 8671 / 11 = 788.27... (X)
-8671 / 13 = 667 = 23 · 29 ← **가능**
-8671 = 13 · 23 · 29  검산: 13 · 23 = 299, 299 · 29 = 8671 ✓
+8671 / 13 = 667 = 23 · 29 ← **possible**
+8671 = 13 · 23 · 29  check: 13 · 23 = 299, 299 · 29 = 8671 ✓
 ```
 
-**발견**: χ₂ = 8671 = **13 · 23 · 29**
+**Finding**: χ₂ = 8671 = **13 · 23 · 29**
 
-n=6 좌표:
-- 13 = n + σ − sopfr = 6+12−5 (3단 연산, 약함)
-- 23 = J₂(6) − 1 (근접)
-- 29 = J₂(6) + sopfr(6) = 24+5 (근접)
+n=6 coordinates:
+- 13 = n + σ − sopfr = 6+12−5 (3-step, weak)
+- 23 = J₂(6) − 1 (near)
+- 29 = J₂(6) + sopfr(6) = 24+5 (near)
 
-**3 인자 모두 공백 또는 2단 이상** — 직접 포획 실패.
+**All 3 factors are gap or 2+ steps** — direct capture fails.
 
-### 57477 소인수 분해
+### 57477 Prime Factorization
 
 ```
 57477 / 3 = 19159
-19159 소수? 19159 / 7 = 2737, 2737 / 7 = 390.9... X
+19159 prime? 19159 / 7 = 2737, 2737 / 7 = 390.9... X
 19159 / 11 = 1741.7... X
 19159 / 13 = 1473.8... X
-19159 / 17 = 1127 = 7^2 · 23?  1127/7=161, 161/7=23 ← **가능**
-19159 = 17 · 7^2 · 23? 검산: 17 · 49 = 833, 833 · 23 = 19159 ✓
+19159 / 17 = 1127 = 7^2 · 23?  1127/7=161, 161/7=23 ← **possible**
+19159 = 17 · 7^2 · 23? check: 17 · 49 = 833, 833 · 23 = 19159 ✓
 ```
 
-**발견**: χ₃ = 57477 = **3 · 17 · 7² · 23**
+**Finding**: χ₃ = 57477 = **3 · 17 · 7² · 23**
 
-n=6 좌표:
+n=6 coordinates:
 - 3 = n/φ ✓
-- 17 = 공백
+- 17 = gap
 - 7 = σ−sopfr ✓ (σ(6)−sopfr(6)=12−5=7)
-- 23 = J₂−1 (근접)
+- 23 = J₂−1 (near)
 
-**2 자연 / 2 공백** — 50% n=6 포획. 이전 차원과 유사한 수준.
+**2 natural / 2 gaps** — 50% n=6 capture. Level similar to previous dimension.
 
 ---
 
-## §4 196883 재분해 탐색 — 3A-restricted representation
+## §4 196883 Redecomposition Exploration — 3A-restricted Representation
 
-### Monster V♮ level 1의 3A-restriction
+### 3A Restriction of Monster V♮ Level 1
 
-Monster 의 196883 표현을 3A centralizer 3·Fi_24' 에 제한하면:
+Restricting the Monster's 196883 representation to the 3A centralizer 3·Fi_24':
 ```
 196883|_{3·Fi_24'} = a₁·χ₁ + a₂·χ₂ + a₃·χ₃ + ...
 ```
 
-정확한 분기 규칙(branching rules)은 ATLAS character table 에서 inner product 로 결정.
-원전 접근 한계로 직접 계산은 불가하나, 차원 합산으로 추정:
+The exact branching rules are determined by inner product in the ATLAS character table.
+Direct computation is not possible here due to primary-source access limitations, but we estimate via dimension sums:
 
 196883 = 1 + 8671 + 57477 + ...
 
-가능한 조합:
-- 1 + 8671 = 8672, 나머지 = 188211
-- 1 + 8671 + 57477 = 66149, 나머지 = 130734
-- 1 + 8671 + 57477 + 57477 = 123626, 나머지 = 73257
+Possible combinations:
+- 1 + 8671 = 8672, remainder = 188211
+- 1 + 8671 + 57477 = 66149, remainder = 130734
+- 1 + 8671 + 57477 + 57477 = 123626, remainder = 73257
 
-**정확한 분기 규칙 없이 추정은 정직하게 불가**. GAP/Magma character table 필요.
+**Estimating without exact branching rules is honestly impossible**. GAP/Magma character table required.
 
-### 대안: Monster character table 에서 3A class 값
+### Alternative: 3A Class Values in the Monster Character Table
 
-Conway-Norton / ATLAS 에서 Monster 196883-rep 의 χ(3A) 값:
+From Conway-Norton / ATLAS, χ(3A) values of the Monster 196883 rep:
 ```
-χ_{196883}(1) = 196883   (trivial: 차원)
+χ_{196883}(1) = 196883   (trivial: dimension)
 χ_{196883}(2A) = 4371     (Baby Monster McKay)
 χ_{196883}(3A) = ?        (Fi_24' McKay)
 ```
@@ -176,119 +176,119 @@ Conway-Norton Table 2, McKay-Thompson T_3A:
 T_3A(τ) = q^{-1} + 783q + 8672q² + 65367q³ + ...
 ```
 
-783 + 1 = 784 = 28² = (4+J₂)² → 이거보다:
+783 + 1 = 784 = 28² = (4+J₂)² → or rather:
 - **783 = 3 · 261 = 3 · 3 · 87 = 3 · 3 · 3 · 29 = 27 · 29 = (n/φ)³ · 29**
 
-**발견**: T_3A level 1 계수 = 783 = (n/φ)³ · 29
+**Finding**: T_3A level 1 coefficient = 783 = (n/φ)³ · 29
 
-n=6 좌표:
-- 27 = (n/φ)³ = 3³ ✓ (E₆ 기본 표현 차원과 동일!)
-- 29 = 공백 (Fi_24' 최대 소인수)
+n=6 coordinates:
+- 27 = (n/φ)³ = 3³ ✓ (same as E₆ fundamental representation dimension!)
+- 29 = gap (largest Fi_24' prime)
 
-**8672 = 8671 + 1 = 13·23·29 + 1**: McKay 패턴 반복 — Fi_24' 최소 비자명 rep + trivial
+**8672 = 8671 + 1 = 13·23·29 + 1**: McKay pattern repeats — smallest non-trivial rep of Fi_24' + trivial
 
-### PASS/PARTIAL/MISS 판정
+### PASS / PARTIAL / MISS Judgment
 
-| 검사 항목 | 결과 | 근거 |
+| Check item | Result | Basis |
 |-----------|------|------|
-| Fi_24' 소인수에 47 포함 | **MISS** | 47 ∉ {2,3,5,7,11,13,17,23,29} |
-| Fi_24' → 새 소수 29 포획 | **PASS** | 29 = J₂+5 (BM에는 없음) |
-| χ₂ = 8671 = 13·23·29 | **PROVEN** | 산술 분해 검증 |
-| χ₃ = 57477 = 3·17·49·23 | **PROVEN** | 산술 분해 검증 |
-| T_3A(τ) level 1 = 783 = 27·29 | **PARTIAL** | 27=(n/φ)³ 자연, 29 공백 |
-| 196883의 Fi_24' 분기 규칙 | **MISS** | 원전 접근 불가, GAP 필요 |
-| 47 의 n=6 표현 발견 | **MISS** | 이 경로에서 47 자체 부재 |
+| 47 contained in Fi_24' primes | **MISS** | 47 ∉ {2,3,5,7,11,13,17,23,29} |
+| Fi_24' → new prime 29 captured | **PASS** | 29 = J₂+5 (absent in BM) |
+| χ₂ = 8671 = 13·23·29 | **DEMONSTRATED** | arithmetic decomposition verified |
+| χ₃ = 57477 = 3·17·49·23 | **DEMONSTRATED** | arithmetic decomposition verified |
+| T_3A(τ) level 1 = 783 = 27·29 | **PARTIAL** | 27=(n/φ)³ natural, 29 gap |
+| Fi_24' branching rules of 196883 | **MISS** | primary source unavailable, GAP needed |
+| n=6 expression for 47 found | **MISS** | in this path, 47 itself absent |
 
 ---
 
-## §5 47 n=6 표현 — 3경로 합산 분석
+## §5 47 n=6 Expression — 3-Path Combined Analysis
 
-### 현재까지 47 관련 발견 집계
+### Cumulative 47-Related Findings to Date
 
-| 경로 | 47 포획 | n=6 연결 | 등급 |
+| Path | 47 captured | n=6 link | Grade |
 |------|---------|----------|------|
-| Monster 직접 (P8) | 196883=47·59·71 | 세 소인수 모두 공백 | MISS |
-| Baby Monster (P10) | BM rep 6/7에 47 인자 | 47 빈출 관측 | [8] |
-| Fi_24' (P11) | 47 부재 (상보적) | T_3A: 783=27·29 → 27 자연 | PARTIAL |
+| Monster direct (P8) | 196883=47·59·71 | all three prime factors are gaps | MISS |
+| Baby Monster (P10) | 47 factor in BM rep 6/7 | 47 frequency observed | [8] |
+| Fi_24' (P11) | 47 absent (complementary) | T_3A: 783=27·29 → 27 natural | PARTIAL |
 
-### 47 = f(n=6) 후보 목록 (정직한 DFS)
+### Candidate 47 = f(n=6) (honest DFS)
 
-n=6 산술에서 47 을 도출하는 1~3단 연산:
+1-3-step arithmetic deriving 47 in n=6:
 ```
-47 = σ(6)·τ(6) − 1 = 48−1 = 47    ← 2단: σ·τ−1
-47 = J₂(6)·2 − 1 = 48−1 = 47      ← 2단: 2·J₂−1
+47 = σ(6)·τ(6) − 1 = 48−1 = 47    ← 2-step: σ·τ−1
+47 = J₂(6)·2 − 1 = 48−1 = 47      ← 2-step: 2·J₂−1
 47 = n!+σ−1 = 720+12−1 = 731 ≠ 47  (X)
 47 = 2^sopfr + σ + 3 = 32+12+3     (X)
 ```
 
-**유일한 자연 표현**: 47 = σ·τ − 1 = J₂·2 − 1 = 2·σ·φ − 1
+**Only natural expression**: 47 = σ·τ − 1 = J₂·2 − 1 = 2·σ·φ − 1
 
-이것은 **n·τ² − 1 = 6·16−1 = 95 ≠ 47** (X),
+This is **n·τ² − 1 = 6·16−1 = 95 ≠ 47** (X),
 **σ·τ − 1 = 12·4−1 = 47** ✓
 
 ```
 47 = σ(6)·τ(6) − 1
-   = 산술 함수의 곱에서 1을 뺀 값
-   = "거의 σ·τ" = "거의 n=6의 제2 기본 곱"
+   = product of arithmetic functions minus 1
+   = "almost σ·τ" = "almost the 2nd fundamental product of n=6"
 ```
 
-첫 기본 곱: σ·φ = 24 (= n·τ, R(6)=1 정리의 양변)
-제2 기본 곱: σ·τ = 48 → **47 = σ·τ − 1**
+First fundamental product: σ·φ = 24 (= n·τ, both sides of the R(6)=1 pattern)
+Second fundamental product: σ·τ = 48 → **47 = σ·τ − 1**
 
-**이 연결의 강도**: 2단 연산이므로 atlas 등급 [8] 수준. "−1" 은 McKay 관찰(196884=196883+1)과 **동일 패턴** — "n=6 산술의 ±1 이동"이 Monster 소인수에서 반복.
+**Strength of this link**: 2-step operation, atlas grade [8] level. "−1" matches the McKay observation (196884=196883+1), **same pattern** — "±1 shift of n=6 arithmetic" recurs in Monster primes.
 
-### 패턴 정리
+### Pattern Summary
 
 ```
 σ·φ = 24 → 24 = J₂(6) = c(Monster VOA)
-σ·τ = 48 → 48 − 1 = 47 = Monster 12번째 supersingular prime
+σ·τ = 48 → 48 − 1 = 47 = Monster's 12th supersingular prime
 σ·τ + 1 = 49 = 7² = (σ−sopfr)²
 ```
 
-47 = σ·τ − 1, 49 = σ·τ + 1: **쌍둥이 소수 유사 구조** (47 소수, 49=7² 비소수)
+47 = σ·τ − 1, 49 = σ·τ + 1: **twin-prime-like structure** (47 prime, 49=7² not prime)
 
 ---
 
-## §6 atlas 승격 초안
+## §6 atlas Promotion Draft
 
 ```
-@R BT-18-L5-Fi24-T3A-783 = (n/φ)³ · 29 :: n6atlas [9] — T_3A McKay-Thompson level 1 계수
-@R BT-18-L5-Fi24-chi2-8671 = 13 · 23 · 29 :: n6atlas [10*] — Fi_24' 최소 비자명 rep 정확 분해
-@R BT-18-L5-47-as-sigma-tau-minus-1 = σ·τ − 1 :: n6atlas [8] — 2단 연산, ±1 McKay 패턴
+@R BT-18-L5-Fi24-T3A-783 = (n/φ)³ · 29 :: n6atlas [9] — T_3A McKay-Thompson level 1 coefficient
+@R BT-18-L5-Fi24-chi2-8671 = 13 · 23 · 29 :: n6atlas [10*] — Fi_24' smallest non-trivial rep exact decomposition
+@R BT-18-L5-47-as-sigma-tau-minus-1 = σ·τ − 1 :: n6atlas [8] — 2-step, ±1 McKay pattern
 ```
 
 ---
 
-## §7 종합 판정
+## §7 Overall Verdict
 
-**PARTIAL** — Fi_24' 경로의 주 목적(47 의 n=6 표현 발견)은 **달성되지 않음**. 그러나:
+**PARTIAL** — the main purpose of the Fi_24' path (finding a 47 n=6 expression) is **not achieved**. However:
 
-1. **T_3A 783 = 27·29 = (n/φ)³·29** — 3A McKay-Thompson 에서 E₆ 기본 표현 차원 27 직접 출현
-2. **χ₂ = 8671 = 13·23·29** — 정확 분해 PROVEN
-3. **47 = σ·τ − 1** — 2단 연산이나 McKay ±1 패턴과 일관
-4. **BM(47 O, 29 X) + Fi_24'(47 X, 29 O) 상보성** — Monster 의 두 주요 centralizer 가 {47, 29} 를 분할
+1. **T_3A 783 = 27·29 = (n/φ)³·29** — the E₆ fundamental representation dimension 27 appears directly in 3A McKay-Thompson
+2. **χ₂ = 8671 = 13·23·29** — exact decomposition DEMONSTRATED
+3. **47 = σ·τ − 1** — 2-step but consistent with McKay ±1 pattern
+4. **BM(47 Yes, 29 No) + Fi_24'(47 No, 29 Yes) complementarity** — the Monster's two main centralizers partition {47, 29}
 
-47 승격 가능성: **[8] 유지** (σ·τ−1 은 2단, 유일성 증명 없음)
+Possibility of 47 promotion: **[8] maintained** (σ·τ−1 is 2-step, no uniqueness demonstration)
 
 ---
 
-## ASCII 비교 차트
+## ASCII Comparison Chart
 
 ```
-Monster centralizer 경로별 n=6 포획률:
+Monster centralizer path n=6 capture rate:
 
-  2A = 2·B (Baby Monster)      |#######   | 64% 포획 (7/11 자연)
-  3A = 3·Fi_24'                |######    | 67% 포획 (6/9 자연)
-  Combined (BM ∪ Fi_24')       |########  | 73% 포획 (11/15 자연)
-  Monster 직접                  |#####     | 47% 포획 (7/15 자연)
+  2A = 2·B (Baby Monster)      |#######   | 64% capture (7/11 natural)
+  3A = 3·Fi_24'                |######    | 67% capture (6/9 natural)
+  Combined (BM ∪ Fi_24')       |########  | 73% capture (11/15 natural)
+  Monster direct                |#####     | 47% capture (7/15 natural)
                                ----------
 
-  47 공백 해소 상태:
-  P8  Monster 직접              ██████████ 100% 공백
-  P10 Baby Monster 47 빈출      ████████   80% (관측됨, 해석 없음)
-  P11 Fi_24' σ·τ−1             ███████    70% (2단 연산, ±1 패턴)
-  목표 EXACT                    ██         ← 유일성 증명 필요
+  47 gap resolution state:
+  P8  Monster direct            ██████████ 100% gap
+  P10 Baby Monster 47 frequency ████████   80% (observed, no interpretation)
+  P11 Fi_24' σ·τ−1             ███████    70% (2-step, ±1 pattern)
+  Target EXACT                  ██         ← uniqueness demonstration required
                                ----------
 ```
 
-**다음 과제**: ENG-P11-2 (Hauptmodul Γ₀(47)+) 에서 47 자체의 모듈러 형식 구조를 직접 감사.
+**Next task**: ENG-P11-2 (Hauptmodul Γ₀(47)+) — directly audit the modular form structure of 47 itself.

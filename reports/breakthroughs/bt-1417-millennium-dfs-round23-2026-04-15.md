@@ -2,305 +2,305 @@
 id: bt-1417-millennium-dfs-round23
 date: 2026-04-15
 parent_bt: BT-541~BT-547 (7 Clay Millennium)
-roadmap_task: PX (DFS 23차)
+roadmap_task: PX (DFS round 23)
 grade: "[10] DFS round"
 dfs_round: 23
 new_tight: 14
 cumulative_tight: 312
-solved: "0/7 (정직)"
+solved: "0/7 (honest)"
 ---
 
-# DFS 23차 — 정보이론/동역학/미분위상/유한기하/접촉기하 (2026-04-15)
+# DFS round 23 — information theory / dynamics / differential topology / finite geometry / contact geometry (2026-04-15)
 
-> **누적 tight**: 298 → **312** (+14 신규)
-> **7대 난제 해결**: **0/7** (정직)
-> **탐색 영역**: 4개 병렬 에이전트 × 10 미탐색 영역
+> **Cumulative tight**: 298 → **312** (+14 new)
+> **7 Clay problems resolved**: **0/7** (honest)
+> **Search areas**: 4 parallel agents × 10 unexplored areas
 
 ---
 
-## §0 탐색 영역
+## §0 Search areas
 
-| 그룹 | 영역 |
+| Group | Area |
 |------|------|
-| A | 정보 이론 / Shannon 용량 / 양자 정보 / 코딩 이론 |
-| B | 동역학계 / 엔트로피 / 범주론 / Grothendieck / 표현 안정성 |
-| C | 미분 위상 / 수술 이론 / 유한 기하 / 사영 평면 / 확률 그래프 |
-| D | 대수적 K-이론 심화 / 열역학 / 접촉 기하 / CY Mirror Symmetry |
+| A | Information theory / Shannon capacity / quantum information / coding theory |
+| B | Dynamical systems / entropy / category theory / Grothendieck / representation stability |
+| C | Differential topology / surgery theory / finite geometry / projective plane / random graphs |
+| D | Algebraic K-theory deep dive / thermodynamics / contact geometry / CY Mirror Symmetry |
 
 ---
 
-## §1 신규 14건
+## §1 14 new entries
 
 ### [23-01] Hexacode [6,3,4]/GF(4) — T1-STRONG
 
-GF(4) 위 유일한 완전 자기쌍대 MDS 코드.
-- n(코드길이) = 6 = n
-- k(차원) = 3 = n/φ
-- d(최소거리) = 4 = τ
-- q(체크기) = 4 = τ
+The unique self-dual MDS code over GF(4).
+- n (code length) = 6 = n
+- k (dimension) = 3 = n/φ
+- d (minimum distance) = 4 = τ
+- q (field size) = 4 = τ
 
-4개 독립 파라미터가 모두 M-set. 이름 자체가 "hexa"=6에서 유래.
-Singleton 한계 d≤n-k+1=4 정확 달성(MDS). 자기쌍대: C=C⊥.
+All 4 independent parameters lie in the M-set. The name itself derives from "hexa" = 6.
+Singleton bound d ≤ n-k+1 = 4 is attained exactly (MDS). Self-dual: C = C⊥.
 
-**등급**: T1-STRONG
-**출처**: Conway & Sloane 1988, 격자와 코드의 구면충전
-**관련 BT**: BT-542 (코딩 복잡도), BT-545 (격자)
-
----
-
-### [23-02] PG(2,6) 사영 평면 미존재 — T4 EXACT
-
-Bruck-Ryser-Chowla 정리 (1949):
-- q≡1,2 (mod 4)이면 PG(2,q) 존재에 필요 조건 충족
-- q=6: 6≡2 (mod 4) → BRC 조건 불충족 → **미존재**
-- q=2,3,4,5,7,8,9 모두 존재, **q=n=6만 미존재** (q≤10)
-
-n=6이 유한 사영 평면의 유일한 "구멍".
-
-**등급**: T4 EXACT (수학적 증명)
-**출처**: Bruck-Ryser 1949
-**관련 BT**: BT-542 (P vs NP, 조합 구조)
+**Grade**: T1-STRONG
+**Source**: Conway & Sloane 1988, Sphere Packings, Lattices and Groups
+**Related BT**: BT-542 (coding complexity), BT-545 (lattices)
 
 ---
 
-### [23-03] Kervaire 불변량 dim=6=2³-2 — T4 EXACT
+### [23-02] Non-existence of PG(2,6) — T4 EXACT
 
-Kervaire 불변량 비자명 가능 차원 계열: {4k+2 : 2^j-2} = {0, 2, 6, 14, 30, 62, ...}
-- n=6 = 2³-2 (j=3)
-- Hill-Hopkins-Ravenel (2009): j≥8에서 Kervaire 불변량 = 0
-- DFS20의 Θ₆=1 (이종구면 비존재)과 독립 연결
+Bruck-Ryser-Chowla theorem (1949):
+- If q ≡ 1,2 (mod 4), the necessary conditions for PG(2,q) existence are satisfied
+- q = 6: 6 ≡ 2 (mod 4) → BRC condition fails → **does not exist**
+- q = 2, 3, 4, 5, 7, 8, 9 all exist; **only q = n = 6 fails** (q ≤ 10)
 
-**등급**: T4 EXACT
-**출처**: Kervaire-Milnor 1963, Hill-Hopkins-Ravenel 2009
-**관련 BT**: BT-547 (푸앵카레), BT-545 (호지)
+n = 6 is the only "hole" among small finite projective planes.
+
+**Grade**: T4 EXACT (mathematical proof)
+**Source**: Bruck-Ryser 1949
+**Related BT**: BT-542 (P vs NP, combinatorial structure)
 
 ---
 
-### [23-04] 접촉/심플렉틱 이중 사다리 — T2+T3
+### [23-03] Kervaire invariant dim = 6 = 2³-2 — T4 EXACT
 
-홀수 접촉 차원 ↔ 짝수 심플렉틱 차원:
+Series of dimensions with nontrivial Kervaire invariant: {4k+2 : 2^j-2} = {0, 2, 6, 14, 30, 62, ...}
+- n = 6 = 2³-2 (j=3)
+- Hill-Hopkins-Ravenel (2009): Kervaire invariant = 0 for j ≥ 8
+- Independently linked to DFS20's Θ₆ = 1 (no exotic spheres)
+
+**Grade**: T4 EXACT
+**Source**: Kervaire-Milnor 1963, Hill-Hopkins-Ravenel 2009
+**Related BT**: BT-547 (Poincaré), BT-545 (Hodge)
+
+---
+
+### [23-04] Contact/symplectic double ladder — T2+T3
+
+Odd contact dimensions ↔ even symplectic dimensions:
 - dim 3 = n/φ ↔ dim 2 = φ (Giroux 2002)
-- dim 5 = sopfr ↔ dim 4 = τ (접촉 수술)
-- dim 7 = σ-sopfr ↔ dim 6 = n (열역학/G₂)
+- dim 5 = sopfr ↔ dim 4 = τ (contact surgery)
+- dim 7 = σ-sopfr ↔ dim 6 = n (thermodynamics / G₂)
 
-M-set 값 6개 완전 점유: {φ, n/φ, τ, sopfr, n, σ-sopfr}.
-dim 1↔0 아래, dim 9↔8 위에서 M-set 이탈 → sharp boundary.
+Full occupancy of 6 M-set values: {φ, n/φ, τ, sopfr, n, σ-sopfr}.
+Below dim 1↔0 and above dim 9↔8, M-set membership fails → sharp boundary.
 
-**등급**: T2+T3 (Arnold/Giroux/Bryant 3영역 독립 + 연속 경계)
-**출처**: Arnold 1989, Giroux 2002, Bryant 1987
-**관련 BT**: BT-543 (양-밀스, 게이지), BT-547 (위상)
-
----
-
-### [23-05] SYZ 완전 정사각 파이브레이션 — T4
-
-Strominger-Yau-Zaslow (1996): CY_d Mirror Symmetry는 T^d fibration.
-- CY₃ (d=n/φ=3): 기저 dim=3, 섬유 T³ dim=3 → **총 dim=6=n**
-- "완전 정사각": 기저=섬유=n/φ=3인 유일한 CY 차원
-- CY₁: 기저=섬유=1 (자명), CY₂: T²→S² (2≠기저 dim)
-
-**등급**: T4 (CY₃=n/φ에서 유일한 정사각 구조)
-**출처**: Strominger-Yau-Zaslow 1996
-**관련 BT**: BT-545 (호지), BT-543 (양-밀스, 여분 차원)
+**Grade**: T2+T3 (Arnold/Giroux/Bryant 3-area independence + continuous boundary)
+**Source**: Arnold 1989, Giroux 2002, Bryant 1987
+**Related BT**: BT-543 (Yang-Mills, gauge), BT-547 (topology)
 
 ---
 
-### [23-06] Artin-Mazur 주기점 삼중 멱표현 — T1
+### [23-05] SYZ perfectly square fibration — T4
 
-Smale horseshoe (2-symbol shift): Fix_k = 2^k. n=6 함수 대입:
+Strominger-Yau-Zaslow (1996): CY_d Mirror Symmetry is a T^d fibration.
+- CY₃ (d = n/φ = 3): base dim = 3, fiber T³ dim = 3 → **total dim = 6 = n**
+- "Perfectly square": the unique CY dimension with base = fiber = n/φ = 3
+- CY₁: base = fiber = 1 (trivial); CY₂: T² → S² (2 ≠ base dim)
+
+**Grade**: T4 (unique square structure at CY₃ = n/φ)
+**Source**: Strominger-Yau-Zaslow 1996
+**Related BT**: BT-545 (Hodge), BT-543 (Yang-Mills, extra dimensions)
+
+---
+
+### [23-06] Artin-Mazur triple power expression of periodic points — T1
+
+Smale horseshoe (2-symbol shift): Fix_k = 2^k. Substituting n = 6 functions:
 - Fix_φ = 2² = 4 = τ
 - Fix_τ = 2⁴ = 16 = φ^τ
 - Fix_n = 2⁶ = 64 = τ^(n/φ) = (σ-τ)^φ
 
-세 등식 동시 성립. Fix_φ=τ를 만족하는 n은 φ(n)=2인 {1,2,3,4,6} 중 2²=4=τ(n)인 n=6뿐.
+All three equalities hold simultaneously. Among n with φ(n) = 2 in {1, 2, 3, 4, 6}, the only one satisfying Fix_φ = τ via 2² = 4 = τ(n) is n = 6.
 
-**등급**: T1
-**출처**: Artin-Mazur 1965 (Am. J. Math.)
-**관련 BT**: BT-541 (리만, 동역학 zeta), BT-544 (NS, 동역학계)
-
----
-
-### [23-07] 매듭 bridge-genus M-set 완전 열거 — T3-STRONG
-
-Schubert 1954: b-bridge 매듭의 genus ≤ b-1.
-- b=2: g≤1=μ
-- b=3: g≤2=φ
-- b=4: g≤3=n/φ
-- b=5: g≤4=τ
-- b=6: g≤5=sopfr
-- b=7: g≤6=n
-
-{μ,φ,n/φ,τ,sopfr,n} — M-set 6원소 연속 출현.
-
-**등급**: T3-STRONG (연속 패턴, M-set 순열)
-**출처**: Schubert 1954 (Abh. Math. Sem. Hamburg)
-**관련 BT**: BT-547 (푸앵카레, 위상)
+**Grade**: T1
+**Source**: Artin-Mazur 1965 (Am. J. Math.)
+**Related BT**: BT-541 (Riemann, dynamical zeta), BT-544 (NS, dynamical systems)
 
 ---
 
-### [23-08] Adams J-동형사상 |Im J₃|=24=J₂ — T1
+### [23-07] Knot bridge-genus M-set complete enumeration — T3-STRONG
 
-Adams (1966): π^s_{4k-1}의 im(J) ≅ Z/a_k.
+Schubert 1954: genus of a b-bridge knot ≤ b-1.
+- b=2: g ≤ 1 = μ
+- b=3: g ≤ 2 = φ
+- b=4: g ≤ 3 = n/φ
+- b=5: g ≤ 4 = τ
+- b=6: g ≤ 5 = sopfr
+- b=7: g ≤ 6 = n
+
+{μ, φ, n/φ, τ, sopfr, n} — consecutive appearance of 6 M-set elements.
+
+**Grade**: T3-STRONG (consecutive pattern, M-set permutation)
+**Source**: Schubert 1954 (Abh. Math. Sem. Hamburg)
+**Related BT**: BT-547 (Poincaré, topology)
+
+---
+
+### [23-08] Adams J-homomorphism |Im J₃| = 24 = J₂ — T1
+
+Adams (1966): im(J) in π^s_{4k-1} ≅ Z/a_k.
 - k=1: |Im J₁| = 24 = J₂(6)
-- 동시에 B₂ = 1/6 = 1/n (Bernoulli 수)
+- Simultaneously B₂ = 1/6 = 1/n (Bernoulli number)
 - |Im J₁|·B₂ = 24·(1/6) = 4 = τ
 
-3개 독립 방향: 안정 호모토피 + Bernoulli + K-이론 im(J).
+3 independent directions: stable homotopy + Bernoulli + K-theory im(J).
 
-**등급**: T1
-**출처**: Adams 1966 (Ann. Math.)
-**관련 BT**: BT-541 (리만, Bernoulli), BT-547 (푸앵카레)
-
----
-
-### [23-09] Fano 평면 PG(2,2) 3중 상수 — T2
-
-- 점/선 수 = 7 = σ-sopfr
-- 각 선 위 점 수 = 3 = n/φ
-- |Aut(PG(2,2))| = GL(3,2) = 168 = J₂ × (σ-sopfr) = 24×7
-
-단일 구조에서 3개 M-set 값 동시 출현.
-
-**등급**: T2
-**출처**: Fano 1892, Klein 1870
-**관련 BT**: BT-542, BT-545 (격자/조합)
+**Grade**: T1
+**Source**: Adams 1966 (Ann. Math.)
+**Related BT**: BT-541 (Riemann, Bernoulli), BT-547 (Poincaré)
 
 ---
 
-### [23-10] PSL(2,2)≅S₃, |PSL(2,2)|=6=n — T4
+### [23-09] Fano plane PG(2,2) triple constants — T2
+
+- points/lines = 7 = σ-sopfr
+- points per line = 3 = n/φ
+- |Aut(PG(2,2))| = GL(3,2) = 168 = J₂ × (σ-sopfr) = 24 × 7
+
+3 M-set values appear simultaneously in a single structure.
+
+**Grade**: T2
+**Source**: Fano 1892, Klein 1870
+**Related BT**: BT-542, BT-545 (lattices/combinatorics)
+
+---
+
+### [23-10] PSL(2,2) ≅ S₃, |PSL(2,2)| = 6 = n — T4
 
 |PSL(2,q)| = q(q²-1)/2.
-- q=2: |PSL(2,2)| = 2·3/2 = 6 = n, PSL(2,2) ≅ S₃
-- |PSL(2,q)|=n인 q는 **q=2가 유일**
+- q = 2: |PSL(2,2)| = 2·3/2 = 6 = n, PSL(2,2) ≅ S₃
+- The only q giving |PSL(2,q)| = n is **q = 2**
 
-**등급**: T4
-**출처**: Jordan 1870
-**관련 BT**: BT-542 (군론/복잡도)
-
----
-
-### [23-11] Heawood 착색수 3기본곡면 — T2
-
-- RP² (사영 평면): χ = 6 = n
-- T² (토러스): χ = 7 = σ-sopfr
-- S² (구면): χ = 4 = τ (4색 정리)
-
-3개 기본 곡면의 착색수가 각각 다른 M-set 파생값.
-
-**등급**: T2
-**출처**: Heawood 1890, Appel-Haken 1976 (4색), Franklin 1934
-**관련 BT**: BT-547 (위상), BT-542 (그래프 착색)
+**Grade**: T4
+**Source**: Jordan 1870
+**Related BT**: BT-542 (group theory / complexity)
 
 ---
 
-### [23-12] p(6)=11=n+sopfr=σ-μ 이중 분해 유일 — T1
+### [23-11] Heawood coloring numbers for 3 fundamental surfaces — T2
 
-분할 수 p(6) = 11:
-- 가산 분해: n+sopfr = 6+5 = 11
-- 승제 분해: σ-μ = 12-1 = 11
+- RP² (projective plane): χ = 6 = n
+- T² (torus): χ = 7 = σ-sopfr
+- S² (sphere): χ = 4 = τ (4-color theorem)
 
-n=2~15에서 두 등식을 동시 만족하는 n은 **6만**.
+Coloring numbers of the three fundamental surfaces are each different M-set-derived values.
 
-**등급**: T1
-**출처**: Hardy-Ramanujan 1918
-**관련 BT**: BT-541 (리만, 분할 함수), BT-545 (호지)
-
----
-
-### [23-13] Serre functor CY₃ [n/φ] 사다리 — T1
-
-CY_d의 유도 범주에서 Serre functor S = [d]:
-- K3 (d=2=φ): S = [φ]
-- CY₃ (d=3=n/φ): S = [n/φ]
-- 사다리: [φ] → [n/φ] → [τ]...
-
-유도 범주론 + Serre 쌍대 + CY 구조 3개 독립 도출.
-
-**등급**: T1
-**출처**: Bondal-Kapranov 1990
-**관련 BT**: BT-545 (호지)
+**Grade**: T2
+**Source**: Heawood 1890, Appel-Haken 1976 (4-color), Franklin 1934
+**Related BT**: BT-547 (topology), BT-542 (graph coloring)
 
 ---
 
-### [23-14] 삼항 Golay [11,6,5] — T1+T4
+### [23-12] Unique dual decomposition p(6) = 11 = n+sopfr = σ-μ — T1
 
-GF(3) 위 완전 코드:
-- k(차원) = 6 = n
-- d(최소거리) = 5 = sopfr
-- 완전 코드 전체 목록에서 k=n=6인 **유일** 사례
+Partition count p(6) = 11:
+- Additive decomposition: n + sopfr = 6 + 5 = 11
+- Multiplicative/subtractive decomposition: σ - μ = 12 - 1 = 11
 
-**등급**: T1+T4
-**출처**: Golay 1949
-**관련 BT**: BT-542 (코딩), BT-545 (격자/Mathieu)
+Among n = 2..15, **only n = 6** satisfies both equalities simultaneously.
+
+**Grade**: T1
+**Source**: Hardy-Ramanujan 1918
+**Related BT**: BT-541 (Riemann, partition function), BT-545 (Hodge)
 
 ---
 
-## §2 NOISE 판정 (제외)
+### [23-13] Serre functor CY₃ [n/φ] ladder — T1
 
-| 후보 | 값 | 사유 |
+In the derived category of CY_d, the Serre functor S = [d]:
+- K3 (d = 2 = φ): S = [φ]
+- CY₃ (d = 3 = n/φ): S = [n/φ]
+- Ladder: [φ] → [n/φ] → [τ]...
+
+3 independent derivations: derived-category theory + Serre duality + CY structure.
+
+**Grade**: T1
+**Source**: Bondal-Kapranov 1990
+**Related BT**: BT-545 (Hodge)
+
+---
+
+### [23-14] Ternary Golay [11,6,5] — T1+T4
+
+Perfect code over GF(3):
+- k (dimension) = 6 = n
+- d (minimum distance) = 5 = sopfr
+- In the complete enumeration of perfect codes, the **unique** case with k = n = 6
+
+**Grade**: T1+T4
+**Source**: Golay 1949
+**Related BT**: BT-542 (coding), BT-545 (lattices/Mathieu)
+
+---
+
+## §2 NOISE verdict (excluded)
+
+| Candidate | Value | Reason |
 |------|----|------|
-| K_15(Z) im(J)=480 | 480 | M-set 분해 가능하나 기존 패턴 깨짐 |
-| K_n(F₂) k=2,3 | 3,7 | 2개 일치만, 독립 3개 미달 |
-| Arnold 열역학 접촉 dim=5 | 5 | Gibbs 정의에서 직접 도출, 독립성 미약 |
-| Quintic |χ|=200 | 200 | 단일 숫자 사후 분해, M-set 비원소 |
-| 위상 엔트로피 log(2) | log(2) | symbol 수=φ, 자명 |
-| K(G,n) n=6 | - | 특이성 없음 |
-| Δ^6 셀 수=127 | 127 | 범용 공식 |
-| Farey |F_6|=13 | 13 | M-set 분해 실패 MISS |
-| FI-모듈 안정화 | 6 | 반자명 (φ=2 → n=2·3) |
+| K_15(Z) im(J) = 480 | 480 | M-set decomposition possible but breaks the existing pattern |
+| K_n(F₂) k=2,3 | 3,7 | only 2 matches; independent 3 not attained |
+| Arnold thermodynamics contact dim = 5 | 5 | direct from Gibbs definition; independence too weak |
+| Quintic |χ| = 200 | 200 | single-number post-hoc decomposition; not an M-set element |
+| Topological entropy log(2) | log(2) | symbol count = φ, trivial |
+| K(G,n) n=6 | - | nothing distinctive |
+| Δ^6 cell count = 127 | 127 | general-purpose formula |
+| Farey |F_6| = 13 | 13 | M-set decomposition fails MISS |
+| FI-module stabilization | 6 | semi-trivial (φ = 2 → n = 2·3) |
 
 ---
 
-## §3 누적 통계
+## §3 Cumulative statistics
 
 ```
-DFS 라운드  누적 tight
+DFS round  cumulative tight
   21      |####################################################################286
   22      |######################################################################298
   23      |##########################################################################312  <-- +14
            0        50       100      150      200      250      312
 
-7대 난제 해결: 0/7 (정직)
+7 Clay problems resolved: 0/7 (honest)
 ```
 
-| 항목 | 수치 |
+| Item | Value |
 |------|-----:|
-| DFS 23차 신규 tight | 14 |
-| 누적 tight | **312** |
-| Bernoulli 독립 신규 | 2건 (PG(2,6) BRC, PSL(2,2)) |
-| 누적 Bernoulli 독립 | **11건** |
-| 탐색 영역 누적 | ~210개 |
-| 7대 난제 해결 | **0/7** |
+| DFS round 23 new tight | 14 |
+| Cumulative tight | **312** |
+| Bernoulli-independent new | 2 (PG(2,6) BRC, PSL(2,2)) |
+| Cumulative Bernoulli-independent | **11** |
+| Cumulative search areas | ~210 |
+| 7 Clay problems resolved | **0/7** |
 
 ---
 
-## §4 최강 발견 (23차 단독)
+## §4 Strongest findings (round 23 alone)
 
-1. **[23-02] PG(2,6) 미존재** — T4 EXACT, q≤10 유일 구멍, Bernoulli 독립
-2. **[23-01] Hexacode [6,3,4]/GF(4)** — T1-STRONG, 4 파라미터 동시 M-set
-3. **[23-03] Kervaire dim=6=2³-2** — T4 EXACT, 불변량 계열 유일 교점
-4. **[23-04] 접촉/심플렉틱 이중 사다리** — T2+T3, M-set 6값 완전 점유
-5. **[23-05] SYZ 완전 정사각** — T4, CY₃ 유일 구조
+1. **[23-02] Non-existence of PG(2,6)** — T4 EXACT, unique hole at q ≤ 10, Bernoulli-independent
+2. **[23-01] Hexacode [6,3,4]/GF(4)** — T1-STRONG, 4 parameters simultaneously in M-set
+3. **[23-03] Kervaire dim = 6 = 2³-2** — T4 EXACT, unique crossing in the invariant series
+4. **[23-04] Contact/symplectic double ladder** — T2+T3, full occupancy of 6 M-set values
+5. **[23-05] SYZ perfectly square** — T4, unique structure at CY₃
 
 ---
 
-## §5 미탐색 영역 제안 (DFS 24차)
+## §5 Proposed unexplored areas (DFS round 24)
 
-| # | 영역 |
+| # | Area |
 |---|------|
-| 1 | 수치 해석 / 유한 요소법 / 스플라인 |
-| 2 | 게임 이론 / Nash 균형 / 조합 게임 |
-| 3 | 최적 수송 / Wasserstein 거리 |
-| 4 | 비가환 대수 / 군환 / 군 코호몰로지 |
-| 5 | 특이점 이론 / Arnold 분류 ADE |
-| 6 | 확률 미분 방정식 / Ito 적분 |
-| 7 | 정수 프로그래밍 / 격자 문제 / SVP |
-| 8 | 극값 그래프 이론 / Turan 문제 |
-| 9 | 산술 조합론 / 덧셈 수론 |
-| 10 | 비선형 파동 / 솔리톤 / 역산란 |
+| 1 | Numerical analysis / FEM / splines |
+| 2 | Game theory / Nash equilibria / combinatorial games |
+| 3 | Optimal transport / Wasserstein distance |
+| 4 | Noncommutative algebra / group rings / group cohomology |
+| 5 | Singularity theory / Arnold ADE classification |
+| 6 | Stochastic differential equations / Itô integrals |
+| 7 | Integer programming / lattice problems / SVP |
+| 8 | Extremal graph theory / Turán problems |
+| 9 | Arithmetic combinatorics / additive number theory |
+| 10 | Nonlinear waves / solitons / inverse scattering |
 
 ---
 
-*작성: 2026-04-15 DFS 23차*
-*BT 해결 0/7 정직 유지*
-*누적 tight 312건*
+*Written: 2026-04-15 DFS round 23*
+*BT resolved 0/7 honestly preserved*
+*Cumulative tight: 312*

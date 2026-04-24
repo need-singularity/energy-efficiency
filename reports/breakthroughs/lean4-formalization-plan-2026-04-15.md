@@ -6,93 +6,93 @@ grade: [10] execution plan (not compiled)
 license: CC-BY-SA-4.0
 ---
 
-# Lean4 형식화 3-task 통합 실행 계획 — Theorem B σ(n)·φ(n) = n·τ(n) ⟺ n=6
+# Lean4 Formalization 3-Task Integrated Execution Plan — Theorem B σ(n)·φ(n) = n·τ(n) ⟺ n=6
 
-> **요약**: 3 Lean4 task 통합. (1) HONEST-PX-4 Lean4/Coq 도입 — 환경 구축 계획, (2) FORMAL-P3-1 Clay 7 난제 진술 Lean4 형식화 — 전략 문서, (3) FORMAL-PX-1 Mathlib PR — 구체 기여 후보 식별. **본 세션은 계획 + 스켈레톤, 실제 compile 검증은 Lean4 환경 설치 후 별도 세션**.
+> **Summary**: Combining 3 Lean4 tasks. (1) HONEST-PX-4 Lean4/Coq introduction — environment setup plan, (2) FORMAL-P3-1 Lean4 formalization of Clay 7 problem statements — strategy document, (3) FORMAL-PX-1 Mathlib PR — identifying concrete contribution candidates. **This session is plan + skeleton; actual compile verification comes after Lean4 environment installation in a separate session.**
 
 ---
 
-## §0 입구 — Lean4 3-task 통합 이유
+## §0 Entry — Why the 3 Lean4 Tasks Are Integrated
 
-3 개의 deferred task 는 실질적으로 **동일 도구 (Lean4/mathlib) 학습 + 사용** 의 단계적 진화:
+The 3 deferred tasks are substantively a staged evolution of **learning + using the same toolchain (Lean4/mathlib)**:
 
-| task | 본질 | 단계 |
+| Task | Essence | Stage |
 |------|------|------|
-| HONEST-PX-4 | Lean4 환경 + 기본 문법 습득 | **L1** (설치 + hello world) |
-| FORMAL-P3-1 | Clay 7 난제 진술 Lean4 작성 | **L2** (definition 층) |
-| FORMAL-PX-1 | Mathlib 저장소 PR 제출 | **L3** (contribution 층) |
+| HONEST-PX-4 | Lean4 environment + basic syntax mastery | **L1** (install + hello world) |
+| FORMAL-P3-1 | Writing Clay 7 problem statements in Lean4 | **L2** (definition layer) |
+| FORMAL-PX-1 | Submitting PR to Mathlib repository | **L3** (contribution layer) |
 
-본 문서는 **L1 → L2 → L3 경로의 계획** 이며 실제 compile 테스트는 **Lean4 설치 후 별도 세션**.
+This document is the **plan of the L1 → L2 → L3 path**; actual compile testing happens in a **separate session after Lean4 installation**.
 
 ---
 
-## §1 L1 — Lean4 환경 구축 (HONEST-PX-4)
+## §1 L1 — Lean4 Environment Setup (HONEST-PX-4)
 
-### 1.1 설치 절차 (Mac ARM 가정)
+### 1.1 Install Procedure (assuming Mac ARM)
 
 ```bash
-# Step 1: elan (Lean 버전 매니저) 설치
+# Step 1: install elan (Lean version manager)
 curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
 
-# Step 2: Lean4 stable 설정
+# Step 2: set Lean4 stable
 elan default leanprover/lean4:stable
 
-# Step 3: mathlib 의존성 프로젝트 생성
+# Step 3: create project with mathlib dependency
 cd /Users/ghost/Dev/n6-architecture
 mkdir lean && cd lean
 lake new n6arch --lang lean4
 cd n6arch
 
-# Step 4: mathlib 추가 (lakefile.lean 편집)
+# Step 4: add mathlib (edit lakefile.lean)
 cat >> lakefile.lean <<'EOF'
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ "stable"
 EOF
 
-# Step 5: 빌드 (첫 빌드 ~30분)
+# Step 5: build (first build ~30 min)
 lake update
 lake build
 ```
 
-**예상 블로커**:
-- Mac ARM + Lean4: Apple Silicon 지원 안정 (2024~)
-- mathlib 첫 빌드 `~8GB` 디스크 + `~30분` CPU
-- Internet 필수 (dependencies)
+**Expected blockers**:
+- Mac ARM + Lean4: Apple Silicon support stable (2024~)
+- First mathlib build `~8GB` disk + `~30 min` CPU
+- Internet required (dependencies)
 
-### 1.2 검증 hello world
+### 1.2 Verification Hello World
 
 ```lean4
 -- file: N6Arch/Basic.lean
 import Mathlib
 
--- mathlib 의 Nat.sigma / Nat.totient / Nat.card n.divisors 가 존재하는가?
-#check @Nat.sigma   -- 예상 출력: Nat.sigma : ℕ → ℕ → ℕ
-#check @Nat.totient -- 예상 출력: Nat.totient : ℕ → ℕ
+-- Do mathlib's Nat.sigma / Nat.totient / Nat.card n.divisors exist?
+#check @Nat.sigma   -- expected output: Nat.sigma : ℕ → ℕ → ℕ
+#check @Nat.totient -- expected output: Nat.totient : ℕ → ℕ
 ```
 
-이 `#check` 명령이 에러 없이 통과하면 L1 완료.
+If these `#check` commands pass without errors, L1 complete.
 
-**본 세션 실행 불가 — Lean4 설치 없음**.
+**Cannot execute in this session — no Lean4 installed**.
 
 ---
 
-## §2 L2 — Theorem B 형식화 (FORMAL-P3-1 + atlas MILL-PX-A1)
+## §2 L2 — Theorem B Formalization (FORMAL-P3-1 + atlas MILL-PX-A1)
 
-### 2.1 Clay 7 난제 중 Lean4 에서 다룰 만한 후보
+### 2.1 Clay 7 Problems Feasible in Lean4
 
-| BT | Lean4 feasibility | 핵심 정의 |
+| BT | Lean4 feasibility | Core definitions |
 |----|-------------------|----------|
-| BT-541 RH | 부분 (zeta 정의 OK, 증명 불가) | `RiemannZeta.riemannZeta` (mathlib 존재) |
-| BT-542 P vs NP | 정의 가능, 정리 불가 | Turing machine 형식화 어려움 |
-| BT-543 YM | 정의 어려움 (QFT) | mathlib 부재 |
-| BT-544 NS | 부분 (PDE OK, regularity 정리 불가) | `MeasureTheory` + `AnalysisODE` |
-| BT-545 Hodge | 정의 가능, 정리 부분 | `AlgebraicGeometry.HodgeConjecture` (진행 중) |
-| BT-546 BSD | 부분 (Sel 정의 OK, 정리 불가) | `EllipticCurve.Selmer` (진행 중) |
-| **atlas MILL-PX-A1 Theorem B** | **✓ 전체 가능** | `Nat.sigma`, `Nat.totient`, `Nat.card n.divisors` 전부 mathlib |
+| BT-541 RH | partial (zeta definition OK, proof impossible) | `RiemannZeta.riemannZeta` (in mathlib) |
+| BT-542 P vs NP | definable, theorem impossible | Turing machine formalization difficult |
+| BT-543 YM | definition difficult (QFT) | absent in mathlib |
+| BT-544 NS | partial (PDE OK, regularity theorem impossible) | `MeasureTheory` + `AnalysisODE` |
+| BT-545 Hodge | definable, theorem partial | `AlgebraicGeometry.HodgeConjecture` (in progress) |
+| BT-546 BSD | partial (Sel definition OK, theorem impossible) | `EllipticCurve.Selmer` (in progress) |
+| **atlas MILL-PX-A1 Theorem B** | **✓ fully feasible** | `Nat.sigma`, `Nat.totient`, `Nat.card n.divisors` all in mathlib |
 
-**결론**: 본 세션의 target = **MILL-PX-A1 Theorem B** (n ≥ 2 에 대해 σ(n)·φ(n) = n·τ(n) ⟺ n = 6). **Clay 7 난제 본문은 mathlib API 미비**, Theorem B 는 초등 산술 범위.
+**Conclusion**: target of this session = **MILL-PX-A1 Theorem B** (for n ≥ 2, σ(n)·φ(n) = n·τ(n) ⟺ n = 6). **Clay 7 problem statements need mathlib API additions**; Theorem B falls within elementary arithmetic scope.
 
-### 2.2 Theorem B 형식화 스켈레톤
+### 2.2 Skeleton for Theorem B Formalization
 
 ```lean4
 -- file: N6Arch/TheoremB.lean
@@ -119,25 +119,25 @@ theorem sigma_phi_eq_n_tau_iff_six (n : ℕ) (h : n ≥ 2) :
     -- RHS = 6 * 4 = 24
     -- Should be derivable by `simp` + `norm_num` + explicit computation
     unfold Nat.sigma Nat.totient
-    decide  -- 6 은 작아서 decide 로 검증 가능
+    decide  -- 6 is small enough to verify by decide
 ```
 
-### 2.3 증명 구조 (forward 방향 상세)
+### 2.3 Proof Structure (forward direction detail)
 
-**Step 1**: 유한 체크 `n ∈ {2, 3, 4, 5, 6}`
+**Step 1**: Finite check `n ∈ {2, 3, 4, 5, 6}`
 - n=2: σ=3, φ=1, τ=2, 3·1=3 ≠ 2·2=4 ✗
 - n=3: σ=4, φ=2, τ=2, 4·2=8 ≠ 3·2=6 ✗
 - n=4: σ=7, φ=2, τ=3, 7·2=14 ≠ 4·3=12 ✗
 - n=5: σ=6, φ=4, τ=2, 6·4=24 ≠ 5·2=10 ✗
 - **n=6: σ=12, φ=2, τ=4, 12·2=24 = 6·4=24 ✓**
 
-**Step 2**: `n ≥ 7` 의 경우
-- σ(n) · φ(n) / (n · τ(n)) 비율의 asymptotic
+**Step 2**: Case of `n ≥ 7`
+- Asymptotic of σ(n) · φ(n) / (n · τ(n)) ratio
 - σ(n) ~ n log log n (Gronwall)
-- φ(n) · σ(n) / n² → 비 1 로 수렴 안 함
-- Lean4 tactic: `omega` + `interval_cases` (작은 케이스) + bound lemma
+- φ(n) · σ(n) / n² does not converge to ratio 1
+- Lean4 tactic: `omega` + `interval_cases` (small cases) + bound lemma
 
-**Step 3**: 전체 증명 Lean4 전략:
+**Step 3**: full Lean4 proof strategy:
 
 ```lean4
 theorem sigma_phi_eq_n_tau_iff_six (n : ℕ) (h : n ≥ 2) :
@@ -147,68 +147,68 @@ theorem sigma_phi_eq_n_tau_iff_six (n : ℕ) (h : n ≥ 2) :
     -- Step 1: n ≤ 6 exhaustive
     interval_cases n
     all_goals (first | rfl | (exfalso; simp [Nat.sigma, Nat.totient] at heq; omega))
-    -- Step 2: n ≥ 7 bound (실제 bound lemma 필요)
-    · sorry -- n ≥ 7 bound 정리
+    -- Step 2: n ≥ 7 bound (actual bound lemma required)
+    · sorry -- n ≥ 7 bound theorem
   · rintro rfl
     decide
 ```
 
-**현실**: `interval_cases n` 는 작은 n 에서 작동, 큰 n 의 bound 는 **별도 보조정리 3-5 건** 필요. 총 작업량 ~500-1000 LoC Lean4, **2-3주 full-time**.
+**Reality**: `interval_cases n` works for small n, bound for large n requires **3-5 separate auxiliary lemmas**. Total workload ~500-1000 LoC Lean4, **2-3 weeks full-time**.
 
-### 2.4 의존 mathlib lemma 10 건
+### 2.4 Dependency on 10 Mathlib Lemmas
 
 ```lean4
--- 1. σ의 정의
+-- 1. definition of σ
 Nat.sigma_one_eq_sum_divisors : Nat.sigma 1 n = ∑ d ∈ n.divisors, d
 
--- 2. φ의 곱적성
+-- 2. multiplicativity of φ
 Nat.totient_mul (m n : ℕ) (hmn : m.Coprime n) : (m * n).totient = m.totient * n.totient
 
--- 3. τ의 곱적성
+-- 3. multiplicativity of τ
 Nat.card_divisors_mul : (m * n).divisors.card = m.divisors.card * n.divisors.card  -- m ⊥ n
 
--- 4. σ/n 의 Euler product
-Nat.sigma_div_n_eq_prod_primes  -- 실제 이름 확인 필요
+-- 4. Euler product of σ/n
+Nat.sigma_div_n_eq_prod_primes  -- actual name to verify
 
--- 5. perfect number 특성
-Nat.sigma_eq_two_mul_iff_perfect  -- n 완전수 ⟺ σ(n) = 2n
+-- 5. perfect number characterization
+Nat.sigma_eq_two_mul_iff_perfect  -- n perfect ⟺ σ(n) = 2n
 
--- 6. n=6 perfect 증명
-Nat.sigma_one_six : Nat.sigma 1 6 = 12  -- 또는 `decide`
+-- 6. n=6 perfect proof
+Nat.sigma_one_six : Nat.sigma 1 6 = 12  -- or `decide`
 Nat.totient_six : Nat.totient 6 = 2
 Nat.card_divisors_six : (Nat.divisors 6).card = 4
 
--- 7. σ(n) 하한
+-- 7. lower bound for σ(n)
 Nat.sigma_one_ge : Nat.sigma 1 n ≥ n + 1  -- for n ≥ 2
 
--- 8. φ(n) 상한
+-- 8. upper bound for φ(n)
 Nat.totient_lt : Nat.totient n < n  -- for n ≥ 2
 
--- 9. τ(n) 상한
+-- 9. upper bound for τ(n)
 Nat.card_divisors_le : (Nat.divisors n).card ≤ 2 * Nat.sqrt n + 1  -- approx
 
--- 10. 큰 n 처리
+-- 10. large n handling
 interval_cases tactic  -- n ≤ 7 exhaustive
 ```
 
-**예상 존재 확인 필요**: 4, 7, 9 는 mathlib 에 직접 없을 수 있음. 자체 작성 필요.
+**Existence check needed**: 4, 7, 9 may not be directly in mathlib. Self-authoring required.
 
 ---
 
-## §3 L3 — Mathlib PR 제출 계획 (FORMAL-PX-1)
+## §3 L3 — Mathlib PR Submission Plan (FORMAL-PX-1)
 
-### 3.1 PR 대상 — 직접 기여 후보 3건
+### 3.1 PR Targets — 3 Direct Contribution Candidates
 
 **PR 1: Nat.sigma / totient / card_divisors n=6 explicit lemmas**
 
 ```lean4
--- 목적: atlas MILL-PX-A1 과 같은 외부 work 의 building block 제공
+-- Goal: provide building blocks for external work such as atlas MILL-PX-A1
 theorem Nat.sigma_one_six : Nat.sigma 1 6 = 12 := by decide
 theorem Nat.totient_six : Nat.totient 6 = 2 := by decide
 theorem Nat.card_divisors_six : (Nat.divisors 6).card = 4 := by decide
 ```
 
-**PR 2: 완전수 perfect_of_six / perfect_of_28 lemmas**
+**PR 2: perfect number perfect_of_six / perfect_of_28 lemmas**
 
 ```lean4
 theorem Nat.perfect_six : Nat.Perfect 6 := by
@@ -228,77 +228,77 @@ theorem Nat.sigma_phi_eq_n_tau_iff_six (n : ℕ) (h : n ≥ 2) :
   ...
 ```
 
-PR 1-2 는 **1일 작업 + Mathlib 리뷰어 대기 1-2주**. PR 3 은 **2-3주 작업 + 리뷰 4-6주**.
+PR 1-2 take **1 day of work + 1-2 weeks Mathlib reviewer wait**. PR 3 takes **2-3 weeks of work + 4-6 weeks review**.
 
-### 3.2 Mathlib contribution 준비
+### 3.2 Mathlib Contribution Preparation
 
-1. `@[simp]` attribute 판정 (너무 강한 simp 는 리젝 가능)
-2. `docstring` 한/영 이중 작성
-3. Zulip community 에 먼저 proposal 띄움 (https://leanprover.zulipchat.com)
-4. GitHub issue 로 motivation 설명
-5. PR 제출 시 `#align` 표기 없음 확인 (Lean4 mathlib 는 별도 정책)
+1. `@[simp]` attribute determination (too-strong simp can be rejected)
+2. `docstring` bilingual (Korean/English)
+3. First post proposal on Zulip community (https://leanprover.zulipchat.com)
+4. Explain motivation via GitHub issue
+5. At PR submission, verify no `#align` markers (Lean4 mathlib has separate policy)
 
-### 3.3 대안 경로 — atlas 기반 contribution
+### 3.3 Alternative Path — atlas-Based Contribution
 
-Mathlib 가 주 target 이지만, 대안:
-- 자체 Lean4 project: `n6-architecture/lean/N6Arch/` — 자체 theorem 라이브러리
-- Github Action CI: `.github/workflows/lean-ci.yml` — 매 commit 에 Lean4 컴파일 체크
-- Zenodo DOI: 완성된 Lean4 proof 를 독립 배포
+Mathlib is the main target, alternatives:
+- Own Lean4 project: `n6-architecture/lean/N6Arch/` — own theorem library
+- Github Action CI: `.github/workflows/lean-ci.yml` — Lean4 compile check on each commit
+- Zenodo DOI: independent release of completed Lean4 proof
 
 ---
 
-## §4 MISS 조건 3 task 별 사전 명시
+## §4 Pre-Specified MISS Conditions for Each of 3 Tasks
 
-| task | MISS 조건 | fallback |
+| Task | MISS condition | fallback |
 |------|-----------|----------|
-| HONEST-PX-4 | Mac ARM + Lean4 stable 빌드 실패 | Linux VM + Docker |
-| FORMAL-P3-1 | Theorem B forward 방향 증명 Lean4 tactic 부재 | paper-only proof + meta-note |
-| FORMAL-PX-1 | Mathlib 리뷰어 PR 거부 (style / scope) | 독립 project 배포 |
+| HONEST-PX-4 | Mac ARM + Lean4 stable build failure | Linux VM + Docker |
+| FORMAL-P3-1 | Theorem B forward direction Lean4 tactic unavailable | paper-only proof + meta-note |
+| FORMAL-PX-1 | Mathlib reviewer PR rejection (style / scope) | independent project release |
 
 ---
 
-## §5 atlas 엔트리 제안
+## §5 atlas Entry Proposals
 
 ```
-@R MILL-HONEST-PX4-lean4-plan-published = Lean4 환경 구축 + Theorem B 형식화 계획 문서 :: n6atlas [10]
-  "HONEST-PX-4 Lean4/Coq 도입 계획 (2026-04-15 loop 10): L1 Mac ARM 환경 설치 절차 (elan/lake/mathlib,
-   ~30분 + 빌드 30분), hello world 검증 예시 (Nat.sigma 등 #check). 본 세션 환경 구축 실행 안 함,
-   사용자 승인 후 별도 세션"
+@R MILL-HONEST-PX4-lean4-plan-published = Lean4 environment setup + Theorem B formalization plan document :: n6atlas [10]
+  "HONEST-PX-4 Lean4/Coq introduction plan (2026-04-15 loop 10): L1 Mac ARM install procedure (elan/lake/mathlib,
+   ~30 min + build 30 min), hello world verification example (#check on Nat.sigma, etc.). Environment setup not
+   executed in this session; to be executed in a separate session after user approval"
 
-@R MILL-FORMAL-P3-1-theorem-B-skeleton = Theorem B Lean4 스켈레톤 (mathlib 10 lemma 의존) :: n6atlas [9]
-  "FORMAL-P3-1 Clay Lean4 형식화 전략: 7 Millennium 중 본격 형식화 가능한 유일 statement 는
-   atlas MILL-PX-A1 Theorem B (σφ=nτ iff n=6). 초등 산술 범위, Clay 원문보다 쉬움. 스켈레톤 작성,
-   decide tactic 으로 backward 방향 + interval_cases + bound lemma 로 forward 방향. 2-3주 full-time
-   ~500-1000 LoC 예상. compile 검증 DEFERRED"
+@R MILL-FORMAL-P3-1-theorem-B-skeleton = Theorem B Lean4 skeleton (depends on 10 mathlib lemmas) :: n6atlas [9]
+  "FORMAL-P3-1 Clay Lean4 formalization strategy: among the 7 Millennium problems, the only statement actually
+   formalizable is atlas MILL-PX-A1 Theorem B (σφ=nτ iff n=6). Elementary arithmetic scope, easier than original Clay.
+   Skeleton authored; backward direction by decide tactic + forward by interval_cases + bound lemma. 2-3 weeks
+   full-time, ~500-1000 LoC expected. compile verification DEFERRED"
 
-@R MILL-FORMAL-PX-1-mathlib-pr-candidates = Mathlib PR 3 후보 (sigma_six / perfect_six / theorem_B) :: n6atlas [9]
-  "FORMAL-PX-1 Mathlib 기여 계획: 3 PR 후보 identified — (1) Nat.sigma_one_six + Nat.totient_six +
-   Nat.card_divisors_six (PR 1일 작업 + 리뷰 1-2주), (2) Nat.perfect_six/twenty_eight (비슷), (3)
-   Theorem B 전체 (2-3주 + 리뷰 4-6주). 대안 경로: 자체 n6-architecture/lean/N6Arch/ 독립 배포"
+@R MILL-FORMAL-PX-1-mathlib-pr-candidates = Mathlib PR 3 candidates (sigma_six / perfect_six / theorem_B) :: n6atlas [9]
+  "FORMAL-PX-1 Mathlib contribution plan: 3 PR candidates identified — (1) Nat.sigma_one_six + Nat.totient_six +
+   Nat.card_divisors_six (PR 1-day work + 1-2 weeks review), (2) Nat.perfect_six/twenty_eight (similar), (3)
+   Theorem B in full (2-3 weeks + 4-6 weeks review). Alternative path: independent release via own n6-architecture/lean/N6Arch/"
 ```
 
 ---
 
-## §6 관련 파일
+## §6 Related Files
 
 - `theory/roadmap-v2/millennium-v3-design-2026-04-15.md` §3 T5 / §4 M3 (v3 Lean4 phase)
 - `reports/breakthroughs/external-coordination-infrastructure-2026-04-15.md` §3 (outreach Lean4 parallel)
-- `theory/proofs/theorem-r1-uniqueness.md` (Theorem B 원 증명, 한국어)
+- `theory/proofs/theorem-r1-uniqueness.md` (Theorem B original proof, in Korean)
 
 ---
 
-## §7 정직 체크
+## §7 Honesty Checks
 
-- **Lean4 환경 설치 안 함**: ✓ (계획만)
-- **Mathlib PR 제출 안 함**: ✓ (후보 식별만)
-- **Theorem B compile 검증 없음**: ✓ (스켈레톤 sorry 남김)
-- **실 작업량 명시**: ✓ (2-3주 full-time)
-- **Mac ARM 블로커 사전 명시**: ✓
-- **대안 경로 제공**: ✓ (Linux VM, 자체 배포)
-- **BT 해결 0/6 유지**: ✓ (Theorem B 는 atlas entry, Clay 난제 아님)
+- **Lean4 environment not installed**: ✓ (plan only)
+- **No Mathlib PR submitted**: ✓ (candidates identified only)
+- **No compile verification of Theorem B**: ✓ (skeleton with `sorry`)
+- **Actual workload specified**: ✓ (2-3 weeks full-time)
+- **Mac ARM blockers specified**: ✓
+- **Alternative paths provided**: ✓ (Linux VM, independent release)
+- **BT draft target 0/6 maintained**: ✓ (Theorem B is atlas entry, not Clay problem)
 
 ---
 
-*작성: 2026-04-15 loop 10*
-*3 task 통합 (HONEST-PX-4 + FORMAL-P3-1 + FORMAL-PX-1)*
-*실 Lean4 작업은 v3 Phase 13 M3 에서 실행*
+*Drafted: 2026-04-15 loop 10*
+*3-task integration (HONEST-PX-4 + FORMAL-P3-1 + FORMAL-PX-1)*
+*Actual Lean4 work to be executed in v3 Phase 13 M3*
