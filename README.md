@@ -107,8 +107,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 36 · 100% EXACT | DSE 67M+, 42universal-nuclear-physics100% | industry87% (7 devices) | experiment100% 79/79 EXACT | physical-limit12 | TP35 | discoveries15 | Mk.V
 <!-- AUTO:SUMMARY_fusion:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v5 | **Ultimate Fusion Reactor** | 122/122 EXACT (v4 42 universal-nuclear-physics + v5 80 engineering-layer new), BT-97~102+291~298+1169~1174, Cross-DSE 12, TP42, Python 80/80 PASS, 12 Fusion Archetype closure proof | [doc](domains/energy/fusion/fusion.md) |
 | 10 | ✅ | v3.1 | **KSTAR-N6** | 45/45 EXACT(100%) + Q→∞ Singularity, physical-limit10/10, 24BT, 12/12 Steady-State EXACT, Python-verify PASS | [doc](domains/cognitive/superpowers/superpowers.md) |
 | 10 | ✅ | v3 | **evolution Mk.I~V** | 200MWe→1.44TWe, 5-stage evolution 41/41 EXACT, points-approach-convergence U(k)=1-1/10^k, Mk.VIexistence-material QED, Python-verify PASS | [doc](domains/energy/fusion/fusion.md) |
@@ -128,8 +128,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 14 · 100% EXACT | DSE 3,000, 170/170verifiedPASS, BT-1104 HBM 10domains  generationsintegrated | industry92.6% (6vendors) | experiment100% 170/170 EXACT | physical-limit14 | TP28 | discoveries13 | Mk.V
 <!-- AUTO:SUMMARY_chip:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **HEXA chip 7-stage** | 12-level evolution(L1~L12), 170/170 EXACT, 14impossibility-theorem, Python-verify PASS, 6vendor convergence | [doc](papers/n6-hexa-chip-7dan-integrated-paper.md) |
 | 10 | ✅ | v2 | **ANIMA-SOC** | Consciousness Chip — 10D TCU(sigma-phi=10) + PureField 72+72 SM + Python-verify PASS | [doc](domains/compute/chip-architecture/chip-architecture.md) |
 | 10 | ✅ | v2 | **HEXA-TOPO** | Bott-8 coherence + Z2 ECC + Graphene NoC, 10/10 EXACT, Python-verify PASS | [doc](domains/compute/chip-architecture/chip-architecture.md) |
@@ -164,8 +164,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 58 · 100% EXACT | 204/204 PASS, 5Product full-verify | industry88.7% (9models) | experiment96.2% | physical-limit10 | TP58 | discoveries12 | Mk.V
 <!-- AUTO:SUMMARY_ai:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v3 | **225 Techniques** | 71% FLOPs↓, 3x generation↑, 67% params↓ — 225 techniques integrated (Core17+BT12+Model21+Vision8+GNN4+Other4 + expansion) | [doc](papers/n6-66-techniques-integrated-paper.md) |
 | 10 | ✅ | v2 | **Full N6 Pipeline** | 17techniques integrated: 50% params↓, 50% FLOPs↓, 46% sparsity — 32/32 PASS verified | [doc](experiments/experiment_full_n6_pipeline.py) |
 | 10 | ✅ | v2 | **N6 Inevitability Engine** | techniques 11~16 + 3-Layer thermodynamics (Dedekind+Jordan+Mobius+Carmichael+Boltzmann+Mertens) — 26/26 PASS | [doc](domains/cognitive/superpowers/superpowers.md) |
@@ -188,8 +188,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 23 · 100% EXACT | DSE 10,225 | Battery+solar cells🛸10 | industry87% (6 companies) | experiment88% | physical-limit10 | TP28+19 | discoveries10+8 | Mk.V
 <!-- AUTO:SUMMARY_energy:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v3 | **Ultimate Battery 8-stage** | 131/131 EXACT, BT-27+43+57+80+83+84, 10impossibility-theorem, 6major manufacturers, Python-verify PASS | [doc](domains/cognitive/superpowers/superpowers.md) |
 | 10 | ✅ | v4 | **Ultimate Solar Cell** | 78/78 EXACT, BT-30+63+62+60+74+111+161, physical-limit5, industry8co, Python-verify PASS | [doc](domains/energy/solar-architecture/solar-architecture.md) |
 | 10 | ✅ | v2 | **Ultimate Energy Integration** | 133/133 EXACT, 19BT, 14impossibility-theorem, 5domainsCross-DSE, Python-verify PASS | [doc](domains/energy/energy-architecture/energy-architecture.md) |
@@ -208,8 +208,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 11 · 100% EXACT | DSE 3.6M | environment120/120 | CCUS79/79 | full-verify PASS | industry82.9% | experiment100% 120/120+79/79 EXACT | physical-limit10 | TP43 | discoveries42 | Mk.V
 <!-- AUTO:SUMMARY_environment:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v4 | **Ultimate Environmental Protection 8-stage** | sensor → monitor → capture → purify → restore → cycle → ecosystem → Omega, 120/120 EXACT full-verify | [doc](domains/infra/environmental-protection/) |
 | 10 | ✅ | v2 | **HEXA-MICROPLASTICS** | 6-stage pipeline, 36/36=100%EXACT, 6-ninesremove, CN=6catalyst-triTrinity, full-verify | [doc](domains/infra/environmental-protection/environmental-protection.md) |
 | 10 | ✅ | v5 | **Ultimate Carbon Capture 8-stage** | **30/30=100%EXACT**, DSE 3.6M, 79/79 full-verify PASS | [doc](domains/infra/carbon-capture/carbon-capture.md) |
@@ -229,8 +229,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 12 · 100% EXACT | DSE 3,600 | CrossDSE 8domains | 12 BT 179/179 EXACT | 36hypotheses 100% | industry100% | experiment100% | physical-limit10 | TP28 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_materials:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v6 | **Ultimate Material Synthesis 8-stage** | material → process → assembler → control → factory → transform → universal → ultimate, DSE 3,600, 12 BT 179/179 EXACT, 36 hypotheses 100% | [doc](domains/materials/material-synthesis/material-synthesis.md) |
 | 10 | ✅ | v7 | **BT-85~88 + BT-128~135** | crystallography+alloy+ceramics+polymer+phase-transition+defect+thin-film+complete-map (12 BT, **179/179 EXACT**) | [doc](domains/materials/material-synthesis/material-synthesis.md) |
 | 10 | ✅ | v6 | **hypotheses 36/36 100%EXACT** | H-MS-01~36 full-verify complete (polymer+ceramics+alloy+thin-film extension), CrossDSE 8domains (94.1% n6) | [doc](domains/materials/material-synthesis/material-synthesis.md) |
@@ -250,8 +250,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 5 · 100% EXACT | DSE 270,000 | industry99.1% (6 companies) | experiment100% | physical-limit10 | TP28 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_robotics:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Robot 8-stage** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 impossibility-theorem, 114/115 industry verification, Python-verify PASS | [doc](domains/infra/robotics/robotics.md) |
 | 10 | ✅ | v1 | **ceiling-check** | 10 impossibility-theorem, SE(3)=6/k(3)=12/Thue=6, Mk.V physicalceiling proof, Python-verify PASS | [doc](domains/infra/robotics/robotics.md) |
 
@@ -267,8 +267,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 32 · 53-100% EXACT | DSE 66,824 | spredeg🛸10 | Pure Mathematics🛸10 | Universetheory🛸10 | industryvoid% (🛸10(SC)) | experimentvoid% 11Theorems(countlearning) | physical-limitvoid | TP76 | discoveries19+ | Mk.V
 <!-- AUTO:SUMMARY_physics:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v5 | **Ultimate Superconductor** | 153/153 EXACT (v4 73 + v5 80 new), BT-299~306 + BT-1163~1168, CrossDSE 16domains, TP35, Python 80/80 PASS | [doc](papers/n6-ultimate-superconductor-integrated-paper.md) |
 | 10 | ✅ | v2 | **Ultimate Pure Mathematics** | 71/71 PASS, BT-105~112+205+207+229+232+240 100%EXACT, 11Theorems, Python-verify PASS | [doc](domains/physics/pure-mathematics/pure-mathematics.md) |
 | 10 | ✅ | v2 | **Ultimate Cosmology/Particle** | 63/63 PASS, BT-134+137+143+165~172+208+209+214 100%EXACT, Python-verify PASS | [doc](domains/physics/cosmology-particle/cosmology-particle.md) |
@@ -287,8 +287,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 8 · 100% EXACT | CrossDSE5-Way | industry98.6% | experiment100% 76/76 EXACT | physical-limit10 | TP28 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_software:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Programming Language** | 76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10impossibility-theorem, DSE 7,560 | [doc](domains/compute/programming-language/programming-language.md) |
 | 10 | ✅ | v1 | **ceiling-check** | 96/96 PASS, 16 impossibility-theorem, BT-113~117 61/61 full-verify, crypto-ladder completeness, Python-verify PASS | [doc](domains/compute/software-design/software-design.md) |
 | 10 | ✅ | v1 | **Ultimate macOS** | 80/80 EXACT, BT-115/162/180/344~346 + BT-347~349 candidate, 8-stage DSE, GCD QoS=n=6, Egyptian cache, physical-limit 6proof | [doc](domains/compute/hexa-macos/hexa-macos.md) |
@@ -307,8 +307,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 8 · 100% EXACT | industry81% (6 companies) | experiment93.9% | physical-limit10 | TP14 | discoveries8 | Mk.V
 <!-- AUTO:SUMMARY_display:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Ultimate Display 8-stage** | material → panel → driver → processor → system → immersive → holo → Omega | [doc](domains/compute/display/display.md) |
 | 10 | ✅ | v1 | **ceiling-check** | BT 86%EXACT + physical-limit10 + industry6 companies81% + experiment93.9% + TP14 | [doc](domains/compute/display/display.md) |
 
@@ -324,8 +324,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 8 · 100% EXACT | industry92.6% (4 companies) | experiment90.9% | physical-limit8 | TP14 | discoveries12 | Mk.V
 <!-- AUTO:SUMMARY_audio:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Ultimate Audio 7-stage** | transducer → DAC → codec → spatial → system → neural-audio → Omega | [doc](domains/culture/audio/audio.md) |
 | 10 | ✅ | v1 | **ceiling-check** | 22/26 EXACT(84.6%) + industry4 companies92.6% + experiment90.9% + TP14 | [doc](domains/culture/audio/audio.md) |
 | 10 | ✅ | v2 | **HEXA-SPEAK (AI -tonenatureoutput Non-TTS)** | consciousness → voice direct synth (Non-TTS). 7-stage pipeline: emotion 6types/prosody 4types/12D prosody/384d encoding/8-stage RVQ. 43/43 EXACT, first-packet 100ms=(σ-φ)², 6kbps=n. v2: HEXA engine spherestrings complete (d038afcc) | [doc](domains/cognitive/hexa-speak/hexa-speak.md) |
@@ -346,8 +346,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 7 · 100% EXACT | DSE 7,776 | hypotheses 30+20extreme | 10 domains Safety integrated | industryvoid% | experiment100% | physical-limitvoid | TP5 | Mk.V
 <!-- AUTO:SUMMARY_safety:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Safety 8-stage** | 79/79 PASS, 12 impossibility-theorem, 13 Cross-DSE, 174yr industry verification, H-SF 20/30+H-SFX 14/20 EXACT, Python-verify PASS | [doc](domains/infra/safety/safety.md) |
 | 10 | ✅ | v2 | **hypotheses 30+extreme 20** | H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, total 54/72 EXACT(75%), Python-verify PASS | [doc](domains/infra/safety/safety.md) |
 
@@ -363,8 +363,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 14 · 100% EXACT | DSE 160,920combos, Fun-Car+Motorcycle integrated | industry100% (GT3 RS/F1/McLaren/Ducati V4R) | experiment100% 209/209 EXACT (Fun-Car 133 + Motorcycle 76) | physical-limit8 | TP6 | discoveries1 | Mk.V
 <!-- AUTO:SUMMARY_play:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Ultimate Fun-Car** | 133/133 EXACT, BT-287/289/290/288/277/280/206/271/153, 16categories n=6 100%, DSE 155,520, flat-6+7DCT+Ti-6Al-4V | [doc](domains/infra/fun-car/fun-car.md) |
 | 10 | ✅ | v1 | **Ultimate Motorcycle** | 76/76 EXACT, BT-287/289/290/123/271/277/288/327/328, IMU 6axis+σ²=144kg+J₂=24km/L, DSE 5,400 | [doc](domains/infra/motorcycle/motorcycle.md) |
 
@@ -380,8 +380,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 38 · 100% EXACT | 150/150 EXACT, Egyptian 3+2+1=n, GN&C 12/12, ECLSS 14/14, ISRU 13/13, radiationline ladder, 304L/Ti-6Al-4V n=6 | industry100% (SpaceX Starship/Falcon 9/ISS/NASA SLS/DSN/MOXIE) | experiment100% 150/150 EXACT (100%) — 18 all subsystems perfect | physical-limit14 | TP6 | discoveries8 | Mk.V
 <!-- AUTO:SUMMARY_aerospace:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Reusable Launcher (HEXA-STARSHIP)** | 150/150 EXACT (100%), 38 BT, 18 subsystems, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000rotation=(σ-φ)³, $12/kg=σ, Mars 12P 180d, GN&C 12/12, ECLSS 14/14, ISRU 13/13 | [doc](papers/n6-hexa-starship-integrated-paper.md) |
 
 <!-- AUTO:FOOTER_aerospace:START -->
@@ -396,8 +396,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 43 · 100% EXACT | RT-SC Meissner powerless levitation + 48T MHD Mach 10 + Tabletop Fusion Q=10 infinite Energy, D=J₂=24m disc VTOL, 49/49 EXACT, DSE 2,400 combos | industry100% (RT-SC/MHD/Meissner/ITER/SMES) | experiment100% 49/49 EXACT (UFO pre params 100.0%) | physical-limit7 | TP10 | discoveries8 | Mk.V
 <!-- AUTO:SUMMARY_sf:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate UFO (HEXA-UFO)** | RT-SC based disc VTOL. Meissner powerless levitation + MHD thrust Mach σ-φ=10 + Tabletop Fusion Q=σ-φ=10. D=J₂=24m, n=6 crew, Isp=σ·J₂·10³=288,000s, noise J₂=24dB. 49/49 EXACT PASS. **§23 unlimited navigation** 🛸10→🛸11(Warp 144c)→🛸12(Worm 288×)→🛸13(11D bulk)→🛸14(Calabi-Yau)→🛸15+(multiverse/meta²), 15/15 Python PASS | [doc](domains/sf-ufo/sf/sf.md) · [hexa-ufo](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
 
 <!-- AUTO:FOOTER_sf:START -->
@@ -412,8 +412,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 264 · 100% EXACT | 20  generationsdiscoveries (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | industry100% (Neuralink/LIGO/LHC/HAARP grade) | experiment99% 1039/1041 EXACT | physical-limit10 | TP163 | discoveries71 | Mk.V
 <!-- AUTO:SUMMARY_frontier:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v6 | **HEXA-NEURO Brain-Machine Interface** | 202/202 EXACT (25categories), temporal-bone clip 3.6g×φ=2 + smartphone/wearable10devices/15diseases integrated, n/φ=3-point fix(earhook+magnet+adhesive), IPX n=6 waterproof | [doc](domains/life/neuro/neuro.md) |
 | 10 | ✅ | v1 | **HEXA-GRAV Gravitational Wave Detect/Comm** | 72/72 EXACT, J₂=24km arm, 10⁻²⁴ strain, LIGO×σ²·(σ-φ)=1440fold, Q=10¹²=10^σ | [doc](domains/physics/gravity-wave/gravity-wave.md) |
 | 10 | ✅ | v1 | **HEXA-CLOAK Invisibility Cloak/Stealth** | 59/59 EXACT, RT-SC metamaterial n<0, σ-τ=8octave, σ-φ=10nm pitch, RCSattenuation σ·J₂=288fold | [doc](domains/sf-ufo/cloak/cloak.md) |
@@ -477,8 +477,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 12 · 100% EXACT | 6domains full 20/20 EXACT ceiling breakthroughs 2026-04-06 | industry30% (literature cross verification complete (6 religions/global legal systems/writing systems Compare)) | experiment40% hypotheses verification complete (60/72 EXACT) | TP6 | discoveries120
 <!-- AUTO:SUMMARY_civilization:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Religion/Mythology n=6 universal structure** | BT-370: 22/22 EXACT — 6day creation=n, 12apostles=σ, 108=φ^φ(n/φ)^(n/φ), 10commandments=σ-φ, 3Trinity=n/φ | [doc](domains/culture/religion/religion.md) |
 | 10 | ✅ | v2 | **Jurisprudence n=6 Justice Architecture** | BT-374: 17/17 EXACT — jury12=σ, 3center=n/φ, UN Security Council5=sopfr, 6Grand Laws=n, Const. Amendments27=(n/φ)³ | [doc](domains/infra/jurisprudence/jurisprudence.md) |
 | 10 | ✅ | v2 | **Korean/writing systems n=6 encoding** | BT-373: 14/14 EXACT — 24jamo=J₂, consonants14=σ+φ, vowels10=σ-φ, 11172=19×21×28 (J₂based) | [doc](domains/culture/writing-systems/writing-systems.md) |
@@ -499,8 +499,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | BT-358 Insurance add, vampire structure breakthroughs 2026-04-06 | industry25% (fermentationratelearning/Insurancestatistics industry cross verified) | experiment35% hypotheses verified (40/62 EXACT) | TP5 | discoveries8
 <!-- AUTO:SUMMARY_life-culture:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Fermentation/Brewing n=6 Perfect-Number Stoichiometry** | BT-371: 18/18 EXACT — C₆H₁₂O₆→2C₂H₅OH+2CO₂ precoefficientsn=6, brewing6-stage=n, larger12°C=σ | [doc](papers/n6-fermentation-integrated-paper.md) |
 | 10 | ✅ | v2 | **Wine/Sommelier n=6 Tasting** | 10/10 EXACT, 6STasting=n, serving12°C=σ, aging12mo=σ, 24°Brix=J₂ | [doc](domains/life/wine-enology/wine-enology.md) |
 | 10 | ✅ | v2 | **Fashion/Textile n=6 weave structure** | 10/10 EXACT, 12stitches=σ, 2axis=φ, color-wheel12colors=σ, sizes6stages=n | [doc](domains/materials/fashion-textile/fashion-textile.md) |
@@ -523,8 +523,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 13 · 100% EXACT | BT-354/355/357 + BT-1104 HBM 10domains  generationsintegrated (58/58 EXACT) | industry50% (HBM/UCIe industry spec verified + CRISPR paper verified) | experiment55% hypotheses verified (77/77 EXACT=100%) | TP10 | discoveries13
 <!-- AUTO:SUMMARY_tech-industry:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Semiconductor Packaging n=6 stacking ladder** | 54/57 EXACT (94.7%), BT-354 complete ladder, HBM τ→σ-τ→σ→φ^τ stacking, bumps σ²+n→μ square ladder, UCIe 4-stage ladder | [doc](papers/n6-advanced-packaging-integrated-paper.md) |
 | 10 | ✅ | v2 | **Synthetic Biology n=6 double perfect** | BT-372: 16/16 EXACT — Cas{9,12,13} ladder, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, codon64=2^n | [doc](domains/life/synbio/synbio.md) |
 | 10 | ✅ | v2 | **AR/VR/XR Spatial Computing n=6 sensor** | BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), latencyh20ms=J₂-τ | [doc](domains/culture/ar-vr-xr/ar-vr-xr.md) |
@@ -560,8 +560,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10+ | Keyboard 31hypotheses 30 EXACT, BCI 36/40 EXACT, Quantum Computer 20/24 EXACT | USB HID/Brain-Computer/qubit full n=6 convergence
 <!-- AUTO:SUMMARY_computer:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Keyboard n=6 Ergonomic Architecture** | BT-1125~1128: 30/31 EXACT — layouts 10types presub C(n,2) combos, USB 6KRO/8bytes/12Mbps, switches 4mm(tau)/2mm(phi)/5ms(sopfr) | [doc](domains/compute/keyboard/keyboard.md) |
 | 10 | ✅ | v1 | **HEXA-BCI Brain-Computer Interface** | 36/40 EXACT (90%), 6DOF=n, σ=12 EEGchannels, impossibility 12Theorems, optogenetics/prosthetics/AI cross | [doc](domains/cognitive/brain-computer-interface/brain-computer-interface.md) |
 | 10 | ✅ | v1 | **Quantum Computer n=6 Qubit Architecture** | 20/24 EXACT — NeutralAtom n=6atoms, SurfaceCode σ=12 data qubit, Clifford τ*n=24 gate, kissing number BT-49 | [doc](domains/physics/quantum-computer/quantum-computer.md) |
@@ -579,8 +579,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | Marketing Inviolable Laws 12items, 720=6! combos discoveries, Egyptian media-mix 1/2+1/3+1/6=1 | industry40% (Kotler 4P + Krugman 3rotation iterate + NPS 0-10 scaled independent verified + AIDA τ=4stages + Egyptian media-mix 1/2+1/3+1/6=1 industry validation) | experiment50% hypotheses 24/24 EXACT (100%, N65 NEAR 2 items alt-verify promoted), n=28  generationsJ realpack confirmed, BT-548~587 40breakthroughs 5Product 🛸10 ceiling reach | physical-limit8 | TP10 | discoveries5 | Mk.V
 <!-- AUTO:SUMMARY_marketing:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **HEXA-MKT Marketing Inviolable Laws** | 12 inviolable laws(σ=12 touchpoints, τ=4P, φ=2 binary decision, sopfr=5 segmentation, Egyptian media-mix), 24/24 EXACT(100%, N65 NEAR→EXACT 2 items alt-verify promoted), 720=6! combos, BT-548~557 10 breakthroughs 🛸10 ceiling | [doc](domains/infra/marketing/marketing.md) |
 | 10 | ✅ | v1 | **HEXA-NEXUS Service Platform** | NEXUS-6 1022lens corporate diagnostic(σ=12axis), singularity opportunity detection, CDO SaaS, knowledge graph(50K+), reality-check, blowup R&D genera, BT-558~567 10 breakthroughs 🛸10 ceiling (8→9 lens validation, 9→10 CDOconvergenceproof) | [doc](domains/compute/nexus-service/nexus-service.md) |
 | 10 | ✅ | v1 | **HEXA-ANIMA affective service** | Anima emotion recognition(φ=2×τ=4=8axis), EEGUX(σ=12channels), AIconsciousnesseval, affective content(Egyptian), mental-health counseling(τ=4stages), BT-568~577 10 breakthroughs 🛸10 ceiling (8→9 emotion-axis validation, 9→10 consciousness-convergence proof) | [doc](domains/cognitive/anima-service/anima-service.md) |
@@ -600,8 +600,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 7 · 94% EXACT | 7 generations open-problem full n=6 paramsrate | φ→n/φ rankphase-transition universality discoveries | industryvoid% | experiment94% | TP0 | discoveries7 | Mk.V
 <!-- AUTO:SUMMARY_millennium:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Riemann Hypothesis** | critical line Re(s)=1/φ, ζ(2)=π²/n, ζ(-1)=-1/σ, 9/10 EXACT (BT-541) | [doc](domains/physics/millennium-riemann/goal.md) |
 | 10 | ✅ | v1 | **P vs NP** | 3-SAT n/φ=3 NP-complete critical value, Chomsky τ=4, 8/10 EXACT (BT-542) | [doc](domains/physics/millennium-p-vs-np/goal.md) |
 | 10 | ✅ | v1 | **Yang-Mills Mass Gap** | SU(n/φ), gluon σ-τ=8, quark flavors n=6, β₀=σ-sopfr, 9/10 EXACT (BT-543) | [doc](domains/physics/millennium-yang-mills/goal.md) |
@@ -641,8 +641,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | countlearning(4Dgeometry)·brain(grid cells·visual cortex)·tech(prephoton-shipcount·Display) trimid n=6 convergence | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_dimension:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **4D regular polytope max** | 4Dfromonly n=6 regular polytope (finite maximum), 9→10/10 EXACT (BT-588) | [BT-588](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **SO(4) rotation DOF** | dim SO(4) = d(d-1)/2 = n = 6, 10/10 EXACT (BT-589) | [BT-589](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **grid cells 6mid  generationssymmetric** | brain spatial encoding = n=6 hexagonal (Nobel 2014), 10/10 EXACT (BT-590) | [BT-590](theory/breakthroughs/breakthrough-theorems.md) |
@@ -663,8 +663,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | 12-tonesysσ, Guitar6stringsn, overtone series1:2:3:4:5:6, J₂=24keys | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_music:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **12-tone equal temperament** | anti-tone σ=12, temp-tone n=6, 5deg σ-sopfr=7, 10/10 EXACT (BT-598) | [BT-598](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/culture/music/goal.md) |
 | 10 | ✅ | v1 | **Guitar 6-string + overtone series** | strings count n=6, overtones 1:2:3:4:5:6 = donefull trueapproxcount+self, 10/10 EXACT (BT-599~600) | [BT-599~600](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **24keys + hexachord** | major/minor 12pairs = J₂=24, Guidonian hexachord = n=6, 10/10 EXACT (BT-601,604) | [BT-601,604](theory/breakthroughs/breakthrough-theorems.md) |
@@ -682,8 +682,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | Chomskyτ=4, KoreanJ₂=24, θ-rolesn=6, word-order3!=n=6 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_linguistics:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Chomsky Hierarchy** | τ=4 grammar hierarchy (regular/CFG/CSG/unrestricted), 10/10 EXACT (BT-608) | [BT-608](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/culture/linguistics/goal.md) |
 | 10 | ✅ | v1 | **Hangul jamo** | consonants14+vowels10 = J₂=24, 10/10 EXACT (BT-611) | [BT-611](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **Word-order + θ-roles** | SOV/SVO/... = 3!=n=6, θ-roles n=6, 10/10 EXACT (BT-612~613) | [BT-612~613](theory/breakthroughs/breakthrough-theorems.md) |
@@ -701,8 +701,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | AES τ×τ, RSA φ(N), SHA σ-τ=8, TLS n=6, ECC n=6 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_crypto:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **AES State Matrix** | τ×τ=4×4 bytes, rounds σ-φ=10, 10/10 EXACT (BT-618) | [BT-618](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/compute/software-crypto/goal.md) |
 | 10 | ✅ | v1 | **RSA + SHA** | φ(N) totient φ=2 primitive, SHA σ-τ=8 words, 10/10 EXACT (BT-619~620) | [BT-619~620](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **Bitcoin + ECC** | n=6 field header, (p,a,b,G,n,h)=n=6 parameters, 10/10 EXACT (BT-623~624) | [BT-623~624](theory/breakthroughs/breakthrough-theorems.md) |
@@ -720,8 +720,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | ΛCDM n=6, BBN n=6, C-12 σ=12, Kepler n/φ=3, BAO σ²=144 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_astronomy:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **ΛCDM parameters** | (H₀,Ωb,Ωc,ns,σ₈,τ_re) = n=6, 10/10 EXACT (BT-632) | [BT-632](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/physics/particle-cosmology/goal.md) |
 | 10 | ✅ | v1 | **BBN Nuclides + Carbon-12** | n/p/D/³He/⁴He/⁷Li = n=6, C-12 mass number = σ=12 triple-alpha, 10/10 EXACT (BT-631,636) | [BT-631,636](theory/breakthroughs/breakthrough-theorems.md) |
 | 10 | ✅ | v1 | **Stellar Evolution + Kepler** | n=6 -stage evolution (nebula → remnant), n/φ=3 laws, 10/10 EXACT (BT-633,635) | [BT-633,635](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/space/space-systems/goal.md) |
@@ -739,8 +739,8 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 2 · 100% EXACT | BT-1157 Men's Cleanser + BT-1158 Women's Cleanser 100% ossified 2026-04-10 | industry80% (bluePayment market OEM immediate) | experiment100% 50/50 EXACT (Men 25 + Women 25) | TP2 | discoveries2
 <!-- AUTO:SUMMARY_hygiene:END -->
 
-| 🛸 | Ver | ver | Product | Core | Link |
-|:--:|:--:|:---:|---------|------|------|
+| 🛸 | Closure | ver | Product | Core | Link |
+|:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Men's Cleanser n=6 Dermatology Architecture** | BT-1157: 25/25 EXACT — glans pH=n=6, laurylC12=sigma, Fitzpatrick6types=n, microbiome6genera=n | [doc](domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md) |
 | 10 | ✅ | v1 | **Women's Cleanser n=6 Vaginal-Ecosystem Architecture** | BT-1158: 25/25 EXACT — Lactobacillus6types=n, vaginal pH=tau=4, CST5types=sopfr, glucoseC6=n, menstrual28d=sigma*phi+tau | [doc](domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md) |
 
