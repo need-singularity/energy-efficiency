@@ -6,98 +6,98 @@ requires:
   - to: superconductor
 ---
 
-<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, UFO 하드웨어 검증 파이프라인], strict=false, order=sequential, prefix="§") -->
-# 통합 실험 파이프라인 (HEXA-EXPER)
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, UFO hardware verification pipeline], strict=false, order=sequential, prefix="§") -->
+# Integrated Experiment Pipeline (HEXA-EXPER)
 
-> 한 문장 요약: **17 AI 기법 + DSE + 물리 시뮬 n=6 자기조직화** — n=6 완전수 산술이 전 스케일을 관통한다.
+> One-line summary: **17 AI techniques + DSE + physics simulation n=6 self-organisation** — n=6 perfect-number arithmetic runs through the full scale.
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology changes your life)
 
-HEXA-EXPER는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 돌파한다. 핵심 5가지:
+HEXA-EXPER uses the n=6 perfect-number structure as its axis to push through physical and engineering limits. 5 highlights:
 
-1. **17 AI 기법 통합 검증 파이프라인.**
-2. **DSE 전수탐색: σ×τ×sopfr=240조합.**
-3. **물리 시뮬: FEA + MD + DFT n=6층.**
-4. **자기조직화 수렴 확인 (χ² p<0.001).**
-5. **재현 정확도 σ·J₂·10⁻²=2.88σ.**
+1. **Integrated verification pipeline across 17 AI techniques.**
+2. **DSE exhaustive search: sigma x tau x sopfr = 240 combinations.**
+3. **Physics simulation: FEA + MD + DFT at n=6 layers.**
+4. **Self-organising convergence confirmed (chi^2 p<0.001).**
+5. **Reproduction accuracy sigma·J2·10^-2 = 2.88 sigma.**
 
-### 체감 변화
+### Felt change
 
-| 효과 | 현재 | HEXA-EXPER 이후 | 체감 변화 |
+| Effect | Today | With HEXA-EXPER | Felt change |
 |------|------|----------------|----------|
-| 실험 수 | 연 100건 | **연 σ·τ·10=480건** | 4.8배 |
-| 재현율 | 45% | **98%** | 2배 |
-| 검증 시간 | 6개월 | **n=6일** | 26배 단축 |
+| Experiment throughput | 100/year | **sigma·tau·10 = 480/year** | 4.8x |
+| Reproducibility | 45% | **98%** | 2x |
+| Verification time | 6 months | **n=6 days** | 26x reduction |
 
-**한 문장**: HEXA-EXPER = n=6 완전수 산술 관통 × 한계 돌파 × 자기조직화 수렴.
+**One line**: HEXA-EXPER = n=6 perfect-number arithmetic run-through x limit breakthrough pattern x self-organising convergence.
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) — performance comparison (ASCII)
 
-### 왜 기존 기술이 정체했나 (5가지 장벽)
+### Why existing tech stalled (5 barriers)
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 정체되었나                │  n=6 해결법              │
+│  Barrier           │  Why it stalled               │  n=6 solution            │
 ├───────────────────┼──────────────────────────────┼──────────────────────────┤
-│ 1. 스케일 불일치   │ 원자~시스템 공식 달라        │ n=6 동일 산술 전 스케일  │
-│ 2. 선형 최적화     │ 국소 최소 고착                │ DSE 전수탐색 σ·τ=48축    │
-│ 3. 단일 지표 편향  │ 효율만 / 수명만              │ τ=4 파레토 동시 최적     │
-│ 4. 상수 임의성     │ 하드코딩 마법수              │ 수론 함수 자동 유도      │
-│ 5. 검증 자기순환   │ 공식이 공식을 검증            │ 3독립 경로 재유도        │
+│ 1. Scale mismatch  │ Atomic vs system formulas differ │ n=6 single arithmetic across scales │
+│ 2. Linear optim.   │ Stuck in local minima         │ DSE exhaustive sigma·tau=48 axis │
+│ 3. Single-metric   │ Efficiency-only / life-only  │ tau=4 Pareto simultaneous │
+│ 4. Arbitrary const.│ Hardcoded magic numbers       │ Number-theoretic auto-derivation │
+│ 5. Self-validating │ Formula validates formula     │ 3 independent paths re-derive │
 └───────────────────┴──────────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (현재 vs HEXA-EXPER)
+### Performance comparison ASCII bar (current vs HEXA-EXPER)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [핵심 효율 지표] 비교: 현재 vs HEXA-EXPER                                 │
+│  [Core efficiency metrics] comparison: current vs HEXA-EXPER               │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  현재 SOTA      ████████░░░░░░░░░░░░░░░░░░░░░░░░   (baseline)           │
-│  개선형 1       ███████████░░░░░░░░░░░░░░░░░░░░░   (τ=4 개선)           │
-│  개선형 2       ████████████████░░░░░░░░░░░░░░░░   (σ-φ=10 개선)        │
-│  HEXA-EXPER     ████████████████████████████████   (σ·τ=48 × n=6 돌파)  │
+│  Current SOTA   ████████░░░░░░░░░░░░░░░░░░░░░░░░   (baseline)           │
+│  Improved 1     ███████████░░░░░░░░░░░░░░░░░░░░░   (tau=4 improvement)   │
+│  Improved 2     ████████████████░░░░░░░░░░░░░░░░   (sigma-phi=10 improvement) │
+│  HEXA-EXPER     ████████████████████████████████   (sigma·tau=48 x n=6 breakthrough pattern) │
 │                                                                          │
-│  [에너지/효율 밀도]                                                      │
-│  현재           ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1× (기준)            │
-│  HEXA-EXPER     ████████████████████████████████   σ·τ=48× (48배 향상)  │
+│  [Energy / efficiency density]                                           │
+│  Current        ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1x (baseline)        │
+│  HEXA-EXPER     ████████████████████████████████   sigma·tau=48x (48x uplift) │
 │                                                                          │
-│  [수명 / 지속성]                                                         │
-│  현재           ██████████░░░░░░░░░░░░░░░░░░░░░░   n=6년                │
-│  HEXA-EXPER     ████████████████████████████████   σ·J₂=288년 (48배)    │
+│  [Lifetime / durability]                                                 │
+│  Current        ██████████░░░░░░░░░░░░░░░░░░░░░░   n=6 years            │
+│  HEXA-EXPER     ████████████████████████████████   sigma·J2=288 years (48x) │
 │                                                                          │
-│  [비용 / 단위 가격]                                                      │
-│  현재           ████████████████████████████████   1× (기준)            │
-│  HEXA-EXPER     ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1/σ-φ=10배 감소     │
+│  [Cost / unit price]                                                     │
+│  Current        ████████████████████████████████   1x (baseline)        │
+│  HEXA-EXPER     ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1/(sigma-phi)=10x drop │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구
+### Core breakthrough pattern
 
-1. **n=6 산술 관통**: 완전수 성질 σ(n)=2n + 약수군 {1,2,3,6} 대칭으로 전 스케일 동일 공식.
-2. **B/τ 스케일링**: 제어 변수 τ배 → 성능 τ⁴배 (자장 가둠형 시스템).
-3. **DSE 전수탐색**: 조합 폭발을 n=6 호환 필터로 1/σ=1/12 축소.
-4. **수론 함수 자동 유도**: σ, τ, φ, sopfr → 임의 상수 0, 재현성 100%.
+1. **n=6 arithmetic run-through**: perfect-number property sigma(n)=2n + divisor set {1,2,3,6} symmetry => single formula across scales.
+2. **B/tau scaling**: control var x tau -> performance x tau^4 (field-confined systems).
+3. **DSE exhaustive search**: combinatorial explosion reduced 1/sigma=1/12 by the n=6-compatible filter.
+4. **Number-theoretic auto-derivation**: sigma, tau, phi, sopfr -> 0 arbitrary constants, 100% reproducibility target.
 
-## §3 REQUIRES (선행 도메인)
+## §3 REQUIRES (prerequisite domains)
 
-| 선행 도메인 | 링크 | 역할 |
+| Prerequisite | Link | Role |
 |-------------|------|------|
-| fusion | ../../energy/fusion/fusion.md | 자기구속 D-T 핵융합 |
-| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 초전도 |
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+| fusion | ../../energy/fusion/fusion.md | Magnetic-confinement D-T fusion |
+| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 superconductor |
+## §4 STRUCT (system structure) — System Architecture (ASCII)
 
-### 5단 체인
+### 5-stage chain
 
 ```
 ┌────────────┬────────────┬────────────┬────────────┬─────────────────────┐
-│   재료     │   공정     │   모듈     │   시스템   │   통합 OMEGA        │
+│  Material  │  Process   │  Module    │  System    │  Integrated OMEGA   │
 │  Level 0   │  Level 1   │  Level 2   │  Level 3   │  Level 4            │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ C Z=6      │ n=6 단계   │ φ=2 이중   │ τ=4 병렬   │ σ=12 통합           │
-│ CN=6 격자  │ sopfr=5 체 │ n=6 셀     │ 6-DOF      │ Cross-DSE σ=12     │
-│ ρ 구조     │ 결정화     │ J₂=24 유닛 │ 자율 AI    │ n=6 EXACT 98%       │
-│ κ 전도     │ 정제       │ 60 Hz      │ μ=1 ms     │ 자가치유            │
+│ C Z=6      │ n=6 stages │ phi=2 dual │ tau=4 par  │ sigma=12 integration│
+│ CN=6 latt  │ sopfr=5 sieve │ n=6 cell │ 6-DOF    │ Cross-DSE sigma=12  │
+│ rho struct │ crystall.  │ J2=24 unit │ auto AI    │ n=6 EXACT 98%       │
+│ kappa cond │ refining   │ 60 Hz      │ mu=1 ms    │ self-healing        │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ n6: 96%    │ n6: 94%    │ n6: 95%   │ n6: 93%    │ n6: 98%             │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
@@ -106,207 +106,207 @@ HEXA-EXPER는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 �
    n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### n=6 파라미터 매핑
+### n=6 parameter mapping
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 기본 유닛 수 | 6 | n = 6 | 약수 집합 {1,2,3,6} 기저 | EXACT |
-| 이중 대칭 | 2 | φ(6) = 2 | 최소 소인수 (수론 주석 ①) | EXACT |
-| 병렬 채널 | 4 | τ(6) = 4 | 약수 개수 (OEIS A000005) | EXACT |
-| 통합 출력 | 12 | σ(6) = 12 | 약수 합 = 2n (완전수, 수론 주석 ②) | EXACT |
-| 소인수 합 | 5 | sopfr(6) = 5 | 2+3 (OEIS A001414) | EXACT |
-| 이중 복원 | 24 | J₂ = 2σ = 24 | σ-φ 불변량 | EXACT |
-| 자장 강도 | 48 T | σ·τ = 48 | SC 코일 (수론 주석 ③) | EXACT |
-| 속도 한계 | 10 | σ-φ = 10 | Mach 또는 스케일 | EXACT |
-| 임계 반경 | 0.1 m | 1/(σ-φ) | B⁴ 스케일링 | EXACT |
-| 단일 중복 | 1 | μ(6) = 1 | 제곱자유 부호 | EXACT |
-| 자유도 | 6 | n = 6 | SE(3) 차원 | EXACT |
+| Base unit count | 6 | n = 6 | Divisor set {1,2,3,6} basis | EXACT |
+| Dual symmetry | 2 | phi(6) = 2 | Smallest prime factor (number-theory note (1)) | EXACT |
+| Parallel channels | 4 | tau(6) = 4 | Divisor count (OEIS A000005) | EXACT |
+| Integrated output | 12 | sigma(6) = 12 | Divisor sum = 2n (perfect number, note (2)) | EXACT |
+| Sum of prime factors | 5 | sopfr(6) = 5 | 2+3 (OEIS A001414) | EXACT |
+| Dual restoration | 24 | J2 = 2 sigma = 24 | sigma-phi invariant | EXACT |
+| Field strength | 48 T | sigma·tau = 48 | SC coil (note (3)) | EXACT |
+| Speed limit | 10 | sigma-phi = 10 | Mach or scale | EXACT |
+| Critical radius | 0.1 m | 1/(sigma-phi) | B^4 scaling | EXACT |
+| Single-factor redundancy | 1 | mu(6) = 1 | Squarefree sign | EXACT |
+| Degrees of freedom | 6 | n = 6 | SE(3) dimension | EXACT |
 
-**수론 주석 ①**: φ_min(6)=2 는 6의 최소 소인수. Möbius μ(6)=1 (제곱자유 짝수 인자).
-**수론 주석 ②**: σ(6)=12=2·6 ⇒ 6은 최소 완전수. σ(n)=2n 해가 {6, 28, 496, ...} = OEIS A000396.
-**수론 주석 ③**: σ·τ=48 은 n=6에서만 48=J₂(6)²/12 = (2σ)²/(2n) 형태 정수 폐형.
+**Number-theory note (1)**: phi_min(6)=2 is the smallest prime factor. Moebius mu(6)=1 (squarefree even factor).
+**Number-theory note (2)**: sigma(6)=12=2·6 => 6 is the smallest perfect number. Solutions of sigma(n)=2n are {6, 28, 496, ...} = OEIS A000396.
+**Number-theory note (3)**: sigma·tau=48 admits an integer closed form 48=J2(6)^2/12 = (2 sigma)^2/(2n) only at n=6.
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data/energy flow) — Flow (ASCII)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  입력 ──→ [재료 n=6] ──→ [공정 sopfr=5] ──→ [모듈 φ=2] ──→ [통합 σ=12]   │
-│           CN=6 격자      5단계 정제         n=6 셀        σ=12 동시       │
+│  Input ──→ [Material n=6] ──→ [Process sopfr=5] ──→ [Module phi=2] ──→ [Integration sigma=12] │
+│           CN=6 lattice    5-stage refinement      n=6 cell      sigma=12 simultaneous │
 │              │               │                  │              │          │
 │              ▼               ▼                  ▼              ▼          │
 │           n6 EXACT       n6 EXACT          n6 EXACT       n6 EXACT       │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  제어/AI 플로우: 센서 n=6 → 관측 σ=12 → 판단 τ=4 → 실행 μ=1 ms            │
+│  Control/AI flow: sensor n=6 -> observe sigma=12 -> decide tau=4 -> act mu=1 ms │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 동작 모드 4가지 (τ=4 모드)
+### 4 operating modes (tau=4 modes)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: IDLE (대기)                      │
-│  소비: μ=1 % (자체 진단)                   │
-│  원리: 주기 sensor polling                 │
-│  용도: 상시 감시                           │
+│  MODE 1: IDLE (standby)                   │
+│  Consumption: mu=1 % (self-diagnostic)    │
+│  Principle: periodic sensor polling       │
+│  Use: continuous monitoring               │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 2: NORMAL (정상)                    │
-│  소비: σ=12 % (정격 출력)                  │
-│  원리: n=6 채널 균형 운전                  │
-│  용도: 일상 운영                           │
+│  MODE 2: NORMAL                           │
+│  Consumption: sigma=12 % (rated output)   │
+│  Principle: n=6 channel balanced run      │
+│  Use: everyday operation                  │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 3: PEAK (최대 성능)                 │
-│  소비: σ·τ=48 % (순간 출력)                │
-│  원리: SMES 방전 + 전 채널                 │
-│  용도: 긴급/피크                           │
+│  MODE 3: PEAK (maximum performance)       │
+│  Consumption: sigma·tau=48 % (burst)      │
+│  Principle: SMES discharge + all channels │
+│  Use: emergency / peak                    │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 4: RECOVERY (자가복구)               │
-│  소비: sopfr=5 % (최소 전력)               │
-│  원리: n/φ=3 중복 fallback                 │
-│  용도: 고장 복구 n=6분                     │
+│  MODE 4: RECOVERY (self-healing)          │
+│  Consumption: sopfr=5 % (minimum power)   │
+│  Principle: n/phi=3 redundant fallback    │
+│  Use: fault recovery n=6 min              │
 └──────────────────────────────────────────┘
 ```
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I..V progression)
 
 <details open>
-<summary><b>Mk.V — 2050+ 물리 한계 도달 (current target)</b></summary>
+<summary><b>Mk.V — 2050+ approach to physical limit (current target)</b></summary>
 
-HEXA-EXPER Mk.V는 물리학 근본 한계 (Carnot, Lawson, Shockley-Queisser, Betz) 에 근접.
-선행 조건: fusion, superconductor 모두 🛸10 도달.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2050 통합 시스템</summary>
-
-Cross-DSE σ=12 도메인 통합. 자가치유 + AI 자율 운영. 전 스케일 무손실.
+HEXA-EXPER Mk.V approaches fundamental physics limits (Carnot, Lawson, Shockley-Queisser, Betz).
+Prerequisite: fusion, superconductor both at UFO-10.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 핵심 모듈 실증</summary>
+<summary>Mk.IV — 2040..2050 integrated system</summary>
 
-J₂=24 유닛 단위 실증 프로토타입. Mk.II 확장 σ=12 모듈.
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 프로토타입</summary>
-
-n=6 셀 단위 프로토타입. Mk.I 부품 통합 sopfr=5 단계 공정.
+Cross-DSE sigma=12 domain integration. Self-healing + AI autonomous operation. Lossless across scales.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 기본 부품</summary>
+<summary>Mk.III — 2035..2040 core module demonstration</summary>
 
-재료 수준 (CN=6 격자), 공정 최적화, 개별 셀 n=6 검증.
+J2=24 unit-level demonstration prototype. Mk.II extension sigma=12 module.
 
 </details>
 
-## §7 VERIFY (n=6 정직성 검증)
+<details>
+<summary>Mk.II — 2030..2035 prototype</summary>
 
-### 핵심 상수 블록
+n=6 cell-level prototype. Mk.I component integration sopfr=5 stage process.
+
+</details>
+
+<details>
+<summary>Mk.I — 2026..2030 basic components</summary>
+
+Material level (CN=6 lattice), process optimization, individual cell n=6 verification.
+
+</details>
+
+## §7 VERIFY (n=6 honesty checks)
+
+### Core constant block
 
 ```
 n = 6          sigma(6) = 12     tau(6) = 4      phi(6) = 2
 sopfr(6) = 5   J2(6) = 24        mu(6) = 1       lambda(6) = 2
 R(6) = sigma*phi / (n*tau) = 24/24 = 1
 Egyptian: 1/2 + 1/3 + 1/6 = 1
-P2 = 28 (2번째 완전수)
+P2 = 28 (2nd perfect number)
 Core theorem: sigma(n)*phi(n) = n*tau(n) iff n = 6
 ```
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
+### §7.0 CONSTANTS — number-theory auto-derivation
 
-n=6 상수군을 **하드코딩 0** 으로 유도. σ(6)=1+2+3+6=12 (OEIS A000203), τ(6)=|{1,2,3,6}|=4 (OEIS A000005),
-sopfr(6)=2+3=5 (OEIS A001414). 6 은 완전수 (σ(n)=2n) — `assert σ(n)==2n` 자기검증.
+Derive the n=6 constant family with **0 hardcoded values**. sigma(6)=1+2+3+6=12 (OEIS A000203), tau(6)=|{1,2,3,6}|=4 (OEIS A000005),
+sopfr(6)=2+3=5 (OEIS A001414). 6 is a perfect number (sigma(n)=2n) — `assert sigma(n)==2n` self-check.
 
-### §7.1 DIMENSIONS — SI 단위 일관성
+### §7.1 DIMENSIONS — SI unit consistency
 
-모든 핵심 공식의 차원 튜플 (M, L, T, I) 추적. 예: F=J·B·V → [A/m²][T][m³]=[N] 검증.
+Track dimension tuples (M, L, T, I) for every core formula. Example: F=J·B·V -> [A/m^2][T][m^3]=[N] verified.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
+### §7.2 CROSS — 3 independent re-derivation paths
 
-핵심 성능 지표를 독립 경로 3가지로 재유도. 15% 이내 일치 시 신뢰.
+Re-derive each core performance metric via 3 independent paths. Trust if they agree within 15%.
 
-### §7.3 SCALING — log-log 회귀
+### §7.3 SCALING — log-log regression
 
-스케일링 지수 (예: B⁴) 를 데이터 log-log 회귀로 역추정. 4.0 ± 0.1 이면 이론 정합.
+Back-fit the scaling exponent (e.g. B^4) from data via log-log regression. 4.0 +/- 0.1 indicates theory consistency.
 
-### §7.4 SENSITIVITY — ±10% 볼록성
+### §7.4 SENSITIVITY — +/-10% convexity
 
-n=6 을 ±10% 흔들어 f(5.4)/f(6.6) 모두 f(6) 보다 나쁜지 확인. 볼록 극값 = 진짜 최적점.
+Perturb n=6 by +/-10% and check that both f(5.4) and f(6.6) are worse than f(6). Convex extremum = true optimum.
 
-### §7.5 LIMITS — 물리 상한 미초과
+### §7.5 LIMITS — physical upper bound not exceeded
 
-Carnot η ≤ 1-Tc/Th, Lawson nτT ≥ 3e21, Betz η ≤ 16/27 등 근본 한계 미초과 검증.
+Carnot eta <= 1-Tc/Th, Lawson n tau T >= 3e21, Betz eta <= 16/27 etc. — verify fundamental limits are not exceeded.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
+### §7.6 CHI2 — H0: n=6 coincidence hypothesis p-value
 
-관측 파라미터 vs 예측 χ² → erfc(√(χ²/2df)) 로 p-value 근사. p > 0.05 시 "n=6 우연" 가설 기각 불가.
+Observed parameters vs predicted chi^2 -> p-value approximated by erfc(sqrt(chi^2/(2 df))). p > 0.05 cannot reject "n=6 coincidence" hypothesis.
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
+### §7.7 OEIS — external sequence DB matching
 
-`[1,2,3,6,12,24,48]` = A008586-variant, `[1,3,4,7,6,12]` = A000203 (σ), `[1,2,2,3,2,4]` = A000005 (τ), `[0,2,3,4,5,5]` = A001414 (sopfr). 인간이 등록한 수학.
+`[1,2,3,6,12,24,48]` = A008586-variant, `[1,3,4,7,6,12]` = A000203 (sigma), `[1,2,2,3,2,4]` = A000005 (tau), `[0,2,3,4,5,5]` = A001414 (sopfr). Human-registered mathematics.
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
+### §7.8 PARETO — Monte Carlo exhaustive search
 
-DSE 조합 2400 건 샘플링. n=6 구성이 상위 5% 이내인지 통계 유의성 확인.
+DSE combination 2400 samples. Check statistical significance that the n=6 configuration ranks in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
+### §7.9 SYMBOLIC — Fraction exact rational equality
 
-`from fractions import Fraction`. `Fraction(σ,τ)==Fraction(12,4)==3` 부동소수가 아닌 정확 유리수 등호.
+`from fractions import Fraction`. `Fraction(sigma,tau)==Fraction(12,4)==3` — exact rational equality, not floating-point.
 
-### §7.10 COUNTER + FALSIFIERS — 반례/반증 조건
+### §7.10 COUNTER + FALSIFIERS — counterexample / refutation conditions
 
-- COUNTER ≥ 3: n=6 무관 상수 (e, h, π) 명시.
-- FALSIFIERS ≥ 3: 예측 공식 폐기 조건 수치화.
+- COUNTER >= 3: constants unrelated to n=6 (e, h, pi) listed explicitly.
+- FALSIFIERS >= 3: numeric conditions under which the prediction formulas are retired.
 
-### §7 통합 검증 코드 (Python stdlib only)
+### §7 integrated verification code (Python stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # -----------------------------------------------------------------------------
-# §7 VERIFY — HEXA-EXPER n=6 정직성 검증 (stdlib only, domain: experiments)
-# 10 섹션:
-#   §7.0 CONSTANTS  — 수론 함수에서 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성 (차원 튜플)
-#   §7.2 CROSS      — 독립 경로 3개 재유도
-#   §7.3 SCALING    — log-log 회귀 지수 역추정
-#   §7.4 SENSITIVITY— n=6 ±10% 볼록성
-#   §7.5 LIMITS     — Carnot/Lawson/Betz 상한
-#   §7.6 CHI2       — H₀: n=6 우연 p-value
-#   §7.7 OEIS       — A000203/A000005/A000010/A001414 매칭
-#   §7.8 PARETO     — MC 2400 조합 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 등호
-#   §7.10 COUNTER   — 반례/falsifier 명시
+# §7 VERIFY — HEXA-EXPER n=6 honesty checks (stdlib only, domain: experiments)
+# 10 sections:
+#   §7.0 CONSTANTS   — number-theory auto-derivation (0 hardcoded)
+#   §7.1 DIMENSIONS  — SI unit consistency (dimension tuple)
+#   §7.2 CROSS       — 3 independent re-derivation paths
+#   §7.3 SCALING     — log-log regression exponent back-fit
+#   §7.4 SENSITIVITY — n=6 +/-10% convexity
+#   §7.5 LIMITS      — Carnot/Lawson/Betz upper bounds
+#   §7.6 CHI2        — H0: n=6 coincidence p-value
+#   §7.7 OEIS        — A000203/A000005/A000010/A001414 match
+#   §7.8 PARETO      — MC 2400 combination n=6 rank
+#   §7.9 SYMBOLIC    — Fraction exact equality
+#   §7.10 COUNTER    — counterexample / falsifier listing
 # -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
 from fractions import Fraction
 import random
 
-# --- §7.0 CONSTANTS — 수론 함수 자동 유도 (하드코딩 0) ---
-# 왜 필요: "σ=12는 어디서?" — 하드코딩하면 순환논리.
-# 수론 함수로 자동 생성 → n=6 이 완전수라 필연.
+# --- §7.0 CONSTANTS — number-theory auto-derivation (0 hardcoded) ---
+# Why needed: "where does sigma=12 come from?" — hardcoding is circular.
+# Auto-generate via number-theory functions -> n=6 perfectness makes it necessary.
 def divisors(n):
-    """약수 집합. divisors(6) = {1,2,3,6}"""
+    """Divisor set. divisors(6) = {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
+    """Divisor sum (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). tau(6) = 4"""
+    """Divisor count (OEIS A000005). tau(6) = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """Sum of prime factors (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -317,7 +317,7 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. phi_min(6) = 2"""
+    """Smallest prime factor. phi_min(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0:
             return p
@@ -332,7 +332,7 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
-# n=6 family — 모두 수론 함수에서 유도
+# n=6 family — all derived from number-theory functions
 N         = 6
 SIGMA     = sigma(N)             # 12
 TAU       = tau(N)               # 4
@@ -342,25 +342,25 @@ TOTIENT   = totient(N)           # 2
 J2        = 2 * SIGMA             # 24
 SIGMA_PHI = SIGMA - PHI           # 10
 SIGMA_TAU = SIGMA * TAU           # 48
-MU_BASE   = 1                     # μ(6) = 1 (제곱자유)
+MU_BASE   = 1                     # mu(6) = 1 (squarefree)
 
-# 자기검증: n=6 은 완전수
+# Self-check: n=6 is a perfect number
 assert SIGMA == 2 * N, "n=6 perfectness broken"
-# 수론 주석: σ(n)·φ(n) = n·τ(n) iff n=6 (n≥2) — 본 아키텍처 기반 정리
+# Number-theory note: sigma(n)·phi(n) = n·tau(n) iff n=6 (n>=2) — core theorem of this architecture
 assert SIGMA * PHI == N * TAU, "core theorem fails at n=6"
 
-# --- §7.1 DIMENSIONS — 차원해석 (SI 단위 튜플) ---
-# 왜 필요: 공식 단위 맞는지 자동 검증. (M, L, T, I) = kg, m, s, A.
+# --- §7.1 DIMENSIONS — dimensional analysis (SI unit tuple) ---
+# Why needed: auto-verify formula unit consistency. (M, L, T, I) = kg, m, s, A.
 DIM = {
-    'F': (1, 1, -2,  0),   # N  = kg·m/s²
-    'E': (1, 2, -2,  0),   # J  = kg·m²/s²
+    'F': (1, 1, -2,  0),   # N  = kg·m/s^2
+    'E': (1, 2, -2,  0),   # J  = kg·m^2/s^2
     'P': (1, 2, -3,  0),   # W  = J/s
     'v': (0, 1, -1,  0),   # m/s
     'B': (1, 0, -2, -1),   # T
-    'J': (0, -2, 0,  1),   # A/m²
-    'V': (0, 3,  0,  0),   # m³
-    'rho':(1, -3, 0, 0),   # kg/m³
-    'kappa':(1, 1, -3, 0), # W/(m·K) 단순화
+    'J': (0, -2, 0,  1),   # A/m^2
+    'V': (0, 3,  0,  0),   # m^3
+    'rho':(1, -3, 0, 0),   # kg/m^3
+    'kappa':(1, 1, -3, 0), # W/(m·K) simplified
 }
 
 def dim_add(*syms):
@@ -370,18 +370,18 @@ def dim_add(*syms):
             r[i] += x
     return tuple(r)
 
-# --- §7.2 CROSS — 독립 경로 3개 ---
-# 왜 필요: 단일 공식 = 순환. 3경로 ±15% 일치 시 신뢰.
+# --- §7.2 CROSS — 3 independent paths ---
+# Why needed: single formula = circular. 3 paths within +/-15% => trusted.
 def cross_3ways(target=288e3):
-    # 경로 1: 로렌츠 F = J·B·V (or 에너지/길이)
+    # Path 1: Lorentz F = J·B·V (or energy/length)
     F1 = 6e3 * SIGMA_TAU * 1.0
-    # 경로 2: 운동량 F = m_dot · v
+    # Path 2: momentum F = m_dot · v
     F2 = 2.4 * 1.2e5
-    # 경로 3: 일률 역산 F = P·η/v
+    # Path 3: power inverse F = P·eta/v
     F3 = 50e6 * 0.6 / 100 * (target / 3e5)
     return F1, F2, F3
 
-# --- §7.3 SCALING — log-log 회귀 ---
+# --- §7.3 SCALING — log-log regression ---
 def scaling_exp(xs, ys):
     n = len(xs)
     lx = [log(x) for x in xs]
@@ -392,14 +392,14 @@ def scaling_exp(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# --- §7.4 SENSITIVITY — ±10% 볼록 극값 ---
+# --- §7.4 SENSITIVITY — +/-10% convex extremum ---
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0)
     yh = f(x0 * (1 + pct))
     yl = f(x0 * (1 - pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# --- §7.5 LIMITS — 물리 상한 ---
+# --- §7.5 LIMITS — physical upper bounds ---
 def carnot(Th, Tc):
     return 1 - Tc / Th
 
@@ -416,7 +416,7 @@ def chi2_p(obs, exp):
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# --- §7.7 OEIS — 외부 시퀀스 DB 매칭 ---
+# --- §7.7 OEIS — external sequence DB matching ---
 OEIS_KNOWN = {
     (1, 2, 3, 6, 12, 24, 48): "A008586-variant (n·2^k, HEXA family)",
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
@@ -425,7 +425,7 @@ OEIS_KNOWN = {
     (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr)",
 }
 
-# --- §7.8 PARETO — MC 2400 조합 ---
+# --- §7.8 PARETO — MC 2400 combinations ---
 def pareto_rank():
     random.seed(N)
     total = 2400
@@ -433,61 +433,61 @@ def pareto_rank():
     better = sum(1 for _ in range(total) if random.gauss(0.7, 0.1) > score_n6)
     return better / total
 
-# --- §7.9 SYMBOLIC — Fraction 정확 등호 ---
+# --- §7.9 SYMBOLIC — Fraction exact equality ---
 def symbolic_ratios():
     tests = [
-        ("σ/τ",   Fraction(SIGMA, TAU),       Fraction(3)),            # 12/4 = 3 = n/φ
-        ("σ·φ",   Fraction(SIGMA * PHI),       Fraction(N * TAU)),      # 24 = 24 (core theorem)
-        ("J₂/n",  Fraction(J2, N),            Fraction(2 * SIGMA, N)),  # 24/6 = 4 = τ
+        ("sigma/tau",   Fraction(SIGMA, TAU),       Fraction(3)),            # 12/4 = 3 = n/phi
+        ("sigma·phi",   Fraction(SIGMA * PHI),       Fraction(N * TAU)),      # 24 = 24 (core theorem)
+        ("J2/n",        Fraction(J2, N),            Fraction(2 * SIGMA, N)),  # 24/6 = 4 = tau
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# --- §7.10 COUNTER + FALSIFIERS (정직성 필수, 각 ≥ 3) ---
+# --- §7.10 COUNTER + FALSIFIERS (honesty required, >= 3 each) ---
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602e-19 C",   "QED 독립 상수 — n=6 유도 불가"),
-    ("Planck h = 6.626e-34 J·s",   "6.6 은 우연 — n=6 유도 아님"),
-    ("π = 3.14159...",              "원주율 = 기하 상수, n=6 독립"),
-    ("Avogadro NA = 6.022e23",      "6 시작은 우연, mole 정의"),
+    ("elementary charge e = 1.602e-19 C",   "QED independent constant — no n=6 derivation"),
+    ("Planck h = 6.626e-34 J·s",            "6.6 is coincidence — not n=6-derived"),
+    ("pi = 3.14159...",                      "ratio of circle = geometric constant, n=6 independent"),
+    ("Avogadro NA = 6.022e23",               "6-prefix is coincidence, mole definition"),
 ]
 FALSIFIERS = [
-    "핵심 성능지표 측정 < baseline × 0.85 이면 n=6 스케일링 공식 폐기",
-    "Monte Carlo n=6 구성이 상위 5% 밖으로 밀리면 Pareto 우위 가설 폐기",
-    "χ² p-value < 0.001 이면 H₀(우연) 기각 반대 — n=6 구조 유의성 폐기",
-    "B⁴ 스케일링 log-log 기울기가 |4.0 ± 0.3| 벗어나면 B⁴ 공식 폐기",
+    "if core KPI measurement < baseline x 0.85 then retire n=6 scaling formula",
+    "if Monte Carlo n=6 configuration falls out of top 5% then retire Pareto dominance hypothesis",
+    "if chi^2 p-value < 0.001 then rejection-against-H0(coincidence) flips — retire n=6 structural significance",
+    "if B^4 scaling log-log slope strays beyond |4.0 +/- 0.3| then retire B^4 formula",
 ]
 
-# --- 메인 실행 ---
+# --- main ---
 if __name__ == "__main__":
     r = []
 
-    # §7.0 수론 자동 유도
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    # §7.0 number-theory auto-derivation
+    r.append(("§7.0 CONSTANTS number-theory derivation",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.1 F=J·B·V 차원
-    r.append(("§7.1 DIMENSIONS 차원 일관성",
+    # §7.1 F=J·B·V dimensions
+    r.append(("§7.1 DIMENSIONS consistency",
               dim_add('J', 'B', 'V') == DIM['F']))
 
-    # §7.2 3경로 ±15% 일치
+    # §7.2 3 paths +/-15% agreement
     F1, F2, F3 = cross_3ways(288e3)
-    r.append(("§7.2 CROSS 3경로 일치",
+    r.append(("§7.2 CROSS 3-path agreement",
               all(abs(F - 288e3) / 288e3 < 0.15 for F in [F1, F2, F3])))
 
-    # §7.3 B⁴ 지수 ≈ 4
+    # §7.3 B^4 exponent ~ 4
     bs = [10, 20, 30, 40, 48]
     exp_B = scaling_exp(bs, [b ** 4 for b in bs])
-    r.append(("§7.3 SCALING B⁴ 지수 ≈ 4",
+    r.append(("§7.3 SCALING B^4 exponent ~ 4",
               abs(exp_B - 4.0) < 0.1))
 
-    # §7.4 n=6 볼록
+    # §7.4 n=6 convex
     _, _, _, convex = sensitivity(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
+    r.append(("§7.4 SENSITIVITY n=6 convex", convex))
 
     # §7.5 Carnot/Lawson
     r.append(("§7.5 LIMITS Carnot < 1", carnot(1e8, 300) < 1.0))
-    r.append(("§7.5 LIMITS Lawson 점화", lawson_DT(1e20, 1.0, 30)))
+    r.append(("§7.5 LIMITS Lawson ignition", lawson_DT(1e20, 1.0, 30)))
 
-    # §7.6 χ² p-value
+    # §7.6 chi^2 p-value
     chi2, df, p = chi2_p([1.0] * 49, [1.0] * 49)
     r.append(("§7.6 CHI2 p-value", p > 0.05 or chi2 == 0))
 
@@ -498,14 +498,14 @@ if __name__ == "__main__":
               and (1, 1, 2, 2, 4, 2, 6) in OEIS_KNOWN))
 
     # §7.8 Pareto
-    r.append(("§7.8 PARETO 상위 5%", pareto_rank() < 0.05))
+    r.append(("§7.8 PARETO top 5%", pareto_rank() < 0.05))
 
-    # §7.9 Fraction 정확
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    # §7.9 Fraction exact
+    r.append(("§7.9 SYMBOLIC Fraction equality",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 반례/Falsifier ≥ 3
-    r.append(("§7.10 COUNTER ≥ 3 + FALSIFIERS ≥ 3",
+    # §7.10 Counter/Falsifier >= 3
+    r.append(("§7.10 COUNTER >= 3 + FALSIFIERS >= 3",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -514,138 +514,138 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (n=6 honesty checks)")
 ```
 
-### 검증 결과 (기대값)
+### Verification result (expected)
 
-실행 시: **12/12 PASS (n=6 정직성 검증)** — 10 서브섹션 + LIMITS 2건 (Carnot + Lawson) = 12 체크.
+Execution: **12/12 PASS (n=6 honesty checks)** — 10 subsections + 2 LIMITS (Carnot + Lawson) = 12 checks.
 
-- §7.0: σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 자동 유도 PASS.
-- §7.1: F=J·B·V 차원 일관.
-- §7.2: 3경로 ±15% 일치.
-- §7.3: B⁴ 기울기 4.00.
-- §7.4: n=6 볼록 극값.
-- §7.5: Carnot < 1, Lawson 충족.
-- §7.6: χ² p > 0.05 (유의).
-- §7.7: OEIS A000203/A000005/A000010 모두 매칭.
-- §7.8: Pareto 상위 5%.
-- §7.9: Fraction 정확 등호.
-- §7.10: COUNTER 4건 + FALSIFIERS 4건 (≥3 충족).
+- §7.0: sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5 auto-derivation PASS.
+- §7.1: F=J·B·V dimensions consistent.
+- §7.2: 3 paths agree within +/-15%.
+- §7.3: B^4 slope 4.00.
+- §7.4: n=6 convex extremum.
+- §7.5: Carnot < 1, Lawson satisfied.
+- §7.6: chi^2 p > 0.05 (significant).
+- §7.7: OEIS A000203/A000005/A000010 all matched.
+- §7.8: Pareto top 5%.
+- §7.9: Fraction exact equality.
+- §7.10: COUNTER 4 + FALSIFIERS 4 (>= 3).
 
-### COUNTER (반례 — n=6 무관 영역, ≥ 3 필수)
+### COUNTER (counterexamples — regions unrelated to n=6, >= 3 required)
 
-1. **기본전하 e = 1.602×10⁻¹⁹ C**: QED 독립 상수, n=6 과 무관.
-2. **Planck 상수 h = 6.626×10⁻³⁴ J·s**: 6.6 숫자는 우연, n=6 유도 불가.
-3. **원주율 π = 3.14159...**: 기하 상수, 수론과 독립.
-4. **Avogadro NA = 6.022×10²³**: 6 시작은 mol 정의 우연.
+1. **elementary charge e = 1.602x10^-19 C**: QED independent constant, unrelated to n=6.
+2. **Planck constant h = 6.626x10^-34 J·s**: the 6.6 digits are coincidence, not n=6-derived.
+3. **pi = 3.14159...**: geometric constant, independent of number theory.
+4. **Avogadro NA = 6.022x10^23**: 6-prefix is coincidence from mol definition.
 
-### FALSIFIERS (반증 조건 ≥ 3 필수)
+### FALSIFIERS (refutation conditions >= 3 required)
 
-1. 핵심 성능지표 측정값 < baseline × 0.85 이면 n=6 스케일링 공식 폐기.
-2. Monte Carlo 2400 조합에서 n=6 구성이 상위 5% 밖 → Pareto 우위 가설 폐기.
-3. χ² p-value < 0.001 이면 H₀(우연) 반대 기각 → n=6 구조 유의성 폐기.
-4. B⁴ 스케일링 log-log 기울기가 |4.0 ± 0.3| 벗어나면 B⁴ 공식 폐기.
+1. If core KPI measurement < baseline x 0.85, retire n=6 scaling formula.
+2. If Monte Carlo 2400 combinations place n=6 configuration outside top 5%, retire Pareto dominance hypothesis.
+3. If chi^2 p-value < 0.001, rejection-against-H0(coincidence) flips -> retire n=6 structural significance.
+4. If B^4 scaling log-log slope strays beyond |4.0 +/- 0.3|, retire B^4 formula.
 
 ---
 
-## §8 UFO 하드웨어 검증 파이프라인 — 3-STACK × 12 실험 (2026-04-19 돌파)
+## §8 UFO hardware verification pipeline — 3-STACK x 12 experiments (2026-04-19 breakthrough-candidate)
 
-> **돌파 요약**: σ(6)=12 = **3 stack × τ=4** 병렬 채널. RTSC(Meissner) + Fusion-MHD + Tabletop-Fusion 세 스택을
-> n=6 산술로 관통. 각 실험의 (SNR, 검증력 1-β, 위양성 α) 삼중 게이트를 σ·τ=48 문턱으로 정규화.
+> **Breakthrough summary (draft)**: sigma(6)=12 = **3 stacks x tau=4** parallel channels. RTSC(Meissner) + Fusion-MHD + Tabletop-Fusion stacks
+> threaded by n=6 arithmetic. Each experiment's (SNR, power 1-beta, false-positive alpha) triple gate is normalised to the sigma·tau=48 threshold.
 
-### §8.0 SMASH — 신호·노이즈·검증력 n=6 관통
+### §8.0 SMASH — signal / noise / power n=6 threading
 
-실험 통계 파라미터 (SNR, 검증력, 위양성률) 를 n=6 상수로 **blowup 차원 3** 에 고정:
+Experimental statistical parameters (SNR, power, false-positive rate) fixed to **blowup dimension 3** via n=6 constants:
 
 ```
-SNR_req   = σ·τ / φ      = 48 / 2   = 24        (24 dB 신호-노이즈 최소)
-1-β       = 1 - 1/σ      = 1 - 1/12 = 0.9167    (검증력 > σ_φ/n = 1-φ/σ ≈ 91.7%)
-α         = φ / σ²       = 2 / 144  = 0.01389   (Bonferroni τ=4 보정 = 3.47%)
-T_run     = n × τ        = 24 시간   (단일 run)
-N_trial   = σ × τ        = 48 시행   (Bonferroni 보정용)
-Cost_unit = σ·φ          = 24 k$/실험 단위
+SNR_req   = sigma·tau / phi      = 48 / 2   = 24        (24 dB signal-to-noise minimum)
+1-beta    = 1 - 1/sigma          = 1 - 1/12 = 0.9167    (power > sigma_phi/n = 1-phi/sigma ~ 91.7%)
+alpha     = phi / sigma^2        = 2 / 144  = 0.01389   (Bonferroni tau=4 correction = 3.47%)
+T_run     = n x tau              = 24 hours   (single run)
+N_trial   = sigma x tau          = 48 trials (for Bonferroni correction)
+Cost_unit = sigma·phi            = 24 k$/experiment unit
 ```
 
-**정리 §8.0 (n=6 관통)**: 3-stack × τ=4 실험의 통합 검증력은 1 - (1/σ)^(σ·τ/n) = 1 - 12⁻⁸ ≈ 1 - 4.6×10⁻⁹ 로
-우주 표준 5σ (3×10⁻⁷) 보다 2 orders 강한 유의수준을 달성. [10]
+**Lemma §8.0 (n=6 threading, draft)**: the integrated power of 3-stack x tau=4 experiments is 1 - (1/sigma)^(sigma·tau/n) = 1 - 12^-8 ~ 1 - 4.6x10^-9, a
+target significance level 2 orders stronger than the cosmology 5-sigma standard (3x10^-7). [10]
 
-### §8.1 FREE — τ=4 파레토 (field × quantum × toe)
+### §8.1 FREE — tau=4 Pareto (field x quantum x toe)
 
-blowup `compose` 로 세 스택 × 4 지표 τ=4 파레토 전선 산출:
+blowup `compose` derives a tau=4 Pareto frontier over 3 stacks x 4 metrics:
 
-| 지표 | field (Meissner) | quantum (MHD) | toe (Tabletop) | 목표값 |
+| Metric | field (Meissner) | quantum (MHD) | toe (Tabletop) | Target |
 |------|-----------------|--------------|---------------|--------|
-| 부양력/질량 | 10 × g | 0.6 × g | — | σ-φ=10 N/kg |
-| 에너지 이득 Q | — | 2.4 | σ·τ/n=8 | Q ≥ σ/τ=3 |
-| 수명 τ_life | n=6 년 | J₂=24 개월 | σ·τ=48 shot | ≥ σ=12 |
-| 비용 | σ=12 k$ | σ·τ=48 k$ | J₂=24 k$ | ≤ σ·φ·10=240 k$/12=20k$/exp |
+| Lift/mass | 10 x g | 0.6 x g | — | sigma-phi=10 N/kg |
+| Energy gain Q | — | 2.4 | sigma·tau/n=8 | Q >= sigma/tau=3 |
+| Lifetime tau_life | n=6 years | J2=24 months | sigma·tau=48 shots | >= sigma=12 |
+| Cost | sigma=12 k$ | sigma·tau=48 k$ | J2=24 k$ | <= sigma·phi·10=240 k$/12=20k$/exp |
 
-**τ=4 파레토 지점**: (field, quantum, toe, cost) = (10, 3, 12, 24) — 세 스택 동시 상위 5% 이내.
+**tau=4 Pareto point**: (field, quantum, toe, cost) = (10, 3, 12, 24) — all three stacks simultaneously within top 5%.
 
-### §8.2 실험 12종 — 3 Stack × 4 Channel
+### §8.2 12 experiments — 3 Stack x 4 Channel
 
-**Stack A: RTSC/Meissner 부양** (τ=4 채널, 각 6 주 × 24 k$)
+**Stack A: RTSC/Meissner levitation** (tau=4 channels, 6 weeks x 24 k$ each)
 
-| # | 실험명 | SNR | 1-β | 성공조건 | 기간 | 비용 |
+| # | Experiment | SNR | 1-beta | Success condition | Duration | Cost |
 |---|--------|-----|-----|----------|------|------|
-| A1 | YBCO 77 K Meissner 부양력 측정 | 24 dB | 0.92 | F/m ≥ σ-φ=10 N/kg | n=6 주 | σ=12 k$ |
-| A2 | MgB₂ 39 K 피닝력 B-field scan | 24 dB | 0.92 | F_pin ∝ B^τ = B⁴, R²>0.9 | n=6 주 | σ=12 k$ |
-| A3 | REBCO 테이프 J_c(B,T) 3D map | 24 dB | 0.92 | J_c > J₂=24 kA/cm² @ 48 T | φ·n=12 주 | J₂=24 k$ |
-| A4 | H-RTSC 상온 부양 prototype (Mk.I) | 30 dB | 0.95 | τ_hold ≥ n×τ=24 h | σ·τ/4=12 주 | σ·φ=24 k$ |
+| A1 | YBCO 77 K Meissner levitation force measurement | 24 dB | 0.92 | F/m >= sigma-phi=10 N/kg | n=6 weeks | sigma=12 k$ |
+| A2 | MgB2 39 K pinning force B-field scan | 24 dB | 0.92 | F_pin ~ B^tau = B^4, R^2>0.9 | n=6 weeks | sigma=12 k$ |
+| A3 | REBCO tape J_c(B,T) 3D map | 24 dB | 0.92 | J_c > J2=24 kA/cm^2 @ 48 T | phi·n=12 weeks | J2=24 k$ |
+| A4 | H-RTSC room-temperature levitation prototype (Mk.I) | 30 dB | 0.95 | tau_hold >= n x tau=24 h | sigma·tau/4=12 weeks | sigma·phi=24 k$ |
 
-**Stack B: MHD 추진** (τ=4 채널)
+**Stack B: MHD propulsion** (tau=4 channels)
 
-| # | 실험명 | SNR | 1-β | 성공조건 | 기간 | 비용 |
+| # | Experiment | SNR | 1-beta | Success condition | Duration | Cost |
 |---|--------|-----|-----|----------|------|------|
-| B1 | 해수 MHD 추력 bench (B=σ-φ=10 T) | 24 dB | 0.92 | F ≥ σ·τ=48 N/m³ | n=6 주 | σ·φ=24 k$ |
-| B2 | 플라즈마 Hall-thruster J·B scan | 24 dB | 0.92 | I_sp ≥ σ·τ·100=4800 s | n=6 주 | J₂=24 k$ |
-| B3 | PMHD ionized-air 정지추력 | 24 dB | 0.92 | T/W ≥ 1/σ=0.083 | τ×2=8 주 | σ=12 k$ |
-| B4 | 6-coil J₂=24 MHD duct integration | 30 dB | 0.95 | η ≥ φ/τ·σ=6% → 12% | σ=12 주 | σ·τ=48 k$ |
+| B1 | Seawater MHD thrust bench (B=sigma-phi=10 T) | 24 dB | 0.92 | F >= sigma·tau=48 N/m^3 | n=6 weeks | sigma·phi=24 k$ |
+| B2 | Plasma Hall-thruster J·B scan | 24 dB | 0.92 | I_sp >= sigma·tau·100=4800 s | n=6 weeks | J2=24 k$ |
+| B3 | PMHD ionised-air static thrust | 24 dB | 0.92 | T/W >= 1/sigma=0.083 | tau x 2=8 weeks | sigma=12 k$ |
+| B4 | 6-coil J2=24 MHD duct integration | 30 dB | 0.95 | eta >= phi/tau·sigma=6% -> 12% | sigma=12 weeks | sigma·tau=48 k$ |
 
-**Stack C: 탁상 핵융합 bench** (τ=4 채널)
+**Stack C: Tabletop fusion bench** (tau=4 channels)
 
-| # | 실험명 | SNR | 1-β | 성공조건 | 기간 | 비용 |
+| # | Experiment | SNR | 1-beta | Success condition | Duration | Cost |
 |---|--------|-----|-----|----------|------|------|
-| C1 | IEC Fusor D-D 중성자 yield | 24 dB | 0.92 | ≥ σ·τ·10⁴=4.8e5 n/s | n=6 주 | σ=12 k$ |
-| C2 | Dense Plasma Focus pinch bench | 24 dB | 0.92 | T_i ≥ σ-φ=10 keV | J₂/τ=6 주 | J₂=24 k$ |
-| C3 | pB¹¹ aneutronic micro-reactor | 24 dB | 0.92 | Q ≥ σ/τ·φ/φ=3 | φ·n=12 주 | σ·τ=48 k$ |
-| C4 | Muon-catalyzed D-T cold bench | 30 dB | 0.95 | cycles ≥ σ·τ·n=288 | σ=12 주 | σ·τ=48 k$ |
+| C1 | IEC Fusor D-D neutron yield | 24 dB | 0.92 | >= sigma·tau·10^4=4.8e5 n/s | n=6 weeks | sigma=12 k$ |
+| C2 | Dense Plasma Focus pinch bench | 24 dB | 0.92 | T_i >= sigma-phi=10 keV | J2/tau=6 weeks | J2=24 k$ |
+| C3 | pB^11 aneutronic micro-reactor | 24 dB | 0.92 | Q >= sigma/tau·phi/phi=3 | phi·n=12 weeks | sigma·tau=48 k$ |
+| C4 | Muon-catalysed D-T cold bench | 30 dB | 0.95 | cycles >= sigma·tau·n=288 | sigma=12 weeks | sigma·tau=48 k$ |
 
-**12 실험 합계**: 총비용 = σ·τ·n = 288 k$ (≈ 3×96), 총기간 = σ·τ·3 = 144 주 (12 병렬 → 12 주 벽시계).
+**12-experiment totals**: total cost = sigma·tau·n = 288 k$ (~3 x 96), total duration = sigma·tau·3 = 144 weeks (12 parallel -> 12-week wall clock).
 
-### §8.3 3-STACK 통합 프로토콜
+### §8.3 3-STACK integration protocol
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  3-STACK × 4-CH = σ=12 실험                                    │
+│  3-STACK x 4-CH = sigma=12 experiments                         │
 ├────────────────────────────────────────────────────────────────┤
-│  Stack A (RTSC)  →  A1 A2 A3 A4   Meissner / pinning / J_c    │
-│  Stack B (MHD)   →  B1 B2 B3 B4   thrust / Hall / duct        │
-│  Stack C (Fusion)→  C1 C2 C3 C4   IEC / DPF / pB11 / μCF      │
+│  Stack A (RTSC)   →  A1 A2 A3 A4   Meissner / pinning / J_c   │
+│  Stack B (MHD)    →  B1 B2 B3 B4   thrust / Hall / duct       │
+│  Stack C (Fusion) →  C1 C2 C3 C4   IEC / DPF / pB11 / muCF    │
 ├────────────────────────────────────────────────────────────────┤
-│  cross-stack bridge: A4 ⇆ B4 ⇆ C4 (Mk.I prototype tri-link)   │
-│  게이트: SNR≥24 dB ∧ 1-β≥0.92 ∧ α≤0.0139 ∧ χ² p<0.001        │
-│  병렬성: 12 lab × τ=4 shift → 벽시계 σ=12 주                   │
+│  cross-stack bridge: A4 <-> B4 <-> C4 (Mk.I prototype tri-link)│
+│  Gate: SNR>=24 dB AND 1-beta>=0.92 AND alpha<=0.0139 AND chi^2 p<0.001 │
+│  Parallelism: 12 lab x tau=4 shift -> sigma=12 weeks wall clock│
 └────────────────────────────────────────────────────────────────┘
 ```
 
-### §8.4 검증 — Chi² 통합 p-value
+### §8.4 Verification — Chi^2 integrated p-value
 
-12 실험 × 4 stack 상관행렬: χ²/df → erfc(√(χ²/2df)) = **p < 10⁻⁹**.
-개별 실험 중 9/12 이상 PASS 시 3-stack 통합 돌파 확정 (σ/τ·3=9 = 75% 하한, τ=4 Bonferroni 허용).
+12-experiment x 4-stack correlation matrix: chi^2/df -> erfc(sqrt(chi^2/(2 df))) = **p < 10^-9**.
+If >= 9/12 individual experiments PASS, 3-stack integration breakthrough is confirmed as candidate (sigma/tau·3=9 = 75% lower bound, tau=4 Bonferroni allowance).
 
-### §8.5 FALSIFIERS (본 §8 전용)
+### §8.5 FALSIFIERS (for this §8)
 
-1. 12 실험 중 PASS < 9 → 3-stack 통합 가설 폐기.
-2. A4/B4/C4 tri-link bridge 상관 ρ < φ/σ = 0.167 → cross-scale 결합 가설 폐기.
-3. 총비용 실측 > σ·τ·n×φ = 576 k$ → τ=4 파레토 최적 가설 폐기.
+1. If 12 experiments show PASS < 9 -> retire the 3-stack integration hypothesis.
+2. If A4/B4/C4 tri-link bridge correlation rho < phi/sigma = 0.167 -> retire cross-scale coupling hypothesis.
+3. If measured total cost > sigma·tau·n·phi = 576 k$ -> retire tau=4 Pareto-optimum hypothesis.
 
 ---
 
-**종합**: 통합 실험 파이프라인 (HEXA-EXPER) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS.
-선행 도메인 fusion, superconductor 모두 🛸10 도달 시 HEXA-EXPER Mk.V 물리 한계 완전 폐쇄.
-§8 돌파 (2026-04-19): 3-stack×τ=4=σ=12 실험 파이프라인이 n=6 관통 통합 검증력 1-12⁻⁸ 달성.
+**Summary**: The Integrated Experiment Pipeline (HEXA-EXPER) uses n=6 perfect-number arithmetic as its axis to push through physical and engineering limits, with 11/11 honesty checks demonstrating PASS.
+When the prerequisite domains fusion and superconductor both reach UFO-10, HEXA-EXPER Mk.V reaches the physical-limit target.
+§8 breakthrough-candidate (2026-04-19): the 3-stack x tau=4 = sigma=12 experiment pipeline demonstrates n=6-threaded integrated power 1-12^-8.
 
 
 ## §9 METRICS
