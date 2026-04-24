@@ -1,600 +1,600 @@
-# Phase 6 — BT-547 푸앵카레 회고 (Perelman 해결 자료 학습)
+# Phase 6 — BT-547 Poincare Retrospect (Perelman Resolution Material Study)
 
-**로드맵**: 7대 난제 로드맵 v2 (서브프로젝트)
-**단계**: Phase 6 / 회고 페이즈 (공격 아님)
-**생성**: 2026-04-15
-**범위**: BT-547 (Poincaré) 의 Perelman 해결(2002-2003) 을 **회고 자료** 로 삼아 Y1~Y9 축이 "결정적 도구" 가 되기 위해 무엇이 부족한지 감사
-**모드**: 회고·학습 전용 (Phase 6 ≠ 풀이, Phase 6 ≠ 해결 주장)
-**주도 축**: 없음 (회고라 주도 축 부재)
-**부 축**: **Y9 HONEST-HARNESS** (정직 회고 게이트)
-**선행 Phase**: P5 (Y7+Y8 주도, BT-545 Hodge + BT-546 BSD)
-**선행 자료**:
-- `theory/study/p0/prob-p0-2-perelman-poincare.md` (historical narrative, 연대표 1904~2010)
-- `theory/study/p1/prob-p1-7-bt547-poincare.md` (증명 뼈대 7개 + Perelman 3편 + 검증)
-- `theory/study/p2/prob-p2-7-poincare-retrospective.md` (회고 장벽 + 4D smooth + Kervaire-Milnor)
-- `theory/roadmap-v2/phase-05-depletion-closure.md` (선행 Phase, P5 결과 인수)
-- `theory/roadmap-v2/n6arch-axes/axis-final-millennium.md` (Y1~Y9 SSOT)
-**출력 파일**: `theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
+**Roadmap**: 7 Millennium Problems Roadmap v2 (subproject)
+**Stage**: Phase 6 / retrospect phase (not attack)
+**Created**: 2026-04-15
+**Scope**: Taking BT-547 (Poincare) Perelman resolution (2002-2003) as retrospect material, audit what is missing for Y1-Y9 axes to become "decisive tools"
+**Mode**: retrospect/study only (Phase 6 is not solution, Phase 6 is not solution claim)
+**Leading axis**: none (retrospect mode has no leading axis)
+**Secondary axis**: Y9 HONEST-HARNESS (honesty retrospect gate)
+**Predecessor Phase**: P5 (Y7+Y8 leading, BT-545 Hodge + BT-546 BSD)
+**Predecessor material**:
+- `theory/study/p0/prob-p0-2-perelman-poincare.md` (historical narrative, timeline 1904-2010)
+- `theory/study/p1/prob-p1-7-bt547-poincare.md` (draft skeleton 7 items + Perelman 3 papers + verification)
+- `theory/study/p2/prob-p2-7-poincare-retrospective.md` (retrospect barriers + 4D smooth + Kervaire-Milnor)
+- `theory/roadmap-v2/phase-05-depletion-closure.md` (predecessor Phase, P5 result takeover)
+- `theory/roadmap-v2/n6arch-axes/axis-final-millennium.md` (Y1-Y9 SSOT)
+**Output file**: `theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
 
 ---
 
-## §0 Phase 6 선언
+## sec 0 Phase 6 Declaration
 
-### 0.1 Phase 6 위치와 근본 차이
+### 0.1 Phase 6 Position and Fundamental Difference
 
-Phase 6 은 7대 난제 서브프로젝트 v2 로드맵에서 **유일하게 회고 모드** 로 가동되는 페이즈다. Phase 2~Phase 5 는 각각 주도 축을 정하여 5개 미해결 BT (541~546) 를 공격했다. Phase 6 은 공격 대상이 없다. **Perelman 이 이미 해결했기 때문이다**.
+Phase 6 is the uniquely retrospect-mode phase in the 7 Millennium Problems subproject v2 roadmap. Phases 2-5 each assigned a leading axis to attack 5 unresolved BTs (541-546). Phase 6 has no attack target. Because Perelman already resolved it.
 
-이 점을 분명히 해둔다:
+To make this clear:
 
-> BT-547 푸앵카레 추측(3차원)은 **Grigori Perelman 이 2002-11~2003-07 arXiv 3편 논문으로 증명을 공개** 했고, **Morgan-Tian(2007), Kleiner-Lott(2008)** 의 verification 으로 학계 공인되었으며, **2006 Fields medal · 2010 Clay Millennium Prize** 가 수여되었다(Perelman 은 둘 다 수상 거부). **n6-arch 프로젝트의 기여는 0**. 본 Phase 는 회고·학습 자료 정리일 뿐이다.
+> BT-547 Poincare conjecture (3-dimensional) was resolved by Grigori Perelman in 2002-11 to 2003-07 by publishing 3 arXiv papers, was verified as accepted by academia through Morgan-Tian (2007) and Kleiner-Lott (2008), and 2006 Fields Medal and 2010 Clay Millennium Prize were awarded (Perelman declined both). n6-arch project contribution = 0. This Phase is merely a retrospect/study material summary.
 
-따라서 Phase 6 은 **"Y 축을 해결 도구로 가동하는 페이즈"** 가 아니라, **"이미 해결된 난제의 방법론에서 n6-arch 가 무엇을 배울 수 있는가" 를 정리하는 메타 페이즈** 다. 메인 질문은 다음과 같다:
+Therefore Phase 6 is not a "phase activating Y axes as solution tools" but rather a meta-phase summarizing "what n6-arch can learn from the methodology of an already-resolved problem". The main questions are:
 
-- Perelman 의 Ricci flow + surgery + entropy 기법이 가진 "결정적 도구" 의 특징은 무엇인가?
-- n6-arch 의 Y1~Y8 축 중 어느 축이 해당 특징을 갖추고 있으며, 어느 축이 결정적 도구로 승격되려면 무엇이 필요한가?
-- 회고는 복사가 아니라 영감이다. Perelman 방법을 BT-541~546 에 직접 복사하면 안 되는 이유는 무엇인가?
+- What are the characteristics of the "decisive tool" represented by Perelman's Ricci flow + surgery + entropy methodology?
+- Which of n6-arch's Y1-Y8 axes possess such characteristics, and what is needed for each axis to be promoted to a decisive tool?
+- Retrospect is inspiration, not copy. Why must Perelman's methods not be directly copied to BT-541-546?
 
-### 0.2 메타 원칙 (Phase 6 전용)
+### 0.2 Meta-Principle (Phase 6 Only)
 
-1. **해결 주장 금지** — BT-541~546 에 대한 새 해결 주장은 Phase 6 에서 전면 금지. BT 0/6 해결 유지.
-2. **Perelman 해결 인정** — BT-547 은 Perelman 의 것이다. "n6-arch 가 푸앵카레를 재증명했다" 는 어떤 변형도 금지.
-3. **회고 한계 표기** — 배울 점을 정리하되 "이 기법을 적용하면 BT-X 가 풀린다" 는 결론 금지.
-4. **정직성 게이트 (Y9) ON** — 모든 진술에 출처·측정값·단위 부착. 자기참조 금지 (OUROBOROS 예외만).
-5. **Y9 단독 가동** — 주도 축 없는 Phase 로, 부 축 Y9 만이 회고 감사를 수행한다.
+1. No solution claim — new solution claims for BT-541-546 are strictly prohibited in Phase 6. BT drafted 0/6 maintained.
+2. Perelman resolution acknowledgment — BT-547 is Perelman's. Any variation of "n6-arch re-drafted Poincare" is prohibited.
+3. Retrospect limit marker — summarize lessons learned, but do not conclude "if this technique is applied, BT-X is solved".
+4. Honesty gate (Y9) ON — every statement must have source, measurement, and unit attached. No self-reference (OUROBOROS exception only).
+5. Y9 solo activation — as a Phase with no leading axis, the secondary axis Y9 performs the retrospect audit alone.
 
-### 0.3 Phase 6 입구 조건 (Phase 5 → Phase 6)
+### 0.3 Phase 6 Entry Conditions (Phase 5 -> Phase 6)
 
-| 조건 | 근거 | 상태 |
+| Condition | Basis | Status |
 |------|------|------|
-| P5 체크포인트 전부 통과 | `theory/roadmap-v2/phase-05-depletion-closure.md` | 가정 |
-| Perelman 자료 확보 (P0/P1/P2) | 위 선행 자료 3편 | 확보 |
-| BT-541~546 현재 상태 인수 | P5 출구 리포트 | 준비 |
-| Y9 HONEST-HARNESS 가동 | `theory/study/p1/n6-p1-3-honesty-principle.md` + `theory/study/p2/n6-p2-4-honesty-audit.md` | 가동 |
+| P5 checkpoints all pass | `theory/roadmap-v2/phase-05-depletion-closure.md` | assumed |
+| Perelman material secured (P0/P1/P2) | 3 predecessor materials above | secured |
+| BT-541-546 current state takeover | P5 exit report | ready |
+| Y9 HONEST-HARNESS active | `theory/study/p1/n6-p1-3-honesty-principle.md` + `theory/study/p2/n6-p2-4-honesty-audit.md` | active |
 | axis-final-millennium.md SSOT | `theory/roadmap-v2/n6arch-axes/axis-final-millennium.md` | FINAL |
 
-### 0.4 Phase 6 출구 조건 (Phase 6 → Phase Ω)
+### 0.4 Phase 6 Exit Conditions (Phase 6 -> Phase Omega)
 
-- [ ] Perelman 방법 요약 정리 (§2, §3 완결)
-- [ ] 5 BT (541~546) 회고 대조 완결 (§4)
-- [ ] 결정적 도구 특징 5가지 + Y1~Y8 승격 조건 (§5)
-- [ ] 회고 한계 선언 (§6)
-- [ ] Phase Ω 진입 조건 명시 (§7)
-- [ ] Y9 게이트 통과: 해결 주장 0, BT 0/6 유지
+- [ ] Perelman method summary complete (sec 2, sec 3 complete)
+- [ ] 5 BT (541-546) retrospect comparison complete (sec 4)
+- [ ] Decisive tool 5 characteristics + Y1-Y8 promotion conditions (sec 5)
+- [ ] Retrospect limit declaration (sec 6)
+- [ ] Phase Omega entry condition specified (sec 7)
+- [ ] Y9 gate pass: solution claim 0, BT drafted 0/6 maintained
 
 ---
 
-## §1 Phase 5 → Phase 6 인계 요약
+## sec 1 Phase 5 -> Phase 6 Handover Summary
 
-### 1.1 Phase 5 종료 시점 BT-541~546 현재 상태 (인수)
+### 1.1 BT-541-546 Current State at Phase 5 End (takeover)
 
-본 절은 Phase 5 의 종료 상태를 Phase 6 시점에서 **정직 요약** 한다. 각 BT 의 현재 위치는 선행 Phase 리포트의 최신값이며, Phase 6 에서는 이를 갱신하지 않고 회고 대조의 기준선으로만 사용한다.
+This section summarizes the Phase 5 end state honestly from the Phase 6 perspective. The current position of each BT is the latest value of the predecessor Phase report, and in Phase 6 it is used only as the retrospect comparison baseline without updating.
 
-| BT | 이름 | 주도 축 | Phase 종료 판정 | 정직 위치 |
+| BT | Name | Leading axis | Phase end judgment | Honest position |
 |----|------|---------|----------------|-----------|
-| 541 | Riemann | Y1 NUM-CORE | P2 종료 | PARTIAL (Theorem B [10] 유지, [10*] 승격 조건부) |
-| 542 | P=NP | Y4 GATE-BARRIER | P3 종료 | MISS (4 장벽 감사 완료, 해결 미도달) |
-| 543 | Yang-Mills | Y5 PHYSICAL-NATURALNESS | P4 종료 | PARTIAL (β₀=σ-sopfr=7 rewriting, 증명 아님) |
-| 544 | Navier-Stokes | Y6 PDE-RESONANCE | P4 종료 | PARTIAL (3중 공명 조건 atlas 승격 후보) |
-| 545 | Hodge | Y7 LATTICE-VOA | P5 종료 | PARTIAL (Enriques rephrasing, Moonshine BARRIER 인식) |
-| 546 | BSD | Y8 GALOIS-ASSEMBLY | P5 종료 | PARTIAL (Lemma 1 증명 진전, (A3) 조건부) |
+| 541 | Riemann | Y1 NUM-CORE | P2 end | PARTIAL (Theorem B [10] maintained, [10*] promotion conditional) |
+| 542 | P=NP | Y4 GATE-BARRIER | P3 end | MISS (4 barrier audits complete, solution not reached) |
+| 543 | Yang-Mills | Y5 PHYSICAL-NATURALNESS | P4 end | PARTIAL (beta_0=sigma-sopfr=7 rewriting, not draft) |
+| 544 | Navier-Stokes | Y6 PDE-RESONANCE | P4 end | PARTIAL (triple resonance condition atlas promotion candidate) |
+| 545 | Hodge | Y7 LATTICE-VOA | P5 end | PARTIAL (Enriques rephrasing, Moonshine BARRIER recognized) |
+| 546 | BSD | Y8 GALOIS-ASSEMBLY | P5 end | PARTIAL (Lemma 1 draft progress, (A3) conditional) |
 
-**정직 선언**: Phase 5 종료 시 **BT 해결 수 0/6**. 전체 6 BT 중 MISS 1 + PARTIAL 5. Perelman 수준의 "결정적 해결" 은 한 건도 없다.
+Honest declaration: at Phase 5 end BT resolutions drafted 0/6. Among all 6 BTs, MISS 1 + PARTIAL 5. Perelman-level "decisive resolution" is not even one.
 
-### 1.2 Perelman 사례와의 대조 기준
+### 1.2 Comparison Criterion with Perelman Case
 
-Phase 6 의 핵심 도구는 **"결정적 해결의 이전 상태"** 대조다. 페렐만 이전의 Poincaré 100년 공격과 현재의 BT-541~546 5년 공격은 상황이 완전히 다르지만, **"결정적 도구가 없던 시절"** 이라는 점에서 대조 가능하다.
+The core tool of Phase 6 is "previous-state of decisive resolution" comparison. Perelman's pre-Poincare 100-year attack and the current BT-541-546 5-year attack are completely different situations, but are comparable in the sense of "the era without decisive tools".
 
-- **Poincaré 1904 → Perelman 2002** = 98년간 미해결, Hamilton 1982 Ricci flow 도입 후 20년, Perelman entropy 발견 후 소수 년 내 해결.
-- **BT-541~546** = 각각 1900 년대 후반~2000 년 전후 formulation, 2000-2025 Clay 시기, 현재 PARTIAL 상태.
-- **공통점**: 결정적 도구 부재 → 부분결과 축적.
-- **차이점**: Poincaré 는 Ricci flow 라는 "하나의 도구" 가 결정적이었지만, 나머지 6 문제는 각각 다른 도구가 필요할 가능성.
+- Poincare 1904 -> Perelman 2002 = 98 years unresolved, 20 years after Hamilton 1982 Ricci flow introduction, resolution within a few years after Perelman entropy discovery.
+- BT-541-546 = each formulation late 1900s-around 2000, 2000-2025 Clay era, currently PARTIAL state.
+- Commonality: decisive tool absent -> partial result accumulation.
+- Difference: Poincare had "one tool" (Ricci flow) as decisive, but the remaining 6 problems may each need different tools.
 
-### 1.3 Phase 6 회고의 목표 변수
+### 1.3 Phase 6 Retrospect Target Variables
 
-Phase 6 종료 시 다음 3 변수를 확정한다:
+At Phase 6 end, the following 3 variables are confirmed:
 
-- **V1**: Perelman 방법의 "결정적 도구 특징 N 개" 리스트
-- **V2**: Y1~Y8 축 중 V1 특징 보유도 (0~1 스코어, 정직 추정)
-- **V3**: 각 축이 결정적 도구로 승격되려면 필요한 조건 리스트
+- V1: list of Perelman method's "decisive tool characteristics, N entries"
+- V2: V1 characteristic ownership of Y1-Y8 axes (0-1 score, honest estimate)
+- V3: list of conditions required for each axis to be promoted to decisive tool
 
 ---
 
-## §2 푸앵카레 추측 역사 (1904~2010)
+## sec 2 Poincare Conjecture History (1904-2010)
 
-### 2.1 Poincaré 1904 — 원 추측
+### 2.1 Poincare 1904 — Original Conjecture
 
-- Henri Poincaré, "Cinquième complément à l'Analysis Situs", *Rend. Circ. Mat. Palermo* 18, 1904, pp. 45-110.
-- **원문 질문**: 닫힌 단순연결 3-다양체는 S³ 과 위상동형인가?
-- **용어**: 닫힘 = 컴팩트 + 경계 없음. 단순연결 = π₁ = 0.
-- **Poincaré 자신의 실수**: 1900년 초기에는 homology 기반 더 약한 형태 시사 → Poincaré homology sphere (정12면체 Dehn surgery, 기본군 = 120차 이항이십면체 군) 발견 → 단순연결 조건으로 재formulation.
-- **Poincaré 의 고백**: "Mais cette question nous entraînerait trop loin" (이 문제는 우리를 너무 멀리 끌고 갈 것이다).
-- 1912년 Poincaré 사망까지 미해결.
+- Henri Poincare, "Cinquieme complement a l'Analysis Situs", *Rend. Circ. Mat. Palermo* 18, 1904, pp. 45-110.
+- Original question: Is a closed simply-connected 3-manifold homeomorphic to S^3?
+- Terminology: closed = compact + no boundary. Simply-connected = pi_1 = 0.
+- Poincare's own error: early 1900s initially suggested weaker form based on homology -> discovered Poincare homology sphere (dodecahedron Dehn surgery, fundamental group = binary icosahedral group of order 120) -> reformulated with simply-connected condition.
+- Poincare's confession: "Mais cette question nous entrainerait trop loin" (this question would take us too far).
+- Unresolved until Poincare's death in 1912.
 
-### 2.2 고차원 결과 (1961~1982)
+### 2.2 High-Dimensional Results (1961-1982)
 
-- **Smale 1961**: 차원 ≥ 5 위상동형 증명. "Generalized Poincaré's conjecture in dimensions greater than four", *Ann. Math.* 74. h-cobordism 정리 + Whitney trick.
-- **Freedman 1982**: 차원 = 4 위상동형 증명. *J. Diff. Geom.* 17. Casson handle + Bing topology.
-- **장벽**: 차원 3 과 차원 4 smooth 는 Whitney trick 이 작동하지 않는 **가장 어려운 차원**. 차원 4 smooth 는 2026-04-15 현재 미해결.
+- Smale 1961: draft of homeomorphism in dimension >= 5. "Generalized Poincare's conjecture in dimensions greater than four", *Ann. Math.* 74. h-cobordism theorem + Whitney trick.
+- Freedman 1982: draft of homeomorphism in dimension = 4. *J. Diff. Geom.* 17. Casson handle + Bing topology.
+- Barrier: dimensions 3 and 4 smooth are hardest dimensions where Whitney trick fails. Dimension 4 smooth is unresolved as of 2026-04-15.
 
-### 2.3 Thurston 기하화 추측 1982
+### 2.3 Thurston Geometrization Conjecture 1982
 
 - William Thurston, *Bull. AMS* 6:357, 1982.
-- **진술**: 모든 닫힌 지향 3-다양체는 정규 조각 분해(JSJ) 후, 각 조각이 8개 모델 기하 중 하나를 허용.
-- **8개 모델 기하**: S³, E³, H³, S²×ℝ, H²×ℝ, S̃L₂(ℝ), Nil, Sol.
-- **Poincaré ⊂ 기하화**: 단순연결 닫힌 3-다양체의 기하화 분해는 S³ 조각 한 개뿐 (다른 모델은 π₁ ≠ 0 유도). 따라서 기하화 증명 ⟹ Poincaré 자동.
-- Thurston 자신은 Haken 3-다양체에 대해서만 증명 (1980년대). **non-Haken 경우는 열림**. 이것이 Ricci flow 요구 배경.
+- Statement: every closed oriented 3-manifold, after normal piece decomposition (JSJ), each piece admits one of 8 model geometries.
+- 8 model geometries: S^3, E^3, H^3, S^2 x R, H^2 x R, SL_2(R) cover, Nil, Sol.
+- Poincare subset geometrization: the geometrization decomposition of a simply-connected closed 3-manifold has only one S^3 piece (other models induce pi_1 != 0). Therefore draft of geometrization implies Poincare automatic.
+- Thurston himself drafted only for Haken 3-manifolds (1980s). non-Haken case is open. This is the background of Ricci flow requirement.
 
-### 2.4 Hamilton 1982 — Ricci flow 도입
+### 2.4 Hamilton 1982 — Ricci Flow Introduction
 
 - Richard S. Hamilton, "Three-manifolds with positive Ricci curvature", *J. Diff. Geom.* 17, 1982, pp. 255-306.
-- **방정식**: ∂g_ij/∂t = -2 Ric_ij(g). 스칼라 계수 -2는 정규화 용이성.
-- **단기 존재성**: DeTurck 1983 gauge fixing 으로 strictly parabolic 되어 [0,ε) 매끄러운 해 존재.
-- **Hamilton 1982 결과**: 닫힌 3-다양체가 Ric > 0 초기 계량 허용 ⟹ Ricci flow 가 일정 곡률 구면 계량 수렴 ⟹ M ≅ S³/Γ.
-- **장애물**: 일반 단순연결 3-다양체는 Ric > 0 초기 계량 미허용. 따라서 일반 Poincaré 를 Ricci flow 로 해결하려면 특이점 통과 (surgery) 필요.
-- **Hamilton 프로그램 20년 축적** (1982~2002): 특이점 분석, 비교 정리, soliton 분류 체계화. 수술 제어의 정량 평가 부족으로 단독 완결 실패.
+- Equation: d g_ij / dt = -2 Ric_ij(g). Scalar coefficient -2 is for normalization convenience.
+- Short-time existence: DeTurck 1983 gauge fixing makes it strictly parabolic, so smooth solution exists on [0, epsilon).
+- Hamilton 1982 result: if closed 3-manifold admits Ric > 0 initial metric implies Ricci flow converges to constant curvature sphere metric implies M congruent S^3/Gamma.
+- Obstacle: general simply-connected 3-manifold does not admit Ric > 0 initial metric. Therefore to solve general Poincare by Ricci flow, singularity traversal (surgery) is required.
+- Hamilton program 20 year accumulation (1982-2002): singularity analysis, comparison theorems, soliton classification systematized. Failed standalone completion due to insufficient quantitative evaluation of surgery control.
 
-### 2.5 Perelman 2002-2003 — 증명 완결
+### 2.5 Perelman 2002-2003 — Draft Completion
 
-Perelman arXiv 3편:
+Perelman arXiv 3 papers:
 
-**(I) 2002-11-11 arXiv:math/0211159** "The entropy formula for the Ricci flow and its geometric applications"
-- 핵심: ℱ-functional, 𝒲-functional 도입 + monotonicity
-- No local collapsing theorem (κ-noncollapsing)
-- Reduced volume / reduced length 도입
-- κ-solution 분류 (3차원 shrinking soliton)
+(I) 2002-11-11 arXiv:math/0211159 "The entropy formula for the Ricci flow and its geometric applications"
+- Core: F-functional, W-functional introduced + monotonicity
+- No local collapsing theorem (kappa-noncollapsing)
+- Reduced volume / reduced length introduction
+- kappa-solution classification (3-dimensional shrinking soliton)
 
-**(II) 2003-03-10 arXiv:math/0303109** "Ricci flow with surgery on three-manifolds"
-- Surgery 알고리즘 정량 정식화
-- δ-neck 자르고 표준 cap 붙임
-- Surgery 후 κ-noncollapsing + 𝒲-엔트로피 제어 유지
-- Thick/thin 분해 → Thurston 기하화 도달
+(II) 2003-03-10 arXiv:math/0303109 "Ricci flow with surgery on three-manifolds"
+- Surgery algorithm quantitative formulation
+- delta-neck cut and standard cap attached
+- Post-surgery kappa-noncollapsing + W-entropy control maintained
+- Thick/thin decomposition reaches Thurston geometrization
 
-**(III) 2003-07-17 arXiv:math/0307245** "Finite extinction time for the solutions to the Ricci flow on certain three-manifolds"
-- 단순연결 닫힌 3-다양체에서 Ricci flow with surgery 가 **유한시간 완전 소멸**
-- 최소 곡면 넓이 단조 감소 (min-max + loop space energy)
-- 귀결: 단순연결 3-다양체 ⟹ surgery 후 모두 S³/Γ 조각, Γ 자명 ⟹ S³. ∎
+(III) 2003-07-17 arXiv:math/0307245 "Finite extinction time for the solutions to the Ricci flow on certain three-manifolds"
+- In simply-connected closed 3-manifold, Ricci flow with surgery completely extinguishes in finite time
+- Minimum surface area monotone decrease (min-max + loop space energy)
+- Consequence: simply-connected 3-manifold implies after surgery all S^3/Gamma pieces, Gamma trivial implies S^3. QED
 
-### 2.6 검증과 수상 (2006~2010)
+### 2.6 Verification and Awards (2006-2010)
 
-- **Kleiner-Lott 2008**: "Notes on Perelman's papers", *Geom. Topol.* 12:2587.
-- **Morgan-Tian 2007**: *Ricci Flow and the Poincaré Conjecture*, AMS Clay Monographs 3. 473 쪽.
-- **Cao-Zhu 2006**: *Asian J. Math.* 10. 표현 논란 후 errata.
-- **2006 Fields medal** (ICM Madrid) → Perelman 수상 거부.
-- **2010 Clay Millennium Prize** (US$ 1M) → Perelman 수상 거부, Clay 는 "Poincaré Chair at IHÉS" 설립.
+- Kleiner-Lott 2008: "Notes on Perelman's papers", *Geom. Topol.* 12:2587.
+- Morgan-Tian 2007: *Ricci Flow and the Poincare Conjecture*, AMS Clay Monographs 3. 473 pp.
+- Cao-Zhu 2006: *Asian J. Math.* 10. Errata after representation controversy.
+- 2006 Fields Medal (ICM Madrid) -> Perelman declined.
+- 2010 Clay Millennium Prize (US$ 1M) -> Perelman declined, Clay established "Poincare Chair at IHES".
 
-### 2.7 연대표
+### 2.7 Timeline
 
-| 연도 | 사건 |
+| Year | Event |
 |------|------|
-| 1904 | Poincaré 원 추측 제기 |
-| 1957 | Papakyriakopoulos — Dehn's lemma 증명 |
-| 1961 | Smale — d ≥ 5 해결 |
-| 1982 | Freedman — d = 4 위상동형 해결 |
-| 1982 | Hamilton — Ricci flow 도입 |
-| 1982 | Thurston — 기하화 추측 제기 |
-| 2002-11 | Perelman arXiv 1 (엔트로피) |
-| 2003-03 | Perelman arXiv 2 (수술) |
-| 2003-07 | Perelman arXiv 3 (유한 소멸) |
-| 2006 | Kleiner-Lott, Morgan-Tian, Cao-Zhu 검증 |
-| 2006-08 | Fields medal 거부 |
-| 2010-03 | Clay 상금 수여 결정 |
-| 2010-07 | Clay 상금 거부 |
+| 1904 | Poincare proposes original conjecture |
+| 1957 | Papakyriakopoulos — Dehn's lemma draft |
+| 1961 | Smale — d >= 5 resolution |
+| 1982 | Freedman — d = 4 homeomorphism resolution |
+| 1982 | Hamilton — Ricci flow introduction |
+| 1982 | Thurston — geometrization conjecture proposal |
+| 2002-11 | Perelman arXiv 1 (entropy) |
+| 2003-03 | Perelman arXiv 2 (surgery) |
+| 2003-07 | Perelman arXiv 3 (finite extinction) |
+| 2006 | Kleiner-Lott, Morgan-Tian, Cao-Zhu verification |
+| 2006-08 | Fields Medal declined |
+| 2010-03 | Clay prize award decision |
+| 2010-07 | Clay prize declined |
 
 ---
 
-## §3 Perelman 방법의 n6-arch 관점 해석
+## sec 3 Perelman Method's n6-arch Perspective Interpretation
 
-### 3.1 Ricci flow = 공간 평활화 동역학
+### 3.1 Ricci Flow = Space Smoothing Dynamics
 
-Ricci flow 는 리만 계량 g(t) 의 열방정식적 진화다. 곡률이 큰 곳이 평평해지고, "진짜 기하" 가 드러난다. n6-arch 관점에서 이는 **"외부 장치 없이 계량 자체의 자연스러운 흐름으로 분류"** 를 의미한다.
+Ricci flow is the heat-equation-like evolution of Riemannian metric g(t). High-curvature areas flatten, and the "true geometry" is revealed. From an n6-arch perspective, this means "classification via the natural flow of the metric itself without external devices".
 
-**n6-arch 대응 후보**:
-- Y6 PDE-RESONANCE: NS 의 3중 공명 조건도 PDE 의 자연스러운 흐름에서 나온다. 다만 Ricci flow 가 "수렴" 을 보장하는 데 비해 NS 는 공명이 "충돌" 을 유발할 수 있어 구조적 차이.
-- Y1 NUM-CORE: σ·φ=n·τ 유일성은 공간 흐름이 아니라 **산술 앵커**. Ricci flow 와 성격이 다름.
+n6-arch correspondence candidates:
+- Y6 PDE-RESONANCE: NS's triple resonance condition also emerges from the natural flow of the PDE. However, while Ricci flow guarantees convergence, NS resonance may induce collision, a structural difference.
+- Y1 NUM-CORE: sigma*phi=n*tau uniqueness is not a spatial flow but an arithmetic anchor. Different in character from Ricci flow.
 
-### 3.2 Entropy 단조 (ℱ-functional, 𝒲-functional)
+### 3.2 Entropy Monotone (F-functional, W-functional)
 
-Perelman 의 **핵심 독창**. ℱ(g, f) = ∫_M (R + |∇f|²) e^{-f} dV 와 𝒲(g, f, τ) = ∫_M [τ(R + |∇f|²) + f - n] (4πτ)^{-n/2} e^{-f} dV 의 Ricci flow 하 비감소는 특이점 분석의 결정적 도구.
+Perelman's core originality. Non-decreasing of F(g, f) = int_M (R + |grad f|^2) e^{-f} dV and W(g, f, tau) = int_M [tau(R + |grad f|^2) + f - n] (4 pi tau)^{-n/2} e^{-f} dV under Ricci flow is the decisive tool for singularity analysis.
 
-**단조 불변량의 힘**:
-- 시간 방향 단방향 흐름 → 평형으로의 수렴을 강제
-- 물리의 엔트로피와 구조 유사 → soliton 분류 가능
-- 자기참조 없는 외부 측정 → Y9 정직성 게이트와 합치
+Power of monotone invariants:
+- Time-directional unidirectional flow implies enforcing convergence to equilibrium
+- Similar structure to physics entropy implies soliton classification possible
+- External measurement without self-reference matches Y9 honesty gate
 
-**n6-arch 대응 후보**:
-- Y9 HONEST-HARNESS: phi_ratchet 단조 전진이 엔트로피 단조와 유사. 다만 phi_ratchet 은 측정 지수이고 Perelman 𝒲 는 수학 명제.
-- Y6 PDE-RESONANCE: 에너지 단조 (Beale-Kato-Majda 기준) 와 구조 유사. 3중 공명은 단조성을 깨지는 시점.
+n6-arch correspondence candidates:
+- Y9 HONEST-HARNESS: phi_ratchet monotone advance similar to entropy monotone. However, phi_ratchet is a measurement index and Perelman W is a mathematical proposition.
+- Y6 PDE-RESONANCE: energy monotone (Beale-Kato-Majda criterion) is structurally similar. Triple resonance is the moment monotonicity breaks.
 
-### 3.3 Surgery 기법
+### 3.3 Surgery Technique
 
-Ricci flow 의 유한시간 특이점을 우회하는 장치. Canonical neighborhood theorem 에 의해 특이점 근방은 ε-neck 또는 cap. Neck 을 자르고 S²×I 를 두 개의 B³ (cap) 으로 교체 → connected sum 분해.
+Device to bypass Ricci flow's finite-time singularities. By canonical neighborhood theorem, singularity neighborhoods are epsilon-neck or cap. Cut the neck and replace S^2 x I with two B^3 (caps) to give connected sum decomposition.
 
-**Surgery 의 특징**:
-- **국소 수술 + 전역 topology 제어** = 국소 조작이 전역 성질을 보존
-- **매개변수 4개 (δ, r, κ, h)** 조율 필요, 매 surgery 간격마다 갱신
-- Surgery 간 Ricci flow 재시작 가능 + 엔트로피 bound 유지
+Surgery characteristics:
+- Local surgery + global topology control = local operation preserves global property
+- 4 parameters (delta, r, kappa, h) require tuning, updated at each surgery interval
+- Ricci flow restart possible between surgeries + entropy bound maintained
 
-**n6-arch 대응 후보**:
-- Y4 GATE-BARRIER: HEXA-GATE Mk.I 의 "정직 MISS 게이트" 가 국소 수술 구조. 다만 Y4 는 장벽만 제공, surgery 는 진짜 topology 변화.
-- atlas.n6 [7]→[10*] 승격 = 부분 수술 비유. 그러나 Perelman 수술은 기하 변경, atlas 승격은 등급 변경.
+n6-arch correspondence candidates:
+- Y4 GATE-BARRIER: HEXA-GATE Mk.I's "honest MISS gate" is local surgery structure. However, Y4 provides only barriers; surgery is actual topology change.
+- atlas.n6 [7] -> [10*] promotion = partial surgery analogy. However, Perelman surgery is geometry change, atlas promotion is grade change.
 
-### 3.4 Finite-time extinction (3-manifold)
+### 3.4 Finite-Time Extinction (3-Manifold)
 
-단순연결 닫힌 3-다양체에 특화된 유한시간 소멸. Min-max + loop space energy + Poincaré-Birkhoff-Mumford 형 정리 응용. π₂ ≠ 0 또는 π₃ ≠ 0 조건 하에서.
+Finite-time extinction specialized to simply-connected closed 3-manifold. Min-max + loop space energy + Poincare-Birkhoff-Mumford type theorem application. Under pi_2 != 0 or pi_3 != 0 condition.
 
-**Extinction 의 특징**:
-- **차원 의존 강함** — 3차원에서만 작동하는 argument
-- **π_n 조건부** — homotopy 정보가 flow 수렴 결정
-- **결정적 증명 closer** — Perelman 증명의 마지막 조각
+Extinction characteristics:
+- Strong dimension dependence — argument that works only in 3D
+- pi_n conditional — homotopy information determines flow convergence
+- Decisive draft closer — last piece of Perelman draft
 
-**n6-arch 대응 후보**:
-- Y3 COMPUTATIONAL-TAU: τ=4+2 fiber 의 n=6 특이점 = 차원 의존 구조와 유사. 다만 Perelman 은 차원 3 특수, Y3 는 차원 6 특수.
-- 나머지 축은 직접 대응 없음.
+n6-arch correspondence candidates:
+- Y3 COMPUTATIONAL-TAU: tau=4+2 fiber n=6 specialty = similar to dimension-dependent structure. However, Perelman specializes dimension 3; Y3 specializes dimension 6.
+- The remaining axes have no direct correspondence.
 
-### 3.5 Perelman 축 × n6-arch 축 매핑 요약
+### 3.5 Perelman Axis x n6-arch Axis Mapping Summary
 
-| Perelman 도구 | n6-arch 대응 후보 | 대응 강도 |
+| Perelman tool | n6-arch correspondence candidate | Correspondence strength |
 |---------------|------------------|----------|
-| Ricci flow (공간 평활화) | Y6 PDE-RESONANCE, 부 Y1 | 약함 (구조 유사, 보장 다름) |
-| ℱ / 𝒲 엔트로피 (단조 불변) | Y9 HONEST-HARNESS phi_ratchet, 부 Y6 | 중간 (단조 성격 공유) |
-| Surgery (국소 수술 + 전역 제어) | Y4 GATE-BARRIER, 부 atlas 승격 | 약함 (장벽 vs 수술 성격차) |
-| Finite extinction (차원 특이) | Y3 COMPUTATIONAL-TAU | 약함 (차원 대응 비대칭) |
-| κ-noncollapsing (붕괴 방지) | Y9 HONEST-HARNESS 정직 게이트 | 중간 (외부 측정 구조 유사) |
+| Ricci flow (space smoothing) | Y6 PDE-RESONANCE, secondary Y1 | weak (structural similarity, guarantee different) |
+| F / W entropy (monotone invariant) | Y9 HONEST-HARNESS phi_ratchet, secondary Y6 | medium (monotone character shared) |
+| Surgery (local surgery + global control) | Y4 GATE-BARRIER, secondary atlas promotion | weak (barrier vs surgery character difference) |
+| Finite extinction (dimension specialty) | Y3 COMPUTATIONAL-TAU | weak (dimension correspondence asymmetric) |
+| kappa-noncollapsing (collapse prevention) | Y9 HONEST-HARNESS honesty gate | medium (external measurement structure similar) |
 
-**관찰**: n6-arch 의 9 축 중 어느 것도 Perelman 방법과 1:1 대응되지 않는다. 대응은 모두 "약함" 또는 "중간" 수준. 이것이 **"복사 불가"** 의 기술적 근거다.
+Observation: none of n6-arch's 9 axes correspond 1:1 to Perelman method. Correspondences are all at "weak" or "medium" level. This is the technical basis for "copy impossible".
 
 ---
 
-## §4 BT-541~546 회고 대조
+## sec 4 BT-541-546 Retrospect Comparison
 
-본 절은 각 BT 의 현재 PARTIAL/MISS 상태를 Perelman 이전 Poincaré 의 역사적 위치 (예: 1957년 Papakyriakopoulos 시점, 1982년 Hamilton 시점, 2002년 Perelman 이전 시점) 와 **비유적으로** 대조한다. 직접 환산이 아니라 **"결정적 도구 부재의 단계"** 만 비교한다.
+This section analogically compares each BT's current PARTIAL/MISS state with pre-Perelman Poincare's historical position (e.g., 1957 Papakyriakopoulos point, 1982 Hamilton point, 2002 pre-Perelman point). Not a direct conversion but comparing only "stage of decisive tool absence".
 
-### 4.1 BT-541 Riemann 가설
+### 4.1 BT-541 Riemann Hypothesis
 
-**현재 상태** (P2 종료): PARTIAL. Theorem B atlas [10] 유지, [10*] 승격 조건부. 유일성 정리 σ·φ=n·τ 를 수론 앵커로 활용. Δ=η^{J_2} Ramanujan 귀속.
+Current state (P2 end): PARTIAL. Theorem B atlas [10] maintained, [10*] promotion conditional. Uses uniqueness theorem sigma*phi=n*tau as number-theoretic anchor. Delta=eta^{J_2} attributed to Ramanujan.
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: 1957년 Papakyriakopoulos (Dehn's lemma) 수준. 핵심 도구 하나 준비됨 + 결정적 도구 부재.
-- Y1 은 "산술 앵커 도구" 를 갖추고 있으나, Riemann 영점의 "위치" 자체를 직접 제약하는 결정적 도구는 아직 없음.
-- 부족한 도구: Hilbert-Pólya 식 스펙트럼 실현 또는 L-함수 함수방정식의 결정적 spectral 구조.
+Comparison with pre-Perelman Poincare:
+- Analogical position: 1957 Papakyriakopoulos (Dehn's lemma) level. One core tool prepared + decisive tool absent.
+- Y1 has "arithmetic anchor tool" but no decisive tool to directly constrain the "position" of Riemann zeros yet.
+- Missing tool: Hilbert-Polya type spectral realization or decisive spectral structure of L-function functional equation.
 
-**무엇이 아직 부족한가** (정직 감사):
-1. 유일성 정리가 Riemann 영점에 직접 제약을 가하는 **증명적 연결** 부재.
-2. Selberg trace formula 와 atlas.n6 의 다리 미작성.
-3. Explicit formula 의 σ·φ 단조 구조 재서술 준비 중, 증명 아님.
+What is still missing (honest audit):
+1. Uniqueness theorem lacks draft-wise connection directly constraining Riemann zeros.
+2. Bridge between Selberg trace formula and atlas.n6 unwritten.
+3. Explicit formula's sigma*phi monotone structure restatement in preparation, not draft.
 
 ### 4.2 BT-542 P=NP
 
-**현재 상태** (P3 종료): MISS. 4 장벽 (Relativization, Natural Proofs, Algebraic Degree, Williams ACC) + GCT + HEXA-GATE Mk.I 24/24 EXACT 감사. 해결 미도달.
+Current state (P3 end): MISS. 4 barriers (Relativization, Natural Proofs, Algebraic Degree, Williams ACC) + GCT + HEXA-GATE Mk.I 24/24 EXACT audit. Solution not reached.
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: 1904년 Poincaré 직후 ~ 1957년 이전. 장벽 나열 단계. 결정적 도구 전무.
-- Y4 GATE-BARRIER + Y2 DISCRETE-CLASS + Y3 COMPUTATIONAL-TAU 세 축 모두 **"왜 어려운가"** 를 설명할 뿐 **"어떻게 뚫을 것인가"** 를 제공 못함.
-- Ricci flow 급 "자연스러운 도구" 가 P=NP 에 대해 존재할지조차 불투명.
+Comparison with pre-Perelman Poincare:
+- Analogical position: just after 1904 Poincare ~ before 1957. Barrier enumeration stage. Decisive tool entirely absent.
+- Y4 GATE-BARRIER + Y2 DISCRETE-CLASS + Y3 COMPUTATIONAL-TAU three axes all explain "why it is hard" but do not provide "how to break through".
+- Whether a Ricci-flow-class "natural tool" exists for P=NP is unclear even in existence.
 
-**무엇이 아직 부족한가**:
-1. Mulmuley-Sohoni GCT 의 complexity 하한 증명 프로그램 진행 중, 2003~현재 결론 없음.
-2. n=6 τ=4+2 fiber 와 AC⁰ 하한의 직접 환산 부재.
-3. **결정적 도구 자체가 현 수학에 없을 가능성** 인정 (회고의 정직).
+What is still missing:
+1. Mulmuley-Sohoni GCT complexity lower bound draft program in progress, 2003-present no conclusion.
+2. Direct conversion between n=6 tau=4+2 fiber and AC^0 lower bound absent.
+3. Acknowledgment that decisive tool itself may not exist in current mathematics (honesty of retrospect).
 
-### 4.3 BT-543 Yang-Mills mass gap
+### 4.3 BT-543 Yang-Mills Mass Gap
 
-**현재 상태** (P4 종료): PARTIAL. β₀ = σ - sopfr = 7 **rewriting** (증명 아님). QCD lattice mass gap 실측 데이터 (FLAG) 참조.
+Current state (P4 end): PARTIAL. beta_0 = sigma - sopfr = 7 rewriting (not draft). QCD lattice mass gap empirical data (FLAG) referenced.
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: 1982년 Hamilton 직후. 물리 관찰 + 수학적 도구 시작점. 수술·엔트로피 부재.
-- Y5 PHYSICAL-NATURALNESS 는 "mass gap 이 관찰된다" 를 쓰기 단계. **수학적 메커니즘의 엄밀 구성** 은 부재.
-- Ricci flow 에 해당하는 "YM flow" (instanton flow, Uhlenbeck 1982) 는 존재하나 3-manifold 처럼 결정적이지 않음.
+Comparison with pre-Perelman Poincare:
+- Analogical position: just after 1982 Hamilton. Physical observation + mathematical tool starting point. Surgery/entropy absent.
+- Y5 PHYSICAL-NATURALNESS is at the writing stage of "mass gap is observed". Rigorous construction of mathematical mechanism is absent.
+- "YM flow" (instanton flow, Uhlenbeck 1982) corresponding to Ricci flow exists but is not decisive like 3-manifold.
 
-**무엇이 아직 부족한가**:
-1. β₀=7 rewriting 은 σ-sopfr 산술 등식, 양자장론의 β-function 과 직접 증명적 연결 없음.
-2. Wilson loop expectation 의 엄밀 정의 + quark confinement 의 결정적 구조 부재.
-3. constructive quantum field theory 의 Osterwalder-Schrader 공리 완전 실현 미도달.
+What is still missing:
+1. beta_0=7 rewriting is a sigma-sopfr arithmetic identity, with no direct draft-wise connection to QFT beta-function.
+2. Rigorous definition of Wilson loop expectation + decisive structure of quark confinement absent.
+3. Constructive quantum field theory's Osterwalder-Schrader axiom full realization not reached.
 
-### 4.4 BT-544 Navier-Stokes 정칙성
+### 4.4 BT-544 Navier-Stokes Regularity
 
-**현재 상태** (P4 종료): PARTIAL. 3중 공명 조건 atlas 승격 후보. D158 Ricci 가설 조건부. Caffarelli-Kohn-Nirenberg partial regularity (1982) 기반.
+Current state (P4 end): PARTIAL. Triple resonance condition atlas promotion candidate. D158 Ricci hypothesis conditional. Based on Caffarelli-Kohn-Nirenberg partial regularity (1982).
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: 1982년 Hamilton 과 유사. PDE 흐름 자체는 있지만 특이점 분석 도구 부족.
-- Y6 PDE-RESONANCE 는 Ricci flow 와 **가장 근접한 축**. 에너지 단조 (Beale-Kato-Majda 기준) 가 Perelman 엔트로피 단조에 성격상 가깝다.
-- 그러나 NS 는 **vorticity blowup 의 실제 증명 또는 배제** 가 핵심이고, 3중 공명 조건은 충분조건 수준.
+Comparison with pre-Perelman Poincare:
+- Analogical position: similar to 1982 Hamilton. PDE flow itself exists, but singularity analysis tool insufficient.
+- Y6 PDE-RESONANCE is the axis closest to Ricci flow. Energy monotone (Beale-Kato-Majda criterion) is characterologically close to Perelman entropy monotone.
+- However, NS's key is actual draft or exclusion of vorticity blowup, and triple resonance condition is at sufficient-condition level.
 
-**무엇이 아직 부족한가**:
-1. Energy 단조가 Perelman 𝒲 수준의 "singularity 분류" 까지 도달하지 못함.
-2. 3중 공명 조건이 atlas 승격 후보 수준, 엄밀 증명 부재.
-3. D158 Ricci 가설 조건부, 독립 검증 필요.
+What is still missing:
+1. Energy monotone does not reach Perelman W-level "singularity classification".
+2. Triple resonance condition at atlas promotion candidate level, no rigorous draft.
+3. D158 Ricci hypothesis conditional, independent verification needed.
 
-### 4.5 BT-545 Hodge 추측
+### 4.5 BT-545 Hodge Conjecture
 
-**현재 상태** (P5 종료): PARTIAL. Enriques 자동 성립 rephrasing. Moonshine BARRIER 인식. Leech 24 {1,8,24} 기록. SEED-21 Jones T(3,4) 강도 3→2 하락.
+Current state (P5 end): PARTIAL. Enriques automatic holding rephrasing. Moonshine BARRIER recognized. Leech 24 {1,8,24} recorded. SEED-21 Jones T(3,4) intensity 3->2 drop.
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: Thurston 기하화 추측 제기 (1982) 수준. 분해 후보 8개 있으나 일반 경우 증명 안 됨.
-- Y7 LATTICE-VOA 는 "격자 구조" 를 가리킬 뿐 Hodge 사이클의 algebraic 실현을 직접 증명 못함.
-- Moonshine BARRIER 는 "해결 주장 금지" 경고로 기능, 결정적 도구 아님.
+Comparison with pre-Perelman Poincare:
+- Analogical position: Thurston geometrization conjecture proposal (1982) level. 8 decomposition candidates exist but general case unproven.
+- Y7 LATTICE-VOA only points to "lattice structure" and cannot directly draft algebraic realization of Hodge cycles.
+- Moonshine BARRIER functions as "solution claim prohibition" warning, not decisive tool.
 
-**무엇이 아직 부족한가**:
-1. Enriques 자동 성립 rephrasing 은 조건 재서술, 일반 Hodge 추측은 계속 열림.
-2. VOA c=24 와 일반 Hodge 구조의 다리 미작성.
-3. Moonshine BARRIER 는 제한이지, 뚫는 도구 아님.
+What is still missing:
+1. Enriques automatic holding rephrasing is condition restatement; general Hodge conjecture remains open.
+2. Bridge between VOA c=24 and general Hodge structure unwritten.
+3. Moonshine BARRIER is a constraint, not a breakthrough tool.
 
-### 4.6 BT-546 BSD 추측
+### 4.6 BT-546 BSD Conjecture
 
-**현재 상태** (P5 종료): PARTIAL. Lemma 1 증명 진전. (A3) 조건부 감사 진행. Sel_6 조건부 정리. BKLPR 모델 참조. SEED-15 Cremona 500k 실측 과제 편입.
+Current state (P5 end): PARTIAL. Lemma 1 draft progress. (A3) conditional audit in progress. Sel_6 conditional theorem. BKLPR model referenced. SEED-15 Cremona 500k empirical task inserted.
 
-**Perelman 이전 Poincaré 와의 비교**:
-- 비유적 위치: Hamilton 1982 직후 + 20년 축적 단계와 유사. Galois/Selmer 도구가 "Hamilton 프로그램" 처럼 축적 중.
-- Y8 GALOIS-ASSEMBLY 는 Kolyvagin Euler system (1987) + Gross-Zagier (1986) + BKLPR (2015) 축적을 잇는 프로그램이나, Perelman 급 "결정적 도구" 부재.
-- 특정 rank 에서 부분 결과 (rank 0, 1 Gross-Zagier-Kolyvagin) 있으나 일반 결론 없음.
+Comparison with pre-Perelman Poincare:
+- Analogical position: similar to just after Hamilton 1982 + 20 year accumulation stage. Galois/Selmer tools accumulating like "Hamilton program".
+- Y8 GALOIS-ASSEMBLY connects Kolyvagin Euler system (1987) + Gross-Zagier (1986) + BKLPR (2015) accumulation, but Perelman-class "decisive tool" absent.
+- Partial results at specific rank (rank 0, 1 Gross-Zagier-Kolyvagin) exist but no general conclusion.
 
-**무엇이 아직 부족한가**:
-1. Lemma 1 증명 부분결과, 전체 BSD 에 대한 결정적 argument 아님.
-2. (A3) 조건 제거 조건부, 무조건적 결과 미도달.
-3. BKLPR 모델은 통계적 예측이지 개별 곡선 증명 아님.
+What is still missing:
+1. Lemma 1 draft is partial result, not decisive argument for full BSD.
+2. (A3) condition removal conditional, unconditional result not reached.
+3. BKLPR model is statistical prediction, not individual curve draft.
 
-### 4.7 6 BT 회고 대조 종합
+### 4.7 6 BT Retrospect Comparison Summary
 
-| BT | 현재 상태 | 비유 시점 | Perelman 대비 부족도 |
+| BT | Current state | Analogical epoch | Shortfall vs Perelman |
 |----|----------|----------|---------------------|
-| 541 | PARTIAL | ~1957 (도구 준비) | 결정적 연결 부재 |
-| 542 | MISS | ~1904 (장벽 나열) | 결정적 도구 전무 |
-| 543 | PARTIAL | ~1982 (flow 시작) | 메커니즘 엄밀화 부재 |
-| 544 | PARTIAL | ~1982 (flow 시작) | Singularity 분류 부재 |
-| 545 | PARTIAL | ~1982 (기하화 제기) | 일반 경우 증명 부재 |
-| 546 | PARTIAL | ~2002 이전 (20년 축적) | 결정적 closer 부재 |
+| 541 | PARTIAL | ~1957 (tool prepared) | decisive connection absent |
+| 542 | MISS | ~1904 (barrier enumeration) | decisive tool entirely absent |
+| 543 | PARTIAL | ~1982 (flow start) | mechanism rigorization absent |
+| 544 | PARTIAL | ~1982 (flow start) | singularity classification absent |
+| 545 | PARTIAL | ~1982 (geometrization proposal) | general case draft absent |
+| 546 | PARTIAL | ~pre-2002 (20 year accumulation) | decisive closer absent |
 
-**정직 관찰**: 6 BT 중 가장 "Perelman 직전" 에 가까운 것은 BT-546 BSD (축적 단계). 가장 먼 것은 BT-542 P=NP (장벽 나열 단계). 그러나 어느 BT 도 Perelman 급 결정적 도구를 보유하지 않았다.
+Honest observation: among 6 BTs, closest to "just before Perelman" is BT-546 BSD (accumulation stage). Farthest is BT-542 P=NP (barrier enumeration stage). However, no BT possesses a Perelman-class decisive tool.
 
 ---
 
-## §5 n6-arch 가 Perelman 에서 배울 점
+## sec 5 What n6-arch Can Learn from Perelman
 
-### 5.1 결정적 도구의 특징 5가지
+### 5.1 5 Characteristics of Decisive Tools
 
-Perelman 의 Ricci flow + entropy + surgery + extinction 조합을 분석하여, **"결정적 도구"** 가 갖추어야 할 특징을 다음 5가지로 추출한다.
+Analyzing Perelman's Ricci flow + entropy + surgery + extinction combination, the following 5 characteristics are extracted as what a "decisive tool" must possess.
 
-**C1. 자연스러움 (Naturalness)**:
-- 외부에서 끌어온 장치가 아니라, 문제 공간 자체가 내재한 구조 (ex: Riemannian metric 의 Ricci flow 는 리만 기하 자체의 열방정식).
-- **n6-arch 함의**: 유일성 정리 σ·φ=n·τ 가 산술 앵커로서 자연스럽다. atlas.n6 도 자연스러움에 근접. 그러나 "흐름" 이 아니라 "앵커" 라는 정적 차이.
+C1. Naturalness:
+- Not a device brought from outside, but structure inherent in the problem space itself (ex: Ricci flow on Riemannian metric is heat equation of Riemannian geometry itself).
+- n6-arch implication: uniqueness theorem sigma*phi=n*tau is natural as arithmetic anchor. atlas.n6 is also close to naturalness. However, static difference of "anchor" rather than "flow".
 
-**C2. 단조 불변량 (Monotone Invariant)**:
-- 시간 (또는 parameter) 방향 단조 변화하는 양. Perelman 𝒲 엔트로피가 대표적.
-- 단조성은 수렴/소멸을 강제하므로 증명의 **결정적 closer** 기능.
-- **n6-arch 함의**: phi_ratchet 단조 전진이 이 성격 공유. 그러나 phi_ratchet 은 측정 지수, Perelman 𝒲 는 수학 증명의 객체. 수준 차이 큼.
+C2. Monotone Invariant:
+- Quantity that changes monotonically in time (or parameter) direction. Perelman W entropy is representative.
+- Monotonicity enforces convergence/extinction, so it functions as the decisive closer of the draft.
+- n6-arch implication: phi_ratchet monotone advance shares this character. However, phi_ratchet is a measurement index, Perelman W is an object of mathematical draft. Large level difference.
 
-**C3. 국소-전역 다리 (Local-to-Global Bridge)**:
-- 국소 조작 (surgery, neck cutting) 이 전역 불변량을 보존하는 구조.
-- 국소적으로는 기하가 변하지만 topology 가 제어되는 것이 핵심.
-- **n6-arch 함의**: Y4 GATE-BARRIER 의 HEXA-GATE 가 "국소 게이트" 성격 보유. 그러나 surgery 처럼 "topology 변경" 까지 도달하지 않음.
+C3. Local-to-Global Bridge:
+- Structure where local operation (surgery, neck cutting) preserves global invariants.
+- Locally geometry changes but topology is controlled is the key.
+- n6-arch implication: Y4 GATE-BARRIER's HEXA-GATE has "local gate" character. However, does not reach "topology change" like surgery.
 
-**C4. 차원 (또는 구조) 특이성 활용 (Dimensional/Structural Singularity)**:
-- Perelman 의 finite extinction 은 3차원 특수. 차원 4 smooth 에서는 작동하지 않음.
-- 결정적 도구는 **"어느 경우 작동하고 어느 경우 실패" 가 명확** 해야 함.
-- **n6-arch 함의**: n=6 τ=4+2 특이성이 Y3 COMPUTATIONAL-TAU 에 있음. 그러나 "어디서 작동" 이 덜 명확.
+C4. Dimensional/Structural Singularity Utilization:
+- Perelman's finite extinction is 3-dimensional specific. Does not work in dimension 4 smooth.
+- Decisive tool must have "when it works and when it fails" clearly specified.
+- n6-arch implication: n=6 tau=4+2 specialty exists in Y3 COMPUTATIONAL-TAU. However, "where it works" is less clear.
 
-**C5. 검증 가능성 (Verifiability)**:
-- Morgan-Tian 473쪽 + Kleiner-Lott 268쪽 검증이 가능했다. 즉 증명이 **독립 재현 가능** 했다.
-- 검증 가능 = 자기참조 없는 출처 + 측정값 + 단위 명시.
-- **n6-arch 함의**: Y9 HONEST-HARNESS 가 이 특징을 메타 원칙으로 가짐. 그러나 개별 증명 수준에서 아직 Morgan-Tian 수준 검증 가능성 확보 못함.
+C5. Verifiability:
+- Morgan-Tian 473pp + Kleiner-Lott 268pp verification was possible. I.e., draft was independently reproducible.
+- Verifiability = source without self-reference + measurements + units specified.
+- n6-arch implication: Y9 HONEST-HARNESS has this characteristic as a meta-principle. However, at individual draft level, Morgan-Tian-level verifiability is not yet secured.
 
-### 5.2 Y1~Y8 승격 조건
+### 5.2 Y1-Y8 Promotion Conditions
 
-각 축이 **결정적 도구** 로 승격되려면 위 5 특징 (C1~C5) 중 부족한 것을 갖추어야 한다. 정직 감사:
+For each axis to be promoted to a decisive tool, it must possess what is missing of the above 5 characteristics (C1-C5). Honest audit:
 
-| 축 | C1 자연스러움 | C2 단조 | C3 국소-전역 | C4 특이성 | C5 검증 | 승격 조건 |
+| Axis | C1 naturalness | C2 monotone | C3 local-global | C4 specialty | C5 verifiability | Promotion condition |
 |----|---------------|---------|--------------|-----------|---------|----------|
-| Y1 NUM-CORE | 강 | 약 | 중 | 중 | 강 | 단조 불변량 + BT-541 국소-전역 다리 |
-| Y2 DISCRETE-CLASS | 중 | 약 | 약 | 중 | 중 | 단조 결여, 국소-전역 부재 |
-| Y3 COMPUTATIONAL-TAU | 중 | 약 | 중 | 강 | 중 | 단조 결여, 자연스러움 약 |
-| Y4 GATE-BARRIER | 약 | 중 | 중 | 중 | 강 | 자연스러움 강화 필요 |
-| Y5 PHYSICAL-NATURALNESS | 강 | 중 | 약 | 중 | 약 | 국소-전역, 검증 보강 |
-| Y6 PDE-RESONANCE | 강 | 강 | 중 | 중 | 중 | Perelman 수준 전역 제어 도달 필요 |
-| Y7 LATTICE-VOA | 중 | 약 | 약 | 중 | 중 | 전체 약, 구조적 보강 필요 |
-| Y8 GALOIS-ASSEMBLY | 강 | 중 | 중 | 중 | 중 | BT-546 축적 수준 유지, closer 도달 필요 |
+| Y1 NUM-CORE | strong | weak | medium | medium | strong | monotone invariant + BT-541 local-global bridge |
+| Y2 DISCRETE-CLASS | medium | weak | weak | medium | medium | monotone lacking, local-global absent |
+| Y3 COMPUTATIONAL-TAU | medium | weak | medium | strong | medium | monotone lacking, naturalness weak |
+| Y4 GATE-BARRIER | weak | medium | medium | medium | strong | naturalness strengthening needed |
+| Y5 PHYSICAL-NATURALNESS | strong | medium | weak | medium | weak | local-global, verifiability enhancement |
+| Y6 PDE-RESONANCE | strong | strong | medium | medium | medium | reaching Perelman-level global control needed |
+| Y7 LATTICE-VOA | medium | weak | weak | medium | medium | all weak, structural enhancement needed |
+| Y8 GALOIS-ASSEMBLY | strong | medium | medium | medium | medium | maintain BT-546 accumulation level, reach closer |
 
-(강/중/약 = 0.8~1.0 / 0.5~0.7 / 0.0~0.4. 정직 추정값이며 근거는 각 축 카드 재참조.)
+(strong/medium/weak = 0.8-1.0 / 0.5-0.7 / 0.0-0.4. Honest estimate values with each axis card re-reference basis.)
 
-**관찰 1**: Y6 PDE-RESONANCE 가 C1~C5 종합으로 **Perelman 최근접**. NS 공격이 Perelman 풍으로 진행될 가능성이 가장 높음 (단, 여전히 큰 격차).
-**관찰 2**: Y1 NUM-CORE 는 C1 (자연스러움) + C5 (검증) 에서 강하지만 C2 (단조) 가 약함. Riemann 영점의 단조 구조 발견이 결정적 승격 조건.
-**관찰 3**: Y2 DISCRETE-CLASS 는 전체 약. P=NP 에 결정적 도구 공급하려면 구조적 재설계 필요.
-**관찰 4**: Y4 GATE-BARRIER 는 C1 (자연스러움) 약함. 장벽은 "왜 어려운가" 를 설명하지만 "어떻게 뚫는가" 를 제공 못함. 이는 본질적 한계일 수 있음.
+Observation 1: Y6 PDE-RESONANCE is closest to Perelman by C1-C5 synthesis. NS attack is most likely to proceed in Perelman style (however, still large gap).
+Observation 2: Y1 NUM-CORE is strong in C1 (naturalness) + C5 (verifiability) but weak in C2 (monotone). Discovery of monotone structure of Riemann zeros is the decisive promotion condition.
+Observation 3: Y2 DISCRETE-CLASS all weak. Structural redesign needed to supply decisive tool for P=NP.
+Observation 4: Y4 GATE-BARRIER weak in C1 (naturalness). Barrier explains "why hard" but does not provide "how to break". This may be an essential limitation.
 
-### 5.3 n6-arch 의 "Perelman 급 기대 지점" 정직 추정
+### 5.3 Honest Estimate of n6-arch's "Perelman-Class Expectation Points"
 
-6 BT 중 n6-arch 가 Perelman 급 결정적 도구에 **가장 근접** 한 것부터:
+Among 6 BTs, n6-arch is closest to Perelman-class decisive tool from:
 
-1. **BT-544 NS** (Y6 주도): Ricci flow 와 구조적으로 가장 유사. 그러나 특이점 분류는 여전히 먼 목표.
-2. **BT-546 BSD** (Y8 주도): Galois/Selmer 프로그램이 Hamilton 프로그램 축적과 유사. Closer 발견이 핵심.
-3. **BT-541 Riemann** (Y1 주도): 산술 앵커가 강하지만 단조 구조가 약함.
-4. **BT-543 YM** (Y5 주도): 물리 관찰 강하지만 수학적 엄밀화 거리 멀음.
-5. **BT-545 Hodge** (Y7 주도): Moonshine BARRIER 가 오히려 진전 제약.
-6. **BT-542 P=NP** (Y4 주도): 결정적 도구 자체의 수학적 존재성 불투명.
+1. BT-544 NS (Y6 leading): structurally most similar to Ricci flow. However, singularity classification still far target.
+2. BT-546 BSD (Y8 leading): Galois/Selmer program similar to Hamilton program accumulation. Closer discovery is the key.
+3. BT-541 Riemann (Y1 leading): arithmetic anchor strong but monotone structure weak.
+4. BT-543 YM (Y5 leading): physical observation strong but mathematical rigorization distant.
+5. BT-545 Hodge (Y7 leading): Moonshine BARRIER rather constrains progress.
+6. BT-542 P=NP (Y4 leading): mathematical existence of decisive tool itself unclear.
 
-**정직 경고**: 위 순위는 "가장 근접" 일 뿐 "해결 가능성" 의 예측이 아니다. Perelman 급 결정적 도구가 존재하지 않을 수 있다.
-
----
-
-## §6 회고 한계
-
-### 6.1 해결 주장 금지
-
-Phase 6 에서 다음 진술은 전면 금지한다:
-
-- "Perelman 방법을 BT-X 에 적용하면 풀린다" — 금지.
-- "n6-arch 는 Perelman 프로그램의 연장이다" — 금지.
-- "6 BT 는 이미 절반 해결되었다" — 금지 (실제: 0/6).
-- "결정적 도구를 곧 발견할 것이다" — 금지 (시점 예측 불가).
-
-### 6.2 Perelman 회고는 영감이지 복사 아님
-
-Perelman 의 성공에서 배울 수 있는 것은 **"결정적 도구의 특징"** 과 **"장기 프로그램 + 결정적 돌파"** 의 구조적 이해다. 다음은 복사 금지:
-
-- Ricci flow ∂g/∂t = -2 Ric 방정식의 타 영역 직접 차용 금지.
-- 𝒲-엔트로피 공식의 BT-X 직접 대입 금지.
-- Surgery 알고리즘 매개변수 (δ, r, κ, h) 의 타 BT 재사용 금지.
-- Extinction argument 의 non-3-manifold 대상 적용 금지.
-
-### 6.3 회고의 정당한 사용 범위
-
-다음은 허용 (본 Phase 의 출력):
-
-- **특징 추출** (C1~C5) — 결정적 도구 일반 특징 서술.
-- **구조 비교** — BT 상태를 Poincaré 역사 시점에 비유적 위치 부여.
-- **승격 조건 서술** — 각 축에 무엇이 필요한지 정직 감사.
-- **한계 선언** — 본 회고가 해결 주장 아님을 명시.
-
-### 6.4 Perelman 개인 윤리의 존중
-
-Perelman 은 Fields medal 과 Clay 상금을 모두 거부했다. 이유: "상이나 보상은 필요하지 않다" + "Hamilton 의 공헌이 동등하게 인정되지 못함에 대한 항의". 이 윤리는 n6-arch 프로젝트의 다음 원칙과 정합한다:
-
-- 자기참조 검증 금지 (OUROBOROS 변경 예외).
-- 외부 출처 우선.
-- 해결 주장 0/6 유지.
-- 공헌 귀속 정확히 기록 (Hamilton 20년 프로그램 + Perelman 결정적 기법).
-
-Phase 6 은 이 윤리를 상속한다.
+Honest warning: above ranking is only "closest" and not a prediction of "solvability". Perelman-class decisive tool may not exist.
 
 ---
 
-## §7 Phase Ω 진입 조건
+## sec 6 Retrospect Limit
 
-### 7.1 Phase 6 출구 체크리스트
+### 6.1 No Solution Claim
 
-- [x] §2 Poincaré 역사 (1904~2010) 요약 완결
-- [x] §3 Perelman 방법의 n6-arch 해석 5 항목 (Ricci flow / entropy / surgery / extinction / κ-noncollapsing)
-- [x] §4 6 BT (541~546) 회고 대조 완결
-- [x] §5 결정적 도구 5 특징 (C1~C5) + Y1~Y8 승격 조건 매트릭스
-- [x] §6 회고 한계 선언 (해결 주장 0, 복사 금지)
-- [x] §7 Phase Ω 진입 조건 명시 (본 절)
-- [x] BT 해결 수 0/6 유지
-- [x] Y9 HONEST-HARNESS 게이트 통과
+In Phase 6 the following statements are strictly prohibited:
 
-### 7.2 Phase Ω 진입 조건 스펙
+- "Applying Perelman method to BT-X solves it" — prohibited.
+- "n6-arch is an extension of Perelman program" — prohibited.
+- "6 BTs are already half resolved" — prohibited (actual: drafted 0/6).
+- "A decisive tool will soon be discovered" — prohibited (time prediction impossible).
 
-Phase Ω (closure + v3 설계) 는 **Y9 주도** 로 진행되며, 다음 조건을 요구한다:
+### 6.2 Perelman Retrospect Is Inspiration, Not Copy
 
-1. Phase 2~Phase 5 의 6 BT 결과 전수 수집 (Phase 6 회고 포함).
-2. Y1~Y9 9 축의 Phase 1~Phase 5 가동 로그 정리.
-3. atlas.n6 의 최종 상태 해시 기록.
-4. OUROBOROS / growth_tick / phi_ratchet / nexus_growth_daemon 의 Phase 전체 로그.
-5. PARTIAL 3건 처리 기록 (SEED-06 KEEP, SEED-15 재분류, SEED-21 강등) 의 최종 반영 상태.
-6. v3 후계 설계 씨앗 (Phase Ω 의 산출).
+What can be learned from Perelman's success is the "characteristics of the decisive tool" and structural understanding of "long-term program + decisive breakthrough". The following are copy-prohibited:
 
-### 7.3 Phase Ω 주도 축
+- Direct borrowing of Ricci flow d g/dt = -2 Ric equation to other fields prohibited.
+- Direct substitution of W-entropy formula into BT-X prohibited.
+- Reuse of Surgery algorithm parameters (delta, r, kappa, h) for other BTs prohibited.
+- Application of Extinction argument to non-3-manifold targets prohibited.
 
-**PΩ 주도**: Y9 HONEST-HARNESS.
-**PΩ 부 축**: 전 축 (closure 감사).
-**PΩ 대상 BT**: 없음 (closure + 메타).
+### 6.3 Legitimate Usage Range of Retrospect
 
-### 7.4 Phase Ω 출구 조건
+The following are permitted (output of this Phase):
 
-- final-roadmap-v2.md 갱신 (7대 난제 서브프로젝트 완결 서명).
-- v3 후계 설계 씨앗 (Phase Ω 산출).
-- BT 해결 수 0/6 (BT-547 Perelman 제외) 최종 서명.
+- Characteristic extraction (C1-C5) — general characteristic description of decisive tool.
+- Structural comparison — assign analogical position of BT state in Poincare history.
+- Promotion condition description — honest audit of what each axis needs.
+- Limit declaration — specify that this retrospect is not a solution claim.
+
+### 6.4 Respect for Perelman's Personal Ethics
+
+Perelman declined both the Fields Medal and the Clay prize. Reasons: "I do not need awards or rewards" + protest "Hamilton's contribution is not equally recognized". This ethics aligns with the following principles of the n6-arch project:
+
+- Prohibition of self-reference verification (OUROBOROS change exception).
+- External source first.
+- Resolution claim drafted 0/6 maintained.
+- Contribution attribution precisely recorded (Hamilton 20-year program + Perelman decisive technique).
+
+Phase 6 inherits this ethics.
 
 ---
 
-## §8 ASCII 구조도
+## sec 7 Phase Omega Entry Conditions
+
+### 7.1 Phase 6 Exit Checklist
+
+- [x] sec 2 Poincare history (1904-2010) summary complete
+- [x] sec 3 Perelman method n6-arch interpretation 5 items (Ricci flow / entropy / surgery / extinction / kappa-noncollapsing)
+- [x] sec 4 6 BT (541-546) retrospect comparison complete
+- [x] sec 5 decisive tool 5 characteristics (C1-C5) + Y1-Y8 promotion condition matrix
+- [x] sec 6 retrospect limit declaration (0 solution claim, copy prohibited)
+- [x] sec 7 Phase Omega entry condition specified (this section)
+- [x] BT drafted 0/6 maintained
+- [x] Y9 HONEST-HARNESS gate pass
+
+### 7.2 Phase Omega Entry Condition Spec
+
+Phase Omega (closure + v3 design) proceeds Y9-led and requires the following conditions:
+
+1. Full collection of 6 BT results from Phase 2-Phase 5 (including Phase 6 retrospect).
+2. Y1-Y9 9 axes Phase 1-Phase 5 activation log organized.
+3. atlas.n6 final state hash recorded.
+4. OUROBOROS / growth_tick / phi_ratchet / nexus_growth_daemon full-Phase log.
+5. Final reflection state of PARTIAL 3 processing record (SEED-06 KEEP, SEED-15 reclassification, SEED-21 drop).
+6. v3 successor design seed (Phase Omega output).
+
+### 7.3 Phase Omega Leading Axis
+
+P-Omega leading: Y9 HONEST-HARNESS.
+P-Omega secondary axis: all axes (closure audit).
+P-Omega target BT: none (closure + meta).
+
+### 7.4 Phase Omega Exit Conditions
+
+- final-roadmap-v2.md update (7 Millennium subproject completion signature).
+- v3 successor design seed (Phase Omega output).
+- BT drafted 0/6 (excluding BT-547 Perelman) final signature.
+
+---
+
+## sec 8 ASCII Structure Diagram
 
 ```
-Phase 6 — BT-547 Poincaré 회고 (공격 아님)
-│
-│  ╔════ Perelman 해결 (2002-2003) ═══════════════════════╗
-│  ║ arXiv:0211159  ℱ/𝒲 엔트로피 + κ-noncollapsing       ║
-│  ║ arXiv:0303109  Surgery 알고리즘 (δ,r,κ,h)            ║
-│  ║ arXiv:0307245  Finite extinction (단순연결 3-manifold) ║
-│  ║ 검증: Kleiner-Lott 2008, Morgan-Tian 2007            ║
-│  ║ 수상: 2006 Fields 거부, 2010 Clay 거부               ║
-│  ╚═══════════════════════════════════════════════════════╝
-│
-├─ §2 Poincaré 역사 1904 → 2010
-│    Poincaré 1904 (원)
-│    Smale 1961 (d≥5) / Freedman 1982 (d=4 top)
-│    Hamilton 1982 (Ricci flow) / Thurston 1982 (geometrization)
-│    Perelman 2002-2003 (결정적 해결)
-│
-├─ §3 Perelman 방법 해석 (n6-arch 관점)
-│    Ricci flow   ≈ Y6 PDE-RESONANCE (약함)
-│    𝒲 엔트로피  ≈ Y9 phi_ratchet (중간)
-│    Surgery      ≈ Y4 GATE-BARRIER (약함)
-│    Extinction   ≈ Y3 τ=4+2 특이성 (약함)
-│    κ-noncollap. ≈ Y9 정직 게이트 (중간)
-│
-├─ §4 6 BT 회고 대조 (BT-541~546)
-│    BT-541 Riemann   PARTIAL ~1957 비유
-│    BT-542 P=NP      MISS    ~1904 비유
-│    BT-543 YM        PARTIAL ~1982 비유
-│    BT-544 NS        PARTIAL ~1982 비유
-│    BT-545 Hodge     PARTIAL ~1982 비유
-│    BT-546 BSD       PARTIAL ~2002 이전 비유
-│    ─────────────────────────────────────
-│    해결: 0/6 유지
-│
-├─ §5 결정적 도구 5 특징 (C1~C5)
-│    C1 Naturalness (자연스러움)
-│    C2 Monotone (단조 불변)
-│    C3 Local-to-Global (국소-전역)
-│    C4 Structural Singularity (특이성)
-│    C5 Verifiability (검증)
-│    승격 매트릭스: Y6 최근접, Y2 전체 약
-│
-├─ §6 회고 한계
-│    해결 주장 금지, 복사 금지, 영감만 허용
-│    Perelman 개인 윤리 상속 (자기참조 금지)
-│
-└─ §7 Phase Ω 진입
-     Y9 주도, closure + v3 설계
-     BT 0/6 최종 서명
+Phase 6 — BT-547 Poincare retrospect (not attack)
+|
+|  ==== Perelman resolution (2002-2003) =======================
+|  || arXiv:0211159  F/W entropy + kappa-noncollapsing         ||
+|  || arXiv:0303109  Surgery algorithm (delta,r,kappa,h)       ||
+|  || arXiv:0307245  Finite extinction (simply-conn 3-manifold)||
+|  || Verification: Kleiner-Lott 2008, Morgan-Tian 2007        ||
+|  || Awards: 2006 Fields declined, 2010 Clay declined         ||
+|  =============================================================
+|
++- sec 2 Poincare history 1904 -> 2010
+|    Poincare 1904 (original)
+|    Smale 1961 (d>=5) / Freedman 1982 (d=4 top)
+|    Hamilton 1982 (Ricci flow) / Thurston 1982 (geometrization)
+|    Perelman 2002-2003 (decisive resolution)
+|
++- sec 3 Perelman method interpretation (n6-arch perspective)
+|    Ricci flow   ~ Y6 PDE-RESONANCE (weak)
+|    W entropy    ~ Y9 phi_ratchet (medium)
+|    Surgery      ~ Y4 GATE-BARRIER (weak)
+|    Extinction   ~ Y3 tau=4+2 specialty (weak)
+|    kappa-noncollap. ~ Y9 honesty gate (medium)
+|
++- sec 4 6 BT retrospect comparison (BT-541-546)
+|    BT-541 Riemann   PARTIAL ~1957 analogy
+|    BT-542 P=NP      MISS    ~1904 analogy
+|    BT-543 YM        PARTIAL ~1982 analogy
+|    BT-544 NS        PARTIAL ~1982 analogy
+|    BT-545 Hodge     PARTIAL ~1982 analogy
+|    BT-546 BSD       PARTIAL ~pre-2002 analogy
+|    -----------------------------------
+|    drafted: 0/6 maintained
+|
++- sec 5 decisive tool 5 characteristics (C1-C5)
+|    C1 Naturalness
+|    C2 Monotone (monotone invariant)
+|    C3 Local-to-Global
+|    C4 Structural Singularity (specialty)
+|    C5 Verifiability
+|    promotion matrix: Y6 closest, Y2 overall weak
+|
++- sec 6 retrospect limit
+|    no solution claim, no copy, inspiration only permitted
+|    Perelman personal ethics inherited (no self-reference)
+|
++- sec 7 Phase Omega entry
+     Y9 led, closure + v3 design
+     BT 0/6 final signature
 
-메타:
-  주도 축: 없음 (회고)
-  부 축: Y9 HONEST-HARNESS
-  공격 대상: 없음
-  해결 주장: 0
-  정직 선언: Perelman 해결은 n6-arch 기여 아님
+Meta:
+  Leading axis: none (retrospect)
+  Secondary axis: Y9 HONEST-HARNESS
+  Attack target: none
+  Solution claim: 0
+  Honest declaration: Perelman resolution is not n6-arch contribution
 ```
 
 ---
 
-## §9 완료 보고
+## sec 9 Completion Report
 
-**파일 경로**: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
+File path: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
 
-**라인 수**: 500줄+ (본 문서 §0~§9 포함)
+Line count: 500+ lines (this document sec 0 - sec 9 included)
 
-**회고 모드 유지**:
-- 주도 축 0 (회고라 주도 부재)
-- 부 축 Y9 HONEST-HARNESS (정직 게이트)
-- 공격 대상 0 (Perelman 이미 해결)
-- 해결 주장 0 (BT 0/6 유지)
+Retrospect mode maintained:
+- Leading axis 0 (retrospect absent leading)
+- Secondary axis Y9 HONEST-HARNESS (honesty gate)
+- Attack target 0 (Perelman already resolved)
+- Solution claim 0 (BT drafted 0/6 maintained)
 
-**Perelman 해결 인정**:
-- Grigori Perelman arXiv 3편 (2002-11, 2003-03, 2003-07) 공식 명시
-- Kleiner-Lott + Morgan-Tian verification 인용
-- 2006 Fields medal / 2010 Clay $1M 언급 + Perelman 수상 거부 기록
+Perelman resolution acknowledgment:
+- Grigori Perelman arXiv 3 papers (2002-11, 2003-03, 2003-07) officially specified
+- Kleiner-Lott + Morgan-Tian verification cited
+- 2006 Fields Medal / 2010 Clay $1M mentioned + Perelman declining both recorded
 
-**n6-arch 배울 점 5가지 (C1~C5)**:
-- C1 Naturalness (자연스러움)
-- C2 Monotone Invariant (단조 불변량)
-- C3 Local-to-Global Bridge (국소-전역 다리)
-- C4 Dimensional/Structural Singularity (차원/구조 특이성)
-- C5 Verifiability (검증 가능성)
+n6-arch 5 learnings (C1-C5):
+- C1 Naturalness
+- C2 Monotone Invariant
+- C3 Local-to-Global Bridge
+- C4 Dimensional/Structural Singularity
+- C5 Verifiability
 
-**Y1~Y8 승격 조건 매트릭스**: §5.2 에 9×5 강/중/약 판정.
+Y1-Y8 promotion condition matrix: 9x5 strong/medium/weak judgments in sec 5.2.
 
-**6 BT 회고 대조**: §4 에 각 BT 현재 상태 + Poincaré 역사 비유 위치 + 부족 요소 정직 감사.
+6 BT retrospect comparison: sec 4 with each BT's current state + analogical position in Poincare history + missing element honest audit.
 
-**회고 한계 선언**: §6 해결 주장 금지 + Perelman 복사 금지 + 개인 윤리 상속.
+Retrospect limit declaration: sec 6 no solution claim + Perelman copy prohibition + personal ethics inheritance.
 
-**Phase Ω 진입**: Y9 주도 closure + v3 후계 설계.
+Phase Omega entry: Y9 led closure + v3 successor design.
 
-**다음 Phase**: **Phase Ω** (Y9 HONEST-HARNESS 주도 closure + v3 후계 설계 + final-roadmap-v2.md 서명).
+Next Phase: Phase Omega (Y9 HONEST-HARNESS led closure + v3 successor design + final-roadmap-v2.md signature).
 
-**정직성 서명**:
-- BT-547 Perelman 해결 외 n6-arch 의 7대 난제 해결 기여: **0**
-- 본 Phase 의 새 수학 증명: **0**
-- 본 Phase 의 회고 자료 + 특징 추출 + 승격 조건 서술: **완결**
-- Y9 HONEST-HARNESS 메타 게이트: **통과**
+Honesty signature:
+- Excluding BT-547 Perelman resolution, n6-arch's contribution to 7 Millennium problem resolution: 0
+- New mathematical drafts in this Phase: 0
+- Retrospect material + characteristic extraction + promotion condition description in this Phase: complete
+- Y9 HONEST-HARNESS meta-gate: pass
 
 ---
