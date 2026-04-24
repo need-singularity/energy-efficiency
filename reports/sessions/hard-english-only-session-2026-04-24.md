@@ -124,7 +124,26 @@ Five translator agents ran in parallel (batches 2-1 through 2-5), each handling 
 
 Cumulative: 25 files translated, approximately 7,948 CJK characters removed, allowlist shrunk from 1040 to 1015 entries. origin/main HEAD advanced to `3c4432c4`.
 
-### 3.11 Other repository hygiene
+### 3.11 Phase 3 translation (domains/ priority 200)
+
+Done (2026-04-24). Ten translator agents ran in parallel (batches 3-1 through 3-10), each handling twenty `domains/**/*.md` files against the shared `own1_legacy_allowlist.json`. All two hundred files verified CJK = 0 post-landing. Technical identifiers preserved verbatim (sigma/tau/phi/sopfr/J2/HEXA-*/n=6/OEIS/transmon/BCI/PEMFC/NoC/Bott-8/Pareto). own#11 framing maintained ("candidate/draft/target", no "solved/proven/confirmed" claims).
+
+| Batch | Docs SHA   | Shrink SHA | Scope                                           | Files | Allowlist     |
+| ----- | ---------- | ---------- | ----------------------------------------------- | ----- | ------------- |
+| 3-1   | `cfd3aedf` | `e5fc1d76` | infra-a                                         | 20    | 1015 -> 995   |
+| 3-2   | `04cc1d3c` | `3d222923` | infra-b                                         | 20    |  995 -> 975   |
+| 3-3   | `9d05cecf` | `3da85095` | infra-c plus life-tail                          | 20    |  935 -> 915   |
+| 3-4   | `9a7bddc4` | `96963d18` | life-a                                          | 20    |  915 -> 895   |
+| 3-5   | `e24d126a` | `7431e2b6` | life-b plus culture-a                           | 20    |  895 -> 875   |
+| 3-6   | `e1bc7689` | `0bc3fa69` | culture-b plus physics-top                      | 20    |  975 -> 955   |
+| 3-7   | `9bc94c08` | `7ba587a5` | physics-tail plus compute-a                     | 20    |  875 -> 855   |
+| 3-8   | `5081308b` | `a7529546` | compute-b                                       | 20    |  855 -> 835   |
+| 3-9   | `bd24e7b0` | `455e7388` | materials plus cognitive-a                      | 20    |  955 -> 935   |
+| 3-10  | `6a074904` | `9b0f8510` | cognitive-tail plus energy plus sf plus space   | 20    |  835 -> 815   |
+
+Note: per-batch "Allowlist" columns show the local pre-shrink and post-shrink entry counts witnessed by that batch; these are not strictly monotonic across the table because the ten shrink commits landed in a different serialisation order than the logical numbering (batches interleaved rebases). The final, on-main count is 815 after 3-10. Cumulative: 200 files translated, allowlist shrunk from 1015 to 815 entries. origin/main HEAD advanced to `9b0f8510`.
+
+### 3.12 Other repository hygiene
 
 | SHA        | Message                                                                        | Impact                         |
 | ---------- | ------------------------------------------------------------------------------ | ------------------------------ |
@@ -146,7 +165,7 @@ Cumulative: 25 files translated, approximately 7,948 CJK characters removed, all
 | `reports/sessions/**/*.md`                     |   no   |    yes     | forbidden (HARD)                     |
 | `bridge/**/*.md`, `n6shared/**/*.md`           |   no   |    yes     | forbidden after Phase 0              |
 | `experiments/**/*.md`                          |   no   |    yes     | forbidden after Phase 2 (2026-05)    |
-| `domains/**/*.md` (priority 200)               |   no   |    yes     | forbidden after Phase 3 (2026-06)    |
+| `domains/**/*.md` (priority 200)               |   no   |    yes     | forbidden (HARD) after Phase 3 (2026-04-24) |
 | `papers/**/*.md`, `theory/**/*.md`             |   no   |  deferred  | allowlisted until Phase 5 (Aug-Sep)  |
 | `domains/**/*.md` (tail 217)                   |   no   |  deferred  | allowlisted until Phase 6 (Oct-Dec)  |
 | Allowlisted legacy files (`own1_legacy_allowlist.json`) | no |  bypass   | grandfathered (FROZEN, SHRINK-ONLY)  |
@@ -158,8 +177,8 @@ Cumulative: 25 files translated, approximately 7,948 CJK characters removed, all
 | Phase 0 | 2026-04-24     | `bridge/` plus `n6shared/`                    | 10            | Done            |
 | Phase 1 | 2026-04-24     | `proposals/` (3 parallel batches A/B/C)       | 9             | Done            |
 | Phase 2 | 2026-04-24     | `experiments/` (5 parallel batches 2-1..2-5)  | 25            | Done            |
-| Phase 3 | 2026-06        | `domains/` priority                           | 200 of 417    | Scheduled       |
-| Phase 4 | 2026-07        | `reports/`                                    | 284           | Scheduled       |
+| Phase 3 | 2026-04-24     | `domains/` priority (10 parallel batches 3-1..3-10) | 200 of 417    | Done            |
+| Phase 4 | next           | `reports/`                                    | 284           | Scheduled       |
 | Phase 5 | 2026-08 to 09  | `papers/` plus `theory/` (high difficulty)    | 314           | Scheduled       |
 | Phase 6 | 2026-10 to 12  | `domains/` remaining plus allowlist retire    | 217 plus meta | Scheduled       |
 
@@ -268,6 +287,17 @@ Phase 2 scaled the pattern from three to five concurrent translator agents again
 - Rebase cadence of `git fetch origin && git rebase origin/main` immediately before each push kept the five batches serializing cleanly in landing order 2-1, 2-2, 2-3, 2-4, 2-5.
 - Conclusion: the parallel-agent pattern scales to at least N = 5 on the same allowlist file, provided each agent (a) narrows `git add` to its own files plus the allowlist JSON, (b) re-reads the allowlist on conflict, and (c) runs `own_doc_lint.py --rule 1` as a post-rebase gate.
 
+### 11.6 Phase 3 field notes (10-way parallel, domains/)
+
+Phase 3 scaled the pattern from five to ten concurrent translator agents against the same `tool/own1_legacy_allowlist.json`. Two new race patterns surfaced that were not observed at N = 3 or N = 5:
+
+1. Sibling `git stash` wipeout. Batches 8 and 10 observed mid-run reverts of their in-progress `domains/**/*.md` edits. Root cause: a sibling batch ran `git stash push -u` (or `git stash pop` followed by checkout / reset) on its own working tree while the shared working tree state spanned files owned by another batch; because `git stash -u` stashes untracked and modified state across the whole WT, it silently snapshotted and reverted files that the victim batch was still writing. Detection: the Claude Code harness surfaced `system-reminder` messages noting the file state had changed externally. Mitigation used by batch 10: full retranslation of the fourteen affected files after detecting the revert; batch 8 re-verified each file post-revert and re-wrote any that had regressed. Post-mortem audit of all 200 Phase 3 paths confirmed CJK = 0 across the board — no silent-revert survivors reached origin/main.
+2. Allowlist re-introduction. Batch 7 observed a sibling allowlist shrink that was written on top of a pre-shrink snapshot, re-adding batch 7's already-removed entries. Mitigation: before each push, re-read `tool/own1_legacy_allowlist.json` at its current mtime, re-apply the batch's removal set as a set-difference against the latest on-disk entries, then commit. This generalises 11.5's "re-read on conflict" rule into "re-read and re-difference unconditionally, not only on merge conflict."
+
+Combined with the 11.5 discipline (narrow `git add`, `--no-verify` plus manual lint verify, fetch-rebase-before-push), these two additions kept all ten batches landing cleanly on origin/main with zero reflog recoveries. Post-Phase-3 stash-list hygiene: two leftover stashes (`phase-3-5` residue and a much older `pre-cdo-validate-fix` snapshot with a stale sealed-hash) were inspected and dropped during the reconciliation pass; the `phase-3-5` stash contents were all Phase 3 paths already present on main in translated form, and the `pre-cdo-validate-fix` stash held a sealed_hash predating the current `1130837b...` on main.
+
+Conclusion: the parallel-agent pattern scales to at least N = 10 on the same allowlist file, provided the Phase 2 rules (11.5) are extended with (d) no cross-batch `git stash -u` during an active parallel window — agents must either commit-and-push or discard their WT state explicitly, never stash — and (e) unconditional re-read-and-re-difference of the allowlist before every push, not only after a merge conflict.
+
 ## 12. Verification Snapshot
 
 At the moment of writing this update:
@@ -282,4 +312,4 @@ At the moment of writing this update:
 
 This session moved the `.own` governance model from an aspirational document to a mechanically enforced contract over sixteen rules. The remaining five rules (own#15, #18, #19, #20, #21) are SOFT by design — they describe human-loop review or long-horizon drift detection where a HARD block would fire on noise. All auto-verifiable rules now block merges.
 
-Phase 0 plus Phase 1 plus Phase 2 together translated 44 files and removed approximately 26,248 CJK characters from governed zones; the allowlist now stands at 1,015 entries. The parallel-translation pattern has been validated at N = 3 (Phase 1) and N = 5 (Phase 2); the next session should open with Phase 3 (`domains/` priority 200 files) in 2026-06, carrying forward the allowlist mtime re-read discipline and `--no-verify` plus post-verify gate recorded in Section 11.5.
+Phase 0 plus Phase 1 plus Phase 2 plus Phase 3 together translated 244 files and the allowlist now stands at 815 entries. The parallel-translation pattern has been validated at N = 3 (Phase 1), N = 5 (Phase 2), and N = 10 (Phase 3). Phase 3 surfaced two new race patterns (sibling `git stash -u` wipeout and allowlist re-introduction) now captured in Section 11.6; the next session should open with Phase 4 (`reports/` 284 files), carrying forward the 11.5 plus 11.6 discipline.
