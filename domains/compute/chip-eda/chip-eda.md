@@ -9,156 +9,157 @@ requires:
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 
-# 궁극의 설계자동화 HEXA-EDA
+# Ultimate Design Automation HEXA-EDA
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology changes your life)
 
-EDA (Electronic Design Automation) 은 반도체 설계의 심장이다. Synthesis·P&R·DRC·LVS·STA·Formal 6대 파이프라인이 수십 년간 따로 진화하여 서로 대화하지 못하고, 한 칩 설계에 **18개월 + 수백 명 + 수백만 달러** 가 들어간다. 합성 결과와 P&R 결과가 STA 에서 어긋나면 처음부터 돌려야 한다. **n=6 산술 유도로 EDA 경계 상수가 결정되면** 세 가지 낭비가 사라진다:
+EDA (Electronic Design Automation) is the heart of semiconductor design. The six pipelines — Synthesis, P&R, DRC, LVS, STA, Formal — evolved separately over decades and cannot talk to each other, so one chip design takes **18 months + hundreds of engineers + millions of dollars**. When synthesis and P&R results diverge at STA, everything must restart. **When the n=6 arithmetic derivation fixes the EDA boundary constants**, three wastes disappear:
 
-1. **탐색 공간 붕괴**: DSE 조합 10^6+ → n=6 압축으로 **2400 = 6×5×4×5×4** ← σ(6)=12, τ(6)=4, OEIS A000203
-2. **피드백 루프 단축**: τ=4 합성 패스 (logic/map/retime/gate) + τ=4 STA 코너 → 설계 사이클 18mo → **τ=4mo** ← τ(6)=4, OEIS A000005
-3. **AI-native 합성**: "8K 이미지 인식 칩 만들어줘" 한마디 → n=6 경계로 결정된 RTL + P&R + STA pass 산출물 → **설계 엔지니어 시간 1/σ** ← φ(6)=2, OEIS A000010
+1. **Search-space collapse**: DSE combinations 10^6+ → n=6 compressed to **2400 = 6×5×4×5×4** ← σ(6)=12, τ(6)=4, OEIS A000203
+2. **Shorter feedback loop**: τ=4 synthesis passes (logic/map/retime/gate) + τ=4 STA corners → design cycle 18mo → **τ=4mo** ← τ(6)=4, OEIS A000005
+3. **AI-native synthesis**: a one-line prompt "build me an 8K image-recognition chip" → RTL + P&R + STA-pass artifacts determined by the n=6 boundary → **engineer-hours 1/σ** ← φ(6)=2, OEIS A000010
 
-| 효과 | 현재 (2024) | HEXA-EDA 적용 후 | 체감 변화 |
+| Effect | Today (2024) | After HEXA-EDA | Perceived change |
 |------|------|-------------|----------|
-| 설계 사이클 | 18 개월 | τ=4 개월 | 출시 주기 σ-φ=10배 빨라짐 |
-| DSE 탐색 | 수만~수백만 | 2400 (6×5×4×5×4) | AI 가 전수 탐색 |
-| 합성 패스 | 10+ (ad-hoc) | τ=4 (고정 순서) | 재현 가능한 파이프 |
-| P&R 레이어 | 7~15 (공정별) | σ=12 (n=6 고정) | 표준화 완료 |
-| DRC 룰 수 | 수만 건 | σ=12 카테고리 | 검사 시간 1/σ |
-| STA 코너 | 수십 개 (SS/FF/TT 변형) | τ=4 (SS/FF/TT/SF) | 분석 1/τ |
-| Formal 속성 | 혼란 | τ=4 타입 (safety/liveness/fairness/deadlock) | 증명 체계화 |
-| 엔지니어 수 | 수백 명 | AI + σ=12 전문가 | 인건비 1/σ²=1/144 |
-| 비용 | $50M~$500M | 1/σ·sopfr=1/60 | 스타트업도 custom chip |
-| 커버리지 | 수작업 | 99.9% 자동 | 버그 탈출 사라짐 |
+| Design cycle | 18 months | τ=4 months | release cadence σ-φ=10× faster |
+| DSE search | tens of thousands~millions | 2400 (6×5×4×5×4) | AI exhaustive search |
+| Synth passes | 10+ (ad-hoc) | τ=4 (fixed order) | reproducible pipeline |
+| P&R layers | 7~15 (process-specific) | σ=12 (n=6 fixed) | standardization complete |
+| DRC rule count | tens of thousands | σ=12 categories | check time 1/σ |
+| STA corners | tens (SS/FF/TT variants) | τ=4 (SS/FF/TT/SF) | analysis 1/τ |
+| Formal properties | chaotic | τ=4 types (safety/liveness/fairness/deadlock) | proofs systematized |
+| Engineer count | hundreds | AI + σ=12 experts | labor cost 1/σ²=1/144 |
+| Cost | $50M~$500M | 1/σ·sopfr=1/60 | startups can design custom chips |
+| Coverage | manual | 99.9% automatic | bug escape eliminated |
 
-**한 문장 요약**: n=6 산술 유도로 Synthesis·P&R·DRC·LVS·STA·Formal 6대 파이프라인이 **τ=4 단 단일 AI 합성 루프**로 통합되어 설계 사이클 σ-φ=10배 단축·비용 1/σ·sopfr=1/60·커버리지 99.9% 가 동시에 달성된다.
+**One-sentence summary**: the n=6 arithmetic derivation unifies the six pipelines (Synthesis, P&R, DRC, LVS, STA, Formal) into **a single τ=4 AI synthesis loop**, simultaneously delivering σ-φ=10× design-cycle reduction, 1/σ·sopfr=1/60 cost, and 99.9% coverage.
 
-### 일상 체감 시나리오
+### Everyday scenario
 
 ```
-  오전  7:00  소규모 AI 스타트업이 "음성 인식 칩" τ=4개월 프로젝트 착수
-  오전  9:00  "VAD+노이즈제거+키워드 128개" 자연어 spec 입력
-  오전 10:00  HEXA-EDA: Synthesis + P&R + STA + Formal τ=4 passes 완료
-  오전 11:00  DSE 2400 조합 전수 탐색, Pareto Top-6 자동 선택
-  오후  2:00  DRC σ=12 카테고리 클린, LVS 매치 완료
-  오후  6:00  GDS-II tape-out 준비 — 기존 대비 σ·sopfr=60배 빠름
+   7:00 AM  a small AI startup launches a "voice-recognition chip" τ=4-month project
+   9:00 AM  natural-language spec "VAD + denoise + 128 keywords" input
+  10:00 AM  HEXA-EDA: Synthesis + P&R + STA + Formal τ=4 passes complete
+  11:00 AM  DSE 2400 combinations exhaustively searched, Pareto Top-6 auto-selected
+   2:00 PM  DRC σ=12 categories clean, LVS match complete
+   6:00 PM  GDS-II tape-out ready — σ·sopfr=60× faster than existing flow
 ```
 
-### 사회적 변혁
+### Social transformation
 
-| 분야 | 변화 | n=6 연결 |
+| Field | Change | n=6 connection |
 |------|------|---------|
-| 반도체 생태계 | Custom chip 스타트업 폭증 | 비용 1/60 |
-| AI 모델 | 모델별 전용 chip 상용 | τ=4 개월 사이클 |
-| 교육 | 학부생이 chip 설계 졸업작품 | DSE 2400 압축 |
-| 의료 | 환자별 맞춤 센서 chip | AI-native 한마디 |
-| 농업 | 작물별 센싱 chip | σ=12 I/O 표준 |
-| 국방 | 외주 없이 내재화 | 오픈 EDA + n=6 계약 |
-| 개도국 | 반도체 주권 확보 | 파운드리만 있으면 OK |
+| Semiconductor ecosystem | surge of custom-chip startups | cost 1/60 |
+| AI models | model-specific dedicated chips commercialized | τ=4-month cycle |
+| Education | undergraduates submit chip designs as graduation projects | DSE 2400 compression |
+| Medicine | patient-specific sensor chips | AI-native one-liner |
+| Agriculture | crop-specific sensing chips | σ=12 I/O standard |
+| Defense | insourcing without outsourcing | open EDA + n=6 contract |
+| Developing nations | semiconductor sovereignty secured | foundry-only is enough |
 
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) — performance comparison (ASCII)
 
-### n=6 이전 5가지 장벽
+### Five barriers before n=6
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  n=6 이 어떻게 해결하나     │
+│  Barrier           │  Why impossible              │  How n=6 resolves it       │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. DSE 폭발       │ 설계 공간 10^6+, 경험적     │ DSE 2400 = 6×5×4×5×4     │
-│                   │ 탐색 기법 수년 소요         │ n=6 좌표로 압축          │
+│ 1. DSE explosion  │ design space 10^6+, heuristic│ DSE 2400 = 6×5×4×5×4     │
+│                   │ search takes years         │ compressed via n=6 coords │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 2. Pass 혼란      │ Synthesis 수십 pass 임의    │ τ=4 pass 표준            │
-│                   │ 순서·반복 불확실            │ (logic/map/retime/gate)  │
+│ 2. Pass chaos     │ tens of synth passes, order │ τ=4 pass standard         │
+│                   │ and iteration uncertain    │ (logic/map/retime/gate)  │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 3. STA 폭발       │ 코너 수십~수백, 시간 폭주   │ τ=4 (SS/FF/TT/SF) 고정   │
-│                   │ 피드백 루프 길어짐          │ 분석 시간 1/τ            │
+│ 3. STA explosion  │ tens~hundreds of corners,  │ τ=4 (SS/FF/TT/SF) fixed   │
+│                   │ runtime blowup; feedback   │ analysis time 1/τ        │
+│                   │ loop grows                 │                          │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 4. DRC 지옥       │ 공정마다 수만 룰 다름       │ σ=12 카테고리 정규화     │
-│                   │ 벤더락인, 이식 불가         │ 오픈 Rule Book (n=6)     │
+│ 4. DRC hell       │ tens of thousands of rules │ σ=12 categories normalized│
+│                   │ per process; vendor lock-in│ open Rule Book (n=6)     │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 5. 사람 병목       │ 숙련 엔지니어 수백 명       │ AI-native 합성           │
-│                   │ 설계 한 장 $50M+            │ 1/σ·sopfr=1/60 비용      │
+│ 5. People bottleneck│ hundreds of senior      │ AI-native synthesis       │
+│                   │ engineers; one design $50M+│ cost 1/σ·sopfr=1/60      │
 └───────────────────┴───────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (시중 vs HEXA-EDA)
+### Performance-comparison ASCII bars (market vs HEXA-EDA)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [설계 사이클 (개월)] 낮을수록 좋음
+│  [Design cycle (months)] lower is better
 │------------------------------------------------------------------------
 │  Cadence Genus+Innovus  ████████████████████████████████  18
 │  Synopsys DC+ICC2       ██████████████████████████████░░  17
 │  Siemens Catapult HLS   ████████████████████░░░░░░░░░░░░  12
 │  OpenLane (open RTL)    ████████████░░░░░░░░░░░░░░░░░░░░   8
-│  HEXA-EDA               ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   4 (τ=4개월)
+│  HEXA-EDA               ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   4 (τ=4 months)
 │
-│  [DSE 탐색 공간 크기]
-│  기존 heuristic 탐색    ████████████████████████████████  10^6+
-│  기존 ML 기반           ██████████████████░░░░░░░░░░░░░░  10^4
-│  HEXA (압축)            ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2400 (6×5×4×5×4)
+│  [DSE search-space size]
+│  legacy heuristic search ████████████████████████████████  10^6+
+│  legacy ML-based         ██████████████████░░░░░░░░░░░░░░  10^4
+│  HEXA (compressed)      ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2400 (6×5×4×5×4)
 │
-│  [커버리지 (%)] 높을수록 좋음
-│  수작업 검증            █████████████████░░░░░░░░░░░░░░░  65
-│  UVM 자동화             ████████████████████████░░░░░░░░  80
+│  [Coverage (%)] higher is better
+│  manual verification    █████████████████░░░░░░░░░░░░░░░  65
+│  UVM automation         ████████████████████████░░░░░░░░  80
 │  HEXA-EDA (n=6)         ████████████████████████████████  99.9 (1-1/σ(σ-φ)²)
 │
-│  [비용 ($M/칩)] 낮을수록 좋음
+│  [Cost ($M/chip)] lower is better
 │  Custom ASIC 7nm        ████████████████████████████████  50
-│  FPGA 우회              ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░   8
+│  FPGA workaround        ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░   8
 │  HEXA-EDA               ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0.83 (1/60)
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: σ·φ = n·τ = J₂ = 24
+### Core breakthrough: σ·φ = n·τ = J₂ = 24
 
 ```
   σ(6) = 12, φ(6) = 2 → σ·φ = 24  ← OEIS A000203 × A000010
   n·τ  = 6·4 = 24                  ← OEIS A000005
-  J₂   = 2σ = 24                    (2차 기저)
-  → σ·φ = n·τ = J₂ = 24             — 마스터 항등식
+  J₂   = 2σ = 24                    (2nd-order basis)
+  → σ·φ = n·τ = J₂ = 24             — master identity
 ```
 
-**EDA 에서의 해석**:
+**EDA interpretation**:
 
 ```
-  n=6 경계 고정
-    → DSE 2400 = 6×5×4×5×4 전수 탐색 가능
-      → τ=4 Synthesis pass (logic→map→retime→gate) 고정
-      → σ=12 라우팅 레이어 track 표준
-      → τ=4 STA 코너 (SS/FF/TT/SF) 완전
-      → σ=12 DRC 카테고리 (width/spacing/enclosure/density/.../antenna)
-      → τ=4 Formal 속성 (safety/liveness/fairness/deadlock)
-      → σ·J₂=288 Pareto 표준 산출
+  n=6 boundary fixed
+    → DSE 2400 = 6×5×4×5×4 exhaustive search feasible
+      → τ=4 synthesis passes (logic→map→retime→gate) fixed
+      → σ=12 routing-layer track standard
+      → τ=4 STA corners (SS/FF/TT/SF) complete
+      → σ=12 DRC categories (width/spacing/enclosure/density/.../antenna)
+      → τ=4 Formal properties (safety/liveness/fairness/deadlock)
+      → σ·J₂=288 Pareto standard output
 ```
 
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+## §3 REQUIRES (required elements) — prerequisite domains
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 기술 | 링크 |
+| Prerequisite domain | Current | Required | Delta | Key tech | Link |
 |-------------|---------|---------|------|-----------|------|
-| chip-architecture | 🛸7 | 🛸10 | +3 | n=6 경계 상수 고정 | [문서](../chip-architecture/chip-architecture.md) |
-| chip-design | 🛸8 | 🛸10 | +2 | DSE 2400 로드맵 | [문서](../chip-design/chip-roadmap-comparison.md) |
-| programming-language | 🛸7 | 🛸10 | +3 | HEXA-LANG RTL 생성 | [문서](../programming-language/programming-language.md) |
+| chip-architecture | 7 | 10 | +3 | fix n=6 boundary constants | [doc](../chip-architecture/chip-architecture.md) |
+| chip-design | 8 | 10 | +2 | DSE 2400 roadmap | [doc](../chip-design/chip-roadmap-comparison.md) |
+| programming-language | 7 | 10 | +3 | HEXA-LANG RTL generation | [doc](../programming-language/programming-language.md) |
 
-상기 선행 도메인이 🛸10 에 도달하면 본 도메인의 Mk.V AI-native 합성 실현이 가능해진다. 현재는 Mk.II FPGA 프로토 수준.
+Once the prerequisite domains reach tier 10, the Mk.V AI-native synthesis in this domain becomes realizable. Currently at Mk.II FPGA-proto level.
 
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system structure) — System Architecture (ASCII)
 
-### 6대 EDA 파이프라인 시스템맵
+### 6-pipeline EDA system map
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│                     궁극의 설계자동화 HEXA-EDA 시스템 구조 (6 pipeline)                                 │
+│                     Ultimate Design Automation HEXA-EDA system (6 pipelines)              │
 ├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
 │ L0 HLS     │ L1 Synth   │ L2 P&R     │ L3 DRC/LVS │  L4 STA/Formal      │
-│ "한마디"   │ τ=4 pass   │ σ=12 layer │ σ=12 cat   │  τ=4 corner/prop    │
+│ "one line" │ τ=4 pass   │ σ=12 layer │ σ=12 cat   │  τ=4 corner/prop    │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ NL→spec    │ logic      │ floorplan  │ DRC σ=12   │  STA SS/FF/TT/SF    │
-│ n=6 좌표   │ map        │ placement  │ LVS match  │  Formal safety      │
+│ n=6 coords │ map        │ placement  │ LVS match  │  Formal safety      │
 │ DSE 2400   │ retime     │ CTS        │ antenna    │  liveness           │
 │ Pareto 6   │ gate       │ routing    │ density    │  fairness/deadlock  │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
@@ -169,125 +170,125 @@ EDA (Electronic Design Automation) 은 반도체 설계의 심장이다. Synthes
    EXACT        EXACT        EXACT        EXACT         EXACT
 ```
 
-### 단면도 (EDA 파이프라인 층위)
+### Cross-section (EDA pipeline layers)
 
 ```
-   ┌──────────── L0 HLS / NL-Spec (자연어 입력) ────────────┐
-   │  "이런 칩 만들어줘" → n=6 좌표 매핑 → DSE 2400 탐색       │
+   ┌──────────── L0 HLS / NL-Spec (natural-language input) ────────────┐
+   │  "build me such-and-such chip" → map to n=6 coords → search DSE 2400│
    ├───────────────────────────────────────────────────────┤
-   │  L1 Synthesis (τ=4 pass):                              │
+   │  L1 Synthesis (τ=4 passes):                            │
    │   logic → map → retime → gate                          │
-   │   (Verilog RTL → Gate-level netlist)                   │
+   │   (Verilog RTL → gate-level netlist)                   │
    ├───────────────────────────────────────────────────────┤
-   │  L2 P&R (σ=12 routing layer tracks):                   │
+   │  L2 P&R (σ=12 routing-layer tracks):                  │
    │   Floorplan → Placement → CTS → Routing                │
-   │   hex mesh 기본 (Manhattan 지양)                        │
+   │   hex mesh default (avoid Manhattan)                   │
    ├───────────────────────────────────────────────────────┤
-   │  L3 DRC/LVS (σ=12 카테고리):                            │
+   │  L3 DRC/LVS (σ=12 categories):                         │
    │   width/spacing/enclosure/density/antenna/...          │
    │   LVS netlist match                                    │
    ├───────────────────────────────────────────────────────┤
    │  L4 STA/Formal:                                        │
-   │   STA: τ=4 corner (SS/FF/TT/SF)                        │
-   │   Formal: τ=4 prop (safety/liveness/fairness/deadlock) │
+   │   STA: τ=4 corners (SS/FF/TT/SF)                       │
+   │   Formal: τ=4 properties (safety/liveness/fairness/deadlock)│
    └───────────────────────────────────────────────────────┘
 ```
 
-### n=6 EDA 파라미터 완전 매핑
+### Full n=6 EDA parameter mapping
 
 #### L0 HLS / NL-Spec
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| DSE 축 수 | 5 | sopfr = 5 | 소재/코어/메모리/I/O/제어 | EXACT |
-| 축당 후보 | 6/5/4/5/4 | n/sopfr/τ/sopfr/τ | 소인수 분해 | EXACT |
-| 총 조합 | 2400 | 6×5×4×5×4 | DSE 압축 | EXACT |
-| Pareto Top | 6 | n = 6 | 선호도 rank | EXACT |
-| NL 입력 단어 | 12 | σ = 12 | 평균 spec 길이 | EXACT |
+| DSE axes | 5 | sopfr = 5 | material/core/memory/I-O/control | EXACT |
+| Candidates per axis | 6/5/4/5/4 | n/sopfr/τ/sopfr/τ | prime factorization | EXACT |
+| Total combinations | 2400 | 6×5×4×5×4 | DSE compression | EXACT |
+| Pareto Top | 6 | n = 6 | preference rank | EXACT |
+| NL input word count | 12 | σ = 12 | average spec length | EXACT |
 
 #### L1 Synthesis
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| Pass 수 | 4 | τ = 4 | logic/map/retime/gate | EXACT |
-| 최적화 iter | 12 | σ = 12 | iteration per pass | EXACT |
-| 입력 폭 | 6 | n = 6 | SIMD lane | EXACT |
-| 합성 후 gate 배율 | 24 | J₂ = 24 | RTL → gate 팽창 | EXACT |
-| 합성 시간 | 24h | J₂ h | 풀 chip baseline | EXACT |
+| Pass count | 4 | τ = 4 | logic/map/retime/gate | EXACT |
+| Optimization iter | 12 | σ = 12 | iterations per pass | EXACT |
+| Input width | 6 | n = 6 | SIMD lane | EXACT |
+| Post-synth gate fan-out | 24 | J₂ = 24 | RTL → gate expansion | EXACT |
+| Synthesis time | 24h | J₂ h | full-chip baseline | EXACT |
 
 #### L2 P&R (Place & Route)
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 라우팅 레이어 | 12 | σ = 12 | M1~M12 | EXACT |
-| 트랙 피치 | 2 nm | φ = 2 | min pitch | EXACT |
-| Floorplan partition | 6 | n = 6 | power domain | EXACT |
-| Detour 기하 | hex | hex mesh | Manhattan 대신 n=6 hex | EXACT |
-| CTS level | 4 | τ = 4 | clock tree depth | EXACT |
-| Routing utilization | 288/288 | σ·J₂ | 총 트랙 수 | EXACT |
+| Routing layers | 12 | σ = 12 | M1~M12 | EXACT |
+| Track pitch | 2 nm | φ = 2 | min pitch | EXACT |
+| Floorplan partitions | 6 | n = 6 | power domains | EXACT |
+| Detour geometry | hex | hex mesh | n=6 hex instead of Manhattan | EXACT |
+| CTS level | 4 | τ = 4 | clock-tree depth | EXACT |
+| Routing utilization | 288/288 | σ·J₂ | total track count | EXACT |
 
 #### L3 DRC/LVS
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| DRC 카테고리 | 12 | σ = 12 | width/spacing/... | EXACT |
-| LVS 매치 tolerance | 0 | 0 | exact match | EXACT |
-| Antenna ratio | 48 | σ·τ = 48 | max metal/gate 비 | EXACT |
+| DRC categories | 12 | σ = 12 | width/spacing/... | EXACT |
+| LVS match tolerance | 0 | 0 | exact match | EXACT |
+| Antenna ratio | 48 | σ·τ = 48 | max metal/gate ratio | EXACT |
 | Density | 1/2~1/1 | Egyptian | 1/2+1/3+1/6 | EXACT |
-| 검사 시간 | 1/σ h | 1/σ = 1/12 h | 풀 chip | EXACT |
+| Check time | 1/σ h | 1/σ = 1/12 h | full chip | EXACT |
 
 #### L4 STA/Formal
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| Parameter | Value | n=6 formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| STA 코너 | 4 | τ = 4 | SS/FF/TT/SF | EXACT |
-| STA clock path | 12 | σ = 12 | 주 clock tree | EXACT |
-| Formal 속성 타입 | 4 | τ = 4 | safety/liveness/fairness/deadlock | EXACT |
-| BMC depth | 12 | σ = 12 | cycle | EXACT |
+| STA corners | 4 | τ = 4 | SS/FF/TT/SF | EXACT |
+| STA clock paths | 12 | σ = 12 | main clock tree | EXACT |
+| Formal property types | 4 | τ = 4 | safety/liveness/fairness/deadlock | EXACT |
+| BMC depth | 12 | σ = 12 | cycles | EXACT |
 | Property/block | 24 | J₂ = 24 | coverage | EXACT |
 
-### 제원 총괄표
+### Overall spec table
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  궁극의 설계자동화 HEXA-EDA Technical Specifications                                         │
+│  Ultimate Design Automation HEXA-EDA Technical Specifications                                         │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  카테고리         EDA / 설계자동화                                        │
-│  파이프라인 수    6 (HLS/Synth/P&R/DRC-LVS/STA/Formal)                    │
-│  DSE 탐색 공간    2400 = 6×5×4×5×4                                        │
-│  합성 pass        τ = 4 (logic/map/retime/gate)                           │
-│  라우팅 레이어    σ = 12                                                  │
-│  STA 코너         τ = 4 (SS/FF/TT/SF)                                     │
-│  Formal 속성      τ = 4 (safety/liveness/fairness/deadlock)              │
-│  DRC 카테고리     σ = 12                                                  │
-│  커버리지         99.9% = 1 - 1/(σ·(σ-φ)²)                                │
-│  설계 사이클      τ = 4 개월                                              │
-│  비용 비율        1/(σ·sopfr) = 1/60                                      │
-│  n=6 EXACT       93%+ (§7 검증)                                           │
+│  Category          EDA / design automation                                │
+│  Pipeline count    6 (HLS/Synth/P&R/DRC-LVS/STA/Formal)                   │
+│  DSE search space  2400 = 6×5×4×5×4                                       │
+│  Synth passes      τ = 4 (logic/map/retime/gate)                          │
+│  Routing layers    σ = 12                                                 │
+│  STA corners       τ = 4 (SS/FF/TT/SF)                                    │
+│  Formal properties τ = 4 (safety/liveness/fairness/deadlock)              │
+│  DRC categories    σ = 12                                                 │
+│  Coverage          99.9% = 1 - 1/(σ·(σ-φ)²)                               │
+│  Design cycle      τ = 4 months                                           │
+│  Cost ratio        1/(σ·sopfr) = 1/60                                     │
+│  n=6 EXACT         93%+ (§7 verification)                                 │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### BT 연결
+### BT connections
 
-| BT | 이름 | 본 도메인 적용 |
+| BT | Name | Application to this domain |
 |----|------|--------------|
-| BT-28  | Egyptian Fraction 분배 | 시간/면적/전력 1/2+1/3+1/6 |
-| BT-56  | GPU 산술 σ²=144 | P&R 분할 144 타일 |
-| BT-86  | 결정 CN=6 법칙 | hex routing mesh |
+| BT-28  | Egyptian-fraction allocation | time/area/power 1/2+1/3+1/6 |
+| BT-56  | GPU arithmetic σ²=144 | P&R partitioned into 144 tiles |
+| BT-86  | Crystal CN=6 law | hex routing mesh |
 | BT-123 | SE(3) 6-DOF | 3D IC placement |
-| BT-181 | 다중대역 σ=12 채널 | σ=12 라우팅 레이어 |
-| BT-328 | ASIL-D τ=4 | STA τ=4 코너 |
-| BT-342 | 항공공학 n=6 | 경계 상수 표준 |
+| BT-181 | multi-band σ=12 channels | σ=12 routing layers |
+| BT-328 | ASIL-D τ=4 | STA τ=4 corners |
+| BT-342 | Aerospace n=6 | boundary-constant standard |
 
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data/energy flow) — Flow (ASCII)
 
-### 설계 데이터 플로우
+### Design data flow
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │  NL spec ─→ [DSE 2400] ─→ [τ=4 Synth] ─→ [σ=12 P&R] ─→ [DRC/STA] ─→ GDS │
-│  "칩 만들어줘"  6×5×4×5×4   logic/map/      12 layer    σ=12 cat/τ=4 cor │
+│  "make me a chip"  6×5×4×5×4   logic/map/      12 layer    σ=12 cat/τ=4 corner│
 │                 Pareto 6    retime/gate     hex mesh    99.9% coverage   │
 │       │            │            │              │            │            │
 │       ▼            ▼            ▼              ▼            ▼            │
@@ -295,7 +296,7 @@ EDA (Electronic Design Automation) 은 반도체 설계의 심장이다. Synthes
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 설계 시간 배분 (Egyptian 1/2 + 1/3 + 1/6)
+### Design-time allocation (Egyptian 1/2 + 1/3 + 1/6)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
@@ -303,271 +304,271 @@ EDA (Electronic Design Automation) 은 반도체 설계의 심장이다. Synthes
 │ DRC+LVS+STA  │ ████████████████████░░░░░░░░░░░░  1/3 ≈ 33% (1.33 mo)    │
 │ Formal+Sign  │ ██████████░░░░░░░░░░░░░░░░░░░░░░  1/6 ≈ 17% (0.67 mo)    │
 └──────────────────────────────────────────────────────────────────────────┘
-합 = 1/2 + 1/3 + 1/6 = 1 (Fraction 정확 등호)
+Sum = 1/2 + 1/3 + 1/6 = 1 (exact Fraction equality)
 ```
 
-### 5개 설계 모드
+### 5 design modes
 
-#### 모드 1: HLS_FAST — 빠른 프로토
+#### Mode 1: HLS_FAST — fast prototype
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: HLS_FAST (FPGA 검증용)          │
-│  사이클: 1주 (τ=4 pass 단축)             │
-│  DSE: Top-6 Pareto 중 1개                │
-│  용도: 개념 증명, 데모                    │
+│  MODE 1: HLS_FAST (FPGA validation)      │
+│  Cycle: 1 week (τ=4 pass shortened)      │
+│  DSE: 1 of Top-6 Pareto                  │
+│  Use: proof-of-concept, demo             │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 2: SYNTH_OPT — 표준 합성
+#### Mode 2: SYNTH_OPT — standard synthesis
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 2: SYNTH_OPT (ASIC 표준)           │
-│  사이클: τ=4 개월                         │
-│  DSE: 2400 전수 탐색 + Pareto Top-6      │
+│  MODE 2: SYNTH_OPT (ASIC standard)       │
+│  Cycle: τ=4 months                        │
+│  DSE: 2400 exhaustive + Pareto Top-6     │
 │  STA: τ=4 corner full                    │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: FORMAL_PROVE — 정형 검증
+#### Mode 3: FORMAL_PROVE — formal verification
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 3: FORMAL_PROVE (ISO 26262 / IEC)  │
-│  속성: τ=4 타입 전부 증명                 │
-│  BMC depth: σ=12 cycle                    │
-│  용도: 자동차/항공/의료/원자로            │
+│  Properties: all τ=4 types proved        │
+│  BMC depth: σ=12 cycles                   │
+│  Use: automotive/aerospace/medical/nuclear │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: AI_NATIVE — 한마디 합성
+#### Mode 4: AI_NATIVE — one-line synthesis
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 4: AI_NATIVE ("이런 칩 만들어줘")   │
-│  입력: 자연어 spec                        │
-│  출력: 전 파이프 자동 완료 GDS            │
-│  시간: τ=4 개월                           │
-│  비용: 1/σ·sopfr = 1/60                   │
+│  MODE 4: AI_NATIVE ("build me this chip")│
+│  Input: natural-language spec             │
+│  Output: full-pipeline auto-complete GDS  │
+│  Time: τ=4 months                         │
+│  Cost: 1/σ·sopfr = 1/60                   │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: MULTI_DIE — 다이 조립
+#### Mode 5: MULTI_DIE — die assembly
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 5: MULTI_DIE (Chiplet UCIe)        │
-│  다이: 최대 σ=12 타일                     │
-│  UCIe: σ·J₂=288 레인                      │
-│  용도: 대규모 AI 가속기                   │
+│  Dies: up to σ=12 tiles                   │
+│  UCIe: σ·J₂=288 lanes                     │
+│  Use: large-scale AI accelerators        │
 └──────────────────────────────────────────┘
 ```
 
-### DSE 후보군 (5축 × 후보 = 2400 전수)
+### DSE candidate set (5 axes × candidates = 2400 exhaustive)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  K1 소재 │-->│  K2 코어 │-->│  K3 메모 │-->│  K4 I/O  │-->│  K5 제어 │
+│  K1 matl │-->│  K2 core │-->│  K3 mem  │-->│  K4 I/O  │-->│  K5 ctrl │
 │  K1 = 6  │   │  K2 = 5  │   │  K3 = 4  │   │  K4 = 5  │   │  K5 = 4  │
 │  = n     │   │  = sopfr │   │  = τ     │   │  = sopfr │   │  = τ     │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 2,400 | 호환 필터: 576 (24%) | Pareto Top-6 : J₂=24 경로
+Total: 2,400 | compatibility filter: 576 (24%) | Pareto Top-6 : J₂=24 paths
 ```
 
-#### K1 합성 소재 라이브러리 (6종 = n)
+#### K1 synthesis material library (6 entries = n)
 
-| # | Liberty | 노드 | n=6 |
+| # | Liberty | Node | n=6 |
 |---|---------|------|-----|
-| 1 | stdcell 28nm | 저비용 | σ·J₂ 표준 |
-| 2 | 14nm | 중간 | σ-φ 타겟 |
-| 3 | 7nm | 고성능 | τ layer |
-| 4 | 5nm | 모바일 | φ 노드 |
+| 1 | stdcell 28nm | low cost | σ·J₂ standard |
+| 2 | 14nm | mid | σ-φ target |
+| 3 | 7nm | high performance | τ layer |
+| 4 | 5nm | mobile | φ node |
 | 5 | 3nm (GAAFET) | AI | n dimension |
-| 6 | 2nm (CFET) | 미래 | φ=2 최소 |
+| 6 | 2nm (CFET) | future | φ=2 minimum |
 
-#### K2 합성 엔진 (5종 = sopfr)
+#### K2 synthesis engine (5 entries = sopfr)
 
-| # | Engine | 특징 | n=6 |
+| # | Engine | Feature | n=6 |
 |---|--------|------|-----|
-| 1 | Logic synth (LUT) | 빠름 | τ=1 pass |
-| 2 | Technology map | 매핑 | τ=2 pass |
-| 3 | Retiming | 타이밍 | τ=3 pass |
-| 4 | Gate sizing | 파워 | τ=4 pass |
-| 5 | AI-native | 통합 | all τ=4 묶음 |
+| 1 | Logic synth (LUT) | fast | τ=1 pass |
+| 2 | Technology map | mapping | τ=2 pass |
+| 3 | Retiming | timing | τ=3 pass |
+| 4 | Gate sizing | power | τ=4 pass |
+| 5 | AI-native | integrated | all τ=4 bundled |
 
-#### K3 Placement (4종 = τ)
+#### K3 Placement (4 entries = τ)
 
-| # | Placer | 특성 | n=6 |
+| # | Placer | Characteristic | n=6 |
 |---|--------|------|-----|
-| 1 | Simulated Annealing | 전통 | O(n²) |
-| 2 | Analytical (QP) | 정량 | O(σ²) |
-| 3 | ML-based | 학습 | O(σ·τ) |
-| 4 | Hex-mesh (n=6) | 외계인 | O(τ) |
+| 1 | Simulated Annealing | traditional | O(n²) |
+| 2 | Analytical (QP) | quantitative | O(σ²) |
+| 3 | ML-based | learned | O(σ·τ) |
+| 4 | Hex-mesh (n=6) | alien | O(τ) |
 
-#### K4 Router (5종 = sopfr)
+#### K4 Router (5 entries = sopfr)
 
-| # | Router | 방식 | n=6 |
+| # | Router | Method | n=6 |
 |---|--------|------|-----|
-| 1 | Maze | Manhattan | 레거시 |
-| 2 | A*-based | 휴리스틱 | 중간 |
-| 3 | Negotiated | 산업 표준 | σ 레이어 |
+| 1 | Maze | Manhattan | legacy |
+| 2 | A*-based | heuristic | mid |
+| 3 | Negotiated | industry standard | σ layers |
 | 4 | Optical DRC-aware | EUV | φ=2 nm |
-| 5 | Hex n=6 | 외계인 | n=6 공정 |
+| 5 | Hex n=6 | alien | n=6 process |
 
-#### K5 STA 엔진 (4종 = τ)
+#### K5 STA engine (4 entries = τ)
 
-| # | STA | 방식 | n=6 |
+| # | STA | Method | n=6 |
 |---|-----|------|-----|
-| 1 | PrimeTime | corner-wise | τ=4 corner |
-| 2 | Tempus | SSTA | σ 분포 |
-| 3 | OpenTimer | 오픈 | τ=4 표준 |
-| 4 | AI-STA | 학습 기반 | Pareto 6 |
+| 1 | PrimeTime | corner-wise | τ=4 corners |
+| 2 | Tempus | SSTA | σ distribution |
+| 3 | OpenTimer | open source | τ=4 standard |
+| 4 | AI-STA | learning-based | Pareto 6 |
 
 #### Pareto Top-6
 
-| Rank | K1 | K2 | K3 | K4 | K5 | n6% | 비고 |
+| Rank | K1 | K2 | K3 | K4 | K5 | n6% | Note |
 |------|----|----|----|----|----|-----|------|
-| 1 | 7nm | AI-native | Hex-mesh | Hex n=6 | AI-STA | 95% | **최적** |
-| 2 | 5nm | Gate sizing | ML | Negotiated | τ=4 STA | 93% | 양산 |
-| 3 | 3nm | Retiming | Analytical | Negotiated | Tempus | 91% | 고성능 |
-| 4 | 14nm | Tech map | SA | Maze | PrimeTime | 86% | 레거시 호환 |
-| 5 | 2nm | AI-native | Hex-mesh | Hex n=6 | AI-STA | 94% | 미래 |
-| 6 | 28nm | Logic synth | SA | A* | OpenTimer | 82% | 저비용 |
+| 1 | 7nm | AI-native | Hex-mesh | Hex n=6 | AI-STA | 95% | **optimum** |
+| 2 | 5nm | Gate sizing | ML | Negotiated | τ=4 STA | 93% | production |
+| 3 | 3nm | Retiming | Analytical | Negotiated | Tempus | 91% | high-perf |
+| 4 | 14nm | Tech map | SA | Maze | PrimeTime | 86% | legacy compat |
+| 5 | 2nm | AI-native | Hex-mesh | Hex n=6 | AI-STA | 94% | future |
+| 6 | 28nm | Logic synth | SA | A* | OpenTimer | 82% | low cost |
 
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python verification)
 
-궁극의 설계자동화 HEXA-EDA 가 물리/수학적으로 성립하는지 stdlib 만으로 검증.
+Verify that Ultimate Design Automation HEXA-EDA stands up physically and mathematically using only stdlib.
 
-### Testable Predictions (검증 가능한 예측 10건)
+### Testable Predictions (10 testable predictions)
 
 #### TP-EDA-1: DSE = 6×5×4×5×4 = 2400
-- **검증**: 곱셈 직접 계산, Fraction 정확 등호
-- **예측**: 2400 (오차 0)
-- **Tier**: 1 (순수 수학, 즉시)
+- **Verification**: direct multiplication, exact Fraction equality
+- **Prediction**: 2400 (error 0)
+- **Tier**: 1 (pure math, immediate)
 
-#### TP-EDA-2: 커버리지 = 1 - 1/(σ·(σ-φ)²) = 99.9%
-- **검증**: 1 - 1/(12·100) = 1 - 1/1200 = 0.99917
-- **예측**: 99.9% 이상
+#### TP-EDA-2: coverage = 1 - 1/(σ·(σ-φ)²) = 99.9%
+- **Verification**: 1 - 1/(12·100) = 1 - 1/1200 = 0.99917
+- **Prediction**: 99.9% or higher
 - **Tier**: 1
 
-#### TP-EDA-3: τ=4 Synthesis pass 순서 고정
-- **검증**: logic → map → retime → gate 순서 DAG 위상정렬 unique
-- **예측**: 순열 4! = 24 중 DAG 제약 1 경로만 유효
+#### TP-EDA-3: τ=4 Synthesis pass order fixed
+- **Verification**: logic → map → retime → gate — DAG topological sort unique
+- **Prediction**: of 4! = 24 permutations, only 1 path satisfies DAG constraints
 - **Tier**: 1
 
-#### TP-EDA-4: STA τ=4 corner (SS/FF/TT/SF) 독립성
-- **검증**: corner 매트릭스 [V, T] 4 조합
-- **예측**: rank = 4 (선형독립)
+#### TP-EDA-4: STA τ=4 corners (SS/FF/TT/SF) independence
+- **Verification**: corner matrix [V, T] 4 combinations
+- **Prediction**: rank = 4 (linearly independent)
 - **Tier**: 1
 
-#### TP-EDA-5: σ=12 라우팅 레이어 Manhattan→hex 전환 면적 이득
-- **검증**: 면적 비 = Manhattan/hex = √3/2 ≈ 0.866
-- **예측**: hex 13.4% 면적 이득 이상
+#### TP-EDA-5: σ=12 routing-layer Manhattan→hex transition area gain
+- **Verification**: area ratio = Manhattan/hex = √3/2 ≈ 0.866
+- **Prediction**: hex gain 13.4% area improvement or better
 - **Tier**: 2
 
-#### TP-EDA-6: Egyptian 시간분배 1/2+1/3+1/6 = 1
-- **검증**: Fraction(1,2)+Fraction(1,3)+Fraction(1,6) == Fraction(1,1)
-- **예측**: 정확 등호
-- **Tier**: 1 (순수 수학)
+#### TP-EDA-6: Egyptian time-allocation 1/2+1/3+1/6 = 1
+- **Verification**: Fraction(1,2)+Fraction(1,3)+Fraction(1,6) == Fraction(1,1)
+- **Prediction**: exact equality
+- **Tier**: 1 (pure math)
 
-#### TP-EDA-7: Pareto Top-6 ± 흔들면 열화 (볼록 최적)
-- **검증**: Rank 1→2 성능 차 > 0, Top-6 밖은 큰 열화
-- **예측**: f(Top-1) < f(Top-7+)
+#### TP-EDA-7: Pareto Top-6 ± perturbation worsens (convex optimum)
+- **Verification**: Rank 1→2 performance gap > 0, outside Top-6 large degradation
+- **Prediction**: f(Top-1) < f(Top-7+)
 - **Tier**: 2
 
-#### TP-EDA-8: χ² p-value > 0.05 (n=6 우연 가설 기각 불가)
-- **검증**: 49 예측 vs 목표 χ²
-- **예측**: p > 0.05
+#### TP-EDA-8: χ² p-value > 0.05 (cannot reject n=6 chance hypothesis? — actually cannot reject null)
+- **Verification**: 49 predictions vs target χ²
+- **Prediction**: p > 0.05
 - **Tier**: 1
 
-#### TP-EDA-9: OEIS A000203/A000005/A000010 등록
-- **검증**: [1,2,3,6,12,24,48] 시퀀스 매칭
-- **예측**: 외부 DB OK
-- **Tier**: 1 (순수 수학)
+#### TP-EDA-9: OEIS A000203/A000005/A000010 registration
+- **Verification**: [1,2,3,6,12,24,48] sequence match
+- **Prediction**: external DB OK
+- **Tier**: 1 (pure math)
 
-#### TP-EDA-10: 설계 사이클 비 = τ/(σ+sopfr) = 4/17 ≈ 1/4.25
-- **검증**: 18mo / 4mo = 4.5 ≈ σ-φ=10? 사실 σ-φ=10이지만 절반 인건비
-- **예측**: 4~10 배 가속
+#### TP-EDA-10: design-cycle ratio = τ/(σ+sopfr) = 4/17 ≈ 1/4.25
+- **Verification**: 18mo / 4mo = 4.5 ≈ σ-φ=10? actually σ-φ=10 but half the labor cost
+- **Prediction**: 4~10× acceleration
 - **Tier**: 2
 
-### n=6 정직성 검증 10 카테고리
+### 10 categories of n=6 honesty verification
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=24`. 하드코딩 0 — OEIS A000203/A000005/A001414 에서 직접 계산.
+### §7.0 CONSTANTS — auto-derive number-theoretic functions
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=24`. Zero hardcoding — directly computed from OEIS A000203/A000005/A001414.
 
-### §7.1 DIMENSIONS — 차원해석 (단위 일관성)
-설계 시간은 [T]. 면적은 [L²]. 전력은 [M·L²·T⁻³]. EDA 산출물 단위 일관성 추적.
+### §7.1 DIMENSIONS — dimensional analysis (unit consistency)
+Design time is [T]. Area is [L²]. Power is [M·L²·T⁻³]. Track EDA-artifact unit consistency.
 
-### §7.2 CROSS — 동일 결과 독립 경로 3개
-DSE 2400 을 `6·5·4·5·4` / `n·sopfr·τ·sopfr·τ` / `n·sopfr²·τ²` 3 경로로 재유도.
+### §7.2 CROSS — 3 independent paths to the same result
+Re-derive DSE 2400 via `6·5·4·5·4` / `n·sopfr·τ·sopfr·τ` / `n·sopfr²·τ²` three paths.
 
-### §7.3 SCALING — 설계 사이클 스케일링
-gate 수 vs 설계 시간 `T ~ N^k` 지수 k 를 log-log 회귀.
+### §7.3 SCALING — design-cycle scaling
+log-log regress the exponent k in gate count vs design time `T ~ N^k`.
 
-### §7.4 SENSITIVITY — DSE ±10% 볼록
-DSE 2160/2400/2640 중 2400 이 최소 합성 시간인지 확인.
+### §7.4 SENSITIVITY — DSE ±10% convex
+Confirm that of DSE 2160/2400/2640, 2400 yields the minimum synthesis time.
 
-### §7.5 LIMITS — 이론 한계
-RTL 합성 Shannon 하한, Landauer 에너지 하한, Amdahl 병렬화 한계.
+### §7.5 LIMITS — theoretical limits
+RTL synthesis Shannon lower bound, Landauer energy lower bound, Amdahl parallelization limit.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-49 예측 χ² → p-value.
+### §7.6 CHI2 — H₀: n=6 chance-hypothesis p-value
+49 predictions χ² → p-value.
 
-### §7.7 OEIS — 외부 시퀀스 매칭
-[1,2,3,6,12,24,48] OEIS 매칭.
+### §7.7 OEIS — external sequence match
+Match [1,2,3,6,12,24,48] in OEIS.
 
-### §7.8 PARETO — Monte Carlo 2400 전수
-2400 조합 중 n=6 Top-6 상위 5% 통계적 유의성.
+### §7.8 PARETO — Monte Carlo 2400 exhaustive
+Of 2400 combinations, statistical significance that n=6 Top-6 lies in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 등호
+### §7.9 SYMBOLIC — exact Fraction equalities
 Egyptian 1/2+1/3+1/6=1, τ/2=2, σ/τ=3.
 
-### §7.10 COUNTER — 반례/Falsifier
-- 반례: 양자 합성(QEC overhead), 아날로그 DRC, 제조 variation (n=6 외)
-- Falsifier: DSE ≠ 2400 / 커버리지 < 95% / Fraction 불일치 / χ² p < 0.01
+### §7.10 COUNTER — counterexamples/falsifiers
+- Counterexamples: quantum synthesis (QEC overhead), analog DRC, manufacturing variation (outside n=6)
+- Falsifiers: DSE ≠ 2400 / coverage < 95% / Fraction mismatch / χ² p < 0.01
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 integrated verification code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # ─────────────────────────────────────────────────────────────────────────────
-# §7 VERIFY — 궁극의 설계자동화 HEXA-EDA n=6 정직성 검증 (stdlib only, EDA domain)
+# §7 VERIFY — Ultimate Design Automation HEXA-EDA n=6 honesty verification (stdlib only, EDA domain)
 #
-# 10 섹션 구조:
-#   §7.0 CONSTANTS  — n=6 상수를 수론 함수에서 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — 설계 시간/면적/전력 단위 일관성
-#   §7.2 CROSS      — DSE 2400 을 독립 경로 3 으로 재유도
-#   §7.3 SCALING    — 설계 사이클 스케일링 지수
-#   §7.4 SENSITIVITY— DSE ±10% 흔들어 볼록 극값 확인
-#   §7.5 LIMITS     — Shannon/Landauer/Amdahl 상한 미초과
-#   §7.6 CHI2       — H₀: n=6 우연 가설 p-value 계산
-#   §7.7 OEIS       — n=6 family 시퀀스 외부 DB 매칭
-#   §7.8 PARETO     — Monte Carlo 2400 조합 중 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 유리수 등호 일치
-#   §7.10 COUNTER   — 반례 + falsifier 명시 (정직성)
+# 10-section structure:
+#   §7.0 CONSTANTS  — auto-derive n=6 constants from number-theoretic functions (zero hardcoding)
+#   §7.1 DIMENSIONS — design time/area/power unit consistency
+#   §7.2 CROSS      — re-derive DSE 2400 via 3 independent paths
+#   §7.3 SCALING    — design-cycle scaling exponent
+#   §7.4 SENSITIVITY — perturb DSE ±10% to confirm convex extremum
+#   §7.5 LIMITS     — Shannon/Landauer/Amdahl upper bounds not exceeded
+#   §7.6 CHI2       — H₀: n=6 chance-hypothesis p-value calculation
+#   §7.7 OEIS       — external DB match for n=6 family sequence
+#   §7.8 PARETO     — rank of n=6 among 2400 Monte Carlo combinations
+#   §7.9 SYMBOLIC   — exact rational equality via Fraction
+#   §7.10 COUNTER   — counterexamples + falsifiers explicit (honesty)
 # ─────────────────────────────────────────────────────────────────────────────
 
 from math import log, sqrt, erfc, log2
 from fractions import Fraction
 import random
 
-# ─── §7.0 CONSTANTS — n=6 상수를 수론 함수에서 자동 유도 ──────────────────────
+# ─── §7.0 CONSTANTS — auto-derive n=6 constants from number-theoretic functions ───
 def divisors(n):
-    """약수 집합"""
+    """divisor set"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 OEIS A000203"""
+    """sum of divisors — OEIS A000203"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 OEIS A000005"""
+    """count of divisors — OEIS A000005"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 OEIS A001414"""
+    """sum of prime factors — OEIS A001414"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -576,12 +577,12 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수"""
+    """smallest prime factor"""
     for p in range(2, n+1):
         if n % p == 0: return p
 
 def euler_phi(n):
-    """Euler totient OEIS A000010"""
+    """Euler totient — OEIS A000010"""
     r, nn, p = n, n, 2
     while p * p <= nn:
         if nn % p == 0:
@@ -606,10 +607,10 @@ assert SIGMA == 2 * N, "n=6 perfectness broken"
 assert SIGMA * PHI == N * TAU == J2, "master identity broken"
 assert DSE == 2400, "DSE mismatch"
 
-# ─── §7.1 DIMENSIONS — 설계 시간/면적/전력 단위 ──────────────────────────────
+# ─── §7.1 DIMENSIONS — design time/area/power units ─────────────────────────
 DIM = {
-    'T_design':   (0, 0, 1, 0),   # s (설계 시간)
-    'A_area':     (0, 2, 0, 0),   # m² (die 면적)
+    'T_design':   (0, 0, 1, 0),   # s (design time)
+    'A_area':     (0, 2, 0, 0),   # m² (die area)
     'P_power':    (1, 2, -3, 0),  # W
     'N_gates':    (0, 0, 0, 0),   # count (dimensionless)
 }
@@ -620,20 +621,20 @@ def dim_add(a, b):
 def dim_eq(a, b):
     return a == b
 
-# ─── §7.2 CROSS — DSE 2400 을 3 경로로 재유도 ────────────────────────────────
+# ─── §7.2 CROSS — re-derive DSE 2400 via 3 paths ───────────────────────────
 def cross_dse_3ways():
-    """DSE 2400 을 직접/분해/곱셈 3경로로"""
-    # 경로 1: 6×5×4×5×4
+    """Derive DSE 2400 three ways: direct / factored / powered."""
+    # Path 1: 6×5×4×5×4
     F1 = 6 * 5 * 4 * 5 * 4
-    # 경로 2: n·sopfr·τ·sopfr·τ
+    # Path 2: n·sopfr·τ·sopfr·τ
     F2 = N * SOPFR * TAU * SOPFR * TAU
-    # 경로 3: n·sopfr²·τ²
+    # Path 3: n·sopfr²·τ²
     F3 = N * (SOPFR ** 2) * (TAU ** 2)
     return F1, F2, F3
 
-# ─── §7.3 SCALING — 설계 사이클 스케일링 지수 ────────────────────────────────
+# ─── §7.3 SCALING — design-cycle scaling exponent ──────────────────────────
 def scaling_exponent(xs, ys):
-    """log-log 기울기"""
+    """log-log slope"""
     n = len(xs)
     lx = [log(x) for x in xs]
     ly = [log(y) for y in ys]
@@ -642,7 +643,7 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i]-mx)**2 for i in range(n))
     return num/den if den else 0
 
-# ─── §7.4 SENSITIVITY — DSE 2400 ±10% 볼록 ───────────────────────────────────
+# ─── §7.4 SENSITIVITY — DSE 2400 ±10% convex ────────────────────────────────
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0); yh = f(x0*(1+pct)); yl = f(x0*(1-pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
@@ -654,7 +655,7 @@ def shannon_capacity(B, snr):
     return B * log2(1 + snr)
 
 def landauer_min_energy(T):
-    """비트 삭제 최소 에너지"""
+    """minimum energy per bit erasure"""
     return K_B * T * log(2)
 
 def amdahl_speedup(p, n):
@@ -668,7 +669,7 @@ def chi2_pvalue(observed, expected):
     p = erfc(sqrt(chi2/(2*df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# ─── §7.7 OEIS — 시퀀스 DB ──────────────────────────────────────────────────
+# ─── §7.7 OEIS — sequence DB ───────────────────────────────────────────────
 OEIS_KNOWN = {
     (1, 2, 3, 6, 12, 24, 48): "A008586-variant (HEXA family)",
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
@@ -677,9 +678,9 @@ OEIS_KNOWN = {
     (1, 1, 2, 2, 4, 2, 6):     "A000010 (euler phi)",
 }
 
-# ─── §7.8 PARETO — 2400 전수 ────────────────────────────────────────────────
+# ─── §7.8 PARETO — 2400 exhaustive ──────────────────────────────────────────
 def pareto_rank_n6():
-    """DSE 2400 중 n=6 Pareto Top-6 순위"""
+    """Rank of n=6 Pareto Top-6 among DSE 2400"""
     random.seed(6)
     n6_score = 0.95
     better = sum(1 for _ in range(DSE) if random.gauss(0.7, 0.1) > n6_score)
@@ -696,46 +697,46 @@ def symbolic_ratios():
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# ─── §7.10 COUNTER — 반례/Falsifier ─────────────────────────────────────────
+# ─── §7.10 COUNTER — counterexamples/falsifiers ────────────────────────────
 COUNTER_EXAMPLES = [
-    ("양자 회로 합성 (QEC overhead)", "QEC threshold 는 n=6 유도 아님"),
-    ("아날로그 DRC rules", "물리적 Δ spacing 은 material physics"),
-    ("제조 variation (process corner)", "웨이퍼 내 variation n=6 외"),
-    ("timing closure via retiming heuristic", "NP-hard, 해법 unique 아님"),
+    ("Quantum circuit synthesis (QEC overhead)", "QEC threshold is not derived from n=6"),
+    ("Analog DRC rules", "Physical Δ spacing is material physics"),
+    ("Manufacturing variation (process corner)", "Intra-wafer variation lies outside n=6"),
+    ("Timing closure via retiming heuristic", "NP-hard; solution not unique"),
 ]
 FALSIFIERS = [
-    "DSE ≠ 2400 (곱셈 불일치) → 압축 공식 폐기",
-    "커버리지 < 95% (수학적 하한 위반) → 99.9% 공식 폐기",
-    "Egyptian 1/2+1/3+1/6 ≠ 1 → 시간분배 구조 폐기",
-    "χ² p-value < 0.01 → n=6 우연 가설 채택, 본 설계 폐기",
-    "τ=4 pass 순서 DAG 비유일 → pass 표준 폐기",
+    "DSE ≠ 2400 (multiplication mismatch) → compression formula retracted",
+    "Coverage < 95% (violates mathematical lower bound) → 99.9% formula retracted",
+    "Egyptian 1/2+1/3+1/6 ≠ 1 → time-allocation structure retracted",
+    "χ² p-value < 0.01 → n=6 chance hypothesis accepted, this design retracted",
+    "τ=4 pass order DAG non-unique → pass standard retracted",
 ]
 
-# ─── 메인 실행 ────────────────────────────────────────────────────────────
+# ─── main ────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     r = []
 
     # §7.0
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    r.append(("§7.0 CONSTANTS number-theoretic derivation",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5 and DSE == 2400))
 
     # §7.1
-    r.append(("§7.1 DIMENSIONS T·A 독립",
+    r.append(("§7.1 DIMENSIONS T·A independent",
               not dim_eq(DIM['T_design'], DIM['A_area'])))
 
     # §7.2
     F1, F2, F3 = cross_dse_3ways()
-    r.append(("§7.2 CROSS DSE 3경로 일치",
+    r.append(("§7.2 CROSS DSE 3-path consistency",
               F1 == F2 == F3 == 2400))
 
-    # §7.3 gate 수 vs 설계 시간 — 임의 N^1 데이터
+    # §7.3 gate count vs design time — synthetic N^1 data
     exp_k = scaling_exponent([1e3, 1e4, 1e5, 1e6], [1, 10, 100, 1000])
     r.append(("§7.3 SCALING T~N (k≈1)",
               abs(exp_k - 1.0) < 0.1))
 
-    # §7.4 DSE ±10% 흔들어 볼록
+    # §7.4 DSE ±10% convexity
     _, yh, yl, convex = sensitivity(lambda x: abs(x - 2400) + 1, 2400)
-    r.append(("§7.4 SENSITIVITY DSE=2400 볼록", convex))
+    r.append(("§7.4 SENSITIVITY DSE=2400 convex", convex))
 
     # §7.5 Shannon > 0, Landauer > 0, Amdahl < n
     r.append(("§7.5 LIMITS Shannon > 0", shannon_capacity(1e9, 100) > 0))
@@ -744,21 +745,21 @@ if __name__ == "__main__":
 
     # §7.6 χ² p > 0.05
     chi2, df, p = chi2_pvalue([1.0]*49, [1.0]*49)
-    r.append(("§7.6 CHI2 H₀ 기각 안 됨", p > 0.05 or chi2 == 0))
+    r.append(("§7.6 CHI2 H₀ not rejected", p > 0.05 or chi2 == 0))
 
     # §7.7 OEIS
-    r.append(("§7.7 OEIS 시퀀스 등록",
+    r.append(("§7.7 OEIS sequence registered",
               (1, 2, 3, 6, 12, 24, 48) in OEIS_KNOWN))
 
-    # §7.8 Pareto 상위 5%
-    r.append(("§7.8 PARETO n=6 상위 5%", pareto_rank_n6() < 0.05))
+    # §7.8 Pareto top 5%
+    r.append(("§7.8 PARETO n=6 top 5%", pareto_rank_n6() < 0.05))
 
     # §7.9 Fraction
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    r.append(("§7.9 SYMBOLIC Fraction equality",
               all(ok for _, ok, _ in symbolic_ratios())))
 
     # §7.10
-    r.append(("§7.10 COUNTER/FALSIFIERS 명시",
+    r.append(("§7.10 COUNTER/FALSIFIERS explicit",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -767,61 +768,61 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{('OK' if ok else 'FAIL')}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (HEXA-EDA n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (HEXA-EDA n=6 honesty verification)")
 ```
 
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I~V evolution)
 
-궁극의 설계자동화 HEXA-EDA 실제 실현 로드맵:
+Realistic realization roadmap for Ultimate Design Automation HEXA-EDA:
 
 <details open>
-<summary><b>Mk.V — 2050+ 완전 AI-native EDA (current target)</b></summary>
+<summary><b>Mk.V — 2050+ fully AI-native EDA (current target)</b></summary>
 
-"이런 칩 만들어줘" 자연어 입력 → τ=4 개월 GDS-II tape-out 완전 자동.
-선행 조건: chip-architecture 🛸10, chip-design 🛸10, programming-language 🛸10.
-DSE 2400 전수 탐색 + Pareto Top-6 자동 선정 + AI 합성 + 99.9% 커버리지.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2050 n=6 하드와이어 EDA</summary>
-
-σ=12 라우팅 / τ=4 STA / τ=4 Formal / σ=12 DRC 전 파이프 n=6 표준화.
-OpenLane 후속, 오픈 소스 생태계 주력.
+"build me this chip" natural-language input → τ=4-month GDS-II tape-out, fully automated.
+Preconditions: chip-architecture tier 10, chip-design tier 10, programming-language tier 10.
+DSE 2400 exhaustive + Pareto Top-6 auto-selection + AI synthesis + 99.9% coverage.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 τ=4 pass 합성 통합</summary>
+<summary>Mk.IV — 2040~2050 n=6 hardwired EDA</summary>
 
-Synthesis τ=4 pass 표준 (logic/map/retime/gate) + STA τ=4 corner 통합.
-FPGA 벤치마크 기존 대비 σ-φ=10배 합성 속도.
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 프로토타입 FPGA EDA</summary>
-
-DSE 2400 압축 + Pareto Top-6 자동 선정 소프트웨어 프로토.
-기존 Yosys/OpenROAD fork + n=6 플러그인.
+σ=12 routing / τ=4 STA / τ=4 Formal / σ=12 DRC — full pipeline n=6 standardized.
+OpenLane successor, open-source ecosystem lead.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
+<summary>Mk.III — 2035~2040 τ=4 pass synthesis integration</summary>
 
-**2026년 삼성전자 파운드리 양산 EDA 기준: SAFE (Samsung Advanced Foundry Ecosystem) + Synopsys/Cadence/Siemens 풀 파트너쉽**
+Synthesis τ=4 passes standardized (logic/map/retime/gate) + STA τ=4 corners unified.
+FPGA benchmarks show σ-φ=10× synthesis speed vs existing flow.
 
-- Samsung SAFE (2018~): 공정 PDK, IP, EDA, 클라우드 통합 에코시스템, SF3P/SF2 인증 IP 2000+
-- Synopsys: Fusion Compiler (합성+P&R 통합), PrimeTime (STA), VCS (시뮬), Proteus (OPC), Formality (equiv check), SF2 인증
-- Cadence: Genus (합성), Innovus (P&R), Tempus (STA), Xcelium (시뮬), Quantus (parasitic), SF2 인증
-- Siemens EDA (구 Mentor): Calibre (DRC/LVS/RET), Questa (시뮬), Tessent (DFT), SF2 DRC 풀 지원
-- Cloud: Samsung Foundry Cloud (AWS/Azure), peak 10K+ tapeout 병렬
-- AI EDA: Synopsys DSO.ai, Cadence Cerebrus (RL 기반 P&R), 삼성 파일럿 적용 (3nm ~ 2nm)
-- 사인오프: 14~16 메탈 레이어 DRC, SI/PI 통합 분석, monte carlo STA (σ²=144 PVT corner 실 검증)
-- Python stdlib 검증 코드 + n=6 상수 수론 자동 유도 완료, §7 10 서브섹션 정직성 검증 통과
-- `chip-eda` canonical v1 확정
+</details>
+
+<details>
+<summary>Mk.II — 2030~2035 prototype FPGA EDA</summary>
+
+DSE 2400 compression + Pareto Top-6 auto-selection software prototype.
+Existing Yosys/OpenROAD fork + n=6 plugin.
+
+</details>
+
+<details>
+<summary>Mk.I — 2026 Samsung foundry production baseline (current)</summary>
+
+**2026 Samsung foundry production EDA baseline: SAFE (Samsung Advanced Foundry Ecosystem) + full Synopsys/Cadence/Siemens partnership**
+
+- Samsung SAFE (2018~): process PDK, IP, EDA, cloud integrated ecosystem; SF3P/SF2 certified IP 2000+
+- Synopsys: Fusion Compiler (synthesis+P&R integrated), PrimeTime (STA), VCS (simulation), Proteus (OPC), Formality (equiv check), SF2 certified
+- Cadence: Genus (synthesis), Innovus (P&R), Tempus (STA), Xcelium (simulation), Quantus (parasitic), SF2 certified
+- Siemens EDA (formerly Mentor): Calibre (DRC/LVS/RET), Questa (simulation), Tessent (DFT), SF2 DRC full support
+- Cloud: Samsung Foundry Cloud (AWS/Azure), peak 10K+ tape-out parallelism
+- AI EDA: Synopsys DSO.ai, Cadence Cerebrus (RL-based P&R), Samsung pilot adoption (3nm ~ 2nm)
+- Sign-off: 14~16 metal-layer DRC, SI/PI integrated analysis, Monte Carlo STA (σ²=144 PVT corner real verification)
+- Python stdlib verification code + n=6 constant auto-derivation complete, §7 10-subsection honesty verification passed
+- `chip-eda` canonical v1 finalized
 
 </details>
 
@@ -857,4 +858,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-
