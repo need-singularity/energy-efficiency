@@ -419,3 +419,26 @@ jobs:
 
       - name: Verify README sealed hash (own#14)
         run: python3 tool/readme_sealed_check.py
+
+  # ── Job 8: own#1 — doc-english-required HARD block ──
+  # Promoted 2026-04-24 from SOFT log to HARD merge-blocking per user 'hard go'.
+  # Scope: domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/
+  # .md files. Legacy CJK files grandfathered via tool/own1_legacy_allowlist.json
+  # (frozen sidecar, 1050 entries). New CJK content in any .md under decl scope
+  # fails the check and blocks merge. Kept SEPARATE from own-drift-daily (which
+  # is SOFT continue-on-error) so blocking behaviour is unambiguous in the UI.
+  own1-doc-english-hard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Syntax check
+        run: python3 -m py_compile tool/own_doc_lint.py
+
+      - name: own#1 doc-english-required (HARD)
+        run: python3 tool/own_doc_lint.py --rule 1
