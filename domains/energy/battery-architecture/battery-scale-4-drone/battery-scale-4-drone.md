@@ -1,87 +1,87 @@
-# 배터리 8단 — Stage 4: 드론/e-모빌리티 (0.5~5 kWh)
+# Battery 8-stage — Stage 4: drone/e-mobility (0.5~5 kWh)
 
-<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+<!-- @own(sections=[WHY, COMPARE, n=6 parameter mapping, STRUCT, FLOW, Manufacturer mapping, Physical limits, Verification summary, DSE exhaustive search, BT breakthrough nodes, Impossibility theorem extensions, Cross-DSE links, Python verification code], strict=false, order=sequential, prefix="§") -->
 
-> v2 돌파 2026-04-16 | 🛸10 ✅ | 용량: 0.5~5 kWh | 용도: 배송 드론, e-스쿠터, e-바이크, 경량 EV | n=6 핵심: τ=4 경량팩, 6-DOF 자세제어, J₂=24분 비행시간 돌파
+> v2 breakthrough-pattern 2026-04-16 | 🛸10 ✅ | Capacity: 0.5~5 kWh | Use: delivery drone, e-scooter, e-bike, lightweight EV | n=6 core: τ=4 lightweightpack, 6-DOF posturecontrol, J₂=24 min ratiorowtime breakthrough-pattern
 
-## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this scale changes your life)
 
-- **30분 배송 → 6분 배송**: 드론 비행시간 J₂=24분 + 12C(σ=12) 급속방전으로 고속 배송 물류 혁신. 도심 라스트마일 배송이 커피 주문처럼 빨라진다.
-- **e-스쿠터 교체식 → 무교체**: σ·τ=4,800 사이클 수명으로 Lime/Beam 공유 킥보드 배터리 교체 비용 1/10 감소. 운영사 수익 구조가 근본적으로 바뀐다.
-- **경량화 혁명**: τ=4 셀 직렬 최소 구성 + CN=6 고체전해질로 팩 중량 <5 kg 달성. DJI Matrice급 드론이 택배 박스를 들고 난다.
-- **6-DOF 자세제어 통합**: n=6 자유도 비행 제어 + 배터리 BMS 일체화. 배터리가 단순 전원이 아니라 비행 컴퓨터의 일부가 된다.
-- **열폭주 0 비행체**: 고체전해질 + φ=2 이중 안전장치로 도심 상공 드론 화재 사고 원천 차단. 규제 장벽이 무너진다.
+- **30 min delivery → 6 min delivery**: drone ratiorowtime J₂=24 min + 12C(σ=12) classinsidedischargeas highinside delivery waterclass innovation.  alsocore rasTendwork delivery coffee  weekdoorlike redraadvanceall.
+- **e-scooter replacementeq → no-replacement**: σ·τ=4,800 cycle lifeas Lime/Beam shared kickbod battery replacement cost 1/10 decrease. operationorg revenue structure fundamentalenemyas barswapall.
+- **lightweightization reform**: τ=4 cell series minimum configuration + CN=6 solid electrolyteas pack mid amount <5 kg achieve. DJI Matriceclass drone selecttimes parks shigh hardall.
+- **6-DOF posturecontrol integration**: n=6 free also ratiorow control + battery BMS workfieldization. battery simple allcircle anira ratiorow computt of partial .
+- **thermal runaway 0 ratiorowfield**: solid electrolyte + φ=2 dual safetydeviceas  alsocore upperpub drone izationre- orghigh circlethousand block. regulation chapterwall noyouadvanceall.
 
-## §2 COMPARE (현재 vs HEXA-BATTERY)
+## §2 COMPARE (current vs HEXA-BATTERY)
 
-### 성능 비교 ASCII 막대 (드론/e-모빌리티 스케일)
+### Performance comparison ASCII bars (drone/e-mobility scale)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [에너지 밀도 Wh/kg]                                                     │
-│  현재 SOTA (Li-Po)  ████████████░░░░░░░░░░░░░░░░░░░░   250 Wh/kg       │
+│  [energy density Wh/kg]                                                     │
+│  current SOTA (Li-Po)  ████████████░░░░░░░░░░░░░░░░░░░░   250 Wh/kg       │
 │  HEXA-BATTERY       ████████████████████████████████   600 Wh/kg       │
 │                                                                          │
-│  [방전율 C-rate]                                                         │
-│  현재 SOTA          ████████░░░░░░░░░░░░░░░░░░░░░░░░   5C              │
+│  [dischargerate C-rate]                                                         │
+│  current SOTA          ████████░░░░░░░░░░░░░░░░░░░░░░░░   5C              │
 │  HEXA-BATTERY       ████████████████████████████████   12C (σ=12)      │
 │                                                                          │
-│  [사이클 수명]                                                           │
-│  현재 SOTA          ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░   500 사이클      │
-│  HEXA-BATTERY       ████████████████████████████████   4,800 사이클    │
+│  [cycle life]                                                           │
+│  current SOTA          ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░   500 cycles      │
+│  HEXA-BATTERY       ████████████████████████████████   4,800 cycles    │
 │                                                                          │
-│  [팩 중량 (2 kWh 기준)]                                                  │
-│  현재 SOTA          ████████████████████████████████   8 kg             │
+│  [pack mid amount (2 kWh basis)]                                                  │
+│  current SOTA          ████████████████████████████████   8 kg             │
 │  HEXA-BATTERY       ████████████░░░░░░░░░░░░░░░░░░░░   3.3 kg          │
 │                                                                          │
-│  [충전 시간 (80%)]                                                       │
-│  현재 SOTA          ████████████████████████████████   45분             │
-│  HEXA-BATTERY       ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   n=6분           │
+│  [charging time (80%)]                                                       │
+│  current SOTA          ████████████████████████████████   45 min             │
+│  HEXA-BATTERY       ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   n=6 min           │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 지표 비교표
+### Core metric comparison table
 
-| 지표 | 현재 SOTA | HEXA-BATTERY | 향상비 |
+| metric | current SOTA | HEXA-BATTERY | improvement ratio |
 |------|-----------|-------------|--------|
-| 에너지 밀도 | 250 Wh/kg (Li-Po) | 600 Wh/kg | ×2.4 (σ/sopfr=12/5) |
-| 방전율 | 5C | 12C | ×2.4 (σ=12 기반) |
-| 사이클 수명 | 500 사이클 | 4,800 사이클 | ×9.6 (σ·τ/sopfr) |
-| 팩 중량 (2 kWh) | 8 kg | 3.3 kg | ×0.42 (φ/τ+1/σ 경량비) |
-| 충전 시간 (80%) | 45분 | 6분 | ×7.5 (45/n=6) |
-| 비행시간 | 12분 | 24분 | ×2 (J₂=24) |
-| 열폭주 확률 | 10⁻⁵/셀·년 | 0 | R(6)-1=0 |
-| BMS 채널 | 독립 | 6-DOF 통합 | n=6 축 통합 |
+| energy density | 250 Wh/kg (Li-Po) | 600 Wh/kg | ×2.4 (σ/sopfr=12/5) |
+| dischargerate | 5C | 12C | ×2.4 (σ=12 basis) |
+| cycle life | 500 cycles | 4,800 cycles | ×9.6 (σ·τ/sopfr) |
+| pack mid amount (2 kWh) | 8 kg | 3.3 kg | ×0.42 (φ/τ+1/σ lightweightratio) |
+| charging time (80%) | 45 min | 6 min | ×7.5 (45/n=6) |
+| ratiorowtime | 12 min | 24 min | ×2 (J₂=24) |
+| thermal runaway probability | 10⁻⁵/cell·yr | 0 | R(6)-1=0 |
+| BMS channel | independent | 6-DOF integration | n=6 axis integration |
 
-## §3 n=6 파라미터 매핑 (v2 확장 — 16개)
+## §3 n=6 parameter mapping (v2 extension — 16pieces)
 
-| # | 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| # | parameter | value | n=6 equation | rationale | verdict |
 |---|---------|-----|---------|------|------|
-| 1 | 셀 직렬 수 | 4S | τ(6) = 4 | 약수 개수. 4S×3.7V=14.8V 표준 드론 전압 (DJI TB50 = 4S, 14.4V) | EXACT |
-| 2 | 비행 자유도 | 6-DOF | n = 6 | SE(3) 차원 = 병진 3 + 회전 3. 드론 6축 자세제어 표준 | EXACT |
-| 3 | 최대 방전율 | 12C | σ(6) = 12 | 약수 합. 12C × 2Ah = 24A 순간출력 = 드론 호버링 전류 | EXACT |
-| 4 | 이중 안전장치 | 2중 | φ(6) = 2 | 최소 소인수. BMS + 물리적 CID 이중 보호 (UL 2271 적합) | EXACT |
-| 5 | 비행시간 | 24분 | J₂ = 2σ = 24 | Jordan 함수. DJI Air 3 최대 비행시간 = 25분 (≈24) | EXACT |
-| 6 | 모듈 유닛 | 6셀 | n = 6 | 완전수. 6셀 = 2S3P 또는 3S2P 모듈 단위 (18650/21700 기준) | EXACT |
-| 7 | 소인수 합 공정단계 | 5단계 | sopfr(6) = 5 | 2+3. 혼합→코팅→건조→조립→화성 5단계 드론팩 공정 | EXACT |
-| 8 | 셀 밸런싱 임계 | 10 mV | σ-φ = 10 | 12-2=10. ±10 mV 편차 내 밸런싱 = 업계 표준 (TI BQ76940) | EXACT |
-| 9 | BMS 응답시간 | 1 ms | μ(6) = 1 | Mobius 함수. 1 ms BMS 인터럽트 = 실시간 ESC 제어 | EXACT |
-| 10 | 열관리 채널 | 48 W 방열 | σ·τ = 48 | 12×4=48. 48 W 방열 = 2 kWh 팩 12C 방전 시 발열량 적합 | EXACT |
-| 11 | 이집트 분수 충전분할 | 1/2+1/3+1/6=1 | Egyptian fraction | 충전 CC 50% + CV 33% + trickle 17% = 100%. 6의 약수 역수 합 = 완전수 정의 | EXACT |
-| 12 | 2번째 완전수 | P₂=28 | P₂ = 2¹(2²-1) = 28 | 드론 팩 정격전압 28V 급 (7S 산업용 = 25.9V ≈ 28V). 산업드론 표준 | EXACT |
-| 13 | R(6) 완전수 비율 | 1 | R(6) = σ·φ/(n·τ) = 12×2/(6×4) = 1 | R=1 ⟺ 완전수. 열폭주 전파 확률 R-1=0. 시스템 완전 균형 상태 | EXACT |
-| 14 | Carmichael 함수 | 2 | λ(6) = 2 | lcm(λ(2),λ(3))=lcm(1,2)=2. φ=2 이중 보호 주기와 일치. 2중 리던던시 | EXACT |
-| 15 | 핵심 정리 | σ·φ=n·τ iff n=6 | σ(n)·φ(n)=n·τ(n) | 12×2=6×4=24. n≥2에서 등호 성립 유일수. 3개 독립증명 완료 | EXACT |
-| 16 | 비행모드 수 | 4모드 | τ(6) = 4 | IDLE/CRUISE/BURST/EMERGENCY. DJI 드론 4단 비행 모드와 일치 | EXACT |
+| 1 | cell series several | 4S | τ(6) = 4 | divisor count. 4S×3.7V=14.8V standard drone voltage (DJI TB50 = 4S, 14.4V) | EXACT |
+| 2 | ratiorow free also | 6-DOF | n = 6 | SE(3) dimension = bottleadvance 3 +  timeall 3. drone 6axis posturecontrol standard | EXACT |
+| 3 | maximum dischargerate | 12C | σ(6) = 12 | divisor sum. 12C × 2Ah = 24A instantoutput = drone protectburring current | EXACT |
+| 4 | dual safetydevice | 2mid | φ(6) = 2 | minimum prime factor. BMS + physical CID dual protection (UL 2271 suitable) | EXACT |
+| 5 | ratiorowtime | 24 min | J₂ = 2σ = 24 | Jordan function. DJI Air 3 maximum ratiorowtime = 25 min (≈24) | EXACT |
+| 6 | module unit | 6cell | n = 6 | perfect number. 6cell = 2S3P or 3S2P module unit (18650/21700 basis) | EXACT |
+| 7 | prime factor sum processstep | 5step | sopfr(6) = 5 | 2+3. mixing→coating→drying→assembly→ization-ness 5step dronepack process | EXACT |
+| 8 | cell balancing critical | 10 mV | σ-φ = 10 | 12-2=10. ±10 mV deviation inner balancing = industry standard (TI BQ76940) | EXACT |
+| 9 | BMS responsetime | 1 ms | μ(6) = 1 | Mobius function. 1 ms BMS istlumpT = real-time ESC control | EXACT |
+| 10 | thermal management channel | 48 W heat radiation | σ·τ = 48 | 12×4=48. 48 W heat radiation = 2 kWh pack 12C discharge  hr emitheat amount suitable | EXACT |
+| 11 | Egyptian fraction charging minwill | 1/2+1/3+1/6=1 | Egyptian fraction | charging CC 50% + CV 33% + trickle 17% = 100%. 6 of divisor reverseseveral sum = perfect number definition | EXACT |
+| 12 | 2nd perfect number | P₂=28 | P₂ = 2¹(2²-1) = 28 | drone pack ratedvoltage 28V class (7S industrial = 25.9V ≈ 28V). industrydrone standard | EXACT |
+| 13 | R(6) perfect-number ratio | 1 | R(6) = σ·φ/(n·τ) = 12×2/(6×4) = 1 | R=1 ⟺ perfect number. thermal runaway allwave probability R-1=0. system complete balance state | EXACT |
+| 14 | Carmichael function | 2 | λ(6) = 2 | lcm(λ(2),λ(3))=lcm(1,2)=2. φ=2 dual protection period and match. 2mid lidandelion hr | EXACT |
+| 15 | Core Theorem | σ·φ=n·τ iff n=6 | σ(n)·φ(n)=n·τ(n) | 12×2=6×4=24. n≥2 in etc.protect established uniquenumber. 3pieces independentproof complete | EXACT |
+| 16 | ratiorowsided several | 4sided | τ(6) = 4 | IDLE/CRUISE/BURST/EMERGENCY. DJI drone 4single ratiorow sided and match | EXACT |
 
-**수론 주석 ①**: τ(6)=4 → 4S 직렬은 드론/e-모빌리티 표준 전압 14.4~14.8V를 정확히 생성. DJI Phantom 4, Mavic 3 모두 4S 구성.
-**수론 주석 ②**: J₂(6)=24 → 24분 비행시간은 현세대 소비자 드론(DJI Air 3: 25분, Mini 4 Pro: 24분)의 실측 비행시간과 일치.
-**수론 주석 ③**: σ·τ=48 → 48 W 방열은 팩 크기 대비 자연대류+히트싱크 냉각 한계와 일치. 드론 프로펠러 wash 강제대류 활용.
-**수론 주석 ④**: 이집트 분수 1/2+1/3+1/6=1 → 완전수 6의 약수 역수 합. CC/CV/trickle 3단계 충전 프로파일의 에너지 분배 비율과 정확 대응.
-**수론 주석 ⑤**: R(6)=σ·φ/(n·τ)=1 → 이 비율이 정확히 1이 되는 유일한 수 n=6. 시스템 에너지 수지 완전 균형을 의미.
-**수론 주석 ⑥**: 핵심 정리 σ(n)·φ(n)=n·τ(n) ⟺ n=6 (n≥2) → 모든 파라미터 간 상호관계의 수학적 필연성을 보장. 3개 독립 증명 완료.
+**number theory  weekstone ①**: τ(6)=4 → 4S series drone/e-mobility standard voltage 14.4~14.8V exactly generate. DJI Phantom 4, Mavic 3 all 4S configuration.
+**number theory  weekstone ②**: J₂(6)=24 → 24 min ratiorowtime presentseiunits consumer drone(DJI Air 3: 25 min, Mini 4 Pro: 24 min) of measured ratiorowtime and match.
+**number theory  weekstone ③**: σ·τ=48 → 48 W heat radiation pack size unitsratio natureunitsclass+heat sink cooling limit and match. drone propeller wash rivercontrolunitsclass utilization.
+**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 → perfect number 6 of divisor reverseseveral sum. CC/CV/trickle 3step charging profile of energy  mintimes ratio and accurate response.
+**number theory  weekstone ⑤**: R(6)=σ·φ/(n·τ)=1 →  ratio exactly 1 be uniqueone several n=6. system energy numbernode complete balance meaning.
+**number theory  weekstone ⑥**: Core Theorem σ(n)·φ(n)=n·τ(n) ⟺ n=6 (n≥2) → all parameter span upperprotectrelation of mathematical necessity-ness guarantee. 3 independent proofs done.
 
-## §4 STRUCT (시스템 구조)
+## §4 STRUCT (System structure)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -89,434 +89,434 @@
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐               │
-│  │  Cell 1  │──│  Cell 2  │──│  Cell 3  │──│  Cell 4  │  4S 직렬      │
+│  │  Cell 1  │──│  Cell 2  │──│  Cell 3  │──│  Cell 4  │  4S series      │
 │  │  3.7V    │  │  3.7V    │  │  3.7V    │  │  3.7V    │  (τ=4)       │
 │  │  21700   │  │  21700   │  │  21700   │  │  21700   │               │
 │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘               │
 │       │             │             │             │                       │
 │  ┌────┴─────────────┴─────────────┴─────────────┴────┐                 │
-│  │            BMS (μ=1 ms 응답, φ=2 이중보호)          │                 │
+│  │            BMS (μ=1 ms response, φ=2 dualprotection)          │                 │
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐        │                 │
-│  │  │ 밸런싱   │  │ 과충전   │  │ 온도감시  │        │                 │
-│  │  │ ±10 mV   │  │ CID+FET  │  │ 6채널    │        │                 │
+│  │  │ balancing   │  │  andcharging   │  │ temperaturemonitor  │        │                 │
+│  │  │ ±10 mV   │  │ CID+FET  │  │ 6channel    │        │                 │
 │  │  │(σ-φ=10)  │  │ (φ=2)    │  │ (n=6)    │        │                 │
 │  │  └──────────┘  └──────────┘  └──────────┘        │                 │
 │  └──────────────────────┬────────────────────────────┘                 │
 │                         │                                               │
 │  ┌──────────────────────┴────────────────────────────┐                 │
-│  │           6-DOF 비행제어 인터페이스 (n=6)            │                 │
+│  │           6-DOF ratiorowcontrol interface (n=6)            │                 │
 │  │  [Roll] [Pitch] [Yaw] [X] [Y] [Z]                │                 │
-│  │   전력 분배: σ=12 채널 모터 ESC 연동                │                 │
+│  │   power distribution: σ=12 channel motor ESC interlock                │                 │
 │  └──────────────────────┬────────────────────────────┘                 │
 │                         │                                               │
 │  ┌──────────────────────┴────────────────────────────┐                 │
-│  │           열관리 시스템 (σ·τ=48 W 방열)              │                 │
-│  │  프로펠러 wash 강제대류 + 히트싱크                    │                 │
+│  │           heatmanagement system (σ·τ=48 W heat radiation)              │                 │
+│  │  propeller wash rivercontrolunitsclass + heat sink                    │                 │
 │  └───────────────────────────────────────────────────┘                 │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## §5 FLOW (에너지 플로우)
+## §5 FLOW (Energy flow)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  충전 플로우                                                             │
+│  charging flow                                                             │
 │                                                                         │
-│  [AC 220V] ──→ [PD 충전기] ──→ [CC/CV 제어] ──→ [4S BMS] ──→ [셀 4직렬]  │
-│                  n=6분         sopfr=5 단계       μ=1 ms      τ=4 셀    │
-│                  80% 충전       충전 프로파일       실시간 제어   14.8V    │
+│  [AC 220V] ──→ [PD chargingphase] ──→ [CC/CV control] ──→ [4S BMS] ──→ [cell 4series]  │
+│                  n=6 min         sopfr=5 step       μ=1 ms      τ=4 cell    │
+│                  80% charging       charging profile       real-time control   14.8V    │
 │                                                                         │
-│  충전 분할 (이집트 분수): 1/2 + 1/3 + 1/6 = 1                            │
-│    Phase 1 (CC): 50% 용량 → 3분 (전체의 1/2)                            │
-│    Phase 2 (CC→CV 전환): 33% 용량 → 2분 (전체의 1/3)                     │
-│    Phase 3 (CV trickle): 17% 용량 → 1분 (전체의 1/6)                     │
-│    합계: 100% = 6분                                                     │
+│  charging  minwill (Egyptian fraction): 1/2 + 1/3 + 1/6 = 1                            │
+│    Phase 1 (CC): 50% Capacity → 3 min (whole of 1/2)                            │
+│    Phase 2 (CC→CV conversion): 33% Capacity → 2 min (whole of 1/3)                     │
+│    Phase 3 (CV trickle): 17% Capacity → 1 min (whole of 1/6)                     │
+│    total: 100% = 6 min                                                     │
 │                                                                         │
 ├─────────────────────────────────────────────────────────────────────────┤
-│  방전 플로우 (비행)                                                      │
+│  discharge flow (ratiorow)                                                      │
 │                                                                         │
-│  [셀 4S] ──→ [BMS] ──→ [ESC ×n] ──→ [모터 ×n] ──→ [프로펠러]             │
-│  14.8V       φ=2       σ=12 채널     6-DOF         양력 생성             │
-│  12C max     이중보호    전력 분배     자세제어       J₂=24분 비행         │
+│  [cell 4S] ──→ [BMS] ──→ [ESC ×n] ──→ [motor ×n] ──→ [propeller]             │
+│  14.8V       φ=2       σ=12 channel     6-DOF         side-power generate             │
+│  12C max     dualprotection    power distribution     posturecontrol       J₂=24 min ratiorow         │
 │     │                      │                                            │
 │     │         ┌─────────────┘                                            │
 │     ▼         ▼                                                          │
-│  [열관리] ◀── [센서 6채널]                                                │
-│  48 W 방열    온도/전압/전류/가속도/자이로/기압                              │
-│  (σ·τ=48)    (n=6 센서)                                                  │
+│  [thermal management] ◀── [sensor 6channel]                                                │
+│  48 W heat radiation    temperature/voltage/current/acceleration also/ruleras/phasepress                              │
+│  (σ·τ=48)    (n=6 sensor)                                                  │
 │                                                                         │
 ├─────────────────────────────────────────────────────────────────────────┤
-│  비상 플로우                                                             │
+│  ratioupper flow                                                             │
 │                                                                         │
-│  [이상 감지] ──→ [φ=2 이중차단] ──→ [sopfr=5% 최소전력] ──→ [안전착륙]     │
-│  σ-φ=10 mV       BMS+물리 CID       비상 모드              자동 RTH      │
-│  편차 임계         1 ms 응답          n=6분 복구              GPS 귀환     │
+│  [abnormal detection] ──→ [φ=2 dualblock] ──→ [sopfr=5% minimumpower] ──→ [safetyattach-off]     │
+│  σ-φ=10 mV       BMS+waterli CID       ratioupper sided              automatic RTH      │
+│  deviation critical         1 ms response          n=6 min recovery              GPS earring     │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 동작 모드 4가지 (τ=4 모드)
+### operation sided 4 kinds (τ=4 sided)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: IDLE (지상 대기)                  │
-│  소비: μ=1 W (BMS 자체 진단)               │
-│  원리: 셀 밸런싱 + 온도 모니터링             │
-│  용도: 충전 완료 후 이륙 대기                │
+│  MODE 1: IDLE (nodeupper standby)                  │
+│  consumption: μ=1 W (BMS itself diagnose)               │
+│  principle: cell balancing + temperature monitoring             │
+│  Use: charging complete after takeoff standby                │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 2: CRUISE (순항 비행)                │
-│  소비: σ=12 A (정격 비행 전류)              │
-│  원리: 6-DOF 자세 안정 + 최적 전력 배분      │
-│  용도: 배송/촬영/순찰 정상 비행              │
+│  MODE 2: CRUISE (pureclause ratiorow)                │
+│  consumption: σ=12 A (rated ratiorow current)              │
+│  principle: 6-DOF posture stable + optimal power allocation      │
+│  Use: delivery/shootzero/purepat normal ratiorow              │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 3: BURST (급기동)                    │
-│  소비: 12C 방전 (σ=12 배율)                │
-│  원리: 순간 최대출력 τ=4 셀 전부 풀방전       │
-│  용도: 급상승/급회피/강풍 돌파                │
+│  MODE 3: BURST (classphaseaction)                    │
+│  consumption: 12C discharge (σ=12 magnification)                │
+│  principle: instant maximumoutput τ=4 cell allpart releasedischarge       │
+│  Use: classrise/class timeexposure/riverwind breakthrough-pattern                │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 4: EMERGENCY (비상 귀환)              │
-│  소비: sopfr=5 W (최소 비행 전력)           │
-│  원리: φ=2 이중 안전 + 자동 RTH              │
-│  용도: 저전압/이상 감지 시 안전 착륙          │
+│  MODE 4: EMERGENCY (ratioupper earring)              │
+│  consumption: sopfr=5 W (minimum ratiorow power)           │
+│  principle: φ=2 dual safety + automatic RTH              │
+│  Use: lowvoltage/abnormal detection  hr safety attach-off          │
 └──────────────────────────────────────────┘
 ```
 
-## §6 제조사 매핑
+## §6 Manufacturer mapping
 
-| 제조사 | 국적 | 대표 제품 | 스케일 적합 셀 | HEXA 적용 포인트 |
+| manufacturer | nationenemy | unitstable product | scale suitable cell | HEXA apply wrapisT |
 |--------|------|----------|---------------|-----------------|
-| Amperex (ATL) | 중국 | 드론용 고방전 Li-Po | 고방전 파우치 셀 12C+ | σ=12 방전율 달성 핵심 공급사 (DJI 1차 벤더) |
-| Molicel | 캐나다 | P42A (21700, 4200mAh, 45A) | 21700 고출력 | τ=4S 구성 시 14.8V/45A = 666W 피크. 드론 모터 구동 최적 |
-| Samsung SDI | 한국 | INR21700-40T (4000mAh, 35A) | 21700 밸런스형 | 에너지/출력 균형. e-스쿠터/e-바이크 메인 셀 |
-| EVE Energy | 중국 | INR21700-50E (5000mAh) | 21700 고용량 | J₂=24분 비행시간 확보용 고용량 셀 |
-| XTAR | 중국 | 드론 스마트 충전기 | BMS 통합 충전 | n=6분 급속충전 프로파일 구현 |
-| Grepow | 중국 | 저온 Li-Po 시리즈 | 특수환경 드론팩 | -40도C 동작. 배송 드론 전천후 운용 |
+| Amperex (ATL) | China | droneuse highdischarge Li-Po | highdischarge pouch cell 12C+ | σ=12 dischargerate achieve core suppliers (DJI 1diff vendor) |
+| Molicel | cache orall | P42A (21700, 4200mAh, 45A) | 21700 highoutput | τ=4S configuration  hr 14.8V/45A = 666W peak. drone motor drive optimal |
+| Samsung SDI | Korea | INR21700-40T (4000mAh, 35A) | 21700 balanstype | energy/output balance. e-scooter/e-bike main cell |
+| EVE Energy | China | INR21700-50E (5000mAh) | 21700 highCapacity | J₂=24 min ratiorowtime secureuse highCapacity cell |
+| XTAR | China | drone sendT chargingphase | BMS integration charging | n=6 min classinsidecharging profile implementation |
+| Grepow | China | low temp Li-Po  hrliz | specialringpath dronepack | -40 alsoC operation. delivery drone allthousandafter operation |
 
-### 실제 적용 사례
+### actual apply case
 
-| 제품 | 배터리 구성 | 용량 | n=6 일치도 |
+| product | battery configuration | Capacity | n=6 match also |
 |------|-----------|------|-----------|
-| DJI Mavic 3 | 4S1P Li-Po | 77 Wh (5000mAh) | τ=4S 완전일치 |
-| DJI Air 3 | 4S1P Li-Po | 47.6 Wh | 비행시간 25분 ≈ J₂=24 |
-| Lime Gen4 e-스쿠터 | 교체식 팩 | 1.0 kWh | 스케일 범위 내 |
-| VanMoof S5 e-바이크 | 통합형 | 487 Wh | sopfr=5 공정 단계 적합 |
-| Segway Ninebot Max | 내장형 | 551 Wh | 4S 다직렬 구성 |
+| DJI Mavic 3 | 4S1P Li-Po | 77 Wh (5000mAh) | τ=4S completematch |
+| DJI Air 3 | 4S1P Li-Po | 47.6 Wh | ratiorowtime 25 min ≈ J₂=24 |
+| Lime Gen4 e-scooter | replacementeq pack | 1.0 kWh | scale range inner |
+| VanMoof S5 e-bike | integrationtype | 487 Wh | sopfr=5 process steps suitable |
+| Segway Ninebot Max | innerchaptertype | 551 Wh | 4S allseries configuration |
 
-## §7 물리한계 (Impossibility Theorems)
+## §7 Physical limits (Impossibility Theorems)
 
-### 정리 1: 비에너지 밀도-방전율 트레이드오프 한계
+### theorem 1: specific energy density-dischargerate tradeoff limit
 
 ```
-정리: 단일 Li-ion 전극 재료에서 비에너지(Wh/kg)와 비출력(W/kg)의 곱은
-      이론 상한 E_max × P_max ≤ K_mat (재료 상수) 에 의해 제한된다.
+Theorem: single Li-ion electrode material in specific energy(Wh/kg) and ratiooutput(W/kg) of product
+      theory upper bound E_max × P_max ≤ K_mat (material constant) in  ofapply restriction.
 
-증명 골격:
-  전극 두께 ℓ 증가 → 에너지 ∝ ℓ 증가, 그러나 이온 확산 시간 ∝ ℓ² 증가
-  → 출력 ∝ 1/ℓ 감소. E × P ∝ ℓ × (1/ℓ) = const.
+proof valleyrank:
+  electrode thickness ℓ increase → energy ∝ ℓ increase, however ion diffusion time ∝ ℓ² increase
+  → output ∝ 1/ℓ decrease. E × P ∝ ℓ × (1/ℓ) = const.
   
-n=6 해결:
-  CN=6 고체전해질 격자가 이온 확산 경로를 3차원 6방향으로 분산
-  → 유효 확산 거리 ℓ_eff = ℓ/√n = ℓ/√6 으로 감소
-  → E × P 상한이 n=6 배 상향: K_mat × 6
+n=6 resolve:
+  CN=6 solid electrolyte lattice ion diffusion path 3dimension 6in direction variance
+  → effective diffusion distance ℓ_eff = ℓ/√n = ℓ/√6 as decrease
+  → E × P upper bound n=6 times upward: K_mat × 6
   
-판정: EXACT — 격자 기하학에서 CN=6 증명. NMC 811 단결정 실험으로 검증 가능.
+verdict: EXACT — lattice geometryology in CN=6 proof. NMC 811 monocrystalline experimentas verify possible.
 ```
 
-### 정리 2: 비행체 에너지-중량비 Breguet 한계
+### theorem 2: ratiorowfield energy-mid amountratio Breguet limit
 
 ```
-정리: 프로펠러 구동 비행체의 항속시간 T는 Breguet 방정식에 의해
-      T = (η/g) × (E_batt/M_total) × (L/D) 로 제한된다.
-      배터리 비중이 M_batt/M_total > 1/2 이면 수확체감 진입.
+Theorem: propeller drive ratiorowfield of clauseinsidetime T Breguet equationin  ofapply
+      T = (η/g) × (E_batt/M_total) × (L/D) as restriction.
+      battery weight M_batt/M_total > 1/2 face numbersurefieldreduce advanceenter.
 
-증명 골격:
+proof valleyrank:
   M_total = M_frame + M_payload + M_batt
-  M_batt 증가 → E_batt 증가이나 M_total도 증가
-  dT/dM_batt = 0 인 최적점: M_batt/M_total = 1 - (M_frame+M_payload)/M_total
-  실용 드론에서 최적 배터리 비중 ≈ 40~50%
+  M_batt increase → E_batt increaseor M_total also increase
+  dT/dM_batt = 0 is optimalpoint: M_batt/M_total = 1 - (M_frame+M_payload)/M_total
+  practical drone in optimal battery weight ≈ 40~50%
 
-n=6 해결:
-  에너지 밀도 ×2.4 (σ/sopfr=12/5) → 동일 에너지에 M_batt ×0.42 감소
-  → 최적 비중 도달 전에 목표 비행시간 J₂=24분 달성
-  → Breguet 한계 내에서 τ=4S 팩 중량 <5 kg 실현
+n=6 resolve:
+  energy density ×2.4 (σ/sopfr=12/5) → same energyin M_batt ×0.42 decrease
+  → optimal weight reach before target ratiorowtime J₂=24 min achieve
+  → Breguet limit inner in τ=4S pack mid amount <5 kg realize
 
-판정: EXACT — Breguet 방정식은 공기역학 기본 원리. 밀도 향상비 σ/sopfr은 수론에서 유도.
+verdict: EXACT — Breguet equation airreverseology basic principle. density improvement ratio σ/sopfr number theory in have also.
 ```
 
-### 정리 3: 열폭주 전파 불가능성
+### theorem 3: thermal runaway allwave impossibility
 
 ```
-정리: 인접 셀 간 열전달률 q가 임계값 q_c 미만이면 단일 셀 열폭주가
-      팩 전체로 전파되지 않는다. q < q_c ⟺ 셀 간 열저항 R_th > R_c.
+Theorem: adjacent cell span heat transferrate q threshold q_c less thanface single cell thermal runaway
+      pack wholeas allwavebenode notall. q < q_c ⟺ cell span heatresistance R_th > R_c.
 
-n=6 해결:
-  φ=2 이중 격벽 (에어갭 + 세라믹 시트) 삽입
-  → R_th = 2 × R_단일 > R_c (φ=2 이중화)
-  τ=4 셀만 직렬 → 전파 경로 최대 3홉 (τ-1=3)
-  σ·τ=48 W 방열로 정상 운전 시 셀 온도 < 45°C 유지
+n=6 resolve:
+  φ=2 dual rankwall (inuhgap + ceramic  hrT) insert
+  → R_th = 2 × R_single > R_c (φ=2 dualization)
+  τ=4 cellonly series → allwave path maximum 3hop (τ-1=3)
+  σ·τ=48 W heat radiationas normal driving  hr cell temperature < 45°C retention
 
-판정: EXACT — UL 2271 열폭주 전파 시험 기준. φ=2 격벽은 물리적 구현 확인.
+verdict: EXACT — UL 2271 thermal runaway allwave  hrrisk basis. φ=2 rankwall physical implementation confirm.
 ```
 
-## §8 검증 요약
+## §8 Verification summary
 
-| 항목 | 결과 |
+| item | result |
 |------|------|
-| τ=4S 전압 | EXACT — 4×3.7V=14.8V, DJI 드론 표준 전압 14.4V와 ±3% 이내 |
-| n=6 DOF | EXACT — SE(3)=R³×SO(3) 6차원, 드론 자세제어 표준 |
-| σ=12C 방전 | EXACT — ATL/Molicel 고방전 셀 12C 이상 검증 |
-| J₂=24분 비행 | EXACT — DJI Air 3 실측 25분, Mini 4 Pro 실측 24분 |
-| φ=2 이중보호 | EXACT — BMS+CID 이중 차단 (UL 2271 필수 요건) |
-| σ·τ=48W 방열 | EXACT — 2 kWh 팩 12C 방전 시 발열 ≈ 50W (48 근사) |
-| sopfr=5 공정 | EXACT — Li-Po 파우치 셀 5단계 제조 (혼합→코팅→건조→조립→화성) |
-| σ-φ=10mV 밸런싱 | EXACT — TI BQ76940 밸런싱 임계 기본값 10 mV |
-| μ=1ms BMS 응답 | EXACT — ESC PWM 주기 1~2 ms, BMS 인터럽트 1 ms 동기화 |
-| 열폭주 전파 0 | EXACT — φ=2 이중격벽 + τ-1=3 최대 전파 경로, R(6)-1=0 |
-| 핵심 정리 일치 | EXACT — σ(n)·φ(n)=n·τ(n) ⟺ n=6: 12×2=6×4=24 |
-| 이집트 분수 | EXACT — 1/2+1/3+1/6=1: 충전 분할율 (50%+33%+17%=100%) |
-| R(6)=1 완전균형 | EXACT — σ·φ/(n·τ)=12×2/(6×4)=24/24=1 |
-| P₂=28V 산업급 | EXACT — 7S 산업 드론 25.9V ≈ 28V (2번째 완전수) |
-| λ(6)=2 이중주기 | EXACT — Carmichael 함수 λ(6)=2, φ=2 이중 리던던시와 일치 |
+| τ=4S voltage | EXACT — 4×3.7V=14.8V, DJI drone standard voltage 14.4V and ±3% inner |
+| n=6 DOF | EXACT — SE(3)=R³×SO(3) 6dimension, drone posturecontrol standard |
+| σ=12C discharge | EXACT — ATL/Molicel highdischarge cell 12C abnormal verify |
+| J₂=24 min ratiorow | EXACT — DJI Air 3 measured 25 min, Mini 4 Pro measured 24 min |
+| φ=2 dualprotection | EXACT — BMS+CID dual block (UL 2271 required please items) |
+| σ·τ=48W heat radiation | EXACT — 2 kWh pack 12C discharge  hr emitheat ≈ 50W (48 approximate) |
+| sopfr=5 process | EXACT — Li-Po pouch cell 5step manufacturing (mixing→coating→drying→assembly→ization-ness) |
+| σ-φ=10mV balancing | EXACT — TI BQ76940 balancing critical default 10 mV |
+| μ=1ms BMS response | EXACT — ESC PWM period 1~2 ms, BMS istlumpT 1 ms synchronousization |
+| thermal runaway allwave 0 | EXACT — φ=2 dualrankwall + τ-1=3 maximum allwave path, R(6)-1=0 |
+| Core Theorem match | EXACT — σ(n)·φ(n)=n·τ(n) ⟺ n=6: 12×2=6×4=24 |
+| Egyptian fraction | EXACT — 1/2+1/3+1/6=1: charging  minwillrate (50%+33%+17%=100%) |
+| R(6)=1 completebalance | EXACT — σ·φ/(n·τ)=12×2/(6×4)=24/24=1 |
+| P₂=28V industryclass | EXACT — 7S industry drone 25.9V ≈ 28V (2nd perfect number) |
+| λ(6)=2 dualperiod | EXACT — Carmichael function λ(6)=2, φ=2 dual lidandelion hr and match |
 
-## §9 DSE 전수탐색 (v2 신규)
+## §9 DSE exhaustive search (v2 new)
 
-### 설계 공간 정의
+### design space definition
 
-| 축 | 변수 | 수준 | 상세 |
+| axis | variable | level | detail |
 |----|------|------|------|
-| A | 셀 화학 | 4 | Li-Po / NMC811 / LFP / 고체전해질(CN=6) |
-| B | 팩 구성 | 6 | 2S3P / 3S2P / 4S1P / 4S2P / 6S1P / 6S2P |
-| C | 냉각 방식 | 5 | 자연대류 / 히트싱크 / 프로펠러wash / 액냉 / 상변화재료 |
-| D | BMS 등급 | 3 | 기본(1채널) / 중급(φ=2) / 고급(6채널 n=6) |
-| E | 외장 재질 | 2 | ABS 플라스틱 / 카본파이버 |
+| A | cell izationology | 4 | Li-Po / NMC811 / LFP / solid electrolyte(CN=6) |
+| B | pack configuration | 6 | 2S3P / 3S2P / 4S1P / 4S2P / 6S1P / 6S2P |
+| C | cooling method | 5 | natureunitsclass / heat sink / propellerwash / liquidcool / phase-changematerial |
+| D | BMS grade | 3 | basic(1channel) / midclass(φ=2) / advanced(6channel n=6) |
+| E | housing re-quality | 2 | ABS plrastic / carthiswavebur |
 
-### 전수 조합
+### Exhaustive combinations
 
 ```
-총 조합: 4 × 6 × 5 × 3 × 2 = 720
+total combinations: 4 × 6 × 5 × 3 × 2 = 720
 
-n=6 필터 적용:
-  [F1] 셀 구성에 6 포함 (6셀 모듈 또는 6S 구성): 720 × 4/6 = 480 제외 → 240 잔존
-  [F2] σ=12C 방전 가능 화학 (Li-Po 또는 고체전해질): 240 × 2/4 = 120
-  [F3] φ=2 이상 BMS 등급: 120 × 2/3 = 80
-  [F4] τ=4 직렬 구성 포함: 80 × 3/4 = 60
+n=6 filter apply:
+  [F1] cell configurationin 6 including (6cell module or 6S configuration): 720 × 4/6 = 480 exclude → 240 cupexist
+  [F2] σ=12C discharge possible izationology (Li-Po or solid electrolyte): 240 × 2/4 = 120
+  [F3] φ=2 abnormal BMS grade: 120 × 2/3 = 80
+  [F4] τ=4 series configuration include: 80 × 3/4 = 60
 
-n=6 적합 조합: 60건 (720의 1/12 = 1/σ)
+n=6 suitable combination: 60 items (720 of 1/12 = 1/σ)
 ```
 
-### 상위 5건 (n=6 점수 순)
+### top 5 (n=6 pointseveral pure)
 
-| 순위 | 셀화학 | 팩구성 | 냉각 | BMS | 외장 | n=6점수 | 비고 |
+| rank | cellizationology | packconfiguration | cooling | BMS | housing | n=6pointseveral | ratiohigh |
 |------|--------|--------|------|-----|------|---------|------|
-| 1 | 고체전해질 | 4S2P(6셀=n) | 프로펠러wash | 6채널 | 카본 | 24/24 | **최적해** — 모든 n=6 지표 완전 적합 |
-| 2 | 고체전해질 | 6S1P(6셀=n) | 프로펠러wash | 6채널 | 카본 | 23/24 | P₂=28V 산업급 드론 최적 |
-| 3 | 고체전해질 | 4S2P(6셀=n) | 액냉 | φ=2 | 카본 | 21/24 | 고출력 연속 운전 최적 |
-| 4 | Li-Po | 4S2P(6셀=n) | 프로펠러wash | 6채널 | 카본 | 20/24 | 현행 기술 즉시 적용 가능 |
-| 5 | NMC811 | 3S2P(6셀=n) | 히트싱크 | φ=2 | ABS | 18/24 | 저비용 e-스쿠터 최적 |
+| 1 | solid electrolyte | 4S2P(6cell=n) | propellerwash | 6channel | carthis | 24/24 | **optimal solution** — all n=6 metric complete suitable |
+| 2 | solid electrolyte | 6S1P(6cell=n) | propellerwash | 6channel | carthis | 23/24 | P₂=28V industryclass drone optimal |
+| 3 | solid electrolyte | 4S2P(6cell=n) | liquidcool | φ=2 | carthis | 21/24 | highoutput continuous driving optimal |
+| 4 | Li-Po | 4S2P(6cell=n) | propellerwash | 6channel | carthis | 20/24 | presentrow technology immediately applicable |
+| 5 | NMC811 | 3S2P(6cell=n) | heat sink | φ=2 | ABS | 18/24 | lowcost e-scooter optimal |
 
-### ASCII Pareto 전면도 (에너지밀도 vs 비용)
+### ASCII Pareto allface also (energy density vs cost)
 
 ```
-에너지밀도
+energy density
 (Wh/kg)
-  600 ┤                                          ★ #1 고체+4S2P+wash
-      │                                    ★ #2 고체+6S1P
-  500 ┤                              ★ #3 고체+4S2P+액냉
+  600 ┤                                          ★ #1 solid+4S2P+wash
+      │                                    ★ #2 solid+6S1P
+  500 ┤                              ★ #3 solid+4S2P+liquidcool
       │
   400 ┤                  ★ #4 Li-Po+4S2P+wash
       │
-  300 ┤        ★ #5 NMC+3S2P+히트싱크
+  300 ┤        ★ #5 NMC+3S2P+heat sink
       │  ·  ·  ·  ·  ·  ·  ·
-  250 ┤  (현행 SOTA 한계선)
+  250 ┤  (presentrow SOTA limitline)
       │
   200 ┤
-      └──┬──────┬──────┬──────┬──────┬──────┬──→ 비용 ($/kWh)
+      └──┬──────┬──────┬──────┬──────┬──────┬──→ cost ($/kWh)
         100    200    300    400    500    600
 
-Pareto 최적: #1, #4, #5 (비용-성능 프론티어)
-n=6 최적해: #1 (σ·φ=n·τ=24 점수 만점)
+Pareto optimal: #1, #4, #5 (cost-performance prfrontier)
+n=6 optimal solution: #1 (σ·φ=n·τ=24 pointseveral onlypoint)
 ```
 
-## §10 BT 돌파 노드 (v2 신규)
+## §10 BT breakthrough nodes (v2 new)
 
-### BT-80: 고에너지밀도 경량 팩
+### BT-80: highenergy density lightweight pack
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  BT-80: 고에너지밀도 경량 팩 돌파                                  │
+│  BT-80: highenergy density lightweight pack breakthrough-pattern                                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  목표: 600 Wh/kg × 3.3 kg = 2 kWh 팩, σ/sopfr=12/5=2.4× 향상  │
+│  target: 600 Wh/kg × 3.3 kg = 2 kWh pack, σ/sopfr=12/5=2.4× improvement  │
 │                                                                 │
-│  n=6 근거:                                                      │
-│    - CN=6 고체전해질 → 이온 확산 6방향 분산                         │
-│    - τ=4S 최소 직렬 → 구조 부재(busbar/하우징) 최소화              │
-│    - 카본파이버 외장 → 팩 구조 중량 <0.5 kg                        │
+│  n=6 Rationale:                                                      │
+│    - CN=6 solid electrolyte → ion diffusion 6direction variance                         │
+│    - τ=4S minimum series → structure absence(busbar/housing) minimize              │
+│    - carthiswavebur housing → pack structure mid amount <0.5 kg                        │
 │                                                                 │
-│  돌파 공식: E_pack = n × (σ/sopfr) × E_cell                     │
-│            = 6 × 2.4 × 250 = 3,600 Wh (팩 레벨)                │
-│            실용: 2 kWh / 3.3 kg = 606 Wh/kg                     │
+│  breakthrough-pattern formula: E_pack = n × (σ/sopfr) × E_cell                     │
+│            = 6 × 2.4 × 250 = 3,600 Wh (pack level)                │
+│            practical: 2 kWh / 3.3 kg = 606 Wh/kg                     │
 │                                                                 │
-│  검증: DJI Matrice 350 팩(5.88 kg, 274 Wh/kg) 대비 2.2× 경량화  │
-│  판정: EXACT                                                     │
+│  verify: DJI Matrice 350 pack(5.88 kg, 274 Wh/kg) unitsratio 2.2× lightweightization  │
+│  verdict: EXACT                                                     │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### BT-83: 6-DOF 자세제어 전력분배
+### BT-83: 6-DOF posturecontrol power mintimes
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  BT-83: 6-DOF 자세제어 전력분배 돌파                               │
+│  BT-83: 6-DOF posturecontrol power mintimes breakthrough-pattern                               │
 ├─────────────────────────────────────────────────────────────────┤
-│  목표: BMS-ESC 통합으로 n=6 자유도 실시간 전력 최적 분배           │
+│  target: BMS-ESC integrationas n=6 free also real-time power optimal distribution           │
 │                                                                 │
-│  n=6 근거:                                                      │
-│    - n=6 자유도: [Roll, Pitch, Yaw, X, Y, Z]                   │
-│    - σ=12 채널 ESC: 6축 × 2(정역) = 12 제어 채널                │
-│    - μ=1 ms BMS 응답 → 1 kHz 제어 루프 동기화                   │
-│    - λ(6)=2 이중 리던던시 → 모터 1기 실패 시 잔여 5기 재분배       │
+│  n=6 Rationale:                                                      │
+│    - n=6 free also: [Roll, Pitch, Yaw, X, Y, Z]                   │
+│    - σ=12 channel ESC: 6axis × 2(fixedreverse) = 12 control channel                │
+│    - μ=1 ms BMS response → 1 kHz control loop synchronousization                   │
+│    - λ(6)=2 dual lidandelion hr → motor 1phase failure  hr cupand 5phase re- mintimes       │
 │                                                                 │
-│  돌파 공식: P_axis(i) = P_total × w(i) / Σw                    │
-│            w(i) = σ=12 기반 가중치, Σw = σ·φ = 24               │
-│            → 각 축 최대 P_total/2 (=1/φ) 할당 가능               │
+│  breakthrough-pattern formula: P_axis(i) = P_total × w(i) / Σw                    │
+│            w(i) = σ=12 basis weight, Σw = σ·φ = 24               │
+│            → each axis maximum P_total/2 (=1/φ) willper possible               │
 │                                                                 │
-│  검증: PX4 오픈소스 비행제어기 6-DOF 믹서 매트릭스와 구조 일치      │
-│  판정: EXACT                                                     │
+│  verify: PX4 oopensmalls ratiorowcontroller 6-DOF micstanding eachTlics and structure match      │
+│  verdict: EXACT                                                     │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### BT-84: 비행시간 J₂=24분 돌파
+### BT-84: ratiorowtime J₂=24 min breakthrough-pattern
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  BT-84: 비행시간 J₂=24분 돌파                                     │
+│  BT-84: ratiorowtime J₂=24 min breakthrough-pattern                                     │
 ├─────────────────────────────────────────────────────────────────┤
-│  목표: 2 kWh 팩으로 J₂=24분 실비행 시간 달성                      │
+│  target: 2 kWh packas J₂=24 min actualratiorow time achieve                      │
 │                                                                 │
-│  n=6 근거:                                                      │
-│    - J₂(6) = 2σ(6) = 2×12 = 24 (Jordan 토션트 함수)             │
-│    - 비행시간 = E_batt / P_hover                                 │
+│  n=6 Rationale:                                                      │
+│    - J₂(6) = 2σ(6) = 2×12 = 24 (Jordan torsionT function)             │
+│    - ratiorowtime = E_batt / P_hover                                 │
 │    - E_batt = 2,000 Wh, P_hover = 2,000/24×60 ≈ 5,000 W       │
-│    - 실제: DJI Air 3 호버링 전력 ≈ 120W (47.6Wh/25min)          │
-│           스케일업: 2kWh급은 P_hover ≈ 4,800W                    │
-│    - 이집트 분수 비행 분배: CRUISE 1/2 + BURST 1/3 + RTH 1/6    │
+│    - actual: DJI Air 3 protectburring power ≈ 120W (47.6Wh/25min)          │
+│           scaleup: 2kWhclass P_hover ≈ 4,800W                    │
+│    - Egyptian fraction ratiorow  mintimes: CRUISE 1/2 + BURST 1/3 + RTH 1/6    │
 │                                                                 │
-│  돌파 공식: T_flight = J₂ = 2σ = 24분                           │
+│  breakthrough-pattern formula: T_flight = J₂ = 2σ = 24 min                           │
 │            = (E_pack × η_discharge) / P_avg                     │
-│            η_discharge = R(6) = 1 (완전 효율 목표)               │
+│            η_discharge = R(6) = 1 (complete efficiency target)               │
 │                                                                 │
-│  검증: DJI Air 3 실측 25분 ≈ J₂+1, Mini 4 Pro 실측 24분 = J₂   │
-│  판정: EXACT                                                     │
+│  verify: DJI Air 3 measured 25 min ≈ J₂+1, Mini 4 Pro measured 24 min = J₂   │
+│  verdict: EXACT                                                     │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## §11 불가능성 정리 확장 (v2 신규)
+## §11 Impossibility theorem extensions (v2 new)
 
-### 불가능성 정리 I-1: 단일셀 고방전 에너지밀도 동시달성 불가
-
-```
-정리: 단일 Li-ion 셀에서 방전율 C > σ(6)=12 이면서 동시에
-      비에너지 E > 600 Wh/kg 을 달성하는 것은 불가능하다.
-
-증명:
-  고방전 → 두꺼운 집전체 + 낮은 활물질 로딩 필수
-  → 비활성 질량 증가 → E_specific 감소
-  경계: C=12 에서 E ≤ 600 Wh/kg (CN=6 격자 최적화 한계)
-  C>12 → E < 600 × (12/C)^0.5 (제곱근 열화)
-
-n=6 의미: σ=12C 는 에너지밀도 600 Wh/kg 유지 가능한 최대 방전율.
-          이 경계가 정확히 n=6 수론에서 결정된다.
-판정: EXACT
-```
-
-### 불가능성 정리 I-2: τ<4 직렬에서 드론 표준전압 불가
+### Impossibility theorem I-1: single-cell highdischarge energy density simultaneousachieve not possible
 
 ```
-정리: Li-ion 셀 (공칭 3.6~3.7V) 의 직렬 수 s < τ(6)=4 이면
-      드론 표준 전압 범위 12~16V 를 달성할 수 없다.
+Theorem: single Li-ion cell in dischargerate C > σ(6)=12 while simultaneously
+      specific energy E > 600 Wh/kg  achieve thing impossibledoall.
 
-증명:
-  s=1: 3.7V (부족)
-  s=2: 7.4V (부족)
-  s=3: 11.1V (경계 미달 — 12V 이상 필요)
-  s=4: 14.8V ✓ (DJI 표준 14.4V 범위 내)
+proof:
+  highdischarge → thickmove current collector + low active material asding required
+  → inactive mass increase → E_specific decrease
+  boundary: C=12  in E ≤ 600 Wh/kg (CN=6 lattice optimization limit)
+  C>12 → E < 600 × (12/C)^0.5 (squarednear degradation)
+
+n=6 meaning: σ=12C  energy density 600 Wh/kg retention possibleone maximum dischargerate.
+           boundary exactly n=6 number theory in crystal.
+verdict: EXACT
+```
+
+### Impossibility theorem I-2: τ<4 series in drone standardvoltage not possible
+
+```
+Theorem: Li-ion cell (nominal 3.6-3.7V)  of series several s < τ(6)=4 face
+      drone standard voltage range 12~16V  achievecannot.
+
+proof:
+  s=1: 3.7V (lacking)
+  s=2: 7.4V (lacking)
+  s=3: 11.1V (boundary below — 12V abnormal needed)
+  s=4: 14.8V ✓ (DJI standard 14.4V range inner)
   ∴ s_min = τ(6) = 4
 
-n=6 의미: 드론 전압 요구가 τ(6)=4를 물리적으로 강제한다.
-          이보다 적은 셀 수로는 드론 비행이 불가능하다.
-판정: EXACT — 전기화학 기본 전위 + DJI/Autel 전압 사양 기준.
+n=6 meaning: drone voltage required τ(6)=4 physicalas rivercontrol.
+          than enemy cell count as drone ratiorow impossibledoall.
+verdict: EXACT — allphaseizationology basic potential + DJI/Autel voltage spec basis.
 ```
 
-### 불가능성 정리 I-3: 5-DOF 이하 완전 자세제어 불가
+### Impossibility theorem I-3: 5-DOF at most complete posturecontrol not possible
 
 ```
-정리: 강체의 자유 비행에서 독립 제어 자유도 < n=6 이면
-      임의 자세로의 완전 제어가 불가능하다.
+Theorem: riverfield of free ratiorow in independent control free also < n=6 face
+      arbitrary posture to complete control impossibledoall.
 
-증명:
-  SE(3) 군의 차원 = 6 (병진 R³ + 회전 SO(3))
-  제어 입력 차원 < 6 → 접근 불가능 자세 부분공간 존재
-  Lie 대수 조건: dim(controllability Lie algebra) = n = 6 필수
+proof:
+  SE(3) group of dimension = 6 (bottleadvance R³ +  timeall SO(3))
+  control input dimension < 6 → approach impossible posture partspace existence
+  Lie unitsseveral condition: dim(controllability Lie algebra) = n = 6 required
 
-n=6 의미: 드론이 임의 풍향에서 완전 자세제어를 하려면
-          정확히 n=6 독립 채널이 필요. BMS 전력분배도 6채널.
-판정: EXACT — 비선형 제어 이론 (Chow-Rashevskii 정리) 기반.
+n=6 meaning: drone arbitrary windhyang in complete posturecontrol dodifficultface
+          exactly n=6 independent channel needed. BMS power mintimes also 6channel.
+verdict: EXACT — nonlinear control theory (Chow-Rashevskii theorem) basis.
 ```
 
-### 불가능성 정리 I-4: φ<2 단일보호로 FAA 인증 불가
+### Impossibility theorem I-4: φ<2 singleprotectionas FAA certification not possible
 
 ```
-정리: 도심 상공 비행 드론의 배터리 보호 계층 < φ(6)=2 이면
-      FAA Part 107 / EASA 도심 운항 인증을 취득할 수 없다.
+Theorem:  alsocore upperpub ratiorow drone of battery protection layer < φ(6)=2 face
+      FAA Part 107 / EASA  alsocore moveclause certification acquirecannot.
 
-증명:
-  FAA Advisory Circular AC 20-184: 배터리 시스템 최소 2중 보호 요구
-    보호층 1: 전자적 보호 (BMS FET 차단)
-    보호층 2: 물리적 보호 (CID/PTC/벤트)
-  단일 보호 → 단일 고장점(SPOF) → 인증 불가
-  φ(6)=2 → 최소 이중 보호 충족
+proof:
+  FAA Advisory Circular AC 20-184: battery system minimum 2mid protection required
+    protectionlayer 1: electronenemy protection (BMS FET block)
+    protectionlayer 2: physical protection (CID/PTC/benT)
+  single protection → single breakdownpoint(SPOF) → certification not possible
+  φ(6)=2 → minimum dual protection satisfy
 
-n=6 의미: 규제가 요구하는 최소 보호 수준이 정확히 φ(6)=2.
-          단일 보호로는 상업 드론 운항 허가 자체가 불가능하다.
-판정: EXACT — FAA/EASA 규제 요건 직접 참조.
+n=6 meaning: regulation required minimum protection level exactly φ(6)=2.
+          single protection as commercial drone moveclause hu itself impossibledoall.
+verdict: EXACT — FAA/EASA regulation please items direct reference.
 ```
 
-## §12 Cross-DSE 연결 (v2 신규)
+## §12 Cross-DSE links (v2 new)
 
-### 스케일 간 연결
+### scale span connection
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│                        Cross-DSE 연결 맵                              │
+│                        Cross-DSE links map                              │
 │                                                                      │
 │  battery-scale-3          battery-scale-4          battery-scale-6   │
-│  (노트북/태블릿)    ◀──→   (드론/e-모빌리티)   ◀──→   (eVTOL)         │
+│  (laptop/tablet)    ◀──→   (drone/e-mobility)   ◀──→   (eVTOL)         │
 │  30~100 Wh                0.5~5 kWh                50~200 kWh       │
-│  φ=2 듀얼셀               τ=4S 경량팩              σ=12 고방전 확장    │
-│  σ·τ=48W PD              σ=12C 방전               J₂=24분→240분     │
+│  φ=2 dualcell               τ=4S lightweightpack              σ=12 highdischarge extension    │
+│  σ·τ=48W PD              σ=12C discharge               J₂=24 min→240 min     │
 │                                                                      │
-│  공유 파라미터:                                                       │
-│  ├── n=6 (모듈 유닛, 자유도, 완전수)                                   │
-│  ├── σ·τ=48 (충전/방열 전력)                                          │
-│  ├── φ=2 (이중 안전)                                                  │
-│  ├── sopfr=5 (공정 단계)                                              │
-│  └── 핵심 정리: σ·φ=n·τ=24 (전 스케일 불변)                           │
+│  shared parameter:                                                       │
+│  ├── n=6 (module unit, free also, perfect number)                                   │
+│  ├── σ·τ=48 (charging/heat radiation power)                                          │
+│  ├── φ=2 (dual safety)                                                  │
+│  ├── sopfr=5 (process steps)                                              │
+│  └── Core Theorem: σ·φ=n·τ=24 (all scale firechange)                           │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### 도메인 간 연결
+### Cross-domain links
 
-| 연결 도메인 | 공유 파라미터 | 시너지 |
+| link domain | shared parameter |  hrenergy |
 |------------|-------------|--------|
-| battery-scale-3 (포터블) | φ=2 듀얼셀, σ·τ=48W USB-C PD | 드론 지상국 충전기 = 노트북 충전기 공유. PD 48W 통일 |
-| battery-scale-6 (eVTOL) | σ=12C 방전, J₂=24분 비행 | 소형 드론→eVTOL 스케일업. 동일 BMS 아키텍처 ×10 |
-| robotics (로보틱스) | n=6 DOF, 6채널 ESC | 6축 로봇팔 = 6-DOF 드론. 동일 전력분배 로직 |
-| chip (반도체) | μ=1ms 응답, BMS IC | TI BQ76940 → BMS 전용 ASIC. 드론 전용 칩 설계 |
-| display (디스플레이) | 소비전력 관리 | 드론 FPV 디스플레이 전력 최적화. σ=12 전력 배분 |
+| battery-scale-3 (wraptbl) | φ=2 dualcell, σ·τ=48W USB-C PD | drone nodeuppernation chargingphase = laptop chargingphase shared. PD 48W thruwork |
+| battery-scale-6 (eVTOL) | σ=12C discharge, J₂=24 min ratiorow | compact drone→eVTOL scaleup. same BMS architecture ×10 |
+| robotics (robotics) | n=6 DOF, 6channel ESC | 6axis robotarm = 6-DOF drone. same power mintimes asstraight |
+| chip (semiconductor) | μ=1ms response, BMS IC | TI BQ76940 → BMS dedicated ASIC. drone dedicated chip design |
+| display (display) | power consumption manage | drone FPV display power optimization. σ=12 power allocation |
 
-### Cross-DSE 점수표
+### Cross-DSE pointnumbertable
 
 ```
                scale-3  scale-4  scale-6  robotics  chip
@@ -526,23 +526,23 @@ n=6 의미: 규제가 요구하는 최소 보호 수준이 정확히 φ(6)=2.
   robotics     10/24     16/24     8/24       —     14/24
   chip         14/24     12/24    10/24     14/24     —
 
-최고 연결: scale-4 ↔ scale-6 (20/24) — eVTOL 스케일업 경로
-차선 연결: scale-3 ↔ scale-4 (18/24) — 충전 인프라 공유
+top connection: scale-4 ↔ scale-6 (20/24) — eVTOL scaleup path
+diffline connection: scale-3 ↔ scale-4 (18/24) — charging infrastructure shared
 ```
 
-## §13 Python 검증코드 (v2 신규)
+## §13 Python verification code (v2 new)
 
 ```python
 """
-battery-scale-4-drone v2 전수 검증
-stdlib only, 하드코딩 0, assert 전수
+battery-scale-4-drone v2 exhaustive verification
+stdlib only, hardcoding 0, assert exhaustive
 """
 from math import gcd
 from functools import reduce
 
-# ── n=6 수론 함수 (하드코딩 0) ──
+# ── n=6 number theory function (hardcoding 0) ──
 def divisors(n):
-    """n의 약수 리스트"""
+    """n of divisor list"""
     d = []
     for i in range(1, n + 1):
         if n % i == 0:
@@ -550,15 +550,15 @@ def divisors(n):
     return d
 
 def sigma(n):
-    """약수 합 σ(n)"""
+    """divisor sum σ(n)"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수 개수 τ(n)"""
+    """divisor count τ(n)"""
     return len(divisors(n))
 
 def phi(n):
-    """오일러 토션트 φ(n)"""
+    """Euler totient φ(n)"""
     count = 0
     for k in range(1, n + 1):
         if gcd(k, n) == 1:
@@ -566,7 +566,7 @@ def phi(n):
     return count
 
 def sopfr(n):
-    """소인수 합 (중복 포함)"""
+    """prime factor sum (duplicate include)"""
     s = 0
     d = 2
     temp = n
@@ -580,7 +580,7 @@ def sopfr(n):
     return s
 
 def mobius(n):
-    """뫼비우스 함수 μ(n)"""
+    """Mobius function μ(n)"""
     if n == 1:
         return 1
     factors = []
@@ -601,7 +601,7 @@ def mobius(n):
     return (-1) ** len(factors)
 
 def jordan_j2(n):
-    """Jordan 토션트 J₂(n)"""
+    """Jordan torsionT J₂(n)"""
     result = n * n
     temp = n
     d = 2
@@ -616,7 +616,7 @@ def jordan_j2(n):
     return int(round(result))
 
 def carmichael_lambda(n):
-    """Carmichael 함수 λ(n)"""
+    """Carmichael function λ(n)"""
     if n == 1:
         return 1
     factors = {}
@@ -640,120 +640,120 @@ def carmichael_lambda(n):
     return result
 
 def perfect_number(k):
-    """k번째 완전수 (k=1→6, k=2→28)"""
-    # 유클리드-오일러: P_k = 2^(p-1) * (2^p - 1) (메르센 소수)
+    """knth perfect number (k=1→6, k=2→28)"""
+    # havecllid-oworkrun: P_k = 2^(p-1) * (2^p - 1) (mersen decimal)
     mersenne_primes = [2, 3, 5, 7, 13, 17, 19, 31]
     p = mersenne_primes[k - 1]
     return (2 ** (p - 1)) * (2 ** p - 1)
 
-# ── n=6 기본 검증 ──
+# ── n=6 basic verify ──
 N = 6
 
-assert sigma(N) == 12, f"σ(6) = {sigma(N)}, 기대값 12"
-assert tau(N) == 4, f"τ(6) = {tau(N)}, 기대값 4"
-assert phi(N) == 2, f"φ(6) = {phi(N)}, 기대값 2"
-assert sopfr(N) == 5, f"sopfr(6) = {sopfr(N)}, 기대값 5"
-assert mobius(N) == 1, f"μ(6) = {mobius(N)}, 기대값 1"
-assert jordan_j2(N) == 24, f"J₂(6) = {jordan_j2(N)}, 기대값 24"
-assert carmichael_lambda(N) == 2, f"λ(6) = {carmichael_lambda(N)}, 기대값 2"
+assert sigma(N) == 12, f"σ(6) = {sigma(N)}, expected value 12"
+assert tau(N) == 4, f"τ(6) = {tau(N)}, expected value 4"
+assert phi(N) == 2, f"φ(6) = {phi(N)}, expected value 2"
+assert sopfr(N) == 5, f"sopfr(6) = {sopfr(N)}, expected value 5"
+assert mobius(N) == 1, f"μ(6) = {mobius(N)}, expected value 1"
+assert jordan_j2(N) == 24, f"J₂(6) = {jordan_j2(N)}, expected value 24"
+assert carmichael_lambda(N) == 2, f"λ(6) = {carmichael_lambda(N)}, expected value 2"
 
-# ── 핵심 정리: σ(n)·φ(n) = n·τ(n) iff n=6 (n≥2) ──
-assert sigma(N) * phi(N) == N * tau(N), "핵심 정리 실패"
-assert sigma(N) * phi(N) == 24, f"σ·φ = {sigma(N)*phi(N)}, 기대값 24"
-assert N * tau(N) == 24, f"n·τ = {N*tau(N)}, 기대값 24"
+# ── Core Theorem: σ(n)·φ(n) = n·τ(n) iff n=6 (n≥2) ──
+assert sigma(N) * phi(N) == N * tau(N), "Core Theorem failure"
+assert sigma(N) * phi(N) == 24, f"σ·φ = {sigma(N)*phi(N)}, expected value 24"
+assert N * tau(N) == 24, f"n·τ = {N*tau(N)}, expected value 24"
 
-# n=2~1000 범위에서 n=6만 등호 성립 확인
+# n=2~1000 range in n=6only etc.protect established confirm
 for n in range(2, 1001):
     if sigma(n) * phi(n) == n * tau(n):
-        assert n == 6, f"핵심 정리: n={n}에서 등호 성립 (유일해 위반)"
+        assert n == 6, f"Core Theorem: n={n} in etc.protect established (unique solution abovehalf)"
 
-# ── R(6) = σ·φ/(n·τ) = 1 (완전수 비율) ──
+# ── R(6) = σ·φ/(n·τ) = 1 (perfect-number ratio) ──
 R6 = (sigma(N) * phi(N)) / (N * tau(N))
-assert R6 == 1.0, f"R(6) = {R6}, 기대값 1.0"
+assert R6 == 1.0, f"R(6) = {R6}, expected value 1.0"
 
-# ── 이집트 분수: 1/2 + 1/3 + 1/6 = 1 ──
+# ── Egyptian fraction: 1/2 + 1/3 + 1/6 = 1 ──
 from fractions import Fraction
 egyptian = Fraction(1, 2) + Fraction(1, 3) + Fraction(1, 6)
-assert egyptian == 1, f"이집트 분수 합 = {egyptian}, 기대값 1"
+assert egyptian == 1, f"Egyptian fraction sum = {egyptian}, expected value 1"
 
-# ── 완전수 P₁=6, P₂=28 ──
-assert perfect_number(1) == 6, f"P₁ = {perfect_number(1)}, 기대값 6"
-assert perfect_number(2) == 28, f"P₂ = {perfect_number(2)}, 기대값 28"
+# ── perfect number P₁=6, P₂=28 ──
+assert perfect_number(1) == 6, f"P₁ = {perfect_number(1)}, expected value 6"
+assert perfect_number(2) == 28, f"P₂ = {perfect_number(2)}, expected value 28"
 
-# ── 드론 파라미터 검증 (하드코딩 0 — 전부 수론에서 유도) ──
-cell_voltage = 3.7  # V (Li-ion 공칭 — 물리 상수)
+# ── drone parameter verify (hardcoding 0 — allpart number theory in have also) ──
+cell_voltage = 3.7  # V (Li-ion nominal — waterli constant)
 series_count = tau(N)  # τ=4
 pack_voltage = cell_voltage * series_count
-assert 14.0 <= pack_voltage <= 15.0, f"팩 전압 {pack_voltage}V, 드론 표준 14~15V 범위 이탈"
+assert 14.0 <= pack_voltage <= 15.0, f"pack voltage {pack_voltage}V, drone standard 14~15V range escape"
 
 dof = N  # 6-DOF
-assert dof == 6, f"자유도 {dof}, SE(3) 차원 6 불일치"
+assert dof == 6, f"free also {dof}, SE(3) dimension 6 mismatch"
 
 max_c_rate = sigma(N)  # σ=12
-assert max_c_rate == 12, f"방전율 {max_c_rate}C, 기대값 12C"
+assert max_c_rate == 12, f"dischargerate {max_c_rate}C, expected value 12C"
 
 safety_layers = phi(N)  # φ=2
-assert safety_layers == 2, f"안전 계층 {safety_layers}, 기대값 2"
+assert safety_layers == 2, f"safety hierarchy {safety_layers}, expected value 2"
 
 flight_time_min = jordan_j2(N)  # J₂=24
-assert flight_time_min == 24, f"비행시간 {flight_time_min}분, 기대값 24분"
+assert flight_time_min == 24, f"ratiorowtime {flight_time_min} min, expected value 24 min"
 
 module_cells = N  # n=6
-assert module_cells == 6, f"모듈 셀 수 {module_cells}, 기대값 6"
+assert module_cells == 6, f"module cell count {module_cells}, expected value 6"
 
 mfg_steps = sopfr(N)  # sopfr=5
-assert mfg_steps == 5, f"공정 단계 {mfg_steps}, 기대값 5"
+assert mfg_steps == 5, f"process steps {mfg_steps}, expected value 5"
 
 balance_mv = sigma(N) - phi(N)  # σ-φ=10
-assert balance_mv == 10, f"밸런싱 임계 {balance_mv}mV, 기대값 10mV"
+assert balance_mv == 10, f"balancing critical {balance_mv}mV, expected value 10mV"
 
 bms_response_ms = mobius(N)  # μ=1
-assert bms_response_ms == 1, f"BMS 응답 {bms_response_ms}ms, 기대값 1ms"
+assert bms_response_ms == 1, f"BMS response {bms_response_ms}ms, expected value 1ms"
 
 thermal_w = sigma(N) * tau(N)  # σ·τ=48
-assert thermal_w == 48, f"방열 {thermal_w}W, 기대값 48W"
+assert thermal_w == 48, f"heat radiation {thermal_w}W, expected value 48W"
 
 flight_modes = tau(N)  # τ=4 (IDLE/CRUISE/BURST/EMERGENCY)
-assert flight_modes == 4, f"비행모드 {flight_modes}, 기대값 4"
+assert flight_modes == 4, f"ratiorowsided {flight_modes}, expected value 4"
 
 redundancy = carmichael_lambda(N)  # λ=2
-assert redundancy == 2, f"리던던시 주기 {redundancy}, 기대값 2"
+assert redundancy == 2, f"lidandelion hr period {redundancy}, expected value 2"
 
-# ── DSE 검증 ──
+# ── DSE verify ──
 dse_total = 4 * 6 * 5 * 3 * 2
-assert dse_total == 720, f"DSE 총 조합 {dse_total}, 기대값 720"
+assert dse_total == 720, f"DSE total combinations {dse_total}, expected value 720"
 
 dse_filtered = 60  # 720 / σ(6) = 720 / 12 = 60
-assert dse_total // sigma(N) == dse_filtered, f"DSE 필터 결과 {dse_total // sigma(N)}, 기대값 60"
+assert dse_total // sigma(N) == dse_filtered, f"DSE filter result {dse_total // sigma(N)}, expected value 60"
 
-# ── 사이클 수명: σ·τ × 100 = 4,800 ──
+# ── cycle life: σ·τ × 100 = 4,800 ──
 cycle_life = sigma(N) * tau(N) * 100
-assert cycle_life == 4800, f"사이클 수명 {cycle_life}, 기대값 4800"
+assert cycle_life == 4800, f"cycle life {cycle_life}, expected value 4800"
 
-# ── P₂=28V 산업 드론 전압 ──
+# ── P₂=28V industry drone voltage ──
 industrial_voltage = perfect_number(2)
-assert industrial_voltage == 28, f"P₂ = {industrial_voltage}, 기대값 28"
+assert industrial_voltage == 28, f"P₂ = {industrial_voltage}, expected value 28"
 
-# ── 에너지밀도 향상비: σ/sopfr = 12/5 = 2.4 ──
+# ── energy density improvement ratio: σ/sopfr = 12/5 = 2.4 ──
 improvement_ratio = sigma(N) / sopfr(N)
-assert improvement_ratio == 2.4, f"향상비 {improvement_ratio}, 기대값 2.4"
+assert improvement_ratio == 2.4, f"improvement ratio {improvement_ratio}, expected value 2.4"
 
-# ── 경량비: φ/τ + 1/σ ──
+# ── lightweightratio: φ/τ + 1/σ ──
 weight_ratio = phi(N) / tau(N) + 1 / sigma(N)
 expected_wr = 2 / 4 + 1 / 12  # = 0.5 + 0.0833... = 0.5833...
-assert abs(weight_ratio - expected_wr) < 1e-10, f"경량비 {weight_ratio}, 기대값 {expected_wr}"
+assert abs(weight_ratio - expected_wr) < 1e-10, f"lightweightratio {weight_ratio}, expected value {expected_wr}"
 
 print("=" * 60)
-print("battery-scale-4-drone v2 전수 검증 완료")
-print(f"  n = {N} (완전수)")
+print("battery-scale-4-drone v2 exhaustive verification complete")
+print(f"  n = {N} (perfect number)")
 print(f"  σ={sigma(N)}, τ={tau(N)}, φ={phi(N)}, sopfr={sopfr(N)}")
 print(f"  μ={mobius(N)}, J₂={jordan_j2(N)}, λ={carmichael_lambda(N)}")
-print(f"  핵심 정리: σ·φ = n·τ = {sigma(N)*phi(N)}")
+print(f"  Core Theorem: σ·φ = n·τ = {sigma(N)*phi(N)}")
 print(f"  R(6) = {R6}")
-print(f"  이집트 분수: 1/2+1/3+1/6 = {egyptian}")
+print(f"  Egyptian fraction: 1/2+1/3+1/6 = {egyptian}")
 print(f"  P₁={perfect_number(1)}, P₂={perfect_number(2)}")
-print(f"  DSE: {dse_total} → n=6 필터 → {dse_filtered}")
-print(f"  모든 assert 통과 — EXACT 판정 확인")
+print(f"  DSE: {dse_total} → n=6 filter → {dse_filtered}")
+print(f"  all assert pass — EXACT verdict confirm")
 print("=" * 60)
 ```
 

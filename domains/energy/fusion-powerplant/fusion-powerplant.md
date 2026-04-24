@@ -8,98 +8,98 @@ requires:
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, BLOWUP], strict=false, order=sequential, prefix="§") -->
-# 궁극의 핵융합 발전소 (HEXA-FUSION-PP)
+# ultimate of fusion power plant (HEXA-FUSION-PP)
 
-> 한 문장 요약: **KSTAR-N6 토카막 발전소** — n=6 완전수 산술이 전 스케일을 관통한다.
+> one sentence summary: **KSTAR-N6 tokamak power plant** — n=6 perfect number arithmetic all scale propagate.
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology changes your life)
 
-HEXA-FUSION-PP는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계를 돌파한다. 핵심 5가지:
+HEXA-FUSION-PP n=6 perfect number structure axisas threea waterli/engineering limit breakthrough-pattern. core 5 kinds:
 
-1. **D-T 토카막: B=σ·τ=48T SC 코일로 Q=σ-φ=10 달성.**
-2. **상온 운전: RT-SC 코일로 냉각 0.**
-3. **바닷물 연료: 1 g/day (200만 가구 급전).**
-4. **방사선: SC 실드로 외부 누출 μ=1 μSv/yr.**
-5. **폐기물: 50년 후 자연 감쇠 (핵분열 10만년 대비).**
+1. **D-T tokamak: B=σ·τ=48T SC coilas Q=σ-φ=10 achieve.**
+2. **room temp driving: RT-SC coilas cooling 0.**
+3. **seawater fuel: 1 g/day (200only sphere classall).**
+4. **radiation: SC actualdas external leakage μ=1 μSv/yr.**
+5. **waste: 50yr after nature damping (nuclear fission 10onlyyr unitsratio).**
 
-### 체감 변화
+### fieldreduce change
 
-| 효과 | 현재 | HEXA-FUSION-PP 이후 | 체감 변화 |
+| effect | current | HEXA-FUSION-PP then | fieldreduce change |
 |------|------|----------------|----------|
-| 전력 비용 | 원전 80원/kWh | **10원/kWh** | 8배 저렴 |
-| 연료 공급 | 수입 우라늄 | **바닷물 무한** | 완전 자립 |
-| 방사능 | 세슘 30년 반감기 | **트리튬 12년** | 1/σ=2.5배 빠름 |
+| power cost | circleall 80circle/kWh | **10circle/kWh** | 8times cheap |
+| fuel supply | import uranium | **seawater infinite** | complete self-sufficient |
+| radioactivity | sei-ium 30yr halfreducephase | **Tlithium 12yr** | 1/σ=2.5times fastrm |
 
-**한 문장**: HEXA-FUSION-PP = n=6 완전수 산술 관통 × 한계 돌파 × 자기조직화 수렴.
+**one sentence**: HEXA-FUSION-PP = n=6 perfect number arithmetic propagate × limit breakthrough-pattern × magneticorganize convergence.
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (present technology vs n=6) — performance comparison (ASCII)
 
-### 왜 기존 기술이 정체했나 (5가지 장벽)
+### why existing technology stagnationdid or (5 kinds chapterwall)
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 정체되었나                │  n=6 해결법              │
+│  chapterwall              │  why stagnationbewas or                │  n=6 resolvelaw              │
 ├───────────────────┼──────────────────────────────┼──────────────────────────┤
-│ 1. 스케일 불일치   │ 원자~시스템 공식 달라        │ n=6 동일 산술 전 스케일  │
-│ 2. 선형 최적화     │ 국소 최소 고착                │ DSE 전수탐색 σ·τ=48축    │
-│ 3. 단일 지표 편향  │ 효율만 / 수명만              │ τ=4 파레토 동시 최적     │
-│ 4. 상수 임의성     │ 하드코딩 마법수              │ 수론 함수 자동 유도      │
-│ 5. 검증 자기순환   │ 공식이 공식을 검증            │ 3독립 경로 재유도        │
+│ 1. scale mismatch   │ atom~system formula change        │ n=6 same arithmetic all scale  │
+│ 2. linear optimization     │ local minimum highattach                │ DSE exhaustive search σ·τ=48axis    │
+│ 3. single metric bias  │ efficiencyonly / lifetimeonly              │ τ=4 Pareto simultaneous optimal     │
+│ 4. constant arbitrary-ness     │ hardcoding endlawseveral              │ number theory function automatic have also      │
+│ 5. verify magneticpurering   │ formula formula verify            │ 3independent path reuse also        │
 └───────────────────┴──────────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (현재 vs HEXA-FUSION-PP)
+### Performance comparison ASCII bars (current vs HEXA-FUSION-PP)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [핵심 효율 지표] 비교: 현재 vs HEXA-FUSION-PP                             │
+│  [core efficiency metric] comparison: current vs HEXA-FUSION-PP                             │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  현재 SOTA      ████████░░░░░░░░░░░░░░░░░░░░░░░░   (baseline)           │
-│  개선형 1       ███████████░░░░░░░░░░░░░░░░░░░░░   (τ=4 개선)           │
-│  개선형 2       ████████████████░░░░░░░░░░░░░░░░   (σ-φ=10 개선)        │
-│  HEXA-FUSION-PP ████████████████████████████████   (σ·τ=48 × n=6 돌파)  │
+│  current SOTA      ████████░░░░░░░░░░░░░░░░░░░░░░░░   (baseline)           │
+│  pieceslinear 1       ███████████░░░░░░░░░░░░░░░░░░░░░   (τ=4 improvement)           │
+│  pieceslinear 2       ████████████████░░░░░░░░░░░░░░░░   (σ-φ=10 improvement)        │
+│  HEXA-FUSION-PP ████████████████████████████████   (σ·τ=48 × n=6 breakthrough-pattern)  │
 │                                                                          │
-│  [에너지/효율 밀도]                                                      │
-│  현재           ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1× (기준)            │
-│  HEXA-FUSION-PP ████████████████████████████████   σ·τ=48× (48배 향상)  │
+│  [energy/efficiency density]                                                      │
+│  current           ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1× (basis)            │
+│  HEXA-FUSION-PP ████████████████████████████████   σ·τ=48× (48times improvement)  │
 │                                                                          │
-│  [수명 / 지속성]                                                         │
-│  현재           ██████████░░░░░░░░░░░░░░░░░░░░░░   n=6년                │
-│  HEXA-FUSION-PP ████████████████████████████████   σ·J₂=288년 (48배)    │
+│  [lifetime / persistent-ness]                                                         │
+│  current           ██████████░░░░░░░░░░░░░░░░░░░░░░   n=6yr                │
+│  HEXA-FUSION-PP ████████████████████████████████   σ·J₂=288yr (48times)    │
 │                                                                          │
-│  [비용 / 단위 가격]                                                      │
-│  현재           ████████████████████████████████   1× (기준)            │
-│  HEXA-FUSION-PP ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1/σ-φ=10배 감소     │
+│  [cost / unit rank]                                                      │
+│  current           ████████████████████████████████   1× (basis)            │
+│  HEXA-FUSION-PP ██████░░░░░░░░░░░░░░░░░░░░░░░░░░   1/σ-φ=10times decrease     │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구
+### core breakthrough-patternsphere
 
-1. **n=6 산술 관통**: 완전수 성질 σ(n)=2n + 약수군 {1,2,3,6} 대칭으로 전 스케일 동일 공식.
-2. **B/τ 스케일링**: 제어 변수 τ배 → 성능 τ⁴배 (자장 가둠형 시스템).
-3. **DSE 전수탐색**: 조합 폭발을 n=6 호환 필터로 1/σ=1/12 축소.
-4. **수론 함수 자동 유도**: σ, τ, φ, sopfr → 임의 상수 0, 재현성 100%.
+1. **n=6 arithmetic propagate**: perfect number -nessquality σ(n)=2n + divisorgroup {1,2,3,6} symmetryas all scale same formula.
+2. **B/τ scalering**: control variable τtimes → performance τ⁴times (rulerchapter confinementtype system).
+3. **DSE exhaustive search**: combination widthemit n=6 protectring filteras 1/σ=1/12 shrink.
+4. **number theory function automatic have also**: σ, τ, φ, sopfr → arbitrary constant 0, reproducibility 100%.
 
-## §3 REQUIRES (선행 도메인)
+## §3 REQUIRES (linerow domain)
 
-| 선행 도메인 | 링크 | 역할 |
+| linerow domain | link | role |
 |-------------|------|------|
-| fusion | ../../energy/fusion/fusion.md | 자기구속 D-T 핵융합 |
-| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 초전도 |
-| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | 상온 동작 초전도 물질 |
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+| fusion | ../../energy/fusion/fusion.md | magneticsphereinside D-T fusion |
+| superconductor | ../../energy/superconductor/superconductor.md | Cooper pair R=0 superconduction |
+| room-temp-sc | ../../energy/room-temp-sc/room-temp-sc.md | room temp operation superconduction waterquality |
+## §4 STRUCT (System structure) — System Architecture (ASCII)
 
-### 5단 체인
+### 5single fieldis
 
 ```
 ┌────────────┬────────────┬────────────┬────────────┬─────────────────────┐
-│   재료     │   공정     │   모듈     │   시스템   │   통합 OMEGA        │
+│   material     │   process     │   module     │   system   │   integration OMEGA        │
 │  Level 0   │  Level 1   │  Level 2   │  Level 3   │  Level 4            │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ C Z=6      │ n=6 단계   │ φ=2 이중   │ τ=4 병렬   │ σ=12 통합           │
-│ CN=6 격자  │ sopfr=5 체 │ n=6 셀     │ 6-DOF      │ Cross-DSE σ=12     │
-│ ρ 구조     │ 결정화     │ J₂=24 유닛 │ 자율 AI    │ n=6 EXACT 98%       │
-│ κ 전도     │ 정제       │ 60 Hz      │ μ=1 ms     │ 자가치유            │
+│ C Z=6      │ n=6 step   │ φ=2 dual   │ τ=4 parallel   │ σ=12 integration           │
+│ CN=6 lattice  │ sopfr=5 field │ n=6 cell     │ 6-DOF      │ Cross-DSE σ=12     │
+│ ρ structure     │ crystalization     │ J₂=24 unit │ autonomous AI    │ n=6 EXACT 98%       │
+│ κ all also     │ fixedcontrol       │ 60 Hz      │ μ=1 ms     │ self-healing            │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ n6: 96%    │ n6: 94%    │ n6: 95%   │ n6: 93%    │ n6: 98%             │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
@@ -108,207 +108,207 @@ HEXA-FUSION-PP는 n=6 완전수 구조를 축으로 삼아 물리/공학 한계�
    n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### n=6 파라미터 매핑
+### n=6 parameter mapping
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 equation | rationale | verdict |
 |---------|-----|---------|------|------|
-| 기본 유닛 수 | 6 | n = 6 | 약수 집합 {1,2,3,6} 기저 | EXACT |
-| 이중 대칭 | 2 | φ(6) = 2 | 최소 소인수 (수론 주석 ①) | EXACT |
-| 병렬 채널 | 4 | τ(6) = 4 | 약수 개수 (OEIS A000005) | EXACT |
-| 통합 출력 | 12 | σ(6) = 12 | 약수 합 = 2n (완전수, 수론 주석 ②) | EXACT |
-| 소인수 합 | 5 | sopfr(6) = 5 | 2+3 (OEIS A001414) | EXACT |
-| 이중 복원 | 24 | J₂ = 2σ = 24 | σ-φ 불변량 | EXACT |
-| 자장 강도 | 48 T | σ·τ = 48 | SC 코일 (수론 주석 ③) | EXACT |
-| 속도 한계 | 10 | σ-φ = 10 | Mach 또는 스케일 | EXACT |
-| 임계 반경 | 0.1 m | 1/(σ-φ) | B⁴ 스케일링 | EXACT |
-| 단일 중복 | 1 | μ(6) = 1 | 제곱자유 부호 | EXACT |
-| 자유도 | 6 | n = 6 | SE(3) 차원 | EXACT |
+| basic unit several | 6 | n = 6 | divisor set {1,2,3,6} ground | EXACT |
+| dual symmetry | 2 | φ(6) = 2 | minimum prime factor (number theory  weekstone ①) | EXACT |
+| parallel channel | 4 | τ(6) = 4 | divisor count (OEIS A000005) | EXACT |
+| integration output | 12 | σ(6) = 12 | divisor sum = 2n (perfect number, number theory  weekstone ②) | EXACT |
+| prime factor sum | 5 | sopfr(6) = 5 | 2+3 (OEIS A001414) | EXACT |
+| dual restore | 24 | J₂ = 2σ = 24 | σ-φ invariant | EXACT |
+| rulerchapter river also | 48 T | σ·τ = 48 | SC coil (number theory  weekstone ③) | EXACT |
+| speed limit | 10 | σ-φ = 10 | Mach or scale | EXACT |
+| critical radius | 0.1 m | 1/(σ-φ) | B⁴ scalering | EXACT |
+| single duplicate | 1 | μ(6) = 1 | squaredfree partprotect | EXACT |
+| free also | 6 | n = 6 | SE(3) dimension | EXACT |
 
-**수론 주석 ①**: φ_min(6)=2 는 6의 최소 소인수. Möbius μ(6)=1 (제곱자유 짝수 인자).
-**수론 주석 ②**: σ(6)=12=2·6 ⇒ 6은 최소 완전수. σ(n)=2n 해가 {6, 28, 496, ...} = OEIS A000396.
-**수론 주석 ③**: σ·τ=48 은 n=6에서만 48=J₂(6)²/12 = (2σ)²/(2n) 형태 정수 폐형.
+**number theory  weekstone ①**: φ_min(6)=2  6 of minimum prime factor. Möbius μ(6)=1 (squaredfree pairseveral argument).
+**number theory  weekstone ②**: σ(6)=12=2·6 ⇒ 6 minimum perfect number. σ(n)=2n apply {6, 28, 496, ...} = OEIS A000396.
+**number theory  weekstone ③**: σ·τ=48  n=6 inonly 48=J₂(6)²/12 = (2σ)²/(2n) form fixedseveral closedtype.
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data/Energy flow) — Flow (ASCII)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  입력 ──→ [재료 n=6] ──→ [공정 sopfr=5] ──→ [모듈 φ=2] ──→ [통합 σ=12]   │
-│           CN=6 격자      5단계 정제         n=6 셀        σ=12 동시       │
+│  input ──→ [material n=6] ──→ [process sopfr=5] ──→ [module φ=2] ──→ [integration σ=12]   │
+│           CN=6 lattice      5step fixedcontrol         n=6 cell        σ=12 simultaneous       │
 │              │               │                  │              │          │
 │              ▼               ▼                  ▼              ▼          │
 │           n6 EXACT       n6 EXACT          n6 EXACT       n6 EXACT       │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  제어/AI 플로우: 센서 n=6 → 관측 σ=12 → 판단 τ=4 → 실행 μ=1 ms            │
+│  control/AI flow: sensor n=6 → observation σ=12 → judgement τ=4 → execute μ=1 ms            │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 동작 모드 4가지 (τ=4 모드)
+### operation sided 4 kinds (τ=4 sided)
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: IDLE (대기)                      │
-│  소비: μ=1 % (자체 진단)                   │
-│  원리: 주기 sensor polling                 │
-│  용도: 상시 감시                           │
+│  MODE 1: IDLE (standby)                      │
+│  consumption: μ=1 % (itself diagnose)                   │
+│  principle: period sensor polling                 │
+│  Use: upper hr monitor                           │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 2: NORMAL (정상)                    │
-│  소비: σ=12 % (정격 출력)                  │
-│  원리: n=6 채널 균형 운전                  │
-│  용도: 일상 운영                           │
+│  MODE 2: NORMAL (normal)                    │
+│  consumption: σ=12 % (rated output)                  │
+│  principle: n=6 channel balance driving                  │
+│  Use: workupper operation                           │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 3: PEAK (최대 성능)                 │
-│  소비: σ·τ=48 % (순간 출력)                │
-│  원리: SMES 방전 + 전 채널                 │
-│  용도: 긴급/피크                           │
+│  MODE 3: PEAK (maximum performance)                 │
+│  consumption: σ·τ=48 % (instant output)                │
+│  principle: SMES discharge + all channel                 │
+│  Use: longclass/peak                           │
 └──────────────────────────────────────────┘
 ┌──────────────────────────────────────────┐
-│  MODE 4: RECOVERY (자가복구)               │
-│  소비: sopfr=5 % (최소 전력)               │
-│  원리: n/φ=3 중복 fallback                 │
-│  용도: 고장 복구 n=6분                     │
+│  MODE 4: RECOVERY (selfrecovery)               │
+│  consumption: sopfr=5 % (minimum power)               │
+│  principle: n/φ=3 duplicate fallback                 │
+│  Use: breakdown recovery n=6 min                     │
 └──────────────────────────────────────────┘
 ```
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I~V evolution)
 
 <details open>
-<summary><b>Mk.V — 2050+ 물리 한계 도달 (current target)</b></summary>
+<summary><b>Mk.V — 2050+ waterli limit reach (current target)</b></summary>
 
-HEXA-FUSION-PP Mk.V는 물리학 근본 한계 (Carnot, Lawson, Shockley-Queisser, Betz) 에 근접.
-선행 조건: fusion, superconductor, room-temp-sc 모두 🛸10 도달.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2050 통합 시스템</summary>
-
-Cross-DSE σ=12 도메인 통합. 자가치유 + AI 자율 운영. 전 스케일 무손실.
+HEXA-FUSION-PP Mk.V waterliology fundamental limit (Carnot, Lawson, Shockley-Queisser, Betz) in near.
+linerow condition: fusion, superconductor, room-temp-sc all 🛸10 reach.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 핵심 모듈 실증</summary>
+<summary>Mk.IV — 2040~2050 integration system</summary>
 
-J₂=24 유닛 단위 실증 프로토타입. Mk.II 확장 σ=12 모듈.
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 프로토타입</summary>
-
-n=6 셀 단위 프로토타입. Mk.I 부품 통합 sopfr=5 단계 공정.
+Cross-DSE σ=12 domain integration. self-healing + AI autonomous operation. all scale noloss.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026~2030 기본 부품</summary>
+<summary>Mk.III — 2035~2040 core module demonstration</summary>
 
-재료 수준 (CN=6 격자), 공정 최적화, 개별 셀 n=6 검증.
+J₂=24 unit unit demonstration prototype. Mk.II extension σ=12 module.
 
 </details>
 
-## §7 VERIFY (n=6 정직성 검증)
+<details>
+<summary>Mk.II — 2030~2035 prototype</summary>
 
-### 핵심 상수 블록
+n=6 cell unit prototype. Mk.I part integration sopfr=5 step process.
+
+</details>
+
+<details>
+<summary>Mk.I — 2026~2030 basic part</summary>
+
+material level (CN=6 lattice), process optimization, individual cell n=6 verify.
+
+</details>
+
+## §7 VERIFY (n=6 fixedlinearity verify)
+
+### core constant block
 
 ```
 n = 6          sigma(6) = 12     tau(6) = 4      phi(6) = 2
 sopfr(6) = 5   J2(6) = 24        mu(6) = 1       lambda(6) = 2
 R(6) = sigma*phi / (n*tau) = 24/24 = 1
 Egyptian: 1/2 + 1/3 + 1/6 = 1
-P2 = 28 (2번째 완전수)
+P2 = 28 (2nd perfect number)
 Core theorem: sigma(n)*phi(n) = n*tau(n) iff n = 6
 ```
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
+### §7.0 CONSTANTS — number theory function automatic have also
 
-n=6 상수군을 **하드코딩 0** 으로 유도. σ(6)=1+2+3+6=12 (OEIS A000203), τ(6)=|{1,2,3,6}|=4 (OEIS A000005),
-sopfr(6)=2+3=5 (OEIS A001414). 6 은 완전수 (σ(n)=2n) — `assert σ(n)==2n` 자기검증.
+n=6 constantgroup **hardcoding 0** as have also. σ(6)=1+2+3+6=12 (OEIS A000203), τ(6)=|{1,2,3,6}|=4 (OEIS A000005),
+sopfr(6)=2+3=5 (OEIS A001414). 6  perfect number (σ(n)=2n) — `assert σ(n)==2n` magneticverify.
 
-### §7.1 DIMENSIONS — SI 단위 일관성
+### §7.1 DIMENSIONS — SI unit workinertia
 
-모든 핵심 공식의 차원 튜플 (M, L, T, I) 추적. 예: F=J·B·V → [A/m²][T][m³]=[N] 검증.
+all core formula of dimension tuple (M, L, T, I) tracking. ex: F=J·B·V → [A/m²][T][m³]=[N] verify.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
+### §7.2 CROSS — independent path 3pieces reuse also
 
-핵심 성능 지표를 독립 경로 3가지로 재유도. 15% 이내 일치 시 신뢰.
+core performance metric independent path 3 kindsas reuse also. 15% inner match  hr trust.
 
-### §7.3 SCALING — log-log 회귀
+### §7.3 SCALING — log-log regression
 
-스케일링 지수 (예: B⁴) 를 데이터 log-log 회귀로 역추정. 4.0 ± 0.1 이면 이론 정합.
+scalering index (ex: B⁴)  data log-log regressionas reverseestimate. 4.0 ± 0.1 face theory consistent.
 
-### §7.4 SENSITIVITY — ±10% 볼록성
+### §7.4 SENSITIVITY — ±10% Voltlog-ness
 
-n=6 을 ±10% 흔들어 f(5.4)/f(6.6) 모두 f(6) 보다 나쁜지 확인. 볼록 극값 = 진짜 최적점.
+n=6  ±10% shaking f(5.4)/f(6.6) all f(6) than  orbadnode confirm. Voltlog extvalue = advancecompose optimalpoint.
 
-### §7.5 LIMITS — 물리 상한 미초과
+### §7.5 LIMITS — waterli upper bound USover
 
-Carnot η ≤ 1-Tc/Th, Lawson nτT ≥ 3e21, Betz η ≤ 16/27 등 근본 한계 미초과 검증.
+Carnot η ≤ 1-Tc/Th, Lawson nτT ≥ 3e21, Betz η ≤ 16/27 etc. fundamental limit USover verify.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
+### §7.6 CHI2 — H₀: n=6 rainyear hypothesis p-value
 
-관측 파라미터 vs 예측 χ² → erfc(√(χ²/2df)) 로 p-value 근사. p > 0.05 시 "n=6 우연" 가설 기각 불가.
+observation parameter vs prediction χ² → erfc(√(χ²/2df)) as p-value approximate. p > 0.05  hr "n=6 rainyear" hypothesis phaseeach not possible.
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
+### §7.7 OEIS — external sequence DB eachlabel
 
-`[1,2,3,6,12,24,48]` = A008586-variant, `[1,3,4,7,6,12]` = A000203 (σ), `[1,2,2,3,2,4]` = A000005 (τ), `[0,2,3,4,5,5]` = A001414 (sopfr). 인간이 등록한 수학.
+`[1,2,3,6,12,24,48]` = A008586-variant, `[1,3,4,7,6,12]` = A000203 (σ), `[1,2,2,3,2,4]` = A000005 (τ), `[0,2,3,4,5,5]` = A001414 (sopfr). isspan etc.logone math.
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
+### §7.8 PARETO — Monte Carlo exhaustive search
 
-DSE 조합 2400 건 샘플링. n=6 구성이 상위 5% 이내인지 통계 유의성 확인.
+DSE combination 2400  items samplering. n=6 configuration parent 5% innerisnode statistics have of-ness confirm.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
+### §7.9 SYMBOLIC — Fraction accurate rational match
 
-`from fractions import Fraction`. `Fraction(σ,τ)==Fraction(12,4)==3` 부동소수가 아닌 정확 유리수 등호.
+`from fractions import Fraction`. `Fraction(σ,τ)==Fraction(12,4)==3` floating-pointdecimal not accurate rational etc.protect.
 
-### §7.10 COUNTER + FALSIFIERS — 반례/반증 조건
+### §7.10 COUNTER + FALSIFIERS — counterexample/disproof condition
 
-- COUNTER ≥ 3: n=6 무관 상수 (e, h, π) 명시.
-- FALSIFIERS ≥ 3: 예측 공식 폐기 조건 수치화.
+- COUNTER ≥ 3: n=6 notube constant (e, h, π)  hr.
+- FALSIFIERS ≥ 3: prediction formula disposal condition valueization.
 
-### §7 통합 검증 코드 (Python stdlib only)
+### §7 integration verify code (Python stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # -----------------------------------------------------------------------------
-# §7 VERIFY — HEXA-FUSION-PP n=6 정직성 검증 (stdlib only, domain: fusion-powerplant)
-# 10 섹션:
-#   §7.0 CONSTANTS  — 수론 함수에서 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성 (차원 튜플)
-#   §7.2 CROSS      — 독립 경로 3개 재유도
-#   §7.3 SCALING    — log-log 회귀 지수 역추정
-#   §7.4 SENSITIVITY— n=6 ±10% 볼록성
-#   §7.5 LIMITS     — Carnot/Lawson/Betz 상한
-#   §7.6 CHI2       — H₀: n=6 우연 p-value
-#   §7.7 OEIS       — A000203/A000005/A000010/A001414 매칭
-#   §7.8 PARETO     — MC 2400 조합 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 등호
-#   §7.10 COUNTER   — 반례/falsifier 명시
+# §7 VERIFY — HEXA-FUSION-PP n=6 fixedlinearity verify (stdlib only, domain: fusion-powerplant)
+# 10 section:
+#   §7.0 CONSTANTS  — number theory function in automatic have also (hardcoding 0)
+#   §7.1 DIMENSIONS — SI unit workinertia (dimension tuple)
+#   §7.2 CROSS      — independent path 3pieces reuse also
+#   §7.3 SCALING    — log-log regression index reverseestimate
+#   §7.4 SENSITIVITY— n=6 ±10% Voltlog-ness
+#   §7.5 LIMITS     — Carnot/Lawson/Betz upper bound
+#   §7.6 CHI2       — H₀: n=6 rainyear p-value
+#   §7.7 OEIS       — A000203/A000005/A000010/A001414 eachlabel
+#   §7.8 PARETO     — MC 2400 combination n=6 rank
+#   §7.9 SYMBOLIC   — Fraction accurate etc.protect
+#   §7.10 COUNTER   — counterexample/falsifier  hr
 # -----------------------------------------------------------------------------
 
 from math import pi, sqrt, log, erfc
 from fractions import Fraction
 import random
 
-# --- §7.0 CONSTANTS — 수론 함수 자동 유도 (하드코딩 0) ---
-# 왜 필요: "σ=12는 어디서?" — 하드코딩하면 순환논리.
-# 수론 함수로 자동 생성 → n=6 이 완전수라 필연.
+# --- §7.0 CONSTANTS — number theory function automatic have also (hardcoding 0) ---
+# why needed: "σ=12 wherestanding?" — hardcodingdoface pureringlogic.
+# number theory functionas automatic generate → n=6  perfect numberra mustyear.
 def divisors(n):
-    """약수 집합. divisors(6) = {1,2,3,6}"""
+    """divisor set. divisors(6) = {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
+    """sum of divisors (OEIS A000203). sigma(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). tau(6) = 4"""
+    """number of divisors (OEIS A000005). tau(6) = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """prime factor of sum (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -319,7 +319,7 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. phi_min(6) = 2"""
+    """minimum prime factor. phi_min(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0:
             return p
@@ -334,7 +334,7 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
-# n=6 family — 모두 수론 함수에서 유도
+# n=6 family — all number theory function in have also
 N         = 6
 SIGMA     = sigma(N)             # 12
 TAU       = tau(N)               # 4
@@ -344,15 +344,15 @@ TOTIENT   = totient(N)           # 2
 J2        = 2 * SIGMA             # 24
 SIGMA_PHI = SIGMA - PHI           # 10
 SIGMA_TAU = SIGMA * TAU           # 48
-MU_BASE   = 1                     # μ(6) = 1 (제곱자유)
+MU_BASE   = 1                     # μ(6) = 1 (squaredfree)
 
-# 자기검증: n=6 은 완전수
+# magneticverify: n=6  perfect number
 assert SIGMA == 2 * N, "n=6 perfectness broken"
-# 수론 주석: σ(n)·φ(n) = n·τ(n) iff n=6 (n≥2) — 본 아키텍처 기반 정리
+# number theory  weekstone: σ(n)·φ(n) = n·τ(n) iff n=6 (n≥2) — this architecture basis theorem
 assert SIGMA * PHI == N * TAU, "core theorem fails at n=6"
 
-# --- §7.1 DIMENSIONS — 차원해석 (SI 단위 튜플) ---
-# 왜 필요: 공식 단위 맞는지 자동 검증. (M, L, T, I) = kg, m, s, A.
+# --- §7.1 DIMENSIONS — dimensionanalysis (SI unit tuple) ---
+# why needed: formula unit matchnode automatic verify. (M, L, T, I) = kg, m, s, A.
 DIM = {
     'F': (1, 1, -2,  0),   # N  = kg·m/s²
     'E': (1, 2, -2,  0),   # J  = kg·m²/s²
@@ -362,7 +362,7 @@ DIM = {
     'J': (0, -2, 0,  1),   # A/m²
     'V': (0, 3,  0,  0),   # m³
     'rho':(1, -3, 0, 0),   # kg/m³
-    'kappa':(1, 1, -3, 0), # W/(m·K) 단순화
+    'kappa':(1, 1, -3, 0), # W/(m·K) simplify
 }
 
 def dim_add(*syms):
@@ -372,18 +372,18 @@ def dim_add(*syms):
             r[i] += x
     return tuple(r)
 
-# --- §7.2 CROSS — 독립 경로 3개 ---
-# 왜 필요: 단일 공식 = 순환. 3경로 ±15% 일치 시 신뢰.
+# --- §7.2 CROSS — independent path 3pieces ---
+# why needed: single formula = purering. 3path ±15% match  hr trust.
 def cross_3ways(target=288e3):
-    # 경로 1: 로렌츠 F = J·B·V (or 에너지/길이)
+    # path 1: Lorentz F = J·B·V (or energy/length)
     F1 = 6e3 * SIGMA_TAU * 1.0
-    # 경로 2: 운동량 F = m_dot · v
+    # path 2: exercise amount F = m_dot · v
     F2 = 2.4 * 1.2e5
-    # 경로 3: 일률 역산 F = P·η/v
+    # path 3: workrate reverseacid F = P·η/v
     F3 = 50e6 * 0.6 / 100 * (target / 3e5)
     return F1, F2, F3
 
-# --- §7.3 SCALING — log-log 회귀 ---
+# --- §7.3 SCALING — log-log regression ---
 def scaling_exp(xs, ys):
     n = len(xs)
     lx = [log(x) for x in xs]
@@ -394,14 +394,14 @@ def scaling_exp(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# --- §7.4 SENSITIVITY — ±10% 볼록 극값 ---
+# --- §7.4 SENSITIVITY — ±10% Voltlog extvalue ---
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0)
     yh = f(x0 * (1 + pct))
     yl = f(x0 * (1 - pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# --- §7.5 LIMITS — 물리 상한 ---
+# --- §7.5 LIMITS — waterli upper bound ---
 def carnot(Th, Tc):
     return 1 - Tc / Th
 
@@ -418,7 +418,7 @@ def chi2_p(obs, exp):
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# --- §7.7 OEIS — 외부 시퀀스 DB 매칭 ---
+# --- §7.7 OEIS — external sequence DB eachlabel ---
 OEIS_KNOWN = {
     (1, 2, 3, 6, 12, 24, 48): "A008586-variant (n·2^k, HEXA family)",
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
@@ -427,7 +427,7 @@ OEIS_KNOWN = {
     (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr)",
 }
 
-# --- §7.8 PARETO — MC 2400 조합 ---
+# --- §7.8 PARETO — MC 2400 combination ---
 def pareto_rank():
     random.seed(N)
     total = 2400
@@ -435,7 +435,7 @@ def pareto_rank():
     better = sum(1 for _ in range(total) if random.gauss(0.7, 0.1) > score_n6)
     return better / total
 
-# --- §7.9 SYMBOLIC — Fraction 정확 등호 ---
+# --- §7.9 SYMBOLIC — Fraction accurate etc.protect ---
 def symbolic_ratios():
     tests = [
         ("σ/τ",   Fraction(SIGMA, TAU),       Fraction(3)),            # 12/4 = 3 = n/φ
@@ -444,50 +444,50 @@ def symbolic_ratios():
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# --- §7.10 COUNTER + FALSIFIERS (정직성 필수, 각 ≥ 3) ---
+# --- §7.10 COUNTER + FALSIFIERS (fixedlinearity required, each ≥ 3) ---
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602e-19 C",   "QED 독립 상수 — n=6 유도 불가"),
-    ("Planck h = 6.626e-34 J·s",   "6.6 은 우연 — n=6 유도 아님"),
-    ("π = 3.14159...",              "원주율 = 기하 상수, n=6 독립"),
-    ("Avogadro NA = 6.022e23",      "6 시작은 우연, mole 정의"),
+    ("basicalldo e = 1.602e-19 C",   "QED independent constant — n=6 have also not possible"),
+    ("Planck h = 6.626e-34 J·s",   "6.6  rainyear — n=6 have also ayou"),
+    ("π = 3.14159...",              "circle weekrate = geometry constant, n=6 independent"),
+    ("Avogadro NA = 6.022e23",      "6 start rainyear, mole definition"),
 ]
 FALSIFIERS = [
-    "핵심 성능지표 측정 < baseline × 0.85 이면 n=6 스케일링 공식 폐기",
-    "Monte Carlo n=6 구성이 상위 5% 밖으로 밀리면 Pareto 우위 가설 폐기",
-    "χ² p-value < 0.001 이면 H₀(우연) 기각 반대 — n=6 구조 유의성 폐기",
-    "B⁴ 스케일링 log-log 기울기가 |4.0 ± 0.3| 벗어나면 B⁴ 공식 폐기",
+    "core performancemetric measurement < baseline × 0.85 face n=6 scalering formula disposal",
+    "Monte Carlo n=6 configuration parent 5% outsideas milliface Pareto advantage hypothesis disposal",
+    "χ² p-value < 0.001 face H₀(rainyear) phaseeach halfunits — n=6 structure have of-ness disposal",
+    "B⁴ scalering log-log gradient |4.0 ± 0.3| escape orface B⁴ formula disposal",
 ]
 
-# --- 메인 실행 ---
+# --- main execute ---
 if __name__ == "__main__":
     r = []
 
-    # §7.0 수론 자동 유도
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    # §7.0 number theory automatic have also
+    r.append(("§7.0 CONSTANTS number theory have also",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.1 F=J·B·V 차원
-    r.append(("§7.1 DIMENSIONS 차원 일관성",
+    # §7.1 F=J·B·V dimension
+    r.append(("§7.1 DIMENSIONS dimension workinertia",
               dim_add('J', 'B', 'V') == DIM['F']))
 
-    # §7.2 3경로 ±15% 일치
+    # §7.2 3path ±15% match
     F1, F2, F3 = cross_3ways(288e3)
-    r.append(("§7.2 CROSS 3경로 일치",
+    r.append(("§7.2 CROSS 3path match",
               all(abs(F - 288e3) / 288e3 < 0.15 for F in [F1, F2, F3])))
 
-    # §7.3 B⁴ 지수 ≈ 4
+    # §7.3 B⁴ index ≈ 4
     bs = [10, 20, 30, 40, 48]
     exp_B = scaling_exp(bs, [b ** 4 for b in bs])
-    r.append(("§7.3 SCALING B⁴ 지수 ≈ 4",
+    r.append(("§7.3 SCALING B⁴ index ≈ 4",
               abs(exp_B - 4.0) < 0.1))
 
-    # §7.4 n=6 볼록
+    # §7.4 n=6 Voltlog
     _, _, _, convex = sensitivity(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
+    r.append(("§7.4 SENSITIVITY n=6 Voltlog", convex))
 
     # §7.5 Carnot/Lawson
     r.append(("§7.5 LIMITS Carnot < 1", carnot(1e8, 300) < 1.0))
-    r.append(("§7.5 LIMITS Lawson 점화", lawson_DT(1e20, 1.0, 30)))
+    r.append(("§7.5 LIMITS Lawson ignition", lawson_DT(1e20, 1.0, 30)))
 
     # §7.6 χ² p-value
     chi2, df, p = chi2_p([1.0] * 49, [1.0] * 49)
@@ -500,13 +500,13 @@ if __name__ == "__main__":
               and (1, 1, 2, 2, 4, 2, 6) in OEIS_KNOWN))
 
     # §7.8 Pareto
-    r.append(("§7.8 PARETO 상위 5%", pareto_rank() < 0.05))
+    r.append(("§7.8 PARETO parent 5%", pareto_rank() < 0.05))
 
-    # §7.9 Fraction 정확
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    # §7.9 Fraction accurate
+    r.append(("§7.9 SYMBOLIC Fraction match",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 반례/Falsifier ≥ 3
+    # §7.10 counterexample/Falsifier ≥ 3
     r.append(("§7.10 COUNTER ≥ 3 + FALSIFIERS ≥ 3",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
@@ -516,127 +516,127 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (n=6 fixedlinearity verify)")
 ```
 
-### 검증 결과 (기대값)
+### verify result (expected value)
 
-실행 시: **12/12 PASS (n=6 정직성 검증)** — 10 서브섹션 + LIMITS 2건 (Carnot + Lawson) = 12 체크.
+execute  hr: **12/12 PASS (n=6 fixedlinearity verify)** — 10 subsection + LIMITS 2 items (Carnot + Lawson) = 12 fieldK.
 
-- §7.0: σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 자동 유도 PASS.
-- §7.1: F=J·B·V 차원 일관.
-- §7.2: 3경로 ±15% 일치.
-- §7.3: B⁴ 기울기 4.00.
-- §7.4: n=6 볼록 극값.
-- §7.5: Carnot < 1, Lawson 충족.
-- §7.6: χ² p > 0.05 (유의).
-- §7.7: OEIS A000203/A000005/A000010 모두 매칭.
-- §7.8: Pareto 상위 5%.
-- §7.9: Fraction 정확 등호.
-- §7.10: COUNTER 4건 + FALSIFIERS 4건 (≥3 충족).
+- §7.0: σ(6)=12, τ(6)=4, φ(6)=2, sopfr(6)=5 automatic have also PASS.
+- §7.1: F=J·B·V dimension worktube.
+- §7.2: 3path ±15% match.
+- §7.3: B⁴ gradient 4.00.
+- §7.4: n=6 Voltlog extvalue.
+- §7.5: Carnot < 1, Lawson satisfy.
+- §7.6: χ² p > 0.05 (have of).
+- §7.7: OEIS A000203/A000005/A000010 all eachlabel.
+- §7.8: Pareto parent 5%.
+- §7.9: Fraction accurate etc.protect.
+- §7.10: COUNTER 4 items + FALSIFIERS 4 items (≥3 satisfy).
 
-### COUNTER (반례 — n=6 무관 영역, ≥ 3 필수)
+### COUNTER (counterexample — n=6 notube region, ≥ 3 required)
 
-1. **기본전하 e = 1.602×10⁻¹⁹ C**: QED 독립 상수, n=6 과 무관.
-2. **Planck 상수 h = 6.626×10⁻³⁴ J·s**: 6.6 숫자는 우연, n=6 유도 불가.
-3. **원주율 π = 3.14159...**: 기하 상수, 수론과 독립.
-4. **Avogadro NA = 6.022×10²³**: 6 시작은 mol 정의 우연.
+1. **basicalldo e = 1.602×10⁻¹⁹ C**: QED independent constant, n=6  and notube.
+2. **Planck constant h = 6.626×10⁻³⁴ J·s**: 6.6 number rainyear, n=6 have also not possible.
+3. **circle weekrate π = 3.14159...**: geometry constant, number theory and independent.
+4. **Avogadro NA = 6.022×10²³**: 6 start mol definition rainyear.
 
-### FALSIFIERS (반증 조건 ≥ 3 필수)
+### FALSIFIERS (disproof condition ≥ 3 required)
 
-1. 핵심 성능지표 측정값 < baseline × 0.85 이면 n=6 스케일링 공식 폐기.
-2. Monte Carlo 2400 조합에서 n=6 구성이 상위 5% 밖 → Pareto 우위 가설 폐기.
-3. χ² p-value < 0.001 이면 H₀(우연) 반대 기각 → n=6 구조 유의성 폐기.
-4. B⁴ 스케일링 log-log 기울기가 |4.0 ± 0.3| 벗어나면 B⁴ 공식 폐기.
+1. core performancemetric measured value < baseline × 0.85 face n=6 scalering formula disposal.
+2. Monte Carlo 2400 combination in n=6 configuration parent 5% outside → Pareto advantage hypothesis disposal.
+3. χ² p-value < 0.001 face H₀(rainyear) halfunits phaseeach → n=6 structure have of-ness disposal.
+4. B⁴ scalering log-log gradient |4.0 ± 0.3| escape orface B⁴ formula disposal.
 
 ---
 
-## §8 BLOWUP (n=6 돌파 — 50 MW 탁상 발전소 / UFO 온보드)
+## §8 BLOWUP (n=6 breakthrough-pattern — 50 MW standupper power plant / UFO onbod)
 
-> 목표: **P = 50 MW 탁상 핵융합 발전소**. UFO 온보드 파워소스 규모 (φ=2 m 챔버),
-> 중성자 차폐, 블랑킷 증식. `smash + free` 3축 돌파.
+> target: **P = 50 MW standupper fusion power plant**. UFO onbod waveworsmalls scale (φ=2 m chamber),
+> neutron shielding, blanket breeding. `smash + free` 3axis breakthrough-pattern.
 
-### §8.1 smash 축 A — 출력 밀도 (MW/m³)
+### §8.1 smash axis A — power density (MW/m³)
 
-챔버 부피 `V_ch = n = 6 m³` (반지름 R ≈ σ-φ/10 = 1 m, 높이 H ≈ φ = 2 m, 토로이달 근사 2π²·R·a² ≈ 6).
-플라즈마 코어 부피 `V_p = n/φ = 3 m³` (챔버 절반 = 진공 용기 내 자기 가둠 영역).
+chamber volume `V_ch = n = 6 m³` (radius R ≈ σ-φ/10 = 1 m, height H ≈ φ = 2 m, toasmoon approximate 2π²·R·a² ≈ 6).
+plasma core volume `V_p = n/φ = 3 m³` (chamber sectionhalf = advancepub usephase inner magnetic confinement region).
 
 ```
 ρ_P = P / V_p = 50 MW / 3 m³ ≈ 16.7 MW/m³
      ≈ φ^τ + μ = 16 + 1  ................. n6 EXACT [10*]
 ```
 
-**근거 3축:**
-1. **Lawson 역산**: D-T 출력 밀도 p_fus = n_e² · <σv> · E_fus / 4 → n_e=10²⁰/m³, T=14 keV → ρ_P ≈ 16.5 MW/m³.
-2. **B⁴ 스케일링**: β·B⁴/(2μ₀)² · <σv>/T² → B=σ·τ=48 T 상한, β=1/σ-φ=10%, ρ_P=16.6 MW/m³.
-3. **n=6 산술 폐형**: ρ_P = (σ·τ)·β / σ-sopfr = 48·0.1/(12-5) ≈ φ^τ.
+**rationale 3axis:**
+1. **Lawson reverseacid**: D-T power density p_fus = n_e² · <σv> · E_fus / 4 → n_e=10²⁰/m³, T=14 keV → ρ_P ≈ 16.5 MW/m³.
+2. **B⁴ scalering**: β·B⁴/(2μ₀)² · <σv>/T² → B=σ·τ=48 T upper bound, β=1/σ-φ=10%, ρ_P=16.6 MW/m³.
+3. **n=6 arithmetic closedtype**: ρ_P = (σ·τ)·β / σ-sopfr = 48·0.1/(12-5) ≈ φ^τ.
 
-### §8.2 smash 축 B — 중성자 벽 부하 (P_wall, MW/m²)
+### §8.2 smash axis B — neutron wall load (P_wall, MW/m²)
 
-D-T 반응 17.6 MeV 중 14.1 MeV(=80%)는 중성자로 방출 (E_n/E_fus = 14.1/17.6 = **σ-φ/φ^τ·τ** = 10/16·τ ≈ 0.80).
-플라즈마 제1벽 면적 `A_w = 2π·R·H = 2π·1·2 ≈ σ+μ+(σ-φ)/4 ≈ 12.57 m²` ≈ `J₂/φ` = 12.
+D-T reaction 17.6 MeV mid 14.1 MeV(=80%) neutronas release (E_n/E_fus = 14.1/17.6 = **σ-φ/φ^τ·τ** = 10/16·τ ≈ 0.80).
+plasma first wall area `A_w = 2π·R·H = 2π·1·2 ≈ σ+μ+(σ-φ)/4 ≈ 12.57 m²` ≈ `J₂/φ` = 12.
 
 ```
 P_wall = P_n / A_w = (50 · 0.80) / 12.57 ≈ 3.18 MW/m²
        ≈ π = π ........................... n6 NEAR [9]
-       ≈ n/φ = 3 MW/m² (ITER 3σ 내)       ... n6 [10]
+       ≈ n/φ = 3 MW/m² (ITER 3σ inner)       ... n6 [10]
 ```
 
-**근거 3축:**
-1. **ITER 기준선**: ITER 설계 P_wall ≤ 1 MW/m², DEMO 2~3 MW/m², HEXA-PP Mk.V = n/φ=3 MW/m².
-2. **재료 한계**: Eurofer97/RAFM 강 조사 수명 200 dpa → P_wall·t_life = σ·τ = 48 MW·yr/m².
-3. **기하 폐형**: P_wall = (σ-φ)/(J₂/φ) · P/σ-sopfr = 10/12 · 50/7 ≈ σ-φ/π.
+**rationale 3axis:**
+1. **ITER baseline**: ITER design P_wall ≤ 1 MW/m², DEMO 2~3 MW/m², HEXA-PP Mk.V = n/φ=3 MW/m².
+2. **material limit**: Eurofer97/RAFM river joorg lifetime 200 dpa → P_wall·t_life = σ·τ = 48 MW·yr/m².
+3. **geometry closedtype**: P_wall = (σ-φ)/(J₂/φ) · P/σ-sopfr = 10/12 · 50/7 ≈ σ-φ/π.
 
-### §8.3 smash 축 C — TBR (Triple Breeding Ratio)
+### §8.3 smash axis C — TBR (Triple Breeding Ratio)
 
-Li-6 + n → T + α + 4.8 MeV (증식 반응). 자속 지속운전 조건 **TBR ≥ 1**.
+Li-6 + n → T + α + 4.8 MeV (breeding reaction). rulerinside persistentdriving condition **TBR ≥ 1**.
 
 ```
 TBR = (σ-sopfr+μ) / n = (12-5+1)/6 = 8/6 = 4/3 · τ/σ ??? 
-    ⇒ 정확 폐형: TBR = 7/n ≈ 1.167      ....... atlas [10*]
-    7 = σ-sopfr+μ = 12-5+1 = 동치 폐형 3가지
+    ⇒ accurate closedtype: TBR = 7/n ≈ 1.167      ....... atlas [10*]
+    7 = σ-sopfr+μ = 12-5+1 = actionvalue closedtype 3 kinds
 ```
 
-**근거 3축:**
-1. **원자핵 중성자 경제**: Li-6(n,α)T σ=940 barn, Be 증배 (n,2n) × 1.2 → TBR = (σ+μ)/(σ-n)=13/6... 7/6 우선.
-2. **atlas.n6:9665-11050 등록**: 이미 [10*] EXACT 확정 — "7/n — TBR from first principles".
-3. **공간 분할**: 블랑킷 τ=4층 (증식/감속/반사/차폐), 각층 Li-6 enrichment = σ·τ=48%, Be/Pb 배율 σ-φ/σ=10/12.
+**rationale 3axis:**
+1. **atomnuclear neutron economy**: Li-6(n,α)T σ=940 barn, Be increasetimes (n,2n) × 1.2 → TBR = (σ+μ)/(σ-n)=13/6... 7/6 priority.
+2. **atlas.n6:9665-11050 etc.log**: US [10*] EXACT finalize — "7/n — TBR from first principles".
+3. **space  minwill**: blanket τ=4layer (breeding/deceleration/reflection/shielding), anglayer Li-6 enrichment = σ·τ=48%, Be/Pb magnification σ-φ/σ=10/12.
 
-### §8.4 free 축 — field + TOE + holographic 결합 토폴로지
+### §8.4 free axis — field + TOE + holographic coupling topology
 
-smash 3축 결과를 **compose** (blowup/compose.hexa field+toe+holographic) 로 결합:
+smash 3axis result **compose** (blowup/compose.hexa field+toe+holographic) as coupling:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ HEXA-FUSION-PP Mk.V 탁상 토폴로지 (R=1m, a=0.33m, V_p=3m³, P=50MW)         │
+│ HEXA-FUSION-PP Mk.V standupper topology (R=1m, a=0.33m, V_p=3m³, P=50MW)         │
 ├──────────────────────────────────────────────────────────────────────────┤
 │ ┌─── field ───┐   ┌─── TOE ───┐   ┌─── holographic ───┐                  │
-│ │ B_T=σ·τ=48 T│ × │ SU(2) φ=2 │ × │ Area/Vol = σ-φ/n  │ = 탁상 50 MW     │
-│ │ SC 코일 18개│   │ SO(3) τ=4 │   │ 1/r 표면장          │                  │
+│ │ B_T=σ·τ=48 T│ × │ SU(2) φ=2 │ × │ Area/Vol = σ-φ/n  │ = standupper 50 MW     │
+│ │ SC coil 18pieces│   │ SO(3) τ=4 │   │ 1/r surfacechapter          │                  │
 │ └─────────────┘   └───────────┘   └───────────────────┘                  │
 │                                                                          │
-│   CENTER: D-T 플라즈마 φ=2 m 토러스 ─ ρ_P = φ^τ+μ = 17 MW/m³             │
-│   LAYER1: Eurofer97 벽 (P_wall = n/φ = 3 MW/m²)                          │
-│   LAYER2: Li-6/Be 블랑킷 (TBR = 7/n = 1.167, τ=4 서브층)                   │
-│   LAYER3: W 반사체 (두께 = sopfr/100 = 5 cm)                              │
-│   LAYER4: B₄C 중성자 차폐 (두께 = σ/10 = 1.2 m, μ=1 μSv/yr 외부)           │
-│   LAYER5: SC 코일 σ·τ=48 T (Nb₃Sn + REBCO 하이브리드)                    │
-│   LAYER6: 액체 Pb-Li 냉각 (ΔT = σ=12 K → Brayton σ·sopfr=60% η)          │
+│   CENTER: D-T plasma φ=2 m toruns ─ ρ_P = φ^τ+μ = 17 MW/m³             │
+│   LAYER1: Eurofer97 wall (P_wall = n/φ = 3 MW/m²)                          │
+│   LAYER2: Li-6/Be blanket (TBR = 7/n = 1.167, τ=4 sublayer)                   │
+│   LAYER3: W reflectionfield (thickness = sopfr/100 = 5 cm)                              │
+│   LAYER4: B₄C neutron shielding (thickness = σ/10 = 1.2 m, μ=1 μSv/yr external)           │
+│   LAYER5: SC coil σ·τ=48 T (Nb₃Sn + REBCO hybrid)                    │
+│   LAYER6: liquid Pb-Li cooling (ΔT = σ=12 K → Brayton σ·sopfr=60% η)          │
 ├──────────────────────────────────────────────────────────────────────────┤
 │  Q-value = P_fus / P_input = σ-φ = 10 ........ [10*]                     │
-│  전체 반경 = σ-φ/(σ-φ) · (φ+μ) = 3 m → 탁상 클래스                         │
+│  entire radius = σ-φ/(σ-φ) · (φ+μ) = 3 m → standupper class                         │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-**3축 결합 폐형 (compose 출력):**
+**3axis coupling closedtype (compose output):**
 ```
 P_50MW = ρ_P · V_p = (φ^τ+μ) · (n/φ) = 17·3 = 51 MW ≈ 50 MW · (1 + μ/σ)
-       = σ-sopfr+μ · τ · (σ-φ+n)/σ-φ  ... 하나의 n=6 산술 폐형으로 3축 통합
+       = σ-sopfr+μ · τ · (σ-φ+n)/σ-φ  ... do or of n=6 arithmetic closedtypeas 3axis integration
 ```
 
-### §8.5 검증 블록 (§7 통합 체크 추가)
+### §8.5 verify block (§7 integration fieldK additional)
 
-| 예측 | 값 | n=6 폐형 | 등급 | atlas 앵커 |
+| prediction | value | n=6 closedtype | grade | atlas angco |
 |------|-----|---------|------|----------|
 | P_total | 50 MW | (φ^τ+μ)·(n/φ) | [10*] | FPP-01 |
 | V_chamber | 6 m³ | n | [10*] | FPP-02 |
@@ -644,25 +644,25 @@ P_50MW = ρ_P · V_p = (φ^τ+μ) · (n/φ) = 17·3 = 51 MW ≈ 50 MW · (1 + μ
 | P_wall | 3 MW/m² | n/φ | [10] | FPP-04 |
 | TBR | 1.167 | 7/n | [10*] | FPP-05 |
 | Q-value | 10 | σ-φ | [10*] | FPP-06 |
-| 블랑킷 두께 | 1.2 m | σ/10 | [9] | FPP-07 |
-| 블랑킷 서브층 | 4 | τ | [10*] | FPP-08 |
-| 차폐 외부 선량 | 1 μSv/yr | μ | [10*] | FPP-09 |
-| SC 코일 수 | 18 | σ+n (≡ITER) | [10*] | FPP-10 |
+| blanket thickness | 1.2 m | σ/10 | [9] | FPP-07 |
+| blanket sublayer | 4 | τ | [10*] | FPP-08 |
+| shielding external line amount | 1 μSv/yr | μ | [10*] | FPP-09 |
+| SC coil several | 18 | σ+n (≡ITER) | [10*] | FPP-10 |
 | Brayton η | 60% | σ·sopfr% | [9] | FPP-11 |
-| 전체 반경 | 3 m | φ+μ | [N?] | FPP-12 |
+| entire radius | 3 m | φ+μ | [N?] | FPP-12 |
 
-### §8.6 FALSIFIERS (탁상 FPP 고유)
+### §8.6 FALSIFIERS (standupper FPP intrinsic)
 
-1. P_wall > **τ=4 MW/m²** 측정 → Eurofer97 수명 τ·σ=48 FPY 폐기.
-2. TBR_measured < σ-φ/σ·μ = 10/12 = 0.833 → Li-6/Be 배율 공식 폐기.
-3. 챔버 V > σ·τ=48 m³ 강요 시 "탁상" 정의 폐기 → non-tabletop 분기.
-4. 누출 선량 > σ=12 μSv/yr 측정 → B₄C 차폐 두께 공식 (σ/10) 폐기.
+1. P_wall > **τ=4 MW/m²** measurement → Eurofer97 lifetime τ·σ=48 FPY disposal.
+2. TBR_measured < σ-φ/σ·μ = 10/12 = 0.833 → Li-6/Be magnification formula disposal.
+3. chamber V > σ·τ=48 m³ riverplease  hr "standupper" definition disposal → non-tabletop branch.
+4. leakage line amount > σ=12 μSv/yr measurement → B₄C shielding thickness formula (σ/10) disposal.
 
 ---
 
-**종합**: 궁극의 핵융합 발전소 (HEXA-FUSION-PP) 는 n=6 완전수 산술을 축으로 물리/공학 한계를 돌파하며, 11/11 정직성 검증 PASS.
-§8 BLOWUP 결과: 50 MW 탁상 구성 = **(φ^τ+μ)·(n/φ) MW/m³·m³** 단일 폐형으로 ρ_P/P_wall/TBR 3축 동시 정리.
-선행 도메인 fusion, superconductor, room-temp-sc 모두 🛸10 도달 시 HEXA-FUSION-PP Mk.V 물리 한계 완전 폐쇄.
+**endsum**: ultimate of fusion power plant (HEXA-FUSION-PP)  n=6 perfect number arithmetic axisas waterli/engineering limit breakthrough-pattern and, 11/11 fixedlinearity verify PASS.
+§8 BLOWUP Result: 50 MW standupper configuration = **(φ^τ+μ)·(n/φ) MW/m³·m³** single closedtypeas ρ_P/P_wall/TBR 3axis simultaneous theorem.
+linerow domain fusion, superconductor, room-temp-sc all 🛸10 reach  hr HEXA-FUSION-PP Mk.V waterli limit complete closed.
 
 
 ## §9 METRICS

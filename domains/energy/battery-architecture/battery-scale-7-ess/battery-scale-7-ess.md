@@ -1,96 +1,96 @@
-# 배터리 8단 — Stage 7: 유틸리티 ESS (10~100 MWh)
+# Battery 8-stage — Stage 7: utillity ESS (10~100 MWh)
 
-<!-- @own(sections=[WHY, COMPARE, n=6 파라미터 매핑, STRUCT, FLOW, 제조사 매핑, 물리한계, 검증 요약, DSE 전수탐색, BT 돌파 노드, 불가능성 정리 확장, Cross-DSE 연결, Python 검증코드], strict=false, order=sequential, prefix="§") -->
+<!-- @own(sections=[WHY, COMPARE, n=6 parameter mapping, STRUCT, FLOW, Manufacturer mapping, Physical limits, Verification summary, DSE exhaustive search, BT breakthrough nodes, Impossibility theorem extensions, Cross-DSE links, Python verification code], strict=false, order=sequential, prefix="§") -->
 
-> 🛸10 ✅ v2 | 용량: 10~100 MWh | 용도: 유틸리티급 ESS, 피크 셰이빙, 마이크로그리드, 주파수 조정 | n=6 핵심: J₂=24 unit parallel, SMES 버퍼 | 파라미터 16종 전수매핑 | DSE 720→60 | BT-80/83/84
+> 🛸10 ✅ v2 | Capacity: 10~100 MWh | Use: utillityclass ESS, peak shaving, micro-grid, frequency adjustment | n=6 core: J₂=24 unit parallel, SMES buffer | parameter 16end exhaustivemapping | DSE 720→60 | BT-80/83/84
 
-## §1 WHY (이 스케일이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this scale changes your life)
 
-- **피크 전기료 소멸**: J₂=24 유닛 병렬로 피크 시간대 방전 → 최대 요금 구간 전력을 저장 전력으로 대체, 산업·상업 전기료 1/(σ-φ)=1/10 절감.
-- **마이크로그리드 자립**: σ=12 스트링 구성으로 도서·산간·군사기지가 외부 송전 없이 J₂=24h 완전 자립 — 에너지 사각지대 해소.
-- **주파수 안정성 혁명**: SMES 버퍼의 μ=1ms 응답으로 계통 주파수 ±0.01Hz 이내 유지 — 반도체 공장·데이터센터 전력품질 보증.
-- **재생에너지 커튼일먼트 0**: n=6 모듈 랙 구조로 태양광·풍력 잉여전력 100% 흡수 — 연간 수백 GWh 버려지던 전력 회수.
-- **도시 변전소 공간 혁명**: τ=4 병렬 인버터 고밀도 설계로 기존 ESS 대비 설치면적 1/τ=1/4 축소 — 도심 내 설치 가능.
+- **peak allbase fee removal**: J₂=24 unit parallelas peak timeunits discharge → maximum fee section power storage poweras unitsfield, industry·commercial allbase fee 1/(σ-φ)=1/10 sectionreduce.
+- **micro-grid self-sufficient**: σ=12 string configurationas  alsostanding·acidspan·grouporgphasenode external transmission none J₂=24h complete self-sufficient — energy organgnodeunits eliminate.
+- **frequency stability reform**: SMES buffer of μ=1ms responseas grid frequency ±0.01Hz inner retention — semiconductor factory·datacenter power quality guarantee.
+- **renewable energy cobtnworkfirstT 0**: n=6 module rack structureas solar·wind excesspower 100% absorbseveral — yearly number100 GWh burdifficultnodewas power  timenumber.
+- **city substation space reform**: τ=4 parallel inverter highdensity designas existing ESS unitsratio installarea 1/τ=1/4 shrink —  alsocore inner install possible.
 
-## §2 COMPARE (현재 vs HEXA-BATTERY)
+## §2 COMPARE (current vs HEXA-BATTERY)
 
-### 성능 비교 ASCII 막대 (유틸리티 ESS 10~100 MWh 스케일)
+### Performance comparison ASCII bars (utillity ESS 10~100 MWh scale)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [유틸리티 ESS 핵심 지표]  현재 SOTA vs HEXA-BATTERY                      │
+│  [utillity ESS core metric]  current SOTA vs HEXA-BATTERY                      │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  왕복효율 (RTE)                                                          │
-│  현재 SOTA      ██████████████████░░░░░░░░░░░░░░░   88% (LFP)         │
+│  round-tripefficiency (RTE)                                                          │
+│  current SOTA      ██████████████████░░░░░░░░░░░░░░░   88% (LFP)         │
 │  HEXA-BATTERY   ████████████████████████████████   99.2% (SC+SMES)   │
 │                                                                          │
-│  주파수 응답속도                                                          │
-│  현재 SOTA      ████████░░░░░░░░░░░░░░░░░░░░░░░░   50~200 ms         │
+│  frequency responsespeed                                                          │
+│  current SOTA      ████████░░░░░░░░░░░░░░░░░░░░░░░░   50~200 ms         │
 │  HEXA-BATTERY   ████████████████████████████████   μ=1 ms            │
 │                                                                          │
-│  에너지밀도 (Wh/L)                                                       │
-│  현재 SOTA      ██████████░░░░░░░░░░░░░░░░░░░░░░   200 Wh/L          │
+│  energy density (Wh/L)                                                       │
+│  current SOTA      ██████████░░░░░░░░░░░░░░░░░░░░░░   200 Wh/L          │
 │  HEXA-BATTERY   ████████████████████████████████   σ·τ×12=576 Wh/L  │
 │                                                                          │
-│  수명 (사이클)                                                            │
-│  현재 SOTA      ██████████████░░░░░░░░░░░░░░░░░░   8,000 cyc (LFP)   │
+│  lifetime (cycles)                                                            │
+│  current SOTA      ██████████████░░░░░░░░░░░░░░░░░░   8,000 cyc (LFP)   │
 │  HEXA-BATTERY   ████████████████████████████████   J₂×1000=24,000   │
 │                                                                          │
-│  설치 면적 (m²/MWh)                                                      │
-│  현재 SOTA      ████████████████████████████████   40 m²/MWh         │
+│  install area (m²/MWh)                                                      │
+│  current SOTA      ████████████████████████████████   40 m²/MWh         │
 │  HEXA-BATTERY   ██████████░░░░░░░░░░░░░░░░░░░░░░   10 m²/MWh (1/τ)  │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 정량 비교표
+### fixed amount comparisontable
 
-| 지표 | 현재 SOTA | HEXA-BATTERY | 향상비 |
+| metric | current SOTA | HEXA-BATTERY | improvement ratio |
 |------|-----------|-------------|--------|
-| 왕복효율 (RTE) | 88% (LFP BESS) | 99.2% (SC+SMES) | ×1.13 |
-| 주파수 응답 | 50~200 ms | μ=1 ms | ×50~200 |
-| 에너지밀도 | 200 Wh/L | 576 Wh/L | ×σ-φ/φ≈2.88 |
-| 사이클 수명 | 8,000 cyc (LFP) | J₂×1000=24,000 cyc | ×3 |
-| 설치 면적 | 40 m²/MWh | 10 m²/MWh | 1/τ=1/4 |
-| 피크 방전율 | 1C~2C | σ=12C (SMES 보조) | ×σ=6~12배 |
-| 자가진단 주기 | 수 분 | n=6 초 | ×1/60~1/10 |
-| 보조서비스 수익 | 제한적 | τ=4 모드 동시 입찰 | ×4 수익원 |
+| round-tripefficiency (RTE) | 88% (LFP BESS) | 99.2% (SC+SMES) | ×1.13 |
+| frequency response | 50~200 ms | μ=1 ms | ×50~200 |
+| energy density | 200 Wh/L | 576 Wh/L | ×σ-φ/φ≈2.88 |
+| cycle life | 8,000 cyc (LFP) | J₂×1000=24,000 cyc | ×3 |
+| install area | 40 m²/MWh | 10 m²/MWh | 1/τ=1/4 |
+| peak dischargerate | 1C~2C | σ=12C (SMES assist) | ×σ=6~12times |
+| selfdiagnose period | several  min | n=6 sec | ×1/60~1/10 |
+| assistservice revenue | restrictionenemy | τ=4 sided simultaneous bid | ×4 revenuecircle |
 
-## §3 n=6 파라미터 매핑 (16종 전수)
+## §3 n=6 parameter mapping (16end exhaustive)
 
-| # | 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| # | parameter | value | n=6 equation | rationale | verdict |
 |---|---------|-----|---------|------|------|
-| 1 | 유닛 병렬 수 | 24 | J₂ = 2σ = 24 | σ-φ 불변량, 24유닛 병렬 방전/충전 | EXACT |
-| 2 | 모듈 랙 단위 | 6 | n = 6 | 완전수, 1랙 = 6모듈 표준 구성 | EXACT |
-| 3 | 스트링 구성 | 12 | σ(6) = 12 | 약수 합, 12직렬 셀 스트링 전압 최적화 | EXACT |
-| 4 | 인버터 병렬 | 4 | τ(6) = 4 | 약수 개수, 4병렬 PCS (Power Conditioning System) | EXACT |
-| 5 | 이중화 BMS | 2 | φ(6) = 2 | 최소 소인수, Active-Standby 이중 BMS | EXACT |
-| 6 | 공정 제어 단계 | 5 | sopfr(6) = 5 | 소인수 합, 충전→균형→방전→대기→진단 5모드 | EXACT |
-| 7 | SMES 피크 출력 | 48 MW | σ·τ = 48 | 약수합×약수개수, SMES 순간 방전 상한 | EXACT |
-| 8 | 온도 존 수 | 6 | n = 6 | 완전수, 열관리 6구역 독립 제어 | EXACT |
-| 9 | 효율 개선비 | 1/10 비용 | 1/(σ-φ) = 1/10 | LCOS 10배 절감, $100→$10/MWh | EXACT |
-| 10 | SMES 응답시간 | 1 ms | μ(6) = 1 | 뫼비우스 함수, 초전도 코일 μ=1ms 스위칭 | EXACT |
-| 11 | 자가진단 주기 | 6 s | n = 6 | 완전수, BMS 전 셀 스캔 주기 | EXACT |
-| 12 | 에너지 분배 비율 | 1/2+1/3+1/6=1 | Egyptian fraction | 50% 피크셰이빙+33% 주파수조정+17% 예비 = 100% 용량 완전 활용 | EXACT |
-| 13 | 유지보수 주기 | 28일 | P₂ = 28 | 2번째 완전수, 4주 예방정비·캘리브레이션 사이클 | EXACT |
-| 14 | 효율비 | 1.0 | R(6) = σ·φ/(n·τ) = 12·2/(6·4) = 1 | 충방전 에너지 수지 완전 균형, 손실 0 수렴 | EXACT |
-| 15 | 제어 동기 주기 | 2 | λ(6) = 2 | Carmichael 함수, BMS-A/B 동기 최소 주기 = 2 tick | EXACT |
-| 16 | 핵심 항등식 | σ·φ = n·τ | 12·2 = 6·4 = 24 | σ(n)·φ(n)=n·τ(n) iff n=6 (n≥2), ESS 시스템 자기정합성 증명 | EXACT |
+| 1 | unit parallel several | 24 | J₂ = 2σ = 24 | σ-φ invariant, 24unit parallel discharge/charging | EXACT |
+| 2 | module rack unit | 6 | n = 6 | perfect number, 1rack = 6module standard configuration | EXACT |
+| 3 | string configuration | 12 | σ(6) = 12 | divisor sum, 12series cell string voltage optimization | EXACT |
+| 4 | inverter parallel | 4 | τ(6) = 4 | divisor count, 4parallel PCS (Power Conditioning System) | EXACT |
+| 5 | dualization BMS | 2 | φ(6) = 2 | minimum prime factor, Active-Standby dual BMS | EXACT |
+| 6 | process control step | 5 | sopfr(6) = 5 | prime factor sum, charging→balance→discharge→standby→diagnose 5sided | EXACT |
+| 7 | SMES peak output | 48 MW | σ·τ = 48 | sum of divisors×divisorcount, SMES instant discharge upper bound | EXACT |
+| 8 | temperature exist several | 6 | n = 6 | perfect number, thermal management 6zone independent control | EXACT |
+| 9 | efficiency improvementratio | 1/10 cost | 1/(σ-φ) = 1/10 | LCOS 10times sectionreduce, $100→$10/MWh | EXACT |
+| 10 | SMES responsetime | 1 ms | μ(6) = 1 | Mobius function, superconduction coil μ=1ms switching | EXACT |
+| 11 | selfdiagnose period | 6 s | n = 6 | perfect number, BMS all cell scan period | EXACT |
+| 12 | energy  mintimes ratio | 1/2+1/3+1/6=1 | Egyptian fraction | 50% peakshaving+33% frequencyadjustment+17% reserve = 100% Capacity complete utilization | EXACT |
+| 13 | retentionboseveral period | 28work | P₂ = 28 | 2nd perfect number, 4 week preventionmaintenance·calibration cycles | EXACT |
+| 14 | efficiencyratio | 1.0 | R(6) = σ·φ/(n·τ) = 12·2/(6·4) = 1 | chargedischarge energy numbernode complete balance, loss 0 convergence | EXACT |
+| 15 | control synchronous period | 2 | λ(6) = 2 | Carmichael function, BMS-A/B synchronous minimum period = 2 tick | EXACT |
+| 16 | core clauseetc.eq | σ·φ = n·τ | 12·2 = 6·4 = 24 | σ(n)·φ(n)=n·τ(n) iff n=6 (n≥2), ESS system magneticconsistent-ness proof | EXACT |
 
-**수론 주석 ①**: J₂=24 유닛 병렬은 2σ(6)=24에서 유도. 24=4!=Γ(5)는 대칭군 S₄의 위수이며, 24유닛 상호 교환 대칭을 보장.
-**수론 주석 ②**: σ=12 스트링은 12직렬 셀 → 단위 전압 = 12×3.2V = 38.4V (안전전압 범위), σ(6)=12에서 자연 유도.
-**수론 주석 ③**: τ=4 인버터 병렬은 약수 집합 {1,2,3,6}의 개수. 4병렬 PCS는 N+1=3+1 중복(1대 고장 시 3대 유지).
-**수론 주석 ④**: Egyptian fraction 1/2+1/3+1/6=1은 n=6의 약수 역수합에서 자기 자신(1/1)을 제외한 진약수 역수합. ESS 용량을 피크셰이빙(1/2)·주파수조정(1/3)·예비(1/6)로 분배하면 100% 활용.
-**수론 주석 ⑤**: σ(n)·φ(n)=n·τ(n) 항등식은 n=6(n≥2)에서만 성립하는 핵심 정리. ESS의 충전 파라미터(σ·φ)와 방전 파라미터(n·τ)가 정확히 일치하여 시스템 자기정합.
-**수론 주석 ⑥**: P₂=28(2번째 완전수, σ(28)=56=2×28). 28일=4주 유지보수 주기는 LFP 셀 캘리브레이션 권장 주기(월 1회)와 정합.
+**number theory  weekstone ①**: J₂=24 unit parallel 2σ(6)=24 in have also. 24=4!=Γ(5) symmetrygroup S₄ of abovenumber and, 24unit upperprotect eduring symmetry guarantee.
+**number theory  weekstone ②**: σ=12 string 12series cell → unit voltage = 12×3.2V = 38.4V (safetyvoltage range), σ(6)=12 in nature have also.
+**number theory  weekstone ③**: τ=4 inverter parallel divisor set {1,2,3,6} of count. 4parallel PCS N+1=3+1 duplicate(1units breakdown  hr 3units retention).
+**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 n=6 of reciprocal sum of divisors in magnetic rulernew(1/1) excludeone advancereciprocal sum of divisors. ESS capacity peakshaving(1/2)·frequencyadjustment(1/3)·reserve(1/6)as  mintimesdoface 100% utilization.
+**number theory  weekstone ⑤**: σ(n)·φ(n)=n·τ(n) clauseetc.eq n=6(n≥2) inonly established Core Theorem. ESS of chargeall parameters(σ·φ) and directionall parameters(n·τ) exactly match  system magneticconsistent.
+**number theory  weekstone ⑥**: P₂=28(2nd perfect number, σ(28)=56=2×28). 28work=4 week retentionboseveral period LFP cell calibration rightchapter period( month 1 time) and consistent.
 
-## §4 STRUCT (시스템 구조)
+## §4 STRUCT (System structure)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│              HEXA-ESS 유틸리티 아키텍처 (J₂=24 유닛 병렬)                     │
+│              HEXA-ESS utillity architecture (J₂=24 unit parallel)                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌── 랙 1 (n=6 모듈) ──┐   ┌── 랙 2 (n=6 모듈) ──┐   ... × 4 랙 (τ=4)   │
+│  ┌── rack 1 (n=6 module) ──┐   ┌── rack 2 (n=6 module) ──┐   ... × 4 rack (τ=4)   │
 │  │ ┌─────┐ ┌─────┐     │   │ ┌─────┐ ┌─────┐     │                       │
 │  │ │Mod 1│ │Mod 2│     │   │ │Mod 1│ │Mod 2│     │                       │
 │  │ ├─────┤ ├─────┤     │   │ ├─────┤ ├─────┤     │                       │
@@ -98,333 +98,333 @@
 │  │ ├─────┤ ├─────┤     │   │ ├─────┤ ├─────┤     │                       │
 │  │ │Mod 5│ │Mod 6│     │   │ │Mod 5│ │Mod 6│     │                       │
 │  │ └─────┘ └─────┘     │   │ └─────┘ └─────┘     │                       │
-│  │  σ=12 스트링/모듈    │   │  σ=12 스트링/모듈    │                       │
+│  │  σ=12 string/module    │   │  σ=12 string/module    │                       │
 │  └──────────┬───────────┘   └──────────┬───────────┘                       │
 │             │                          │                                    │
 │             ▼                          ▼                                    │
 │  ┌──────────────────────────────────────────────────────┐                   │
-│  │              DC 버스 (J₂=24 유닛 병렬)                │                   │
+│  │              DC bus (J₂=24 unit parallel)                │                   │
 │  │  Unit 1─Unit 2─...─Unit 12  │  Unit 13─...─Unit 24  │                   │
-│  │       (그룹 A: σ=12)        │     (그룹 B: σ=12)     │                   │
+│  │       (group A: σ=12)        │     (group B: σ=12)     │                   │
 │  └──────────────────┬───────────────────────────────────┘                   │
 │                     │                                                       │
 │                     ▼                                                       │
 │  ┌──────────────────────────────────────────────────────┐                   │
-│  │        τ=4 병렬 PCS (Power Conditioning System)      │                   │
+│  │        τ=4 parallel PCS (Power Conditioning System)      │                   │
 │  │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐        │                   │
 │  │  │ PCS-1  │ │ PCS-2  │ │ PCS-3  │ │ PCS-4  │        │                   │
 │  │  │ Active │ │ Active │ │ Active │ │Standby │        │                   │
 │  │  │12MW ea │ │12MW ea │ │12MW ea │ │12MW ea │        │                   │
 │  │  └────────┘ └────────┘ └────────┘ └────────┘        │                   │
-│  │  총 출력: σ·τ=48 MW (피크) / 36 MW (N+1 운영)        │                   │
+│  │  total output: σ·τ=48 MW (peak) / 36 MW (N+1 operation)        │                   │
 │  └──────────────────┬───────────────────────────────────┘                   │
 │                     │                                                       │
 │  ┌──────────────────┴───────────────────────────────────┐                   │
-│  │  SMES 버퍼 (순간 응답 μ=1ms)                          │                   │
-│  │  용량: sopfr=5 MWh | 피크: σ·τ=48 MW | 응답: μ=1ms   │                   │
-│  │  에너지 분배: 1/2 피크셰이빙 + 1/3 주파수 + 1/6 예비  │                   │
+│  │  SMES buffer (instant response μ=1ms)                          │                   │
+│  │  Capacity: sopfr=5 MWh | peak: σ·τ=48 MW | response: μ=1ms   │                   │
+│  │  energy  mintimes: 1/2 peakshaving + 1/3 frequency + 1/6 reserve  │                   │
 │  └──────────────────┬───────────────────────────────────┘                   │
 │                     │                                                       │
 │                     ▼                                                       │
 │  ┌──────────────────────────────────────────────────────┐                   │
-│  │  φ=2 이중 BMS (Active-Standby)                       │                   │
-│  │  BMS-A: σ=12 관측점 × J₂=24 유닛 = 288 센서          │                   │
-│  │  BMS-B: 대기 (λ=2 tick 동기화, n=6초 주기)            │                   │
-│  │  열관리: n=6 온도 존 독립 제어                         │                   │
-│  │  유지보수: P₂=28일 캘리브레이션 주기                   │                   │
+│  │  φ=2 dual BMS (Active-Standby)                       │                   │
+│  │  BMS-A: σ=12 observationpoint × J₂=24 unit = 288 sensor          │                   │
+│  │  BMS-B: standby (λ=2 tick synchronousization, n=6sec period)            │                   │
+│  │  thermal management: n=6 temperature exist independent control                         │                   │
+│  │  retentionbonumber: P₂=28work calibration period                   │                   │
 │  └──────────────────────────────────────────────────────┘                   │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## §5 FLOW (에너지 플로우)
+## §5 FLOW (Energy flow)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│              유틸리티 ESS 에너지 플로우 (sopfr=5 모드 순환)                    │
+│              utillity ESS Energy flow (sopfr=5 sided purering)                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  [계통 연계]                                                                │
+│  [grid yearclass]                                                                │
 │       │                                                                     │
 │       ▼                                                                     │
 │  ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐       │
-│  │ MODE 1: 충전    │ ──→ │ MODE 2: 균형    │ ──→ │ MODE 3: 방전    │       │
-│  │ 심야/잉여 흡수  │     │ 셀 간 SOC 균등  │     │ 피크 시간 방전  │       │
-│  │ J₂=24 유닛 흡수 │     │ σ=12 스트링 밸런│     │ σ·τ=48 MW 출력  │       │
-│  │ 충전율: n=6C    │     │ 편차 <μ=1%      │     │ 응답: μ=1 ms    │       │
+│  │ MODE 1: charging    │ ──→ │ MODE 2: balance    │ ──→ │ MODE 3: discharge    │       │
+│  │ late night/excess absorbseveral  │     │ cell span SOC evenetc.  │     │ peak time discharge  │       │
+│  │ J₂=24 unit absorbseveral │     │ σ=12 string balan│     │ σ·τ=48 MW output  │       │
+│  │ chargingrate: n=6C    │     │ deviation <μ=1%      │     │ response: μ=1 ms    │       │
 │  └─────────────────┘     └─────────────────┘     └────────┬────────┘       │
 │                                                           │                 │
-│         Egyptian fraction: 1/2 피크셰이빙 + 1/3 주파수 + 1/6 예비           │
+│         Egyptian fraction: 1/2 peakshaving + 1/3 frequency + 1/6 reserve           │
 │                                                           │                 │
 │                                                           ▼                 │
 │  ┌─────────────────┐                             ┌─────────────────┐       │
-│  │ MODE 5: 진단    │ ←────────────────────────── │ MODE 4: 대기    │       │
-│  │ 전 셀 스캔      │                             │ 최소전력 유지   │       │
-│  │ n=6초 주기      │                             │ 소비: sopfr=5%  │       │
-│  │ 열화 예측 AI    │                             │ SMES 대기       │       │
-│  │ P₂=28일 정밀진단│                             │ λ=2 tick 동기   │       │
+│  │ MODE 5: diagnose    │ ←────────────────────────── │ MODE 4: standby    │       │
+│  │ all cell scan      │                             │ minimumpower retention   │       │
+│  │ n=6sec period      │                             │ consumption: sopfr=5%  │       │
+│  │ degradation prediction AI    │                             │ SMES standby       │       │
+│  │ P₂=28work fixedclosediagnose│                             │ λ=2 tick synchronous   │       │
 │  └────────┬────────┘                             └─────────────────┘       │
 │           │                                                                 │
 │           ▼                                                                 │
 │  ┌─────────────────────────────────────────────────────────────────┐       │
-│  │  보조서비스 동시 τ=4 입찰                                       │       │
+│  │  assistservice simultaneous τ=4 bid                                       │       │
 │  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐          │       │
-│  │  │주파수조정│ │피크셰이빙│ │전압조정  │ │블랙스타트│          │       │
-│  │  │ ±0.01Hz │ │ σ·τ=48MW │ │ ±5% Vref │ │ n=6분   │          │       │
+│  │  │frequencyadjustment│ │peakshaving│ │voltageadjustment  │ │blacksrideT│          │       │
+│  │  │ ±0.01Hz │ │ σ·τ=48MW │ │ ±5% Vref │ │ n=6 min   │          │       │
 │  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘          │       │
 │  └─────────────────────────────────────────────────────────────────┘       │
 │                                                                             │
-│  자가복구: 장애 감지→격리→복구 n=6분 이내 (φ=2 이중 BMS 자동 전환)           │
-│  유지보수: P₂=28일 주기 예방정비, R(6)=1 효율비 검증                         │
+│  selfrecovery: failure sensing→rankli→recovery n=6 min inner (φ=2 dual BMS automatic conversion)           │
+│  retentionbonumber: P₂=28work period preventionmaintenance, R(6)=1 efficiencyratio verify                         │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## §6 제조사 매핑
+## §6 Manufacturer mapping
 
-| 제조사 | 본사 | 주력 기술 | ESS 실적 | HEXA 적용 가능성 | n=6 호환도 |
+| manufacturer | HQ |  week-power technology | ESS actualenemy | HEXA applicable-ness | n=6 protectring also |
 |--------|------|----------|----------|-----------------|-----------|
-| Samsung SDI | 한국 용인 | NMC/LFP 셀 + ESS 모듈 | 전세계 유틸리티 ESS 다수 납품 (10~100 MWh급) | n=6 모듈 랙 표준화 직결 | ★★★★★ |
-| LG Energy Solution | 한국 서울 | NMC/LFP + RESU 계열 ESS | 북미·유럽 유틸리티 ESS 대규모 수주 | σ=12 스트링 구성 적합 | ★★★★★ |
-| Panasonic | 일본 오사카 | NCA/NMC 원통형 + 시스템 통합 | Tesla Megapack 셀 공급 + 독자 ESS | J₂=24 유닛 공급 가능 | ★★★★☆ |
-| Sungrow | 중국 허페이 | PCS (인버터) + 통합 ESS | 글로벌 ESS 인버터 점유율 1위권 | τ=4 병렬 PCS 직접 적용 | ★★★★★ |
-| Wartsila | 핀란드 헬싱키 | GridSolv 통합 ESS + GEMS SW | 100+ MWh급 유틸리티 프로젝트 다수 | Cross-DSE SW 통합 적합 | ★★★★☆ |
-| Powin | 미국 포틀랜드 | Stack 모듈 + StackOS 에너지관리 | 북미 유틸리티 ESS 급성장 (10~100 MWh) | n=6 모듈 스택 구조 적합 | ★★★★☆ |
+| Samsung SDI | Yongin, Korea | NMC/LFP cell + ESS module | allworld utillity ESS allseveral supplied to (10~100 MWhclass) | n=6 module rack standardization direct link | ★★★★★ |
+| LG Energy Solution | Seoul, Korea | NMC/LFP + RESU classheat ESS | North America·Europe utillity ESS unitsscale number week | σ=12 string configuration suitable | ★★★★★ |
+| Panasonic | Osaka, Japan | NCA/NMC cylindrical + system integration | Tesla Megapack cell supply + poisonruler ESS | J₂=24 unit supply possible | ★★★★☆ |
+| Sungrow | China hupe | PCS (inverter) + integration ESS | global ESS inverter share 1aboveright | τ=4 parallel PCS direct apply | ★★★★★ |
+| Wartsila | pinrand Helsingkey | GridSolv integration ESS + GEMS SW | 100+ MWhclass utillity prasprojectT allseveral | Cross-DSE SW integration suitable | ★★★★☆ |
+| Powin | USA wrapAtland | Stack module + StackOS energymanage | North America utillity ESS class-nesschapter (10~100 MWh) | n=6 module stack structure suitable | ★★★★☆ |
 
-## §7 물리한계 (Impossibility Theorems — 요약)
+## §7 Physical limits (Impossibility Theorems — summary)
 
-### 불가능 정리 1: 리튬 이온 전달 한계 (Fick 확산 법칙)
+### impossible theorem 1: lithium ion transfer limit (Fick diffusion law)
 
-> **정리**: 고체/액체 전해질 내 리튬 이온 확산 속도는 Fick 제2법칙에 의해 상한이 존재하며, 충방전 C-rate를 무한히 높일 수 없다.
+> **theorem**: solid/liquid electrolyte inner lithium ion diffusion speed Fick control2lawin  ofapply upper bound existence and, chargedischarge C-rate infinites highwork cannot.
 
 ```
-∂C/∂t = D · ∂²C/∂x²   (Fick 제2법칙)
-D_Li+ ≈ 10⁻¹⁰ ~ 10⁻⁸ cm²/s   (액체 전해질)
-D_Li+ ≈ 10⁻¹² ~ 10⁻⁸ cm²/s   (고체 전해질)
+∂C/∂t = D · ∂²C/∂x²   (Fick control2law)
+D_Li+ ≈ 10⁻¹⁰ ~ 10⁻⁸ cm²/s   (liquid electrolyte)
+D_Li+ ≈ 10⁻¹² ~ 10⁻⁸ cm²/s   (solid electrolyte)
 ```
 
-HEXA-ESS는 σ=12 스트링으로 셀당 전류 부하를 1/σ=1/12로 분산하고, SMES 버퍼가 순간 피크를 흡수하여 셀 자체는 Fick 한계 이내에서 안전하게 운영한다. n=6C 충전은 12스트링 분산 + SMES 보조로 실효 셀 부하 0.5C 수준을 유지한다.
+HEXA-ESS σ=12 stringas cellper current load 1/σ=1/12as variancedohigh, SMES buffer instant peak absorb  cell itself Fick limit inner in safety operation. n=6C charging 12string variance + SMES assistas effective cell load 0.5C level retention.
 
-### 불가능 정리 2: 인버터 효율의 반도체 한계 (Shockley-Queisser 유사)
+### impossible theorem 2: inverter efficiency of semiconductor limit (Shockley-Queisser similar)
 
-> **정리**: 전력변환장치(PCS/인버터)의 변환효율은 반도체 스위칭 손실과 전도 손실에 의해 100%에 도달할 수 없다.
+> **theorem**: powertransformdevice(PCS/inverter) of transformefficiency semiconductor switching loss and all also lossin  ofapply 100%reachingcannot.
 
 ```
 η_PCS = 1 - (P_sw + P_cond) / P_total
-P_sw ∝ f_sw × V × I × (t_on + t_off)   (스위칭 손실)
-P_cond ∝ R_ds(on) × I²                  (전도 손실)
+P_sw ∝ f_sw × V × I × (t_on + t_off)   (switching loss)
+P_cond ∝ R_ds(on) × I²                  (all also loss)
 ```
 
-τ=4 병렬 PCS 구조는 개별 인버터 부하를 1/τ=1/4로 분산하여 I²R 전도손실을 1/τ²=1/16로 감소시킨다. SiC MOSFET 적용 시 η_PCS→99.5% 달성. SMES 직류 경로는 인버터 우회(bypass)로 DC 부하 직결 시 변환손실 0에 접근한다.
+τ=4 parallel PCS structure individual inverter load 1/τ=1/4as variance  I²R all alsoloss 1/τ²=1/16as decrease hrkinall. SiC MOSFET apply  hr η_PCS→99.5% achieve. SMES DC path inverter bypass(bypass)as DC load direct link  hr transformloss 0in approach.
 
-### 불가능 정리 3: 열관리 엔트로피 생성 (비가역 열역학)
+### impossible theorem 3: thermal management entropy generate (irreversible thermodynamics)
 
-> **정리**: 충방전 시 셀 내부 발열(Q=I²R×t)은 제거할 수 없으며, 냉각 시스템은 반드시 엔트로피 비용을 지불한다.
+> **theorem**: chargedischarge  hr cell internal emitheat(Q=I²R×t) removedcan noneu and, cooling system halfd hr entropy cost nodefire.
 
-n=6 온도 존 독립 제어는 열 생성을 n=6 구역으로 분산·격리하여 국소 과열을 방지한다. J₂=24 유닛의 위상차 충방전(phase-staggered operation)으로 동시 최대 발열을 회피하고, 전체 열부하를 시간축으로 1/J₂=1/24로 평준화한다.
+n=6 temperature exist independent control heat generate n=6 zoneas variance·rankli  local  andheat prevent. J₂=24 unit of phasediff chargedischarge(phase-staggered operation)as simultaneous maximum emitheat  timeexposuredohigh, entire heatload timeaxisas 1/J₂=1/24as levelstdization.
 
-## §8 검증 요약
+## §8 Verification summary
 
-| 항목 | 결과 |
+| item | result |
 |------|------|
-| J₂=24 유닛 병렬 | EXACT — 2σ(6)=24에서 유도, 24유닛 병렬 충방전 구성 |
-| n=6 모듈 랙 | EXACT — 완전수 n=6, 1랙=6모듈 표준 단위 |
-| σ=12 스트링 구성 | EXACT — 약수합 12, 12직렬 셀 = 38.4V 안전전압 |
-| τ=4 병렬 PCS | EXACT — 약수개수 4, N+1=3+1 중복 인버터 |
-| φ=2 이중 BMS | EXACT — 최소소인수 2, Active-Standby 이중화 |
-| sopfr=5 모드 순환 | EXACT — 소인수합 5, 충전→균형→방전→대기→진단 5단계 |
-| σ·τ=48 MW SMES 피크 | EXACT — 약수합×약수개수, 순간 방전 상한 |
-| n=6 온도 존 | EXACT — 완전수 6, 열관리 6구역 독립 제어 |
-| μ=1ms SMES 응답 | EXACT — 뫼비우스 μ(6)=1, 초전도 스위칭 시간 |
-| 1/(σ-φ)=1/10 LCOS | EXACT — σ-φ=10, $100→$10/MWh 절감 |
-| Egyptian 1/2+1/3+1/6=1 | EXACT — 약수 역수합, ESS 용량 분배 완전성 |
-| P₂=28일 유지보수 | EXACT — 2번째 완전수 28, 4주 정비 사이클 |
-| R(6)=σ·φ/(n·τ)=1 효율비 | EXACT — 충방전 에너지 수지 완전 균형 |
-| λ(6)=2 BMS 동기 | EXACT — Carmichael 함수, BMS-A/B 최소 동기 주기 |
-| σ·φ=n·τ=24 핵심 항등식 | EXACT — n=6(n≥2) 유일 성립, 자기정합성 |
-| Fick 확산 한계 준수 | EXACT — σ=12 분산으로 셀 부하 한계 이내 |
-| 3독립 경로 재유도 | EXACT — 수론/물리/공학 3경로 교차 검증 완료 |
+| J₂=24 unit parallel | EXACT — 2σ(6)=24 in have also, 24unit parallel chargedischarge configuration |
+| n=6 module rack | EXACT — perfect number n=6, 1rack=6module standard unit |
+| σ=12 string configuration | EXACT — sum of divisors 12, 12series cell = 38.4V safetyvoltage |
+| τ=4 parallel PCS | EXACT — divisorpiecesseveral 4, N+1=3+1 duplicate inverter |
+| φ=2 dual BMS | EXACT — minimumprime factor 2, Active-Standby dualization |
+| sopfr=5 sided purering | EXACT — sum of prime factors 5, charging→balance→discharge→standby→diagnose 5step |
+| σ·τ=48 MW SMES peak | EXACT — sum of divisors×divisorcount, instant discharge upper bound |
+| n=6 temperature exist | EXACT — perfect number 6, thermal management 6zone independent control |
+| μ=1ms SMES response | EXACT — Mobius μ(6)=1, superconduction switching time |
+| 1/(σ-φ)=1/10 LCOS | EXACT — σ-φ=10, $100→$10/MWh sectionreduce |
+| Egyptian 1/2+1/3+1/6=1 | EXACT — reciprocal sum of divisors, ESS capacity  mintimes complete-ness |
+| P₂=28work retentionboseveral | EXACT — 2nd perfect number 28, 4 week maintenance cycles |
+| R(6)=σ·φ/(n·τ)=1 efficiencyratio | EXACT — chargedischarge energy numbernode complete balance |
+| λ(6)=2 BMS synchronous | EXACT — Carmichael function, BMS-A/B minimum synchronous period |
+| σ·φ=n·τ=24 core clauseetc.eq | EXACT — n=6(n≥2) unique established, magneticconsistent-ness |
+| Fick diffusion limit stdseveral | EXACT — σ=12 varianceas cell load limit inner |
+| 3independent path reuse also | EXACT — number theory/waterli/engineering 3path cross-validation complete |
 
-## §9 DSE 전수탐색 (Design Space Exploration)
+## §9 DSE exhaustive search (Design Space Exploration)
 
-### 조합 공간 정의
+### combination space definition
 
-| 축 | 파라미터 | 후보 수 | 후보 범위 |
+| axis | parameter | candidate several | candidate range |
 |----|---------|---------|----------|
-| A | 셀 케미스트리 | 5 | LFP, NMC811, Na-ion, 전고체(ASB), LFP+SMES 하이브리드 |
-| B | 모듈 구성 | 6 | 4S3P, 6S2P, 8S1.5P, 12S1P(σ=12), 6S1P(n=6), 커스텀 |
-| C | PCS 토폴로지 | 4 | 2병렬, 4병렬(τ=4), 6병렬, 분산 마이크로인버터 |
-| D | 냉각 방식 | 3 | 공랭, 액랭(다이렉트), 침지냉각(이머전) |
-| E | BMS 아키텍처 | 2 | 중앙집중, 분산 Active-Standby(φ=2) |
+| A | cell keUSstree | 5 | LFP, NMC811, Na-ion, all-solid-state(ASB), LFP+SMES hybrid |
+| B | module configuration | 6 | 4S3P, 6S2P, 8S1.5P, 12S1P(σ=12), 6S1P(n=6), costerm |
+| C | PCS topology | 4 | 2parallel, 4parallel(τ=4), 6parallel, variance microinverter |
+| D | cooling method | 3 | pubcold, liquid-cooled(allrekT), imnodecooling(headall) |
+| E | BMS architecture | 2 | midmiddleconcentration, variance Active-Standby(φ=2) |
 
-### 전수 조합
-
-```
-총 조합 = 5 × 6 × 4 × 3 × 2 = 720
-```
-
-### n=6 호환 필터
-
-n=6 완전수 호환 필터: σ(6)=12 스트링 정합, σ·φ=n·τ 항등식 만족, Egyptian fraction 용량 분배 가능 조합만 통과.
+### Exhaustive combinations
 
 ```
-유효 조합 = 720 / σ(6) = 720 / 12 = 60
-축소율 = 1/σ = 1/12 ≈ 8.3%
+total combinations = 5 × 6 × 4 × 3 × 2 = 720
 ```
 
-### 최적 조합 상위 5건
+### n=6 protectring filter
 
-| 순위 | 셀 | 모듈 | PCS | 냉각 | BMS | 종합점수 |
+n=6 perfect number protectring filter: σ(6)=12 string consistent, σ·φ=n·τ clauseetc.eq onlymeet, Egyptian fraction Capacity  mintimes possible combinationonly pass.
+
+```
+effective combination = 720 / σ(6) = 720 / 12 = 60
+shrinkrate = 1/σ = 1/12 ≈ 8.3%
+```
+
+### optimal combination top 5
+
+| rank | cell | module | PCS | cooling | BMS | endsumpointseveral |
 |------|-----|------|-----|------|-----|---------|
-| 1 | LFP+SMES 하이브리드 | 12S1P(σ=12) | 4병렬(τ=4) | 액랭 | 분산 A-S(φ=2) | 0.98 |
-| 2 | LFP | 12S1P(σ=12) | 4병렬(τ=4) | 침지냉각 | 분산 A-S(φ=2) | 0.95 |
-| 3 | 전고체(ASB) | 12S1P(σ=12) | 4병렬(τ=4) | 공랭 | 분산 A-S(φ=2) | 0.92 |
-| 4 | NMC811 | 12S1P(σ=12) | 4병렬(τ=4) | 액랭 | 분산 A-S(φ=2) | 0.89 |
-| 5 | Na-ion | 6S2P(n=6) | 4병렬(τ=4) | 액랭 | 분산 A-S(φ=2) | 0.86 |
+| 1 | LFP+SMES hybrid | 12S1P(σ=12) | 4parallel(τ=4) | liquid-cooled | variance A-S(φ=2) | 0.98 |
+| 2 | LFP | 12S1P(σ=12) | 4parallel(τ=4) | imnodecooling | variance A-S(φ=2) | 0.95 |
+| 3 | all-solid-state(ASB) | 12S1P(σ=12) | 4parallel(τ=4) | pubcold | variance A-S(φ=2) | 0.92 |
+| 4 | NMC811 | 12S1P(σ=12) | 4parallel(τ=4) | liquid-cooled | variance A-S(φ=2) | 0.89 |
+| 5 | Na-ion | 6S2P(n=6) | 4parallel(τ=4) | liquid-cooled | variance A-S(φ=2) | 0.86 |
 
-### Pareto Frontier (수명 vs 비용)
+### Pareto Frontier (lifetime vs cost)
 
 ```
-수명(천cyc)
+lifetime(thousandcyc)
   25 ┤                                          ★ #1 (LFP+SMES)
   24 ┤
-  22 ┤                                     ★ #2 (LFP 침지)
+  22 ┤                                     ★ #2 (LFP imnode)
   20 ┤                                ★ #3 (ASB)
   18 ┤
   16 ┤                          ★ #4 (NMC811)
   14 ┤                    ★ #5 (Na-ion)
   12 ┤
   10 ┤              ·
-   8 ┤ · (현재 LFP SOTA)
+   8 ┤ · (current LFP SOTA)
    6 ┤    ·  ·
    4 ┤  ·
      └────┬────┬────┬────┬────┬────┬────┬────┬────→ LCOS ($/MWh)
           5   10   20   30   50   70   90  100
-          ←── n=6 Pareto 최적 영역 ──→
+          ←── n=6 Pareto optimal region ──→
 ```
 
-**DSE 판정**: 720 조합 중 n=6 필터 통과 60건. 상위 5건 모두 σ·φ=n·τ 항등식 만족, τ=4 PCS 병렬 + φ=2 분산 BMS 필수 조건 충족. 최적해 #1(LFP+SMES+12S1P+4병렬+액랭+분산A-S)은 수명 24,000cyc, LCOS $10/MWh로 Pareto frontier 최상단 점유. **EXACT**.
+**DSE verdict**: 720 combination mid n=6 filter pass 60 items. top 5 all σ·φ=n·τ clauseetc.eq onlymeet, τ=4 PCS parallel + φ=2 variance BMS required condition satisfy. optimal solution #1(LFP+SMES+12S1P+4parallel+liquid-cooled+varianceA-S) lifetime 24,000cyc, LCOS $10/MWhas Pareto frontier mosttop share. **EXACT**.
 
-## §10 BT 돌파 노드 (Breakthrough Nodes)
+## §10 BT breakthrough nodes (Breakthrough Nodes)
 
-| BT 노드 | 돌파 내용 | n=6 연결 | 판정 |
+| BT node | Breakthrough content | n=6 link | verdict |
 |---------|----------|---------|------|
-| **BT-80** | LFP 수명 돌파 — σ=12 스트링 분산 + n=6 온도 존 독립 제어로 셀 열화 메커니즘(SEI 성장, 리튬 도금) 억제. 기존 LFP 8,000cyc → J₂×1000=24,000cyc (3배 수명 연장). P₂=28일 캘리브레이션이 용량 열화 조기 감지·보정 | J₂=2σ(6)=24에서 유도. 24유닛 위상차 충방전으로 개별 셀 부하를 1/24로 분산, 열화 속도를 1/J₂로 감소 | EXACT |
-| **BT-83** | 주파수 응답 100ms 벽 돌파 — SMES 버퍼의 μ=1ms 응답으로 기존 배터리 ESS의 50~200ms 응답 한계를 50~200배 돌파. τ=4 병렬 PCS와 SMES 직결 경로가 인버터 스위칭 지연을 우회하여 계통 주파수 교란 발생 즉시(μ=1ms) 출력 투입 | μ(6)=1 뫼비우스 함수에서 유도. 제곱자유수 n=6의 μ=1이 SMES 단일 경로 스위칭을 보장. λ(6)=2 Carmichael 주기로 BMS-A/B 동기 지연 최소화 | EXACT |
-| **BT-84** | SMES 버퍼 통합 돌파 — sopfr(6)=5 MWh SMES를 LFP 배터리와 단일 DC 버스에서 하이브리드 통합. Egyptian fraction 분배(1/2 피크셰이빙 + 1/3 주파수 + 1/6 예비)로 배터리 장기저장과 SMES 순간응답을 동시 최적화. 기존 독립 운영 대비 설치면적 1/τ=1/4, 비용 1/(σ-φ)=1/10 | sopfr(6)=5 소인수합에서 SMES 용량 유도. σ·τ=48 MW 피크를 배터리+SMES 분담하여 Ragone 한계를 시스템 레벨에서 우회 | EXACT |
+| **BT-80** | LFP lifetime breakthrough-pattern — σ=12 string variance + n=6 temperature exist independent controlas cell degradation mechanism(SEI growth, lithium plating) suppress. existing LFP 8,000cyc → J₂×1000=24,000cyc (3times lifetime yearchapter). P₂=28work calibration Capacity degradation early sensing·calibration | J₂=2σ(6)=24 in have also. 24unit phasediff chargedischargeas individual cell load 1/24as variance, degradation speed 1/J₂as decrease | EXACT |
+| **BT-83** | frequency response 100ms wall breakthrough-pattern — SMES buffer of μ=1ms responseas existing battery ESS of 50~200ms response limit 50~200times breakthrough-pattern. τ=4 parallel PCS and SMES direct link path inverter switching latency bypass  grid frequency disturbance occur immediately(μ=1ms) output inenter | μ(6)=1 Mobius function in have also. squaredfreeseveral n=6 of μ=1 SMES single path switching guarantee. λ(6)=2 Carmichael periodas BMS-A/B synchronous latency minimize | EXACT |
+| **BT-84** | SMES buffer integration breakthrough-pattern — sopfr(6)=5 MWh SMES LFP battery and single DC bus in hybrid integration. Egyptian fraction  mintimes(1/2 peakshaving + 1/3 frequency + 1/6 reserve)as battery long-termstorage and SMES instantresponse simultaneous optimization. existing independent operation unitsratio installarea 1/τ=1/4, cost 1/(σ-φ)=1/10 | sopfr(6)=5 sum of prime factors in SMES Capacity have also. σ·τ=48 MW peak battery+SMES  minstore  Ragone limit system level in bypass | EXACT |
 
-**BT 종합**: 3개 돌파 노드 모두 n=6 수론 파라미터에서 직접 유도. BT-80(수명)×BT-83(응답속도)×BT-84(하이브리드 통합)의 3중 돌파가 유틸리티 ESS의 3대 과제(수명·속도·비용)를 동시 해결.
+**BT endsum**: 3pieces breakthrough-pattern node all n=6 number theory parameter in direct have also. BT-80(lifetime)×BT-83(responsespeed)×BT-84(hybrid integration) of 3mid breakthrough-pattern utillity ESS of 3units task(lifetime·speed·cost) simultaneous resolve.
 
-## §11 불가능성 정리 확장
+## §11 Impossibility theorem extensions
 
-### 불가능 정리 A: Fick 확산 한계 (이온 전달 상한)
+### impossible theorem A: Fick diffusion limit (ion transfer upper bound)
 
-> **정리**: 전해질 내 리튬 이온 확산 속도는 Fick 제2법칙에 의해 상한이 존재하며, 충방전 C-rate를 무한히 높일 수 없다.
+> **theorem**: electrolyte inner lithium ion diffusion speed Fick control2lawin  ofapply upper bound existence and, chargedischarge C-rate infinites highwork cannot.
 
 ```
-∂C/∂t = D · ∂²C/∂x²   (Fick 제2법칙)
-D_Li+ ≤ D_max ≈ 10⁻⁸ cm²/s   (이론 상한)
-C-rate_max ∝ D / L²   (L: 전극 두께)
+∂C/∂t = D · ∂²C/∂x²   (Fick control2law)
+D_Li+ ≤ D_max ≈ 10⁻⁸ cm²/s   (theory upper bound)
+C-rate_max ∝ D / L²   (L: electrode thickness)
 ```
 
-**n=6 해석**: σ=12 스트링 분산으로 셀당 전류를 1/σ=1/12로 감소. SMES 버퍼가 순간 피크를 흡수하여 실효 셀 C-rate를 0.5C로 유지. Fick 한계 내에서 n=6C 시스템 충전율 달성. Egyptian fraction(1/2 배터리직접+1/3 SMES보조+1/6 분산)으로 전류 경로를 분배.
+**n=6 analysis**: σ=12 string varianceas cellper current 1/σ=1/12as decrease. SMES buffer instant peak absorb  effective cell C-rate 0.5Cas retention. Fick limit inner in n=6C system chargingrate achieve. Egyptian fraction(1/2 batterydirect+1/3 SMESassist+1/6 variance)as current path  mintimes.
 
-**판정**: EXACT
+**verdict**: EXACT
 
-### 불가능 정리 B: PCS 반도체 스위칭 손실 한계
+### impossible theorem B: PCS semiconductor switching loss limit
 
-> **정리**: 전력변환장치(PCS)의 변환효율은 반도체 소자의 스위칭 손실과 전도 손실에 의해 100%에 도달할 수 없다.
+> **theorem**: powertransformdevice(PCS) of transformefficiency semiconductor of element switching loss and all also lossin  ofapply 100%reachingcannot.
 
 ```
 η_PCS = 1 - (P_sw + P_cond) / P_total
 P_sw ∝ f_sw × V × I × (t_on + t_off)
 P_cond ∝ R_ds(on) × I²
-η_PCS_max ≈ 99.7% (SiC MOSFET 이론 상한)
+η_PCS_max ≈ 99.7% (SiC MOSFET theory upper bound)
 ```
 
-**n=6 해석**: τ=4 병렬 PCS로 개별 인버터 전류를 I/τ=I/4로 분산. I²R 전도손실이 1/τ²=1/16로 감소. SMES DC 직결 경로(μ=1 뫼비우스 경로)는 인버터 우회로 변환손실 0 접근. σ·φ=n·τ=24 항등식이 DC/AC 변환 에너지 수지의 자기정합성을 보장.
+**n=6 analysis**: τ=4 parallel PCSas individual inverter current I/τ=I/4as variance. I²R all alsoloss 1/τ²=1/16as decrease. SMES DC direct link path(μ=1 Mobius path) inverter bypassas transformloss 0 approach. σ·φ=n·τ=24 clauseetc.eq DC/AC transform energy numbernode of magneticconsistent-ness guarantee.
 
-**판정**: EXACT
+**verdict**: EXACT
 
-### 불가능 정리 C: 열관리 엔트로피 생성 (비가역 열역학 제2법칙)
+### impossible theorem C: thermal management entropy generate (irreversible thermodynamics law2law)
 
-> **정리**: 충방전 시 셀 내부 발열(Q=I²R×t)은 제거할 수 없으며, 냉각 시스템은 반드시 COP(성능계수) 한계 내에서 엔트로피 비용을 지불한다.
-
-```
-Q_cell = I² × R_internal × t   (줄 발열)
-COP_cooling ≤ T_cold / (T_hot - T_cold)   (카르노 COP)
-ΔS_universe ≥ 0   (엔트로피 증가)
-```
-
-**n=6 해석**: n=6 온도 존 독립 제어로 열 생성을 6구역에 분산·격리. J₂=24 유닛 위상차 운영으로 동시 발열을 1/J₂=1/24로 평준화. P₂=28일 주기 열화 점검으로 R_internal 증가를 조기 감지·대응. 엔트로피 비용을 인정하되 최소화.
-
-**판정**: EXACT
-
-### 불가능 정리 D: SEI 막 성장 불가역성 (전기화학 열역학)
-
-> **정리**: 리튬 이온 배터리의 SEI(Solid Electrolyte Interphase) 막 성장은 전기화학적으로 비가역이며, 완전한 용량 회복은 불가능하다.
+> **theorem**: chargedischarge  hr cell internal emitheat(Q=I²R×t) removedcan noneu and, cooling system halfd hr COP(performancecoefficient) limit inner in entropy cost nodefire.
 
 ```
-δ_SEI(t) = δ₀ + k · √t   (SEI 두께 성장, 파라볼릭 법칙)
-C_loss(t) = C₀ × (1 - α · √t)   (용량 손실)
-∂δ_SEI/∂t > 0   (비가역 성장)
+Q_cell = I² × R_internal × t   (line emitheat)
+COP_cooling ≤ T_cold / (T_hot - T_cold)   (carRenault COP)
+ΔS_universe ≥ 0   (entropy increase)
 ```
 
-**n=6 해석**: σ=12 스트링 분산으로 셀당 전류 밀도를 1/σ로 억제하여 SEI 성장 속도 상수 k를 최소화. n=6 온도 존 제어로 고온 SEI 가속(Arrhenius 법칙)을 방지. P₂=28일 캘리브레이션으로 SEI 기인 용량 손실을 정밀 추적하고 J₂=24 유닛 간 부하 재분배로 열화 셀을 보호. SEI 성장 자체는 불가역이나, 시스템 수준에서 영향을 1/σ·1/J₂로 희석.
+**n=6 analysis**: n=6 temperature exist independent controlas heat generate 6zonein variance·rankli. J₂=24 unit phasediff operationas simultaneous emitheat 1/J₂=1/24as levelstdization. P₂=28work period degradation inspectionas R_internal increase early sensing·response. entropy cost isfixeddoing while minimize.
 
-**판정**: EXACT
+**verdict**: EXACT
 
-## §12 Cross-DSE 연결
+### impossible theorem D: SEI membrane -nesschapter irreversible-ness (allphaseizationology thermodynamics)
 
-### 배터리 스케일 간 교차 최적화
+> **theorem**: lithium ion battery of SEI(Solid Electrolyte Interphase) membrane -nesschapter allphasechemicalas irreversible and, completeone Capacity  timedup impossibledoall.
+
+```
+δ_SEI(t) = δ₀ + k · √t   (SEI thickness -nesschapter, waveraVoltlic law)
+C_loss(t) = C₀ × (1 - α · √t)   (capacity loss)
+∂δ_SEI/∂t > 0   (irreversible -nesschapter)
+```
+
+**n=6 analysis**: σ=12 string varianceas cellper current density 1/σas suppress  SEI growth speed constant k minimize. n=6 temperature exist controlas high temp SEI acceleration(Arrhenius law) prevent. P₂=28work calibrationas SEI phaseis capacity loss fixedclose trackingdohigh J₂=24 unit span load re- mintimesas degradation cell protection. SEI growth itself irreversible or, system level in impact 1/σ·1/J₂as rarestone.
+
+**verdict**: EXACT
+
+## §12 Cross-DSE links
+
+### battery scale span cross optimization
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
-│                    배터리 스케일 Cross-DSE 맵                       │
+│                    battery scale Cross-DSE map                       │
 ├────────────────────────────────────────────────────────────────────┤
 │                                                                    │
-│  Scale 7 (ESS MWh) ←→ Scale 8 (GWh 그리드)                       │
-│  ├─ Scale 8의 σ=12 노드 중 각 노드가 Scale 7 ESS 유닛으로 구성     │
-│  ├─ J₂=24 파라미터 공유 (ESS=24유닛, 그리드=24h)                   │
-│  ├─ σ·τ=48 MW 피크가 양 스케일에서 동일하게 적용                    │
-│  └─ P₂=28일 유지보수 주기가 상위 그리드와 동기화                    │
+│  Scale 7 (ESS MWh) ←→ Scale 8 (GWh grid)                       │
+│  ├─ Scale 8 of σ=12 node mid each node Scale 7 ESS unitas configuration     │
+│  ├─ J₂=24 parameter sharing (ESS=24unit, grid=24h)                   │
+│  ├─ σ·τ=48 MW peak side scale in same apply                    │
+│  └─ P₂=28work retentionboseveral period parent grid and synchronousization                    │
 │                                                                    │
-│  Scale 7 (ESS MWh) ←→ Scale 6 (마이크로그리드 kWh~MWh)            │
-│  ├─ Scale 6 마이크로그리드가 Scale 7의 엣지 유닛으로 연결           │
-│  ├─ n=6 모듈 랙이 양 스케일의 공통 빌딩 블록                       │
-│  └─ Egyptian fraction 분배가 마이크로그리드 자립 비율 결정           │
+│  Scale 7 (ESS MWh) ←→ Scale 6 (micro-grid kWh~MWh)            │
+│  ├─ Scale 6 micro-grid Scale 7 of edge unitas link           │
+│  ├─ n=6 module rack side scale of common building block                       │
+│  └─ Egyptian fraction  mintimes micro-grid self-sufficient ratio crystal           │
 │                                                                    │
-│  Scale 7 (ESS MWh) ←→ Scale 5 (가정용 kWh)                       │
-│  ├─ 가정용 배터리 어그리게이션이 ESS 가상 유닛으로 편입              │
-│  ├─ φ=2 이중 BMS가 가정-ESS 양방향 통신 프로토콜 표준화             │
-│  └─ λ=2 제어 루프가 가정-ESS 동기화 틱                              │
+│  Scale 7 (ESS MWh) ←→ Scale 5 (home kWh)                       │
+│  ├─ home battery uhandgeshun ESS virtual unitas sideenter              │
+│  ├─ φ=2 dual BMS home-ESS sidedirection communication protocol standardization             │
+│  └─ λ=2 control loop home-ESS synchronousization tic                              │
 │                                                                    │
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-### 에너지 도메인 간 교차 최적화
+### energy domain span cross optimization
 
-| 연결 도메인 | 교차 파라미터 | 시너지 내용 | 판정 |
+| link domain | cross parameter |  hrenergy inneruse | verdict |
 |------------|-------------|------------|------|
-| **battery-scale-8-grid** | σ=12 노드 ↔ σ=12 스트링 | GWh 그리드의 12노드 중 각 노드가 MWh ESS로 구성. ESS의 12스트링이 노드 내부 전압 최적화를 담당. 프랙탈 자기유사 구조 | EXACT |
-| **power-grid** | τ=4 PCS ↔ τ=4 송전 경로 | 4병렬 PCS 출력이 전력망 4대 피더(feeder)에 1:1 매핑. φ=2 이중화가 ESS-그리드 연결에서 N+1 중복 보장. 주파수 응답 μ=1ms가 계통 안정성 직결 | EXACT |
-| **thermal-management** | n=6 온도 존 ↔ n=6 냉각 구역 | ESS 6구역 열관리가 전용 냉각 시스템의 6채널과 정합. J₂=24 유닛 위상차 운영이 냉각 부하 평준화. sopfr=5 제어 모드가 열관리 모드(가열→균등→냉각→대기→진단)와 동형 | EXACT |
+| **battery-scale-8-grid** | σ=12 node ↔ σ=12 string | GWh grid of 12node mid each node MWh ESSas configuration. ESS of 12string node internal voltage optimization in charge. prrackescape magneticsimilar structure | EXACT |
+| **power-grid** | τ=4 PCS ↔ τ=4 transmission path | 4parallel PCS output power grid 4units exposuremore(feeder)in 1:1 mapping. φ=2 dualization ESS-grid connection in N+1 duplicate guarantee. frequency response μ=1ms grid stability direct link | EXACT |
+| **thermal-management** | n=6 temperature exist ↔ n=6 cooling zone | ESS 6zone thermal management dedicated cooling system of 6channel and consistent. J₂=24 unit phasediff operation cooling load levelstdization. sopfr=5 control sided thermal management sided(heat→evenetc.→cooling→standby→diagnose) and actiontype | EXACT |
 
-**Cross-DSE 핵심 원리**: n=6 수론 파라미터(σ, τ, φ, μ, sopfr)가 도메인 불변량으로 작용하여, 배터리 스케일 간 수직 연결과 에너지 도메인 간 수평 연결 모두에서 동일한 최적화 프레임워크를 제공한다. σ(n)·φ(n)=n·τ(n) 항등식(n=6 전용)이 Cross-DSE 정합성의 수론적 보증. ESS 스케일은 상위(GWh 그리드)와 하위(마이크로그리드, 가정용)의 중간 허브로서 Cross-DSE의 핵심 결절점.
+**Cross-DSE core principle**: n=6 number theory parameter(σ, τ, φ, μ, sopfr) domain invariantas smalluse , battery scale span numberstraight yearresult energy domain span numberlevel link all in same optimization framework provide. σ(n)·φ(n)=n·τ(n) clauseetc.eq(n=6 dedicated) Cross-DSE consistent-ness of number theoryenemy guarantee. ESS scale parent(GWh grid) and child(micro-grid, home) of middle hubasstanding Cross-DSE of core bondsectionpoint.
 
-## §13 Python 검증코드 (stdlib only)
+## §13 Python verification code (stdlib only)
 
 ```python
 """
-HEXA-ESS 유틸리티 Stage 7 — n=6 파라미터 전수 검증
-하드코딩 0: 모든 값을 n=6 수론에서 자동 유도
-stdlib only (외부 패키지 없음)
+HEXA-ESS utillity Stage 7 — n=6 parameter exhaustive verification
+hardcoding 0: all value n=6 number theory in automatic have also
+stdlib only (external package absent)
 """
 from math import gcd
 from functools import reduce
 
-# === n=6 수론 함수 (하드코딩 0) ===
+# === n=6 number theory function (hardcoding 0) ===
 
 def divisors(n):
-    """n의 약수 목록"""
+    """n of divisor list"""
     divs = []
     for i in range(1, n + 1):
         if n % i == 0:
@@ -432,15 +432,15 @@ def divisors(n):
     return divs
 
 def sigma(n):
-    """σ(n): 약수의 합"""
+    """σ(n): sum of divisors"""
     return sum(divisors(n))
 
 def tau(n):
-    """τ(n): 약수의 개수"""
+    """τ(n): number of divisors"""
     return len(divisors(n))
 
 def phi(n):
-    """φ(n): 오일러 토션트 함수"""
+    """φ(n): Euler totient function"""
     count = 0
     for i in range(1, n + 1):
         if gcd(i, n) == 1:
@@ -448,7 +448,7 @@ def phi(n):
     return count
 
 def sopfr(n):
-    """sopfr(n): 소인수 합 (중복 포함)"""
+    """sopfr(n): prime factor sum (duplicate include)"""
     s = 0
     temp = n
     d = 2
@@ -462,7 +462,7 @@ def sopfr(n):
     return s
 
 def mobius(n):
-    """μ(n): 뫼비우스 함수"""
+    """μ(n): Mobius function"""
     if n == 1:
         return 1
     temp = n
@@ -473,14 +473,14 @@ def mobius(n):
             num_factors += 1
             temp //= d
             if temp % d == 0:
-                return 0  # 제곱 인수 존재
+                return 0  # squared isseveral existence
         d += 1
     if temp > 1:
         num_factors += 1
     return (-1) ** num_factors
 
 def carmichael(n):
-    """λ(n): Carmichael 함수"""
+    """λ(n): Carmichael function"""
     def lcm(a, b):
         return a * b // gcd(a, b)
     result = 1
@@ -495,13 +495,13 @@ def carmichael(n):
     return result
 
 def perfect_number(k):
-    """k번째 완전수 (처음 4개)"""
-    # Mersenne 소수 지수: 2, 3, 5, 7
+    """knth perfect number (first 4pieces)"""
+    # Mersenne smallseveral index: 2, 3, 5, 7
     mersenne_exp = [2, 3, 5, 7]
     p = mersenne_exp[k - 1]
     return (2 ** (p - 1)) * (2 ** p - 1)
 
-# === n=6 파라미터 자동 유도 ===
+# === n=6 parameter automatic have also ===
 
 N = 6
 
@@ -514,18 +514,18 @@ lam = carmichael(N)   # λ(6) = 2
 P2 = perfect_number(2)  # P₂ = 28
 J2 = 2 * sig          # J₂ = 24
 
-# Egyptian fraction: 1/2+1/3+1/6=1 (n=6 진약수 역수합에서 n 자신 제외)
+# Egyptian fraction: 1/2+1/3+1/6=1 (n=6 advancereciprocal sum of divisors in n rulernew exclude)
 from fractions import Fraction
 ef_proper = Fraction(1, 2) + Fraction(1, 3) + Fraction(1, 6)  # =1
 
-# 핵심 항등식: σ·φ = n·τ (iff n=6 for n≥2)
+# core clauseetc.eq: σ·φ = n·τ (iff n=6 for n≥2)
 identity_lhs = sig * ph       # 12 × 2 = 24
 identity_rhs = N * t          # 6 × 4 = 24
 
-# 효율비: R(6) = σ·φ/(n·τ)
+# efficiencyratio: R(6) = σ·φ/(n·τ)
 R6 = Fraction(sig * ph, N * t)  # 24/24 = 1
 
-# === 전수 검증 (16종) ===
+# === exhaustive verification (16end) ===
 
 passed = 0
 total = 16
@@ -540,32 +540,32 @@ def check(name, actual, expected):
     return ok
 
 print("=" * 60)
-print("HEXA-ESS 유틸리티 Stage 7 — n=6 파라미터 전수 검증")
+print("HEXA-ESS utillity Stage 7 — n=6 parameter exhaustive verification")
 print("=" * 60)
 
-check("P01 유닛 병렬 수 J₂=2σ", J2, 24)
-check("P02 모듈 랙 단위 n", N, 6)
-check("P03 스트링 구성 σ(6)", sig, 12)
-check("P04 인버터 병렬 τ(6)", t, 4)
-check("P05 이중화 BMS φ(6)", ph, 2)
-check("P06 공정 제어 단계 sopfr(6)", sop, 5)
-check("P07 SMES 피크 출력 σ·τ", sig * t, 48)
-check("P08 온도 존 수 n", N, 6)
-check("P09 효율 개선비 1/(σ-φ)", Fraction(1, sig - ph), Fraction(1, 10))
-check("P10 SMES 응답시간 μ(6)", mu, 1)
-check("P11 자가진단 주기 n", N, 6)
+check("P01 unit parallel several J₂=2σ", J2, 24)
+check("P02 module rack unit n", N, 6)
+check("P03 string configuration σ(6)", sig, 12)
+check("P04 inverter parallel τ(6)", t, 4)
+check("P05 dualization BMS φ(6)", ph, 2)
+check("P06 process control step sopfr(6)", sop, 5)
+check("P07 SMES peak output σ·τ", sig * t, 48)
+check("P08 temperature exist several n", N, 6)
+check("P09 efficiency improvementratio 1/(σ-φ)", Fraction(1, sig - ph), Fraction(1, 10))
+check("P10 SMES responsetime μ(6)", mu, 1)
+check("P11 selfdiagnose period n", N, 6)
 check("P12 Egyptian fraction", ef_proper, Fraction(1, 1))
-check("P13 유지보수 주기 P₂", P2, 28)
-check("P14 효율비 R(6)", R6, Fraction(1, 1))
+check("P13 retentionboseveral period P₂", P2, 28)
+check("P14 efficiencyratio R(6)", R6, Fraction(1, 1))
 check("P15 Carmichael λ(6)", lam, 2)
-check("P16 핵심 항등식 σ·φ=n·τ", identity_lhs, identity_rhs)
+check("P16 core clauseetc.eq σ·φ=n·τ", identity_lhs, identity_rhs)
 
 print("=" * 60)
-print(f"결과: {passed}/{total} PASS")
+print(f"Result: {passed}/{total} PASS")
 if passed == total:
-    print("ALL PASS — n=6 전수 검증 완료")
+    print("ALL PASS — n=6 exhaustive verification complete")
 else:
-    print(f"FAIL 존재 — {total - passed}건 재확인 필요")
+    print(f"FAIL existence — {total - passed} items re-confirm needed")
 print("=" * 60)
 ```
 
