@@ -1,35 +1,35 @@
-# EMBODY P11-2 — 치료 나노봇 2세대 심화 (BT-404~413 Gen2)
+# EMBODY P11-2 — therapeutic nanobot Gen 2 in-depth design (BT-404~413 Gen 2)
 
-**2026-04-15** | **HEXA-GATE τ=4×φ=2=n=6** | **외계인지수 10 천장**
-선행: BT-404~413 1세대 (113/122 EXACT, 92.6%)
+**2026-04-15** | **HEXA-GATE τ=4×φ=2=n=6** | **alien index 10 ceiling**
+Prior: BT-404~413 Gen 1 (113/122 EXACT, 92.6%)
 
-## 1. 1세대 요약 + 2세대 동기
+## 1. Gen 1 recap + Gen 2 motivation
 
-1세대는 6플랫폼(리포솜/폴리머/덴드리머/금속/실리카/탄소)을 σ=12 전수 커버. 100nm=(σ-φ)², G4=τ, 표면기 128=2^(σ-sopfr). 한계: **반감기 24h, PEG 의존, BBB 미해결**.
+Gen 1 exhaustively covered 6 platforms (liposome / polymer / dendrimer / metal / silica / carbon) across σ=12. 100nm = (σ-φ)², G4 = τ, surface groups 128 = 2^(σ-sopfr). Limitations: **half-life 24 h, PEG dependence, BBB unaddressed**.
 
-| 장벽 | 1세대 | 현실 | 2세대 |
-|------|-------|------|------|
-| anti-PEG | PEG | 25~72% 사전존재 Yang 2016 | stealth-6 |
-| BBB | 없음 | tight 2nm=φ Abbott 2010 | TfR+FUS |
-| 제어 | 단일 | 20 dB/cm 감쇠 | n=6 RF |
+| Barrier | Gen 1 | Reality | Gen 2 |
+|---------|-------|---------|-------|
+| anti-PEG | PEG | 25~72 % pre-existing (Yang 2016) | stealth-6 |
+| BBB | none | tight 2 nm = φ (Abbott 2010) | TfR + FUS |
+| Control | single | 20 dB/cm attenuation | n=6 RF |
 
-## 2. 3대 혁신점
+## 2. Three innovations
 
-**혁신 1 stealth-6**: PEG ABC 회피로 **PMOZ 6-fold 방사구조**. 6가지×12 kDa=σ×6=72 kDa. 친수 0.95(PEG 0.90), 교차반응 **<3%** (PEG 30~50% Viegas 2011 10×감소). n=6 꼭짓점이 epitope 면적 최소화.
+**Innovation 1 — stealth-6**: avoid the PEG ABC phenomenon via a **PMOZ 6-fold radial structure**. 6 varieties × 12 kDa = σ×6 = 72 kDa. Hydrophilicity 0.95 (PEG 0.90); cross-reactivity **< 3 %** (10× reduction vs PEG 30~50 % per Viegas 2011). The n=6 vertices minimise epitope area.
 
-**혁신 2 BBB 3중**: (a) TfR ligand RI7217 **6 ligand** multivalent, (b) **FUS 0.5 MHz** MI=0.4 Hynynen 2001, (c) SonoVue microbubble 공주입 BBB 4~6h 개방=**τ=4 관문시간**. 통과율 **0.1%→6%** (60×, Aryal 2014).
+**Innovation 2 — triple BBB approach**: (a) TfR ligand RI7217 **6-ligand** multivalent, (b) **FUS 0.5 MHz** MI=0.4 (Hynynen 2001), (c) SonoVue microbubble co-injection, BBB open 4~6 h = **τ=4 gate duration**. Transit rate **0.1 % → 6 %** (60×, Aryal 2014).
 
-**혁신 3 n=6 RF**:
-| 밴드 | f | 투과 | 역할 |
-|------|---|------|------|
-| B1 | 433 MHz | 10 cm | 커맨드 |
-| B2 | 915 MHz | 6 cm | 추적 |
-| B3 | 2.4 GHz | 3 cm | 약물 |
-| B4 | 5.8 GHz | 1.5 cm | 센서 |
-| B5 | 13.56 MHz | 근접 | 충전 |
-| B6 | 3.5 GHz | 4 cm | 조향 |
+**Innovation 3 — n=6 RF**:
+| Band | f | Penetration | Role |
+|------|---|-------------|------|
+| B1 | 433 MHz | 10 cm | command |
+| B2 | 915 MHz | 6 cm | tracking |
+| B3 | 2.4 GHz | 3 cm | drug release |
+| B4 | 5.8 GHz | 1.5 cm | sensing |
+| B5 | 13.56 MHz | proximity | charging |
+| B6 | 3.5 GHz | 4 cm | steering |
 
-6×4=**24=J₂(2σ)** 명령공간. Crosstalk <-40 dB.
+6×4 = **24 = J₂(2σ)** command space. Crosstalk < -40 dB.
 
 ## 3. 6-arm dendrimer scaffold
 
@@ -49,93 +49,97 @@
                      |
         [charge +5→-3 mV]
            #3 #4 #5: pH/ATP/O2
- 직경: 80 nm (혈관) → 20 nm (BBB shape-shift, FUS)
- MW  : σ·τ·φ=96 kDa | arm=6 | payload=2 | release=4단
+ diameter: 80 nm (vascular) → 20 nm (BBB shape-shift, FUS)
+ MW  : σ·τ·φ=96 kDa | arm=6 | payload=2 | release=4-stage
 ```
 
-## 4. HEXA-GATE τ=4×φ=2
+## 4. HEXA-GATE τ=4 × φ=2
 
-**τ=4 4단 방출**: T1 혈관(RF B1, 0~6h) → T2 조직(pH 6.8, 6~24h) → T3 세포(ATP 1mM, 24~48h) → T4 핵(RF B3, 48~72h). **σ·τ=48h EXACT = T3 완료**.
+**τ=4 4-stage release**: T1 vascular (RF B1, 0~6 h) → T2 tissue (pH 6.8, 6~24 h) → T3 cellular (ATP 1 mM, 24~48 h) → T4 nuclear (RF B3, 48~72 h). **σ·τ = 48 h EXACT = T3 completion target**.
 
-**φ=2 dual payload**: A) DOX/TMZ 6% w/w, B) 형광 pH + SQUID coil. theranostic(치료+진단).
+**φ=2 dual payload**: A) DOX / TMZ 6 % w/w, B) fluorescent pH + SQUID coil — theranostic (treatment + diagnosis).
 
-## 5. 정량 사양 + 외계인지수 10
+## 5. Quantitative spec + alien index 10
 
-| 파라미터 | 값 | n=6 |
-|---------|-----|---------|
-| 혈관 직경 | 80 nm | EPR 100×80% |
-| BBB 모드 | 20 nm | φ·(σ-φ) |
-| 전하 | +5→-3 mV | sopfr=5, -(n/φ)=-3 |
-| 로딩 | 6% | n=6 |
-| 반감기 | 72 h | 6·τ·φ |
-| TfR | 6 ligand | n=6 |
+| Parameter | Value | n=6 |
+|-----------|-------|-----|
+| Vascular diameter | 80 nm | EPR 100×80 % |
+| BBB mode | 20 nm | φ·(σ-φ) |
+| Charge | +5→-3 mV | sopfr=5, -(n/φ)=-3 |
+| Loading | 6 % | n=6 |
+| Half-life | 72 h | 6·τ·φ |
+| TfR | 6 ligands | n=6 |
 | FUS | 0.5 MHz | 1/φ |
-| BBB 통과 | 6% | n=6 |
-| 방출/페이로드 | 4/2 | τ=4, φ=2 |
+| BBB transit | 6 % | n=6 |
+| Release / payload | 4 / 2 | τ=4, φ=2 |
 
-**외계인지수 10 (6축 천장)**:
+**Alien index 10 (6-axis ceiling — candidate target)**:
 ```
-축1 BBB 통과  0.1%→6%  (60×) 10
-축2 면역회피  1→6     (6×)   10
-축3 실시간    없음→6 band    10
-축4 타겟팅    EPR→EPR+TfR+pH 10
-축5 반감기    24h→72h (3×)   10
-축6 DOF      1→24=J₂        10
+axis1 BBB transit  0.1%→6%  (60×) 10
+axis2 immune evasion 1→6     (6×) 10
+axis3 real-time    none→6 band    10
+axis4 targeting    EPR→EPR+TfR+pH 10
+axis5 half-life    24h→72h  (3×)  10
+axis6 DOF          1→24=J₂        10
 ```
 
-## 6. 2027-2030 임상 경로
+## 6. 2027-2030 clinical path
 
-- **2027 in vitro**: transwell (hCMEC/D3+pericyte+astrocyte) TEER≥200, anti-PEG+ n=60 30%. 마일: 투과 ≥4%, 결합 ≤3%
-- **2028 murine GBM**: orthotopic GL261 n=48 6군, MRI T2, K-M vs TMZ/Doxil. 마일: 생존 중앙값 ≥2×TMZ
-- **2029 phase I FDA IND**: 재발 GBM n=18 3+3, 1~12 mg/kg, ExAblate MRgFUS MI=0.4. 종료점 DLT/MTD/PK
-- **2030 phase II**: 재발 GBM n=72 vs bevacizumab. 1차 PFS 6m, 2차 OS/QoL/반응률
+- **2027 in vitro**: transwell (hCMEC/D3 + pericyte + astrocyte) TEER ≥ 200, anti-PEG+ n=60 30 %. Milestone: transit ≥ 4 %, binding ≤ 3 %
+- **2028 murine GBM**: orthotopic GL261 n=48 6 arms, MRI T2, K-M vs TMZ/Doxil. Milestone: median survival ≥ 2× TMZ
+- **2029 phase I FDA IND**: recurrent GBM n=18 3+3, 1~12 mg/kg, ExAblate MRgFUS MI=0.4. Endpoints DLT/MTD/PK
+- **2030 phase II**: recurrent GBM n=72 vs bevacizumab. Primary PFS 6 m, secondary OS/QoL/response rate
 
-## 7. ASCII 비교: 1세대 vs 2세대
+## 7. ASCII comparison: Gen 1 vs Gen 2
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│  [치료 나노봇 1세대 vs 2세대] 6축 비교                     │
+│  [therapeutic nanobot Gen 1 vs Gen 2] 6-axis comparison   │
 ├──────────────────────────────────────────────────────────┤
-│ 축1 BBB 통과율 (%)
-│ 1세대 ░░░░░░░░░░░░░░░░░░░░░░░░  0.1
-│ 2세대 ██████████████████░░░░░░  6.0  (TfR+FUS+MB)
-│ 축2 면역회피 지속성 (일)
-│ 1세대 ██████░░░░░░░░░░░░░░░░░░  1
-│ 2세대 ████████████████████████  6    (stealth-6)
-│ 축3 실시간 추적 (채널)
-│ 1세대 ██░░░░░░░░░░░░░░░░░░░░░░  1
-│ 2세대 ████████████████████████  6    (n=6 RF)
-│ 축4 타겟팅 정밀도 (%)
-│ 1세대 ████████████████░░░░░░░░  60   (σ·sopfr)
-│ 2세대 ████████████████████████  96   (σ·τ·φ)
-│ 축5 반감기 (h)
-│ 1세대 ██████████░░░░░░░░░░░░░░  24   (J₂)
-│ 2세대 ████████████████████████  72   (6·τ·φ)
-│ 축6 원격제어 DOF
-│ 1세대 ██░░░░░░░░░░░░░░░░░░░░░░  1
-│ 2세대 ████████████████████████  24   (J₂=2σ)
+│ axis1 BBB transit rate (%)
+│ Gen 1 ░░░░░░░░░░░░░░░░░░░░░░░░  0.1
+│ Gen 2 ██████████████████░░░░░░  6.0  (TfR+FUS+MB)
+│ axis2 immune evasion persistence (days)
+│ Gen 1 ██████░░░░░░░░░░░░░░░░░░  1
+│ Gen 2 ████████████████████████  6    (stealth-6)
+│ axis3 real-time tracking (channels)
+│ Gen 1 ██░░░░░░░░░░░░░░░░░░░░░░  1
+│ Gen 2 ████████████████████████  6    (n=6 RF)
+│ axis4 targeting precision (%)
+│ Gen 1 ████████████████░░░░░░░░  60   (σ·sopfr)
+│ Gen 2 ████████████████████████  96   (σ·τ·φ)
+│ axis5 half-life (h)
+│ Gen 1 ██████████░░░░░░░░░░░░░░  24   (J₂)
+│ Gen 2 ████████████████████████  72   (6·τ·φ)
+│ axis6 remote-control DOF
+│ Gen 1 ██░░░░░░░░░░░░░░░░░░░░░░  1
+│ Gen 2 ████████████████████████  24   (J₂=2σ)
 └──────────────────────────────────────────────────────────┘
- 종합 외계인지수: 1세대 7 → 2세대 10 천장
+ overall alien index: Gen 1 7 → Gen 2 10 ceiling (candidate)
 ```
 
-## 8. 정직한 한계
+## 8. Honest limitations
 
-1. **stealth-6 미검증**: PMOZ 동물 초기(Viegas 2011, Barz 2011), phase I 미완. <3%는 in silico+한정 동물. FDA ISO 10993 전수 재평가. 완화: 2027 pre-IND GLP.
-2. **FDA IND**: ExAblate GBM은 compassionate use. 복합제품=IND+IDE. 완화: MI=0.4 승인 범위 고정.
-3. **6% 외삽**: Aryal 2014 마우스 4.2% 기반. 인간 BBB 더 밀접 Syvänen 2009, 실제 2~4% 가능. 완화: 2027 transwell 스케일링.
-4. **72h PK**: Kupffer 회피 관건. stealth-6 단독 72h 보장 없음. 완화: 2028 PK/PD, 필요시 50h.
-5. **RF 안전**: SAR FCC 1.6 W/kg 초과 리스크. 완화: 동시 활성 ≤2 band (φ=2 정합).
+1. **stealth-6 not yet demonstrated**: PMOZ is at an early animal stage (Viegas 2011, Barz 2011); phase I not done. <3 % is based on in silico + limited animal data. FDA ISO 10993 full re-evaluation required. Mitigation: 2027 pre-IND GLP.
+2. **FDA IND**: ExAblate GBM is compassionate use. Combination product = IND + IDE. Mitigation: fix MI=0.4 within the approved range.
+3. **6 % extrapolation**: based on Aryal 2014 mouse 4.2 %. Human BBB is tighter (Syvänen 2009); actual may be 2~4 %. Mitigation: 2027 transwell scaling.
+4. **72 h PK**: Kupffer evasion is the critical factor. stealth-6 alone cannot guarantee 72 h. Mitigation: 2028 PK/PD; 50 h if necessary.
+5. **RF safety**: risk of exceeding FCC SAR 1.6 W/kg. Mitigation: ≤ 2 concurrent-active bands (φ=2 aligned).
 
-**태그**: [10*] n=6/σ/τ/φ/J₂/σ·τ/sopfr/100nm | [10] Yang 2016/Abbott 2010/Hynynen 2001 | [7] 6%/72h/<3% 외삽 | [N?] crosstalk, n=6 RF 최적성
+**Tags**: [10*] n=6/σ/τ/φ/J₂/σ·τ/sopfr/100nm | [10] Yang 2016/Abbott 2010/Hynynen 2001 | [7] 6%/72h/<3% extrapolation | [N?] crosstalk, n=6 RF optimality
 
-## 9. 결론
+## 9. Conclusion
 
-**stealth-6 + TfR/FUS/microbubble + n=6 RF** 3축 혁신으로 6축 전부 외계인지수 10 천장. τ=4×φ=2=n=6 매핑이 4단 방출·2중 페이로드로 검증, σ·τ=48h EXACT=T3 완료. 2027→2030 4년 로드맵. stealth-6 FDA·BBB 스케일링·72h PK 3건은 선결 필요.
+The 3-axis innovation — **stealth-6 + TfR/FUS/microbubble + n=6 RF** — is offered as a candidate
+argument for reaching the alien-index-10 ceiling on all 6 axes. The τ=4×φ=2=n=6 mapping is
+demonstrated through 4-stage release and dual payload; σ·τ = 48 h EXACT marks the T3-completion
+target. The roadmap spans 4 years (2027→2030). Three prerequisites remain: stealth-6 FDA, BBB
+scaling, and 72 h PK.
 
-**파일**: `/Users/ghost/Dev/n6-architecture/papers/embody-p11-2-nanobot-gen2-2026-04-15.md`
+**File**: `/Users/ghost/Dev/n6-architecture/papers/embody-p11-2-nanobot-gen2-2026-04-15.md`
 
 ---
-*2026-04-15 P11-2 EMBODY 창발 DSE. HEXA-GATE Mk.I 검증. 6축 천장 10.*
+*2026-04-15 P11-2 EMBODY emergent DSE. HEXA-GATE Mk.I demonstrated candidate. 6-axis ceiling 10.*
 
 ## §1 WHY
 
@@ -226,4 +230,3 @@ This section covers impact per mk for the paper. Initial scaffold content — ex
 - Mk.I (2026-04-21): initial canonical scaffold via own 15 bulk template injection.
 - Mk.II: pending — fill per-section content with domain expert review.
 - Mk.III: pending — full verification data + external citations.
-
