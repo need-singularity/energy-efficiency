@@ -1,38 +1,53 @@
 // atlas/n6_core_constants.hexa -- CANONICAL n=6 core constants (SSOT)
 //
 // This is the single source of truth for the n=6 derivation constants.
-// Every per-domain verify_*.hexa file inlines these values because the
-// current hexa stage does not yet support stable `import`/`include` of
-// typed constants across compilation units (tracked in hxa-20260422-???
-// lang_gap). Until that lands, keep the inlined copies in sync with
-// THIS file; treat this file as the reviewer's diff target.
+// Stage A consolidation (proposals/dup_derivation_consolidation_phase2_2026_04_24.md):
+//   * Per-domain verify_*.hexa files no longer inline these values.
+//     Instead they `use "n6shared/_shared_constants"`, which is an
+//     AUTO-GENERATED derivative of THIS file produced by
+//     `scripts/gen_shared_constants.sh`.
+//   * This file remains the one human-edited artifact.
+//   * `flatten_imports` runs as CI preflight; see `bin/n6_verify_run`.
 //
-// Identity: sigma(6) * phi(6) == 6 * tau(6) == 12
+// Identity: sigma(6) * phi(6) == 6 * tau(6) == 24
 //
-// If you update any value here, a matching update in each
-// dup_derivation_candidates entry (see reports/n6_roi.json) is required.
-// `proposals/dup_derivation_consolidation_2026_04_23.md` documents the
-// consolidation plan that will replace the inlining once import lands.
+// If you update any value below, `bash scripts/gen_shared_constants.sh`
+// must be run (CI enforces `--check` mode on every push).
+//
+// Convention: `pub let` prefix per `hexa-lang/self/module_loader.hexa:306+`
+// — the `pub ` is stripped both by `module_loader` and by
+// `tool/flatten_imports.hexa` during expansion, leaving a plain top-level
+// `let` binding in the flattened translation unit.
+
+// === SSOT BEGIN (exact lines consumed by scripts/gen_shared_constants.sh) ===
+pub let SIGMA = 12      // sigma(6) = 1 + 2 + 3 + 6
+pub let TAU   = 4       // tau(6)   = |{1, 2, 3, 6}|
+pub let PHI   = 2       // phi(6)   = |{1, 5}| (Euler totient)
+pub let N     = 6       // the candidate integer (sole >=2 hit for identity)
+pub let SOPFR = 5       // sum-of-prime-factors-with-repetition: 2 + 3
+pub let J2    = 24      // Jordan totient order 2, J_2(6) = sigma * phi = n * tau
+
+// Lowercase aliases — backward-compat with verify_*.hexa files that inlined
+// `let sigma = 12`, `let tau = 4`, ... (pre-Stage-A form).
+pub let sigma = SIGMA
+pub let tau   = TAU
+pub let phi   = PHI
+pub let n     = N
+pub let sopfr = SOPFR
+pub let j2    = J2
+// === SSOT END ===
 
 fn n6_core_constants() {
-    let n     = 6     // candidate integer — the sole ≥2 hit for the identity
-    let sigma = 12    // sum of divisors of 6 = 1 + 2 + 3 + 6
-    let tau   = 4     // count of divisors of 6 = {1, 2, 3, 6}
-    let phi   = 2     // Euler totient of 6 = |{1, 5}|
-    let sopfr = 5     // sum-of-prime-factors-with-repetition of 6 = 2 + 3
-    let j2    = 24    // J_2(6) = Jordan totient order 2 (used in several domain checks)
-
-    // identity asserts
-    assert(sigma * phi == n * tau)      // 12 * 2 == 6 * 4  ->  24 == 24
-    assert(sigma * phi == 24)
-    assert(n * tau     == 24)
+    // identity asserts (the invariant every verify_*.hexa re-asserts locally)
+    assert(SIGMA * PHI == N * TAU)       // 12 * 2 == 6 * 4  ->  24 == 24
+    assert(SIGMA * PHI == J2)
+    assert(N * TAU     == J2)
 
     // falsification sanity — perfect numbers 28, 496 must NOT satisfy the identity
-    // (documented here to remind inliners; each verify_*.hexa may re-assert)
-    // sigma(28)*phi(28) = 56 * 12  = 672   vs  28 * tau(28) = 28 * 6 = 168     (fail OK)
+    // sigma(28)*phi(28)   = 56  * 12  = 672    vs  28  * tau(28)  = 28  * 6  = 168    (fail OK)
     // sigma(496)*phi(496) = 992 * 240 = 238080 vs  496 * tau(496) = 496 * 10 = 4960  (fail OK)
 
-    println("[n6_core_constants] SSOT OK  n=6 sigma=12 tau=4 phi=2  ->  sigma*phi == n*tau == 24")
+    println("[n6_core_constants] SSOT OK  N=6 SIGMA=12 TAU=4 PHI=2  ->  SIGMA*PHI == N*TAU == 24")
 }
 
 fn main() {

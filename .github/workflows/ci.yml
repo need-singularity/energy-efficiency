@@ -70,6 +70,42 @@ jobs:
       - name: Cargo test
         run: cd tools/nexus && cargo test
 
+  # ── Job 3b: Stage A preflight — shared constants generator-clean + flatten ──
+  # Stage A consolidation (proposals/dup_derivation_consolidation_phase2_2026_04_24.md).
+  # Fails if n6shared/_shared_constants.hexa drifts from atlas/n6_core_constants.hexa,
+  # or if any of the Stage-A-migrated verify files fail `flatten_imports` preflight.
+  n6-shared-constants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generator-clean check (atlas SSOT vs n6shared/_shared_constants.hexa)
+        run: |
+          bash scripts/gen_shared_constants.sh --check
+
+      - name: Flatten-preflight — Stage A migrated verify files
+        # hexa-lang toolchain is not provisioned on the runner; we use the pure-python
+        # fallback (scripts/flatten_imports_py.py) which has the same `use` resolution
+        # contract. This validates that every migrated file flattens cleanly.
+        run: |
+          set -e
+          MIGRATED=(
+            domains/cognitive/brain-computer-interface/verify_brain-computer-interface.hexa
+            domains/energy/room-temp-sc/tabletop-fusion-verify.hexa
+            domains/physics/millennium-riemann/verify_millennium-riemann.hexa
+          )
+          for f in "${MIGRATED[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"; exit 1
+            fi
+            out=$(mktemp --suffix=.hexa)
+            python3 scripts/flatten_imports_py.py "$f" "$out"
+            # Sanity: the flattened file must contain the SSOT block.
+            grep -q "let SIGMA = 12" "$out" || { echo "FAIL: SSOT block not inlined in $f"; exit 1; }
+            grep -q "let sigma = SIGMA" "$out" || { echo "FAIL: lowercase aliases not inlined in $f"; exit 1; }
+          done
+          echo "[n6-shared-constants] flatten preflight OK on ${#MIGRATED[@]} files"
+
   # ── Job 3: CDO JSON validation ──────────────────────────────
   cdo-validate:
     runs-on: ubuntu-latest

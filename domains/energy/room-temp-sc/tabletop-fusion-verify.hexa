@@ -3,18 +3,16 @@
 // 엔진: smash(blowup depth=3) + free(field+holographic+quantum)
 // 선행: fusion.md §8 (Lawson 폐쇄), room-temp-sc.md §8 (Eliashberg Collapse)
 // SSOT append: $NEXUS/shared/n6/atlas.n6 @R ENERGY-HEXA-TTF-*
+//
+// Stage A: n=6 기본 상수는 n6shared/_shared_constants 에서 import.
+// 실행: bin/n6_verify_run <file>
+use "n6shared/_shared_constants"
 
 fn main() {
     println("[탁상핵융합] HEXA-TTF n=6 산술 검증 시작")
 
-    // ── §0. n=6 기본 상수 ──
-    let n      = 6
-    let sigma  = 12     // sigma(6) = 1+2+3+6
-    let tau    = 4      // tau(6)   = |{1,2,3,6}|
-    let phi    = 2      // phi(6)   = minimal prime factor
-    let sopfr  = 5      // sopfr(6) = 2+3
-    let j2     = 24     // J2 = 2*sigma
-    let mu     = 1      // Möbius
+    // ── §0. n=6 기본 상수 (Stage A: SSOT) ──
+    let mu     = 1      // Möbius (domain-local, not in SSOT)
     // core: sigma * phi == n * tau
     assert(sigma * phi == n * tau)
     println("[TTF-00] 코어 정리 σ·φ = n·τ = 24 PASS")

@@ -2,17 +2,11 @@
 # 핵심: 육각 격자=n=6, 신호 대역=sigma=12, 양방향=phi=2, 6DOF
 # 출처: brain-computer-interface.md (EXACT 36/40, 90%)
 # SSOT 이관 예정: nexus/shared/n6/scripts/verify_bci_n6.hexa
-
+# Stage A: bin/n6_verify_run <file> (proposals/dup_derivation_consolidation_phase2_2026_04_24.md)
+use "n6shared/_shared_constants"
 fn main() {
     println("[BCI] HEXA-BCI n=6 뇌-컴퓨터 인터페이스 검증 시작")
 
-    # n=6 기본 상수
-    let n = 6
-    let sigma = 12
-    let tau = 4
-    let phi = 2
-    let sopfr = 5
-    let j2 = 24
 
     # 육각 전극 격자 = n = 6 (최밀충진)
     assert(n == 6)

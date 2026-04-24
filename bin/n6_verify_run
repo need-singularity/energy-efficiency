@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# bin/n6_verify_run — canonical runner for a single verify_*.hexa file.
+# -----------------------------------------------------------------
+# Two-step: regenerate shared constants (idempotent) → flatten_imports → hexa run.
+# Stage A (proposals/dup_derivation_consolidation_phase2_2026_04_24.md).
+#
+# Usage:
+#   bin/n6_verify_run domains/.../verify_X.hexa        # run
+#   bin/n6_verify_run --keep domains/.../verify_X.hexa # keep /tmp/flat
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+HEXA_LANG_PATH="${HEXA_LANG_PATH:-/Users/ghost/core/hexa-lang}"
+FLATTEN="$HEXA_LANG_PATH/tool/flatten_imports.hexa"
+
+# Risk mitigation (proposal §4): if hexa-lang's flatten_imports is missing, fall
+# back to scripts/flatten_imports_py.py (pure-python, ~50 LOC). Fallback still
+# honors the same `use "path"` → cwd+path.hexa resolution rule.
+if [[ ! -f "$FLATTEN" ]]; then
+    PY_FALLBACK="$ROOT/scripts/flatten_imports_py.py"
+    if [[ -f "$PY_FALLBACK" ]]; then
+        USE_PY=1
+    else
+        echo "[n6_verify_run] ERROR: flatten_imports not found" >&2
+        echo "                expected: $FLATTEN" >&2
+        echo "                (set HEXA_LANG_PATH or add $PY_FALLBACK)" >&2
+        exit 3
+    fi
+fi
+
+KEEP=0
+if [[ "${1:-}" == "--keep" ]]; then
+    KEEP=1
+    shift
+fi
+
+if [[ $# -lt 1 ]]; then
+    echo "usage: $0 [--keep] <verify_X.hexa>" >&2
+    exit 2
+fi
+
+TARGET="$1"
+if [[ ! -f "$TARGET" ]]; then
+    echo "[n6_verify_run] file not found: $TARGET" >&2
+    exit 2
+fi
+
+# Step 1: ensure generated shared constants are current (idempotent).
+bash "$ROOT/scripts/gen_shared_constants.sh" >/dev/null
+
+# Step 2: flatten (resolves `use "n6shared/_shared_constants"` via cwd lookup).
+base="$(basename "$TARGET" .hexa)"
+flat="${TMPDIR:-/tmp}/${base}.flat.hexa"
+
+# flatten_imports resolves `use "..."` against (1) target-dir, (2) cwd, (3) cwd/self.
+# Run from repo root so that `use "n6shared/_shared_constants"` resolves via (2).
+if [[ "${USE_PY:-0}" == "1" ]]; then
+    ( cd "$ROOT" && python3 "$PY_FALLBACK" "$TARGET" "$flat" )
+else
+    ( cd "$ROOT" && HEXA_VAL_ARENA=0 hexa "$FLATTEN" "$TARGET" "$flat" )
+fi
+
+# Step 3: execute the flattened translation unit.
+set +e
+HEXA_VAL_ARENA=0 hexa "$flat"
+rc=$?
+set -e
+
+if [[ $KEEP -eq 1 ]]; then
+    echo "[n6_verify_run] kept: $flat" >&2
+else
+    rm -f "$flat"
+fi
+
+exit $rc

@@ -2,16 +2,11 @@
 # 핵심: zeta(2)=pi^2/n, zeta(-1)=-1/sigma, 임계선 Re(s)=1/phi
 # 출처: millennium-riemann.md (EXACT 20/20)
 # SSOT 이관 예정: nexus/shared/n6/scripts/verify_millennium-riemann_n6.hexa
-
+# Stage A: bin/n6_verify_run <file> (proposals/dup_derivation_consolidation_phase2_2026_04_24.md)
+use "n6shared/_shared_constants"
 fn main() {
     println("[리만] BT-541 제타 함수 n=6 수렴 검증 시작")
 
-    # n=6 기본 상수
-    let n = 6
-    let sigma = 12
-    let tau = 4
-    let phi = 2
-    let sopfr = 5
 
     # zeta(2) = pi^2/n = pi^2/6 (바젤 문제)
     assert(n == 6)
