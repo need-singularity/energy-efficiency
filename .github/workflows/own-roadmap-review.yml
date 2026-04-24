@@ -1,0 +1,51 @@
+name: own#19 — Roadmap Review Weekly
+
+on:
+  schedule:
+    # Every Monday 09:00 UTC (18:00 KST)
+    - cron: "0 9 * * 1"
+  workflow_dispatch:  # manual trigger allowed
+
+permissions:
+  contents: read
+
+jobs:
+  roadmap-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # need git log history for mtime detection
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Detect roadmap staleness (own#19)
+        id: review
+        run: |
+          python3 tool/own_roadmap_review.py
+        continue-on-error: true  # SOFT log per own#19 on_fail=log
+
+      - name: Upload review report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: own19-roadmap-review
+          path: reports/n6_own19_roadmap_review.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## own#19 weekly roadmap review" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f reports/n6_own19_roadmap_review.json ]; then
+            cat reports/n6_own19_roadmap_review.json >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "(no report generated)" >> "$GITHUB_STEP_SUMMARY"
+          fi
