@@ -1,11 +1,11 @@
 {
   "schema": "n6-architecture/n6_claim_effectiveness/1",
-  "ts": "2026-04-23T14:04:09Z",
-  "engine_version": "0.23.0",
+  "ts": "2026-04-24T08:02:12Z",
+  "engine_version": "0.44.0",
   "audit_source": "reports/n6_meta_audit.jsonl",
-  "audit_entries_scanned": 10,
-  "claims_total": 33,
-  "claims_silent_count": 32,
+  "audit_entries_scanned": 29,
+  "claims_total": 54,
+  "claims_silent_count": 53,
   "claims": [
     {
       "file": "01_arithmetic_n6.claim.json",
@@ -170,6 +170,111 @@
     {
       "file": "33_claim_effectiveness_observed.claim.json",
       "id": "claim_effectiveness.observer_present",
+      "fail_count": 0
+    },
+    {
+      "file": "34_coverage_map_observed.claim.json",
+      "id": "coverage_map.observer_present",
+      "fail_count": 0
+    },
+    {
+      "file": "35_unobserved_inventory.claim.json",
+      "id": "dir_inventory.unobserved_closed",
+      "fail_count": 0
+    },
+    {
+      "file": "36_emission_completeness.claim.json",
+      "id": "emission.no_missing",
+      "fail_count": 0
+    },
+    {
+      "file": "37_claim_cmd_purity.claim.json",
+      "id": "claim_purity.no_external_state",
+      "fail_count": 0
+    },
+    {
+      "file": "38_claim_meta_hygiene.claim.json",
+      "id": "claim_meta.hygiene_clean",
+      "fail_count": 0
+    },
+    {
+      "file": "39_manifest_phase_monotonic.claim.json",
+      "id": "manifest.phase_ids_monotonic",
+      "fail_count": 0
+    },
+    {
+      "file": "40_registry_cso_parity.claim.json",
+      "id": "manifest.registry_cso_parity",
+      "fail_count": 0
+    },
+    {
+      "file": "41_selftest_fn_parity.claim.json",
+      "id": "selftest.fn_parity",
+      "fail_count": 0
+    },
+    {
+      "file": "42_version_phase_alignment.claim.json",
+      "id": "manifest.version_phase_aligned",
+      "fail_count": 0
+    },
+    {
+      "file": "43_recheck_cadence_enum.claim.json",
+      "id": "claim_meta.recheck_cadence_enum",
+      "fail_count": 0
+    },
+    {
+      "file": "44_must_fail_expected_pair.claim.json",
+      "id": "claim_meta.must_fail_expected_pair",
+      "fail_count": 0
+    },
+    {
+      "file": "45_claim_type_enum.claim.json",
+      "id": "claim_meta.type_enum",
+      "fail_count": 0
+    },
+    {
+      "file": "46_invariants_manifest_present.claim.json",
+      "id": "invariants.manifest_well_formed",
+      "fail_count": 0
+    },
+    {
+      "file": "47_invariants_atom_values.claim.json",
+      "id": "invariants.atom_values_verified",
+      "fail_count": 0
+    },
+    {
+      "file": "48_atoms_faithful.claim.json",
+      "id": "invariants.atoms_faithful",
+      "fail_count": 0
+    },
+    {
+      "file": "49_invariants_relations_live.claim.json",
+      "id": "invariants.foundation_relations_live",
+      "fail_count": 0
+    },
+    {
+      "file": "50_generator_orbits_verified.claim.json",
+      "id": "invariants.generator_orbits_verified",
+      "fail_count": 0
+    },
+    {
+      "file": "51_composition_preservation.claim.json",
+      "id": "invariants.composition_preservation",
+      "fail_count": 0
+    },
+    {
+      "file": "52_silicon_functor_manifest.claim.json",
+      "id": "silicon_functor.manifest_well_formed",
+      "fail_count": 0
+    },
+    {
+      "file": "53_measurement_boundary_manifest.claim.json",
+      "id": "measurement_boundary.manifest_well_formed",
+      "fail_count": 0
+    },
+    {
+      "file": "54_thermodynamic_closure_manifest.claim.json",
+      "id": "thermodynamic_closure.manifest_well_formed",
       "fail_count": 0
     }
   ],

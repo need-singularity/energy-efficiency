@@ -1,6 +1,6 @@
 {
   "schema": "n6-architecture/n6_engine_integrity/1",
-  "ts": "2026-04-24T07:48:33Z",
+  "ts": "2026-04-24T08:02:09Z",
   "engine_version": "0.44.0",
   "checks": {
     "phases_live_declared": 44,

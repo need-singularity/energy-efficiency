@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_audit_summary/1",
-  "ts": "2026-04-23T19:58:45Z",
-  "engine_version": "0.42.0",
+  "ts": "2026-04-24T08:02:11Z",
+  "engine_version": "0.44.0",
   "source": "reports/n6_meta_audit.jsonl",
   "entries_total": 29,
   "last_entry": {
@@ -33,8 +33,8 @@
     "threshold": "appears >=3 times in last 5 entries"
   },
   "continuity": {
-    "last_engine_version_matches_current": true,
-    "last_head_matches_current": true
+    "last_engine_version_matches_current": false,
+    "last_head_matches_current": false
   },
-  "status": "GREEN"
+  "status": "AMBER"
 }

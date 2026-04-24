@@ -1,6 +1,6 @@
 {
   "schema": "n6-architecture/n6_monte_carlo/1",
-  "ts": "2026-04-23T14:03:57Z",
+  "ts": "2026-04-24T08:01:57Z",
   "mode": "historical_lookup",
   "z_score": 3.06,
   "p_value": 0.003,

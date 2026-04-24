@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_claim_type_enum/1",
-  "ts": "2026-04-23T17:28:27Z",
-  "engine_version": "0.35.0",
-  "total_claims": 45,
+  "ts": "2026-04-24T08:02:18Z",
+  "engine_version": "0.44.0",
+  "total_claims": 54,
   "flagged_count": 0,
   "flagged": [],
   "allowed_types": "atlas_count ci_health convention cross_consistency determinism drift existence falsification regression schema self_consistency statistical structural",

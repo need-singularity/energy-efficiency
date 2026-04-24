@@ -1,9 +1,9 @@
 {
   "schema": "n6-architecture/n6_registry_cso_parity/1",
-  "ts": "2026-04-23T16:57:36Z",
-  "engine_version": "0.31.0",
-  "registry_total": 43,
-  "cso_total": 40,
+  "ts": "2026-04-24T08:02:16Z",
+  "engine_version": "0.44.0",
+  "registry_total": 56,
+  "cso_total": 53,
   "unregistered_count": 0,
   "unregistered": [],
   "on_demand_count": 3,

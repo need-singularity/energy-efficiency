@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_invariants_relations_live/1",
-  "ts": "2026-04-23T19:45:07Z",
-  "engine_version": "0.39.0",
+  "ts": "2026-04-24T08:02:19Z",
+  "engine_version": "0.44.0",
   "relations_total": 5,
   "relations_passed": 5,
   "relations_failed": 0,

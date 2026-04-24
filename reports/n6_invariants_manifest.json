@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_invariants_manifest/1",
-  "ts": "2026-04-23T19:34:09Z",
-  "engine_version": "0.36.0",
+  "ts": "2026-04-24T08:02:19Z",
+  "engine_version": "0.44.0",
   "manifest_path": "config/invariants.json",
   "exists": true,
   "atom_count": 10,

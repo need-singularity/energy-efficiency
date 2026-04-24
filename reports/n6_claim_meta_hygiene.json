@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_claim_meta_hygiene/1",
-  "ts": "2026-04-23T16:22:20Z",
-  "engine_version": "0.28.0",
-  "total_claims": 38,
+  "ts": "2026-04-24T08:02:15Z",
+  "engine_version": "0.44.0",
+  "total_claims": 54,
   "flagged_count": 0,
   "flagged": [],
   "allowed_owners": "meta-engine arithmetic_core atlas_team discovery engine infra publish techniques_team verify",

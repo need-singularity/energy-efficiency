@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_coverage_map/1",
-  "ts": "2026-04-23T15:17:03Z",
-  "engine_version": "0.25.0",
+  "ts": "2026-04-24T08:02:12Z",
+  "engine_version": "0.44.0",
   "must_observe_count": 12,
   "observed_count": 12,
   "unobserved_count": 0,
@@ -9,32 +9,32 @@
   "dirs": [
     {
       "dir": "atlas",
-      "references": 21,
+      "references": 25,
       "files": 3,
       "status": "observed"
     },
     {
       "dir": "engine",
-      "references": 15,
+      "references": 23,
       "files": 19,
       "status": "observed"
     },
     {
       "dir": "scanners",
-      "references": 28,
-      "files": 35,
+      "references": 53,
+      "files": 54,
       "status": "observed"
     },
     {
       "dir": "tool",
-      "references": 17,
+      "references": 21,
       "files": 18,
       "status": "observed"
     },
     {
       "dir": "config",
-      "references": 17,
-      "files": 4,
+      "references": 44,
+      "files": 8,
       "status": "observed"
     },
     {
@@ -64,7 +64,7 @@
     {
       "dir": "theory",
       "references": 3,
-      "files": 275,
+      "files": 278,
       "status": "observed"
     },
     {

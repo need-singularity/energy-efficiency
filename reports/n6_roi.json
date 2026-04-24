@@ -1,14 +1,14 @@
 {
   "schema": "n6-architecture/n6_roi/1",
-  "ts": "2026-04-23T14:03:22Z",
+  "ts": "2026-04-24T08:01:37Z",
   "counters": {
     "techniques_total": 225,
-    "papers_total": 164,
+    "papers_total": 163,
     "dead_technique_count": 0,
     "orphan_paper_count": 0,
-    "proposals_total": 12,
+    "proposals_total": 16,
     "products_actual": 354,
-    "atlas_signal_age_hours": 21,
+    "atlas_signal_age_hours": 39,
     "monte_carlo_file_count": 5
   },
   "findings": {
@@ -34,7 +34,7 @@
     ],
     "dead_technique": [],
     "orphan_paper": [],
-    "stale_atlas_signal": false,
+    "stale_atlas_signal": true,
     "redundant_monte_carlo_files": [
       "experiments/meta/meta_mc_v9_cross_batch.hexa",
       "experiments/anu_mc_verification/anu_mc_verify.hexa",

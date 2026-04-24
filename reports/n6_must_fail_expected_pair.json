@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_must_fail_expected_pair/1",
-  "ts": "2026-04-23T17:25:01Z",
-  "engine_version": "0.34.0",
-  "total_claims": 44,
+  "ts": "2026-04-24T08:02:18Z",
+  "engine_version": "0.44.0",
+  "total_claims": 54,
   "flagged_count": 0,
   "flagged": [],
   "rules": [

@@ -1,7 +1,7 @@
 {
   "schema": "n6-architecture/n6_dir_inventory/1",
-  "ts": "2026-04-23T15:17:03Z",
-  "engine_version": "0.25.0",
+  "ts": "2026-04-24T08:02:12Z",
+  "engine_version": "0.44.0",
   "watched": [
     "theory",
     "bridge",
@@ -10,9 +10,9 @@
   "dirs": [
     {
       "dir": "theory",
-      "files": 275,
-      "bytes": 6246769,
-      "newest_mtime": 1776750025
+      "files": 278,
+      "bytes": 6259105,
+      "newest_mtime": 1777017364
     },
     {
       "dir": "bridge",
@@ -27,8 +27,8 @@
       "newest_mtime": 1776071383
     }
   ],
-  "grand_files": 1053,
-  "grand_bytes": 69447482,
+  "grand_files": 1056,
+  "grand_bytes": 69459818,
   "note": "Phase 25 — minimal inventory for dirs that P24 flagged unobserved. Not a semantic check; a baseline surface so future drift (sudden file-count or mtime shift) is at least visible. Pairs with P24 to close the coverage gap it opened.",
   "status": "GREEN"
 }

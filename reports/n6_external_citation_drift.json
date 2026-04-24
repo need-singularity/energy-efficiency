@@ -1,19 +1,25 @@
 {
   "schema": "n6-architecture/n6_external_citation_drift/1",
-  "ts": "2026-04-23T14:03:57Z",
+  "ts": "2026-04-24T08:01:58Z",
   "actual": {
     "products": 354,
     "domains": 354,
     "techniques": 225,
-    "papers": 164
+    "papers": 163
   },
   "drift_entries": [
     {
       "file": "README.md",
       "kw": "papers",
       "claimed": 92,
-      "actual": 164
+      "actual": 163
+    },
+    {
+      "file": "proposals/dup_derivation_consolidation_phase2_2026_04_24.md",
+      "kw": "domains",
+      "claimed": 18,
+      "actual": 354
     }
   ],
-  "drift_count": 1
+  "drift_count": 2
 }

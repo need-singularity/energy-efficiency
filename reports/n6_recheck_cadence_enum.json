@@ -1,8 +1,8 @@
 {
   "schema": "n6-architecture/n6_recheck_cadence_enum/1",
-  "ts": "2026-04-23T17:19:43Z",
-  "engine_version": "0.33.0",
-  "total_claims": 43,
+  "ts": "2026-04-24T08:02:17Z",
+  "engine_version": "0.44.0",
+  "total_claims": 54,
   "flagged_count": 0,
   "flagged": [],
   "allowed_values": "every_commit daily weekly monthly hourly manual",
