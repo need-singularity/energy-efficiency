@@ -4,86 +4,92 @@ domain: protocol-12-sigma12-coverage
 requires:
   - to: cryptography
     alien_min: 10
-    reason: 인코딩 기초
+    reason: encoding fundamentals
   - to: writing-systems
     alien_min: 10
-    reason: 문자 체계
+    reason: character systems
 alien_index_current: 9
 alien_index_target: 10
 ---
 
-# HEXA-PROTOCOL-12 — σ=12 프로토콜 12종 커버리지 논문 (N6-114)
+# HEXA-PROTOCOL-12 — σ=12 protocol 12-set coverage paper (N6-114)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: protocol-12-sigma12-coverage — P2 확장 v3 통신 메타
-> **버전**: v3 (2026-04-14 P2 확장)
-> **선행 BT**: BT-73, BT-197, BT-227, BT-380
-> **연결 atlas 노드**: `protocol-12-sigma12-coverage` 12/12 프로토콜 커버
-
----
-
-## 0. Abstract (초록, 한글)
-
-본 논문은 현대 통신·인코딩·저장 프로토콜 주요 12종(TCP, UDP, HTTP/3, QUIC, TLS1.3, IPv6, BGP,
-Ethernet, USB4, PCIe5, NVMe2, CXL3)의 **공통 구조 인자 12** 를 추출하고, 이것이 σ(6)=12 축과 필연적으로
-일치함을 보인다. 12 개 공통 인자(헤더 길이, checksum, 흐름제어, QoS, 암호화, 재전송, 세션, ACK, 윈도우,
-fragmentation, multiplex, keepalive)가 모든 프로토콜에서 구현됨을 실측 검증하였다.
+> **Author**: Minwoo Park (n6-architecture)
+> **Category**: protocol-12-sigma12-coverage — P2 expansion v3 communication meta
+> **Version**: v3 (2026-04-14 P2 expansion)
+> **Upstream BT**: BT-73, BT-197, BT-227, BT-380
+> **Linked atlas node**: `protocol-12-sigma12-coverage` 12/12 protocol coverage
 
 ---
 
-## 1. 서론
+## 0. Abstract
 
-통신 프로토콜 설계는 40년 이상 축적된 분야이다. 각 프로토콜은 독립적 이유로 설계되었으나, 놀랍게도
-**공통 인자 집합** 이 출현한다. 이 공통 인자의 정확한 수는 논쟁적이나, 본 논문은 **정확히 12** 로 수렴함을
-실측으로 보이고, 이것이 σ(6)=12 산술 구조에서 필연적으로 파생됨을 증명한다.
+This paper extracts the **12 common structural factors** shared by the major 12
+modern communication/encoding/storage protocols (TCP, UDP, HTTP/3, QUIC,
+TLS1.3, IPv6, BGP, Ethernet, USB4, PCIe5, NVMe2, CXL3) and demonstrates as a
+candidate pattern that these necessarily align with the σ(6)=12 axis. The 12
+common factors (header length, checksum, flow control, QoS, encryption,
+retransmission, session, ACK, window, fragmentation, multiplex, keepalive) are
+empirically demonstrated to be implemented across every protocol.
 
 ---
 
-## 2. 본론 — 12 공통 인자
+## 1. Introduction
 
-### 2.1 σ=12 인자 목록
+Communication-protocol design is a field with 40+ years of accumulated work.
+Each protocol was designed for independent reasons, yet surprisingly a
+**common factor set** emerges. The exact count of these common factors has
+been disputed, but this paper shows by measurement that it converges to
+**exactly 12**, and demonstrates as a candidate argument that this is derived
+necessarily from the σ(6)=12 arithmetic structure.
+
+---
+
+## 2. Main body — 12 common factors
+
+### 2.1 σ=12 factor list
 
 ```
 F = {
-  f₁ = 헤더 길이 (bytes)
-  f₂ = checksum 크기 (bits)
-  f₃ = 흐름제어 메커니즘
-  f₄ = QoS 클래스 수
-  f₅ = 암호화 알고리즘
-  f₆ = 재전송 전략
-  f₇ = 세션 관리 방식
-  f₈ = ACK 시그널링
-  f₉ = 윈도우 크기
-  f₁₀ = fragmentation 단위
-  f₁₁ = multiplex ID 공간
-  f₁₂ = keepalive 주기
+  f₁ = header length (bytes)
+  f₂ = checksum size (bits)
+  f₃ = flow-control mechanism
+  f₄ = QoS class count
+  f₅ = encryption algorithm
+  f₆ = retransmission strategy
+  f₇ = session management
+  f₈ = ACK signalling
+  f₉ = window size
+  f₁₀ = fragmentation unit
+  f₁₁ = multiplex ID space
+  f₁₂ = keepalive period
 }
 |F| = 12 = σ(6)
 ```
 
-### 2.2 12 프로토콜 × 12 인자 = σ² = 144 셀 행렬
+### 2.2 12 protocols × 12 factors = σ² = 144-cell matrix
 
-커버리지 C(p, f) ∈ {0, 1}: 프로토콜 p 가 인자 f 를 구현하는지 여부.
+Coverage C(p, f) ∈ {0, 1}: whether protocol p implements factor f.
 
-### 2.3 n=6 블록 구조
+### 2.3 n=6 block structure
 
-12 프로토콜을 n=6 씩 2 블록으로 분할:
-- 블록 A (네트워크): TCP, UDP, HTTP/3, QUIC, TLS1.3, IPv6
-- 블록 B (인터커넥트): BGP, Ethernet, USB4, PCIe5, NVMe2, CXL3
+Split 12 protocols into 2 blocks of n=6:
+- Block A (network): TCP, UDP, HTTP/3, QUIC, TLS1.3, IPv6
+- Block B (interconnect): BGP, Ethernet, USB4, PCIe5, NVMe2, CXL3
 
-각 블록에서 인자 커버리지 ≥ n=6 보장.
+Within each block, factor coverage ≥ n=6 is guaranteed.
 
 ---
 
-## 3. 검증 (EXACT 측정)
+## 3. Verification (EXACT measurement)
 
 ```python
-# 12 프로토콜 × 12 인자 커버리지 행렬
+# 12 protocols × 12 factors coverage matrix
 protocols = ["TCP","UDP","HTTP/3","QUIC","TLS1.3","IPv6","BGP","Ethernet","USB4","PCIe5","NVMe2","CXL3"]
 factors = ["header","checksum","flow","QoS","crypto","retry","session","ACK","window","frag","mux","keepalive"]
 assert len(protocols) == 12 == len(factors)
 
-# 커버리지 행렬 (1 = 지원, 0 = 미지원)
+# Coverage matrix (1 = supported, 0 = unsupported)
 coverage = [
     [1,1,1,1,0,1,1,1,1,1,1,1],  # TCP
     [1,1,0,0,0,0,0,0,0,1,0,0],  # UDP
@@ -102,42 +108,42 @@ coverage = [
 total_cells = 12 * 12
 covered = sum(sum(row) for row in coverage)
 coverage_pct = covered / total_cells * 100
-print(f"총 셀: {total_cells} = σ²=144")
-print(f"커버된 셀: {covered}")
-print(f"커버리지: {coverage_pct:.1f}%")
-# 인자별 커버리지 (최소 12/2 = n=6 이어야 함)
+print(f"Total cells: {total_cells} = σ²=144")
+print(f"Covered cells: {covered}")
+print(f"Coverage: {coverage_pct:.1f}%")
+# Per-factor coverage (must be at least 12/2 = n=6)
 for i, f in enumerate(factors):
     count = sum(row[i] for row in coverage)
-    assert count >= 6, f"{f} 커버 {count} < n=6"
-# 결과: 총 144, 커버 123, 85.4% 커버리지, 전 인자 n=6 이상 커버
+    assert count >= 6, f"{f} covers {count} < n=6"
+# Result: total 144, covered 123, 85.4% coverage, every factor covers ≥ n=6
 ```
 
-### 3.2 EXACT 검증표
+### 3.2 EXACT verification table
 
-| 항목 | 이론값 | 측정값 | 등급 |
-|------|-------|--------|------|
-| 공통 인자 수 | σ=12 | 12 | [10*] EXACT |
-| 프로토콜 수 | 12 (σ) | 12 | [10*] EXACT |
-| 행렬 셀 수 | σ²=144 | 144 | [10*] EXACT |
-| 평균 커버리지 | ≥80% | 85.4% | [10*] EXACT |
-| 인자별 최소 커버 | ≥n=6 | 6~12 | [10*] EXACT |
+| Item | Theoretical | Measured | Grade |
+|------|-------------|----------|-------|
+| Common factor count | σ=12 | 12 | [10*] EXACT |
+| Protocol count | 12 (σ) | 12 | [10*] EXACT |
+| Matrix cell count | σ²=144 | 144 | [10*] EXACT |
+| Average coverage | ≥80% | 85.4% | [10*] EXACT |
+| Per-factor min cover | ≥n=6 | 6~12 | [10*] EXACT |
 
 ---
 
-## 4. ASCII 비교 차트 (기존 vs HEXA)
+## 4. ASCII comparison chart (prior art vs HEXA)
 
 ```
-프로토콜 설계 인자 통합 분석 (인자 수 추적, 낮을수록 단순)
+Protocol design factor analysis (factor count, lower = simpler)
 
-RFC 분석 (수동)          ████████████████████████████████████████  ~200 인자 (비일관)
-업계 white paper         ████████████████                          ~80 인자 (중복)
-HEXA-PROTOCOL-12         ████                                      12 인자 (σ(6))
+RFC analysis (manual)    ████████████████████████████████████████  ~200 factors (inconsistent)
+Industry white paper     ████████████████                          ~80 factors  (duplicated)
+HEXA-PROTOCOL-12         ████                                      12 factors   (σ(6))
 
                         0         50        100        150        200
 
-프로토콜 커버리지 (144 셀 중, 높을수록 일관)
+Protocol coverage (out of 144 cells, higher = more consistent)
 
-RFC 분석 일관성          ████████████                              ~45%  (누락 多)
+RFC analysis consistency ████████████                              ~45%  (many gaps)
 HEXA-PROTOCOL-12         ██████████████████████                    85.4%
 
                         0         20         40         60         80       100
@@ -145,22 +151,25 @@ HEXA-PROTOCOL-12         ██████████████████�
 
 ---
 
-## 5. 결론
+## 5. Conclusion
 
-HEXA-PROTOCOL-12 는 현대 12 주요 통신 프로토콜의 공통 구조 인자가 정확히 **σ(6)=12** 임을 실측하였다.
-행렬 커버리지 85.4% (144 셀 중 123 셀 구현), 전 인자가 n=6 이상 프로토콜에서 구현됨을 보장.
-이는 프로토콜 설계가 독립적으로 진화했음에도 **n=6 산술 구조에 수렴** 함을 시사한다.
-v4 트랙에서는 **차세대 프로토콜 (Matter, Thread, 5G URLLC)** 로 확장 예정.
+HEXA-PROTOCOL-12 empirically measures that the common structural factors
+across 12 major modern communication protocols number exactly **σ(6)=12**.
+Matrix coverage 85.4% (123 of 144 cells implemented), with every factor
+implemented in at least n=6 protocols. This suggests that protocol design,
+despite having evolved independently, **converges toward the n=6 arithmetic
+structure**. On the v4 track, expansion is planned toward **next-generation
+protocols (Matter, Thread, 5G URLLC)**.
 
 ---
 
-## 6. 참고문헌
+## 6. References
 
 1. RFC 9293 (TCP), RFC 9110 (HTTP/3), RFC 9000 (QUIC)
 2. PCIe 5.0 base specification, CXL 3.0 specification
 3. papers/n6-cryptography-paper.md (N6-crypto)
-4. papers/n6-telecom-linguistics-paper.md (통신 기초)
-5. papers/n6-writing-systems-paper.md (인코딩)
+4. papers/n6-telecom-linguistics-paper.md (communication fundamentals)
+5. papers/n6-writing-systems-paper.md (encoding)
 
 ## §1 WHY
 

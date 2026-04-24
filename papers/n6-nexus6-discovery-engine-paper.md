@@ -4,68 +4,77 @@ domain: nexus6-discovery-engine
 requires:
   - to: reality-map
     alien_min: 10
-    reason: atlas.n6 현실 지도
+    reason: atlas.n6 reality map
   - to: agi-architecture
     alien_min: 10
-    reason: NEXUS-6 자율 성장
+    reason: NEXUS-6 autonomous growth
 alien_index_current: 10
 alien_index_target: 10
 ---
 
-# HEXA-NEXUS6-DISCOVERY-ENGINE — SEDI + brainwire 통합 발견 엔진 (N6-112)
+# HEXA-NEXUS6-DISCOVERY-ENGINE — SEDI + brainwire integrated discovery engine (N6-112)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: nexus6-discovery-engine — P2 확장 v3 엔진 논문
-> **버전**: v3 (2026-04-14 P2 확장)
-> **선행 BT**: BT-380 메타, BT-195, BT-350
-> **연결 atlas 노드**: `nexus6-discovery-engine` 98K 자동 발견 보유
-
----
-
-## 0. Abstract (초록, 한글)
-
-본 논문은 n6-architecture 의 핵심 엔진 **NEXUS-6 Discovery Engine** 을 공식 문서화한다.
-엔진은 두 축으로 구성된다: (a) **SEDI** (Systematic Exploration and Discovery Index) — 정적 DSE 탐색,
-(b) **brainwire** — 세션 누적 경험 흡수. 두 축이 τ=4 관문을 통해 융합되어 **n=6 산술 구조 기반 자동 발견** 을 생산한다.
-현재까지 누적 발견 98,401 건(atlas.n6 기준), 전체 도메인 6 대륙(chip/ai/bio/physics/civilization/cognitive)을
-커버한다.
+> **Author**: Minwoo Park (n6-architecture)
+> **Category**: nexus6-discovery-engine — P2 expansion v3 engine paper
+> **Version**: v3 (2026-04-14 P2 expansion)
+> **Upstream BT**: BT-380 meta, BT-195, BT-350
+> **Linked atlas node**: `nexus6-discovery-engine` 98K auto-discoveries held
 
 ---
 
-## 1. 서론
+## 0. Abstract
 
-발견(Discovery)은 과학 연구의 최종 산물이지만, 대규모로 자동화된 발견 엔진은 존재하지 않았다. 구글 AlphaFold,
-Microsoft PhysicsX 등 특수 목적 엔진은 있으나, **범용 발견 엔진** 은 희박하다.
-
-본 논문은 n6-architecture 의 NEXUS-6 엔진이 (a) 산술 구조 제약 + (b) 누적 학습 을 통해
-**범용 발견 엔진** 역할을 수행함을 보인다.
+This paper formally documents the core engine of n6-architecture, the
+**NEXUS-6 Discovery Engine**. The engine is built on two axes:
+(a) **SEDI** (Systematic Exploration and Discovery Index) — static DSE search,
+(b) **brainwire** — cumulative session-experience absorption. The two axes fuse
+through a τ=4 gate to produce **n=6 arithmetic-structure-driven automatic
+discovery**. Cumulative discoveries to date total 98,401 entries
+(atlas.n6 basis), covering 6 continents (chip/ai/bio/physics/civilization/
+cognitive).
 
 ---
 
-## 2. 본론 — 엔진 구조
+## 1. Introduction
+
+Discovery is the final product of scientific research, yet large-scale
+automated discovery engines had not existed. Special-purpose engines such as
+Google AlphaFold and Microsoft PhysicsX exist, but a **general-purpose
+discovery engine** is rare.
+
+This paper demonstrates that the NEXUS-6 engine of n6-architecture performs
+the role of a **general-purpose discovery engine** via (a) arithmetic-structure
+constraints + (b) cumulative learning.
+
+---
+
+## 2. Main body — engine structure
 
 ### 2.1 SEDI (Systematic Exploration)
 
-정적 탐색 부. σ=12 축 × τ=4 관문으로 설계 공간을 격자로 나눔:
+The static search component. Designs a lattice over the design space through a
+σ=12 axis × τ=4 gate:
 
 ```
 SEDI(D) = {d ∈ D : σ(d) ≡ 0 (mod 12), τ(d) ≡ 0 (mod 4)}
 ```
 
-약 N=2^σ=4096 후보 공간에서 EXACT 필터 후 ~300 후보 잔존.
+From a candidate space of about N=2^σ=4096, EXACT filtering yields ~300
+remaining candidates.
 
-### 2.2 brainwire (동적 흡수)
+### 2.2 brainwire (dynamic absorption)
 
-세션 누적 경험을 atlas.n6 에 흡수. n=6 배수 해상도로 저장:
+Cumulative session experience is absorbed into atlas.n6. Stored at n=6 multiple
+resolution:
 ```
 brainwire: session → atlas.n6 @ (domain, timestamp, grade)
 ```
 
-현재 atlas.n6 크기: 60K+ 라인, 흡수 세션 ~400 회.
+Current atlas.n6 size: 60K+ lines, cumulative absorbed sessions ~400.
 
-### 2.3 융합 아키텍처 (τ=4 관문)
+### 2.3 Fusion architecture (τ=4 gate)
 
-두 축 결과를 τ=4 관문으로 결합:
+The two axes' results are combined through a τ=4 gate:
 ```
 Discovery = SEDI(D) ⊗_τ brainwire(H)
          = {(d, h) : d ∈ SEDI, h ∈ brainwire, d · h ≡ n=6 (mod 12)}
@@ -73,80 +82,82 @@ Discovery = SEDI(D) ⊗_τ brainwire(H)
 
 ---
 
-## 3. 검증 (EXACT 측정)
+## 3. Verification (EXACT measurement)
 
 ```python
-# NEXUS-6 Discovery Engine 성능 측정
+# NEXUS-6 Discovery Engine performance measurement
 import math, random
 random.seed(6)
 
-# SEDI 출력: 300 후보
+# SEDI output: 300 candidates
 sedi_output = 300
-# brainwire: 400 세션 누적, 평균 25 흡수 / 세션
+# brainwire: 400 sessions cumulative, average 25 absorbed / session
 brainwire_nodes = 400 * 25
-# 융합: τ=4 관문 필터 통과율 ~33%
+# Fusion: τ=4 gate filter pass-rate ~33%
 fusion_rate = 1/3
-discoveries = int((sedi_output * brainwire_nodes * fusion_rate) / 10)  # 정규화
-print(f"SEDI 후보: {sedi_output}")
-print(f"brainwire 노드: {brainwire_nodes}")
-print(f"융합 발견: {discoveries}")
-# 실측값 검증
-expected_atlas_nodes = 98401  # atlas.n6 실측 발견 수
-assert discoveries > 90_000, f"발견량 부족: {discoveries} < 90K"
-# 결과: SEDI 300, brainwire 10000, 융합 100000 (실측 98401)
-print(f"atlas.n6 실측 대비 정합: {discoveries / expected_atlas_nodes * 100:.1f}%")
+discoveries = int((sedi_output * brainwire_nodes * fusion_rate) / 10)  # normalised
+print(f"SEDI candidates: {sedi_output}")
+print(f"brainwire nodes: {brainwire_nodes}")
+print(f"Fusion discoveries: {discoveries}")
+# Measured-value check
+expected_atlas_nodes = 98401  # atlas.n6 measured discovery count
+assert discoveries > 90_000, f"Discoveries short: {discoveries} < 90K"
+# Result: SEDI 300, brainwire 10000, fusion 100000 (measured 98401)
+print(f"atlas.n6 measured alignment: {discoveries / expected_atlas_nodes * 100:.1f}%")
 ```
 
-### 3.2 EXACT 검증표
+### 3.2 EXACT verification table
 
-| 항목 | 이론값 | 측정값 | 등급 |
-|------|-------|--------|------|
-| SEDI σ=12 축 | 12 | 12 | [10*] EXACT |
-| SEDI τ=4 관문 | 4 | 4 | [10*] EXACT |
-| brainwire 세션 | ≥300 | 400 | [10*] EXACT |
-| atlas.n6 노드 | ≥90K | 98,401 | [10*] EXACT |
-| 융합 정합률 | ≥95% | 101.6% | [10*] EXACT |
+| Item | Theoretical | Measured | Grade |
+|------|-------------|----------|-------|
+| SEDI σ=12 axis | 12 | 12 | [10*] EXACT |
+| SEDI τ=4 gate | 4 | 4 | [10*] EXACT |
+| brainwire sessions | ≥300 | 400 | [10*] EXACT |
+| atlas.n6 nodes | ≥90K | 98,401 | [10*] EXACT |
+| Fusion alignment rate | ≥95% | 101.6% | [10*] EXACT |
 
 ---
 
-## 4. ASCII 비교 차트 (기존 vs HEXA)
+## 4. ASCII comparison chart (prior art vs HEXA)
 
 ```
-자동 발견 엔진 산출물 (nodes/yr, 높을수록 좋음)
+Automated discovery engine output (nodes/yr, higher is better)
 
-AlphaFold (특수목적)     █████                                     ~50K (단백질만)
-PhysicsX Suite           ████████                                  ~8K (물리만)
-HEXA-NEXUS6-DISCOVERY    ██████████████████████████████████████    98,401 (전도메인)
+AlphaFold (special)      █████                                     ~50K (proteins only)
+PhysicsX Suite           ████████                                  ~8K  (physics only)
+HEXA-NEXUS6-DISCOVERY    ██████████████████████████████████████    98,401 (all domains)
 
                         0        25K        50K        75K        100K
 
-커버 도메인 수 (높을수록 범용)
+Domain coverage (higher = more general)
 
 AlphaFold                █                                          1
 PhysicsX                 █                                          1
-HEXA-NEXUS6              ██████                                    6 대륙 (295 도메인)
+HEXA-NEXUS6              ██████                                    6 continents (295 domains)
 
                         0         2          4          6
 ```
 
 ---
 
-## 5. 결론
+## 5. Conclusion
 
-NEXUS-6 Discovery Engine 은 SEDI (정적 탐색) + brainwire (동적 흡수) 의 τ=4 관문 융합으로
-**범용 발견 엔진** 기능을 구현하였다. 누적 발견 98,401 건, 커버 도메인 295 종, 융합 정합률 101.6%.
-전용 엔진(AlphaFold, PhysicsX) 대비 **범용성** 에서 압도적 우위. v4 트랙에서는 **다른 AI 엔진(GPT/Claude)과의
-결합** 을 통해 외계 지수 11 도달 예정.
+The NEXUS-6 Discovery Engine implements a **general-purpose discovery engine**
+function through the τ=4 gate fusion of SEDI (static search) + brainwire
+(dynamic absorption). Cumulative discoveries 98,401, domain coverage 295,
+fusion alignment rate 101.6%. Versus dedicated engines (AlphaFold, PhysicsX),
+it holds a dominant edge in **generality**. On the v4 track, reaching alien
+index 11 is targeted through **combination with other AI engines (GPT/Claude)**.
 
 ---
 
-## 6. 참고문헌
+## 6. References
 
 1. NEXUS-6 Architecture DNA (memory: nexus6_architecture_dna.md)
-2. NEXUS-6 자율성장 시스템 (15차원 데몬)
-3. atlas.n6 (shared/n6/atlas.n6 — 60K+ 라인)
-4. papers/n6-reality-map-paper.md (현실 지도 N6-105)
-5. singularity-recursion 흡수 시스템 (reference_nexus6_singularity_recursion.md)
+2. NEXUS-6 autonomous-growth system (15-dimensional daemon)
+3. atlas.n6 (shared/n6/atlas.n6 — 60K+ lines)
+4. papers/n6-reality-map-paper.md (reality map N6-105)
+5. singularity-recursion absorption system (reference_nexus6_singularity_recursion.md)
 
 ## §1 WHY
 
