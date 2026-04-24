@@ -1,0 +1,140 @@
+{
+  "schema_version": "4.0",
+  "created_at": "2026-04-24",
+  "canonical_md": "theory/roadmap-v2/millennium-v4-design-2026-04-16.md",
+  "bt_status": {
+    "541": "PARTIAL",
+    "542": "PARTIAL",
+    "543": "PARTIAL",
+    "544": "PARTIAL",
+    "545": "PARTIAL",
+    "546": "PARTIAL",
+    "547": "DONE (Perelman 2003)"
+  },
+  "millennium_resolved": "0/7",
+  "_v2_phases": {
+    "note": "v2.3 phase structure P0..P10, PΩ, PX — inherited wholesale into v3. Summary only; canonical detail lives in parent_roadmap schema_version 2.3 history.",
+    "phases_done": ["P0", "P1", "P3", "P7"],
+    "total_tasks": 155,
+    "done": 143,
+    "partial": 5,
+    "deferred": 7,
+    "planned": 0,
+    "saturation_index": 1.0,
+    "saturation_round": "R14",
+    "terminal_state": "FULL_SATURATION (2026-04-15 13:10 UTC)",
+    "bt_resolved": "0/6"
+  },
+  "_v3_phases": {
+    "E": [
+      {"id": "E1", "title": "Sage/Pari-GP 설치 + 연동", "cost": "L", "bt": ["541", "546"]},
+      {"id": "E2", "title": "Cremona 정밀 |Sel_n(E)| 재계산", "cost": "L", "bt": ["541"]},
+      {"id": "E3", "title": "Iwasawa μ_p 정밀 계산", "cost": "L", "bt": ["541"]},
+      {"id": "E4", "title": "Cremona 3M 전체 데이터 수집", "cost": "M", "bt": ["541"]},
+      {"id": "E5", "title": "κ(B) 10+ bin 점근 검증", "cost": "M", "bt": ["541"]},
+      {"id": "E6", "title": "arXiv 정기 서베이 파이프라인", "cost": "M", "bt": ["all"]},
+      {"id": "E7", "title": "arXiv full-text download + topic clustering", "cost": "L", "bt": ["all"]}
+    ],
+    "T": [
+      {"id": "T1", "title": "BT-545 Abelian Sixfolds deep dive", "cost": "L", "bt": ["545"]},
+      {"id": "T2", "title": "LATT-PX-1 Moonshine L5 재시도", "cost": "L", "bt": ["18", "545"]},
+      {"id": "T3", "title": "GALO-PX-4 (A3') joint distribution 모델링", "cost": "L", "bt": ["541"]},
+      {"id": "T4", "title": "BT-541 Guth-Maynard 2024 재연구", "cost": "L", "bt": ["541"]},
+      {"id": "T5", "title": "BT-542 meta-complexity deep", "cost": "L", "bt": ["542"]},
+      {"id": "T6", "title": "BT-543 Balaban 2D 재정리", "cost": "L", "bt": ["543"]}
+    ],
+    "M": [
+      {"id": "M1", "title": "preprint 투고 (1건 이상)", "cost": "M", "bt": ["all"]},
+      {"id": "M2", "title": "수학자 3인 초청 리뷰", "cost": "M", "bt": ["all"]},
+      {"id": "M3", "title": "Lean4/Coq 형식화 탐색", "cost": "L", "bt": ["all"]},
+      {"id": "M4", "title": "HONEST-PX-EXT-AUDIT 외부 감사 파이프라인", "cost": "M", "bt": ["all"]},
+      {"id": "M5", "title": "OUROBOROS 2.0 namespace-aware severity", "cost": "M", "bt": ["all"]}
+    ],
+    "terminal_state": "SATURATION_ADJACENT (14/18 done, 4 external-blocked: E2, E3, E7, M2)",
+    "bt_resolved": "0/6",
+    "loops": "11 (loop 12-22 of 2026-04-15~16)"
+  },
+  "_v4_phases": {
+    "E": [
+      {"id": "E1_v4", "title": "정밀 |Sel_n(E)| per-curve (이월 v3 E2)", "cost": "L", "external": "Sage ARM 빌드 또는 remote Sage 서버", "bt": ["541"]},
+      {"id": "E2_v4", "title": "Iwasawa μ_p 정밀 (이월 v3 E3)", "cost": "L", "external": "Sage", "bt": ["541"]},
+      {"id": "E3_v4", "title": "arXiv full-text + NLP (이월 v3 E7)", "cost": "L", "external": "arXiv PDF API", "bt": ["all"]},
+      {"id": "E4_v4", "title": "κ(B) 50+ bin refinement", "cost": "M", "external": null, "bt": ["541"]},
+      {"id": "E5_v4", "title": "Cremona 3M full (330 shards)", "cost": "M", "external": "Cremona ecdata mirror", "bt": ["541"]},
+      {"id": "E6_v4", "title": "다른 n 에서 σφ vs nτ 비교 (n=4,8,12,30)", "cost": "M", "external": null, "bt": ["18"]},
+      {"id": "E7_v4", "title": "η(E) per-curve 분포 조사", "cost": "L", "external": "E1_v4 결과 의존", "bt": ["541"]}
+    ],
+    "T": [
+      {"id": "T1_v4", "title": "α = log(2)/4 BKLPR 이론 유도 시도", "cost": "L", "miss_probability": 0.70, "bt": ["541"]},
+      {"id": "T2_v4", "title": "Umbral Moonshine A_2^12 / A_5^4 D_4 explicit", "cost": "L", "bt": ["18", "545"]},
+      {"id": "T3_v4", "title": "Abelian Sixfolds full-text 분석 (arXiv:2603.20268)", "cost": "M", "bt": ["545"]},
+      {"id": "T4_v4", "title": "(A3″) formulation 엄밀화", "cost": "M", "bt": ["541"]},
+      {"id": "T5_v4", "title": "6 난제 cross-BT survey (BT-18, 544, 547)", "cost": "L", "bt": ["18", "544", "547"]}
+    ],
+    "M": [
+      {"id": "M1_v4", "title": "외부 수학자 contact (이월 v3 M2)", "cost": "M", "external": "사용자 direction", "status": "DEFERRED", "bt": ["all"]},
+      {"id": "M2_v4", "title": "Lean4 Mathlib 통합", "cost": "L", "external": "Mathlib 3GB 다운로드 + compile ~1 hour", "bt": ["all"]},
+      {"id": "M3_v4", "title": "Theorem B 대수적 경로 1 증명 시도 (σφ=nτ iff n=6)", "cost": "L", "bt": ["18"]},
+      {"id": "M4_v4", "title": "preprint v0.2 개정", "cost": "M", "bt": ["all"]},
+      {"id": "M5_v4", "title": "OUROBOROS v3 semantic similarity", "cost": "M", "bt": ["all"]}
+    ],
+    "tracks_summary": {
+      "E": "7 tasks: 이월 3 + 신규 4 (scale + precision)",
+      "T": "5 tasks: α 유도 + Umbral + 확장 (증명 시도 추가)",
+      "M": "5 tasks: 이월 1 + Mathlib + preprint 개정 (Lean4 formal 강화)"
+    },
+    "scope": "deep (17 tasks, 3 tracks)",
+    "expected_loops": "15-20",
+    "bt_target": "정직 MISS 유지 + 구체화",
+    "bt_resolved": "0/6"
+  },
+  "_honesty_charter": [
+    {
+      "principle": 1,
+      "name": "BT 해결 주장 금지",
+      "lineage": "계승 (v3 → v4)",
+      "detail": "v4 진행 어느 시점에도 BT 해결 claim 금지; progression 은 catalog / empirical / tool 개선"
+    },
+    {
+      "principle": 2,
+      "name": "외부 의존 명시",
+      "lineage": "계승 + 강화 (v4)",
+      "detail": "각 task 의 external dependency (Sage, Lean4/Mathlib, arXiv API, 외부 수학자) 사전 명시"
+    },
+    {
+      "principle": 3,
+      "name": "MISS 조건 사전 명시",
+      "lineage": "계승",
+      "detail": "각 task 에 MISS 기준 정확 규정"
+    },
+    {
+      "principle": 4,
+      "name": "OUROBOROS 주기 감사",
+      "lineage": "계승",
+      "detail": "매 phase 종료 시 OUROBOROS CLI 실행, R14 CLEAN 확인"
+    },
+    {
+      "principle": 5,
+      "name": "이월 task 진행 공개",
+      "lineage": "v4 신규",
+      "detail": "atlas 엔트리에 외부 해결 상태를 주기적으로 업데이트 (v3 E2, E3, E7, M2 = M1_v4)"
+    }
+  ],
+  "_termination_states": [
+    "FULL_SATURATION",
+    "SATURATION_ADJACENT_V4",
+    "GO_V5_USER"
+  ],
+  "_termination_states_detail": {
+    "FULL_SATURATION": "17 v4 task 전부 done (이월 포함, 외부 해결 전제)",
+    "SATURATION_ADJACENT_V4": "내부 실행 가능 전부 소진, 외부 블록만 남음 (v3 와 유사 가능)",
+    "GO_V5_USER": "사용자 의식적 전환 (go v5)"
+  },
+  "_provenance": {
+    "defect_closed": "theory/roadmap-v2/millennium-v4-design-2026-04-16.md §5, §6, §8 referenced this file but it did not exist",
+    "v2_parent": "shared/roadmaps/millennium.json (v2.3) — historical reference only",
+    "v3_parent": "shared/roadmaps/millennium.json (v3.0) — referenced by v4 design front-matter",
+    "v3_design": "theory/roadmap-v2/millennium-v3-design-2026-04-15.md",
+    "v4_design": "theory/roadmap-v2/millennium-v4-design-2026-04-16.md"
+  }
+}
