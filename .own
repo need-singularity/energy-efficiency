@@ -221,17 +221,16 @@ own 20 live "readme-techniques-count-drift — README techniques count matches a
   on_fail warn
   label Techniques list count
 
-own 21 deferred "readme-nexus6-tests-count-drift — README NEXUS-6 tests count matches actual"
+own 21 live "readme-nexus6-tests-count-drift — README NEXUS-6 tests count matches actual"
   slug readme-nexus6-tests-count-drift
-  decl README.md
-  scope README.md 'tests: NNNN' count must equal actual test total.
-  status deferred
+  decl README.md tool/own_nexus6_tests_drift.py reports/n6_selftest.json
+  scope README.md 'tests: NNNN' count must equal actual test total (reports/n6_selftest.json#total).
+  status live
   since 2026-04-21
-  why Migrated from loop-rules.json#2 (2026-04-21). Original had echo 2078 stub and README never carried the 'tests: N' token — drift rule was orphaned from the start. Deferred until README gains a canonical test-count token and drift_actual is wired to a real counter.
-  defer-until README exposes 'tests: N' canonical line and an actual hexa/python test harness produces the count
+  why Migrated from loop-rules.json#2 (2026-04-21). Original had echo 2078 stub and README never carried the 'tests: N' token — drift rule was orphaned from the start. Lifted to live 2026-04-24 with tool/own_nexus6_tests_drift.py (parity with own#20): authoritative source = reports/n6_selftest.json#total, README extraction = drift_pattern. WARN_NO_TOKEN when README has no token (SOFT, exit 0); DRIFT (exit 1) when a token mismatches.
   drift_doc README.md
   drift_pattern tests:\s+\d+
-  drift_actual echo 2078
+  drift_actual python3 tool/own_nexus6_tests_drift.py
   cron daily
   on_fail warn
   label NEXUS-6 test count
