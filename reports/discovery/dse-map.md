@@ -1,65 +1,65 @@
-# N6 DSE 지도 — 전체 도메인 Design Space Exploration 현황
+# N6 DSE map - Design Space Exploration status across all domains
 
-> 궁극 아키텍처 작업 시작 전 반드시 이 지도를 확인할 것.
-> DSE 없이 궁극 아키텍처를 확정하는 것은 금지 (CLAUDE.md 규칙).
+> Before starting ultimate-architecture work, always consult this map.
+> Fixing an ultimate architecture without DSE is forbidden (CLAUDE.md rule).
 
 ---
 
-## DSE 현황
+## DSE status
 
 ```
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │  도메인별 DSE 완료 현황                                                 │
-  │                                                                         │
-  │  [✅] 칩 아키텍처    3,000 조합    → Si+TSMC_N2+HEXA-P (100%, 86.38)   │
-  │  [✅] 핵융합        39,191,040 조합 → Tokamak+Nb3Sn+D_T (100%, 96.32)  │
-  │  [🔄] 배터리        goal.md 완료    → DSE 탐색 미실행                    │
-  │  [  ] 태양전지      미시작                                              │
-  │  [  ] 에너지 통합   미시작 (Cross-DSE 필요)                              │
-  └─────────────────────────────────────────────────────────────────────────┘
+  +-----------------------------------------------------------------------+
+  |  Per-domain DSE completion status                                     |
+  |                                                                       |
+  |  [done] chip architecture  3,000 combos   -> Si+TSMC_N2+HEXA-P (100%, 86.38)  |
+  |  [done] fusion            39,191,040 combos -> Tokamak+Nb3Sn+D_T (100%, 96.32) |
+  |  [wip]  battery           goal.md drafted  -> DSE sweep not run yet  |
+  |  [  ]   solar cell        not started                                 |
+  |  [  ]   energy integration  not started (needs Cross-DSE)             |
+  +-----------------------------------------------------------------------+
 ```
 
-| # | 도메인 | 체인 | 이론 조합 | 탐색 조합 | 최적 n6% | 최적 Pareto | 최적 경로 | 상태 |
+| # | Domain | Chain | Theoretical combos | Explored combos | Best n6% | Best Pareto | Best path | Status |
 |---|--------|------|----------|----------|---------|------------|----------|------|
-| 1 | 칩 아키텍처 | 소재×공정×코어×칩×시스템 | 3,000 | 3,000 | 100% | 86.38 | Si+TSMC_N2+HEXA-P+HEXA-1_Half+DGX_Style | ✅ 완료 |
-| 2 | **핵융합** | **방식×소재×코어×장치×시스템** | **67,184,640** | **39,191,040** | **100%** | **96.32** | **Tokamak+Nb3Sn+Li_ceramic+RAFM+D_T+TF6+A3.0+B12+Q10+Rankine+DCLL+AC_50Hz** | **✅ 완료** |
-| 3 | 배터리 | 소재×공정×코어×칩×시스템 | TBD | - | - | - | - | 🔄 goal.md 완료 |
-| 4 | 태양전지 | TBD | - | - | - | - | - | 미시작 |
+| 1 | Chip architecture | material x process x core x chip x system | 3,000 | 3,000 | 100% | 86.38 | Si+TSMC_N2+HEXA-P+HEXA-1_Half+DGX_Style | done |
+| 2 | **Fusion** | **method x material x core x device x system** | **67,184,640** | **39,191,040** | **100%** | **96.32** | **Tokamak+Nb3Sn+Li_ceramic+RAFM+D_T+TF6+A3.0+B12+Q10+Rankine+DCLL+AC_50Hz** | **done** |
+| 3 | Battery | material x process x core x chip x system | TBD | - | - | - | - | wip (goal.md drafted) |
+| 4 | Solar cell | TBD | - | - | - | - | - | not started |
 
 ---
 
-## 핵융합 DSE 상세
+## Fusion DSE detail
 
 ```
-  ┌─────────────────────────────────────────────────────────────────────┐
-  │  궁극의 핵융합 최적 경로 (Pareto #1, n6 EXACT = 14/14 = 100%)      │
-  │                                                                     │
-  │  Level 1        Level 2              Level 3                        │
-  │  ┌──────────┐  ┌────────────────┐   ┌────────────────┐             │
-  │  │ Tokamak  │→│ SC:  Nb3Sn     │→ │ Heat: ICRH     │             │
-  │  │ PF=6=n   │  │ Bl:  Li_ceramic│   │ Conf: SC_coil  │             │
-  │  │ CS=6=n   │  │ St:  RAFM     │   │ Fuel: D_T      │             │
-  │  └──────────┘  └────────────────┘   └───────┬────────┘             │
-  │                                              │                      │
-  │  Level 5              Level 4                ▼                      │
-  │  ┌────────────────┐  ┌────────────────┐                            │
-  │  │ Pwr: Rankine   │←│ TF:  6=n       │                            │
-  │  │ TBR: DCLL 1.20 │  │ A:   3.0=n/φ   │                            │
-  │  │ Grid: 50Hz     │  │ B:   12T=σ     │                            │
-  │  └────────────────┘  │ Q:   10=sopfr×φ │                            │
-  │                       └────────────────┘                            │
-  │                                                                     │
-  │  n6 매칭 상세:                                                      │
-  │    PF=6=n ✓  CS=6=n ✓  B_max=24=J₂ ✓  Coolant ✓                   │
-  │    MW=6=n ✓  D+T=5=sopfr ✓  80%=τ/sopfr ✓                         │
-  │    TF=6=n ✓  A=3=n/φ ✓  B=12=σ ✓  Q=10=sopfr×φ ✓                  │
-  │    Eff=33%=1/3 ✓  TBR=1.20=σ/(σ-φ) ✓  50Hz=sopfr×(σ-φ) ✓         │
-  └─────────────────────────────────────────────────────────────────────┘
+  +---------------------------------------------------------------------+
+  |  Ultimate fusion target path (Pareto #1, n6 EXACT = 14/14 = 100%)   |
+  |                                                                     |
+  |  Level 1        Level 2              Level 3                        |
+  |  +----------+  +----------------+   +----------------+              |
+  |  | Tokamak  |->| SC:  Nb3Sn     |-> | Heat: ICRH     |              |
+  |  | PF=6=n   |  | Bl:  Li_ceramic|   | Conf: SC_coil  |              |
+  |  | CS=6=n   |  | St:  RAFM     |   | Fuel: D_T      |              |
+  |  +----------+  +----------------+   +-------+--------+              |
+  |                                             |                       |
+  |  Level 5              Level 4               v                       |
+  |  +----------------+  +----------------+                             |
+  |  | Pwr: Rankine   |<-| TF:  6=n       |                             |
+  |  | TBR: DCLL 1.20 |  | A:   3.0=n/phi |                             |
+  |  | Grid: 50Hz     |  | B:   12T=sigma |                             |
+  |  +----------------+  | Q:   10=sopfr*phi |                          |
+  |                      +----------------+                             |
+  |                                                                     |
+  |  n6 match detail:                                                   |
+  |    PF=6=n v  CS=6=n v  B_max=24=J2 v  Coolant v                     |
+  |    MW=6=n v  D+T=5=sopfr v  80%=tau/sopfr v                         |
+  |    TF=6=n v  A=3=n/phi v  B=12=sigma v  Q=10=sopfr*phi v            |
+  |    Eff=33%=1/3 v  TBR=1.20=sigma/(sigma-phi) v  50Hz=sopfr*(sigma-phi) v  |
+  +---------------------------------------------------------------------+
 ```
 
-### 방식별 최적 비교
+### Per-method optimum comparison
 
-| 방식 | Pareto | n6% | Q_gain | TRL | LCOE | 핵심 조합 |
+| Method | Pareto | n6% | Q_gain | TRL | LCOE | Key combo |
 |------|--------|-----|--------|-----|------|----------|
 | **Tokamak** | **96.32** | **100%** | 100 | 90 | 86 | Nb3Sn+D_T+TF6+A3.0+B12+Q10 |
 | Stellarator | 72.34 | 86% | 50 | 70 | 82 | Nb3Sn+D_T+TF6+A3.0+B12+Q10 |
@@ -68,38 +68,38 @@
 | Mirror | 54.66 | 86% | 10 | 50 | 68 | Nb3Sn+D_T+TF6+A3.0+B12+Q10 |
 | Z_Pinch | 47.06 | 86% | 10 | 40 | 38 | Nb3Sn+D_T+TF6+A3.0+B12+Q10 |
 
-### 통계
+### Statistics
 
 ```
-  총 이론 조합:      67,184,640
-  비호환 제외:       27,993,600 (41.7%)
-  실제 탐색:         39,191,040
-  Max n6 EXACT:      100.0%
-  Avg n6 EXACT:      45.9%
-  ≥80% EXACT:        60,096 (0.15%)
-  ≥60% EXACT:        4,056,336 (10.35%)
+  Total theoretical combos:     67,184,640
+  Incompatibles excluded:       27,993,600 (41.7%)
+  Actually explored:            39,191,040
+  Max n6 EXACT:                 100.0%
+  Avg n6 EXACT:                 45.9%
+  >=80% EXACT:                  60,096 (0.15%)
+  >=60% EXACT:                  4,056,336 (10.35%)
 ```
 
 ---
 
-## Cross-DSE 후보
+## Cross-DSE candidates
 
-> 2개 이상 도메인 DSE 완료 시 Cross-DSE 트리거 (CLAUDE.md 규칙)
-> 현재: 칩 + 핵융합 = 2개 완료 → **Cross-DSE 가능**
+> Trigger Cross-DSE once two or more domains are DSE-complete (CLAUDE.md rule).
+> Current: chip + fusion = 2 complete -> **Cross-DSE is enabled**.
 
-| 조합 | 도메인 A | 도메인 B | 교차점 | 상태 |
+| Combo | Domain A | Domain B | Intersections | Status |
 |------|---------|---------|--------|------|
-| 칩×핵융합 | chip-arch (3K) | fusion (39M) | 전력변환/제어 IC, BMS, 센서 | 미시작 |
-| 배터리×핵융합 | battery (TBD) | fusion (39M) | 에너지 저장 + 발전 통합 | 배터리 DSE 대기 |
-| 칩×배터리 | chip-arch (3K) | battery (TBD) | BMS 칩 설계 | 배터리 DSE 대기 |
-| **3자 통합** | chip × battery × fusion | | 에너지-컴퓨팅-AI 삼중수렴 (BT-84) | 전 도메인 완료 후 |
+| chip x fusion | chip-arch (3K) | fusion (39M) | Power-conversion / control IC, BMS, sensors | not started |
+| battery x fusion | battery (TBD) | fusion (39M) | Storage + generation integration | waiting on battery DSE |
+| chip x battery | chip-arch (3K) | battery (TBD) | BMS chip design | waiting on battery DSE |
+| **Triple integration** | chip x battery x fusion | | Energy-compute-AI triple convergence (BT-84) | after all domains complete |
 
 ---
 
-## DSE 도구
+## DSE tools
 
-| 도구 | 경로 | 조합 수 | 실행 시간 |
+| Tool | Path | Combos | Runtime |
 |------|------|---------|----------|
-| 칩 DSE | `tools/dse-calc/dse-calc` | 3,000 | <1s |
-| 핵융합 DSE | `tools/fusion-dse/fusion-dse` | 39M | ~수초 |
-| 배터리 DSE | TBD | TBD | TBD |
+| Chip DSE | `tools/dse-calc/dse-calc` | 3,000 | <1s |
+| Fusion DSE | `tools/fusion-dse/fusion-dse` | 39M | a few seconds |
+| Battery DSE | TBD | TBD | TBD |

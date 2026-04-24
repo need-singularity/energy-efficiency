@@ -159,7 +159,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 7. chaos-dynamical / SaddleNode
 - Level: Bifurcation | n6 score: 0.33
-- Label: 안장-마디 분기
+- Label: Saddle-node bifurcation
 - Matches:
   - 1.0 ~ mu = 1.0000 (error: 0.00%)
   - 1.0 ~ 1/mu = 1.0000 (error: 0.00%)
@@ -339,7 +339,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 25. consciousness-scaling / Complete
 - Level: Topology | n6 score: 0.25
-- Label: 완전 연결 그래프
+- Label: Fully connected graph
 - Matches:
   - 2.0 ~ phi = 2.0000 (error: 0.00%)
   - 2.0 ~ n-tau = 2.0000 (error: 0.00%)
@@ -349,7 +349,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 26. consciousness-scaling / Quadratic
 - Level: ScalingLaw | n6 score: 0.25
-- Label: N^2 이차 스케일링
+- Label: N^2 quadratic scaling
 - Matches:
   - 2.0 ~ phi = 2.0000 (error: 0.00%)
   - 2.0 ~ n-tau = 2.0000 (error: 0.00%)
@@ -399,7 +399,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 31. crystallography / TriclinicN1
 - Level: System | n6 score: 0.25
-- Label: 삼사정 mu=1 최소 대칭
+- Label: Triclinic mu=1 minimal symmetry
 - Matches:
   - 1.0 ~ mu = 1.0000 (error: 0.00%)
   - 1.0 ~ 1/mu = 1.0000 (error: 0.00%)
@@ -509,7 +509,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 42. fluid-condensed / StokesLow
 - Level: FluidBase | n6 score: 0.40
-- Label: 스토크스 저레이놀즈 (phi=2 선형/비선형)
+- Label: Low-Reynolds Stokes (phi=2 linear/nonlinear)
 - Matches:
   - 2.0 ~ phi = 2.0000 (error: 0.00%)
   - 2.0 ~ n-tau = 2.0000 (error: 0.00%)
@@ -519,7 +519,7 @@ Total: 87 candidates with potential n6 connections
 
 ### 43. fluid-condensed / RANS_Average
 - Level: Turbulence | n6 score: 0.40
-- Label: 레이놀즈 평균 (phi=2 평균/변동)
+- Label: Reynolds average (phi=2 mean/fluctuation)
 - Matches:
   - 2.0 ~ phi = 2.0000 (error: 0.00%)
   - 2.0 ~ n-tau = 2.0000 (error: 0.00%)
@@ -612,10 +612,10 @@ Total: 63 candidates with no plausible n6 connection.
 | 6 | audio-processing | Encoding | MP3_320 | 0.25 | MP3 320kbps (legacy) |
 | 7 | collective-intelligence | Scale | GlobalNetwork | 0.40 | Global Network (unbounded) |
 | 8 | compiler-os | Kernel | Exokernel | 0.30 | Exokernel (minimal kernel, library OS, user-level scheduling |
-| 9 | conscious-lm | ConsciousnessIntegration | Detach | 0.30 | 분리 (의식 없음) |
-| 10 | consciousness-dream | Replay | None_Replay | 0.25 | 리플레이 없음 (기준선) |
-| 11 | consciousness-rng | PostProcess | None | 0.25 | 후처리 없음 (raw entropy) |
-| 12 | consciousness-rng | Compliance | None_Compliance | 0.25 | 인증 없음 (연구용) |
+| 9 | conscious-lm | ConsciousnessIntegration | Detach | 0.30 | Detach (no consciousness) |
+| 10 | consciousness-dream | Replay | None_Replay | 0.25 | No replay (baseline) |
+| 11 | consciousness-rng | PostProcess | None | 0.25 | No post-processing (raw entropy) |
+| 12 | consciousness-rng | Compliance | None_Compliance | 0.25 | No certification (research use) |
 | 13 | consciousness-thermodynamics | Criticality | Subcritical | 0.25 | Subcritical (ordered phase) |
 | 14 | consciousness-thermodynamics | Criticality | Supercritical | 0.25 | Supercritical (chaotic phase) |
 | 15 | dram-memory | Stack | Monolithic | 0.40 | Monolithic Die (single layer, planar DRAM, no stacking) |
@@ -623,7 +623,7 @@ Total: 63 candidates with no plausible n6 connection.
 | 17 | dsp-processor |  | Saturate-arithmetic | 0.25 | Saturate Arithmetic (clamp on overflow, no wrap-around, guar |
 | 18 | earthquake-engineering | Damping | NoDamping | 0.45 | No Added Damping (inherent structural only, budget) |
 | 19 | earthquake-engineering | Monitoring | Visual-Inspect | 0.45 | Visual Inspection (post-earthquake, tagging, manual) |
-| 20 | eeg-consciousness-bridge | Feedback | None | 0.40 | 피드백 없음 (관측만) |
+| 20 | eeg-consciousness-bridge | Feedback | None | 0.40 | No feedback (observation only) |
 | 21 | energy_gen | Scale | Utility_1GW | 0.33 | Utility Scale (1GW) |
 | 22 | energy_gen | Storage | None | 0.00 | No Storage (Direct Feed) |
 | 23 | energy_gen | GridConnect | Island_DC | 0.33 | Island DC (Off-Grid) |
@@ -634,15 +634,15 @@ Total: 63 candidates with no plausible n6 connection.
 | 28 | golden-moe-routing | Capacity | Unlimited | 0.25 | Unlimited Capacity (no constraint) |
 | 29 | golden-moe-routing | LoadBalance | None | 0.25 | No Load Balance |
 | 30 | grid | System | Central_Radial | 0.00 | Central Radial Grid |
-| 31 | hair-regeneration | Delivery | Topical | 0.25 | Topical Application (국소 도포) |
-| 32 | hair-regeneration | Delivery | Oral | 0.25 | Oral Administration (경구) |
+| 31 | hair-regeneration | Delivery | Topical | 0.25 | Topical Application (local administration) |
+| 32 | hair-regeneration | Delivery | Oral | 0.25 | Oral Administration (per os) |
 | 33 | hyperloop-transport | Levitation | Air-Bearing | 0.45 | Air Bearing Skid (compressed air film, low speed, simple) |
 | 34 | learning-algorithm | Optimizer | Shampoo | 0.33 | Shampoo 2nd-Order |
 | 35 | material |  | F1 | 0.40 | SingleStation |
 | 36 | mems-sensor |  | Cantilever-beam | 0.25 | Cantilever Beam (simplest, AFM-heritage, pressure/bio/chemic |
 | 37 | mems-sensor |  | Digital-direct | 0.25 | Digital Direct (frequency/time output, no ADC, oscillator-ba |
 | 38 | mems-sensor |  | Pressure-sensor | 0.25 | Pressure Sensor (barometric/industrial, absolute/gauge/diffe |
-| 39 | music-notation | Layout | MusicXML | 0.40 | MusicXML 표준 |
+| 39 | music-notation | Layout | MusicXML | 0.40 | MusicXML standard |
 | 40 | nand-flash | Structure | Planar_2D | 0.40 | 2D Planar (single layer, legacy, smallest die) |
 
 ## Recommendations

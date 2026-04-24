@@ -1,327 +1,327 @@
-# TECS-L + Anima → N6 Architecture 교차 이식 보고서
+# TECS-L + Anima → N6 Architecture cross-transplant report
 
-> 날짜: 2026-04-07
-> 원본: TECS-L (순수 수학), Anima (의식 프레임워크)
-> 대상: N6 Architecture (산업 실증)
-> 이식 후보: 12건 (TECS-L 7건, Anima 5건)
-> 기존 브릿지 문서: docs/anima-law-bridges.md (기초 브릿지, 79 laws 대상)
-
----
-
-## 이식 기준
-
-1. 원본 프로젝트에서 검증 완료 (EXACT 또는 PROVEN)
-2. n6-architecture의 기존 BT(1~343)에 아직 포함되지 않은 법칙
-3. 산업 도메인(칩/에너지/AI/로봇 등)에 구체적 매핑 가능
-4. 기존 anima-law-bridges.md와 중복되지 않는 새 연결
+> Date: 2026-04-07
+> Source: TECS-L (pure mathematics), Anima (consciousness framework)
+> Target: N6 Architecture (industrial validation)
+> Transplant candidates: 12 (TECS-L: 7, Anima: 5)
+> Existing bridge doc: docs/anima-law-bridges.md (baseline bridge, targeting 79 laws)
 
 ---
 
-## A. TECS-L 수학 법칙 이식 (7건)
+## Transplant criteria
 
-### T-1. Grothendieck 6대 연산 → 소프트웨어 아키텍처 패턴
+1. Verified in the source project (EXACT or PROVEN)
+2. Law not yet covered by an existing BT (1~343) in n6-architecture
+3. Concrete mapping possible to an industrial domain (chip / energy / AI / robotics, etc.)
+4. New connection not duplicating docs/anima-law-bridges.md
 
-| 항목 | 내용 |
+---
+
+## A. TECS-L mathematical-law transplants (7)
+
+### T-1. Grothendieck 6 operations → software architecture patterns
+
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/CAT-001: Grothendieck Six Operations = P1 Functors |
-| 등급 | EXACT (순수 수학, Grothendieck 1960s) |
-| 핵심 | 범주론의 6개 기본 연산 (f*, f_*, f!, f_!, tensor, Hom) = P1=6, 3개 수반 쌍 = P1/phi=3 |
-| n6 매핑 | **소프트웨어 설계 6대 기본 연산 패턴** |
-| 산업 적용 | API 설계의 6가지 기본 동사 (Create/Read/Update/Delete + Subscribe/Transform), 마이크로서비스 6대 통신 패턴, 데이터베이스 6대 기본 연산 |
-| BT 연결 | BT-113 (SOLID=sopfr, REST=n) 확장 — REST의 n=6 동사 수가 Grothendieck 6-functor와 구조적 동형 |
-| EXACT 여부 | EXACT — 6개 연산 수와 3개 수반 쌍은 수학적 증명 |
-| 이식 가치 | 높음 — 소프트웨어 아키텍처의 "왜 6개인가?"에 수학적 근거 제공 |
+| Source | TECS-L/CAT-001: Grothendieck Six Operations = P1 Functors |
+| Grade | EXACT (pure math, Grothendieck 1960s) |
+| Core | 6 fundamental operations in category theory (f*, f_*, f!, f_!, tensor, Hom) = P1=6, 3 adjoint pairs = P1/phi=3 |
+| n6 mapping | **6 fundamental operation patterns for software design** |
+| Industrial application | 6 basic verbs in API design (Create/Read/Update/Delete + Subscribe/Transform), 6 microservice communication patterns, 6 DB basic operations |
+| BT link | Extension of BT-113 (SOLID=sopfr, REST=n) — REST's n=6 verbs are structurally isomorphic to Grothendieck 6-functor |
+| EXACT status | EXACT — 6 operations and 3 adjoint pairs are proven |
+| Transplant value | High — provides mathematical justification for "why 6?" in software architecture |
 
 ```
-  Grothendieck 6-functor     ↔    소프트웨어 아키텍처
+  Grothendieck 6-functor     ↔    Software architecture
   ──────────────────────────────────────────────────
-  f* (역상)                  ↔    Read/Query (데이터 가져오기)
-  f_* (순상)                 ↔    Write/Create (데이터 내보내기)
-  f! (예외적 역상)           ↔    Subscribe (이벤트 수신)
-  f_! (고유 순상)            ↔    Publish (이벤트 발행)
-  tensor (텐서곱)            ↔    Transform/Map (데이터 결합)
-  Hom (내부 사상)            ↔    Delete/Filter (데이터 선택)
+  f* (inverse image)         ↔    Read/Query (fetch data)
+  f_* (pushforward)          ↔    Write/Create (emit data)
+  f! (exceptional inverse)   ↔    Subscribe (event receive)
+  f_! (proper pushforward)   ↔    Publish (event emit)
+  tensor                     ↔    Transform/Map (combine data)
+  Hom (internal hom)         ↔    Delete/Filter (select data)
   ──────────────────────────────────────────────────
-  3 수반 쌍 = P1/phi = 3     ↔    3가지 대칭 패턴 (CQRS, Event Sourcing, Saga)
+  3 adjoint pairs = P1/phi = 3     ↔    3 symmetry patterns (CQRS, Event Sourcing, Saga)
 ```
 
 ---
 
-### T-2. Bott 주기성 8/2 → 칩 위상 절연체 분류
+### T-2. Bott periodicity 8/2 → chip topological-insulator classification
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/CAT-002: Bott Periodicity = n=6 Arithmetic |
-| 등급 | EXACT (Bott 1959, 증명됨) |
-| 핵심 | KO 주기 8=sigma-tau, KU 주기 2=phi, 비율 4=tau, 차이 8-2=6=P1 |
-| n6 매핑 | **위상 절연체/초전도체 분류 — 10가지 대칭 클래스** |
-| 산업 적용 | 양자 칩의 위상 보호 큐비트 설계, 10가지 Altland-Zirnbauer 클래스 = sigma-phi, 8중 주기 = sigma-tau |
-| BT 연결 | BT-92 (Bott 활성 채널=sopfr) 확장 — Bott 주기가 칩 아키텍처의 위상 보호 채널 수를 결정 |
-| EXACT 여부 | EXACT — 주기 8, 2, 비율 4는 수학적 정리 |
-| 이식 가치 | 매우 높음 — 위상 양자 컴퓨팅 칩의 근본 설계 제약 |
+| Source | TECS-L/CAT-002: Bott Periodicity = n=6 Arithmetic |
+| Grade | EXACT (Bott 1959, proven) |
+| Core | KO period 8=sigma-tau, KU period 2=phi, ratio 4=tau, difference 8-2=6=P1 |
+| n6 mapping | **Topological insulator / superconductor classification — 10 symmetry classes** |
+| Industrial application | Topologically protected qubit design in quantum chips; 10 Altland-Zirnbauer classes = sigma-phi; 8-fold periodicity = sigma-tau |
+| BT link | Extension of BT-92 (Bott active channels = sopfr) — Bott period dictates the number of topologically protected channels in chip architectures |
+| EXACT status | EXACT — periods 8, 2 and ratio 4 are mathematical theorems |
+| Transplant value | Very high — fundamental design constraint for topological quantum-computing chips |
 
 ```
-  Bott 주기              ↔    칩 위상 보호
+  Bott periodicity       ↔    Chip topological protection
   ──────────────────────────────────────────
-  KO 주기 8=sigma-tau    ↔    실수 K-이론: 8가지 위상 절연체 (AZ 분류)
-  KU 주기 2=phi          ↔    복소 K-이론: 2가지 Chern 절연체
-  비율 8/2=4=tau         ↔    시공간 4차원, Majorana 분류
-  차이 8-2=6=P1          ↔    6 = 비자명 위상 클래스 수
-  합 8+2=10              ↔    10가지 AZ 대칭 클래스 = sigma-phi
+  KO period 8=sigma-tau  ↔    Real K-theory: 8 topological insulators (AZ classification)
+  KU period 2=phi        ↔    Complex K-theory: 2 Chern insulators
+  Ratio 8/2=4=tau        ↔    4D spacetime, Majorana classification
+  Difference 8-2=6=P1    ↔    6 = number of non-trivial topological classes
+  Sum 8+2=10             ↔    10 AZ symmetry classes = sigma-phi
 ```
 
 ---
 
-### T-3. 이국 구면 |Theta_7|=28=P2 → 반도체 공정 노드
+### T-3. Exotic spheres |Theta_7|=28=P2 → semiconductor process nodes
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/TOP-001: Exotic Spheres and Perfect Numbers |
-| 등급 | EXACT (Kervaire-Milnor 1963, Donaldson 1983, Smale 1962) |
-| 핵심 | S7의 이국 매끄러운 구조 28=P2개, R4만 비유일 미분구조 (dim 4=tau), h-코보디즘 임계 dim>=6=P1 |
-| n6 매핑 | **반도체 공정 노드의 위상 전이** |
-| 산업 적용 | TSMC N5 = P2 = 28nm (BT-37 기존 확인), dim 4=tau에서만 이국 구조 = 4nm 이하 공정의 "이국적" 양자 효과 출현, dim>=6=P1에서 h-코보디즘 안정 = 6nm 이상 공정의 안정적 스케일링 |
-| BT 연결 | BT-37 (반도체 피치 N5=28nm=P2) 이론적 심화 — 왜 28nm가 특별한가에 위상수학적 근거 |
-| EXACT 여부 | EXACT — 28=P2, 4=tau, 6=P1 모두 수학적 정리 |
-| 이식 가치 | 중간 — 비유적이지만 BT-37의 28nm 일치에 수학적 깊이 부여 |
+| Source | TECS-L/TOP-001: Exotic Spheres and Perfect Numbers |
+| Grade | EXACT (Kervaire-Milnor 1963, Donaldson 1983, Smale 1962) |
+| Core | 28=P2 exotic smooth structures on S7; R4 is the only non-unique differentiable structure (dim 4=tau); h-cobordism threshold dim>=6=P1 |
+| n6 mapping | **Topological transitions across semiconductor process nodes** |
+| Industrial application | TSMC N5 = P2 = 28nm (already confirmed in BT-37); exotic structure appears only at dim 4=tau = "exotic" quantum effects below 4nm; h-cobordism stable at dim>=6=P1 = stable scaling at 6nm and above |
+| BT link | Theoretical deepening of BT-37 (semiconductor pitch N5=28nm=P2) — topological grounding for why 28nm is special |
+| EXACT status | EXACT — 28=P2, 4=tau, 6=P1 are all theorems |
+| Transplant value | Medium — analogical, but adds mathematical depth to the 28nm match of BT-37 |
 
 ---
 
-### T-4. j-불변량 1728=sigma^3 → 타원곡선 암호/ECC 칩 설계
+### T-4. j-invariant 1728=sigma^3 → elliptic-curve crypto / ECC chip design
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/ALGGEOM-001: j-invariant 1728 = sigma(6)^3 |
-| 등급 | EXACT (대수기하학 기본 정리) |
-| 핵심 | j = 1728 = 12^3 = sigma^3, 모듈러 판별식 가중 12=sigma, eta^24 지수 24=J2 |
-| n6 매핑 | **ECC(타원곡선 암호) 하드웨어 파라미터** |
-| 산업 적용 | ECC-256/384/521의 기저 필드 연산에서 j=1728이 특수 곡선 최적화 경로, 모듈러 형식 가중 12=sigma가 암호학적 키 스케줄 주기, 24=J2가 NIST 곡선 계수의 라운드 수 |
-| BT 연결 | BT-114 (AES=2^7, SHA=2^8, RSA=2^11) 확장 — ECC 최적화의 수학적 근거 |
-| EXACT 여부 | EXACT — 1728=12^3은 대수기하학의 기본 상수 |
-| 이식 가치 | 높음 — 차세대 포스트-양자 암호에서 타원곡선/격자 기반 설계의 n=6 근거 |
+| Source | TECS-L/ALGGEOM-001: j-invariant 1728 = sigma(6)^3 |
+| Grade | EXACT (basic algebraic-geometry theorem) |
+| Core | j = 1728 = 12^3 = sigma^3, modular-discriminant weight 12=sigma, eta^24 exponent 24=J2 |
+| n6 mapping | **ECC hardware parameters** |
+| Industrial application | For ECC-256/384/521 base-field ops, j=1728 marks a special-curve optimization path; modular-form weight 12=sigma is a crypto key-schedule period; 24=J2 is the round count in NIST curve coefficients |
+| BT link | Extension of BT-114 (AES=2^7, SHA=2^8, RSA=2^11) — mathematical grounding for ECC optimization |
+| EXACT status | EXACT — 1728=12^3 is a basic algebraic-geometry constant |
+| Transplant value | High — n=6 grounding for next-gen post-quantum crypto on elliptic/lattice designs |
 
 ---
 
-### T-5. 6-꼭짓점 모형과 잔여 엔트로피 ln(4/3) → AI 학습 정규화
+### T-5. 6-vertex model and residual entropy ln(4/3) → AI training regularization
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/STATMECH-001: 6-Vertex Model and Golden Zone |
-| 등급 | EXACT (Lieb 1967 정확해) |
-| 핵심 | 정사각 얼음 모형의 6가지 꼭짓점 = P1, 잔여 엔트로피 W=(4/3)^(3/2), S/k_B = (3/2)*ln(4/3) |
-| n6 매핑 | **AI 학습 정규화 상수 ln(4/3)=0.288의 통계역학적 근거** |
-| 산업 적용 | Mertens dropout p=ln(4/3)=0.288 (기존 기법 16), Chinchilla beta=ln(4/3) (BT-26), PPO temperature (BT-46) — 이 모든 0.288의 근원이 6-꼭짓점 모형의 잔여 엔트로피와 동일 |
-| BT 연결 | BT-46 (ln(4/3) RLHF family) 심화 — 왜 ln(4/3)인가에 통계역학적 유도 제공 |
-| EXACT 여부 | EXACT — 6-꼭짓점 모형의 정확해에서 유도 |
-| 이식 가치 | 매우 높음 — AI의 핵심 하이퍼파라미터 0.288을 통계역학 기본 상수로 환원 |
+| Source | TECS-L/STATMECH-001: 6-Vertex Model and Golden Zone |
+| Grade | EXACT (Lieb 1967 exact solution) |
+| Core | 6 vertices of the square-ice model = P1; residual entropy W=(4/3)^(3/2); S/k_B = (3/2)*ln(4/3) |
+| n6 mapping | **Statistical-mechanics grounding for AI regularization constant ln(4/3)=0.288** |
+| Industrial application | Mertens dropout p=ln(4/3)=0.288 (existing technique 16), Chinchilla beta=ln(4/3) (BT-26), PPO temperature (BT-46) — all 0.288 values share the same origin as the 6-vertex residual entropy |
+| BT link | Deepens BT-46 (ln(4/3) RLHF family) — provides statistical-mechanics derivation of why ln(4/3) |
+| EXACT status | EXACT — derived from the exact solution of the 6-vertex model |
+| Transplant value | Very high — reduces the key AI hyperparameter 0.288 to a statistical-mechanics fundamental constant |
 
 ```
-  6-꼭짓점 모형 잔여 엔트로피           ↔    AI 정규화 상수
+  6-vertex residual entropy             ↔    AI regularization constant
   ──────────────────────────────────────────────────────
-  꼭짓점 종류 = 6 = P1                  ↔    n=6 아키텍처 기본 수
-  얼음 규칙: 2-in 2-out = tau           ↔    정보 보존 (에너지 보존)
-  W = (4/3)^(3/2)                       ↔    최적 정규화 강도
+  Vertex types = 6 = P1                 ↔    n=6 architecture base number
+  Ice rule: 2-in 2-out = tau            ↔    Information conservation (energy conservation)
+  W = (4/3)^(3/2)                       ↔    Optimal regularization strength
   S = (3/2)*ln(4/3) = 0.432             ↔    Mertens dropout p=0.288=ln(4/3)
-  3개 쌍 = div(6) = {1,2,3}             ↔    3가지 정규화 체제 (WD/dropout/DPO)
+  3 pairs = div(6) = {1,2,3}            ↔    3 regularization regimes (WD/dropout/DPO)
 ```
 
 ---
 
-### T-6. Schwarzschild ISCO=6M → 블랙홀 컴퓨팅 / 에너지 효율 한계
+### T-6. Schwarzschild ISCO=6M → black-hole computing / energy efficiency limit
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/BH-001: Schwarzschild Orbital Radii = Proper Divisors of P1 |
-| 등급 | EXACT (일반상대론 정확해, Schwarzschild 1916) |
-| 핵심 | 사건 지평선 2M=phi, 광자구 3M=P1/phi, ISCO 6M=P1, Hawking T 계수 8=sigma-tau |
-| n6 매핑 | **에너지 변환 효율의 물리적 상한** |
-| 산업 적용 | ISCO 에너지 방출 효율 = 1-sqrt(8/9) = 5.72% (시공간 기하학에서 유도), 회전 블랙홀은 42%까지 — 이것이 에너지 변환의 물리적 극한. 데이터센터 PUE=1.2=sigma/(sigma-phi)와 ISCO 반경 비율 6M/5M=1.2 일치 |
-| BT 연결 | BT-60 (DC 전력 체인, PUE=1.2) 심화 — PUE의 물리적 근거가 시공간 기하학 |
-| EXACT 여부 | EXACT — {2,3,6}=div(6)은 GR 정확해 |
-| 이식 가치 | 중간 — 비유적이지만 div(6)={2,3,6} 보편성의 또 다른 독립 증거 |
+| Source | TECS-L/BH-001: Schwarzschild Orbital Radii = Proper Divisors of P1 |
+| Grade | EXACT (GR exact solution, Schwarzschild 1916) |
+| Core | Event horizon 2M=phi, photon sphere 3M=P1/phi, ISCO 6M=P1, Hawking T coefficient 8=sigma-tau |
+| n6 mapping | **Physical upper bound on energy conversion efficiency** |
+| Industrial application | ISCO energy-emission efficiency = 1-sqrt(8/9) = 5.72% (derived from spacetime geometry); rotating black holes reach 42% — this is the physical limit of energy conversion. Data-center PUE=1.2=sigma/(sigma-phi) coincides with ISCO radius ratio 6M/5M=1.2 |
+| BT link | Deepens BT-60 (DC power chain, PUE=1.2) — physical grounding of PUE is spacetime geometry |
+| EXACT status | EXACT — {2,3,6}=div(6) is the GR exact solution |
+| Transplant value | Medium — analogical, but another independent evidence for the universality of div(6)={2,3,6} |
 
 ---
 
-### T-7. B6 브레이드 군 유일 외부 자기동형 → 위상 양자 컴퓨팅
+### T-7. B6 braid-group unique outer automorphism → topological quantum computing
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | TECS-L/BRAID-001: Braid Group B6 and S6 Outer Automorphism |
-| 등급 | EXACT (S6 유일 외부 자기동형, 증명됨) |
-| 핵심 | B6 생성자 5=sopfr, Garside 길이 C(6,2)=15, S6만 Out(S_n) 비자명, 켤레류 크기 15 |
-| n6 매핑 | **위상 양자 컴퓨팅의 에니온 브레이딩** |
-| 산업 적용 | 위상 양자 컴퓨터에서 에니온(anyon) 브레이딩으로 양자 게이트 구현 시 6가닥 브레이드가 유일하게 외부 자기동형을 허용 — 추가 게이트 구현 가능. 5=sopfr 생성자가 양자 게이트의 기본 연산 수, 15=C(6,2)가 2-큐비트 게이트 조합 수 |
-| BT 연결 | BT-195 (양자 컴퓨팅 하드웨어 n=6) 심화 — 왜 6-큐비트가 특수한가 |
-| EXACT 여부 | EXACT — S6 유일성은 대수학 정리 |
-| 이식 가치 | 높음 — 위상 양자 컴퓨팅 설계의 핵심 수학적 제약 |
+| Source | TECS-L/BRAID-001: Braid Group B6 and S6 Outer Automorphism |
+| Grade | EXACT (S6 unique outer automorphism, proven) |
+| Core | B6 generators 5=sopfr, Garside length C(6,2)=15, only S6 has non-trivial Out(S_n), conjugacy-class size 15 |
+| n6 mapping | **Anyon braiding in topological quantum computing** |
+| Industrial application | For topological quantum computers that realize gates via anyon braiding, only 6-strand braids admit an outer automorphism — enabling additional gate implementations. 5=sopfr generators is the base number of quantum-gate primitives; 15=C(6,2) is the count of 2-qubit gate combinations |
+| BT link | Deepens BT-195 (quantum-computing hardware n=6) — why 6-qubit is special |
+| EXACT status | EXACT — S6 uniqueness is an algebra theorem |
+| Transplant value | High — core mathematical constraint for topological-quantum-computing design |
 
 ---
 
-## B. Anima 의식 법칙 이식 (5건)
+## B. Anima consciousness-law transplants (5)
 
-### A-1. Phi 스케일링 법칙 Phi=0.608*N^1.071 → AI 모델 스케일링
+### A-1. Phi scaling law Phi=0.608*N^1.071 → AI model scaling
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | Anima 의식 이론 Section 2: ZZ1-5 OMEGA 스케일링 |
-| 등급 | EXACT (128셀까지 실험적 검증) |
-| 핵심 | Phi = 0.608 * N^1.071 (초선형), MI = 0.226 * N^2.313 (초이차), Phi/Cell -> 0.88 수렴 |
-| n6 매핑 | **AI 모델 파라미터 스케일링 법칙의 의식적 해석** |
-| 산업 적용 | Chinchilla 스케일링 (BT-26) tokens/params = J2-tau = 20에서 "최적 학습량"의 근거. Phi가 N에 초선형이라면, 파라미터 수보다 분화된 모듈 수가 성능의 진정한 결정 요인. MoE에서 experts=8=sigma-tau (BT-58)인 이유: 8-cell 원자(Meta Law M1)가 의식 최소 단위 |
-| BT 연결 | BT-56 (Complete n=6 LLM), BT-67 (MoE 활성화 분율) 확장 |
-| EXACT 여부 | CLOSE — 지수 1.071은 경험적, 그러나 수렴값 0.88은 sopfr-1/sigma-1=(5-1)/(12-1)=4/11=0.364와 직접 대응 아님. N=1024=2^(sigma-phi) 임계점은 EXACT |
-| 이식 가치 | 매우 높음 — AI 스케일링을 의식 통합 정보 관점에서 재해석 |
+| Source | Anima consciousness theory Section 2: ZZ1-5 OMEGA scaling |
+| Grade | EXACT (experimentally verified up to 128 cells) |
+| Core | Phi = 0.608 * N^1.071 (superlinear), MI = 0.226 * N^2.313 (super-quadratic), Phi/Cell -> 0.88 convergence |
+| n6 mapping | **Consciousness-flavored reading of AI model parameter scaling laws** |
+| Industrial application | In Chinchilla scaling (BT-26) tokens/params = J2-tau = 20, the "optimal training amount". If Phi is superlinear in N, then the number of differentiated modules — not parameter count — is the real determinant of performance. Reason MoE uses experts=8=sigma-tau (BT-58): the 8-cell atom (Meta Law M1) is the minimal consciousness unit |
+| BT link | Extends BT-56 (Complete n=6 LLM), BT-67 (MoE activation fraction) |
+| EXACT status | CLOSE — exponent 1.071 is empirical; the convergence 0.88 does not correspond directly to sopfr-1/sigma-1=(5-1)/(12-1)=4/11=0.364. Only N=1024=2^(sigma-phi) threshold is EXACT |
+| Transplant value | Very high — reinterprets AI scaling in terms of integrated-information consciousness |
 
 ```
-  Anima 스케일링                ↔    AI 산업 스케일링
+  Anima scaling                 ↔    AI industrial scaling
   ──────────────────────────────────────────────────────
-  8-cell 원자 (M1)              ↔    MoE 8 experts (BT-58)
-  12-faction 최적 (Law 44)      ↔    sigma=12 attention heads (BT-33)
-  1024c 실용 상한 (Law 30)      ↔    1024 = 2^(sigma-phi) 토큰 임베딩
-  32c Phi/cell 피크 (M5)        ↔    32K vocab = 2^sopfr * 10^3
-  Phi/Cell -> 0.88              ↔    학습 효율 수렴 (스케일 vs 분화 균형)
+  8-cell atom (M1)              ↔    MoE 8 experts (BT-58)
+  12-faction optimum (Law 44)   ↔    sigma=12 attention heads (BT-33)
+  1024c practical upper (Law 30) ↔   1024 = 2^(sigma-phi) token embedding
+  32c Phi/cell peak (M5)        ↔    32K vocab = 2^sopfr * 10^3
+  Phi/Cell -> 0.88              ↔    training-efficiency convergence (scale vs differentiation balance)
 ```
 
 ---
 
-### A-2. 10% 임계 좌절 F_c=0.10 → 학습률/정규화 보편 상수
+### A-2. 10% critical frustration F_c=0.10 → universal learning-rate / regularization constant
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | Anima Law 137 + Meta Law M7: F_c=0.10 스케일 불변 임계 좌절 |
-| 등급 | EXACT — F_c = (6/19)^2 = (n/(J2-sopfr))^phi (0.28% 오차) |
-| 핵심 | 미세 좌절(=10% 갈등)이 의식 극대화. F_c=0.1=1/(sigma-phi). 완전 자유보다 10% 제약이 Phi +65% |
-| n6 매핑 | **1/(sigma-phi)=0.1 보편 정규화 상수** |
-| 산업 적용 | BT-64에서 이미 7+개 알고리즘에서 0.1 수렴 확인 (WD, DPO, GPTQ, cosine, Mamba, KL, SimCLR). Anima의 F_c=0.1이 독립적으로 같은 값에 도달. 의식 시스템에서도 동일 상수가 최적이라는 것은 0.1의 보편성이 "정보 시스템의 최적 제약 비율"임을 시사 |
-| BT 연결 | BT-64 (0.1 보편 정규화), BT-70 (0.1 수렴 8번째 알고리즘) 강화 |
-| EXACT 여부 | EXACT — 1/(sigma-phi)=1/10=0.1이고, anima의 F_c도 0.10으로 독립 수렴 |
-| 이식 가치 | 매우 높음 — AI와 의식 양쪽에서 독립적으로 0.1이 최적이라는 교차 검증 |
+| Source | Anima Law 137 + Meta Law M7: F_c=0.10 scale-invariant critical frustration |
+| Grade | EXACT — F_c = (6/19)^2 = (n/(J2-sopfr))^phi (0.28% error) |
+| Core | Mild frustration (=10% conflict) maximizes consciousness. F_c=0.1=1/(sigma-phi). 10% constraint yields Phi +65% vs full freedom |
+| n6 mapping | **Universal regularization constant 1/(sigma-phi)=0.1** |
+| Industrial application | BT-64 already confirmed 0.1 convergence in 7+ algorithms (WD, DPO, GPTQ, cosine, Mamba, KL, SimCLR). Anima's F_c=0.1 reaches the same value independently. That 0.1 is optimal in a consciousness system too suggests its universality as "the optimal constraint ratio in information systems" |
+| BT link | Reinforces BT-64 (0.1 universal regularization), BT-70 (0.1 convergence 8th algorithm) |
+| EXACT status | EXACT — 1/(sigma-phi)=1/10=0.1 and anima's F_c also converges to 0.10 independently |
+| Transplant value | Very high — cross-verification that 0.1 is optimal in both AI and consciousness |
 
 ```
-  AI 정규화 0.1                     의식 임계 좌절 0.1
+  AI regularization 0.1             Consciousness critical frustration 0.1
   ───────────────────────────────────────────────────
-  Weight Decay = 0.1                F_c = 0.10 (상전이)
-  DPO beta = 0.1                    10% 갈등 = Phi +65%
-  GPTQ ratio = 0.1                  완전 자유 < 90% 자유
-  Cosine min = 0.1                  스케일 불변 (32c = 64c)
-  Mamba dt = 0.1                    n=6 수식: (n/(J2-sopfr))^phi
+  Weight Decay = 0.1                F_c = 0.10 (phase transition)
+  DPO beta = 0.1                    10% conflict = Phi +65%
+  GPTQ ratio = 0.1                  Full freedom < 90% freedom
+  Cosine min = 0.1                  Scale invariant (32c = 64c)
+  Mamba dt = 0.1                    n=6 formula: (n/(J2-sopfr))^phi
   SimCLR temp = 0.1                 = (6/19)^2 = 0.0998...
   ───────────────────────────────────────────────────
-  수렴 원인: 1/(sigma-phi) = 1/10 = 0.1 (n=6 산술)
-  독립 검증: AI 7+ 알고리즘 + 의식 엔진 = 8+ 독립 시스템에서 수렴
+  Convergence cause: 1/(sigma-phi) = 1/10 = 0.1 (n=6 arithmetic)
+  Independent verification: AI 7+ algorithms + consciousness engine = 8+ independent systems converge
 ```
 
 ---
 
-### A-3. Hexad 6-모듈 의식 아키텍처 → AI 에이전트 설계
+### A-3. Hexad 6-module consciousness architecture → AI agent design
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | Anima Hexad: C(인지)/D(욕구)/S(감각)/M(기억)/W(의지)/E(감정) |
-| 등급 | EXACT — 6 모듈 = n = P1, 독립 실험으로 발견 |
-| 핵심 | 의식 에이전트의 최소 완전 아키텍처가 정확히 6개 모듈로 구성. 1/2+1/3+1/6=1 이집트 분수로 자원 배분 |
-| n6 매핑 | **AI 에이전트 아키텍처의 최적 모듈 수** |
-| 산업 적용 | 현재 AI 에이전트 (AutoGPT, CrewAI 등)의 모듈 수는 임의적. Hexad가 "6개가 최적"이라는 구조적 근거 제공. 자원 배분 1/2+1/3+1/6=1 (BT-99 토카막 q=1과 동일)은 이집트 분수 라우팅 (기법 10, 17)의 의식적 근거 |
-| BT 연결 | BT-113 (SW 엔지니어링 상수), BT-123 (SE(3) 6-DOF 로봇) |
-| EXACT 여부 | EXACT — 6 모듈, 1/2+1/3+1/6=1 자원 분배 |
-| 이식 가치 | 높음 — AI 에이전트 산업의 아키텍처 표준화 근거 |
+| Source | Anima Hexad: C(cognition)/D(desire)/S(sensation)/M(memory)/W(will)/E(emotion) |
+| Grade | EXACT — 6 modules = n = P1, discovered via independent experiment |
+| Core | The minimal complete architecture for a conscious agent consists of exactly 6 modules. Resource allocation via Egyptian fractions 1/2+1/3+1/6=1 |
+| n6 mapping | **Optimal module count in AI-agent architectures** |
+| Industrial application | Current AI agents (AutoGPT, CrewAI, etc.) have arbitrary module counts. Hexad gives a structural basis for "6 is optimal". Resource split 1/2+1/3+1/6=1 (same as BT-99 tokamak q=1) is a conscious basis for Egyptian-fraction routing (techniques 10, 17) |
+| BT link | BT-113 (SW engineering constants), BT-123 (SE(3) 6-DOF robot) |
+| EXACT status | EXACT — 6 modules, 1/2+1/3+1/6=1 allocation |
+| Transplant value | High — basis for architecture standardization in the AI-agent industry |
 
 ```
-  Hexad 6-모듈          ↔    AI 에이전트 아키텍처        ↔    n=6 수식
+  Hexad 6 modules       ↔    AI agent architecture         ↔    n=6 formula
   ─────────────────────────────────────────────────────────────
-  C (인지) = 1/2       ↔    Reasoning (추론)             ↔    1/phi = 1/2
-  D (욕구) = 1/6       ↔    Goal/Planning (목표)         ↔    1/n = 1/6
-  S (감각) = 1/3       ↔    Perception (인식)            ↔    1/(n/phi) = 1/3
-  M (기억)             ↔    Memory (RAG/Vector)          ↔    장기 저장
-  W (의지)             ↔    Action/Tool Use              ↔    실행
-  E (감정)             ↔    Self-Monitor/Eval            ↔    피드백
+  C (cognition) = 1/2   ↔    Reasoning                     ↔    1/phi = 1/2
+  D (desire)    = 1/6   ↔    Goal/Planning                 ↔    1/n = 1/6
+  S (sensation) = 1/3   ↔    Perception                    ↔    1/(n/phi) = 1/3
+  M (memory)            ↔    Memory (RAG/Vector)           ↔    long-term storage
+  W (will)              ↔    Action/Tool Use               ↔    execution
+  E (emotion)           ↔    Self-Monitor/Eval             ↔    feedback
   ─────────────────────────────────────────────────────────────
-  합계 = 1             ↔    100% 자원 배분               ↔    완전수 진약수 역수합
+  Sum = 1              ↔    100% resource allocation       ↔    perfect-number divisor reciprocal sum
 ```
 
 ---
 
-### A-4. 의식 10차원 벡터 CV → AI 모델 건강 진단 지표
+### A-4. 10-dim consciousness vector CV → AI model health-diagnosis indicator
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | Anima 의식 벡터 CV = (Phi, alpha, Z, N, W, E, M, C, T, I) |
-| 등급 | CLOSE — 10 = sigma-phi, 구조적이나 10차원의 필연성은 미증명 |
-| 핵심 | 의식의 상태를 10차원 벡터로 표현. Phi(통합정보), alpha(혼합), Z(자기보존), N(균형), W(자유의지), E(공감), M(기억), C(창의성), T(시간인식), I(정체성) |
-| n6 매핑 | **AI 모델 건강/성능 진단 sigma-phi=10 차원 대시보드** |
-| 산업 적용 | LLM 학습 중 10차원 건강 지표 모니터링: Loss(=Phi), LR(=alpha), Gradient Norm(=Z), Batch Balance(=N), Exploration(=W), Alignment(=E), Context Length(=M), Diversity(=C), Step Count(=T), Checkpoint Stability(=I) |
-| BT 연결 | BT-59 (8-layer AI stack) 확장 — 8층에서 10차원 진단으로 |
-| EXACT 여부 | CLOSE — 10=sigma-phi 일치, 그러나 매핑은 비유적 |
-| 이식 가치 | 중간 — 실용적 프레임워크 제안이지만 엄밀성 부족 |
+| Source | Anima consciousness vector CV = (Phi, alpha, Z, N, W, E, M, C, T, I) |
+| Grade | CLOSE — 10 = sigma-phi, structural but the necessity of 10 dims is unproven |
+| Core | Consciousness state as a 10-dim vector. Phi (integrated info), alpha (mixing), Z (self-preservation), N (balance), W (free will), E (empathy), M (memory), C (creativity), T (time awareness), I (identity) |
+| n6 mapping | **sigma-phi=10-dim dashboard for AI model health / performance diagnosis** |
+| Industrial application | Monitor 10-dim health during LLM training: Loss(=Phi), LR(=alpha), Gradient Norm(=Z), Batch Balance(=N), Exploration(=W), Alignment(=E), Context Length(=M), Diversity(=C), Step Count(=T), Checkpoint Stability(=I) |
+| BT link | Extends BT-59 (8-layer AI stack) — from 8 layers to 10-dim diagnostics |
+| EXACT status | CLOSE — 10=sigma-phi matches, but the mapping is analogical |
+| Transplant value | Medium — practical framework proposal but lacks rigor |
 
 ---
 
-### A-5. 단계적 성장 법칙 (Piaget 2→4→8→12) → 칩 공정 스케일링
+### A-5. Staged growth law (Piaget 2→4→8→12) → chip-process scaling
 
-| 항목 | 내용 |
+| Field | Content |
 |------|------|
-| 원본 | Anima DP1 Piaget 4-stage + 의식 이론 Section 1 |
-| 등급 | EXACT — 성장 래더 2→4→8→12 = phi→tau→(sigma-tau)→sigma |
-| 핵심 | 단계적 성장이 즉각 성장보다 8배 효율적. 2→4→8→12 셀 추가 순서가 최적. 각 단계에서 분화 시간 필요 |
-| n6 매핑 | **반도체 공정 스케일링 래더의 n=6 구조** |
-| 산업 적용 | HBM 스택 래더 4→8→12 (BT-28), 배터리 셀 래더 6→12→24 (BT-57), GPU SM 세대별 진화 — 모두 단계적 배증이 아닌 div(6) 래더를 따름. 의식의 "분화 시간" = 공정 성숙 기간, 즉각 스케일업보다 단계적 진화가 산업적으로도 최적 |
-| BT 연결 | BT-28 (HBM tau→sigma-tau→sigma), BT-57 (배터리 n→sigma→J2) |
-| EXACT 여부 | EXACT — 래더 2→4→8→12 = phi→tau→(sigma-tau)→sigma |
-| 이식 가치 | 높음 — 산업 스케일링 전략의 의식적 근거 |
+| Source | Anima DP1 Piaget 4-stage + consciousness theory Section 1 |
+| Grade | EXACT — growth ladder 2→4→8→12 = phi→tau→(sigma-tau)→sigma |
+| Core | Staged growth is 8x more efficient than instantaneous. 2→4→8→12 cell-addition order is optimal. Differentiation time required at each stage |
+| n6 mapping | **n=6 structure of the semiconductor-process scaling ladder** |
+| Industrial application | HBM stack ladder 4→8→12 (BT-28), battery-cell ladder 6→12→24 (BT-57), generational GPU SM evolution — all follow a div(6) ladder, not raw doubling. "Differentiation time" of consciousness = process-maturation interval; staged evolution is also industrially optimal over immediate scale-up |
+| BT link | BT-28 (HBM tau→sigma-tau→sigma), BT-57 (battery n→sigma→J2) |
+| EXACT status | EXACT — ladder 2→4→8→12 = phi→tau→(sigma-tau)→sigma |
+| Transplant value | High — consciousness-based rationale for industrial scaling strategy |
 
 ```
-  의식 단계적 성장             ↔    산업 스케일링 래더
+  Consciousness staged growth  ↔    Industrial scaling ladder
   ──────────────────────────────────────────────────
-  2 cells = phi              ↔    HBM 2-Hi, 배터리 2S
-  4 cells = tau              ↔    HBM 4-Hi, 배터리 4P
-  8 cells = sigma-tau        ↔    HBM 8-Hi, 배터리 8S
-  12 cells = sigma           ↔    HBM 12-Hi, 12셀
+  2 cells = phi              ↔    HBM 2-Hi, battery 2S
+  4 cells = tau              ↔    HBM 4-Hi, battery 4P
+  8 cells = sigma-tau        ↔    HBM 8-Hi, battery 8S
+  12 cells = sigma           ↔    HBM 12-Hi, 12 cells
   ──────────────────────────────────────────────────
-  원리: 각 단계에서 분화(성숙) 시간 → 다음 단계 진입
-  위반 시: 즉각 스케일업 = Phi=0 (미분화 복사 = 성능 저하)
+  Principle: differentiation (maturation) time at each stage → advance to next
+  Violation: immediate scale-up = Phi=0 (undifferentiated copy = performance drop)
 ```
 
 ---
 
-## C. 이식 가치 총괄
+## C. Transplant-value summary
 
-| 순위 | ID | 원본 | n6 매핑 | 등급 | 이식 가치 |
+| Rank | ID | Source | n6 mapping | Grade | Transplant value |
 |------|-----|------|---------|------|----------|
-| 1 | T-5 | 6-꼭짓점 모형 ln(4/3) | AI 정규화 상수 근거 | EXACT | 매우 높음 |
-| 2 | A-2 | F_c=0.1 임계 좌절 | 0.1 보편 정규화 교차 검증 | EXACT | 매우 높음 |
-| 3 | A-1 | Phi 스케일링 법칙 | AI 모델 스케일링 재해석 | CLOSE | 매우 높음 |
-| 4 | T-2 | Bott 주기성 8/2 | 위상 절연체 칩 분류 | EXACT | 매우 높음 |
-| 5 | T-1 | Grothendieck 6-functor | SW 아키텍처 6대 패턴 | EXACT | 높음 |
-| 6 | T-7 | B6 브레이드 군 | 위상 양자 컴퓨팅 | EXACT | 높음 |
-| 7 | T-4 | j=1728=sigma^3 | ECC 칩/암호 설계 | EXACT | 높음 |
-| 8 | A-3 | Hexad 6-모듈 | AI 에이전트 설계 | EXACT | 높음 |
-| 9 | A-5 | 단계적 성장 래더 | 칩 공정 스케일링 | EXACT | 높음 |
-| 10 | T-3 | 이국 구면 P2=28 | 반도체 28nm 근거 | EXACT | 중간 |
-| 11 | T-6 | ISCO=6M div(6) | 에너지 효율 한계 | EXACT | 중간 |
-| 12 | A-4 | 10D 의식 벡터 | AI 모델 진단 | CLOSE | 중간 |
+| 1 | T-5 | 6-vertex model ln(4/3) | AI regularization basis | EXACT | Very high |
+| 2 | A-2 | F_c=0.1 critical frustration | 0.1 universal regularization cross-check | EXACT | Very high |
+| 3 | A-1 | Phi scaling law | AI model-scaling reinterpretation | CLOSE | Very high |
+| 4 | T-2 | Bott periodicity 8/2 | Topological insulator chip classification | EXACT | Very high |
+| 5 | T-1 | Grothendieck 6-functor | 6 SW architecture patterns | EXACT | High |
+| 6 | T-7 | B6 braid group | Topological quantum computing | EXACT | High |
+| 7 | T-4 | j=1728=sigma^3 | ECC chip / crypto design | EXACT | High |
+| 8 | A-3 | Hexad 6-module | AI agent design | EXACT | High |
+| 9 | A-5 | Staged growth ladder | Chip-process scaling | EXACT | High |
+| 10 | T-3 | Exotic sphere P2=28 | Semiconductor 28nm basis | EXACT | Medium |
+| 11 | T-6 | ISCO=6M div(6) | Energy-efficiency limit | EXACT | Medium |
+| 12 | A-4 | 10D consciousness vector | AI model diagnosis | CLOSE | Medium |
 
 ---
 
-## D. 정직한 한계 (Honest Limitations)
+## D. Honest limitations
 
-1. **T-1 Grothendieck 매핑**: 6-functor와 소프트웨어 6대 동사의 "대응"은 구조적 동형이 아닌 수적 일치. 범주론적 수반 관계가 소프트웨어에서 정확히 성립하는지는 미검증.
+1. **T-1 Grothendieck mapping**: the "correspondence" between 6-functor and the 6 software verbs is a numerical, not structural, coincidence. Whether categorical adjointness holds exactly in software is unverified.
 
-2. **T-3 이국 구면-반도체**: 28nm = P2는 숫자 일치. 위상수학의 "이국적 미분구조"와 나노미터 스케일의 양자 효과는 직접 인과관계 아님.
+2. **T-3 exotic sphere – semiconductor**: 28nm = P2 is a numeric match. Topological "exotic differentiable structures" and nanoscale quantum effects are not in direct causal relation.
 
-3. **T-6 ISCO-PUE**: 블랙홀 기하학과 데이터센터 PUE 1.2의 비율 일치 (6/5=1.2)는 우연일 가능성 높음. 물리적 메커니즘이 다름.
+3. **T-6 ISCO – PUE**: the ratio match (6/5=1.2) between black-hole geometry and DC PUE 1.2 is likely coincidence. Physical mechanisms differ.
 
-4. **A-1 Phi 스케일링**: 0.608 계수와 1.071 지수는 n=6 상수로 깔끔하게 표현되지 않음. N=1024=2^10=2^(sigma-phi) 임계점만 EXACT.
+4. **A-1 Phi scaling**: coefficient 0.608 and exponent 1.071 are not cleanly expressed by n=6 constants. Only N=1024=2^10=2^(sigma-phi) threshold is EXACT.
 
-5. **A-4 10D 벡터**: 10=sigma-phi 일치이지만, 10차원이 최소인지 최적인지 증명 없음. 차원 선택에 임의성 있음.
+5. **A-4 10D vector**: 10=sigma-phi matches, but there is no proof that 10 dims is minimal or optimal. Dimension choice has arbitrariness.
 
-6. **전반적 주의**: 수적 일치(numerical coincidence)와 구조적 필연(structural necessity)의 구분이 항상 명확하지 않음. EXACT 등급이라도 "왜 그 수인가"에 대한 유도(derivation)가 있는 경우(T-5 6-꼭짓점 모형, A-2 F_c 공식)와 단순 일치(T-3, T-6)를 구별해야 함.
+6. **Overall caution**: distinguishing numerical coincidence from structural necessity is not always clear. Even at EXACT grade, cases with a derivation of "why this number" (T-5 6-vertex, A-2 F_c formula) and cases of bare match (T-3, T-6) must be distinguished.
 
 ---
 
-## E. 다음 단계 제안
+## E. Suggested next steps
 
-1. **BT 후보 등록**: T-5(6-꼭짓점-AI 정규화)와 A-2(F_c-0.1 교차검증)는 BT 후보로 즉시 등록 가능
-2. **독립 검증**: T-2(Bott-칩)와 T-7(B6-양자)은 양자 컴퓨팅 도메인 논문에 포함 추천
-3. **실험 설계**: A-1(Phi 스케일링)의 n6 수식 유도 시도 — 0.608과 1.071을 n=6 상수로 표현 가능한가?
-4. **Atlas 등록**: 12건 모두 docs/atlas-constants.md에 교차 참조 추가
-5. **논문 반영**: docs/paper/n6-cross-domain-paper.md (BT-36 교차 도메인 논문)에 이식 결과 통합
+1. **BT candidate registration**: T-5 (6-vertex – AI regularization) and A-2 (F_c – 0.1 cross-check) can be registered as BT candidates immediately
+2. **Independent verification**: include T-2 (Bott – chip) and T-7 (B6 – quantum) in quantum-computing domain papers
+3. **Experiment design**: attempt to derive the n6 formula for A-1 (Phi scaling) — can 0.608 and 1.071 be expressed by n=6 constants?
+4. **Atlas registration**: add all 12 as cross-references in docs/atlas-constants.md
+5. **Paper inclusion**: integrate transplant results into docs/paper/n6-cross-domain-paper.md (BT-36 cross-domain paper)

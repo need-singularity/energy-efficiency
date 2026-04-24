@@ -1,40 +1,40 @@
-# Monte Carlo v9.3 · 도메인별 분해 리포트
+# Monte Carlo v9.3 - per-domain breakdown report
 
-- 기반: `scripts/monte_carlo_v93.py` + `scripts/mc_v93_by_domain.py`
-- 데이터: `$NEXUS/shared/reality_map.json`
-- 도메인 수: **15**
-- 도메인별 시뮬레이션: 2000회 (seed=42)
-- 평균 z-score: **10.22**
-- 최강 도메인: **입자물리(표준모형)** (z=23.26)
-- 최약 도메인: **분자화학** (z=4.90)
+- Basis: `scripts/monte_carlo_v93.py` + `scripts/mc_v93_by_domain.py`
+- Data: `$NEXUS/shared/reality_map.json`
+- Number of domains: **15**
+- Per-domain simulation: 2000 runs (seed=42)
+- Average z-score: **10.22**
+- Strongest domain: **particle physics (Standard Model)** (z=23.26)
+- Weakest domain: **molecular chemistry** (z=4.90)
 
-## 도메인별 강도 순위
+## Per-domain strength ranking
 
-| 순위 | 도메인 | 표본수 N | n=6 적중 | 적중률 | 랜덤 평균 | 랜덤 σ | z-score | p-value | 강도 |
+| Rank | Domain | Sample N | n=6 hits | Hit rate | Random mean | Random sigma | z-score | p-value | Strength |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|:---:|
-| 1 | 입자물리(표준모형) | 41 | 31 | 75.6% | 1.1 | 1.28 | 23.26 | 0.0000 | 강 |
-| 2 | HIV | 10 | 10 | 100.0% | 0.4 | 0.49 | 19.44 | 0.0000 | 강 |
-| 3 | 소재/재료 | 157 | 109 | 69.4% | 5.0 | 5.68 | 18.32 | 0.0000 | 강 |
-| 4 | 생물학 | 34 | 25 | 73.5% | 1.5 | 1.84 | 12.75 | 0.0000 | 강 |
-| 5 | 인문사회(L6) | 97 | 80 | 82.5% | 4.7 | 6.20 | 12.13 | 0.0000 | 강 |
-| 6 | 원자물리 | 40 | 37 | 92.5% | 2.8 | 3.57 | 9.57 | 0.0000 | 강 |
-| 7 | 지구과학(L6) | 72 | 52 | 72.2% | 4.3 | 5.46 | 8.74 | 0.0000 | 강 |
-| 8 | 화학결합 | 94 | 65 | 69.1% | 7.0 | 7.41 | 7.83 | 0.0000 | 강 |
-| 9 | 공학/물리(L6) | 39 | 28 | 71.8% | 3.1 | 3.64 | 6.84 | 0.0000 | 강 |
-| 10 | 생명과학(L6) | 51 | 45 | 88.2% | 4.8 | 5.91 | 6.80 | 0.0000 | 강 |
-| 11 | 화학(L6) | 9 | 7 | 77.8% | 0.8 | 0.98 | 6.31 | 0.0000 | 강 |
-| 12 | 암치료 | 18 | 12 | 66.7% | 1.4 | 1.87 | 5.69 | 0.0000 | 강 |
-| 13 | 입자물리(쿼크) | 15 | 15 | 100.0% | 1.7 | 2.34 | 5.69 | 0.0000 | 강 |
-| 14 | 유전/분자생물 | 15 | 14 | 93.3% | 2.2 | 2.36 | 4.98 | 0.0000 | 중 |
-| 15 | 분자화학 | 39 | 34 | 87.2% | 4.4 | 6.04 | 4.90 | 0.0000 | 중 |
+| 1 | Particle physics (Standard Model) | 41 | 31 | 75.6% | 1.1 | 1.28 | 23.26 | 0.0000 | strong |
+| 2 | HIV | 10 | 10 | 100.0% | 0.4 | 0.49 | 19.44 | 0.0000 | strong |
+| 3 | Materials | 157 | 109 | 69.4% | 5.0 | 5.68 | 18.32 | 0.0000 | strong |
+| 4 | Biology | 34 | 25 | 73.5% | 1.5 | 1.84 | 12.75 | 0.0000 | strong |
+| 5 | Humanities/Social (L6) | 97 | 80 | 82.5% | 4.7 | 6.20 | 12.13 | 0.0000 | strong |
+| 6 | Atomic physics | 40 | 37 | 92.5% | 2.8 | 3.57 | 9.57 | 0.0000 | strong |
+| 7 | Earth science (L6) | 72 | 52 | 72.2% | 4.3 | 5.46 | 8.74 | 0.0000 | strong |
+| 8 | Chemical bonding | 94 | 65 | 69.1% | 7.0 | 7.41 | 7.83 | 0.0000 | strong |
+| 9 | Engineering/Physics (L6) | 39 | 28 | 71.8% | 3.1 | 3.64 | 6.84 | 0.0000 | strong |
+| 10 | Life sciences (L6) | 51 | 45 | 88.2% | 4.8 | 5.91 | 6.80 | 0.0000 | strong |
+| 11 | Chemistry (L6) | 9 | 7 | 77.8% | 0.8 | 0.98 | 6.31 | 0.0000 | strong |
+| 12 | Cancer therapy | 18 | 12 | 66.7% | 1.4 | 1.87 | 5.69 | 0.0000 | strong |
+| 13 | Particle physics (quarks) | 15 | 15 | 100.0% | 1.7 | 2.34 | 5.69 | 0.0000 | strong |
+| 14 | Genetics / molecular biology | 15 | 14 | 93.3% | 2.2 | 2.36 | 4.98 | 0.0000 | medium |
+| 15 | Molecular chemistry | 39 | 34 | 87.2% | 4.4 | 6.04 | 4.90 | 0.0000 | medium |
 
-## 약점 도메인 (z < 3)
+## Weak domains (z < 3)
 
-없음 — 모든 도메인이 z >= 3 통과.
+None - every domain passes z >= 3.
 
-## 해석
+## Interpretation
 
-- 도메인별 독립 Monte Carlo는 노드 수가 다른 영역 간 비교를 가능하게 한다.
-- z >= 5: n=6 특이성 확정 (극도 유의)
-- 3 <= z < 5: 통계적으로 유의
-- z < 3: 표본 과소 또는 도메인 내 n=6 정렬이 부족 → 보강 대상
+- Per-domain independent Monte Carlo enables comparison across regions with different node counts.
+- z >= 5: n=6 specificity confirmed (extremely significant)
+- 3 <= z < 5: statistically significant
+- z < 3: either too small a sample, or insufficient n=6 alignment within the domain, so reinforcement candidate.

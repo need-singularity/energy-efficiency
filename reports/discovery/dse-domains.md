@@ -1,22 +1,22 @@
-# Universal DSE 도메인 전체 목록 (335개)
+# Universal DSE full domain list (335 total)
 
-**총 335개 도메인 | 6,405,710 조합 | 100% n6 연결**
+**335 domains | 6,405,710 combinations | 100% n6 connected**
 
-모든 TOML 파일: `tools/universal-dse/domains/`
+All TOML files: `tools/universal-dse/domains/`
 
 ```bash
-# 단일 도메인 DSE
+# Single-domain DSE
 tools/universal-dse/universal-dse tools/universal-dse/domains/chip.toml
 
-# Cross-DSE (도메인 간 교차 조합)
+# Cross-DSE (cross-domain combinations)
 tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 ```
 
 ---
 
-## 카테고리 요약
+## Category summary
 
-| # | 카테고리 | 파일 수 | 조합 수 |
+| # | Category | Files | Combinations |
 |---|---------|:-------:|--------:|
 | 1 | [AI / ML](#1-ai--ml) | 14 | 107,784 |
 | 2 | [Consciousness](#2-consciousness) | 24 | 197,358 |
@@ -40,7 +40,7 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 
 ## 1. AI / ML
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `ai-alignment.toml` | Objective→Monitoring→Alignment→Safety→Governance | 6,480 |
 | `agent-platform.toml` | Provider→Channel→ToolPolicy→Plugin→Bridge | 7,776 |
@@ -57,13 +57,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `speech-synthesis.toml` | TextAnalysis→Acoustic→Vocoder→Enhancement→Deployment | 7,776 |
 | `tokenizer-design.toml` | Algorithm→Vocabulary→Encoding→Normalization→Application | 7,776 |
 
-> **14개 | 107,784 조합**
+> **14 files | 107,784 combinations**
 
 ---
 
 ## 2. Consciousness
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `anima-consciousness.toml` | Substrate→Engine→Lens→Map→Emergence | 6,480 |
 | `consciousness-chip.toml` | Target→Precision→CellArch→Bus→Clock | 12,348 |
@@ -90,13 +90,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `cognitive-architecture.toml` | Neuron-Material→Synapse-Process→Cortical-Core→Brain-Chip→Cognitive-System | 3,750 |
 | `telepathy-system.toml` | Perception→Encoding→Alignment→Transmission→Decoding | 6,480 |
 
-> **24개 | 197,358 조합**
+> **24 files | 197,358 combinations**
 
 ---
 
 ## 3. Semiconductor / Chip
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `analog-photonic-memristor.toml` | Engine→Circuit→Coupling→Noise→Measurement | 7,776 |
 | `asic-design.toml` | DesignEntry→Synthesis→PhysicalDesign→Verification→Manufacturing | 7,560 |
@@ -125,13 +125,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `chip-architecture.toml` | Material→Process→Core→Chip→System | 6,480 |
 | `wafer-fabrication.toml` | Substrate→Deposition→Lithography→Etch→Doping | 7,560 |
 
-> **26개 | 292,740 조합**
+> **26 files | 292,740 combinations**
 
 ---
 
 ## 4. Energy
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `battery.toml` | Material→Process→Core→BMS→System | 4,500 |
 | `battery-management.toml` | Topology→CellMonitoring→Balancing→StateEstimation→Communication | 7,776 |
@@ -160,25 +160,25 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `power-grid.toml` | Generation→Conversion→Transmission→Distribution→Consumption | 4,500 |
 | `wire-cable.toml` | ConductorType→Insulation→Shielding→Construction→Application | 7,560 |
 
-> **26개 | 182,262 조합**
+> **26 files | 182,262 combinations**
 
 ---
 
 ## 5. Superconductor / Plasma
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `plasma-physics.toml` | Source→Confinement→Heating→Control→Application | 14,406 |
 | `sc.toml` | Material→Process→Form→Application→System | 14,406 |
 
-> **2개 | 28,812 조합**
+> **2 files | 28,812 combinations**
 
 
 ---
 
 ## 6. Bio / Medical
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `additive-bio.toml` | BioInk→Printer→Scaffold→Maturation→Implant | 7,776 |
 | `biology.toml` | Foundation→Process→Core→Engine→System | 4,500 |
@@ -207,13 +207,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `surgical-robot.toml` | Arm→Instrument→Vision→Control→Integration | 7,560 |
 | `vaccine-production.toml` | Antigen→Adjuvant→Formulation→FillFinish→ColdChain | 7,776 |
 
-> **26개 | 196,488 조합**
+> **26 files | 196,488 combinations**
 
 ---
 
 ## 7. Physics / Math
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `black-hole.toml` | Formation→Geometry→Thermodynamics→Information→Observation | 7,560 |
 | `category-ancient.toml` | Foundation→Structure→Functor→Application→Heritage | 8,820 |
@@ -240,13 +240,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `topology.toml` | Space→Manifold→Invariant→Homology→Application | 7,560 |
 | `wave-theory.toml` | Source→Propagation→Interference→Resonance→Application | 10,584 |
 
-> **24개 | 278,640 조합**
+> **24 files | 278,640 combinations**
 
 ---
 
 ## 8. Robot / Autonomous
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `autonomous.toml` | SensorFusion→Perception→ControlCore→AIEngine→VehicleSystem | 4,500 |
 | `autonomous-drone.toml` | Airframe→Propulsion→Navigation→Communication→Payload | 7,776 |
@@ -257,13 +257,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `robotics.toml` | Material→Actuator→Joint→CtrlChip→Body→Mind→Swarm→Ultimate | 270,000 |
 | `swarm-robotics.toml` | Agent→Communication→Coordination→Task→Deployment | 7,776 |
 
-> **8개 | 322,020 조합**
+> **8 files | 322,020 combinations**
 
 ---
 
 ## 9. Manufacturing / Material
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `3d-printing.toml` | Material→Process→Structure→Control→Application | 7,776 |
 | `abrasive-material.toml` | AbrasiveGrain→Bond→WheelForm→Process→Application | 7,776 |
@@ -332,13 +332,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `valve-actuator.toml` | ValveType→Actuator→Material→SizingMethod→Application | 7,776 |
 | `welding-technology.toml` | Process→Filler→Shielding→JointDesign→Application | 7,776 |
 
-> **66개 | 509,322 조합**
+> **66 files | 509,322 combinations**
 
 ---
 
 ## 10. Infra / Network
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `5g-6g-network.toml` | Spectrum→Antenna→Modulation→Architecture→Application | 7,560 |
 | `blockchain.toml` | Protocol→Crypto→Execution→Scaling→Application | 7,560 |
@@ -356,13 +356,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `smart-city-iot.toml` | Sensor→Network→Platform→Analytics→Service | 9,072 |
 | `underwater-acoustic.toml` | Transducer→Modulation→Channel→Network→Platform | 7,776 |
 
-> **15개 | 107,316 조합**
+> **15 files | 107,316 combinations**
 
 ---
 
 ## 11. Software / Programming
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `compiler-os.toml` | Foundation→Pipeline→Runtime→Kernel→Ecosystem | 4,500 |
 | `debugger.toml` | Instrumentation→Analysis→Visualization→Automation→Integration | 9,072 |
@@ -375,13 +375,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `software-design.toml` | Paradigm→Architecture→Communication→Quality→Deployment | 14,406 |
 | `test-framework.toml` | Structure→Runner→Coverage→Generator→Report | 6,480 |
 
-> **10개 | 95,834 조합**
+> **10 files | 95,834 combinations**
 
 ---
 
 ## 12. Display / Audio
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `ar-vr-system.toml` | Display→Optics→Tracking→Compute→Interaction | 7,776 |
 | `audio.toml` | Material→Transducer→Driver→Processor→System→Spatial→Neural→Ultimate | 14,580 |
@@ -401,13 +401,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `telescope-array.toml` | Antenna→Receiver→Correlator→Imaging→Science | 7,776 |
 | `ultrasound-imaging.toml` | Transducer→Beamforming→SignalProcessing→ImagingMode→Platform | 7,560 |
 
-> **17개 | 166,188 조합**
+> **17 files | 166,188 combinations**
 
 ---
 
 ## 13. Environment / Agriculture
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `agriculture.toml` | Foundation→Process→Core→Engine→System | 4,500 |
 | `aquaculture.toml` | Species→Feed→Tank→Water→Harvest | 7,560 |
@@ -441,13 +441,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `noise-pollution.toml` | Source→Measurement→Barrier→Absorption→Regulation | 7,776 |
 | `light-pollution.toml` | Source→Measurement→Shielding→Design→Regulation | 7,776 |
 
-> **31개 | 3,581,460 조합** (8level×2 = 3,359,232 + 5단×29)
+> **31 files | 3,581,460 combinations** (8level×2 = 3,359,232 + 5-level×29)
 
 ---
 
 ## 14. Civil / Transport
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `aviation-system.toml` | Airframe→Propulsion→Avionics→Control→Operation | 7,776 |
 | `bridge-engineering.toml` | StructureType→Material→Foundation→LoadDesign→Construction | 7,776 |
@@ -468,13 +468,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `urban-transit-rail.toml` | VehicleType→Propulsion→Signaling→Infrastructure→Operation | 7,776 |
 | `warehouse-logistics.toml` | Storage→Retrieval→Sorting→Packing→Shipping | 7,776 |
 
-> **18개 | 137,592 조합**
+> **18 files | 137,592 combinations**
 
 ---
 
 ## 15. Space / Defense
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `aerospace.toml` | Material→Propulsion→Power→Compute→System | 7,776 |
 | `aerospace-propulsion.toml` | FuelSource→Combustion→Turbine→Nozzle→FlightSystem | 7,560 |
@@ -490,13 +490,13 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `space.toml` | Foundation→Process→Core→Engine→System | 4,500 |
 | `space-engineering.toml` | Foundation→Process→Core→Engine→System | 4,500 |
 
-> **13개 | 95,832 조합**
+> **13 files | 95,832 combinations**
 
 ---
 
 ## 16. Misc / Meta
 
-| 도메인 TOML | 레벨 | 조합 수 |
+| Domain TOML | Levels | Combinations |
 |---|---|---:|
 | `collective-intelligence.toml` | Agent→Topology→Communication→Emergence→Scale | 6,480 |
 | `economics.toml` | Market→Agent→Cycle→Network→Policy | 6,480 |
@@ -514,4 +514,4 @@ tools/universal-dse/universal-dse domains/fusion.toml domains/sc.toml
 | `social-architecture.toml` | Individual→Relationship→Team→Organization→Social-System | 3,750 |
 | `temporal-architecture.toml` | OscillatorMaterial→OscillationProcess→ClockCore→TimingChip→SyncSystem | 4,500 |
 
-> **15개 | 106,062 조합**
+> **15 files | 106,062 combinations**

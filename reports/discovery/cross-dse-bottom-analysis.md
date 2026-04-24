@@ -84,7 +84,7 @@ The problem: none of these uses Z=6 directly.
 [[candidate]]
 level  = 0
 id     = "Carbon_Diamond"
-label  = "다이아몬드 검출기 (Z=6=n IDENTITY)"
+label  = "Diamond detector (Z=6=n IDENTITY)"
 n6     = 1.00
 perf   = 0.70
 power  = 0.80
@@ -111,7 +111,7 @@ notes  = "Z=6=n IDENTITY, diamond CCD for sub-GeV DM, BT-93 Carbon universality"
 [[candidate]]
 level  = 0
 id     = "Neon_LNe"
-label  = "액체 네온 LNe (Z=10=sigma-phi)"
+label  = "Liquid neon LNe (Z=10=sigma-phi)"
 n6     = 0.95
 perf   = 0.78
 power  = 0.65

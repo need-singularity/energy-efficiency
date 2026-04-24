@@ -131,7 +131,7 @@ params:        ~120B (dense) / ~480B (MoE)
 attn_FLOPs:    ~50% of standard at seq_len=131072
 ```
 
-**N6-120B의 96 heads에서 EFA가 완벽 분할**:
+**EFA achieves a perfect split across N6-120B's 96 heads**:
 ```
   96 / 2 = 48 heads (full)     — exactly half
   96 / 3 = 32 heads (local)    — exactly one-third

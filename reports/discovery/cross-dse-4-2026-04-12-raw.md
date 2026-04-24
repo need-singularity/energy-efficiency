@@ -1,33 +1,33 @@
-# cross_dse_fusion v2 실측 결과 — 2026-04-11
+# cross_dse_fusion v2 measured results — 2026-04-11
 
-- 실행 스크립트: experiments/dse/cross_dse_fusion_v2_run.hexa (v2 설계 초안의 실행본)
-- 입력 도메인: $N6_ARCH/nexus/origins/universal-dse/domains
-- 도메인 수: 480
-- 전체 쌍 수(이론상): 114960
-- high_conf 쌍: 93327
-- 임계값: resonance ≥ 0.18 AND (bt+formula) ≥ 0.0
+- Execution script: experiments/dse/cross_dse_fusion_v2_run.hexa (implementation of the v2 design draft)
+- Input domains: $N6_ARCH/nexus/origins/universal-dse/domains
+- Domain count: 480
+- Total pair count (theoretical): 114960
+- high_conf pairs: 93327
+- Threshold: resonance ≥ 0.18 AND (bt+formula) ≥ 0.0
 
-## v1 vs v2 비교
+## v1 vs v2 comparison
 
-| 지표 | v1 | v2 (실측) |
+| Metric | v1 | v2 (measured) |
 |------|-----|------|
-| 도메인 수 | 375 | 480 |
+| Domain count | 375 | 480 |
 | pair_total | 70125 | 114960 |
 | high_conf | 67883 | 93327 |
-| 공명 지표 수 | 4 | 5 |
+| Resonance metrics | 4 | 5 |
 
-## 지표별 기여도 (high_conf pair 평균)
+## Per-metric contribution (high_conf pair average)
 
-| 지표 | 가중치 | 평균 overlap | 가중 기여 |
+| Metric | Weight | Average overlap | Weighted contribution |
 |------|--------|--------------|-----------|
 | kw_overlap | 0.35 | 0.152 | 0.0532 |
-| bt_overlap (신규) | 0.25 | 0.0052 | 0.0013 |
-| formula_overlap (신규) | 0.2 | 0.5907 | 0.1181 |
+| bt_overlap (new) | 0.25 | 0.0052 | 0.0013 |
+| formula_overlap (new) | 0.2 | 0.5907 | 0.1181 |
 | cross_seed_overlap | 0.1 | 0.0156 | 0.0016 |
 | pareto_proximity | 0.1 | 0.8863 | 0.0886 |
-| **resonance 평균** |  |  | **0.2628** |
+| **resonance average** |  |  | **0.2628** |
 
-## 상위 20 Pair
+## Top 20 pairs
 
 1. **space-engineering x space**  res=0.7448  kw=0.8167  bt=0.75  fm=0.7143
 2. **network-protocol x network**  res=0.7333  kw=0.8333  bt=0.6  fm=0.7778
@@ -50,7 +50,7 @@
 19. **linguistics x lsp-ide**  res=0.5827  kw=0.2333  bt=1.0  fm=0.7143
 20. **eda-design-automation x soc-integration**  res=0.5781  kw=0.2  bt=1.0  fm=0.8333
 
-## 허브 (top 20, degree)
+## Hubs (top 20 by degree)
 
 1. baking-patisserie  degree=479
 2. bamboo-craft  degree=479
@@ -73,7 +73,7 @@
 19. software-design  degree=472
 20. blockchain  degree=471
 
-## 브리지 (top 50, betweenness 근사)
+## Bridges (top 50, approximate betweenness)
 
 1. butchery-meat  betweenness=0.3552
 2. dye-pigment  betweenness=0.3543
@@ -126,14 +126,14 @@
 49. thin-film-coating  betweenness=0.2817
 50. neuroscience  betweenness=0.2817
 
-## R28 atlas.n6 흡수
+## R28 atlas.n6 absorption
 
-- 상위 100 pair 를 cross_dse_v2 헤더 아래 @R [7] 로 append.
-- 등급 승격은 후속 파레토 스윕에서 [10*] 로 재검증.
+- Append the top 100 pairs under the cross_dse_v2 header as @R [7].
+- Grade promotion will be re-verified as [10*] in the follow-up Pareto sweep.
 
-## 메모: v2 설계 vs 실측 차이
+## Note: v2 design vs measurement gaps
 
-- 설계 초안은 Δ1~Δ5 스키마(bt_refs/cross_seeds/n6_formula/evidence_grade/energy_pareto) 기반이나, 현 380 TOML 중 1개(hexa-ios.toml)만 bt_refs 를 직접 포함. 나머지는 주석 헤더에서 `BT-NNN` 토큰을 프록시로 추출.
-- n6_formula/cross_seeds 는 라인 본문에서 상수 심볼(`sigma=12`, `phi=2`, `n=6`, `tau=4`, `sopfr=5`, `j2=24`) 매칭으로 대체.
-- pareto_frontier_400.json 미존재 → pareto_pts 를 TOML 후보 scoring(n6/perf/power/cost/energy_proxy) 평균 5-벡터로 대체.
-- 실 Δ1~Δ5 스키마 적용 시 (78 신규 TOML + 400 기존) bt/formula 평균 기여가 크게 상승 예상.
+- The design draft is based on the Delta1~Delta5 schema (bt_refs/cross_seeds/n6_formula/evidence_grade/energy_pareto), but only 1 of the current 380 TOML files (hexa-ios.toml) directly includes bt_refs. The rest are proxied by extracting `BT-NNN` tokens from comment headers.
+- n6_formula/cross_seeds are replaced by matching constant symbols (`sigma=12`, `phi=2`, `n=6`, `tau=4`, `sopfr=5`, `j2=24`) in the line body.
+- pareto_frontier_400.json is missing, so pareto_pts is replaced by the average 5-vector of TOML candidate scoring (n6/perf/power/cost/energy_proxy).
+- Applying the full Delta1~Delta5 schema (78 new TOML + 400 existing) is expected to raise the average bt/formula contribution significantly.

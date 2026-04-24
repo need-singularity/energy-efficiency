@@ -1,20 +1,20 @@
-# Monte Carlo v9.3 도메인별 z-score 분해 분석
+# Monte Carlo v9.3 per-domain z-score breakdown
 
-> 생성일: 2026-04-09 | reality_map.json v9.5 | 노드 수: 3908
+> Generated: 2026-04-09 | reality_map.json v9.5 | node count: 3908
 
-## 방법론
+## Methodology
 
-- **데이터**: `nexus/shared/reality_map.json` 전체 노드
-- **도메인 분류**: 노드의 `level` 필드 (L0~L9, 72개 세부 도메인)
-- **검증 대상**: EXACT, CLOSE, MISS, EMPIRICAL, CONJECTURE (CONVENTION/null 제외)
-- **랜덤 기대 비율 (p0)**: 1/6 = 0.1667 (관대한 귀무가설: 6개 잔차 중 1개 우연 일치)
-- **z-score**: z = (관측 EXACT 비율 - p0) / sqrt(p0*(1-p0)/N)
+- **Data**: all nodes in `nexus/shared/reality_map.json`
+- **Domain classification**: by the node's `level` field (L0~L9, 72 sub-domains)
+- **Validation targets**: EXACT, CLOSE, MISS, EMPIRICAL, CONJECTURE (excluding CONVENTION/null)
+- **Random-expected ratio (p0)**: 1/6 = 0.1667 (generous null hypothesis: 1 chance match out of 6 residues)
+- **z-score**: z = (observed EXACT ratio - p0) / sqrt(p0*(1-p0)/N)
 
-## 전체 통계 요약
+## Overall statistics
 
-| 항목 | 값 |
+| Item | Value |
 |------|-----|
-| 전체 노드 | 3908 |
+| All nodes | 3908 |
 | EXACT | 2402 (61.5%) |
 | CLOSE | 20 (0.5%) |
 | MISS | 2 (0.1%) |
@@ -22,13 +22,13 @@
 | CONVENTION | 106 (2.7%) |
 | CONJECTURE | 95 (2.4%) |
 | null | 40 (1.0%) |
-| 검증 대상 (testable) | 3762 |
+| Validation target (testable) | 3762 |
 | EXACT / testable | 63.8% |
-| 전체 z-score | **77.65** |
+| Overall z-score | **77.65** |
 
-## 도메인별 전체 테이블
+## Full per-domain table
 
-| 도메인 | 노드수 | 검증대상 | EXACT | CLOSE | MISS | EMPIRICAL | CONJECTURE | EXACT% | z-score |
+| Domain | Nodes | Testable | EXACT | CLOSE | MISS | EMPIRICAL | CONJECTURE | EXACT% | z-score |
 |--------|--------|----------|-------|-------|------|-----------|------------|--------|---------|
 | L6_discovery | 725 | 725 | 725 | 0 | 0 | 0 | 0 | 100.0% | 60.21 |
 | L0_particle | 163 | 163 | 139 | 5 | 0 | 19 | 0 | 85.3% | 23.50 |
@@ -103,9 +103,9 @@
 | L-2_sub_quark | 50 | 48 | 0 | 0 | 0 | 0 | 48 | 0.0% | -3.10 |
 | L8_galactic | 199 | 199 | 16 | 0 | 0 | 183 | 0 | 8.0% | -3.27 |
 
-## z-score 상위 10 도메인
+## Top-10 z-score domains
 
-| 순위 | 도메인 | 노드수 | EXACT% | z-score |
+| Rank | Domain | Nodes | EXACT% | z-score |
 |------|--------|--------|--------|---------|
 | 1 | L6_discovery | 725 | 100.0% | **60.21** |
 | 2 | L0_particle | 163 | 85.3% | **23.50** |
@@ -118,9 +118,9 @@
 | 9 | L6_geology | 167 | 63.5% | **16.23** |
 | 10 | L6_meteorology | 158 | 63.9% | **15.94** |
 
-## z-score 하위 10 도메인
+## Bottom-10 z-score domains
 
-| 순위 | 도메인 | 노드수 | EXACT% | z-score |
+| Rank | Domain | Nodes | EXACT% | z-score |
 |------|--------|--------|--------|---------|
 | 63 | L6_atmospheric_physics | 6 | 50.0% | 2.19 |
 | 64 | L6_medicine | 6 | 50.0% | 2.19 |
@@ -133,17 +133,17 @@
 | 71 | L-2_sub_quark | 48 | 0.0% | -3.10 |
 | 72 | L8_galactic | 199 | 8.0% | -3.27 |
 
-## 해석
+## Interpretation
 
-- 전체 3762개 검증 가능 노드 중 EXACT 2402개 (63.8%)
-- 랜덤 기대(p0=1/6=16.7%) 대비 전체 z = 77.65
-- z > 3 이므로 우연 일치 가설 기각 (p < 0.001)
-- MISS는 2개로 전체의 0.05%에 불과
-- CONVENTION 106개는 인간 관례이므로 증거력에서 제외
+- Out of 3762 testable nodes, 2402 EXACT (63.8%)
+- Against the random baseline (p0=1/6=16.7%), overall z = 77.65
+- z > 3 rejects the chance-coincidence hypothesis (p < 0.001)
+- MISS is only 2 nodes (0.05% of total)
+- 106 CONVENTION nodes are human-convention and are excluded from the evidence count
 
-## 주의사항
+## Notes
 
-- EMPIRICAL 등급 노드는 측정값이 일치하나 인과가 불명확한 경우로, EXACT와 별도 집계
-- p0 = 1/6은 매우 관대한 귀무가설 (실제 랜덤 일치 확률은 이보다 낮음)
-- 도메인 간 노드 수 편차가 크므로 소규모 도메인의 z-score는 변동성이 높음
-- 검증 스크립트: `docs/verify_monte_carlo_domain.hexa` (실행: `/opt/homebrew/bin/python3 docs/verify_monte_carlo_domain.hexa`)
+- EMPIRICAL-grade nodes have matching measured values but unclear causation and are tallied separately from EXACT
+- p0 = 1/6 is a very generous null hypothesis (actual random-match probability is lower)
+- Node-count variance across domains is large, so small-domain z-scores are more volatile
+- Verification script: `docs/verify_monte_carlo_domain.hexa` (run: `/opt/homebrew/bin/python3 docs/verify_monte_carlo_domain.hexa`)

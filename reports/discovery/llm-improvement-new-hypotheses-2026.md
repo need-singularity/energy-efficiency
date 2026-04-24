@@ -427,37 +427,37 @@ def jordan2(n):
     if m > 1: r = r * (1 - 1/(m*m))
     return int(round(r))
 
-# 정의 무결성 (함수 정의에서 도출, 하드코딩 아님)
+# Definition integrity (derived from function definitions, not hardcoded)
 assert sigma(6) == 12 and tau(6) == 4 and phi(6) == 2
 assert sopfr(6) == 5 and jordan2(6) == 24
-assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 핵심 정리
+assert sigma(6) * phi(6) == 6 * tau(6)  # n=6 core identity
 
-# llm-improvement-new-hypotheses-2026.md — 정의 도출 검증
+# llm-improvement-new-hypotheses-2026.md — definition-derivation check
 results = [
-    ("BT-31 항목", None, None, None),  # MISSING DATA
-    ("BT-54 항목", None, None, None),  # MISSING DATA
-    ("BT-56 항목", None, None, None),  # MISSING DATA
-    ("BT-44 항목", None, None, None),  # MISSING DATA
-    ("BT-58 항목", None, None, None),  # MISSING DATA
-    ("BT-39 항목", None, None, None),  # MISSING DATA
-    ("BT-34 항목", None, None, None),  # MISSING DATA
-    ("BT-61 항목", None, None, None),  # MISSING DATA
-    ("σ(6) 정의 도출", sigma(6), 12, sigma(6) == 12),
-    ("τ(6) 정의 도출", tau(6), 4, tau(6) == 4),
-    ("φ(6) 정의 도출", phi(6), 2, phi(6) == 2),
-    ("sopfr(6) 정의 도출", sopfr(6), 5, sopfr(6) == 5),
-    ("J₂(6) 정의 도출", jordan2(6), 24, jordan2(6) == 24),
-    ("σ·φ = n·τ 핵심 정리", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
+    ("BT-31 entry", None, None, None),  # MISSING DATA
+    ("BT-54 entry", None, None, None),  # MISSING DATA
+    ("BT-56 entry", None, None, None),  # MISSING DATA
+    ("BT-44 entry", None, None, None),  # MISSING DATA
+    ("BT-58 entry", None, None, None),  # MISSING DATA
+    ("BT-39 entry", None, None, None),  # MISSING DATA
+    ("BT-34 entry", None, None, None),  # MISSING DATA
+    ("BT-61 entry", None, None, None),  # MISSING DATA
+    ("sigma(6) from definition", sigma(6), 12, sigma(6) == 12),
+    ("tau(6) from definition", tau(6), 4, tau(6) == 4),
+    ("phi(6) from definition", phi(6), 2, phi(6) == 2),
+    ("sopfr(6) from definition", sopfr(6), 5, sopfr(6) == 5),
+    ("J2(6) from definition", jordan2(6), 24, jordan2(6) == 24),
+    ("sigma*phi = n*tau core identity", sigma(6)*phi(6), 6*tau(6), sigma(6)*phi(6) == 6*tau(6)),
 ]
 valid = [r for r in results if r[3] is not None]
 passed = sum(1 for r in valid if r[3])
-print(f"검증: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
+print(f"check: {passed}/{len(valid)} PASS (MISSING {len(results)-len(valid)})")
 for r in results:
     if r[3] is None:
-        print(f"  SKIP: {r[0]} — MISSING DATA")
+        print(f"  SKIP: {r[0]} - MISSING DATA")
     else:
         mark = "PASS" if r[3] else "FAIL"
-        print(f"  {mark}: {r[0]} = {r[1]} (기대: {r[2]})")
+        print(f"  {mark}: {r[0]} = {r[1]} (expected: {r[2]})")
 ```
 
 ### Why This Matters
