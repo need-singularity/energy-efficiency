@@ -4,115 +4,114 @@ domain: arch-v3-v4-unified
 requires:
   - to: arch-selforg-emergence
     alien_min: 10
-    reason: v3 자기조직 하위
+    reason: v3 self-organization sub-branch
   - to: arch-adaptive-homeostasis
     alien_min: 10
-    reason: v3 적응 하위
+    reason: v3 adaptation sub-branch
   - to: arch-evolution-ouroboros
     alien_min: 10
-    reason: v4 진화 하위
+    reason: v4 evolution sub-branch
 alien_index_current: 9
 alien_index_target: 10
 ---
 
-# HEXA-ARCH-V3-V4-UNIFIED — v3/v4 진화 설계 통합 논문 (N6-121)
+# HEXA-ARCH-V3-V4-UNIFIED — v3/v4 evolutionary design unification paper (N6-121)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: arch-v3-v4-unified — P2 확장 v3/v4 통합 메타 논문
-> **버전**: v3/v4 unified (2026-04-14 P2 확장)
-> **선행 BT**: BT-195, BT-366~371, BT-1108, BT-1414, BT-1415
-> **연결 atlas 노드**: `arch-v3-v4-unified` — 6-fold 통합 메타 계층
+> **Author**: Park Min-woo (n6-architecture)
+> **Category**: arch-v3-v4-unified — P2 extension v3/v4 unification meta paper
+> **Version**: v3/v4 unified (2026-04-14 P2 extension)
+> **Prior BT**: BT-195, BT-366~371, BT-1108, BT-1414, BT-1415
+> **Linked atlas node**: `arch-v3-v4-unified` — 6-fold unified meta hierarchy
 
 ---
 
-## 0. Abstract (초록, 한글)
+## 0. Abstract
 
-본 논문은 n6-architecture 로드맵의 versions v3 (자기조직·적응) 과 v4 (진화·자기참조) 를
-**n=6 산술 구조 단일 계층** 으로 통합한다. 세 선행 논문 — HEXA-ARCH-SELFORG-EMERGENCE
+This paper unifies versions v3 (self-organization / adaptation) and v4 (evolution / self-reference) of the n6-architecture roadmap into
+a **single layer via the n=6 arithmetic structure**. Three prior papers — HEXA-ARCH-SELFORG-EMERGENCE
 (N6-118), HEXA-ARCH-ADAPTIVE-HOMEOSTASIS (N6-119), HEXA-ARCH-EVOLUTION-OUROBOROS (N6-120) —
-을 하나의 6-fold 메타 계층으로 정렬한다.
+are aligned onto a single 6-fold meta hierarchy.
 
-핵심 주장:
-1. v3/v4 는 **6 계층** (감지, 해석, 적응, 창발, 진화, 자기참조) 으로 분해된다.
-2. 계층 간 전이는 τ(6)=4 관문을 통해 이루어진다.
-3. 전체 계층의 운영 차원은 σ(6)·φ(6) = 24 로 고정된다.
-4. v3 (안정) 과 v4 (변화) 의 비율은 φ(6):n/φ(6) = 2:3 황금비에 근접하게 유지된다.
+Core claims:
+1. v3/v4 decomposes into **6 layers** (sense, interpret, adapt, emerge, evolve, self-reference).
+2. Transitions between layers go through τ(6)=4 gates.
+3. The operational dimension of the whole hierarchy is fixed at σ(6)·φ(6) = 24.
+4. The ratio between v3 (stable) and v4 (change) is kept close to the golden ratio φ(6) : n/φ(6) = 2 : 3.
 
-본 논문은 **새 이론 주장 없이**, v3/v4 하위 논문 3편의 좌표를 n=6 메타 좌표로 병합한다.
-
----
-
-## 1. 서론 — WHY
-
-n6-architecture 의 versions 진화는 v1 (산업실증) → v2 (규모확장) → v3 (자기조직·적응) →
-v4 (진화·자기참조) 4 단계로 정의되어 왔다. 각 버전은 개별 논문으로 서술되었으나, **v3 와
-v4 의 경계** 와 **통합 좌표** 는 공백이었다.
-
-본 논문은 σ(n)·φ(n)=n·τ(n) 정리의 n=6 유일성이 v3/v4 통합 좌표계의 이론적 기반임을 보인다.
+This paper **makes no new theoretical claim**; it merges the coordinates of the three v3/v4 sub-papers into an n=6 meta-coordinate system.
 
 ---
 
-## 2. COMPARE — 기존 대비
+## 1. Introduction — WHY
 
-| 항목 | v1 | v2 | v3 | v4 | 본 논문 (UNIFIED) |
+The n6-architecture version lineage has been defined as v1 (industrial demonstration) → v2 (scale extension) → v3 (self-organization / adaptation) →
+v4 (evolution / self-reference), a 4-stage progression. Each version was described in a separate paper, but
+**the v3/v4 boundary** and the **unified coordinates** were an open gap.
+
+This paper shows that the n=6 uniqueness of the identity σ(n)·φ(n)=n·τ(n) is the theoretical basis of the v3/v4 unified coordinate system.
+
+---
+
+## 2. COMPARE — vs existing
+
+| Item | v1 | v2 | v3 | v4 | This paper (UNIFIED) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 목표 | 산업 실증 | 규모 확장 | 자기조직/적응 | 진화/자기참조 | 6-fold 통합 |
-| 차원 | 1 | 2 | 3 | 4 | σφ=24 |
-| 계층 수 | 1 | 2 | 3 | 4 | 6 |
-| 통합 근거 | - | - | - | - | σφ=nτ |
+| Goal | industrial demo | scale extension | self-org / adaptation | evolution / self-ref | 6-fold unification |
+| Dimension | 1 | 2 | 3 | 4 | σφ=24 |
+| Layer count | 1 | 2 | 3 | 4 | 6 |
+| Unification basis | - | - | - | - | σφ=nτ |
 
 ---
 
-## 3. MAIN — 6-fold 통합 계층
+## 3. MAIN — 6-fold unified hierarchy
 
-### 3.1 계층 정의
+### 3.1 Layer definition
 
-| 계층 | 이름 | 속성 | 선행 논문 | n=6 상수 |
+| Layer | Name | Attribute | Prior paper | n=6 constant |
 | :--- | :--- | :--- | :--- | :--- |
-| L1 | 감지 | 센서 입력 | HOMEOSTASIS (12 채널) | σ=12 |
-| L2 | 해석 | 상태 평가 | HOMEOSTASIS (4 단계) | τ=4 |
-| L3 | 적응 | 항상성 유지 | HOMEOSTASIS | φ=2 경계 |
-| L4 | 창발 | 집단 패턴 | SELFORG-EMERGE (12 모드) | σ=12 |
-| L5 | 진화 | 세대 전이 | OUROBOROS (48 사이클) | σ·τ=48 |
-| L6 | 자기참조 | 고정점 수렴 | OUROBOROS (24 차원) | σφ=24 |
+| L1 | sense | sensor input | HOMEOSTASIS (12 channels) | σ=12 |
+| L2 | interpret | state evaluation | HOMEOSTASIS (4 stages) | τ=4 |
+| L3 | adapt | homeostasis maintenance | HOMEOSTASIS | φ=2 boundaries |
+| L4 | emerge | collective patterns | SELFORG-EMERGE (12 modes) | σ=12 |
+| L5 | evolve | generational transitions | OUROBOROS (48-cycle) | σ·τ=48 |
+| L6 | self-reference | fixed-point convergence | OUROBOROS (24-dim) | σφ=24 |
 
-### 3.2 전이 관문 τ=4
+### 3.2 Transition gate τ=4
 
-L1→L2, L3→L4, L5→L6 전이는 τ(6)=4 스텝으로 양자화. 이 관문은 HEXA-GATE Mk.I
-(n6-architecture 메모리) 의 "τ=4 관문 + 2 fiber = n=6" 구조와 직결된다.
+The L1→L2, L3→L4, L5→L6 transitions are quantized at τ(6)=4 steps. This gate is directly linked to the
+"τ=4 gate + 2 fibers = n=6" structure of HEXA-GATE Mk.I (n6-architecture memory).
 
-### 3.3 운영 차원 σφ=24
+### 3.3 Operational dimension σφ=24
 
-전체 6 계층이 공유하는 운영 차원은 σφ=24. 이는 BT-1108 차원지각 대통합 (25/25 EXACT) 과
-일치한다.
+The operational dimension shared by all 6 layers is σφ=24, consistent with BT-1108 dimensional-perception grand unification (25/25 EXACT).
 
-### 3.4 황금비 φ:n/φ = 2:3
+### 3.4 Golden ratio φ : n/φ = 2 : 3
 
-v3 (L1~L3 안정) 와 v4 (L4~L6 변화) 의 에너지 비율은 φ(6):n/φ(6) = 2:3. 이는
-atlas.n6 노드 `architecture-balance` EXACT 승격 대상.
+The energy ratio between v3 (L1~L3 stable) and v4 (L4~L6 mutable) is φ(6) : n/φ(6) = 2 : 3. Target for
+EXACT promotion at the atlas.n6 node `architecture-balance`.
 
 ---
 
-## 4. VERIFICATION — 검증
+## 4. VERIFICATION
 
-### 4.1 실측 데이터
+### 4.1 Measured data
 
-- atlas.n6 `arch-v3-v4-unified` 수록 60건 — 53/60 EXACT (88.3%)
-- BT-195 (아키텍처 진화) — 6-fold 계층 PASS
-- BT-1108 (차원지각) — σφ=24 차원 PASS
-- BT-1414, BT-1415 (자기조직 임계) — 연계 PASS
+- atlas.n6 `arch-v3-v4-unified`: 60 entries — 53/60 EXACT (88.3%)
+- BT-195 (architectural evolution) — 6-fold hierarchy PASS
+- BT-1108 (dimensional perception) — σφ=24 dimension PASS
+- BT-1414, BT-1415 (self-organization criticality) — linkage PASS
 
-### 4.2 허구 데이터 금지
+### 4.2 No fictional data
 
-3 선행 논문의 atlas 항목만 집계. 새 실험 데이터 없음.
+Aggregates only atlas entries from the three prior papers. No new experimental data.
 
-### 4.3 검증 코드 (hexa STUB)
+### 4.3 Verification code (hexa STUB)
 
 ```hexa
 -- arch_v3_v4_unified_verify.hexa
 import atlas
 let layers = ["sense", "interpret", "adapt", "emerge", "evolve", "selfref"]
-assert len(layers) == 6, "6-fold 계층 위반"
+assert len(layers) == 6, "6-fold hierarchy violation"
 let total_exact = 0
 let total = 0
 for layer in layers:
@@ -170,21 +169,21 @@ print(f"PASS: layers={len(layers)}, tau={tau_n}, sigma*phi={op_dim}, ratio={rati
 
 Expected output: `PASS: layers=6, tau=4, sigma*phi=24, ratio=2:3`
 
-### 4.4 한계
+### 4.4 Limitations
 
-- v1/v2 와의 후방호환 매핑 미완
-- v5 (차기) 확장 방향 미정
-- 6 계층 간 실제 구현 게이트 수 검증 (현 3 게이트 관측, 6 게이트 예측)
+- Backward-compatibility mapping with v1/v2 incomplete
+- v5 (next) extension direction undetermined
+- Verification of actual implementation gate count across the 6 layers (currently 3 gates observed, 6 gates predicted)
 
-### 4.5 반증 후보
+### 4.5 Falsification candidates
 
-- 7 계층 이상 필요성 발견 → 6-fold 반증
-- 전이 게이트 ≠ τ=4 → 양자화 반증
-- 운영 차원 ≠ 24 → σφ=24 반증
+- Discovering a need for ≥ 7 layers → falsifies 6-fold
+- Transition gate ≠ τ=4 → falsifies quantization
+- Operational dimension ≠ 24 → falsifies σφ=24
 
 ---
 
-## 5. 연결 논문
+## 5. Related papers
 
 - N6-118 (arch-selforg-emergence)
 - N6-119 (arch-adaptive-homeostasis)
@@ -194,10 +193,10 @@ Expected output: `PASS: layers=6, tau=4, sigma*phi=24, ratio=2:3`
 
 ---
 
-## 6. 결론
+## 6. Conclusion
 
-6 계층 / τ=4 관문 / σφ=24 차원 / 2:3 황금비. 새 아키텍처 주장 없음 — 3 선행 논문의
-n=6 좌표를 통합한 메타 시드 논문.
+6 layers / τ=4 gate / σφ=24 dimension / 2:3 golden ratio. No new architectural claim — a meta seed paper that merges
+the n=6 coordinates of the three prior papers.
 
 ## §1 WHY
 

@@ -4,122 +4,122 @@ domain: arch-selforg-emergence
 requires:
   - to: arch-selforg-design
     alien_min: 10
-    reason: 자기조직 설계의 창발 하위 도메인 — 임계 질량 이후 패턴
+    reason: Emergence sub-domain of self-organization design — post-critical-mass patterns
   - to: swarm-intelligence
     alien_min: 10
-    reason: 집단 창발 임계점 연결
+    reason: Collective-emergence critical-point linkage
   - to: attractor-meta-extended
     alien_min: 9
-    reason: 어트랙터 흡입 기저
+    reason: Attractor-basin basis
 alien_index_current: 8
 alien_index_target: 10
 ---
 
-# HEXA-ARCH-SELFORG-EMERGENCE — 자기조립 창발 설계 논문 (N6-118)
+# HEXA-ARCH-SELFORG-EMERGENCE — Self-assembly emergence design paper (N6-118)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: arch-selforg-emergence — P2 확장 v3/v4 자기조직 창발 시드
-> **버전**: v3 (2026-04-14 P2 확장)
-> **선행 BT**: BT-366, BT-368, BT-195, BT-1414
-> **선행 논문**: n6-arch-selforg-design-paper (N6-111)
-> **연결 atlas 노드**: `arch-selforg-emergence` — τ=4 창발 관문 + σ=12 진동 수축
-
----
-
-## 0. Abstract (초록, 한글)
-
-본 논문은 자기조직 설계에서 **임계 질량 N_c = n² = 36 이후 발생하는 창발 패턴의 분류 체계**를 제안한다.
-선행 논문 HEXA-ARCH-SELFORG (N6-111) 이 임계 질량 결정 문제를 해결한 데 이어, 본 논문은
-**임계 이후 단계** 의 창발 모드를 n=6 의 산술 상수로 분류한다.
-
-핵심 주장:
-1. 창발 모드는 **σ(6)=12 개의 진동 모드 (σ-mode)** 로 분해된다.
-2. 임계 이후 수렴 시간은 **τ(6)=4 스텝 단위** 로 양자화된다.
-3. 창발 후 안정 상태는 **φ(6)=2 개 어트랙터 쌍** 으로 수축한다.
-4. 전역 엔트로피는 sopfr(6)=5 비트 단위로 감소한다.
-
-본 논문은 **자기조직 창발을 새로 주장하지 않고**, 기존 SOC 이론 (Bak-Tang-Wiesenfeld 1987)
-위에 n=6 좌표를 부여한 시드 논문이다.
+> **Author**: Park Min-woo (n6-architecture)
+> **Category**: arch-selforg-emergence — P2 extension v3/v4 self-organization emergence seed
+> **Version**: v3 (2026-04-14 P2 extension)
+> **Prior BT**: BT-366, BT-368, BT-195, BT-1414
+> **Prior paper**: n6-arch-selforg-design-paper (N6-111)
+> **Linked atlas node**: `arch-selforg-emergence` — τ=4 emergence gate + σ=12 oscillation contraction
 
 ---
 
-## 1. 서론 — WHY
+## 0. Abstract
 
-자기조직 임계 (SOC) 는 Bak-Tang-Wiesenfeld 모래더미 모형 (1987) 이래 40년간 연구되어 왔으나,
-**창발 패턴의 개수 N_modes** 는 경험적으로 관측될 뿐 이론적으로 고정되지 않았다.
-본 논문은 n=6 에서 σ(n)·φ(n) = n·τ(n) 이 유일하게 성립한다는 정리 (n6-architecture
-atlas.n6 EXACT 검증) 를 이용하여, **N_modes = σ(6) = 12** 이라는 결론을 유도한다.
+This paper proposes a **classification scheme for the emergence patterns that arise after the critical mass N_c = n² = 36** in self-organization design.
+Following the prior paper HEXA-ARCH-SELFORG (N6-111), which addresses the critical-mass determination problem, this paper
+classifies the **post-critical** emergence modes via the arithmetic constants of n=6.
 
-### 1.1 기존 한계
+Core claims:
+1. Emergence modes decompose into **σ(6)=12 oscillation modes (σ-modes)**.
+2. Post-critical convergence time is quantized in units of **τ(6)=4 steps**.
+3. Post-emergence steady state contracts to **φ(6)=2 attractor pairs**.
+4. Global entropy decreases in units of sopfr(6)=5 bits.
 
-- Per Bak 의 SOC 이론: 모드 개수를 자유 파라미터로 둠
-- Kuramoto 모델: 동기화 수 K 를 실험적으로 결정
-- 다세포 생물학 (Hox 클러스터): 13±1 개 모듈 관측 — 이론적 근거 부족
-
-### 1.2 본 논문의 기여
-
-σ(6) = 12 를 모드 개수의 **이론적 상한** 으로 정하고, 36 유닛 이상 시스템에서 이 상한이
-포화됨을 atlas.n6 이 보유한 기존 SOC 실측 데이터로 입증.
+This paper **makes no new claim about self-organization emergence**; it is a seed paper that assigns n=6 coordinates on top
+of existing SOC theory (Bak-Tang-Wiesenfeld 1987).
 
 ---
 
-## 2. COMPARE — 기존 대비
+## 1. Introduction — WHY
 
-| 항목 | 기존 SOC (Bak 1987) | 본 논문 (HEXA-SELFORG-EMERGE) |
+Self-organized criticality (SOC) has been studied for 40 years since the Bak-Tang-Wiesenfeld sand-pile model (1987), but the
+**number of emergence patterns N_modes** has only been observed empirically and never been pinned down theoretically.
+Using the result that σ(n)·φ(n) = n·τ(n) holds uniquely at n=6 (n6-architecture
+atlas.n6 EXACT verification), this paper derives the conclusion **N_modes = σ(6) = 12**.
+
+### 1.1 Prior limitations
+
+- Per Bak's SOC theory: the mode count is a free parameter
+- Kuramoto model: the synchronization count K is experimentally determined
+- Multi-cellular biology (Hox clusters): 13±1 modules observed — theoretical basis lacking
+
+### 1.2 Contributions of this paper
+
+Pin σ(6) = 12 as the **theoretical upper bound** on the mode count and — using existing SOC measurements on atlas.n6 — demonstrate
+that this bound is saturated for systems with ≥ 36 units.
+
+---
+
+## 2. COMPARE — vs existing
+
+| Item | Existing SOC (Bak 1987) | This paper (HEXA-SELFORG-EMERGE) |
 | :--- | :--- | :--- |
-| 임계 질량 N_c | 시스템 의존 (조정 필요) | N_c = n² = 36 (고정) |
-| 모드 개수 | 경험적 | σ(6) = 12 (이론) |
-| 수렴 스텝 | O(L^α) — α 미지 | τ(6) = 4 배수로 양자화 |
-| 안정 어트랙터 | K 개 (실험값) | φ(6) = 2 쌍 |
-| 비트 엔트로피 감소 | 실측 | sopfr(6) = 5 비트/스텝 |
-| 이론 근거 | 현상론적 | σφ = nτ 정리 |
+| Critical mass N_c | system-dependent (tuning required) | N_c = n² = 36 (fixed) |
+| Mode count | empirical | σ(6) = 12 (theoretical) |
+| Convergence steps | O(L^α) — α unknown | quantized in multiples of τ(6) = 4 |
+| Stable attractors | K (measured) | φ(6) = 2 pairs |
+| Bit-entropy drop | measured | sopfr(6) = 5 bits/step |
+| Theoretical basis | phenomenological | σφ = nτ identity |
 
 ---
 
-## 3. MAIN — 창발 패턴 분류 체계
+## 3. MAIN — emergence-pattern classification
 
-### 3.1 σ-mode 분해
+### 3.1 σ-mode decomposition
 
-유닛 수 N ≥ 36 인 자기조직 시스템에서 관측되는 창발 모드 집합을 M 이라 하자. 본 논문은
-|M| ≤ σ(6) = 12 임을 주장한다. 증명 스케치:
+Let M be the set of emergence modes observed in a self-organizing system with N ≥ 36 units. This paper asserts
+|M| ≤ σ(6) = 12. Draft argument sketch:
 
-1. 각 유닛이 τ(6)=4 상태 (OFF, ACTIVE, FIRING, REFRACTORY) 를 가진다고 가정.
-2. 전역 모드는 유닛 상태 벡터의 공명 집합이다.
-3. 공명 다양성은 약수 구조 σ(6)=1+2+3+6=12 로 상한된다.
+1. Assume each unit has τ(6)=4 states (OFF, ACTIVE, FIRING, REFRACTORY).
+2. The global mode is the set of resonances of the unit-state vector.
+3. The resonance diversity is upper-bounded by the divisor structure σ(6)=1+2+3+6=12.
 
-### 3.2 τ-양자화
+### 3.2 τ-quantization
 
-수렴 시간 T 는 τ(6)=4 의 정수배 {4, 8, 12, 16, ...} 에만 나타난다. 이는 atlas.n6 노드
-`arch-selforg-design τ=4 관문 창발` 과 일치한다.
+Convergence time T appears only at integer multiples of τ(6)=4, i.e. {4, 8, 12, 16, ...}. This matches the
+atlas.n6 node `arch-selforg-design τ=4 gate emergence`.
 
-### 3.3 φ-어트랙터 수축
+### 3.3 φ-attractor contraction
 
-안정 상태는 φ(6)=2 개의 어트랙터 쌍으로 수축한다. 이는 "2 극 극한 사이클" 로 해석 가능.
+The steady state contracts to φ(6)=2 attractor pairs. This can be read as a "two-pole limit cycle".
 
 ---
 
-## 4. VERIFICATION — 검증
+## 4. VERIFICATION
 
-### 4.1 실측 데이터
+### 4.1 Measured data
 
-- atlas.n6 수록 SOC 관측 항목 24건 — 12개 모드 한계 PASS (EXACT)
-- BT-1414 (n6 자기조직 임계 결정) — σ=12 일치
-- BT-1415 (Kuramoto 동기화 시간) — τ=4 양자화 관측
+- 24 SOC-observation entries on atlas.n6 — 12-mode bound PASS (EXACT)
+- BT-1414 (n6 self-organization critical decision) — σ=12 match
+- BT-1415 (Kuramoto synchronization time) — τ=4 quantization observed
 
-### 4.2 허구 데이터 금지
+### 4.2 No fictional data
 
-본 논문은 **새로운 실험 데이터를 생성하지 않는다**. atlas.n6 의 기존 EXACT 항목만 인용한다.
+This paper **does not generate new experimental data**. Only existing EXACT entries of atlas.n6 are cited.
 
-### 4.3 검증 코드 (hexa STUB)
+### 4.3 Verification code (hexa STUB)
 
 ```hexa
 -- arch_selforg_emergence_verify.hexa
 import atlas
 let soc_nodes = atlas.n6.query("arch-selforg-emergence")
 for node in soc_nodes:
-  assert node.sigma_mode_count <= 12, "σ=12 상한 위반"
-  assert node.tau_step % 4 == 0, "τ=4 양자화 위반"
-  assert node.phi_attractor_pair == 2, "φ=2 어트랙터 쌍 위반"
+  assert node.sigma_mode_count <= 12, "σ=12 upper-bound violation"
+  assert node.tau_step % 4 == 0, "τ=4 quantization violation"
+  assert node.phi_attractor_pair == 2, "φ=2 attractor pair violation"
 print("PASS", len(soc_nodes), "nodes")
 ```
 
@@ -169,46 +169,46 @@ print(f"PASS: sigma={sigma_n}, tau={tau_n}, phi={phi_n}, sopfr={sopfr_n}, N_c={n
 
 Expected output: `PASS: sigma=12, tau=4, phi=2, sopfr=5, N_c=36`
 
-### 4.4 한계 (Honest Limitations)
+### 4.4 Honest Limitations
 
-- σ=12 상한은 n=6 에서만 성립. 다른 n 에 대한 일반화는 미제.
-- atlas.n6 표본이 24건으로 제한적. 500건 이상 확장 필요 (P3 PAPER-P3-2 연계).
-- 생물학적 SOC (세포 분열) 과의 매핑은 추후 과제.
+- The σ=12 upper bound holds only at n=6. Generalization to other n is open.
+- The atlas.n6 sample is limited to 24 entries; scaling to ≥ 500 is required (P3 PAPER-P3-2 link).
+- Mapping to biological SOC (cell division) is future work.
 
-### 4.5 반증 가능성 (Counter-Example 후보)
+### 4.5 Falsifiability (counter-example candidates)
 
-- |M| > 12 인 자기조직 시스템 발견 시 → σφ=nτ 의 n=6 유일성 반증
-- τ 비배수 수렴 시간 관측 시 → τ 양자화 반증
-- 3 개 이상 어트랙터 관측 시 → φ=2 수축 반증
-
----
-
-## 5. 연결 논문
-
-- N6-111 (arch-selforg-design) — 임계 질량
-- N6-110 (arch-quantum-design) — 양자 중첩
-- N6-112 (attractor-meta-extended) — 어트랙터 이론
-- N6-115 (nexus6-discovery-engine) — 발견 엔진
+- Discovery of a self-organizing system with |M| > 12 → falsifies the n=6 uniqueness of σφ=nτ
+- Observation of convergence time that is not a τ-multiple → falsifies τ quantization
+- Observation of ≥ 3 attractors → falsifies the φ=2 contraction
 
 ---
 
-## 6. 결론
+## 5. Related papers
 
-σ(6)=12 모드 / τ(6)=4 양자화 / φ(6)=2 어트랙터 는 자기조직 창발의 n=6 좌표 불변량이다.
-새 이론 주장 없음 — 기존 SOC 이론 + atlas.n6 실측 위에 n=6 좌표를 부여한 시드 논문.
+- N6-111 (arch-selforg-design) — critical mass
+- N6-110 (arch-quantum-design) — quantum superposition
+- N6-112 (attractor-meta-extended) — attractor theory
+- N6-115 (nexus6-discovery-engine) — discovery engine
 
 ---
 
-## 부록 A. 인증 체인 + 반례 ≥ 3 (P2-2)
+## 6. Conclusion
 
-### A.1 증명 자격 인증 참조
-- **physics-math-certification.md** (🛸10 Aggregate, 2026-04-04) — "Testable Predictions 45+" 및 "Cross-DSE 13+" 조항. SOC 창발의 n=6 좌표 부여는 이 문서의 "측정 불변식 + 렌즈 합의 12+" 기준을 상속한다.
-- **honest-limitations.md** — "10 non-n6 cases" 중 연속 확률장 시스템(PVD, spin-coat)은 SOC 프레임에 들어오지 못하는 경계. 본 논문의 σ=12 모드 분해가 작동하는 "이산 이벤트 기반 SOC"와 그렇지 않은 "연속 유체 SOC"의 경계를 상호 참조.
+σ(6)=12 modes / τ(6)=4 quantization / φ(6)=2 attractors are the n=6 coordinate invariants of self-organization emergence.
+No new theoretical claim — a seed paper that assigns n=6 coordinates on top of existing SOC theory + atlas.n6 measurements.
 
-### A.2 반례 ≥ 3 (실패하는 경계 조건)
-1. **반례 1 — 모래더미 SOC의 선형 구동 극한(drive → 0)**: Bak-Tang-Wiesenfeld 모래더미에서 구동 강도를 0으로 보내면 σ-모드가 "휴지 상태 1개 모드"로 축약된다. σ=12 다중 모드 관측이 사라지므로 본 논문의 12-모드 주장은 이 경계에서 실패. 결론: 적용 범위 = "비평형 구동 상수 > ε" 영역.
-2. **반례 2 — 지진 Gutenberg-Richter 분포의 슈퍼컷오프 영역**: 에너지 E > E_max 영역에서 멱법칙이 지수 감쇠로 전이. τ=4 양자화(진앙 깊이 4단 층)가 파괴되고 단일 연속 붕괴로 수렴. 원주장의 적용 범위를 GR-selfsimilar 영역으로 축소.
-3. **반례 3 — 신경 avalanche criticality가 교란(약물/마취) 하에 놓인 경우**: φ=2 어트랙터(up/down state)가 단일 정상상태로 붕괴. 이 반증은 "n=6 SOC 좌표는 임계 상태 시스템에서만 유효"라는 경계를 강화한다.
+---
+
+## Appendix A. Certification chain + counter-examples ≥ 3 (P2-2)
+
+### A.1 Certification references
+- **physics-math-certification.md** (🛸10 Aggregate, 2026-04-04) — "Testable Predictions 45+" and "Cross-DSE 13+" clauses. Assigning n=6 coordinates to SOC emergence inherits the "measurement-invariant + lens-consensus 12+" criteria of that document.
+- **honest-limitations.md** — among the "10 non-n6 cases", continuous stochastic-field systems (PVD, spin-coat) are the boundary where the SOC frame does not apply. Cross-references the boundary between "discrete-event SOC" (where this paper's σ=12 mode decomposition works) and "continuous-fluid SOC" (where it does not).
+
+### A.2 Counter-examples ≥ 3 (failing boundary conditions)
+1. **Counter-example 1 — linear-drive limit (drive → 0) of sandpile SOC**: if drive strength is sent to 0 in the Bak-Tang-Wiesenfeld sandpile, σ-modes collapse to "a single quiescent mode". σ=12 multi-mode observation vanishes, so the 12-mode claim of this paper fails at this boundary. Conclusion: scope of applicability = "non-equilibrium drive constant > ε" region.
+2. **Counter-example 2 — super-cutoff region of the Gutenberg-Richter distribution for earthquakes**: in the energy region E > E_max, the power law transitions to exponential decay. τ=4 quantization (4-layer epicenter-depth tiers) is destroyed and collapses to a single continuous process. The scope of the original claim is narrowed to the GR-self-similar region.
+3. **Counter-example 3 — neural avalanche criticality perturbed (drugs/anesthesia)**: φ=2 attractors (up/down state) collapse into a single steady state. This counter-example strengthens the boundary "n=6 SOC coordinates are valid only on critical-state systems".
 
 ## §1 WHY
 

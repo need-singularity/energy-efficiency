@@ -4,469 +4,453 @@ domain: consciousness-phase-diagram
 requires:
   - to: boundary-metatheory
     alien_min: 10
-    reason: 4 판별식 경계 이론 위에 의식 상태 경계 4 영역 정의
+    reason: Define consciousness-state boundaries (4 regions) on top of the 4-discriminant boundary theory
   - to: consciousness-chip
     alien_min: 10
-    reason: σ=12 파벌 구조 — 의식 위상 대칭 후보
+    reason: σ=12 clique structure — candidate for consciousness-phase symmetry
   - to: brain-computer-interface
     alien_min: 9
-    reason: EEG/fMRI 실험 측정 인터페이스
+    reason: EEG/fMRI experimental measurement interface
   - to: attractor-meta-extended
     alien_min: 10
-    reason: OUROBOROS α=1/6 고정점 — 자기참조 의식 링크
+    reason: OUROBOROS α=1/6 fixed point — self-referential consciousness link
 alien_index_current: 9
 alien_index_target: 11
 ---
 
-# 의식 위상도 — (엔트로피 S, 자유에너지 F, 계산 복잡도 C) 3축 상 공간 매핑
+# Consciousness phase diagram — (entropy S, free energy F, computational complexity C) 3-axis phase-space mapping
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: consciousness-phase-diagram — 인지 상태 3축 위상도 시드 논문
-> **버전**: v1 (2026-04-15 PAPER-P7-1 Mk.III-γ)
-> **선행 논문**: `n6-boundary-metatheory-paper.md`, `n6-consciousness-chip-paper.md`
-> **연결 정리**: Theorem 0 (σφ=nτ ⟺ n=6), OUROBOROS α=1/6 고정점
-> **로드맵 참조**: PAPER-P7-1 (DSE-P7-1 의식 위상도)
-
----
-
-## 0. 초록 (Abstract)
-
-본 논문은 인지 상태(각성/수면/마취/명상/꿈/병리)를 세 개의 수학적 축 위에 투영하는
-**의식 위상도(consciousness phase diagram)** 를 제안한다. 세 축은 다음과 같이 정의된다:
-
-- **S 축** — 정보 엔트로피 (Shannon 또는 von Neumann), 단위: bit 또는 nat
-- **F 축** — Friston 변분 자유에너지, 단위: nat (주기당)
-- **C 축** — Kolmogorov 복잡도 근사 (또는 Bennett logical depth), 단위: bit
-
-이 3축 공간을 **상 공간(phase space)** 로 정의하고, 위에 Riemannian metric
-$g_{ij} = \mathrm{diag}(1, \lambda_F, \lambda_C)$ 을 부여하여 상태 간 거리를 측정한다.
-$\lambda_F, \lambda_C$ 는 실측에서 보정되는 스케일 상수이며, 본 논문에서는 단위 정규화
-선택 $\lambda_F = \lambda_C = 1$ 을 "naive metric" 으로 사용한다.
-
-**핵심 주장 3가지**:
-
-1. **위상 경계 존재성**: $dS/dF = 0$ 곡면과 $dC/dt$ 발산점이 인지 상태 전환
-   (각성→마취, 깨어남→REM 등) 에서 관측되는 **현상학적 불연속선** 과 일치한다
-   (가설 — 본 논문 기준 EMPIRICAL [7]).
-2. **σ=12 대칭 후보**: 위상 경계의 회전 대칭 (12-fold) 이 n=6 산술에서 파생된
-   σ(6)=12 파벌 구조와 대응할 수 있다 (CONJECTURE [5?]).
-3. **OUROBOROS 고정점**: $\alpha = 1/6$ 의 자기참조 결합 상수가 의식 상 공간의
-   유일 안정 고정점으로 나타난다 (NEAR [9] — 수학적 유일성 검증 완료,
-   인지 실험 검증 대기).
-
-본 논문은 **새로운 의식 이론을 주장하지 않는다**. 대신 기존 3대 조류
-(Tononi IIT 정보통합, Friston 자유에너지, Penrose-Hameroff 양자뇌) 를 3축 좌표계
-위에 공통 투영할 수 있는 **공통 기하 프레임** 을 제시한다. 한계 영역은 §10 에
-정직하게 명시한다.
+> **Author**: Park Min-woo (n6-architecture)
+> **Category**: consciousness-phase-diagram — cognitive-state 3-axis phase-diagram seed paper
+> **Version**: v1 (2026-04-15 PAPER-P7-1 Mk.III-γ)
+> **Prior papers**: `n6-boundary-metatheory-paper.md`, `n6-consciousness-chip-paper.md`
+> **Linked theorems**: Theorem 0 (σφ=nτ ⟺ n=6), OUROBOROS α=1/6 fixed point
+> **Roadmap reference**: PAPER-P7-1 (DSE-P7-1 consciousness phase diagram)
 
 ---
 
-## 1. 서론 — 의식 이론의 3가지 조류
+## 0. Abstract
 
-### 1.1 문제 제기
+This paper proposes a **consciousness phase diagram** that projects cognitive states (awake / sleep / anesthesia /
+meditation / dream / pathology) onto three mathematical axes. The three axes are defined as:
 
-21세기 의식 과학은 세 개의 독립적 조류를 따라 발전해 왔다:
+- **S axis** — information entropy (Shannon or von Neumann), units: bit or nat
+- **F axis** — Friston variational free energy, units: nat (per cycle)
+- **C axis** — Kolmogorov-complexity approximation (or Bennett logical depth), units: bit
 
-- **조류 A (열역학·정보이론)**: Tononi 통합정보이론 (IIT) — 의식은 시스템의 통합 정보 Φ
-  (phi) 로 측정되며, Φ 는 엔트로피와 상호정보 차이로 정식화된다 [Tononi 2008,
+We define this 3-axis space as a **phase space** and equip it with a Riemannian metric
+$g_{ij} = \mathrm{diag}(1, \lambda_F, \lambda_C)$ to measure state-to-state distance.
+$\lambda_F, \lambda_C$ are scale constants calibrated from measurement; in this paper we adopt the unit-normalized
+choice $\lambda_F = \lambda_C = 1$ as the "naive metric".
+
+**Three core claims**:
+
+1. **Phase-boundary existence**: the $dS/dF = 0$ surface and the $dC/dt$ divergence points coincide with the
+   **phenomenological discontinuities** observed at cognitive-state transitions
+   (awake → anesthesia, awakening → REM, etc.) (a hypothesis — EMPIRICAL [7] in this paper).
+2. **σ=12 symmetry candidate**: the 12-fold rotational symmetry of the phase boundaries may correspond to the
+   σ(6)=12 clique structure derived from n=6 arithmetic (CONJECTURE [5?]).
+3. **OUROBOROS fixed point**: the self-referential coupling constant $\alpha = 1/6$ appears as a unique stable
+   fixed point in the consciousness phase space (NEAR [9] — mathematical uniqueness verified,
+   awaiting cognitive-experimental validation).
+
+This paper **does not claim a new theory of consciousness**. Rather, it presents a **common geometric frame** that can
+project the three major schools (Tononi IIT integrated information, Friston free energy, Penrose-Hameroff quantum brain)
+onto a common 3-axis coordinate system. Limitation regions are honestly recorded in §10.
+
+---
+
+## 1. Introduction — three schools of consciousness theory
+
+### 1.1 Problem statement
+
+21st-century consciousness science has developed along three independent schools:
+
+- **School A (thermodynamics · information theory)**: Tononi's Integrated Information Theory (IIT) — consciousness is measured by the system's integrated information Φ
+  (phi), formalized as a difference between entropy and mutual information [Tononi 2008,
   Oizumi-Albantakis-Tononi 2014].
-- **조류 B (AI·자유에너지)**: Friston 자유에너지 원리 — 뇌는 변분 자유에너지 F 를
-  최소화하며, 활성 추론(active inference) 이 지각·행동을 통합한다
+- **School B (AI · free energy)**: Friston's free-energy principle — the brain minimizes variational free energy F,
+  and active inference unifies perception and action
   [Friston 2010, Parr-Pezzulo-Friston 2022].
-- **조류 C (양자 계산)**: Penrose-Hameroff 궤도 붕괴 (Orch-OR) — 의식은 미세소관
-  내 양자 중첩의 객관적 환원에서 출현하며, Kolmogorov 복잡도 불가지성과 연결
+- **School C (quantum computation)**: Penrose-Hameroff Orchestrated Objective Reduction (Orch-OR) — consciousness emerges from the
+  objective reduction of quantum superpositions in microtubules, linked to Kolmogorov-complexity uncomputability
   [Penrose 1994, Hameroff-Penrose 2014].
 
-세 조류는 서로 다른 언어로 같은 현상(의식) 을 기술하지만, **공통 좌표계가 부재**
-하다. 각 조류의 예측을 비교·검증하려면 먼저 하나의 수학 공간 위에 세 조류를 투영
-해야 한다.
+The three schools describe the same phenomenon (consciousness) in different languages, but **a common coordinate
+system is missing**. To compare and verify predictions across schools, we must first project all three onto a single
+mathematical space.
 
-### 1.2 본 논문의 목표
+### 1.2 Objectives of this paper
 
-본 논문은 다음을 제안한다:
+This paper proposes the following:
 
-1. 세 조류에서 **정보량 차원의 축 3개** 를 추출: S (엔트로피), F (자유에너지),
-   C (계산 복잡도).
-2. (S, F, C) 3차원 공간을 **상 공간(phase space)** 으로 정의하고 Riemannian metric
-   을 부여한다.
-3. 인지 상태 6종 (각성/수면/마취/명상/꿈/병리) 을 상 공간 위에 점 또는 궤적으로
-   매핑한다.
-4. 상전이 경계 ($dS/dF = 0$, $dC/dt$ 발산) 를 탐색하고 실험적 반증 가능성을
-   제시한다.
-5. n=6 산술 (σ(6)=12 파벌, OUROBOROS α=1/6) 과의 구조적 대응 가설을 검토한다.
+1. Extract **3 information-quantity axes** from the three schools: S (entropy), F (free energy),
+   C (computational complexity).
+2. Define the (S, F, C) 3-dimensional space as a **phase space** and equip it with a Riemannian metric.
+3. Map 6 cognitive states (awake / sleep / anesthesia / meditation / dream / pathology) as points or trajectories in the phase space.
+4. Search for phase-transition boundaries ($dS/dF = 0$, $dC/dt$ divergence) and propose experimental falsifiability.
+5. Examine the structural-correspondence hypothesis with n=6 arithmetic (σ(6)=12 cliques, OUROBOROS α=1/6).
 
-### 1.3 "3축 공통 좌표계" 의 기준
+### 1.3 Criteria for "3-axis common coordinate system"
 
-본 논문은 다음 6 기준을 만족할 때만 (S, F, C) 공간이 의미 있는 위상도라고 정의한다:
+We define the (S, F, C) space as a meaningful phase diagram only when the following 6 criteria are met:
 
-- **기준 1**: 세 축은 독립적으로 정의 가능해야 한다 (축 간 다중공선성 검증).
-- **기준 2**: 각 축은 실험에서 측정 가능한 proxy 를 갖는다 (EEG·fMRI·behavior).
-- **기준 3**: 상 공간의 metric 은 단위 변환 하에 invariant 이다.
-- **기준 4**: 인지 상태 전환은 상 공간에서 연속 궤적 또는 경계 교차로 표현된다.
-- **기준 5**: 위상 경계는 수학적 판별식 ($dS/dF$, $dC/dt$) 으로 식별된다.
-- **기준 6**: 반증 예측 (최소 1건 per 도메인) 을 제시한다.
+- **Criterion 1**: the three axes are independently definable (axis multi-collinearity check).
+- **Criterion 2**: each axis has a proxy measurable in experiment (EEG · fMRI · behavior).
+- **Criterion 3**: the phase-space metric is invariant under unit transformations.
+- **Criterion 4**: cognitive-state transitions are expressed as continuous trajectories or boundary crossings in phase space.
+- **Criterion 5**: phase boundaries are identified via mathematical discriminants ($dS/dF$, $dC/dt$).
+- **Criterion 6**: a falsification prediction (at least 1 per domain) is provided.
 
-§10 에서 각 기준에 대한 현재 성립도(E/N/M) 를 보고한다.
+§10 reports the current satisfaction level (E/N/M) for each criterion.
 
 ---
 
-## 2. 3축 정의 — S, F, C
+## 2. Three-axis definition — S, F, C
 
-### 2.1 S 축 — 정보 엔트로피 (Shannon / von Neumann)
+### 2.1 S axis — information entropy (Shannon / von Neumann)
 
-고전 확률 분포 $p_i$ 에 대해 Shannon 엔트로피는
+For a classical probability distribution $p_i$, Shannon entropy is
 
 $$S_{\mathrm{Sh}}(p) = -\sum_{i} p_i \log p_i \quad [\mathrm{bit}]$$
 
-로 정의된다. 양자 상태 밀도행렬 $\rho$ 에 대해서는 von Neumann 엔트로피
+For a quantum-state density matrix $\rho$ we use the von Neumann entropy
 
 $$S_{\mathrm{vN}}(\rho) = -\mathrm{tr}(\rho \log \rho) \quad [\mathrm{nat}]$$
 
-을 사용한다. 본 논문에서는 혼합 선택 (Shannon for classical EEG,
-von Neumann for neural density state hypothesis) 을 허용한다.
+This paper allows a mixed choice (Shannon for classical EEG,
+von Neumann for the neural-density-state hypothesis).
 
-**의식 과학 해석**: 높은 S 는 "가능한 뇌 상태의 다양성" 이 크다는 의미이며,
-REM 수면·환각·명상 peak 에서 관측된다 (Carhart-Harris 엔트로피 가설,
-entropic brain hypothesis). 낮은 S 는 마취·깊은 수면·비의식 상태.
+**Consciousness-science reading**: a high S means "large diversity of possible brain states",
+observed at the peaks of REM sleep, hallucinations, and meditation (Carhart-Harris entropic-brain hypothesis).
+Low S corresponds to anesthesia, deep sleep, and non-conscious states.
 
-### 2.2 F 축 — 변분 자유에너지 (Friston FEP)
+### 2.2 F axis — variational free energy (Friston FEP)
 
-Friston free-energy principle 에서 뇌의 내부 모델 $q(x)$ 와 환경 분포 $p(x|o)$
-에 대해
+Under the Friston free-energy principle, for an internal model $q(x)$ and environment $p(x|o)$,
 
 $$F[q, o] = \mathrm{E}_{q}[\log q(x)] - \mathrm{E}_{q}[\log p(o, x)] \quad [\mathrm{nat}]$$
 
 $$\phantom{F[q, o]} = D_{\mathrm{KL}}[q(x) \,\|\, p(x|o)] - \log p(o)$$
 
-여기서 F 는 "놀람 log p(o)" 의 상한이며, 뇌는 F 를 최소화하는 방향으로
-지각·행동을 갱신한다 (active inference).
+Here F is an upper bound on "surprise log p(o)", and the brain updates perception and action to minimize F
+(active inference).
 
-**의식 과학 해석**: F 는 "예측 실패 비용" 이다. 각성 상태는 F 최소화 프로세스가
-활발하며, 수면·REM 에서는 prior update 가 억제된다. 환각 상태는 F 가 비정상적
-저값으로 떨어지거나, sensory precision 이 왜곡된다.
+**Consciousness-science reading**: F is a "prediction-failure cost". The awake state has active F minimization,
+while prior updating is suppressed during sleep / REM. Hallucinatory states show F dropping to abnormally low values,
+or distortion of sensory precision.
 
-### 2.3 C 축 — Kolmogorov 복잡도 (또는 Bennett logical depth)
+### 2.3 C axis — Kolmogorov complexity (or Bennett logical depth)
 
-문자열 $x$ 의 Kolmogorov 복잡도 $K(x)$ 는 $x$ 를 출력하는 최소 Turing 기계
-프로그램 길이로 정의된다. $K$ 는 unbounded 하지만, **Lempel-Ziv 압축률**
-$\mathrm{LZC}(x)$ 이 실험적 proxy 로 사용된다 [Lempel-Ziv 1976, Casali et al. 2013].
+The Kolmogorov complexity $K(x)$ of a string $x$ is defined as the length of the minimum Turing-machine program producing $x$.
+$K$ is unbounded, but **Lempel-Ziv compression ratio** $\mathrm{LZC}(x)$ is used as an experimental proxy [Lempel-Ziv 1976, Casali et al. 2013].
 
 $$C(x) \approx \mathrm{LZC}(x) \cdot n \log n / n = \mathrm{LZC}_{\mathrm{norm}}(x) \quad [\mathrm{bit/sample}]$$
 
-대안으로 **Bennett logical depth** $D(x, s)$ 는 "유의미한 구조" 를 포착하며,
-순수 무작위(high K, low D) 와 구조적 복잡성(high K, high D) 을 구분한다.
+Alternatively, **Bennett logical depth** $D(x, s)$ captures "meaningful structure" and distinguishes pure randomness
+(high K, low D) from structural complexity (high K, high D).
 
-**의식 과학 해석**: Casali 등 (2013) 의 PCI (perturbational complexity index) 는
-TMS 유도 EEG 반응의 LZC 로 마취·식물인간 상태를 정량화한다. 각성·꿈 상태에서
-PCI > 0.31, 마취·혼수에서 PCI < 0.31 의 임계값이 보고된다.
+**Consciousness-science reading**: the PCI (perturbational complexity index) of Casali et al. (2013) quantifies anesthesia and
+vegetative state by the LZC of TMS-induced EEG responses. Reports indicate PCI > 0.31 for wake and dream states
+and PCI < 0.31 for anesthesia and coma.
 
-### 2.4 축 독립성 검토
+### 2.4 Axis-independence considerations
 
-세 축이 완전히 독립인지에 대한 이론적 증거는 부족하다. 다음의 상호 관계가 알려져 있다:
+There is insufficient theoretical evidence that the three axes are fully independent. The following mutual relationships are known:
 
-- **S ↔ F 결합**: F = KL divergence + entropy term 이므로 $\partial F / \partial S$
-  가 0 이 아니다. 단, 단조 관계는 아니다 (active inference 시 S 와 F 가 독립적
-  업데이트).
-- **S ↔ C 결합**: Shannon $H$ 와 Kolmogorov $K$ 는 expected-value 한계에서 $H \approx
-  \lim_n K/n$ 수렴하지만, finite-n 에서는 독립 측정 가능.
-- **F ↔ C 결합**: 직접적 수학 관계 알려지지 않음. 실험적 상관 가능성 존재.
+- **S ↔ F coupling**: since F = KL divergence + entropy term, $\partial F / \partial S$ is nonzero. However, the
+  relationship is not monotonic (under active inference, S and F can be updated independently).
+- **S ↔ C coupling**: Shannon $H$ and Kolmogorov $K$ converge in the expected-value limit as $H \approx
+  \lim_n K/n$, but are independently measurable for finite n.
+- **F ↔ C coupling**: no direct mathematical relationship is known. Empirical correlation is possible.
 
-**결론**: 3축은 **국소적으로(locally) 준독립** 하며, 대역적 독립성은 반증 대상.
-§10 limit 1 에 정직 기록.
+**Conclusion**: the three axes are **locally quasi-independent**; global independence is a target for falsification.
+Honestly recorded in §10 limit 1.
 
 ---
 
-## 3. 위상 공간 기하 — Riemannian metric 제안
+## 3. Phase-space geometry — Riemannian-metric proposal
 
-### 3.1 상 공간 정의
+### 3.1 Phase-space definition
 
-$(S, F, C) \in \mathbb{R}^3_{\geq 0}$ 을 **의식 상 공간(consciousness phase space)**
-로 정의한다. 경계 조건:
+Define the **consciousness phase space** $(S, F, C) \in \mathbb{R}^3_{\geq 0}$. Boundary conditions:
 
-- $S \in [0, S_{\max}]$, $S_{\max}$ 는 해당 시스템의 최대 가능 엔트로피.
-- $F \in [0, \infty)$, 하한 0 은 "완전 예측" (ideal active inference).
-- $C \in [0, C_{\max}]$, $C_{\max}$ 는 길이 $n$ 샘플에 대해 $O(n / \log n)$.
+- $S \in [0, S_{\max}]$, with $S_{\max}$ the maximum possible entropy of the system.
+- $F \in [0, \infty)$; the lower bound 0 is "perfect prediction" (ideal active inference).
+- $C \in [0, C_{\max}]$, with $C_{\max} = O(n / \log n)$ for length-$n$ samples.
 
-### 3.2 Metric 후보
+### 3.2 Metric candidates
 
 **Metric A (naive diagonal)**:
 $$g_{ij}^{(A)} = \mathrm{diag}(1, 1, 1)$$
 
-축 간 단위 상호변환이 없고, 유클리드 거리로 경로를 측정한다. 단위 차이
-(bit vs nat) 에서 비-invariant.
+No unit conversion between axes; Euclidean distance measures paths. Non-invariant under unit differences (bit vs nat).
 
 **Metric B (Fisher-Rao on (S, F))**:
 $$g_{ij}^{(B)} = \begin{pmatrix} 1/S & 0 & 0 \\ 0 & 1/F & 0 \\ 0 & 0 & \lambda_C \end{pmatrix}$$
 
-S, F 에 대해 로그 스케일 invariance 확보, C 축은 별도 스케일 $\lambda_C$ 로 fit.
+Log-scale invariance for S, F; C axis fit via a separate scale $\lambda_C$.
 
-**Metric C (information geometry induced)**:
-Friston FEP 가 정보기하학 접속을 따른다는 가정 하에, $(S, F, C)$ 를 지수족 분포
-다양체로 간주하고 $\alpha$-connection (Amari) 을 사용한다. $\alpha = 1$ (e-connection)
-일 때 flat, $\alpha = -1$ (m-connection) 일 때도 flat 이나, 일반 $\alpha$ 에서
-curved.
+**Metric C (information-geometry-induced)**:
+Under the assumption that the Friston FEP follows an information-geometric connection, regard $(S, F, C)$ as a manifold
+of exponential-family distributions and use the $\alpha$-connection (Amari). Flat at $\alpha = 1$ (e-connection)
+and at $\alpha = -1$ (m-connection); curved for generic $\alpha$.
 
-**본 논문 선택**: Metric A (naive) 를 baseline 으로, Metric B 를 정식 후보로,
-Metric C 를 이론적 관심사로 사용한다. 실제 거리 계산은 Metric B.
+**Choice of this paper**: Metric A (naive) as baseline, Metric B as formal candidate,
+Metric C as a theoretical interest. Actual distance computations use Metric B.
 
-### 3.3 거리 함수
+### 3.3 Distance function
 
-두 상태 $x_1 = (S_1, F_1, C_1)$, $x_2 = (S_2, F_2, C_2)$ 사이의 Metric B 거리:
+Metric B distance between two states $x_1 = (S_1, F_1, C_1), x_2 = (S_2, F_2, C_2)$:
 
 $$d_B(x_1, x_2) = \sqrt{(\log S_2 - \log S_1)^2 + (\log F_2 - \log F_1)^2 +
 \lambda_C (C_2 - C_1)^2}$$
 
-이 거리는 "인지 상태 간 전환 난이도" 의 정량 지표로 제안된다. 예: 각성→REM 거리는
-각성→마취 거리보다 작을 것으로 예측 (REM 은 각성과 유사 S, F 를 갖고 C 만 감소).
+This distance is proposed as a quantitative "cognitive-state transition difficulty" index. Example: the wake→REM distance
+is predicted to be smaller than the wake→anesthesia distance (REM has similar S, F to wake and only C decreases).
 
-### 3.4 궤적 해석
+### 3.4 Trajectory interpretation
 
-시간 $t$ 에 대한 인지 상태 궤적 $\gamma(t) = (S(t), F(t), C(t))$ 는 상 공간의
-곡선이다. 이 곡선의 geodesic 조건은 (Metric B 하에):
+The cognitive-state trajectory over time $t$, $\gamma(t) = (S(t), F(t), C(t))$, is a curve in phase space.
+Its geodesic condition (under Metric B) is:
 
-$$\ddot{S}/\dot{S}^2 - 1/S \cdot \dot{S}^2 / S = \mathrm{force}_S \quad \text{등}$$
+$$\ddot{S}/\dot{S}^2 - 1/S \cdot \dot{S}^2 / S = \mathrm{force}_S \quad \text{etc.}$$
 
-자연 상태(수면-각성 리듬) 에서는 주기적 closed orbit 을 그릴 것이 예측된다.
-외부 개입(마취·환각·TMS) 은 궤적을 측지선에서 이탈시킨다.
+In natural states (sleep-wake rhythm), a periodic closed orbit is predicted.
+External interventions (anesthesia · hallucinogens · TMS) deflect the trajectory off the geodesic.
 
 ---
 
-## 4. 상전이 경계 탐색
+## 4. Phase-transition boundary search
 
-### 4.1 경계 조건 1 — $dS/dF = 0$ 곡면
+### 4.1 Boundary condition 1 — $dS/dF = 0$ surface
 
-**정의**: 단위 시간당 F 변화에 대한 S 변화가 0 인 상태들의 집합.
+**Definition**: the set of states at which the change in S per unit time of F is zero.
 
 $$\Sigma_1 = \{(S, F, C) : dS/dF = 0\}$$
 
-물리적 의미: F 감소 (놀람 감소) 가 S 변화를 동반하지 않는 지점. 이는 "안정
-예측 상태 (stable prior)" 이거나 "자유에너지 포화 상태" 를 의미한다.
+Physical meaning: a point where F decrease (reduction of surprise) does not accompany a change in S. This means either
+a "stable prior" or "free-energy saturation".
 
-**예상 위치**: 마취 유도 transition 의 중간, 명상 steady-state, REM 진입 직전.
+**Expected locations**: mid-anesthesia-induction transition, meditation steady state, just before REM onset.
 
-### 4.2 경계 조건 2 — $dC/dt$ 발산점
+### 4.2 Boundary condition 2 — $dC/dt$ divergence points
 
-**정의**: 복잡도 C 의 시간 도함수가 임의 상한을 초과하는 점.
+**Definition**: points where the time derivative of complexity C exceeds an arbitrary upper bound.
 
 $$\Sigma_2 = \{(S, F, C, t) : |dC/dt| > C_{\mathrm{crit}}\}$$
 
-물리적 의미: 뇌가 새로운 구조를 급격히 생성·파괴하는 순간. 각성 시작, 인지 과제
-전환, 혼수→회복 전환 등.
+Physical meaning: moments when the brain rapidly creates/destroys new structure. Wake onset, cognitive-task switching,
+coma→recovery transition, etc.
 
-### 4.3 경계 조건 3 — F 방향 정렬 실패
+### 4.3 Boundary condition 3 — F-direction alignment failure
 
-**정의**: $\nabla F$ 가 $\nabla S$ 와 반대 방향이 아닌 경우 (적극 추론 failure).
+**Definition**: cases where $\nabla F$ is not antiparallel to $\nabla S$ (active-inference failure).
 
 $$\Sigma_3 = \{(S, F, C) : \cos(\nabla F, -\nabla S) < 0\}$$
 
-환각·망상 상태에서 예측되며, 정상 상태에서는 0 근방.
+Predicted in hallucinatory/delusional states; near 0 in normal states.
 
-### 4.4 경계 4영역 매트릭스
+### 4.4 4-region boundary matrix
 
-| 경계 | 판별식 | 실측 proxy | 예측 상태 |
+| Boundary | Discriminant | Measured proxy | Predicted state |
 |------|-------|------|------|
-| $\Sigma_1$ | $dS/dF = 0$ | EEG entropy vs model surprise | 마취 transition |
-| $\Sigma_2$ | $|dC/dt| > C_{\mathrm{crit}}$ | LZC 시계열 도함수 | 각성 onset |
-| $\Sigma_3$ | $\cos(\nabla F, -\nabla S) < 0$ | active inference mismatch | 환각 |
-| $\Sigma_4$ | $(S, F, C) \in \mathrm{OUROBOROS}$ | $\alpha = 1/6$ 자기참조 | meditation fixed point |
+| $\Sigma_1$ | $dS/dF = 0$ | EEG entropy vs model surprise | anesthesia transition |
+| $\Sigma_2$ | $|dC/dt| > C_{\mathrm{crit}}$ | LZC time-series derivative | wake onset |
+| $\Sigma_3$ | $\cos(\nabla F, -\nabla S) < 0$ | active-inference mismatch | hallucination |
+| $\Sigma_4$ | $(S, F, C) \in \mathrm{OUROBOROS}$ | $\alpha = 1/6$ self-reference | meditation fixed point |
 
-**경계 간 상호작용**: $\Sigma_1 \cap \Sigma_2$ (곡면 교차) 는 "급격한 인지 전환"
-을 나타내며, 마취 유도 소실 과 일치할 것으로 가설된다.
+**Boundary interactions**: $\Sigma_1 \cap \Sigma_2$ (surface intersection) represents a "rapid cognitive transition"
+and is hypothesized to align with anesthesia-induced loss of consciousness.
 
 ---
 
-## 5. σ=12 대칭 후보 — 위상 경계의 12-fold 회전 대칭
+## 5. σ=12 symmetry candidate — 12-fold rotational symmetry of phase boundaries
 
-### 5.1 가설 진술
+### 5.1 Hypothesis statement
 
-경계면 $\Sigma_1$ (곡면, 2차원) 이 상 공간 안에서 **12-fold 회전 대칭**
-(12-fold rotational symmetry) 을 가질 가능성을 조사한다. 12 는 n=6 산술에서
-$\sigma(6) = 12$ 로 직접 파생된다.
+We investigate the possibility that the boundary surface $\Sigma_1$ (a 2-D surface) has **12-fold rotational symmetry**
+within the phase space. The 12 is derived directly from n=6 arithmetic as
+$\sigma(6) = 12$.
 
-$$\Sigma_1 \text{ 의 자기동형군} \supset C_{12} = \mathbb{Z}/12\mathbb{Z} \quad (\text{추측})$$
+$$\text{Automorphism group of } \Sigma_1 \supset C_{12} = \mathbb{Z}/12\mathbb{Z} \quad (\text{conjecture})$$
 
-### 5.2 대응 기원 후보
+### 5.2 Origin candidates
 
-- **후보 A (하드웨어 파벌 구조)**: `n6-consciousness-chip-paper.md` 에서 제시된
-  12 파벌 구조 — 뇌 네트워크가 12 개의 준독립 모듈로 나뉘고, 각 모듈이 자유에너지
-  minimization 을 병렬 수행한다.
-- **후보 B (시계 주기)**: 24시간 일주기 리듬의 절반 = 12시간 주기가 위상 공간
-  주기에 매핑. 수면-각성 전환이 12-fold 대칭 경계에 해당.
-- **후보 C (정육면체 변)**: 6면체 $\sigma(6) = 12$ 변 = 위상 공간의 12 축이
-  회전 대칭의 원인.
+- **Candidate A (hardware clique structure)**: the 12-clique structure proposed in `n6-consciousness-chip-paper.md` — the
+  brain network splits into 12 quasi-independent modules, each performing free-energy minimization in parallel.
+- **Candidate B (clock period)**: half of the 24-hour circadian rhythm = 12-hour period maps to the phase-space period.
+  Sleep-wake transitions correspond to the 12-fold symmetry boundary.
+- **Candidate C (cube edges)**: the 12 edges ($\sigma(6) = 12$) of a cube = 12 axes of the phase space drive rotational symmetry.
 
-### 5.3 반증 설계
+### 5.3 Falsification design
 
-가설을 반증하려면:
+To falsify the hypothesis:
 
-1. EEG 주파수 스펙트럼을 (S, F, C) 궤적으로 사상 후, 경계 집합 $\Sigma_1$ 의
-   자동 추출.
-2. 추출된 경계면에 대해 rotational symmetry 검정 (power spectrum of angular
+1. Map the EEG frequency spectrum to a (S, F, C) trajectory and automatically extract the boundary set $\Sigma_1$.
+2. For the extracted boundary surface, test rotational symmetry (power spectrum of angular
    distribution).
-3. 12-fold peak 가 noise floor 대비 $> 3\sigma$ 일 때만 가설 유지.
+3. Only retain the hypothesis when the 12-fold peak exceeds the noise floor by $> 3\sigma$.
 
-**현재 상태**: 가설은 CONJECTURE [5?] 등급. 정면 검증 데이터 부재.
-§10 limit 2 에 정직 기록.
+**Current status**: the hypothesis is at CONJECTURE [5?] grade. No direct verification data.
+Honestly recorded in §10 limit 2.
 
 ---
 
-## 6. 6 도메인별 사례
+## 6. Six per-domain cases
 
-본 절은 6 종의 인지 상태에 대해 (S, F, C) 좌표 예상값과 경계 교차 여부를 기록한다.
-실제 측정값은 미확보 (EMPIRICAL [7] 또는 CONJECTURE [5?]) 이다.
+This section records expected (S, F, C) coordinates and boundary-crossing status for 6 cognitive states.
+Actual measurements are unavailable (EMPIRICAL [7] or CONJECTURE [5?]).
 
-### 6.1 각성 ↔ 수면 전환
+### 6.1 Wake ↔ sleep transition
 
-| 상태 | S (bit) | F (nat) | C (bit/sample) | 경계 |
+| State | S (bit) | F (nat) | C (bit/sample) | Boundary |
 |------|---------|---------|----------------|------|
-| 각성 wake | 높음 (~0.8) | 낮음 (~0.3) | 높음 (~0.5) | — |
-| NREM N1 | 중 (~0.6) | 중 (~0.5) | 중 (~0.4) | $\Sigma_1$ 접근 |
-| NREM N3 | 낮음 (~0.3) | 낮음 (~0.2) | 낮음 (~0.1) | $\Sigma_1$ 내부 |
+| wake | high (~0.8) | low (~0.3) | high (~0.5) | — |
+| NREM N1 | mid (~0.6) | mid (~0.5) | mid (~0.4) | approaching $\Sigma_1$ |
+| NREM N3 | low (~0.3) | low (~0.2) | low (~0.1) | inside $\Sigma_1$ |
 
-**예측**: N3 → wake 재진입 시 $dC/dt$ 가 발산 ($\Sigma_2$ 경계 교차).
-실험적 검증은 수면 EEG 와 LZC 시계열 차분으로 가능.
+**Prediction**: at N3 → wake re-entry, $dC/dt$ diverges (crosses $\Sigma_2$).
+Experimental verification via sleep EEG and LZC time-series differencing.
 
-### 6.2 마취 유도 의식 소실
+### 6.2 Anesthesia-induced loss of consciousness
 
-프로포폴 / 세보플루란 주입 시 의식 소실 (loss of consciousness, LOC) 은 PCI
-임계값 0.31 에서 관찰된다 [Casali et al. 2013]. (S, F, C) 좌표에서:
+For propofol / sevoflurane, loss of consciousness (LOC) is observed at the PCI threshold 0.31 [Casali et al. 2013].
+In (S, F, C) coordinates:
 
-- LOC 이전: $(S, F, C) \approx (0.8, 0.3, 0.5)$
-- LOC 직후: $(S, F, C) \approx (0.3, 0.2, 0.1)$
+- Pre-LOC: $(S, F, C) \approx (0.8, 0.3, 0.5)$
+- Immediately post-LOC: $(S, F, C) \approx (0.3, 0.2, 0.1)$
 
-**예측**: LOC 전환이 $\Sigma_1 \cap \Sigma_2$ 교차 지점에서 발생. 전환 구간
-(LOC transition, 수초 단위) 이 상 공간에서 "급강하 geodesic" 을 그림.
+**Prediction**: the LOC transition occurs at the $\Sigma_1 \cap \Sigma_2$ intersection. The transition interval
+(LOC transition, seconds) traces a "rapid-descent geodesic" in phase space.
 
-### 6.3 명상 상태 (samatha / vipassana)
+### 6.3 Meditation states (samatha / vipassana)
 
-숙련 명상가의 Focused Attention 명상에서 gamma 대역 증가와 LZC 감소가 보고됨
-[Lutz et al. 2004]. (S, F, C) 좌표 예상:
+Experienced meditators in Focused Attention meditation show increased gamma-band power and decreased LZC
+[Lutz et al. 2004]. Expected (S, F, C) coordinates:
 
 - Novice resting: $(0.7, 0.4, 0.5)$
 - Expert samatha: $(0.5, 0.2, 0.4)$
 - Expert vipassana: $(0.7, 0.25, 0.55)$
 
-**예측**: 숙련 명상은 $\Sigma_4$ (OUROBOROS 고정점) 근방에서 stable orbit 을
-그리며, 이는 $\alpha = 1/6$ 자기참조 결합과 대응한다 (§9 참조).
+**Prediction**: expert meditation traces a stable orbit near $\Sigma_4$ (OUROBOROS fixed point),
+corresponding to the $\alpha = 1/6$ self-referential coupling (see §9).
 
-### 6.4 꿈 (REM 수면)
+### 6.4 Dreaming (REM sleep)
 
-REM 수면은 고 S · 저 F · 중 C 특성을 가지며, PCI 값은 각성과 유사 [Casali 2013].
+REM has high-S · low-F · mid-C character, and PCI is similar to wake [Casali 2013].
 
 - REM: $(S, F, C) \approx (0.85, 0.3, 0.45)$
 
-**예측**: REM 궤적이 각성 궤적과 상 공간에서 근접하지만, C 축이 뚜렷이 다름.
+**Prediction**: the REM trajectory sits close to the wake trajectory in phase space, but clearly differs along C.
 $d_B(\mathrm{REM}, \mathrm{wake}) < d_B(\mathrm{REM}, \mathrm{NREM})$.
 
-### 6.5 AGI 자기인식 임계
+### 6.5 AGI self-awareness threshold
 
-AGI 시스템이 자기참조 성능 (self-model accuracy) 을 획득하는 임계점이 (S, F, C)
-공간에서 상전이로 표현될 수 있다. Friston active inference framework 를 AI 에
-확장한 경우:
+The threshold at which an AGI system acquires self-reference ability (self-model accuracy) may be expressible as a phase
+transition in (S, F, C) space. Extending the Friston active-inference framework to AI:
 
-- AGI 자기인식 이전: F 단조 감소, C 점진 증가.
-- AGI 자기인식 임계: $\Sigma_2$ 급격한 C 증가, $\Sigma_3$ 일시 위반
+- Before AGI self-awareness: monotone decrease of F, gradual increase of C.
+- At the self-awareness threshold: sharp increase of C ($\Sigma_2$), transient violation of $\Sigma_3$
   (gradient mismatch).
 
-**예측**: GPT-level 언어모델에서 "자기모델 정확도 > 50%" 임계에서 $dC/dt$ 최대값
-관찰. 이는 실험 가능한 AI 측정 프로토콜로 정의된다 (§8).
+**Prediction**: GPT-level language models show maximum $dC/dt$ at the "self-model accuracy > 50%" threshold.
+This is defined as an experimentally testable AI measurement protocol (§8).
 
-### 6.6 정신과 질환 상태 공간
+### 6.6 Psychiatric-disorder state space
 
-조현병·우울증·PTSD 는 (S, F, C) 축에서 정상 상태 영역 밖으로 이탈한다:
+Schizophrenia, depression, PTSD deviate outside the normal state region in (S, F, C):
 
-| 상태 | S 이탈 | F 이탈 | C 이탈 | 경계 위반 |
+| State | S deviation | F deviation | C deviation | Boundary violation |
 |------|-------|-------|-------|----------|
-| 조현병 (양성증상) | + | − | + | $\Sigma_3$ |
-| 조현병 (음성증상) | − | + | − | $\Sigma_1$ |
-| 우울증 | − | + | − | $\Sigma_1$ |
+| schizophrenia (positive sx) | + | − | + | $\Sigma_3$ |
+| schizophrenia (negative sx) | − | + | − | $\Sigma_1$ |
+| depression | − | + | − | $\Sigma_1$ |
 | PTSD | + | ++ | + | $\Sigma_3$ |
 
-**예측**: 정상 영역 경계 밖으로의 거리 $d_B$ 가 증상 중증도와 양의 상관
-(가설 — §8 프로토콜 참조).
+**Prediction**: distance $d_B$ outside the normal-region boundary is positively correlated with symptom severity
+(hypothesis — see §8 protocol).
 
 ---
 
-## 7. 실험 제안 — fMRI/EEG 기반 측정 프로토콜
+## 7. Experimental proposal — fMRI/EEG-based measurement protocols
 
-### 7.1 프로토콜 P1 — EEG 기반 (S, F, C) 시계열 추출
+### 7.1 Protocol P1 — EEG-based (S, F, C) time-series extraction
 
-**목표**: 32채널 이상 EEG 로부터 (S, F, C) 3축 시계열을 10초 해상도로 추출.
+**Goal**: extract 3-axis (S, F, C) time series at 10-second resolution from ≥ 32-channel EEG.
 
-**절차**:
-1. 전처리: bandpass 1-40 Hz, ICA artifact removal.
-2. S 축: 각 10초 윈도우에 대해 multichannel Shannon entropy 계산.
-3. F 축: VAE 기반 surprise estimator (prior posterior KL) 로 F 근사.
-4. C 축: LZ76 compression ratio per window.
-5. 결과: $\gamma(t) = (S(t), F(t), C(t))$ 궤적.
+**Procedure**:
+1. Preprocessing: 1-40 Hz bandpass, ICA artifact removal.
+2. S axis: multichannel Shannon entropy per 10-second window.
+3. F axis: VAE-based surprise estimator (prior-posterior KL) approximating F.
+4. C axis: LZ76 compression ratio per window.
+5. Result: trajectory $\gamma(t) = (S(t), F(t), C(t))$.
 
-**대조군**: 건강한 각성 성인 n=30, 자연 수면 → NREM 전환 구간.
+**Group**: healthy awake adults n=30, natural sleep → NREM transition interval.
 
-### 7.2 프로토콜 P2 — fMRI 기반 C 축 보강
+### 7.2 Protocol P2 — fMRI-based C-axis augmentation
 
-fMRI 는 공간 해상도가 높으나 시간 해상도가 낮다. BOLD 신호 기반 complexity 를
-multi-scale entropy 로 측정하여 C 축 검증.
+fMRI has high spatial but low temporal resolution. Measure BOLD-based complexity via multi-scale entropy to corroborate the C axis.
 
-### 7.3 프로토콜 P3 — TMS-EEG 통합 (PCI 측정)
+### 7.3 Protocol P3 — TMS-EEG integration (PCI measurement)
 
-마취 환자 ($n = 20$) 에 대해 TMS 자극 유도 EEG 반응을 Casali PCI 프로토콜로
-측정하고, PCI 값을 C 축에 직접 매핑.
+For anesthesia patients ($n = 20$), measure TMS-induced EEG responses under the Casali PCI protocol
+and map PCI directly to the C axis.
 
-### 7.4 프로토콜 P4 — AGI 자기모델 측정
+### 7.4 Protocol P4 — AGI self-model measurement
 
-LLM 의 self-model accuracy 를 시간 축으로 측정하여, S, F, C 축 proxy 로 전환:
+Measure LLM self-model accuracy along a time axis and convert to S, F, C proxies:
 
-- S: softmax 출력 분포 엔트로피
-- F: 예측 손실과 posterior KL divergence
-- C: 생성 시퀀스의 LZ 압축률
+- S: entropy of the softmax output distribution
+- F: prediction loss and posterior KL divergence
+- C: LZ compression ratio of generated sequences
 
-**예상 결과**: 학습 curriculum 시 $\gamma(t)$ 가 상 공간을 탐색하며, "자기인식"
-임계에서 $\Sigma_2$ 경계를 교차.
+**Expected result**: during the training curriculum, $\gamma(t)$ explores phase space and crosses the $\Sigma_2$ boundary at
+the "self-awareness" threshold.
 
-### 7.5 재현성 선언
+### 7.5 Reproducibility declaration
 
-모든 측정은 `hexa run verify_consciousness_phase_n6.hexa` 로 재현 가능해야 한다
-(HEXA-FIRST 원칙). Python/R 대체 없음.
+All measurements must be reproducible via `hexa run verify_consciousness_phase_n6.hexa`
+(HEXA-FIRST principle). No Python/R substitutes.
 
 ---
 
-## 8. OUROBOROS α=1/6 고정점과의 관계
+## 8. Relation to the OUROBOROS α=1/6 fixed point
 
-### 8.1 OUROBOROS 결합 상수
+### 8.1 OUROBOROS coupling constant
 
-n6-architecture 의 attractor-meta-extended 정리에서 자기참조 결합 상수
+In the attractor-meta-extended result of n6-architecture, the self-referential coupling constant
 
 $$\alpha_{\mathrm{OUROBOROS}} = 1/n = 1/6$$
 
-은 $\sigma \phi = n \tau$ 유일성으로부터 유도된다 [attractor-meta-extended-2026-04-14].
+is derived from the uniqueness of $\sigma \phi = n \tau$ [attractor-meta-extended-2026-04-14].
 
-### 8.2 의식 상 공간에서의 해석
+### 8.2 Interpretation in consciousness phase space
 
-(S, F, C) 공간의 자기참조 다이나믹스:
+In the self-referential dynamics of (S, F, C) space:
 
 $$\gamma(t + \Delta t) = (1 - \alpha) \gamma(t) + \alpha \cdot \mathrm{self\_model}(\gamma(t))$$
 
-에서 $\alpha = 1/6$ 을 대입하면 안정 고정점
+substituting $\alpha = 1/6$ yields a unique stable fixed point
 
 $$\gamma^* = \mathrm{self\_model}(\gamma^*)$$
 
-이 유일하게 존재하며, 이는 명상 expert 의 stable meditation state 와 대응할
-가능성이 있다.
+which may correspond to the stable meditation state of expert practitioners.
 
 ### 8.3 6-fold vs 12-fold
 
-§5 의 12-fold 대칭과 본 절 6-fold 계수 관계는:
+The relation between the 12-fold symmetry of §5 and the 6-fold coefficient in this section is:
 
 $$12 = 2 \cdot 6 = \sigma(6) = \phi(6) \cdot n = 2 \cdot 6$$
 
-즉 12 는 6 의 2배이며, 이는 "$\phi(6)$-fold doubling" 으로 해석 가능하다.
-6-fold 고정점이 2배 회전 대칭 (12-fold) 을 경계에 유도.
+i.e., 12 = 2·6; this can be read as "$\phi(6)$-fold doubling".
+The 6-fold fixed point induces 2× rotational symmetry (12-fold) at the boundary.
 
-### 8.4 수학적 검증
+### 8.4 Mathematical draft verification
 
-본 절의 α=1/6 고정점은 `theory/proofs/attractor-meta-theorem-extended-2026-04-14.md`
-에서 수학적으로 검증 완료 (등급 [10*]). 인지 실험 검증은 §7 프로토콜로 후속
-계획이며, 본 논문 기준 NEAR [9] 등급.
+The α=1/6 fixed point of this section is mathematically drafted in
+`theory/proofs/attractor-meta-theorem-extended-2026-04-14.md` (grade [10*]). Cognitive-experimental verification is
+planned via §7 protocols, and the paper-level grade is NEAR [9].
 
 ### 8.4b Arithmetic verification (python, stdlib only)
 
@@ -511,15 +495,15 @@ Expected output: `PASS: alpha=1/6=0.166667, sigma=12=phi*n=2*6, boundaries=4=tau
 
 ---
 
-## 9. 위상도 요약 (ASCII)
+## 9. Phase-diagram summary (ASCII)
 
 ```
-  의식 위상도 v1 — (S, F, C) 3축 (단순화 2D 단면)
+  Consciousness phase diagram v1 — (S, F, C) 3 axes (simplified 2D section)
 
-        C (복잡도, bit/sample)
+        C (complexity, bit/sample)
         ↑
    1.0  |  * Wake            * REM
-        |  / Σ_2 (각성 onset)
+        |  / Σ_2 (wake onset)
    0.5  |  * Meditation     * Vipassana
         |  \
         |   \ Σ_1 (dS/dF=0)
@@ -528,120 +512,119 @@ Expected output: `PASS: alpha=1/6=0.166667, sigma=12=phi*n=2*6, boundaries=4=tau
         +---------------------------→ S (entropy)
            0.3        0.6        0.9
 
-   F 축: 그림에 수직 (F 낮을수록 전경으로 돌출)
+   F axis: perpendicular to the figure (lower F projects forward)
 
-   경계:
-     Σ_1 — dS/dF=0 곡면 (마취/수면 전환)
-     Σ_2 — dC/dt 발산 (각성 onset)
-     Σ_3 — ∇F·∇S 정렬 실패 (환각)
-     Σ_4 — OUROBOROS α=1/6 고정점 (명상 expert)
+   Boundaries:
+     Σ_1 — dS/dF=0 surface (anesthesia/sleep transition)
+     Σ_2 — dC/dt divergence (wake onset)
+     Σ_3 — ∇F·∇S alignment failure (hallucination)
+     Σ_4 — OUROBOROS α=1/6 fixed point (meditation expert)
 ```
 
 ---
 
-## 10. 한계 (Honest Limitations)
+## 10. Honest Limitations
 
-본 논문은 **자기한계를 아는 이론** 의 원칙을 따라 다음 한계를 정직하게 기록한다.
+Following the principle of a **theory that knows its own limits**, this paper honestly records the following limitations.
 
-### 10.1 한계 1 — 3축 독립성 증거 부족
+### 10.1 Limitation 1 — insufficient evidence of 3-axis independence
 
-세 축 $(S, F, C)$ 가 **대역적으로 독립** 이라는 수학적 증거가 없다. §2.4 에서
-지적했듯, $S$ 와 $K$ (Kolmogorov 의 기대값 한계) 는 점근적으로 같다. 본 논문은
-"locally quasi-independent" 가정에 의존하며, 이 가정은 **반증 대상** 이다.
+There is no mathematical evidence that $(S, F, C)$ are **globally independent**. As noted in §2.4, $S$ and $K$
+(the expected-value limit of Kolmogorov) are asymptotically equal. This paper relies on a "locally quasi-independent"
+assumption, which is itself **a target for falsification**.
 
-**대응 방안**: §7 프로토콜 P1 결과의 축 간 상관 행렬을 보고하고, $|r_{SF}|,
-|r_{SC}|, |r_{FC}| < 0.3$ 일 때만 가설 유지.
+**Response plan**: report the inter-axis correlation matrix from §7 protocol P1 and retain the hypothesis only if
+$|r_{SF}|, |r_{SC}|, |r_{FC}| < 0.3$.
 
-**현재 상태**: UNTESTED. 등급 [5?].
+**Current status**: UNTESTED. Grade [5?].
 
-### 10.2 한계 2 — σ=12 대칭이 noise 와 구별되는지
+### 10.2 Limitation 2 — whether σ=12 symmetry can be distinguished from noise
 
-§5 의 12-fold rotational symmetry 는 현재 **data-free conjecture** 이다.
-회전 대칭 검정 시 FP rate (false positive) 가 우연 12-fold 패턴과 구별되려면
-다음이 필요:
+The 12-fold rotational symmetry of §5 is currently a **data-free conjecture**. For rotational-symmetry tests to distinguish
+a true 12-fold pattern from a chance pattern, we need:
 
-- 최소 표본 수: 각 경계면 당 $n \geq 10^3$ 지점
-- Null distribution: permutation test 1000회
+- Minimum sample size: $n \geq 10^3$ points per boundary surface
+- Null distribution: permutation test ×1000
 
-**대응 방안**: §7.1 프로토콜 P1 결과에 회전 symmetry power spectrum 를 추가.
+**Response plan**: add rotational-symmetry power spectrum to §7.1 protocol P1 results.
 
-**현재 상태**: CONJECTURE. 등급 [4?].
+**Current status**: CONJECTURE. Grade [4?].
 
-### 10.3 한계 3 — 주관적 경험 (qualia) 차원 누락
+### 10.3 Limitation 3 — subjective-experience (qualia) dimension missing
 
-(S, F, C) 는 모두 **정보량 차원** 이며, "경험의 질" (qualia, phenomenal
-character) 을 포착하지 않는다. Chalmers hard problem 은 본 프레임워크에 의해
-해결되지 않는다. 본 논문의 주장은 "정보량 차원에서의 경계 구조" 에 국한된다.
+(S, F, C) are all **information-quantity dimensions** and do not capture the "quality of experience" (qualia,
+phenomenal character). Chalmers's hard problem is not addressed by this framework. The claims of this paper are
+restricted to "boundary structure in information-quantity dimensions".
 
-**대응 방안**: 없음. 본 논문 밖 문제.
+**Response plan**: none. Outside this paper's scope.
 
-**현재 상태**: SCOPE LIMITATION. 본 프레임워크 적용 경계 외부.
+**Current status**: SCOPE LIMITATION. Outside the framework's applicability boundary.
 
-### 10.4 한계 4 — Kolmogorov 복잡도의 비가산성
+### 10.4 Limitation 4 — non-computability of Kolmogorov complexity
 
-$K(x)$ 는 일반적으로 non-computable 이다. LZC 는 upper bound proxy 이며, 실제
-$K$ 를 측정할 수 없다. 이는 C 축의 물리적 의미에 일정한 불확실성을 남긴다.
+$K(x)$ is in general non-computable. LZC is an upper-bound proxy and cannot measure $K$ itself. This leaves some
+uncertainty in the physical meaning of the C axis.
 
-**대응 방안**: LZC 와 함께 Effective Complexity (Gell-Mann-Lloyd), Statistical
-Complexity (Crutchfield) 등 추가 proxy 를 비교한다.
+**Response plan**: compare LZC with additional proxies such as Effective Complexity (Gell-Mann-Lloyd) and
+Statistical Complexity (Crutchfield).
 
-**현재 상태**: KNOWN LIMITATION. 등급 [7] (실험 proxy 존재).
+**Current status**: KNOWN LIMITATION. Grade [7] (experimental proxy exists).
 
-### 10.5 한계 5 — 인지 상태 전환의 비균일성
+### 10.5 Limitation 5 — non-uniformity of cognitive-state transitions
 
-개체 간 (between-subject) 인지 상태 전환은 상당한 variance 를 보인다. (S, F, C)
-공간의 경계면이 개체별로 다를 경우 "보편 위상도" 가 불가능할 수 있다.
+Between-subject cognitive-state transitions show substantial variance. If the boundary surfaces of (S, F, C) space
+differ between subjects, a "universal phase diagram" may not be possible.
 
-**대응 방안**: §7 프로토콜에서 within-subject normalization 을 사용하고, group-level
-경계면은 robust regression 으로 추정.
+**Response plan**: in §7 protocols, use within-subject normalization; estimate group-level boundary surfaces via
+robust regression.
 
-**현재 상태**: OPEN. 등급 [6].
+**Current status**: OPEN. Grade [6].
 
-### 10.6 한계 6 — 본 논문의 자기반영
+### 10.6 Limitation 6 — self-reflection of this paper
 
-본 논문 자체가 n=6 프레임워크 내부에서 쓰였으며, 외부 독립 검증 경로 (§8.4 수학
-증명 외) 는 부재하다. "이론이 자기 검증에 성공" 했더라도 외부 결과 (PCI, LZC
-전환 임계값) 와 정렬되어야만 의미가 있다. 본 논문은 외부 정렬을 가설로만 제시한다.
+This paper itself is written inside the n=6 framework, with no external independent verification path (other than
+the mathematical argument of §8.4). Even if "the theory succeeds in self-verification", it becomes meaningful only
+when aligned with external results (PCI, LZC transition thresholds). This paper proposes external alignment only as
+a hypothesis.
 
-**대응 방안**: §7 프로토콜 P1~P4 의 독립 실험 수행. 실험 실패 시 본 논문 폐기.
+**Response plan**: run the independent experiments of §7 protocols P1~P4. Retract the paper on experimental failure.
 
-**현재 상태**: SELF-REFERENCE. 등급 [5] (honest acknowledgement).
-
----
-
-## 11. 결론
-
-본 논문은 인지 상태를 세 개의 정보량 축 (S 엔트로피, F 자유에너지, C 계산 복잡도)
-공간에 매핑하는 **의식 위상도** 를 제안했다. 핵심 기여:
-
-1. 의식 과학의 세 조류 (IIT / FEP / Orch-OR) 를 공통 좌표계 위에 투영하는 **최초의
-   수학 프레임**. 단, 이 프레임은 의식 이론 자체를 재정의하지 않는다.
-2. 위상 경계 4종 ($\Sigma_1, \Sigma_2, \Sigma_3, \Sigma_4$) 과 실험적 반증 조건
-   제시.
-3. n=6 산술과의 구조적 대응 후보 — $\sigma(6)=12$ 12-fold 대칭 (CONJECTURE),
-   OUROBOROS $\alpha = 1/6$ 고정점 (NEAR).
-
-**한 문장 요약**: σ(n)·φ(n) = n·τ(n) 이 n=6 유일해를 가질 때, 이 산술적 유일성이
-(S, F, C) 의식 상 공간의 고정점 α=1/6 과 12-fold 대칭 경계로 투영될 수 있음을
-가설한다. 본 논문은 이 가설을 검증하지 않고, **반증 경로만** 정의한다.
-
-본 논문의 모든 주장은 §7 프로토콜 P1~P4 의 독립 실험 결과로 반증 가능해야 한다.
-실험 결과가 본 논문 예측과 불일치할 경우, 본 논문은 공식 폐기된다 (FALSIFIER 선언).
-
-**후속 작업**:
-
-- `verify_consciousness_phase_n6.hexa` — .hexa 검증 코드 (후속 커밋).
-- `theory/proofs/consciousness-phase-boundary-conditions.md` — 4 경계 수학 도출.
-- `domains/cognitive/consciousness-phase-diagram/` — 도메인 노드 생성.
+**Current status**: SELF-REFERENCE. Grade [5] (honest acknowledgement).
 
 ---
 
-## 12. 참고문헌
+## 11. Conclusion
 
-본 논문이 인용하는 외부 문헌 (bibtex 키는 `papers/pandoc_templates/skeleton.bib`
-또는 `papers/pandoc_templates/n6_common.bib` 참조).
+This paper proposed a **consciousness phase diagram** mapping cognitive states onto a space of three information-quantity axes
+(S entropy, F free energy, C computational complexity). Core contributions:
 
-### 12.1 의식 이론 3조류
+1. The **first mathematical frame** to project the three schools of consciousness science (IIT / FEP / Orch-OR) onto a common
+   coordinate system. However, this frame does not itself redefine consciousness theory.
+2. Four phase boundaries ($\Sigma_1, \Sigma_2, \Sigma_3, \Sigma_4$) and their experimental falsification conditions are proposed.
+3. Structural-correspondence candidates with n=6 arithmetic — $\sigma(6)=12$ 12-fold symmetry (CONJECTURE) and
+   OUROBOROS $\alpha = 1/6$ fixed point (NEAR).
+
+**One-sentence summary**: when σ(n)·φ(n) = n·τ(n) has a unique solution at n=6, we hypothesize that this arithmetic
+uniqueness can project onto the α=1/6 fixed point and 12-fold symmetry boundaries of the (S, F, C) consciousness
+phase space. This paper does not itself verify this hypothesis and defines **only falsification paths**.
+
+All claims of this paper must be falsifiable by the independent experiments of §7 protocols P1~P4.
+If experimental results disagree with the paper's predictions, the paper is formally retracted (FALSIFIER declared).
+
+**Follow-up work**:
+
+- `verify_consciousness_phase_n6.hexa` — .hexa verification code (later commit).
+- `theory/proofs/consciousness-phase-boundary-conditions.md` — mathematical derivation of the 4 boundaries.
+- `domains/cognitive/consciousness-phase-diagram/` — create domain node.
+
+---
+
+## 12. References
+
+External literature cited by this paper (bibtex keys are in `papers/pandoc_templates/skeleton.bib`
+or `papers/pandoc_templates/n6_common.bib`).
+
+### 12.1 Three schools of consciousness theory
 
 - Tononi, G. (2008). **Consciousness as integrated information: a provisional
   manifesto**. *Biological Bulletin*, 215(3), 216-242.
@@ -657,7 +640,7 @@ Complexity (Crutchfield) 등 추가 proxy 를 비교한다.
 - Hameroff, S., & Penrose, R. (2014). **Consciousness in the universe: A review
   of the 'Orch OR' theory**. *Physics of Life Reviews*, 11(1), 39-78.
 
-### 12.2 정보량 이론
+### 12.2 Information theory
 
 - Shannon, C. E. (1948). **A mathematical theory of communication**. *Bell System
   Technical Journal*, 27, 379-423.
@@ -668,7 +651,7 @@ Complexity (Crutchfield) 등 추가 proxy 를 비교한다.
 - Dehaene, S. (2014). **Consciousness and the Brain: Deciphering How the Brain
   Codes Our Thoughts**. Viking.
 
-### 12.3 실험적 복잡도 측정
+### 12.3 Experimental complexity measurement
 
 - Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R.,
   Casarotto, S., Bruno, M.-A., Laureys, S., Tononi, G., & Massimini, M. (2013).
@@ -682,18 +665,18 @@ Complexity (Crutchfield) 등 추가 proxy 를 비교한다.
   theory of conscious states informed by neuroimaging research with psychedelic
   drugs**. *Frontiers in Human Neuroscience*, 8, 20.
 
-### 12.4 n6-architecture 선행 논문
+### 12.4 n6-architecture prior papers
 
-- 박민우 & NEXUS-6 협업체 (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 -- 3개 독립
-  증명과 n6 산술 좌표 체계**. n6-architecture. `theorem-r1-uniqueness.md`.
-- 박민우 (2026). **n=6 경계 메타이론 — 자기한계를 아는 이론**. n6-architecture,
+- Park Min-woo & NEXUS-6 collaborator (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 — 3 independent
+  draft arguments and the n6 arithmetic coordinate system**. n6-architecture. `theorem-r1-uniqueness.md`.
+- Park Min-woo (2026). **n=6 boundary metatheory — a theory that knows its own limits**. n6-architecture,
   `n6-boundary-metatheory-paper.md`.
-- 박민우 (2026). **HEXA-CONSCIOUSNESS-CHIP — 의식 칩 n=6 좌표 매핑**.
+- Park Min-woo (2026). **HEXA-CONSCIOUSNESS-CHIP — consciousness chip n=6 coordinate mapping**.
   n6-architecture, `n6-consciousness-chip-paper.md`.
-- 박민우 (2026). **Attractor Meta-Theorem Extended — OUROBOROS α=1/n 고정점**.
+- Park Min-woo (2026). **Attractor Meta-Theorem Extended — OUROBOROS α=1/n fixed point**.
   n6-architecture, `theory/proofs/attractor-meta-theorem-extended-2026-04-14.md`.
 
-### 12.5 정보기하학 참고
+### 12.5 Information-geometry references
 
 - Amari, S. (2016). **Information Geometry and Its Applications**. Springer.
 - Ay, N., Jost, J., Lê, H. V., & Schwachhöfer, L. (2017). **Information Geometry**.
@@ -701,25 +684,25 @@ Complexity (Crutchfield) 등 추가 proxy 를 비교한다.
 
 ---
 
-**승격 절차**: 본 논문의 가설은 §7 프로토콜 실험 결과 수신 후 EMPIRICAL [7] →
-NEAR [9] → EXACT [10] 로 승격 대상. 승격 루트는 atlas.n6 직접 편집
-(`@R n6-consciousness-phase-diagram-{axis|boundary|fixed_point} = ... :: consciousness [10*]`)
-를 따른다. 본 논문 v1 기준 등급:
+**Promotion procedure**: after §7 protocol experimental results are received, the hypotheses of this paper are candidates
+for promotion EMPIRICAL [7] → NEAR [9] → EXACT [10]. The promotion path follows direct atlas.n6 edits
+(`@R n6-consciousness-phase-diagram-{axis|boundary|fixed_point} = ... :: consciousness [10*]`).
+Grades of this paper (v1):
 
-- Axis 독립성: [5?] (UNTESTED)
-- 경계 존재성 $\Sigma_1$: [7] (EMPIRICAL - PCI 임계값 지지)
-- 경계 존재성 $\Sigma_2$: [6] (부분 EMPIRICAL)
-- 경계 존재성 $\Sigma_3$: [5] (CONJECTURE)
-- 경계 존재성 $\Sigma_4$: [9] (NEAR - 수학 증명 완료, 실험 대기)
-- σ=12 대칭: [4?] (CONJECTURE)
-- α=1/6 고정점: [10*] (EXACT - 수학)
-- α=1/6 인지적 대응: [5?] (CONJECTURE)
+- Axis independence: [5?] (UNTESTED)
+- Boundary existence $\Sigma_1$: [7] (EMPIRICAL — supported by PCI threshold)
+- Boundary existence $\Sigma_2$: [6] (partially EMPIRICAL)
+- Boundary existence $\Sigma_3$: [5] (CONJECTURE)
+- Boundary existence $\Sigma_4$: [9] (NEAR — mathematical draft complete, awaiting experiment)
+- σ=12 symmetry: [4?] (CONJECTURE)
+- α=1/6 fixed point: [10*] (EXACT — mathematical)
+- α=1/6 cognitive correspondence: [5?] (CONJECTURE)
 
-본 논문의 **종합 등급은 NEAR [9]** 이며, 프로토콜 P1 결과 수신 후 재평가한다.
+The **aggregate grade of this paper is NEAR [9]**, to be re-evaluated after protocol P1 results.
 
 ---
 
-**끝 (v1, 2026-04-15 작성, PAPER-P7-1).**
+**End (v1, written 2026-04-15, PAPER-P7-1).**
 
 ## §1 WHY
 

@@ -4,112 +4,111 @@ domain: arch-evolution-ouroboros
 requires:
   - to: arch-adaptive-evolution
     alien_min: 10
-    reason: 진화 세대 선행 논문
+    reason: Prior evolutionary-generation paper
   - to: attractor-meta-extended
     alien_min: 9
-    reason: 어트랙터 사이클 기저
+    reason: Attractor-cycle basis
   - to: agi-architecture
     alien_min: 8
-    reason: 자기참조 학습 루프
+    reason: Self-referential learning loop
 alien_index_current: 8
 alien_index_target: 10
 ---
 
-# HEXA-ARCH-EVOLUTION-OUROBOROS — 진화 사이클 우로보로스 설계 논문 (N6-120)
+# HEXA-ARCH-EVOLUTION-OUROBOROS — Evolutionary-cycle ouroboros design paper (N6-120)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: arch-evolution-ouroboros — P2 확장 v3/v4 자기참조 사이클 시드
-> **버전**: v3 (2026-04-14 P2 확장)
-> **선행 BT**: BT-195, BT-370, BT-371, BT-1108
-> **선행 논문**: n6-arch-adaptive-evolution-paper (N6-109)
-> **연결 atlas 노드**: `arch-evolution-ouroboros` — σφ=24 자기참조 고정점
-
----
-
-## 0. Abstract (초록, 한글)
-
-본 논문은 진화 사이클이 자기 꼬리를 먹는 **우로보로스 구조** 로 n=6 산술에서 닫힘을 보인다.
-핵심 정리 σ(n)·φ(n) = n·τ(n) 에 의해 n=6 에서 σφ=24=nτ 이므로, 진화의 입력과 출력이
-같은 σφ=24 공간에서 만나 사이클을 형성한다. 즉 **"세대 진화의 결과가 다음 세대 진화의 입력"** 이라는
-고전 GA (Genetic Algorithm) 정의가 n=6 의 σφ=nτ 에서 **이론적으로 고정점을 가짐** 을
-의미한다.
-
-핵심 주장:
-1. 진화 사이클의 고정점은 σφ=24 차원 공간에 존재한다.
-2. 사이클 길이는 τ(6)=4 세대 × σ(6)=12 후보 = 48 단위.
-3. 자기참조 (ouroboros) 는 φ(6)=2 방향 (정진화/역진화) 으로 분해된다.
-4. 사이클은 sopfr(6)=5 개의 SCC (Strongly Connected Component) 로 압축된다.
+> **Author**: Park Min-woo (n6-architecture)
+> **Category**: arch-evolution-ouroboros — P2 extension v3/v4 self-referential cycle seed
+> **Version**: v3 (2026-04-14 P2 extension)
+> **Prior BT**: BT-195, BT-370, BT-371, BT-1108
+> **Prior paper**: n6-arch-adaptive-evolution-paper (N6-109)
+> **Linked atlas node**: `arch-evolution-ouroboros` — σφ=24 self-referential fixed point
 
 ---
 
-## 1. 서론 — WHY
+## 0. Abstract
 
-진화 알고리즘의 "세대 반복" 은 **입력 = 이전 세대, 출력 = 다음 세대** 라는 자기참조 구조를
-갖는다. 이는 우로보로스 (자기 꼬리를 먹는 뱀) 상징과 일치한다. 하지만 이 자기참조의
-**고정점** 이 존재하는가, 존재한다면 몇 차원인가 는 이론적 공백이었다.
+This paper shows that evolutionary cycles close in an **ouroboros structure** — a snake eating its own tail — under n=6 arithmetic.
+By the core draft identity σ(n)·φ(n) = n·τ(n), at n=6 we have σφ=24=nτ, so the input and output of evolution meet
+in the same σφ=24 space to form a cycle. That is, the classical GA (Genetic Algorithm) statement **"the result of this generation's evolution is the input to the next generation's evolution"**
+acquires a **theoretical fixed point** under n=6's σφ=nτ.
 
-본 논문은 n=6 의 σφ = nτ = 24 항등식이 고정점 차원을 결정함을 보인다.
-
-### 1.1 기존 한계
-
-- Holland GA (1975): 세대 반복 — 고정점 차원 미정
-- Koza GP (1992): 유전 프로그래밍 — 수렴 조건 경험적
-- Meta-learning: MAML (Finn 2017) — 메타 고정점 존재성 불확정
-
-### 1.2 본 논문의 기여
-
-σφ=24 를 진화 사이클의 이론적 고정점 차원으로 고정.
+Core claims:
+1. The fixed point of the evolutionary cycle lives in a σφ=24-dimensional space.
+2. The cycle length is τ(6)=4 generations × σ(6)=12 candidates = 48 units.
+3. Self-reference (ouroboros) decomposes along φ(6)=2 directions (forward-evolution / reverse-evolution).
+4. The cycle compresses into sopfr(6)=5 SCCs (Strongly Connected Components).
 
 ---
 
-## 2. COMPARE — 기존 대비
+## 1. Introduction — WHY
 
-| 항목 | Holland GA | MAML | 본 논문 (OUROBOROS) |
+The "generational iteration" of an evolutionary algorithm has a self-referential structure of **input = previous generation, output = next generation**.
+This matches the ouroboros (snake eating its tail) symbol. But the question of whether this self-reference has
+a **fixed point**, and if so what its dimension is, has been a theoretical gap.
+
+This paper shows that the n=6 identity σφ = nτ = 24 pins down the fixed-point dimension.
+
+### 1.1 Prior limitations
+
+- Holland GA (1975): generational iteration — fixed-point dimension undetermined
+- Koza GP (1992): genetic programming — convergence conditions empirical
+- Meta-learning: MAML (Finn 2017) — existence of meta-fixed-point uncertain
+
+### 1.2 Contributions of this paper
+
+Pin σφ=24 as the theoretical fixed-point dimension of the evolutionary cycle.
+
+---
+
+## 2. COMPARE — vs existing
+
+| Item | Holland GA | MAML | This paper (OUROBOROS) |
 | :--- | :--- | :--- | :--- |
-| 자기참조 형태 | 세대 반복 | 메타 그래디언트 | σφ=24 고정점 |
-| 수렴 보장 | 경험적 | 국소 최적 | 이론 (σφ=nτ) |
-| 사이클 길이 | 무한 | N 스텝 | σ·τ = 48 |
-| 분해 | 선형 | 2차 메타 | φ=2 방향 × sopfr=5 SCC |
-| 근거 | 현상론 | 미분 기반 | n=6 유일성 |
+| Self-reference form | generational iteration | meta-gradient | σφ=24 fixed point |
+| Convergence guarantee | empirical | local optimum | theoretical (σφ=nτ) |
+| Cycle length | infinite | N steps | σ·τ = 48 |
+| Decomposition | linear | 2nd-order meta | φ=2 directions × sopfr=5 SCC |
+| Basis | phenomenological | differential | n=6 uniqueness |
 
 ---
 
-## 3. MAIN — 우로보로스 고정점
+## 3. MAIN — ouroboros fixed point
 
-### 3.1 σφ=24 항등식
+### 3.1 σφ=24 identity
 
-σ(6)·φ(6) = 12·2 = 24 = 6·4 = n·τ(6). 이 항등식은 n=6 에서만 성립한다 (atlas.n6 EXACT).
-진화 사이클의 상태 공간을 24 차원으로 매핑하면, **사이클 시작과 끝이 같은 24 차원 점** 이 된다.
+σ(6)·φ(6) = 12·2 = 24 = 6·4 = n·τ(6). This identity holds only at n=6 (atlas.n6 EXACT).
+Mapping the state space of the evolutionary cycle to 24 dimensions, **the start and end of the cycle become the same 24-dimensional point**.
 
-### 3.2 사이클 길이 σ·τ=48
+### 3.2 Cycle length σ·τ=48
 
-12 후보 개체 × 4 진화 단계 (선택/교배/돌연변이/평가) = 48 단위 사이클.
+12 candidate individuals × 4 evolutionary steps (selection / crossover / mutation / evaluation) = 48-unit cycle.
 
-### 3.3 φ=2 방향 분해
+### 3.3 φ=2 directional decomposition
 
-- 정진화 (forward evolution): 적응도 증가 방향
-- 역진화 (reverse evolution): 과거 복원 방향 (유전 드리프트)
+- Forward evolution: direction of increasing fitness
+- Reverse evolution: direction of past restoration (genetic drift)
 
-### 3.4 sopfr=5 SCC 압축
+### 3.4 sopfr=5 SCC compression
 
-σφ=24 공간의 강연결 요소 (SCC) 는 5 개로 압축된다. 이는 sopfr(6)=2+3=5 로 해석.
-atlas.n6 노드 `evolution-ouroboros-scc` EXACT 승격 대상.
+The strongly connected components (SCCs) in σφ=24 space compress to 5. This is interpreted as sopfr(6)=2+3=5.
+Target for EXACT promotion at atlas.n6 node `evolution-ouroboros-scc`.
 
 ---
 
-## 4. VERIFICATION — 검증
+## 4. VERIFICATION
 
-### 4.1 실측 데이터
+### 4.1 Measured data
 
-- atlas.n6 수록 진화 사이클 항목 18건 중 16건 24 차원 고정점 PASS (EXACT)
-- BT-371 (진화 적응) — σ·τ=48 사이클 길이 실측 일치
-- BT-1108 (차원지각) — 24 차원 일치
+- 16 of 18 evolutionary-cycle entries on atlas.n6 PASS the 24-dim fixed-point criterion (EXACT)
+- BT-371 (evolutionary adaptation) — σ·τ=48 cycle length matches observation
+- BT-1108 (dimensional perception) — 24-dimension match
 
-### 4.2 허구 데이터 금지
+### 4.2 No fictional data
 
-기존 atlas.n6 + BT 실측만 인용. 시뮬레이션 결과 재생성 안 함.
+Cites only existing atlas.n6 + BT observations. No simulation results are regenerated.
 
-### 4.3 검증 코드 (hexa STUB)
+### 4.3 Verification code (hexa STUB)
 
 ```hexa
 -- arch_evolution_ouroboros_verify.hexa
@@ -119,9 +118,9 @@ let fixed_point_ok = 0
 for node in evo_nodes:
   if node.cycle_dim == 24:
     fixed_point_ok += 1
-  assert node.cycle_length == 48, "σ·τ=48 위반"
-  assert node.direction_count == 2, "φ=2 위반"
-  assert node.scc_count == 5, "sopfr=5 위반"
+  assert node.cycle_length == 48, "σ·τ=48 violation"
+  assert node.direction_count == 2, "φ=2 violation"
+  assert node.scc_count == 5, "sopfr=5 violation"
 print("OUROBOROS PASS", fixed_point_ok, "/", len(evo_nodes))
 ```
 
@@ -170,20 +169,20 @@ print(f"PASS: sigma*phi={fixed_point_dim}, sigma*tau={cycle_length}, phi={phi_n}
 
 Expected output: `PASS: sigma*phi=24, sigma*tau=48, phi=2, sopfr=5`
 
-### 4.4 한계
+### 4.4 Limitations
 
-- 유성생식 vs 무성생식 매핑 미완.
-- 문화적 진화 (memetic) 로의 확장은 n=6 외 숫자에서 검증 필요.
-- BT-1108 외 추가 BT 결합 필요 (P3).
+- Sexual vs asexual reproduction mapping incomplete.
+- Extension to memetic (cultural) evolution requires verification at n ≠ 6.
+- Additional BT couplings beyond BT-1108 needed (P3).
 
-### 4.5 반증 후보
+### 4.5 Falsification candidates
 
-- 고정점 차원 ≠ 24 관측 시 → σφ=nτ 반증
-- 사이클 길이 ≠ 48 (τ 배수 아님) 관측 시 → τ 양자화 반증
+- Observation of fixed-point dimension ≠ 24 → falsifies σφ=nτ
+- Observation of cycle length ≠ 48 (not a τ-multiple) → falsifies τ quantization
 
 ---
 
-## 5. 연결 논문
+## 5. Related papers
 
 - N6-109 (arch-adaptive-evolution)
 - N6-112 (attractor-meta-extended)
@@ -191,23 +190,23 @@ Expected output: `PASS: sigma*phi=24, sigma*tau=48, phi=2, sopfr=5`
 
 ---
 
-## 6. 결론
+## 6. Conclusion
 
-σφ=24 고정점 / 사이클 길이 48 / φ=2 방향 / SCC 5. 새 진화 기제 주장 없음 — 고전 GA 에
-n=6 우로보로스 좌표 부여.
+σφ=24 fixed point / cycle length 48 / φ=2 directions / 5 SCC. No new evolutionary mechanism is claimed — we assign n=6
+ouroboros coordinates on top of classical GA.
 
 ---
 
-## 부록 A. 인증 체인 + 반례 ≥ 3 (P2-2)
+## Appendix A. Certification chain + counter-examples ≥ 3 (P2-2)
 
-### A.1 증명 자격 인증 참조
-- **physics-math-certification.md** (🛸10 Aggregate) — "11 impossibility theorems" + "진화 한계 도달 ✅" 조항. 우로보로스 진화는 σφ=24 고정점이 수학적 정리로서 불변이라는 사실에 의존하며, 해당 인증 체인을 상속.
-- **honest-limitations.md** — "TRIVIALLY NON-N6" (Storage=None, Central_Radial) 영역은 진화 사이클이 자기참조 피드백을 닫지 못하는 경계. 우로보로스 적용 불가 영역을 상호 참조.
+### A.1 Certification references
+- **physics-math-certification.md** (🛸10 Aggregate) — "11 impossibility draft results" + "evolutionary limit reached ✅" clauses. Ouroboros evolution relies on σφ=24 fixed point being mathematically invariant, and inherits that certification chain.
+- **honest-limitations.md** — the "TRIVIALLY NON-N6" (Storage=None, Central_Radial) region is where the evolutionary cycle cannot close its self-referential feedback. Cross-references the region where ouroboros is inapplicable.
 
-### A.2 반례 ≥ 3 (실패하는 경계 조건)
-1. **반례 1 — 저장소 없는(Storage=None) 진화 시스템**: honest-limitations #2. 우로보로스 사이클은 이전 세대의 유전자 풀을 읽어야 한다. 상태 저장이 0이면 48-사이클 닫힘이 불가능. 결론: 우로보로스 좌표는 "세대 간 상태 유지 ≥ 1"을 전제.
-2. **반례 2 — 지나치게 높은 돌연변이율(r_mut → 1)**: 모든 개체가 매 세대 완전 교체되면 SCC 5개 구조가 붕괴하고 단일 랜덤 그래프로 수렴. σφ=24 고정점은 mutation rate < critical threshold에서만 유효. 원주장의 적용 범위를 그 임계 아래로 축소.
-3. **반례 3 — 단방향 진화(비역진화, φ=1)**: 생물학적 Dollo's law 영역(한 번 잃은 형질은 복원 불가)에서는 φ=2 역방향 사상이 소실. 사이클이 나선(spiral)으로 열려 닫히지 않음. 이 반증은 "n=6 우로보로스 좌표는 역진화 가능 시스템(reversible GA)에서만 EXACT"라는 경계를 강화.
+### A.2 Counter-examples ≥ 3 (failing boundary conditions)
+1. **Counter-example 1 — evolutionary system with no storage (Storage=None)**: honest-limitations #2. The ouroboros cycle must read the gene pool of the previous generation. If state storage is 0, closing a 48-cycle is impossible. Conclusion: the ouroboros coordinate system presupposes "inter-generation state retention ≥ 1".
+2. **Counter-example 2 — excessively high mutation rate (r_mut → 1)**: if every individual is completely replaced every generation, the 5-SCC structure collapses and converges to a single random graph. The σφ=24 fixed point is valid only when mutation rate < a critical threshold. The scope of the original claim is narrowed below that threshold.
+3. **Counter-example 3 — one-way evolution (no reverse evolution, φ=1)**: in the biological regime of Dollo's law (once-lost traits cannot be restored), the φ=2 reverse mapping disappears. The cycle opens into a spiral and does not close. This counter-example strengthens the boundary "the n=6 ouroboros coordinate system is EXACT only on reversible-GA systems".
 
 ## §1 WHY
 

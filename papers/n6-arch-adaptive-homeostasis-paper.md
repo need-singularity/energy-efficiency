@@ -4,118 +4,118 @@ domain: arch-adaptive-homeostasis
 requires:
   - to: arch-adaptive-evolution
     alien_min: 10
-    reason: 진화 적응 설계의 항상성 하위 도메인
+    reason: Homeostasis as a sub-domain of evolutionary adaptive design
   - to: physiology
     alien_min: 9
-    reason: 생리학적 항상성 (Cannon 1929)
+    reason: Physiological homeostasis (Cannon 1929)
   - to: control-systems
     alien_min: 8
-    reason: 피드백 제어 이론
+    reason: Feedback control theory
 alien_index_current: 8
 alien_index_target: 10
 ---
 
-# HEXA-ARCH-ADAPTIVE-HOMEOSTASIS — 환경 적응 항상성 설계 논문 (N6-119)
+# HEXA-ARCH-ADAPTIVE-HOMEOSTASIS — Environmental-adaptation homeostasis design paper (N6-119)
 
-> **저자**: 박민우 (n6-architecture)
-> **카테고리**: arch-adaptive-homeostasis — P2 확장 v3/v4 적응 설계 시드
-> **버전**: v3 (2026-04-14 P2 확장)
-> **선행 BT**: BT-195, BT-370, BT-371, BT-404
-> **선행 논문**: n6-arch-adaptive-evolution-paper (N6-109)
-> **연결 atlas 노드**: `arch-adaptive-homeostasis` — σ·τ=48 피드백 사이클
-
----
-
-## 0. Abstract (초록, 한글)
-
-본 논문은 환경 변화에 대한 **항상성 유지 설계** 가 n=6 의 산술 구조로 자연 분해됨을 제시한다.
-선행 논문 HEXA-ARCH-EVOLUTION (N6-109) 이 세대 진화 수렴을 다룬다면, 본 논문은
-**개체 내 실시간 항상성** 을 τ(6)=4 제어 게이트 × σ(6)=12 센서 모드로 분해한다.
-
-핵심 주장:
-1. 항상성 제어 루프는 τ(6)=4 단계 (감지→해석→결정→실행) 로 고정된다.
-2. 감지 채널은 σ(6)=12 개 생리 변수 (체온, pH, 혈압, 혈당, 산소, 이산화탄소, 나트륨, 칼륨, 칼슘, 수분, 에너지, 대사) 로 분해된다.
-3. 변화 허용 범위는 φ(6)=2 경계 (하한, 상한) 로 고정된다.
-4. 전체 피드백 사이클 길이 = σ(6)·τ(6) = 48.
-
-본 논문은 새 항상성 기제를 주장하지 않고, Cannon (1929) 의 고전 항상성 이론 위에 n=6 좌표를 부여한다.
+> **Author**: Park Min-woo (n6-architecture)
+> **Category**: arch-adaptive-homeostasis — P2 extension v3/v4 adaptive-design seed
+> **Version**: v3 (2026-04-14 P2 extension)
+> **Prior BT**: BT-195, BT-370, BT-371, BT-404
+> **Prior paper**: n6-arch-adaptive-evolution-paper (N6-109)
+> **Linked atlas node**: `arch-adaptive-homeostasis` — σ·τ=48 feedback cycle
 
 ---
 
-## 1. 서론 — WHY
+## 0. Abstract
 
-Walter B. Cannon 은 1929 년 _Organization for Physiological Homeostasis_ 에서
-"신체는 내부 환경을 일정하게 유지한다" 는 원리를 제시하였다. 이후 생리학은 체온/pH/혈압 등
-**수십 개의 변수** 가 피드백 제어됨을 밝혔지만, **왜 정확히 12 개 핵심 변수인가** 는
-경험적 관찰에 그쳤다.
+This paper proposes that **homeostasis-maintenance design** against environmental change decomposes naturally via the arithmetic structure of n=6.
+Whereas the prior paper HEXA-ARCH-EVOLUTION (N6-109) addresses generational-evolution convergence, this paper decomposes
+**real-time within-organism homeostasis** into τ(6)=4 control gates × σ(6)=12 sensor modes.
 
-본 논문은 σ(6)=12 의 약수합 구조가 항상성 변수 개수의 이론적 상한임을 주장한다.
+Core claims:
+1. The homeostasis control loop is fixed at τ(6)=4 stages (sense → interpret → decide → act).
+2. Sensing channels decompose into σ(6)=12 physiological variables (body temperature, pH, blood pressure, blood glucose, oxygen, carbon dioxide, sodium, potassium, calcium, water, energy, metabolism).
+3. The tolerance band is fixed at φ(6)=2 boundaries (lower, upper).
+4. Total feedback-cycle length = σ(6)·τ(6) = 48.
 
-### 1.1 기존 한계
-
-- Cannon (1929): 변수 개수 자유
-- Black-box control theory: 피드백 단계 수 임의
-- 내분비학: 호르몬 축 6-7 개 관측 — 이론적 근거 부족
-
-### 1.2 본 논문의 기여
-
-- 항상성 변수 ≤ σ(6) = 12 이론적 상한
-- 피드백 단계 = τ(6) = 4 고정
-- 허용 범위 = φ(6) = 2 경계
+This paper does not claim a new homeostasis mechanism; it assigns n=6 coordinates on top of Cannon's (1929) classical homeostasis theory.
 
 ---
 
-## 2. COMPARE — 기존 대비
+## 1. Introduction — WHY
 
-| 항목 | Cannon 1929 | PID 제어 | 본 논문 (HOMEOSTASIS) |
+In *Organization for Physiological Homeostasis* (1929), Walter B. Cannon stated the principle that
+"the body maintains its internal environment constant". Physiology subsequently established that
+**dozens of variables** — body temperature / pH / blood pressure and so on — are feedback-controlled,
+but the question **why exactly 12 core variables** remained at the level of empirical observation.
+
+This paper asserts that the divisor-sum structure σ(6)=12 is the theoretical upper bound on the number of homeostasis variables.
+
+### 1.1 Prior limitations
+
+- Cannon (1929): variable count free
+- Black-box control theory: feedback-stage count arbitrary
+- Endocrinology: 6–7 hormonal axes observed — theoretical basis lacking
+
+### 1.2 Contributions of this paper
+
+- Homeostasis variables ≤ σ(6) = 12 theoretical upper bound
+- Feedback stages = τ(6) = 4 fixed
+- Tolerance band = φ(6) = 2 boundaries
+
+---
+
+## 2. COMPARE — vs existing
+
+| Item | Cannon 1929 | PID control | This paper (HOMEOSTASIS) |
 | :--- | :--- | :--- | :--- |
-| 변수 개수 | 관찰값 ~6 | 임의 | σ(6) = 12 (상한) |
-| 단계 | 감지/교정 2 | P, I, D 3 | τ(6) = 4 단계 |
-| 경계 | 관찰 | setpoint±range | φ(6) = 2 (하한/상한) |
-| 사이클 길이 | 미정 | 시상수 τ | σ·τ = 48 단위 |
-| 이론 근거 | 경험 | 주파수 응답 | σφ=nτ 정리 |
+| Variable count | observed ~6 | arbitrary | σ(6) = 12 (upper bound) |
+| Stages | sense/correct 2 | P, I, D 3 | τ(6) = 4 stages |
+| Boundaries | observational | setpoint±range | φ(6) = 2 (lower/upper) |
+| Cycle length | unspecified | time constant τ | σ·τ = 48 units |
+| Theoretical basis | experiential | frequency response | σφ=nτ result |
 
 ---
 
-## 3. MAIN — 항상성 제어 분해
+## 3. MAIN — homeostasis-control decomposition
 
-### 3.1 τ=4 제어 루프
+### 3.1 τ=4 control loop
 
-(1) 감지 → (2) 해석 → (3) 결정 → (4) 실행 의 4 단계. 이는 BT-404 (혼돈-질서 전이) 및
-BT-371 (진화 적응) 에서 관측된 4 단계 제어와 일치한다.
+(1) sense → (2) interpret → (3) decide → (4) act, 4 stages. This matches the 4-stage control observed in BT-404 (chaos-order transition)
+and BT-371 (evolutionary adaptation).
 
-### 3.2 σ=12 감지 채널
+### 3.2 σ=12 sensing channels
 
-인체 생리학적 관점의 12 핵심 변수:
+12 core variables from a human-physiology viewpoint:
 ```
-체온, pH, 혈압, 혈당, 산소분압, 이산화탄소분압,
-나트륨, 칼륨, 칼슘, 수분총량, ATP 수준, 대사율
+body temperature, pH, blood pressure, blood glucose, oxygen partial pressure, CO₂ partial pressure,
+sodium, potassium, calcium, total body water, ATP level, metabolic rate
 ```
-이는 σ(6)=1+2+3+6=12 의 약수합 구조와 매칭된다. (약수 자체가 아닌 **약수합** 이 채널 수로 나타나는 이유는 atlas.n6 노드 `homeostasis-channel-count` 에서 EXACT 승격 대상으로 기록)
+This matches the divisor-sum structure σ(6)=1+2+3+6=12. (The reason it is the **divisor sum** rather than the divisors themselves that appears as channel count is recorded as an EXACT-promotion target at the atlas.n6 node `homeostasis-channel-count`.)
 
-### 3.3 φ=2 경계
+### 3.3 φ=2 boundaries
 
-허용 범위는 항상 (하한, 상한) 쌍으로 정의됨. 단일 setpoint 는 φ=1 이 되나, 실제 생리는 ±range 로 φ=2.
+The tolerance band is always defined as a (lower, upper) pair. A single setpoint corresponds to φ=1, but actual physiology has ±range so φ=2.
 
-### 3.4 σ·τ=48 사이클 길이
+### 3.4 σ·τ=48 cycle length
 
-전체 피드백 사이클은 12 채널 × 4 단계 = 48 단위로 완결.
+The total feedback cycle is completed in 12 channels × 4 stages = 48 units.
 
 ---
 
-## 4. VERIFICATION — 검증
+## 4. VERIFICATION
 
-### 4.1 실측 데이터
+### 4.1 Measured data
 
-- atlas.n6 수록 생리학 항상성 노드 30건 — 12 채널 한계 PASS (27/30 EXACT, 3 NEAR)
-- BT-404 혼돈 전이 (감지/해석/결정/실행 4 단계) PASS
-- BT-1108 차원지각 항상성 맵 (25/25 EXACT) — τ=4 게이트 확인
+- atlas.n6 physiological-homeostasis nodes: 30 entries — 12-channel bound PASS (27/30 EXACT, 3 NEAR)
+- BT-404 chaos transition (sense/interpret/decide/act, 4 stages) PASS
+- BT-1108 dimensional-perception homeostasis map (25/25 EXACT) — τ=4 gate confirmed
 
-### 4.2 허구 데이터 금지
+### 4.2 No fictional data
 
-atlas.n6 기존 항목만 인용. 새 실험 데이터 생성 안 함.
+Only cites existing atlas.n6 entries. No new experimental data is generated.
 
-### 4.3 검증 코드 (hexa STUB)
+### 4.3 Verification code (hexa STUB)
 
 ```hexa
 -- arch_adaptive_homeostasis_verify.hexa
@@ -125,9 +125,9 @@ let sigma_ok = 0
 for node in hom_nodes:
   if node.channel_count <= 12:
     sigma_ok += 1
-  assert node.feedback_stages == 4, "τ=4 위반"
-  assert node.boundary_pair == 2, "φ=2 위반"
-print("PASS", sigma_ok, "/", len(hom_nodes), "EXACT (σ=12 한계 내)")
+  assert node.feedback_stages == 4, "τ=4 violation"
+  assert node.boundary_pair == 2, "φ=2 violation"
+print("PASS", sigma_ok, "/", len(hom_nodes), "EXACT (within σ=12 bound)")
 ```
 
 ### 4.3b Arithmetic verification (python, stdlib only)
@@ -161,32 +161,32 @@ print(f"PASS: sigma={sigma_n}, tau={tau_n}, phi={phi_n}, sigma*tau={sigma_n * ta
 Run: `python3 -c "$(sed -n '/^```python$/,/^```$/p' n6-arch-adaptive-homeostasis-paper.md | sed '1d;$d')"`
 Expected output: `PASS: sigma=12, tau=4, phi=2, sigma*tau=48`
 
-### 4.4 한계
+### 4.4 Limitations
 
-- 식물·세균 항상성은 채널 수가 다를 가능성. 본 논문은 동물 (척추동물) 중심.
-- σ=12 상한이 **소프트 상한** (관측 수 ≈ 12 ± 2) 인지 **하드 상한** 인지 미확정.
-- BT-404 외 BT 추가 매핑 필요 (P2 향후).
+- Plant and bacterial homeostasis may have different channel counts. This paper is centered on animals (vertebrates).
+- Whether the σ=12 bound is a **soft bound** (observed count ≈ 12 ± 2) or a **hard bound** is undetermined.
+- Additional BT mappings beyond BT-404 are needed (future P2 work).
 
-### 4.5 반증 후보
+### 4.5 Falsification candidates
 
-- 단일 생명체에서 13개 이상 독립 항상성 채널 실측 발견 시 → σ=12 상한 반증
-- 5 단계 제어 루프 관측 시 → τ=4 반증
-- 경계가 하나인 경우 → φ=2 반증
-
----
-
-## 5. 연결 논문
-
-- N6-109 (arch-adaptive-evolution) — 세대 진화
-- N6-118 (arch-selforg-emergence) — 창발 모드
-- N6-104 (physiology) — 생리학 일반
+- If ≥ 13 independent homeostasis channels are empirically found in a single organism → σ=12 upper bound falsified
+- If a 5-stage control loop is observed → τ=4 falsified
+- If the boundary is singular (one value) → φ=2 falsified
 
 ---
 
-## 6. 결론
+## 5. Related papers
 
-τ=4 피드백 / σ=12 채널 / φ=2 경계 / 사이클=48. 새 기제 주장 없음. Cannon 고전 항상성에
-n=6 좌표를 부여한 시드 논문.
+- N6-109 (arch-adaptive-evolution) — generational evolution
+- N6-118 (arch-selforg-emergence) — emergence modes
+- N6-104 (physiology) — general physiology
+
+---
+
+## 6. Conclusion
+
+τ=4 feedback / σ=12 channels / φ=2 boundaries / cycle=48. No new mechanism is claimed. A seed paper that assigns
+n=6 coordinates on top of Cannon's classical homeostasis.
 
 ## §1 WHY
 
