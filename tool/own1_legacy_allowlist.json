@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 1049,
+    "count": 1046,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -37,6 +37,12 @@
         "removed": 10,
         "scope": "bridge + n6shared",
         "batch": "phase-0"
+      },
+      {
+        "date": "2026-04-24",
+        "removed": 3,
+        "scope": "proposals batch A (kolon/yoo/kim)",
+        "batch": "phase-1a"
       }
     ]
   },
@@ -649,14 +655,11 @@
     "papers/pandoc_templates/build_report.md",
     "papers/pandoc_templates/build_report_all.md",
     "proposals/anthropic-fellows-research.md",
-    "proposals/kim-sangwook-quantum.md",
-    "proposals/kolon-materials-z6.md",
     "proposals/kr-ai-grant-2026-strategic-matching-2026-04-24.md",
     "proposals/nexus_drill_darwin_fallback_2026_04_23.md",
     "proposals/own1-hard-english-only-translation-roadmap-2026-04-24.md",
     "proposals/samsung-foundry-hexa-6stage.md",
     "proposals/sod-youtube.md",
-    "proposals/yoo-hyunjun-architecture.md",
     "reports/E1_signal_soc_map_20260415.md",
     "reports/E2_signal_bt_autocorr_20260415.md",
     "reports/E6_signal_homology_20260415.md",

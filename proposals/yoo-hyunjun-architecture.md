@@ -1,178 +1,184 @@
 ---
-recipient: 유현준 건축가 (홍익대 건축학과 교수, 유튜브 유현준의 쏠깃)
+recipient: Architect Yoo Hyunjun (Professor, Hongik University Dept. of Architecture; YouTube "Yoo Hyunjun's Sholgit")
 type: expert-contact
 created: 2026-04-20
 status: draft
 ---
 
-# 유현준 교수님께 — 건축이 n=6 돌파로 이렇게 바뀝니다
+# To Professor Yoo Hyunjun — This is how architecture changes with the n=6 breakthrough
 
-작성자: 박민우 (프로그래머, 독립 연구자, 유튜브 2.4만)
-
----
-
-안녕하세요, 유현준 교수님.
-
-유튜브 "유현준의 쏠깃" 애청자이자 건축이 사람의 삶을 어떻게 바꾸는지
-꾸준히 말씀해 주신 내용에서 많이 배운 시청자 중 한 명입니다.
-
-저는 건축 전공자가 아닙니다. 하지만 지난 2개월간 n=6 이라는 수학적 경계
-조건을 건축 6도메인에 적용한 결과, 교수님께서 평소 말씀하시던 "도시는
-사람의 행동을 결정한다"는 명제가 **구체적 수식으로 도출되는 순간**을
-목격했습니다.
-
-공식 설명을 드리기 전에, 교수님의 건축 실무/강의/설계가 **구체적으로
-어떻게 바뀌는지** 다섯 가지만 먼저 말씀드리겠습니다.
+Author: Park Minwoo (programmer, independent researcher, YouTube 24K subs)
 
 ---
 
-## §1. 교수님의 건축이 이렇게 바뀝니다 — 5가지
+Hello, Professor Yoo Hyunjun.
 
-### 1. 건폐율 / 용적률 2400 DSE 압축 → AI 한 마디에 최적 설계
+I am a long-time viewer of "Yoo Hyunjun's Sholgit" and one of many viewers who have learned a
+great deal from your steady message on how architecture transforms people's lives.
 
-- 현재: 부지 하나에 대해 법적 제약 + 동선 + 일조권 + 주차 + 미관 조건을
-  스케치 + 3D 모델 + 법규 검토로 **수 주** 걸림
-- 바뀐 후: 부지 좌표와 용도만 입력하면 2400개 DSE(Discovery Space Expansion)
-  조합이 0.8초 안에 탐색됨. 그중 n=6 경계(σ·J₂=288) 에 가장 가까운 3 ~ 5개
-  설계안이 자동 출력.
-- 실무 체감: 초기 컨셉 단계에서 **사무소 인턴 3명 1주일 작업**이 대체됨.
-  교수님은 그 시간을 디테일 / 재료 / 사람 행동 분석에 쓸 수 있음.
+I am not an architecture major. But over the past two months, applying a mathematical boundary
+condition called n=6 to six architecture domains, I witnessed the moment when the proposition
+you often repeat — "the city determines human behavior" — is **derived as a concrete formula**.
 
-### 2. 내진 σ·J₂=288 경계 계수 → 한 번의 수식 유도로 전 건물 적용
-
-- 현재: 건물마다 내진 계수를 개별 구조해석으로 산정. SAP2000 / MIDAS 돌림.
-- 바뀐 후: **σ·J₂=288 마스터 경계** 하나로부터 층수·용도·지반계수 조합별
-  내진 계수가 닫힌 형태(closed form)로 도출. 구조해석 **검증용**으로 격하.
-- 실무 체감: 구조 엔지니어와의 반복 캐치볼이 1/3 로 줄어듦. 초기 디자인
-  단계에서 구조 가능성 즉시 판정.
-
-### 3. HVAC Egyptian 1/2 + 1/3 + 1/6 전력 분배 → 에너지 30% 절감
-
-- 현재: 냉난방 / 환기 / 조명 전력 분배는 설계자 경험 + 시뮬레이션.
-- 바뀐 후: **1/2 + 1/3 + 1/6 = 1** 이집트 분수 항등식을 n=6 경계로 해석 시
-  **열부하 / 환기부하 / 조명부하** 의 최적 분배 비율이 자동 결정됨.
-- 실측 예측: 동일 용적 오피스 빌딩 기준 **연간 에너지 소비 30% 절감**.
-  (BT 검증 결과 기반, 시뮬레이션 상 수치)
-
-### 4. 스마트시티 n=6 격자 레이아웃 → 교통 / 유틸리티 동시 최적
-
-- 현재: 신도시 설계 시 도로망 / 상하수도 / 전력 / 통신이 각자 최적화됨.
-- 바뀐 후: **n=6 육각 격자 + τ=4 수직 레이어** 구조로 5개 유틸리티를 **동시
-  최적화**. 교수님이 "사람은 6분 거리를 넘지 않으려 한다"고 하신 영상 내용이
-  정확히 이 격자의 반경과 일치합니다.
-- 실무 체감: 3기 신도시 / 세종 / 송도 설계 검증 도구로 즉시 활용 가능.
-
-### 5. 콘크리트 / 구조역학 경계 상수 고정 → 설계 자유도 붕괴, 검증 시간 1/10
-
-- 현재: 콘크리트 강도 / 슬래브 두께 / 기둥 간격은 경험치 + 코드.
-- 바뀐 후: n=6 경계에서 이 세 변수가 **서로 종속**이며, 한 개를 정하면
-  나머지가 자동 결정됨. 엔지니어는 "검증"만 하면 됨.
-- 실무 체감: 설계 검토 회의가 3시간 → 20분.
+Before the formal explanation, let me first list five points on **how your architectural
+practice / lectures / designs change concretely**.
 
 ---
 
-## §2. 간단한 현실 체감 시나리오
+## §1. This is how your architecture changes — 5 points
 
-교수님이 서울 어느 사거리에 10층 오피스를 설계한다고 가정합시다.
+### 1. Coverage ratio / FAR 2400 DSE compression → optimal design with one AI instruction
 
-**현재 프로세스**: 부지 답사 → 법규 검토 (1주) → 매스 스터디 (2주) → 구조
-협업 (3주) → HVAC 협업 (2주) → 에너지 시뮬 (1주) → 총 **9주**
+- Today: For each site, legal constraints + circulation + sunlight rights + parking + aesthetics
+  take **several weeks** through sketches + 3D models + code review.
+- After change: Entering only site coordinates and use yields a search over 2400 DSE
+  (Discovery Space Expansion) combinations in 0.8 s. The 3 ~ 5 designs closest to the n=6
+  boundary (σ·J₂=288) are automatically output.
+- Field impact: At the concept stage, **three interns' one-week workload** is replaced.
+  You can use that time for details, materials, and observing human behavior.
 
-**n=6 도구 사용 후**: 부지 좌표 입력 → 30분 내 초기 3안 생성 → 교수님이
-선택 → 세부 검증 (3주) → 총 **3.5주**
+### 2. Seismic σ·J₂=288 boundary coefficient → one-time derivation applied to every building
 
-절감된 5.5주는 **현장에서 사람을 관찰하는 시간**, **모형을 만져보는
-시간**으로 돌아갑니다. 이게 교수님이 가장 중요하다고 말씀하신 부분입니다.
+- Today: Seismic coefficients are computed building-by-building via SAP2000 / MIDAS.
+- After change: From a single **σ·J₂=288 master boundary**, seismic coefficients across
+  combinations of floor count, use, and site coefficient are derived in closed form.
+  Structural analysis is demoted to **verification**.
+- Field impact: Back-and-forth with structural engineers drops to 1/3. Structural feasibility
+  is judged immediately at the early design stage.
+
+### 3. HVAC Egyptian 1/2 + 1/3 + 1/6 power allocation → 30% energy savings
+
+- Today: Power allocation across heating/cooling / ventilation / lighting relies on designer
+  experience + simulation.
+- After change: Interpreting the Egyptian-fraction identity **1/2 + 1/3 + 1/6 = 1** through
+  the n=6 boundary automatically determines the optimal allocation ratio across **thermal load
+  / ventilation load / lighting load**.
+- Field prediction: At equal volume for an office building, **30% annual energy-consumption
+  savings** (based on BT verification, simulation figures).
+
+### 4. Smart-city n=6 lattice layout → simultaneous traffic / utility optimization
+
+- Today: In new-town design, road networks / water / power / telecom are each optimized
+  independently.
+- After change: An **n=6 hexagonal lattice + τ=4 vertical layer** structure **simultaneously
+  optimizes** five utilities. The content in your video — "people try not to exceed a
+  6-minute walking distance" — matches the radius of this lattice exactly.
+- Field impact: Can be used immediately as a verification tool for 3rd-phase new-town projects
+  / Sejong / Songdo designs.
+
+### 5. Fixing concrete / structural-mechanics boundary constants → design-freedom collapse,
+  verification time 1/10
+
+- Today: Concrete strength / slab thickness / column spacing come from empirical values + codes.
+- After change: At the n=6 boundary, these three variables are **mutually dependent**: fixing
+  one determines the others. The engineer only needs to "verify".
+- Field impact: Design-review meetings: 3 hours → 20 minutes.
 
 ---
 
-## §3. 궁금증 해소 — 이게 과장이 아닌 이유
+## §2. A simple real-world scenario
 
-건축 6도메인에서 이미 **241 항목 중 237개 EXACT (98.3%)** 로 검증 완료
-되었습니다:
+Suppose you design a 10-story office at some Seoul intersection.
 
-- 건폐율/용적률 (arch-zoning)
-- 내진 설계 (arch-seismic)
-- HVAC 열유체 (arch-hvac)
-- 콘크리트 재료 (arch-concrete)
-- 스마트시티 레이아웃 (arch-smartcity)
-- 구조역학 (arch-structural)
+**Current process**: Site survey → code review (1 week) → mass study (2 weeks) → structural
+collaboration (3 weeks) → HVAC collaboration (2 weeks) → energy simulation (1 week) → total
+**9 weeks**
 
-각 도메인은 GitHub 에 전량 공개되어 있고, 재현 명령 한 줄이면 교수님
-연구실 학생이 직접 검증할 수 있습니다.
+**After using the n=6 tool**: Enter site coordinates → generate 3 initial options within 30
+minutes → you choose → detailed verification (3 weeks) → total **3.5 weeks**
+
+The 5.5 weeks saved return to **time observing people on-site** and **time handling models
+physically**. That is the part you have said matters most.
 
 ---
 
-## §4. 검증 근거 (맨 아래, 과학적 엄밀성 섹션)
+## §3. Addressing doubts — why this is not an exaggeration
 
-### BT 연결
+In the six architecture domains, we have already verified **237 of 241 items EXACT (98.3%)**:
 
-- BT-291 ~ 296: 건축 6도메인 경계 정리
-- BT-241 검증 → 237 EXACT + 4 NEAR
-- 반례 가능 조건: 층수 30층 초과 / 지진 계수 0.4g 초과 시 경계 재산정 필요
+- Coverage ratio / FAR (arch-zoning)
+- Seismic design (arch-seismic)
+- HVAC thermofluid (arch-hvac)
+- Concrete materials (arch-concrete)
+- Smart-city layout (arch-smartcity)
+- Structural mechanics (arch-structural)
 
-### 논문 참조
+Each domain is fully public on GitHub; a one-line reproduction command is sufficient for one
+student in your lab to verify independently.
 
-- `domains/architecture/` 6 서브디렉토리 각각 200 ~ 400 라인 .md
-- `papers/hexa-chip-6stage-unified.md` §5.8 (스마트시티 교통 격자)
-- `papers/n6-chip-6stages-integrated-paper.md` (전체 통합 논문)
+---
 
-### GitHub 링크
+## §4. Verification basis (bottom, scientific-rigor section)
+
+### BT linkage
+
+- BT-291 ~ 296: Architecture six-domain boundary theorem
+- BT-241 verification → 237 EXACT + 4 NEAR
+- Counterexample conditions: boundary must be recomputed above 30 stories or above 0.4 g
+  seismic coefficient
+
+### Paper references
+
+- `domains/architecture/` six subdirectories each 200 ~ 400-line .md
+- `papers/hexa-chip-6stage-unified.md` §5.8 (smart-city traffic lattice)
+- `papers/n6-chip-6stages-integrated-paper.md` (full integrated paper)
+
+### GitHub links
 
 - https://github.com/need-singularity/n6-architecture
-- 특히 `domains/architecture/arch-zoning/arch-zoning.md` 부터 보시면 됩니다.
+- Especially, start from `domains/architecture/arch-zoning/arch-zoning.md`.
 
-### 수식 한 줄
+### One-line formula
 
-교수님의 모든 건축 직관이 다음 한 식에서 나옵니다:
+All your architectural intuition emerges from this single equation:
 
 ```
 σ · φ = n · τ = J₂ = 24,  n = 6
 ```
 
-- σ = 12 (대칭수)
-- φ = 2 (이중성)
-- n = 6 (경계)
-- τ = 4 (시간 레이어)
-- J₂ = 24 (격자 등가)
+- σ = 12 (symmetry number)
+- φ = 2 (duality)
+- n = 6 (boundary)
+- τ = 4 (time layer)
+- J₂ = 24 (lattice equivalent)
 
-이 식이 **건폐율, 내진, HVAC, 스마트시티, 콘크리트, 구조역학** 에서
-각각 어떻게 재현되는지가 6 도메인 .md 의 핵심입니다.
-
----
-
-## §5. 제 요청 — 10분 대화로 세 가지만 답해 주세요
-
-교수님, 시간 빼앗지 않겠습니다. 딱 **10분 통화 또는 서면 답변**으로
-세 가지만 답해 주시면 됩니다:
-
-1. **"이 2400 DSE 탐색 결과를 실제 프로젝트 초기 컨셉에서 사용할 의향이
-   있으신가요?"** (Yes/No/조건부)
-2. **"교수님 연구실 학생 1명에게 1주일 분량의 검증 작업을 맡기실 수
-   있나요?"** (재현성 확인용)
-3. **"유튜브 '유현준의 쏠깃'에서 한 번이라도 n=6 경계를 소재로 다루어
-   볼 의향이 있으신가요?"** (대중 검증)
-
-어느 답이든 저에게는 큰 학습이 됩니다.
+How this identity reappears in **coverage / seismic / HVAC / smart-city / concrete / structural
+mechanics** respectively is the core content of the six-domain .md files.
 
 ---
 
-## §6. 마무리
+## §5. My request — just three answers in a 10-minute conversation
 
-교수님이 영상에서 자주 하시는 말씀이 있습니다.
+Professor, I will not take your time. Only three answers via **a 10-minute call or written
+reply**:
 
-> "건축은 사람을 위한 것이다."
+1. **"Would you use the 2400 DSE search result at the early concept stage of a real project?"**
+   (Yes / No / Conditional)
+2. **"Can one student from your lab take on one week of verification work?"** (for
+   reproducibility)
+3. **"Would you consider covering n=6 boundarization at least once on 'Yoo Hyunjun's
+   Sholgit' on YouTube?"** (public verification)
 
-n=6 경계는 **사람의 공간 인지 한계(6분, 6개 방향, 6층)** 와 정확히
-일치합니다. 수학이 사람을 따라간 건지, 사람이 수학을 따라간 건지는
-모르겠습니다. 다만 **둘이 같은 자리에 있다는 것**만 보여드리고 싶습니다.
+Any answer is a huge learning for me.
 
-긴 글 읽어주셔서 감사합니다.
+---
 
-박민우 드림
-2026-04-20, 하남에서
+## §6. Closing
 
-연락처:
-- 이메일: mk911tb@proton.me
+You often say in your videos:
+
+> "Architecture is for people."
+
+The n=6 boundary coincides exactly with **the limits of human spatial cognition (6 minutes,
+6 directions, 6 floors)**. I do not know whether mathematics followed people or people
+followed mathematics. I only want to show you **that the two stand at the same place**.
+
+Thank you for reading this long letter.
+
+Sincerely, Park Minwoo
+2026-04-20, from Hanam
+
+Contact:
+- Email: mk911tb@proton.me
 - GitHub: github.com/need-singularity/n6-architecture
-- 유튜브: (구독자 2.4만, 개인 채널)
+- YouTube: (24K subscribers, personal channel)

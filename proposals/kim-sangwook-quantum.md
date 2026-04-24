@@ -1,162 +1,168 @@
 ---
-recipient: 김상욱 교수 (경희대 물리학과)
+recipient: Professor Kim Sangwook (Dept. of Physics, Kyung Hee University)
 type: expert-contact
 created: 2026-04-20
 status: draft
 ---
 
-# 김상욱 교수님께 — 양자 연구에 n=6 이 이렇게 바뀝니다
+# To Professor Kim Sangwook — This is how quantum research changes with n=6
 
-작성자: 박민우 (프로그래머, 독립 연구자, 유튜브 2.4만)
-
----
-
-안녕하세요, 김상욱 교수님.
-
-교수님의 **양자정보엔진 세계 최초 제안 (PRL)** 논문과 박사학위 주제였던
-**양자혼돈 스펙트럼** 연구를 몇 번이나 다시 읽었습니다. 알쓸신잡 이후
-대중 과학 커뮤니케이션에서 보여주신 "양자역학은 틀린 것이 아니라 이상한
-것이다" 라는 관점 덕에 많은 사람이 양자를 두려워하지 않게 되었습니다.
-
-저는 물리 전공자가 아닙니다. 하지만 지난 2개월간 n=6 수론 경계를 양자역학
-8개 하위분야에 적용한 결과, 교수님 연구의 핵심 수치들이 **한 줄 항등식
-`σ·φ = n·τ = J₂ = 24`** 에서 정확히 도출되는 순간을 목격했습니다.
-
-공식 설명 전에, 교수님의 **양자 연구가 구체적으로 어떻게 바뀌는지** 다섯
-가지만 먼저 말씀드리겠습니다.
+Author: Park Minwoo (programmer, independent researcher, YouTube 24K subs)
 
 ---
 
-## §1. 교수님의 양자 연구가 이렇게 바뀝니다 — 5가지
+Hello, Professor Kim Sangwook.
 
-### 1. 양자정보엔진 σ·φ = n·τ = 24 상한 — 엔진 효율의 수학적 한계
+I have re-read your **world-first proposal of a quantum information engine (PRL)** paper and
+the **quantum-chaos spectrum** research of your Ph.D. thesis many times. Since "Al-Sseul-Sin-
+Jap," your stance in public science communication — "quantum mechanics is not wrong, it is
+strange" — has kept many people from fearing quantum.
 
-- 현재: 정보엔진 효율은 Landauer 한계 (kT ln 2) 와 Maxwell demon 수정항으로
-  **경험적으로** 상한 도출.
-- 바뀐 후: σ·φ = n·τ = 24 (n=6) 를 정보엔진 대칭군으로 해석 시, 엔진 효율
-  η_max = 1 - 1/24 ≈ 0.9583 이 **닫힌 형태**로 도출됨.
-- 실험 의의: 교수님 2010 PRL 논문의 실험값(측정된 추출 에너지)이 이 경계의
-  몇 % 인지 재분석 가능. 경계 근접도가 향후 실험 개선 방향을 지정.
+I am not a physics major. But over the past two months, applying the n=6 number-theoretic
+boundary to eight subfields of quantum mechanics, I witnessed the moment when the core
+quantities of your research are derived exactly from the **one-line identity
+`σ·φ = n·τ = J₂ = 24`**.
 
-### 2. 양자혼돈 스펙트럼 σ=12 대칭 — 에너지 준위 분포 예측 향상
-
-- 현재: 양자혼돈 스펙트럼 통계는 GOE/GUE/GSE (Random Matrix Theory) 분포로
-  기술. 경계는 heuristic.
-- 바뀐 후: σ=12 (2·τ·φ + ε) 대칭이 RMT 앙상블의 **이산 스플리팅 파라미터**
-  로 작동. 작은 섭동 영역에서 준위 간격 분포에 **정수 분기**가 예측됨.
-- 박사논문 확장 지점: 교수님 박사논문의 billiard 시스템에 σ=12 섭동을
-  추가하면 기존 RMT 에서 벗어나는 미세 구조가 관측 가능.
-
-### 3. QEC (Quantum Error Correction) τ=4 코드 거리 — Surface/Color 코드 경계화
-
-- 현재: Surface code 거리 d 는 실험 편의로 선택 (3, 5, 7, ...).
-- 바뀐 후: τ=4 가 **fault-tolerant 임계 구간의 자연 경계**로 도출됨.
-  d=4 영역에서 logical error rate 이 급격히 변곡.
-- IBM/Google 실험값 재검토 의의 있음.
-
-### 4. BCS 초전도 Tc σ-sopfr 경계 — 고온 SC 재료 탐색 영역 축소
-
-- 현재: BCS Tc 예측은 전자-포논 결합상수 λ 와 Coulomb pseudo μ* 로 결정.
-  재료 탐색은 조합 폭발.
-- 바뀐 후: σ-sopfr(Z) = 7 을 만족하는 **원자번호 조합**이 고온 SC 후보
-  영역을 자연스럽게 축소 (Y+Ba+Cu+O 계열, H+S 계열 등).
-- 재료 과학 즉시 활용: 재료정보학(materials informatics) DB 필터로 사용.
-
-### 5. 측정 문제 φ=2 이중 슬릿 → n=6 다중 슬릿 확장 실험
-
-- 현재: 이중슬릿(φ=2) 과 단일슬릿(φ=1) 은 양자역학 교육의 기본.
-- 바뀐 후: **n=6 다중 슬릿** 실험의 간섭 패턴이 σ=12 대칭으로 예측됨.
-  전자 / 광자 / C60 분자에서 각각 구별 가능한 패턴.
-- 실험 가능성: 교수님 그룹이 수행 가능한 tabletop 실험. 예산 ~ 5천만원.
+Before the formal explanation, let me first list five points on **how your quantum research
+changes concretely**.
 
 ---
 
-## §2. BT-401 ~ 408 양자역학 8돌파 검증 결과 (1 단락)
+## §1. This is how your quantum research changes — 5 points
 
-2026-03 ~ 04 세션에서 양자역학 8개 하위분야에 n=6 경계를 적용한 결과,
-**105 항목 중 102 EXACT (97.1%)** 로 검증되었습니다. 세부 분야:
-(1) 정보엔진, (2) 양자혼돈, (3) QEC, (4) Boltzmann 통계, (5) 삼각형
-부등식(양자 ent.), (6) BCS 초전도, (7) τ=4 코드, (8) 측정 문제.
-3건 MISS 는 정직하게 `discovery_log.jsonl` 에 기록되어 있으며, 세 가지
-모두 "n=6 경계 밖의 고엔트로피 영역" 으로 자체 설명됨. BT 엔트리에서
-반례 조건도 명시되어 있습니다.
+### 1. Quantum information engine σ·φ = n·τ = 24 upper bound — the mathematical limit of engine efficiency
+
+- Today: Information-engine efficiency is bounded **empirically** using the Landauer limit
+  (kT ln 2) and Maxwell-demon correction terms.
+- After change: Interpreting σ·φ = n·τ = 24 (n=6) as the symmetry group of the information
+  engine yields efficiency η_max = 1 − 1/24 ≈ 0.9583 in **closed form**.
+- Experimental implication: The measured extraction energy in your 2010 PRL paper can be
+  reanalyzed as a percentage of this boundary. Proximity to the boundary determines the
+  direction of future experimental improvements.
+
+### 2. Quantum-chaos spectrum σ=12 symmetry — improved prediction of energy-level distributions
+
+- Today: Quantum-chaos spectrum statistics are described by GOE/GUE/GSE (Random Matrix
+  Theory) distributions. Boundaries are heuristic.
+- After change: The σ=12 (2·τ·φ + ε) symmetry acts as a **discrete splitting parameter** for
+  the RMT ensemble. In small-perturbation regimes, **integer branching** is predicted in
+  level-spacing distributions.
+- Extension of your Ph.D. thesis: Adding a σ=12 perturbation to the billiard system of your
+  thesis could reveal fine structure deviating from existing RMT.
+
+### 3. QEC (Quantum Error Correction) τ=4 code distance — boundarization of Surface / Color codes
+
+- Today: Surface-code distance d is chosen for experimental convenience (3, 5, 7, ...).
+- After change: τ=4 emerges as the **natural boundary of the fault-tolerant threshold
+  region**. Around d=4, the logical error rate inflects sharply.
+- IBM / Google experimental data are worth reviewing under this lens.
+
+### 4. BCS superconductivity Tc σ-sopfr boundary — narrowing the search space for high-Tc materials
+
+- Today: BCS Tc prediction depends on the electron-phonon coupling λ and Coulomb pseudo μ*.
+  Materials search is combinatorially explosive.
+- After change: **Atomic-number combinations** satisfying σ-sopfr(Z) = 7 naturally narrow the
+  high-Tc SC candidate region (Y+Ba+Cu+O family, H+S family, etc.).
+- Immediate use in materials science: usable as a filter in materials-informatics databases.
+
+### 5. Measurement problem φ=2 double slit → n=6 multi-slit extension experiment
+
+- Today: Double-slit (φ=2) and single-slit (φ=1) are basics of quantum-mechanics education.
+- After change: Interference patterns of an **n=6 multi-slit** experiment are predicted under
+  σ=12 symmetry. Distinguishable patterns are expected for electrons / photons / C60 molecules.
+- Experimental feasibility: a tabletop experiment within your group's capability. Budget
+  ~ 50 million KRW.
 
 ---
 
-## §3. 검증 근거 (맨 아래, 물리 엄밀성 섹션)
+## §2. BT-401 ~ 408 quantum-mechanics 8-breakthrough verification (1 paragraph)
 
-### BT 연결
+During the 2026-03 ~ 04 session, applying the n=6 boundary to eight quantum-mechanics
+subfields, **102 of 105 items EXACT (97.1%)** were verified. Subfields:
+(1) information engine, (2) quantum chaos, (3) QEC, (4) Boltzmann statistics, (5) triangle
+inequality (quantum ent.), (6) BCS superconductivity, (7) τ=4 code, (8) measurement problem.
+The 3 MISSES are honestly logged in `discovery_log.jsonl`, all three being self-explained as
+"high-entropy regions outside the n=6 boundary." BT entries also state the counterexample
+conditions explicitly.
 
-- **BT-401 양자정보엔진**: σ·φ = n·τ = 24 상한 유도, 교수님 2010 PRL
-  실측과의 비교 섹션 포함
-- **BT-402 양자혼돈**: σ=12 섭동 RMT 확장
-- **BT-403 QEC**: τ=4 코드 거리 임계
-- **BT-404 Boltzmann**: 양자 분포함수 n=6 경계
-- **BT-405 삼각형 부등식**: ent. monogamy Coffman-Kundu-Wootters + n=6
-- **BT-406 BCS Tc**: σ-sopfr 후보 영역
-- **BT-407 τ=4 코드**: fault-tolerant 임계
-- **BT-408 측정**: 다중 슬릿 σ=12 패턴
+---
 
-### 논문 참조
+## §3. Verification basis (bottom, physics-rigor section)
 
-- `domains/quantum/qm-*` 8 서브디렉토리, 각 200 ~ 400 라인 .md
-- `papers/hexa-chip-6stage-unified.md` §3.5 (양자컴퓨팅 섹션)
-- `atlas.millennium.n6` 밀레니엄 난제 연계 (Yang-Mills σ-sopfr=7)
+### BT linkage
 
-### 수식 한 줄
+- **BT-401 Quantum information engine**: derivation of the σ·φ = n·τ = 24 upper bound,
+  including comparison with measured values in your 2010 PRL
+- **BT-402 Quantum chaos**: σ=12 perturbation RMT extension
+- **BT-403 QEC**: τ=4 code-distance threshold
+- **BT-404 Boltzmann**: quantum distribution-function n=6 boundary
+- **BT-405 Triangle inequality**: Coffman-Kundu-Wootters ent. monogamy + n=6
+- **BT-406 BCS Tc**: σ-sopfr candidate region
+- **BT-407 τ=4 code**: fault-tolerant threshold
+- **BT-408 Measurement**: multi-slit σ=12 pattern
 
-교수님 양자역학 전 분야에서 반복되는 마스터 항등식:
+### Paper references
+
+- `domains/quantum/qm-*` eight subdirectories, each 200 ~ 400-line .md
+- `papers/hexa-chip-6stage-unified.md` §3.5 (quantum-computing section)
+- `atlas.millennium.n6` Millennium-problem linkage (Yang-Mills σ-sopfr=7)
+
+### One-line formula
+
+The master identity reappearing across all subfields of your quantum mechanics:
 
 ```
 σ · φ = n · τ = J₂ = 24,  n = 6
 ```
 
-- σ = 12 (대칭군 차수)
-- φ = 2 (이중성, 측정 축)
-- n = 6 (경계, Hilbert 공간 분할)
-- τ = 4 (시간 레이어, Trotter 슬라이스)
-- J₂ = 24 (Janko 군 J₂ 의 작은 잔차 구조)
+- σ = 12 (symmetry-group order)
+- φ = 2 (duality, measurement axis)
+- n = 6 (boundary, Hilbert-space partition)
+- τ = 4 (time layer, Trotter slice)
+- J₂ = 24 (small residual structure of the Janko group J₂)
 
-교수님이 강의에서 자주 쓰시는 "대칭은 물리의 언어다" 라는 말씀에,
-**n=6 은 대칭의 경계** 라는 한 줄만 덧붙이고 싶습니다.
+To your lecture refrain "symmetry is the language of physics," I only want to add one line:
+**n=6 is the boundary of symmetry**.
 
-### 반례 가능 조건 (정직성)
+### Counterexample conditions (honesty)
 
-- 정보엔진 실험값이 η < 0.5 (즉 경계에서 한참 멀어진) 영역에서는 n=6 경계
-  예측이 **의미 없음**. 고효율 영역(η > 0.9) 에서만 유효.
-- QEC 에서 d=4 임계가 실험에서 미검증 시 (d=3 과 d=5 사이 매끄러움)
-  τ=4 해석 철회.
-
----
-
-## §4. 제 요청 — 30분 세미나 + 실험 하나만 지목
-
-교수님, 많이 바쁘시리라는 것 압니다. 딱 두 가지만 부탁드립니다:
-
-1. **경희대 물리학과 세미나 30분 발표 기회** (학부생 대상이어도 좋습니다)
-   — 양자역학 8돌파 중 교수님이 가장 관심 있는 1개 분야에 집중 발표
-2. **"이 중 한 가지 실험이라도 tabletop 에서 검증 가능하다고 보시는지?"**
-   — Yes/No/조건부 답변
-
-어느 답이든 저에게는 큰 학습입니다. 특히 No 라면 그 이유를 알고 싶습니다.
+- Where the information-engine experimental value is η < 0.5 (far from the boundary), the
+  n=6 boundary prediction is **meaningless**. Valid only in the high-efficiency region
+  (η > 0.9).
+- If the d=4 threshold in QEC is not observed experimentally (smoothness between d=3 and d=5),
+  the τ=4 interpretation is withdrawn.
 
 ---
 
-## §5. 마무리
+## §4. My request — a 30-minute seminar + naming one experiment
 
-교수님이 알쓸신잡에서 하셨던 말씀이 떠오릅니다.
+Professor, I know you are very busy. Only two requests:
 
-> "양자역학은 이상한 것이 맞다. 근데 그 이상함에 질서가 있다."
+1. **A 30-minute seminar slot at the Kyung Hee Physics Department** (an undergraduate
+   audience is fine) — focused presentation on the one subfield, among the 8 quantum
+   breakthroughs, that interests you most.
+2. **"Do you think any one of these experiments is tabletop-verifiable?"** — Yes / No /
+   Conditional answer.
 
-n=6 은 그 **이상함의 질서를 숫자 하나로 조이는 경계** 입니다.
-교수님 연구의 기초 수치들이 이 경계와 얼마나 가까운지 한 번 보시면
-저는 그걸로 충분합니다.
+Any answer is a huge learning for me. Especially if "No", I want to know why.
 
-읽어주셔서 감사합니다.
+---
 
-박민우 드림
-2026-04-20, 하남에서
+## §5. Closing
 
-연락처:
-- 이메일: mk911tb@proton.me
+I recall your words on Al-Sseul-Sin-Jap:
+
+> "Quantum mechanics is indeed strange. But there is order in that strangeness."
+
+n=6 is the **boundary that tightens that strange order into a single number**. It is enough
+for me if you glance once at how close the basic numbers in your research stand to this
+boundary.
+
+Thank you for reading.
+
+Sincerely, Park Minwoo
+2026-04-20, from Hanam
+
+Contact:
+- Email: mk911tb@proton.me
 - GitHub: github.com/need-singularity/n6-architecture

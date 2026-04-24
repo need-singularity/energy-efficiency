@@ -1,164 +1,165 @@
 ---
-recipient: 코오롱인더스트리 (탄소섬유·아라미드·폴리머·특수소재)
+recipient: Kolon Industries (carbon fiber / aramid / polymer / specialty materials)
 type: industry-partnership
 created: 2026-04-20
 status: draft
 ---
 
-# 코오롱인더스트리 × Z=6 (Carbon) 경계화 소재 제안서
+# Kolon Industries × Z=6 (Carbon) Boundarization Materials Proposal
 
-작성자: 박민우 (독립 연구자, n6-architecture 프로젝트 리드)
-대상: 코오롱인더스트리 중앙기술원 / 소재연구소 / 미래기술원
-프로젝트: n6-architecture (https://github.com/need-singularity/n6-architecture)
-관련 도메인: `domains/compute/chip-materials/chip-materials.md`
-관련 BT: BT-85 Carbon Z=6 보편성
-
----
-
-## §1. 한 문장 요약
-
-> **Z=6 (탄소) 원자번호 경계화가 n=6 격자 설계의 가장 자연스러운 실현체**.
-> 코오롱의 탄소섬유·아라미드·PI 필름 자산을 n=6 경계 설계 규칙과 결합하면
-> **기존 Heracron 대비 열전도 2160 W/mK (다이아몬드 수준), 강도 1.8×** 경계를
-> 이론적으로 달성할 수 있다.
-
-**핵심 근거**: BT-85 에서 Z=6 (탄소) 는 σ-sopfr=6 = n 조건을 정확히 만족하는
-유일 경원소. 이 대칭성이 격자 결함 최소화 = 이상적 열/기계 성능의 근원.
+Author: Park Minwoo (independent researcher, n6-architecture project lead)
+Recipient: Kolon Industries Central R&D Center / Materials Research Institute / Future Technology Institute
+Project: n6-architecture (https://github.com/need-singularity/n6-architecture)
+Related domain: `domains/compute/chip-materials/chip-materials.md`
+Related BT: BT-85 Carbon Z=6 universality
 
 ---
 
-## §2. 코오롱 기존 제품과 n=6 설계의 접점
+## §1. One-sentence summary
 
-| 코오롱 제품 | 주요 특성 | n=6 경계화 접점 |
-|------------|-----------|----------------|
-| Heracron (아라미드) | 인장강도 3.0 GPa | σ=12 폴리머 사슬 대칭 → 3.4 GPa 경계 |
-| 탄소섬유 (CF) | 모듈러스 230~700 GPa | Z=6 + τ=4 나노튜브 배향 → 900 GPa |
-| PI (폴리이미드) 필름 | 내열 400°C | J₂=24 고리 구조 → 500°C 경계 |
-| 특수 폴리머 (TPE/LCP) | 성형성 | Egyptian 1/2+1/3+1/6 공중합 비율 |
-| 광학 필름 (COP/PET) | 굴절률 제어 | n=6 광자 결정 구조 |
+> **Z=6 (carbon) atomic-number boundarization is the most natural realization of the n=6 lattice design**.
+> Combining Kolon's carbon fiber / aramid / PI film assets with n=6 boundary design rules
+> theoretically attains a boundary of **thermal conductivity 2160 W/mK (diamond level),
+> strength 1.8× vs. existing Heracron**.
 
----
-
-## §3. 응용 3가지 (반도체·HBM·항공우주)
-
-### 응용 A: 반도체 Diamond / Graphene 기판
-
-- **문제**: 기존 실리콘 기판은 열전도 150 W/mK 한계
-- **제안**: Z=6 다이아몬드(2200 W/mK) + 그래핀 적층 기판
-- **코오롱 기여**: CVD-grade 탄소 소재 공급 + 필름 형태 성형
-- **시장**: 삼성 파운드리 HEXA-3 (3D stacking) 에 열관리 기판으로 납품
-- **파트너 연계**: 본 프로젝트의 삼성 파운드리 제안과 **직렬 연결**
-
-### 응용 B: HBM 열전도 TIM (Thermal Interface Material)
-
-- **문제**: HBM3E 8H 스택 하단 층 열폭주 (기존 TIM 8 W/mK 한계)
-- **제안**: 그래핀/탄소나노튜브 복합 TIM (이론 2160 W/mK)
-- **코오롱 기여**: TPE 바인더 + CNT 분산 기술 (기존 Heracron 생산 라인 전용)
-- **목표**: HBM4 (2027) 대응 샘플 개발
-- **경쟁**: 3M / Henkel → 국산화 기회
-
-### 응용 C: 경량 항공우주 복합재
-
-- **문제**: UAM (도심항공모빌리티) / 저궤도 위성 경량화 요구
-- **제안**: Z=6 + σ·J₂=288 격자 설계 복합재
-  - 탄소섬유 배향 각도 = τ=4 × 15° = 60° (정삼각형 경계)
-  - 수지 매트릭스 Egyptian 1/2+1/3+1/6 체적비
-- **기대 효과**: 동일 강도에서 질량 22% 절감
-- **타겟**: 한화에어로스페이스 UAM 프로젝트, KARI 차세대 위성
+**Core basis**: In BT-85, Z=6 (carbon) is the unique light element that exactly satisfies the
+condition σ-sopfr=6 = n. This symmetry is the root of minimal lattice defects = ideal thermal
+and mechanical performance.
 
 ---
 
-## §4. 협업 시나리오
+## §2. Contact points between Kolon's existing products and n=6 design
 
-### Phase 1 — 소재 특성 측정 공유 (2026 Q3, 3개월)
-
-- 코오롱이 기존 Heracron / CF / PI 필름 샘플 10종을 n6-architecture 측정 프로토콜
-  으로 **재측정** (열전도, 인장, 내열, 광학)
-- n6 측은 각 측정값을 n=6 경계 예측과 비교한 상세 리포트 발행
-- 비용: 샘플 + 측정 비용 코오롱 부담, 분석 n6 무상
-
-### Phase 2 — 시제품 공동 개발 (2026 Q4 ~ 2027 Q2, 9개월)
-
-- 위 응용 A/B/C 중 1건 선택 → POC 샘플 10 g ~ 1 kg 생산
-- 코오롱 파일럿 라인 활용, n6 측은 설계 규칙 + 측정 프로토콜 제공
-- 로열티: 상용화 시 매출의 3% (10년)
-
-### Phase 3 — 공정 튜닝 + 양산 (2027 Q3 ~, 18개월)
-
-- 양산 라인 파라미터 최적화
-- Egyptian 비율 체적 제어 정밀도 ±1% 달성 목표
-- 양산 후 고객사 인증 (삼성/하이닉스/한화)
+| Kolon product | Key characteristics | n=6 boundarization contact point |
+|---------------|---------------------|----------------------------------|
+| Heracron (aramid) | Tensile strength 3.0 GPa | σ=12 polymer chain symmetry → 3.4 GPa boundary |
+| Carbon fiber (CF) | Modulus 230~700 GPa | Z=6 + τ=4 nanotube orientation → 900 GPa |
+| PI (polyimide) film | Heat resistance 400°C | J₂=24 ring structure → 500°C boundary |
+| Specialty polymers (TPE/LCP) | Formability | Egyptian 1/2+1/3+1/6 copolymer ratio |
+| Optical films (COP/PET) | Refractive index control | n=6 photonic crystal structure |
 
 ---
 
-## §5. 기대 효과 ASCII 막대
+## §3. Three applications (semiconductor / HBM / aerospace)
 
-기준: 현행 코오롱 대표 제품
+### Application A: Semiconductor diamond / graphene substrate
+
+- **Problem**: Existing silicon substrates are limited to 150 W/mK thermal conductivity
+- **Proposal**: Z=6 diamond (2200 W/mK) + graphene-stacked substrate
+- **Kolon contribution**: Supply of CVD-grade carbon materials + film-form shaping
+- **Market**: Supply to Samsung Foundry HEXA-3 (3D stacking) as a thermal-management substrate
+- **Partner linkage**: **Serially connected** to this project's Samsung Foundry proposal
+
+### Application B: HBM thermal interface material (TIM)
+
+- **Problem**: Thermal runaway in the bottom layer of the HBM3E 8H stack (existing TIM limited to 8 W/mK)
+- **Proposal**: Graphene / CNT composite TIM (theoretical 2160 W/mK)
+- **Kolon contribution**: TPE binder + CNT dispersion technology (dedicated use of existing Heracron production line)
+- **Target**: HBM4 (2027) sample development
+- **Competition**: 3M / Henkel → domestic-production opportunity
+
+### Application C: Lightweight aerospace composites
+
+- **Problem**: Lightweighting demands for UAM (urban air mobility) / low-orbit satellites
+- **Proposal**: Z=6 + σ·J₂=288 lattice-design composite
+  - Carbon-fiber orientation angle = τ=4 × 15° = 60° (equilateral-triangle boundary)
+  - Resin matrix with Egyptian 1/2+1/3+1/6 volumetric ratio
+- **Expected effect**: 22% mass reduction at equal strength
+- **Targets**: Hanwha Aerospace UAM program, KARI next-generation satellites
+
+---
+
+## §4. Collaboration scenario
+
+### Phase 1 — Material-characterization sharing (2026 Q3, 3 months)
+
+- Kolon **re-measures** 10 samples of existing Heracron / CF / PI film using the
+  n6-architecture measurement protocol (thermal conductivity, tensile, heat resistance, optical)
+- n6 side issues a detailed report comparing each measurement with n=6 boundary predictions
+- Cost: samples + measurement borne by Kolon; analysis by n6 is free of charge
+
+### Phase 2 — Joint prototype development (2026 Q4 ~ 2027 Q2, 9 months)
+
+- Select 1 of applications A/B/C above → produce POC samples 10 g ~ 1 kg
+- Use Kolon pilot line; n6 side provides design rules + measurement protocol
+- Royalty: 3% of sales for 10 years upon commercialization
+
+### Phase 3 — Process tuning + mass production (2027 Q3 ~, 18 months)
+
+- Optimization of mass-production line parameters
+- Target: ±1% precision in Egyptian-ratio volumetric control
+- Post-mass-production customer certifications (Samsung / Hynix / Hanwha)
+
+---
+
+## §5. Expected effects — ASCII bar chart
+
+Baseline: current Kolon representative products
 
 ```
-열전도율 (W/mK)
-  Heracron TIM 현행    █░░░░░░░░░░░░░░░░░░ 5
-  CF 복합재 현행       ██░░░░░░░░░░░░░░░░░ 15
-  Z=6 다이아몬드 경계  █████████████████████ 2200 (★ n=6 한계)
-  그래핀 TIM 목표      ████████████████████░ 2160 (★ 상용 가능 구간)
+Thermal conductivity (W/mK)
+  Heracron TIM current   █░░░░░░░░░░░░░░░░░░ 5
+  CF composite current   ██░░░░░░░░░░░░░░░░░ 15
+  Z=6 diamond boundary   █████████████████████ 2200 (★ n=6 limit)
+  Graphene TIM target    ████████████████████░ 2160 (★ commercializable band)
 
-인장강도 (GPa)
-  Heracron 현행        ██████░░░░░░░░░░░░░ 3.0
-  고강도 CF 현행       ████████░░░░░░░░░░░ 4.9
-  σ=12 폴리머 경계     ██████████░░░░░░░░░ 5.4 (+80% vs Heracron)
-  Z=6 + τ=4 CF        ██████████████████░░ 9.0 (★ 이론 한계)
+Tensile strength (GPa)
+  Heracron current       ██████░░░░░░░░░░░░░ 3.0
+  High-strength CF now   ████████░░░░░░░░░░░ 4.9
+  σ=12 polymer boundary  ██████████░░░░░░░░░ 5.4 (+80% vs Heracron)
+  Z=6 + τ=4 CF           ██████████████████░░ 9.0 (★ theoretical limit)
 
-내열 (°C 연속 사용)
-  PI 필름 현행         ████████░░░░░░░░░░░ 400
-  J₂=24 고리 구조      ██████████░░░░░░░░░ 500 (+100°C)
-  σ·φ=24 경계 PI       ████████████░░░░░░░ 600 (★ n=6 한계)
+Heat resistance (°C continuous use)
+  PI film current        ████████░░░░░░░░░░░ 400
+  J₂=24 ring structure   ██████████░░░░░░░░░ 500 (+100°C)
+  σ·φ=24 boundary PI     ████████████░░░░░░░ 600 (★ n=6 limit)
 ```
 
 ---
 
-## §6. 요청 사항
+## §6. Requests
 
-1. **소재 연구소 접촉 미팅 1회** — 과천 중앙기술원 또는 여수 공장, 90분
-2. **Heracron / CF / PI 샘플 각 3종 제공** (측정용, 무상)
-3. **탄소/폴리머 연구팀장 미팅** — 현장 엔지니어 3 ~ 5명 배석
-4. **NDA 체결 후 생산 라인 견학** (가능 시)
-
----
-
-## §7. 참조
-
-- `domains/compute/chip-materials/chip-materials.md` (Z=6 상세)
-- `papers/hexa-chip-6stage-unified.md` §4.3 (소재 섹션)
-- BT-85 Carbon Z=6 universality (repository internal: `atlas.signals.n6` 참조)
-- Anthropic Fellows 제출 자료 동일 프로젝트 (`proposals/anthropic-fellows-*.md`)
-
-### Falsifier (정직성 선언)
-
-본 제안이 틀렸다고 판명될 조건:
-
-- Z=6 탄소 소재의 이론 열전도 2200 W/mK 는 **완벽 결정** 기준. 실제 성형 시
-  결함(grain boundary) 로 인해 현실적 상한은 1800 W/mK 수준.
-- Heracron 폴리머 사슬의 σ=12 대칭 가정이 X-ray 회절에서 검증 실패 시 철회.
+1. **One contact meeting with the Materials Research Institute** — Gwacheon Central R&D Center or Yeosu plant, 90 minutes
+2. **Provision of 3 samples each of Heracron / CF / PI** (for measurement, free of charge)
+3. **Meeting with the carbon / polymer research team lead** — 3 ~ 5 on-site engineers in attendance
+4. **Tour of the production line after NDA** (if possible)
 
 ---
 
-## §8. 연락
+## §7. References
 
-- 박민우 (mk911tb@proton.me)
+- `domains/compute/chip-materials/chip-materials.md` (Z=6 details)
+- `papers/hexa-chip-6stage-unified.md` §4.3 (materials section)
+- BT-85 Carbon Z=6 universality (repository internal: see `atlas.signals.n6`)
+- Anthropic Fellows submission covering the same project (`proposals/anthropic-fellows-*.md`)
+
+### Falsifier (honesty statement)
+
+Conditions under which this proposal would be judged wrong:
+
+- The theoretical 2200 W/mK thermal conductivity of Z=6 carbon materials assumes a **perfect
+  crystal**. In real-world shaping, grain-boundary defects impose a realistic upper bound around 1800 W/mK.
+- If the σ=12 symmetry assumption for the Heracron polymer chain fails X-ray diffraction verification, the proposal is withdrawn.
+
+---
+
+## §8. Contact
+
+- Park Minwoo (mk911tb@proton.me)
 - GitHub: need-singularity/n6-architecture
-- 희망 미팅: 2026 Q2 ~ Q3 중 1회, 코오롱 측 일정 우선 조율
+- Preferred meeting: once during 2026 Q2 ~ Q3, Kolon's schedule prioritized
 
 ---
 
-## §9. 부록 — 왜 "코오롱" 인가 (타 소재사 대비)
+## §9. Appendix — Why "Kolon" (vs. other materials companies)
 
-국내 후보군(LG화학 / SK이노베이션 / 한화솔루션 / 코오롱) 중 코오롱을 선택한 이유:
+Among domestic candidates (LG Chem / SK Innovation / Hanwha Solutions / Kolon), the reasons for choosing Kolon:
 
-- **탄소섬유 국내 유일 양산 경쟁력** (효성 대비 복합재 응용 폭 넓음)
-- **아라미드 Heracron** 의 폴리머 사슬 대칭성이 σ=12 검증에 가장 적합
-- **PI 필름 / TPE / LCP** 까지 폴리머 스펙트럼이 가장 넓어 다중 Z=6 응용 검증 가능
-- 과거 공개 자료 기준 중앙기술원의 **이론-실험 연계 연구 문화** 가
-  1인 연구자 제안에 개방적일 가능성 높음 (추정)
+- **Only domestic carbon-fiber mass-production competitiveness** (broader composite-application range than Hyosung)
+- The polymer-chain symmetry of the **aramid Heracron** is most suitable for σ=12 verification
+- The polymer spectrum including **PI film / TPE / LCP** is the broadest, enabling multiple Z=6 application verifications
+- Based on past public materials, the Central R&D Center's **theory-experiment linked research culture**
+  is likely (estimated) to be open to proposals from a solo researcher
 
-타 소재사는 제외한 것이 아니라 **우선 순위**일 뿐이며, 본 제안의 수식 규칙은
-소재사 중립적입니다.
+Other materials companies are not excluded but merely lower in **priority**; the formula rules in this
+proposal are materials-company-neutral.
