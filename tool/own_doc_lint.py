@@ -464,6 +464,35 @@ _DATE_SUFFIX_RE = re.compile(
 )
 _THEORY_FILENAME_WHITELIST = {"README.md", "CLAUDE.md", "INDEX.md", "_INDEX.md"}
 
+# Legacy theory snapshot files grandfathered in 2026-04-24. These were created
+# before own#5 was tightened to forbid date/version suffixes under theory/.
+# Rather than risk breaking existing cross-links (papers, atlas, external
+# citations), we whitelist them as acknowledged exceptions. Any NEW dated file
+# must land under reports/ — this set is frozen.
+#
+# Paths are relative to repo root and must match exactly (str comparison).
+OWN5_LEGACY_ALLOWLIST: set[str] = {
+    "theory/proofs/transcend-p11-3-ouroboros-b2-proof-2026-04-15.md",
+    "theory/proofs/formal-p13-1-bsd-n6-2026-04-15.md",
+    "theory/proofs/formal-p11-2-hodge-n6-2026-04-15.md",
+    "theory/proofs/n6-boundary-metatheory-2026-04-14.md",
+    "theory/proofs/mk4-trident-final-verdict-2026-04-15.md",
+    "theory/proofs/l11-l15-quantum-nuclear-mapping-2026-04-14.md",
+    "theory/proofs/fisher-ouroboros-reformulation-2026-04-15.md",
+    "theory/proofs/ouroboros-alpha-universality-2026-04-15.md",
+    "theory/proofs/attractor-meta-theorem-2026-04-11.md",
+    "theory/proofs/attractor-meta-theorem-extended-2026-04-14.md",
+    "theory/proofs/bernoulli-boundary-2026-04-11.md",
+    "theory/proofs/formal-p12-2-cy3-hodge-retry-2026-04-15.md",
+    "theory/proofs/formal-p10-1-riemann-sigma-tau-2026-04-15.md",
+    "theory/proofs/mk4-theorem-candidates-2026-04-14.md",
+    "theory/proofs/formal-p11-1-selberg-ingham-2026-04-15.md",
+    "theory/proofs/formal-p12-1-conrey-gonek-6th-moment-2026-04-15.md",
+    "theory/preprints/millennium-v3-preprint-draft-2026-04-16.md",
+    "theory/roadmap-v2/millennium-v4-design-2026-04-16.md",
+    "theory/roadmap-v2/millennium-v3-design-2026-04-15.md",
+}
+
 
 def check_rule_5_theory_report_separation() -> list[dict[str, str]]:
     violations: list[dict[str, str]] = []
@@ -471,6 +500,11 @@ def check_rule_5_theory_report_separation() -> list[dict[str, str]]:
     if theory_root.is_dir():
         for md in _walk_md(theory_root):
             if md.name in _THEORY_FILENAME_WHITELIST:
+                continue
+            rel = str(md.relative_to(REPO_ROOT))
+            if rel in OWN5_LEGACY_ALLOWLIST:
+                # Legacy snapshot — grandfathered exception. New files under
+                # theory/ must not carry date/version suffixes.
                 continue
             # Stem without extension for suffix matching.
             stem = md.stem
