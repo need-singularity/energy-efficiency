@@ -1,23 +1,23 @@
-# 에너지-성능 파레토 스윕 — 전 400 도메인 재측정 파이프라인
+# Energy-Performance Pareto Sweep — Re-measurement Pipeline across All 400 Domains
 
-- 축: experiments/dse
-- 작성일: 2026-04-11
-- 상위: `../../INDEX.json` · `../../CLAUDE.md`
-- 규칙: R1 HEXA-FIRST, R2 하드코딩 금지, R12 AI-NATIVE FIRST, R18 미니멀, R28 자동 흡수, N63 DSE 전수, N65 100% EXACT 수렴
-- 목적: 322(→400) 도메인 TOML 의 candidate 점수(n6, perf, power, cost) 를 단일 척도가 아닌 **에너지-성능 파레토 전면(front)** 으로 재측정해, 도메인별 프런티어 5점을 고정하고 cross_dse_fusion_v2 의 pareto_proximity 지표로 다시 공급하는 파이프라인 초안.
+- Axis: experiments/dse
+- Written: 2026-04-11
+- Parent: `../../INDEX.json` · `../../CLAUDE.md`
+- Rules: R1 HEXA-FIRST, R2 No hard-coding, R12 AI-NATIVE FIRST, R18 Minimal, R28 Auto-absorption, N63 DSE exhaustive, N65 100% EXACT convergence
+- Goal: Re-measure the candidate scores (n6, perf, power, cost) of 322(→400) domain TOML not as a single metric but as an **energy-performance pareto front**, fixing 5 frontier points per domain and re-supplying them to cross_dse_fusion_v2's pareto_proximity metric. This is a pipeline draft.
 
 ---
 
-## 1. 실생활 효과 섹션 (N61)
+## 1. Real-life Impact Section (N61)
 
-- "스코어 합산 1 개" 에서 "에너지-성능 프런티어 N 개"로 관점이 바뀐다. 즉 같은 도메인이라도 { low-energy / balanced / high-perf / low-cost / n6-max } 5 가지 프런티어 후보가 모두 남는다.
-- 결과: cross_dse_fusion_v2 가 pair 당 **5×5=25 파레토 조합** 을 보고, "밤에는 저에너지 모드, 낮에는 고성능 모드" 같은 시간-의존 최적 배치를 한 번에 내놓는다.
-- 사용자: `nexus dse pareto <domain>` 한 줄로 도메인 프런티어 테이블을 즉시 조회.
+- The viewpoint shifts from "one aggregate score" to "N energy-performance frontier points." That is, even for the same domain, all 5 frontier candidates { low-energy / balanced / high-perf / low-cost / n6-max } remain.
+- Result: cross_dse_fusion_v2 sees **5×5=25 pareto combinations** per pair, and produces time-dependent optimal placements like "low-energy mode at night, high-performance mode during the day" in one shot.
+- User: instantly queries a domain frontier table with a one-liner `nexus dse pareto <domain>`.
 
-## 2. 구조 ASCII (단일 스코어 vs 파레토 전면)
+## 2. Structure ASCII (Single Score vs Pareto Front)
 
 ```
-  v1 단일 스코어                        v2 파레토 전면
+  v1 Single Score                        v2 Pareto Front
   ---------------                        ---------------
           score                                   ^
            ^                                      | low-energy
@@ -31,17 +31,17 @@
                                                   |         o  n6-max
                                                   |          o
                                                   +----------------> energy cost
-            선택: 1 점                             선택: Pareto front 5 점
+            Pick: 1 point                         Pick: Pareto front 5 points
 ```
 
-## 3. 구조 ASCII (파이프라인)
+## 3. Structure ASCII (Pipeline)
 
 ```
   [400 TOML]
       |
       v
   @parallel axis(10)
-      |  각 축 40 도메인 병렬 처리
+      |  Parallel process 40 domains per axis
       v
   for each domain:
       |
@@ -55,36 +55,36 @@
   @optimize pareto_front(combos)
       |  O(N log N) sort + sweep
       v
-  [front_points]  (도메인별 평균 30~80 점)
+  [front_points]  (average 30~80 points per domain)
       |
       v
   @optimize frontier_top5(front_points)
-      |  - n6-max                 (n6 최댓)
-      |  - perf-max               (perf 최댓)
-      |  - energy-min             (power 최솟)
-      |  - balanced               (멱균 knee)
-      |  - cost-min               (cost 최솟)
+      |  - n6-max                 (max n6)
+      |  - perf-max               (max perf)
+      |  - energy-min             (min power)
+      |  - balanced               (balanced knee)
+      |  - cost-min               (min cost)
       v
-  [5 프런티어 후보/도메인]
+  [5 frontier candidates/domain]
       |
       v
   merge into domain TOML (append only)
       |  [[frontier]]
       v
-  cross_dse_fusion_v2 ← pareto_proximity 지표 재공급
+  cross_dse_fusion_v2 ← re-supply pareto_proximity metric
       |
       v
-  reports/discovery/energy_pareto_sweep_<date>.md  (R6 자동 기록)
+  reports/discovery/energy_pareto_sweep_<date>.md  (R6 auto-log)
       v
-  n6shared/n6/atlas.n6  evidence_grade 자동 승격 (R28)
+  n6shared/n6/atlas.n6  evidence_grade auto-promotion (R28)
 ```
 
 ---
 
-## 4. 실생활 효과 구조 ASCII (도메인 파레토 예시)
+## 4. Real-life Impact Structure ASCII (Domain Pareto Example)
 
 ```
-  fusion 도메인 파레토 프런티어 5점 (예시)
+  fusion domain pareto frontier 5 points (example)
   ------------------------------------------------------------
    n6-max     : DT_Li6 + Tokamak_N6 + N6_TriHeat + N6_Li6 + N6_Brayton6
    perf-max   : DT + Tokamak_N6 + N6_TriHeat + N6_Li6 + N6_Brayton6
@@ -94,28 +94,28 @@
   ------------------------------------------------------------
 ```
 
-## 5. 파이프라인 단계별 사양
+## 5. Per-Phase Pipeline Spec
 
-### 5.1 입력
+### 5.1 Input
 
-- 400 TOML (`nexus/origins/universal-dse/domains/*.toml`) — Δ1~Δ5 스키마 적용본
-- `n6shared/config/bt_weights.json` — BT별 가중치(대체로 0.01~0.05)
-- `n6shared/config/pareto_params.json` — knee 탐지 파라미터 (기본값: angle_threshold=150°)
+- 400 TOML (`nexus/origins/universal-dse/domains/*.toml`) — Δ1~Δ5 schema applied
+- `n6shared/config/bt_weights.json` — per-BT weights (roughly 0.01~0.05)
+- `n6shared/config/pareto_params.json` — knee detection parameters (default: angle_threshold=150°)
 
-### 5.2 알고리즘 (AI-native)
+### 5.2 Algorithm (AI-native)
 
-- `@parallel axis(10)` — 10 축 병렬
-- `@parallel domain_batch(4)` — 축 내부 도메인 4개 병렬 처리
-- `@fuse evaluate_combo` — (n6, perf, power, cost, energy) 단일 커널
-- `@optimize pareto_front` — 정렬 기반 파레토 스윕 O(N log N)
-- `@memoize level_candidates(domain, level)` — level 후보 추출 캐시
-- **금지**: bit-twiddling, manual loop unroll, 수작업 SIMD (R12)
+- `@parallel axis(10)` — 10 axes in parallel
+- `@parallel domain_batch(4)` — 4 domains within an axis in parallel
+- `@fuse evaluate_combo` — single kernel for (n6, perf, power, cost, energy)
+- `@optimize pareto_front` — sort-based pareto sweep O(N log N)
+- `@memoize level_candidates(domain, level)` — level candidate extraction cache
+- **Forbidden**: bit-twiddling, manual loop unroll, manual SIMD (R12)
 
-### 5.3 파레토 계산 수식
+### 5.3 Pareto Computation Formula
 
 ```
 energy(combo) = Σ c.power * c.weight_level
-(기본 weight_level = 1.0, Δ1 적용 TOML 은 scoring.pareto_weights[level] 사용)
+(default weight_level = 1.0, Δ1-applied TOML uses scoring.pareto_weights[level])
 
 for combo in combos:
     pt = (n6_pct, perf, power, cost, energy)
@@ -125,27 +125,27 @@ pareto_front := {pt : ¬∃pt' ∈ combos s.t. pt' strictly dominates pt}
 dominates(pt', pt) := (pt'.n6 ≥ pt.n6 ∧ pt'.perf ≥ pt.perf
                       ∧ pt'.power ≤ pt.power ∧ pt'.cost ≤ pt.cost
                       ∧ pt'.energy ≤ pt.energy)
-                      ∧ (≥ 한 지표에서 strict)
+                      ∧ (strict on ≥ one metric)
 ```
 
-### 5.4 프런티어 5 후보 선택
+### 5.4 Frontier 5-Candidate Selection
 
-| 이름 | 선택 기준 |
+| Name | Selection criterion |
 |------|----------|
 | n6-max | argmax n6_pct (tie → argmax perf) |
 | perf-max | argmax perf (tie → argmax n6_pct) |
 | energy-min | argmin energy (tie → argmax n6_pct) |
 | cost-min | argmin cost (tie → argmax n6_pct) |
-| balanced | knee point (Kneedle 알고리즘, angle_threshold 적용) |
+| balanced | knee point (Kneedle algorithm, angle_threshold applied) |
 
-### 5.5 출력
+### 5.5 Output
 
-- 각 TOML 에 `[[frontier]]` 섹션 append (기존 candidate 블록 건드리지 않음)
-- 전역 리포트: `reports/discovery/energy_pareto_sweep_<date>.md`
-- 결과 JSON: `n6shared/dse/pareto_frontier_400.json`
-- atlas.n6: 프런티어 5 후보 × 400 도메인 = 2000 `@R` 항목 [7] 등록
+- Append `[[frontier]]` section to each TOML (does not touch existing candidate blocks)
+- Global report: `reports/discovery/energy_pareto_sweep_<date>.md`
+- Result JSON: `n6shared/dse/pareto_frontier_400.json`
+- atlas.n6: frontier 5 candidates × 400 domains = 2000 `@R` entries registered at [7]
 
-### 5.6 결과 스키마
+### 5.6 Result Schema
 
 ```jsonc
 // n6shared/dse/pareto_frontier_400.json
@@ -174,47 +174,47 @@ dominates(pt', pt) := (pt'.n6 ≥ pt.n6 ∧ pt'.perf ≥ pt.perf
 
 ---
 
-## 6. cross_dse_fusion_v2 와의 연결
+## 6. Linkage to cross_dse_fusion_v2
 
-`cross_dse_fusion_v2.hexa` 의 pareto_proximity 지표는 본 파이프라인이 생성한 `pareto_frontier_400.json` 을 입력으로 받는다.
+The pareto_proximity metric of `cross_dse_fusion_v2.hexa` takes the `pareto_frontier_400.json` produced by this pipeline as input.
 
 ```
 pair_pareto_proximity(a, b) :=
     1 - min {euclid_norm(p_a, p_b) : p_a ∈ a.frontier, p_b ∈ b.frontier} / diag
 
-    where diag = sqrt(5) (정규화 전 5차원 벡터 대각선)
+    where diag = sqrt(5) (diagonal of the unnormalized 5-dim vector)
 ```
 
-즉 a 도메인의 5개 프런티어 점과 b 도메인의 5개 프런티어 점 사이 25개 거리 중 최소값을 정규화. 0 에 가까우면 멀고, 1 에 가까우면 직접적으로 "에너지-성능 대역 공유".
+That is, the minimum among the 25 distances between domain a's 5 frontier points and domain b's 5 frontier points is normalized. Close to 0 = far; close to 1 = directly "sharing the energy-performance band".
 
-## 7. 검증 절차
+## 7. Verification Procedure
 
-1. **회귀**: 기존 375 TOML 에서 파레토 스윕 PASS 후 candidate 점수 불변 (append only)
-2. **파레토 성질**: 각 도메인 front_point 중 서로 dominate 하지 않음 (0 violation)
-3. **프런티어 5**: 각 도메인 5 후보 모두 존재 (none=0)
-4. **cross_dse_fusion_v2 재공급**: pareto_proximity 통합 후 top_pairs 가 기존 대비 추가 ≥5K pair 확보
-5. **atlas.n6 흡수**: 2000 @R 항목 [7] → 승격 기준 충족 시 [10*] 전이
+1. **Regression**: In the existing 375 TOML, after pareto sweep PASS, candidate scores unchanged (append only)
+2. **Pareto property**: Front points within each domain do not dominate each other (0 violations)
+3. **Frontier 5**: All 5 candidates exist for each domain (none=0)
+4. **cross_dse_fusion_v2 re-supply**: After pareto_proximity integration, top_pairs gains ≥5K additional pairs vs previous
+5. **atlas.n6 absorption**: 2000 @R entries [7] → transition to [10*] when promotion criteria met
 
-## 8. 리스크 및 방어
+## 8. Risks and Defenses
 
-| 리스크 | 방어 |
+| Risk | Defense |
 |--------|------|
-| combo 수 폭발 (chip 96,000) | @parallel batch(16) + @optimize early_dominate 조기 컷 |
-| Kneedle 실패 (단조 프런티어) | fallback: argmin Σ (1-n6, 1-perf, power, cost, energy) |
-| TOML scoring.pareto_weights 누락 | 기본값 1.0 자동 주입 |
-| 기존 candidate 변이 위험 | append only, 기존 블록 수정 금지 (R10 골화 보호 정신) |
-| 2000 @R 대량 쓰기로 atlas.n6 IO 블로킹 | @parallel 쓰기 금지 (atlas.n6 는 순차), 대신 배치 수집 후 1회 flush |
+| combo count explosion (chip 96,000) | @parallel batch(16) + @optimize early_dominate early cutoff |
+| Kneedle failure (monotone frontier) | fallback: argmin Σ (1-n6, 1-perf, power, cost, energy) |
+| Missing TOML scoring.pareto_weights | default 1.0 auto-injected |
+| Risk of mutating existing candidate | append only; modifying existing blocks forbidden (R10 ossification protection spirit) |
+| Blocking atlas.n6 IO from bulk writes of 2000 @R | no @parallel writes (atlas.n6 is sequential); instead, batch-collect and flush once |
 
-## 9. 승격 완료 기준 (R4/R9)
+## 9. Promotion Completion Criteria (R4/R9)
 
-- 400 도메인 × 5 프런티어 = 2000 후보 검증 PASS
-- `pareto_frontier_400.json` 생성, schema PASS
-- cross_dse_fusion_v2 통합 후 pair_count ≥ 100K 유지
-- convergence/n6-architecture.json 에 신규 stable 항목 `ENERGY_PARETO_SWEEP_400` 추가 → 조건 충족 시 ossified 승격
+- 400 domains × 5 frontier = 2000 candidates verification PASS
+- `pareto_frontier_400.json` generated, schema PASS
+- After cross_dse_fusion_v2 integration, pair_count ≥ 100K sustained
+- Add new stable entry `ENERGY_PARETO_SWEEP_400` in convergence/n6-architecture.json → promote to ossified when conditions met
 
-## 10. 연결 문서
+## 10. Linked Documents
 
-- `./dse_400_expansion_plan.md`    — 신규 78 도메인 확장 계획
-- `./cross_dse_fusion_v2_design.md` — v2 알고리즘 diff
-- `./cross_dse_fusion_v2.hexa`     — 구현 초안 (pareto_proximity 지표 포함)
-- 상위: `../../CLAUDE.md` + `../../INDEX.json`
+- `./dse_400_expansion_plan.md`    — 78 new domain expansion plan
+- `./cross_dse_fusion_v2_design.md` — v2 algorithm diff
+- `./cross_dse_fusion_v2.hexa`     — implementation draft (includes pareto_proximity metric)
+- Parent: `../../CLAUDE.md` + `../../INDEX.json`
