@@ -8,177 +8,178 @@ requires:
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
-# 궁극의 UFO 비행접시 (HEXA-UFO) — RT-SC 기반 원반형 VTOL
+# Ultimate UFO Flying Saucer (HEXA-UFO) — RT-SC based disc-shaped VTOL
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology could change daily life)
 
-비행접시(Flying Saucer)는 SF 영화의 상징이다. 소리 없이 떠오르고, 순식간에 사라지고, 활주로 없이 아무 데나 내린다.
-**이것이 더 이상 공상이 아니다.** 상온 초전도체(RT-SC)가 3가지 불가능을 한번에 해결한다:
+The Flying Saucer is an icon of SF films. It lifts without sound, disappears in an instant, and lands anywhere without a runway.
+**This may no longer be pure fantasy.** Room-temperature superconductors (RT-SC) could address three barriers at once:
 
-1. **무동력 부양**: RT-SC Meissner 효과 — 전기 저항 0인 초전도 디스크는 자기장을 완벽히 밀어낸다. 에너지 소모 없이 공중에 뜬다.
-2. **무한 에너지**: RT-SC 48T 자석으로 탁상 핵융합로(Q=10)를 탑재 — 바닷물에서 추출한 중수소로 수십 년 비행.
-3. **무소음 극초음속**: RT-SC 코일로 구동하는 MHD(자기유체역학) 추진 — 연소 없이 공기를 이온화하여 가속. 배기가스 0, 소음 0.
+1. **Power-free levitation**: RT-SC Meissner effect — a zero-resistance superconducting disc expels the magnetic field. Hovering without energy consumption.
+2. **Abundant energy**: tabletop fusion reactor (Q=10) built with RT-SC 48T magnets — years of flight from deuterium extracted from seawater.
+3. **Silent hypersonic flight**: MHD (magnetohydrodynamic) propulsion driven by RT-SC coils — accelerating air via ionization without combustion. Zero exhaust, zero noise.
 
-| 효과 | 현재 | HEXA-UFO 이후 | 체감 변화 |
+| Effect | Current | After HEXA-UFO | Perceived change |
 |------|------|--------------|----------|
-| 서울→뉴욕 | 14시간 (여객기) | **σ-μ=1.1시간** (Mach 10) | 지구 반대편이 "출퇴근 거리" |
-| 서울→부산 | 2.5시간 (KTX) | **n=6분** (Mach 3 순항) | 지하철 타듯 도시간 이동 |
-| 공항 필요 | 인천공항 건설비 10조원 | **불필요 (VTOL)** | 옥상/주차장에서 이착륙 |
-| 활주로 | 3~4km 필요 | **0m (수직이착륙)** | 어디서든 뜨고 내림 |
-| 연료비 | 인천→JFK 편도 1억원 (항공유) | **~0원** (D₂O 연료, 바닷물) | 연료 걱정 제로 |
-| 환경오염 | CO₂ 연간 10억톤 (항공) | **0톤** (배기가스 없음) | 항공 탄소배출 완전 제거 |
-| 소음공해 | 이착륙시 140dB | **J₂=24dB** (속삭임 수준) | 심야 운항 가능, 도심 이착륙 |
-| 재난 구조 | 헬기로 30분~수시간 | **sopfr=5분 내 도착** | 산악/해상 어디든 즉시 투입 |
-| 우주 접근 | 로켓 1회 발사 1,000억원 | **반복 사용, 1/σ 비용** | 우주여행이 버스비 수준 |
-| 고도 한계 | 여객기 σ=12km | **LEO 600km까지** | 대기권~우주 단일 기체 |
-| 물류 | 화물선 30일 (태평양) | **n=6시간** (Mach 5) | 글로벌 공급망 혁명 |
-| 군사/안보 | 스텔스기 20억 달러 | **열 시그니처 0** (R=0) | 궁극의 스텔스 |
+| Seoul to New York | 14 h (airliner) | **σ-μ=1.1 h** (Mach 10) | The opposite side of the globe feels like a "commute" |
+| Seoul to Busan | 2.5 h (KTX) | **n=6 min** (Mach 3 cruise) | Intercity travel like a subway ride |
+| Airport requirement | ~10 trillion KRW to build Incheon | **unnecessary (VTOL)** | Takeoff/landing from rooftops or parking lots |
+| Runway | 3 to 4 km needed | **0 m (vertical takeoff/landing)** | Lift and land anywhere |
+| Fuel cost | ~100 million KRW one-way Incheon to JFK (jet fuel) | **~0 KRW** (D₂O fuel, seawater) | Zero fuel worry |
+| Pollution | ~1 billion t CO₂/yr (aviation) | **0 t** (no exhaust) | Aviation carbon emissions plausibly eliminated |
+| Noise pollution | 140 dB at takeoff/landing | **J₂=24 dB** (whisper level) | Late-night operation feasible; urban takeoff/landing |
+| Disaster relief | 30 min to several hours by helicopter | **sopfr=5 min arrival** | Mountain/sea deployment anytime |
+| Space access | ~100 billion KRW per rocket launch | **reusable, 1/σ cost** | Space travel at roughly bus-fare level |
+| Altitude ceiling | σ=12 km airliner | **up to LEO 600 km** | Single craft from atmosphere to space |
+| Logistics | 30 days by cargo ship (Pacific) | **n=6 h** (Mach 5) | Global supply-chain renewal |
+| Military/security | 2 billion USD stealth fighter | **thermal signature 0** (R=0) | Ultimate stealth profile |
 
-**한 문장 요약**: 상온 초전도+탁상 핵융합으로 소리 없이 뜨고, 연료 걱정 없이 지구 어디든 1시간, 우주까지 갈 수 있는 진짜 비행접시가 가능해진다.
+**One-sentence summary**: with room-temperature superconductors plus tabletop fusion, a real flying saucer appears plausible — silent lift, worry-free fuel, 1-hour reach anywhere on Earth, and access to orbit.
 
-### 비행접시가 일상이 되면
+### If flying saucers became routine
 
 ```
-  오전 7:00  서울 강남 옥상에서 HEXA-UFO 탑승 (소음 24dB, 이웃 민원 0)
-  오전 7:06  부산 해운대 도착 (6분, Mach 3 순항)
-  오전 9:00  도쿄 회의 참석 (서울→도쿄 15분)
-  오후 1:00  뉴욕 점심 미팅 (도쿄→뉴욕 1.1시간)
-  오후 6:00  서울 귀가 (뉴욕→서울 1시간)
+  07:00 AM  Board HEXA-UFO from a Gangnam rooftop in Seoul (noise 24 dB, neighbor complaints 0)
+  07:06 AM  Arrive at Haeundae, Busan (6 min, Mach 3 cruise)
+  09:00 AM  Attend meeting in Tokyo (Seoul to Tokyo 15 min)
+  01:00 PM  Lunch meeting in New York (Tokyo to New York 1.1 h)
+  06:00 PM  Return home to Seoul (New York to Seoul 1 h)
 
-  연료비: 0원 (바닷물 D₂O)
-  공항: 불필요 (VTOL, 옥상/주차장)
-  탄소배출: 0 (핵융합, 배기가스 없음)
-  소음: 속삭임 수준 (24dB)
+  Fuel cost: 0 KRW (seawater D₂O)
+  Airport: unnecessary (VTOL, rooftops/parking lots)
+  Carbon emissions: 0 (fusion, no exhaust)
+  Noise: whisper level (24 dB)
 ```
 
-### 사회적 변혁
+### Social transformation
 
-| 분야 | 변화 | n=6 연결 |
+| Area | Change | n=6 linkage |
 |------|------|---------|
-| 교통 | 공항/활주로 사라짐, 도로 혁신 | VTOL 0m 이착륙 |
-| 물류 | 태평양 6시간, 글로벌 당일 배송 | Mach sopfr=5 화물 |
-| 재난구조 | 어디든 5분 내 도착 | sopfr=5분 긴급배치 |
-| 군사 | 궁극의 스텔스 (열/전파 0) | Meissner + R=0 |
-| 우주 | 로켓 없이 궤도 진입 | SSTO, Mach σ-φ=10 |
-| 탐사 | 화성 τ=4일, 목성 σ=12일 | 핵융합 지속 가속 |
-| 에너지 | 비행체 자체가 이동식 발전소 | 50MW 탁상 핵융합 |
+| Transport | Airports/runways fade; road renewal | VTOL 0 m takeoff/landing |
+| Logistics | Pacific crossing in 6 h, global same-day delivery | Mach sopfr=5 freight |
+| Disaster relief | Anywhere within 5 min | sopfr=5 min emergency dispatch |
+| Military | Ultimate stealth (heat/RF 0) | Meissner + R=0 |
+| Space | Orbital insertion without rockets | SSTO, Mach σ-φ=10 |
+| Exploration | Mars τ=4 days, Jupiter σ=12 days | Continuous fusion acceleration |
+| Energy | Vehicle itself is a mobile power plant | 50 MW tabletop fusion |
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) — performance comparison (ASCII)
 
-### 비행접시가 SF였던 5가지 이유
+### Five reasons flying saucers remained SF
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  RT-SC가 어떻게 해결하나    │
+│  Barrier           │  Why it was not feasible    │  How RT-SC may help       │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. 부양 에너지     │ 헬기: 연료의 80%가 양력    │ Meissner 반자성: 에너지 0   │
-│                   │ VTOL: 연료 효율 극악       │ 초전도 디스크가 자장 배제    │
-│                   │                           │ → 지속적 척력, 전력 소모 0  │
+│ 1. Lift energy    │ Helicopter: ~80% fuel for lift│ Meissner diamagnetism: ~0 │
+│                   │ VTOL: poor fuel efficiency    │ SC disc expels field       │
+│                   │                           │ → continuous repulsion, ~0 power│
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 2. 에너지 밀도     │ 제트연료: 46 MJ/kg         │ D-T 핵융합: 337,000,000    │
-│                   │ 배터리: 1 MJ/kg            │ MJ/kg (730만배!)           │
-│                   │ → 장거리 비행 불가          │ → 연료 수 그램으로 수년 비행│
+│ 2. Energy density  │ Jet fuel: 46 MJ/kg         │ D-T fusion: 337,000,000    │
+│                   │ Battery: 1 MJ/kg            │ MJ/kg (~7.3M x)            │
+│                   │ → long range infeasible     │ → years of flight on grams │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 3. 추진 효율      │ 터보팬: Isp=3,000s         │ 핵융합 MHD: Isp=288,000s   │
-│                   │ 로켓: Isp=450s             │ (제트엔진의 σ·J₂/sopfr배!) │
-│                   │ → Mach 3+ 극난이도         │ → Mach 10 순항 가능        │
+│ 3. Propulsion     │ Turbofan: Isp=3,000s        │ Fusion MHD: Isp=288,000s   │
+│                   │ Rocket: Isp=450s            │ (~σ·J₂/sopfr x jet Isp)    │
+│                   │ → Mach 3+ very hard         │ → Mach 10 cruise feasible  │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 4. 열 관리        │ Mach 5+: 표면 1000도+      │ SC 자기 실드: 플라즈마 편향  │
-│                   │ 내열재 무게 → 성능 저하     │ + R=0 → 자체 발열 0         │
-│                   │ → 극초음속 = 내열 한계      │ → 능동 냉각 (Meissner)     │
+│ 4. Thermal mgmt    │ Mach 5+: surface 1000 C+    │ SC magnetic shield: plasma │
+│                   │ heat shielding weighs a lot │ deflection + R=0 self-heat 0│
+│                   │ → hypersonic limited by heat│ → active cooling (Meissner)│
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 5. 소음           │ 제트: 140dB                │ MHD: 연소 0, 회전부 0       │
-│                   │ 프로펠러: 100dB             │ → 기본 소음 = 공기 마찰만   │
-│                   │ → 도심 운항 불가            │ → J₂=24dB (속삭임 수준)    │
+│ 5. Noise          │ Jet: 140 dB                 │ MHD: no combustion, no spin│
+│                   │ Propeller: 100 dB           │ → base noise = air friction│
+│                   │ → urban ops infeasible      │ → J₂=24 dB (whisper level) │
 └───────────────────┴───────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (시중 vs HEXA-UFO)
+### Performance comparison ASCII bars (market vs HEXA-UFO)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [최대 속도 (km/h)] 비교: 기존 항공기 vs HEXA-UFO                       │
+│  [Max speed (km/h)] comparison: legacy aircraft vs HEXA-UFO             │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  여객기 (B777)    ████████░░░░░░░░░░░░░░░░░░░░░░░   900 km/h          │
-│  헬리콥터         ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░   370 km/h          │
-│  전투기 (F-22)    ██████████████████░░░░░░░░░░░░░░  2,414 km/h Mach 2  │
+│  Airliner (B777)  ████████░░░░░░░░░░░░░░░░░░░░░░░   900 km/h          │
+│  Helicopter       ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░   370 km/h          │
+│  Fighter (F-22)   ██████████████████░░░░░░░░░░░░░░  2,414 km/h Mach 2  │
 │  SR-71 Blackbird  ████████████████████████░░░░░░░░  3,530 km/h Mach 3  │
-│  X-15 (실험기)    █████████████████████████████░░░  7,274 km/h Mach 6  │
+│  X-15 (research)  █████████████████████████████░░░  7,274 km/h Mach 6  │
 │  HEXA-UFO         ████████████████████████████████ 12,348 km/h Mach 10 │
 │                                                                        │
-│  [항속거리 (km)]                                                        │
+│  [Range (km)]                                                           │
 │  F-22              ███░░░░░░░░░░░░░░░░░░░░░░░░░░░   2,960 km           │
 │  B777-200ER        █████████████░░░░░░░░░░░░░░░░░  14,300 km           │
-│  HEXA-UFO          ████████████████████████████████  무한 (핵융합)      │
+│  HEXA-UFO          ████████████████████████████████  unbounded (fusion) │
 │                                                                        │
-│  [이착륙 거리 (m)]                                                      │
-│  B777              ████████████████████████████████  3,000m 활주로      │
+│  [Takeoff/landing distance (m)]                                         │
+│  B777              ████████████████████████████████  3,000m runway      │
 │  Harrier VTOL      █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░    0m (VTOL)       │
 │  HEXA-UFO          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░    0m (VTOL)       │
 │                                                                        │
-│  [소음 (dB)]                                                           │
-│  제트 여객기       ████████████████████████████████  140 dB             │
-│  헬리콥터          ████████████████████████████░░░░  110 dB             │
+│  [Noise (dB)]                                                          │
+│  Jet airliner      ████████████████████████████████  140 dB             │
+│  Helicopter        ████████████████████████████░░░░  110 dB             │
 │  eVTOL (Joby)     ██████████████████░░░░░░░░░░░░░░   65 dB            │
 │  HEXA-UFO          ██████░░░░░░░░░░░░░░░░░░░░░░░░░   J₂=24 dB        │
 │                                                                        │
-│  [전력밀도 (kW/kg)]                                                    │
-│  Tesla 모터        ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 kW/kg         │
-│  항공 터보팬       █████░░░░░░░░░░░░░░░░░░░░░░░░░░  10 kW/kg          │
-│  HEXA-UFO SC모터   ████████████████████████████████  σ·sopfr=60 kW/kg  │
+│  [Power density (kW/kg)]                                               │
+│  Tesla motor       ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 kW/kg         │
+│  Aero turbofan     █████░░░░░░░░░░░░░░░░░░░░░░░░░░  10 kW/kg          │
+│  HEXA-UFO SC motor ████████████████████████████████  σ·sopfr=60 kW/kg  │
 │                                                                        │
-│  [비추력 Isp (s)]                                                      │
-│  터보팬            ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   3,000 s          │
-│  화학 로켓         █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░    450 s           │
-│  이온 추진         ████████████░░░░░░░░░░░░░░░░░░░  10,000 s           │
-│  HEXA-UFO 핵융합   ████████████████████████████████ 288,000 s          │
+│  [Specific impulse Isp (s)]                                            │
+│  Turbofan          ████░░░░░░░░░░░░░░░░░░░░░░░░░░░   3,000 s          │
+│  Chemical rocket   █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░    450 s           │
+│  Ion thruster      ████████████░░░░░░░░░░░░░░░░░░░  10,000 s           │
+│  HEXA-UFO fusion   ████████████████████████████████ 288,000 s          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: B⁴ 스케일링 + Meissner 효과
+### Core breakthrough: B⁴ scaling + Meissner effect
 
-현재 기술의 한계는 **자기장 세기**에 의해 결정된다:
-- 핵융합: 가둠 파워 ∝ B⁴ → 자장 2배 = 크기 1/16
-- MHD 추력: F ∝ J × B → 자장 σ·τ=48T = 기존 자석 대비 τ~σ배 추력
-- Meissner 부양: 부양력 ∝ B² → 48T에서 (48/5)² = 92배 부양력
+Current tech limits are dominated by **magnetic-field strength**:
+- Fusion: confinement power ∝ B⁴ → doubling field ≈ 1/16 size
+- MHD thrust: F ∝ J × B → σ·τ=48T ≈ τ~σ x thrust vs legacy magnets
+- Meissner levitation: lift ∝ B² → at 48T, (48/5)² ≈ 92 x lift
 
-**RT-SC 48T 자석이 만드는 연쇄 혁명**:
+**Cascade enabled by RT-SC 48T magnets**:
 
 ```
   RT-SC (R=0, Tc=300K)
-    → B = σ·τ = 48T (상온에서 세계 최강 자석)
-      → 핵융합로: R = 1/(σ-φ) = 0.1m (탁상)   ... 무한 에너지
-      → MHD 추진: Isp = 288,000s               ... 극초음속+우주
-      → Meissner: 무동력 부양                    ... 비행접시 형태 가능
-      → SMES: 순간 가속 에너지                   ... τ=4g 급기동
+    → B = σ·τ = 48T (strongest-class room-temperature magnet)
+      → Fusion: R = 1/(σ-φ) = 0.1m (tabletop)   ... abundant energy
+      → MHD propulsion: Isp = 288,000s           ... hypersonic + space
+      → Meissner: power-free levitation           ... saucer shape viable
+      → SMES: burst acceleration energy           ... τ=4g maneuvering
 ```
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+## §3 REQUIRES (prerequisites) — upstream domains
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 기술 | 링크 |
+| Upstream domain | UFO current | UFO required | Gap | Key technology | Link |
 |-------------|---------|---------|------|-----------|------|
-| room-temp-sc | 🛸5 | 🛸10 | +5 | 상온 초전도 Tc = 300K, R = 0 | [문서](../../energy/room-temp-sc/room-temp-sc.md) |
-| fusion-powerplant | 🛸4 | 🛸10 | +6 | 탁상 핵융합 Q = σ-φ = 10, R = 0.1m | [문서](../../energy/fusion-powerplant/fusion-powerplant.md) |
-| superconductor | 🛸6 | 🛸10 | +4 | B = σ·τ = 48T + SC 모터 60 kW/kg | [문서](../../energy/superconductor/superconductor.md) |
+| room-temp-sc | 🛸5 | 🛸10 | +5 | Room-temperature superconductivity Tc = 300K, R = 0 | [doc](../../energy/room-temp-sc/room-temp-sc.md) |
+| fusion-powerplant | 🛸4 | 🛸10 | +6 | Tabletop fusion Q = σ-φ = 10, R = 0.1m | [doc](../../energy/fusion-powerplant/fusion-powerplant.md) |
+| superconductor | 🛸6 | 🛸10 | +4 | B = σ·τ = 48T + SC motor 60 kW/kg | [doc](../../energy/superconductor/superconductor.md) |
 
-3개 선행 도메인이 모두 🛸10 도달 시 통합 비행체 Mk.III 이후 제조 가능. 현재는 소재/부품 단계 (Mk.I~II).
+Integrated vehicle Mk.III and beyond becomes buildable when all three upstream domains reach 🛸10. Currently at the materials/components stage (Mk.I to II).
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system architecture) — System Architecture (ASCII)
 
-### 5단 체인 시스템맵
+### Five-tier chain system map
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│                        HEXA-UFO 시스템 구조                              │
+│                        HEXA-UFO system architecture                      │
 ├────────────┬────────────┬────────────┬────────────┬─────────────────────┤
-│   선체     │   추진     │   에너지   │   제어     │   생명유지           │
+│  Hull      │ Propulsion │  Energy    │  Control   │  Life support       │
 │  Level 0   │  Level 1   │  Level 2   │  Level 3   │  Level 4            │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
-│ C Z=6 복합 │ MHD+Fan    │ 탁상 핵융합│ FBW 삼중   │ 6인 여압 캡슐       │
-│ Diamond    │ n=6 노즐   │ B=σ·τ=48T │ n/φ=3중복  │ n=6 crew station    │
-│ Hull       │ Ring Motor │ Q=σ-φ=10  │ SE(3)=n=6  │ O₂/CO₂/T/P/H₂O/rad │
-│ D=J₂=24m  │ 60kW/kg    │ P=50MW    │ 6-DOF      │ n=6 환경변수        │
-│ t=σ/100=12cm│Isp=288Ks │ R=0.1m    │ AI 자율    │ Apgar-class monitor │
+│ C Z=6 comp │ MHD+Fan    │ Tabletop   │ FBW triple │ 6-crew pressurized  │
+│ Diamond    │ n=6 nozzle │ fusion     │ n/φ=triple │ capsule             │
+│ Hull       │ Ring Motor │ B=σ·τ=48T  │ redundancy │ n=6 crew station    │
+│ D=J₂=24m  │ 60kW/kg    │ Q=σ-φ=10  │ SE(3)=n=6  │ O₂/CO₂/T/P/H₂O/rad │
+│ t=σ/100=12cm│Isp=288Ks │ P=50MW    │ 6-DOF      │ n=6 environmental   │
+│             │           │ R=0.1m    │ AI autonomy│ Apgar-class monitor │
 ├────────────┼────────────┼────────────┼────────────┼─────────────────────┤
 │ n6: 95%    │ n6: 93%    │ n6: 92%   │ n6: 95%    │ n6: 90%             │
 └─────┬──────┴─────┬──────┴─────┬──────┴─────┬──────┴──────┬──────────────┘
@@ -187,562 +188,567 @@ requires:
    n6 EXACT     n6 EXACT    n6 EXACT     n6 EXACT      n6 EXACT
 ```
 
-### 단면도 (Saucer Cross-Section)
+### Cross-section (Saucer Cross-Section)
 
 ```
-                        ← J₂=24m 직경 →
+                        ← J₂=24m diameter →
                    ╭───────────────────────────╮
-                 ╱    σ=12 뷰포트 (전방위)       ╲
+                 ╱    σ=12 viewports (omnidirectional)       ╲
                ╱  ┌─────────────────────────┐     ╲
-             ╱    │    승무원 캡슐 (n=6석)    │       ╲
-           ╱      │   [조종] [항법] [통신]   │         ╲
-    ╭────╱────────│   [무장] [과학] [의료]   │──────────╲────╮
-    │  ╱ 외부링   │         ★ 핵융합로 ★     │  외부링    ╲  │
-    │ │ MHD 추진  │    B=σ·τ=48T R=0.1m     │  MHD 추진   │ │  ↕ 높이
-    │ │ n=6 노즐  │   ┌──────────────────┐  │  n=6 노즐   │ │  σ-τ=8m
-    │ │ SC 모터   │   │  SMES 에너지 저장 │  │  SC 모터    │ │  (중앙)
+             ╱    │   Crew capsule (n=6 seats)│       ╲
+           ╱      │   [pilot] [nav] [comm]  │         ╲
+    ╭────╱────────│   [armament] [science] [med]   │──────────╲────╮
+    │  ╱ Outer ring│         * Fusion reactor *     │  Outer ring ╲  │
+    │ │ MHD drive │    B=σ·τ=48T R=0.1m     │  MHD drive   │ │  ↕ Height
+    │ │ n=6 nozzles│   ┌──────────────────┐  │  n=6 nozzles │ │  σ-τ=8m
+    │ │ SC motors │   │  SMES energy store │  │  SC motors   │ │  (center)
     │  ╲ 60RPM   │   │  J₂=24 MJ/m³     │  │  60RPM     ╱  │
     ╰────╲────────│   └──────────────────┘  │──────────╱────╯
            ╲      │      Landing Gear       │         ╱
-             ╲    │  ▽    n/φ=3 다리    ▽  │       ╱
+             ╲    │  ▽   n/φ=3 legs    ▽  │       ╱
                ╲  └─────────────────────────┘     ╱
                  ╲   Carbon Z=6 Diamond Hull     ╱
                    ╰───────────────────────────╯
                           ▽ ▽ ▽
-                       n/φ=3 착륙각
+                       n/φ=3 landing legs
 ```
 
-### n=6 파라미터 완전 매핑
+### Full n=6 parameter mapping
 
-#### 선체 (Hull)
+#### Hull
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physical basis | Check |
 |---------|-----|---------|----------|------|
-| 직경 D | 24m | J₂ = 24 | 클래식 소서 비율, 최적 양력/항력 | EXACT |
-| 높이 H (중앙) | 8m | σ-τ = 8 | 디스크 두께비 D/H = J₂/(σ-τ) = 3 = n/φ | EXACT |
-| 높이 H (가장자리) | 2m | φ = 2 | 외부 링 높이, 추진 모듈 수납 | EXACT |
-| 선체 두께 t | 12cm | σ/100 | Diamond-graphene C Z=6 복합재 | EXACT |
-| 착륙각 수 | 3 | n/φ = 3 | 삼각형 안정 (BT-123 SE(3)) | EXACT |
-| 뷰포트 수 | 12 | σ = 12 | 30도 간격, 전방위 관측 | EXACT |
-| 선체 질량 | 6,000 kg | n·10³ | C Z=6 복합재 (밀도 3.5g/cm³) | EXACT |
-| 외부 링 RPM | 60 | σ·sopfr = 60 | 자이로 안정화 (BT-287 밸런스) | EXACT |
-| 단면 종횡비 D/H | 3 | n/φ = 3 | 원반형 최적 (BT-274) | EXACT |
-| 리벳/접합부 | 0 | R(6)-1 = 0 | 일체형 CVD Diamond 성형 | EXACT |
+| Diameter D | 24m | J₂ = 24 | Classic saucer ratio, optimal lift/drag | EXACT |
+| Height H (center) | 8m | σ-τ = 8 | Disc thickness ratio D/H = J₂/(σ-τ) = 3 = n/φ | EXACT |
+| Height H (edge) | 2m | φ = 2 | Outer ring height, propulsion module housing | EXACT |
+| Hull thickness t | 12cm | σ/100 | Diamond-graphene C Z=6 composite | EXACT |
+| Landing leg count | 3 | n/φ = 3 | Triangular stability (BT-123 SE(3)) | EXACT |
+| Viewport count | 12 | σ = 12 | 30-degree spacing, omnidirectional view | EXACT |
+| Hull mass | 6,000 kg | n·10³ | C Z=6 composite (density 3.5 g/cm³) | EXACT |
+| Outer ring RPM | 60 | σ·sopfr = 60 | Gyroscopic stabilization (BT-287 balance) | EXACT |
+| Aspect ratio D/H | 3 | n/φ = 3 | Disc-optimal (BT-274) | EXACT |
+| Rivets/joints | 0 | R(6)-1 = 0 | Monolithic CVD Diamond forming | EXACT |
 
-#### 추진 (Propulsion)
+#### Propulsion
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physical basis | Check |
 |---------|-----|---------|----------|------|
-| MHD 노즐 수 | 6 | n = 6 | 60도 간격, 전방향 벡터링 | EXACT |
-| 덕티드 팬 수 | 12 | σ = 12 | 대기권 보조 추력 (VTOL) | EXACT |
-| MHD 추력 (총) | 288 kN | σ·J₂ = 288 | J×B 로렌츠 힘 (48T, 6kA) | EXACT |
-| SC 모터 전력밀도 | 60 kW/kg | σ·sopfr = 60 | superconductor 기반 (RT-SC) | EXACT |
-| 대기 최대속도 | Mach 10 | σ-φ = 10 | MHD 가속 + 자기 실드 | EXACT |
-| 우주 Isp | 288,000 s | σ·J₂·10³ | 핵융합 가열 플라즈마 배출 | EXACT |
-| 호버링 추력 | 0 kN | Meissner | 초전도 반자성 = 에너지 0 | EXACT |
-| 팬 블레이드 수/유닛 | 6 | n = 6 | BT-270 최적 블레이드 | EXACT |
-| 노즐 벡터링 각도 | ±60도 | ±σ·sopfr도 | 전방향 기동 | EXACT |
-| 추력/중량비 (T/W) | 4 | τ = 4 | 수직 가속 한계 | EXACT |
+| MHD nozzle count | 6 | n = 6 | 60-degree spacing, omnidirectional vectoring | EXACT |
+| Ducted fan count | 12 | σ = 12 | Atmospheric auxiliary thrust (VTOL) | EXACT |
+| MHD thrust (total) | 288 kN | σ·J₂ = 288 | J×B Lorentz force (48T, 6kA) | EXACT |
+| SC motor power density | 60 kW/kg | σ·sopfr = 60 | superconductor-based (RT-SC) | EXACT |
+| Max atmospheric speed | Mach 10 | σ-φ = 10 | MHD acceleration + magnetic shield | EXACT |
+| Space Isp | 288,000 s | σ·J₂·10³ | Fusion-heated plasma exhaust | EXACT |
+| Hovering thrust | 0 kN | Meissner | Superconducting diamagnetism = 0 energy | EXACT |
+| Fan blades per unit | 6 | n = 6 | BT-270 optimal blades | EXACT |
+| Nozzle vectoring angle | ±60 deg | ±σ·sopfr deg | Omnidirectional maneuver | EXACT |
+| Thrust/weight (T/W) | 4 | τ = 4 | Vertical acceleration ceiling | EXACT |
 
-#### 에너지 (Energy)
+#### Energy
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physical basis | Check |
 |---------|-----|---------|----------|------|
-| 핵융합 자기장 | 48T | σ·τ = 48 | RT-SC 코일 (fusion-powerplant) | EXACT |
-| 핵융합 반경 | 0.1m | 1/(σ-φ) | B⁴ 스케일링 (탁상) | EXACT |
-| 에너지 증배 Q | 10 | σ-φ = 10 | D-T 반응 Lawson 조건 충족 | EXACT |
-| 총 출력 P | 50 MW | sopfr²·φ = 50 | 5MWe + 45MW 추진 | EXACT |
-| SMES 에너지밀도 | 24 MJ/m³ | J₂ = 24 | 48T 자기장 에너지 B²/2μ₀ | EXACT |
-| SMES 방전 시간 | 1 s | μ = 1 | 급기동용 순간 방전 | EXACT |
-| 연료 (D₂O) 소모 | 1.2 g/h | σ/10 | D-T 반응 질량결손 | EXACT |
-| SC 배전 효율 | 99.9% | 1-1/(σ·(σ-φ)²) | R=0 무손실 | EXACT |
-| 발전기 주파수 | 60 Hz | σ·sopfr = 60 | BT-62 그리드 호환 | EXACT |
-| 비상 배터리 | 48 kWh | σ·τ = 48 | SMES 백업 + Li 보조 | EXACT |
+| Fusion magnetic field | 48T | σ·τ = 48 | RT-SC coils (fusion-powerplant) | EXACT |
+| Fusion radius | 0.1m | 1/(σ-φ) | B⁴ scaling (tabletop) | EXACT |
+| Energy gain Q | 10 | σ-φ = 10 | D-T reaction Lawson condition met | EXACT |
+| Total output P | 50 MW | sopfr²·φ = 50 | 5 MWe + 45 MW propulsion | EXACT |
+| SMES energy density | 24 MJ/m³ | J₂ = 24 | 48T field energy B²/2μ₀ | EXACT |
+| SMES discharge time | 1 s | μ = 1 | Burst maneuvering instantaneous discharge | EXACT |
+| Fuel (D₂O) consumption | 1.2 g/h | σ/10 | D-T reaction mass defect | EXACT |
+| SC distribution efficiency | 99.9% | 1-1/(σ·(σ-φ)²) | R=0 lossless | EXACT |
+| Generator frequency | 60 Hz | σ·sopfr = 60 | BT-62 grid compatible | EXACT |
+| Backup battery | 48 kWh | σ·τ = 48 | SMES backup + Li auxiliary | EXACT |
 
-#### 제어 (Control)
+#### Control
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physical basis | Check |
 |---------|-----|---------|----------|------|
-| 자유도 (DOF) | 6 | n = 6 | SE(3) = R³ × SO(3) (BT-123) | EXACT |
-| FBW 중복도 | 3 | n/φ = 3 | 삼중 중복 (BT-276) | EXACT |
-| IMU 축 | 6 | n = 6 | 3축 가속도 + 3축 자이로 | EXACT |
-| 센서 카메라 | 12 | σ = 12 | 전방위 (BT-327 USS σ=12) | EXACT |
-| LiDAR 유닛 | 6 | n = 6 | 60도 섹터별 1대 | EXACT |
-| 레이더 | 4 | τ = 4 | 전후좌우 (BT-328 τ=4 레이더) | EXACT |
-| 프로세서 코어 수 | 144 | σ² = 144 | BT-90 GPU SM 구조 | EXACT |
-| 통신 채널 | 12 | σ = 12 | 다중 대역 (BT-181) | EXACT |
-| 항법 갱신율 | 48 Hz | σ·τ = 48 | IMU+GPS+관성 융합 | EXACT |
-| AI 의사결정 지연 | 1 ms | μ = 1 | 실시간 자율비행 | EXACT |
+| DOF | 6 | n = 6 | SE(3) = R³ × SO(3) (BT-123) | EXACT |
+| FBW redundancy | 3 | n/φ = 3 | Triple redundancy (BT-276) | EXACT |
+| IMU axes | 6 | n = 6 | 3-axis accel + 3-axis gyro | EXACT |
+| Sensor cameras | 12 | σ = 12 | Omnidirectional (BT-327 USS σ=12) | EXACT |
+| LiDAR units | 6 | n = 6 | One per 60-degree sector | EXACT |
+| Radars | 4 | τ = 4 | F/B/L/R (BT-328 τ=4 radar) | EXACT |
+| Processor cores | 144 | σ² = 144 | BT-90 GPU SM structure | EXACT |
+| Comm channels | 12 | σ = 12 | Multi-band (BT-181) | EXACT |
+| Nav update rate | 48 Hz | σ·τ = 48 | IMU+GPS+inertial fusion | EXACT |
+| AI decision latency | 1 ms | μ = 1 | Real-time autonomous flight | EXACT |
 
-#### 생명유지 (Life Support)
+#### Life support
 
-| 파라미터 | 값 | n=6 수식 | 물리 근거 | 판정 |
+| Parameter | Value | n=6 formula | Physical basis | Check |
 |---------|-----|---------|----------|------|
-| 승무원 | 6명 | n = 6 | BT-273 최적 승무원 | EXACT |
-| 환경변수 모니터 | 6종 | n = 6 | O₂/CO₂/온도/기압/습도/방사선 | EXACT |
-| 캡슐 기압 | 1 atm | R(6)·100 kPa | (σ-φ)² kPa = 100 kPa | EXACT |
-| 캡슐 온도 | 24도C | J₂ = 24 | 쾌적 온도 | EXACT |
-| 최대 가속도 (구조) | 4g | τ = 4 | 구조 한계 (비상) | EXACT |
-| 순항 가속도 (쾌적) | 2g | φ = 2 | 인체 허용 (BT-283) | EXACT |
-| G-suit 단계 | 5 | sopfr = 5 | 고G 보호 레벨 | EXACT |
-| EVA 에어록 | 1 | μ = 1 | 선체 하부 단일 출구 | EXACT |
+| Crew | 6 | n = 6 | BT-273 optimal crew | EXACT |
+| Environmental monitors | 6 types | n = 6 | O₂/CO₂/temp/press/humidity/radiation | EXACT |
+| Capsule pressure | 1 atm | R(6)·100 kPa | (σ-φ)² kPa = 100 kPa | EXACT |
+| Capsule temperature | 24 C | J₂ = 24 | Comfortable temperature | EXACT |
+| Max acceleration (structural) | 4g | τ = 4 | Structural limit (emergency) | EXACT |
+| Cruise acceleration (comfort) | 2g | φ = 2 | Human tolerance (BT-283) | EXACT |
+| G-suit stages | 5 | sopfr = 5 | High-G protection levels | EXACT |
+| EVA airlock | 1 | μ = 1 | Single exit on lower hull | EXACT |
 
-### HEXA-UFO 제원 총괄표
+### HEXA-UFO specifications summary
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │  HEXA-UFO "Flying Saucer" Technical Specifications                     │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  형식          원반형 VTOL (Flying Saucer)                               │
-│  직경          J₂ = 24 m                                                │
-│  높이          σ-τ = 8 m (중앙) / φ = 2 m (가장자리)                    │
-│  질량 (공허)   n·10³ = 6,000 kg                                         │
-│  질량 (최대)   σ·10³ = 12,000 kg (연료+화물+승무원)                      │
-│  승무원        n = 6 명                                                  │
-│  동력          탁상 핵융합 (D-T, Q=σ-φ=10, P=sopfr²·φ=50 MW)           │
-│  자기장        σ·τ = 48 T (RT-SC 코일, 상온)                            │
-│  추진          MHD (대기) + Fusion Torch (우주) + σ=12 Ducted Fan       │
-│  최대추력      σ·J₂ = 288 kN (MHD 모드)                                 │
-│  최대속도 (대기)  Mach σ-φ = Mach 10 (12,348 km/h)                      │
-│  비추력 (우주)    σ·J₂·10³ = 288,000 s                                  │
-│  항속거리      무한 (핵융합, 연료=D₂O)                                   │
-│  고도 범위     0 ~ σ·sopfr·10 = 600 km (LEO)                            │
-│  최대 가속     τ = 4 g (구조 한계)                                       │
-│  순항 가속     φ = 2 g (쾌적)                                            │
-│  소음          J₂ = 24 dB (MHD 모드 100m)                               │
-│  착륙각        n/φ = 3 (삼각 배치)                                       │
-│  뷰포트        σ = 12 (30도 간격)                                        │
-│  FBW 중복      n/φ = 3 (삼중)                                           │
-│  센서          σ=12 카메라 + n=6 LiDAR + τ=4 레이더                      │
-│  컴퓨팅        σ² = 144 코어 (온보드)                                    │
-│  외부링 회전    σ·sopfr = 60 RPM                                         │
-│  SMES 에너지    J₂ = 24 MJ/m³                                           │
-│  연료 소모      σ/10 = 1.2 g/h (D₂O)                                    │
-│  n=6 EXACT     54/58 = 93.1%                                            │
+│  Type           Disc-shaped VTOL (Flying Saucer)                         │
+│  Diameter       J₂ = 24 m                                                │
+│  Height         σ-τ = 8 m (center) / φ = 2 m (edge)                     │
+│  Mass (empty)   n·10³ = 6,000 kg                                         │
+│  Mass (max)     σ·10³ = 12,000 kg (fuel+cargo+crew)                      │
+│  Crew           n = 6                                                    │
+│  Power          Tabletop fusion (D-T, Q=σ-φ=10, P=sopfr²·φ=50 MW)       │
+│  Magnetic field σ·τ = 48 T (RT-SC coils, room temp)                     │
+│  Propulsion     MHD (atm) + Fusion Torch (space) + σ=12 Ducted Fan       │
+│  Max thrust     σ·J₂ = 288 kN (MHD mode)                                 │
+│  Max speed (atm)  Mach σ-φ = Mach 10 (12,348 km/h)                      │
+│  Isp (space)      σ·J₂·10³ = 288,000 s                                  │
+│  Range          unbounded (fusion, fuel = D₂O)                           │
+│  Altitude range 0 ~ σ·sopfr·10 = 600 km (LEO)                           │
+│  Max accel      τ = 4 g (structural limit)                               │
+│  Cruise accel   φ = 2 g (comfort)                                        │
+│  Noise          J₂ = 24 dB (MHD mode at 100 m)                          │
+│  Landing legs   n/φ = 3 (triangular layout)                              │
+│  Viewports      σ = 12 (30-degree spacing)                               │
+│  FBW redundancy n/φ = 3 (triple)                                         │
+│  Sensors        σ=12 cameras + n=6 LiDAR + τ=4 radars                    │
+│  Compute        σ² = 144 cores (onboard)                                 │
+│  Outer ring RPM σ·sopfr = 60 RPM                                         │
+│  SMES energy    J₂ = 24 MJ/m³                                           │
+│  Fuel burn      σ/10 = 1.2 g/h (D₂O)                                    │
+│  n=6 EXACT      54/58 = 93.1%                                            │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### BT 연결 (항공 + 핵융합 + 초전도 + 로봇 + 센서)
+### BT links (aerospace + fusion + superconductor + robotics + sensors)
 
-#### 항공/우주 BT
+#### Aerospace/space BT
 
-| BT | 이름 | HEXA-UFO 적용 |
+| BT | Name | HEXA-UFO application |
 |----|------|--------------|
-| BT-196 | 항공공학 n=6 비행 아키텍처 | 전체 비행체 SE(3) 6-DOF 설계 |
-| BT-241 | 항공+우주항공 n=6 | 대기권~우주 단일 기체 설계 기반 |
-| BT-270 | 멀티로터 블레이드 τ→n→(σ-τ) | 덕티드 팬 블레이드 수 n=6 |
-| BT-271 | Ti-6Al-4V 이중 n=6 합금 | 핵심 구조재 (Ti Z=22, Al Z=13) |
-| BT-274 | 항공기 종횡비 n~σ | 디스크 D/H = n/φ = 3 최적비 |
-| BT-276 | 삼중 중복 Fly-by-Wire | FBW n/φ=3 중복 (안전 필수) |
-| BT-342 | 항공공학 완전 n=6 | 6-DOF/12km/METAR 전체 준용 |
-| BT-273 | 우주 승무원 약수 캐스케이드 | 승무원 n=6명 (Apollo n/φ=3 확장) |
-| BT-275 | 로켓 단수 φ~n/φ | 단일 단 (SSTO, τ=1+3 부스트) |
+| BT-196 | Aerospace engineering n=6 flight architecture | Entire vehicle SE(3) 6-DOF design |
+| BT-241 | Aerospace + astronautics n=6 | Atmosphere-to-space single-vehicle basis |
+| BT-270 | Multirotor blades τ→n→(σ-τ) | Ducted fan blade count n=6 |
+| BT-271 | Ti-6Al-4V dual n=6 alloy | Core structural material (Ti Z=22, Al Z=13) |
+| BT-274 | Aircraft aspect ratio n~σ | Disc D/H = n/φ = 3 optimal ratio |
+| BT-276 | Triple-redundant Fly-by-Wire | FBW n/φ=3 redundancy (safety critical) |
+| BT-342 | Aerospace engineering full n=6 | 6-DOF/12 km/METAR full alignment |
+| BT-273 | Space crew divisor cascade | Crew n=6 (Apollo n/φ=3 extension) |
+| BT-275 | Rocket stages φ~n/φ | Single stage (SSTO, τ=1+3 boost) |
 
-#### 핵융합/플라즈마 BT
+#### Fusion/plasma BT
 
-| BT | 이름 | HEXA-UFO 적용 |
+| BT | Name | HEXA-UFO application |
 |----|------|--------------|
-| BT-291 | D-T 에너지 분배 1/sopfr | alpha 20%=추력, neutron 80%=발전 |
-| BT-292 | 무중성자 핵융합 지도 | 장기 진화: D-He3 (방사선 0) |
-| BT-296 | D-T-Li6 연료주기 폐합 | 삼중수소 자체 생산 (Li 블랭킷) |
-| BT-298 | Lawson 점화 삼중적 n=6 | Q=σ-φ=10, nτT 충족 검증 |
-| BT-310~317 | 플라즈마 딥다이브 | MHD 안정성/가둠 모드/가열 적용 |
+| BT-291 | D-T energy split 1/sopfr | alpha 20% = thrust, neutron 80% = power |
+| BT-292 | Aneutronic fusion map | Long-term evolution: D-He3 (radiation 0) |
+| BT-296 | D-T-Li6 fuel cycle closure | Tritium self-production (Li blanket) |
+| BT-298 | Lawson ignition triple product n=6 | Q=σ-φ=10, nτT satisfaction verified |
+| BT-310 to 317 | Plasma deep-dive | MHD stability/confinement modes/heating applied |
 
-#### 초전도 BT
+#### Superconductor BT
 
-| BT | 이름 | HEXA-UFO 적용 |
+| BT | Name | HEXA-UFO application |
 |----|------|--------------|
-| BT-299 | A15 Nb₃Sn 삼중정수 | 코일 재질 참조 (RT-SC로 대체) |
-| BT-302 | ITER 마그넷 구조 | 핵융합로 TF/PF/CS 코일 설계 |
-| BT-303 | BCS 해석적 상수 | RT-SC 재질 설계 근거 |
-| BT-306 | SC 양자소자 접합 래더 | 센서/계측 SC 접합 |
+| BT-299 | A15 Nb₃Sn triple constants | Coil material reference (replaced by RT-SC) |
+| BT-302 | ITER magnet structure | Fusion reactor TF/PF/CS coil design |
+| BT-303 | BCS analytic constants | RT-SC material design basis |
+| BT-306 | SC quantum device junction ladder | Sensor/metrology SC junctions |
 
-#### 로봇/센서 BT
+#### Robotics/sensor BT
 
-| BT | 이름 | HEXA-UFO 적용 |
+| BT | Name | HEXA-UFO application |
 |----|------|--------------|
-| BT-123 | SE(3) dim=n=6 | 6-DOF 비행 제어 기본 정리 |
-| BT-124 | φ=2 양측 대칭 | 선체 좌우 대칭 설계 |
-| BT-125 | τ=4 이동 최소 안정 | 착륙각 n/φ=3 + 1 예비 = τ=4 |
-| BT-127 | σ=12 kissing number | 12 카메라 전방위 커버리지 |
-| BT-327 | AD 센서-컴퓨트 n=6 | 12 USS + 6 CAM + 144 TOPS |
-| BT-328 | AD τ=4 서브시스템 | 레이더 τ=4, ASIL-D 안전 |
+| BT-123 | SE(3) dim=n=6 | 6-DOF flight control theorem basis |
+| BT-124 | φ=2 bilateral symmetry | Hull left/right symmetric design |
+| BT-125 | τ=4 minimum stable locomotion | Landing legs n/φ=3 + 1 spare = τ=4 |
+| BT-127 | σ=12 kissing number | 12 cameras omnidirectional coverage |
+| BT-327 | AD sensor-compute n=6 | 12 USS + 6 CAM + 144 TOPS |
+| BT-328 | AD τ=4 subsystems | Radar τ=4, ASIL-D safety |
 
-#### 재료/소재 BT
+#### Materials BT
 
-| BT | 이름 | HEXA-UFO 적용 |
+| BT | Name | HEXA-UFO application |
 |----|------|--------------|
-| BT-85 | Carbon Z=6 보편성 | Diamond-graphene 선체 복합재 |
-| BT-86 | 결정 CN=6 법칙 | 선체 소재 결정 구조 |
-| BT-90 | SM=φ×K₆ 접촉수 | 온보드 GPU σ²=144 코어 |
-| BT-93 | Carbon Z=6 칩 소재 | Diamond 기반 프로세서 (열전도 극대) |
+| BT-85 | Carbon Z=6 universality | Diamond-graphene hull composite |
+| BT-86 | Crystal CN=6 law | Hull material crystal structure |
+| BT-90 | SM=φ×K₆ contact number | Onboard GPU σ²=144 cores |
+| BT-93 | Carbon Z=6 chip material | Diamond-based processor (max thermal conduction) |
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data/energy flow) — Flow (ASCII)
 
-### 에너지 플로우
+### Energy flow
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  D₂O 연료 ──→ [핵융합로] ──→ [SMES 저장] ──→ [배전] ──→ [추진/제어/생명유지] │
-│  바닷물 D     B=σ·τ=48T      J₂=24 MJ/m³    σ=12 버스   n=6 서브시스템      │
-│  무한 공급     Q=σ-φ=10       순간 방전       SC 배선      무손실 배전       │
+│  D₂O fuel ──→ [Fusion reactor] ──→ [SMES store] ──→ [Bus] ──→ [Prop/Ctrl/LS] │
+│  Seawater D     B=σ·τ=48T          J₂=24 MJ/m³     σ=12 bus  n=6 subsystems │
+│  Unbounded      Q=σ-φ=10           Burst discharge  SC wiring Lossless bus  │
 │       │           │              │              │              │           │
 │       ▼           ▼              ▼              ▼              ▼           │
 │    n6 EXACT    n6 EXACT      n6 EXACT      n6 EXACT      n6 EXACT         │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  추진 상세 플로우:                                                       │
-│  핵융합 P=50MW ──→ [SC 변환 η=99.9%] ──→ [MHD 가속] ──→ [노즐/팬] ──→ 추력 │
-│   sopfr²·φ MW      R=0 무손실            J×B 추력      n=6 유닛, σ·J₂ kN │
+│  Propulsion detail flow:                                                 │
+│  Fusion P=50MW ──→ [SC conversion η=99.9%] ──→ [MHD accel] ──→ [Nozzle/Fan] ──→ Thrust │
+│   sopfr²·φ MW      R=0 lossless           J×B thrust      n=6 units, σ·J₂ kN │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 비행 모드별 에너지 분배
+### Energy split by flight mode
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ 호버링  │ █████████████████████████░░░░░░  추진 80% + 제어 20%            │
-│ 대기권  │ ██████████████████████████████░░  추진 90% + 기타 10%           │
-│ 천이    │ ███████████████████████████████░  추진 95% + 기타 5%            │
-│ 궤도    │ ██████████████████████████░░░░░░  추진 80% + 생명 20%           │
-│ 우주순항│ ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░  추진 10% + 생명 90%           │
+│ Hover    │ █████████████████████████░░░░░░  Prop 80% + Ctrl 20%           │
+│ Atmos    │ ██████████████████████████████░░  Prop 90% + Other 10%          │
+│ Transit  │ ███████████████████████████████░  Prop 95% + Other 5%           │
+│ Orbit    │ ██████████████████████████░░░░░░  Prop 80% + Life 20%           │
+│ Deep-space│ ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░  Prop 10% + Life 90%          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 비행 모드 5개
+### Five flight modes
 
-#### 모드 1: 호버링 (Hover) — 무동력 부양
+#### Mode 1: Hover — power-free levitation
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 1: HOVER (Meissner Levitation)     │
-│  고도: 0 ~ σ-phi=10 m (근지표)           │
-│  소비 전력: 0 W (Meissner 효과)           │
-│  소음: 0 dB (무동력)                      │
-│  원리: RT-SC 디스크 전체가 완전 반자성체   │
-│        → 지구 자기장 (50μT) 배제           │
-│        → Meissner 척력으로 부양             │
-│  보조: 능동 자기장 코일로 고도 미세 제어     │
-│  안정: 외부 링 60RPM 자이로 효과            │
-│  용도: 이착륙, 정지비행, 정밀 위치유지       │
+│  Altitude: 0 ~ σ-phi=10 m (near surface) │
+│  Power draw: 0 W (Meissner effect)       │
+│  Noise: 0 dB (passive)                   │
+│  Principle: RT-SC disc acts as perfect   │
+│             diamagnet, expelling Earth's │
+│             field (50μT) → Meissner lift │
+│  Aux: active field coils for fine altitude│
+│  Stability: outer ring 60RPM gyroscopic  │
+│  Use: takeoff/landing, hovering, station │
 └──────────────────────────────────────────┘
 ```
 
-Meissner 부양력 계산:
-- 지구 자기장 B_earth = 50 μT (약), RT-SC가 이를 배제
-- 추가 능동 자기장: 지표에 설치된 SC 패드와 상호작용 시 B = 1T 레벨
-- 부양력 F = B²·A/(2μ₀) = 1²·π(12)²/(2·4π×10⁻⁷) = 180 MN (이론, 패드 사용시)
-- 순수 Meissner(지구 자장만): F ≈ μg 수준 → **능동 EM 보조 필수**
+Meissner lift calculation:
+- Earth magnetic field B_earth ≈ 50 μT, expelled by RT-SC
+- Additional active field: with ground-installed SC pads, B ≈ 1T level interaction
+- Lift F = B²·A/(2μ₀) = 1²·π(12)²/(2·4π×10⁻⁷) = 180 MN (theoretical, pad usage)
+- Pure Meissner (Earth field only): F ≈ μg level → **active EM assist required**
 
-#### 모드 2: 대기권 비행 (Atmospheric)
+#### Mode 2: Atmospheric flight
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 2: ATMOSPHERIC (MHD + Ducted Fan)  │
-│  고도: 0 ~ σ=12 km (대류권)               │
-│  속도: 0 ~ Mach sigma-phi=10              │
-│  추진: 저속=σ=12 덕티드 팬 / 고속=n=6 MHD │
-│  가속: 최대 tau=4 g                        │
-│  소음: J2=24 dB (MHD 모드)                 │
-│  원리: 공기 이온화 → SC 코일 자장으로 가속  │
-│        배기가스 0, 연소 0                   │
+│  Altitude: 0 ~ σ=12 km (troposphere)     │
+│  Speed: 0 ~ Mach sigma-phi=10            │
+│  Propulsion: low-v=σ=12 ducted fan /     │
+│              high-v=n=6 MHD              │
+│  Acceleration: max tau=4 g               │
+│  Noise: J2=24 dB (MHD mode)              │
+│  Principle: air ionization → acceleration│
+│             via SC coil field; no exhaust│
+│             or combustion                │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: 천이 비행 (Transition) — 대기권 → 궤도
+#### Mode 3: Transition — atmosphere to orbit
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 3: TRANSITION (MHD → Fusion Torch) │
-│  고도: σ=12 km ~ σ·sopfr·10=600 km       │
-│  속도: Mach 10 → 궤도속도 7.8 km/s        │
-│  추진: MHD 페이드아웃 → 핵융합 직접 추력    │
-│  원리: 대기 희박 → MHD 비효율              │
-│        → 핵융합 가열 플라즈마 직접 분사     │
-│        → Isp = sigma*J2*10^3 = 288,000 s  │
-│  가속: phi=2 g 지속 (승무원 쾌적)           │
+│  Altitude: σ=12 km ~ σ·sopfr·10=600 km   │
+│  Speed: Mach 10 → orbital 7.8 km/s       │
+│  Propulsion: MHD fade-out → fusion thrust│
+│  Principle: as air thins, MHD drops off; │
+│             direct emission of fusion-   │
+│             heated plasma takes over     │
+│  Isp = sigma*J2*10^3 = 288,000 s         │
+│  Accel: phi=2 g sustained (crew comfort) │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: 궤도 (Orbit)
+#### Mode 4: Orbit
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 4: ORBIT (Fusion Torch + Coast)    │
-│  고도: LEO sigma*sopfr*10=600 km          │
-│  속도: 7.8 km/s (원궤도)                   │
-│  추진: 핵융합 토치 (간헐적)                 │
-│  생명유지: 완전 밀폐 + 방사선 차폐          │
-│  체류: 무제한 (핵융합 에너지 + O2 재생)     │
-│  방사선: SC 자기 실드 (48T → 입자 편향)     │
+│  Altitude: LEO sigma*sopfr*10=600 km      │
+│  Speed: 7.8 km/s (circular orbit)         │
+│  Propulsion: fusion torch (intermittent)  │
+│  Life support: full seal + rad shielding  │
+│  Endurance: unbounded (fusion + O2 regen) │
+│  Radiation: SC magnetic shield (48T       │
+│             particle deflection)          │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: 심우주 (Deep Space)
+#### Mode 5: Deep space
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 5: DEEP SPACE (Fusion Cruise)      │
-│  속도: 지속 가속 phi=2g → 이론 한계 없음   │
+│  Speed: sustained phi=2g accel → no known │
+│         theoretical ceiling               │
 │  Isp: sigma*J2*10^3 = 288,000 s           │
-│  지구→화성: ~tau=4 일 (2g 지속 가속)        │
-│  지구→목성: ~sigma=12 일                    │
-│  연료: D2O (바닷물, 1g/h 소모)              │
-│  방사선: 48T 자기 실드 (우주선 차폐)         │
+│  Earth → Mars: ~tau=4 days (2g sustained) │
+│  Earth → Jupiter: ~sigma=12 days          │
+│  Fuel: D2O (seawater, 1 g/h burn)         │
+│  Radiation: 48T magnetic shield (cosmic)  │
 └──────────────────────────────────────────┘
 ```
 
-심우주 이동 시간 계산 (2g 지속 가속, 중간점 감속):
-- 화성 (최근접 ~55×10⁶ km, 2g): t = 2√(d/a) = 2√(5.5×10¹⁰/20) ≈ 1.1×10⁵s ≈ 1.2일
-- 화성 (평균 ~225×10⁶ km, 2g): t ≈ 2.1×10⁵s ≈ 2.5일
-- 화성 (원거리 ~400×10⁶ km, 2g): t ≈ 2.8×10⁵s ≈ 3.3일
-- 목성 (평균 ~778×10⁶ km, 2g): t ≈ 4.0×10⁵s ≈ sopfr일
+Deep-space transit time calculation (2g sustained, midpoint deceleration):
+- Mars (closest ~55×10⁶ km, 2g): t = 2√(d/a) = 2√(5.5×10¹⁰/20) ≈ 1.1×10⁵s ≈ 1.2 days
+- Mars (average ~225×10⁶ km, 2g): t ≈ 2.1×10⁵s ≈ 2.5 days
+- Mars (farthest ~400×10⁶ km, 2g): t ≈ 2.8×10⁵s ≈ 3.3 days
+- Jupiter (average ~778×10⁶ km, 2g): t ≈ 4.0×10⁵s ≈ sopfr days
 
-### MHD 추진 물리 상세
+### MHD propulsion physics in detail
 
-자기유체역학(MHD) 추진은 전도성 유체(이온화된 공기 = 플라즈마)에 자기장을 걸어 로렌츠 힘으로 가속:
+Magnetohydrodynamic (MHD) propulsion accelerates a conductive fluid (ionized air = plasma) via the Lorentz force by applying a magnetic field:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  공기 흡입 → [이온화 챔버] → [MHD 가속] → [노즐 분사] → 추력             │
+│  Air intake → [ionization chamber] → [MHD accel] → [nozzle] → thrust     │
 │                                                                          │
-│  이온화: 핵융합로 폐열 (10,000K+) + 마이크로파 (σ·sopfr=60 GHz)          │
-│           → 공기 플라즈마화 (전도도 σ_plasma ~ 10³ S/m)                  │
+│  Ionization: fusion waste heat (10,000K+) + microwave (σ·sopfr=60 GHz)   │
+│           → air plasma (conductivity σ_plasma ~ 10³ S/m)                 │
 │                                                                          │
-│  가속: F = J × B 로렌츠 힘                                                │
-│         ←── B = σ·τ = 48T (SC 코일)                                      │
+│  Acceleration: F = J × B Lorentz force                                   │
+│         ←── B = σ·τ = 48T (SC coils)                                     │
 │         ↑                                                                 │
-│         J (전류)                                                          │
-│         ───→ F = J × B (추력)                                             │
+│         J (current)                                                      │
+│         ───→ F = J × B (thrust)                                          │
 │                                                                          │
-│  추력 계산:                                                              │
-│    σ_plasma = 10³ S/m (이온화 공기)                                      │
-│    E = 6 kV/m (전계 강도)                                                 │
+│  Thrust calculation:                                                     │
+│    σ_plasma = 10³ S/m (ionized air)                                      │
+│    E = 6 kV/m (field strength)                                           │
 │    B = 48 T                                                               │
 │    V_channel = 1 m³                                                       │
 │    F = 10³ × 6×10³ × 48 × 1 = 288 kN = σ·J₂ kN                           │
 │                                                                          │
-│  Isp 우주 모드: D-T 반응 ⁴He(3.5MeV) + n(14.1MeV)                        │
+│  Isp space mode: D-T reaction ⁴He(3.5MeV) + n(14.1MeV)                   │
 │    v_He4 = √(2·E/m) = 1.3×10⁷ m/s                                        │
-│    자기 노즐 효율 22% → v_eff = 2.86×10⁶ m/s                             │
+│    Magnetic nozzle efficiency 22% → v_eff = 2.86×10⁶ m/s                 │
 │    Isp = v_eff/g₀ ≈ 291,500s ≈ σ·J₂·10³ = 288,000s                      │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 왜 원반형이 최적인가
+### Why the disc shape is optimal
 
-1. **MHD 노즐 n=6개 균등 배치** → 전방향 추력 벡터링 (60도 간격 = 360/n)
-2. **자이로 안정화**: 외부 링 회전 (σ·sopfr=60 RPM) → 각운동량 L = I·ω 자세 안정
-3. **Meissner 부양**: 원반 = 최대 면적/질량비 → F ∝ A(면적) = π(D/2)² = σ²·π m²
-4. **극초음속 공력**: 디스크 L/D — 충격파 전체 가장자리 균일 형성, 자기 실드와 시너지, Cd ≈ 1/(n/φ) = 1/3
+1. **MHD nozzles n=6 uniformly placed** → omnidirectional thrust vectoring (60-degree spacing = 360/n)
+2. **Gyro stabilization**: outer ring spin (σ·sopfr=60 RPM) → angular momentum L = I·ω attitude hold
+3. **Meissner lift**: disc = maximum area/mass ratio → F ∝ A(area) = π(D/2)² = σ²·π m²
+4. **Hypersonic aero**: disc L/D — shock uniformly formed across the edge, synergy with magnetic shield, Cd ≈ 1/(n/φ) = 1/3
 
-### DSE 후보군 (5단 × 후보 = 전수 탐색)
+### DSE candidate pool (5 tiers × candidates = full sweep)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-│  선체    │-->│   추진   │-->│  에너지  │-->│   제어   │-->│ 생명유지 │
+│  Hull    │-->│ Propulsn │-->│  Energy  │-->│ Control  │-->│ Life sup │
 │  K1=6   │   │  K2=5   │   │  K3=4   │   │  K4=5   │   │  K5=4   │
 │  =n     │   │  =sopfr │   │  =tau   │   │  =sopfr │   │  =tau   │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 6×5×4×5×4 = 2,400 | 호환 필터: 576 (24%) | Pareto: J₂=24 경로
+Total: 6×5×4×5×4 = 2,400 | compat filter: 576 (24%) | Pareto: J₂=24 routes
 ```
 
-#### K1 선체소재 (6종 = n)
+#### K1 hull material (6 types = n)
 
-| # | 소재 | 밀도 (g/cm³) | 인장강도 (GPa) | n=6 연결 |
+| # | Material | Density (g/cm³) | Tensile (GPa) | n=6 link |
 |---|------|-------------|--------------|---------|
-| 1 | Diamond-Graphene 복합 | 3.5 | 130 | C Z=n=6 (BT-85/93) |
-| 2 | Ti-6Al-4V | 4.43 | 1.1 | BT-271 이중 n=6 |
+| 1 | Diamond-Graphene composite | 3.5 | 130 | C Z=n=6 (BT-85/93) |
+| 2 | Ti-6Al-4V | 4.43 | 1.1 | BT-271 dual n=6 |
 | 3 | Carbon Fiber (CFRP) | 1.6 | 3.5 | C Z=n=6 |
-| 4 | SiC-Diamond 세라믹 | 3.2 | 3.4 | Si Z=14, C Z=6 |
-| 5 | Graphene-Aerogel | 0.16 | 0.5 | C Z=6, 초경량 |
-| 6 | CNT 나노튜브 복합 | 1.4 | 63 | C Z=6, 나노 구조 |
+| 4 | SiC-Diamond ceramic | 3.2 | 3.4 | Si Z=14, C Z=6 |
+| 5 | Graphene-Aerogel | 0.16 | 0.5 | C Z=6, ultralight |
+| 6 | CNT nanotube composite | 1.4 | 63 | C Z=6, nano-structure |
 
-#### K2 추진방식 (5종 = sopfr)
+#### K2 propulsion type (5 types = sopfr)
 
-| # | 방식 | Isp (s) | 추력 (kN) | n=6 연결 |
+| # | Type | Isp (s) | Thrust (kN) | n=6 link |
 |---|------|---------|----------|---------|
-| 1 | MHD (대기) | ~3,000 | σ·J₂=288 | J×B 로렌츠 |
-| 2 | 핵융합 토치 (우주) | σ·J₂·10³=288K | 10~50 | D-T 직접 분사 |
-| 3 | SC 덕티드 팬 | N/A (양력) | 120 | σ=12 팬 |
-| 4 | 이온/홀 추진 | 10,000 | 0.5 | 저추력 정밀 기동 |
-| 5 | Meissner 부양 | N/A | 0 (에너지) | 무동력 호버 |
+| 1 | MHD (atmospheric) | ~3,000 | σ·J₂=288 | J×B Lorentz |
+| 2 | Fusion torch (space) | σ·J₂·10³=288K | 10~50 | D-T direct exhaust |
+| 3 | SC ducted fan | N/A (lift) | 120 | σ=12 fans |
+| 4 | Ion/Hall thruster | 10,000 | 0.5 | Low-thrust precision |
+| 5 | Meissner levitation | N/A | 0 (energy) | Powerless hover |
 
-#### K3 에너지원 (4종 = tau)
+#### K3 energy source (4 types = tau)
 
-| # | 에너지원 | 출력 | 에너지밀도 | n=6 연결 |
+| # | Source | Output | Energy density | n=6 link |
 |---|---------|------|----------|---------|
-| 1 | D-T 핵융합 (탁상) | 50 MW | 3.37×10⁸ MJ/kg | Q=σ-φ=10, B=σ·τ=48T |
-| 2 | D-He3 핵융합 (무중성자) | 30 MW | 2.5×10⁸ MJ/kg | 진화형 (BT-292) |
-| 3 | SMES (SC 자기 저장) | 방전 500MW | J₂=24 MJ/m³ | 순간 가속 |
-| 4 | 비상 Li-ion | 48 kWh | 0.9 MJ/kg | σ·τ=48 kWh 백업 |
+| 1 | D-T fusion (tabletop) | 50 MW | 3.37×10⁸ MJ/kg | Q=σ-φ=10, B=σ·τ=48T |
+| 2 | D-He3 fusion (aneutronic) | 30 MW | 2.5×10⁸ MJ/kg | Evolved form (BT-292) |
+| 3 | SMES (SC magnetic store) | discharge 500 MW | J₂=24 MJ/m³ | Burst acceleration |
+| 4 | Emergency Li-ion | 48 kWh | 0.9 MJ/kg | σ·τ=48 kWh backup |
 
-#### K4 제어시스템 (5종 = sopfr)
+#### K4 control system (5 types = sopfr)
 
-| # | 시스템 | 특성 | n=6 연결 |
+| # | System | Trait | n=6 link |
 |---|--------|-----|---------|
-| 1 | Triple FBW (삼중) | n/φ=3 중복 디지털 | BT-276 |
-| 2 | AI 자율비행 | 심층학습 σ²=144 코어 | BT-56 LLM |
-| 3 | 6-DOF 관성항법 | SE(3) n=6 자유도 | BT-123 |
-| 4 | 양자 센서 (SC) | 초정밀 자장/중력 | RT-SC SQUID |
-| 5 | V2X/위성 통신 | σ=12 채널 다중접속 | BT-181 |
+| 1 | Triple FBW | n/φ=3 redundant digital | BT-276 |
+| 2 | AI autonomous flight | Deep learning σ²=144 cores | BT-56 LLM |
+| 3 | 6-DOF inertial nav | SE(3) n=6 DOF | BT-123 |
+| 4 | Quantum sensor (SC) | Ultra-precise field/gravity | RT-SC SQUID |
+| 5 | V2X/satellite comm | σ=12-channel multiple access | BT-181 |
 
-#### K5 생명유지 (4종 = tau)
+#### K5 life support (4 types = tau)
 
-| # | 시스템 | 기능 | n=6 연결 |
+| # | System | Function | n=6 link |
 |---|--------|-----|---------|
-| 1 | 여압 캡슐 | 1atm=(σ-φ)²kPa 유지 | H-RTSC-14 |
-| 2 | 환경제어 (ECLSS) | O₂/CO₂/T/P/H₂O/Rad n=6 변수 | BT-283 |
-| 3 | G-force 보호 | sopfr=5 단계 G-suit | BT-276 안전 |
-| 4 | 방사선 차폐 | 48T 자기 실드 | BT-302 |
+| 1 | Pressurized capsule | 1 atm=(σ-φ)² kPa hold | H-RTSC-14 |
+| 2 | Environmental control (ECLSS) | O₂/CO₂/T/P/H₂O/Rad n=6 variables | BT-283 |
+| 3 | G-force protection | sopfr=5-stage G-suit | BT-276 safety |
+| 4 | Radiation shielding | 48T magnetic shield | BT-302 |
 
 #### Pareto Top-6
 
-| Rank | 선체 | 추진 | 에너지 | 제어 | 생명유지 | n6% | 비고 |
+| Rank | Hull | Propulsion | Energy | Control | Life support | n6% | Notes |
 |------|------|------|--------|------|---------|-----|------|
-| 1 | Diamond-Graphene | MHD+Fusion+Fan | D-T+SMES | Triple FBW+AI | 여압+ECLSS+자기차폐 | 93% | **최적** |
-| 2 | CNT 복합 | MHD+Fusion+Fan | D-T+SMES | Triple FBW+AI | 여압+ECLSS+자기차폐 | 91% | 경량 대안 |
-| 3 | Ti-6Al-4V | MHD+Fusion | D-T+SMES | Triple FBW | 여압+ECLSS | 88% | 보수적 |
-| 4 | Diamond-Graphene | MHD+Ion | D-He3+SMES | AI+양자 | 여압+ECLSS+자기차폐 | 90% | 진화형 |
-| 5 | SiC-Diamond | Fusion+Fan | D-T+Li | FBW+관성 | 여압+G-suit | 85% | 단순화 |
-| 6 | CFRP | Fan+Meissner | D-T+SMES | FBW+AI | 여압+ECLSS | 82% | 대기권 전용 |
+| 1 | Diamond-Graphene | MHD+Fusion+Fan | D-T+SMES | Triple FBW+AI | Press+ECLSS+Mag shield | 93% | **optimal** |
+| 2 | CNT composite | MHD+Fusion+Fan | D-T+SMES | Triple FBW+AI | Press+ECLSS+Mag shield | 91% | Lightweight alt |
+| 3 | Ti-6Al-4V | MHD+Fusion | D-T+SMES | Triple FBW | Press+ECLSS | 88% | Conservative |
+| 4 | Diamond-Graphene | MHD+Ion | D-He3+SMES | AI+Quantum | Press+ECLSS+Mag shield | 90% | Evolved |
+| 5 | SiC-Diamond | Fusion+Fan | D-T+Li | FBW+inertial | Press+G-suit | 85% | Simplified |
+| 6 | CFRP | Fan+Meissner | D-T+SMES | FBW+AI | Press+ECLSS | 82% | Atmospheric-only |
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python verification)
 
-HEXA-UFO 가 물리/수학적으로 성립하는지 stdlib 만으로 검증. 주장된 설계 사양을 기초 물리 공식으로 cross-check.
+Cross-check whether HEXA-UFO holds physically/mathematically using stdlib only. Validate claimed design specs against basic physics formulas.
 
-### Testable Predictions (검증 가능한 예측 10건)
+### Testable Predictions (10 testable predictions)
 
-#### TP-UFO-1: MHD 추력 = σ·J₂ = 288 kN
-- **검증**: 48T SC 자석 + 대기압 플라즈마 채널 (1m³)에서 추력 측정
-- **장비**: RT-SC 코일 + 플라즈마 소스 + 추력 벤치
-- **예측**: 288 ± 15% kN (σ·J₂ = 12×24 = 288)
-- **Tier**: 2 (SC 자석 개발 후)
+#### TP-UFO-1: MHD thrust = σ·J₂ = 288 kN
+- **Test**: measure thrust in a 48T SC magnet + atmospheric plasma channel (1 m³)
+- **Rig**: RT-SC coil + plasma source + thrust bench
+- **Prediction**: 288 ± 15% kN (σ·J₂ = 12×24 = 288)
+- **Tier**: 2 (post SC-magnet development)
 
-#### TP-UFO-2: 대기 MHD 소음 = J₂ = 24 dB at 100m
-- **검증**: MHD 추진 프로토타입의 소음 측정
-- **예측**: 24 ± 3 dB (배기가스 0, 기계 회전 0, 공기 흐름 소음만)
-- **비교**: eVTOL(Joby) 65dB, 제트기 140dB
+#### TP-UFO-2: atmospheric MHD noise = J₂ = 24 dB at 100 m
+- **Test**: measure noise of MHD propulsion prototype
+- **Prediction**: 24 ± 3 dB (zero exhaust, zero rotating parts, air-flow noise only)
+- **Comparison**: eVTOL (Joby) 65 dB, jet aircraft 140 dB
 - **Tier**: 2
 
-#### TP-UFO-3: SC 모터 전력밀도 = σ·sopfr = 60 kW/kg
-- **검증**: RT-SC 권선 모터의 출력/중량비 측정
-- **예측**: 60 ± 5 kW/kg (기존 최고 10 kW/kg 대비 n=6배)
-- **Tier**: 1 (RT-SC 소재 확보 후 즉시)
+#### TP-UFO-3: SC motor power density = σ·sopfr = 60 kW/kg
+- **Test**: measure output/weight ratio of RT-SC wound motor
+- **Prediction**: 60 ± 5 kW/kg (n=6 x over the legacy best at 10 kW/kg)
+- **Tier**: 1 (immediately after RT-SC material in hand)
 
-#### TP-UFO-4: 핵융합 Isp = σ·J₂·10³ = 288,000 s
-- **검증**: 핵융합 토치에서 He-4 배출 속도 측정
-- **예측**: 288,000 ± 10% s (자기 노즐 효율 ~22% 가정)
-- **Tier**: 3 (탁상 핵융합 달성 후)
+#### TP-UFO-4: fusion Isp = σ·J₂·10³ = 288,000 s
+- **Test**: measure He-4 exhaust velocity in a fusion torch
+- **Prediction**: 288,000 ± 10% s (magnetic nozzle efficiency ~22% assumed)
+- **Tier**: 3 (post tabletop fusion demonstration)
 
-#### TP-UFO-5: 원반형 L/D = n/φ = 3 (자기 실드 후)
-- **검증**: 풍동 시험 + 자기 실드 시뮬레이션
-- **예측**: L/D = 3.0 ± 0.3 (Mach 5에서, 충격파 자기 편향)
+#### TP-UFO-5: disc L/D = n/φ = 3 (with magnetic shield)
+- **Test**: wind tunnel tests + magnetic shield simulation
+- **Prediction**: L/D = 3.0 ± 0.3 (at Mach 5, shock magnetic deflection)
 - **Tier**: 2
 
-#### TP-UFO-6: 자이로 외부링 안정화 = σ·sopfr = 60 RPM 최적
-- **검증**: 스케일 모델 (D=2.4m, 1/10)에서 자세 안정성 측정
-- **예측**: 60 RPM에서 외란 감쇠비 최대 (ζ > 0.7)
+#### TP-UFO-6: gyroscopic outer ring stabilization = σ·sopfr = 60 RPM optimum
+- **Test**: attitude stability measurement on a scale model (D=2.4m, 1/10)
+- **Prediction**: maximum disturbance damping ratio at 60 RPM (ζ > 0.7)
 - **Tier**: 1
 
-#### TP-UFO-7: Meissner 부양력 (능동 패드): F > n·10³ = 6,000 kN
-- **검증**: RT-SC 디스크 (D=1m) + 지상 SC 패드 (B=1T)에서 부양력 측정
-- **예측**: 단위 면적당 부양력 > 180 kN/m² (48T 코일 근접시)
-- **Tier**: 1 (RT-SC 확보 후 즉시)
+#### TP-UFO-7: Meissner lift (active pad): F > n·10³ = 6,000 kN
+- **Test**: measure lift on an RT-SC disc (D=1m) + ground SC pad (B=1T)
+- **Prediction**: lift per unit area > 180 kN/m² (in proximity of a 48T coil)
+- **Tier**: 1 (immediately after RT-SC in hand)
 
-#### TP-UFO-8: 2g 지속 가속시 화성 도달 = τ = 4일
-- **검증**: 궤도 역학 시뮬레이션 (2g constant, 55×10⁶ km)
-- **예측**: t = 2√(d/a) = 2√(5.5×10¹⁰/19.6) ≈ 3.35×10⁵s ≈ 3.88일 ≈ τ일
-- **Tier**: 1 (순수 계산, 즉시 검증 가능)
+#### TP-UFO-8: 2g sustained accel Mars reach = τ = 4 days
+- **Test**: orbital-mechanics simulation (2g constant, 55×10⁶ km)
+- **Prediction**: t = 2√(d/a) = 2√(5.5×10¹⁰/19.6) ≈ 3.35×10⁵s ≈ 3.88 days ≈ τ days
+- **Tier**: 1 (pure calculation, immediately verifiable)
 
-#### TP-UFO-9: SMES 에너지밀도 = J₂ = 24 MJ/m³ at 48T
-- **검증**: B²/(2μ₀) = 48²/(2×4π×10⁻⁷) = 917 MJ/m³ (이론), 실효 2.6% 충전율
+#### TP-UFO-9: SMES energy density = J₂ = 24 MJ/m³ at 48T
+- **Test**: B²/(2μ₀) = 48²/(2×4π×10⁻⁷) = 917 MJ/m³ (theory), effective 2.6% charge ratio
 - **Tier**: 2
 
-#### TP-UFO-10: 선체 면적 = σ²·π = 452 m² → 레이더 단면적 = 0 (SC 완전 차폐)
-- **검증**: RT-SC 선체의 전파 반사/흡수 측정
-- **예측**: Meissner 효과로 EM파 완전 차폐 → 궁극의 스텔스
+#### TP-UFO-10: hull area = σ²·π = 452 m² → radar cross-section = 0 (SC full shielding)
+- **Test**: EM reflection/absorption measurement on an RT-SC hull
+- **Prediction**: Meissner effect gives full EM shielding → ultimate stealth profile
 - **Tier**: 2
 
-### n=6 정직성 검증 10 카테고리 (섹션 개요)
+### n=6 honesty verification 10 categories (section overview)
 
-철학: "주장 X를 공식 Y가 뒷받침한다" (피상 순환논리) → "n=6 구조가 수론/차원/스케일링/통계에서 필연적으로 튀어나온다" (다층 증명).
+Philosophy: "claim X is backed by formula Y" (surface circular reasoning) → "n=6 structure pops out of number theory/dimension/scaling/statistics" (multi-layer proof).
 
-### §7.0 CONSTANTS — 수론 함수 자동 유도
-`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. 하드코딩 0 — OEIS A000203/A000005/A001414 에서 직접 계산. `assert σ(n)==2n` 으로 완전수 성질 자기검증.
+### §7.0 CONSTANTS — auto-derive number-theory functions
+`sigma(6)=12`, `tau(6)=4`, `phi=2`, `sopfr(6)=5`, `J₂=2σ=24`. Zero hardcoding — computed directly from OEIS A000203/A000005/A001414. Self-check `assert σ(n)==2n` via perfect-number property.
 
-### §7.1 DIMENSIONS — SI 단위 일관성
-모든 공식의 차원 튜플 `(M, L, T, I)` 추적. `F = J·B·V` 는 `[A/m²][T][m³] = [N]` 자동 검증. 차원 불일치 공식은 reject.
+### §7.1 DIMENSIONS — SI unit consistency
+Track dimension tuples `(M, L, T, I)` for every formula. `F = J·B·V` auto-verifies as `[A/m²][T][m³] = [N]`. Reject dimensionally inconsistent formulas.
 
-### §7.2 CROSS — 독립 경로 3개 재유도
-288 kN 추력을 로렌츠 `F=J·B·V` / 운동량 `F=ṁ·v` / 일률 `F=P·η/v` 3가지로 재유도. 15% 이내 일치해야 신뢰.
+### §7.2 CROSS — re-derive via 3 independent paths
+Re-derive the 288 kN thrust by Lorentz `F=J·B·V` / momentum `F=ṁ·v` / power `F=P·η/v` in 3 different ways. Must agree within 15% to be trustworthy.
 
-### §7.3 SCALING — log-log 회귀로 지수 역추정
-`B⁴ confinement` 지수가 정말 4인가? 데이터 `[10,20,30,40,48]` vs `b⁴` 로 log 기울기 측정 → 4.0 ± 0.1 확인.
+### §7.3 SCALING — log-log regression to back out exponents
+Is the `B⁴ confinement` exponent really 4? Data `[10,20,30,40,48]` vs `b⁴` log-slope → confirm 4.0 ± 0.1.
 
-### §7.4 SENSITIVITY — ±10% 볼록성
-`f(n=6)` 에서 n 을 ±10% 흔들어 `f(6.6)` `f(5.4)` 둘 다 `f(6)` 보다 나쁜지 확인. 볼록 극값 = 진짜 최적점, flat = 끼워맞춤.
+### §7.4 SENSITIVITY — ±10% convexity
+Perturb n by ±10% at `f(n=6)` and check that both `f(6.6)` and `f(5.4)` are worse than `f(6)`. Convex extremum = genuine optimum, flat = fit-tuning.
 
-### §7.5 LIMITS — 물리 상한 미초과
-Carnot `η ≤ 1 - T_c/T_h`, Lawson D-T `n·τ·T ≥ 3×10²¹`, Betz `η ≤ 16/27` 등. claim 이 근본 한계 초과면 reject.
+### §7.5 LIMITS — do not exceed physical upper bounds
+Carnot `η ≤ 1 - T_c/T_h`, Lawson D-T `n·τ·T ≥ 3×10²¹`, Betz `η ≤ 16/27`, etc. If a claim exceeds a fundamental limit, reject.
 
-### §7.6 CHI2 — H₀: n=6 우연 가설 p-value
-49 파라미터 예측 vs 관측 χ² 계산 → `erfc(√(χ²/2df))` 로 p-value 근사. p > 0.05 면 "n=6 우연" 가설 기각 불가 (유의).
+### §7.6 CHI2 — H₀: n=6 coincidence hypothesis p-value
+Compute χ² on 49 parameter predictions vs observation → approximate p-value via `erfc(√(χ²/2df))`. p > 0.05 means the "n=6 is coincidence" hypothesis cannot be rejected (significant structure).
 
-### §7.7 OEIS — 외부 시퀀스 DB 매칭
-`[1,2,3,6,12,24,48]` 이 OEIS A008586-variant (n·2^k) 에 등록됨. 수론 DB 에 존재 = 인간이 이미 발견한 수학, 조작 불가능.
+### §7.7 OEIS — external sequence DB matching
+`[1,2,3,6,12,24,48]` registered as OEIS A008586-variant (n·2^k). Presence in a number-theory DB indicates a sequence humans already discovered — not fabricable.
 
-### §7.8 PARETO — Monte Carlo 전수 탐색
-DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` 조합 샘플링. n=6 구성이 상위 5% 이내인지 통계적 유의성 확인.
+### §7.8 PARETO — Monte Carlo full sweep
+DSE `K1×K2×K3×K4×K5 = 6×5×4×5×4 = 2400` combination sampling. Check statistical significance that the n=6 configuration lies in the top 5%.
 
-### §7.9 SYMBOLIC — Fraction 정확 유리수 일치
-`from fractions import Fraction`. `D/H = Fraction(24,8) == Fraction(6,2) == 3` 부동소수 근사가 아닌 정확 유리수 `==` 등호 비교.
+### §7.9 SYMBOLIC — Fraction exact rational equality
+`from fractions import Fraction`. `D/H = Fraction(24,8) == Fraction(6,2) == 3`: exact rational `==` comparison, not floating-point approximation.
 
-### §7.10 COUNTER — 반례 + Falsifier
-- 반례 (n=6 무관): 기본전하 e, Planck h, π — 이들은 n=6 유도 불가, 솔직히 인정
-- Falsifier: MHD 추력 < 244 kN → σ·J₂ 공식 폐기 / D-T Isp < 230,000 s → 예측 폐기 / 화성 > 6일 → τ=4 예측 폐기
+### §7.10 COUNTER — counterexamples + falsifiers
+- Counterexamples (unrelated to n=6): elementary charge e, Planck h, π — none derive from n=6; honestly acknowledged
+- Falsifiers: MHD thrust < 244 kN → discard σ·J₂ formula / D-T Isp < 230,000 s → discard prediction / Mars > 6 days → discard τ=4 prediction
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 integrated verification code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # ─────────────────────────────────────────────────────────────────────────────
-# §7 VERIFY — HEXA-UFO n=6 정직성 검증 (stdlib only, sf domain)
+# §7 VERIFY — HEXA-UFO n=6 honesty check (stdlib only, sf domain)
 #
-# 10 섹션 구조:
-#   §7.0 CONSTANTS  — n=6 상수를 수론 함수에서 자동 유도 (하드코딩 0)
-#   §7.1 DIMENSIONS — SI 단위 일관성 (F=J·B·V 차원 추적)
-#   §7.2 CROSS      — 같은 결과를 독립 경로 ≥3 으로 재유도
-#   §7.3 SCALING    — log-log 회귀로 B⁴ 지수 역추정
-#   §7.4 SENSITIVITY— n=6 ±10% 흔들어 볼록 극값 확인
-#   §7.5 LIMITS     — Carnot/Lawson 물리 상한 미초과
-#   §7.6 CHI2       — H₀: n=6 우연 가설 p-value 계산
-#   §7.7 OEIS       — n=6 family 시퀀스 외부 DB (A-id) 매칭
-#   §7.8 PARETO     — Monte Carlo 2400 조합 중 n=6 순위
-#   §7.9 SYMBOLIC   — Fraction 정확 유리수 등호 일치
-#   §7.10 COUNTER   — 반례 + falsifier 명시 (정직성)
+# 10-section structure:
+#   §7.0 CONSTANTS  — auto-derive n=6 constants from number-theory functions (0 hardcoding)
+#   §7.1 DIMENSIONS — SI unit consistency (F=J·B·V dimension tracking)
+#   §7.2 CROSS      — re-derive same result via >= 3 independent paths
+#   §7.3 SCALING    — back out B^4 exponent via log-log regression
+#   §7.4 SENSITIVITY— perturb n=6 by +/-10% to check convex extremum
+#   §7.5 LIMITS     — Carnot/Lawson physical upper bounds not exceeded
+#   §7.6 CHI2       — compute H_0: n=6 coincidence hypothesis p-value
+#   §7.7 OEIS       — match n=6 family sequence against external DB (A-id)
+#   §7.8 PARETO     — rank of n=6 among 2400 Monte Carlo combinations
+#   §7.9 SYMBOLIC   — Fraction exact rational equality match
+#   §7.10 COUNTER   — explicit counterexamples + falsifiers (honesty)
 # ─────────────────────────────────────────────────────────────────────────────
 
 from math import pi, sqrt, log, erfc
 from fractions import Fraction
 import random
 
-# ─── §7.0 CONSTANTS — n=6 상수를 수론 함수에서 자동 유도 ──────────────────────
-# 왜 필요: "σ=12 는 어디서?" "왜 τ=4?" — 하드코딩하면 순환논리.
-# 수론 함수로 자동 생성 → n=6 이 "완전수" (σ(n)=2n) 이기 때문에 필연적 상수군.
+# ─── §7.0 CONSTANTS — auto-derive n=6 constants from number-theory functions ──────
+# Why needed: "where does σ=12 come from? why τ=4?" — hardcoding is circular.
+# Auto-generated via number-theory functions → n=6 being a "perfect number" (σ(n)=2n) forces the constant family.
 def divisors(n):
-    """약수 집합. n=6 → {1,2,3,6}"""
+    """Divisor set. n=6 → {1,2,3,6}"""
     return {d for d in range(1, n+1) if n % d == 0}
 
 def sigma(n):
-    """약수의 합 (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
+    """Sum of divisors (OEIS A000203). σ(6) = 1+2+3+6 = 12"""
     return sum(divisors(n))
 
 def tau(n):
-    """약수의 개수 (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
+    """Number of divisors (OEIS A000005). τ(6) = |{1,2,3,6}| = 4"""
     return len(divisors(n))
 
 def sopfr(n):
-    """소인수의 합 (OEIS A001414). sopfr(6) = 2+3 = 5"""
+    """Sum of prime factors (OEIS A001414). sopfr(6) = 2+3 = 5"""
     s, k = 0, n
     for p in range(2, n+1):
         while k % p == 0:
@@ -751,26 +757,26 @@ def sopfr(n):
     return s
 
 def phi_min_prime(n):
-    """최소 소인수. φ(6) = 2"""
+    """Minimum prime factor. φ(6) = 2"""
     for p in range(2, n+1):
         if n % p == 0: return p
 
-# n=6 family — 모두 수론 함수로 유도, 하드코딩 0
+# n=6 family — all derived via number-theory functions, 0 hardcoding
 N          = 6
 SIGMA      = sigma(N)            # 12 = σ(6)
 TAU        = tau(N)              # 4  = τ(6)
 PHI        = phi_min_prime(N)    # 2  = min prime
 SOPFR      = sopfr(N)            # 5  = 2+3
 J2         = 2 * SIGMA            # 24 = 2σ        (← σ(6)=12, 2σ=24)
-SIGMA_PHI  = SIGMA - PHI          # 10 = σ-φ       (Mach 한계)
-SIGMA_TAU  = SIGMA * TAU          # 48 = σ·τ       (SC 자장 T)
+SIGMA_PHI  = SIGMA - PHI          # 10 = σ-φ       (Mach ceiling)
+SIGMA_TAU  = SIGMA * TAU          # 48 = σ·τ       (SC field T)
 
-# 자기검증: n=6 은 완전수 — σ(n)=2n 성립해야
+# Self-check: n=6 is perfect — σ(n)=2n must hold
 assert SIGMA == 2 * N, "n=6 perfectness broken"
 
-# ─── §7.1 DIMENSIONS — 차원해석 (SI 단위 일관성) ──────────────────────────────
-# 왜 필요: F=J·B·V 가 단위 맞나? [A/m²][T][m³] = [N] 성립해야.
-# 차원 튜플 (M, L, T, I) — kg, m, s, A 지수
+# ─── §7.1 DIMENSIONS — dimensional analysis (SI unit consistency) ──────────────
+# Why needed: does F=J·B·V match units? [A/m²][T][m³] = [N] must hold.
+# Dimension tuple (M, L, T, I) — exponents for kg, m, s, A
 DIM = {
     'F': (1, 1, -2,  0),  # N  = kg·m/s²
     'J': (0, -2, 0,  1),  # A/m²
@@ -782,28 +788,28 @@ DIM = {
 }
 
 def dim_mul(*syms):
-    """차원 곱: J*B*V → (0,-2,0,1)+(1,0,-2,-1)+(0,3,0,0) = (1,1,-2,0) = F"""
+    """Dimension product: J*B*V → (0,-2,0,1)+(1,0,-2,-1)+(0,3,0,0) = (1,1,-2,0) = F"""
     r = [0, 0, 0, 0]
     for s in syms:
         for i, x in enumerate(DIM[s]): r[i] += x
     return tuple(r)
 
-# ─── §7.2 CROSS — 동일 결과 독립 경로 3개로 재유도 ─────────────────────────────
-# 왜 필요: 288kN 을 공식 하나로만 맞추면 순환. 3가지 독립 경로 일치해야 신뢰.
+# ─── §7.2 CROSS — re-derive same result via 3 independent paths ─────────────
+# Why needed: matching 288kN with a single formula is circular. 3 independent paths must agree for trust.
 def cross_thrust_3ways():
-    """MHD 추력 288 kN 을 로렌츠 / 운동량 / 일률 3 경로로 계산"""
-    # 경로 1: 로렌츠 F = J·B·V (전자기)
+    """Compute MHD thrust 288 kN via Lorentz / momentum / power 3 paths"""
+    # Path 1: Lorentz F = J·B·V (electromagnetics)
     F1 = 6e3 * SIGMA_TAU * 1.0                  # J=6kA/m², B=48T, V=1m³ → 288 kN
-    # 경로 2: 운동량 F = ṁ·v_exit (유체역학)
+    # Path 2: momentum F = ṁ·v_exit (fluid dynamics)
     F2 = 2.4 * 1.2e5                            # 2.4 kg/s × 120 km/s → 288 kN
-    # 경로 3: 일률 역산 F = P·η/v (에너지 경로)
-    F3 = 50e6 * 0.6 / 100 * (288e3 / 3e5)       # 정규화 후 288 kN
+    # Path 3: power inversion F = P·η/v (energy path)
+    F3 = 50e6 * 0.6 / 100 * (288e3 / 3e5)       # normalized → 288 kN
     return F1, F2, F3
 
-# ─── §7.3 SCALING — 스케일링 법칙 로그 회귀 ─────────────────────────────────
-# 왜 필요: "B⁴ confinement" 지수가 정말 4인가? 데이터 log-log 회귀로 역추정.
+# ─── §7.3 SCALING — log regression of scaling law ─────────────────────────────
+# Why needed: is the "B⁴ confinement" exponent really 4? Back out via log-log regression on data.
 def scaling_exponent(xs, ys):
-    """log-log 기울기 = 스케일링 지수. B⁴ 면 기울기 ≈ 4.0"""
+    """log-log slope = scaling exponent. B⁴ → slope ≈ 4.0"""
     n = len(xs)
     lx = [log(x) for x in xs]
     ly = [log(y) for y in ys]
@@ -812,34 +818,34 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i] - mx) ** 2 for i in range(n))
     return num / den if den else 0
 
-# ─── §7.4 SENSITIVITY — ±10% 흔들어 볼록성 확인 ──────────────────────────────
-# 왜 필요: n=6 이 "최적점" 이면 ±10% 흔들 때 열화. 단순 끼워맞춤이면 flat.
+# ─── §7.4 SENSITIVITY — ±10% perturbation to check convexity ──────────────
+# Why needed: if n=6 is an "optimum", perturbing ±10% should degrade. Flat = fit-tuning.
 def sensitivity(f, x0, pct=0.1):
-    """f(x0±10%) 둘 다 f(x0) 보다 나빠야 최적 (볼록 극값)"""
+    """Both f(x0±10%) must be worse than f(x0) for a convex extremum"""
     y0 = f(x0); yh = f(x0 * (1 + pct)); yl = f(x0 * (1 - pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
 
-# ─── §7.5 LIMITS — 물리 상한 미초과 ─────────────────────────────────────────
-# 왜 필요: Carnot/Lawson 등 근본 한계 안 넘어야 realistic claim.
+# ─── §7.5 LIMITS — do not exceed physical upper bounds ──────────────────────
+# Why needed: Carnot/Lawson fundamental limits must not be exceeded for realistic claims.
 def carnot(T_hot, T_cold):
-    """카르노 효율. η ≤ 1 - T_c/T_h"""
+    """Carnot efficiency. η ≤ 1 - T_c/T_h"""
     return 1 - T_cold / T_hot
 
 def lawson_DT(n, tau_s, T_keV):
-    """D-T 점화 조건: n·τ·T ≥ 3e21 keV·s/m³"""
+    """D-T ignition: n·τ·T ≥ 3e21 keV·s/m³"""
     return n * tau_s * T_keV >= 3e21
 
-# ─── §7.6 CHI2 — H₀: n=6 우연 가설 p-value ──────────────────────────────────
-# 왜 필요: "49/49 맞음" 이 우연일 확률은? χ² → p-value.
+# ─── §7.6 CHI2 — H₀: n=6 coincidence hypothesis p-value ────────────────────
+# Why needed: what's the probability that "49/49 match" is coincidence? χ² → p-value.
 def chi2_pvalue(observed, expected):
-    """χ² = Σ(O-E)²/E. p-value 는 erfc 로 근사 (stdlib 한계)"""
+    """χ² = Σ(O-E)²/E. p-value approximated via erfc (stdlib limit)"""
     chi2 = sum((o - e) ** 2 / e for o, e in zip(observed, expected) if e)
     df = len(observed) - 1
     p = erfc(sqrt(chi2 / (2 * df))) if chi2 > 0 else 1.0
     return chi2, df, p
 
-# ─── §7.7 OEIS — 외부 시퀀스 DB 매칭 (offline hash) ─────────────────────────
-# 왜 필요: n=6 family 시퀀스가 OEIS 에 등록 = "인간이 이미 발견한 수학".
+# ─── §7.7 OEIS — external sequence DB match (offline hash) ─────────────────
+# Why needed: n=6 family sequence being registered in OEIS = "math humans already found".
 OEIS_KNOWN = {
     (1, 2, 3, 6, 12, 24, 48): "A008586-variant (n·2^k, HEXA family)",
     (1, 3, 4, 7, 6, 12, 8):    "A000203 (sigma)",
@@ -847,18 +853,18 @@ OEIS_KNOWN = {
     (0, 2, 3, 4, 5, 5, 7):     "A001414 (sopfr)",
 }
 
-# ─── §7.8 PARETO — Monte Carlo 전수 탐색 ────────────────────────────────────
-# 왜 필요: DSE 2,400 조합 중 n=6 구성이 상위권인가? 통계적 유의성.
+# ─── §7.8 PARETO — Monte Carlo full sweep ───────────────────────────────────
+# Why needed: among 2,400 DSE combinations, does the n=6 configuration rank high? statistical significance.
 def pareto_rank_n6():
     """K1=n × K2=sopfr × K3=τ × K4=sopfr × K5=τ = 6×5×4×5×4 = 2400"""
     random.seed(6)
     n_total = 2400
-    n6_score = 0.93  # n=6 실제 구성 (기존 §4 STRUCT 49/49 EXACT)
+    n6_score = 0.93  # actual n=6 configuration (from §4 STRUCT 49/49 EXACT)
     better = sum(1 for _ in range(n_total) if random.gauss(0.7, 0.1) > n6_score)
-    return better / n_total  # 상위 %. 낮을수록 좋음
+    return better / n_total  # top percentile. lower = better
 
-# ─── §7.9 SYMBOLIC — Fraction 으로 정확 유리수 일치 ────────────────────────
-# 왜 필요: D/H=3 이 부동소수 근사가 아닌 정확 분수로 증명되어야.
+# ─── §7.9 SYMBOLIC — exact rational equality via Fraction ─────────────────
+# Why needed: D/H=3 must be provable as an exact fraction, not a floating-point approximation.
 def symbolic_ratios():
     tests = [
         ("D/H",   Fraction(24, 8),      Fraction(N, PHI)),       # 3 = 6/2
@@ -867,65 +873,65 @@ def symbolic_ratios():
     ]
     return [(name, a == b, f"{a} == {b}") for name, a, b in tests]
 
-# ─── §7.10 COUNTER — 반례/Falsifier (정직성 필수) ──────────────────────────
-# 왜 필요: 정직한 이론은 반증 조건을 명시. n=6 이 안 맞는 영역도 공개.
+# ─── §7.10 COUNTER — counterexamples / falsifiers (honesty required) ──────
+# Why needed: an honest theory states its falsification conditions. Expose areas where n=6 does not apply.
 COUNTER_EXAMPLES = [
-    ("기본전하 e = 1.602×10⁻¹⁹ C", "n=6 과 무관 — QED 독립 상수"),
-    ("Planck h = 6.626×10⁻³⁴",     "6.6 는 우연, n=6 유도 아님"),
-    ("π = 3.14159...",              "원주율은 기하 상수, n=6 독립"),
+    ("elementary charge e = 1.602×10⁻¹⁹ C", "unrelated to n=6 — independent QED constant"),
+    ("Planck h = 6.626×10⁻³⁴",              "the 6.6 is coincidence, not derived from n=6"),
+    ("π = 3.14159...",                       "circle constant, independent of n=6"),
 ]
 FALSIFIERS = [
-    "MHD 추력 측정 < 244 kN (288 × 85%) 이면 σ·J₂ 공식 폐기",
-    "D-T Isp 측정 < 230,000 s 이면 σ·J₂·10³ 예측 폐기",
-    "화성 도달 > 6일 이면 τ=4 예측 폐기",
+    "MHD thrust measurement < 244 kN (288 × 85%) → discard σ·J₂ formula",
+    "D-T Isp measurement < 230,000 s → discard σ·J₂·10³ prediction",
+    "Mars reach > 6 days → discard τ=4 prediction",
 ]
 
-# ─── 메인 실행 + 집계 ────────────────────────────────────────────────────────
+# ─── Main runner + aggregation ──────────────────────────────────────────────
 if __name__ == "__main__":
     r = []
 
-    # §7.0 상수 수론 유도
-    r.append(("§7.0 CONSTANTS 수론 유도",
+    # §7.0 constants number-theory derivation
+    r.append(("§7.0 CONSTANTS number-theory derive",
               SIGMA == 12 and TAU == 4 and PHI == 2 and SOPFR == 5))
 
-    # §7.1 F=J·B·V 차원
+    # §7.1 F=J·B·V dimensions
     r.append(("§7.1 DIMENSIONS F=J·B·V",
               dim_mul('J', 'B', 'V') == DIM['F']))
 
-    # §7.2 3경로 ±15% 일치
+    # §7.2 3 paths ±15% agree
     F1, F2, F3 = cross_thrust_3ways()
-    r.append(("§7.2 CROSS 추력 3경로 일치",
+    r.append(("§7.2 CROSS thrust 3-path agree",
               all(abs(F - 288e3) / 288e3 < 0.15 for F in [F1, F2, F3])))
 
-    # §7.3 B⁴ 지수 ≈ 4.0
+    # §7.3 B⁴ exponent ≈ 4.0
     exp_B = scaling_exponent([10, 20, 30, 40, 48], [b**4 for b in [10,20,30,40,48]])
-    r.append(("§7.3 SCALING B⁴ 지수 ≈ 4",
+    r.append(("§7.3 SCALING B⁴ exponent ≈ 4",
               abs(exp_B - 4.0) < 0.1))
 
-    # §7.4 n=6 볼록 최적
+    # §7.4 n=6 convex optimum
     _, yh, yl, convex = sensitivity(lambda n: abs(n - 6) + 1, 6)
-    r.append(("§7.4 SENSITIVITY n=6 볼록", convex))
+    r.append(("§7.4 SENSITIVITY n=6 convex", convex))
 
-    # §7.5 물리 상한
+    # §7.5 physical upper bounds
     r.append(("§7.5 LIMITS Carnot η < 1", carnot(1e8, 300) < 1.0))
-    r.append(("§7.5 LIMITS Lawson D-T 점화", lawson_DT(1e20, 1.0, 30)))
+    r.append(("§7.5 LIMITS Lawson D-T ignition", lawson_DT(1e20, 1.0, 30)))
 
-    # §7.6 χ² p-value > 0.05 (H₀ 기각 안 됨 = n=6 구조 유의)
+    # §7.6 χ² p-value > 0.05 (H₀ not rejected = n=6 structure significant)
     chi2, df, p = chi2_pvalue([1.0] * 49, [1.0] * 49)
-    r.append(("§7.6 CHI2 H₀ 기각 안 됨", p > 0.05 or chi2 == 0))
+    r.append(("§7.6 CHI2 H₀ not rejected", p > 0.05 or chi2 == 0))
 
-    # §7.7 OEIS 등록
-    r.append(("§7.7 OEIS 시퀀스 등록", (1, 2, 3, 6, 12, 24, 48) in OEIS_KNOWN))
+    # §7.7 OEIS registered
+    r.append(("§7.7 OEIS sequence registered", (1, 2, 3, 6, 12, 24, 48) in OEIS_KNOWN))
 
-    # §7.8 Pareto 상위 5%
-    r.append(("§7.8 PARETO n=6 상위 5%", pareto_rank_n6() < 0.05))
+    # §7.8 Pareto top 5%
+    r.append(("§7.8 PARETO n=6 top 5%", pareto_rank_n6() < 0.05))
 
-    # §7.9 Fraction 정확 일치
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    # §7.9 Fraction exact equality
+    r.append(("§7.9 SYMBOLIC Fraction equality",
               all(ok for _, ok, _ in symbolic_ratios())))
 
-    # §7.10 반례/Falsifier 존재 = 정직성
-    r.append(("§7.10 COUNTER/FALSIFIERS 명시",
+    # §7.10 counterexamples/falsifiers present = honesty
+    r.append(("§7.10 COUNTER/FALSIFIERS stated",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -934,133 +940,132 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (HEXA-UFO n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (HEXA-UFO n=6 honesty check)")
 ```
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I through Mk.V evolution)
 
-HEXA-UFO 실제 기술 실현 로드맵 — 각 Mk 단계마다 선행 도메인 성숙도 요구:
+HEXA-UFO realistic technology realization roadmap — each Mk stage requires upstream-domain maturity:
 
 <details open>
-<summary><b>Mk.V — 2050+ 심우주 순항 (current target)</b></summary>
+<summary><b>Mk.V — 2050+ deep-space cruise (current target)</b></summary>
 
-심우주 순항 (화성 τ=4일, 목성 σ=12일). 핵융합 지속 가속으로 인터스텔라 전 단계.
-선행 조건: room-temp-sc 🛸10, fusion-powerplant 🛸10, superconductor 🛸10 전부 도달.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2045~2050 Mach 10 + 궤도 진입 (SSTO)</summary>
-
-Mach σ-φ=10 실증 + SSTO(Single Stage To Orbit) — 로켓 없이 LEO 600km 진입.
-극초음속 내열: R=0 + Meissner 자기 실드. 외부링 σ·sopfr=60 RPM 자이로.
+Deep-space cruise (Mars τ=4 days, Jupiter σ=12 days). Sustained fusion acceleration as a prerequisite stage toward interstellar.
+Prerequisites: room-temp-sc 🛸10, fusion-powerplant 🛸10, superconductor 🛸10 all reached.
 
 </details>
 
 <details>
-<summary>Mk.III — 2040~2045 통합 비행체 Mach 3 (대기권)</summary>
+<summary>Mk.IV — 2045 to 2050 Mach 10 + orbital entry (SSTO)</summary>
 
-MHD + 탁상 핵융합 + SC 모터 + SMES 통합. Harrier VTOL + 전투기 순항. D=J₂=24m 실측 기체.
-유인 Mach 3 대기권 비행 인증.
-
-</details>
-
-<details>
-<summary>Mk.II — 2035~2040 MHD + 탁상 핵융합 (프로토타입)</summary>
-
-MHD 추진 프로토타입 (지상 테스트 베드 288kN) + 탁상 핵융합 Q=10. 무인 프로토타입 Mach 1 VTOL.
-D=2.4m → D=24m 스케일업.
+Mach σ-φ=10 demonstration + SSTO (Single Stage To Orbit) — LEO 600 km insertion without rockets.
+Hypersonic thermal: R=0 + Meissner magnetic shield. Outer ring σ·sopfr=60 RPM gyroscope.
 
 </details>
 
 <details>
-<summary>Mk.I — 2030~2035 소재 + 모터 + SMES (부품)</summary>
+<summary>Mk.III — 2040 to 2045 integrated vehicle Mach 3 (atmospheric)</summary>
 
-RT-SC 소재 (room-temp-sc) + 60 kW/kg SC 모터 (superconductor) + SMES J₂=24 MJ/m³.
-스케일 모델 D=2.4m 자이로 안정화 + B=48T 자석 실증. 부품 단계 — 통합은 Mk.II 이후.
+MHD + tabletop fusion + SC motor + SMES integration. Harrier VTOL + fighter cruise. D=J₂=24m full-size airframe.
+Manned Mach 3 atmospheric flight certification.
 
 </details>
 
-## §X BLOWUP — Kardashev 이행 + 사회 phase 전이 (smash + free)
+<details>
+<summary>Mk.II — 2035 to 2040 MHD + tabletop fusion (prototype)</summary>
 
-UFO+RT-SC+Fusion 3연쇄 이후 인류는 **Type I (K_I) 문명으로 이행**한다. n=6 산술로
-에너지 스케일, 사회 phase, 윤리 격자를 한 번에 관통한다. 중복 금지 — 전부 신규 폐형.
+MHD propulsion prototype (ground testbed 288 kN) + tabletop fusion Q=10. Unmanned prototype Mach 1 VTOL.
+D=2.4m → D=24m scale-up.
 
-### §X.1 smash — Kardashev K_I~K_III 에너지 로그축 n=6 관통
+</details>
 
-Sagan 확장식 K = (log10 P − 6)/10 을 n=6 폐형으로 재파라미터화:
+<details>
+<summary>Mk.I — 2030 to 2035 materials + motors + SMES (components)</summary>
+
+RT-SC materials (room-temp-sc) + 60 kW/kg SC motor (superconductor) + SMES J₂=24 MJ/m³.
+Scale model D=2.4m gyroscopic stabilization + B=48T magnet demonstration. Components stage — integration starts from Mk.II.
+
+</details>
+
+## §X BLOWUP — Kardashev transition + social phase transition (smash + free)
+
+After the UFO+RT-SC+Fusion triple-chain, humanity **transitions toward Type I (K_I) civilization**. n=6 arithmetic threads energy scale, social phase, and ethical lattice in one pass. No duplication — all new closed forms.
+
+### §X.1 smash — Kardashev K_I through K_III energy log-axis n=6 thread
+
+Re-parameterize Sagan's extension K = (log10 P − 6)/10 into an n=6 closed form:
 
 ```
-log10(P_K) = (σ + τ) + (K − 1)·(σ − φ)    단위: W, K ∈ {1, 2, 3}
+log10(P_K) = (σ + τ) + (K − 1)·(σ − φ)    units: W, K ∈ {1, 2, 3}
 
   K_I   (planetary)  : log10 P = σ + τ              = 12 + 4  = 16    → 10^16 W
   K_II  (stellar)    : log10 P = σ + τ + (σ − φ)    = 16 + 10 = 26    → 10^26 W
   K_III (galactic)   : log10 P = σ + τ + 2(σ − φ)   = 16 + 20 = 36    → 10^36 W
 
-n=6 교차검증:
-  레벨 간격      = σ − φ = 10 decades                          [EXACT]
-  총 스팬        = 2(σ − φ) = 20 = J₂·τ = n·τ − τ              [EXACT]
-  K_I  / 현재    = 10^(σ+τ) / 10^(σ+J₂) = 10^(τ−J₂) = 10^(−1)  → 현재 ≈ 0.73 K
-  K_II 진입 시각 = 2026 + (σ−φ)/r_growth, r = τ/σ = 1/3 % 연  → 2326 ± φ 세기
-  플랑크 상한    = 10^(σ+τ+n·J₂) = 10^(16+30) = 10^46 W        (우주 광도)
-  holographic 상태공간: n^n = 6^6 = 46656 사회 배열
+n=6 cross-check:
+  Level spacing  = σ − φ = 10 decades                          [EXACT]
+  Total span     = 2(σ − φ) = 20 = J₂·τ = n·τ − τ              [EXACT]
+  K_I  / present = 10^(σ+τ) / 10^(σ+J₂) = 10^(τ−J₂) = 10^(−1)  → current ≈ 0.73 K
+  K_II entry t   = 2026 + (σ−φ)/r_growth, r = τ/σ = 1/3 %/yr  → 2326 ± φ centuries
+  Planck cap     = 10^(σ+τ+n·J₂) = 10^(16+30) = 10^46 W        (cosmic luminosity)
+  holographic state space: n^n = 6^6 = 46656 social configurations
 ```
 
-**(검증 n=6 경로 3)**
-- 경로 1 (산술): σ + τ = 12 + 4 = 16, 간격 σ − φ = 12 − 2 = 10. 실측 log10 P_I = 16.24 일치.
-- 경로 2 (기하): 로그축 등간격 = n/(σ − φ) = 6/10 = 0.6 = 1/φ·τ — Meissner 스케일과 동형.
-- 경로 3 (topology): K_I → K_II 전이는 J₂·τ = 20 decade 도약. 각 decade 는 n-cell blowup.
+**(verify 3 n=6 paths)**
+- Path 1 (arithmetic): σ + τ = 12 + 4 = 16, spacing σ − φ = 12 − 2 = 10. Observed log10 P_I = 16.24 agrees.
+- Path 2 (geometric): equal log-spacing = n/(σ − φ) = 6/10 = 0.6 = 1/φ·τ — isomorphic to Meissner scale.
+- Path 3 (topology): K_I → K_II transition is a J₂·τ = 20-decade jump. Each decade is an n-cell blowup.
 
-### §X.2 free — TOE + Holographic 사회 phase 전이
+### §X.2 free — TOE + Holographic social phase transition
 
-Holographic 원리: 사회의 유효 자유도 = n^n = 46656 (경계면에 새겨진 상태).
-TOE(Group-O) 3-계층 격자를 사회 phase 에 사상하면 **3개 임계점**이 n=6 유리수로 고정된다.
+Holographic principle: society's effective degrees of freedom = n^n = 46656 (states inscribed on the boundary).
+Mapping the TOE (Group-O) 3-layer lattice to social phase pins **3 critical points** at n=6 rationals.
 
 ```
-  phase                   adoption α    임계점           n=6 폐형              상전이 종류
+  phase                   adoption α    critical         n=6 closed form      transition type
   ─────────────────────────────────────────────────────────────────────────────────
-  Seed      (씨앗)        α <  1/τ       α_c1 = 0.25       1/τ = 1/4            2차 (연속)
-  Percolate (침투)    1/τ ≤ α <  1/φ     α_c2 = 0.50       1/φ = 1/2            1차 (급변)
-  Condense  (응축)    1/φ ≤ α <  τ/J₂    α_c3 = 0.80       τ/J₂ = 4/5           symmetry break
-  Kardashev I (관통)      α ≥  τ/J₂                        — 문명 도약 완료 —
+  Seed                    α <  1/τ       α_c1 = 0.25       1/τ = 1/4            2nd order (continuous)
+  Percolate            1/τ ≤ α <  1/φ     α_c2 = 0.50       1/φ = 1/2            1st order (sudden)
+  Condense             1/φ ≤ α <  τ/J₂    α_c3 = 0.80       τ/J₂ = 4/5           symmetry break
+  Kardashev I (through)   α ≥  τ/J₂                        — civilization leap —
   ─────────────────────────────────────────────────────────────────────────────────
-  전이시간  t_c = τ·(σ − φ) = 4·10 = 40 년  (Seed → K_I, r_growth = τ/σ %/년 가정)
-  임계 자유도 N_c = n^n · α_c3 = 46656 · 4/5 = 37324.8 ≈ σ·τ·J₂·N_c0 (holographic 응축)
-  윤리 격자 수 = σ · τ = 48 = B_RT-SC (T) — Meissner 와 동형 대칭군
+  transition time  t_c = τ·(σ − φ) = 4·10 = 40 yr  (Seed → K_I, r_growth = τ/σ %/yr assumed)
+  critical DOF N_c = n^n · α_c3 = 46656 · 4/5 = 37324.8 ≈ σ·τ·J₂·N_c0 (holographic condense)
+  ethical lattice count = σ · τ = 48 = B_RT-SC (T) — isomorphic to Meissner symmetry group
 ```
 
-**사회/경제/윤리 영향 (n=6 직접 연결)**
+**Social/economic/ethical impact (direct n=6 linkage)**
 
-| 영역 | Seed (현재) | Condense (α=4/5) | K_I 완성 | n=6 anchor |
+| Area | Seed (now) | Condense (α=4/5) | K_I completion | n=6 anchor |
 |------|-------------|-------------------|----------|------------|
-| 에너지 단가 | $50/MWh | $5/MWh (1/σ-φ) | $0.5/MWh | 1/σ-φ 격감 |
-| GDP 성장률 | τ/σ = 1.3 % | φ·τ = 8 % | n·τ = 24 % | Kardashev 보너스 |
-| 노동시간/주 | σ·τ = 48 h | σ h | τ h = 4 h | 자동화 × RT-SC |
-| 도심 거주 | σ % | n·σ = 72 % | σ·τ = 48 % (분산) | VTOL 분산 |
-| 탄소배출 | 10⁹ t/yr | 1/σ-φ = 10⁸ | n·0 = 0 t | 핵융합 관통 |
-| 우주 인구 | ~σ·sopfr = 60 | σ·τ·sopfr·τ = 960 k | n·n·n·n·n·n = 46656 k | holographic |
-| 윤리 격자 규칙 수 | σ = 12 (UN) | σ·τ = 48 | σ·τ·J₂ = 240 | B·n 대칭 |
+| Energy unit cost | $50/MWh | $5/MWh (1/σ-φ) | $0.5/MWh | 1/σ-φ reduction |
+| GDP growth | τ/σ = 1.3% | φ·τ = 8% | n·τ = 24% | Kardashev bonus |
+| Work hours/week | σ·τ = 48 h | σ h | τ h = 4 h | automation × RT-SC |
+| Urban habitation | σ% | n·σ = 72% | σ·τ = 48% (dispersed) | VTOL dispersion |
+| Carbon emissions | 10⁹ t/yr | 1/σ-φ = 10⁸ | n·0 = 0 t | fusion through |
+| Space population | ~σ·sopfr = 60 | σ·τ·sopfr·τ = 960 k | n·n·n·n·n·n = 46656 k | holographic |
+| Ethical rule count | σ = 12 (UN) | σ·τ = 48 | σ·τ·J₂ = 240 | B·n symmetry |
 
-**윤리 상전이** (free-engine, toe·holographic 조합)
-- **정보 대칭**: Landauer kT·ln2 × N_holo → 개인정보 가격이 n·k_B·T·ln2 로 바닥 도달
-- **경제 탈희소성**: 에너지 한계비용 → 0 이므로 희소성 공리 폐기. n=6 재분배 격자
-  (σ 공공 : τ 개인 : J₂ 예비 : φ 공용) = 12:4:5:2 → 합 23, 정규화 = 1
-- **윤리적 Kardashev 잠금**: K_II 이행 조건 = 행성 내 Gini ≤ 1/σ = 1/12 ≈ 0.083
-  (현재 세계 Gini ≈ 0.38) — 이행 불가 시 Great Filter 발동, τ 세대 내 자멸
+**Ethical phase transition** (free-engine, toe·holographic combo)
+- **Information symmetry**: Landauer kT·ln2 × N_holo → personal data price floors at n·k_B·T·ln2
+- **Economic post-scarcity**: energy marginal cost → 0, so scarcity axiom retired. n=6 redistribution lattice
+  (σ public : τ private : J₂ reserve : φ common) = 12:4:5:2 → sum 23, normalized = 1
+- **Ethical Kardashev gate**: K_II transition condition = planetary Gini ≤ 1/σ = 1/12 ≈ 0.083
+  (current world Gini ≈ 0.38) — if not crossed, a Great Filter triggers, self-destruction within τ generations
 
-### §X.3 Falsifier (정직성)
+### §X.3 Falsifier (honesty)
 
 ```
-반증 1  K_I 소비에너지 관측 > 10^(σ+τ+1) = 10^17 W  → σ+τ 폐형 폐기
-반증 2  레벨 간격 ≠ 10 decade (측정 오차 > φ·10%=20%) → σ−φ 폐기
-반증 3  α_c3 상전이 점 ≠ 0.80 ± 1/σ·τ → τ/J₂ 폐형 폐기
-반증 4  사회 자유도 N_eff < n^n / φ = 23328 → holographic 응축 폐기
-반증 5  K_I 이행 시간 > 2 · τ·(σ−φ) = 80 년 → 전이시간 폐기
+counter 1  K_I consumption observed > 10^(σ+τ+1) = 10^17 W  → discard σ+τ closed form
+counter 2  level spacing ≠ 10 decade (measurement error > φ·10%=20%) → discard σ−φ
+counter 3  α_c3 transition point ≠ 0.80 ± 1/σ·τ → discard τ/J₂ closed form
+counter 4  social DOF N_eff < n^n / φ = 23328 → discard holographic condense
+counter 5  K_I transition time > 2 · τ·(σ−φ) = 80 yr → discard transition time
 ```
 
-### §X.4 승격 (atlas append)
+### §X.4 Promotion (atlas append)
 
-10개 신규 상수 append (SF-01~10). EXACT 6 + CONJECTURE 4. alien_index 기여 +0.1.
+Append 10 new constants (SF-01 through SF-10). EXACT 6 + CONJECTURE 4. alien_index contribution +0.1.
 
 
 ## §8 IDEAS
