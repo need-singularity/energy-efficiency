@@ -9,7 +9,7 @@ source_proposal: reports/p2_domain_expansion_proposal.json DC-054
 registered: 2026-04-23
 ---
 
-# 우주생물학 (HEXA-ASTROBIO) — n=6 CHNOPS 6-element biogenic basis
+# Astrobiology (HEXA-ASTROBIO) — n=6 CHNOPS 6-element biogenic basis
 
 ## §1 WHY
 

@@ -9,7 +9,7 @@ source_proposal: reports/p2_domain_expansion_proposal.json DC-028
 registered: 2026-04-23
 ---
 
-# 우주의학 (HEXA-SPACEMED) — n=6 NASA HRP risk areas
+# Space Medicine (HEXA-SPACEMED) — n=6 NASA HRP risk areas
 
 ## §1 WHY
 

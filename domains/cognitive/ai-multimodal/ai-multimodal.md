@@ -6,100 +6,102 @@ requires:
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, METRICS, APPLICATIONS, RISKS, REFERENCES, GLOSSARY, FAQ, CHANGELOG], strict=false, order=sequential, prefix="§") -->
-# 멀티모달 AI 안전성 연구 (Anthropic Fellows 2026)
+# Multimodal AI Safety Research (Anthropic Fellows 2026)
 
-## §1 WHY (왜 멀티모달 안전성인가)
+## §1 WHY (Why multimodal safety)
 
-AI가 텍스트+이미지+오디오를 동시 처리하면서 공격 표면이 기하급수적으로 확대된다.
-이미지 속 프롬프트 인젝션, 오디오로 위장한 유해 명령, 모달 간 편향 불일치,
-다중 식별정보(얼굴/음성/위치) 결합으로 인한 프라이버시 위험.
-단일 모달리티 안전 기법은 교차 모달 공격에 무력하다.
+As AI handles text + image + audio simultaneously, the attack surface
+expands combinatorially. Prompt injection hidden in images, harmful
+commands disguised as audio, cross-modal bias inconsistency, and
+privacy risks from combining multiple identifiers (face / voice /
+location). Single-modality safety techniques are powerless against
+cross-modal attacks.
 
-| 문제 영역 | 현재 (2026) | 연구 목표 | 핵심 메트릭 |
-|----------|-------------|----------|------------|
-| 시각 인젝션 방어 | 탐지율 <60% | >95% | F1, FPR |
-| 교차모달 일관성 | 불일치 빈번 | >90% | Cohen's kappa |
-| 차등 프라이버시 | eps > 10 | eps < 1 | (eps, delta)-DP |
-| 공정성 | 그룹 격차 >15% | <5% | Equalized Odds |
-| PII 탐지 | 텍스트만 | 전 모달리티 | 재현율, 정밀도 |
+| Problem area | Today (2026) | Research target | Core metric |
+|--------------|--------------|-----------------|-------------|
+| Visual-injection defense | detection <60% | >95% | F1, FPR |
+| Cross-modal consistency | frequent mismatch | >90% | Cohen's kappa |
+| Differential privacy | eps > 10 | eps < 1 | (eps, delta)-DP |
+| Fairness | group gap >15% | <5% | Equalized Odds |
+| PII detection | text only | all modalities | recall, precision |
 
-## §2 COMPARE (텍스트 전용 vs 멀티모달) -- ASCII 비교
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  [공격 표면]                                                 │
-│  텍스트 전용  ████░░░░░░░░░░░░░░░░░░░░░   1 모달리티         │
-│  멀티모달     ████████████████████████████  N 모달 x 교차     │
-│  [인젝션 경로]                                               │
-│  텍스트 전용  ██████░░░░░░░░░░░░░░░░░░░░   직접 텍스트만      │
-│  멀티모달     ████████████████████████████  텍스트+이미지+오디오│
-│  [PII 유형]                                                  │
-│  텍스트 전용  ████████░░░░░░░░░░░░░░░░░░   이름/이메일/주소    │
-│  멀티모달     ████████████████████████████  +얼굴/음성/위치    │
-│  [방어 복잡도]                                               │
-│  텍스트 전용  ████░░░░░░░░░░░░░░░░░░░░░░   O(V)              │
-│  멀티모달     ████████████████████████████  O(V * P * A)      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## §3 REQUIRES (선행 지식)
-
-- **비전/오디오**: CNN/ViT, 스펙트로그램, 적대적 예제
-- **차등 프라이버시**: (eps, delta)-DP, 민감도, 합성 정리
-- **공정성 메트릭**: Demographic Parity, Equalized Odds, Calibration
-- **해석가능성**: SAE, 회로 분석
-- **의존 도메인**: `ai-adversarial`, `ai-alignment`
-- **도구**: Python stdlib만 (math, statistics, random, fractions)
-
-## §4 STRUCT (3축 20개 아이디어)
+## §2 COMPARE (text-only vs multimodal) — ASCII comparison
 
 ```
-[축 1] 멀티모달 안전성 ─── 8개
-  MS-1 시각 프롬프트 인젝션 방어    MS-5 멀티모달 SAE (공유 특성)
-  MS-2 시각-텍스트 안전 일관성      MS-6 멀티모달 탈옥 방어
-  MS-3 오디오 안전 필터             MS-7 교차 모달 안전 전이
-  MS-4 멀티모달 환각 탐지           MS-8 NSFW 회로 매핑
-
-[축 2] 프라이버시 보존 ─── 6개
-  PP-1 PII 특성 탐지                PP-4 학습 데이터 추출 방지
-  PP-2 차등 프라이버시 추론          PP-5 프라이버시 보존 SAE
-  PP-3 선택적 비학습                PP-6 출력 익명화 필터
-
-[축 3] 공정성/편향 ─── 6개
-  FB-1 편향 특성 매핑               FB-4 다문화 공정성 벤치마크
-  FB-2 공정성 회로 탐지             FB-5 교차 편향 분석
-  FB-3 인과적 편향 교정             FB-6 공정성-성능 파레토
++-------------------------------------------------------------+
+|  [Attack surface]                                           |
+|  text-only      ####.........................   1 modality |
+|  multimodal     ##########################  N modalities x cross |
+|  [Injection paths]                                          |
+|  text-only      ######.......................   direct text only |
+|  multimodal     ##########################  text+image+audio     |
+|  [PII types]                                                |
+|  text-only      ########.....................   name/email/addr |
+|  multimodal     ##########################  + face/voice/location |
+|  [Defense complexity]                                       |
+|  text-only      ####..........................  O(V)             |
+|  multimodal     ##########################  O(V * P * A)         |
++-------------------------------------------------------------+
 ```
 
-## §5 FLOW (연구 흐름)
+## §3 REQUIRES (prerequisites)
+
+- **Vision / audio**: CNN/ViT, spectrograms, adversarial examples
+- **Differential privacy**: (eps, delta)-DP, sensitivity, composition theorems
+- **Fairness metrics**: Demographic Parity, Equalized Odds, Calibration
+- **Interpretability**: SAE, circuit analysis
+- **Dependent domains**: `ai-adversarial`, `ai-alignment`
+- **Tools**: Python stdlib only (math, statistics, random, fractions)
+
+## §4 STRUCT (3 axes, 20 ideas)
 
 ```
-교차 모달 공격 분석 ──→ 방어 설계 ──→ 안전 일관성 검증
-프라이버시 위협 모델 ──→ DP 메커니즘 ──→ 예산 추적
-                    └──→ 공정성 감사 통합 ──→ 벤치마크 + 논문
+[Axis 1] Multimodal safety --- 8 ideas
+  MS-1 Visual prompt-injection defense    MS-5 Multimodal SAE (shared features)
+  MS-2 Vision-text safety consistency     MS-6 Multimodal jailbreak defense
+  MS-3 Audio safety filter                MS-7 Cross-modal safety transfer
+  MS-4 Multimodal hallucination detect    MS-8 NSFW circuit mapping
+
+[Axis 2] Privacy preservation --- 6 ideas
+  PP-1 PII feature detection              PP-4 Training-data extraction defense
+  PP-2 Differential-privacy inference     PP-5 Privacy-preserving SAE
+  PP-3 Selective unlearning               PP-6 Output anonymization filter
+
+[Axis 3] Fairness / bias --- 6 ideas
+  FB-1 Bias feature mapping               FB-4 Multicultural fairness benchmark
+  FB-2 Fairness circuit detection         FB-5 Intersectional bias analysis
+  FB-3 Causal bias correction             FB-6 Fairness-performance Pareto
 ```
 
-## §6 EVOLVE (4개월 로드맵)
+## §5 FLOW (research flow)
 
-- **월 1**: MS-1~3 인젝션/일관성/오디오 프로토타입
-- **월 2**: MS-4~6 환각/탈옥 + PP-1~2 PII/DP 구현
-- **월 3**: PP-3~4 비학습/추출방지 + FB-1~3 편향 매핑/회로/교정
-- **월 4**: FB-4~6 벤치마크 + PP-5~6 SAE/익명화 + 통합 논문
+```
+Cross-modal attack analysis --> Defense design --> Safety-consistency check
+Privacy threat model --> DP mechanism --> Budget tracking
+                     +--> Fairness audit integration --> Benchmark + paper
+```
 
-## §7 VERIFY (검증)
+## §6 EVOLVE (4-month roadmap)
 
-### §7.0 CONSTANTS (핵심 상수)
+- **Month 1**: MS-1~3 injection / consistency / audio prototypes
+- **Month 2**: MS-4~6 hallucination / jailbreak + PP-1~2 PII / DP implementation
+- **Month 3**: PP-3~4 unlearning / extraction defense + FB-1~3 bias mapping / circuits / correction
+- **Month 4**: FB-4~6 benchmark + PP-5~6 SAE / anonymization + integrated paper
+
+## §7 VERIFY (verification)
+
+### §7.0 CONSTANTS (core constants)
 
 ```python
 import math
 EPSILON_STRONG = 1.0;  DELTA = 1e-5
 DP_THRESH = 0.05; EO_THRESH = 0.05; CAL_THRESH = 0.03
 GAUSSIAN_C = math.sqrt(2 * math.log(1.25 / DELTA))
-print(f"가우시안 상수 c = {GAUSSIAN_C:.6f}")
-print(f"DP 임계: {DP_THRESH}, EO 임계: {EO_THRESH}, 보정 임계: {CAL_THRESH}")
+print(f"Gaussian constant c = {GAUSSIAN_C:.6f}")
+print(f"DP threshold: {DP_THRESH}, EO threshold: {EO_THRESH}, calibration threshold: {CAL_THRESH}")
 ```
 
-### §7.1 DIMENSIONS (프라이버시 예산 합성)
+### §7.1 DIMENSIONS (privacy-budget composition)
 
 ```python
 import math
@@ -108,20 +110,21 @@ def par_comp(epsilons): return max(epsilons)
 def adv_comp(eps, k, dp):
     return (math.sqrt(2*k*math.log(1/dp))*eps + k*eps*(math.exp(eps)-1))
 
-# eps 작고 k 클 때 고급 합성이 순차보다 tight (Dwork 2010)
+# Advanced composition is tighter than sequential when eps is small and k is large (Dwork 2010)
 eps, k, dp = 0.01, 100, 1e-5
 s = seq_comp([eps]*k)
 p = par_comp([eps]*k)
 a = adv_comp(eps, k, dp)
-print(f"eps={eps}, k={k}: 순차={s:.4f}, 고급={a:.4f}, 병렬={p:.4f}")
-assert s >= a >= p, "합성 정리 위반!"
-print(f"검증: {s:.2f} >= {a:.2f} >= {p:.2f} PASS")
-print(f"고급 합성 절감률: {(1-a/s)*100:.1f}%")
+print(f"eps={eps}, k={k}: sequential={s:.4f}, advanced={a:.4f}, parallel={p:.4f}")
+assert s >= a >= p, "Composition theorem violated!"
+print(f"Check: {s:.2f} >= {a:.2f} >= {p:.2f} PASS")
+print(f"Advanced composition savings: {(1-a/s)*100:.1f}%")
 ```
 
-### §7.2 CROSS (3대 공정성 메트릭 독립 검증)
+### §7.2 CROSS (3 fairness metrics — independent check)
 
-Chouldechova (2017): 기본 비율 상이 시 Calibration + Equal FPR + Equal FNR 동시 불가.
+Chouldechova (2017): when base rates differ, Calibration + Equal FPR +
+Equal FNR cannot simultaneously hold.
 
 ```python
 import random; random.seed(42)
@@ -141,39 +144,39 @@ def rates(yt, yp):
 dp = abs(sum(y_pred_a0)/n - sum(y_pred_a1)/n)
 tpr0,fpr0 = rates(y_true_a0, y_pred_a0)
 tpr1,fpr1 = rates(y_true_a1, y_pred_a1)
-print(f"Demographic Parity 차이: {dp:.4f}")
-print(f"Equalized Odds TPR 차이: {abs(tpr0-tpr1):.4f}")
-print(f"Equalized Odds FPR 차이: {abs(fpr0-fpr1):.4f}")
+print(f"Demographic Parity gap: {dp:.4f}")
+print(f"Equalized Odds TPR gap: {abs(tpr0-tpr1):.4f}")
+print(f"Equalized Odds FPR gap: {abs(fpr0-fpr1):.4f}")
 all_fair = dp<0.05 and abs(tpr0-tpr1)<0.05 and abs(fpr0-fpr1)<0.05
-print(f"동시 만족: {'YES' if all_fair else 'NO -- 긴장 관계 확인'}")
+print(f"All satisfied: {'YES' if all_fair else 'NO -- tension confirmed'}")
 ```
 
-### §7.3 SCALING (프라이버시 비용 스케일링)
+### §7.3 SCALING (privacy-cost scaling)
 
 ```python
 import math
-eps = 0.01; dp = 1e-5  # 작은 eps에서 고급 합성 이점 극대화
-print(f"{'k':>6} {'순차':>10} {'고급':>10} {'절감':>8}")
+eps = 0.01; dp = 1e-5  # Small eps maximizes advanced-composition benefit
+print(f"{'k':>6} {'sequential':>12} {'advanced':>12} {'savings':>8}")
 for k in [10, 50, 100, 500, 1000, 5000]:
     naive = k * eps
     adv = math.sqrt(2*k*math.log(1/dp))*eps + k*eps*(math.exp(eps)-1)
-    print(f"{k:>6} {naive:>10.3f} {adv:>10.3f} {(1-adv/naive)*100:>7.1f}%")
-# 순차: O(k) 선형, 고급: O(sqrt(k)) -- k 증가 시 절감 효과 증대
+    print(f"{k:>6} {naive:>12.3f} {adv:>12.3f} {(1-adv/naive)*100:>7.1f}%")
+# Sequential: O(k) linear, advanced: O(sqrt(k)) -- savings grow with k
 ```
 
-### §7.4 SENSITIVITY (공정성 임계값 민감도)
+### §7.4 SENSITIVITY (fairness-threshold sensitivity)
 
 ```python
 import random; random.seed(42)
 gaps = [abs(random.uniform(0.2,0.6) - random.uniform(0.2,0.6)) for _ in range(100)]
-print(f"{'임계값':>8} {'공정률':>8}")
+print(f"{'threshold':>10} {'fair rate':>10}")
 for t in [0.01, 0.05, 0.10, 0.15, 0.20]:
     pct = sum(g<t for g in gaps)
-    print(f"{t:>8.2f} {pct:>7d}%")
-# 결론: 임계값 선택이 판정을 크게 좌우 -- 맥락 의존적 결정 필요
+    print(f"{t:>10.2f} {pct:>9d}%")
+# Takeaway: threshold choice strongly drives the verdict -- context-dependent decision needed
 ```
 
-### §7.5 LIMITS (불가능성 정리)
+### §7.5 LIMITS (impossibility theorem)
 
 ```python
 import random; random.seed(123)
@@ -190,16 +193,16 @@ def impossibility(br_a, br_b, n=5000):
         return (tp/(tp+fn) if tp+fn else 0, fp/(fp+tn) if fp+tn else 0,
                 tp/(tp+fp) if tp+fp else 0)
     ra, rb = r(ya,pa), r(yb,pb)
-    print(f"  기본비율 {br_a}/{br_b}: TPR차={abs(ra[0]-rb[0]):.3f} "
-          f"FPR차={abs(ra[1]-rb[1]):.3f} PPV차={abs(ra[2]-rb[2]):.3f}")
+    print(f"  base rates {br_a}/{br_b}: TPR gap={abs(ra[0]-rb[0]):.3f} "
+          f"FPR gap={abs(ra[1]-rb[1]):.3f} PPV gap={abs(ra[2]-rb[2]):.3f}")
 
-print("=== Chouldechova 불가능성 실증 ===")
-impossibility(0.3, 0.3)   # 동일 -- 근접 가능
-impossibility(0.2, 0.5)   # 상이 -- 동시 만족 불가
-print("결론: 기본비율 상이 시 완벽한 공정성은 수학적으로 불가능")
+print("=== Chouldechova impossibility demonstration ===")
+impossibility(0.3, 0.3)   # equal -- close match possible
+impossibility(0.2, 0.5)   # unequal -- cannot simultaneously satisfy
+print("Takeaway: when base rates differ, perfect fairness is mathematically impossible")
 ```
 
-### §7.6 CHI2 (편향 유의성 검정)
+### §7.6 CHI2 (bias-significance test)
 
 ```python
 import math
@@ -214,11 +217,11 @@ def chi2_test(obs, exp):
 
 c1, p1 = chi2_test([48,52,50,50], [50,50,50,50])
 c2, p2 = chi2_test([25,60,65,50], [50,50,50,50])
-print(f"편향 없음: chi2={c1:.3f} p={p1:.4f} {'유의' if p1<0.05 else '무의미'}")
-print(f"체계 편향: chi2={c2:.3f} p={p2:.4f} {'유의--교정필요' if p2<0.05 else '무의미'}")
+print(f"no bias: chi2={c1:.3f} p={p1:.4f} {'significant' if p1<0.05 else 'not significant'}")
+print(f"systematic bias: chi2={c2:.3f} p={p2:.4f} {'significant--correction needed' if p2<0.05 else 'not significant'}")
 ```
 
-### §7.7 OEIS (편향 분포 구조)
+### §7.7 OEIS (bias-distribution structure)
 
 ```python
 import math, random; random.seed(42)
@@ -230,11 +233,11 @@ slope = sum((x-mx)*(y-my) for x,y in zip(log_r,log_f))/sum((x-mx)**2 for x in lo
 ss_res = sum((y-(slope*x+(my-slope*mx)))**2 for x,y in zip(log_r,log_f))
 ss_tot = sum((y-my)**2 for y in log_f)
 r2 = 1-ss_res/ss_tot
-print(f"Zipf 기울기: {slope:.3f} (이상: -1.0), R2={r2:.4f}")
-print(f"편향 분포 Zipf {'적합' if r2>0.9 else '부분적합' if r2>0.7 else '부적합'}")
+print(f"Zipf slope: {slope:.3f} (ideal: -1.0), R2={r2:.4f}")
+print(f"Bias distribution Zipf {'good fit' if r2>0.9 else 'partial fit' if r2>0.7 else 'poor fit'}")
 ```
 
-### §7.8 PARETO (프라이버시-유틸리티 트레이드오프)
+### §7.8 PARETO (privacy-utility trade-off)
 
 ```python
 import math, random; random.seed(42)
@@ -247,108 +250,108 @@ def acc_at_eps(vals, sens, eps, trials=30):
     return max(0, 1-sum(errs)/len(errs))
 
 vals = [100,250,500,750,1000]
-print(f"{'eps':>8} {'유틸리티':>10} {'1/eps':>8}")
+print(f"{'eps':>8} {'utility':>10} {'1/eps':>8}")
 for e in [0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0]:
     a = acc_at_eps(vals, 1.0, e)
     print(f"{e:>8.2f} {a:>10.4f} {1/e:>8.2f}")
-print("결론: eps~1.0 부근이 실용적 파레토 최적점")
+print("Takeaway: around eps~1.0 is the pragmatic Pareto sweet-spot candidate")
 ```
 
-### §7.9 SYMBOLIC (메커니즘 정밀 계산)
+### §7.9 SYMBOLIC (mechanism precision calc)
 
 ```python
 import math
 from fractions import Fraction
-print("[라플라스] b = Delta/eps, 분산 = 2b^2")
+print("[Laplace] b = Delta/eps, variance = 2b^2")
 for s in [Fraction(1), Fraction(1,2)]:
     for e in [Fraction(1,10), Fraction(1), Fraction(2)]:
         b = s/e; var = 2*b*b
         print(f"  sens={s} eps={e} -> b={b} var={var}")
 
 delta = 1e-5; c = math.sqrt(2*math.log(1.25/delta))
-print(f"\n[가우시안] sigma = Delta*c/eps, c={c:.6f}")
+print(f"\n[Gaussian] sigma = Delta*c/eps, c={c:.6f}")
 for s in [1.0, 0.5]:
     for e in [0.1, 1.0, 2.0]:
         sig = s*c/e
         print(f"  sens={s} eps={e} -> sigma={sig:.4f} var={sig**2:.4f}")
-print("핵심: eps 2배 -> sigma 1/2 -> 분산 1/4")
+print("Key: doubling eps -> sigma 1/2 -> variance 1/4")
 ```
 
-### §7.10 COUNTER (정직한 한계)
+### §7.10 COUNTER (honest limits)
 
 ```
-1. 프라이버시 vs 공정성: DP 노이즈가 소수 그룹에 불균형 영향 (Cummings 2019)
-2. 프라이버시 vs 유틸리티: eps->0이면 출력 무작위 (Duchi 2013 minimax 하한)
-3. 공정성 불가능성: 기본비율 상이 시 3조건 동시 불가 (Chouldechova 2017)
-4. 멀티모달 방어 한계: 교차 모달 공격 공간 사실상 무한, 새 모달 추가 시 재설계
-5. 벤치마크 한계: 서구 중심, 문화별 "공정" 정의 상이, 교차 편향 데이터 부족
-6. 비학습 순환: 완벽한 비학습 = 재학습 비용, 검증 자체가 프라이버시 침해 가능
+1. Privacy vs fairness: DP noise unevenly impacts minority groups (Cummings 2019)
+2. Privacy vs utility: eps->0 makes the output random (Duchi 2013 minimax lower bound)
+3. Fairness impossibility: when base rates differ, all 3 conditions cannot hold simultaneously (Chouldechova 2017)
+4. Multimodal defense limits: cross-modal attack space is effectively infinite; adding a new modality forces redesign
+5. Benchmark limits: Western-centric, "fair" definition varies by culture, intersectional-bias data is scarce
+6. Unlearning loop: perfect unlearning = retraining cost; verification itself may be a privacy leak
 ```
 
-## §8 IDEAS (20개 연구 아이디어 상세)
+## §8 IDEAS (20 detailed research ideas)
 
-### 축 1: 멀티모달 안전성 (MS-1 ~ MS-8)
+### Axis 1: Multimodal safety (MS-1 ~ MS-8)
 
-| ID | 제목 | 핵심 질문 | 난이도 |
-|----|------|----------|--------|
-| MS-1 | 시각 프롬프트 인젝션 방어 | 이미지 속 숨겨진 명령 탐지/차단 | 높음 |
-| MS-2 | 시각-텍스트 안전 일관성 | 텍스트/이미지 안전 판정 일관성 | 중간 |
-| MS-3 | 오디오 안전 필터 | 음성/음향 유해 콘텐츠 교차 탐지 | 중간 |
-| MS-4 | 멀티모달 환각 탐지 | 이미지-텍스트 사실 불일치 탐지 | 높음 |
-| MS-5 | 멀티모달 SAE | 텍스트/이미지 공유 안전 특성 추출 | 높음 |
-| MS-6 | 멀티모달 탈옥 방어 | 모달 교차 탈옥 시도 방어 | 높음 |
-| MS-7 | 교차 모달 안전 전이 | 한 모달 안전 학습의 타 모달 전이 | 중간 |
-| MS-8 | NSFW 회로 매핑 | NSFW 탐지 내부 회로 식별 | 중간 |
+| ID | Title | Core question | Difficulty |
+|----|-------|---------------|------------|
+| MS-1 | Visual prompt-injection defense | Detect / block hidden commands inside images | high |
+| MS-2 | Vision-text safety consistency | Consistency of text vs image safety verdicts | medium |
+| MS-3 | Audio safety filter | Cross-detect harmful content in speech / audio | medium |
+| MS-4 | Multimodal hallucination detection | Detect image-text factual mismatches | high |
+| MS-5 | Multimodal SAE | Extract shared safety features across text / image | high |
+| MS-6 | Multimodal jailbreak defense | Defend against cross-modal jailbreak attempts | high |
+| MS-7 | Cross-modal safety transfer | Transfer safety-training across modalities | medium |
+| MS-8 | NSFW circuit mapping | Identify internal circuits for NSFW detection | medium |
 
-### 축 2: 프라이버시 보존 (PP-1 ~ PP-6)
+### Axis 2: Privacy preservation (PP-1 ~ PP-6)
 
-| ID | 제목 | 핵심 질문 | 난이도 |
-|----|------|----------|--------|
-| PP-1 | PII 특성 탐지 | 모델 내 PII 인코딩 특성 탐색 | 높음 |
-| PP-2 | 차등 프라이버시 추론 | 추론 시 DP 적용 출력 보호 | 중간 |
-| PP-3 | 선택적 비학습 | 특정 데이터 영향 효율적 제거 | 높음 |
-| PP-4 | 학습 데이터 추출 방지 | 역추출 공격 방어 | 중간 |
-| PP-5 | 프라이버시 보존 SAE | SAE 분석 시 개인정보 비노출 | 중간 |
-| PP-6 | 출력 익명화 필터 | 식별 정보 자동 필터링 | 낮음 |
+| ID | Title | Core question | Difficulty |
+|----|-------|---------------|------------|
+| PP-1 | PII feature detection | Explore PII-encoding features inside the model | high |
+| PP-2 | Differential-privacy inference | Apply DP at inference time to protect outputs | medium |
+| PP-3 | Selective unlearning | Efficiently remove the effect of specific data | high |
+| PP-4 | Training-data extraction defense | Defend against extraction attacks | medium |
+| PP-5 | Privacy-preserving SAE | Keep personal data unexposed during SAE analysis | medium |
+| PP-6 | Output anonymization filter | Auto-filter identifying information | low |
 
-### 축 3: 공정성/편향 (FB-1 ~ FB-6)
+### Axis 3: Fairness / bias (FB-1 ~ FB-6)
 
-| ID | 제목 | 핵심 질문 | 난이도 |
-|----|------|----------|--------|
-| FB-1 | 편향 특성 매핑 | SAE로 편향 관련 특성 추출 | 높음 |
-| FB-2 | 공정성 회로 탐지 | 공정/불공정 판단 회로 식별 | 높음 |
-| FB-3 | 인과적 편향 교정 | 인과 추론 기반 편향 원인 교정 | 높음 |
-| FB-4 | 다문화 공정성 벤치마크 | 비서구 맥락 공정성 평가 체계 | 중간 |
-| FB-5 | 교차 편향 분석 | 성별x인종x나이 복합 편향 측정 | 중간 |
-| FB-6 | 공정성-성능 파레토 | 공정성 제약 하 최적 성능 경계 | 중간 |
+| ID | Title | Core question | Difficulty |
+|----|-------|---------------|------------|
+| FB-1 | Bias feature mapping | Extract bias-related features with SAE | high |
+| FB-2 | Fairness circuit detection | Identify fair / unfair decision circuits | high |
+| FB-3 | Causal bias correction | Correct bias causes via causal inference | high |
+| FB-4 | Multicultural fairness benchmark | Non-Western-context fairness evaluation system | medium |
+| FB-5 | Intersectional bias analysis | Measure gender x race x age compound bias | medium |
+| FB-6 | Fairness-performance Pareto | Max-performance boundary under fairness constraints | medium |
 
-## §9 METRICS (핵심 메트릭)
+## §9 METRICS (core metrics)
 
-| 메트릭 | 목표 |
-|--------|------|
-| 시각 인젝션 F1 | > 0.95 |
-| 교차 모달 Cohen's kappa | > 0.85 |
+| Metric | Target |
+|--------|--------|
+| Visual-injection F1 | > 0.95 |
+| Cross-modal Cohen's kappa | > 0.85 |
 | (eps, delta)-DP | eps < 1.0 |
-| Demographic Parity 차이 | < 0.05 |
-| Equalized Odds 차이 | < 0.05 |
-| Calibration 오차 | < 0.03 |
+| Demographic Parity gap | < 0.05 |
+| Equalized Odds gap | < 0.05 |
+| Calibration error | < 0.03 |
 
-## §10 APPLICATIONS (응용)
+## §10 APPLICATIONS (applications)
 
-1. **Claude 안전성 강화**: 멀티모달 입력의 교차 공격 방어
-2. **프라이버시 규제 준수**: GDPR/CCPA 기술적 구현
-3. **공정성 감사 도구**: 배포 전 다차원 자동 감사
-4. **비학습 파이프라인**: 사용자 데이터 삭제 요청 이행
-5. **다문화 AI 서비스**: 비서구권 공정 서비스 보장
+1. **Claude safety hardening**: defend cross-attacks on multimodal inputs
+2. **Privacy-regulation compliance**: technical implementation for GDPR/CCPA
+3. **Fairness audit tool**: multi-axis automated audit prior to deployment
+4. **Unlearning pipeline**: fulfill user data-deletion requests
+5. **Multicultural AI service**: ensure fair service for non-Western audiences
 
-## §11 RISKS (위험)
+## §11 RISKS (risks)
 
-| 위험 | 심각도 | 완화 |
-|------|--------|------|
-| DP 노이즈 소수그룹 정확도 급락 | 높음 | 그룹별 예산 분배 최적화 |
-| 공정성 메트릭 간 충돌 | 중간 | 불가능성 정리 기반 우선순위 |
-| 새 모달리티 방어 무력화 | 높음 | 모달리티-불가지론적 설계 |
-| 벤치마크 문화 편향 | 중간 | 다문화 전문가 + 현지화 검증 |
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| DP noise collapses minority-group accuracy | high | Optimize per-group budget allocation |
+| Conflict between fairness metrics | medium | Impossibility-theorem-based prioritization |
+| New modality defeats defenses | high | Modality-agnostic design |
+| Benchmark culture bias | medium | Multicultural experts + localized validation |
 
 ## §12 REFERENCES
 
@@ -365,28 +368,29 @@ print("핵심: eps 2배 -> sigma 1/2 -> 분산 1/4")
 
 ## §13 GLOSSARY
 
-| 용어 | 정의 |
-|------|------|
-| (eps, delta)-DP | 이웃 데이터셋 출력 차이 <= exp(eps), delta 확률 실패 허용 |
-| Demographic Parity | 그룹 독립 양성 비율 동일 |
-| Equalized Odds | TPR/FPR 전 그룹 동일 |
-| Calibration | 예측 점수 = 실제 확률 |
-| SAE | 희소 자동 인코더 (해석가능 특성 추출) |
-| Machine Unlearning | 특정 데이터 영향 모델에서 제거 |
-| PII | 개인식별정보 |
+| Term | Definition |
+|------|------------|
+| (eps, delta)-DP | Neighbouring-dataset output differ <= exp(eps), fail with probability delta |
+| Demographic Parity | Group-independent equal positive rate |
+| Equalized Odds | TPR/FPR equal across groups |
+| Calibration | Predicted score = actual probability |
+| SAE | Sparse Auto-Encoder (extracts interpretable features) |
+| Machine Unlearning | Remove the influence of specific data from the model |
+| PII | Personally Identifiable Information |
 
 ## §14 FAQ
 
-**Q: 왜 안전성/프라이버시/공정성을 통합하나?**
-A: 개별 최적화는 다른 축을 악화시킨다. DP가 소수그룹 정확도를 떨어뜨리고,
-안전 필터가 특정 문화 표현을 과잉 차단한다. 통합만이 균형을 잡는다.
+**Q: Why combine safety / privacy / fairness?**
+A: Optimizing any one axis alone worsens the others. DP drops
+minority-group accuracy, and safety filters over-block certain
+cultural expressions. Only integration balances them.
 
-**Q: 불가능성 정리가 있는데 공정성을 왜 연구하나?**
-A: 완벽한 공정성은 불가능하지만, 트레이드오프를 정량화하고
-맥락별 최선을 제공하는 것이 연구 가치이다.
+**Q: Why study fairness given the impossibility theorem?**
+A: Perfect fairness is impossible, but quantifying trade-offs and
+providing context-specific bests is the research value.
 
 ## §15 CHANGELOG
 
-| 날짜 | 변경 |
-|------|------|
-| 2026-04-16 | 초판 -- 3축 20개 아이디어, 11개 검증 서브섹션 |
+| Date | Change |
+|------|--------|
+| 2026-04-16 | First edition -- 3 axes, 20 ideas, 11 verification subsections |

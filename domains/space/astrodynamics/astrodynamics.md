@@ -9,7 +9,7 @@ source_proposal: reports/p2_domain_expansion_proposal.json DC-062
 registered: 2026-04-23
 ---
 
-# 궤도역학 (HEXA-ASTRODYN) — n=6 Keplerian 6-element orbit
+# Astrodynamics (HEXA-ASTRODYN) — n=6 Keplerian 6-element orbit
 
 ## §1 WHY
 
