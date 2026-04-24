@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 19,
+    "count": 17,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -588,7 +588,6 @@
     "domains/cognitive/ai-quality-scale/ai-quality-scale.md",
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
-    "papers/moonshine-barrier-honest-report-2026-04-15.md",
     "papers/n6-hexa-chip-7dan-integrated-paper.md",
     "papers/n6-hexa-consciousness-integrated-paper.md",
     "papers/n6-ultimate-superconductor-integrated-paper.md",
@@ -599,6 +598,26 @@
     "theory/constants/atlas-constants.md"
   ],
   "shrink_history": [
+    {
+      "phase": "phase-6-D-B13-moonshine-barrier",
+      "batch": "phase-6-D-B13-moonshine-barrier",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "papers/moonshine-barrier-honest-report-2026-04-15.md",
+      "before": 19,
+      "after": 18,
+      "note": "B13 RED-lite wave 2 - moonshine-barrier-honest-report-2026-04-15.md (1276L, CJK 9319 -> 0) translated KR->EN, paper preserves Conway-Norton/FLM/Borcherds/Moonshine/sigma/tau/phi terms, own#11 softeners applied (proof -> candidate proof / drafted / drafted proving-style)."
+    },
+    {
+      "phase": "phase-6-D-B13-n6-hexa-starship",
+      "date": "2026-04-25",
+      "removed": [
+        "papers/n6-hexa-starship-integrated-paper.md"
+      ],
+      "count_before": 18,
+      "count_after": 17,
+      "note": "B13 Wave 2 - n6-hexa-starship-integrated-paper translated KR->EN, CJK=0 verified, lint exit 0."
+    },
     {
       "phase": "phase-6-D-B12B-axis-r3",
       "date": "2026-04-25",
