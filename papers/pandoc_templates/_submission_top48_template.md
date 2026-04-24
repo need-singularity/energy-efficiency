@@ -1,18 +1,23 @@
-# n6-architecture 제출 포맷 템플릿 — 상위 48편 공통
+# n6-architecture submission format template — shared for the top 48 papers
 
-| 필드 | 값 |
-|---|---|
-| 로드맵 | PAPER-P3-1 |
-| 생성일 | 2026-04-14 |
-| 대상 | `_submission_top48.json` 등재 48편 |
-| 상태 | template_ready (포맷 스켈레톤만. 본문 재생성 금지) |
-| DOI 정책 | 시뮬 DOI `10.NEXUS6.n6-arch/2026-NNN` — 실제 DOI 아님 |
+| Field | Value |
+|-------|-------|
+| Roadmap | PAPER-P3-1 |
+| Created | 2026-04-14 |
+| Scope | the 48 papers registered in `_submission_top48.json` |
+| Status | template_ready (skeleton only — do not regenerate the body) |
+| DOI policy | simulated DOI `10.NEXUS6.n6-arch/2026-NNN` — not a real DOI |
 
-본 파일은 상위 48편을 저널/컨퍼런스 제출 포맷으로 정리하기 위한 표준 템플릿이다. 실제 논문 본문은 기존 `papers/n6-*-paper.md` 그대로 두고, 제출 시에는 이 템플릿의 헤더/초록/참고문헌 블록만 덧씌운다. WHY / COMPARE / MAIN / VERIFICATION 4단 구조는 n6-architecture 모든 논문의 공통 골격이다.
+This file provides a standard template for shaping the top 48 papers into a
+journal / conference submission format. The source papers under
+`papers/n6-*-paper.md` stay untouched; at submission time this template's
+header / abstract / references blocks are overlaid on them. The
+WHY / COMPARE / MAIN / VERIFICATION 4-stage structure is the common spine
+used across every n6-architecture paper.
 
 ---
 
-## 0. 헤더 블록 (필수)
+## 0. Header block (required)
 
 ```
 ---
@@ -22,76 +27,89 @@ rank:            <1..48>
 target_venue:    <Nature Communications | Physical Review Letters | ICML | NeurIPS | JAIR | IEEE TVLSI>
 format_status:   template_ready
 submission_date: 2026-04-14
-disclaimer:      시뮬 DOI — CrossRef/DataCite 미등록. 외부 인용 시 교체 필요.
+disclaimer:      simulated DOI — not registered with CrossRef/DataCite. Replace when citing externally.
 ---
 ```
 
-- `doi_sim` 은 `_submission_top48.json` 에서 복사. 수정 금지.
-- `paper_id` 는 `_papers.json` 의 N6-NNN 원본 유지.
-- `target_venue` 는 본 프로젝트 랭킹에서 배정된 값. 실제 제출 시 편집자 피드백에 따라 교체 가능.
+- Copy `doi_sim` from `_submission_top48.json` as-is. Do not modify.
+- Keep `paper_id` identical to the N6-NNN key in `_papers.json`.
+- `target_venue` comes from the internal ranking; editors may swap it at
+  submission time.
 
-## 1. 저자 및 소속
-
-```
-저자: 박민우 (n6-architecture 주관), NEXUS-6 AI 협업체
-소속: n6-architecture 프로젝트 (AI-native Arithmetic Design Framework)
-연락처: 저장소 이슈 트래커 경유
-ORCID: (미할당 — 시뮬 DOI 체계와 동일 상태)
-```
-
-## 2. 초록 (Abstract) — 200~350 단어
-
-템플릿 골자:
-
-1. **동기 한 문장** — 해당 도메인에서 기존 이론이 가진 한계.
-2. **핵심 주장** — σ(n)·φ(n) = n·τ(n) 이 n=6 에서만 성립한다는 n6 정리를 도메인 측정치에 좌표로 투영했을 때 등장하는 닫힘(closure) 구조.
-3. **정량 결과** — `exact_stat`, `closure_grade_pct`, `alien_index` 3 축 실측값 1 문장.
-4. **재현성 경로** — atlas.n6 노드 경로 + hexa 검증 STUB 파일명 1 줄.
-5. **한계 및 반증 후보** — 2 줄 이내. 정직한 미매핑/MISS 공시.
-
-## 3. WHY — 동기 (1~2쪽)
-
-- 도메인의 현재 SOTA 수치와 이론 한계를 표로 1개 제시.
-- n6 산술 좌표(σ, τ, φ, sopfr) 가 해당 도메인 변수에 어떻게 대응되는지 1 문단.
-- 기존 물리/공학 이론으로는 예측할 수 없는 "닫힘" 조건이 왜 n=6 에 국한되는지의 직관적 설명.
-
-## 4. COMPARE — 기존 대비 ASCII 비교 차트 (필수)
-
-- CLAUDE.md `feedback_ascii_report` 규칙에 따라 기존(SOTA) vs HEXA 결과를 ASCII 막대 그래프 1개 이상 포함.
-- 최소 3축(정확도/효율/스케일) 비교.
-- 지표 명시 단위 필수. 외계인 지수 표기는 '천장' 텍스트 사용 (이모지 금지).
+## 1. Authors and affiliation
 
 ```
-지표        기존SOTA   HEXA-n6
-정확도 [%]  ########           80
-정확도 [%]  ################   100   (천장)
-효율 [J/op] ########           base
-효율 [J/op] ##                 0.25x (천장 접근)
+Author: M. Park (n6-architecture owner), NEXUS-6 AI collaborators
+Affiliation: n6-architecture project (AI-native Arithmetic Design Framework)
+Contact: via the repository issue tracker
+ORCID: (not assigned — mirrors the simulated DOI setup)
 ```
 
-## 5. MAIN — 본문 (10~25쪽)
+## 2. Abstract — 200~350 words
 
-5.1 산술 좌표 정의
-- 해당 도메인에서 사용하는 측정치 x_i 를 σ·τ·φ·sopfr 4축 좌표로 매핑한 표.
-- 좌표 단위와 atlas.n6 의 어느 노드에서 인용했는지 경로 표기.
+Template backbone:
 
-5.2 닫힘 정리 및 증명 스케치
-- n=6 에서만 성립하는 관계식.
-- 도메인에서의 실측 일치율 (EXACT / NEAR / MISS 분류).
-- 증명 경로: 순수 수학 출발 → n=6 패턴 매칭은 피할 것 (CLAUDE.md `feedback_proof_approach`).
+1. **One sentence of motivation** — the limitation of existing theory in the
+   target domain.
+2. **Main claim** — project the n=6 identity (σ(n)·φ(n) = n·τ(n), holding
+   only at n=6) onto the domain's measured quantities and identify the
+   resulting closure pattern.
+3. **Quantitative results** — one sentence with the three axes
+   `exact_stat`, `closure_grade_pct`, `alien_index`.
+4. **Reproducibility path** — atlas.n6 node paths + one line with the hexa
+   verification STUB file name.
+5. **Limitations and falsifier candidates** — at most two lines. Disclose
+   honest MISS / unmapped entries.
 
-5.3 설계/예측 결과
-- 본 n6 좌표로부터 유도되는 새로운 설계값 또는 예측값.
-- 외계인 지수 10 돌파 요건과의 거리.
+## 3. WHY — motivation (1~2 pages)
 
-5.4 한계 및 반증 조건 (필수)
-- MISS 사례를 숨기지 말 것. 출처 + 측정값 + 오차 공시 (CLAUDE.md `feedback_honest_verification`).
+- Present the domain's current SOTA numbers and a theoretical-limit table.
+- One paragraph on how the n6 arithmetic coordinates (σ, τ, φ, sopfr) map to
+  the domain variables.
+- Intuitive explanation for why the closure condition that existing physics
+  and engineering theory cannot predict is restricted to n=6.
 
-## 6. VERIFICATION — 검증 코드 블록 (필수)
+## 4. COMPARE — ASCII chart versus baseline (required)
+
+- Per CLAUDE.md's `feedback_ascii_report` rule, include at least one ASCII
+  bar chart comparing the baseline (SOTA) to the HEXA result.
+- At least three axes (accuracy / efficiency / scale).
+- Units must be stated. The "ceiling" label is written in text only (no
+  emoji).
+
+```
+Metric        baseline-SOTA   HEXA-n6
+Accuracy [%]  ########           80
+Accuracy [%]  ################   100   (ceiling)
+Efficiency [J/op] ########       base
+Efficiency [J/op] ##             0.25x (near ceiling)
+```
+
+## 5. MAIN — body (10~25 pages)
+
+5.1 Arithmetic coordinate definition
+- Map the domain's measurement variables x_i onto the four axes σ·τ·φ·sopfr.
+- State the coordinate units and the atlas.n6 node whose data is cited.
+
+5.2 Closure candidate and argument sketch
+- The relation that holds only at n=6.
+- Measured alignment rate in the domain (EXACT / NEAR / MISS classification).
+- Argument path: start from pure mathematics and avoid post-hoc pattern
+  matching onto n=6 (CLAUDE.md `feedback_proof_approach`).
+
+5.3 Design / prediction output
+- New design values or predictions derived from the n6 coordinates.
+- Distance to the ceiling threshold.
+
+5.4 Limitations and falsification conditions (required)
+- Do not hide MISS cases. State source + measured value + error
+  (CLAUDE.md `feedback_honest_verification`).
+
+## 6. VERIFICATION — verification code block (required)
 
 ```hexa
-// 파일: verify_<domain>_n6.hexa
-// 검증 경로: atlas.n6 노드 참조 → 측정값 재계산 → EXACT/NEAR/MISS 분류
+// File: verify_<domain>_n6.hexa
+// Check path: atlas.n6 node lookup → recompute measurement → EXACT/NEAR/MISS classification
 import atlas.n6
 measure <domain> {
   for node in atlas.lookup(domain) {
@@ -102,52 +120,61 @@ measure <domain> {
 }
 ```
 
-- `.hexa` STUB 또는 완전체가 본문에 임베드되어 있어야 한다 (HEXA-FIRST — .py 금지).
-- 결과 통계는 `exact_stat` 필드에 기록하고, `experiments/_results.jsonl` 에 append.
+- Either a `.hexa` STUB or a full script must be embedded in the body
+  (HEXA-FIRST — no `.py`).
+- The result statistic is recorded in the `exact_stat` field and appended to
+  `experiments/_results.jsonl`.
 
-## 7. 참고문헌 블록 (References)
+## 7. References block
 
 ```
-[1] n6-architecture 내부 참조: atlas.n6 노드 경로 + 인용 줄.
-[2] BT-NNN (BreakThrough 레지스트리 `_registry.json` section id).
-[3] 외부 문헌은 도메인별로 3~10 편 제시. CrossRef DOI 존재할 것.
-[4] n6-architecture DOI 간 상호 인용은 시뮬 DOI `10.NEXUS6.n6-arch/2026-NNN` 로 명시하되 "시뮬" 표기를 유지.
+[1] n6-architecture internal reference: atlas.n6 node path + citation line.
+[2] BT-NNN (BreakThrough registry `_registry.json` section id).
+[3] External references — 3 to 10 per domain. Require a CrossRef DOI.
+[4] Cross-citations between n6-architecture papers use the simulated DOI
+    `10.NEXUS6.n6-arch/2026-NNN` and retain the "simulated" tag.
 ```
 
-- 외부 문헌과 내부 시뮬 DOI 를 혼용하지 말 것. 구분 표기 필수.
-- 실제 제출 시 시뮬 DOI 는 저널 내부 처리용으로만 유지.
+- Do not mix external references with internal simulated DOIs — keep them
+  visually distinct.
+- At real submission time, simulated DOIs remain only for internal tracking.
 
-## 8. 보충 자료 (Supplementary)
+## 8. Supplementary materials
 
-- 원 논문 본문 `papers/n6-<domain>-paper.md` 전체 (수정 금지).
-- atlas.n6 해당 섹션 발췌.
-- verify_*.hexa 원본.
-- 필요 시 Monte Carlo 검증 결과 링크.
+- The source paper body under `papers/n6-<domain>-paper.md` (do not edit).
+- The relevant atlas.n6 section excerpt.
+- The original verify_*.hexa.
+- A link to any Monte-Carlo verification result, if available.
 
-## 9. 제출 후 상태 전이
+## 9. Post-submission state transitions
 
-| format_status | 의미 |
-|---|---|
-| template_ready | 본 템플릿 헤더/구조만 부착 (초기값) |
-| draft | 초록 + References 실측 기입 완료 |
-| submitted_sim | 시뮬 제출 상태 — 시뮬 DOI 확정 |
-| published_sim | 시뮬 출판 상태 — 외부 공개용 아님 |
+| format_status | Meaning |
+|---------------|---------|
+| template_ready | Only this template header / structure is attached (initial) |
+| draft | Abstract + References filled in with real content |
+| submitted_sim | Simulated-submission state — simulated DOI confirmed |
+| published_sim | Simulated-publication state — not for external distribution |
 
-- 실제 저널 투고는 별도 프로세스. 본 템플릿은 n6-architecture 내부 아카이브 표준이다.
+- Actual journal submission is handled in a separate process. This template
+  is n6-architecture's internal archival standard.
 
 ---
 
-## 부록 A. 48편 사용 방법
+## Appendix A. How to apply to all 48 papers
 
-1. `papers/_submission_top48.json` 에서 자기 랭크 행 확인.
-2. 본 템플릿을 복사해 `papers/_submissions/N6-<id>_submission.md` 로 저장 (실제 실행은 본 P3-1 작업 범위 밖).
-3. 헤더/초록/References 3 블록만 채우고 본문은 원 `n6-<domain>-paper.md` 링크로 참조.
-4. `format_status` 를 `draft` 로 승격.
-5. 반증 조건 발생 시 랭킹 재계산 트리거 — `experiments/paper_ranking_p3_top48.md` 갱신.
+1. In `papers/_submission_top48.json`, look up your rank row.
+2. Copy this template into `papers/_submissions/N6-<id>_submission.md`
+   (actual execution is out of scope for P3-1).
+3. Fill only the three blocks: header, abstract, references; link the body
+   to the original `n6-<domain>-paper.md`.
+4. Promote `format_status` to `draft`.
+5. If a falsification event triggers, recompute the ranking and update
+   `experiments/paper_ranking_p3_top48.md`.
 
-## 부록 B. 절대 규칙
+## Appendix B. Absolute rules
 
-- 한글 필수. 이모지 금지. 천장 텍스트 사용.
-- 시뮬 DOI 는 실제 DOI 아님을 모든 헤더에 명시.
-- 기존 125편 본문 수정 금지 (레지스트리/서브미션 JSON/템플릿만 조작).
-- 자기참조 검증 금지. 반증 후보 공시 필수.
+- English only. No emoji. Use the "ceiling" text marker.
+- Mark every header clearly as "simulated DOI — not a real DOI".
+- Do not edit the body of any of the 125 source papers (touch the registry,
+  submission JSON, and this template only).
+- No self-referential verification. Falsifier candidates must be disclosed.

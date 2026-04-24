@@ -1,5 +1,5 @@
 ---
-id: mc-v9-대조-e
+id: mc-v9-control-e
 date: 2026-04-22
 domain: monte-carlo
 grade: [7]
@@ -9,7 +9,7 @@ license: CC-BY-SA-4.0
 
 # Monte Carlo v9 Control Group e.uniform Null Result
 
-**Entry**: `mc-v9-대조-e` (atlas.n6)
+**Entry**: `mc-v9-control-e` (atlas.n6)
 
 **Setup**: control e.uniform group, n=1120 samples.
 

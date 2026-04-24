@@ -1,19 +1,19 @@
 # Bernoulli 18: BB(2) = 6 — Calculability Constant Joins the Independent Family of n=6 Coincidences
 
-> **Preprint stub** (arxiv 형식 골격, 미제출)
+> **Preprint stub** (arxiv-style skeleton, not submitted)
 > **Author**: M. Park (independent; arsmoriendi99@proton.me)
 > **Affiliation**: n6-architecture private research framework
 > **Date**: 2026-04-15
 > **MSC2020 (provisional)**: 11A25 (multiplicative number theory), 03D10 (Turing machines, complexity)
 > **arxiv class (target if submitted)**: math.NT (cross-list math.LO)
 > **Status**: NOT submitted to arxiv. Format draft only.
-> **7 millennium problems solved**: 0 / 7 (honesty maintained).
+> **7 millennium problems addressed**: 0 / 7 (honesty maintained).
 
 ## Abstract
 
 We register the eighteenth member of an empirically curated family of "independent n=6 coincidences"
 (after Bernoulli's original 16 + the conditional Selmer corollary as #17). The newcomer is the
-**Busy Beaver value BB(2) = 6**, established by Radó (1962). We prove (re-derive) BB(2) = 6 by
+**Busy Beaver value BB(2) = 6**, established by Radó (1962). We re-derive BB(2) = 6 by
 explicit enumeration over the 36 nontrivial 2-state 2-symbol halting Turing machines (Aaronson 2020,
 bbchallenge 2024). We then argue that BB(2) = 6 is **independent** from the previous 17 entries in
 the sense that its derivation requires neither the divisor function σ, nor the totient φ, nor any
@@ -59,9 +59,9 @@ In session H11 (2026-04-15) two further entries were added:
 - **#17** (conditional, M10): Sel_6 = Sel_2 ⊕ Sel_3 with average σ(6) = 12 (Bhargava–Shankar 2010, 2012, with BKLPR 2015 conditional input).
 - **#18** (this paper, M10\*): BB(2) = 6 (Radó 1962).
 
-In what follows we focus on #18 and prove independence as defined in §3.
+In what follows we focus on #18 and argue for independence as defined in §3.
 
-## 2. Statement and Proof of BB(2) = 6
+## 2. Statement and Argument for BB(2) = 6
 
 ### 2.1 Setup
 
@@ -81,7 +81,7 @@ The Busy Beaver function is
 **Theorem 1 (BB(2) = 6).** Among all 2-state 2-symbol deterministic Turing machines that halt on the
 all-blank input tape, the maximum number of 1's left on the tape upon halting is exactly 6.
 
-**Proof.** The transition table δ has |Q × Γ| = 4 entries. Each entry chooses (Γ, dir, next_state)
+**Argument.** The transition table δ has |Q × Γ| = 4 entries. Each entry chooses (Γ, dir, next_state)
 ∈ {0,1} × {L,R} × {q_0, q_1, H}. Allowing H gives 2 · 2 · 3 = 12 choices per entry, so |total tables|
 = 12⁴ = 20,736. After (i) symmetry reduction (left/right reflection, state relabeling) and
 (ii) removing tables that never halt on blank input, the equivalence classes containing a halting
@@ -113,7 +113,7 @@ Two statements P, Q involving the integer 6 are called **independent in the Bern
 
 (i) Neither implies the other under elementary arithmetic on σ, φ, τ, σ_k, μ, J_2, sopfr, M_3.
 (ii) The "natural ambient theory" of P (the smallest mathematical theory in which P is stated and
-proved) and the "natural ambient theory" of Q are not isomorphic, do not interpret one another, and
+argued) and the "natural ambient theory" of Q are not isomorphic, do not interpret one another, and
 do not share a common reduct that contains 6 as a privileged constant.
 
 This is informal but workable. For example, "ζ(2) = π²/6" (analytic number theory) is independent
