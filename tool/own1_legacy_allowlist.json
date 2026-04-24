@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 23,
+    "count": 21,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -566,6 +566,15 @@
         "before": 24,
         "after": 23,
         "note": "B13 wave 2 - n6-66-techniques-integrated-paper.md (1184L, CJK 5696 -> 0) translated. P-011 HEXA-66-TECHNIQUES canonical 21-section integrated spec (17 exp + 49 cross+SSM). own#11 softeners applied."
+      },
+      {
+        "phase": "phase-6-D-B12B-axis-r2",
+        "batch": "phase-6-D-B12B-axis-r2",
+        "date": "2026-04-25",
+        "removed": 1,
+        "entry": "theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md",
+        "new_count": 21,
+        "note": "B12 part B Wave 2 - axis-r2-refinement.md (961L, R2 millennium-axis emergence) translated KR->EN, CJK=0 verified, own#11 softener applied (PROVEN -> candidate)."
       }
     ]
   },
@@ -590,8 +599,6 @@
     "theory/breakthroughs/breakthrough-theorems.md",
     "theory/constants/atlas-constants.md",
     "theory/roadmap-v2/_archive-phase-01-forced-3-axes.md",
-    "theory/roadmap-v2/n6arch-axes/axis-r1-emergence.md",
-    "theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md",
     "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
   ],
   "shrink_history": [
@@ -621,6 +628,15 @@
       "count_before": 41,
       "count_after": 40,
       "timestamp": "2026-04-24T22:03:12Z"
+    },
+    {
+      "phase": "phase-6-D-B12B-axis-r1",
+      "batch": "phase-6-D-B12B-axis-r1",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "theory/roadmap-v2/n6arch-axes/axis-r1-emergence.md",
+      "new_count": 22,
+      "note": "B12 part B RED-lite - axis-r1-emergence.md (907L, CJK 5258 -> 0) translated. n6-arch subproject 7 Millennium Problems R1 axis emergence: 30 seeds, 7 candidate axes (NUM-CORE, DISCRETE-CLASS, PDE-RESONANCE, GALOIS-ASSEMBLY, LATTICE-VOA, PHYSICAL-NATURALNESS, HONEST-HARNESS)."
     }
   ]
 }
