@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 38,
+    "count": 36,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -452,6 +452,21 @@
         "before": 39,
         "after": 38,
         "note": "B12 RED-lite part A - chip-rtl-gen.md translated KR->EN, CJK=0 verified."
+      },
+      {
+        "phase": "phase-6-D-B12-hexa-proglang",
+        "removed": [
+          "domains/compute/hexa-proglang/hexa-proglang.md"
+        ],
+        "count_after": 37,
+        "date": "2026-04-25"
+      },
+      {
+        "date": "2026-04-25",
+        "removed": 1,
+        "scope": "domains/compute/chip-sc/chip-sc.md",
+        "phase": "phase-6-D-B12-chip-sc",
+        "batch": "phase-6-D-B12-chip-sc"
       }
     ]
   },
@@ -466,14 +481,12 @@
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/compute/chip-npu-n6/chip-npu-n6.md",
     "domains/compute/chip-photonic/chip-photonic.md",
-    "domains/compute/chip-sc/chip-sc.md",
     "domains/compute/chip-wafer/chip-wafer.md",
     "domains/compute/hexa-accel/hexa-accel.md",
     "domains/compute/hexa-holo/hexa-holo.md",
     "domains/compute/hexa-ios/hexa-ios.md",
     "domains/compute/hexa-mram/hexa-mram.md",
     "domains/compute/hexa-pim/hexa-pim.md",
-    "domains/compute/hexa-proglang/hexa-proglang.md",
     "domains/compute/hexa-super/hexa-super.md",
     "domains/compute/hexa-wafer/hexa-wafer.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
