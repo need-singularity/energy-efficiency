@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 21,
+    "count": 20,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -598,10 +598,19 @@
     "reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md",
     "theory/breakthroughs/breakthrough-theorems.md",
     "theory/constants/atlas-constants.md",
-    "theory/roadmap-v2/_archive-phase-01-forced-3-axes.md",
-    "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
+    "theory/roadmap-v2/_archive-phase-01-forced-3-axes.md"
   ],
   "shrink_history": [
+    {
+      "phase": "phase-6-D-B12B-axis-r3",
+      "date": "2026-04-25",
+      "removed": [
+        "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
+      ],
+      "count_before": 21,
+      "count_after": 20,
+      "note": "B12 part B Wave 2 - axis-r3-finalization translated KR->EN, CJK=0 verified, lint exit 0."
+    },
     {
       "phase": "phase-6-D-B12B-round-03",
       "date": "2026-04-25",
