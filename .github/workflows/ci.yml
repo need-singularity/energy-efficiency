@@ -442,3 +442,21 @@ jobs:
 
       - name: own#1 doc-english-required (HARD)
         run: python3 tool/own_doc_lint.py --rule 1
+
+  # ── Job 9: own#2/#3/#4/#5/#6/#7/#8/#9/#10/#11/#12/#16 — HARD block (all auto) ──
+  # Promoted 2026-04-24 from SOFT log to HARD merge-blocking per user 'hard!!!'.
+  # All auto-verifiable DOC-ONLY rules run in one linter pass. Pre-existing
+  # violations grandfathered via OWN{4,6,12}_LEGACY_ALLOWLIST inline sets in
+  # tool/own_doc_lint.py (frozen, shrink-only). Kept SEPARATE from own1 job so
+  # the UI signal makes it obvious which rule family blocked the merge.
+  own-all-hard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: python3 tool/own_doc_lint.py
