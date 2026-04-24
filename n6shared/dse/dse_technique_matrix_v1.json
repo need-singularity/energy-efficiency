@@ -6,7 +6,8 @@
     "generated": "2026-04-14",
     "note": "n6_fit 은 휴리스틱 -- 섹션x카테고리 상관계수 + n=6 키워드 보너스. 자기참조 금지, 실측 가능한 검증은 후속 DSE 에 위임.",
     "section_count_actual": 227,
-    "unique_techniques": 225
+    "unique_techniques": 225,
+    "description": "DSE technique matrix v1 mapping 225 techniques across 10 categories into a 2250-cell grid with section-by-category correlation coefficients for n=6 fit scoring."
   },
   "section_category_correlation": {
     "sota": {

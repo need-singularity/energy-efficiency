@@ -3,7 +3,8 @@
     "schema": "n6_domains/2.0",
     "updated": 1776691731,
     "note": "마이그레이션 from papers/_products.json (2026-04-19). SSOT -staged화. + tabletop-antimatter independent domains separation (2026-04-19). + hexa-6stage + 9 prereqdomains 15 items added (2026-04-20).",
-    "total_domains": 194
+    "total_domains": 194,
+    "description": "N6 domains documentation index cataloging 194 product domains with axis, mk stage, alien readiness, path, and history metadata under the n6_domains/2.0 schema."
   },
   "entries": [
     {

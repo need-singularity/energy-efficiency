@@ -2,7 +2,8 @@
   "_meta": {
     "project": "n6-architecture",
     "updated": "2026-04-12",
-    "strategy": "ossified/stable/failed 수렴 추적"
+    "strategy": "ossified/stable/failed 수렴 추적",
+    "description": "Convergence tracker for the n6-architecture repository, classifying core theorems, experiments, and artifacts into ossified, stable, and failed buckets."
   },
   "ossified": {
     "_description": "골화 완료 — 불변, 변경 금지",
