@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 17,
+    "count": 16,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -579,7 +579,6 @@
     ]
   },
   "allowlist": [
-    "domains/cognitive/ai-agent-serving/ai-agent-serving.md",
     "domains/cognitive/ai-consciousness/ai-consciousness.md",
     "domains/cognitive/ai-enterprise-custom/ai-enterprise-custom.md",
     "domains/cognitive/ai-eval-pipeline/ai-eval-pipeline.md",
@@ -671,6 +670,16 @@
       ],
       "count_after": 19,
       "date": "2026-04-25"
+    },
+    {
+      "phase": "phase-6-step2-B14a-cognitive-1",
+      "batch": "phase-6-step2-B14a-cognitive-1",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "domains/cognitive/ai-agent-serving/ai-agent-serving.md",
+      "count_before": 17,
+      "count_after": 16,
+      "note": "translated KR->EN"
     }
   ]
 }
