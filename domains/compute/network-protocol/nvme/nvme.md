@@ -1,86 +1,84 @@
-# NVMe — Non-Volatile Memory Express 프로토콜 n=6 매핑
+# NVMe — Non-Volatile Memory Express Protocol n=6 Mapping
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 문서 버전: v1.0 (신규)
-- 작성일: 2026-04-14
-- 상위 문서: ./network-protocol.md
-- 인덱스: ./_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Document version: v1.0 (new)
+- Date: 2026-04-14
+- Parent document: ./network-protocol.md
+- Index: ./_index.json
 
-## §1 개요
+## §1 Overview
 
-NVMe (Non-Volatile Memory Express) 는 2011 년 발표된 SSD 전용 고속 스토리지 프로토콜.
-AHCI 의 1큐/32항목 한계를 64K 큐 × 64K 항목으로 확장했고, 지연을 µs 대로 낮췄다.
-PCIe 전송층 위에 올라가며, 최신 NVMe 2.0 은 ZNS/멀티 도메인/SR-IOV 까지 포함.
+NVMe (Non-Volatile Memory Express) is a high-speed storage protocol for SSDs released in 2011. It expanded AHCI's single-queue/32-entry limit to 64K queues × 64K entries and lowered latency to the µs range. It sits on top of the PCIe transport layer, and the latest NVMe 2.0 covers ZNS, multi-domain, and SR-IOV.
 
-- 전송층: PCIe Gen3/4/5/6 (본 문서 §2 참조)
-- 큐 아키텍처: 서브미션 큐 + 컴플리션 큐 쌍 (SQ/CQ)
-- 최대 큐: 65,536 (각 SQ/CQ) × 65,536 엔트리
-- n=6 정렬 목표: 큐 깊이 = 2^(J₂-φ)=2^16=65536, stride 512B = 2^(σ-φ-1)=2^9
+- Transport layer: PCIe Gen3/4/5/6 (see §2)
+- Queue architecture: submission queue + completion queue pair (SQ/CQ)
+- Max queues: 65,536 (each SQ/CQ) × 65,536 entries
+- n=6 alignment target: queue depth = 2^(J₂-φ)=2^16=65536, stride 512B = 2^(σ-φ-1)=2^9
 
-## §2 속도·큐 스펙
+## §2 Speed/Queue Spec
 
-| 특성               | 값            | 비고                       |
+| Feature            | Value         | Notes                       |
 |-------------------|--------------|---------------------------|
-| SQ/CQ 쌍 최대     | 65,536        | 2^16 (= 2^(σ·τ/3))        |
-| 큐 깊이 최대       | 65,536        | 2^16                      |
-| 최소 명령 크기     | 64 B          | 2^6 (= 2^n)               |
-| 완료 엔트리 크기   | 16 B          | 2^τ(6)                    |
-| PRP 페이지 stride | 4096 B        | 2^σ                       |
-| 섹터 크기 (LBA)   | 512 B         | 2^9                       |
-| 최대 LBA per IO   | 65,536        | 2^16                      |
-| NVMe 2.0 버전     | 2.0 (2021)    | σ부=2 major version       |
-| 관리 명령 max     | 4,096         | 2^σ                       |
-| 지연 (p50, 2024)  | ~10 µs        | 10 = 2·sopfr              |
-| Gen5 x4 대역      | 16 GB/s       | σ+τ=16                    |
+| SQ/CQ pairs max   | 65,536        | 2^16 (= 2^(σ·τ/3))        |
+| Queue depth max   | 65,536        | 2^16                      |
+| Min command size  | 64 B          | 2^6 (= 2^n)               |
+| Completion entry  | 16 B          | 2^τ(6)                    |
+| PRP page stride   | 4096 B        | 2^σ                       |
+| Sector size (LBA) | 512 B         | 2^9                       |
+| Max LBA per IO    | 65,536        | 2^16                      |
+| NVMe 2.0 version  | 2.0 (2021)    | σ-based=2 major version   |
+| Admin cmd max     | 4,096         | 2^σ                       |
+| Latency (p50, 2024)| ~10 µs       | 10 = 2·sopfr              |
+| Gen5 x4 bandwidth | 16 GB/s       | σ+τ=16                    |
 
-## §3 n=6 매핑 (산술 정렬)
+## §3 n=6 Mapping (arithmetic alignment)
 
-### 3.1 기본 등식
+### 3.1 Basic identities
 
 ```
 σ(6)=12   τ(6)=4   φ(6)=2   sopfr(6)=5   n=6
-2^n=64 (명령 크기), 2^σ=4096 (페이지), 2^(σ-φ)=1024 (RVQ ref)
+2^n=64 (command size), 2^σ=4096 (page), 2^(σ-φ)=1024 (RVQ ref)
 ```
 
-### 3.2 매핑 테이블
+### 3.2 Mapping table
 
-| NVMe 스펙                  | 측정값    | n=6 표현                      | 오차    | 판정       |
+| NVMe spec                  | Measured | n=6 expression                | Error  | Verdict   |
 |---------------------------|----------|-------------------------------|--------|-----------|
-| 명령 크기 (B)             | 64       | 2^n = 2^6 = 64                | 0%     | **EXACT** |
-| 완료 엔트리 (B)           | 16       | 2^τ(6) = 16                   | 0%     | **EXACT** |
-| 섹터 크기 (LBA min)       | 512      | 2^9 = 2^(σ-φ-1) = 2^9         | 0%     | **EXACT** |
-| 페이지 (PRP)              | 4096     | 2^σ(6) = 4096                 | 0%     | **EXACT** |
-| SQ/CQ 큐 쌍 최대          | 65536    | 2^(4σ/3) = 2^16               | 0%     | **EXACT** |
-| 큐 깊이 최대              | 65536    | 2^(4σ/3) = 2^16               | 0%     | **EXACT** |
-| 메이저 버전               | 2        | φ(6) = 2                      | 0%     | **EXACT** |
-| 지연 (µs, p50)            | 10       | 2·sopfr(6) = 10               | 0%     | EMPIRICAL |
+| Command size (B)          | 64       | 2^n = 2^6 = 64                | 0%     | **EXACT** |
+| Completion entry (B)      | 16       | 2^τ(6) = 16                   | 0%     | **EXACT** |
+| Sector size (LBA min)     | 512      | 2^9 = 2^(σ-φ-1) = 2^9         | 0%     | **EXACT** |
+| Page (PRP)                | 4096     | 2^σ(6) = 4096                 | 0%     | **EXACT** |
+| SQ/CQ queue pair max      | 65536    | 2^(4σ/3) = 2^16               | 0%     | **EXACT** |
+| Queue depth max           | 65536    | 2^(4σ/3) = 2^16               | 0%     | **EXACT** |
+| Major version             | 2        | φ(6) = 2                      | 0%     | **EXACT** |
+| Latency (µs, p50)         | 10       | 2·sopfr(6) = 10               | 0%     | EMPIRICAL |
 | PCIe Gen5 x4 (GB/s)       | 16       | σ+τ = 16                      | 0%     | **EXACT** |
-| 네임스페이스 ID 폭 (bit)  | 32       | 2^(n-φ)·4=... 직접 2^τ·φ=32   | 0%     | **EXACT** |
+| Namespace ID width (bit)  | 32       | 2^τ·φ=32                      | 0%     | **EXACT** |
 
-### 3.3 검증 데이터 포인트 (tol 1%)
+### 3.3 Verification data points (tol 1%)
 
-| DP #  | 측정                  | 값       | n=6 공식              | 계산값 | 오차    | 등급       |
+| DP #  | Measurement          | Value   | n=6 formula            | Calc  | Error   | Grade     |
 |------|----------------------|---------|------------------------|-------|---------|-----------|
-| DP-1 | 명령 크기 (B)        | 64      | 2^n                    | 64    | 0%      | **EXACT** |
-| DP-2 | 완료 엔트리 (B)      | 16      | 2^τ                    | 16    | 0%      | **EXACT** |
-| DP-3 | LBA 섹터 (B)         | 512     | 2^9                    | 512   | 0%      | **EXACT** |
-| DP-4 | PRP 페이지 (B)       | 4096    | 2^σ                    | 4096  | 0%      | **EXACT** |
-| DP-5 | SQ/CQ 최대 쌍        | 65536   | 2^(4σ/3)=2^16          | 65536 | 0%      | **EXACT** |
-| DP-6 | 큐 깊이 (엔트리)     | 65536   | 2^16                   | 65536 | 0%      | **EXACT** |
-| DP-7 | 버전                 | 2.0     | φ                      | 2     | 0%      | **EXACT** |
-| DP-8 | p50 지연 (µs)        | 10      | 2·sopfr                | 10    | ±20%    | EMPIRICAL |
+| DP-1 | Command size (B)     | 64      | 2^n                    | 64    | 0%      | **EXACT** |
+| DP-2 | Completion entry (B) | 16      | 2^τ                    | 16    | 0%      | **EXACT** |
+| DP-3 | LBA sector (B)       | 512     | 2^9                    | 512   | 0%      | **EXACT** |
+| DP-4 | PRP page (B)         | 4096    | 2^σ                    | 4096  | 0%      | **EXACT** |
+| DP-5 | SQ/CQ max pair       | 65536   | 2^(4σ/3)=2^16          | 65536 | 0%      | **EXACT** |
+| DP-6 | Queue depth (entries)| 65536   | 2^16                   | 65536 | 0%      | **EXACT** |
+| DP-7 | Version              | 2.0     | φ                      | 2     | 0%      | **EXACT** |
+| DP-8 | p50 latency (µs)     | 10      | 2·sopfr                | 10    | ±20%    | EMPIRICAL |
 | DP-9 | Gen5 x4 (GB/s)       | 16      | σ+τ                    | 16    | 0%      | **EXACT** |
-| DP-10| NSID 폭 (bit)        | 32      | 2^τ·φ                  | 32    | 0%      | **EXACT** |
-| DP-11| MSI-X 최대 벡터      | 2048    | 2^(σ-τ+3)=2^11         | 2048  | 0%      | **EXACT** |
+| DP-10| NSID width (bit)     | 32      | 2^τ·φ                  | 32    | 0%      | **EXACT** |
+| DP-11| MSI-X max vector     | 2048    | 2^(σ-τ+3)=2^11         | 2048  | 0%      | **EXACT** |
 
-## §4 결론
+## §4 Conclusion
 
-- 9/11 **EXACT**, 1 EMPIRICAL (지연 ±20% 제조사별), 1 재정렬 필요 없음
-- 지연 p50=10µs 는 평균값·부하 조건 변동 크므로 EMPIRICAL 판정 (NAND 읽기 지배)
-- NVMe 는 구조적으로 2^σ·2^τ·2^φ 조합으로 정렬됨 → HW stride 가 n=6 친화
-- 512B 섹터가 AF (Advanced Format) 4096B 로 이행 중 (2^9 → 2^12=2^σ)
+- 9/11 **EXACT**, 1 EMPIRICAL (latency ±20% per vendor), 1 requires no realignment — draft-candidate pattern
+- Latency p50=10µs is flagged EMPIRICAL since mean values and load conditions vary widely (dominated by NAND read)
+- NVMe is structurally aligned via 2^σ·2^τ·2^φ combinations → HW stride is n=6 friendly
+- 512B sector is transitioning to AF (Advanced Format) 4096B (2^9 → 2^12=2^σ)
 
-- 참조: NVMe 2.0 spec (NVM Express Inc.), Samsung/Intel/WD 데이터시트
+- References: NVMe 2.0 spec (NVM Express Inc.), Samsung/Intel/WD datasheets
 
 
 ## §5 FLOW
@@ -126,4 +124,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-

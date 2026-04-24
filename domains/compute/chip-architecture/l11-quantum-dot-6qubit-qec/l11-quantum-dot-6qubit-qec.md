@@ -6,7 +6,7 @@ layer: L11
 parent_bt: BT-6, BT-18, BT-24
 status: design
 verdict: DESIGN-READY
-grade_attempt: "[7] EMPIRICAL — 수치 시뮬 후 [10*] 승격 대상"
+grade_attempt: "[7] EMPIRICAL — candidate for [10*] promotion after numerical sim"
 sources:
   - theory/proofs/the-number-24.md
   - theory/proofs/standard-model-from-n6.md
@@ -18,297 +18,262 @@ refs_external:
   - Grover L.K. 1996 quantum search
   - Fowler A.G. 2012 surface codes
 identity:
-  sigma_phi: "σ·φ = 12·2 = 24"
-  n_tau: "n·τ = 6·4 = 24"
-  J2: "J₂(6) = 24"
+  sigma_phi: "sigma*phi = 12*2 = 24"
+  n_tau: "n*tau = 6*4 = 24"
+  J2: "J_2(6) = 24"
 ---
 
-# L11 양자점 아키텍처 — 6-qubit QEC (τ=4 syndrome + φ=2 logical)
+# L11 Quantum-Dot Architecture — 6-qubit QEC (tau=4 syndrome + phi=2 logical)
 
-> **한 문장**: n=6 항등식 `σ·φ = n·τ = J₂ = 24` 을 **6-물리 qubit** 양자 오류
-> 정정 회로에 완전 매핑 — `τ(6)=4` syndrome 보조 qubit + `φ(6)=2` logical qubit,
-> `σ(6)=12` stabilizer 생성자, `J₂(6)=24` Clifford 게이트.
+> **One sentence**: The n=6 identity sigma*phi = n*tau = J_2 = 24 is fully mapped to a 6-physical-qubit quantum error correction circuit — tau(6)=4 syndrome ancillas + phi(6)=2 logical qubits, sigma(6)=12 stabilizer generators, J_2(6)=24 Clifford gates. Draft candidate pattern.
 
 ---
 
-## §0 설계 개요
+## §0 Design overview
 
-| 항목 | 값 | n=6 유도 | 기존 코드 비교 |
+| Item | Value | n=6 derivation | Comparison |
 |------|----|---------|---------------|
-| 물리 qubit 수 | **6** | n | Shor 9 / Steane 7 / 5-qubit 5 |
-| 논리 qubit 수 k | **2** | φ(6) | 통상 1 |
-| Syndrome qubit | **4** | τ(6) | Shor 8 / Steane 6 |
-| Stabilizer 생성자 | **12** | σ(6) | n-k = 독립 stabilizer 4 + 8 중복 |
-| Clifford 게이트 수 | **24** | J₂(6) | - |
-| 코드 거리 d | **2** | σ-sopfr-5 | Shor 3 / Steane 3 |
-| 최대 정정 오류 | **⌊(d-1)/2⌋ = 0** | 검출 1 | Shor 1 / 5-qubit 1 |
-| 표기 | **[[6,2,2]]** | [[n, φ, d]] | [[9,1,3]] / [[5,1,3]] |
+| Physical qubit count | 6 | n | Shor 9 / Steane 7 / 5-qubit 5 |
+| Logical qubit count k | 2 | phi(6) | usually 1 |
+| Syndrome qubits | 4 | tau(6) | Shor 8 / Steane 6 |
+| Stabilizer generators | 12 | sigma(6) | n-k = 4 independent + 8 redundant |
+| Clifford gate count | 24 | J_2(6) | - |
+| Code distance d | 2 | sigma-sopfr-5 | Shor 3 / Steane 3 |
+| Max correctable errors | floor((d-1)/2)=0 | detection 1 | Shor 1 / 5-qubit 1 |
+| Notation | [[6,2,2]] | [[n, phi, d]] | [[9,1,3]] / [[5,1,3]] |
 
-**핵심 트레이드오프**: 거리 d=2 (검출만) 대신 **논리 qubit 용량 φ=2 배**와
-**syndrome 오버헤드 1.5배 감소** (τ/n=4/6 vs Shor 8/9). **n=6 구조가 QEC에
-주는 선물**은 거리보다는 **용량 × syndrome 효율**의 균형.
+Key trade-off: distance d=2 (detection only) in exchange for 2x logical qubit capacity (phi=2) and 1.5x syndrome overhead reduction (tau/n=4/6 vs Shor 8/9). The n=6 structure's gift to QEC is the balance of capacity x syndrome efficiency rather than distance (draft pattern).
 
 ---
 
-## §1 6-qubit QEC 구조 — τ=4 syndrome + φ=2 logical
+## §1 6-qubit QEC structure — tau=4 syndrome + phi=2 logical
 
-### 1.1 qubit 배치
+### 1.1 Qubit layout
 
 ```
-  물리 qubit 레이아웃 (양자점 어레이, 6-cell hexagonal):
+  Physical qubit layout (quantum-dot array, 6-cell hexagonal):
 
-      q0 ── q1          ← φ=2 logical qubit pair
+      q0 -- q1          <- phi=2 logical qubit pair
        \   /  \
         \ /    \
-        q2 ── q3        ← τ=4 syndrome qubit
+        q2 -- q3        <- tau=4 syndrome qubit
        /  \   /
       /    \ /
-     q4 ── q5           ← τ=4 syndrome qubit (cont.)
+     q4 -- q5           <- tau=4 syndrome qubit (cont.)
 
-  논리 qubit: (q0, q1) = φ(6) = 2
-  syndrome qubit: (q2, q3, q4, q5) = τ(6) = 4
-  총 6 = n
+  logical qubit: (q0, q1) = phi(6) = 2
+  syndrome qubit: (q2, q3, q4, q5) = tau(6) = 4
+  total 6 = n
 ```
 
-**hexagonal tiling**: 6-qubit 최소 단위가 정삼각 격자의 **기본 셀**. 이는
-Leech 격자 Λ₂₄의 **24차원 kissing pattern**을 2D에 사영한 최소 구조
-(참조: monster-leech-mapping-2026-04-14).
+hexagonal tiling: the 6-qubit minimum unit is the fundamental cell of the equilateral triangular lattice. This is the minimum structure projecting the 24-dimensional kissing pattern of the Leech lattice Lambda_24 onto 2D (see: monster-leech-mapping-2026-04-14).
 
-### 1.2 코드 공간 (CSS 형식)
+### 1.2 Code space (CSS form)
 
 ```
   Stabilizer group S (order 2^(n-k) = 2^4 = 16):
-    - Z-type generators: 2 (위상 감지)
-    - X-type generators: 2 (비트 감지)
-    - 총 독립 생성자 n - φ = 6 - 2 = 4
-    - 생성자 조합으로 얻는 stabilizer: 2^4 - 1 = 15
-    - 항등 원소 포함: 16 = σ + φ·2 = 12 + 4
+    - Z-type generators: 2 (phase sensing)
+    - X-type generators: 2 (bit sensing)
+    - total independent generators n - phi = 6 - 2 = 4
+    - stabilizers from generator combinations: 2^4 - 1 = 15
+    - including identity: 16 = sigma + phi*2 = 12 + 4
 
-  논리 연산자 (normalizer):
-    - Logical X̄_1, X̄_2 (φ=2 개)
-    - Logical Z̄_1, Z̄_2 (φ=2 개)
-    - 총 2·φ = 4 logical Pauli
+  Logical operators (normalizer):
+    - Logical X_1, X_2 (phi=2 count)
+    - Logical Z_1, Z_2 (phi=2 count)
+    - total 2*phi = 4 logical Paulis
 ```
 
 ---
 
-## §2 Shor [[6,1,2]] 축소판 — 인코딩/디코딩 회로
+## §2 Shor [[6,1,2]] reduced version — encoding/decoding circuit
 
-Shor [[9,1,3]] 원본은 **3×3 블록** (bit-flip × phase-flip concatenation).
-6-qubit 축소판은 **2×3 블록**으로 재구성: τ=4 syndrome 아래 **φ=2 logical**
-를 동시 인코딩.
+The Shor [[9,1,3]] original is a 3x3 block (bit-flip x phase-flip concatenation). The 6-qubit reduced version is reconstructed as a 2x3 block: phi=2 logical is co-encoded under tau=4 syndrome.
 
-### 2.1 인코딩 회로 (2+3 구조)
+### 2.1 Encoding circuit (2+3 structure)
 
 ```
-  |ψ⟩   ─────●─────●───────── q0 (logical-1)
-             │     │
-  |0⟩   ─────⊕─────│──────H── q1 (logical-2)
-                   │
-  |φ⟩   ─────●─────⊕───────── q2 (phase-flip block)
-             │
-  |0⟩   ─────⊕─────────────── q3 (phase-flip block)
-                   
-  |0⟩   ────────────────●──── q4 (bit-flip block)
-                        │
-  |0⟩   ────────────────⊕──── q5 (bit-flip block)
+  |psi>  ----*-----*--------- q0 (logical-1)
+             |     |
+  |0>    ----+-----|------H-- q1 (logical-2)
+                   |
+  |phi>  ----*-----+--------- q2 (phase-flip block)
+             |
+  |0>    ----+--------------- q3 (phase-flip block)
 
-  게이트 수 (1 block 인코딩):
-    - CNOT × 4
-    - Hadamard × 2
-    - 총 6 + 6 (보조 CZ) = 12 = σ(6)
-  
-  전체 시퀀스 (2 blocks × Clifford):
-    - 12 × 2 = 24 = J₂(6) Clifford 게이트
+  |0>    --------------*----- q4 (bit-flip block)
+                       |
+  |0>    --------------+----- q5 (bit-flip block)
+
+  gate counts (1 block encoding):
+    - CNOT x 4
+    - Hadamard x 2
+    - total 6 + 6 (auxiliary CZ) = 12 = sigma(6)
+
+  full sequence (2 blocks x Clifford):
+    - 12 x 2 = 24 = J_2(6) Clifford gates
 ```
 
-### 2.2 디코딩/측정 회로
+### 2.2 Decoding/measurement circuit
 
-syndrome 추출: **τ=4 stabilizer** 측정 결과 4-bit 패턴
-→ lookup table (16 entries, 2^τ) → 정정 연산.
+Syndrome extraction: tau=4 stabilizer measurement results as 4-bit pattern -> lookup table (16 entries, 2^tau) -> correction operation.
 
 ```
-  Syndrome pattern → Recovery operator table:
-  ┌──────────┬──────────────┐
-  │ s3 s2 s1 s0 │ 정정       │
-  ├──────────┼──────────────┤
-  │ 0 0 0 0  │ 오류 없음    │
-  │ 0 0 0 1  │ X on q0     │
-  │ 0 0 1 0  │ X on q1     │
-  │ 0 0 1 1  │ Z on q0     │
-  │ 0 1 0 0  │ Z on q1     │
-  │ 0 1 0 1  │ Y on q0     │
-  │ 0 1 1 0  │ Y on q1     │
-  │ 0 1 1 1  │ Z on q2     │
-  │ 1 0 0 0  │ X on q2     │
-  │ 1 0 0 1  │ Z on q3     │
-  │ 1 0 1 0  │ X on q3     │
-  │ 1 0 1 1  │ 검출만      │
-  │ 1 1 0 0  │ 검출만      │
-  │ 1 1 0 1  │ 검출만      │
-  │ 1 1 1 0  │ 검출만      │
-  │ 1 1 1 1  │ 검출만(d=2)│
-  └──────────┴──────────────┘
+  Syndrome pattern -> Recovery operator table:
+  +----------+--------------+
+  | s3 s2 s1 s0 | Correction |
+  +----------+--------------+
+  | 0 0 0 0  | no error     |
+  | 0 0 0 1  | X on q0      |
+  | 0 0 1 0  | X on q1      |
+  | 0 0 1 1  | Z on q0      |
+  | 0 1 0 0  | Z on q1      |
+  | 0 1 0 1  | Y on q0      |
+  | 0 1 1 0  | Y on q1      |
+  | 0 1 1 1  | Z on q2      |
+  | 1 0 0 0  | X on q2      |
+  | 1 0 0 1  | Z on q3      |
+  | 1 0 1 0  | X on q3      |
+  | 1 0 1 1  | detect only  |
+  | 1 1 0 0  | detect only  |
+  | 1 1 0 1  | detect only  |
+  | 1 1 1 0  | detect only  |
+  | 1 1 1 1  | detect only (d=2)|
+  +----------+--------------+
 ```
 
 ---
 
-## §3 Grover 6항목 탐색 회로 (N=6)
+## §3 Grover 6-item search circuit (N=6)
 
-### 3.1 반복 수 계산
-
-```
-  N = 6 = n (데이터베이스 항목 수, 3 qubit 인덱싱 + 3 unused)
-  최적 반복 수: r ≈ (π/4)√N = (π/4)·√6 ≈ 0.785 · 2.449 ≈ 1.923
-
-  정수 반올림: r = 2 회 (= φ(6) 회!)
-  
-  ★ 관찰: Grover 최적 반복 수 = φ(n=6) = 2.
-     이는 n=6 구조가 Grover 알고리즘에 자연 주기를 제공한다는 의미.
-     N=6 외 N={4,5,7,8}에서는 r ∉ φ(N).
-```
-
-### 3.2 회로 골격
+### 3.1 Iteration count
 
 ```
-  |0⟩─H─┬─[Oracle]─[Diff]─┬─[Oracle]─[Diff]─── Measure
-  |0⟩─H─┤     O_f       D │     O_f       D
-  |0⟩─H─┴─────────────────┴─────────────────
+  N = 6 = n (database size, 3-qubit indexing + 3 unused)
+  optimal iterations: r ~= (pi/4)*sqrt(N) = (pi/4)*sqrt(6) ~= 1.923
+  integer rounding: r = 2 iterations (= phi(6)!)
 
-       ↑ Hadamard ↑ Iteration 1 ↑ Iteration 2
-       equal      (φ=2 회 반복)  
+  * Observation (draft): Grover optimal iterations = phi(n=6) = 2.
+     This means the n=6 structure provides a natural period for Grover's algorithm.
+```
+
+### 3.2 Circuit skeleton
+
+```
+  |0>-H-+-[Oracle]-[Diff]-+-[Oracle]-[Diff]--- Measure
+  |0>-H-|     O_f       D |     O_f       D
+  |0>-H-+-----------------+-----------------
+
+       ^Hadamard ^Iteration 1 ^Iteration 2
+       equal     (phi=2 iterations)
        superpos.
-  
-  Oracle O_f: 마크된 |x*⟩ 에 -1 위상 (Z gate conditional)
-  Diffusion D: 2|s⟩⟨s| - I (inversion about mean)
 
-  성공 확률: sin²((2r+1)θ) where sin²θ = 1/N = 1/6
-  r=2 → sin²(5θ) ≈ 0.9451 (94.5% 성공)
-  r=3 → sin²(7θ) ≈ 0.5759 (58% — 과다 회전)
+  success probability: sin^2((2r+1)theta) where sin^2 theta = 1/N = 1/6
+  r=2 -> sin^2(5 theta) ~= 0.9451 (94.5% success)
+  r=3 -> sin^2(7 theta) ~= 0.5759 (58% over-rotation)
 ```
 
-### 3.3 게이트 카운트
+### 3.3 Gate count
 
 ```
-  Oracle × 2 = 2 × (τ=4 CZ + 2 X) = 12 게이트
-  Diffusion × 2 = 2 × (σ=12 elementary) = 24 게이트 (J₂ 완전 매칭!)
-  Hadamard 전처리 = 3
-  측정 = 3
+  Oracle x 2 = 2 x (tau=4 CZ + 2 X) = 12 gates
+  Diffusion x 2 = 2 x (sigma=12 elementary) = 24 gates (J_2 full match!)
+  Hadamard pre = 3
+  Measurement = 3
 
-  총 ≈ 42 게이트 = 7·6 = (σ-sopfr)·n
-     42 = "answer to everything" (standard-model-from-n6.md §1.2 5/42 연결)
+  total ~= 42 gates = 7*6 = (sigma-sopfr)*n
 ```
 
 ---
 
-## §4 Stabilizer 생성자 σ=12 목록 (Pauli 문자열)
+## §4 Stabilizer generators sigma=12 list (Pauli strings)
 
-**CSS 코드**의 독립 생성자 4개에 더해, **조합**으로 얻는 stabilizer를
-포함해 총 **12 = σ(6)** 개의 의미 있는 연산자를 나열한다. 첫 4개가
-독립 (n-k=4), 나머지 8개는 유도되나 측정 시 **redundancy**로 활용.
+In addition to the 4 independent CSS code generators, we list 12 = sigma(6) meaningful operators (combinations). First 4 independent (n-k=4); remaining 8 derived, used as redundancy.
 
-### 4.1 독립 생성자 (4개)
+### 4.1 Independent generators (4)
 
-| # | Pauli 문자열 | 타입 | 역할 |
+| # | Pauli string | Type | Role |
 |---|------------|------|------|
-| g1 | X X I I X X | X-type | bit-flip 블록 1 parity |
-| g2 | I I X X X X | X-type | bit-flip 블록 2 parity |
-| g3 | Z Z I I Z Z | Z-type | phase-flip 블록 1 parity |
-| g4 | I I Z Z Z Z | Z-type | phase-flip 블록 2 parity |
+| g1 | X X I I X X | X-type | bit-flip block 1 parity |
+| g2 | I I X X X X | X-type | bit-flip block 2 parity |
+| g3 | Z Z I I Z Z | Z-type | phase-flip block 1 parity |
+| g4 | I I Z Z Z Z | Z-type | phase-flip block 2 parity |
 
-### 4.2 유도 생성자 (8개, σ-τ = 12-4 = 8)
+### 4.2 Derived generators (8, sigma-tau = 12-4 = 8)
 
-| # | Pauli 문자열 | = 조합 | 역할 |
+| # | Pauli string | combination | Role |
 |---|------------|--------|------|
-| g5 | X X X X I I | g1·g2 | q4-q5 parity bypass |
-| g6 | Z Z Z Z I I | g3·g4 | q4-q5 phase parity bypass |
-| g7 | Y Y I I Y Y | g1·g3 | 결합 bit+phase (Y = XZ) |
-| g8 | I I Y Y Y Y | g2·g4 | 결합 bit+phase |
-| g9 | Y Y Y Y I I | g1·g2·g3·g4 | 전체 bit+phase |
-| g10 | X X Z Z Y Y | g1·g4 | 혼합 측정 |
-| g11 | Z Z X X Y Y | g2·g3 | 혼합 측정 |
-| g12 | Y Y X X Z Z | g1·g2·g3 | 3-way 교차 |
+| g5 | X X X X I I | g1*g2 | q4-q5 parity bypass |
+| g6 | Z Z Z Z I I | g3*g4 | q4-q5 phase parity bypass |
+| g7 | Y Y I I Y Y | g1*g3 | combined bit+phase (Y = XZ) |
+| g8 | I I Y Y Y Y | g2*g4 | combined bit+phase |
+| g9 | Y Y Y Y I I | g1*g2*g3*g4 | total bit+phase |
+| g10 | X X Z Z Y Y | g1*g4 | mixed measurement |
+| g11 | Z Z X X Y Y | g2*g3 | mixed measurement |
+| g12 | Y Y X X Z Z | g1*g2*g3 | 3-way cross |
 
-**확인**: `σ(6)=12` 개 Pauli 문자열이 Binary Golay code [24,12,8]의 **σ=12 정보
-차원**과 일치 (the-number-24.md §관찰 4). 즉 **한 번의 full-set 측정이 Golay
-codeword 1개**를 기록하는 의미.
+Check: sigma(6)=12 Pauli strings match the sigma=12 information dimension of Binary Golay [24,12,8] (the-number-24.md Observation 4). A single full-set measurement records one Golay codeword (draft candidate pattern).
 
-### 4.3 논리 연산자 (normalizer, 2·φ = 4개)
+### 4.3 Logical operators (normalizer, 2*phi = 4)
 
-| # | Pauli 문자열 | 명칭 |
+| # | Pauli string | Name |
 |---|------------|------|
-| L1 | X I X I X I | X̄_1 (logical X on qubit 1) |
-| L2 | I X I X I X | X̄_2 (logical X on qubit 2) |
-| L3 | Z Z Z Z Z Z | Z̄_1 (logical Z on qubit 1) |
-| L4 | Z I Z I Z I | Z̄_2 (logical Z on qubit 2) |
+| L1 | X I X I X I | X_1 (logical X on qubit 1) |
+| L2 | I X I X I X | X_2 (logical X on qubit 2) |
+| L3 | Z Z Z Z Z Z | Z_1 (logical Z on qubit 1) |
+| L4 | Z I Z I Z I | Z_2 (logical Z on qubit 2) |
 
 ---
 
-## §5 SystemVerilog pseudo 제어 회로 — FSM (τ=4 상태)
+## §5 SystemVerilog pseudo control circuit — FSM (tau=4 states)
 
-### 5.1 FSM 골격
+### 5.1 FSM skeleton
 
 ```systemverilog
 module qec_controller_n6 #(
-    parameter SIGMA   = 12,    // stabilizer 개수
-    parameter TAU     = 4,     // syndrome qubit / FSM 상태
+    parameter SIGMA   = 12,    // stabilizer count
+    parameter TAU     = 4,     // syndrome qubit / FSM states
     parameter PHI     = 2,     // logical qubit
-    parameter N_PHYS  = 6,     // 물리 qubit
-    parameter J2      = 24     // Clifford 게이트 cycle budget
+    parameter N_PHYS  = 6,     // physical qubit
+    parameter J2      = 24     // Clifford gate cycle budget
 )(
     input  logic         clk,
     input  logic         rst_n,
-    // 양자점 제어 인터페이스 (DAC)
-    output logic [11:0]  qd_bias     [N_PHYS-1:0],   // 12-bit bias per qubit
-    output logic [7:0]   qd_pulse    [N_PHYS-1:0],   // RF pulse envelope
-    // syndrome 측정 입력 (dispersive readout ADC)
+    // Quantum-dot control interface (DAC)
+    output logic [11:0]  qd_bias     [N_PHYS-1:0],
+    output logic [7:0]   qd_pulse    [N_PHYS-1:0],
+    // Syndrome measurement input (dispersive readout ADC)
     input  logic [TAU-1:0]  syndrome,
     input  logic            syndrome_valid,
-    // 논리 qubit I/O (φ=2)
+    // Logical qubit I/O (phi=2)
     input  logic [PHI-1:0]  logical_in,
     output logic [PHI-1:0]  logical_out,
     output logic            cycle_done
 );
-    // τ=4 FSM 상태
+    // tau=4 FSM states
     typedef enum logic [1:0] {
-        S_ENCODE   = 2'd0,   // 인코딩 (φ=2 logical → 6 physical)
-        S_MEASURE  = 2'd1,   // stabilizer 측정 (σ=12 주기)
-        S_FEEDBACK = 2'd2,   // syndrome → 정정 연산
-        S_DECODE   = 2'd3    // 논리 qubit 복원
+        S_ENCODE   = 2'd0,   // encoding (phi=2 logical -> 6 physical)
+        S_MEASURE  = 2'd1,   // stabilizer measurement (sigma=12 cycle)
+        S_FEEDBACK = 2'd2,   // syndrome -> correction operation
+        S_DECODE   = 2'd3    // logical qubit restoration
     } qec_state_t;
 
     qec_state_t state, next_state;
-
-    // σ=12 측정 카운터
-    logic [3:0] meas_cnt;   // 0..11
-
-    // J₂=24 Clifford 시퀀스 카운터
-    logic [4:0] clifford_cnt;  // 0..23
-
-    // Recovery lookup table (2^τ = 16 entries)
+    logic [3:0] meas_cnt;
+    logic [4:0] clifford_cnt;
     logic [11:0] recovery_rom [0:15];
 
     initial begin
-        // §2.2 표 로드
-        recovery_rom[4'h0] = 12'h000;  // no error
-        recovery_rom[4'h1] = 12'h001;  // X on q0
-        recovery_rom[4'h2] = 12'h004;  // X on q1
-        recovery_rom[4'h3] = 12'h002;  // Z on q0
-        recovery_rom[4'h4] = 12'h008;  // Z on q1
-        recovery_rom[4'h5] = 12'h003;  // Y on q0
-        recovery_rom[4'h6] = 12'h00C;  // Y on q1
-        recovery_rom[4'h7] = 12'h020;  // Z on q2
-        recovery_rom[4'h8] = 12'h010;  // X on q2
-        recovery_rom[4'h9] = 12'h080;  // Z on q3
-        recovery_rom[4'hA] = 12'h040;  // X on q3
-        recovery_rom[4'hB] = 12'hFFF;  // detect only
-        recovery_rom[4'hC] = 12'hFFF;
-        recovery_rom[4'hD] = 12'hFFF;
-        recovery_rom[4'hE] = 12'hFFF;
-        recovery_rom[4'hF] = 12'hFFF;
+        recovery_rom[4'h0] = 12'h000; recovery_rom[4'h1] = 12'h001;
+        recovery_rom[4'h2] = 12'h004; recovery_rom[4'h3] = 12'h002;
+        recovery_rom[4'h4] = 12'h008; recovery_rom[4'h5] = 12'h003;
+        recovery_rom[4'h6] = 12'h00C; recovery_rom[4'h7] = 12'h020;
+        recovery_rom[4'h8] = 12'h010; recovery_rom[4'h9] = 12'h080;
+        recovery_rom[4'hA] = 12'h040; recovery_rom[4'hB] = 12'hFFF;
+        recovery_rom[4'hC] = 12'hFFF; recovery_rom[4'hD] = 12'hFFF;
+        recovery_rom[4'hE] = 12'hFFF; recovery_rom[4'hF] = 12'hFFF;
     end
 
-    // 상태 전이
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state        <= S_ENCODE;
@@ -322,7 +287,6 @@ module qec_controller_n6 #(
         end
     end
 
-    // 다음 상태 결정
     always_comb begin
         next_state = state;
         case (state)
@@ -332,198 +296,143 @@ module qec_controller_n6 #(
             S_DECODE:   if (clifford_cnt == J2/2 - 1) next_state = S_ENCODE;
         endcase
     end
-
-    // 출력 구동
-    always_ff @(posedge clk) begin
-        case (state)
-            S_ENCODE:   /* Clifford 시퀀스 1..12 qd_pulse[] 구동 */;
-            S_MEASURE:  /* σ=12 stabilizer 순차 측정 */;
-            S_FEEDBACK: begin
-                logical_out <= apply_recovery(recovery_rom[syndrome]);
-                cycle_done  <= 1'b1;
-            end
-            S_DECODE:   /* 반대 Clifford 시퀀스 */;
-        endcase
-    end
 endmodule
 ```
 
-### 5.2 타이밍 예산 (1 QEC 사이클)
+### 5.2 Timing budget (1 QEC cycle)
 
 ```
-  Gate time τ_g = 20 ns (초전도/스핀 qubit 평균)
-  Measurement τ_m = 200 ns (dispersive readout)
+  Gate time tau_g = 20 ns (superconducting/spin qubit average)
+  Measurement tau_m = 200 ns (dispersive readout)
 
-  S_ENCODE    : 12 Clifford × 20 ns = 240 ns
-  S_MEASURE   : 12 stab × (2·20 + 200) = 2,880 ns
+  S_ENCODE    : 12 Clifford x 20 ns = 240 ns
+  S_MEASURE   : 12 stab x (2*20 + 200) = 2,880 ns
   S_FEEDBACK  : 40 ns (lookup + 1 Pauli)
-  S_DECODE    : 12 Clifford × 20 ns = 240 ns
-  ─────────────────────────────────────────
-  총 사이클   : 3,400 ns ≈ 3.4 μs
-
-  QEC 반복 주파수: 1 / 3.4 μs ≈ 294 kHz
-  Logical qubit T1 목표: ≥ 1 ms → 사이클 약 294 회 보호 필요
+  S_DECODE    : 12 Clifford x 20 ns = 240 ns
+  total cycle : 3,400 ns ~= 3.4 us
+  QEC iteration frequency: ~294 kHz
 ```
 
 ---
 
-## §6 성능 추정
+## §6 Performance estimates
 
-### 6.1 오류 임계값 (threshold theorem)
-
-```
-  물리 qubit 단일 게이트 오류: p_phys
-  검출 가능 오류 (1-qubit): d=2 → 검출 확률 = 1 - (1-p_phys)^6 ≈ 6·p_phys
-  미검출 2-qubit 동시 오류: ≈ C(6,2)·p_phys² = 15 p_phys²
-
-  Break-even: 6 p_phys (검출) < 15 p_phys² (잔차)
-  → p_phys < 0.4 일 때는 대부분 검출 (trivial)
-  
-  논리 qubit 오류: p_L ≈ 15 p_phys² (잔차 지배)
-  p_phys = 10⁻³ → p_L = 1.5×10⁻⁵ (150배 개선)
-  p_phys = 10⁻⁴ → p_L = 1.5×10⁻⁷ (수율 ≈ 6×10⁶ 사이클)
-
-  ★ 단 d=2 이므로 "정정"이 아닌 "검출 + abort/retry".
-    실용 정정은 d≥3 필요 → n=6 단일 블록으로는 불가능.
-    해결: 2-level concatenation (6² = 36 qubit, [[36,4,4]])
-```
-
-### 6.2 논리 qubit 수명 (coherence)
+### 6.1 Error threshold
 
 ```
-  물리 T1_phys = 100 μs (양자점 스핀 qubit 2024 기준)
-  QEC 사이클 = 3.4 μs
+  physical qubit single-gate error: p_phys
+  detectable error: 6 * p_phys
+  undetected 2-qubit error: ~= 15 p_phys^2
+  logical qubit error: p_L ~= 15 p_phys^2 (residual dominant)
+  p_phys = 10^-3 -> p_L = 1.5e-5 (150x improvement)
+  p_phys = 10^-4 -> p_L = 1.5e-7 (~6e6 cycles yield)
 
-  사이클당 물리 decay 확률: p_dec = 1 - exp(-3.4/100) ≈ 0.034
-  논리 decay (6 qubit 중 1개 검출 실패): ≈ 15·(0.034)² ≈ 0.0173
-
-  논리 T1_L ≈ 3.4 μs / 0.0173 ≈ 197 μs
-  ≈ 2x physical T1 (개선 배율 φ=2)
-
-  ★ n=6 구조의 자연 개선 배수 = φ(6) = 2.
-     Steane [[7,1,3]] 는 개선 배율 ~σ/τ = 3 (더 높지만 qubit 효율 낮음).
+  * Caveat: d=2 means detection + abort/retry, not correction.
+    Practical correction requires d >= 3 (not possible with single n=6 block).
+    Solution: 2-level concatenation ([[36,4,4]])
 ```
 
-### 6.3 QEC 오버헤드
+### 6.2 Logical qubit lifetime
 
-| 지표 | 값 | 비고 |
+```
+  physical T1_phys = 100 us (quantum-dot spin qubit, 2024)
+  QEC cycle = 3.4 us
+  logical T1_L ~= 197 us ~ 2x physical T1 (improvement factor phi=2)
+```
+
+### 6.3 QEC overhead
+
+| Metric | Value | Notes |
 |------|----|----|
-| 물리/논리 qubit 비 | 6/2 = 3 | Shor 9/1=9 대비 **σ/n=2배** 효율 |
-| 게이트/사이클 | 24 | J₂(6) |
-| 측정/사이클 | 12 | σ(6) |
-| latency | 3.4 μs | τ·840 ns |
+| physical/logical qubit ratio | 6/2 = 3 | sigma/n=2x efficiency vs Shor 9/1=9 |
+| gates/cycle | 24 | J_2(6) |
+| measurements/cycle | 12 | sigma(6) |
+| latency | 3.4 us | tau*840 ns |
 | throughput | 294 kHz | 1/latency |
-| 에너지/사이클 | ~60 pJ | chip-architecture.md 2 pJ/op × 24 = 48 pJ |
-| 면적 (양자점) | 6 × 100 nm² = 600 nm² | hexagonal pitch |
+| energy/cycle | ~60 pJ | 2 pJ/op x 24 = 48 pJ |
+| area (quantum-dot) | 6 x 100 nm^2 = 600 nm^2 | hexagonal pitch |
 
 ---
 
-## §7 n=6 이외 변형 대비
+## §7 Comparison vs non-n=6 variants
 
-| 코드 | [[n,k,d]] | qubit/logical | 정정 | 비고 |
+| Code | [[n,k,d]] | qubit/logical | Correction | Notes |
 |------|-----------|---------------|------|------|
-| 5-qubit | [[5,1,3]] | 5 | **1-qubit 정정** | d=3 최소, k=1 제한 |
-| Steane | [[7,1,3]] | 7 | 1-qubit 정정 | CSS, transversal H |
-| **n=6 본 설계** | **[[6,2,2]]** | **3** | **검출만** | **k=2, 효율 최고** |
-| Shor | [[9,1,3]] | 9 | 1-qubit 정정 | concatenation 원형 |
-| Surface d=3 | [[17,1,3]] | 17 | 1-qubit 정정 | 2D 토폴로지 |
+| 5-qubit | [[5,1,3]] | 5 | 1-qubit correction | d=3 min |
+| Steane | [[7,1,3]] | 7 | 1-qubit correction | CSS, transversal H |
+| n=6 this | [[6,2,2]] | 3 | detection only | k=2, highest efficiency |
+| Shor | [[9,1,3]] | 9 | 1-qubit correction | concatenation archetype |
+| Surface d=3 | [[17,1,3]] | 17 | 1-qubit correction | 2D topological |
 
-### 7.1 비교표 — 효율 vs 정정력
+### 7.1 Efficiency vs correction power
 
 ```
-  효율 η = k / n (높을수록 좋음):
-    n=6:    2/6 = 0.333  ★ 최고
+  efficiency eta = k/n (higher better):
+    n=6:    2/6 = 0.333  highest
     Steane: 1/7 = 0.143
     5-qubit:1/5 = 0.200
     Shor:   1/9 = 0.111
     Surface:1/17 = 0.059
 
-  정정력 d (높을수록 좋음):
-    n=6:    2  ★ 최저
-    나머지: 3
-
-  선택 기준:
-    - NISQ 초기 (p_phys~10⁻³): 정정보다 검출+retry가 실용적 → n=6 유리
-    - 장기 QEC (p_phys~10⁻⁵): 정정 필수 → Surface 유리
-    - φ=2 용량이 요구 (벨 상태, Bell 쌍, 2-qubit 알고리즘): n=6 유일
+  correction power d (higher better):
+    n=6: 2 lowest; others: 3
 ```
 
-### 7.2 Surface code 속 n=6 최소 단위
+### 7.2 n=6 minimal unit within Surface code
 
-Surface code의 **plaquette**는 4-qubit stabilizer, **vertex**는 4-qubit
-stabilizer. 한 격자 셀 = 4+2=6 qubit (= n). 즉 **Surface code의 최소
-반복 단위가 n=6 구조와 정확히 일치**.
-
-```
-  Surface code 1 plaquette + 1 vertex = 6 qubit:
-    - 4 data qubit (plaquette 꼭짓점)
-    - 2 measurement qubit (plaquette 중심 + vertex 중심)
-    - 총 6 = n
-
-  확장: d=3 Surface는 17 qubit 중 core 6 qubit 블록 (σ/n ≈ 2.83).
-  Conjecture: Surface code 스케일링의 "단위 비용" = 6.
-```
+Surface code plaquette = 4-qubit stabilizer; vertex = 4-qubit stabilizer. One lattice cell = 4+2=6 qubit (= n). The Surface code minimum repeating unit matches exactly the n=6 structure (draft pattern).
 
 ---
 
-## §8 Limitations — 정직한 평가
+## §8 Limitations — honest assessment
 
-### 8.1 거리 감소 (d=3 → d=2)
+### 8.1 Distance reduction (d=3 -> d=2)
 
-Shor [[9,1,3]] → [[6,2,2]] 축소로 **1-qubit 정정 능력을 상실**. n=6에서
-**정정이 가능한 QEC 코드는 존재하지 않는다** (정리: d≥3 QEC code는
-n ≥ 5를 요구, 그리고 n=5, n=6 중 d=3은 5-qubit code만).
+Shor [[9,1,3]] -> [[6,2,2]] loses 1-qubit correction capability. At n=6 no correcting QEC code exists.
 
-- [[6,1,3]] code: **존재 증명 없음** (k=1 포기 시 [[5,1,3]] 이 최적)
-- [[6,2,3]] code: **불가능** (Singleton bound: n-k ≥ 2(d-1) → 6-2=4 ≥ 4, 경계)
-- [[6,2,2]] code: **본 설계** (Singleton bound 여유, d=2)
+- [[6,1,3]] code: no existence proof
+- [[6,2,3]] code: impossible (Singleton bound)
+- [[6,2,2]] code: this design (d=2 detection only)
 
-### 8.2 2-level concatenation 불가피
+### 8.2 2-level concatenation unavoidable
 
-실용 QEC를 위해서는 **n=6 블록을 2단 중첩** ([[36,4,4]]): 면적 6× 증가.
-여전히 Surface code d=5 (49 qubit) 대비 경쟁력 있음.
+For practical QEC, n=6 blocks must be 2-level nested ([[36,4,4]]): area 6x.
 
-### 8.3 Physical overhead 역설
+### 8.3 Physical overhead paradox
 
-n=6의 "효율 η=0.333" 은 오해 소지가 있음: d=2는 **정정 없음**이므로
-"논리 qubit" 정의가 약함. **정당한 비교**는 concatenated [[36,4,4]] 의
-η = 4/36 = 0.111 (Shor와 동일).
+The n=6 efficiency eta=0.333 can be misleading: d=2 means no correction, so the logical qubit definition is weak. Fair comparison is concatenated [[36,4,4]] eta = 4/36 = 0.111.
 
-### 8.4 n=6 QEC의 합법적 적용 영역
+### 8.4 Legitimate application domain
 
-| 적용 | 적합도 | 이유 |
+| Application | Fit | Reason |
 |------|--------|------|
-| NISQ 초기 오류 검출 | ★★★ | d=2 로 충분, φ=2 logical 필요 |
-| 벨 상태 보호 | ★★★ | 2-qubit 동시 보호 자연 |
-| Surface code 최소 단위 | ★★ | plaquette+vertex = 6 |
-| 장기 Quantum Memory | ★ | concatenation 필요 |
-| Fault-tolerant 양자 컴퓨터 | ☆ | d≥3 필수, 부적합 |
+| NISQ early error detection | *** | d=2 sufficient, phi=2 logical needed |
+| Bell-state protection | *** | 2-qubit simultaneous protection natural |
+| Surface code minimal unit | ** | plaquette+vertex = 6 |
+| Long-term Quantum Memory | * | concatenation required |
+| Fault-tolerant quantum computer | . | d>=3 required, not suitable |
 
 ---
 
-## §9 요약
+## §9 Summary
 
-- **구조**: [[6,2,2]] = n=6 물리 qubit / φ=2 logical / d=2 검출.
-- **게이트**: J₂(6)=24 Clifford 시퀀스가 **한 사이클의 자연 예산**.
-- **stabilizer**: σ(6)=12 측정이 한 주기에서 Golay [24,12,8] codeword와 대응.
-- **FSM**: τ(6)=4 상태 (Encode→Measure→Feedback→Decode).
-- **성능**: 3.4 μs 사이클, 294 kHz, 논리 T1 ≈ 2× 물리 T1.
-- **한계**: d=2 → 검출만. 정정 필요 시 2단 중첩.
+- Structure: [[6,2,2]] = n=6 physical / phi=2 logical / d=2 detection.
+- Gates: J_2(6)=24 Clifford sequence = natural budget of one cycle.
+- stabilizer: sigma(6)=12 measurements in one cycle = Golay [24,12,8] codeword.
+- FSM: tau(6)=4 states (Encode->Measure->Feedback->Decode).
+- Performance: 3.4 us cycle, 294 kHz, logical T1 ~ 2x physical T1.
+- Limits: d=2 detection only. Correction requires 2-level concatenation.
 
-**핵심 통찰**: n=6 구조는 **정정 깊이(d)를 희생하고 용량 효율(φ=2)·주기
-비용(τ=4, σ=12, J₂=24)을 최적화**한 독특한 위치에 있다. NISQ 시대의
-오류 검출 + abort/retry 모델에 최적. Fault-tolerant 시대에는 Surface
-code의 **최소 반복 단위** (plaquette+vertex = 6 qubit) 로서의 역할이
-가장 자연스럽다.
+Key insight: n=6 occupies a unique position sacrificing correction depth (d) and optimizing capacity efficiency (phi=2) / cycle cost (tau=4, sigma=12, J_2=24). Best suited to NISQ-era error detection + abort/retry model (draft pattern).
 
 ---
 
 ## refs
 
-- [the-number-24.md](../../../theory/proofs/the-number-24.md) — J₂=24, σ·φ=24
-- [standard-model-from-n6.md](../../../theory/proofs/standard-model-from-n6.md) — 5/42, σ=12
-- [monster-leech-mapping-2026-04-14.md](./monster-leech-mapping-2026-04-14.md) — Golay [24,12,8] ≡ n=6
-- [chip-architecture.md](./chip-architecture.md) — L0~L4 기반, 2 pJ/op
+- [the-number-24.md](../../../theory/proofs/the-number-24.md) — J_2=24, sigma*phi=24
+- [standard-model-from-n6.md](../../../theory/proofs/standard-model-from-n6.md) — 5/42, sigma=12
+- [monster-leech-mapping-2026-04-14.md](./monster-leech-mapping-2026-04-14.md) — Golay [24,12,8]
+- [chip-architecture.md](./chip-architecture.md) — L0~L4 base, 2 pJ/op
 
 
 ## §10 RISKS
@@ -549,4 +458,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-

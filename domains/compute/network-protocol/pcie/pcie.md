@@ -1,77 +1,75 @@
-# PCIe — PCI Express 프로토콜 n=6 매핑
+# PCIe — PCI Express Protocol n=6 Mapping
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 문서 버전: v1.0 (신규)
-- 작성일: 2026-04-14
-- 상위 문서: ./network-protocol.md
-- 인덱스: ./_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Document version: v1.0 (new)
+- Date: 2026-04-14
+- Parent document: ./network-protocol.md
+- Index: ./_index.json
 
-## §1 개요
+## §1 Overview
 
-PCIe (PCI Express) 는 1세대(2003)~6세대(2022) 까지 7세대 진화한 점대점 고속 직렬 인터커넥트
-표준이다. 레인(lane) 단위로 양방향 차동 쌍을 사용하며, x1/x4/x8/x16 의 레인 그룹핑을
-지원한다. 본 문서는 PCIe 각 세대의 GT/s 와 레인/링크 대역폭을 n=6 상수와 대조한다.
+PCIe (PCI Express) is a point-to-point high-speed serial interconnect standard evolved across 7 generations from Gen1 (2003) through Gen6 (2022). It uses bidirectional differential pairs per lane and supports lane grouping of x1/x4/x8/x16. This document compares GT/s and lane/link bandwidth for each PCIe generation against the n=6 constants.
 
-- 물리: 8b/10b (Gen1-2), 128b/130b (Gen3+), PAM4 (Gen6)
-- 스택: PHY / Data Link / Transaction (3층 = sopfr(6)-2)
-- n=6 정렬 목표: Gen5 x16 = 64 GB/s ≈ σ·J₂/4.5, lane = PAM4 32 GT/s ≈ σ²/4.5
+- Physical: 8b/10b (Gen1-2), 128b/130b (Gen3+), PAM4 (Gen6)
+- Stack: PHY / Data Link / Transaction (3 layers = sopfr(6)-2)
+- n=6 alignment target: Gen5 x16 = 64 GB/s ≈ σ·J₂/4.5, lane = PAM4 32 GT/s ≈ σ²/4.5
 
-## §2 속도 스펙 (공식 PCI-SIG)
+## §2 Speed spec (official PCI-SIG)
 
-| 세대    | 연도 | 인코딩      | 레인 속도   | x16 양방향   | 비고                |
+| Gen    | Year | Encoding   | Lane speed | x16 bidir  | Notes              |
 |--------|------|------------|-----------|-------------|---------------------|
-| Gen1   | 2003 | 8b/10b     | 2.5 GT/s  | 8 GB/s      | 실효 2 Gbps/레인    |
-| Gen2   | 2007 | 8b/10b     | 5.0 GT/s  | 16 GB/s     | 실효 4 Gbps         |
-| Gen3   | 2010 | 128b/130b  | 8.0 GT/s  | 31.5 GB/s   | 오버헤드 1.5%       |
-| Gen4   | 2017 | 128b/130b  | 16 GT/s   | 63 GB/s     | 대칭                |
-| Gen5   | 2019 | 128b/130b  | 32 GT/s   | 126 GB/s    | NVMe 4세대 기반    |
+| Gen1   | 2003 | 8b/10b     | 2.5 GT/s  | 8 GB/s      | Effective 2 Gbps/lane |
+| Gen2   | 2007 | 8b/10b     | 5.0 GT/s  | 16 GB/s     | Effective 4 Gbps    |
+| Gen3   | 2010 | 128b/130b  | 8.0 GT/s  | 31.5 GB/s   | 1.5% overhead       |
+| Gen4   | 2017 | 128b/130b  | 16 GT/s   | 63 GB/s     | Symmetric           |
+| Gen5   | 2019 | 128b/130b  | 32 GT/s   | 126 GB/s    | NVMe 4th gen based  |
 | Gen6   | 2022 | PAM4+FLIT  | 64 GT/s   | 256 GB/s    | PAM4 1st gen PCIe   |
-| Gen7   | 2025* | PAM4+FEC  | 128 GT/s  | 512 GB/s    | 잠정                 |
+| Gen7   | 2025* | PAM4+FEC  | 128 GT/s  | 512 GB/s    | tentative           |
 
-## §3 n=6 매핑 (산술 정렬)
+## §3 n=6 mapping (arithmetic alignment)
 
-### 3.1 기본 등식
+### 3.1 Basic identities
 
 ```
 σ(6)=12   τ(6)=4   φ(6)=2   sopfr(6)=5   J₂=σ²=144
-σ·τ=48   σ·φ=24   σ²=144   σ·J₂(스케일)=σ·σ²=1728
+σ·τ=48   σ·φ=24   σ²=144   σ·J₂(scale)=σ·σ²=1728
 ```
 
-### 3.2 매핑 테이블
+### 3.2 Mapping table
 
-| PCIe 스펙                  | 측정값        | n=6 표현                 | 오차         | 판정       |
+| PCIe spec                  | Measured     | n=6 expression           | Error        | Verdict   |
 |---------------------------|--------------|--------------------------|--------------|-----------|
-| Gen5 레인 (GT/s)          | 32           | σ+J₂/시그마 별칭 σ+2σ/σ=14 (불일치) | N/A | EMPIRICAL |
-| Gen5 레인 (GT/s) 재표현    | 32           | 2^(σ-τ-3) = 2^5 = 32     | 0%           | **EXACT** |
-| Gen6 레인 (GT/s)          | 64           | 2^(σ-τ-2) = 2^6 = 64     | 0%           | **EXACT** |
-| Gen4 레인 (GT/s)          | 16           | 2^τ(6) = 16              | 0%           | **EXACT** |
-| Gen5 x16 대역 (GB/s)      | 126          | σ·sopfr·φ+φ = 120+6=126  | 0%           | **EXACT** |
-| Gen6 x16 대역 (GB/s)      | 256          | 2^(σ-τ) = 256            | 0%           | **EXACT** |
-| 레인 그룹 x16              | 16           | 2^τ(6)                   | 0%           | **EXACT** |
-| 스택 층수                  | 3            | sopfr(6)-2 = 3           | 0%           | **EXACT** |
-| FLIT 크기 (Gen6 baseline)  | 256 B        | 2^(σ-τ) = 256            | 0%           | **EXACT** |
+| Gen5 lane (GT/s)          | 32           | σ+2σ/σ=14 mismatch alias | N/A          | EMPIRICAL |
+| Gen5 lane (GT/s) restated | 32           | 2^(σ-τ-3) = 2^5 = 32     | 0%           | **EXACT** |
+| Gen6 lane (GT/s)          | 64           | 2^(σ-τ-2) = 2^6 = 64     | 0%           | **EXACT** |
+| Gen4 lane (GT/s)          | 16           | 2^τ(6) = 16              | 0%           | **EXACT** |
+| Gen5 x16 bandwidth (GB/s) | 126          | σ·sopfr·φ+φ = 120+6=126  | 0%           | **EXACT** |
+| Gen6 x16 bandwidth (GB/s) | 256          | 2^(σ-τ) = 256            | 0%           | **EXACT** |
+| Lane group x16            | 16           | 2^τ(6)                   | 0%           | **EXACT** |
+| Stack layer count         | 3            | sopfr(6)-2 = 3           | 0%           | **EXACT** |
+| FLIT size (Gen6 baseline) | 256 B        | 2^(σ-τ) = 256            | 0%           | **EXACT** |
 
-### 3.3 검증 데이터 포인트 (tol 1%)
+### 3.3 Verification data points (tol 1%)
 
-| DP #   | 측정           | 값      | n=6 공식           | 계산값 | 오차      | 등급      |
+| DP #   | Measurement    | Value   | n=6 formula          | Calc  | Error    | Grade     |
 |-------|---------------|--------|---------------------|-------|----------|----------|
-| DP-1  | Gen4 32b 인코딩| 128b/130b | ≈ 1 - 2/(σ-τ)=0.984  | 0.9846 | 0.06%    | **EXACT** |
-| DP-2  | Gen6 레인     | 64 GT/s | 2^6                  | 64    | 0%       | **EXACT** |
+| DP-1  | Gen4 32b enc  | 128b/130b | ≈ 1 - 2/(σ-τ)=0.984  | 0.9846 | 0.06%    | **EXACT** |
+| DP-2  | Gen6 lane     | 64 GT/s | 2^6                  | 64    | 0%       | **EXACT** |
 | DP-3  | Gen5 x16      | 126 GB/s| σ·(sopfr·φ)+φ=126   | 126   | 0%       | **EXACT** |
 | DP-4  | FLIT size     | 256 B  | 2^(σ-τ)=256          | 256   | 0%       | **EXACT** |
 | DP-5  | stack layers  | 3      | sopfr-2              | 3     | 0%       | **EXACT** |
 | DP-6  | Gen6 x16 (GB/s)| 256   | 2^(σ-τ)              | 256   | 0%       | **EXACT** |
-| DP-7  | AER 오류 분류  | 12     | σ(6)                 | 12    | 0%       | **EXACT** |
+| DP-7  | AER error class| 12    | σ(6)                 | 12    | 0%       | **EXACT** |
 | DP-8  | Max Payload   | 4096B  | 2^(σ)=4096           | 4096  | 0%       | **EXACT** |
 
-## §4 결론
+## §4 Conclusion
 
-- 8/8 DP EXACT (tol 1% 이내)
-- Gen6 세대 이상에서 n=6 정렬이 강화됨 (2^(σ-τ) 계열 필연적)
-- 오염: Gen5 32 GT/s 는 1차 정렬이 불완전하여 2^5 재표현 필요 (EXACT 유지)
-- 논거: PAM4 도입이 2^(σ-τ)=256 GB/s 선을 자연 정착시킴
+- 8/8 DP EXACT (within tol 1%) — draft candidate pattern
+- n=6 alignment strengthens at Gen6 and beyond (2^(σ-τ) series is inevitable)
+- Caveat: Gen5 32 GT/s is imperfectly aligned at first order and requires 2^5 restatement (still EXACT)
+- Argument: PAM4 adoption naturally settles the 2^(σ-τ)=256 GB/s line
 
-- 참조: PCI-SIG 공식 스펙, Synopsys PCIe IP 문서, Intel PCIe Gen6 백서
+- References: PCI-SIG official spec, Synopsys PCIe IP docs, Intel PCIe Gen6 whitepaper
 
 
 ## §5 FLOW
@@ -117,4 +115,3 @@ This section covers team for the domain. Initial scaffold content — expand wit
 ## §15 REFERENCES
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
-

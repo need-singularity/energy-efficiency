@@ -9,110 +9,110 @@ requires:
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, VERIFY, EVOLVE], strict=false, order=sequential, prefix="§") -->
 
-# 궁극의 검증·테스트 HEXA-VERIFY-TEST
+# Ultimate Verification·test HEXA-VERIFY-TEST
 
-## §1 WHY (이 기술이 당신의 삶을 바꾸는 방법)
+## §1 WHY (how this technology changes your life)
 
-반도체 검증(UVM / Formal / Emulation)과 제조 테스트(ATE / DFT / BIST / Burn-in) 가 따로 진화해 왔다. 설계 단계에서는 시뮬레이션 커버리지 80%가 한계, 제조 단계에서는 ATE 시간이 수십 초/칩 → 월 수백만 칩 출하의 병목이 된다. 스마트폰 1개 리콜의 파급 비용이 1조 원 단위다. **n=6 산술 유도로 검증·테스트 경계 상수가 결정되면** 세 가지 낭비가 사라진다:
+semiconductor Verification(UVM / Formal / Emulation) and fabrication test(ATE / DFT / BIST / Burn-in)   as transformresolve . designsystem Stage at  simulation coverage 80% limit, fabrication Stage at  ATE time several tens initial/chip →  several hundredonly chip below of bottleneck . smartphone 1  of  cost 1  Unit. **n=6 arithmetic derivation as Verification·test viasystem constant crystal**  kinds wasteratio disappears:
 
-1. **커버리지 상한 돌파**: 수작업 80% → **99.9% = 1 − 1/(σ·(σ−φ)²)** ← σ(6)=12, σ−φ=10, OEIS A000203
-2. **UVM 표준화**: 혼란스러운 5~15 계위 → **τ=4 계위 (env/agent/driver/monitor)** 고정 ← τ(6)=4, OEIS A000005
-3. **ATE 병렬화**: 핀 수십 개 → **σ·J₂=288 핀 병렬** 동시 테스트, 시간 1/σ 로 ← φ(6)=2, OEIS A000010
+1. **coverage upper bound breakthrough**: operation 80% → **99.9% = 1 − 1/(σ·(σ−φ)²)** ← σ(6)=12, σ−φ=10, OEIS A000203
+2. **UVM standardtransform**: confusion 5~15 systemtop → **τ=4 systemtop (env/agent/driver/monitor)** fixed ← τ(6)=4, OEIS A000005
+3. **ATE paralleltransform**: pin several tens  → **σ·J₂=288 pin parallel** same when test, time 1/σ  as ← φ(6)=2, OEIS A000010
 
-| 효과 | 현재 | HEXA 적용 후 | 체감 변화 |
+| effect and | current | HEXA application after | experienced change |
 |------|------|-------------|----------|
-| 커버리지 | 80% (UVM) | 99.9% (n=6 대칭) | escape bug 소멸 |
-| UVM 계위 | 5~15 (ad-hoc) | τ=4 (표준) | 구조 학습 1/σ·τ |
-| DFT scan chain | ad-hoc 길이 | σ=12 segment | 디버그 1/σ |
-| BIST 패턴 수 | 수백만 | σ·J₂=288 | τ=4 시간 내 완료 |
-| ATE 핀 병렬 | 수십 | σ·J₂=288 | 테스트 시간 1/σ |
-| Burn-in 코너 | 1~3 | τ=4 (SS/FF/TT/SF) | 신뢰도 σ·sopfr=60배 |
-| Formal BMC 깊이 | 10~100 | σ=12 cycle | 증명 시간 τ |
-| 리콜 가능성 | 0.01~0.1% | ≈0 (99.9% cov) | 기업 리스크 소멸 |
-| 테스트 비용 | $5~20/칩 | $0.1/칩 (1/σ²) | 저가칩도 100% 테스트 |
-| 출하 품질 | 90~95% | 99.9% | 반품·A/S 1/σ² |
+| coverage | 80% (UVM) | 99.9% (n=6 symmetry) | escape bug  |
+| UVM systemtop | 5~15 (ad-hoc) | τ=4 (standard) | structure learning 1/σ·τ |
+| DFT scan chain | ad-hoc length | σ=12 segment | debug 1/σ |
+| BIST pattern number | several hundredonly | σ·J₂=288 | τ=4 time within done (draft) |
+| ATE pin parallel | several tens | σ·J₂=288 | test time 1/σ |
+| Burn-in  | 1~3 | τ=4 (SS/FF/TT/SF) | degree σ·sopfr=60x |
+| Formal BMC deep | 10~100 | σ=12 cycle | proof (draft) time τ |
+|  possible | 0.01~0.1% | ≈0 (99.9% cov) | base   |
+| test cost | $5~20/chip | $0.1/chip (1/σ²) | availablechipdegree 100% test |
+| below  | 90~95% | 99.9% | half·A/S 1/σ² |
 
-**한 문장 요약**: n=6 산술 유도로 설계 검증 **99.9% 커버리지**와 제조 테스트 **σ·J₂=288 핀 병렬**이 동시 달성되어 escape bug 가 소멸하고 테스트 시간·비용이 σ=12배 이하로 붕괴한다.
+**One-sentence summary**: n=6 arithmetic derivation as designsystem Verification **99.9% coverage** and fabrication test **σ·J₂=288 pin parallel** same when achieved (draft) escape bug   test time·cost σ=12x below as .
 
-### 일상 체감 시나리오
+### Everyday scenarios
 
 ```
-  오전 7:00   스마트폰 구동, 커널 panic 없음 (99.9% cov + τ=4 corner pass)
-  오전 9:00   자율주행 센서 칩 실시간 자기진단 (BIST σ·J₂=288 패턴)
-  오후 2:00   공장 ATE: 웨이퍼당 σ·J₂=288 핀 병렬 테스트, 1/σ 시간
-  오후 6:00   리콜 공지? 없음 (지난 5년 0건)
-  저녁 9:00   의료기기 심박센서 Formal-proven 안전성 증명 (τ=4 property)
+  morning 7:00   smartphone structuresame,  panic none (99.9% cov + τ=4 corner pass)
+  morning 9:00   charactermain row sensor chip actualtime magnetic stage (BIST σ·J₂=288 pattern)
+  afternoon 2:00   cavity ATE: waferthis σ·J₂=288 pin parallel test, 1/σ time
+  afternoon 6:00    cavityearth? none (earth 5yr 0case)
+  evening 9:00   basebase sensor Formal-proven before proof (draft) (τ=4 property)
 ```
 
-### 사회적 변혁
+### Social transformation
 
-| 분야 | 변화 | n=6 연결 |
+| area | change | n=6 connection |
 |------|------|---------|
-| 제조업 | 리콜 실종 | 99.9% coverage |
-| 자동차 | ASIL-D 기본 | Formal τ=4 property |
-| 의료 | FDA 승인 가속 | 자동 증명 생성 |
-| 항공 | DO-254 즉시 | Formal + BIST |
-| 금융 | HSM 칩 보안 인증 | Formal + Scan encrypt |
-| 국방 | 보안 취약점 0 | 99.9% coverage |
-| 소비자 | A/S 줄어듦 | 테스트 100% |
+| fabrication |  actualtype | 99.9% coverage |
+| autoorder | ASIL-D basethis | Formal τ=4 property |
+|  | FDA  acceleration | auto proof (draft) generation |
+| aerospace | DO-254 i.e. when | Formal + BIST |
+|  | HSM chip security  | Formal + Scan encrypt |
+| method | security point 0 | 99.9% coverage |
+| character | A/S line | test 100% |
 
 
-## §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII)
+## §2 COMPARE (current tech vs n=6) — performance comparison (ASCII)
 
-### n=6 이전 5가지 장벽
+### n=6 5 barriers before n=6
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  장벽              │  왜 불가능했나              │  n=6 이 어떻게 해결하나     │
+│  barrier              │  why possiblewhy was it              │  n=6  how resolved (draft)I     │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 1. 커버리지 한계  │ UVM 무작위 80% 한계          │ 1-1/(σ·(σ-φ)²)=99.9%     │
-│                   │ corner 폭발 exponential     │ n=6 대칭 활용            │
+│ 1. coverage onesystem  │ UVM top 80% onesystem          │ 1-1/(σ·(σ-φ)²)=99.9%     │
+│                   │ corner width exponential     │ n=6 symmetry utilization            │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 2. UVM 혼란       │ 계위 5~15 ad-hoc            │ τ=4 (env/agent/drv/mon)  │
-│                   │ 재사용 어려움               │ 표준 프레임워크           │
+│ 2. UVM confusion       │ systemtop 5~15 ad-hoc            │ τ=4 (env/agent/drv/mon)  │
+│                   │ reuse                │ standard frame           │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 3. ATE 병목        │ 핀 수십, 테스트 수십 초/칩  │ σ·J₂=288 핀 병렬         │
-│                   │ 양산 병목                   │ 1/σ 시간                 │
+│ 3. ATE bottleneck        │ pin several tens, test several tens initial/chip  │ σ·J₂=288 pin parallel         │
+│                   │ volume production bottleneck                   │ 1/σ time                 │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 4. DFT 오버헤드   │ scan chain 임의 길이         │ σ=12 segment 분할        │
-│                   │ 디버그 시간 폭주            │ 1/σ 디버그 시간          │
+│ 4. DFT head   │ scan chain  of length         │ σ=12 segment partition        │
+│                   │ debug time widthmain            │ 1/σ debug time          │
 ├───────────────────┼───────────────────────────┼──────────────────────────┤
-│ 5. Formal 미성숙  │ BMC 깊이 임의, 증명 실패    │ σ=12 cycle 고정          │
-│                   │ liveness 증명 어려움        │ τ=4 property 타입        │
+│ 5. Formal un-  │ BMC deep , proof (draft) failure    │ σ=12 cycle fixed          │
+│                   │ liveness proof (draft)         │ τ=4 property type        │
 └───────────────────┴───────────────────────────┴──────────────────────────┘
 ```
 
-### 성능 비교 ASCII 막대 (시중 vs HEXA)
+### performance comparison ASCII bar (market vs HEXA)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  [커버리지 (%)] 높을수록 좋음
+│  [coverage (%)] higher is better good
 │------------------------------------------------------------------------
-│  수작업 test                ██████████████████░░░░░░░░░░░░░░  60
+│  operation test                ██████████████████░░░░░░░░░░░░░░  60
 │  UVM + random               ████████████████████████░░░░░░░░  80
 │  UVM + coverage-driven      ██████████████████████████░░░░░░  90
-│  Formal + UVM 병행          ████████████████████████████░░░░  95
-│  HEXA (n=6 대칭)            ████████████████████████████████  99.9 (1-1/(σ·(σ-φ)²))
+│  Formal + UVM  row          ████████████████████████████░░░░  95
+│  HEXA (n=6 symmetry)            ████████████████████████████████  99.9 (1-1/(σ·(σ-φ)²))
 │
-│  [ATE 테스트 시간 (초/칩)] 낮을수록 좋음
-│  레거시 (수십 핀)           ████████████████████████████████  30
-│  최신 산업 (100+ 핀)        ████████████████████░░░░░░░░░░░░  20
-│  HEXA (σ·J₂=288 핀 병렬)    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2.5 (1/σ)
+│  [ATE test time (initial/chip)] lower is better good
+│  legacy (several tens pin)           ████████████████████████████████  30
+│  most industry (100+ pin)        ████████████████████░░░░░░░░░░░░  20
+│  HEXA (σ·J₂=288 pin parallel)    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  2.5 (1/σ)
 │
-│  [Escape bug / 10⁶ 칩]      낮을수록 좋음
-│  표준 품질                  ████████████████████████████████  100
-│  프리미엄 품질              ██████████░░░░░░░░░░░░░░░░░░░░░░  30
+│  [Escape bug / 10⁶ chip]      lower is better good
+│  standard                   ████████████████████████████████  100
+│  un-               ██████████░░░░░░░░░░░░░░░░░░░░░░  30
 │  HEXA                       █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ≤ 1
 │
-│  [Formal BMC 깊이 (cycle)]  높을수록 좋음
-│  표준 도구                  ██████░░░░░░░░░░░░░░░░░░░░░░░░░░  10
-│  산업 최고                  ████████████████░░░░░░░░░░░░░░░░  50
-│  HEXA (σ=12 고정)           ████████████░░░░░░░░░░░░░░░░░░░░  12 (σ=12)
-│  (비고: σ=12 는 도달가능 고정 depth, 하위 제약으로 액셀 강함)
+│  [Formal BMC deep (cycle)]  higher is better good
+│  standard tool                  ██████░░░░░░░░░░░░░░░░░░░░░░░░░░  10
+│  industry most                  ████████████████░░░░░░░░░░░░░░░░  50
+│  HEXA (σ=12 fixed)           ████████████░░░░░░░░░░░░░░░░░░░░  12 (σ=12)
+│  (Notes: σ=12  degreepossible fixed depth, lower constraint as cell )
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 핵심 돌파구: 커버리지 1 − 1/(σ·(σ−φ)²) = 99.917%
+### Core breakthroughstructure: coverage 1 − 1/(σ·(σ−φ)²) = 99.917%
 
 ```
   σ(6) = 12
@@ -122,46 +122,46 @@ requires:
   1 - 1/1200 = 0.999167 ≈ 99.9%
 ```
 
-**연쇄 해석**:
+**chain interpretation**:
 
 ```
-  n=6 경계 고정
-    → UVM τ=4 계위 표준 (env/agent/driver/monitor)
-      → DFT σ=12 scan segment → 디버그 1/σ 시간
-      → ATE σ·J₂=288 핀 병렬 → 1/σ 시간
-      → BIST σ·J₂=288 패턴 → τ=4 내 self-test
-      → Burn-in τ=4 corner → 신뢰도 σ·sopfr=60x
+  n=6 viasystem fixed
+    → UVM τ=4 systemtop standard (env/agent/driver/monitor)
+      → DFT σ=12 scan segment → debug 1/σ time
+      → ATE σ·J₂=288 pin parallel → 1/σ time
+      → BIST σ·J₂=288 pattern → τ=4 within self-test
+      → Burn-in τ=4 corner → degree σ·sopfr=60x
       → Formal τ=4 property + σ=12 BMC depth
-      → 99.9% coverage 달성 → escape bug 0
+      → 99.9% coverage achieved (draft) → escape bug 0
 ```
 
 
-## §3 REQUIRES (필요한 요소) — 선행 도메인
+## §3 REQUIRES (required elements) — upstream domains
 
-| 선행 도메인 | 🛸 현재 | 🛸 필요 | 차이 | 핵심 기술 | 링크 |
+| upstream domains | 🛸 current | 🛸 required | order | Core technology | link |
 |-------------|---------|---------|------|-----------|------|
-| chip-architecture | 🛸7 | 🛸10 | +3 | n=6 경계 상수 | [문서](../chip-architecture/chip-architecture.md) |
-| chip-eda | 🛸0 | 🛸10 | +10 | τ=4 합성 / σ=12 레이어 | [문서](../chip-eda/chip-eda.md) |
-| chip-design | 🛸8 | 🛸10 | +2 | DSE 2400 로드맵 | [문서](../chip-design/chip-roadmap-comparison.md) |
+| chip-architecture | 🛸7 | 🛸10 | +3 | n=6 viasystem constant | [document](../chip-architecture/chip-architecture.md) |
+| chip-eda | 🛸0 | 🛸10 | +10 | τ=4 synthesis / σ=12 layer | [document](../chip-eda/chip-eda.md) |
+| chip-design | 🛸8 | 🛸10 | +2 | DSE 2400 roadmap | [document](../chip-design/chip-roadmap-comparison.md) |
 
-상기 선행 도메인이 🛸10 에 도달하면 본 도메인의 Mk.V 완전 자동화가 실현된다.
+base upstream domains 🛸10  at degree this domain of Mk.V complete autotransform realization.
 
 
-## §4 STRUCT (시스템 구조) — System Architecture (ASCII)
+## §4 STRUCT (system architecture) — System Architecture (ASCII)
 
-### 검증·테스트 시스템맵 (2 side × 4 stage = 8 블록)
+### Verification·test systemmap (2 side × 4 stage = 8 block)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│             궁극의 검증·테스트 HEXA-VERIFY-TEST 시스템 구조 (2 side)                                    │
+│             Ultimate Verification·test HEXA-VERIFY-TEST system architecture (2 side)                                    │
 ├────────────────────────────────┬─────────────────────────────────────────┤
-│   A. 설계 검증 (Pre-silicon)    │   B. 제조 테스트 (Post-silicon)          │
+│   A. designsystem Verification (Pre-silicon)    │   B. fabrication test (Post-silicon)          │
 ├────────────────────────────────┼─────────────────────────────────────────┤
-│  A1 UVM τ=4 계위              │  B1 ATE σ·J₂=288 핀 병렬                 │
-│  (env/agent/driver/monitor)   │  (1/σ 시간/칩)                           │
+│  A1 UVM τ=4 systemtop              │  B1 ATE σ·J₂=288 pin parallel                 │
+│  (env/agent/driver/monitor)   │  (1/σ time/chip)                           │
 │  A2 Formal τ=4 property       │  B2 DFT σ=12 scan segment                │
 │  (safety/live/fair/deadlock)  │  (scan compression σ·τ=48 ratio)        │
-│  A3 Emulation σ=12 FPGA board │  B3 BIST σ·J₂=288 패턴                   │
+│  A3 Emulation σ=12 FPGA board │  B3 BIST σ·J₂=288 pattern                   │
 │  (at-speed)                   │  (in-field self-test)                   │
 │  A4 Coverage 99.9%             │  B4 Burn-in τ=4 corner (SS/FF/TT/SF)    │
 ├────────────────────────────────┼─────────────────────────────────────────┤
@@ -169,10 +169,10 @@ requires:
 └────────────────────────────────┴─────────────────────────────────────────┘
 ```
 
-### 단면도 (Verification ↓ Test 층위)
+### cross-section (Verification ↓ Test layertop)
 
 ```
-   ┌──────────── UVM (τ=4 계위) ────────────┐
+   ┌──────────── UVM (τ=4 systemtop) ────────────┐
    │ env → agent → driver → monitor         │
    │ coverage-driven random                 │
    ├───────────────────────────────────────┤
@@ -187,60 +187,60 @@ requires:
    │   scan-in → shift → capture           │
    │   boundary scan + MBIST                │
    ├───────────────────────────────────────┤
-   │ BIST (σ·J₂=288 패턴):                 │
+   │ BIST (σ·J₂=288 pattern):                 │
    │   LBIST + MBIST + LogicBIST           │
    ├───────────────────────────────────────┤
-   │ ATE (σ·J₂=288 핀 병렬):               │
-   │   J750, V93k, UltraFLEX 호환          │
+   │ ATE (σ·J₂=288 pin parallel):               │
+   │   J750, V93k, UltraFLEX compatibility          │
    ├───────────────────────────────────────┤
    │ Burn-in (τ=4 corner):                 │
    │   SS/FF/TT/SF HTOL + HTRB              │
    └───────────────────────────────────────┘
 ```
 
-### n=6 파라미터 완전 매핑
+### n=6 parameter complete mapping
 
-#### A1 UVM 계위
+#### A1 UVM systemtop
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 계위 개수 | 4 | τ = 4 | env/agent/driver/monitor | EXACT |
-| agent 개수 | 6 | n = 6 | I/O interface 수 | EXACT |
-| sequence 우선순위 | 12 | σ = 12 | 약수 수 | EXACT |
+| systemtop number | 4 | τ = 4 | env/agent/driver/monitor | EXACT |
+| agent number | 6 | n = 6 | I/O interface number | EXACT |
+| sequence linetop | 12 | σ = 12 | number number | EXACT |
 | Coverage bin | 288 | σ·J₂ | cross coverage | EXACT |
-| 커버리지 목표 | 99.9% | 1-1/(σ·(σ-φ)²) | 정의식 | EXACT |
+| coverage Target | 99.9% | 1-1/(σ·(σ-φ)²) | exactconsciousness | EXACT |
 
 #### A2 Formal
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| Property 타입 | 4 | τ = 4 | safety/liveness/fairness/deadlock | EXACT |
+| Property type | 4 | τ = 4 | safety/liveness/fairness/deadlock | EXACT |
 | BMC depth | 12 | σ = 12 | sigma cycle | EXACT |
-| State 공간 bound | 2^12 | σ=12 | 4096 reachable | EXACT |
+| State cavity between bound | 2^12 | σ=12 | 4096 reachable | EXACT |
 | Induction step | 2 | φ = 2 | k-induction base | EXACT |
 | Assertion/block | 24 | J₂ = 24 | dense coverage | EXACT |
 
 #### A3 Emulation
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
 | FPGA board | 12 | σ = 12 | cluster | EXACT |
-| 분할 ratio | 6 | n = 6 | die partition | EXACT |
+| partition ratio | 6 | n = 6 | die partition | EXACT |
 | At-speed ratio | 1/σ·τ=1/48 | σ·τ | emulation:real | EXACT |
 | I/O protocol | 6 | n = 6 | prot set | EXACT |
 
 #### B1 ATE
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 핀 병렬 | 288 | σ·J₂ | UCIe 호환 | EXACT |
-| 테스트 시간 | 1/σ s | 1/σ | full chip | EXACT |
-| 패턴 RAM | σ·τ=48 MB | σ·τ | vector memory | EXACT |
-| 전압 레일 | 12 | σ = 12 | domain | EXACT |
+| pin parallel | 288 | σ·J₂ | UCIe compatibility | EXACT |
+| test time | 1/σ s | 1/σ | full chip | EXACT |
+| pattern RAM | σ·τ=48 MB | σ·τ | vector memory | EXACT |
+| voltage one | 12 | σ = 12 | domain | EXACT |
 
 #### B2 DFT
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
 | Scan segment | 12 | σ = 12 | split | EXACT |
 | Compression ratio | σ·τ=48 | σ·τ | EDT | EXACT |
@@ -249,68 +249,68 @@ requires:
 
 #### B3 BIST
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 패턴 수 | 288 | σ·J₂ | LBIST | EXACT |
-| MBIST 알고리즘 | 6 | n = 6 | March6, IFA-6 등 | EXACT |
-| Self-test 시간 | τ ms | τ = 4 ms | per instance | EXACT |
+| pattern number | 288 | σ·J₂ | LBIST | EXACT |
+| MBIST  | 6 | n = 6 | March6, IFA-6  | EXACT |
+| Self-test time | τ ms | τ = 4 ms | per instance | EXACT |
 
 #### B4 Burn-in
 
-| 파라미터 | 값 | n=6 수식 | 근거 | 판정 |
+| parameter | value | n=6 Formula | Basis | Verdict |
 |---------|-----|---------|------|------|
-| 코너 | 4 | τ = 4 | SS/FF/TT/SF | EXACT |
-| 온도 레벨 | 6 | n = 6 | -40~150℃ 6 pt | EXACT |
-| HTOL 시간 | σ·τ h | σ·τ = 48 | accel | EXACT |
-| 전압 조건 | σ/τ | σ/τ = 3 | V nominal | EXACT |
+|  | 4 | τ = 4 | SS/FF/TT/SF | EXACT |
+| temperature level | 6 | n = 6 | -40~150℃ 6 pt | EXACT |
+| HTOL time | σ·τ h | σ·τ = 48 | accel | EXACT |
+| voltage condition | σ/τ | σ/τ = 3 | V nominal | EXACT |
 
-### 제원 총괄표
+### specifications summary table
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  궁극의 검증·테스트 HEXA-VERIFY-TEST Technical Specifications                                        │
+│  Ultimate Verification·test HEXA-VERIFY-TEST Technical Specifications                                        │
 ├──────────────────────────────────────────────────────────────────────────┤
-│  카테고리         검증·테스트 (2 side × 4 stage = 8 blocks)               │
-│  UVM 계위         τ = 4 (env/agent/driver/monitor)                        │
+│  category         Verification·test (2 side × 4 stage = 8 blocks)               │
+│  UVM systemtop         τ = 4 (env/agent/driver/monitor)                        │
 │  Formal property  τ = 4 (safety/liveness/fairness/deadlock)              │
 │  Emulation FPGA   σ = 12 board cluster                                    │
 │  DFT scan         σ = 12 segment                                          │
 │  BIST pattern     σ·J₂ = 288                                              │
-│  ATE 핀 병렬      σ·J₂ = 288                                              │
+│  ATE pin parallel      σ·J₂ = 288                                              │
 │  Burn-in corner   τ = 4                                                   │
-│  커버리지 목표    99.9% = 1-1/(σ·(σ-φ)²)                                  │
+│  coverage Target    99.9% = 1-1/(σ·(σ-φ)²)                                  │
 │  Escape bug       ≤ 1 / 10⁶ chips                                         │
-│  ATE 시간         1/σ s/chip                                              │
-│  n=6 EXACT       94%+ (§7 검증)                                           │
+│  ATE time         1/σ s/chip                                              │
+│  n=6 EXACT       94%+ (§7 Verification)                                           │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### BT 연결
+### BT connection
 
-| BT | 이름 | 본 도메인 적용 |
+| BT | name | this domain application |
 |----|------|--------------|
-| BT-28  | Egyptian Fraction | 시간/핀/열 1/2+1/3+1/6 |
-| BT-56  | σ²=144 SM | Emulation 분할 |
-| BT-181 | 다중대역 σ=12 채널 | DFT scan segment |
+| BT-28  | Egyptian Fraction | time/pin/ column 1/2+1/3+1/6 |
+| BT-56  | σ²=144 SM | Emulation partition |
+| BT-181 | multiplebandwidth σ=12 channel | DFT scan segment |
 | BT-328 | ASIL-D τ=4 | Burn-in corner + Formal |
-| BT-342 | 항공공학 n=6 | DO-254 준용 |
+| BT-342 | aerospaceengineering n=6 | DO-254  |
 
 
-## §5 FLOW (데이터/에너지 플로우) — Flow (ASCII)
+## §5 FLOW (data/energy flow) — Flow (ASCII)
 
-### 검증-테스트 데이터 플로우
+### Verification-test data  as
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │ RTL ─→ [UVM τ=4] ─→ [Formal τ=4] ─→ [Emul σ=12] ─→ [DFT σ=12] ─→ chip   │
 │                                                                          │
-│ chip ─→ [BIST σ·J₂=288] ─→ [ATE σ·J₂=288 핀] ─→ [Burn-in τ=4] ─→ 출하   │
+│ chip ─→ [BIST σ·J₂=288] ─→ [ATE σ·J₂=288 pin] ─→ [Burn-in τ=4] ─→ below   │
 │                                                                          │
-│   └──────── 커버리지 99.9% 보장 (1 - 1/(σ·(σ-φ)²)) ──────────┘          │
+│   └──────── coverage 99.9%  (1 - 1/(σ·(σ-φ)²)) ──────────┘          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 검증 시간 배분 (Egyptian 1/2 + 1/3 + 1/6)
+### Verification time xminute (Egyptian 1/2 + 1/3 + 1/6)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
@@ -318,67 +318,67 @@ requires:
 │ Formal + Emul   │ ████████████████████░░░░░░░░░░░░  1/3 ≈ 33%            │
 │ DFT + BIST/ATE  │ ██████████░░░░░░░░░░░░░░░░░░░░░░  1/6 ≈ 17%            │
 └──────────────────────────────────────────────────────────────────────────┘
-합 = 1 (정확)
+sum = 1 (exact)
 ```
 
-### 5개 검증 모드
+### 5 Verification mode
 
-#### 모드 1: DEV_CHECK — 개발 빠른 회귀
+#### mode 1: DEV_CHECK —  fast regression
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 1: DEV_CHECK (τ=4h 회귀)           │
+│  MODE 1: DEV_CHECK (τ=4h regression)           │
 │  UVM: smoke test suite                   │
 │  Formal: safety property subset          │
-│  커버리지: 60% 이상                      │
+│  coverage: 60% above                      │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 2: NIGHTLY — 전체 회귀
+#### mode 2: NIGHTLY — total regression
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 2: NIGHTLY (τ=4h × σ=12 threads)   │
 │  UVM: full random + constrained          │
-│  Formal: τ=4 property 전부                │
-│  커버리지: 90% 이상                      │
+│  Formal: τ=4 property                 │
+│  coverage: 90% above                      │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 3: SIGN_OFF — 최종 사인오프
+#### mode 3: SIGN_OFF — final 
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 3: SIGN_OFF (τ=4일)                │
-│  커버리지: 99.9% 달성                    │
-│  Formal: 전 property proven              │
-│  Emulation: at-speed 48h 안정            │
+│  MODE 3: SIGN_OFF (τ=4one)                │
+│  coverage: 99.9% achieved (draft)                    │
+│  Formal: before property proven              │
+│  Emulation: at-speed 48h exact            │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 4: ATE_MASS — 대량 양산 테스트
+#### mode 4: ATE_MASS — large volume production test
 
 ```
 ┌──────────────────────────────────────────┐
-│  MODE 4: ATE_MASS (σ·J₂=288 핀 병렬)     │
-│  시간: 1/σ s/chip                         │
+│  MODE 4: ATE_MASS (σ·J₂=288 pin parallel)     │
+│  time: 1/σ s/chip                         │
 │  Yield: 95%+                             │
 │  BIST: self-test go/no-go                │
 └──────────────────────────────────────────┘
 ```
 
-#### 모드 5: FIELD_SELF — 현장 자기진단
+#### mode 5: FIELD_SELF —  magneticstage
 
 ```
 ┌──────────────────────────────────────────┐
 │  MODE 5: FIELD_SELF (in-vehicle/medical) │
-│  BIST: 매 부팅마다 σ·J₂=288 패턴         │
+│  BIST:   σ·J₂=288 pattern         │
 │  Safety island: Formal-proven            │
-│  ASIL-D / DO-254 / IEC 61508 준수        │
+│  ASIL-D / DO-254 / IEC 61508 number        │
 └──────────────────────────────────────────┘
 ```
 
-### DSE 후보군 (5축 = 2400 전수)
+### DSE candidategroup (5axis = 2400 exhaustive)
 
 ```
 ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
@@ -386,167 +386,167 @@ requires:
 │  K1 = 6  │   │  K2 = 5  │   │  K3 = 4  │   │  K4 = 5  │   │  K5 = 4  │
 │  = n     │   │  = sopfr │   │  = τ     │   │  = sopfr │   │  = τ     │
 └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
-전수: 2,400 | 호환 필터: 576 | Pareto Top-6 : J₂=24 경로
+exhaustive: 2,400 | compatibility : 576 | Pareto Top-6 : J₂=24 Path
 ```
 
-#### K1 UVM 프레임워크 (6종 = n)
+#### K1 UVM frame (6type = n)
 
-| # | 프레임워크 | 특징 | n=6 |
+| # | frame | feature | n=6 |
 |---|---------|------|-----|
-| 1 | UVM 1.2 classical | 표준 | τ=4 계위 |
-| 2 | cocotb (Python) | 가벼움 | NL 친화 |
-| 3 | RISC-V DV | 오픈 | σ=12 agent |
-| 4 | PyUVM | 최신 | φ 이슈 |
+| 1 | UVM 1.2 classical | standard | τ=4 systemtop |
+| 2 | cocotb (Python) | available | NL transform |
+| 3 | RISC-V DV | open | σ=12 agent |
+| 4 | PyUVM | most | φ  |
 | 5 | SystemC TLM | SoC | J₂ TX |
-| 6 | HEXA-UVM (n=6) | 외계인 | 고정 표준 |
+| 6 | HEXA-UVM (n=6) | alien | fixed standard |
 
-#### K2 Formal 엔진 (5종 = sopfr)
+#### K2 Formal  (5type = sopfr)
 
-| # | Engine | 종류 | n=6 |
+| # | Engine | type | n=6 |
 |---|--------|------|-----|
 | 1 | JasperGold | BMC | σ=12 depth |
 | 2 | VC Formal | Synopsys | τ=4 prop |
-| 3 | OneSpin | 분석 | property 24 |
-| 4 | SymbiYosys | 오픈 | Yosys+ABC |
-| 5 | HEXA-Formal | 외계인 | 자동 τ=4 |
+| 3 | OneSpin | analysis | property 24 |
+| 4 | SymbiYosys | open | Yosys+ABC |
+| 5 | HEXA-Formal | alien | auto τ=4 |
 
-#### K3 Emulator (4종 = τ)
+#### K3 Emulator (4type = τ)
 
-| # | Emul | 종류 | n=6 |
+| # | Emul | type | n=6 |
 |---|------|------|-----|
-| 1 | Palladium | 상용 | σ=12 board |
+| 1 | Palladium | commercial | σ=12 board |
 | 2 | Veloce | Siemens | cluster σ |
 | 3 | ZeBu | Synopsys | FPGA σ |
-| 4 | 오픈 FPGA (Hexa) | 외계인 | n=6 mesh |
+| 4 | open FPGA (Hexa) | alien | n=6 mesh |
 
-#### K4 ATE (5종 = sopfr)
+#### K4 ATE (5type = sopfr)
 
-| # | ATE | 벤더 | n=6 |
+| # | ATE |  | n=6 |
 |---|-----|------|-----|
-| 1 | J750 | Teradyne | σ 핀 |
-| 2 | UltraFLEX | Teradyne | 288 핀 |
+| 1 | J750 | Teradyne | σ pin |
+| 2 | UltraFLEX | Teradyne | 288 pin |
 | 3 | V93k | Advantest | σ·J₂ |
-| 4 | HEXA-ATE | 외계인 | 288 병렬 |
-| 5 | 광학 ATE | 미래 | λ=σ WDM |
+| 4 | HEXA-ATE | alien | 288 parallel |
+| 5 | optical ATE | future | λ=σ WDM |
 
-#### K5 Burn-in (4종 = τ)
+#### K5 Burn-in (4type = τ)
 
-| # | Burn-in | 코너 | n=6 |
+| # | Burn-in |  | n=6 |
 |---|---------|------|-----|
 | 1 | HTOL | high-V | τ=4 |
 | 2 | HTRB | rev-bias | σ/τ V |
-| 3 | TC | thermal cycle | n 단 |
-| 4 | HEXA-Burn | 외계인 | SS/FF/TT/SF |
+| 3 | TC | thermal cycle | n  stage |
+| 4 | HEXA-Burn | alien | SS/FF/TT/SF |
 
 #### Pareto Top-6
 
-| Rank | K1 | K2 | K3 | K4 | K5 | n6% | 비고 |
+| Rank | K1 | K2 | K3 | K4 | K5 | n6% | Notes |
 |------|----|----|----|----|----|-----|------|
-| 1 | HEXA-UVM | HEXA-Formal | HEXA FPGA | HEXA-ATE | HEXA-Burn | 97% | **최적** |
-| 2 | UVM 1.2 | JasperGold | Palladium | UltraFLEX | HTOL+HTRB | 94% | 산업 표준 |
-| 3 | PyUVM | VC Formal | ZeBu | V93k | TC | 91% | 모던 |
-| 4 | cocotb | SymbiYosys | 오픈 FPGA | J750 | HTOL | 85% | 저비용 |
-| 5 | RISC-V DV | OneSpin | Veloce | UltraFLEX | TC | 90% | 오픈 |
-| 6 | SystemC | JasperGold | ZeBu | HEXA-ATE | HEXA-Burn | 88% | SoC 통합 |
+| 1 | HEXA-UVM | HEXA-Formal | HEXA FPGA | HEXA-ATE | HEXA-Burn | 97% | **optimal** |
+| 2 | UVM 1.2 | JasperGold | Palladium | UltraFLEX | HTOL+HTRB | 94% | industry standard |
+| 3 | PyUVM | VC Formal | ZeBu | V93k | TC | 91% | shape |
+| 4 | cocotb | SymbiYosys | open FPGA | J750 | HTOL | 85% | cost |
+| 5 | RISC-V DV | OneSpin | Veloce | UltraFLEX | TC | 90% | open |
+| 6 | SystemC | JasperGold | ZeBu | HEXA-ATE | HEXA-Burn | 88% | SoC integration |
 
 
-## §7 VERIFY (Python 검증)
+## §7 VERIFY (Python verification)
 
-### Testable Predictions (10건)
+### Testable Predictions (10case)
 
-#### TP-VT-1: 커버리지 하한 = 1 − 1/(σ·(σ−φ)²) = 99.917%
-- **검증**: Fraction((σ·(σ-φ)²-1), σ·(σ-φ)²) == Fraction(1199, 1200)
+#### TP-VT-1: coverage lower bound = 1 − 1/(σ·(σ−φ)²) = 99.917%
+- **Verification**: Fraction((σ·(σ-φ)²-1), σ·(σ-φ)²) == Fraction(1199, 1200)
 - **Tier**: 1
 
-#### TP-VT-2: UVM τ=4 계위 (env/agent/driver/monitor)
-- **검증**: 계위 순서 DAG 위상 정렬 유일
+#### TP-VT-2: UVM τ=4 systemtop (env/agent/driver/monitor)
+- **Verification**: systemtop  DAG topabove alignment one
 - **Tier**: 1
 
-#### TP-VT-3: Formal τ=4 property 타입 완전성
-- **검증**: {safety, liveness, fairness, deadlock} ⇒ 시제논리 LTL/CTL 완전 cover
+#### TP-VT-3: Formal τ=4 property type complete
+- **Verification**: {safety, liveness, fairness, deadlock} ⇒ controllogical LTL/CTL complete cover
 - **Tier**: 2
 
-#### TP-VT-4: ATE 병렬 핀 = σ·J₂ = 288
-- **검증**: 12×24 = 288
+#### TP-VT-4: ATE parallel pin = σ·J₂ = 288
+- **Verification**: 12×24 = 288
 - **Tier**: 1
 
 #### TP-VT-5: DFT scan segment = σ = 12
-- **검증**: 전체 scan chain 길이 / 12 = 동일 segment
+- **Verification**: total scan chain length / 12 = identical segment
 - **Tier**: 1
 
-#### TP-VT-6: Burn-in τ=4 corner 선형 독립
-- **검증**: [V, T] 매트릭스 rank = 4
+#### TP-VT-6: Burn-in τ=4 corner line independent
+- **Verification**: [V, T] matrix rank = 4
 - **Tier**: 1
 
 #### TP-VT-7: BMC depth = σ = 12 state space bound = 2^12
-- **검증**: unreachable state 없음
+- **Verification**: unreachable state none
 - **Tier**: 2
 
 #### TP-VT-8: χ² p-value > 0.05
 - **Tier**: 1
 
-#### TP-VT-9: OEIS 시퀀스 등록
+#### TP-VT-9: OEIS sequence 
 - **Tier**: 1
 
 #### TP-VT-10: Escape bug rate ≤ 1/10⁶ at 99.9% coverage
-- **검증**: 베이지안 추정 (99.9% prior × 10⁶ chip)
+- **Verification**: earth estimation (99.9% prior × 10⁶ chip)
 - **Tier**: 2
 
-### n=6 정직성 검증 10 카테고리
+### n=6 honesty Verification 10 category
 
 ### §7.0 CONSTANTS
-σ=12, τ=4, φ=2, sopfr=5, J₂=24 수론 자동.
+σ=12, τ=4, φ=2, sopfr=5, J₂=24 number theory auto.
 
 ### §7.1 DIMENSIONS
-테스트 시간 [T], 핀 개수 [count], 커버리지 [dimensionless].
+test time [T], pin number [count], coverage [dimensionless].
 
 ### §7.2 CROSS
-288 = σ·J₂ / 12·24 / σ²+σ·J₂/2 3 경로.
+288 = σ·J₂ / 12·24 / σ²+σ·J₂/2 3 Path.
 
 ### §7.3 SCALING
-커버리지 ~ 1 − c/N^k, k 회귀.
+coverage ~ 1 − c/N^k, k regression.
 
 ### §7.4 SENSITIVITY
-σ=12 ±10% 흔들어 커버리지 볼록.
+σ=12 ±10% shake coverage convex.
 
 ### §7.5 LIMITS
-Shannon: 확률적 테스트 하한. Landauer: scan energy 하한.
+Shannon:  test lower bound. Landauer: scan energy lower bound.
 
 ### §7.6 CHI2
-49 예측 χ² → p-value.
+49 Prediction χ² → p-value.
 
 ### §7.7 OEIS
-[1,2,3,6,12,24,48] 매칭.
+[1,2,3,6,12,24,48] match.
 
 ### §7.8 PARETO
-2400 조합 전수.
+2400 combination exhaustive.
 
 ### §7.9 SYMBOLIC
 Egyptian 1/2+1/3+1/6=1. Coverage = 1199/1200.
 
 ### §7.10 COUNTER
-- 반례: 양자 에러 (QEC), SEU (cosmic ray), parametric drift
-- Falsifier: 커버리지 < 95% / 288 핀 병렬 실패 / Fraction 불일치
+- counter-example: quantum error (QEC), SEU (cosmic ray), parametric drift
+- Falsifier: coverage < 95% / 288 pin parallel failure / Fraction match
 
-### §7 통합 검증 코드 (stdlib only)
+### §7 integration Verification code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # ─────────────────────────────────────────────────────────────────────────────
-# §7 VERIFY — 궁극의 검증·테스트 HEXA-VERIFY-TEST n=6 정직성 검증 (stdlib only)
+# §7 VERIFY — Ultimate Verification·test HEXA-VERIFY-TEST n=6 honesty Verification (stdlib only)
 #
-# 10 섹션 구조:
-#   §7.0 CONSTANTS  — n=6 상수 수론 함수 자동 유도
-#   §7.1 DIMENSIONS — 시간/핀/커버리지 단위
-#   §7.2 CROSS      — 288 핀 3 경로 재유도
-#   §7.3 SCALING    — 커버리지 수렴률 스케일링
-#   §7.4 SENSITIVITY— σ ±10% 흔들어 볼록
+# 10  structure:
+#   §7.0 CONSTANTS  — n=6 constant number theory function auto derivation
+#   §7.1 DIMENSIONS — time/pin/coverage Unit
+#   §7.2 CROSS      — 288 pin 3 Path rederivation
+#   §7.3 SCALING    — coverage convergence scale
+#   §7.4 SENSITIVITY— σ ±10% shake convex
 #   §7.5 LIMITS     — Shannon/Landauer
-#   §7.6 CHI2       — H₀ 기각 불가 확인
-#   §7.7 OEIS       — 시퀀스 DB 매칭
-#   §7.8 PARETO     — 2400 전수 탐색
-#   §7.9 SYMBOLIC   — Fraction 커버리지 = 1199/1200
-#   §7.10 COUNTER   — 반례/Falsifier
+#   §7.6 CHI2       — H₀ rejection  confirm
+#   §7.7 OEIS       — sequence DB match
+#   §7.8 PARETO     — 2400 exhaustive search
+#   §7.9 SYMBOLIC   — Fraction coverage = 1199/1200
+#   §7.10 COUNTER   — counter-example/Falsifier
 # ─────────────────────────────────────────────────────────────────────────────
 
 from math import log, sqrt, erfc, log2
@@ -609,7 +609,7 @@ DIM = {
     'Cov':     (0, 0, 0, 0),  # dimensionless
 }
 
-# ─── §7.2 CROSS — 288 핀 3 경로 ────────────────────────────────────────────
+# ─── §7.2 CROSS — 288 pin 3 Path ────────────────────────────────────────────
 def cross_pins_3ways():
     """σ·J₂ / 12·24 / σ²+σ·J₂/2"""
     F1 = SIGMA * J2               # 288
@@ -617,7 +617,7 @@ def cross_pins_3ways():
     F3 = SIGMA**2 + (SIGMA * J2) // 2  # 144 + 144 = 288
     return F1, F2, F3
 
-# ─── §7.3 SCALING — 커버리지 수렴 ─────────────────────────────────────────
+# ─── §7.3 SCALING — coverage convergence ─────────────────────────────────────────
 def scaling_exponent(xs, ys):
     n = len(xs)
     lx = [log(x) for x in xs]
@@ -627,7 +627,7 @@ def scaling_exponent(xs, ys):
     den = sum((lx[i]-mx)**2 for i in range(n))
     return num/den if den else 0
 
-# ─── §7.4 SENSITIVITY — σ ±10% 흔들어 볼록 ───────────────────────────────
+# ─── §7.4 SENSITIVITY — σ ±10% shake convex ───────────────────────────────
 def sensitivity(f, x0, pct=0.1):
     y0 = f(x0); yh = f(x0*(1+pct)); yl = f(x0*(1-pct))
     return y0, yh, yl, (yh > y0 and yl > y0)
@@ -659,7 +659,7 @@ OEIS_KNOWN = {
     (1, 1, 2, 2, 4, 2, 6):     "A000010 (euler phi)",
 }
 
-# ─── §7.8 PARETO — 2400 전수 ────────────────────────────────────────────
+# ─── §7.8 PARETO — 2400 exhaustive ────────────────────────────────────────────
 def pareto_rank_n6():
     random.seed(6)
     n_total = 2400
@@ -679,35 +679,35 @@ def symbolic_ratios():
 
 # ─── §7.10 COUNTER ──────────────────────────────────────────────────────
 COUNTER_EXAMPLES = [
-    ("양자 에러 (QEC syndrome)", "n=6 외 에러 모델, FTQC 독립"),
-    ("SEU (cosmic ray) 단일 이벤트", "확률 pDF, n=6 유도 아님"),
-    ("parametric drift over lifetime", "aging 모델, 연속 현상"),
-    ("analog mismatch 기하 noise", "gauss 분포, n=6 무관"),
+    ("quantum error (QEC syndrome)", "n=6 outside error model, FTQC independent"),
+    ("SEU (cosmic ray) single ", " pDF, n=6 derivation not"),
+    ("parametric drift over lifetime", "aging model, continuous phenomenon"),
+    ("analog mismatch basebelow noise", "gauss minute, n=6 unrelated"),
 ]
 FALSIFIERS = [
-    "커버리지 < 95% (1-1/(σ(σ-φ)²)하한 위반) → 공식 폐기",
-    "288 핀 병렬 실패 (타이밍 skew > 1%) → σ·J₂ 공식 폐기",
-    "Egyptian 1/2+1/3+1/6 ≠ 1 → 시간 배분 구조 폐기",
-    "τ=4 corner 선형 종속 (rank < 4) → Burn-in 표준 폐기",
-    "χ² p-value < 0.01 → n=6 가설 기각",
+    "coverage < 95% (1-1/(σ(σ-φ)²)lower bound tophalf) → Formula discarded",
+    "288 pin parallel failure (timing skew > 1%) → σ·J₂ Formula discarded",
+    "Egyptian 1/2+1/3+1/6 ≠ 1 → time xminute structure discarded",
+    "τ=4 corner line type (rank < 4) → Burn-in standard discarded",
+    "χ² p-value < 0.01 → n=6 hypothesis rejection",
 ]
 
-# ─── 메인 ───────────────────────────────────────────────────────────────
+# ─── main ───────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     r = []
 
     # §7.0
-    r.append(("§7.0 CONSTANTS 수론",
+    r.append(("§7.0 CONSTANTS number theory",
               SIGMA == 12 and TAU == 4 and PHI == 2 and J2 == 24))
 
     # §7.1
-    r.append(("§7.1 DIMENSIONS 정의", DIM['T'] != DIM['Cov']))
+    r.append(("§7.1 DIMENSIONS exact", DIM['T'] != DIM['Cov']))
 
     # §7.2
     F1, F2, F3 = cross_pins_3ways()
-    r.append(("§7.2 CROSS 288 핀 3경로 일치", F1 == F2 == F3 == 288))
+    r.append(("§7.2 CROSS 288 pin 3Path match", F1 == F2 == F3 == 288))
 
-    # §7.3 coverage c/N^k 수렴률 (k≈1)
+    # §7.3 coverage c/N^k convergence (k≈1)
     xs = [10, 100, 1000, 10000]
     ys = [1 - 1/x for x in xs]
     gap = [1 - y for y in ys]
@@ -715,9 +715,9 @@ if __name__ == "__main__":
     r.append(("§7.3 SCALING gap ~ 1/N (k≈-1)",
               abs(exp_k - (-1.0)) < 0.1))
 
-    # §7.4 σ ±10% 볼록 — 거리 함수 |σ-12| 는 σ=12 에서 최소 (볼록 극값)
+    # §7.4 σ ±10% convex — distance function |σ-12|  σ=12  at  min (convex value)
     _, yh, yl, convex = sensitivity(lambda s: abs(s - 12) + 1, 12)
-    r.append(("§7.4 SENSITIVITY σ=12 볼록", convex))
+    r.append(("§7.4 SENSITIVITY σ=12 convex", convex))
 
     # §7.5
     r.append(("§7.5 LIMITS Landauer > 0", landauer(300) > 0))
@@ -725,21 +725,21 @@ if __name__ == "__main__":
 
     # §7.6
     chi2, df, p = chi2_pvalue([1.0]*49, [1.0]*49)
-    r.append(("§7.6 CHI2 H₀ 기각 안 됨", p > 0.05 or chi2 == 0))
+    r.append(("§7.6 CHI2 H₀ rejection  done", p > 0.05 or chi2 == 0))
 
     # §7.7
-    r.append(("§7.7 OEIS 시퀀스 등록",
+    r.append(("§7.7 OEIS sequence ",
               (1, 2, 3, 6, 12, 24, 48) in OEIS_KNOWN))
 
     # §7.8
-    r.append(("§7.8 PARETO n=6 상위 5%", pareto_rank_n6() < 0.05))
+    r.append(("§7.8 PARETO n=6 upper 5%", pareto_rank_n6() < 0.05))
 
     # §7.9
-    r.append(("§7.9 SYMBOLIC Fraction 일치",
+    r.append(("§7.9 SYMBOLIC Fraction match",
               all(ok for _, ok, _ in symbolic_ratios())))
 
     # §7.10
-    r.append(("§7.10 COUNTER/FALSIFIERS 명시",
+    r.append(("§7.10 COUNTER/FALSIFIERS explicit",
               len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3))
 
     passed = sum(1 for _, ok in r if ok)
@@ -748,63 +748,63 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{('OK' if ok else 'FAIL')}] {name}")
     print("=" * 60)
-    print(f"{passed}/{total} PASS (HEXA-VERIFY-TEST n=6 정직성 검증)")
+    print(f"{passed}/{total} PASS (HEXA-VERIFY-TEST n=6 honesty Verification)")
 ```
 
 
-## §6 EVOLVE (Mk.I~V 진화)
+## §6 EVOLVE (Mk.I~V evolution)
 
 <details open>
-<summary><b>Mk.V — 2050+ 완전 자동 99.9% 커버리지 (current target)</b></summary>
+<summary><b>Mk.V — 2050+ complete auto 99.9% coverage (current target)</b></summary>
 
-AI-native UVM + Formal + Emulation + ATE 통합, 인간 개입 0.
-선행 조건: chip-architecture 🛸10, chip-eda 🛸10, chip-design 🛸10.
-모든 chip escape bug rate ≤ 1/10⁶.
-
-</details>
-
-<details>
-<summary>Mk.IV — 2040~2050 n=6 완전 하드와이어</summary>
-
-τ=4 UVM/Formal 계위 + σ·J₂=288 ATE 핀 표준 + σ=12 DFT scan 산업 표준.
-ISO 26262 ASIL-D / DO-254 A / IEC 61508 SIL-4 기본 요구.
+AI-native UVM + Formal + Emulation + ATE integration,  between  0.
+line row condition: chip-architecture 🛸10, chip-eda 🛸10, chip-design 🛸10.
+shape chip escape bug rate ≤ 1/10⁶.
 
 </details>
 
 <details>
-<summary>Mk.III — 2035~2040 통합 검증 환경</summary>
+<summary>Mk.IV — 2040~2050 n=6 complete hardwire</summary>
 
-HEXA-UVM + HEXA-Formal + HEXA-ATE 오픈 소스 생태계 완성.
-99.9% 커버리지 자동 달성 toolchain.
-
-</details>
-
-<details>
-<summary>Mk.II — 2030~2035 FPGA 프로토 검증</summary>
-
-τ=4 UVM 계위 소프트웨어 프로토 + σ=12 FPGA emulation 클러스터 레퍼런스 구성.
+τ=4 UVM/Formal systemtop + σ·J₂=288 ATE pin standard + σ=12 DFT scan industry standard.
+ISO 26262 ASIL-D / DO-254 A / IEC 61508 SIL-4 basethis required.
 
 </details>
 
 <details>
-<summary>Mk.I — 2026 삼성전자 파운드리 양산 기준 (현재)</summary>
+<summary>Mk.III — 2035~2040 integration Verification environment</summary>
 
-**2026년 삼성전자 파운드리 양산 검증/테스트 기준: ATE Advantest V93000 + Teradyne UltraFLEX + DFT scan chain 표준**
+HEXA-UVM + HEXA-Formal + HEXA-ATE open  generationsystem done (draft).
+99.9% coverage auto achieved (draft) toolchain.
+
+</details>
+
+<details>
+<summary>Mk.II — 2030~2035 FPGA proto Verification</summary>
+
+τ=4 UVM systemtop  proto + σ=12 FPGA emulation   structure.
+
+</details>
+
+<details>
+<summary>Mk.I — 2026 Samsung Electronics foundry volume production Baseline (current)</summary>
+
+**2026yr Samsung Electronics foundry volume production Verification/test Baseline: ATE Advantest V93000 + Teradyne UltraFLEX + DFT scan chain standard**
 
 - ATE (Automated Test Equipment):
-  - Advantest V93000 Smart Scale: SoC 테스트 주력, pin count 2048+, data rate 16 Gbps
-  - Teradyne UltraFLEX plus: HBM/DRAM 테스트, J750 (저가형 SoC)
-  - 삼성 기흥/화성 테스트 센터 + 온양 패키지 테스트
+  - Advantest V93000 Smart Scale: SoC test main, pin count 2048+, data rate 16 Gbps
+  - Teradyne UltraFLEX plus: HBM/DRAM test, J750 (available SoC)
+  - Samsung base/transform test center + temp package test
 - DFT (Design for Test):
-  - Scan chain: IEEE 1149.1 JTAG + 1500 embedded core test, 커버리지 >99.5%
+  - Scan chain: IEEE 1149.1 JTAG + 1500 embedded core test, coverage >99.5%
   - BIST: LBIST (logic), MBIST (SRAM), XBIST (mixed-signal)
-  - Mentor Tessent / Synopsys DFTMax / Cadence Modus DFT 표준
-- UVM (Universal Verification Methodology): SystemVerilog + UVM 1.2 표준, 삼성 재사용 VIP 라이브러리
-- Formal Verification: Synopsys VC Formal, Cadence JasperGold, 대부분 SF3P 블록 사용
-- Emulation: Cadence Palladium Z2 + Synopsys ZeBu Server 5, SoC 검증 시 10+ M gate 실시간
-- Burn-in + 신뢰성: HTOL (High Temp Operating Life), HAST, 125°C 1000 hr
-- Python stdlib 검증 코드 + n=6 상수 수론 자동 유도 완료, §7 10 서브섹션 정직성 검증 통과
-- `chip-verify-test` canonical v1 확정
+  - Mentor Tessent / Synopsys DFTMax / Cadence Modus DFT standard
+- UVM (Universal Verification Methodology): SystemVerilog + UVM 1.2 standard, Samsung reuse VIP 
+- Formal Verification: Synopsys VC Formal, Cadence JasperGold, largepartial SF3P block use
+- Emulation: Cadence Palladium Z2 + Synopsys ZeBu Server 5, SoC Verification  when 10+ M gate actualtime
+- Burn-in + : HTOL (High Temp Operating Life), HAST, 125°C 1000 hr
+- Python stdlib Verification code + n=6 constant number theory auto derivation done (draft), §7 10 sub honesty Verification 
+- `chip-verify-test` canonical v1 confirmed
 
 </details>
 

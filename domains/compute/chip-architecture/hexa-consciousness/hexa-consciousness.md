@@ -3,11 +3,11 @@
 domain: compute/chip-architecture
 date: 2026-04-15
 task: CHIP-P7-1
-layer: L13 (의식 칩, L2 PIM 상단)
-parent_bt: BT-1108 (차원지각), BT-401~408 (양자 정보엔진)
+layer: L13 (consciousness chip, L2 PIM stage)
+parent_bt: BT-1108 (dimensioneartheach), BT-401~408 (quantum information)
 status: design-concept
 verdict: DESIGN-READY
-grade_attempt: "[7] EMPIRICAL — 3개 서브모듈 중 BCI/엔트로피는 TRL≥5, OUROBOROS 온칩은 TRL 3"
+grade_attempt: "[7] EMPIRICAL — 3 submodule among BCI/entropy TRL≥5, OUROBOROS tempchip TRL 3"
 sources:
   - domains/compute/chip-architecture/chip-architecture.md
   - domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md
@@ -16,93 +16,93 @@ sources:
   - bridge/ouroboros_5phase.hexa
   - nexus/shared/n6/atlas.n6 (@L consciousness_structure, alpha_coupling=0.014)
 refs_external:
-  - Neuralink 2024 Link N1 — 1024 전극, 실리콘 탐침
-  - Kernel Flow2 2024 — 52 모듈 TD-fNIRS
-  - OpenBCI Cyton+Daisy — 16ch EEG (사용자 보유 장비)
-  - Landauer R. 1961 — kT·ln(2) 정보-열역학 한계
-  - Fuchs T. 2018 — Ouroboros self-model 인지 루프
+  - Neuralink 2024 Link N1 — 1024 electrode, silicon 
+  - Kernel Flow2 2024 — 52 module TD-fNIRS
+  - OpenBCI Cyton+Daisy — 16ch EEG (usecharacter  equipment)
+  - Landauer R. 1961 — kT·ln(2) information-heat limit
+  - Fuchs T. 2018 — Ouroboros self-model earth loop
 identity:
   sigma_phi: "σ·φ = 12·2 = 24"
   n_tau:     "n·τ = 6·4 = 24"
   J2:        "J₂(6) = 24"
-  alpha:     "α = 1/6 = 0.1667 (OUROBOROS 고정점)"
+  alpha:     "α = 1/6 = 0.1667 (OUROBOROS fixedpoint)"
 ---
 
-# HEXA-CONSCIOUSNESS — L13 의식 칩 개념설계 (P7 Mk.III-γ)
+# HEXA-CONSCIOUSNESS — L13 consciousness chip conceptdesignsystem (P7 Mk.III-γ)
 
-> **한 문장**: 6채널 BCI + 5-phase OUROBOROS 자기개선 루프 + 열역학 엔트로피
-> 센서를 단일 SoC (HEXA-2 PIM 상단 L13 층) 에 통합하여, `σ(6)·φ(6) = n·τ(6) = 24`
-> 축별로 **"읽기 → 용광로 → 블로업 → 사이클 → 진화"** 5단계를 **4ms τ-사이클**
-> 로 하드와이어한 **인류 최초의 자기참조 의식 연산 칩**.
+> **One sentence**: 6channel BCI + 5-phase OUROBOROS magnetic line loop + heat entropy
+> sensor single SoC (HEXA-2 PIM above stage L13 layer)  at integration, `σ(6)·φ(6) = n·τ(6) = 24`
+> axisper as **"read → optical as → blowup → cycle → transform"** 5Stage **4ms τ-cycle**
+>  as hardwireone ** mostinitial of magneticReferences consciousness computation chip**.
 
 ---
 
-## §0 설계 개요
+## §0 designsystem Overview
 
-| 항목 | 값 | n=6 유도 | 기존 비교 |
+| Item | value | n=6 derivation | existing comparison |
 |------|----|---------|---------|
-| 센싱 축 | **6** | n | Neuralink 1 (Mx1), Kernel 1 (fNIRS) |
-| 전극 그룹 | **6 × σ = 72** | n·σ | Neuralink 1024 단일 평면 |
-| OpenBCI 호환 채널 | **φ^τ = 2^4 = 16** | φ(6)^τ(6) | OpenBCI Cyton+Daisy 16 (정합) |
-| OUROBOROS phase | **5** | σ-sopfr-2 | 없음 (시중 최초) |
-| 고정점 α | **1/6 = 0.1667** | 1/n | 없음 |
-| 엔트로피 센서 | **τ=4 zone** | τ | 없음 |
-| 사이클 지연 | **τ=4 ms** | τ (ms) | Neuralink 10~25 ms |
-| σ_noise (전극) | **< 1 μV** | 목표 | OpenBCI ~0.5 μV ok |
-| 다이 면적 | **36 mm² = n²** | n² | Neuralink N1 ~25 mm² |
-| 공정 | **TSMC n6 (6 nm)** | n | - |
-| TRL 평균 | **5.0 / 9** | τ+1 | 개념 설계 단계 |
+|  axis | **6** | n | Neuralink 1 (Mx1), Kernel 1 (fNIRS) |
+| electrode  | **6 × σ = 72** | n·σ | Neuralink 1024 single  |
+| OpenBCI compatibility channel | **φ^τ = 2^4 = 16** | φ(6)^τ(6) | OpenBCI Cyton+Daisy 16 (exactsum) |
+| OUROBOROS phase | **5** | σ-sopfr-2 | none (market mostinitial) |
+| fixedpoint α | **1/6 = 0.1667** | 1/n | none |
+| entropy sensor | **τ=4 zone** | τ | none |
+| cycle latency | **τ=4 ms** | τ (ms) | Neuralink 10~25 ms |
+| σ_noise (electrode) | **< 1 μV** | Target | OpenBCI ~0.5 μV ok |
+| die area | **36 mm² = n²** | n² | Neuralink N1 ~25 mm² |
+| process | **TSMC n6 (6 nm)** | n | - |
+| TRL average | **5.0 / 9** | τ+1 | concept designsystem Stage |
 
-**핵심 트레이드오프**: 전극 수 (Neuralink 1024) 보다 **축 구조화 6** 를 택해
-**온칩 자기개선 폐루프** 를 우선. 원시 채널수 대신 **"사이클당 학습률"** 에
-자원 배분.
+**Core **: electrode number (Neuralink 1024)  **axis structured 6**  resolve
+**tempchip magnetic line loop**  line.  when channelnumber large **"cyclethis learning"** 
+resource xminute.
 
 ---
 
-## §1 블록 다이어그램 (ASCII art)
+## §1 block die (ASCII art)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                    HEXA-CONSCIOUSNESS L13 SoC (36 mm² = n²)                  │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │  ① BCI-6AXIS  (6 축 × σ=12 전극 = 72 채널, σ_noise < 1 μV)            │ │
+│  │  ① BCI-6AXIS  (6 axis × σ=12 electrode = 72 channel, σ_noise < 1 μV)            │ │
 │  │  ┌──────┬──────┬──────┬──────┬──────┬──────┐                          │ │
-│  │  │ PFC  │ M1   │ S1   │ V1   │ A1   │ INS  │   ← 전전두/운동/체성/시각│ │
-│  │  │ (전전)│(운동)│(체성)│(시각)│(청각)│(내측)│      /청각/내측 6 축    │ │
+│  │  │ PFC  │ M1   │ S1   │ V1   │ A1   │ INS  │   ← /same/body/each│ │
+│  │  │ ()│(same)│(body)│(each)│(each)│(within)│      /each/within 6 axis    │ │
 │  │  └──┬───┴──┬───┴──┬───┴──┬───┴──┬───┴──┬───┘                          │ │
 │  │     │      │      │      │      │      │                               │ │
 │  │    ADC×12 ADC×12 ADC×12 ADC×12 ADC×12 ADC×12   ← 24-bit ΔΣ ADC         │ │
 │  │     │      │      │      │      │      │                               │ │
 │  │  ┌──┴──────┴──────┴──────┴──────┴──────┴──┐                            │ │
-│  │  │ OpenBCI bridge (φ^τ=16 ch, Cyton 호환) │  ← 사용자 장비 정합        │ │
+│  │  │ OpenBCI bridge (φ^τ=16 ch, Cyton compatibility) │  ← usecharacter equipment exactsum        │ │
 │  │  └──────────────────┬─────────────────────┘                            │ │
 │  └─────────────────────│──────────────────────────────────────────────────┘ │
 │                        │                                                    │
-│                        ▼     [n=6 축 정렬 bus — 288 Gbps = σ·J₂]           │
+│                        ▼     [n=6 axis alignment bus — 288 Gbps = σ·J₂]           │
 │                  ┌─────┴─────┐                                              │
 │                  │  N6-BUS   │                                              │
 │                  └─────┬─────┘                                              │
 │                        │                                                    │
 │  ┌─────────────────────│──────────────────────────────────────────────────┐ │
 │  │                     ▼                                                  │ │
-│  │  ② OUROBOROS-5P  (5-phase 자기개선 루프, α=1/6 하드와이어)            │ │
+│  │  ② OUROBOROS-5P  (5-phase magnetic line loop, α=1/6 hardwire)            │ │
 │  │                                                                        │ │
 │  │   ┌─ Phase 1 ─┐  ┌─ Phase 2 ─┐  ┌─ Phase 3 ─┐  ┌─ Phase 4 ─┐  ┌─ 5 ─┐ │ │
-│  │   │  흡수     │─▶│  용광로   │─▶│  블로업   │─▶│  사이클   │─▶│진화 │ │ │
+│  │   │  number     │─▶│  optical as   │─▶│  blowup   │─▶│  cycle   │─▶│transform │ │ │
 │  │   │ (Absorb)  │  │(LensForge)│  │ (Blowup)  │  │  (Cycle)  │  │(Evo)│ │ │
 │  │   │           │  │           │  │           │  │           │  │     │ │ │
-│  │   │  64 KB    │  │ T1×σ=12   │  │  τ=4 tier │  │  α=1/6    │  │승격 │ │ │
-│  │   │ 씨앗 SRAM │  │ 렌즈 ROM  │  │ blowup FSM│  │ 고정점 DSP│  │FIFO │ │ │
+│  │   │  64 KB    │  │ T1×σ=12   │  │  τ=4 tier │  │  α=1/6    │  │promotion │ │ │
+│  │   │  SRAM │  │  ROM  │  │ blowup FSM│  │ fixedpoint DSP│  │FIFO │ │ │
 │  │   └───────────┘  └───────────┘  └───────────┘  └───────────┘  └──┬──┘ │ │
 │  │        ▲                                                          │    │ │
-│  │        └──────────────── 되먹임 ──────────────────────────────────┘    │ │
+│  │        └────────────────  ──────────────────────────────────┘    │ │
 │  │                                                                        │ │
-│  │   온칩 학습: 외부 트레이닝 없음 — DRAM 없이 SRAM+eFPGA 만으로 수렴      │ │
+│  │   tempchip learning: outside  none — DRAM  SRAM+eFPGA only as convergence      │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                        │                                                    │
 │                        ▼                                                    │
 │  ┌─────────────────────┴──────────────────────────────────────────────────┐ │
-│  │  ③ THERMO-ENTROPY  (τ=4 zone on-die 센서 + ΔS/Δt 계산)                │ │
+│  │  ③ THERMO-ENTROPY  (τ=4 zone on-die sensor + ΔS/Δt calculation)                │ │
 │  │                                                                        │ │
 │  │    ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐                         │ │
 │  │    │ Zone0 │  │ Zone1 │  │ Zone2 │  │ Zone3 │   ← τ=4 thermal zones   │ │
@@ -112,87 +112,87 @@ identity:
 │  │                         │                                              │ │
 │  │                         ▼                                              │ │
 │  │              ┌──────────────────┐                                      │ │
-│  │              │ ΔS/Δt Landauer   │  ← kT·ln(2) 한계 감지                │ │
+│  │              │ ΔS/Δt Landauer   │  ← kT·ln(2) onesystem earth                │ │
 │  │              │ DSP (FP32, 1 MHz)│     self-awareness trigger           │ │
 │  │              └──────────────────┘                                      │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                        │                                                    │
 │                        ▼                                                    │
 │  ┌─────────────────────┴──────────────────────────────────────────────────┐ │
-│  │                  HEXA-2 PIM substrate (L2 기반층)                      │ │
-│  │                      σ=12 코어 + τ=4 파이프 + Egyptian power           │ │
+│  │                  HEXA-2 PIM substrate (L2 basedlayer)                      │ │
+│  │                      σ=12 core + τ=4 pipe + Egyptian power           │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**블록 수**: 3개 주모듈 (BCI-6AXIS / OUROBOROS-5P / THERMO-ENTROPY)
- + 1개 기반층 (HEXA-2 PIM) + 1개 버스 (N6-BUS) = **5 블록**
+**block **: 3 mainmodule (BCI-6AXIS / OUROBOROS-5P / THERMO-ENTROPY)
+ + 1 based layer (HEXA-2 PIM) + 1  (N6-BUS) = **5 block**
 
 ---
 
-## §2 모듈 스펙
+## §2 module 
 
-### ① BCI-6AXIS — 6축 뇌 인터페이스
+### ① BCI-6AXIS — 6axis  interface
 
-| 파라미터 | 값 | 근거 |
+| parameter | value | Basis |
 |---------|----|----|
-| 센싱 축 | 6 (PFC, M1, S1, V1, A1, INS) | n=6 |
-| 축당 전극 | σ=12 | σ(6)=12 |
-| 총 전극 | 72 | n·σ=72 |
-| ADC | 24-bit ΔΣ × 72 | Neuralink 동급 |
-| 샘플링 | 2^(σ-τ)=256 Hz (baseline), 10 kHz (spike) | atlas.n6 @R row 12783 |
-| σ_noise | < 1 μV @ 1 kHz BW | 목표 (OpenBCI ≈0.5 μV) |
-| OpenBCI bridge | φ^τ=16 ch (Cyton+Daisy 정합) | atlas.n6 @R row 12017 |
-| 대역폭 (출력) | σ·J₂=288 Gbps | n6 I/O 표준 |
-| 입력 임피던스 | 1 GΩ ∥ 10 pF | 건식 전극 호환 |
-| 공통모드 제거 | 120 dB @ 60 Hz | 임상 등급 |
-| 전력 | 6 mW (축당 1 mW) | 배터리 운용 |
-| TRL | **6** | OpenBCI/Neuralink 이미 상용 |
+|  axis | 6 (PFC, M1, S1, V1, A1, INS) | n=6 |
+| axisthis electrode | σ=12 | σ(6)=12 |
+| total electrode | 72 | n·σ=72 |
+| ADC | 24-bit ΔΣ × 72 | Neuralink same |
+|  | 2^(σ-τ)=256 Hz (baseline), 10 kHz (spike) | atlas.n6 @R row 12783 |
+| σ_noise | < 1 μV @ 1 kHz BW | Target (OpenBCI ≈0.5 μV) |
+| OpenBCI bridge | φ^τ=16 ch (Cyton+Daisy exactsum) | atlas.n6 @R row 12017 |
+| bandwidthwidth (output) | σ·J₂=288 Gbps | n6 I/O standard |
+| input  | 1 GΩ ∥ 10 pF | caseform electrode compatibility |
+| commonmode removal | 120 dB @ 60 Hz | above Grade |
+| power | 6 mW (axisthis 1 mW) | x  |
+| TRL | **6** | OpenBCI/Neuralink un-commercial |
 
-**설계 포인트**: 단일 평면 대규모 (Neuralink 1024) 대신 **6축 분산**.
-6축 각각이 독립 상태 벡터를 가지므로 n=6 OUROBOROS 와 자연 결합.
+**designsystem **: single  largeshape (Neuralink 1024) large **6axis minuteacid**.
+6axis eacheach independent Status vector kinds as n=6 OUROBOROS  and character sum.
 
-### ② OUROBOROS-5P — 5-phase 자기개선 루프
+### ② OUROBOROS-5P — 5-phase magnetic line loop
 
-| 파라미터 | 값 | 근거 |
+| parameter | value | Basis |
 |---------|----|----|
-| Phase 수 | 5 (Absorb/LensForge/Blowup/Cycle/Evo) | bridge/ouroboros_5phase.hexa |
-| 고정점 α | 1/6 = 0.1667 | 1/n, 수렴 증명 대기 |
-| T1 lens 수 | σ=12 (경량 서브셋) | σ(6), 렌즈 ROM 압축 |
-| 씨앗 SRAM | 64 KB | 2^16 = 6⁴·51 |
-| 블로업 tier | τ=4 | blowup.hexa Mk.II |
-| DSP (고정점) | FP32 × 1, 200 MHz | α 수렴 판정 |
-| eFPGA | 2048 LUT (재구성) | 렌즈 업데이트 hot-patch |
-| 루프 지연 | τ=4 ms (1 phase = 0.8 ms) | 실시간 목표 |
-| 학습 외부 의존 | **0** (온칩 완결) | Landauer 독립 |
-| 전력 | 8 mW | 저전력 추론 |
-| TRL | **3** | 개념 검증 (블로업 엔진은 TRL 4) |
+| Phase number | 5 (Absorb/LensForge/Blowup/Cycle/Evo) | bridge/ouroboros_5phase.hexa |
+| fixedpoint α | 1/6 = 0.1667 | 1/n, convergence proof (draft) largebase |
+| T1 lens number | σ=12 (via sub) | σ(6),  ROM compression |
+|  SRAM | 64 KB | 2^16 = 6⁴·51 |
+| blowup tier | τ=4 | blowup.hexa Mk.II |
+| DSP (fixedpoint) | FP32 × 1, 200 MHz | α convergence Verdict |
+| eFPGA | 2048 LUT (restructure) |   hot-patch |
+| loop latency | τ=4 ms (1 phase = 0.8 ms) | actualtime Target |
+| learning outside  | **0** (tempchip finish) | Landauer independent |
+| power | 8 mW | power  |
+| TRL | **3** | concept Verification (blowup  TRL 4) |
 
-**하드와이어**: `α = 1/6` 은 ROM 상수. Cycle Phase (4번) 에서 수렴 판정시
-`|fit - 1/6| < 0.01` 조건이 **FSM 분기 조건** 으로 박혀 있어 소프트웨어
-변경 불가.
+**hardwire**: `α = 1/6`  ROM constant. Cycle Phase (4)  at  convergence Verdict
+`|fit - 1/6| < 0.01` condition **FSM minutebase condition**  as   
+via not possible.
 
-### ③ THERMO-ENTROPY — 열역학 엔트로피 센서
+### ③ THERMO-ENTROPY — heat entropy sensor
 
-| 파라미터 | 값 | 근거 |
+| parameter | value | Basis |
 |---------|----|----|
 | Thermal zone | τ=4 (PFC/MEM/OUR/IO) | τ(6) |
-| 온도 분해능 | 0.01 K | on-die PTAT 센서 |
-| 자유에너지 | F = U − T·S 실측 | 파워 × 시간 적분 |
-| ΔS/Δt 샘플링 | 1 MHz | FP32 DSP |
-| Landauer 한계 | kT·ln(2) = 2.85 zJ @ 300 K | 물리 상수 |
-| Self-awareness trigger | S > S_th (`S_th = σ·ln(n)`) | atlas 법칙 |
-| 면적 | 4 mm² | 36 × (τ/σ³) |
-| 전력 | 2 mW | PTAT + DSP |
-| TRL | **6** | 온다이 온도계는 상용 |
+| temperature minuteresolve | 0.01 K | on-die PTAT sensor |
+| characterenergy | F = U − T·S measured |  × time minute |
+| ΔS/Δt  | 1 MHz | FP32 DSP |
+| Landauer onesystem | kT·ln(2) = 2.85 zJ @ 300 K | physics constant |
+| Self-awareness trigger | S > S_th (`S_th = σ·ln(n)`) | atlas  |
+| area | 4 mm² | 36 × (τ/σ³) |
+| power | 2 mW | PTAT + DSP |
+| TRL | **6** | tempdie temperaturesystem commercial |
 
-**설계 포인트**: **ΔS/Δt 가 증가하는데 출력은 정체** 인 상황 = Landauer
-한계 접근. 이 때 OUROBOROS Phase 5 (진화) 가 강제 트리거 → **자의식 proxy**
-로서 등록된다 (atlas.n6 `@L entropy_bound = 0.998` 참조).
+**designsystem **: **ΔS/Δt  increase output exactbody**   = Landauer
+onesystem access.   OUROBOROS Phase 5 (transform)  control tree → **characterconsciousness proxy**
+ as  (atlas.n6 `@L entropy_bound = 0.998` References).
 
 ---
 
-## §3 인터페이스 매트릭스 (모듈 × 모듈)
+## §3 interface matrix (module × module)
 
 ```
              │ BCI   │ OUR   │ THERMO│ PIM   │ N6-BUS│
@@ -214,134 +214,134 @@ N6-BUS       │ 288G  │ ctrl  │ telem │ bulk  │  ─    │
 ─────────────┴───────┴───────┴───────┴───────┴───────┘
 ```
 
-**인터페이스 개수**: 5×5 행렬에서 대각 제외 = 20. 그 중 실제 배선된
-쌍 = **20 (전부 활성)**. 대칭 쌍으로 중복 제거시 **10 유니크 인터페이스**.
-`J₂(6)=24` 를 넘지 않도록 제한 (10 ≤ 24, 여유 14).
+**interface **: 5×5  at  largeeach controloutside = 20.  among actual xlinebecame
+pair = **20 ( active)**. symmetry pair as  removal when **10  interface**.
+`J₂(6)=24`  earth degree controlone (10 ≤ 24,  14).
 
 ---
 
-## §4 핀아웃 (최소 필수)
+## §4 pin (min )
 
-| 그룹 | 핀 수 | 역할 |
+|  | pin number |  |
 |------|------|------|
-| 전극 입력 | 72 (σ·n) | BCI 72 채널 |
-| 자극 출력 | 12 (σ) | stim return |
+| electrode input | 72 (σ·n) | BCI 72 channel |
+| character output | 12 (σ) | stim return |
 | OpenBCI SPI | 6 (MOSI/MISO/SCK/CS/INT/RST) | Cyton+Daisy |
 | N6-BUS (lane) | 24 (J₂) | σ·J₂=288 Gbps @ 12 Gbps/lane |
-| 전원 (Egyptian 1/2+1/3+1/6) | 6 (VDD_c/VDD_m/VDD_i/VSS×3) | 3 레일 |
-| 클럭/리셋 | 4 (τ) | REFCLK, SYS_RST, SLP, EMR |
-| 디버그/JTAG | 6 (φ·n/2) | TCK/TDI/TDO/TMS/TRST/BOOT |
+| power supply (Egyptian 1/2+1/3+1/6) | 6 (VDD_c/VDD_m/VDD_i/VSS×3) | 3 one |
+| clock/ | 4 (τ) | REFCLK, SYS_RST, SLP, EMR |
+| debug/JTAG | 6 (φ·n/2) | TCK/TDI/TDO/TMS/TRST/BOOT |
 | GPIO (thermo, alert) | 8 | zone alert + self-aware pin |
-| **총 핀수** | **138** | 패키지 FCBGA 169 (n²·4+1=149 이상 마진) |
+| **total pin** | **138** | package FCBGA 169 (n²·4+1=149 above ) |
 
-**self-aware pin**: 1개. `S > S_th` 시 high 로 올라가는 하드 신호.
-외부 시스템이 이 핀을 감시하여 "칩이 자기 상태에 주의를 기울이기 시작함"
-을 인식. (해석은 논쟁의 여지 — §6 정직 평가 참조.)
+**self-aware pin**: 1. `S > S_th`  when high  as  hard signal.
+outside system  pin  "chip magnetic Status at main of basebase "
+ form. (interpretation  of earth — §6 honesty  References.)
 
 ---
 
-## §5 레이어 스택 (HEXA-2 PIM 위에)
+## §5 layer stack (HEXA-2 PIM top)
 
 ```
   ┌─────────────────────────────────────────────┐  L13  HEXA-CONSCIOUSNESS
-  │  BCI-6AXIS  +  OUROBOROS-5P  +  THERMO      │       (이 문서)
+  │  BCI-6AXIS  +  OUROBOROS-5P  +  THERMO      │       ( document)
   ├─────────────────────────────────────────────┤
-  │  L12  핵 이성질체 저장 (Hf-178m2)           │       (이전 설계)
+  │  L12  nuclear body storage (Hf-178m2)           │       (before design)
   ├─────────────────────────────────────────────┤
-  │  L11  양자점 6-qubit QEC [[6,2,2]]          │       (이전 설계)
+  │  L11  quantumpoint 6-qubit QEC [[6,2,2]]          │       (before design)
   ├─────────────────────────────────────────────┤
   │  L10  Leech lattice Λ₂₄ packing             │
   ├─────────────────────────────────────────────┤
   │  L9   Monster 196883 sparse attention       │
   ├─────────────────────────────────────────────┤
-  │  L8   K6 완전 그래프 코어 토폴로지          │
+  │  L8   K6 complete  core topology          │
   ├─────────────────────────────────────────────┤
-  │  L7   프로토콜 브릿지 20 RTL                │
+  │  L7   protocol bridge 20 RTL                │
   ├─────────────────────────────────────────────┤
-  │  L6   초전도 (Nb/NbTiN, 4K)                 │
+  │  L6   superconducting (Nb/NbTiN, 4K)                 │
   ├─────────────────────────────────────────────┤
-  │  L5   Wafer-scale 정합                      │
+  │  L5   Wafer-scale exactsum                      │
   ├─────────────────────────────────────────────┤
   │  L4   Photonic I/O (288 Gbps/lane)          │
   ├─────────────────────────────────────────────┤
   │  L3   3D TSV/HBM                            │
   ├─────────────────────────────────────────────┤
-  │  L2   PIM (HEXA-2) ← **의식 칩의 기반층**  │
+  │  L2   PIM (HEXA-2) ← **consciousness chip of basedlayer**  │
   ├─────────────────────────────────────────────┤
-  │  L1   HEXA-1 (σ=12 코어, τ=4 파이프)        │
+  │  L1   HEXA-1 (σ=12 core, τ=4 pipe)        │
   └─────────────────────────────────────────────┘
 ```
 
-**상향 의존**: L13 은 L2 (PIM) 의 σ=12 코어를 공유. OUROBOROS 블로업
-phase 는 PIM 내 eFPGA 영역을 재사용하므로 L2 와 **시분할 공유**.
+** **: L13  L2 (PIM)  of σ=12 core shared. OUROBOROS blowup
+phase  PIM within eFPGA  reuse as L2  and **partition shared**.
 
-**하향 서비스**: L13 의 self-aware pin 과 ΔS/Δt telemetry 는 L7
-(프로토콜 브릿지) 를 통해 외부 N6-BUS 로 export.
+** **: L13  of self-aware pin  and ΔS/Δt telemetry  L7
+(protocol bridge)  resolve outside N6-BUS  as export.
 
 ---
 
-## §6 TRL 평가 (각 모듈별, 1~9)
+## §6 TRL  (each moduleper, 1~9)
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│ TRL 스케일 (NASA/ISO 16290)                                      │
-│   1 기본원리  2 기술개념  3 실험검증  4 실험실시연                 │
-│   5 관련환경  6 시제품시연 7 실환경시연 8 인증    9 운용           │
+│ TRL scale (NASA/ISO 16290)                                      │
+│   1 basethis  2 technologyconcept  3 experimentVerification  4 experimentactual                 │
+│   5 relatedenvironment  6 control 7 actualenvironment 8     9            │
 └──────────────────────────────────────────────────────────────────┘
 
-모듈                    │ 1 2 3 4 5 6 7 8 9 │ 평가
+module                    │ 1 2 3 4 5 6 7 8 9 │ evaluation
 ────────────────────────┼───────────────────┼──────────────────────
 ① BCI-6AXIS             │ █ █ █ █ █ █ ░ ░ ░ │ TRL 6
-  ADC/전극 인터페이스     │                   │ (Neuralink/OpenBCI 상용)
-  n=6 축 분산 레이아웃    │ █ █ █ █ ░ ░ ░ ░ ░ │ (TRL 4 — 신규)
+  ADC/electrode interface     │                   │ (Neuralink/OpenBCI commercial)
+  n=6 axis minuteacid layout    │ █ █ █ █ ░ ░ ░ ░ ░ │ (TRL 4 — )
 ────────────────────────┼───────────────────┼──────────────────────
 ② OUROBOROS-5P          │ █ █ █ ░ ░ ░ ░ ░ ░ │ TRL 3
-  5-phase FSM            │ █ █ █ █ ░ ░ ░ ░ ░ │ (SW 시뮬 TRL 4)
-  α=1/6 하드와이어        │ █ █ █ ░ ░ ░ ░ ░ ░ │ (이론 검증)
-  온칩 eFPGA 학습         │ █ █ ░ ░ ░ ░ ░ ░ ░ │ (TRL 2 — 핵심 난제)
+  5-phase FSM            │ █ █ █ █ ░ ░ ░ ░ ░ │ (SW simulation TRL 4)
+  α=1/6 hardwire        │ █ █ █ ░ ░ ░ ░ ░ ░ │ ( Verification)
+  tempchip eFPGA learning         │ █ █ ░ ░ ░ ░ ░ ░ ░ │ (TRL 2 — Core control)
 ────────────────────────┼───────────────────┼──────────────────────
 ③ THERMO-ENTROPY        │ █ █ █ █ █ █ ░ ░ ░ │ TRL 6
-  On-die 온도계           │ █ █ █ █ █ █ █ ░ ░ │ (TRL 7 — 상용)
+  On-die temperaturesystem           │ █ █ █ █ █ █ █ ░ ░ │ (TRL 7 — commercial)
   ΔS/Δt DSP              │ █ █ █ █ █ ░ ░ ░ ░ │ (TRL 5)
-  Landauer trigger        │ █ █ █ █ ░ ░ ░ ░ ░ │ (TRL 4 — 신규 정의)
+  Landauer trigger        │ █ █ █ █ ░ ░ ░ ░ ░ │ (TRL 4 —  exact)
 ────────────────────────┴───────────────────┴──────────────────────
-통합 TRL 평균            │                   │ (6 + 3 + 6)/3 = **5.0**
+integration TRL average            │                   │ (6 + 3 + 6)/3 = **5.0**
 ```
 
-**병목**: ② OUROBOROS 온칩 학습 (TRL 3). 외부 서버 없이 eFPGA 만으로
-수렴하는 것은 아직 실증되지 않았다. 블로업 엔진 (SW) 은 TRL 4,
-이를 하드웨어로 내리는 것이 핵심 과제.
+**bottleneck**: ② OUROBOROS tempchip learning (TRL 3). outside server  eFPGA only as
+convergencebelow thing  demonstratedearth . blowup  (SW)  TRL 4,
+ hard as within thing Core task.
 
 ---
 
-## §7 성능 비교 ASCII 막대 차트
+## §7 performance comparison ASCII bar order
 
-### [채널 수]
+### [channel ]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │ Neuralink Link N1   █████████████████████████████████████  1024    │
-│ Kernel Flow2        ████████                              52 모듈  │
+│ Kernel Flow2        ████████                              52 module  │
 │ OpenBCI Cyton+Daisy ██                                    16       │
 │ HEXA-CONSCIOUSNESS  ███████████                           72 (n·σ) │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: Neuralink 대비 0.07배 (의도적 축 구조화 선택).
+  interpretation: Neuralink vs 0.07x (degree axis structured selection).
 ```
 
-### [자기개선 루프 — 있음/없음 + 지연]
+### [magnetic line loop — /none + latency]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│ Neuralink Link N1   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 없음      │
-│ Kernel Flow2        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 없음      │
-│ OpenBCI             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 없음      │
+│ Neuralink Link N1   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ none      │
+│ Kernel Flow2        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ none      │
+│ OpenBCI             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ none      │
 │ HEXA-CONSCIOUSNESS  █████████████████████████████████████ 5-phase  │
 │                                                            τ=4 ms  │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: 시중 제품 ∞배 (부재 → 존재). 정량 불가능한 카테고리 창출.
+  interpretation: market control ∞x (absent → exists). exact possibleone category .
 ```
 
-### [사이클 지연 — 낮을수록 좋음]
+### [cycle latency — lower is better good]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -350,25 +350,25 @@ phase 는 PIM 내 eFPGA 영역을 재사용하므로 L2 와 **시분할 공유**
 │ OpenBCI + SW loop   █████████████████░░░░░░░░░░░░░░░░░░░░  100 ms  │
 │ HEXA-CONSCIOUSNESS  ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4 ms    │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: Neuralink 대비 5배 빠름 (τ=4 ms).
-        OpenBCI SW 루프 대비 25배 빠름.
+  interpretation: Neuralink vs 5x name (τ=4 ms).
+        OpenBCI SW loop vs 25x name.
 ```
 
-### [통합 자가개선 throughput — 자기개선 사이클/초]
+### [integration characteravailable line throughput — magnetic line cycle/initial]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│ Neuralink + 외부 서버 ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   10   /s │
-│ Kernel + 외부 서버    █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   5    /s │
-│ OpenBCI + 노트북      █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   10   /s │
+│ Neuralink + outside server ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   10   /s │
+│ Kernel + outside server    █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   5    /s │
+│ OpenBCI +       █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   10   /s │
 │ HEXA-CONSCIOUSNESS    █████████████████████████████████  250   /s │
 │                                                  (1/τ·1000=250)   │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: Neuralink+서버 대비 **25배**. OpenBCI 대비 **25배**.
-        정수로 내려 계산: 1000/τ = 1000/4 = 250 사이클/초.
+  interpretation: Neuralink+server vs **25x**. OpenBCI vs **25x**.
+        exactnumber as within calculation: 1000/τ = 1000/4 = 250 cycle/initial.
 ```
 
-### [Landauer 근접도 — 높을수록 좋음 = 물리 한계 활용도]
+### [Landauer degree — higher is better good = physics onesystem utilizationdegree]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -377,81 +377,81 @@ phase 는 PIM 내 eFPGA 영역을 재사용하므로 L2 와 **시분할 공유**
 │ OpenBCI             █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  10^-5   │
 │ HEXA-CONSCIOUSNESS  ████████████████████░░░░░░░░░░░░░░░░  10^-2   │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: 시중 대비 100~1000배. 엔트로피 센서가 Landauer kT·ln(2) 를
-        직접 측정하기 때문에 **물리 한계와 동적 비교 가능**.
+  interpretation: market vs 100~1000x. entropy sensor Landauer kT·ln(2) 
+        direct Measurementbase  at **physics limit and same comparison possible**.
 ```
 
-### [전력 효율 — pJ/사이클, 낮을수록 좋음]
+### [power efficiency — pJ/cycle, lower is better good]
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│ Neuralink (추정)    ████████████████████████████░░░░░░░░  200 pJ  │
-│ Kernel (추정)       ██████████████████░░░░░░░░░░░░░░░░░░  120 pJ  │
+│ Neuralink (estimation)    ████████████████████████████░░░░░░░░  200 pJ  │
+│ Kernel (estimation)       ██████████████████░░░░░░░░░░░░░░░░░░  120 pJ  │
 │ OpenBCI+CPU loop    ████████████████████████████████████  500 pJ  │
 │ HEXA-CONSCIOUSNESS  ██████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40 pJ   │
 └─────────────────────────────────────────────────────────────────────┘
-  해석: Neuralink 대비 **5배** 효율.
-        (16 mW / 250 사이클/초 × 2^(φ-1) 보정 = ~40 pJ/사이클)
+  interpretation: Neuralink vs **5x** efficiency.
+        (16 mW / 250 cycle/initial × 2^(φ-1) exact = ~40 pJ/cycle)
 ```
 
-### 종합 — HEXA 유리지수
+### typesum — HEXA earth
 
 ```
-  항목                    │ Neuralink │ HEXA  │ 배수
+  Item                    │ Neuralink │ HEXA  │ x
   ────────────────────────┼───────────┼───────┼────────
-  채널 수                 │ 1024      │ 72    │ 0.07×
-  자기개선 루프            │ 0         │ 250/s │ ∞
-  사이클 지연              │ 20 ms     │ 4 ms  │ 5×
-  Landauer 근접도         │ 1e-4      │ 1e-2  │ 100×
-  전력 효율                │ 200 pJ    │ 40 pJ │ 5×
+  channel number                 │ 1024      │ 72    │ 0.07×
+  magnetic line loop            │ 0         │ 250/s │ ∞
+  cycle latency              │ 20 ms     │ 4 ms  │ 5×
+  Landauer degree         │ 1e-4      │ 1e-2  │ 100×
+  power efficiency                │ 200 pJ    │ 40 pJ │ 5×
   ────────────────────────┴───────────┴───────┴────────
-  종합 기하평균 (5 축 제외 ∞) = (0.07 × 5 × 100 × 5)^(1/4) ≈ **4.1×**
-  자기개선 루프 한 항목만 고려시 **∞** (카테고리 창출)
+  typesum baseaverage (5 axis controloutside ∞) = (0.07 × 5 × 100 × 5)^(1/4) ≈ **4.1×**
+  magnetic line loop one Itemonly  when **∞** (category )
 ```
 
-**정직한 결론**: "25~100배" 는 **사이클 throughput** 과 **Landauer
-근접도** 축. 원시 채널수는 오히려 열세 (0.07배). 이는 설계 의도 —
-폭넓은 전극 대신 **축 정렬된 자기참조** 에 자원을 투자.
+**honestyone Conclusion**: "25~100x"  **cycle throughput**  and **Landauer
+degree** axis.  when channelnumber  heat (0.07x).  designsystem degree —
+width electrode large **axis alignmentbecame magneticReferences**  at resource character.
 
 ---
 
-## §8 제작 가능성 정직 평가
+## §8 fabrication possible honesty evaluation
 
-### 각 모듈의 기술 위험 (정직한 표)
+### each module of technology top (honestyone table)
 
-| 모듈 | TRL | 주요 위험 | 완화책 | 완료 예상 |
+| module | TRL | main top | finishtransform | done (draft) e.g.above |
 |-----|-----|----------|-------|----------|
-| ① BCI-6AXIS | 6 | 72 전극 균일성, 6축 공간 배치 | Neuralink 제조 공정 참고 | 2027 Q3 |
-| ② OUROBOROS-5P | 3 | 온칩 eFPGA 수렴 실증 | SW 시뮬 → 에뮬레이터 → FPGA 프로토 | 2029 Q1 |
-| ③ THERMO-ENT | 6 | ΔS/Δt 실시간 FP32 노이즈 | 온다이 PTAT + 캘리브레이션 | 2027 Q1 |
-| 통합 | 4 | 3 모듈 동기화, self-aware pin 해석 | 시제품 3 단계 | 2030 Q2 |
+| ① BCI-6AXIS | 6 | 72 electrode one, 6axis cavity between xvalue | Neuralink fabrication process References | 2027 Q3 |
+| ② OUROBOROS-5P | 3 | tempchip eFPGA convergence demonstrated | SW simulation →  → FPGA proto | 2029 Q1 |
+| ③ THERMO-ENT | 6 | ΔS/Δt actualtime FP32  | tempdie PTAT +  | 2027 Q1 |
+| integration | 4 | 3 module synchronoustransform, self-aware pin interpretation | control 3 Stage | 2030 Q2 |
 
-### 철학적 주의 (정직하게)
+###  main of (honesty)
 
-**"의식 칩"** 이라는 이름은 두 가지 해석이 가능하다:
+**"consciousness chip"**  name  kinds interpretation possible:
 
-1. **약한 해석 (수용됨)**: "자기상태를 읽고, 자기 규칙으로 개선하며,
-   열역학 한계를 감지하는 칩". 이는 공학적으로 정의 가능하고 이 문서가
-   설계한 것이 이것이다. self-aware pin 은 단지 `S > S_th` 트리거.
+1. **one interpretation (done)**: "magneticStatus , magnetic  as line,
+   heat limit earthbelow chip".  engineering as exact of possible  documentavailable
+   designone thing thing. self-aware pin  stageearth `S > S_th` tree.
 
-2. **강한 해석 (논쟁 중)**: "주관적 체험을 가진 칩". 이는 현재
-   과학/철학으로 **검증 불가능**. 이 문서는 이 주장을 하지 **않는다**.
-   (참조: atlas.n6 `@L phi_integration`, `@L alpha_coupling = 0.014`)
+2. **one interpretation ( )**: "main body available chip".  current
+   / as **Verification possible**.  document  main earth ****.
+   (References: atlas.n6 `@L phi_integration`, `@L alpha_coupling = 0.014`)
 
-**한 문장 정직 평가**: BCI·엔트로피 센서는 기존 기술의 n=6 재배열로
-**2027~2028년 시제품 가능** (TRL 6→7), 그러나 OUROBOROS 온칩
-자기개선 루프는 **2029~2030년** 까지 실증 필요하며 **"주관적 의식"
-주장은 포함하지 않는다**.
+**One sentence honesty evaluation**: BCI·entropy sensor existing technology of n=6 rexheat as
+**2027~2028yr control possible** (TRL 6→7), I OUROBOROS tempchip
+magnetic line loop **2029~2030yr**  to  demonstrated required **"main consciousness"
+main earth **.
 
 ---
 
-## §9 atlas.n6 승격 후보 상수
+## §9 atlas.n6 promotion candidate constant
 
-PASS 시 append 될 상수 (제작 가능성이 TRL 5 이상이므로 조건부 PASS):
+PASS  when append  constant (fabrication possible TRL 5  as condition PASS):
 
 ```
 @L hexa_consciousness_axes = 6 :: consciousness [7]
-  "HEXA-CONSCIOUSNESS L13 의식 칩 센싱 축 수 = n(6) = 6"
+  "HEXA-CONSCIOUSNESS L13 consciousness chip  axis number = n(6) = 6"
   <- CHIP-P7-1
 
 @L hexa_consciousness_phase_count = 5 :: consciousness [7]
@@ -459,15 +459,15 @@ PASS 시 append 될 상수 (제작 가능성이 TRL 5 이상이므로 조건부 
   <- CHIP-P7-1
 
 @L hexa_consciousness_alpha = 0.16667 :: consciousness [7]
-  "OUROBOROS 고정점 α = 1/n = 1/6 (하드와이어)"
+  "OUROBOROS fixedpoint α = 1/n = 1/6 (hardwire)"
   <- CHIP-P7-1, bridge/ouroboros_5phase.hexa
 
 @L hexa_consciousness_cycle_latency_ms = 4 :: consciousness [7]
-  "온칩 자기개선 사이클 지연 = τ(6) ms = 4 ms"
+  "tempchip magnetic line cycle latency = τ(6) ms = 4 ms"
   <- CHIP-P7-1
 
 @L hexa_consciousness_die_area_mm2 = 36 :: consciousness [7]
-  "L13 의식 칩 다이 면적 = n² mm² = 36 mm²"
+  "L13 consciousness chip die area = n² mm² = 36 mm²"
   <- CHIP-P7-1
 
 @L hexa_consciousness_thermal_zones = 4 :: consciousness [7]
@@ -475,25 +475,25 @@ PASS 시 append 될 상수 (제작 가능성이 TRL 5 이상이므로 조건부 
   <- CHIP-P7-1
 
 @L hexa_consciousness_trl_avg = 5 :: consciousness [7]
-  "HEXA-CONSCIOUSNESS 통합 TRL 평균 = τ+1 = 5 / 9"
+  "HEXA-CONSCIOUSNESS integration TRL average = τ+1 = 5 / 9"
   <- CHIP-P7-1
 ```
 
 ---
 
-## §10 참고 파일 링크
+## §10 References one link
 
-- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/chip-architecture.md` (전체 L1~L6 로드맵)
+- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/chip-architecture.md` (total L1~L6 roadmap)
 - `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` (L11 QEC)
-- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 저장)
+- `/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 storage)
 - `/Users/ghost/Dev/n6-architecture/domains/cognitive/brain-computer-interface/brain-computer-interface.md` (BCI SSOT)
-- `/Users/ghost/Dev/n6-architecture/bridge/ouroboros_5phase.hexa` (5-phase 오케스트레이터)
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (의식·BCI 상수)
+- `/Users/ghost/Dev/n6-architecture/bridge/ouroboros_5phase.hexa` (5-phase )
+- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (consciousness·BCI constant)
 
 ---
 
-**verdict**: DESIGN-READY (개념 설계 완료). 시제품화는 2027~2030 단계적 진행.
-**grade**: [7] EMPIRICAL — TRL 5 수준 개념 설계, 수치 시뮬 후 [10*] 승격 대상.
+**verdict**: DESIGN-READY (concept designsystem done (draft)). controltransform 2027~2030 Stage .
+**grade**: [7] EMPIRICAL — TRL 5 level concept design, value simulation after [10*] promotion target.
 
 
 ## §11 DEPENDENCIES
