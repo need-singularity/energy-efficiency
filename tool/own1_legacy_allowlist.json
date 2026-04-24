@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 42,
+    "count": 41,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -455,7 +455,6 @@
     "domains/compute/hexa-ios/hexa-ios.md",
     "domains/compute/hexa-mram/hexa-mram.md",
     "domains/compute/hexa-netproto/hexa-netproto.md",
-    "domains/compute/hexa-one/hexa-one.md",
     "domains/compute/hexa-pim/hexa-pim.md",
     "domains/compute/hexa-proglang/hexa-proglang.md",
     "domains/compute/hexa-super/hexa-super.md",
@@ -478,5 +477,15 @@
     "theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md",
     "theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md",
     "theory/roadmap-v2/round-03-emergence-saturation.md"
+  ],
+  "shrink_history": [
+    {
+      "phase": "phase-6-D-B12-hexa-one",
+      "date": "2026-04-25",
+      "removed": [
+        "domains/compute/hexa-one/hexa-one.md"
+      ],
+      "count_after": 41
+    }
   ]
 }
