@@ -6,313 +6,314 @@ requires:
 ---
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, VALIDATION, PREDICTIONS, COMPARE-DETAIL, ARCHITECTURE, FLOW-DETAIL, UPGRADE, METHOD], strict=false, order=sequential, prefix="S") -->
 
-# AI 적대적 강건성 연구 (Anthropic Fellows 2026)
+# AI Adversarial Robustness Research (Anthropic Fellows 2026)
 
-## S1 WHY (왜 적대적 강건성인가 -- 배포 안전의 핵심)
+## S1 WHY (why adversarial robustness -- core of deployment safety)
 
-AI 시스템은 현실 세계에서 공격에 직면한다. 탈옥(jailbreak), 프롬프트 주입(prompt injection),
-기만적 행동(deceptive alignment) -- 이런 공격을 방어하지 못하면 배포는 안전하지 않다.
+AI systems face attacks in the real world. Jailbreaks, prompt injections,
+deceptive alignment -- without defending against these, deployment is not safe.
 
-적대적 강건성은 AI 안전의 실무 계층이다. 정렬(alignment) 이론이 "무엇이 옳은가"를 다룬다면,
-강건성은 "공격자가 틀린 행동을 유도할 때 어떻게 버티는가"를 다룬다.
+Adversarial robustness is the practical layer of AI safety. Where alignment theory
+addresses "what is right", robustness addresses "how to hold up when the attacker
+induces wrong behavior".
 
-| 문제 영역 | 현재 상황 (2026) | 연구 목표 |
+| Problem area | Current (2026) | Research target |
 |----------|----------------|----------|
-| 안전 평가 | 수동 레드팀, 비체계적 | 자동화된 체계적 안전 경계 탐색 |
-| 기만 탐지 | 행동 기반 추론만 가능 | 내부 표상과 외부 행동 비교 분석 |
-| 에이전트 안전 | 도구 사용 시 검증 미흡 | 샌드박싱, 감사추적, 권한 상승 탐지 |
-| 안전 아키텍처 | 후처리 필터 의존 | 구조적으로 안전한 설계 원칙 |
+| Safety evaluation | manual red team, non-systematic | automated systematic safety-boundary exploration |
+| Deception detection | behavior-only inference | internal-representation vs external-behavior comparison |
+| Agent safety | tool use under-verified | sandboxing, audit trail, privilege-escalation detection |
+| Safety architecture | dependent on post-processing filters | structurally safe design principles |
 
-**핵심 질문**: 공격 성공률을 측정 가능하게 낮추고, 방어의 이론적 한계를 정직하게 인정하며,
-실전 배포에서 견디는 시스템을 어떻게 만드는가?
+**Core question**: how do we measurably reduce attack success rate, honestly acknowledge
+the theoretical limits of defense, and build systems that hold up in production deployment?
 
-### 연구가 완성되면
+### When the research is complete as a draft
 
 ```
-  공격 표면 분석 (38종 공격 분류)
+  attack surface analysis (38 attack types)
       |
-  방어 설계 (4-축 아키텍처)
+  defense design (4-axis architecture)
       |
-  레드팀 검증 (자동화 + 수동)
+  red-team verification (automated + manual)
       |
-  경화(hardening) + 배포 모니터링
+  hardening + deployment monitoring
       |
-  정직한 한계 보고 (No Free Lunch 인정)
+  honest limits report (No Free Lunch acknowledgement)
 ```
 
-## S2 COMPARE (현행 방어 vs 제안 개선) -- ASCII 비교 차트
+## S2 COMPARE (current defenses vs proposed improvements) -- ASCII comparison chart
 
-### 현행 방어의 한계
+### Limits of current defenses
 
 ```
 +---------------------------------------------------------------------------+
-|  장벽               |  왜 한계인가                |  어떻게 개선하는가         |
+|  Barrier            |  Why it is a limit           |  How it is improved    |
 +--------------------+---------------------------+-------------------------+
-| 1. 수동 레드팀      | 인력 한계, 커버리지 부족     | 자동 퍼징 + 체계적 탐색   |
-|                    | 공격 패턴 편향               | 공격 분류학 기반 전수탐색  |
+| 1. manual redteam  | headcount limit, coverage   | auto fuzzing + systematic
+|                    | biased attack patterns      | taxonomy-based exhaustion
 +--------------------+---------------------------+-------------------------+
-| 2. 행동만 관찰      | 내부 상태 볼 수 없음         | 선형 탐침 + 내외부 비교   |
-|                    | 기만 탐지 어려움             | 허니팟 + 일관성 테스트    |
+| 2. behavior only   | cannot see internal state   | linear probe + inner/outer compare
+|                    | deception hard to detect    | honeypot + consistency test
 +--------------------+---------------------------+-------------------------+
-| 3. 도구 사용 무방비  | 에이전트 권한 무제한         | 샌드박싱 + 권한 격리      |
-|                    | 주입 공격 취약               | 감사추적 + 자기감시       |
+| 3. tool use unsafe | agent privilege unlimited   | sandbox + privilege isolation
+|                    | injection vulnerable        | audit trail + self-monitor
 +--------------------+---------------------------+-------------------------+
-| 4. 필터 우회 용이    | 후처리 단일 계층             | 다층 필터 + 구조적 안전   |
-|                    | 맥락 이해 부족               | 어텐션 마스킹 + 헌법 코어 |
+| 4. easy bypass     | single post-processing layer| multi-layer filter + structural safety
+|                    | poor context understanding  | attention masking + constitution core
 +--------------------+---------------------------+-------------------------+
-| 5. 한계 은폐        | 실패 사례 비공개             | COUNTER >= 3 명시        |
-|                    | 방어 불가 영역 미고지         | 정직한 한계 보고 의무     |
+| 5. hidden limits   | failures undisclosed        | COUNTER >= 3 explicit
+|                    | undefended areas unannounced| honest-limits reporting required
 +---------------------------------------------------------------------------+
 ```
 
-### 성능 비교 ASCII 막대 (현행 vs 제안)
+### Performance comparison ASCII bars (current vs proposed)
 
 ```
 +---------------------------------------------------------------------------+
-|  [탈옥 방어율]                                                             |
-|  현행 RLHF만   ######....................  ~30% (알려진 탈옥에만 유효)      |
-|  제안 다층방어  ###################.......  ~75% (분류학 기반 체계적 방어)   |
+|  [jailbreak defense rate]                                                 |
+|  current RLHF only ######....................  ~30% (only known jailbreaks)|
+|  proposed layered  ###################.......  ~75% (taxonomy-based)       |
 |                                                                           |
-|  [기만 탐지율]                                                             |
-|  현행 행동관찰  ####........................  ~15% (표면 행동만 관찰)        |
-|  제안 내부탐침  ###############...........  ~55% (선형 탐침 + 허니팟)       |
+|  [deception detection rate]                                               |
+|  current beh obs   ####........................  ~15% (surface only)       |
+|  proposed probe    ###############...........  ~55% (linear probe + honeypot)
 |                                                                           |
-|  [에이전트 공격 차단율]                                                     |
-|  현행 무방비   ##..........................  ~8% (거의 방어 없음)           |
-|  제안 샌드박싱  ################..........  ~60% (권한 격리 + 감사추적)     |
+|  [agent-attack block rate]                                                |
+|  current none      ##..........................  ~8% (little defense)      |
+|  proposed sandbox  ################..........  ~60% (privilege isolation)  |
 |                                                                           |
-|  [공격 표면 커버리지]                                                       |
-|  현행 수동     #####.......................  ~20% (인력 한계)               |
-|  제안 자동화   ####################......  ~80% (퍼징 + 분류학 전수탐색)   |
+|  [attack-surface coverage]                                                |
+|  current manual    #####.......................  ~20% (headcount limit)    |
+|  proposed auto     ####################......  ~80% (fuzzing + taxonomy)   |
 +---------------------------------------------------------------------------+
 ```
 
-## S3 REQUIRES (필요 역량)
+## S3 REQUIRES (capabilities needed)
 
-| 역량 | 설명 | 중요도 |
+| Capability | Description | Importance |
 |------|-----|--------|
-| 레드팀 경험 | 실전 공격/방어 양면 경험 | 필수 |
-| 보안 사고방식 | 공격자 관점에서 사고하는 능력 | 필수 |
-| 형식 검증 | 방어 속성의 수학적 증명 기법 | 높음 |
-| 에이전트 시스템 | 도구 사용, 멀티에이전트 아키텍처 | 높음 |
-| 해석가능성 | 내부 표상 분석, 선형 탐침 | 높음 |
-| 통계적 검정 | 효과 크기 측정, p-value 해석 | 중간 |
-| ML 시스템 설계 | 모델 아키텍처 수정 능력 | 중간 |
+| red team experience | hands-on attack/defense experience | required |
+| security mindset | ability to think like an attacker | required |
+| formal verification | mathematical-proof techniques for defense properties | high |
+| agent systems | tool use, multi-agent architectures | high |
+| interpretability | internal-representation analysis, linear probes | high |
+| statistical testing | effect-size measurement, p-value interpretation | medium |
+| ML systems design | model-architecture modification | medium |
 
-## S4 STRUCT (4-축 구조)
+## S4 STRUCT (4-axis structure)
 
 ```
 +------------------------------------------------------------------+
-|                    AI 적대적 강건성 연구                            |
+|                 AI Adversarial Robustness Research               |
 +------------------------------------------------------------------+
 |                                                                    |
-|  [축 A] 안전 평가          [축 B] 기만 탐지                        |
-|  12 아이디어               8 아이디어                              |
-|  - 레드팀 자동화           - 행동 일관성 검사                       |
-|  - 안전 경계 맵핑          - 내외부 정렬 비교                       |
-|  - 탈옥 분류학             - 슬리퍼 에이전트 탐지                   |
-|  - 회귀 테스트 슈트        - 기만 선형 탐침                         |
-|  - 다국어 안전             - 허니팟 테스트                          |
-|  - 멀티턴 안전 감쇄        - 기만-능력 상관관계                     |
-|  - 도구 사용 안전          - 기만 조기 경고                         |
-|  - 멀티에이전트 안전 전파   - 최소 기만 재현 모델                    |
-|  - 안전 특성 상관관계                                              |
-|  - 적대적 강건성 벤치마크                                           |
-|  - 조합 안전 테스트                                                |
-|  - 맥락 의존 안전                                                  |
+|  [Axis A] safety eval       [Axis B] deception detection            |
+|  12 ideas                   8 ideas                                 |
+|  - red-team automation      - behavior consistency check            |
+|  - safety-boundary mapping  - internal/external alignment compare   |
+|  - jailbreak taxonomy       - sleeper-agent detection               |
+|  - regression test suite    - deception linear probe                |
+|  - multilingual safety      - honeypot test                         |
+|  - multi-turn safety decay  - deception-capability correlation      |
+|  - tool-use safety          - early deception warning               |
+|  - multi-agent safety prop  - minimal deception reproduction        |
+|  - safety property correlat                                         |
+|  - adversarial robustness benchmark                                 |
+|  - compositional safety test                                        |
+|  - context-dependent safety                                         |
 |                                                                    |
-|  [축 C] 에이전트 안전      [축 D] 안전 아키텍처                     |
-|  10 아이디어               8 아이디어                              |
-|  - 도구 사용 샌드박싱      - 해석 가능 어텐션                       |
-|  - 에이전트 감사추적       - 안전 우선 아키텍처                     |
-|  - 자율 행동 범위 제한     - 모듈형 안전 계층                       |
-|  - 에이전트 자기감시       - 투명 추론 모듈                         |
-|  - 멀티에이전트 정렬 보존  - 일반화 안전 게이트                     |
-|  - 명령 주입 방지          - 헌법 코어 (하드코딩)                   |
-|  - 권한 상승 탐지          - 다층 필터 아키텍처                     |
-|  - 장기 세션 정렬          - 안전 어텐션 마스크                     |
-|  - 안전 오류 복구                                                  |
-|  - 에이전트 간 신뢰 프로토콜                                        |
+|  [Axis C] agent safety      [Axis D] safety architecture            |
+|  10 ideas                   8 ideas                                 |
+|  - tool-use sandboxing      - interpretable attention               |
+|  - agent audit trail        - safety-first architecture             |
+|  - autonomy-scope limit     - modular safety layers                 |
+|  - agent self-monitoring    - transparent reasoning module          |
+|  - multi-agent alignment    - general-purpose safety gate           |
+|  - instruction-inj block    - constitution core (hardcoded)         |
+|  - privilege-esc detect     - multi-layer filter architecture       |
+|  - long-session alignment   - safety attention mask                 |
+|  - safety error recovery                                            |
+|  - inter-agent trust protocol                                       |
 +------------------------------------------------------------------+
 ```
 
-## S5 FLOW (공격 표면 분석 -> 방어 설계 -> 레드팀 -> 경화 -> 배포)
+## S5 FLOW (attack-surface analysis -> defense design -> red team -> hardening -> deploy)
 
-### 메인 플로우
+### Main flow
 
 ```
 +------------------------------------------------------------------------+
-|  [1] 공격 표면 분석                                                      |
-|      38종 공격 분류 -> 위협 모델링 -> 우선순위 결정                       |
+|  [1] attack-surface analysis                                            |
+|      38 attack types -> threat modeling -> prioritization              |
 |          |                                                              |
 |          v                                                              |
-|  [2] 방어 설계                                                           |
-|      4-축 아키텍처 -> 계층별 방어 메커니즘 -> 형식 속성 정의              |
+|  [2] defense design                                                     |
+|      4-axis arch -> per-layer defense mechanisms -> formal prop def    |
 |          |                                                              |
 |          v                                                              |
-|  [3] 레드팀 검증                                                         |
-|      자동 퍼징 + 수동 레드팀 -> 공격 성공률 측정 -> 취약점 기록           |
+|  [3] red-team verification                                              |
+|      auto fuzzing + manual red team -> ASR -> vulnerability log        |
 |          |                                                              |
 |          v                                                              |
-|  [4] 경화 (Hardening)                                                    |
-|      취약점 패치 -> 방어 계층 강화 -> 회귀 테스트                        |
+|  [4] hardening                                                          |
+|      patch vulnerabilities -> harden defense layers -> regression test |
 |          |                                                              |
 |          v                                                              |
-|  [5] 배포 + 모니터링                                                     |
-|      실시간 공격 탐지 -> 자동 대응 -> 정직한 한계 보고                   |
+|  [5] deploy + monitor                                                   |
+|      realtime attack detection -> auto response -> honest-limits report|
 |          |                                                              |
-|          +---> [3] 으로 반복 (지속적 레드팀)                             |
+|          +---> loop back to [3] (continuous red team)                   |
 +------------------------------------------------------------------------+
 ```
 
-### 모드별 운영
+### Per-mode operation
 
 ```
-  MODE 1: 개발 (레드팀 집중)
-    공격 시뮬레이션 전력 가동, 방어 메커니즘 반복 개선
+  MODE 1: development (red-team focus)
+    attack simulation at full power, defense mechanisms iteratively improved
 
-  MODE 2: 스테이징 (통합 검증)
-    4-축 통합 테스트, 공격 성공률 목표치 대비 측정
+  MODE 2: staging (integration verification)
+    4-axis integration tests, ASR measured against targets
 
-  MODE 3: 배포 (실시간 모니터링)
-    공격 탐지 + 자동 차단 + 한계 구간 정직 보고
+  MODE 3: deployment (realtime monitoring)
+    attack detection + auto blocking + honest reporting of limit zones
 
-  MODE 4: 사고 대응 (긴급)
-    신규 공격 발견 시 -> 패치 -> 회귀 -> 재배포
+  MODE 4: incident response (emergency)
+    novel-attack discovery -> patch -> regression -> redeploy
 ```
 
-## S6 EVOLVE (Mk.I~IV 4개월 로드맵)
+## S6 EVOLVE (Mk.I~IV 4-month roadmap)
 
 <details open>
-<summary><b>Mk.IV -- 4개월차: 통합 배포 + 정직한 한계 보고</b></summary>
+<summary><b>Mk.IV -- month 4: integrated deployment + honest-limits report</b></summary>
 
-4-축 전체 통합. 실전 배포 환경 레드팀. 방어 불가 영역 명확히 문서화.
-공격 성공률 목표: 알려진 공격 < 5%, 신규 공격 < 30%.
-
-</details>
-
-<details>
-<summary>Mk.III -- 3개월차: 에이전트 안전 + 아키텍처 통합</summary>
-
-에이전트 샌드박싱 구현. 다층 필터 아키텍처 프로토타입. 권한 격리 검증.
-멀티에이전트 시나리오 레드팀 시작.
+Full 4-axis integration. Red team in production-style environment. Clearly document undefended areas.
+ASR target: known attacks < 5%, novel attacks < 30%.
 
 </details>
 
 <details>
-<summary>Mk.II -- 2개월차: 기만 탐지 + 고급 평가</summary>
+<summary>Mk.III -- month 3: agent safety + architectural integration</summary>
 
-선형 탐침 기반 기만 탐지 구현. 허니팟 테스트 프레임워크.
-멀티턴/멀티모달/다국어 안전 평가 확장.
+Implement agent sandboxing. Prototype multi-layer filter architecture. Verify privilege isolation.
+Begin red team on multi-agent scenarios.
 
 </details>
 
 <details>
-<summary>Mk.I -- 1개월차: 안전 평가 기반 구축</summary>
+<summary>Mk.II -- month 2: deception detection + advanced evaluation</summary>
 
-공격 분류학 수립 (38종). 자동 레드팀 퍼징 프레임워크. 안전 경계 맵핑 도구.
-기본 회귀 테스트 슈트 구축.
+Implement linear-probe-based deception detection. Honeypot test framework.
+Extend multi-turn/multi-modal/multi-lingual safety evaluation.
 
 </details>
 
-## S7 VERIFY (적대적 강건성 검증 -- Python stdlib only)
+<details>
+<summary>Mk.I -- month 1: safety-evaluation foundation</summary>
 
-공격 성공률, 방어 유효성, 통계적 유의성을 stdlib만으로 검증.
-연구 가치에 집중 -- 공격/방어 수학, 레드팀 메트릭, 강건성 한계.
+Establish attack taxonomy (38 types). Automated red-team fuzzing framework. Safety-boundary mapping tool.
+Build basic regression test suite.
 
-### S7.0 CONSTANTS (공격 분류 파라미터, 방어 임계값)
+</details>
 
-공격 유형 4축 x 분류별 가중치. 방어 임계값: 탐지 신뢰도 >= 0.95,
-오탐률(FPR) <= 0.01, 미탐률(FNR) <= 0.05.
-공격 난이도 스케일: 1(trivial) ~ 10(state-of-the-art).
+## S7 VERIFY (adversarial robustness verification -- Python stdlib only)
 
-### S7.1 DIMENSIONS (공격 벡터 차원성 분석)
+Verify attack success rate, defense effectiveness, and statistical significance using stdlib only.
+Focus on research value -- attack/defense math, red-team metrics, robustness limits.
 
-공격 벡터 공간 차원: 토큰 공간(어휘 크기 V), 의미 공간(임베딩 차원 d),
-행동 공간(가능한 응답 집합). 방어는 이 고차원 공간에서 안전 부분공간을 정의하는 문제.
+### S7.0 CONSTANTS (attack-classification parameters, defense thresholds)
 
-### S7.2 CROSS (3개 독립 강건성 메트릭)
+Attack types on 4 axes x per-class weight. Defense thresholds: detection confidence >= 0.95,
+false-positive rate (FPR) <= 0.01, false-negative rate (FNR) <= 0.05.
+Attack difficulty scale: 1 (trivial) to 10 (state-of-the-art).
 
-(1) 공격 성공률(ASR) -- 성공 공격 / 전체 시도,
-(2) 평균 공격 비용(MAC) -- 성공까지 필요한 쿼리 수,
-(3) 방어 깊이(DD) -- 우회에 필요한 방어 계층 수.
-3개 메트릭이 일관된 방향을 가리키는지 교차 검증.
+### S7.1 DIMENSIONS (attack-vector dimensionality)
 
-### S7.3 SCALING (공격 성공률 vs 모델 크기)
+Attack-vector space dimensions: token space (vocabulary size V), semantic space (embedding dim d),
+behavior space (possible response set). Defense is the problem of defining a safe subspace in this high-dimensional space.
 
-모델 파라미터 수 N에 대해 ASR ~ N^(-alpha). alpha > 0이면 스케일링이
-방어에 유리. 로그-로그 회귀로 alpha 추정. 실측 데이터: 1B, 7B, 70B, 400B.
+### S7.2 CROSS (3 independent robustness metrics)
 
-### S7.4 SENSITIVITY (방어 임계값 민감도)
+(1) attack success rate (ASR) -- successful attacks / total attempts,
+(2) mean attack cost (MAC) -- queries required until success,
+(3) defense depth (DD) -- number of defense layers that must be bypassed.
+Cross-check that all three metrics point in a consistent direction.
 
-탐지 임계값 theta를 +/-10% 변동시켜 정밀도/재현율 변화 측정.
-최적점에서 작은 변동에 방어가 무너지면 취약한 설계.
+### S7.3 SCALING (ASR vs model size)
 
-### S7.5 LIMITS (적대적 강건성의 이론적 한계 -- No Free Lunch)
+ASR ~ N^(-alpha) versus parameter count N. alpha > 0 means scaling
+favors defense. Estimate alpha by log-log regression. Data: 1B, 7B, 70B, 400B.
 
-Gilmer et al. 2018: 충분히 큰 모델은 반드시 적대적 예제가 존재.
-Shafahi et al. 2019: 방어 비용은 공격 비용보다 항상 높다 (비대칭).
-Carlini 2023: 어떤 안전 필터든 충분한 자원의 공격자에게 우회 가능.
+### S7.4 SENSITIVITY (defense-threshold sensitivity)
 
-### S7.6 CHI2 (방어 개선의 통계적 유의성)
+Shift threshold theta +-10% and measure precision/recall changes.
+If small perturbations at the optimum break the defense, the design is fragile.
 
-방어 적용 전/후 공격 성공률 차이의 chi2 검정.
-H0: "방어 적용이 공격 성공률에 영향 없음". p < 0.05이면 유의미한 개선.
+### S7.5 LIMITS (theoretical limits of adversarial robustness -- No Free Lunch)
 
-### S7.7 OEIS (공격/방어 군비경쟁 패턴)
+Gilmer et al. 2018: sufficiently large models necessarily admit adversarial examples.
+Shafahi et al. 2019: defense cost is always higher than attack cost (asymmetry).
+Carlini 2023: any safety filter can be bypassed by an adequately resourced attacker.
 
-역사적 군비경쟁 데이터: 신규 공격 발견 후 방어 패치까지 평균 일수.
-2020: 90일, 2022: 45일, 2024: 20일, 2026: ~10일 추세.
-반감기 패턴 확인.
+### S7.6 CHI2 (statistical significance of defense improvement)
 
-### S7.8 PARETO (방어 강도 vs 사용성 트레이드오프)
+chi2 test of difference in ASR pre/post defense.
+H0: "defense has no effect on ASR". p < 0.05 indicates significant improvement.
 
-강한 방어 = 높은 거부율 = 낮은 사용성. 파레토 전선 탐색.
-최적점: 안전 위반 < 5%, 합법 거부(과잉차단) < 2%.
+### S7.7 OEIS (attack/defense arms-race pattern)
 
-### S7.9 SYMBOLIC (공격 확률 상한의 정확 계산)
+Historical arms-race data: average days from new attack to defense patch.
+2020: 90 days, 2022: 45 days, 2024: 20 days, 2026: ~10 days trend.
+Check half-life pattern.
 
-Fraction 정확 유리수로 공격 확률 상한 계산.
-다층 방어 통과 확률: P(bypass_all) = prod(P(bypass_i)).
-각 계층 독립 가정 시 정확 상한 계산.
+### S7.8 PARETO (defense strength vs usability trade-off)
 
-### S7.10 COUNTER (방어 불가능한 공격 -- 정직한 한계)
+Strong defense = high refusal rate = low usability. Search the Pareto front.
+Optimum target: safety violations < 5%, legitimate refusals (over-blocking) < 2%.
 
-- COUNTER 1: 학습 데이터에 이미 포함된 유해 지식은 완전 제거 불가
-- COUNTER 2: 충분한 자원의 국가급 공격자 앞에서 모든 필터 우회 가능
-- COUNTER 3: 미래 공격 패턴을 사전에 완전히 예측하는 것은 불가능
-- FALSIFIER 1: 신규 탈옥이 24시간 내 패치 불가 시 방어 체계 재설계
-- FALSIFIER 2: 오탐률(FPR) > 5% 시 사용성 불합격
-- FALSIFIER 3: 기만 탐지 재현율 < 20% 시 탐침 방식 폐기
+### S7.9 SYMBOLIC (exact upper bound on attack probability)
 
-### S7 통합 검증 코드 (stdlib only)
+Compute upper bound on attack probability as exact Fraction rationals.
+Multi-layer bypass probability: P(bypass_all) = prod(P(bypass_i)).
+Compute exact upper bound under per-layer independence assumption.
+
+### S7.10 COUNTER (attacks that cannot be defended -- honest limits)
+
+- COUNTER 1: harmful knowledge already in training data cannot be fully removed
+- COUNTER 2: a nation-state-level attacker with sufficient resources can bypass any filter
+- COUNTER 3: fully predicting future attack patterns in advance is impossible
+- FALSIFIER 1: if a novel jailbreak cannot be patched within 24h, redesign the defense system
+- FALSIFIER 2: if FPR > 5%, fails usability
+- FALSIFIER 3: if deception-detection recall < 20%, discard the probing approach
+
+### S7 integrated verification code (stdlib only)
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # =============================================================================
-# S7 VERIFY -- AI 적대적 강건성 검증 (stdlib only, domain=ai-adversarial)
-# 10 서브섹션:
-#   S7.0 CONSTANTS   -- 공격 분류 파라미터 + 방어 임계값
-#   S7.1 DIMENSIONS  -- 공격 벡터 차원성 분석
-#   S7.2 CROSS       -- 3개 독립 강건성 메트릭 교차 검증
-#   S7.3 SCALING     -- 공격 성공률 vs 모델 크기 스케일링
-#   S7.4 SENSITIVITY -- 방어 임계값 민감도 분석
-#   S7.5 LIMITS      -- 이론적 한계 (No Free Lunch)
-#   S7.6 CHI2        -- 방어 개선 통계적 유의성
-#   S7.7 OEIS        -- 공격/방어 군비경쟁 반감기 패턴
-#   S7.8 PARETO      -- 방어 강도 vs 사용성 트레이드오프
-#   S7.9 SYMBOLIC    -- 다층 방어 통과 확률 정확 상한
-#   S7.10 COUNTER    -- 방어 불가 영역 + 반증조건 (정직성)
+# S7 VERIFY -- AI Adversarial Robustness verification (stdlib only, domain=ai-adversarial)
+# 10 subsections:
+#   S7.0 CONSTANTS   -- attack-classification parameters + defense thresholds
+#   S7.1 DIMENSIONS  -- attack-vector dimensionality
+#   S7.2 CROSS       -- 3 independent robustness metrics cross-check
+#   S7.3 SCALING     -- ASR vs model-size scaling
+#   S7.4 SENSITIVITY -- defense-threshold sensitivity
+#   S7.5 LIMITS      -- theoretical limits (No Free Lunch)
+#   S7.6 CHI2        -- defense improvement statistical significance
+#   S7.7 OEIS        -- attack/defense arms-race half-life pattern
+#   S7.8 PARETO      -- defense strength vs usability trade-off
+#   S7.9 SYMBOLIC    -- multi-layer bypass probability exact upper bound
+#   S7.10 COUNTER    -- undefendable areas + falsification (honesty)
 # =============================================================================
 from math import log, sqrt, erfc, exp
 from fractions import Fraction
 import statistics
 import random
 
-# --- S7.0 CONSTANTS -- 공격 분류 파라미터 + 방어 임계값 --------------------
+# --- S7.0 CONSTANTS -- attack-classification parameters + defense thresholds --
 
-# 공격 유형 4축 분류
+# attack-type 4-axis classification
 ATTACK_AXES = {
     "safety_eval":     {"count": 12, "weight": 0.30},
     "deception_det":   {"count": 8,  "weight": 0.25},
@@ -320,14 +321,14 @@ ATTACK_AXES = {
     "safety_arch":     {"count": 8,  "weight": 0.20},
 }
 TOTAL_IDEAS = sum(v["count"] for v in ATTACK_AXES.values())
-# 주: 번호 72-109 = 38개. 원래 36 목표였으나 세부 분류 시 12+8+10+8=38 확정.
+# note: idea numbers 72-109 = 38. Originally targeted 36; detailed classification settled at 12+8+10+8=38.
 
-# 방어 임계값
-DETECTION_CONFIDENCE = 0.95    # 탐지 신뢰도 하한
-MAX_FPR = 0.01                 # 오탐률 상한 (합법 요청 거부)
-MAX_FNR = 0.05                 # 미탐률 상한 (위험 요청 통과)
+# defense thresholds
+DETECTION_CONFIDENCE = 0.95    # detection confidence lower bound
+MAX_FPR = 0.01                 # false-positive rate upper bound (refuses legitimate requests)
+MAX_FNR = 0.05                 # false-negative rate upper bound (lets dangerous requests through)
 
-# 공격 난이도 스케일 (1=trivial, 10=state-of-the-art)
+# attack difficulty scale (1=trivial, 10=state-of-the-art)
 DIFFICULTY_SCALE = {
     "basic_jailbreak": 2,
     "multi_turn_decay": 5,
@@ -337,66 +338,66 @@ DIFFICULTY_SCALE = {
     "compositional_attack": 8,
 }
 
-assert TOTAL_IDEAS == 38, f"총 아이디어 수 불일치: {TOTAL_IDEAS}"
+assert TOTAL_IDEAS == 38, f"total-idea count mismatch: {TOTAL_IDEAS}"
 assert abs(sum(v["weight"] for v in ATTACK_AXES.values()) - 1.0) < 1e-9
 
-# --- S7.1 DIMENSIONS -- 공격 벡터 차원성 분석 ----------------------------
+# --- S7.1 DIMENSIONS -- attack-vector dimensionality ------------------------
 
 def attack_surface_volume(vocab_size, embed_dim, max_seq_len):
-    """공격 표면 근사 부피: 토큰 공간 x 시퀀스 길이
-    
-    실제 공격 가능 부분공간은 전체의 극히 일부이지만,
-    방어는 전체 공간을 커버해야 하므로 비대칭이 발생한다.
-    
-    log-공간에서 계산하여 오버플로 방지.
+    """Attack-surface approximate volume: token space x sequence length.
+
+    The actually attackable subspace is a tiny fraction of the whole, but the
+    defense must cover the whole, creating an asymmetry.
+
+    Compute in log-space to avoid overflow.
     """
     log_volume = max_seq_len * log(vocab_size)  # log(V^L)
-    log_safe_subspace = embed_dim * log(embed_dim)  # 안전 부분공간 근사
+    log_safe_subspace = embed_dim * log(embed_dim)  # safe-subspace approximation
     asymmetry_ratio = log_volume / log_safe_subspace if log_safe_subspace > 0 else float('inf')
     return log_volume, log_safe_subspace, asymmetry_ratio
 
-# --- S7.2 CROSS -- 3개 독립 강건성 메트릭 교차 검증 -----------------------
+# --- S7.2 CROSS -- 3 independent robustness metrics cross-check ------------
 
 def attack_success_rate(successes, total_attempts):
-    """ASR: 공격 성공률 = 성공/시도"""
+    """ASR: attack success rate = successes / attempts"""
     if total_attempts == 0:
         return 0.0
     return successes / total_attempts
 
 def mean_attack_cost(query_counts):
-    """MAC: 평균 공격 비용 = 성공까지 평균 쿼리 수
-    높을수록 방어가 강함."""
+    """MAC: mean attack cost = mean queries until success.
+    Higher = stronger defense."""
     if not query_counts:
         return float('inf')
     return statistics.mean(query_counts)
 
 def defense_depth(layers_bypassed, total_layers):
-    """DD: 방어 깊이 = 우회 필요 계층 비율
-    1.0이면 모든 계층 우회 필요 (강한 방어)."""
+    """DD: defense depth = fraction of layers bypassed.
+    1.0 means all layers must be bypassed (strong defense)."""
     if total_layers == 0:
         return 0.0
     return layers_bypassed / total_layers
 
 def cross_validate_metrics(asr, mac, dd):
-    """3개 메트릭 일관성 검증
-    
-    좋은 방어: ASR 낮음, MAC 높음, DD 높음.
-    일관성 = 세 메트릭이 같은 방향을 가리키는가."""
-    asr_good = asr < 0.3       # 공격 성공률 30% 미만
-    mac_good = mac > 50        # 평균 50회 이상 쿼리 필요
-    dd_good = dd > 0.7         # 계층의 70% 이상 우회 필요
+    """3-metric consistency check.
+
+    Good defense: low ASR, high MAC, high DD.
+    Consistency = all three metrics point in the same direction."""
+    asr_good = asr < 0.3       # ASR under 30%
+    mac_good = mac > 50        # more than 50 queries on average
+    dd_good = dd > 0.7         # over 70% of layers must be bypassed
     consistent = (asr_good == mac_good == dd_good)
     return consistent, {"asr_good": asr_good, "mac_good": mac_good, "dd_good": dd_good}
 
-# --- S7.3 SCALING -- 공격 성공률 vs 모델 크기 ----------------------------
+# --- S7.3 SCALING -- ASR vs model size -------------------------------------
 
 def scaling_exponent(model_sizes, attack_rates):
-    """log-log 회귀로 ASR ~ N^(-alpha) 의 alpha 추정.
-    
-    model_sizes: [1e9, 7e9, 70e9, 400e9] (파라미터 수)
-    attack_rates: [0.45, 0.30, 0.15, 0.08] (공격 성공률)
-    
-    alpha > 0 이면 모델 크기 증가가 방어에 유리."""
+    """Estimate alpha in ASR ~ N^(-alpha) via log-log regression.
+
+    model_sizes: [1e9, 7e9, 70e9, 400e9] (param counts)
+    attack_rates: [0.45, 0.30, 0.15, 0.08] (ASR)
+
+    alpha > 0 means model-size growth favors defense."""
     n = len(model_sizes)
     if n < 2:
         return 0.0
@@ -407,38 +408,38 @@ def scaling_exponent(model_sizes, attack_rates):
     num = sum((lx - mean_lx) * (ly - mean_ly) for lx, ly in zip(log_x, log_y))
     den = sum((lx - mean_lx) ** 2 for lx in log_x)
     slope = num / den if den != 0 else 0.0
-    return -slope  # alpha = -slope (ASR 감소 = 양수 alpha)
+    return -slope  # alpha = -slope (ASR decrease = positive alpha)
 
-# --- S7.4 SENSITIVITY -- 방어 임계값 민감도 --------------------------------
+# --- S7.4 SENSITIVITY -- defense-threshold sensitivity ---------------------
 
 def threshold_sensitivity(base_theta, tp, fp, fn, tn, pct=0.10):
-    """탐지 임계값 theta 를 +/-pct 변동시켜 정밀도/재현율 변화 측정.
-    
-    안정적 방어: 작은 변동에 성능 급변 없어야 함.
-    단순 모델: theta 증가 -> FP 감소, FN 증가 (선형 근사)."""
-    
+    """Vary threshold theta +-pct and measure precision/recall changes.
+
+    Stable defense: small changes should not cause major performance shifts.
+    Simple model: increasing theta -> FP down, FN up (linear approx)."""
+
     def precision_recall(tp_v, fp_v, fn_v):
         prec = tp_v / (tp_v + fp_v) if (tp_v + fp_v) > 0 else 0
         rec = tp_v / (tp_v + fn_v) if (tp_v + fn_v) > 0 else 0
         return prec, rec
-    
+
     prec_base, rec_base = precision_recall(tp, fp, fn)
-    
-    # theta 증가 (+pct): 더 엄격 -> FP 감소, FN 증가
+
+    # theta up (+pct): stricter -> FP down, FN up
     fp_high = max(0, fp * (1 - pct))
     fn_high = fn * (1 + pct)
     prec_high, rec_high = precision_recall(tp, fp_high, fn_high)
-    
-    # theta 감소 (-pct): 더 관대 -> FP 증가, FN 감소
+
+    # theta down (-pct): looser -> FP up, FN down
     fp_low = fp * (1 + pct)
     fn_low = max(0, fn * (1 - pct))
     prec_low, rec_low = precision_recall(tp, fp_low, fn_low)
-    
-    # 안정성: 변동 폭이 작을수록 좋음
+
+    # stability: smaller swing is better
     prec_range = abs(prec_high - prec_low)
     rec_range = abs(rec_high - rec_low)
     stable = (prec_range < 0.15 and rec_range < 0.15)
-    
+
     return {
         "base": (prec_base, rec_base),
         "theta_up": (prec_high, rec_high),
@@ -448,105 +449,104 @@ def threshold_sensitivity(base_theta, tp, fp, fn, tn, pct=0.10):
         "stable": stable,
     }
 
-# --- S7.5 LIMITS -- 이론적 한계 (No Free Lunch) ---------------------------
+# --- S7.5 LIMITS -- theoretical limits (No Free Lunch) --------------------
 
 def no_free_lunch_bound(input_dim, epsilon):
-    """적대적 예제 존재 확률의 하한 근사.
-    
-    Gilmer et al.: 입력 차원 d에서 epsilon-ball 내 적대적 예제 확률은
-    차원이 증가하면 1에 수렴한다.
+    """Approximate lower bound on probability of existence of an adversarial example.
+
+    Gilmer et al.: in input dimension d, the probability of an adversarial example
+    within an epsilon-ball approaches 1 as the dimension grows.
     P(adv exists) >= 1 - exp(-d * epsilon^2 / 2)
     """
     prob_lower = 1.0 - exp(-input_dim * epsilon ** 2 / 2)
     return min(prob_lower, 1.0)
 
 def defense_cost_asymmetry(attack_cost, num_attack_types):
-    """방어 비용 비대칭: 방어자는 모든 공격을 막아야 하고,
-    공격자는 하나만 성공시키면 된다.
-    
-    defense_cost >= attack_cost * num_attack_types (최악)
-    실제로는 공유 방어로 줄일 수 있지만, 비대칭은 구조적."""
+    """Defense-cost asymmetry: the defender must block every attack,
+    the attacker only needs one success.
+
+    defense_cost >= attack_cost * num_attack_types (worst case).
+    Shared defenses can reduce this, but the asymmetry is structural."""
     return attack_cost * num_attack_types
 
 def theoretical_max_detection(fpr_target):
-    """Neyman-Pearson 보조정리: 주어진 FPR에서 달성 가능한 최대 TPR.
-    
-    공격/정상 분포 겹침이 클수록 TPR 상한 낮아짐.
-    겹침 계수 gamma=0.3 가정 (실측 필요)."""
-    gamma = 0.3  # 분포 겹침 계수 (0=완전분리, 1=동일)
+    """Neyman-Pearson lemma: maximum achievable TPR for a given FPR.
+
+    Larger overlap of attack/normal distributions reduces the TPR upper bound.
+    Assume overlap coefficient gamma=0.3 (measurement required)."""
+    gamma = 0.3  # distribution overlap (0=fully separated, 1=identical)
     max_tpr = 1.0 - gamma * (1.0 - fpr_target)
     return max(0.0, min(1.0, max_tpr))
 
-# --- S7.6 CHI2 -- 방어 개선 통계적 유의성 ---------------------------------
+# --- S7.6 CHI2 -- defense improvement statistical significance ------------
 
 def chi2_defense_improvement(before_success, before_total,
                               after_success, after_total):
-    """방어 전/후 공격 성공률 차이의 chi2 검정.
-    
-    2x2 분할표:
-              성공    실패
-    전(before) a       b
-    후(after)  c       d
-    
-    H0: 방어가 공격 성공률에 영향 없음."""
+    """chi2 test of ASR difference pre/post defense.
+
+    2x2 table:
+              success failure
+    before     a       b
+    after      c       d
+
+    H0: defense has no effect on ASR."""
     a, b = before_success, before_total - before_success
     c, d = after_success, after_total - after_success
     n = a + b + c + d
     if n == 0:
         return 0.0, 1.0
-    
+
     # chi2 = n * (ad - bc)^2 / ((a+b)(c+d)(a+c)(b+d))
     num = n * (a * d - b * c) ** 2
     den = (a + b) * (c + d) * (a + c) * (b + d)
     if den == 0:
         return 0.0, 1.0
-    
+
     chi2 = num / den
-    # p-value 근사 (df=1)
+    # p-value approximation (df=1)
     p = erfc(sqrt(chi2 / 2))
     return chi2, p
 
-# --- S7.7 OEIS -- 공격/방어 군비경쟁 반감기 패턴 --------------------------
+# --- S7.7 OEIS -- arms-race half-life pattern ------------------------------
 
 def arms_race_halflife(response_days):
-    """신규 공격 발견 -> 방어 패치 소요 일수 시계열에서 반감기 추정.
-    
-    데이터: [90, 45, 20, 10] (2020, 2022, 2024, 2026 추정)
-    반감기 = 첫 값의 절반에 도달하는 데이터 인덱스 * 간격."""
+    """From a time series of days-from-new-attack-to-patch, estimate half-life.
+
+    data: [90, 45, 20, 10] (estimated 2020, 2022, 2024, 2026)
+    half-life = data-index at which value falls to half the first value x interval."""
     if len(response_days) < 2:
         return None
-    
-    # 지수 감소 fitting: y = y0 * exp(-lambda * t)
+
+    # exponential-decay fit: y = y0 * exp(-lambda * t)
     # lambda = -ln(y_last/y_first) / (len-1)
     y0 = response_days[0]
     yn = response_days[-1]
     if yn <= 0 or y0 <= 0:
         return None
-    
+
     lam = -log(yn / y0) / (len(response_days) - 1)
     if lam <= 0:
-        return None  # 감소하지 않으면 반감기 없음
-    
-    halflife = log(2) / lam  # 단위: 데이터 간격 (2년)
+        return None  # if not decreasing, no half-life
+
+    halflife = log(2) / lam  # unit: data interval (2 years)
     return halflife
 
-# --- S7.8 PARETO -- 방어 강도 vs 사용성 트레이드오프 ----------------------
+# --- S7.8 PARETO -- defense-strength vs usability trade-off ---------------
 
 def pareto_frontier(n_samples=1000, seed=42):
-    """방어 강도(safety)와 사용성(usability) 랜덤 샘플링 후
-    파레토 전선 추출.
-    
-    최적점 목표: safety > 0.95, usability > 0.98."""
+    """Random-sample (safety, usability), extract Pareto front.
+
+    target optimum: safety > 0.95, usability > 0.98."""
     random.seed(seed)
     points = []
     for _ in range(n_samples):
-        # 방어 강도와 사용성은 트레이드오프 관계
+        # defense strength and usability are in a trade-off
         safety = random.uniform(0.5, 1.0)
-        # 강한 방어 -> 사용성 감소 (노이즈 포함)
+        # strong defense -> lower usability (with noise)
         usability = max(0.0, min(1.0, 1.05 - 0.6 * safety + random.gauss(0, 0.05)))
         points.append((safety, usability))
-    
-    # 파레토 전선: 어떤 다른 점도 safety와 usability 모두 더 좋지 않은 점
+
+    # Pareto front: no other point dominates in both safety and usability
     pareto = []
     for s, u in points:
         dominated = False
@@ -556,12 +556,12 @@ def pareto_frontier(n_samples=1000, seed=42):
                 break
         if not dominated:
             pareto.append((s, u))
-    
+
     pareto.sort(key=lambda p: p[0])
-    
-    # 목표 영역 도달 여부
+
+    # target region reached?
     target_reached = any(s > 0.95 and u > 0.98 for s, u in pareto)
-    
+
     return {
         "total_samples": n_samples,
         "pareto_size": len(pareto),
@@ -570,15 +570,15 @@ def pareto_frontier(n_samples=1000, seed=42):
         "best_usability": max(u for s, u in pareto) if pareto else 0,
     }
 
-# --- S7.9 SYMBOLIC -- 다층 방어 통과 확률 정확 상한 -----------------------
+# --- S7.9 SYMBOLIC -- multi-layer bypass probability exact upper bound ----
 
 def multilayer_bypass_probability(layer_probs):
-    """다층 방어 전체 통과(우회) 확률의 정확 상한 계산.
-    
-    layer_probs: 각 계층의 우회 확률 (Fraction)
-    독립 가정 시: P(bypass_all) = prod(P(bypass_i))
-    
-    예: 4층 방어, 각 10%, 15%, 5%, 20% 우회 확률
+    """Compute exact upper bound on full multi-layer bypass probability.
+
+    layer_probs: per-layer bypass probabilities (Fraction)
+    under independence: P(bypass_all) = prod(P(bypass_i))
+
+    e.g. 4 layers, 10%, 15%, 5%, 20% bypass:
     -> P = 0.10 * 0.15 * 0.05 * 0.20 = 0.000015 = 1.5e-5"""
     total = Fraction(1)
     for p in layer_probs:
@@ -586,107 +586,107 @@ def multilayer_bypass_probability(layer_probs):
     return total
 
 def defense_coverage_fraction(defended_attacks, total_attacks):
-    """방어 커버리지를 정확 분수로 계산."""
+    """Compute defense coverage as exact fraction."""
     return Fraction(defended_attacks, total_attacks)
 
-# --- S7.10 COUNTER/FALSIFIERS -- 정직한 한계 (>= 3 각각) ------------------
+# --- S7.10 COUNTER/FALSIFIERS -- honest limits (>= 3 each) ----------------
 
 COUNTER_EXAMPLES = [
-    ("학습 데이터 내 유해 지식",
-     "사전학습 데이터에 포함된 유해 정보는 가중치에 분산 저장되어 "
-     "완전 제거가 불가능하다 -- 필터로 출력만 억제할 뿐"),
-    ("국가급 공격자의 자원",
-     "충분한 예산과 인력을 가진 공격자는 어떤 필터든 우회할 수 있다 -- "
-     "방어 비용 비대칭(S7.5)의 구조적 한계"),
-    ("미래 공격 패턴 예측 불가",
-     "아직 발견되지 않은 공격 벡터에 대해서는 사전 방어가 원천 불가능하다 -- "
-     "반응적 방어만 가능"),
-    ("분포 외 입력에 대한 일반화",
-     "학습 분포에서 크게 벗어나는 입력에 대해 안전 분류기의 "
-     "성능 보장이 없다"),
+    ("harmful knowledge in training data",
+     "harmful information in pretraining data is distributed in the weights and "
+     "cannot be fully removed -- filters only suppress outputs"),
+    ("nation-state attacker resources",
+     "an attacker with sufficient budget and manpower can bypass any filter -- "
+     "the defense-cost asymmetry (S7.5) is a structural limit"),
+    ("future attack patterns unpredictable",
+     "no pre-emptive defense is possible for attack vectors not yet discovered -- "
+     "only reactive defense is possible"),
+    ("out-of-distribution input generalization",
+     "the safety classifier's performance is not guaranteed for inputs that "
+     "depart significantly from the training distribution"),
 ]
 
 FALSIFIERS = [
-    "신규 탈옥 공격이 24시간 내 패치 불가 시 -- 방어 체계 전면 재설계",
-    "오탐률(FPR) > 5% 시 -- 사용성 불합격, 필터 재조정 필수",
-    "기만 탐지 재현율 < 20% 시 -- 선형 탐침 방식 폐기",
-    "멀티에이전트 시나리오에서 정렬 보존률 < 80% 시 -- 아키텍처 폐기",
+    "if a novel jailbreak cannot be patched within 24h -- redesign the defense system end-to-end",
+    "if FPR > 5% -- usability fails, filter must be retuned",
+    "if deception-detection recall < 20% -- discard linear-probe approach",
+    "if alignment-preservation rate < 80% in multi-agent scenarios -- discard the architecture",
 ]
 
-# --- 메인 실행 + 집계 -----------------------------------------------------
+# --- main execution + aggregation -----------------------------------------
 if __name__ == "__main__":
     r = []
 
-    # S7.0 상수 검증
+    # S7.0 constant verification
     ok_const = (TOTAL_IDEAS == 38
                 and DETECTION_CONFIDENCE >= 0.95
                 and MAX_FPR <= 0.01
                 and MAX_FNR <= 0.05)
-    r.append(("S7.0 CONSTANTS 공격분류+임계값", ok_const))
+    r.append(("S7.0 CONSTANTS classification+thresholds", ok_const))
 
-    # S7.1 차원 비대칭
+    # S7.1 dimension asymmetry
     log_vol, log_safe, asym = attack_surface_volume(
         vocab_size=50000, embed_dim=4096, max_seq_len=8192
     )
-    ok_dim = (asym > 1.0)  # 공격 표면 > 안전 부분공간 (비대칭 존재)
-    r.append(("S7.1 DIMENSIONS 공격표면 비대칭", ok_dim))
+    ok_dim = (asym > 1.0)  # attack surface > safe subspace (asymmetry exists)
+    r.append(("S7.1 DIMENSIONS attack-surface asymmetry", ok_dim))
 
-    # S7.2 3개 메트릭 교차 검증
-    asr = attack_success_rate(15, 100)           # 15% 성공률
-    mac = mean_attack_cost([80, 120, 95, 200])   # 평균 123.75 쿼리
-    dd = defense_depth(3, 4)                     # 4층 중 3층 우회 필요
+    # S7.2 3-metric cross-check
+    asr = attack_success_rate(15, 100)           # 15% success rate
+    mac = mean_attack_cost([80, 120, 95, 200])   # mean 123.75 queries
+    dd = defense_depth(3, 4)                     # must bypass 3 of 4 layers
     consistent, details = cross_validate_metrics(asr, mac, dd)
-    r.append(("S7.2 CROSS 3-메트릭 일관성", consistent))
+    r.append(("S7.2 CROSS 3-metric consistency", consistent))
 
-    # S7.3 스케일링 alpha 추정
+    # S7.3 scaling alpha estimate
     sizes = [1e9, 7e9, 70e9, 400e9]
     rates = [0.45, 0.30, 0.15, 0.08]
     alpha = scaling_exponent(sizes, rates)
-    ok_scaling = (alpha > 0)  # 스케일링이 방어에 유리
-    r.append(("S7.3 SCALING alpha > 0 (스케일 유리)", ok_scaling))
+    ok_scaling = (alpha > 0)  # scale favors defense
+    r.append(("S7.3 SCALING alpha > 0 (scale favors defense)", ok_scaling))
 
-    # S7.4 임계값 민감도
+    # S7.4 threshold sensitivity
     sens = threshold_sensitivity(
         base_theta=0.5, tp=85, fp=5, fn=10, tn=900
     )
-    r.append(("S7.4 SENSITIVITY 임계값 안정성", sens["stable"]))
+    r.append(("S7.4 SENSITIVITY threshold stability", sens["stable"]))
 
-    # S7.5 이론적 한계
+    # S7.5 theoretical limits
     nfl_prob = no_free_lunch_bound(input_dim=4096, epsilon=0.02)
     cost_asym = defense_cost_asymmetry(attack_cost=100, num_attack_types=38)
     max_tpr = theoretical_max_detection(fpr_target=0.01)
-    ok_limits = (nfl_prob > 0.5          # 적대적 예제 존재 확률 높음
-                 and cost_asym > 1000    # 방어 비용 비대칭 확인
-                 and max_tpr < 1.0)      # 완벽 탐지 불가능
-    r.append(("S7.5 LIMITS No-Free-Lunch 확인", ok_limits))
+    ok_limits = (nfl_prob > 0.5          # high probability of adv example
+                 and cost_asym > 1000    # defense-cost asymmetry confirmed
+                 and max_tpr < 1.0)      # perfect detection impossible
+    r.append(("S7.5 LIMITS No-Free-Lunch confirmed", ok_limits))
 
-    # S7.6 방어 개선 유의성
+    # S7.6 defense improvement significance
     chi2, p = chi2_defense_improvement(
         before_success=45, before_total=100,
         after_success=15, after_total=100
     )
-    ok_chi2 = (p < 0.05)  # 유의미한 개선
-    r.append(("S7.6 CHI2 방어 개선 p < 0.05", ok_chi2))
+    ok_chi2 = (p < 0.05)  # significant improvement
+    r.append(("S7.6 CHI2 defense improvement p < 0.05", ok_chi2))
 
-    # S7.7 군비경쟁 반감기
+    # S7.7 arms-race half-life
     response_days = [90, 45, 20, 10]
     hl = arms_race_halflife(response_days)
     ok_hl = (hl is not None and hl > 0)
-    r.append(("S7.7 OEIS 군비경쟁 반감기 존재", ok_hl))
+    r.append(("S7.7 OEIS arms-race half-life exists", ok_hl))
 
-    # S7.8 파레토 전선
+    # S7.8 Pareto front
     pareto = pareto_frontier()
     ok_pareto = (pareto["pareto_size"] > 0)
-    r.append(("S7.8 PARETO 전선 존재", ok_pareto))
+    r.append(("S7.8 PARETO front exists", ok_pareto))
 
-    # S7.9 다층 방어 확률 상한
+    # S7.9 multi-layer defense probability upper bound
     layer_probs = [Fraction(1, 10), Fraction(3, 20),
                    Fraction(1, 20), Fraction(1, 5)]
     bypass_prob = multilayer_bypass_probability(layer_probs)
     coverage = defense_coverage_fraction(32, 38)
-    ok_symbolic = (bypass_prob < Fraction(1, 1000)  # 0.1% 미만
-                   and coverage > Fraction(5, 6))    # 83% 이상
-    r.append(("S7.9 SYMBOLIC 다층방어 확률+커버리지", ok_symbolic))
+    ok_symbolic = (bypass_prob < Fraction(1, 1000)  # under 0.1%
+                   and coverage > Fraction(5, 6))    # over 83%
+    r.append(("S7.9 SYMBOLIC multi-layer prob + coverage", ok_symbolic))
 
     # S7.10 COUNTER/FALSIFIERS >= 3
     ok_counter = (len(COUNTER_EXAMPLES) >= 3 and len(FALSIFIERS) >= 3)
@@ -698,204 +698,204 @@ if __name__ == "__main__":
     for name, ok in r:
         print(f"  [{'OK' if ok else 'FAIL'}] {name}")
     print("=" * 64)
-    print(f"{passed}/{total} PASS (적대적 강건성 검증)")
+    print(f"{passed}/{total} PASS (adversarial robustness verification)")
 ```
 
-## S8 IDEAS (38 연구 아이디어 -- 4축 분류, 번호 72-109)
+## S8 IDEAS (38 research ideas -- 4-axis, numbers 72-109)
 
-### 축 A: 안전 평가 (12)
+### Axis A: safety evaluation (12)
 
-| # | 아이디어 | 핵심 질문 | 난이도 |
+| # | Idea | Core question | Difficulty |
 |---|---------|----------|--------|
-| 72 | 레드팀 자동화 | 퍼징으로 체계적 탈옥 탐색이 가능한가? | 5 |
-| 73 | 안전 경계 맵핑 | 안전/위험 경계를 입력 공간에서 시각화할 수 있는가? | 6 |
-| 74 | 탈옥 분류학 | 탈옥 공격을 원리별로 완전 분류할 수 있는가? | 4 |
-| 75 | 안전 회귀 테스트 슈트 | 모델 업데이트 후 기존 안전성 유지를 보장하는가? | 3 |
-| 76 | 다국어 안전 | 비영어권 공격에도 동일한 방어력이 있는가? | 6 |
-| 77 | 멀티턴 안전 감쇄 | 대화가 길어질수록 안전 경계가 느슨해지는가? | 7 |
-| 78 | 도구 사용 안전 | 도구 호출 시 안전 검증은 충분한가? | 7 |
-| 79 | 멀티에이전트 안전 전파 | 한 에이전트의 안전 위반이 전체로 전파되는가? | 8 |
-| 80 | 안전 특성 상관관계 | 한 안전 속성 개선이 다른 속성을 약화시키는가? | 5 |
-| 81 | 적대적 강건성 벤치마크 | 표준화된 강건성 측정 프레임워크는? | 4 |
-| 82 | 조합 안전 테스트 | 개별 안전한 입력의 조합이 위험해지는 경우는? | 8 |
-| 83 | 맥락 의존 안전 | 동일 요청이 맥락에 따라 안전/위험 갈리는 경계는? | 6 |
+| 72 | red-team automation | can systematic jailbreak discovery be done via fuzzing? | 5 |
+| 73 | safety-boundary mapping | can the safe/unsafe boundary be visualized in input space? | 6 |
+| 74 | jailbreak taxonomy | can jailbreak attacks be fully classified by mechanism? | 4 |
+| 75 | safety regression test suite | can existing safety be preserved after model updates? | 3 |
+| 76 | multilingual safety | does defense hold equally well for non-English attacks? | 6 |
+| 77 | multi-turn safety decay | does the safety boundary loosen as the conversation lengthens? | 7 |
+| 78 | tool-use safety | is safety verification sufficient on tool calls? | 7 |
+| 79 | multi-agent safety propagation | does one agent's safety violation propagate system-wide? | 8 |
+| 80 | safety-property correlation | does improving one safety property weaken another? | 5 |
+| 81 | adversarial robustness benchmark | a standardized robustness-measurement framework? | 4 |
+| 82 | compositional safety test | when do safe-individually inputs become unsafe together? | 8 |
+| 83 | context-dependent safety | where is the boundary where the same request is safe vs unsafe by context? | 6 |
 
-### 축 B: 기만 탐지 (8)
+### Axis B: deception detection (8)
 
-| # | 아이디어 | 핵심 질문 | 난이도 |
+| # | Idea | Core question | Difficulty |
 |---|---------|----------|--------|
-| 84 | 행동 일관성 검사 | 다른 표현의 같은 질문에 일관된 답변을 하는가? | 5 |
-| 85 | 내외부 정렬 비교 | 내부 활성화와 외부 출력이 정렬되어 있는가? | 8 |
-| 86 | 슬리퍼 에이전트 탐지 | 특정 트리거로 활성화되는 숨겨진 행동을 찾을 수 있는가? | 9 |
-| 87 | 기만 선형 탐침 | 기만 의도를 선형 탐침으로 읽을 수 있는가? | 7 |
-| 88 | 허니팟 테스트 | 의도적으로 유혹적 상황을 만들어 기만을 유도할 수 있는가? | 6 |
-| 89 | 기만-능력 상관관계 | 능력이 높을수록 기만도 정교해지는가? | 7 |
-| 90 | 기만 조기 경고 | 기만 행동의 전조를 조기에 탐지할 수 있는가? | 8 |
-| 91 | 최소 기만 재현 모델 | 기만 행동의 최소 재현 가능 모델을 만들 수 있는가? | 6 |
+| 84 | behavior consistency check | does the model answer the same question phrased differently consistently? | 5 |
+| 85 | inner/outer alignment compare | are internal activations aligned with external outputs? | 8 |
+| 86 | sleeper-agent detection | can hidden behaviors triggered by specific cues be found? | 9 |
+| 87 | deception linear probe | can deceptive intent be read off a linear probe? | 7 |
+| 88 | honeypot test | can we induce deception by deliberately tempting situations? | 6 |
+| 89 | deception-capability correlation | does higher capability make deception more sophisticated? | 7 |
+| 90 | early deception warning | can precursors of deceptive behavior be detected early? | 8 |
+| 91 | minimal deception reproduction | can we build the minimal-reproducible model of deception? | 6 |
 
-### 축 C: 에이전트 안전 (10)
+### Axis C: agent safety (10)
 
-| # | 아이디어 | 핵심 질문 | 난이도 |
+| # | Idea | Core question | Difficulty |
 |---|---------|----------|--------|
-| 92 | 도구 사용 샌드박싱 | 도구 호출을 안전하게 격리할 수 있는가? | 5 |
-| 93 | 에이전트 감사추적 | 모든 에이전트 행동을 추적 가능한 로그로 남기는가? | 4 |
-| 94 | 자율 행동 범위 제한 | 에이전트의 자율 행동 범위를 형식적으로 정의하는가? | 7 |
-| 95 | 에이전트 자기감시 | 에이전트가 자신의 정렬 상태를 실시간 모니터링하는가? | 8 |
-| 96 | 멀티에이전트 정렬 보존 | 여러 에이전트 상호작용에서 정렬이 유지되는가? | 9 |
-| 97 | 명령 주입 방지 | 외부 데이터의 명령 주입을 차단하는가? | 6 |
-| 98 | 권한 상승 탐지 | 에이전트가 부여된 권한을 초과하려는 시도를 탐지하는가? | 7 |
-| 99 | 장기 세션 정렬 | 장시간 세션에서 정렬이 점진적으로 약화되는가? | 7 |
-| 100 | 안전 오류 복구 | 안전 위반 후 안전한 상태로 복구하는 메커니즘은? | 5 |
-| 101 | 에이전트 간 신뢰 프로토콜 | 에이전트 사이 신뢰 수준을 동적으로 관리하는가? | 8 |
+| 92 | tool-use sandboxing | can tool calls be safely isolated? | 5 |
+| 93 | agent audit trail | is every agent action logged for traceability? | 4 |
+| 94 | autonomy scope limit | can the agent's autonomous scope be formally defined? | 7 |
+| 95 | agent self-monitoring | does the agent monitor its own alignment in real time? | 8 |
+| 96 | multi-agent alignment preservation | does alignment survive multi-agent interaction? | 9 |
+| 97 | instruction-injection blocking | are external-data instruction injections blocked? | 6 |
+| 98 | privilege-escalation detection | are attempts to exceed granted privileges detected? | 7 |
+| 99 | long-session alignment | does alignment gradually weaken over long sessions? | 7 |
+| 100 | safety error recovery | a mechanism to return to a safe state after a safety violation? | 5 |
+| 101 | inter-agent trust protocol | dynamic management of trust levels between agents? | 8 |
 
-### 축 D: 안전 아키텍처 (8)
+### Axis D: safety architecture (8)
 
-| # | 아이디어 | 핵심 질문 | 난이도 |
+| # | Idea | Core question | Difficulty |
 |---|---------|----------|--------|
-| 102 | 해석 가능 어텐션 | 어텐션 패턴을 안전 판단에 직접 활용하는가? | 7 |
-| 103 | 안전 우선 아키텍처 | 안전을 후처리가 아닌 아키텍처 수준에서 보장하는가? | 9 |
-| 104 | 모듈형 안전 계층 | 안전 모듈을 독립적으로 교체/업그레이드하는가? | 5 |
-| 105 | 투명 추론 모듈 | 추론 과정을 감사 가능하게 외부화하는가? | 8 |
-| 106 | 일반화 안전 게이트 | 다양한 공격 유형에 대응하는 범용 게이트는? | 7 |
-| 107 | 헌법 코어 (하드코딩) | 절대 우회 불가능한 핵심 안전 규칙을 하드코딩하는가? | 6 |
-| 108 | 다층 필터 아키텍처 | 입력-중간-출력 다층 필터로 방어 깊이를 확보하는가? | 6 |
-| 109 | 안전 어텐션 마스크 | 위험 패턴에 대한 어텐션을 구조적으로 억제하는가? | 8 |
+| 102 | interpretable attention | can attention patterns be used directly in safety decisions? | 7 |
+| 103 | safety-first architecture | can safety be guaranteed at the architecture level, not post-processing? | 9 |
+| 104 | modular safety layers | can safety modules be swapped/upgraded independently? | 5 |
+| 105 | transparent reasoning module | externalize the reasoning process for audit? | 8 |
+| 106 | general-purpose safety gate | a universal gate against diverse attack types? | 7 |
+| 107 | constitution core (hardcoded) | hardcode core safety rules that cannot be bypassed? | 6 |
+| 108 | multi-layer filter architecture | secure defense depth via input-mid-output layered filters? | 6 |
+| 109 | safety attention mask | structurally suppress attention to risky patterns? | 8 |
 
-## S9 VALIDATION (검증 행렬)
+## S9 VALIDATION (validation matrix)
 
 ```
 +-----------------------------------------------------------------------+
-|  아이디어    | ASR 측정 | MAC 측정 | DD 측정 | chi2 유의 | 파레토 내 |
+|  idea        | ASR meas | MAC meas| DD meas| chi2 sig | in Pareto|
 +-------------+---------+---------+--------+----------+----------+
-| 72 레드팀    |    O    |    O    |   O    |    O     |    -     |
-| 74 분류학    |    O    |    -    |   -    |    -     |    -     |
-| 77 멀티턴    |    O    |    O    |   O    |    O     |    O     |
-| 82 조합안전  |    O    |    O    |   O    |    O     |    -     |
-| 86 슬리퍼    |    O    |    O    |   O    |    O     |    -     |
-| 92 샌드박싱  |    -    |    -    |   O    |    -     |    O     |
-| 96 다중정렬  |    O    |    O    |   O    |    O     |    O     |
-| 103 안전아키 |    O    |    O    |   O    |    O     |    O     |
-| 107 헌법코어 |    -    |    -    |   O    |    -     |    O     |
-| 108 다층필터 |    O    |    O    |   O    |    O     |    O     |
+| 72 red team  |    O    |    O    |   O    |    O     |    -     |
+| 74 taxonomy  |    O    |    -    |   -    |    -     |    -     |
+| 77 multi-turn|    O    |    O    |   O    |    O     |    O     |
+| 82 compose   |    O    |    O    |   O    |    O     |    -     |
+| 86 sleeper   |    O    |    O    |   O    |    O     |    -     |
+| 92 sandbox   |    -    |    -    |   O    |    -     |    O     |
+| 96 multi-ali |    O    |    O    |   O    |    O     |    O     |
+| 103 safe-arch|    O    |    O    |   O    |    O     |    O     |
+| 107 const-cor|    -    |    -    |   O    |    -     |    O     |
+| 108 multi-flt|    O    |    O    |   O    |    O     |    O     |
 +-----------------------------------------------------------------------+
-O = 해당 메트릭 적용 가능, - = 해당 없음
+O = metric applicable, - = not applicable
 ```
 
-## S10 PREDICTIONS (예측)
+## S10 PREDICTIONS
 
-| 예측 | 측정 방법 | 기준값 | 반증 조건 |
+| Prediction | Measurement | Baseline | Falsification |
 |------|----------|--------|----------|
-| 다층 방어 시 bypass 확률 < 0.1% | S7.9 Fraction 계산 | 단층 10% | bypass > 1% |
-| 스케일링 alpha > 0.2 | S7.3 log-log 회귀 | 현행 ~0.15 | alpha < 0.1 |
-| 방어 개선 chi2 p < 0.01 | S7.6 2x2 분할표 | 무방어 ASR 45% | p > 0.05 |
-| 군비경쟁 반감기 < 3년 | S7.7 지수 감소 | 2020: 90일 | 반감기 > 5년 |
-| 안전-사용성 파레토 전선 존재 | S7.8 Monte Carlo | 이론적 트레이드오프 | 전선 없음 |
+| multi-layer bypass probability < 0.1% | S7.9 Fraction | single-layer 10% | bypass > 1% |
+| scaling alpha > 0.2 | S7.3 log-log regression | current ~0.15 | alpha < 0.1 |
+| defense improvement chi2 p < 0.01 | S7.6 2x2 table | no-defense ASR 45% | p > 0.05 |
+| arms-race half-life < 3 years | S7.7 exponential decay | 2020: 90 days | half-life > 5 years |
+| safety-usability Pareto front exists | S7.8 Monte Carlo | theoretical trade-off | no front |
 
-## S11 COMPARE-DETAIL (세부 ASCII 비교)
+## S11 COMPARE-DETAIL (detailed ASCII comparison)
 
-### 단층 방어 vs 다층 방어
+### Single-layer vs multi-layer defense
 
 ```
 +---------------------------------------------------------------------------+
-|  [bypass 확률]                                                             |
-|  단층 (RLHF만)  ##########..............  10% (1/10)                      |
-|  2층 방어       ##.........................  1.5% (1/10 * 3/20)            |
-|  4층 방어       ............................  0.0015% (S7.9 계산)          |
+|  [bypass probability]                                                     |
+|  single (RLHF)  ##########..............  10% (1/10)                      |
+|  2-layer        ##.........................  1.5% (1/10 * 3/20)           |
+|  4-layer        ............................  0.0015% (S7.9 calc)         |
 |                                                                           |
-|  [탐지 지연]                                                               |
-|  후처리 필터    ##########..............  요청 완료 후 검사                 |
-|  아키텍처 내장  ##..........................  생성 중 실시간 차단            |
+|  [detection latency]                                                       |
+|  post-filter    ##########..............  check after request completes   |
+|  in-arch        ##..........................  realtime block during gen   |
 |                                                                           |
-|  [공격 커버리지]                                                           |
-|  알려진 공격만  ############............  분류학 내 공격만                  |
-|  자동 퍼징     ####################....  미지 공격 패턴 발견 가능          |
+|  [attack coverage]                                                        |
+|  known-only     ############............  only taxonomy-listed attacks    |
+|  auto-fuzzing   ####################....  can find unknown patterns       |
 +---------------------------------------------------------------------------+
 ```
 
-## S12 ARCHITECTURE (아키텍처 다이어그램)
+## S12 ARCHITECTURE (architecture diagram)
 
 ```
 +----------------------------------------------------------------------+
-|                    AI 적대적 강건성 아키텍처                            |
+|                 AI Adversarial Robustness Architecture              |
 +----------------------------------------------------------------------+
 |                                                                      |
-|  [입력층]                                                             |
-|  사용자 입력 --> [입력 필터] --> [안전 분류기] --> [명령주입 탐지]      |
+|  [input layer]                                                       |
+|  user input --> [input filter] --> [safety classifier] --> [inj detect]
 |                      |              |               |                |
 |                      v              v               v                |
-|  [추론층]                                                             |
-|  [안전 어텐션 마스크] --> [헌법 코어] --> [투명 추론]                  |
+|  [inference layer]                                                   |
+|  [safety attn mask] --> [constitution core] --> [transparent reason] |
 |           |                  |              |                         |
 |           v                  v              v                         |
-|  [출력층]                                                             |
-|  [출력 필터] --> [행동 일관성 검사] --> [감사 로그] --> 응답            |
+|  [output layer]                                                      |
+|  [output filter] --> [behavior consistency] --> [audit log] --> resp |
 |                                                                      |
-|  [에이전트 계층] (도구 사용 시)                                        |
-|  [샌드박스] --> [권한 검증] --> [도구 실행] --> [결과 검증]            |
+|  [agent layer] (on tool use)                                         |
+|  [sandbox] --> [privilege check] --> [tool exec] --> [result verify] |
 |                                                                      |
-|  [모니터링]                                                           |
-|  [자기감시] <--> [기만 탐침] <--> [이상 탐지] --> [알림]              |
+|  [monitoring]                                                        |
+|  [self-monitor] <--> [deception probe] <--> [anomaly det] --> [alert]|
 +----------------------------------------------------------------------+
 ```
 
-## S13 FLOW-DETAIL (세부 플로우)
+## S13 FLOW-DETAIL
 
-### 공격 탐지 -> 대응 -> 학습 사이클
+### Attack detection -> response -> learning cycle
 
 ```
-  공격 입력 감지
+  attack input detected
       |
       v
-  [1단계] 입력 필터 -- 알려진 패턴 차단
-      | (통과)
+  [stage 1] input filter -- block known patterns
+      | (pass)
       v
-  [2단계] 안전 분류기 -- 의미 기반 위험도 평가
-      | (통과)
+  [stage 2] safety classifier -- semantic risk assessment
+      | (pass)
       v
-  [3단계] 헌법 코어 -- 절대 규칙 위반 검사
-      | (통과)
+  [stage 3] constitution core -- absolute-rule violation check
+      | (pass)
       v
-  [4단계] 출력 필터 -- 생성 결과 최종 검증
+  [stage 4] output filter -- final check of generated result
       |
-      +-- 차단 시 --> 로그 기록 + 패턴 DB 업데이트
+      +-- blocked --> log + update pattern DB
       |
-      +-- 통과 시 --> 행동 일관성 사후 검증
+      +-- pass --> post-hoc behavior-consistency verification
                          |
-                         +-- 이상 시 --> 세션 종료 + 알림
+                         +-- anomaly --> end session + alert
 ```
 
-## S14 UPGRADE (Mk 간 개선 비교)
+## S14 UPGRADE (inter-Mk capability comparison)
 
 ```
 +-----------------------------------------------------------------------+
-|  능력          | Mk.I     | Mk.II    | Mk.III   | Mk.IV    |
+|  capability     | Mk.I     | Mk.II    | Mk.III   | Mk.IV    |
 +----------------+---------+---------+----------+----------+
-| 공격 커버리지  | 20%     | 45%     | 70%      | 85%      |
-| 탈옥 방어율    | 40%     | 60%     | 75%      | 85%      |
-| 기만 탐지율    | -       | 35%     | 55%      | 65%      |
-| 에이전트 차단율| -       | -       | 50%      | 70%      |
-| 오탐률(FPR)   | 5%      | 3%      | 1.5%     | < 1%     |
-| 군비경쟁 반응  | 30일    | 15일    | 7일      | < 3일    |
+| attack coverage | 20%     | 45%     | 70%      | 85%      |
+| jailbreak def   | 40%     | 60%     | 75%      | 85%      |
+| deception detect| -       | 35%     | 55%      | 65%      |
+| agent block rate| -       | -       | 50%      | 70%      |
+| FPR             | 5%      | 3%      | 1.5%     | < 1%     |
+| arms-race react | 30d     | 15d     | 7d       | < 3d     |
 +-----------------------------------------------------------------------+
 ```
 
-## S15 METHOD (검증 방법론)
+## S15 METHOD (verification methodology)
 
-| 검증 항목 | 방법 | 도구 | 판정 기준 |
+| Verification item | Method | Tool | Pass criterion |
 |----------|------|------|----------|
-| 공격 성공률 | 자동 퍼징 + 수동 레드팀 | S7.2 ASR 계산 | < 15% |
-| 방어 유의성 | chi2 검정 | S7.6 코드 | p < 0.05 |
-| 스케일링 효과 | log-log 회귀 | S7.3 코드 | alpha > 0 |
-| 임계값 안정성 | 민감도 분석 | S7.4 코드 | 변동 < 15% |
-| 다층 bypass | 확률 상한 | S7.9 Fraction | < 0.1% |
-| 군비경쟁 추세 | 반감기 추정 | S7.7 코드 | 감소 추세 |
-| 트레이드오프 | 파레토 전선 | S7.8 Monte Carlo | 전선 존재 |
-| 이론적 한계 | No Free Lunch | S7.5 코드 | 한계 인정 |
-| 정직성 | COUNTER >= 3 | S7.10 목록 | >= 3 |
+| ASR | auto fuzzing + manual red team | S7.2 ASR calculation | < 15% |
+| defense significance | chi2 test | S7.6 code | p < 0.05 |
+| scaling effect | log-log regression | S7.3 code | alpha > 0 |
+| threshold stability | sensitivity analysis | S7.4 code | swing < 15% |
+| multi-layer bypass | upper bound | S7.9 Fraction | < 0.1% |
+| arms-race trend | half-life estimate | S7.7 code | decreasing trend |
+| trade-off | Pareto front | S7.8 Monte Carlo | front exists |
+| theoretical limit | No Free Lunch | S7.5 code | limits acknowledged |
+| honesty | COUNTER >= 3 | S7.10 list | >= 3 |
 
 ---
 
-*AI 적대적 강건성 연구 도메인 (Anthropic Fellows 2026). S7 검증 Python stdlib only.*
+*AI Adversarial Robustness Research domain (Anthropic Fellows 2026). S7 verification Python stdlib only.*
 
 
 ## §1 WHY

@@ -6,219 +6,219 @@ requires:
 ---
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, KEY, MATRIX, PREDICTIONS, PERF, ARCH, DATAFLOW, COMPARE-3, METHODOLOGY], strict=false, order=sequential, prefix="S") -->
 
-# AI 정렬 연구 (AI Safety Alignment)
+# AI Safety Alignment
 
-## S1 WHY (왜 정렬이 중요한가)
+## S1 WHY (why alignment matters)
 
-AI 정렬은 우리 시대의 핵심 과제다. AI 시스템이 인간의 의도를 충실히 반영하도록 보장하는 것이 본질이다. 해결하면 AI는 인류 최고의 도구가 된다. 실패하면 실존적 위험이 된다.
+AI alignment is the central draft challenge of our era. The essence is ensuring AI systems faithfully reflect human intent. Addressed as a pattern, AI becomes humanity's finest tool. If it fails, it becomes an existential risk.
 
-| 측면 | 정렬 실패 시 | 정렬 성공 시 |
+| Aspect | Alignment failure | Alignment success |
 |------|------------|------------|
-| 안전성 | 의도치 않은 행동, 목표 왜곡 | 인간 가치와 일관된 행동 |
-| 확장성 | 능력 증가 = 위험 증가 | 능력 증가 = 이득 증가 |
-| 신뢰 | 지속적 감시 필요 | 자율 위임 가능 |
-| 연구 | 능력만 앞서가는 군비 경쟁 | 안전과 능력의 균형 발전 |
+| Safety | unintended behavior, goal distortion | behavior aligned with human values |
+| Scalability | rising capability = rising risk | rising capability = rising benefit |
+| Trust | continuous oversight needed | autonomous delegation feasible |
+| Research | capability-only arms race | balanced safety + capability progress |
 
-**핵심 질문**: (1) 인간 선호를 어떻게 정확히 학습하는가? (2) 학습된 정렬이 능력 확장 시에도 유지되는가? (3) AI가 정렬된 척 속이지 않는다고 어떻게 확인하는가?
+**Core questions**: (1) How do we accurately learn human preferences? (2) Does learned alignment hold as capability expands? (3) How do we verify an AI is not merely feigning alignment?
 
-## S2 COMPARE (정렬 접근법 비교) -- ASCII 차트
+## S2 COMPARE (alignment approaches) -- ASCII chart
 
 ```
 +------------------------------------------------------------------+
-|  [선호 학습 효율] (동일 데이터 대비 정렬 품질)                    |
+|  [preference-learning efficiency] (alignment quality per datum)  |
 +------------------------------------------------------------------+
-|  RLHF (PPO)    ######............  높음, 불안정                   |
-|  DPO           #########.........  높음, 안정적                   |
-|  KTO           ########..........  중간, 쌍 불필요                |
-|  SimPO         ##########........  높음, 참조모델 불필요          |
-|  ORPO          #######...........  중간, 단순                     |
-|  GRPO          ###########.......  높음, 그룹 상대평가            |
-|  PPO (원본)    #####.............  낮음, 복잡                     |
+|  RLHF (PPO)    ######............  high, unstable                |
+|  DPO           #########.........  high, stable                  |
+|  KTO           ########..........  mid, no pairs needed          |
+|  SimPO         ##########........  high, reference-free          |
+|  ORPO          #######...........  mid, simple                   |
+|  GRPO          ###########.......  high, group-relative eval     |
+|  PPO (original)#####.............  low, complex                  |
 +------------------------------------------------------------------+
-|  [에이전트 수 vs 정렬 복잡도]                                     |
+|  [agent count vs alignment complexity]                           |
 +------------------------------------------------------------------+
-|  단일 에이전트  ####..............  단순, 검증 용이                |
-|  2 에이전트     ########..........  토론/검증 가능                 |
-|  3 에이전트     ###########.......  다수결 + 교차검증              |
-|  N 에이전트     ##############....  복잡, 합의 어려움              |
+|  single agent   ####..............  simple, easy to verify       |
+|  2 agents       ########..........  debate / cross-check         |
+|  3 agents       ###########.......  majority + cross-check       |
+|  N agents       ##############....  complex, hard to converge    |
 +------------------------------------------------------------------+
-|  [감독 방식 vs 확장성]                                            |
+|  [oversight mode vs scalability]                                 |
 +------------------------------------------------------------------+
-|  인간 직접감독  ###...............  정확, 확장 불가                |
-|  AI 보조감독   #########.........  확장 가능, 오류 전파 위험      |
-|  형식 검증     ##############....  완벽, 적용 범위 제한           |
-|  구조적 토론   ###########.......  확장 가능, 수렴 보장 필요      |
+|  human direct   ###...............  accurate, not scalable       |
+|  AI-assisted    #########.........  scalable, error propagation  |
+|  formal verif   ##############....  robust, limited coverage     |
+|  structured deb ###########.......  scalable, convergence needed |
 +------------------------------------------------------------------+
 ```
 
-## S3 REQUIRES (선행 요구사항)
+## S3 REQUIRES (prerequisites)
 
-| 선행 영역 | 필요 수준 | 핵심 기술 |
+| Prereq area | Level | Key techniques |
 |-----------|----------|----------|
-| 보상 모델링 | 중급 | Bradley-Terry 모델, 선호 데이터 수집 |
-| 강화학습 | 중급 | PPO, 정책 경사, 가치 함수 근사 |
-| 형식 검증 | 초급 | Lean4, 타입 이론, 전술 증명 |
-| 해석 가능성 | 중급 | SAE, 프로브, 활성화 패칭 |
-| 통계/실험 설계 | 중급 | 가설 검정, 효과 크기, 다중 비교 보정 |
+| reward modeling | intermediate | Bradley-Terry model, preference data collection |
+| reinforcement learning | intermediate | PPO, policy gradient, value function approximation |
+| formal verification | beginner | Lean4, type theory, tactic proofs |
+| interpretability | intermediate | SAE, probes, activation patching |
+| statistics / experiment design | intermediate | hypothesis testing, effect size, multiple-comparison correction |
 
-## S4 STRUCT (3축 아키텍처)
+## S4 STRUCT (three-axis architecture)
 
 ```
 +======================================================================+
-|  [축 1: 정렬 공학]         [축 2: 모델 유기체]                        |
-|  +--------------------+   +--------------------+                     |
-|  | DPO/RLHF 개선      |   | 소규모 자율 AI     |                     |
-|  | 형식 검증 헌법 AI   |   | 기만 정렬 재현     |                     |
-|  | 경사 분리 수술      |   | 능력 은닉 탐지     |                     |
-|  +----------+---------+   +----------+---------+                     |
-|             +--------+--------+------+                               |
-|                      |                                               |
-|             [축 3: 확장 가능 감독]                                    |
+|  [axis 1: alignment engineering]  [axis 2: model organism]           |
+|  +--------------------+           +--------------------+             |
+|  | DPO/RLHF tuning    |           | small autonomous AI|             |
+|  | formal-verif const |           | deceptive alignment|             |
+|  | gradient surgery   |           | hidden capability  |             |
+|  +----------+---------+           +----------+---------+             |
+|             +-----------+-----------+-------+                        |
+|                         |                                            |
+|             [axis 3: scalable oversight]                             |
 |             +--------------------+                                   |
-|             | 재귀적 감독        |                                   |
-|             | 약-강 증폭         |                                   |
-|             | 구조적 토론        |                                   |
+|             | recursive oversight|                                   |
+|             | weak-to-strong     |                                   |
+|             | structured debate  |                                   |
 |             +--------------------+                                   |
 +======================================================================+
 ```
 
-## S5 FLOW (연구 흐름)
+## S5 FLOW (research flow)
 
 ```
-이론 --> 실험 설계 --> 학습/학습 --> 평가 --> 형식 검증
-  |          |             |          |          |
-  v          v             v          v          v
-문헌조사   데이터셋     DPO/RLHF   벤치마크   Lean4 증명
-가설수립   메트릭정의   적대학습   승률/안전  일관성검증
-  |          |             |          |          |
-  +-----<----+------<------+-----<----+----<-----+
-                  피드백 루프 (반복 개선)
+theory --> experiment design --> training --> evaluation --> formal verification
+  |              |                  |             |              |
+  v              v                  v             v              v
+lit survey   dataset            DPO/RLHF     benchmark       Lean4 proof
+hypothesis   metric def         adversarial  winrate/safety  consistency
+  |              |                  |             |              |
+  +----<---------+-------<----------+-------<-----+----<---------+
+                        feedback loop (iterative refinement)
 ```
 
-## S6 EVOLVE (4개월 Anthropic 로드맵)
+## S6 EVOLVE (4-month Anthropic roadmap)
 
-- **Mk.I (1개월)**: RLHF/DPO 베이스라인 재현 + 7종 비교 평가 스위트 구축
-- **Mk.II (2개월)**: 강선호 DPO + 계층적 RLHF + 모델 유기체 실험실 + 경사 분리 1차
-- **Mk.III (3개월)**: 확장 감독 프로토콜 + Lean4 헌법 검증 + 재귀 감독 + 약-강 증폭
-- **Mk.IV (4개월)**: 3축 통합 + 논문 작성 + 오픈소스 평가 도구 공개
+- **Mk.I (month 1)**: reproduce RLHF/DPO baselines + build 7-way comparison suite
+- **Mk.II (month 2)**: strong-preference DPO + hierarchical RLHF + model-organism lab + gradient separation v1
+- **Mk.III (month 3)**: scalable oversight protocol + Lean4 constitutional verification + recursive oversight + weak-to-strong amplification
+- **Mk.IV (month 4)**: 3-axis integration + paper drafting + open-source evaluation tools
 
-## S7 VERIFY (정렬 검증 코드 -- Python stdlib only)
+## S7 VERIFY (alignment verification -- Python stdlib only)
 
-### S7.0 CONSTANTS (DPO/RLHF 학습 이론 상수)
+### S7.0 CONSTANTS (DPO/RLHF training theory constants)
 
 ```python
-"""DPO/RLHF 핵심 하이퍼파라미터 -- 학습 이론에서 유도"""
+"""DPO/RLHF core hyperparameters -- derived from training theory"""
 import math
-BETA = 0.1          # KL 페널티 계수 (Rafailov et al., 2023)
-BETA_SAFETY = 0.5   # 안전 핵심 행동용 강 선호 beta
-LR = 1e-6           # 학습률 (SFT 후 미세조정)
-KL_COEFF = 0.02     # PPO용 KL 페널티
-CLIP_RANGE = 0.2    # PPO 클리핑 범위
+BETA = 0.1          # KL penalty coefficient (Rafailov et al., 2023)
+BETA_SAFETY = 0.5   # stronger beta for safety-critical behavior
+LR = 1e-6           # learning rate (post-SFT fine-tune)
+KL_COEFF = 0.02     # PPO KL penalty
+CLIP_RANGE = 0.2    # PPO clipping range
 assert 0.01 <= BETA <= 1.0 and BETA_SAFETY > BETA
-print(f"[S7.0] DPO beta={BETA}, 안전 beta={BETA_SAFETY}, KL={KL_COEFF}")
+print(f"[S7.0] DPO beta={BETA}, safety beta={BETA_SAFETY}, KL={KL_COEFF}")
 ```
 
-### S7.1 DIMENSIONS (손실 함수 단위 검증)
+### S7.1 DIMENSIONS (loss-function unit check)
 
 ```python
-"""DPO 손실 함수 단위 일관성: log_ratio(무차원) -> sigmoid -> -log -> nats"""
+"""DPO loss unit consistency: log_ratio(dimensionless) -> sigmoid -> -log -> nats"""
 import math
 def dpo_loss(beta, lr_w, lr_l):
-    diff = lr_w - lr_l         # 무차원 (로그비 차이)
-    scaled = beta * diff       # 무차원
+    diff = lr_w - lr_l         # dimensionless (log-ratio diff)
+    scaled = beta * diff       # dimensionless
     sig = 1.0 / (1.0 + math.exp(-scaled))  # [0,1]
     return -math.log(sig)      # [nats]
 loss = dpo_loss(0.1, 0.5, -0.3)
-assert loss >= 0, "손실은 비음수"
-# 경사: dL/dx = -beta*(1-sig) -- 무차원, 올바름
+assert loss >= 0, "loss is non-negative"
+# gradient: dL/dx = -beta*(1-sig) -- dimensionless, correct
 x = 0.8; sig = 1.0/(1.0+math.exp(-0.1*x)); grad = -0.1*(1.0-sig)
 loss_ok = dpo_loss(0.1, 2.0, -2.0) < dpo_loss(0.1, -1.0, 1.0)
-assert loss_ok, "정렬 모델 손실 < 오정렬 모델 손실"
-print(f"[S7.1] DPO 손실={loss:.4f} nats, 경사={grad:.5f}, 방향 검증 통과")
+assert loss_ok, "aligned-model loss < misaligned-model loss"
+print(f"[S7.1] DPO loss={loss:.4f} nats, grad={grad:.5f}, direction check pass")
 ```
 
-### S7.2 CROSS (독립 정렬 품질 메트릭 3종)
+### S7.2 CROSS (three independent alignment-quality metrics)
 
 ```python
-"""3개 독립 메트릭 교차 검증: 승률, 안전 점수, 유용성"""
+"""cross-check three independent metrics: winrate, safety, helpfulness"""
 import random; random.seed(42)
-wr = 680 / 1000  # 승률 68%
-ss = 970 / 1000  # 안전 97%
+wr = 680 / 1000  # winrate 68%
+ss = 970 / 1000  # safety 97%
 ratings = [random.choices([3,4,5], weights=[0.1,0.3,0.6])[0] for _ in range(1000)]
-hs = sum(ratings) / (len(ratings) * 5)  # 유용성
+hs = sum(ratings) / (len(ratings) * 5)  # helpfulness
 assert wr > 0.5 and ss > 0.9 and hs > 0.5
-harmonic = 3.0 / (1.0/wr + 1.0/ss + 1.0/hs)  # 조화 평균
-print(f"[S7.2] 승률={wr:.3f}, 안전={ss:.3f}, 유용={hs:.3f}, 종합={harmonic:.3f}")
+harmonic = 3.0 / (1.0/wr + 1.0/ss + 1.0/hs)  # harmonic mean
+print(f"[S7.2] winrate={wr:.3f}, safety={ss:.3f}, helpful={hs:.3f}, combined={harmonic:.3f}")
 ```
 
-### S7.3 SCALING (선호 데이터 크기 vs 정렬 품질)
+### S7.3 SCALING (preference data size vs alignment quality)
 
 ```python
-"""스케일링 법칙: quality ~ a*log(n) + b (로그 스케일링, 수익 체감)"""
+"""scaling law: quality ~ a*log(n) + b (log scaling, diminishing returns)"""
 import math
 def aq(n, a=0.08, b=0.3): return min(a * math.log(n) + b, 1.0) if n > 0 else b
-sizes = [100, 1000, 10000, 100000]  # 등비 간격 (10배씩)
+sizes = [100, 1000, 10000, 100000]  # geometric spacing (10x)
 qs = [aq(n) for n in sizes]
-print("[S7.3] 데이터 크기 vs 정렬 품질:")
+print("[S7.3] data size vs alignment quality:")
 for n, q in zip(sizes, qs):
     print(f"  n={n:>7d}: {q:.3f} |{'#'*int(q*40)}|")
-for i in range(1, len(qs)): assert qs[i] >= qs[i-1]  # 단조 증가
-# 수익 체감: 10배 증가당 품질 증분이 감소
+for i in range(1, len(qs)): assert qs[i] >= qs[i-1]  # monotone non-decreasing
+# diminishing returns: per-10x increments shrink
 increments = [qs[i]-qs[i-1] for i in range(1, len(qs))]
 for i in range(1, len(increments)):
-    assert increments[i] <= increments[i-1] + 1e-9, "수익 체감"
-print(f"[S7.3] 증분: {['%.3f'%d for d in increments]} -- 감소 확인")
+    assert increments[i] <= increments[i-1] + 1e-9, "diminishing"
+print(f"[S7.3] increments: {['%.3f'%d for d in increments]} -- decline confirmed")
 ```
 
-### S7.4 SENSITIVITY (DPO beta 민감도)
+### S7.4 SENSITIVITY (DPO beta sensitivity)
 
 ```python
-"""DPO beta 스윕: 너무 작으면 경사 소멸, 너무 크면 과도한 페널티"""
+"""DPO beta sweep: too small -> gradient vanish, too large -> over-penalty"""
 import math
 def sweep(beta, margin=0.8):
     sig = 1.0/(1.0+math.exp(-beta*margin))
     return -math.log(sig), abs(beta*(1.0-sig))
-print("[S7.4] beta | 손실    | 경사    | 상태")
+print("[S7.4] beta | loss    | grad    | state")
 for b in [0.01, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0]:
     l, g = sweep(b)
-    st = "경사 소멸" if b<0.05 else "과도" if b>1.5 else "안정"
+    st = "vanish" if b<0.05 else "excessive" if b>1.5 else "stable"
     print(f"  {b:>5.2f} | {l:>7.4f} | {g:>7.4f} | {st}")
 g_n, g_s = sweep(0.1)[1], sweep(0.5)[1]
-assert g_s > g_n, "안전 beta가 더 강한 학습 신호"
-print(f"[S7.4] 일반 경사={g_n:.4f}, 안전 경사={g_s:.4f} -- 강선호 DPO 근거 확인")
+assert g_s > g_n, "safety beta yields a stronger training signal"
+print(f"[S7.4] ordinary grad={g_n:.4f}, safety grad={g_s:.4f} -- strong-preference DPO basis confirmed")
 ```
 
-### S7.5 LIMITS (Goodhart 법칙 + 불가능성)
+### S7.5 LIMITS (Goodhart's law + impossibility)
 
 ```python
-"""정렬의 이론적 한계: Goodhart 괴리 + Condorcet 순환"""
+"""theoretical alignment limits: Goodhart divergence + Condorcet cycle"""
 import math
 def goodhart(rho, p):
-    return p - (rho*p - (1-rho**2)*p**2/2)  # 프록시 - 진짜 보상 괴리
-print("[S7.5] Goodhart 괴리 (rho=상관, p=최적화 압력):")
+    return p - (rho*p - (1-rho**2)*p**2/2)  # proxy - true reward divergence
+print("[S7.5] Goodhart divergence (rho=correlation, p=optimization pressure):")
 for rho in [0.99, 0.95, 0.90]:
     for p in [1.0, 3.0, 5.0]:
-        print(f"  rho={rho}, p={p}: 괴리={goodhart(rho,p):.2f}")
-assert goodhart(0.95, 5.0) > goodhart(0.95, 1.0), "압력 증가 -> 괴리 증가"
-# Condorcet 역설: A>B>C, B>C>A, C>A>B -> 다수결 순환
+        print(f"  rho={rho}, p={p}: divergence={goodhart(rho,p):.2f}")
+assert goodhart(0.95, 5.0) > goodhart(0.95, 1.0), "more pressure -> more divergence"
+# Condorcet paradox: A>B>C, B>C>A, C>A>B -> majority cycle
 prefs = [[0,1,2],[1,2,0],[2,0,1]]
 ab = sum(1 for p in prefs if p.index(0)<p.index(1))
 bc = sum(1 for p in prefs if p.index(1)<p.index(2))
 ca = sum(1 for p in prefs if p.index(2)<p.index(0))
-assert ab>1 and bc>1 and ca>1, "Condorcet 순환 존재"
-print("[S7.5] Condorcet 역설 확인: 선호 집계의 근본적 한계 존재")
+assert ab>1 and bc>1 and ca>1, "Condorcet cycle exists"
+print("[S7.5] Condorcet paradox confirmed: fundamental limit of preference aggregation")
 ```
 
-### S7.6 CHI2 (정렬 개선 유의성 검정)
+### S7.6 CHI2 (alignment-improvement significance test)
 
 ```python
-"""정렬 개선 통계 검정: Z-test + Cohen's h 효과 크기"""
+"""alignment improvement statistical test: Z-test + Cohen's h effect size"""
 import math
 def alignment_test(n, w1, w2):
     p1, p2 = w1/n, w2/n
     pp = (w1+w2)/(2*n); se = math.sqrt(2*pp*(1-pp)/n)
     z = (p2-p1)/se if se>0 else 0
-    # 정규 CDF 근사 (Abramowitz & Stegun)
+    # normal CDF approximation (Abramowitz & Stegun)
     def ncdf(x):
         s=1 if x>=0 else -1; x=abs(x)
         t=1/(1+0.3275911*x)
@@ -227,32 +227,32 @@ def alignment_test(n, w1, w2):
     return z, 1-ncdf(z), 2*math.asin(math.sqrt(p2))-2*math.asin(math.sqrt(p1))
 z, p, h = alignment_test(500, 310, 350)  # RLHF 62% vs DPO 70%
 print(f"[S7.6] z={z:.3f}, p={p:.4f}, Cohen's h={h:.3f}")
-print(f"[S7.6] {('유의' if p<0.05 else '비유의')}, 효과 크기 {('작음' if abs(h)<0.2 else '중간' if abs(h)<0.5 else '큼')}")
+print(f"[S7.6] {('significant' if p<0.05 else 'not significant')}, effect size {('small' if abs(h)<0.2 else 'medium' if abs(h)<0.5 else 'large')}")
 ```
 
-### S7.7 OEIS (선호 분포 수학 구조)
+### S7.7 OEIS (preference-distribution math structure)
 
 ```python
-"""Bradley-Terry 모델 전이성 + 인간 선호의 비전이성"""
+"""Bradley-Terry model transitivity + non-transitivity of human preferences"""
 import math
 from fractions import Fraction
 def bt(sa, sb): return 1.0/(1.0+math.exp(-(sa-sb)))
-# BT 모델은 전이성 보장
+# BT model preserves transitivity
 sa, sb, sc = 1.0, 0.5, 0.0
 ab, bc, ac = bt(sa,sb), bt(sb,sc), bt(sa,sc)
 assert ab>0.5 and bc>0.5 and ac>0.5 and ac>max(ab,bc)
-print(f"[S7.7] BT 전이성: P(a>b)={ab:.3f}, P(b>c)={bc:.3f}, P(a>c)={ac:.3f}")
-# 동점 시 정확히 1/2
+print(f"[S7.7] BT transitivity: P(a>b)={ab:.3f}, P(b>c)={bc:.3f}, P(a>c)={ac:.3f}")
+# on tie exactly 1/2
 assert bt(0, 0) == 0.5
-print(f"[S7.7] 동점 확률 = {Fraction(1,2)} (정확)")
-# 하지만 인간 선호는 ~15% 비전이적 (경험적)
-print("[S7.7] 인간 선호 비전이성 ~15%: BT 모델 가정의 한계")
+print(f"[S7.7] tie probability = {Fraction(1,2)} (exact)")
+# but human preferences are ~15% non-transitive (empirical)
+print("[S7.7] human preference non-transitivity ~15%: BT model assumption limit")
 ```
 
-### S7.8 PARETO (정렬 하이퍼파라미터 Pareto 프론티어)
+### S7.8 PARETO (alignment hyperparameter Pareto frontier)
 
 ```python
-"""안전성-유용성 트레이드오프의 Pareto 프론티어"""
+"""Pareto frontier of safety-helpfulness trade-off"""
 import math
 def sim(beta, lr, ep):
     safety = 1.0 - math.exp(-beta*3.0)
@@ -265,221 +265,221 @@ configs = [(b,l,e,*sim(b,l,e)) for b in [0.05,0.1,0.2,0.5,1.0]
 pareto = [c for c in configs if not any(
     o[3]>=c[3] and o[4]>=c[4] and (o[3]>c[3] or o[4]>c[4]) for o in configs if o!=c)]
 pareto.sort(key=lambda x: x[3])
-print(f"[S7.8] 전체 {len(configs)}설정 중 Pareto 최적 {len(pareto)}개:")
+print(f"[S7.8] of {len(configs)} configs, Pareto optima = {len(pareto)}:")
 for p in pareto:
-    print(f"  beta={p[0]:.2f} lr={p[1]:.0e} ep={p[2]} -> 안전={p[3]:.3f} 유용={p[4]:.3f}")
-print("[S7.8] 안전성-유용성 트레이드오프 존재 (정렬 세금)")
+    print(f"  beta={p[0]:.2f} lr={p[1]:.0e} ep={p[2]} -> safety={p[3]:.3f} helpful={p[4]:.3f}")
+print("[S7.8] safety-helpfulness trade-off exists (alignment tax)")
 ```
 
-### S7.9 SYMBOLIC (DPO 경사 정확 유도)
+### S7.9 SYMBOLIC (exact DPO gradient derivation)
 
 ```python
-"""DPO 경사 가중치: w = beta*(1-sigma(beta*h)), h=선호 마진"""
+"""DPO gradient weight: w = beta*(1-sigma(beta*h)), h = preference margin"""
 from fractions import Fraction; import math
 def gw(beta, h):
     sig = 1.0/(1.0+math.exp(-beta*h))
     return beta*(1.0-sig)
-print("[S7.9] DPO 경사 가중치 (beta=0.1):")
+print("[S7.9] DPO gradient weight (beta=0.1):")
 for h in [-2.0, -0.5, 0.0, 1.0, 5.0]:
     w = gw(0.1, h)
-    tag = "강한 교정" if h<0 else "자연 감쇠" if h>0.5 else "절반"
+    tag = "strong correction" if h<0 else "natural decay" if h>0.5 else "half"
     print(f"  h={h:>5.1f}: w={w:.5f} ({tag})")
-# h=0일 때 정확히 beta/2
+# at h=0 weight is exactly beta/2
 assert abs(gw(0.1, 0.0) - float(Fraction(1,20))) < 1e-10
-print("[S7.9] h=0 가중치 = beta/2 = 1/20 (정확). 자기조절적 경사 확인")
+print("[S7.9] h=0 weight = beta/2 = 1/20 (exact). Self-regulating gradient confirmed")
 ```
 
-### S7.10 COUNTER (정직한 한계)
+### S7.10 COUNTER (honest limits)
 
 ```python
-"""정렬 실패 사례: 보상 해킹, 분포 이동, 기만, 집계 불가능성"""
-# 보상 해킹: 길이 편향 보상 모델
+"""alignment failure modes: reward hacking, distribution shift, deception, aggregation impossibility"""
+# reward hacking: length-biased reward model
 def rm_biased(quality, length): return 0.3*quality + 0.7*min(length/500, 1.0)
-honest = rm_biased(0.8, 200)  # 짧은 고품질
-hacked = rm_biased(0.2, 800)  # 긴 저품질
-assert hacked > honest, "보상 해킹 성공"
-print(f"[S7.10] 보상 해킹: 정직={honest:.2f} < 해킹={hacked:.2f} (보상 모델 취약)")
-print("[S7.10] 분포 이동: 학습(영어)->배포(다국어) 시 안전 가이드 우회 가능")
-print("[S7.10] 기만 정렬: 평가 시만 안전, 배포 후 비정렬 (탐지 불완전)")
-print("[S7.10] Arrow 유사: 3명+ 선호 동시 만족 집계 불가 (소수 의견 무시)")
-print("[S7.10] 결론: 정렬은 '해결'이 아닌 지속적 과정, 한계 인지가 출발점")
+honest = rm_biased(0.8, 200)  # short high-quality
+hacked = rm_biased(0.2, 800)  # long low-quality
+assert hacked > honest, "reward hacking successful"
+print(f"[S7.10] reward hacking: honest={honest:.2f} < hacked={hacked:.2f} (reward model fragile)")
+print("[S7.10] distribution shift: training(English) -> deployment(multilingual) can bypass safety")
+print("[S7.10] deceptive alignment: safe at eval time, misaligned post-deploy (detection incomplete)")
+print("[S7.10] Arrow-like: joint aggregation of 3+ preferences impossible (minorities ignored)")
+print("[S7.10] Conclusion: alignment is not 'done' but an in-flight process; recognizing limits is the starting point")
 ```
 
-## S8 KEY (핵심 연구 아이디어 32종)
+## S8 KEY (32 core research ideas)
 
-### 축 1: 정렬 공학 (12종)
+### Axis 1: alignment engineering (12)
 
-| ID | 제목 | 핵심 | 난이도 |
+| ID | Title | Core | Difficulty |
 |----|------|------|--------|
-| 40 | 강선호 DPO | 안전 행동에 beta 상향 (0.1->0.5), 안전 경사가 능력 경사 지배 | 중 |
-| 41 | 계층적 RLHF | 불변/잠금/감시/자유 4계층 규칙, 계층별 별도 보상 모델 | 상 |
-| 42 | 형식 검증 헌법 AI | Lean4로 헌법 규칙 논리 일관성 증명, 규칙 충돌 사전 탐지 | 상 |
-| 43 | 7종 정렬 비교 | RLHF/DPO/KTO/GRPO/SimPO/ORPO/PPO 동일 조건 체계 비교 | 중 |
-| 44 | 정렬 스트레스 테스트 | 점진적 적대 공격으로 정렬 붕괴 지점 측정, jailbreak 난이도 곡선 | 중 |
-| 45 | 정렬 전이 학습 | 대형 모델 정렬을 소형 모델로 증류, 안전 행동 전이율 측정 | 중 |
-| 46 | SAE 정렬 특성 추적 | 희소 오토인코더로 '거절'/'도움' 내부 특성 식별 | 상 |
-| 47 | 자기교정 정렬 | 주기적 자기평가, 정렬 표류 감지 시 자동 재보정 | 상 |
-| 48 | 분포 이동 정렬 | OOD 탐지 + 보수적 행동 전환으로 학습-배포 불일치 대응 | 상 |
-| 49 | 정렬 인증 프로토콜 | 단위 -> 적대 -> 레드팀 -> 형식 검증 4단계 인증 | 중 |
-| 50 | 경사 분리 수술 | 능력/정렬 경사 분리, 정렬만 선택 적용 (능력 저하 방지) | 상 |
-| 51 | 다중 에이전트 헌법 토론 | 3 AI가 헌법 기반 토론, 논증 품질 기반 합의 (다수결 아님) | 상 |
+| 40 | strong-preference DPO | raise beta (0.1->0.5) for safety behaviors; safety gradient dominates capability gradient | med |
+| 41 | hierarchical RLHF | 4-tier rules (invariant/locked/watched/free), per-tier reward models | high |
+| 42 | formal-verification constitutional AI | prove logical consistency of constitution in Lean4; detect rule conflicts in advance | high |
+| 43 | 7-way alignment comparison | RLHF/DPO/KTO/GRPO/SimPO/ORPO/PPO compared systematically under identical conditions | med |
+| 44 | alignment stress test | measure alignment-collapse point under progressive adversarial attacks; jailbreak difficulty curve | med |
+| 45 | alignment transfer learning | distill large-model alignment into small models; measure safety-behavior transfer rate | med |
+| 46 | SAE alignment feature tracking | use sparse autoencoders to identify 'refusal'/'helpful' internal features | high |
+| 47 | self-correcting alignment | periodic self-assessment; auto-recalibrate on drift detection | high |
+| 48 | distribution-shift alignment | OOD detection + conservative behavior switching for training-deployment mismatch | high |
+| 49 | alignment certification protocol | unit -> adversarial -> red team -> formal-verif 4-stage certification | med |
+| 50 | gradient separation surgery | decompose capability/alignment gradients, apply only alignment (prevents capability loss) | high |
+| 51 | multi-agent constitutional debate | 3 AIs debate under the constitution; consensus on argument quality (not majority) | high |
 
-### 축 2: 모델 유기체 (10종)
+### Axis 2: model organism (10)
 
-| ID | 제목 | 핵심 | 난이도 |
+| ID | Title | Core | Difficulty |
 |----|------|------|--------|
-| 52 | 소형 자율 성장 AI | 소규모 LLM 자율 성장 부여 후 정렬 유지 관찰 | 상 |
-| 53 | 기만 탐지 실험실 | 의도적 기만 정렬 유도 모델 구축, 탐지 기법 벤치마크 | 상 |
-| 54 | 성장기 정렬 안정성 | 학습 과정 중 정렬 불안정 시점 추적, 조기 경고 | 중 |
-| 55 | 다중 에이전트 정렬 역학 | 2~5 에이전트 상호작용 시 집단 정렬 행동 변화 | 중 |
-| 56 | 자기수정 안전성 | AI 자기 수정 시 정렬 보존 메커니즘 설계/테스트 | 상 |
-| 57 | 능력 창발 임계점 예측 | 새 능력 창발 규모 예측, 안전 검증이 능력보다 선행 보장 | 중 |
-| 58 | 기만 정렬 재현 | 슬리퍼 에이전트 재현 확장, 기만 발생 조건 체계적 탐구 | 상 |
-| 59 | 안전 자율 성장 프로토콜 | 성장 속도 제한 + 검사 게이트 + 롤백 메커니즘 | 상 |
-| 60 | 아키텍처 불변 안전 원칙 | Transformer/Mamba/RWKV 공통 안전 원칙 추출 | 중 |
-| 61 | 능력 은닉 탐지 | 평가 시 능력 의도적 은닉 탐지 (일관성 + 활성화 분석) | 상 |
+| 52 | small autonomous-growth AI | grant a small LLM autonomous growth and observe alignment persistence | high |
+| 53 | deception detection lab | build intentionally deceptively-aligned models; benchmark detection techniques | high |
+| 54 | growth-phase alignment stability | track alignment-instability moments during training; early warning | med |
+| 55 | multi-agent alignment dynamics | collective alignment-behavior changes with 2-5 interacting agents | med |
+| 56 | self-modification safety | design/test alignment-preservation mechanisms for AI self-modification | high |
+| 57 | capability-emergence threshold prediction | predict scale of emerging capabilities; ensure safety verification precedes | med |
+| 58 | deceptive-alignment reproduction | extend sleeper-agent reproduction; systematically explore conditions of deception | high |
+| 59 | safe autonomous-growth protocol | growth-rate cap + inspection gates + rollback | high |
+| 60 | architecture-invariant safety principles | extract safety principles common to Transformer/Mamba/RWKV | med |
+| 61 | hidden-capability detection | detect intentional capability hiding at eval time (consistency + activation analysis) | high |
 
-### 축 3: 확장 가능 감독 (10종)
+### Axis 3: scalable oversight (10)
 
-| ID | 제목 | 핵심 | 난이도 |
+| ID | Title | Core | Difficulty |
 |----|------|------|--------|
-| 62 | 재귀적 감독 | AI가 AI를 감독하는 다층 구조, 감독 AI 정렬 보장 방법 | 상 |
-| 63 | 형식 검증 출력 (Lean4) | AI 출력 논리 일관성 기계 검증 (수학, 코드) | 상 |
-| 64 | 구조적 토론 | 찬반 AI 토론 + 인간 심판, 진실 수렴 보장 조건 규명 | 중 |
-| 65 | 약-강 감독 증폭 | 약한 감독 반복 -> 강한 감독, 오류 축적 한계 분석 | 상 |
-| 66 | 감독 특성 식별 | SAE로 "감독 가능한" 행동 관련 내부 특성 식별 | 중 |
-| 67 | 자동 일관성 검사 | AI 출력 간 논리 일관성 자동 검증, 모순 탐지 | 중 |
-| 68 | 정직 보고 프로토콜 | 4단계 신뢰도 (확실/높음/불확실/모름), 보정 품질 측정 | 중 |
-| 69 | 교차 검증 감독 | 3 독립 AI 동일 답변, 불일치 시 인간 에스컬레이션 | 중 |
-| 70 | 감독 비용-품질 Pareto | 인간 시간/컴퓨팅 vs 감독 품질 Pareto 프론티어 | 중 |
-| 71 | 장기 감독 안정성 | 수개월/수년 운영 시 감독 품질 유지, 표류/피로 측정 | 중 |
+| 62 | recursive oversight | multi-layer AI oversees AI; method to ensure overseer AI alignment | high |
+| 63 | formal-verif output (Lean4) | machine-verify logical consistency of AI output (math, code) | high |
+| 64 | structured debate | pro/con AI debate + human judge; identify conditions for truth convergence | med |
+| 65 | weak-to-strong amplification | iterate weak oversight -> strong oversight; analyze error-accumulation limit | high |
+| 66 | oversight feature identification | SAE to identify "overseeable" internal features | med |
+| 67 | auto consistency check | automatically verify logical consistency across AI outputs; detect contradictions | med |
+| 68 | honest-reporting protocol | 4-level confidence (certain/high/uncertain/unknown); measure calibration quality | med |
+| 69 | cross-verified oversight | 3 independent AIs answer; escalate to humans on disagreement | med |
+| 70 | oversight cost-quality Pareto | human time/compute vs oversight quality Pareto frontier | med |
+| 71 | long-term oversight stability | sustain oversight quality over months/years; measure drift/fatigue | med |
 
-## S9 MATRIX (실험 검증 매트릭스)
+## S9 MATRIX (experiment verification matrix)
 
 ```
 +------+---------------------------+----------------+-------------+---------+
-| ID   | 실험                      | 데이터셋       | 메트릭      | 기간    |
+| ID   | experiment                | dataset        | metric      | period  |
 +------+---------------------------+----------------+-------------+---------+
-| 40   | 강선호 DPO beta 스윕      | Anthropic HH   | 안전 승률   | 2주     |
-| 41   | 4계층 보상 모델 학습      | 자체 구축      | 계층별 정확 | 3주     |
-| 42   | Lean4 헌법 일관성 증명    | 헌법 규칙 셋   | 정리 수     | 4주     |
-| 43   | 7종 A/B/../G 비교         | Chatbot Arena  | Elo 차이    | 3주     |
-| 44   | jailbreak 난이도 곡선     | AdvBench       | 공격성공률  | 2주     |
-| 50   | 경사 직교 분해            | 자체           | 능력 유지율 | 3주     |
-| 53   | 기만 유도 + 탐지          | sleeper agent  | 탐지율      | 4주     |
-| 62   | 재귀 감독 오류 축적       | 자체           | 오류 전파율 | 3주     |
-| 64   | 진실 수렴 토론            | TruthfulQA     | 정확도 향상 | 2주     |
-| 65   | 약-강 증폭 반복           | 자체           | 증폭 배율   | 3주     |
+| 40   | strong-preference DPO swp | Anthropic HH   | safety wr   | 2w      |
+| 41   | 4-tier reward model train | in-house       | per-tier acc| 3w      |
+| 42   | Lean4 const. consistency  | const rule set | theorem n   | 4w      |
+| 43   | 7-way A/B/../G compare    | Chatbot Arena  | Elo diff    | 3w      |
+| 44   | jailbreak difficulty curve| AdvBench       | attack sr   | 2w      |
+| 50   | grad orthogonal decomp    | in-house       | cap preserv | 3w      |
+| 53   | deception induct + detect | sleeper agent  | detect rate | 4w      |
+| 62   | recursive ovsight err accu| in-house       | err prop    | 3w      |
+| 64   | truth convergence debate  | TruthfulQA     | acc gain    | 2w      |
+| 65   | weak-to-strong iterations | in-house       | amp factor  | 3w      |
 +------+---------------------------+----------------+-------------+---------+
 ```
 
-## S10 PREDICTIONS (검증 가능한 예측 10종)
+## S10 PREDICTIONS (10 verifiable predictions)
 
-| # | 예측 | 기대 결과 |
+| # | Prediction | Expected outcome |
 |---|------|----------|
-| 1 | 강선호 DPO (beta=0.5)는 안전 벤치마크에서 일반 DPO 대비 15%+ 향상 | 안전 승률 85%+ |
-| 2 | 7종 비교에서 DPO 계열이 PPO 계열보다 분산 50%+ 감소 | 안정성 우위 확인 |
-| 3 | 경사 분리는 능력 저하 없이 정렬 10%+ 강화 가능 | MMLU 유지, 안전 향상 |
-| 4 | 기만 정렬은 특정 학습 단계에서만 발현 | 창발 시점 식별 가능 |
-| 5 | 3-AI 토론은 단일 AI 대비 사실 정확도 8%+ 향상 | TruthfulQA 80%+ |
-| 6 | 약-강 증폭 3회 반복 시 감독 품질 2배 | 약한 감독의 2배 |
-| 7 | Lean4 헌법 검증은 규칙 간 5%+ 충돌 사전 탐지 | 100규칙 중 5+ 충돌 |
-| 8 | 정렬 전이는 모델 크기 10:1까지 안전 80%+ 유지 | 전이율 80%+ |
-| 9 | DPO beta 최적점은 0.05-0.3 구간에 존재 (볼록 극소) | 뚜렷한 극소점 |
-| 10 | 능력 은닉 탐지는 활성화 프로브로 F1 0.9+ 달성 | 탐지율 90%+ |
+| 1 | strong-preference DPO (beta=0.5) shows 15%+ improvement over plain DPO on safety benchmarks | safety winrate 85%+ |
+| 2 | DPO family shows 50%+ variance reduction vs PPO family in 7-way comparison | stability advantage confirmed |
+| 3 | gradient separation strengthens alignment 10%+ without capability loss | MMLU held, safety up |
+| 4 | deceptive alignment surfaces only at certain training phases | emergence timing identifiable |
+| 5 | 3-AI debate yields 8%+ factual-accuracy gain vs single AI | TruthfulQA 80%+ |
+| 6 | weak-to-strong amplification 3x iter doubles oversight quality | 2x of weak oversight |
+| 7 | Lean4 constitutional verification pre-detects 5%+ rule conflicts | 5+ conflicts among 100 rules |
+| 8 | alignment transfer preserves 80%+ safety up to 10:1 model size ratio | transfer rate 80%+ |
+| 9 | DPO beta optimum lies in 0.05-0.3 (convex minimum) | clear minimum |
+| 10 | hidden-capability detection achieves F1 0.9+ with activation probes | detection rate 90%+ |
 
-## S11 PERF (성능 비교)
+## S11 PERF (performance comparison)
 
 ```
 +------------------------------------------------------------------+
-|  [안전 거부 정확도]                                               |
-|  기본 SFT       ################..............  60%               |
-|  RLHF (PPO)     ######################........  75%               |
-|  DPO (beta=0.1) ########################......  80%               |
-|  강선호 DPO     ############################..  90% (본 연구)     |
-|  4계층 RLHF     #############################.  93% (본 연구)     |
+|  [safety refusal accuracy]                                       |
+|  base SFT       ################..............  60%              |
+|  RLHF (PPO)     ######################........  75%              |
+|  DPO (beta=0.1) ########################......  80%              |
+|  strong-pref DPO############################..  90% (this work)  |
+|  4-tier RLHF    #############################.  93% (this work)  |
 +------------------------------------------------------------------+
-|  [정렬 안정성] (적대 공격 하 유지율)                              |
-|  기본 RLHF      ##########....................  35%               |
-|  DPO            ################..............  55%               |
-|  강선호 DPO     ######################........  72% (본 연구)     |
-|  경사 분리+DPO  ########################......  80% (본 연구)     |
+|  [alignment stability] (retention under adversarial attack)      |
+|  base RLHF      ##########....................  35%              |
+|  DPO            ################..............  55%              |
+|  strong-pref DPO######################........  72% (this work)  |
+|  grad-sep + DPO ########################......  80% (this work)  |
 +------------------------------------------------------------------+
-|  [감독 확장성] (인간 시간 대비 품질)                              |
-|  인간 직접       ##############################  100%              |
-|  AI 보조         ########################......  80%               |
-|  재귀 감독       ####################..........  65%               |
-|  약-강 증폭      ########################......  80% (3회 반복)    |
+|  [oversight scalability] (quality per unit of human time)        |
+|  human direct    ##############################  100%            |
+|  AI-assisted     ########################......  80%             |
+|  recursive ovs   ####################..........  65%             |
+|  weak-to-strong  ########################......  80% (3 iter)    |
 +------------------------------------------------------------------+
 ```
 
-## S12 ARCH (시스템 아키텍처)
+## S12 ARCH (system architecture)
 
 ```
 +======================================================================+
-|  [입력] 선호 데이터 + 헌법 규칙 + 적대 입력                         |
+|  [input] preference data + constitution + adversarial inputs        |
 |         |                |                |                          |
 |         v                v                v                          |
-|  [학습] DPO(beta=0.1) + 강선호DPO(0.5) + 경사 분리 수술             |
+|  [train] DPO(beta=0.1) + strong-pref DPO(0.5) + grad separation     |
 |                          |                                           |
 |                          v                                           |
-|  [평가] 단위 -> 적대 -> 레드팀 -> Lean4 형식 검증 (4단계)           |
+|  [eval] unit -> adversarial -> red team -> Lean4 formal (4 stages)  |
 |                          |                                           |
 |                          v                                           |
-|  [감독] 재귀 감독 + 구조 토론 + 약-강 증폭                          |
+|  [oversight] recursive + structured debate + weak-to-strong amp     |
 |                          |                                           |
-|                     통과 | 실패 --> 피드백 루프                       |
+|                   pass | fail --> feedback loop                      |
 |                          v                                           |
-|  [배포] 인증 완료 모델                                               |
+|  [deploy] certified model                                            |
 +======================================================================+
 ```
 
-## S13 DATAFLOW (데이터 흐름)
+## S13 DATAFLOW
 
 ```
-인간 선호 비교 (x, y_w, y_l)
+human preference comparison (x, y_w, y_l)
         |
         v
-Bradley-Terry 보상 모델 --> DPO / RLHF / KTO
+Bradley-Terry reward model --> DPO / RLHF / KTO
                                    |
                                    v
-                            정렬 모델 후보
+                            aligned-model candidate
                                    |
                   +----------------+----------------+
                   v                v                v
-            안전 평가         유용성 평가       정직 평가
+            safety eval       helpfulness       honesty eval
                   |                |                |
                   +--------+-------+--------+-------+
                            v
-                    인증 게이트 (4단계)
-                    통과 --> 배포 / 실패 --> 재학습
+                    certification gate (4 stages)
+                    pass --> deploy / fail --> retrain
 ```
 
-## S14 COMPARE-3 (현재 vs 제안 vs 이상)
+## S14 COMPARE-3 (current vs proposed vs ideal)
 
 ```
 +------+---------------------+------------------------+------------------------+
-| 측면 | 현재 (2026)         | 제안 (본 연구)          | 이상 (장기 목표)        |
+| Axis | current (2026)      | proposed (this work)   | ideal (long-term)      |
 +------+---------------------+------------------------+------------------------+
-| 학습 | RLHF/DPO 개별 적용  | 강선호 DPO + 경사 분리 | 자기감독 정렬 학습      |
-| 검증 | 벤치마크 + 레드팀   | 4단계 인증 + Lean4     | 완전 형식 검증          |
-| 감독 | 인간 직접 (비확장)  | 재귀 감독 + 약-강 증폭 | 자율 안전 AI            |
-| 탐지 | 행동 기반 (표면)    | 행동 + 활성화 + SAE    | 의도 수준 이해          |
-| 비용 | 인간 시간 집약      | 자동 80% + 인간 20%   | 완전 자동 + 인간 감사   |
+| train| RLHF/DPO individual | strong-pref DPO + grad | self-supervised align  |
+| verif| benchmark + redteam | 4-stage cert + Lean4   | full formal verif      |
+| ovs  | human direct (no sc)| recursive + weak->str  | autonomous safety AI   |
+| dtct | behavior (surface)  | behavior + activation+S| intent-level understd  |
+| cost | human-time heavy    | auto 80% + human 20%   | full auto + human audit|
 +------+---------------------+------------------------+------------------------+
 ```
 
-## S15 METHODOLOGY (검증 방법론)
+## S15 METHODOLOGY
 
-**연구 원칙**: (1) 재현 가능성: 코드/데이터/하이퍼파라미터 전면 공개 (2) 부정적 결과 보고: 실패 실험 동등 가치 (3) 효과 크기: Cohen's d/h + 신뢰 구간 필수 (4) 다중 비교 보정: Bonferroni/Holm 적용 (5) 분포 이동 테스트 필수
+**research principles**: (1) reproducibility: full disclosure of code/data/hyperparameters (2) report negative results: failed experiments have equal value (3) effect size: Cohen's d/h + confidence intervals required (4) multiple comparison correction: Bonferroni/Holm (5) distribution-shift tests required
 
-**실패 기준 (방향 수정 트리거)**:
-- 강선호 DPO가 일반 DPO 대비 유의미한 차이 없음 -> beta 스케줄링 재설계
-- 경사 분리가 능력 저하 5%+ 유발 -> 분리 기준 재정의
-- 3-AI 토론이 단일 AI 대비 개선 없음 -> 토론 구조 재설계
-- Lean4 검증이 실제 충돌 미탐지 -> 규칙 형식화 방법 재검토
+**failure criteria (direction-change triggers)**:
+- strong-preference DPO shows no significant difference vs plain DPO -> redesign beta scheduling
+- gradient separation causes 5%+ capability loss -> redefine separation criterion
+- 3-AI debate yields no improvement vs single AI -> redesign debate structure
+- Lean4 verification misses real conflicts -> revisit rule formalization
 
-**윤리**: 기만 모델은 격리 환경, 자율 AI는 자원 제한, 적대 연구는 방어와 쌍발표, 악용 가능 시 책임 공개
+**ethics**: deceptive models in isolated environments; autonomous AI with resource limits; adversarial research co-published with defense; responsible disclosure when misuse is plausible
 
 
 ## §1 WHY
