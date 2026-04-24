@@ -457,7 +457,7 @@ This paper may later be submitted as a **separate revised edition** after (i) br
 
 ---
 
-> **저자**: Park Minwoo (박민우), arsmoriendi99@proton.me, Hanam, Republic of Korea.
+> **Author**: Park Minwoo, arsmoriendi99@proton.me, Hanam, Republic of Korea.
 > **MSC2020**: 11A25 (Arithmetic functions), 11B68 (Bernoulli numbers), 14J28 (K3 surfaces), 11G05 (Elliptic curves), 03D10 (Computability).
 > **License**: CC BY 4.0 (intent), pre-publication draft only.
 > **Source**: n6-architecture/papers/group-P/F1-arxiv-bernoulli-independent-via-n6-2026-04-15.md.

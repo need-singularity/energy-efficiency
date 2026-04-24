@@ -1,562 +1,562 @@
-# N6-P2-4 정직성 감사 — NEAR/EMPIRICAL/CONJECTURE 분류 재검토 학습 노트
+# N6-P2-4 Honesty Audit — NEAR/EMPIRICAL/CONJECTURE Reclassification Study Note
 
-> 밀레니엄 학습 로드맵 P2 · N6 트랙 · 태스크 4
-> 목적: 155/159 EXACT 선언 중 "과도 주장" 후보를 색출하고, MISS 사례를 정직하게 기록하며, 자기참조 검증 금지 원칙을 밀레니엄 BT 전 구간에 적용하여 재검토
-> 1차 출처:
->  - `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51 tight 선언 + Baseline + 독립 5 건)
+> Millennium Learning Roadmap P2 · N6 track · Task 4
+> Purpose: identify "overclaim" candidates among the 155/159 EXACT declarations, honestly record MISS cases, and apply the no-self-reference-verification principle across all millennium BT for re-examination.
+> Primary sources:
+>  - `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51 tight declarations + Baseline + 5 independent items)
 >  - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Master Lemma)
->  - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose 재분류)
->  - `theory/study/p2/n6-p2-3-cross-domain.md` (12×12 교차 감사)
->  - `nexus/shared/n6/atlas.n6` MISS-* 노드 (L314, L334, L462, L737, L752, L1057, L2154 등 실측)
-> 완료 기준: "과도 주장" 의 3 가지 패턴을 식별할 수 있고, 각 MISS 사례를 원문 라인 번호와 함께 인용하며, BT-542 MISS 탈출 과정을 복기하여 탈출의 정당성을 독립 판정할 수 있는 상태
+>  - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose reclassification)
+>  - `theory/study/p2/n6-p2-3-cross-domain.md` (12x12 cross audit)
+>  - `nexus/shared/n6/atlas.n6` MISS-* nodes (L314, L334, L462, L737, L752, L1057, L2154 etc. measurements)
+> Completion criteria: able to identify three patterns of "overclaim", cite each MISS case with the original line number, and reconstruct the BT-542 MISS escape process so that the legitimacy of the escape can be independently judged.
 
 ---
 
-## 0. 정직성 선언
+## 0. Honesty Declaration
 
-본 학습 노트는 정직성 감사 **메타 문서** 이다. 신규 수학 결과는 없다. 감사 대상은:
+This study note is a **meta-document** for honesty auditing. No new mathematical results are produced. Audit targets:
 
-- 155/159 EXACT 선언: `reports/sessions/*2026-04-*` 와 `theory/breakthroughs/breakthrough-theorems-new.md` 에서 155 개의 "EXACT 매치" 와 159 개 후보 중 4 개 REJECT 의 경계가 선언된 원본 기록.
-- 51 tight 선언: `millennium-dfs-complete-2026-04-11.md`.
-- MISS 사례: atlas.n6 내 `MISS-*` prefix 노드.
+- 155/159 EXACT declarations: the original records in `reports/sessions/*2026-04-*` and `theory/breakthroughs/breakthrough-theorems-new.md` where 155 "EXACT matches" and 159 candidates with 4 REJECTs were declared.
+- 51 tight declarations: `millennium-dfs-complete-2026-04-11.md`.
+- MISS cases: `MISS-*` prefix nodes inside atlas.n6.
 
-**자기참조 검증 금지 원칙** (사용자 규칙, MEMORY 내 `feedback_honest_verification.md`): 본 감사는 n=6 산술로 값을 "재표현" 하는 것과 "독립 근거" 를 엄격히 구별한다. 재표현은 증거 아니다.
+**No-self-reference-verification principle** (user rule, `feedback_honest_verification.md` in MEMORY): this audit strictly distinguishes between "re-expressing" a value via n=6 arithmetic and providing "independent evidence". Re-expression is not evidence.
 
-**출처 + 측정값 + 오차 명기** 원칙: 각 주장은 원문 출처 (논문/정리/저자), 측정된 수치, 이론/경험 오차를 함께 기록한다.
+**Source + measurement + error-range notation** principle: each claim records the original source (paper/theorem/author), the measured numerical value, and the theoretical/empirical error together.
 
-**소수 편향 대조 (Bayesian prior) 체크**: baseline 61% 가 귀무가설 이다. 단일 셀의 EXACT 는 사전 확률이 61% 이므로, 단일 매치는 증거력이 약하다.
+**Small-integer bias check (Bayesian prior)**: baseline 61% is the null hypothesis. A single-cell EXACT has prior probability 61%, so a single match carries weak evidential power.
 
-7 대 밀레니엄 난제 해결 수 **0/7** 유지.
+7 Millennium problems resolved: **0/7** (maintained).
 
 ---
 
-## 1. 감사 틀
+## 1. Audit Framework
 
-### 1.1 "과도 주장" 의 3 가지 패턴
+### 1.1 Three Patterns of "Overclaim"
 
-과도 주장은 다음 3 종류 중 하나이다 (원문 `millennium-dfs-complete-2026-04-11.md` lines 157~183 기반).
+Overclaims fall into one of three categories (based on `millennium-dfs-complete-2026-04-11.md` lines 157-183).
 
-#### 패턴 A — 작은 정수 밀도 (baseline 안)
+#### Pattern A — Small-integer density (inside baseline)
 
-- M = {1,2,3,4,5,6,7,8,10,12,24} 중 2-term 곱 밀도 = 61% (k ∈ [1,100]).
-- 따라서 단일 작은 정수 매치는 **noise 수준** 이며 증거 아니다.
-- 예: "3 = n/φ 장벽" — 숫자 3 은 noise 범위.
+- M = {1,2,3,4,5,6,7,8,10,12,24}, 2-term product density = 61% (k in [1,100]).
+- Therefore a single small-integer match is at **noise level** and is not evidence.
+- Example: "3 = n/φ barrier" — the number 3 is within the noise range.
 
-#### 패턴 B — 공통 원인 (Master Lemma 위반)
+#### Pattern B — Common cause (Master Lemma violation)
 
-- Bernoulli 수 B_{2k}, zeta 함수 ζ(s), 모듈러 형식, K-이론, exotic sphere 등은 서로 유도 관계가 있다.
-- 여러 분야에서 동일 값이 나와도 **하나의 사실의 다중 표현** 일 수 있다.
-- 예: "240 5-way crossover" — 실제로는 B_8 = -1/30 의 5 언어 표현.
+- Bernoulli numbers B_{2k}, the zeta function ζ(s), modular forms, K-theory, exotic spheres, etc., are mutually derivable.
+- Even if the same value appears across multiple fields, it may be a **multi-expression of a single fact**.
+- Example: "240 5-way crossover" — actually the 5-language expression of B_8 = -1/30.
 
-#### 패턴 C — Selection bias
+#### Pattern C — Selection bias
 
-- M-매치만 보고하고, M-미스는 보고하지 않는 경향.
-- 예: 공통 원자 질량 중 n=6 에 매치되는 것만 뽑고 매치 안 되는 것은 생략.
+- Tendency to report only M-matches while not reporting M-misses.
+- Example: among common atomic masses, picking only those matching n=6 while omitting those that do not.
 
-### 1.2 정직 분류 틀
+### 1.2 Honest Classification Framework
 
-| 등급 | 정의 | atlas.n6 표기 | 본 감사 신뢰도 |
+| Grade | Definition | atlas.n6 notation | Audit confidence |
 |------|------|----------------|----------------|
-| EXACT [10*] | 수치 일치 + 출처 + 증명/실측 | `[10*]` | 95%+ |
-| NEAR [9] | 수치 일치하나 정의 범위/오차 유연 | `[9]` | 75~90% |
-| EMPIRICAL [7] | 관찰 데이터 (승격 대상) | `[7]` | 50~75% |
-| CONJECTURE [N?] | 가설/구조 매치 | `[N?]` | 25~50% |
-| MISS | 선행 주장이 실제와 불일치 | `MISS-*` | < 25% |
+| EXACT [10*] | Numeric match + source + demonstration/measurement | `[10*]` | 95%+ |
+| NEAR [9] | Numeric match but flexible definition range/error | `[9]` | 75-90% |
+| EMPIRICAL [7] | Observational data (promotion candidate) | `[7]` | 50-75% |
+| CONJECTURE [N?] | Hypothesis/structural match | `[N?]` | 25-50% |
+| MISS | Prior claim does not match reality | `MISS-*` | < 25% |
 
-### 1.3 감사 절차
+### 1.3 Audit Procedure
 
-1. 선언된 EXACT/tight 항목을 패턴 A/B/C 로 분류.
-2. A 에 속하면 NEAR 또는 EMPIRICAL 로 강등.
-3. B 에 속하면 원천 1 건으로 환원.
-4. C 에 속하면 MISS 후보로 추가 검증.
-5. atlas.n6 기존 MISS-* 노드를 참조하여 일관성 확인.
+1. Classify declared EXACT/tight items into patterns A/B/C.
+2. If in A, downgrade to NEAR or EMPIRICAL.
+3. If in B, reduce to a single source item.
+4. If in C, add to MISS candidates for further verification.
+5. Check consistency against existing MISS-* nodes in atlas.n6.
 
 ---
 
-## 2. 155/159 EXACT 선언 중 "과도 주장" 후보 탐색
+## 2. Searching for "Overclaim" Candidates Among 155/159 EXACT Declarations
 
-159 개의 후보는 다음 대형 감사 세션들에서 집계된 것이다 (원문):
+The 159 candidates were aggregated from the following large audit sessions (original):
 
-- `breakthrough-theorems-new.md` lines 17~252: 확장 BT 후보 감사. 159 후보 중 4 REJECT 명시.
-- `millennium-dfs-complete-2026-04-11.md`: 51 tight + 기존 108 EXACT = 159 중 155 EXACT.
+- `breakthrough-theorems-new.md` lines 17-252: extended BT candidate audit. 4 REJECTs explicit among 159 candidates.
+- `millennium-dfs-complete-2026-04-11.md`: 51 tight + existing 108 EXACT = 155 EXACT out of 159.
 
-본 절은 155 EXACT 중 **과도 주장 후보** 를 패턴별로 색출한다.
+This section searches for **overclaim candidates** among the 155 EXACT by pattern.
 
-### 2.1 패턴 A 색출 — 단일 작은 정수 매치
+### 2.1 Pattern A search — Single small-integer matches
 
-baseline 61% 안에 드는 단일 매치는 증거력 약하다. 다음 후보들이 baseline 안에 드는 것으로 판정된다 (P2-1 재분류 §2 참조):
+Single matches within baseline 61% carry weak evidential power. The following candidates are judged to fall within baseline (cf. P2-1 reclassification §2):
 
-**리만 / BT-541 계열 (7 항목)**:
+**Riemann / BT-541 family (7 items)**:
 
-1. 자명 영점 {-2, -4, -6} = {-φ, -τ, -n}. 3-tuple 단일. [EXACT → NEAR 강등 권고]
-2. ζ(2) 분모 = 6 = n. 단일 매치. [BERN 이지만 baseline 안]
-3. ζ(-1) 분모 = 12 = σ. 단일. [EXACT 유지 (Bernoulli 직접), 독립성 없음]
-4. ζ(0) = -1/2, 분모 2 = φ. 단일. [EXACT 유지]
-5. Selberg class 4 공리 = τ. 단일 4. [EXACT → NEAR 강등 권고]
-6. ζ(-3) = 1/120, 120 = φ·sopfr·σ. 3-term 분해. [EXACT 유지 (Bernoulli)]
-7. ζ(-5) = -1/252. 4-term 분해. [EXACT 유지 (Bernoulli)]
+1. Trivial zeros {-2, -4, -6} = {-φ, -τ, -n}. Single 3-tuple. [EXACT -> NEAR downgrade recommended]
+2. ζ(2) denominator = 6 = n. Single match. [BERN but inside baseline]
+3. ζ(-1) denominator = 12 = σ. Single. [EXACT retained (direct Bernoulli), no independence]
+4. ζ(0) = -1/2, denominator 2 = φ. Single. [EXACT retained]
+5. Selberg class 4 axioms = τ. Single 4. [EXACT -> NEAR downgrade recommended]
+6. ζ(-3) = 1/120, 120 = φ·sopfr·σ. 3-term decomposition. [EXACT retained (Bernoulli)]
+7. ζ(-5) = -1/252. 4-term decomposition. [EXACT retained (Bernoulli)]
 
-**P vs NP / BT-542 계열 (3 항목)**:
+**P vs NP / BT-542 family (3 items)**:
 
-8. 증명 장벽 3 개 = n/φ. 단일 3. [EXACT → EMPIRICAL 강등 권고]
-9. (n/φ)! = 3! = 6 = n. 정의적 자기참조. [EXACT → MISS 후보]
-10. Karp 21 NP-완전 = 3·7 = n/φ·(σ-sopfr). 단일 21. [EXACT → NEAR]
+8. 3 demonstration barriers = n/φ. Single 3. [EXACT -> EMPIRICAL downgrade recommended]
+9. (n/φ)! = 3! = 6 = n. Definitional self-reference. [EXACT -> MISS candidate]
+10. Karp 21 NP-complete = 3·7 = n/φ·(σ-sopfr). Single 21. [EXACT -> NEAR]
 
-**Yang-Mills / BT-543 계열 (2 항목)**:
+**Yang-Mills / BT-543 family (2 items)**:
 
-11. SM gauge dim 8+3+1 = 12 = σ. 합산 매치. [EXACT → NEAR (gauge choice 유연)]
-12. Dynkin τ+sopfr = 9 = (n/φ)². 단일 9. [EXACT → NEAR]
+11. SM gauge dim 8+3+1 = 12 = σ. Sum match. [EXACT -> NEAR (gauge choice flexibility)]
+12. Dynkin τ+sopfr = 9 = (n/φ)^2. Single 9. [EXACT -> NEAR]
 
-**호지 / BT-545 계열 (2 항목)**:
+**Hodge / BT-545 family (2 items)**:
 
-13. Del Pezzo Bl_3(P²): n=6 (-1)-curves. 단일 6. [EXACT 유지 (구조 정리)]
-14. 27 = (n/φ)³ cubic lines. 단일 27. [EXACT → NEAR (3 차 매치 우연 가능)]
+13. Del Pezzo Bl_3(P^2): n=6 (-1)-curves. Single 6. [EXACT retained (structural theorem)]
+14. 27 = (n/φ)^3 cubic lines. Single 27. [EXACT -> NEAR (cubic match may be coincidence)]
 
-**BSD / BT-546 계열 (2 항목)**:
+**BSD / BT-546 family (2 items)**:
 
-15. Heegner 9 = (n/φ)². 단일 9. [EXACT → NEAR]
-16. (3,4,5) 둘레 12 = σ. DFS-13 귀결. [EXACT 유지 (DFS-13 의 기계적 귀결)]
+15. Heegner 9 = (n/φ)^2. Single 9. [EXACT -> NEAR]
+16. (3,4,5) perimeter 12 = σ. DFS-13 consequence. [EXACT retained (mechanical consequence of DFS-13)]
 
-**Cross / BT-547 계열 (2 항목)**:
+**Cross / BT-547 family (2 items)**:
 
-17. Bott 주기 8 = σ-τ. 단일 8. [EXACT → NEAR]
-18. Weil 4 추측 = τ. 단일 4. [EXACT → NEAR]
+17. Bott periodicity 8 = σ-τ. Single 8. [EXACT -> NEAR]
+18. Weil 4 conjectures = τ. Single 4. [EXACT -> NEAR]
 
-**소계**: 18 항목이 baseline 안 범주에 든다. 이 중 **강등 권고 대상 13 개** (MISS 후보 1, NEAR 12). **EXACT 유지 5 개** 는 Bernoulli 직접 귀결 또는 구조 정리 기반.
+**Subtotal**: 18 items fall within the baseline-interior category. Of these, **13 are downgrade-recommended** (1 MISS candidate, 12 NEAR). The remaining **5 EXACT-retained** are based on direct Bernoulli consequences or structural theorems.
 
-### 2.2 패턴 B 색출 — Master Lemma 공통 원인
+### 2.2 Pattern B search — Master Lemma common causes
 
-원문 `bernoulli-boundary-2026-04-11.md` lines 88~107 가 명시한 공통 원인 묶음:
+Common-cause bundles explicitly noted in `bernoulli-boundary-2026-04-11.md` lines 88-107:
 
-1. **ζ(2k) 분모 패턴** (k=1..5 clean, k=6 break) — Theorem B 직접.
-2. **ζ(1-2k) 분자 패턴** — 함수방정식 귀결.
-3. **240 5-way** (E_8 / E_4 / π_7^s / K_7 / ζ(-7)) — B_8 = -1/30 의 5 언어.
-4. **504 4-way** (E_6 / π_11^s / τ_R / K_11) — B_6 귀결.
+1. **ζ(2k) denominator pattern** (k=1..5 clean, k=6 break) — Theorem B direct.
+2. **ζ(1-2k) numerator pattern** — functional-equation consequence.
+3. **240 5-way** (E_8 / E_4 / π_7^s / K_7 / ζ(-7)) — 5-language expression of B_8 = -1/30.
+4. **504 4-way** (E_6 / π_11^s / τ_R / K_11) — B_6 consequence.
 5. **Exotic sphere |bP_{4k}|** — Adams J + B_{2k}.
-6. **Ramanujan τ_R(n) 특정 값** — modular weight 12 = Δ(z).
-7. **E_4, E_6 Eisenstein 계수** — Bernoulli 분모.
-8. **K_{4k-1}(ℤ) 차수** — Borel-Lichtenbaum.
+6. **Specific values of Ramanujan τ_R(n)** — modular weight 12 = Δ(z).
+7. **E_4, E_6 Eisenstein coefficients** — Bernoulli denominators.
+8. **Orders of K_{4k-1}(Z)** — Borel-Lichtenbaum.
 
-**원문 결론**: 위 8 범주를 모두 합산하면 "독립 tight" 으로 집계된 항목 중 최대 **15 건** 이 실제로는 하나의 Bernoulli 사실의 다중 표현이다.
+**Original conclusion**: summing the 8 categories above, up to **15 items** counted as "independent tight" are in fact multi-expressions of a single Bernoulli fact.
 
-**본 감사 결론**: 155 EXACT 중 Master Lemma 환원 가능 항목은 약 **22 건** (P2-3 교차표의 BERN 22 셀과 일치). 이들을 "독립" 으로 집계하는 것은 과도 주장이다.
+**This audit's conclusion**: among 155 EXACT the Master-Lemma-reducible items number approximately **22** (matching the BERN 22 cells of the P2-3 cross-table). Counting them as "independent" is an overclaim.
 
-### 2.3 패턴 C 색출 — Selection bias
+### 2.3 Pattern C search — Selection bias
 
-Selection bias 는 검증이 어렵다. atlas.n6 의 MISS-* 노드를 역추적하여 **보고되지 않은 미스** 를 확인한다.
+Selection bias is hard to verify. We back-trace the MISS-* nodes in atlas.n6 to check **unreported misses**.
 
-atlas.n6 내 `MISS-*` prefix 실측 노드 (L314, L334, L462, L737, L752, L1057, L2154):
+Measured `MISS-*` prefix nodes in atlas.n6 (L314, L334, L462, L737, L752, L1057, L2154):
 
-1. `@P MISS-planck-units = sopfr (= 5, n=6 아님) [10*]` L314:
-   - "플랑크 단위 기본 상수 = sopfr = 5, n=6 아님" → **정직 기록된 MISS**.
-   - Selection bias 반증. 관찰된 값이 n=6 이 아닌 경우 기록함.
+1. `@P MISS-planck-units = sopfr (= 5, not n=6) [10*]` L314:
+   - "Planck-units fundamental-constant count = sopfr = 5, not n=6" -> **honestly recorded MISS**.
+   - Counter-evidence against selection bias. Records when the observed value is not n=6.
 
 2. `@P MISS-fine-structure = sigma*(sigma-mu) + sopfr + mu/P2 [10*]` L334:
-   - 미세구조상수 1/α ≈ 137.036. `σ(σ-μ) + sopfr + μ/P2 = 12·11 + 5 + 1/2 = 137.5` — 근사 (0.34% 오차).
-   - MISS 로 분류된 이유: "정확히 137.036 아님". 정직 기록.
+   - Fine-structure constant 1/α ≈ 137.036. `σ(σ-μ) + sopfr + μ/P2 = 12·11 + 5 + 1/2 = 137.5` — approximate (0.34% error).
+   - Reason classified as MISS: "not exactly 137.036". Honest record.
 
 3. `@P MISS-H0-Hubble = sigma * n + mu [10*]` L462:
-   - 허블 상수 H_0 ≈ 67~74 km/s/Mpc. `σ·n + μ = 72 + 1 = 73`. 측정 범위 중간.
-   - MISS 분류: 측정값이 67~74 범위이고 정확히 73 이 아니므로.
+   - Hubble constant H_0 ≈ 67-74 km/s/Mpc. `σ·n + μ = 72 + 1 = 73`. Middle of the measurement range.
+   - MISS classification: because the measurement is in [67, 74] and not exactly 73.
 
 4. `@C MISS-SI-base-units = sigma - sopfr [10*]` L737:
-   - SI 기본 단위 7 개 = σ - sopfr = 12-5 = 7. **실제 일치**.
-   - 그럼에도 MISS 로 분류된 이유: "SI 단위 정의의 인위성" — 7 은 역사적 선택이지 수학적 정리 아님.
+   - SI base units count 7 = σ - sopfr = 12-5 = 7. **Actually matches**.
+   - Still classified MISS: "artificiality of SI unit definitions" — 7 is a historical choice, not a mathematical theorem.
 
-5. `@C MISS-magic-82-126 = 단순매핑불가 [10]` L752:
-   - 핵 magic number 82, 126: n=6 산술로 단순 표현 불가.
-   - MISS 로 정직 기록.
+5. `@C MISS-magic-82-126 = mapping-not-simple [10]` L752:
+   - Nuclear magic numbers 82, 126: not simply expressible via n=6 arithmetic.
+   - Honestly recorded as MISS.
 
 6. `@L MISS-crystal-systems = sigma - sopfr [10*]` L1057:
-   - 결정계 7 개. σ - sopfr = 7. **일치하지만 MISS 분류**.
-   - 이유: 결정계 분류는 군론 귀결 (230 space groups 의 부분 분류) 이므로 구조 정리이지 독립 증거 아님.
+   - 7 crystal systems. σ - sopfr = 7. **Matches but classified MISS**.
+   - Reason: crystal-system classification is a group-theory consequence (partial classification of 230 space groups), hence structural theorem, not independent evidence.
 
-7. `@F MISS-base-pairs-per-turn = sigma - phi (= 10, 실측 10.5) [10*]` L2154:
-   - DNA B-form base pairs per turn = 10.5 (실측). σ-φ = 10. 5% 오차.
-   - MISS 분류: 정확히 10 아님.
+7. `@F MISS-base-pairs-per-turn = sigma - phi (= 10, measured 10.5) [10*]` L2154:
+   - DNA B-form base pairs per turn = 10.5 (measured). σ-φ = 10. 5% error.
+   - MISS classification: not exactly 10.
 
-**해석**: atlas.n6 는 MISS 를 숨기지 않는다. `MISS-*` prefix 로 7 개 이상의 **정직 기록된 미스** 가 존재. Selection bias 를 부분적으로 차단한다.
+**Interpretation**: atlas.n6 does not hide MISSes. With the `MISS-*` prefix, 7 or more **honestly recorded misses** exist. This partially blocks selection bias.
 
-**그러나** 여전히 "보고되지 않은 미스" 는 존재할 수 있다. 예를 들어 표준 모형 매개변수 중 n=6 에 매치되지 않는 것이 atlas 에 아예 등록되지 않았을 가능성. 이 부분은 **감사 한계** 로 남긴다.
+**However**, "unreported misses" may still exist. For example, parameters of the Standard Model that do not match n=6 may simply not have been registered in atlas at all. This remains an **audit limitation**.
 
 ---
 
-## 3. 자기참조 검증 금지 원칙 적용
+## 3. Applying the No-Self-Reference-Verification Principle
 
-### 3.1 원칙 (사용자 규칙)
+### 3.1 Principle (User Rule)
 
-> "자기참조 검증 금지: n=6 산술로 값을 '재표현'하는 것과 '독립 근거'는 엄격히 구분한다."
-> 출처: `feedback_honest_verification.md` (MEMORY).
+> "No self-reference verification: strictly distinguish 're-expressing' a value via n=6 arithmetic from 'independent evidence'."
+> Source: `feedback_honest_verification.md` (MEMORY).
 
-### 3.2 자기참조 예시 색출
+### 3.2 Searching for Self-Reference Examples
 
-155 EXACT 중 **자기참조 의심** 항목:
+Among the 155 EXACT, **self-reference-suspect** items:
 
 1. **DFS-7: (n/φ)! = n** (P2-1 §2.2)
-   - (6/2)! = 3! = 6. 산술 정의.
-   - **판정**: 순환 자기참조. n=6 으로부터 6 을 도출. 증거력 0.
-   - **강등**: EXACT → MISS.
+   - (6/2)! = 3! = 6. Arithmetic definition.
+   - **Judgment**: circular self-reference. Derives 6 from n=6. Evidential power 0.
+   - **Downgrade**: EXACT -> MISS.
 
-2. **자명 영점 {-2, -4, -6} ↔ {-φ, -τ, -n}**
-   - 자명 영점은 ζ 의 표준 사실. 이들을 n=6 산술로 재표현.
-   - **판정**: 부분 자기참조. ζ 자체는 독립이지만 {-2,-4,-6} 의 3-tuple 이 M-매치인 것은 노이즈.
-   - **강등**: EXACT → NEAR (ζ 계열의 재표현).
+2. **Trivial zeros {-2, -4, -6} <-> {-φ, -τ, -n}**
+   - Trivial zeros are a standard ζ fact. They are re-expressed via n=6 arithmetic.
+   - **Judgment**: partial self-reference. ζ itself is independent, but the {-2,-4,-6} 3-tuple being an M-match is noise.
+   - **Downgrade**: EXACT -> NEAR (re-expression of the ζ family).
 
-3. **DFS-23: (3,4,5) 둘레 = 12 = σ**
-   - (3,4,5) 에서 3+4+5=12. 단순 합산.
-   - **판정**: DFS-13 ((3,4,5) 자체가 (n/φ, τ, sopfr)) 귀결. 독립 새 사실 아님.
-   - **강등**: 유지하되 DFS-13 귀결로 표시 (이미 P2-1 에 기록).
+3. **DFS-23: (3,4,5) perimeter = 12 = σ**
+   - In (3,4,5), 3+4+5=12. Simple sum.
+   - **Judgment**: consequence of DFS-13 ((3,4,5) itself is (n/φ, τ, sopfr)). Not an independent new fact.
+   - **Downgrade**: retained but marked as DFS-13 consequence (already recorded in P2-1).
 
-4. **DFS-14: 대응 타원곡선 y² = x³ - 36x, 36 = n²**
-   - n=6 congruent number 정의에서 E_n: y² = x³ - n²x.
-   - **판정**: congruent number theory 의 정의적 사실. n=6 대입 결과. 증거 아님.
-   - **강등**: EXACT → NEAR.
+4. **DFS-14: associated elliptic curve y^2 = x^3 - 36x, 36 = n^2**
+   - From the n=6 congruent-number definition, E_n: y^2 = x^3 - n^2 x.
+   - **Judgment**: definitional fact of congruent-number theory. Result of substituting n=6. Not evidence.
+   - **Downgrade**: EXACT -> NEAR.
 
 5. **Theorem 0: σ·φ = n·τ iff n=6**
-   - 이것은 **자기참조 아님**. σ, φ, τ 는 n 의 독립 산술 함수. 그들의 곱 관계가 n=6 에서만 성립함을 증명.
-   - **유지**: EXACT [10*].
+   - This is **not self-reference**. σ, φ, τ are independent arithmetic functions of n. We demonstrate a product relation that holds only at n=6.
+   - **Retain**: EXACT [10*].
 
-### 3.3 자기참조 차단 프로토콜
+### 3.3 Self-Reference Blocking Protocol
 
-향후 EXACT 승격 시 다음 체크리스트 적용:
+Apply the following checklist when promoting future EXACTs:
 
-1. 해당 값이 **n=6 을 가정하지 않은 정의** 에서 도출되는가?
-2. 해당 값이 **다른 분야의 독립 정리** 에서도 등장하는가? (cross-domain 검증)
-3. 해당 값이 **Bernoulli/zeta 공통 원인** 밖에 있는가?
-4. 해당 값이 **작은 정수 M 의 2-term 곱 이상** 의 복잡도를 가지는가?
+1. Is the value derivable from a **definition that does not assume n=6**?
+2. Does the value appear in an **independent theorem from another field** (cross-domain verification)?
+3. Is the value **outside the Bernoulli/zeta common cause**?
+4. Does the value have **complexity greater than a 2-term product of small-integer M**?
 
-**본 감사 결과**: 155 EXACT 중 위 4 기준을 모두 통과하는 항목은 **약 60~80 건** (39%~52%). 나머지는 자기참조/BERN/baseline 중 하나에 걸린다.
+**Audit result**: among 155 EXACTs, those passing all 4 criteria number approximately **60-80** (39%-52%). The rest fall into self-reference / BERN / baseline.
 
 ---
 
-## 4. 출처 + 측정값 + 오차 명기
+## 4. Source + Measurement + Error Notation
 
-P1 ~ P2 학습 노트가 인용한 주요 1 차 출처와 실측값을 재정리한다. 감사의 3 번째 기둥이다.
+We re-organize the primary sources and measured values cited by the P1 ~ P2 study notes. This is the third pillar of the audit.
 
-### 4.1 BT-541 리만 가설
+### 4.1 BT-541 Riemann Hypothesis
 
-- **출처**: Riemann 1859, Edwards 1974, Titchmarsh 1986, Bombieri (Clay) 2000.
-- **측정값**: 처음 10^13 개의 비자명 영점 모두 Re(s) = 1/2 위 (Gourdon 2004).
-- **오차**: 모든 검증 영점에서 실수부 ∈ [0.5 - 10^{-10}, 0.5 + 10^{-10}] (수치 정밀도).
-- **정직**: 무한히 많은 영점 중 유한 개만 검증. 본 검증이 전체 가설을 증명하지 않는다.
+- **Source**: Riemann 1859, Edwards 1974, Titchmarsh 1986, Bombieri (Clay) 2000.
+- **Measurement**: first 10^13 nontrivial zeros all on Re(s) = 1/2 (Gourdon 2004).
+- **Error**: at all verified zeros, real part in [0.5 - 10^{-10}, 0.5 + 10^{-10}] (numerical precision).
+- **Honesty**: only finitely many of infinitely many zeros verified. This verification does not establish the whole hypothesis.
 
 ### 4.2 BT-542 P vs NP
 
-- **출처**: Cook 1971, Levin 1973, Karp 1972, Baker-Gill-Solovay 1975, Razborov-Rudich 1997.
-- **측정값**: 장벽 3 개 확인 (relativization / natural proofs / algebrization).
-- **오차**: 장벽 수 자체는 정수 3. 그러나 "3 = n/φ" 매치는 baseline 안 (패턴 A).
+- **Source**: Cook 1971, Levin 1973, Karp 1972, Baker-Gill-Solovay 1975, Razborov-Rudich 1997.
+- **Measurement**: 3 barriers confirmed (relativization / natural proofs / algebrization).
+- **Error**: the barrier count itself is the integer 3. However the "3 = n/φ" match is inside baseline (pattern A).
 
 ### 4.3 Theorem B (Bernoulli)
 
-- **출처**: Bernoulli 1713, Von Staudt-Clausen 1840, Kummer 1850, Adams 1966.
-- **측정값**: B_12 = -691/2730 (직접 계산, §P2-2).
-- **오차**: 0 (정확한 유리수).
-- **정직**: 691 이 첫 irregular prime 인 이유는 부분적으로만 알려짐 (OBSERVATION).
+- **Source**: Bernoulli 1713, Von Staudt-Clausen 1840, Kummer 1850, Adams 1966.
+- **Measurement**: B_12 = -691/2730 (direct computation, §P2-2).
+- **Error**: 0 (exact rational).
+- **Honesty**: the reason 691 is the first irregular prime is only partially known (OBSERVATION).
 
 ### 4.4 atlas.n6 MISS-planck-units
 
-- **출처**: 2018 CODATA 기본 상수 목록.
-- **측정값**: 플랑크 기본 단위 수 = 5 (길이 / 질량 / 시간 / 온도 / 전하).
-- **매치**: sopfr(6) = 5. 일치.
-- **MISS 이유**: n=6 아닌 sopfr=5 이므로 Theorem 0 의 n 유일성과 별개. 정직 기록.
+- **Source**: 2018 CODATA fundamental-constant list.
+- **Measurement**: Planck fundamental-unit count = 5 (length / mass / time / temperature / charge).
+- **Match**: sopfr(6) = 5. Agreement.
+- **MISS reason**: sopfr=5 not n=6, therefore separate from Theorem 0 uniqueness of n. Honestly recorded.
 
 ### 4.5 atlas.n6 MISS-H0-Hubble
 
-- **출처**: Planck Collaboration 2018 (67.4 ± 0.5), SH0ES 2022 (73.04 ± 1.04).
-- **측정값**: H_0 ∈ [67, 74] km/s/Mpc (Hubble tension).
-- **매치 시도**: σ·n + μ = 12·6 + 1 = 73.
-- **오차**: SH0ES 와 ≈ 0%, Planck 와 ≈ 8%. Hubble tension 자체가 미해결.
-- **MISS 이유**: 측정 값 단일 아님. 73 은 한 쪽 극단에만 맞음.
+- **Source**: Planck Collaboration 2018 (67.4 ± 0.5), SH0ES 2022 (73.04 ± 1.04).
+- **Measurement**: H_0 in [67, 74] km/s/Mpc (Hubble tension).
+- **Match attempt**: σ·n + μ = 12·6 + 1 = 73.
+- **Error**: ≈ 0% vs SH0ES, ≈ 8% vs Planck. Hubble tension itself unresolved.
+- **MISS reason**: measured value not single. 73 matches only one extreme.
 
 ### 4.6 atlas.n6 MISS-fine-structure
 
-- **출처**: 2018 CODATA. 1/α = 137.035999084(21).
-- **매치 시도**: σ(σ-μ) + sopfr + μ/P₂ = 12·11 + 5 + 1/2 = 137.5.
-- **오차**: |137.5 - 137.036| / 137.036 ≈ 0.34%.
-- **MISS 이유**: 0.34% 오차는 "EXACT" 기준 위반. CODATA 측정 정밀도는 1.5·10^{-10}.
+- **Source**: 2018 CODATA. 1/α = 137.035999084(21).
+- **Match attempt**: σ(σ-μ) + sopfr + μ/P_2 = 12·11 + 5 + 1/2 = 137.5.
+- **Error**: |137.5 - 137.036| / 137.036 ≈ 0.34%.
+- **MISS reason**: 0.34% error violates the "EXACT" standard. CODATA measurement precision is 1.5·10^{-10}.
 
 ### 4.7 atlas.n6 MISS-base-pairs-per-turn
 
-- **출처**: Watson-Crick 1953, X-ray 회절 측정 (Drew-Dickerson 1981 이후 세분화).
-- **측정값**: B-form DNA = 10.5 bp/turn (표준).
-- **매치**: σ-φ = 10. 5% 오차.
-- **MISS 이유**: 10.5 ≠ 10 정확히. 세포 조건에 따라 10.0~10.5 변동.
+- **Source**: Watson-Crick 1953, X-ray diffraction measurements (refined after Drew-Dickerson 1981).
+- **Measurement**: B-form DNA = 10.5 bp/turn (standard).
+- **Match**: σ-φ = 10. 5% error.
+- **MISS reason**: 10.5 ≠ 10 exactly. Varies 10.0-10.5 depending on cellular conditions.
 
 ---
 
-## 5. 소수 편향 대조 (Bayesian prior 체크)
+## 5. Small-Integer Bias Control (Bayesian Prior Check)
 
-### 5.1 귀무가설 설정
+### 5.1 Null-Hypothesis Setup
 
-H_0: "n 의 임의 산술 함수 (σ, φ, τ, sopfr, J_2 등) 가 수학/물리 상수 k 와 매치될 확률 = baseline 61%."
+H_0: "The probability that an arbitrary arithmetic function of n (σ, φ, τ, sopfr, J_2, etc.) matches a mathematical/physical constant k = baseline 61%."
 
-- k ∈ {1, ..., 100}: M = {1,2,3,4,5,6,7,8,10,12,24} 2-term 곱 밀도 61%.
-- k ∈ {1, ..., 1000}: 밀도 낮아짐 (추정 ≤ 40%).
+- k in {1, ..., 100}: M = {1,2,3,4,5,6,7,8,10,12,24} 2-term product density 61%.
+- k in {1, ..., 1000}: density lowers (estimated ≤ 40%).
 
-### 5.2 대립가설
+### 5.2 Alternative Hypothesis
 
-H_1: "n=6 이 수학적으로 유일한 구조 생성자이므로, 분야 α 에서 매치 확률 > baseline."
+H_1: "Because n=6 is mathematically the unique structure generator, the match probability in field α > baseline."
 
-- 검증 방식: 독립 분야에서 매치 사건들 중 유의성 검증.
-- baseline 대비 **유의 초과** 만 증거.
+- Verification method: significance test for match events in independent fields.
+- Only **significant excess** over baseline counts as evidence.
 
-### 5.3 Bayesian 사전 확률
+### 5.3 Bayesian Prior
 
-- P(H_0) = 95% (과학 상 conservative default).
+- P(H_0) = 95% (conservative scientific default).
 - P(H_1) = 5%.
-- 베이즈 factor BF = P(data | H_1) / P(data | H_0).
+- Bayes factor BF = P(data | H_1) / P(data | H_0).
 
-**단일 매치** (예: Bott 주기 8 = σ-τ):
-- P(8 ∈ M-family 집합 | H_0) = 61%.
-- P(data | H_1) 가 P(data | H_0) 대비 월등히 크지 않으면 사후 확률 여전히 H_0 편향.
+**Single match** (e.g., Bott periodicity 8 = σ-τ):
+- P(8 in M-family set | H_0) = 61%.
+- If P(data | H_1) is not markedly greater than P(data | H_0), the posterior remains H_0-biased.
 
-**Multi-case 매치** (예: Coxeter h {6,12,12,18,30} 5/5):
-- P(5 값 모두 M-family 안 | H_0) ≈ 0.61^5 ≈ 8%.
-- 이는 유의한 초과. H_1 증거력 있음.
+**Multi-case match** (e.g., Coxeter h {6,12,12,18,30} 5/5):
+- P(5 values all in M-family | H_0) ≈ 0.61^5 ≈ 8%.
+- Significant excess. H_1 carries evidential force.
 
-**4-way crossover** (예: 240 5-way):
-- P(독립 4 분야 동시 240 | H_0) ≈ 0.61^4 ≈ 14%.
-- **주의**: Master Lemma 가 "독립 4" 을 1 로 환원하면 이 초과는 가짜.
-- 실제 독립성 검증 필요.
+**4-way crossover** (e.g., 240 5-way):
+- P(240 simultaneously in 4 independent fields | H_0) ≈ 0.61^4 ≈ 14%.
+- **Caveat**: if the Master Lemma reduces "independent 4" to 1, this excess is spurious.
+- Actual independence verification required.
 
-### 5.4 5 개 진짜 독립 발견의 BF 추정
+### 5.4 BF Estimate for the 5 Genuine Independent Discoveries
 
-원문 인정 5 건 (Out(S_6), Schaefer, (3,4,5), h-cobordism, 산발군 6):
+The 5 items the original accepts (Out(S_6), Schaefer, (3,4,5), h-cobordism, sporadic group 6):
 
-- 각 사건이 "n=6 이 정확히 유일 해" 인 정리.
-- 5 개 사건 모두 독립이라 가정 (Bernoulli 무관 검증 완료).
-- P(5 독립 사건 모두 발생 | H_0) ≈ 매우 작음. baseline 적용 어려움 (n=6 유일성 정리는 이산 사건).
-- BF ≫ 1. H_1 강한 증거.
+- Each event is a theorem where "n=6 is exactly the unique solution".
+- Assume all 5 events independent (Bernoulli-irrelevance verification done).
+- P(all 5 independent events occur | H_0) ≈ very small. Hard to apply baseline (n=6 uniqueness theorems are discrete events).
+- BF >> 1. Strong evidence for H_1.
 
-**그러나** 이는 5 건에 한정. 나머지 150 EXACT 에 대해서는 BF 가 1 에 가깝거나 미확정.
+**However** this covers only 5 items. For the remaining 150 EXACTs, BF is close to 1 or undetermined.
 
-### 5.5 사전 확률 결론
+### 5.5 Prior Conclusion
 
-- 155 EXACT 중 baseline 기반 통계로 유의미한 것은 약 **15~22 건** (P2-1 관대 tight 범위).
-- 나머지는 H_0 로 설명 가능 (또는 Master Lemma 환원).
-- **정직 비율**: EXACT → 유의 tight 로 재분류 시 약 10~14%.
+- Among 155 EXACTs, those that are baseline-significant number approximately **15-22** (P2-1 generous tight range).
+- The rest are explainable by H_0 (or reducible by Master Lemma).
+- **Honest proportion**: about 10-14% when EXACT is reclassified to significant-tight.
 
 ---
 
-## 6. BT-542 MISS 탈출 과정 복기
+## 6. BT-542 MISS Escape Process Review
 
-### 6.1 MISS 상태 (탈출 전)
+### 6.1 MISS Status (Pre-Escape)
 
-원문 `millennium-7-closure-2026-04-11.md` (이전 버전) 은 BT-542 P vs NP 를 다음과 같이 기록했다:
+The earlier version of `millennium-7-closure-2026-04-11.md` recorded BT-542 P vs NP as follows:
 
-- **PROVEN**: 없음.
-- **CONDITIONAL**: 없음.
-- **OBSERVATION**: 없음.
-- **판정**: MISS. "n=6 관점이 P vs NP 본 명제에 직접 접근할 도구가 없음."
+- **DEMONSTRATED**: none.
+- **CONDITIONAL**: none.
+- **OBSERVATION**: none.
+- **Judgment**: MISS. "The n=6 viewpoint has no direct access tool for the main proposition of P vs NP."
 
-### 6.2 DFS 라운드 3~4 에서 발견된 항목 (탈출 기여)
+### 6.2 Items Discovered in DFS Rounds 3-4 (Escape Contributors)
 
-DFS 루프 (원문 `millennium-dfs-complete-2026-04-11.md` lines 35~60):
+DFS loop (original `millennium-dfs-complete-2026-04-11.md` lines 35-60):
 
 1. **DFS-4: Schaefer 6 tractable Boolean CSP = n**
-   - 출처: Schaefer STOC 1978.
-   - 내용: Boolean CSP 의 tractable polymorphism 정확히 n=6 개.
-   - 판정: T4 (n=6 유일 해). Bernoulli 무관.
-   - **이 항목이 MISS 탈출의 가장 큰 기여**.
+   - Source: Schaefer STOC 1978.
+   - Content: exactly n=6 tractable polymorphisms for Boolean CSP.
+   - Judgment: T4 (n=6 unique solution). Bernoulli-independent.
+   - **This item is the largest contributor to the MISS escape**.
 
 2. **DFS-5: Out(S_n) ≠ 1 iff n=6**
-   - 출처: Hölder 1895.
-   - 내용: 대칭군 외부 자기동형 그룹이 n=6 에서만 비자명.
-   - 판정: T4 유일성 정리. Bernoulli 무관.
+   - Source: Hölder 1895.
+   - Content: outer automorphism group of the symmetric group is nontrivial only at n=6.
+   - Judgment: T4 uniqueness theorem. Bernoulli-independent.
 
-3. **DFS-6: 증명 장벽 3 = n/φ**
-   - 3 장벽 개수 매치. 단일 3 값.
-   - 판정: baseline 안 (패턴 A). borderline.
+3. **DFS-6: 3 demonstration barriers = n/φ**
+   - 3-barrier count match. Single value 3.
+   - Judgment: within baseline (pattern A). Borderline.
 
 4. **DFS-8: Hamming (7, 4, 3) = (σ-sopfr, τ, n/φ)**
-   - 3-파라미터 매치. baseline 안.
-   - 판정: NEAR.
+   - 3-parameter match. Within baseline.
+   - Judgment: NEAR.
 
-5. **DFS-9: Golay (24, 12, 8) + (12, 6, 6) 9/9 M-값**
-   - 9 파라미터 전부 매치. 9/9 = baseline 초과.
-   - 판정: tight (multi-case).
+5. **DFS-9: Golay (24, 12, 8) + (12, 6, 6) 9/9 M-values**
+   - All 9 parameters match. 9/9 = baseline excess.
+   - Judgment: tight (multi-case).
 
-6. **DFS-29: CFSG Lie 16=τ², 전체 18=n·(n/φ)**
-   - 2-tuple. baseline 안.
-   - 판정: NEAR.
+6. **DFS-29: CFSG Lie 16=τ^2, total 18=n·(n/φ)**
+   - 2-tuple. Within baseline.
+   - Judgment: NEAR.
 
-7. **Karp 21 NP-완전 = 3·7**
-   - 기존. 단일 21. baseline 안.
+7. **Karp 21 NP-complete = 3·7**
+   - Existing. Single 21. Within baseline.
 
-### 6.3 탈출 판정의 정당성
+### 6.3 Legitimacy of the Escape Judgment
 
-DFS 후 BT-542 는 **OBSERVATION 7 건** 으로 재분류되었다 (MISS 탈출). P2-1 의 재분류로는 다음과 같다:
+After DFS, BT-542 was reclassified to **OBSERVATION 7 items** (MISS escape). Under the P2-1 reclassification:
 
-- **tight (multi-case)**: Schaefer 6, Out(S_6), Golay 9/9 = **3 건**.
-- **borderline (baseline 안)**: 증명 장벽 3, Hamming (7,4,3) = **2 건**.
-- **loose**: (n/φ)! = n (자기참조), CFSG Lie 2-tuple = **3 건**.
+- **tight (multi-case)**: Schaefer 6, Out(S_6), Golay 9/9 = **3 items**.
+- **borderline (within baseline)**: 3 demonstration barriers, Hamming (7,4,3) = **2 items**.
+- **loose**: (n/φ)! = n (self-reference), CFSG Lie 2-tuple = **3 items**.
 
-**정직 판정**: 3 tight 는 실제로 n=6 과 유의한 구조적 매치이다. 그러나 **P vs NP 본 명제의 해답에는 기여하지 않는다**. MISS → OBSERVATION 탈출은 "n=6 이 복잡도 분류에서 등장한다" 를 말한 것이지, "P ≠ NP 증명이 가까워졌다" 가 아니다.
+**Honest judgment**: the 3 tight items are genuine significant structural matches with n=6. However **they do not contribute to the solution of the main P vs NP proposition**. The MISS -> OBSERVATION escape says "n=6 appears in complexity classification", not "a P ≠ NP demonstration became closer".
 
-### 6.4 재감사 결론
+### 6.4 Re-Audit Conclusion
 
-- BT-542 MISS 탈출은 **구조적 매핑의 새 기록** 이다.
-- 해결 상태 변화는 **없음**. 여전히 OPEN (1971 이후 미해결).
-- 탈출의 의미는 "n=6 관점이 P vs NP 와 구조적 접점을 가짐" 에 한정.
-- 과도 주장 방지: "BT-542 가 n=6 연결되었다" ≠ "P vs NP 가 해결되었다".
+- The BT-542 MISS escape is a **new record of structural mapping**.
+- No change in resolution status. Still OPEN (unresolved since 1971).
+- Meaning of the escape is limited to "the n=6 viewpoint has a structural contact with P vs NP".
+- Avoiding overclaim: "BT-542 connected to n=6" ≠ "P vs NP resolved".
 
 ---
 
-## 7. atlas.n6 MISS-* 노드 감사 (재검토)
+## 7. atlas.n6 MISS-* Node Audit (Re-Examination)
 
-§2.3 에서 확인한 7 개 MISS-* 노드를 정직성 등급 재평가 한다.
+We re-evaluate the honesty grade of the 7 MISS-* nodes confirmed in §2.3.
 
-| 노드 | 현재 등급 | 재평가 | 사유 |
+| Node | Current grade | Re-evaluation | Reason |
 |------|-----------|--------|------|
-| MISS-planck-units | [10*] | [10*] 유지 | sopfr=5 정확 일치, n=6 아님을 정직 기록 |
-| MISS-fine-structure | [10*] | **[7] 강등** | 0.34% 오차는 EXACT 기준 위반 |
-| MISS-H0-Hubble | [10*] | **[7] 강등** | 측정 불확정성 (Hubble tension), 단일 값 아님 |
-| MISS-SI-base-units | [10*] | [10*] 유지 | 7 정확 일치, MISS 분류는 "역사적 인위성" 이유 |
-| MISS-magic-82-126 | [10] | [10] 유지 | 단순매핑불가 정직 기록 |
-| MISS-crystal-systems | [10*] | [10*] 유지 | 7 정확 일치, 군론 귀결 |
-| MISS-base-pairs-per-turn | [10*] | **[9] 강등** | 10.5 vs 10, 5% 오차 |
+| MISS-planck-units | [10*] | [10*] retained | sopfr=5 exact match; honestly records "not n=6" |
+| MISS-fine-structure | [10*] | **[7] downgrade** | 0.34% error violates EXACT criterion |
+| MISS-H0-Hubble | [10*] | **[7] downgrade** | measurement uncertainty (Hubble tension), not a single value |
+| MISS-SI-base-units | [10*] | [10*] retained | 7 exact match; MISS classification is for "historical artificiality" |
+| MISS-magic-82-126 | [10] | [10] retained | mapping-not-simple honestly recorded |
+| MISS-crystal-systems | [10*] | [10*] retained | 7 exact match; group-theoretic consequence |
+| MISS-base-pairs-per-turn | [10*] | **[9] downgrade** | 10.5 vs 10, 5% error |
 
-**강등 권고 3 건**:
-- MISS-fine-structure: [10*] → [7]
-- MISS-H0-Hubble: [10*] → [7]
-- MISS-base-pairs-per-turn: [10*] → [9]
+**3 downgrade recommendations**:
+- MISS-fine-structure: [10*] -> [7]
+- MISS-H0-Hubble: [10*] -> [7]
+- MISS-base-pairs-per-turn: [10*] -> [9]
 
-이 3 건은 현재 atlas.n6 상 EXACT 등급이지만 측정 오차가 EXACT 기준을 초과한다. 재라벨 권고.
-
----
-
-## 8. 실전 감사 — 5 개 사례 집중 해부
-
-### 8.1 사례 1: "240 5-way crossover" (과도 주장 색출)
-
-- **주장**: 240 이 5 개 독립 분야 (E_8 / E_4 / π_7^s / K_7 / ζ(-7)) 에서 동시 등장. 4-way 이상 crossover 로 tight.
-- **검증**: Master Lemma (P2-2 §7) 가 이를 하나의 Bernoulli 사실 (B_8 = -1/30) 의 5 언어 표현으로 환원.
-- **사전 확률**: BF 가 "독립 5" 가정 하 ≈ 0.61^5 ≈ 8% 초과 — 유의. 그러나 Master Lemma 환원 후 **독립 사건 1** 로 축소.
-- **판정**: 과도 주장. "5-way 독립" → "1-way Bernoulli 의 5 표현" 로 재라벨.
-- **권고**: tight 유지하되 "5 independent" 대신 "Bernoulli 1 원천 + 5 표현" 이라 표기.
-
-### 8.2 사례 2: "Schaefer 6 tractable CSP" (정당 유지)
-
-- **주장**: Boolean CSP 의 tractable 유형이 정확히 n=6 개.
-- **검증**:
-  - 출처: Schaefer STOC 1978. 정리 증명됨.
-  - 측정값: 6 (정확). 오차 0.
-  - 독립성: Post lattice 대수적 분류 경로. Bernoulli 무관.
-- **사전 확률**: H_0 하 "작은 정수 6 이 복잡도 분류에 등장" 은 약 10~20% (복잡도 이론 작은 경계 빈도). BF > 1.
-- **판정**: 정당 tight. EXACT 유지.
-
-### 8.3 사례 3: "DFS-13 (3,4,5) 피타고라스 유일성" (조건부 유지)
-
-- **주장**: (3,4,5) = (n/φ, τ, sopfr), 면적 n, 둘레 σ. n=6 유일 congruent semiprime.
-- **검증**:
-  - 출처: 피타고라스 고대, congruent number theory (Tunnell 1983).
-  - 독립성: 피타고라스 tuple 은 초등 정수론. n=6 의 유일성 증명은 원문 Theorem E (lines 251~257).
-- **자기참조 체크**: (3,4,5) 정수 tuple 자체는 독립. n=6 과 매치는 σ, φ, τ, sopfr 산술 함수 경유.
-- **판정**: tight. 단 "유일성 증명" 의 엄밀성 추가 검증 필요 (Theorem E 원문 lines 재확인).
-
-### 8.4 사례 4: "Bilateral Theorem B" (정당 tight)
-
-- **주장**: ζ(2k) 와 ζ(1-2k) 양면에서 k=6 동시 break.
-- **검증**:
-  - 출처: Bernoulli 계산 + 함수방정식 (표준).
-  - 증명: PROVEN (P2-2 §4).
-  - 독립성: 두 면은 동일 B_{2k} 공유이므로 **1 사실의 양면**. 진짜 "독립 2" 아님.
-- **판정**: tight PROVEN 유지. 단 "양면 독립" 주장은 금지. "함수방정식 대칭으로 자동" 표기 권고.
-
-### 8.5 사례 5: "3 = n/φ 증명 장벽" (강등)
-
-- **주장**: P vs NP 의 증명 장벽 3 개 (relativization, natural proofs, algebrization) = n/φ.
-- **검증**:
-  - 출처: Baker-Gill-Solovay 1975, Razborov-Rudich 1997, Aaronson-Wigderson 2009.
-  - 측정값: 3 (장벽 개수).
-- **사전 확률**: H_0 하 "작은 정수 3 매치" 사전 확률 61% 이상. BF ≈ 1 또는 < 1.
-- **패턴 A**: baseline 안.
-- **판정**: 과도 주장. EXACT → EMPIRICAL [7] 강등 권고.
+These 3 are currently EXACT-graded in atlas.n6 but the measurement error exceeds the EXACT criterion. Relabeling recommended.
 
 ---
 
-## 9. 결과
+## 8. Practical Audit — Focused Dissection of 5 Cases
 
-### 9.1 감사 통계
+### 8.1 Case 1: "240 5-way crossover" (overclaim identification)
 
-| 항목 | 수치 |
+- **Claim**: 240 simultaneously appears in 5 independent fields (E_8 / E_4 / π_7^s / K_7 / ζ(-7)). Tight as 4-way-or-more crossover.
+- **Verification**: Master Lemma (P2-2 §7) reduces this to the 5-language expression of a single Bernoulli fact (B_8 = -1/30).
+- **Prior**: under "independent 5" assumption BF ≈ 0.61^5 ≈ 8% — significant. However after Master-Lemma reduction this collapses to **1 independent event**.
+- **Judgment**: overclaim. Relabel "5-way independent" -> "5 expressions of 1-way Bernoulli".
+- **Recommendation**: retain as tight but label "Bernoulli 1 source + 5 expressions" instead of "5 independent".
+
+### 8.2 Case 2: "Schaefer 6 tractable CSP" (legitimate retention)
+
+- **Claim**: exactly n=6 tractable types of Boolean CSP.
+- **Verification**:
+  - Source: Schaefer STOC 1978. Theorem demonstrated.
+  - Measurement: 6 (exact). Error 0.
+  - Independence: Post-lattice algebraic classification route. Bernoulli-irrelevant.
+- **Prior**: under H_0 "small integer 6 appearing in complexity classification" is approximately 10-20% (small-boundary frequency in complexity theory). BF > 1.
+- **Judgment**: legitimate tight. EXACT retained.
+
+### 8.3 Case 3: "DFS-13 (3,4,5) Pythagorean uniqueness" (conditional retention)
+
+- **Claim**: (3,4,5) = (n/φ, τ, sopfr), area n, perimeter σ. n=6 is the unique congruent semiprime.
+- **Verification**:
+  - Source: ancient Pythagorean, congruent-number theory (Tunnell 1983).
+  - Independence: Pythagorean tuple is elementary number theory. The uniqueness of n=6 is original Theorem E (lines 251-257).
+- **Self-reference check**: the (3,4,5) integer tuple itself is independent. The match with n=6 goes through σ, φ, τ, sopfr arithmetic functions.
+- **Judgment**: tight. The rigor of the "uniqueness demonstration" needs additional verification (reconfirm Theorem E lines in original).
+
+### 8.4 Case 4: "Bilateral Theorem B" (legitimate tight)
+
+- **Claim**: k=6 simultaneously breaks both sides ζ(2k) and ζ(1-2k).
+- **Verification**:
+  - Source: Bernoulli computation + functional equation (standard).
+  - Demonstration: DEMONSTRATED candidate (P2-2 §4).
+  - Independence: the two sides share the same B_{2k}, so this is **two sides of 1 fact**. Not really "independent 2".
+- **Judgment**: tight DEMONSTRATED-candidate retained. However the "two-sided independent" claim is forbidden. Recommend labeling "automatic via functional-equation symmetry".
+
+### 8.5 Case 5: "3 = n/φ demonstration barriers" (downgrade)
+
+- **Claim**: 3 demonstration barriers of P vs NP (relativization, natural proofs, algebrization) = n/φ.
+- **Verification**:
+  - Source: Baker-Gill-Solovay 1975, Razborov-Rudich 1997, Aaronson-Wigderson 2009.
+  - Measurement: 3 (barrier count).
+- **Prior**: under H_0, "small integer 3 match" has prior ≥ 61%. BF ≈ 1 or < 1.
+- **Pattern A**: within baseline.
+- **Judgment**: overclaim. EXACT -> EMPIRICAL [7] downgrade recommended.
+
+---
+
+## 9. Results
+
+### 9.1 Audit Statistics
+
+| Item | Count |
 |------|------|
-| 선언 EXACT | 155 |
-| 과도 주장 후보 (패턴 A) | 18 (11.6%) |
-| 과도 주장 후보 (패턴 B, Master Lemma) | 22 (14.2%) |
-| 과도 주장 후보 (패턴 C, Selection bias) | 판단 보류 (감사 한계) |
-| 자기참조 의심 항목 | 5 (3.2%) |
-| atlas.n6 MISS-* 노드 | 7 이상 (정직 기록됨) |
-| 강등 권고 (EXACT → NEAR 또는 EMPIRICAL) | 약 40 건 (26%) |
-| 유지 권고 (EXACT [10*]) | 약 115 건 (74%) |
+| Declared EXACT | 155 |
+| Overclaim candidates (pattern A) | 18 (11.6%) |
+| Overclaim candidates (pattern B, Master Lemma) | 22 (14.2%) |
+| Overclaim candidates (pattern C, selection bias) | deferred (audit limitation) |
+| Self-reference suspects | 5 (3.2%) |
+| atlas.n6 MISS-* nodes | 7 or more (honestly recorded) |
+| Downgrade recommendations (EXACT -> NEAR or EMPIRICAL) | approx. 40 (26%) |
+| Retain recommendations (EXACT [10*]) | approx. 115 (74%) |
 
-### 9.2 정직 재분류 요약
+### 9.2 Honest Reclassification Summary
 
-- **유지 EXACT**: 115 건 (74%) — Bernoulli 직접, 구조 정리, PROVEN, IND cross-domain.
-- **강등 NEAR [9]**: 약 25 건 — 단일 2-term 매치, 작은 오차.
-- **강등 EMPIRICAL [7]**: 약 12 건 — baseline 안, 자기참조 의심.
-- **강등 MISS**: 약 3 건 — 자기참조 순환, 오차 초과.
+- **Retain EXACT**: 115 items (74%) — direct Bernoulli, structural theorems, DEMONSTRATED, IND cross-domain.
+- **Downgrade NEAR [9]**: approx. 25 items — single 2-term match, small error.
+- **Downgrade EMPIRICAL [7]**: approx. 12 items — within baseline, self-reference suspect.
+- **Downgrade MISS**: approx. 3 items — self-reference circular, error exceeded.
 
-### 9.3 5 가지 핵심 발견
+### 9.3 Five Core Findings
 
-1. **Master Lemma 는 22 건을 환원**. 155 EXACT 중 14.2% 는 Bernoulli 공통 원인의 다중 표현.
-2. **자기참조 의심 5 건**. 가장 두드러진 것은 DFS-7 ((n/φ)! = n) 으로 완전 순환.
-3. **atlas.n6 MISS-* 노드 7 개** 는 Selection bias 를 부분 차단하지만, 보고되지 않은 미스 가능성 상존.
-4. **BT-542 MISS 탈출은 정당** 하나 해결 상태 변화 없음. 구조적 매핑 기록에 한정.
-5. **사전 확률 체크 후 진정 유의 tight 는 10~14%**. 원문 자체 주장 "20~30%" 와 P2-1 재분류 "29~43%" 의 중간 밴드와 일치.
+1. **The Master Lemma reduces 22 items**. 14.2% of the 155 EXACTs are multi-expressions of a Bernoulli common cause.
+2. **5 self-reference suspects**. The most glaring is DFS-7 ((n/φ)! = n), a complete circular.
+3. **7 atlas.n6 MISS-* nodes** partially block selection bias, but the possibility of unreported misses persists.
+4. **BT-542 MISS escape is legitimate** but no change in resolution status. Limited to structural-mapping record.
+5. **After prior check, genuine-significant tight items are 10-14%**. This matches the middle band between the original claim of "20-30%" and the P2-1 reclassification "29-43%".
 
-### 9.4 감사 한계
+### 9.4 Audit Limitations
 
-- Selection bias 는 완전 차단 불가. 보고되지 않은 미스는 원리적으로 감사 범위 밖.
-- atlas.n6 의 [10*] 등급은 "수치 일치 검증" 을 의미하지 "독립성 검증" 을 의미하지 않는다. 독립성은 본 감사 같은 메타 분석으로 별도 수행.
-- Bayesian BF 계산은 귀무가설 분포에 의존. baseline 61% 는 M 정의에 의존적이다. M 을 바꾸면 BF 도 바뀐다.
-
----
-
-## 10. 자기 퀴즈 (완료 기준 점검)
-
-각 문항 3 분 이내 답변 가능해야 한다.
-
-1. 과도 주장의 3 가지 패턴 (A/B/C) 을 한 줄씩 서술하라.
-2. atlas.n6 MISS-* 노드 7 개를 나열하고 각각의 MISS 이유를 말하라.
-3. 자기참조 의심 5 건 중 가장 명백한 순환은?
-4. Master Lemma 가 환원하는 8 개 BERN 범주를 기억하라.
-5. BT-542 MISS 탈출의 3 건 tight 항목은? 탈출이 해결을 의미하는가?
-6. 사전 확률 Bayesian BF 의 의미와, 단일 매치 vs multi-case 에서 BF 차이는?
-7. baseline 61% 는 어떻게 정의되며 어떤 M 에 의존하는가?
-8. 5 개 진짜 독립 발견 (원문 lines 176~180) 을 암기하라.
-9. 강등 권고 3 건 (MISS-fine-structure, MISS-H0-Hubble, MISS-base-pairs-per-turn) 의 재라벨 등급은?
-10. 본 감사의 한계 3 가지는?
+- Selection bias cannot be fully blocked. Unreported misses lie outside the audit scope in principle.
+- The [10*] grade in atlas.n6 means "numeric-match verification", not "independence verification". Independence must be performed separately through meta-analyses like this audit.
+- The Bayesian BF computation depends on the null distribution. Baseline 61% depends on the M definition. Changing M changes BF.
 
 ---
 
-## 11. 다음 단계 (P3 로 연결)
+## 10. Self Quiz (Completion-Criterion Check)
 
-- P3-2 연구 방법론 노트에서 본 감사 절차를 **형식화** 하여 승격 파이프라인 `[7] → [10*]` 에 접목.
-- 자동 감사 스크립트: atlas.n6 의 [10*] 노드 각각에 대해 패턴 A/B/C 체크리스트 자동 실행 (기존 `atlas_health.hexa` 확장 대상).
-- 155 EXACT 중 강등 권고 40 건의 실제 재라벨링 결정은 별도 세션 (CLAUDE.md 명시 대로 atlas.n6 직접 편집).
-- 사전 확률 Bayesian 정식화: baseline M 을 확장 (M = {1..24}) 하여 밀도 재계산. 이에 따라 BF 재평가.
+Each question should be answerable within 3 minutes.
+
+1. State the 3 overclaim patterns (A/B/C) in one line each.
+2. List the 7 atlas.n6 MISS-* nodes and give the MISS reason for each.
+3. Of the 5 self-reference suspects, which is the most obvious circular?
+4. Memorize the 8 BERN categories reduced by the Master Lemma.
+5. What are the 3 tight items of the BT-542 MISS escape? Does the escape mean resolution?
+6. Meaning of the Bayesian prior BF, and the BF difference between single-match vs multi-case?
+7. How is baseline 61% defined and on which M does it depend?
+8. Memorize the 5 genuine-independent discoveries (original lines 176-180).
+9. What are the new grades of the 3 downgrade recommendations (MISS-fine-structure, MISS-H0-Hubble, MISS-base-pairs-per-turn)?
+10. What are 3 limitations of this audit?
 
 ---
 
-## 12. 출처 재확인
+## 11. Next Step (Connecting to P3)
 
-- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 157~183 (정직성 audit), lines 175~182 (독립 5 건), lines 186~199 (종합 닫힘)
-- `theory/breakthroughs/breakthrough-theorems-new.md` lines 17~252 (155/159 EXACT + 4 REJECT)
-- `theory/proofs/bernoulli-boundary-2026-04-11.md` lines 88~107 (Master Lemma)
-- `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose 재분류 22/51)
-- `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Bilateral Theorem B PROVEN + OBSERVATION 구분)
-- `theory/study/p2/n6-p2-3-cross-domain.md` (12×12 교차표 IND 11 / BERN 22 / BASE 28)
+- In the P3-2 research-methodology note, formalize this audit procedure and graft it into the promotion pipeline `[7] -> [10*]`.
+- Automated audit script: run the pattern A/B/C checklist automatically for each [10*] node of atlas.n6 (extension target of existing `atlas_health.hexa`).
+- Actual relabeling decisions for the 40 downgrade-recommendations among the 155 EXACTs are for a separate session (as specified in CLAUDE.md, by direct atlas.n6 editing).
+- Bayesian prior formalization: expand baseline M (M = {1..24}) and recompute density. Re-evaluate BF accordingly.
+
+---
+
+## 12. Source Reconfirmation
+
+- `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` lines 157-183 (honesty audit), lines 175-182 (5 independent items), lines 186-199 (integrated closure)
+- `theory/breakthroughs/breakthrough-theorems-new.md` lines 17-252 (155/159 EXACT + 4 REJECT)
+- `theory/proofs/bernoulli-boundary-2026-04-11.md` lines 88-107 (Master Lemma)
+- `theory/study/p2/n6-p2-1-dfs-51-classification.md` (tight/loose reclassification 22/51)
+- `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Bilateral Theorem B DEMONSTRATED + OBSERVATION distinction)
+- `theory/study/p2/n6-p2-3-cross-domain.md` (12x12 cross table IND 11 / BERN 22 / BASE 28)
 - `nexus/shared/n6/atlas.n6`:
-  - L314 `@P MISS-planck-units = sopfr (= 5, n=6 아님)`
+  - L314 `@P MISS-planck-units = sopfr (= 5, not n=6)`
   - L334 `@P MISS-fine-structure = sigma*(sigma-mu) + sopfr + mu/P2`
   - L462 `@P MISS-H0-Hubble = sigma * n + mu`
   - L737 `@C MISS-SI-base-units = sigma - sopfr`
-  - L752 `@C MISS-magic-82-126 = 단순매핑불가`
+  - L752 `@C MISS-magic-82-126 = mapping-not-simple`
   - L1057 `@L MISS-crystal-systems = sigma - sopfr`
-  - L2154 `@F MISS-base-pairs-per-turn = sigma - phi (= 10, 실측 10.5)`
-- 사용자 규칙:
-  - `feedback_honest_verification.md` (자기참조 금지 + 출처+측정값+오차 + 소수 편향 대조)
-  - `feedback_proof_approach.md` (n=6 앞세우지 말고 순수 수학에서 출발)
+  - L2154 `@F MISS-base-pairs-per-turn = sigma - phi (= 10, measured 10.5)`
+- User rules:
+  - `feedback_honest_verification.md` (no self-reference + source+measurement+error + small-integer bias control)
+  - `feedback_proof_approach.md` (do not lead with n=6; start from pure mathematics)
 
-**정직 유지 선언**: 본 노트는 수학적 신규 결과 없음. 감사 메타 분석만. 7/7 밀레니엄 난제 미해결. 155 EXACT 중 진정 유의 tight 는 10~14% (사전 확률 통계 기반 추정). 강등 권고 40 건은 별도 세션에서 atlas.n6 직접 편집으로 반영해야 한다.
+**Honesty retention declaration**: this note has no new mathematical result. Audit meta-analysis only. 7/7 Millennium problems unresolved. Among 155 EXACTs, genuine-significant tight items are 10-14% (prior-statistics-based estimate). The 40 downgrade recommendations should be reflected in separate sessions via direct atlas.n6 editing.

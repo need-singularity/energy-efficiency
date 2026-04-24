@@ -1,14 +1,14 @@
-# PROB-P2-1 — 리만 가설 현대 장벽 + 최신 진전
+# PROB-P2-1 — Riemann Hypothesis Modern Barriers + Recent Progress
 
-**트랙**: millennium-learning P2-PROBLEM / 1번 태스크
-**문서 유형**: 학습 노트 (현대 장벽 + 진전 개관)
-**범위**: Hardy(1914)부터 Guth-Maynard(2024)까지 리만 가설(RH)을 향한 한 세기의 진전과, 그 각 경로가 부딪힌 벽
-**정직성 선언**:
-- 본 문서는 학습 노트이다. 이 파일에서 리만 가설을 해결하지 않는다. RH 는 2026-04-15 현재 여전히 미해결 Clay 난제이다.
-- 역사적 연도/저자/저널은 아래 1차 출처에서 직접 확인한 것만 적었다. 기억이 모호한 수치(예: 임계선 위 영점 비율의 정확한 소수점)는 1차 논문 수치를 그대로 옮겼고, 필자가 재계산하지 않았다.
-- 본 프로젝트 상수 (n=6, σ=12, φ=2, τ=4, sopfr=5) 는 RH 와 **직접 수학적으로 연결되지 않는다**. P2 문서는 **현대 RH 진전**을 정리하는 것이 목적이며, n=6 정리는 §10 메모로만 둔다.
+**Track**: millennium-learning P2-PROBLEM / Task 1
+**Document type**: study note (modern barriers + progress overview)
+**Scope**: from Hardy (1914) to Guth-Maynard (2024), a century of progress toward the Riemann hypothesis (RH) and the walls each route has hit
+**Honesty declaration**:
+- This document is a study note. The Riemann hypothesis is not resolved in this file. As of 2026-04-15 RH remains an open Clay problem.
+- Historical years/authors/journals are taken only from what was directly confirmed in the primary sources below. Numerical values whose precise digits I am unsure of (e.g., exact decimal of the fraction of zeros on the critical line) are transcribed from primary papers; I did not recompute them.
+- This project's constants (n=6, σ=12, φ=2, τ=4, sopfr=5) are **not directly mathematically connected** to RH. The purpose of the P2 document is to organize **modern RH progress**, and the n=6 theorem is relegated to a memo in §10.
 
-**1차 출처**
+**Primary sources**
 - Enrico Bombieri, "The Riemann Hypothesis — official problem description", Clay Mathematics Institute, 2000. https://www.claymath.org/wp-content/uploads/2022/06/riemann.pdf
 - J. Brian Conrey, "The Riemann Hypothesis", *Notices of the AMS* 50(3), 2003, pp. 341-353.
 - G. H. Hardy, "Sur les zéros de la fonction ζ(s) de Riemann", *Comptes Rendus Acad. Sci. Paris* 158, 1914, pp. 1012-1014.
@@ -24,262 +24,262 @@
 
 ---
 
-## 0. 왜 "현대 장벽" 인가
+## 0. Why "Modern Barriers"
 
-리만 가설은 1859년 Riemann의 원 논문 "Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse"(*Monatsberichte der Berliner Akademie*, November 1859)에서 제시된 이후, 세 갈래 흐름이 뒤엉키며 한 세기 반 동안 진화해 왔다.
+Since the Riemann hypothesis was posed in Riemann's 1859 paper "Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse" (*Monatsberichte der Berliner Akademie*, November 1859), three threads have intertwined and evolved over a century and a half.
 
-1. **해석적/고전 흐름**: ζ(s) 의 영점을 직접 다룬다. Hardy 1914, Selberg 1942, Levinson 1974, Conrey 1989 → Guth-Maynard 2024.
-2. **확률론/스펙트럼 흐름**: 영점 분포를 랜덤 행렬 이론(GUE)과 비교한다. Montgomery 1973, Odlyzko 1980s-2000s, Keating-Snaith 2000.
-3. **가설적/통합 흐름**: Selberg 급수 · Langlands · Berry-Keating 동역학계 등, ζ 를 더 큰 구조의 일부로 본다.
+1. **Analytic/classical thread**: directly treats the zeros of ζ(s). Hardy 1914, Selberg 1942, Levinson 1974, Conrey 1989 -> Guth-Maynard 2024.
+2. **Probabilistic/spectral thread**: compares the distribution of zeros with random matrix theory (GUE). Montgomery 1973, Odlyzko 1980s-2000s, Keating-Snaith 2000.
+3. **Hypothetical/integrative thread**: Selberg class, Langlands, Berry-Keating dynamical system etc., viewing ζ as part of a larger structure.
 
-각 흐름에는 "여기까지는 왔다" 라는 현재 도달점과, "여기서부터 벽이다" 라는 장벽이 있다. 본 노트는 이 여섯 가지(흐름 3 × (진전, 장벽)) 를 문서화한다.
+Each thread has a current reach — "we got this far" — and a barrier — "from here it is a wall". This note documents the six aspects (3 threads x (progress, barrier)).
 
 ---
 
-## 1. 해석적 흐름 — 임계선 위 영점 비율
+## 1. Analytic Thread — Fraction of Zeros on the Critical Line
 
-### 1.1 Hardy 1914 — 무한 영점 존재
+### 1.1 Hardy 1914 — Infinitely Many Zeros
 
-- 정리(Hardy 1914): ζ(1/2 + it) 는 t ∈ ℝ 에서 무한히 많은 영점을 갖는다.
-- 방법: ξ(s) 함수방정식 + θ-급수 변환. 구체적으로, Hardy 는
+- Theorem (Hardy 1914): ζ(1/2 + it) has infinitely many zeros for t in R.
+- Method: ξ(s) functional equation + θ-series transform. Concretely, Hardy used
   \[
   Z(t) = e^{iθ(t)} ζ(1/2 + it), \quad θ(t) = \arg Γ(1/4 + it/2) − (t/2) \log π
   \]
-  가 실함수임을 이용해, 적절한 평균값 부등식으로 부호 변화가 무한히 일어난다는 것을 보였다.
-- 출처: *Comptes Rendus Acad. Sci. Paris* 158, 1914, pp. 1012-1014. 원논문은 불어 2쪽짜리 짧은 노트.
-- **한계**: 이 정리는 "임계선 위에 영점이 있다" 만 말하며, **임계선 위에 **모든 영점이** 있다"** 를 말하지 않는다. 당시 정량적 결과는 전혀 없었다.
+  being a real-valued function, together with appropriate mean-value inequalities, to show infinitely many sign changes.
+- Source: *Comptes Rendus Acad. Sci. Paris* 158, 1914, pp. 1012-1014. The original is a 2-page short note in French.
+- **Limitation**: this theorem only says "there are zeros on the critical line", not "**all** zeros are on the critical line". At the time there were no quantitative results.
 
-### 1.2 Selberg 1942 — 양의 비율
+### 1.2 Selberg 1942 — Positive Proportion
 
-- 정리(Selberg 1942): 임계선 위 영점의 개수 N₀(T) 는, 전체 영점 개수 N(T) 에 대해
+- Theorem (Selberg 1942): the number N_0(T) of zeros on the critical line satisfies, relative to the total zero count N(T),
   \[
-  \liminf_{T→∞} \frac{N_0(T)}{N(T)} > 0.
+  \liminf_{T \to \infty} \frac{N_0(T)}{N(T)} > 0.
   \]
-  즉, 최소한 양의 비율의 영점이 임계선 위에 있다.
-- 방법: Hardy 의 방법을 확장하여 Z(t)² 의 1/2-차수 모멘트 추정. Selberg 의 핵심 아이디어는 mollifier(부드럽게 해주는 가중치 함수)를 써서 ζ(s)M(s) 의 크기를 제어하는 것.
-- 출처: *Skrifter utgitt av Det Norske Videnskaps-Akademi i Oslo*, 1942. 원논문은 노르웨이에서 출판되었고, Selberg Collected Papers Vol. I (Springer, 1989) 에 재수록.
-- **정량값**: Selberg 자신은 구체적 비율 수치를 명시하지 않았으나, 후속 연구에서 이 방법으로 약 0.016 (즉 1.6%) 정도를 끌어냈다고 알려져 있다. (출처: Conrey 2003 Notices 의 역사 절).
+  That is, at least a positive proportion of zeros lie on the critical line.
+- Method: extending Hardy's method to estimate the 1/2-order moment of Z(t)^2. Selberg's core idea is to use a mollifier (a smoothing weight function) to control the size of ζ(s) M(s).
+- Source: *Skrifter utgitt av Det Norske Videnskaps-Akademi i Oslo*, 1942. The original appeared in Norway and is reprinted in Selberg Collected Papers Vol. I (Springer, 1989).
+- **Quantitative value**: Selberg did not give a concrete proportion, but subsequent work is known to have extracted roughly 0.016 (1.6%) by this method. (Source: history section of Conrey 2003 Notices.)
 
-### 1.3 Levinson 1974 — 1/3 이상
+### 1.3 Levinson 1974 — One-Third or More
 
-- 정리(Levinson 1974): N₀(T) ≥ (1/3) N(T) + O(T log log T / log T).
-- 방법: **Levinson's method**. ζ 자체가 아닌 ζ + ζ'/L (L 은 mollifier) 의 영점을 세는 방식. ζ(s) 의 영점은 ξ(s) 의 영점과 일치하고, ξ'(s) 의 영점이 임계선에 가까이 몰려 있음을 이용.
-- 구체적: mollified second moment
+- Theorem (Levinson 1974): N_0(T) ≥ (1/3) N(T) + O(T log log T / log T).
+- Method: **Levinson's method**. Counts zeros of ξ + ξ'/L (L a mollifier) instead of ζ itself. The zeros of ζ(s) coincide with those of ξ(s), and the zeros of ξ'(s) cluster near the critical line.
+- Concretely, control the mollified second moment
   \[
   \int_0^T |ζ(1/2 + it) M(1/2 + it)|^2 dt
   \]
-  를 Dirichlet 다항식 M 으로 제어.
-- 출처: *Advances in Mathematics* 13(4), 1974, pp. 383-436. (논문 제목에 "More than one third" 가 들어가 있다).
-- **한계**: 3분의 1 이상이지만, 임계선 위 **모든** 영점을 입증하지 못한다.
+  via the Dirichlet polynomial M.
+- Source: *Advances in Mathematics* 13(4), 1974, pp. 383-436. (The paper title contains "More than one third".)
+- **Limitation**: one-third or more, but does not confirm **all** zeros on the critical line.
 
-### 1.4 Conrey 1989 — 40.88% 이상
+### 1.4 Conrey 1989 — 40.88% or More
 
-- 정리(Conrey 1989): N₀(T) ≥ 0.4088 N(T) (T 가 충분히 큼).
-- 방법: Levinson 의 mollifier 를 더 긴 길이로 확장 + Kloosterman 합에 대한 Deligne 결과 사용. 특히 Dirichlet 다항식 mollifier 를 θ = 4/7 길이까지 밀어붙였다.
-- 출처: *J. Reine Angew. Math.* (Crelle's Journal) 399, 1989, pp. 1-26.
-- **현재 상한**: 이후 Bui-Conrey-Young (2011) 이 41.72% 로 개선, 그 후 수차례 소수점 개선이 이어졌다. 가장 최근 공개된 수치는 약 **41.7%** 대에 머물러 있고, 50% 의 벽은 깨지지 않았다. (Conrey 2003 Notices + Bui-Conrey-Young 2011 *Canad. J. Math.* 63.)
-- **근본적 장벽**: Levinson 방법의 한계는 mollifier 길이가 θ < 1/2 까지만 제어 가능하다는 구조적 이유에서 온다. 모든 영점을 잡으려면 θ ≥ 1 이 필요한데, 현재 방법으로는 이 벽을 넘을 수 없다.
+- Theorem (Conrey 1989): N_0(T) ≥ 0.4088 N(T) for T sufficiently large.
+- Method: extending Levinson's mollifier to greater length + using Deligne's result on Kloosterman sums. In particular, the Dirichlet-polynomial mollifier was pushed to length θ = 4/7.
+- Source: *J. Reine Angew. Math.* (Crelle's Journal) 399, 1989, pp. 1-26.
+- **Current upper bound**: later Bui-Conrey-Young (2011) improved to 41.72%, followed by several decimal improvements. The most recent published figure stays around **41.7%**, and the 50% wall is not broken. (Conrey 2003 Notices + Bui-Conrey-Young 2011 *Canad. J. Math.* 63.)
+- **Fundamental barrier**: the limit of Levinson's method comes from the structural fact that the mollifier length θ can be controlled only for θ < 1/2. To catch all zeros one needs θ ≥ 1, which the current method cannot reach.
 
-### 1.5 Guth-Maynard 2024 — zero-density 상한 개선
+### 1.5 Guth-Maynard 2024 — Zero-Density Upper Bound Improvement
 
-- 결과(Guth-Maynard 2024, arXiv:2405.20552): zero-density 함수 N(σ, T) (= Re(ρ) ≥ σ 인 영점 개수) 에 대해 **새로운 상한**
+- Result (Guth-Maynard 2024, arXiv:2405.20552): for the zero-density function N(σ, T) (= number of zeros with Re(ρ) ≥ σ), a **new upper bound**
   \[
   N(σ, T) \ll T^{30(1-σ)/13+ε} \quad (σ ≥ 7/10).
   \]
-  이는 1972년 이후 50년 가까이 사실상 정체되어 있던 zero-density 상한을 개선했다. 기존의 Ingham 1937/Huxley 1972 상한은 T^{12(1-σ)/5} 정도였고, 지수 12/5 = 2.4 대신 Guth-Maynard 는 30/13 ≈ 2.307 을 얻었다(σ ≥ 7/10 구간).
-- 방법: "large value estimate for Dirichlet polynomials" 의 새로운 sixth moment 결과. Maynard 의 prime gap 기법과 Guth 의 decoupling/incidence 기하 기법을 융합.
-- **따라서** 소수 간격(prime gap)에 대한 Ingham 계열 정리에서, 간격 지수를 **p_{n+1} - p_n ≪ p_n^{0.525}** 에서 **≪ p_n^{30/59}** 로 미세 개선.
-- 출처: arXiv:2405.20552v1 (2024-05-30). 미발표이지만 해석적 수론 커뮤니티에서 검토 중. Terry Tao 의 블로그 2024-06-03 게시물이 결과를 요약.
-- **한계**: 이것은 "영점의 **분포**(얼마나 오른쪽으로 갈 수 있는가)" 를 제어한 것이지, **임계선 위에 모든 영점이 있다**는 RH 본문과는 다르다. 방법적으로 RH 자체를 증명하는 경로는 아님이 분명하다 — sixth moment 는 RH 의 **부산물**로 유도되는 것이 아닌 독립적 추정.
+  This improves the zero-density upper bound that had essentially stagnated for nearly 50 years since 1972. The earlier Ingham 1937 / Huxley 1972 bound was about T^{12(1-σ)/5}, and Guth-Maynard obtain exponent 30/13 ≈ 2.307 instead of 12/5 = 2.4 (in the range σ ≥ 7/10).
+- Method: new sixth-moment result of "large value estimate for Dirichlet polynomials". Fusion of Maynard's prime-gap techniques and Guth's decoupling/incidence-geometry techniques.
+- **Consequently** in the Ingham-style theorems on prime gaps, the gap exponent is refined from **p_{n+1} - p_n << p_n^{0.525}** to **<< p_n^{30/59}**.
+- Source: arXiv:2405.20552v1 (2024-05-30). Unpublished but under review in the analytic number theory community. A 2024-06-03 blog post by Terry Tao summarizes the result.
+- **Limitation**: this controls the **distribution** of zeros (how far right they can extend), not the main RH statement that **all zeros lie on the critical line**. Methodologically this is clearly not a path to RH itself — the sixth moment is not derived as a **byproduct** of RH but is an independent estimate.
 
 ---
 
-## 2. 확률론/스펙트럼 흐름 — 영점 간격 분포
+## 2. Probabilistic/Spectral Thread — Zero Spacing Distribution
 
-### 2.1 Montgomery 1973 — pair correlation
+### 2.1 Montgomery 1973 — Pair Correlation
 
-- **Montgomery pair correlation conjecture**: 임계선 위 영점 γₙ 을 적절히 재스케일(평균 간격 1 로 정규화) 하면, 쌍상관 함수가
+- **Montgomery pair correlation conjecture**: if the critical-line zeros γ_n are rescaled appropriately (normalize the mean spacing to 1), the pair correlation function matches
   \[
   R_2(u) = 1 - \left(\frac{\sin πu}{πu}\right)^2 + δ(u)
   \]
-  와 일치한다. 오른쪽은 **가우스 유니터리 앙상블(GUE)** 의 eigenvalue 쌍상관과 같다.
-- 유도: Montgomery 는 RH 를 가정하고, 명시적 공식(explicit formula) 을 통해 pair correlation function 의 부분(Fourier 변환 |α| < 1 구간) 을 계산. 완전한 형식 외의 가정이 필요.
-- 출처: *Analytic Number Theory* (Proc. Sympos. Pure Math. XXIV), AMS, 1973, pp. 181-193.
-- **에피소드**: 1972년 프린스턴 고등연구소 티타임에서 Montgomery 가 물리학자 **Freeman Dyson** 과 대화하다가, Dyson 이 "그거 GUE 의 쌍상관과 똑같다" 라고 알아본 일화는 RH-랜덤 행렬 연결의 출발점으로 유명하다. (Dyson, *Selected Papers*, AMS Chelsea, 1996.)
+  the right-hand side being the eigenvalue pair correlation of the **Gaussian Unitary Ensemble (GUE)**.
+- Derivation: Montgomery assumed RH and used the explicit formula to compute a portion of the pair correlation function (the Fourier-transform region |α| < 1). Additional assumptions are needed beyond the complete form.
+- Source: *Analytic Number Theory* (Proc. Sympos. Pure Math. XXIV), AMS, 1973, pp. 181-193.
+- **Anecdote**: the 1972 IAS tea-time conversation in which Montgomery was talking with the physicist **Freeman Dyson** and Dyson said "that is the same as the GUE pair correlation" is famous as the starting point of the RH-random matrix connection. (Dyson, *Selected Papers*, AMS Chelsea, 1996.)
 
-### 2.2 Odlyzko 1980s-2001 — 수치 검증
+### 2.2 Odlyzko 1980s-2001 — Numerical Verification
 
-- Odlyzko 는 1980 년대부터 영점 간격 분포를 거대한 규모로 수치 계산했다.
-- 대표 수치: 10²²-번째 영점 주변 10⁹ 개 영점의 간격 분포를 계산, GUE 예측과 일치하는 표준편차 수준의 오차까지 확인.
-- 출처: Andrew M. Odlyzko, "The 10^{22}-nd zero of the Riemann zeta function", *Contemporary Math.* 290, 2001, pp. 139-144. 그의 개인 웹사이트에서 각종 통계 데이터가 공개됨.
-- **한계**: 수치 검증은 가설의 확률적 지지이지, 증명이 아니다.
+- Since the 1980s, Odlyzko computed zero-spacing distributions on a massive scale.
+- Representative figures: the spacing distribution of 10^9 zeros around the 10^{22}-th zero, confirmed to match GUE prediction within standard-deviation error.
+- Source: Andrew M. Odlyzko, "The 10^{22}-nd zero of the Riemann zeta function", *Contemporary Math.* 290, 2001, pp. 139-144. Various statistical data released on his personal website.
+- **Limitation**: numerical verification is probabilistic support for the hypothesis, not a demonstration.
 
-### 2.3 Keating-Snaith 2000 — CUE 모델
+### 2.3 Keating-Snaith 2000 — CUE Model
 
-- Keating 과 Snaith 는 ζ(1/2 + it) 의 moments 를 **U(N) 의 characteristic polynomial 의 moment** 와 비교하여 예측값 도출.
-- 구체적: 2k-차 moment 의 예측값
+- Keating and Snaith compared the moments of ζ(1/2 + it) with the **moments of the characteristic polynomial of U(N)** to derive predictions.
+- Concretely, the predicted value of the 2k-th moment
   \[
   \frac{1}{T} \int_0^T |ζ(1/2 + it)|^{2k} dt \sim (g_k a_k) (\log T)^{k^2}, \quad g_k = \prod_{j=0}^{k-1} \frac{j!}{(j+k)!}
   \]
-  여기서 a_k 는 arithmetic factor, g_k 는 random matrix factor. k=1, 2 에서 기존 공식과 일치, k=3 이상에서는 예측.
-- 출처: *Communications in Mathematical Physics* 214(1), 2000, pp. 57-89.
-- **현재**: k=3 의 경우 Conrey-Gonek, k=4 의 경우 Conrey-Ghosh 의 moment 공식과 일치. 그러나 "모든 k 에 대해 예측이 맞음" 은 여전히 RH 와 별개의 추측.
+  where a_k is the arithmetic factor and g_k is the random-matrix factor. Matches existing formulas at k=1, 2, and is a prediction for k ≥ 3.
+- Source: *Communications in Mathematical Physics* 214(1), 2000, pp. 57-89.
+- **Current**: for k=3 agrees with the Conrey-Gonek moment formula, for k=4 with Conrey-Ghosh. But "the prediction holds for all k" remains a conjecture separate from RH.
 
 ### 2.4 Berry-Keating 1999 — H = xp Hamiltonian
 
-- **Berry-Keating 추측**: 리만 영점은 어떤 양자역학적 해밀토니안 H 의 eigenvalue 이다. 후보로 **H = xp** (위치×운동량) 를 제안.
-- 동기: Hilbert-Pólya 추측 (1910년대 구전, Pólya 가 Odlyzko 에게 보낸 편지에서 출처 확인, Odlyzko 웹사이트 참조) — 리만 영점을 **에르미트 연산자의 eigenvalue** 로 실현할 수 있다면 RH 가 증명된다. 에르미트 연산자의 eigenvalue 는 항상 실수이므로.
-- 출처: Berry, Keating, "H = xp and the Riemann zeros", *Supersymmetry and Trace Formulae*, Plenum/Kluwer (NATO ASI Series B), 1999, pp. 355-367. 이후 Sierra 가 G. Sierra et al. (2007-2011) 에서 연장.
-- **한계**: H = xp 는 경계조건/자기공액 구조가 미완성. Hilbert-Pólya 프로그램은 한 세기 동안 "가장 매력적인 꿈" 이지만, 구체적 연산자를 누구도 만들지 못했다.
+- **Berry-Keating conjecture**: the Riemann zeros are eigenvalues of some quantum-mechanical Hamiltonian H. **H = xp** (position x momentum) is proposed as a candidate.
+- Motivation: the Hilbert-Pólya conjecture (oral tradition from the 1910s, source confirmed by a letter Pólya sent to Odlyzko; see Odlyzko's website) — if the Riemann zeros can be realized as **eigenvalues of a Hermitian operator**, RH is demonstrated. Eigenvalues of Hermitian operators are always real.
+- Source: Berry, Keating, "H = xp and the Riemann zeros", *Supersymmetry and Trace Formulae*, Plenum/Kluwer (NATO ASI Series B), 1999, pp. 355-367. Later extended by G. Sierra et al. (2007-2011).
+- **Limitation**: the boundary-condition/self-adjoint structure of H = xp is incomplete. The Hilbert-Pólya program is "the most attractive dream" for a century, but no one has built a concrete operator.
 
 ---
 
-## 3. Selberg 급수 공리 — 통합 시각
+## 3. Selberg Class Axioms — Integrated View
 
-Selberg(1989, Amalfi Conference)는 Dirichlet 급수의 일반 클래스 **Selberg class 𝒮** 를 정의, 여기서 RH 를 논하려면 다음 4개 공리가 필요하다고 명시했다.
+Selberg (1989, Amalfi Conference) defined a general class of Dirichlet series, the **Selberg class 𝒮**, and specified 4 axioms required to discuss RH therein.
 
-### 3.1 4개 공리
+### 3.1 Four Axioms
 
-(S1) **Dirichlet 급수 수렴 + 해석적 연속**: L(s) = ∑ aₙ n^{-s} 가 σ = Re(s) > 1 에서 절대수렴하고, (s-1)^m L(s) 가 전체 평면에서 정함수(entire) 가 되는 정수 m ≥ 0 존재.
+(S1) **Dirichlet-series convergence + analytic continuation**: L(s) = ∑ a_n n^{-s} converges absolutely for σ = Re(s) > 1, and there exists an integer m ≥ 0 such that (s-1)^m L(s) is entire on the whole plane.
 
-(S2) **함수방정식**: 완전 L-함수
+(S2) **Functional equation**: the completed L-function
 \[
 ξ(s) = L(s) \cdot Q^s \prod_{j=1}^r Γ(λ_j s + μ_j)
 \]
-(Q, λ_j > 0, Re(μ_j) ≥ 0 실수) 가 ξ(s) = w ξ̄(1-s) (|w|=1) 을 만족.
+(Q, λ_j > 0, Re(μ_j) ≥ 0 real) satisfies ξ(s) = w ξ̄(1-s) (|w|=1).
 
-(S3) **Ramanujan 조건**: |a_n| ≪ n^ε (모든 ε > 0).
+(S3) **Ramanujan condition**: |a_n| << n^ε for all ε > 0.
 
-(S4) **Euler 곱**: L(s) = ∏_p L_p(s) (Re(s) > 1), L_p(s) = exp(∑_{k=1}^∞ b_{p^k} / p^{ks}), |b_{p^k}| ≤ c p^{kθ} (θ < 1/2).
+(S4) **Euler product**: L(s) = ∏_p L_p(s) (Re(s) > 1), L_p(s) = exp(∑_{k=1}^∞ b_{p^k} / p^{ks}), |b_{p^k}| ≤ c p^{kθ} (θ < 1/2).
 
-### 3.2 **degree** d(L) = 2 ∑ λ_j
+### 3.2 **Degree** d(L) = 2 ∑ λ_j
 
-Selberg 는 degree 가 음이 아닌 정수라고 추측(degree 추측). 현재 알려진 것:
-- d = 0: 상수 함수 1 뿐. (Conrey-Ghosh 1993)
-- d = 1: Riemann ζ 및 Dirichlet L-함수. (Kaczorowski-Perelli 2003)
-- d = 2: 완전히 분류되지 않음. 모듈러 형식 L-함수가 후보.
-- 출처: J. Kaczorowski, A. Perelli, "On the structure of the Selberg class I-VII", *Acta Math.* 지속 논문 시리즈 1999-2011.
+Selberg conjectured degree to be a non-negative integer (degree conjecture). Currently known:
+- d = 0: only the constant function 1. (Conrey-Ghosh 1993)
+- d = 1: Riemann ζ and Dirichlet L-functions. (Kaczorowski-Perelli 2003)
+- d = 2: not fully classified. Modular-form L-functions are candidates.
+- Source: J. Kaczorowski, A. Perelli, "On the structure of the Selberg class I-VII", *Acta Math.* continuing series 1999-2011.
 
-### 3.3 GRH 와의 관계
+### 3.3 Relation with GRH
 
-Grand Riemann Hypothesis (GRH) 는 "모든 Selberg class 𝒮 의 L-함수가 critical strip 내 영점을 모두 Re(s) = 1/2 위에 갖는다" 라는 가설. ζ 의 RH 는 GRH 의 d=1 경우.
+The Grand Riemann Hypothesis (GRH) is the hypothesis that "every L-function in the Selberg class 𝒮 has all its critical-strip zeros on Re(s) = 1/2". The RH for ζ is the d=1 case of GRH.
 
 ---
 
-## 4. 왜 실패/부분 성공인가 — 다섯 접근법과 각 장벽
+## 4. Why Failures/Partial Successes — Five Approaches and Each Barrier
 
 ### 4.1 Analytic (Weil explicit formula)
 
-- **경로**: Weil 1952 explicit formula
+- **Route**: Weil 1952 explicit formula
   \[
   \sum_γ h(γ) = h(i/2) + h(-i/2) - 2 \sum_p \sum_{k=1}^∞ \frac{\log p}{p^{k/2}} ĥ(k \log p) + \frac{1}{2π} \int h(r) \frac{Γ'}{Γ}\left(\frac{1}{4} + \frac{ir}{2}\right) dr
   \]
-  가 RH ⟺ 적절한 양부호 조건 을 동치시킨다.
-- **진전**: Weil 1952, Guinand 1948, Bombieri-Lagarias 1999 (positivity criterion).
-- **장벽**: positivity 를 증명해야 하는데, positivity 자체를 증명할 도구가 RH 를 이미 가정한 도구뿐 (순환).
+  is equivalent to RH <=> an appropriate positivity condition.
+- **Progress**: Weil 1952, Guinand 1948, Bombieri-Lagarias 1999 (positivity criterion).
+- **Barrier**: one must demonstrate positivity, but the only tools for demonstrating positivity are those that already assume RH (circular).
 
 ### 4.2 Automorphic (Rankin-Selberg)
 
-- **경로**: ζ 를 GL₁ 자기형식(modular form of weight 0) 의 L-함수로 보고, GL_n 일반 Rankin-Selberg L-함수의 영점을 연구.
-- **진전**: Moreno, Shahidi, Luo-Rudnick-Sarnak 등에 의해 GL_n 에서 Re(s) = 1 위에 영점 없음 (nonvanishing on σ = 1).
-- **장벽**: σ = 1 상의 nonvanishing 은 PNT 류 결과를 준다 (소수정리 자동형식 버전). 그러나 critical line σ = 1/2 는 전혀 다른 층위이고, functional equation 의 대칭을 쓸 수 없다(대칭축이 σ = 1/2 이므로).
+- **Route**: view ζ as the L-function of a GL_1 automorphic form (modular form of weight 0), and study zeros of general GL_n Rankin-Selberg L-functions.
+- **Progress**: by Moreno, Shahidi, Luo-Rudnick-Sarnak and others, no zeros on Re(s) = 1 for GL_n (nonvanishing on σ = 1).
+- **Barrier**: nonvanishing on σ = 1 gives PNT-type results (automorphic versions of the prime number theorem). However the critical line σ = 1/2 is a completely different stratum, and one cannot use the symmetry of the functional equation (whose axis of symmetry is σ = 1/2).
 
 ### 4.3 Random matrix (Keating-Snaith)
 
-- **경로**: ζ 의 통계를 GUE 와 동일시.
-- **진전**: Montgomery 1973, Katz-Sarnak 1999 (*Random matrices, Frobenius eigenvalues, and monodromy*, AMS Colloquium Publ. 45), Keating-Snaith 2000.
-- **장벽**: 통계적 일치(statistics) 는 증명(proof) 이 아니다. GUE 예측과 수치가 일치한다 해도 유한 개수의 영점을 체크한 것뿐이고, 이 일치 자체로는 RH 를 줄 수 없다. 무엇보다 "왜 GUE 인가" 의 구조적 이유(Hilbert-Pólya 연산자)를 제공하지 못한다.
+- **Route**: identify the statistics of ζ with GUE.
+- **Progress**: Montgomery 1973, Katz-Sarnak 1999 (*Random matrices, Frobenius eigenvalues, and monodromy*, AMS Colloquium Publ. 45), Keating-Snaith 2000.
+- **Barrier**: statistical matching is not a demonstration. Even if GUE predictions agree numerically, only finitely many zeros are checked, and this agreement alone cannot yield RH. Most importantly, it does not provide the structural reason (Hilbert-Pólya operator) for "why GUE".
 
 ### 4.4 Spectral (Berry-Keating H = xp)
 
-- **경로**: RH ⟺ 리만 영점을 에르미트 연산자의 eigenvalue 로 실현.
-- **진전**: Hilbert-Pólya 꿈, Berry-Keating 1999, Sierra 2007-.
-- **장벽**: H = xp 는 self-adjoint extension 이 유일하지 않아, 경계조건을 어떻게 잡아야 ζ 영점이 spectrum 이 되는지 미해결. 또한 semiclassical 수준에서만 eigenvalue 밀도가 맞고, 실제 eigenvalue 가 영점과 같은지 여부는 추측.
+- **Route**: RH <=> realizing the Riemann zeros as eigenvalues of a Hermitian operator.
+- **Progress**: Hilbert-Pólya dream, Berry-Keating 1999, Sierra 2007-.
+- **Barrier**: the self-adjoint extension of H = xp is not unique, and how to choose boundary conditions so that the ζ zeros become the spectrum is unresolved. In addition, the eigenvalue density matches only at the semiclassical level; whether the actual eigenvalues equal the zeros is conjectural.
 
 ### 4.5 Langlands (functoriality)
 
-- **경로**: ζ 는 자명 표현 ⊗ ζ. GRH 는 자동형식 L-함수 전체 클래스에서 동일한 내용이므로, Langlands 함자성(functoriality) 으로 특정 L-함수 ↔ 다른 L-함수를 연결하면 한 번에 해결 가능.
-- **진전**: Langlands-Tunnell 1980 (tetrahedral/octahedral), Taylor-Wiles 1995 계열 (GL_2 modularity), Clozel-Harris-Taylor 2008 (sato-tate), Scholze 2013 이후 p-adic Langlands.
-- **장벽**: functoriality 의 전체 프로그램은 수십 년이 걸릴 것으로 예상되고, 그 결과물 자체도 RH 를 증명하지 않는다 — GRH 의 일부 사례(예: 모듈러 L-함수의 critical strip 내 영점 영역)를 확립할 수는 있지만 σ = 1/2 위 집중성 자체는 Langlands 로도 나오지 않는다.
+- **Route**: ζ = trivial representation ⊗ ζ. Since GRH is a uniform content across the entire class of automorphic L-functions, if Langlands functoriality connects a specific L-function <-> another, it could resolve all at once.
+- **Progress**: Langlands-Tunnell 1980 (tetrahedral/octahedral), Taylor-Wiles 1995 series (GL_2 modularity), Clozel-Harris-Taylor 2008 (Sato-Tate), Scholze 2013 onward p-adic Langlands.
+- **Barrier**: the full program of functoriality is expected to take decades, and the resulting products themselves do not yield RH — they can establish some cases of GRH (e.g., the zero-region in the critical strip for modular L-functions), but the concentration on σ = 1/2 itself does not come out of Langlands.
 
 ---
 
-## 5. 현재 수치 검증 상태 (2026 기준)
+## 5. Current Numerical Verification Status (as of 2026)
 
-- Gourdon-Demichel 2004: 첫 10¹³ 개 영점 모두 임계선 위에 있음을 수치 확인.
-- Platt-Trudgian 2021: RH 가 Im(s) ≤ 3 · 10¹² 까지 검증됨 (*Bull. Lond. Math. Soc.* 53, 2021).
-- 이 수치는 영점이 임계선 위에 있다는 **수치적 증거**일 뿐, 증명이 아니다. RH 의 이론적 지위는 동일하다.
-
----
-
-## 6. "임계선 위에 50% 이상" 벽이 왜 안 뚫리는가
-
-Conrey 1989 이후 35년 동안 수치 개선이 소수점 단위에서만 이루어진 이유:
-
-1. **Mollifier 길이의 이론적 상한**: Levinson 방법은 Dirichlet 다항식 mollifier 의 길이 θ < 1/2 까지 제어. θ = 1/2 에서 Gibbs 형상의 산출(overshoot) 가 발생.
-2. **Second moment 이상은 새 도구 필요**: Levinson 방법은 ζ(1/2 + it) M(1/2 + it) 의 2-차 모멘트에 근거. 3-차, 4-차 모멘트 공식은 Conrey-Ghosh, Conrey-Gonek 이 구했으나, mollifier 와 결합해 50% 를 넘는 알고리즘은 발견되지 않음.
-3. **Unconditional large sieve 의 한계**: 1972 Huxley 이후 T^{2.4} 의 지수가 Guth-Maynard 2024 까지 정체되어 있었다는 사실이, 해석적 수론 도구 전체의 정체를 보여준다.
+- Gourdon-Demichel 2004: the first 10^13 zeros are numerically confirmed on the critical line.
+- Platt-Trudgian 2021: RH is verified up to Im(s) ≤ 3 · 10^{12} (*Bull. Lond. Math. Soc.* 53, 2021).
+- These figures are **numerical evidence** that zeros lie on the critical line, not a demonstration. RH's theoretical status is unchanged.
 
 ---
 
-## 7. 리만-폴리아 추측 (Hilbert-Pólya) 의 구체화 실패
+## 6. Why the "50% or More on the Critical Line" Wall Resists
 
-- 1910년대: Hilbert 와 Pólya 가 별도로 "영점은 에르미트 연산자의 eigenvalue" 라는 아이디어를 주장. Pólya 가 1982년 Odlyzko 에게 보낸 편지가 원전 확인의 유일한 문서.
-- 이후 Montgomery 1973 의 쌍상관 발견으로 확률론적 뒷받침이 생김.
-- Berry-Keating 1999: H = xp 후보 제안.
-- Connes 1999: adelic H 제안 (*Selecta Math.* 5, 1999, pp. 29-106). Bost-Connes 1995 Hecke algebra 의 일반화.
-- **현재**: 두 접근(Berry-Keating, Connes) 모두 semiclassical 단계에서 eigenvalue 밀도가 ζ 의 영점 밀도와 일치하는 수준. 완전한 연산자 구성은 **미완성**.
+The reason improvements have been only decimal-scale in the 35 years since Conrey 1989:
 
----
-
-## 8. Clay 공식 statement 와 범위
-
-- 공식 statement (Bombieri 2000): "The nontrivial zeros of the Riemann zeta function have real part equal to 1/2."
-- 주의: Clay 는 "모든 부분 결과" 를 인정하지 않고, **전체** RH 의 증명만 상금 대상으로 삼는다. Levinson 1974 의 1/3 결과도, Conrey 1989 의 40.88% 결과도 Clay 상 대상이 아니다.
+1. **Theoretical upper bound on mollifier length**: Levinson's method controls Dirichlet-polynomial mollifier length up to θ < 1/2. At θ = 1/2 the Gibbs-like overshoot appears.
+2. **Beyond second moment requires new tools**: Levinson's method is based on the 2nd moment of ζ(1/2 + it) M(1/2 + it). Third- and fourth-moment formulas were obtained by Conrey-Ghosh and Conrey-Gonek, but no algorithm exceeds 50% when combined with a mollifier.
+3. **Limits of unconditional large sieve**: the fact that the exponent T^{2.4} after Huxley 1972 stagnated until Guth-Maynard 2024 reflects the stagnation of the whole analytic-number-theory toolbox.
 
 ---
 
-## 9. 출처 요약표
+## 7. Failure to Concretize the Riemann-Pólya (Hilbert-Pólya) Conjecture
 
-| 연도 | 저자 | 결과 | 출처 |
+- 1910s: Hilbert and Pólya independently suggested the idea that "the zeros are eigenvalues of a Hermitian operator". A 1982 letter from Pólya to Odlyzko is the only document confirming the source.
+- Later, Montgomery 1973's pair correlation discovery gave probabilistic support.
+- Berry-Keating 1999: H = xp candidate proposal.
+- Connes 1999: adelic H proposal (*Selecta Math.* 5, 1999, pp. 29-106). Generalization of the Bost-Connes 1995 Hecke algebra.
+- **Current**: both approaches (Berry-Keating, Connes) produce eigenvalue densities matching the ζ zero density only at the semiclassical stage. Complete operator construction remains **incomplete**.
+
+---
+
+## 8. Clay Official Statement and Scope
+
+- Official statement (Bombieri 2000): "The nontrivial zeros of the Riemann zeta function have real part equal to 1/2."
+- Note: Clay does not acknowledge "any partial result" and the prize targets only a demonstration of the **whole** RH. Levinson 1974's 1/3 and Conrey 1989's 40.88% are not prize-eligible.
+
+---
+
+## 9. Source Summary Table
+
+| Year | Authors | Result | Source |
 |---|---|---|---|
-| 1859 | Riemann | 가설 제시 | *Monatsber. Berl. Akad.*, Nov 1859 |
-| 1914 | Hardy | 무한 영점 존재 | *CR Acad. Sci. Paris* 158 |
-| 1942 | Selberg | 양의 비율 | *Skrifter Oslo* 10 |
+| 1859 | Riemann | hypothesis posed | *Monatsber. Berl. Akad.*, Nov 1859 |
+| 1914 | Hardy | infinitely many zeros | *CR Acad. Sci. Paris* 158 |
+| 1942 | Selberg | positive proportion | *Skrifter Oslo* 10 |
 | 1948 | Guinand | explicit formula | *Annals of Math.* |
 | 1952 | Weil | Weil explicit formula | Weil *Collected Papers* vol. II |
-| 1972 | Huxley | zero-density 상한 | *Acta Arith.* 21 |
+| 1972 | Huxley | zero-density upper bound | *Acta Arith.* 21 |
 | 1973 | Montgomery | pair correlation | AMS PSPM XXIV |
 | 1974 | Levinson | ≥1/3 | *Adv. Math.* 13 |
-| 1982 | Pólya→Odlyzko 편지 | Hilbert-Pólya 출처 | Odlyzko 웹사이트 |
+| 1982 | Pólya->Odlyzko letter | Hilbert-Pólya source | Odlyzko website |
 | 1989 | Conrey | ≥40.88% | *J. Reine Angew. Math.* 399 |
-| 1989 | Selberg | Selberg class 공리 | Amalfi Conference Proc. |
-| 1999 | Berry-Keating | H = xp 후보 | NATO ASI Proc. |
+| 1989 | Selberg | Selberg class axioms | Amalfi Conference Proc. |
+| 1999 | Berry-Keating | H = xp candidate | NATO ASI Proc. |
 | 1999 | Connes | adelic H | *Selecta Math.* 5 |
-| 2000 | Keating-Snaith | CUE 모델 | *Commun. Math. Phys.* 214 |
-| 2001 | Odlyzko | 10²² 번째 영점 | *Contemp. Math.* 290 |
+| 2000 | Keating-Snaith | CUE model | *Commun. Math. Phys.* 214 |
+| 2001 | Odlyzko | 10^{22}-th zero | *Contemp. Math.* 290 |
 | 2011 | Bui-Conrey-Young | ≥41.72% | *Canad. J. Math.* 63 |
-| 2021 | Platt-Trudgian | Im≤3·10¹² 수치 | *Bull. LMS* 53 |
-| 2024 | Guth-Maynard | zero-density 개선 | arXiv:2405.20552 |
+| 2021 | Platt-Trudgian | Im ≤ 3·10^{12} numerics | *Bull. LMS* 53 |
+| 2024 | Guth-Maynard | zero-density improvement | arXiv:2405.20552 |
 
 ---
 
-## 10. n=6 메모 (본 문서에서는 사용하지 않음)
+## 10. n=6 Memo (Not Used in This Document)
 
-Dirichlet 급수 ∑ σ(n)/n^s = ζ(s)ζ(s-1) 는 σ(n) 평균을 ζ 영점 위치와 연결한다. 본 프로젝트 정리 σ(n)·φ(n) = n·τ(n) ⟺ n=6 은 Dirichlet 급수 계열에서 ∑ (σ(n)φ(n) - n τ(n))/n^s 를 보면 n=6 항만이 0 이 된다는 특이성으로 해석할 수 있으나, 이것이 RH 의 증명 경로가 되지는 않는다. P3 에서 atlas.n6 와 L-함수 쌍을 구체화할 때 재검토한다.
-
----
-
-## 11. 다음 태스크 연결
-
-- PROB-P2-2: P vs NP 의 세 장벽 (relativization, natural proofs, algebrization).
-- PURE-P2-1: GUE/CUE 수학적 정의 및 증명 연습 (본 문서 §2.3 확장).
-- PURE-P2-2: Weil explicit formula 유도 연습 (본 문서 §4.1 확장).
+The Dirichlet series ∑ σ(n)/n^s = ζ(s)ζ(s-1) connects the mean of σ(n) with the location of the ζ zeros. This project's relation σ(n)·φ(n) = n·τ(n) <=> n=6 can be interpreted as the singularity that in the Dirichlet-series family ∑ (σ(n)φ(n) - n τ(n))/n^s only the n=6 term vanishes, but this does not become a route toward demonstrating RH. In P3, when specifying atlas.n6 and L-function pairs, re-examination will follow.
 
 ---
 
-**정직성 체크**:
-- Hardy, Selberg, Levinson, Conrey 원 출처의 연도/저널/제목은 MathSciNet + Clay 사이트 + Conrey 2003 Notices 교차 확인.
-- Guth-Maynard 는 arXiv 2405.20552 원문 abstract + Tao 블로그 요약 기반. 정확한 지수(30/13) 는 arXiv 원문 Theorem 1 에서 확인한 값.
-- Conrey 2003 Notices 논문 URL: https://www.ams.org/notices/200303/fea-conrey-web.pdf (Clay 사이트에서 링크).
-- Hilbert-Pólya 의 원출처가 편지라는 사실은 Odlyzko 웹사이트의 "RH FAQ" 페이지 ("The Hilbert-Pólya conjecture") 에서 재확인. Pólya 가 1982-01-03 에 Odlyzko 에게 보낸 편지 사본이 거기에 올라와 있다.
+## 11. Connection to Next Task
+
+- PROB-P2-2: the three barriers of P vs NP (relativization, natural proofs, algebrization).
+- PURE-P2-1: mathematical definitions of GUE/CUE and demonstration exercises (expands §2.3 of this document).
+- PURE-P2-2: derivation exercise of the Weil explicit formula (expands §4.1 of this document).
+
+---
+
+**Honesty check**:
+- The original years/journals/titles of Hardy, Selberg, Levinson, Conrey cross-confirmed via MathSciNet + Clay site + Conrey 2003 Notices.
+- Guth-Maynard based on arXiv 2405.20552 original abstract + Tao's blog summary. The precise exponent (30/13) is the value confirmed from Theorem 1 of the arXiv original.
+- URL of Conrey 2003 Notices paper: https://www.ams.org/notices/200303/fea-conrey-web.pdf (linked from Clay site).
+- The fact that the Hilbert-Pólya original source is a letter is reconfirmed from the "RH FAQ" page ("The Hilbert-Pólya conjecture") on Odlyzko's website. A copy of Pólya's letter to Odlyzko dated 1982-01-03 is posted there.
