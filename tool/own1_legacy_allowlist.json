@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 28,
+    "count": 27,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -533,6 +533,14 @@
         "removed": [
           "domains/compute/hexa-accel/hexa-accel.md"
         ]
+      },
+      {
+        "phase": "phase-6-D-B12-hexa-wafer",
+        "batch": "phase-6-D-B12-hexa-wafer",
+        "date": "2026-04-25",
+        "removed": 1,
+        "new_count": 27,
+        "note": "B12 RED-lite single-file - hexa-wafer (top-level domains/compute/hexa-wafer/) translated KR->EN, CJK=0 verified."
       }
     ]
   },
@@ -546,7 +554,6 @@
     "domains/cognitive/ai-quality-scale/ai-quality-scale.md",
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/compute/hexa-mram/hexa-mram.md",
-    "domains/compute/hexa-wafer/hexa-wafer.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
     "papers/moonshine-barrier-honest-report-2026-04-15.md",
     "papers/n6-66-techniques-integrated-paper.md",
