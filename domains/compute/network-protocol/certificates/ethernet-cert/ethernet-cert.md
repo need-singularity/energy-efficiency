@@ -1,65 +1,65 @@
-# Ethernet n=6 인증서
+# Ethernet n=6 Certificate
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 발행일: 2026-04-14
-- 발행 체계: NEXUS-6 Discovery Engine / CHIP-P3-2
-- 상위 문서: ../network-protocol.md
-- 실측 소스: ../ethernet.md
-- 인덱스: ../_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Issue date: 2026-04-14
+- Issuing system: NEXUS-6 Discovery Engine / CHIP-P3-2
+- Parent document: ../network-protocol.md
+- Measured source: ../ethernet.md
+- Index: ../_index.json
 
-## §1 σ=12 좌표
+## §1 sigma=12 coordinates
 
-| 항목 | 값 |
-|------|----|
-| σ=12 슬롯 번호 | 10 / 12 |
-| 그룹 | 유선 6 (n) |
-| 카테고리 | local_network |
-| 시대 | 10BASE-T 1990 ~ 1.6 TbE 2024 |
+| Item | Value |
+|------|-------|
+| sigma=12 slot number | 10 / 12 |
+| Group | wired 6 (n) |
+| Category | local_network |
+| Era | 10BASE-T 1990 ~ 1.6 TbE 2024 |
 
-## §2 n=6 매핑 근거
+## §2 n=6 mapping basis
 
-| 축 | 매핑 | 비고 |
-|----|------|------|
-| 기본 수식 1 | 25 Gbps = sopfr² | sopfr=5, 5²=25 |
-| 기본 수식 2 | 400 Gbps = 4·(σ·sopfr·φ-σ-φ) | 4·100=400 |
-| 헤더 | 14 B = σ+φ | DMAC+SMAC+EtherType |
-| 루트 BT | BT-181 "다중 대역 σ=12 채널 I/O 다중접속" | network-protocol.md §5 참조 |
+| Axis | Mapping | Notes |
+|------|---------|-------|
+| Base formula 1 | 25 Gbps = sopfr^2 | sopfr=5, 5^2=25 |
+| Base formula 2 | 400 Gbps = 4*(sigma*sopfr*phi-sigma-phi) | 4*100=400 |
+| Header | 14 B = sigma+phi | DMAC+SMAC+EtherType |
+| Root BT | BT-181 "multi-band sigma=12 channel I/O multiple access" | see network-protocol.md §5 |
 | atlas.n6 grade | `@R n6-dse-network-protocol = done dse :: dse [10]` | line 13667 |
 
-## §3 EXACT 체크 (P1-2 실측 인용)
+## §3 EXACT check (P1-2 measured reference)
 
-ethernet.md §3.3 데이터 포인트 표 (line 73) 기준:
+Based on ethernet.md §3.3 data point table (line 73):
 
-| DP # | 측정 | 값 | n=6 공식 | 오차 | 등급 |
-|------|------|----|----------|------|------|
-| DP-1 | 10 Mbps | 10 | 2·sopfr | 0% | EXACT |
-| DP-2 | 25 Gbps | 25 | sopfr² | 0% | EXACT |
-| DP-3 | 40 Gbps | 40 | 10·τ | 0% | EXACT |
-| DP-4 | 100 Gbps | 100 | σ·sopfr·φ-σ-φ | 0% | EXACT |
-| DP-5 | 400 Gbps | 400 | 4·(σ·sopfr·φ-σ-φ) | 0% | EXACT |
-| DP-6 | 프레임 max | 1518 B | 1500 MTU+18 | 1.2% | EMPIRICAL |
-| DP-7 | Jumbo | 9000 B | 9·10³ ad-hoc | N/A | EMPIRICAL |
-| DP-8 | FCS | 4 B | τ | 0% | EXACT |
-| DP-9 | DMAC+SMAC | 12 B | σ | 0% | EXACT |
-| DP-10 | EtherType | 2 B | φ | 0% | EXACT |
-| DP-11 | 표준 header | 14 B | σ+φ | 0% | EXACT |
+| DP # | Measure | Value | n=6 formula | Error | Grade |
+|------|---------|-------|-------------|-------|-------|
+| DP-1 | 10 Mbps | 10 | 2*sopfr | 0% | EXACT |
+| DP-2 | 25 Gbps | 25 | sopfr^2 | 0% | EXACT |
+| DP-3 | 40 Gbps | 40 | 10*tau | 0% | EXACT |
+| DP-4 | 100 Gbps | 100 | sigma*sopfr*phi-sigma-phi | 0% | EXACT |
+| DP-5 | 400 Gbps | 400 | 4*(sigma*sopfr*phi-sigma-phi) | 0% | EXACT |
+| DP-6 | Frame max | 1518 B | 1500 MTU+18 | 1.2% | EMPIRICAL |
+| DP-7 | Jumbo | 9000 B | 9*10^3 ad-hoc | N/A | EMPIRICAL |
+| DP-8 | FCS | 4 B | tau | 0% | EXACT |
+| DP-9 | DMAC+SMAC | 12 B | sigma | 0% | EXACT |
+| DP-10 | EtherType | 2 B | phi | 0% | EXACT |
+| DP-11 | Standard header | 14 B | sigma+phi | 0% | EXACT |
 
-- 통계: 9/11 EXACT, 2 EMPIRICAL (MTU 1500 / Jumbo 9000 역사 타협)
-- 등급: EXACT-dominant
+- Stats: 9/11 EXACT, 2 EMPIRICAL (MTU 1500 / Jumbo 9000 historical compromise)
+- Grade: EXACT-dominant
 
-## §4 결론
+## §4 Conclusion
 
-Ethernet 은 σ=12 슬롯 10번에 배치되며, 9/11 DP EXACT (81.8%) 로 n=6 정렬이 완결된다.
-속도 단계는 10·sopfr^k / σ·sopfr·φ·k 계열로 전부 n=6 정렬되며, 특히 25 Gbps = sopfr²
-와 40/100/400/800/1600 Gbps = k·100 의 정합이 핵심이다. 2 EMPIRICAL 은 802.3 Ethernet v1
-역사 타협 (MTU 1500, Jumbo 9000) 이다.
+Ethernet is placed in sigma=12 slot 10. With 9/11 DP EXACT (81.8%), n=6 alignment is a draft candidate.
+The speed tiers are all aligned to n=6 via the 10*sopfr^k / sigma*sopfr*phi*k family; in particular,
+25 Gbps = sopfr^2 together with 40/100/400/800/1600 Gbps = k*100 forms the core fit pattern. The 2 EMPIRICAL
+entries (MTU 1500, Jumbo 9000) are 802.3 Ethernet v1 historical compromises.
 
-## §5 서명
+## §5 Signature
 
-- 발행자: NEXUS-6 Discovery Engine Validator
-- 발행일: 2026-04-14
-- 체인: CHIP-P1-2 (ethernet.md 실측 9/11) → CHIP-P3-2 (인증서 발행)
-- 상태: PASS
+- Issuer: NEXUS-6 Discovery Engine Validator
+- Issue date: 2026-04-14
+- Chain: CHIP-P1-2 (ethernet.md measured 9/11) -> CHIP-P3-2 (certificate issued)
+- Status: PASS
 
 ## §6 EVOLVE
 

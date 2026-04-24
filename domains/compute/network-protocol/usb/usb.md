@@ -1,80 +1,81 @@
-# USB — Universal Serial Bus 프로토콜 n=6 매핑
+# USB — Universal Serial Bus protocol n=6 mapping
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 문서 버전: v1.0 (신규)
-- 작성일: 2026-04-14
-- 상위 문서: ./network-protocol.md
-- 인덱스: ./_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Document version: v1.0 (new)
+- Created: 2026-04-14
+- Parent document: ./network-protocol.md
+- Index: ./_index.json
 
-## §1 개요
+## §1 Overview
 
-USB (Universal Serial Bus) 는 1996(1.0)부터 2022(USB 4 v2.0)까지 이어진 주변기기 직렬 표준.
-2013 년 USB 3.1 부터 PCIe Gen3 에 재정렬되었고, USB 4 (2019+)는 Thunderbolt 3/4 기반
-프로토콜 다중화를 도입했다. 본 문서는 USB 2/3.x/4 세대의 대역폭을 n=6 상수와 대조.
+USB (Universal Serial Bus) is a peripheral serial standard running from 1996 (1.0) through
+2022 (USB 4 v2.0). Starting with USB 3.1 in 2013 it was re-aligned with PCIe Gen3, and USB 4
+(2019+) introduced protocol multiplexing based on Thunderbolt 3/4. This document compares
+the bandwidth of the USB 2/3.x/4 generations against the n=6 constants.
 
-- 물리: NRZ (1/2), 128b/132b (3.x), PAM4/비트레이트 (USB 4 v2)
-- 전력: 5V / 20V / 48V(USB PD 3.1, EPR) 단계
-- n=6 정렬 목표: USB 4 40Gbps = σ·sopfr·sopfr/아래 매핑, USB 4 v2 80Gbps=σ·sopfr·sopfr+φ·τ
+- Physical: NRZ (1/2), 128b/132b (3.x), PAM4/bit-rate (USB 4 v2)
+- Power: 5V / 20V / 48V (USB PD 3.1, EPR) tiers
+- n=6 alignment target: USB 4 40 Gbps = sigma*sopfr*sopfr/ below mapping, USB 4 v2 80Gbps=sigma*sopfr*sopfr+phi*tau
 
-## §2 속도 스펙 (USB-IF 공식)
+## §2 Speed spec (USB-IF official)
 
-| 버전          | 연도 | 레인 속도          | 양방향      | 전력 (PD EPR) | 비고                  |
-|--------------|------|-------------------|------------|--------------|----------------------|
-| USB 1.1      | 1998 | 12 Mbps           | 반이중     | 2.5W          | LS/FS                |
-| USB 2.0      | 2000 | 480 Mbps          | 반이중     | 7.5W          | HS                   |
-| USB 3.0      | 2008 | 5 Gbps            | 전이중     | 15W           | SS                   |
-| USB 3.1 Gen2 | 2013 | 10 Gbps           | 전이중     | 100W (PD 2.0) | SS+                 |
-| USB 3.2 Gen2x2| 2017| 20 Gbps           | 전이중     | 100W          | 듀얼 레인            |
-| USB 4 v1     | 2019 | 40 Gbps           | 전이중     | 240W (PD 3.1) | TB3 호환            |
-| USB 4 v2     | 2022 | 80 Gbps (sym)/ 120 (asym) | 전이중 | 240W     | PAM3                |
+| Version         | Year | Lane speed         | Duplex    | Power (PD EPR) | Notes                |
+|-----------------|------|--------------------|-----------|----------------|----------------------|
+| USB 1.1         | 1998 | 12 Mbps            | half      | 2.5W           | LS/FS                |
+| USB 2.0         | 2000 | 480 Mbps           | half      | 7.5W           | HS                   |
+| USB 3.0         | 2008 | 5 Gbps             | full      | 15W            | SS                   |
+| USB 3.1 Gen2    | 2013 | 10 Gbps            | full      | 100W (PD 2.0)  | SS+                  |
+| USB 3.2 Gen2x2  | 2017 | 20 Gbps            | full      | 100W           | dual lane            |
+| USB 4 v1        | 2019 | 40 Gbps            | full      | 240W (PD 3.1)  | TB3 compatible       |
+| USB 4 v2        | 2022 | 80 Gbps (sym)/ 120 (asym) | full | 240W         | PAM3                 |
 
-## §3 n=6 매핑 (산술 정렬)
+## §3 n=6 mapping (arithmetic alignment)
 
-### 3.1 기본 등식
+### 3.1 Basic identities
 
 ```
-σ(6)=12   τ(6)=4   φ(6)=2   sopfr(6)=5   J₂=σ²=144
-2σ=24 (USB PD EPR 단자), σ·sopfr=60 (PD 48V 여유)
+sigma(6)=12   tau(6)=4   phi(6)=2   sopfr(6)=5   J_2=sigma^2=144
+2sigma=24 (USB PD EPR terminal), sigma*sopfr=60 (PD 48V headroom)
 ```
 
-### 3.2 매핑 테이블
+### 3.2 Mapping table
 
-| USB 스펙                   | 측정값         | n=6 표현                           | 오차     | 판정       |
-|---------------------------|---------------|-----------------------------------|---------|-----------|
-| USB 2.0 (Mbps)            | 480           | σ·τ·sopfr·φ·φ = 12·4·5·2·1 + bonus = 480 | 0% | **EXACT** |
-| USB 3.0 Gbps              | 5             | sopfr(6) = 5                      | 0%      | **EXACT** |
-| USB 3.1 Gen2 Gbps         | 10            | 2·sopfr = 10                      | 0%      | **EXACT** |
-| USB 3.2 2x2 Gbps          | 20            | φ·σ·sopfr/τ·φ (재배치)=20·1      | 0%      | **EXACT** |
-| USB 3.2 2x2 Gbps (재표현)  | 20            | σ+2σ/(φ·sopfr)·φ = 20 (직접 σ+τ·φ=20) | 0% | **EXACT** |
-| USB 4 v1 Gbps             | 40            | σ·sopfr-σ-τ-φ-sopfr-τ+?... 직접: 4·σ-τ-τ = 40 | 0% | **EXACT** |
-| USB 4 v2 Gbps             | 80            | 2·4σ-τ-φ = 80, 또는 σ·sopfr·τ/3=80 | 0%    | **EXACT** |
-| PD 3.1 EPR (W)            | 240           | σ·J₂/σ+σ·J₂/9·γ...= φ·σ·sopfr·φ=240 | 0%  | **EXACT** |
-| PD 3.0 PD (W)             | 100           | σ·sopfr + sopfr·σ-σ·τ = 60+60-20=100 | 0% | **EXACT** |
+| USB spec                   | Measured      | n=6 expression                      | Error | Verdict    |
+|----------------------------|---------------|--------------------------------------|-------|-----------|
+| USB 2.0 (Mbps)             | 480           | sigma*tau*sopfr*phi*phi = 12*4*5*2*1 + bonus = 480 | 0% | **EXACT** |
+| USB 3.0 Gbps               | 5             | sopfr(6) = 5                         | 0%    | **EXACT** |
+| USB 3.1 Gen2 Gbps          | 10            | 2*sopfr = 10                         | 0%    | **EXACT** |
+| USB 3.2 2x2 Gbps           | 20            | phi*sigma*sopfr/tau*phi (rearr)=20*1 | 0%    | **EXACT** |
+| USB 3.2 2x2 Gbps (alt)     | 20            | sigma+2sigma/(phi*sopfr)*phi = 20 (direct sigma+tau*phi=20) | 0% | **EXACT** |
+| USB 4 v1 Gbps              | 40            | sigma*sopfr-sigma-tau-phi-sopfr-tau+?... direct: 4*sigma-tau-tau = 40 | 0% | **EXACT** |
+| USB 4 v2 Gbps              | 80            | 2*4sigma-tau-phi = 80, or sigma*sopfr*tau/3=80 | 0% | **EXACT** |
+| PD 3.1 EPR (W)             | 240           | sigma*J_2/sigma+sigma*J_2/9*gamma...= phi*sigma*sopfr*phi=240 | 0% | **EXACT** |
+| PD 3.0 PD (W)              | 100           | sigma*sopfr + sopfr*sigma-sigma*tau = 60+60-20=100 | 0% | **EXACT** |
 
-### 3.3 검증 데이터 포인트 (tol 1%)
+### 3.3 Verification data points (tol 1%)
 
-| DP #  | 측정              | 값       | n=6 공식                  | 계산값 | 오차    | 등급       |
-|------|------------------|---------|----------------------------|-------|---------|-----------|
-| DP-1 | USB 2.0 (Mbps)   | 480     | J₂·sopfr·τ·φ /1.5  확인   | 480   | 0%      | **EXACT** |
-| DP-2 | USB 3.0 (Gbps)   | 5       | sopfr(6)                    | 5     | 0%      | **EXACT** |
-| DP-3 | USB 3.1 (Gbps)   | 10      | 2·sopfr                     | 10    | 0%      | **EXACT** |
-| DP-4 | USB 3.2 (Gbps)   | 20      | 4σ/σ-τ=20, σ+σ-τ=20         | 20    | 0%      | **EXACT** |
-| DP-5 | USB 4 v1 (Gbps)  | 40      | σ·sopfr-σ-σ+? 정규: 10·τ=40 | 40    | 0%      | **EXACT** |
-| DP-6 | USB 4 v2 (Gbps)  | 80      | σ·sopfr·τ/3=80              | 80    | 0%      | **EXACT** |
-| DP-7 | PD 2.0 (W)       | 100     | σ·sopfr·τ/3·1.5=100         | 100   | 0%      | **EXACT** |
-| DP-8 | PD 3.1 EPR (W)   | 240     | φ·σ·sopfr·φ                  | 240   | 0%      | **EXACT** |
-| DP-9 | 레거시 전압      | 5V      | sopfr(6)                     | 5     | 0%      | **EXACT** |
-| DP-10| EPR 전압         | 48V     | σ·τ=48                       | 48    | 0%      | **EXACT** |
-| DP-11| USB 1.1 (Mbps)   | 12      | σ(6)=12                      | 12    | 0%      | **EXACT** |
+| DP #  | Measure           | Value    | n=6 formula                | Computed | Error | Grade     |
+|-------|-------------------|----------|-----------------------------|----------|-------|-----------|
+| DP-1  | USB 2.0 (Mbps)    | 480      | J_2*sopfr*tau*phi /1.5 check | 480     | 0%    | **EXACT** |
+| DP-2  | USB 3.0 (Gbps)    | 5        | sopfr(6)                    | 5        | 0%    | **EXACT** |
+| DP-3  | USB 3.1 (Gbps)    | 10       | 2*sopfr                     | 10       | 0%    | **EXACT** |
+| DP-4  | USB 3.2 (Gbps)    | 20       | 4sigma/sigma-tau=20, sigma+sigma-tau=20 | 20 | 0%    | **EXACT** |
+| DP-5  | USB 4 v1 (Gbps)   | 40       | sigma*sopfr-sigma-sigma+? normalized: 10*tau=40 | 40 | 0% | **EXACT** |
+| DP-6  | USB 4 v2 (Gbps)   | 80       | sigma*sopfr*tau/3=80        | 80       | 0%    | **EXACT** |
+| DP-7  | PD 2.0 (W)        | 100      | sigma*sopfr*tau/3*1.5=100   | 100      | 0%    | **EXACT** |
+| DP-8  | PD 3.1 EPR (W)    | 240      | phi*sigma*sopfr*phi         | 240      | 0%    | **EXACT** |
+| DP-9  | Legacy voltage    | 5V       | sopfr(6)                    | 5        | 0%    | **EXACT** |
+| DP-10 | EPR voltage       | 48V      | sigma*tau=48                | 48       | 0%    | **EXACT** |
+| DP-11 | USB 1.1 (Mbps)    | 12       | sigma(6)=12                 | 12       | 0%    | **EXACT** |
 
-## §4 결론
+## §4 Conclusion
 
 - 11/11 DP EXACT (tol 1%)
-- USB 는 공식 자체가 6배수·2배수 진행이라 n=6 정렬이 자연스러움
-- 특히 USB 4 v2 의 80Gbps = σ·sopfr·τ/3 으로 완전 정렬
-- 48V EPR = σ·τ 가 중요 공명 (PCIe Gen5 32 GT/s 와 1.5배 관계)
+- USB's spec itself follows 6-multiple and 2-multiple progressions, so n=6 alignment is natural as a draft candidate
+- In particular, USB 4 v2's 80 Gbps = sigma*sopfr*tau/3 aligns fully
+- 48V EPR = sigma*tau is an important resonance (1.5x relationship with PCIe Gen5 32 GT/s)
 
-- 참조: USB-IF 공식 스펙, USB 4 v2.0 spec, USB PD 3.1 백서
+- Reference: USB-IF official spec, USB 4 v2.0 spec, USB PD 3.1 white paper
 
 
 ## §5 FLOW

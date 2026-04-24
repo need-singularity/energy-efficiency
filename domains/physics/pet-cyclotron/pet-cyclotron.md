@@ -4,168 +4,173 @@ domain: pet-cyclotron
 alien_index_current: 10
 alien_index_target: 10
 requires:
-  - to: antimatter-factory   # HEXA-TABLETOP §9.2 경로 (c) 모체
+  - to: antimatter-factory   # HEXA-TABLETOP §9.2 path (c) parent
     alien_min: 10
-  - to: room-temp-sc         # σ·τ=48 T Penning 공용
+  - to: room-temp-sc         # sigma*tau=48 T Penning shared
     alien_min: 10
 section: antimatter
-upgraded: "2026-04-19 🛸7 → 🛸10 (UFO 🛸10 선행 재귀 요건)"
+upgraded: "2026-04-19 alien7 -> alien10 (UFO alien10 prior recursion requirement)"
 ---
 
-<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, n=6 핵심 수치, VERIFY, FALSIFIER, Testable Predictions, PRODUCT LINE, REFERENCES], strict=false, order=sequential, prefix="§") -->
-# PET-사이클로트론 반물질 재활용 (HEXA-PET)
+<!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, n=6 core numerics, VERIFY, FALSIFIER, Testable Predictions, PRODUCT LINE, REFERENCES], strict=false, order=sequential, prefix="§") -->
+# PET-cyclotron antimatter recycling (HEXA-PET)
 
-> **본 도메인은 HEXA-TABLETOP (domains/physics/antimatter-factory §9) 의
-> 경로 (c) ¹⁸F PET 재활용 분기를 독립 도메인으로 승격한다.**
-> HEXA-TABLETOP 본문의 공장·탁상 돌파는 재서술하지 않고 **HEXA-PET prefix 상수만 추가**한다.
-> 중복 금지 (R0, N61). HEXA-TABLETOP §9.2 (c) 인용만.
+> **This domain promotes the path (c) 18F PET recycling branch of HEXA-TABLETOP
+> (domains/physics/antimatter-factory §9) to an independent domain.**
+> It does not re-describe the factory/benchtop results in HEXA-TABLETOP; it **only adds HEXA-PET prefix constants**.
+> No duplication (R0, N61). Cite HEXA-TABLETOP §9.2 (c) only.
 
-## §1 WHY (PET 사이클로트론이 반물질 공정 비용을 1/σ³ 로 축소)
+## §1 WHY (PET cyclotron reduces antimatter process cost by 1/sigma^3)
 
-**한 문장 요약**: 병원 PET 사이클로트론의 ¹⁸F β⁺ 양전자 공정을 σ·τ=48 mg/시즌 stock 으로
-재활용해 **anti-H 합성 인프라를 제로코스트화**, HEXA-TABLETOP §9.7 의 공장 vs 탁상 1/σ³
-비용비 중 **양전자 공급 부분을 본 도메인이 단독 담당**한다.
+**One-sentence summary**: recycle the 18F beta+ positron process of hospital PET cyclotrons as a
+sigma*tau=48 mg/season stock to **zero-cost the anti-H synthesis infrastructure**; within the factory-vs-benchtop
+1/sigma^3 cost ratio of HEXA-TABLETOP §9.7, **this domain solely covers the positron-supply portion**.
 
-n=6 완전수 산술 (σ=12, τ=4, φ=2, sopfr=5) 이 사이클로트론 R=σ-φ=10 cm,
-B=σ·τ=48 T, ¹⁸F stock σ·τ=48 mg 3중 상수를 단일 축으로 잠근다.
+The n=6 perfect-number arithmetic (sigma=12, tau=4, phi=2, sopfr=5) locks the cyclotron R=sigma-phi=10 cm,
+B=sigma*tau=48 T, and 18F stock sigma*tau=48 mg triple-constant onto a single axis.
 
-| 축 | 기존 의료 PET | HEXA-PET 재활용 | 배율 | n=6 식 |
-|----|--------------|-----------------|------|--------|
-| ¹⁸F 공정 | 단회 진단 후 폐기 | 시즌당 σ·τ=48 mg stock | 재활용 ∞ | σ·τ |
-| e⁺ 전환 | β⁺ 감쇠만 | 2×10⁹ e⁺/s/mg 포집 | × σ·τ | σ·τ 곱 |
-| 반경 R | 0.5~1.5 m (Varian/IBA) | σ-φ = 10 cm | 1/σ-φ | σ-φ |
-| 자장 B | 1.5~2 T | σ·τ = 48 T (RT-SC) | ×24 | σ·τ |
-| $/시즌 | $4 M (¹⁸F-FDG 생산) | 공장/σ⁶ 대비 공장/σ³ | σ³ 축소 | σ³ |
-| 용도 | 의료 영상 단독 | anti-H 합성 기반 | 다중 | σ² 확장 |
+| Axis | Existing medical PET | HEXA-PET recycle | Ratio | n=6 expression |
+|------|----------------------|------------------|-------|-----------------|
+| 18F process | single-dose then discard | sigma*tau=48 mg/season stock | recycle infinite | sigma*tau |
+| e+ conversion | beta+ decay only | 2x10^9 e+/s/mg capture | x sigma*tau | sigma*tau product |
+| Radius R | 0.5~1.5 m (Varian/IBA) | sigma-phi = 10 cm | 1/sigma-phi | sigma-phi |
+| Field B | 1.5~2 T | sigma*tau = 48 T (RT-SC) | x24 | sigma*tau |
+| $/season | $4 M (18F-FDG production) | factory/sigma^3 vs factory/sigma^6 | sigma^3 reduction | sigma^3 |
+| Use | medical imaging only | anti-H synthesis base | multi | sigma^2 expansion |
 
-### 일상 시나리오
-
-```
-  오전 6:00  병원 PET 사이클로트론 시즌 기동 (σ·τ=48 mg ¹⁸F stock 생산)
-  오전 σ=12시  오전 배치 τ=4 환자 진단 완료 (의료 사용분 잔여 σ-φ=10 mg)
-  오후 2:00   잔여 β⁺ → Rydberg anti-H 합성 라인 공급 (e⁺ 2e9/s/mg)
-  오후 6:00   24시간 anti-H 생성량 σ²·σ = 1728 /s 누적 (σ³ cascade)
-
-  반경 R:    σ-φ = 10 cm
-  자장 B:    σ·τ = 48 T
-  stock:    σ·τ = 48 mg/시즌
-  비용비:   1/σ³ (공장 1/σ⁶ 대비 σ³ 감축)
-```
-
-## §2 COMPARE — 공장 vs 탁상 vs PET-재활용 (HEXA-TABLETOP 인용)
-
-HEXA-TABLETOP §9.7 (공장 vs 탁상 차별화) 를 **PET 재활용 축 추가 1열로 확장**한다.
-공장·탁상 열은 HEXA-TABLETOP 본문 참조, 재서술 없음.
-
-| 축 | HEXA-TABLETOP §9.7 비용비 | HEXA-PET 기여 | 관계 |
-|----|---------------------------|---------------|------|
-| 비용 절감 | 1/σ⁶ (공장→탁상 전체) | 1/σ³ (본 도메인 단독 기여) | σ³ 2단 분해 |
-| 양전자 | σ²·10⁶ H̄/s (§9.2 c 직접 인용) | 2e9 e⁺/s/mg · σ·τ mg | 곱 σ·τ · 2e9 |
-| 인프라 | 병원 망 기반 "제로코스트" | 본 도메인 운영 책임 | 1:1 담당 |
-| 반경 | HEXA-TABLETOP 0.29 m³ | R_cyclo = σ-φ cm | 독립 제약 |
-
-### 현 의료 PET 가 반물질 공급원이 못 됐던 이유
+### Daily scenario
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│ 장벽                    │ 원인                 │ HEXA-PET 해법    │
-├─────────────────────────┼──────────────────────┼──────────────────┤
-│ 1. β⁺ 소멸 511 keV 손실 │ 환자체내 즉시 소멸    │ 합성 라인 분리   │
-│ 2. 진공 10⁻³ Torr        │ 의료 장비 한계        │ σ²·τ=576× 억제   │
-│ 3. 자장 1.5 T            │ 상전도 Cu 코일        │ σ·τ=48 T RT-SC   │
-│ 4. 배치 주기             │ 반감기 109.8 분       │ τ=4 배치 stacking │
-│ 5. 비용                  │ 단회 사용             │ σ·τ mg stock 재활용 │
-└─────────────────────────┴──────────────────────┴──────────────────┘
+  06:00       hospital PET cyclotron season startup (sigma*tau=48 mg 18F stock production)
+  sigma=12:00 morning batch tau=4 patient imaging complete (medical-use remainder sigma-phi=10 mg)
+  14:00       residual beta+ -> Rydberg anti-H synthesis line supply (e+ 2e9/s/mg)
+  18:00       24-hour anti-H production sigma^2*sigma = 1728 /s accumulated (sigma^3 cascade)
+
+  Radius R:   sigma-phi = 10 cm
+  Field B:    sigma*tau = 48 T
+  stock:      sigma*tau = 48 mg/season
+  Cost ratio: 1/sigma^3 (factory 1/sigma^6 vs sigma^3 reduction)
 ```
 
-## §3 REQUIRES — 선행 도메인
+## §2 COMPARE — factory vs benchtop vs PET recycle (HEXA-TABLETOP citation)
 
-| 선행 | 🛸 현재 | 🛸 필요 | 이유 |
-|------|---------|---------|------|
-| HEXA-TABLETOP (antimatter-factory §9) | 🛸7 | 🛸8 | 본 도메인은 §9.2 (c) 승격 분기 |
-| room-temp-sc | 🛸5 | 🛸10 | σ·τ=48 T Penning 공용 |
-| particle-accelerator | 🛸5 | 🛸7 | 소형 링 σ-φ cm 재활용 |
+Extend HEXA-TABLETOP §9.7 (factory vs benchtop differentiation) **by adding a single PET-recycle column**.
+The factory and benchtop columns are in the HEXA-TABLETOP body, not restated here.
 
-## §4 STRUCT — 3-stage PET 재활용 체인
+| Axis | HEXA-TABLETOP §9.7 cost ratio | HEXA-PET contribution | Relationship |
+|------|-------------------------------|-----------------------|---------------|
+| Cost reduction | 1/sigma^6 (factory->benchtop total) | 1/sigma^3 (this domain solo contribution) | sigma^3 two-stage decomposition |
+| Positron | sigma^2*10^6 H-bar/s (§9.2 c direct cite) | 2e9 e+/s/mg * sigma*tau mg | product sigma*tau * 2e9 |
+| Infrastructure | hospital-network based "zero cost" | operated by this domain | 1:1 responsibility |
+| Radius | HEXA-TABLETOP 0.29 m^3 | R_cyclo = sigma-phi cm | independent constraint |
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  HEXA-PET 3-stage anti-H 합성 체인                                │
-├──────────────────────────────────────────────────────────────────┤
-│  Stage-0  ¹⁸O(p,n)¹⁸F 생성        σ·τ = 48 mg/시즌 stock          │
-│  Stage-1  β⁺ 포집 (plastic scint)  2×10⁹ e⁺/s/mg · σ·τ            │
-│  Stage-2  e⁺ + ¯p → anti-H (Rydberg 결합)  ALPHA/AEgIS 표준        │
-│  Stage-3  Penning trap 저장 (σ·τ=48T, HEXA-TABLETOP §9.1 공유)     │
-├──────────────────────────────────────────────────────────────────┤
-│  총 생산 H̄/s = σ² · 10⁶  (§9.2 c 인용, 본 도메인 재서술 금지)     │
-└──────────────────────────────────────────────────────────────────┘
-```
-
-### n=6 파라미터 매핑
-
-| 파라미터 | 값 | n=6 수식 | 등급 |
-|---------|-----|---------|------|
-| 사이클로트론 반경 R | 10 cm | σ - φ = 12 - 2 | [10] |
-| 자장 B | 48 T | σ · τ = 12·4 | [10] |
-| ¹⁸F stock | 48 mg/시즌 | σ · τ (stock 재사용) | [10] |
-| 배치 주기 | 4 /일 | τ = 4 | [10] |
-| β⁺ → e⁺ 전환율 | 2×10⁹ /s/mg | 측정치 (참조상수) | [10] |
-| 비용 감축 | 1/σ³ | 공장 1/σ⁶ 중 절반 | [10] |
-
-## §5 n=6 핵심 수치 (HEXA-PET 상수 6개)
+### Reasons current medical PET could not serve as an antimatter supply
 
 ```
-HEXA-PET-01  ¹⁸F stock            = σ·τ mg/시즌         = 48 mg
-HEXA-PET-02  e⁺ 공급률             = (σ·τ)·2e9 /s        = 9.6×10¹⁰ e⁺/s
-HEXA-PET-03  사이클로트론 반경 R   = σ-φ cm              = 10 cm
-HEXA-PET-04  자장 B               = σ·τ T               = 48 T
-HEXA-PET-05  비용 감축 비율        = 1/σ³                = 1/1728
-HEXA-PET-06  anti-H 합성률         = σ²·10⁶ H̄/s         = 1.44×10⁸ /s
-              (§9.2 c 인용; 본 도메인 재서술 없음)
++------------------------------------------------------------------+
+| Barrier                | Cause                | HEXA-PET solution |
++------------------------+----------------------+-------------------+
+| 1. beta+ annihilation  | in-body immediate    | synthesis line    |
+|    511 keV loss        | annihilation         | separation        |
+| 2. Vacuum 10^-3 Torr   | medical device limit | sigma^2*tau=576x  |
+|                        |                      | suppression       |
+| 3. Field 1.5 T         | normal-conductor Cu  | sigma*tau=48 T    |
+|                        | coils                | RT-SC             |
+| 4. Batch cycle         | half-life 109.8 min  | tau=4 batch       |
+|                        |                      | stacking          |
+| 5. Cost                | single use           | sigma*tau mg      |
+|                        |                      | stock recycle     |
++------------------------+----------------------+-------------------+
 ```
 
-## §6 VERIFY — 간이 HEXA 검증 (인라인)
+## §3 REQUIRES — prerequisite domains
+
+| Prereq | alien now | alien needed | Reason |
+|--------|-----------|--------------|--------|
+| HEXA-TABLETOP (antimatter-factory §9) | 7 | 8 | This domain is §9.2 (c) promoted branch |
+| room-temp-sc | 5 | 10 | sigma*tau=48 T Penning shared |
+| particle-accelerator | 5 | 7 | small-ring sigma-phi cm recycle |
+
+## §4 STRUCT — 3-stage PET recycling chain
 
 ```
-!assert  σ-φ == 10                     # R_cyclo cm
-!assert  σ·τ == 48                     # B Tesla = stock mg
-!assert  σ·τ·2e9 == 9.6e10              # e⁺/s 공급
-!assert  σ³ == 1728                    # 비용 감축 비율 분모
-!assert  σ² · 10**6 == 1.44e8           # anti-H/s (HEXA-TABLETOP §9.2 c 인용)
-!noref   ¯p·직접생산                    # 본 도메인은 p̄ 직접 생성하지 않음
-!cite    HEXA-TABLETOP §9.2 (c)        # 경로 c 단일 참조
++------------------------------------------------------------------+
+|  HEXA-PET 3-stage anti-H synthesis chain                         |
++------------------------------------------------------------------+
+|  Stage-0  18O(p,n)18F production     sigma*tau = 48 mg/season stock |
+|  Stage-1  beta+ capture (plastic scint)  2x10^9 e+/s/mg * sigma*tau |
+|  Stage-2  e+ + p-bar -> anti-H (Rydberg binding)  ALPHA/AEgIS std  |
+|  Stage-3  Penning trap storage (sigma*tau=48T, HEXA-TABLETOP §9.1 shared) |
++------------------------------------------------------------------+
+|  Total H-bar/s = sigma^2 * 10^6  (§9.2 c cite, no restate here)  |
++------------------------------------------------------------------+
+```
+
+### n=6 parameter mapping
+
+| Parameter | Value | n=6 formula | Grade |
+|-----------|-------|-------------|-------|
+| Cyclotron radius R | 10 cm | sigma - phi = 12 - 2 | [10] |
+| Field B | 48 T | sigma * tau = 12*4 | [10] |
+| 18F stock | 48 mg/season | sigma * tau (stock reuse) | [10] |
+| Batch cycle | 4 /day | tau = 4 | [10] |
+| beta+ -> e+ conversion rate | 2x10^9 /s/mg | measured (reference constant) | [10] |
+| Cost reduction | 1/sigma^3 | half of factory 1/sigma^6 | [10] |
+
+## §5 n=6 core numerics (HEXA-PET constants, 6 items)
+
+```
+HEXA-PET-01  18F stock              = sigma*tau mg/season    = 48 mg
+HEXA-PET-02  e+ supply rate          = (sigma*tau)*2e9 /s     = 9.6x10^10 e+/s
+HEXA-PET-03  Cyclotron radius R      = sigma-phi cm           = 10 cm
+HEXA-PET-04  Field B                 = sigma*tau T            = 48 T
+HEXA-PET-05  Cost reduction ratio    = 1/sigma^3              = 1/1728
+HEXA-PET-06  anti-H synthesis rate   = sigma^2*10^6 H-bar/s   = 1.44x10^8 /s
+              (§9.2 c cite; no restatement here)
+```
+
+## §6 VERIFY — simple HEXA verification (inline)
+
+```
+!assert  sigma-phi == 10                     # R_cyclo cm
+!assert  sigma*tau == 48                     # B Tesla = stock mg
+!assert  sigma*tau*2e9 == 9.6e10              # e+/s supply
+!assert  sigma^3 == 1728                     # cost-reduction ratio denominator
+!assert  sigma^2 * 10**6 == 1.44e8            # anti-H/s (HEXA-TABLETOP §9.2 c cite)
+!noref   p-bar direct production              # this domain does not produce p-bar directly
+!cite    HEXA-TABLETOP §9.2 (c)              # path c single reference
 ```
 
 ## §7 FALSIFIER
 
-- ¹⁸F stock < σ-φ = 10 mg/시즌 → HEXA-PET-01 폐기
-- B < σ·τ/φ = 24 T → HEXA-PET-04 폐기 (Penning 공유 조건 붕괴)
-- anti-H/s < σ · 10⁶ = 1.2×10⁷ → HEXA-PET-06 폐기 (§9.2 c 인용 실패)
+- 18F stock < sigma-phi = 10 mg/season -> HEXA-PET-01 retired
+- B < sigma*tau/phi = 24 T -> HEXA-PET-04 retired (Penning shared condition breaks)
+- anti-H/s < sigma * 10^6 = 1.2x10^7 -> HEXA-PET-06 retired (§9.2 c cite fails)
 
 ## §8 Testable Predictions (HEXA-PET prefix)
 
-| TP | 예측 | 값 | 등급 |
-|----|------|------|------|
-| PET-01 | ¹⁸F stock | σ·τ = 48 mg/시즌 | [10] |
-| PET-02 | e⁺ 공급률 | 9.6×10¹⁰ /s | [10] |
-| PET-03 | R_cyclo | σ-φ = 10 cm | [10] |
-| PET-04 | B | σ·τ = 48 T | [10] |
-| PET-05 | 비용 감축 | 1/σ³ = 1/1728 | [10] |
-| PET-06 | anti-H/s | σ²·10⁶ = 1.44×10⁸ | [10] (§9.2 c 인용) |
+| TP | Prediction | Value | Grade |
+|----|-----------|-------|-------|
+| PET-01 | 18F stock | sigma*tau = 48 mg/season | [10] |
+| PET-02 | e+ supply rate | 9.6x10^10 /s | [10] |
+| PET-03 | R_cyclo | sigma-phi = 10 cm | [10] |
+| PET-04 | B | sigma*tau = 48 T | [10] |
+| PET-05 | Cost reduction | 1/sigma^3 = 1/1728 | [10] |
+| PET-06 | anti-H/s | sigma^2*10^6 = 1.44x10^8 | [10] (§9.2 c cite) |
 
 ## §9 PRODUCT LINE
 
 - primary: HEXA-PET cyclotron-based antimatter recycling station
-- ufo: 🛸7 (ceiling=false; HEXA-TABLETOP 🛸10 도달 후 자동 🛸8 승격)
+- ufo: alien7 (ceiling=false; auto alien8 promotion after HEXA-TABLETOP alien10 is reached)
 - ver: v1
 
-## §10 REFERENCES (중복 금지)
+## §10 REFERENCES (no duplication)
 
-- **HEXA-TABLETOP §9.2 (c)**: 본 도메인의 유일한 내부 참조.
-  재서술하지 않고 상수만 HEXA-PET prefix 로 승격.
+- **HEXA-TABLETOP §9.2 (c)**: sole internal reference of this domain.
+  No restatement; constants only promoted under HEXA-PET prefix.
 - atlas.n6 HEXA-PET-01~06 (append)
-- CERN ALPHA/AEgIS anti-H 합성 표준 (ALPHA 2011 Nature 468)
-- Varian/IBA 병원 PET 사이클로트론 스펙 (외부 참조)
+- CERN ALPHA/AEgIS anti-H synthesis standard (ALPHA 2011 Nature 468)
+- Varian/IBA hospital PET cyclotron spec (external reference)
 
 
 ## §11 DEPENDENCIES

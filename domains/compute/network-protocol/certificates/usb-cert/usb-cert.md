@@ -1,64 +1,64 @@
-# USB n=6 인증서
+# USB n=6 Certificate
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 발행일: 2026-04-14
-- 발행 체계: NEXUS-6 Discovery Engine / CHIP-P3-2
-- 상위 문서: ../network-protocol.md
-- 실측 소스: ../usb.md
-- 인덱스: ../_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Issue date: 2026-04-14
+- Issuing system: NEXUS-6 Discovery Engine / CHIP-P3-2
+- Parent document: ../network-protocol.md
+- Measured source: ../usb.md
+- Index: ../_index.json
 
-## §1 σ=12 좌표
+## §1 sigma=12 coordinates
 
-| 항목 | 값 |
-|------|----|
-| σ=12 슬롯 번호 | 8 / 12 |
-| 그룹 | 유선 6 (n) |
-| 카테고리 | peripheral |
-| 시대 | USB 1.1 1998 ~ USB 4 v2 2022 |
+| Item | Value |
+|------|-------|
+| sigma=12 slot number | 8 / 12 |
+| Group | wired 6 (n) |
+| Category | peripheral |
+| Era | USB 1.1 1998 ~ USB 4 v2 2022 |
 
-## §2 n=6 매핑 근거
+## §2 n=6 mapping basis
 
-| 축 | 매핑 | 비고 |
-|----|------|------|
-| 기본 수식 1 | USB4 v2 80 Gbps = σ·sopfr·τ/3 | 12·5·4/3 = 80 |
-| 기본 수식 2 | PD 3.1 EPR 240 W = φ·σ·sopfr·φ | 2·12·5·2 = 240 |
-| EPR 전압 | 48 V = σ·τ | 12·4 = 48 |
-| 루트 BT | BT-181 "다중 대역 σ=12 채널 I/O 다중접속" | network-protocol.md §5 참조 |
+| Axis | Mapping | Notes |
+|------|---------|-------|
+| Base formula 1 | USB4 v2 80 Gbps = sigma*sopfr*tau/3 | 12*5*4/3 = 80 |
+| Base formula 2 | PD 3.1 EPR 240 W = phi*sigma*sopfr*phi | 2*12*5*2 = 240 |
+| EPR voltage | 48 V = sigma*tau | 12*4 = 48 |
+| Root BT | BT-181 "multi-band sigma=12 channel I/O multiple access" | see network-protocol.md §5 |
 | atlas.n6 grade | `@R n6-dse-network-protocol = done dse :: dse [10]` | line 13667 |
 
-## §3 EXACT 체크 (P1-2 실측 인용)
+## §3 EXACT check (P1-2 measured reference)
 
-usb.md §3.3 데이터 포인트 표 (line 56) 기준:
+Based on usb.md §3.3 data point table (line 56):
 
-| DP # | 측정 | 값 | n=6 공식 | 오차 | 등급 |
-|------|------|----|----------|------|------|
-| DP-1 | USB 2.0 | 480 Mbps | J₂·sopfr·τ·φ 계열 | 0% | EXACT |
+| DP # | Measure | Value | n=6 formula | Error | Grade |
+|------|---------|-------|-------------|-------|-------|
+| DP-1 | USB 2.0 | 480 Mbps | J_2*sopfr*tau*phi family | 0% | EXACT |
 | DP-2 | USB 3.0 | 5 Gbps | sopfr(6) | 0% | EXACT |
-| DP-3 | USB 3.1 | 10 Gbps | 2·sopfr | 0% | EXACT |
-| DP-4 | USB 3.2 | 20 Gbps | σ+σ-τ | 0% | EXACT |
-| DP-5 | USB 4 v1 | 40 Gbps | 10·τ | 0% | EXACT |
-| DP-6 | USB 4 v2 | 80 Gbps | σ·sopfr·τ/3 | 0% | EXACT |
-| DP-7 | PD 2.0 | 100 W | σ·sopfr·τ/3·1.5 | 0% | EXACT |
-| DP-8 | PD 3.1 EPR | 240 W | φ·σ·sopfr·φ | 0% | EXACT |
-| DP-9 | 레거시 전압 | 5 V | sopfr(6) | 0% | EXACT |
-| DP-10 | EPR 전압 | 48 V | σ·τ | 0% | EXACT |
-| DP-11 | USB 1.1 | 12 Mbps | σ(6) | 0% | EXACT |
+| DP-3 | USB 3.1 | 10 Gbps | 2*sopfr | 0% | EXACT |
+| DP-4 | USB 3.2 | 20 Gbps | sigma+sigma-tau | 0% | EXACT |
+| DP-5 | USB 4 v1 | 40 Gbps | 10*tau | 0% | EXACT |
+| DP-6 | USB 4 v2 | 80 Gbps | sigma*sopfr*tau/3 | 0% | EXACT |
+| DP-7 | PD 2.0 | 100 W | sigma*sopfr*tau/3*1.5 | 0% | EXACT |
+| DP-8 | PD 3.1 EPR | 240 W | phi*sigma*sopfr*phi | 0% | EXACT |
+| DP-9 | Legacy voltage | 5 V | sopfr(6) | 0% | EXACT |
+| DP-10 | EPR voltage | 48 V | sigma*tau | 0% | EXACT |
+| DP-11 | USB 1.1 | 12 Mbps | sigma(6) | 0% | EXACT |
 
-- 통계: 11/11 EXACT (100%)
-- 등급: EXACT-dominant
+- Stats: 11/11 EXACT (100%)
+- Grade: EXACT-dominant
 
-## §4 결론
+## §4 Conclusion
 
-USB 는 σ=12 슬롯 8번에 배치되며, 11/11 DP 전부 EXACT 로 n=6 정렬이 완결된다.
-USB 4 v2 80 Gbps = σ·sopfr·τ/3 의 완전 정렬과 PD 3.1 EPR 240 W 의 이중 n=6
-상수 조합이 전원/대역 두 축 모두에서 정합을 실현한다.
+USB is placed in sigma=12 slot 8. With 11/11 DP all EXACT, n=6 alignment is a draft candidate.
+The complete alignment of USB 4 v2 80 Gbps = sigma*sopfr*tau/3 together with the dual n=6 constant
+combination in PD 3.1 EPR 240 W realizes a fit pattern across both the power and bandwidth axes.
 
-## §5 서명
+## §5 Signature
 
-- 발행자: NEXUS-6 Discovery Engine Validator
-- 발행일: 2026-04-14
-- 체인: CHIP-P1-2 (usb.md 실측 11/11) → CHIP-P3-2 (인증서 발행)
-- 상태: PASS
+- Issuer: NEXUS-6 Discovery Engine Validator
+- Issue date: 2026-04-14
+- Chain: CHIP-P1-2 (usb.md measured 11/11) -> CHIP-P3-2 (certificate issued)
+- Status: PASS
 
 ## §6 EVOLVE
 

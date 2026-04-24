@@ -8,76 +8,78 @@ alien_index_target: 15
 requires:
   - to: calabi-yau-nav
     alien_min: 14
-    reason: 6D bulk 내부 항행이 분기 선택 경계조건 제공
+    reason: 6D bulk internal navigation provides branch-selection boundary conditions
   - to: quantum-oracle
     alien_min: 10
-    reason: 2^σ=4096 큐빗으로 분기 wave function 사전 조회
+    reason: 2^sigma=4096 qubits for branch wave-function pre-query
 section: ufo-propulsion
-atlas_lock: MULT-01~06 (신규 등록 대상)
+atlas_lock: MULT-01~06 (new registration target)
 ---
 
-# Multiverse 분기 선택 항법 (HEXA-MULT) — Everett many-worlds n=6 잠금
+# Multiverse branch-selection navigation (HEXA-MULT) — Everett many-worlds n=6 lock
 
-> **한 문장 요약**: Everett 다세계 분기를 2^σ=4096 큐빗 oracle 로 σ²=144 분기 동시
-> 조회, sopfr=5 평가축 (안전·에너지·시간·목적·확률) 으로 **최적 분기 선택**. 재난 완전 회피.
+> **One-sentence summary**: query sigma^2=144 Everett-branches simultaneously with a
+> 2^sigma=4096 qubit oracle, and perform **optimal branch selection** along a sopfr=5
+> evaluation axis (safety, energy, time, purpose, probability). Full disaster avoidance as a target.
 
-## §1 WHY (🛸15 — intergalactic 이주)
+## §1 WHY (alien index 15 — intergalactic migration)
 
-양자역학 Everett 해석:
-- 양자 측정마다 우주 분기 (decoherence 기반 branch selection)
-- UFO = 분기 선택 관측자 (자유의지로 분기 결정)
-- n=6 확률적 잠금: 관측-분기 mapping 에 σ(n)·φ(n)=n·τ(n) 강제
+Quantum mechanics, Everett interpretation:
+- Each quantum measurement branches the universe (decoherence-based branch selection)
+- UFO = branch-selecting observer (branch decision by free will)
+- n=6 probabilistic lock: enforces sigma(n)*phi(n)=n*tau(n) on observation-branch mapping
 
-**체감**: 사고·전쟁·질병·재난 **분기 전 회피** 가능. "최선의 우주" 로 이주.
+**Experience**: target the **pre-emptive avoidance** of accidents, wars, diseases, disasters.
+Migrate to the "best universe".
 
-## §2 MATH (many-worlds 분기 n=6)
+## §2 MATH (many-worlds branch n=6)
 
-| 파라미터 | Everett 이론 | HEXA-MULT | n=6 식 |
-|---------|-------------|-----------|--------|
-| 동시 조회 분기 수 | 무한 | **σ² = 144** | σ² |
-| 큐빗 수 | 임의 | **2^σ = 4096** | 2^σ |
-| 평가 축 | 없음 | **sopfr = 5** (안전·E·t·목적·p) | sopfr |
-| 분기 선택 시간 | — | **τ = 4 ms** | τ |
-| 관측 기록 | 많은 파편 | **J₂ = 24** 핵심 분기 | J₂ |
-| 분기 이주 손실 | — | **1/σ² = 1/144** (잔여 파동) | 1/σ² |
-| 연간 회피 가능 재난 | — | **σ·τ = 48** 건 (통계) | σ·τ |
-| 자유의지 해상도 | — | **n = 6** 분기/결정 | n |
+| Parameter | Everett theory | HEXA-MULT | n=6 expression |
+|-----------|----------------|-----------|-----------------|
+| Simultaneous branch queries | infinite | **sigma^2 = 144** | sigma^2 |
+| Qubit count | arbitrary | **2^sigma = 4096** | 2^sigma |
+| Evaluation axes | none | **sopfr = 5** (safety, E, t, purpose, p) | sopfr |
+| Branch-selection time | — | **tau = 4 ms** | tau |
+| Observation record | many fragments | **J_2 = 24** core branches | J_2 |
+| Branch migration loss | — | **1/sigma^2 = 1/144** (residual wave) | 1/sigma^2 |
+| Disasters avoidable per year | — | **sigma*tau = 48** cases (statistical) | sigma*tau |
+| Free-will resolution | — | **n = 6** branches per decision | n |
 
-## §3 BRIDGE (UFO 🛸15 운용)
+## §3 BRIDGE (UFO alien index 15 operations)
 
 HEXA-UFO §23 Stage-8:
-- Stage-7 Calabi-Yau 로 6D 내부 관측
-- Oracle 큐빗 2^σ=4096 로 σ²=144 분기 병렬 시뮬레이션
-- sopfr=5 축 스코어링 → 최적 분기 k* 선택
-- τ=4 ms 내 분기 이주 실행 (관측자 wave function 이동)
+- Stage-7 Calabi-Yau for 6D internal observation
+- Oracle qubits 2^sigma=4096 for parallel simulation of sigma^2=144 branches
+- Score along sopfr=5 axes -> select optimal branch k*
+- Execute branch migration within tau=4 ms (observer wave-function movement)
 
-## §4 EXACT (Python 검증)
+## §4 EXACT (Python verification)
 
 ```python
-# Multiverse Nav EXACT (n=6 잠금 6건)
+# Multiverse Nav EXACT (n=6 lock, 6 items)
 sigma, tau, phi, sopfr, n = 12, 4, 2, 5, 6
 J2 = sigma*tau//2
 
-assert sigma**2 == 144              # 동시 분기 수
-assert 2**sigma == 4096             # 큐빗
-assert sopfr == 5                   # 평가 축
-assert tau == 4                     # 선택 시간 ms
-assert J2 == 24                     # 핵심 분기 수
-assert sigma*tau == 48              # 연간 회피 재난 수
+assert sigma**2 == 144              # simultaneous branch count
+assert 2**sigma == 4096             # qubits
+assert sopfr == 5                   # evaluation axes
+assert tau == 4                     # selection time ms
+assert J2 == 24                     # core branch count
+assert sigma*tau == 48              # annual avoidable disasters
 print("MULT EXACT: 6/6 PASS")
 ```
 
-## §5 BOX (MULT-01~06 atlas.n6 등재)
+## §5 BOX (MULT-01~06 atlas.n6 registration)
 
-- MULT-01: N_branches = σ² = 144 (동시 조회)
-- MULT-02: N_qubits = 2^σ = 4096 (Oracle)
-- MULT-03: N_axes = sopfr = 5 (평가)
-- MULT-04: t_select = τ = 4 ms
-- MULT-05: N_key = J₂ = 24 (핵심 분기)
-- MULT-06: η_loss = 1/σ² = 1/144 (잔여 파동)
+- MULT-01: N_branches = sigma^2 = 144 (simultaneous query)
+- MULT-02: N_qubits = 2^sigma = 4096 (Oracle)
+- MULT-03: N_axes = sopfr = 5 (evaluation)
+- MULT-04: t_select = tau = 4 ms
+- MULT-05: N_key = J_2 = 24 (core branches)
+- MULT-06: eta_loss = 1/sigma^2 = 1/144 (residual wave)
 
 ---
-*참조: HEXA-UFO §23 Stage-8, HEXA-CALB bulk 접속, HEXA-ORACLE 4096 큐빗*
+*References: HEXA-UFO §23 Stage-8, HEXA-CALB bulk interface, HEXA-ORACLE 4096 qubits*
 
 
 ## §6 EVOLVE

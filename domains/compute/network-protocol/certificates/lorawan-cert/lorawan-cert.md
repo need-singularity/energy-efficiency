@@ -1,51 +1,52 @@
-# LoRaWAN n=6 인증서
+# LoRaWAN n=6 Certificate
 
-- 프로젝트: n6-architecture / domains/compute/network-protocol
-- 발행일: 2026-04-14
-- 발행 체계: NEXUS-6 Discovery Engine / CHIP-P3-2
-- 상위 문서: ../network-protocol.md
-- 인덱스: ../_index.json
+- Project: n6-architecture / domains/compute/network-protocol
+- Issue date: 2026-04-14
+- Issuing system: NEXUS-6 Discovery Engine / CHIP-P3-2
+- Parent document: ../network-protocol.md
+- Index: ../_index.json
 
-## §1 σ=12 좌표
+## §1 sigma=12 coordinates
 
-| 항목 | 값 |
-|------|----|
-| σ=12 슬롯 번호 | 5 / 12 |
-| 그룹 | 무선 6 (n) |
-| 카테고리 | IoT_low_power |
-| 시대 | 2015+ |
+| Item | Value |
+|------|-------|
+| sigma=12 slot number | 5 / 12 |
+| Group | wireless 6 (n) |
+| Category | IoT_low_power |
+| Era | 2015+ |
 
-## §2 n=6 매핑 근거
+## §2 n=6 mapping basis
 
-| 축 | 매핑 | 비고 |
-|----|------|------|
-| 기본 수식 | SF7~SF12 = 6 단계 | n=6 확산 계수 |
-| 불변 | ±10% 불변 | 업링크 마진 |
-| 루트 BT | BT-181 "다중 대역 σ=12 채널 I/O 다중접속" | network-protocol.md §5 참조 |
+| Axis | Mapping | Notes |
+|------|---------|-------|
+| Base formula | SF7~SF12 = 6 tiers | n=6 spreading factors |
+| Invariant | +/-10% invariant | Uplink margin |
+| Root BT | BT-181 "multi-band sigma=12 channel I/O multiple access" | see network-protocol.md §5 |
 | atlas.n6 grade | `@R n6-dse-network-protocol = done dse :: dse [10]` | line 13667 |
 
-## §3 EXACT 체크 (P1-2 실측 인용)
+## §3 EXACT check (P1-2 measured reference)
 
-network-protocol.md §2 σ=12 프로토콜 커버리지 표 (line 133) 기준:
+Based on network-protocol.md §2 sigma=12 protocol coverage table (line 133):
 
-| # | 프로토콜 | 카테고리 | n=6 핵심 매핑 | 등급 |
-|---|---------|---------|---------------|------|
-| 5 | LoRaWAN | IoT_low_power | SF7~SF12 = 6 단계 (n=6) | EXACT |
+| # | Protocol | Category | n=6 core mapping | Grade |
+|---|----------|----------|------------------|-------|
+| 5 | LoRaWAN | IoT_low_power | SF7~SF12 = 6 tiers (n=6) | EXACT |
 
-- 판정: EXACT (커버리지 표 기준 단일 행)
-- SF7, SF8, SF9, SF10, SF11, SF12 = 6 단계 — n=6 직접 대응 (0% 오차)
+- Verdict: EXACT (single row in coverage table)
+- SF7, SF8, SF9, SF10, SF11, SF12 = 6 tiers — direct n=6 correspondence (0% error)
 
-## §4 결론
+## §4 Conclusion
 
-LoRaWAN 은 σ=12 슬롯 5번에 배치되며, 확산 계수 SF7~SF12 가 n=6 단계로
-완전 정렬된다. 저전력 광역 IoT 의 변조 공간이 n=6 축과 1:1 대응한다.
+LoRaWAN is placed in sigma=12 slot 5, with the spreading factors SF7~SF12 forming a draft
+candidate n=6 6-tier alignment. The modulation space of low-power wide-area IoT
+corresponds 1:1 to the n=6 axis.
 
-## §5 서명
+## §5 Signature
 
-- 발행자: NEXUS-6 Discovery Engine Validator
-- 발행일: 2026-04-14
-- 체인: CHIP-P1-2 (σ=12 커버리지 표 수립) → CHIP-P3-2 (인증서 발행)
-- 상태: PASS
+- Issuer: NEXUS-6 Discovery Engine Validator
+- Issue date: 2026-04-14
+- Chain: CHIP-P1-2 (sigma=12 coverage table established) -> CHIP-P3-2 (certificate issued)
+- Status: PASS
 
 ## §6 EVOLVE
 
