@@ -1,51 +1,51 @@
-# P3 논문 랭킹 리포트 — 상위 48편 선정
+# P3 Paper Ranking Report — Top 48 Candidate Selection
 
-| 필드 | 값 |
+| Field | Value |
 |---|---|
-| 로드맵 | PAPER-P3-1 |
-| 생성일 | 2026-04-14 |
-| 입력 풀 | `papers/_registry.json` 등록 125편 |
-| 선정 수 | 상위 48편 (P3 gate_exit 요구치) |
-| 결과 JSON | `papers/_submission_top48.json` |
-| 제출 템플릿 | `papers/_submission_top48_template.md` |
+| Roadmap | PAPER-P3-1 |
+| Created | 2026-04-14 |
+| Input pool | 125 candidate drafts registered in `papers/_registry.json` |
+| Selected count | Top 48 drafts (P3 gate_exit requirement) |
+| Result JSON | `papers/_submission_top48.json` |
+| Submission template | `papers/_submission_top48_template.md` |
 
-## 1. 점수 공식
+## 1. Score formula
 
 ```
 score = alien_index * 0.4 + (closure_grade_pct / 10) * 0.3 + (citation_depth / 3) * 0.3
 ```
 
-- `alien_index` (0~10): 섹션 단위 외계인 지수. `_registry.json` sections[].alien_index 를 논문의 domain 와 매핑. 미매핑 시 기본값 7.
-- `closure_grade_pct` (0~100): `_papers.json` exact_stat 의 EXACT 비율을 우선 사용. 미기입 시 chunk_status 에 따라 70/72/78/82 로 추정.
-- `citation_depth` (0~30): bt_ref 에 등장하는 BT 번호 개수 * 2 + 본문 줄수 / 50. 30 상한 클램프.
-- 각 성분은 동일 스케일(0~10)로 정규화 후 가중합. 이론 최대값 10.0, 실제 최댓값 약 9.57.
+- `alien_index` (0~10): section-level alien index. Map `_registry.json` sections[].alien_index to the draft's domain. If unmapped, default to 7.
+- `closure_grade_pct` (0~100): use the EXACT ratio from `_papers.json` exact_stat when available. Otherwise estimate as 70/72/78/82 based on chunk_status.
+- `citation_depth` (0~30): number of BT IDs in bt_ref * 2 + body line count / 50. Clamped at 30.
+- Each component is normalized to the same scale (0~10) and then weighted-summed. Theoretical maximum 10.0, observed maximum about 9.57.
 
-## 2. 시뮬 DOI 체계 — 실제 DOI 아님
+## 2. Simulated DOI scheme — not a real DOI
 
 ```
 10.NEXUS6.n6-arch/<YYYY>-<NNN>
-  YYYY = 2026 고정
-  NNN  = 001~048 (랭킹 순서)
+  YYYY = 2026 fixed
+  NNN  = 001~048 (ranking order)
 ```
 
-- `10.NEXUS6` 는 CrossRef/DataCite 미등록 접두사. 내부 참조 전용.
-- 실제 저널/콘퍼런스 제출 시 이 번호를 교체할 것.
-- 본 리포트는 제출 포맷 정비의 참조용으로만 사용.
+- `10.NEXUS6` is a prefix not registered with CrossRef/DataCite. For internal reference only.
+- Replace this number upon actual journal/conference submission.
+- This report is used only as a reference for organizing the submission format.
 
-## 3. 타겟 저널/컨퍼런스 매핑 규칙
+## 3. Target journal/conference mapping rules
 
-| 저널/컨퍼런스 | 배정 규칙 | 선정 편수 |
+| Journal/Conference | Assignment rule | Number selected |
 |---|---|---|
-| Nature Communications | 자연과학/생물/지구/문화/산업 일반 (미매핑 도메인 기본값) | 24 |
-| Physical Review Letters | 중력·입자·초전도·양자계산·위상수학·순수수학·유체역학·전자기 | 6 |
-| IEEE TVLSI | 칩 아키텍처·DRAM/V-NAND·패키징·뉴로모픽·의식칩 | 6 |
-| NeurIPS | AI 기법 68/17·SSM·네트워크 집단지성·자율주행·AI 윤리 거버넌스·뇌과학 | 5 |
-| ICML | 자기조직/항상성/진화 오우로보로스/블로우업/렌즈포지/사이클 엔진/AGI/어트랙터 | 2 |
-| JAIR | 밀레니엄 DFS·법학·아틀라스 승격 프로토콜·가설 MC 검증·경제·거버넌스 | 5 |
+| Nature Communications | Natural science/biology/earth/culture/industry general (default for unmapped domains) | 24 |
+| Physical Review Letters | Gravity/particles/superconductors/quantum computing/topology/pure math/fluid dynamics/electromagnetism | 6 |
+| IEEE TVLSI | Chip architecture/DRAM/V-NAND/packaging/neuromorphic/consciousness chip | 6 |
+| NeurIPS | AI techniques 68/17/SSM/network collective intelligence/autonomous driving/AI ethics-governance/neuroscience | 5 |
+| ICML | Self-organization/homeostasis/evolutionary ouroboros/blow-up/lens-forge/cycle engine/AGI/attractor | 2 |
+| JAIR | Millennium DFS/jurisprudence/atlas promotion protocol/hypothesis MC verification/economics/governance | 5 |
 
-## 4. 상위 48편 랭킹
+## 4. Top 48 ranking (candidate drafts)
 
-| 순위 | Paper ID | 파일 | 도메인 | 점수 | alien | closure% | cit-depth | 시뮬 DOI | 타겟 |
+| Rank | Paper ID | File | Domain | Score | alien | closure% | cit-depth | Simulated DOI | Target |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
 | 1 | N6-032 | `n6-dance-choreography-paper.md` | dance-choreography | 9.57 | 10 | 100.0 | 25.7 | `10.NEXUS6.n6-arch/2026-001` | Nature Communications |
 | 2 | N6-108 | `n6-writing-systems-paper.md` | writing-systems | 9.57 | 10 | 100.0 | 25.7 | `10.NEXUS6.n6-arch/2026-002` | Nature Communications |
@@ -96,7 +96,7 @@ score = alien_index * 0.4 + (closure_grade_pct / 10) * 0.3 + (citation_depth / 3
 | 47 | N6-102 | `n6-virology-structure-paper.md` | virology-structure | 7.47 | 10 | 70.0 | 13.7 | `10.NEXUS6.n6-arch/2026-047` | Nature Communications |
 | 48 | N6-021 | `n6-chip-design-ladder-paper.md` | chip-design-ladder | 7.43 | 7 | 82.0 | 21.7 | `10.NEXUS6.n6-arch/2026-048` | IEEE TVLSI |
 
-## 5. ASCII 비교 차트 — 상위 15편 점수 막대
+## 5. ASCII comparison chart — top 15 candidate score bars
 
 ```
  1 N6-032 ######################################## 9.57
@@ -116,18 +116,18 @@ score = alien_index * 0.4 + (closure_grade_pct / 10) * 0.3 + (citation_depth / 3
 15 N6-027 ##################################       8.21
 ```
 
-## 6. 한계 및 반증 후보
+## 6. Limitations and rebuttal candidates
 
-- **closure_grade 추정 정확도**: 125편 중 exact_stat 실측 보유는 25편뿐. 나머지 100편은 chunk_status 텍스트 기반 이산 추정값 사용. 실측 감사 후 재랭킹 필요.
-- **citation_depth 편중**: bt_ref 수집이 청크 메타데이터 기반이라 청크 미등록 논문은 bt_count=0 이 되어 줄수 기반 부분 점수만 적용된다. 개별 논문 파일 본문 파싱 감사 필요.
-- **alien_index 미매핑**: 118/125 도메인이 sections 에 매핑. 7편은 기본값 7 로 fallback — 랭킹 하위로 밀릴 위험.
-- **시뮬 DOI**: CrossRef/DataCite 실등록 아님. 외부 인용/검색 엔진에서 해석 불가.
-- **반증 조건**: 본 랭킹이 P3 평가에서 상위 48편 외에 alien_index 10 인 논문을 누락시키면 재랭킹 트리거.
+- **closure_grade estimation accuracy**: only 25 of 125 candidate drafts have measured exact_stat. The other 100 use a discrete estimate based on chunk_status text. Re-ranking needed after a measurement audit.
+- **citation_depth bias**: since bt_ref collection is based on chunk metadata, drafts without registered chunks get bt_count=0 and only partial line-count scoring applies. An audit parsing each draft file body is needed.
+- **alien_index unmapped**: 118/125 domains are mapped in sections. 7 fall back to the default of 7 — at risk of being pushed to the bottom of the ranking.
+- **Simulated DOI**: not actually registered with CrossRef/DataCite. Not resolvable by external citation/search engines.
+- **Rebuttal condition**: if this ranking omits, in P3 evaluation, candidate drafts with alien_index 10 outside the top 48, a re-ranking trigger fires.
 
-## 7. 재현 절차
+## 7. Reproduction procedure
 
 ```
-python3 scripts/rank_papers_p3.py   # (본 리포트 생성 스크립트 — 인라인으로 실행됨)
-  입력:  papers/_papers.json, papers/_registry.json
-  출력:  papers/_submission_top48.json, experiments/paper_ranking_p3_top48.md
+python3 scripts/rank_papers_p3.py   # (script that generated this report — executed inline)
+  Input:  papers/_papers.json, papers/_registry.json
+  Output: papers/_submission_top48.json, experiments/paper_ranking_p3_top48.md
 ```

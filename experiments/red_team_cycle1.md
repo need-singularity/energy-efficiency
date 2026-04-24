@@ -22,10 +22,10 @@ n=6 framework is not what it claims, these experiments will expose it.
    honest admission that undermines Claim B.
 
 2. **47 of 47 life/ domain files contain identical template text**, word-for-word:
-   - "기존 한계 1: 설계 자유도 부족 -> sigma(6)=12 자유도로 통합"
-   - "기존 한계 2: 주기 최적화 한계 -> tau(6)=4 주기로 수렴"
-   - "기존 한계 3: 신뢰성 확보 난제 -> phi(6)=2 대칭 중복으로 해결"
-   - "sigma=12 입력 소스가 tau=4 주기로 n=6 서브시스템을 거쳐"
+   - "Existing limitation 1: insufficient design degrees of freedom -> unified via sigma(6)=12 DOF"
+   - "Existing limitation 2: cycle optimization limits -> converged via tau(6)=4 cycle"
+   - "Existing limitation 3: reliability challenge -> resolved via phi(6)=2 symmetric redundancy"
+   - "sigma=12 input sources pass through the n=6 subsystem at a tau=4 cycle"
    This is a critical finding for Experiment RT-3.
 
 3. The `honest-limitations.md` P4 section admits bipartite matching top-10 pairs had
@@ -257,12 +257,12 @@ The following strings appear verbatim in ALL 47 life/ domain .md files:
 
 | Template String | Occurrences | Files |
 |----------------|-------------|-------|
-| "기존 한계 1: 설계 자유도 부족 -> sigma(6)=12 자유도로 통합" | 47 | 47/47 |
-| "기존 한계 2: 주기 최적화 한계 -> tau(6)=4 주기로 수렴" | 47 | 47/47 |
-| "기존 한계 3: 신뢰성 확보 난제 -> phi(6)=2 대칭 중복으로 해결" | 47 | 47/47 |
-| "데이터/자원/인프라가 n=6 구조로 정렬되면" | 47 | 47/47 |
-| "sigma=12 입력 소스가 tau=4 주기로 n=6 서브시스템을 거쳐" | 47 | 47/47 |
-| "3 DOF 또는 4 DOF 한계" | 47 | 47/47 |
+| "Existing limitation 1: insufficient design DOF -> unified via sigma(6)=12 DOF" | 47 | 47/47 |
+| "Existing limitation 2: cycle optimization limits -> converged via tau(6)=4 cycle" | 47 | 47/47 |
+| "Existing limitation 3: reliability challenge -> resolved via phi(6)=2 symmetric redundancy" | 47 | 47/47 |
+| "When data/resources/infrastructure align to the n=6 structure" | 47 | 47/47 |
+| "sigma=12 input sources pass through the n=6 subsystem at a tau=4 cycle" | 47 | 47/47 |
+| "3 DOF or 4 DOF limits" | 47 | 47/47 |
 
 This means coffee.md, dolphin-bioacoustics.md, tattoo-removal.md, hiv-treatment.md,
 baking.md, and mens-intimate-cleanser.md ALL claim that their "3 existing limitations"
@@ -273,16 +273,16 @@ are: (1) insufficient design degrees of freedom, (2) cycle optimization limits, 
 three fundamental limitations as baking. HIV treatment does not have the same three
 limitations as tattoo removal. The claims are generated, not discovered.
 
-**Finding 2: "sigma=12 채널" appears 669 times across 213 domain files**
+**Finding 2: "sigma=12 channel" (in Korean wording) appears 669 times across 213 domain files**
 
-The string "sigma=12 채널" (sigma=12 channels) appears across every axis: compute (317
+The phrase meaning "sigma=12 channels" (as the original Korean template string) appears across every axis: compute (317
 occurrences in 87 files), infra (57 files), culture (25 files), physics, space,
 cognitive. This is not independent discovery -- it is systematic template propagation.
 
 **Finding 3: Bipartite matching 100% false positive rate**
 
 The honest-limitations.md P4 audit (line 448-453) reports:
-> "fit>=0.95 상위 10 쌍 전수 grep 감사 완료. 0/10 PASS -- 거짓 양성율 100%"
+> "Full grep audit of fit>=0.95 top 10 pairs completed. 0/10 PASS -- false positive rate 100%"
 
 The project's own body-text audit found that its highest-confidence matches are
 entirely false positives when checked against actual paper content.
