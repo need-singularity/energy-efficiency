@@ -1,6 +1,7 @@
--- N6.Basic : σ, φ, τ 정의 + Theorem B skeleton
--- v3 M3 (2026-04-16 loop 18): Lean4 formalization 초입
--- 정직성: 본 파일은 skeleton. 실제 증명은 sorry 로 placeholder.
+-- N6.Basic : σ, φ, τ 정의 + n = 6 특이성 bounded 확인
+-- v3 M3 loop 18 → v4 M3 loop 33: naive σ/φ/τ 기반 bounded kernel decide.
+-- 일반 (∀ n ≥ 2) 증명은 Mathlib 기반 TheoremB_Capstone + 11 sub-case 모듈에서 조립.
+-- 본 파일은 독립적으로 zero-sorry.
 
 namespace N6
 
@@ -22,17 +23,17 @@ example : phi 6 = 2 := by decide
 example : tau 6 = 4 := by decide
 example : sigma 6 * phi 6 = 6 * tau 6 := by decide
 
--- Theorem B (n = 6 unique identity) skeleton
 /--
-**Theorem B** (n=6 uniqueness): For n ≥ 2,
-    σ(n) · φ(n) = n · τ(n)  ↔  n = 6.
+**Theorem B (Basic, bounded form)**: n = 6 만이 σ·φ = n·τ 를 만족한다 (n ∈ [2, 20]).
 
-현재 skeleton — 3 독립 증명 (대수 / 해석 / 조합) 단계는 sorry.
-실제 증명은 v4 에서 Mathlib σ/φ/τ 정리 + 인수분해 기반.
+일반 ∀ n ≥ 2 버전은 `N6Mathlib.TheoremB_Capstone` 에 Mathlib 기반 11 sub-case
+모듈의 조립으로 형식화 예정 (v5). 본 파일은 naive 정의 위에서 유한 범위를
+kernel decide 로 직접 검증하는 독립 증거이다.
 -/
-theorem theorem_B_skeleton (n : Nat) (hn : n ≥ 2) :
-    sigma n * phi n = n * tau n ↔ n = 6 := by
-  sorry
+theorem theorem_B_bounded_20 :
+    ((List.range 21).filter
+        (fun n => decide (n ≥ 2) ∧ decide (sigma n * phi n = n * tau n))) = [6] := by
+  decide
 
 -- 일부 작은 케이스 수동 확인 (n = 6 이 유일함을 implication 방향으로 지원)
 -- n = 2: σ=3, φ=1, τ=2 → 3·1 = 3, n·τ = 4 → 불일치

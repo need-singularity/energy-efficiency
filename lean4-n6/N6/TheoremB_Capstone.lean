@@ -70,8 +70,21 @@ theorem theorem_B_sufficient : ∀ n : ℕ, n = 6 →
 
 -- Summary: Theorem B sub-cases completed over loops 3-13
 -- ω(n) ≤ 3 + ω(n) = 4 squarefree + ω(n) = 3,4 w/ 2^a 포함
--- 유일한 등식: n = 6. ≈99.8% formal coverage.
+-- 유일한 등식: n = 6. ω(n) ≥ 5 multi-power 변형 v5 예약.
 theorem theorem_B_capstone_summary : True := trivial
+
+/-- **Bounded Theorem B (Mathlib, n ∈ [2, 30])** — σ·φ = n·τ ⟺ n = 6
+    유한 범위 [2, 30] 에서 Mathlib 기반 σ/φ/τ 정의 위에서 kernel `decide`
+    로 기계 검증.
+
+    Note: Basic.lean 의 theorem_B_bounded_20 은 naive 정의로 [2, 20] 검증.
+    본 정리는 Mathlib 정의 기준 독립 검증이다. 범위는 `decide` 의 naive
+    divisor 순회가 O(n²) 이므로 reasonable cost 내에서 [2, 30] 선택. -/
+theorem theorem_B_bounded_30 :
+    ((List.range 31).filter
+        (fun n => decide (n ≥ 2) ∧
+          decide (σ 1 n * Nat.totient n = n * (Nat.divisors n).card))) = [6] := by
+  decide
 
 /-- n = 6 특이성 — atlas.n6 MILL-SPF 핵심 상수 Lean4 kernel 인증 -/
 theorem theorem_B_n_six_unique_equality :
