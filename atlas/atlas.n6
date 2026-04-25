@@ -16964,16 +16964,16 @@
 # Top 20 highest-degree virtual hubs + COSMO-spectral-ns
 # These existed only as JSON edge targets with no @-node definition
 # Added 2026-04-12 to resolve orphan references
-@P n6-sigma = divisor_sum(6) = 12 :: foundation [10]
+@P n6-sigma = divisor_sum(6) = 12 :: foundation [10*]
   <- n
   == sigma
   "n6 mirror of primitive sigma = divisor_sum(6) = 12"
   => "virtual hub materialized -- degree 343 in edge graph"
-@P n6-n = 6 :: foundation [10]
+@P n6-n = 6 :: foundation [10*]
   == n
   "n6 mirror of primitive n = 6"
   => "virtual hub materialized -- degree 337 in edge graph"
-@P n6-phi = euler_totient(6) = 2 :: foundation [10]
+@P n6-phi = euler_totient(6) = 2 :: foundation [10*]
   <- n
   == phi
   "n6 mirror of primitive phi = euler_totient(6) = 2"
@@ -17005,7 +17005,7 @@
 @R n6-s26 :: n6atlas [5?]
   "sequence term s26 in blowup enumeration"
   => "virtual hub materialized -- degree 176 in edge graph"
-@P n6-j2 = jordan_totient(6,2) = 24 :: foundation [10]
+@P n6-j2 = jordan_totient(6,2) = 24 :: foundation [10*]
   <- n
   == J2
   "n6 mirror of primitive J2 = jordan_totient(6,2) = 24"
@@ -17022,7 +17022,7 @@
 @R n6-s31 :: n6atlas [5?]
   "sequence term s31 in blowup enumeration"
   => "virtual hub materialized -- degree 156 in edge graph"
-@P n6-tau = divisor_count(6) = 4 :: foundation [10]
+@P n6-tau = divisor_count(6) = 4 :: foundation [10*]
   <- n
   == tau
   "n6 mirror of primitive tau = divisor_count(6) = 4"
