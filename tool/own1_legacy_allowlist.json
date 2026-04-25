@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 7,
+    "count": 6,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -599,7 +599,6 @@
     ]
   },
   "allowlist": [
-    "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
     "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
     "reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md",
@@ -608,6 +607,16 @@
     "theory/constants/atlas-constants.md"
   ],
   "shrink_history": [
+    {
+      "phase": "phase-6-step3-cognitive",
+      "batch": "phase-6-step3-cognitive-ai-training-cost",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "domains/cognitive/ai-training-cost/ai-training-cost.md",
+      "before": 7,
+      "after": 6,
+      "note": "phase-6-step3-cognitive (final B14a cognitive item) - ai-training-cost.md (1926L, CJK 10254 -> 0) translated KR->EN, preserves Chinchilla constants (alpha/beta/A/B/E), n=6 functions (sigma/tau/phi/sopfr/J2/lambda), Egyptian fraction 1/2+1/3+1/6=1, MoE sparsity sigma(6)/tau(6)=3, BT-383/384/385 nodes, T-1..T-4 impossibility theorems, FLOPs/GPU/$ specs, code fences, frontmatter, table structures. own#11 softeners applied: cost-savings claims -> candidate savings target / candidate target / demonstrating draft; proof -> QED-(candidate); status claims softened (stability draft, pattern of being fully resolved)."
+    },
     {
       "phase": "phase-6-D-B13-moonshine-barrier",
       "batch": "phase-6-D-B13-moonshine-barrier",
