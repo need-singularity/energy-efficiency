@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 8,
+    "count": 7,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -601,7 +601,6 @@
   "allowlist": [
     "domains/cognitive/ai-training-cost/ai-training-cost.md",
     "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
-    "papers/n6-ultimate-superconductor-integrated-paper.md",
     "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
     "reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md",
     "reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md",
@@ -742,6 +741,16 @@
       "count_before": 9,
       "count_after": 8,
       "note": "B14 RED-lite single-file - n6-hexa-chip-7dan-integrated-paper.md (1618L, CJK 6156 -> 0) translated KR->EN. P-006 HEXA 7-tier chip ladder mammoth integrated paper. own#11 softeners applied (proven->candidate, uniqueness->candidate-uniqueness, converged->converged-as-pattern, complete->in-progress)."
+    },
+    {
+      "phase": "phase-6-step3-papers-ultimate-superconductor",
+      "batch": "phase-6-step3-papers-ultimate-superconductor",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "papers/n6-ultimate-superconductor-integrated-paper.md",
+      "count_before": 8,
+      "count_after": 7,
+      "note": "C RED-lite single-file - n6-ultimate-superconductor-integrated-paper.md (1682L, CJK 7359 -> 0) translated KR->EN. P-039 14-in-1 integrated SC paper. own#11 softeners applied (proven->draft demonstration, achieved->target/pathway candidate, QED->QED-(candidate))."
     }
   ]
 }
