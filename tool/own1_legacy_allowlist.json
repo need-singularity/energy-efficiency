@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 6,
+    "count": 5,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -595,11 +595,16 @@
         "count_before": 11,
         "count_after": 10,
         "note": "translated KR->EN"
+      },
+      {
+        "label": "phase-6-step3-sf-ufo-hexa-ufo",
+        "removed": 1,
+        "count_after": 5,
+        "ts": 1777080717
       }
     ]
   },
   "allowlist": [
-    "domains/sf-ufo/hexa-ufo/hexa-ufo.md",
     "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
     "reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md",
     "reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md",
