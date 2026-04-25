@@ -1,224 +1,224 @@
-# KSTAR 300초 정상 상태 운전 설계 사양서
+# KSTAR 300s Steady-State Operation Design Specification
 
-> **목표**: KSTAR에서 300초 정상 상태(steady-state) 고성능 플라즈마 운전 달성
-> **핵심 장벽**: Barrier 4 (전류 구동) — bootstrap + ECCD로 100% 비유도 전류 달성
-> **n=6 프레임워크**: sigma(6)*phi(6) = 6*tau(6) = 24, Egyptian fraction 1/2+1/3+1/6=1
+> **Target**: Pattern for 300s steady-state high-performance plasma operation on KSTAR
+> **Core barrier**: Barrier 4 (current drive) — 100% non-inductive current target via bootstrap + ECCD
+> **n=6 framework**: sigma(6)*phi(6) = 6*tau(6) = 24, Egyptian fraction 1/2+1/3+1/6=1
 >
 > **Date**: 2026-04-02
 
 ---
 
-## 1. 4대 장벽 (Four Barriers) 현황 분석
+## 1. Four-Barrier Status Analysis
 
-### 장벽 개요 = tau(6) = 4
+### Barrier overview = tau(6) = 4
 
 ```
   ┌─────────────────────────────────────────────────────────────────────────┐
-  │                     KSTAR 300초 정상 상태 — 4대 장벽                    │
+  │                KSTAR 300s steady-state — four barriers                  │
   │                                                                         │
   │   ┌─────────────────┐     ┌─────────────────┐                          │
   │   │  Barrier 1       │     │  Barrier 2       │                         │
-  │   │  열부하 관리      │     │  자석 냉각        │                         │
+  │   │  Thermal load    │     │  Magnet cooling   │                        │
   │   │  (Divertor)      │     │  (HTS Cryo)       │                        │
   │   │  ▓▓▓▓▓▓░░ 75%   │     │  ▓▓▓▓▓▓▓░ 90%    │                        │
-  │   │  Detachment 핵심 │     │  장벽4 종속       │                         │
+  │   │  Detachment core │     │  B4-dependent     │                        │
   │   └─────────────────┘     └─────────────────┘                          │
   │                                                                         │
   │   ┌─────────────────┐     ┌─────────────────┐                          │
   │   │  Barrier 3       │     │  Barrier 4       │                         │
-  │   │  벽 조건          │     │  전류 구동 ★★★   │                        │
+  │   │  Wall conditioning│    │  Current drive ★★★│                       │
   │   │  (Wall Cond.)    │     │  (Current Drive)  │                        │
   │   │  ▓▓▓▓▓░░░ 65%   │     │  ▓▓▓░░░░░ 40%    │                        │
-  │   │  불순물+리사이클  │     │  Rate-limiting!   │                        │
+  │   │  Impurity+recycl │     │  Rate-limiting!   │                        │
   │   └─────────────────┘     └─────────────────┘                          │
   │                                                                         │
-  │   해결 순서: B1(디버터) → B3(벽) → B2(자석) → B4(전류) ★핵심★          │
-  │   4대 장벽 = tau(6) = 4                                                 │
+  │   Order: B1(divertor) -> B3(wall) -> B2(magnet) -> B4(current) ★core★  │
+  │   Four barriers = tau(6) = 4                                            │
   └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 1.1 Barrier 1: 열부하 관리 (Thermal Load Management)
+### 1.1 Barrier 1: Thermal Load Management
 
 ```
-  현재 상태:
-    KSTAR 디버터: 단일 X-point, 텅스텐 monoblock
-    P_SOL = 8-10 MW (NBI 8 + ECH 1 - 복사 손실)
-    lambda_q = 3-5 mm (outer midplane 열유속 폭)
-    q_peak = 5-15 MW/m^2 (inter-ELM, 적외선 카메라 실측)
-    ELM 시: 50-100 MW/m^2 (ms 단위 펄스)
+  Current status:
+    KSTAR divertor: single X-point, tungsten monoblock
+    P_SOL = 8-10 MW (NBI 8 + ECH 1 - radiation loss)
+    lambda_q = 3-5 mm (outer midplane heat-flux width)
+    q_peak = 5-15 MW/m^2 (inter-ELM, infrared-camera measured)
+    ELM: 50-100 MW/m^2 (ms-scale pulses)
 
-  300초 한계:
-    W monoblock 연속 운전: ~10 MW/m^2 허용 (ITER 설계 기준)
-    W 재결정 온도 ~1200 C 초과 시 재료 열화
-    300초 누적 열: ~3 GJ/m^2
+  300s limit:
+    W monoblock continuous operation: ~10 MW/m^2 allowed (ITER design basis)
+    W recrystallization temperature ~1200 C exceeded -> material degradation
+    300s cumulative heat: ~3 GJ/m^2
 
-  잔여 갭:
-    현재 q_peak ~10 MW/m^2 → 목표 < 5 MW/m^2 (정상 상태)
-    갭 = 2x 감소 필요
+  Remaining gap:
+    Current q_peak ~10 MW/m^2 -> target < 5 MW/m^2 (steady-state)
+    Gap = 2x reduction needed
 
-  해결 경로 (3단계 = n/phi):
-    Stage 1: Detachment 최적화
-      N2/Ne seeding → f_rad > 0.9
-      효과: 5-20x 열부하 감소 (ITER baseline)
-      현재 KSTAR: f_rad = 0.6-0.7 → 목표 0.9+
-      구현: 즉시 가능 (gas injection 인프라 존재)
+  Resolution path (3 stages = n/phi):
+    Stage 1: Detachment optimization
+      N2/Ne seeding -> f_rad > 0.9
+      Effect: 5-20x heat-load reduction (ITER baseline)
+      Current KSTAR: f_rad = 0.6-0.7 -> target 0.9+
+      Implementation: immediately feasible (gas injection infrastructure exists)
 
     Stage 2: Strike-point sweeping
-      +-3cm sweep @ 4 Hz (ASDEX-Upgrade 실증)
-      효과: 1.5-2x 추가 감소
-      구현: PF coil 전원장치 저주파 변조
+      +-3cm sweep @ 4 Hz (ASDEX-Upgrade demonstrating)
+      Effect: 1.5-2x additional reduction
+      Implementation: PF coil power-supply low-frequency modulation
 
     Stage 3: Advanced divertor (Snowflake)
-      2차 null 생성 → 6 legs = n(6)
-      효과: 2-3x 감소 (TCV 실증)
-      구현: PF coil 재구성 (중기 과제)
+      Secondary null creation -> 6 legs = n(6)
+      Effect: 2-3x reduction (TCV demonstrating)
+      Implementation: PF coil reconfiguration (medium-term task)
 
-    결합 효과: Detachment 지배적 → q < 3 MW/m^2
-    해결 확률: 90%+ (Detachment 기술 성숙)
+    Combined effect: detachment-dominated -> q < 3 MW/m^2
+    Resolution probability: 90%+ (detachment technology mature)
 ```
 
-### 1.2 Barrier 2: 자석 냉각 (HTS Cryogenic Stability)
+### 1.2 Barrier 2: Magnet Cooling (HTS Cryogenic Stability)
 
 ```
-  현재 상태:
-    KSTAR 초전도 코일:
-      TF: 16개 (Nb3Sn, 4.2 K)
-      PF: 14개 (NbTi, 4.5 K)
-      CS: 8개 (Nb3Sn, 4.2 K) = sigma - tau
-    He 냉동기 용량: ~10 kW @ 4.5 K
+  Current status:
+    KSTAR superconducting coils:
+      TF: 16 coils (Nb3Sn, 4.2 K)
+      PF: 14 coils (NbTi, 4.5 K)
+      CS: 8 coils (Nb3Sn, 4.2 K) = sigma - tau
+    He refrigerator capacity: ~10 kW @ 4.5 K
 
-  300초 운전 시 열수지:
-    발열원               현재(비정상)   정상 상태
+  Heat balance during 300s operation:
+    Heat source             Current(transient)   Steady state
     ─────────────────────────────────────────────
-    AC loss (dI/dt)       15 kW         ~2 kW    (dI_p/dt → 0)
-    Nuclear heating       ~0 W          ~0 W     (D-D 운전)
-    Eddy current          간헐적         ~0 W     (disruption-free)
-    Joint resistance      0.8 kW        0.8 kW   (불변)
-    기타 (복사, 전도)     1 kW          1 kW     (불변)
+    AC loss (dI/dt)           15 kW              ~2 kW    (dI_p/dt -> 0)
+    Nuclear heating           ~0 W               ~0 W     (D-D operation)
+    Eddy current              intermittent        ~0 W     (disruption-free)
+    Joint resistance          0.8 kW             0.8 kW   (unchanged)
+    Other (radiation, conduction) 1 kW           1 kW     (unchanged)
     ─────────────────────────────────────────────
-    총계                  ~17 kW        ~4 kW
-    냉각 용량             10 kW         10 kW
-    마진                  -7 kW(부족!)  +6 kW(충분)
+    Total                     ~17 kW             ~4 kW
+    Cooling capacity          10 kW              10 kW
+    Margin                    -7 kW(deficit!)    +6 kW(sufficient)
 
-  핵심 통찰 — 자기 참조적 해결:
-    장벽 4 해결(정상 상태) → dI_p/dt → 0 → AC loss 소멸
-    → 장벽 2 자동 해결 (4 kW < 10 kW)
-    정량 확인: AC loss가 전체 발열의 75% 차지
+  Key insight — self-referential resolution:
+    Barrier 4 resolved (steady-state) -> dI_p/dt -> 0 -> AC loss vanishes
+    -> Barrier 2 auto-resolved (4 kW < 10 kW)
+    Quantitative check: AC loss = 75% of total heating
 
-  잔여 갭:
-    현재 비정상 상태: 17 kW > 10 kW → 코일 온도 상승
-    300초 후 코일 온도: 4.2 → 4.8 K (quench 마진 0.7 K)
-    정상 상태 달성 시: 4 kW << 10 kW → 마진 충분
+  Remaining gap:
+    Current transient state: 17 kW > 10 kW -> coil temperature rise
+    Coil temperature after 300s: 4.2 -> 4.8 K (quench margin 0.7 K)
+    Upon steady-state target attainment: 4 kW << 10 kW -> margin sufficient
 
-  해결 경로 (phi(6) = 2중 전략):
-    전략 1 (능동): 정상 상태 달성 → AC loss 자동 소멸
-    전략 2 (수동): 예냉 3.8 K + 냉각 펌프 2x 증강
-    해결 확률: 95% (장벽 4 해결 시 자동)
+  Resolution path (phi(6) = dual strategy):
+    Strategy 1 (active): steady-state target attainment -> AC loss auto-vanishes
+    Strategy 2 (passive): pre-cool 3.8 K + 2x cooling pump augmentation
+    Resolution probability: 95% (automatic upon Barrier 4 resolution)
 ```
 
-### 1.3 Barrier 3: 벽 조건 (Wall Conditioning)
+### 1.3 Barrier 3: Wall Conditioning
 
 ```
-  현재 상태:
-    Z_eff = 1.3-2.0 (300초 운전 중)
-    200초까지 안정 → 200초 후 점진 상승
-    주요 불순물: C(탄소), W(텅스텐), Fe(철), O(산소)
+  Current status:
+    Z_eff = 1.3-2.0 (during 300s operation)
+    Stable up to 200s -> gradual rise after 200s
+    Main impurities: C (carbon), W (tungsten), Fe (iron), O (oxygen)
 
-  장시간 한계:
-    불순물 축적 악순환:
-      벽 침식 → 고Z 불순물 → 복사 손실 → T 하락 → 가둠 악화
-      → 더 많은 가열 → 더 많은 침식 → ...
+  Long-duration limit:
+    Impurity accumulation vicious cycle:
+      Wall erosion -> high-Z impurity -> radiation loss -> T decrease -> confinement degradation
+      -> more heating -> more erosion -> ...
 
-    KSTAR 300초 한계의 실체:
-      실제로는 CS flux 소진이 주원인 (장벽 4)
-      불순물은 "500-1000초 한계"에 더 가까움
+    Reality of KSTAR 300s limit:
+      In practice, CS flux depletion is the main cause (Barrier 4)
+      Impurities closer to "500-1000s limit"
 
-  리사이클링(Recycling) 문제:
-    벽면 흡착 수소 → 재방출 → 밀도 제어 곤란
-    리사이클링 계수 R ~ 0.95-0.99
-    장시간 운전 시 벽 포화 → R → 1.0 → 밀도 폭주
+  Recycling issue:
+    Wall-adsorbed hydrogen -> re-emission -> density control difficult
+    Recycling coefficient R ~ 0.95-0.99
+    Wall saturation during long-duration operation -> R -> 1.0 -> density runaway
 
-  잔여 갭:
-    Z_eff < 1.8 유지 (정상 상태 목표)
-    리사이클링 제어 → 밀도 안정
+  Remaining gap:
+    Maintain Z_eff < 1.8 (steady-state target)
+    Recycling control -> density stability
 
-  해결 경로 (3종 제어 = n/phi):
-    Control 1 — 소스 제어:
-      보론화 (B2H6 glow discharge): O 90% 감소 (KSTAR 정례 실시)
-      리튬 코팅: 불순물 90% 감소 (LTX-beta 실증)
-      상호작용 면적 ~15-20%만 집중 코팅
+  Resolution path (3-type control = n/phi):
+    Control 1 — source control:
+      Boronization (B2H6 glow discharge): O 90% reduction (KSTAR routine practice)
+      Lithium coating: impurity 90% reduction (LTX-beta demonstrating)
+      Targeted coating on ~15-20% interaction area
 
-    Control 2 — 수송 제어:
-      제어된 ELM (grassy ELM): edge 불순물 주기적 배출
-      크라이오 펌프: He ash + 불순물 배기 (효율 목표 > 30%)
-      RMP 코일: ELM 제어 (n=1,2 모드)
+    Control 2 — transport control:
+      Controlled ELM (grassy ELM): periodic edge impurity release
+      Cryopump: He ash + impurity exhaust (efficiency target > 30%)
+      RMP coil: ELM control (n=1,2 modes)
 
-    Control 3 — 실시간 피드백:
-      Z_eff 모니터링: Bremsstrahlung (10ms), CXRS (100ms)
-      임계값 피드백: Z_eff > 1.5 → gas puff 증가
-                     Z_eff > 1.8 → N2 seeding
-                     Z_eff > 2.0 → ECCD 불순물 배출 유도
+    Control 3 — real-time feedback:
+      Z_eff monitoring: Bremsstrahlung (10ms), CXRS (100ms)
+      Threshold feedback: Z_eff > 1.5 -> gas puff increase
+                          Z_eff > 1.8 -> N2 seeding
+                          Z_eff > 2.0 -> ECCD-induced impurity exhaust
 
-    해결 확률: 80% (기존 기술 조합)
+    Resolution probability: 80% (existing technology combination)
 ```
 
-### 1.4 Barrier 4: 전류 구동 (Current Drive) ★★★ Rate-Limiting Step
+### 1.4 Barrier 4: Current Drive ★★★ Rate-Limiting Step
 
 ```
-  현재 상태:
+  Current status:
     I_total = I_ohmic + I_bootstrap + I_cd
-    KSTAR 300초 운전:
-      I_ohmic:    ~50%  (CS flux 유도)
-      I_bootstrap: ~30% (플라즈마 자체 생성)
+    KSTAR 300s operation:
+      I_ohmic:    ~50%  (CS flux-induced)
+      I_bootstrap: ~30% (plasma self-generated)
       I_cd:        ~20% (ECCD + NBI-CD)
 
-  CS flux 제약:
+  CS flux constraint:
     CS flux swing: ~17 Wb (+-8.5 Wb)
-    사용 가능 flux: ~14 Wb
-    V_loop(ohmic) ~ 0.041 V (KSTAR 실측 역산: 14 Wb / 340 s)
-    순수 ohmic 최대 운전: ~1200초
+    Usable flux: ~14 Wb
+    V_loop(ohmic) ~ 0.041 V (KSTAR measured back-calc: 14 Wb / 340 s)
+    Pure ohmic max operation: ~1200s
 
-  정상 상태 조건:
-    I_ohmic → 0 (V_loop → 0)
-    f_bs + f_cd = 1.0 (100% 비유도)
+  Steady-state condition:
+    I_ohmic -> 0 (V_loop -> 0)
+    f_bs + f_cd = 1.0 (100% non-inductive)
 
-  잔여 갭:
-    현재 f_ni = f_bs + f_cd = 50%
-    목표 f_ni = 100%
-    갭 = 50% 추가 비유도 전류 확보
+  Remaining gap:
+    Current f_ni = f_bs + f_cd = 50%
+    Target f_ni = 100%
+    Gap = 50% additional non-inductive current to secure
 
-  해결 확률: 50-70% (가장 도전적)
-    준정상 (90%+ NI): 70%
-    완전정상 (100% NI): 50%
+  Resolution probability: 50-70% (most challenging)
+    Quasi-steady (90%+ NI): 70%
+    Fully steady (100% NI): 50%
 ```
 
-### 1.5 4대 장벽 종합 판정
+### 1.5 Four-Barrier Synthesis Judgment
 
 ```
   ┌─────────────────────────────────────────────────────────────────┐
-  │ 장벽     핵심 해결책            현재 → 목표     확률   종속성   │
+  │ Barrier  Key resolution           Current -> target  Prob  Dep. │
   ├─────────────────────────────────────────────────────────────────┤
-  │ B1 열부하 Detachment+Snowflake  10→<5 MW/m^2    90%   독립     │
-  │ B2 자석   자기참조(B4해결)+예냉  17→4 kW         95%   B4 종속  │
-  │ B3 벽     보론+리튬+ELM+피드백  Z_eff<1.8       80%   부분독립  │
-  │ B4 전류★  f_bs↑ + ECCD↑        50→100% NI      50-70% 독립     │
+  │ B1 heat  Detachment+Snowflake    10->5 MW/m^2    90%   indep   │
+  │ B2 mag   Self-ref(B4 solve)+precool 17->4 kW     95%   B4-dep  │
+  │ B3 wall  Boron+Li+ELM+feedback   Z_eff<1.8       80%   partial │
+  │ B4 curr★ f_bs↑ + ECCD↑          50->100% NI     50-70% indep  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 통합 (준정상)                                    ~55%           │
-  │ 통합 (완전정상)                                  ~40%           │
+  │ Integrated (quasi-steady)                         ~55%           │
+  │ Integrated (fully steady)                         ~40%           │
   └─────────────────────────────────────────────────────────────────┘
 
-  Rate-limiting step: 장벽 4 (전류 구동)
-  → 본 문서의 핵심: 장벽 4 돌파를 위한 3가지 시나리오 설계
+  Rate-limiting step: Barrier 4 (current drive)
+  -> Core of this document: 3 scenarios designed to break through Barrier 4
 ```
 
 ---
 
-## 2. 정상 상태 운전 시나리오 (3가지 = n/phi)
+## 2. Steady-State Operation Scenarios (3 scenarios = n/phi)
 
-### 시나리오 개요
+### Scenario overview
 
 ```
-  3 시나리오 = n/phi = 6/2 = 3
+  3 scenarios = n/phi = 6/2 = 3
 
   ┌────────────────────────────────────────────────────────────────────────┐
   │        Scenario A         Scenario B           Scenario C             │
@@ -239,23 +239,23 @@
   └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.1 Scenario A: Conservative (보수적 시나리오)
+### 2.1 Scenario A: Conservative
 
 ```
-  설계 철학: 현재 KSTAR 능력의 점진적 확장
-  가장 실현 가능하나, 완전 정상 상태에는 미달
+  Design philosophy: incremental extension of current KSTAR capability
+  Most feasible, but short of fully steady-state
 
-  플라즈마 파라미터:
-    I_p = 0.6 MA              (현재 운전 전류 유지)
-    B_T = 3.5 T               (고정)
-    q_95 = 5.0 = sopfr(6)     (안전 운전)
-    beta_N = 2.5               (MHD 안정 영역)
-    beta_p = 1.5               (현재 대비 +25%)
+  Plasma parameters:
+    I_p = 0.6 MA              (maintain current operating current)
+    B_T = 3.5 T               (fixed)
+    q_95 = 5.0 = sopfr(6)     (safe operation)
+    beta_N = 2.5               (MHD stable region)
+    beta_p = 1.5               (+25% vs current)
     n_e = 5 x 10^19 m^-3      (0.8 n_GW)
-    T_i = T_e = 10 keV = n+tau (유지)
-    H_98 = 1.3-1.5             (표준 H-mode)
+    T_i = T_e = 10 keV = n+tau (maintained)
+    H_98 = 1.3-1.5             (standard H-mode)
 
-  플라즈마 프로파일 (normalized radius rho = r/a):
+  Plasma profile (normalized radius rho = r/a):
     ┌─────────────────────────────────────────────────┐
     │  T_e(keV)                                        │
     │  12 ┤ ╲                                          │
@@ -269,7 +269,7 @@
     │     0  0.2 0.4 0.6 0.8 1   0 0.2 0.4 0.6 0.8 1  │
     │              rho                   rho            │
     │                                                   │
-    │  q-profile (monotonic)     j(r) (전류 밀도)       │
+    │  q-profile (monotonic)     j(r) (current density) │
     │  6 ┤          ╱            1.5┤╲                  │
     │  5 ┤        ╱              1.2┤ ╲                 │
     │  4 ┤      ╱                0.9┤  ╲___             │
@@ -280,74 +280,74 @@
     │    0  0.2 0.4 0.6 0.8 1   0 0.2 0.4 0.6 0.8 1   │
     └─────────────────────────────────────────────────┘
 
-  가열 배분:
+  Heating allocation:
     NBI:  8 MW = sigma - tau     (3 beamlines, 120 keV)
     ECH:  4 MW                   (4 gyrotrons, 170 GHz)
-    ICH:  0 MW                   (미사용)
-    합계: 12 MW = sigma(6)
+    ICH:  0 MW                   (unused)
+    Total: 12 MW = sigma(6)
 
-  전류 구동 분석:
+  Current-drive analysis:
     f_bs = 40%:
       C_bs = 0.50 (H-mode peaked profile)
       epsilon = 0.278, sqrt(epsilon) = 0.527
       beta_p = 1.5
       f_bs = 0.50 x 0.527 x 1.5 / (1 + 0.75) = 0.226
-      → 보정: 실제 H-mode 프로파일 효과로 ~40% 달성 가능
-      (DIII-D 유사 조건에서 실측 기반)
+      -> correction: ~40% candidate-feasible via actual H-mode profile effects
+      (based on DIII-D-like measurements under similar conditions)
 
     f_eccd = 25%:
       I_eccd = 0.25 x 0.6 MA = 0.15 MA
       eta_ECCD = 0.025 x 10^20 A/W/m^2
       P_eccd = 0.15e6 x 0.5e20 x 1.8 / (0.025 x 10^20)
              = 0.15e6 x 9e19 / 2.5e18 = 5.4 MW
-      → 4 MW ECH로 f_eccd ~ 18-25% (효율 최적화 시)
+      -> with 4 MW ECH, f_eccd ~ 18-25% (under efficiency optimization)
 
     f_nbi = 15%:
       NBI 8 MW, eta_NBI ~ 0.035 x 10^20 A/W/m^2
       I_nbi ~ 0.035 x 10^20 x 8e6 / (0.5e20 x 1.8) ~ 0.031 MA
-      → f_nbi = 0.031/0.6 = 5% (직접 CD)
-      BUT: NBI → fast ion 압력 → bootstrap 증강 → 실효 ~15%
+      -> f_nbi = 0.031/0.6 = 5% (direct CD)
+      BUT: NBI -> fast-ion pressure -> bootstrap enhancement -> effective ~15%
 
     f_ni = 40% + 25% + 15% = 80%
-    잔여 ohmic = 20%
+    Residual ohmic = 20%
 
   Flux balance:
     V_loop = V_ohmic x (1 - f_ni) x (I_p / I_p_ref)
            = 0.041 V x 0.20 x 1.0 = 0.0082 V
-    tau_pulse = 14 Wb / 0.0082 V = 1707초 ~ 28분
+    tau_pulse = 14 Wb / 0.0082 V = 1707 s ~ 28 min
 
-  안정성 분석:
-    beta_N = 2.5 < 4*l_i ~ 3.5 → MHD 안정 ✅
-    q_0 ~ 1.0 → 톱니파(sawtooth) 존재, 제어 필요
-    NTM: q=3/2, q=2 surface에서 발생 가능 → ECCD 안정화
-    ELM: Type I → RMP (n=1,2 모드) + pellet pacing
+  Stability analysis:
+    beta_N = 2.5 < 4*l_i ~ 3.5 -> MHD stable [OK]
+    q_0 ~ 1.0 -> sawtooth present, control needed
+    NTM: q=3/2, q=2 surface emergence possible -> ECCD stabilization
+    ELM: Type I -> RMP (n=1,2 modes) + pellet pacing
 
-  n=6 연결:
-    가열 합계 = 12 MW = sigma(6)                  ✅ EXACT
-    NBI = 8 MW = sigma - tau                      ✅ EXACT
-    q_95 = 5 = sopfr(6)                           ✅ EXACT
-    T_i = 10 keV = sigma - phi                    ✅ EXACT
-    4 gyrotrons = tau(6)                          ✅ EXACT
+  n=6 connections:
+    Heating total = 12 MW = sigma(6)              [OK] EXACT
+    NBI = 8 MW = sigma - tau                      [OK] EXACT
+    q_95 = 5 = sopfr(6)                           [OK] EXACT
+    T_i = 10 keV = sigma - phi                    [OK] EXACT
+    4 gyrotrons = tau(6)                          [OK] EXACT
 ```
 
-### 2.2 Scenario B: ITB Advanced (내부 수송 장벽 시나리오)
+### 2.2 Scenario B: ITB Advanced (Internal Transport Barrier scenario)
 
 ```
-  설계 철학: 저전류 AT(Advanced Tokamak) + ITB로 bootstrap 극대화
-  DIII-D AT 시나리오를 KSTAR에 적용
+  Design philosophy: low-current AT (Advanced Tokamak) + ITB for maximum bootstrap
+  Applying DIII-D AT scenario to KSTAR
 
-  플라즈마 파라미터:
-    I_p = 0.4 MA               (저전류 → 높은 beta_p)
-    B_T = 3.5 T                (고정)
-    q_95 = 7.5                 (높은 q → 안전)
-    beta_N = 3.0 = n/phi       (AT 영역)
-    beta_p = 2.5               (저전류 효과: (0.6/0.4)^2 = 2.25x)
-    n_e = 4 x 10^19 m^-3      (0.65 n_GW, 저밀도)
-    T_i = 12 keV               (높은 온도, 저밀도 보상)
+  Plasma parameters:
+    I_p = 0.4 MA               (low current -> high beta_p)
+    B_T = 3.5 T                (fixed)
+    q_95 = 7.5                 (high q -> safer)
+    beta_N = 3.0 = n/phi       (AT regime)
+    beta_p = 2.5               (low-current effect: (0.6/0.4)^2 = 2.25x)
+    n_e = 4 x 10^19 m^-3      (0.65 n_GW, low density)
+    T_i = 12 keV               (high temperature, offsetting low density)
     T_e = 10 keV
-    H_98 = 1.5-1.8             (ITB 향상)
+    H_98 = 1.5-1.8             (ITB improvement)
 
-  플라즈마 프로파일:
+  Plasma profile:
     ┌─────────────────────────────────────────────────┐
     │  T_e(keV)                                        │
     │  14 ┤╲                                           │
@@ -362,9 +362,9 @@
     │     0  0.2 0.4 0.6 0.8 1.0                       │
     │         ITB at rho ~ 0.4-0.5                     │
     │                                                   │
-    │  q-profile (weak shear)   j(r) (전류 밀도)        │
+    │  q-profile (weak shear)   j(r) (current density)  │
     │  8 ┤          ╱            1.0┤  ╲                │
-    │  6 ┤        ╱              0.8┤   ╲  ← off-axis  │
+    │  6 ┤        ╱              0.8┤   ╲  <- off-axis  │
     │  4 ┤      ╱                0.6┤  ╱ ╲  peak       │
     │  3 ┤    ╱                  0.4┤╱    ╲___          │
     │  2 ┤──╱  (q_min ~ 1.5)    0.2┤         ╲         │
@@ -372,78 +372,78 @@
     │    0  0.2 0.4 0.6 0.8 1   0 0.2 0.4 0.6 0.8 1   │
     └─────────────────────────────────────────────────┘
 
-  가열 배분:
+  Heating allocation:
     NBI:  8 MW = sigma - tau     (3 beamlines)
     ECH:  3 MW                   (3 gyrotrons)
     ICH:  0 MW
-    합계: 11 MW = sigma - mu
+    Total: 11 MW = sigma - mu
 
-  전류 구동 분석:
+  Current-drive analysis:
     f_bs = 55%:
-      저전류 효과: beta_p(0.4MA) = beta_p(0.6MA) x (0.6/0.4)^2 = 2.25x
-      같은 압력에서 beta_p 2.25x 증가 → 실제 beta_p ~ 2.5
-      ITB 프로파일: C_bs ~ 0.60 (pressure peaking)
+      Low-current effect: beta_p(0.4MA) = beta_p(0.6MA) x (0.6/0.4)^2 = 2.25x
+      At same pressure, beta_p rises 2.25x -> actual beta_p ~ 2.5
+      ITB profile: C_bs ~ 0.60 (pressure peaking)
       f_bs = 0.60 x 0.527 x 2.5 / (1 + 1.25) = 0.352
-      → ITB 보정 (밀도 피킹 + 온도 피킹): x 1.5 → ~53-58%
-      → f_bs ~ 55% 달성 가능 (도전적이나 실현 범위)
+      -> ITB correction (density peaking + temperature peaking): x 1.5 -> ~53-58%
+      -> f_bs ~ 55% candidate-feasible (challenging but in realizable range)
 
     f_eccd = 25%:
-      I_eccd = 0.25 x 0.4 MA = 0.1 MA (저전류이므로 절대값 작음!)
+      I_eccd = 0.25 x 0.4 MA = 0.1 MA (absolute value small due to low current!)
       P_eccd = 0.1e6 x 0.4e20 x 1.8 / (0.025 x 10^20)
              = 100e3 x 7.2e19 / 2.5e18 = 2.88 MW
-      → 3 MW ECH로 f_eccd ~ 25% 달성 가능 ✅
+      -> with 3 MW ECH, f_eccd ~ 25% candidate-feasible [OK]
 
     f_nbi = 15%:
-      I_nbi_total ~ 0.06 MA (NBI 8 MW 기준)
-      f_nbi = 0.06/0.4 = 15% ✅
+      I_nbi_total ~ 0.06 MA (NBI 8 MW basis)
+      f_nbi = 0.06/0.4 = 15% [OK]
 
     f_ni = 55% + 25% + 15% = 95%
-    잔여 ohmic = 5%
+    Residual ohmic = 5%
 
   Flux balance:
     V_loop = 0.041 V x 0.05 x 0.667 = 0.00137 V
-    tau_pulse = 14 Wb / 0.00137 V = 10,219초 ~ 2.8시간
+    tau_pulse = 14 Wb / 0.00137 V = 10,219 s ~ 2.8 h
 
-  안정성 분석:
-    beta_N = 3.0 < 4*l_i ~ 3.2 → MHD 마진 좁음, 주의
-    q_min ~ 1.5 → no sawtooth ✅
-    ITB 안정성: E x B shear가 turbulence 억제
-    RWM(Resistive Wall Mode): 회전 유지 필수 → NBI rotation 의존
-    NTM: q=3/2 surface → ECCD 1기 전담 안정화
+  Stability analysis:
+    beta_N = 3.0 < 4*l_i ~ 3.2 -> MHD margin narrow, caution
+    q_min ~ 1.5 -> no sawtooth [OK]
+    ITB stability: E x B shear suppresses turbulence
+    RWM (Resistive Wall Mode): rotation maintenance essential -> NBI-rotation reliant
+    NTM: q=3/2 surface -> dedicate 1 ECCD for stabilization
 
-  n=6 연결:
-    I_p = 0.4 MA → beta_p 점프 = phi(6) 배                ✅ EXACT
-    beta_N = 3.0 = n/phi                                    ✅ EXACT
-    f_bs > 1/2 = 1/phi (임계점 돌파)                        ✅ EXACT
-    3 gyrotrons = n/phi                                     ✅ EXACT
-    f_ni = 95% → 1 - 1/J2 = 1 - 1/24 ~ 0.958             CLOSE
+  n=6 connections:
+    I_p = 0.4 MA -> beta_p jump = phi(6) factor            [OK] EXACT
+    beta_N = 3.0 = n/phi                                    [OK] EXACT
+    f_bs > 1/2 = 1/phi (critical-point breakthrough)        [OK] EXACT
+    3 gyrotrons = n/phi                                     [OK] EXACT
+    f_ni = 95% -> 1 - 1/J2 = 1 - 1/24 ~ 0.958             CLOSE
 ```
 
-### 2.3 Scenario C: Reversed Shear (역자기전단 시나리오)
+### 2.3 Scenario C: Reversed Shear scenario
 
 ```
-  설계 철학: 극한 bootstrap 최적화로 완전 비유도 전류 달성
-  JT-60U f_bs=75% 실적 기반, KSTAR에서의 재현
+  Design philosophy: extreme bootstrap optimization for fully non-inductive current target
+  Based on JT-60U f_bs=75% result, reproducing it on KSTAR
 
-  플라즈마 파라미터:
-    I_p = 0.4 MA               (저전류)
-    B_T = 3.5 T                (고정)
-    q_95 = 8-10                (높은 q)
-    q_min > 2 (역전단)          (중심부 q가 edge보다 높음)
-    beta_N = 3.5                (MHD 한계 근접)
-    beta_p = 3.5                (극한 beta_p)
-    n_e = 3.5 x 10^19 m^-3    (0.55 n_GW, 저밀도/저충돌)
-    T_i = 15 keV               (높은 이온 온도)
+  Plasma parameters:
+    I_p = 0.4 MA               (low current)
+    B_T = 3.5 T                (fixed)
+    q_95 = 8-10                (high q)
+    q_min > 2 (reversed shear) (central q higher than edge)
+    beta_N = 3.5                (near MHD limit)
+    beta_p = 3.5                (extreme beta_p)
+    n_e = 3.5 x 10^19 m^-3    (0.55 n_GW, low density/low collisionality)
+    T_i = 15 keV               (high ion temperature)
     T_e = 12 keV
-    H_98 = 1.8-2.2             (강한 ITB)
+    H_98 = 1.8-2.2             (strong ITB)
 
-  플라즈마 프로파일:
+  Plasma profile:
     ┌─────────────────────────────────────────────────┐
     │  T_e(keV)                                        │
-    │  16 ┤╲        강한 ITB                           │
+    │  16 ┤╲        strong ITB                         │
     │  14 ┤ ╲      ╱╲                                  │
     │  12 ┤  ╲    ╱  ╲                                 │
-    │  10 ┤   ╲__╱    ╲  ← steep gradient             │
+    │  10 ┤   ╲__╱    ╲  <- steep gradient            │
     │   8 ┤     inner   ╲                              │
     │   6 ┤    barrier   ╲                             │
     │   4 ┤               ╲___ pedestal                │
@@ -453,65 +453,65 @@
     │                                                   │
     │  q-profile (REVERSED!)     j_bs(r) (bootstrap)   │
     │  10┤          ╱            1.2┤                   │
-    │   8┤        ╱              1.0┤    ╱╲ ← ITB 위치 │
+    │   8┤        ╱              1.0┤    ╱╲ <- ITB pos │
     │   6┤      ╱                0.8┤   ╱  ╲           │
     │   4┤    ╱                  0.6┤  ╱    ╲          │
     │   3┤╲ ╱ q_min~2.5         0.4┤╱       ╲___      │
     │   2┤ ╲╱                   0.2┤             ╲     │
     │    └────────────────       └──────────────       │
     │    0  0.2 0.4 0.6 0.8 1   0 0.2 0.4 0.6 0.8 1  │
-    │    ← q_0 > q_min (역전단!)                       │
+    │    <- q_0 > q_min (reversed shear!)              │
     └─────────────────────────────────────────────────┘
 
-  가열 배분:
-    NBI:  8 MW = sigma - tau     (3 beamlines, 역방향 빔 포함)
-    ECH:  2 MW                   (2 gyrotrons, q-profile 제어 전담)
+  Heating allocation:
+    NBI:  8 MW = sigma - tau     (3 beamlines, including counter beam)
+    ECH:  2 MW                   (2 gyrotrons, dedicated to q-profile control)
     ICH:  0 MW
-    합계: 10 MW = sigma - phi
+    Total: 10 MW = sigma - phi
 
-  전류 구동 분석:
+  Current-drive analysis:
     f_bs = 70%:
-      역전단 + 강한 ITB → C_bs ~ 0.70
-      beta_p = 3.5 (극한)
+      Reversed shear + strong ITB -> C_bs ~ 0.70
+      beta_p = 3.5 (extreme)
       f_bs = 0.70 x 0.527 x 3.5 / (1 + 1.75) = 0.469
-      → 역전단 보정: 중심 전류가 줄어들어 상대적 bootstrap 비중 증가
-      → 밀도/온도 피킹 보정: x 1.5 → ~70%
-      (JT-60U에서 f_bs = 75% 실측, 유사 조건)
+      -> reversed-shear correction: central current reduced -> relative bootstrap share rises
+      -> density/temperature peaking correction: x 1.5 -> ~70%
+      (JT-60U measured f_bs = 75% under similar conditions)
 
     f_eccd = 15%:
       I_eccd = 0.15 x 0.4 MA = 0.06 MA
-      P_eccd ~ 1.7 MW → 2 MW ECH로 충분
+      P_eccd ~ 1.7 MW -> 2 MW ECH sufficient
 
     f_nbi = 15%:
-      NBI 8 MW → ~0.06 MA = 15% of 0.4 MA
+      NBI 8 MW -> ~0.06 MA = 15% of 0.4 MA
 
     f_ni = 70% + 15% + 15% = 100%
-    잔여 ohmic = 0% → 완전 비유도!
+    Residual ohmic = 0% -> fully non-inductive!
 
   Flux balance:
-    V_loop = 0 → tau_pulse = infinity (정상 상태!)
+    V_loop = 0 -> tau_pulse = infinity (steady-state!)
 
-  안정성 분석 (최대 리스크):
-    beta_N = 3.5 → MHD 한계 근접, 이상 벽 안정화(ideal wall) 필요
-    RWM: 벽 근접 + NBI 회전으로 안정화 필수
-    NTM: reversed shear에서는 q_min > 2 → q=3/2 island 없음 ✅
-         BUT: q=2 double rational surface → 모니터링 필수
-    Alfven eigenmodes: fast ion 구동 → TAE, RSAE 가능
-    ITB 붕괴: 갑작스러운 ITB 소실 → beta 급락 → disruption 위험
-    → 실시간 프로파일 제어 + disruption mitigation 필수
+  Stability analysis (maximum risk):
+    beta_N = 3.5 -> near MHD limit, ideal-wall stabilization needed
+    RWM: wall proximity + NBI rotation essential for stabilization
+    NTM: in reversed shear, q_min > 2 -> no q=3/2 island [OK]
+         BUT: q=2 double rational surface -> monitoring essential
+    Alfven eigenmodes: fast-ion driven -> TAE, RSAE possible
+    ITB collapse: sudden ITB loss -> beta plunge -> disruption risk
+    -> real-time profile control + disruption mitigation essential
 
-  n=6 연결:
-    f_bs = 70% ~ f_bs > 2/n = 2/6 = 1/3 (Egyptian 2번째 항)
-    가열 합계 = 10 MW = sigma - phi                         ✅ EXACT
-    q_min = 2-3 = phi ~ n/phi                               ✅ EXACT
-    완전 비유도: f_bs + f_cd = 1 = Egyptian sum             ✅ EXACT
-    2 gyrotrons = phi(6)                                    ✅ EXACT
+  n=6 connections:
+    f_bs = 70% ~ f_bs > 2/n = 2/6 = 1/3 (Egyptian 2nd term)
+    Heating total = 10 MW = sigma - phi                     [OK] EXACT
+    q_min = 2-3 = phi ~ n/phi                               [OK] EXACT
+    Fully non-inductive: f_bs + f_cd = 1 = Egyptian sum     [OK] EXACT
+    2 gyrotrons = phi(6)                                    [OK] EXACT
 ```
 
-### 2.4 시나리오 비교 테이블
+### 2.4 Scenario Comparison Table
 
-| 파라미터 | Scenario A | Scenario B | Scenario C | n=6 |
-|----------|-----------|-----------|-----------|-----|
+| Parameter | Scenario A | Scenario B | Scenario C | n=6 |
+|-----------|-----------|-----------|-----------|-----|
 | I_p (MA) | 0.6 | 0.4 | 0.4 | - |
 | beta_N | 2.5 | 3.0 | 3.5 | n/phi(B), - |
 | beta_p | 1.5 | 2.5 | 3.5 | - |
@@ -522,436 +522,436 @@
 | ECH (MW) | 4 | 3 | 2 | - |
 | tau_pulse | ~28min | ~2.8h | infinity | - |
 | MHD risk | LOW | MED | HIGH | - |
-| 실현성 | HIGH | MED | LOW | - |
-| K-DEMO 가치 | MED | HIGH | HIGHEST | - |
+| Feasibility | HIGH | MED | LOW | - |
+| K-DEMO value | MED | HIGH | HIGHEST | - |
 
 ---
 
-## 3. ECCD 최적화 전략
+## 3. ECCD Optimization Strategy
 
-### 3.1 주파수 선정
+### 3.1 Frequency Selection
 
 ```
-  ECCD 물리:
-    전자 사이클로트론 공명: omega = n_h x omega_ce
+  ECCD physics:
+    Electron cyclotron resonance: omega = n_h x omega_ce
     omega_ce = eB / m_e = 1.76 x 10^11 x B [rad/s]
     f_ce = omega_ce / (2 pi)
 
   KSTAR B_T = 3.5 T:
     f_ce = 1.76e11 x 3.5 / (2 pi) = 98 GHz (1st harmonic)
-    2nd harmonic: 2 x f_ce = 196 GHz (자기축)
+    2nd harmonic: 2 x f_ce = 196 GHz (magnetic axis)
 
-  BUT: 2nd harmonic X-mode가 ECCD에 최적:
-    이유:
-      1. 1st harmonic O-mode: 흡수 약함 (단일 통과 50-70%)
-      2. 2nd harmonic X-mode: 흡수 강함 (단일 통과 > 95%)
-      3. 주파수 선택은 자기장 위치에 따라:
-         축(R=R0): B = 3.5 T → 2f_ce = 196 GHz
-         안쪽(R=R0-a): B = 3.5 x 1.8/1.3 = 4.85 T → 2f_ce = 272 GHz
-         바깥쪽(R=R0+a): B = 3.5 x 1.8/2.3 = 2.74 T → 2f_ce = 153 GHz
+  BUT: 2nd harmonic X-mode is optimal for ECCD:
+    Reasons:
+      1. 1st harmonic O-mode: weak absorption (single-pass 50-70%)
+      2. 2nd harmonic X-mode: strong absorption (single-pass > 95%)
+      3. Frequency choice depends on magnetic-field position:
+         Axis(R=R0): B = 3.5 T -> 2f_ce = 196 GHz
+         Inner(R=R0-a): B = 3.5 x 1.8/1.3 = 4.85 T -> 2f_ce = 272 GHz
+         Outer(R=R0+a): B = 3.5 x 1.8/2.3 = 2.74 T -> 2f_ce = 153 GHz
 
-  주파수 선택:
-    170 GHz 표준 gyrotron (ITER 표준):
-      공명 위치: B = 170 / (2 x 28) = 3.04 T
+  Frequency selection:
+    170 GHz standard gyrotron (ITER standard):
+      Resonance location: B = 170 / (2 x 28) = 3.04 T
       R_res = R0 x B_T / B_res = 1.8 x 3.5/3.04 = 2.07 m
-      → 바깥쪽 mid-radius (rho ~ 0.5) ← ITB 위치와 일치!
+      -> outer mid-radius (rho ~ 0.5) <- matches ITB location!
 
     140 GHz gyrotron:
-      공명 위치: B = 140 / 56 = 2.5 T → R = 2.52 m (edge 근처)
-      → edge ECCD (ELM/NTM 안정화에 적합)
+      Resonance location: B = 140 / 56 = 2.5 T -> R = 2.52 m (near edge)
+      -> edge ECCD (suited for ELM/NTM stabilization)
 
-  권장: 170 GHz 주력 + 140 GHz 보조
-    170 GHz: off-axis ECCD (전류 구동 + ITB 보조)
-    140 GHz: edge ECCD (NTM 안정화)
+  Recommendation: 170 GHz primary + 140 GHz auxiliary
+    170 GHz: off-axis ECCD (current drive + ITB assist)
+    140 GHz: edge ECCD (NTM stabilization)
 
-  n=6 연결:
-    170 GHz → rho ~ 0.5 = 1/phi 위치 (mid-radius)      CLOSE
-    140/170 비 = 0.82 ~ (sigma-phi)/sigma = 10/12       CLOSE
+  n=6 connections:
+    170 GHz -> rho ~ 0.5 = 1/phi location (mid-radius)  CLOSE
+    140/170 ratio = 0.82 ~ (sigma-phi)/sigma = 10/12    CLOSE
 ```
 
-### 3.2 발사 기하학 (Launch Geometry)
+### 3.2 Launch Geometry
 
 ```
-  ECCD 효율은 발사 각도에 크게 의존:
+  ECCD efficiency depends strongly on launch angle:
 
-  η_CD ∝ T_e / n_e x (toroidal launch angle)
+  eta_CD proportional to T_e / n_e x (toroidal launch angle)
 
   ┌──────────────────────────────────────────────────────┐
-  │  KSTAR 단면 (poloidal)                                │
+  │  KSTAR poloidal cross-section                         │
   │                                                        │
   │              Top launch                                │
   │                 ↓                                      │
   │           ╭─────────╮                                  │
-  │          ╱     ●     ╲       ● = 자기축 (R0=1.8m)     │
-  │   Mid → │   plasma   │ ← Mid-plane launch             │
+  │          ╱     ●     ╲       ● = magnetic axis (R0=1.8m)│
+  │   Mid → │   plasma   │ <- Mid-plane launch           │
   │  plane   ╲           ╱                                 │
   │           ╰─────────╯                                  │
   │                                                        │
-  │  Top launch 장점:                                      │
-  │    - 빔이 자기력선과 큰 각도로 교차                    │
-  │    - 높은 eta_CD (0.04-0.06 x 10^20 A/W/m^2)          │
-  │    - rho 0.3-0.7 광범위 조준 가능                      │
-  │    - BUT: 포트 접근성 제한, 빔 경로 긴 만큼 굴절 큼    │
+  │  Top-launch advantages:                                │
+  │    - Beam crosses field lines at large angle          │
+  │    - High eta_CD (0.04-0.06 x 10^20 A/W/m^2)          │
+  │    - Broad targeting at rho 0.3-0.7                   │
+  │    - BUT: port access limited, long beam-path refraction│
   │                                                        │
-  │  Mid-plane launch 장점:                                │
-  │    - 기존 포트 활용 가능                               │
-  │    - 빔 경로 짧음 → 굴절/산란 최소                    │
+  │  Mid-plane-launch advantages:                          │
+  │    - Existing ports reusable                           │
+  │    - Short beam path -> refraction/scattering minimal │
   │    - eta_CD: 0.02-0.04 x 10^20 A/W/m^2                │
-  │    - KSTAR 현재 시스템이 mid-plane                     │
+  │    - KSTAR current system is mid-plane                │
   │                                                        │
-  │  최적 전략: mid-plane 주력 + top launch 1기 추가       │
-  │    Toroidal steering: 20-30도 (co-CD 방향)             │
-  │    Poloidal steering: +-15도 (타겟 rho 조정)           │
+  │  Optimal strategy: mid-plane primary + 1 top-launch   │
+  │    Toroidal steering: 20-30 deg (co-CD direction)     │
+  │    Poloidal steering: +-15 deg (target rho tuning)    │
   └──────────────────────────────────────────────────────┘
 
-  Steering 시스템:
-    실시간 거울(mirror) 조향: 10ms 응답
-    타겟 정밀도: delta_rho < 0.05
-    NTM island 탐지 → 자동 조준: ECE + 거울 피드백 루프
+  Steering system:
+    Real-time mirror steering: 10ms response
+    Target precision: delta_rho < 0.05
+    NTM island detection -> automatic aiming: ECE + mirror feedback loop
 ```
 
-### 3.3 전류 구동 효율
+### 3.3 Current-Drive Efficiency
 
 ```
-  ECCD 효율 공식 (Lin-Liu & Miller, 1995):
+  ECCD efficiency formula (Lin-Liu & Miller, 1995):
     eta_CD = n_e20 x R0 x I_CD / P_CD   [10^20 A/W/m^2]
 
-  KSTAR 조건별 효율:
+  KSTAR efficiency by condition:
     ┌──────────────────────────────────────────────────────┐
-    │ 조건              T_e    n_e20   eta_CD   비고       │
+    │ Condition         T_e    n_e20   eta_CD   Note       │
     ├──────────────────────────────────────────────────────┤
-    │ 현재 (1MW, mid)   5 keV  0.5    0.020    실측       │
-    │ Scenario A 최적   8 keV  0.5    0.030    mid+steer  │
-    │ Scenario B 최적   10 keV 0.4    0.040    top launch │
-    │ Scenario C 최적   12 keV 0.35   0.050    top+steer  │
-    │ 이론 상한         15 keV 0.3    0.060    극한 조건   │
+    │ Current (1MW, mid)5 keV  0.5    0.020    measured   │
+    │ Scenario A opt    8 keV  0.5    0.030    mid+steer  │
+    │ Scenario B opt    10 keV 0.4    0.040    top launch │
+    │ Scenario C opt    12 keV 0.35   0.050    top+steer  │
+    │ Theoretical bound 15 keV 0.3    0.060    extreme    │
     └──────────────────────────────────────────────────────┘
 
-    핵심: eta_CD ∝ T_e / n_e → 고온 저밀도에서 효율 극대화
-    Scenario B/C의 저밀도 고온 조건이 ECCD에 유리
+    Key: eta_CD proportional to T_e / n_e -> efficiency maximized at high-T low-n
+    Low-density, high-temperature conditions of Scenario B/C favor ECCD
 
-  시나리오별 필요 ECH 파워:
+  Required ECH power per scenario:
     ┌──────────────────────────────────────────────────────┐
     │ Scenario  I_eccd   eta_CD   n_e20  R0    P_eccd     │
     ├──────────────────────────────────────────────────────┤
-    │ A         0.15 MA  0.030    0.5    1.8   4.5 MW → 4MW│
-    │ B         0.10 MA  0.040    0.4    1.8   1.8 MW → 3MW│
-    │ C         0.06 MA  0.050    0.35   1.8   0.76 MW→ 2MW│
+    │ A         0.15 MA  0.030    0.5    1.8   4.5 MW -> 4MW│
+    │ B         0.10 MA  0.040    0.4    1.8   1.8 MW -> 3MW│
+    │ C         0.06 MA  0.050    0.35   1.8   0.76 MW-> 2MW│
     └──────────────────────────────────────────────────────┘
 
-    주: 실제 P는 NTM 안정화 등 부가 목적으로 추가 마진 필요
+    Note: actual P requires extra margin for NTM stabilization and auxiliary purposes
 ```
 
-### 3.4 n=6 ECCD 스코어카드
+### 3.4 n=6 ECCD Scorecard
 
 ```
-  ECCD eta_CD 범위: 0.02-0.06
+  ECCD eta_CD range: 0.02-0.06
     0.02 = phi/sigma^2 ? (FORCED)
-    → ECCD 효율 자체에 강한 n=6 연결 없음
+    -> No strong n=6 connection intrinsic to ECCD efficiency
 
-  Gyrotron 배치:
-    Scenario A: 4기 = tau(6)     → q=1, q=3/2, q=2, off-axis ✅ EXACT
-    Scenario B: 3기 = n/phi(6)   → q=3/2, q=2, off-axis      ✅ EXACT
-    Scenario C: 2기 = phi(6)     → q=2, off-axis              ✅ EXACT
+  Gyrotron allocation:
+    Scenario A: 4 units = tau(6)     -> q=1, q=3/2, q=2, off-axis [OK] EXACT
+    Scenario B: 3 units = n/phi(6)   -> q=3/2, q=2, off-axis      [OK] EXACT
+    Scenario C: 2 units = phi(6)     -> q=2, off-axis              [OK] EXACT
 
-  170 GHz: 공명 위치 rho ~ 0.5 = 1/phi                       CLOSE
-  주파수 비: 170/98 ~ 1.73 ~ sqrt(n/phi) = sqrt(3)           CLOSE
+  170 GHz: resonance location rho ~ 0.5 = 1/phi              CLOSE
+  Frequency ratio: 170/98 ~ 1.73 ~ sqrt(n/phi) = sqrt(3)     CLOSE
 ```
 
 ---
 
-## 4. 부트스트랩 전류 극대화
+## 4. Bootstrap Current Maximization
 
-### 4.1 Bootstrap 전류 물리
+### 4.1 Bootstrap Current Physics
 
 ```
-  Bootstrap 전류 기원:
-    Trapped 입자의 바나나 궤도 → 밀도/온도 구배에 의한 순 전류
+  Bootstrap current origin:
+    Banana orbits of trapped particles -> net current from density/temperature gradients
 
     j_bs = -c_1 x (dp/dr) / B_theta
          = -c_1 x (n dT/dr + T dn/dr) / B_theta
 
-  Sauter 공식 (neoclassical):
+  Sauter formula (neoclassical):
     <j_bs . B> / <B> = Sigma_k [ L_k x (1/n_k dn_k/dr + alpha_k/T_k dT_k/dr) ]
 
-    여기서 L_k는 trapped fraction, 충돌도(nu_*) 의존 계수
+    Here L_k is the trapped-fraction- and collisionality(nu_*)-dependent coefficient
 
-  핵심 의존성:
-    f_bs ∝ sqrt(epsilon) x beta_p x C(profile, collisionality)
+  Key dependencies:
+    f_bs proportional to sqrt(epsilon) x beta_p x C(profile, collisionality)
 
-    극대화 조건:
-      1. 높은 epsilon → KSTAR 고정 (epsilon = 0.278)
-      2. 높은 beta_p → 저전류 or 고압력
-      3. 높은 C → peaked profile + 저충돌
+    Maximization conditions:
+      1. High epsilon -> fixed for KSTAR (epsilon = 0.278)
+      2. High beta_p -> low current or high pressure
+      3. High C -> peaked profile + low collisionality
 ```
 
-### 4.2 압력 프로파일 피킹 (ITB 형성)
+### 4.2 Pressure Profile Peaking (ITB Formation)
 
 ```
-  ITB (Internal Transport Barrier) 형성 조건:
+  ITB (Internal Transport Barrier) formation condition:
     omega_ExB > gamma_ITG (E x B shearing rate > ITG growth rate)
 
-  E x B shear 생성 메커니즘:
-    1. NBI torque → 토로이달 회전 → radial E_r
-    2. 역전단 q-profile → q_min 근처에서 자연 shear 증폭
-    3. ECCD q-profile 제어 → 역전단 형성/유지
+  E x B shear generation mechanisms:
+    1. NBI torque -> toroidal rotation -> radial E_r
+    2. Reversed-shear q-profile -> natural shear amplification near q_min
+    3. ECCD q-profile control -> reversed-shear formation/maintenance
 
-  ITB 형성 전략 (KSTAR):
-    Phase 1: NBI co-injection → 토로이달 회전 생성 (V_tor ~ 100 km/s)
-    Phase 2: ECCD off-axis → q_min 상승, 역전단 형성
-    Phase 3: 자기장 확산 시간 (~수 초) 후 ITB 자연 형성
-    Phase 4: 피드백 제어로 ITB 위치/강도 유지
+  ITB formation strategy (KSTAR):
+    Phase 1: NBI co-injection -> toroidal rotation generation (V_tor ~ 100 km/s)
+    Phase 2: ECCD off-axis -> q_min rise, reversed-shear formation
+    Phase 3: After magnetic diffusion time (~seconds), spontaneous ITB formation
+    Phase 4: Feedback control maintains ITB location/strength
 
-  압력 피킹 계수:
+  Pressure peaking factor:
     p(0) / <p>:
-      H-mode 표준: ~2.0-2.5
-      ITB 약한: ~3.0-4.0
-      ITB 강한: ~4.0-6.0 = n(6) 또는 그 이상
+      H-mode standard: ~2.0-2.5
+      Weak ITB: ~3.0-4.0
+      Strong ITB: ~4.0-6.0 = n(6) or greater
 
-  프로파일 피킹이 f_bs에 미치는 효과:
-    피킹 2.5 → 3.5: f_bs +30% 상대 증가
-    피킹 3.5 → 5.0: f_bs +50% 상대 증가
-    → ITB 형성이 f_bs 극대화의 핵심
+  Effect of profile peaking on f_bs:
+    Peaking 2.5 -> 3.5: f_bs +30% relative increase
+    Peaking 3.5 -> 5.0: f_bs +50% relative increase
+    -> ITB formation is the core of f_bs maximization
 ```
 
-### 4.3 충돌도 감소
+### 4.3 Collisionality Reduction
 
 ```
   Collisionality (nu_*):
     nu_* = nu_ei x q R / (v_th epsilon^1.5)
-         ∝ n_e / T_e^2
+         proportional to n_e / T_e^2
 
-  저충돌도 → trapped 입자 비율 증가 → bootstrap 증가
+  Low collisionality -> higher trapped-particle fraction -> larger bootstrap
 
-  KSTAR 조건:
-    현재: nu_* ~ 0.1-1.0 (banana-plateau 경계)
-    목표: nu_* < 0.1 (깊은 banana regime)
-    방법: 밀도 감소 + 온도 증가
+  KSTAR conditions:
+    Current: nu_* ~ 0.1-1.0 (banana-plateau boundary)
+    Target: nu_* < 0.1 (deep banana regime)
+    Method: lower density + higher temperature
 
-  시나리오별 충돌도:
-    A: n_e=5e19, T_e=10keV → nu_* ~ 0.5  (banana-plateau)
-    B: n_e=4e19, T_e=10keV → nu_* ~ 0.3  (banana)
-    C: n_e=3.5e19, T_e=12keV → nu_* ~ 0.1  (deep banana) ✅
+  Collisionality per scenario:
+    A: n_e=5e19, T_e=10keV -> nu_* ~ 0.5  (banana-plateau)
+    B: n_e=4e19, T_e=10keV -> nu_* ~ 0.3  (banana)
+    C: n_e=3.5e19, T_e=12keV -> nu_* ~ 0.1  (deep banana) [OK]
 
-    → Scenario C가 bootstrap에 가장 유리
+    -> Scenario C most favorable for bootstrap
 ```
 
-### 4.4 Safety Factor 프로파일 최적화
+### 4.4 Safety Factor Profile Optimization
 
 ```
-  q-profile이 f_bs에 미치는 영향:
+  Impact of q-profile on f_bs:
 
   Monotonic q (Scenario A):
-    j_total 중심 집중 → bootstrap이 ohmic을 대체하는 구조
-    f_bs 상한: ~40-45%
+    j_total centrally concentrated -> bootstrap substitutes for ohmic structure
+    f_bs upper bound: ~40-45%
 
   Weak shear (Scenario B):
-    j_total 약간 off-axis → bootstrap 비중 증가
-    q_min ~ 1.5 → sawtooth-free
-    f_bs 상한: ~50-60%
+    j_total slightly off-axis -> bootstrap share rises
+    q_min ~ 1.5 -> sawtooth-free
+    f_bs upper bound: ~50-60%
 
   Reversed shear (Scenario C):
-    j_total 대부분 off-axis (ITB 위치)
-    q_min > 2 → 중심 전류 최소
-    bootstrap이 전류의 대부분 담당
-    f_bs 상한: ~65-80%
+    j_total mostly off-axis (ITB location)
+    q_min > 2 -> central current minimized
+    Bootstrap carries most of the current
+    f_bs upper bound: ~65-80%
 
-  q-profile 제어 도구:
-    ECCD: rho 0.3-0.7에 국소 전류 주입
-    NBI: 넓은 영역에 전류 분포
-    CS flux 잔여: 초기 ramp-up 시 q-profile 형성
-    자기장 확산 시간: tau_R ~ mu_0 sigma a^2 ~ 수 초
-    → 실시간 ECCD 조정으로 q-profile 유지 가능
+  q-profile control tools:
+    ECCD: local current injection at rho 0.3-0.7
+    NBI: current distribution over wide area
+    CS flux residual: q-profile shaping during early ramp-up
+    Magnetic diffusion time: tau_R ~ mu_0 sigma a^2 ~ seconds
+    -> Real-time ECCD adjustment can maintain q-profile
 ```
 
-### 4.5 실시간 프로파일 제어 전략
+### 4.5 Real-Time Profile Control Strategy
 
 ```
   ┌──────────────────────────────────────────────────────────────┐
   │            Real-Time Profile Control System                   │
   │                                                               │
-  │  측정 (10ms 주기):                                            │
-  │    Thomson scattering → n_e(r), T_e(r)                        │
-  │    CXRS → T_i(r), V_tor(r)                                   │
-  │    MSE (Motional Stark Effect) → q(r)                         │
-  │    ECE → T_e(r) 고속                                          │
+  │  Measurement (10ms cycle):                                    │
+  │    Thomson scattering -> n_e(r), T_e(r)                       │
+  │    CXRS -> T_i(r), V_tor(r)                                  │
+  │    MSE (Motional Stark Effect) -> q(r)                        │
+  │    ECE -> T_e(r) high-speed                                   │
   │                                                               │
-  │  제어 알고리즘:                                                │
-  │    입력: [n_e(r), T_e(r), T_i(r), q(r), V_tor(r)]            │
-  │    출력: [P_NBI, P_ECH(1..4), gas_puff, N2_seed]              │
+  │  Control algorithm:                                            │
+  │    Inputs:  [n_e(r), T_e(r), T_i(r), q(r), V_tor(r)]         │
+  │    Outputs: [P_NBI, P_ECH(1..4), gas_puff, N2_seed]           │
   │                                                               │
-  │    목표 함수:                                                  │
-  │      max f_bs subject to:                                      │
-  │        beta_N < beta_N_limit (MHD)                             │
-  │        q_min > q_min_target (NTM 회피)                         │
-  │        n_e < n_GW (Greenwald 한계)                             │
-  │        Z_eff < 1.8 (불순물 한계)                               │
+  │    Objective:                                                 │
+  │      max f_bs subject to:                                     │
+  │        beta_N < beta_N_limit (MHD)                            │
+  │        q_min > q_min_target (NTM avoidance)                   │
+  │        n_e < n_GW (Greenwald limit)                           │
+  │        Z_eff < 1.8 (impurity limit)                           │
   │                                                               │
-  │    제어 루프:                                                  │
-  │      f_bs < target → ECH off-axis 증가 (q-profile 조정)       │
-  │      beta_N > limit → NBI 감소 or gas puff 증가               │
-  │      q_min < target → ECH on-axis 감소                         │
+  │    Control loops:                                             │
+  │      f_bs < target -> ECH off-axis increase (q-profile tune) │
+  │      beta_N > limit -> reduce NBI or increase gas puff        │
+  │      q_min < target -> decrease ECH on-axis                   │
   └──────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 5. 피드백 제어 시스템
+## 5. Feedback Control System
 
-### 5.1 6 제어 루프 = n(6)
+### 5.1 6 Control Loops = n(6)
 
 ```
-  정상 상태 운전을 위한 6개 독립 피드백 루프:
+  6 independent feedback loops for steady-state operation:
 
   ┌──────────────────────────────────────────────────────────────────┐
-  │ Loop 1: 밀도 제어 (Density Control)                              │
-  │   측정: interferometry (1ms), Thomson (10ms)                     │
-  │   액추에이터: gas puffing valve, pellet injector, cryopump       │
-  │   목표: n_e/n_GW = 0.6-0.8 (시나리오 의존)                      │
-  │   대역폭: ~10 Hz                                                │
+  │ Loop 1: Density Control                                          │
+  │   Sensor: interferometry (1ms), Thomson (10ms)                   │
+  │   Actuator: gas puffing valve, pellet injector, cryopump         │
+  │   Target: n_e/n_GW = 0.6-0.8 (scenario-dependent)                │
+  │   Bandwidth: ~10 Hz                                              │
   ├──────────────────────────────────────────────────────────────────┤
-  │ Loop 2: 온도/에너지 제어 (Temperature Control)                   │
-  │   측정: ECE (1ms), Thomson (10ms), CXRS (50ms)                  │
-  │   액추에이터: NBI power, ECH power                               │
-  │   목표: T_i = 10-15 keV, H_98 > 1.3                             │
-  │   대역폭: ~1 Hz (가열 시스템 응답)                               │
+  │ Loop 2: Temperature/Energy Control                               │
+  │   Sensor: ECE (1ms), Thomson (10ms), CXRS (50ms)                 │
+  │   Actuator: NBI power, ECH power                                 │
+  │   Target: T_i = 10-15 keV, H_98 > 1.3                            │
+  │   Bandwidth: ~1 Hz (heating-system response)                      │
   ├──────────────────────────────────────────────────────────────────┤
-  │ Loop 3: 회전 제어 (Rotation Control)                             │
-  │   측정: CXRS (50ms)                                              │
-  │   액추에이터: NBI 방향 (co/counter/balanced), ECH torque         │
-  │   목표: V_tor > 50 km/s (RWM 안정화)                            │
-  │   대역폭: ~0.5 Hz                                               │
+  │ Loop 3: Rotation Control                                         │
+  │   Sensor: CXRS (50ms)                                            │
+  │   Actuator: NBI direction (co/counter/balanced), ECH torque      │
+  │   Target: V_tor > 50 km/s (RWM stabilization)                    │
+  │   Bandwidth: ~0.5 Hz                                             │
   ├──────────────────────────────────────────────────────────────────┤
-  │ Loop 4: 형상 제어 (Shape Control)                                │
-  │   측정: 자기 센서 (100us), EFIT 재구성 (1ms)                     │
-  │   액추에이터: PF coil 전류 (16개)                                │
-  │   목표: kappa=2.0, delta=0.5-0.8, X-point 위치                  │
-  │   대역폭: ~100 Hz (가장 빠름)                                   │
+  │ Loop 4: Shape Control                                            │
+  │   Sensor: magnetic sensors (100us), EFIT reconstruction (1ms)    │
+  │   Actuator: PF coil currents (16)                                │
+  │   Target: kappa=2.0, delta=0.5-0.8, X-point location             │
+  │   Bandwidth: ~100 Hz (fastest)                                   │
   ├──────────────────────────────────────────────────────────────────┤
-  │ Loop 5: 위치 제어 (Position Control)                             │
-  │   측정: 자기 센서 + 실시간 평형 재구성                           │
-  │   액추에이터: PF coil (수직 안정성), CS 잔여 flux               │
-  │   목표: 수직 위치 |Z| < 1cm, 수평 위치 |R-R0| < 0.5cm          │
-  │   대역폭: ~1 kHz (수직 불안정성 응답)                            │
+  │ Loop 5: Position Control                                         │
+  │   Sensor: magnetic sensors + real-time equilibrium reconstruction│
+  │   Actuator: PF coil (vertical stability), CS residual flux       │
+  │   Target: vertical |Z| < 1cm, horizontal |R-R0| < 0.5cm          │
+  │   Bandwidth: ~1 kHz (vertical-instability response)              │
   ├──────────────────────────────────────────────────────────────────┤
-  │ Loop 6: 전류 프로파일 제어 (Current Profile Control)             │
-  │   측정: MSE (Motional Stark Effect, 10ms), 실시간 q(r)          │
-  │   액추에이터: ECCD steering (거울 각도), NBI 에너지/방향         │
-  │   목표: q_min > target, q-profile shape                          │
-  │   대역폭: ~0.1 Hz (자기장 확산 시간 제약)                       │
+  │ Loop 6: Current Profile Control                                  │
+  │   Sensor: MSE (Motional Stark Effect, 10ms), real-time q(r)      │
+  │   Actuator: ECCD steering (mirror angle), NBI energy/direction   │
+  │   Target: q_min > target, q-profile shape                         │
+  │   Bandwidth: ~0.1 Hz (magnetic-diffusion-time constrained)       │
   └──────────────────────────────────────────────────────────────────┘
 
-  6 제어 루프 = n = 6  ✅ EXACT
-  (물리적으로 독립: 각 루프가 서로 다른 물리량을 제어)
+  6 control loops = n = 6  [OK] EXACT
+  (physically independent: each loop controls a different physical quantity)
 ```
 
-### 5.2 실시간 Kinetic 평형 재구성
+### 5.2 Real-Time Kinetic Equilibrium Reconstruction
 
 ```
   EFIT-K (Kinetic EFIT):
-    입력: 자기 센서 + Thomson + ECE + MSE + CXRS
-    출력: psi(R,Z), q(r), p(r), j(r) — 전체 평형
-    주기: 1-10 ms (GPU 가속)
-    정밀도: delta_q/q < 5%, delta_p/p < 10%
+    Inputs: magnetic sensors + Thomson + ECE + MSE + CXRS
+    Outputs: psi(R,Z), q(r), p(r), j(r) — full equilibrium
+    Cycle: 1-10 ms (GPU accelerated)
+    Precision: delta_q/q < 5%, delta_p/p < 10%
 
-  KSTAR 현재:
-    실시간 EFIT: ~10 ms (자기 센서만)
-    Kinetic EFIT: off-line (실험 후 분석)
+  KSTAR current status:
+    Real-time EFIT: ~10 ms (magnetic sensors only)
+    Kinetic EFIT: off-line (post-experiment analysis)
 
-  업그레이드 필요:
-    실시간 kinetic EFIT (GPU 기반)
-    MSE 실시간 연동
-    → q(r) 실시간 제어의 전제 조건
+  Upgrade required:
+    Real-time kinetic EFIT (GPU-based)
+    MSE real-time integration
+    -> prerequisite for real-time q(r) control
 ```
 
-### 5.3 NTM 억제 (ECCD 국소 전류 주입)
+### 5.3 NTM Suppression (ECCD Local Current Injection)
 
 ```
   NTM (Neoclassical Tearing Mode):
-    발생 위치: rational q surface (q = m/n)
-    KSTAR 주요 NTM: q=3/2, q=2
-    효과: 자기 섬(island) 형성 → 가둠 성능 저하 → disruption
+    Occurrence location: rational q surface (q = m/n)
+    Main NTMs in KSTAR: q=3/2, q=2
+    Effect: magnetic-island formation -> confinement degradation -> disruption
 
-  ECCD NTM 안정화 원리:
-    NTM island 중심에 ECCD 전류 주입
-    → 결핍 전류(missing current) 보충
-    → island 축소/소멸
+  ECCD NTM stabilization principle:
+    ECCD current injection at NTM island center
+    -> supplies missing current
+    -> island shrinks/vanishes
 
-    필요 조건:
-      j_ECCD > j_bs (island 내)
-      ECCD 위치 정밀도: |rho - rho_q| < w/2 (island 반폭)
-      → delta_rho < 0.02-0.05
+    Required conditions:
+      j_ECCD > j_bs (within island)
+      ECCD position precision: |rho - rho_q| < w/2 (island half-width)
+      -> delta_rho < 0.02-0.05
 
-  ECCD NTM 안정화 전략:
+  ECCD NTM stabilization strategy:
     ┌───────────────────────────────────────────────────┐
-    │  탐지 (10ms):                                      │
-    │    ECE 신호에서 island 회전 주기 검출               │
-    │    주파수 ~1-10 kHz (island rotation)               │
+    │  Detection (10ms):                                 │
+    │    Detect island rotation period from ECE signal   │
+    │    Frequency ~1-10 kHz (island rotation)            │
     │                                                     │
-    │  위치 특정 (50ms):                                  │
-    │    MSE q-profile → q=m/n surface 위치 결정          │
-    │    ECE 온도 프로파일 → island 위치/폭 측정          │
+    │  Localization (50ms):                               │
+    │    MSE q-profile -> q=m/n surface location          │
+    │    ECE temperature profile -> island location/width │
     │                                                     │
-    │  ECCD 조준 (100ms):                                 │
-    │    Mirror steering → 빔을 island 중심으로 조향      │
-    │    Power modulation: O-point에만 파워 집중          │
-    │    (island rotation과 동기화된 펄스 변조)           │
+    │  ECCD aiming (100ms):                               │
+    │    Mirror steering -> beam toward island center     │
+    │    Power modulation: concentrate power on O-point   │
+    │    (pulse modulation synchronized to island rotation)│
     │                                                     │
-    │  안정화 확인:                                       │
-    │    island width 감소 모니터링                       │
-    │    w < w_crit 시 ECCD 유지 모드로 전환              │
+    │  Stabilization confirmation:                        │
+    │    Monitor island width reduction                   │
+    │    When w < w_crit, switch to ECCD-maintain mode    │
     └───────────────────────────────────────────────────┘
 
-  Gyrotron 할당 (Scenario A, 4기):
-    #1: q=1 (sawtooth 제어)       — 상시
-    #2: q=3/2 (NTM 안정화)        — 대기/활성
-    #3: q=2 (NTM 안정화)          — 대기/활성
-    #4: off-axis (전류 구동)       — 상시
+  Gyrotron allocation (Scenario A, 4 units):
+    #1: q=1 (sawtooth control)     — always on
+    #2: q=3/2 (NTM stabilization)  — standby/active
+    #3: q=2 (NTM stabilization)    — standby/active
+    #4: off-axis (current drive)   — always on
 
-    4 rational surfaces = tau(6) = 4  ✅ EXACT
+    4 rational surfaces = tau(6) = 4  [OK] EXACT
 ```
 
-### 5.4 ELM 제어
+### 5.4 ELM Control
 
 ```
-  ELM (Edge Localized Mode) 제어 전략:
+  ELM (Edge Localized Mode) control strategy:
 
   1. RMP (Resonant Magnetic Perturbation):
-     KSTAR 3D coil: IVC 4세트 = tau(6)
-     모드 조합: n=1 + n=2 (주력)
-     효과: ELM 억제 (ELM-free) 또는 ELM 완화
-     KSTAR 실적: ELM suppression 다수 시연 ✅
+     KSTAR 3D coil: IVC 4 sets = tau(6)
+     Mode combinations: n=1 + n=2 (primary)
+     Effect: ELM suppression (ELM-free) or ELM mitigation
+     KSTAR track record: many ELM-suppression demonstrations [OK]
 
   2. Pellet pacing:
-     소형 pellet 고빈도 주입 → ELM 트리거
-     효과: 대형 ELM → 소형 고빈도 ELM 전환
-     주파수: 20-50 Hz (ELM 자연 주파수 대비 2-5x)
+     High-frequency injection of small pellets -> ELM trigger
+     Effect: large ELM -> small, high-frequency ELM transition
+     Frequency: 20-50 Hz (2-5x natural ELM frequency)
 
-  3. Detachment와의 시너지:
-     완전 detachment 시 ELM 열충격이 디버터에 도달하지 않음
-     ELM 에너지가 SOL 복사로 소산
-     → Detachment + RMP 결합이 최적
+  3. Synergy with detachment:
+     Under full detachment, ELM heat shock does not reach the divertor
+     ELM energy dissipated via SOL radiation
+     -> Detachment + RMP combination is optimal
 
-  ELM 제어 모드 선택:
-    Scenario A: RMP n=2 (ELM 완화) + detachment
-    Scenario B: RMP n=1 (ELM 억제) + QH-mode 시도
-    Scenario C: ELM-free (역전단에서 자연적 ELM-free 가능)
+  ELM control mode selection:
+    Scenario A: RMP n=2 (ELM mitigation) + detachment
+    Scenario B: RMP n=1 (ELM suppression) + QH-mode attempt
+    Scenario C: ELM-free (natural ELM-free achievable in reversed shear)
 ```
 
 ---
 
-## 6. 열 배기 전략 (Divertor)
+## 6. Heat Exhaust Strategy (Divertor)
 
-### 6.1 열 부하 예산
+### 6.1 Heat Load Budget
 
 ```
-  Power balance (정상 상태):
+  Power balance (steady-state):
     P_input = P_NBI + P_ECH = 8 + P_ech MW
     P_rad_core = f_rad_core x P_input (~10-20%)
-    P_rad_edge = f_rad_edge x P_input (seeding 의존)
+    P_rad_edge = f_rad_edge x P_input (seeding-dependent)
     P_SOL = P_input - P_rad_total
 
-  시나리오별 열 예산:
+  Heat budget per scenario:
     ┌──────────────────────────────────────────────────────┐
     │              Scen A    Scen B    Scen C              │
     │ P_input      12 MW    11 MW     10 MW               │
@@ -963,499 +963,501 @@
     │ q_peak(D)    2 MW/m2  1.8 MW/m2 1.5 MW/m2           │
     └──────────────────────────────────────────────────────┘
 
-    Detachment 시: q_peak < 3 MW/m^2 (모든 시나리오에서 충분)
-    W monoblock 허용: < 5 MW/m^2 → 마진 충분
+    Under detachment: q_peak < 3 MW/m^2 (sufficient in all scenarios)
+    W monoblock tolerance: < 5 MW/m^2 -> adequate margin
 ```
 
-### 6.2 Detachment 제어
+### 6.2 Detachment Control
 
 ```
-  Detachment 물리:
-    Attached → Partially detached → Fully detached
+  Detachment physics:
+    Attached -> Partially detached -> Fully detached
 
-    전이 조건: n_e_div > n_e_det ~ 2-5 x 10^20 m^-3
-    제어 변수: 불순물 seeding rate
+    Transition condition: n_e_div > n_e_det ~ 2-5 x 10^20 m^-3
+    Control variable: impurity seeding rate
 
-  Seeding 전략:
-    1차: N2 (질소)
-      장점: 적당한 복사 효율 (T ~ 5-20 eV)
-      KSTAR 실증: f_rad 0.4 → 0.7 달성 (2023-2024)
-      용도: 주력 seeding gas
+  Seeding strategy:
+    Primary: N2 (nitrogen)
+      Advantages: moderate radiation efficiency (T ~ 5-20 eV)
+      KSTAR demonstration: f_rad 0.4 -> 0.7 attained (2023-2024)
+      Use: primary seeding gas
 
-    2차: Ne (네온)
-      장점: 높은 T에서도 복사 (T ~ 20-100 eV)
-      용도: 보조, X-point 복사 유도
+    Secondary: Ne (neon)
+      Advantages: radiates at higher T (T ~ 20-100 eV)
+      Use: auxiliary, X-point radiation induction
 
-    제어 루프:
-      측정: 디버터 Langmuir probe, 볼로미터, 분광
-      목표: T_e_div < 5 eV (완전 detachment)
-      피드백: seeding valve flow rate 조정 (10ms 응답)
+    Control loop:
+      Sensors: divertor Langmuir probe, bolometer, spectroscopy
+      Target: T_e_div < 5 eV (full detachment)
+      Feedback: seeding valve flow-rate adjustment (10ms response)
 
-  Detachment 안정성:
-    KSTAR 크기에서 detachment 안정 영역 넓음
-    (ITER 시뮬레이션 기반: 안정 운전 윈도우 존재)
-    핵심: 코어 불순물 유입 최소화 → puff/pump balance
+  Detachment stability:
+    At KSTAR scale, detachment stable region is wide
+    (ITER-simulation-based: stable operating window exists)
+    Key: minimize core impurity influx -> puff/pump balance
 ```
 
 ### 6.3 Strike Point Sweeping
 
 ```
-  Sweep 파라미터:
-    진폭: +-3 cm (ASDEX-Upgrade 기준)
-    주파수: 2-4 Hz
-    파형: 삼각파 (균등 노출 시간)
+  Sweep parameters:
+    Amplitude: +-3 cm (ASDEX-Upgrade baseline)
+    Frequency: 2-4 Hz
+    Waveform: triangle (uniform exposure time)
 
-  구현:
-    PF coil 전류의 저주파 사인파 변조
-    기존 PCS(Plasma Control System)에 기능 추가
-    소프트웨어 업그레이드 수준 → 즉시 구현 가능
+  Implementation:
+    Low-frequency sinusoidal modulation of PF coil currents
+    Add feature to existing PCS (Plasma Control System)
+    Software upgrade level -> immediately implementable
 
-  열부하 감소 효과:
-    정적 타겟 영역: A_target = 2*pi*R_sp x lambda_q x f_exp
-    Sweep 후 실효 영역: A_sweep = A_target x (1 + 2*delta_sweep/lambda_q)
-    감소 인자: 1 + 2*0.03/0.004 = 16 (이상적)
-    실측 감소: 1.5-2x (비균등 분포, 열확산 효과)
+  Heat-load reduction effect:
+    Static target area: A_target = 2*pi*R_sp x lambda_q x f_exp
+    Effective area under sweep: A_sweep = A_target x (1 + 2*delta_sweep/lambda_q)
+    Reduction factor: 1 + 2*0.03/0.004 = 16 (ideal)
+    Measured reduction: 1.5-2x (non-uniform distribution, thermal-diffusion effects)
 ```
 
-### 6.4 Advanced Divertor 개념
+### 6.4 Advanced Divertor Concepts
 
 ```
   Snowflake divertor:
-    PF coil 전류 조정으로 2차 X-point 생성
-    6 legs → 열부하 분산 = n(6)
-    TCV 실증: 2-3x 감소
+    Secondary X-point creation via PF coil current adjustment
+    6 legs -> heat-load distribution = n(6)
+    TCV demonstration: 2-3x reduction
 
-    KSTAR 적용 시:
-      PF coil 재구성 또는 추가 코일 필요
-      2차 null의 안정 제어: PF 정밀도 요구 높음
-      구현 시기: Phase C (2029+)
+    Applied to KSTAR:
+      PF coil reconfiguration or additional coils needed
+      Stable control of secondary null: high PF precision required
+      Implementation timing: Phase C (2029+)
 
-  X-point 타겟 (XPT):
-    X-point 자체를 디버터 타겟으로 활용
-    자기장선이 X-point 근처에서 확장 → 넓은 wetted area
-    MAST-U에서 시연 중
+  X-Point Target (XPT):
+    Use X-point itself as divertor target
+    Field lines expand near X-point -> wide wetted area
+    Under demonstration at MAST-U
 
-  장기 계획:
-    2025-2027: Detachment + sweep (즉시 가능)
-    2028-2029: XPT 기하학 탐색
-    2030+: Snowflake 또는 Super-X 검토
+  Long-term plan:
+    2025-2027: Detachment + sweep (immediately feasible)
+    2028-2029: XPT geometry exploration
+    2030+: Review of Snowflake or Super-X
 ```
 
 ---
 
-## 7. 타임라인 — 30초 → 300초 로드맵
+## 7. Timeline — 30s -> 300s Roadmap
 
-### 7.1 Phase 다이어그램
+### 7.1 Phase Diagram
 
 ```
   ┌─────────────────────────────────────────────────────────────────────────┐
-  │                  KSTAR 300초 정상 상태 로드맵                           │
+  │                KSTAR 300s steady-state roadmap                          │
   │                                                                         │
-  │  시간(초) 10   30   100   300   600   1000  3000  10000  ∞            │
-  │  ─────── ──── ──── ───── ───── ───── ───── ───── ────── ──           │
+  │  Time(s) 10   30   100   300   600   1000  3000  10000  infinity       │
+  │  ─────── ──── ──── ───── ───── ───── ───── ───── ────── ──            │
   │                                                                         │
   │  Phase 1 ████                                                           │
-  │  H-mode  │현재│                                                         │
-  │  30초    └────┘                                                         │
+  │  H-mode  │now │                                                         │
+  │  30s     └────┘                                                         │
   │                                                                         │
   │  Phase 2      █████████                                                 │
-  │  ECCD 보조          │ECCD 2MW + detachment│                             │
-  │  60-100초           └────────────────────┘                              │
+  │  ECCD aux          │ECCD 2MW + detachment│                              │
+  │  60-100s           └────────────────────┘                               │
   │                                                                         │
   │  Phase 3                    ██████████████                               │
-  │  ITB 시연                         │ITB + ECH 3-4MW│                     │
-  │  120-300초                        └───────────────┘                     │
+  │  ITB demo                        │ITB + ECH 3-4MW│                      │
+  │  120-300s                        └───────────────┘                      │
   │                                                                         │
   │  Phase 4                                  █████████████████             │
-  │  정상 상태                                      │완전 비유도│            │
-  │  300초+                                         └──────────┘            │
+  │  Steady state                                  │fully non-inductive│    │
+  │  300s+                                         └──────────────────┘     │
   │                                                                         │
-  │  ─── 핵심 이정표 ────────────────────────────────────────────          │
+  │  ─── Key milestones ────────────────────────────────────────────       │
   │  ★ f_bs=40% (Phase 2)                                                  │
-  │  ★ f_bs=50%=1/phi (Phase 3) ← Egyptian 전환점                         │
-  │  ★ f_ni=100% (Phase 4) ← 완전 정상 상태                               │
+  │  ★ f_bs=50%=1/phi (Phase 3) <- Egyptian transition point              │
+  │  ★ f_ni=100% (Phase 4) <- fully steady-state target                   │
   └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 7.2 Phase 1 (현재 → 2026): 30초 H-mode 최적화
+### 7.2 Phase 1 (present -> 2026): 30s H-mode Optimization
 
 ```
-  현황:
-    KSTAR 300초 @ 1억도 달성 (2024)
-    BUT: 이것은 L-mode 또는 약한 H-mode
-    고성능 H-mode는 ~30초
+  Status:
+    KSTAR 300s @ 100M K attained (2024)
+    BUT: this is L-mode or weak H-mode
+    High-performance H-mode is ~30s
 
-  목표:
-    고성능 H-mode 60초 달성
-    f_bs: 30% → 35%
-    Detachment 최적화 (f_rad > 0.85)
+  Targets:
+    High-performance H-mode 60s target
+    f_bs: 30% -> 35%
+    Detachment optimization (f_rad > 0.85)
 
-  작업:
-    1. N2 seeding 최적화 → 안정 detachment 확보
-    2. RMP ELM 제어 장시간 안정성 확인
-    3. 실시간 밀도/온도 피드백 고도화
-    4. ECH 2 MW 업그레이드 준비 (gyrotron 조달)
+  Work items:
+    1. N2 seeding optimization -> secure stable detachment
+    2. Verify long-term stability of RMP ELM control
+    3. Advance real-time density/temperature feedback
+    4. Prepare ECH 2 MW upgrade (gyrotron procurement)
 
-  마일스톤:
-    2025 Q2: Detachment + H-mode 60초
-    2025 Q4: f_bs = 35%, ECCD 시험
-    2026 Q2: ECH 2 MW 설치 + 100초 시험
+  Milestones:
+    2025 Q2: Detachment + H-mode 60s
+    2025 Q4: f_bs = 35%, ECCD test
+    2026 Q2: ECH 2 MW installation + 100s test
 
-  n=6 예측: 60초 = sigma x sopfr = 12 x 5
+  n=6 projection: 60s = sigma x sopfr = 12 x 5
 ```
 
-### 7.3 Phase 2 (2026-2027): ECCD 보조 100초+
+### 7.3 Phase 2 (2026-2027): ECCD-Assisted 100s+
 
 ```
-  목표:
-    ECCD 2 MW로 장벽 4 부분 해결
-    f_ni: 50% → 65%
-    tau_pulse: 100 → 300초 H-mode
+  Targets:
+    Partial Barrier 4 resolution with ECCD 2 MW
+    f_ni: 50% -> 65%
+    tau_pulse: 100 -> 300s H-mode
 
-  작업:
-    1. ECH 2 MW 설치 (170 GHz gyrotron 2기)
-    2. 실시간 q-profile 제어 구현 (MSE + ECCD)
-    3. NTM 자동 안정화 시스템 시운전
-    4. Scenario A 시험 운전 시작
-    5. 저전류 (0.4 MA) 시험 → beta_p 증가 확인
+  Work items:
+    1. ECH 2 MW installation (two 170 GHz gyrotrons)
+    2. Implement real-time q-profile control (MSE + ECCD)
+    3. Commissioning automated NTM stabilization system
+    4. Begin Scenario A test operation
+    5. Low-current (0.4 MA) test -> confirm beta_p increase
 
-  마일스톤:
-    2026 Q3: ECH 2 MW + 실시간 q-profile 작동
-    2026 Q4: Scenario A 프로토타입 (f_ni~65%, 300초)
-    2027 Q2: NTM 자동 안정화 성공
-    2027 Q4: Scenario A 안정 운전 (f_ni~75%, 600초)
+  Milestones:
+    2026 Q3: ECH 2 MW + real-time q-profile operational
+    2026 Q4: Scenario A prototype (f_ni~65%, 300s)
+    2027 Q2: Automated NTM stabilization success
+    2027 Q4: Scenario A steady operation (f_ni~75%, 600s)
 ```
 
-### 7.4 Phase 3 (2027-2028): ITB 시연 + 준정상 상태
+### 7.4 Phase 3 (2027-2028): ITB Demonstration + Quasi-Steady State
 
 ```
-  목표:
-    ITB 형성 → f_bs = 50% 달성 (전환점!)
-    ECH 3-4 MW 확보
-    f_ni: 80% → 95%
-    tau_pulse: 1000초 → 3000초+
+  Targets:
+    ITB formation -> f_bs = 50% target attainment (transition point!)
+    ECH 3-4 MW secured
+    f_ni: 80% -> 95%
+    tau_pulse: 1000s -> 3000s+
 
-  작업:
-    1. ECH 3-4 MW 설치 (gyrotron 추가)
-    2. Reversed shear q-profile 시험
-    3. ITB 형성 + 유지 시연
-    4. Scenario B 안정 운전
-    5. 불순물 3종 제어 통합 운전
+  Work items:
+    1. ECH 3-4 MW installation (additional gyrotrons)
+    2. Reversed-shear q-profile tests
+    3. ITB formation + maintenance demonstration
+    4. Scenario B steady operation
+    5. Integrated 3-type impurity control operation
 
-  마일스톤:
-    2027 Q3: ECH 4 MW 설치
-    2028 Q1: ITB 형성 시연 (일시적)
-    2028 Q2: f_bs = 50% = 1/phi 달성 (전환점!)
-    2028 Q4: Scenario B 준정상 상태 (f_ni~95%, 3000초+)
+  Milestones:
+    2027 Q3: ECH 4 MW installation
+    2028 Q1: ITB formation demonstration (transient)
+    2028 Q2: f_bs = 50% = 1/phi attained (transition point!)
+    2028 Q4: Scenario B quasi-steady state (f_ni~95%, 3000s+)
 
-  이 Phase가 가장 중요: f_bs = 1/phi = 50% 달성은
-  "플라즈마가 자립하는" 최소 조건이자 Egyptian fraction의 첫 항
+  This phase is most important: attainment of f_bs = 1/phi = 50% is
+  the minimum condition for "self-sustaining plasma" and the first Egyptian fraction term
 ```
 
-### 7.5 Phase 4 (2029+): 완전 정상 상태
+### 7.5 Phase 4 (2029+): Fully Steady-State
 
 ```
-  목표:
-    완전 비유도 전류 구동 (f_ni = 100%)
-    무한 운전 시연 (> 10,000초)
-    K-DEMO 설계 데이터 납품
+  Targets:
+    Fully non-inductive current drive (f_ni = 100%)
+    Indefinite-operation demonstration (> 10,000s)
+    Deliver K-DEMO design data
 
-  작업:
-    1. Scenario C 시험 (reversed shear + 강한 ITB)
-    2. 완전 비유도 전류 구동 시연
-    3. 장시간 (>3시간) 안정 운전
-    4. K-DEMO CDR(Conceptual Design Review) 데이터 패키지 작성
-    5. Snowflake divertor 검토 (필요 시)
+  Work items:
+    1. Scenario C test (reversed shear + strong ITB)
+    2. Fully non-inductive current-drive demonstration
+    3. Long-duration (>3h) steady operation
+    4. Author K-DEMO CDR (Conceptual Design Review) data package
+    5. Review Snowflake divertor (if needed)
 
-  마일스톤:
-    2029 Q2: Scenario C 시험 (f_ni = 100%, 일시적)
-    2029 Q4: 10,000초 정상 상태 시연
-    2030: K-DEMO CDR 데이터 납품
+  Milestones:
+    2029 Q2: Scenario C test (f_ni = 100%, transient)
+    2029 Q4: 10,000s steady-state demonstration
+    2030: K-DEMO CDR data delivery
 
-  n=6 예측:
-    10,000초 = 10^4 = (sigma-phi)^tau = 10^4           CLOSE
-    → 다음 milestone: 36,000초 = 10시간 = sigma x sopfr x n x 100
+  n=6 projection:
+    10,000s = 10^4 = (sigma-phi)^tau = 10^4           CLOSE
+    -> next milestone: 36,000s = 10h = sigma x sopfr x n x 100
 ```
 
-### 7.6 로드맵 종합 테이블
+### 7.6 Roadmap Summary Table
 
-| Phase | 기간 | tau_pulse | f_ni | ECH | 핵심 성과 | n=6 |
-|-------|------|-----------|------|-----|-----------|-----|
-| 1 | 현재-2026 | 60초 | 50% | 1 MW | Detachment 안정화 | 60=sigma x sopfr |
-| 2 | 2026-2027 | 300-600초 | 65-75% | 2 MW | ECCD 보조 | 300=sigma x sopfr^2 |
-| 3 | 2027-2028 | 1000-3000초 | 80-95% | 3-4 MW | ITB + f_bs=50%=1/phi | 전환점 |
-| 4 | 2029+ | >10,000초 | 100% | 4-6 MW | 완전 정상 상태 | 1=Egyptian sum |
+| Phase | Period | tau_pulse | f_ni | ECH | Key achievement | n=6 |
+|-------|--------|-----------|------|-----|------------------|-----|
+| 1 | present-2026 | 60s | 50% | 1 MW | Detachment stabilization | 60=sigma x sopfr |
+| 2 | 2026-2027 | 300-600s | 65-75% | 2 MW | ECCD-assisted | 300=sigma x sopfr^2 |
+| 3 | 2027-2028 | 1000-3000s | 80-95% | 3-4 MW | ITB + f_bs=50%=1/phi | transition |
+| 4 | 2029+ | >10,000s | 100% | 4-6 MW | Fully steady-state | 1=Egyptian sum |
 
 ---
 
-## 8. n=6 스코어카드
+## 8. n=6 Scorecard
 
-### 8.1 핵심 파라미터 n=6 매핑
+### 8.1 Core Parameter n=6 Mapping
 
 ```
   ┌─────────────────────────────────────────────────────────────────┐
-  │                 KSTAR 300초 정상 상태 n=6 Score                  │
+  │                 KSTAR 300s steady-state n=6 Score                │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 카테고리       파라미터            값        n=6 표현    Grade  │
+  │ Category       Parameter          Value      n=6 expr     Grade │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 가열          NBI                 8 MW      sigma-tau   EXACT  │
-  │ 가열          ECH                 1 MW      mu          EXACT  │
-  │ 가열          ICH                 6 MW      n           EXACT  │
-  │ 가열          총합                15 MW     sigma+n/phi EXACT  │
-  │ 가열          NBI beam            3개       n/phi       EXACT  │
-  │ 가열          NBI energy          120 keV   sigma x 10  EXACT  │
+  │ Heating       NBI                 8 MW      sigma-tau   EXACT  │
+  │ Heating       ECH                 1 MW      mu          EXACT  │
+  │ Heating       ICH                 6 MW      n           EXACT  │
+  │ Heating       Total               15 MW     sigma+n/phi EXACT  │
+  │ Heating       NBI beams           3         n/phi       EXACT  │
+  │ Heating       NBI energy          120 keV   sigma x 10  EXACT  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 온도          T_i                 10 keV    sigma-phi   EXACT  │
-  │ 온도          최적 T_fus          14 keV    sigma+phi   EXACT  │
+  │ Temperature   T_i                 10 keV    sigma-phi   EXACT  │
+  │ Temperature   Optimal T_fus       14 keV    sigma+phi   EXACT  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 형상          minor radius        0.5 m     phi/tau     EXACT  │
-  │ 형상          elongation          2.0       phi         EXACT  │
-  │ 형상          aspect ratio        3.6       ~n/phi      CLOSE  │
+  │ Geometry      minor radius        0.5 m     phi/tau     EXACT  │
+  │ Geometry      elongation          2.0       phi         EXACT  │
+  │ Geometry      aspect ratio        3.6       ~n/phi      CLOSE  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 코일          CS                  8개       sigma-tau   EXACT  │
-  │ 코일          IVC                 4개       tau         EXACT  │
-  │ 코일          TF                  16개      -           FAIL   │
-  │ 코일          PF                  14개      -           FAIL   │
+  │ Coils         CS                  8         sigma-tau   EXACT  │
+  │ Coils         IVC                 4         tau         EXACT  │
+  │ Coils         TF                  16        -           FAIL   │
+  │ Coils         PF                  14        -           FAIL   │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 제어          피드백 루프          6개       n           EXACT  │
-  │ 제어          밀도 제어 방식       4가지     tau         EXACT  │
-  │ 제어          NTM 조준 surface    4개       tau         EXACT  │
+  │ Control       Feedback loops      6         n           EXACT  │
+  │ Control       Density-control modes 4       tau         EXACT  │
+  │ Control       NTM target surfaces 4         tau         EXACT  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 안정성        q_95                5         sopfr       EXACT  │
-  │ 안정성        beta_N (목표)       3.0       n/phi       EXACT  │
-  │ 안정성        ELM 3D coil 세트    4개       tau         EXACT  │
+  │ Stability     q_95                5         sopfr       EXACT  │
+  │ Stability     beta_N (target)     3.0       n/phi       EXACT  │
+  │ Stability     ELM 3D coil sets    4         tau         EXACT  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 전류구동      f_bs 임계점          50%      1/phi       EXACT  │
-  │ 전류구동      전류 원천             3종      n/phi       EXACT  │
-  │ 전류구동      Egyptian sum         1        1/2+1/3+1/6 WEAK   │
-  │ 전류구동      Gyrotron (Scen A)   4기       tau         EXACT  │
+  │ Current drive f_bs threshold      50%       1/phi       EXACT  │
+  │ Current drive Current sources     3 types   n/phi       EXACT  │
+  │ Current drive Egyptian sum        1         1/2+1/3+1/6 WEAK   │
+  │ Current drive Gyrotron (Scen A)   4 units   tau         EXACT  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 디버터        Snowflake legs      6개       n           EXACT  │
-  │ 디버터        열분산 3단계         3        n/phi       CLOSE  │
-  │ 디버터        Detachment 단계     3        n/phi       CLOSE  │
+  │ Divertor      Snowflake legs      6         n           EXACT  │
+  │ Divertor      Heat-dispersion 3-stage 3     n/phi       CLOSE  │
+  │ Divertor      Detachment stages   3         n/phi       CLOSE  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ 시간          300초               300      sigma*sopfr^2 WEAK  │
-  │ 시간          6-phase startup     6단계     n           CLOSE  │
-  │ 시간          4대 장벽             4        tau         CLOSE  │
+  │ Time          300s                300       sigma*sopfr^2 WEAK │
+  │ Time          6-phase startup     6 stages  n           CLOSE  │
+  │ Time          Four barriers       4         tau         CLOSE  │
   ├─────────────────────────────────────────────────────────────────┤
-  │ K-DEMO       A(목표)             3.0       n/phi       EXACT  │
-  │ K-DEMO       kappa               2.0       phi         EXACT  │
-  │ K-DEMO       f_bs                >50%      >1/phi      EXACT  │
+  │ K-DEMO        A(target)           3.0       n/phi       EXACT  │
+  │ K-DEMO        kappa               2.0       phi         EXACT  │
+  │ K-DEMO        f_bs                >50%      >1/phi      EXACT  │
   └─────────────────────────────────────────────────────────────────┘
 
-  총계:
-    EXACT:  22개
-    CLOSE:   6개
-    WEAK:    2개
-    FAIL:    2개
+  Totals:
+    EXACT:  22
+    CLOSE:   6
+    WEAK:    2
+    FAIL:    2
     ─────────────
-    n=6 Score: 22/32 = 69% EXACT, 28/32 = 88% CLOSE 이상
+    n=6 Score: 22/32 = 69% EXACT, 28/32 = 88% at or above CLOSE
 ```
 
-### 8.2 Egyptian Fraction 전류 구동 배분
+### 8.2 Egyptian Fraction Current-Drive Allocation
 
 ```
-  1/2 + 1/3 + 1/6 = 1  (n=6의 Egyptian fraction)
+  1/2 + 1/3 + 1/6 = 1  (Egyptian fraction of n=6)
 
-  물리적 의미:
+  Physical meaning:
     ┌────────────────────────────────────────────────────────────┐
     │                                                            │
-    │  전체 전류 I_total = 1.0 (normalized)                      │
+    │  Total current I_total = 1.0 (normalized)                  │
     │                                                            │
     │  ████████████████████████████████████████████████████████  │
-    │  ←──── f_bs = 1/2 ────→←── f_eccd = 1/3 ──→←f_nbi=1/6→  │
+    │  <---- f_bs = 1/2 ---->|-- f_eccd = 1/3 -->|-f_nbi=1/6->  │
     │                                                            │
-    │  Bootstrap (자발)      ECCD (전자)        NBI (이온)       │
-    │  에너지 무료           q-profile 제어     회전 유지        │
-    │  압력 구배 의존        국소 제어          넓은 분포        │
+    │  Bootstrap (spontaneous) ECCD (electrons)  NBI (ions)      │
+    │  Energy free            q-profile control  rotation upkeep │
+    │  Pressure-gradient dep  local control      wide distribution│
     │                                                            │
-    │  최적화 원리:                                              │
-    │    f_bs 극대화 (에너지 효율) → 1/2 = 하한                 │
-    │    f_eccd = 잔여 중 최대 (q-profile 필요) → 1/3           │
-    │    f_nbi = 나머지 (회전+보조) → 1/6                       │
+    │  Optimization principle:                                   │
+    │    Maximize f_bs (energy efficiency) -> 1/2 = lower bound │
+    │    f_eccd = max residual (q-profile needed) -> 1/3        │
+    │    f_nbi = remainder (rotation+aux) -> 1/6                │
     │                                                            │
-    │  정직한 평가:                                              │
-    │    1/2:1/3:1/6 = 정확한 비율은 장치 의존적                │
-    │    실제: ~45-55% : ~20-30% : ~10-20%                       │
-    │    Egyptian과 대략적 일치이나 필연적이지 않음               │
-    │    Grade: WEAK (물리적 인과관계 미증명)                     │
+    │  Honest assessment:                                        │
+    │    1/2:1/3:1/6 - exact ratio is device-dependent          │
+    │    Actual: ~45-55% : ~20-30% : ~10-20%                     │
+    │    Rough agreement with Egyptian but not necessitated       │
+    │    Grade: WEAK (physical causality not demonstrating)      │
     └────────────────────────────────────────────────────────────┘
 ```
 
-### 8.3 Milestone n=6 연결
+### 8.3 Milestone n=6 Connections
 
 ```
-  시간 이정표와 n=6:
-    30초   = sopfr x n = 5 x 6                          CLOSE
-    60초   = sigma x sopfr = 12 x 5                     CLOSE
-    100초  = (sigma-phi)^2 = 10^2                        CLOSE
-    300초  = sigma x sopfr^2 = 12 x 25                  WEAK
-    360초  = sigma x sopfr x n = 12 x 5 x 6             INTERESTING
-    600초  = J2 x sopfr^2 = 24 x 25                     CLOSE
-    1000초 = (sigma-phi)^3 / 10 ?                        FORCED
-    3600초 = sigma x sopfr^2 x 12 = sigma^2 x sopfr^2   FORCED
-    10000초= (sigma-phi)^4                               WEAK
+  Time milestones and n=6:
+    30s    = sopfr x n = 5 x 6                          CLOSE
+    60s    = sigma x sopfr = 12 x 5                     CLOSE
+    100s   = (sigma-phi)^2 = 10^2                        CLOSE
+    300s   = sigma x sopfr^2 = 12 x 25                  WEAK
+    360s   = sigma x sopfr x n = 12 x 5 x 6             INTERESTING
+    600s   = J2 x sopfr^2 = 24 x 25                     CLOSE
+    1000s  = (sigma-phi)^3 / 10 ?                        FORCED
+    3600s  = sigma x sopfr^2 x 12 = sigma^2 x sopfr^2   FORCED
+    10000s = (sigma-phi)^4                               WEAK
 
-  정직한 결론:
-    시간 이정표의 n=6 연결은 대체로 WEAK-CLOSE.
-    물리적 한계(CS flux, 디버터 열화)에 의해 결정되며
-    n=6에서 "필연적"으로 도출되지 않음.
-    가열 시스템(8+1+6=15)만이 강한 일치.
+  Honest conclusion:
+    n=6 connections in time milestones are mostly WEAK-CLOSE.
+    Determined by physical limits (CS flux, divertor wear) and
+    not "necessitated" by n=6.
+    Only the heating system (8+1+6=15) gives a strong match.
 ```
 
 ---
 
-## 9. 리스크 및 완화
+## 9. Risks and Mitigations
 
-### 9.1 기술적 리스크 매트릭스
+### 9.1 Technical Risk Matrix
 
 ```
   ┌──────────────────────────────────────────────────────────────────────┐
-  │ 리스크                  확률   영향   심각도   완화 전략             │
+  │ Risk                   Prob   Impact Severity   Mitigation           │
   ├──────────────────────────────────────────────────────────────────────┤
-  │ R1: 디버터 손상          LOW    HIGH   MED     Detachment + sweep   │
-  │   타겟 표면 용융/균열                          → 정상 상태에서      │
-  │   300초+ 연속 운전 시                          q < 3 MW/m^2 유지    │
+  │ R1: Divertor damage      LOW    HIGH   MED     Detachment + sweep   │
+  │   Target surface melt/crack                    -> maintain           │
+  │   During 300s+ continuous op                    q < 3 MW/m^2 in SS   │
   │                                                                      │
-  │ R2: Disruption           MED    HIGH   HIGH    disruption 회피 +     │
-  │   고 beta 운전에서                              mitigation (MGI)     │
-  │   MHD 불안정성 →                               → NTM ECCD 안정화   │
-  │   전류 급소멸                                   → AI 예측 시스템    │
+  │ R2: Disruption           MED    HIGH   HIGH    disruption avoidance +│
+  │   In high-beta operation                        mitigation (MGI)     │
+  │   MHD instability ->                            -> NTM ECCD stabiliz.│
+  │   current crash                                  -> AI predictor     │
   │                                                                      │
-  │ R3: HTS Quench           LOW    HIGH   MED     예냉 + 냉각 2x +     │
-  │   코일 과열 → 초전도                            정상 상태 AC→0      │
-  │   파괴 (복구 수개월)                            → quench 감지 100us │
+  │ R3: HTS Quench           LOW    HIGH   MED     pre-cool + cooling 2x│
+  │   Coil overheat ->                              + SS AC->0           │
+  │   superconductor failure                        -> quench detect 100us│
   │                                                                      │
-  │ R4: ITB 붕괴             MED    MED    MED     점진적 beta 증가 +   │
-  │   갑작스러운 ITB 소실                           피드백 제어          │
-  │   → beta 급락                                  → soft landing 모드  │
+  │ R4: ITB collapse         MED    MED    MED     gradual beta ramp +  │
+  │   Sudden ITB loss                               feedback control     │
+  │   -> beta plunge                                -> soft-landing mode │
   │                                                                      │
-  │ R5: ECH 업그레이드 지연   MED    MED    MED     단계적 조달 +        │
-  │   gyrotron 조달/설치                            국제 협력 (ITER)     │
-  │   일정 지연                                                          │
+  │ R5: ECH upgrade delay    MED    MED    MED     phased procurement + │
+  │   gyrotron procurement/install                   international       │
+  │   schedule slip                                  collab. (ITER)       │
   │                                                                      │
-  │ R6: 불순물 축적           LOW    MED    LOW     3종 제어 +           │
-  │   예상 외 고Z 불순물                            리튬 코팅 추가       │
-  │   축적                                          → Z_eff 피드백      │
+  │ R6: Impurity accumulation LOW    MED    LOW     3-type control +    │
+  │   Unexpected high-Z                              add lithium coating │
+  │   impurity accumulation                          -> Z_eff feedback   │
   └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### 9.2 Disruption 완화 전략
+### 9.2 Disruption Mitigation Strategy
 
 ```
-  Disruption이 KSTAR에서 가장 위험한 이벤트:
-    열 방출: ~수 MJ → 디버터/벽 손상
-    전자기력: halo current → 구조물 피로
-    runaway electron: 고에너지 전자 빔 → 벽 관통
+  Disruption is the most hazardous event at KSTAR:
+    Thermal release: ~several MJ -> divertor/wall damage
+    Electromagnetic force: halo current -> structural fatigue
+    Runaway electrons: high-energy electron beam -> wall penetration
 
-  예방 (1차):
-    beta_N < beta_N_limit - margin (안전 마진 0.5 유지)
-    q_min > 1.5 (sawteeth 회피)
-    n/n_GW < 0.85 (Greenwald 한계 여유)
-    ECCD NTM 안정화 (상시 운용)
+  Prevention (1st layer):
+    beta_N < beta_N_limit - margin (maintain safety margin 0.5)
+    q_min > 1.5 (sawtooth avoidance)
+    n/n_GW < 0.85 (Greenwald-limit margin)
+    ECCD NTM stabilization (always-on)
 
-  탐지 (2차):
-    실시간 AI disruption predictor:
-      입력: beta_N, n/n_GW, l_i, V_loop, locked mode 신호
-      출력: disruption 확률 (0-1), 잔여 시간 예측
-      반응 시간: < 10 ms
-      KSTAR: 이미 ML 기반 predictor 개발 중
+  Detection (2nd layer):
+    Real-time AI disruption predictor:
+      Inputs: beta_N, n/n_GW, l_i, V_loop, locked-mode signal
+      Outputs: disruption probability (0-1), remaining-time estimate
+      Response time: < 10 ms
+      KSTAR: ML-based predictor already in development
 
-  완화 (3차):
+  Mitigation (3rd layer):
     Massive Gas Injection (MGI):
-      Ne/Ar 대량 주입 → 열부하 분산 (복사화)
-      반응 시간: < 5 ms
-      MGI 밸브: 진공용기 상부/하부 4개 = tau(6)
+      Large Ne/Ar injection -> heat-load dispersion (radiative)
+      Response time: < 5 ms
+      MGI valves: vacuum-vessel upper/lower 4 = tau(6)
 
     Shattered Pellet Injection (SPI):
-      ITER 표준 disruption mitigation
-      펠렛 파쇄 → 넓은 복사 → 열부하 분산
-      KSTAR: SPI 시스템 도입 검토 중
+      ITER standard disruption mitigation
+      Pellet shattering -> broad radiation -> heat-load dispersion
+      KSTAR: SPI system adoption under review
 ```
 
-### 9.3 Fallback 시나리오
+### 9.3 Fallback Scenarios
 
 ```
-  각 시나리오 실패 시 fallback:
+  Fallback when each scenario fails:
 
-  Scenario C 실패 (역전단 불안정):
-    → Scenario B로 후퇴 (ITB Advanced)
-    f_ni = 95% 로도 준정상 상태 (수 시간 운전) 가능
-    K-DEMO 데이터 확보에 충분
+  Scenario C fails (reversed-shear instability):
+    -> fall back to Scenario B (ITB Advanced)
+    Even with f_ni = 95%, quasi-steady state (hours of operation) feasible
+    Sufficient for K-DEMO data acquisition
 
-  Scenario B 실패 (ITB 유지 불가):
-    → Scenario A로 후퇴 (Conservative)
-    f_ni = 80%, tau ~ 28분
-    물리 데이터 확보 가능 (완전 정상 상태는 미달)
+  Scenario B fails (ITB cannot be maintained):
+    -> fall back to Scenario A (Conservative)
+    f_ni = 80%, tau ~ 28 min
+    Physical data acquisition feasible (falls short of fully steady-state)
 
-  Scenario A 실패 (ECH 업그레이드 지연):
-    → 현재 운전 모드 최적화
-    ECH 1 MW + NBI 8 MW로 f_ni ~ 50%
-    tau ~ 340초 (CS flux 제한)
-    이미 달성한 300초 기록의 안정화에 집중
+  Scenario A fails (ECH upgrade delay):
+    -> optimize current operating mode
+    With ECH 1 MW + NBI 8 MW, f_ni ~ 50%
+    tau ~ 340s (CS flux limit)
+    Focus on stabilizing the already-attained 300s record
 
-  ECH 업그레이드 전체 실패:
-    → LHCD (Lower Hybrid Current Drive) 대안 검토
-    eta_LHCD = 0.15 x 10^20 A/W/m^2 (ECCD 대비 6x 효율!)
-    BUT: KSTAR에 LHCD 미설치 → 대규모 하드웨어 추가 필요
-    → 장기 대안으로만 고려
+  Full ECH upgrade failure:
+    -> review LHCD (Lower Hybrid Current Drive) alternative
+    eta_LHCD = 0.15 x 10^20 A/W/m^2 (6x the efficiency of ECCD!)
+    BUT: LHCD not installed at KSTAR -> large-scale hardware addition needed
+    -> consider only as long-term alternative
 
-  최종 fallback:
-    KSTAR 300초 유지 + EAST/JT-60SA 데이터 보완
-    → K-DEMO 설계에 여러 장치 데이터 통합
-```
-
----
-
-## 10. 검증 등급 및 정직한 한계
-
-### 10.1 검증 등급표
-
-| ID | 항목 | 물리적 근거 | Grade | 비고 |
-|----|------|------------|-------|------|
-| D-1 | 4대 장벽 = tau(6) | KSTAR 팀 표준 분류 | CLOSE | 4는 보편적 수 |
-| D-2 | 6 균형 조건 = n | 독립 물리 조건 열거 | WEAK | cherry-picking 가능 |
-| D-3 | Snowflake 6 legs = n | 위상적 필연 (TCV 실증) | EXACT | 가장 강한 n=6 |
-| D-4 | f_bs = 1/2 = 1/phi | 핵융합 표준 임계점 | CLOSE | 수학적 우연 가능 |
-| D-5 | Egyptian 전류 배분 | 장치 의존적 비율 | WEAK | 인과관계 미증명 |
-| D-6 | 가열 8+1+6=15 | 독립 3값 동시 매칭 | EXACT | 가장 인상적 일치 |
-| D-7 | NBI 120 keV = sigma x 10 | 빔 에너지 | EXACT | trivial하지 않음 |
-| D-8 | 6 제어 루프 = n | 독립 물리 루프 | EXACT | 물리적으로 타당 |
-| D-9 | ECCD 4기 4 surface | rational surface 수 | CLOSE | 설계 선택 |
-| D-10 | beta_N = 3 = n/phi | AT 목표값 | CLOSE | 표준 AT 파라미터 |
-| D-11 | 300 = sigma x sopfr^2 | 수학적 분해 | WEAK | 인과관계 없음 |
-| D-12 | 자기참조 해결(B2→B4) | AC loss 물리 | EXACT | 정량 확인 완료 |
-
-**총계: 5 EXACT, 4 CLOSE, 3 WEAK = 75% CLOSE 이상**
-
-### 10.2 정직한 한계
-
-```
-  1. KSTAR는 D-D 운전이므로 alpha-particle 자기가열이 없다.
-     실제 핵융합로(D-T)에서는 에너지 균형 구조가 근본적으로 다름.
-     f_bs 값도 alpha-particle 유무에 따라 변동.
-
-  2. Egyptian fraction 전류 배분(1/2+1/3+1/6)은 "수학적으로 매력적인 목표"이나
-     물리적 필연성은 없다. 실제 최적 비율은 장치별 수치 최적화로 결정됨.
-     1/2:1/3:1/6이 KSTAR에서 정확히 최적이라는 증거 불충분.
-
-  3. Scenario C (reversed shear, f_bs=70%)는 JT-60U에서 짧은 시간 실증되었으나
-     수백 초 유지는 미검증. 역전단 플라즈마의 장시간 안정성은 열린 문제.
-
-  4. ECH 업그레이드(1→4 MW)는 gyrotron 조달, 전원장치, 전송계통, 포트 공간 등
-     상당한 공학적 도전을 수반. 일정 지연 리스크가 높음.
-
-  5. 300초 정상 상태의 "300"이 n=6에서 필연적이라는 주장은 WEAK.
-     실제로 300초는 CS flux 소진 + 공학적 한계에 의해 결정됨.
-
-  6. n=6 Score 69-88%는 인상적이나, 가열 시스템(6개 파라미터 동시 매칭)을
-     제외하면 나머지는 CLOSE-WEAK 수준. "KSTAR가 n=6을 따른다"는 과장.
-     "KSTAR에 n=6 구조가 관찰된다"가 더 정확한 표현.
+  Final fallback:
+    Maintain KSTAR 300s + complement with EAST/JT-60SA data
+    -> integrate data from multiple devices into K-DEMO design
 ```
 
 ---
 
-## 부록 A: 핵심 수식 모음
+## 10. Verification Grade and Honest Limitations
+
+### 10.1 Verification Grade Table
+
+| ID | Item | Physical basis | Grade | Note |
+|----|------|----------------|-------|------|
+| D-1 | Four barriers = tau(6) | KSTAR team standard classification | CLOSE | 4 is a universal number |
+| D-2 | 6 balance conditions = n | enumeration of independent physical conditions | WEAK | cherry-picking possible |
+| D-3 | Snowflake 6 legs = n | topological necessity (TCV demonstrating) | EXACT | strongest n=6 |
+| D-4 | f_bs = 1/2 = 1/phi | fusion standard critical point | CLOSE | mathematical coincidence possible |
+| D-5 | Egyptian current allocation | device-dependent ratios | WEAK | causality not demonstrated |
+| D-6 | Heating 8+1+6=15 | simultaneous match of three independent values | EXACT | most impressive match |
+| D-7 | NBI 120 keV = sigma x 10 | beam energy | EXACT | not trivial |
+| D-8 | 6 control loops = n | independent physical loops | EXACT | physically reasonable |
+| D-9 | ECCD 4 units 4 surfaces | rational-surface count | CLOSE | design choice |
+| D-10 | beta_N = 3 = n/phi | AT target value | CLOSE | standard AT parameter |
+| D-11 | 300 = sigma x sopfr^2 | mathematical decomposition | WEAK | no causality |
+| D-12 | Self-referential resolution (B2->B4) | AC-loss physics | EXACT | quantitatively confirmed |
+
+**Totals: 5 EXACT, 4 CLOSE, 3 WEAK = 75% at or above CLOSE**
+
+### 10.2 Honest Limitations
+
+```
+  1. KSTAR runs D-D, so there is no alpha-particle self-heating.
+     In a real fusion reactor (D-T), the energy balance structure is fundamentally different.
+     f_bs values also vary with presence/absence of alpha particles.
+
+  2. The Egyptian fraction current allocation (1/2+1/3+1/6) is a "mathematically appealing target"
+     but has no physical necessity. The actual optimum ratio is determined by device-specific
+     numerical optimization.
+     Insufficient evidence that 1/2:1/3:1/6 is exactly optimal for KSTAR.
+
+  3. Scenario C (reversed shear, f_bs=70%) was demonstrating for short durations at JT-60U
+     but sustaining for hundreds of seconds is unverified. Long-term stability of
+     reversed-shear plasmas is an open problem.
+
+  4. ECH upgrade (1 -> 4 MW) entails substantial engineering challenges including
+     gyrotron procurement, power supplies, transmission lines, port space. Schedule-slip risk is high.
+
+  5. The claim that "300" in 300s steady-state is necessitated by n=6 is WEAK.
+     In reality, 300s is set by CS flux depletion + engineering limits.
+
+  6. The n=6 Score of 69-88% is impressive, but excluding the heating system
+     (6-parameter simultaneous match), the rest are CLOSE-WEAK. "KSTAR follows n=6"
+     is an overstatement. "An n=6 structure is observed in KSTAR" is more accurate.
+```
+
+---
+
+## Appendix A: Key Equations Summary
 
 ```
   ═══ Bootstrap Fraction ═══
@@ -1464,7 +1466,7 @@
   sqrt(epsilon) = 0.527
   C_bs = 0.35 (L-mode) ~ 0.70 (reversed shear + ITB)
 
-  ═══ ECCD 효율 ═══
+  ═══ ECCD efficiency ═══
   eta_CD = n_e20 x R0 x I_CD / P_CD   [10^20 A/W/m^2]
   P_eccd = I_eccd x n_e20 x R0 / eta_CD
 
@@ -1474,7 +1476,7 @@
   V_resistive ~ 0.041 V (KSTAR, 0.6MA)
   CS_flux = 14 Wb
 
-  ═══ Greenwald 밀도 한계 ═══
+  ═══ Greenwald density limit ═══
   n_GW = I_p / (pi x a^2) [10^20 m^-3]
   KSTAR: n_GW(0.6MA) = 0.6/pi/0.25 = 0.76 x 10^20
 
@@ -1482,27 +1484,27 @@
   P_LH = 0.049 x n_e20^0.72 x B_T^0.8 x S^0.94   [MW]
   S = plasma surface area
 
-  ═══ Beta 관계 ═══
+  ═══ Beta relations ═══
   beta_N = beta_T x a x B_T / I_p   [%, MA, m, T]
   beta_p = 2 mu_0 <p> / B_p^2
   B_p = mu_0 I_p / (2 pi a)
 
-  ═══ 에너지 가둠 시간 (IPB98y2) ═══
+  ═══ Energy confinement time (IPB98y2) ═══
   tau_E = 0.0562 x I_p^0.93 x B_T^0.15 x P^-0.69 x n_e20^0.41
           x M^0.19 x R^1.97 x a^-0.58 x kappa^0.78
 
-  ═══ 충돌도 ═══
+  ═══ Collisionality ═══
   nu_* = nu_ei x q x R / (v_th x epsilon^1.5)
        proportional to n_e / T_e^2
 
-  ═══ Detachment 조건 ═══
-  T_e_div < 5 eV (완전 detachment)
+  ═══ Detachment condition ═══
+  T_e_div < 5 eV (full detachment)
   f_rad = P_rad / P_input > 0.9
 ```
 
 ---
 
-## 부록 B: KSTAR 파라미터 카드
+## Appendix B: KSTAR Parameter Card
 
 ```
   ┌────────────────────────────────────────────────┐
@@ -1542,1557 +1544,1561 @@
 
 ---
 
-## 11. Barrier 4 수학적 심화 — 전류 구동 방정식
+## 11. Barrier 4 Mathematical Deep Dive — Current-Drive Equations
 
-### 11.1 Neoclassical Bootstrap Current 완전 유도
+### 11.1 Full Derivation of Neoclassical Bootstrap Current
 
 ```
-  ═══ Bootstrap 전류의 물리적 기원 ═══
+  ═══ Physical origin of the bootstrap current ═══
 
-  자기장 안에서 하전 입자는 두 종류로 나뉜다:
-    Passing 입자: 토러스를 자유롭게 한 바퀴 돎
-    Trapped 입자: 자기 거울 효과로 "바나나 궤도" 형성
+  Charged particles in the magnetic field split into two kinds:
+    Passing particles: freely encircle the torus
+    Trapped particles: form "banana orbits" via magnetic-mirror effect
 
-  바나나 궤도 물리:
-    토카막 내측(HFS)에서 B가 강하고, 외측(LFS)에서 약하다.
-    B_HFS / B_LFS = (R₀ + a) / (R₀ - a) = 2.3 / 1.3 = 1.77
+  Banana-orbit physics:
+    B is stronger on the tokamak inner side (HFS) and weaker outside (LFS).
+    B_HFS / B_LFS = (R_0 + a) / (R_0 - a) = 2.3 / 1.3 = 1.77
 
-    입자의 운동 에너지 보존:
-      μ = m v_⊥² / (2B) = const  (자기 모멘트 보존)
-      E = (1/2) m v_∥² + μB = const  (총 에너지 보존)
+    Kinetic-energy conservation of the particle:
+      mu = m v_perp^2 / (2B) = const  (magnetic-moment conservation)
+      E = (1/2) m v_par^2 + mu*B = const  (total-energy conservation)
 
-    v_∥ = 0이 되는 조건 (반사점):
-      B_bounce = E / μ
+    Condition v_par = 0 (turning point):
+      B_bounce = E / mu
 
     Trapped fraction:
-      f_t = √(2ε/(1+ε))   (원형 단면 근사)
-      ε = a/R₀ = 0.5/1.8 = 0.278
+      f_t = sqrt(2*eps/(1+eps))   (circular-cross-section approximation)
+      eps = a/R_0 = 0.5/1.8 = 0.278
 
-      f_t = √(2 × 0.278 / (1 + 0.278))
-          = √(0.556 / 1.278)
-          = √0.435
+      f_t = sqrt(2 * 0.278 / (1 + 0.278))
+          = sqrt(0.556 / 1.278)
+          = sqrt(0.435)
           = 0.660
 
-      KSTAR trapped fraction ≈ 66%
+      KSTAR trapped fraction ~ 66%
 
-      n=6 참조: 0.660 ≈ 2/n = 2/6 = 0.333? (NO)
-      → 0.66 ≈ 2/3 = φ/(n/φ) = 2/3              ✅ CLOSE
+      n=6 reference: 0.660 ~ 2/n = 2/6 = 0.333? (NO)
+      -> 0.66 ~ 2/3 = phi/(n/phi) = 2/3              [OK] CLOSE
 
-  ═══ Neoclassical Bootstrap 전류 밀도 ═══
+  ═══ Neoclassical Bootstrap current density ═══
 
-  Sauter et al. (1999, PoP 6, 2834) 공식:
+  Sauter et al. (1999, PoP 6, 2834) formula:
 
-  <j_bs · B> = -p'(ψ) × Σ_s [L_{31,s} × (∂ln n_s/∂ψ)
-               + L_{32,s} × (∂ln T_s/∂ψ)
-               + α_s × L_{34,s} × (∂ln T_s/∂ψ)]
+  <j_bs . B> = -p'(psi) x Sum_s [L_{31,s} x (d ln n_s/d psi)
+               + L_{32,s} x (d ln T_s/d psi)
+               + alpha_s x L_{34,s} x (d ln T_s/d psi)]
 
-  여기서:
-    p'(ψ) = dp/dψ (압력 구배, ψ = poloidal flux)
-    s = 입자 종(전자, 이온)
-    L_{31}, L_{32}, L_{34} = 신고전 수송 계수
-    α_s = T_s'/n_s' 기여 가중치
+  Where:
+    p'(psi) = dp/d psi (pressure gradient, psi = poloidal flux)
+    s = particle species (electrons, ions)
+    L_{31}, L_{32}, L_{34} = neoclassical transport coefficients
+    alpha_s = T_s'/n_s' contribution weight
 
-  간단화 (단일 이온, Z_eff=1):
+  Simplified (single ion, Z_eff=1):
 
-  j_bs ≈ -(1/B_θ) × dp/dr × f_bs_coeff(ε, ν_*, q)
+  j_bs ~ -(1/B_theta) x dp/dr x f_bs_coeff(eps, nu_*, q)
 
-  f_bs_coeff 의 구성:
+  Components of f_bs_coeff:
 
-    (a) ε 의존성 (기하학):
-        f_geom = √ε × (1 + 1.46√ε + 0.46ε) / (1 + 0.5√ε)
+    (a) eps dependence (geometry):
+        f_geom = sqrt(eps) x (1 + 1.46 sqrt(eps) + 0.46 eps) / (1 + 0.5 sqrt(eps))
 
         KSTAR:
-          √ε = √0.278 = 0.527
-          f_geom = 0.527 × (1 + 1.46×0.527 + 0.46×0.278) / (1 + 0.5×0.527)
-                 = 0.527 × (1 + 0.769 + 0.128) / (1 + 0.264)
-                 = 0.527 × 1.897 / 1.264
-                 = 0.527 × 1.501
+          sqrt(eps) = sqrt(0.278) = 0.527
+          f_geom = 0.527 x (1 + 1.46 x 0.527 + 0.46 x 0.278) / (1 + 0.5 x 0.527)
+                 = 0.527 x (1 + 0.769 + 0.128) / (1 + 0.264)
+                 = 0.527 x 1.897 / 1.264
+                 = 0.527 x 1.501
                  = 0.791
 
-    (b) 충돌도(ν_*) 의존성:
-        ν_*e = ν_ei × q × R₀ / (v_th,e × ε^1.5)
-             = n_e × Z_eff × ln(Λ) × e⁴ / (4πε₀²m_e²v_th,e³) × qR₀/ε^1.5
+    (b) Collisionality (nu_*) dependence:
+        nu_*e = nu_ei x q x R_0 / (v_th,e x eps^1.5)
+             = n_e x Z_eff x ln(Lambda) x e^4 / (4 pi eps_0^2 m_e^2 v_th,e^3) x q R_0/eps^1.5
 
-        충돌도 영역 분류:
-          ν_*e < 1:      바나나 영역 (banana regime) → bootstrap 최대
-          1 < ν_*e < ε^(-3/2): 고원 영역 (plateau regime) → bootstrap 감소
-          ν_*e > ε^(-3/2):  Pfirsch-Schlüter 영역 → bootstrap 최소
+        Collisionality-regime classification:
+          nu_*e < 1:           banana regime -> bootstrap maximum
+          1 < nu_*e < eps^(-3/2): plateau regime -> bootstrap decrease
+          nu_*e > eps^(-3/2):  Pfirsch-Schlueter regime -> bootstrap minimum
 
-        KSTAR 시나리오별 ν_*e:
+        nu_*e per KSTAR scenario:
 
           ┌────────────────────────────────────────────────────────────┐
-          │ Scenario  n_e(10¹⁹) T_e(keV) q₉₅  ν_*e     영역         │
+          │ Scenario  n_e(10^19) T_e(keV) q_95  nu_*e    Regime       │
           ├────────────────────────────────────────────────────────────┤
-          │ 현재      5.0       10       5.0   0.25    banana        │
+          │ Current   5.0       10       5.0   0.25    banana        │
           │ A         5.0       10       5.0   0.25    banana        │
           │ B         4.0       10       7.5   0.15    deep banana   │
           │ C         3.5       12       8-10  0.06    deep banana   │
           └────────────────────────────────────────────────────────────┘
 
-          ν_*e 계산 상세 (Scenario C):
-            n_e = 3.5 × 10¹⁹ m⁻³
-            T_e = 12 keV = 1.92 × 10⁻¹⁵ J
-            v_th,e = √(2T_e/m_e) = √(2 × 1.92e-15 / 9.11e-31)
-                   = √(4.22e15) = 6.49 × 10⁷ m/s
-            ln(Λ) ≈ 17 (고온 플라즈마)
-            ν_ei = n_e × Z_eff × e⁴ × ln(Λ) / (4πε₀² × m_e² × v_th,e³)
-                 ≈ 3.5e19 × 1 × 17 / (3.44e11 × 9.11e-31)² × ...)
-                 ≈ 1.8 × 10³ s⁻¹
-            ν_*e = ν_ei × q × R₀ / (v_th,e × ε^1.5)
-                 = 1.8e3 × 9 × 1.8 / (6.49e7 × 0.278^1.5)
-                 = 2.92e4 / (6.49e7 × 0.147)
-                 = 2.92e4 / 9.54e6
-                 ≈ 0.003 × q²  → ν_*e ≈ 0.06 (q=4.5 평균)
+          nu_*e computation detail (Scenario C):
+            n_e = 3.5 x 10^19 m^-3
+            T_e = 12 keV = 1.92 x 10^-15 J
+            v_th,e = sqrt(2 T_e / m_e) = sqrt(2 x 1.92e-15 / 9.11e-31)
+                   = sqrt(4.22e15) = 6.49 x 10^7 m/s
+            ln(Lambda) ~ 17 (hot plasma)
+            nu_ei = n_e x Z_eff x e^4 x ln(Lambda) / (4 pi eps_0^2 x m_e^2 x v_th,e^3)
+                  ~ 3.5e19 x 1 x 17 / (3.44e11 x 9.11e-31)^2 x ...)
+                  ~ 1.8 x 10^3 s^-1
+            nu_*e = nu_ei x q x R_0 / (v_th,e x eps^1.5)
+                  = 1.8e3 x 9 x 1.8 / (6.49e7 x 0.278^1.5)
+                  = 2.92e4 / (6.49e7 x 0.147)
+                  = 2.92e4 / 9.54e6
+                  ~ 0.003 x q^2  -> nu_*e ~ 0.06 (q=4.5 average)
 
-        충돌도 보정 계수:
-          f_coll(ν_*) = 1 / (1 + 0.22 × ν_*^0.5)
+        Collisionality correction factor:
+          f_coll(nu_*) = 1 / (1 + 0.22 x nu_*^0.5)
 
-          Scenario A: f_coll = 1/(1 + 0.22×0.50) = 0.90
-          Scenario B: f_coll = 1/(1 + 0.22×0.39) = 0.92
-          Scenario C: f_coll = 1/(1 + 0.22×0.24) = 0.95
+          Scenario A: f_coll = 1/(1 + 0.22 x 0.50) = 0.90
+          Scenario B: f_coll = 1/(1 + 0.22 x 0.39) = 0.92
+          Scenario C: f_coll = 1/(1 + 0.22 x 0.24) = 0.95
 
-    (c) q-프로파일 의존성:
-        역전단(reversed shear)에서 bootstrap alignment 향상
-        f_q = 1 + 0.3 × (q₀/q_min - 1)²   (역전단 보정)
+    (c) q-profile dependence:
+        Under reversed shear, bootstrap alignment improves
+        f_q = 1 + 0.3 x (q_0/q_min - 1)^2   (reversed-shear correction)
 
         Scenario A (monotonic): f_q = 1.0
-        Scenario B (weak shear): f_q ≈ 1.02
-        Scenario C (reversed, q₀/q_min ≈ 1.3): f_q ≈ 1.03
+        Scenario B (weak shear): f_q ~ 1.02
+        Scenario C (reversed, q_0/q_min ~ 1.3): f_q ~ 1.03
 
-  ═══ 최대 이론적 f_bs — 압력 구배 한계 ═══
+  ═══ Maximum theoretical f_bs — pressure-gradient limit ═══
 
-  f_bs는 무한히 올릴 수 없다. 물리적 상한이 존재:
+  f_bs cannot be raised indefinitely. Physical upper bounds exist:
 
-  (1) MHD 안정성 한계: β_p < β_p_crit
-      β_p_crit ≈ ε × q²  (이상적 MHD 한계, 벽 없음)
-      KSTAR: β_p_crit ≈ 0.278 × 25 = 6.95  (q=5 기준)
-      → 이론적으로는 β_p ~ 7까지 가능하나, 실제 벽 효과로 ~3-4
+  (1) MHD stability limit: beta_p < beta_p_crit
+      beta_p_crit ~ eps x q^2  (ideal MHD limit, no wall)
+      KSTAR: beta_p_crit ~ 0.278 x 25 = 6.95  (q=5 basis)
+      -> In theory beta_p ~ 7 is possible, but wall effects cap it at ~3-4
 
-  (2) 압력 피킹 한계: dp/dr의 물리적 상한
-      ITG/TEM 터뷸런스가 온도 구배를 제한 (stiff transport)
-      R/L_T = R|dT/dr|/T < R/L_T,crit ≈ 5-8 (모드 의존)
+  (2) Pressure-peaking limit: physical upper bound on dp/dr
+      ITG/TEM turbulence limits temperature gradient (stiff transport)
+      R/L_T = R|dT/dr|/T < R/L_T,crit ~ 5-8 (mode-dependent)
 
-  (3) Pedestal 한계: peeling-ballooning 안정성
-      Δp_ped 한계가 edge bootstrap을 제약
+  (3) Pedestal limit: peeling-ballooning stability
+      Delta p_ped limit constrains edge bootstrap
 
-  결론적 f_bs 상한 (KSTAR):
+  Concluding f_bs upper bound (KSTAR):
     ┌──────────────────────────────────────────┐
-    │ Scenario   β_p   C_eff  f_bs_max  실현성│
+    │ Scenario   beta_p C_eff  f_bs_max  Feasibility │
     ├──────────────────────────────────────────┤
     │ A (mono)   1.5   0.42   0.25-0.42  HIGH │
     │ B (ITB)    2.5   0.56   0.45-0.60  MED  │
     │ C (rev)    3.5   0.70   0.60-0.78  LOW  │
-    │ 이론 극한   6.0   0.80   0.85-0.95  N/A │
+    │ Theor.limit 6.0   0.80   0.85-0.95  N/A │
     └──────────────────────────────────────────┘
 
-    C_eff = f_geom × f_coll × f_q × f_profile
-    f_profile: 밀도/온도 피킹에 의한 보정 (1.0 ~ 1.6)
+    C_eff = f_geom x f_coll x f_q x f_profile
+    f_profile: density/temperature peaking correction (1.0 ~ 1.6)
 ```
 
-### 11.2 ECCD (Electron Cyclotron Current Drive) 효율 완전 분석
+### 11.2 Full Analysis of ECCD (Electron Cyclotron Current Drive) Efficiency
 
 ```
-  ═══ Fisch-Boozer 메커니즘 ═══
+  ═══ Fisch-Boozer mechanism ═══
 
-  원리: 전자 사이클로트론파가 특정 속도 공간의 전자를 선택적으로 가속.
-        비대칭적 속도 분포 → 순 전류 발생.
+  Principle: the electron-cyclotron wave selectively accelerates electrons
+  in specific velocity-space regions. Asymmetric velocity distribution ->
+  net current emerges.
 
-  v_∥ > 0 방향의 전자만 공명 가속:
-    ω - k_∥v_∥ = nω_ce  (공명 조건, n = 고조파 차수)
+  Only electrons with v_par > 0 are resonantly accelerated:
+    omega - k_par v_par = n omega_ce  (resonance condition, n = harmonic order)
 
-  가속된 전자는 충돌 빈도가 감소 (ν_ei ∝ 1/v³):
-    → 가속 방향의 전자가 더 오래 지속
-    → 순 전류 = -e × (n_fast,co - n_fast,counter) × v_mean
+  Accelerated electrons experience reduced collision frequency (nu_ei proportional to 1/v^3):
+    -> electrons in the accelerated direction persist longer
+    -> net current = -e x (n_fast,co - n_fast,counter) x v_mean
 
-  Fisch-Boozer 효율 (이론):
-    η_FB = 6.0 × T_e(keV) / (n_e,20 × R₀ × Z_eff × ln Λ)
-         × (p_∥/p) × ξ
+  Fisch-Boozer efficiency (theoretical):
+    eta_FB = 6.0 x T_e(keV) / (n_e,20 x R_0 x Z_eff x ln Lambda)
+           x (p_par/p) x xi
 
-    여기서:
-      p_∥/p = 빔의 평행 운동량 분율 (발사 각도 의존)
-      ξ = trapped 입자 보정 (0.5-0.9)
+    Where:
+      p_par/p = parallel-momentum fraction of the beam (launch-angle dependent)
+      xi = trapped-particle correction (0.5-0.9)
 
-    KSTAR 조건 (Scenario B, T_e=10keV):
-      η_FB = 6.0 × 10 / (0.4 × 1.8 × 1.5 × 17) × 0.7 × 0.7
-           = 60 / 18.36 × 0.49
-           = 3.27 × 0.49
-           = 1.60  [단위: 10¹⁸ A/W/m²]
-      → η_ECCD ≈ 0.016 × 10²⁰ A/W/m²  (이론 하한)
+    KSTAR conditions (Scenario B, T_e=10keV):
+      eta_FB = 6.0 x 10 / (0.4 x 1.8 x 1.5 x 17) x 0.7 x 0.7
+            = 60 / 18.36 x 0.49
+            = 3.27 x 0.49
+            = 1.60  [units: 10^18 A/W/m^2]
+      -> eta_ECCD ~ 0.016 x 10^20 A/W/m^2  (theoretical lower bound)
 
-  ═══ Ohkawa 메커니즘 ═══
+  ═══ Ohkawa mechanism ═══
 
-  원리: Trapped 전자를 비대칭적으로 detrapping.
-        바나나 궤도에서 탈출하는 전자의 방향 비대칭 → 순 전류.
+  Principle: asymmetric detrapping of trapped electrons.
+  Directional asymmetry of electrons escaping banana orbits -> net current.
 
-  Ohkawa 효과는 trapped fraction이 높을수록 강함:
-    η_Ohk ∝ f_t / (1 - f_t)
+  The Ohkawa effect is stronger at higher trapped fraction:
+    eta_Ohk proportional to f_t / (1 - f_t)
 
-  KSTAR (f_t ≈ 0.66):
-    η_Ohk 기여 = 0.66 / 0.34 = 1.94 × (Fisch-Boozer 대비 증폭 계수)
+  KSTAR (f_t ~ 0.66):
+    eta_Ohk contribution = 0.66 / 0.34 = 1.94 x (amplification vs Fisch-Boozer)
 
-  BUT: Ohkawa 효과는 주로 high-field side launch에서 유효.
-       KSTAR 현재 시스템은 low-field side → Ohkawa 기여 제한적.
+  BUT: the Ohkawa effect is effective mainly for high-field-side launch.
+       KSTAR's current system is low-field side -> limited Ohkawa contribution.
 
-  ═══ 통합 ECCD 효율 — 플럭스 면 의존성 ═══
+  ═══ Integrated ECCD efficiency — flux-surface dependence ═══
 
-  ECCD 효율은 전류 구동 위치(ρ)에 따라 크게 변한다:
+  ECCD efficiency varies strongly with current-drive location (rho):
 
-  η_CD(ρ) = η₀ × [T_e(ρ)/T_e(0)] / [n_e(ρ)/n_e(0)] × g(ε(ρ), ν_*(ρ))
+  eta_CD(rho) = eta_0 x [T_e(rho)/T_e(0)] / [n_e(rho)/n_e(0)] x g(eps(rho), nu_*(rho))
 
-  여기서 g(ε, ν_*) = trapped 입자 효과 보정.
+  where g(eps, nu_*) = trapped-particle-effect correction.
 
-  KSTAR 조건별 국소 ECCD 효율:
+  Local ECCD efficiency per KSTAR condition:
 
   ┌────────────────────────────────────────────────────────────────────┐
-  │ ρ (norm) │ r(m) │ B(T) │ T_e(keV)│ n_e(10¹⁹)│ η_CD(10²⁰)│ 용도│
+  │ rho(norm)│ r(m) │ B(T) │ T_e(keV)│ n_e(10^19)│ eta_CD(10^20)│ Use │
   ├────────────────────────────────────────────────────────────────────┤
-  │   0.0    │ 0.0  │ 3.50 │  12     │   5.0    │   0.055   │ 축상│
-  │   0.3    │ 0.15 │ 3.34 │  11     │   4.5    │   0.048   │ NTM │
-  │   0.5    │ 0.25 │ 3.18 │   9     │   4.0    │   0.040   │ ITB │
-  │   0.7    │ 0.35 │ 3.04 │   6     │   3.5    │   0.028   │ NTM │
-  │   0.9    │ 0.45 │ 2.92 │   3     │   3.0    │   0.012   │ edge│
+  │   0.0    │ 0.0  │ 3.50 │  12     │   5.0    │   0.055   │ axis │
+  │   0.3    │ 0.15 │ 3.34 │  11     │   4.5    │   0.048   │ NTM  │
+  │   0.5    │ 0.25 │ 3.18 │   9     │   4.0    │   0.040   │ ITB  │
+  │   0.7    │ 0.35 │ 3.04 │   6     │   3.5    │   0.028   │ NTM  │
+  │   0.9    │ 0.45 │ 2.92 │   3     │   3.0    │   0.012   │ edge │
   └────────────────────────────────────────────────────────────────────┘
 
-  최적 전략:
-    - ρ = 0.3 (q=3/2 면): NTM 안정화 전담, η 높음
-    - ρ = 0.5 (mid-radius): 주력 전류 구동 + ITB 보조
-    - ρ = 0.7 (q=2 면): NTM 안정화 보조
+  Optimal strategy:
+    - rho = 0.3 (q=3/2 surface): dedicated to NTM stabilization, high eta
+    - rho = 0.5 (mid-radius): primary current drive + ITB assist
+    - rho = 0.7 (q=2 surface): NTM-stabilization assist
 
-  ═══ 발사 각도 최적화 ═══
+  ═══ Launch-angle optimization ═══
 
-  토로이달 발사 각도 φ_launch:
-    η_CD ∝ ξ_∥ = v_∥ / v_total = cos(φ_launch) × 파라미터
+  Toroidal launch angle phi_launch:
+    eta_CD proportional to xi_par = v_par / v_total = cos(phi_launch) x factor
 
   ┌──────────────────────────────────────────────────────┐
-  │ φ_launch(°) │ ξ_∥  │ η_CD 상대값 │ 흡수율  │ 최적성│
+  │ phi_launch(deg)│ xi_par│ eta_CD rel.│ Absorp. │ Optim.│
   ├──────────────────────────────────────────────────────┤
-  │    10       │ 0.98 │    0.7      │  60%   │  LOW  │
-  │    20       │ 0.94 │    0.9      │  85%   │  MED  │
-  │    25       │ 0.91 │    1.0      │  95%   │  BEST │
-  │    30       │ 0.87 │    0.95     │  98%   │  HIGH │
-  │    40       │ 0.77 │    0.8      │  99%   │  MED  │
+  │    10          │ 0.98  │    0.7     │  60%    │  LOW  │
+  │    20          │ 0.94  │    0.9     │  85%    │  MED  │
+  │    25          │ 0.91  │    1.0     │  95%    │  BEST │
+  │    30          │ 0.87  │    0.95    │  98%    │  HIGH │
+  │    40          │ 0.77  │    0.8     │  99%    │  MED  │
   └──────────────────────────────────────────────────────┘
 
-  최적 발사 각도: ~25° (토로이달 방향)
-    흡수율과 CD 효율의 곱이 최대
-    KSTAR 현재: ~20° → 25°로 조정 가능 (mirror steering)
+  Optimal launch angle: ~25 deg (toroidal direction)
+    Product of absorption and CD efficiency is maximum
+    KSTAR current: ~20 deg -> adjustable to 25 deg (mirror steering)
 ```
 
-### 11.3 LHCD (Lower Hybrid Current Drive) 잠재력 — 미래 업그레이드
+### 11.3 LHCD (Lower Hybrid Current Drive) Potential — Future Upgrade
 
 ```
-  ═══ LHCD 원리 ═══
+  ═══ LHCD principle ═══
 
-  Lower Hybrid 파 (LH파):
-    주파수: f_LH = √(f_pi × f_ce) ≈ 1-8 GHz (KSTAR 조건)
-    파동 모드: slow wave, electrostatic → Landau damping으로 전류 구동
+  Lower Hybrid wave (LH wave):
+    Frequency: f_LH = sqrt(f_pi x f_ce) ~ 1-8 GHz (KSTAR conditions)
+    Wave mode: slow wave, electrostatic -> current drive via Landau damping
 
-  LHCD의 핵심 장점:
-    η_LHCD ≈ 0.10-0.20 × 10²⁰ A/W/m²
-    → ECCD 대비 4-8배 높은 효율!
+  Core advantage of LHCD:
+    eta_LHCD ~ 0.10-0.20 x 10^20 A/W/m^2
+    -> 4-8x higher efficiency than ECCD!
 
-  이유: LH파는 suprathermal 전자(v > 3v_th)를 가속
-        → 충돌 빈도 극히 낮은 전자에 에너지 전달
-        → 소량의 파워로 대량의 전류 구동
+  Reason: LH waves accelerate suprathermal electrons (v > 3 v_th)
+          -> energy transferred to electrons with very low collisionality
+          -> large current driven with little power
 
-  ═══ KSTAR LHCD 적용 시나리오 ═══
+  ═══ KSTAR LHCD application scenario ═══
 
-  가상 시스템: 3.7 GHz, CW klystron × 4기 (τ(6) = 4)
+  Hypothetical system: 3.7 GHz, CW klystron x 4 units (tau(6) = 4)
 
   ┌────────────────────────────────────────────────────────────────┐
-  │ 파라미터              ECCD 현재     LHCD 가상    개선 배율     │
+  │ Parameter            ECCD current  LHCD hypothetical  Improve │
   ├────────────────────────────────────────────────────────────────┤
-  │ η_CD (10²⁰ A/W/m²)  0.025-0.050   0.12-0.18    4-6x        │
-  │ 같은 I_CD에 필요 P    3 MW          0.6 MW       5x 절감     │
-  │ 전류 구동 위치         ρ=0.3-0.7    ρ=0.6-0.9    edge 편중   │
-  │ 스펙트럼 제어         정밀 (mirror)  제한적       열위        │
-  │ NTM 안정화            가능 (정밀)    어려움       열위        │
-  │ 기술 성숙도           높음 (ITER)    높음 (EAST)  동등        │
+  │ eta_CD (10^20 A/W/m^2) 0.025-0.050 0.12-0.18    4-6x          │
+  │ P needed for same I_CD 3 MW         0.6 MW      5x savings    │
+  │ Current-drive location rho=0.3-0.7  rho=0.6-0.9 edge-biased   │
+  │ Spectral control       precise(mirror) limited  inferior      │
+  │ NTM stabilization      feasible (precise) difficult inferior  │
+  │ Technology maturity    high (ITER)   high (EAST) comparable   │
   └────────────────────────────────────────────────────────────────┘
 
-  한계:
-    - LHCD는 edge(ρ > 0.6)에 전류가 집중 → q-profile 제어 어려움
-    - 고밀도(n_e > 5×10¹⁹)에서 접근성(accessibility) 상실
-    - Spectral gap 문제: parasitic absorption
+  Limitations:
+    - LHCD concentrates current at the edge (rho > 0.6) -> q-profile control difficult
+    - Accessibility lost at high density (n_e > 5 x 10^19)
+    - Spectral-gap issue: parasitic absorption
 
-  EAST (중국)의 LHCD 실적:
+  LHCD results at EAST (China):
     4.6 GHz, 6 MW CW
-    η_LHCD ≈ 0.15 × 10²⁰ A/W/m² (실측)
-    f_LHCD ≈ 60% (403초 장펄스)
-    → EAST의 장펄스 비결이 바로 LHCD
+    eta_LHCD ~ 0.15 x 10^20 A/W/m^2 (measured)
+    f_LHCD ~ 60% (403s long pulse)
+    -> EAST's long-pulse secret is precisely LHCD
 
-  KSTAR 미래 업그레이드 시:
-    LHCD 4 MW 추가 → f_LHCD ≈ 30-40%
+  If KSTAR undergoes a future upgrade:
+    LHCD 4 MW added -> f_LHCD ~ 30-40%
     f_bs(40%) + f_LHCD(30%) + f_ECCD(15%) + f_NBI(15%) = 100%
-    → Scenario C 없이도 완전 비유도 가능
-    → BUT: 하드웨어 투자 ~50억원 + 설치 2년
+    -> Fully non-inductive target feasible without Scenario C
+    -> BUT: hardware investment ~5 B KRW + 2-year install
 ```
 
-### 11.4 완전 전류 균형 방정식
+### 11.4 Full Current-Balance Equation
 
 ```
-  ═══ 정상 상태 전류 균형 ═══
+  === Steady-state current balance ===
 
   I_p = I_bs + I_ECCD + I_NBCD + I_LHCD + I_ohmic
 
-  각 항의 물리:
+  Physics of each term:
 
-  (1) I_bs = ∫₀ᵃ j_bs(r) × 2πr dr
-      = ∫₀ᵃ [-C_bs(r) × dp/dr / B_θ(r)] × 2πr dr
-      → 압력 프로파일에 의해 결정 (외부 제어 간접적)
+  (1) I_bs = int_0^a j_bs(r) x 2 pi r dr
+      = int_0^a [-C_bs(r) x dp/dr / B_theta(r)] x 2 pi r dr
+      -> determined by the pressure profile (indirectly controlled)
 
-  (2) I_ECCD = η_ECCD × P_ECCD / (n_e,20 × R₀)
-      → ECH 파워와 효율에 의해 결정 (직접 제어)
+  (2) I_ECCD = eta_ECCD x P_ECCD / (n_e,20 x R0)
+      -> set by ECH power and efficiency (direct control)
 
-  (3) I_NBCD = η_NBI × P_NBI / (n_e,20 × R₀) + I_NBI→bs
-      → NBI 파워 + NBI 유도 bootstrap 보정
+  (3) I_NBCD = eta_NBI x P_NBI / (n_e,20 x R0) + I_NBI->bs
+      -> NBI power + NBI-induced bootstrap correction
 
-      NBI 직접 CD:  η_NBI ≈ 0.035 × 10²⁰ A/W/m²
-      NBI → fast ion → 압력 구배 → 추가 bootstrap:
-        I_NBI→bs ≈ 0.3 × I_NBI,direct  (경험적)
+      NBI direct CD:  eta_NBI ~ 0.035 x 10^20 A/W/m^2
+      NBI -> fast ion -> pressure gradient -> extra bootstrap:
+        I_NBI->bs ~ 0.3 x I_NBI,direct  (empirical)
 
-  (4) I_LHCD = η_LHCD × P_LHCD / (n_e,20 × R₀)
-      → KSTAR 현재 미설치 (I_LHCD = 0)
+  (4) I_LHCD = eta_LHCD x P_LHCD / (n_e,20 x R0)
+      -> not installed in current KSTAR (I_LHCD = 0)
 
   (5) I_ohmic = V_loop / R_plasma
-      → 정상 상태 목표: V_loop → 0, I_ohmic → 0
+      -> steady-state target: V_loop -> 0, I_ohmic -> 0
 
-  ═══ 300초 정상 상태를 위한 전류 예산 ═══
+  === Current budget for 300 s steady state ===
 
-  목표: I_ohmic → 0, 즉 I_bs + I_CD = I_p
+  Target: I_ohmic -> 0, i.e. I_bs + I_CD = I_p
 
-  Scenario B 상세 전류 예산:
+  Scenario B detailed current budget:
 
     I_p = 0.4 MA = 400 kA
 
     I_bs:
-      f_bs = 55% → I_bs = 220 kA
-      구성: I_bs,ped(pedestal) = 80 kA (36%)
-            I_bs,core(core ITB) = 100 kA (45%)
-            I_bs,edge(edge) = 40 kA (18%)
+      f_bs = 55% -> I_bs = 220 kA
+      Composition: I_bs,ped(pedestal) = 80 kA (36%)
+                   I_bs,core(core ITB) = 100 kA (45%)
+                   I_bs,edge(edge) = 40 kA (18%)
 
     I_ECCD:
-      P_ECH = 3 MW, η = 0.035 × 10²⁰
-      I_ECCD = 0.035e20 × 3e6 / (0.4e20 × 1.8)
-             = 1.05e26 / 7.2e19 = ... → 약 0.146 MA ≈ 100 kA (25%)
-      배분: ρ=0.5 (주력 CD) = 60 kA
-            ρ=0.3 (NTM q=3/2) = 20 kA
-            ρ=0.7 (NTM q=2) = 20 kA
+      P_ECH = 3 MW, eta = 0.035 x 10^20
+      I_ECCD = 0.035e20 x 3e6 / (0.4e20 x 1.8)
+             = 1.05e26 / 7.2e19 = ... -> about 0.146 MA ~ 100 kA (25%)
+      Distribution: rho=0.5 (main CD) = 60 kA
+                    rho=0.3 (NTM q=3/2) = 20 kA
+                    rho=0.7 (NTM q=2) = 20 kA
 
     I_NBCD:
-      P_NBI = 8 MW, η = 0.035 × 10²⁰
-      I_NBI,direct = 0.035e20 × 8e6 / (0.4e20 × 1.8) ≈ 39 kA
-      I_NBI→bs ≈ 12 kA (fast ion bootstrap)
-      I_NBCD,total ≈ 51 kA → ~60 kA (15%)
+      P_NBI = 8 MW, eta = 0.035 x 10^20
+      I_NBI,direct = 0.035e20 x 8e6 / (0.4e20 x 1.8) ~ 39 kA
+      I_NBI->bs ~ 12 kA (fast-ion bootstrap)
+      I_NBCD,total ~ 51 kA -> ~60 kA (15%)
 
-    잔여 ohmic:
+    Residual ohmic:
       I_ohmic = 400 - 220 - 100 - 60 = 20 kA (5%)
-      V_loop = 20 kA × R_plasma ≈ 0.02 × 1.4 μΩ ≈ 0.0014 V
-      → τ_pulse = 14 Wb / 0.0014 V ≈ 10,000초 (2.8시간)
+      V_loop = 20 kA x R_plasma ~ 0.02 x 1.4 micro-ohm ~ 0.0014 V
+      -> tau_pulse = 14 Wb / 0.0014 V ~ 10,000 s (2.8 h)
 
-  ═══ 전류 평형 안정성 ═══
+  === Current-balance stability ===
 
-  자기장 확산 방정식:
-    ∂ψ/∂t = (η_R / μ₀) × (1/r) × ∂/∂r [r × ∂ψ/∂r] + j_bs(r) + j_CD(r)
+  Magnetic-field diffusion equation:
+    d_psi/dt = (eta_R / mu_0) x (1/r) x d/dr [r x d_psi/dr] + j_bs(r) + j_CD(r)
 
-  정상 상태 조건 (∂ψ/∂t = 0):
-    (η_R / μ₀) × ∇²ψ = j_ext - j_bs
+  Steady-state condition (d_psi/dt = 0):
+    (eta_R / mu_0) x grad^2 psi = j_ext - j_bs
 
-  자기장 확산 시간:
-    τ_R = μ₀ σ_Spitzer × a² ≈ μ₀ × (T_e^1.5 / Z_eff) × a²
-    KSTAR: T_e=10 keV → σ_Spitzer ≈ 4.5 × 10⁸ Ω⁻¹m⁻¹
-    τ_R = 4π × 10⁻⁷ × 4.5e8 × 0.25
-        = 565 × 0.25 = 141초
+  Magnetic-field diffusion time:
+    tau_R = mu_0 sigma_Spitzer x a^2 ~ mu_0 x (T_e^1.5 / Z_eff) x a^2
+    KSTAR: T_e=10 keV -> sigma_Spitzer ~ 4.5 x 10^8 Ohm^-1 m^-1
+    tau_R = 4 pi x 10^-7 x 4.5e8 x 0.25
+          = 565 x 0.25 = 141 s
 
-  → τ_R ≈ 140초: 전류 분포가 정상 상태에 도달하는 데 ~3τ_R ≈ 420초 필요
-  → 300초 운전은 τ_R의 ~2배 → 준정상 상태(quasi-steady)
-  → 완전 정상 상태 전류 프로파일은 ~500초 이후부터
+  -> tau_R ~ 140 s: current distribution needs ~3 tau_R ~ 420 s to reach steady
+  -> 300 s operation is ~2 tau_R -> quasi-steady
+  -> Fully steady-state current profile only after ~500 s
 ```
 
 ---
 
-## 12. 플라즈마 수송 심화
+## 12. Plasma Transport Deep Dive
 
-### 12.1 Anomalous Transport — 터뷸런스 모드 분석
+### 12.1 Anomalous Transport — Turbulence Mode Analysis
 
 ```
-  토카막 수송의 핵심: 신고전(neoclassical) 수송 << 실제 수송 (anomalous)
-  원인: 마이크로 터뷸런스 (micro-turbulence)
+  Core fact of tokamak transport: neoclassical << actual (anomalous)
+  Cause: micro-turbulence
 
-  ═══ 3대 터뷸런스 모드 ═══
+  === Three major turbulence modes ===
 
-  (1) ITG (Ion Temperature Gradient) 모드
-      구동: ∇T_i / T_i 가 임계값 초과 시 불안정
-      특성:
-        파장: k_⊥ρ_i ~ 0.1-0.5 (이온 자이로반경 스케일)
-        성장률: γ_ITG ~ (v_thi / R₀) × √(R/L_Ti - R/L_Ti,crit)
-        수송: 주로 이온 열수송 (χ_i >> χ_e)
-      임계 구배:
-        R/L_Ti,crit ≈ 4-8 (형상/q/자기전단 의존)
-        KSTAR: R/L_Ti,crit ≈ 5-6 (typical)
+  (1) ITG (Ion Temperature Gradient) mode
+      Drive: unstable when grad T_i / T_i exceeds threshold
+      Features:
+        Wavelength: k_perp rho_i ~ 0.1-0.5 (ion gyro-radius scale)
+        Growth rate: gamma_ITG ~ (v_thi / R0) x sqrt(R/L_Ti - R/L_Ti,crit)
+        Transport: mainly ion heat transport (chi_i >> chi_e)
+      Critical gradient:
+        R/L_Ti,crit ~ 4-8 (shape/q/magnetic-shear dependent)
+        KSTAR: R/L_Ti,crit ~ 5-6 (typical)
 
-      KSTAR에서의 중요성: ★★★ (지배적 모드)
-        표준 H-mode에서 core 수송의 60-80%를 ITG가 담당
-        χ_i(ITG) ~ 1-5 m²/s (실측)
-        ITB 형성 = ITG 억제 성공의 증거
+      Importance at KSTAR: *** (dominant mode)
+        60-80% of core transport in standard H-mode is ITG
+        chi_i(ITG) ~ 1-5 m^2/s (measured)
+        ITB formation = evidence of successful ITG suppression
 
   (2) TEM (Trapped Electron Mode)
-      구동: ∇n_e 와 ∇T_e 가 trapped 전자를 통해 불안정 유발
-      특성:
-        파장: k_⊥ρ_i ~ 0.2-1.0
-        성장률: γ_TEM ~ ω_*e × f_t × η_e / (1 + η_e)
-          ω_*e = drift 주파수 = k_θ T_e / (eB L_ne)
-          η_e = L_ne / L_Te (밀도 구배 대 온도 구배 비)
-        수송: 전자 열수송 + 입자 수송
+      Drive: grad n_e and grad T_e induce instability through trapped electrons
+      Features:
+        Wavelength: k_perp rho_i ~ 0.2-1.0
+        Growth rate: gamma_TEM ~ omega_*e x f_t x eta_e / (1 + eta_e)
+          omega_*e = drift frequency = k_theta T_e / (eB L_ne)
+          eta_e = L_ne / L_Te (density gradient / temperature gradient ratio)
+        Transport: electron heat transport + particle transport
 
-      KSTAR에서의 중요성: ★★ (부차적)
-        저밀도 시나리오(B, C)에서 상대적 중요성 증가
-        TEM은 밀도 피킹을 유발 → bootstrap 전류 증강에 유리!
-        → Scenario B/C에서 TEM의 "긍정적 역할" 존재
+      Importance at KSTAR: ** (secondary)
+        Relative importance rises in low-density scenarios (B, C)
+        TEM causes density peaking -> favorable for bootstrap augmentation!
+        -> "positive role" of TEM exists in Scenario B/C
 
-  (3) ETG (Electron Temperature Gradient) 모드
-      구동: ∇T_e / T_e 가 임계값 초과
-      특성:
-        파장: k_⊥ρ_e ~ 0.1-0.5 (전자 자이로반경 스케일)
-        성장률: γ_ETG ~ (v_the / R₀) × √(R/L_Te - R/L_Te,crit)
-        수송: 전자 열수송만 (χ_e)
-      임계 구배:
-        R/L_Te,crit ≈ 5-8
+  (3) ETG (Electron Temperature Gradient) mode
+      Drive: grad T_e / T_e exceeds threshold
+      Features:
+        Wavelength: k_perp rho_e ~ 0.1-0.5 (electron gyro-radius scale)
+        Growth rate: gamma_ETG ~ (v_the / R0) x sqrt(R/L_Te - R/L_Te,crit)
+        Transport: only electron heat (chi_e)
+      Critical gradient:
+        R/L_Te,crit ~ 5-8
 
-      KSTAR에서의 중요성: ★ (제한적)
-        ETG의 수송 기여는 논쟁 중 (streamers vs isotropic)
-        KSTAR 스케일에서 ETG 직접 관측 어려움
-        ECH 가열 시 전자 온도 구배 강화 → ETG 활성화 가능
+      Importance at KSTAR: * (limited)
+        ETG transport contribution is debated (streamers vs isotropic)
+        Direct ETG observation at KSTAR scale is difficult
+        ECH heating strengthens electron temperature gradient -> may activate ETG
 
-  ═══ KSTAR 파라미터에서의 지배 모드 판별 ═══
+  === Dominant mode identification at KSTAR parameters ===
 
-  ┌────────────────────────────────────────────────────────────────┐
-  │ 영역         │ Scenario A    │ Scenario B    │ Scenario C     │
-  ├────────────────────────────────────────────────────────────────┤
-  │ Core (ρ<0.3) │ ITG 지배     │ ITG + TEM    │ TEM 지배       │
-  │ Mid (0.3-0.7) │ ITG 지배    │ ITG (ITB↓)   │ ITG 억제(ITB) │
-  │ Edge (ρ>0.7) │ ITG+TEM     │ ITG+TEM      │ ITG+TEM        │
-  │ Pedestal     │ KBM/Peeling  │ KBM/Peeling  │ (약한 ped)    │
-  └────────────────────────────────────────────────────────────────┘
+  +----------------------------------------------------------------+
+  | Region       | Scenario A    | Scenario B    | Scenario C     |
+  +----------------------------------------------------------------+
+  | Core (rho<0.3)| ITG dominant | ITG + TEM     | TEM dominant   |
+  | Mid (0.3-0.7) | ITG dominant | ITG (ITB down)| ITG suppressed |
+  | Edge (rho>0.7)| ITG+TEM      | ITG+TEM       | ITG+TEM        |
+  | Pedestal     | KBM/Peeling   | KBM/Peeling   | (weak ped)     |
+  +----------------------------------------------------------------+
 
-  KBM = Kinetic Ballooning Mode (pedestal 영역 전용)
+  KBM = Kinetic Ballooning Mode (pedestal region only)
 ```
 
-### 12.2 ITB 형성 메커니즘 — E x B Shear 억제
+### 12.2 ITB Formation Mechanism — E x B Shear Suppression
 
 ```
-  ═══ 터뷸런스 억제 판정 조건 ═══
+  === Turbulence-suppression criterion ===
 
-  핵심 부등식 (Biglari, Diamond, Terry, 1990):
+  Core inequality (Biglari, Diamond, Terry, 1990):
 
-    ω_E×B > γ_max
+    omega_ExB > gamma_max
 
-    ω_E×B = (RB_θ/B) × d/dr [E_r / (RB_θ)]  (E×B shearing rate)
-    γ_max = 터뷸런스 최대 성장률
+    omega_ExB = (R B_theta / B) x d/dr [E_r / (R B_theta)]  (ExB shearing rate)
+    gamma_max = maximum turbulence growth rate
 
-  E_r (방사형 전기장)의 구성:
+  Composition of E_r (radial electric field):
 
-    E_r = (1/n_i Z_i e) × dp_i/dr - v_θ × B_φ + v_φ × B_θ
+    E_r = (1 / n_i Z_i e) x dp_i/dr - v_theta x B_phi + v_phi x B_theta
 
-    3개 항:
-      (a) 반경 압력 구배 항: ∇p_i / (n_i Z_i e)
-      (b) Poloidal 회전 항: -v_θ B_φ
-      (c) Toroidal 회전 항: +v_φ B_θ  ← NBI에 의해 지배적
+    Three terms:
+      (a) radial pressure-gradient term: grad p_i / (n_i Z_i e)
+      (b) poloidal rotation term: -v_theta B_phi
+      (c) toroidal rotation term: +v_phi B_theta  <- NBI-dominated
 
-  KSTAR ITB 형성 경로:
+  KSTAR ITB formation path:
 
-    Step 1: NBI co-injection → v_φ ~ 100-200 km/s
-    Step 2: v_φ 구배 형성 → E_r shear 발생
-    Step 3: ω_E×B > γ_ITG 조건 충족 → 터뷸런스 억제
-    Step 4: 수송 감소 → 압력 구배 증가 → ∇p → E_r 자기 강화
-    Step 5: 양의 되먹임 → ITB 자발 형성 및 성장
+    Step 1: NBI co-injection -> v_phi ~ 100-200 km/s
+    Step 2: v_phi gradient forms -> E_r shear develops
+    Step 3: omega_ExB > gamma_ITG -> turbulence suppressed
+    Step 4: Transport decreases -> pressure gradient grows -> grad p -> E_r self-reinforces
+    Step 5: Positive feedback -> ITB spontaneously forms and grows
 
-  정량 추정 (Scenario B):
-    v_φ(NBI) ~ 150 km/s, dv_φ/dr ~ 300 km/s/m (at ITB location)
-    B_θ ~ 0.14 T (0.4 MA)
-    → v_φ B_θ 항: 150e3 × 0.14 = 21 kV/m
+  Quantitative estimate (Scenario B):
+    v_phi(NBI) ~ 150 km/s, dv_phi/dr ~ 300 km/s/m (at ITB location)
+    B_theta ~ 0.14 T (0.4 MA)
+    -> v_phi B_theta term: 150e3 x 0.14 = 21 kV/m
 
-    E_r = ~20-30 kV/m
-    ω_E×B = RB_θ/B × |dE_r/dr| / (RB_θ)
-           ~ |dE_r/dr| / B
-           ~ (20 kV/m / 0.1 m) / 3.5 T
-           = 200 kV/m² / 3.5 T
-           = 5.7 × 10⁴ s⁻¹
+    E_r ~ 20-30 kV/m
+    omega_ExB = R B_theta/B x |dE_r/dr| / (R B_theta)
+              ~ |dE_r/dr| / B
+              ~ (20 kV/m / 0.1 m) / 3.5 T
+              = 200 kV/m^2 / 3.5 T
+              = 5.7 x 10^4 s^-1
 
-    γ_ITG ~ v_thi / (qR) ~ 3e5 / (5 × 1.8)
-          = 3.3 × 10⁴ s⁻¹
+    gamma_ITG ~ v_thi / (qR) ~ 3e5 / (5 x 1.8)
+              = 3.3 x 10^4 s^-1
 
-    ω_E×B / γ_ITG ≈ 1.7 > 1 → ITB 형성 가능 ✅
+    omega_ExB / gamma_ITG ~ 1.7 > 1 -> ITB formation feasible [OK]
 
-  역전단(reversed shear)의 추가 효과:
-    q_min 근처에서 자기전단(magnetic shear) s = (r/q)(dq/dr) → 0
-    s → 0에서 ITG 임계 구배 R/L_Ti,crit 증가 (안정화 효과)
-    → 더 적은 E×B shear로도 ITB 형성 가능
-    → Scenario C가 ITB 형성에 유리한 물리적 이유
+  Extra effect of reversed shear:
+    Near q_min, magnetic shear s = (r/q)(dq/dr) -> 0
+    At s -> 0, ITG critical gradient R/L_Ti,crit rises (stabilizing)
+    -> ITB can form with less ExB shear
+    -> Physical reason Scenario C favors ITB formation
 ```
 
-### 12.3 Neoclassical 수송 — 바나나 영역 상세
+### 12.3 Neoclassical Transport — Banana-Regime Details
 
 ```
-  ═══ 충돌 영역별 수송 계수 ═══
+  === Transport coefficients by collisionality regime ===
 
-  (1) 바나나 영역 (ν_* < 1) — KSTAR Scenario B, C
-      D_neo = q² ρ_p² ν_ii / ε^(3/2)
+  (1) Banana regime (nu_* < 1) — KSTAR Scenario B, C
+      D_neo = q^2 rho_p^2 nu_ii / eps^(3/2)
 
-      여기서 ρ_p = v_th,i / ω_ci (이온 poloidal gyroradius)
+      where rho_p = v_th,i / omega_ci (ion poloidal gyroradius)
 
-      KSTAR 계산:
-        v_th,i = √(2 T_i / m_D) = √(2 × 12e3 × 1.6e-19 / 3.34e-27)
-               = √(1.15e12) = 1.07 × 10⁶ m/s
-        ω_ci = eB/m_D = 1.6e-19 × 3.5 / 3.34e-27 = 1.68 × 10⁸ rad/s
-        ρ_p = v_th,i / (ω_ci × √ε) = 1.07e6 / (1.68e8 × 0.527) = 0.012 m
+      KSTAR calculation:
+        v_th,i = sqrt(2 T_i / m_D) = sqrt(2 x 12e3 x 1.6e-19 / 3.34e-27)
+               = sqrt(1.15e12) = 1.07 x 10^6 m/s
+        omega_ci = eB/m_D = 1.6e-19 x 3.5 / 3.34e-27 = 1.68 x 10^8 rad/s
+        rho_p = v_th,i / (omega_ci x sqrt(eps)) = 1.07e6 / (1.68e8 x 0.527) = 0.012 m
 
-        D_neo = 5² × 0.012² × 1e3 / 0.278^1.5
-              = 25 × 1.44e-4 × 1e3 / 0.147
+        D_neo = 5^2 x 0.012^2 x 1e3 / 0.278^1.5
+              = 25 x 1.44e-4 x 1e3 / 0.147
               = 3.6 / 0.147
-              = 24.5 m²/s → ← 이것은 과대평가
+              = 24.5 m^2/s -> this is an overestimate
 
-      실측 보정: D_neo,KSTAR ~ 0.01-0.05 m²/s (banana 영역)
-      Anomalous: D_anom ~ 0.5-2.0 m²/s
-      비율: D_anom / D_neo ~ 10-100
+      Empirical correction: D_neo,KSTAR ~ 0.01-0.05 m^2/s (banana regime)
+      Anomalous: D_anom ~ 0.5-2.0 m^2/s
+      Ratio: D_anom / D_neo ~ 10-100
 
-      → Neoclassical 수송은 anomalous의 1-10% 수준
-      → 예외: ITB 내부에서는 anomalous 억제 → neoclassical에 근접!
+      -> Neoclassical transport is ~1-10% of anomalous
+      -> Exception: inside an ITB, anomalous is suppressed -> close to neoclassical!
 
-  (2) 고원 영역 (1 < ν_* < ε^(-3/2)) — KSTAR Scenario A (일부)
-      D_plateau = q² ρ_p² / (R₀ × ε^0.5)
-      → banana 대비 감소된 수송
+  (2) Plateau regime (1 < nu_* < eps^(-3/2)) — KSTAR Scenario A (partial)
+      D_plateau = q^2 rho_p^2 / (R0 x eps^0.5)
+      -> reduced transport relative to banana
 
-  (3) Pfirsch-Schlüter 영역 (ν_* > ε^(-3/2)) — KSTAR 해당 없음
-      D_PS = 2q² D_classical
-      → KSTAR는 고온 운전이므로 이 영역에 해당하지 않음
+  (3) Pfirsch-Schlueter regime (nu_* > eps^(-3/2)) — not applicable to KSTAR
+      D_PS = 2 q^2 D_classical
+      -> KSTAR operates hot enough not to reach this regime
 
-  ═══ KSTAR 영역 결론 ═══
+  === KSTAR regime conclusion ===
 
-  Scenario B/C는 깊은 바나나 영역 (ν_* ~ 0.06-0.15)
-  → Bootstrap 전류 극대화에 최적
-  → Neoclassical 수송은 ITB 내부 성능의 하한을 결정
+  Scenarios B/C are in the deep banana regime (nu_* ~ 0.06-0.15)
+  -> Optimal for bootstrap-current maximization
+  -> Neoclassical transport sets the lower bound on ITB-interior performance
 ```
 
-### 12.4 입자 수송 — 밀도 피킹과 Bootstrap 증강
+### 12.4 Particle Transport — Density Peaking and Bootstrap Augmentation
 
 ```
-  ═══ 밀도 피킹의 물리 ═══
+  === Physics of density peaking ===
 
-  밀도 프로파일 피킹 계수: ν_p = n_e(0) / <n_e>
+  Density profile peaking factor: nu_p = n_e(0) / <n_e>
 
-  피킹 메커니즘:
-    (a) Ware pinch (neoclassical): V_Ware = -E_φ × ε / B_θ
-        → V_loop > 0이면 안쪽으로 입자 수송 (pinch)
-        → 정상 상태(V_loop→0)에서 Ware pinch 소멸!
+  Peaking mechanisms:
+    (a) Ware pinch (neoclassical): V_Ware = -E_phi x eps / B_theta
+        -> V_loop > 0 drives inward particle pinch
+        -> In steady state (V_loop -> 0), Ware pinch vanishes!
 
     (b) Turbulent pinch (anomalous):
-        TEM 모드에 의한 내향 입자 수속
-        V_TEM ∝ -D_turb × (C_T × ∇T_e/T_e + C_thermo)
-        → thermodiffusion: 온도 구배에 의한 밀도 피킹
+        inward particle flux from TEM mode
+        V_TEM ~ -D_turb x (C_T x grad T_e/T_e + C_thermo)
+        -> thermodiffusion: density peaking driven by temperature gradient
 
     (c) NBI fueling:
-        중성빔이 core에 직접 입자 공급
-        NBI deposition 프로파일: ρ ~ 0.0-0.5
+        neutral beam supplies particles directly to the core
+        NBI deposition profile: rho ~ 0.0-0.5
 
-  KSTAR 시나리오별 밀도 피킹:
-    ┌────────────────────────────────────────┐
-    │ Scenario │ ν_p    │ 주요 메커니즘      │
-    ├────────────────────────────────────────┤
-    │ A        │ 1.3-1.5│ Ware + NBI        │
-    │ B        │ 1.5-2.0│ TEM + NBI + ITB   │
-    │ C        │ 2.0-3.0│ ITB 지배 (stiff)  │
-    └────────────────────────────────────────┘
+  Density peaking per KSTAR scenario:
+    +----------------------------------------+
+    | Scenario | nu_p    | Main mechanism    |
+    +----------------------------------------+
+    | A        | 1.3-1.5 | Ware + NBI        |
+    | B        | 1.5-2.0 | TEM + NBI + ITB   |
+    | C        | 2.0-3.0 | ITB dominant(stiff)|
+    +----------------------------------------+
 
-  ═══ 피킹이 Bootstrap에 미치는 효과 ═══
+  === Effect of peaking on Bootstrap ===
 
-  j_bs ∝ -(n dT/dr + T dn/dr) / B_θ
+  j_bs ~ -(n dT/dr + T dn/dr) / B_theta
 
-  밀도 구배 dn/dr의 기여:
-    - 밀도 피킹 ν_p = 2.0 → |∇n/n| ~ 1/a = 2 m⁻¹
-    - 온도 구배 기여와 동등한 크기
+  Contribution of density gradient dn/dr:
+    - Density peaking nu_p = 2.0 -> |grad n / n| ~ 1/a = 2 m^-1
+    - Comparable magnitude to the temperature-gradient contribution
 
-  정량적 Bootstrap 증강:
-    밀도 피킹 없음 (flat): f_bs ~ 40% (온도 구배만)
-    밀도 피킹 ν_p=1.5:     f_bs ~ 48% (+20% 증강)
-    밀도 피킹 ν_p=2.0:     f_bs ~ 55% (+38% 증강)
+  Quantitative bootstrap enhancement:
+    No peaking (flat): f_bs ~ 40% (temperature gradient only)
+    Peaking nu_p=1.5:  f_bs ~ 48% (+20% enhancement)
+    Peaking nu_p=2.0:  f_bs ~ 55% (+38% enhancement)
 
-    → 밀도 피킹이 f_bs 50%(=1/φ) 달성의 결정적 요인!
+    -> Density peaking is decisive for reaching f_bs = 50% (= 1/phi)!
 ```
 
-### 12.5 불순물 수송 — W 축적 리스크와 Seeding 최적화
+### 12.5 Impurity Transport — W Accumulation Risk and Seeding Optimization
 
 ```
-  ═══ 텅스텐(W) 축적 메커니즘 ═══
+  === Tungsten (W) accumulation mechanism ===
 
-  W 불순물의 위험:
-    Z_W ≈ 40-50 (고온 플라즈마에서)
-    복사 손실: P_rad(W) ∝ n_W × n_e × L_W(T_e)
-    W 농도 c_W = n_W/n_e > 10⁻⁵이면 플라즈마 붕괴 가능
+  Risk of W impurity:
+    Z_W ~ 40-50 (in hot plasma)
+    Radiation loss: P_rad(W) ~ n_W x n_e x L_W(T_e)
+    W concentration c_W = n_W/n_e > 10^-5 can collapse the plasma
 
-  W 축적의 neoclassical 메커니즘:
-    고Z 불순물은 중심으로 축적하는 경향 (neoclassical inward pinch)
-    V_neo,W = -Z_W × D_neo × (n_i'/n_i + Z_W T_i'/(2T_i))
+  Neoclassical mechanism of W accumulation:
+    High-Z impurities tend to accumulate toward the center (neoclassical inward pinch)
+    V_neo,W = -Z_W x D_neo x (n_i'/n_i + Z_W T_i'/(2 T_i))
 
-    온도 screening 효과:
-      ∇T_i가 충분히 강하면 → W를 바깥으로 밀어냄
-      조건: |T_i'/T_i| > |n_i'/n_i| × T_screening_factor
+    Temperature screening effect:
+      If grad T_i is strong enough -> pushes W outward
+      Condition: |T_i'/T_i| > |n_i'/n_i| x T_screening_factor
 
-  KSTAR W 축적 리스크 평가:
+  KSTAR W-accumulation risk assessment:
 
-    현재 (300초):
-      W 소스: 디버터 스퍼터링 → 10¹⁶ atoms/s
-      W 침투: SOL → pedestal → core (수송 시간 ~1초)
-      c_W ~ 5 × 10⁻⁶ (관리 가능)
-      Z_eff 기여: +0.1-0.2
+    Current (300 s):
+      W source: divertor sputtering -> 10^16 atoms/s
+      W penetration: SOL -> pedestal -> core (transport time ~1 s)
+      c_W ~ 5 x 10^-6 (manageable)
+      Z_eff contribution: +0.1-0.2
 
-    정상 상태 (>1000초):
-      W 소스 누적 → c_W 점진 상승
-      온도 screening이 유지되면 안정화 가능
-      BUT: ITB 내부에서 온도 구배 감소 시 축적 위험!
+    Steady state (>1000 s):
+      W source accumulates -> c_W rises gradually
+      If temperature screening is sustained, equilibrium possible
+      BUT: risk when ITB-interior temperature gradient weakens!
 
-  ═══ Seeding 최적화 전략 ═══
+  === Seeding optimization strategy ===
 
-  목적: 디버터 W 소스 억제 + edge 복사 증강
+  Purpose: suppress divertor W source + enhance edge radiation
 
-  N2 (질소) seeding:
-    최적 주입률: Γ_N2 = 3-8 × 10²⁰ atoms/s
-    효과: T_e,div < 5 eV → W 스퍼터 임계치 이하
-    부작용: N이 core에 침투 시 Z_eff +=0.1-0.3
-    제어: Z_eff 피드백 (Z_eff > 1.5 시 감소)
+  N2 (nitrogen) seeding:
+    Optimal injection rate: Gamma_N2 = 3-8 x 10^20 atoms/s
+    Effect: T_e,div < 5 eV -> below W sputtering threshold
+    Side effect: when N penetrates core, Z_eff += 0.1-0.3
+    Control: Z_eff feedback (reduce when Z_eff > 1.5)
 
-  Ne (네온) seeding (보조):
-    목적: X-point 영역 복사 증강
-    장점: N2보다 높은 T에서 복사 → SOL 복사 증가
-    단점: core 침투 시 W보다 해로움
-    사용: Scenario B/C의 고온 SOL에서 보조 역할
+  Ne (neon) seeding (auxiliary):
+    Purpose: enhance radiation near X-point
+    Advantage: radiates at higher T than N2 -> boosts SOL radiation
+    Drawback: more harmful than W if it penetrates core
+    Use: supporting role at hot SOL in Scenarios B/C
 
-  복합 seeding (N2 + Ne):
-    N2: 디버터 detachment 유지
-    Ne: SOL/X-point 복사 보완
-    비율: N2:Ne ≈ 5:1 (경험적 최적)
-    → f_rad = 0.85-0.95 달성 가능
+  Combined seeding (N2 + Ne):
+    N2: maintain divertor detachment
+    Ne: complement SOL/X-point radiation
+    Ratio: N2:Ne ~ 5:1 (empirical optimum)
+    -> f_rad = 0.85-0.95 achievable
 ```
 
 ---
 
-## 13. ELM 제어 완전 전략
+## 13. ELM Control — Full Strategy
 
-### 13.1 Type I ELM의 물리적 특성
+### 13.1 Physical Properties of Type I ELMs
 
 ```
-  ═══ Type I ELM 기본 물리 ═══
+  === Basic Type I ELM physics ===
 
   ELM (Edge Localized Mode):
-    Peeling-ballooning 불안정성의 비선형 폭발
-    H-mode pedestal의 압력 구배 + 전류 밀도가 임계값 초과 시 발생
+    Nonlinear burst of peeling-ballooning instability
+    Triggered when H-mode pedestal pressure gradient + current density exceed threshold
 
-  KSTAR Type I ELM 특성:
-    ┌──────────────────────────────────────────────────────┐
-    │ 파라미터                  KSTAR 실측값                │
-    ├──────────────────────────────────────────────────────┤
-    │ ELM 에너지 손실           ΔW_ELM = 20-80 kJ         │
-    │ 상대 손실                 ΔW/W = 3-10%               │
-    │ ELM 주파수                f_ELM = 10-80 Hz           │
-    │ ELM 지속 시간             τ_ELM = 0.5-2 ms           │
-    │ 순간 열부하               q_ELM = 50-150 MW/m²       │
-    │ ELM 영향 면적             A_ELM = 0.02-0.05 m²       │
-    │ 에너지 분배 (inner:outer)  30:70                      │
-    └──────────────────────────────────────────────────────┘
+  KSTAR Type I ELM characteristics:
+    +------------------------------------------------------+
+    | Parameter                 KSTAR measured value        |
+    +------------------------------------------------------+
+    | ELM energy loss          DeltaW_ELM = 20-80 kJ        |
+    | Relative loss            DeltaW/W = 3-10%             |
+    | ELM frequency            f_ELM = 10-80 Hz             |
+    | ELM duration             tau_ELM = 0.5-2 ms           |
+    | Peak heat load           q_ELM = 50-150 MW/m^2        |
+    | ELM affected area        A_ELM = 0.02-0.05 m^2        |
+    | Energy split (inner:outer) 30:70                      |
+    +------------------------------------------------------+
 
-  ELM 에너지 파라미터 분해:
-    ΔW_ELM / W_ped = (3/2) × δp_ped/p_ped × V_ped/V_total
-    여기서 V_ped/V_total ~ 0.3 (pedestal 체적 분율)
+  ELM energy breakdown:
+    DeltaW_ELM / W_ped = (3/2) x dp_ped/p_ped x V_ped/V_total
+    where V_ped/V_total ~ 0.3 (pedestal volume fraction)
 
-  300초 운전에서의 ELM 누적:
-    f_ELM = 30 Hz × 300초 = 9,000 ELM events
-    각 ELM에서 W 스퍼터링 → 총 W 입자 ~ 9000 × 10¹⁴ = 9 × 10¹⁷ atoms
-    → 누적 c_W ∝ 운전 시간 × f_ELM × yield_W
-    → 장시간에서 ELM 제어가 불순물 관리의 핵심
+  ELM accumulation over 300 s:
+    f_ELM = 30 Hz x 300 s = 9,000 ELM events
+    W sputtering per ELM -> total W particles ~ 9000 x 10^14 = 9 x 10^17 atoms
+    -> cumulative c_W ~ operating time x f_ELM x yield_W
+    -> Over long durations, ELM control is the key to impurity management
 
-  정상 상태 디버터 한계:
-    inter-ELM: q_peak ~ 5-10 MW/m² (detachment로 < 3 MW/m²)
-    ELM 시: 50-150 MW/m² → W 표면 용융 위험 (>50 MW/m² × 1ms)
-    → ELM 에너지 감소 또는 ELM 완전 억제 필수
+  Steady-state divertor limits:
+    inter-ELM: q_peak ~ 5-10 MW/m^2 (< 3 MW/m^2 with detachment)
+    During ELM: 50-150 MW/m^2 -> W-surface melting risk (>50 MW/m^2 x 1 ms)
+    -> ELM energy reduction or complete suppression is mandatory
 ```
 
-### 13.2 RMP (Resonant Magnetic Perturbation) 코일 시스템
+### 13.2 RMP (Resonant Magnetic Perturbation) Coil System
 
 ```
-  ═══ KSTAR RMP 코일 구성 ═══
+  === KSTAR RMP coil configuration ===
 
   In-Vessel Control (IVC) coils:
-    위치: 진공용기 내부 벽면 (세계 유일!)
-    배치: 상부 4개 + 하부 4개 = 8개 (= σ - τ)
-    모드: n=1, n=2 toroidal mode 생성 가능
-    전류: 최대 5 kA/turn
-    응답: ~1 ms (진공용기 내부 → 침투 지연 없음!)
+    Location: vacuum-vessel inner wall (unique in the world!)
+    Layout: 4 upper + 4 lower = 8 coils (= sigma - tau)
+    Modes: can generate n=1, n=2 toroidal modes
+    Current: up to 5 kA/turn
+    Response: ~1 ms (inside vessel -> no penetration delay!)
 
-    KSTAR 고유 장점:
-      대부분의 토카막(ITER 포함)은 RMP가 진공용기 외부
-      → 금속 벽 침투에 수 ms 지연 + 이미지 전류로 약화
-      KSTAR: 벽 내부 설치 → 즉각 반응 + 전체 스펙트럼 유지 ★
+    KSTAR unique advantage:
+      Most tokamaks (including ITER) have RMP coils outside the vessel
+      -> ms delay from metal-wall penetration + weakened by image currents
+      KSTAR: inside the wall -> immediate response + full spectrum preserved *
 
-  ═══ RMP 적용 모드와 n=6 연결 ═══
+  === RMP applied modes and n=6 connection ===
 
-  적용 가능 toroidal mode:
+  Applicable toroidal modes:
 
-    n=1 모드:
-      가장 강한 perturbation (δB/B ~ 10⁻³)
-      ELM 완전 억제에 가장 효과적
-      BUT: core 회전 braking 큼 → 가둠 성능 저하
+    n=1 mode:
+      Strongest perturbation (dB/B ~ 10^-3)
+      Most effective for full ELM suppression
+      BUT: large core rotation braking -> reduced confinement
 
-    n=2 모드:
-      중간 perturbation (δB/B ~ 5×10⁻⁴)
-      ELM 완화(mitigation) + 가둠 유지
-      KSTAR에서 가장 많이 사용
+    n=2 mode:
+      Intermediate perturbation (dB/B ~ 5 x 10^-4)
+      ELM mitigation while preserving confinement
+      Most-used mode at KSTAR
 
-    n=3 모드 (n/φ):
-      약한 perturbation → 보조적 사용
-      edge stochastic layer 형성
-      KSTAR IVC 배치로 n=3 직접 생성 어려움 → 비선형 coupling으로 발생
+    n=3 mode (n/phi):
+      Weak perturbation -> auxiliary use
+      Forms edge stochastic layer
+      Hard to generate n=3 directly with KSTAR IVC layout -> arises via nonlinear coupling
 
-  n=6와의 연결:
-    적용 모드 n=1, 2 → n의 약수 = div(6) = {1, 2, 3, 6}의 부분집합
-    IVC 코일 4세트 (상+하): τ(6) = 4
-    실효적 모드 조합: n=1 + n=2 = 3가지 패턴 = n/φ
-    → KSTAR의 RMP가 n=6의 약수 구조를 활용한다고 해석 가능
-    Grade: CLOSE (물리적 인과관계는 미증명)
+  Connection to n=6:
+    Applied modes n=1, 2 -> subset of divisors div(6) = {1, 2, 3, 6}
+    IVC coil 4-sets (upper + lower): tau(6) = 4
+    Effective mode combinations: n=1 + n=2 = 3 patterns = n/phi
+    -> KSTAR's RMP can be interpreted as exploiting the n=6 divisor structure
+    Grade: CLOSE (physical causality unproven)
 
-  ═══ ELM 억제 vs 완화 — 운전 윈도우 ═══
+  === ELM suppression vs mitigation — operating window ===
 
-  ELM 억제 (suppression): ELM 완전 소멸
-    조건: edge 안전인자 q₉₅ 윈도우 내 (resonant)
-    KSTAR 실적: n=1에서 다수 시연 (수 초 단위)
-    장시간 유지: 안전인자 정밀 제어 필요 → 피드백 필수
+  ELM suppression: full ELM elimination
+    Condition: within edge safety-factor q95 window (resonant)
+    KSTAR record: multiple demonstrations with n=1 (seconds scale)
+    Long-duration maintenance: requires precise q95 control -> feedback essential
 
-  ELM 완화 (mitigation): ELM 크기 감소 + 빈도 증가
-    조건: q₉₅ 윈도우 넓음 (non-resonant 포함)
-    효과: ΔW_ELM 50-80% 감소
-    KSTAR: n=2에서 안정적 완화 다수 시연
+  ELM mitigation: smaller ELMs + higher frequency
+    Condition: wide q95 window (non-resonant included)
+    Effect: DeltaW_ELM reduced by 50-80%
+    KSTAR: stable mitigation repeatedly demonstrated with n=2
 
-  정상 상태 전략:
-    Scenario A: n=2 완화 + detachment (안전한 선택)
-    Scenario B: n=1 억제 시도, 실패 시 n=2 완화로 전환
-    Scenario C: reversed shear에서 자연 ELM-free 가능 (QH-mode 유사)
+  Steady-state strategy:
+    Scenario A: n=2 mitigation + detachment (safe choice)
+    Scenario B: try n=1 suppression, fall back to n=2 mitigation on failure
+    Scenario C: natural ELM-free possible in reversed shear (QH-mode-like)
 ```
 
 ### 13.3 Pellet Pacing
 
 ```
-  ═══ 펠렛 ELM 트리거 원리 ═══
+  === Pellet ELM trigger principle ===
 
-  작은 D₂ 펠렛 주입 → pedestal에 국소 밀도 섭동
-  → peeling-ballooning 한계를 인위적으로 돌파
-  → 작은 ELM 유발 (에너지 해방 후 복구)
+  Small D2 pellet injection -> local density perturbation at pedestal
+  -> artificially breach peeling-ballooning limit
+  -> trigger small ELM (energy release followed by recovery)
 
-  자연 ELM 사이에 인위 ELM 삽입 → 에너지 축적 방지
+  Insert artificial ELMs between natural ones -> prevent energy build-up
 
-  파라미터:
-    펠렛 크기: 0.5-1.0 mm (소형 — fueling 목적 아님)
-    주입 속도: 300-800 m/s (외측 주입)
-    주입 빈도: 20-100 Hz (자연 f_ELM의 2-5배)
-    소모량: 1mg/shot × 50Hz × 300s = 15 g (D₂)
+  Parameters:
+    Pellet size: 0.5-1.0 mm (small — not for fueling)
+    Injection speed: 300-800 m/s (outer midplane launch)
+    Injection frequency: 20-100 Hz (2-5x natural f_ELM)
+    Consumption: 1 mg/shot x 50 Hz x 300 s = 15 g (D2)
 
-  효과:
-    f_ELM 증가: 30Hz → 100Hz (3x)
-    ΔW_ELM 감소: 50kJ → 10kJ (5x 감소)
-    → ELM 열부하: 50 MW/m² → 10 MW/m² (5x 감소)
-    W 스퍼터링 감소: ΔW_ELM^0.5에 비례 → 2.2x 감소
+  Effect:
+    f_ELM increase: 30 Hz -> 100 Hz (3x)
+    DeltaW_ELM decrease: 50 kJ -> 10 kJ (5x reduction)
+    -> ELM heat load: 50 MW/m^2 -> 10 MW/m^2 (5x reduction)
+    W sputtering reduction: scales as DeltaW_ELM^0.5 -> 2.2x reduction
 
-  KSTAR 현황:
-    Pellet injector 존재 (fueling 용)
-    ELM pacing 전용 고빈도 injector: 업그레이드 검토 중
-    → 장시간 연속 공급을 위한 탄창 용량 확대 필요
+  KSTAR status:
+    Pellet injector exists (for fueling)
+    High-frequency ELM-pacing-dedicated injector: upgrade under review
+    -> needs enlarged magazine capacity for long continuous supply
 ```
 
-### 13.4 QH-mode (Quiescent H-mode) — ELM-free 운전
+### 13.4 QH-mode (Quiescent H-mode) — ELM-free Operation
 
 ```
-  ═══ QH-mode의 물리 ═══
+  === QH-mode physics ===
 
-  QH-mode = ELM 없는 H-mode
-  원리: Edge Harmonic Oscillation (EHO)이 ELM 대신 역할
-    EHO: kink/peeling 불안정성의 포화(saturation) 상태
-    → pedestal 에너지를 연속적으로(burst 없이) 방출
-    → ELM의 "부드러운 대안"
+  QH-mode = H-mode without ELMs
+  Principle: Edge Harmonic Oscillation (EHO) plays the role of ELMs
+    EHO: saturated state of kink/peeling instability
+    -> Continuously (non-bursty) releases pedestal energy
+    -> "gentle alternative" to ELMs
 
-  QH-mode 형성 조건 (DIII-D 경험):
-    1. 충분한 토로이달 회전 (co 또는 counter NBI)
-    2. 넓은 pedestal (높은 triangularity 불필요)
-    3. 저밀도 (n_e/n_GW < 0.5-0.6)
-    4. 역방향 빔 (counter-NBI) 또는 balanced NBI
+  QH-mode formation conditions (DIII-D experience):
+    1. Sufficient toroidal rotation (co or counter NBI)
+    2. Wide pedestal (high triangularity not required)
+    3. Low density (n_e/n_GW < 0.5-0.6)
+    4. Counter-NBI or balanced NBI
 
-  KSTAR QH-mode 가능성:
-    장점:
-      - NBI co + counter 가능 (KSTAR NBI 3기 중 방향 조정 가능)
-      - 저밀도 시나리오 (Scenario C) → n/n_GW ~ 0.55 → QH 윈도우
-    단점:
-      - QH-mode 유지 시간이 짧은 편 (수 초 ~ 수십 초)
-      - 고 beta에서 불안정 → Scenario C의 고 beta와 충돌 가능
-    전략:
-      - Phase 2에서 QH-mode 탐색 실험 진행
-      - 성공 시 Scenario B/C의 edge 제어에 통합
+  KSTAR QH-mode feasibility:
+    Advantages:
+      - NBI co + counter possible (direction adjustable in one of KSTAR's 3 NBIs)
+      - Low-density scenario (Scenario C) -> n/n_GW ~ 0.55 -> QH window
+    Drawbacks:
+      - QH-mode sustain time is relatively short (seconds to tens of seconds)
+      - Unstable at high beta -> conflict with Scenario C's high beta
+    Strategy:
+      - Pursue QH-mode exploration experiments in Phase 2
+      - Integrate into Scenario B/C edge control if successful
 
-  n=6 연결:
-    EHO의 toroidal mode number: n=1-5 (다수 mode 공존)
-    EHO 지배 모드: n=1 또는 n=2
-    → ELM 제어 모드(1,2)와 동일 → div(6) 부분집합 (CLOSE)
+  n=6 connection:
+    EHO toroidal mode numbers: n=1-5 (many modes coexist)
+    Dominant EHO modes: n=1 or n=2
+    -> Same as ELM control modes (1,2) -> div(6) subset (CLOSE)
 ```
 
 ---
 
-## 14. 실시간 제어 알고리즘 상세
+## 14. Real-Time Control Algorithm Details
 
-### 14.1 PCS (Plasma Control System) 아키텍처
-
-```
-  ═══ KSTAR PCS 구조 ═══
-
-  계층적 제어 아키텍처:
-
-  ┌──────────────────────────────────────────────────────────────────┐
-  │                                                                  │
-  │  Level 3: Supervisory Control (감독 제어)                        │
-  │    ┌─────────────────────────────────────┐                      │
-  │    │ Shot Scheduler + State Machine       │                     │
-  │    │ 운전 단계 관리 (ramp-up/flattop/down)│                     │
-  │    │ 장벽 경보 + disruption 판단           │                     │
-  │    └─────────────────────────────────────┘                      │
-  │    주기: 100 ms                                                  │
-  │                                                                  │
-  │  Level 2: Profile Control (프로파일 제어)                        │
-  │    ┌─────────────────────────────────────┐                      │
-  │    │ q-profile controller                 │                     │
-  │    │ β_N controller                       │                     │
-  │    │ Density profile controller            │                    │
-  │    │ → actuator 배분: NBI, ECH, gas        │                    │
-  │    └─────────────────────────────────────┘                      │
-  │    주기: 10-100 ms                                               │
-  │                                                                  │
-  │  Level 1: Fast Control (고속 제어)                               │
-  │    ┌─────────────────────────────────────┐                      │
-  │    │ Shape/position (PF coils)            │                     │
-  │    │ Vertical stability (빠른 VS)         │                     │
-  │    │ RMP ELM control (IVC)                │                     │
-  │    │ ECCD NTM tracking (mirror)           │                     │
-  │    └─────────────────────────────────────┘                      │
-  │    주기: 0.1-1 ms                                                │
-  │                                                                  │
-  │  Level 0: Safety Interlock (안전 연동)                           │
-  │    ┌─────────────────────────────────────┐                      │
-  │    │ Disruption mitigation trigger        │                     │
-  │    │ Quench protection                    │                     │
-  │    │ Radiation safety                     │                     │
-  │    └─────────────────────────────────────┘                      │
-  │    주기: < 0.1 ms (하드와이어 포함)                               │
-  │                                                                  │
-  │  4단계 계층 = τ(6) = 4                                           │
-  └──────────────────────────────────────────────────────────────────┘
-
-  하드웨어:
-    CPU: Linux RT (MDS+ 기반), 주기 ~1 ms
-    GPU: NVIDIA A100 (실시간 EFIT + ML 추론)
-    FPGA: Xilinx (고속 안전 연동, <0.1 ms)
-    네트워크: 반사형 메모리 + 광이더넷 (지연 <100 μs)
-```
-
-### 14.2 RTEFIT — 실시간 평형 재구성
+### 14.1 PCS (Plasma Control System) Architecture
 
 ```
-  ═══ 원리 ═══
+  === KSTAR PCS structure ===
 
-  Grad-Shafranov 방정식:
-    Δ*ψ = -μ₀ R² dp/dψ - F dF/dψ
+  Hierarchical control architecture:
 
-    여기서:
-      Δ* = R ∂/∂R (1/R × ∂/∂R) + ∂²/∂Z² (GS 연산자)
-      ψ = poloidal flux function
-      p(ψ) = 압력 프로파일
-      F(ψ) = R × B_φ (toroidal field function)
+  +------------------------------------------------------------------+
+  |                                                                  |
+  |  Level 3: Supervisory Control                                    |
+  |    +-------------------------------------+                       |
+  |    | Shot Scheduler + State Machine       |                      |
+  |    | Operational-phase management          |                     |
+  |    | (ramp-up / flattop / down)            |                     |
+  |    | Barrier alerts + disruption decision  |                     |
+  |    +-------------------------------------+                       |
+  |    Period: 100 ms                                                |
+  |                                                                  |
+  |  Level 2: Profile Control                                        |
+  |    +-------------------------------------+                       |
+  |    | q-profile controller                  |                     |
+  |    | beta_N controller                     |                     |
+  |    | Density profile controller            |                     |
+  |    | -> actuator split: NBI, ECH, gas      |                     |
+  |    +-------------------------------------+                       |
+  |    Period: 10-100 ms                                             |
+  |                                                                  |
+  |  Level 1: Fast Control                                           |
+  |    +-------------------------------------+                       |
+  |    | Shape/position (PF coils)             |                     |
+  |    | Vertical stability (fast VS)          |                     |
+  |    | RMP ELM control (IVC)                 |                     |
+  |    | ECCD NTM tracking (mirror)            |                     |
+  |    +-------------------------------------+                       |
+  |    Period: 0.1-1 ms                                              |
+  |                                                                  |
+  |  Level 0: Safety Interlock                                       |
+  |    +-------------------------------------+                       |
+  |    | Disruption mitigation trigger         |                     |
+  |    | Quench protection                     |                     |
+  |    | Radiation safety                      |                     |
+  |    +-------------------------------------+                       |
+  |    Period: < 0.1 ms (hard-wired included)                        |
+  |                                                                  |
+  |  Four-level hierarchy = tau(6) = 4                               |
+  +------------------------------------------------------------------+
 
-  실시간 풀이 전략:
-    Off-line EFIT: 반복법(iteration), 500-2000 격자점, 수 초
-    Real-time EFIT: GPU 병렬화, 축소 모델, 1-10 ms
-
-  KSTAR RTEFIT 현황:
-    입력 센서:
-      자기 측정: flux loop 45개 + magnetic probe 120개 = 165개
-      → 합계: 165 센서 ← 충분한 중복도
-
-    출력:
-      ψ(R,Z): 2D flux map (65×65 격자)
-      q(ρ): safety factor 프로파일
-      p(ρ): 압력 프로파일 (kinetic 제약 시)
-      I_p, β_p, l_i: 적분 파라미터
-
-    성능:
-      현재: ~10 ms (자기 센서만, CPU)
-      목표: ~2 ms (kinetic 제약 포함, GPU)
-
-  Kinetic EFIT 업그레이드:
-    추가 입력: Thomson(n_e, T_e) + ECE(T_e) + CXRS(T_i, v_rot) + MSE(q)
-    → p(ψ) 제약조건 강화 → q-profile 정밀도 Δq/q < 3%
-    GPU 구현: CUDA 기반 GS solver + kinetic matching
-    → 정상 상태 전류 프로파일 제어의 핵심 인프라
+  Hardware:
+    CPU: Linux RT (MDS+ based), ~1 ms cycle
+    GPU: NVIDIA A100 (real-time EFIT + ML inference)
+    FPGA: Xilinx (fast safety interlock, <0.1 ms)
+    Network: reflective memory + optical Ethernet (latency <100 us)
 ```
 
-### 14.3 6 제어 루프 상세 알고리즘
+### 14.2 RTEFIT — Real-Time Equilibrium Reconstruction
 
 ```
-  ═══ Actuator-Sensor 페어링 매트릭스 ═══
+  === Principle ===
 
-  ┌───────────────────────────────────────────────────────────────────────┐
-  │ 루프 │ 센서              │ 액추에이터         │ 대역폭 │ 알고리즘   │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L1   │ Interferometer    │ Gas valve          │ 10 Hz  │ PI + FF    │
-  │ 밀도 │ Thomson(n_e)      │ Pellet injector    │        │            │
-  │      │                   │ Cryopump           │        │            │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L2   │ ECE(T_e)          │ NBI power          │ 1 Hz   │ MPC        │
-  │ 온도 │ CXRS(T_i)         │ ECH power          │        │            │
-  │      │ Thomson(T_e)      │                    │        │            │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L3   │ CXRS(v_tor)       │ NBI 방향(co/ctr)   │ 0.5 Hz │ PID        │
-  │ 회전 │ BES(fluctuation)  │ ECH torque         │        │            │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L4   │ Magnetics(165)    │ PF coils(14)       │ 100 Hz │ SVD + PID  │
-  │ 형상 │ RTEFIT(ψ map)     │ CS residual        │        │            │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L5   │ Magnetics(VDE)    │ PF fast(VS)        │ 1 kHz  │ LQG        │
-  │ 위치 │ RTEFIT(R,Z)       │ CS fast            │        │            │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │ L6   │ MSE(q-profile)    │ ECCD mirror(2-4)   │ 0.1 Hz │ Model-     │
-  │ 전류 │ RTEFIT(j(r))      │ NBI energy         │        │ predictive │
-  │ 분포 │ Faraday rotation  │ CS flux partition   │        │ (MPC)      │
-  └───────────────────────────────────────────────────────────────────────┘
+  Grad-Shafranov equation:
+    Delta* psi = -mu_0 R^2 dp/d_psi - F dF/d_psi
 
-  알고리즘 유형:
-    PI + FF: Proportional-Integral + Feed-Forward (밀도)
-    PID: Proportional-Integral-Derivative (회전, 형상)
-    MPC: Model Predictive Control (온도, 전류 분포) ★정상 상태 핵심
-    SVD: Singular Value Decomposition 기반 형상 제어
-    LQG: Linear Quadratic Gaussian (수직 안정성)
+    where:
+      Delta* = R d/dR (1/R x d/dR) + d^2/dZ^2 (GS operator)
+      psi = poloidal flux function
+      p(psi) = pressure profile
+      F(psi) = R x B_phi (toroidal field function)
 
-  ═══ 각 루프 상세 ═══
+  Real-time solve strategy:
+    Off-line EFIT: iterative, 500-2000 grid points, seconds
+    Real-time EFIT: GPU-parallelized, reduced model, 1-10 ms
 
-  [L1] 밀도 제어:
-    목표: n_e/n_GW = 0.6-0.8 (시나리오 의존)
-    알고리즘:
+  KSTAR RTEFIT status:
+    Input sensors:
+      Magnetic measurements: 45 flux loops + 120 magnetic probes = 165
+      -> Total: 165 sensors  <- sufficient redundancy
+
+    Outputs:
+      psi(R,Z): 2D flux map (65 x 65 grid)
+      q(rho): safety-factor profile
+      p(rho): pressure profile (with kinetic constraints)
+      I_p, beta_p, l_i: integral parameters
+
+    Performance:
+      Current: ~10 ms (magnetic sensors only, CPU)
+      Target: ~2 ms (with kinetic constraints, GPU)
+
+  Kinetic EFIT upgrade:
+    Additional inputs: Thomson(n_e, T_e) + ECE(T_e) + CXRS(T_i, v_rot) + MSE(q)
+    -> Stronger p(psi) constraint -> q-profile accuracy Dq/q < 3%
+    GPU implementation: CUDA-based GS solver + kinetic matching
+    -> Core infrastructure for steady-state current-profile control
+```
+
+### 14.3 Six Control Loops — Detailed Algorithms
+
+```
+  === Actuator-Sensor pairing matrix ===
+
+  +-----------------------------------------------------------------------+
+  | Loop | Sensors            | Actuators          | BW     | Algorithm  |
+  +-----------------------------------------------------------------------+
+  | L1   | Interferometer     | Gas valve          | 10 Hz  | PI + FF    |
+  | Dens | Thomson(n_e)       | Pellet injector    |        |            |
+  |      |                    | Cryopump           |        |            |
+  +-----------------------------------------------------------------------+
+  | L2   | ECE(T_e)           | NBI power          | 1 Hz   | MPC        |
+  | Temp | CXRS(T_i)          | ECH power          |        |            |
+  |      | Thomson(T_e)       |                    |        |            |
+  +-----------------------------------------------------------------------+
+  | L3   | CXRS(v_tor)        | NBI direction      | 0.5 Hz | PID        |
+  | Rot  | BES(fluctuation)   |  (co/ctr)          |        |            |
+  |      |                    | ECH torque         |        |            |
+  +-----------------------------------------------------------------------+
+  | L4   | Magnetics(165)     | PF coils(14)       | 100 Hz | SVD + PID  |
+  | Shape| RTEFIT(psi map)    | CS residual        |        |            |
+  +-----------------------------------------------------------------------+
+  | L5   | Magnetics(VDE)     | PF fast(VS)        | 1 kHz  | LQG        |
+  | Pos  | RTEFIT(R,Z)        | CS fast            |        |            |
+  +-----------------------------------------------------------------------+
+  | L6   | MSE(q-profile)     | ECCD mirror(2-4)   | 0.1 Hz | Model-     |
+  | Curr | RTEFIT(j(r))       | NBI energy         |        | predictive |
+  | prof | Faraday rotation   | CS flux partition  |        | (MPC)      |
+  +-----------------------------------------------------------------------+
+
+  Algorithm types:
+    PI + FF: Proportional-Integral + Feed-Forward (density)
+    PID: Proportional-Integral-Derivative (rotation, shape)
+    MPC: Model Predictive Control (temperature, current profile) *core for steady state
+    SVD: Singular Value Decomposition-based shape control
+    LQG: Linear Quadratic Gaussian (vertical stability)
+
+  === Loop details ===
+
+  [L1] Density control:
+    Target: n_e/n_GW = 0.6-0.8 (scenario-dependent)
+    Algorithm:
       error = n_e_target - n_e_measured
-      Γ_gas = K_p × error + K_i × ∫error dt + FF_NBI
-      FF_NBI = NBI fueling 보상 (NBI on/off 시 밀도 변화 예측)
-    특이 사항:
-      300초+ 운전에서 벽 리사이클링 R → 1.0
-      → integral 항이 gas flow를 자동 감소
-      → 극한 경우 gas valve 완전 차단 + cryo-pump만 운용
+      Gamma_gas = K_p x error + K_i x integral(error dt) + FF_NBI
+      FF_NBI = compensation for NBI fueling (predicted density change on NBI on/off)
+    Notable:
+      For 300 s+ operation, wall recycling R -> 1.0
+      -> integral term automatically reduces gas flow
+      -> In the limit, gas valve fully closed + operation only via cryo-pump
 
-  [L2] 온도/에너지 제어:
-    목표: W_mhd = target (에너지 함량) 또는 T_i = target
-    MPC 모델:
+  [L2] Temperature/energy control:
+    Target: W_mhd = target (energy content) or T_i = target
+    MPC model:
       dW/dt = P_heat - P_loss(W, n_e)
-      P_loss = W / τ_E(W, n_e, I_p, ...)  (IPB98y2 기반)
-      예측 수평선: 500 ms (5 × τ_E)
-      제어 수평선: 200 ms (가열 시스템 응답)
-    액추에이터 배분:
-      NBI: 대규모 에너지 공급 (±2 MW 단위)
-      ECH: 미세 조정 (±0.5 MW 단위)
+      P_loss = W / tau_E(W, n_e, I_p, ...)  (IPB98y2 based)
+      Prediction horizon: 500 ms (5 x tau_E)
+      Control horizon: 200 ms (heating system response)
+    Actuator allocation:
+      NBI: bulk energy supply (+/-2 MW increments)
+      ECH: fine tuning (+/-0.5 MW increments)
 
-  [L3] 회전 제어:
-    목표: V_tor(core) > 50 km/s (RWM 안정화 최소)
+  [L3] Rotation control:
+    Target: V_tor(core) > 50 km/s (minimum for RWM stabilization)
     PID:
       error = V_tor_target - V_tor_CXRS
       NBI_direction = PID(error)
-      co-NBI 증가 → V_tor 증가
-      balanced NBI → V_tor 감소
-    위험: 회전 braking (RMP, neoclassical) → NBI torque와 경쟁
+      Increase co-NBI -> V_tor rises
+      Balanced NBI -> V_tor decreases
+    Risk: rotation braking (RMP, neoclassical) competes with NBI torque
 
-  [L4] 형상 제어:
-    목표: (κ, δ, X-point 위치) = (2.0, 0.5-0.8, 하부)
-    SVD 기반:
-      14개 PF coil × 3 형상 파라미터 → SVD 역행렬
-      Δψ_boundary = M × ΔI_PF
-      ΔI_PF = M_inv × Δψ_target
-    주기: 10 ms (100 Hz)
+  [L4] Shape control:
+    Target: (kappa, delta, X-point position) = (2.0, 0.5-0.8, lower)
+    SVD-based:
+      14 PF coils x 3 shape parameters -> SVD inverse
+      Delta psi_boundary = M x Delta I_PF
+      Delta I_PF = M_inv x Delta psi_target
+    Period: 10 ms (100 Hz)
 
-  [L5] 수직 위치 제어:
-    목표: |Z_axis| < 1 cm (VDE 방지)
-    κ=2.0에서 수직 불안정 성장률:
-      γ_VDE ~ (κ²-1) / τ_wall × (1 - ...)
-      γ_VDE ~ 10³ s⁻¹ → τ_VDE ~ 1 ms
-    → 1 kHz 이상 대역폭 필수
-    LQG 제어: 최적 상태 추정 + 최적 피드백
+  [L5] Vertical position control:
+    Target: |Z_axis| < 1 cm (prevent VDE)
+    Vertical-instability growth rate at kappa=2.0:
+      gamma_VDE ~ (kappa^2 - 1) / tau_wall x (1 - ...)
+      gamma_VDE ~ 10^3 s^-1 -> tau_VDE ~ 1 ms
+    -> >= 1 kHz bandwidth mandatory
+    LQG control: optimal state estimation + optimal feedback
 
-  [L6] 전류 프로파일 제어: ★정상 상태의 핵심★
-    목표: q(ρ) = q_target(ρ) (시나리오 의존)
-    MPC 모델:
-      ∂ψ/∂t = (η_R/μ₀) Δ*ψ + j_bs(p(ψ)) + j_CD(ECCD, NBI)
-      자기장 확산 시간 τ_R ~ 140초 → 느린 제어
-      예측 수평선: 50초 (τ_R/3)
-      제어 수평선: 20초
-    액추에이터:
-      ECCD mirror steering → j_ECCD(ρ) 위치 제어
-      ECCD power split → j_ECCD 크기 제어
-      NBI voltage → NBI 침투 깊이 제어
+  [L6] Current-profile control: *core of steady state*
+    Target: q(rho) = q_target(rho) (scenario-dependent)
+    MPC model:
+      d psi/dt = (eta_R/mu_0) Delta* psi + j_bs(p(psi)) + j_CD(ECCD, NBI)
+      Magnetic diffusion time tau_R ~ 140 s -> slow control
+      Prediction horizon: 50 s (tau_R/3)
+      Control horizon: 20 s
+    Actuators:
+      ECCD mirror steering -> j_ECCD(rho) location control
+      ECCD power split -> j_ECCD magnitude control
+      NBI voltage -> NBI penetration-depth control
 ```
 
-### 14.4 Disruption 예측 — 기계 학습 접근
+### 14.4 Disruption Prediction — Machine-Learning Approach
 
 ```
-  ═══ ML 기반 Disruption Predictor ═══
+  === ML-based disruption predictor ===
 
-  아키텍처: LSTM + Attention (또는 Transformer)
-    입력 (시계열, 10 ms 간격):
-      - β_N / β_N,limit
+  Architecture: LSTM + Attention (or Transformer)
+    Inputs (time series, 10 ms intervals):
+      - beta_N / beta_N,limit
       - n_e / n_GW
       - l_i (internal inductance)
       - V_loop
-      - δB_locked_mode (잠금 모드 진폭)
-      - δB_rotating (회전 MHD 진폭)
-      - P_rad / P_input (복사 분율)
-      - W_mhd (저장 에너지)
-      - dW/dt (에너지 변화율)
+      - dB_locked_mode (locked-mode amplitude)
+      - dB_rotating (rotating MHD amplitude)
+      - P_rad / P_input (radiation fraction)
+      - W_mhd (stored energy)
+      - dW/dt (energy rate of change)
       - q_95, q_min
-    → 10개 특성 = σ - φ = 10                          ✅ EXACT
+    -> 10 features = sigma - phi = 10                          [OK] EXACT
 
-    출력:
-      - p_disrupt: 0-1 (disruption 확률)
-      - τ_remain: 남은 시간 추정 (ms)
+    Outputs:
+      - p_disrupt: 0-1 (disruption probability)
+      - tau_remain: estimated remaining time (ms)
 
-  훈련 데이터:
+  Training data:
     KSTAR 2009-2025: ~30,000 shots
-    disruption 빈도: ~5% → ~1,500 disruption events
-    데이터 증강: EAST + DIII-D cross-machine transfer learning
+    Disruption frequency: ~5% -> ~1,500 disruption events
+    Augmentation: EAST + DIII-D cross-machine transfer learning
 
-  성능 요구:
-    ┌──────────────────────────────────────────────────────┐
-    │ 지표                    목표값      현재 달성값       │
-    ├──────────────────────────────────────────────────────┤
-    │ True positive rate      > 95%       ~90%             │
-    │ False positive rate     < 5%        ~8%              │
-    │ Warning time            > 30 ms     ~50 ms           │
-    │ 추론 시간               < 1 ms      ~0.5 ms (GPU)   │
-    └──────────────────────────────────────────────────────┘
+  Performance requirements:
+    +------------------------------------------------------+
+    | Metric                   Target       Current        |
+    +------------------------------------------------------+
+    | True positive rate       > 95%        ~90%           |
+    | False positive rate      < 5%         ~8%            |
+    | Warning time             > 30 ms      ~50 ms         |
+    | Inference time           < 1 ms       ~0.5 ms (GPU)  |
+    +------------------------------------------------------+
 
-  경고 시간 요구:
-    30 ms: MGI valve 개방 + 가스 도달 최소 시간
-    10 ms: ECCD 차단 + PF ramp-down 개시
-    1 ms: SPI 발사 (미래)
+  Warning-time requirements:
+    30 ms: minimum time for MGI valve opening + gas arrival
+    10 ms: ECCD cutoff + PF ramp-down initiation
+    1 ms: SPI firing (future)
 
-  정상 상태 운전의 특수성:
-    장시간 운전 → 점진적 열화(drift) 패턴
-    ELM 후 회복 주기의 장기 변화 추적
-    → 기존 ML보다 long-term trend 분석 중요
-    → 추가 특성: 이동 평균(100초), 추세 기울기
+  Special aspects of steady-state operation:
+    Long operation -> gradual degradation (drift) patterns
+    Track long-term changes in post-ELM recovery cycles
+    -> Long-term trend analysis is more important than conventional ML
+    -> Additional features: 100 s moving average, trend slope
 ```
 
 ---
 
-## 15. KSTAR vs 세계 장치 정상 상태 비교
+## 15. KSTAR vs World Devices — Steady-State Comparison
 
-### 15.1 상세 비교 테이블
-
-```
-  ┌──────────────────────────────────────────────────────────────────────────────────────┐
-  │ 파라미터          │ KSTAR (한국) │ EAST (중국)  │ JT-60SA (일본)│ WEST (프랑스)│ HL-2M (중국)│
-  ├──────────────────────────────────────────────────────────────────────────────────────┤
-  │ R₀ (m)           │ 1.8         │ 1.85        │ 2.96         │ 2.5         │ 1.78       │
-  │ a (m)            │ 0.5         │ 0.45        │ 1.18         │ 0.5         │ 0.65       │
-  │ A (종횡비)        │ 3.6         │ 4.1         │ 2.5          │ 5.0         │ 2.74       │
-  │ κ (elongation)   │ 2.0         │ 1.9         │ 1.95         │ 1.8         │ 1.8-2.0    │
-  │ B_T (T)          │ 3.5         │ 3.5         │ 2.25         │ 3.7         │ 2.2        │
-  │ I_p (MA, max)    │ 2.0         │ 1.0         │ 5.5          │ 1.0         │ 2.5        │
-  │ NBI (MW)         │ 8           │ 8           │ 34           │ 0           │ 5          │
-  │ ECRF/ECH (MW)    │ 1 (→4 계획) │ 2           │ 7            │ 9           │ 3          │
-  │ LHCD (MW)        │ 0           │ 6           │ 0            │ 7           │ 3          │
-  │ ICH (MW)         │ 6 (계획)    │ 12          │ 0            │ 3           │ 0          │
-  │ 총 가열 (MW)      │ 15          │ 28          │ 41           │ 19          │ 11         │
-  │ 코일 종류         │ Nb3Sn/NbTi │ Nb3Sn/NbTi │ Nb3Sn/NbTi  │ Cu (상온!)  │ Cu (상온)   │
-  │ 초전도           │ ✅ 전체    │ ✅ 전체    │ ✅ 전체     │ ❌ 상온    │ ❌ 상온     │
-  │ 내부 RMP        │ ✅ (IVC)   │ ❌ 외부    │ ✅ 내부     │ ❌         │ ❌          │
-  │ 디버터 재질      │ W          │ W           │ W+C          │ W 전체     │ W+C         │
-  ├──────────────────────────────────────────────────────────────────────────────────────┤
-  │ **성과 기록**     │            │             │              │             │            │
-  │ 최장 펄스 기록    │ 300초      │ 403초       │ ~30초        │ ~60초       │ ~10초      │
-  │     (고성능 기준) │ @100M K    │ @70M K      │ (시운전 중)  │ @1억도 미만 │ @150M K    │
-  │ f_bs 달성 (최대)  │ ~35%       │ ~50% (LHCD) │ (데이터 부족)│ ~30%        │ (초기)     │
-  │ ITB 시연          │ ✅ (단시간) │ ✅          │ (예정)       │ ❌          │ ❌          │
-  │ ELM 억제          │ ✅ (강점!) │ 부분        │ (예정)       │ (W 환경)    │ (초기)     │
-  └──────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### 15.2 장치별 정상 상태 전략 분석
+### 15.1 Detailed Comparison Table
 
 ```
-  ═══ EAST (중국) — 403초 기록의 실체 ═══
+  +--------------------------------------------------------------------------------------+
+  | Parameter         | KSTAR (Korea)| EAST (China) | JT-60SA(Japan)| WEST (France)|HL-2M|
+  +--------------------------------------------------------------------------------------+
+  | R0 (m)           | 1.8          | 1.85         | 2.96         | 2.5         | 1.78  |
+  | a (m)            | 0.5          | 0.45         | 1.18         | 0.5         | 0.65  |
+  | A (aspect ratio) | 3.6          | 4.1          | 2.5          | 5.0         | 2.74  |
+  | kappa (elongation)| 2.0         | 1.9          | 1.95         | 1.8         |1.8-2.0|
+  | B_T (T)          | 3.5          | 3.5          | 2.25         | 3.7         | 2.2   |
+  | I_p (MA, max)    | 2.0          | 1.0          | 5.5          | 1.0         | 2.5   |
+  | NBI (MW)         | 8            | 8            | 34           | 0           | 5     |
+  | ECRF/ECH (MW)    | 1 (->4 plan) | 2            | 7            | 9           | 3     |
+  | LHCD (MW)        | 0            | 6            | 0            | 7           | 3     |
+  | ICH (MW)         | 6 (planned)  | 12           | 0            | 3           | 0     |
+  | Total heating(MW)| 15           | 28           | 41           | 19          | 11    |
+  | Coil type        | Nb3Sn/NbTi   | Nb3Sn/NbTi   | Nb3Sn/NbTi   | Cu (room T) | Cu    |
+  | Superconducting  | Yes (all)    | Yes (all)    | Yes (all)    | No (room T) | No    |
+  | Internal RMP     | Yes (IVC)    | No (external)| Yes (internal)| No         | No    |
+  | Divertor material| W            | W            | W+C          | Full W      | W+C   |
+  +--------------------------------------------------------------------------------------+
+  | **Performance records**|        |              |              |             |       |
+  | Longest pulse    | 300 s        | 403 s        | ~30 s        | ~60 s       | ~10 s |
+  |  (high-perf.)    | @100M K      | @70M K       | (commissioning)| <1e8 K   | @150M K|
+  | f_bs achieved(max)| ~35%        | ~50% (LHCD)  | (insufficient data)| ~30% | (early)|
+  | ITB demonstration| Yes (short)  | Yes          | (planned)    | No          | No    |
+  | ELM suppression  | Yes (strength!)| Partial    | (planned)    | (W environment)| (early)|
+  +--------------------------------------------------------------------------------------+
+```
 
-  EAST 403초 (2023):
-    조건: H-mode, ~70M K (7 keV)
-    가열: LHCD 4.6 GHz 주력 + NBI + ECH
-    f_bs: ~30-40% (LHCD 주도형)
-    f_LHCD: ~50-60% (핵심!)
+### 15.2 Per-Device Steady-State Strategy Analysis
+
+```
+  === EAST (China) — reality of the 403 s record ===
+
+  EAST 403 s (2023):
+    Conditions: H-mode, ~70M K (7 keV)
+    Heating: LHCD 4.6 GHz (main) + NBI + ECH
+    f_bs: ~30-40% (LHCD-driven)
+    f_LHCD: ~50-60% (core!)
     f_ni: ~80-90%
-    V_loop: ~0.01 V (거의 정상 상태)
+    V_loop: ~0.01 V (near steady state)
 
-  EAST의 비결: LHCD (Lower Hybrid)
-    → 가장 효율적인 전류 구동 (η=0.15)
-    → BUT: edge에 전류 집중 → 고성능 코어 불가
-    → 온도가 낮은 이유: LHCD는 코어 가열에 비효율적
+  EAST's secret: LHCD (Lower Hybrid)
+    -> Most efficient current drive (eta = 0.15)
+    -> BUT: current concentrated at edge -> high-performance core unreachable
+    -> Low temperature is because LHCD is inefficient for core heating
 
-  KSTAR 대비:
-    EAST 장점: LHCD → 더 긴 펄스 (순수 시간)
-    EAST 단점: 낮은 이온 온도 (7 vs 10 keV), 낮은 β_N
-    → KSTAR가 "고성능 정상 상태"에서 우위
+  Versus KSTAR:
+    EAST advantage: LHCD -> longer pulse (raw duration)
+    EAST disadvantage: lower ion temperature (7 vs 10 keV), lower beta_N
+    -> KSTAR wins on "high-performance steady state"
 
-  ═══ JT-60SA (일본) — 세계 최대 초전도 토카막 ═══
+  === JT-60SA (Japan) — World's largest superconducting tokamak ===
 
-  JT-60SA 특성:
-    R₀=2.96m, I_p=5.5MA → ITER에 가장 가까운 규모
-    가열: NBI 34 MW + ECH 7 MW = 41 MW (KSTAR의 2.7배!)
-    2023년 첫 플라즈마 달성 → 본격 실험은 2025-2026부터
+  JT-60SA characteristics:
+    R0=2.96m, I_p=5.5MA -> closest in scale to ITER
+    Heating: NBI 34 MW + ECH 7 MW = 41 MW (2.7x KSTAR!)
+    First plasma achieved 2023 -> full experiments from 2025-2026
 
-  정상 상태 계획:
-    Phase 1 (2025-2028): H-mode 특성 파악, f_bs ~ 30-40%
-    Phase 2 (2028-2032): AT 시나리오, f_bs ~ 50-60%, 목표 100초 SS
-    Phase 3 (2032+): 완전 정상 상태, K-DEMO/DEMO 데이터
+  Steady-state plan:
+    Phase 1 (2025-2028): characterize H-mode, f_bs ~ 30-40%
+    Phase 2 (2028-2032): AT scenarios, f_bs ~ 50-60%, target 100 s SS
+    Phase 3 (2032+): fully steady state, K-DEMO/DEMO data
 
-  KSTAR 대비:
-    JT-60SA 장점: 크기/파워 → 더 높은 f_bs 자연 달성 (큰 ε 아님, 큰 β)
-    JT-60SA 단점: 시운전 초기 → 5년 내 KSTAR 수준 도달 어려움
-    → KSTAR는 시간적 우위 (2024 300초 vs JT-60SA 2025 시운전)
+  Versus KSTAR:
+    JT-60SA advantage: size/power -> higher f_bs naturally (not large eps, but large beta)
+    JT-60SA disadvantage: early commissioning -> hard to reach KSTAR level within 5 years
+    -> KSTAR has temporal advantage (2024 300 s vs JT-60SA 2025 commissioning)
 
-  ═══ WEST (프랑스) — 전 텅스텐 환경 ═══
+  === WEST (France) — full tungsten environment ===
 
-  WEST 특성:
-    Cu 코일 (상온) → 장펄스 제한 (~60초)
-    BUT: 진공용기 전체가 W → ITER 디버터 환경 시뮬레이션
+  WEST characteristics:
+    Cu coils (room temperature) -> long-pulse limit (~60 s)
+    BUT: full W vessel -> simulates ITER divertor environment
     LHCD 7 MW + ICH 3 MW + ECH 9 MW = 19 MW
 
-  정상 상태 기여:
-    직접적 정상 상태 시연은 불가 (Cu 코일 한계)
-    W 환경에서의 불순물 관리 + detachment 기술 개발에 집중
-    → KSTAR/ITER에 W 환경 데이터 제공
+  Contribution to steady state:
+    Direct steady-state demonstration not possible (Cu coil limit)
+    Focus on impurity management + detachment tech in W environment
+    -> Provides W-environment data to KSTAR/ITER
 
-  ═══ HL-2M (중국) — 고성능 추구 ═══
+  === HL-2M (China) — high-performance pursuit ===
 
-  HL-2M 특성:
-    중국 국산 설계, 2020 첫 플라즈마
-    2022년 150M K (15 keV) 달성 — 온도 자체는 높음
-    Cu 코일 → 장펄스 불가
+  HL-2M characteristics:
+    Chinese domestic design, first plasma 2020
+    Reached 150M K (15 keV) in 2022 — temperature itself is high
+    Cu coils -> long pulse impossible
     NBI 5 MW + ECH 3 MW + LHCD 3 MW
 
-  정상 상태 기여:
-    장펄스 불가 (Cu) → 정상 상태 직접 기여 없음
-    고 β 물리, ELM 물리 연구에 기여
-    → KSTAR와 상호 보완적 (단시간 고성능 vs 장시간 중성능)
+  Contribution to steady state:
+    Long pulse impossible (Cu) -> no direct steady-state contribution
+    Contributes to high-beta physics and ELM physics research
+    -> Complementary to KSTAR (short-duration high-perf vs long-duration mid-perf)
 ```
 
-### 15.3 KSTAR의 고유 우위 (Unique Advantages)
+### 15.3 KSTAR Unique Advantages
 
 ```
-  KSTAR만이 갖는 6가지 고유 장점:
+  Six unique advantages exclusive to KSTAR:
 
-  (1) 세계 유일 내부 RMP 코일 (IVC) ★★★
-      다른 모든 장치: 외부 RMP (벽 침투 지연)
-      KSTAR: 벽 내부 → ms 단위 직접 응답
-      → ELM 제어 세계 최고 수준
-      → 정상 상태의 edge 안정성에 결정적
+  (1) World's only internal RMP coils (IVC) ***
+      All other devices: external RMP (wall penetration delay)
+      KSTAR: inside the wall -> direct ms-scale response
+      -> World-class ELM control
+      -> Decisive for edge stability in steady state
 
-  (2) 초전도 + 고성능 양립
-      KSTAR: 완전 초전도 + 100M K
-      EAST: 완전 초전도 + 70M K (낮음)
-      JT-60SA: 완전 초전도 + (아직 미달)
-      → KSTAR가 유일하게 "초전도에서 고온"을 시연
+  (2) Superconducting + high performance coexisting
+      KSTAR: fully superconducting + 100M K
+      EAST: fully superconducting + 70M K (lower)
+      JT-60SA: fully superconducting + (not yet reached)
+      -> KSTAR uniquely demonstrates "high temperature with superconducting coils"
 
-  (3) NBI counter/co 양방향 주입
-      KSTAR NBI: co + balanced + counter 구성 가능
-      → QH-mode, rotation shear 제어에 유연
-      → 다른 장치: 대부분 co-only
+  (3) NBI counter/co bi-directional injection
+      KSTAR NBI: co + balanced + counter configurations available
+      -> Flexibility for QH-mode, rotation-shear control
+      -> Other devices: mostly co-only
 
-  (4) ECH + NBI + RMP 동시 운용 경험
-      300초 운전에서 3가지 시스템 동시 활용 실증
-      → 정상 상태의 핵심인 "통합 제어" 경험 축적
+  (4) Experience operating ECH + NBI + RMP simultaneously
+      Demonstrated use of all three systems concurrently in 300 s operation
+      -> Accumulates "integrated control" experience, key to steady state
 
-  (5) 컴팩트 크기의 장점
-      R=1.8m 소형 → 실험 비용 낮음 → 시행착오 빈번 가능
-      1년에 수천 shot → 빠른 학습 속도
-      JT-60SA: 1 shot에 수십분 → 연간 수백 shot
+  (5) Advantage of compact size
+      R=1.8 m compact -> lower experimental cost -> frequent trial-and-error
+      Thousands of shots per year -> fast learning rate
+      JT-60SA: one shot takes tens of minutes -> hundreds of shots per year
 
-  (6) K-DEMO 직접 데이터 라인
-      한국형 핵융합로(K-DEMO) 설계의 유일한 국내 데이터 소스
-      정치/행정적 연속성 보장
+  (6) Direct K-DEMO data line
+      Sole domestic data source for Korean fusion reactor (K-DEMO) design
+      Ensures political/administrative continuity
 
-  6가지 고유 장점 = n(6) = 6  ✅ EXACT
+  Six unique advantages = n(6) = 6  [OK] EXACT
 ```
 
 ---
 
-## 16. 약점 정직한 분석 및 완화
+## 16. Honest Analysis of Weaknesses and Mitigation
 
-### 16.1 KSTAR의 본질적 한계
+### 16.1 KSTAR's Inherent Limits
 
 ```
-  ═══ 크기 한계: R₀ = 1.8m ═══
+  === Size limit: R0 = 1.8 m ===
 
-  KSTAR는 작은 토카막이다. 이것은 피할 수 없는 물리적 한계를 부과한다.
+  KSTAR is a small tokamak. This imposes unavoidable physical limits.
 
-  (1) 에너지 가둠 시간 스케일링:
-      τ_E ∝ R^1.97 (IPB98y2)
-      KSTAR (R=1.8): τ_E ~ 0.3-0.5초
-      JT-60SA (R=2.96): τ_E ~ 0.8-1.5초 (3-5배!)
-      ITER (R=6.2): τ_E ~ 3-5초 (10-15배!)
+  (1) Energy confinement time scaling:
+      tau_E ~ R^1.97 (IPB98y2)
+      KSTAR (R=1.8): tau_E ~ 0.3-0.5 s
+      JT-60SA (R=2.96): tau_E ~ 0.8-1.5 s (3-5x!)
+      ITER (R=6.2): tau_E ~ 3-5 s (10-15x!)
 
-      영향: 같은 가열 파워에서 도달 가능한 온도/압력이 제한됨.
-            KSTAR가 높은 β_N을 달성하려면 상대적으로 더 큰 위험을 감수해야 함.
+      Impact: limits achievable T/p at the same heating power.
+              KSTAR must accept higher relative risk to reach high beta_N.
 
-  (2) Bootstrap 전류 스케일링:
-      I_bs ∝ ε^0.5 × β_p × I_p
-      KSTAR ε=0.278 → √ε=0.527
-      ITER ε=0.323 → √ε=0.568 (only 8% better)
+  (2) Bootstrap current scaling:
+      I_bs ~ eps^0.5 x beta_p x I_p
+      KSTAR eps=0.278 -> sqrt(eps)=0.527
+      ITER eps=0.323 -> sqrt(eps)=0.568 (only 8% better)
 
-      → 사실 ε 차이는 크지 않음! Bootstrap에서는 KSTAR 불리하지 않음.
+      -> Actually the eps difference is small. KSTAR isn't disadvantaged on bootstrap.
 
-  (3) 자기장 확산 시간:
-      τ_R ∝ a² × T_e^1.5
-      KSTAR (a=0.5m): τ_R ~ 140초
-      JT-60SA (a=1.18m): τ_R ~ 780초 (5.6배)
+  (3) Magnetic-field diffusion time:
+      tau_R ~ a^2 x T_e^1.5
+      KSTAR (a=0.5 m): tau_R ~ 140 s
+      JT-60SA (a=1.18 m): tau_R ~ 780 s (5.6x)
 
-      영향: KSTAR에서 전류 프로파일이 더 빨리 평형에 도달
-            → 사실 KSTAR에게 유리한 점! (300초에 준정상 가능)
+      Impact: current profile reaches equilibrium faster at KSTAR
+              -> Actually a KSTAR advantage! (quasi-steady possible in 300 s)
 
-  ═══ 자기장 한계: B_T = 3.5T ═══
+  === Field limit: B_T = 3.5 T ===
 
-  현대 HTS 토카막 (SPARC: 12.2T, CFS ARC: 9.25T)에 비해 낮음.
+  Low compared to modern HTS tokamaks (SPARC: 12.2 T, CFS ARC: 9.25 T).
 
-  영향:
-    beta_T = 2μ₀<p> / B_T²
-    낮은 B_T → 같은 β에서 절대 압력 p가 낮음
-    → 핵융합 반응률 낮음 (KSTAR는 D-D라 상관없지만, 성능 지표로는 열위)
+  Impact:
+    beta_T = 2 mu_0 <p> / B_T^2
+    Low B_T -> low absolute pressure p at the same beta
+    -> Low fusion reaction rate (irrelevant for KSTAR's D-D, but a performance handicap)
 
     BUT:
-      KSTAR의 목표는 정상 상태 물리 데이터 확보이지,
-      핵융합 에너지 생산이 아님.
-      → B_T = 3.5T는 목적에 충분
+      KSTAR's goal is to gather steady-state physics data,
+      not to produce fusion energy.
+      -> B_T = 3.5 T is sufficient for the mission
 ```
 
-### 16.2 300초 정상 상태가 극도로 도전적인 이유
+### 16.2 Why 300 s Steady State Is Extremely Challenging
 
 ```
-  ═══ "300초 @ 정상 상태"의 난이도 ═══
+  === Difficulty of "300 s @ steady state" ===
 
-  현재 300초 기록은 "300초 운전"이지 "300초 정상 상태"가 아니다.
-  차이가 매우 크다:
+  The current 300 s record is "300 s operation", not "300 s steady state".
+  The gap is very large:
 
-  현재 300초:
-    I_ohmic: ~50% (CS flux 유도)
+  Current 300 s:
+    I_ohmic: ~50% (CS flux-driven)
     f_ni: ~50%
-    → CS flux가 300초를 가능하게 함 (ohmic이 전류의 절반)
-    → 진정한 정상 상태와는 50%나 차이
+    -> CS flux makes 300 s possible (ohmic is half the current)
+    -> 50% gap from true steady state
 
-  목표 300초 정상 상태:
-    I_ohmic: ~0% (V_loop → 0)
+  Target 300 s steady state:
+    I_ohmic: ~0% (V_loop -> 0)
     f_ni: ~100%
-    → 외부 전류 구동 + bootstrap으로 전류 100% 유지
-    → 근본적으로 다른 운전 모드
+    -> 100% current maintained by external CD + bootstrap
+    -> Fundamentally different operating mode
 
-  핵심 어려움:
-    (1) f_bs 50% → 70%: pedestal + ITB에서의 압력 구배 유지
-        → MHD 안정성 한계에 근접해야 함 → disruption 위험 증가
-    (2) ECCD 1MW → 3-4MW: gyrotron 3-4기 추가 (2-3년 소요)
-    (3) 역전단 q-profile: 수초간 시연은 있으나, 수백초 유지 미검증
-    (4) 통합 제어: 6개 루프 모두가 수백초간 안정적으로 동작해야 함
+  Core difficulties:
+    (1) f_bs 50% -> 70%: sustain pressure gradient at pedestal + ITB
+        -> Must approach MHD stability limits -> higher disruption risk
+    (2) ECCD 1 MW -> 3-4 MW: add 3-4 gyrotrons (2-3 year lead time)
+    (3) Reversed-shear q-profile: seconds demonstrated, sustained hundreds of seconds unproven
+    (4) Integrated control: all 6 loops must stay stable for hundreds of seconds
 
-  ═══ EAST 403초와의 비교 ═══
+  === Comparison with EAST 403 s ===
 
-  EAST 403초 (2023):
-    "403초 H-mode" — 시간은 더 길지만...
+  EAST 403 s (2023):
+    "403 s H-mode" — longer in time, but ...
 
-    이온 온도: ~7 keV (KSTAR 10 keV 대비 30% 낮음)
-    β_N: ~1.5-2.0 (KSTAR 목표 2.5-3.5 대비 낮음)
-    f_bs: ~30-40% (LHCD 보조)
-    H-factor: ~1.0-1.2 (KSTAR 목표 1.3-1.8 대비 낮음)
+    Ion temperature: ~7 keV (30% lower than KSTAR's 10 keV)
+    beta_N: ~1.5-2.0 (lower than KSTAR target 2.5-3.5)
+    f_bs: ~30-40% (LHCD-assisted)
+    H-factor: ~1.0-1.2 (lower than KSTAR target 1.3-1.8)
 
-    EAST 비결: LHCD 6 MW → 전류 구동 효율 6배 높음
-    EAST 한계: LHCD는 edge 전류 → 코어 가둠 성능 낮음
+    EAST secret: LHCD 6 MW -> 6x higher CD efficiency
+    EAST limit: LHCD is an edge current -> poorer core confinement
 
-  정직한 평가:
-    EAST의 403초는 "저성능 장펄스"
-    KSTAR의 목표는 "고성능 정상 상태"
-    두 가지는 질적으로 다른 도전이며, KSTAR의 것이 더 어려움
+  Honest assessment:
+    EAST's 403 s is "low-performance long pulse"
+    KSTAR's goal is "high-performance steady state"
+    They are qualitatively different challenges, and KSTAR's is harder.
 ```
 
-### 16.3 디버터 열부하: 300초를 정말 견딜 수 있는가?
+### 16.3 Divertor Heat Load: Can It Really Withstand 300 s?
 
 ```
-  ═══ 정량 분석 ═══
+  === Quantitative analysis ===
 
-  KSTAR 디버터 열수지 (Scenario B 기준):
+  KSTAR divertor heat balance (Scenario B reference):
 
     P_input = 11 MW
     P_rad_total = 7 MW (f_rad = 0.63)
     P_SOL = 4 MW
-    Strike point 분배: inner 1.2 MW, outer 2.8 MW
-    Outer SP 면적: A_wet = 2πR_sp × λ_q × f_exp
-                 = 2π × 1.6 × 0.004 × 5 = 0.20 m²
-    q_outer = 2.8 MW / 0.20 m² = 14 MW/m²  (attached 시!)
+    Strike-point split: inner 1.2 MW, outer 2.8 MW
+    Outer SP area: A_wet = 2 pi R_sp x lambda_q x f_exp
+                 = 2 pi x 1.6 x 0.004 x 5 = 0.20 m^2
+    q_outer = 2.8 MW / 0.20 m^2 = 14 MW/m^2  (attached case!)
 
-    Detachment 시:
-      q_outer = 14 × (1 - f_det) = 14 × 0.85 = 2.1 MW/m²
-      (f_det = 0.85: detachment 열부하 감소 분율)
+    During detachment:
+      q_outer = 14 x (1 - f_det) = 14 x 0.85 = 2.1 MW/m^2
+      (f_det = 0.85: detachment heat-load reduction fraction)
 
-    300초 누적 열:
-      Q_total = 2.1 MW/m² × 300초 = 630 MJ/m²
-      W monoblock 허용: 연속 10 MW/m², 이론적으로 3000 MJ/m² 까지
-      → 열부하 자체는 충분 ✅
+    300 s cumulative heat:
+      Q_total = 2.1 MW/m^2 x 300 s = 630 MJ/m^2
+      W monoblock rating: 10 MW/m^2 continuous, theoretically up to 3000 MJ/m^2
+      -> Heat load itself is adequate [OK]
 
-  ELM 열부하 (RMP 완화 후):
-    ΔW_ELM = 20 kJ (RMP n=2 완화, 원래 50 kJ)
-    ELM 열부하: q_ELM = 20 kJ / (0.02 m² × 0.001 s) = 1 GW/m²
-    → 순간 열부하 1 GW/m²는 W 표면 용융 임계(~50 MW/m² × 1ms = 50 kJ/m²)에 근접
+  ELM heat load (after RMP mitigation):
+    DeltaW_ELM = 20 kJ (RMP n=2 mitigation, originally 50 kJ)
+    ELM heat load: q_ELM = 20 kJ / (0.02 m^2 x 0.001 s) = 1 GW/m^2
+    -> Instantaneous 1 GW/m^2 approaches W surface melting
+       threshold (~50 MW/m^2 x 1 ms = 50 kJ/m^2)
 
-    300초 × 30 Hz = 9,000 ELMs
-    각 ELM에서의 열충격 → W 표면 미세균열 누적
-    → 300초 1회는 견딤, 수백 회 캠페인 반복은 W 교체 필요
+    300 s x 30 Hz = 9,000 ELMs
+    Thermal shock per ELM -> W surface microcrack accumulation
+    -> A single 300 s shot can be sustained, but hundreds of repeats require W replacement
 
-  ═══ 결론: 디버터 ═══
-    단일 300초 shot: 견딤 (detachment + RMP 조건하)
-    반복 캠페인: W 열화 누적 → 정기 점검/교체 필요
-    ELM 완전 억제 시: W 수명 10배+ 연장 → 가장 중요한 개선
+  === Divertor conclusion ===
+    Single 300 s shot: survivable (with detachment + RMP)
+    Repeated campaigns: W degradation accumulates -> periodic inspection/replacement
+    With full ELM suppression: W life extended 10x+ -> most important improvement
 ```
 
-### 16.4 텅스텐 오염 리스크
+### 16.4 Tungsten Contamination Risk
 
 ```
-  ═══ 장펄스에서의 W 오염 시나리오 ═══
+  === W contamination scenarios in long pulses ===
 
-  W 축적 시간 스케일:
-    W 소스 → SOL 수송 (~10 ms) → pedestal 투과 (~100 ms) → core 축적 (~1초)
-    → 축적 시간 상수: τ_W,acc ≈ 수 초 ~ 수십 초
+  W accumulation timescales:
+    W source -> SOL transport (~10 ms) -> pedestal penetration (~100 ms) -> core accumulation (~1 s)
+    -> Accumulation time constant: tau_W,acc ~ seconds to tens of seconds
 
-  300초 운전 시 W 진화:
-    t = 0-100초: W 축적 시작, c_W ~ 10⁻⁶ (안전)
-    t = 100-200초: 벽 온도 상승 → W 소스 증가
-    t = 200-300초: c_W ~ 5×10⁻⁶ 접근, Z_eff += 0.3-0.5
+  W evolution during 300 s operation:
+    t = 0-100 s: W accumulation begins, c_W ~ 10^-6 (safe)
+    t = 100-200 s: wall-temperature rise -> W source grows
+    t = 200-300 s: c_W approaches ~5 x 10^-6, Z_eff += 0.3-0.5
 
-  위험 한계: c_W > 10⁻⁵
-    P_rad(W) = n_W × n_e × L_W(T_e=10keV)
-    L_W(10keV) ~ 5 × 10⁻³¹ W·m³ (ADAS 데이터)
-    c_W = 10⁻⁵ → P_rad(W) = 10⁻⁵ × 5e19 × 5e-31 = 0.25 MW (총의 2%)
-    c_W = 10⁻⁴ → P_rad(W) = 2.5 MW (총의 23%) → 가둠 붕괴!
+  Danger threshold: c_W > 10^-5
+    P_rad(W) = n_W x n_e x L_W(T_e=10keV)
+    L_W(10keV) ~ 5 x 10^-31 W m^3 (ADAS data)
+    c_W = 10^-5 -> P_rad(W) = 10^-5 x 5e19 x 5e-31 = 0.25 MW (2% of total)
+    c_W = 10^-4 -> P_rad(W) = 2.5 MW (23% of total) -> confinement collapse!
 
-  W 축적 완화 전략:
-    (a) ELM "flushing": 주기적 ELM이 edge W를 배출
-        → 완전 ELM-free는 W 축적에 취약! (역설적)
-        → 작은 ELM 유지(RMP 완화)가 W 관리에 유리
+  W accumulation mitigation strategies:
+    (a) ELM "flushing": periodic ELMs expel edge W
+        -> Full ELM-free is vulnerable to W accumulation! (paradoxically)
+        -> Maintaining small ELMs (RMP mitigation) is favorable for W management
 
-    (b) 중앙 ECCD/ICRH: core W 축적 방지
-        → minority ICRH로 중심 가열 → 온도 screening 유지
+    (b) Central ECCD/ICRH: prevent core W accumulation
+        -> Minority ICRH for central heating -> sustain temperature screening
 
-    (c) Impurity seeding과의 균형:
-        N₂ seeding → T_e,div < 5 eV → W 스퍼터 억제 (소스 차단)
-        과도 seeding → core 온도 하락 → W screening 약화 (축적 촉진)
-        → 최적 seeding 윈도우가 존재
+    (c) Balance with impurity seeding:
+        N2 seeding -> T_e,div < 5 eV -> suppress W sputtering (cut off source)
+        Excess seeding -> core temperature drops -> weakens W screening (promotes accumulation)
+        -> Optimal seeding window exists
 
-  정직한 평가:
-    300초에서 W 오염은 "관리 가능"하지만 마진이 좁음.
-    500초 이상에서는 W 축적이 율속 장벽이 될 가능성.
-    해결책: ELM flushing(주기적 소규모 ELM) + 온도 screening 유지.
+  Honest assessment:
+    At 300 s, W contamination is "manageable" but with a narrow margin.
+    Beyond 500 s, W accumulation may become the rate-limiting barrier.
+    Solution: ELM flushing (periodic small ELMs) + sustained temperature screening.
 ```
 
-### 16.5 중성자 손상 (D-D 반응)
+### 16.5 Neutron Damage (D-D Reactions)
 
 ```
-  ═══ KSTAR의 핵반응 ═══
+  === KSTAR nuclear reactions ===
 
-  KSTAR는 D-D(중수소-중수소) 운전:
-    D + D → ³He (0.82 MeV) + n (2.45 MeV)   [50%]
-    D + D → T (1.01 MeV) + p (3.02 MeV)      [50%]
+  KSTAR runs D-D (deuterium-deuterium):
+    D + D -> He3 (0.82 MeV) + n (2.45 MeV)   [50%]
+    D + D -> T  (1.01 MeV) + p (3.02 MeV)    [50%]
 
-  중성자 발생률:
-    Y_DD = n_D² × <σv>_DD × V_plasma / 4
-    n_D ≈ 4 × 10¹⁹ m⁻³
-    T_i = 10 keV → <σv>_DD ≈ 5 × 10⁻²⁵ m³/s
-    V_plasma ≈ 2π R₀ × π a² κ = 2π × 1.8 × π × 0.25 × 2.0 = 17.8 m³
+  Neutron production rate:
+    Y_DD = n_D^2 x <sigma v>_DD x V_plasma / 4
+    n_D ~ 4 x 10^19 m^-3
+    T_i = 10 keV -> <sigma v>_DD ~ 5 x 10^-25 m^3/s
+    V_plasma ~ 2 pi R0 x pi a^2 kappa = 2 pi x 1.8 x pi x 0.25 x 2.0 = 17.8 m^3
 
-    Y_DD = (4e19)² × 5e-25 × 17.8 / 4
-         = 16e38 × 5e-25 × 4.45
-         = 3.56 × 10¹⁵ neutrons/s
+    Y_DD = (4e19)^2 x 5e-25 x 17.8 / 4
+         = 16e38 x 5e-25 x 4.45
+         = 3.56 x 10^15 neutrons/s
 
-  중성자 플럭스:
-    벽 면적: A_wall ≈ 2π R₀ × 2π a × √((1+κ²)/2) ≈ 30 m²
-    Φ_n = Y_DD / A_wall = 3.56e15 / 30 = 1.19 × 10¹⁴ n/m²/s
+  Neutron flux:
+    Wall area: A_wall ~ 2 pi R0 x 2 pi a x sqrt((1+kappa^2)/2) ~ 30 m^2
+    Phi_n = Y_DD / A_wall = 3.56e15 / 30 = 1.19 x 10^14 n/m^2/s
 
-  300초 누적 중성자 fluence:
-    F_300 = 1.19e14 × 300 = 3.56 × 10¹⁶ n/m²
+  300 s cumulative neutron fluence:
+    F_300 = 1.19e14 x 300 = 3.56 x 10^16 n/m^2
 
-  재료 손상 (DPA):
-    1 DPA ≈ 10²⁵ n/m² (2.45 MeV 기준, 철강재)
-    300초: 3.56e16 / 1e25 = 3.56 × 10⁻⁹ DPA ≈ 무시 가능
+  Material damage (DPA):
+    1 DPA ~ 10^25 n/m^2 (at 2.45 MeV, steel reference)
+    300 s: 3.56e16 / 1e25 = 3.56 x 10^-9 DPA ~ negligible
 
-  ═══ 결론: D-D 중성자 ═══
+  === Conclusion: D-D neutrons ===
 
-    KSTAR의 D-D 중성자는 재료 손상에 무시할 수 있는 수준.
-    (D-T 대비 ~100,000배 낮은 fluence)
+    KSTAR's D-D neutrons produce negligible material damage.
+    (Fluence ~100,000x lower than D-T)
 
     BUT:
-      - 활성화(activation): 소량이나 누적 → 유지보수 시 방사선 관리 필요
-      - 진단 장비(광섬유, 반도체 센서): 장기 캠페인에서 열화 가능
-      - 중성자 모니터링은 핵융합 성능 지표로 활용
+      - Activation: small but cumulative -> radiation control needed in maintenance
+      - Diagnostics (fiber optics, semiconductor sensors): may degrade over long campaigns
+      - Neutron monitoring is used as a fusion-performance indicator
 
-    300초 정상 상태에서의 중성자 손상 위험: 무시 가능 (Grade: NOT A BARRIER)
+    Neutron damage risk at 300 s steady state: negligible (Grade: NOT A BARRIER)
 ```
 
-### 16.6 A=3.6에서 Barrier 4 해결이 물리적으로 불가능한 시나리오
+### 16.6 Scenarios Where Barrier 4 Resolution Is Physically Impossible at A=3.6
 
 ```
-  ═══ 최악의 경우: f_bs가 물리적 상한에 도달 불가? ═══
+  === Worst case: can f_bs not reach the physical upper bound? ===
 
-  f_bs를 결정하는 핵심 파라미터:
-    f_bs ∝ √ε × β_p × C_profile
+  Core parameters determining f_bs:
+    f_bs ~ sqrt(eps) x beta_p x C_profile
 
-  KSTAR의 ε = 1/A = 1/3.6 = 0.278
+  KSTAR's eps = 1/A = 1/3.6 = 0.278
 
-  비교:
-    KSTAR: ε=0.278, √ε=0.527
-    NSTX (구형 토카막): ε=0.625, √ε=0.791
-    ITER: ε=0.323, √ε=0.568
-    MAST-U: ε=0.667, √ε=0.816
+  Comparison:
+    KSTAR: eps=0.278, sqrt(eps)=0.527
+    NSTX (spherical tokamak): eps=0.625, sqrt(eps)=0.791
+    ITER: eps=0.323, sqrt(eps)=0.568
+    MAST-U: eps=0.667, sqrt(eps)=0.816
 
-  NSTX는 f_bs > 70%를 쉽게 달성 (큰 ε)
-  KSTAR는 √ε가 NSTX의 67% → 같은 β_p에서 f_bs가 33% 낮음
+  NSTX easily achieves f_bs > 70% (large eps)
+  KSTAR's sqrt(eps) is 67% of NSTX's -> f_bs is 33% lower at the same beta_p
 
-  ═══ 물리적 불가 시나리오 ═══
+  === Physically-impossible scenario ===
 
-  f_bs = 100%를 위한 최소 β_p:
-    1.0 = C_bs × √ε × β_p / (1 + β_p/2)
-    C_bs(max) ≈ 0.70 (강한 역전단 + ITB)
+  Minimum beta_p for f_bs = 100%:
+    1.0 = C_bs x sqrt(eps) x beta_p / (1 + beta_p/2)
+    C_bs(max) ~ 0.70 (strong reversed shear + ITB)
 
-    0.70 × 0.527 × β_p / (1 + β_p/2) = 1.0
-    0.369 × β_p = 1 + 0.5 × β_p
-    (0.369 - 0.5) × β_p = 1
-    -0.131 × β_p = 1
-    β_p = -7.6  → 음수! → 불가능!
+    0.70 x 0.527 x beta_p / (1 + beta_p/2) = 1.0
+    0.369 x beta_p = 1 + 0.5 x beta_p
+    (0.369 - 0.5) x beta_p = 1
+    -0.131 x beta_p = 1
+    beta_p = -7.6  -> negative! -> impossible!
 
-  해석:
-    C_bs × √ε = 0.369 < 0.5
-    → C_bs × √ε < 1/2이면, β_p를 아무리 올려도 f_bs = 100% 도달 불가!
+  Interpretation:
+    C_bs x sqrt(eps) = 0.369 < 0.5
+    -> If C_bs x sqrt(eps) < 1/2, raising beta_p cannot make f_bs reach 100%!
 
-    이것은 KSTAR에서 bootstrap만으로 100% 전류 유지가 불가능함을 의미.
-    → 외부 전류 구동(ECCD, NBCD)이 반드시 필요 (이미 설계에 반영)
+    This means 100% current sustained by bootstrap alone is impossible at KSTAR.
+    -> External CD (ECCD, NBCD) is mandatory (already baked into the design)
 
-  실제 f_bs 상한 (C_bs=0.70, β_p → ∞ 극한):
-    f_bs_max = C_bs × √ε × β_p / (1 + β_p/2) → C_bs × √ε × 2 = 0.369 × 2 = 0.738
+  Actual f_bs upper bound (C_bs=0.70, beta_p -> infinity):
+    f_bs_max = C_bs x sqrt(eps) x beta_p / (1 + beta_p/2) -> C_bs x sqrt(eps) x 2 = 0.369 x 2 = 0.738
 
-    즉, KSTAR에서 f_bs의 물리적 상한은 ~74% (β_p → ∞ 극한)
-    현실적 상한 (β_p < 4): f_bs ~ 60-65%
+    i.e. KSTAR's physical f_bs bound is ~74% (beta_p -> infinity limit)
+    Realistic bound (beta_p < 4): f_bs ~ 60-65%
 
-  이것이 Barrier 4가 도전적인 근본 이유:
-    f_bs(max) ~ 65-74% → 잔여 26-35%는 반드시 외부 CD
-    I_CD = (0.26-0.35) × 0.4 MA = 104-140 kA
-    ECCD + NBCD로 100-140 kA 구동 필요
-    → 현재 ECCD 1 MW로는 ~30 kA → 3-4 MW 필요 (이미 계획됨)
+  This is the fundamental reason Barrier 4 is challenging:
+    f_bs(max) ~ 65-74% -> the remaining 26-35% must come from external CD
+    I_CD = (0.26-0.35) x 0.4 MA = 104-140 kA
+    Need 100-140 kA driven by ECCD + NBCD
+    -> Current ECCD 1 MW gives ~30 kA -> need 3-4 MW (already planned)
 
-  ═══ 불가능 시나리오의 확률 ═══
+  === Probability of the impossible scenario ===
 
-  "Barrier 4 해결 자체가 물리적으로 불가능"한 경우:
-    이것은 β_p > 3.5을 안정적으로 유지할 수 없거나
-    ECCD 효율이 예상보다 크게 낮은 경우에 해당
+  Case where "Barrier 4 resolution itself is physically impossible":
+    This corresponds to failing to sustain beta_p > 3.5 stably,
+    or ECCD efficiency being far below expectation
 
-    확률: ~10-15%
-    근거: 유사 장치(DIII-D, JT-60U)에서 유사 조건 달성 실적 존재
-          BUT: 수백 초 유지는 미검증
+    Probability: ~10-15%
+    Basis: similar conditions have been achieved at sister devices (DIII-D, JT-60U)
+           BUT: hundred-second-scale sustenance unproven
 ```
 
-### 16.7 정직한 확률 추정: 2029년까지 300초 정상 상태 달성
+### 16.7 Honest Probability Estimate: Reaching 300 s Steady State by 2029
 
 ```
-  ═══ 달성 확률 분해 ═══
+  === Probability decomposition ===
 
-  300초 정상 상태 = (f_ni > 95%) × (MHD 안정) × (디버터 관리)
-                    × (불순물 제어) × (ECH 업그레이드 적시 완료)
+  300 s steady state = (f_ni > 95%) x (MHD stable) x (divertor managed)
+                       x (impurity controlled) x (ECH upgrade completed on schedule)
 
-  각 요소별 확률:
+  Probability of each factor:
 
-  (1) ECH 4 MW 업그레이드 적시 완료 (2028년까지)
-      gyrotron 조달: 170 GHz, 1 MW CW × 3기 추가
-      리드타임: gyrotron 제조 18-24개월
-      전원/전송/냉각: 12-18개월 설치
-      → 2028년 설치 완료 확률: 70%
-      (예산 승인 지연, 공급망 문제, 기술 난이도)
+  (1) ECH 4 MW upgrade completed on time (by 2028)
+      gyrotron procurement: 170 GHz, 1 MW CW x 3 additional units
+      Lead time: gyrotron manufacturing 18-24 months
+      Power/transmission/cooling: 12-18 months installation
+      -> Probability of 2028 installation completion: 70%
+      (budget approval delay, supply-chain issues, technical difficulty)
 
-  (2) f_bs > 55% 안정적 달성
-      ITB 형성: KSTAR에서 단시간 시연 있음
-      장시간 ITB 유지: 미검증 (세계적으로도 수십 초가 최장)
-      → 수백 초 ITB 유지 확률: 50-60%
+  (2) Stable achievement of f_bs > 55%
+      ITB formation: short-duration demonstration at KSTAR
+      Long-duration ITB sustenance: unproven (world record is tens of seconds)
+      -> Probability of hundred-second ITB sustenance: 50-60%
 
-  (3) ECCD 효율 목표 달성 (η > 0.035)
-      현재 η=0.020 → 목표 0.035-0.050
-      방법: top launch 추가 또는 steering 최적화
-      → 달성 확률: 65-75%
+  (3) Reaching ECCD efficiency target (eta > 0.035)
+      Current eta=0.020 -> target 0.035-0.050
+      Method: add top launch or optimize steering
+      -> Achievement probability: 65-75%
 
-  (4) MHD 안정성 유지 (β_N~3.0, disruption-free 300초)
-      β_N=3.0에서 300초 disruption-free:
-      disruption 확률 ~0.1%/shot 가정 → 300초: 단일 shot OK
-      BUT: 고 β 운전 캠페인에서 disruption 누적 위험
-      → disruption-free 300초 달성 확률: 80%
+  (4) Maintaining MHD stability (beta_N ~ 3.0, disruption-free 300 s)
+      Disruption-free 300 s at beta_N=3.0:
+      Assuming disruption probability ~0.1%/shot -> 300 s single shot OK
+      BUT: cumulative disruption risk over a high-beta campaign
+      -> Probability of disruption-free 300 s: 80%
 
-  (5) 통합 시스템 안정성
-      6개 제어 루프 300초 동시 안정 운전
-      → 통합 확률: 75% (개별 루프 × 결합 마진)
+  (5) Integrated system stability
+      6 control loops stable simultaneously for 300 s
+      -> Integrated probability: 75% (individual loops x coupling margin)
 
-  ═══ 종합 확률 ═══
+  === Combined probability ===
 
-  완전 정상 상태 (f_ni = 100%, Scenario C):
-    P = 0.70 × 0.50 × 0.65 × 0.80 × 0.75
-      = 0.70 × 0.50 × 0.65 × 0.80 × 0.75
-      = 0.137 ≈ 14%
+  Full steady state (f_ni = 100%, Scenario C):
+    P = 0.70 x 0.50 x 0.65 x 0.80 x 0.75
+      = 0.70 x 0.50 x 0.65 x 0.80 x 0.75
+      = 0.137 ~ 14%
 
-  준정상 상태 (f_ni > 90%, Scenario B):
-    P = 0.70 × 0.60 × 0.70 × 0.85 × 0.80
-      = 0.70 × 0.60 × 0.70 × 0.85 × 0.80
-      = 0.200 ≈ 20%
+  Quasi-steady state (f_ni > 90%, Scenario B):
+    P = 0.70 x 0.60 x 0.70 x 0.85 x 0.80
+      = 0.70 x 0.60 x 0.70 x 0.85 x 0.80
+      = 0.200 ~ 20%
 
-  확장 준정상 (f_ni > 80%, Scenario A):
-    P = 0.85 × 0.70 × 0.75 × 0.90 × 0.85
-      = 0.85 × 0.70 × 0.75 × 0.90 × 0.85
-      = 0.341 ≈ 34%
+  Extended quasi-steady (f_ni > 80%, Scenario A):
+    P = 0.85 x 0.70 x 0.75 x 0.90 x 0.85
+      = 0.85 x 0.70 x 0.75 x 0.90 x 0.85
+      = 0.341 ~ 34%
 
-  ┌──────────────────────────────────────────────────────────────────┐
-  │ 달성 수준                    2029년까지 확률   비고              │
-  ├──────────────────────────────────────────────────────────────────┤
-  │ 완전 정상 상태 (f_ni=100%)   ~14%             Scenario C       │
-  │ 준정상 (f_ni>90%)            ~20%             Scenario B       │
-  │ 확장 준정상 (f_ni>80%)       ~34%             Scenario A       │
-  │ 유의미한 진전 (f_ni>65%)     ~55%             ECH 2MW라도     │
-  │ 현 수준 유지 (f_ni~50%)      ~90%             300초 안정화     │
-  └──────────────────────────────────────────────────────────────────┘
+  +------------------------------------------------------------------+
+  | Achievement level              Probability by 2029    Notes      |
+  +------------------------------------------------------------------+
+  | Full steady state (f_ni=100%)  ~14%                   Scenario C |
+  | Quasi-steady (f_ni>90%)        ~20%                   Scenario B |
+  | Extended quasi (f_ni>80%)      ~34%                   Scenario A |
+  | Meaningful progress (f_ni>65%) ~55%                   Even ECH 2MW|
+  | Present level (f_ni~50%)       ~90%                   300 s stable|
+  +------------------------------------------------------------------+
 
-  ═══ 정직한 결론 ═══
+  === Honest conclusion ===
 
-  2029년까지 완전 정상 상태(f_ni=100%) 달성 확률은 ~14%로 낮다.
-  그러나 유의미한 진전(f_ni>65%) 확률은 ~55%로, 반 이상의 확률로
-  현재보다 크게 개선된 운전 모드를 시연할 수 있다.
+  The probability of reaching full steady state (f_ni=100%) by 2029 is low, ~14%.
+  However, the probability of meaningful progress (f_ni>65%) is ~55%, so with
+  better-than-even odds a clearly improved operational mode can be demonstrated.
 
-  가장 현실적인 시나리오:
-    2027년: ECH 2-3 MW 설치, f_ni ~ 70-80%, 1000초+ 운전
-    2028년: ITB 시연, f_bs ~ 50% = 1/φ(6) 전환점 돌파
-    2029년: f_ni ~ 85-90%, 수천 초 운전 (K-DEMO 데이터로 충분)
-    2030+:  f_ni > 95%, 준완전 정상 상태
+  Most realistic scenario:
+    2027: ECH 2-3 MW installed, f_ni ~ 70-80%, 1000 s+ operation
+    2028: ITB demonstration, f_bs ~ 50% = 1/phi(6) turning point crossed
+    2029: f_ni ~ 85-90%, thousands of seconds of operation (sufficient as K-DEMO data)
+    2030+: f_ni > 95%, near-complete steady state
 
-  이것은 과학적으로 성공적인 결과이며,
-  K-DEMO CDR(개념 설계 검토)에 필요한 데이터를 확보하기에 충분하다.
-  "완전 100% 비유도"가 아니더라도 90%+ NI에서 수 시간 운전은
-  상업 핵융합로 설계에 직접 활용 가능한 가치있는 데이터이다.
+  This is a scientifically successful outcome,
+  sufficient to secure the data needed for the K-DEMO CDR (Conceptual Design Review).
+  Even without "fully 100% non-inductive", hours of operation at 90%+ NI
+  is valuable data directly usable for commercial fusion reactor design.
 
-  최종 n=6 Score (확률 분석):
-    14% = ~1/7 ≈ 1/(n+μ)                                   FORCED
-    55% = ~1/2 ≈ 1/φ                                       CLOSE
-    → 확률 자체의 n=6 매핑은 무의미 (정직함 유지)
+  Final n=6 Score (probability analysis):
+    14% = ~1/7 ~ 1/(n + mu)                                FORCED
+    55% = ~1/2 ~ 1/phi                                     CLOSE
+    -> n=6 mapping of probabilities themselves is meaningless (stay honest)
 ```
 
 ---
 
-*Upgraded: 2026-04-02 — Barrier 4 심화, 수송, ELM, 제어, 세계 비교, 약점 분석 추가*
+*Upgraded: 2026-04-02 — Added Barrier 4 deep dive, transport, ELM, control, world comparison, weakness analysis*
 *Based on: kstar-steady-state-research.md, kstar-barrier-deep-verification.md,*
 *kstar-300s-analysis.md, kstar-barrier4-calc.py*
 *n=6 framework: sigma(6)xphi(6) = 6xtau(6) = 24*
