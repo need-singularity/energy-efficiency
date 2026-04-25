@@ -4,7 +4,7 @@
     "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
-    "count": 5,
+    "count": 4,
     "scope_dirs": [
       "domains/",
       "theory/",
@@ -605,7 +605,6 @@
     ]
   },
   "allowlist": [
-    "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
     "reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md",
     "reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md",
     "theory/breakthroughs/breakthrough-theorems.md",
@@ -765,6 +764,16 @@
       "count_before": 8,
       "count_after": 7,
       "note": "C RED-lite single-file - n6-ultimate-superconductor-integrated-paper.md (1682L, CJK 7359 -> 0) translated KR->EN. P-039 14-in-1 integrated SC paper. own#11 softeners applied (proven->draft demonstration, achieved->target/pathway candidate, QED->QED-(candidate))."
+    },
+    {
+      "phase": "phase-6-step3-specs-kstar-300s",
+      "batch": "phase-6-step3-specs-kstar-300s",
+      "date": "2026-04-25",
+      "removed": 1,
+      "entry": "reports/sessions/specs/2026-04-02-kstar-300s-steady-state-design.md",
+      "count_before": 5,
+      "count_after": 4,
+      "note": "phase-6-step3-specs kstar-300s-steady-state-design.md translated KR->EN, CJK=0 verified, lint OK."
     }
   ]
 }
