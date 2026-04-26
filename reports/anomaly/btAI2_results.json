@@ -1,0 +1,214 @@
+{
+  "atlas_constants": {
+    "n_tiles": 6,
+    "provenance_bit_overhead_phi_over_sigma_n": 0.027777777777777776,
+    "sparsity_floor_phi_over_n": 0.3333333333333333,
+    "tau_stages": 4
+  },
+  "baseline": {
+    "area_overhead_fraction": 0.0,
+    "avg_propagation_latency": 13.66,
+    "bandwidth_overhead_fraction": 0.0,
+    "completed_tensors": 200,
+    "cycles_budget": 10000,
+    "cycles_used": 96,
+    "legit_promotions_attempted": 0,
+    "legit_promotions_refused": 0,
+    "legit_reject_rate": 0.0,
+    "mode": "baseline",
+    "per_tile": [
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 89,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 7,
+        "tile": 0
+      },
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 91,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 5,
+        "tile": 1
+      },
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 88,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 8,
+        "tile": 2
+      },
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 91,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 5,
+        "tile": 3
+      },
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 83,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 13,
+        "tile": 4
+      },
+      {
+        "fact_writes": 0,
+        "hyp_writes_blocked": 0,
+        "legit_promotions_attempted": 0,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 86,
+        "propagation_events": 0,
+        "refused_writes": 0,
+        "stall_cycles": 10,
+        "tile": 5
+      }
+    ],
+    "refused_writes": 0,
+    "seed": 42,
+    "threshold": 8,
+    "throughput_per_cycle": 2.0833333333333335,
+    "total_tensors": 200,
+    "wall_seconds": 1.5960147380828857,
+    "workload": "full"
+  },
+  "domain": "ai-native-architecture",
+  "experiment": "BT-AI2",
+  "falsifiers": {
+    "F_AI2_A": {
+      "max_allowed_drop_fraction": 0.05,
+      "name": "provenance-bit propagation throughput drop",
+      "pass": true,
+      "throughput_baseline_per_cycle": 2.0833333333333335,
+      "throughput_drop_fraction": 0.04000000000000007,
+      "throughput_provenance_per_cycle": 2.0
+    },
+    "F_AI2_B": {
+      "legit_promotions_attempted": 49,
+      "legit_promotions_refused": 0,
+      "legit_reject_rate": 0.0,
+      "max_allowed_reject_rate": 0.01,
+      "name": "write-barrier rejection of legitimate promotions",
+      "pass": true
+    },
+    "verdict": "PASS"
+  },
+  "kg_nodes_referenced": [
+    "silicon:provenance-bit",
+    "silicon:promotion-counter-mmu",
+    "silicon:bt-id-isa",
+    "principle:honesty-triad",
+    "principle:write-barrier",
+    "principle:constraint-honesty",
+    "arch:n6-native-accelerator"
+  ],
+  "parent_session": "reports/sessions/omega-cycle-ai-native-arch-beyond-gpu-2026-04-26.md",
+  "provenance": {
+    "area_overhead_fraction": 0.027777777777777776,
+    "avg_propagation_latency": 14.193548387096774,
+    "bandwidth_overhead_fraction": 0.027777777777777776,
+    "completed_tensors": 200,
+    "cycles_budget": 10000,
+    "cycles_used": 100,
+    "legit_promotions_attempted": 49,
+    "legit_promotions_refused": 0,
+    "legit_reject_rate": 0.0,
+    "mode": "provenance_on",
+    "per_tile": [
+      {
+        "fact_writes": 21,
+        "hyp_writes_blocked": 6,
+        "legit_promotions_attempted": 10,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 89,
+        "propagation_events": 34,
+        "refused_writes": 6,
+        "stall_cycles": 5,
+        "tile": 0
+      },
+      {
+        "fact_writes": 19,
+        "hyp_writes_blocked": 7,
+        "legit_promotions_attempted": 10,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 91,
+        "propagation_events": 34,
+        "refused_writes": 7,
+        "stall_cycles": 2,
+        "tile": 1
+      },
+      {
+        "fact_writes": 20,
+        "hyp_writes_blocked": 8,
+        "legit_promotions_attempted": 10,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 88,
+        "propagation_events": 33,
+        "refused_writes": 8,
+        "stall_cycles": 4,
+        "tile": 2
+      },
+      {
+        "fact_writes": 18,
+        "hyp_writes_blocked": 9,
+        "legit_promotions_attempted": 7,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 91,
+        "propagation_events": 33,
+        "refused_writes": 9,
+        "stall_cycles": 0,
+        "tile": 3
+      },
+      {
+        "fact_writes": 17,
+        "hyp_writes_blocked": 9,
+        "legit_promotions_attempted": 8,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 83,
+        "propagation_events": 33,
+        "refused_writes": 9,
+        "stall_cycles": 8,
+        "tile": 4
+      },
+      {
+        "fact_writes": 17,
+        "hyp_writes_blocked": 6,
+        "legit_promotions_attempted": 4,
+        "legit_promotions_refused": 0,
+        "productive_cycles": 86,
+        "propagation_events": 33,
+        "refused_writes": 6,
+        "stall_cycles": 8,
+        "tile": 5
+      }
+    ],
+    "refused_writes": 45,
+    "seed": 42,
+    "threshold": 8,
+    "throughput_per_cycle": 2.0,
+    "total_tensors": 200,
+    "wall_seconds": 0.0037848949432373047,
+    "workload": "full"
+  },
+  "schema_version": 1
+}
