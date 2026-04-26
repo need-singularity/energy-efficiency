@@ -39,6 +39,7 @@ lean4-n6/lake-manifest.json
 
 # Python virtual envs + egg-info (venv 폐기 재추적 방지, ROI#13)
 venv/
+.venv-btAI1/
 *.egg-info/
 
 # Transient hook command state (per-invocation)

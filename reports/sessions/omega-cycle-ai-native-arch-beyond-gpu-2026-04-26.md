@@ -14,8 +14,9 @@ millennium_resolved: 0/7 (unchanged)
 atlas_writes: 0 (4 candidates only, atlas-agent delegated)
 kg_writes: 0 (4 candidates only, growth-agent delegated)
 new_axis_proposed: Y_compute (silicon governance axis, missing from Y1..Y9)
-grade: design-HIGH / silicon-LOW
+grade: design-MEDIUM / silicon-LOW (amended 2026-04-26 post-robustness-sweep; was design-HIGH on single-seed evidence)
 verdict: MEDIUM (recommend entering BT-AI1/BT-AI2 verification cycle)
+amendments: [reports/anomaly/btAI2_robustness_summary.md (2026-04-26 post-cycle robustness extension)]
 ---
 
 # Omega Cycle: AI-native Architecture Beyond GPU (2026-04-26)
@@ -35,6 +36,14 @@ enter a verification cycle, not to silicon viability.
 
 The new governance axis "Y_compute" proposed at §7 is a **candidate
 proposal** for atlas-agent review, not a self-promoted axis declaration.
+
+**Post-publication amendment (2026-04-26)**: this document was amended
+after initial publication to reflect a 900-run robustness sweep
+(100 seeds x 3 workloads x 3 thresholds) that downgraded the
+design-layer grade from HIGH to MEDIUM. The single-seed F-AI2-A PASS
+that originally supported design-HIGH is now superseded; see
+`reports/anomaly/btAI2_robustness_summary.md` and the amended §10
+plus §12.1 below.
 
 ---
 
@@ -184,6 +193,11 @@ atlas-agent review, not self-promoted here.
 - **F-DESIGN-B**: if BT-AI2's F-AI2-A trips (provenance-bit propagation
   > 5% throughput drop), the 2.78% overhead estimate at §2 is invalid
   and the entire B + C hybrid selection at §3 must be reweighted.
+  - **2026-04-26 sweep result**: F-AI2-A is breached in 7/9 grid cells
+    of a 100-seed x 3-workload x 3-threshold sweep; the original
+    single-seed PASS reproduces only at threshold=4 (trivial-PASS
+    band). See `reports/anomaly/btAI2_robustness_summary.md`.
+    Design-layer grade downgraded HIGH -> MEDIUM.
 - **F-DESIGN-C**: if BT-AI1's F-AI1-B trips (random vs structured 1/3
   differ by < noise), the "phi / n structured sparsity is meaningful"
   premise behind C (wafer-scale + 1/3 sparsity-first) collapses; B
@@ -199,12 +213,18 @@ atlas-agent review, not self-promoted here.
 
 ## §10 Verdict
 
-- **Design layer**: **HIGH** -- N6 principles map naturally to silicon
-  primitives, and the phi / sigma_n match is a non-coincidence flag.
+- **Design layer**: **MEDIUM** (amended) -- N6 principles map naturally
+  to silicon primitives and the phi / sigma_n match is a non-coincidence
+  flag, but the BT-AI2 robustness sweep (900 runs) shows F-AI2-A clears
+  only at threshold=4 (trivial-PASS); meaningful thresholds (8 / 12)
+  breach 18-96% of seeds. Original HIGH was based on a single-seed
+  PASS now superseded.
 - **Silicon layer**: **LOW** -- no fab / EDA verification has been done;
   BT-AI1 and BT-AI2 must run first.
 - **Composite**: **MEDIUM** -- recommend entering the verification cycle
-  (BT-AI2 first, then BT-AI1).
+  (BT-AI2 first, then BT-AI1). Verdict text unchanged but reasoning
+  shifts post-amendment: weaker design support, BT-AI2c counter-cycle
+  now required.
 - **Millennium invariants touched**: **0 / 7** (unchanged).
 - **Atlas writes (this session)**: **0** (4 candidates only, §7).
 - **KG writes (this session)**: **0** (5 candidates only, §8).
@@ -241,6 +261,31 @@ information, can run within one session). BT-AI1 follows after BT-AI2
 clears its falsifiers.
 
 End of audit.
+
+---
+
+## §12.1 Post-cycle amendment (2026-04-26)
+
+A 100-seed x 3-workload x 3-threshold robustness sweep (900 paired
+runs) was executed after this session's initial publication and is
+recorded in `reports/anomaly/btAI2_robustness_summary.md`. The sweep
+shows F-AI2-A is breached in 7 of 9 grid cells: the original
+single-seed (42) PASS reproduces only at threshold=4, where the
+write-barrier never engages (trivial-PASS band). At threshold=8 / 12,
+18-96% of seeds breach the 5% ceiling depending on workload density,
+with the worst cell `(workload=full, threshold=12)` reaching max 20.0%
+drop and 96/100 seeds breaching. F-AI2-B (legit-rejection <= 1%)
+remains fully robust at 0/900 breaches.
+
+Effect on this session: design-layer grade is downgraded HIGH ->
+MEDIUM; silicon-layer LOW is unchanged; composite MEDIUM is unchanged
+but rests on weaker design support. **BT-AI2c** is registered as a
+follow-on counter-cycle, with gate **F-AI2-A <= 5% at threshold=8
+across all 100 seeds**, investigating (a) hypothesis-write blocking
+aggressiveness, (b) DAG independent-tile count, and (c) provenance
+propagation latency. The 7-millennium tally remains **0/7**
+unchanged, and atlas / KG / domains.json writes from this amendment
+are **0**.
 
 ---
 
