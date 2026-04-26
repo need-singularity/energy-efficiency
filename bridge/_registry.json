@@ -55,7 +55,7 @@
     "special-number-bf":     { "desc": "특수수 브루트포스",           "src": "src/cmd/analyze/special_number_bf.rs",  "origin": "nexus/origins/special-number-bf/main.hexa" },
     "vendor-compare":        { "desc": "벤더 비교 계산기",            "src": "src/cmd/analyze/vendor_compare.rs",     "origin": "nexus/origins/vendor-compare-calc/main.hexa" },
     "fusion-verify":         { "desc": "핵융합 검증기",               "src": "src/cmd/analyze/fusion_verify.rs",      "origin": "nexus/origins/fusion-verify/main.hexa" },
-    "dimension-perception":  { "desc": "차원 지각 BCI 웹 인터페이스", "src": "src/cmd/analyze/dimension_perception_ui.rs", "origin": "nexus/origins/dimension-perception/" }
+    "dimension-perception":  { "desc": "차원 지각 BCI 웹 인터페이스", "src": "src/cmd/analyze/dimension_perception_ui.rs", "origin": "bridge/origins/dimension-perception/main.hexa" }
   },
 
   "hexa": {

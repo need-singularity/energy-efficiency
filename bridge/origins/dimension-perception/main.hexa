@@ -1,0 +1,27 @@
+// N6 Dimension-Perception Origin (HEXA entry point)
+// Companion launcher for the interactive demo (index.html) and BCI training
+// surface (bci/train.html). Provides programmatic metadata for the n6
+// origins registry and satisfies the F5-loner architectural-fit rule by
+// pairing the static HTML demo with a canonical main.hexa entry — matching
+// every other bridge/origins/<name>/ folder convention.
+//
+// Surfaces:
+//   - index.html        higher-dimensional perceptual demo (visual stage)
+//   - bci/train.html    BCI training mode (skill-acquisition loop)
+//   - bci/hexa_sense.hexa   sensor channel definitions (HEXA SSOT)
+//
+// Invocation: `hexa run bridge/origins/dimension-perception/main.hexa`
+// emits the asset manifest used by the registry sync (own#7).
+
+fn manifest() {
+    println("origin: dimension-perception")
+    println("kind: interactive-demo")
+    println("entry: index.html")
+    println("aux: bci/train.html")
+    println("ssot: bci/hexa_sense.hexa")
+    println("status: live")
+}
+
+fn main() {
+    manifest()
+}

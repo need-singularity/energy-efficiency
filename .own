@@ -202,13 +202,19 @@ own 14 live "readme-sealed-required — 루트 README.md sealed 필수"
   since 2026-04-21
   why .readme-rules.json scopes.root.require_sealed=true + README.md.sealed.hash 실재. README 는 auto-generated 블록 + sealed 해시로 drift 방지.
 
-own 15 live "paper-canonical-sections — 논문 문서 21섹션 canonical + verify + mk-history"
+own 15 live "paper-canonical-sections — 논문 문서 21섹션 canonical + verify + mk-history (HARD)"
   slug paper-canonical-sections
-  decl .doc-rules.json
-  scope @doc paper 타입 문서는 §1~§21 canonical_full (WHY/COMPARE/REQUIRES/STRUCT/FLOW/EVOLVE/VERIFY + EXEC SUMMARY..IMPACT) 충족 + ascii_check + require_verify + mk_history_min_lines=3.
+  decl papers/ tool/own_doc_lint.py
+  scope HARD block — papers/*.md (그리고 @doc paper 타입 문서) 는 §1~§21 canonical_full sections 모두 포함. brief(§1-§7): WHY / COMPARE / REQUIRES / STRUCT / FLOW / EVOLVE / VERIFY. engineering(§8-§20): EXEC SUMMARY / SYSTEM REQUIREMENTS / ARCHITECTURE / CIRCUIT DESIGN / PCB DESIGN / FIRMWARE / MECHANICAL / MANUFACTURING / TEST / BOM / VENDOR / ACCEPTANCE / APPENDIX. impact(§21): IMPACT. 추가 게이트: require_ascii_check + require_verify + mk_history_min_lines=3.
   status live
-  since 2026-04-21
-  why .doc-rules.json rules.paper — paper=sscb 수준 canonical 문서 포맷. deprecated_by=@own 2026-04-19 Phase 4 — legacy toggles 은 @own 미선언 파일만 적용하므로 본 .own 선언이 enforce path.
+  since 2026-04-26
+  why Phase 4 finalization (2026-04-26) — paper=sscb canonical 문서 포맷 SSOT 가 .doc-rules.json rules.paper 에서 .own own#15 로 완전 이관. .doc-rules.json 의 paper 항목은 deprecated=true (deprecated_by=@own, deprecated_date=2026-04-19, migration_phase=4) 로 표시되며 @own 미선언 파일에 대한 legacy toggle 도 본 own#15 가 흡수. own#6 (paper-verify-embedded) 은 별도 concern (검증코드 .md 임베드) 으로 공존.
+  note 21-section list 는 본 .own 선언이 SSOT. brief sections (WHY/COMPARE/REQUIRES/STRUCT/FLOW/EVOLVE/VERIFY) 는 §1-§7, engineering sections 는 §8-§20, impact 는 §21. mk_history_min_lines=3 은 mk-history footer 의 최소 줄 수.
+  deps own:paper-verify-embedded
+  verify python3 tool/own_doc_lint.py --rule 15
+  cron on-commit
+  on_fail block
+  label own#15 paper-canonical-sections HARD gate
 
 own 16 live "md-domain-registry-required — .md 생성 시 domains/_index.json 등록 필수 + 섹션 자동 생성"
   slug md-domain-registry-required

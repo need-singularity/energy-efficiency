@@ -4,16 +4,18 @@
     "project": "n6-architecture",
     "version": 1,
     "inherit": false,
-    "updated": "2026-04-18",
-    "description": "n6-architecture @doc 양식 — paper=sscb §1-§21 canonical_full + 프로젝트 고유 type 확장 (ADR/SPEC 등). 글로벌 병합 없이 완전 독립."
+    "updated": "2026-04-26",
+    "description": "n6-architecture @doc 양식 — Phase 4 (2026-04-26) finalized: paper rule SSOT 는 .own own#15 (paper-canonical-sections). 본 파일의 paper entry 는 legacy reader 를 위한 migration pointer 로 잔존. ADR/SPEC 은 본 파일에서 계속 정의."
   },
   "rules": {
     "paper": {
-      "description": "논문/도메인 명세 — sscb 수준 canonical. brief(§1-§7) + engineering(§8-§20) + impact(§21). Phase 4 이후 @own 하네스가 저수준 강제, legacy toggles 은 @own 미선언 파일만 적용.",
+      "description": "논문/도메인 명세 — Phase 4 finalized 2026-04-26. SSOT 는 .own own#15 (paper-canonical-sections). 본 entry 는 legacy reader pointer; 신규 enforcement 는 .own own#15 경로로만 진행. brief(§1-§7) + engineering(§8-§20) + impact(§21).",
       "deprecated": true,
-      "deprecated_by": "@own",
+      "deprecated_by": "@own:paper-canonical-sections",
       "deprecated_date": "2026-04-19",
       "migration_phase": 4,
+      "migration_finalized_date": "2026-04-26",
+      "ssot_pointer": ".own own#15",
       "sections": [
         "WHY", "COMPARE", "REQUIRES", "STRUCT", "FLOW", "EVOLVE", "VERIFY",
         "EXEC SUMMARY", "SYSTEM REQUIREMENTS", "ARCHITECTURE", "CIRCUIT DESIGN",
