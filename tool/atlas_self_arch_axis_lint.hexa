@@ -1,0 +1,1065 @@
+#!hexa strict
+// tool/atlas_self_arch_axis_lint.hexa — axis-I + axis-J lint binary
+//   raw 91 C3 disclosure (S4) closer (axis-i-j-actuation-2026-04-28):
+//   "NO LINT BINARY: <-* / superseded_by parser unimplemented; expansion is
+//    design-time" → this tool installs the run-time validator.
+//
+// @tool(slug="atlas_self_arch_axis_lint", desc="lint atlas.n6 + atlas.append.* shards for axis-I arrow primitives (->*, <-*, ~>, <~>) and axis-J supersession back-pointers (superseded_by, supersession_kind, [DEPRECATED]/[RETIRED] meta-tags) — referent existence, vocabulary check, cycle detection (replacement-FAIL, verdict-on-OK)")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/atlas_self_arch_axis_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest])
+// @omega-saturation-exempt("structural lint over a finite SSOT set; converges in O(N) per push")
+// @exit_codes(0=PASS or warn-only, 1=usage/io error, 2=block mode with violations or any FAIL fixture)
+//
+// CONTRACT (axis-I primitives — graph-query)
+//   Arrow primitives validated:
+//     ->*   transitive forward derivation        (lint-time DFS expansion)
+//     <-*   transitive ancestor / inverse        (lint-time BFS expansion)
+//     ~>    converges_to / approximates           (terminal numeric/symbol)
+//     <~>   bidirectional approximation          (rare; both sides numeric)
+//   Form rules:
+//     ->*  REQUIRES `->* {<N> @ [<grade>]}` shape (per axis-I § GATE-4 cf-1).
+//     <-*  REQUIRES `<-* <body-field-name>` shape (BFS over named edge-set,
+//          e.g. `<-* superseded_by`). Bare `<-*` with no edge-field = WARN.
+//     ~>   REQUIRES non-empty RHS payload (numeric or symbolic).
+//     <~>  REQUIRES non-empty RHS payload.
+//
+// CONTRACT (axis-J primitives — supersession back-pointer)
+//   Body-field rules:
+//     superseded_by = <slug>             // <slug> MUST resolve to a header
+//                                         // entry `@<kind> <slug>` somewhere
+//                                         // in the scanned corpus, OR be
+//                                         // explicitly marked
+//                                         // supersession_kind = "referent-nonexistent"
+//     supersession_kind = "<enum>"        // 5-set vocabulary:
+//                                         //   replacement
+//                                         //   verdict-on
+//                                         //   refinement
+//                                         //   split
+//                                         //   referent-nonexistent
+//                                         // Quoted values may carry trailing
+//                                         // parenthetical commentary; only
+//                                         // the leading bare token is matched.
+//     [DEPRECATED YYYY-MM-DD]            // ISO date in header line
+//     [RETIRED YYYY-MM-DD]               // ISO date in header line
+//   Cycle rules (over the superseded_by graph):
+//     replacement-cycle      → FAIL (corrupts directed succession lattice)
+//     verdict-on-cycle       → PASS (whitelisted; bidirectional verdicts are
+//                                    a legitimate semantic structure per
+//                                    axis-J § B1 + actuation shard S2)
+//     refinement-cycle       → FAIL (refinement claims a strict refinement)
+//     split-cycle            → FAIL (split claims directed branching)
+//     mixed-kind cycle       → FAIL unless every edge ∈ {verdict-on}
+//     referent-nonexistent   → not a graph edge (no walk performed)
+//
+// SCHEMA (atlas.n6 entry shape — terse subset relevant to this lint)
+//   @<kind> <slug-or-expr> [= <body-rhs>] [:: <domain> [<grade>]]
+//   <2-space-indent body-fields>
+//     key = value
+//     ->* {N @ [grade]}
+//     <-* edge-field-name
+//     superseded_by = <slug>
+//     supersession_kind = "<enum>"
+//
+// EMISSIONS
+//   - stdout JSON summary (one line per scan + raw 66 ai-native trailer)
+//   - audit ledger JSONL append per raw 77 to
+//       /Users/ghost/core/n6-architecture/state/atlas_self_arch_axis_audit/audit.jsonl
+//     each row:
+//       {"ts":"<ISO-8601>","agent_id":"atlas_self_arch_axis_lint",
+//        "atlas_path":"<path>","verdict":"PASS|WARN|FAIL",
+//        "violations":[...], "classifier_version":"atlas_self_arch_axis_lint.v1.0"}
+//   - last stdout line (raw 80 sentinel):
+//       __ATLAS_SELF_ARCH_AXIS_LINT_RESULT__ PASS|WARN|FAIL
+//
+// SCOPE / NON-GOALS
+//   - This is a STRUCTURAL lint over the n6 DSL surface. It does NOT
+//     evaluate `~>` numerical claims (only verifies the RHS is non-empty).
+//   - axis-I `->*` walking is NOT performed at runtime (the actuation shard
+//     S4 disclosure scopes that to raw 22 INFRA — distinct from this lint
+//     binary). This tool validates the SHAPE of arrow expressions only.
+//   - axis-J cycle detection IS performed at runtime over the
+//     superseded_by edge set extracted from the scanned corpus.
+//
+// own#11 strict: NO Clay BT 'resolution' claims — this tool exits with
+// exit code 0/1/2 per @exit_codes; no consensus or resolution semantics.
+
+use "self/stdlib/argv_skip"
+
+// ─── string helpers ───────────────────────────────────────────────────
+
+fn _rstrip(s: string) -> string {
+    let mut end = len(s)
+    while end > 0 {
+        let c = s.substring(end - 1, end)
+        if c == " " || c == "\t" || c == "\r" || c == "\n" {
+            end = end - 1
+        } else {
+            break
+        }
+    }
+    return s.substring(0, end)
+}
+
+fn _lstrip(s: string) -> string {
+    let mut i = 0
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        if c == " " || c == "\t" {
+            i = i + 1
+        } else {
+            break
+        }
+    }
+    return s.substring(i, len(s))
+}
+
+fn _trim(s: string) -> string { return _lstrip(_rstrip(s)) }
+
+fn _starts_with(s: string, p: string) -> bool {
+    if len(s) < len(p) { return false }
+    return s.substring(0, len(p)) == p
+}
+
+fn _ends_with(s: string, p: string) -> bool {
+    if len(s) < len(p) { return false }
+    return s.substring(len(s) - len(p), len(s)) == p
+}
+
+// Extract the first whitespace-delimited token from s.
+fn _first_token(s: string) -> string {
+    let t = _lstrip(s)
+    let mut i = 0
+    while i < len(t) {
+        let c = t.substring(i, i + 1)
+        if c == " " || c == "\t" {
+            return t.substring(0, i)
+        }
+        i = i + 1
+    }
+    return t
+}
+
+// Strip paired leading/trailing single or double quotes.
+fn _strip_quotes(s: string) -> string {
+    let t = _trim(s)
+    if len(t) < 2 { return t }
+    let f = t.substring(0, 1)
+    let l = t.substring(len(t) - 1, len(t))
+    if (f == "\"" && l == "\"") || (f == "'" && l == "'") {
+        return t.substring(1, len(t) - 1)
+    }
+    return t
+}
+
+// Number of leading whitespace chars.
+fn _indent_width(line: string) -> int {
+    let mut i = 0
+    while i < len(line) {
+        let c = line.substring(i, i + 1)
+        if c == " " || c == "\t" {
+            i = i + 1
+        } else {
+            break
+        }
+    }
+    return i
+}
+
+// ─── ID / header parser ───────────────────────────────────────────────
+
+// Recognize an entry header line: `@<kind> <slug...>` where <kind> is one of
+// the canonical n6 prefixes ({P, C, R, F, S, X, D, O, Q, ?}).
+//
+// Returns [kind, slug_token] on match, [] otherwise. The slug_token is the
+// first whitespace-delimited word after the kind prefix. For lines like
+// `@P sigma = divisor_sum(6) = 12 :: foundation [10*]` the slug is "sigma".
+//
+// Note: header lines have NO leading whitespace by convention; indented
+// lines beginning with `@` are body-field references, not headers.
+fn _parse_header(line: string) -> array {
+    if len(line) < 3 { return [] }
+    if line.substring(0, 1) != "@" { return [] }
+    // skip headers that are continuation/aside (`@ ` w/ space after @ means
+    // it's a quoted prose block, e.g. inside `=> "@? FOO ..."`).
+    let kind_char = line.substring(1, 2)
+    let kinds = "PCRFSXDOQ?"
+    if kinds.index_of(kind_char) < 0 { return [] }
+    // require space after kind
+    if len(line) < 3 { return [] }
+    if line.substring(2, 3) != " " { return [] }
+    let rest = line.substring(3, len(line))
+    let slug = _first_token(rest)
+    if len(slug) == 0 { return [] }
+    return [kind_char, slug]
+}
+
+// ─── arrow form validators ───────────────────────────────────────────
+
+// True if a quote (`"` or `'`) OR an n6 mid-line comment marker (`#`) opens
+// before pos on this line — heuristic to skip arrows/tags inside prose:
+//   - `=> "->* {N @ [grade]} reads ..."`            (quoted commentary)
+//   - `@D foo = 4 :: empirical [10]   # [DEPRECATED YYYY-MM-DD] template`
+//                                                   (mid-line `#` comment)
+fn _is_inside_quoted_prose(line: string, pos: int) -> bool {
+    if pos <= 0 { return false }
+    let before = line.substring(0, pos)
+    let dq = before.index_of("\"")
+    let sq = before.index_of("'")
+    let hash = before.index_of("#")
+    if dq >= 0 || sq >= 0 || hash >= 0 { return true }
+    return false
+}
+
+// `->* {<N> @ [<grade>]}` — bare integer N + bare grade token in brackets.
+// Returns "" on PASS, error message on FAIL.
+//
+// Skip rules (line-shape pre-filter):
+//   - line starts with `#`               → comment, skip
+//   - `->*` occurrence is inside `"..."` → quoted prose, skip
+//   - line begins with `  =>` or `=>`    → result/commentary line; the arrow
+//                                          is conventionally inside a quoted
+//                                          string. Belt-and-suspenders with
+//                                          the quote check above.
+fn _validate_arrow_forward_star_form(line: string) -> string {
+    let trimmed_left = _lstrip(line)
+    if len(trimmed_left) > 0 && trimmed_left.substring(0, 1) == "#" { return "" }
+    if _starts_with(trimmed_left, "=>") { return "" }
+    let idx = line.index_of("->*")
+    if idx < 0 { return "" }
+    if _is_inside_quoted_prose(line, idx) { return "" }
+    let after = _lstrip(line.substring(idx + 3, len(line)))
+    if len(after) == 0 || after.substring(0, 1) != "{" {
+        return "axis-I ->*  missing `{N @ [grade]}` body (got: \"" + line + "\")"
+    }
+    let close = after.index_of("}")
+    if close < 0 {
+        return "axis-I ->*  unclosed `{...}` body (got: \"" + line + "\")"
+    }
+    let body = _trim(after.substring(1, close))
+    let at = body.index_of("@")
+    if at < 0 {
+        return "axis-I ->*  body missing `@` separator (got: \"" + body + "\")"
+    }
+    let n_part = _trim(body.substring(0, at))
+    let g_part = _trim(body.substring(at + 1, len(body)))
+    let n = parse_int(n_part)
+    if n <= 0 {
+        return "axis-I ->*  N must be positive integer (got: \"" + n_part + "\")"
+    }
+    if !_starts_with(g_part, "[") || !_ends_with(g_part, "]") {
+        return "axis-I ->*  grade must be `[<token>]` (got: \"" + g_part + "\")"
+    }
+    let g_inner = _trim(g_part.substring(1, len(g_part) - 1))
+    if len(g_inner) == 0 {
+        return "axis-I ->*  empty grade token"
+    }
+    return ""
+}
+
+// `<-* <edge-field-name>` — at least one identifier token after `<-*`.
+// Same skip rules as ->* (comment / quoted-prose / `=>` lines).
+fn _validate_arrow_backward_star_form(line: string) -> string {
+    let trimmed_left = _lstrip(line)
+    if len(trimmed_left) > 0 && trimmed_left.substring(0, 1) == "#" { return "" }
+    if _starts_with(trimmed_left, "=>") { return "" }
+    let idx = line.index_of("<-*")
+    if idx < 0 { return "" }
+    if _is_inside_quoted_prose(line, idx) { return "" }
+    let after = _lstrip(line.substring(idx + 3, len(line)))
+    if len(after) == 0 {
+        return "axis-I <-*  missing edge-field name (e.g. `<-* superseded_by`); got bare arrow"
+    }
+    let tok = _first_token(after)
+    if len(tok) == 0 {
+        return "axis-I <-*  missing edge-field name"
+    }
+    // identifier shape: alnum + _ + -
+    let mut i = 0
+    while i < len(tok) {
+        let c = tok.substring(i, i + 1)
+        let ok = (c >= "a" && c <= "z") || (c >= "A" && c <= "Z")
+              || (c >= "0" && c <= "9") || c == "_" || c == "-"
+        if !ok {
+            return "axis-I <-*  edge-field name has invalid char `" + c + "` (got: \"" + tok + "\")"
+        }
+        i = i + 1
+    }
+    return ""
+}
+
+// `~>` / `<~>` — non-empty RHS payload.
+fn _validate_arrow_converges_form(line: string) -> string {
+    let trimmed_left = _lstrip(line)
+    if len(trimmed_left) > 0 && trimmed_left.substring(0, 1) == "#" { return "" }
+    if _starts_with(trimmed_left, "=>") { return "" }
+    // Prefer <~> match first to avoid double-flag (substring overlap).
+    let bidx = line.index_of("<~>")
+    if bidx >= 0 {
+        if _is_inside_quoted_prose(line, bidx) { return "" }
+        let after = _trim(line.substring(bidx + 3, len(line)))
+        if len(after) == 0 {
+            return "axis-I <~> missing RHS payload"
+        }
+        return ""
+    }
+    let fidx = line.index_of("~>")
+    if fidx < 0 { return "" }
+    if _is_inside_quoted_prose(line, fidx) { return "" }
+    let after = _trim(line.substring(fidx + 2, len(line)))
+    if len(after) == 0 {
+        return "axis-I ~>  missing RHS payload"
+    }
+    return ""
+}
+
+// ─── axis-J body-field validators ─────────────────────────────────────
+
+// 5-set vocabulary disclosed in axis-i-j-actuation-2026-04-28 § S6.
+fn _is_valid_supersession_kind(tok: string) -> bool {
+    if tok == "replacement" { return true }
+    if tok == "verdict-on" { return true }
+    if tok == "refinement" { return true }
+    if tok == "split" { return true }
+    if tok == "referent-nonexistent" { return true }
+    return false
+}
+
+// Extract the leading bare enum token from a (possibly-quoted) RHS that may
+// carry parenthetical commentary, e.g. `"verdict-on (mirror of R34)"` →
+// "verdict-on".
+fn _extract_supersession_kind_token(rhs: string) -> string {
+    let unq = _strip_quotes(rhs)
+    let t = _trim(unq)
+    let mut i = 0
+    while i < len(t) {
+        let c = t.substring(i, i + 1)
+        if c == " " || c == "\t" || c == "(" {
+            return t.substring(0, i)
+        }
+        i = i + 1
+    }
+    return t
+}
+
+// Parse a body-field line `  key = value` (2+ space indent). Returns
+// [key, value] on match, [] otherwise. Strips one trailing newline.
+fn _parse_body_field(line: string) -> array {
+    let stripped = _rstrip(line)
+    if !_is_indented_2plus(stripped) { return [] }
+    let inner = _lstrip(stripped)
+    let eq = inner.index_of("=")
+    if eq < 0 { return [] }
+    let key = _trim(inner.substring(0, eq))
+    if len(key) == 0 { return [] }
+    let val = _trim(inner.substring(eq + 1, len(inner)))
+    return [key, val]
+}
+
+fn _is_indented_2plus(line: string) -> bool {
+    if len(line) < 2 { return false }
+    let c0 = line.substring(0, 1)
+    let c1 = line.substring(1, 2)
+    if (c0 == " " || c0 == "\t") && (c1 == " " || c1 == "\t") { return true }
+    return false
+}
+
+// ─── meta-tag (DEPRECATED / RETIRED) date validator ───────────────────
+
+// Validate `[DEPRECATED YYYY-MM-DD]` / `[RETIRED YYYY-MM-DD]` form.
+// Returns "" on PASS, error message on FAIL.
+//
+// Skip rules: comment lines (`#`) and `=>` commentary lines often quote the
+// tag template literally — those should not trigger schema violations.
+fn _validate_meta_tag(line: string, tag: string) -> string {
+    let trimmed_left = _lstrip(line)
+    if len(trimmed_left) > 0 && trimmed_left.substring(0, 1) == "#" { return "" }
+    if _starts_with(trimmed_left, "=>") { return "" }
+    let needle = "[" + tag + " "
+    let idx = line.index_of(needle)
+    if idx < 0 { return "" }
+    if _is_inside_quoted_prose(line, idx) { return "" }
+    let after = line.substring(idx + len(needle), len(line))
+    let close = after.index_of("]")
+    if close < 0 {
+        return "axis-J [" + tag + "] unclosed bracket (got: \"" + line + "\")"
+    }
+    let date = _trim(after.substring(0, close))
+    if len(date) != 10 {
+        return "axis-J [" + tag + "] date must be YYYY-MM-DD (got: \"" + date + "\")"
+    }
+    if date.substring(4, 5) != "-" || date.substring(7, 8) != "-" {
+        return "axis-J [" + tag + "] date dashes mis-positioned (got: \"" + date + "\")"
+    }
+    let yyyy = parse_int(date.substring(0, 4))
+    let mm = parse_int(date.substring(5, 7))
+    let dd = parse_int(date.substring(8, 10))
+    if yyyy < 2024 || yyyy > 2099 {
+        return "axis-J [" + tag + "] year out of range (got: " + to_string(yyyy) + ")"
+    }
+    if mm < 1 || mm > 12 {
+        return "axis-J [" + tag + "] month out of range (got: " + to_string(mm) + ")"
+    }
+    if dd < 1 || dd > 31 {
+        return "axis-J [" + tag + "] day out of range (got: " + to_string(dd) + ")"
+    }
+    return ""
+}
+
+// ─── corpus scan + edge extraction ────────────────────────────────────
+
+fn _read_lines(path: string) -> array {
+    let exists = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+    if exists != "y" { return [] }
+    let body = read_file(path)
+    let raw = split(body, "\n")
+    return raw
+}
+
+// Build the set of known slugs across the corpus (any line that parses as a
+// header `@<kind> <slug>`). Returns array of [kind, slug] pairs.
+fn _collect_headers(paths: array) -> array {
+    let mut headers = []
+    for p in paths {
+        let lines = _read_lines(p)
+        for line in lines {
+            let h = _parse_header(line)
+            if len(h) == 2 {
+                headers.push(h)
+            }
+        }
+    }
+    return headers
+}
+
+fn _slug_known(headers: array, slug: string) -> bool {
+    for h in headers {
+        if h[1] == slug { return true }
+    }
+    return false
+}
+
+// Extract supersession edges across the corpus. An edge is the 3-tuple
+// [from-slug, to-slug, kind] where:
+//   from-slug  = the slug of the most-recent enclosing entry-header
+//   to-slug    = the RHS of `superseded_by = <slug>`
+//   kind       = the leading enum token of `supersession_kind = "<...>"`
+//                (or "" if missing)
+// Multiple body-fields under the same enclosing header inherit from-slug.
+fn _extract_supersession_edges(paths: array) -> array {
+    let mut edges = []
+    for p in paths {
+        let lines = _read_lines(p)
+        let mut current_slug = ""
+        let mut pending_to = ""
+        let mut pending_kind = ""
+        let mut pending_from = ""
+        for raw in lines {
+            let line = _rstrip(raw)
+            if len(line) == 0 { continue }
+            // header line resets current_slug (and emits any pending edge)
+            if line.substring(0, 1) == "@" {
+                if len(pending_to) > 0 && len(pending_from) > 0 {
+                    edges.push([pending_from, pending_to, pending_kind])
+                }
+                pending_to = ""
+                pending_kind = ""
+                pending_from = ""
+                let h = _parse_header(line)
+                if len(h) == 2 {
+                    current_slug = h[1]
+                } else {
+                    current_slug = ""
+                }
+                continue
+            }
+            // body-field line under current header
+            let bf = _parse_body_field(line)
+            if len(bf) != 2 { continue }
+            let key = bf[0]
+            let val = bf[1]
+            if key == "superseded_by" {
+                // emit any prior incomplete edge first (e.g. stacked
+                // superseded_by under the same header — rare but possible)
+                if len(pending_to) > 0 && len(pending_from) > 0 {
+                    edges.push([pending_from, pending_to, pending_kind])
+                    pending_to = ""
+                    pending_kind = ""
+                }
+                pending_to = _strip_quotes(val)
+                pending_from = current_slug
+            } else if key == "supersession_kind" {
+                pending_kind = _extract_supersession_kind_token(val)
+            }
+        }
+        // flush trailing edge at EOF
+        if len(pending_to) > 0 && len(pending_from) > 0 {
+            edges.push([pending_from, pending_to, pending_kind])
+        }
+    }
+    return edges
+}
+
+// ─── cycle detection (kind-aware) ─────────────────────────────────────
+
+// Build a slug → index map. Returns the unique-slug array (idx → slug).
+fn _slug_index(edges: array) -> array {
+    let mut nodes = []
+    for e in edges {
+        let from = e[0]
+        let to = e[1]
+        let mut found_from = false
+        let mut found_to = false
+        for n in nodes {
+            if n == from { found_from = true }
+            if n == to { found_to = true }
+        }
+        if !found_from { nodes.push(from) }
+        if !found_to { nodes.push(to) }
+    }
+    return nodes
+}
+
+fn _node_id(nodes: array, slug: string) -> int {
+    let mut i = 0
+    while i < len(nodes) {
+        if nodes[i] == slug { return i }
+        i = i + 1
+    }
+    return -1
+}
+
+// Detect cycles in the superseded_by graph, BUT whitelist cycles whose every
+// edge has kind == "verdict-on" (per axis-i-j-actuation S2). Returns array of
+// violation strings (empty = no FAIL cycles found).
+fn _detect_cycles(edges: array) -> array {
+    let mut violations = []
+    let nodes = _slug_index(edges)
+    let n = len(nodes)
+    if n == 0 { return violations }
+    // build adjacency with per-edge kind
+    let mut adj = []
+    let mut k = 0
+    while k < n { adj.push([]); k = k + 1 }
+    for e in edges {
+        let fi = _node_id(nodes, e[0])
+        let ti = _node_id(nodes, e[1])
+        if fi < 0 || ti < 0 { continue }
+        adj[fi].push([ti, e[2]])
+    }
+    // white/gray/black DFS with path-stack carrying (idx, kind-from-prev)
+    let mut color = []
+    let mut j = 0
+    while j < n { color.push(0); j = j + 1 }  // 0=white,1=gray,2=black
+    let mut start = 0
+    while start < n {
+        if color[start] != 0 { start = start + 1; continue }
+        // iterative DFS
+        let mut stack = [[start, 0, ""]]   // [node, edge-index-cursor, kind-of-incoming-edge]
+        let mut path_kinds = []            // kinds along current gray path
+        let mut path_nodes = []
+        while len(stack) > 0 {
+            let top = stack[len(stack) - 1]
+            let node = top[0]
+            let cur = top[1]
+            if color[node] == 0 {
+                color[node] = 1
+                path_nodes.push(node)
+            }
+            let neighbors = adj[node]
+            if cur >= len(neighbors) {
+                color[node] = 2
+                if len(path_nodes) > 0 {
+                    path_nodes = path_nodes.slice(0, len(path_nodes) - 1)
+                }
+                stack = stack.slice(0, len(stack) - 1)
+                if len(path_kinds) > 0 {
+                    path_kinds = path_kinds.slice(0, len(path_kinds) - 1)
+                }
+                continue
+            }
+            // advance cursor on top frame for next iteration
+            stack[len(stack) - 1] = [node, cur + 1, top[2]]
+            let nbr = neighbors[cur]
+            let nbr_idx = nbr[0]
+            let nbr_kind = nbr[1]
+            if color[nbr_idx] == 1 {
+                // back-edge → cycle. Determine kind-of-cycle.
+                // path_kinds holds edge-kinds from path[0] → ... → node.
+                // The cycle closes via edge (node → nbr_idx) of kind nbr_kind,
+                // and includes the kinds along path_kinds from nbr_idx → node.
+                let mut cycle_kinds = [nbr_kind]
+                let mut started = false
+                let mut t = 0
+                while t < len(path_nodes) {
+                    if path_nodes[t] == nbr_idx { started = true }
+                    if started && t < len(path_kinds) {
+                        cycle_kinds.push(path_kinds[t])
+                    }
+                    t = t + 1
+                }
+                // whitelist: every edge in cycle is "verdict-on"
+                let mut all_verdict = true
+                for kd in cycle_kinds {
+                    if kd != "verdict-on" {
+                        all_verdict = false
+                    }
+                }
+                if !all_verdict {
+                    let from_slug = nodes[node]
+                    let to_slug = nodes[nbr_idx]
+                    violations.push("axis-J supersession_kind cycle (non-whitelisted): " + from_slug + " → " + to_slug + " kind=\"" + nbr_kind + "\"")
+                }
+            } else if color[nbr_idx] == 0 {
+                stack.push([nbr_idx, 0, nbr_kind])
+                path_kinds.push(nbr_kind)
+            }
+        }
+        start = start + 1
+    }
+    return violations
+}
+
+// ─── per-line lint ────────────────────────────────────────────────────
+
+// Validate a single line for axis-I arrow forms + axis-J meta-tag forms.
+// Returns array of violation strings (empty = clean line).
+//
+// Body-field referent + kind validation is performed at corpus level (after
+// all headers known) — this function focuses on *line-local* form rules.
+fn _lint_line(line: string) -> array {
+    let mut viols = []
+    // axis-I arrow forms
+    let v1 = _validate_arrow_forward_star_form(line)
+    if len(v1) > 0 { viols.push(v1) }
+    let v2 = _validate_arrow_backward_star_form(line)
+    if len(v2) > 0 { viols.push(v2) }
+    let v3 = _validate_arrow_converges_form(line)
+    if len(v3) > 0 { viols.push(v3) }
+    // axis-J meta-tags
+    let v4 = _validate_meta_tag(line, "DEPRECATED")
+    if len(v4) > 0 { viols.push(v4) }
+    let v5 = _validate_meta_tag(line, "RETIRED")
+    if len(v5) > 0 { viols.push(v5) }
+    return viols
+}
+
+// ─── corpus-level lint orchestrator ───────────────────────────────────
+
+// Run the full lint over the resolved target paths. Returns
+// [verdict, violations[]] where verdict ∈ {PASS, WARN, FAIL}.
+//
+// Flow:
+//   1. collect all headers across the corpus (slug-existence side-table)
+//   2. extract supersession edges
+//   3. for each line: line-local form validation
+//   4. for each edge: referent-existence check (skipped when
+//      kind == "referent-nonexistent" per axis-J § S3)
+//   5. for each edge: supersession_kind vocabulary check
+//   6. corpus-level: cycle detection (kind-aware)
+fn _lint_corpus(paths: array) -> array {
+    let mut violations = []
+    let headers = _collect_headers(paths)
+    let edges = _extract_supersession_edges(paths)
+    // pass 1 + 3: line-local form
+    for p in paths {
+        let lines = _read_lines(p)
+        let mut lineno = 0
+        for line in lines {
+            lineno = lineno + 1
+            let lv = _lint_line(line)
+            for v in lv {
+                violations.push(p + ":" + to_string(lineno) + ": " + v)
+            }
+        }
+    }
+    // pass 4 + 5: per-edge validation
+    for e in edges {
+        let from = e[0]
+        let to = e[1]
+        let kind = e[2]
+        // empty kind → axis-J body-field incomplete
+        if len(kind) == 0 {
+            violations.push("axis-J superseded_by " + from + " → " + to + " missing supersession_kind")
+        } else if !_is_valid_supersession_kind(kind) {
+            violations.push("axis-J supersession_kind \"" + kind + "\" not in 5-set {replacement, verdict-on, refinement, split, referent-nonexistent} (edge: " + from + " → " + to + ")")
+        }
+        // referent-existence: skip when kind == referent-nonexistent
+        if kind != "referent-nonexistent" {
+            if !_slug_known(headers, to) {
+                violations.push("axis-J superseded_by " + from + " → " + to + " referent NOT FOUND in scanned corpus (and kind != referent-nonexistent)")
+            }
+        }
+    }
+    // pass 6: cycle detection (kind-aware)
+    let cyc = _detect_cycles(edges)
+    for c in cyc { violations.push(c) }
+
+    let verdict = if len(violations) == 0 { "PASS" } else { "FAIL" }
+    return [verdict, violations]
+}
+
+// ─── audit + emission ─────────────────────────────────────────────────
+
+fn _audit_dir() -> string {
+    return "/Users/ghost/core/n6-architecture/state/atlas_self_arch_axis_audit"
+}
+
+fn _esc_json(s: string) -> string {
+    let mut out = ""
+    let mut i = 0
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        if c == "\\" { out = out + "\\\\" }
+        else if c == "\"" { out = out + "\\\"" }
+        else if c == "\n" { out = out + "\\n" }
+        else if c == "\t" { out = out + "\\t" }
+        else if c == "\r" { out = out + "\\r" }
+        else { out = out + c }
+        i = i + 1
+    }
+    return out
+}
+
+fn _ts_iso_utc() -> string {
+    return to_string(exec("date -u +%Y-%m-%dT%H:%M:%SZ")).trim()
+}
+
+fn _build_audit_row(atlas_path: string, verdict: string, violations: array) -> string {
+    let mut row = "{\"ts\":\"" + _ts_iso_utc() + "\",\"agent_id\":\"atlas_self_arch_axis_lint\",\"atlas_path\":\""
+    row = row + _esc_json(atlas_path) + "\",\"verdict\":\"" + verdict + "\",\"violations\":["
+    let mut i = 0
+    while i < len(violations) {
+        if i > 0 { row = row + "," }
+        row = row + "\"" + _esc_json(violations[i]) + "\""
+        i = i + 1
+    }
+    row = row + "],\"classifier_version\":\"atlas_self_arch_axis_lint.v1.0\"}"
+    return row
+}
+
+fn _audit_append(atlas_path: string, verdict: string, violations: array) -> void {
+    let dir = _audit_dir()
+    exec("mkdir -p '" + dir + "'")
+    let row = _build_audit_row(atlas_path, verdict, violations)
+    let path = dir + "/audit.jsonl"
+    let cmd = "printf '%s\\n' '" + row.replace("'", "'\\''") + "' >> '" + path + "'"
+    exec(cmd)
+}
+
+fn _emit_trailer(verdict: string, atlas_path: string, violations: array) -> void {
+    eprintln("[atlas_self_arch_axis_lint] " + verdict)
+    if verdict == "PASS" {
+        eprintln("  reason: schema-compliant: " + atlas_path + " axis-I/J primitives well-formed")
+        eprintln("  fix: 1) no action required  2) keep ->* {N @ [grade]} body in sync if you add transitive-derivation rows  3) ref axis-i-j-actuation-2026-04-28 + axis-i + axis-j shards")
+        return
+    }
+    let head = if len(violations) > 0 { violations[0] } else { "(unspecified)" }
+    eprintln("  reason: schema-violation: " + head)
+    if len(violations) > 1 {
+        let mut k = 1
+        while k < len(violations) {
+            eprintln("    additional: " + violations[k])
+            k = k + 1
+        }
+    }
+    eprintln("  fix: 1) ->* MUST be `->* {N @ [grade]}` (positive int N + bracketed grade)  2) <-* MUST be `<-* <edge-field-name>` (alnum/_/- identifier)  3) ~> / <~> MUST carry non-empty RHS payload  4) supersession_kind ∈ {replacement, verdict-on, refinement, split, referent-nonexistent}  5) superseded_by referent must resolve to a header `@<kind> <slug>` in the corpus OR be tagged supersession_kind = referent-nonexistent  6) only verdict-on cycles are whitelisted; replacement/refinement/split cycles are FAIL  7) [DEPRECATED YYYY-MM-DD] / [RETIRED YYYY-MM-DD] dates must be ISO-shaped and in-range")
+}
+
+// ─── target resolution ────────────────────────────────────────────────
+
+fn _list_atlas_default() -> array {
+    let listing = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    if len(listing) == 0 { return [] }
+    return [listing]
+}
+
+fn _list_atlas_all() -> array {
+    let mut paths = []
+    let main = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    if len(main) > 0 { paths.push(main) }
+    let shards = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/_absorbed/*/atlas.append.*.n6 2>/dev/null")).trim()
+    if len(shards) > 0 {
+        let arr = split(shards, "\n")
+        for s in arr { paths.push(s) }
+    }
+    return paths
+}
+
+fn _resolve_targets(target: string, all_flag: bool) -> array {
+    if all_flag { return _list_atlas_all() }
+    if target == "" { return _list_atlas_default() }
+    let isdir = to_string(exec("test -d '" + target + "' && echo y || echo n")).trim()
+    if isdir == "y" {
+        let listing = to_string(exec("ls '" + target + "'/*.n6 2>/dev/null")).trim()
+        if len(listing) == 0 { return [] }
+        return split(listing, "\n")
+    }
+    let isfile = to_string(exec("test -f '" + target + "' && echo y || echo n")).trim()
+    if isfile == "y" { return [target] }
+    return []
+}
+
+// ─── selftest fixtures ────────────────────────────────────────────────
+
+fn _write_fixture(path: string, body: string) -> void {
+    let last = path.last_index_of("/")
+    if last >= 0 {
+        let parent = path.substring(0, last)
+        exec("mkdir -p '" + parent + "'")
+    }
+    write_file(path, body)
+}
+
+fn _selftest() -> void {
+    println("[atlas_self_arch_axis_lint selftest]")
+    let dir = "/tmp/atlas_self_arch_axis_lint_selftest"
+    exec("rm -rf '" + dir + "' && mkdir -p '" + dir + "'")
+
+    // ─── FIXTURE 1 — PASS: well-formed axis-I + axis-J corpus ────────
+    // Demonstrates: ->* {N @ [grade]}, <-* superseded_by, ~> rhs, well-formed
+    // [DEPRECATED] tag, valid superseded_by referent, valid supersession_kind.
+    let f1 = dir + "/fixture1_pass.n6"
+    let body1 = ""
+              + "@P n = 6 :: foundation [11*]\n"
+              + "@C foo = derived_from_n :: arch [10*]\n"
+              + "  ->* {3 @ [11*]}\n"
+              + "  ~> phi(6)/6 = 1/3\n"
+              + "@? bar-old = [DEPRECATED 2026-04-26] historical :: meta [9?]\n"
+              + "  superseded_by = foo\n"
+              + "  supersession_kind = \"replacement\"\n"
+              + "@R query_one\n"
+              + "  <-* superseded_by\n"
+    _write_fixture(f1, body1)
+    let r1 = _lint_corpus([f1])
+    if r1[0] != "PASS" {
+        eprintln("FIXTURE 1 expected PASS, got " + r1[0])
+        for v in r1[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-1 PASS  (well-formed axis-I + axis-J corpus)")
+
+    // ─── FIXTURE 2 — FAIL: axis-I ->* form violations ────────────────
+    let f2 = dir + "/fixture2_arrow_forms.n6"
+    let body2 = ""
+              + "@C bad_one = x :: arch [10*]\n"
+              + "  ->* missing-braces\n"               // missing {...}
+              + "  ->* {0 @ [10*]}\n"                  // N must be > 0
+              + "  ->* {5 @ no-brackets}\n"            // grade not in [...]
+              + "  <-* \n"                             // bare <-* no field
+              + "  ~>\n"                               // ~> no RHS
+    _write_fixture(f2, body2)
+    let r2 = _lint_corpus([f2])
+    if r2[0] != "FAIL" {
+        eprintln("FIXTURE 2 expected FAIL, got " + r2[0])
+        exit(1)
+    }
+    let viol2 = r2[1]
+    let mut saw_brace = false
+    let mut saw_n = false
+    let mut saw_grade = false
+    let mut saw_back = false
+    let mut saw_conv = false
+    for v in viol2 {
+        if v.index_of("missing `{N @ [grade]}` body") >= 0 { saw_brace = true }
+        if v.index_of("N must be positive") >= 0 { saw_n = true }
+        if v.index_of("grade must be `[<token>]`") >= 0 { saw_grade = true }
+        if v.index_of("<-*  missing edge-field name") >= 0 { saw_back = true }
+        if v.index_of("~>  missing RHS payload") >= 0 { saw_conv = true }
+    }
+    if !saw_brace { eprintln("FIXTURE 2 missing brace-body violation"); exit(1) }
+    if !saw_n { eprintln("FIXTURE 2 missing N-positive violation"); exit(1) }
+    if !saw_grade { eprintln("FIXTURE 2 missing grade-bracket violation"); exit(1) }
+    if !saw_back { eprintln("FIXTURE 2 missing <-* bare violation"); exit(1) }
+    if !saw_conv { eprintln("FIXTURE 2 missing ~> empty violation"); exit(1) }
+    println("  fixture-2 FAIL (5 distinct axis-I form violations detected)")
+
+    // ─── FIXTURE 3 — FAIL: axis-J body-field violations ──────────────
+    let f3 = dir + "/fixture3_axis_j_body.n6"
+    let body3 = ""
+              + "@P real = 1 :: foundation [11*]\n"
+              + "@? broken1 = [DEPRECATED 2026-04-26] x :: meta [9?]\n"
+              + "  superseded_by = nonexistent-target-xyz\n"
+              + "  supersession_kind = \"replacement\"\n"
+              + "@? broken2 = [RETIRED 2026-04-26] y :: meta [9?]\n"
+              + "  superseded_by = real\n"
+              + "  supersession_kind = \"made-up-kind\"\n"
+              + "@? broken3 = [DEPRECATED 2099-13-40] bad-date :: meta [9?]\n"
+              + "  superseded_by = real\n"
+              + "  supersession_kind = \"replacement\"\n"
+              + "@? broken4 = [DEPRECATED 2026-04-26] missing-kind :: meta [9?]\n"
+              + "  superseded_by = real\n"
+    _write_fixture(f3, body3)
+    let r3 = _lint_corpus([f3])
+    if r3[0] != "FAIL" {
+        eprintln("FIXTURE 3 expected FAIL, got " + r3[0])
+        exit(1)
+    }
+    let viol3 = r3[1]
+    let mut saw_referent = false
+    let mut saw_vocab = false
+    let mut saw_date = false
+    let mut saw_missing = false
+    for v in viol3 {
+        if v.index_of("referent NOT FOUND") >= 0 { saw_referent = true }
+        if v.index_of("not in 5-set") >= 0 { saw_vocab = true }
+        if v.index_of("month out of range") >= 0 || v.index_of("day out of range") >= 0 { saw_date = true }
+        if v.index_of("missing supersession_kind") >= 0 { saw_missing = true }
+    }
+    if !saw_referent { eprintln("FIXTURE 3 missing referent-existence violation"); exit(1) }
+    if !saw_vocab { eprintln("FIXTURE 3 missing vocabulary violation"); exit(1) }
+    if !saw_date { eprintln("FIXTURE 3 missing date violation"); exit(1) }
+    if !saw_missing { eprintln("FIXTURE 3 missing supersession_kind-missing violation"); exit(1) }
+    println("  fixture-3 FAIL (4 distinct axis-J body-field violations detected)")
+
+    // ─── FIXTURE 4 — PASS: referent-nonexistent allows missing target ─
+    // Per axis-J § S3, supersession_kind = referent-nonexistent legitimately
+    // points to a slug that does NOT resolve in the corpus.
+    let f4 = dir + "/fixture4_referent_nonexistent.n6"
+    let body4 = ""
+              + "@? deprecated_with_no_referent = [DEPRECATED 2026-04-26] x :: meta [9?]\n"
+              + "  superseded_by = ANIMA-CXP-R34-PHI-COEFF-EHALF\n"
+              + "  supersession_kind = \"referent-nonexistent\"\n"
+    _write_fixture(f4, body4)
+    let r4 = _lint_corpus([f4])
+    if r4[0] != "PASS" {
+        eprintln("FIXTURE 4 expected PASS (referent-nonexistent), got " + r4[0])
+        for v in r4[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-4 PASS  (referent-nonexistent skips referent-existence check)")
+
+    // ─── FIXTURE 5 — PASS: verdict-on cycle is whitelisted ────────────
+    // Per axis-i-j-actuation § S2: R34 ↔ R38 verdict-cycle is legitimate.
+    let f5 = dir + "/fixture5_verdict_on_cycle.n6"
+    let body5 = ""
+              + "@? R34 = [DEPRECATED 2026-04-26] x :: meta [9?]\n"
+              + "  superseded_by = R38\n"
+              + "  supersession_kind = \"verdict-on\"\n"
+              + "@? R38 = [DEPRECATED 2026-04-26] y :: meta [9?]\n"
+              + "  superseded_by = R34\n"
+              + "  supersession_kind = \"verdict-on\"\n"
+    _write_fixture(f5, body5)
+    let r5 = _lint_corpus([f5])
+    if r5[0] != "PASS" {
+        eprintln("FIXTURE 5 expected PASS (verdict-on cycle whitelisted), got " + r5[0])
+        for v in r5[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-5 PASS  (verdict-on cycle whitelisted)")
+
+    // ─── FIXTURE 6 — FAIL: replacement cycle is NOT whitelisted ───────
+    let f6 = dir + "/fixture6_replacement_cycle.n6"
+    let body6 = ""
+              + "@? A = [DEPRECATED 2026-04-26] a :: meta [9?]\n"
+              + "  superseded_by = B\n"
+              + "  supersession_kind = \"replacement\"\n"
+              + "@? B = [DEPRECATED 2026-04-26] b :: meta [9?]\n"
+              + "  superseded_by = A\n"
+              + "  supersession_kind = \"replacement\"\n"
+    _write_fixture(f6, body6)
+    let r6 = _lint_corpus([f6])
+    if r6[0] != "FAIL" {
+        eprintln("FIXTURE 6 expected FAIL (replacement cycle), got " + r6[0])
+        exit(1)
+    }
+    let mut saw_cycle = false
+    for v in r6[1] {
+        if v.index_of("supersession_kind cycle (non-whitelisted)") >= 0 { saw_cycle = true }
+    }
+    if !saw_cycle { eprintln("FIXTURE 6 missing replacement-cycle violation"); exit(1) }
+    println("  fixture-6 FAIL (replacement cycle correctly flagged)")
+
+    // ─── FIXTURE 7 — FAIL: meta-tag bracket / date shape violations ───
+    let f7 = dir + "/fixture7_meta_tag.n6"
+    let body7 = ""
+              + "@? bad1 = [DEPRECATED 26-4-26] short-date :: meta [9?]\n"     // wrong length
+              + "@? bad2 = [RETIRED 2026/04/26] slashes :: meta [9?]\n"        // wrong separators
+              + "@? bad3 = [DEPRECATED 2026-04-26 unclosed :: meta [9?]\n"     // unclosed bracket
+    _write_fixture(f7, body7)
+    let r7 = _lint_corpus([f7])
+    if r7[0] != "FAIL" {
+        eprintln("FIXTURE 7 expected FAIL (meta-tag form), got " + r7[0])
+        exit(1)
+    }
+    println("  fixture-7 FAIL (meta-tag form violations correctly flagged)")
+
+    // ─── FIXTURE 8 — PASS: real-world atlas snippet (R34/R36/R38 + clay) ─
+    // Mirrors the actuation shard's installed rows: R34 ↔ R38 verdict-cycle
+    // (whitelisted), R36 → R34 referent-nonexistent (skipped), clay-iter-55
+    // → clay-iter-57 replacement (clean).
+    let f8 = dir + "/fixture8_realworld.n6"
+    let body8 = ""
+              + "@? R34 = [DEPRECATED 2026-04-26] x :: meta [9?]\n"
+              + "  superseded_by = R38\n"
+              + "  supersession_kind = \"verdict-on (canonical)\"\n"
+              + "@? R36 = [RETIRED 2026-04-26] y :: meta [9?]\n"
+              + "  superseded_by = R34\n"
+              + "  supersession_kind = \"referent-nonexistent\"\n"
+              + "@? R38 = [DEPRECATED 2026-04-26] z :: meta [9?]\n"
+              + "  superseded_by = R34\n"
+              + "  supersession_kind = \"verdict-on (mirror of R34)\"\n"
+              + "@? clay-iter-55 = [DEPRECATED 2026-04-26] w :: meta [9?]\n"
+              + "  superseded_by = clay-iter-57\n"
+              + "  supersession_kind = \"replacement\"\n"
+              + "@? clay-iter-57 = active :: meta [10*]\n"
+    _write_fixture(f8, body8)
+    let r8 = _lint_corpus([f8])
+    if r8[0] != "PASS" {
+        eprintln("FIXTURE 8 expected PASS (realworld R34/R36/R38 + clay), got " + r8[0])
+        for v in r8[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-8 PASS  (real-world R34/R36/R38 + clay-iter pattern validates clean)")
+
+    exec("rm -rf '" + dir + "'")
+    println("[atlas_self_arch_axis_lint selftest] OK (8 fixtures)")
+    exit(0)
+}
+
+// ─── main ─────────────────────────────────────────────────────────────
+
+fn main() -> void {
+    let raw_args = args()
+    let mut cli = []
+    let mut ai = skip_invocation_prefix(raw_args)
+    while ai < len(raw_args) {
+        cli.push(raw_args[ai])
+        ai = ai + 1
+    }
+    // selftest path
+    if len(cli) >= 1 && (cli[0] == "--selftest" || cli[0] == "selftest") {
+        _selftest()
+        return
+    }
+    // parse flags + target
+    let mut target = ""
+    let mut all_flag = false
+    let mut severity = "warn"
+    let mut k = 0
+    while k < len(cli) {
+        let a = cli[k]
+        if a == "--all" { all_flag = true }
+        else if a == "--severity" {
+            if k + 1 < len(cli) { severity = cli[k + 1]; k = k + 1 }
+        }
+        else if a == "--block" { severity = "block" }
+        else if !_starts_with(a, "--") { target = a }
+        k = k + 1
+    }
+    let paths = _resolve_targets(target, all_flag)
+    if len(paths) == 0 {
+        eprintln("[atlas_self_arch_axis_lint] usage: hexa run atlas_self_arch_axis_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest]")
+        eprintln("  no atlas paths resolved (target=\"" + target + "\", all=" + to_string(all_flag) + ")")
+        exit(1)
+    }
+    let r = _lint_corpus(paths)
+    let verdict = r[0]
+    let violations = r[1]
+    // emit per-target audit row
+    let head_path = if len(paths) == 1 { paths[0] } else { paths[0] + " (+" + to_string(len(paths) - 1) + " more)" }
+    _audit_append(head_path, verdict, violations)
+    _emit_trailer(verdict, head_path, violations)
+    // raw 80 sentinel
+    println("__ATLAS_SELF_ARCH_AXIS_LINT_RESULT__ " + verdict)
+    if verdict == "FAIL" && severity == "block" { exit(2) }
+    exit(0)
+}

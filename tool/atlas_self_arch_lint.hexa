@@ -1,0 +1,880 @@
+#!hexa strict
+// tool/atlas_self_arch_lint.hexa — atlas.n6 axis-I/-J/-K integrity lint
+//   integrates 4 honest disclosures surfaced during axis-K registration +
+//   axis-I × axis-J actuation (2026-04-28 cycle).
+//
+// @tool(slug="atlas_self_arch_lint", desc="atlas.n6 self-architecture lint: (D1) ENUMERATION GAP — meta-closure prose declared count vs enumerated names (axis-I retro-migration); (D2) axis-K introduced_at sentinel/ISO-8601 vocabulary check (pre-axis-K grandfather list); (D3) supersession_kind 5-set vocabulary check; (D4) supersession_kind cycle classifier (replacement→DAG-strict; verdict-on→cycle-allowed)")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest])
+// @omega-saturation-exempt("structural lint over a single SSOT file (atlas.n6); converges in O(N) per pass")
+// @exit_codes(0=PASS or warn-only, 1=usage/io error, 2=block mode with violations or any FAIL fixture)
+//
+// CONTRACT (atlas-self-arch v1)
+//   D1 ENUMERATION GAP (axis-I):
+//     - meta-closure rows of form `=> "meta-closure: N grade-G derivations (a,b,c,...)"`
+//       must satisfy ENUMERATED_COUNT(comma-split inside parens, '...' excluded)
+//       == DECLARED_COUNT (the leading N).
+//     - gap > 0 → WARN (not FAIL): source rows are bit-frozen by chflags +
+//       raw 24; lint surfaces the imprecision rather than blocking.
+//     - calibration row: tau closure (line 43) gap=0 — used as PASS fixture.
+//
+//   D2 axis-K introduced_at (axis-K sentinel formalisation):
+//     - When body-field `introduced_at = <value>` appears, value MUST be
+//       either (a) "pre-axis-K" sentinel (96% legacy grandfather list) or
+//       (b) ISO 8601 date YYYY-MM-DD (optionally with T HH:MM:SS Z tail).
+//     - Anything else (e.g. "soon", "2026-04", freeform string) → FAIL.
+//     - Foundation rows MAY use sentinel "foundation"; this is also accepted.
+//
+//   D3 supersession_kind 5-set vocabulary (axis-J extension):
+//     - Accepted vocabulary: { replacement | verdict-on | refinement | split
+//                              | referent-nonexistent }
+//     - Annotations like "verdict-on (mirror of R34)" are accepted: the
+//       leading bare keyword (before the first " (") is the kind.
+//     - Unknown kinds → FAIL.
+//
+//   D4 supersession_kind cycle classifier (axis-I × axis-J refinement):
+//     - Build directed graph: edge A→B iff A's row carries
+//         superseded_by = B  AND  supersession_kind = K
+//     - Run cycle detection (white/gray/black DFS, raw 79).
+//     - For each detected cycle: examine the kinds of edges in the cycle.
+//         · If ALL edges are kind=verdict-on → ALLOWED (mutual verdict
+//           between hypothesis and test outcome — R34↔R38 case).
+//         · Else (any edge is kind=replacement, kind=refinement,
+//           kind=split, kind=referent-nonexistent) → FAIL (DAG mandate).
+//     - Replacement cycles in particular are hard FAIL: a row cannot be
+//       both predecessor and successor of another via replacement.
+//
+// EMISSIONS
+//   - stdout JSON summary (one line)
+//   - ai-native trailer per raw 66 on non-PASS
+//   - audit ledger JSONL append per raw 77 to
+//       /Users/ghost/core/n6-architecture/state/atlas_self_arch_audit/audit.jsonl
+//   - last stdout line (raw 80 sentinel): __ATLAS_SELF_ARCH_LINT_RESULT__ PASS|FAIL
+//
+// SCOPE / NON-GOALS
+//   - SCHEMA lint, not a runtime executor. Does not edit atlas.n6.
+//   - axis-I ->* graph traversal NOT implemented (still PROPOSAL-NOT-ACTUATED
+//     per axis-I final-state); D1 is text-pattern lint over the prose row,
+//     not BFS over the -> arrow DAG.
+//   - chflags-bypass: lint is read-only; safe to run against uchg-locked file.
+//
+// raw 91 C3 DECLARED LIMITS
+//   L1. D1 regex assumes prose form `meta-closure: N grade-X derivations (..)`.
+//       Variations like `closure of 12 derivations` are NOT matched.
+//   L2. D4 graph is built per single-file scan; cross-shard back-pointers
+//       not yet absorbed live in append shards, not yet here. As more shards
+//       absorb, graph density grows; current state holds 4 axis-J rows.
+//   L3. Selftest writes to /tmp/atlas_self_arch_lint_selftest — the lint
+//       runs against synthetic fixtures, not the live atlas.n6.
+
+use "self/stdlib/argv_skip"
+
+// ─── parsing helpers ──────────────────────────────────────────────────
+
+fn _rstrip(s: string) -> string {
+    let mut end = len(s)
+    // @triad: atomize
+    while end > 0 {
+        let c = s.substring(end - 1, end)
+        if c == " " || c == "\t" || c == "\r" {
+            end = end - 1
+        } else {
+            break
+        }
+    }
+    return s.substring(0, end)
+}
+
+fn _ltrim(s: string) -> string {
+    let mut i = 0
+    // @triad: atomize
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        if c == " " || c == "\t" {
+            i = i + 1
+        } else {
+            break
+        }
+    }
+    return s.substring(i, len(s))
+}
+
+fn _is_digit(c: string) -> bool {
+    return c == "0" || c == "1" || c == "2" || c == "3" || c == "4"
+        || c == "5" || c == "6" || c == "7" || c == "8" || c == "9"
+}
+
+fn _is_iso_date(v: string) -> bool {
+    // YYYY-MM-DD prefix; optional Thh:mm:ss[Z|+HH:MM]
+    if len(v) < 10 { return false }
+    let mut i = 0
+    while i < 4 {
+        if !_is_digit(v.substring(i, i + 1)) { return false }
+        i = i + 1
+    }
+    if v.substring(4, 5) != "-" { return false }
+    if !_is_digit(v.substring(5, 6)) { return false }
+    if !_is_digit(v.substring(6, 7)) { return false }
+    if v.substring(7, 8) != "-" { return false }
+    if !_is_digit(v.substring(8, 9)) { return false }
+    if !_is_digit(v.substring(9, 10)) { return false }
+    if len(v) == 10 { return true }
+    // Tail tolerated forms: T HH:MM:SS [Z | +HH:MM | -HH:MM]
+    if v.substring(10, 11) == "T" { return true }   // permissive trailing-tail
+    return false
+}
+
+// ─── D1 — ENUMERATION GAP detector ────────────────────────────────────
+// Look for prose: => "meta-closure: <N> grade-<G> derivations (<list>)"
+// Returns array of [lineno, declared_n, enumerated_n, gap, raw_payload].
+
+fn _parse_int_safe(s: string) -> int {
+    let t = s.trim()
+    if len(t) == 0 { return -1 }
+    let mut i = 0
+    while i < len(t) {
+        if !_is_digit(t.substring(i, i + 1)) { return -1 }
+        i = i + 1
+    }
+    return parse_int(t)
+}
+
+fn _scan_meta_closures(src: string) -> array {
+    let lines = split(src, "\n")
+    let mut out = []
+    let mut lineno = 0
+    for raw in lines {
+        lineno = lineno + 1
+        let line = _rstrip(raw)
+        let mc_at = line.index_of("meta-closure:")
+        if mc_at < 0 { continue }
+        // Extract the suffix after "meta-closure:"
+        let after_mc = line.substring(mc_at + len("meta-closure:"), len(line))
+        let trimmed = _ltrim(after_mc)
+        // Expect: <N> grade-<G> derivations (<list>)
+        let sp1 = trimmed.index_of(" ")
+        if sp1 < 0 { continue }
+        let n_str = trimmed.substring(0, sp1)
+        let n = _parse_int_safe(n_str)
+        if n < 0 { continue }
+        // find first '(' — start of enumerated list
+        let lp = trimmed.index_of("(")
+        if lp < 0 { continue }
+        let rp = trimmed.last_index_of(")")
+        if rp < 0 || rp <= lp { continue }
+        let inner = trimmed.substring(lp + 1, rp)
+        // Split on commas; count names; '...' means ungrounded tail.
+        let parts = split(inner, ",")
+        let mut enumerated = 0
+        let mut has_ellipsis = false
+        for p in parts {
+            let pt = p.trim()
+            if len(pt) == 0 { continue }
+            if pt == "..." { has_ellipsis = true ; continue }
+            if pt.index_of("...") >= 0 {
+                has_ellipsis = true
+                // a token that is just "..." after stripping content after
+                // is ambiguous; if non-trivial token before the dots, count it.
+                if pt.substring(0, 3) != "..." {
+                    enumerated = enumerated + 1
+                }
+                continue
+            }
+            enumerated = enumerated + 1
+        }
+        let gap = n - enumerated
+        let payload = trimmed
+        out.push([to_string(lineno), to_string(n), to_string(enumerated),
+                  to_string(gap), payload])
+    }
+    return out
+}
+
+// ─── D2 — introduced_at vocabulary ────────────────────────────────────
+// Scan for body-field `introduced_at = <value>` and validate.
+// Sentinel set: { pre-axis-K, foundation }. Else must be ISO 8601.
+
+fn _scan_introduced_at(src: string) -> array {
+    let lines = split(src, "\n")
+    let mut out = []
+    let mut lineno = 0
+    for raw in lines {
+        lineno = lineno + 1
+        let line = _rstrip(raw)
+        let stripped = _ltrim(line)
+        if stripped.index_of("introduced_at") != 0 { continue }
+        // Expect form: introduced_at = <value>
+        let eq = stripped.index_of("=")
+        if eq < 0 { continue }
+        let key = stripped.substring(0, eq).trim()
+        if key != "introduced_at" { continue }
+        let val = stripped.substring(eq + 1, len(stripped)).trim()
+        // strip surrounding quotes
+        let mut v = val
+        if len(v) >= 2 {
+            let first = v.substring(0, 1)
+            let last = v.substring(len(v) - 1, len(v))
+            if (first == "\"" && last == "\"") || (first == "'" && last == "'") {
+                v = v.substring(1, len(v) - 1)
+            }
+        }
+        let mut verdict = "PASS"
+        let mut reason = ""
+        if v == "pre-axis-K" {
+            reason = "sentinel: pre-axis-K (legacy grandfather list, 96% legacy rows)"
+        } else if v == "foundation" {
+            reason = "sentinel: foundation (axis-K § counter-example-1: foundation [11*] rows pre-date file)"
+        } else if _is_iso_date(v) {
+            reason = "iso-8601 date"
+        } else {
+            verdict = "FAIL"
+            reason = "invalid-introduced_at: '" + v + "' — must be ISO 8601 (YYYY-MM-DD), 'pre-axis-K' sentinel, or 'foundation' sentinel"
+        }
+        out.push([to_string(lineno), v, verdict, reason])
+    }
+    return out
+}
+
+// ─── D3 + D4 — supersession_kind taxonomy + cycle classifier ─────────
+
+let _KIND_5SET = ["replacement", "verdict-on", "refinement", "split", "referent-nonexistent"]
+
+fn _is_known_kind(k: string) -> bool {
+    for v in _KIND_5SET {
+        if k == v { return true }
+    }
+    return false
+}
+
+// Extract bare leading kind keyword; e.g. "verdict-on (mirror of R34)" → "verdict-on"
+fn _kind_head(raw_val: string) -> string {
+    let mut v = raw_val.trim()
+    if len(v) >= 2 {
+        let first = v.substring(0, 1)
+        let last = v.substring(len(v) - 1, len(v))
+        if (first == "\"" && last == "\"") || (first == "'" && last == "'") {
+            v = v.substring(1, len(v) - 1)
+        }
+    }
+    let sp = v.index_of(" ")
+    if sp < 0 { return v }
+    return v.substring(0, sp)
+}
+
+// Parse atlas.n6 source into rows of @<type> <slug>... with body-fields
+// superseded_by + supersession_kind. Returns array of dicts encoded as
+// [slug, superseded_by, supersession_kind_head, lineno, raw_kind_value].
+fn _scan_supersession_rows(src: string) -> array {
+    let lines = split(src, "\n")
+    let mut out = []
+    let mut lineno = 0
+    let mut cur_slug = ""
+    let mut cur_superseded_by = ""
+    let mut cur_kind = ""
+    let mut cur_kind_raw = ""
+    let mut cur_lineno = 0
+    let mut in_row = false
+    for raw in lines {
+        lineno = lineno + 1
+        let line = _rstrip(raw)
+        if len(line) == 0 { continue }
+        // Comment-only?
+        let lstripped = _ltrim(line)
+        if lstripped.substring(0, 1) == "#" { continue }
+        // Row-header detection: line starts with '@' (no leading whitespace).
+        let first = line.substring(0, 1)
+        if first == "@" {
+            // emit prior row if it had a superseded_by edge
+            if in_row && len(cur_superseded_by) > 0 {
+                out.push([cur_slug, cur_superseded_by, cur_kind,
+                          to_string(cur_lineno), cur_kind_raw])
+            }
+            // parse new row header to extract slug
+            let rest = line.substring(1, len(line))
+            // skip the type letter(s): up to first space
+            let sp = rest.index_of(" ")
+            if sp < 0 {
+                in_row = false
+                continue
+            }
+            let after_t = rest.substring(sp + 1, len(rest))
+            // slug = up to next space, '=' or '::'
+            let mut end = len(after_t)
+            let cands = [" ", "=", "::"]
+            for cand in cands {
+                let p = after_t.index_of(cand)
+                if p >= 0 && p < end { end = p }
+            }
+            cur_slug = after_t.substring(0, end).trim()
+            cur_superseded_by = ""
+            cur_kind = ""
+            cur_kind_raw = ""
+            cur_lineno = lineno
+            in_row = true
+            continue
+        }
+        if !in_row { continue }
+        // Body-field?
+        if !(first == " " || first == "\t") { continue }
+        // Look for `superseded_by = X` or `supersession_kind = X`
+        let eq = lstripped.index_of("=")
+        if eq < 0 { continue }
+        let key = lstripped.substring(0, eq).trim()
+        let valrest = lstripped.substring(eq + 1, len(lstripped)).trim()
+        if key == "superseded_by" {
+            // strip trailing comment
+            let hash = valrest.index_of("#")
+            let v_no_comm = if hash >= 0 { valrest.substring(0, hash).trim() } else { valrest }
+            // strip quotes
+            let mut v = v_no_comm
+            if len(v) >= 2 {
+                let f = v.substring(0, 1)
+                let l = v.substring(len(v) - 1, len(v))
+                if (f == "\"" && l == "\"") || (f == "'" && l == "'") {
+                    v = v.substring(1, len(v) - 1)
+                }
+            }
+            cur_superseded_by = v.trim()
+        } else if key == "supersession_kind" {
+            cur_kind_raw = valrest
+            cur_kind = _kind_head(valrest)
+        }
+    }
+    // tail flush
+    if in_row && len(cur_superseded_by) > 0 {
+        out.push([cur_slug, cur_superseded_by, cur_kind,
+                  to_string(cur_lineno), cur_kind_raw])
+    }
+    return out
+}
+
+// Build adjacency: slug → [{target_slug, kind, src_lineno}]
+// Cycle detection via white/gray/black DFS. Returns
+// [cycles_array, edge_lookup_array] where:
+//   cycles_array: array of [slug_a, slug_b, ...] cycle members (≥2)
+//   edge_lookup_array: array of [from_slug, to_slug, kind, lineno]
+fn _detect_cycles(rows: array) -> array {
+    // Collect all slugs (sources + targets) to id-index them
+    let mut slugs = []
+    let mut edges = []  // [from_idx, to_idx, kind]
+    for r in rows {
+        let from_slug = r[0]
+        let to_slug = r[1]
+        let kind = r[2]
+        let mut fi = -1
+        let mut ti = -1
+        let mut k = 0
+        for s in slugs {
+            if s == from_slug { fi = k }
+            if s == to_slug { ti = k }
+            k = k + 1
+        }
+        if fi < 0 { slugs.push(from_slug) ; fi = len(slugs) - 1 }
+        if ti < 0 { slugs.push(to_slug) ; ti = len(slugs) - 1 }
+        edges.push([to_string(fi), to_string(ti), kind, r[3]])
+    }
+    let n = len(slugs)
+    // Build adjacency
+    let mut adj = []
+    let mut i = 0
+    while i < n { adj.push([]) ; i = i + 1 }
+    for e in edges {
+        let f = parse_int(e[0])
+        let t = parse_int(e[1])
+        adj[f].push(to_string(t))
+    }
+    // DFS cycle detection — collect cycle members
+    let WHITE = 0
+    let GRAY = 1
+    let BLACK = 2
+    let mut color = []
+    let mut parent = []
+    let mut j = 0
+    while j < n { color.push(WHITE) ; parent.push(-1) ; j = j + 1 }
+
+    let mut cycles = []
+    // iterative DFS via explicit stack: [node, child_iter_idx]
+    let mut start = 0
+    while start < n {
+        if color[start] == WHITE {
+            let mut stack = [[start, 0]]
+            color[start] = GRAY
+            // @triad: atomize
+            while len(stack) > 0 {
+                let top = stack[len(stack) - 1]
+                let u = top[0]
+                let ci = top[1]
+                if ci < len(adj[u]) {
+                    let v = parse_int(adj[u][ci])
+                    stack[len(stack) - 1] = [u, ci + 1]
+                    if color[v] == WHITE {
+                        color[v] = GRAY
+                        parent[v] = u
+                        stack.push([v, 0])
+                    } else if color[v] == GRAY {
+                        // back-edge: extract cycle u..v
+                        let mut cyc = [slugs[v]]
+                        let mut x = u
+                        // @triad: atomize
+                        while x != v && x != -1 {
+                            cyc.push(slugs[x])
+                            x = parent[x]
+                        }
+                        cycles.push(cyc)
+                    }
+                } else {
+                    color[u] = BLACK
+                    stack.pop()
+                }
+            }
+        }
+        start = start + 1
+    }
+    return [cycles, edges, slugs]
+}
+
+fn _kinds_in_cycle(cycle_slugs: array, edges: array, slugs: array) -> array {
+    // For each consecutive pair in cycle (cyclic), find the edge kind.
+    let m = len(cycle_slugs)
+    let mut kinds = []
+    let mut i = 0
+    while i < m {
+        let from_s = cycle_slugs[i]
+        let to_s = cycle_slugs[(i + 1) % m]
+        // edge in cycle traversal: in our DFS, cycle was reconstructed via
+        // parent pointers from u back to v. The edge u → v is the back-edge.
+        // For each consecutive pair (a, b) in cycle_slugs, look up edge.
+        // We try BOTH directions because cycle direction may need reversing.
+        let mut found = ""
+        for e in edges {
+            let fi = parse_int(e[0])
+            let ti = parse_int(e[1])
+            if slugs[fi] == from_s && slugs[ti] == to_s { found = e[2] ; break }
+            if slugs[fi] == to_s && slugs[ti] == from_s { found = e[2] ; break }
+        }
+        kinds.push(found)
+        i = i + 1
+    }
+    return kinds
+}
+
+// ─── full validation pass ─────────────────────────────────────────────
+// Returns [verdict_str, violations_string_array].
+fn _validate_file(path: string) -> array {
+    let src = to_string(read_file(path))
+    let mut violations = []
+    let mut verdict = "PASS"
+
+    // D1 ENUMERATION GAP
+    let mc_rows = _scan_meta_closures(src)
+    for r in mc_rows {
+        let ln = r[0]
+        let dec = r[1]
+        let enum_n = r[2]
+        let gap_str = r[3]
+        let gap = parse_int(gap_str)
+        if gap > 0 {
+            violations.push("D1 enumeration-gap@line:" + ln + " declared=" + dec
+                            + " enumerated=" + enum_n + " gap=" + gap_str
+                            + " — meta-closure prose declares more derivations than it lists ('...' tail acknowledged; ungrounded source row)")
+            if verdict == "PASS" { verdict = "WARN" }
+        } else if gap < 0 {
+            violations.push("D1 enumeration-overflow@line:" + ln + " declared=" + dec
+                            + " enumerated=" + enum_n + " gap=" + gap_str
+                            + " — meta-closure prose lists MORE derivations than its declared count")
+            verdict = "FAIL"
+        }
+    }
+
+    // D2 introduced_at vocabulary
+    let ia_rows = _scan_introduced_at(src)
+    for r in ia_rows {
+        let v = r[2]
+        if v == "FAIL" {
+            violations.push("D2 " + r[3] + " @line:" + r[0])
+            verdict = "FAIL"
+        }
+    }
+
+    // D3 supersession_kind vocabulary + D4 cycle classifier
+    let sk_rows = _scan_supersession_rows(src)
+    for r in sk_rows {
+        let kind = r[2]
+        if len(kind) == 0 { continue }   // row had superseded_by but no kind: separate concern
+        if !_is_known_kind(kind) {
+            violations.push("D3 unknown-supersession_kind@line:" + r[3]
+                            + " kind='" + kind + "' raw_value='" + r[4]
+                            + "' — vocabulary={replacement|verdict-on|refinement|split|referent-nonexistent}")
+            verdict = "FAIL"
+        }
+    }
+    let cyc_res = _detect_cycles(sk_rows)
+    let cycles = cyc_res[0]
+    let edges = cyc_res[1]
+    let slugs = cyc_res[2]
+    for cyc in cycles {
+        if len(cyc) < 2 { continue }
+        let kinds = _kinds_in_cycle(cyc, edges, slugs)
+        let mut all_verdict_on = true
+        for k in kinds {
+            if k != "verdict-on" { all_verdict_on = false }
+        }
+        let cyc_repr = cyc.join(" ↔ ")
+        let kinds_repr = kinds.join(",")
+        if all_verdict_on {
+            violations.push("D4 cycle-allowed (verdict-on): {" + cyc_repr
+                            + "} kinds=[" + kinds_repr
+                            + "] — mutual verdict cycle (R34↔R38 case); WARN-annotated, NOT a hard exit-4")
+            if verdict == "PASS" { verdict = "WARN" }
+        } else {
+            violations.push("D4 cycle-forbidden (non-verdict-on): {" + cyc_repr
+                            + "} kinds=[" + kinds_repr
+                            + "] — replacement/refinement/split/referent-nonexistent cycles violate DAG mandate (raw 79)")
+            verdict = "FAIL"
+        }
+    }
+
+    return [verdict, violations]
+}
+
+// ─── audit ledger (raw 77) ────────────────────────────────────────────
+
+fn _audit_dir() -> string {
+    return "/Users/ghost/core/n6-architecture/state/atlas_self_arch_audit"
+}
+
+fn _esc_json(s: string) -> string {
+    let mut r = s.replace("\\", "\\\\")
+    r = r.replace("\"", "\\\"")
+    r = r.replace("\n", "\\n")
+    r = r.replace("\r", "")
+    r = r.replace("\t", " ")
+    return r
+}
+
+fn _ts_iso_utc() -> string {
+    return to_string(exec("date -u +%Y-%m-%dT%H:%M:%SZ")).trim()
+}
+
+fn _audit_append(target_path: string, verdict: string, violations: array) -> void {
+    let dir = _audit_dir()
+    exec("mkdir -p '" + dir + "'")
+    let parts = []
+    parts.push("{\"ts\":\"")
+    parts.push(_ts_iso_utc())
+    parts.push("\",\"agent_id\":\"atlas_self_arch_lint\",\"target_path\":\"")
+    parts.push(_esc_json(target_path))
+    parts.push("\",\"verdict\":\"")
+    parts.push(verdict)
+    parts.push("\",\"violations\":[")
+    let mut k = 0
+    for v in violations {
+        if k > 0 { parts.push(",") }
+        parts.push("\"")
+        parts.push(_esc_json(v))
+        parts.push("\"")
+        k = k + 1
+    }
+    parts.push("],\"classifier_version\":\"atlas_self_arch_lint.v1.0\"}")
+    let row = parts.join("")
+    let path = dir + "/audit.jsonl"
+    let tmp = path + ".tmp.append"
+    write_file(tmp, row + "\n")
+    exec("cat '" + tmp + "' >> '" + path + "' && rm -f '" + tmp + "'")
+}
+
+// ─── ai-native trailer (raw 66) ───────────────────────────────────────
+
+fn _emit_trailer(verdict: string, target: string, violations: array) -> void {
+    eprintln("[atlas_self_arch_lint] " + verdict)
+    if verdict == "PASS" {
+        eprintln("  reason: schema-compliant: " + target + " conforms to axis-I/-J/-K integrity contract (D1-D4)")
+        eprintln("  fix: 1) no action required  2) keep meta-closure prose enumerated names ≥ declared count  3) ref axis-K shard + axis-J supersession_kind 5-set")
+        return
+    }
+    let causal = if verdict == "FAIL" { "schema-violation" } else { "advisory-warn" }
+    let head = if len(violations) > 0 { violations[0] } else { "(unspecified)" }
+    eprintln("  reason: " + causal + ": " + head)
+    if len(violations) > 1 {
+        let mut k = 1
+        // @triad: atomize
+        while k < len(violations) {
+            eprintln("    additional: " + violations[k])
+            k = k + 1
+        }
+    }
+    eprintln("  fix: 1) D1 enumeration-gap: enumerate the missing names in meta-closure prose, OR convert to axis-I ->* {N @ [grade]} migration row  2) D2 introduced_at: use ISO 8601 YYYY-MM-DD, 'pre-axis-K' sentinel for legacy rows, or 'foundation' for [11*] rows  3) D3 supersession_kind: pick from {replacement|verdict-on|refinement|split|referent-nonexistent}  4) D4 cycle: replacement/refinement/split/referent-nonexistent cycles are FAIL — break edge or reclassify; only all-verdict-on cycles are allowed (mutual verdict pattern)")
+}
+
+// ─── selftest fixtures ────────────────────────────────────────────────
+
+fn _write_fixture(path: string, body: string) -> void {
+    let last = path.last_index_of("/")
+    if last >= 0 {
+        let parent = path.substring(0, last)
+        exec("mkdir -p '" + parent + "'")
+    }
+    write_file(path, body)
+}
+
+fn _selftest() -> void {
+    println("[atlas_self_arch_lint selftest]")
+    let dir = "/tmp/atlas_self_arch_lint_selftest"
+    exec("rm -rf '" + dir + "' && mkdir -p '" + dir + "'")
+    println("  setup done")
+
+    // FIXTURE 1 — PASS: tau-style fully enumerated meta-closure (D1 calibration row)
+    //              + valid introduced_at + valid supersession_kind, no cycle.
+    let f1 = dir + "/pass_calibration.n6"
+    let body1 = "@P tau = divisor_count(6) = 4 :: foundation [11*]\n"
+              + "  -> phi_tau, sigma_tau\n"
+              + "  => \"meta-closure: 9 grade-10 derivations (sigma_tau,phi_tau,J2_tau,sm_blackwell,sm_amd,J2_decomp,sopfr_phi_tau,persistence_threshold,binding_tau)\"\n"
+              + "@C example-row :: meta [4]\n"
+              + "  introduced_at = 2026-04-28\n"
+              + "  superseded_by = nothing\n"
+              + "  supersession_kind = replacement\n"
+              + "@C legacy-row :: meta [4]\n"
+              + "  introduced_at = pre-axis-K\n"
+              + "  superseded_by = some-other-row\n"
+              + "  supersession_kind = refinement\n"
+    _write_fixture(f1, body1)
+    let r1 = _validate_file(f1)
+    if r1[0] != "PASS" {
+        eprintln("FIXTURE 1 expected PASS, got " + r1[0])
+        for v in r1[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-1 PASS  (calibration: tau-enum gap=0 + introduced_at ISO + sentinel + valid kinds)")
+
+    // FIXTURE 2 — WARN (D1): line 28 / 34 enumeration gap pattern
+    //                          (declared 15, enumerated 13) + (declared 10, enumerated 9).
+    let f2 = dir + "/warn_d1_enum_gap.n6"
+    let body2 = "@P n = 6 :: foundation [11*]\n"
+              + "  -> sigma, phi, tau, sopfr, J2, mu, M3\n"
+              + "  => \"meta-closure: 15 grade-10 derivations (sigma,phi,tau,sopfr,J2,mu,M3,sigma_n,perfect_number,sigma_decomp,J2_decomp,faction_phi,granville_smooth,...)\"\n"
+              + "@P sigma = divisor_sum(6) = 12 :: foundation [11*]\n"
+              + "  => \"meta-closure: 10 grade-10 derivations (sigma_sq,sigma_tau,sigma_n,sm_ampere,sm_blackwell,sm_amd,perfect_number,sigma_decomp,persistence_threshold,...)\"\n"
+    _write_fixture(f2, body2)
+    let r2 = _validate_file(f2)
+    if r2[0] != "WARN" {
+        eprintln("FIXTURE 2 expected WARN (D1 enum gap), got " + r2[0])
+        for v in r2[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut found_gap_15 = false
+    let mut found_gap_10 = false
+    for v in r2[1] {
+        if v.index_of("declared=15") >= 0 && v.index_of("enumerated=13") >= 0 { found_gap_15 = true }
+        if v.index_of("declared=10") >= 0 && v.index_of("enumerated=9") >= 0 { found_gap_10 = true }
+    }
+    if !found_gap_15 || !found_gap_10 {
+        eprintln("FIXTURE 2 WARN but did not surface both enumeration-gap rows")
+        for v in r2[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-2 WARN  (D1 enumeration-gap: 15-vs-13 + 10-vs-9 detected)")
+
+    // FIXTURE 3 — FAIL (D2): introduced_at = "soon" — invalid vocabulary
+    let f3 = dir + "/fail_d2_introduced_at.n6"
+    let body3 = "@C bogus-row :: meta [4]\n"
+              + "  introduced_at = soon\n"
+              + "  => \"freeform value rejected\"\n"
+    _write_fixture(f3, body3)
+    let r3 = _validate_file(f3)
+    if r3[0] != "FAIL" {
+        eprintln("FIXTURE 3 expected FAIL (D2), got " + r3[0])
+        for v in r3[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut found_d2 = false
+    for v in r3[1] {
+        if v.index_of("invalid-introduced_at") >= 0 && v.index_of("'soon'") >= 0 { found_d2 = true }
+    }
+    if !found_d2 {
+        eprintln("FIXTURE 3 FAIL but did not surface D2 invalid-introduced_at")
+        for v in r3[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-3 FAIL  (D2 invalid introduced_at: 'soon' rejected)")
+
+    // FIXTURE 4 — FAIL (D3): unknown supersession_kind = "retraction"
+    //                          (kicked out of taxonomy in axis-J § GATE-4).
+    let f4 = dir + "/fail_d3_unknown_kind.n6"
+    let body4 = "@C row-a :: meta [4]\n"
+              + "  superseded_by = row-b\n"
+              + "  supersession_kind = retraction\n"
+    _write_fixture(f4, body4)
+    let r4 = _validate_file(f4)
+    if r4[0] != "FAIL" {
+        eprintln("FIXTURE 4 expected FAIL (D3 unknown kind), got " + r4[0])
+        for v in r4[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut found_d3 = false
+    for v in r4[1] {
+        if v.index_of("unknown-supersession_kind") >= 0 && v.index_of("retraction") >= 0 { found_d3 = true }
+    }
+    if !found_d3 {
+        eprintln("FIXTURE 4 FAIL but did not surface D3 unknown-supersession_kind")
+        for v in r4[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-4 FAIL  (D3 unknown supersession_kind 'retraction' rejected)")
+
+    // FIXTURE 5 — WARN (D4 verdict-on cycle ALLOWED):
+    //   R34 superseded_by R38 (verdict-on) AND R38 superseded_by R34 (verdict-on)
+    let f5 = dir + "/warn_d4_verdict_on_cycle.n6"
+    let body5 = "@C row-r34 :: meta [4]\n"
+              + "  superseded_by = row-r38\n"
+              + "  supersession_kind = verdict-on\n"
+              + "@C row-r38 :: meta [4]\n"
+              + "  superseded_by = row-r34\n"
+              + "  supersession_kind = verdict-on (mirror of R34)\n"
+    _write_fixture(f5, body5)
+    let r5 = _validate_file(f5)
+    if r5[0] != "WARN" {
+        eprintln("FIXTURE 5 expected WARN (D4 verdict-on cycle allowed), got " + r5[0])
+        for v in r5[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut found_allowed = false
+    for v in r5[1] {
+        if v.index_of("D4 cycle-allowed (verdict-on)") >= 0 { found_allowed = true }
+    }
+    if !found_allowed {
+        eprintln("FIXTURE 5 WARN but did not surface D4 cycle-allowed verdict-on annotation")
+        for v in r5[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-5 WARN  (D4 verdict-on cycle: R34↔R38 mutual verdict allowed)")
+
+    // FIXTURE 6 — FAIL (D4 replacement cycle FORBIDDEN):
+    //   row-a superseded_by row-b (replacement) AND row-b superseded_by row-a (replacement)
+    let f6 = dir + "/fail_d4_replacement_cycle.n6"
+    let body6 = "@C row-a :: meta [4]\n"
+              + "  superseded_by = row-b\n"
+              + "  supersession_kind = replacement\n"
+              + "@C row-b :: meta [4]\n"
+              + "  superseded_by = row-a\n"
+              + "  supersession_kind = replacement\n"
+    _write_fixture(f6, body6)
+    let r6 = _validate_file(f6)
+    if r6[0] != "FAIL" {
+        eprintln("FIXTURE 6 expected FAIL (D4 replacement cycle), got " + r6[0])
+        for v in r6[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut found_forbidden = false
+    for v in r6[1] {
+        if v.index_of("D4 cycle-forbidden") >= 0 && v.index_of("replacement") >= 0 { found_forbidden = true }
+    }
+    if !found_forbidden {
+        eprintln("FIXTURE 6 FAIL but did not surface D4 cycle-forbidden replacement annotation")
+        for v in r6[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-6 FAIL  (D4 replacement cycle: row-a↔row-b DAG-violation)")
+
+    // Cleanup.
+    exec("rm -rf '" + dir + "'")
+    println("[atlas_self_arch_lint selftest] OK (6 fixtures: 1 PASS + 2 WARN + 3 FAIL)")
+    println("__ATLAS_SELF_ARCH_LINT_RESULT__ PASS")
+    exit(0)
+}
+
+// ─── main scan ────────────────────────────────────────────────────────
+
+fn _scan(target: string, severity: string) -> int {
+    let r = _validate_file(target)
+    let verdict = r[0]
+    let violations = r[1]
+    _audit_append(target, verdict, violations)
+
+    // JSON summary
+    let parts = []
+    parts.push("{\"rule\":\"atlas-self-arch-lint\"")
+    parts.push(",\"classifier_version\":\"atlas_self_arch_lint.v1.0\"")
+    parts.push(",\"severity\":\"")
+    parts.push(severity)
+    parts.push("\",\"target\":\"")
+    parts.push(_esc_json(target))
+    parts.push("\",\"verdict\":\"")
+    parts.push(verdict)
+    parts.push("\",\"violations\":[")
+    let mut k = 0
+    for v in violations {
+        if k > 0 { parts.push(",") }
+        parts.push("\"")
+        parts.push(_esc_json(v))
+        parts.push("\"")
+        k = k + 1
+    }
+    parts.push("]}")
+    println(parts.join(""))
+
+    if verdict != "PASS" {
+        _emit_trailer(verdict, target, violations)
+    }
+
+    let sentinel_verdict = if verdict == "FAIL" { "FAIL" } else { "PASS" }
+    println("__ATLAS_SELF_ARCH_LINT_RESULT__ " + sentinel_verdict)
+
+    if verdict == "FAIL" && severity == "block" { return 2 }
+    return 0
+}
+
+fn _flag_value(args_arr: array, name: string, dflt: string) -> string {
+    let mut i = 0
+    while i < len(args_arr) - 1 {
+        if args_arr[i] == name { return args_arr[i + 1] }
+        i = i + 1
+    }
+    return dflt
+}
+
+fn _has_flag(args_arr: array, name: string) -> bool {
+    for a in args_arr {
+        if a == name { return true }
+    }
+    return false
+}
+
+fn main() -> void {
+    let raw_args = args()
+    let mut cli = []
+    let mut ai = skip_invocation_prefix(raw_args)
+    // @triad: atomize
+    while ai < len(raw_args) {
+        cli.push(raw_args[ai])
+        ai = ai + 1
+    }
+
+    if len(cli) >= 1 && (cli[0] == "--selftest" || cli[0] == "selftest") {
+        _selftest()
+        return
+    }
+
+    let mut target = ""
+    let mut severity = "warn"
+    let mut i = 0
+    // @triad: atomize
+    while i < len(cli) {
+        let a = cli[i]
+        if a == "--severity" {
+            i = i + 1
+            if i < len(cli) { severity = cli[i] }
+        } else if a == "--help" {
+            println("usage: hexa /Users/ghost/core/n6-architecture/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest]")
+            println("__ATLAS_SELF_ARCH_LINT_RESULT__ PASS")
+            exit(0)
+        } else if a.substring(0, 2) != "--" {
+            if len(target) == 0 { target = a }
+        }
+        i = i + 1
+    }
+    if len(target) == 0 {
+        target = "/Users/ghost/core/n6-architecture/atlas/atlas.n6"
+    }
+
+    let rc = _scan(target, severity)
+    exit(rc)
+}

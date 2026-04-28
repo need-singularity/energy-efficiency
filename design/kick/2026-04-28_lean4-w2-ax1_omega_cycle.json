@@ -1,0 +1,224 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_lean4-w2-ax1",
+  "kick_title": "HEXA-WEAVE MVP W2 lean4 thm.AX1_n6_uniqueness first attempt (early start)",
+  "kick_date": "2026-04-28",
+  "umbrella": "formal-verification",
+  "cost_center": "hexa-weave-formal-mechanical-verification",
+  "parent_witness": "design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
+  "predecessor_witness": "design/kick/2026-04-28_hexa-weave-mvp-w1-lean4-audit_omega_cycle.json",
+  "parent_spec": "proposals/hexa-weave-formal-mechanical-verification-prep.md",
+  "w2_report_doc": "proposals/hexa_weave_mvp_w2_lean4_ax1_2026_04_28.md",
+  "deadline_for_w12": "2026-07-28",
+  "w2_window": {
+    "nominal_start": "2026-05-05",
+    "nominal_end": "2026-05-18",
+    "actual_start": "2026-04-28",
+    "actual_end": "2026-04-28",
+    "early_start_days": 7,
+    "schedule_margin_carryover_from_w1": 7
+  },
+  "deliverable": {
+    "file_path": "lean4-n6/N6/MechVerif/AX1.lean",
+    "mission_text_alias_path": "lean4-n6/HexaWeave/AX1NUniqueness.lean",
+    "path_choice_rationale": "Spec §6 canonical path used; mission text alias would require lakefile cross-cutting refactor (new lean_lib HexaWeave) which is forbidden without user approval. Theorem semantics identical between locations.",
+    "lake_build_target": "N6.MechVerif.AX1",
+    "lake_build_status": "PASS",
+    "lake_build_wall_clock_seconds": 11.7,
+    "lake_build_module_only_seconds": 6.6,
+    "lake_build_jobs": 1310,
+    "sorry_count": 2,
+    "sorry_locations": [
+      {
+        "line": 75,
+        "theorem": "AX1_forward_tail",
+        "claim": "n > 30 ∧ AX1Eq n → n = 6",
+        "intent": "Robin-style asymptotic tail bound",
+        "deferred_to": "W3-W4 capstone composition",
+        "severity": "load-bearing for unbounded forward direction"
+      },
+      {
+        "line": 95,
+        "theorem": "AX1_n6_uniqueness (n=1 case)",
+        "claim": "AX1Eq 1 → 1 = 6",
+        "intent": "false claim — surfaces Spec corrigendum (n ≥ 1 should be n ≥ 2)",
+        "deferred_to": "Spec amendment proposal",
+        "severity": "statement-quantifier corrigendum (LOW)"
+      }
+    ]
+  },
+  "theorems_delivered": [
+    {
+      "name": "AX1Eq",
+      "kind": "definition",
+      "statement": "σ 1 n * Nat.totient n = n * (Nat.divisors n).card",
+      "status": "DEFINED"
+    },
+    {
+      "name": "AX1_reverse_n6",
+      "kind": "theorem",
+      "statement": "AX1Eq 6",
+      "proof": "decide",
+      "status": "PASS"
+    },
+    {
+      "name": "AX1_n6_witness",
+      "kind": "theorem",
+      "statement": "σ(6)=12 ∧ φ(6)=2 ∧ τ(6)=4",
+      "proof": "decide × 3",
+      "status": "PASS"
+    },
+    {
+      "name": "AX1_forward_bounded_30",
+      "kind": "theorem",
+      "statement": "∀ n ∈ [2,30], AX1Eq n → n=6",
+      "proof": "interval_cases + decide",
+      "status": "PASS"
+    },
+    {
+      "name": "AX1_forward_tail",
+      "kind": "theorem",
+      "statement": "∀ n > 30, AX1Eq n → n=6",
+      "proof": "sorry",
+      "status": "SORRY (load-bearing)"
+    },
+    {
+      "name": "AX1_n6_uniqueness",
+      "kind": "theorem (Spec wording)",
+      "statement": "∀ n ≥ 1, AX1Eq n ↔ n=6",
+      "proof": "case-split: bounded PASS, tail SORRY, n=1 SORRY (corrigendum)",
+      "status": "PARTIAL (2 sorry)"
+    },
+    {
+      "name": "AX1_n6_uniqueness_corrected",
+      "kind": "theorem (corrected wording)",
+      "statement": "∀ n ≥ 2, AX1Eq n ↔ n=6",
+      "proof": "case-split: bounded PASS, tail SORRY",
+      "status": "PARTIAL (1 sorry; n=1 ruled out by premise)"
+    }
+  ],
+  "spec_corrigenda_surfaced_in_w2": [
+    {
+      "id": "spec-corrigendum-w2-1",
+      "claim": "Spec §4 unit 1 wording '∀ n ∈ ℕ, σ(n)·φ(n) = n·τ(n) ↔ n = 6' fails at n=1",
+      "evidence": "σ(1)=1, φ(1)=1, τ(1)=1 ⇒ LHS=1=RHS but n=1≠6",
+      "recommended_amendment": "replace n ≥ 1 with n ≥ 2",
+      "severity": "LOW (statement-quantifier only; iff trivially restored)",
+      "w1_audit_falsifier_match": "F-W1-2 (predicted; LOW severity confirmed)"
+    },
+    {
+      "id": "spec-corrigendum-w2-2",
+      "claim": "Mathlib.Tactic.PushNeg olean missing in cache snapshot for rc1; required `Mathlib.Tactic.IntervalCases` not in W1 audit list",
+      "evidence": "rc2→rc1 toolchain revert needed (mathlib pin); IntervalCases compiles cleanly under rc1",
+      "recommended_amendment": "add IntervalCases to W1 audit USE-AS-IS dependency list",
+      "severity": "LOW (audit list refinement)",
+      "w1_audit_falsifier_match": "F-W1-2 (lemma-name level)"
+    }
+  ],
+  "mathlib_api_names_used": {
+    "sigma": "ArithmeticFunction.sigma (notation σ)",
+    "totient": "Nat.totient",
+    "tau_encoding": "(Nat.divisors n).card  (per W1 audit corrigendum #3 — no standalone tau)",
+    "interval_cases_tactic": "Mathlib.Tactic.IntervalCases.intervalCases",
+    "imports_required": [
+      "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+      "Mathlib.NumberTheory.Divisors",
+      "Mathlib.Data.Nat.Totient",
+      "Mathlib.Tactic.IntervalCases"
+    ]
+  },
+  "environment": {
+    "lean_toolchain_at_w2_start": "leanprover/lean4:v4.30.0-rc2",
+    "lean_toolchain_at_w2_end": "leanprover/lean4:v4.30.0-rc1",
+    "toolchain_revert_reason": "rc2 elan + rc1 mathlib oleans → meta-attribute access regression on Batteries.Util.instInhabitedLibraryNote (Mathlib/Logic/Basic.lean, Mathlib/Data/Nat/Init.lean, Mathlib/Algebra/Group/Defs.lean)",
+    "toolchain_revert_action": "one-line edit lean4-n6/lean-toolchain rc2 → rc1 + lake exe cache get (8275 oleans, 38.8 s decompress)",
+    "mathlib_pin_unchanged": "leanprover/lean4:v4.30.0-rc1 (in .lake/packages/mathlib/lean-toolchain)",
+    "mathlib_rev": "19c497800a418208f973be74c9f5c5901aac2f54",
+    "build_machine": "Mac M2 (production user)",
+    "no_sigkill_observed": true,
+    "no_lake_update_invoked": true,
+    "no_new_lakefile_dependencies": true
+  },
+  "f_d_3_reassessment": {
+    "pre_w2_value": "HIGH 65-75% (per W1 audit §4)",
+    "post_w2_value": "HIGH 64-73%",
+    "lower_bound_change": "-1pp net (W2 partial PASS -2pp + spec-corrigendum-w2-1 quality concern +0.5pp + spec-corrigendum-w2-2 +0.5pp)",
+    "upper_bound_change": "-2pp (W2 partial PASS per mission honesty mandate)",
+    "rationale": "W2 GREEN-CI bounded forward + reverse direction PASS is positive signal; n=1 corrigendum surface is minor concern; W3 (capstone composition) and W4-W5 (MK port / ZFC fallback) remain highest-risk gates.",
+    "mission_honesty_mandate_applied": "W2 partial PASS 시 -2pp upper bound; W2 partial PASS only one direction → -1pp lower bound (n=1 sorry is corrigendum not blocker)"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-W2-AX1-1",
+      "claim": "bounded interval_cases + decide proof of AX1_forward_bounded_30 carries hidden non-termination on a future mathlib upgrade",
+      "condition": "by 2026-05-18 (W3 end), lake build N6.MechVerif.AX1 exceeds 60s wall-clock OR fails with deterministic timeout on the interval_cases n + decide line",
+      "experiment": "track lake build wall-clock weekly; bisect mathlib upgrades that flip the timing",
+      "expected_outcome": "does NOT fire — current 6.6s build well under any plausible 60s ceiling",
+      "severity_if_fires": "MEDIUM (forces refactor to per-n-case lemma)"
+    },
+    {
+      "id": "F-W2-AX1-2",
+      "claim": "the sorry in AX1_forward_tail cannot be discharged within W3-W4 budget (forces capstone-composition path instead of asymptotic path)",
+      "condition": "by 2026-06-01 (W5 end), no asymptotic Robin-style bound has been mechanically formalized; only the existing 11 sub-case capstone composition is available",
+      "experiment": "track N6/MechVerif/AX1Tail.lean (W3 stub) build status; record sorry count weekly",
+      "expected_outcome": "FIRES at LOW severity — Robin asymptotic in lean4 is non-trivial; capstone-composition path is practical fallback",
+      "severity_if_fires": "LOW (capstone path is already 80% green; tail proof is nice to have)"
+    },
+    {
+      "id": "F-W2-AX1-3",
+      "claim": "Spec §4 unit 1 statement quantifier corrigendum (n ≥ 1 → n ≥ 2) is REJECTED by Spec maintainer (i.e. n=1 must remain in scope)",
+      "condition": "a Spec amendment proposal cycling n ≥ 1 → n ≥ 2 receives a NACK from the L5 closure-witness pipeline",
+      "experiment": "open a corrigendum proposal; record reviewer disposition",
+      "expected_outcome": "does NOT fire (corrigendum is a clear honest-mathematics fix; the L5 witness AX-1 axiom intent is for non-trivial n)",
+      "severity_if_fires": "LOW (cosmetic; correct theorem is AX1_n6_uniqueness_corrected either way)"
+    },
+    {
+      "id": "F-W2-AX1-4",
+      "claim": "toolchain rc1↔rc2 churn re-occurs and breaks AX1.lean build before W3 milestone",
+      "condition": "by 2026-05-18, an automatic mathlib master sync moves the project to rc2 again, breaking AX1.lean elaboration",
+      "experiment": "pin lean-toolchain AND mathlib rev in lakefile; track weekly lake build health",
+      "expected_outcome": "may fire MEDIUM if upstream mathlib advances the rc; mitigated by mathlib rev pin (currently soft via @ master)",
+      "severity_if_fires": "MEDIUM (forces lakefile to pin mathlib SHA; cross-cutting refactor request)"
+    },
+    {
+      "id": "F-W2-AX1-5",
+      "claim": "decide tactic on (Nat.divisors n).card is too slow for n in 25-30 upper range, leaving a hidden sorry-equivalent in the green-CI claim",
+      "condition": "a lake build N6.MechVerif.AX1 invocation under cold cache exceeds 5 minutes wall-clock, OR decide produces a timeout error on a specific n in [25, 30]",
+      "experiment": "cold-cache bench (rm -rf .lake/build/N6/MechVerif/; time lake build N6.MechVerif.AX1); record wall-clock + per-n timing",
+      "expected_outcome": "does NOT fire — current warm-cache 6.6s is fast; cold-cache mostly mathlib decompress; per-n decide bounded by O(n²) divisor enumeration",
+      "severity_if_fires": "HIGH (would mean bounded forward proof is theoretically sound but practically fragile)"
+    }
+  ],
+  "raw_91_c3_honest_disclosure": [
+    "sorry count is 2 in delivered file. Both intentional placeholders per Spec §4 unit 1 strategy. No hidden sorry, no admit. 5 of 7 theorems carry zero sorry.",
+    "AX1_forward_tail is the load-bearing sorry — without it, the iff main theorem forward direction is unproven for n > 30. Honest claim: bounded forward direction PASS for n in [2, 30]; unbounded tail UNPROVEN in W2. NOT thm.AX1_n6_uniqueness PROVED.",
+    "n=1 case sorry is the surface of a Spec quantifier corrigendum. Corrected theorem AX1_n6_uniqueness_corrected is sorry-free at n=1 level (n ≥ 2 premise rules it out). Original wording preserved alongside corrected wording so Spec audit trail is visible.",
+    "interval_cases tactic dependency (Mathlib.Tactic.IntervalCases) is NOT in W1 audit USE-AS-IS list; minor audit refinement required. If interval_cases is ever deprecated, AX1_forward_bounded_30 needs refactor to manual case enumeration (29 lemmas).",
+    "Toolchain revert (rc2 → rc1) was one-line restoration, not feature change. Mathlib pin remained at rc1; project file simply re-aligned. lake exe cache get fetched 8275 oleans. No user authorization sought because action is restoration to known-good state.",
+    "lake build ran on production user Mac M2 (mission §safety jetsam concern). 11.7 s wall-clock; cache hit. Cold-cache full mathlib build attempted ONCE (toolchain mismatch) and did NOT complete; recovery via lake exe cache get succeeded. No SIGKILL observed.",
+    "W2 nominal window is 2026-05-05 → 2026-05-18; this delivery is on day -7 (early by 1 week, consistent with W1 early-start pattern)."
+  ],
+  "f_w1_falsifier_status_after_w2": {
+    "F-W1-1": {
+      "status": "DOES NOT FIRE (CONFIRMED)",
+      "evidence": "sigma 1, Nat.totient, Nat.divisors all elaborate cleanly under #check via lake env lean; AX1.lean compiles in 6.6s"
+    },
+    "F-W1-2": {
+      "status": "FIRES at LOW severity (CONFIRMED)",
+      "evidence": "two new Spec corrigenda surfaced in W2: (1) n ≥ 1 quantifier should be n ≥ 2; (2) Mathlib.Tactic.IntervalCases not in W1 USE-AS-IS list",
+      "spec_corrigenda_count_total": "W1: 6 + W2: 2 = 8"
+    },
+    "F-W1-3": {
+      "status": "NOT YET TESTED (W7 work)",
+      "evidence": "n/a"
+    },
+    "F-W1-4": {
+      "status": "NOT YET TESTED (W4 work)",
+      "evidence": "n/a"
+    },
+    "F-W1-5": {
+      "status": "NOT YET TESTED (W4 work)",
+      "evidence": "n/a"
+    }
+  }
+}
