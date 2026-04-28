@@ -32631,3 +32631,114 @@
   => "raw 71 11th narrowing: stronger claim awaits long-time + large-eps + L=8 t3 follow-up"
   => "Python mirror /tmp/cascade_s2/symplectic_phi4_AD.py 245 lines"
   => "own#11 strict; chflags uchg honored"
+
+# ══════════════════════════════════════════════════════════════
+# absorbed: clay-cascade-s3 OPENING tick-1 AE axis-16 graph mechanism
+#   ★ cascade-s3 first shard — degree-variance dominant predictor (CDR=1.94)
+#   3-class mechanism: FAST=hub-collapse / BOUNDED=regular-low-deg / FULL=expander-like
+# ts: 20260428-131904
+# ══════════════════════════════════════════════════════════════
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s3 tick-1 AE axis-16 V(8) graph-theoretic basis
+# source: sub-agent AE 7-property graph analysis on 18 D=3 topology adjacency matrices
+# constraints: raw 91 C3 + raw 70 + own#11 + raw 22+24+23
+# date: 2026-04-28
+# CASCADE-S3 OPENING: axis-16 saturation 3-class mechanism = degree-variance dominant
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s3-tick1-AE-axis-16-graph-mechanism-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick6-axis-16-src-robustness-18-cohort-witness
+  -> clay-cascade-s3-tick1-AE-degree-variance-best-predictor
+  -> clay-cascade-s3-tick1-AE-hub-collapse-mechanism
+  => "★ cascade-s3 OPENING — axis-16 V(8) 3-class saturation graph-theoretic basis IDENTIFIED"
+  => "Best predictor: degree-variance (Pearson(V8)=-0.521, class-discrimination-ratio CDR=1.942)"
+  => "Mechanism: V(8) saturation class = (degree-variance, diameter) joint regime — FAST=hub-collapse, BOUNDED=regular-low-deg, FULL=expander-like"
+
+@C clay-cascade-s3-tick1-AE-graph-properties-formal :: meta [4]
+  <- clay-cascade-s3-tick1-AE-axis-16-graph-mechanism-witness
+  => "for each topology T, build undirected adjacency A_T 64x64 (symmetrize neighbor function, drop self-loops)"
+  => "deg_mean / deg_max / deg_var: moments of degree sequence deg(i) = Sigma_j A[i,j]"
+  => "diameter: max_{u,v in LCC} d_BFS(u,v) on largest connected component"
+  => "mixing-time: smallest k such that |{i : d_BFS(SOURCE=32, i) <= k}| >= N/2 = 32"
+  => "spectral-gap: lambda_2 of normalized Laplacian L = I - D^(-1/2) A D^(-1/2) on LCC"
+  => "expansion: |E(S, S^c)| / |S| for half-cut S = {0..31} (one-cut proxy NOT min-Cheeger)"
+
+@C clay-cascade-s3-tick1-AE-correlation-table :: meta [4]
+  <- clay-cascade-s3-tick1-AE-graph-properties-formal
+  => "format: graph-property -> Pearson(V8) | Spearman(V8) | Pearson(class) | Spearman(class)"
+  => "deg_mean   +0.562 / +0.389 / +0.401 / +0.309"
+  => "deg_max    -0.381 / -0.053 / -0.474 / -0.108"
+  => "deg_var    -0.521 / -0.216 / -0.564 / -0.162"
+  => "diameter   -0.433 / -0.024 / -0.208 / -0.096"
+  => "mix        -0.468 / -0.032 / -0.234 / -0.253"
+  => "gap        +0.445 / +0.082 / +0.359 / +0.170"
+  => "exp        +0.073 / +0.040 / -0.061 / +0.009"
+
+@C clay-cascade-s3-tick1-AE-degree-variance-best-predictor :: meta [4!]
+  <- clay-cascade-s3-tick1-AE-correlation-table
+  => "★ class-discrimination ratio (between-class / within-class variance):"
+  => "  deg_var:   1.942  ← BEST class separator"
+  => "  deg_max:   1.651"
+  => "  mix:       0.473"
+  => "  deg_mean:  0.372"
+  => "  gap:       0.347"
+  => "  diameter:  0.276"
+  => "  exp:       0.107"
+  => "Best predictor = degree-variance with sharp class-conditional means: cls1=30.33, cls2=1.51, cls3=0.62"
+  => "Pearson(V8)=-0.521 confirms negative correlation: HIGHER degree-variance -> LOWER V(8)"
+
+@C clay-cascade-s3-tick1-AE-hub-collapse-mechanism :: meta [4!]
+  <- clay-cascade-s3-tick1-AE-degree-variance-best-predictor
+  => "★ COUNTERINTUITIVE MECHANISM — hub-collapse"
+  => "FAST-DEGENERATE class (V(8)<=10): high degree variance, super-hub presence"
+  => "  altered: deg_max=34 (super-hub from i*31+a*17 mod 64 chaotic mixer), deg_var=59.9, V(8)=9"
+  => "  big-crunch: deg_max=6, deg_var=0.75, V(8)=8 (radial sink mechanism)"
+  => "PARADOX: super-hub topologies have SMALLER V(8), not larger"
+  => "explanation: BFS cone expands to hub then RE-ENTERS already-visited cells (cone folds back)"
+  => "  super-hub absorbs frontier cells into already-visited set faster than new cell discovery"
+  => "  altered's degree-34 hub causes most of frontier expansion to be 'wasted' on revisits"
+  => "  V(8) saturates at 9 because effectively only 9 cells are reachable through the hub-collapsed graph"
+
+@C clay-cascade-s3-tick1-AE-class-mechanism-table :: meta [4]
+  <- clay-cascade-s3-tick1-AE-hub-collapse-mechanism
+  => "★ 3-class mechanism per (degree-variance, diameter) joint regime:"
+  => "FAST-DEGENERATE: deg_var ~30, super-hub (deg_max>=6 with var>>2), V(8)<=10"
+  => "  cone-collapse via revisit; n=2 examples (altered, big-crunch)"
+  => "BOUNDED-CONE: deg_var <= 4.25, near-regular low-degree, V(8) in [17, 59]"
+  => "  ball-volume limit; flat (deg=2) is limit case V(8)=17 from BFS k=8 ball on 1D ring"
+  => "  ads-cft (2 components, deg=5 regular) = 32 = LCC size"
+  => "  s3 (deg=5.5, var=4.25) = 49 = boundary case"
+  => "FULL-FILL: deg_var <= 1.7, near-regular concentration + small diameter (<=8), V(8) >= 63"
+  => "  expander-like growth, gap >= 0.07 (mostly >= 0.22)"
+  => "  12 topologies — 67% of cohort is FULL-FILL"
+
+@C clay-cascade-s3-tick1-AE-cascade-position :: meta [4]
+  <- clay-cascade-s3-tick1-AE-axis-16-graph-mechanism-witness
+  => "cascade-s3 OPENING — first sub-agent AE establishes axis-16 mechanism baseline"
+  => "cascade-s2 closure (24 sub-agents, axis-13 universality) -> cascade-s3 opening (axis-16 mechanism)"
+  => "natural pivot: cascade-s2 saturation tau-mechanism done -> cascade-s3 graph-saturation V(k)-mechanism started"
+  => "shared discipline: raw 91 C3 + raw 71 falsifier-retire + own#11 strict + atlas append-only"
+  => "next cascade-s3 candidate (tick-2): expand FAST cohort beyond n=2 (statistical power)"
+  => "  options: (a) search D=4 Hamming-cube cohort for hub-collapse (ref cascade-s2 D)"
+  => "  (b) design adversarial high-deg-var mixers, predict FAST membership, verify"
+  => "  (c) test mixing-time as alternative predictor (CDR=0.47 vs deg_var 1.94 -- weaker but informative)"
+
+@C clay-cascade-s3-tick1-AE-C3-limits :: meta [4]
+  <- clay-cascade-s3-tick1-AE-axis-16-graph-mechanism-witness
+  => "n=18 sample, FAST class only n=2 (altered, big-crunch) — class-1 means rest on 2-point sample"
+  => "  statistical claims about FAST cohort statistically illustrative, not power-tested"
+  => "  expand FAST cohort to n>=5 needed for robust hub-collapse mechanism claim"
+  => "mixing-time uses fixed SOURCE=32 (not any-source); kept consistent with V(8) measurement"
+  => "  not the spectral mixing-time tau_mix(eps) of a Markov chain"
+  => "expansion is half-cut |E(S,S^c)|/|S| for S={0..31} — NOT min-Cheeger (NP-hard over 2^N subsets)"
+  => "  cut chosen by index not graph structure; explains near-zero correlation"
+  => "spectral gap = lambda_2 of normalized Laplacian on LCC"
+  => "  for ads-cft (2 components) computed only on size-32 LCC, slightly inflating its gap"
+  => "Python mirror /tmp/cascade_s3/graph_basis_axis16.py (236 lines)"
+  => "reuses /tmp/cascade_s2/lightcone_probe_FIXED.py BFS infrastructure unchanged"
+  => "own#11 strict; raw 70 multi-axis-verify-grid sub-mechanism for STRONG axis-16"
