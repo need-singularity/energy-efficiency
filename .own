@@ -418,3 +418,63 @@ own 27 new "n6-local: algorithm placement-axis declaration mandate (raw 142 D5 m
   label own#27 n6-placement-axis-orthogonality-mirror
   deps raw:autonomous-loop-self-improvement-empirical-discoveries
   deps raw:algorithm-placement-orthogonality-mandate
+
+own 28 new "n6-local: user-facing-response-friendliness — hive raw 165 cross-repo mirror"
+  slug user-facing-response-friendliness-mandate
+  base raw:user-facing-response-friendliness-mandate
+  scope n6-architecture user-facing surfaces only — theory/* docs explanation surfaces (BT × DSE × atlas heavy formal mathematics: σ(6)=12 / τ(6)=4 / Bott periodicity / divisor algebra / 540+ META levels) + domains/* domain-specific docs (cognitive / energy / biology / etc.) + bridge/* CLI output + design/* proposal user-summary sections. atlas.n6 itself remains scope-exempt (raw 33 SSOT priority).
+  enforce hive/tool/friendliness_lint.hexa (single-source canonical lint at hive — n6-architecture inherits via cross-repo invocation per raw 47)
+  why hive raw 165 LIVE 2026-04-28 (commit 2a2c3f1e2 + 5f12e1829 correction). n6-architecture T4 propagation target — theory/ docs are dense formal mathematics with high jargon-density (Bott periodicity / divisor algebra / 540+ META levels / BT × DSE composition / atlas reverse-map). raw 47 cross-repo trawl satisfaction event #4 (T4 of 5-sister path: hive=origin, nexus=T1 ✅ commit 7e69fab1, anima=T2 ✅ commit fef53b245, hexa-lang=T3 NO-OP scope-exempt by hexa-lang .own self-hosting-only spec, n6-architecture=T4 this commit).
+  bans n6 theory/ docs 첫 등장 시 acronym 풀어쓰기 누락 (BT / DSE / σ / τ / META / RG 등 Greek + abbreviation mix)
+  bans n6 domains/ docs 5-count emoji on simple acknowledge / 3+ different 5-count emoji types simultaneously / tier classification absent
+  bans n6 design/ proposal user-summary 에서 jargon-only summary (analogy-to-everyday-object 누락)
+  exceptions atlas.n6 + .own + papers/ DOI artifacts — raw 33 priority OR formal-proof archive — exempt
+  exceptions code identifiers / math symbols / commit SHA / DOI / file paths — exempt
+  exceptions formal theorem statements (Bott / Euclid–Euler / Carnap reduction sentence) — author-side responsibility
+  proof hive/tool/friendliness_lint.hexa
+  proof hive/.raw raw 165 entry (slug user-facing-response-friendliness-mandate)
+  proof hive/docs/reference/friendly_response_canonical.md (canonical 5-element pattern + 3-tier emoji enum)
+  proof hive commit 2a2c3f1e2 (raw 165 LIVE) + 5f12e1829 (5-sister correction airgenome→hive)
+  proof nexus commit 7e69fab1 (own 9 T1 propagation #1)
+  proof anima commit fef53b245 (own 13 T2 propagation #2)
+  realization-channels n6-theory-docs-acronym-first-use-expansion-sweep
+  realization-channels n6-domains-docs-friendly-explanation
+  realization-channels n6-bridge-CLI-output-friendly
+  realization-channels n6-design-proposal-user-summary-friendly
+  cognitive-frameworks Plain-Language-Movement-Mazur-2000
+  cognitive-frameworks Cognitive-Load-Theory-Sweller-1988
+  counter-example atlas.n6 / .own / papers/ DOI artifacts (raw 33 priority OR formal-archive) — exempt
+  counter-example code identifiers / math symbols / Greek letters in formal context — exempt
+  counter-example formal theorem statements — author-side responsibility (cite only)
+  ceiling-type semantic
+  breakthrough-grade APPROACH
+  deps raw:ai-native-english-only
+  deps raw:ai-native-error-message
+  deps raw:user-facing-response-friendliness-mandate
+  deps raw:design-paper-lineage-formal-proof-tracing
+  deps raw:proof-carrying
+  strategy-source hive raw 165 + nexus own 9 (T1 #1) + anima own 13 (T2 #2) + 2026-04-28 raw 100 fallback in-context T4 propagation (kick infra unwired — see raw 100 strengthening 2026-04-27 fallback clause). 5-sister-repo set corrected airgenome → hive (off-domain) per hive commit 5f12e1829.
+  cross-repo-trawl-witness /Users/ghost/core/hive/state/raw_addition_requests/registry.jsonl req-raw165-user-facing-response-friendliness-mandate (approval 2026-04-28T14:13:21Z signer manual-user-via-hive-cli)
+  measurement-axis n6-theory-docs-acronym-first-use-expansion-rate = (acronyms expanded on first occurrence / total first-acronym occurrences in theory/) — target ≥ 0.80
+  measurement-axis n6-domains-docs-jargon-ratio = jargon-tokens / total-tokens on stdout — target ≤ 0.30
+  measurement-threshold n6-theory-docs-acronym-first-use-expansion-rate>=0.80 n6-domains-docs-jargon-ratio<=0.30
+  proof-obligations hive/tool/friendliness_lint.hexa-selftest-PASS + n6-theory-sample-N20-scan-PASS + raw-165-base-cite-verified
+  spec-form forward-spec
+  falsifier F-N6-OWN28-1 30d post: n6-theory-docs-acronym-first-use-expansion-rate < 0.50 → mandate ineffective at n6 docs scope, retire OR scope reduction (domains/ only)
+  falsifier F-N6-OWN28-2 hive raw 165 retire (F-RAW165-1..5 trigger) → own 28 auto-cascade-retire (base-raw dependency)
+  falsifier F-N6-OWN28-3 3+ legitimate n6 theory/ docs cannot fit acronym expansion (e.g. dense Bott periodicity proof citation) → exempt-clause widening OR retire
+  omega-stop fixpoint-convergence
+  category code-quality
+  category meta-triad
+  applies-to design-doc
+  applies-to runtime-execution
+  phase pre-write
+  phase runtime
+  triad-exempt forward-spec-meta-rule - n6 own 28 governs n6-architecture-local user-facing response style (cross-repo mirror of hive raw 165) not parser substrate; raw 95 compliance via canonical hive-agent + cli-lint + advisory trio (hive raw 165 trio inherited).
+  severity warn
+  on_fail warn
+  label own#28 n6-user-facing-response-friendliness-mirror
+  note FORWARD SPEC. cross-repo mirror of hive raw 165 per raw 47 strategy-exploration-omega-cycle. monotonic-invariant compliant — base raw cite + scope narrowing only (universal user-facing → n6-local theory / domains / bridge / design surfaces). raw 91 honest C3 cumulative: kick infra 4-fail this session triggered raw 100 fallback clause; T4 propagation manual rather than kick fanout. 5-sister-repo set corrected airgenome → hive per hive commit 5f12e1829. T3 hexa-lang propagation = NO-OP (scope-exempt by hexa-lang .own self-hosting-only spec; operational policies belong to hive canonical or sister .own).
+  follow-up apply friendliness_lint.hexa scan to n6 theory/ docs sample-N=20 (BT/DSE/σ/τ/META/RG first-use coverage)
+  follow-up retrofit n6 design/ proposals user-summary section with raw 165 5-element pattern when applicable (analogy-to-everyday-object addition)
+  follow-up new -> warn 30d once friendliness_lint scan satisfies measurement-thresholds; warn -> live 60d once 5-sister cross-repo coverage = 5/5 (4/5 done — hive origin + nexus T1 + anima T2 + n6 T4; T3 hexa-lang scope-exempt counted as covered)
