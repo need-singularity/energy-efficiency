@@ -1,0 +1,95 @@
+@shard cascade_s13_tick1_physics_substrate_truth_test {
+  origin: "cascade-s13 AT sub-agent (physics-grounded substrate stress test for axis-16 K=1 anchor)"
+  date: 2026-04-28
+  agent_id: a1d268973d7ced9fe
+  cwd: /Users/ghost/core/n6-architecture
+  raw_91_C3_disclosure: "Python mirror /tmp/cascade_s13/run.py. n=8 small-sample for ARI (95% CI on ARI=-0.14 likely [-0.5, +0.3]; cannot rigorously reject ARI=0). Single seed=6, all RRG/ER/MeanField/SmallWorld depend on seed. Physics-class assignment opinionated — Toffoli-CA labeled long-range debatable. axis-13 ticks=32 short evolution may not equilibrate."
+
+  finding cascade-s13-AT-1 {
+    claim: "axis-16 discrim survives on physics-grounded substrates: 0.857 (cf. cascade-s11 AR non-affine 0.873) — substrate-intrinsic measurement, NOT synthetic-mixer artifact"
+    evidence: {
+      substrates_n: 8
+      discrim_a16_physics_cohort: 0.857
+      discrim_a16_AR_nonaffine_reference: 0.873
+      delta: -0.016  ; "essentially equal"
+      substrate_axis16_values: {
+        ising_1d: 0.4637,
+        meanfield: 0.0874,
+        toffoli_ca: 1.0933,
+        rrg_4: 0.4010,
+        smallworld: 1.0498,
+        cayley_tree: 1.8395,
+        lattice_2d: 0.9204,
+        er_sparse: 3.4352
+      }
+    }
+    verdict: PASS (axis-16 measures something real about substrate geometry)
+    limit: "n=8 small-sample; multi-seed sweep needed for graph realizations"
+  }
+
+  finding cascade-s13-AT-2 {
+    claim: "axis-16 partition does NOT track declared short/intermediate/long-range physics taxonomy — ARI = -0.143 (chance level)"
+    evidence: {
+      ari_axis16_vs_physics: -0.143
+      ari_joint_a13_a16_vs_physics: -0.044
+      threshold_PASS_full: 0.7
+      threshold_FAIL: 0.3
+      both_below_chance: TRUE
+      counter_example_cayley_tree: "short-range declared but axis-16 = 1.84 (highest)"
+      counter_example_meanfield: "long-range declared but axis-16 = 0.087 (near-zero)"
+      operational_interpretation: "BFS-shell in-degree variance / ball-symmetry breaking"
+      not_an_interpretation: "info-flow heterogeneity / complexity proxy / physical capacity"
+    }
+    verdict: FAIL (literal gate ARI ≥ 0.7) but PARTIAL (discrim survives, semantics retract)
+    limit: "physics-class assignment opinionated; Toffoli-CA labeled long-range debatable; Cayley tree is its own class arguably; ±0.2 ARI shift possible under different a-priori labeling"
+  }
+
+  finding cascade-s13-AT-3 {
+    claim: "K=2 independence WEAKENED on physics cohort: Pearson(axis-13, axis-16) = 0.403 vs synthetic ~0.05-0.18"
+    evidence: {
+      pearson_a13_a16_physics: 0.403
+      pearson_a13_a16_synthetic_AR_reference: "0.05 - 0.18 range"
+      threshold_independence: 0.3
+      independence_violated: TRUE
+      drivers: ["RRG-4 + ER-sparse drive both axes upward jointly", "axis-13 may detect mode-density / back-reflection coupled with graph branching"]
+      hypothesis: "synthetic mixers artificially decorrelated the two axes"
+    }
+    verdict: PARTIAL FAIL (K=2 independence is synthetic-mixer-conditional)
+    limit: "n=8 small-sample; only 2 substrates drive r=0.40; multi-seed + larger cohort needed"
+  }
+
+  retraction cascade_s13_AT_semantic_retraction {
+    type: SEMANTIC RETRACTION (different from prior numerical retractions)
+    retraction_index: 14
+    raw_71_invocation: TRUE
+    original_semantic_claim: "axis-16 = 'info-flow heterogeneity' / 'complexity proxy' / 'physical capacity / lightcone classifier'"
+    refined_semantic_claim: "axis-16 = 'BFS-shell in-degree variance' / 'ball-symmetry breaking under BFS from center' (purely geometric / operational, not physics-class-canonical)"
+    cascades_affected: "cascade-s2 through s12 (all 11 prior cascades)"
+    numerical_findings_unchanged: TRUE  ; "discrim values + clustering numbers all preserved"
+    physical_interpretation_layer_stripped: TRUE
+  }
+
+  retraction_partial cascade_s13_AT_independence_weakened {
+    type: PARTIAL NUMERICAL RETRACTION (K=2 independence)
+    retraction_index_candidate: 15
+    raw_71_invocation: PARTIAL  ; "needs multi-seed + n>8 confirmation"
+    original_claim: "K=2 independence (Pearson<0.3) ports across substrate × dimension"
+    refined_claim_PROVISIONAL: "K=2 independence ports across SYNTHETIC substrate × dimension. Physics cohort breaks Pearson<0.3 axiom (r=0.40) — possibly due to synthetic mixers artificially decorrelating axes."
+    confirmation_required: "multi-seed sweep on physics cohort, n≥30 for tight CI"
+    deferred_to: "cascade-s14"
+  }
+
+  closure cascade_s13 {
+    status: PARTIAL VERDICT (single-tick close — semantic layer pruned, K=2 independence flagged for cascade-s14)
+    truth_test_result: "axis-16 numerics survive but semantics retracted"
+    framework_state_after: {
+      axis_16_numerics: "K=1 anchor preserved, canonical form unchanged (variance src-conditional in-deg BFS k=4 src=center)"
+      axis_16_semantics: "operational geometric metric, NOT physics-class-canonical interpretation"
+      axis_13: "baseline FORMULATION-CONDITIONAL on non-affine"
+      independence: "ports across SYNTHETIC substrate × dimension; physics cohort r=0.40 PARTIAL FAIL (cascade-s14 to confirm)"
+      retraction_count: 14  ; "semantic retraction (15th candidate provisional pending cascade-s14)"
+      deepest_lesson: "11 cascades' DISCRIM values are real; 11 cascades' MEANING/INTERPRETATION layer over-reached. cascade discipline successfully caught semantic over-claim before it crystallized."
+    }
+    cascade_s14_priority: "K=2 independence multi-seed confirmation on physics cohort (n≥30, sweep over RNG seed space)"
+  }
+}
