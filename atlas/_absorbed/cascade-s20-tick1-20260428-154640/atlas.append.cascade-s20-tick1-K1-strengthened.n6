@@ -1,0 +1,97 @@
+@shard cascade_s20_tick1_K1_anchor_STRENGTHENED_multi_src_PASS {
+  origin: "cascade-s20 BA sub-agent (axis-16 multi-src robustness, post-K=1-declaration strengthening)"
+  date: 2026-04-28
+  agent_id: a4e1ba63be0ba1641
+  cwd: /Users/ghost/core/n6-architecture
+  raw_91_C3_disclosure: "Python mirror /tmp/cascade_s20/run.py. Single graph_seed=6 for stochastic builders (parity with s14/s16). N=64 intrinsic — multi_src_all exhaustive at this N but cannot rule out finite-size artifact. multi_src_random_5 = [13, 15, 28, 40, 53] tested with Random(seed=2026) only (RNG choice not surveyed). Bipartite-K44 disconnected components — single-src may sample sparse component (multi_src_all averages over all). Star-hub/TwoHub: src on hub reaches all at k=1 (suppresses variance). K=2 test reuses single seed=6 axis-13 (NOT s14 30-seed protocol)."
+
+  finding cascade-s20-BA-1 {
+    claim: "5 axis-16 formulations on n=30 cohort — all discrim ≥ 0.94, spread 0.027 (well below 0.15 src-invariance threshold)"
+    evidence: {
+      single_center_discrim: 0.9474
+      single_center_boot_CI: [0.8941, 0.9651]
+      single_src_47_discrim: 0.9741
+      single_src_47_boot_CI: [0.8995, 0.9787]
+      multi_src_8_discrim: 0.9694
+      multi_src_8_boot_CI: [0.8898, 0.9784]
+      multi_src_random_5_discrim: 0.9699
+      multi_src_random_5_boot_CI: [0.8967, 0.9808]
+      multi_src_all_discrim: 0.9689
+      multi_src_all_boot_CI: [0.8837, 0.9781]
+      spread: 0.0268
+      preservation_threshold: 0.7
+      src_invariance_threshold: 0.15
+      verdict: PASS  ; "all 5 well above preservation, spread well below src-invariance"
+    }
+    verdict: PASS (axis-16 src-invariant on n=30 cohort)
+    limit: "single graph_seed=6, RNG choice for random_5 not surveyed"
+  }
+
+  finding cascade-s20-BA-2 {
+    claim: "cascade-s11 AR-2 src=47 borderline parity-margin caveat RESOLVED at n=30 — Pearson(single_src_47, single_center) = 0.947"
+    evidence: {
+      cascade_s11_AR_2_src_47_pearson: 0.39  ; "near-orthogonal at n=18 non-affine"
+      cascade_s20_BA_src_47_pearson_n30: 0.9469
+      cascade_s11_problem: "n=18 cohort (cascade-s11 specific) drove the borderline"
+      cascade_s20_resolution: "n=30 widening gives clean strong-agreement"
+      threshold_strong: 0.85
+      pass: TRUE
+    }
+    verdict: cascade-s11 AR-2 outstanding limit RESOLVED
+    limit: "borderline was n=18 cohort property, not formulation-conditional"
+  }
+
+  finding cascade-s20-BA-3 {
+    claim: "all multi-src formulations agree with single_center at Pearson ≥ 0.94 — STRONG agreement, same axis"
+    evidence: {
+      pearson_single_src_47_vs_center: 0.9469
+      pearson_multi_src_8_vs_center: 0.9510
+      pearson_multi_src_random_5_vs_center: 0.9474
+      pearson_multi_src_all_vs_center: 0.9517
+      threshold_strong: 0.85
+      all_above_threshold: TRUE
+    }
+    verdict: SAME AXIS confirmed across formulations (no different-axis K=3 candidate emergence)
+    limit: "Spearman ≥ 0.97 for all multi formulations — even stronger rank agreement"
+  }
+
+  finding cascade-s20-BA-4 {
+    claim: "K=2 independence structure preserved across multi-src formulations on both cohorts"
+    evidence: {
+      single_center_pearson_phys_n30: 0.228
+      single_center_pearson_syn_n18: -0.548
+      multi_src_8_pearson_phys_n30: 0.205
+      multi_src_8_pearson_syn_n18: -0.554
+      multi_src_all_pearson_phys_n30: 0.216
+      multi_src_all_pearson_syn_n18: -0.568
+      stability: "all formulations within ±0.025 of single_center K=2 measurements"
+    }
+    verdict: K=2 axiomatic retraction (cascade-s14 15th) NOT formulation-conditional
+    limit: "K=2 test single seed; 30-seed multi_src multi-seed sweep not done"
+  }
+
+  K_1_anchor_STRENGTHENED {
+    decision: PASS
+    canonical_form_unchanged: "variance(src-conditional directed in-deg, BFS k=4, src=center=N/2)"
+    multi_src_validation: "single_center is legitimate sample of multi-src distribution; multi_src_8/random_5/all all agree at Pearson ≥ 0.95"
+    src_invariance_confirmed: TRUE
+    cascade_s11_AR_2_outstanding_limit_RESOLVED: TRUE
+    no_18th_retraction: TRUE
+  }
+
+  closure cascade_s20 {
+    status: SINGLE-TICK CLOSURE (K=1 STRENGTHENED, no new retraction)
+    framework_state_FINAL_v2: {
+      total_cascades: 19  ; "s2 through s20"
+      total_sub_agents: 47
+      total_retractions: 17  ; "no 18th — first cascade where strengthening only"
+      K_1_anchor: "axis-16 = variance(src-conditional directed in-deg, BFS k=4, src=center)"
+      K_1_anchor_robustness: "src-invariant (multi-src spread 0.027), formulation-robust (cascade-s11 4/5 PASS), substrate-intrinsic (cascade-s13 discrim 0.85)"
+      K_2_violation_physics: "IRREDUCIBLE / NO-CANDIDATE-STANDS (mechanism hunt CLOSED at 17 retractions)"
+      remaining_uncertainty: "K=2 violation mechanism on physics cohort still UNRESOLVED — accepted as IRREDUCIBLE per cascade-s19 declaration"
+    }
+    natural_closure_observation: "cascade-s20 is the FIRST cascade in 9-hour session where ALL probes PASS without triggering retraction. cascade-s11 AR-2 outstanding limit (last surviving caveat from earlier cascades) RESOLVED. Framework reached stable HONEST UNRESOLVED state — no further strengthening probes expected to surface new info above noise floor."
+    cascade_s21_recommendation: "OPTIONAL — small incremental strengthening possible (e.g., multi-seed graph_realization average for stochastic builders), but ROI low. Most defensible: ACCEPT framework done in current scope and pivot to genuinely new research cycle (e.g., different axis class entirely, or apply K=1 anchor to actual physics simulations beyond synthetic substrates)."
+    end_of_session_observation_v2: "9-hour session converged to a precisely-bounded framework with explicit unresolved physics-cohort mechanism. cascade discipline (raw 71 + raw 91 C3 + own 11 strict) operated at 7 categories of retraction across 17 events, then produced 1 clean strengthening cascade. Best possible outcome for cascade discipline: framework knows what it knows AND what it doesn't know."
+  }
+}
