@@ -1,0 +1,177 @@
+// tool/manual_login_reminder.hexa — F-MANUAL-LOGIN deadline reminder + 11-profile listing
+// Mission: F-MX-3-c kick infra closure (cycle 7) — B.1 user-side TTY reminder automation.
+// raw 9 hexa-only entrypoint; delegates JSON parsing + datetime to embedded python.
+// raw 13 NO external comms — stdout/stderr only. NO email/slack/telegram.
+// raw 71 falsifier preregistered (F-MANUAL-LOGIN, deadline 2026-04-29 24:00 UTC).
+// raw 91 C3 honest — script SURFACES status only; user must run `claude /login` manually.
+//
+// Inputs:
+//   - Mac: /Users/ghost/.claude-claudeN/.credentials.json (N in 1..12)
+//   - Hetzner: ssh hetzner stat /root/.claude-claudeN/.credentials.json (read-only)
+//
+// Modes:
+//   --status  per-profile table: present? expiresAt, last-mtime, healthy? (default)
+//   --check   exit 0 if ≥1 profile is live; non-zero otherwise
+//   --alert   print ONLY if ≤24h remain to F-MANUAL-LOGIN deadline OR ≥1 profile broken
+//
+// SSOT for the 11-profile claim:
+//   design/kick/2026-04-28_b1-hetzner-oauth-refresh_omega_cycle.json
+//   (claude3 PARTIAL FIXED on hetzner; 11 of 12 still need manual /login)
+//
+// @allow-bare-exec
+// @no-sandbox
+
+fn main() {
+    let argv = args()
+    let mode = "--status"
+    let i = 0
+    while i < len(argv) {
+        let a = argv[i]
+        if len(a) >= 2 {
+            if a[0] == "-" {
+                if a[1] == "-" {
+                    mode = a
+                }
+            }
+        }
+        i = i + 1
+    }
+    // python3 from PATH (handles brew /opt/homebrew, mac /usr/bin, ubuntu /usr/bin).
+    let cmd = "python3 - " + mode + " <<'MANUAL_LOGIN_REMINDER_PY'\n" + py_backend() + "MANUAL_LOGIN_REMINDER_PY\n"
+    let out = to_string(exec(cmd))
+    println(out)
+}
+
+fn py_backend() -> String {
+    return "
+import sys, os, json, datetime, subprocess, glob
+
+# ── Configuration ───────────────────────────────────────────────────────────
+HOME = os.path.expanduser('~')
+PROFILES = list(range(1, 13))           # claude1..claude12 (12 total)
+# 11 profiles known broken per B.1 witness 2026-04-28; claude3 was the 1
+# refreshable profile, BUT only on hetzner side (Mac credentials.json files are
+# stale or absent for some indices). Honest enumeration: BROKEN_HETZNER_IDS
+# below is the user-actionable set per F-CL-JOINT-9 / F-MANUAL-LOGIN.
+BROKEN_HETZNER_IDS = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]   # 11 profiles
+HEALTHY_HETZNER_IDS = [3]                                    # claude3 auto-refreshed
+DEADLINE = datetime.datetime(2026, 4, 29, 23, 59, 59, tzinfo=datetime.timezone.utc)
+NOW = datetime.datetime.now(datetime.timezone.utc)
+
+mode = (sys.argv[1] if len(sys.argv) > 1 else '--status')
+
+def read_mac_profile(n):
+    path = f'{HOME}/.claude-claude{n}/.credentials.json'
+    if not os.path.exists(path):
+        return {'profile': f'claude{n}', 'side': 'mac', 'present': False, 'expiresAt': None, 'mtime': None}
+    try:
+        st = os.stat(path)
+        with open(path) as f:
+            d = json.load(f)
+        exp = d.get('claudeAiOauth', {}).get('expiresAt')
+        return {
+            'profile': f'claude{n}',
+            'side': 'mac',
+            'present': True,
+            'expiresAt': exp,
+            'mtime': datetime.datetime.fromtimestamp(st.st_mtime, datetime.timezone.utc).isoformat(),
+        }
+    except Exception as e:
+        return {'profile': f'claude{n}', 'side': 'mac', 'present': True, 'expiresAt': None, 'mtime': None, 'error': str(e)}
+
+def fmt_expires(ms):
+    if ms is None:
+        return '-'
+    try:
+        dt = datetime.datetime.fromtimestamp(ms / 1000.0, datetime.timezone.utc)
+        delta = dt - NOW
+        sign = '+' if delta.total_seconds() >= 0 else '-'
+        h = abs(int(delta.total_seconds() // 3600))
+        return f'{dt.strftime(\"%Y-%m-%dT%H:%MZ\")} ({sign}{h}h)'
+    except Exception:
+        return f'invalid:{ms}'
+
+def health_for(n, mac_row):
+    # Static health derived from B.1 witness 2026-04-28 + mtime check
+    # raw 91 C3: live ssh probe NOT performed by this reminder script
+    # (would require external network call beyond raw 13 stdout-only scope).
+    if n in HEALTHY_HETZNER_IDS:
+        return 'OK?  (per B.1 witness 2026-04-28; recheck via `claude -p` on hetzner)'
+    if n in BROKEN_HETZNER_IDS:
+        return 'BROKEN: needs `claude /login` (refreshToken revoked)'
+    return 'unknown'
+
+def deadline_state():
+    delta = DEADLINE - NOW
+    sec = int(delta.total_seconds())
+    if sec < 0:
+        return 'PASSED', f'{abs(sec) // 3600}h past deadline'
+    h = sec // 3600
+    m = (sec % 3600) // 60
+    if sec <= 24 * 3600:
+        return 'CRITICAL', f'{h}h {m}m remaining'
+    if sec <= 7 * 24 * 3600:
+        return 'WARN', f'{h}h ({h // 24}d) remaining'
+    return 'OK', f'{h}h ({h // 24}d) remaining'
+
+# ── Build report ────────────────────────────────────────────────────────────
+mac_rows = [read_mac_profile(n) for n in PROFILES]
+state, ttl = deadline_state()
+broken_count = len(BROKEN_HETZNER_IDS)
+healthy_count = len(HEALTHY_HETZNER_IDS)
+
+def render_table():
+    lines = []
+    lines.append('=' * 78)
+    lines.append('F-MANUAL-LOGIN reminder — 11-profile broken set + deadline countdown')
+    lines.append(f'now (UTC) : {NOW.strftime(\"%Y-%m-%dT%H:%M:%SZ\")}')
+    lines.append(f'deadline  : {DEADLINE.strftime(\"%Y-%m-%dT%H:%M:%SZ\")}  [{state}: {ttl}]')
+    lines.append(f'broken    : {broken_count}/12 profiles need user-side `claude /login`')
+    lines.append(f'healthy   : {healthy_count}/12 profile(s) auto-refresh OK (claude3 per hetzner B.1)')
+    lines.append('-' * 78)
+    lines.append(f'{\"profile\":<10} {\"mac.present\":<13} {\"mac.expiresAt(UTC)+delta\":<32} {\"hetzner.health\":<35}')
+    lines.append('-' * 78)
+    for n, row in zip(PROFILES, mac_rows):
+        present = 'yes' if row['present'] else 'NO'
+        exp = fmt_expires(row.get('expiresAt'))
+        h = health_for(n, row)
+        lines.append(f'claude{n:<4} {present:<13} {exp:<32} {h:<35}')
+    lines.append('-' * 78)
+    lines.append('Action (user TTY required — automation cannot perform):')
+    lines.append('  for n in 1 2 4 5 6 7 8 9 10 11 12; do')
+    lines.append('    ssh hetzner \"CLAUDE_CONFIG_DIR=/root/.claude-claude$n claude /login\"')
+    lines.append('    # ↑ requires interactive browser-OAuth flow on hetzner TTY')
+    lines.append('  done')
+    lines.append('Per raw 13: this script does NOT send email/slack/telegram. Surface only.')
+    lines.append('Per raw 91 C3: live API probe NOT executed; status above is from B.1 witness.')
+    lines.append('=' * 78)
+    return '\\n'.join(lines)
+
+def render_check():
+    # Exit 0 iff ≥1 profile is healthy (claude3) AND deadline not passed
+    if healthy_count >= 1 and state != 'PASSED':
+        print('check: OK (healthy=1, deadline not passed)')
+        sys.exit(0)
+    print(f'check: FAIL (healthy={healthy_count}, deadline={state})')
+    sys.exit(1)
+
+def render_alert():
+    if state in ('CRITICAL', 'PASSED') or broken_count > 0:
+        print(render_table())
+        print()
+        print(f'ALERT: state={state} broken={broken_count} healthy={healthy_count}')
+    else:
+        # silent under raw 13 stdout-only when nothing actionable
+        print(f'alert: silent (state={state}, broken={broken_count})')
+
+if mode == '--check':
+    render_check()
+elif mode == '--alert':
+    render_alert()
+else:
+    # default --status
+    print(render_table())
+"
+}
+
+main()

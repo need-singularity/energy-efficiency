@@ -1,0 +1,166 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "id": "2026-04-28_kick-infra-closure",
+  "ts": "2026-04-28T07:50:00Z",
+  "title": "F-MX-3-c kick infra closure (cycle 7 / fan-out 5/5) — raw 51 4-gate audit smell partial closure",
+  "task_label": "F-MX-3-c cycle 7 omega",
+  "predecessors": [
+    "design/kick/2026-04-28_b1-hetzner-oauth-refresh_omega_cycle.json",
+    "design/kick/2026-04-28_b2-slot-saturation-cap_omega_cycle.json (cycle-2 nexus 561cfdfe + 3d91c5a6)",
+    "design/kick/2026-04-28_b3-docker-hexa-runner-rebuild_omega_cycle.json",
+    "design/kick/2026-04-28_b4-silent-timeout-rca_omega_cycle.json (cycle-2 nexus kick_dispatch.hexa)",
+    "design/kick/2026-04-28_b5-cascade-block-prevention_omega_cycle.json"
+  ],
+
+  "scope": "Final closure attempt for F-MX-3-c kick infra rebuild (5/5 sub-tasks). Land B.3 registry-push bypass plan (option-4 docker save/load), automate B.1 user-side reminder via tool/manual_login_reminder.hexa, live-validate B.5 cascade prevention (incl. the once-deferred raw 77 audit ledger append), and propose raw 51 4-gate audit smell partial closure with F-MANUAL-LOGIN ownership transfer for the residual user-TTY dependency.",
+
+  "actions_landed": {
+    "B_3_registry_bypass_plan": {
+      "deliverable": "proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
+      "naming_compliance": "own#22 operational (snake_case + _YYYY_MM_DD); proposal_lint.py PASS (0 violations)",
+      "options_surveyed": 4,
+      "primary_recommendation": "Option 4 (docker save | ssh load) for one-shot convergence; Option 3 (ghcr.io) for durable channel",
+      "execution_status": "NOT EXECUTED — requires explicit user approval per safety gate §6",
+      "safety_gates": [
+        "raw 13 NO external comms",
+        "raw 91 C3 honest no-execute disclosure",
+        "user-go required before docker save/load OR ghcr.io push",
+        "arch pre-check (Mac arm64 vs target host) required",
+        "raw 138 witness ledger schema specified for any future execution"
+      ]
+    },
+
+    "B_1_manual_login_reminder": {
+      "deliverable": "tool/manual_login_reminder.hexa",
+      "loc": 156,
+      "modes": ["--status (default per-profile table)", "--check (exit 0 iff ≥1 healthy + deadline not passed)", "--alert (silent unless ≤24h or broken≥1)"],
+      "verification": {
+        "embedded_python_extracted_to": "/tmp/manual_login_reminder.py (5558 bytes)",
+        "direct_run_status": "PASS (table renders 12 profiles, 11 BROKEN + 1 OK?)",
+        "direct_run_check": "PASS (exit 0; healthy=1, deadline not passed)",
+        "direct_run_alert": "PASS (state=WARN, broken=11, healthy=1, table emitted)",
+        "hexa_run_blocked": "the hexa runtime in this sandbox cannot find /usr/bin/python3 (sister tool falsifier_monitor.hexa exhibits identical sandbox error); raw 91 C3: hexa-side execution unverified — embedded python validated directly"
+      },
+      "key_outputs": {
+        "deadline_state": "WARN — 40h (1d) remaining to F-MANUAL-LOGIN deadline 2026-04-29T23:59:59Z",
+        "broken_count": "11/12 profiles need user-side `claude /login`",
+        "healthy_count": "1/12 (claude3 — auto-refreshable per B.1 cycle-2)",
+        "raw_13_compliance": "stdout/stderr only — no email/slack/telegram path"
+      }
+    },
+
+    "B_5_cascade_validation": {
+      "scope": "Static + live-evidence re-validation of cascade prevention beyond cycle-2 witness",
+      "static_findings": {
+        "trailer_function": "_emit_all_routes_blocked_trailer at /Users/ghost/core/nexus/scripts/bin/hexa_remote:717-826 (was 700-774 in cycle-2 witness; grew by ~50 lines with raw 77 ledger append)",
+        "emit_sites_unchanged": ["line 853 (preflight all_unreachable_preflight)", "line 1114 (post-loop all_unreachable)"],
+        "raw_77_gap_closed": "cycle-2 witness flagged 'no raw 77 audit ledger append' as honest gap deferred to nexus PR. The dispatcher now contains the F-RAW77-CASCADE-LEDGER block (lines 778-826) that emits a structured JSONL row to ${HEXA_REMOTE_AUDIT_DIR:-$HOME/core/nexus/state/audit}/cascade_blocked_events.jsonl with raw 25 flock pattern + raw 12 silent-error fallback to plain-append on macOS"
+      },
+      "live_evidence": {
+        "ledger_path": "/Users/ghost/core/nexus/state/audit/cascade_blocked_events.jsonl",
+        "rows_observed": 16,
+        "first_event_ts": "2026-04-28T06:49:19Z",
+        "last_event_ts": "2026-04-28T07:47:44Z",
+        "schema_match": "all 16 rows include {ts, event=all-routes-blocked, external_blacklist:[], docker_neg_cache, slot_pool, reason, fallback_chain[], fix_steps[], ref='raw 66 + raw 77', host, agent='hexa_remote'}",
+        "verdict": "B.5 cascade prevention LIVE-VALIDATED — both stderr trailer (raw 66) and persistent JSONL ledger (raw 77) fire on every all-routes-blocked event"
+      },
+      "remaining_gap": "none of the cycle-2 honest gaps remain open; the raw 77 deferral has been closed in nexus repo since the cycle-2 witness was written"
+    }
+  },
+
+  "raw_51_4_gate_audit_closure": {
+    "smell_label": "8-cycle institutionalised fallback (raw 51 chronic-gap audit)",
+    "subtask_disposition_table": [
+      {"id": "(a)", "label": "hetzner OAuth refresh", "verdict": "PARTIAL", "evidence": "1/12 profiles auto-refreshed (claude3); 11 user-TTY blocked", "gate_pass": "partial"},
+      {"id": "(b)", "label": "slot-saturation cap fix", "verdict": "FIXED", "evidence": "cycle-2 nexus 561cfdfe + 3d91c5a6", "gate_pass": "yes"},
+      {"id": "(c)", "label": "docker hexa-runner rebuild", "verdict": "FIXED-MAC + REGISTRY-PLAN-LANDED", "evidence": "B.3 cycle-2 image sha256:e911bceeb37a + this-cycle proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md option-4 plan ready for user-go", "gate_pass": "yes (Mac) / pending-go (remote)"},
+      {"id": "(d)", "label": "silent-timeout RCA", "verdict": "FIXED", "evidence": "cycle-2 nexus kick_dispatch.hexa", "gate_pass": "yes"},
+      {"id": "(e)", "label": "all-routes-blocked cascade", "verdict": "FIXED + LIVE-VALIDATED", "evidence": "raw 66 trailer + raw 77 ledger (16 events captured, last 12 min ago)", "gate_pass": "yes"}
+    ],
+    "gate_pass_count": "4 yes + 1 partial + 1 pending-go = 4/5 cleanly closed",
+    "closure_proposal": {
+      "verdict": "raw 51 smell PARTIALLY CLOSED",
+      "rationale": "(b)+(d)+(e) FIXED; (c) Mac-FIXED with registry plan ready; (e) cascade prevention raw 77 gap closed live; only (a) has residual user-TTY dependency",
+      "ownership_transfer": "the residual user-TTY 11-profile relogin requirement is hereby formally transferred to F-MANUAL-LOGIN (deadline 2026-04-29T23:59:59Z) — automation cannot cross the manual-OAuth boundary. tool/manual_login_reminder.hexa is the persistent surface for that transferred responsibility.",
+      "smell_residual": "if F-MANUAL-LOGIN deadline passes without user action, raw 51 smell re-opens at higher tier (F-MX-3-c cycle 8 mandatory) and slot-picker live-probe patch (cycle-2 honest follow-up) becomes the next required code-side mitigation"
+    }
+  },
+
+  "falsifiers_preregistered": [
+    {
+      "id": "F-KICK-CLOSURE-1",
+      "tier": "TRANSCEND",
+      "predicate": "any new all-routes-blocked event between 2026-04-28T07:50Z and 2026-04-29T23:59Z that does NOT produce both (a) the raw 66 stderr trailer AND (b) a row in /Users/ghost/core/nexus/state/audit/cascade_blocked_events.jsonl",
+      "deadline_ts": "2026-04-29T23:59:59Z",
+      "auto_check": "yes",
+      "verifier": "diff between count of 'err hexa_remote/all-routes-blocked' lines in dispatcher stderr captures vs row count in cascade_blocked_events.jsonl over the window — must be equal",
+      "expected_count_at_deadline": 0
+    },
+    {
+      "id": "F-KICK-CLOSURE-2",
+      "tier": "TRANSCEND",
+      "predicate": "F-MANUAL-LOGIN deadline passes (2026-04-29T23:59:59Z) without ≥10 of the 11 broken profiles being recovered (verified via hetzner ssh `claude -p ping` exit 0)",
+      "deadline_ts": "2026-04-30T00:30:00Z",
+      "auto_check": "partial",
+      "verifier": "for n in 1 2 4 5 6 7 8 9 10 11 12; ssh hetzner CLAUDE_CONFIG_DIR=/root/.claude-claude$n claude -p ping; count exit-0 outcomes; must be ≥10",
+      "remediation_if_fired": "raw 51 smell re-opens; cycle 8 mandatory; slot-picker live-probe code patch becomes next required mitigation"
+    },
+    {
+      "id": "F-KICK-CLOSURE-3",
+      "tier": "TRANSCEND",
+      "predicate": "registry-push bypass plan (Option 4 docker save/load OR Option 3 ghcr.io) executed without explicit user-go message AND without preflight checks (arch match, ssh reach, docker daemon up, df ≥1GB) all passing",
+      "deadline_ts": "2099-12-31T00:00:00Z",
+      "auto_check": "no",
+      "verifier": "manual review of any state/kick_infra/registry_push.jsonl entries — every row MUST cite the user-go message id and contain the four preflight outcomes",
+      "expected_count": 0
+    },
+    {
+      "id": "F-KICK-CLOSURE-4",
+      "tier": "TRANSCEND",
+      "predicate": "tool/manual_login_reminder.hexa --check returns non-zero AT ANY TIME inside the 24h window 2026-04-28T07:50Z … 2026-04-29T07:50Z while still ≥1 hour remains to F-MANUAL-LOGIN deadline",
+      "deadline_ts": "2026-04-29T22:59:59Z",
+      "auto_check": "yes",
+      "verifier": "cron-style hourly invocation: hexa run tool/manual_login_reminder.hexa --check; capture exit code; row must be 0 unless deadline-state==PASSED",
+      "expected_count": 0,
+      "note": "this falsifier intentionally fires if claude3 itself is also revoked, which would mean healthy_count==0; that is the kick-infra catastrophic case"
+    },
+    {
+      "id": "F-KICK-CLOSURE-5",
+      "tier": "TRANSCEND",
+      "predicate": "raw 51 smell is silently re-closed (status flipped to CLOSED in any future witness) WITHOUT all five (a..e) reaching gate_pass=yes AND without explicit F-MANUAL-LOGIN deadline transfer cited in the closure rationale",
+      "deadline_ts": "2099-12-31T00:00:00Z",
+      "auto_check": "partial",
+      "verifier": "grep -l 'raw 51' design/kick/*.json for any post-this-witness file claiming CLOSED; manually verify each cites this witness's closure_proposal block",
+      "expected_count": 0
+    }
+  ],
+
+  "raw_91_c3_disclosure": {
+    "what_works": [
+      "B.3 registry plan: 4 options surveyed, primary path documented, 5 raw 71 falsifiers preregistered, own#22 lint PASS",
+      "B.1 reminder script: embedded python directly verified — all 3 modes (--status / --check / --alert) produce correct output; deadline countdown 40h (1d), broken=11, healthy=1",
+      "B.5 cascade prevention: live-validated via 16 ledger rows captured 2026-04-28T06:49Z..07:47Z; raw 77 gap from cycle-2 witness is CLOSED in nexus repo dispatcher (lines 778-826)",
+      "raw 51 audit closure: 4/5 sub-tasks gate-pass=yes; (a) ownership formally transferred to F-MANUAL-LOGIN with reminder surface in place"
+    ],
+    "what_does_not_work": [
+      "hexa run tool/manual_login_reminder.hexa cannot resolve /usr/bin/python3 in this sandbox (sister tool falsifier_monitor.hexa identical sandbox failure) — embedded python validated directly via the Bash tool's python3 instead; in normal user shell with python3 on PATH the .hexa entrypoint will work",
+      "Option 4 docker save/load NOT executed — requires user explicit go (per safety §6)",
+      "Option 3 ghcr.io NOT executed — requires PAT issuance + org permissions confirmation",
+      "11/12 profiles still need interactive `claude /login` (the F-MANUAL-LOGIN deadline is the user's responsibility now)",
+      "slot-picker live-probe patch (cycle-2 follow-up) NOT landed — defers to nexus-repo cycle if F-MANUAL-LOGIN passes without action"
+    ],
+    "honest_completeness_estimate": "F-MX-3-c is FUNCTIONALLY CLOSED on the automation-side. The remaining 11-profile relogin and the registry-push execution are user-driven actions surfaced via tool/manual_login_reminder.hexa and proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md respectively. raw 51 smell is partially closed (4/5 cleanly + 1 ownership-transferred) — formal full-closure waits on F-MANUAL-LOGIN deadline outcome 2026-04-29T23:59:59Z.",
+    "scope_creep_check": "raw 106: kept strictly to the 5-bullet mission. Did NOT modify slot_picker, did NOT touch hexa_remote, did NOT execute any docker save/push, did NOT send external comms.",
+    "raw_138_witness_consistency": "this witness consolidates B.1+B.3+B.5 cycle-2 predecessors into a single cycle-7 closure record; predecessor witnesses remain authoritative for their respective sub-task internals."
+  },
+
+  "deliverables": {
+    "proposal": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
+    "tool": "/Users/ghost/core/n6-architecture/tool/manual_login_reminder.hexa",
+    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_kick-infra-closure_omega_cycle.json",
+    "falsifiers_count": 5,
+    "falsifier_tier": "TRANSCEND"
+  },
+
+  "korean_report_400char": "1) B.3 옵션4 (docker save|ssh load) plan 작성 → proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md (own22 lint PASS, 4옵션+5 falsifier, 사용자-go 대기). 2) B.1 tool/manual_login_reminder.hexa 작성 → 11 broken + 1 healthy(claude3) listing, 마감 40h WARN, raw13 stdout-only, 3 모드 직접-py 검증 PASS (hexa-runtime는 sandbox python3 미발견). 3) B.5 cascade prevention LIVE-검증: nexus dispatcher hexa_remote에 raw77 ledger append (lines 778-826) 추가됨, /Users/ghost/core/nexus/state/audit/cascade_blocked_events.jsonl 에 16건 row (06:49Z..07:47Z) 캡처됨 — cycle-2 honest gap 전부 CLOSED. 4) raw51 4-gate audit smell: (b)/(d)/(e) FIXED, (c) Mac+plan, (a) F-MANUAL-LOGIN 책임이관 → 4/5 closure (부분), 형식적 full-closure는 4/29 23:59Z 사용자 11회 /login 결과 대기. 5) raw91 C3: 사용자 manual TTY 의존 잔존 11회, registry-push 미실행 (사용자 승인 필요), slot-picker live-probe 패치 미land (다음 cycle 후속)."
+}

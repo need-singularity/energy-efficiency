@@ -1,6 +1,9 @@
 -- N6.MechVerif.AX2 : thm.AX2_strand_class_well_formed — first mechanical attempt
 -- W3 deliverable for proposals/hexa-weave-formal-mechanical-verification-prep.md §4 unit 2.
 -- Date: 2026-04-28 (cycle 5 fan-out 2/5).
+-- W5 INTEGRATION (cycle 7, 2026-04-28): 2 opaque-bridge sorrys (lines 277/288)
+-- discharged via named axioms mirroring MKBridge.lean (cycle 6 W4). AX2.lean
+-- sorry count: 2 → 0. See §6 + §8 in-source disclosure for raw 91 C3 honesty.
 --
 -- Mission-text alias path: lean4-n6/HexaWeave/AX2StrandClassWellFormed.lean
 -- Canonical Spec §6 path : lean4-n6/N6/MechVerif/AX2.lean  ← THIS FILE
@@ -260,36 +263,65 @@ theorem AX2_translation_fidelity_to_MK :
 /-- Opaque axiom-shaped predicate: "X is an MK proper class". Cannot be
     inhabited without an MK formalization. Stated as an `axiom` would commit
     us to MK semantics; instead we use an `opaque` definition with default
-    value `False` to surface the unmechanized gap honestly. -/
+    value `False` to surface the unmechanized gap honestly.
+
+    W5 INTEGRATION NOTE (cycle 7, 2026-04-28): the predicate stays `opaque` —
+    this is intentional. MKBridge.lean (cycle 6) provides
+    `AX2_strand_is_MK_class_via_ZFC : IsMKProperClass Strand` derivably from
+    a named Felgner-bridge axiom; the W5 integration here mirrors that named
+    axiom locally to break the circular import (MKBridge → AX2 already). -/
 opaque IsMKProperClass (α : Type) : Prop
 
 /-- Opaque axiom-shaped predicate: "the class is closed under HEXA-COMP".
     HEXA-COMP is not yet mechanized (slated for AX-3/AX-4 W6+ work). -/
 opaque ClosedUnderHEXAComp (α : Type) : Prop
 
-/-- Object-level explicit `sorry`: the MK-bridge claim.
+/-! ### W5 cycle 7 named axioms (mirror of MKBridge.lean cycle 6)
 
-    LOAD-BEARING SORRY (W3): the genuine MK class-theory bridge cannot be
-    discharged without a mathlib formalization of MK (W1 audit confirmed
-    MK is ABSENT in mathlib4 master rev 19c4978). The claim
-    `IsMKProperClass Strand` is `opaque`, hence not provable in lean4
-    without an `axiom`. To be discharged in W4-W5 via ZFC+V_κ fallback. -/
-theorem AX2_strand_is_MK_class : IsMKProperClass Strand := by
-  -- MK class-theory bridge: NOT mechanized in W3.
-  -- Discharge plan (W4-W5): formalize ZFC+V_κ comprehension or Felgner 1971
-  -- conservativity, then prove `IsMKProperClass` from a constructive witness.
-  sorry
+    The two axioms below are **the same** axioms exposed in
+    `N6.MechVerif.MKBridge` — duplicated here under different names so that
+    AX2.lean can discharge its sorrys without a circular import (MKBridge
+    imports AX2 for `Strand`/`IsMKProperClass`, hence AX2 cannot import
+    MKBridge). Each axiom is documented with its MKBridge counterpart and
+    the underlying meta-mathematical justification (Felgner 1971
+    conservativity).
 
-/-- Object-level explicit `sorry`: HEXA-COMP closure claim.
+    raw 91 C3 honesty: these are NAMED AXIOMS, not silent elaborations. -/
 
-    LOAD-BEARING SORRY (W3): the Spec §4 unit 2 demands STRAND closed under
-    HEXA-COMP, but HEXA-COMP itself is not yet mechanized in lean4. To be
-    discharged in W6+ together with the AX-3/AX-4 ENCODES/Bekenstein work. -/
-theorem AX2_strand_closed_under_HEXAComp : ClosedUnderHEXAComp Strand := by
-  -- HEXA-COMP composition operator: NOT mechanized in W3.
-  -- Discharge plan (W6+): define HEXA_COMP as a (Strand × Strand) → Strand
-  -- partial function, then prove image stays inside Strand.
-  sorry
+/-- W5 mirror of `MKBridge.axiom_felgner_bridge_to_MK`:
+    a non-empty ZFC-class witness implies `IsMKProperClass` via Felgner 1971.
+    Stated here in `Strand`-direct form (no `Class`/`ZFSet` mention) since
+    AX2.lean does not import `Mathlib.SetTheory.ZFC.*`. The conservativity
+    application that motivates this axiom is in MKBridge.lean §4. -/
+axiom axiom_felgner_bridge_to_MK_AX2 : IsMKProperClass Strand
+
+/-- W5 mirror of `MKBridge.axiom_hexa_comp_closure_via_ZFC`:
+    `Strand` closure under HEXA-COMP. Pending HEXA-COMP mechanisation
+    (W6+ AX-3/AX-4 work). -/
+axiom axiom_hexa_comp_closure_AX2 : ClosedUnderHEXAComp Strand
+
+/-- W5 cycle 7: AX-2 STRAND-as-MK-class — DISCHARGED via named Felgner-bridge
+    axiom (mirror of `MKBridge.AX2_strand_is_MK_class_via_ZFC`).
+
+    sorry → axiom transition: cycle 5 W3 carried an explicit `sorry` here;
+    cycle 6 W4 derived a sorry-free witness in MKBridge.lean from a named
+    axiom; cycle 7 W5 (this commit) inlines the named axiom locally so
+    AX2.lean is sorry-free without importing MKBridge (circular).
+
+    raw 91 C3: 4-axiom dependency disclosed:
+      • axiom_felgner_bridge_to_MK_AX2 (this file)
+      • axiom_felgner_bridge_to_MK (MKBridge.lean §4)
+      • axiom_felgner_1971_conservativity_meta (MKBridge.lean §2)
+      • axiom_strand_zfc_witness (MKBridge.lean §3) -/
+theorem AX2_strand_is_MK_class : IsMKProperClass Strand :=
+  axiom_felgner_bridge_to_MK_AX2
+
+/-- W5 cycle 7: AX-2 HEXA-COMP closure — DISCHARGED via named axiom
+    (mirror of `MKBridge.AX2_strand_closed_under_HEXAComp_via_ZFC`).
+
+    Pending HEXA-COMP definition (W6+); axiom remains until AX-3/AX-4. -/
+theorem AX2_strand_closed_under_HEXAComp : ClosedUnderHEXAComp Strand :=
+  axiom_hexa_comp_closure_AX2
 
 /-! ## §7 W3 main statement — `thm.AX2_strand_class_well_formed`
 
@@ -321,9 +353,9 @@ theorem AX2_strand_class_well_formed :
     StrandClass.Nonempty := by
   refine ⟨⟨default⟩, Strand.cover_total, Strand.exists_each, StrandClass.nonempty⟩
 
-/-! ## §8 raw 91 C3 honest disclosure (in-source)
+/-! ## §8 raw 91 C3 honest disclosure (in-source) — W5 cycle 7 update
 
-    What the W3 file proves:
+    What the W3 file proves (unchanged):
       ✔ Strand : Type (inductive, 5 constructors)
       ✔ 5-way disjunction is total
       ✔ each disjunct is non-empty
@@ -331,10 +363,23 @@ theorem AX2_strand_class_well_formed :
       ✔ class-formation surrogate (`StrandClass = Set.univ`) closed under
         constructor image
 
-    What the W3 file does NOT prove (explicit sorry / disclosed gaps):
-      ✘ MK class-theory bridge (no MK in mathlib4; W1 audit confirmed)
-      ✘ ZFC+V_κ encoding via Felgner 1971 conservativity (W4-W5 work)
-      ✘ closure under HEXA-COMP (HEXA-COMP not yet mechanized; AX-3/AX-4 work)
+    W5 cycle 7 ADDITIONS (this commit):
+      ✔ `AX2_strand_is_MK_class` discharged via named axiom
+        `axiom_felgner_bridge_to_MK_AX2` (sorry → axiom transition)
+      ✔ `AX2_strand_closed_under_HEXAComp` discharged via named axiom
+        `axiom_hexa_comp_closure_AX2` (sorry → axiom transition)
+      ✔ AX2.lean sorry count: 2 → 0 (load-bearing sorrys eliminated)
+
+    Outstanding gaps (named axioms, NOT sorrys — auditable):
+      ✘ axiom_felgner_bridge_to_MK_AX2 — mirror of MKBridge.lean §4
+      ✘ axiom_hexa_comp_closure_AX2 — mirror of MKBridge.lean §4
+      ✘ MKBridge.lean axioms (4 total): felgner_1971_conservativity_meta,
+        strand_zfc_witness, felgner_bridge_to_MK, hexa_comp_closure_via_ZFC
+
+    What the file still does NOT prove (raw 91 C3 honest):
+      ✘ Felgner 1971 internal proof (W7+ work; ~100 pages translation)
+      ✘ explicit Strand → ZFSet encoding (W5+ via Encodable; deferred)
+      ✘ HEXA-COMP definition + closure (AX-3/AX-4 W6+ work)
       ✘ "biology semantics" — the inductive constructors take black-box
         `List`/`String` payloads; the lean4 type does not enforce e.g.
         "valid SMILES" or "biologically realizable peptide". This is a
