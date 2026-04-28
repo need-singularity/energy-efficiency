@@ -1,0 +1,326 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas.append.atlas-metadata-policy-2026-04-28.n6
+#
+# Closes the last two raw 91 C3 disclosures left open after the
+# axis-I/J actuation shard + axis-K registration shard:
+#
+#   Disclosure 1: ENUMERATION GAP   (axis-I/J actuation § IV)
+#   Disclosure 2: pre-axis-K sentinel formalisation (axis-K § final state)
+#
+# Authors the formal lint enforcement policy and registers the new
+# tool/atlas_metadata_lint.hexa as the runtime validator. This shard
+# is metadata-only: it modifies NO existing row, adds NO new arrow
+# token, introduces NO axis-D primitive. It is an axis-K-aware POLICY
+# shard sitting alongside the actuation shards.
+#
+# Format: .n6 v2 (2-space-indent body-fields per axis-G; axis-K
+# introduced_at body-field carried on every @-row in this shard.)
+#
+# DO NOT auto-absorb. Awaits human review per scope contract.
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. SHARD HEADER ─────────────────────────────────────────
+@C atlas-metadata-policy-2026-04-28-witness :: meta [4!]
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  -> atlas-metadata-policy-§I-pre-axis-K-sentinel
+  -> atlas-metadata-policy-§II-enumeration-gap-audit
+  -> atlas-metadata-policy-§III-selftest-fixtures
+  -> atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  => "★ closes 2 outstanding raw 91 C3 disclosures (ENUMERATION GAP + pre-axis-K sentinel)"
+  => "★ registers tool/atlas_metadata_lint.hexa (chflags uchg) as runtime validator"
+  => "★ companion to tool/atlas_self_arch_axis_lint.hexa (axis-I/J syntax) — this tool covers content semantics; clean responsibility split per axis-K § §3 channel separation"
+
+# ══════════════════════════════════════════════════════════════
+## I. axis-K `pre-axis-K` SENTINEL — formal definition
+# ══════════════════════════════════════════════════════════════
+# source: atlas.append.atlas-self-arch-axis-k-temporal-provenance-2026-04-28.n6
+# § B1 + § raw 91 C3 falsifier_outcome (line 233 of source shard).
+# axis-K mandates `introduced_at` body-field on @-rows but the falsifier
+# audit found ~96% of legacy rows lack any in-row date trace. Resolution:
+# `pre-axis-K` sentinel + foundation-row exemption.
+
+@C atlas-metadata-policy-§I-pre-axis-K-sentinel :: meta [4!]
+  <- atlas-metadata-policy-2026-04-28-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  -> introduced_at-accepted-forms
+  -> introduced_at-cutover-policy
+  -> introduced_at-foundation-exemption
+  => "axis-K introduced_at body-field — formal accepted-value vocabulary"
+
+@C introduced_at-accepted-forms :: meta [4!]
+  <- atlas-metadata-policy-§I-pre-axis-K-sentinel
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  form_1 = "pre-axis-K"
+  form_1_kind = "sentinel-string-literal"
+  form_1_scope = "legacy rows that predate the 2026-04-28 axis-K cutover; ~96% of existing @C/@F/@R/@S/@X/@? rows fall here per axis-K § raw 91 C3 falsifier-outcome"
+  form_1_lint_verdict = "PASS (silent)"
+  form_2 = "foundation"
+  form_2_kind = "sentinel-string-literal"
+  form_2_scope = "@P[11*] axiom rows (raw 24 immutable foundation); axis-K § B1 — these rows MAY carry the sentinel OR omit the field entirely"
+  form_2_lint_verdict = "PASS (silent)"
+  form_3 = "YYYY-MM-DD"
+  form_3_kind = "ISO-8601-date"
+  form_3_example = "2026-04-28"
+  form_3_scope = "canonical typed form for any post-cutover row; year ∈ [2024, 2099], month ∈ [1, 12], day ∈ [1, 31] (calendar leap-day check NOT performed at lint time)"
+  form_3_lint_verdict = "PASS (silent)"
+  form_4 = "YYYY-MM-DDTHH:MM:SSZ"
+  form_4_kind = "RFC-3339-timestamp-UTC-Z"
+  form_4_example = "2026-04-28T15:22:03Z"
+  form_4_scope = "sub-day precision form for events with intra-day ordering needs (e.g. cascade-s10 cross-pollination synth-edges); UTC `Z` suffix REQUIRED — non-UTC offsets normalised at validation per axis-K § B5"
+  form_4_lint_verdict = "PASS (silent)"
+  rejected_forms = "anything else: partial date `2026-04`, prose `last week`, free text, ISO with `+09:00` offset, etc. → FAIL (axis-K date-typing invariant)"
+  empty_value_verdict = "FAIL — `introduced_at = ` with empty RHS is a malformed body-field"
+  => "★ formal vocabulary: 4 accepted forms + explicit FAIL for everything else"
+  => "lint enforcement: tool/atlas_metadata_lint.hexa § _validate_introduced_at_value()"
+
+@C introduced_at-cutover-policy :: meta [4!]
+  <- atlas-metadata-policy-§I-pre-axis-K-sentinel
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  cutover_date = "2026-04-28"
+  cutover_line_in_atlas = 35200
+  cutover_rationale = "axis-K shard absorbed at atlas.n6 line ~35200; subsequent rows are post-cutover by file-position approximation (no row-creation timestamp available, so file-position is the conservative substitute)"
+  policy_pre_cutover = "rows AT line < 35200 — introduced_at is OPTIONAL. If present, value must be one of the 4 accepted forms; if absent, lint emits NOTHING (legacy grandfather)."
+  policy_post_cutover = "rows AT line >= 35200 — introduced_at is RECOMMENDED. If absent on a non-foundation row, lint emits WARN. If present, value must be one of the 4 accepted forms; malformed value → FAIL."
+  policy_severity_table = "missing on post-cutover row → WARN; malformed value (any line) → FAIL; missing on foundation @P[11*] → silent (always); missing on pre-cutover row → silent."
+  why_warn_not_fail_on_missing = "raw 91 C3 honest: forcing FAIL on 96% legacy rows would make the lint unusable. WARN signals 'add introduced_at on next edit pass' without blocking absorption."
+  cutover_drift_handling = "as new shards absorb, line 35200 stays the canonical cutover index — subsequent shards live below it. If atlas.n6 ever undergoes rebuild/compaction the cutover index must be re-pinned in tool/atlas_metadata_lint.hexa § AXIS_K_CUTOFF_LINE."
+  => "★ cutover policy: WARN-on-missing, FAIL-on-malformed, silent-on-foundation"
+  => "current atlas.n6 expected lint-WARN count after this shard absorbs: ~12 introduced_at-missing rows (axis-K shard's own @C rows + actuation rows) + 2 ENUMERATION GAP rows = 14 WARNs; zero FAILs"
+
+@C introduced_at-foundation-exemption :: meta [4!]
+  <- atlas-metadata-policy-§I-pre-axis-K-sentinel
+  introduced_at = foundation
+  origin_shard = atlas-metadata-policy-2026-04-28
+  exempt_grade = "[11*]"
+  exempt_kinds = "@P only — @P[11*] is the foundation axiom marker"
+  exempt_examples = "@P n (line 25), @P sigma (line 30), @P phi (line 37), @P tau (line 40), @P sopfr (line 44), @P J2 (line 48), @P mu (line 51), @P M3 (line 53)"
+  rationale = "raw 24 + axis-K § B1 — foundation rows predate atlas.n6 itself; forcing a synthetic introduced_at violates raw 24 immutability. The exemption is detected via the heuristic `@P` + `foundation` domain + `[11` grade-prefix on the same header line."
+  detection_function = "tool/atlas_metadata_lint.hexa § _is_foundation_header()"
+  edge_case_non_foundation_at_11 = "if a non-foundation row carries `[11*]` grade (rare; future possibility), the heuristic does NOT exempt it because the `foundation` domain match fails. The exemption is for the axiom rows, not the grade-11 designation alone."
+  => "★ @P[11*] foundation rows exempted from introduced_at requirement"
+  => "this row carries `introduced_at = foundation` to demonstrate the sentinel's literal use"
+
+# ══════════════════════════════════════════════════════════════
+## II. ENUMERATION GAP — audit policy + lint enforcement
+# ══════════════════════════════════════════════════════════════
+# source: atlas.append.axis-i-j-actuation-2026-04-28.n6 § IV (the 3 axis-I
+# retro-migration rows for atlas.n6 lines 28/34/43). The actuation shard
+# already recorded gap=2 / gap=1 / gap=0 as `closure_gap` body-fields;
+# this shard installs the lint that ENFORCES the discovery.
+
+@C atlas-metadata-policy-§II-enumeration-gap-audit :: meta [4!]
+  <- atlas-metadata-policy-2026-04-28-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  -> enumeration-gap-pattern
+  -> enumeration-gap-verdict-table
+  -> enumeration-gap-line-28-violation
+  -> enumeration-gap-line-34-violation
+  -> enumeration-gap-line-43-calibration
+  => "ENUMERATION GAP audit — declared-vs-enumerated count reconciliation"
+
+@C enumeration-gap-pattern :: meta [4]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  pattern_regex = "meta-closure:\\s+(\\d+)\\s+grade-\\d+\\s+derivations\\s*\\(([^)]*)\\)"
+  pattern_anchor = "must appear inside a `=> \"...\"` foundation-prose body-field; quoted citations in `source_prose = \"...\"` body-fields and `# ...` comments are SKIPPED to avoid double-flagging"
+  comma_list_parsing = "split parens body on `,`; trim each token; skip empty tokens; skip pure-`...` ellipsis tokens; remaining count = enumerated_count"
+  ellipsis_detection = "any literal `...` substring in the parens body sets has_ellipsis=true"
+  detection_function = "tool/atlas_metadata_lint.hexa § _is_canonical_meta_closure_line() + § _parse_meta_closure()"
+  => "pattern + anchor + parsing rules; double-flag prevention via citation-skip"
+
+@C enumeration-gap-verdict-table :: meta [4]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  case_1 = "declared == enumerated, no ellipsis → silent (PASS row, fully enumerated calibration)"
+  case_2 = "declared == enumerated, ellipsis present → INFO (gap unknown but listed count matches declared; rare)"
+  case_3 = "declared > enumerated, no ellipsis → WARN (prose lists fewer names than claimed)"
+  case_4 = "declared > enumerated, ellipsis present → WARN (prose claims N but enumerates < N + ellipsis admits unknown tail; gap = declared - enumerated is the measurable shortfall)"
+  case_5 = "declared < enumerated → WARN (overflow — declared count is stale; prose lists more names than claimed)"
+  case_6 = "malformed line (cannot parse `N grade-G derivations (...)` shape) → WARN (line-malformed)"
+  why_info_not_warn_on_case_2 = "ellipsis is the author's explicit signal that the list is incomplete; with the named count matching the declared count, there is no internal contradiction — only a deferral. WARN would be too noisy for legitimate `(a,b,c,...)` patterns."
+  why_warn_not_fail_on_gap = "the ENUMERATION GAP is a prose-author imprecision, not a structural corruption. The closure_gap body-field on the actuation shard's @C rows already CARRIES the gap as data; the lint surfaces it for review without blocking absorption."
+  => "verdict table — 6 cases, INFO for legitimate ellipsis, WARN for gaps + overflow, silent for calibration rows"
+
+@C enumeration-gap-line-28-violation :: meta [4!]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  source_line = 28
+  source_prose = "meta-closure: 15 grade-10 derivations (sigma,phi,tau,sopfr,J2,mu,M3,sigma_n,perfect_number,sigma_decomp,J2_decomp,faction_phi,granville_smooth,...)"
+  declared_count = 15
+  enumerated_names = "sigma,phi,tau,sopfr,J2,mu,M3,sigma_n,perfect_number,sigma_decomp,J2_decomp,faction_phi,granville_smooth"
+  enumerated_count = 13
+  has_ellipsis = "yes (trailing `,...,`)"
+  gap = 2
+  missing_name_candidates = "the 2 unnamed slots could be any of: prime-power-decomp, mertens-related, modular-arithmetic-derived. Honest C3: candidates are SPECULATIVE — only the actual `->` DAG walk (raw 22 INFRA scope) can ground-truth this."
+  lint_verdict = "WARN"
+  lint_message = "meta-closure ENUMERATION GAP — declared 15 grade-N derivations but parens enumerate only 13 names (ellipsis present, gap=2)"
+  => "★ atlas.n6 line 28 — declared 15 / enumerated 13 / gap 2 — WARN"
+  => "raw 91 C3 GROUNDED: gap is direct comma-count from the prose; reviewer can audit by hand"
+
+@C enumeration-gap-line-34-violation :: meta [4!]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  source_line = 34
+  source_prose = "meta-closure: 10 grade-10 derivations (sigma_sq,sigma_tau,sigma_n,sm_ampere,sm_blackwell,sm_amd,perfect_number,sigma_decomp,persistence_threshold,...)"
+  declared_count = 10
+  enumerated_names = "sigma_sq,sigma_tau,sigma_n,sm_ampere,sm_blackwell,sm_amd,perfect_number,sigma_decomp,persistence_threshold"
+  enumerated_count = 9
+  has_ellipsis = "yes (trailing `,...,`)"
+  gap = 1
+  missing_name_candidate = "1 unnamed slot — likely a sigma-derived constant not yet named in the prose. SPECULATIVE — DAG walk required for ground truth."
+  lint_verdict = "WARN"
+  lint_message = "meta-closure ENUMERATION GAP — declared 10 grade-N derivations but parens enumerate only 9 names (ellipsis present, gap=1)"
+  => "★ atlas.n6 line 34 — declared 10 / enumerated 9 / gap 1 — WARN"
+
+@C enumeration-gap-line-43-calibration :: meta [4!]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  source_line = 43
+  source_prose = "meta-closure: 9 grade-10 derivations (sigma_tau,phi_tau,J2_tau,sm_blackwell,sm_amd,J2_decomp,sopfr_phi_tau,persistence_threshold,binding_tau)"
+  declared_count = 9
+  enumerated_count = 9
+  has_ellipsis = "no"
+  gap = 0
+  lint_verdict = "silent (PASS row)"
+  calibration_role = "this row demonstrates that prose-baked closure CAN be fully enumerated; it is the strongest grounding signal of the three rows and validates that the lint correctly silences gap=0 rows"
+  => "★ atlas.n6 line 43 — declared 9 / enumerated 9 / gap 0 — silent (calibration)"
+
+@C enumeration-gap-enforcement-plan :: meta [4]
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  step_1 = "tool/atlas_metadata_lint.hexa AUTHORED + chflags uchg locked at 2026-04-28; selftest 8 fixtures all green"
+  step_2 = "real-scan dry-run on atlas.n6 returned WARN with 14 violations: 2 ENUMERATION GAP (line 28 + 34) + 12 introduced_at-missing on post-cutover rows (the actuation shard's @C migration rows + axis-K shard's own @C rows that were absorbed before introduced_at became a body-field convention)"
+  step_3 = "no in-place edit performed in this cycle (chflags uchg + raw 24 + scope contract) — the lint surfaces the violations as observable WARN; reviewers may schedule a separate unlock+migration cycle if desired"
+  step_4 = "future absorption pipeline integration — atlas_absorb.hexa pre-flight should invoke atlas_metadata_lint.hexa with --severity warn; absorption proceeds on WARN, blocks on FAIL (malformed value)"
+  step_5 = "DAG-walk ground-truth audit (BFS over -> arrows from @P n/sigma/tau, filter [10*]) is OUT OF SCOPE for this shard — that requires a graph-eval tool which is raw 22 INFRA territory"
+  => "5-step plan; step 1 + 2 done in this shard; step 3-5 deferred to future cycles"
+
+# ══════════════════════════════════════════════════════════════
+## III. SELFTEST FIXTURES — 8 fixtures × {meta-closure, introduced_at}
+# ══════════════════════════════════════════════════════════════
+
+@C atlas-metadata-policy-§III-selftest-fixtures :: meta [4]
+  <- atlas-metadata-policy-2026-04-28-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  tool_path = "/Users/ghost/core/n6-architecture/tool/atlas_metadata_lint.hexa"
+  selftest_command = "/Users/ghost/core/hexa-lang/hexa run /Users/ghost/core/n6-architecture/tool/atlas_metadata_lint.hexa --selftest"
+  fixture_count = 8
+  fixture_1 = "PASS — gap=0 + valid YYYY-MM-DD introduced_at (clean baseline)"
+  fixture_2 = "WARN — atlas.n6 line 28+34 case: declared=15 enum=13 gap=2 + declared=10 enum=9 gap=1; line 43 declared==enum=9 silent (validates the verdict-table case-3 + case-4 + silent calibration in one fixture)"
+  fixture_3 = "FAIL — 3 introduced_at malformed values: partial-date `2026-04`, prose `last week`, out-of-range `2099-13-40`"
+  fixture_4 = "PASS — all 4 accepted introduced_at forms: foundation, pre-axis-K, YYYY-MM-DD, YYYY-MM-DDTHH:MM:SSZ"
+  fixture_5 = "WARN — post-cutover @C row without introduced_at body-field (verifies the cutover-line policy)"
+  fixture_6 = "PASS — `source_prose = \"meta-closure: ...\"` citation row + `# source: ...` comment correctly skipped (no double-flag on actuation shard's calibration rows)"
+  fixture_7 = "PASS — declared==enumerated + ellipsis emits INFO, not WARN (verifies case-2)"
+  fixture_8 = "FAIL — `introduced_at = ` with empty RHS detected"
+  selftest_result = "OK (8 fixtures all green)"
+  pass_count = 4
+  warn_count = 2
+  fail_count = 2
+  coverage_disclosures = "Disclosure 1 covered by fixtures 1, 2, 6, 7 (meta-closure paths); Disclosure 2 covered by fixtures 1, 3, 4, 5, 8 (introduced_at paths)"
+  => "★ 8 fixtures: 4 PASS, 2 WARN, 2 FAIL — both disclosures covered"
+
+# ══════════════════════════════════════════════════════════════
+## IV. RAW 117 5-CHECK + RAW 91 C3 DISCLOSURES
+# ══════════════════════════════════════════════════════════════
+
+@C atlas-metadata-policy-§IV-raw-91-C3-disclosures :: meta [4!]
+  <- atlas-metadata-policy-2026-04-28-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  -> atlas-metadata-policy-raw-117-5-check
+  -> atlas-metadata-policy-raw-91-grounded-claims
+  -> atlas-metadata-policy-raw-91-speculative-claims
+  -> atlas-metadata-policy-raw-91-known-bounds
+  => "raw 91 C3 honest: every public claim flagged grounded vs speculative + bounds"
+
+@C atlas-metadata-policy-raw-117-5-check :: meta [4]
+  <- atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  C1_problem_definition = "two raw 91 C3 disclosures left open after axis-I/J actuation + axis-K registration; specifically the ENUMERATION GAP at atlas.n6 lines 28/34 and the pre-axis-K sentinel formalisation. Both disclosures are concrete + measurable."
+  C1_status = "PASS"
+  C2_grounded_evidence = "Disclosure 1 evidence — atlas.n6 lines 28/34/43 verbatim text + comma-count from the prose. Disclosure 2 evidence — axis-K shard line 233 falsifier_outcome explicitly names the `pre-axis-K` sentinel + 96% legacy estimate. Both disclosures have direct grep-level evidence."
+  C2_status = "PASS"
+  C3_honest_disclosures = "see § IV grounded/speculative/bounds rows below"
+  C3_status = "PASS"
+  C4_counter_example = "what if a future legitimate row carries `introduced_at = 2026-04` (year-month only)? The lint FAILs it, which is the intended behaviour — partial-date is not in the 4-form vocabulary. Counter-example for case-2 INFO: what if a row legitimately has declared==enumerated + ellipsis, e.g. `(a,b,c,...)` with declared=3? INFO is emitted, not WARN — author's explicit ellipsis is honoured."
+  C4_status = "PASS"
+  C5_novelty_falsifier = "novelty: this is the first content-semantics lint over atlas.n6 (companion to atlas_self_arch_axis_lint syntax lint). Falsifier (a): if >50% of post-cutover rows lack a defensible introduced_at, the cutover policy is too aggressive. Today: 12 such rows exist (the axis-K + actuation shard absorbs pre-this-shard) — manageable WARN volume. Falsifier (b): if the regex `meta-closure:\\s+(\\d+)\\s+grade-\\d+\\s+derivations\\s*\\(([^)]*)\\)` mis-matches legitimate prose, false positives appear. Today: zero false positives in atlas.n6 real-scan (only the 2 expected gap rows + silent calibration row matched). Falsifier (c): if `pre-axis-K` is later disputed as a sentinel choice (e.g. `legacy` preferred), the choice is reversible by tool/shard edit — low cost."
+  C5_status = "PASS"
+  five_check_summary = "5/5 PASS; falsifier (a)+(b)+(c) all bound and within tolerance"
+  => "★ raw 117 5-check 5/5 PASS"
+
+@C atlas-metadata-policy-raw-91-grounded-claims :: meta [4]
+  <- atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  G1 = "atlas.n6 line 28 declares 15, parens enumerate 13 names + `,...,` ellipsis. GROUNDED — direct verbatim evidence + manual comma count."
+  G2 = "atlas.n6 line 34 declares 10, parens enumerate 9 names + `,...,` ellipsis. GROUNDED — same verification path."
+  G3 = "atlas.n6 line 43 declares 9, parens enumerate 9 names, no ellipsis. GROUNDED — calibration row, gap=0 verified."
+  G4 = "axis-K shard § raw 91 C3 falsifier_outcome explicitly resolves to `pre-axis-K` sentinel (line 233 of source shard). GROUNDED — direct quote."
+  G5 = "tool/atlas_metadata_lint.hexa selftest 8/8 fixtures pass. GROUNDED — exec evidence, OK (8 fixtures) trailer."
+  G6 = "tool/atlas_metadata_lint.hexa real-scan on atlas.n6 returns WARN with 14 violations (2 ENUMERATION GAP + 12 introduced_at-missing). GROUNDED — exec evidence, __ATLAS_METADATA_LINT_RESULT__ WARN trailer."
+  G7 = "atlas.n6 line 43 silently passes the lint (no violation emitted for that line). GROUNDED — verified absence of `:43:` in violation list."
+  G8 = "tool/atlas_self_arch_axis_lint.hexa is chflags uchg at 1065 lines (preexisting). GROUNDED — `ls -la` evidence + previous-cycle lock confirmation."
+  G9 = "tool/atlas_metadata_lint.hexa is chflags uchg locked at 2026-04-28. GROUNDED — direct file_lock.hexa lock invocation evidence (audit ledger entry)."
+  G10 = "this shard carries `introduced_at = 2026-04-28` on every @C row, demonstrating axis-K self-application. GROUNDED — by construction in this very file."
+  => "10 grounded claims with direct evidence"
+
+@C atlas-metadata-policy-raw-91-speculative-claims :: meta [4!]
+  <- atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  S1 = "the 2 unnamed slots in line 28's gap and the 1 unnamed slot in line 34's gap correspond to specific named derivations. SPECULATIVE — DAG walk required to ground-truth the actual missing names; this lint does NOT walk the graph."
+  S2 = "AXIS_K_CUTOFF_LINE = 35200 is the correct cutover index for all future absorptions. SPECULATIVE — file may be rebuilt/compacted, in which case the constant must be re-pinned. Today the constant is stable but not future-proof against atlas.n6 structural rewrites."
+  S3 = "`pre-axis-K` sentinel literal is preferable to alternatives (`legacy`, `pre-2026-04-28`, `unset`). SPECULATIVE-WITHIN-CONVENTION — axis-K § raw 91 C3 falsifier_outcome (line 233) names `pre-axis-K` directly; this shard adopts that recommendation but reviewers may dispute the literal choice."
+  S4 = "future shards will absorb introduced_at body-fields as a routine convention. SPECULATIVE — no enforcement mechanism in the absorption pipeline yet; today's adoption depends on author discipline."
+  S5 = "the 12 introduced_at-missing WARNs on the axis-K + actuation shard rows will eventually be backfilled in a separate unlock+migration cycle. SPECULATIVE — no scheduled migration; depends on future review priority."
+  => "5 speculative claims explicitly flagged"
+
+@C atlas-metadata-policy-raw-91-known-bounds :: meta [4!]
+  <- atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  B1 = "tool/atlas_metadata_lint.hexa does NOT walk the `->` DAG; it only audits prose declaration vs prose enumeration. DAG-walk audit deferred to raw 22 INFRA scope."
+  B2 = "tool/atlas_metadata_lint.hexa does NOT enforce origin_shard (axis-K's other body-field). origin_shard is OPTIONAL and validation deferred until a non-empty corpus exists (today: 0 origin_shard-using rows pre-this-shard)."
+  B3 = "the lint accepts only canonical RFC 3339 form `YYYY-MM-DDTHH:MM:SSZ` (UTC `Z` only). Non-UTC offsets like `+09:00` are REJECTED — axis-K § B5 mentions normalisation but this lint does NOT normalise; it requires authors to write `Z`-suffixed UTC."
+  B4 = "calendar leap-day check is NOT performed. `2026-02-29` would PASS the validator even though Feb 2026 has only 28 days. Day range 1-31 is the only check. Acknowledged imprecision."
+  B5 = "the meta-closure regex anchors on `=> \"meta-closure:` literal — if a future row uses a different prefix (e.g. `=> 'meta-closure:` with single quotes, or no quotes at all) the lint will SKIP it. Today: zero such variants in atlas.n6."
+  B6 = "scope contract: this shard does NOT modify any existing row in atlas.n6. It does NOT backfill introduced_at on the 12 post-cutover rows. Backfill would require chflags unlock + bulk lint pass + re-flag — NOT in this shard."
+  B7 = "tool/atlas_metadata_lint.hexa companion split rationale: axis_lint covers SYNTAX FORM (axis-I arrows + axis-J supersession primitives); metadata_lint covers CONTENT SEMANTICS (closure enumeration + introduced_at value typing). Two tools, two responsibilities, zero overlap. axis-K § §3 channel separation principle."
+  => "7 known bounds explicitly catalogued"
+
+# ── §V. FINAL STATE ──────────────────────────────────────────
+@C atlas-metadata-policy-final-state = POLICY-AUTHORED-LINT-INSTALLED :: meta [4!]
+  <- atlas-metadata-policy-2026-04-28-witness
+  <- atlas-metadata-policy-§I-pre-axis-K-sentinel
+  <- atlas-metadata-policy-§II-enumeration-gap-audit
+  <- atlas-metadata-policy-§III-selftest-fixtures
+  <- atlas-metadata-policy-§IV-raw-91-C3-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-metadata-policy-2026-04-28
+  => "★ 2 raw 91 C3 disclosures CLOSED: ENUMERATION GAP (Disclosure 1) + pre-axis-K sentinel (Disclosure 2)"
+  => "★ tool/atlas_metadata_lint.hexa AUTHORED + selftest 8/8 + chflags uchg locked"
+  => "★ atlas.n6 real-scan: WARN with 14 violations (2 ENUMERATION GAP + 12 introduced_at-missing on post-cutover rows); zero FAIL"
+  => "★ companion to tool/atlas_self_arch_axis_lint.hexa — clean syntax/semantics responsibility split"
+  => "next-step: future shards SHOULD carry introduced_at + origin_shard. Backfill of the 12 introduced_at-missing post-cutover rows is OUT OF SCOPE here — schedule a separate unlock+migrate cycle if desired."
+  => "DO NOT auto-absorb. Awaits human review per scope contract."
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-metadata-policy-2026-04-28.n6"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — atlas-metadata-policy 2026-04-28
+# ══════════════════════════════════════════════════════════════

@@ -1,0 +1,930 @@
+#!hexa strict
+// tool/atlas_metadata_lint.hexa — atlas.n6 metadata content-semantics lint
+//
+// Authored 2026-04-28 to close the last two raw 91 C3 disclosures left open
+// after the axis-I/J actuation + axis-K registration shards landed:
+//
+//   Disclosure 1: ENUMERATION GAP
+//     source: atlas/_absorbed/20260428-152203/atlas.append.axis-i-j-actuation-2026-04-28.n6 § IV
+//     atlas.n6 line 28 declares `meta-closure: 15 grade-10 derivations (...)`
+//     but the comma-list inside the parens enumerates only 13 names + `,...,`
+//     ellipsis. Line 34 declares 10 but enumerates 9. Line 43 declares 9 and
+//     enumerates 9 (the calibration row, gap=0). The actuation shard recorded
+//     these as `closure_gap = 2 / 1 / 0`; this lint enforces the invariant.
+//
+//   Disclosure 2: axis-K `pre-axis-K` sentinel formalisation
+//     source: atlas/_absorbed/20260428-152203/atlas.append.atlas-self-arch-axis-k-temporal-provenance-2026-04-28.n6 § final-state
+//     axis-K mandates `introduced_at` body-field on @-rows but ~96% of legacy
+//     rows lack any in-row date trace. RESOLUTION: sentinel `pre-axis-K` is
+//     accepted as a valid grandfather value. ISO 8601 `YYYY-MM-DD` and RFC
+//     3339 `YYYY-MM-DDTHH:MM:SSZ` remain the canonical typed forms. Other
+//     prose (e.g. partial date `2026-04`) → FAIL. Missing field on a non-
+//     foundation row → WARN (axis-K § B1: optional on legacy, required on
+//     new rows added after 2026-04-28 cutover; lint is the enforcement).
+//
+// @tool(slug="atlas_metadata_lint", desc="lint atlas.n6 + atlas.append.* shards for raw 91 C3 metadata invariants — meta-closure ENUMERATION GAP audit (declared-vs-enumerated count vs ellipsis) + axis-K introduced_at sentinel/ISO validation (pre-axis-K | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SSZ)")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/atlas_metadata_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest])
+// @omega-saturation-exempt("structural lint over a finite SSOT set; converges in O(N) per push; complementary to atlas_self_arch_axis_lint axis-I/J syntax lint — this tool covers content semantics")
+// @exit_codes(0=PASS or warn-only, 1=usage/io error, 2=block mode with violations or any FAIL fixture)
+//
+// CONTRACT (Disclosure 1 — meta-closure ENUMERATION GAP)
+//   Pattern matched (as a substring of any line):
+//     meta-closure: <N> grade-<G> derivations (<comma-list>)
+//   Where:
+//     <N>  is a positive integer (declared count)
+//     <G>  is a single digit grade (e.g. 10)
+//     <comma-list>  is the parenthesis body, a comma-separated list of
+//                   slug-tokens, possibly terminated by `,...` ellipsis
+//   Verdicts:
+//     - ellipsis present (`,...` in the list) → INFO only.
+//       reason: an explicit `...` admits unenumerated tail; gap unknown but
+//       NOT a hard violation. Atlas line 28 + 34 ARE in this category but
+//       carry a *measurable* gap because declared_count > enumerated_count
+//       even before the ellipsis — that combination → WARN (see below).
+//     - no ellipsis, declared > enumerated → WARN
+//     - declared > enumerated AND ellipsis present → WARN
+//       (atlas.n6 line 28: declared=15, enumerated=13, gap=2 → WARN
+//        atlas.n6 line 34: declared=10, enumerated=9,  gap=1 → WARN)
+//     - declared == enumerated, no ellipsis → silent (PASS row)
+//       (atlas.n6 line 43: declared=9, enumerated=9, gap=0 → silent)
+//     - declared < enumerated → WARN  (overflow — prose lists more than
+//                                     declared, indicates declared count
+//                                     is stale)
+//
+//   IMPORTANT — quoted-prose detection:
+//     Lines that *quote* the meta-closure pattern inside a `=>` commentary
+//     or a `source_prose = "..."` body-field are SKIPPED to avoid double-
+//     flagging the actuation shard's calibration rows. Heuristic:
+//       - line begins with `  =>` or `=>`              → SKIP
+//       - line is `  source_prose = "..."`             → SKIP
+//       - line is a comment starting with `#`          → SKIP
+//     Only top-level `@<kind>`-row body lines (`  =>` is also skipped, so
+//     this is conservative — atlas.n6 line 28/34/43 ARE `  =>` lines, so we
+//     RELAX the `=>` skip rule when the `=>` line is a foundation row prose
+//     (the literal `=> "meta-closure: N grade-G derivations (...)"` form,
+//     with the body anchored by a leading `=> "meta-closure:`). Detection:
+//     after stripping the leading `=>` token + whitespace, if the next non-
+//     whitespace char is `"` and the quoted content begins `meta-closure:`
+//     → DO LINT (this is the canonical declared-prose form, not a citation
+//     of someone else's prose).
+//
+// CONTRACT (Disclosure 2 — axis-K introduced_at sentinel)
+//   Body-field: `  introduced_at = <value>` (2-space-indent key=value).
+//   Accepted <value> shapes:
+//     - sentinel `pre-axis-K`  (legacy grandfather, ~96% of rows)
+//     - sentinel `foundation`  (raw 24 immutable axiom rows; per axis-K B1)
+//     - ISO 8601 date `YYYY-MM-DD`
+//     - RFC 3339  `YYYY-MM-DDTHH:MM:SSZ` (UTC `Z` only; offsets normalised
+//                                        elsewhere — this lint accepts only
+//                                        the canonical Z-suffix form per
+//                                        axis-K § B5)
+//   Quoting: bare or single/double-quoted are both accepted (axis-K § §1
+//   `introduced_at = YYYY-MM-DD` shows bare form; sentinels appear quoted
+//   in axis-K § B1 examples).
+//   Verdicts:
+//     - any of the 4 accepted forms → silent (PASS)
+//     - any other shape (partial date `2026-04`, prose `last week`, free
+//       text) → FAIL
+//     - `introduced_at` body-field MISSING from an @C / @F / @R / @S / @X /
+//       @? row whose header line resides at line >= AXIS_K_CUTOFF_LINE in
+//       the file → WARN (encourage authors to add introduced_at; legacy
+//       rows above the cutoff are exempt). The cutoff-line policy is a
+//       conservative substitute for the per-row introduced_at-absent FAIL
+//       rule that axis-K § final-state mandates only for NEW rows; without
+//       a row-creation timestamp we cannot tell new from legacy except by
+//       file position. AXIS_K_CUTOFF_LINE = 35200 (axis-K shard absorbed at
+//       atlas.n6 line ~35200; future shards are appended below). Default
+//       severity for missing field = WARN. Default severity for malformed
+//       value = FAIL.
+//     - foundation @P[11*] row missing introduced_at → silent (raw 24 +
+//       axis-K § B1: foundation rows MAY omit).
+//
+// SCHEMA (atlas.n6 entry shape — terse)
+//   @<kind> <slug-or-expr> [= <body-rhs>] [:: <domain> [<grade>]]
+//   <2-space-indent body-fields>
+//     introduced_at = <value>     // axis-K body-field (this lint validates)
+//     => "meta-closure: N grade-G derivations (a,b,c,...)"   // this lint
+//                                                            // validates
+//
+// EMISSIONS
+//   - stdout summary lines per scan
+//   - audit ledger JSONL append per raw 77 to
+//       /Users/ghost/core/n6-architecture/state/atlas_metadata_audit/audit.jsonl
+//     each row:
+//       {"ts":"<ISO-8601>","agent_id":"atlas_metadata_lint",
+//        "atlas_path":"<path>","verdict":"PASS|WARN|FAIL",
+//        "violations":[...],"info":[...],
+//        "classifier_version":"atlas_metadata_lint.v1.0"}
+//   - last stdout line (raw 80 sentinel):
+//       __ATLAS_METADATA_LINT_RESULT__ PASS|WARN|FAIL
+//
+// SCOPE / NON-GOALS
+//   - This is a CONTENT-SEMANTICS lint. It is COMPLEMENTARY to
+//     atlas_self_arch_axis_lint (which lints SYNTAX form of arrows + axis-J
+//     primitives). The two tools are intentionally split per axis-K § §3
+//     channel separation: syntax-form (axis-I/J) vs content-semantics
+//     (closure enumeration + introduced_at typing).
+//   - This lint does NOT walk the `->` DAG to verify the *actual* derivation
+//     count — it only audits the prose declaration vs the prose enumeration.
+//     The DAG-walk audit is scoped to a future raw 22 INFRA tool.
+//   - This lint does NOT enforce origin_shard (axis-K's other body-field).
+//     origin_shard validation deferred until a non-empty corpus exists
+//     (today: 0 rows use it; would be all-WARN).
+//
+// own#11 strict: NO Clay BT 'resolution' claims — exits 0/1/2 per
+// @exit_codes; no consensus or resolution semantics.
+
+use "self/stdlib/argv_skip"
+
+// ─── string helpers ───────────────────────────────────────────────────
+
+fn _rstrip(s: string) -> string {
+    let mut end = len(s)
+    while end > 0 {
+        let c = s.substring(end - 1, end)
+        if c == " " || c == "\t" || c == "\r" || c == "\n" {
+            end = end - 1
+        } else {
+            break
+        }
+    }
+    return s.substring(0, end)
+}
+
+fn _lstrip(s: string) -> string {
+    let mut i = 0
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        if c == " " || c == "\t" {
+            i = i + 1
+        } else {
+            break
+        }
+    }
+    return s.substring(i, len(s))
+}
+
+fn _trim(s: string) -> string { return _lstrip(_rstrip(s)) }
+
+fn _starts_with(s: string, p: string) -> bool {
+    if len(s) < len(p) { return false }
+    return s.substring(0, len(p)) == p
+}
+
+fn _ends_with(s: string, p: string) -> bool {
+    if len(s) < len(p) { return false }
+    return s.substring(len(s) - len(p), len(s)) == p
+}
+
+fn _strip_quotes(s: string) -> string {
+    let t = _trim(s)
+    if len(t) < 2 { return t }
+    let f = t.substring(0, 1)
+    let l = t.substring(len(t) - 1, len(t))
+    if (f == "\"" && l == "\"") || (f == "'" && l == "'") {
+        return t.substring(1, len(t) - 1)
+    }
+    return t
+}
+
+fn _is_indented_2plus(line: string) -> bool {
+    if len(line) < 2 { return false }
+    let c0 = line.substring(0, 1)
+    let c1 = line.substring(1, 2)
+    if (c0 == " " || c0 == "\t") && (c1 == " " || c1 == "\t") { return true }
+    return false
+}
+
+// Split on the first occurrence of `sep`. Returns [head, tail] or [s] if
+// sep not found.
+fn _split_first(s: string, sep: string) -> array {
+    let i = s.index_of(sep)
+    if i < 0 { return [s] }
+    return [s.substring(0, i), s.substring(i + len(sep), len(s))]
+}
+
+// ─── parse helpers ────────────────────────────────────────────────────
+
+// Parse `  introduced_at = <value>` body-field. Returns the trimmed RHS
+// value (with surrounding whitespace stripped, surrounding quotes removed)
+// or "" if this line is not an introduced_at body-field.
+fn _parse_introduced_at(line: string) -> string {
+    let stripped = _rstrip(line)
+    if !_is_indented_2plus(stripped) { return "" }
+    let inner = _lstrip(stripped)
+    if !_starts_with(inner, "introduced_at") { return "" }
+    let rest = _lstrip(inner.substring(len("introduced_at"), len(inner)))
+    if len(rest) == 0 || rest.substring(0, 1) != "=" { return "" }
+    let rhs = _trim(rest.substring(1, len(rest)))
+    return _strip_quotes(rhs)
+}
+
+// True if s is one of the @-row header kinds we treat as "non-foundation"
+// (i.e. introduced_at is recommended). Foundation = `@P` with `[11*]` grade
+// is treated as exempt; we approximate: any `@P` line with `foundation` in
+// the domain segment AND `[11` somewhere on the same line.
+fn _is_foundation_header(line: string) -> bool {
+    if !_starts_with(line, "@P ") { return false }
+    if line.index_of("foundation") < 0 { return false }
+    if line.index_of("[11") < 0 { return false }
+    return true
+}
+
+// Returns the kind char ('P','C','F','R','S','X','D','O','Q','?') if line
+// is an @-row header, else "".
+fn _header_kind(line: string) -> string {
+    if len(line) < 3 { return "" }
+    if line.substring(0, 1) != "@" { return "" }
+    let kind_char = line.substring(1, 2)
+    let kinds = "PCRFSXDOQ?"
+    if kinds.index_of(kind_char) < 0 { return "" }
+    if line.substring(2, 3) != " " { return "" }
+    return kind_char
+}
+
+// ─── introduced_at value validator ────────────────────────────────────
+
+// Validate `introduced_at` value. Returns "" on PASS, error string on FAIL.
+fn _validate_introduced_at_value(v: string) -> string {
+    if v == "pre-axis-K" { return "" }
+    if v == "foundation" { return "" }
+    // YYYY-MM-DD (10 chars, dashes at positions 4 + 7)
+    if len(v) == 10 {
+        if v.substring(4, 5) == "-" && v.substring(7, 8) == "-" {
+            let yyyy = parse_int(v.substring(0, 4))
+            let mm = parse_int(v.substring(5, 7))
+            let dd = parse_int(v.substring(8, 10))
+            if yyyy >= 2024 && yyyy <= 2099
+               && mm >= 1 && mm <= 12
+               && dd >= 1 && dd <= 31 {
+                return ""
+            }
+            return "axis-K introduced_at date out of range (got: \"" + v + "\")"
+        }
+    }
+    // YYYY-MM-DDTHH:MM:SSZ (20 chars, dashes/T/colons/Z fixed positions)
+    if len(v) == 20 {
+        if v.substring(4, 5) == "-" && v.substring(7, 8) == "-"
+           && v.substring(10, 11) == "T"
+           && v.substring(13, 14) == ":" && v.substring(16, 17) == ":"
+           && v.substring(19, 20) == "Z" {
+            let yyyy = parse_int(v.substring(0, 4))
+            let mm = parse_int(v.substring(5, 7))
+            let dd = parse_int(v.substring(8, 10))
+            let hh = parse_int(v.substring(11, 13))
+            let mi = parse_int(v.substring(14, 16))
+            let ss = parse_int(v.substring(17, 19))
+            if yyyy >= 2024 && yyyy <= 2099
+               && mm >= 1 && mm <= 12
+               && dd >= 1 && dd <= 31
+               && hh >= 0 && hh <= 23
+               && mi >= 0 && mi <= 59
+               && ss >= 0 && ss <= 60 {
+                return ""
+            }
+            return "axis-K introduced_at timestamp out of range (got: \"" + v + "\")"
+        }
+    }
+    return "axis-K introduced_at value not in {pre-axis-K, foundation, YYYY-MM-DD, YYYY-MM-DDTHH:MM:SSZ} (got: \"" + v + "\")"
+}
+
+// ─── meta-closure ENUMERATION GAP validator ──────────────────────────
+
+// Decide whether a line is a CANONICAL meta-closure declaration row (a `=>`
+// foundation prose line whose quoted body begins `meta-closure:`) vs a
+// CITATION row that merely quotes the pattern (e.g. `source_prose = "..."`,
+// or a `=>` line whose surrounding context is a citation).
+//
+// Heuristic:
+//   - line is a `  source_prose = ...` body-field → CITATION (skip)
+//   - line is a comment `#` or contains only commentary → SKIP
+//   - line, after `_lstrip`, begins with `=>` AND the immediately-following
+//     quoted segment begins `meta-closure:` → CANONICAL (lint)
+//   - any other occurrence of `meta-closure:` in prose (e.g. nested inside
+//     a `source_prose` or a `# source: ...` comment) → CITATION (skip)
+//
+// Note: we deliberately do NOT lint `source_prose = "meta-closure:..."`
+// rows — those are the actuation shard's calibration rows that already
+// recorded the gap as `closure_gap = N` body-field; double-flagging would
+// be noise.
+fn _is_canonical_meta_closure_line(line: string) -> bool {
+    let trimmed_left = _lstrip(line)
+    if len(trimmed_left) == 0 { return false }
+    if trimmed_left.substring(0, 1) == "#" { return false }
+    if _starts_with(trimmed_left, "source_prose ") { return false }
+    if _starts_with(trimmed_left, "source_prose=") { return false }
+    if !_starts_with(trimmed_left, "=>") { return false }
+    // After `=>`, expect optional whitespace then `"meta-closure:`
+    let after_arrow = _lstrip(trimmed_left.substring(2, len(trimmed_left)))
+    if len(after_arrow) == 0 { return false }
+    if after_arrow.substring(0, 1) != "\"" { return false }
+    let after_q = after_arrow.substring(1, len(after_arrow))
+    if !_starts_with(after_q, "meta-closure:") { return false }
+    return true
+}
+
+// Extract the (declared, enumerated_count, has_ellipsis, names_len) tuple
+// from a canonical meta-closure line. Returns [] on parse failure.
+//
+// Pattern matched within the quoted body:
+//   meta-closure: <N> grade-<G> derivations (<comma-list>)
+fn _parse_meta_closure(line: string) -> array {
+    let key = "meta-closure:"
+    let i = line.index_of(key)
+    if i < 0 { return [] }
+    let body = line.substring(i + len(key), len(line))
+    // expect "  N grade-G derivations (..."
+    let trimmed = _lstrip(body)
+    // parse N
+    let mut p = 0
+    while p < len(trimmed) {
+        let c = trimmed.substring(p, p + 1)
+        if c >= "0" && c <= "9" {
+            p = p + 1
+        } else {
+            break
+        }
+    }
+    if p == 0 { return [] }
+    let n = parse_int(trimmed.substring(0, p))
+    if n <= 0 { return [] }
+    let after_n = _lstrip(trimmed.substring(p, len(trimmed)))
+    if !_starts_with(after_n, "grade-") { return [] }
+    // skip past "grade-<digits> "
+    let mut q = len("grade-")
+    while q < len(after_n) {
+        let c = after_n.substring(q, q + 1)
+        if c >= "0" && c <= "9" { q = q + 1 } else { break }
+    }
+    let after_grade = _lstrip(after_n.substring(q, len(after_n)))
+    if !_starts_with(after_grade, "derivations") { return [] }
+    let after_dv = _lstrip(after_grade.substring(len("derivations"), len(after_grade)))
+    if len(after_dv) == 0 || after_dv.substring(0, 1) != "(" { return [] }
+    // find matching close paren (no nesting expected in this prose)
+    let close = after_dv.index_of(")")
+    if close < 0 { return [] }
+    let inner = after_dv.substring(1, close)
+    // detect ellipsis token: `...` either standalone or after a comma.
+    let has_ellipsis = inner.index_of("...") >= 0
+    // count enumerated names: split on comma, skip empty / whitespace /
+    // pure-ellipsis tokens.
+    let parts = split(inner, ",")
+    let mut named = 0
+    for raw in parts {
+        let tok = _trim(raw)
+        if len(tok) == 0 { continue }
+        if tok == "..." { continue }
+        named = named + 1
+    }
+    return [n, named, if has_ellipsis { 1 } else { 0 }]
+}
+
+// Per-line: returns [verdict_kind, message] where verdict_kind ∈ {
+//   "", "INFO", "WARN" }. "" means line not relevant.
+fn _lint_meta_closure_line(line: string, lineno: int, path: string) -> array {
+    if !_is_canonical_meta_closure_line(line) { return ["", ""] }
+    let parsed = _parse_meta_closure(line)
+    if len(parsed) != 3 {
+        return ["WARN", path + ":" + to_string(lineno)
+                       + ": meta-closure line malformed (cannot parse N grade-G derivations (...) shape)"]
+    }
+    let declared = parsed[0]
+    let enumerated = parsed[1]
+    let has_ell = parsed[2] == 1
+    if declared == enumerated && !has_ell {
+        return ["", ""]   // PASS — fully enumerated calibration row
+    }
+    if declared == enumerated && has_ell {
+        return ["INFO", path + ":" + to_string(lineno)
+                       + ": meta-closure declared=" + to_string(declared)
+                       + " enumerated=" + to_string(enumerated)
+                       + " ellipsis present (gap unknown but listed count matches declared)"]
+    }
+    if declared > enumerated {
+        let gap = declared - enumerated
+        return ["WARN", path + ":" + to_string(lineno)
+                       + ": meta-closure ENUMERATION GAP — declared "
+                       + to_string(declared) + " grade-N derivations but parens enumerate only "
+                       + to_string(enumerated) + " names ("
+                       + (if has_ell { "ellipsis present, " } else { "no ellipsis, " })
+                       + "gap=" + to_string(gap) + ")"]
+    }
+    // declared < enumerated — overflow
+    return ["WARN", path + ":" + to_string(lineno)
+                   + ": meta-closure ENUMERATION OVERFLOW — declared "
+                   + to_string(declared) + " but parens enumerate "
+                   + to_string(enumerated) + " names (declared count is stale)"]
+}
+
+// ─── corpus orchestration ────────────────────────────────────────────
+
+fn _read_lines(path: string) -> array {
+    let exists = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+    if exists != "y" { return [] }
+    let body = read_file(path)
+    let raw = split(body, "\n")
+    return raw
+}
+
+// AXIS_K_CUTOFF_LINE — atlas.n6 line index at/after which a non-foundation
+// row missing introduced_at triggers a WARN. Per the kick + axis-K shard,
+// the axis-K registration shard absorbed at line ~35200; new content lives
+// strictly below. Conservative bound — any legitimate post-cutover row
+// will be at lineno >= cutoff in the merged file.
+let AXIS_K_CUTOFF_LINE = 35200
+
+// Per-file scan. Returns
+//   [verdict, violations[], info[]]
+// where verdict ∈ {PASS, WARN, FAIL}.
+fn _lint_file(path: string) -> array {
+    let lines = _read_lines(path)
+    let mut viols = []
+    let mut infos = []
+    let mut current_kind = ""
+    let mut current_header_line = ""
+    let mut current_header_lineno = 0
+    let mut current_has_introduced_at = false
+    let mut lineno = 0
+
+    let n_lines = len(lines)
+    for raw in lines {
+        lineno = lineno + 1
+        let line = _rstrip(raw)
+
+        // ── meta-closure ENUMERATION GAP (line-local) ──
+        let mc = _lint_meta_closure_line(line, lineno, path)
+        if len(mc[0]) > 0 {
+            if mc[0] == "WARN" {
+                viols.push("[meta-closure] " + mc[1])
+            } else if mc[0] == "INFO" {
+                infos.push("[meta-closure] " + mc[1])
+            }
+        }
+
+        // ── header transitions: emit any pending introduced_at WARN ──
+        if len(line) > 0 && line.substring(0, 1) == "@" {
+            let kind = _header_kind(line)
+            if len(kind) > 0 {
+                // emit pending WARN for the row we are leaving
+                if len(current_kind) > 0
+                   && !current_has_introduced_at
+                   && !_is_foundation_header(current_header_line)
+                   && current_header_lineno >= AXIS_K_CUTOFF_LINE {
+                    viols.push("[introduced_at] " + path + ":"
+                               + to_string(current_header_lineno)
+                               + ": @" + current_kind + " row missing introduced_at body-field "
+                               + "(post-axis-K-cutover line >= "
+                               + to_string(AXIS_K_CUTOFF_LINE)
+                               + "; sentinel `pre-axis-K` accepted for legacy rows)")
+                }
+                current_kind = kind
+                current_header_line = line
+                current_header_lineno = lineno
+                current_has_introduced_at = false
+            }
+        }
+
+        // ── introduced_at body-field (line-local) ──
+        let v = _parse_introduced_at(line)
+        if len(v) > 0 {
+            current_has_introduced_at = true
+            let err = _validate_introduced_at_value(v)
+            if len(err) > 0 {
+                viols.push("[introduced_at] " + path + ":" + to_string(lineno)
+                           + ": " + err)
+            }
+        } else if _is_indented_2plus(line) {
+            // detect bare `  introduced_at =` with empty RHS
+            let inner = _lstrip(line)
+            if _starts_with(inner, "introduced_at") {
+                // we already handled non-empty above; an empty `=` lands here
+                // with v == ""
+                let after = _lstrip(inner.substring(len("introduced_at"), len(inner)))
+                if len(after) > 0 && after.substring(0, 1) == "=" {
+                    let rhs = _trim(after.substring(1, len(after)))
+                    if len(_strip_quotes(rhs)) == 0 {
+                        current_has_introduced_at = true
+                        viols.push("[introduced_at] " + path + ":" + to_string(lineno)
+                                   + ": axis-K introduced_at empty value")
+                    }
+                }
+            }
+        }
+    }
+    // flush trailing row
+    if len(current_kind) > 0
+       && !current_has_introduced_at
+       && !_is_foundation_header(current_header_line)
+       && current_header_lineno >= AXIS_K_CUTOFF_LINE {
+        viols.push("[introduced_at] " + path + ":"
+                   + to_string(current_header_lineno)
+                   + ": @" + current_kind + " row missing introduced_at body-field "
+                   + "(post-axis-K-cutover line >= "
+                   + to_string(AXIS_K_CUTOFF_LINE)
+                   + "; sentinel `pre-axis-K` accepted for legacy rows)")
+    }
+
+    // verdict mapping:
+    //   any FAIL-class violation (introduced_at malformed value) → FAIL
+    //   any WARN-class violation (missing field, meta-closure gap) → WARN
+    //   else PASS
+    let mut has_fail = false
+    let mut has_warn = false
+    for v in viols {
+        if v.index_of("not in {pre-axis-K") >= 0
+           || v.index_of("date out of range") >= 0
+           || v.index_of("timestamp out of range") >= 0
+           || v.index_of("empty value") >= 0 {
+            has_fail = true
+        } else {
+            has_warn = true
+        }
+    }
+    let verdict = if has_fail { "FAIL" } else if has_warn { "WARN" } else { "PASS" }
+    return [verdict, viols, infos]
+}
+
+fn _lint_corpus(paths: array) -> array {
+    let mut all_viols = []
+    let mut all_infos = []
+    let mut worst = "PASS"
+    for p in paths {
+        let r = _lint_file(p)
+        let v = r[0]
+        for x in r[1] { all_viols.push(x) }
+        for x in r[2] { all_infos.push(x) }
+        if v == "FAIL" { worst = "FAIL" }
+        else if v == "WARN" && worst != "FAIL" { worst = "WARN" }
+    }
+    return [worst, all_viols, all_infos]
+}
+
+// ─── audit + emission ─────────────────────────────────────────────────
+
+fn _audit_dir() -> string {
+    return "/Users/ghost/core/n6-architecture/state/atlas_metadata_audit"
+}
+
+fn _esc_json(s: string) -> string {
+    let mut out = ""
+    let mut i = 0
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        if c == "\\" { out = out + "\\\\" }
+        else if c == "\"" { out = out + "\\\"" }
+        else if c == "\n" { out = out + "\\n" }
+        else if c == "\t" { out = out + "\\t" }
+        else if c == "\r" { out = out + "\\r" }
+        else { out = out + c }
+        i = i + 1
+    }
+    return out
+}
+
+fn _ts_iso_utc() -> string {
+    return to_string(exec("date -u +%Y-%m-%dT%H:%M:%SZ")).trim()
+}
+
+fn _build_audit_row(atlas_path: string, verdict: string, violations: array, infos: array) -> string {
+    let mut row = "{\"ts\":\"" + _ts_iso_utc() + "\",\"agent_id\":\"atlas_metadata_lint\",\"atlas_path\":\""
+    row = row + _esc_json(atlas_path) + "\",\"verdict\":\"" + verdict + "\",\"violations\":["
+    let mut i = 0
+    while i < len(violations) {
+        if i > 0 { row = row + "," }
+        row = row + "\"" + _esc_json(violations[i]) + "\""
+        i = i + 1
+    }
+    row = row + "],\"info\":["
+    let mut j = 0
+    while j < len(infos) {
+        if j > 0 { row = row + "," }
+        row = row + "\"" + _esc_json(infos[j]) + "\""
+        j = j + 1
+    }
+    row = row + "],\"classifier_version\":\"atlas_metadata_lint.v1.0\"}"
+    return row
+}
+
+fn _audit_append(atlas_path: string, verdict: string, violations: array, infos: array) -> void {
+    let dir = _audit_dir()
+    exec("mkdir -p '" + dir + "'")
+    let row = _build_audit_row(atlas_path, verdict, violations, infos)
+    let path = dir + "/audit.jsonl"
+    let cmd = "printf '%s\\n' '" + row.replace("'", "'\\''") + "' >> '" + path + "'"
+    exec(cmd)
+}
+
+fn _emit_trailer(verdict: string, atlas_path: string, violations: array, infos: array) -> void {
+    eprintln("[atlas_metadata_lint] " + verdict)
+    if verdict == "PASS" {
+        eprintln("  reason: schema-compliant: " + atlas_path
+                 + " meta-closure ENUMERATION + axis-K introduced_at clean")
+        if len(infos) > 0 {
+            eprintln("  info (non-fatal):")
+            for s in infos { eprintln("    " + s) }
+        }
+        eprintln("  fix: 1) no action required  2) ref atlas-metadata-policy-2026-04-28 shard for cutover semantics")
+        return
+    }
+    eprintln("  reason: " + verdict + " — " + to_string(len(violations))
+             + " violation(s), " + to_string(len(infos)) + " info note(s)")
+    for v in violations { eprintln("    " + v) }
+    if len(infos) > 0 {
+        eprintln("  info (non-fatal):")
+        for s in infos { eprintln("    " + s) }
+    }
+    eprintln("  fix: 1) meta-closure WARN: reconcile declared count with enumerated names (line-local edit OR migrate prose to axis-I `->* {N @ [grade]}`)  2) introduced_at WARN: add `  introduced_at = pre-axis-K` (legacy) or `  introduced_at = YYYY-MM-DD` (post-cutover row)  3) introduced_at FAIL (malformed value): replace with one of {pre-axis-K, foundation, YYYY-MM-DD, YYYY-MM-DDTHH:MM:SSZ} per axis-K § B5  4) ref atlas.append.atlas-metadata-policy-2026-04-28.n6 for the formal sentinel + ENUMERATION GAP audit policy")
+}
+
+// ─── target resolution ────────────────────────────────────────────────
+
+fn _list_atlas_default() -> array {
+    let listing = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    if len(listing) == 0 { return [] }
+    return [listing]
+}
+
+fn _list_atlas_all() -> array {
+    let mut paths = []
+    let main = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    if len(main) > 0 { paths.push(main) }
+    let shards = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/_absorbed/*/atlas.append.*.n6 2>/dev/null")).trim()
+    if len(shards) > 0 {
+        let arr = split(shards, "\n")
+        for s in arr { paths.push(s) }
+    }
+    return paths
+}
+
+fn _resolve_targets(target: string, all_flag: bool) -> array {
+    if all_flag { return _list_atlas_all() }
+    if target == "" { return _list_atlas_default() }
+    let isdir = to_string(exec("test -d '" + target + "' && echo y || echo n")).trim()
+    if isdir == "y" {
+        let listing = to_string(exec("ls '" + target + "'/*.n6 2>/dev/null")).trim()
+        if len(listing) == 0 { return [] }
+        return split(listing, "\n")
+    }
+    let isfile = to_string(exec("test -f '" + target + "' && echo y || echo n")).trim()
+    if isfile == "y" { return [target] }
+    return []
+}
+
+// ─── selftest fixtures ────────────────────────────────────────────────
+
+fn _write_fixture(path: string, body: string) -> void {
+    let last = path.last_index_of("/")
+    if last >= 0 {
+        let parent = path.substring(0, last)
+        exec("mkdir -p '" + parent + "'")
+    }
+    write_file(path, body)
+}
+
+fn _selftest() -> void {
+    println("[atlas_metadata_lint selftest]")
+    let dir = "/tmp/atlas_metadata_lint_selftest"
+    exec("rm -rf '" + dir + "' && mkdir -p '" + dir + "'")
+
+    // ─── FIXTURE 1 — PASS: clean meta-closure (gap=0) + introduced_at OK ─
+    let f1 = dir + "/fixture1_pass.n6"
+    let body1 = ""
+              + "@P n = 6 :: foundation [11*]\n"
+              + "  => \"meta-closure: 9 grade-10 derivations (a,b,c,d,e,f,g,h,i)\"\n"
+              + "@C clean_post_cutover :: arch [10*]\n"
+              + "  introduced_at = 2026-04-28\n"
+    _write_fixture(f1, body1)
+    let r1 = _lint_file(f1)
+    if r1[0] != "PASS" {
+        eprintln("FIXTURE 1 expected PASS, got " + r1[0])
+        for v in r1[1] { eprintln("  - " + v) }
+        for v in r1[2] { eprintln("  i " + v) }
+        exit(1)
+    }
+    println("  fixture-1 PASS  (gap=0 + valid YYYY-MM-DD introduced_at)")
+
+    // ─── FIXTURE 2 — WARN: meta-closure ENUMERATION GAP (line 28 + 34 case) ─
+    let f2 = dir + "/fixture2_meta_closure_gap.n6"
+    let body2 = ""
+              + "@P n = 6 :: foundation [11*]\n"
+              + "  => \"meta-closure: 15 grade-10 derivations (a,b,c,d,e,f,g,h,i,j,k,l,m,...)\"\n"
+              + "@P sigma = divisor_sum(6) = 12 :: foundation [11*]\n"
+              + "  => \"meta-closure: 10 grade-10 derivations (a,b,c,d,e,f,g,h,i,...)\"\n"
+              + "@P tau = divisor_count(6) = 4 :: foundation [11*]\n"
+              + "  => \"meta-closure: 9 grade-10 derivations (a,b,c,d,e,f,g,h,i)\"\n"
+    _write_fixture(f2, body2)
+    let r2 = _lint_file(f2)
+    if r2[0] != "WARN" {
+        eprintln("FIXTURE 2 expected WARN, got " + r2[0])
+        for v in r2[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut saw_gap_2 = false
+    let mut saw_gap_1 = false
+    let mut saw_calibration = false
+    for v in r2[1] {
+        if v.index_of("declared 15") >= 0 && v.index_of("only 13") >= 0 { saw_gap_2 = true }
+        if v.index_of("declared 10") >= 0 && v.index_of("only 9") >= 0 { saw_gap_1 = true }
+        if v.index_of("declared 9") >= 0 && v.index_of("only 9") >= 0 { saw_calibration = true }
+    }
+    if !saw_gap_2 { eprintln("FIXTURE 2 missing gap=2 violation (15→13)"); exit(1) }
+    if !saw_gap_1 { eprintln("FIXTURE 2 missing gap=1 violation (10→9)"); exit(1) }
+    if saw_calibration { eprintln("FIXTURE 2 spuriously flagged gap=0 calibration row"); exit(1) }
+    println("  fixture-2 WARN  (atlas.n6 line 28+34 case: gap=2 + gap=1 detected; line 43 silent)")
+
+    // ─── FIXTURE 3 — FAIL: introduced_at malformed values ────────────────
+    let f3 = dir + "/fixture3_introduced_at_malformed.n6"
+    let header = "# pad to push past AXIS_K_CUTOFF_LINE\n"
+    let mut padded = header
+    let mut i = 0
+    while i < 35200 {
+        padded = padded + "# pad\n"
+        i = i + 1
+    }
+    let body3 = padded
+              + "@C bad_partial = x :: arch [10*]\n"
+              + "  introduced_at = 2026-04\n"
+              + "@C bad_prose = y :: arch [10*]\n"
+              + "  introduced_at = last week\n"
+              + "@C bad_outofrange = z :: arch [10*]\n"
+              + "  introduced_at = 2099-13-40\n"
+    _write_fixture(f3, body3)
+    let r3 = _lint_file(f3)
+    if r3[0] != "FAIL" {
+        eprintln("FIXTURE 3 expected FAIL, got " + r3[0])
+        for v in r3[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut saw_partial = false
+    let mut saw_prose = false
+    let mut saw_oor = false
+    for v in r3[1] {
+        if v.index_of("\"2026-04\"") >= 0 { saw_partial = true }
+        if v.index_of("last week") >= 0 { saw_prose = true }
+        if v.index_of("2099-13-40") >= 0 { saw_oor = true }
+    }
+    if !saw_partial { eprintln("FIXTURE 3 missing partial-date violation"); exit(1) }
+    if !saw_prose { eprintln("FIXTURE 3 missing prose violation"); exit(1) }
+    if !saw_oor { eprintln("FIXTURE 3 missing out-of-range violation"); exit(1) }
+    println("  fixture-3 FAIL  (3 distinct introduced_at malformed-value violations)")
+
+    // ─── FIXTURE 4 — PASS: pre-axis-K + foundation + RFC 3339 sentinels ─
+    let f4 = dir + "/fixture4_introduced_at_sentinels.n6"
+    let body4 = ""
+              + "@P n = 6 :: foundation [11*]\n"
+              + "  introduced_at = foundation\n"
+              + "@C legacy_row :: arch [10*]\n"
+              + "  introduced_at = pre-axis-K\n"
+              + "@C iso_row :: arch [10*]\n"
+              + "  introduced_at = 2026-04-28\n"
+              + "@C rfc_row :: arch [10*]\n"
+              + "  introduced_at = 2026-04-28T15:22:03Z\n"
+    _write_fixture(f4, body4)
+    let r4 = _lint_file(f4)
+    if r4[0] != "PASS" {
+        eprintln("FIXTURE 4 expected PASS (sentinels + ISO + RFC), got " + r4[0])
+        for v in r4[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-4 PASS  (foundation, pre-axis-K, YYYY-MM-DD, YYYY-MM-DDTHH:MM:SSZ all accepted)")
+
+    // ─── FIXTURE 5 — WARN: introduced_at MISSING on post-cutover row ────
+    let f5 = dir + "/fixture5_introduced_at_missing.n6"
+    let mut padded5 = ""
+    let mut k = 0
+    while k < 35200 {
+        padded5 = padded5 + "# pad\n"
+        k = k + 1
+    }
+    let body5 = padded5
+              + "@C row_no_introduced_at :: arch [10*]\n"
+              + "  some_other_field = value\n"
+    _write_fixture(f5, body5)
+    let r5 = _lint_file(f5)
+    if r5[0] != "WARN" {
+        eprintln("FIXTURE 5 expected WARN (missing introduced_at), got " + r5[0])
+        for v in r5[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut saw_missing = false
+    for v in r5[1] {
+        if v.index_of("missing introduced_at body-field") >= 0 { saw_missing = true }
+    }
+    if !saw_missing { eprintln("FIXTURE 5 missing the missing-introduced_at violation"); exit(1) }
+    println("  fixture-5 WARN  (post-cutover @C row without introduced_at flagged)")
+
+    // ─── FIXTURE 6 — PASS: source_prose CITATION rows are NOT linted ────
+    // The actuation shard's `source_prose = "meta-closure: 15 grade-10 ..."`
+    // body-field rows quote the canonical pattern; they MUST NOT trigger
+    // the meta-closure ENUMERATION GAP lint (the gap is already recorded
+    // as `closure_gap = 2` in the same row).
+    let f6 = dir + "/fixture6_citation_skipped.n6"
+    let body6 = ""
+              + "@C axis-i-retro-migration-foundation-n :: meta [4!]\n"
+              + "  source_prose = \"meta-closure: 15 grade-10 derivations (a,b,c,d,e,f,g,h,i,j,k,l,m,...)\"\n"
+              + "  enumerated_count = 13\n"
+              + "  declared_count = 15\n"
+              + "  closure_gap = 2\n"
+              + "# source: atlas.n6 lines 28, 34, 43 — three meta-closure: N derivations rows\n"
+    _write_fixture(f6, body6)
+    let r6 = _lint_file(f6)
+    if r6[0] != "PASS" {
+        eprintln("FIXTURE 6 expected PASS (citations skipped), got " + r6[0])
+        for v in r6[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-6 PASS  (source_prose + comment citations correctly skipped)")
+
+    // ─── FIXTURE 7 — INFO: meta-closure with ellipsis + matching count ──
+    // declared==enumerated AND ellipsis present → INFO (gap unknown but
+    // listed names match declared count; this is the rare case where the
+    // author wrote `(a,b,c,...)` with declared==3 — the ellipsis admits
+    // unenumerated tail without a measurable gap).
+    let f7 = dir + "/fixture7_info_ellipsis.n6"
+    let body7 = ""
+              + "@P n = 6 :: foundation [11*]\n"
+              + "  => \"meta-closure: 3 grade-10 derivations (a,b,c,...)\"\n"
+    _write_fixture(f7, body7)
+    let r7 = _lint_file(f7)
+    if r7[0] != "PASS" {
+        eprintln("FIXTURE 7 expected PASS (INFO is not a verdict-bumper), got " + r7[0])
+        for v in r7[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    let mut saw_info = false
+    for s in r7[2] {
+        if s.index_of("ellipsis present") >= 0 { saw_info = true }
+    }
+    if !saw_info { eprintln("FIXTURE 7 missing INFO note"); exit(1) }
+    println("  fixture-7 PASS  (declared==enumerated + ellipsis emits INFO, not WARN)")
+
+    // ─── FIXTURE 8 — FAIL: introduced_at with empty RHS ──────────────────
+    let f8 = dir + "/fixture8_introduced_at_empty.n6"
+    let mut padded8 = ""
+    let mut m = 0
+    while m < 35200 {
+        padded8 = padded8 + "# pad\n"
+        m = m + 1
+    }
+    let body8 = padded8
+              + "@C empty_value :: arch [10*]\n"
+              + "  introduced_at = \n"
+    _write_fixture(f8, body8)
+    let r8 = _lint_file(f8)
+    if r8[0] != "FAIL" {
+        eprintln("FIXTURE 8 expected FAIL (empty value), got " + r8[0])
+        for v in r8[1] { eprintln("  - " + v) }
+        exit(1)
+    }
+    println("  fixture-8 FAIL  (introduced_at with empty RHS detected)")
+
+    exec("rm -rf '" + dir + "'")
+    println("[atlas_metadata_lint selftest] OK (8 fixtures)")
+    exit(0)
+}
+
+// ─── main ─────────────────────────────────────────────────────────────
+
+fn main() -> void {
+    let raw_args = args()
+    let mut cli = []
+    let mut ai = skip_invocation_prefix(raw_args)
+    while ai < len(raw_args) {
+        cli.push(raw_args[ai])
+        ai = ai + 1
+    }
+    if len(cli) >= 1 && (cli[0] == "--selftest" || cli[0] == "selftest") {
+        _selftest()
+        return
+    }
+    let mut target = ""
+    let mut all_flag = false
+    let mut severity = "warn"
+    let mut k = 0
+    while k < len(cli) {
+        let a = cli[k]
+        if a == "--all" { all_flag = true }
+        else if a == "--severity" {
+            if k + 1 < len(cli) { severity = cli[k + 1]; k = k + 1 }
+        }
+        else if a == "--block" { severity = "block" }
+        else if !_starts_with(a, "--") { target = a }
+        k = k + 1
+    }
+    let paths = _resolve_targets(target, all_flag)
+    if len(paths) == 0 {
+        eprintln("[atlas_metadata_lint] usage: hexa run atlas_metadata_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest]")
+        eprintln("  no atlas paths resolved (target=\"" + target + "\", all=" + to_string(all_flag) + ")")
+        exit(1)
+    }
+    let r = _lint_corpus(paths)
+    let verdict = r[0]
+    let violations = r[1]
+    let infos = r[2]
+    let head_path = if len(paths) == 1 { paths[0] } else { paths[0] + " (+" + to_string(len(paths) - 1) + " more)" }
+    _audit_append(head_path, verdict, violations, infos)
+    _emit_trailer(verdict, head_path, violations, infos)
+    println("__ATLAS_METADATA_LINT_RESULT__ " + verdict)
+    if verdict == "FAIL" && severity == "block" { exit(2) }
+    exit(0)
+}
