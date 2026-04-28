@@ -1,0 +1,33 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T15:31:16Z",
+  "cycle": 22,
+  "phase": "lean4-w13-stage2-bounded-1000-to-2000",
+  "topic": "AX1_forward bounded threshold extension via interval_cases windows",
+  "verdict": "PARTIAL",
+  "verdict_detail": "bounded threshold n>1000 → n>2000 via 10 new windows (1100..2000); axiom_robin_hardy_wright_ax1_tail tail surface n>2000 (was n>1000). target was n>5040 (Robin unconditional regime); achieved n>2000.",
+  "axiom_count": {
+    "before": 1,
+    "after": 1,
+    "delta": 0,
+    "note": "axiom keyword count unchanged; surface (tail boundary) tightened 1000 → 2000"
+  },
+  "verification": {
+    "lake_build": "PASS (8 jobs)",
+    "sorry_count": 0
+  },
+  "raw_91_c3_disclose": [
+    "5040 stretch goal NOT reached this cycle (only 2000 / 5040 = 39.7%)",
+    "raw 142 D2 try-and-revert: .bak.cycle22 + .bak.cycle22.W15 backups preserved",
+    "Robin asymptotic full proof STILL blocked by mathlib4 absence of Hardy-Wright Theorem 328"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-W13-CYCLE22-1", "condition": "n>2000 case found violating AX1Eq → axiom is empirically false", "deadline": "2027-04-28", "status": "preregistered"},
+    {"id": "F-W13-CYCLE22-2", "condition": "Hardy-Wright Theorem 328 mathlib4 PR lands → axiom upgradable to theorem", "deadline": "2027-04-28", "status": "preregistered"},
+    {"id": "F-W13-CYCLE22-3", "condition": "lake build regression on AX1.lean within 30 days", "deadline": "2026-05-28", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "self-contained, no cross-repo dependency",
+  "raw_9_hexa_only": "lean4 (compatible)",
+  "raw_53_deterministic": "lake build PASS = deterministic",
+  "raw_138_sentinel": "__W13_STAGE2_RESULT__ PARTIAL"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T15:31:16Z",
+  "cycle": 22,
+  "phase": "f-virocapsid-3-cage-assembly-mvp",
+  "topic": "T=1 60-subunit icosahedral protein cage assembly Zlotnick-class MVP simulation (raw 91 C3: not bioweapons-adjacent — Caspar-Klug 1962 + Zlotnick 2003 textbook self-assembly mathematics)",
+  "verdict": "5-OF-6-PASS-YIELD-FAIL",
+  "verdict_detail": "Pure-stdlib Python (no numpy/scipy) ODE solver (Euler + RK4) implementation of Zlotnick 2003 nucleation-elongation 4-state model with 60 monomers + 12 pentamers + 0 hexamers (T=1 topology) + 1 closed cage. 5/6 raw 53 deterministic criteria PASS: numerical stability + sigma(6)=12 vertex match + tau(6)=4 state ladder + mass conservation (drift < 1e-11) + Euler/RK4 convergence within tolerance. Yield criterion FAILS: cage_yield plateau 0.6842 at t=1000 (target ≥0.95), extends to 0.7715 at t=100000 — equilibrium plateau driven by k_close 12th-order rate constant insufficient for full sigmoidal saturation under default rate_constants.",
+  "n6_invariant_match": {
+    "sigma_6_eq_12_T1_vertex": true,
+    "tau_6_eq_4_state_ladder": true,
+    "phi_6_eq_2_dichotomy": "free-CP vs assembled-cage (free + bound)",
+    "J2_eq_24_octahedral_subgroup": "implicit via icosahedral I ⊃ O subgroup"
+  },
+  "raw_91_c3_disclose": [
+    "Rate constants illustrative — NOT fitted to specific empirical capsid system (no HBV/CCMV/STNV calibration)",
+    "yield FAIL is INTRINSIC to default k_close=1e-10 + 12th-order pentamer dependence (Zlotnick 2003 demonstrates higher k_close achieves saturation but system stiffness blows up at k_close>5e-9 in our Euler integration)",
+    "5/6 PASS on n6 invariant + numerical axes is the load-bearing achievement; yield FAIL is calibration gap not theoretical refutation",
+    "Cross-validation against real-system Zlotnick-class fit deferred to F-VIROCAPSID-2 / cycle 23+",
+    "Hexamer channel kept active per tau(6)=4 ladder integrity but rate constants tuned small (T=1 has 0 hexamers in topology)"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CAGE-MVP-1", "condition": "yield <0.95 reproducible across 3 independent rate-constant calibrations (HBV, CCMV, STNV literature)", "deadline": "2026-07-28", "status": "OBSERVED-PARTIAL"},
+    {"id": "F-CAGE-MVP-2", "condition": "mass conservation drift > 1e-3 in any reproduced run", "deadline": "2026-07-28", "status": "preregistered"},
+    {"id": "F-CAGE-MVP-3", "condition": "sigma(6)=12 vertex correspondence violates icosahedral T=1 topology", "deadline": "open-ended", "status": "FALSIFIED-NEVER (geometric invariant)"},
+    {"id": "F-CAGE-MVP-4", "condition": "Zlotnick 2003 full-saturation reproducible with k_close=1e-10 disproves our plateau", "deadline": "2027-04-28", "status": "preregistered"}
+  ],
+  "verification": {
+    "pass_count_at_t1000": 5,
+    "total_count": 6,
+    "yield_plateau_at_t1000": 0.6842,
+    "yield_plateau_at_t100000": 0.7715,
+    "mass_conservation_drift_rk4_max": 1.18e-12,
+    "ode_convergence_delta_rk4_vs_euler": 5.7e-6
+  },
+  "audit_ledger": {
+    "path": "state/audit/cage_assembly_events.jsonl",
+    "rows_appended": 8,
+    "schema": "raw_77_cage_assembly_v1"
+  },
+  "raw_47_cross_repo": "Pure stdlib Python self-contained; no external numpy/scipy",
+  "raw_9_hexa_only": "Python stdlib only (cross-language compatible)",
+  "raw_53_deterministic": "6/6 PASS criteria deterministic (regex_match + numeric_threshold + formula_eval)",
+  "raw_142_d2_revertible": true,
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__CAGE_MVP_RESULT__ FAIL (5/6 PASS structurally; yield axis FAIL by calibration gap)"
+}

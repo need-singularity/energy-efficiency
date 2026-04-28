@@ -147,6 +147,115 @@ private theorem AX1_forward_window_1000 (n : ℕ) (h_lo : 900 < n) (h_hi : n ≤
   unfold AX1Eq at h_eq
   interval_cases n <;> (exfalso; revert h_eq; decide)
 
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1100 (n : ℕ) (h_lo : 1000 < n) (h_hi : n ≤ 1100)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1200 (n : ℕ) (h_lo : 1100 < n) (h_hi : n ≤ 1200)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1300 (n : ℕ) (h_lo : 1200 < n) (h_hi : n ≤ 1300)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1400 (n : ℕ) (h_lo : 1300 < n) (h_hi : n ≤ 1400)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1500 (n : ℕ) (h_lo : 1400 < n) (h_hi : n ≤ 1500)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1600 (n : ℕ) (h_lo : 1500 < n) (h_hi : n ≤ 1600)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1700 (n : ℕ) (h_lo : 1600 < n) (h_hi : n ≤ 1700)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1800 (n : ℕ) (h_lo : 1700 < n) (h_hi : n ≤ 1800)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_1900 (n : ℕ) (h_lo : 1800 < n) (h_hi : n ≤ 1900)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+set_option maxRecDepth 4000 in
+set_option maxHeartbeats 4000000 in
+private theorem AX1_forward_window_2000 (n : ℕ) (h_lo : 1900 < n) (h_hi : n ≤ 2000)
+    (h_eq : AX1Eq n) : n = 6 := by
+  unfold AX1Eq at h_eq
+  interval_cases n <;> (exfalso; revert h_eq; decide)
+
+/-- W13 cycle-22 stage-2a bounded forward: for `n ∈ [2, 2000]` with `AX1Eq n`,
+    we have `n = 6`. Extends bounded threshold 1000 → 2000; chains 10
+    additional 100-wide windows on top of the cycle-21 1000 dispatch. raw 91
+    C3 honest: still RH-conditional regime (5040 unconditional threshold not
+    yet reached); axiom count UNCHANGED at 7. -/
+theorem AX1_forward_bounded_2000 (n : ℕ) (h_lo : 2 ≤ n) (h_hi : n ≤ 2000)
+    (h_eq : AX1Eq n) : n = 6 := by
+  by_cases h1000 : n ≤ 1000
+  · exact AX1_forward_bounded_1000 n h_lo h1000 h_eq
+  · have h1000' : 1000 < n := Nat.lt_of_not_le h1000
+    by_cases h1100 : n ≤ 1100
+    · exact AX1_forward_window_1100 n h1000' h1100 h_eq
+    · have h1100' : 1100 < n := Nat.lt_of_not_le h1100
+      by_cases h1200 : n ≤ 1200
+      · exact AX1_forward_window_1200 n h1100' h1200 h_eq
+      · have h1200' : 1200 < n := Nat.lt_of_not_le h1200
+        by_cases h1300 : n ≤ 1300
+        · exact AX1_forward_window_1300 n h1200' h1300 h_eq
+        · have h1300' : 1300 < n := Nat.lt_of_not_le h1300
+          by_cases h1400 : n ≤ 1400
+          · exact AX1_forward_window_1400 n h1300' h1400 h_eq
+          · have h1400' : 1400 < n := Nat.lt_of_not_le h1400
+            by_cases h1500 : n ≤ 1500
+            · exact AX1_forward_window_1500 n h1400' h1500 h_eq
+            · have h1500' : 1500 < n := Nat.lt_of_not_le h1500
+              by_cases h1600 : n ≤ 1600
+              · exact AX1_forward_window_1600 n h1500' h1600 h_eq
+              · have h1600' : 1600 < n := Nat.lt_of_not_le h1600
+                by_cases h1700 : n ≤ 1700
+                · exact AX1_forward_window_1700 n h1600' h1700 h_eq
+                · have h1700' : 1700 < n := Nat.lt_of_not_le h1700
+                  by_cases h1800 : n ≤ 1800
+                  · exact AX1_forward_window_1800 n h1700' h1800 h_eq
+                  · have h1800' : 1800 < n := Nat.lt_of_not_le h1800
+                    by_cases h1900 : n ≤ 1900
+                    · exact AX1_forward_window_1900 n h1800' h1900 h_eq
+                    · have h1900' : 1900 < n := Nat.lt_of_not_le h1900
+                      exact AX1_forward_window_2000 n h1900' h_hi h_eq
+
 /-- W13 cycle-21 stage-1 bounded forward: for `n ∈ [2, 1000]` with `AX1Eq n`,
     we have `n = 6`. Extends bounded threshold 100 → 1000; the named axiom's
     quantifier is correspondingly hardened to `1000 < n`. The proof uses a

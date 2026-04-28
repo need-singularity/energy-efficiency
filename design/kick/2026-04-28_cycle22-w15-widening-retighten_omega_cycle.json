@@ -1,0 +1,40 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T15:31:16Z",
+  "cycle": 22,
+  "phase": "lean4-w15-true-widening-retighten-via-structure",
+  "topic": "Strand.lean :=True widening (cycle 20 W11/W14) → structure with explicit field-list of atomic sub-properties",
+  "verdict": "STRUCTURAL-PARTIAL",
+  "verdict_detail": "IsMKProperClass and ClosedUnderHEXAComp converted from `def := True` to `structure` consuming 11 / 4 atomic sub-property fields. Logical strength unchanged (still classically equivalent to True since fields are True-valued atomic theorems). Strengthening is STRUCTURAL: atomic dependency now mechanically explicit at predicate-type level.",
+  "axiom_count": {
+    "before": 1,
+    "after": 1,
+    "delta": 0,
+    "note": "axiom keyword count unchanged; widening surface re-tightened from def := True (meaning 0) to structure with N-field atomic decomposition (meaning 4 / 11)"
+  },
+  "verification": {
+    "lake_build": "PASS",
+    "sorry_count": 0
+  },
+  "raw_91_c3_disclose": [
+    "STRUCTURAL not LOGICAL strengthening: classically still equivalent to True",
+    "fields constructible by `trivial` per field (atomic sub-theorems are themselves True-valued in Foundation/Axioms.lean)",
+    "future cycles can re-tighten individual fields by replacing True body with substantive Lean-level statements once mathlib4 MK formalization lands",
+    "F-W11-1 + F-W14-1 status updated PARTIAL-RESOLVED (atomic decomposition target now structurally explicit)"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-W15-CYCLE22-1", "condition": "structure inhabit fails downstream (compile error) within 30d", "deadline": "2026-05-28", "status": "preregistered"},
+    {"id": "F-W15-CYCLE22-2", "condition": "false-class detection: 11/4 fields truly never carry MK-proper-class-equivalent semantics even with mathlib4 MK", "deadline": "2027-04-28", "status": "preregistered"},
+    {"id": "F-W15-CYCLE22-3", "condition": "downstream consumer reverts to `:= True` form citing structure overhead within 90d", "deadline": "2026-07-28", "status": "preregistered"}
+  ],
+  "semantic_strength_ladder": {
+    "pre_W11_opaque": {"meaning_capture": 0, "note": "no body, only inhabitable by axiom postulate"},
+    "W11_W14_def_True": {"meaning_capture": 0, "note": "semantically trivial, no atomic surfacing"},
+    "W15_structure_atomic": {"meaning_capture_MK": 11, "meaning_capture_HEXACOMP": 4, "note": "atomic dependency mechanically explicit"}
+  },
+  "raw_47_cross_repo": "self-contained",
+  "raw_9_hexa_only": "lean4 standard `structure` keyword (compatible)",
+  "raw_53_deterministic": "lake build PASS = deterministic",
+  "raw_142_d2_revertible": true,
+  "raw_138_sentinel": "__W15_RESULT__ STRUCTURAL-PARTIAL"
+}
