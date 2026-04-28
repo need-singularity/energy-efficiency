@@ -1,4 +1,8 @@
 {
+  "_deprecated": "2026-04-28",
+  "_deprecated_reason": "papers CLI 위임 (papers/.own own 9)",
+  "_migration": "paper 발행은 papers/bin/papers publish <id> --target=all 사용",
+  "_historical": "cycle 8 deposit prep 작업 — archived as record",
   "kick_kind": "omega_cycle",
   "kick_id": "2026-04-28_zenodo-deposit-prep",
   "kick_title": "Cycle-8 fan-out 5/5 — HEXA-WEAVE paper Zenodo Option-A deposit prep + paper cycle-7 sorry-free refresh",

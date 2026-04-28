@@ -1,4 +1,8 @@
 {
+  "_deprecated": "2026-04-28",
+  "_deprecated_reason": "papers CLI 위임 (papers/.own own 9)",
+  "_migration": "paper 발행은 papers/bin/papers publish <id> --target=all 사용",
+  "_historical": "cycle 14 deposit prep 작업 — archived as record",
   "kick_kind": "omega_cycle",
   "kick_id": "2026-04-28_zenodo-deposit-prep-cycle14",
   "kick_title": "Cycle-14 fan-out 1/4 — HEXA-WEAVE Zenodo 1-click deposit-prep — automation complete pending user 5-item input",
