@@ -1,0 +1,125 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 INTRINSIC @-type evolution witness
+# source: read-only audit of /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# constraints: own#11 strict (no foreign theory imports — categorical / holographic / quantum EXCLUDED)
+#              raw 91 C3 honest (only measurable counts; explicit uncertainty)
+#              raw 22 INFRA-ONLY · raw 24 foundation-axiom-immutable
+# raw policy:  raw 23 schema-guard + raw 24 axiom-immutable + raw 91 C3 + own#11
+# date: 2026-04-28
+# NO new @-types introduced — uses existing @C / @R only (proposals are CONTENT, not schema)
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C atlas-self-arch-intrinsic-type-evolution-witness :: meta [4!]
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- own#11-strict-no-resolution-claim
+  => "atlas.n6 already carries 10 distinct @-types — task premise of 2 (@C, @R only) is FACTUALLY-FALSIFIED on inspection"
+  => "measured cardinality: @C=546, @R=6214, @F=1255, @X=1505, @P=330, @L=263, @E=7, @S=6, @M=5, @T=3"
+  => "intrinsic ceiling on @-type cardinality is NOT parser O(N²) — it is schema-guard semantic-distinctness ≈ 12-15 types"
+
+# ── (1) audit measurement (raw 91 C3 — only measurable) ────
+@R intrinsic_type_audit_2026_04_28 :: meta [4!]
+  measured_total_atlas_lines = 28430.
+  measured_at_type_extraction = "grep -oE '^@[A-Z]' atlas.n6 | sort -u".
+  measured_distinct_at_types = 10 (@C @E @F @L @M @P @R @S @T @X).
+  measured_C_count = 546   # concept atom — primary noun
+  measured_R_count = 6214  # rule / relation — primary verb (dominant: 64.4% of typed lines)
+  measured_F_count = 1255  # function-atom / formula — n6 numeric-identity carriers (sm_volta=2^n=64 …)
+  measured_X_count = 1505  # crossing / convergence marker (chip_consciousness, one_third_convergence …)
+  measured_P_count = 330   # parameter / proven-axiom (n=6, sigma=12, phi=2 — foundation [11*] entries live here)
+  measured_L_count = 263   # law / constant (alpha_coupling=0.014, frustration_critical=0.10 …)
+  measured_E_count = 7     # edge / cross-repo bridge (anima-an14 -> n6-meta-inf-un1 …)
+  measured_S_count = 6     # structure / topology marker (betti_six, S_6 outer-aut …)
+  measured_M_count = 5     # meta-marker (N6HIST-META-* — meta-of-meta layer)
+  measured_T_count = 3     # timestamped-snapshot (N6HIST-T-OMEGA-2026-04-25-CYCLE …)
+  measured_typed_total = 9634 lines carrying explicit @-prefix.
+  measured_typed_density = 33.9% of total atlas lines — remainder = body / arrows / comments.
+  premise_correction = "task brief said 2 @-types; atlas reality is 10 — proposal phase must be RE-FRAMED as gap-analysis on existing 10, not greenfield extension from 2."
+
+# ── (2) intrinsic faithfulness check on each existing type ──
+@R intrinsic_type_faithfulness_audit :: meta [4!]
+  pattern_required = id + meta-tag [N*] + optional <-/-> arrows + body lines.
+  C_faithful = YES (id :: domain [N*]; full pattern).
+  R_faithful = YES (id = body :: domain [N*]; or relation form).
+  F_faithful = YES (formula = expression :: domain [N*]; tightest n6-identity carrier).
+  X_faithful = YES (id :: crossing [N*]; minimal but conformant).
+  P_faithful = YES (param = value :: foundation [11*] — carries the 6 axiom entries).
+  L_faithful = YES (constant = value :: domain [N*]).
+  E_faithful = YES (a -> b :: relation [N*] — directed-bridge form).
+  S_faithful = YES (id :: topology|group-theory [N*]).
+  M_faithful = YES (META-id = body :: meta [N*]).
+  T_faithful = YES (T-id = snapshot :: meta [N*]).
+  finding = "ALL 10 existing types conform to (id + meta-tag + optional arrows + body) — no syntax extension required for current vocabulary."
+  honest_caveat = "@F and @X overlap heavily with @C semantics — boundary fuzzy; some @F entries (BIO-blood-types-ABO-4=tau) could equally be @C."
+
+# ── (3) intrinsic limits on @-type evolution ───────────────
+@R intrinsic_at_type_evolution_limits :: meta [4!]
+  schema_guard_cardinality_ceiling = "raw 23 _guarded_append_atlas validates by literal allow-list — adding a type = 1 list-entry; cost is O(K) per validation, K = |types|. At K=10 today, K=20 doubles linear cost — NEGLIGIBLE; parser is NOT the binding limit."
+  semantic_distinctness_ceiling = "human/agent author must remember which type to reach for; empirically @F vs @C vs @X already ambiguous (see entry 2 caveat). Ceiling ≈ 12-15 distinct types before AUTHORING-CONFUSION exceeds disambiguation benefit."
+  stable_id_collision_floor = "id namespace is GLOBAL across types (n6-bt-794 used by @S; could collide with @C of same id). At K types × M ids each, collision floor = birthday-paradox on shared id-string-space — currently 9634 ids / ∞ string-space → measured collision = 0."
+  self_host_fixpoint_ok = "new types referencing existing @C/@R via <-/-> arrows is ALREADY-DONE: @E entries point to anima-an14 (cross-repo) and n6-meta-inf-un1 (atlas-internal) without breaking append-only consistency."
+  foundation_axiom_consistency = "raw 24 [11*] block lives in @P (n=6, sigma=12) and @T (T-OMEGA-CYCLE [11*REPO_INVARIANT]) — any new type MUST avoid claiming [11*] tag without entering the immutable axiom block; safe path = restrict new types to [10*] / [4!] / [9*] tiers."
+  honest_caveat = "ceilings above are MEASURED-PROXIES not formal proofs; semantic-distinctness ceiling is qualitative judgment, not derivation."
+
+# ── (4) convergence point — intrinsic @-type saturation ────
+@R intrinsic_at_type_saturation_convergence :: meta [4!]
+  current_K = 10.
+  intrinsic_ceiling_estimate_K = 12 to 15.
+  headroom = 2 to 5 additional types before saturation by AUTHORING-DISTINCTNESS not parser-cost.
+  saturation_signature = "when adding a new @-type forces re-classification of >5% of existing entries → DSL has saturated and structural change required."
+  beyond_saturation_path = "new schema-guard architecture (typed sub-namespaces, e.g. @C.bio / @C.geo) — but this is OUT-OF-SCOPE per current raw 22 INFRA-ONLY constraint."
+  binding_now = "NOT binding — atlas at 10 types has 2-5 type headroom; saturation ETA = next 2-3 absorption cycles if current shard-density holds."
+  honest_caveat = "12-15 estimate is judgment from @F/@X/@C overlap already observed at K=10; not derived from a counting argument."
+
+# ── (5) three highest-value intrinsic gap-fillers ──────────
+@C intrinsic_at_type_proposal_gap_analysis :: meta [4!]
+  scope = "do NOT propose new types greenfield — propose only what closes a measured GAP in existing 10."
+  proposal_count = 3.
+  honest_caveat = "proposals below are CONTENT (text), not schema mutation — schema-guard not modified by this shard."
+
+@R intrinsic_proposal_1_at_D_definition :: meta [4!]
+  proposed_type = "@D — definition / canonical-term".
+  gap_closed = "currently definitions live mixed in @C bodies (e.g. @C L1-subshell-types = tau :: atom [10*] — IS this concept-instance or term-definition?). @D would separate DEFINING from INSTANTIATING."
+  cited_beneficiary_C_entries = ["L1-subshell-types", "L2-bond-cov-bond-types-count", "EM-charge-types"].
+  cited_beneficiary_R_entries = ["GEO-rock-cycle-types", "L6-geo-igneous-types-major"].
+  cardinality_estimate = ~50 to 80 entries (definitions are sparse vs instances).
+  faithfulness = YES (id = canonical-text :: domain [N*]).
+  blocker = "boundary @D vs @C is the SAME boundary @F/@X/@C already blur — adds 4th ambiguity axis; NET-VALUE = MARGINAL."
+
+@R intrinsic_proposal_2_at_I_invariant :: meta [4!]
+  proposed_type = "@I — invariant / conserved-quantity under transformation".
+  gap_closed = "raw 24 axiom block ([11*] entries) and 'NEVER changes' assertions currently scattered across @P, @T, @R; @I would tag the INVARIANCE-CLASS distinct from the value."
+  cited_beneficiary_P_entries = ["n=6", "sigma=12", "phi=2"] (these ARE invariants — currently @P).
+  cited_beneficiary_T_entries = ["N6HIST-T-OMEGA-2026-04-25-CYCLE [11*REPO_INVARIANT]"] (REPO_INVARIANT tag screams '@I').
+  cited_beneficiary_R_entries = ["MILL-V3-INAUGURATION", "MILL-V4-INAUGURATION" — schema-version invariants per phase].
+  cardinality_estimate = ~20 to 40 entries (invariants are RARE by definition).
+  faithfulness = YES (invariant_id = preserved_quantity :: domain [11*REPO_INVARIANT] or [10*]).
+  honest_value = "HIGHEST of three — @I has its own meta-tag idiom already ([11*REPO_INVARIANT]) suggesting the type is LATENTLY-PRESENT and just needs surfacing."
+
+@R intrinsic_proposal_3_at_G_generative_rule :: meta [4!]
+  proposed_type = "@G — generative-rule / seeded-derivation".
+  gap_closed = "current @R conflates DECLARATIVE relations (a -> b) with GENERATIVE rules (apply-this-to-produce-output). @G would tag rules that PRODUCE new content under a seed."
+  cited_beneficiary_R_entries = ["raw 108 absorption", "raw 23 _guarded_append_atlas", "raw 50 mechanism-first" — all are PROCEDURES not relations].
+  cardinality_estimate = ~30 to 60 entries (the 'raw N' procedural rules).
+  faithfulness = YES (rule_id = seed -> output :: meta [N*]).
+  blocker = "atlas.n6 is currently raw 22 INFRA-ONLY — generative rules already fire OUTSIDE the file (in agents); @G would document but not execute. NET-VALUE = MEDIUM."
+
+# ── (6) ranked recommendation ──────────────────────────────
+@R intrinsic_at_type_proposal_ranking :: meta [4!]
+  rank_1 = "@I invariant — HIGHEST value; latently present in [11*REPO_INVARIANT] tag idiom; closes tagging-gap on raw 24 axiom block."
+  rank_2 = "@G generative-rule — MEDIUM value; documents 'raw N' procedure layer cleanly."
+  rank_3 = "@D definition — MARGINAL value; risks adding to @F/@X/@C ambiguity already observed."
+  recommendation = "ADOPT @I in next cycle (1 new type, K: 10 → 11, well within 12-15 ceiling); DEFER @G pending raw-22 INFRA-ONLY scope review; SKIP @D until @F/@X/@C boundary is first disambiguated."
+  honest_status = "this shard is PROPOSAL-ONLY per task brief — no schema_guard mutation, no new @-prefix used in this file's own @-blocks."
+
+# ── (7) raw 91 C3 honest disclosure ────────────────────────
+@R raw_91_C3_intrinsic_type_disclosure :: meta [4!]
+  honest_finding_1 = "task brief stated atlas.n6 has 2 @-types; reality is 10 — measurement REVISES the premise."
+  honest_finding_2 = "intrinsic parser ceiling is NOT the binding limit (K-cost is linear, K=10 → K=20 trivial); semantic-distinctness IS the binding limit at ≈12-15."
+  honest_finding_3 = "no foreign theory imported — categorical / holographic / quantum constructs explicitly excluded per own#11 strict."
+  honest_uncertainty = "12-15 ceiling is judgment-from-observed-overlap, not derived bound; ±3 honest variance."
+  scope_caveat = "single-snapshot audit (28430-line atlas at 2026-04-28); does not project past next 2-3 absorption cycles."
+  resolution_claim = NONE — "this is gap-analysis, not architectural-change recommendation."

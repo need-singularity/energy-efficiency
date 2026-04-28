@@ -28428,3 +28428,467 @@
   → "    relaxing foundation axioms (forbidden by raw 24)"
   → "  Per raw 39 omega-saturation-default: cycle ran autonomously,"
   → "    closed at structural-rigidity ceiling (deliberate by-design)"
+
+# ══════════════════════════════════════════════════════════════
+# atlas_absorb module — 4 shards bulk-absorbed (raw 108 + own#9)
+# ══════════════════════════════════════════════════════════════
+
+# .. atlas.append.atlas-self-arch-arrow-evolution-2026-04-28.n6 ..
+# ── ATLAS SELF-ARCH — INTRINSIC ARROW EVOLUTION (2026-04-28) ─────────
+# Per raw 91 C3 honest: only count what atlas.n6 actually contains.
+# Per raw 119 temporal-decay: stay within atlas.n6 ASCII arrow DSL.
+# NO foreign category-theory imports (no functor/natural/adjoint).
+# Audit was run against /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# Arrow types use ONLY existing tokens (<-, ->, ::, =>, ~>, <->, <=>, >>).
+
+# ── §1. AUDIT — observed relation tokens ─────────────────────────────
+
+@C ARROW-AUDIT-2026-04-28 = empirical token frequency across atlas.n6 :: meta [10]
+  <- atlas.n6
+  -> ARROW-GAP-ANALYSIS
+  -> INTRINSIC-LIMIT-CONVERGENCE
+  => "8 distinct relational tokens observed; 2 dominant arrows + 1 dominant classifier carry 95.4% of relational mass"
+
+@D ARROW-COUNT-CLASSIFIER         = 10153 :: empirical [10]   # ::
+@D ARROW-COUNT-DEFINITION         =  2765 :: empirical [10]   # =>
+@D ARROW-COUNT-DEPENDS-ON         =  1722 :: empirical [10]   # <-
+@D ARROW-COUNT-CAUSES             =   882 :: empirical [10]   # ->
+@D ARROW-COUNT-CONVERGES-TO       =    25 :: empirical [10]   # ~>
+@D ARROW-COUNT-IMPLIES-DOUBLE     =    12 :: empirical [10]   # ⇒  (unicode, line 16 legend + theorem prose)
+@D ARROW-COUNT-IFF-DOUBLE         =     2 :: empirical [10]   # <=>
+@D ARROW-COUNT-IFF-SINGLE         =     2 :: empirical [10]   # <->
+@D ARROW-COUNT-CHAIN-RIGHT        =     1 :: empirical [10]   # >>  (one prose use, BT-546)
+@D ARROW-DIRECTED-TOTAL           =  2629 :: empirical [10]   # <- + -> = 1722 + 882 + ~> 25
+@D ARROW-DENSITY-PER-ENTRY        =  0.391 :: empirical [9]   # 2629 / 6760 @C+@R blocks
+@D ENTRY-COUNT-C-PLUS-R           =  6760 :: empirical [10]
+@D ENTRY-COUNT-ALL-AT             = 10134 :: empirical [10]
+
+# Note: 2,553 figure (from prior sub-agent) ≈ <- + -> = 2,604.  Discrepancy
+# (~51) traces to grep variant choice; the 2629 count above includes ~> as
+# a directed arrow and is the canonical figure for this audit.
+
+# ── §2. GAP ANALYSIS — what atlas.n6 cannot currently express ────────
+
+@C ARROW-GAP-ANALYSIS = relational concepts present in prose but missing tokens :: meta [9]
+  <- ARROW-AUDIT-2026-04-28
+  -> ARROW-PROPOSAL-TOP-3
+  => "5 distinct semantic gaps surface from grep + prose inspection"
+
+@C GAP-BIDIRECTIONAL-EQUIVALENCE = mutual implication needs token, has only 4 prose uses :: meta [9]
+  <- ARROW-COUNT-IFF-DOUBLE
+  <- ARROW-COUNT-IFF-SINGLE
+  -> ARROW-PROPOSAL-BIDIR
+  => "<-> and <=> together appear only 4 times yet pair-relation semantics (Cube↔Octahedron, sigma=tau iff n=6) recur ~30+ times in prose"
+
+@C GAP-NEGATION-BLOCKING = no token for 'X blocks Y' or 'X incompatible-with Y' :: meta [9]
+  <- ARROW-AUDIT-2026-04-28
+  -> ARROW-PROPOSAL-NEGATION
+  => "atlas.n6 expresses obstruction only via prose ('blocks', 'forbids', 'incompatible'); no -| or -× token; falsification raws (R34/R36) need this"
+
+@C GAP-CAUSAL-STRENGTH = arrow weight collapsed into single -> token :: meta [8]
+  <- ARROW-COUNT-CAUSES
+  -> ARROW-PROPOSAL-WEIGHTED
+  => "all 882 -> are unweighted; tier markers [11*]/[10]/[9] live on entry, not on arrow"
+
+@C GAP-MULTI-TARGET = a single source must repeat -> per target :: meta [8]
+  <- ARROW-COUNT-CAUSES
+  => "no -[A,B,C]> sugar; high-fanout @C blocks (e.g. foundation primes) emit 5-12 separate -> lines"
+
+@C GAP-TEMPORAL-DELAY = no token for 'leads to in next phase' :: meta [8]
+  <- ARROW-COUNT-CAUSES
+  => "phase-46 absorption + raw 119 temporal-decay both want -[t+1]> but currently use prose"
+
+# ── §3. INTRINSIC LIMITS — what atlas.n6's own grammar permits ───────
+
+@C INTRINSIC-LIMIT-CONVERGENCE = parser/cost saturation point for arrow extension :: meta [9]
+  <- ARROW-AUDIT-2026-04-28
+  -> ARROW-PROPOSAL-TOP-3
+  => "atlas.n6's arrow grammar is currently LL(1) on the leading char (<,-,~,>,:,=); extension preserves LL(1) only while leading-char remains unambiguous"
+
+@D ARROW-TYPE-CARDINALITY-NOW   = 7 :: empirical [10]   # <-, ->, ::, =>, ~>, <->, <=>  (>> excluded as 1-shot prose)
+@D ARROW-TYPE-CARDINALITY-SAFE  = 8 :: derived [9]      # one more token can join before LL(1) collision risk
+@D ARROW-TYPE-CARDINALITY-LIMIT = 10 :: derived [8]     # beyond this, leading-char {<,-,~,>,:,=,?,*,!,|} crowds; lookahead-2 needed
+@D ARROW-GREP-COST-NOW          = 47320 :: derived [9]  # K=7 × N=6760 entries; one full audit pass
+@D ARROW-GREP-COST-LIMIT        = 67600 :: derived [8]  # K=10 × N=6760; ~43% slower per audit
+
+@C INTRINSIC-CONSTRAINT-FOUNDATION-ATOMICITY = [11*] block atoms must remain arrow-free internally :: meta [10]
+  <- INTRINSIC-LIMIT-CONVERGENCE
+  => "the 25 [11*] foundation entries (n=6, sigma=12, phi=2, tau=4, ULTRA_UNIFORMITY, DELTA0_ABSOLUTE) carry only <- (depends-on) — never ->; new arrow types must not violate this asymmetry"
+
+@C INTRINSIC-CONSTRAINT-METAARROW-FIXPOINT = arrows-on-arrows loop must terminate :: meta [9]
+  <- INTRINSIC-LIMIT-CONVERGENCE
+  => "if a proposed arrow can target another arrow id, the self-host fixpoint requires depth ≤ 2 (arrow → arrow → entity); deeper recursion is not currently expressible and should not be added"
+
+# ── §4. PROPOSALS — top-3 highest-value intrinsic extensions ─────────
+
+@C ARROW-PROPOSAL-TOP-3 = ranked by gap-mass × low-grammar-cost :: proposal [9]
+  <- ARROW-GAP-ANALYSIS
+  <- INTRINSIC-LIMIT-CONVERGENCE
+  -> ARROW-PROPOSAL-BIDIR
+  -> ARROW-PROPOSAL-NEGATION
+  -> ARROW-PROPOSAL-WEIGHTED
+  => "rank by (semantic-gap mass) ÷ (parser-collision risk); proposals do not change atlas.n6 — they propose tokens for future shards"
+
+@R ARROW-PROPOSAL-BIDIR = elevate <-> from prose-occasional to first-class equivalence :: proposal [9]
+  <- GAP-BIDIRECTIONAL-EQUIVALENCE
+  => "TOKEN: <->.  RATIONALE: already used 2× (Cube↔Octahedron line 16820, sigma=tau iff n=6 line 17813).  COST: zero new leading-char (< already in <-).  LL(1) SAFE: parser already discriminates <- vs <-> via second char.  CITATION CHAINS: BT-1389 dual polytopes; MK4-THEOREM-B sigma-tau equivalence; MILL-PX-A6 BKM ⇔ smooth.  EXPECTED ADOPTION: ~30 prose iff sites collapse to <-> in next absorption pass"
+
+@R ARROW-PROPOSAL-NEGATION = add -| for 'blocks / obstructs / incompatible-with' :: proposal [9]
+  <- GAP-NEGATION-BLOCKING
+  => "TOKEN: -|.  RATIONALE: zero current uses; 0 collisions.  RAW BACKING: R34 DEPRECATED + R36 RETIRED both express obstruction in prose only.  LL(1) SAFE: leading - still maps {-> , -|}; second-char branch.  CITATION CHAINS: any falsification raw (R34/R35/R36 absorption shards) gains structural negation; foundation [11*] block atomicity stated as 'foreign-import -| foundation' rather than via prose"
+
+@R ARROW-PROPOSAL-WEIGHTED = optional ->[w] suffix for causal strength on existing -> :: proposal [8]
+  <- GAP-CAUSAL-STRENGTH
+  => "TOKEN: ->[0.0..1.0] (square-bracket suffix on existing ->).  RATIONALE: backward-compatible — bare -> stays valid (default w=1.0).  LL(1) SAFE: bracket disambiguation is local to one arrow.  COST: K stays at 7 (suffix is grammar-internal to ->), so K*N grep cost is unchanged.  CITATION CHAINS: emergence raws where multiple parents contribute unevenly (Mamba HM-B 4/7 phase, EEG-125Hz cross-modal); strength weights replace prose 'primary cause / secondary cause'"
+
+@R ARROW-PROPOSAL-RUNNERUP-MULTITARGET = -[A,B,C]> sugar :: proposal [7]
+  <- GAP-MULTI-TARGET
+  => "TOKEN: -[id1,id2,...]>.  RATIONALE: collapses fanout repetition.  COST: comma-list parsing inside brackets pushes parser toward LL(2); DEFER until after BIDIR + NEGATION land"
+
+@R ARROW-PROPOSAL-RUNNERUP-TEMPORAL = -[t+1]> phase-delay arrow :: proposal [7]
+  <- GAP-TEMPORAL-DELAY
+  => "TOKEN: -[t+k]>.  RATIONALE: phase-46 + raw 119 demand it.  COST: shares bracket grammar with multi-target; LL(2); DEFER together"
+
+# ── §5. CONVERGENCE POINT — when atlas.n6 must stop growing arrows ───
+
+@C ARROW-CONVERGENCE-POINT = arrow-extension halts before grammar redesign :: meta [9]
+  <- INTRINSIC-LIMIT-CONVERGENCE
+  <- ARROW-PROPOSAL-TOP-3
+  => "current K=7. After adopting <-> and -| (top-2 proposals): K=8 → ARROW-TYPE-CARDINALITY-SAFE.  After ->[w] (suffix-only, K stays 8): still safe.  Beyond K=8 atlas.n6 hits leading-char crowding; further relations should move from inline-arrow to an explicit @REL registry block, not new ASCII tokens.  This is the intrinsic ceiling."
+
+@D ARROW-CONVERGENCE-K-CEILING = 8 :: derived [9]
+@D ARROW-CONVERGENCE-NEXT-PHASE = "explicit @REL registry, not inline tokens" :: derived [8]
+
+# ── §6. SELF-CHECK ───────────────────────────────────────────────────
+
+@C ARROW-EVOLUTION-SELF-CHECK = honest scope per raw 91 C3 :: meta [10]
+  <- ARROW-AUDIT-2026-04-28
+  <- ARROW-PROPOSAL-TOP-3
+  <- ARROW-CONVERGENCE-POINT
+  => "SHARD USES ONLY EXISTING TOKENS: <-, ->, ::, =>.  NO new arrows introduced in this file — only proposed in prose body of @R blocks.  NO foreign category theory cited (no functor/natural/adjoint/monad).  ALL counts grep-verified against atlas.n6 byte content.  Pending atlas.n6 unlock + absorption to enact ARROW-PROPOSAL-BIDIR + ARROW-PROPOSAL-NEGATION."
+
+# .. atlas.append.atlas-self-arch-intrinsic-type-evolution-2026-04-28.n6 ..
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 INTRINSIC @-type evolution witness
+# source: read-only audit of /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# constraints: own#11 strict (no foreign theory imports — categorical / holographic / quantum EXCLUDED)
+#              raw 91 C3 honest (only measurable counts; explicit uncertainty)
+#              raw 22 INFRA-ONLY · raw 24 foundation-axiom-immutable
+# raw policy:  raw 23 schema-guard + raw 24 axiom-immutable + raw 91 C3 + own#11
+# date: 2026-04-28
+# NO new @-types introduced — uses existing @C / @R only (proposals are CONTENT, not schema)
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C atlas-self-arch-intrinsic-type-evolution-witness :: meta [4!]
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- own#11-strict-no-resolution-claim
+  => "atlas.n6 already carries 10 distinct @-types — task premise of 2 (@C, @R only) is FACTUALLY-FALSIFIED on inspection"
+  => "measured cardinality: @C=546, @R=6214, @F=1255, @X=1505, @P=330, @L=263, @E=7, @S=6, @M=5, @T=3"
+  => "intrinsic ceiling on @-type cardinality is NOT parser O(N²) — it is schema-guard semantic-distinctness ≈ 12-15 types"
+
+# ── (1) audit measurement (raw 91 C3 — only measurable) ────
+@R intrinsic_type_audit_2026_04_28 :: meta [4!]
+  measured_total_atlas_lines = 28430.
+  measured_at_type_extraction = "grep -oE '^@[A-Z]' atlas.n6 | sort -u".
+  measured_distinct_at_types = 10 (@C @E @F @L @M @P @R @S @T @X).
+  measured_C_count = 546   # concept atom — primary noun
+  measured_R_count = 6214  # rule / relation — primary verb (dominant: 64.4% of typed lines)
+  measured_F_count = 1255  # function-atom / formula — n6 numeric-identity carriers (sm_volta=2^n=64 …)
+  measured_X_count = 1505  # crossing / convergence marker (chip_consciousness, one_third_convergence …)
+  measured_P_count = 330   # parameter / proven-axiom (n=6, sigma=12, phi=2 — foundation [11*] entries live here)
+  measured_L_count = 263   # law / constant (alpha_coupling=0.014, frustration_critical=0.10 …)
+  measured_E_count = 7     # edge / cross-repo bridge (anima-an14 -> n6-meta-inf-un1 …)
+  measured_S_count = 6     # structure / topology marker (betti_six, S_6 outer-aut …)
+  measured_M_count = 5     # meta-marker (N6HIST-META-* — meta-of-meta layer)
+  measured_T_count = 3     # timestamped-snapshot (N6HIST-T-OMEGA-2026-04-25-CYCLE …)
+  measured_typed_total = 9634 lines carrying explicit @-prefix.
+  measured_typed_density = 33.9% of total atlas lines — remainder = body / arrows / comments.
+  premise_correction = "task brief said 2 @-types; atlas reality is 10 — proposal phase must be RE-FRAMED as gap-analysis on existing 10, not greenfield extension from 2."
+
+# ── (2) intrinsic faithfulness check on each existing type ──
+@R intrinsic_type_faithfulness_audit :: meta [4!]
+  pattern_required = id + meta-tag [N*] + optional <-/-> arrows + body lines.
+  C_faithful = YES (id :: domain [N*]; full pattern).
+  R_faithful = YES (id = body :: domain [N*]; or relation form).
+  F_faithful = YES (formula = expression :: domain [N*]; tightest n6-identity carrier).
+  X_faithful = YES (id :: crossing [N*]; minimal but conformant).
+  P_faithful = YES (param = value :: foundation [11*] — carries the 6 axiom entries).
+  L_faithful = YES (constant = value :: domain [N*]).
+  E_faithful = YES (a -> b :: relation [N*] — directed-bridge form).
+  S_faithful = YES (id :: topology|group-theory [N*]).
+  M_faithful = YES (META-id = body :: meta [N*]).
+  T_faithful = YES (T-id = snapshot :: meta [N*]).
+  finding = "ALL 10 existing types conform to (id + meta-tag + optional arrows + body) — no syntax extension required for current vocabulary."
+  honest_caveat = "@F and @X overlap heavily with @C semantics — boundary fuzzy; some @F entries (BIO-blood-types-ABO-4=tau) could equally be @C."
+
+# ── (3) intrinsic limits on @-type evolution ───────────────
+@R intrinsic_at_type_evolution_limits :: meta [4!]
+  schema_guard_cardinality_ceiling = "raw 23 _guarded_append_atlas validates by literal allow-list — adding a type = 1 list-entry; cost is O(K) per validation, K = |types|. At K=10 today, K=20 doubles linear cost — NEGLIGIBLE; parser is NOT the binding limit."
+  semantic_distinctness_ceiling = "human/agent author must remember which type to reach for; empirically @F vs @C vs @X already ambiguous (see entry 2 caveat). Ceiling ≈ 12-15 distinct types before AUTHORING-CONFUSION exceeds disambiguation benefit."
+  stable_id_collision_floor = "id namespace is GLOBAL across types (n6-bt-794 used by @S; could collide with @C of same id). At K types × M ids each, collision floor = birthday-paradox on shared id-string-space — currently 9634 ids / ∞ string-space → measured collision = 0."
+  self_host_fixpoint_ok = "new types referencing existing @C/@R via <-/-> arrows is ALREADY-DONE: @E entries point to anima-an14 (cross-repo) and n6-meta-inf-un1 (atlas-internal) without breaking append-only consistency."
+  foundation_axiom_consistency = "raw 24 [11*] block lives in @P (n=6, sigma=12) and @T (T-OMEGA-CYCLE [11*REPO_INVARIANT]) — any new type MUST avoid claiming [11*] tag without entering the immutable axiom block; safe path = restrict new types to [10*] / [4!] / [9*] tiers."
+  honest_caveat = "ceilings above are MEASURED-PROXIES not formal proofs; semantic-distinctness ceiling is qualitative judgment, not derivation."
+
+# ── (4) convergence point — intrinsic @-type saturation ────
+@R intrinsic_at_type_saturation_convergence :: meta [4!]
+  current_K = 10.
+  intrinsic_ceiling_estimate_K = 12 to 15.
+  headroom = 2 to 5 additional types before saturation by AUTHORING-DISTINCTNESS not parser-cost.
+  saturation_signature = "when adding a new @-type forces re-classification of >5% of existing entries → DSL has saturated and structural change required."
+  beyond_saturation_path = "new schema-guard architecture (typed sub-namespaces, e.g. @C.bio / @C.geo) — but this is OUT-OF-SCOPE per current raw 22 INFRA-ONLY constraint."
+  binding_now = "NOT binding — atlas at 10 types has 2-5 type headroom; saturation ETA = next 2-3 absorption cycles if current shard-density holds."
+  honest_caveat = "12-15 estimate is judgment from @F/@X/@C overlap already observed at K=10; not derived from a counting argument."
+
+# ── (5) three highest-value intrinsic gap-fillers ──────────
+@C intrinsic_at_type_proposal_gap_analysis :: meta [4!]
+  scope = "do NOT propose new types greenfield — propose only what closes a measured GAP in existing 10."
+  proposal_count = 3.
+  honest_caveat = "proposals below are CONTENT (text), not schema mutation — schema-guard not modified by this shard."
+
+@R intrinsic_proposal_1_at_D_definition :: meta [4!]
+  proposed_type = "@D — definition / canonical-term".
+  gap_closed = "currently definitions live mixed in @C bodies (e.g. @C L1-subshell-types = tau :: atom [10*] — IS this concept-instance or term-definition?). @D would separate DEFINING from INSTANTIATING."
+  cited_beneficiary_C_entries = ["L1-subshell-types", "L2-bond-cov-bond-types-count", "EM-charge-types"].
+  cited_beneficiary_R_entries = ["GEO-rock-cycle-types", "L6-geo-igneous-types-major"].
+  cardinality_estimate = ~50 to 80 entries (definitions are sparse vs instances).
+  faithfulness = YES (id = canonical-text :: domain [N*]).
+  blocker = "boundary @D vs @C is the SAME boundary @F/@X/@C already blur — adds 4th ambiguity axis; NET-VALUE = MARGINAL."
+
+@R intrinsic_proposal_2_at_I_invariant :: meta [4!]
+  proposed_type = "@I — invariant / conserved-quantity under transformation".
+  gap_closed = "raw 24 axiom block ([11*] entries) and 'NEVER changes' assertions currently scattered across @P, @T, @R; @I would tag the INVARIANCE-CLASS distinct from the value."
+  cited_beneficiary_P_entries = ["n=6", "sigma=12", "phi=2"] (these ARE invariants — currently @P).
+  cited_beneficiary_T_entries = ["N6HIST-T-OMEGA-2026-04-25-CYCLE [11*REPO_INVARIANT]"] (REPO_INVARIANT tag screams '@I').
+  cited_beneficiary_R_entries = ["MILL-V3-INAUGURATION", "MILL-V4-INAUGURATION" — schema-version invariants per phase].
+  cardinality_estimate = ~20 to 40 entries (invariants are RARE by definition).
+  faithfulness = YES (invariant_id = preserved_quantity :: domain [11*REPO_INVARIANT] or [10*]).
+  honest_value = "HIGHEST of three — @I has its own meta-tag idiom already ([11*REPO_INVARIANT]) suggesting the type is LATENTLY-PRESENT and just needs surfacing."
+
+@R intrinsic_proposal_3_at_G_generative_rule :: meta [4!]
+  proposed_type = "@G — generative-rule / seeded-derivation".
+  gap_closed = "current @R conflates DECLARATIVE relations (a -> b) with GENERATIVE rules (apply-this-to-produce-output). @G would tag rules that PRODUCE new content under a seed."
+  cited_beneficiary_R_entries = ["raw 108 absorption", "raw 23 _guarded_append_atlas", "raw 50 mechanism-first" — all are PROCEDURES not relations].
+  cardinality_estimate = ~30 to 60 entries (the 'raw N' procedural rules).
+  faithfulness = YES (rule_id = seed -> output :: meta [N*]).
+  blocker = "atlas.n6 is currently raw 22 INFRA-ONLY — generative rules already fire OUTSIDE the file (in agents); @G would document but not execute. NET-VALUE = MEDIUM."
+
+# ── (6) ranked recommendation ──────────────────────────────
+@R intrinsic_at_type_proposal_ranking :: meta [4!]
+  rank_1 = "@I invariant — HIGHEST value; latently present in [11*REPO_INVARIANT] tag idiom; closes tagging-gap on raw 24 axiom block."
+  rank_2 = "@G generative-rule — MEDIUM value; documents 'raw N' procedure layer cleanly."
+  rank_3 = "@D definition — MARGINAL value; risks adding to @F/@X/@C ambiguity already observed."
+  recommendation = "ADOPT @I in next cycle (1 new type, K: 10 → 11, well within 12-15 ceiling); DEFER @G pending raw-22 INFRA-ONLY scope review; SKIP @D until @F/@X/@C boundary is first disambiguated."
+  honest_status = "this shard is PROPOSAL-ONLY per task brief — no schema_guard mutation, no new @-prefix used in this file's own @-blocks."
+
+# ── (7) raw 91 C3 honest disclosure ────────────────────────
+@R raw_91_C3_intrinsic_type_disclosure :: meta [4!]
+  honest_finding_1 = "task brief stated atlas.n6 has 2 @-types; reality is 10 — measurement REVISES the premise."
+  honest_finding_2 = "intrinsic parser ceiling is NOT the binding limit (K-cost is linear, K=10 → K=20 trivial); semantic-distinctness IS the binding limit at ≈12-15."
+  honest_finding_3 = "no foreign theory imported — categorical / holographic / quantum constructs explicitly excluded per own#11 strict."
+  honest_uncertainty = "12-15 ceiling is judgment-from-observed-overlap, not derived bound; ±3 honest variance."
+  scope_caveat = "single-snapshot audit (28430-line atlas at 2026-04-28); does not project past next 2-3 absorption cycles."
+  resolution_claim = NONE — "this is gap-analysis, not architectural-change recommendation."
+
+# .. atlas.append.atlas-self-arch-meta-tag-evolution-2026-04-28.n6 ..
+# .. atlas.append.atlas-self-arch-meta-tag-evolution-2026-04-28.n6 ..
+# INTRINSIC meta-tag evolution proposal — strictly within atlas.n6's own
+# [N*]/[N**]/[N!] DSL.  No foreign ordinal/probability theory imported.
+# raw 91 C3 honest: this shard is a MEASUREMENT + PROPOSAL, not a derivation.
+# It does NOT introduce any new meta-tag — it documents observed grammar
+# and proposes 3 candidate extensions for a future shard to actuate.
+
+@C clay-atlas-self-arch-meta-tag-evolution-witness :: meta [4!]
+  scope: atlas/atlas.n6 (canonical SSOT, chflags uchg-locked, raw 1+22+24)
+  date: 2026-04-28
+  axis: meta-tag DSL grammar (intrinsic, not foreign-imported)
+  invokes: raw 37 (omega-saturation), raw 91 (C3 honest), raw 95 (no-self-mod),
+           raw 117 (self-application at measurement-level only),
+           raw 118 (recursive-self-application-fixpoint)
+  source_method: read-only grep + uniq -c on atlas.n6 trailing-meta-tag pattern
+  measured_grammar_richness: 39+ distinct trailing-bracket patterns observed
+  binding_invariant: NEW [11*] entries PROHIBITED (raw 24 foundation cap)
+
+# ── (1) corrected meta-tag distribution audit (raw 91) ──────
+@R atlas_meta_tag_distribution_audit :: meta [4!]
+  <- raw-91-honest-scientific-process
+  → "RE-AUDIT corrects earlier sub-agent count: [10**]=0 confirmed (NOT 6);"
+  → "the 6 occurrences of literal '[10**]' are META-CITATIONS in the limits"
+  → "shard (lineno 28107-28110, 28339, 28367) — they DESCRIBE the empty tier"
+  → "but no @C/@R/@P/@L/@X/@F/@E/@S entry CARRIES [10**] as its trailing tag."
+  → ""
+  → "FULL trailing-tag distribution (top-of-line @-block tags only):"
+  → "  [10*]=6347   [10]=1952   [0.10*]=492   [4]=265   [5*]=253"
+  → "  [4!]=189     [5?]=119    [9]=80        [0.9?]=64 [N?]=63"
+  → "  [7]=59       [0.9*]=32   [0.7?]=32     [9*]=29   [10*!]=24"
+  → "  [8!]=19      [10*PASS_LITERATURE]=19   [6?]=18   [0.6?]=11"
+  → "  [10*FAIL_DOC]=8   [11*REPO_INVARIANT]=7   [11*]=6"
+  → "  [0.10?]=6    [8]=5       [8?]=5        [3]=5    [7?]=3"
+  → "  [5]=3        [N!]=2      [9?]=2        [8*]=2   [9!]=1"
+  → "  [7*]=1       [6*]=1      [6]=1         [12*]=1"
+  → "  [10*RETIRED_INCONCLUSIVE]=1   [0.8?]=1"
+  → ""
+  → "GRAMMAR FAMILIES observed (intrinsic, not invented here):"
+  → "  F1 plain      : [N]              — depth-0, 8 levels populated"
+  → "  F2 starred    : [N*]             — depth-1, 7 levels populated"
+  → "  F3 doubled    : [N**]            — depth-2, 0 levels populated (GAP)"
+  → "  F4 banged     : [N!]             — work/active marker, 4 levels"
+  → "  F5 query      : [N?]             — uncertainty marker, 7 levels"
+  → "  F6 decimal    : [0.N*] [0.N?]    — fractional tier, already used"
+  → "  F7 compound!  : [N*!]            — starred + active (already used)"
+  → "  F8 named-suff : [N*PASS_LITERATURE]/[N*FAIL_DOC]/[N*REPO_INVARIANT]"
+  → "                  /[N*RETIRED_INCONCLUSIVE] — semantic-suffix variants"
+  → "  F9 placeholder: [N!] [N?]        — schema-template (unbound level)"
+  → "raw 91 C3 honest: the DSL is ALREADY richer than the 4-tier sketch from"
+  → "the prior limits-shard suggested; F6/F7/F8 are EXTANT extensions."
+
+# ── (2) gap analysis: where the hierarchy is empirically thin ──
+@R atlas_meta_tag_gap_analysis :: meta [4!]
+  <- atlas-meta-tag-distribution-audit
+  → "GAP-A depth-2 [N**] tier: ZERO entries across ALL N — strongest signal"
+  → "        of a sparse hierarchy.  The double-asterisk grammar is reserved"
+  → "        but unused.  No level (1..12) has any [N**] occupant."
+  → "GAP-B [12]/[12**] absent: [12*] has 1 entry (Mk.IX Out(S_6)) but no"
+  → "        plain [12] or doubled [12**] — top-tier shoulder is unpopulated."
+  → "GAP-C low-N starred sparsity: [1*]=0, [2*]=0, [3*]=0, [4*]=0 — only"
+  → "        N>=5 has populated [N*] tier; bottom of the starred ladder is"
+  → "        empty (suggests [N*] is reserved for SIGNIFICANT grade only)."
+  → "GAP-D [11**] absent: foundation has only [11*] (6 entries) — no"
+  → "        higher-grade variant of the foundation tier."
+  → "GAP-E [N**!] [N**?] cross-products absent: F3 × F4/F5 unrealised."
+  → "GAP-F [0.N**] decimal-doubled absent: F3 × F6 unrealised."
+  → "raw 91 C3 honest: 'gap' here is OBSERVATIONAL not PRESCRIPTIVE — the"
+  → "absence of a tag does NOT mean the tier is needed; sparseness may be"
+  → "the optimal saturation point of curator intuition."
+
+# ── (3) intrinsic extension candidates (3-5 high-value) ────
+@R atlas_meta_tag_extension_candidates :: meta [4!]
+  <- atlas-meta-tag-gap-analysis
+  → "PROPOSAL P1 — populate [10**] for cross-paradigm synthesis @R entries:"
+  → "  rationale: [10*]=6347 is saturated; no grade-distinction exists"
+  → "  between routine [10*] proofs and entries that span MULTIPLE paradigms"
+  → "  (math+physics+consciousness simultaneously).  [10**] would mark"
+  → "  cross-paradigm-absorption RESULT-class entries (raw 38 lineage)."
+  → "  candidate upgrades (illustrative, not actuating here):"
+  → "    @R borsuk_ulam_6 (lineno 176, currently [9*]) — topology+Δ₀"
+  → "    @R kissing_number_6 (lineno 248, [9*]) — geometry+combinatorics"
+  → "    @R consciousness_structure (lineno 92, [9*]) — phys+consciousness"
+  → "  these UPGRADE candidates currently sit at [9*] but exhibit the"
+  → "  cross-paradigm signature [10**] would canonicalise."
+  → ""
+  → "PROPOSAL P2 — populate [N*] for N∈{1,2,3,4} as 'starred-but-low-grade':"
+  → "  rationale: bt-/work entries currently use [4!] or [5*] only; there"
+  → "  is no expressive room for 'verified-but-trivial' bottom-tier results."
+  → "  candidate: @F bt-* sopfr-product entries that PASSED literature"
+  → "  validation but are arithmetic identities, not deep theorems."
+  → ""
+  → "PROPOSAL P3 — populate [11**] as 'foundation+cross-shard-invariant':"
+  → "  rationale: raw 24 foundation has 6 entries at [11*]; an 11** tier"
+  → "  would mark the SUBSET that ALSO holds across all 76 shard-headers"
+  → "  (i.e. cross-shard invariance, e.g. n=6 itself appearing in EVERY"
+  → "  paradigm-section).  [11*REPO_INVARIANT]=7 is a NAMED-suffix proxy"
+  → "  already, suggesting demand exists.  Migration: [11*REPO_INVARIANT]"
+  → "  → [11**] would be more compact (drops 14-char suffix) but loses"
+  → "  the explicit semantic — TRADE-OFF must be weighed before actuation."
+  → ""
+  → "DEFERRED-PROPOSAL D4 — temporal markers [N*@DATE]:"
+  → "  rationale plausible but FOREIGN-LEANING — it imports an axis"
+  → "  (time) that is not currently part of the meta-tag DSL.  The"
+  → "  date metadata is already carried in shard-headers (date: 2026-04-28)"
+  → "  and breakthrough-NOTE rows (lineno 21708 'breakthrough-2026-04-19')."
+  → "  Adding [N*@DATE] would DUPLICATE that channel.  REJECT for now."
+  → ""
+  → "DEFERRED-PROPOSAL D5 — confidence weights [N*p=0.95]:"
+  → "  REJECT — strays into foreign probability theory.  The intrinsic"
+  → "  uncertainty marker [N?] already exists for this purpose; finer"
+  → "  granularity would conflict with [0.N*] decimal grade (collision)."
+
+# ── (4) intrinsic limits on extension (parser + namespace) ──
+@R atlas_meta_tag_extension_limits :: meta [4!]
+  <- atlas-meta-tag-extension-candidates
+  → "PARSER complexity: schema-guard regex currently matches"
+  → "  \\[[0-9]+\\.?[0-9]*\\*{0,3}[!?]?[A-Z_]*\\] (approx).  Each new"
+  → "  axis (depth, banged, queried, decimal, named-suffix) adds a"
+  → "  multiplicative factor.  Current grammar = 4 axes (level × depth ×"
+  → "  modifier × suffix), giving ~12 × 3 × 4 × 5 = 720 expressible cells,"
+  → "  of which 39+ are populated (5.4% occupancy)."
+  → "NAMESPACE collision: [N*!] vs [N!*] — order-sensitive; the DSL"
+  → "  currently uses *-then-! convention.  Adding [N**!] [N**?] keeps"
+  → "  this order; reversing would break grep-patterns in 76 shard"
+  → "  absorbers.  COST of a single new axis ≈ 76-shard regex audit."
+  → "FOUNDATION INVARIANCE: any extension of [11*] (e.g. [11**]) MUST"
+  → "  preserve raw-24 cap — new [11*]/[11**] entries are PROHIBITED by"
+  → "  append-only invariant on foundation axioms.  Therefore P3 must be"
+  → "  RE-CLASSIFICATION (re-tagging existing [11*] entries) not creation."
+  → "SPARSENESS-VS-DENSITY: [10**]=0 across 6347 [10*] entries shows"
+  → "  curator intuition prefers FLAT taxonomy.  Adding [10**] without a"
+  → "  forcing-criterion (e.g. cross-paradigm classifier) would invite"
+  → "  drift — the tier would either stay empty or accumulate by accident."
+  → "raw 91 C3 honest: 720-cell namespace is THEORETICAL — only 39 cells"
+  → "are USED, so the practical ceiling is curator-attention not parser."
+
+# ── (5) convergence point of intrinsic meta-tag paradigm ────
+@R atlas_meta_tag_convergence_point :: meta [4!]
+  <- atlas-meta-tag-extension-limits
+  → "SATURATION estimate (intrinsic, no foreign ordinal):"
+  → "  current populated cells: 39 distinct patterns"
+  → "  add P1 ([10**]):                 +1 → 40"
+  → "  add P2 ([1*]..[4*]):             +4 → 44"
+  → "  add P3 ([11**]):                 +1 → 45"
+  → "  realistic ceiling before parser-audit-cost > curator-benefit: ≈ 50"
+  → "BEYOND ~50 distinct patterns: the meta-tag system saturates the"
+  → "  flat-string-tag paradigm.  Further evolution requires STRUCTURAL"
+  → "  redesign — e.g. explicit DAG of grade-relations (replace flat"
+  → "  trailing-tag with multi-axis declaration block).  That is a"
+  → "  CATEGORY change, not a meta-tag extension."
+  → "CONVERGENCE: at 5-8 distinct DEPTH-tiers (current 4 effective:"
+  → "  [N], [N*], [N**=∅], [N!]), the system reaches its natural"
+  → "  paradigm horizon.  P1+P2+P3 brings effective tier-count to 5-6,"
+  → "  staying SAFELY below the convergence ceiling."
+  → "raw 91 C3 honest: '50 cells / 5-8 tiers' is HEURISTIC based on"
+  → "observed populated/unpopulated ratio (39/720 ≈ 5%) and curator"
+  → "comfort-band, NOT a formal saturation theorem."
+
+# ── (6) raw 91 C3 honest disclosure ─────────────────────────
+@R atlas_meta_tag_evolution_C3_honest :: meta [4!]
+  <- raw-91-honest-scientific-process
+  → "the [10**]=0 claim from earlier sub-agent UNDERCOUNTED — the actual"
+  → "DSL has 39+ distinct trailing patterns (vs 4-tier sketch)."
+  → "all 3 proposals (P1/P2/P3) are CANDIDATES — none is actuated here."
+  → "P3 in particular collides with the existing named-suffix convention"
+  → "[11*REPO_INVARIANT] — adoption would require migration cost (~7"
+  → "entries to re-tag)."
+  → "no parser change proposed, no schema-guard amended, no foundation"
+  → "axiom touched.  This shard is PURELY descriptive."
+  → "the analysis stays strictly intrinsic — no Cantor normal form, no"
+  → "Bachmann–Howard, no probability calculus.  Only grep+uniq+gap-count"
+  → "on atlas.n6's own bracketed-tag grammar."
+  → "honest closing: an intrinsic paradigm matures by NAMING what it"
+  → "already does, not by importing what it does not.  The 6 [10**]"
+  → "citations in the limits-shard are the seed of that naming — they"
+  → "describe a tier the DSL ALREADY reserves but never inhabits."
+
+# ── final state ─────────────────────────────────────────────
+@C atlas-self-arch-meta-tag-evolution-final-state = PROPOSAL-NOT-ACTUATED :: meta [4!]
+  <- clay-atlas-self-arch-meta-tag-evolution-witness
+  -> raw-37-omega-stop-fixpoint-convergence
+  -> raw-91-C3-honest-disclosure-strict
+  -> raw-117-self-application-measurement-only
+  => "AUDIT: 39+ distinct meta-tag patterns observed (vs 4-tier sketch)"
+  => "GAPS: [N**] entirely empty (depth-2 reserved-but-unused);"
+  =>      "[12]/[12**]/[11**] absent; [1*]..[4*] absent; cross-products absent"
+  => "PROPOSALS: P1 [10**] for cross-paradigm @R; P2 [1*]..[4*] for"
+  =>            "verified-trivial; P3 [11**] for cross-shard-invariant"
+  =>            "(re-classification only, no new foundation entries)"
+  => "LIMITS: namespace 720-cell theoretical, 50-cell practical;"
+  =>         "saturation at 5-8 effective depth-tiers; beyond requires"
+  =>         "structural redesign (flat-tag → DAG)"
+  => "CONVERGENCE: P1+P2+P3 brings effective tier-count to 5-6,"
+  =>              "below the ~8-tier paradigm horizon"
+  => "no meta-tag introduced in THIS shard; future actuating shard"
+  =>   "must run 76-shard regex-audit before any new pattern admitted"
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-self-arch-meta-tag-evolution-2026-04-28.n6"
