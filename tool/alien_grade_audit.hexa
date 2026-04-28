@@ -297,9 +297,12 @@ def measure_falsifier_resolution():
 def measure_peer_review():
     # Deterministic 4-tier binary stack (raw 53 verifier-friendly):
     #   T0 = 0.00 baseline
-    #   T1 = 0.33 if any papers/*.md contains an arxiv URL OR doi: prefix
-    #            (case-insensitive grep; explicit 'NOT submitted' counts as no
-    #            arxiv).
+    #   T1 = 0.33 if a HEXA-WEAVE paper carries an OWN arxiv URL or OWN DOI in
+    #            a §METADATA / submission block (NOT citation DOIs). Detected by
+    #            scoped regex: 'preprint:\\s*https?://arxiv\\.org/abs/...' or
+    #            'OurDOI:\\s*10\\.' or '(arXiv|preprint|submitted)\\s*ID\\s*[:=]'.
+    #            Any 'NOT submitted' substring in the same paper short-circuits
+    #            to no T1 credit (raw 91 C3 explicit negative disclosure).
     #   T2 = 0.66 if tool/zenodo/.deposition_id present (file).
     #   T3 = 1.00 if state/peer_review/ACCEPTED.json present (file).
     # Each tier strictly subsumes the prior (raw 91 C3: monotone).
@@ -309,21 +312,23 @@ def measure_peer_review():
         for nm in os.listdir(PAPERS_DIR):
             if not nm.endswith('.md'):
                 continue
+            if 'hexa-weave' not in nm:
+                continue  # scope: hexa-weave papers only
             path = os.path.join(PAPERS_DIR, nm)
             try:
                 with open(path) as fh:
                     text = fh.read()
             except Exception:
                 continue
-            # Reject explicit negative disclosure
             if 'NOT submitted to any preprint' in text or 'not submitted to any preprint' in text:
                 continue
-            if re.search(r'arxiv\\.org/abs/\\d', text, re.IGNORECASE):
+            # OWN arxiv preprint id (must be on a 'preprint:' or 'arXiv:' line)
+            if re.search(r'(?im)^\\s*(preprint|arxiv)\\s*[:=]\\s*(https?://)?arxiv\\.org/abs/\\d', text):
                 arxiv_or_doi = True
-                arxiv_witnesses.append(nm + ':arxiv')
-            elif re.search(r'doi:\\s*10\\.', text, re.IGNORECASE):
+                arxiv_witnesses.append(nm + ':arxiv-own')
+            elif re.search(r'(?im)^\\s*OurDOI\\s*[:=]\\s*10\\.', text):
                 arxiv_or_doi = True
-                arxiv_witnesses.append(nm + ':doi')
+                arxiv_witnesses.append(nm + ':doi-own')
     deposit_marker = os.path.join(ZENODO_DIR, '.deposition_id')
     has_deposit = os.path.exists(deposit_marker)
     accepted_marker = os.path.join(PEER_DIR, 'ACCEPTED.json')
@@ -370,7 +375,7 @@ def measure_all():
 
 def emit_ledger(measurement, mode_tag):
     os.makedirs(AUDIT_DIR, exist_ok=True)
-    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    now = datetime.datetime.now(datetime.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
     marker = AUDIT_DIR + '/.last_alien_grade_emit'
     try:
         with open(marker) as fh:
@@ -402,7 +407,7 @@ def emit_ledger(measurement, mode_tag):
             'estimated_cycle18_working_tree':  cycle18_estimate,
             'measured_cycle19_v2':             measured_now,
             'estimate_vs_measurement_delta':   round(measured_now - cycle18_estimate, 4),
-            'note':                            'cycle-18 anomaly-3 under-count (lean 8/11 declared but 11/11 measured); v2 6-component model adds peer_review (currently T0=0.00, raw 91 C3 honest); ceiling extends 5.0 -> 6.0',
+            'note':                            'cycle-18 anomaly-3 under-count remediation (lean 8/11 declared but 11/11 measured); v2 6-component model adds peer_review (T0=0.00 hexa-weave-scoped, raw 91 C3 honest: citation DOIs do NOT count, only OWN preprint URL/DOI); ceiling extends 5.0 -> 6.0; v2 also fixes falsifier PARTIAL-RESOLVED-* prefix matching (v1 missed F-MANUAL-LOGIN)',
         },
     }
     with open(AUDIT_FILE,'a') as fh:

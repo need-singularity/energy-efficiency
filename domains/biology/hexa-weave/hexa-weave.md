@@ -4,12 +4,14 @@ axis: biology
 sisters:
   - hexa-nanobot
   - hexa-ribozyme
+  - hexa-virocapsid
 requires:
   - to: synbio
   - to: crispr-gene-editing
   - to: bio-pharma
   - to: hexa-nanobot
   - to: hexa-ribozyme
+  - to: hexa-virocapsid
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, IDEAS, METRICS, RISKS, DEPENDENCIES, TIMELINE, TOOLS, TEAM, REFERENCES], strict=false, order=sequential, prefix="§") -->

@@ -3,9 +3,14 @@ domain: hexa-ribozyme
 axis: biology
 sister_of: hexa-weave
 sister_of_2: hexa-nanobot
+sisters:
+  - hexa-weave
+  - hexa-nanobot
+  - hexa-virocapsid
 requires:
   - to: hexa-weave
   - to: hexa-nanobot
+  - to: hexa-virocapsid
   - to: synbio
   - to: crispr-gene-editing
 ---

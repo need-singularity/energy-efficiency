@@ -1,0 +1,144 @@
+{
+  "kick_id": "2026-04-28_lean4-w12-encodable-strand-cycle20",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T00:00:00Z",
+  "fan_out": "1/1",
+  "cycle": 20,
+  "phase": "W12",
+  "mission": "Collapse the 5 strand-ZFC encoding axioms (axiom_strand_zfc_witness_{amino,rna,dna,small_ligand,antibody}) into 5 derived noncomputable defs by introducing Encodable instances for the monomer alphabets (AminoAcid / RNANucleotide / DNANucleotide) and composing Encodable.encode (or String.length for SMILES) with the standard von Neumann ZFSet.mk ∘ PSet.ofNat injection.",
+  "parent_proposals": [
+    "proposals/hexa_weave_cycle20_closure_atom_w11_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w12_encodable_strand_2026_04_28.md"
+  ],
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/Foundation/Strand.lean",
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w12_encodable_strand_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w12-encodable-strand-cycle20_omega_cycle.json"
+    ]
+  },
+  "conversions": [
+    {
+      "target_axiom": "axiom_strand_zfc_witness_amino",
+      "from_state": "axiom : List AminoAcid → ZFSet.{0}",
+      "to_state": "noncomputable def : ZFSet.mk (PSet.ofNat (Encodable.encode seq))",
+      "no_sorry": true,
+      "no_axiom_keyword": true
+    },
+    {
+      "target_axiom": "axiom_strand_zfc_witness_rna",
+      "from_state": "axiom : List RNANucleotide → ZFSet.{0}",
+      "to_state": "noncomputable def : ZFSet.mk (PSet.ofNat (Encodable.encode seq))",
+      "no_sorry": true,
+      "no_axiom_keyword": true
+    },
+    {
+      "target_axiom": "axiom_strand_zfc_witness_dna",
+      "from_state": "axiom : List DNANucleotide → ZFSet.{0}",
+      "to_state": "noncomputable def : ZFSet.mk (PSet.ofNat (Encodable.encode seq))",
+      "no_sorry": true,
+      "no_axiom_keyword": true
+    },
+    {
+      "target_axiom": "axiom_strand_zfc_witness_small_ligand",
+      "from_state": "axiom : String → ZFSet.{0}",
+      "to_state": "noncomputable def : ZFSet.mk (PSet.ofNat smiles.length)",
+      "no_sorry": true,
+      "no_axiom_keyword": true,
+      "raw_91_c3_disclosure": "String.length-based injection, NOT SMILES-content-injective. Original axiom was uninterpreted symbol with no injectivity claim, so concrete def discharges axiom-keyword footprint. Faithful Char-by-Char injection deferred to W13+ (requires Encodable Char absent from mathlib4)."
+    },
+    {
+      "target_axiom": "axiom_strand_zfc_witness_antibody",
+      "from_state": "axiom : List AminoAcid → List AminoAcid → ZFSet.{0}",
+      "to_state": "noncomputable def : ZFSet.mk (PSet.ofNat (Nat.pair (Encodable.encode heavy) (Encodable.encode light)))",
+      "no_sorry": true,
+      "no_axiom_keyword": true
+    }
+  ],
+  "new_definitions": [
+    {
+      "name": "AminoAcid.encodable",
+      "kind": "instance",
+      "type": "Encodable AminoAcid",
+      "method": "manual 22-letter case table (encode + decode + encodek by cases)"
+    },
+    {
+      "name": "RNANucleotide.encodable",
+      "kind": "instance",
+      "type": "Encodable RNANucleotide",
+      "method": "manual 4-letter case table"
+    },
+    {
+      "name": "DNANucleotide.encodable",
+      "kind": "instance",
+      "type": "Encodable DNANucleotide",
+      "method": "manual 4-letter case table"
+    },
+    {
+      "name": "Strand.encodeNat",
+      "kind": "def",
+      "type": "Strand → ℕ",
+      "method": "Nat.pair (constructor index, payload encoding)"
+    }
+  ],
+  "imports_added": [
+    "Mathlib.Logic.Equiv.List",
+    "Mathlib.SetTheory.ZFC.Basic"
+  ],
+  "user_constraint_no_new_mathlib": "honored — Encodable, List.encodable, PSet.ofNat, ZFSet.mk are all standard mathlib4 (no axiom additions; no fabricated novelty per raw 91 C3)",
+  "raw_47_cross_repo": [
+    "Mathlib.Logic.Encodable.Basic",
+    "Mathlib.Logic.Equiv.List",
+    "Mathlib.SetTheory.ZFC.PSet",
+    "Mathlib.SetTheory.ZFC.Basic"
+  ],
+  "axiom_count": {
+    "pre_w12_cycle20_w11_w14": 6,
+    "post_w12": 1,
+    "delta": -5,
+    "residual_axiom_keywords": [
+      "axiom_robin_hardy_wright_ax1_tail"
+    ]
+  },
+  "verification": {
+    "lake_build": "PASS (8 jobs, no errors, no warnings)",
+    "axiom_count_tool": {
+      "command": "/Users/ghost/core/hexa-lang/hexa tool/lean4_axiom_count_check.hexa --expected 1",
+      "result": "PASS (actual=1, delta=0)"
+    },
+    "raw_138_sentinel": "__W12_ENCODABLE_STRAND_RESULT__ PASS"
+  },
+  "raw_91_c3": [
+    "Encodable is mathlib4-standard, not fabricated novelty (Mathlib.Logic.Encodable.Basic)",
+    "Round-trip preservation holds at the ℕ layer for amino-acid/RNA/DNA/antibody branches; smallLigand uses String.length (intentionally non-injective on String content; original axiom was uninterpreted symbol)",
+    "ZFSet.mk ∘ PSet.ofNat is the standard von Neumann ordinal injection; injective on ℕ",
+    "axiom_strand_zfc_witness signature Strand → ZFSet.{0} byte-identical pre- and post-W12; all downstream callers (StrandClass_ZFC, MKBridge.lean) compile unchanged",
+    "raw 142 D2 revertibility: git checkout HEAD~1 -- lean4-n6/N6/MechVerif/Foundation/Strand.lean lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+  ],
+  "falsifiers": {
+    "F-W12-1": {
+      "status": "PASS",
+      "claim": "5 strand-ZFC encoding axioms collapsible via Encodable + PSet.ofNat composition",
+      "witness": "this kick + W12 proposal + lake build PASS + axiom_count_check PASS"
+    },
+    "F-W12-2": {
+      "status": "PREREGISTERED",
+      "claim": "smallLigand branch uses String.length (not SMILES-content injection); upgrade to Encodable Char-backed injection or written exemption",
+      "deadline": "2026-07-28 (90d MVP)"
+    },
+    "F-W9-strand-encoding": {
+      "status": "PARTIAL-RESOLVED",
+      "claim": "full constructive Encodable Strand instance; round-trip decodeNat",
+      "remaining_work": "Strand.decodeNat (W13+); current scope is encode direction only via Strand.encodeNat"
+    }
+  },
+  "next_cycle_priorities": [
+    "W13 axiom_robin_hardy_wright_ax1_tail mechanical attempt (Robin 1984 + Hardy-Wright 322/328 + Wigert 1907 asymptotic separation)",
+    "F-W12-2 closure: Encodable Char instance or written exemption",
+    "lean_mechanical v3 alien-grade extension: total-axiom basis denominator (post-W13)",
+    "Strand.decodeNat round-trip inverse (full Encodable Strand instance)"
+  ]
+}

@@ -5,9 +5,11 @@ sister_of: hexa-weave
 sisters:
   - hexa-weave
   - hexa-ribozyme
+  - hexa-virocapsid
 requires:
   - to: hexa-weave
   - to: hexa-ribozyme
+  - to: hexa-virocapsid
   - to: synbio
   - to: therapeutic-nanobot
 ---

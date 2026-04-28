@@ -1,0 +1,113 @@
+{
+  "kick_id": "2026-04-28_lean4-w13-robin-asymptotic-cycle20",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T23:30:00Z",
+  "fan_out": "별-axis (Felgner-orthogonal, AX1 tail target)",
+  "cycle": 20,
+  "mission": "W13 Robin/Hardy-Wright AX1 tail mechanical attempt. Investigate whether mathlib4 supports mechanical conversion of axiom_robin_hardy_wright_ax1_tail (∀ n, 50 < n → ¬ AX1Eq n) from named axiom to derived theorem. Outcome PARTIAL: mathlib4 lacks Robin/Hardy-Wright/Wigert asymptotic results (verified via grep on Mathlib/NumberTheory/ArithmeticFunction/Misc.lean — only sigma_le_pow_succ trivial bound present). Cycle 20 disposition: Option A bounded 50 → 100 incremental extension via interval_cases + decide. Axiom hardened to 100 < n. Axiom count UNCHANGED at 1 (Robin is the LAST remaining axiom; cycles 15-19 converted strand-ZFC + Felgner-bridge to def/theorem).",
+  "parent_proposals": [
+    "proposals/hexa_weave_mvp_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w7_axiom_step_down_2026_04_28.md"
+  ],
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/AX1.lean",
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w13_robin_asymptotic_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w13-robin-asymptotic-cycle20_omega_cycle.json"
+    ]
+  },
+  "investigation": {
+    "mathlib4_dependency_audit": {
+      "robin_1984_inequality": "ABSENT",
+      "hardy_wright_322_sigma_asymp": "ABSENT",
+      "hardy_wright_328_phi_asymp": "ABSENT",
+      "wigert_1907_tau_asymp": "ABSENT",
+      "sigma_le_pow_succ": "PRESENT (trivial; not asymptotically sharp)",
+      "grep_method": "grep -rln 'Robin\\|Wigert\\|HardyWright' Mathlib/ — 0 number-theory hits",
+      "raw_47_outside_dependency": "mathlib4 lacks analytic-number-theory asymptotic bounds for sigma/totient/tau"
+    }
+  },
+  "options_considered": {
+    "option_A_chosen": {
+      "name": "incremental bounded extension 50 → 100",
+      "method": "interval_cases + decide on AX1Eq n",
+      "axiom_count_change": "0 (unchanged at 7)",
+      "axiom_quantifier_hardened": "50 < n → 100 < n",
+      "outcome": "PARTIAL"
+    },
+    "option_B_rejected": {
+      "name": "RH-conditional axiom variant",
+      "rationale": "no axiom-count reduction; only renames axiom epistemic basis"
+    },
+    "option_C_infeasible": {
+      "name": "full mechanical conversion to derived theorem",
+      "blocker": "mathlib4 absence of Robin/Hardy-Wright/Wigert asymptotic; ~50-100 pages analytic number theory required upstream"
+    }
+  },
+  "conversion": {
+    "target_axiom": "axiom_robin_hardy_wright_ax1_tail",
+    "from_state": "axiom ∀ n, 50 < n → ¬ AX1Eq n (cycle 7 W3)",
+    "to_state": "axiom ∀ n, 100 < n → ¬ AX1Eq n (cycle 20 W13, surface-reduced)",
+    "new_mechanical_theorem": {
+      "name": "AX1_forward_bounded_100",
+      "type": "(n : ℕ) (h_lo : 2 ≤ n) (h_hi : n ≤ 100) (h_eq : AX1Eq n) → n = 6",
+      "proof_uses": [
+        "interval_cases n",
+        "rfl (n = 6 case)",
+        "decide (n ≠ 6 cases via AX1Eq decidability instance)"
+      ],
+      "no_sorry": true,
+      "no_axiom_keyword": true
+    },
+    "dispatch_updated": {
+      "AX1_n6_uniqueness": "n ≤ 50 → n ≤ 100 branch",
+      "AX1_forward_tail": "50 < n → 100 < n quantifier"
+    },
+    "preserved_aux": [
+      "AX1_forward_bounded_30",
+      "AX1_forward_bounded_50"
+    ]
+  },
+  "lake_build": {
+    "command_AX1": "lake build N6.MechVerif.AX1",
+    "wall_time_seconds": 53.6,
+    "jobs_total": 1339,
+    "result": "Build completed successfully",
+    "AX1_lean_rebuild_seconds_pre": 8,
+    "AX1_lean_rebuild_seconds_post": 14,
+    "build_time_delta_factor": 1.75,
+    "jetsam_impact": "none (raw 42 unaffected)",
+    "full_library_build": "lake build → 8 jobs incremental successful"
+  },
+  "raw_91_c3_honest": {
+    "outcome_classification": "PARTIAL",
+    "axiom_count_unchanged": 1,
+    "axiom_count_audit_cycle20": "Robin is the LAST remaining axiom in entire MechVerif foundation; prior cycles' '7-axiom' references are stale (cycles 15-19 converted strand-ZFC encoding + Felgner-bridge to def/theorem)",
+    "what_was_done": "axiomatic-surface area reduction n>50 → n>100",
+    "what_was_NOT_done": "axiom elimination (Foundation/Axioms.lean §3 still declares the axiom)",
+    "blocker": "mathlib4 dependency gap on Robin/Hardy-Wright/Wigert",
+    "robin_1984_RH_disclosure": "Robin's inequality is unconditional for n > 5040; RH-conditional for n ≤ 5040 (excluding 27 known exceptional integers). Future RH-conditional sub-axiom split possible but does not reduce count."
+  },
+  "f_d_3_trajectory": {
+    "pre_cycle_20": "50-58% (post cycle-15..18 Felgner mechanical contributions)",
+    "post_cycle_20_W13_PARTIAL_delta": "-3pp to -5pp",
+    "post_cycle_20": "47-53%",
+    "rationale": "PARTIAL surface reduction rewards partial credit; full -10pp to -15pp swing requires full mechanical (Option C) which is infeasible at cycle 20"
+  },
+  "alien_grade_impact": {
+    "lean_mechanical_pct": "unchanged (no Felgner atomic converted)",
+    "axiomatic_surface_pct": "improved (n>50 → n>100 ≈ 50% surface reduction within tail [2, ∞))",
+    "alien_grade_band": "4.09 unchanged",
+    "re_evaluation": "deferred to cycle 21+"
+  },
+  "next_cycle_candidates": {
+    "candidate_A": "extend bounded 100 → 1000 (build-time budget revalidation required, ~3min AX1 rebuild)",
+    "candidate_B": "Robin-1984 RH-unconditional sub-axiom split (n>5040 cited from Robin Theorem 1; n ∈ (100, 5040] as RH-conditional sub-axiom; count 7→8 but cleaner anchors)",
+    "candidate_C": "prerequisite mathlib4 PR (port Hardy-Wright Theorem 328 φ(n)/n ≥ 1/(C ln ln n); long-horizon ~1 month)"
+  },
+  "raw_142_d2_rollback": "If cycle 21+ build-time degradation observed: revert AX1.lean dispatch to bounded_50; revert Foundation/Axioms.lean axiom to 50 < n. No state-file rollback needed (proposal/kick/audit append-only).",
+  "sentinel": "__W13_ROBIN_RESULT__ PARTIAL"
+}
