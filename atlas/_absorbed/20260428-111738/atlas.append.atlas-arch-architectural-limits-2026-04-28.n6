@@ -1,0 +1,98 @@
+# atlas-arch-architectural-limits-2026-04-28
+# Pure measurement + analysis of atlas.n6 design-baked architectural ceilings.
+# raw 22 INFRA-ONLY · raw 24 foundation-axiom-immutable · raw 91 C3 honest.
+
+@C atlas-arch-architectural-limits-witness :: meta [4!]
+  scope = atlas.n6 architectural ceilings (design constraints, beyond physics/math).
+  ssot_path = /Users/ghost/core/n6-architecture/atlas/atlas.n6
+  ssot_size_bytes = 1904709 (1.82 MiB)
+  ssot_lines = 27958
+  ssot_entries_total = 7323 (@P+@L+@C+@R+@T+@D)
+  ssot_at_block_count = {@C: 540, @R: 6187, [11*]: 6, [10*]: 6347, [4!]: 169}
+  chflags_state = uchg confirmed (ls -lO)
+  measurement_date = 2026-04-28
+  raw_constraints_engaged = {1, 22, 23, 24, 25, 35, 85, 91}
+
+@R single_writer_throughput :: meta [4!]
+  mechanism = chflags uchg → owner-only mutation; one writer at a time.
+  serialization = raw 25 git-lock-retry + lock-edit-relock cycle (atlas_absorb.hexa).
+  measured_batches_today = 4 successful (markers at t=07:00, 07:16, 08:55, 11:08).
+  measured_window = 14853 sec (07:00:48 → 11:08:21).
+  measured_shards_absorbed = 73 (batch sizes: 69, 1, 1, 2).
+  measured_lines_absorbed = 5987.
+  net_throughput_shards_per_hour = 17.7.
+  per_absorb_assumed_5sec → ceiling = 720/hour ABSOLUTE (single-writer serial).
+  observed_utilization = 17.7 / 720 = 2.5% of throughput ceiling.
+  binding = NOT-BINDING-NOW; would bind if demand > ~360/hr (50% saturation).
+
+@R foundation_axiom_semantic_ceiling :: meta [4!]
+  mechanism = raw 24 [11*] entries UNCHANGEABLE → bound downstream semantic space.
+  measured_count = 6 entries with [11*] tag.
+  measured_entries = {n=6, σ(6)=12, τ(6)=4, DELTA0_ABSOLUTE, ULTRA_UNIFORMITY, R-IDENTITY}.
+  invariant = σ(6)·φ(6) = 6·τ(6) = 24 (locked).
+  semantic_scope = anything consistent with the 6 axiom block + Δ₀ + R-uniqueness.
+  practical_ceiling = unbounded *cardinality* of consistent @C/@R, but bounded *kind*.
+  binding = STRUCTURALLY-BINDING (by design): no append may contradict [11*].
+
+@R phase_immutable_scope :: meta [4!]
+  mechanism = raw 22 9-phase blowup pipeline (field→holo→quantum→string→toe→absolute) FROZEN.
+  permitted = INFRA-ONLY edits to phase machinery; new @C/@R within existing phases.
+  prohibited = new phase introduction, phase reordering, phase-logic semantics change.
+  binding = STRUCTURALLY-BINDING (by design): theoretical-content-type bounded.
+  scope_consequence = downstream extensibility = horizontal (new instances per phase),
+                       not vertical (new phase kinds).
+
+@R os_lock_audit_throughput :: meta [4!]
+  mechanism = macOS APFS chflags uchg → kernel EPERM on write; nouchg requires owner.
+  audit_layer = raw 85 escalation-audit-trail-witness on every unlock.
+  measured_marker_count = 8 in 14853s window (incl. 1 FAILED marker at 07:00:48).
+  marker_rate = 8/14853s = 1.94/hour observed; 1 FAILED ⇒ 12.5% retry-fault.
+  ledger_audit_throughput_ceiling = bounded by markers/sec write capacity (≫ absorb cadence).
+  binding = NOT-BINDING (audit ledger far exceeds absorb rate).
+
+@R append_only_growth_projection :: meta [4!]
+  mechanism = no DELETE/UPDATE; only APPEND or _absorbed/<ts>/ archival.
+  measured_lines_today = 5987 (4.13h observation window).
+  measured_lines_per_day_extrapolated = 34791.
+  measured_lines_per_year_extrapolated = 12698715 (≈ 12.7M lines).
+  measured_bytes_per_line_avg = 68.1 (1904709 / 27958).
+  one_year_size_projection = ~824 MiB (12.7M × 68 B).
+  ten_year_size_projection = ~8.0 GiB (linear assumption; growth likely sub-linear).
+  indexing_O_N_threshold = grep on ~824 MiB single file = 1-3s scan; tractable.
+  search_threshold_at_10_year = O(N) becomes prohibitive without external index.
+  binding = NOT-BINDING-NOW; binding ETA ≈ 3-5 years at sustained 35K-line/day growth.
+
+@R schema_guard_bottleneck :: meta [4!]
+  mechanism = raw 23 _guarded_append_atlas validation on every append.
+  rules = @C/@R type required, [N*] meta-tag required, valid id pattern.
+  measured_drift_today = 0 in atlas.n6 (only 1 FAILED marker in full window).
+  measured_pass_rate = 7 / 8 = 87.5% first-attempt success.
+  failure_mode = bad shard rejected → no atlas mutation → drift contained.
+  binding = STRUCTURALLY-BINDING (by design): only schema-conformant content enters.
+  consequence = upstream agents must conform → moves cost to authoring, not absorption.
+
+@R binding_architectural_limit :: meta [4!]
+  ranking_method = current-utilization vs ceiling.
+  rank1_throughput = 17.7 shards/hr / 720 ceiling = 2.5% utilization → 40× headroom.
+  rank2_size = 1.82 MiB / ~824 MiB-yr = 0.22% of 1yr → 450× headroom.
+  rank3_audit = 1.94 markers/hr ≪ ledger capacity → unbounded headroom.
+  rank4_schema = 87.5% pass rate; binds AUTHORING not absorption → soft.
+  rank5_phase = STRUCTURALLY binds new theoretical KINDS but unbounded INSTANCES.
+  rank6_axiom = STRUCTURALLY binds CONSISTENCY but unbounded CONFORMANT-content.
+  binding_now = phase_immutable_scope + foundation_axiom (STRUCTURAL, by-design).
+  binding_eta = throughput at ~360/hr demand (currently 17.7/hr → 20× away).
+  binding_eventual = append_only_growth (3-5yr horizon for index degradation).
+
+@R raw 91 C3 honest disclosure :: meta [4!]
+  honest_status = THREE ceilings already binding by design (not by saturation):
+    (1) raw 22 phase-immutable: NEW phase kinds prohibited.
+    (2) raw 24 foundation-axiom: NEW [11*] axioms prohibited.
+    (3) raw 23 schema-guard: NON-conformant content prohibited.
+  saturation_status = ZERO ceilings currently saturation-binding:
+    throughput 2.5%, size 0.22%, audit-ledger ≪ 1%.
+  drift_today = 1 FAILED marker (12.5% retry-fault) caught at schema-guard → no SSOT damage.
+  uncertainty = lines/day extrapolation assumes today's batch density holds → high variance.
+  scope_caveat = single-day window (4.13h) → projections ±50% honest.
+  recommendation = no architectural change required;
+                   monitor throughput approach to 50% (~360/hr) before re-evaluating.
+  ceiling_kind_summary = "structural ceilings BIND BY DESIGN; saturation ceilings have 20-450× headroom."

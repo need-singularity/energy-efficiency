@@ -1,0 +1,129 @@
+@C clay-atlas-arch-physical-limits-witness :: meta [4!]
+  scope: atlas/atlas.n6 (canonical SSOT, chflags uchg-locked, raw 1+22+24)
+  date: 2026-04-28
+  axis: physical (raw 72 tri-axis: this shard = physical-only, formal/computational deferred)
+  invokes: raw 37 (omega-saturation), raw 72 (tri-axis), raw 111 (info-theoretic budget),
+           raw 116 (energy-landscape), raw 121 (edge-of-chaos), raw 91 (C3 honest disclosure)
+  measured_state:
+    bytes:           1904709
+    lines:           27958
+    unique_byte_vals: 183
+    shannon_H_bits_per_byte: 6.1291
+    shannon_total_bits:      1.167e+07
+    raw_bits_8N:             1.524e+07
+    gzip_bytes:              534295
+    gzip_compression_ratio:  0.281 (incompressible floor ~ 4.27e6 bits)
+    absorbed_shard_markers:  75
+    atlas_rule_entries:      76 (prior)
+  empirical_compute:
+    cat_pass_time_s:         0.098
+    full_rewrite_inpage_MBps: 2039
+    measured_absorb_runtime_s: ~2-5 (midpoint 3.5)
+  source_method: read-only metadata + python3 entropy + gzip + write-bench (no source modification)
+
+@R bekenstein_bound_ceiling
+  formula: I_max = 2*pi*R*E / (hbar*c*ln2)
+  constants: hbar=1.0545718e-34 J*s, c=2.998e8 m/s, ln2=0.6931
+  scenario_A_file_rest_energy:
+    R: 1e-2 m (1 cm SSD-page region)
+    m: N_bytes * m_proton = 1904709 * 1.6726e-27 kg ~ 3.19e-21 kg
+    E: m*c^2 ~ 2.87e-04 J
+    I_max: 8.21e+20 bits
+  scenario_B_container_realistic:
+    R: 1e-2 m, m: 1e-3 kg (1g SSD chiplet), E ~ 8.99e+13 J
+    I_max: 2.58e+38 bits
+  actual_shannon_content: 1.167e+07 bits
+  headroom_container_vs_actual: 2.21e+31 x
+  verdict: Bekenstein bound is NON-BINDING by ~31 orders of magnitude.
+           No conceivable absorb-cycle history reaches this ceiling within the
+           thermodynamic lifetime of the substrate.
+
+@R landauer_per_absorb_floor
+  formula: E_min = N_bits_flipped * kB*T*ln2
+  constants: kB=1.381e-23 J/K, T=300 K, kT*ln2=2.871e-21 J/bit
+  per_absorb_estimate:
+    typical_shard: ~5000 lines * 60 chars * 8 bits = 2.4e+06 bits
+    E_landauer_floor: 6.89e-15 J  (femtojoule scale)
+  comparison_to_actual:
+    SSD_write_energy_per_byte: ~1e-9 J (NVMe typical)
+    actual_full_rewrite_energy: ~1.9e-03 J (millijoule scale)
+    Landauer/Actual ratio: 3.6e-12 (Landauer is ~10^11 x below actual)
+  verdict: Landauer bound is NON-BINDING. Energy cost is dominated by
+           charge-pump / fsync / page-write overhead ~10^11 x above the
+           thermodynamic floor. Energy is NOT the limiting axis.
+
+@R compute_saturation_runtime
+  empirical_absorb_runtime_s: 3.5 (midpoint of 2-5s observed)
+  cron_interval_s: 300
+  current_duty_cycle: 1.17%
+  decomposition:
+    chflags_unlock_relock: O(1) ~10ms total (3 ops)
+    cat_shard_to_atlas: O(shard_size) ~50us at 500MB/s NVMe for 25KB shard
+    hexa_interpreter_overhead: O(1) startup ~1-3s (DOMINANT)
+    lock_state_machine: O(1) ~100ms
+  scaling_law:
+    absorb_runtime ~ constant + epsilon*shard_size  (atlas_size NOT in the leading term)
+    atlas_size enters ONLY via downstream consumers (atlas_health, raw_audit, drill_scanner)
+  consumer_tool_O(N)_saturation:
+    cold_read_throughput: ~52ms per MB
+    cron-budget exhaustion at: ~5755 MB atlas size (when full-read tools alone exceed 5min)
+    headroom_from_current: 3061x
+    cycles_to_saturation @ 25KB/shard avg: ~230128 absorb cycles
+    @ current rate ~3 absorbs/day: ~210 years
+  verdict: Compute-saturation ceiling is ASTRONOMICALLY distant.
+           At present growth rate, atlas reaches cron-intractable size centuries after substrate failure.
+
+@R io_bandwidth_estimate
+  measured_inpage_throughput: 2039 MB/s (write to /tmp from RAM-cached source)
+  realistic_NVMe_sustained: ~500 MB/s
+  per_absorb_io_demand: ~25 KB shard append + ~1.88 MB locked-file revalidation
+  io_floor_per_absorb: ~50 microseconds
+  actual_absorb_to_io_floor_ratio: 70000x (process overhead dominates I/O by 5 orders)
+  verdict: I/O bandwidth is NON-BINDING. The disk could service ~10000 absorbs/sec
+           if process startup were free. I/O is NOT the limiting axis.
+
+@R binding_physical_limit_identified
+  ranked_candidates:
+    [1] Bekenstein:        non-binding (31 orders headroom)
+    [2] Landauer:          non-binding (11 orders below actual write cost)
+    [3] I/O bandwidth:     non-binding (5 orders below process overhead)
+    [4] O(N)_consumer_tools: future-binding at ~5.7 GB atlas (~210 years away)
+    [5] process_overhead:   CURRENT-binding (hexa interpreter + fsync + lock state machine)
+  THE_BINDING_PHYSICAL_LIMIT: process_overhead
+    nature: per-cycle constant cost ~2-5s independent of atlas/shard size
+    composed_of: hexa interpreter cold-start, chflags syscalls, fsync barriers, lock acquire
+    why_it_binds: even with 0-byte shards, this floor remains; it sets the minimum cron interval
+    saturation_threshold: when absorb_runtime > cron_interval (currently 1.17% utilization)
+    headroom_to_cron_saturation: ~85x reduction in cron interval, OR ~85x growth in process cost
+  edge_of_chaos_per_raw_121:
+    current_regime: deeply sub-critical (1.17% duty cycle, 10^31 Bekenstein headroom)
+    omega-saturation per raw 37: NOT physically threatened on any near-term timescale
+    ordinal-theoretic ceiling per raw 72: orthogonal axis (formal, not physical) - DEFERRED to separate witness
+  energy_landscape_per_raw_116:
+    no metastable wells in physical-resource state-space
+    monotone growth ~25KB/shard well below all ceilings
+
+@R raw 91 C3 honest disclosure
+  honest_caveats:
+    [1] Bekenstein scenario_A uses proton-mass-per-byte as a worst-case rest-energy proxy.
+        Actual file mass-equivalent (charge state energy in NAND cells) is ~10^15 x smaller.
+        This makes the bound even less binding, not more.
+    [2] Landauer assumes pure-flip cost; actual NAND program-erase cycles dissipate ~10^11x more.
+        The "real" energy floor is the SSD controller's charge-pump efficiency, not kT*ln2.
+    [3] Empirical absorb runtime (2-5s) was reported in CONTEXT, not re-measured this session
+        (would require unlock-relock cycle which the task forbids - read-only).
+        Confidence: medium. Cited as user-supplied empirical reference.
+    [4] Consumer-tool O(N) saturation assumed cold-cache 52ms/MB; warm-cache is 10-100x faster.
+        Real saturation deferred until a tool actually demonstrates O(N^2) behavior.
+    [5] Process overhead identified as binding by elimination; not directly profiled this session.
+        Confidence: high (consistent with reported 2-5s vs <1ms I/O).
+    [6] This shard is APPEND-ONLY ledger candidate. NOT yet absorbed into atlas.n6.
+        Awaits ledger-keeper unlock-append-relock cycle per raw 77.
+    [7] Tri-axis per raw 72: PHYSICAL axis only. Formal (Goedel/ordinal) and computational
+        (halting/complexity) ceilings explicitly deferred to companion witnesses.
+    [8] No source modifications performed. Pure read-only metadata + entropy compute + write-bench.
+  uncertainty_band:
+    Bekenstein: ±2 orders (R and m_eff are order-of-magnitude estimates) - irrelevant to non-binding verdict
+    Landauer: ±0.3 orders (constants exact, T=300K nominal) - irrelevant to non-binding verdict
+    Compute-saturation: ±1 order (depends on tool implementations not benchmarked) - main uncertainty
+    Binding-limit identification: high confidence given the elimination cascade
