@@ -1,0 +1,75 @@
+@shard cascade_s10_tick1_non_affine_substrate {
+  origin: "cascade-s10 AP sub-agent (non-affine substrate K=2 STRONG stress test)"
+  date: 2026-04-28
+  agent_id: a66802f3df483c2bb
+  cwd: /Users/ghost/core/n6-architecture
+  raw_91_C3_disclosure: "Python mirror /tmp/cascade_s10/nonaffine_cohort.py (NOT hexa exec). N=64 fixed, single seed=6, ticks=32, k=4 BFS. 18 mixers spanning 4 families (S_64 perm / GL(2,8) / CA-rule / FNV-1a hash) — 100% non-affine witnessed."
+
+  finding cascade-s10-AP-1 {
+    claim: "K=2 STRONG independence (Pearson orthogonality) ports from affine to non-affine substrate; |r| stays below 0.3 threshold"
+    evidence: {
+      pearson_a13_a16: -0.1922
+      spearman_a13_a16: -0.3127
+      threshold: "|r| < 0.3 PASS on Pearson, marginal on Spearman"
+      reference_s9_affine_pearson: -0.1100
+    }
+    verdict: PASS (independence axis substrate-invariant)
+    limit: "Spearman -0.31 is on the threshold edge; richer cohort could flip"
+  }
+
+  finding cascade-s10-AP-2 {
+    claim: "axis-13 discrimination COLLAPSES on non-affine substrate (-50%) — saturation-timescale metric is AFFINE-CONDITIONAL"
+    evidence: {
+      discrim_a13_affine_s9: 0.556
+      discrim_a13_nonaffine_s10: 0.278
+      drop_pct: -50.0
+      gl28_cluster: "all 5 GL(2,8) mixers cluster at a13 ≈ 534 (degenerate within family)"
+      hash_spread: "FNV-1a cohort spreads narrowly 341-514"
+    }
+    verdict: PARTIAL FAIL (raw 71 falsifier — cascade-s9 AO 'K=2 portable' claim retracted to affine-conditional)
+    retraction_index: 11  ; "11th retraction event in cascade discipline (10 prior on axis-13 interpretation layers)"
+    limit: "single seed/tick; family-choice bias; GL(2,8) over-sampled with det-1 shears (richer det sweep untested)"
+  }
+
+  finding cascade-s10-AP-3 {
+    claim: "axis-16 (lightcone V(8)) discrimination IMPROVES on non-affine substrate (+36%) — light-cone-class metric is substrate-ROBUST"
+    evidence: {
+      discrim_a16_affine_s9: 0.579
+      discrim_a16_nonaffine_s10: 0.789
+      gain_pct: +36.3
+      gl28_collapse: "all GL(2,8) mixers V(8)=3 (substrate-coherent fast-degenerate cluster)"
+      hash_spread: "V(8) ranges 28-64 across hash family"
+    }
+    verdict: PASS (axis-16 substrate-independent OR substrate-discriminating in own right)
+    limit: "axis-16 advantage may itself be cohort-conditional; affine cohort under-discriminated by V(8) due to gcd-stratification artifact"
+  }
+
+  finding cascade-s10-AP-4 {
+    claim: "axis-NEW (non-commutator-defect) does NOT emerge as orthogonal K=3 axis — coupled to axis-13"
+    evidence: {
+      pearson_a13_aNEW: -0.4333
+      pearson_a16_aNEW: +0.0959
+      orthogonality_a13_aNEW: "|r|=0.43 > 0.3 FAIL"
+      orthogonality_a16_aNEW: "|r|=0.10 < 0.3 PASS but joint criterion needs both"
+    }
+    verdict: raw 71 FAIL — 7th K=3 candidate rejected (cascade-s2/s5/s6/s7/s8/s9/s10)
+    limit: "axis-NEW formulated only on (0,1) axis pair; other pairs (0,2)/(0,3) untested"
+  }
+
+  retraction cascade_s9_AO_qualified {
+    original_claim: "K=2 STRONG framework portable D=3 → D=4 (cascade-s9 AO finding 1)"
+    retraction_text: "Portability claim AFFINE-CONDITIONAL only. Non-affine substrate (cascade-s10 AP) shows axis-13 discrim collapse −50%. Survived residual: 'K=2 independence (Pearson orthogonality) ports across substrate; axis-13 discrimination does NOT; axis-16 discrimination ports AND improves'."
+    raw_71_invocation: TRUE
+  }
+
+  closure cascade_s10 {
+    status: MULTI-TICK NARROWING (not single-tick close)
+    next_tick_targets: [
+      "split-by-family analysis (GL(2,8) cohort suspiciously degenerate at a13≈534)",
+      "alt axis-13 formulations — longer ticks, different m², seed ensemble ≥5",
+      "richer GL(2,p) sweep with det ∈ {3,5,7}",
+      "axis-16 substrate-coherent class verdict — lightcone V(8) may BE the K=1 anchor"
+    ]
+    affine_substrate_assumption: BROKEN  ; "10 prior cascades implicitly assumed affine"
+  }
+}
