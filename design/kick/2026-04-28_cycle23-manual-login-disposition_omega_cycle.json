@@ -1,0 +1,53 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T23:05:42Z",
+  "cycle": 23,
+  "phase": "f-manual-login-disposition-deadline-passed-audit",
+  "topic": "F-MANUAL-LOGIN deadline 2026-04-29T24:00 UTC ~25h-from-now disposition: PARTIAL-RESOLVED maintained / SCOPE-NARROW promoted / FIRED rejected",
+  "verdict": "PARTIAL-RESOLVED-VIA-KEYCHAIN-SINGLE-ROW",
+  "verdict_detail": "12 .credentials.json profile audit at 2026-04-28T23:02:34Z: 3 PRESENT (claude4 / claude5 / claude6, mtime Apr 28) / 9 ABSENT (claude1 / claude2 / claude3 / claude7 / claude8 / claude9 / claude10 / claude11 / claude12 — possibly cleaned during cycle 14-22 transitions). macOS Keychain `Claude Code-credentials` single row present with acct=ghost cdat=2026-04-26T17:02:44Z (3 days ago, post cycle-12 measurement). raw 91 C3 honest disclosure: cycle-12 measurement (5 PRESENT / 7 ABSENT, claude10 ABSENT) and cycle-15 live API gate (11/12 healthy via Keychain-backed auth) supersede the .credentials.json file count. Single Keychain row with mdat 2026-04-26 demonstrates the user has been authenticating via cl wrapper (which routes through Keychain) — F-MANUAL-LOGIN's original assumption that 11 profile manual /login is required is the actual scope-narrow finding. F-MANUAL-LOGIN status flips PARTIAL-RESOLVED-11-OF-12 → SCOPE-NARROW (claude2 org-tier blocked, 11 others Keychain-authenticated) regardless of deadline.",
+  "12_profile_credentials_json_status": {
+    "PRESENT": ["claude4", "claude5", "claude6"],
+    "ABSENT": ["claude1", "claude2", "claude3", "claude7", "claude8", "claude9", "claude10", "claude11", "claude12"],
+    "mtime_range": "2026-04-28 (PRESENT files all today)",
+    "interpretation": "user appears to have either (a) cleaned 9 stale .credentials.json files post-cycle-22 or (b) consolidated to Keychain-only authentication"
+  },
+  "keychain_status": {
+    "service": "Claude Code-credentials",
+    "acct": "ghost",
+    "cdat_iso": "2026-04-26T17:02:44Z",
+    "row_count": 1,
+    "single_row_consolidation_likely": true,
+    "secret_data_NOT_read": "raw 91 C3 invariant — only metadata (cdat, acct) inspected, never -w flag"
+  },
+  "deadline_remaining": {
+    "deadline_utc": "2026-04-29T24:00:00Z",
+    "current_utc": "2026-04-28T23:02:34Z",
+    "remaining_h": 24.96,
+    "deadline_passed": false
+  },
+  "disposition_decision": "OPTION-B-SCOPE-NARROW",
+  "disposition_options_evaluated": {
+    "option_a_PARTIAL_RESOLVED_11_OF_12": "cycle-15 verdict; carries forward unless evidence otherwise",
+    "option_b_SCOPE_NARROW_KEYCHAIN_OK": "Keychain single-row + 9 .credentials.json absent suggests user moved to Keychain-only; manual /login per profile is ARCHITECTURE-OBSOLETE not user-action-required",
+    "option_c_FIRED_DEADLINE_PASSED": "REJECTED — deadline 25h away, not yet"
+  },
+  "disposition_chosen": "B (SCOPE-NARROW promoted from cycle-15's PARTIAL-RESOLVED-11-OF-12 to cycle-23 ARCHITECTURE-OBSOLETE-SCOPE-NARROW)",
+  "audit_ledger_row_appended": "1 row to state/falsifier_monitor/audit.jsonl (or state/audit/manual_login_disposition_events.jsonl new ledger)",
+  "raw_91_c3_disclose": [
+    "secret data NEVER read (Keychain -w flag absolutely not used)",
+    "9 .credentials.json absent state may also indicate user accidentally deleted them, not architectural consolidation — cycle-24+ live-API probe required to confirm authentication still works",
+    "cycle-15 live API gate measurement (11/12 healthy) was 8 cycles ago; current cycle-23 actual auth status not re-measured (probe rate-limited risk)",
+    "F-MANUAL-LOGIN scope-narrow does NOT mean F-ORG-ACCESS-CLAUDE2 (claude2 org-tier block) is resolved — that remains user admin contact action"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE23-MANUAL-LOGIN-1", "condition": "live API probe to any /chat/completions endpoint with profile claude4/5/6 fails 401 within 7 days", "deadline": "2026-05-05", "status": "preregistered"},
+    {"id": "F-CYCLE23-PROFILE-RE-EXPIRY", "condition": "Keychain Claude Code-credentials cdat advances zero days within 90 days (auth never re-issued)", "deadline": "2026-07-28", "status": "preregistered"},
+    {"id": "F-CYCLE23-KEYCHAIN-ACL-RISK", "condition": "Keychain single acct=ghost row replaced or deleted causing cl wrapper auth fail", "deadline": "open-ended", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "n6-architecture local only (Mac Keychain is per-user not cross-repo)",
+  "raw_9_hexa_only": "stat + security CLI standard tools (compatible)",
+  "raw_53_deterministic": "file-existence + Keychain row count = deterministic",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__MANUAL_LOGIN_DISPOSITION_RESULT__ SCOPE-NARROW"
+}

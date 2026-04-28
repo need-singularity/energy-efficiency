@@ -1,0 +1,56 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T23:05:42Z",
+  "cycle": 23,
+  "phase": "f-docker-registry-push-preflight-dry-run-refresh",
+  "topic": "tool/ghcr_push.hexa --plan dry-run + alternative path (docker save+rsync) restated; user PAT still pending",
+  "verdict": "PLAN-DRY-RUN-COMPLETE-EXECUTE-PENDING-USER-PAT",
+  "verdict_detail": "tool/ghcr_push.hexa --plan executed via bash (script is bash with .hexa extension; raw 9 hexa-only deviation noted, deferred to cycle 30+ rewrite). Preflight: hexa-runner:latest digest sha256:e911bceeb37a5ac157b8efeb30ca53049391db7f4e3a7ae5089edd2c1abd1db2 size 57626784 bytes (~55MB compressed image). 4-step plan emitted: Step 1 docker login ghcr.io / Step 2 tag x3 (cycle-14 + 2026-04-28 + latest) / Step 3 push x3 / Step 4 ssh ubu1+ubu2+hetzner pull. raw 91 C3: --execute path absolutely NOT triggered. ledger state/audit/docker_registry_push_events.jsonl row count 1→2 after this cycle's plan emit.",
+  "preflight_result": {
+    "image": "hexa-runner:latest",
+    "digest": "sha256:e911bceeb37a5ac157b8efeb30ca53049391db7f4e3a7ae5089edd2c1abd1db2",
+    "size_bytes": 57626784,
+    "size_mb": 54.96,
+    "transport_estimate_ubu1_ubu2_hetzner": "55MB × 3 = 165MB",
+    "alt_path_docker_save_rsync_estimate": "55MB × 3 = 165MB (same transport, no compression difference)",
+    "ghcr_namespace": "ghcr.io/need-singularity/hexa-runner",
+    "tag_set_planned": ["cycle-14", "2026-04-28", "latest"]
+  },
+  "deadline_remaining": {
+    "deadline_iso": "2026-05-12T00:00:00Z (cycle 14 + 14d)",
+    "current_utc": "2026-04-28T23:02:34Z",
+    "remaining_d": 13.04,
+    "deadline_passed": false
+  },
+  "alternative_path_docker_save_rsync_load": {
+    "step_1": "docker save hexa-runner:latest | gzip > /tmp/hexa-runner.tar.gz",
+    "step_2": "rsync -avP /tmp/hexa-runner.tar.gz ubu1:/tmp/ && ssh ubu1 'docker load < /tmp/hexa-runner.tar.gz'",
+    "step_3_ubu2": "rsync -avP /tmp/hexa-runner.tar.gz ubu2:/tmp/ && ssh ubu2 'docker load < /tmp/hexa-runner.tar.gz'",
+    "step_4_hetzner": "rsync -avP /tmp/hexa-runner.tar.gz hetzner:/tmp/ && ssh hetzner 'docker load < /tmp/hexa-runner.tar.gz'",
+    "advantages": "no PAT required, no ghcr.io API access, fully self-contained",
+    "disadvantages": "165MB triple-transport vs ghcr.io (single push + 3 pull = same total but ghcr.io has CDN caching)"
+  },
+  "user_action_pending": {
+    "1_PAT_issuance": "https://github.com/settings/tokens classic + write:packages + read:packages + need-singularity org SSO",
+    "2_token_storage": "~/.config/hexa/ghcr.token mode 0600",
+    "3_env_export": "GHCR_USER + GHCR_TOKEN_FILE",
+    "4_execute_invocation": "bash tool/ghcr_push.hexa --execute"
+  },
+  "raw_91_c3_disclose": [
+    "GHCR_TOKEN absolutely not set; agent NEVER attempts --execute",
+    "tool/ghcr_push.hexa is bash script with .hexa extension (raw 9 hexa-only deviation; cycle 14 sub-agent design pre-dates strict hexa-only enforcement)",
+    "alternative path (docker save+rsync) requires user ssh access to ubu1/ubu2/hetzner — sandboxed agent does not have the credentials",
+    "image digest measurement is read-only (docker inspect), not destructive",
+    "raw 142 D2 try-and-revert: --plan mode is reversible by definition (no state change)"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE23-DOCKER-1", "condition": "user-PAT not issued within 14d (deadline 2026-05-12)", "deadline": "2026-05-12", "status": "preregistered"},
+    {"id": "F-CYCLE23-DOCKER-2", "condition": "hexa-runner:latest local digest changes within 7d (Mac local image rebuild)", "deadline": "2026-05-05", "status": "preregistered"},
+    {"id": "F-CYCLE23-DOCKER-3", "condition": "alt-path docker save+rsync transfer fails on ubu1 (e.g. /tmp full or ssh deny)", "deadline": "2026-05-12", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "hexa-runner image is shared infrastructure across n6-architecture / nexus / hexa-lang sister repos; preflight digest result cross-applicable",
+  "raw_9_hexa_only": "tool/ghcr_push.hexa is bash; cycle 30+ rewrite pending",
+  "raw_53_deterministic": "docker inspect digest = deterministic; --plan output deterministic",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__DOCKER_REGISTRY_PREFLIGHT_RESULT__ PLAN-DRY-RUN-OK-PAT-PENDING"
+}

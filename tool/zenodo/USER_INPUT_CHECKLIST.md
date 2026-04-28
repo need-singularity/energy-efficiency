@@ -1,13 +1,32 @@
-# HEXA-WEAVE Zenodo Deposit — User Input Checklist (cycle 14; cycle-18 status update)
+# HEXA-WEAVE Zenodo Deposit — User Input Checklist (cycle 14; cycle-23 status update)
 
-> **Status (2026-04-28, cycle-18 update):** automation complete; 7
+> **Status (2026-04-28T23:02Z, cycle-23 update):** automation complete; 7
 > user-input items remain before `bash tool/zenodo/deposit.sh --upload`
-> can run. cycle-18 paper precision (§19 ACCEPTANCE / §20 APPENDIX /
-> §21 IMPACT updated; axiom count 17 → 11 measured; 11/11 Felgner
-> atomics mathlib4-backed at semantic-kernel level; F-CL-FORMAL-4
-> PARTIAL-RESOLVED) and Zenodo manifest re-spin complete; 7 user-input
-> items below remain PENDING (status carried forward from cycle-14
-> auto-prep with cycle-18 progress notes).
+> can run. cycle-22→23 progress beyond cycle-18 baseline:
+>
+> - lean4 axiom count: 11 → **1** (axiom_robin_hardy_wright_ax1_tail
+>   only); Felgner Hauptsatz §3 11/11 atomics mechanical (cycle 7→22
+>   delta -10), HEXA-COMP closure 4/4 mechanical, MK proper-class
+>   widening retightened to `structure` form (cycle 22 W15)
+> - lean4 sorry: 0 (unchanged since cycle 7)
+> - biology axis sisters: 4 (HEXA-WEAVE composition + HEXA-NANOBOT
+>   actuation + HEXA-RIBOZYME catalysis + HEXA-VIROCAPSID assembly =
+>   tetrahedron closure; cycle 19→22 expansion)
+> - F-VIROCAPSID-2 polyhedral cage Bayesian audit RESOLVED (posterior
+>   0.9668 ≥ 0.95 over Caspar-Klug n=34 corpus; log Bayes factor 3.37
+>   = decisive per Jeffreys 1961; HEXA-VIROCAPSID σ(6)=12 STRUCTURAL-
+>   EXACT > HEXA-RIBOZYME σ(6)=12 STRUCTURAL-APPROXIMATE)
+> - alien-grade v3 ledger: 4.7794 measured (saturated lean 22/23 +
+>   falsifier 0.30 + paper 0.5 + collision 1.0 + mvp 0.83 + peer 0)
+> - F-CL-FORMAL-4 disposition: PARTIAL-RESOLVED-11-OF-11-AT-WIDEN-
+>   PREDICATE-LEVEL (11/11 atomic Felgner mechanical; MK predicate
+>   `structure`-widened to surface 11+4 atomic decomposition
+>   structurally though logical strength still classically True)
+>
+> 7 user-input items below remain PENDING (status carried forward from
+> cycle-14 auto-prep with cycle-18→22→23 progress notes). Once your 7
+> answers land, alien-grade unlocks paper-published 0.5 → 1.0 = +0.166
+> grade jump (cycle 24+).
 
 When you're ready to deposit, paste the answers below into a single
 session reply, then the bot will:

@@ -1,0 +1,61 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T23:05:42Z",
+  "cycle": 23,
+  "phase": "w5-mac-cpu-fallback-forward-spec",
+  "topic": "OpenFold 6L1U dry-run alternative path on Mac arm64 CPU-only (degraded but unblocked) while ubu1 GPU sandbox approval pending",
+  "verdict": "FORWARD-SPEC-AUTHORED",
+  "verdict_detail": "proposals/hexa_weave_mvp_w5_mac_cpu_fallback_2026_04_28.md (15-section per own 22 phased category) authored. 8-step delta from cycle 14 ubu1 spec: Step 3 cpu wheel (not cu124), Step 5 ESM3 small only ~1GB, Step 7 sm_120 source compile SKIP (CPU branch), Step 8 --device cpu forward pass (~30-60min vs GPU 5min). raw 91 C3: dev/test fallback only — alien-grade-6 unlock STILL gated on ubu1 GPU. Mac arm24GB unified memory + jetsam-safe (raw 42) ≤7GB peak RSS. ~/core/hexa-weave/ directory still ABSENT (W5 user-OK item #1 from cycle 14 unchanged). tool/hexa_weave_w5_setup.hexa --mode=mac-cpu flag NOT yet wired (cycle 24+ once user approves repo init).",
+  "files_created": [
+    "proposals/hexa_weave_mvp_w5_mac_cpu_fallback_2026_04_28.md (own 22 phased + own 23 single umbrella PASS)"
+  ],
+  "files_unchanged": [
+    "tool/hexa_weave_w5_setup.hexa (--mode=mac-cpu wiring deferred to cycle 24+)",
+    "proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md (cycle 14 parent retained)",
+    "~/core/hexa-weave/ (still ABSENT, W5 item #1 user-OK pending)"
+  ],
+  "8_step_delta_summary": {
+    "step_1_dir_tree": "unchanged",
+    "step_2_python310_venv": "unchanged",
+    "step_3_pip_install": "DELTA — pip install torch (cpu wheel) instead of cu124",
+    "step_4_openfold_clone": "unchanged",
+    "step_5_weights_download": "DELTA — esm3 small ~1GB only (skip esm3 large 4GB)",
+    "step_6_rcsb_6L1U_fasta": "unchanged",
+    "step_7_sm120_source_compile": "SKIP-AS-PASS (CPU branch, no GPU)",
+    "step_8_forward_pass": "DELTA — --device cpu, ~30-60min wall-clock"
+  },
+  "estimated_metrics_mac_arm64_M1_M2": {
+    "wall_clock_total_min": 90,
+    "wall_clock_breakdown": "venv 5min + clone 3min + cpu wheel 10min + esm3 small 5min + 6L1U fetch 1min + forward 30-60min",
+    "disk_mb_total": 9000,
+    "network_mb_total": 8200,
+    "rss_peak_mb_target": 7000,
+    "alien_grade_unlock_ratio": 0,
+    "alien_grade_unlock_note": "Mac CPU validates plumbing only; mvp 5/6 -> 6/6 unlock requires ubu1 GPU TM-score >= 0.4 measurement"
+  },
+  "user_action_pending": {
+    "1_repo_init_approval": "user OK to mkdir ~/core/hexa-weave/ + git init",
+    "2_pypi_install_approval": "PyPI external dependency (PyTorch CPU + biopython + RDKit + Pydantic)",
+    "3_setup_runbook_invocation": "hexa run tool/hexa_weave_w5_setup.hexa --mode=mac-cpu (after cycle 24+ wiring)",
+    "4_60min_wall_clock_acceptance": "user accepts 30-60min CPU forward pass wall-clock"
+  },
+  "raw_91_c3_disclose": [
+    "this is dev/test fallback NOT production-grade ubu1 GPU replacement",
+    "mvp 5/6 -> 6/6 alien-grade unlock STILL requires ubu1 GPU (Mac CPU only validates plumbing)",
+    "--mode=mac-cpu wiring on tool/hexa_weave_w5_setup.hexa deferred to cycle 24+ (user approval gates the wiring)",
+    "PyPI external dependency declared but not vendored — agent does NOT auto-install (sandbox-out)",
+    "~/core/hexa-weave/ directory absent; W5 item #1 user-OK still required regardless of mac-cpu vs ubu1-gpu path",
+    "raw 47 cross-repo: ~/core/hexa-weave/ may register as raw_loader.hexa governed sister repo, but currently unbootstrapped"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE23-W5-MAC-CPU-1", "condition": "Mac M1 forward pass wall-clock > 120min — retire or downgrade to ESM2 small only", "deadline": "2026-07-28", "status": "preregistered"},
+    {"id": "F-CYCLE23-W5-MAC-CPU-2", "condition": "TM-score 6L1U Mac CPU vs ubu1 GPU divergence > 0.01 (numerical precision issue)", "deadline": "2026-07-28", "status": "preregistered"},
+    {"id": "F-CYCLE23-W5-MAC-CPU-3", "condition": "Mac arm64 PyTorch wheel install fail (PyPI absent or revision break)", "deadline": "2026-05-28", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "~/core/hexa-weave/ would register as sister repo per raw_loader.hexa convention; cross-repo trawl impact deferred until repo init",
+  "raw_9_hexa_only": "Mac CPU runbook 8-step .hexa native; PyPI external declared via raw 14 ext-ssot",
+  "raw_42_jetsam_safe": "≤7GB RSS target on Mac 24GB unified memory",
+  "raw_53_deterministic": "8/8 step probe-and-skip + verify_paper_block-equivalent forward pass test deterministic",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__W5_MAC_CPU_FORWARD_SPEC_RESULT__ AUTHORED-WIRING-DEFERRED"
+}

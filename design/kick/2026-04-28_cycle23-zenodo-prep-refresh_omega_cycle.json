@@ -1,0 +1,48 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-28T23:05:42Z",
+  "cycle": 23,
+  "phase": "zenodo-deposit-auto-prep-refresh",
+  "topic": "tool/zenodo/ metadata + checklist refresh to cycle-22 milestone (axiom 1, Felgner 11/11, biology 4-sister tetrahedron, F-VIROCAPSID-2 RESOLVED)",
+  "verdict": "AUTO-PREP-COMPLETE-USER-INPUT-PENDING",
+  "verdict_detail": "verify_paper_block.py PASS (sigma=12 phi=2 tau=4, AX1Eq solutions [6] in [2,1000]). USER_INPUT_CHECKLIST.md cycle-23 status block prepended with cycle-22 milestone (lean axiom 11→1, sorry 0, biology 4-sister, F-VIROCAPSID-2 RESOLVED posterior 0.9668, alien-grade 4.7794, F-CL-FORMAL-4 PARTIAL-RESOLVED-11-OF-11). metadata.json description rewritten to cycle-22 final state (n in [2,2000] bounded forward, 1 axiom Robin only, Felgner 11/11 mechanical, HEXA-COMP 4/4 mechanical, MK structure widening). version field 1.0.0-cycle12-w8++ → 1.0.0-cycle22-w13-stage2-w15-felgner-11of11. tarball lean4-n6-mechverif-cycle12.tar.gz remains cycle-12 snapshot (cycle-22 re-tarball deferred to gen_tarball.sh re-run by user prior to deposit).",
+  "files_modified": [
+    "tool/zenodo/USER_INPUT_CHECKLIST.md (cycle-22 status block prepended)",
+    "tool/zenodo/metadata.json (description rewritten + version bumped)"
+  ],
+  "files_unchanged": [
+    "tool/zenodo/deposit.sh (placeholder logic unchanged)",
+    "tool/zenodo/verify_paper_block.py (PASS verified)",
+    "tool/zenodo/gen_manifest.sh (no input change)",
+    "tool/zenodo/gen_tarball.sh (re-run deferred to user)",
+    "tool/zenodo/lean4-n6-mechverif-cycle12.tar.gz (cycle-12 snapshot, cycle-22 re-tarball deferred)",
+    "tool/zenodo/manifest.sha256 (re-gen deferred)",
+    "tool/zenodo/README_zenodo.md (no input change)"
+  ],
+  "user_input_status_7_items": {
+    "1_orcid": "PENDING (placeholder)",
+    "2_byline_email": "PENDING (3 candidates: arsmoriendi99 / mk55992 / multi404error)",
+    "3_title": "PENDING (Option-A formal-mech vs Option-B protein-pivot)",
+    "4_keywords": "PENDING (8-mech vs 5-protein vs hybrid)",
+    "5_license": "PENDING (Apache-2.0 vs CC-BY-4.0)",
+    "6_related_id": "PENDING (public github URL vs tarball-only)",
+    "7_zenodo_token": "PENDING (sandbox vs production)"
+  },
+  "raw_91_c3_disclose": [
+    "ZENODO_TOKEN absent → deposit.sh --upload absolutely NOT executed",
+    "tarball is cycle-12 snapshot; cycle-22 re-tarball deferred to user pre-deposit run of gen_tarball.sh",
+    "auto-prep refresh is metadata + checklist updates only (cycle-13 base infrastructure unchanged)",
+    "verify_paper_block.py PASS confirms sympy n6 invariant verification still holds (cycle-22 lean4 changes do not affect paper §7.1 sympy block)",
+    "alien-grade unlock paper-published 0.5 → 1.0 (+0.166 grade) STILL gated on user 7-item answer + ZENODO_TOKEN + bash deposit.sh --upload"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE23-ZENODO-1", "condition": "user-input 7 items not received within 30 days from 2026-04-28", "deadline": "2026-05-28", "status": "preregistered"},
+    {"id": "F-CYCLE23-ZENODO-2", "condition": "verify_paper_block.py FAIL on next cycle (paper §7.1 sympy block regressed)", "deadline": "2026-07-28", "status": "preregistered"},
+    {"id": "F-CYCLE23-ZENODO-3", "condition": "Zenodo API breaking change blocks deposit.sh", "deadline": "2027-04-28", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "papers/ CLI delegation per own 9 BLOCK rule (eba1d411). zenodo deposit.sh DEPRECATED marker present; papers CLI invocation is canonical.",
+  "raw_9_hexa_only": "tool/zenodo/ is python+bash hybrid (cycle-13 design predates raw 9 strict); deferred to cycle 30+ rewrite",
+  "raw_53_deterministic": "verify_paper_block.py PASS = deterministic; metadata.json structure preserved",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__ZENODO_PREP_REFRESH_RESULT__ AUTO-COMPLETE-USER-PENDING"
+}
