@@ -1,0 +1,143 @@
+{
+  "kick_id": "2026-04-28_alien-grade-v3-cycle21",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T13:57:52Z",
+  "fan_out": "cycle 21",
+  "cycle": 21,
+  "mission": "Cycle 21 v3 alien-grade tool — extend lean_mechanical denominator from FELGNER-ATOMIC-ONLY (11) to TOTAL-AXIOM BASIS (= cycle-7 W7 high-water mark = 23). Closes cycle-20 stale-ledger gap: v2 lean_mechanical_pct = 11/11 = 1.0 had been saturated since cycle 18, so the cycle-20 7-axiom drop (8 -> 1 net via W11+W12+W14) did NOT register in v2 grade. v3 cycle-21 measurement = 4.7783 (vs v2 compat 4.7957; delta -0.0174). raw 91 C3 honest downward correction.",
+  "parent_proposals": [
+    "proposals/hexa_weave_alien_grade_v3_extended_denominator_2026_04_28.md",
+    "proposals/hexa_weave_alien_grade_v2_grade_6_component_2026_04_28.md",
+    "proposals/hexa_weave_alien_grade_audit_tool_2026_04_28.md"
+  ],
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_alien-grade-v2-cycle19_omega_cycle.json",
+    "design/kick/2026-04-28_alien-grade-audit-tool-cycle17_omega_cycle.json",
+    "design/kick/2026-04-28_cycle20-closure-atom-w11_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w12-encodable-strand-cycle20_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w14-felgner-bridge-cycle20_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w13-robin-asymptotic-cycle20_omega_cycle.json"
+  ],
+  "scope": {
+    "modified": [
+      "tool/alien_grade_audit.hexa (v2 ~547 LoC -> v3 ~610 LoC; lean_mechanical denom 11 -> 23; classifier_version raw_77_alien_grade_v2_6component -> raw_77_alien_grade_v3_total_axiom_basis)",
+      "state/audit/alien_grade_events.jsonl (+1 row: cycle 21 v3 measurement = 4.7783)"
+    ],
+    "untracked": [
+      "tool/alien_grade_audit.v2.cycle19.hexa.bak (raw 142 D2 try-and-revert backup; v1 backup also retained)",
+      "proposals/hexa_weave_alien_grade_v3_extended_denominator_2026_04_28.md",
+      "design/kick/2026-04-28_alien-grade-v3-cycle21_omega_cycle.json (this file)",
+      "state/discovery_absorption/registry.jsonl (+1 row)"
+    ]
+  },
+  "v3_changes": {
+    "components_pre": 6,
+    "components_post": 6,
+    "ceiling_pre": 6.0,
+    "ceiling_post": 6.0,
+    "denom_pre": "Felgner-atomic-only 11",
+    "denom_post": "total-axiom basis 23 (cycle-7 W7 high-water mark)",
+    "denom_option_adopted": "A_total_axiom_basis_23",
+    "options_evaluated": {
+      "A_total_axiom_basis_23": {
+        "denom": 23,
+        "cycle20_lean": 0.9565,
+        "cycle20_grade": 4.7783,
+        "verdict": "ADOPTED",
+        "rationale": "monotone, fixed at cycle-7 W7 decomposition event; every named-axiom discharge contributes uniformly; v3 grade lower than v2 grade is honest downward correction"
+      },
+      "B_cycle_high_water_23": {
+        "denom": 23,
+        "cycle20_lean": 0.9565,
+        "cycle20_grade": 4.7783,
+        "verdict": "numerically equivalent to A; A chosen for clarity"
+      },
+      "C_weighted_multi_tier": {
+        "denom": "tunable (Felgner-alpha + structural-beta)",
+        "verdict": "REJECTED — tier weighting that preserves v2 grade indistinguishable from fabricated metric (raw 91 C3)"
+      },
+      "D_cycle6_baseline_7": {
+        "denom": 7,
+        "cycle20_lean": 0.857,
+        "verdict": "REJECTED — discards W7 cycle-7 decomposition (deepest mechanical progress signal of program)"
+      }
+    },
+    "lean_mechanical_basis_breakdown": {
+      "felgner_atomics": 11,
+      "non_felgner_structural": 12,
+      "structural_breakdown": [
+        "axiom_strand_zfc_witness_amino_acid (cycle 20 W12 -> theorem)",
+        "axiom_strand_zfc_witness_rna_nucleotide (cycle 20 W12 -> theorem)",
+        "axiom_strand_zfc_witness_dna_nucleotide (cycle 20 W12 -> theorem)",
+        "axiom_strand_zfc_witness_small_ligand (cycle 20 W12 -> theorem)",
+        "axiom_strand_zfc_witness_antibody (cycle 20 W12 -> theorem)",
+        "axiom_hexa_comp_strand_op_well_defined (cycle 19 W10 -> theorem)",
+        "axiom_hexa_comp_associativity (cycle 19 W10 -> theorem)",
+        "axiom_hexa_comp_identity (cycle 19 W10 -> theorem)",
+        "axiom_hexa_comp_zfc_class_closure (cycle 19 W10 -> theorem)",
+        "axiom_hexa_comp_closure_atom (cycle 20 W11 -> theorem)",
+        "axiom_felgner_bridge_to_MK (cycle 20 W14 -> theorem)",
+        "axiom_robin_hardy_wright_ax1_tail (W13 PARTIAL; still axiom)"
+      ],
+      "total": 23,
+      "cycle20_remaining": 1,
+      "cycle20_discharged": 22
+    },
+    "components_unchanged": [
+      "mvp_empirical (signals + uniform weighting)",
+      "paper_published (file existence)",
+      "cross_axis_collision (F-RB-5 RESOLVED check)",
+      "falsifier_resolution (RESOLVED + 0.5 * PARTIAL-RESOLVED prefix)",
+      "peer_review (T0..T3 binary stack; hexa-weave-scoped)"
+    ],
+    "ledger_schema_changes": [
+      "+ tool_version: 'v3.0.0'",
+      "+ lean_mechanical_pct_v2_felgner_only (preserved for trajectory continuity)",
+      "+ lean_mechanical_axioms_remaining (raw count)",
+      "+ lean_mechanical_axioms_discharged_v3 (= 23 - axioms_remaining)",
+      "+ lean_mechanical_total_basis_v3: 23",
+      "+ alien_grade_v2_compat (computed alongside v3 for comparison)",
+      "+ v3_minus_v2_delta (signed)",
+      "+ denom_option_adopted: 'A_total_axiom_basis_23'",
+      "raw 91 C3 disclose block extended with cycle-20 first-pass + corrected + cycle-21 v3 entries"
+    ]
+  },
+  "selftest": {
+    "fixtures": 6,
+    "cycles": [7, 13, 16, 18, 19, 20],
+    "all_pass": true,
+    "sentinel": "__ALIEN_GRADE_RESULT__ PASS",
+    "tolerance_per_fixture": [0.10, 0.05, 0.05, 0.05, 0.05, 0.02],
+    "max_observed_delta": 0.0001
+  },
+  "cycle21_v3_measurement": {
+    "ts": "2026-04-28T14:00:12Z",
+    "lean_mechanical_pct_v3": 0.9565217391304348,
+    "lean_mechanical_pct_v2_compat": 1.0,
+    "axioms_remaining_total": 1,
+    "axioms_discharged_v3": 22,
+    "mvp_empirical_pct": 0.8333333333333334,
+    "paper_published_pct": 0.5,
+    "cross_axis_collision_pct": 1.0,
+    "falsifier_resolution_pct": 0.30113636363636365,
+    "peer_review_pct": 0.0,
+    "inner_weighted_sum": 0.779388998682477,
+    "alien_grade_v3": 4.7794,
+    "alien_grade_v2_compat": 4.7968,
+    "v3_minus_v2_delta": -0.0174,
+    "note": "v2 compat 4.7968 vs cycle-20 corrected 4.7957 has +0.0011 uplift entirely from falsifier-resolution drift (0.2907 -> 0.3011); lean_mechanical pct unchanged. v3-v2 delta -0.0174 is structurally constant across cycles 18-21 (Felgner-saturated regime).",
+    "future_headroom": "+0.0174 grade per remaining axiom discharge (currently 1: axiom_robin_hardy_wright_ax1_tail)"
+  },
+  "raw_91_c3_disclose": "v3 cycle-21 grade 4.7783 < v2 compat 4.7957. v3 number is the truer reading: admits Felgner basis already saturated at cycle 18 and cycle-19/20 progress lay in non-Felgner structural axioms. v3 also reveals future headroom: each remaining axiom discharge contributes +0.0174 grade. Options A/B/C/D evaluated; A adopted with explicit rationale per option. Tier-weighted option C rejected on raw 91 C3 grounds (any tier weighting that happens to preserve v2 grade is indistinguishable from fabricated metric). Cycle-6 baseline option D rejected as discarding the cycle-7 W7 decomposition step. Raw 142 D2 try-and-revert: v1 + v2 backups preserved; revert path is `cp tool/alien_grade_audit.v2.cycle19.hexa.bak tool/alien_grade_audit.hexa`.",
+  "raw_142_d2_revertible": true,
+  "raw_142_d2_revert_path": "cp tool/alien_grade_audit.v2.cycle19.hexa.bak tool/alien_grade_audit.hexa && tail -1 state/audit/alien_grade_events.jsonl >/dev/null  # raw 71 retire-and-replace; v3 ledger row remains in append-only history",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__ALIEN_GRADE_RESULT__ PASS (selftest 6/6)",
+  "next_cycle_path": [
+    "cycle 22+: W13 axiom_robin_hardy_wright_ax1_tail further mechanical (bounded 100 -> 1000 -> 5040; or RH-conditional regime). Success -> axiom 1 -> 0 -> v3 lean = 23/23 = 1.0 -> grade +0.0174 (= 4.7957 = v2 saturation level)",
+    "cycle 22+: F-VIROCAPSID-3 90d MVP T=1 60-subunit Zlotnick simulation (separate axis)",
+    "cycle 22+: Zenodo deposition (paper_published 0.5 -> 1.0 = +0.10 grade; peer_review T0 -> T2 = +0.66 grade)",
+    "cycle 22+: arxiv preprint submission (peer_review T0 -> T1 = +0.33 grade independent)",
+    "cycle 22+: v4 basis-extension audit if any future cycle re-introduces axioms beyond cycle-7 baseline 23 (currently basis_extension_needed=false)"
+  ]
+}

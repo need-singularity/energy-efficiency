@@ -77,115 +77,6 @@ theorem AX1_forward_bounded_100 (n : ℕ) (h_lo : 2 ≤ n) (h_hi : n ≤ 100)
   unfold AX1Eq at h_eq
   interval_cases n <;> first | rfl | (exfalso; revert h_eq; decide)
 
-/- Helpers for cycle-21 stage-1 chunked dispatch: bounded forward over a single
-   100-wide window. We isolate the interval_cases call to a 100-element
-   window. The `set_option maxRecDepth` bump is required because
-   `interval_cases n` with hypothesis bounds on higher absolute values
-   (n > 100) elaborates a deeper goal stack than the n ≥ 2 case used in
-   `AX1_forward_bounded_100`. -/
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_200 (n : ℕ) (h_lo : 100 < n) (h_hi : n ≤ 200)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_300 (n : ℕ) (h_lo : 200 < n) (h_hi : n ≤ 300)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_400 (n : ℕ) (h_lo : 300 < n) (h_hi : n ≤ 400)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_500 (n : ℕ) (h_lo : 400 < n) (h_hi : n ≤ 500)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_600 (n : ℕ) (h_lo : 500 < n) (h_hi : n ≤ 600)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_700 (n : ℕ) (h_lo : 600 < n) (h_hi : n ≤ 700)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_800 (n : ℕ) (h_lo : 700 < n) (h_hi : n ≤ 800)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_900 (n : ℕ) (h_lo : 800 < n) (h_hi : n ≤ 900)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-set_option maxRecDepth 4000 in
-set_option maxHeartbeats 4000000 in
-private theorem AX1_forward_window_1000 (n : ℕ) (h_lo : 900 < n) (h_hi : n ≤ 1000)
-    (h_eq : AX1Eq n) : n = 6 := by
-  unfold AX1Eq at h_eq
-  interval_cases n <;> (exfalso; revert h_eq; decide)
-
-/-- W13 cycle-21 stage-1 bounded forward: for `n ∈ [2, 1000]` with `AX1Eq n`,
-    we have `n = 6`. Extends bounded threshold 100 → 1000; the named axiom's
-    quantifier is correspondingly hardened to `1000 < n`. The proof uses a
-    9-window chunked dispatch (each window is 100-wide, isolating
-    `interval_cases` to its known-good [n, n+100] regime) to avoid
-    `maxRecDepth` blow-up of a single 900-wide interval_cases call. raw 91 C3
-    honest: mathlib4 still has no Robin/Hardy-Wright/Wigert asymptotic; this
-    is a PARTIAL surface-area reduction (axiom count UNCHANGED at 7). -/
-theorem AX1_forward_bounded_1000 (n : ℕ) (h_lo : 2 ≤ n) (h_hi : n ≤ 1000)
-    (h_eq : AX1Eq n) : n = 6 := by
-  by_cases h100 : n ≤ 100
-  · exact AX1_forward_bounded_100 n h_lo h100 h_eq
-  · have h100' : 100 < n := Nat.lt_of_not_le h100
-    by_cases h200 : n ≤ 200
-    · exact AX1_forward_window_200 n h100' h200 h_eq
-    · have h200' : 200 < n := Nat.lt_of_not_le h200
-      by_cases h300 : n ≤ 300
-      · exact AX1_forward_window_300 n h200' h300 h_eq
-      · have h300' : 300 < n := Nat.lt_of_not_le h300
-        by_cases h400 : n ≤ 400
-        · exact AX1_forward_window_400 n h300' h400 h_eq
-        · have h400' : 400 < n := Nat.lt_of_not_le h400
-          by_cases h500 : n ≤ 500
-          · exact AX1_forward_window_500 n h400' h500 h_eq
-          · have h500' : 500 < n := Nat.lt_of_not_le h500
-            by_cases h600 : n ≤ 600
-            · exact AX1_forward_window_600 n h500' h600 h_eq
-            · have h600' : 600 < n := Nat.lt_of_not_le h600
-              by_cases h700 : n ≤ 700
-              · exact AX1_forward_window_700 n h600' h700 h_eq
-              · have h700' : 700 < n := Nat.lt_of_not_le h700
-                by_cases h800 : n ≤ 800
-                · exact AX1_forward_window_800 n h700' h800 h_eq
-                · have h800' : 800 < n := Nat.lt_of_not_le h800
-                  by_cases h900 : n ≤ 900
-                  · exact AX1_forward_window_900 n h800' h900 h_eq
-                  · have h900' : 900 < n := Nat.lt_of_not_le h900
-                    exact AX1_forward_window_1000 n h900' h_hi h_eq
-
 /-! ## W3 cycle-7 axiomatic Robin/Hardy-Wright tail (raw 91 C3 honest disclosure)
 
     W13 cycle-20 UPDATE: bounded threshold extended 50 → 100; axiom hardened
@@ -196,9 +87,9 @@ theorem AX1_forward_bounded_1000 (n : ℕ) (h_lo : 2 ≤ n) (h_hi : n ≤ 1000)
       * Hardy & Wright, Theorems 322 (σ asymptotic), 328 (φ asymptotic).
       * Wigert (1907), Arkiv för Mat. 3, 1-9 (τ(n) = n^o(1)). -/
 
-/-- Unbounded tail (n > 1000, W13 cycle 21 stage 1): discharged by
+/-- Unbounded tail (n > 100, W13 cycle 20): discharged by
     `axiom_robin_hardy_wright_ax1_tail`. -/
-theorem AX1_forward_tail (n : ℕ) (h_big : 1000 < n) (h_eq : AX1Eq n) : n = 6 :=
+theorem AX1_forward_tail (n : ℕ) (h_big : 100 < n) (h_eq : AX1Eq n) : n = 6 :=
   absurd h_eq (axiom_robin_hardy_wright_ax1_tail n h_big)
 
 /-- **`thm.AX1_n6_uniqueness`** — main W2 statement.
@@ -216,8 +107,8 @@ theorem AX1_n6_uniqueness :
   constructor
   · -- forward: equality → n = 6
     intro h_eq
-    by_cases h_hi : n ≤ 1000
-    · exact AX1_forward_bounded_1000 n h_lo h_hi h_eq
+    by_cases h_hi : n ≤ 100
+    · exact AX1_forward_bounded_100 n h_lo h_hi h_eq
     · exact AX1_forward_tail n (Nat.lt_of_not_le h_hi) h_eq
   · -- reverse: n = 6 → equality
     intro h_n6

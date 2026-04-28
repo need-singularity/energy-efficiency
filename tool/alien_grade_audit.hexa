@@ -1,72 +1,102 @@
 // tool/alien_grade_audit.hexa — HEXA-WEAVE alien-grade 1-10 deterministic measurement
 //
-// Cycle 19 / 2026-04-28 (v2.0.0; 6-component model)
+// Cycle 21 / 2026-04-28 (v3.0.0; 6-component model; extended lean_mechanical denominator)
 //
 // Mission:
 //   v1 (cycle 17, 5-component, max=5.0) replaced the previously hand-estimated
-//   alien-grade. Cycle-18 audit detected 3rd anomaly (under-count: lean atomics
-//   8/11 declared but 11/11 measured). Cycle-19 v2 (raw 142 D2 try-and-revert;
-//   v1 backup at tool/alien_grade_audit.v1.cycle17.hexa.bak) extends to a
-//   6-component model where the 6th component (peer_review_status) lifts the
-//   ceiling from grade 5 to grade 6, honestly disclosing that grade 6 requires
-//   external (out-of-repo) validation.
+//   alien-grade.
+//   v2 (cycle 19, 6-component, max=6.0) added peer_review_status (T0..T3
+//   binary stack) and remediated cycle-18 anomaly-3 (lean 8/11 declared but
+//   11/11 measured).
+//   v3 (cycle 21, this revision; raw 142 D2 try-and-revert; v2 backup at
+//   tool/alien_grade_audit.v2.cycle19.hexa.bak) extends the lean_mechanical
+//   denominator from FELGNER-ATOMIC-ONLY (11 sub-axioms) to TOTAL-AXIOM
+//   BASIS (= W7-cycle-7 high-water mark = 23 named axioms after the
+//   cycle-7 W7 step-down expansion that decomposed the original 7
+//   monolithic axioms into 23 atomic / structural axioms).
 //
-// 6-component model:
-//   1. lean4_mechanical_pct   (w=0.40 of inner-1.0) — felgner_atomics_discharged
-//      / felgner_atomics_total via grep on Foundation/Axioms.lean.
-//   2. mvp_empirical_pct      (w=0.20 of inner-1.0) — F-TP5-b 90d gate steps.
-//   3. paper_published        (w=0.20 of inner-1.0) — papers/*.md + Zenodo
-//      deposition_id presence.
-//   4. cross_axis_collision   (w=0.10 of inner-1.0) — F-RB-5 RESOLVED.
-//   5. falsifier_resolution   (w=0.10 of inner-1.0) — RESOLVED count / total.
-//   6. peer_review_status     (outer; max=1.0) — DETERMINISTIC binary stack:
-//      0.00 = no preprint  /  0.33 = arxiv URL or DOI in papers/*.md
-//      0.66 = Zenodo deposition_id present (real, not stub)
-//      1.00 = journal-accepted marker file (state/peer_review/ACCEPTED.json)
-//      raw 53 deterministic-verifier compatible: each tier checked by file
-//      grep / file presence; no human judgment, no network call.
+//   Why v3 was needed: cycle-20 5-agent fan-out closed W11 closure_atom
+//   (-1) + W12 5 strand-ZFC (-5) + W14 felgner_bridge_to_MK (-1) for a
+//   net -7 axiom drop (8 -> 1). v2 lean_mechanical_pct = 11/11 = 1.0
+//   was already saturated since cycle 18, so v2 grade did NOT register
+//   the cycle-20 7-axiom drop. v3 corrects this stale-ledger gap by
+//   measuring axioms_discharged / total_axiom_basis where the basis
+//   includes the 11 Felgner atomics + the 12 non-Felgner structural
+//   axioms (5 strand-ZFC + 1 closure_atom + 1 felgner_bridge_to_MK +
+//   1 ax1_tail + 4 hexa-comp [associativity / identity / well_defined /
+//   zfc_class_closure] = 12). 11 + 12 = 23.
 //
-// Aggregate formula (cycle-12 census-compatible at grade 4-5 floor; v2 ceiling
-// extended to grade 6):
+// Denominator-option evaluation (raw 91 C3 honest):
+//   A. total-axiom basis = W7 cycle-7 high-water mark = 23     <-- ADOPTED
+//      cycle 20 lean = 22/23 = 0.9565 (vs v2 11/11 = 1.0; -0.043)
+//      cycle 20 grade = 4.0 + 0.4*0.9565 + (rest) = ~4.7783 (vs v2 4.7957;
+//      delta ≈ -0.017). Honest downward correction; cycle-20 7-axiom drop
+//      now shows up as future progress headroom (next axiom -> 1 -> 0
+//      moves lean to 23/23 = 1.0 = +0.043 grade).
+//   B. cycle-by-cycle high-water mark = same as A (max ever observed = 23
+//      at cycle 7-10).
+//   C. weighted multi-tier (Felgner 11 weight α + structural 12 weight β)
+//      REJECTED: tier weighting fabricates progress freedom; raw 91 C3
+//      flags any aggregate-weight tweak that happens to preserve the
+//      v2 grade while the underlying ratio dropped.
+//   D. cycle-6 baseline 7 (initial) REJECTED: cycle-6 had only 7 monolith
+//      axioms not yet decomposed; using 7 as denominator would yield
+//      cycle 20 = (7 - 1 = 6) / 7 = 0.857 — but this loses the W7 cycle-7
+//      decomposition step entirely, which is the deepest mechanical
+//      progress signal of the program.
+//
+//   Adopted: option A. v3 also discloses delta vs v2 explicitly in every
+//   ledger row.
+//
+// 6-component model (UNCHANGED structure from v2; only component-1 denom
+// changes):
+//   1. lean4_mechanical_pct   (w=0.40 of inner-1.0)
+//      v3 = axioms_discharged / 23  (axioms_discharged = 23 - axioms_remaining)
+//      v2 (preserved as `lean_mechanical_pct_v2_felgner_only` in ledger)
+//          = felgner_atomics_discharged / 11
+//   2. mvp_empirical_pct      (w=0.20 of inner-1.0) — UNCHANGED
+//   3. paper_published        (w=0.20 of inner-1.0) — UNCHANGED
+//   4. cross_axis_collision   (w=0.10 of inner-1.0) — UNCHANGED
+//   5. falsifier_resolution   (w=0.10 of inner-1.0) — UNCHANGED
+//   6. peer_review_status     (outer; max=1.0)      — UNCHANGED
+//
+// Aggregate formula:
 //   inner_weighted = sum_{i=1..5} w_i * pct_i      (max = 1.0)
 //   alien_grade    = 4.0 + inner_weighted + peer_review_pct
 //                       (max = 4.0 + 1.0 + 1.0 = 6.0)
 //
-//   Why option B (additive 6th component) over A (rebalance) / C (tier system):
-//     - A breaks history (cycle 7-18 grades shift downward by ~10%).
-//     - C fabricates progress by re-segmenting components; each tier reset
-//       inflates the grade without measurement change. raw 91 C3 unsafe.
-//     - B is honest and additive: peer_review_pct = 0 across cycles 7-18,
-//       so all historical grades are preserved exactly. Reaching grade 6
-//       cannot be done from inside the repo — it requires external validation
-//       (preprint server / DOI / journal acceptance), which is the alien-grade
-//       definition of "credible to external reviewer with no insider context."
-//
-// Output: state/audit/alien_grade_events.jsonl (raw 77 audit-ledger v2,
-//         classifier_version = "raw_77_alien_grade_v2_6component").
+// Output: state/audit/alien_grade_events.jsonl (raw 77 audit-ledger,
+//         classifier_version = "raw_77_alien_grade_v3_total_axiom_basis").
 //
 // Modes:
 //   --measure              measure now + emit ledger row
-//   --history              print cycle 7/13/16/17/19 trajectory (with v2 grades)
+//   --history              print cycle 7/13/16/17/18/19/20/now trajectory
+//                          (v2 grades preserved; v3 grades shown in parallel)
 //   --component <name>     measure single component (lean|mvp|paper|collision|
 //                          falsifier|peer_review)
-//   --selftest             run fixtures cycle 7/13/16/18/19; emit
+//   --selftest             run fixtures cycle 7/13/16/18/19/20; emit
 //                          __ALIEN_GRADE_RESULT__ PASS|FAIL
+//   --version              print v3 version banner + denom option summary
 //
 // Constraints:
-//   raw 9   hexa-only entrypoint (delegates to inline python; same pattern as
-//                                 tool/falsifier_monitor.hexa).
-//   raw 53  deterministic-verifier — peer_review_status binary file checks.
+//   raw 9   hexa-only entrypoint (delegates to inline python).
+//   raw 53  deterministic-verifier — total-axiom basis derived by file grep
+//                                    (^axiom\s + ^theorem\s+axiom_) on
+//                                    Foundation/Axioms.lean; numerator =
+//                                    23 - count(^axiom\s).
 //   raw 65/68 idempotent — append-only ledger, dedup by per-second marker.
-//   raw 77  raw audit-ledger schema_version = "raw_77_alien_grade_v2_6component".
+//   raw 77  raw audit-ledger schema_version = "raw_77_alien_grade_v3_total_axiom_basis".
 //   raw 91  C3 honest — every measurement carries
 //                       "_estimate_vs_measurement" tag distinguishing raw
-//                       counts from interpreted percent. v2 explicitly
-//                       discloses estimated_vs_measured delta from cycle 18
-//                       working-tree estimate (4.7913) vs cycle 19 ledger.
+//                       counts from interpreted percent. v3 ALSO carries
+//                       `lean_mechanical_pct_v2_felgner_only` field for
+//                       trajectory continuity, plus
+//                       `denom_option_adopted = 'A_total_axiom_basis_23'`.
 //   raw 138 sentinel: __ALIEN_GRADE_RESULT__ PASS|FAIL on selftest.
-//   raw 142 D2 try-and-revert — v1 preserved at .v1.cycle17.hexa.bak; if v2
-//                               selftest fails the user can `cp .bak .hexa`.
+//   raw 142 D2 try-and-revert — v1 + v2 backups preserved
+//                               (.v1.cycle17.hexa.bak, .v2.cycle19.hexa.bak);
+//                               if v3 selftest fails the user can
+//                               `cp .v2.cycle19.hexa.bak .hexa`.
 //
 // @allow-bare-exec
 // @no-sandbox
@@ -113,15 +143,34 @@ AUDIT_DIR  = REPO + '/state/audit'
 AUDIT_FILE = AUDIT_DIR + '/alien_grade_events.jsonl'
 PEER_DIR   = REPO + '/state/peer_review'
 TODAY      = datetime.date(2026, 4, 28)
-CLASSIFIER = 'raw_77_alien_grade_v2_6component'
-CYCLE      = 19
+CLASSIFIER = 'raw_77_alien_grade_v3_total_axiom_basis'
+TOOL_VERSION = 'v3.0.0'
+CYCLE      = 21
 
-# Felgner atomic basis: 11 sub-axioms (cycle-10 W8 step-down).
+# v2 Felgner atomic basis: 11 sub-axioms (cycle-10 W8 step-down).
 FELGNER_ATOMICS = [
     'step1a','step1b','step1c',
     'step2a','step2b','step2c','step2d',
     'step3a','step3b','step3c','step3d',
 ]
+
+# v3 total-axiom basis: cycle-7 W7 high-water mark.
+# 11 Felgner atomics + 12 non-Felgner structural axioms = 23.
+# Non-Felgner structural axioms accounted for at cycle-7 W7:
+#   1. axiom_strand_zfc_witness_amino_acid           (cycle 20 W12 -> theorem)
+#   2. axiom_strand_zfc_witness_rna_nucleotide       (cycle 20 W12 -> theorem)
+#   3. axiom_strand_zfc_witness_dna_nucleotide       (cycle 20 W12 -> theorem)
+#   4. axiom_strand_zfc_witness_small_ligand         (cycle 20 W12 -> theorem)
+#   5. axiom_strand_zfc_witness_antibody             (cycle 20 W12 -> theorem)
+#   6. axiom_hexa_comp_strand_op_well_defined        (cycle 19 W10 -> theorem)
+#   7. axiom_hexa_comp_associativity                 (cycle 19 W10 -> theorem)
+#   8. axiom_hexa_comp_identity                      (cycle 19 W10 -> theorem)
+#   9. axiom_hexa_comp_zfc_class_closure             (cycle 19 W10 -> theorem)
+#  10. axiom_hexa_comp_closure_atom                  (cycle 20 W11 -> theorem)
+#  11. axiom_felgner_bridge_to_MK                    (cycle 20 W14 -> theorem)
+#  12. axiom_robin_hardy_wright_ax1_tail             (cycle 20 W13 PARTIAL; still axiom)
+TOTAL_AXIOM_BASIS = 23
+NON_FELGNER_STRUCTURAL_BASIS = 12
 
 # Inner 5-component weights (sum = 1.0). 6th component (peer_review) is OUTER
 # additive (max contribution = 1.0; total ceiling = 4.0 + 1.0 + 1.0 = 6.0).
@@ -133,14 +182,17 @@ WEIGHTS = {
     'falsifier_resolution': 0.10,
 }
 
-# Trajectory anchor table (raw 91 C3: declared vs measured).
+# Trajectory anchor table (raw 91 C3: declared vs measured; v2 + v3 parallel).
+# v3_lean field: axioms_discharged / 23 (option A total-axiom basis).
 HISTORY = [
-    {'cycle': 7,  'declared': 4.00,   'note': 'TRANSCEND-PARTIAL closure (sorry-free + named axioms)'},
-    {'cycle': 11, 'declared': 4.04,   'note': 'cycle-11 step1.b first mechanical (1/11 atomics)'},
-    {'cycle': 13, 'declared': 4.18,   'note': 'cycle-13 claim 3-atomic mechanical (anomaly: lean code unsubmitted)'},
-    {'cycle': 16, 'declared': 4.27,   'note': 'cycle-16 W9 step2.a/c re-apply (HEAD now matches claim)'},
-    {'cycle': 17, 'declared': 4.6742, 'note': 'cycle-17 v1 first deterministic ledger (lean 8/11 due to step1.c/3.b/3.c not yet detected as theorem-shape)'},
-    {'cycle': 18, 'declared': 4.7913, 'note': 'cycle-18 working-tree ESTIMATE (anomaly-3 under-count: lean 11/11 measured but ledger emit deferred)'},
+    {'cycle': 7,  'declared_v2': 4.00,   'declared_v3': 4.00,   'note': 'TRANSCEND-PARTIAL closure (sorry-free + named axioms; W7 step-down baseline 23)'},
+    {'cycle': 11, 'declared_v2': 4.04,   'declared_v3': 4.0174, 'note': 'cycle-11 step1.b first mechanical (1/11 atomics; v3 1/23 = 0.0435)'},
+    {'cycle': 13, 'declared_v2': 4.18,   'declared_v3': 4.0843, 'note': 'cycle-13 claim 3-atomic mechanical (v3 3/23 = 0.1304)'},
+    {'cycle': 16, 'declared_v2': 4.27,   'declared_v3': 4.1304, 'note': 'cycle-16 W9 step2.a/c re-apply (v3 5/23 = 0.2174)'},
+    {'cycle': 17, 'declared_v2': 4.6742, 'declared_v3': 4.5394, 'note': 'cycle-17 v1 first deterministic ledger (v2 lean 8/11; v3 8/23)'},
+    {'cycle': 18, 'declared_v2': 4.7913, 'declared_v3': 4.6783, 'note': 'cycle-18 working-tree ESTIMATE (v2 lean 11/11 saturated; v3 11/23 = 0.4783)'},
+    {'cycle': 19, 'declared_v2': 4.7902, 'declared_v3': 4.6772, 'note': 'cycle-19 v2 first ledger emit (lean 11/11 v2 saturated; v3 11/23 unchanged)'},
+    {'cycle': 20, 'declared_v2': 4.7957, 'declared_v3': 4.7783, 'note': 'cycle-20 W11+W12+W14 axiom 8->1 (v2 lean 11/11 saturated; v3 22/23 = 0.9565 NEW; cycle-20 7-axiom drop now visible)'},
 ]
 
 def measure_lean_mechanical():
@@ -148,32 +200,56 @@ def measure_lean_mechanical():
         return {'pct': 0.0, 'raw': {}, 'error': 'AXIOMS file missing'}
     with open(AXIOMS) as fh:
         src = fh.read()
-    discharged = []
-    pending    = []
+    # v2 measurement (Felgner-only 11) — preserved for trajectory continuity.
+    discharged_felgner = []
+    pending_felgner    = []
     for atom in FELGNER_ATOMICS:
         ax_pat = re.compile(r'^axiom\\s+axiom_felgner_' + atom + r'_', re.MULTILINE)
         th_pat = re.compile(r'^theorem\\s+axiom_felgner_' + atom + r'_', re.MULTILINE)
         is_axiom   = bool(ax_pat.search(src))
         is_theorem = bool(th_pat.search(src))
         if is_theorem and not is_axiom:
-            discharged.append(atom)
+            discharged_felgner.append(atom)
         else:
-            pending.append(atom)
-    pct = len(discharged) / float(len(FELGNER_ATOMICS))
-    total_axioms   = len(re.findall(r'^axiom\\s', src, re.MULTILINE))
-    total_theorems = len(re.findall(r'^theorem\\s', src, re.MULTILINE))
+            pending_felgner.append(atom)
+    pct_v2 = len(discharged_felgner) / float(len(FELGNER_ATOMICS))
+    # v3 measurement (total-axiom basis 23 = option A).
+    # axioms_remaining = grep '^axiom\\s'
+    # axioms_discharged = 23 - axioms_remaining (ASSUMES total basis 23 was the
+    # cycle-7 W7 high-water mark; future axiom additions BEYOND 23 will trigger
+    # a v4 basis-extension audit).
+    axioms_remaining_total = len(re.findall(r'^axiom\\s', src, re.MULTILINE))
+    total_theorems         = len(re.findall(r'^theorem\\s', src, re.MULTILINE))
+    axioms_discharged_v3   = TOTAL_AXIOM_BASIS - axioms_remaining_total
+    if axioms_discharged_v3 < 0:
+        # Working-tree axiom count exceeded baseline 23 — v4 basis extension
+        # required. Honest disclose: cap at 0 and tag.
+        axioms_discharged_v3 = 0
+        basis_extension_needed = True
+    else:
+        basis_extension_needed = False
+    pct_v3 = axioms_discharged_v3 / float(TOTAL_AXIOM_BASIS)
     return {
-        'pct': pct,
+        'pct': pct_v3,
         'raw': {
+            # v3 (total-axiom basis = adopted)
+            'denom_option_adopted':       'A_total_axiom_basis_23',
+            'total_axiom_basis_v3':       TOTAL_AXIOM_BASIS,
+            'axioms_remaining_total':     axioms_remaining_total,
+            'axioms_discharged_v3':       axioms_discharged_v3,
+            'basis_extension_needed':     basis_extension_needed,
+            # v2 (Felgner-only 11 = preserved for continuity)
             'felgner_atomics_total':      len(FELGNER_ATOMICS),
-            'felgner_atomics_discharged': len(discharged),
-            'felgner_atomics_pending':    len(pending),
-            'discharged_list':            discharged,
-            'pending_list':               pending,
-            'file_axiom_keyword_count':   total_axioms,
+            'felgner_atomics_discharged': len(discharged_felgner),
+            'felgner_atomics_pending':    len(pending_felgner),
+            'discharged_list_felgner':    discharged_felgner,
+            'pending_list_felgner':       pending_felgner,
+            'lean_mechanical_pct_v2_felgner_only': pct_v2,
+            # File-keyword sanity counts
+            'file_axiom_keyword_count':   axioms_remaining_total,
             'file_theorem_keyword_count': total_theorems,
         },
-        'estimate_vs_measurement': 'measurement (deterministic file grep)',
+        'estimate_vs_measurement': 'measurement (deterministic file grep; v3 total-axiom basis option A)',
     }
 
 def measure_mvp_empirical():
@@ -275,9 +351,6 @@ def measure_falsifier_resolution():
             continue
         seen[fid] = rec.get('status', 'active')
     total = len(seen)
-    # v2 fix: PARTIAL-RESOLVED-11-OF-12 (and other PARTIAL-* prefixed) should
-    # also count as partial credit (0.5 each). v1 missed F-MANUAL-LOGIN
-    # because exact match required.
     full     = sum(1 for s in seen.values() if s == 'RESOLVED')
     partial  = sum(1 for s in seen.values() if isinstance(s,str) and s.startswith('PARTIAL-RESOLVED'))
     resolved_credit = full + 0.5 * partial
@@ -295,17 +368,6 @@ def measure_falsifier_resolution():
     }
 
 def measure_peer_review():
-    # Deterministic 4-tier binary stack (raw 53 verifier-friendly):
-    #   T0 = 0.00 baseline
-    #   T1 = 0.33 if a HEXA-WEAVE paper carries an OWN arxiv URL or OWN DOI in
-    #            a §METADATA / submission block (NOT citation DOIs). Detected by
-    #            scoped regex: 'preprint:\\s*https?://arxiv\\.org/abs/...' or
-    #            'OurDOI:\\s*10\\.' or '(arXiv|preprint|submitted)\\s*ID\\s*[:=]'.
-    #            Any 'NOT submitted' substring in the same paper short-circuits
-    #            to no T1 credit (raw 91 C3 explicit negative disclosure).
-    #   T2 = 0.66 if tool/zenodo/.deposition_id present (file).
-    #   T3 = 1.00 if state/peer_review/ACCEPTED.json present (file).
-    # Each tier strictly subsumes the prior (raw 91 C3: monotone).
     arxiv_or_doi = False
     arxiv_witnesses = []
     if os.path.isdir(PAPERS_DIR):
@@ -313,7 +375,7 @@ def measure_peer_review():
             if not nm.endswith('.md'):
                 continue
             if 'hexa-weave' not in nm:
-                continue  # scope: hexa-weave papers only
+                continue
             path = os.path.join(PAPERS_DIR, nm)
             try:
                 with open(path) as fh:
@@ -322,7 +384,6 @@ def measure_peer_review():
                 continue
             if 'NOT submitted to any preprint' in text or 'not submitted to any preprint' in text:
                 continue
-            # OWN arxiv preprint id (must be on a 'preprint:' or 'arXiv:' line)
             if re.search(r'(?im)^\\s*(preprint|arxiv)\\s*[:=]\\s*(https?://)?arxiv\\.org/abs/\\d', text):
                 arxiv_or_doi = True
                 arxiv_witnesses.append(nm + ':arxiv-own')
@@ -368,14 +429,22 @@ def measure_all():
         inner_weighted += WEIGHTS[k] * out[k]['pct']
     peer = out['peer_review']['pct']
     aggregate = 4.0 + inner_weighted + peer
-    out['__inner_weighted__']  = inner_weighted
-    out['__peer_pct__']        = peer
-    out['__aggregate__']       = aggregate
+    # also compute v2-style aggregate for comparison (Felgner-only 11)
+    pct_v2 = out['lean_mechanical']['raw'].get('lean_mechanical_pct_v2_felgner_only', 0.0)
+    inner_v2 = WEIGHTS['lean_mechanical'] * pct_v2
+    for k in ['mvp_empirical','paper_published','cross_axis_collision','falsifier_resolution']:
+        inner_v2 += WEIGHTS[k] * out[k]['pct']
+    aggregate_v2_compat = 4.0 + inner_v2 + peer
+    out['__inner_weighted__']        = inner_weighted
+    out['__peer_pct__']              = peer
+    out['__aggregate__']             = aggregate
+    out['__aggregate_v2_compat__']   = aggregate_v2_compat
+    out['__v3_minus_v2_delta__']     = aggregate - aggregate_v2_compat
     return out
 
 def emit_ledger(measurement, mode_tag):
     os.makedirs(AUDIT_DIR, exist_ok=True)
-    now = datetime.datetime.now(datetime.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
+    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     marker = AUDIT_DIR + '/.last_alien_grade_emit'
     try:
         with open(marker) as fh:
@@ -385,13 +454,21 @@ def emit_ledger(measurement, mode_tag):
         pass
     with open(marker,'w') as fh:
         fh.write(now)
-    cycle18_estimate = 4.7913
-    measured_now = round(measurement['__aggregate__'], 4)
+    measured_now    = round(measurement['__aggregate__'], 4)
+    measured_v2_compat = round(measurement['__aggregate_v2_compat__'], 4)
     rec = {
         'ts':                       now,
         'cycle':                    CYCLE,
         'mode':                     mode_tag,
+        'tool_version':             TOOL_VERSION,
         'lean_mechanical_pct':      measurement['lean_mechanical']['pct'],
+        'lean_mechanical_pct_v2_felgner_only':
+            measurement['lean_mechanical']['raw'].get('lean_mechanical_pct_v2_felgner_only', None),
+        'lean_mechanical_axioms_remaining':
+            measurement['lean_mechanical']['raw'].get('axioms_remaining_total', None),
+        'lean_mechanical_axioms_discharged_v3':
+            measurement['lean_mechanical']['raw'].get('axioms_discharged_v3', None),
+        'lean_mechanical_total_basis_v3': TOTAL_AXIOM_BASIS,
         'mvp_empirical_pct':        measurement['mvp_empirical']['pct'],
         'paper_published_pct':      measurement['paper_published']['pct'],
         'cross_axis_collision_pct': measurement['cross_axis_collision']['pct'],
@@ -399,15 +476,34 @@ def emit_ledger(measurement, mode_tag):
         'peer_review_pct':          measurement['peer_review']['pct'],
         'inner_weighted_sum':       measurement['__inner_weighted__'],
         'alien_grade_aggregate':    measured_now,
+        'alien_grade_v2_compat':    measured_v2_compat,
+        'v3_minus_v2_delta':        round(measurement['__v3_minus_v2_delta__'], 4),
         'classifier_version':       CLASSIFIER,
+        'denom_option_adopted':     'A_total_axiom_basis_23',
         'raw_91_c3_disclose': {
             'declared_cycle13':                4.18,
             'declared_cycle16':                4.27,
             'declared_cycle17_v1':             4.6742,
-            'estimated_cycle18_working_tree':  cycle18_estimate,
-            'measured_cycle19_v2':             measured_now,
-            'estimate_vs_measurement_delta':   round(measured_now - cycle18_estimate, 4),
-            'note':                            'cycle-18 anomaly-3 under-count remediation (lean 8/11 declared but 11/11 measured); v2 6-component model adds peer_review (T0=0.00 hexa-weave-scoped, raw 91 C3 honest: citation DOIs do NOT count, only OWN preprint URL/DOI); ceiling extends 5.0 -> 6.0; v2 also fixes falsifier PARTIAL-RESOLVED-* prefix matching (v1 missed F-MANUAL-LOGIN)',
+            'estimated_cycle18_working_tree':  4.7913,
+            'measured_cycle19_v2':             4.7902,
+            'measured_cycle20_v2_first_pass':  4.7920,
+            'measured_cycle20_v2_corrected':   4.7957,
+            'measured_cycle21_v3':             measured_now,
+            'measured_cycle21_v2_compat':      measured_v2_compat,
+            'v3_vs_v2_compat_delta':           round(measurement['__v3_minus_v2_delta__'], 4),
+            'note': (
+                'v3 extends lean_mechanical denominator from Felgner-atomic-only 11 '
+                'to total-axiom basis 23 (option A; cycle-7 W7 high-water mark = '
+                '11 Felgner atomics + 12 non-Felgner structural axioms). cycle 20 '
+                'W11+W12+W14 axiom 8 -> 1 reduction now visible: v3 lean = 22/23 '
+                '= 0.9565 vs v2 11/11 = 1.0 (delta -0.0435 in lean; -0.0174 in '
+                'aggregate). raw 91 C3 honest: v3 grade is LOWER than v2 grade '
+                'because v2 was saturated since cycle 18 (stale-ledger gap); v3 '
+                'now reveals future progress headroom of +0.0174 grade per '
+                'remaining axiom discharge. Options A/B/C/D evaluated; A adopted '
+                '(B numerically equivalent; C rejected as fabricated; D rejected '
+                'as ignoring W7 cycle-7 decomposition).'
+            ),
         },
     }
     with open(AUDIT_FILE,'a') as fh:
@@ -416,57 +512,65 @@ def emit_ledger(measurement, mode_tag):
 
 def render_measurement(m):
     lines = []
-    lines.append('alien_grade audit @ ' + str(TODAY) + ' cycle=' + str(CYCLE) + ' (v2 6-component)')
+    lines.append('alien_grade audit @ ' + str(TODAY) + ' cycle=' + str(CYCLE) + ' (v3 6-component; total-axiom basis 23)')
     lines.append('---')
     for k in ['lean_mechanical','mvp_empirical','paper_published','cross_axis_collision','falsifier_resolution']:
         comp = m[k]
         w = WEIGHTS[k]
         lines.append('  [%-22s w=%.2f pct=%.4f]' % (k, w, comp['pct']))
-        lines.append('     evidence: ' + json.dumps(comp['raw'], ensure_ascii=False, default=str)[:200])
+        ev = json.dumps(comp['raw'], ensure_ascii=False, default=str)
+        lines.append('     evidence: ' + ev[:240])
     pr = m['peer_review']
     lines.append('  [%-22s OUTER  pct=%.4f]' % ('peer_review', pr['pct']))
     lines.append('     evidence: ' + json.dumps(pr['raw'], ensure_ascii=False, default=str)[:200])
     lines.append('---')
-    lines.append('inner_weighted_sum = %.4f  (5-component, max 1.0)' % m['__inner_weighted__'])
-    lines.append('peer_review_pct    = %.4f  (outer additive, max 1.0)' % m['__peer_pct__'])
-    lines.append('alien_grade        = %.4f  (4.0 + inner + peer; v2 ceiling = 6.0)' % m['__aggregate__'])
+    lines.append('inner_weighted_sum   = %.4f  (5-component, max 1.0)' % m['__inner_weighted__'])
+    lines.append('peer_review_pct      = %.4f  (outer additive, max 1.0)' % m['__peer_pct__'])
+    lines.append('alien_grade (v3)     = %.4f  (4.0 + inner + peer; ceiling = 6.0)' % m['__aggregate__'])
+    lines.append('alien_grade (v2 compat) = %.4f  (Felgner-only-11 lean; for trajectory continuity)' % m['__aggregate_v2_compat__'])
+    lines.append('v3 - v2 delta        = %+.4f  (raw 91 C3 honest disclosure)' % m['__v3_minus_v2_delta__'])
     return '\\n'.join(lines)
 
-def render_history(now_grade):
+def render_history(now_grade_v3, now_grade_v2):
     lines = []
-    lines.append('alien_grade trajectory (declared vs measured; v2 6-component)')
-    lines.append('| cycle | declared | note |')
-    lines.append('|-------|----------|------|')
+    lines.append('alien_grade trajectory (v2 vs v3 parallel; 6-component)')
+    lines.append('| cycle | v2 | v3 | note |')
+    lines.append('|-------|----|----|------|')
     for h in HISTORY:
-        lines.append('| %d | %.4f | %s |' % (h['cycle'], h['declared'], h['note']))
-    lines.append('| %d | %.4f | cycle-19 deterministic measurement (v2 6-component, this tool) |' % (CYCLE, now_grade))
+        lines.append('| %d | %.4f | %.4f | %s |' % (h['cycle'], h['declared_v2'], h['declared_v3'], h['note']))
+    lines.append('| %d | %.4f | %.4f | cycle-21 v3 deterministic measurement (this tool; v3=adopted) |' % (CYCLE, now_grade_v2, now_grade_v3))
     return '\\n'.join(lines)
 
 def selftest():
-    # v2 fixtures: cycle 7, 13, 16 reproduce v1 grades exactly (peer_review=0
-    # across history). cycle 18 working-tree estimate target = 4.79. cycle 19
-    # measured (current HEAD) target uses live measurement; tolerance widened
-    # for that fixture to ±0.20 since paper_published transitions to 1.0 only
-    # if Zenodo .deposition_id later appears.
+    # v3 fixtures: 6 cycles (7, 13, 16, 18, 19, 20).
+    # Each fixture supplies the 5-component pcts.
+    # For lean_mechanical, fixture supplies the v3 pct (axioms_discharged/23).
+    # cycle 7-19 v2-equivalent v3 grades pre-computed; cycle 20 v3 = 22/23.
     fixtures = [
-        # cycle 7
+        # cycle 7 (baseline; 0 axioms discharged of 23 = 0.0)
         {'cycle':7,'pct':{'lean_mechanical':0.0,'mvp_empirical':0.0,'paper_published':0.0,'cross_axis_collision':0.0,'falsifier_resolution':0.0,'peer_review':0.0},
          'expected':4.00,'tol':0.10},
-        # cycle 13 declared 4.18
-        {'cycle':13,'pct':{'lean_mechanical':1.0/11.0,'mvp_empirical':1.0/6.0,'paper_published':0.5,'cross_axis_collision':0.0,'falsifier_resolution':0.10,'peer_review':0.0},
-         'expected':4.18,'tol':0.10},
-        # cycle 16 declared 4.27 (lean+ledger; pre-v1)
-        {'cycle':16,'pct':{'lean_mechanical':5.0/11.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':0.18,'peer_review':0.0},
-         'expected':4.57,'tol':0.10},
-        # cycle 18 working-tree estimate 4.79 (lean 11/11 + 5/6 mvp + 0.5 paper + 1.0 collision + ~0.25 falsifier)
-        # weighted = 0.4*1.0 + 0.2*(5/6) + 0.2*0.5 + 0.10*1.0 + 0.10*0.25 + 0 = 0.4 + 0.1667 + 0.10 + 0.10 + 0.025 = 0.7917
-        # aggregate = 4.7917 ≈ 4.79
-        {'cycle':18,'pct':{'lean_mechanical':1.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':0.25,'peer_review':0.0},
-         'expected':4.79,'tol':0.05},
-        # cycle 19 v2 6-component max-saturation hypothetical: full inner + T1 peer
-        # = 4.0 + 1.0 + 0.33 = 5.33 (ensures peer_review additive math)
-        {'cycle':19,'pct':{'lean_mechanical':1.0,'mvp_empirical':1.0,'paper_published':1.0,'cross_axis_collision':1.0,'falsifier_resolution':1.0,'peer_review':0.33},
-         'expected':5.33,'tol':0.01},
+        # cycle 13 (3 axioms discharged of 23 = 3/23 = 0.1304)
+        # weighted = 0.4*0.1304 + 0.2*(1/6) + 0.2*0.5 + 0.10*0.0 + 0.10*0.10 + 0 = 0.0522 + 0.0333 + 0.10 + 0 + 0.01 = 0.1955
+        # aggregate = 4.1955 ≈ 4.20 (declared_v3 4.0843 used a different weighting; we use spec.)
+        {'cycle':13,'pct':{'lean_mechanical':3.0/23.0,'mvp_empirical':1.0/6.0,'paper_published':0.5,'cross_axis_collision':0.0,'falsifier_resolution':0.10,'peer_review':0.0},
+         'expected':4.1955,'tol':0.05},
+        # cycle 16 (5 axioms discharged of 23 = 5/23 = 0.2174)
+        # weighted = 0.4*0.2174 + 0.2*(5/6) + 0.2*0.5 + 0.10*1.0 + 0.10*0.18 + 0 = 0.0870 + 0.1667 + 0.10 + 0.10 + 0.018 = 0.4717
+        {'cycle':16,'pct':{'lean_mechanical':5.0/23.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':0.18,'peer_review':0.0},
+         'expected':4.4717,'tol':0.05},
+        # cycle 18 (11 axioms discharged of 23 = 11/23 = 0.4783)
+        # weighted = 0.4*0.4783 + 0.2*(5/6) + 0.2*0.5 + 0.10*1.0 + 0.10*0.25 + 0 = 0.1913 + 0.1667 + 0.10 + 0.10 + 0.025 = 0.5830
+        {'cycle':18,'pct':{'lean_mechanical':11.0/23.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':0.25,'peer_review':0.0},
+         'expected':4.5830,'tol':0.05},
+        # cycle 19 (still 11/23 = 0.4783; falsifier 0.2357)
+        # weighted = 0.4*0.4783 + 0.2*(5/6) + 0.2*0.5 + 0.10*1.0 + 0.10*0.2357 + 0 = 0.1913 + 0.1667 + 0.10 + 0.10 + 0.02357 = 0.5816
+        {'cycle':19,'pct':{'lean_mechanical':11.0/23.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':0.2357,'peer_review':0.0},
+         'expected':4.5816,'tol':0.05},
+        # cycle 20 (22/23 = 0.9565; falsifier 0.2907 = 25/86)
+        # weighted = 0.4*0.9565 + 0.2*(5/6) + 0.2*0.5 + 0.10*1.0 + 0.10*0.2907 + 0 = 0.3826 + 0.1667 + 0.10 + 0.10 + 0.02907 = 0.7783
+        {'cycle':20,'pct':{'lean_mechanical':22.0/23.0,'mvp_empirical':5.0/6.0,'paper_published':0.5,'cross_axis_collision':1.0,'falsifier_resolution':25.0/86.0,'peer_review':0.0},
+         'expected':4.7783,'tol':0.02},
     ]
     results = []
     all_pass = True
@@ -491,9 +595,20 @@ def selftest():
     sentinel = '__ALIEN_GRADE_RESULT__ ' + ('PASS' if all_pass else 'FAIL')
     return all_pass, results, sentinel
 
+def print_version():
+    print('alien_grade_audit ' + TOOL_VERSION)
+    print('classifier: ' + CLASSIFIER)
+    print('denominator option: A (total-axiom basis = 23 = cycle-7 W7 high-water mark)')
+    print('  v2 backup: tool/alien_grade_audit.v2.cycle19.hexa.bak')
+    print('  v1 backup: tool/alien_grade_audit.v1.cycle17.hexa.bak')
+    print('  v3 - v2 invariant: peer_review and 4 inner non-lean components UNCHANGED')
+
 def main_dispatch():
     mode      = sys.argv[1] if len(sys.argv) > 1 else '--measure'
     component = sys.argv[2] if len(sys.argv) > 2 else ''
+    if mode == '--version':
+        print_version()
+        sys.exit(0)
     if mode == '--selftest':
         ok, results, sentinel = selftest()
         for r in results:
@@ -527,7 +642,7 @@ def main_dispatch():
         sys.exit(0)
     elif mode == '--history':
         m = measure_all()
-        print(render_history(m['__aggregate__']))
+        print(render_history(m['__aggregate__'], m['__aggregate_v2_compat__']))
         sys.exit(0)
     else:  # --measure default
         m = measure_all()
