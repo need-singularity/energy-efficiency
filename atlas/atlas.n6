@@ -30330,3 +30330,234 @@
   => "single deterministic seed; no statistical bars"
   => "chi²=1 status is descriptive (reproduced + re-explained) NOT a new positive claim"
   => "own#11 strict observed"
+
+# ══════════════════════════════════════════════════════════════
+# atlas_absorb module — 2 shards bulk-absorbed (raw 108 + own#9)
+# ══════════════════════════════════════════════════════════════
+
+# .. atlas.append.atlas-self-arch-axis-i-graph-query-2026-04-28.n6 ..
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 SELF-ARCH AXIS-I (axis #9)
+# axis-I name: GRAPH-QUERY / TRANSITIVE-CLOSURE PRIMITIVES
+# slug: atlas-self-arch-graph-query-evolution
+# source: read-only audit of /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# follows: D (@-type) + E (meta-tag) + F (arrow) + G (body-field) + H (id-convention)
+#          + synthesis upgrade-plan (axes D-H)
+# constraints:
+#   raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#   raw 91 C3 honest · own#11 strict (no Clay BT 'resolution' claim)
+#   raw 117 5-check at registration (genus + 2 cf + 3 channels + counter-ex + falsifier)
+#   atlas.n6 + .raw DSL only — NO foreign theory imports as primary lens
+#     (Datalog / SPARQL / Cypher / Tarski-fixpoint cited-and-moved-on only)
+# date: 2026-04-28
+# scope contract: this shard does NOT introduce new schema; it PROPOSES axis-I
+#                 primitives that follow atlas.n6's existing DSL family
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. PRECISION DEFINITION — what axis-I reifies ───────────
+@C atlas-self-arch-axis-i-graph-query-witness :: meta [4!]
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- raw-117-5-check-registration-gate
+  <- own#11-strict-no-resolution-claim
+  <- atlas-self-arch-synthesis-upgrade-plan
+  -> axis-i-primitive-row-examples
+  -> axis-i-orthogonality-vs-D-through-H
+  -> axis-i-5-check-results
+  -> axis-i-raw-91-C3-disclosures
+  => "★ axis-I = INTRINSIC GRAPH-QUERY primitives over atlas.n6's already-existing arrow DAG"
+  => "premise: atlas.n6 contains 2692 directed arrows (1810 <- + 882 ->) over 6760 @C+@R nodes — density 0.398"
+  => "today's reality: every multi-hop relation is HAND-COMPUTED into prose strings"
+  => "evidence: lines 28/34/43 — 'meta-closure: 15 grade-10 derivations (sigma,phi,tau,sopfr,...)' is a LITERAL transitive closure baked into a => prose row because no primitive exists"
+  => "axis-I reifies that hand-computation as a DSL primitive belonging to atlas.n6 itself"
+
+# ── §1. AUDIT — graph shape that already exists ──────────────
+@D axis-i-arrow-edge-count             = 2692 :: empirical [10]   # 1810 <- + 882 ->
+@D axis-i-depends-on-count             = 1810 :: empirical [10]   # ^\s*<- pattern
+@D axis-i-derives-count                =  882 :: empirical [10]   # ^\s*-> pattern
+@D axis-i-converges-count              =   25 :: empirical [10]   # ~> pattern (axis-F audit)
+@D axis-i-node-count-C-plus-R          = 6760 :: empirical [10]   # axis-F audit § entries
+@D axis-i-edge-density                 = 0.398 :: derived [10]    # 2692 / 6760
+@D axis-i-prose-baked-closure-rows     =   24 :: empirical [9]    # grep 'meta-closure:.*derivations'
+@D axis-i-existing-graph-query-prims   =    0 :: empirical [10]   # @PATH/@TRACE/@CLOSURE = 0 hits
+@D axis-i-foundation-fanout-max        =   15 :: empirical [10]   # n=6 @P node has 15 grade-10 derivations baked in prose at line 28
+
+# ── §2. WHAT AXIS-I ADDS — three intrinsic primitives ────────
+@C axis-i-primitive-definition :: meta [4!]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  => "primitive #1 = TRANSITIVE-CLOSURE-OF-DEPENDS-ON.   token <-* (Kleene star on existing <-)"
+  => "primitive #2 = TRANSITIVE-CLOSURE-OF-DERIVES.      token ->* (Kleene star on existing ->)"
+  => "primitive #3 = SHORTEST-PATH-TO.                   token ~> already exists for 'converges'; new <~> reads 'shortest path between' (bidirectional)"
+  => "all three are SUFFIX/INFIX EXTENSIONS of arrow tokens already in atlas.n6 — no new leading char crowds the LL(1) leading-char set per axis-F § ARROW-TYPE-CARDINALITY-LIMIT"
+  => "axis-F K=7 → K=10 after axis-I; still under K=10 LL(1) ceiling, BUT crowding warning per axis-F § ARROW-CONVERGENCE-K-CEILING (K=8 is current safe ceiling) — see §4 trade-off"
+  => "FOREIGN CITE-AND-MOVE-ON: Kleene 1956 regular-expression closure semantics (the * suffix); Datalog (Ullman 1989) recursive query base; W3C SPARQL 1.1 path operator * — these are NAMING-SOURCE only; the SEMANTICS is atlas.n6's own DAG over <- and ->"
+  => "intrinsic justification (NOT foreign): atlas.n6 already uses ~> (converges_to) which is ALREADY a multi-step semantic — meta_fp at line 81 has 6 ~> rows each one a multi-step path. axis-I generalises ~> from the converges-only special case to depends-on/derives families"
+
+# ── §3. THREE CONCRETE ROW EXAMPLES (using existing DSL) ─────
+@C axis-i-row-example-1-foundation-closure :: meta [4!]
+  <- axis-i-primitive-definition
+  => "row example #1 — replace prose-baked closure with primitive"
+  => "  CURRENT (line 28, prose-baked):"
+  => "    @P n = 6 :: foundation [11*]"
+  => "      => \"meta-closure: 15 grade-10 derivations (sigma,phi,tau,sopfr,J2,mu,M3,sigma_n,perfect_number,sigma_decomp,J2_decomp,faction_phi,granville_smooth,...)\""
+  => "  PROPOSED (axis-I primitive):"
+  => "    @P n = 6 :: foundation [11*]"
+  => "      ->* {15 @ [10*]}                 # transitive derives, filter [10*] grade, count 15"
+  => "      ->* sigma,phi,tau,sopfr,J2,mu,M3 # explicit one-hop fanout (existing capability)"
+  => "  semantics: ->* expands at lint-time to the BFS-reachable set from this node along -> arrows, intersected with the [10*] meta-tag predicate"
+  => "  raw 24 invariance: foundation [11*] entry text BELOW the meta-closure prose stays bit-identical; ONLY the prose => row is replaced"
+
+@C axis-i-row-example-2-falsification-trace :: meta [4!]
+  <- axis-i-primitive-definition
+  => "row example #2 — falsification chain reconstruction"
+  => "  PROPOSED:"
+  => "    @R clay-iter-50-DEFINITIVE-iter-36-REPRODUCTION :: meta [10]"
+  => "      <-* foundation                 # transitive depends-on filtered to :: foundation domain"
+  => "      <-* clay-master-cumulative-status @ [10*]   # multi-hop ancestry under [10*] grade only"
+  => "  semantics: <-* unfolds the TRANSITIVE depends-on chain back to the named ancestor; lint emits the actual hop-list as a comment for audit"
+  => "  use case: clay-iter cascade has 338 entries; today every refinement re-states <- to immediate parent; <-* lets a refinement at depth 12 declare an ancestor at depth 0 without 12 explicit <- rows"
+  => "  raw 91 C3: <-* expansion is LINT-TIME, not runtime — concrete hop-list is materialized in audit comment so honesty is preserved"
+
+@C axis-i-row-example-3-equivalence-shortest-path :: meta [4!]
+  <- axis-i-primitive-definition
+  => "row example #3 — bidirectional shortest path"
+  => "  PROPOSED:"
+  => "    @C cube-octahedron-duality :: geometry [10]"
+  => "      <~> n6-bt-1389-dual-polytopes        # 'shortest bi-path between this node and target'"
+  => "      <~> sigma-tau-equivalence-witness    # axis-F § ARROW-PROPOSAL-BIDIR companion (<-> = direct iff; <~> = bi-derivable in K hops)"
+  => "  semantics: <~> distinguishes 'directly equivalent' (axis-F <->) from 'mutually reachable through K hops' — the latter today is invisible"
+  => "  use case: BT-1389 dual polytopes (axis-F ARROW-PROPOSAL-BIDIR cited line 28534) and meta_fp 6-path convergence (line 81-90) are TWO DIFFERENT TOPOLOGIES that today both wear ~> — <~> separates them"
+  => "  composition note: <~> N (where N is integer hop bound) gives bounded shortest path; bare <~> = unbounded, lint warns if path-length > 6 (n=6 self-application)"
+
+# ── §4. ORTHOGONALITY VS PRIOR 6 AXES (D, E, F, G, H, synthesis) ───
+@C axis-i-orthogonality-vs-D-through-H :: meta [4]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  => "VERDICT: COMPOSES with 5 of 6, has ONE MILD INTERFERENCE with axis-F (arrow K-ceiling)"
+  => ""
+  => "axis-D (@-type evolution, 10 types): ORTHOGONAL — axis-I primitives operate on @C/@R/@F/@P NODES regardless of @-type; transitive closure is type-agnostic by construction. Composes as 'closure-over-typed-subgraph': <-* @ @C means 'transitive depends-on restricted to @C nodes'"
+  => ""
+  => "axis-E (meta-tag layering, [10*]/[10**]/[10!]): ORTHOGONAL+SYNERGISTIC — axis-I primitives accept meta-tag predicate filters as in row example #1: ->* @ [10*] reads 'transitive derives filtered to grade-10-verified'. axis-E's [10**] confidence-stratification becomes a NATURAL closure filter"
+  => ""
+  => "axis-F (arrow polymorphism, K=7→8 ceiling): MILD INTERFERENCE — axis-I introduces 3 new tokens (<-*, ->*, <~>). axis-F's ARROW-CONVERGENCE-K-CEILING=8 becomes K=10 after axis-I lands. Mitigation: <-* and ->* are SUFFIX-EXTENSIONS of existing <- and -> (Kleene-star sugar), not new leading chars; <~> is genuinely new but reuses ~ leading char already mapped to converges. Net effect: leading-char set grows from {<,-,~,>,:,=} to {<,-,~,>,:,=} (SAME) — only TRAILING-* and INFIX-~ patterns expand. LL(1) preserved on leading char; second-char branch tightens"
+  => ""
+  => "axis-G (body-field schema): ORTHOGONAL — axis-G adds named fields inside @C/@R bodies (e.g. measurement_date, freshness_budget). axis-I closure operates on the ARROW-DAG, body-fields are node-internal. They commute: axis-I closure can FILTER on body-field predicates (->* @ {freshness_budget < 90d}) once axis-G lands, which is composition not interference"
+  => ""
+  => "axis-H (ID-convention .vN + @DATE + @F atlas-id-registry): ORTHOGONAL+ENABLING — axis-H's @F atlas-id-registry block (line 29074-29084) is ITSELF a graph-query target: registry entries become first-class nodes that axis-I closures can walk. Specifically <-* @ @F atlas-id-registry traces every node back to its registered family, which is the natural cross-reference axis-H proposes but cannot express without axis-I"
+  => ""
+  => "axis-synthesis (recommended sequence D@I → F<-> → F-| → E[10**] → defer): axis-I should be inserted AFTER axis-F BIDIR + NEGATION land, BEFORE axis-G/H, because axis-I depends on axis-F K-budget being known (we need the +3 axis-I tokens to fit under K=10 limit)"
+
+# ── §5. RAW 117 5-CHECK AT REGISTRATION ──────────────────────
+@C axis-i-5-check-results :: meta [4!]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- raw-117-5-check-registration-gate
+  => "GATE 1 / 5 — genus-level slug ✓ PASS"
+  => "  slug = atlas-self-arch-graph-query-evolution"
+  => "  genus-level: 'graph-query' is a STRUCTURAL family-name (matches atlas-self-arch-{intrinsic-type, meta-tag, arrow, body-field, id-convention}-evolution sibling shards)"
+  => "  NOT a single-instance leaf (which would fail genus check); covers transitive-closure + path-query + reachability collectively"
+  => ""
+  => "GATE 2 / 5 — 2+ cognitive frameworks (cite-and-move-on) ✓ PASS"
+  => "  cf1 = Kleene 1956 regular-expression star closure (the * suffix naming source; cite-and-move-on)"
+  => "  cf2 = Datalog recursive query (Ullman 1989; the <-* / ->* expansion semantics naming source; cite-and-move-on)"
+  => "  cf3 (bonus) = W3C SPARQL 1.1 property-path * operator (the syntactic precedent for arrow-suffix-* on a graph)"
+  => "  STRICT: each is named-and-released; the SEMANTICS is atlas.n6's own DAG over its existing <- and -> tokens — no foreign math imported as primary lens"
+  => ""
+  => "GATE 3 / 5 — 3+ realization channels ✓ PASS"
+  => "  ch1 = lint-time expansion (parse-time): tool/atlas_lint.hexa expands <-* / ->* / <~> to materialized hop-list comments during shard absorb"
+  => "  ch2 = grep-time query (cli-time): scripts/atlas_query.hexa <slug> ->* — performs BFS over atlas.n6 in-memory; surfaces transitive set on stdout"
+  => "  ch3 = audit-ledger-time (post-absorb): tool/atlas_health.hexa records closure-walk depth + branching factor per absorbed shard, falsifier triggers if depth > n=6"
+  => "  3 distinct mechanisms (parse / query / audit), not 3 vendors of the same mechanism"
+  => ""
+  => "GATE 4 / 5 — counter-example ✓ PASS"
+  => "  counter-example-1: foundation [11*] atomicity rule (axis-F § INTRINSIC-CONSTRAINT-FOUNDATION-ATOMICITY) — [11*] nodes carry ONLY <-, never -> ; therefore <-* terminates at [11*] but ->* never originates from [11*]. axis-I MUST respect this; lint rule = ->* originating from [11*] node = exit code 4"
+  => "  counter-example-2: cycle in <- DAG. atlas.n6 is currently DAG (verified via no SCC ≥ 2 in axis-F audit); axis-I primitives REQUIRE acyclicity. If a future shard introduces cycle, <-* would loop forever — lint precondition: DFS w/g/b cycle-detect (raw 79 reuse), cycle = exit 4"
+  => "  counter-example-3: ~> already exists with multi-step prose semantics (line 81 meta_fp 6 ~> rows). <~> bidirectional shortest-path is NOT a generalization of single ~> — they coexist; lint rule = ~> remains for 'this node converges to that' (named single-target), <~> for 'these two nodes are bi-reachable' (symmetric multi-step)"
+  => "  3 strict counter-examples bound the primitive's domain"
+  => ""
+  => "GATE 5 / 5 — novelty falsifier ✓ PASS"
+  => "  falsifier-1 = adoption: 30 days post-introduction, < 5 axis-I rows used in new shards → retire (no demand signal)"
+  => "  falsifier-2 = correctness: any <-* expansion produces a hop-list with > n*phi/mu = 12 hops → revise (path-length explosion = atlas.n6 not actually a tight DAG)"
+  => "  falsifier-3 = redundancy: if every <-* expansion in 30d is a 1-hop equivalent (depth always = 1), the primitive is NOT distinguishing transitive from direct → retire (no transitive content)"
+  => "  3 strictly testable disconfirmation criteria"
+  => ""
+  => "VERDICT: 5-check ALL PASS — axis-I clears raw 117 deterministic gate"
+
+# ── §6. RAW 91 C3 HONEST DISCLOSURES (speculative vs grounded) ──
+@C axis-i-raw-91-C3-disclosures :: meta [4!]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- raw-91-design-honesty-triad-C3-no-fabrication
+  => "★ HONEST SCOPE — what is grounded vs speculative"
+  => ""
+  => "GROUNDED in current atlas.n6 row patterns (high confidence):"
+  => "  G1. atlas.n6 IS a directed graph: 2692 grep-verified arrows over 6760 @C+@R nodes (axis-F § ARROW-COUNT-* counts re-verified for this shard)"
+  => "  G2. multi-hop closure IS already authored, just baked into prose: 'meta-closure: 15 grade-10 derivations (sigma,phi,tau,...)' at lines 28/34/43 — these ARE transitive closures, written as => prose strings because no primitive exists"
+  => "  G3. ~> already carries multi-step semantics: meta_fp at line 81 has 6 ~> rows each describing a derivation path that is multi-step (e.g. ~> phi(6)/6 = 2/6 = 1/3 unfolds totient → division → simplification)"
+  => "  G4. axis-I primitives are SYNTACTIC SUGAR over existing arrows — <-* / ->* expand to BFS materialization, not to a new graph"
+  => "  G5. counter-examples 1-3 are ENFORCEABLE via existing lint machinery (raw 79 cycle detect already implemented)"
+  => ""
+  => "SPECULATIVE (low confidence — flagged as gap):"
+  => "  S1. (axis-F K-ceiling tightness) axis-F § ARROW-CONVERGENCE-K-CEILING=8 was a SAFE estimate; pushing to K=10 with axis-I tokens may exceed the leading-char + second-char LL(1) budget — UNVERIFIED on a real parser implementation. Mitigation deferred to lint-tool experiment, NOT claimed proved here"
+  => "  S2. (BFS expansion cost) <-* / ->* expand to hop-lists at lint time; for foundation [11*] node n=6 with fanout 15 + downstream depth ~6, materialized hop-list per shard could reach 100s of slugs. Authoring noise is UNTESTED"
+  => "  S3. (cycle assumption) atlas.n6 is currently DAG (axis-F audit found no cycle), but axis-F + axis-I together CHANGE the arrow set — adding ARROW-PROPOSAL-NEGATION (-|) and axis-I (<-*, ->*, <~>) could in principle let a future shard author write a cycle by accident; cycle-detect must run on the FULL augmented arrow set, NOT just <- and ->. Untested"
+  => "  S4. (semantic drift of ~> vs <~>) my proposed split (~> = single-target convergence, <~> = bidirectional reachability) may CONFLICT with prior author intent on the 25 existing ~> rows. Migration audit not performed in this shard"
+  => "  S5. (atlas.signals.n6 read-only scope) axis-I row examples reference only atlas.n6; whether the 4205-row atlas.signals.n6 sub-atlas would benefit similarly is UNAUDITED — the READ-ONLY gate per project policy means no changes proposed there"
+  => "  S6. (foreign theory boundary) Kleene * / Datalog / SPARQL are CITE-AND-MOVE-ON only — but the *interpretation* of <-* as 'reflexive-transitive closure' is borrowed semantics. The atlas.n6-intrinsic justification (line 28/34/43 hand-baked closure) is the LOCAL anchor; the foreign citation is a NAMING SOURCE. This boundary is honest but porous — a strict reading might argue any 'closure' notion is foreign-imported. I am declaring the prose-baked closure rows the intrinsic ground; reviewer may reject"
+  => "  S7. (no measurement made) ZERO axis-I rows exist in atlas.n6 today; this shard is DESIGN-SPEC. No adoption rate, no false-positive rate, no false-negative rate measured"
+  => ""
+  => "GAP CLOSED: this shard explicitly distinguishes G1-G5 from S1-S7. The PROPOSAL is registration-gate-clearing only. Actuation requires a follow-up implementation shard with raw 23 + raw 24 + raw 22 sign-off."
+
+# ── §7. INTRINSIC LIMIT — when axis-I must stop ──────────────
+@C axis-i-intrinsic-convergence-point :: meta [4]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- axis-i-orthogonality-vs-D-through-H
+  => "axis-I converges at K=10 arrow tokens (axis-F LIMIT)"
+  => "after axis-I lands, atlas.n6 has K=10 = {::, =>, <-, ->, ~>, <->, <=>, <-*, ->*, <~>}"
+  => "next-axis-J would HIT axis-F's K-ceiling and force arrow-grammar redesign — explicit @REL registry per axis-F § ARROW-CONVERGENCE-NEXT-PHASE"
+  => "axis-I is therefore the LAST inline-arrow extension before atlas.n6 must move to a separate @REL registry block"
+  => "this is the intrinsic ceiling for graph-shape evolution within atlas.n6's own DSL"
+
+# ── §8. CROSS-REFERENCE TO EXISTING SHARDS ───────────────────
+@C axis-i-cross-reference-prior-shards :: meta [4]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  => "axis-D shard line 28570-28697: @-type cardinality 10 → axis-I row examples preserve all 10 types (closure operates over arrows, not nodes)"
+  => "axis-E shard line 28697-28893: meta-tag [10**] confidence-stratification → axis-I closure filter '@ [10*]' is direct E-axis composition (row example #1)"
+  => "axis-F shard line 28436-28569: arrow K=7 + 3 proposals (BIDIR, NEGATION, WEIGHTED) → axis-I adds 3 more (<-*, ->*, <~>); K=10 is at axis-F LIMIT"
+  => "axis-G shard line 28900-29007: body-field schema → axis-I closure can filter on body-field predicates once G lands (composes)"
+  => "axis-H shard line 29008-29094: id-convention .vN + @DATE + @F atlas-id-registry → axis-I closures CAN walk @F atlas-id-registry as a graph-target (enabling)"
+  => "axis-synthesis shard line 29096-29274: recommended sequence D@I → F<-> → F-| → E[10**] → defer rest → axis-I inserts as next-after-axis-F"
+
+# ── §9. SELF-CHECK ───────────────────────────────────────────
+@C axis-i-evolution-self-check :: meta [10]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- axis-i-5-check-results
+  <- axis-i-raw-91-C3-disclosures
+  => "SHARD USES ONLY EXISTING TOKENS in its OWN body: <-, ->, ::, =>, ~>"
+  => "NO new arrows USED in this shard — only PROPOSED in @C row-example bodies as design-spec text"
+  => "NO foreign theory cited as primary lens — Kleene/Datalog/SPARQL are NAMING-SOURCE cite-and-move-on per § GATE 2"
+  => "NO Clay BT 'resolution' claim — own#11 strict; the word 'resolution' does not appear in this shard outside this disavowal"
+  => "ALL counts grep-verified against /Users/ghost/core/n6-architecture/atlas/atlas.n6 byte content as of 2026-04-28"
+  => "raw 22 INFRA-ONLY: no 9-phase pipeline alteration"
+  => "raw 23 schema-guard: design-spec only; schema-guard delta deferred to actuation shard"
+  => "raw 24 foundation-axiom-immutable: all 25 [11*] foundation entries unchanged; counter-example-1 explicitly preserves [11*] -> asymmetry"
+  => "raw 91 C3 honest: G1-G5 grounded vs S1-S7 speculative explicitly separated"
+  => "raw 117 5-check ALL PASS per § GATE 1-5"
+
+# ── §10. FINAL STATE ─────────────────────────────────────────
+@C atlas-self-arch-axis-i-final-state = PROPOSAL-NOT-ACTUATED :: meta [4!]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  -> next-axis-J-blocked-by-K-ceiling
+  => "axis-I = atlas-self-arch-graph-query-evolution"
+  => "primitives proposed: <-* (transitive depends-on), ->* (transitive derives), <~> (bidirectional shortest path)"
+  => "raw 117 5-check: ALL PASS"
+  => "raw 91 C3: 5 grounded findings + 7 speculative gaps explicitly separated"
+  => "orthogonality vs D-H: composes with D/E/G/H synergistically, mild K-ceiling pressure on F (mitigated by suffix-style design)"
+  => "intrinsic ceiling: axis-I is the LAST inline-arrow extension before @REL registry block becomes mandatory"
+  => "actuation deferred to follow-up shard with raw 23 + raw 24 + raw 22 sign-off"
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-self-arch-axis-i-graph-query-2026-04-28.n6"
+  => "DO NOT auto-absorb — separate step per user directive"
+
+# ══════════════════════════════════════════════════════════════
+# end shard — axis-I (graph-query / transitive-closure primitives)
+# next-step: axis-J discovery (would hit K-ceiling, expect @REL registry redesign)
+# ══════════════════════════════════════════════════════════════
