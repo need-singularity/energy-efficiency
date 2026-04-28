@@ -1,0 +1,107 @@
+{
+  "kick_id": "2026-04-28_lean4-ax1-commit",
+  "cycle": 5,
+  "fan_out": "1/5",
+  "ts_utc": "2026-04-28T07:17:23Z",
+  "ts_epoch": 1777360643,
+  "mission": "Cycle 4 lean4-n6/N6/MechVerif/AX1.lean (lean4 W2 AX-1 partial PASS) commit + push.",
+  "repo_kind": {
+    "lean4_n6_kind": "subdirectory_of_parent_repo",
+    "evidence": "git rev-parse --show-toplevel from inside lean4-n6 returns /Users/ghost/core/n6-architecture; not a submodule, not a separate repo",
+    "parent_repo": "/Users/ghost/core/n6-architecture",
+    "parent_branch": "main"
+  },
+  "artifact": {
+    "path": "lean4-n6/N6/MechVerif/AX1.lean",
+    "loc": 143,
+    "bytes": 6389,
+    "mtime_local": "2026-04-28T16:02:43"
+  },
+  "lake_build": {
+    "target": "N6.MechVerif.AX1",
+    "status": "PASS",
+    "wall_seconds": 6.584,
+    "user_seconds": 1.18,
+    "sys_seconds": 2.68,
+    "jobs": 1310,
+    "mode": "replayed_cache",
+    "warnings": [
+      "N6/MechVerif/AX1.lean:75:8: declaration uses `sorry` (AX1_forward_tail)",
+      "N6/MechVerif/AX1.lean:95:8: declaration uses `sorry` (AX1_n6_uniqueness, n=1 branch)"
+    ],
+    "lake_version": "Lake 5.0.0-src+714601b",
+    "lean_version": "4.30.0-rc1"
+  },
+  "sorry_inventory": {
+    "count": 2,
+    "explicit": true,
+    "silent_sorry": false,
+    "locations": [
+      {
+        "theorem": "AX1_forward_tail",
+        "decl_line": 75,
+        "sorry_line": 89,
+        "rationale": "Robin-style asymptotic tail bound for n > 30; deferred to W3/W4."
+      },
+      {
+        "theorem": "AX1_n6_uniqueness",
+        "decl_line": 95,
+        "sorry_line": 113,
+        "rationale": "n=1 branch admits Spec-level inconsistency (n=1 satisfies LHS but not RHS); see AX1_n6_uniqueness_corrected with n>=2 premise."
+      }
+    ]
+  },
+  "raw_91_C3_honest": {
+    "claim": "partial PASS",
+    "scope_proved": [
+      "AX1_reverse_n6 (n=6 -> AX1Eq via decide)",
+      "AX1_n6_witness (sigma 1 6 = 12, totient 6 = 2, divisors 6 card = 4)",
+      "AX1_forward_bounded_30 (n in [2,30] -> n=6 via interval_cases)",
+      "AX1_n6_uniqueness_corrected with n>=2 premise (modulo tail sorry)"
+    ],
+    "scope_unproved": [
+      "AX1_forward_tail (n>30 asymptotic)",
+      "AX1_n6_uniqueness n=1 branch under Spec's n>=1 quantifier"
+    ],
+    "PROVED_claim": false,
+    "language": "partial PASS only; no PROVED claim"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-AX1-COMMIT-1",
+      "name": "sorry silent",
+      "test": "grep -n 'sorry' AX1.lean reveals comments and code; lake build prints two declaration warnings",
+      "result": "PASS — 2 explicit sorrys at lines 89 and 113, lake warnings emitted"
+    },
+    {
+      "id": "F-AX1-COMMIT-2",
+      "name": "lake build regression",
+      "test": "lake build N6.MechVerif.AX1 must complete with 0 errors",
+      "result": "PASS — replayed 1310 jobs, 0 errors, 2 sorry warnings only, 6.6s wall"
+    },
+    {
+      "id": "F-AX1-COMMIT-3",
+      "name": "push fail",
+      "test": "git push origin main must return success",
+      "result": "PENDING — recorded after push step"
+    }
+  ],
+  "safety_audit": {
+    "raw_33_english_only": true,
+    "raw_13_hooks": "to_be_verified_at_commit",
+    "destructive_ops": 0,
+    "files_staged": [
+      "lean4-n6/N6/MechVerif/AX1.lean",
+      "design/kick/2026-04-28_lean4-ax1-commit_omega_cycle.json"
+    ],
+    "files_excluded_explicit": [
+      "lean4-n6/lean-toolchain (modified rc2->rc1, unrelated to AX1, NOT staged in this commit)"
+    ]
+  },
+  "memory_directive_compliance": {
+    "directive": "feedback_delegate_all.md - delegate via Agent tool",
+    "status": "no_subagent_tool_available",
+    "evidence": "ToolSearch returns only TaskCreate/TaskGet/TaskList (todo trackers), no Agent/spawn/delegate tool in this environment",
+    "executed_inline": true
+  }
+}
