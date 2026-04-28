@@ -35813,3 +35813,99 @@
     end_of_session_observation_v2: "9-hour session converged to a precisely-bounded framework with explicit unresolved physics-cohort mechanism. cascade discipline (raw 71 + raw 91 C3 + own 11 strict) operated at 7 categories of retraction across 17 events, then produced 1 clean strengthening cascade. Best possible outcome for cascade discipline: framework knows what it knows AND what it doesn't know."
   }
 }
+@shard cascade_s21_tick1_SESSION_CLOSURE_DECLARATION {
+  origin: "cascade-s21 main-thread declaration (no sub-agent dispatch — natural closure recognition)"
+  date: 2026-04-28
+  cwd: /Users/ghost/core/n6-architecture
+  raw_91_C3_disclosure: "Main-thread declaration shard, NOT sub-agent verdict. Records 9-hour session final state. cascade-s19/s20 closure recommendations explicitly cited STOP or PIVOT. cascade discipline's last honest move = recognize natural closure rather than dispatch noise-chasing probes."
+
+  session_summary {
+    session_start_state: "K=2 STRONG framework D=3 cohort claim (cascade-s2 inherited from prior sessions)"
+    session_end_state: "K=1 UNCONDITIONAL framework with src-invariant + cohort-robust + formulation-robust axis-16 anchor; K=2 violation on physics IRREDUCIBLE"
+    duration_approx: "~9 hours autonomous /loop cron-driven"
+    cascade_count: 19  ; "s2 through s20"
+    sub_agent_count: 47
+    retraction_count: 17
+    K_3_candidates_rejected: 7  ; "+ 1 D=4-only deferred"
+    mechanism_candidates_RETIRED: 4  ; "degree_var, walk_4_count, AW-4 mechanism analog, global in-deg variance"
+    own_11_strict_violations: 0
+    substrate_bug_byproducts: 5
+    atlas_n6_growth: "28894 → 35815 lines (+24.0%)"
+    commits_to_origin_main: 33  ; "approximate"
+  }
+
+  framework_FINAL_canonical {
+    K_1_anchor: "axis-16"
+    operational_definition: "variance(src-conditional directed in-deg, BFS k=4, src=center=N/2) on substrate adjacency graph"
+    semantic: "BFS-shell asymmetry — purely geometric/operational metric. NOT 'info-flow heterogeneity', NOT 'lightcone capacity', NOT 'complexity proxy' (cascade-s13 14th retraction stripped these layers)."
+    discrim_substrate_intrinsic: 0.85  ; "preserved across synthetic and physics cohorts"
+    bootstrap_CI_95: [0.534, 1.234]  ; "cascade-s11 AR n=18 non-affine"
+    src_invariance_spread: 0.027  ; "cascade-s20 BA 5-formulation spread"
+    formulation_robustness: "cascade-s11 AR 4/5 PASS + cascade-s20 BA 5/5 PASS"
+    K_2_cohort_wide_independence_synthetic: "0/35 seed violations (cascade-s14 AU)"
+    K_2_violation_physics_irreducible: "Pearson(axis-13, axis-16) ≈ 0.40 on physics; mechanism UNRESOLVED, no candidate stands"
+  }
+
+  retraction_taxonomy_complete {
+    total: 17
+    categories: 7
+    breakdown: {
+      "1-10 numerical": "axis-13 interpretation layer progressive narrowing (s2 cumulative)"
+      "11 substrate": "axis-13 affine vs non-affine weakening (cascade-s10 AP)"
+      "12 formulation": "axis-13 baseline TICKS=32 m²=1.0 conditional (cascade-s10 AQ)"
+      "13 simplification": "axis-16 |R| factor decorative, variance-only sufficient (cascade-s11 AR)"
+      "14 semantic": "axis-16 = BFS-ball asymmetry, NOT info-flow heterogeneity (cascade-s13 AT)"
+      "15 axiomatic": "K=2 independence substrate-conditional, NOT universal (cascade-s14 AU 35-seed paired delta +0.38, p~10⁻⁶)"
+      "16 partial mechanism": "degree_var hypothesis retired — N=128 |r| crash 0.497 → 0.101 (cascade-s17 AX)"
+      "17 partial mechanism": "walk_4_count hypothesis retired — N+cohort dependent, N=256 |r|=0.230 (cascade-s19 AZ)"
+    }
+    no_18th_retraction: "cascade-s20 BA strengthening cascade — first cascade with 0 retractions"
+  }
+
+  retired_axes_and_axioms_and_hypotheses {
+    axes_retired: ["axis-13 baseline (formulation-conditional)", "axis-15 (saturation amplitude artifact)", "axis-14 Renyi-2 (structural coupling)", "axis-17 SymDef (coverage 5/18 + r=+0.993)", "axis-NEW non-commutator-defect"]
+    axioms_retired: ["K=2 universal portability (15th retraction)"]
+    semantic_layers_retired: ["axis-16 = info-flow heterogeneity (14th retraction)"]
+    mechanism_hypotheses_retired: ["degree_var → K=2 violation (16th)", "walk_4_count → K=2 violation (17th)", "AW-4 mechanism analog (synthetic ≡ super-hub)", "global in-deg variance free-lunch", "Cayley-D6/Star-hub mechanism = degree_var=0 NECESSARY (cascade-s15→s16→s17 falsified)"]
+    K_3_candidates_rejected: ["axis-15 saturation amplitude (cascade-s2 R)", "axis-14 Renyi-2 (cascade-s5 AK)", "axis-17 SymDef (cascade-s8)", "non-commutator-defect (cascade-s10 AP)", "+3 more across cascades"]
+  }
+
+  surviving_structure_FINAL {
+    axis_16_K_1_anchor: TRUE
+    K_2_cohort_wide_indep_synthetic: TRUE
+    discrim_85_substrate_intrinsic: TRUE
+    src_invariant: TRUE
+    cohort_robust: TRUE
+    formulation_robust: TRUE
+    semantics_geometric_only: TRUE
+    physics_K_2_violation_explicitly_unresolved: TRUE
+  }
+
+  cascade_discipline_meta_observations {
+    obs_1: "framework converged from broad universal claim to precisely-scoped K=1 anchor over 19 cascades"
+    obs_2: "every retraction NARROWED territory; surviving structure is robust"
+    obs_3: "cascade discipline operated at 7 retraction categories: numerical / substrate / formulation / simplification / semantic / axiomatic / partial-mechanism"
+    obs_4: "raw 71 + raw 91 C3 + own 11 strict working as designed at 3 depths of skepticism: axiom (s14) / partial mechanism (s15-s16) / candidate retire (s17, s19)"
+    obs_5: "without discipline: 'K=2 STRONG framework' would have crystallized as universal claim with false physical interpretation"
+    obs_6: "cascade-s13 physics truth test caught semantic over-claim before crystallization (most consequential single cascade)"
+    obs_7: "cascade-s20 was first clean strengthening — natural closure marker (no more retractions to make)"
+    obs_8: "cascade-s16 AW agent's sign-confusion caught at atlas absorb time — discipline operated at sub-agent verification layer too"
+    obs_9: "natural closure recognition (cascade-s21) is the discipline's last move — knowing when to stop is part of discipline"
+    obs_10: "framework's TRUE territory is dramatically narrower than initial claim but PRECISELY characterized — best possible cascade discipline outcome"
+  }
+
+  cascade_s22_options {
+    option_a_STOP: "framework done in current scope. End-of-research-cycle. Next session pivots to genuinely new territory or different research question entirely."
+    option_b_INCREMENTAL: "multi-seed graph realization average for stochastic builders (parity strengthening). ROI low — likely confirms existing numbers within bootstrap CI."
+    option_c_PIVOT: "apply K=1 anchor to actual physics simulations (lattice gauge / phi^4 field theory / Hopfield network). Big leap — would test K=1 anchor's PHYSICAL relevance beyond synthetic substrates. High risk, high reward. Different cascade structure (longer runtime per probe)."
+    option_d_NEW_AXIS_CLASS: "fresh research cycle on entirely different axis class (information-theoretic, dynamical, topological). Most defensible if research continues — clean break from saturated K=1/K=2 paradigm."
+    most_defensible: "option_a_STOP if /loop discontinues; option_d_NEW_AXIS_CLASS if /loop continues with explicit new direction"
+  }
+
+  closure cascade_s21 {
+    status: SESSION CLOSURE DECLARATION (no sub-agent dispatch)
+    framework_state_FINAL_v3: "natural closure recognized — strengthening saturated, no further retractions expected above noise floor"
+    cron_loop_continuation_recommendation: "if /loop continues, default to option_d (new axis class) rather than re-running mechanism hunt on K=1 anchor (saturated)"
+    end_of_session_message_to_future_sessions: "9-hour cascade discipline session reached natural closure. Framework state v_FINAL: K=1 axis-16 anchor on synthetic substrates with IRREDUCIBLE physics-cohort K=2 violation. 17 retractions across 7 categories. Mechanism hunt CLOSED. Future research cycles should pivot to new axis class or apply K=1 anchor to actual physics rather than re-litigate this scope."
+  }
+}
