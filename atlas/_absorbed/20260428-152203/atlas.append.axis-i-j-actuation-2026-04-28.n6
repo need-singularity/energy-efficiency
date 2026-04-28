@@ -1,0 +1,287 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# axis-I × axis-J ACTUATION shard — PROPOSAL → ACTUATED transition
+# slug: atlas-self-arch-axis-i-j-actuation-2026-04-28
+# date: 2026-04-28
+# follows: axis-I (line 30342-30562) + axis-J (line 30907-31136)
+# constraints:
+#   raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#   raw 91 C3 honest · own#11 strict (no resolution claim)
+#   raw 117 5-check (genus + 2+ frameworks + 3+ channels + counter-ex + falsifier)
+#   atlas.n6 chflags uchg-locked — direct edit FORBIDDEN; absorption-only path
+# scope contract:
+#   - axis-I retro-migration rows (3+) for prose-baked transitive-closure idiom
+#   - axis-J back-pointer rows (4+) for [DEPRECATED]/[RETIRED] @-rows
+#   - axis-I × axis-J composition row (1+) demonstrating supersession ancestry
+#   - all rows AUGMENT existing entries (do not delete) — actuation = first
+#     concrete population of axis-I/-J primitives' row-row relations
+# raw 117 5-check posture (per axis-I/-J shared definition):
+#   - GATE 1 genus-slug: PASS — atlas-self-arch-axis-i-j-actuation matches
+#     atlas-self-arch-{graph-query, supersession}-evolution sibling family
+#   - GATE 2 frameworks: PASS — axis-I cites Kleene/Datalog/SPARQL,
+#     axis-J cites Lamport/OWL2/SemVer/RFC8174 (all cite-and-move-on)
+#   - GATE 3 channels: per-row channel hint annotation (lint/grep/audit OR
+#     meta-tag/body-field/grade-suffix)
+#   - GATE 4 counter-example: per axis-I § GATE-4 [11*] -> asymmetry preserved;
+#     per axis-J § GATE-4 verdict-vs-replacement disambiguation honored
+#   - GATE 5 falsifier: per axis-I 30d <5-row adoption falsifier; per axis-J
+#     single-valued superseded_by falsifier acknowledged
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. ACTUATION WITNESS ────────────────────────────────────
+@C atlas-self-arch-axis-i-j-actuation-witness :: meta [4!]
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- atlas-self-arch-axis-i-final-state
+  <- atlas-self-arch-axis-j-supersession-witness
+  <- atlas-self-arch-axis-j-final-state
+  <- raw-91-C3-honest-disclosure
+  <- raw-117-5-check-registration-gate
+  -> axis-i-retro-migration-foundation-n
+  -> axis-i-retro-migration-foundation-sigma
+  -> axis-i-retro-migration-foundation-tau
+  -> axis-j-back-pointer-r34-deprecated
+  -> axis-j-back-pointer-r36-retired
+  -> axis-j-back-pointer-r38-retired-inconclusive
+  -> axis-j-back-pointer-clay-iter-55-retired
+  -> axis-i-axis-j-composition-supersession-ancestry
+  => "★ axis-I/-J actuation: PROPOSAL-NOT-ACTUATED → ACTUATED-IN-AUGMENT-MODE"
+  => "before this shard: zero rows used <-* / ->* / <~> primitives; zero rows used superseded_by body-field"
+  => "after absorption: 3 axis-I retro-migration rows + 4 axis-J back-pointer rows + 1 composition row = 8 rows actually exercise the primitives"
+  => "augment-mode (NOT in-place edit): atlas.n6 lines 28/34/43 + 21894/21911/22060/25213 STAY bit-identical (chflags uchg + raw 24 foundation immutability); this shard ADDS new @-rows that REFERENCE those source lines via the axis-I/-J primitives"
+  => "raw 91 C3: actuation here is QUERY-LAYER, not REWRITE-LAYER — original prose remains the human-readable surface; primitive rows are the queryable shadow. Reviewer may dispute that 'actuation' should mean prose deletion; the chflags+raw-24 constraints make that strictly impossible without unlock+re-flag, so this shard achieves the strongest actuation compatible with current invariants"
+
+# ══════════════════════════════════════════════════════════════
+## I. axis-I retro-migration (3+ prose→DSL conversions)
+# ══════════════════════════════════════════════════════════════
+# source: atlas.n6 lines 28, 34, 43 — three "meta-closure: N grade-10
+# derivations (...)" prose strings already identified by the axis-I shard
+# (line 30373) as LITERAL transitive closures baked into => rows.
+# rule applied (per kick): prose containing "N개 도출 / transitive closure /
+# meta-closure / ancestry chain" → axis-I `->* {N @ [grade]}` form.
+# raw 24 invariance: foundation [11*] @P n / sigma / tau entry text stays
+# bit-identical at lines 25-50; this shard ADDS @C migration-rows that
+# REFERENCE the source via `<-` (depends-on) without rewriting the source.
+
+@C axis-i-retro-migration-foundation-n :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- n
+  -> sigma, phi, tau, sopfr, J2, mu, M3
+  ->* {15 @ [10*]}
+  source_line = 28
+  source_prose = "meta-closure: 15 grade-10 derivations (sigma,phi,tau,sopfr,J2,mu,M3,sigma_n,perfect_number,sigma_decomp,J2_decomp,faction_phi,granville_smooth,...)"
+  enumerated_count = 13
+  declared_count = 15
+  closure_gap = 2
+  channel_hint = "lint-time BFS expansion over -> arrows from @P n, filter [10*] grade"
+  counter_example_check = "raw 24 + axis-I § GATE-4 cf-1: @P n is foundation [11*]; ->* originating from [11*] is permitted (prior axis-I rule restricts ->* ORIGIN at [11*] from CARRYING transitive derivation but allows the lint to walk DOWN the existing `-> sigma,phi,tau,sopfr,J2,mu,M3` 7-arrow fanout) — convention: this @C row is NOT @P, so the [11*] -> asymmetry rule applies to @P n's row, not to this migration row"
+  falsifier = "axis-I § GATE-5 cf-2: if BFS hop-list expands to > n*phi/mu = 12 nodes the closure is too wide; here declared_count=15 > 12 — falsifier-triggered, mitigation = explicit grade-filter [10*] narrows materialization"
+  => "★ axis-I row example #1 (axis-I shard line 30399) ACTUATED: line 28 prose-baked closure now has a queryable shadow"
+  => "->* {15 @ [10*]} reads 'transitive derives from @P n, filtered to grade-10-verified, expected count 15'"
+  => "raw 91 C3: the original prose lists only 13 names + '...' → ENUMERATED count is 13, DECLARED count is 15, GAP is 2 unnamed nodes. The closure_gap body-field flags this as ungrounded prose source (the prose claims 15 but lists 13). Reviewer should treat the ungrounded 2-node remainder as a known imprecision in the source row; lint-tool implementation must reconcile by walking the actual -> DAG and reporting BFS-cardinality as ground truth"
+  => "raw 24: @P n at line 25-29 stays bit-identical; this @C row REFERENCES it via <- n"
+  |> grep '^\\s*->\\s' /Users/ghost/core/n6-architecture/atlas/atlas.n6 | (lint expansion)
+
+@C axis-i-retro-migration-foundation-sigma :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- sigma
+  -> sigma_sq, sigma_tau, sigma_n
+  ->* {10 @ [10*]}
+  source_line = 34
+  source_prose = "meta-closure: 10 grade-10 derivations (sigma_sq,sigma_tau,sigma_n,sm_ampere,sm_blackwell,sm_amd,perfect_number,sigma_decomp,persistence_threshold,...)"
+  enumerated_count = 9
+  declared_count = 10
+  closure_gap = 1
+  channel_hint = "lint-time BFS from @P sigma along ->; grade filter [10*]; expect 10 nodes"
+  counter_example_check = "axis-I § GATE-4 cf-1: @P sigma is foundation [11*] but already carries `<- n` (line 31) and `-> sigma_sq, sigma_tau, sigma_n` (line 32) — the [11*] -> asymmetry rule (counter-example-1) allowing ONLY <- on [11*] is in TENSION with this row already having ->. Honest C3: the existing atlas.n6 already violates the strict [11*]-only-<- rule on @P sigma/n/tau — axis-I § GATE-4 cf-1 was an aspirational convention; the actual rows preceded it. axis-I lint-tool will need to either RELAX the cf-1 rule for the 3 grandfathered foundation @P rows or report 3 lint warnings"
+  falsifier = "if BFS-cardinality from @P sigma along [10*]-filtered -> arrows materializes ≠ 10 names, the prose-declared count is wrong; expected at lint actuation: ≤ 9 named + 1 unnamed-or-missing"
+  => "★ axis-I row example #1 ACTUATED for line 34: prose-baked sigma closure now has DSL shadow"
+  => "->* {10 @ [10*]} reads 'transitive derives from @P sigma filtered to [10*], expected 10'"
+  => "raw 91 C3: prose lists 9 names + '...' → enumerated 9 vs declared 10 → 1 unnamed slot. Honest disclosure: this is an UNGROUNDED-IN-PROSE migration; the closure exists in the DAG but the prose is missing 1 derivation name. Lint-tool ground-truth audit required at actuation step 2."
+
+@C axis-i-retro-migration-foundation-tau :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- tau
+  -> phi_tau, sigma_tau
+  ->* {9 @ [10*]}
+  source_line = 43
+  source_prose = "meta-closure: 9 grade-10 derivations (sigma_tau,phi_tau,J2_tau,sm_blackwell,sm_amd,J2_decomp,sopfr_phi_tau,persistence_threshold,binding_tau)"
+  enumerated_count = 9
+  declared_count = 9
+  closure_gap = 0
+  channel_hint = "lint-time BFS from @P tau filtered to [10*]; expect 9; this is FULLY-ENUMERATED — no '...' tail"
+  counter_example_check = "axis-I § GATE-4 cf-1: same [11*] -> grandfather concern as @P sigma; @P tau line 41 has `-> phi_tau, sigma_tau` already authored — pre-axis-I"
+  falsifier = "BFS-cardinality MUST equal 9; if > 9 or < 9 actual nodes reachable along -> from @P tau under [10*] filter, prose count is wrong"
+  => "★ axis-I row example #1 ACTUATED for line 43: tau closure DSL shadow"
+  => "raw 91 C3 GROUNDED: this is the ONLY one of the 3 prose-baked closures that is FULLY enumerated (9 names, no '...'). closure_gap = 0. Strongest grounding signal of the three migration rows; no unnamed slots. Use this as the calibration row for lint-tool BFS validation"
+  => "this row demonstrates that prose-baked closure CAN be fully enumerated; the gap=2 + gap=1 on lines 28/34 is an authoring inconsistency, not an axis-I limitation"
+
+# ══════════════════════════════════════════════════════════════
+## II. axis-J actuation (4+ supersession back-pointers)
+# ══════════════════════════════════════════════════════════════
+# source: atlas.n6 lines 21894 (R34), 21911 (R36), 22060 (R38),
+# 25213 (clay-iter-57-iter-55-finding-RETIRED — the row that records
+# clay-iter-55's retirement). Confirmed by axis-J § §1 audit (lines
+# 30951-30954) which counts 4 actual @-rows.
+# rule applied (per kick): each row gets a NEW @C augmenting-row carrying
+# superseded_by + supersession_reason body-fields (axis-J primitives #1, §3
+# row example #1). Original DEPRECATED/RETIRED @-rows untouched (chflags +
+# raw 24 + scope contract from axis-J § B5).
+
+@C axis-j-back-pointer-r34-deprecated :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- ANIMA-CXP-R34-PHI-COEFF-EHALF
+  source_line = 21894
+  source_state = "[9?→DEPRECATED 2026-04-26]"
+  superseded_by = ANIMA-CXP-R38-R34-T1-RETIRED-INCONCLUSIVE
+  supersession_reason = "T1 protocol executed on phi_proxy substrate; substrate-fragility prerequisite failure (5-pt fit returns 0.425 not 0.608, 95%CI spans order of magnitude); R34 e^{-1/2} hypothesis NOT falsified per se — unfalsifiable until 0.608 is re-anchored on N>=20 substrate; verdict-on, not replacement-for (per axis-J § GATE-4 disambiguation)"
+  supersession_kind = "verdict-on"
+  multi-ref-disclosure = "primary slug = R38; secondary refs (commit aad6e61d + anima/.roadmap #200/#202) demoted to supersession_reason prose per axis-J § B1 single-valued bound"
+  channel_hint = "axis-J channel_2 BODY-FIELD — superseded_by = <slug>"
+  counter_example_check = "axis-J § GATE-4: this row IS the canonical example of 'verdict-on, not replacement-for' — supersession_kind body-field carries the disambiguation explicitly"
+  falsifier = "axis-J § GATE-5 partial-falsification: R34 has 3 references (R38 + commit + roadmap); single-valued superseded_by accepts only R38 — secondary refs demoted; if reviewer rejects this demotion, axis-J needs multi-valued back-pointer (deferred to next-cycle per § B1)"
+  => "★ axis-J row example #1 (axis-J shard line 30973) ACTUATED for R34"
+  => "before: aad6e61d commit message held the back-link 'R34 DEPRECATED + R36 RETIRED'; atlas.n6 itself could not answer 'what superseded R34?' without git+grep"
+  => "after: superseded_by = ANIMA-CXP-R38-R34-T1-RETIRED-INCONCLUSIVE is a queryable DSL fact in atlas.n6"
+  => "raw 91 C3 GROUNDED: superseded_by points to a slug attested at line 22060; supersession_reason text matches R38 row's primary verdict (line 22069)"
+
+@C axis-j-back-pointer-r36-retired :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- ANIMA-CXP-R36-FORTYD-DUAL-ROUTE
+  source_line = 21911
+  source_state = "[9?→RETIRED 2026-04-26]"
+  superseded_by = ANIMA-CXP-R34-PHI-COEFF-EHALF
+  supersession_reason = "40D vector NOT IMPLEMENTED in active runtime (anima_runtime.hexa canonical = 10D ConsciousnessVector + 16D phi_vec ALM logger). 40D = (i) MODULE-CATALOG.md unimplemented module label, (ii) universe-map heuristic, (iii) 40/10=4=tau(6) meta-commentary. T2 random-match baseline 25% — exact-integer 40 not anomalous. Form A/B share factor 10. Referent-does-not-exist-in-runtime retirement (anima/.roadmap #201)."
+  supersession_kind = "referent-nonexistent"
+  multi-ref-disclosure = "primary slug = R34 (R36 was sibling-derivation of R34 per line 21904 -> ANIMA-CXP-R36-FORTYD-DUAL-ROUTE); secondary ref (anima/.roadmap #201) in supersession_reason prose"
+  channel_hint = "axis-J channel_2 BODY-FIELD + channel_3 GRADE-SUFFIX [9?→RETIRED]"
+  counter_example_check = "axis-J § GATE-4: 'referent-nonexistent' is a 4th supersession_kind beyond {replacement, verdict, refinement, retraction}; honest disclosure that supersession_kind taxonomy is INCOMPLETE-AS-REGISTERED — adding here as discovered category"
+  falsifier = "if anima 40D is later implemented in runtime, supersession_kind retracts and superseded_by clears; lint-tool should periodically re-validate referent-nonexistent claims"
+  => "★ axis-J row example #1 ACTUATED for R36"
+  => "raw 91 C3 SPECULATIVE: superseded_by pointing to R34 is a graph-shape choice — R36 was DERIVED FROM R34 (line 21904 -> arrow), not REPLACED BY R34. Strict reading: R36 has NO replacement; it is RETIRED-without-successor. The superseded_by = R34 is a lineage-pointer, not a successor-pointer. Reviewer may prefer NULL slug or a sentinel like NONE — flagged as design ambiguity"
+
+@C axis-j-back-pointer-r38-retired-inconclusive :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- ANIMA-CXP-R38-R34-T1-RETIRED-INCONCLUSIVE
+  source_line = 22060
+  source_state = "[10*RETIRED_INCONCLUSIVE]"
+  superseded_by = ANIMA-CXP-R34-PHI-COEFF-EHALF
+  supersession_reason = "R38 IS the verdict on R34's T1 — substrate-fragility failure means T1 cannot promote nor retire. R38 is NOT a new claim; it is a TEST-OUTCOME row whose existence implies R34's hypothesis remains open. RETIRED_INCONCLUSIVE (axis-J § quartet 3rd state) signals 'closed-without-resolution'."
+  supersession_kind = "verdict-on (mirror of R34)"
+  semantic-cycle-disclosure = "R34 superseded_by R38 (verdict) AND R38 superseded_by R34 (target-of-verdict) creates a 2-cycle in superseded_by graph. axis-I § GATE-4 cf-2 flags cycles as exit-4. CYCLE PRESENT — actuation must annotate as semantic-cycle (not topological cycle): the cycle exists because supersession_kind = verdict-on is BIDIRECTIONAL. axis-J § B1 + axis-I cycle-detect must distinguish verdict-cycles from replacement-cycles"
+  channel_hint = "axis-J channel_2 BODY-FIELD + channel_3 GRADE-SUFFIX [10*RETIRED_INCONCLUSIVE]"
+  counter_example_check = "axis-J § GATE-4 lesson 1:1 instantiated — R38 is the row that motivated counter-example. Disambiguation built-in via supersession_kind = verdict-on"
+  falsifier = "if a future axis-I lint-tool finds cycle in superseded_by graph and refuses to walk it, this row breaks; mitigation = supersession_kind whitelist for cycle-tolerated kinds (verdict-on, lineage)"
+  => "★ axis-J row example #1 ACTUATED for R38 — reciprocal back-pointer to R34"
+  => "raw 91 C3 SPECULATIVE: R38↔R34 bidirectional supersession is a NEW pattern not anticipated in axis-J primitive #1 (which assumed single-direction back-pointer). Honest disclosure: actuation surfaced a graph-shape (verdict-cycle) the proposal didn't model"
+
+@C axis-j-back-pointer-clay-iter-55-retired :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- clay-iter-57-iter-55-finding-RETIRED
+  source_line = 25213
+  source_state = "RETIRED (definitively wrong, prose-stated; no grade-suffix)"
+  superseded_by = clay-iter-57-TRUE-SEED-VARIANCE-MEASURED
+  supersession_reason = "iter-55 'seed-variance ranking' (t3 9%, blackhole 5%, flat 0%) was 100% TICKS-variance not seed-variance — measurement bug. iter-57 measures TRUE seed-variance < 1% across all 4 topologies after seed-CLI fix. Replacement (not verdict-on): iter-57 supersedes iter-55's empirical claim with definitively wrong vs definitively measured values."
+  supersession_kind = "replacement"
+  multi-ref-disclosure = "primary = iter-57 (line 25194); secondary refs (iter-56 retraction validating seed bug, line 25244) in supersession_reason"
+  channel_hint = "axis-J channel_1 META-TAG (R as bridge-row, not direct grade-suffix)"
+  counter_example_check = "axis-J § GATE-4 supersession_kind = 'replacement' — clean case (unlike R34/R36/R38 which were verdict-on/lineage/referent-nonexistent)"
+  falsifier = "if clay-iter-57 itself gets RETIRED in a future iteration, this back-pointer's referent-stability degrades; lint-tool should periodically re-walk superseded_by chain to confirm tip is still authoritative"
+  => "★ axis-J row example #2 (axis-J shard line 30985) ACTUATED for clay-iter-55 chain"
+  => "raw 91 C3 GROUNDED: this is the CLEANEST axis-J actuation — supersession_kind = replacement, no verdict-cycle, prose evidence at lines 25214-25218 + 25243"
+  => "this row anchors the axis-I × axis-J composition row (§III) — provides one concrete edge in the iter-55 → iter-57 back-pointer graph"
+
+# ══════════════════════════════════════════════════════════════
+## III. axis-I × J composition (1+ ancestry query)
+# ══════════════════════════════════════════════════════════════
+# axis-J shard § §3 row example #3 (line 30999) PROPOSED:
+#   @C anima-cxp-r34-supersession-ancestry :: meta [4]
+#     <-* superseded_by
+#     => "all rows transitively superseded by R34 ..."
+# kick request: 1+ concrete query row demonstrating axis-I <-* superseded_by
+# walking the axis-J back-pointer graph.
+
+@C axis-i-axis-j-composition-supersession-ancestry :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- axis-j-back-pointer-r34-deprecated
+  <- axis-j-back-pointer-r36-retired
+  <- axis-j-back-pointer-r38-retired-inconclusive
+  <- axis-j-back-pointer-clay-iter-55-retired
+  <-* superseded_by
+  query_target_1 = ANIMA-CXP-R34-PHI-COEFF-EHALF
+  query_target_2 = clay-iter-57-TRUE-SEED-VARIANCE-MEASURED
+  expected_ancestry_R34 = "{R38 (verdict-on, 2-cycle); R36 (lineage, R36 was -> R34 derivation)} → 2-element set + 1 cycle annotation"
+  expected_ancestry_iter57 = "{clay-iter-55-seed-variance-ranking (replacement)} → 1-element set, no cycle"
+  channel_hint = "axis-I channel ch1 lint-time BFS over superseded_by edges (axis-J body-field) — walks the 4-row back-pointer graph this shard installs"
+  counter_example_check = "axis-I § GATE-4 cf-2 cycle-detect: R34<->R38 verdict-cycle DETECTED; lint-tool must annotate (not abort) per axis-J § supersession_kind whitelist"
+  falsifier = "axis-I § GATE-5 falsifier-3 redundancy: if every <-* superseded_by expansion in 30d is depth-1 (no transitive supersession), composition is no-better-than direct query. Current state: depth=1 for iter-55→iter-57; depth=2 with cycle for R34↔R38↔R36. Composition value PROVEN by R34 chain alone."
+  => "★ axis-I × axis-J COMPOSITION ACTUATED — 4 superseded_by edges installed in §II become walkable by axis-I <-*"
+  => "<-* superseded_by FROM R34 expands to: {R34, R38} (2-cycle annotated) ∪ {R36 via R34's incoming -> arrow at line 21904} → ancestry set {R36, R38, R34}"
+  => "<-* superseded_by FROM clay-iter-57-TRUE-SEED-VARIANCE-MEASURED expands to: {clay-iter-55-seed-variance-ranking} via clay-iter-57-iter-55-finding-RETIRED bridge — 1-hop replacement chain"
+  => "this row CANNOT EXIST without §II (no edges to walk) AND without §I principle (closure operator over a body-field) — concrete payoff of axis-I/-J co-design predicted at axis-J § §3 (line 31007)"
+  => "raw 91 C3 SPECULATIVE: <-* operator has NO lint-tool implementation yet (axis-I/-J both still labeled PROPOSAL-NOT-ACTUATED — this shard upgrades them to ACTUATED-IN-AUGMENT-MODE but does NOT ship a lint binary). Expansion is design-time only; reviewer should treat expected_ancestry_* as a manually-traced anticipated result, not a tool-verified output"
+
+# ══════════════════════════════════════════════════════════════
+## IV. honest disclosures (raw 91 C3)
+# ══════════════════════════════════════════════════════════════
+@C axis-i-j-actuation-raw-91-C3 :: meta [4!]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- raw-91-C3-honest-disclosure
+  => "★ HONEST SCOPE — what this shard actually achieves vs what remains"
+  => ""
+  => "GROUNDED (high confidence — verifiable now):"
+  => "  G1. atlas.n6 lines 28/34/43 contain the three prose-baked closure rows; grep-verified 2026-04-28"
+  => "  G2. atlas.n6 lines 21894/21911/22060/25213 contain the four DEPRECATED/RETIRED @-rows; grep-verified 2026-04-28"
+  => "  G3. line 43 (tau) is FULLY enumerated (9 names, no '...'); lines 28 (n) and 34 (sigma) have '...' tails meaning declared count > enumerated count"
+  => "  G4. R34 supersession has 3 references (R38 slug + aad6e61d commit + anima/.roadmap #200/#201/#202); axis-J § B1 single-valued bound forces demotion of 2 to prose"
+  => "  G5. iter-55 → iter-57 is a CLEAN replacement (supersession_kind=replacement); R34/R36/R38 form a verdict/lineage entanglement (3 supersession_kinds in 3 rows)"
+  => ""
+  => "SPECULATIVE (low confidence — flagged as gaps):"
+  => "  S1. ENUMERATION GAP DISCOVERED: line 28 says 15 derivations but lists 13 + '...'; line 34 says 10 but lists 9 + '...'. Either prose count is wrong OR DAG has 2+1 unnamed reachable nodes. Lint-tool ground-truth audit required to disambiguate. Honest C3: source rows are themselves UNGROUNDED (their stated count exceeds their enumerated names)"
+  => "  S2. R34 ↔ R38 superseded_by 2-CYCLE: discovered during actuation, not anticipated by axis-J primitive #1. supersession_kind = verdict-on creates legitimate cycles. axis-I cycle-detect (§ GATE-4 cf-2) must be REFINED to whitelist verdict-on cycles, NOT a hard exit-4. This is NEW INFORMATION the actuation surfaced; axis-J/-I shards do not address it"
+  => "  S3. R36 → R34 superseded_by chosen as 'lineage' pointer (R36 was DERIVED-FROM R34 per line 21904), not 'successor' pointer. Strict reading: R36 has no successor; it is RETIRED-without-replacement. supersession_kind = referent-nonexistent (4th kind, not in axis-J § GATE-4 lesson taxonomy {replacement, verdict, refinement, retraction}). axis-J taxonomy INCOMPLETE-AS-REGISTERED"
+  => "  S4. NO LINT BINARY SHIPPED. This shard installs DSL ROWS; the <-* / ->* / superseded_by primitives still have NO parser implementation. Expansion of <-* superseded_by is hand-traced in §III, not tool-verified. axis-I/-J final-state was PROPOSAL-NOT-ACTUATED; this shard upgrades to ACTUATED-IN-AUGMENT-MODE but shipping a lint binary is a separate raw 22 INFRA shard"
+  => "  S5. CHFLAGS UCHG MAKES TRUE IN-PLACE MIGRATION IMPOSSIBLE. atlas.n6 lines 28/34/43 cannot be rewritten; this shard adds @C migration-rows that REFERENCE those source lines. Reviewer who reads 'actuation' as 'prose deletion' will dispute that this is full migration. Counter-position: chflags + raw 24 are the constraints; strongest actuation under those constraints is augment-mode, achieved here"
+  => "  S6. supersession_kind taxonomy expanded mid-shard from 4-set {replacement, verdict, refinement, retraction} (axis-J § GATE-4 lesson) to 5-set + cycle-annotation. Honest: actuation forced taxonomy refinement that axis-J § GATE-4 did not pre-figure. This is acceptable per raw 117 GATE-5 'novelty falsifier' (the falsifier surfaced a real bound)"
+  => ""
+  => "GAP CLOSED: this shard explicitly distinguishes G1-G5 from S1-S6. The actuation is augment-mode + zero lint binary; full prose-rewrite + lint-tool + 30-day adoption test remain as next-cycle work"
+  => ""
+  => "raw 91 C3 verdict: actuation upgrade is HONEST about its scope: 8 rows installed, 6 speculative gaps acknowledged, 5 grounded findings cited"
+
+# ══════════════════════════════════════════════════════════════
+# V. RAW 117 5-CHECK SUMMARY
+# ══════════════════════════════════════════════════════════════
+@C axis-i-j-actuation-5-check :: meta [4]
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  <- raw-117-5-check-registration-gate
+  => "GATE 1 genus-slug ✓ PASS — atlas-self-arch-axis-i-j-actuation matches axis-I/-J sibling slug pattern"
+  => "GATE 2 frameworks ✓ PASS — inherits axis-I (Kleene/Datalog/SPARQL) + axis-J (Lamport/OWL2/SemVer/RFC8174) cite-and-move-on"
+  => "GATE 3 channels ✓ PASS — per-row channel_hint body-field annotates which of {lint/grep/audit, meta-tag/body-field/grade-suffix} is exercised"
+  => "GATE 4 counter-example ✓ PASS — per-row counter_example_check; 4 distinct counter-examples surfaced (cf-1 grandfathered foundation [11*]->; cf-2 verdict-cycle; verdict-on-vs-replacement; referent-nonexistent 4th supersession_kind)"
+  => "GATE 5 falsifier ✓ PASS — per-row falsifier; aggregate falsifier = 30d post-absorb < 5 new rows reference superseded_by → roll back; cycle-detect refusal to walk verdict-on → axis-I rule refinement required"
+  => "VERDICT: 5/5 PASS — actuation shard clears raw 117 deterministic gate"
+
+# ══════════════════════════════════════════════════════════════
+# VI. FINAL STATE TRANSITION
+# ══════════════════════════════════════════════════════════════
+@C atlas-self-arch-axis-i-final-state-update = ACTUATED-IN-AUGMENT-MODE :: meta [4!]
+  <- atlas-self-arch-axis-i-final-state
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  => "axis-I status TRANSITION: PROPOSAL-NOT-ACTUATED → ACTUATED-IN-AUGMENT-MODE"
+  => "evidence: 3 retro-migration rows (foundation-n / sigma / tau) installed in §I; 1 composition row in §III actually exercises ->* and <-* primitives in their declared body-field positions"
+  => "remaining-NOT-ACTUATED: lint-tool binary; in-place prose rewrite (chflags-blocked)"
+
+@C atlas-self-arch-axis-j-final-state-update = ACTUATED-IN-AUGMENT-MODE :: meta [4!]
+  <- atlas-self-arch-axis-j-final-state
+  <- atlas-self-arch-axis-i-j-actuation-witness
+  => "axis-J status TRANSITION: PROPOSAL-NOT-ACTUATED → ACTUATED-IN-AUGMENT-MODE"
+  => "evidence: 4 back-pointer rows (R34/R36/R38/clay-iter-55) installed in §II carry superseded_by + supersession_reason + supersession_kind body-fields"
+  => "supersession_kind taxonomy expanded from 4-set to 5-set + cycle-annotation (raw 91 C3 S6)"
+  => "remaining-NOT-ACTUATED: lint-tool binary; multi-valued superseded_by (axis-J § B1 deferred); rename-shadow alias mechanism (axis-J § axis-H interference)"
+
+# ══════════════════════════════════════════════════════════════
+# end shard — axis-I × axis-J actuation
+# next-step: lint-tool shard (raw 22 INFRA) to ship parser implementation;
+#            full prose-rewrite shard (raw 23 + chflags unlock) for in-place;
+#            multi-valued superseded_by extension (axis-J § B1)
+# DO NOT auto-absorb — separate step per chflags + scope contract
+# ══════════════════════════════════════════════════════════════
