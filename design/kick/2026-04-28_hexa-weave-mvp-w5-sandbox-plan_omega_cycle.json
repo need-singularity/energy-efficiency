@@ -1,0 +1,169 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T19:30:00Z",
+  "title": "HEXA-WEAVE MVP W5 — sandbox attempt plan + dry-run verification + user approval gate",
+  "task_label": "cycle 8 / fan-out 4/5 W5 sandbox plan (plan + dry-run only; no destructive ops)",
+  "scope": "After W3 (clone+VRAM, 35.5 KB) and W4 (8-subdir+dryrun, 34.3 KB) specs were drafted in cycles 6-7 with implementation deferred pending user approval, cycle 8 fan-out 4/5 produces (a) 8-item user approval checklist with per-item cost+reversibility, (b) 6-item read-only dry-run verification, (c) 4 alternative GPU-free paths to advance F-TP5-b without burning GPU, (d) honest C3 disclosure that nothing destructive has been executed.",
+
+  "parent_witness": {
+    "cycle_5": "W1 + W2 spec + lean4 audit",
+    "cycle_6": "W3 clone+VRAM spec (35.5 KB)",
+    "cycle_7": "W4 8-subdir+dryrun+5-row-fallback spec (34.3 KB)",
+    "cycle_8_this": "W5 plan + dry-run + user approval gate",
+    "fan_out_siblings_cycle_8": ["1/5", "2/5", "3/5", "4/5 (this)", "5/5"]
+  },
+
+  "dry_run_verification": {
+    "method": "read-only commands only; zero destructive ops",
+    "results": [
+      {"id": "D1", "check": "hexa-weave dir absent", "command": "ls ~/core/hexa-weave", "result": "No such file or directory", "classification": "PASS"},
+      {"id": "D2", "check": "python3.10 available", "command": "python3.10 --version", "result": "command not found (system has 3.14.4)", "classification": "GAP"},
+      {"id": "D3", "check": "PyTorch CUDA", "command": "python3 -c \"import torch; print(torch.cuda.is_available())\"", "result": "torch 2.10.0; cuda_available=False", "classification": "GAP"},
+      {"id": "D4", "check": "OpenFold v2.2.0 SHA", "command": "git ls-remote https://github.com/aqlaboratory/openfold.git v2.2.0", "result": "e938c184a291bf053af3b14c1e3e8bb29aee57e2", "classification": "PASS — matches W3 spec pin exactly"},
+      {"id": "D5", "check": "RCSB FASTA endpoint", "command": "curl -sI https://www.rcsb.org/fasta/entry/6L1U", "result": "HTTP/2 200; content-type=text/x-fasta", "classification": "PASS"},
+      {"id": "D6", "check": "nvidia-smi", "command": "nvidia-smi", "result": "command not found", "classification": "GAP"}
+    ],
+    "summary": "3 PASS / 3 GAP (D2+D3+D6 all environmental — Mac has no python3.10/CUDA/GPU; expected; redirects GPU work to ubu1 host per W3 spec topology)"
+  },
+
+  "user_approval_checklist": {
+    "items": [
+      {"n": 1, "title": "8-subdir mkdir", "host": "Mac", "disk": "0 B", "wall_min": 1, "gpu_week": 0, "reversible": true},
+      {"n": 2, "title": "python3.10 + venv", "host": "Mac", "disk": "80 MB", "wall_min": 5, "gpu_week": 0, "reversible": true},
+      {"n": 3, "title": "PyTorch 2.5.1+cu124 install", "host": "ubu1", "disk": "5 GB", "wall_min": 10, "gpu_week": 0, "reversible": true},
+      {"n": 4, "title": "OpenFold v2.2.0 shallow clone", "host": "ubu1", "disk": "120 MB", "wall_min": 2, "gpu_week": 0, "reversible": true},
+      {"n": 5, "title": "OpenFold weight download (~3 GB)", "host": "ubu1", "disk": "3 GB", "wall_min": 10, "gpu_week": 0, "reversible": true},
+      {"n": 6, "title": "sm_120 deepspeed source compile", "host": "ubu1", "disk": "500 MB", "wall_min": 10, "gpu_week": 0, "reversible": true},
+      {"n": 7, "title": "PDB 6L1U FASTA fetch", "host": "either", "disk": "10 KB", "wall_min": 0.02, "gpu_week": 0, "reversible": true},
+      {"n": 8, "title": "ubu1 GPU forward pass dry-run", "host": "ubu1 GPU", "disk": "50 MB", "wall_min": 30, "gpu_week": 0.001, "reversible": true}
+    ],
+    "aggregate": {
+      "remote_disk_gb": 8.6,
+      "bandwidth_gb": 8,
+      "gpu_week_total": 0.001,
+      "wall_min_sequential": 70,
+      "dollar_cost_marginal": "≈$0 (ubu1 already provisioned)"
+    },
+    "approval_modes": {
+      "A_full": "approve 1-8; ~60-90 min wall",
+      "B1_gpu_free": "approve 1+2+4+7 only (no torch, no weights, no GPU); ~10 min",
+      "B2_install_only": "approve 1-7 (no Item 8 forward pass); ~45 min",
+      "B3_weights_deferred": "approve 1-4+6+7 (skip Item 5 weights); ~30 min",
+      "C_full_defer": "decline all 8; current state",
+      "D_alternate": "user proposes different sequencing/host"
+    }
+  },
+
+  "alternative_gpu_free_paths": [
+    {"id": "Alt-1", "title": "spec-only external review", "approval_needed": "none", "cost_hr": 1, "compute": "$0", "yield": "spec-quality validation", "gate_move_pct": 5},
+    {"id": "Alt-2", "title": "GPU-free dataset prep (items 1+2+4+7)", "approval_needed": "lightweight subset", "cost_min": 10, "compute": "~150 MB disk", "yield": "env skeleton + reference codebase + test sequence", "gate_move_pct": 5},
+    {"id": "Alt-3", "title": "mock-up architecture validation (CPU stubs)", "approval_needed": "items 1+2 only", "cost_hr": "2-4", "compute": "$0", "yield": "full integration scaffold tested against mocks", "gate_move_pct": 10, "risk": "mock signatures may diverge from real OpenFold at integration"},
+    {"id": "Alt-4", "title": "Lean4 ax2/mkbridge proof continuation", "approval_needed": "none", "cost_hr": "2-6", "compute": "$0", "yield": "formal proof track parallel to GPU track", "gate_move_pct": 5}
+  ],
+  "recommended_alt_sequencing": "Alt-2 (10 min) → Alt-3 (2-4 hr) → Alt-4 (parallel) → THEN approve GPU items 3,5,6,8. Reduces risk of burning GPU on a misdesigned wrapper.",
+
+  "f_tp5b_90d_gate_progress": {
+    "W1_architecture_decision_pct": 5,
+    "W2_base_model_integration_spec_pct": 5,
+    "W3_clone_vram_spec_pct": 10,
+    "W4_8subdir_dryrun_spec_pct": 10,
+    "W5_plan_dryrun_approval_doc_pct_this_cycle": 5,
+    "subtotal_done_through_cycle_8_pct": 35,
+    "W5_actual_exec_pending_approval_pct": 10,
+    "post_approval_target_pct": 45,
+    "W6_training_pct": 25,
+    "W7_ax2_mkbridge_integration_pct": 15,
+    "W8_downstream_eval_pct": 15
+  },
+
+  "deliverables": {
+    "files_created": [
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_user_approval_request_2026_04_28.md",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_sandbox_attempt_2026_04_28.md",
+      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w5-sandbox-plan_omega_cycle.json"
+    ],
+    "files_modified": [],
+    "destructive_ops_executed": 0,
+    "read_only_commands_executed": 6,
+    "approval_gate_items_drafted": 8,
+    "alternative_paths_identified": 4,
+    "raw_71_falsifiers": 5
+  },
+
+  "honest_disclosure_raw_91_C3": {
+    "implementation_started": false,
+    "code_run": false,
+    "packages_installed": 0,
+    "weights_downloaded": 0,
+    "gpus_touched": 0,
+    "claim": "This cycle produced 2 markdown documents + 1 witness JSON and ran 6 read-only shell commands. Nothing is installed, nothing is downloaded, no GPU has been touched.",
+    "caveats": [
+      "python3.10 pin is brittle; ubu1 likely needs apt install python3.10 (additional sudo step not in checklist)",
+      "sm_120 deepspeed source build is bleeding-edge; W4 fallback row to sm_90 prebuilt exists; user should authorize fallback",
+      "GPU-week 0.001 estimate for Item 8 is optimistic; OOM-driven retries per W4 5-row fallback could push to 0.001-0.004",
+      "raw 86 cost-attribution coverage is incomplete: doc estimates compute+storage but not author-hours, external validation cost (Alt-1), or opportunity cost vs other 90d-gate work"
+    ]
+  },
+
+  "raw_86_cost_attribution_summary": {
+    "compute": {"gpu_week_planned": 0.001, "gpu_week_realistic_range": [0.001, 0.004]},
+    "storage": {"local_mac_mb": 80, "remote_ubu1_gb": 8.6, "rolling_gb_month": 8.6},
+    "bandwidth_gb_one_shot": 8,
+    "wall_min_sequential": 70,
+    "dollar_cost_marginal": "≈$0",
+    "human_hours_this_cycle": 0.5,
+    "human_hours_post_approval_estimated": "1-2 (sequential exec + monitoring)"
+  },
+
+  "falsifiers_raw_71": [
+    {
+      "id": "F-W5-1",
+      "tier": "TRANSCEND",
+      "predicate": "Within 7 days of user approval, all 8 items run but Item 8 forward pass fails with non-OOM error (SHA mismatch on weights, OpenFold API breakage, deepspeed/torch version conflict)",
+      "detection": "ubu1 error log; non-zero exit on Item 8; non-OOM trace",
+      "trip_action": "Revert to W4 5-row VRAM fallback; if fallback also fails, halt and re-spec the W3+W4 stack",
+      "deadline": "T+7d after approval"
+    },
+    {
+      "id": "F-W5-2",
+      "tier": "TRANSCEND",
+      "predicate": "Within 14 days of approval, sm_120 deepspeed source build (Item 6) fails irrecoverably on ubu1",
+      "detection": "build log error during `pip install deepspeed --no-build-isolation` with TORCH_CUDA_ARCH_LIST=12.0",
+      "trip_action": "Switch to sm_90 prebuilt deepspeed wheel (W4 fallback); accept reduced perf vs Blackwell-native",
+      "deadline": "T+14d after approval"
+    },
+    {
+      "id": "F-W5-3",
+      "tier": "TRANSCEND",
+      "predicate": "Within 30 days, RCSB removes 6L1U or changes FASTA endpoint format (D5 endpoint behavior changes)",
+      "detection": "D5 re-run returns non-200 or non-FASTA content-type",
+      "trip_action": "Switch to PDB FTP mirror (https://files.rcsb.org/fasta/) or local cache; update W3/W4 spec endpoint reference",
+      "deadline": "T+30d"
+    },
+    {
+      "id": "F-W5-4",
+      "tier": "TRANSCEND",
+      "predicate": "Within 7 days, OpenFold v2.2.0 tag is force-pushed and SHA e938c184 no longer resolves to that tag",
+      "detection": "D4 re-run returns SHA != e938c184a291bf053af3b14c1e3e8bb29aee57e2",
+      "trip_action": "Pin to commit SHA explicitly in clone (post-clone `git checkout e938c184`); update W3 spec to reference SHA not tag",
+      "deadline": "T+7d"
+    },
+    {
+      "id": "F-W5-5",
+      "tier": "TRANSCEND",
+      "predicate": "Within 14 days, user reports the 8-item checklist granularity is wrong (too coarse — e.g. wants Item 5 split into fetch/verify/load; OR too fine — e.g. wants 1+2+4+7 bundled as single approval)",
+      "detection": "user explicit feedback; reviewer comment; PR discussion",
+      "trip_action": "Re-issue companion approval doc with revised granularity; honor user's chunking preference; update witness JSON to match",
+      "deadline": "T+14d"
+    }
+  ],
+
+  "verification": {
+    "destructive_ops_count": 0,
+    "read_only_commands_count": 6,
+    "files_in_hexa_weave_dir": "N/A — directory does not exist (D1)",
+    "user_approval_received": false,
+    "implementation_status": "AWAITING_USER_APPROVAL",
+    "spec_chain_intact": "W1 → W2 → W3 (35.5 KB) → W4 (34.3 KB) → W5 plan (this) — all docs present in proposals/"
+  }
+}

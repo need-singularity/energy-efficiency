@@ -1,0 +1,85 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_cycle8-commit-push",
+  "kick_title": "Cycle 8 fan-out 1/5 — n6-architecture monolithic commit + push (Foundation refactor + W5 plans + Zenodo prep)",
+  "kick_date": "2026-04-28",
+  "umbrella": "session-governance",
+  "cost_center": "cycle8-multi-repo-commit",
+  "predecessor_witness": "design/kick/2026-04-28_cycle7-commit-push_omega_cycle.json",
+  "parent_brief": "user mission cycle-8 fan-out 1/5 (cycle 8 deliverable absorption + push)",
+  "scope": {
+    "files_modified": [
+      "lean4-n6/N6/MechVerif/AX1.lean",
+      "lean4-n6/N6/MechVerif/AX2.lean",
+      "lean4-n6/N6/MechVerif/MKBridge.lean",
+      "papers/hexa-weave-formal-mechanical-w2-2026-04-28.md"
+    ],
+    "files_created": [
+      "lean4-n6/N6/MechVerif/Foundation/Strand.lean",
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean",
+      "proposals/hexa_weave_mvp_w6_axioms_shared_refactor_2026_04_28.md",
+      "proposals/hexa_weave_mvp_w5_user_approval_request_2026_04_28.md",
+      "proposals/hexa_weave_mvp_w5_sandbox_attempt_2026_04_28.md",
+      "proposals/hexa_weave_mvp_w6_felgner_full_proof_2026_04_28.md",
+      "proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w6-axioms-refactor_omega_cycle.json",
+      "design/kick/2026-04-28_hexa-weave-mvp-w5-sandbox-plan_omega_cycle.json",
+      "design/kick/2026-04-28_lean4-w6-felgner-full-proof_omega_cycle.json",
+      "design/kick/2026-04-28_zenodo-deposit-prep_omega_cycle.json",
+      "design/kick/2026-04-28_cycle8-commit-push_omega_cycle.json"
+    ],
+    "summary": {
+      "foundation_strand_loc": 176,
+      "foundation_axioms_loc": 200,
+      "ax1_refactor": "186 -> 112 LOC (axioms shared via Foundation/Axioms.lean)",
+      "ax2_refactor": "398 -> 162 LOC (axioms shared)",
+      "mkbridge_refactor": "215 -> 119 LOC (axioms shared)",
+      "paper_w2_update": "301 -> 377 lines (sorry-free update + Foundation refactor reflection)",
+      "w5_sandbox_proposal_size_kb": 10,
+      "w5_user_approval_proposal_size_kb": 10,
+      "axioms_shared_refactor": "common axioms hoisted from AX1/AX2/MKBridge into Foundation/Axioms.lean (single source of truth)",
+      "strand_module": "Foundation/Strand.lean introduces shared Strand type/algebra"
+    }
+  },
+  "excluded_pre_existing_dirty": [
+    "tool/atlas_self_arch_lint.hexa (parallel atlas probe instrumentation; refactor only)",
+    "reports/n6_own_doc_lint.json (auto-regenerated lint report)",
+    "state/markers/probe*.marker x ~30 (parallel probe markers from background processes)",
+    "state/markers/atlas_self_arch_lint_*.marker, manual_login_reminder_*.marker (cron emission markers)",
+    "state/markers/falsifier_monitor_*.marker, raw_registration_gate_lint_*.marker, test_exec_*.marker, dump_cmd_*.marker, _probe_exec_*.marker, file_lock_*.marker",
+    "state/atlas_self_arch_audit/ (auto-generated audit dir)",
+    "state/falsifier_monitor/audit.jsonl (gitignored — not staged)",
+    "state/discovery_absorption/registry.jsonl (gitignored — not staged)"
+  ],
+  "raw_91_c3_honest": {
+    "ax1_sorry_status": "Proof terms contain no sorry; doc/comment mentions only (W2 history + named-axiom rationale).",
+    "ax2_sorry_status": "Proof terms contain no sorry; doc/comment mentions only.",
+    "mkbridge_sorry_status": "Proof terms contain no sorry after refactor.",
+    "foundation_axioms_disclosure": "Foundation/Axioms.lean centralizes named axioms (Robin_1984_axiom + MK class-theory bridge + Felgner-related); each retains explicit `axiom` keyword. No hidden sorry collapse.",
+    "foundation_strand_disclosure": "Foundation/Strand.lean defines shared Strand type/algebra used by AX1/AX2/MKBridge. Definitional only; no axiom additions beyond what's in Axioms.lean.",
+    "w5_sandbox_status": "PROPOSAL ONLY (10KB sandbox-attempt + 10KB user-approval-request); no live W5 execution. Awaiting user approval before sandbox actuation.",
+    "zenodo_status": "DEPOSIT PREP DOC ONLY; no live Zenodo upload performed.",
+    "paper_w2_status": "Documentation update reflecting Foundation refactor + sorry-free state; no new theorems claimed."
+  },
+  "safety_gates": {
+    "secrets_scan": "PASS (no sk-/ghp_/AKIA/Bearer/private-key literals across cycle-8 staged files)",
+    "chflags_uchg": "n/a (.raw not present in n6-architecture)",
+    "raw_13_hooks": "n/a (no active pre-commit hooks present in .git/hooks; only Git samples). Commit will not invoke gating.",
+    "destructive_ops": 0,
+    "git_history_modified": false
+  },
+  "commit_strategy": {
+    "monolithic": true,
+    "commit_message_short": "feat(hexa-weave): cycle 8 Foundation refactor (axioms shared) + W5 plans + Zenodo prep + paper sorry-free update",
+    "language": "english_primary (own#1)",
+    "co_author": "Claude Opus 4.7 (1M context)"
+  },
+  "push_target": {
+    "remote": "origin",
+    "branch": "main",
+    "url": "https://github.com/need-singularity/n6-architecture.git"
+  },
+  "other_repos_note": "Other repos inspected post-commit; cycle-8 fan-out 1/5 scope is n6-architecture only.",
+  "ts_kick": "2026-04-28T17:10:00Z",
+  "schema": "design/kick/omega_cycle_v1"
+}

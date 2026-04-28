@@ -1,0 +1,127 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_zenodo-deposit-prep",
+  "kick_title": "Cycle-8 fan-out 5/5 — HEXA-WEAVE paper Zenodo Option-A deposit prep + paper cycle-7 sorry-free refresh",
+  "kick_date": "2026-04-28",
+  "umbrella": "external-disclosure",
+  "cost_center": "hexa-weave-formal-mechanical-w6",
+  "predecessor_witness": "design/kick/2026-04-28_cycle7-commit-push_omega_cycle.json",
+  "parent_brief": "user mission cycle-8 fan-out 5/5 (Zenodo paper deposit Option-A prep; lean4 sorry-free milestone reflection in paper)",
+  "scope": {
+    "files_modified": [
+      "papers/hexa-weave-formal-mechanical-w2-2026-04-28.md"
+    ],
+    "files_created": [
+      "proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md",
+      "design/kick/2026-04-28_zenodo-deposit-prep_omega_cycle.json"
+    ],
+    "summary": {
+      "paper_sections_updated": [
+        "header status / disclosure tier / MSC2020 / mechanical-empirical separation note",
+        "abstract (cycle-7 sorry-free; 7 named axioms enumerated; bounded forward [2, 50])",
+        "§7.1 verify block (sweep extended [2, 1000]; lake build snippet (b) added)",
+        "§7.2 K>=4 axes (CROSS/SCALING/LIMITS/COUNTER updated)",
+        "§8 EXEC SUMMARY (sorry-free framing)",
+        "§15 MANUFACTURING -> §15.1 REFERENCES (Felgner 1971 + Hardy-Wright + Robin 1984 + Wigert 1907 cited)",
+        "§17 BOM -> §17.1 BOM expanded (AX2.lean + MKBridge.lean) + §17.2 LIMITATIONS (cycle-7 axiom dependency disclosure)",
+        "§19 ACCEPTANCE / MISS criteria (named-axiom honesty gate (f) added; F-TP5-b separation noted)",
+        "§20.1 falsifiers reframed as F-W6-ZEN-1..5",
+        "§20.2 raw 91 C3 honest disclosure expanded (7 named axioms enumerated; mechanical vs empirical separation)",
+        "§21 IMPACT (cycle-7 milestone + cycle-8 Zenodo prep)",
+        "mk-history (2 new entries)"
+      ],
+      "zenodo_checklist_items": 8,
+      "named_axioms_enumerated": 7,
+      "extended_sweep_window": "[2, 1000]",
+      "lean_build_targets": ["N6.MechVerif.AX1", "N6.MechVerif.AX2", "N6.MechVerif.MKBridge"],
+      "deposit_performed": false,
+      "user_approval_required": true
+    }
+  },
+  "raw_91_c3_honest": {
+    "deposit_status": "PREP only; no Zenodo upload performed; no DOI minted",
+    "user_approval_required": "raw 71 paper-publication-tier explicit approval gate active for Option-A",
+    "named_axioms": [
+      "axiom_robin_hardy_wright_ax1_tail (AX1.lean L114) — Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907",
+      "axiom_felgner_bridge_to_MK_AX2 (AX2.lean L296) — Felgner 1971 ZFC<->MK conservativity",
+      "axiom_hexa_comp_closure_AX2 (AX2.lean L301) — HEXA-COMP closure SSOT",
+      "axiom_felgner_1971_conservativity_meta (MKBridge.lean L99)",
+      "axiom_strand_zfc_witness (MKBridge.lean L125)",
+      "axiom_felgner_bridge_to_MK (MKBridge.lean L167)",
+      "axiom_hexa_comp_closure_via_ZFC (MKBridge.lean L172)"
+    ],
+    "empirical_claims_in_paper": 0,
+    "clay_millennium_problems_addressed": 0,
+    "rh_solved_claim": "ABSENT (Robin 1984 cited only for unconditional sigma asymptotic; RH-equivalent sharp bound not invoked) — own#11 PASS",
+    "sorry_in_proof_terms": 0,
+    "sorry_in_comments_only": "yes (W2 history references in AX1.lean / AX2.lean docstrings)",
+    "pii_disclosure": "byline email (arsmoriendi99@proton.me) and memory email (mk55992@proton.me) are both already in repo files; no new PII surface created by this cycle. ORCID linkage gated on user choice."
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-W6-ZEN-1",
+      "claim": "parent paper lake build regresses to non-sorry-free between this prep and any future deposit moment",
+      "expected_outcome": "does not fire; mitigation = re-run §7.1(b) snippet before deposit"
+    },
+    {
+      "id": "F-W6-ZEN-2",
+      "claim": "a counter-example n in [51, 1000] satisfying AX1Eq is found by sympy",
+      "expected_outcome": "does not fire; verified in §7.1 sweep"
+    },
+    {
+      "id": "F-W6-ZEN-3",
+      "claim": "a reviewer shows axiom_robin_hardy_wright_ax1_tail overstates Robin 1984",
+      "expected_outcome": "monitor; axiom uses Hardy-Wright unconditional form, not Robin's RH-conditional sharp bound"
+    },
+    {
+      "id": "F-W6-ZEN-4",
+      "claim": "Zenodo rejects deposit due to license mismatch (Apache-2.0 vs CC-BY-4.0)",
+      "expected_outcome": "pre-flight policy check; switch paper text to CC-BY-4.0 if necessary"
+    },
+    {
+      "id": "F-W6-ZEN-5",
+      "claim": "PII surface — paper byline email gets indexed and user regrets exposure",
+      "expected_outcome": "confirm byline email with user before deposit; ORCID optional"
+    }
+  ],
+  "raw_70_k4_axes": {
+    "CONSTANTS": "PASS (n6 quartet sigma=12 phi=2 tau=4 unchanged)",
+    "DIMENSIONS": "PASS (the deposit object is text + Lean source + sympy verify; types are stable)",
+    "CROSS": "PASS (paper §7.1 sympy sweep [2, 1000] + Lean decide [2, 50] cross-check)",
+    "SCALING": "PASS (sweep extended from [2, 100] to [2, 1000])",
+    "SENSITIVITY": "PASS (Apache-2.0 vs CC-BY-4.0 license sensitivity flagged in F-W6-ZEN-4)",
+    "LIMITS": "PASS (named-axiom layer limit explicitly disclosed in §17.2 + §20.2)",
+    "CHI2": "DEFER (no empirical sample; raw 91 C3 zero empirical claim)",
+    "COUNTER": "PASS (no counter-example in [2, 1000])"
+  },
+  "safety_gates": {
+    "deposit_executed": false,
+    "user_approval_obtained": false,
+    "pii_new_disclosure": false,
+    "doi_minted": false,
+    "github_repo_made_public": false,
+    "raw_71_user_approval_gate": "active",
+    "raw_76_doi_mandate": "satisfied on deposit (Zenodo automatic)",
+    "own_11_clay_millennium_check": "PASS (RH cited not solved)",
+    "own_15_21_section_completeness": "preserved in parent paper",
+    "own_6_verify_embedded": "PASS (sympy block + lake build snippet both embedded)"
+  },
+  "next_cycle_handoff": {
+    "if_user_approves": [
+      "execute Zenodo deposit per §2 checklist",
+      "fill BibTeX DOI placeholder with assigned 10.5281/zenodo.XXXXXXX",
+      "update paper §21 IMPACT with the assigned DOI",
+      "log new witness 2026-04-XX_zenodo-deposit-executed_omega_cycle.json"
+    ],
+    "if_user_defers": [
+      "no action; this prep doc remains as future-cycle resource"
+    ],
+    "if_user_rejects": [
+      "downgrade disclosure tier to Option-E only (papers/ verify-embedded; current state)",
+      "log rejection rationale in mk-history"
+    ]
+  },
+  "report_to_user_korean": "cycle-8 fan-out 5/5 Zenodo Option-A deposit PREP 완료. paper §17/§19/§20/§15/§7.1 갱신 (cycle-7 sorry-free 7-axiom 반영). 8-item checklist + BibTeX draft + 5 falsifiers (F-W6-ZEN) 작성. raw 76 DOI mandate = Zenodo 자동 발급으로 satisfy. own#11 (Clay Millennium 해결 주장 금지) PASS — Robin 1984 인용은 unconditional sigma asymptotic 만 사용. raw 91 C3 honest = 7 named axiom 명시 + 0 empirical claim. 실제 deposit 은 사용자 승인 대기.",
+  "ts_kick": "2026-04-28T17:00:00Z",
+  "schema": "design/kick/omega_cycle_v1"
+}

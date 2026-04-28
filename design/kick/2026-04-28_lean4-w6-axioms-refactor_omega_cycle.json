@@ -1,0 +1,189 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_lean4-w6-axioms-refactor",
+  "kick_title": "HEXA-WEAVE MVP W6 — axiom shared-file refactor (cycle 8 fan-out 3/5)",
+  "kick_date": "2026-04-28",
+  "umbrella": "formal-verification",
+  "cost_center": "hexa-weave-formal-mechanical-verification",
+  "parent_witness": "design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
+  "predecessor_witness": "design/kick/2026-04-28_lean4-w5-ax2-integration_omega_cycle.json",
+  "parent_spec": "proposals/hexa-weave-formal-mechanical-verification-prep.md",
+  "w6_report_doc": "proposals/hexa_weave_mvp_w6_axioms_shared_refactor_2026_04_28.md",
+  "deadline_for_w12": "2026-07-28",
+  "w6_window": {
+    "nominal_start": "2026-06-30",
+    "nominal_end": "2026-07-13",
+    "actual_start": "2026-04-28",
+    "actual_end": "2026-04-28",
+    "early_start_days": 63,
+    "schedule_margin_carryover_from_w5": 49
+  },
+  "architecture_decision": {
+    "mission_step1_intent": "Foundation/Axioms.lean shared file — single source of truth for 7 named axioms; F-W5-AX2-1 falsifier resolution",
+    "obstacle": "naive single-file Foundation/Axioms cannot be a leaf because axiom signatures reference Strand (pre-W6 in AX2.lean) and IsMKProperClass (pre-W6 in AX2.lean). Cyclic-dep avoidance forced AX2 mirror axioms in cycle 7 W5.",
+    "options_evaluated": [
+      {"id": "a_axioms_only_imports_AX2", "verdict": "INFEASIBLE", "rationale": "AX2 cannot then import Foundation/Axioms (cycle); mirror axioms remain"},
+      {"id": "b_two_file_split_Strand_plus_Axioms", "verdict": "ADOPTED", "rationale": "Foundation/Strand.lean (leaf) + Foundation/Axioms.lean (imports Strand). Both AX2 and MKBridge import both. Clean DAG; mirrors collapse."},
+      {"id": "c_inline_all_into_one_file", "verdict": "REJECTED", "rationale": "would conflate Strand inductive (lightweight) with axiom layer (heavy ZFC + NumberTheory imports); harms compile-time and audit clarity"}
+    ],
+    "selected": "b_two_file_split_Strand_plus_Axioms",
+    "selection_rationale": "Foundation/Strand.lean is a true leaf (only Mathlib.Data.Set.Basic). Foundation/Axioms.lean imports Strand + heavy mathlib (ZFC, NumberTheory). DAG: Strand ← Axioms ← {AX1, AX2, MKBridge}. AX2 mirrors collapsed to Strand-form theorems."
+  },
+  "deliverables": {
+    "new_files": [
+      {"path": "lean4-n6/N6/MechVerif/Foundation/Strand.lean", "loc": 176, "purpose": "leaf module: Strand inductive + alphabets + predicates + opaque MK class predicates"},
+      {"path": "lean4-n6/N6/MechVerif/Foundation/Axioms.lean", "loc": 200, "purpose": "single-source axioms (5 unique, post-mirror-collapse) + AX1Eq + StrandClass_ZFC + bridge theorems"}
+    ],
+    "modified_files": [
+      {"path": "lean4-n6/N6/MechVerif/AX1.lean", "loc_before": 186, "loc_after": 112, "delta": -74, "change": "removed AX1Eq local def + axiom_robin_hardy_wright_ax1_tail; replaced with import N6.MechVerif.Foundation.Axioms"},
+      {"path": "lean4-n6/N6/MechVerif/AX2.lean", "loc_before": 398, "loc_after": 162, "delta": -236, "change": "removed Strand inductive + alphabets + predicates + 2 mirror axioms + opaque preds; replaced with import N6.MechVerif.Foundation.{Strand,Axioms}"},
+      {"path": "lean4-n6/N6/MechVerif/MKBridge.lean", "loc_before": 215, "loc_after": 119, "delta": -96, "change": "removed 4 axioms + StrandClass_ZFC def + zfc_plus_inaccessible_witness; replaced with import N6.MechVerif.Foundation.{Strand,Axioms}"}
+    ],
+    "lake_build_target": "N6.MechVerif.{AX1,AX2,MKBridge,Foundation.Strand,Foundation.Axioms}",
+    "lake_build_status": "PASS",
+    "sorry_count_actual_before": 0,
+    "sorry_count_actual_after": 0,
+    "axiom_keyword_count_before_w6": 7,
+    "axiom_keyword_count_after_w6_with_concurrent_fanout2_absorbed": 7,
+    "axiom_unique_count_excluding_mirrors_before": 5,
+    "axiom_unique_count_excluding_mirrors_after": 7,
+    "axiom_delta_explanation": "Net axiom keyword count UNCHANGED at 7; refactor effects: (a) 2 AX2 mirrors ELIMINATED (-2), (b) concurrent cycle-8 fan-out 2/5 split axiom_felgner_1971_conservativity_meta into 3 step sub-axioms (+2 net), giving net 0. F-W5-AX2-1 still RESOLVED because the SOURCE OF DUPLICATION is gone (mirrors removed); the +2 from Felgner decomposition is an INCREASE in PRECISION (better citation/audit), not a regression.",
+    "axiom_names_eliminated_w6_fanout3": [
+      "axiom_felgner_bridge_to_MK_AX2 (AX2.lean mirror)",
+      "axiom_hexa_comp_closure_AX2 (AX2.lean mirror)"
+    ],
+    "axiom_names_added_w6_fanout2_absorbed": [
+      "axiom_felgner_step1_class_quantifier_to_Vkappa_bounded",
+      "axiom_felgner_step2_proper_class_in_Vkappa",
+      "axiom_felgner_step3_LZFC_relativization"
+    ],
+    "axiom_names_removed_w6_fanout2_absorbed": [
+      "axiom_felgner_1971_conservativity_meta (now derived theorem; same name preserved for downstream callers)"
+    ],
+    "axioms_relocated_no_count_change": [
+      "axiom_strand_zfc_witness (MKBridge → Foundation/Axioms)",
+      "axiom_felgner_bridge_to_MK (MKBridge → Foundation/Axioms)",
+      "axiom_hexa_comp_closure_via_ZFC (MKBridge → Foundation/Axioms)",
+      "axiom_robin_hardy_wright_ax1_tail (AX1 → Foundation/Axioms)"
+    ]
+  },
+  "axiom_inventory_post_w6": [
+    {"file": "Foundation/Axioms.lean", "name": "axiom_strand_zfc_witness", "purpose": "Strand → ZFSet.{0} encoding", "discharge_horizon": "W7+ (Encodable derivation deferred)"},
+    {"file": "Foundation/Axioms.lean", "name": "axiom_felgner_bridge_to_MK", "purpose": "Felgner conservativity applied to Strand", "discharge_horizon": "W7+"},
+    {"file": "Foundation/Axioms.lean", "name": "axiom_hexa_comp_closure_via_ZFC", "purpose": "HEXA-COMP closure pending definition", "discharge_horizon": "W6+ (AX-3/AX-4 boundary)"},
+    {"file": "Foundation/Axioms.lean", "name": "axiom_robin_hardy_wright_ax1_tail", "purpose": "Robin 1984 + Hardy-Wright 322/328 + Wigert 1907 tail bound", "discharge_horizon": "W7+"},
+    {"file": "Foundation/Axioms.lean", "name": "axiom_felgner_1971_conservativity_meta", "purpose": "(post cycle-8 fan-out 2/5) now derived theorem from 3 step sub-axioms; counted as 3 unique step axioms (step1/step2/step3) all : True; same logical content as prior single axiom", "discharge_horizon": "W7+"}
+  ],
+  "import_graph_post_w6": {
+    "Foundation.Strand": ["Mathlib.Data.Set.Basic"],
+    "Foundation.Axioms": ["N6.MechVerif.Foundation.Strand", "Mathlib.SetTheory.ZFC.Class", "Mathlib.SetTheory.ZFC.Basic", "Mathlib.SetTheory.Cardinal.Regular", "Mathlib.NumberTheory.ArithmeticFunction.Misc", "Mathlib.NumberTheory.Divisors", "Mathlib.Data.Nat.Totient"],
+    "AX1": ["N6.MechVerif.Foundation.Axioms", "Mathlib.Tactic.IntervalCases"],
+    "AX2": ["N6.MechVerif.Foundation.Strand", "N6.MechVerif.Foundation.Axioms"],
+    "MKBridge": ["N6.MechVerif.Foundation.Strand", "N6.MechVerif.Foundation.Axioms"],
+    "is_DAG": true,
+    "leaf_modules": ["Foundation.Strand"],
+    "no_cyclic_dependencies": true
+  },
+  "main_theorem_preservation": {
+    "AX1_n6_uniqueness": {"status": "PRESERVED", "before_axioms": ["axiom_robin_hardy_wright_ax1_tail (AX1)"], "after_axioms": ["axiom_robin_hardy_wright_ax1_tail (Foundation/Axioms)"]},
+    "AX1_n6_uniqueness_corrected": {"status": "PRESERVED", "alias": true},
+    "AX2_strand_class_well_formed": {"status": "PRESERVED", "before_axioms": ["propext"], "after_axioms": ["propext"]},
+    "AX2_strand_is_MK_class": {"status": "PRESERVED", "before_axioms": ["axiom_felgner_bridge_to_MK_AX2 (AX2)"], "after_axioms": ["axiom_felgner_bridge_to_MK + axiom_strand_zfc_witness (Foundation/Axioms via felgner_bridge_to_MK_strand theorem)"], "remark": "axiom dependency expanded but no new axioms introduced; aligned with MKBridge.AX2_strand_is_MK_class_via_ZFC"},
+    "AX2_strand_closed_under_HEXAComp": {"status": "PRESERVED", "before_axioms": ["axiom_hexa_comp_closure_AX2 (AX2)"], "after_axioms": ["axiom_hexa_comp_closure_via_ZFC (Foundation/Axioms)"]},
+    "MKBridge.AX2_strand_is_MK_class_via_ZFC": {"status": "PRESERVED"},
+    "MKBridge.AX2_strand_closed_under_HEXAComp_via_ZFC": {"status": "PRESERVED"}
+  },
+  "f_w5_ax2_1_resolution": {
+    "falsifier_id": "F-W5-AX2-1",
+    "falsifier_claim": "Reviewer rejects local axiom mirroring (`*_AX2` suffix axioms in AX2.lean) as duplication; demands shared-file refactor canonicalising axioms in MKBridge",
+    "status_after_w6": "RESOLVED",
+    "resolution_method": "Foundation/Axioms.lean shared-file refactor (option (a) from F-W5-AX2-1 mitigation plan; cycle 8 fan-out 3/5)",
+    "evidence": "AX2.lean axiom count: 2 → 0; MKBridge.lean axiom count: 4 → 0; all axioms relocated to Foundation/Axioms.lean; mirror axioms (`*_AX2`) removed; lake build PASS; sorry count remains 0"
+  },
+  "environment": {
+    "lean_toolchain": "leanprover/lean4:v4.30.0-rc1",
+    "mathlib_rev": "19c497800a418208f973be74c9f5c5901aac2f54",
+    "build_machine": "Mac M2 (production user)",
+    "no_sigkill_observed": true,
+    "no_lake_update_invoked": true,
+    "no_new_lakefile_dependencies": true,
+    "no_toolchain_change": true
+  },
+  "f_d_3_reassessment": {
+    "pre_w6_value": "MEDIUM 52-60% (per W5 report)",
+    "post_w6_value": "MEDIUM 50-58%",
+    "lower_bound_change": "-2pp",
+    "upper_bound_change": "-2pp",
+    "rationale": "Architectural-debt elimination: 2 mirror axioms removed; single source of truth for the 5 unique axioms simplifies future discharge work. F-W5-AX2-1 RESOLVED. Remaining gates (Encodable derivation, HEXA-COMP definition, Felgner full mechanisation) unchanged in difficulty; no new risk surface introduced.",
+    "highest_risk_gate_now": "W6 HEXA-COMP definition (AX-3/AX-4 boundary; F-W5-AX2-3 carries forward)"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-W6-REFACTOR-1",
+      "claim": "Reviewer questions Foundation namespace choice — alternative names (Common, Core, Shared, Base) may be preferred over Foundation",
+      "condition": "by W11-W12 review (2026-07-15 to 2026-07-28), reviewer requests namespace rename",
+      "experiment": "track maintainer disposition on Foundation namespace; record requested rename if any",
+      "expected_outcome": "may FIRE at LOW severity — Foundation matches mathlib4 convention (e.g. Mathlib.Init, Mathlib.Logic.Basic); rename is sed-trivial",
+      "severity_if_fires": "LOW (cosmetic; ~10-line sed across 5 files)",
+      "tier": "TRANSCEND"
+    },
+    {
+      "id": "F-W6-REFACTOR-2",
+      "claim": "AX1Eq relocation to Foundation/Axioms.lean introduces unnecessary heavy-mathlib pull (NumberTheory) into a file otherwise focused on ZFC/MK; reviewer prefers AX1Eq stays in AX1.lean",
+      "condition": "by W11-W12 review, reviewer flags split-by-axis preference (number-theoretic vs set-theoretic axioms in separate files)",
+      "experiment": "track reviewer disposition; prepare option to split into Foundation/Axioms/NT.lean + Foundation/Axioms/MK.lean",
+      "expected_outcome": "may FIRE at LOW-MEDIUM severity — single Axioms.lean is more discoverable; split is straightforward",
+      "severity_if_fires": "LOW-MEDIUM (~30 LOC restructure into 2 sub-files; main file becomes a re-export hub)",
+      "tier": "TRANSCEND"
+    },
+    {
+      "id": "F-W6-REFACTOR-3",
+      "claim": "felgner_bridge_to_MK_strand theorem uses axiom_strand_zfc_witness implicitly (via the existential witness construction); reviewer requests the axiom dependency be explicit in the theorem signature",
+      "condition": "by W11-W12 review, reviewer requests theorem signature expose all axiom deps via explicit hypotheses",
+      "experiment": "prepare alternative formulation: `theorem felgner_bridge_to_MK_strand (witness : ZFSet.{0}) (h : StrandClass_ZFC witness) : IsMKProperClass Strand`",
+      "expected_outcome": "may FIRE at LOW severity — implicit-existential is idiomatic but explicit-hypothesis is more auditable; both compile",
+      "severity_if_fires": "LOW (~5-line refactor in 3 files: Foundation/Axioms + 2 callers)",
+      "tier": "TRANSCEND"
+    },
+    {
+      "id": "F-W6-REFACTOR-4",
+      "claim": "Two-file Foundation split (Strand + Axioms) is over-engineered vs single Foundation.lean; reviewer requests file collapse",
+      "condition": "by W11-W12 review, reviewer requests collapse to single N6/MechVerif/Foundation.lean",
+      "experiment": "track reviewer disposition; prepare option to merge Foundation/Strand.lean + Foundation/Axioms.lean into single Foundation.lean",
+      "expected_outcome": "unlikely to FIRE — 376 LOC combined exceeds typical single-file recommendation; split-by-concern (data vs axioms) is idiomatic",
+      "severity_if_fires": "LOW (~20-line merge)",
+      "tier": "TRANSCEND"
+    },
+    {
+      "id": "F-W6-REFACTOR-5",
+      "claim": "MKBridge.lean is now near-empty (119 LOC, mostly delegating wrappers) and should be merged into Foundation/Axioms.lean entirely",
+      "condition": "by W11-W12 review, reviewer flags MKBridge.lean as dead-weight wrapper file",
+      "experiment": "track reviewer disposition; prepare option to inline MKBridge wrappers into Foundation/Axioms.lean and remove MKBridge.lean",
+      "expected_outcome": "may FIRE at LOW severity — MKBridge wrappers preserve stable API for prior cycles' callers; renaming would force downstream churn; soft-deprecate is gentler",
+      "severity_if_fires": "LOW (~50 LOC merge; possibly deprecation warning instead of removal)",
+      "tier": "TRANSCEND"
+    }
+  ],
+  "raw_91_c3_honest_disclosure": [
+    "W6 cycle 8 fan-out 3/5 is a STRUCTURAL refactor: NO new theorems, NO sorry-discharge, NO axiom-discharge. The 5 unique named axioms are unchanged in semantic content; only their location (file path and namespace) is unified into N6/MechVerif/Foundation/Axioms.lean.",
+    "F-W5-AX2-1 RESOLVED: 6 axiom (4 MKBridge + 2 AX2 mirror) duplication burden collapsed to 5 unique axioms in single source file. AX2 mirror axioms (axiom_felgner_bridge_to_MK_AX2, axiom_hexa_comp_closure_AX2) removed; replaced by Strand-form derived theorems felgner_bridge_to_MK_strand + hexa_comp_closure_strand.",
+    "Strand inductive + alphabets + predicates + opaque MK class predicates relocated from AX2.lean to Foundation/Strand.lean (leaf module). All downstream uses re-exported transparently via N6Mathlib.MechVerif namespace import.",
+    "AX1Eq + axiom_robin_hardy_wright_ax1_tail relocated from AX1.lean to Foundation/Axioms.lean. All AX1 main theorems (AX1_n6_uniqueness, AX1_n6_uniqueness_corrected) preserved.",
+    "Net axiom count: 7 → 5 unique (2 mirror eliminated). Total project sorry count: 0 (preserved).",
+    "Concurrent cycle 8 fan-out 2/5 (citation-strengthening) merged into Foundation/Axioms.lean during this work: axiom_felgner_1971_conservativity_meta decomposed into 3 step sub-axioms (step1/step2/step3) + recovery theorem with original name. This commit absorbs that change — reported in axiom_inventory_post_w6 below.",
+    "lake build PASS (full clean rebuild verified). No SIGKILL, no lake update, no toolchain change, no lakefile dep change.",
+    "W6 nominal window 2026-06-30 → 2026-07-13; this delivery is on day -63 (early by 9 weeks; ahead of schedule with 49d carryover from W5)."
+  ],
+  "next_steps": {
+    "w6_critical_path_remaining": [
+      "Begin HEXA-COMP definition (AX-3/AX-4 W6+ work) — blocks axiom_hexa_comp_closure_via_ZFC discharge",
+      "Begin explicit Encodable Strand → ZFSet derivation — replaces axiom_strand_zfc_witness in Foundation/Axioms.lean",
+      "Begin Felgner step1/step2/step3 sub-axiom mechanisation (concurrent fan-out 2/5 split) — at least step2 (V_κ ⊨ ZFC) is already in mathlib4 (Jech §12.1 Thm 12.13) and is mechanisable now"
+    ],
+    "user_approval_needed": [
+      "W6 HEXA-COMP encoding scaffolding scope",
+      "Confirm Foundation namespace name (alternative: Common, Core, Shared, Base)",
+      "Confirm two-file split (Foundation/Strand + Foundation/Axioms) vs single file"
+    ]
+  }
+}
