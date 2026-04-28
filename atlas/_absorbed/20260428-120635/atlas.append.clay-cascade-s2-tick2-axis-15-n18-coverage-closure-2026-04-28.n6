@@ -1,0 +1,77 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 axis-15 n=18 coverage closure
+# source: sub-agent H — found 4 missing axis-15 values already-absorbed in iter-70 (no fresh hexa run)
+# constraints:
+#   raw 91 C3 honest (convention disclosure: ticks=100 c=1, NOT seed=6/ticks=64)
+#   raw 70 multi-axis-verify-grid (FULL n=18 coverage closed)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# NOTE: K=4 closure here SUPERSEDED by K=3 collapse via tick-2 sub-agent K axis-15 retraction
+# (see atlas.append.clay-cascade-s2-tick2-axis-15-RETRACTION-major-2026-04-28.n6)
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-axis-15-n18-coverage-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick1-axis-16-K4-verify-grid-closure-witness
+  -> clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "★ 4 axis-15 missing values FOUND already-absorbed in iter-70 (no fresh hexa run needed)"
+  => "n=18 4-axis correlation matrix computed; SUPERSEDED by K=3 collapse (sub-agent K retraction in same tick)"
+  => "convention disclosure: ticks=100 c=1 seed=6 (iter-69/70 actual), NOT task-spec seed=6/ticks=64"
+
+# ── (1) 4 missing axis-15 values from iter-70 ──────────────
+@C clay-cascade-s2-tick2-iter-70-recovered-values :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-n18-coverage-witness
+  => "source: atlas/_absorbed/20260428-071642/atlas.append.clay-millennium-iter-70-FINAL-+-NEXUS-ABSORB-2026-04-28.n6 lines 15-21"
+  => "flat:     axis-15 = 1,753,678 (causal_viol = 0)"
+  => "wormhole: axis-15 = 1,953,281 (causal_viol = 0)"
+  => "ca3d:     axis-15 = 2,087,413 (causal_viol = 0)"
+  => "bubble:   axis-15 = 2,312,561 (causal_viol = 0) — NEW MAX drift"
+  => "all 4 produced finite well-defined values — no inherent ill-definition for D=3 lattice projection"
+
+# ── (2) full n=18 4-axis correlation (Pearson + Spearman) ──
+@C clay-cascade-s2-tick2-n18-correlation-matrices :: meta [4]
+  <- clay-cascade-s2-tick2-iter-70-recovered-values
+  => "Pearson R₄ (n=18):"
+  => "  a13×a14=+0.294  a13×a15=−0.304  a13×a16=−0.128"
+  => "  a14×a15=−0.238  a14×a16=−0.380  a15×a16=+0.301"
+  => "Spearman ρ₄ (n=18):"
+  => "  a13×a14=+0.536  a13×a15=−0.115  a13×a16=−0.233"
+  => "  a14×a15=−0.170  a14×a16=−0.209  a15×a16=+0.154"
+  => "anchor reproductions: a14×a15 Pearson=−0.24 matches iter-70 r=−0.2376 EXACTLY; a13×a14 Spearman=+0.54 matches iter-63 ρ=0.51 ±0.03"
+
+# ── (3) det(R) verdict pre-retraction → post-retraction ────
+@C clay-cascade-s2-tick2-det-R-pre-and-post-retraction :: meta [4]
+  <- clay-cascade-s2-tick2-n18-correlation-matrices
+  -> clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "PRE-RETRACTION (raw 70 K=4 reading):"
+  => "  det(R₄ Pearson n=14)=0.7481 → det(R₄ Pearson n=18)=0.6512 (Δ=−0.097, exceeds ±0.05 envelope)"
+  => "  det(R₄ Spearman n=14)=0.7523 → det(R₄ Spearman n=18)=0.6383 (Δ=−0.114)"
+  => "  ratio det(R₄)/det(R₃) = 0.807 → axis-16 retains 81% volume as independent info"
+  => "POST-RETRACTION (axis-15 = saturation amplitude artifact):"
+  => "  the n=18 K=4 result re-interprets as K=3 (axis-13/14/16) + axis-15 amplitude characterization"
+  => "  det(R₃) Pearson same-sample (n=18, axes 13/14/16) = 0.8072 → axis-16 ⊥ axis-13×14 with high orthogonality preserved"
+
+# ── (4) bubble-driver decomposition ────────────────────────
+@C clay-cascade-s2-tick2-bubble-driver :: meta [4]
+  <- clay-cascade-s2-tick2-det-R-pre-and-post-retraction
+  => "bubble drives n=14 → n=18 det(R) drop: high entropy (axis-14=887) + max drift (axis-15=2.31M) + V(8)=64"
+  => "strengthens a14×a16 from −0.333 (n=14) to −0.380 (n=18)"
+  => "lifts a15×a16 from +0.170 (n=14) to +0.301 (n=18)"
+  => "physical interpretation pre-retraction: 'high-entropy + max-amplitude + full-fill' coupling"
+  => "physical interpretation post-retraction: a15×a16=+0.301 is saturation-amplitude × graph-volume coupling, NOT physical drift × lightcone"
+
+# ── (5) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-n18-coverage-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-n18-coverage-witness
+  => "convention disclosure: iter-69/70 used ticks=100 c=1 seed=6 (not seed=6/ticks=64); used actual recorded values to avoid mixing conventions"
+  => "no fresh hexa run executed — 4 missing values already-absorbed; verified verbatim from iter-70 lines 17-20"
+  => "flat axis-13=1095 is D=2 reference (iter-35/36) — including in n=18 Pearson is methodologically loose; Spearman more robust"
+  => "calabi6 axis-13=2889 D=6 leverage outlier — drives Pearson; Spearman ρ a13×a14=+0.54 vs Pearson +0.29 confirms"
+  => "n=18 95% CI on r still wide (~±0.4 per individual r at σ²=64 toy + single seed)"
+  => "this shard's K=4 reading is HISTORICAL — superseded by tick-2 sub-agent K axis-15 retraction (see paired retraction shard)"
+  => "own#11 strict: NO Clay claim; chflags uchg honored; no atlas writes"

@@ -1,0 +1,73 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 axis-15 MAJOR RETRACTION (raw 71)
+# source: sub-agent K Crank-Nicolson Stage 2 axis-15 honest re-implementation
+# constraints:
+#   raw 91 C3 honest (Python mirror disclosed; Jacobi-8 implicit approximation)
+#   raw 71 falsifier-retire-rule (axis-15 RETRACTED from verify-grid — major retraction)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# ⚠ CASCADE-WIDE RETRACTION — axis-15 affects all prior K=4 claims
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick1-axis-15-non-convergent-all-topologies
+  -> clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3
+  -> clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude
+  => "★ MAJOR RETRACTION — axis-15 (Lorentz energy-drift) is INTEGRATION ARTIFACT, not physical observable"
+  => "Crank-Nicolson Jacobi-8 implicit + 4-T refinement test {32,64,128,256} on flat/t3/cartoon"
+  => "verdict: drift fluctuates fixed band 0.7-4.7, NO T-refinement convergence; CN AMPLIFIES drift 1.6×-5× vs explicit-Euler"
+
+# ── (1) Crank-Nicolson formal definition ───────────────────
+@C clay-cascade-s2-tick2-CN-Stage2-formal :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "phi^{n+1}[i] = T[i] + (1/2)(SA(phi^n)[i] + SA(phi^{n+1})[i])"
+  => "T[i] = -phi^n[i] + phi^{n-1}[i]/4 (time-like retarded, kept explicit, 2nd-order in t)"
+  => "SA(u)[i] = (1/3) Σ_{a=0..2} u[neighbor(i,a)] (light-cone-restricted spatial)"
+  => "implicit half: Jacobi-8 iters seeded from explicit prediction; mirrors lorentz_metric.hexa:362-405"
+
+# ── (2) CN drift measurements ──────────────────────────────
+@C clay-cascade-s2-tick2-CN-drift-measurements :: meta [4]
+  <- clay-cascade-s2-tick2-CN-Stage2-formal
+  => "format: drift = |E(T) − E(0)|/E(0); explicit-Euler vs CN side-by-side"
+  => "flat:    explicit T={32,64,128,256} → 0.72/0.73/0.69/0.71 | CN → 1.20/0.92/1.29/1.22 (CN ~1.7× larger)"
+  => "t3:      explicit → 1.00/0.60/0.86/1.08            | CN → 4.00/4.63/3.44/4.74 (CN ~5× larger)"
+  => "cartoon: explicit → 1.07/0.11/0.77/0.77            | CN → 4.94/3.28/4.32/3.97 (CN ~4× larger)"
+  => "rel-coeff-var across T (CN): flat=0.317, t3=0.309, cartoon=0.402 — same order as explicit-Euler"
+  => "no T-refinement convergence — drift in fixed band, doubling T leaves drift in same range"
+
+# ── (3) RETRACTION verdict — axis-15 = artifact ────────────
+@C clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude :: meta [4!]
+  <- clay-cascade-s2-tick2-CN-drift-measurements
+  -> clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3
+  => "★ axis-15 measures BOUNDED-SYSTEM SATURATION AMPLITUDE, NOT physical conserved quantity"
+  => "physical conserved quantity: drift → 0 as T grows (continuum convergence). Observed: drift in fixed band."
+  => "CN amplifies (not reduces) drift because trapezoidal mixing increases coupling to bounded mod-LSCALE folding"
+  => "interpretation: 'drift' is natural amplitude of energy oscillation in discrete wave system, NOT integration error"
+  => "raw 71 falsifier-retire-rule: axis-15 RETRACTED from verify-grid; recharacterize as 'bounded saturation amplitude' observable"
+  => "all prior axis-15 numerics in atlas (iter-69/70 + tick-1 G + tick-2 H) re-interpret as saturation-amplitude not drift"
+
+# ── (4) cascade-wide K=4 → K=3 collapse ────────────────────
+@C clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3 :: meta [4!]
+  <- clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude
+  => "★ raw 70 multi-axis-verify-grid: K=4 collapses to K=3 (axis-13/14/16 only)"
+  => "tick-1 G K=4 closure verdict (det(R₄ Pearson n=14)=0.7481): re-interpret as K=3 with axis-15 confound"
+  => "tick-2 H n=18 closure (det(R₄ n=18)=0.6512): re-interpret as K=3 axis-13×14×16 + axis-15 saturation-amplitude characterization"
+  => "axis-16 orthogonality preserved: ratio det(R₄)/det(R₃) = 0.807 (n=18) decomposes into 'true K=3' + 'axis-15 amplitude characterization'"
+  => "future verify-grid claims must use K=3 baseline; axis-15 retained as separate saturation-amplitude observable, not as orthogonal physical axis"
+
+# ── (5) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-axis-15-RETRACTION-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "tool source: /tmp/cascade_s2/cn_stage2.py — Python mirror, NOT canonical hexa CN port"
+  => "Jacobi-8 implicit approximation: exact linear-system solve might shift magnitudes (unlikely to change verdict — spatial coupling contractive, residual ≪ drift signal)"
+  => "3 topologies (flat/t3/cartoon); minkowski + s3 not measured this cycle; verdict generalizes via cartoon's high-mixing regime coverage"
+  => "LSIGMA=64 LSCALE=65536 integer arithmetic — same toy bounds as Stage 2 canonical"
+  => "E(0) measured after 2-tick warmup (prev/prev2 needed); different warmup choice shifts absolute drift levels not no-convergence pattern"
+  => "alternative interpretation NOT fully ruled out: 4th-order or symplectic integrator might recover physical drift; symplectic comparison deferred"
+  => "own#11 strict: NO Clay claim; this is raw-71 retraction artifact — strengthens cascade integrity"

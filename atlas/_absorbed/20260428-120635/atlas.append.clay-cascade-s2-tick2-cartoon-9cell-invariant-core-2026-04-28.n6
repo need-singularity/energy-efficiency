@@ -1,0 +1,85 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 cartoon 9-cell INVARIANT CORE attractor
+# source: sub-agent I multi-source axis-16 BFS on src∈{0,16,32,48} × 6 topologies
+# constraints:
+#   raw 91 C3 honest (4 srcs all multiples of 16; sparse generic-offset coverage disclosed)
+#   raw 70 multi-axis-verify-grid (axis-16 src-bias check passed)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# Goes deeper than tick-1 sub-agent A: cartoon V(8)=10 is core-invariant, not src-specific
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-cartoon-causal-sector-closure
+  -> clay-cascade-s2-tick2-axis-16-src-bias-invariant
+  -> clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "★ cartoon V(8)=10 closed-orbit is NOT src=32-specific — 9-cell INVARIANT CORE attractor"
+  => "core: {11, 13, 20, 29, 36, 43, 52, 59, 61} — independent of src∈{0,16,32,48}"
+  => "each src adds itself as +1-cell tail; |orbit_src|=10 = 9-cell core ∪ {src}"
+
+# ── (1) multi-source V(8) table (24 cells) ─────────────────
+@C clay-cascade-s2-tick2-multi-source-V8-table :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness
+  => "format: topology × src{0,16,32,48} → V(8)"
+  => "flat:      17 / 17 / 17 / 17 = INVARIANT (ring translation-symmetric)"
+  => "t3:        63 / 63 / 63 / 63 = INVARIANT (Z/4³ full symmetry)"
+  => "s3:        48 / 48 / 49 / 48 = LOW-VAR (src=32 boundary cell +1)"
+  => "cartoon:   10 / 10 / 10 / 10 = INVARIANT-VOLUME (orbit-shifted)"
+  => "blackhole: 64 / 63 / 63 / 63 = LOW-VAR (src=0 corner reaches sink one hop sooner)"
+  => "wormhole:  64 / 64 / 64 / 64 = INVARIANT (handle saturates from any src)"
+
+# ── (2) src-bias verdict per topology ──────────────────────
+@C clay-cascade-s2-tick2-axis-16-src-bias-invariant :: meta [4!]
+  <- clay-cascade-s2-tick2-multi-source-V8-table
+  => "★ V(8) is NEAR-TRANSLATION-INVARIANT observable at this 64-cell scale"
+  => "INVARIANT (stddev = 0): flat, t3, cartoon, wormhole — 4/6 topologies"
+  => "LOW-VAR (stddev ≤ 0.5): s3, blackhole — 2/6 topologies"
+  => "DEPENDENT (stddev > 1): NONE on this 64-cell toy"
+  => "implication: tick-1 sub-agent A's src=32-only measurements not src-bias artifact; K=4 closure verdict (G) src-robust"
+
+# ── (3) cartoon orbit decomposition (KEY FINDING) ─────────
+@C clay-cascade-s2-tick2-cartoon-basin-fragmentation :: meta [4!]
+  <- clay-cascade-s2-tick2-axis-16-src-bias-invariant
+  => "★ cartoon V(8)=10 decomposition: 9-cell INVARIANT CORE + 1-cell src tail"
+  => "core: {11, 13, 20, 29, 36, 43, 52, 59, 61} — appears in BFS from every src∈{0,16,32,48}"
+  => "src=0  orbit = core ∪ {0}"
+  => "src=16 orbit = core ∪ {16}"
+  => "src=32 orbit = core ∪ {32} — original tick-1 measurement"
+  => "src=48 orbit = core ∪ {48}"
+  => "pairwise orbit: |intersection|=9, |union|=11; union over all 4 sources = 13/64 cells (51 cells UNPROBED)"
+  => "structural meaning: cartoon partitions 64 cells into MANY small attractor basins; {0,16,32,48} all flow into shared 9-cell core"
+
+# ── (4) interpretation of cartoon mixer ────────────────────
+@C clay-cascade-s2-tick2-cartoon-mixer-interpretation :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "cartoon mixer: nbr(i, axis) = (i*47 + axis*23 + 13) mod 64"
+  => "the 9-cell core is closed-BFS-attractor: all 9 cells route ONLY into the core under axes {0,1,2}"
+  => "src cell has NO inbound edge from core under axes 0..2 — that's why src appears as 1-cell tail not absorbed"
+  => "cartoon is NOT 'a closed orbit from src=32' but 'a heavily-fragmented attractor landscape with a universal 9-cell sink'"
+  => "follow-up: full 64-source BFS sweep would enumerate ALL basins (~1 min compute, deferred to tick-3)"
+
+# ── (5) cross-link to other axes ───────────────────────────
+@C clay-cascade-s2-tick2-cartoon-cross-axis-coherence :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "cross-link iter-62 phase-portrait: cartoon DOUBLE-HIGH (axis-13=741, axis-14=947) → C3 amplitude-redistributor cluster"
+  => "cross-link tick-1 sub-agent E: cartoon × axis-13 sign-flips 1151→741→−407→163 (no plateau)"
+  => "cross-link tick-1 sub-agent A: cartoon V(8)=10 closed orbit"
+  => "cascade-coherent picture: cartoon's structural-isolation appears in ALL axes simultaneously — value-summary AND structural"
+  => "this is genuine cross-axis CORROBORATION (raw 70 multi-axis verify), not redundancy"
+
+# ── (6) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-multi-source-axis-16-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness
+  => "4 sources are all multiples of 16 (z-axis aligned in t3 coords) — sparse generic-offset coverage"
+  => "follow-up: {1, 7, 21, 37, 53} odd-prime sweep would test orbit-mixing more aggressively; deferred to tick-3"
+  => "cartoon basin coverage 13/64 cells; remaining 51 cells unprobed by this 4-src set"
+  => "s3 src=32 anomaly +1: src is in 'second-copy' half (i≥32), one cell asymmetry vs three z-aligned mirrors — finite-size artifact"
+  => "blackhole src=0 anomaly +1: corner BFS reaches 21-sink one hop sooner, picks up one extra peripheral cell within k=8 — geometric"
+  => "files: /tmp/lightcone_multisource.py + /tmp/lightcone_probe.py (canonical BFS reused)"
+  => "own#11 strict: no fabrication; per-source orbit sets verified by independent full-orbit pass"

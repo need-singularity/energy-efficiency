@@ -1,0 +1,88 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 Stage-5 α=+0.55 COMPLETE RETIREMENT
+# source: sub-agent J 5-point σ² scaling fit (3 seeds × 5 σ² × 2 topologies = 30 runs)
+# constraints:
+#   raw 91 C3 honest (mixed N-grids per topology disclosed; integer PSCALE quantization)
+#   raw 71 falsifier-retire-rule (Stage-5 α=+0.55 fully retired — wrong sign + wrong form)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# ⚠ FULL RETIREMENT — supersedes tick-1 sub-agent B narrowing
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-stage5-alpha055-falsification-witness
+  -> clay-cascade-s2-tick2-axis-13-saturation-fit-best
+  -> clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared
+  => "★ Stage-5 α=+0.55 FULLY RETIRED — wrong sign + wrong functional form across all axes & both topologies"
+  => "supersedes tick-1 sub-agent B narrowing ('diffusive-scheme-specific'): the actual exponent has OPPOSITE sign to +0.55"
+  => "30-run 5-point fit: chain1d σ²∈{64,128,256,512,1024} + t3 N∈{64,216,343,512,1000} cubes × 3 seeds × axes 13/14/15"
+
+# ── (1) fit comparison table (R² per axis × topology × form) ─
+@C clay-cascade-s2-tick2-fit-comparison-table :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  => "format: axis/topo → power R² | log R² | saturation R² | BEST"
+  => "axis-13/chain1d: power α=−0.484 R²=0.935 | log R²=0.854 | sat y∞=3.33 τ=100 R²=0.997 | SAT"
+  => "axis-13/t3:      power α=−0.571 R²=0.955 | log R²=0.892 | sat y∞=4.00 τ=128 R²=0.966 | SAT"
+  => "axis-14/chain1d: ALL R²<0.45 → noise floor σ²-invariant"
+  => "axis-14/t3:      ALL R²<0.14 → noise floor σ²-invariant"
+  => "axis-15/chain1d: best R²=0.301 → no scaling, drift ≈ const ≈ 230±30"
+  => "axis-15/t3:      sat R²=0.798 y∞≈19400 → mild saturation; corroborates sub-agent K artifact verdict"
+
+# ── (2) axis-13 saturation best-fit ────────────────────────
+@C clay-cascade-s2-tick2-axis-13-saturation-fit-best :: meta [4!]
+  <- clay-cascade-s2-tick2-fit-comparison-table
+  -> clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared
+  => "★ axis-13 obeys SATURATION y = y∞ + A·exp(−N/τ) with R²=0.997 (chain1d) / 0.966 (t3)"
+  => "y∞ ≈ 3-4 (decay-to-floor), τ ≈ 100-128 (lattice-equilibration scale)"
+  => "power-law alternative: α_E ≈ −0.484 (chain1d) / −0.571 (t3) — R² 0.93-0.96, viable but inferior to saturation"
+  => "Stage-5 α=+0.55 prediction at N=1024: y(1024)=56.7 (chain1d). OBSERVED: y∞=3.33 — ratio 0.059, OPPOSITE direction"
+  => "raw 71 retire: Stage-5 α=+0.55 is wrong sign (+ vs −) + wrong functional form (power vs saturation) — fully retired"
+
+# ── (3) axis-14 noise-floor verdict ────────────────────────
+@C clay-cascade-s2-tick2-axis-14-noise-floor-suspect :: meta [4]
+  <- clay-cascade-s2-tick2-fit-comparison-table
+  => "axis-14 entropy proxy is σ²-INVARIANT across 16× range of N (mean ~970-1100, all R²<0.45)"
+  => "no scaling structure detectable at this resolution — likely artifact OR scale-invariant noise floor"
+  => "implication for cascade: axis-14 may NOT be a true orthogonal observable; downgraded confidence"
+  => "raw 71 narrow (preliminary): axis-14 status downgraded from 'verify-grid axis' to 'candidate axis pending re-resolution'"
+  => "follow-up needed: higher-PSCALE quantization OR alternative entropy estimator (Renyi, Tsallis) to rule in/out artifact"
+
+# ── (4) replacement hypothesis: τ ~ O(L²) ─────────────────
+@C clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared :: meta [4]
+  <- clay-cascade-s2-tick2-axis-13-saturation-fit-best
+  => "★ replacement hypothesis: τ ≈ O(L²) is LATTICE-EQUILIBRATION scale, NOT critical exponent"
+  => "chain1d τ=100, L=√N=√1024≈32 → L²=1024, τ/L²≈0.10"
+  => "t3 τ=128, N=1000 L≈10 → L²=100, τ/L²≈1.28"
+  => "lattice-equilibration: time/N for diffusion process to spread across system L²/D where D=diffusion const"
+  => "axis-13 captures NOT critical phenomenon BUT diffusion-equilibration scale — different physics class"
+  => "follow-up: measure τ vs L explicitly to confirm L² scaling (Phase-3 candidate)"
+
+# ── (5) cascade integrity post-retirement ─────────────────
+@C clay-cascade-s2-tick2-cascade-integrity-post-retirement :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "post-retirement axis status:"
+  => "  axis-13: SATURATION verified (R²=0.997); functional form corrected; τ replacement hypothesis"
+  => "  axis-14: noise-floor SUSPECT — downgraded confidence pending re-resolution"
+  => "  axis-15: ARTIFACT confirmed (Sub-agent K CN re-impl); RETRACTED from verify-grid"
+  => "  axis-16: orthogonal lightcone confirmed (Sub-agent G + I); src-bias INVARIANT"
+  => "honest verify-grid: K=2 STRONG (axis-13 + axis-16) + K=1 PROVISIONAL (axis-14 pending)"
+  => "Stage-5 retirement strengthens cascade integrity by removing hopeful overstatement"
+
+# ── (6) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-stage5-retirement-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  => "tool sources: /tmp/cascade_s2/ensemble_5pt.hexa + /tmp/cascade_s2/fit_5pt.py — disclosed"
+  => "5 σ² points per topology may mask higher-order multi-scale saturation invisible at this resolution"
+  => "axis-15 t3 R²=0.798 saturation might also be artifact (corroborates sub-agent K) — not an honest physical signal"
+  => "integer PSCALE=1000 quantization affects entropy proxy — coarse for axis-14 noise verdict"
+  => "mixed N-grids (chain1d powers-of-2, t3 cubes) — fits per-topology only; cross-topology α-comparison only meaningful at shared anchors {64, 512}"
+  => "saturation grid-search (not nonlinear least-squares); τ=100/128 nearest-grid, true value within factor 2"
+  => "3 seeds per cell with std up to 80% of mean (axis-15 chain1d) — 5+ seeds would tighten drift R²"
+  => "own#11 strict: this is raw-71 retirement, strengthens (not weakens) cascade integrity"

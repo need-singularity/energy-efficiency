@@ -30561,3 +30561,337 @@
 # end shard — axis-I (graph-query / transitive-closure primitives)
 # next-step: axis-J discovery (would hit K-ceiling, expect @REL registry redesign)
 # ══════════════════════════════════════════════════════════════
+
+# ══════════════════════════════════════════════════════════════
+# absorbed: clay-cascade-s2 tick-2 4-shard batch
+#   axis-15 n=18 coverage + cartoon 9-cell core + axis-15 RETRACTION + Stage-5 retirement
+#   ⚠ MAJOR raw 71 retractions: axis-15 artifact + Stage-5 wrong-sign-and-form
+# ts: 20260428-120635
+# ══════════════════════════════════════════════════════════════
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 axis-15 n=18 coverage closure
+# source: sub-agent H — found 4 missing axis-15 values already-absorbed in iter-70 (no fresh hexa run)
+# constraints:
+#   raw 91 C3 honest (convention disclosure: ticks=100 c=1, NOT seed=6/ticks=64)
+#   raw 70 multi-axis-verify-grid (FULL n=18 coverage closed)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# NOTE: K=4 closure here SUPERSEDED by K=3 collapse via tick-2 sub-agent K axis-15 retraction
+# (see atlas.append.clay-cascade-s2-tick2-axis-15-RETRACTION-major-2026-04-28.n6)
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-axis-15-n18-coverage-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick1-axis-16-K4-verify-grid-closure-witness
+  -> clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "★ 4 axis-15 missing values FOUND already-absorbed in iter-70 (no fresh hexa run needed)"
+  => "n=18 4-axis correlation matrix computed; SUPERSEDED by K=3 collapse (sub-agent K retraction in same tick)"
+  => "convention disclosure: ticks=100 c=1 seed=6 (iter-69/70 actual), NOT task-spec seed=6/ticks=64"
+
+# ── (1) 4 missing axis-15 values from iter-70 ──────────────
+@C clay-cascade-s2-tick2-iter-70-recovered-values :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-n18-coverage-witness
+  => "source: atlas/_absorbed/20260428-071642/atlas.append.clay-millennium-iter-70-FINAL-+-NEXUS-ABSORB-2026-04-28.n6 lines 15-21"
+  => "flat:     axis-15 = 1,753,678 (causal_viol = 0)"
+  => "wormhole: axis-15 = 1,953,281 (causal_viol = 0)"
+  => "ca3d:     axis-15 = 2,087,413 (causal_viol = 0)"
+  => "bubble:   axis-15 = 2,312,561 (causal_viol = 0) — NEW MAX drift"
+  => "all 4 produced finite well-defined values — no inherent ill-definition for D=3 lattice projection"
+
+# ── (2) full n=18 4-axis correlation (Pearson + Spearman) ──
+@C clay-cascade-s2-tick2-n18-correlation-matrices :: meta [4]
+  <- clay-cascade-s2-tick2-iter-70-recovered-values
+  => "Pearson R₄ (n=18):"
+  => "  a13×a14=+0.294  a13×a15=−0.304  a13×a16=−0.128"
+  => "  a14×a15=−0.238  a14×a16=−0.380  a15×a16=+0.301"
+  => "Spearman ρ₄ (n=18):"
+  => "  a13×a14=+0.536  a13×a15=−0.115  a13×a16=−0.233"
+  => "  a14×a15=−0.170  a14×a16=−0.209  a15×a16=+0.154"
+  => "anchor reproductions: a14×a15 Pearson=−0.24 matches iter-70 r=−0.2376 EXACTLY; a13×a14 Spearman=+0.54 matches iter-63 ρ=0.51 ±0.03"
+
+# ── (3) det(R) verdict pre-retraction → post-retraction ────
+@C clay-cascade-s2-tick2-det-R-pre-and-post-retraction :: meta [4]
+  <- clay-cascade-s2-tick2-n18-correlation-matrices
+  -> clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "PRE-RETRACTION (raw 70 K=4 reading):"
+  => "  det(R₄ Pearson n=14)=0.7481 → det(R₄ Pearson n=18)=0.6512 (Δ=−0.097, exceeds ±0.05 envelope)"
+  => "  det(R₄ Spearman n=14)=0.7523 → det(R₄ Spearman n=18)=0.6383 (Δ=−0.114)"
+  => "  ratio det(R₄)/det(R₃) = 0.807 → axis-16 retains 81% volume as independent info"
+  => "POST-RETRACTION (axis-15 = saturation amplitude artifact):"
+  => "  the n=18 K=4 result re-interprets as K=3 (axis-13/14/16) + axis-15 amplitude characterization"
+  => "  det(R₃) Pearson same-sample (n=18, axes 13/14/16) = 0.8072 → axis-16 ⊥ axis-13×14 with high orthogonality preserved"
+
+# ── (4) bubble-driver decomposition ────────────────────────
+@C clay-cascade-s2-tick2-bubble-driver :: meta [4]
+  <- clay-cascade-s2-tick2-det-R-pre-and-post-retraction
+  => "bubble drives n=14 → n=18 det(R) drop: high entropy (axis-14=887) + max drift (axis-15=2.31M) + V(8)=64"
+  => "strengthens a14×a16 from −0.333 (n=14) to −0.380 (n=18)"
+  => "lifts a15×a16 from +0.170 (n=14) to +0.301 (n=18)"
+  => "physical interpretation pre-retraction: 'high-entropy + max-amplitude + full-fill' coupling"
+  => "physical interpretation post-retraction: a15×a16=+0.301 is saturation-amplitude × graph-volume coupling, NOT physical drift × lightcone"
+
+# ── (5) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-n18-coverage-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-n18-coverage-witness
+  => "convention disclosure: iter-69/70 used ticks=100 c=1 seed=6 (not seed=6/ticks=64); used actual recorded values to avoid mixing conventions"
+  => "no fresh hexa run executed — 4 missing values already-absorbed; verified verbatim from iter-70 lines 17-20"
+  => "flat axis-13=1095 is D=2 reference (iter-35/36) — including in n=18 Pearson is methodologically loose; Spearman more robust"
+  => "calabi6 axis-13=2889 D=6 leverage outlier — drives Pearson; Spearman ρ a13×a14=+0.54 vs Pearson +0.29 confirms"
+  => "n=18 95% CI on r still wide (~±0.4 per individual r at σ²=64 toy + single seed)"
+  => "this shard's K=4 reading is HISTORICAL — superseded by tick-2 sub-agent K axis-15 retraction (see paired retraction shard)"
+  => "own#11 strict: NO Clay claim; chflags uchg honored; no atlas writes"
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 cartoon 9-cell INVARIANT CORE attractor
+# source: sub-agent I multi-source axis-16 BFS on src∈{0,16,32,48} × 6 topologies
+# constraints:
+#   raw 91 C3 honest (4 srcs all multiples of 16; sparse generic-offset coverage disclosed)
+#   raw 70 multi-axis-verify-grid (axis-16 src-bias check passed)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# Goes deeper than tick-1 sub-agent A: cartoon V(8)=10 is core-invariant, not src-specific
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-cartoon-causal-sector-closure
+  -> clay-cascade-s2-tick2-axis-16-src-bias-invariant
+  -> clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "★ cartoon V(8)=10 closed-orbit is NOT src=32-specific — 9-cell INVARIANT CORE attractor"
+  => "core: {11, 13, 20, 29, 36, 43, 52, 59, 61} — independent of src∈{0,16,32,48}"
+  => "each src adds itself as +1-cell tail; |orbit_src|=10 = 9-cell core ∪ {src}"
+
+# ── (1) multi-source V(8) table (24 cells) ─────────────────
+@C clay-cascade-s2-tick2-multi-source-V8-table :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness
+  => "format: topology × src{0,16,32,48} → V(8)"
+  => "flat:      17 / 17 / 17 / 17 = INVARIANT (ring translation-symmetric)"
+  => "t3:        63 / 63 / 63 / 63 = INVARIANT (Z/4³ full symmetry)"
+  => "s3:        48 / 48 / 49 / 48 = LOW-VAR (src=32 boundary cell +1)"
+  => "cartoon:   10 / 10 / 10 / 10 = INVARIANT-VOLUME (orbit-shifted)"
+  => "blackhole: 64 / 63 / 63 / 63 = LOW-VAR (src=0 corner reaches sink one hop sooner)"
+  => "wormhole:  64 / 64 / 64 / 64 = INVARIANT (handle saturates from any src)"
+
+# ── (2) src-bias verdict per topology ──────────────────────
+@C clay-cascade-s2-tick2-axis-16-src-bias-invariant :: meta [4!]
+  <- clay-cascade-s2-tick2-multi-source-V8-table
+  => "★ V(8) is NEAR-TRANSLATION-INVARIANT observable at this 64-cell scale"
+  => "INVARIANT (stddev = 0): flat, t3, cartoon, wormhole — 4/6 topologies"
+  => "LOW-VAR (stddev ≤ 0.5): s3, blackhole — 2/6 topologies"
+  => "DEPENDENT (stddev > 1): NONE on this 64-cell toy"
+  => "implication: tick-1 sub-agent A's src=32-only measurements not src-bias artifact; K=4 closure verdict (G) src-robust"
+
+# ── (3) cartoon orbit decomposition (KEY FINDING) ─────────
+@C clay-cascade-s2-tick2-cartoon-basin-fragmentation :: meta [4!]
+  <- clay-cascade-s2-tick2-axis-16-src-bias-invariant
+  => "★ cartoon V(8)=10 decomposition: 9-cell INVARIANT CORE + 1-cell src tail"
+  => "core: {11, 13, 20, 29, 36, 43, 52, 59, 61} — appears in BFS from every src∈{0,16,32,48}"
+  => "src=0  orbit = core ∪ {0}"
+  => "src=16 orbit = core ∪ {16}"
+  => "src=32 orbit = core ∪ {32} — original tick-1 measurement"
+  => "src=48 orbit = core ∪ {48}"
+  => "pairwise orbit: |intersection|=9, |union|=11; union over all 4 sources = 13/64 cells (51 cells UNPROBED)"
+  => "structural meaning: cartoon partitions 64 cells into MANY small attractor basins; {0,16,32,48} all flow into shared 9-cell core"
+
+# ── (4) interpretation of cartoon mixer ────────────────────
+@C clay-cascade-s2-tick2-cartoon-mixer-interpretation :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "cartoon mixer: nbr(i, axis) = (i*47 + axis*23 + 13) mod 64"
+  => "the 9-cell core is closed-BFS-attractor: all 9 cells route ONLY into the core under axes {0,1,2}"
+  => "src cell has NO inbound edge from core under axes 0..2 — that's why src appears as 1-cell tail not absorbed"
+  => "cartoon is NOT 'a closed orbit from src=32' but 'a heavily-fragmented attractor landscape with a universal 9-cell sink'"
+  => "follow-up: full 64-source BFS sweep would enumerate ALL basins (~1 min compute, deferred to tick-3)"
+
+# ── (5) cross-link to other axes ───────────────────────────
+@C clay-cascade-s2-tick2-cartoon-cross-axis-coherence :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-basin-fragmentation
+  => "cross-link iter-62 phase-portrait: cartoon DOUBLE-HIGH (axis-13=741, axis-14=947) → C3 amplitude-redistributor cluster"
+  => "cross-link tick-1 sub-agent E: cartoon × axis-13 sign-flips 1151→741→−407→163 (no plateau)"
+  => "cross-link tick-1 sub-agent A: cartoon V(8)=10 closed orbit"
+  => "cascade-coherent picture: cartoon's structural-isolation appears in ALL axes simultaneously — value-summary AND structural"
+  => "this is genuine cross-axis CORROBORATION (raw 70 multi-axis verify), not redundancy"
+
+# ── (6) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-multi-source-axis-16-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness
+  => "4 sources are all multiples of 16 (z-axis aligned in t3 coords) — sparse generic-offset coverage"
+  => "follow-up: {1, 7, 21, 37, 53} odd-prime sweep would test orbit-mixing more aggressively; deferred to tick-3"
+  => "cartoon basin coverage 13/64 cells; remaining 51 cells unprobed by this 4-src set"
+  => "s3 src=32 anomaly +1: src is in 'second-copy' half (i≥32), one cell asymmetry vs three z-aligned mirrors — finite-size artifact"
+  => "blackhole src=0 anomaly +1: corner BFS reaches 21-sink one hop sooner, picks up one extra peripheral cell within k=8 — geometric"
+  => "files: /tmp/lightcone_multisource.py + /tmp/lightcone_probe.py (canonical BFS reused)"
+  => "own#11 strict: no fabrication; per-source orbit sets verified by independent full-orbit pass"
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 axis-15 MAJOR RETRACTION (raw 71)
+# source: sub-agent K Crank-Nicolson Stage 2 axis-15 honest re-implementation
+# constraints:
+#   raw 91 C3 honest (Python mirror disclosed; Jacobi-8 implicit approximation)
+#   raw 71 falsifier-retire-rule (axis-15 RETRACTED from verify-grid — major retraction)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# ⚠ CASCADE-WIDE RETRACTION — axis-15 affects all prior K=4 claims
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick1-axis-15-non-convergent-all-topologies
+  -> clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3
+  -> clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude
+  => "★ MAJOR RETRACTION — axis-15 (Lorentz energy-drift) is INTEGRATION ARTIFACT, not physical observable"
+  => "Crank-Nicolson Jacobi-8 implicit + 4-T refinement test {32,64,128,256} on flat/t3/cartoon"
+  => "verdict: drift fluctuates fixed band 0.7-4.7, NO T-refinement convergence; CN AMPLIFIES drift 1.6×-5× vs explicit-Euler"
+
+# ── (1) Crank-Nicolson formal definition ───────────────────
+@C clay-cascade-s2-tick2-CN-Stage2-formal :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "phi^{n+1}[i] = T[i] + (1/2)(SA(phi^n)[i] + SA(phi^{n+1})[i])"
+  => "T[i] = -phi^n[i] + phi^{n-1}[i]/4 (time-like retarded, kept explicit, 2nd-order in t)"
+  => "SA(u)[i] = (1/3) Σ_{a=0..2} u[neighbor(i,a)] (light-cone-restricted spatial)"
+  => "implicit half: Jacobi-8 iters seeded from explicit prediction; mirrors lorentz_metric.hexa:362-405"
+
+# ── (2) CN drift measurements ──────────────────────────────
+@C clay-cascade-s2-tick2-CN-drift-measurements :: meta [4]
+  <- clay-cascade-s2-tick2-CN-Stage2-formal
+  => "format: drift = |E(T) − E(0)|/E(0); explicit-Euler vs CN side-by-side"
+  => "flat:    explicit T={32,64,128,256} → 0.72/0.73/0.69/0.71 | CN → 1.20/0.92/1.29/1.22 (CN ~1.7× larger)"
+  => "t3:      explicit → 1.00/0.60/0.86/1.08            | CN → 4.00/4.63/3.44/4.74 (CN ~5× larger)"
+  => "cartoon: explicit → 1.07/0.11/0.77/0.77            | CN → 4.94/3.28/4.32/3.97 (CN ~4× larger)"
+  => "rel-coeff-var across T (CN): flat=0.317, t3=0.309, cartoon=0.402 — same order as explicit-Euler"
+  => "no T-refinement convergence — drift in fixed band, doubling T leaves drift in same range"
+
+# ── (3) RETRACTION verdict — axis-15 = artifact ────────────
+@C clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude :: meta [4!]
+  <- clay-cascade-s2-tick2-CN-drift-measurements
+  -> clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3
+  => "★ axis-15 measures BOUNDED-SYSTEM SATURATION AMPLITUDE, NOT physical conserved quantity"
+  => "physical conserved quantity: drift → 0 as T grows (continuum convergence). Observed: drift in fixed band."
+  => "CN amplifies (not reduces) drift because trapezoidal mixing increases coupling to bounded mod-LSCALE folding"
+  => "interpretation: 'drift' is natural amplitude of energy oscillation in discrete wave system, NOT integration error"
+  => "raw 71 falsifier-retire-rule: axis-15 RETRACTED from verify-grid; recharacterize as 'bounded saturation amplitude' observable"
+  => "all prior axis-15 numerics in atlas (iter-69/70 + tick-1 G + tick-2 H) re-interpret as saturation-amplitude not drift"
+
+# ── (4) cascade-wide K=4 → K=3 collapse ────────────────────
+@C clay-cascade-s2-tick2-K4-verify-grid-collapse-to-K3 :: meta [4!]
+  <- clay-cascade-s2-tick2-axis-15-relabel-saturation-amplitude
+  => "★ raw 70 multi-axis-verify-grid: K=4 collapses to K=3 (axis-13/14/16 only)"
+  => "tick-1 G K=4 closure verdict (det(R₄ Pearson n=14)=0.7481): re-interpret as K=3 with axis-15 confound"
+  => "tick-2 H n=18 closure (det(R₄ n=18)=0.6512): re-interpret as K=3 axis-13×14×16 + axis-15 saturation-amplitude characterization"
+  => "axis-16 orthogonality preserved: ratio det(R₄)/det(R₃) = 0.807 (n=18) decomposes into 'true K=3' + 'axis-15 amplitude characterization'"
+  => "future verify-grid claims must use K=3 baseline; axis-15 retained as separate saturation-amplitude observable, not as orthogonal physical axis"
+
+# ── (5) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-axis-15-RETRACTION-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "tool source: /tmp/cascade_s2/cn_stage2.py — Python mirror, NOT canonical hexa CN port"
+  => "Jacobi-8 implicit approximation: exact linear-system solve might shift magnitudes (unlikely to change verdict — spatial coupling contractive, residual ≪ drift signal)"
+  => "3 topologies (flat/t3/cartoon); minkowski + s3 not measured this cycle; verdict generalizes via cartoon's high-mixing regime coverage"
+  => "LSIGMA=64 LSCALE=65536 integer arithmetic — same toy bounds as Stage 2 canonical"
+  => "E(0) measured after 2-tick warmup (prev/prev2 needed); different warmup choice shifts absolute drift levels not no-convergence pattern"
+  => "alternative interpretation NOT fully ruled out: 4th-order or symplectic integrator might recover physical drift; symplectic comparison deferred"
+  => "own#11 strict: NO Clay claim; this is raw-71 retraction artifact — strengthens cascade integrity"
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-2 Stage-5 α=+0.55 COMPLETE RETIREMENT
+# source: sub-agent J 5-point σ² scaling fit (3 seeds × 5 σ² × 2 topologies = 30 runs)
+# constraints:
+#   raw 91 C3 honest (mixed N-grids per topology disclosed; integer PSCALE quantization)
+#   raw 71 falsifier-retire-rule (Stage-5 α=+0.55 fully retired — wrong sign + wrong form)
+#   own#11 strict (NO Clay claim)
+#   raw 22 INFRA-ONLY · raw 24 axiom-immutable · raw 23 schema-guard
+# date: 2026-04-28
+# ⚠ FULL RETIREMENT — supersedes tick-1 sub-agent B narrowing
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-stage5-alpha055-falsification-witness
+  -> clay-cascade-s2-tick2-axis-13-saturation-fit-best
+  -> clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared
+  => "★ Stage-5 α=+0.55 FULLY RETIRED — wrong sign + wrong functional form across all axes & both topologies"
+  => "supersedes tick-1 sub-agent B narrowing ('diffusive-scheme-specific'): the actual exponent has OPPOSITE sign to +0.55"
+  => "30-run 5-point fit: chain1d σ²∈{64,128,256,512,1024} + t3 N∈{64,216,343,512,1000} cubes × 3 seeds × axes 13/14/15"
+
+# ── (1) fit comparison table (R² per axis × topology × form) ─
+@C clay-cascade-s2-tick2-fit-comparison-table :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  => "format: axis/topo → power R² | log R² | saturation R² | BEST"
+  => "axis-13/chain1d: power α=−0.484 R²=0.935 | log R²=0.854 | sat y∞=3.33 τ=100 R²=0.997 | SAT"
+  => "axis-13/t3:      power α=−0.571 R²=0.955 | log R²=0.892 | sat y∞=4.00 τ=128 R²=0.966 | SAT"
+  => "axis-14/chain1d: ALL R²<0.45 → noise floor σ²-invariant"
+  => "axis-14/t3:      ALL R²<0.14 → noise floor σ²-invariant"
+  => "axis-15/chain1d: best R²=0.301 → no scaling, drift ≈ const ≈ 230±30"
+  => "axis-15/t3:      sat R²=0.798 y∞≈19400 → mild saturation; corroborates sub-agent K artifact verdict"
+
+# ── (2) axis-13 saturation best-fit ────────────────────────
+@C clay-cascade-s2-tick2-axis-13-saturation-fit-best :: meta [4!]
+  <- clay-cascade-s2-tick2-fit-comparison-table
+  -> clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared
+  => "★ axis-13 obeys SATURATION y = y∞ + A·exp(−N/τ) with R²=0.997 (chain1d) / 0.966 (t3)"
+  => "y∞ ≈ 3-4 (decay-to-floor), τ ≈ 100-128 (lattice-equilibration scale)"
+  => "power-law alternative: α_E ≈ −0.484 (chain1d) / −0.571 (t3) — R² 0.93-0.96, viable but inferior to saturation"
+  => "Stage-5 α=+0.55 prediction at N=1024: y(1024)=56.7 (chain1d). OBSERVED: y∞=3.33 — ratio 0.059, OPPOSITE direction"
+  => "raw 71 retire: Stage-5 α=+0.55 is wrong sign (+ vs −) + wrong functional form (power vs saturation) — fully retired"
+
+# ── (3) axis-14 noise-floor verdict ────────────────────────
+@C clay-cascade-s2-tick2-axis-14-noise-floor-suspect :: meta [4]
+  <- clay-cascade-s2-tick2-fit-comparison-table
+  => "axis-14 entropy proxy is σ²-INVARIANT across 16× range of N (mean ~970-1100, all R²<0.45)"
+  => "no scaling structure detectable at this resolution — likely artifact OR scale-invariant noise floor"
+  => "implication for cascade: axis-14 may NOT be a true orthogonal observable; downgraded confidence"
+  => "raw 71 narrow (preliminary): axis-14 status downgraded from 'verify-grid axis' to 'candidate axis pending re-resolution'"
+  => "follow-up needed: higher-PSCALE quantization OR alternative entropy estimator (Renyi, Tsallis) to rule in/out artifact"
+
+# ── (4) replacement hypothesis: τ ~ O(L²) ─────────────────
+@C clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared :: meta [4]
+  <- clay-cascade-s2-tick2-axis-13-saturation-fit-best
+  => "★ replacement hypothesis: τ ≈ O(L²) is LATTICE-EQUILIBRATION scale, NOT critical exponent"
+  => "chain1d τ=100, L=√N=√1024≈32 → L²=1024, τ/L²≈0.10"
+  => "t3 τ=128, N=1000 L≈10 → L²=100, τ/L²≈1.28"
+  => "lattice-equilibration: time/N for diffusion process to spread across system L²/D where D=diffusion const"
+  => "axis-13 captures NOT critical phenomenon BUT diffusion-equilibration scale — different physics class"
+  => "follow-up: measure τ vs L explicitly to confirm L² scaling (Phase-3 candidate)"
+
+# ── (5) cascade integrity post-retirement ─────────────────
+@C clay-cascade-s2-tick2-cascade-integrity-post-retirement :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  <- clay-cascade-s2-tick2-axis-15-MAJOR-RETRACTION-witness
+  => "post-retirement axis status:"
+  => "  axis-13: SATURATION verified (R²=0.997); functional form corrected; τ replacement hypothesis"
+  => "  axis-14: noise-floor SUSPECT — downgraded confidence pending re-resolution"
+  => "  axis-15: ARTIFACT confirmed (Sub-agent K CN re-impl); RETRACTED from verify-grid"
+  => "  axis-16: orthogonal lightcone confirmed (Sub-agent G + I); src-bias INVARIANT"
+  => "honest verify-grid: K=2 STRONG (axis-13 + axis-16) + K=1 PROVISIONAL (axis-14 pending)"
+  => "Stage-5 retirement strengthens cascade integrity by removing hopeful overstatement"
+
+# ── (6) raw 91 C3 honest limit disclosure ──────────────────
+@C clay-cascade-s2-tick2-stage5-retirement-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick2-stage5-COMPLETE-RETIREMENT-witness
+  => "tool sources: /tmp/cascade_s2/ensemble_5pt.hexa + /tmp/cascade_s2/fit_5pt.py — disclosed"
+  => "5 σ² points per topology may mask higher-order multi-scale saturation invisible at this resolution"
+  => "axis-15 t3 R²=0.798 saturation might also be artifact (corroborates sub-agent K) — not an honest physical signal"
+  => "integer PSCALE=1000 quantization affects entropy proxy — coarse for axis-14 noise verdict"
+  => "mixed N-grids (chain1d powers-of-2, t3 cubes) — fits per-topology only; cross-topology α-comparison only meaningful at shared anchors {64, 512}"
+  => "saturation grid-search (not nonlinear least-squares); τ=100/128 nearest-grid, true value within factor 2"
+  => "3 seeds per cell with std up to 80% of mean (axis-15 chain1d) — 5+ seeds would tighten drift R²"
+  => "own#11 strict: this is raw-71 retirement, strengthens (not weakens) cascade integrity"
