@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:30:00Z"|61|"loop-fire-iter-61-full-parity"|"61349c86"|"keep-going-all-kick-iter-60-followup-port-remaining-topologies"
+# schema:s2 ts iter event added new-constants substrate-coverage
+@s2 "2026-04-28T05:30:01Z"|61|"8-topology-ports"|["cartoon","nested","calabi6","brane","inflation","de-sitter","minkowski","bubble"]|["QT_CARTOON=10","QT_NESTED=11","QT_CALABI6=12","QT_BRANE=14","QT_INFLATION=15","QT_DE_SITTER=16","QT_MINKOWSKI=17","QT_BUBBLE=20"]|"18-of-21-was-10-of-21"
+# schema:s3 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy note
+@s3 "2026-04-28T05:30:02Z"|61|"brane-result-NEW-LOW"|"brane"|64|6|3135443310|39688|39714|26|0.066|247|743|"NEW-LOWEST-bipartite-imbalance-stochastic-shift"
+# schema:s4 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+@s4 "2026-04-28T05:30:03Z"|61|"inflation-result"|"inflation"|64|6|-7409368291|39688|39653|35|0.088|317|866
+@s3 "2026-04-28T05:30:04Z"|61|"de-sitter-result-NEW-MAX"|"de-sitter"|64|6|-2237153367|39688|39721|33|0.083|505|999|"NEW-MAX-1-from-absolute-max-1000-half-cut-perfect-balance"
+# schema:s5 ts iter event ranking range spread spread-percent
+@s5 "2026-04-28T05:30:05Z"|61|"13-topo-axis-14-ranking"|[{"de-sitter":999},{"ads-cft":995},{"flat":980},{"altered":966},{"s3":952},{"wormhole":939},{"blackhole":877},{"inflation":866},{"big-crunch":861},{"ca3d":851},{"t3":838},{"vacuum-decay":825},{"brane":743}]|[743,999]|256|26
+# schema:s6 ts iter event n-9 n-12 increase interpretation verdict
+@s6 "2026-04-28T05:30:06Z"|61|"AXIS-13-x-14-update"|0.2117|0.2694|0.058|"weak-correlation-stable-with-larger-sample"|"orthogonality-finding-ROBUST"
+# schema:s7 ts iter event ports-success measurements-success substrate-coverage measurements-coverage limitations own-11-violation
+@s7 "2026-04-28T05:30:07Z"|61|"raw-91-C3-strict-honest"|"8-of-8"|"3-of-3"|"18-of-21"|"13-of-21"|["cartoon-nested-calabi6-minkowski-bubble-untested","flat-excluded-D-2-vs-D-3"]|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s8 "2026-04-28T05:30:08Z"|61|"37-iter-cascade-discipline"|"iter-25..iter-60"|33|"port-port-measure-discover-de-sitter-near-max-brane-near-low"|"iter-62-measure-cartoon-nested-calabi6-minkowski-bubble-OR-stage-2-Crank-Nicolson"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T05:30:09Z"|61|"iter-61-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|"21-sim-18-quantum-substrate-13-measured"|10|39|0|33|"61349c86"|65

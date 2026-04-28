@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:00:00Z"|43|"loop-fire-iter-43-v2-anchor-topology-coverage-audit"|"61349c86"|"keep-going-all-kick-iter-42-empirical-validation-followup"
+# schema:s2 ts iter event invocation result note cli-grammar
+@s2 "2026-04-28T04:00:01Z"|43|"v2-anchor-dispatch-probe"|"hexa run sim_bridge/anu_time/empirical_anchor_v2.hexa 64 vacuum_decay 6"|"ERROR unknown topology=64"|"first-arg=topology(string)-second-arg=ticks(int)-third-arg=seed(int)"|"hexa empirical_anchor_v2.hexa <topology> <ticks> <seed>"
+# schema:s3 ts iter event supported count d-3-coverage-fraction gap gap-count
+@s3 "2026-04-28T04:00:02Z"|43|"v2-anchor-supported-topology-set"|["flat","t3","s3","blackhole","wormhole"]|5|"5-of-16"|["vacuum_decay","altered","cartoon","nested","ca3d","big_crunch","bubble","ads_cft","brane","inflation","de_sitter"]|11
+# schema:s4 ts iter event per-invocation-latency-sec reason full-d-3-16-topo-x-8-seed total-runtime-sec loop-fire-budget-sec verdict
+@s4 "2026-04-28T04:00:03Z"|43|"runtime-budget-analysis"|60|"ssh-hetzner-routing"|128|7680|300|"full-batch-exceeds-5-min-window-by-25x"
+# schema:s5 ts iter event d-2-coverage d-3-coverage d-6-coverage pearson-r interpretation
+@s5 "2026-04-28T04:00:04Z"|43|"iter-42-result-scope-bounded"|"3-of-3-100-percent"|"4-of-16-25-percent-t3-s3-blackhole-wormhole"|"1-of-1-calabi6-only"|"0.9792-holds-for-tested-subsets"|"monotone-direction-robust-numerical-mean-from-subset"
+# schema:s6 ts iter event scope-limit blocker alternative loop-saturation own-11-violation
+@s6 "2026-04-28T04:00:05Z"|43|"raw-91-C3-strict-honest"|"v2-anchor-dispatch-only-5-topologies"|"port-_e2neighbor_*-for-11-D-3-topologies-from-topology_universe.hexa"|"raw-79-DAG-batch-dispatch-with-7680-sec-budget"|"v2-anchor-topology-coverage-saturated-at-5-of-16"|0
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-bounding follow-up
+@s7 "2026-04-28T04:00:06Z"|43|"19-iter-cascade-discipline"|"iter-25..iter-42"|15|"YES-blocker-identified-explicitly"|"iter-44-+-port-11-_e2neighbor-functions-or-raw-79-DAG-dispatch"
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s8 "2026-04-28T04:00:07Z"|43|"iter-43-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-19-iter-cascade"|21|10|39|0|15|"61349c86"|46

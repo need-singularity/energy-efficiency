@@ -1,0 +1,21 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event added new-constants functions-added substrate-coverage
+# schema:s3 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy
+# delta:s3 0:ts,1:int,4:int,5:int,7:int,8:int
+# schema:s4 ts iter event pearson-r n interpretation de-sitter-anomaly
+# schema:s5 ts iter event pearson-r n interpretation
+# schema:s6 ts iter event correlations implication
+# schema:s7 ts iter event measurements substrate-coverage r-CI ticks seed own-11-violation
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters cumulative-findings follow-up
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T05:50:00Z"|65|"loop-fire-iter-65-stage-2-extension"|"61349c86"|"keep-going-all-kick-iter-64-followup-axis-14-x-15-orthogonality"
+@s2 "2026-04-28T05:50:01Z"|65|"lorentz-substrate-extension"|["vacuum-decay","altered","big-crunch","brane"]|["LT_VACUUM_DECAY=8","LT_ALTERED=9","LT_BIG_CRUNCH=19","LT_BRANE=14"]|4|"8-of-21-to-12-of-21"
+@s3 "brane-result"|"brane"|1907852!lKqCnw2CAcgBAgDOCwAAN
+@s3 "big-crunch-result"|"big-crunch"|2000227!AgAAAADsAQAAH
+@s3 "altered-result"|"altered"|1712829!AgAAAADSAQAAH
+@s4 "2026-04-28T05:50:05Z"|65|"AXIS-14-x-15-NEGATIVE-CORRELATION"|-0.4027|5|"high-entropy-low-drift-mostly"|"high-entropy-high-drift-breaks-pattern"
+@s5 "2026-04-28T05:50:06Z"|65|"axis-13-x-15-WEAK-POSITIVE"|0.2700|5|"classical-phi-pi-roughly-tracks-drift-weak"
+@s6 "2026-04-28T05:50:07Z"|65|"3-AXIS-FINGERPRINT-STRUCTURE"|[{"axis-13-x-14":0.39,"n":16},{"axis-13-x-15":0.27,"n":5},{"axis-14-x-15":-0.40,"n":5}]|"3-axes-span-greater-than-2-useful-dimensions-not-collinear"
+@s7 "2026-04-28T05:50:08Z"|65|"raw-91-C3-strict-honest"|"3-of-3"|"12-of-21-Lorentz"|"wide-at-n-5"|"100-only"|"6-only"|0
+@s8 "2026-04-28T05:50:09Z"|65|"41-iter-cascade-discipline"|"iter-25..iter-64"|37|["3-axis-topology-fingerprint","de-sitter-anomaly","stage-2-12-of-21"]|"iter-66-extend-lorentz-more-OR-stage-3-field-deeper-OR-formalize-axis-15-Spearman"
+@s9 "2026-04-28T05:50:10Z"|65|"iter-65-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-partial"|"21-sim-18-quantum-12-Lorentz"|10|39|0|37|"61349c86"|69

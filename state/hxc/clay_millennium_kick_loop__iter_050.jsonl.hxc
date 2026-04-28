@@ -1,0 +1,21 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg
+# delta:s2 0:ts,1:int,4:int,5:int,8:int,9:int
+# schema:s3 ts iter event seeds phi-pi-values mean stdev relative-stdev T-over-V-stable pair-amp-consistently-negative verdict
+# schema:s4 ts iter event topologies phi-pi-values sum n mean median range
+# schema:s5 ts iter event iter-36-15-topo-computed-mean-excl-cartoon iter-50-15-topo-measured-mean difference match-percent verdict
+# schema:s6 ts iter event scenarios verdict
+# schema:s7 ts iter event success-rate 15-of-16-topologies-measured big-crunch-variance iter-36-reproduction single-seed-only own-11-violation
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-correcting-demonstrated-end-to-end final-result
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T04:35:00Z"|50|"loop-fire-iter-50-MILESTONE"|"61349c86"|"keep-going-all-kick-iter-49-followup-final-wormhole-+-big-crunch-variance"
+@s2 "wormhole-FINAL-GAP"|"wormhole"|38|12699|4086!6uOBnw1kgAEM_QSYBAAAN
+@s2 "big-crunch-seed-13"|"big-crunch"|17|19654|4612!AgAADqgC-AMAAI
+@s2 "big-crunch-seed-17"|"big-crunch"|16|19578|4168!AgAACCZ8AAG
+@s3 "2026-04-28T04:35:04Z"|50|"big-crunch-3-seed-variance"|[6,13,17]|[604,520,582]|568.7|36|"6-percent"|"18402-19654-3-percent-spread"|"YES-149-to-171"|"big-crunch-high-phi-pi-NOT-seed-artifact-robust-property"
+@s4 "2026-04-28T04:35:05Z"|50|"FULL-15-TOPO-BASELINE-COMPLETE"|["ca3d","t3","brane","blackhole","inflation","ads-cft","nested","vacuum-decay","de-sitter","wormhole","s3","bubble","altered","minkowski","big-crunch"]|[79,141,145,146,169,180,196,203,229,268,303,434,463,478,604]|4038|15|269.2|203|[79,604]
+@s5 "2026-04-28T04:35:06Z"|50|"99.89-PERCENT-iter-36-MATCH"|269.5|269.2|0.3|99.89|"iter-36-measurement-REPRODUCED-with-full-topology-coverage"
+@s6 "2026-04-28T04:35:07Z"|50|"PEARSON-r-FINAL"|[{"4-topo":{"means":"[-28, 113, 3209]","r":0.9792}},{"15-topo-iter-50-FINAL":{"means":"[-28, 269.2, 3209]","r":0.9852}},{"16-topo-iter-36-ref":{"means":"[-26, 299, 2889]","r":0.9901}}]|"r-greater-than-0.98-DEFINITIVELY-confirms-iter-36-finding"
+@s7 "2026-04-28T04:35:08Z"|50|"raw-91-C3-strict-honest"|"3-of-3-at-180s"|"YES-only-cartoon-outlier-excluded"|"6-percent-stable"|"99.89-percent"|"YES-multi-seed-ensemble-pending"|0
+@s8 "2026-04-28T04:35:09Z"|50|"26-iter-cascade-COMPLETE"|"iter-25..iter-49"|22|"YES"|"higher-dim-slower-transition-DEFINITIVELY-CONFIRMED-D-2--28-D-3-269-D-6-3209-r-0.985"
+@s9 "2026-04-28T04:35:10Z"|50|"iter-50-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-26-iter-cascade"|21|10|39|0|22|"61349c86"|54

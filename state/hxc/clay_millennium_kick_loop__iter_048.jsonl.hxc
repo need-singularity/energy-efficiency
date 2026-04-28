@@ -1,0 +1,23 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event prior method result verdict
+# schema:s3 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg
+# delta:s3 0:ts,1:int,4:int,5:int
+# schema:s4 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg outlier-flag
+# schema:s5 ts iter event topologies-excl-cartoon phi-pi-values sum n mean median vs-iter-36-16-topo-mean match-percent
+# schema:s6 ts iter event scenarios verdict
+# schema:s7 ts iter event retry-success-rate timeout-fix-confirmed cartoon-outlier-confirmation 11-topo-vs-16-topo-match own-11-violation
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T04:25:00Z"|48|"loop-fire-iter-48-6-of-6-retry-success"|"61349c86"|"keep-going-all-kick-iter-47-followup-180s-timeout-retry"
+@s2 "2026-04-28T04:25:01Z"|48|"hypothesis-test"|"iter-47-1-of-7-with-90s"|"re-dispatch-6-with-180s-timeout"|"6-of-6-SUCCESS"|"timeout-was-only-blocker-not-numerical-or-saturation"
+@s3 "altered-result"|"altered"|0|25320|309|463|3422!vNqBnw1ggAEMAAJ
+@s4 "2026-04-28T04:25:03Z"|48|"cartoon-result"|"cartoon"|64|6|3|675000|219|741|2397|"YES-iter-38-PREDICTED-T-over-V-non-physical-hops"
+@s4 "brane-result"|"brane"|55|16778|192|145|3239!BAAAAAAAE
+@s4 "inflation-result"|"inflation"|61|14762|-15|169|3458!AgAAAAAAE
+@s4 "de-sitter-result"|"de-sitter"|70|12525|135|229|3157!AgAAAAAAE
+@s4 "minkowski-result"|"minkowski"|20|12575|149|478|3255!AgAAAAAAE
+@s5 "2026-04-28T04:25:08Z"|48|"D-3-11-topo-MEAN-CONVERGENCE-WITNESS"|["ca3d","nested","ads-cft","big-crunch","bubble","altered","brane","inflation","de-sitter","minkowski"]|[79,196,180,604,434,463,145,169,229,478]|2977|10|298|229|299|99.7
+@s6 "2026-04-28T04:25:09Z"|48|"PEARSON-r-FULL-RECALC"|[{"4-topo":{"means":"[-28, 113, 3209]","r":0.9792}},{"6-topo":{"means":"[-28, 274, 3209]","r":0.9836}},{"7-topo":{"means":"[-28, 296, 3209]","r":0.9842}},{"11-topo":{"means":"[-28, 298, 3209]","r":0.9842}},{"16-topo-iter-36-ref":{"means":"[-26, 299, 2889]","r":0.9901}}]|"r-CONVERGES-to-iter-36-reference-as-coverage-grows"
+@s7 "2026-04-28T04:25:10Z"|48|"raw-91-C3-strict-honest"|"6-of-6-vs-iter-47-1-of-7"|"YES-180s-sufficient"|"iter-38-predicted-iter-48-confirmed-T-over-V-675000"|"99.7-percent"|0
+@s8 "2026-04-28T04:25:11Z"|48|"24-iter-cascade-discipline"|"iter-25..iter-47"|20|"bug-fix-measure-batch-mean-converge-finding-confirm"|"iter-49-multi-seed-ensemble-on-extended-11-topology-OR-vacuum-decay-seed-6-ticks-64-OR-Stage-1-quantum-amplitude-module-write"
+@s9 "2026-04-28T04:25:12Z"|48|"iter-48-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-24-iter-cascade"|21|10|39|0|20|"61349c86"|52

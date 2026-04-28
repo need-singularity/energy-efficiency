@@ -1,0 +1,17 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy
+# delta:s2 0:ts,1:int,4:int,5:int,7:int
+# schema:s3 ts iter event r-evolution spearman-rho-n-14 verdict
+# schema:s4 ts iter event ranking range spread-percent
+# schema:s5 ts iter event retry-success r-stabilization limitations own-11-violation
+# schema:s6 ts iter event prior-iters raw-91-C3-enforced-iters cumulative-findings follow-up
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T06:10:00Z"|69|"loop-fire-iter-69-retry-success"|"61349c86"|"keep-going-all-kick-iter-68-followup-retry-docker-OOM"
+@s2 "s3-result"|"s3"|1905527|952!8ryCnw2KAcgBAgAAAL
+@s2 "blackhole-result"|"blackhole"|2142158|877!AgAAAAAAAF
+@s2 "inflation-result"|"inflation"|1837360|866!AgAAAAAAAF
+@s3 "2026-04-28T06:10:04Z"|69|"AXIS-14-x-15-r-STABILIZED-FINAL"|[{"n-5":-0.4027},{"n-8":-0.2676},{"n-11":-0.1651},{"n-14":-0.1674}]|-0.0549|"ORTHOGONALITY-DEFINITIVELY-CONFIRMED-r-stable-11-to-14"
+@s4 "2026-04-28T06:10:05Z"|69|"FULL-AXIS-15-RANKING-14"|[{"ads-cft":1488520},{"calabi6":1669556},{"altered":1712829},{"nested":1751637},{"inflation":1837360},{"s3":1905527},{"brane":1907852},{"t3":1928254},{"big-crunch":2000227},{"de-sitter":2021183},{"cartoon":2045989},{"vacuum-decay":2049823},{"blackhole":2142158},{"minkowski":2165663}]|[1488520,2165663]|31
+@s5 "2026-04-28T06:10:06Z"|69|"raw-91-C3-strict-honest"|"3-of-3"|"axis-14-x-15-r-near-zero-confirmed-n-14"|["4-D-3-topologies-pending-flat-wormhole-ca3d-bubble","axis-13-x-15-only-n-5"]|0
+@s6 "2026-04-28T06:10:07Z"|69|"45-iter-cascade-discipline"|"iter-25..iter-68"|41|"axis-14-x-15-orthogonal-r-minus-0.17-n-14"|"iter-70-final-4-axis-15-OR-axis-13-x-15-expansion-OR-stage-3"
+@s7 "2026-04-28T06:10:08Z"|69|"iter-69-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-substrate-parity"|"21-sim-18-quantum-18-Lorentz-substrate-14-Lorentz-measured"|10|39|0|41|"61349c86"|73

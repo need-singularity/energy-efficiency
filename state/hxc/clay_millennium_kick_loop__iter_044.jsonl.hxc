@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:05:00Z"|44|"loop-fire-iter-44-false-blocker-correction"|"61349c86"|"keep-going-all-kick-iter-43-followup-direct-source-audit"
+# schema:s2 ts iter event claim actual evidence
+@s2 "2026-04-28T04:05:01Z"|44|"iter-43-claim-FALSE-direct-source-audit"|"v2-dispatch-5-of-16"|"v2-dispatch-21-of-21"|"empirical_anchor_v2.hexa-lines-25-45-21-E2T-constants-+-lines-48-69-21-string-mappings-+-lines-72-251-21-neighbor-fns-+-lines-255-278-21-dispatch-branches"
+# schema:s3 ts iter event probe-1-failed probe-2-success
+@s3 "2026-04-28T04:05:02Z"|44|"CLI-arg-order-discovery"|{"cmd":"hexa run empirical_anchor_v2.hexa 64 vacuum_decay 6","error":"unknown topology=64","cause":"two-bugs-underscore-vs-hyphen-AND-arg-index-shift"}|{"cmd":"hexa run empirical_anchor_v2.hexa vacuum-decay 64 6","output":"ticks=50 topology=vacuum-decay seed=64"}
+# schema:s4 ts iter event args-2 args-3 args-4 args-5 effective-cli ticks-fixed
+@s4 "2026-04-28T04:05:03Z"|44|"hetzner-arg-shift-root-cause"|"script-path-non-int-ticks-defaults-50"|"first-user-arg-topology"|"second-user-arg-seed"|"ignored"|"<topology> <seed-or-ticks>"|50
+# schema:s5 ts iter event ticks seed raw-correlation raw-T-over-V raw-pair-amp raw-phi-pi raw-max-avg verdict
+@s5 "2026-04-28T04:05:04Z"|44|"vacuum-decay-corrected-probe"|50|64|31|15130|1|374|2600|"topology-dispatch-confirmed-working-but-single-point-no-ensemble"
+# schema:s6 ts iter event iter-43-topology-coverage-claim iter-43-CLI-grammar-claim iter-43-runtime-budget-claim iter-43-multi-iter-required-claim correction own-11-violation
+@s6 "2026-04-28T04:05:05Z"|44|"raw-91-C3-strict-honest-update"|"FALSE-RETRACTED-actual-21-of-21"|"HALF-TRUE-correct-conceptually-wrong-on-hetzner"|"TRUE-still-applies"|"TRUE-still-applies-ticks-fixed"|"loop-self-correcting-via-direct-source-audit"|0
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-correcting follow-up
+@s7 "2026-04-28T04:05:06Z"|44|"20-iter-cascade-discipline"|"iter-25..iter-43"|16|"YES-false-claim-retracted-via-direct-source-audit"|"iter-45-extend-script-to-take-args-via-env-or-stdin-to-bypass-hetzner-arg-shift-OR-add-wrapper-cmdline"
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s8 "2026-04-28T04:05:07Z"|44|"iter-44-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-20-iter-cascade"|21|10|39|0|16|"61349c86"|47

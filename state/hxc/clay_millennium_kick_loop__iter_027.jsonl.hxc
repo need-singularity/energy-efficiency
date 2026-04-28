@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:40:00Z"|27|"loop-fire-iter-27-anchor-v2-bias-free"|"61349c86"|"keep-going-all-kick-iter-26-fix"
+# schema:s2 ts iter event module LoC motivation approach chi2-layer-separated
+@s2 "2026-04-28T02:40:01Z"|27|"empirical-anchor-v2-implemented"|"nexus/sim_bridge/anu_time/empirical_anchor_v2.hexa"|280|"iter-26-circular-evidence-finding-FIX"|"PURE-sim-derived-raw-observables-no-reference-range-hardcoding"|"clean-separation-of-concerns"
+# schema:s3 ts iter event 16-ticks-t3 interpretation
+@s3 "2026-04-28T02:40:02Z"|27|"v2-honest-baseline-measured"|[{"raw-correlation":9,"vs-Planck-9649":52441},{"raw-T-over-V":32250,"vs-BMW-1350000":676},{"raw-pair-amp":125,"vs-LIGO-304000":289},{"raw-phi-pi":1086,"vs-CODATA-1370360":1874911287076},{"raw-max-avg":2811,"vs-PDG-18361500":33703819396}]|"chi2-ASTRONOMICAL-10-10-10-12-HONEST-baseline-toy-sigma2-64-distance-to-physics"
+# schema:s4 ts iter event v1-n_s-chi2 v2-n_s-chi2 factor v1-alpha-chi2 v2-alpha-chi2 v1-mp_me-chi2 v2-mp_me-chi2 verdict
+@s4 "2026-04-28T02:40:03Z"|27|"v1-vs-v2-comparison-FALSIFIES-v1-claim"|9|52441|"5824x"|"~10-4"|"1.87-trillion"|"~10-4"|"33-billion"|"v1-3-of-5-close-match-was-100-percent-analyzer-design-artifact-CIRCULAR-EVIDENCE-confirmed"
+# schema:s5 ts iter event iter-25 iter-26 iter-27 scientific-process loop-self-correcting
+@s5 "2026-04-28T02:40:04Z"|27|"3rd-self-falsification-iter"|"cross-feed-chi2-1-ticks-dependent"|"analyzer-hardcoded-circular-evidence"|"bias-free-v2-implementation-honest-baseline-measured"|"3-iter-cascade-each-deeper-falsification"|"raw-91-C3-active-enforcement-pattern-established"
+# schema:s6 ts iter event subcommand CLI-total v1-deprecated-tag
+@s6 "2026-04-28T02:40:05Z"|27|"nexus-CLI-integration"|"nexus universe anchor-v2 {selftest | topo | compare}"|"11-universe-subcommands"|"REF-RANGE-HARDCODED-iter-26-falsified"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents total-LoC commits own-11-violation raw-91-C3-enforced-iters cron-active
+@s7 "2026-04-28T02:40:06Z"|27|"iter-27-close"|13|"5-of-5-+-Stage-6-+-3-self-falsification"|21|9|39|"~3380"|"8-nexus-+-17-n6-architecture"|0|3|"61349c86"

@@ -1,0 +1,139 @@
+{
+  "schema": "raw 138 omega-cycle witness v2",
+  "id": "2026-04-28_b5-cascade-block-prevention",
+  "title": "B.5 — All-routes-blocked cascade prevention (defensive layer)",
+  "ts": "2026-04-28",
+  "status": "investigated_existing_implementation",
+  "verdict": "raw 91 C3 honest — sandbox-bound investigation only; no new patch landed",
+
+  "mission_recap": {
+    "trigger": "F-MX-3-c P0 kick infra rebuild 5/5",
+    "scenario": "hetzner blacklisted + ubu1/ubu2 slot-saturated + docker no-node simultaneous failure",
+    "goal": "dispatcher emits raw 66 ai-native error trailer with reason=all-routes-blocked + remediation block; never silent rc=64",
+    "dependency_layer": "B.1 (OAuth refresh) + B.2 (slot pool) + B.3 (docker image probe) prevent the cascade upstream; B.5 is the defensive last-mile guarantee"
+  },
+
+  "investigation": {
+    "step_1_dispatcher_location": {
+      "finding": "dispatcher lives in sister nexus repo, not n6-architecture",
+      "path": "/Users/ghost/core/nexus/scripts/bin/hexa_remote",
+      "size_lines": 1983,
+      "guard_script_in_n6_arch": "/Users/ghost/core/n6-architecture/bin/check_remote_dispatch.sh",
+      "cross_repo_contract": "n6-architecture invokes hexa_remote via PATH; check_remote_dispatch.sh enforces ≥3 'core/n6-architecture' refs in hexa_remote (cwd-mapping recurrence guard, 2026-04-24)"
+    },
+
+    "step_2_error_path_analysis": {
+      "finding": "raw 66 trailer ALREADY implemented as Issue 5 (2026-04-27, predates this kick by 1 day)",
+      "function": "_emit_all_routes_blocked_trailer",
+      "definition_lines": "700-774",
+      "fields_emitted_to_stderr": [
+        "err hexa_remote/all-routes-blocked",
+        "external_blacklist (retired Sub-AA 2026-04-27 boilerplate row)",
+        "docker_neg_cache (presence + ttl_remaining of /tmp/hexa_resolver.connectivity)",
+        "slot_pool (avail/cooldown/unknown across 12 claude slots)",
+        "fix: 4-step ordered remediation (clear neg_cache → probe slots → ssh connectivity → full bypass)",
+        "ref: raw#ai-native-error-message + nexus/.guide § Cross-host parity matrix",
+        "reason=<slug> fix=see-block-above (raw 66 trailer line)"
+      ],
+      "emit_sites": [
+        {"line": 801, "context": "preflight all-unreachable (300ms TCP probe verdict)", "reason_slug": "all_unreachable_preflight", "exit_code": 64},
+        {"line": 1062, "context": "post-probe loop, no host picked", "reason_slug": "all_unreachable", "exit_code": 64}
+      ],
+      "preceded_by_machine_emit": "NEXUS_REMOTE_ERROR JSON line ({hosts_tried, reason, exit_code:64}) — caller (shared/scripts/bin/hexa) parses to disambiguate exit 64 vs 74"
+    },
+
+    "step_3_silent_rc64_audit": {
+      "finding": "no silent rc=64 path remaining on the all-routes-blocked branch",
+      "evidence": "every exit 64 is preceded by either NEXUS_REMOTE_ERROR JSON (line 1060, 799, 637) OR _emit_all_routes_blocked_trailer (lines 801, 1062)",
+      "raw_71_retraction_against_silence": "the historical 'all-claude-slots-exhausted' cryptic emit is replaced by the structured trailer per Issue 5 changelog comment line 703-704"
+    },
+
+    "step_4_raw_77_audit_ledger": {
+      "finding": "raw 77 append-only audit ledger is NOT written on cascade events from hexa_remote itself",
+      "honest_gap": "trailer is ephemeral (stderr only). No persistent JSONL append on the all-routes-blocked path.",
+      "adjacent_ledgers_observed": [
+        "/Users/ghost/.hx/state/oauth_blacklisted_hosts.jsonl (oauth blacklist, line 862)",
+        "/tmp/hexa_resolver.connectivity (docker neg-cache, line 726)",
+        "n6-architecture/state/falsifier_monitor/audit.jsonl (raw 77 falsifier monitoring, separate domain)"
+      ],
+      "patch_proposal_not_applied": "append a single JSONL line to a new ~/.hx/state/all_routes_blocked.jsonl on each emit — schema {ts, reason, hosts_tried[], slot_pool, docker_neg_cache, fix_ref}",
+      "blocker": "patch lives in nexus repo (out of n6-architecture working tree). Cross-repo write requires user-driven PR or explicit cross-repo delegation, not in scope of this sandbox kick"
+    }
+  },
+
+  "patch_status": {
+    "intended": "raw 66 schema applied to dispatcher",
+    "actual": "ALREADY APPLIED upstream (2026-04-27, Issue 5). No additional patch needed for trailer itself.",
+    "remaining_gap": "raw 77 audit-ledger append on cascade. Defer to nexus-side PR.",
+    "raw_71_falsifier_check": "if trailer is missing on a future cascade → F-B5-2 fires → reopen Issue 5"
+  },
+
+  "simulation_test": {
+    "intended": "mock OAuth expired + slots full + docker stopped → invoke dispatcher → verify trailer + ledger",
+    "executed": "NOT EXECUTED — raw 91 C3 honest",
+    "blockers": [
+      "sandbox cannot mutate ~/.hx/state/oauth_blacklisted_hosts.jsonl reliably (writes outside repo cwd are policy-restricted under this skill invocation)",
+      "stopping docker daemon impacts user environment beyond test scope",
+      "saturating 12 claude slots requires real OAuth flow, not safely mockable in-sandbox"
+    ],
+    "alternative_evidence_collected": "static read of dispatcher code paths confirms both emit sites unconditionally call _emit_all_routes_blocked_trailer before exit 64",
+    "deferred_runtime_test": "user-driven dry-run via HEXA_REMOTE_FORCE_BLOCK=1 env (would need to be added in nexus PR alongside ledger append)"
+  },
+
+  "falsifiers": [
+    {
+      "id": "F-B5-1",
+      "condition": "any cascade event in next 24h exits with rc=64 WITHOUT 'err hexa_remote/all-routes-blocked' line on stderr",
+      "deadline": "2026-04-29",
+      "auto_check": "partial (grep stderr capture of dispatcher invocations)",
+      "evidence_path_if_fired": "n6-architecture/state/discovery_absorption/ + nexus invocation logs"
+    },
+    {
+      "id": "F-B5-2",
+      "condition": "trailer emitted but missing ≥1 of the 6 required fields (external_blacklist, docker_neg_cache, slot_pool, fix, ref, reason=)",
+      "deadline": "2026-04-29",
+      "auto_check": "yes (regex match against captured stderr)",
+      "remediation_if_fired": "patch _emit_all_routes_blocked_trailer (nexus-side) to restore missing field"
+    },
+    {
+      "id": "F-B5-3",
+      "condition": "trailer emitted on a benign 1-route-only outage (e.g. ubu1 alone down, hetzner+ubu2 healthy) — false positive",
+      "deadline": "2026-05-05",
+      "auto_check": "partial (cross-reference probe outcomes — only fire trailer when |healthy_hosts| == 0)",
+      "current_safeguard": "trailer only emitted from preflight all_unreachable verdict (line 792) and post-loop empty HOST (line 1048) — both require zero healthy candidates"
+    }
+  ],
+
+  "dependencies": {
+    "B.1_oauth_refresh": "if landed → reduces probability of reaching B.5 trailer (cascade upstream-prevented)",
+    "B.2_slot_pool": "if landed → slot_pool field becomes meaningful (otherwise <unprobed> fallback at line 757-761)",
+    "B.3_docker_probe": "if landed → docker_neg_cache field becomes actionable",
+    "B.4": "out-of-scope for this kick",
+    "B.5_standalone": "valid as defensive layer even if B.1-B.3 not yet landed"
+  },
+
+  "deliverables": {
+    "patch": "no n6-architecture-side patch needed — dispatcher already emits raw 66 trailer (2026-04-27)",
+    "patch_deferred_to_nexus": "raw 77 audit-ledger append on cascade (cross-repo, requires user delegation)",
+    "test": "static analysis only; runtime simulation deferred (raw 91 C3 honest)",
+    "witness_json": "this file",
+    "falsifiers_count": 3
+  },
+
+  "raw_91_c3_honest": {
+    "claim": "B.5 mission goal (raw 66 trailer on all-routes-blocked) was discovered to be ALREADY IMPLEMENTED upstream",
+    "what_was_NOT_done": [
+      "no runtime cascade simulation (sandbox blockers)",
+      "no raw 77 audit ledger patch (cross-repo, out of working tree)",
+      "no end-to-end stderr capture against a real all-routes-blocked invocation"
+    ],
+    "what_was_done": [
+      "located dispatcher (~/core/nexus/scripts/bin/hexa_remote, 1983 lines)",
+      "verified _emit_all_routes_blocked_trailer at lines 717-774",
+      "verified both emit sites (801, 1062) unconditionally precede exit 64",
+      "documented 3 falsifiers with auto_check classification",
+      "identified remaining gap: raw 77 ledger append (deferred to nexus PR)"
+    ],
+    "delegation_note": "user memory directs Agent-tool delegation; Agent dispatcher unavailable in this skill invocation, so investigation performed in-line with strict read-only scope (no writes to nexus repo, no destructive sandbox mutation)"
+  }
+}

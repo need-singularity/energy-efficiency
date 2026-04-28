@@ -1,0 +1,109 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T17:30:00Z",
+  "title": "F-A1-PATTERN cross-repo printenv→env_var sweep (Task A follow-up)",
+  "task_label": "F1-A-followup F-A1-PATTERN",
+  "scope": "Apply the n6shared/sync-readme A.1 fix pattern (env_var(HOME) primary + exec(\"echo $HOME\") fallback) to 12 sites in hexa-lang/example/ + hexa-lang/self/grammar_autofix.hexa that still call exec(\"printenv HOME\") — busybox container without printenv applet returned empty path silently.",
+
+  "parent_witness": {
+    "id": "design/kick/2026-04-28_hexa-runtime-pipeline-fix_omega_cycle.json",
+    "subtask": "A.1 exec-path / env_var(\"HOME\") fix",
+    "raw_47_recommendation": "cross-repo trawl-witness — same pattern present in hexa-lang sibling repo"
+  },
+
+  "enumeration": {
+    "command": "grep -rn 'exec(\"printenv' ~/core/hexa-lang/",
+    "user_brief_count": 13,
+    "actually_found": 12,
+    "discrepancy_note": "Brief said 12+1=13; grep finds 12 (11 in example/ + 1 in self/grammar_autofix.hexa). The 13th may have been preemptively counted including the parent A.1 patch already done in n6-architecture, OR a stale count from prior enumeration. No additional sites discovered under wider grep ('printenv' with no exec prefix).",
+    "sites": [
+      {"file": "example/auto_record_test.hexa", "line": 15, "context": "let log_path = exec(\"printenv HOME\") + \"/Dev/nexus/discovery_log.jsonl\""},
+      {"file": "example/growth_tick_test.hexa", "line": 8, "context": "fn preflight_check: let home = exec(\"printenv HOME\")"},
+      {"file": "example/growth_tick_test.hexa", "line": 92, "context": "fn main: let growth_json = if a.len() >= 4 ... else { exec(\"printenv HOME\") + \"/Dev/anima/anima/config/growth_state.json\" }"},
+      {"file": "example/forge_test.hexa", "line": 121, "context": "fn find_claude_cli: let home = exec(\"printenv HOME\")"},
+      {"file": "example/check_project_test.hexa", "line": 13, "context": "let proj_path = exec(\"printenv HOME\") + \"/Dev/nexus/config/nexus-projects.json\""},
+      {"file": "example/config_test.hexa", "line": 41, "context": "fn config_path: let home_candidates = exec(\"printenv HOME\")"},
+      {"file": "example/seed_engine_test.hexa", "line": 43, "context": "let _se_home = exec(\"printenv HOME\")"},
+      {"file": "example/bridge_ensure_test.hexa", "line": 13, "context": "let bridge_state_path = exec(\"printenv HOME\") + \"/Dev/nexus/bridge_state.json\""},
+      {"file": "example/pattern_rules_test.hexa", "line": 10, "context": "let home = exec(\"printenv HOME\")"},
+      {"file": "example/verify_pages_test.hexa", "line": 5, "context": "let home = exec(\"printenv HOME\").trim()"},
+      {"file": "example/guard_test.hexa", "line": 7, "context": "let _home = exec(\"printenv HOME\").trim()"},
+      {"file": "self/grammar_autofix.hexa", "line": 20, "context": "let _home = exec(\"printenv HOME\").trim()"}
+    ],
+    "total_sites_patched": 12
+  },
+
+  "patch_pattern": {
+    "rationale": "Use the proven n6shared/sync-readme.hexa block-statement pattern. Initial attempt with try-as-expression (try { env_var(...) } catch _ { ... }) failed parse — hexa parser rejects try as RHS expression with the catch _ pattern (Parse error at column 77 'unexpected token RBrace'). Block-statement pattern parses cleanly across all 11 files.",
+    "template": "let mut H = \"\"\ntry {\n    let h = env_var(\"HOME\")\n    if type_of(h) == \"string\" { H = to_string(h) }\n} catch err { H = \"\" }\nif len(H) == 0 { H = exec(\"echo \\\"$HOME\\\"\").trim() }",
+    "semantics": "(1) env_var goes through hexa_env_var → getenv() at C runtime, container-independent. (2) echo \"$HOME\" fallback uses POSIX shell builtin, available in busybox/dash/bash without external binaries. (3) type_of guard handles env_var returning non-string (nil) gracefully. (4) catch err preserves stack-clean state on hexa runtime exception."
+  },
+
+  "verification": {
+    "parse_check_all_11_files": "PASS (./hexa parse on all 11 modified files produces no Parse error / unexpected token / codegen ERROR; config_test.hexa and growth_tick_test.hexa emit unrelated 'unknown shim command' shell warnings which appear in stderr from a hexa parse hint mechanism but the files themselves parse cleanly — confirmed by 'OK: <file> parses cleanly' line in output)",
+    "smoke_test_runtime": {
+      "command": "HOME=/Users/ghost ./hexa run example/verify_pages_test.hexa",
+      "result": "PASS — printed '=== Pages Deploy Verify ===' header, atlas.n6 path resolved correctly to /Users/ghost/Dev/nexus/.. → atlas.n6 v1 10043 nodes detected, GitHub URLs returned 200. End-to-end home resolution works."
+    },
+    "raw_18_self_host_fixpoint": {
+      "command": "./hexa test self/main.hexa --selftest-only",
+      "baseline_before_patches": "FAIL — 'unknown shim command: exe' rc=1 in 654ms (verified by `git stash` then re-running selftest)",
+      "after_patches": "FAIL — 'unknown shim command: exe' rc=1 in 538ms (identical failure mode)",
+      "verdict": "raw 18 self-host fixpoint NEUTRAL — pre-existing infrastructure failure unrelated to this patch. My 12-site sweep does NOT regress self-host (same failure before+after). Independent root-cause investigation deferred — the 'unknown shim command: exe' likely originates from the run-selftest dispatch shim (separate from the `hexa run` binary path), and the self-host fixpoint mechanism here is the legacy --selftest-only path which may have been broken since an unrelated commit. No falsifier trip from this patch.",
+      "honest_C3": "I did NOT verify cwd-dependent failure of each individual site (mission step 2 was marked optional 'time-permitting'). Verified by transitive evidence: (a) all 12 sites use the identical exec(\"printenv HOME\") pattern that was empirically falsified for the parent A.1 site under the busybox container; (b) the busybox container is shared infrastructure, so the failure mode applies uniformly; (c) the patch is strictly additive (preserves prior behavior under correct getenv, adds shell-builtin fallback). raw 91 honest: per-site cwd reproduction skipped to maintain task velocity."
+    }
+  },
+
+  "cross_repo_absorption": {
+    "registry": "/Users/ghost/core/hexa-lang/state/discovery_absorption/registry.jsonl",
+    "registry_status_before": "bootstrap-only sentinel entry (no kick witnesses absorbed yet)",
+    "this_witness_absorption": "first real witness landed via cross-repo bootstrap → registry transitions from bootstrap-only to active",
+    "raw_47_status": "DISCHARGED — cross-repo trawl complete: 12/12 sites swept, 0 residual exec(\"printenv\" calls remain in hexa-lang/."
+  },
+
+  "uchg_check": {
+    "raw_1_chflags_uchg_status": "NOT_LOCKED — ls -lO showed standard 0644 flags on all 12 target files, no uchg/schg flags present. raw 85 unlock procedure not invoked (not needed)."
+  },
+
+  "falsifiers_preregistered": [
+    {
+      "id": "F-F1-1",
+      "predicate": "After this sweep, a new exec(\"printenv\") call site appears anywhere under ~/core/hexa-lang/ within 7 days",
+      "detection": "grep -rn 'exec(\"printenv' ~/core/hexa-lang/ 2>/dev/null | wc -l > 0",
+      "trip_action": "Re-apply F-A1-PATTERN sweep + investigate why the pattern was reintroduced (likely indicates missing lint/preinclude check or a developer unaware of the busybox constraint)",
+      "deadline": "2026-05-05T17:30:00Z"
+    },
+    {
+      "id": "F-F1-2",
+      "predicate": "raw 18 self-host fixpoint regresses *worse* than baseline due to my edits (i.e. selftest fails with NEW error not present before)",
+      "detection": "Diff selftest stderr before/after this commit; any new error class beyond 'unknown shim command: exe' = trip",
+      "trip_action": "Bisect which of the 12 patches introduces the regression; revert that one; investigate parser/runtime difference",
+      "deadline": "indefinite (sticky)"
+    },
+    {
+      "id": "F-F1-3",
+      "predicate": "Within 24h of patch landing, a downstream tool reports the same PATH-empty / HOME-empty failure mode that motivated A.1",
+      "detection": "Logs containing 'readme-data.json 없음' or 'HOME=' (empty) or '/Dev/nexus' path with missing prefix",
+      "trip_action": "The fallback pattern itself is broken (env_var AND echo both failing); investigate runtime.c hexa_env_var implementation or shell environment of the failing context",
+      "deadline": "2026-04-29T17:30:00Z"
+    }
+  ],
+
+  "deliverables": {
+    "patches": "12 sites across 11 files (1 file has 2 sites: growth_tick_test.hexa)",
+    "files_modified": [
+      "/Users/ghost/core/hexa-lang/example/auto_record_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/check_project_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/bridge_ensure_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/pattern_rules_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/verify_pages_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/guard_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/seed_engine_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/config_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/forge_test.hexa",
+      "/Users/ghost/core/hexa-lang/example/growth_tick_test.hexa",
+      "/Users/ghost/core/hexa-lang/self/grammar_autofix.hexa"
+    ],
+    "residual_printenv_calls": 0
+  }
+}

@@ -1,0 +1,12 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:45:00Z"|28|"loop-fire-iter-28-anchor-v2-bug-fix"|"61349c86"|"keep-going-all-kick-iter-26-fall-back-bug-fix"
+# schema:s2 ts iter event module added-functions LoC-added
+@s2 "2026-04-28T02:45:01Z"|28|"topology-fall-back-bug-FIXED"|"nexus/sim_bridge/anu_time/empirical_anchor_v2.hexa"|["_e2neighbor_s3-antipodal","_e2neighbor_blackhole-horizon","_e2neighbor_wormhole-bridge"]|50
+# schema:s3 ts iter event before after
+@s3 "2026-04-28T02:45:02Z"|28|"5-topology-now-distinct"|"t3-s3-BH-WH-IDENTICAL-only-flat-distinct"|[{"flat":"distinct-1D-ring"},{"t3":{"correlation":9,"T_V":32250,"pair":125,"phi_pi":1086,"max_avg":2811}},{"s3":{"correlation":5,"T_V":56100,"pair":203,"phi_pi":819,"max_avg":3082}},{"blackhole":{"correlation":8,"T_V":38769,"pair":125,"phi_pi":1089,"max_avg":2764}},{"wormhole":{"correlation":9,"T_V":31600,"pair":104,"phi_pi":1126,"max_avg":2887}}]
+# schema:s4 ts iter event fix-effect chi2-unchanged sim-toy-still-far framework-correctness new-physics-finding
+@s4 "2026-04-28T02:45:03Z"|28|"raw-91-C3-honest-disclosure"|"recovers-topology-distinguishability-only"|"astronomical-alpha-1.87e12-mp_me-3.37e10"|"sigma2-64-GENUINELY-FAR-from-physical-ref-unchanged"|"yes"|"none-bug-fix-only"
+# schema:s5 ts iter event iter-25 iter-26 iter-27 iter-28 loop-discipline
+@s5 "2026-04-28T02:45:04Z"|28|"iter-progression"|"falsification-1-cross-feed-ticks-dependent"|"falsification-2-circular-evidence-design"|"redesign-anchor-v2-honest-baseline"|"bug-fix-topology-fall-back-restored"|"falsification-cascade-then-bug-fix-iter-natural-flow"
+# schema:s6 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s6 "2026-04-28T02:45:05Z"|28|"iter-28-close"|13|"5-of-5-+-Stage-6-+-3-falsification-+-1-bug-fix"|21|9|39|0|3|"61349c86"

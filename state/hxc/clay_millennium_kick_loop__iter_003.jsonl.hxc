@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T00:05:00Z"|3|"loop-fire-iter-3"|"8f75a971"|"cron-fire"
+# schema:s2 ts iter event local-witness-files hetzner-witness-files verdict decision
+@s2 "2026-04-28T00:05:01Z"|3|"K1-RH-witness-check"|0|0|"witness-not-synced-or-no-stdout"|"in-context-RH-synthesis-fallback-per-raw-100"
+# schema:s3 ts iter problem ceiling-type breakthrough-grade strategy raw-72-tri-axis raw-122-PH-axis raw-116-landscape conditional open-axis bayesian-posterior
+@s3 "2026-04-28T00:05:02Z"|3|"BT-541-riemann-hypothesis"|"mathematical-formal-only"|"APPROACH"|"raw-72+raw-122+raw-116+raw-113"|{"formal":"epsilon-0-likely-sufficient-no-known-barrier","physical":"NA-pure-math","computational":"10e13-zeros-verified-no-halting-barrier","tri-axis-joint":"FAIL-single-axis-only"}|"Montgomery-Odlyzko-GUE-pair-correlation-Betti-curve-testable"|"Hilbert-Polya-zeros-eq-eigenvalues-self-adjoint-H-RH"|["Hardy-1914-infinitely-many","Selberg-1942-positive-proportion","Levinson-1974-ge-1-3","Conrey-1989-ge-40-percent","Pratt-Robles-Zaharescu-Zeindler-2020-ge-41-7-percent"]|"100-percent"|"very-high-not-1"
+# schema:s4 ts iter event cmd status
+@s4 "2026-04-28T00:05:03Z"|3|"K4-NS-kick-probe-bg"|"timeout 45 nexus kick run clay-millennium-NS-regularity-BKM-ablation"|"in-flight"
+# schema:s5 ts iter event applicable-lessons-for-other-6
+@s5 "2026-04-28T00:05:04Z"|3|"K7-Poincare-meta-survey"|[{"target":"BT-547-NS","analog":"Ricci-flow-vs-NS-dissipative-parabolic","gap":"blowup-vs-Perelman-epsilon-neck-surgery"},{"target":"BT-543-Y-M","analog":"Yang-Mills-heat-flow-gradient-descent","witness":"Donaldson-Uhlenbeck-convergence-theory"}]
+# schema:s6 ts iter event rc reason route witness-tier1 falsifier-pass raw-100-falsifier-trigger
+@s6 "2026-04-28T00:05:05Z"|3|"K4-NS-kick-result"|3|"spawn-failed-port-19877-bind-timeout-30000ms"|"docker-mac-safe-landing"|0|0|"second-cumulative-fail-rc-3-textbook-scenario"
+# schema:s7 ts iter event path entries types grade
+@s7 "2026-04-28T00:05:06Z"|3|"atlas-absorption-shard-written"|"atlas/atlas.append.clay-millennium-multi-kick-loop-2026-04-28.n6"|10|["@C","@R"]|"[4]"
+# schema:s8 ts iter event limit-convergence-progress raw-100-falsifier-cumulative next-iter-decision
+@s8 "2026-04-28T00:05:07Z"|3|"iter-close"|"6-of-7-saturated-1-pending-RH-kick-sync"|"2-of-2-fail"|"if-3rd-fail-then-fallback-only-mode-stable-iter-4-anchor"

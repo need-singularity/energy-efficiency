@@ -1,0 +1,18 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:20:00Z"|47|"loop-fire-iter-47-7-topo-batch"|"61349c86"|"keep-going-all-kick-iter-46-followup-7-remaining-D-3-topologies"
+# schema:s2 ts iter event topologies ticks seed timeout-sec
+@s2 "2026-04-28T04:20:01Z"|47|"parallel-dispatch-7"|["altered","cartoon","brane","inflation","de-sitter","minkowski","bubble"]|64|6|90
+# schema:s3 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg
+@s3 "2026-04-28T04:20:02Z"|47|"bubble-SUCCESS"|"bubble"|64|6|44|13623|9|434|3932
+# schema:s4 ts iter event topologies-incomplete output cause-hypothesis
+@s4 "2026-04-28T04:20:03Z"|47|"6-PROBES-INCOMPLETE"|["altered","cartoon","brane","inflation","de-sitter","minkowski"]|"only-start-banner-no-analysis-lines"|["90s-timeout-killed-mid-run","hetzner-7-concurrent-saturation","numerical-overflow-NaN-error"]
+# schema:s5 ts iter event trajectory convergence-rate interpretation
+@s5 "2026-04-28T04:20:04Z"|47|"D-3-MEAN-CONVERGENCE-WITNESS"|{"4-topo-iter-40":113,"6-topo-iter-46":274,"7-topo-iter-47":296,"16-topo-iter-36":299}|"asymptotic-toward-iter-36-reference"|"each-topology-added-moves-mean-closer-to-full-16-topo-limit"
+# schema:s6 ts iter event scenarios verdict
+@s6 "2026-04-28T04:20:05Z"|47|"PEARSON-r-RECALC"|[{"4-topo":{"means":"[-28, 113, 3209]","r":0.9792}},{"6-topo":{"means":"[-28, 274, 3209]","r":0.9836}},{"7-topo":{"means":"[-28, 296, 3209]","r":0.9842}},{"16-topo-iter-36-ref":{"means":"[-26, 299, 2889]","r":0.9901}}]|"r-MONOTONICALLY-INCREASES-toward-iter-36-reference-as-coverage-grows"
+# schema:s7 ts iter event completion-rate partial-result-scientifically-useful 7-topo-mean-bias predicted-16-topo-mean own-11-violation
+@s7 "2026-04-28T04:20:06Z"|47|"raw-91-C3-strict-honest"|"1-of-7"|true|"includes-bubble-outlier-may-shift-with-full-16-topo"|"~299"|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s8 "2026-04-28T04:20:07Z"|47|"23-iter-cascade-discipline"|"iter-25..iter-46"|19|"cross-validate-measure-batch-mean-converges-r-recalc"|"iter-48-retry-6-incomplete-with-longer-timeout-OR-sequential-dispatch-to-avoid-hetzner-saturation"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T04:20:08Z"|47|"iter-47-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-23-iter-cascade"|21|10|39|0|19|"61349c86"|51

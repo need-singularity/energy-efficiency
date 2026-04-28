@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:45:00Z"|64|"loop-fire-iter-64-stage-2-extension"|"61349c86"|"keep-going-all-kick-iter-63-followup-stage-2-causality"
+# schema:s2 ts iter event added new-constants functions-added position-independent-parser substrate-coverage
+@s2 "2026-04-28T05:45:01Z"|64|"lorentz-substrate-extension"|["ads-cft","de-sitter"]|["LT_ADS_CFT=13","LT_DE_SITTER=16"]|2|"YES"|"6-of-21-to-8-of-21"
+# schema:s3 ts iter event topologies all-causal-viol
+@s3 "2026-04-28T05:45:02Z"|64|"selftest-unchanged-PASS"|6|0
+# schema:s4 ts iter event topology ticks c energy-initial energy-final drift hash causal-viol axis-14-entropy
+@s4 "2026-04-28T05:45:03Z"|64|"ads-cft-lorentz-result"|"ads-cft"|100|1|105946|1594466|1488520|723205588|0|995
+@s4 "2026-04-28T05:45:04Z"|64|"de-sitter-lorentz-result"|"de-sitter"|100|1|105946|2127129|2021183|5351314037|0|999
+# schema:s5 ts iter event ads-cft-drift de-sitter-drift difference percent-diff interpretation
+@s5 "2026-04-28T05:45:05Z"|64|"CAUSALITY-DISCRIMINATOR-FOUND"|1488520|2021183|532663|36|"both-near-max-entropy-995-999-but-distinct-energy-drift"
+# schema:s6 ts iter event name measurement topology-coverage range orthogonality-evidence
+@s6 "2026-04-28T05:45:06Z"|64|"NEW-AXIS-15-CANDIDATE"|"Stage-2-energy-drift-under-retarded-propagation"|"ls_total_energy-final-minus-initial"|8|[1488520,2227366]|[{"ads-cft":"high-entropy-995-low-drift-1.49M"},{"de-sitter":"high-entropy-999-high-drift-2.02M"},{"blackhole":"low-entropy-877-high-drift-2.23M"},{"flat":"high-entropy-980-low-drift-1.71M"}]
+# schema:s7 ts iter event stage-2-substrate stage-2-actual-Crank-Nicolson limitations own-11-violation
+@s7 "2026-04-28T05:45:07Z"|64|"raw-91-C3-strict-honest"|"8-of-21"|"deferred"|["only-2-new-topologies-measured-for-energy-drift","single-seed-6-only","stage-2-lagging-quantum-substrate-18"]|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters stage-progression follow-up
+@s8 "2026-04-28T05:45:08Z"|64|"40-iter-cascade-discipline"|"iter-25..iter-63"|36|["stage-1-complete-18-of-21-substrate","stage-2-partial-8-of-21-substrate-energy-drift-discriminator-found"]|"iter-65-extend-lorentz-to-more-topologies-OR-stage-3-field-observables-OR-axis-15-formalize"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T05:45:09Z"|64|"iter-64-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-partial"|"21-sim-18-quantum-8-Lorentz"|10|39|0|36|"61349c86"|68

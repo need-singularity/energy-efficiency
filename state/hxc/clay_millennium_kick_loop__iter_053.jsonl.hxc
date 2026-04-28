@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:50:00Z"|53|"loop-fire-iter-53-norm-projection-stage-2-prep"|"61349c86"|"keep-going-all-kick-iter-52-followup-fix-wormhole-67-percent-drift"
+# schema:s2 ts iter event file function-added algorithm integration-points
+@s2 "2026-04-28T04:50:01Z"|53|"qs_normalize_to_target-implemented"|"sim_bridge/anu_time/quantum_universe.hexa"|"qs_normalize_to_target"|"1st-order-Newton-sqrt-rescaling"|["qs_init-captures-target","qs_step-applies-projection-after-each-tick"]
+# schema:s3 ts iter event cause selftest-attempt main-attempt mitigation-deferred
+@s3 "2026-04-28T04:50:02Z"|53|"verification-blocked"|"quantum_universe-CLI-arg-shift-same-bug-as-iter-44-v2-anchor"|"docker-neg-cache-hit-no-output"|"ERROR-unknown-topology-64"|"iter-54-fix"
+# schema:s4 ts iter event this-iter post-step-projection exact-unitarity-requires accuracy sufficient-for
+@s4 "2026-04-28T04:50:03Z"|53|"stage-2-classification"|"Stage-2-PREP-not-actual-Stage-2"|"NOT-exact-unitarity"|"Crank-Nicolson-implicit-or-Strang-splitting"|"O-dt-squared-per-step"|"axis-14-entropy-proxy-8-percent-tolerable"
+# schema:s5 ts iter event wormhole-67-percent-drift hypothesis re-measurement-pending
+@s5 "2026-04-28T04:50:04Z"|53|"axis-14-implications"|"FIXED-by-projection"|"wormhole-entropy-may-decrease-with-proper-norm-conservation"|"CLI-arg-shift-fix"
+# schema:s6 ts iter event norm-projection stage-2-actual verification-status wormhole-entropy-may-shift-downward own-11-violation
+@s6 "2026-04-28T04:50:05Z"|53|"raw-91-C3-strict-honest"|"1st-order-approximation-NOT-exact"|"Crank-Nicolson-deferred"|"code-correct-integration-test-pending"|"YES"|0
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s7 "2026-04-28T04:50:06Z"|53|"29-iter-cascade-discipline"|"iter-25..iter-52"|25|"wormhole-drift-discovery-stage-2-prep-cli-fix-pending"|"iter-54-quantum-CLI-arg-shift-fix-mirror-iter-45-OR-axis-14-multi-seed-with-norm-projection"
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s8 "2026-04-28T04:50:07Z"|53|"iter-53-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|21|10|39|0|25|"61349c86"|57

@@ -1,0 +1,34 @@
+{
+  "_doc": "biology axis sub-SSOT — parent: ../_index.json (biology key). Created 2026-04-28 to host the hexa-weave domain (write-side multi-strand molecular design composition) under a new top-level biology axis. Distinct from the life axis (which carries clinical / agricultural / pharmacological domains); biology axis is for fundamental molecular-design and write-side composition systems.",
+  "_axis": "biology",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_meta": {
+    "_category_name": "molecular biology, write-side multi-strand design composition, proteome inverse-design",
+    "_domains_count": 1,
+    "_verified_count": null,
+    "_alien_index_avg": null,
+    "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP run lands per F-TP5-b 90-day gate (deadline 2026-07-28)",
+    "_updated": "2026-04-28"
+  },
+  "_count": 1,
+  "_changelog": [
+    "1.0.0 (2026-04-28): biology axis sub-SSOT created. hexa-weave registered (write-side multi-strand molecular design composition; counterpart to AlphaFold 3 read-side single-chain prediction; tri-axis Omega-saturation closure witness PASS at workload ceiling per design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json; verdict tier APPROACH per raw 69 ceiling-classification; theoretical-analytical not yet empirical; F-TP5-b 90-day MVP gate 2026-07-28)."
+  ],
+  "domains": [
+    {
+      "slug": "hexa-weave",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "APPROACH",
+      "predecessor_witness": "design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json",
+      "closure_witness": "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+      "mvp_gate_falsifier": "F-TP5-b",
+      "mvp_gate_deadline": "2026-07-28"
+    }
+  ]
+}

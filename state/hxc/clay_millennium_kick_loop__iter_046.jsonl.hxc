@@ -1,0 +1,20 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topologies ticks seed runtime-sec verdict
+# schema:s3 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg
+# delta:s3 0:ts,1:int,4:int,5:int
+# schema:s4 ts iter event topology-count phi-pi-values phi-pi-mean vs-iter-36-16-topo-mean vs-iter-40-4-topo-mean trend
+# schema:s5 ts iter event positive negative observation
+# schema:s6 ts iter event cross-topo-validation single-seed-only big-crunch-outlier limitations own-11-violation
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T04:15:00Z"|46|"loop-fire-iter-46-4-topo-cross-validation"|"61349c86"|"keep-going-all-kick-iter-45-followup-cross-topology-validation"
+@s2 "2026-04-28T04:15:01Z"|46|"parallel-dispatch"|["ca3d","nested","big-crunch","ads-cft"]|64|6|90|"all-4-completed-no-CLI-errors"
+@s3 "ca3d-result"|"ca3d"|34|15069|-190|79|3359!jNGBnw1cgAEMAAJ
+@s3 "nested-result"|"nested"|44|15823|238|196|3230!AgAAAAAAE
+@s3 "big-crunch-result"|"big-crunch"|24|18402|-149|604|5813!AgAAAAAAE
+@s3 "ads-cft-result"|"ads-cft"|115|11848|1245|180|3761!AgAAAAAAE
+@s4 "2026-04-28T04:15:06Z"|46|"D-3-extended-baseline"|6|[79,196,180,209,374,604]|274|299|113|"extended-6-topo-closer-to-iter-36-16-topo-than-iter-40-4-topo-subset"
+@s5 "2026-04-28T04:15:07Z"|46|"pair-amp-sign-bifurcation"|[{"ads-cft":1245},{"nested":238},{"vacuum-decay-s64":1},{"vacuum-decay-s13":41}]|[{"ca3d":-190},{"big-crunch":-149}]|"ads-cft-5x-larger-magnitude-suggests-holographic-distinctness"
+@s6 "2026-04-28T04:15:08Z"|46|"raw-91-C3-strict-honest"|"4-of-11-D-3-topologies-tested"|"YES-no-ensemble-yet"|"phi-pi-604-4x-mean"|"toy-sigma-64-unchanged"|0
+@s7 "2026-04-28T04:15:09Z"|46|"22-iter-cascade-discipline"|"iter-25..iter-45"|18|"bug-detect-patch-verify-cross-validate-extend"|"iter-47-multi-seed-ensemble-on-extended-6-topology-OR-remaining-7-D-3-topologies"
+@s8 "2026-04-28T04:15:10Z"|46|"iter-46-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-22-iter-cascade"|21|10|39|0|18|"61349c86"|50

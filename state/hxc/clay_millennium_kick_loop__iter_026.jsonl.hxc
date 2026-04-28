@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:35:00Z"|26|"loop-fire-iter-26-5-observable-sweep"|"61349c86"|"keep-going-all-kick-iter-25-extension"
+# schema:s2 ts iter event ticks-tested topologies observables total-runs purpose
+@s2 "2026-04-28T02:35:01Z"|26|"5-observable-ticks-sweep"|[8,16,32,64]|5|["n_s","pion","chirp","alpha","mp_me"]|20|"raw-91-C3-extend-iter-25-falsification-to-all-anchor-observables"
+# schema:s3 ts iter event topology-tied root-cause flat-distinct implication
+@s3 "2026-04-28T02:35:02Z"|26|"ALREADY-KNOWN-bug-confirmed"|"t3-s3-blackhole-wormhole-IDENTICAL-output"|"standalone-anchor-uses-t3-neighbor-fallback"|"flat-1D-ring-vs-T3-3D-cube-only-real-distinction"|"4-of-5-topology-effectively-collapsed-1-dimension"
+# schema:s4 ts iter event n_s pion chirp alpha mp_me
+@s4 "2026-04-28T02:35:03Z"|26|"per-observable-robustness-vs-reference"|{"ref":9649,"sim-range":"9508-9566","close":"chi2-2-9","verdict":"close-but-toy-mapped"}|{"ref":1350000,"sim-range":"13200-219700","off-by":"6-100x","verdict":"FAR-from-ref"}|{"ref":304000,"sim-range":"9-153","off-by":"2000-30000x","verdict":"FAR-from-ref"}|{"ref":1370360,"sim-range":"1354628-1385444","close":"within-1.2-percent","verdict":"close-toy-mapped"}|{"ref":18361500,"sim-range":"18210800-18847700","close":"within-2.6-percent","verdict":"close-toy-mapped"}
+# schema:s5 ts iter event insight analyzer-design-bias falsification raw-91-C3-strict-verdict
+@s5 "2026-04-28T02:35:04Z"|26|"DECISIVE-CIRCULAR-EVIDENCE-FINDING"|"toy-proxy-functions-are-DESIGNED-with-mapping-range-near-reference"|["n_s_proxy = 9500 + (clamped * 400) / 1000 = hardcoded [9500, 9900] around Planck 9649","alpha_inv_proxy = 1370000 + offset = hardcoded near CODATA 1370360","mp_me_proxy = 18000000 + (ratio - 1000)*100 = hardcoded near PDG 18361500"]|"close-match-is-CIRCULAR-EVIDENCE-analyzer-FUNCTION-DEFINITION-bakes-in-reference-range"|"any-close-match-from-toy-anchor-is-DESIGN-ARTIFACT-not-physical-prediction"
+# schema:s6 ts iter event loop-self-validation-2 both-iters-demonstrate scientific-process
+@s6 "2026-04-28T02:35:05Z"|26|"educational-meta-finding"|"iter-25-falsified-cross-feed-iter-26-falsifies-design-bias"|"raw-91-C3-honest-disclosure-CAN-be-actively-enforced-via-multi-parameter-validation"|"hypothesis(iter-24)-falsification(iter-25)-deeper-falsification(iter-26)-shows-loop-self-correcting"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T02:35:06Z"|26|"iter-26-close"|13|"5-of-5-+-Stage-6-+-iter-25-26-falsification"|21|8|39|0|2|"61349c86"

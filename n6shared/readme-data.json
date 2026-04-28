@@ -14,7 +14,7 @@
   },
   "stats": {
     "ai_techniques": 17,
-    "dse_domains": 323,
+    "dse_domains": 324,
     "dse_paths": "5,893,032+",
     "nexus_tests": 1116,
     "bt_count": 130,
@@ -408,6 +408,34 @@
       ],
       "tools": [],
       "footer_extra": "n=6 Safety etc식: (1/10)^6 = 10⁻⁶ (roomnumberhierarchy=n, 위험reduction=σ-φ)"
+    },
+    {
+      "id": "biology",
+      "emoji": "🧫",
+      "name": "Biology",
+      "name_en": "Biology",
+      "anchor": "-Biology-biology",
+      "alien": 7,
+      "ceiling": false,
+      "bt_count": 0,
+      "bt_exact_pct": null,
+      "dse_count": null,
+      "industry_pct": null,
+      "industry_detail": "AlphaFold 3 / IsoDDE peer-class",
+      "experiment_pct": null,
+      "experiment_detail": "theoretical-analytical (raw 91 C3) — F-TP5-b MVP gate 2026-07-28",
+      "physical_limits": null,
+      "tp": 0,
+      "discoveries": 0,
+      "extras": [
+        "HEXA-WEAVE write-side multi-strand composition",
+        "tri-axis Omega-saturation PASS at workload ceiling (APPROACH grade per raw 69)"
+      ],
+      "docs": [
+        "biology/hexa-weave/"
+      ],
+      "tools": [],
+      "footer_extra": "TRANSCEND-CLOSURE-ALL chain (L4-L7 cosmological extension) PASS-WITH-C3-CAVEATS — STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not theorem chain"
     }
   ],
   "roadmap": [

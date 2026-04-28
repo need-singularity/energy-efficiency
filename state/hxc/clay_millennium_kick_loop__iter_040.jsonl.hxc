@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:45:00Z"|40|"loop-fire-iter-40-Stage-7-ensemble"|"61349c86"|"keep-going-all-kick-statistical-power-improvement"
+# schema:s2 ts iter event module LoC motivation
+@s2 "2026-04-28T03:45:01Z"|40|"Stage-7-candidate-implementation"|"nexus/sim_bridge/anu_time/universe_ensemble.hexa"|270|"iter-31-5-seed-generalization-N-up-to-20"
+# schema:s3 ts iter event flat t3 s3 blackhole wormhole
+@s3 "2026-04-28T03:45:02Z"|40|"selftest-N-10-ticks-64-results"|{"phipi-mean":724,"phipi-stdev":541,"max-avg":2916}|{"phipi-mean":75,"phipi-stdev":56,"max-avg":1473}|{"phipi-mean":152,"phipi-stdev":112,"max-avg":1718}|{"phipi-mean":77,"phipi-stdev":69,"max-avg":1925}|{"phipi-mean":147,"phipi-stdev":108,"max-avg":1962}
+# schema:s4 ts iter event iter-32-single-seed-vs-iter-40-ensemble interpretation implication
+@s4 "2026-04-28T03:45:03Z"|40|"CRITICAL-DISCREPANCY"|[{"flat":"single=1095 vs ensemble=724 (33% lower)"},{"t3":"single=141 vs ensemble=75 (47% lower)"}]|"seed=6-may-have-been-OUTLIER-in-some-topologies"|"iter-36-r-0.99-finding-needs-ensemble-revalidation-D-means-likely-different"
+# schema:s5 ts iter event stdev-mean-ratio all-topologies-high-noise-at-ticks-64 interpretation
+@s5 "2026-04-28T03:45:04Z"|40|"high-noise-finding"|[{"flat":0.75},{"t3":0.75},{"s3":0.74},{"blackhole":0.90},{"wormhole":0.73}]|"~0.7-0.9-stdev/mean-ratio"|"single-seed-toy-phi4-results-noisy-at-ticks-64-ensemble-needed"
+# schema:s6 ts iter event Stage-7-not-physics toy-sigma2-64-unchanged single-seed-bias-revealed own-11-violation
+@s6 "2026-04-28T03:45:05Z"|40|"raw-91-C3-strict-honest"|"statistical-power-improvement-not-new-physics"|"limits-same"|"iter-31-32-36-need-ensemble-revalidation"|0
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:45:06Z"|40|"iter-40-close"|13|"5-of-5-+-Stage-6-+-Stage-7-candidate-+-15-iter-cascade"|21|10|39|0|12|"61349c86"

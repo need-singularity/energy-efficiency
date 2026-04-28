@@ -1,0 +1,2 @@
+# schema:s1 ts tool root files_total skipped major_missing_tool minor_missing_usage minor_missing_exit_codes severity verdict
+@s1 "2026-04-26T07:19:35Z"|"cli_authoring_lint"|"/Users/ghost/core/hive/tool"|66|0|3|0|0|"warn"|"FAIL"

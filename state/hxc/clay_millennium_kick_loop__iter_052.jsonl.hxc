@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:45:00Z"|52|"loop-fire-iter-52-axis-14-ticks-variance"|"61349c86"|"keep-going-all-kick-iter-51-followup-axis-14-statistical-power"
+# schema:s2 ts iter event topologies ticks seed timeout-sec
+@s2 "2026-04-28T04:45:01Z"|52|"parallel-dispatch-5"|["flat","t3","s3","blackhole","wormhole"]|64|6|180
+# schema:s3 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+@s3 "2026-04-28T04:45:02Z"|52|"flat-result"|"flat"|64|6|1986535387|39688|43392|3704|9.3|430|980
+@s3 "2026-04-28T04:45:03Z"|52|"wormhole-result"|"wormhole"|64|6|-8032235824|39688|66208|26520|66.8|379|941
+# schema:s4 ts iter event topologies output cause-hypothesis
+@s4 "2026-04-28T04:45:04Z"|52|"3-incomplete"|["t3","s3","blackhole"]|"banner-only-no-done-line"|"hetzner-concurrent-saturation"
+# schema:s5 ts iter event drift cause impl raw-91-C3
+@s5 "2026-04-28T04:45:05Z"|52|"WORMHOLE-NORM-DRIFT-DISCOVERY"|"67-percent"|"antipodal-coupling-doubles-neighbor-count"|"Stage-2-needs-implicit-Crank-Nicolson-for-exact-unitarity"|"discrete-approximation-fundamentally-limited-for-wormhole"
+# schema:s6 ts iter event flat-32-to-64 wormhole-32-to-64 interpretation
+@s6 "2026-04-28T04:45:06Z"|52|"axis-14-ticks-variance"|{"entropy-32":937,"entropy-64":980,"delta":43,"percent":4.6}|{"entropy-32":939,"entropy-64":941,"delta":2,"percent":0.2}|"flat-continues-thermalizing-wormhole-saturated"
+# schema:s7 ts iter event success-rate wormhole-norm-drift-significant axis-14-data-points single-seed-only own-11-violation
+@s7 "2026-04-28T04:45:07Z"|52|"raw-91-C3-strict-honest"|"2-of-5"|"YES-67-percent"|7|"YES"|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters new-science-direction follow-up
+@s8 "2026-04-28T04:45:08Z"|52|"28-iter-cascade-discipline"|"iter-25..iter-51"|24|"Stage-2-implicit-unitary-Crank-Nicolson-needed-axis-14-wormhole-exclusion-possible"|"iter-53-Stage-2-Crank-Nicolson-OR-axis-14-multi-seed-on-flat-only-OR-extend-quantum-to-21-topologies"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T04:45:09Z"|52|"iter-52-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent"|21|10|39|0|24|"61349c86"|56

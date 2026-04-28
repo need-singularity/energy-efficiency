@@ -1,0 +1,52 @@
+# schema:s1 repo input_path input_bytes output_bytes saving_pct chain
+# enum:s1.0 41:"n6-architecture"
+# enum:s1.4 29:1.00|8:0|2:2.00|2:3.00
+# enum:s1.5 41:"A1"
+# schema:s2 phase file_count saving_count_ge_5pct total_input_bytes total_output_bytes byte_weighted_saving_pct
+# col-prefix:s1 1 A="state/clay_millennium_kick_loop
+# col-prefix:s1 1 B="state/atlas_convergence_witness
+# col-prefix:s1 1 C="state/cli_authoring/2026-04-26_
+# col-prefix:s1 1 D="state/discovery_absorption/regi
+# col-prefix:s1 1 E="state/triad_lint/2026-04-26_aud
+@s1 ^A|^PB.jsonl"|79121|78755|^A|^A
+@s1 ^A|^PA/iter_002.jsonl"|4008|3966|^C|^A
+@s1 ^A|^PA/iter_003.jsonl"|2387|2389|^B|^A
+@s1 ^A|^PA/iter_004.jsonl"|5244|5218|^A|^A
+@s1 ^A|^PA/iter_005.jsonl"|8451|8435|^A|^A
+@s1 ^A|^PA/iter_006.jsonl"|2805|2821|^B|^A
+@s1 ^A|^PA/iter_007.jsonl"|6596|6624|^B|^A
+@s1 ^A|^PA/iter_008.jsonl"|2494|2506|^B|^A
+@s1 ^A|^PA/iter_009.jsonl"|3520|3522|^B|^A
+@s1 ^A|^PA/iter_010_to_012_consolidated.jsonl"|2523|2545|^B|^A
+@s1 ^A|^PA/iter_013.jsonl"|2561|2537|^A|^A
+@s1 ^A|^PA/iter_014_to_016_consolidated.jsonl"|2838|2836|^A|^A
+@s1 ^A|^PA/iter_017.jsonl"|2053|2051|^A|^A
+@s1 ^A|^PA/iter_018.jsonl"|2479|2475|^A|^A
+@s1 ^A|^PA/iter_019.jsonl"|1926|1922|^A|^A
+@s1 ^A|^PA/iter_020.jsonl"|2673|2669|^A|^A
+@s1 ^A|^PA/iter_021.jsonl"|2615|2607|^A|^A
+@s1 ^A|^PA/iter_022.jsonl"|2991|2979|^A|^A
+@s1 ^A|^PA/iter_023.jsonl"|2033|2023|^A|^A
+@s1 ^A|^PA/iter_024.jsonl"|2159|2155|^A|^A
+@s1 ^A|^PA/iter_025.jsonl"|2848|2842|^A|^A
+@s1 ^A|^PA/iter_026.jsonl"|2653|2647|^A|^A
+@s1 ^A|^PA/iter_027.jsonl"|2215|2201|^A|^A
+@s1 ^A|^PA/iter_028.jsonl"|1881|1879|^A|^A
+@s1 ^A|^PA/iter_029.jsonl"|2231|2219|^A|^A
+@s1 ^A|^PA/iter_030.jsonl"|2342|2336|^A|^A
+@s1 ^A|^PA/iter_031.jsonl"|2251|2247|^A|^A
+@s1 ^A|^PA/iter_032.jsonl"|2566|2554|^A|^A
+@s1 ^A|^PA/iter_033.jsonl"|2505|2499|^A|^A
+@s1 ^A|^PA/iter_034.jsonl"|2316|2310|^A|^A
+@s1 ^A|^PA/iter_035.jsonl"|1898|1894|^A|^A
+@s1 ^A|^PA/iter_036.jsonl"|2060|2058|^A|^A
+@s1 ^A|^PA/iter_037.jsonl"|2446|2432|^A|^A
+@s1 ^A|^PA/iter_038.jsonl"|2347|2331|^A|^A
+@s1 ^A|^PA/iter_039.jsonl"|1965|1947|^A|^A
+@s1 ^A|^PA/iter_040.jsonl"|2010|2010|^B|^A
+@s1 ^A|^PA/iter_041.jsonl"|2045|2045|^B|^A
+@s1 ^A|^PA/iter_042.jsonl"|2543|2527|^A|^A
+@s1 ^A|^PCaudit.jsonl"|235|229|^D|^A
+@s1 ^A|^PDstry.jsonl"|520|514|^C|^A
+@s1 ^A|^PEit.jsonl"|217|211|^D|^A
+@s2 "7-n6-architecture-sweep-aggregate"|41|0|183571|182967|1.00

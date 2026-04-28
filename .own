@@ -317,3 +317,104 @@ own 23 live "proposal-umbrella — proposal section consolidation (HARD)"
   cron on-commit
   on_fail block
   label own#23 proposal-umbrella HARD gate
+
+own 24 new "n6-local: heredoc ARG_MAX content-size guard for n6 tool/*.hexa MED-risk files (anima own 7 cross-repo mirror — raw 144 n6 scope)"
+  slug n6-heredoc-arg-max-guard
+  base raw 9 hexa-only + raw 144 exec-cmd-length-guard (universal)
+  since 2026-04-28 (anima own 7 cross-repo mirror per raw 47)
+  scope n6-architecture git-tracked tool/*.hexa with heredoc-style `cat > <path> <<EOF` pattern inside exec(...)
+  rule n6/tool/*.hexa heredoc cmd-line dynamic-content writes ≥ 4 KiB MUST migrate to native write_file() builtin. Darwin ARG_MAX 1,044,361 bytes empirical cliff (verdict adc2e734 2026-04-28). Above cliff = pclose=32512 hard fail (E2BIG); below = byte-perfect transfer; 'silent' = caller-side `let _r = exec(cmd)` discarding rc (raw 12 silent-error-ban violation).
+  scope MED-risk n6 heredoc sites identified by static survey 2026-04-28:
+    - tool/install_fellows_audit_hook.hexa:115,120 (hook block append-block emit + sh-pipe append) — 2 dynamic-content sites
+  scope LOW-risk: remaining n6 tool surface emits via direct write_file() (already raw 144 compliant)
+  enforcement n6 tool/*.hexa heredoc dynamic-content > 4 KiB sites SHOULD migrate to write_file() within 2026-Q2. CI gate via tool/heredoc_arg_max_lint (hive canonical) cross-repo invocable.
+  exception small fixed-content (< 4 KiB) heredoc grandfathered for readability — annotation `// own 24: small-fixed-content`.
+  bans new n6 tool/*.hexa adding heredoc + dynamic-content > 4 KiB without write_file() migration
+  why n6 tool surface = atlas append + lens promotion + paper verify + invariant sync. Limited heredoc surface (1 file with 2 sites: install_fellows_audit_hook.hexa) but the file emits hook block content of unbounded size. Anima own 7 sister-mirror — n6 has narrow but real exposure surface, warranting same project-local guard. Cross-repo trail per raw 47.
+  proof state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl (cross-repo trawl witness from anima)
+  proof anima own 7 entry registered 2026-04-28 with verdict adc2e734
+  proof Bug 1 verdict agent adc2e734f2badf624 — Darwin ARG_MAX empirical measurement
+  status new
+  since 2026-04-28
+  cross-repo-trawl-witness anima/state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl
+  strategy-source anima own 7 (heredoc-arg-max-guard 2026-04-28)
+  on_fail warn
+  label own#24 n6-heredoc-arg-max-guard
+  deps raw:exec-cmd-length-guard
+
+own 25 new "n6-local: HXC content-class topology declaration (anima own 8 cross-repo mirror — raw 142 D1 n6 scope)"
+  slug n6-content-class-topology-mirror
+  base raw 142 autonomous-loop-self-improvement-empirical-discoveries discovery 1
+  since 2026-04-28 (anima own 8 cross-repo mirror per raw 47)
+  scope n6-architecture all HXC-compression-targeted artifacts (shared/n6/atlas.n6 + atlas append shards + state/atlas_convergence_witness.jsonl + reports/* + theory/proofs/* + papers/*.md + experiments/*)
+  rule n6 HXC-compressed artifacts MUST declare expected content class:
+    - structured-ledger (shared/n6/atlas.n6 entries, state/atlas_convergence_witness.jsonl, reports/*.json — A1-A8 structural compression)
+    - text-heavy / NL (papers/*.md body NL, experiments/*.md narrative, reports/*.md retrospective — A9 BPE dependent)
+    - entropy-bound (atlas-convergence semantic axes — n6 verdict 1% empirical floor per hive raw 137 history; algorithm catalog floor)
+    - mixed (theory/proofs/* embed code+NL+math symbols — A19 cross-file dict candidate)
+  enforcement raw 9 hexa-only HXC migration MUST emit content-class meta in artifact JSON header or sidecar. raw 142 D1 (content-class topology determines algorithmic ceiling) n6-local application.
+  exception ad-hoc / one-shot probe / single-dump artifact exempt. continuous ledger / state file mandatory.
+  why raw 142 cross-repo validation 2026-04-28 confirmed n6 surface diverse: structured-ledger (atlas.n6 entries reach high compression) + text-heavy (papers/experiments NL bodies) + entropy-bound (atlas-convergence verdict 1% Shannon floor — counter-example class for raw 137 80% target). Without class declaration, Phase 10 P0 A16/A17 + A19 algorithm dispatch defaults to wrong family. n6 atlas-convergence specifically validated as entropy-bound counter-example class in hive raw 137 history line — n6-local SSOT must surface this metadata.
+  proof state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl (cross-repo trawl witness)
+  proof anima own 8 entry 2026-04-28 + raw 142 cross-repo validation a71f4164
+  proof n6 atlas-convergence empirically entropy-bound (1% Shannon floor per hive raw 137 history line — counter-example class)
+  status new
+  since 2026-04-28
+  cross-repo-trawl-witness anima/state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl
+  strategy-source anima own 8 (content-class topology 2026-04-28 raw 142 D1 mirror)
+  on_fail warn
+  label own#25 n6-content-class-topology-mirror
+  deps raw:autonomous-loop-self-improvement-empirical-discoveries
+
+own 26 new "n6-local: try-and-revert + orthogonality wrapper mandate (anima own 9 cross-repo mirror — raw 142 D2/D3 n6 scope)"
+  slug n6-try-revert-orthogonality-wrapper
+  base raw 142 autonomous-loop-self-improvement-empirical-discoveries D2 + D3
+  since 2026-04-28 (anima own 9 cross-repo mirror per raw 47)
+  scope n6-architecture tool/*.hexa pipeline-affecting algorithm dispatch + lens promotion / atlas axiom add / paper verify transform sites
+  rule n6 pipeline-affecting algorithm dispatch MUST apply try-and-revert wrapper + role-tag declaration:
+    - D2 try-and-revert: every algorithm dispatch produces trial output, compares bytes, reverts if no improvement
+    - D3 orthogonality: primary-attack vs secondary-stacking vs always-fire roles tagged via `@role(...)` annotation; lens promotion (canonical telescope hexa output) is primary-attack class; atlas axiom add (post-promotion absorption) is always-fire class
+  enforcement n6/tool/*.hexa new algorithm dispatch sites MUST: (a) try-and-revert wrapper at transform-applying call site, (b) algorithm role-tag meta declaration, (c) raw 91 honest C3.
+  exception design-stage exploration / pure measurement (no transform) artifacts exempt.
+  bans algorithm dispatch without try-and-revert wrapper on transform-applying sites
+  bans best-of-N expansion without orthogonality role-tag declaration
+  why raw 142 D2+D3 cross-repo validation 2026-04-28 — n6 has lens promotion / atlas axiom add / paper verify embed = transform-applying dispatch surface. own#9 (lens-auto-absorb-atlas) and own#10 (rust-lens-ban-legacy) intersect this scope; own 26 adds orthogonality safety net. Anima own 9 sister-mirror.
+  proof state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl (cross-repo trawl witness)
+  proof anima own 9 entry 2026-04-28 + raw 142 cross-repo validation a71f4164
+  proof n6 lens promotion / atlas axiom add = transform-applying dispatch surface (try-and-revert wrapper applicable)
+  status new
+  since 2026-04-28
+  cross-repo-trawl-witness anima/state/format_witness/2026-04-28_own789_cross_repo_mirror.jsonl
+  strategy-source anima own 9 (try-revert + orthogonality wrapper 2026-04-28 raw 142 D2+D3 mirror)
+  on_fail warn
+  label own#26 n6-try-revert-orthogonality-wrapper
+  deps own:lens-auto-absorb-atlas
+  deps raw:autonomous-loop-self-improvement-empirical-discoveries
+
+own 27 new "n6-local: algorithm placement-axis declaration mandate (raw 142 D5 mirror, n6 scope)"
+  slug n6-placement-axis-orthogonality-mirror
+  base raw 142 D5 placement-axis paired discovery + raw 156 algorithm-placement-orthogonality-mandate
+  since 2026-04-28 (anima own 10 cross-repo mirror per raw 47)
+  scope n6-architecture tool/*.hexa lens promotion / atlas axiom add / paper verify pipeline (algorithm catalog dispatch surface)
+  rule every algorithm catalog addition / dispatch site MUST declare explicit placement axis (pre-A1-raw / post-A1 / secondary-stacking / cross-file) AND demonstrate orthogonality preservation via A/B placement saving% measurement BEFORE catalog promotion.
+  rule placement axes for n6 lens-promotion + atlas-append surface:
+    - pre-A1-raw (lens verify on raw .md / .pdf body — pre-structural-strip)
+    - post-A1 (atlas append shard absorb post-canonical-witness-emit — operates on already-normalized witness)
+    - secondary-stacking (paper verify embed validator — always-fire post lens promotion)
+    - cross-file (atlas convergence aggregation — multi-shard rollup, A19 family)
+  enforcement n6/tool/*.hexa new algorithm dispatch sites MUST: (a) `@placement(axis)` annotation, (b) A/B saving% measurement, (c) raw 91 honest C3.
+  exception design-stage prototype < 50 LoC exempt. pure-data-structure libraries exempt.
+  bans algorithm catalog promotion without placement-axis declaration
+  bans 'wherever-it-runs' assumption — specific placement spec mandatory
+  why n6 lens promotion order matters — verify-then-atlas-append vs atlas-append-then-verify produce divergent absorbed states. own 9 (lens-auto-absorb-atlas) declares the absorb order; own 27 declares the placement-axis at the algorithm-catalog level. raw 142 D5 anima-mirror evidence (A9 BPE 0pp delta) cross-repo applies — n6 lens promotion catalog exposed to identical silent-zero risk class when algorithm placement implicit. n6 atlas-convergence verdict (1% Shannon floor) is itself a placement-axis observation: atlas-class operates on already-distilled stream, post-A1 placement family.
+  proof state/format_witness/2026-04-28_own789_d5_cross_repo_mirror_live.jsonl (cross-repo trawl witness)
+  proof anima own 10 entry 2026-04-28 + raw 142 D5 + raw 156 forward-spec
+  proof n6 own 9 lens-auto-absorb-atlas establishes absorb-order — own 27 layers placement-axis at algorithm-catalog tier
+  status new
+  since 2026-04-28
+  cross-repo-trawl-witness anima/state/format_witness/2026-04-28_own789_d5_cross_repo_mirror_live.jsonl
+  strategy-source anima own 10 (placement-axis orthogonality mandate 2026-04-28 raw 142 D5 mirror)
+  on_fail warn
+  label own#27 n6-placement-axis-orthogonality-mirror
+  deps raw:autonomous-loop-self-improvement-empirical-discoveries
+  deps raw:algorithm-placement-orthogonality-mandate

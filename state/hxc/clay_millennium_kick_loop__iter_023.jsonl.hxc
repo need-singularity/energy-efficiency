@@ -1,0 +1,12 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:20:00Z"|23|"loop-fire-iter-23-unified-pipeline"|"61349c86"|"keep-going-all-kick-cross-stage-absorption"
+# schema:s2 ts iter event module LoC absorbs new-CLI
+@s2 "2026-04-28T02:20:01Z"|23|"raw-108-absorption-cross-stage-finding"|"nexus/sim_bridge/anu_time/universe_pipeline.hexa"|340|"iter-21-cross-stage-integration-test"|"nexus universe pipeline {selftest|list-topo|run <topo> [ticks]}"
+# schema:s3 ts iter event topologies stages composite-distinct results
+@s3 "2026-04-28T02:20:02Z"|23|"selftest-PASS"|5|5|true|[{"flat":{"norm2":39928,"n_s":9506,"chi2":9,"composite":3700253419}},{"t3":{"norm2":41776,"n_s":9503,"chi2":9,"composite":-812963554}},{"s3":{"norm2":41152,"n_s":9502,"chi2":9,"composite":3615885380}},{"blackhole":{"norm2":41541,"n_s":9503,"chi2":9,"composite":-5927431672}},{"wormhole":{"norm2":41264,"n_s":9503,"chi2":9,"composite":-5846863887}}]
+# schema:s4 ts iter event independence purpose Stage-6-candidate composite toy-limit
+@s4 "2026-04-28T02:20:03Z"|23|"raw-91-C3-honest-disclosure"|"5-stages-run-INDEPENDENTLY-same-topo-seed-NO-state-cross-feed"|"observable-comparison-NOT-state-propagation"|"state-propagation-pipeline-NOT-implemented"|"pure-XOR-aggregation-no-semantic-meaning"|"sigma2-64-genuine-physics-needs-sigma2-gt-1e6"
+# schema:s5 ts iter event n_s-chi2 norm2-spread interpretation
+@s5 "2026-04-28T02:20:04Z"|23|"observable-consistency-check"|"9-across-all-5-topologies-toy-proxy-stability-confirmed"|"39928-41776-(9.4-percent-variance-across-topology)"|"observable-mostly-stable-vs-topology-at-toy-scale-distinct-composites-verify-each-topology-leaves-fingerprint"
+# schema:s6 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents total-LoC commits own-11-violation raw-100-fallback-validated cron-active CLI-subcommands
+@s6 "2026-04-28T02:20:05Z"|23|"iter-23-close"|13|"5-of-5-100-percent"|21|7|39|"~2740"|"6-nexus-+-12-n6-architecture"|0|"39-of-39"|"61349c86-5m-recurring-7d"|"9-universe-+pipeline"

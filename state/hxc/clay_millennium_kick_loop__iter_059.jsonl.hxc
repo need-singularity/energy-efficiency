@@ -1,0 +1,21 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:20:00Z"|59|"loop-fire-iter-59-quantum-extended"|"61349c86"|"keep-going-all-kick-iter-58-followup-extend-quantum-substrate"
+# schema:s2 ts iter event topologies-added constants functions-added backwards-compat
+@s2 "2026-04-28T05:20:01Z"|59|"5-topology-ports-from-v2-anchor"|["vacuum-decay","altered","ca3d","big-crunch","ads-cft"]|["QT_VACUUM_DECAY=8","QT_ALTERED=9","QT_CA3D=18","QT_BIG_CRUNCH=19","QT_ADS_CFT=13"]|5|"YES-existing-5-topologies-unchanged"
+# schema:s3 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+@s3 "2026-04-28T05:20:02Z"|59|"vacuum-decay-result"|"vacuum-decay"|64|6|-3883138072|39688|39643|45|0.113|291|825
+@s3 "2026-04-28T05:20:03Z"|59|"ads-cft-result"|"ads-cft"|64|6|6799306489|39688|39697|9|0.023|465|995
+# schema:s4 ts iter event topologies output cause
+@s4 "2026-04-28T05:20:04Z"|59|"3-incomplete"|["altered","ca3d","big-crunch"]|"banner-only"|"hetzner-concurrent-saturation-at-4-probe-dispatch"
+# schema:s5 ts iter event entropy max-possible vs-flat-prior-max half-cut interpretation
+@s5 "2026-04-28T05:20:05Z"|59|"ADS-CFT-NEAR-MAX-DISCOVERY"|995|1000|980|465|"holographic-axis-2-antipodal-coupling-causes-near-maximal-bipartite-mixing"
+# schema:s6 ts iter event entropy vs-t3 unexpected interpretation half-cut-291-vs-t3-296
+@s6 "2026-04-28T05:20:06Z"|59|"vacuum-decay-anomaly"|825|838|"vacuum-decay-LOWER-than-t3-despite-perturbation"|"corner-only-perturbation-d-le-1-creates-asymmetric-flow-bipartite-imbalance"|"further-from-500-balanced"
+# schema:s7 ts iter event ranking data-points topologies-covered pending
+@s7 "2026-04-28T05:20:07Z"|59|"axis-14-cumulative-ranking"|[{"ads-cft":995},{"flat":980},{"s3":952},{"wormhole":939},{"blackhole":877},{"t3":838},{"vacuum-decay":825}]|12|7|[{"altered":"queued"},{"ca3d":"queued"},{"big-crunch":"queued"}]
+# schema:s8 ts iter event substrate-extension measurement-success-rate total-axis-14-points 21-topology-substrate-progress own-11-violation
+@s8 "2026-04-28T05:20:08Z"|59|"raw-91-C3-strict-honest"|"5-of-16-additional-ports-completed"|"2-of-5"|12|"10-of-21"|0
+# schema:s9 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s9 "2026-04-28T05:20:09Z"|59|"35-iter-cascade-discipline"|"iter-25..iter-58"|31|"axis-14-matrix-complete-substrate-extending"|"iter-60-retry-3-incomplete-OR-port-remaining-11-OR-Stage-2-Crank-Nicolson-OR-Stage-3-field"
+# schema:s10 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s10 "2026-04-28T05:20:10Z"|59|"iter-59-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|"21-sim-10-quantum"|10|39|0|31|"61349c86"|63

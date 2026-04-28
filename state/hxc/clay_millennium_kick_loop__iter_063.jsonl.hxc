@@ -1,0 +1,20 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:40:00Z"|63|"loop-fire-iter-63-FULL-D3-COMPLETE"|"61349c86"|"keep-going-all-kick-iter-62-followup-final-2-quantum-probes"
+# schema:s2 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy note
+@s2 "2026-04-28T05:40:01Z"|63|"nested-result"|"nested"|64|6|7325744978|39688|39683|5|0.013|294|830|"second-best-norm-conservation-after-big-crunch"
+# schema:s3 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+@s3 "2026-04-28T05:40:02Z"|63|"bubble-result"|"bubble"|64|6|8836480351|39688|39640|48|0.121|332|887
+# schema:s4 ts iter event n pearson-r spearman-rho r-evolution verdict
+@s4 "2026-04-28T05:40:03Z"|63|"FINAL-D3-CORRELATION"|16|0.3939|0.5118|[{"iter-60":{"n":9,"r":0.21}},{"iter-61":{"n":12,"r":0.27}},{"iter-62":{"n":14,"r":0.39}},{"iter-63":{"n":16,"r":0.39}}]|"r-STABILIZED-at-0.39-with-full-D-3-coverage"
+# schema:s5 ts iter event spearman-rho pearson-r interpretation conclusion outliers-effect
+@s5 "2026-04-28T05:40:04Z"|63|"spearman-vs-pearson"|0.5118|0.3939|"rank-ordering-MORE-correlated-than-linear-values"|"axes-track-topology-ORDER-better-than-MAGNITUDE"|"cartoon-brane-drive-Pearson-down-but-not-Spearman"
+# schema:s6 ts iter event ranking mean range spread spread-percent
+@s6 "2026-04-28T05:40:05Z"|63|"FULL-18-TOPO-RANKING"|[{"de-sitter":999},{"ads-cft":995},{"flat":980},{"minkowski":972},{"altered":966},{"cartoon":955},{"s3":952},{"calabi6":940},{"wormhole":939},{"bubble":887},{"blackhole":877},{"inflation":866},{"big-crunch":861},{"ca3d":851},{"t3":838},{"nested":830},{"vacuum-decay":825},{"brane":743}]|904.2|[743,999]|256|28
+# schema:s7 ts iter event entropy half-cut interpretation validates
+@s7 "2026-04-28T05:40:06Z"|63|"NESTED-LOW-validates-CONNECTIVITY-hypothesis"|830|294|"inner-sphere-outer-ring-asymmetric-coupling-leaks-only-at-i-0-axis-2-bipartite-imbalance"|"low-connectivity-low-entropy-hypothesis"
+# schema:s8 ts iter event success D-3-axis-14-FULL-COVERAGE r-stabilized ρ-rank limitations own-11-violation
+@s8 "2026-04-28T05:40:07Z"|63|"raw-91-C3-strict-honest"|"2-of-2"|"YES-16-topologies"|"YES-0.39-pearson"|"0.51"|["single-seed-6-only","ticks-64-only","sigma-64-toy"]|0
+# schema:s9 ts iter event prior-iters raw-91-C3-enforced-iters major-findings follow-up
+@s9 "2026-04-28T05:40:08Z"|63|"39-iter-cascade-discipline"|"iter-25..iter-62"|35|["iter-50-D-2-D-3-D-6-monotone","iter-58-axis-14-5x2-base","iter-60-r-0.21","iter-62-r-0.39","iter-63-r-0.39-rho-0.51-FINAL"]|"iter-64-stage-2-Crank-Nicolson-OR-stage-3-field-deeper"
+# schema:s10 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s10 "2026-04-28T05:40:09Z"|63|"iter-63-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|"21-sim-18-quantum-substrate-18-measured"|10|39|0|35|"61349c86"|67

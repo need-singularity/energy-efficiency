@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:25:00Z"|36|"loop-fire-iter-36-dimension-correlation-quantification"|"61349c86"|"keep-going-all-kick-iter-35-quantify"
+# schema:s2 ts iter event method sample-size
+@s2 "2026-04-28T03:25:01Z"|36|"dimension-time-correlation-statistical-test"|"per-dimension-mean-phi-pi-statistics-+-Pearson-correlation"|"D=1:n=1, D=2:n=3, D=3:n=16, D=6:n=1"
+# schema:s3 ts iter event D-1 D-2 D-3 D-6
+@s3 "2026-04-28T03:25:02Z"|36|"per-dimension-statistics"|{"n":1,"mean":1095,"outlier":"flat-1D-ring-fallback-dispatch-artifact"}|{"n":3,"mean":-26,"median":60,"min":-201,"max":63,"stdev":151.6}|{"n":16,"mean":298.7,"median":216,"min":79,"max":741,"stdev":190.2}|{"n":1,"mean":2889,"max":2889}
+# schema:s4 ts iter event Pearson-r-all-D-1-2-3-6 Pearson-r-D-ge-2 interpretation
+@s4 "2026-04-28T03:25:03Z"|36|"DECISIVE-CORRELATION-FINDING"|0.7692|0.9901|"D-1-flat-OUTLIER-removed-D-ge-2-strictly-monotone-r-0.99-VERY-STRONG"
+# schema:s5 ts iter event hypothesis result-D-ge-2 result-D-1 fundamental-finding NOT-physical
+@s5 "2026-04-28T03:25:04Z"|36|"hypothesis-validation"|"higher-dim-manifold-slower-toy-chaos-onset"|"VALIDATED-monotone-r-0.99"|"OUTLIER-1D-flat-fallback-dispatch-special-case"|"D-2-mean-26-D-3-mean-299-D-6-mean-2889-monotone-increase"|"lattice-phi4-dimensional-dependence-toy-scale-reproduction"
+# schema:s6 ts iter event statistical-power interpretation not-genuine-physics value own-11-violation
+@s6 "2026-04-28T03:25:05Z"|36|"raw-91-C3-strict-disclosure"|"n=4-dimensions-samples-small-D=2-n=3-D=6-n=1-limited-significance"|"toy-phi4-Hamilton-structural-property-dimensional-dependence"|"genuine-field-theory-mass-gap-asymptotic-freedom-renormalization-different"|"sim-reproduces-known-lattice-phi4-dimensional-property-at-toy-scale"|0
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:25:06Z"|36|"iter-36-close"|13|"5-of-5-+-Stage-6-+-12-iter-cascade"|21|9|39|0|9|"61349c86"

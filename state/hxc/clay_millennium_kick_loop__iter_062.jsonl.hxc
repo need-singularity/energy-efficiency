@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy note
+# delta:s2 0:ts,1:int,4:int,5:int,7:int
+# schema:s3 ts iter event axis-13 axis-14 interpretation
+# schema:s4 ts iter event ranking mean range spread
+# schema:s5 ts iter event trajectory trend interpretation conclusion
+# schema:s6 ts iter event measurements-success substrate-coverage axis-14-measured r-evolution-disclosed limitations own-11-violation
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T05:35:00Z"|62|"loop-fire-iter-62-cartoon-calabi6-minkowski"|"61349c86"|"keep-going-all-kick-iter-61-followup-3-more-topologies"
+@s2 "cartoon-result"|"cartoon"|6146296859|39659|29|0.073|394|955|"NOT-quantum-outlier-despite-classical-outlier-axis-13-741"!ipyCnw18gAEMkOwEAAM
+@s2 "calabi6-result-D6-FIRST"|"calabi6"|7498517673|39716|28|0.071|378|940|"D-6-XOR-pow2-coupling-mid-range-entropy"!AgAAAAAAAF
+@s2 "minkowski-result"|"minkowski"|-549665564|39710|22|0.055|583|972|"Lorentzian-asymmetric-but-high-entropy-Stage-2-precursor"!AgAAAAAAAF
+@s3 "2026-04-28T05:35:04Z"|62|"CARTOON-DUAL-AXIS-OBSERVATION"|"741-high-rank-outlier"|"955-mid-rank-not-outlier"|"classical-pathology-smoothed-by-quantum-dynamics-orthogonality-confirmed-via-cartoon"
+@s4 "2026-04-28T05:35:05Z"|62|"FULL-16-TOPO-AXIS-14-RANKING"|[{"de-sitter":999},{"ads-cft":995},{"flat":980},{"minkowski":972},{"altered":966},{"cartoon":955},{"s3":952},{"calabi6":940},{"wormhole":939},{"blackhole":877},{"inflation":866},{"big-crunch":861},{"ca3d":851},{"t3":838},{"vacuum-decay":825},{"brane":743}]|905.6|[743,999]|256
+@s5 "2026-04-28T05:35:06Z"|62|"AXIS-13-x-14-r-EVOLUTION"|[{"iter-60":{"n":9,"r":0.2117}},{"iter-61":{"n":12,"r":0.2694}},{"iter-62":{"n":14,"r":0.3910}}]|"r-INCREASING-as-more-topologies-added"|"axes-MODERATELY-correlated-not-strongly-orthogonal"|"iter-60-strong-orthogonality-claim-WEAKENED-to-moderate-correlation"
+@s6 "2026-04-28T05:35:07Z"|62|"raw-91-C3-strict-honest"|"3-of-3"|"18-of-21"|"16-of-21"|"YES"|["nested-bubble-untested-quantum","r-CI-wide-0-to-0.7-at-n-14"]|0
+@s7 "2026-04-28T05:35:08Z"|62|"38-iter-cascade-discipline"|"iter-25..iter-61"|34|"port-port-port-measure-rank-r-update"|"iter-63-nested-bubble-quantum-OR-stage-2-Crank-Nicolson-OR-Stage-3-field-deeper"
+@s8 "2026-04-28T05:35:09Z"|62|"iter-62-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|"21-sim-18-quantum-substrate-16-measured"|10|39|0|34|"61349c86"|66

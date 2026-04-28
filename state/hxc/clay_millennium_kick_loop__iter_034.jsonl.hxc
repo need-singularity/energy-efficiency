@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:15:00Z"|34|"loop-fire-iter-34-Group-B-long-time"|"61349c86"|"keep-going-all-kick-iter-33-extension"
+# schema:s2 ts iter event ticks-tested topologies total-runs purpose
+@s2 "2026-04-28T03:15:01Z"|34|"long-time-test"|[200,400,800]|5|15|"determine-Group-B-delayed-transition-vs-never-transition"
+# schema:s3 ts iter event s3-DELAYED-TRANSITION blackhole-OSCILLATING-NEAR-ZERO t3-flat-wormhole
+@s3 "2026-04-28T03:15:02Z"|34|"DECISIVE-FINDINGS"|{"ticks-120":204,"ticks-200":0,"ticks-400":0,"verdict":"transition-onset-around-ticks-200-saturated-after"}|{"ticks-120":45,"ticks-200":11,"ticks-400":25,"ticks-800":-3,"verdict":"distinctive-late-time-small-oscillation-NOT-collapse"}|"collapsed-to-0-by-ticks-200"
+# schema:s4 ts iter event pair-amp-values correl-values interpretation raw-91-C3-strict real-field-theory-difference
+@s4 "2026-04-28T03:15:03Z"|34|"NUMERICAL-OVERFLOW-detected-ticks-400-plus"|["10-9","10-12","10-15","10-18-near-i64-saturation"]|["10-7","10-13","10-15"]|"toy-phi4-amplitude-exponential-growth-no-damping"|"these-numerical-values-are-OVERFLOW-ARTIFACT-not-physical"|"thermalization-saturates-amplitude-toy-deterministic-diverges"
+# schema:s5 ts iter event t3 flat wormhole s3 blackhole
+@s5 "2026-04-28T03:15:04Z"|34|"topology-final-character-summary"|{"transition-tick":"~104","late-time":"explosive-overflow"}|{"transition-tick":"96-104","late-time":"mild-monotone"}|{"transition-tick":"~104","late-time":"damped"}|{"transition-tick":"~200","late-time":"delayed-then-saturated"}|{"transition-tick":"oscillating","late-time":"horizon-stabilization-small-oscillation"}
+# schema:s6 ts iter event ticks-400-800-overflow ticks-200-still-meaningful interpretation value
+@s6 "2026-04-28T03:15:05Z"|34|"raw-91-C3-strict-late-time-honest"|"YES-i64-saturation-numerical-not-physical"|"yes-shows-Group-B-delayed-not-stable"|"toy-deterministic-Hamilton-no-thermalization-amplitude-blows-up"|"sim-shows-DELAYED-TRANSITION-via-curvature-NOT-genuine-stability"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:15:06Z"|34|"iter-34-close"|13|"5-of-5-+-Stage-6-+-9-iter-cascade-+-1-long-time-test"|21|9|39|0|7|"61349c86"

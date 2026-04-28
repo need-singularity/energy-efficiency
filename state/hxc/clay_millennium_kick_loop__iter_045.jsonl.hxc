@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T04:10:00Z"|45|"loop-fire-iter-45-cli-parser-fix"|"61349c86"|"keep-going-all-kick-iter-44-followup-fix-arg-shift"
+# schema:s2 ts iter event file lines algorithm fallback
+@s2 "2026-04-28T04:10:01Z"|45|"patch-applied"|"sim_bridge/anu_time/empirical_anchor_v2.hexa"|"485-525"|"position-independent-topology-name-scan"|"legacy-positional-args-2-3-4"
+# schema:s3 ts iter event cmd output verdict
+@s3 "2026-04-28T04:10:02Z"|45|"verification-probe"|"hexa run empirical_anchor_v2.hexa 64 vacuum-decay 13"|{"ticks":64,"topology":"vacuum-decay","seed":13,"raw-correlation":47,"raw-T-over-V":15125,"raw-pair-amp":41,"raw-phi-pi":209,"raw-max-avg":3337}|"all-3-user-args-reached-script-CLI-PATCHED"
+# schema:s4 ts iter event seed-64-ticks-50 seed-13-ticks-64 observations
+@s4 "2026-04-28T04:10:03Z"|45|"vacuum-decay-cross-seed-2-points"|{"correl":31,"T-over-V":15130,"phi-pi":374}|{"correl":47,"T-over-V":15125,"phi-pi":209}|"T-over-V-stable-correl-50-percent-spread-phi-pi-2x-spread"
+# schema:s5 ts iter event prior-blocker resolution unblocked-task alternative
+@s5 "2026-04-28T04:10:04Z"|45|"blocker-RESOLVED"|"iter-43-44-CLI-could-not-pass-user-ticks-on-hetzner"|"position-independent-parser-now-handles-arg-shift"|"full-16-topo-D-3-ensemble-128-invocations-via-26-iter-batch-chain"|"raw-79-DAG-parallel-16-workers"
+# schema:s6 ts iter event patch-verified cross-topology-validation backwards-compat own-11-violation
+@s6 "2026-04-28T04:10:05Z"|45|"raw-91-C3-strict-honest"|"1-probe-success"|"PENDING-iter-46+"|"YES-legacy-positional-fallback-retained"|0
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-unblocking follow-up
+@s7 "2026-04-28T04:10:06Z"|45|"21-iter-cascade-discipline"|"iter-25..iter-44"|17|"iter-43-FALSE-claim-iter-44-retract-iter-45-real-fix"|"iter-46-broader-cross-topology-validation-using-patched-CLI"
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s8 "2026-04-28T04:10:07Z"|45|"iter-45-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-21-iter-cascade"|21|10|39|0|17|"61349c86"|48

@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:00:00Z"|19|"loop-fire-iter-19-Stage-4-empirical-anchor"|"61349c86"|"keep-going-all-kick-Stage-4"
+# schema:s2 ts iter stage file LoC references-embedded
+@s2 "2026-04-28T02:00:01Z"|19|"Stage-4-empirical-anchor"|"nexus/sim_bridge/anu_time/empirical_anchor.hexa"|390|["Planck-2018-n_s-0.9649","BMW-2008-pion-135-MeV","LIGO-GW150914-chirp-30.4-Msol","CODATA-2018-alpha_inv-137.036","PDG-2024-m_p_m_e-1836.15"]
+# schema:s3 ts iter event topologies observable-best-match chi2-totals best-fit
+@s3 "2026-04-28T02:00:02Z"|19|"selftest-PASS"|5|{"n_s_proxy":{"sim":9508-9515,"ref":9649,"sigma":42,"chi2":9}}|{"flat":257237439,"t3":203585111,"s3":203585111,"blackhole":203585111,"wormhole":203585111}|"t3-and-s3-blackhole-wormhole-tied"
+# schema:s4 ts iter event sigma2-toy analyzer-proxies scale-up-needed topology-tie best-observable
+@s4 "2026-04-28T02:00:03Z"|19|"raw-91-C3-honest-disclosure"|"64-cells-cannot-match-realistic-sigma2-gt-1e6"|"dimensional-analysis-NOT-physical-observables"|"Stage-5-sigma2-4096-32768-for-genuine-match"|"analyzer-falls-back-to-T3-neighbor-needs-topology-specific-functions"|"n_s-proxy-chi2-9-single-best-match-across-all-5-references"
+# schema:s5 ts iter event Stage-1 Stage-2 Stage-3 Stage-4 Stage-5 progress
+@s5 "2026-04-28T02:00:04Z"|19|"5-stage-roadmap"|"DONE-62d536fb"|"DONE-9d4b8a14"|"DONE-f6e72cb5"|"DONE-e1289a14"|"pending-scale-up"|"4-of-5-80-percent"
+# schema:s6 ts iter event subcommand stages-1-2-3-4-symmetric-CLI
+@s6 "2026-04-28T02:00:05Z"|19|"nexus-CLI-integration"|"nexus universe anchor {selftest | list | topo <topo> [ticks]}"|"yes"
+# schema:s7 ts iter event cumulative-axes sim-stages-implemented topology-modes sub-agents own-11-violation raw-100-fallback-validated cron-active next-iter-Stage-5
+@s7 "2026-04-28T02:00:06Z"|19|"iter-19-close"|12|4|21|38|0|"38-of-38"|"61349c86-5m-recurring-7d"|"scale-up-or-axis-fanout"

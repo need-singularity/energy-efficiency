@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:25:00Z"|24|"loop-fire-iter-24-Stage-6-propagation"|"61349c86"|"keep-going-all-kick-state-propagation"
+# schema:s2 ts iter event module LoC departure-from-iter-23
+@s2 "2026-04-28T02:25:01Z"|24|"Stage-6-candidate-implementation"|"nexus/sim_bridge/anu_time/universe_propagation.hexa"|360|"iter-23-independent-pipeline-vs-iter-24-cross-feed-propagation"
+# schema:s3 ts iter event independent-pipeline-iter-23 cross-feed-propagation-iter-24 chi2-improvement interpretation
+@s3 "2026-04-28T02:25:02Z"|24|"NOTABLE-STRUCTURAL-OBSERVATION"|{"all-5-topo":{"n_s_proxy":"9502-9506","chi2":9}}|{"flat":{"n_s":9599,"chi2":1},"t3":{"n_s":9599,"chi2":1},"s3":{"n_s":9594,"chi2":1},"blackhole":{"n_s":9576,"chi2":1},"wormhole":{"n_s":9580,"chi2":1}}|"9-to-1-9x-closer-to-Planck-9649"|"cross-feed-rescaling-sharpens-n_s-match-at-toy-scale"
+# schema:s4 ts iter event caveat cross-feed-mechanism NOT-genuine Stage-5-cannot-cross-feed toy-limit interesting-tag
+@s4 "2026-04-28T02:25:03Z"|24|"raw-91-C3-honest-disclosure-strict"|"LIKELY-COINCIDENCE-from-ad-hoc-re-interpretation-rescaling"|"complex-amplitude-to-real-density-to-field-amplitude-each-handoff-has-dimensional-rescaling"|"unitary-state-transfer"|"different-cell-count-remains-independent"|"sigma2-64-same-caveat-as-all-prior-stages"|"structural-observation-cross-feed-sharpens-n_s-match-at-toy-scale-NOT-physical-prediction"
+# schema:s5 ts iter event topologies all-distinct composite-XOR
+@s5 "2026-04-28T02:25:04Z"|24|"composite-fingerprints-distinct"|5|true|[3466547295,3775615209,4012350346,7625940833,874565670]
+# schema:s6 ts iter event subcommand CLI-total
+@s6 "2026-04-28T02:25:05Z"|24|"nexus-CLI-integration"|"nexus universe propagation {selftest | run <topo> [ticks_per_stage]}"|"10-universe-subcommands"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents total-LoC commits own-11-violation raw-100-fallback-validated cron-active
+@s7 "2026-04-28T02:25:06Z"|24|"iter-24-close"|13|"5-of-5-COMPLETE-+-Stage-6-candidate"|21|8|39|"~3100"|"7-nexus-+-13-n6-architecture"|0|"39-of-39"|"61349c86-5m-recurring-7d"

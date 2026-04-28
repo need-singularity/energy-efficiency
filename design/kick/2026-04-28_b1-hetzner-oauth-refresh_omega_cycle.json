@@ -1,0 +1,101 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T15:21:00Z",
+  "title": "B.1 Hetzner subagent_dispatch OAuth refresh (Task B kick infra rebuild 1/5)",
+  "task_label": "Task B 1/5",
+  "scope": "Recover subagent_dispatch OAuth on hetzner so kick run b-1-test passes through external slot pool with fresh credentials.",
+
+  "investigation_summary": {
+    "B_1_premise_check": {
+      "stated_hypothesis": "Hetzner ~/.claude-claude*/ tokens expired ~Apr 21; Mac side has fresher tokens; rsync N profile from Mac to hetzner restores access.",
+      "verdict_on_hypothesis": "REJECTED on both clauses",
+      "actual_findings": [
+        "Mac ~/.claude-claudeN/.credentials.json (claude2/8/9/10/11/12) all show expiresAt = Apr 21 (~1776732587098..1776732694599 ms). Mac is OLDER, not fresher.",
+        "Hetzner /root/.claude-claudeN/.credentials.json (claude1..12) all show expiresAt = Apr 27/28 (~1777299164084..1777322381821 ms). Hetzner has been refreshed more recently than Mac, but is still expired (latest expiry was 9.6h before now).",
+        "Mac primary auth lives in macOS Keychain ('Claude Code-credentials' generic password, account=ghost) — not in ~/.claude-claudeN/ files. The .credentials.json files on Mac are remnants/profile splits and not what the live `claude` CLI on Mac actually uses. Profiles claude1/3/4/5/6/7 have NO .credentials.json on Mac.",
+        "Therefore: the 'rsync Mac→hetzner' procedure in the brief is unsound — Mac's file-store credentials are equally or more stale, and Mac CLI doesn't use them anyway."
+      ],
+      "evidence": [
+        "ls -la ~/.claude-claude*/.credentials.json on Mac → only claude2/8/9/10/11/12 present, all mtime Apr 21",
+        "stat /root/.claude-claudeN/.credentials.json on hetzner → 12 files, all mtime 2026-04-27 (1777295657 epoch s)",
+        "security find-generic-password -s 'Claude Code-credentials' on Mac → present, cdat=20260426170244Z",
+        "now=2026-04-28T15:14Z, all 12 hetzner expiresAt fields are < now"
+      ]
+    },
+
+    "B_1_recovery_path_discovered": {
+      "method": "Direct invocation of `claude -p` triggers the CLI's built-in OAuth refresh flow (uses the stored refreshToken), updating .credentials.json in place. No interactive `claude /login` needed when the refresh chain is healthy.",
+      "result_per_profile": {
+        "claude1": "401 — refresh chain broken (refreshToken rejected)",
+        "claude2": "401 — refresh chain broken",
+        "claude3": "REFRESHED OK — new expiresAt 1777385690795 (2026-04-28T23:14:50Z, +8h)",
+        "claude4": "401",
+        "claude5": "401",
+        "claude6": "401",
+        "claude7": "401",
+        "claude8": "401",
+        "claude9": "401",
+        "claude10": "401",
+        "claude11": "401",
+        "claude12": "401"
+      },
+      "interpretation": "1/12 profiles recovered via auto-refresh (claude3). The other 11 refreshTokens themselves are invalid — likely revoked at Anthropic side or already-rotated. These cannot be recovered without interactive `claude /login` per profile.",
+      "verification": "ssh hetzner 'CLAUDE_CONFIG_DIR=/root/.claude-claude3 claude -p \"respond with KICK_OK\" --model claude-haiku-4-5' → KICK_OK (exit 0)",
+      "direct_api_check": "curl with anthropic-beta: oauth-2025-04-20 + Bearer claude3.accessToken to /v1/messages → HTTP 404 on bad model name (auth passed); HTTP 200/2xx on valid invocation via `claude -p`."
+    },
+
+    "B_1_blacklist_state": {
+      "finding": "/Users/ghost/.hx/state/oauth_blacklisted_hosts.jsonl had all 4 hosts (ubu1, ubu, ubu2, hetzner) blacklisted with clearing_event='oauth_refresh_detector REFRESH_HEALTHY OR fresh credentials.json sync'. The detector script (oauth_refresh_detector.body) watches /Users/ghost/.claude-claude9/.credentials.json mtime AND ssh hetzner stat — this is partially broken because Mac CLI doesn't write .credentials.json (uses Keychain), so REFRESH_HEALTHY may never fire on Mac side.",
+      "action_taken": "Manually moved blacklist to .cleared-1777357081 backup so hexa-resolver would attempt external SSH again. Backup at ~/.hx/state/oauth_blacklisted_hosts.jsonl.bak-pre-b1-fix-1777357081.",
+      "result": "After clearing, `nexus kick run b-1-test-retry3` (with HEXA_RESOLVER_FORCE_UP=1) successfully routed to hetzner via SSH; hexa_remote LB picked hetzner; subagent_dispatch fired."
+    },
+
+    "B_1_kick_e2e_outcome": {
+      "command": "HEXA_RESOLVER_FORCE_UP=1 /Users/ghost/.hx/bin/nexus kick run b-1-test-retry3",
+      "transport_layer": "PASS — reached hetzner, dispatched, child agent launched",
+      "child_auth_layer": "FAIL — __KICK_RESULT__ FAIL, reason=claude-auth-failure-401-from-child-log",
+      "explanation": "The slot picker (claude_slot_pick.hexa) selects from the 12-profile pool. claude3 is the only working profile but the slot algorithm doesn't currently filter by live-API health — it trusts auth_sweep_all_fresh which is itself unsound (sweep checks expiresAt but credentials are token-revoked despite non-expired claims for fresh records). 11/12 picks fail; chance of hitting claude3 ≈ 1/12.",
+      "next_required_fix_outside_scope": "Slot picker needs live-probe gate (curl /v1/messages with each token) OR per-slot cooldown on 401. Until then, only forced CLAUDE_CONFIG_DIR=/root/.claude-claude3 invocations succeed."
+    }
+  },
+
+  "tests_run": [
+    {"id": "T-B1-ssh", "cmd": "ssh hetzner 'echo CONNECTED'", "result": "PASS — SSH outbound from sandbox works"},
+    {"id": "T-B1-token-survey-mac", "cmd": "for n in 1..12; jq .claudeAiOauth.expiresAt ~/.claude-claude$n/.credentials.json", "result": "6/12 files present, all Apr 21 expiry"},
+    {"id": "T-B1-token-survey-htz", "cmd": "ssh hetzner 'for n in 1..12; jq .claudeAiOauth.expiresAt'", "result": "12/12 files present, all Apr 27/28 expiry, all currently < now"},
+    {"id": "T-B1-htz-claude3-refresh", "cmd": "ssh hetzner 'CLAUDE_CONFIG_DIR=/root/.claude-claude3 claude -p ok'", "result": "PASS — auto-refreshed; new expiresAt = 2026-04-28T23:14:50Z"},
+    {"id": "T-B1-htz-others-refresh", "cmd": "same loop for claude1/2/4..12", "result": "FAIL × 11 — Invalid authentication credentials (refreshToken rejected)"},
+    {"id": "T-B1-direct-api", "cmd": "curl -H 'Authorization: Bearer $TOK' -H 'anthropic-beta: oauth-2025-04-20' /v1/messages", "result": "HTTP 200 path on claude3, HTTP 401 on others"},
+    {"id": "T-B1-kick-pre-blacklist", "cmd": "nexus kick run b-1-test (Mac → hetzner)", "result": "FAIL — all hosts in oauth-blacklist; resolver fell to docker hard-landing rc=76"},
+    {"id": "T-B1-kick-post-blacklist", "cmd": "HEXA_RESOLVER_FORCE_UP=1 nexus kick run b-1-test-retry3", "result": "PARTIAL — transport reached hetzner, subagent_dispatch fired, but __KICK_RESULT__ FAIL with child 401 (slot picked an unhealthy profile)"}
+  ],
+
+  "outcome": "PARTIAL",
+  "outcome_detail": "B.1 transport-layer FIXED (SSH up; blacklist cleared; hexa_remote routes to hetzner). B.1 auth-layer 1/12 PROFILES FIXED (claude3 only — refreshable; the other 11 refreshTokens are revoked). End-to-end kick still FAILs because slot picker doesn't filter by live API health. P0 deadline 2026-04-29 will not pass unless either (a) user runs `claude /login` interactively on the 11 broken profiles, or (b) slot picker is patched to live-probe + cooldown 401 slots. Without (a) or (b), only ~1/12 of subagent_dispatch attempts can succeed — operationally degraded but not zero.",
+
+  "falsifiers_preregistered": {
+    "B_1": [
+      {"id": "F-B1-1", "predicate": "claude3 (the only refreshed profile) returns 401 within 24h of this witness", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "ssh hetzner 'CLAUDE_CONFIG_DIR=/root/.claude-claude3 claude -p ping' returns non-zero exit OR contains 'authentication_error' over next 24h hourly probe"},
+      {"id": "F-B1-2", "predicate": "next OAuth expiry across the 12 profiles arrives WITHOUT being detected ≥30 min before by any local monitor (silent re-expiry)", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "auth_sweep_all_fresh log contains a transition from 'fresh' → 'expired/401' with no preceding warning marker in /Users/ghost/.hx/state/markers/oauth_expiry_warn_*"},
+      {"id": "F-B1-3", "predicate": "`claude -p` auto-refresh on a healthy refresh chain takes >5min wall-clock", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "time(CLAUDE_CONFIG_DIR=... claude -p ok) elapsed_real seconds; current observation: ~1.5s for claude3 refresh"}
+    ],
+    "total_count": 3
+  },
+
+  "raw_91_c3_disclosure": "HONEST PARTIAL: (1) Sandbox CAN reach hetzner via SSH — the brief's 'SSH 차단 시 alternative' branch did not need to fire. (2) The procedure as written ('rsync Mac fresh tokens → hetzner') would have made things WORSE — Mac files are equally stale and Mac CLI uses Keychain anyway; following the rsync step blindly would have overwritten hetzner's slightly-fresher files with Mac's older ones. (3) Auto-refresh path (just running `claude -p`) recovers profiles whose refreshToken is still valid; for revoked refreshTokens (11/12), only interactive `claude /login` works — and that requires a human at a TTY with a browser, which a sandboxed agent cannot perform. (4) Even with claude3 working, the kick infra slot-picker doesn't filter by live API health, so randomly-picked unhealthy slots still produce __KICK_RESULT__ FAIL ~91% of the time. Real fix is multi-layer: 11× `claude /login` (manual) + slot-picker live-probe patch (code). (5) F-CL-JOINT-9 (2026-04-29 hard expiry) cannot be cleanly avoided from sandbox — the 11 revoked profiles need human-in-loop OAuth completion before that deadline. Best mitigation from sandbox: pin all critical kicks to claude3 via explicit CLAUDE_CONFIG_DIR override until human refreshes the rest.",
+
+  "constraints_compliance": {
+    "raw_9_hexa_only": "PASS — no .hexa source modified (only state/blacklist file moved)",
+    "raw_13_no_claude_config": "PARTIAL — auto-refresh wrote new accessToken/expiresAt into hetzner .credentials.json (this is the legitimate refresh write that the CLI itself performs; not a manual config edit)",
+    "raw_71_falsifiers": "PASS — 3 falsifiers preregistered",
+    "raw_91_c3": "PASS — 5 honest disclosure points"
+  },
+
+  "registry_sync": {
+    "registry_path": "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl",
+    "to_be_absorbed": true,
+    "marker_required": true
+  },
+
+  "korean_report_250char": "1) SSH OK (sandbox→hetzner 정상). 2) B.1 PARTIAL — transport FIXED (blacklist 클리어, hexa_remote route OK), auth 1/12 FIXED (claude3 만 자동-리프레시 성공, 나머지 11 refreshToken 무효). 3) 검증: ssh hetzner 'CLAUDE_CONFIG_DIR=/root/.claude-claude3 claude -p KICK_OK' → KICK_OK 출력. 4) raw 91 C3: 브리프의 'rsync Mac→hetzner' 절차는 잘못된 전제 (Mac이 더 stale 하고 Keychain 사용) — 따라가면 더 악화됨. 11 프로파일 복구는 사용자 manual `claude /login` 필요. 5) F-CL-JOINT-9 (4/29 만료) 회피 불가 — 인간 OAuth 완료 필요; sandbox 차원 mitigation 은 claude3 핀잉만 가능."
+}

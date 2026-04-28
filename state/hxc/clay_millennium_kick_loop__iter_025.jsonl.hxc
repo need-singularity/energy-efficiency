@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:30:00Z"|25|"loop-fire-iter-25-robustness-sweep"|"61349c86"|"keep-going-all-kick-validation"
+# schema:s2 ts iter event ticks-tested topologies total-runs raw-91-C3-purpose
+@s2 "2026-04-28T02:30:01Z"|25|"Stage-6-propagation-ticks-sweep"|[6,12,24,36,48]|5|25|"validate-iter-24-chi2-1-claim"
+# schema:s3 ts iter event ticks-6 ticks-12 ticks-24 ticks-36 ticks-48
+@s3 "2026-04-28T02:30:02Z"|25|"sweep-results-matrix"|[{"flat":{"n_s":9620,"chi2":0}},{"t3":{"n_s":9588,"chi2":1}},{"s3":{"n_s":9576,"chi2":1}},{"blackhole":{"n_s":9567,"chi2":1}},{"wormhole":{"n_s":9568,"chi2":1}}]|[{"flat":{"n_s":9599,"chi2":1}},{"t3":{"n_s":9599,"chi2":1}},{"s3":{"n_s":9594,"chi2":1}},{"blackhole":{"n_s":9576,"chi2":1}},{"wormhole":{"n_s":9580,"chi2":1}}]|[{"flat":{"n_s":9564,"chi2":4}},{"t3":{"n_s":9594,"chi2":1}},{"s3":{"n_s":9576,"chi2":1}},{"blackhole":{"n_s":9545,"chi2":4}},{"wormhole":{"n_s":9562,"chi2":4}}]|[{"flat":{"n_s":9532,"chi2":4}},{"t3":{"n_s":9500,"chi2":9}},{"s3":{"n_s":9530,"chi2":4}},{"blackhole":{"n_s":9563,"chi2":4}},{"wormhole":{"n_s":9523,"chi2":9}}]|[{"flat":{"n_s":9552,"chi2":4}},{"t3":{"n_s":9500,"chi2":9}},{"s3":{"n_s":9568,"chi2":1}},{"blackhole":{"n_s":9613,"chi2":0}},{"wormhole":{"n_s":9561,"chi2":4}}]
+# schema:s4 ts iter event claim-iter-24-chi2-1 ticks-dependence best-fit-topology-changes-with-ticks interpretation
+@s4 "2026-04-28T02:30:03Z"|25|"DECISIVE-RAW-91-C3-HONEST-VERDICT"|"REFUTED-not-robust-only-ticks-12-coincidence"|"chi2-oscillates-0-1-4-9-across-ticks"|[{"ticks-6":"flat-chi2-0"},{"ticks-12":"all-tied-chi2-1"},{"ticks-24":"t3-and-s3-chi2-1"},{"ticks-36":"blackhole-chi2-4"},{"ticks-48":"blackhole-chi2-0"}]|"ticks-dependent-best-topology-variation-confirms-toy-proxy-artifact"
+# schema:s5 ts iter event what-iter-24-claimed what-iter-25-found raw-91-C3-strict framework-validation
+@s5 "2026-04-28T02:30:04Z"|25|"science-process-validation"|"cross-feed-makes-Planck-match-9x-better"|"chi2-1-at-ticks-12-only-not-general"|"ticks-sweep-CONFIRMS-coincidence-not-mechanism"|"Stage-6-as-framework-VALID-numerical-match-as-toy-artifact-CONFIRMED"
+# schema:s6 ts iter event teachable-finding raw-91-C3-importance scientific-process loop-self-recommendation
+@s6 "2026-04-28T02:30:05Z"|25|"educational-value"|"sim-toy-proxy-CAN-look-physical-at-cherry-picked-ticks-but-fails-robustness-test"|"single-snapshot-numerical-claim-needs-ticks-sweep-validation"|"hypothesis-iter-24-tested-iter-25-falsified"|"iter-25-is-most-valuable-iter-of-recent-block-because-it-FALSIFIED-tempting-claim"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-100-fallback cron-active
+@s7 "2026-04-28T02:30:06Z"|25|"iter-25-close"|13|"5-of-5-+-Stage-6-+-iter-25-robustness-validation"|21|8|39|0|"39-of-39"|"61349c86"

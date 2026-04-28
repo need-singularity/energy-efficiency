@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:50:00Z"|29|"loop-fire-iter-29-v2-ticks-sweep"|"61349c86"|"keep-going-all-kick-symmetric-falsification"
+# schema:s2 ts iter event ticks-tested topologies observables total-runs methodology purpose
+@s2 "2026-04-28T02:50:01Z"|29|"v2-ticks-sweep-test"|[8,16,32,64]|5|5|20|"iter-25-symmetric-applied-to-v2"|"verify-v2-cherry-picking-impossibility"
+# schema:s3 ts iter event correl-range T_V-range pair-amp-range phi_pi-range max_avg-range
+@s3 "2026-04-28T02:50:02Z"|29|"v2-raw-observable-variance-across-ticks"|"5-54-amplitude-grows-with-ticks"|"543-56100-non-monotone"|"-319-to-354-NEGATIVE-EMERGENCE-at-ticks-64"|"141-3423-MONOTONE-DECREASING"|"2671-6600-relatively-stable"
+# schema:s4 ts iter event negative-pair-emergence non-linear-correl-amplification phi_pi-monotone-decrease max_avg-stability
+@s4 "2026-04-28T02:50:03Z"|29|"interesting-sub-findings"|"ticks-64-s3-pair=-218-wormhole-pair=-319-field-oscillation-enters-negative-regime"|"t3-correl-11-at-ticks-8-grows-to-54-at-ticks-64-3-5x-amplification"|"directional-dynamics-ratio-drops-from-3423-to-141"|"3000-6000-region-persistent"
+# schema:s5 ts iter event v1-hardcoded v2-raw interpretation
+@s5 "2026-04-28T02:50:04Z"|29|"v1-vs-v2-key-difference"|"ticks-dependent-variation-stays-WITHIN-reference-region-cherry-picked-chi2-1-possible"|"ticks-dependent-variation-OUTSIDE-reference-region-raw-9-100-vs-ref-9649-chi2-astronomical-at-ALL-ticks"|"bias-free-impossibility-of-cherry-picking-v2-honest-character-confirmed"
+# schema:s6 ts iter event iter-25 iter-26 iter-27 iter-28 iter-29 5-iter-pattern
+@s6 "2026-04-28T02:50:05Z"|29|"loop-discipline-extended"|"falsification-1-v1-cross-feed"|"falsification-2-v1-design-bias"|"redesign-v2-honest-baseline"|"v2-topology-fall-back-bug-fix"|"v2-symmetric-robustness-test-confirms-honest-character"|"falsification-cascade-then-bug-fix-then-symmetric-validation"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T02:50:06Z"|29|"iter-29-close"|13|"5-of-5-+-Stage-6-+-3-falsification-+-1-bug-fix-+-1-symmetric-validation"|21|9|39|0|3|"61349c86"

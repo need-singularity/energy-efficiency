@@ -1,0 +1,16 @@
+# schema:s1 ts iter axis sub-agent verdict saturation candidates added recommendation
+@s1 "2026-04-28T01:30:00Z"|14|"A10-math-deep"|"affef7e937c151514"|"BSD-STRONG-only / Hodge-PARTIAL / RH-WEAK / YM-NS-ABSENT"|"43.1->47.1-percent-+4pp"|"65->70"|"B16-p-adic-LOW-+-B17-ordinal-+-B18-topos-+-B19-HoTT-+-B20-forcing-all-UNFEASIBLE"|"A11-physical-experimental-HIGH-class-injection"
+# schema:s2 ts iter axis sub-agent verdict saturation candidates added key-finding
+@s2 "2026-04-28T01:35:00Z"|15|"A11-physical-experimental"|"ae87a3e8cea4ca9f4"|"YM-STRONGEST-substrate-richness / NS-MEDIUM / Hodge-LOW-MEDIUM / RH-LOW / BSD-ABSENT-lab-orthogonal"|"47.1->45.3-percent--1.8pp"|"70->75"|"B21-hubbard-HIGH-+-B22-bec-turbulence-MEDIUM-HIGH-+-B23-floquet-MEDIUM-+-B24-schwinger-MEDIUM-+-B25-nv-LOW-MEDIUM"|"Y-M = physical-side most-progressable quadrant (4-of-7-substrate-classes-feed-YM); BSD = lab-orthogonal"
+# schema:s3 ts iter event file LoC features
+@s3 "2026-04-28T01:40:00Z"|16|"Stage-1-quantum-amplitude-implemented"|"nexus/sim_bridge/anu_time/quantum_universe.hexa"|380|["complex-amplitude-re-im","approximate-unitary-discrete-Schrodinger","entanglement-proxy-half-cut-weight","5-topology-dispatch-flat-t3-s3-blackhole-wormhole","BBM-PT-symmetric-toy-mode","selftest-PASS"]
+# schema:s4 ts iter event fingerprints verdict
+@s4 "2026-04-28T01:40:01Z"|16|"selftest-results"|[{"flat":{"norm2":40610,"hash":5426065984,"split-per-mille":375}},{"t3":{"norm2":47997,"hash":-114047210,"split-per-mille":356}},{"s3":{"norm2":44733,"hash":-3926638502,"split-per-mille":381}},{"blackhole":{"norm2":46953,"hash":-7040728678,"split-per-mille":362}},{"wormhole":{"norm2":45518,"hash":-7413495214,"split-per-mille":377}}]|"5-distinct-+-idempotent-+-bipartite-asymmetry-variance-649"
+# schema:s5 ts iter event norm-drift fix-needed bipartite-split topology-effects
+@s5 "2026-04-28T01:40:02Z"|16|"raw-91-C3-honest-disclosure"|"discrete-unitary-approximation-not-exact-norm2-varies-40610-to-47997"|"Crank-Nicolson-implicit-scheme-Stage-2"|"all-360-380-per-mille-from-initial-wavepacket-at-boundary"|"variance-649-confirms-topology-discriminative-power"
+# schema:s6 ts iter event subcommand help-line
+@s6 "2026-04-28T01:40:03Z"|16|"nexus-CLI-integration"|"nexus universe quantum {selftest | topo <name> [ticks]}"|"updated"
+# schema:s7 ts iter event channel absorption-target followup-stages
+@s7 "2026-04-28T01:40:04Z"|16|"raw-108-absorption-channel"|"tool-edit-and-commit"|"sim toy-limit transcendence Stage-1"|["Stage-2-Lorentz-causality","Stage-3-field-theoretic-action","Stage-4-empirical-anchor","Stage-5-scale-up"]
+# schema:s8 ts iter event cumulative-axes saturation topology-modes sub-agents sim-stages cron-active own-11-violation
+@s8 "2026-04-28T01:40:05Z"|16|"iter-16-close"|12|"45.3-percent"|21|38|"1-of-5-implemented"|"61349c86-5m-recurring-7d"|0

@@ -1,0 +1,16 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:30:00Z"|37|"loop-fire-iter-37-multi-tick-dim-correlation-robustness"|"61349c86"|"keep-going-all-kick-iter-36-validation"
+# schema:s2 ts iter event ticks-tested topologies total-runs purpose
+@s2 "2026-04-28T03:30:01Z"|37|"multi-tick-test"|[16,32,96,128]|20|80|"validate-iter-36-r-0.99-finding-across-multiple-ticks"
+# schema:s3 ts iter event ticks-16 ticks-32 ticks-64 ticks-96 ticks-128
+@s3 "2026-04-28T03:30:02Z"|37|"per-tick-D-mean-phi-pi"|{"D2-mean":1000,"D3-mean":1043,"D6":1789,"verdict":"SATURATION-ARTIFACT-D=2-all-exactly-1000"}|{"D2-mean":529,"D3-mean":877,"D6":2684,"verdict":"MONOTONE-CONFIRMED-D2-lt-D3-lt-D6"}|{"D2-mean":-26,"D3-mean":299,"D6":2889,"verdict":"r-0.99-iter-36-baseline"}|{"D2-mean":50,"D3-mean":119,"D6":1325,"verdict":"PARTIAL-TRANSITION-mixed"}|{"D2-mean":-15,"D3-mean":-47,"D6":-400,"verdict":"POST-TRANSITION-all-negative"}
+# schema:s4 ts iter event ticks-96 ticks-128 transition-window interpretation
+@s4 "2026-04-28T03:30:03Z"|37|"calabi6-D-6-transition-window-NARROWED"|1325|-400|"96-to-128-ticks"|"calabi6-LATEST-transition-30-ticks-after-D-3"
+# schema:s5 ts iter event ticks-64 ticks-96 ticks-128 transition-window interpretation
+@s5 "2026-04-28T03:30:04Z"|37|"D-2-transition-window-NARROWED"|-26|50-mixed|-15-universal-negative|"64-to-96-ticks"|"D-2-EARLIEST-transition"
+# schema:s6 ts iter event valid-regime r-0.99-narrowed-to invalid-regime-ticks-16 invalid-regime-ticks-128 verdict
+@s6 "2026-04-28T03:30:05Z"|37|"REGIME-SPECIFIC-CORRELATION"|"ticks-32-to-64-pre-transition"|"pre-transition-regime-only"|"D-2-saturation-artifact"|"post-transition-correlation-breaks-down"|"iter-36-finding-is-WINDOW-SPECIFIC-not-universal-across-all-ticks"
+# schema:s7 ts iter event robustness-narrowed still-valid-finding but-not-universal framework-value not-physical own-11-violation
+@s7 "2026-04-28T03:30:06Z"|37|"raw-91-C3-honest-strict"|"r-0.99-valid-only-in-pre-transition-regime-ticks-32-64"|"D-2-D-3-D-6-monotone-in-pre-transition"|"transition-regime-ticks-96-128-correlation-breaks"|"sim-discriminates-dimensions-in-pre-transition-only"|"toy-phi4-Hamilton-deterministic"|0
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s8 "2026-04-28T03:30:07Z"|37|"iter-37-close"|13|"5-of-5-+-Stage-6-+-13-iter-cascade"|21|9|39|0|10|"61349c86"

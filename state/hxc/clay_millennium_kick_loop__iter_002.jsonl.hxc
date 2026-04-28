@@ -1,0 +1,20 @@
+# schema:s1 ts iter event cron_id source raw_strategies_used
+@s1 "2026-04-28T00:00:00Z"|2|"loop-fire-iter-2"|"8f75a971"|"loop-skill-manual-replay"|["raw-46-reverse-engineering","raw-69-ceiling-classification","raw-72-ordinal-theoretic-ceiling","raw-73-structural-admissibility","raw-91-honesty-triad-C3","raw-100-fallback-clause","raw-110-ablation","raw-112-functor-composition","raw-113-bayesian-evidence","raw-115-anti-fragility","raw-116-energy-landscape","raw-119-temporal-decay","raw-122-persistent-homology"]
+# schema:s2 ts iter problem ceiling-type breakthrough-grade strategy seal-witness conditional-results open-axis persistent-homology-axis
+@s2 "2026-04-28T00:00:01Z"|2|"BT-543-yang-mills"|"mathematical"|"APPROACH"|"raw-116+raw-73"|"wilson-loop-area-law-implies-mass-gap"|["lattice-Wilson-1974","2D-Witten-Migdal-1991"]|"4D-continuum-SU(N)-pure-Yang-Mills"|"orbit-space-A-mod-G-Betti-numbers"
+# schema:s3 ts iter problem ceiling-type breakthrough-grade strategy ablation-components null-baseline conditional tao-2015-averaged-blowup anti-fragility-witness
+@s3 "2026-04-28T00:00:02Z"|2|"BT-547-navier-stokes"|"mathematical-physical"|"APPROACH"|"raw-110+raw-115"|["convection","vortex-stretching","pressure","viscous","forcing"]|"2D-no-blowup,1D-Burgers-blowup-without-diffusion"|"BKM-1984-vorticity-criterion"|"FRAGILE-toy-model"|"none-documented-in-true-NS"
+# schema:s4 ts iter problem ceiling-type breakthrough-grade strategy functor cycle-map conjecture conditional open-axis
+@s4 "2026-04-28T00:00:03Z"|2|"BT-545-hodge"|"mathematical"|"APPROACH"|"raw-112+raw-73"|"H: Var/C -> MHS"|"cl: CH^p(X) tensor Q -> H^2p(X,Q)(p)"|"image-cl-equals-Hodge-classes"|["codim-1-Lefschetz-1-1","abelian-up-to-dim-4"]|"general-codim"
+# schema:s5 ts iter problem ceiling-type breakthrough-grade strategy conjecture bayesian-axis conditional temporal-decay-half-life
+@s5 "2026-04-28T00:00:04Z"|2|"BT-546-bsd"|"mathematical"|"APPROACH"|"raw-113+raw-119"|"rank-E-Q-equals-ord-s-1-L-E-s"|"prior-rank-distribution-plus-L-vanishing-observations"|["rank-le-1-Kolyvagin-Gross-Zagier"]|"infinite-numerical-evidence-cremona-LMFDB-stable"
+# schema:s6 ts iter problem ceiling-type breakthrough-grade strategy paper-doi-list verifying-papers universal-tool-extracted meta-survey-applies-to
+@s6 "2026-04-28T00:00:05Z"|2|"poincare"|"mathematical"|"DONE"|"raw-76-paper-lineage"|["arXiv:math/0211159","arXiv:math/0303109","arXiv:math/0307245"]|["Cao-Zhu-2006","Kleiner-Lott-2008","Morgan-Tian-2007"]|"long-term-geometric-flow-plus-entropy-plus-epsilon-neck-surgery"|["BT-547-NS-via-Ricci-flow-analog?","BT-543-Y-M-via-gradient-flow"]
+# schema:s7 ts iter event cmd status fallback-trigger-on-fail
+@s7 "2026-04-28T00:00:06Z"|2|"kick-probe-K1-RH"|"timeout 60 nexus kick run clay-millennium-RH-zero-line-conditional-axis"|"in-flight-bg"|"in-context-RH-synthesis-next-iter"
+# schema:s8 ts iter event rc dispatch-chain host-picked ubu2-status ubu1-status kick-body-output witness-file interpretation raw-100-falsifier-evidence
+@s8 "2026-04-28T00:00:07Z"|2|"kick-probe-K1-RH-result"|0|"working"|"hetzner"|"PSI=92.85-saturated-skipped"|"ssh-fail-11520"|"none-in-60s"|"not-found-on-mac"|"kick-running-on-hetzner-or-sync-gap"|"partial-not-cumulative-fail"
+# schema:s9 ts iter event problem ceiling-type breakthrough-grade barriers-cited strategy further-iter-on-this-problem
+@s9 "2026-04-28T00:00:08Z"|2|"barrier-classification-immediate"|"BT-542-p-vs-np"|"algorithmic"|"BARRIER"|["relativization-Baker-Gill-Solovay-1975","natural-proofs-Razborov-Rudich-1994","algebrization-Aaronson-Wigderson-2008"]|"raw-69-survey-only"|"none-saturated"
+# schema:s10 ts iter event problems-saturated problems-conditional-witness-accumulated problems-pending-iter-3 limit-convergence-progress
+@s10 "2026-04-28T00:00:09Z"|2|"iter-close"|["BT-542-PvNP-BARRIER","poincare-DONE"]|["BT-543-Y-M","BT-545-Hodge","BT-546-BSD","BT-547-NS"]|["BT-541-RH-witness-recheck-or-fallback"]|"6-of-7-classified-1-pending-K1-witness"

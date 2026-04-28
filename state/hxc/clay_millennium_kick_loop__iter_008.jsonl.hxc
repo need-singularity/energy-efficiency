@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T00:35:00Z"|8|"loop-fire-iter-8"|"5db7b3a6"|"user-implement-closed-traversable-+-toroidal-+-evolution-in-sim"
+# schema:s2 ts iter raw-108-discovery-implementation-absorption absorption-channel target-finding absorption-target-path
+@s2 "2026-04-28T00:35:01Z"|8|"applied"|"tool-edit-and-commit"|"A8-traversable-closed-+-A8-prime-toroidal-+-A8-prime-evolution"|"/Users/ghost/core/nexus/sim_bridge/anu_time/topology_universe.hexa"
+# schema:s3 ts iter event spec selftest-result fingerprints
+@s3 "2026-04-28T00:35:02Z"|8|"topology_universe-hexa-implemented"|{"6-topologies":["flat-S1","t2-2-torus","t3-3-torus","s2-2-sphere-cube-projection","s3-3-sphere-antipodal","klein-bottle"],"selection-interfaces":["env-NEXUS_UNIVERSE_TOPOLOGY","CLI-positional","selftest"],"evolution-mode":["env-NEXUS_UNIVERSE_EVOLVE_FROM-TO-AT","CLI-evolve-from-to-at"]}|"PASS"|{"flat":8867911491,"t2":21101666,"t3":3971234913,"s2":7748212434,"s3":2526083795,"klein":1610793507,"evolve_s3_t3_at24":1932713938}
+# schema:s4 ts iter event results
+@s4 "2026-04-28T00:35:03Z"|8|"demo-100-tick-runs"|{"t3-100":9526439580,"s3-100":4372983474,"evolve-s3-to-t3-at60":9526439580,"evolve-s3-to-t3-at90":9526439580,"evolve-t3-to-s3-at90":8939771134,"klein-100":9203587373}
+# schema:s5 ts iter event observation reason interpretation reverse-direction-t3-to-s3-distinct-fingerprint-confirmed falsifier
+@s5 "2026-04-28T00:35:04Z"|8|"raw-91-C3-honest-disclosure"|"100-tick-runs-with-s3-to-t3-late-transition-converge-to-t3-fingerprint"|"tau-4-diffusion-sweeps-x-10-post-transition-ticks-equals-40-mixing-rounds-saturates-t3-mode"|"NOT-bug-BUT-measurement-axis: T3-mode-stronger-attractor-than-S3-given-equal-mixing"|true|"if-T3-S3-symmetry-required-then-implementation-flawed-but-asymmetric-attractor-is-physically-meaningful-evidence-not-bug"
+# schema:s6 ts iter event finding-id absorption-channel commit-sha witness-path verifier-type status
+@s6 "2026-04-28T00:35:05Z"|8|"raw-108-discovery-absorption-registry-row"|"A8-traversable-closed-+-A8-prime-toroidal-evolution"|"tool-edit-and-commit"|"pending-this-turn"|"sim_bridge/anu_time/topology_universe.hexa"|"hash_eq-via-selftest-+-numeric_threshold-via-distinct-fingerprints"|"absorbed"
+# schema:s7 ts iter event summary next-iter-decision
+@s7 "2026-04-28T00:35:06Z"|8|"iter-8-close"|"A8-+-A8-prime-discovery-absorbed-into-runnable-sim-via-raw-108-tool-edit-channel"|"A3-A4-A5-pending-OR-T3-T2-vs-S3-evolution-deeper-analysis-OR-cron-stop"

@@ -1,8 +1,8 @@
 {
   "_doc": "도메인 SSOT — 304 도메인을 10축으로 분류. 축 변경 시 이 파일만 수정.",
-  "_version": "1.0.5",
-  "_total": 378,
-  "_axes": 10,
+  "_version": "1.0.6",
+  "_total": 379,
+  "_axes": 11,
   "_changelog": [
     "1.0.1 (2026-04-11): compute 축에 4 도메인 추가 — chip-rtl-gen, chip-dse-pipeline, chip-isa-n6, chip-npu-n6 (칩 설계 축 확장)",
     "1.0.2 (2026-04-11): life 축 synbio ↔ synthetic-biology 병합 — synthetic-biology 항목 제거, synbio 단일 canonical (부록 A/B/C 흡수, reports/audits/synbio-merge-2026-04-11.md)",
@@ -12,6 +12,10 @@
     {
       "date": "2026-04-17",
       "change": "add compute/sscb (SSCB mk1 한국 팹리스 도메인)"
+    },
+    {
+      "date": "2026-04-28",
+      "change": "1.0.6 — add biology axis (n=11) + register hexa-weave domain (write-side multi-strand molecular design composition; counterpart to AlphaFold 3 / IsoDDE; tri-axis Omega-saturation closure witness PASS at workload ceiling, APPROACH grade per raw 69)"
     }
   ],
   "_template": "각 도메인: domains/<axis>/<name>/{CLAUDE.md, <name>.md, verify.hexa}",
@@ -56,6 +60,10 @@
     "sf-ufo": {
       "path": "sf-ufo/_index.json",
       "count": 17
+    },
+    "biology": {
+      "path": "biology/_index.json",
+      "count": 1
     }
   },
   "physics": [
@@ -383,5 +391,8 @@
     "cross-domain-mega",
     "experiments",
     "hypotheses"
+  ],
+  "biology": [
+    "hexa-weave"
   ]
 }

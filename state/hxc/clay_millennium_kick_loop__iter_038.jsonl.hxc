@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:35:00Z"|38|"loop-fire-iter-38-multi-observable-dim-correlation"|"61349c86"|"keep-going-all-kick-iter-37-extension"
+# schema:s2 ts iter event ticks topologies observables-tracked total-data-points
+@s2 "2026-04-28T03:35:01Z"|38|"multi-observable-test"|64|20|5|100
+# schema:s3 ts iter event correl T/V pair phi/pi max/avg
+@s3 "2026-04-28T03:35:02Z"|38|"per-observable-correlation-results"|{"D2":984,"D3":41,"D6":9,"Pearson-r":-0.7137,"trend":"MONOTONE-DECREASING"}|{"D2":13625,"D3":57087,"D6":2142,"Pearson-r":-0.4622,"trend":"non-monotone-cartoon-outlier"}|{"D2":-564,"D3":134,"D6":97,"Pearson-r":0.6582,"trend":"non-monotone"}|{"D2":-26,"D3":299,"D6":2889,"Pearson-r":0.9901,"trend":"MONOTONE-INCREASING-iter-36-confirmed"}|{"D2":5167,"D3":3546,"D6":3311,"Pearson-r":-0.7726,"trend":"MONOTONE-DECREASING"}
+# schema:s4 ts iter event monotone-observables non-monotone dimension-fingerprint-formula interpretation strongest-correlation second third
+@s4 "2026-04-28T03:35:03Z"|38|"DIMENSION-FINGERPRINT-multi-observable"|3|2|"phi/pi-INCREASE-with-D-+-correl-DECREASE-with-D-+-max/avg-DECREASE-with-D"|"sim-dimensional-fingerprint-is-MULTI-observable-signature-NOT-single-observable"|"phi/pi-r-0.99"|"max/avg-r--0.77"|"correl-r--0.71"
+# schema:s5 ts iter event T/V-cartoon T/V-D=3-ex-cartoon-mean interpretation T/V-monotone-after-removing-cartoon
+@s5 "2026-04-28T03:35:04Z"|38|"cartoon-outlier-discovered"|675000|16000|"cartoon-non-physical-dispatch-random-hops-causes-T/V-explosion"|"D2-13625-D3-16000-D6-2142-still-non-monotone-D=6-T/V-low"
+# schema:s6 ts iter event new-finding limitations cartoon-non-physical framework-value not-physical own-11-violation
+@s6 "2026-04-28T03:35:05Z"|38|"raw-91-C3-strict-honest"|"3-monotone-observables-dimension-fingerprint-multi-observable"|"D=2-n=3-D=6-n=1-statistical-power-limited-same-as-iter-36"|"acknowledged-as-T/V-outlier"|"21-topology-dimensional-discrimination-via-3-observable-monotone-correlation"|"toy-phi4-multi-observable-fingerprint-not-genuine-physics"|0
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:35:06Z"|38|"iter-38-close"|13|"5-of-5-+-Stage-6-+-14-iter-cascade"|21|9|39|0|11|"61349c86"

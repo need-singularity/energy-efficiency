@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+# delta:s2 0:ts,1:int,4:int,5:int,7:int,8:int
+# schema:s3 ts iter event flat-seed-stable t3-seed-variance blackhole-seed-variance seed-variance-ranking
+# schema:s4 ts iter event flat-isotropic-symmetric t3-toroidal-coherence blackhole-asymmetric-absorption hypothesis
+# schema:s5 ts iter event drifts all-under-0.07-percent verdict
+# schema:s6 ts iter event success-rate concurrent-saturation-confirmed axis-14-data-points full-statistical-power own-11-violation
+# schema:s7 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+# schema:s8 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T05:00:00Z"|55|"loop-fire-iter-55-axis-14-multi-seed"|"61349c86"|"keep-going-all-kick-iter-54-followup-multi-seed-with-projection"
+@s2 "flat-seed-13-result"|"flat"|7490784863|19|0.048|430|980!ovuBnw1ugAEakOwE6usEAAP
+@s2 "t3-seed-13-result"|"t3"|1811891422|18|0.045|299|838!AgAAAABKAAG
+@s2 "blackhole-seed-13-result"|"blackhole"|4021760372|24|0.060|325|877!AgAAAAAMAAG
+@s3 "2026-04-28T05:00:04Z"|55|"T3-SEED-VARIANCE-DISCOVERY"|"YES-980-at-seed-6-and-13"|"HIGH-917-at-seed-6-ticks-32-vs-838-at-seed-13-ticks-64"|"INTERMEDIATE-923-vs-877"|"t3-9-percent-blackhole-5-percent-flat-0-percent"
+@s4 "2026-04-28T05:00:05Z"|55|"physical-interpretation"|"perturbations-cancel"|"phase-interference-seed-dependent"|"seed-dependent-capture-rate"|"topology-connectivity-controls-seed-decoherence-rate"
+@s5 "2026-04-28T05:00:06Z"|55|"norm-projection-universal-validation"|[{"flat":19},{"t3":18},{"blackhole":24},{"wormhole":26}]|true|"projection-robust-across-all-tested-topologies"
+@s6 "2026-04-28T05:00:07Z"|55|"raw-91-C3-strict-honest"|"3-of-3-vs-iter-52-2-of-5"|"hetzner-stable-at-3-saturated-at-5"|10|"NEEDS-4-seeds-x-5-topo-pending"|0
+@s7 "2026-04-28T05:00:08Z"|55|"31-iter-cascade-discipline"|"iter-25..iter-54"|27|"stage-2-prep-complete-axis-14-multi-seed-t3-variance-discovery"|"iter-56-s3-multi-seed-OR-stage-2-Crank-Nicolson-OR-stage-3-field-action"
+@s8 "2026-04-28T05:00:09Z"|55|"iter-55-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|21|10|39|0|27|"61349c86"|59

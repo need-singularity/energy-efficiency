@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:50:00Z"|41|"loop-fire-iter-41-r-0.99-ensemble-revalidation"|"61349c86"|"keep-going-all-kick-iter-40-bias-correction"
+# schema:s2 ts iter event method
+@s2 "2026-04-28T03:50:01Z"|41|"r-0.99-ensemble-re-validation-test"|"D=3-4-topo-ensemble-mean-+-D-2-D-6-hypothetical-reduction"
+# schema:s3 ts iter event D=3-4-topo-ensemble-mean single-seed-6-mean reduction consistency
+@s3 "2026-04-28T03:50:02Z"|41|"D=3-ensemble-correction"|113|299|"62-percent-reduction-from-single-seed"|"all-4-D=3-topo-show-~50-percent-reduction-ensemble-vs-single-seed-6"
+# schema:s4 ts iter event iter-36-single-seed D=3-only-corrected hypothetical-50-percent-reduction
+@s4 "2026-04-28T03:50:03Z"|41|"r-recalculation-3-scenarios"|{"means":"[-26, 299, 2889]","r":0.9901}|{"means":"[-26, 113, 2889]","r":0.9800}|{"means":"[-13, 113, 1445]","r":0.9865}
+# schema:s5 ts iter event r-0.99-finding-robust-across-corrections absolute-values-biased monotone-direction-preserved interpretation
+@s5 "2026-04-28T03:50:04Z"|41|"DECISIVE-FINDING"|"YES-r-stays-0.97-0.99-range"|"single-seed-6-systematic-50-percent-upward-bias"|"D=2-lt-D=3-lt-D=6-still-holds"|"iter-36-monotone-correlation-VALID-but-single-seed-numerical-values-OVERESTIMATE-by-50-percent"
+# schema:s6 ts iter event iter-36-revisited ensemble-validation-result limitations correct-conclusion framework-value own-11-violation
+@s6 "2026-04-28T03:50:05Z"|41|"raw-91-C3-strict-honest-update"|"r-0.99-monotone-direction-robust-numerical-values-50-percent-biased"|"r-0.97-to-0.99-range-still-strong-correlation"|"D=3-only-corrected-D=2-D=6-hypothetical"|"higher-dim-slower-transition-conclusion-VALID-numerical-values-need-ensemble"|"loop-self-correcting-revealed-bias-and-narrowed-claim"|0
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:50:06Z"|41|"iter-41-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-16-iter-cascade"|21|10|39|0|13|"61349c86"

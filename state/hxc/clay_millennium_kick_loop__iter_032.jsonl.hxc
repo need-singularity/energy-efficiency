@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:05:00Z"|32|"loop-fire-iter-32-cross-topology-generalization"|"61349c86"|"keep-going-all-kick-iter-31-extension"
+# schema:s2 ts iter event ticks-tested topologies total-runs observables
+@s2 "2026-04-28T03:05:01Z"|32|"cross-topology-DOUBLE-MONOTONE-test"|[16,32,64,128]|5|20|["correl","phi_pi","pair_amp"]
+# schema:s3 ts iter event ticks-16-32-64 ticks-128 interpretation not-physical-prediction
+@s3 "2026-04-28T03:05:02Z"|32|"PHASE-TRANSITION-DISCOVERED-at-ticks-128"|"phi-pi-monotone-decreasing-pair-amp-monotone-increasing-DOUBLE-MONOTONE-confirmed"|"REGIME-CHANGE-phi-pi-NEGATIVE-emerges-most-topologies"|"toy-phi4-system-Hamilton-evolution-enters-nonlinear-regime-quartic-term-dominant"|"deterministic-toy-chaos-finite-size-effect-sigma2-64"
+# schema:s4 ts iter event ticks-64 ticks-128 narrowing wormhole-anomaly
+@s4 "2026-04-28T03:05:03Z"|32|"NEGATIVE-EMERGENCE-TIMELINE"|"s3-pair=-218-wormhole-pair=-319-curved-and-bridge-only"|"ALL-topologies-pair-negative-EXCEPT-wormhole-positive-4611"|"negative-emergence-onset-ticks-64-curved-AND-bridge-becomes-universal-by-ticks-128"|"unique-positive-pair-at-ticks-128-bridge-axis-stabilizes-late-time"
+# schema:s5 ts iter event most-chaotic blackhole wormhole s3 flat ranking-most-chaotic-to-least interpretation
+@s5 "2026-04-28T03:05:04Z"|32|"TOPOLOGY-CHAOS-RANKING-at-ticks-128"|"t3-correl=-7281-pair=-5364-extreme-oscillation"|"correl=-3999-strong-negative"|"correl=-783-mild-pair-positive-4611-UNIQUE-protection"|"correl=226-positive-pair-negative-1391"|"correl=361-mild-pair-negative-199"|"t3-blackhole-wormhole-s3-flat"|"3D-torus-most-extreme-1D-flat-mildest-bridge-uniquely-late-time-stable"
+# schema:s6 ts iter event what-iter-32-confirmed what-iter-32-discovered what-iter-32-narrowed not-physical value
+@s6 "2026-04-28T03:05:05Z"|32|"raw-91-C3-honest-strict"|"DOUBLE-monotone-pattern-iter-31-extends-to-ticks-16-32-64"|"phase-transition-at-ticks-128-regime-change"|"negative-emergence-onset-curved-bridge-ticks-64-then-universal-ticks-128"|"toy-phi4-deterministic-Hamilton-finite-size-NOT-genuine-physical-phase-transition"|"sim-discriminates-topology-via-late-time-chaos-ranking"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:05:06Z"|32|"iter-32-close"|13|"5-of-5-+-Stage-6-+-3-falsification-+-1-bug-fix-+-1-symmetric-+-1-cross-module-+-1-multi-seed-+-1-cross-topology-generalization"|21|9|39|0|6|"61349c86"

@@ -1,0 +1,21 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T06:00:00Z"|67|"loop-fire-iter-67-bimodal-confirmation"|"61349c86"|"keep-going-all-kick-iter-66-followup-extend-axis-15-n-greater-10"
+# schema:s2 ts iter event added new-constants functions-added substrate-coverage
+@s2 "2026-04-28T06:00:01Z"|67|"lorentz-substrate-+3"|["cartoon","nested","calabi6"]|["LT_CARTOON=10","LT_NESTED=11","LT_CALABI6=12"]|3|"12-of-21-to-15-of-21"
+# schema:s3 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy
+@s3 "2026-04-28T06:00:02Z"|67|"cartoon-result"|"cartoon"|100|1|2045989|0|955
+@s3 "2026-04-28T06:00:03Z"|67|"nested-result"|"nested"|100|1|1751637|0|830
+# schema:s4 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy note
+@s4 "2026-04-28T06:00:04Z"|67|"calabi6-result"|"calabi6"|100|1|1669556|0|940|"2nd-lowest-drift-D-6-causally-efficient"
+# schema:s5 ts iter event r-evolution spearman-rho-n-11 verdict retraction
+@s5 "2026-04-28T06:00:05Z"|67|"AXIS-14-x-15-ORTHOGONAL-FINAL"|[{"n-5":-0.4027},{"n-8":-0.2676},{"n-11":-0.1651}]|-0.0364|"axes-14-and-15-GENUINELY-ORTHOGONAL-large-sample"|"iter-65-r-minus-0.40-was-small-sample-artifact"
+# schema:s6 ts iter event correlations interpretation
+@s6 "2026-04-28T06:00:06Z"|67|"3-AXIS-FINGERPRINT-MATRIX-FINAL"|[{"axis-13-x-14":{"r":0.39,"n":16}},{"axis-13-x-15":{"r":0.27,"n":5}},{"axis-14-x-15":{"r":-0.17,"n":11,"rho":-0.04}}]|"3-axes-provide-3-independent-dimensions-genuinely-3-dimensional-topology-fingerprint"
+# schema:s7 ts iter event iter-65 iter-66 iter-67 raw-91-C3-iters
+@s7 "2026-04-28T06:00:07Z"|67|"loop-self-correction-display"|"r-minus-0.40-NEGATIVE-correlation-claim"|"BIMODAL-structure-claim"|"RETRACTS-both-truth-is-ORTHOGONALITY"|"caught-3-self-corrections-in-3-iters"
+# schema:s8 ts iter event measurements substrate-coverage r-CI-n-11 retractions new-finding own-11-violation
+@s8 "2026-04-28T06:00:08Z"|67|"raw-91-C3-strict-honest"|"3-of-3"|"15-of-21-Lorentz"|"wide-minus-0.65-to-plus-0.40"|["iter-65-fully","iter-66-partially"]|"axes-orthogonal"|0
+# schema:s9 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-correction-pattern follow-up
+@s9 "2026-04-28T06:00:09Z"|67|"43-iter-cascade-discipline"|"iter-25..iter-66"|39|"3-iter-cascade-claim-bimodal-orthogonal"|"iter-68-final-3-lorentz-OR-stage-3-field-deeper-OR-multi-seed-axis-15"
+# schema:s10 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s10 "2026-04-28T06:00:10Z"|67|"iter-67-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-partial"|"21-sim-18-quantum-15-Lorentz-substrate-11-Lorentz-measured"|10|39|0|39|"61349c86"|71

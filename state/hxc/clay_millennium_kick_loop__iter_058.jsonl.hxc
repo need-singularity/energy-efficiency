@@ -1,0 +1,21 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:15:00Z"|58|"loop-fire-iter-58-axis-14-matrix-complete"|"61349c86"|"keep-going-all-kick-iter-57-followup-fill-s3-baseline"
+# schema:s2 ts iter event topology ticks seed hash norm-initial norm-final norm-drift drift-percent half-cut entropy
+@s2 "2026-04-28T05:15:01Z"|58|"s3-seed-6-result"|"s3"|64|6|-141405520|39688|39650|38|0.096|391|952
+@s2 "2026-04-28T05:15:02Z"|58|"s3-seed-17-result"|"s3"|64|17|-4145586736|39926|39891|35|0.088|390|951
+# schema:s3 ts iter event ticks seed ranking mean median range spread-percent stdev-approx
+@s3 "2026-04-28T05:15:03Z"|58|"DEFINITIVE-AXIS-14-RANKING"|64|6|[{"flat":980},{"s3":952},{"wormhole":939},{"blackhole":877},{"t3":838}]|917.2|939|142|15.5|57
+# schema:s4 ts iter event matrix all-norm-drifts-under-0.1-percent all-seed-variances-under-1-percent
+@s4 "2026-04-28T05:15:04Z"|58|"AXIS-14-5x2-MATRIX-COMPLETE"|[{"topology":"flat","s6":980,"s17":976,"variance":0.4},{"topology":"s3","s6":952,"s17":951,"variance":0.1},{"topology":"wormhole","s6":939,"s17":935,"variance":0.4},{"topology":"blackhole","s6":877,"s17":876,"variance":0.1},{"topology":"t3","s6":838,"s13":833,"variance":0.6}]|true|true
+# schema:s5 ts iter event ticks-32-ranking ticks-64-ranking key-dynamic
+@s5 "2026-04-28T05:15:05Z"|58|"ticks-relaxation-finding"|[{"s3":943},{"wormhole":939},{"flat":937},{"blackhole":923},{"t3":917}]|[{"flat":980},{"s3":952},{"wormhole":939},{"blackhole":877},{"t3":838}]|"flat-climbs-from-3rd-to-1st-t3-decoheres-fastest"
+# schema:s6 ts iter event mixing-isotropy-hypothesis topology-ordering
+@s6 "2026-04-28T05:15:06Z"|58|"physical-interpretation"|"mixing-isotropy-correlates-bipartite-entropy"|"isotropic-flat-S3-near-isotropic-wormhole-mid-blackhole-asymmetric-t3-toroidal-weak-mixing"
+# schema:s7 ts iter event sub-cascade-iters sub-cascade-length all-self-correcting
+@s7 "2026-04-28T05:15:07Z"|58|"stage-1-sub-cascade-COMPLETE"|["iter-51-entropy-observable","iter-52-wormhole-drift-discovery","iter-53-norm-projection","iter-54-CLI-fix-1000x","iter-55-false-attribution","iter-56-retract-seed-fix","iter-57-true-seed-variance","iter-58-axis-14-matrix-complete"]|8|true
+# schema:s8 ts iter event matrix-complete seed-stability norm-conservation limitations follow-up own-11-violation
+@s8 "2026-04-28T05:15:08Z"|58|"raw-91-C3-strict-honest"|"YES-5x2"|"YES-all-under-1-percent"|"YES-all-under-0.1-percent"|"only-5-base-topologies-in-quantum-substrate"|"extend-quantum-to-21-topologies-OR-Stage-2-Crank-Nicolson"|0
+# schema:s9 ts iter event prior-iters raw-91-C3-enforced-iters stage-1-sub-cascade cumulative-axes topologies sim-modules
+@s9 "2026-04-28T05:15:09Z"|58|"34-iter-cascade-discipline"|"iter-25..iter-57"|30|"COMPLETE-8-iters"|14|21|10
+# schema:s10 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s10 "2026-04-28T05:15:10Z"|58|"iter-58-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|21|10|39|0|30|"61349c86"|62

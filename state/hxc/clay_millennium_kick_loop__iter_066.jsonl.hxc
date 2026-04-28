@@ -1,0 +1,19 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:55:00Z"|66|"loop-fire-iter-66-axis-15-expansion"|"61349c86"|"keep-going-all-kick-iter-65-followup-axis-15-larger-sample"
+# schema:s2 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy
+@s2 "2026-04-28T05:55:01Z"|66|"vacuum-decay-result"|"vacuum-decay"|100|1|2049823|0|825
+# schema:s3 ts iter event topology ticks c energy-drift causal-viol axis-14-entropy note
+@s3 "2026-04-28T05:55:02Z"|66|"minkowski-result"|"minkowski"|100|1|2165663|0|972|"2nd-anomaly-high-entropy-high-drift"
+@s2 "2026-04-28T05:55:03Z"|66|"t3-result"|"t3"|100|1|1928254|0|838
+# schema:s4 ts iter event r-evolution spearman-rho-n-8 interpretation verdict
+@s4 "2026-04-28T05:55:04Z"|66|"AXIS-14-x-15-WEAKENED"|[{"n-5":-0.4027},{"n-8":-0.2676}]|0.0000|"adding-minkowski-canceled-rank-correlation"|"bimodal-6-efficient-2-spacetime-anomalies"
+# schema:s5 ts iter event de-sitter-anomaly minkowski-anomaly physical-pattern subgroup
+@s5 "2026-04-28T05:55:05Z"|66|"MINKOWSKI-2nd-ANOMALY"|{"entropy":999,"drift":2021183}|{"entropy":972,"drift":2165663}|"both-spacetime-like-topologies"|"spacetime-physics-topologies-break-efficient-mixing-rule"
+# schema:s6 ts iter event ranking range spread-percent
+@s6 "2026-04-28T05:55:06Z"|66|"FULL-AXIS-15-RANKING"|[{"ads-cft":1488520},{"altered":1712829},{"brane":1907852},{"t3":1928254},{"big-crunch":2000227},{"de-sitter":2021183},{"vacuum-decay":2049823},{"minkowski":2165663}]|[1488520,2165663]|31
+# schema:s7 ts iter event iter-65-r-finding true-pattern need-n-greater-10 new-discovery own-11-violation
+@s7 "2026-04-28T05:55:07Z"|66|"raw-91-C3-strict-honest"|"PARTIALLY-RETRACTED"|"BIMODAL-6-efficient-+-2-spacetime-anomalies"|"YES-for-subgroup-statistics"|"minkowski-2nd-anomaly"|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s8 "2026-04-28T05:55:08Z"|66|"42-iter-cascade-discipline"|"iter-25..iter-65"|38|"iter-65-r-minus-0.40-iter-66-r-minus-0.27-bimodal-discovered"|"iter-67-extend-axis-15-more-OR-formalize-bimodal-subgroups-OR-stage-3-field"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T05:55:09Z"|66|"iter-66-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-partial"|"21-sim-18-quantum-12-Lorentz-8-measured"|10|39|0|38|"61349c86"|70

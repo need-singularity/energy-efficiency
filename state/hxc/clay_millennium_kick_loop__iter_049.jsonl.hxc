@@ -1,0 +1,22 @@
+# schema:s1 ts iter event cron_id trigger
+# schema:s2 ts iter event topology ticks seed correl T-over-V pair-amp phi-pi max-avg
+# delta:s2 0:ts,1:int,4:int,5:int
+# schema:s3 ts iter event measured-topologies phi-pi-values sum n mean iter-36-15-topo-excl-cartoon-computed-mean match-percent
+# schema:s4 ts iter event iter-36-reported-mean iter-49-14-topo-mean-excl-cartoon difference cartoon-contribution-to-iter-36 interpretation
+# schema:s5 ts iter event scenarios verdict
+# schema:s6 ts iter event mean-excl-cartoon median range stdev-approx vs-iter-36-incl-cartoon conclusion
+# schema:s7 ts iter event success-rate exact-match cartoon-outlier-causal wormhole-still-missing single-seed-only own-11-violation
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s1 "2026-04-28T04:30:00Z"|49|"loop-fire-iter-49-4-final-topologies"|"61349c86"|"keep-going-all-kick-iter-48-followup-fill-final-baseline-gaps"
+@s2 "vacuum-decay-result"|"vacuum-decay"|52|15004|-6|203|3345!kt-Bnw1igAEMAAJ
+@s2 "t3-result"|"t3"|54|16516|327|141|3059!AgAAAAAAE
+@s2 "s3-result"|"s3"|10|20755|-218|303|3514!AgAAAAAAE
+@s2 "blackhole-result"|"blackhole"|27|16695|225|146|3715!AgAAAAAAE
+@s3 "2026-04-28T04:30:05Z"|49|"D-3-14-TOPO-EXACT-MATCH-iter-36"|["ca3d","t3","brane","blackhole","inflation","ads-cft","nested","vacuum-decay","de-sitter","s3","bubble","altered","minkowski","big-crunch"]|[79,141,145,146,169,180,196,203,229,303,434,463,478,604]|3770|14|269.3|269.5|99.93
+@s4 "2026-04-28T04:30:06Z"|49|"CARTOON-OUTLIER-CAUSAL-ANALYSIS"|299|269|30|"741-divided-by-16-ge-46-units"|"cartoon-SOLELY-responsible-for-10-percent-upward-bias-in-iter-36"
+@s5 "2026-04-28T04:30:07Z"|49|"PEARSON-r-CORRECTED"|[{"4-topo":{"means":"[-28, 113, 3209]","r":0.9792}},{"6-topo":{"means":"[-28, 274, 3209]","r":0.9836}},{"7-topo":{"means":"[-28, 296, 3209]","r":0.9842}},{"11-topo":{"means":"[-28, 298, 3209]","r":0.9842}},{"14-topo-excl-cartoon":{"means":"[-28, 269, 3209]","r":0.9852}},{"16-topo-iter-36-ref":{"means":"[-26, 299, 2889]","r":0.9901}}]|"BOTH-r-confirm-iter-36-finding-cartoon-inflates-by-10-percent"
+@s6 "2026-04-28T04:30:08Z"|49|"D-3-DEFINITIVE-BASELINE"|269|199|[79,604]|155|"299-was-10-percent-inflated"|"iter-36-measurement-accuracy-CONFIRMED-for-15-non-cartoon-topologies"
+@s7 "2026-04-28T04:30:09Z"|49|"raw-91-C3-strict-honest"|"4-of-4-at-180s"|"99.93-percent"|"identified-as-source-of-iter-36-10-percent-bias"|"single-seed-6-not-yet-measured"|"YES-multi-seed-ensemble-pending"|0
+@s8 "2026-04-28T04:30:10Z"|49|"25-iter-cascade-discipline"|"iter-25..iter-48"|21|"iter-36-r-0.99-finding-validated-end-to-end-via-25-iter-self-correcting-cascade"|"iter-50-add-wormhole-OR-multi-seed-ensemble-OR-Stage-1-quantum-amplitude-module"
+@s9 "2026-04-28T04:30:11Z"|49|"iter-49-close"|13|"5-of-5-+-Stage-6-+-Stage-7-+-25-iter-cascade"|21|10|39|0|21|"61349c86"|53

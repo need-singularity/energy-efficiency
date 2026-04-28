@@ -1,0 +1,2 @@
+# schema:s1 schema ts finding_id witness_path absorption_channel absorption_target status absorbed_at absorbed_via classifier_version
+@s1 "anima/discovery_absorption/v1"|"2026-04-28T03:08:00Z"|"BOOTSTRAP_n6-architecture"|"none-yet"|"bootstrap-sentinel"|"raw 135 cross-project mandate registry initialization for n6-architecture; no kick witnesses yet in this repo; placeholder until first witness lands"|"bootstrap-only"|"2026-04-28T03:08:00Z"|"raw 135 cross-repo bootstrap by anima-cmd-loop session"|"raw_108_v1"

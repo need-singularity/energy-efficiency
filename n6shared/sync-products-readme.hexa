@@ -18,7 +18,22 @@
 //   N6_README_MD      — README.md  경로 (미지정 시 기본 경로)
 
 // ───────── 상수 (R2: 하드코딩 최소화, 환경변수 우선) ─────────
-let HOME = exec("printenv HOME").trim()
+// 2026-04-28 sibling fix mirroring sync-readme.hexa A.1:
+//   was `exec("printenv HOME")` — silently empty in busybox container
+//   without printenv applet. env_var() goes through hexa_env_var →
+//   getenv() at C runtime layer (container-shell-builtin independent).
+let mut HOME = ""
+try {
+    let h = env_var("HOME")
+    if type_of(h) == "string" {
+        HOME = to_string(h)
+    }
+} catch err {
+    HOME = ""
+}
+if len(HOME) == 0 {
+    HOME = exec("echo \"$HOME\"").trim()
+}
 // TODO: canonical relocation pending — currently fallback to $HOME/shared/
 let DEFAULT_PRODUCTS = HOME + "/shared/n6/docs/products.json"
 let DEFAULT_README   = HOME + "/core/n6-architecture/README.md"

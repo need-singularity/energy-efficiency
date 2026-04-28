@@ -1,0 +1,18 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T05:05:00Z"|56|"loop-fire-iter-56-retraction"|"61349c86"|"keep-going-all-kick-iter-55-followup-completion-revealed-bug"
+# schema:s2 ts iter event line-pre-fix cli-parser evidence
+@s2 "2026-04-28T05:05:01Z"|56|"BUG-DISCOVERED-qs_init-seed-not-wired"|"line-438-qs_init-6-hardcoded"|"reads-seed-but-never-passes-to-qs_init"|"wormhole-seed-13-hash--7143937677-IDENTICAL-to-wormhole-seed-6"
+# schema:s3 ts iter event file changes
+@s3 "2026-04-28T05:05:02Z"|56|"FIX-applied"|"sim_bridge/anu_time/quantum_universe.hexa"|["add-q_seed-default-6","read-args-topo_idx-plus-1-as-seed","qs_init-q_seed-instead-of-qs_init-6","output-line-includes-seed-N-label"]
+# schema:s4 ts iter event cmd output verdict
+@s4 "2026-04-28T05:05:03Z"|56|"verification-probe"|"hexa run quantum_universe.hexa 64 t3 13"|{"ticks":64,"topology":"t3","seed":13,"hash":7477705932,"norm-initial":39304,"norm-final":39263,"norm-drift":41,"drift-percent":0.104,"half-cut":296,"entropy":833}|"seed-13-NOW-FLOWS-hash-different-norm-initial-different"
+# schema:s5 ts iter event claim-retracted actual-cause corrected-classification true-t3-seed-variance true-t3-vs-mislabeled
+@s5 "2026-04-28T05:05:04Z"|56|"iter-55-RETRACTION"|"t3-9-percent-seed-variance"|"qs_init-seed-CLI-not-wired"|"iter-55-was-TICKS-variance-32-vs-64"|0.6|"5-units-vs-79-units"
+# schema:s6 ts iter event ticks-variance true-seed-variance new-finding
+@s6 "2026-04-28T05:05:05Z"|56|"axis-14-CORRECTED-INTERPRETATION"|{"flat":4.6,"t3":-8.6,"blackhole":-5.0,"wormhole":0}|{"t3":0.6,"others":"pending-re-measurement"}|"topology-dependent-relaxation-dynamics-not-seed-variance"
+# schema:s7 ts iter event iter-55-claim root-cause fix-deployed s3-docker-OOM own-11-violation
+@s7 "2026-04-28T05:05:06Z"|56|"raw-91-C3-strict-honest-RETRACTION"|"FALSE"|"qs_init-seed-not-piped-from-CLI-for-5-iters"|"YES-iter-56"|"YES-mac-4g-cap"|0
+# schema:s8 ts iter event prior-iters raw-91-C3-enforced-iters loop-self-correcting follow-up
+@s8 "2026-04-28T05:05:07Z"|56|"32-iter-cascade-discipline"|"iter-25..iter-55"|28|"AGAIN-DEMONSTRATED"|"iter-57-true-multi-seed-batch-with-fixed-CLI-OR-stage-2-Crank-Nicolson"
+# schema:s9 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s9 "2026-04-28T05:05:08Z"|56|"iter-56-close"|14|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-prep"|21|10|39|0|28|"61349c86"|60

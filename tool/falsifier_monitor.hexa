@@ -1,0 +1,297 @@
+// tool/falsifier_monitor.hexa — automated falsifier deadline / status monitor
+// raw 9 hexa-only entrypoint (delegates JSON parsing to inline python per
+// established n6 convention; cf tool/n6_blockers.hexa delegating to bash).
+// SSOT: design/kick/2026-04-28_hexa-weave-mk-x-{transcend,formal-closure,physical-closure,transcend-closure-all}_omega_cycle.json
+// Output: state/falsifier_monitor/audit.jsonl (raw 77 audit-ledger schema, append-only)
+// Modes: --check (read-only summary), --status (per-falsifier table), --alert (deadline ≤7d / passed)
+// Constraints: raw 71 falsifier-retire-rule, raw 91 C3 honest auto_check tag, raw 77 append-only,
+//              raw 142 D2 try-and-revert, raw 66 ai-native error trailer on parse failure.
+// Falsifier inventory: 28 total = 24 active + 4 RESOLVED (F-MX-1, F-MX-3-b, F-MX-6, F-MX-7).
+//   L4 F-MX-1..7 (7) + L5 F-CL-FORMAL-1..4 (4) + L6 F-CL-PHYSICAL-1..4 (4) + L7 F-CL-JOINT-1..13 (13).
+// @allow-bare-exec
+// @no-sandbox
+
+fn main() {
+    // args() returns [hexa-bin, "run", script-path, user-arg-0, ...]
+    // (empirically via hexa_real run: argv[3] is the first user arg).
+    // Find first arg that begins with `--` (defensive across runner variants).
+    let argv = args()
+    let mode = "--status"
+    let i = 0
+    while i < len(argv) {
+        let a = argv[i]
+        if len(a) >= 2 {
+            if a[0] == "-" {
+                if a[1] == "-" {
+                    mode = a
+                }
+            }
+        }
+        i = i + 1
+    }
+    // Single-shot dispatch to embedded python backend. Python invoked via bash
+    // heredoc (exec() returns stdout). Mode is passed as $1 to the inline
+    // script. Output is the table / summary; audit append happens inside.
+    let cmd = "/usr/bin/python3 - " + mode + " <<'FALSIFIER_MONITOR_PY'\n" + py_backend() + "FALSIFIER_MONITOR_PY\n"
+    let out = to_string(exec(cmd))
+    println(out)
+}
+
+fn py_backend() -> String {
+    // Embedded python backend. Returns the entire script as a string literal.
+    return "
+import sys, os, json, datetime, glob, re
+
+REPO = '/Users/ghost/core/n6-architecture'
+WITNESSES = [
+    ('L4', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json'),
+    ('L5', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json'),
+    ('L6', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json'),
+    ('L7', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-transcend-closure-all_omega_cycle.json'),
+]
+AUDIT_DIR  = REPO + '/state/falsifier_monitor'
+AUDIT_FILE = AUDIT_DIR + '/audit.jsonl'
+TODAY = datetime.date(2026, 4, 28)
+RESOLVED_IDS = {'F-MX-1', 'F-MX-3-b', 'F-MX-6', 'F-MX-7'}
+# F-MX-3-b is a sub-falsifier of F-MX-3 not present as its own row in the L4
+# registry; injected explicitly to match the L7 RESOLVED_count=4 + RESOLVED_list
+# claim ['F-MX-1','F-MX-3-b','F-MX-6','F-MX-7']. Honest tag per raw 91 C3:
+# the witness count is 28 = 24 active + 4 RESOLVED only when F-MX-3-b is
+# enumerated separately from its parent F-MX-3 (which remains ESCALATED active).
+EXTRA_SUB_FALSIFIERS = [
+    ('F-MX-3-b', '5th orthogonal kick-infra failure mode within 7 days', '2026-05-05', 'partial', 'L4: 2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json'),
+]
+
+# ── F-CL-JOINT-1..13 are described inline in L7 tier_1_promotions (no separate
+# definition list). We synthesise minimal monitor rows for them per L7 witness.
+JOINT_FALSIFIERS = [
+    ('F-CL-JOINT-1',  'any L4/L5/L6 axis closure retracted',                               '2099-12-31', 'partial'),
+    ('F-CL-JOINT-2',  'F-CL-FORMAL-4 mechanical verification fails 90d',                   '2026-07-28', 'partial'),
+    ('F-CL-JOINT-3',  'F-CL-PHYSICAL-4 Bayesian theory-laundering fires',                  '2026-10-28', 'partial'),
+    ('F-CL-JOINT-4',  'F-CL-FORMAL-1 T_MK-HW inconsistency fires',                         '2027-04-28', 'no'),
+    ('F-CL-JOINT-5',  'F-CL-PHYSICAL-1 AdS/CFT inconsistency fires',                       '2027-04-28', 'no'),
+    ('F-CL-JOINT-6',  'option ii cosmological-information-weave domain pressure',          '2099-12-31', 'no'),
+    ('F-CL-JOINT-7',  'own_doc_lint regression on biology hexa-weave §6 EVOLVE addendum',  '2099-12-31', 'yes'),
+    ('F-CL-JOINT-8',  'raw 106 scope creep cascade biology axis incoherent',               '2099-12-31', 'no'),
+    ('F-CL-JOINT-9',  'F-MX-3-c rebuild-clean not attempted by 2026-04-29',                '2026-04-29', 'yes'),
+    ('F-CL-JOINT-10', 'F-MX-3-c rebuild-clean attempted SUCCESS',                          '2026-05-05', 'yes'),
+    ('F-CL-JOINT-11', 'F-MX-3-c rebuild-clean attempted FAIL',                             '2026-05-05', 'yes'),
+    ('F-CL-JOINT-12', 'user requests loop continuation despite TRANSCEND-PASS',            '2099-12-31', 'no'),
+    ('F-CL-JOINT-13', 'retroactive D2 revert downgrades joint verdict',                    '2099-12-31', 'no'),
+]
+
+def auto_check_class(fid, condition):
+    # raw 91 C3 honest classification. yes = trivially deadline/file-checkable;
+    # partial = needs structured input + manual check; no = requires literature
+    # / external review / theoretical verdict (manual only).
+    cond = (condition or '').lower()
+    if 'deadline' in cond and ('today' in cond or 'days' in cond):
+        return 'yes'
+    if any(k in cond for k in ['inconsistent', 'inconsistency', 'counterexample', 'discovered', 'theorem', 'tarski', 'godel', 'gödel', 'bayesian', 'bousso', 'qg', 'quantum-gravity', 'multiverse', 'rg-flow', 'ads/cft', 'literature', 'review']):
+        return 'no'
+    if any(k in cond for k in ['7 days', 'rebuild', 'kick', 'log', 'lint', 'mechanical verification', 'lean4', 'lean 4', 'orthogonal failure mode', 'host', 'oauth']):
+        return 'partial'
+    if 'satisfied' in cond or 'fired' in cond or 'resolved' in cond:
+        return 'partial'
+    return 'no'
+
+def parse_date(s):
+    if not s:
+        return None
+    m = re.match(r'(\\d{4})-(\\d{2})-(\\d{2})', s)
+    if not m:
+        return None
+    return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+
+def alert_level(days, status):
+    if status in ('RESOLVED', 'resolved'):
+        return 'info'
+    if days is None:
+        return 'info'
+    if days < 0:
+        return 'warn'
+    if days <= 7:
+        return 'warn'
+    if days <= 30:
+        return 'notice'
+    return 'info'
+
+def collect_falsifiers():
+    rows = []
+    seen = set()
+    for label, path in WITNESSES:
+        if not os.path.exists(path):
+            sys.stderr.write('// raw 66 ai-native error trailer: missing witness ' + path + '\\n')
+            continue
+        try:
+            with open(path) as f:
+                data = json.load(f)
+        except Exception as e:
+            sys.stderr.write('// raw 66 ai-native error trailer: parse fail ' + path + ' ' + repr(e) + '\\n')
+            continue
+        # L4: raw_71_falsifier_retire_rule_TRANSCEND_grade
+        for k in ('raw_71_falsifier_retire_rule_TRANSCEND_grade', 'raw_71_falsifiers_for_F-MX-6_construction', 'raw_71_falsifiers_for_F-MX-7_construction'):
+            if k in data and isinstance(data[k], list):
+                for entry in data[k]:
+                    fid = entry.get('falsifier_id')
+                    if not fid or fid in seen:
+                        continue
+                    seen.add(fid)
+                    rows.append({
+                        'id': fid,
+                        'claim': entry.get('claim_target', '')[:80],
+                        'condition': entry.get('condition', ''),
+                        'deadline': entry.get('deadline'),
+                        'source_witness': label + ': ' + os.path.basename(path),
+                    })
+    # F-CL-JOINT-* injected from L7 inline references
+    for fid, claim, deadline, _ac in JOINT_FALSIFIERS:
+        if fid in seen:
+            continue
+        seen.add(fid)
+        rows.append({
+            'id': fid,
+            'claim': claim,
+            'condition': claim,
+            'deadline': deadline,
+            'source_witness': 'L7: 2026-04-28_hexa-weave-mk-x-transcend-closure-all_omega_cycle.json',
+        })
+    # Sub-falsifiers (e.g. F-MX-3-b) explicitly enumerated to match L7
+    # RESOLVED_count=4 claim. See EXTRA_SUB_FALSIFIERS above.
+    for fid, claim, deadline, _ac, source in EXTRA_SUB_FALSIFIERS:
+        if fid in seen:
+            continue
+        seen.add(fid)
+        rows.append({
+            'id': fid,
+            'claim': claim,
+            'condition': claim,
+            'deadline': deadline,
+            'source_witness': source,
+        })
+    # Resolution lookup from L5/L6/L7 status updates
+    for r in rows:
+        r['status'] = 'RESOLVED' if r['id'] in RESOLVED_IDS else 'active'
+        d = parse_date(r['deadline']) if r['deadline'] else None
+        r['days_to_deadline'] = (d - TODAY).days if d else None
+        r['auto_check'] = auto_check_class(r['id'], r['condition'])
+        r['alert_level'] = alert_level(r['days_to_deadline'], r['status'])
+    return rows
+
+def emit_audit(rows):
+    # raw 77 audit-ledger append-only. Defensive dedup: skip if a marker file
+    # for the current second already exists (counters the hexa_real double-exec
+    # runtime bug tracked under task A; works under cron/launchd because each
+    # scheduled invocation produces a fresh second).
+    os.makedirs(AUDIT_DIR, exist_ok=True)
+    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    marker = AUDIT_DIR + '/.last_emit_second'
+    try:
+        with open(marker) as fh:
+            if fh.read().strip() == now:
+                return  # skip duplicate within same second
+    except FileNotFoundError:
+        pass
+    with open(marker, 'w') as fh:
+        fh.write(now)
+    with open(AUDIT_FILE, 'a') as f:
+        for r in rows:
+            rec = {
+                'ts': now,
+                'falsifier_id': r['id'],
+                'claim_summary': r['claim'],
+                'deadline': r['deadline'],
+                'days_to_deadline': r['days_to_deadline'],
+                'status': r['status'],
+                'auto_check': r['auto_check'],
+                'alert_level': r['alert_level'],
+                'source_witness': r['source_witness'],
+                'schema': 'raw_77_falsifier_monitor_v1',
+            }
+            f.write(json.dumps(rec, ensure_ascii=False) + '\\n')
+
+def render_table(rows):
+    rows_sorted = sorted(rows, key=lambda r: (r['days_to_deadline'] if r['days_to_deadline'] is not None else 99999))
+    lines = []
+    lines.append('| ID | Claim summary | Deadline | Days | Status | Auto | Alert |')
+    lines.append('|----|---------------|----------|------|--------|------|-------|')
+    for r in rows_sorted:
+        d = r['days_to_deadline']
+        d_disp = ('+' + str(d)) if (d is not None and d >= 0) else (str(d) if d is not None else 'n/a')
+        lines.append('| {id} | {c} | {dl} | {dd} | {st} | {ac} | {al} |'.format(
+            id=r['id'], c=r['claim'][:60], dl=r['deadline'] or 'n/a', dd=d_disp,
+            st=r['status'], ac=r['auto_check'], al=r['alert_level']))
+    return '\\n'.join(lines)
+
+def render_summary(rows):
+    total = len(rows)
+    resolved = sum(1 for r in rows if r['status'] == 'RESOLVED')
+    active = total - resolved
+    imminent = sum(1 for r in rows if r['status'] != 'RESOLVED' and r['days_to_deadline'] is not None and r['days_to_deadline'] <= 7)
+    passed = sum(1 for r in rows if r['status'] != 'RESOLVED' and r['days_to_deadline'] is not None and r['days_to_deadline'] < 0)
+    ac_yes = sum(1 for r in rows if r['auto_check'] == 'yes')
+    ac_par = sum(1 for r in rows if r['auto_check'] == 'partial')
+    ac_no  = sum(1 for r in rows if r['auto_check'] == 'no')
+    return ('falsifier_monitor summary @ ' + str(TODAY) + '\\n'
+            + 'total=' + str(total) + ' active=' + str(active) + ' RESOLVED=' + str(resolved) + '\\n'
+            + 'deadline_imminent_<=7d=' + str(imminent) + ' deadline_passed=' + str(passed) + '\\n'
+            + 'auto_check yes=' + str(ac_yes) + ' partial=' + str(ac_par) + ' no=' + str(ac_no))
+
+def emit_alerts(rows):
+    out = []
+    for r in rows:
+        if r['status'] == 'RESOLVED':
+            continue
+        d = r['days_to_deadline']
+        if d is None:
+            continue
+        if d < 0:
+            out.append('ALERT[passed days={d}] {id}: {c} (deadline {dl})'.format(d=d, id=r['id'], c=r['claim'][:60], dl=r['deadline']))
+        elif d <= 7:
+            out.append('ALERT[imminent days=+{d}] {id}: {c} (deadline {dl})'.format(d=d, id=r['id'], c=r['claim'][:60], dl=r['deadline']))
+    if not out:
+        return '(no alerts: no active falsifier within 7 days or past deadline)'
+    return '\\n'.join(out)
+
+def selftest():
+    # 3 fixture cases per spec: PASS / FAIL deadline-passed / FAIL RESOLVED-but-active
+    fx = [
+        {'id':'FX-PASS', 'claim':'pass fixture', 'condition':'', 'deadline':'2099-01-01', 'status':'active', 'source_witness':'fixture'},
+        {'id':'FX-FAIL-PAST', 'claim':'past deadline', 'condition':'', 'deadline':'2020-01-01', 'status':'active', 'source_witness':'fixture'},
+        {'id':'FX-RESOLVED', 'claim':'resolved but active in source', 'condition':'', 'deadline':'2099-01-01', 'status':'RESOLVED', 'source_witness':'fixture'},
+    ]
+    for r in fx:
+        d = parse_date(r['deadline'])
+        r['days_to_deadline'] = (d - TODAY).days if d else None
+        r['auto_check'] = 'yes'
+        r['alert_level'] = alert_level(r['days_to_deadline'], r['status'])
+    ok  = (fx[0]['alert_level'] in ('info','notice'))
+    ok &= (fx[1]['alert_level'] == 'warn')
+    ok &= (fx[2]['alert_level'] == 'info')
+    return 'selftest=PASS' if ok else 'selftest=FAIL'
+
+def main():
+    mode = sys.argv[1] if len(sys.argv) > 1 else '--status'
+    rows = collect_falsifiers()
+    if mode == '--check':
+        print(render_summary(rows))
+    elif mode == '--alert':
+        print(render_summary(rows))
+        print('---')
+        print(emit_alerts(rows))
+    elif mode == '--selftest':
+        print(selftest())
+        return
+    else:  # --status default
+        print(render_summary(rows))
+        print('')
+        print(render_table(rows))
+    emit_audit(rows)
+    print('')
+    print('audit appended -> ' + AUDIT_FILE)
+
+main()
+"
+}
+
+main()

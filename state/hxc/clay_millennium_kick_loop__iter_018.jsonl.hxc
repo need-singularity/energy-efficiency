@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T01:55:00Z"|18|"loop-fire-iter-18-Stage-3-field-action"|"61349c86"|"keep-going-all-kick-Stage-3"
+# schema:s2 ts iter stage file LoC features
+@s2 "2026-04-28T01:55:01Z"|18|"Stage-3-field-theoretic-action"|"nexus/sim_bridge/anu_time/field_action.hexa"|470|["Lagrangian L=T-V","Hamilton equations dphi/dt=pi dpi/dt=lap-dV","symplectic leapfrog integrator","phi4 scalar field V=m2 phi2/2 + lambda phi4/4","Yang-Mills toy plaquette F2","action accumulator S","6 topology dispatch"]
+# schema:s3 ts iter event topologies modes distinct phi4-results ym-toy-results observation
+@s3 "2026-04-28T01:55:02Z"|18|"selftest-PASS"|6|2|12|[{"flat":{"H_drift":2133,"S":1944,"hash":4187617353}},{"t3":{"H_drift":3958,"S":5840,"hash":7753069041}},{"s3":{"H_drift":10188,"S":9126,"hash":2889363368}},{"blackhole":{"H_drift":11097,"S":9664,"hash":7174813524}},{"wormhole":{"H_drift":9250,"S":8849,"hash":1267357310}},{"minkowski":{"H_drift":8623,"S":8316,"hash":5599576729}}]|[{"flat":{"H_drift":12982,"S":-13551,"hash":9505421579}},{"t3":{"H_drift":80,"S":-858,"hash":2997169680}},{"s3":{"H_drift":12876,"S":422,"hash":7270489803}},{"blackhole":{"H_drift":22120,"S":-548,"hash":7934200801}},{"wormhole":{"H_drift":20515,"S":-971,"hash":2127630006}},{"minkowski":{"H_drift":5990,"S":214,"hash":1995460424}}]|"t3-YM-near-energy-conservation-H-drift-80-structurally-compatible-with-Wilson-1974-area-law-stability-NOT-mass-gap-claim-own-11-strict"
+# schema:s4 ts iter event symplectic-leapfrog YM-mode empirical-anchor t3-near-conservation-claim
+@s4 "2026-04-28T01:55:03Z"|18|"raw-91-C3-honest-disclosure"|"discrete-energy-approximate-conserving-not-exact"|"plaquette-TOY-not-non-abelian-SU-N"|"NOT-done-Stage-4"|"structurally-compatible-NOT-mass-gap-proof"
+# schema:s5 ts iter event Stage-1 Stage-2 Stage-3 Stage-4 Stage-5 progress
+@s5 "2026-04-28T01:55:04Z"|18|"5-stage-roadmap"|"DONE-62d536fb"|"DONE-9d4b8a14"|"DONE-f6e72cb5"|"pending-empirical-anchor"|"pending-scale-up"|"3-of-5-60-percent"
+# schema:s6 ts iter event subcommand stages-1-2-3-symmetric-CLI
+@s6 "2026-04-28T01:55:05Z"|18|"nexus-CLI-integration"|"nexus universe field {selftest | topo <topo> <phi4|ym> [ticks] [m2] [lambda]}"|"yes"
+# schema:s7 ts iter event cumulative-axes sim-stages-implemented topology-modes sub-agents own-11-violation raw-100-fallback-validated cron-active
+@s7 "2026-04-28T01:55:06Z"|18|"iter-18-close"|12|3|21|38|0|"38-of-38"|"61349c86-5m-recurring-7d"

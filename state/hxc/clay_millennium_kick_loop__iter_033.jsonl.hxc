@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:10:00Z"|33|"loop-fire-iter-33-fine-grained-transition-sweep"|"61349c86"|"keep-going-all-kick-iter-32-precision"
+# schema:s2 ts iter event ticks-tested topologies total-runs granularity purpose
+@s2 "2026-04-28T03:10:01Z"|33|"fine-grained-phase-transition-test"|[72,80,88,96,104,112,120]|5|35|"8-tick-step"|"narrow-iter-32-phase-transition-from-64-128-to-exact-onset"
+# schema:s3 ts iter event group-A-early-transition-96-104 group-B-late-or-never-transition phi-pi-sign-flip
+@s3 "2026-04-28T03:10:02Z"|33|"TWO-TOPOLOGY-GROUPS-discovered"|["flat","t3","wormhole"]|["s3","blackhole"]|[{"flat":"ticks-96-87-to-104--49"},{"t3":"ticks-72-71-to-104--2"},{"wormhole":"ticks-80-100-to-104--3"},{"s3":"still-positive-at-ticks-120-max-tested"},{"blackhole":"still-positive-at-ticks-120-max-tested"}]
+# schema:s4 ts iter event t3-and-blackhole-late-positive-swing flat-s3-wormhole-monotone-or-different
+@s4 "2026-04-28T03:10:03Z"|33|"pair-amp-OSCILLATION-late-time"|[{"t3":{"ticks-88":-1874,"ticks-120":9137,"oscillation":"YES-large"}},{"blackhole":{"ticks-88":-1638,"ticks-120":7627,"oscillation":"YES-large"}}]|[{"flat":"monotone-decreasing"},{"s3":"+1131-to--2063-decreasing"},{"wormhole":"-192-late-time-damped-small"}]
+# schema:s5 ts iter event flat t3 s3 blackhole wormhole interpretation
+@s5 "2026-04-28T03:10:04Z"|33|"topology-fine-grained-discrimination"|"mildest-monotone-decay-1D-ring"|"strong-oscillation-large-positive-swing-3D-torus"|"delayed-transition-curved-space-effect"|"delayed-transition-+-late-positive-swing-horizon-effect"|"early-transition-damped-late-time-bridge-stabilization"|"sim-late-time-discrimination-via-fine-grained-tick-progression"
+# schema:s6 ts iter event what-iter-33-found group-A-early group-B-late not-physical value
+@s6 "2026-04-28T03:10:05Z"|33|"raw-91-C3-strict-interpretation"|"two-topology-groups-by-phi-pi-transition-onset"|"flat-t3-wormhole-cross-zero-at-ticks-96-104"|"s3-blackhole-cross-after-ticks-120"|"toy-phi4-deterministic-chaos-NOT-genuine-phase-transition"|"sim-FINE-GRAINED-topology-discrimination-via-late-time-dynamics"
+# schema:s7 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s7 "2026-04-28T03:10:06Z"|33|"iter-33-close"|13|"5-of-5-+-Stage-6-+-3-falsification-+-1-bug-fix-+-1-symmetric-+-1-cross-module-+-1-multi-seed-+-1-cross-topology-+-1-fine-grained-transition"|21|9|39|0|7|"61349c86"

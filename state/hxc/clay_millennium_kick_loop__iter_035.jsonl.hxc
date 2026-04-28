@@ -1,0 +1,12 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T03:20:00Z"|35|"loop-fire-iter-35-21-topology-expansion"|"61349c86"|"keep-going-all-kick-anchor-v2-full-coverage"
+# schema:s2 ts iter event module previous new added-functions LoC-added
+@s2 "2026-04-28T03:20:01Z"|35|"anchor-v2-21-topology-expansion"|"nexus/sim_bridge/anu_time/empirical_anchor_v2.hexa"|"5-topology-flat-t3-s3-BH-WH"|"21-topology-full-coverage"|16|140
+# schema:s3 ts iter event groups 21-topologies-total
+@s3 "2026-04-28T03:20:02Z"|35|"21-topology-sweep-at-ticks-64"|{"A-early-phi_pi-lt-100":["s2:-201","t2:60","klein:63","ca3d:79"],"B-mid-100-500":["t3:141","BH:146","brane:145","inflation:169","ads-cft:180","nested:196","vacuum-decay:203","de-sitter:229","wormhole:268","s3:303","bubble:434","altered:463","minkowski:478"],"C-slow-gt-500":["big-crunch:604","cartoon:741","flat:1095","calabi6:2889"]}|21
+# schema:s4 ts iter event slowest-transition fastest-transition 2D-topologies-all-rapid 6D-calabi6-maximum-delay interpretation
+@s4 "2026-04-28T03:20:03Z"|35|"key-discoveries"|"calabi6-T6-phi_pi-2889-6-dim-slowest-nonlinear-regime-entry"|"s2-2-sphere-phi_pi--201-already-transitioned"|["t2:60","s2:-201","klein:63","fast-transition-class"]|"higher-dim-manifold-slower-toy-chaos-onset"|"sim-discriminates-21-topologies-via-late-time-dynamics"
+# schema:s5 ts iter event toy-deterministic-not-physical sigma2-64-finite-size framework-value own-11-violation
+@s5 "2026-04-28T03:20:04Z"|35|"raw-91-C3-honest-strict"|"phi4-Hamilton-not-genuine-phase-transition"|"no-thermodynamic-limit"|"21-topology-discrimination-via-chaos-rate"|0
+# schema:s6 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active
+@s6 "2026-04-28T03:20:05Z"|35|"iter-35-close"|13|"5-of-5-+-Stage-6-+-10-iter-cascade-+-1-21-topology-expansion"|21|9|39|0|8|"61349c86"

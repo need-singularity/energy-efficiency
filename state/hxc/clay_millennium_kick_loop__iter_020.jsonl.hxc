@@ -1,0 +1,14 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T02:05:00Z"|20|"loop-fire-iter-20-Stage-5-scale-up-FINAL"|"61349c86"|"keep-going-all-kick-Stage-5"
+# schema:s2 ts iter stage file LoC features
+@s2 "2026-04-28T02:05:01Z"|20|"Stage-5-scale-up"|"nexus/sim_bridge/anu_time/scale_universe.hexa"|280|["parameterized sigma2 ∈ {64, 512, 1024, 4096}","cube_root + scale_neighbor_t3 parameterized","benchmark mode","selftest mode (4-scale distinct + idempotent + scaling-ratio)","phi4-like diffusion evolution"]
+# schema:s3 ts iter event results scaling-ratio feasibility
+@s3 "2026-04-28T02:05:02Z"|20|"selftest-PASS-FINAL"|[{"sigma2":64,"L":4,"cells":64,"ticks":4,"elapsed_ms":9,"hash":2357469122,"energy":641},{"sigma2":512,"L":8,"cells":512,"ticks":4,"elapsed_ms":13,"hash":3205246702,"energy":531},{"sigma2":1024,"L":10,"cells":1000,"ticks":4,"elapsed_ms":26,"hash":5030938653,"energy":905},{"sigma2":4096,"L":16,"cells":4096,"ticks":4,"elapsed_ms":244,"hash":282484175,"energy":851}]|"27x-for-64x-cells-sub-linear-cache-effects"|"validated"
+# schema:s4 ts iter event sigma-4096-still-TOY interpreter-overhead production-scale-out-of-scope framework-validation
+@s4 "2026-04-28T02:05:03Z"|20|"raw-91-C3-honest"|"real-lattice-QCD-96-4-85M-sites-real-Planck-CMB-50M-pixels"|"hexa-stage1-sequential-no-GPU"|"sigma2-gt-1e6-needs-native-compilation-cluster-compute"|"feasibility-only-NOT-physical-match"
+# schema:s5 ts iter event Stage-1 Stage-2 Stage-3 Stage-4 Stage-5 progress sim-toy-limits-transcended
+@s5 "2026-04-28T02:05:04Z"|20|"5-STAGE-ROADMAP-COMPLETE"|"DONE-62d536fb"|"DONE-9d4b8a14"|"DONE-f6e72cb5"|"DONE-e1289a14"|"DONE-b37f6f3b"|"5-of-5-100-percent"|["scalar-i64-to-complex-amplitude","Euclidean-to-Lorentzian","hash-mixing-to-field-theoretic-action","no-anchor-to-5-peer-reviewed-references","sigma2-64-fixed-to-parameterized-64-512-1024-4096"]
+# schema:s6 ts iter event subcommands
+@s6 "2026-04-28T02:05:05Z"|20|"nexus-CLI-COMPLETE"|["nexus universe selftest","nexus universe topo","nexus universe evolve","nexus universe quantum {selftest|topo}","nexus universe lorentz {selftest|topo}","nexus universe field {selftest|topo}","nexus universe anchor {selftest|list|topo}","nexus universe scale {selftest|benchmark|run}"]
+# schema:s7 ts iter event cumulative-axes sim-stages-implemented topology-modes sub-agents sim-modules total-LoC own-11-violation raw-100-fallback-validated cron-active loop-status
+@s7 "2026-04-28T02:05:06Z"|20|"iter-20-MILESTONE"|12|"5-of-5-100-percent"|21|38|"5-(topology-+-quantum-+-lorentz-+-field-+-anchor-+-scale)"|"~2400-across-5-modules"|0|"38-of-38"|"61349c86-5m-recurring-7d"|"saturation-tracking-mode-+-axis-fanout-options"

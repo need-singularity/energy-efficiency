@@ -1,0 +1,2 @@
+# schema:s1 ts tool root files_scanned total_while with_annotation missing invalid severity verdict
+@s1 "2026-04-26T07:19:36Z"|"problem_solving_triad_lint"|"/Users/ghost/core/hive"|72|443|364|79|0|"warn"|"FAIL"

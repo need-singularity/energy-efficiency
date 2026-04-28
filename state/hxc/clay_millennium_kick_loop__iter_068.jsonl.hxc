@@ -1,0 +1,12 @@
+# schema:s1 ts iter event cron_id trigger
+@s1 "2026-04-28T06:05:00Z"|68|"loop-fire-iter-68-final-ports"|"61349c86"|"keep-going-all-kick-iter-67-followup-final-3"
+# schema:s2 ts iter event added new-constants functions-added substrate-coverage parity-status
+@s2 "2026-04-28T06:05:01Z"|68|"lorentz-substrate-+3"|["inflation","ca3d","bubble"]|["LT_INFLATION=15","LT_CA3D=18","LT_BUBBLE=20"]|3|"15-of-21-to-18-of-21"|"matches-quantum-substrate"
+# schema:s3 ts iter event topologies cause pattern
+@s3 "2026-04-28T06:05:02Z"|68|"3-of-3-DOCKER-OOM"|["s3","blackhole","inflation"]|"hetzner-unreachable-routed-to-mac-docker-4g-mem-cap-killed"|"same-as-iter-56-cartoon-iter-66-vacuum-decay-first-attempt"
+# schema:s4 ts iter event ports-success measurements-success blocker self-recovery own-11-violation
+@s4 "2026-04-28T06:05:03Z"|68|"raw-91-C3-strict-honest"|"3-of-3"|"0-of-3"|"hetzner-reachability"|"cron-retry-next-loop-fire"|0
+# schema:s5 ts iter event prior-iters raw-91-C3-enforced-iters loop-progression follow-up
+@s5 "2026-04-28T06:05:04Z"|68|"44-iter-cascade-discipline"|"iter-25..iter-67"|40|"3-ports-no-measurements-infrastructure-limit"|"iter-69-retry-3-OOM-+-extend-measurements-OR-stage-3-field-deeper"
+# schema:s6 ts iter event cumulative-axes sim-stages topology-modes sim-modules sub-agents own-11-violation raw-91-C3-actively-enforced-iters cron-active commits
+@s6 "2026-04-28T06:05:05Z"|68|"iter-68-close"|15|"5-of-5-+-Stage-6-+-Stage-7-+-Stage-1-100-percent-+-Stage-2-substrate-parity"|"21-sim-18-quantum-18-Lorentz-substrate"|10|39|0|40|"61349c86"|72

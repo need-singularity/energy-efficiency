@@ -30,7 +30,30 @@
 // 폴백: --stub 인자가 주어지면 옛 STUB 메시지를 출력하고 종료한다 (회귀 호환).
 
 // ───────── 상수: 기본 경로 ─────────
-let HOME = exec("printenv HOME").trim()
+// 2026-04-28 hexa-runtime-pipeline-fix (A.1 falsifier preregistered):
+//   was: `exec("printenv HOME")` — silently returns "" inside the
+//   hexa-exec docker container (busybox image without printenv applet),
+//   producing DEFAULT_DATA="/core/n6-architecture/..." (no $HOME prefix)
+//   and breaking file_exists() with a `readme-data.json 없음:` die.
+//   fix: env_var("HOME") goes through hexa_env_var → getenv() at the C
+//   runtime layer — independent of container shell builtin coverage.
+//   F-A1-2 ASCII regression: env_var falls back to exec("echo $HOME")
+//   when getenv returns empty (e.g. headless launchd contexts).
+let mut HOME = ""
+try {
+    let h = env_var("HOME")
+    if type_of(h) == "string" {
+        HOME = to_string(h)
+    }
+} catch err {
+    HOME = ""
+}
+if len(HOME) == 0 {
+    // Fallback for environments where env_var fails (codegen mismatch,
+    // or HOME genuinely unset). echo is a POSIX shell builtin so it's
+    // safe across busybox / dash / bash without external binaries.
+    HOME = exec("echo \"$HOME\"").trim()
+}
 let DEFAULT_DATA   = HOME + "/core/n6-architecture/n6shared/readme-data.json"
 let DEFAULT_README = HOME + "/core/n6-architecture/README.md"
 
@@ -305,7 +328,18 @@ fn render_reference(data) {
 fn render_summary(data, domain_id: string) {
     let d = find_domain(data, domain_id)
     if d == nil {
-        return "> (unknown domain: " + domain_id + ")"
+        // 2026-04-28 hexa-runtime-pipeline-fix (A.3 falsifier preregistered):
+        //   was: `return "> (unknown domain: " + domain_id + ")"`.
+        //   This corrupted ~17 hand-curated AUTO:SUMMARY_* markers in
+        //   README.md whose domain ids weren't enumerated in
+        //   readme-data.json. The "data SSOT" contract for those markers
+        //   is hand-curation — the .json holds the auto-generated subset
+        //   only. Returning nil drops through to sync_all's
+        //   `type_of(content) != "nil"` guard which preserves the
+        //   existing marker block verbatim. Defensive default: hand-
+        //   curated markers always survive; future readme-data.json
+        //   coverage expansion is opt-in by adding the domain entry.
+        return nil
     }
     let mut parts = []
     parts.push("**🛸" + to_string(get_or(d, "alien", 0)) + "**")
@@ -390,7 +424,10 @@ fn render_summary(data, domain_id: string) {
 fn render_footer(data, domain_id: string) {
     let d = find_domain(data, domain_id)
     if d == nil {
-        return "> (unknown domain: " + domain_id + ")"
+        // 2026-04-28 hexa-runtime-pipeline-fix (A.3): mirror render_summary
+        // — return nil so sync_all preserves hand-curated AUTO:FOOTER_*
+        // markers for domains absent from readme-data.json.
+        return nil
     }
     let mut parts = []
 
