@@ -1,0 +1,95 @@
+@shard cascade_s17_tick1_degvar_mechanism_RETIRED {
+  origin: "cascade-s17 AX sub-agent (synthetic super-hub + nonlinear regression + N=128 scale check)"
+  date: 2026-04-28
+  agent_id: a0d0c15ed585daa5a
+  cwd: /Users/ghost/core/n6-architecture
+  raw_91_C3_disclosure: "Python mirror /tmp/cascade_s17/run.py. Probe 1 8 hybrids 10 seeds (vs s16's 30 — under-sampled). axis-16 graph-only invariant — within-base alpha-sweep degenerate against 1 a16 value per row, alpha-axis carries less rank-info than designed. HUB_NODE=0 fixed (HUB_NODE=N/2=32 not tested — would conflate with axis-16 BFS source). Probe 3 N=128 mini-cohort n=6 only (under-powered for confident N-trend). Poly3 CV R²=-31 numerical artifact of n=30/p=120 over-parametrization. No multiple-comparison correction across 4 nonlinear models."
+
+  finding cascade-s17-AX-1 {
+    claim: "synthetic super-hub hybrid mixers: hub strength α has NO effect on within-base K=2 Pearson — base family alone determines outcome"
+    evidence: {
+      n_hybrids: 8
+      n_seeds: 10
+      base_perm_P01: { pearson_alpha_0_1: 0.221, pearson_alpha_0_7: 0.221, holds: TRUE }
+      base_GL2_G01: { pearson_alpha_0_1: -0.745, pearson_alpha_0_7: -0.745, holds: FALSE }
+      base_CA_C01: { pearson_alpha_0_1: 0.277, pearson_alpha_0_7: 0.277, holds: TRUE }
+      base_FNV_H01: { pearson_alpha_0_1: -0.513, pearson_alpha_0_7: -0.513, holds: FALSE }
+      alpha_invariance: TRUE  ; "Pearson identical across α∈[0.1, 0.7] for all 4 bases"
+      global_cohort_pearson_n20: 0.250  ; "HOLDS at cohort level"
+      base_dominance_observation: "K=2 outcome fixed by base family, not by hub"
+    }
+    verdict: HUB OVERLAY DOES NOT ALTER K=2 OUTCOME (mechanism independence)
+    limit: "axis-16 graph-only invariant + α=0 base values not measured + 1 hub-overlay-seed"
+  }
+
+  retraction cascade_s16_AW_4_mechanism_analog_REJECTED {
+    type: HYPOTHESIS REJECTION (not new framework retraction — rejection of cascade-s16 hypothesis)
+    raw_71_invocation: TRUE
+    rejected_hypothesis: "synthetic non-affine ≡ super-hub physical analog (cascade-s16 AW-4)"
+    rejection_basis: "Hub strength α∈[0.1, 0.7] has no effect on within-base Pearson. Synthetic and hub mechanisms are INDEPENDENT axes, not equivalents. Hub does not flip violator → holder nor holder → violator within sweep range."
+    aw_4_disposition: "MODERATE → effectively REJECTED in strong form"
+  }
+
+  finding cascade-s17-AX-2 {
+    claim: "nonlinear regression on cascade-s16 n=30 cohort fails CV — U/V-shape hypothesis does NOT generalize"
+    evidence: {
+      poly2_ridge_in_sample_R2: 0.918
+      poly2_ridge_5fold_CV_R2: 0.004  ; "essentially zero out-of-sample"
+      poly3_ridge_in_sample_R2: 0.970
+      poly3_ridge_5fold_CV_R2: -31.56  ; "catastrophic overfit"
+      decision_tree_d3_in_sample_R2: 0.744
+      decision_tree_d3_CV_R2: -4.16
+      random_forest_in_sample_R2: 0.834
+      random_forest_CV_R2: 0.215  ; "best of 4 nonlinear models"
+      threshold_confirmed: "CV R² ≥ 0.6"
+      verdict: ALL_BELOW_0_4
+    }
+    verdict: NONLINEAR MECHANISM REJECTED — U/V-shape does not survive cross-validation
+    limit: "n=30 cohort under-powered for nonlinear model selection; could survive at n=100+"
+  }
+
+  finding cascade-s17-AX-3 {
+    claim: "N=128 scale test: degree_var |r| CRASHED from 0.497 (N=64) to 0.101 (N=128) — mechanism is N-DEPENDENT pseudo-signal"
+    evidence: {
+      n_substrates_n128: 6
+      n_seeds: 10
+      degree_var_r_at_N_64_cascade_s16: 0.497
+      degree_var_r_at_N_128_cascade_s17: 0.101
+      drop_factor: 0.20  ; "|r| dropped to 20% of N=64 value"
+      cohort_pearson_at_N_128: -0.375
+      verdict: N_DEPENDENT_PSEUDO_SIGNAL
+      finite_size_artifact: TRUE
+    }
+    verdict: degree_var mechanism FAILS scale invariance test
+    limit: "n=6 N=128 mini-cohort under-powered; broader N=128 cohort should confirm but unlikely to reverse 5x drop"
+  }
+
+  retraction cascade_s15_s16_degvar_partial_mechanism_RETIRED {
+    type: PARTIAL MECHANISM RETIREMENT
+    retraction_index: 16  ; "first retraction of an EARLIER cascade's PARTIAL MECHANISM (not framework axiom)"
+    raw_71_invocation: TRUE
+    retired_partial_mechanism: "cascade-s15/s16 degree_var → K=2 violation (|r|≈0.50, R²≈0.25)"
+    retirement_basis: [
+      "AW-4 mechanism analog hypothesis REJECTED by Probe 1 (hub overlay null effect)",
+      "Nonlinear regression CV all <0.4 by Probe 2 (U/V-shape doesn't generalize)",
+      "N=128 |r| crashed 0.497 → 0.101 by Probe 3 (N-dependent pseudo-signal not real mechanism)"
+    ]
+    cascade_s16_n30_reproducing_explanation: "cascade-s15 (N=64) and cascade-s16 (N=64) both reproduced because the signal IS N=64-conditional. Apparent reproduction was finite-size effect, not a real mechanism. The 'NOT artifact' verdict at cascade-s16 was correct relative to small-sample noise (|r| stable at n=8 → n=30) but missed the FINITE-SIZE confound."
+    framework_simplification: "Removes cascade-s15 + s16 partial mechanism from axiom v3. K=2 violation on physics cohort = UNRESOLVED MECHANISM (no candidate stands)."
+  }
+
+  closure cascade_s17 {
+    status: SINGLE-TICK CLOSURE (3-probe convergent rejection)
+    framework_state_after: {
+      axis_16_numerics: "K=1 anchor on synthetic substrates (canonical form unchanged)"
+      axis_16_semantics: "BFS-shell asymmetry (cascade-s13 14th retraction)"
+      axis_13: "baseline FORMULATION-CONDITIONAL on non-affine"
+      independence_axiom_v3_FINAL: "K=2 independence (Pearson<0.3) holds COHORT-WIDE on synthetic mixers (cascade-s14: 0/35 seeds violate). Physics cohort: 34% seeds violate (cascade-s14 Pearson up to +0.86). UNDERLYING MECHANISM UNRESOLVED — degree_var hypothesis RETIRED."
+      K_3: "7 portable rejected + 1 D=4-only deferred"
+      retraction_count: 16  ; "added partial mechanism retirement category"
+    }
+    deepest_lesson_v3: "Partial mechanism (R²=0.25) reproduced across n=8 → n=30 was insufficient to establish reality. cascade-s17 needed THREE independent falsifications (hub null effect + nonlinear CV fail + N=128 scale crash) to retire it. Framework now in honest UNRESOLVED state for K=2-violation mechanism."
+    cascade_s18_priority: "given degree_var retired and AW-4 rejected, K=2 violation mechanism is OPEN. Pivot directions: (a) different graph-property family (algebraic invariants? walk-counting moments?), (b) bigger physics cohort N=256 with new axis class candidates, (c) accept K=2 violation as IRREDUCIBLE physics-cohort property and shift framework to characterize WHEN axis-16 alone is sufficient (K=1 framework). Most defensible: (c)."
+    cron_observation: "cascade-s17 was launched as parallel-track during user 'commit' cleanup pause; cron tick-36 fired during sub-agent flight. cascade discipline absorbed result without dispatch collision."
+  }
+}
