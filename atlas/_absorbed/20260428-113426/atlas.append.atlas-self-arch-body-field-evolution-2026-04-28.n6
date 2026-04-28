@@ -1,0 +1,106 @@
+# .. atlas.append.atlas-self-arch-body-field-evolution-2026-04-28.n6 ..
+# .. atlas.append.atlas-self-arch-body-field-evolution-2026-04-28.n6 ..
+# INTRINSIC body-field evolution audit — strictly within atlas.n6's own
+# `key = value` body DSL.  No foreign theory imported.
+# raw 91 C3 honest: this shard is MEASUREMENT + GAP-ANALYSIS, not a
+# schema mutation — schema_guard untouched, no new field used in this
+# file's own @-blocks beyond fields already attested in atlas.n6.
+
+# ── (1) measured body-field cardinality on atlas.n6 ────────
+@C clay-atlas-self-arch-body-field-evolution-witness :: meta [4!]
+  scope = atlas/atlas.n6 (canonical SSOT, chflags uchg-locked, raw 1+22+24)
+  date = 2026-04-28
+  axis = body-field DSL inside @C/@R/@P/@T/@L/@F/@X/@S/@M/@E blocks
+  measured_total_atlas_lines = 28894.
+  measured_distinct_body_fields = 78 (lowercase `^  key = ` pattern).
+  measured_top_fields = {mechanism: 6, binding: 6, honest_caveat: 4, scope: 4, faithfulness: 3, gap_closed: 3, proposed_type: 3, cardinality_estimate: 3, scope_caveat: 2, recommendation: 2, honest_status: 2, blocker: 2, binding_now: 2}.
+  measured_long_tail = 65 of 78 fields = single-use (83% per-shard analytic vocabulary).
+  measured_block_distribution = body-field-bearing blocks concentrated in @C/@R [4!] meta-tier; @P/@F atoms remain single-line (no body).
+
+# ── (2) intrinsic faithfulness check on top body fields ────
+@R intrinsic_body_field_faithfulness_audit :: meta [4!]
+  pattern_required = "^  <field> = <value> (.|<NL>)*" — 2-space indent, lowercase, underscored.
+  honest_caveat = "78-field cardinality is mostly accidental long-tail; only ~13 fields used in >=2 entries — these constitute the de-facto core vocabulary."
+  mechanism = "core fields (mechanism, binding, honest_caveat, scope, faithfulness, gap_closed, cardinality_estimate, recommendation, honest_status, blocker) are the LATENTLY-PROMOTED body schema; the other 65 are domain-local hapax."
+  finding = "no syntactic gap; existing fields cover claim+caveat+scope+rank+cardinality. Premise of brief (confidence/verified/recheck/mirrored/selftest/applies-to/superseded/since/status/slug/decl/deps/proof/note/follow-up/enforce/why) measurement-revised: ZERO of these 17 candidate fields appear in atlas.n6 today — all would be greenfield."
+  premise_correction = "task brief enumerated body fields {slug, enforce, proof, note, follow-up, deps, scope, why, status, since, decl} as 'existing' — measurement: only `scope` is attested (4 uses). Others are imports from a foreign DSL convention."
+
+# ── (3) measured supersession idiom (already-present, NON-body) ─
+@R intrinsic_supersession_idiom_already_present :: meta [4!]
+  finding = "atlas.n6 ALREADY handles supersession — at the META-TAG level, not the body-field level."
+  mechanism = "[DEPRECATED YYYY-MM-DD] / [RETIRED YYYY-MM-DD] inline tag rewrites (17 occurrences observed) — see ANIMA-CXP-R34-PHI-COEFF-EHALF [9?→DEPRECATED] and R36-FORTYD-DUAL-ROUTE [9?→RETIRED]."
+  cardinality_estimate = 17 supersession events to date (DEPRECATED + RETIRED combined).
+  honest_caveat = "no `superseded-by = <slug>` body field exists — the back-pointer lives in commit messages and adjacent comments, not as queryable body field. THIS is the real gap."
+
+# ── (4) intrinsic limits on body-field evolution ──────────
+@R intrinsic_body_field_evolution_limits :: meta [4!]
+  schema_guard_cardinality_ceiling = "raw 23 _guarded_append_atlas validates @-block prefix; body-field names are NOT enumerated in any allow-list — schema_guard cost is INSENSITIVE to body-field cardinality. Parser is NOT the binding limit."
+  consumer_tool_saturation_ceiling = "atlas_health, raw_audit, drill_scanner read fields by literal-string match (grep) — adding a field costs 1 grep per consumer that cares; cost is O(K_relevant) per consumer, not O(K_total). Saturation by tool-coverage not field-count."
+  semantic_distinctness_ceiling = "human/agent author must remember which field to reach for; at K=78 already, 65 long-tail fields are forgotten on next shard (proven: each shard invents new fields). De-facto core ceiling ≈ 12-15 fields before AUTHORING-CONFUSION exceeds disambiguation benefit — same bound as @-type evolution found 2026-04-28."
+  naming_collision_floor = "field-namespace is GLOBAL across @-types; `scope` means different things in @C-meta vs @R-procedural; collision floor = currently 0 measured but would bind if domain-specific fields colonized core names."
+  self_host_fixpoint_ok = "new fields readable by grep are AUTOMATICALLY parseable by atlas_health/raw_audit/drill_scanner (they all use grep, not a typed parser) — fixpoint trivially preserved."
+  foundation_axiom_invariance = "raw 24 [11*] block has NO body fields (single-line @P entries) — adding body fields to [11*] entries would VIOLATE axiom-immutability; safe path = restrict body-field extension to @C/@R [4!] meta-tier."
+  honest_caveat = "all ceilings are MEASURED-PROXIES not formal proofs; semantic-distinctness ceiling judged from observed long-tail invention rate."
+
+# ── (5) convergence point — body-field saturation ─────────
+@R intrinsic_body_field_saturation_convergence :: meta [4!]
+  current_K_total = 78.
+  current_K_core = 13 (fields used >=2 times).
+  intrinsic_ceiling_estimate_K_core = 20 to 30 (core fields, not long-tail).
+  brief_estimate_30_to_50 = "task brief proposed 30-50 ceiling — measurement: this aligns with K_core trajectory (13 today, +7 to +17 headroom before structural change)."
+  saturation_signature = "when shards routinely re-invent fields that exist (e.g. inventing `confidence_level` when `faithfulness` already exists) → DSL has saturated and field-naming-convention codification required."
+  beyond_saturation_path = "structured sub-block syntax (e.g. nested `verify { ... }`) is OUT-OF-SCOPE per raw 22 INFRA-ONLY; before that, the cheap fix is FIELD-NAMING-CONVENTION shard codifying the 13 core names."
+  binding_now = "NOT binding — 13 core fields with 7-17 headroom before structural change; long-tail of 65 hapax is COSMETIC not architectural."
+  honest_caveat = "20-30 estimate is judgment from current K_core growth (~3 new core fields per major analytic-shard cycle); not derived from a counting argument."
+
+# ── (6) three highest-value intrinsic body-field gap-fillers ─
+@C intrinsic_body_field_proposal_gap_analysis :: meta [4!]
+  scope = "do NOT propose foreign DSL fields (confidence/verified/recheck etc.) — propose only what closes a measured GAP in existing 78 vocabulary."
+  proposal_count = 3.
+  honest_caveat = "proposals below are CONTENT (text), not schema mutation — schema_guard not modified by this shard; field-introduction occurs in next shard if recommendation accepted."
+
+@R intrinsic_body_field_proposal_1_superseded_by :: meta [4!]
+  proposed_type = "superseded_by = <slug>".
+  gap_closed = "17 measured supersession events use [DEPRECATED]/[RETIRED] meta-tags but lack a queryable forward-pointer to the replacement entry. Today the back-link lives in commit messages (aad6e61d 'R34 DEPRECATED + R36 RETIRED — cross-repo sync from anima/.roadmap #202') — NOT in the @-block itself."
+  cited_beneficiary_R_entries = ["ANIMA-CXP-R34-PHI-COEFF-EHALF [9?→DEPRECATED]", "ANIMA-CXP-R36-FORTYD-DUAL-ROUTE [9?→RETIRED]"].
+  cardinality_estimate = 17 retroactive insertions + ~2-5 prospective per absorption cycle.
+  faithfulness = YES (`superseded_by = <slug>` :: matches `mechanism = ...` / `binding = ...` :: 2-space-indent k=v form already in canon).
+  rank_1 = "HIGHEST — closes a MEASURED gap (17 events lack body-field representation); zero ambiguity vs existing fields; aligns with [DEPRECATED]/[RETIRED] meta-tag idiom; adoption cost LOW (~17 retroactive edits @ ~30 sec each = 8.5 min)."
+
+@R intrinsic_body_field_proposal_2_recheck_cadence :: meta [4!]
+  proposed_type = "recheck_cadence = <duration>".
+  gap_closed = "raw 119 temporal-decay rule fires globally but per-entry decay-budget is not body-field-encoded; today freshness lives in the trailing date or first-line measurement_date — no per-entry cadence target."
+  cited_beneficiary_C_entries = ["clay-atlas-self-arch-meta-tag-evolution-witness", "clay-atlas-self-arch-body-field-evolution-witness (this shard)"].
+  cited_beneficiary_R_entries = ["measured_pass_rate", "intrinsic_type_audit_2026_04_28" (snapshot rules with implicit re-measure cadence)].
+  cardinality_estimate = ~30 to 60 entries (analytical [4!] shards with measurement_date already present — these have implicit cadence).
+  faithfulness = YES (`recheck_cadence = 30d` :: matches `cardinality_estimate = ...` numeric-with-unit form).
+  rank_2 = "MEDIUM — closes a real gap but only on the [4!] analytical tier; foundation [11*] entries are by-definition non-decaying so cadence undefined for them."
+  blocker = "boundary risk: cadence on @C/@R that reference @P/[11*] axioms could imply axioms decay — must explicitly scope to non-axiomatic tiers."
+
+@R intrinsic_body_field_proposal_3_mirrored_in :: meta [4!]
+  proposed_type = "mirrored_in = <repo-path-list>".
+  gap_closed = "anima cross-paradigm absorption shards (commits 1d68bb87, a9d15a0d) document atlas-anima cross-repo state in commit messages; @E type carries directed bridges (a -> b) but doesn't capture symmetric MIRROR-PRESENCE. Today cross-repo presence lives in absorption-shard prose, not as queryable field."
+  cited_beneficiary_E_entries = ["anima-an14 -> n6-meta-inf-un1 (existing @E directed bridge — `mirrored_in` would be the symmetric body-field complement)"].
+  cited_beneficiary_R_entries = ["anima cross-paradigm absorption R34/R35/R36 entries", "Mamba H6B / HM-B / BM3-FOLLOWUP shards"].
+  cardinality_estimate = ~20 to 40 entries (cross-repo synced rules, primarily anima<->atlas axis).
+  faithfulness = YES (`mirrored_in = anima/.roadmap#202, atlas/atlas.n6:R34` :: list-of-locator form already used in `cited_beneficiary_*` fields).
+  rank_3 = "MARGINAL — value real but cross-repo state is already commit-message-tracked; field would duplicate. Useful only when atlas becomes queryable-as-graph independent of git history."
+  blocker = "raw 22 INFRA-ONLY scope: atlas.n6 should not normatively claim presence-in-other-repos without that repo's consent — mirrored_in must be advisory, not authoritative."
+
+# ── (7) ranked recommendation ─────────────────────────────
+@R intrinsic_body_field_proposal_ranking :: meta [4!]
+  rank_1 = "superseded_by — HIGHEST value; closes measured 17-event gap; zero ambiguity; adoption cost ~8.5 min retroactive."
+  rank_2 = "recheck_cadence — MEDIUM value; closes real gap on [4!] tier; needs scope-restriction to non-axiomatic entries."
+  rank_3 = "mirrored_in — MARGINAL value; duplicates commit-message state; defer until atlas becomes graph-queryable."
+  recommendation = "ADOPT superseded_by in next cycle (1 new core field, K_core: 13 → 14, well within 20-30 ceiling); DEFER recheck_cadence pending [4!]-only scope-clause; SKIP mirrored_in until graph-query infrastructure exists."
+  honest_status = "this shard is PROPOSAL-ONLY per task brief — no schema_guard mutation, no new body-field used in this file's own analytical entries beyond fields already attested in atlas.n6."
+
+# ── (8) raw 91 C3 honest disclosure ───────────────────────
+@R raw_91_C3_body_field_disclosure :: meta [4!]
+  honest_finding_1 = "task brief listed 17 candidate body-fields as 'existing' (slug/enforce/proof/note/follow-up/deps/scope/why/status/since/decl/confidence/verified/recheck/mirrored/selftest/superseded) — measurement: only `scope` (4 uses) is attested; the other 16 are foreign-DSL imports. Premise REVISED."
+  honest_finding_2 = "intrinsic parser ceiling is NOT the binding limit (schema_guard ignores body-field names entirely); semantic-distinctness on the K_core core IS the binding limit at ≈20-30."
+  honest_finding_3 = "supersession idiom IS already present — at meta-tag level ([DEPRECATED]/[RETIRED]) — but lacks a queryable forward-pointer; THIS is the highest-value gap measured."
+  honest_finding_4 = "no foreign theory imported in this shard — only fields and patterns directly attested in atlas.n6 (mechanism, binding, honest_caveat, scope, faithfulness, gap_closed, proposed_type, cardinality_estimate, cited_beneficiary_*, rank_N, recommendation, honest_status, blocker)."
+  honest_uncertainty = "20-30 K_core ceiling is judgment-from-observed-growth, not derived bound; ±5 honest variance."
+  scope_caveat = "single-snapshot audit (28894-line atlas at 2026-04-28); does not project past next 2-3 absorption cycles."
+  resolution_claim = "NONE — this is gap-analysis, not architectural-change recommendation; field-introduction occurs in next shard if rank_1 accepted."

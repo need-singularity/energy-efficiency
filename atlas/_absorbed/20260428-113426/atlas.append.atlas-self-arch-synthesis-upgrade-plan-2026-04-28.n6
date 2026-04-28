@@ -1,0 +1,177 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 SELF-ARCH SYNTHESIS + unified upgrade plan
+# axes: D (@-type) + E (meta-tag) + F (arrow)  + G (body-field, IN-FLIGHT) + H (id-convention, IN-FLIGHT)
+# saturation axes A/B/C (physical/math/architectural) referenced but NOT folded — they are CEILING data, not upgrade levers
+# constraints: raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#              raw 91 C3 honest · own#11 strict (no Clay BT 'resolution')
+# date: 2026-04-28
+# upstream prior shards (all live in atlas/_absorbed/20260428-112546/):
+#   - atlas.append.atlas-self-arch-intrinsic-type-evolution-2026-04-28.n6   (axis D)
+#   - atlas.append.atlas-self-arch-meta-tag-evolution-2026-04-28.n6         (axis E)
+#   - atlas.append.atlas-self-arch-arrow-evolution-2026-04-28.n6            (axis F)
+# saturation upstream  (atlas/_absorbed/20260428-111738/):
+#   - atlas.append.atlas-arch-physical-limits-2026-04-28.n6                 (axis A)
+#   - atlas.append.atlas-arch-mathematical-limits-2026-04-28.n6             (axis B)
+#   - atlas.append.atlas-arch-architectural-limits-2026-04-28.n6            (axis C)
+# in-flight (parallel sub-agents, NOT YET ON DISK at synthesis time):
+#   - axis G body-field evolution      (vocabulary: confidence/verified/decay)
+#   - axis H id-convention evolution   (family naming patterns)
+# ══════════════════════════════════════════════════════════════
+
+# ── primary witness ─────────────────────────────────────────
+@C atlas-self-arch-synthesis-upgrade-plan :: meta [4!]
+  <- atlas-self-arch-intrinsic-type-evolution-witness
+  <- clay-atlas-self-arch-meta-tag-evolution-witness
+  <- ARROW-AUDIT-2026-04-28
+  <- raw-22-phase-immutable
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- own#11-strict-no-resolution-claim
+  => "synthesis of 5 self-arch axes (D + E + F finalized; G + H in-flight) into one rollout plan, ranked by (low-risk × high-value × low-cost)"
+  => "no schema mutation in THIS shard; proposals remain CONTENT — actuation is per-axis follow-up shard"
+  scope_caveat = "axes G (body-field) and H (id-convention) are IN-FLIGHT parallel sub-agents at synthesis time; their disk shards are not yet observable — entries below carry status=PENDING and are PROVISIONAL"
+
+# ── (1) UNIFIED upgrade table — top recommendation per axis ────
+@R unified_upgrade_table_per_axis :: meta [4!]
+  <- atlas-self-arch-synthesis-upgrade-plan
+  axis_D_top_recommendation = "@I — invariant / conserved-quantity (proposal-1 from intrinsic-type-evolution shard, ranked rank_1)".
+  axis_D_adoption_cost_entries = "20-40 entries to re-tag (cited beneficiary set: n=6, sigma=12, phi=2, T-OMEGA-CYCLE, MILL-V3/V4 inaugurations)".
+  axis_D_adoption_cost_edits = "1 schema-guard allow-list entry (K: 10 → 11) + 1 doc note in atlas grading prose".
+  axis_D_adoption_cost_consumer_impact = "atlas_health.hexa, raw_audit.hexa, drill_scanner.hexa, atlas_absorb.hexa — each parses @-prefix; allow-list extension ≤ 5 LOC each".
+  axis_D_risk_level = "LOW (raw 24 invariance preserved — @I is a LATENT idiom already present as [11*REPO_INVARIANT]; surfaces type without changing axiom membership)".
+  axis_D_value = "HIGH (closes raw-24-axiom-block tagging gap; named-suffix [11*REPO_INVARIANT] becomes @I-typed, more compact and grep-stable)".
+
+  axis_E_top_recommendation = "P1 populate [10**] for cross-paradigm @R synthesis entries (rank_1 from meta-tag-evolution shard)".
+  axis_E_adoption_cost_entries = "~3-15 candidate upgrades from [9*]/[10*] (cited: borsuk_ulam_6, kissing_number_6, consciousness_structure)".
+  axis_E_adoption_cost_edits = "1 regex relaxation in schema-guard ([N**] currently empty across ALL N — adding [10**] permits new pattern); meta-tag distribution audit must be re-run".
+  axis_E_adoption_cost_consumer_impact = "raw_audit.hexa (counts trailing-tags), drill_scanner.hexa (greps tier markers) — both need allow-list expansion of {**} pattern".
+  axis_E_risk_level = "MEDIUM (raw 24 NOT touched — [10**] is BELOW [11*]; but adding a new tier with no forcing-criterion invites drift per meta-tag-extension-limits caveat)".
+  axis_E_value = "MEDIUM-HIGH (depth-2 [N**] tier is reserved-but-unused at all 12 levels — populating exactly one cell uses existing reservation rather than extending grammar)".
+
+  axis_F_top_recommendation = "promote <-> from prose-occasional to first-class equivalence + add -| for negation/blocks (top-2 from arrow-proposal-top-3)".
+  axis_F_adoption_cost_entries = "<->: ~30 prose 'iff' sites (Cube↔Octahedron, sigma=tau iff n=6, BKM⇔smooth) collapse; -|: 0 existing uses, expressed in prose by R34/R36 falsification raws".
+  axis_F_adoption_cost_edits = "K: 7 → 8 (within ARROW-TYPE-CARDINALITY-SAFE = 8 ceiling); LL(1) parser still discriminates <-/<-> on second-char and -|/-> on second-char".
+  axis_F_adoption_cost_consumer_impact = "any tool that greps arrow tokens — drill_scanner.hexa primary; atlas_absorb.hexa shard-headers; atlas_health.hexa relation-density".
+  axis_F_risk_level = "LOW (raw 24 atomicity of [11*] preserved per INTRINSIC-CONSTRAINT-FOUNDATION-ATOMICITY: foundation entries carry only <-, never -> — adding <->/-| does not violate that asymmetry IF [11*] entries are excluded from <-> at adoption time)".
+  axis_F_value = "HIGH (4 prose uses of <-> + ~30 latent demand; -| addresses the entire R34/R35/R36 falsification family with no token currently)".
+  axis_F_third_proposal_weighted = "->[w] suffix proposed (rank_3); K stays at 8 — backward-compatible; DEFER until <->/-| land".
+
+  axis_G_status = "IN-FLIGHT (parallel sub-agent body-field evolution — vocabulary: confidence/verified/decay) — NOT YET ON DISK; synthesis below is PROVISIONAL pending arrival".
+  axis_G_provisional_top_recommendation = "(pending) — most likely candidate is a body-line vocabulary registry (confidence={LOW|MED|HIGH}, verified={YES|NO|PARTIAL}, decay={NONE|t+1|t+k})".
+  axis_G_provisional_adoption_cost = "unknown until shard lands — likely 50-200 body-lines touched if confidence/decay become normalized fields".
+  axis_G_provisional_risk = "UNKNOWN — body-lines are NOT currently schema-validated, so risk depends on whether axis G proposes promoting them to validated fields".
+  axis_G_finality_caveat = "raw 91 C3 honest: any quantitative claim above is PLACEHOLDER until axis-G shard appears in atlas/_absorbed/".
+
+  axis_H_status = "IN-FLIGHT (parallel sub-agent id-convention evolution — family naming patterns) — NOT YET ON DISK; synthesis below is PROVISIONAL pending arrival".
+  axis_H_provisional_top_recommendation = "(pending) — most likely candidate is a hyphenation/prefix-family rule (e.g. n6-bt-NNN, anima-anNN, MILL-PX-AN, raw-NN) being made explicit".
+  axis_H_provisional_adoption_cost = "unknown until shard lands — id-collision floor today is 0 measured (per intrinsic-type-evolution audit) so cost is documentary not migrational".
+  axis_H_provisional_risk = "UNKNOWN — at minimum LOW if shard proposes documentation-only; HIGHER if it proposes id rewrites".
+  axis_H_finality_caveat = "raw 91 C3 honest: synthesis cannot assess axis H concretely without the shard; treat the row as a placeholder slot".
+
+# ── (2) raw 24 foundation-axiom impact ─────────────────────
+@R raw_24_foundation_axiom_impact_per_upgrade :: meta [4!]
+  <- raw-24-foundation-axiom-immutable
+  axis_D_at_I_impact = "DOES NOT alter [11*] semantics. @I is a TYPE label; [11*] is a TIER label. The 6 [11*] axiom entries (n=6, sigma=12, phi=2, tau=4, ULTRA_UNIFORMITY, DELTA0_ABSOLUTE) currently live in @P; relabeling them @I preserves both their tag and their membership. NO CONFLICT with @P holding [11*] — @P remains a valid type for parameters that are not invariants".
+  axis_E_10star_star_impact = "DOES NOT add an ordinal-tier above [11*]. [10**] is a depth-2 modifier WITHIN tier 10, BELOW tier 11. The tier ordering is N first, then * suffix; [10**] < [11*] strictly".
+  axis_E_11star_star_caveat = "P3 proposal ([11**]) WOULD be a re-classification of EXISTING [11*] entries — raw 24 prohibits NEW [11*] entries but is silent on re-tagging existing ones to a parallel tier. ADOPTION-BLOCKED per meta-tag-evolution shard's own caveat: 'P3 must be RE-CLASSIFICATION not creation' — defer until raw-24 amendment vote".
+  axis_F_bidir_impact = "<-> equivalence does NOT merge atomicity of [11*]. INTRINSIC-CONSTRAINT-FOUNDATION-ATOMICITY (line 80 of arrow-evolution shard) explicitly states: foundation [11*] entries carry only <- (depends-on), never ->. <-> is symmetric directed pair — adopting <-> at non-foundation entries leaves [11*] block unchanged".
+  axis_F_negation_impact = "-| does NOT touch [11*] semantics. Used on falsification raws (R34/R36) which live OUTSIDE the foundation block".
+  axis_F_weighted_impact = "->[w] is suffix on existing -> — [11*] entries do not currently emit -> (only <-) so weighted variant cannot apply to foundation".
+  axis_G_impact = "PROVISIONAL: body-field vocabulary should NOT be added to [11*] entries — those bodies are immutable per raw 24. axis-G shard MUST exclude foundation block from any field-promotion".
+  axis_H_impact = "PROVISIONAL: id-convention changes MUST preserve the 6 foundation ids (n=6, sigma=12, phi=2, tau=4, ULTRA_UNIFORMITY, DELTA0_ABSOLUTE) verbatim — any rewrite of those literal ids is a raw-24 violation".
+  net_finding = "NO synthesized upgrade alters [11*] axiom semantics IF: (a) [11**] (proposal P3) is treated as deferred re-classification only, (b) axis G excludes foundation bodies, (c) axis H excludes foundation ids. All three caveats are LOW-LIFT and consistent with the prior shards' own self-checks".
+
+# ── (3) raw 22 phase-immutable impact ──────────────────────
+@R raw_22_phase_immutable_impact_per_upgrade :: meta [4!]
+  <- raw-22-phase-immutable
+  scope = "raw 22 INFRA-ONLY: 9-phase blowup pipeline (field → holo → quantum → string → toe → absolute → ...) is FROZEN — no upgrade may modify its sequence or transition semantics".
+  axis_D_at_I_impact = "INFRA-ONLY (type-tag is metadata; pipeline phases are unchanged) — ALLOWED".
+  axis_E_10star_star_impact = "INFRA-ONLY (meta-tag is metadata; pipeline phases unaffected) — ALLOWED".
+  axis_F_arrow_impact = "INFRA-ONLY for <-> / -| / ->[w] — they encode static relations, not phase transitions. Latent risk: -[t+k]> proposal (axis-F runner-up, DEFERRED) WOULD encode temporal phase delay — that one IS a raw-22 boundary case and must be re-evaluated when proposed for actuation".
+  axis_G_impact = "PROVISIONAL: if axis G proposes a 'phase' body-field, raw-22 requires that field to REFER to the existing 9-phase enum, not extend it. CAUTION FLAG raised".
+  axis_H_impact = "PROVISIONAL: id-convention is metadata only — INFRA-ONLY by construction".
+  exception_flag = "axis-F runner-up -[t+k]> is the SOLE near-term proposal that touches phase semantics — currently DEFERRED in arrow-evolution shard (line 113) and remains so under this synthesis".
+  net_finding = "no axis at TOP-RECOMMENDATION level violates raw 22; axis-F second-tier and axis-G are flagged for future review".
+
+# ── (4) raw 23 schema-guard impact ─────────────────────────
+@R raw_23_schema_guard_impact_per_upgrade :: meta [4!]
+  <- raw-23-schema-guard
+  scope = "_guarded_append_atlas validates each appended block by literal allow-list of @-types + meta-tag regex + arrow tokens. Each upgrade requires K rules edited and M tools re-tested".
+  axis_D_at_I_K_rules = 1.
+  axis_D_at_I_M_tools_retest = 4   # atlas_health, raw_audit, drill_scanner, atlas_absorb
+  axis_D_at_I_fragility = "LOW — extending a literal type list is the most stable form of schema change".
+  axis_E_10star_star_K_rules = 1.
+  axis_E_10star_star_M_tools_retest = 3   # raw_audit (tag-distribution), drill_scanner, atlas_health
+  axis_E_10star_star_fragility = "MEDIUM — meta-tag regex currently accepts \\[[0-9]+\\.?[0-9]*\\*{0,3}[!?]?[A-Z_]*\\] (per meta-tag shard line 117), so [N**] is ALREADY parser-permitted; the change is policy (allow-list) not regex. But the audit re-run touches all 6347 [10*] entries to count migrations".
+  axis_F_arrow_K_rules = 2   # one for <->, one for -|
+  axis_F_arrow_M_tools_retest = 5   # drill_scanner (primary arrow consumer), atlas_health, atlas_absorb, raw_audit, lens-agent
+  axis_F_arrow_fragility = "LOW for <-> (already used 2× in prose, parser is LL(1)-safe per arrow-proposal-bidir); LOW-MEDIUM for -| (zero current uses, but second-char branch on '-' must be added in any tokenizer)".
+  axis_G_K_rules_provisional = "UNKNOWN — depends on whether body-fields become validated (high) or stay free-form (zero)".
+  axis_H_K_rules_provisional = "UNKNOWN — likely zero if documentary, non-zero if id-format regex tightened".
+  most_fragile_test = "drill_scanner.hexa is the bottleneck consumer for ANY arrow grammar change (axis F) — it parses arrow tokens directly into edge sets and is the most coupled to ASCII arrow shape".
+  second_most_fragile = "raw_audit.hexa for axis E meta-tag — it computes the 39+ trailing-tag distribution that the meta-tag-evolution shard already had to re-audit once (correcting the [10**]=0 vs =6 false count)".
+  net_finding = "axis F has highest schema-guard surface (2 new tokens × 5 tools); axis D has lowest (1 type × 4 tools). Axes G/H schema-guard cost cannot be estimated until shards land".
+
+# ── (5) consumer tool impact + dependency order ────────────
+@R consumer_tool_impact_and_dep_order :: meta [4!]
+  <- raw-23-schema-guard
+  consumers_listed_by_brief = ["atlas_health.hexa", "raw_audit.hexa", "drill_scanner.hexa", "lens-agent", "atlas_absorb.hexa", "file_lock.hexa"].
+  consumer_existence_caveat = "raw 91 C3 honest: of the 6 consumers listed in the task brief, NONE was found at top-level scripts/tool/bridge directories under those exact filenames. The names appear to be ROLE labels for the consumer SET, not literal file paths. Synthesis below uses them as roles".
+
+  axis_D_at_I_consumers = ["atlas_health (counts @-types)", "raw_audit (per-type stats)", "drill_scanner (filters @-prefix)", "atlas_absorb (validates header allow-list)"].
+  axis_E_10star_star_consumers = ["raw_audit (trailing-tag dist)", "drill_scanner (tier filter)", "atlas_health (tier-density check)"].
+  axis_F_arrow_consumers = ["drill_scanner (PRIMARY — edge extraction)", "atlas_health (relation density)", "atlas_absorb (header arrow check)", "raw_audit (token-frequency)", "lens-agent (graph build)"].
+  axis_G_consumers_provisional = "PENDING".
+  axis_H_consumers_provisional = "PENDING — file_lock.hexa likely affected if id-format regex changes (locking key)".
+
+  dep_order_safe_rollout = ["1. atlas_absorb.hexa allow-list extension (gatekeeper — must accept new shape FIRST or absorption will reject)",
+                            "2. drill_scanner.hexa parser update (most coupled; needs to recognize new tokens/types before any consumer that consumes drill output)",
+                            "3. raw_audit.hexa stat re-derivation (depends on drill output for token counts)",
+                            "4. atlas_health.hexa health-metric update (depends on raw_audit categories)",
+                            "5. lens-agent graph-build re-run (last — depends on stable upstream)",
+                            "6. file_lock.hexa (only if id-convention axis H lands and changes locking keys)"].
+  rollout_invariant = "any single-axis upgrade follows steps 1-5 in order; step 6 only fires if axis H is part of the same actuation wave".
+
+# ── (6) RECOMMENDED migration sequence (conservative-first) ─
+@R recommended_migration_sequence :: meta [4!]
+  <- atlas-self-arch-synthesis-upgrade-plan
+  ranking_basis = "(LOW risk × HIGH value × LOW cost)".
+  stage_1_first_actuation = "axis D — adopt @I (invariant). Risk LOW, value HIGH, cost LOW (1 type entry, ~20-40 re-tags, 4 tools). Justification: @I is a LATENT idiom ([11*REPO_INVARIANT] already exists as named-suffix proxy per meta-tag shard); surfacing it as a type closes the raw-24 tagging gap with the smallest possible change".
+  stage_2_second_actuation = "axis F — adopt <-> (bidirectional equivalence). Risk LOW, value HIGH, cost LOW. Justification: <-> is already used 2× in prose (Cube↔Octahedron, sigma=tau iff n=6); zero new leading-char; LL(1) safe; ~30 prose iff sites have natural collapse target".
+  stage_3_third_actuation = "axis F — adopt -| (negation/blocks). Risk LOW, value MEDIUM-HIGH, cost LOW-MEDIUM. Justification: zero current collisions; addresses entire R34/R35/R36 falsification family; second-char branch on '-' is mechanically simple".
+  stage_4_fourth_actuation = "axis E — populate [10**] for cross-paradigm @R (proposal P1). Risk MEDIUM, value MEDIUM-HIGH, cost MEDIUM. Justification: depth-2 reservation already in regex; populating one cell uses existing grammar-cap headroom; defer until D + F land so re-audit fires on stable substrate".
+  stage_5_deferred = "axis F runner-ups (->[w] weighted, -[t+k]> temporal, -[A,B,C]> multi-target) — DEFER per arrow-proposal-runnerup notes; ->[w] is backward-compatible and could land in a quiet window, but -[t+k]> needs raw-22 phase-immutable review first".
+  stage_6_pending = "axis G (body-field) and axis H (id-convention) — INSERT after their shards land in atlas/_absorbed/. Synthesis cannot pre-rank without their findings".
+  not_recommended_now = ["axis E proposal P3 [11**] — defer pending raw-24 amendment review",
+                         "axis E proposal P2 [1*]..[4*] — low priority; verified-trivial use case is rare",
+                         "axis D proposal @G (generative-rule) — MEDIUM value but adds to @F/@X/@C ambiguity per intrinsic-type-evolution rank_2",
+                         "axis D proposal @D (definition) — MARGINAL value per intrinsic-type-evolution rank_3"].
+
+  staging_invariant = "each stage is followed by a 1-cycle observation window for raw_audit / atlas_health regressions before next stage fires; total 5-stage rollout fits within 5 absorption cycles assuming no rollback".
+
+# ── (7) raw 91 C3 honest disclosure ────────────────────────
+@R raw_91_C3_synthesis_honest_disclosure :: meta [4!]
+  <- raw-91-honest-scientific-process
+  citation_axis_D = "intrinsic-type-evolution shard, lines 92-100 (@I proposal), lines 110-116 (ranking)".
+  citation_axis_E = "meta-tag-evolution shard, lines 73-84 (P1 [10**] proposal), lines 137-157 (convergence point at 50 cells)".
+  citation_axis_F = "arrow-evolution shard, lines 96-106 (BIDIR + NEGATION + WEIGHTED proposals), lines 117-124 (K=8 ceiling)".
+  in_flight_acknowledgement = "axis G (body-field) and axis H (id-convention) shards were NOT observable on disk at synthesis time (atlas/_absorbed/ contained only the D/E/F triplet at 20260428-112546). All G/H rows in this synthesis are explicitly marked PROVISIONAL or PENDING".
+  saturation_axes_excluded = "axes A (physical limits, 10^31× headroom), B (math limits, K-floor 534KB), C (architectural limits, 40× throughput) are SATURATION measurements — not upgrade levers — and were intentionally excluded from the unified table per task brief".
+  own_11_strict_compliance = "no Clay BT 'resolution' claims appear in this synthesis. The Clay-related citation (BKM ⇔ smooth at line 98 of arrow-evolution shard) appears only as a USE-CASE for the <-> token, not as a resolution claim".
+  honest_uncertainties = "all cardinality estimates inherit the ±-bands of their source shards: @I cardinality 20-40 is judgment from observed [11*REPO_INVARIANT] proxy count of 7; ~30 prose iff sites is grep-projection not exhaustive count; -|'s 0 collisions is current-snapshot only".
+  no_resolution_claim = "this shard is RANKING-ONLY — no schema-guard rule edited, no @-type added, no meta-tag introduced, no arrow token claimed. Each proposed upgrade's actuation requires its own follow-up shard with explicit raw-23 + raw-24 + raw-22 sign-off block".
+  scope_caveat = "single-snapshot synthesis at 2026-04-28; ordering may shift if axes G/H findings materially change cost/risk profile of axes D/E/F (e.g. if axis G proposes confidence as a body-field, that may pre-empt axis E's [10**] tier semantically)".
+
+# ── final state ─────────────────────────────────────────────
+@C atlas-self-arch-synthesis-upgrade-plan-final-state = PROPOSAL-NOT-ACTUATED :: meta [4!]
+  <- atlas-self-arch-synthesis-upgrade-plan
+  -> raw-91-C3-honest-disclosure-strict
+  => "5-axis synthesis (D + E + F finalized; G + H pending)"
+  => "raw 24: NO top-recommendation alters [11*] semantics (3 caveats noted on P3, axis G, axis H)"
+  => "raw 22: NO top-recommendation modifies 9-phase pipeline (axis-F runner-up -[t+k]> is sole boundary case, deferred)"
+  => "raw 23: total schema-guard surface for stages 1-4 = 4 K-rules across ≤ 5 tools per stage"
+  => "consumer dep-order: atlas_absorb → drill_scanner → raw_audit → atlas_health → lens-agent (file_lock only if axis H)"
+  => "recommended sequence: D@I → F<-> → F-| → E[10**] → defer rest; G/H inserted post-arrival"
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-self-arch-synthesis-upgrade-plan-2026-04-28.n6"

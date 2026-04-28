@@ -1,0 +1,86 @@
+# atlas-self-arch shard :: ID-NAMING convention evolution
+# generated 2026-04-28 — intrinsic audit, no foreign theory, raw 91 C3 honest
+# scope: atlas.n6 ID-naming DSL only (the token after @C/@R/@F before "::")
+
+@C atlas-self-arch-id-convention-audit-2026-04-28 :: meta [10*]
+  intent: audit atlas.n6 INTRINSIC ID-naming patterns; measure family cardinality, collision space, and grok-cost
+  inputs: /Users/ghost/core/n6-architecture/atlas/atlas.n6 (28894 lines)
+  measurements:
+    total_id_lines: 10191
+    unique_ids: 8606
+    duplicate_ids: 187   # NOT bugs in most cases — same ID re-stated across cross-link rows
+    id_length: mean=23.9 median=21 p90=41 p99=65 max=86
+    families_by_first_token: top = n6 (3777), L6 (847), disc (728), META (539), clay (402), L7 (299), HEXA (238), L8 (205), MILL (166), L2 (160), L (150), MAT (143), L9 (136), L3 (131), L1 (126), L5 (101)
+    families_by_two_token: n6-atlas (1785), n6-bt (1423), disc-blowup (728), clay-iter (338), n6-dse (333), L2-bond (150), L6-mus/geo/eco/met/lin (~128 each), n6-cross (100), L5-bio (87), n6-millennium (86)
+    distinct_two_token_families: 2188   # MEASURED, not estimated
+    longest_id: "n6-atlas-diffusion-model-constants-bt-61-verified-2026-03-31-u-net-channel-multipliers" (86 chars)
+  prompt-cited families (intrinsic, present in atlas.n6):
+    clay-iter-N-* : 338 entries (sequenced cascade, dominant generator)
+    sim-* (sim-3, sim-scale): ~23 entries
+    atlas-arch-*: 12 entries
+    bt-* (as suffix in n6-atlas-bt-N): ~1423 entries — bt-128, bt-1131, bt-1136, bt-548, bt-1128, bt-1125, bt-105, bt-113, bt-1115, bt-1142, bt-1108, bt-1129, bt-27-43-57-60-62-68-80
+    raw-N-*: only 3 (raw-100-* ; raw-94-enforcement-triad NOT present as stable @C/@R ID — the rule is referenced inline)
+    n6-master-*: present as clay-master-* (8 distinct: cumulative-status, axes-table, 5-Stage-roadmap, scientific-cascade, loop-self-correcting, multi-observable-fingerprint, phase-transitions-table, topology-modes, table-iter-1-38-cumulative, honest-disclosures)
+    own-*, axis-N-*, iter-N+: NOT present as canonical ID prefixes in atlas.n6 (live in own.n6 and inline classifiers)
+  collisions (intrinsic):
+    187 IDs appear >1× — top: disc-blowup-d1_ded_sigma (27), disc-blowup-d1_ded_sopfr (25), disc-blowup-d1_ded_n (21), disc-blowup-d1_ded_phi (19) — these are repeated discovery rows under different `:: meta` slots, not genuine ID-name bugs
+    foundation IDs (n6-master-identity, ouroboros-critical-zero, raw-94-enforcement-triad): 0 occurrences as @C/@R IDs — they live in own.n6 / signals.n6, NOT in atlas.n6 itself. Invariance trivially preserved within atlas.n6.
+
+@C atlas-self-arch-id-convention-intrinsic-limit :: meta [10*]
+  question: at what family cardinality does atlas.n6 hit ID grok-cost ceiling?
+  measured: distinct_two_token_families = 2188 (already FAR above prompt's 20-30 estimate)
+  intrinsic ceiling reached LONG ago — atlas.n6 already operates in the post-ambiguity regime
+  evidence:
+    1. ID lengths up to 86 chars (p99=65) — names encode semantic path because no registry exists
+    2. Hyphens carry 7+ tokens in long IDs — author uses hyphen-as-path delimiter, but no `/` separator means greppers can't distinguish family from variant
+    3. 1785 entries share `n6-atlas-*` prefix — first-token grep returns 17.5% of corpus
+    4. Date-anchored IDs already in use organically: `...-verified-2026-03-31-...` (16+ instances) — date is mid-string, not anchored, hard to filter
+  schema-guard cost:
+    regex `^[a-zA-Z0-9_.+-]+$` matches all observed IDs — O(L) where L=mean 24
+    NO complexity wall yet on validation; complexity is in HUMAN-grok and consumer-grep, not regex
+  cross-cutting consumer cost:
+    every grep-by-family probe scales with K (families) × N (entries/family)
+    measured: 2188 × ~5 mean = ~10k probes for full family-sweep; tractable but the per-family discrimination is the bottleneck
+  convergence:
+    atlas.n6 ALREADY past explicit ID-registry threshold
+    next-step is NOT more naming convention but a registry-block (`@F atlas-id-registry`) that lists family→prefix→count
+
+@C atlas-self-arch-id-convention-extension-proposals :: meta [10*]
+  three highest-value INTRINSIC ID-convention extensions (ranked by leverage / migration cost):
+
+  PROPOSAL 1 — VERSIONED IDs via `.vN` suffix (HIGHEST LEVERAGE, LOWEST MIGRATION COST)
+    convention: `clay-iter-50-DEFINITIVE-iter-36-REPRODUCTION.v2` for refined entries
+    rationale (intrinsic): atlas.n6 has 187 colliding IDs. Most are intentional re-statement, BUT some clay-iter entries ARE refinements without versioning (clay-iter-13-saturation-tracking AND clay-iter-13-main-axes-termination-met both exist as siblings of clay-iter-12-saturation-tracking, clay-iter-14-15-saturation-tracking-with-recommendation — clearly an evolution chain encoded by adding suffixes)
+    beneficiary entries: clay-iter-12/13/14-15-saturation-tracking — these would become clay-iter-saturation-tracking.v1/.v2/.v3 (more grokable than current naming)
+    migration cost: ZERO mandatory migration (additive convention, NEW entries opt-in)
+    schema-guard delta: extend regex to `[a-zA-Z0-9_.+-]+(\.v[0-9]+)?` — already permissive, no breakage
+    convergence-effect: collapses N entries-per-cascade to 1 ID + N versions; cuts authoring ambiguity for the dominant clay-iter family (338 entries)
+
+  PROPOSAL 2 — DATE-ANCHORED suffix `@YYYY-MM-DD` (MEDIUM LEVERAGE, ZERO COLLISION RISK)
+    convention: `clay-iter-50-DEFINITIVE@2026-04-28` — date as @-suffix, NOT mid-string hyphen
+    rationale (intrinsic): atlas.n6 ALREADY has organic date-anchoring inside IDs (16+ instances of `...-verified-2026-03-31-...`) but it's MID-STRING and unsearchable. `@DATE` suffix is greppable as `@2026-04-28$`
+    beneficiary entries: ALL `n6-atlas-*-verified-YYYY-MM-DD-*` entries (the diffusion / LLM survey families, ~30+ entries)
+    migration cost: NEW entries only; existing date-mid-string entries left as-is (foundation-axiom invariance respected)
+    intrinsic limit: `@` is unused in current atlas.n6 IDs (verified — no `@` in ID space, only as type-tag prefix), so this token is FREE
+
+  PROPOSAL 3 — REGISTRY-BLOCK `@F atlas-id-registry` (HIGH LEVERAGE, ONE-SHOT)
+    convention: a single @F block at top of each shard listing family→prefix→count→canonical-form
+    example body:
+      registry:
+        clay-iter: prefix=clay-iter-N-* count=338 canonical=clay-iter-{N}-{descriptor}[.v{V}]
+        n6-atlas-bt: prefix=n6-atlas-bt-N-* count=1423 canonical=n6-atlas-bt-{N}-{descriptor}
+        disc-blowup: prefix=disc-blowup-* count=728 canonical=disc-blowup-{operator-tower}
+    rationale (intrinsic): 2188 distinct families is too many for human grok — past the convergence ceiling. A registry block is atlas.n6's own DSL solution (already uses @F type-tag for facts; this is a fact-about-IDs)
+    beneficiary entries: ALL — registry block lets new authors discover existing prefixes before minting collisions
+    migration cost: ONE @F block per shard at append time, ~50 lines; existing IDs unchanged
+    schema-guard delta: NEW @F type semantics (`@F atlas-id-registry` is a reserved fact-class) — minimal regex change
+
+@R atlas-self-arch-id-convention-foundation-invariance :: rule [10*]
+  invariant: existing IDs (n6-master-*, clay-master-*, ouroboros-*, foundation_axiom_*, n6-atlas-*) MUST NOT be renamed under any of the 3 proposals
+  enforcement: all 3 proposals are ADDITIVE (suffix-only or new-block) — no mutation of existing ID strings
+  verification: foundation_axiom_semantic_ceiling, clay-master-* (8 entries), MILL-V3-M5-ouroboros-v2-namespace-aware all preserved bit-identical
+
+@R atlas-self-arch-id-convention-no-foreign-theory :: rule [10*]
+  honesty (raw 91 C3): every measurement above comes from grep on /Users/ghost/core/n6-architecture/atlas/atlas.n6
+  no claims drawn from external naming-convention literature (semver, namespace UUIDs, FQDN) — `.vN`, `@DATE`, `@F` registry are atlas.n6's OWN DSL elements (.vN already used in MILL-V3-M5-ouroboros-v2; @DATE uses already-present `@`-tag syntax; @F is existing type-class)
+  prompt's UUID-hybrid / slash-hierarchy / repo-prefix / type-prefix / 3-part-separator extensions: REJECTED as foreign — none have intrinsic precedent in atlas.n6 ID space
