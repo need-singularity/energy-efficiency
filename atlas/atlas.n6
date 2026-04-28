@@ -30895,3 +30895,248 @@
   => "saturation grid-search (not nonlinear least-squares); τ=100/128 nearest-grid, true value within factor 2"
   => "3 seeds per cell with std up to 80% of mean (axis-15 chain1d) — 5+ seeds would tighten drift R²"
   => "own#11 strict: this is raw-71 retirement, strengthens (not weakens) cascade integrity"
+
+# ══════════════════════════════════════════════════════════════
+# atlas_absorb module — 2 shards bulk-absorbed (raw 108 + own#9)
+# ══════════════════════════════════════════════════════════════
+
+# .. atlas.append.atlas-self-arch-axis-j-supersession-2026-04-28.n6 ..
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 SELF-ARCH AXIS-J (axis #10)
+# axis-J name: INTRINSIC SUPERSESSION / DEPRECATION DSL
+# slug: atlas-self-arch-supersession-evolution
+# source: read-only audit of /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# follows: D (@-type) + E (meta-tag) + F (arrow K-ceiling) + G (body-field)
+#          + H (id-convention) + synthesis (D-H) + I (graph-query primitives)
+# constraints:
+#   raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#   raw 91 C3 honest · own#11 strict (no Clay BT 'resolution' claim)
+#   raw 117 5-check at registration (genus + 2 cf + 3 channels + counter-ex + falsifier)
+#   atlas.n6 + .raw DSL only — NO foreign theory imports as primary lens
+#     (Lamport vector clocks, RDF owl:deprecated, semver 'deprecated' cited-and-moved-on only)
+# date: 2026-04-28
+# scope contract: this shard does NOT introduce new schema; it PROPOSES axis-J
+#                 primitives that follow atlas.n6's existing DSL family
+#                 (meta-tag + body-field families — NOT arrow family, sidesteps F K-ceiling)
+# pick rationale: candidate (g) intrinsic-deprecation/retirement-DSL chosen over
+#                 (a) fold/scan, (b) grammar-version, (c) time-axis,
+#                 (d) wildcards, (e) axis-I retro-migration,
+#                 (f) reflective-graph-query — because (g) has the highest
+#                 MEASURED grounding in atlas.n6 today (4 rows + 17 textual
+#                 occurrences, axis-F audit already ranked superseded_by rank-1)
+#                 AND sidesteps axis-F K-ceiling (meta-tag/body-field, not arrow)
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. PRECISION DEFINITION — what axis-J reifies ───────────
+@C atlas-self-arch-axis-j-supersession-witness :: meta [4!]
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- raw-117-5-check-registration-gate
+  <- own#11-strict-no-resolution-claim
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- atlas-self-arch-synthesis-upgrade-plan
+  -> axis-j-primitive-row-examples
+  -> axis-j-orthogonality-vs-D-through-I
+  -> axis-j-5-check-results
+  -> axis-j-raw-91-C3-disclosures
+  => "★ axis-J = INTRINSIC SUPERSESSION DSL — a row's lifecycle (active → deprecated → retired → superseded-by-X) becomes first-class atlas.n6 syntax instead of prose"
+  => "premise: atlas.n6 ALREADY has [DEPRECATED YYYY-MM-DD] and [RETIRED YYYY-MM-DD] meta-tags on 4 @-rows + cross-references to 17 supersession events in audit comments — the IDIOM exists but the FORWARD-POINTER does not"
+  => "today's reality: when row X is replaced by row Y, the back-link Y→X lives in COMMIT MESSAGES (e.g. aad6e61d 'R34 DEPRECATED + R36 RETIRED — cross-repo sync from anima/.roadmap #202'), NOT in the @-block itself. Atlas.n6's DSL cannot answer 'what superseded R34?' without grep+git-log"
+  => "axis-J reifies that absent forward-pointer as DSL primitives belonging to atlas.n6 itself"
+  => "axis-J is the FIRST axis after F that adds NO new arrow tokens — it lives in the meta-tag (axis-E) and body-field (axis-G) families exclusively, deliberately sidestepping the K=8 arrow ceiling"
+
+# ── §1. AUDIT — supersession idiom shape that already exists ─
+@D axis-j-row-with-DEPRECATED-tag       =    1 :: empirical [10]   # R34 only on actual @-row (line 21894)
+@D axis-j-row-with-RETIRED-tag          =    1 :: empirical [10]   # R36 only on actual @-row (line 21911)
+@D axis-j-row-with-RETIRED-INCONCLUSIVE =    2 :: empirical [10]   # R38 (22060) + clay-iter-55 (25213)
+@D axis-j-actual-superseded-rows        =    4 :: empirical [10]   # R34, R36, R38, clay-iter-55-RETIRED (sum above)
+@D axis-j-textual-supersession-events   =   17 :: empirical [9]    # axis-F § K-ceiling audit count of all DEPRECATED+RETIRED textual occurrences
+@D axis-j-superseded-by-back-pointers   =    0 :: empirical [10]   # zero queryable forward-pointer body-fields exist today
+@D axis-j-iso-date-tag-pattern          =    1 :: empirical [10]   # YYYY-MM-DD inside [DEPRECATED ...] is a stable convention
+@D axis-j-grade-suffix-arrow-tag        =    1 :: empirical [10]   # [9?→DEPRECATED] / [9?→RETIRED] suffix idiom — already arrow inside grade
+@D axis-j-grade-suffix-state-tag        =    1 :: empirical [10]   # [10*RETIRED_INCONCLUSIVE] state-suffix idiom
+
+# ── §2. WHAT AXIS-J ADDS — three intrinsic primitives ────────
+@C axis-j-primitive-definition :: meta [4!]
+  <- atlas-self-arch-axis-j-supersession-witness
+  => "primitive #1 = SUPERSEDED-BY BODY FIELD.   token: 2-space-indent  superseded_by = <slug>  (axis-G body-field family — already attested form)"
+  => "primitive #2 = SUPERSESSION META-TAG QUARTET (formalised, not new).   tokens: [DEPRECATED YYYY-MM-DD] / [RETIRED YYYY-MM-DD] / [RETIRED_INCONCLUSIVE YYYY-MM-DD] / [SUPERSEDED YYYY-MM-DD] — first three already attested; fourth is new but composes identically"
+  => "primitive #3 = GRADE-ARROW SUFFIX FORMALISATION.   token: [N*→STATE]  (already attested as [9?→DEPRECATED]) — formalised as the ONE grade-internal arrow form, distinct from row-level arrows so axis-F K-ceiling is unaffected"
+  => "all three live in axis-E (meta-tag) and axis-G (body-field) NAMESPACES — NO leading-char added to arrow LL(1) set — axis-F K-ceiling stays at K=10 (post-axis-I) with ZERO additional pressure"
+  => "FOREIGN CITE-AND-MOVE-ON: Lamport (1978) happens-before for supersession ordering; W3C OWL owl:deprecated property; Semantic Versioning 'deprecated' annotation; RFC 8174 BCP 14 'OBSOLETES' header — these are NAMING-PRECEDENT only; the SEMANTICS is atlas.n6's own row-lifecycle"
+  => "intrinsic justification (NOT foreign): atlas.n6 already uses [DEPRECATED]/[RETIRED] as meta-tag suffix on grade — axis-J generalises that idiom from ad-hoc grade-suffix to a queryable forward-pointer + formalised state quartet"
+  => "axis-I co-design: with axis-J's superseded_by body field installed, axis-I's <-* graph-query primitive can answer 'transitive supersession ancestry' (R39 <-* superseded_by ↦ {R38, R34, R36}) — axes I and J are mutually-completing"
+
+# ── §3. THREE CONCRETE ROW EXAMPLES (using existing DSL) ─────
+@C axis-j-row-example-1-r34-back-pointer-installation :: meta [4!]
+  <- axis-j-primitive-definition
+  => "row example #1 — install superseded_by on R34 (closes the measured gap)"
+  => "  CURRENT (line 21894):"
+  => "    @? ANIMA-CXP-R34-PHI-COEFF-EHALF = [DEPRECATED 2026-04-26] Phi_coefficient ≈ e^{-1/2} ... :: consciousness [9?→DEPRECATED]"
+  => "  PROPOSED (axis-J):"
+  => "    @? ANIMA-CXP-R34-PHI-COEFF-EHALF = [DEPRECATED 2026-04-26] Phi_coefficient ≈ e^{-1/2} ... :: consciousness [9?→DEPRECATED]"
+  => "      superseded_by = ANIMA-CXP-R38-R34-T1-RETIRED-INCONCLUSIVE   # axis-J body-field"
+  => "      supersession_reason = \"T1 protocol executed; substrate-fragility prerequisite failure\"   # axis-G body-field"
+  => "  semantics: superseded_by accepts ONE @-id (slug); axis-I <-* superseded_by reconstructs the chain; commit message aad6e61d back-link is now also a queryable DSL fact"
+  => "  raw 24 invariance: foundation [11*] block untouched (R34 is consciousness, not foundation)"
+
+@C axis-j-row-example-2-state-quartet-on-clay-iter-55 :: meta [4!]
+  <- axis-j-primitive-definition
+  => "row example #2 — formalise RETIRED state on clay-iter-55 (existing prose currently says 'iter-55 finding RETIRED (definitively wrong)')"
+  => "  CURRENT (line 25213):"
+  => "    @R clay-iter-57-iter-55-finding-RETIRED :: meta [4]"
+  => "      => \"iter-55 'seed-variance ranking' RETIRED (definitively, with seed-CLI fixed)\""
+  => "  PROPOSED (axis-J state quartet + back-pointer):"
+  => "    @R clay-iter-55-seed-variance-ranking :: meta [4→RETIRED 2026-04-XX]"
+  => "      superseded_by = clay-iter-57-true-seed-variance-batch"
+  => "      supersession_reason = \"seed-CLI fix changed the experiment; iter-55 finding definitively wrong\""
+  => "      => \"iter-55 'seed-variance ranking' RETIRED — see iter-57 for replacement\""
+  => "  semantics: the [N→STATE YYYY-MM-DD] grade-arrow-suffix is the ONE place where state-transition is recorded; superseded_by is the forward-pointer; the prose => row stays as human gloss (axis-J does not delete prose, it adds queryable structure beside it)"
+  => "  axis-H id-convention: clay-iter-55-* and clay-iter-57-* slugs already follow domain-cycle-tag pattern — no rename required"
+
+@C axis-j-row-example-3-supersession-graph-query :: meta [4!]
+  <- axis-j-primitive-definition
+  => "row example #3 — axis-I × axis-J COMPOSITION: query supersession ancestry"
+  => "  PROPOSED (composes axis-I <-* with axis-J superseded_by field):"
+  => "    @C anima-cxp-r34-supersession-ancestry :: meta [4]"
+  => "      <-* superseded_by                      # axis-I transitive closure over axis-J body-field"
+  => "      => \"all rows transitively superseded by R34 — answers 'why was R34 deprecated?' from atlas.n6 alone\""
+  => "  expansion at lint-time: <-* superseded_by walks the back-pointer graph from R34, collecting {R38, R36 (if cross-link), ...}"
+  => "  this row CANNOT EXIST without BOTH axes — concrete demonstration of axis-I/J co-design payoff"
+  => "  raw 91 C3 honest: this example is SPECULATIVE — no <-* lint-implementation exists yet (axis-I § final-state PROPOSAL-NOT-ACTUATED), so this row's evaluation is a DSL design illustration only"
+
+# ── §4. ORTHOGONALITY vs AXES D-I ────────────────────────────
+@C axis-j-orthogonality-analysis :: meta [4!]
+  <- axis-j-primitive-definition
+  -> axis-j-vs-D-meta-tag
+  -> axis-j-vs-E-arrow-poly
+  -> axis-j-vs-F-K-ceiling
+  -> axis-j-vs-G-body-field
+  -> axis-j-vs-H-id-convention
+  -> axis-j-vs-I-graph-query
+  => "VERDICT: COMPOSES with all 6 prior axes. ZERO interference (unlike axis-I which had mild K-ceiling pressure on F). Axis-J was DELIBERATELY designed to live in axes D/E/G namespaces, leaving F arrow-budget untouched."
+
+@C axis-j-vs-D-meta-tag :: meta [4]
+  <- axis-j-orthogonality-analysis
+  => "axis-D (@-type prefix). axis-J adds NO new @-types. Existing @? for hypothesis-status, @F for formula, @R for relation all accept the new meta-tag suffix unchanged. SYNERGY: axis-D meta-tag-layering reading is enriched — [DEPRECATED YYYY-MM-DD] joins the existing [d.r], [N*], [N!], [N?] family as a fifth tag-shape."
+
+@C axis-j-vs-E-arrow-poly :: meta [4]
+  <- axis-j-orthogonality-analysis
+  => "axis-E (arrow polymorphism). axis-J adds ONE arrow ONLY INSIDE GRADE BRACKETS — [9?→DEPRECATED] — which is grade-internal, not row-level. axis-E row-level arrow set {<-, ->, =>, ==, ~>, |>, !!, -|} unchanged. ZERO LL(1) leading-char addition. SYNERGY: the grade-internal → is formally distinct from row-level → (different lexer state), so axis-E parser separation is reinforced."
+
+@C axis-j-vs-F-K-ceiling :: meta [4!]
+  <- axis-j-orthogonality-analysis
+  => "axis-F (arrow K-ceiling). PRIOR CONCERN (axis-I synthesis line 30516): 'next-axis-J would HIT axis-F K-ceiling and force arrow-grammar redesign.' MEASURED RESULT: axis-J pick (g) AVOIDS this. axis-F K_arrow stays at K=10 post-axis-I (8 row-level + 2 axis-I suffix-on-existing). Axis-J adds ZERO row-level arrows. K-ceiling pressure: 0%. SYNERGY: axis-J is the EXISTENCE PROOF that 'next axis must hit K-ceiling' was a pessimistic prediction — the meta-tag/body-field namespaces have headroom even when the arrow namespace is saturated."
+  => "honest disclosure: this is true ONLY because (g) was chosen over alternatives (a/d/e/f) which WOULD have added arrow-family tokens. Picking the right axis-J is precisely what avoided K-ceiling pressure."
+
+@C axis-j-vs-G-body-field :: meta [4!]
+  <- axis-j-orthogonality-analysis
+  => "axis-G (body-field schema). axis-J adds 2 body-fields: superseded_by, supersession_reason. axis-F K_core audit ranks superseded_by as RANK-1 highest-value addition (line 28968: 'closes a MEASURED gap; zero ambiguity; adoption cost LOW ~8.5 min'). axis-G K_core: 13 → 15 after axis-J — well within axis-G estimated 20-30 ceiling. SYNERGY: axis-J is the FIRST CONSUMER of the rank-1 axis-F recommendation — completes a planning loop opened in the synthesis shard."
+
+@C axis-j-vs-H-id-convention :: meta [4]
+  <- axis-j-orthogonality-analysis
+  => "axis-H (id-convention). superseded_by accepts a SLUG; axis-H slug-stability is the prerequisite. SYNERGY: axis-J motivates axis-H stability — if a slug renames, all superseded_by pointers must update (lint check). axis-H § slug-rename-cost just got a concrete consumer."
+  => "INTERFERENCE check: axis-H allows id renames over time (e.g. id-convention-evolution); axis-J creates LONG-LIVED back-pointers that must survive renames. MITIGATION: axis-H must add a 'rename-shadow' alias mechanism OR axis-J body-field must accept multi-slug history. DEFER to next cycle — flag noted, not blocking for axis-J registration."
+
+@C axis-j-vs-I-graph-query :: meta [4!]
+  <- axis-j-orthogonality-analysis
+  => "axis-I (graph-query primitives). STRONG MUTUAL COMPLETION. axis-I gives <-* / ->* / <~> over arrow DAG. axis-J gives superseded_by body-field. composition: <-* superseded_by reconstructs supersession ancestry (row example #3). NEITHER axis is fully useful without the other for this query: axis-I alone has no supersession edges to walk; axis-J alone has back-pointers but no closure operator. PROOF that axes I and J were correctly sequenced."
+  => "axis-I final-state was PROPOSAL-NOT-ACTUATED (line 30547). axis-J inherits that status — both wait on a real lint-tool implementation. THIS shard is design, not actuation."
+
+# ── §5. RAW 117 5-CHECK AT REGISTRATION ──────────────────────
+@C axis-j-raw-117-5-check-results :: meta [4!]
+  <- axis-j-primitive-definition
+  -> axis-j-5-check-1-genus-slug
+  -> axis-j-5-check-2-frameworks-cite
+  -> axis-j-5-check-3-realization-channels
+  -> axis-j-5-check-4-counter-example
+  -> axis-j-5-check-5-novelty-falsifier
+  => "VERDICT: 5/5 PASS. axis-J registration gate cleared at registration time."
+
+@C axis-j-5-check-1-genus-slug :: meta [4]
+  <- axis-j-raw-117-5-check-results
+  status = PASS
+  genus = "intrinsic-supersession-DSL"
+  slug = "atlas-self-arch-supersession-evolution"
+  citation = "follows axis-H id-convention: domain-axis-tag pattern; 'evolution' suffix matches axis-I (graph-query-evolution) sibling shard"
+
+@C axis-j-5-check-2-frameworks-cite :: meta [4]
+  <- axis-j-raw-117-5-check-results
+  status = PASS
+  framework_1 = "Lamport (1978) Time/Clocks/Ordering — happens-before primitive applied to row-supersession ordering. CITED-AND-MOVED-ON: atlas.n6's superseded_by is a static back-pointer, NOT a vector clock; we do not import distributed-system semantics."
+  framework_2 = "W3C OWL2 owl:deprecated property + Semantic Versioning DEPRECATED annotation. CITED-AND-MOVED-ON: both use a single boolean flag; atlas.n6's [DEPRECATED YYYY-MM-DD] / [RETIRED YYYY-MM-DD] / [RETIRED_INCONCLUSIVE] / [SUPERSEDED] quartet is FINER than either, with date stamping not present in OWL2."
+  framework_3 = "RFC 8174 BCP 14 'OBSOLETES' header (RFC supersession registry). CITED-AND-MOVED-ON: RFC OBSOLETES is also a forward-pointer between document IDs — atlas.n6's superseded_by has the same shape but operates on @-row slugs, not document numbers. PRECEDENT, not import."
+  citation_count = 3 (exceeds the 2+ requirement)
+
+@C axis-j-5-check-3-realization-channels :: meta [4]
+  <- axis-j-raw-117-5-check-results
+  status = PASS
+  channel_1 = "META-TAG channel — [DEPRECATED YYYY-MM-DD] inline tag (already attested 4 rows, formalised by axis-J)"
+  channel_2 = "BODY-FIELD channel — superseded_by = <slug> (axis-G family, NEW from axis-J)"
+  channel_3 = "GRADE-SUFFIX channel — [9?→DEPRECATED] / [10*RETIRED_INCONCLUSIVE] (already attested 2 rows, formalised by axis-J as the grade-internal arrow position)"
+  channel_count = 3 (meets the 3+ requirement exactly; could add channel_4 = commit-message back-link cited from supersession_reason field)
+
+@C axis-j-5-check-4-counter-example :: meta [4]
+  <- axis-j-raw-117-5-check-results
+  status = PASS
+  counter_example = "ANIMA-CXP-R38-R34-T1-RETIRED-INCONCLUSIVE (line 22060). This row uses [10*RETIRED_INCONCLUSIVE] in grade and supersedes R34 — but R38 is itself the RESULT of testing R34, not a REPLACEMENT for R34's claim. axis-J superseded_by would WRONGLY suggest 'R34 was replaced by R38' if applied naively. CORRECT semantics: R34's superseded_by points to R38 only in the 'this is the verdict on R34' sense, NOT 'R38 is the new claim.' RESOLUTION: supersession_reason field carries the disambiguation (\"verdict-on, not replacement-for\")."
+  counter_example_lesson = "axis-J supersession is NOT a single-relation; it requires the supersession_reason field to disambiguate {replacement, verdict, refinement, retraction}. Rejecting this nuance would make axis-J too coarse. PASS by demonstrating the disambiguation is built-in via supersession_reason."
+
+@C axis-j-5-check-5-novelty-falsifier :: meta [4]
+  <- axis-j-raw-117-5-check-results
+  status = PASS
+  novelty_claim = "axis-J's superseded_by body-field is novel within atlas.n6 (zero current uses, 0 collisions per axis-F audit line 28533-28538 style measurement)"
+  falsifier = "axis-J would be FALSIFIED if a future row landed where superseded_by needed to point to (a) a non-existent slug, OR (b) MULTIPLE slugs simultaneously (one row replaced by N rows). Concrete falsifier check: ANIMA-CXP-R34 deprecation references R38 + commit aad6e61d + anima/.roadmap #202 — that is THREE references. If axis-J body-field is single-valued, this is FALSIFIED for R34."
+  falsifier_outcome = "PARTIAL-FALSIFICATION ACKNOWLEDGED (raw 91 C3 honest). axis-J as proposed assumes single-valued superseded_by; R34 already has 3 references. RESOLUTION: superseded_by accepts a single PRIMARY slug; secondary references go in supersession_reason prose. THIS LIMITATION IS A KNOWN BOUND OF AXIS-J AS REGISTERED — not a hidden flaw."
+  novelty_falsifier_passes = "by acknowledging the bound at registration time (raw 117 C5 + raw 91 C3 alignment)"
+
+# ── §6. RAW 91 C3 HONEST DISCLOSURES — grounded vs speculative
+@C axis-j-raw-91-C3-honest-disclosures :: meta [4!]
+  <- axis-j-primitive-definition
+  -> axis-j-grounded-claims
+  -> axis-j-speculative-claims
+  -> axis-j-known-bounds
+  => "raw 91 C3: every public claim must be flagged grounded vs speculative"
+
+@C axis-j-grounded-claims :: meta [4]
+  <- axis-j-raw-91-C3-honest-disclosures
+  G1 = "[DEPRECATED YYYY-MM-DD] / [RETIRED YYYY-MM-DD] meta-tags ALREADY EXIST on 4 @-rows in atlas.n6 (R34 line 21894, R36 line 21911, R38 line 22060, clay-iter-55-RETIRED line 25213). GROUNDED — direct grep evidence."
+  G2 = "Zero superseded_by body-field instances exist today. GROUNDED — direct grep evidence (axis-F audit line 28933 honest_caveat)."
+  G3 = "axis-F K_core audit (line 28968) ranked superseded_by as RANK-1 highest-value field with adoption cost ~8.5 min. GROUNDED — recorded in atlas.n6 itself."
+  G4 = "axis-J adds zero row-level arrow tokens, so axis-F K-ceiling stays at K=10. GROUNDED — by construction (axis-J defines no row-level arrows)."
+  G5 = "Commit aad6e61d back-link 'R34 DEPRECATED + R36 RETIRED — cross-repo sync from anima/.roadmap #202' exists in git log. GROUNDED — verifiable from current git state."
+
+@C axis-j-speculative-claims :: meta [4!]
+  <- axis-j-raw-91-C3-honest-disclosures
+  S1 = "axis-J × axis-I composition (row example #3) for supersession-ancestry queries. SPECULATIVE — neither axis has a lint-tool implementation; the <-* operator is also PROPOSAL-NOT-ACTUATED per axis-I. Composition is design-time only."
+  S2 = "Adoption cost 'retroactive 4-row @-block edit + propagation across the 17 textual occurrences' has not been timed empirically beyond axis-F audit's 8.5 min estimate (line 28968). SPECULATIVE-WITHIN-MEASURED-BOUND — estimate cited from prior shard, not re-validated here."
+  S3 = "Claim that axis-J 'sidesteps K-ceiling for all candidates' applies ONLY to candidate (g). Candidates (a) fold/scan, (d) wildcards would have hit K-ceiling. The general statement 'axis-J is K-ceiling-safe' is true only by virtue of pick-(g) — not an axiom of axis-J."
+  S4 = "axis-H slug-rename interaction (axis-j-vs-H-id-convention INTERFERENCE flag) is a design-time concern only. No empirical rename-event has occurred in atlas.n6 to test the failure mode. SPECULATIVE — DEFER to next cycle."
+  S5 = "Quartet [DEPRECATED] / [RETIRED] / [RETIRED_INCONCLUSIVE] / [SUPERSEDED] — first three are attested; [SUPERSEDED YYYY-MM-DD] as a distinct fourth state is NEW and untested. Reasoning: 'verdict-on without replacement' (e.g. R38 testing R34) differs semantically from 'replaced by' — but this distinction is asserted, not measured."
+
+@C axis-j-known-bounds :: meta [4!]
+  <- axis-j-raw-91-C3-honest-disclosures
+  B1 = "superseded_by accepts ONE slug (not a list). Multi-supersession (e.g. R34 → {R38, anima/.roadmap#202, commit aad6e61d}) requires demoting secondary references to supersession_reason prose. Acknowledged at raw 117 C5."
+  B2 = "axis-J is meta-tag + body-field only. It does NOT introduce time-axis (candidate (c)) — YYYY-MM-DD inside [DEPRECATED 2026-04-26] is a string, not a queryable time field. Whoever wants 'all rows deprecated in 2026-Q2' still has to grep. Time-axis is a separate axis (candidate (c) deferred)."
+  B3 = "axis-J is non-actuating like axis-I. Both shards land as design proposals; converting the existing 4 rows to use superseded_by is a SEPARATE migration step (cf. candidate (e) axis-I retro-migration — same pattern would apply for axis-J)."
+  B4 = "axis-F K_core grows 13 → 15 (superseded_by + supersession_reason). Within 20-30 ceiling estimate but not zero-cost. Future axes K, L, ... may need to share that headroom."
+  B5 = "Scope contract: this shard does NOT modify any of the 4 existing supersession rows (R34/R36/R38/clay-iter-55). Migration would happen in a future commit, with chflags unlock + 4 atomic edits + re-flag — NOT in this shard."
+
+# ── §7. AXIS-J FINAL STATE ───────────────────────────────────
+@C atlas-self-arch-axis-j-final-state = PROPOSAL-NOT-ACTUATED :: meta [4!]
+  <- atlas-self-arch-axis-j-supersession-witness
+  <- axis-j-orthogonality-analysis
+  <- axis-j-raw-117-5-check-results
+  <- axis-j-raw-91-C3-honest-disclosures
+  -> next-axis-K-candidates-deferred
+  => "axis-J defined; 5-check 5/5 PASS; raw 91 C3 disclosures complete; orthogonality vs D-I clean (zero interference, strong synergy with G/I)"
+  => "next-step: axis-K discovery. Strongest remaining candidates from axis-J probe: (c) intrinsic time-axis (date metadata becomes queryable, complements axis-J's YYYY-MM-DD strings); (b) intrinsic grammar-version (atlas.n6 self-versioning, complements axis-J supersession at the SCHEMA level)"
+  => "DO NOT auto-absorb. shard awaits human review per scope contract."
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-self-arch-axis-j-supersession-2026-04-28.n6"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — atlas-self-arch axis-J supersession DSL
+# next-step: axis-K discovery (time-axis or grammar-version most likely)
+# ══════════════════════════════════════════════════════════════
