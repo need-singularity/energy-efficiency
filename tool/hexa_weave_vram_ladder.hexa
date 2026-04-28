@@ -1,0 +1,219 @@
+#!/usr/bin/env hexa
+# hexa_weave_vram_ladder.hexa — HEXA-WEAVE MVP W5 4-rung VRAM ladder dispatcher.
+# Cycle 15 / 2026-04-28
+# Parent proposal: proposals/hexa_weave_w5_supporting_scripts_cycle15_2026_04_28.md
+# Parent witness:  design/kick/2026-04-28_w5-supporting-scripts-cycle15_omega_cycle.json
+#
+# raw 9 hexa-only:    shell ops wrapped via "hexa run" envelope
+# raw 12 silent-error 금지: every fail emits trailer + writes audit row status=FAIL
+# raw 53 deterministic-verifier: rung verdict via scripts/w5_verdict.py only
+# raw 65 idempotent: each rung probes existing verdict.json + skips on PASS
+# raw 66 ai-native: failure trailer YAML on FAIL with reason+fix
+# raw 138 sentinel: __VRAM_LADDER_RUNG_<N>_RESULT__ PASS|FAIL emitted to stdout
+# raw 142 D2 rollback: --rollback removes outputs/ladder/L<N>/ rung-by-rung
+
+name: hexa_weave_vram_ladder
+version: 1.0.0
+schema: hexa/runbook/v1
+parent_proposal: proposals/hexa_weave_w5_supporting_scripts_cycle15_2026_04_28.md
+description: |
+  4-rung VRAM measurement ladder on RTX 5070 12 GB host. Each rung invokes
+  OpenFold single-seq inference + scripts/w5_verdict.py + nvidia-smi -lms 500
+  poller. Rung-by-rung escalation: L1 PASS -> L2; L1 FAIL -> halt + raw 66
+  trailer. Audit ledger appends per rung. Sentinel emission per raw 138.
+
+flags:
+  - {name: "--rung", arg: "<L1|L2|L3|L4|all>", help: "single rung or full ladder (default: all)"}
+  - {name: "--from", arg: "<L1..L4>", help: "resume from rung"}
+  - {name: "--dry-run", help: "print commands without executing"}
+  - {name: "--rollback", help: "remove outputs/ladder/L<N>/ rung-by-rung"}
+  - {name: "--continue-on-fail", help: "do NOT halt on rung FAIL (raw 91 C3 explicit)"}
+
+# === Rung definitions ============================================================
+rungs:
+
+  - id: L1
+    label: "6L1U mini 60aa"
+    target_vram_gb: "3-4"
+    fasta_url: "https://www.rcsb.org/fasta/entry/6L1U"
+    ref_pdb_url: "https://files.rcsb.org/download/6L1U.pdb"
+    expected_residues: 60
+    rmsd_max: 5.0
+    tm_min: 0.4
+    vram_max_mb: 11000
+    wall_max_seconds: 1800
+    probe: "test -f ~/core/hexa-weave/outputs/ladder/L1/verdict.json && jq -e '.verdict==\"PASS\"' ~/core/hexa-weave/outputs/ladder/L1/verdict.json"
+    skip_if_probe_passes: true
+    estimated_seconds: 1800
+    pass_criterion: "RMSD<5A, TM>0.4, VRAM<11GB"
+
+  - id: L2
+    label: "ESM3 mid 100aa"
+    target_vram_gb: "5-6"
+    fasta_target: "synthetic-100aa-or-RCSB-substitute"
+    expected_residues: 100
+    rmsd_max: 5.0
+    tm_min: 0.4
+    vram_max_mb: 11000
+    wall_max_seconds: 1800
+    probe: "test -f ~/core/hexa-weave/outputs/ladder/L2/verdict.json && jq -e '.verdict==\"PASS\"' ~/core/hexa-weave/outputs/ladder/L2/verdict.json"
+    skip_if_probe_passes: true
+    estimated_seconds: 1800
+    pass_criterion: "no OOM"
+    requires_predecessor: "L1 PASS"
+
+  - id: L3
+    label: "1UBQ real proxy 76aa"
+    target_vram_gb: "7-8"
+    fasta_url: "https://www.rcsb.org/fasta/entry/1UBQ"
+    ref_pdb_url: "https://files.rcsb.org/download/1UBQ.pdb"
+    expected_residues: 76
+    rmsd_max: 3.0   # tighter for 1UBQ proxy
+    tm_min: 0.5
+    vram_max_mb: 11000
+    wall_max_seconds: 1800
+    probe: "test -f ~/core/hexa-weave/outputs/ladder/L3/verdict.json && jq -e '.verdict==\"PASS\"' ~/core/hexa-weave/outputs/ladder/L3/verdict.json"
+    skip_if_probe_passes: true
+    estimated_seconds: 1800
+    pass_criterion: "RMSD<3A, TM>0.5"
+    requires_predecessor: "L2 PASS"
+
+  - id: L4
+    label: "350aa target post-W6"
+    target_vram_gb: "10-11"
+    fasta_target: "post-W6 fold-target (TBD; cycle 16+)"
+    expected_residues: 350
+    rmsd_max: 5.0
+    tm_min: 0.4
+    vram_max_mb: 11000
+    wall_max_seconds: 3600
+    probe: "test -f ~/core/hexa-weave/outputs/ladder/L4/verdict.json && jq -e '.verdict==\"PASS\"' ~/core/hexa-weave/outputs/ladder/L4/verdict.json"
+    skip_if_probe_passes: true
+    estimated_seconds: 3600
+    pass_criterion: "VRAM<11GB else fallback chain 7b-7g"
+    requires_predecessor: "L3 PASS"
+    fallbacks:
+      - "engage --bf16 + chunk_size=2"
+      - "switch to RoseTTAFold-AA (lower VRAM)"
+      - "rent A100 40GB cloud (raw 86 cost-attribution change)"
+
+# === Per-rung dispatch template (executed by main) ===============================
+rung_template_cmd: |
+  source ~/core/hexa-weave/venv/bin/activate
+  RUNG_DIR=~/core/hexa-weave/outputs/ladder/${RUNG_ID}
+  mkdir -p $RUNG_DIR
+  # Stage FASTA + ref PDB
+  if [ -n "${FASTA_URL}" ]; then
+    curl -sSL "${FASTA_URL}" -o $RUNG_DIR/input.fasta
+  fi
+  if [ -n "${REF_PDB_URL}" ]; then
+    curl -sSL "${REF_PDB_URL}" -o $RUNG_DIR/ref.pdb
+  fi
+  # Background VRAM poller (raw 53 deterministic)
+  nvidia-smi --query-gpu=memory.used,memory.free,utilization.gpu \
+    --format=csv,noheader,nounits -lms 500 \
+    > $RUNG_DIR/vram_poller.csv 2>&1 &
+  POLLER_PID=$!
+  # Inference (single-seq)
+  cd ~/core/hexa-weave/openfold
+  T0=$(date +%s)
+  PYTHONHASHSEED=42 python run_pretrained_openfold.py \
+    --fasta_paths $RUNG_DIR/input.fasta \
+    --use_single_seq_inference \
+    --jax_param_path ~/core/hexa-weave/weights/params/params_model_1.pkl \
+    --model_device cuda:0 \
+    --bf16 \
+    --output_dir $RUNG_DIR/ \
+    > $RUNG_DIR/inference.log 2>&1
+  RC=$?
+  T1=$(date +%s)
+  WALL=$((T1 - T0))
+  kill $POLLER_PID 2>/dev/null || true
+  # Verdict
+  python ~/core/n6-architecture/scripts/w5_verdict.py \
+    --pred $RUNG_DIR/predictions/$(basename $RUNG_DIR/predictions/*.pdb | head -1) \
+    --ref $RUNG_DIR/ref.pdb \
+    --fasta $RUNG_DIR/input.fasta \
+    --vram-csv $RUNG_DIR/vram_poller.csv \
+    --rmsd-max ${RMSD_MAX} --tm-min ${TM_MIN} --vram-max-mb ${VRAM_MAX_MB} \
+    --inference-rc $RC --wall-seconds $WALL --wall-max-seconds ${WALL_MAX_S} \
+    --out $RUNG_DIR/verdict.json \
+    --audit-jsonl ~/core/n6-architecture/state/audit/vram_ladder_events.jsonl
+  VERDICT_RC=$?
+  if [ $VERDICT_RC -eq 0 ]; then
+    echo "__VRAM_LADDER_RUNG_${RUNG_ID}_RESULT__ PASS"
+  else
+    echo "__VRAM_LADDER_RUNG_${RUNG_ID}_RESULT__ FAIL"
+  fi
+  exit $VERDICT_RC
+
+# === Aggregate cost ==============================================================
+aggregate:
+  total_rungs: 4
+  total_wall_seconds: 9000      # ~150 min sequential (1800+1800+1800+3600)
+  total_disk_mb: 200            # 4 × ~50 MB outputs
+  reversible: true              # all rungs individually reversible (rm -rf rung dir)
+  audit_jsonl: state/audit/vram_ladder_events.jsonl
+
+# === Failure trailer template (raw 66 ai-native) =================================
+failure_trailer_template: |
+  # === HEXA-WEAVE VRAM LADDER FAILURE TRAILER ===
+  schema: hexa-weave/vram-ladder-failure/v1
+  ts: ${ISO8601}
+  rung_failed: ${RUNG_ID}
+  rung_label: "${RUNG_LABEL}"
+  exit_code: ${RC}
+  verdict_json: ${RUNG_DIR}/verdict.json
+  fail_reason: "${FAIL_REASON}"
+  fail_fix: "${FAIL_FIX}"
+  vram_peak_mb: ${VRAM_PEAK_MB}
+  threshold_mb: ${VRAM_MAX_MB}
+  predecessor_rung: ${PREDECESSOR}
+  contact: multi404error@proton.me
+  rerun_hint: "hexa run tool/hexa_weave_vram_ladder.hexa --from ${RUNG_ID}"
+  parent_proposal: proposals/hexa_weave_w5_supporting_scripts_cycle15_2026_04_28.md
+  # === END TRAILER ===
+
+# === Main dispatcher (pseudocode) ================================================
+main: |
+  parse_flags()
+  if --rollback:
+    for rung in reversed(rungs):
+      run("rm -rf ~/core/hexa-weave/outputs/ladder/{rung.id}")
+      log("rollback rung {rung.id} OK")
+    exit(0)
+  selected = filter_rungs(--rung, --from)  # default: all
+  for rung in selected:
+    if rung.requires_predecessor and not predecessor_passed(rung):
+      log("rung {rung.id} SKIP — predecessor not PASS")
+      emit_sentinel(rung.id, "SKIP")
+      if not --continue-on-fail:
+        emit_failure_trailer(rung, reason="predecessor not PASS", fix="run predecessor first")
+        exit(2)
+    if probe_passes(rung):
+      log("rung {rung.id} {rung.label} SKIP (probe PASS — verdict PASS cached)")
+      emit_sentinel(rung.id, "PASS")
+      continue
+    if --dry-run:
+      print(rung_template_cmd_with_substitutions(rung))
+      continue
+    rc = run(rung_template_cmd_with_substitutions(rung))
+    if rc != 0:
+      emit_sentinel(rung.id, "FAIL")
+      emit_failure_trailer(rung, rc, reason_from_verdict(rung), fix_from_verdict(rung))
+      if not --continue-on-fail:
+        exit(rc)
+    else:
+      emit_sentinel(rung.id, "PASS")
+      log("rung {rung.id} {rung.label} PASS")
+  log("ladder complete")
+  exit(0)
+
+# === raw 91 C3 honest =============================================================
+caveats:
+  - "This .hexa file is the spec; the actual hexa runner must implement rung dispatch + sentinel emission + predecessor gating per main pseudocode."
+  - "L1 6L1U mini 60aa is identical to W5 setup Step 8 (same FASTA + thresholds) — when both run, second invocation is a probe-PASS skip."
+  - "L4 350aa target FASTA is TBD until cycle 16+ post-W6 fold-target selection."
+  - "L2 ESM3 mid 100aa requires synthetic FASTA or RCSB substitute selection by user (not auto-derived in this spec)."
+  - "Predecessor gating: L1 FAIL halts ladder; --continue-on-fail bypasses for diagnostic runs only."
+  - "VRAM<11000MB threshold has 1GB safety margin under the 12GB physical ceiling."

@@ -1,0 +1,212 @@
+{
+  "schema": "omega_cycle.witness_v2_domain_registration",
+  "ts": "2026-04-28T23:55:00Z",
+  "topic": "hexa-ribozyme-registration-cycle15",
+  "cycle": "15",
+  "fan_out": "3/3",
+  "synthesis_mode": "in_context",
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json"
+  ],
+  "predecessor_verdict_chain": "PARTIAL -> PASS (hexa-weave closure) -> SISTER-DOMAIN-REGISTRATION (hexa-nanobot cycle 13/2-of-5) -> THIRD-SISTER-DOMAIN-REGISTRATION (this witness; cycle 15/3-of-3)",
+  "candidate_evaluation": {
+    "raw_91_C3_honest": "5 candidates evaluated for 3rd biology sister; selection justified on genus-distinction + own/raw mandate fit + multi-realizability + collision-risk; fabricated novelty rejected (raw 91 C3)",
+    "candidates": [
+      {
+        "slug": "hexa-rna-weave",
+        "verdict": "REJECT",
+        "rationale": "same genus as hexa-weave (composition over strands); RNA-specialization is a sub-mode not a new genus; would force genus-merge per F-RB-1 class falsifier"
+      },
+      {
+        "slug": "hexa-synbio",
+        "verdict": "REJECT",
+        "rationale": "direct collision with life/synbio (already titled HEXA-SYNBIO); cross-axis duplication violates own 16 single-canonical rule"
+      },
+      {
+        "slug": "hexa-ribozyme",
+        "verdict": "SELECT",
+        "rationale": "distinct genus (chemical-catalysis-by-nucleic-acid) from composition (hexa-weave) and actuation (hexa-nanobot); no axis collision (no life/ribozyme exists; closest life/crispr-gene-editing uses Cas RNP not ribozymes); n6 invariant projection structurally load-bearing on Symons 1981 / Cech 1982 / Wu-Lai 1989 corpus; multi-realizability strong (>=7 ribozyme classes; >=2 frameworks chemical-kinetics + RNA-structural-biology); completes the biology-axis triangle composition/actuation/catalysis"
+      },
+      {
+        "slug": "hexa-crispr",
+        "verdict": "REJECT",
+        "rationale": "direct collision with life/crispr-gene-editing (already titled HEXA-CRISPR); cross-axis duplication"
+      },
+      {
+        "slug": "hexa-proteostasis",
+        "verdict": "DEFER",
+        "rationale": "valid genus distinction (homeostatic-network) but lower n6-invariant fit than ribozyme (chaperone family sizes don't cluster on 12); kept as candidate for future cycle 16+ fan-out"
+      }
+    ]
+  },
+  "registration_intent": {
+    "axis": "biology",
+    "domain": "hexa-ribozyme",
+    "sister_of": "hexa-weave",
+    "sister_of_2": "hexa-nanobot",
+    "domain_class": "catalytic RNA / ribozyme / RNA-mediated chemical catalysis",
+    "rationale": "HEXA-WEAVE registers write-side multi-strand molecular design composition (P up to 10^4 strand bundle, primary constraint Landauer x NP-search ceiling, primary oracle AlphaFold-class fold inference). HEXA-NANOBOT registers single molecular nano-machine architecture (10^0-10^2 atoms per actuator, primary constraint Brownian thermal floor at 310K, primary oracle molecular-dynamics simulation). HEXA-RIBOZYME registers a third orthogonal sub-axis covering catalytic RNA architecture (single ribozyme active site ~12-30 nt catalytic core, primary constraint diffusion-limit ceiling k_cat / K_M ~ 10^8 M^-1 s^-1, primary oracle chemical-kinetics simulation + RNA-secondary-structure prediction). The three-way split is genus-level: WEAVE composes strands; NANOBOT actuates atoms; RIBOZYME catalyses bonds. Cech 1982 group-I intron, Guerrier-Takada 1983 RNase P, Symons 1981 hammerhead, Wu-Lai 1989 HDV, Buzayan 1986 hairpin, Steitz 1993 two-metal-ion mechanism, and Nissen-Steitz 2000 ribosomal PTC define the catalytic-RNA literature corpus. Distinct from AlphaFold-class read-side prediction, from IsoDDE drug-design, from DNA-origami nano-machines, and from CRISPR-Cas RNP gene editing.",
+    "n6_invariant_mapping": {
+      "tau_6_eq_4": "4 reaction states per ribozyme catalytic cycle (substrate-bound / transition-state / cleaved / product-released) — chemical-kinetic quartet matching tau(6) = 4",
+      "sigma_6_eq_12": "12 conserved catalytic-core nucleotides — hammerhead minimal type-II+III ~13 nt (Symons 1981) / HDV antigenomic ~12 nt (Wu-Lai 1989) / hairpin A-loop+B-loop ~12 nt (Buzayan 1986); STRUCTURAL-APPROXIMATE not exact — corpus span 10-30 nt; raw 91 C3 honest tag",
+      "J_2_eq_24": "24-element trigonal-bipyramidal phosphate transition-state pose-equivalence group — octahedral rotation group order 24 covers the 5-coordinate phosphorus TS pose-classes (Steitz 1993 two-metal-ion mechanism)",
+      "phi_6_eq_2": "2 binary cleavage outcome states — phosphodiester cleaved/intact, cis-acting/trans-acting; the phi(6) = 2 dichotomy at the catalytic output"
+    }
+  },
+  "domain_distinction_from_sisters": {
+    "hexa_weave": {
+      "axis": "biology (same axis)",
+      "object_scale": "single ribozyme active site (10^2-10^3 atoms) vs HEXA-WEAVE proteome bundle (10^7-10^9 atoms total)",
+      "primary_quantity": "catalytic rate enhancement k_cat / k_uncat (chemical) vs HEXA-WEAVE design composition cost (J per inverse-search bit)",
+      "primary_constraint": "diffusion-limit ceiling k_cat / K_M <= 10^8-10^9 M^-1 s^-1 vs HEXA-WEAVE Landauer x NP-search ceiling",
+      "primary_oracle": "chemical-kinetics simulation (Eyring TS theory + Mfold/RNAfold) vs HEXA-WEAVE AlphaFold-class fold oracle"
+    },
+    "hexa_nanobot": {
+      "axis": "biology (same axis)",
+      "object_scale": "single ribozyme active site (~12-30 nt catalytic core) vs HEXA-NANOBOT single nano-machine (10^0-10^2 atoms per actuator)",
+      "primary_quantity": "catalytic rate enhancement k_cat (chemical) vs HEXA-NANOBOT mechanical work output (J per cycle)",
+      "primary_constraint": "diffusion-limit ceiling (chemical) vs HEXA-NANOBOT Brownian thermal floor (mechanical)",
+      "primary_oracle": "chemical-kinetics simulation vs HEXA-NANOBOT molecular-dynamics simulation"
+    },
+    "verdict_grade": "APPROACH (theoretical-analytical at registration; no empirical hammerhead-minimal MVP yet)"
+  },
+  "n6_invariant_thread": {
+    "tau_6_eq_4": "4 reaction states (substrate-bound / TS / cleaved / released); 4 axis-types in any ribozyme spec (catalytic-core / reaction-ladder / TS-pose / output-binary)",
+    "sigma_6_eq_12": "12 catalytic-core nucleotides (approximate not exact across the 7-class corpus)",
+    "J_2_eq_24": "|O|=24 trigonal-bipyramidal pose-symmetry group; 24-fold equivalence on phosphate TS orientations",
+    "phi_6_eq_2": "binary cleavage outcome — cleaved/intact, cis/trans",
+    "thread_load_bearing": true,
+    "post_hoc_decoration_risk": "MEDIUM-HIGH — invariants map structurally to ribozyme literature (Symons hammerhead 13-nt minimal, Steitz two-metal-ion TS) but sigma(6) = 12 is approximate and quantitative validation pending; raw 91 C3 honest tag"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-RB-1-genus",
+      "claim": "HEXA-RIBOZYME is a distinct genus from HEXA-WEAVE (composition) and HEXA-NANOBOT (actuation) — chemical-catalysis-by-nucleic-acid as a third primitive layer",
+      "condition": "evidence shows HEXA-WEAVE composition pipeline OR HEXA-NANOBOT actuation pipeline subsumes ribozyme catalysis as a special case without separate primitives",
+      "experiment": "audit Cech 1982 + Guerrier-Takada 1983 + Symons 1981 + Wu-Lai 1989 + 5 recent ribozyme papers; check whether their catalytic primitives reduce to HEXA-WEAVE inverse-search calls or HEXA-NANOBOT power-stroke quartet",
+      "deadline": "2026-07-28",
+      "verdict_on_fire": "retract HEXA-RIBOZYME registration; merge into HEXA-WEAVE or HEXA-NANOBOT as sub-mode"
+    },
+    {
+      "id": "F-RB-2-n6-decorative",
+      "claim": "n6 invariant mapping (tau=4 reaction states / sigma=12 catalytic-core / J_2=24 TS pose / phi=2 cleavage outcome) is structural and load-bearing not decorative",
+      "condition": "Bayesian model comparison: H0 = invariants random vs H1 = invariants causal on ribozyme architecture; threshold log-Bayes-factor >= 3",
+      "experiment": "audit 30 published ribozyme architectures across 7 classes (hammerhead / hairpin / HDV / group-I / group-II / RNase P / ribosomal PTC); check reaction-state-count distribution (expect peak at 4) and catalytic-core residue distribution (expect peak at 10-15)",
+      "deadline": "2026-09-28",
+      "verdict_on_fire": "downgrade verdict to APPROACH-DECORATIVE; revert registration to YES_CONDITIONAL"
+    },
+    {
+      "id": "F-RB-3-diffusion-limit",
+      "claim": "Diffusion-limit ceiling (k_cat / K_M <= 10^8-10^9 M^-1 s^-1, Eigen-Hammes 1963) is the binding chemical-kinetics floor for ribozyme catalysis, not Landauer (HEXA-WEAVE) and not Brownian (HEXA-NANOBOT)",
+      "condition": "a published ribozyme demonstrates k_cat / K_M >> 10^9 M^-1 s^-1 OR a class operates predominantly via Landauer / Brownian-floor accounting rather than diffusion",
+      "experiment": "monitor ribozyme kinetics literature (Tang-Breaker 2000 / Wilson-Lilley 2009) for any device exceeding the diffusion ceiling",
+      "deadline": "2027-04-28",
+      "verdict_on_fire": "merge HEXA-RIBOZYME physical-axis with HEXA-WEAVE Landauer or HEXA-NANOBOT Brownian treatment"
+    },
+    {
+      "id": "F-RB-4-MVP-90day",
+      "claim": "HEXA-RIBOZYME 90-day MVP achievable: design + simulate a hammerhead-minimal 12-nt-core 4-state chemical-kinetics simulation by 2026-07-28",
+      "condition": "no working simulation or design specification by 2026-07-28",
+      "experiment": "build a minimal chemical-kinetics simulation of a hammerhead minimal type-II+III ribozyme with 12-nt conserved core; report 4-state ladder observation and TS pose-equivalence quotient speedup",
+      "deadline": "2026-07-28",
+      "verdict_on_fire": "registration tier reverts from APPROACH to PROPOSED; flag F-RB-4 in metrics"
+    },
+    {
+      "id": "F-RB-5-sister-axis-collision",
+      "claim": "HEXA-RIBOZYME (biology axis) does not collide with life/crispr-gene-editing or life/synbio (life axis) — different verdict scope",
+      "condition": "audit shows life/crispr-gene-editing/ already covers ribozyme-class catalytic RNA fundamentals at the same theoretical depth, OR life/synbio/ already covers ribozyme SELEX as primary mode",
+      "experiment": "read domains/life/crispr-gene-editing/crispr-gene-editing.md and domains/life/synbio/synbio.md; check overlap with this body's §1-§7",
+      "deadline": "2026-05-28",
+      "verdict_on_fire": "retract HEXA-RIBOZYME and route under life axis as sub-mode"
+    }
+  ],
+  "raw_91_c3_disclosure": {
+    "claims": [
+      "HEXA-RIBOZYME registered as third sister domain (after hexa-nanobot) of HEXA-WEAVE under the biology axis",
+      "n6 invariant mapping tau(6)=4 reaction states / sigma(6)=12 catalytic-core nucleotides / J_2=24 trigonal-bipyramidal TS pose / phi(6)=2 binary cleavage outcome onto catalytic-RNA architecture",
+      "verdict tier APPROACH (theoretical-analytical, no empirical ribozyme MVP yet)",
+      "5 raw 71 falsifiers preregistered with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28",
+      "domain registration adds 1 to biology axis _domains_count (2 -> 3) and 1 to top-level _total (380 -> 381)",
+      "biology/_index.json bumped 1.1.0 -> 1.2.0; top-level domains/_index.json bumped 1.0.6 -> 1.0.8 (absorbs the cycle 13 fan-out 2/5 hexa-nanobot SSOT updates that had not yet been written to disk plus this cycle 15 fan-out 3/3 hexa-ribozyme update)"
+    ],
+    "evidence_paths": [
+      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (this file)",
+      "/Users/ghost/core/n6-architecture/domains/biology/hexa-ribozyme/hexa-ribozyme.md (15-section body)",
+      "/Users/ghost/core/n6-architecture/domains/biology/_index.json (sub-SSOT updated 1.0.0 -> 1.2.0; absorbs both hexa-nanobot cycle 13/2-of-5 and hexa-ribozyme cycle 15/3-of-3)",
+      "/Users/ghost/core/n6-architecture/domains/_index.json (top-level SSOT updated 1.0.6 -> 1.0.8)"
+    ],
+    "limits": [
+      "registration verdict is THEORETICAL-ANALYTICAL: derived from genus-classification analysis of Cech 1982 / Symons 1981 / Wu-Lai 1989 / Steitz 1993 plus n6 invariant projection; NO empirical ribozyme MVP executed in this cycle",
+      "n6 invariant mapping is STRUCTURAL-APPROXIMATE not yet quantitatively validated — sigma(6) = 12 holds approximately for minimal cores (range 10-30 nt across the 7-class corpus); raw 91 C3 honest tag — F-RB-2 Bayesian audit deadline 2026-09-28 will calibrate",
+      "potential collision with domains/life/crispr-gene-editing/ and domains/life/synbio/ is NOT YET AUDITED in this cycle (F-RB-5 deadline 2026-05-28); registration proceeds on the working hypothesis that life/crispr-gene-editing/ is clinical-application Cas-RNP-based while biology/hexa-ribozyme/ is foundational-architectural ribozyme catalysis — same separation as life/biology vs biology/hexa-weave",
+      "predecessor census KICK_NOW for HEXA-WEAVE prerequisite domains noted but not re-executed here; this cycle is fan-out 3/3 of cycle 15, not a fresh census",
+      "no kick infra invoked in this cycle (in-context synthesis only); raw 100 fallback consistent with the cycle 1 closure pattern + cycle 13 fan-out 2/5 pattern",
+      "biology/_index.json absorbs TWO version bumps in this cycle (1.0.0 -> 1.1.0 hexa-nanobot from cycle 13 and 1.1.0 -> 1.2.0 hexa-ribozyme this cycle) because cycle 13 fan-out 2/5 had emitted the kick witness and the body markdown but had not written the SSOT updates to disk; this cycle 15 fan-out 3/3 absorbs both transitions atomically",
+      "5 candidates were evaluated; selection justified on genus-distinction + collision-risk + multi-realizability; HEXA-PROTEOSTASIS deferred to future cycle (raw 91 C3 not fabricated novelty)"
+    ]
+  },
+  "tier_1_promotions": [
+    {
+      "id": "TP-RB-1",
+      "claim": "HEXA-RIBOZYME registers as a third sister domain of HEXA-WEAVE (after HEXA-NANOBOT) under biology axis with verdict tier APPROACH",
+      "evidence": "this witness + body domains/biology/hexa-ribozyme/hexa-ribozyme.md (15 sections) + 2 _index.json updates (biology 1.0.0 -> 1.2.0 absorbing hexa-nanobot + hexa-ribozyme; top-level 1.0.6 -> 1.0.8)",
+      "falsifier": ["F-RB-1-genus", "F-RB-5-sister-axis-collision"],
+      "absorption_channel": "state/discovery_absorption/registry.jsonl"
+    },
+    {
+      "id": "TP-RB-2",
+      "claim": "n6 invariant projects onto catalytic-RNA architecture with tau(6)=4 reaction states / sigma(6)=12 catalytic-core nucleotides / J_2=24 trigonal-bipyramidal TS pose-symmetry / phi(6)=2 binary cleavage outcome",
+      "evidence": "n6_invariant_mapping section above + Cech 1982 / Symons 1981 / Wu-Lai 1989 / Steitz 1993 corpus citation",
+      "falsifier": ["F-RB-2-n6-decorative"],
+      "absorption_channel": "state/discovery_absorption/registry.jsonl"
+    },
+    {
+      "id": "TP-RB-3",
+      "claim": "biology axis triangle composition/actuation/catalysis is now closed at 3 sister domains (hexa-weave / hexa-nanobot / hexa-ribozyme) with orthogonal primary-constraint axes (Landauer / Brownian / diffusion-limit)",
+      "evidence": "domain_distinction_from_sisters section above + biology/_index.json _count = 3",
+      "falsifier": ["F-RB-1-genus"],
+      "absorption_channel": "state/discovery_absorption/registry.jsonl"
+    }
+  ],
+  "raw_53_deterministic_verifier_manifest": {
+    "verifier_types_allowlist": [
+      "filesystem-deterministic (this JSON + body markdown + 2 _index.json files written)",
+      "lint-deterministic (tool/own_doc_lint.py 13/13 PASS expected for this body; pre-existing 10 own#1 violations in proposals/ are unrelated baseline)",
+      "literature-citation-deterministic (Cech 1982 / Guerrier-Takada 1983 / Symons 1981 / Wu-Lai 1989 / Buzayan 1986 / Steitz 1993 / Nissen-Steitz 2000 / Turner 2010 / Hofacker 1994 / Eigen-Hammes 1963 with venue + year)"
+    ],
+    "verifier_types_disallowed": [
+      "LLM-judge (no LLM scored the verdict)",
+      "subjective-rating (no aesthetic / preference scoring)"
+    ],
+    "raw_53_compliant": true
+  },
+  "domain_registration_advisory": {
+    "recommend": "YES",
+    "tier": "APPROACH",
+    "conditions": [
+      "F-RB-4 90d MVP attempt (hammerhead-minimal 12-nt-core 4-state chemical-kinetics simulation) by 2026-07-28",
+      "F-RB-5 collision-audit with life/crispr-gene-editing and life/synbio by 2026-05-28",
+      "F-RB-2 Bayesian invariant audit (n>=30 ribozyme architectures across 7 classes) by 2026-09-28"
+    ],
+    "scope": "domains/biology/hexa-ribozyme/",
+    "rationale": "genus-level distinction from HEXA-WEAVE (composition) and HEXA-NANOBOT (actuation) is clear (chemical-catalysis-by-nucleic-acid as third primitive layer); n6 invariant projection has structural basis in Symons 1981 / Cech 1982 / Wu-Lai 1989 / Steitz 1993 literature; falsifiers preregistered with concrete deadlines. raw 91 C3 honest: registration proceeds at APPROACH grade with sigma(6) = 12 explicitly tagged STRUCTURAL-APPROXIMATE pending the three audits above."
+  },
+  "alien_grade_impact": {
+    "current_grade_cycle_13": 4.09,
+    "current_grade_cycle_15_post_step2ac": 4.58,
+    "this_witness_impact_estimate": "+0.05 (biology-axis triangle closure adds catalysis lens to alien-grade biology coverage; multi-realizability strengthened by 7-class ribozyme corpus)",
+    "honest_disclaimer": "estimate only; actual alien-grade reassessment deferred to next cycle metric-aggregator pass; raw 91 C3 not fabricated"
+  },
+  "report_summary": {
+    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json",
+    "domain_registered": "biology/hexa-ribozyme",
+    "sister_of": ["biology/hexa-weave", "biology/hexa-nanobot"],
+    "verdict_tier": "APPROACH",
+    "tier_1_promotions_count": 3,
+    "raw_71_falsifiers_count": 5,
+    "domain_registration_verdict": "YES (APPROACH-grade, 3 conditions attached)",
+    "honest_c3_what_is_not_closed": "no empirical MVP; F-RB-5 collision audit pending; n6 invariant mapping structural-approximate sigma(6)=12 not yet quantitatively-exact; HEXA-PROTEOSTASIS candidate deferred to future cycle"
+  }
+}

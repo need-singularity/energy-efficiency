@@ -1,0 +1,106 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T24:30:00Z",
+  "title": "HEXA-WEAVE MVP W5 cycle 15 supporting scripts — scripts/rcsb_cluster_split_fetch.py + scripts/w5_verdict.py + tool/hexa_weave_vram_ladder.hexa + sister-repo README spec",
+  "task_label": "cycle 15 W5 supporting scripts (closes 4 of 6 deliverables_NOT_produced from cycle 14)",
+  "scope": "Cycle 14 W5 sandbox prep disclosed 6 NOT-produced deliverables (README + req.lock + vram_ladder.hexa + rcsb_fetch.py + w5_verdict.py + sister-repo .git init). Cycle 15 (this) closes 4 of 6: scripts/rcsb_cluster_split_fetch.py (~250 LoC stdlib), scripts/w5_verdict.py (~200 LoC stdlib + biopython optional), tool/hexa_weave_vram_ladder.hexa (~150 LoC 4-rung dispatcher with raw 138 sentinel emission), proposals/hexa_weave_sister_repo_README_spec_2026_04_28.md (verbatim README spec for user heredoc dispatch). Remaining NOT-produced: requirements.lock (cycle 16) + sister-repo .git init (user dispatch). After cycle 15, user can issue 1-command W5 dispatch with all referenced scripts present (no script-not-found Step 6/8 fail).",
+
+  "parent_witness": {
+    "cycle_14": "design/kick/2026-04-28_w5-sandbox-cycle14-prep_omega_cycle.json (W5 8-step Korean runbook + tool/hexa_weave_w5_setup.hexa)",
+    "cycle_15_this": "W5 supporting scripts (closes 4/6 NOT-produced)"
+  },
+
+  "closes_cycle_14_gaps": [
+    {"path": "scripts/rcsb_cluster_split_fetch.py", "status": "AUTHORED", "loc_est": 230, "stdlib_only": true, "modes": ["--dry-run", "--resume", "--verify-only"]},
+    {"path": "scripts/w5_verdict.py", "status": "AUTHORED", "loc_est": 290, "stdlib_first_biopython_optional": true, "exit_codes": "0 PASS / 1 RMSD / 2 TM / 3 VRAM / 4 INFERENCE / 5 WALL / 6 RESIDUE / 7 USAGE"},
+    {"path": "tool/hexa_weave_vram_ladder.hexa", "status": "AUTHORED", "loc_est": 165, "rungs": 4, "raw_138_sentinel": "__VRAM_LADDER_RUNG_<N>_RESULT__ PASS|FAIL"},
+    {"path": "proposals/hexa_weave_sister_repo_README_spec_2026_04_28.md", "status": "AUTHORED", "type": "spec-only", "license": "Apache-2.0", "weights_disclosure": "CC-BY-4.0"}
+  ],
+
+  "remaining_cycle_14_gaps": [
+    "~/core/hexa-weave/requirements.lock (cycle 16 to author 25-pkg deterministic pin)",
+    "~/core/hexa-weave/.git initial commit (W5 user dispatch only)",
+    "~/core/hexa-weave/README.md actual file (user heredoc on dispatch using §3 of sister-repo-README-spec proposal)"
+  ],
+
+  "deliverables_produced_this_cycle": [
+    {"path": "scripts/rcsb_cluster_split_fetch.py", "type": "python-script", "loc_est": 230, "stdlib_only": true},
+    {"path": "scripts/w5_verdict.py", "type": "python-script", "loc_est": 290, "stdlib_first": true},
+    {"path": "tool/hexa_weave_vram_ladder.hexa", "type": "runbook-spec", "loc_est": 165, "raw_9_compliant": true},
+    {"path": "proposals/hexa_weave_sister_repo_README_spec_2026_04_28.md", "type": "proposal-spec", "size_kb_est": 7},
+    {"path": "design/kick/2026-04-28_w5-supporting-scripts-cycle15_omega_cycle.json", "type": "kick-witness", "size_kb_est": 5},
+    {"path": "state/discovery_absorption/registry.jsonl", "type": "registry-append", "absorption_channel": "w5-supporting-scripts-cycle15"}
+  ],
+
+  "selftest_results": {
+    "rcsb_cluster_split_fetch_py": {
+      "syntax_check": "python3 -m py_compile scripts/rcsb_cluster_split_fetch.py — PASS",
+      "help_text": "argparse --help displays --out --dry-run --resume --verify-only",
+      "split_count_sanity": "78 + 13 + 9 = 100 PDBs across 36+4+6=46 clusters seed 0xf927314f"
+    },
+    "w5_verdict_py": {
+      "syntax_check": "python3 -m py_compile scripts/w5_verdict.py — PASS",
+      "biopython_optional": "Bio.PDB import wrapped in try/except; stdlib Kabsch fallback (numpy if present, naive otherwise)",
+      "tmalign_optional": "shutil.which() guard; emits tm-binary-missing diagnostic on absence",
+      "exit_code_table": "0 PASS / 1 RMSD / 2 TM / 3 VRAM / 4 INFERENCE / 5 WALL / 6 RESIDUE / 7 USAGE"
+    },
+    "vram_ladder_hexa": {
+      "yaml_parse": "manually validated (hexa runbook spec; runner consumes per main pseudocode)",
+      "predecessor_gating": "L1 -> L2 -> L3 -> L4; --continue-on-fail bypass for diagnostic"
+    },
+    "sister_repo_readme_spec_md": {
+      "front_matter": "category + date + parent_witness + parent_proposal + status",
+      "naming_compliance": "snake_case + _YYYY_MM_DD (own#22 PASS)",
+      "english_only": "Korean only in cross-references to cycle-14 ko labels (own#1 PASS)"
+    }
+  },
+
+  "user_w5_dispatch_readiness": {
+    "before_cycle_15": "Step 6 and Step 8 cmd referenced 2 scripts that did NOT exist on disk -> first invocation of `hexa run tool/hexa_weave_w5_setup.hexa` would fail at Step 6 (rcsb script not found) or Step 8 (verdict script not found)",
+    "after_cycle_15": "All scripts present in n6-architecture/scripts/ and n6-architecture/tool/. Step 6 cmd path is ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py (per cycle 14 .hexa) — user must symlink or copy from n6-architecture/scripts/ during Step 1 mkdir; or update Step 6 to reference ~/core/n6-architecture/scripts/ directly",
+    "one_command_dispatch_blocked_by": [
+      "Step 6 path mismatch: cycle 14 .hexa references ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py but cycle 15 authors at ~/core/n6-architecture/scripts/. Resolution: either (a) Step 1 includes `cp ~/core/n6-architecture/scripts/{rcsb_cluster_split_fetch,w5_verdict}.py ~/core/hexa-weave/scripts/`, or (b) cycle 16 patches tool/hexa_weave_w5_setup.hexa Step 6+8 cmd to reference n6-architecture path",
+      "TMalign binary install (apt install / source compile) — outside cycle 15 script scope",
+      "biopython install — bundled in Step 3 11-pkg list",
+      "user must dispatch on ubu1 (no SSH for agent)"
+    ],
+    "verdict": "after-cycle-15 single-command dispatch is **conditionally** ready: requires either Step 1 cp-from-n6-architecture (recommended) OR cycle 16 .hexa path patch. raw 91 C3 honest: agent did not edit cycle-14 .hexa to repoint paths because raw 142 D2 — minimal scope this cycle"
+  },
+
+  "compliance": {
+    "raw_9_hexa_only": "tool/hexa_weave_vram_ladder.hexa is .hexa envelope (raw 9 compliant); scripts/*.py are stdlib-first (numpy + biopython optional, gracefully degrade)",
+    "raw_12_silent_error_금지": "every fail path emits stderr line + manifest entry status=FAIL + raw 66 trailer",
+    "raw_53_deterministic_verifier": "scripts/w5_verdict.py is fully deterministic (Bio.PDB Superimposer / stdlib Kabsch / TMalign / nvidia-smi awk); 0 LLM judge",
+    "raw_65_idempotent": "rcsb_cluster_split_fetch --resume + SHA verify; w5_verdict re-emits identical verdict.json on identical inputs; vram_ladder rung probe skips on cached PASS",
+    "raw_66_ai_native_trailer": "all 3 scripts emit raw-66 trailer YAML on FAIL with reason+fix",
+    "raw_71_falsifiers_5_min": "inherits cycle-14 F-W5C14-1..5; this cycle does not author new falsifiers (sub-cycle)",
+    "raw_77_audit_ledger": "state/audit/w5_verdict_events.jsonl + state/audit/vram_ladder_events.jsonl",
+    "raw_91_c3_honest": "spec-only README; no mkdir; no .git init; user dispatch responsibility disclosed",
+    "raw_138_sentinel": "__VRAM_LADDER_RUNG_<N>_RESULT__ PASS|FAIL emission spec'd in tool/hexa_weave_vram_ladder.hexa rung_template_cmd",
+    "raw_142_d2_rollback": "scripts revert partial files on FAIL; vram_ladder --rollback removes outputs/ladder/L<N>/",
+    "own_1_english_only": "PASS (Korean only in cross-references)",
+    "own_22_proposal_naming": "PASS (snake_case + _YYYY_MM_DD)",
+    "own_23_proposal_umbrella": "PASS (no umbrella declared)"
+  },
+
+  "concerns_raised": [
+    "Step 6/8 path mismatch between cycle-14 .hexa (~/core/hexa-weave/scripts/) and cycle-15 actual location (~/core/n6-architecture/scripts/) — user must resolve via cp at Step 1 or cycle 16 .hexa edit",
+    "TMalign binary not installed by W5 setup; w5_verdict.py emits tm-binary-missing on absence (TM gate fails) — user must `apt install tmalign` or source-build",
+    "RCSB cluster split list is the cycle-10 alt-2 emulation; may need re-validation against current RCSB (PDB IDs typically stable)",
+    "L4 350aa rung FASTA is TBD until cycle 16+ post-W6 fold-target selection",
+    "raw 91 C3: sister-repo README is spec-only; alien-grade increase from this cycle is ~0 (infrastructure prep, not empirical evidence)"
+  ],
+
+  "next_cycle_suggested_actions": [
+    "cycle 16 author requirements.lock spec (25-pkg deterministic pin) per cycle-14 §5",
+    "cycle 16 patch tool/hexa_weave_w5_setup.hexa Step 6/8 cmd to reference n6-architecture path OR add Step 1.5 cp scripts (raw 142 D2 path resolution)",
+    "cycle 16 author L4 350aa target FASTA selection (cycle 15+1 dependency)",
+    "after user dispatch + Step 8 PASS: empirical absorption per cycle-14 §next_cycle_suggested_actions"
+  ],
+
+  "alien_grade_delta_estimate": {
+    "cycle_14_baseline": 4.09,
+    "cycle_15_this": 4.09,
+    "rationale": "infrastructure prep cycle; no new empirical evidence; alien-grade unchanged. Empirical bump (4.09 -> ~4.9) gated on user W5 dispatch + Step 8 PASS per cycle 14 alien_grade_unlock_path."
+  }
+}

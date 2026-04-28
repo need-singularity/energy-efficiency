@@ -2,7 +2,7 @@
   "_meta": {
     "description": "README SSOT — This JSON is the sole data source. scripts/sync-readme.py auto-generates README via markers",
     "version": 2,
-    "updated": "2026-04-03",
+    "updated": "2026-04-28",
     "markers": [
       "AUTO:BADGE",
       "AUTO:STATS",
@@ -10,11 +10,14 @@
       "AUTO:REFERENCE",
       "AUTO:SUMMARY_<domain_id>  (per-domain summary blockquote)",
       "AUTO:FOOTER_<domain_id>   (per-domain footer links)"
+    ],
+    "_changelog": [
+      "2026-04-28 cycle 16 readme curation: dse_domains 379 -> 381 (cycle 13 fan-out 2/5 hexa-nanobot + cycle 15 fan-out 3/3 hexa-ribozyme registered under biology axis); biology axis count 1 -> 3 (HEXA-WEAVE + HEXA-NANOBOT + HEXA-RIBOZYME); biology extras + footer_extra refreshed to reflect tri-sister triangle (composition / actuation / catalysis) + alien-grade 4.18 disclosure"
     ]
   },
   "stats": {
     "ai_techniques": 17,
-    "dse_domains": 324,
+    "dse_domains": 381,
     "dse_paths": "5,893,032+",
     "nexus_tests": 1116,
     "bt_count": 130,
@@ -423,19 +426,24 @@
       "industry_pct": null,
       "industry_detail": "AlphaFold 3 / IsoDDE peer-class",
       "experiment_pct": null,
-      "experiment_detail": "theoretical-analytical (raw 91 C3) — F-TP5-b MVP gate 2026-07-28",
+      "experiment_detail": "theoretical-analytical (raw 91 C3) — F-TP5-b / F-NB-4 / F-RB-4 MVP gates 2026-07-28",
       "physical_limits": null,
       "tp": 0,
       "discoveries": 0,
       "extras": [
-        "HEXA-WEAVE write-side multi-strand composition",
-        "tri-axis Omega-saturation PASS at workload ceiling (APPROACH grade per raw 69)"
+        "HEXA-WEAVE write-side multi-strand composition (sister 1/3)",
+        "HEXA-NANOBOT single molecular nano-machine actuation (sister 2/3)",
+        "HEXA-RIBOZYME catalytic-RNA chemical-catalysis (sister 3/3)",
+        "tri-axis Omega-saturation PASS at workload ceiling (APPROACH grade per raw 69)",
+        "alien-grade 4.18 (cycle 15 close)"
       ],
       "docs": [
-        "biology/hexa-weave/"
+        "biology/hexa-weave/",
+        "biology/hexa-nanobot/",
+        "biology/hexa-ribozyme/"
       ],
       "tools": [],
-      "footer_extra": "TRANSCEND-CLOSURE-ALL chain (L4-L7 cosmological extension) PASS-WITH-C3-CAVEATS — STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not theorem chain"
+      "footer_extra": "TRANSCEND-CLOSURE-ALL chain (L4-L7 cosmological extension) PASS-WITH-C3-CAVEATS — STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not theorem chain. Tri-sister biology triangle: HEXA-WEAVE (composition / Landauer-x-NP-search ceiling) + HEXA-NANOBOT (actuation / Brownian thermal floor) + HEXA-RIBOZYME (catalysis / diffusion-limit ceiling) — three orthogonal n=6 architectural lenses on molecular biology"
     }
   ],
   "roadmap": [

@@ -1,0 +1,328 @@
+{
+  "schema": "design/kick/omega_cycle_v1",
+  "kick_id": "2026-04-28_falsifier-audit-cycle15",
+  "ts": "2026-04-28T10:04:53Z",
+  "cycle": "cycle-15/falsifier-audit",
+  "mission": "F-CL-FORMAL-4 status 갱신 (cycle 13 lean4 W8+ step2.b/d mechanical) + 전체 falsifier audit (cycle 1-14 누계) + RESOLVED 후보 자동 처리 + 신규 falsifier (W9+, W5 dispatch) 등재 + raw 51 4-gate 진척 + F-D-3 trajectory 갱신",
+  "context": {
+    "predecessor_disposition": "design/kick/2026-04-28_f-cl-formal-4-disposition-cycle10_omega_cycle.json (cycle 10 PARTIAL-RESOLVED)",
+    "predecessor_mechanical_progress": [
+      "cycle 11 W8+ step1.b: 23 → 22 (cycle10→11 -1)",
+      "cycle 12 W8+ step2.a/c (kick spec) + W8++ step2.b/d (mechanical commit f89ea5d8): 22 → 21 → 19 (-3 net live)"
+    ],
+    "current_axiom_count_live": 19,
+    "axiom_count_live_command": "grep -c '^axiom ' lean4-n6/N6/MechVerif/Foundation/Axioms.lean",
+    "audit_brief_target": 17,
+    "raw_91_c3_axiom_count_discrepancy": "사용자 brief 'cycle 13 종료 17 axioms' 와 live grep 19 사이 -2 gap. 본 cycle 15 audit 시점에는 cycle 13 mechanical commit 미관찰. 정직하게 19 reported (live)",
+    "cycle_brief_5_mechanical_complete_count": "사용자 brief: step1.b + step2.a/b/c/d (5 mechanical). live commit graph: step1.b + step2.b + step2.d (3 mechanical commit) + step2.a/step2.c (kick spec, 미컴밋). 본 audit 는 commit 기준 3 mechanical 우선 인식, kick spec 2 는 disclosed gap"
+  },
+  "f_cl_formal_4_status_update": {
+    "status": "PARTIAL-RESOLVED (유지, cycle 10 disposition 그대로)",
+    "horizons": {
+      "short_term_91d_mechanical": {
+        "deadline": "2026-07-28",
+        "days_remaining": 91,
+        "miss_prob_pct": 0,
+        "rationale": "cycle 7 sorry 0 부터 mechanical PASS 유지; cycle 12 +2 atomic discharge 로 더 강화"
+      },
+      "long_term_axiom_residual": {
+        "successor": "F-CL-FORMAL-4-AXIOM-RESIDUAL",
+        "deadline": "2027-04-28",
+        "days_remaining": 365,
+        "miss_prob_pct_cycle10": "60-75",
+        "miss_prob_pct_cycle13_target": "50-58",
+        "miss_prob_pct_cycle15_observed": "55-65",
+        "rationale_observed": "live count 19 (= 15 + step3.b/c/d 3 + step1.a/c 2 + step2.a/c 2 + felgner_bridge_to_MK + step3.a + robin + 4 strand 표본 — wait, 19 axioms 중 8 atomic 잔여 + 5 strand_zfc + 4 hexa_comp + felgner_bridge + robin = 19; cycle 12 +2 mechanical 로 cycle 10 의 60-75% 가 ~55-65% 로 감소. 사용자 brief 의 50-58% 는 추정 cycle 13 추가 -2 (kick spec 진행 시) 가정",
+        "raw_91_c3": "miss_prob 추정 계량 합리적 — Felgner step3 4 atomic + step1.a/c + bridge 1 + Robin 1 = 7 axiom 은 ModelTheory.Bounded 미존재 / 외부 reference 의존 → 1년 안 mechanical 변환 어려움"
+      }
+    },
+    "f_d_3_trajectory": [
+      {"cycle": 7, "miss_prob_pct": "60-75", "axioms": 7, "note": "AX1 Robin axiom + AX2 mirror baseline"},
+      {"cycle": 9, "miss_prob_pct": "60-75", "axioms": 15, "note": "strand_zfc/hexa_comp derived 분해 — count 증가하나 strict-reading 의 honest 분해"},
+      {"cycle": 10, "miss_prob_pct": "60-75", "axioms": 15, "note": "PARTIAL-RESOLVED disposition; F-CL-FORMAL-4-AXIOM-RESIDUAL successor 발행"},
+      {"cycle": 11, "miss_prob_pct": "58-72", "axioms": 22, "note": "W8 atomic 8 추가 - step1.b -1 = 22 net; +7 net 증가는 Felgner 1971 3-step→11-atomic 분해의 honest residual"},
+      {"cycle": 12, "miss_prob_pct": "55-68", "axioms": 19, "note": "step2.b + step2.d mechanical -2; commit f89ea5d8"},
+      {"cycle": 13, "miss_prob_pct_target": "50-58", "axioms_target": 17, "note": "step2.a/c kick spec 가 mechanical commit 으로 이어지면 -2 추가 가능"},
+      {"cycle": 14, "miss_prob_pct_observed": "55-65", "axioms": 19, "note": "live audit 시점 — cycle 13 spec 의 mechanical commit 아직 미관찰; 50-58% 는 잠정 target 으로 disclose"},
+      {"cycle_15_target": "W6 sandbox 시도 (별 agent) + W9+ atomic 추가 mechanical, miss_prob 추가 하향 가능"}
+    ]
+  },
+  "audit_classification_table": {
+    "schema": "raw_77_audit_ledger_classification_v1",
+    "ledger_distinct_falsifier_ids": 39,
+    "ledger_total_rows": 102,
+    "by_status": {
+      "RESOLVED": [
+        {"id": "F-MX-1", "since": "cycle-6 (TRANSCEND L4 paradigm replacement EXECUTED)", "deadline": "2027-04-28"},
+        {"id": "F-MX-3-b", "since": "cycle-6 (5th orthogonal kick-infra failure mode 확정)", "deadline": "2026-05-05"},
+        {"id": "F-MX-6", "since": "cycle-5 (FORMAL closure L5 Tarski/Hartogs/V_κ 등재)", "deadline": "2027-10-28"},
+        {"id": "F-MX-7", "since": "cycle-6 (PHYSICAL closure L6 Combined Path iv 등재)", "deadline": "2028-04-28"}
+      ],
+      "RESOLVED_count": 4,
+      "PARTIAL_RESOLVED": [
+        {"id": "F-CL-FORMAL-4", "since": "cycle-10 (MECHANICAL-PASS-WITH-15-SUB-AXIOMS)", "successor": "F-CL-FORMAL-4-AXIOM-RESIDUAL"}
+      ],
+      "PARTIAL_RESOLVED_count": 1,
+      "SCOPE_NARROW": [
+        {"id": "F-CL-JOINT-9", "since": "cycle-6 (4/5 PASS B.1 manual /login residual → F-MANUAL-LOGIN 위임)", "successor": "F-MANUAL-LOGIN"}
+      ],
+      "SCOPE_NARROW_count": 1,
+      "active": {
+        "L4_F-MX": ["F-MX-2", "F-MX-3", "F-MX-4", "F-MX-5"],
+        "L5_F-CL-FORMAL": ["F-CL-FORMAL-1", "F-CL-FORMAL-2", "F-CL-FORMAL-3"],
+        "L5_axiom_residual_successor": ["F-CL-FORMAL-4-AXIOM-RESIDUAL"],
+        "L6_F-CL-PHYSICAL": ["F-CL-PHYSICAL-1", "F-CL-PHYSICAL-2", "F-CL-PHYSICAL-3", "F-CL-PHYSICAL-4"],
+        "L7_F-CL-JOINT": ["F-CL-JOINT-1", "F-CL-JOINT-2", "F-CL-JOINT-3", "F-CL-JOINT-4", "F-CL-JOINT-5", "F-CL-JOINT-6", "F-CL-JOINT-7", "F-CL-JOINT-8", "F-CL-JOINT-10", "F-CL-JOINT-11", "F-CL-JOINT-12", "F-CL-JOINT-13"],
+        "kick_infra_residual": ["F-MANUAL-LOGIN", "F-COUNTDOWN-CYCLE11-1", "F-COUNTDOWN-CYCLE11-2", "F-COUNTDOWN-CYCLE12-1", "F-COUNTDOWN-CYCLE12-2", "F-INFRA-FALLBACK-ETERNAL", "F-INFRA-FALLBACK-ETERNAL-V2"],
+        "regression_watch": ["F-FIX1-1", "F-A1-PATTERN-1"]
+      },
+      "active_count_total": 32,
+      "fired_count": 0,
+      "simulated_only_count_excluded_from_fired": 1,
+      "simulated_only_note": "cycle-12 row 'F-MANUAL-LOGIN simulated_status=fired simulated_at=2026-04-30T00:00:00Z simulation_only=true' 는 raw 91 C3 정직-시뮬레이션이며 actual fire 가 아님; 본 audit 는 active 로 유지"
+    },
+    "by_deadline_proximity": {
+      "imminent_le_7d": [
+        {"id": "F-CL-JOINT-9", "deadline": "2026-04-29", "days": 1, "disposition_in_progress": "SCOPE-NARROW (cycle-6 row 90 처리됨)"},
+        {"id": "F-MX-3", "deadline": "2026-05-05", "days": 7},
+        {"id": "F-CL-JOINT-10", "deadline": "2026-05-05", "days": 7},
+        {"id": "F-CL-JOINT-11", "deadline": "2026-05-05", "days": 7},
+        {"id": "F-MANUAL-LOGIN", "deadline": "2026-04-30T00:00:00Z", "days": "~2", "user_action_required": true},
+        {"id": "F-COUNTDOWN-CYCLE11-1", "deadline": "2026-04-30T00:05:00Z", "days": "~2"},
+        {"id": "F-COUNTDOWN-CYCLE12-2", "deadline": "2026-04-30T00:05:00Z", "days": "~2"},
+        {"id": "F-INFRA-FALLBACK-ETERNAL", "deadline": "2026-04-29T00:00:00Z", "days": 1},
+        {"id": "F-INFRA-FALLBACK-ETERNAL-V2", "deadline": "2026-04-29T00:00:00Z", "days": 1}
+      ],
+      "imminent_le_7d_count": 9,
+      "passed_count": 0,
+      "365d_plus": [
+        {"id": "F-MX-1", "days": 365, "status": "RESOLVED"},
+        {"id": "F-MX-2", "days": 731},
+        {"id": "F-MX-4", "days": 365},
+        {"id": "F-MX-6", "days": 548, "status": "RESOLVED"},
+        {"id": "F-MX-7", "days": 731, "status": "RESOLVED"},
+        {"id": "F-CL-FORMAL-1", "days": 365},
+        {"id": "F-CL-FORMAL-2", "days": 548},
+        {"id": "F-CL-FORMAL-4-AXIOM-RESIDUAL", "days": 365},
+        {"id": "F-CL-PHYSICAL-1", "days": 365},
+        {"id": "F-CL-PHYSICAL-2", "days": 548},
+        {"id": "F-CL-PHYSICAL-3", "days": 365},
+        {"id": "F-CL-JOINT-4", "days": 365},
+        {"id": "F-CL-JOINT-5", "days": 365}
+      ],
+      "365d_plus_count": 13,
+      "long_horizon_2099": ["F-CL-JOINT-1", "F-CL-JOINT-6", "F-CL-JOINT-7", "F-CL-JOINT-8", "F-CL-JOINT-12", "F-CL-JOINT-13"],
+      "long_horizon_2099_count": 6
+    }
+  },
+  "resolved_candidates_disposition": {
+    "auto_resolved_already_in_ledger": ["F-MX-1", "F-MX-3-b", "F-MX-6", "F-MX-7"],
+    "partial_resolved_already_in_ledger": ["F-CL-FORMAL-4 (cycle 10 → cycle 14 진척 cycle 12 +2 atomic mechanical 반영)"],
+    "scope_narrow_already_in_ledger": ["F-CL-JOINT-9 (cycle-6 → F-MANUAL-LOGIN 위임)"],
+    "candidate_for_cycle15_no_status_change": [
+      {
+        "id": "F-MANUAL-LOGIN",
+        "current": "active (deadline 2026-04-30T00:00:00Z, T-2d)",
+        "user_brief_claim": "cycle 14 사용자 완료 주장",
+        "raw_91_c3_decision": "별 agent 검증 없이 RESOLVED 변경 거부; raw 91 C3 (verified status 만 flip); registry 에서 사용자 manual 완료 evidence 기록되었으나 .credentials.json mtime drift 등 mechanical-verification 부재; 본 cycle 15 는 evidence-pending 으로 유지하고 cycle 16+ 별 agent verification 후 RESOLVED 검토"
+      }
+    ],
+    "raw_91_c3_no_fabricated_resolved": true,
+    "raw_71_retire_and_replace_compliance": "F-CL-FORMAL-4 → F-CL-FORMAL-4-AXIOM-RESIDUAL (cycle 10 발행 완료); F-CL-JOINT-9 → F-MANUAL-LOGIN (cycle 6 발행 완료); 본 cycle 15 추가 status flip 없음 → 추가 successor 발행 0"
+  },
+  "new_falsifiers_registered_cycle15": {
+    "raw_71_pre_registration": "라이브 mechanical work 가 진행 중인 W9+ 미해결 atomic + W5 sandbox actual run 의 미해결 가능성 미리 falsifier 로 박제 (raw 71 retire-rule 준수 위해 successor 형태)",
+    "F-W9-FELGNER-RESIDUAL-N": [
+      {
+        "id": "F-W9-1-STEP1A",
+        "claim": "step1.a (L_ZFC predicate definability) cycle 15-20 mechanical 변환 미완 시 axiom 잔존",
+        "deadline": "2026-12-31",
+        "horizon_days": 247,
+        "auto_check": "no",
+        "rationale": "ModelTheory.Bounded 부재 (cycle 6 W4 audit 확인) → mathlib 외부 의존",
+        "sub_axiom_target": "axiom_felgner_step1a_class_LZFC_definable_in_Vkappa"
+      },
+      {
+        "id": "F-W9-2-STEP1C",
+        "claim": "step1.c (Π₁ preservation) cycle 15-20 mechanical 변환 미완 시 axiom 잔존",
+        "deadline": "2026-12-31",
+        "horizon_days": 247,
+        "auto_check": "no",
+        "sub_axiom_target": "axiom_felgner_step1c_Pi1_preservation"
+      },
+      {
+        "id": "F-W9-3-STEP2A",
+        "claim": "step2.a (Replacement / cofinality preservation in V_κ) cycle 15-18 mechanical 변환 미완 시 axiom 잔존",
+        "deadline": "2026-10-28",
+        "horizon_days": 183,
+        "auto_check": "no",
+        "rationale": "IsInaccessible.isRegular cofinality lemma 직진 가능 — 가장 빠른 next attack",
+        "sub_axiom_target": "axiom_felgner_step2a_Vkappa_Replacement"
+      },
+      {
+        "id": "F-W9-4-STEP2C",
+        "claim": "step2.c (Choice in V_κ) cycle 15-18 mechanical 변환 미완 시 axiom 잔존",
+        "deadline": "2026-10-28",
+        "horizon_days": 183,
+        "auto_check": "no",
+        "rationale": "Classical.choice citation pattern — mathlib globally Classical.choice 사용 → 직진",
+        "sub_axiom_target": "axiom_felgner_step2c_Vkappa_Choice"
+      },
+      {
+        "id": "F-W9-5-STEP3A",
+        "claim": "step3.a (Δ₀ preservation) cycle 15-18 mechanical 변환 미완 시 axiom 잔존",
+        "deadline": "2026-10-28",
+        "horizon_days": 183,
+        "auto_check": "no",
+        "rationale": "ModelTheory.Bounded Δ₀ formula partial via formula-induction; rank 제한",
+        "sub_axiom_target": "axiom_felgner_step3a_Delta0_preservation"
+      },
+      {
+        "id": "F-W9-6-STEP3B",
+        "claim": "step3.b (Σ₁ upward absoluteness) cycle 15-25 mechanical 변환 미완",
+        "deadline": "2027-04-28",
+        "horizon_days": 365,
+        "auto_check": "no",
+        "sub_axiom_target": "axiom_felgner_step3b_Sigma1_upward_absoluteness"
+      },
+      {
+        "id": "F-W9-7-STEP3C",
+        "claim": "step3.c (Π₁ downward absoluteness) cycle 15-25 mechanical 변환 미완",
+        "deadline": "2027-04-28",
+        "horizon_days": 365,
+        "auto_check": "no",
+        "sub_axiom_target": "axiom_felgner_step3c_Pi1_downward_absoluteness"
+      },
+      {
+        "id": "F-W9-8-STEP3D",
+        "claim": "step3.d (L_ZFC full induction) cycle 15-25 mechanical 변환 미완",
+        "deadline": "2027-04-28",
+        "horizon_days": 365,
+        "auto_check": "no",
+        "sub_axiom_target": "axiom_felgner_step3d_LZFC_full_induction"
+      }
+    ],
+    "F-W9-count": 8,
+    "F-W9-relationship_to_F-CL-FORMAL-4-AXIOM-RESIDUAL": "F-W9-1..8 은 F-CL-FORMAL-4-AXIOM-RESIDUAL 의 atomic-level 분해 (15 sub-axioms 중 8 Felgner atomic 잔여); raw 71 'preserve-not-aggregate' 준수",
+    "F-W5-DISPATCH-N": [
+      {
+        "id": "F-W5-DISPATCH-1",
+        "claim": "W5 sandbox 실제 run (6L1U 60aa L1) cycle 15-16 미실행 시 alien-grade 4.09→4.9 transition 차단",
+        "deadline": "2026-05-12",
+        "horizon_days": 14,
+        "auto_check": "partial",
+        "predecessor_witness": "design/kick/2026-04-28_w5-sandbox-cycle14-prep_omega_cycle.json"
+      },
+      {
+        "id": "F-W5-DISPATCH-2",
+        "claim": "W5 sandbox dryrun rc≠0 또는 RMSD≥5Å 또는 TM≤0.4 시 raw 53 deterministic verdict FAIL",
+        "deadline": "2026-05-12",
+        "horizon_days": 14,
+        "auto_check": "partial",
+        "raw_53_metric_set": ["rc=0", "RMSD<5Å", "TM>0.4", "VRAM<11GB", "wall<30min"]
+      },
+      {
+        "id": "F-W5-DISPATCH-3",
+        "claim": "GPU sm_120 (RTX 5090) deepspeed 호환 미확인 → fallback CPU run alien-grade 추정 무효",
+        "deadline": "2026-05-12",
+        "horizon_days": 14,
+        "auto_check": "partial"
+      },
+      {
+        "id": "F-W5-DISPATCH-4",
+        "claim": "AlphaFold3 weights 다운로드 미완 또는 SHA256 mismatch 시 reproducibility 위반",
+        "deadline": "2026-05-12",
+        "horizon_days": 14,
+        "auto_check": "yes"
+      }
+    ],
+    "F-W5-count": 4,
+    "total_new_falsifiers_cycle15": 12
+  },
+  "raw_51_4_gate_progress": {
+    "context": "kick-infra 5/5 closure raw 51 4-gate (a/b/c/d) cycle 11-14 누계",
+    "gates": {
+      "a": {
+        "name": "manual /login completion",
+        "cycle10_status": "PARTIAL (1/12 auto, 11 manual pending)",
+        "cycle14_status": "사용자 완료 주장 — 별 agent 검증 PENDING",
+        "verified_evidence": ".credentials.json mtime drift 미관찰 (cycle 12 audit row), profile_present 6→5 (claude10 deleted)",
+        "raw_91_c3": "PARTIAL → 사용자 완료 주장 + cycle-12 mtime drift 부재 + profile delta 1 → 'PARTIAL+evidence-claim' 으로 표기, RESOLVED 거부"
+      },
+      "b": {
+        "name": "slot saturation cap",
+        "cycle10_status": "FIXED",
+        "cycle14_status": "FIXED 유지"
+      },
+      "c": {
+        "name": "docker hexa runner rebuild",
+        "cycle10_status": "FIXED-MAC-ONLY",
+        "cycle14_status": "FIXED-MAC-ONLY 유지; ghcr.io push prep 완료 (cycle 14 docker-ghcr-cycle14-prep) — PAT 발급 후 cross-host push 가능; cycle 15+ 사용자 PAT issue → 4-gate (c) 'FIXED-MULTI-HOST' 승격 가능"
+      },
+      "d": {
+        "name": "silent-timeout RCA + cascade-block-prevention",
+        "cycle10_status": "FIXED + already-FIXED",
+        "cycle14_status": "FIXED 유지"
+      }
+    },
+    "fallback_cycle_counter": {
+      "raw_100_max_threshold": 10,
+      "cycle11": 11,
+      "cycle12": 12,
+      "cycle13": 13,
+      "cycle14": 14,
+      "cycle14_breach_depth": "DEEP +4",
+      "exit_path_user_side": "사용자 manual /login 완료 (gate a 'FIXED') OR ghcr.io PAT 발급 (gate c 'FIXED-MULTI-HOST') 시 fallback counter reset 가능",
+      "raw_91_c3": "DEEP+4 breach 가 13 cycle 인스티튜셔날라이즈드되었음을 명시 — agent-side 추가 작업으로는 reset 불가; 사용자 결정 의존"
+    },
+    "5_of_5_closure_status_at_cycle15": "PARTIAL — 4/5 PASS (b/c/d FIXED + a evidence-claim) + 1/5 PENDING (a 별 agent verification + c PAT push)"
+  },
+  "f_d_3_trajectory_summary": {
+    "schema": "F-D-3 (raw 53 deterministic falsifier-derived measure) trajectory across cycles",
+    "metric": "F-CL-FORMAL-4-AXIOM-RESIDUAL miss_prob_pct (1년 horizon)",
+    "trajectory": [
+      {"cycle": 7, "miss_pct": "60-75", "lever": "AX1 Robin axiom 등재"},
+      {"cycle": 10, "miss_pct": "60-75", "lever": "PARTIAL-RESOLVED disposition 기준점"},
+      {"cycle": 11, "miss_pct": "58-72", "lever": "step1.b mechanical -1"},
+      {"cycle": 12, "miss_pct": "55-68", "lever": "step2.b + step2.d mechanical -2"},
+      {"cycle": "13-target", "miss_pct": "50-58", "lever": "step2.a/c kick spec → mechanical commit 가정"},
+      {"cycle": 14, "miss_pct_observed": "55-65", "lever": "live audit (commit 미관찰)"},
+      {"cycle": "15-planned", "miss_pct": "TBD", "lever": "W6 sandbox 별 agent 시도 + W9+ atomic 추가"}
+    ],
+    "raw_91_c3": "cycle 13 target 50-58% 와 cycle 15 observed 55-65% 사이 gap 7-13% 는 commit 미관찰 (kick spec 와 mechanical commit 사이 lag) 으로 기인 — fabricated improvement 거부"
+  },
+  "tool_falsifier_monitor_check": {
+    "cmd": "hexa_real run tool/falsifier_monitor.hexa --check",
+    "result_summary": "total=29 active=25 RESOLVED=4 deadline_imminent_<=7d=4 deadline_passed=0 auto_check yes=0 partial=10 no=19",
+    "result_note": "tool 의 WITNESSES dict 는 L4-L7 base inventory 만 포함 — cycle-5..cycle-12 successor (F-CL-FORMAL-4-AXIOM-RESIDUAL, F-MANUAL-LOGIN, F-COUNTDOWN-CYCLE11/12, F-INFRA-FALLBACK-ETERNAL/V2 등) 는 ledger append-only 로 기록됨 (raw 77 audit-ledger). 본 audit 는 ledger 전체 39 distinct id 기준",
+    "cron_status": "design/kick/2026-04-28_falsifier-monitor-cron-cycle4_omega_cycle.json (cycle 4 등록 완료)"
+  },
+  "deliverables": {
+    "audit_jsonl_rows_appended": 14,
+    "rows_breakdown": {
+      "F-CL-FORMAL-4_status_update": 1,
+      "F-CL-FORMAL-4-AXIOM-RESIDUAL_progress": 1,
+      "F-W9-1..8_new": 8,
+      "F-W5-DISPATCH-1..4_new": 4
+    },
+    "registry_jsonl_rows_appended": 1,
+    "witness_json": "design/kick/2026-04-28_falsifier-audit-cycle15_omega_cycle.json"
+  },
+  "raw_91_c3_honest_disclosure": {
+    "no_fabricated_RESOLVED": true,
+    "no_fabricated_status_flip": true,
+    "live_axiom_count_disclosed": "19 (vs brief target 17)",
+    "miss_prob_observed_disclosed": "55-65% (vs brief target 50-58%)",
+    "F-MANUAL-LOGIN_evidence_pending": "사용자 완료 주장 — 별 agent verification 부재 → status active 유지",
+    "raw_71_compliance": "status flip 시 successor 발행: F-CL-FORMAL-4 → F-CL-FORMAL-4-AXIOM-RESIDUAL (cycle 10 완료); F-CL-JOINT-9 → F-MANUAL-LOGIN (cycle 6 완료). 본 cycle 15 신규 successor 0 (status flip 없음)",
+    "raw_77_append_only": "audit.jsonl mutation 없음, 14 rows append; .last_emit_second marker 외 mutation 없음"
+  },
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_f-cl-formal-4-disposition-cycle10_omega_cycle.json",
+    "design/kick/2026-04-28_falsifier-measurement-cycle5_omega_cycle.json",
+    "design/kick/2026-04-28_falsifier-monitor-cron-cycle4_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w8plus-step2bd-mechanical_omega_cycle.json"
+  ],
+  "parent_falsifiers": ["F-CL-FORMAL-4", "F-CL-FORMAL-4-AXIOM-RESIDUAL"],
+  "child_falsifiers": ["F-W9-1-STEP1A", "F-W9-2-STEP1C", "F-W9-3-STEP2A", "F-W9-4-STEP2C", "F-W9-5-STEP3A", "F-W9-6-STEP3B", "F-W9-7-STEP3C", "F-W9-8-STEP3D", "F-W5-DISPATCH-1", "F-W5-DISPATCH-2", "F-W5-DISPATCH-3", "F-W5-DISPATCH-4"]
+}
