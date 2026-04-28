@@ -179,7 +179,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 | 10 | ✅ | v2 | **AI Energy Savings Guide** | AdamW 5midpairs+LR+Inference hyperparameters full n=6 mapping — 31/31 PASS | [doc](reports/discovery/ai-energy-savings-guide.md) |
 | 10 | ✅ | v2 | **Chip Architecture Guide** | GPU SM+HBM+pitch+Interconnect n=6 full mapping — 27/27 PASS | [doc](reports/discovery/chip-architecture-guide.md) |
 | 10 | ✅ | v2 | **ceiling-check** | 194claims 89.7%EXACT, industry9models, physical-limit10, 67/67 PASS verified | [doc](domains/compute/ai-efficiency/ai-efficiency.md) |
-| 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | inference/video/andlearningFM/neuromorphic/agent/new-arch/robotics/medical 8paradigm — 234/256 EXACT (91.4%), BT-380~390 | [doc](domains/compute/ai-efficiency/ai-efficiency.md) |
+| 10 | ✅ | v1 | **Next-Gen AI 8-Paradigm Blowup** | inference/video/andlearningFM/neuromorphic/agent/new-arch/robotics/medical 8paradigm — 234/256 EXACT (91.4%), BT-380~390. Cross-link: medical paradigm — see also [HEXA-WEAVE](#-biology) (Biology — n6 write-side counterpart to AlphaFold 3 / IsoDDE read-side AI). | [doc](domains/compute/ai-efficiency/ai-efficiency.md) |
 | 10 | ✅ | v1 | **AI 6-Domain Sweep** | code-generation/RL games/recommendation family/SSL·NLU/serving compiler/multimodal 6domains — 314/344 EXACT (91.3%), BT-391~396 | [doc](domains/compute/ai-efficiency/ai-efficiency.md) |
 | 10 | ✅ | v1 | **N6 Reverse-Engineering Suite** | n=6 reversedesign — newmodels8line/learningtechniques8line/HW-SWpublicevolution/AGIroadmap/HEXA-CODER, BT-397~401 | [doc](domains/compute/ai-efficiency/ai-efficiency.md) |
 
@@ -372,9 +372,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
-| 7 | APPROACH | v1 | **HEXA-WEAVE — write-side multi-strand molecular design composition** | n6 invariant write-side counterpart to AlphaFold 3 (DeepMind 2024-05 read-side) and IsoDDE (Isomorphic Labs 2026-02 closed). Direction: target multi-molecule context to strand-set (P up to 10^4, N up to 350 aa). Tri-axis Omega-saturation closure witness PASS at workload ceiling (FORMAL Pi^1_1-CA_0 / PHYSICAL Landauer / COMPUTATIONAL Pi^p_2). 7 of 8 raw 70 axes PASS, 1 DEFER (CHI2 n=1). 9 falsifiers across 3 measurable claims per raw 71. APPROACH grade per raw 69 — theoretical-analytical, not yet empirical. F-TP5-b 90-day MVP gate 2026-07-28. | [doc](domains/biology/hexa-weave/hexa-weave.md) |
-
-> Honest disclosure (raw 91 C3): TRANSCEND-CLOSURE-ALL universe-scale chain (Mk.X L4-L7 cosmological extension) rests on STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not a theorem chain. Domain workload ceiling is APPROACH grade, not ABSOLUTE.
+| 7 | APPROACH | v1 | **HEXA-WEAVE — write-side multi-strand molecular design composition** | n6 invariant write-side counterpart to AlphaFold 3 (DeepMind 2024-05 read-side) and IsoDDE (Isomorphic Labs 2026-02 closed). Direction: target multi-molecule context to strand-set (P up to 10^4, N up to 350 aa). Tri-axis Omega-saturation closure witness PASS at workload ceiling (FORMAL Pi^1_1-CA_0 / PHYSICAL Landauer / COMPUTATIONAL Pi^p_2). 7 of 8 raw 70 axes PASS, 1 DEFER (CHI2 n=1). 9 falsifiers across 3 measurable claims per raw 71. APPROACH grade per raw 69 — theoretical-analytical, not yet empirical. F-TP5-b 90-day MVP gate 2026-07-28. Cross-link: see also [HEXA-NANOBOT](#-frontier-discoveries-next-gen-rt-sc-tech) (molecular nano-agent peer) · [Synthetic Biology](#-tech--industry) (Cas/codon write-side peer) · [AI/ML](#-ai--ml) (AlphaFold 3 read-side counterpart). | [doc](domains/biology/hexa-weave/hexa-weave.md) |
 
 <!-- AUTO:FOOTER_biology:START -->
 > 도메인: [biology/hexa-weave/](docs/biology/hexa-weave/) · TRANSCEND-CLOSURE-ALL chain (L4-L7 cosmological extension) PASS-WITH-C3-CAVEATS — STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not theorem chain
@@ -488,7 +486,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 | 5 | ✅ | v1 | **Horticulture n=6 Plant Growth Architecture** | 15/15 EXACT (100%), photosynthesis n=6/floral organ τ=4/hormones sopfr=5/tissue system n/φ=3/mono/dicot φ=2/seasons τ=4 | [doc](domains/life/horticulture/horticulture.md) |
 | 10 | ✅ | v1 | **HEXA-SIM Universe Simulation** | 65/65 EXACT (100%), Planck exponent ladder 137=σ²-n-μ=1/α, Lloyd 10^{σ(σ-φ)}=10^120, GoL B(n/φ)/S{φ,n/φ}, dimension ladder τ→sopfr→n→σ-φ→σ-μ, Tsirelson φ√φ=2√2 | [doc](domains/physics/simulation-theory/simulation-theory.md) |
 | 10 | ✅ | v1 | **Cross-Domain Mega Bridge** | BT-366~369: τ=4(12domains)12/12, J₂=24(10domains)9/9, σ-φ=10(7domains)9/10, n/φ=3(8domains)10/10 | [doc](reports/breakthroughs/new-bt-dimensional-unfolding-2026-04-06.md) |
-| 10 | ✅ | 5680bc44 | **HEXA-NANOBOT Therapeutic Nanobot** | BT-404~413: 10 consecutive breakthroughs, 113/122 EXACT (92.6%) + 9 CLOSE(physical-limit documented), Mk.I~V evolution complete, 6platforms/thrust/EPR/pH/sensor/immune/half-life/comms/Energy/excretion, DSE 7776 combos, (sigma-phi)^2=100 nano hub, n=6 gateway(kidney 6nm), J2=24 energy-time convergence | [doc](domains/life/therapeutic-nanobot/therapeutic-nanobot.md) |
+| 10 | ✅ | 5680bc44 | **HEXA-NANOBOT Therapeutic Nanobot** | BT-404~413: 10 consecutive breakthroughs, 113/122 EXACT (92.6%) + 9 CLOSE(physical-limit documented), Mk.I~V evolution complete, 6platforms/thrust/EPR/pH/sensor/immune/half-life/comms/Energy/excretion, DSE 7776 combos, (sigma-phi)^2=100 nano hub, n=6 gateway(kidney 6nm), J2=24 energy-time convergence. Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — molecular design write-side peer). | [doc](domains/life/therapeutic-nanobot/therapeutic-nanobot.md) |
 
 <!-- AUTO:FOOTER_frontier:START -->
 > domains: [neuro/](docs/neuro/) · [gravity-wave/](docs/gravity-wave/) · [cloak/](docs/cloak/) · [earth-defense/](docs/earth-defense/) · [quantum-network/](docs/quantum-network/) · [hover/](docs/hover/) · [sc-memory/](docs/sc-memory/) · [seabed-grid/](docs/seabed-grid/) · [mini-accelerator/](docs/mini-accelerator/) · [weather-control/](docs/weather-control/) · [mind-upload/](docs/mind-upload/) · [telepathy/](docs/telepathy/) · [holography/](docs/holography/) · [dream-recorder/](docs/dream-recorder/) · [skyway/](docs/skyway/) · [tsunami-shield/](docs/tsunami-shield/) · [antimatter-factory/](docs/antimatter-factory/) · [cosmic-observatory/](docs/cosmic-observatory/) · [desalination/](docs/desalination/) · [quantum-oracle/](docs/quantum-oracle/) · [simulation-theory/](docs/simulation-theory/) · [therapeutic-nanobot/](docs/therapeutic-nanobot/)
@@ -551,7 +549,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Semiconductor Packaging n=6 stacking ladder** | 54/57 EXACT (94.7%), BT-354 complete ladder, HBM τ→σ-τ→σ→φ^τ stacking, bumps σ²+n→μ square ladder, UCIe 4-stage ladder | [doc](papers/n6-advanced-packaging-integrated-paper.md) |
-| 10 | ✅ | v2 | **Synthetic Biology n=6 double perfect** | BT-372: 16/16 EXACT — Cas{9,12,13} ladder, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, codon64=2^n | [doc](domains/life/synbio/synbio.md) |
+| 10 | ✅ | v2 | **Synthetic Biology n=6 double perfect** | BT-372: 16/16 EXACT — Cas{9,12,13} ladder, PAM 3bp=n/φ, gRNA 20nt=J₂-τ, codon64=2^n. Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — multi-strand molecular composition peer). | [doc](domains/life/synbio/synbio.md) |
 | 10 | ✅ | v2 | **AR/VR/XR Spatial Computing n=6 sensor** | BT-376: 16/16 EXACT — 6DOF=n, IPD64mm=2^n, 120Hz=σ(σ-φ), latencyh20ms=J₂-τ | [doc](domains/culture/ar-vr-xr/ar-vr-xr.md) |
 | 10 | ✅ | v2 | **Digital Twin n=6 Sync** | BT-379: 16/16 EXACT — Industry4.0=τ, ISA-95 5level=sopfr, OPC UA 12=σ, 6hsigma=n | [doc](domains/compute/digital-twin/digital-twin.md) |
 | 10 | ✅ | v2 | **Architecture/Structural n=6 Load Universality** | BT-377: 16/16 EXACT — Arch 6 styles=n, honeycomb truss=nangle, D6/D13(σ+μ)/D25(sopfr²)ladder, seismic6grades=n | [doc](domains/infra/construction-structural/construction-structural.md) |
@@ -809,6 +807,10 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 - **Post-hoc matching risk**: Static constant fitting may be confirmation bias
 - **Scale untested**: 1B+ parameter verification still pending
 - **Falsifiability**: z=0.74 (numerical matching alone not significant vs random)
+
+### HEXA-WEAVE TRANSCEND-CLOSURE-ALL with C3 caveats
+
+> Honest disclosure (raw 91 C3): TRANSCEND-CLOSURE-ALL universe-scale chain (Mk.X L4-L7 cosmological extension) rests on STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not a theorem chain. Domain workload ceiling is APPROACH grade, not ABSOLUTE.
 
 ## Citation
 

@@ -1,0 +1,131 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T18:30:00Z",
+  "title": "README FIX-3 — Biology section ↔ HEXA-NANOBOT / Synbio / AI bidirectional cross-link",
+  "task_label": "cycle 4 / fan-out 3/5 README FIX-3 (MID priority)",
+  "scope": "Biology section had zero cross-references (INC-5 from cycle 3 README curation) while all other 12 sections had cross-link pattern. Add 3 bidirectional cross-links between Biology HEXA-WEAVE row and (1) Frontier HEXA-NANOBOT, (2) Tech & Industry Synthetic Biology, (3) AI/ML Next-Gen 8-Paradigm Blowup (medical paradigm).",
+
+  "parent_witness": {
+    "cycle_3_finding": "INC-5: Biology section cross-link zero",
+    "fan_out_siblings": ["FIX-1 stray paragraph relocate (in_progress task #24)", "FIX-2", "FIX-3 (this)", "FIX-4", "FIX-5"]
+  },
+
+  "selection_rationale": {
+    "candidate_pool": ["HEXA-NANOBOT", "Synbio", "Frontier", "Materials", "AI"],
+    "selected": [
+      {
+        "section": "Frontier Discoveries",
+        "row": "HEXA-NANOBOT Therapeutic Nanobot (line 491)",
+        "naturalness": "NATURAL",
+        "rationale": "Both are molecular-scale designed agents under n6 invariants. HEXA-WEAVE designs multi-strand molecular composition; HEXA-NANOBOT is a therapeutic nano-machine operating at the same molecular scale (kidney 6nm gateway, (sigma-phi)^2=100 nano hub). Direct peer relationship — molecular design write-side."
+      },
+      {
+        "section": "Tech & Industry",
+        "row": "Synthetic Biology n=6 double perfect (line 554)",
+        "naturalness": "NATURAL",
+        "rationale": "Synbio has Cas{9,12,13}/PAM/gRNA/codon — these are write-side molecular biology primitives at the genome encoding layer. HEXA-WEAVE is write-side at the protein/strand-set composition layer. Direct vertical pair: Synbio (DNA/RNA write-side) ↔ HEXA-WEAVE (protein-strand write-side)."
+      },
+      {
+        "section": "AI / ML",
+        "row": "Next-Gen AI 8-Paradigm Blowup → medical paradigm (line 182)",
+        "naturalness": "BORDERLINE-FORCED",
+        "rationale_honest": "AI section has no AlphaFold-class entry as a top-level row. The 'medical' paradigm token in the 8-paradigm row is the closest natural anchor since HEXA-WEAVE is explicitly described as 'write-side counterpart to AlphaFold 3 (DeepMind 2024-05 read-side) and IsoDDE (Isomorphic Labs 2026-02 closed)'. raw 91 C3 honest: this is the *least natural* of the 3 cross-links — the AI section catalog focuses on chip/efficiency techniques and does not currently host AlphaFold itself as a tracked product. The cross-link is justified because AlphaFold 3 is named verbatim in the HEXA-WEAVE description, but the AI side is forced (medical 8-paradigm hook is the only natural attachment surface)."
+      }
+    ],
+    "rejected_candidates": {
+      "Frontier_section_as_whole": "selected via HEXA-NANOBOT row instead — more specific anchor",
+      "Materials": "HEXA-WEAVE proteins are arguably 'biomaterials' but the materials section catalog is industrial (semiconductor / polymer / concrete) — no natural row attaches to molecular composition. Rejected as too forced.",
+      "Frontier_per_se": "covered via HEXA-NANOBOT row — section header anchor is too coarse"
+    }
+  },
+
+  "patch_pattern": {
+    "cross_link_format": "Cross-link: see also [TARGET](#section-anchor) (annotation).",
+    "anchor_convention": "GitHub markdown lowercase + emoji-prefix-dash + space-to-dash + ampersand-stripped + parens-stripped",
+    "anchors_used": [
+      "#-biology",
+      "#-ai--ml",
+      "#-frontier-discoveries-next-gen-rt-sc-tech",
+      "#-tech--industry"
+    ]
+  },
+
+  "edits": [
+    {
+      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "line": 375,
+      "section": "Biology — HEXA-WEAVE row",
+      "appended_to_core_cell": "Cross-link: see also [HEXA-NANOBOT](#-frontier-discoveries-next-gen-rt-sc-tech) (molecular nano-agent peer) · [Synthetic Biology](#-tech--industry) (Cas/codon write-side peer) · [AI/ML](#-ai--ml) (AlphaFold 3 read-side counterpart)."
+    },
+    {
+      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "line": 491,
+      "section": "Frontier — HEXA-NANOBOT row",
+      "appended_to_core_cell": "Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — molecular design write-side peer)."
+    },
+    {
+      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "line": 554,
+      "section": "Tech & Industry — Synthetic Biology row",
+      "appended_to_core_cell": "Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — multi-strand molecular composition peer)."
+    },
+    {
+      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "line": 182,
+      "section": "AI/ML — Next-Gen AI 8-Paradigm Blowup row",
+      "appended_to_core_cell": "Cross-link: medical paradigm — see also [HEXA-WEAVE](#-biology) (Biology — n6 write-side counterpart to AlphaFold 3 / IsoDDE read-side AI)."
+    }
+  ],
+
+  "verification": {
+    "sealed_hash_before": "sha256:6c6967f10663ba62ba624cadca66457362720787e47e8bf6e9cab1a33de9b509",
+    "sealed_hash_after": "sha256:e975d4e62f8fd0bb51536f4734496b7dd08014f3eb6ad94b1c600d49f14560df",
+    "sealed_update_command": "python3 tool/readme_sealed_check.py --update",
+    "lint_command": "python3 tool/own_doc_lint.py",
+    "lint_result": "PASS — total violations: 0 (HARD=0, SOFT=0); rules own#1..own#16 all OK",
+    "AUTO_marker_preservation": "VERIFIED — AUTO:SUMMARY_biology / AUTO:FOOTER_biology / AUTO:SUMMARY_ai / AUTO:FOOTER_ai / AUTO:SUMMARY_frontier / AUTO:FOOTER_frontier / AUTO:SUMMARY_tech-industry / AUTO:FOOTER_tech-industry markers untouched. Cross-links appended to Core column body of data rows only.",
+    "biology_schema_consistency": "VERIFIED — Biology section schema (single-row table | 🛸 | Closure | ver | Product | Core | Link |) preserved. Cross-link added to Core cell, not as new row/column.",
+    "other_12_section_invariance": "VERIFIED — only 3 other rows touched (HEXA-NANOBOT in Frontier, Synbio in Tech & Industry, 8-Paradigm in AI/ML). Other 9 sections (Fusion, Chip, Energy, Environment, Materials, Robotics, Physics, Software, Display, Audio, Safety, Play, Aerospace, etc.) untouched."
+  },
+
+  "honest_disclosure_raw_91_C3": {
+    "natural_cross_links": 2,
+    "borderline_forced_cross_links": 1,
+    "forced_cross_link_detail": "AI/ML ↔ HEXA-WEAVE link is forced. The AI/ML section catalog tracks chip/efficiency techniques, not biomedical AI products. HEXA-WEAVE references AlphaFold 3 (DeepMind) verbatim, but AlphaFold itself is not a tracked product in the AI/ML section table. The 'medical' token inside the 8-paradigm row is the only attachment surface — it is technically valid (HEXA-WEAVE addresses molecular medicine) but not a peer-row pairing the way HEXA-NANOBOT and Synbio are.",
+    "alternative_considered_and_rejected": "Could have skipped AI cross-link entirely and stopped at 2 cross-links — but task spec required 3 bidirectional cross-links. Could have routed to Materials section (proteins-as-biomaterials) but Materials section catalog is industrial polymer/ceramic only — equally forced. AI 8-paradigm 'medical' token chosen as the least-bad option per task constraint."
+  },
+
+  "falsifiers_raw_71": [
+    {
+      "id": "F-FIX3-1",
+      "predicate": "Within 7 days of this patch, a README curation pass reports that any of the 4 anchors (#-biology, #-ai--ml, #-frontier-discoveries-next-gen-rt-sc-tech, #-tech--industry) is broken or fails GitHub anchor resolution",
+      "detection": "Render README.md on GitHub and verify each anchor link navigates to the correct section heading; or run a markdown link checker (e.g. markdown-link-check) against the file",
+      "trip_action": "Re-derive anchor from heading using GitHub's actual slugify rules (account for emoji, double-space, special chars); patch all 4 backlinks if the convention differs from assumption",
+      "deadline": "2026-05-05T18:30:00Z"
+    },
+    {
+      "id": "F-FIX3-2",
+      "predicate": "AI/ML 8-paradigm cross-link to HEXA-WEAVE is flagged in next README curation as 'forced cross-link clutter' or 'medical paradigm not a peer of HEXA-WEAVE biology'",
+      "detection": "cycle 5+ README curation INC findings list; reviewer comment on PR; user explicit feedback",
+      "trip_action": "Demote to a less prominent placement (e.g. move to Footer line of AI section as soft pointer) OR remove and accept that Biology section has only 2 cross-links instead of 3 — honest C3 better than forced symmetry",
+      "deadline": "2026-05-12T18:30:00Z"
+    },
+    {
+      "id": "F-FIX3-3",
+      "predicate": "Cross-link addition causes Biology section schema drift detected by own_doc_lint or readme_sealed_check in next sweep (e.g. column count mismatch, table malformation, AUTO marker corruption)",
+      "detection": "python3 tool/own_doc_lint.py reports any new violation; or readme_sealed_check.py reports schema parse error; or any consumer parsing AUTO:SUMMARY_biology block fails",
+      "trip_action": "Revert the Core-cell cross-link inline format and migrate to a separate row OR a footer note; re-run sealed update + lint until 0 violations",
+      "deadline": "2026-04-29T18:30:00Z (immediate)"
+    }
+  ],
+
+  "deliverables": {
+    "files_modified": ["/Users/ghost/core/n6-architecture/README.md"],
+    "files_updated_by_tool": ["/Users/ghost/core/n6-architecture/README.md.sealed.hash"],
+    "cross_links_added": 4,
+    "cross_link_directions": "1 outgoing from Biology HEXA-WEAVE (3 targets in single cell) + 3 incoming back-links from HEXA-NANOBOT/Synbio/AI-8paradigm to Biology",
+    "bidirectional_pairs": 3,
+    "biology_section_cross_link_count_before": 0,
+    "biology_section_cross_link_count_after": 3
+  }
+}

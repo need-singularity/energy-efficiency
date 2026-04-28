@@ -1,0 +1,81 @@
+{
+  "schema": "omega_cycle_witness/v1",
+  "kick_id": "2026-04-28_falsifier-monitor-cron-cycle4",
+  "cycle": 4,
+  "fan_out_index": "1/5",
+  "task": "falsifier monitor launchd plist 등록 재시도",
+  "status": "completed_no_op",
+  "timestamp_utc": "2026-04-28T15:57:00Z",
+  "summary": "plist 이미 등록 완료 (cycle 3 sub-agent timeout 발생 전 또는 부분 성공). 추가 등록 작업 불필요. 검증만 수행.",
+  "evidence": {
+    "plist_path": "/Users/ghost/Library/LaunchAgents/dev.n6.falsifier-monitor.plist",
+    "plist_size_bytes": 916,
+    "plist_mtime": "2026-04-28T15:51:00",
+    "launchctl_print": {
+      "domain": "gui/501/dev.n6.falsifier-monitor",
+      "type": "LaunchAgent",
+      "state": "not running",
+      "active_count": 0,
+      "runs": 1,
+      "last_exit_code": 0,
+      "calendar_trigger": {"Hour": 9, "Minute": 57},
+      "RunAtLoad": false,
+      "working_directory": "/Users/ghost/core/n6-architecture",
+      "program": "/Users/ghost/.hx/bin/hexa",
+      "arguments": ["run", "/Users/ghost/core/n6-architecture/tool/falsifier_monitor.hexa", "--check"]
+    },
+    "stdout_log": "/tmp/falsifier_monitor_stdout.log (empty 2 bytes)",
+    "stderr_log": "/tmp/falsifier_monitor_stderr.log (2086 bytes — single execution Apr 28 15:53)"
+  },
+  "stderr_findings": {
+    "hexa_resolver_chain": [
+      "external (hetzner) → rsync rc=1 fail → fallthrough",
+      "external (hetzner) retry → rsync rc=1 fail → fallthrough",
+      "docker mac_safe_landing → image=hexa-runner:latest"
+    ],
+    "docker_error": "sh: /usr/bin/python3: not found (twice)",
+    "interpretation": "hexa runtime 자체는 정상 응답하지만 docker hexa-runner 이미지에 python3 부재 → falsifier_monitor.hexa 실제 selftest 미수행. exit_code=0 이지만 부분 실패. 이것이 cycle 3 sub-agent 1분+ hang 원인 추정 (hetzner rsync 시도 + docker 컨테이너 부팅 중 timeout)."
+  },
+  "cycle3_timeout_root_cause_hypothesis": {
+    "primary": "hexa-resolver 가 hetzner rsync 시도 (rc=1) → 실패 후 docker 폴백 → docker pull/exec 지연 → 1분+ 누적. sub-agent 의 launchctl bootstrap 호출은 즉시 성공했을 가능성. 그러나 후속 즉시 kickstart 가 hexa runtime 을 트리거하면서 위 체인을 발동시켜 hang 으로 보였을 것.",
+    "secondary": "B3 docker-hexa-runner-rebuild 작업이 아직 미완료 (python3 누락) 이 진짜 blocker. Falsifier monitor 자체는 plist 등록만으로 cycle 4 미션 충족."
+  },
+  "raw_13_sbpl_check": {
+    "ai_config_ban_lint_path": "not_found_in_repo",
+    "search_paths": ["/Users/ghost/core/n6-architecture/tool/", "tool/ai_config_ban*", "tool/*ban_lint*"],
+    "result": "ai_config_ban_lint 도구 파일이 repo 내 위치 미확인. ~/Library/LaunchAgents/ 쓰기는 SBPL 차단되지 않음 (실제 plist 작성 + launchctl bootstrap 둘 다 정상 수행됨이 raw 71 empirical witness).",
+    "honest_note": "sandbox profile 명시 점검은 미완. 그러나 행동 결과로 차단 부재 입증."
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "falsif-1",
+      "claim": "plist 가 24h 후에도 launchctl print 으로 보인다",
+      "check": "2026-04-29T15:57Z launchctl print gui/$(id -u)/dev.n6.falsifier-monitor → exit 0",
+      "owner": "next_daily_cycle"
+    },
+    {
+      "id": "falsif-2",
+      "claim": "다음 daily 09:57 (2026-04-29) 에 첫 자연 발화 발생, runs=2, last_exit_code=0",
+      "check": "2026-04-29T10:00Z launchctl print | grep -E 'runs|last exit'",
+      "owner": "monitoring_cycle"
+    },
+    {
+      "id": "falsif-3",
+      "claim": "B3 docker-hexa-runner-rebuild 완료 전까지는 python3 not found 가 stderr 에 재출현",
+      "check": "tail -30 /tmp/falsifier_monitor_stderr.log → python3 not found 패턴 0개일 것",
+      "owner": "post_b3_validation",
+      "fallback_required": "B3 미완료 시 SBPL fallback (host python3 직접 호출) 또는 plist ProgramArguments 수정 필요"
+    }
+  ],
+  "c3_honest": {
+    "raw_91_clauses": {
+      "kickstart_skip_reason": "사용자 절차 4번 명시 — cycle 3 timeout 원인 가능성 차단. 다음 daily 09:57 자연 발화로 검증.",
+      "sbpl_check_partial": "ai_config_ban_lint 파일 위치 미확인. 행동 결과(plist write 성공)로 우회 검증, 정식 lint 미수행."
+    }
+  },
+  "next_actions": [
+    "T+18h: 2026-04-29T09:57 자연 발화 모니터링 (launchctl print runs 카운트 +1 확인)",
+    "T+24h: stderr.log 에서 python3 not found 재현 시 B3 docker rebuild 차단 요인으로 escalate",
+    "선행 의존: B3 docker-hexa-runner-rebuild 우선 진행 권장"
+  ]
+}

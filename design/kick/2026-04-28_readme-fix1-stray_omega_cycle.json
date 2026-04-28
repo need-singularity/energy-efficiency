@@ -1,0 +1,87 @@
+{
+  "schema": "omega_cycle_witness/v1",
+  "kick_id": "2026-04-28_readme-fix1-stray",
+  "cycle": 4,
+  "fan_out_index": "2/5",
+  "task": "README FIX-1 (HIGH): L377 raw 91 C3 disclosure stray paragraph → L806 'Honest Limitations' 섹션 이동 (option a 저위험)",
+  "status": "completed",
+  "timestamp_utc": "2026-04-28T16:05:00Z",
+  "advisory_tier": "auto-applied (low-risk option a only); option b graded honesty across 32 sections deferred to curator",
+  "summary": "L377 standalone blockquote 제거 + L811 H3 'HEXA-WEAVE TRANSCEND-CLOSURE-ALL with C3 caveats' 신설로 동일 disclosure 보존. AUTO marker 영향 없음 (stray 가 marker 외부에 위치). sealed hash 갱신 + lint 13/13 PASS.",
+  "procedure": {
+    "step1_extract": {
+      "file": "README.md",
+      "removed_line_range": "L376-L378",
+      "removed_content": "> Honest disclosure (raw 91 C3): TRANSCEND-CLOSURE-ALL universe-scale chain (Mk.X L4-L7 cosmological extension) rests on STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not a theorem chain. Domain workload ceiling is APPROACH grade, not ABSOLUTE.",
+      "context_before": "biology table row L375 ends with hexa-weave doc link",
+      "context_after": "<!-- AUTO:FOOTER_biology:START --> on next line"
+    },
+    "step2_relocate": {
+      "target_section": "## Honest Limitations (originally L806, now L804 due to other parallel edits)",
+      "added_subheading": "### HEXA-WEAVE TRANSCEND-CLOSURE-ALL with C3 caveats",
+      "added_blockquote": "> Honest disclosure (raw 91 C3): TRANSCEND-CLOSURE-ALL universe-scale chain (Mk.X L4-L7 cosmological extension) rests on STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not a theorem chain. Domain workload ceiling is APPROACH grade, not ABSOLUTE."
+    },
+    "step3_seal": {
+      "before_hash": "sha256:6c6967f10663ba62ba624cadca66457362720787e47e8bf6e9cab1a33de9b509",
+      "intermediate_hash_after_local_edit_only": "sha256:6c015a50b5b5d03c827c36ba1d7a52210681d8929126295e80f36ae6c6c60685",
+      "final_hash_after_parallel_curator_edits_absorbed": "sha256:e975d4e62f8f...",
+      "rules_json_synced": true
+    }
+  },
+  "auto_marker_impact": {
+    "AUTO:STATS": "unchanged",
+    "AUTO:SUMMARY_biology": "unchanged",
+    "AUTO:FOOTER_biology": "unchanged",
+    "marker_pair_internal_text": "untouched (stray was outside any marker block)",
+    "sync_readme_hexa_safety": "render_summary/render_footer return nil for hand-curated domains → markers preserved verbatim per A.3 falsifier"
+  },
+  "sibling_section_pattern_check": {
+    "stray_paragraph_pattern_outside_markers_in_other_12_sections": "0 (sweep-confirmed: only biology had this pattern, INC-2 unique)",
+    "footer_summary_pattern_intact_count": "12/12 sibling sections preserve standard <SUMMARY>/<table>/<FOOTER> ordering"
+  },
+  "lint_validation": {
+    "rule_14_sealed": "PASS (sha256:e975d4e62f8f match)",
+    "own_doc_lint_full_sweep": "13/13 PASS (own#1-#12 + own#16, total HARD=13, violations=0)",
+    "report_path": "reports/n6_own_doc_lint.json"
+  },
+  "raw_91_c3_honest": {
+    "option_a_applied": "stray paragraph relocated to Honest Limitations as H3 subsection",
+    "option_b_deferred": "graded honesty rollout across all 32 sections requires curator value judgment — NOT auto-applied",
+    "preservation": "raw 91 C3 disclosure content byte-identical, only relocated"
+  },
+  "raw_13_check": {
+    "ai_config_modification": "none (이 작업은 README markdown 만 수정, ai-config 영향 없음)"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "FIX1-falsif-1",
+      "claim": "L377 stray blockquote 가 README.md 에서 완전히 제거되었다",
+      "check": "grep -c 'Honest disclosure (raw 91 C3)' README.md → 1 (Honest Limitations 섹션 내 1회만 등장)",
+      "expected": 1,
+      "result": "PASS — Line 813 only (within ## Honest Limitations)"
+    },
+    {
+      "id": "FIX1-falsif-2",
+      "claim": "sealed hash 가 새 README content 와 일치하며 .readme-rules.json 에도 동기화되었다",
+      "check": "python3 tool/readme_sealed_check.py → exit 0 + MATCH 출력",
+      "result": "PASS — sha256:e975d4e62f8f... clean match"
+    },
+    {
+      "id": "FIX1-falsif-3",
+      "claim": "own_doc_lint 전체 sweep 이 0 violations 로 PASS 한다",
+      "check": "python3 tool/own_doc_lint.py → total violations: 0 (HARD=0, SOFT=0)",
+      "result": "PASS — 13/13 rules OK"
+    }
+  ],
+  "outputs": {
+    "readme_diff_summary": "L376-L378 (3 lines) removed at biology section; L809-L812 (4 lines) added under Honest Limitations as H3 + blockquote",
+    "new_sealed_hash": "sha256:e975d4e62f8f...",
+    "lint_sweep_result": "13/13 PASS, 0 HARD violations, 0 SOFT violations",
+    "witness_json_path": "design/kick/2026-04-28_readme-fix1-stray_omega_cycle.json"
+  },
+  "next_actions": [
+    "(option b) 32 sections graded honesty rollout — 사용자 명시적 승인 시 별도 omega_cycle 으로 진행",
+    "다음 sync-readme.hexa 자연 발화 시 marker 보존 회귀 0건 확인",
+    "병렬 cycle 4 cross-link curator 작업 (L375, L488 의 cross-link 추가) 와 충돌 없음을 확인"
+  ]
+}

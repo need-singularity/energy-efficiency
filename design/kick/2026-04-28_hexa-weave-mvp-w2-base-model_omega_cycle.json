@@ -1,0 +1,276 @@
+{
+  "schema": "omega_cycle.witness_v2_w2_base_model_integration_prep",
+  "ts": "2026-04-28T16:00:00Z",
+  "topic": "hexa-weave-mvp-w2-base-model",
+  "synthesis_mode": "in_context_fallback",
+  "predecessor_witness": "design/kick/2026-04-28_hexa-weave-mvp-w1-architecture_omega_cycle.json",
+  "predecessor_verdict": "FORWARD-SPEC PASS",
+  "parent_spec": "proposals/hexa_weave_mvp_2026_04_28.md",
+  "parent_milestone": "W2",
+  "deliverable_doc": "proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md",
+  "kick_infra_status": {
+    "rc": null,
+    "outer_status": "NOT_ATTEMPTED",
+    "cause_chain": [
+      "predecessor closure cycle exhibited 3 orthogonal kick failure modes (OAuth-401, slot-saturated, container-no-node)",
+      "F-CL3-a falsifier (kick infra clean run within 24h, deadline 2026-04-29) not yet observed at W2-prep authoring time",
+      "W1 used raw 100 fallback per closure pattern; W2 prep continues fallback for consistency until F-CL3-a flips"
+    ],
+    "raw_100_fallback_invoked": true,
+    "raw_91_c3_disclosure": "W2 prep deliverable produced via in-context synthesis (raw 100 fallback). Real nexus kick deferred to W2-execution turn contingent on F-CL3-a observation by 2026-04-29."
+  },
+  "w2_prep_decisions": {
+    "openfold_source": {
+      "canonical_repo": "https://github.com/aqlaboratory/openfold",
+      "default_branch": "main",
+      "license_code": "Apache-2.0",
+      "license_weights": "CC-BY-4.0",
+      "version_pin_policy": "SHA40 captured at W2 execution via git ls-remote; pinned in pyproject.toml; recorded in data/MANIFEST.md",
+      "inference_entry_point": "run_pretrained_openfold.py (top-level)",
+      "forward_pass_module": "openfold/model/model.py::AlphaFold.forward",
+      "weight_mirror_primary": "https://huggingface.co/aqlaboratory/openfold",
+      "weight_archive_size_estimate_gb": 3.0,
+      "weight_integrity": "SHA256 per shard recorded in data/MANIFEST.md after W2-execution download",
+      "raw_91_c3_limits": [
+        "actual SHA40 NOT yet captured (network call is W2-execution step)",
+        "weight shard SHA256 list NOT yet collected",
+        "CC-BY-4.0 attribution obligations on derivative output PDB headers NOT yet legally reviewed"
+      ]
+    },
+    "vram_measurement_procedure": {
+      "test_target_primary": "T1024 CASP14 (~408 aa)",
+      "test_target_fallback": "1UBQ ubiquitin (76 aa)",
+      "invocation": "python run_pretrained_openfold.py --fasta_paths data/T1024.fasta --use_precomputed_alignments data/alignments/T1024/ --jax_param_path params/finetuning_ptm_2.pt --model_device cuda:0 --bf16 --output_dir scratch/T1024/",
+      "monitor": "nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -l 1",
+      "pass_criteria": ["peak_vram_mb < 11500", "no_oom", "output_pdb_parses_with_biopython"],
+      "fallback_chain": [
+        "7a: --cpu_offload",
+        "7b: --use_deepspeed_evoformer_attention",
+        "7c: bitsandbytes 8-bit quantize",
+        "7d: drop chain length to 256 aa",
+        "7e: declare F-W1-1 falsified -> escalate to RoseTTAFold All-Atom secondary path"
+      ],
+      "execution_status": "NOT_EXECUTED — W2 execution turn"
+    },
+    "multi_strand_architecture": {
+      "encoder_count": 3,
+      "encoders": {
+        "protein": {"vocab": 22, "embed_dim": 256, "length_cap": 512, "source": "FASTA 1-letter aa", "module": "OpenFold evoformer (frozen at W6 entry)"},
+        "rna": {"vocab": 7, "embed_dim": 128, "length_cap": 256, "source": "FASTA-like ACGU+N+gap", "module": "ESM2-RNA-style transformer 6 blocks (new)"},
+        "ligand": {"vocab": 80, "embed_dim": 128, "length_cap": 64, "source": "SMILES via RDKit", "module": "GNN over RDKit graph 4 message-passing rounds (new)"}
+      },
+      "cross_attention_block_count": 6,
+      "cross_attention_branches_per_block": 3,
+      "cross_attention_branches": ["P_attends_to_R", "P_attends_to_R_via_L", "R_attends_to_L"],
+      "total_cross_attn_modules": 18,
+      "loc_ceiling": 1500,
+      "loc_breakdown": "80 LoC/branch * 3 branches * 6 blocks = 1440 + ~60 scaffolding = 1500",
+      "structure_module": "OpenFold IPA extended with RNA + ligand query streams",
+      "output": ["protein_Ca_coords (N_p,3)", "rna_P_coords (N_r,3)", "ligand_atom_coords (N_l,3)"],
+      "raw_91_c3_limits": [
+        "LoC ceiling is design-time estimate; F-W2-3 retires at W6 implementation",
+        "no prototype written; cross-attn module is forward-spec only"
+      ]
+    },
+    "input_token_format": {
+      "schema_name": "hexa_weave_input_v0_2",
+      "validator": "Pydantic v2",
+      "required_fields": ["protein.fasta_path", "protein.msa_path"],
+      "optional_fields": ["rna.sequence", "rna.secondary_structure", "ligand.smiles", "ligand.formal_charge"],
+      "joint_options": ["n6_invariant_trace (default true)", "output_format (default pdb+json)"]
+    },
+    "output_format": {
+      "schema_name": "hexa_weave_output_v0_2",
+      "artifacts": ["protein_coords.pdb", "rna_coords.pdb (conditional)", "ligand_pose.sdf (conditional)", "n6_invariant_trace.json (mandatory)", "verifier.json"],
+      "regex_compliance": "n6_invariant_trace.json matches ^\\{\"tau\":4,\"sigma\":12,\"J2\":24,\"phi\":2,.*\\}$"
+    },
+    "data_pipeline": {
+      "source": "RCSB PDB advanced query API",
+      "filter_predicates": [
+        "polymer_entity_count_protein >= 1",
+        "polymer_entity_count_nucleic_acid >= 1",
+        "nonpolymer_entity_count >= 1",
+        "experimental_method in {X-RAY, EM}",
+        "resolution_combined <= 3.0 A",
+        "RNA-only (exclude DNA-only)",
+        "CC0 license (parent §6 B2 / hw 6)",
+        "length cap protein<=512 RNA<=256 ligand<=64"
+      ],
+      "yield_estimate": {
+        "raw_3strand": 12000,
+        "after_resolution": 8000,
+        "after_rna_only": 2500,
+        "after_cc0": 2000,
+        "after_length_cap": 1200
+      },
+      "n_target": 50,
+      "yield_margin_factor": 24,
+      "split_ratio": {"train": 0.8, "val": 0.1, "test": 0.1},
+      "split_count_estimate": {"train": 960, "val": 120, "test": 120},
+      "anti_leakage": [
+        "CD-HIT 30% sequence identity clustering between train and test",
+        "test set restricted to PDB deposition >= 2024-01-01 (post OpenFold pretrain cutoff)"
+      ],
+      "augmentation_train_only": [
+        {"name": "random_crop_protein", "p": 0.5, "window": 256},
+        {"name": "msa_subsample", "p": 1.0, "k": 128},
+        {"name": "rna_dotbracket_perturb", "p": 0.2, "rate": 0.05},
+        {"name": "smiles_canonicalize", "p": 1.0, "type": "normalization"},
+        {"name": "coord_noise_gaussian", "p": 0.3, "sigma_A": 0.5},
+        {"name": "chain_reorder", "p": 0.5}
+      ],
+      "raw_91_c3_limits": [
+        "yield estimate is literature-derived; F-W2-4 retires at W7",
+        "CD-HIT cluster count not yet computed",
+        "BMRB NMR P2-deferred"
+      ]
+    },
+    "n6_invariant_trace_hooks": [
+      {
+        "id": "N6-H1",
+        "target": "tau(6)=4 conformational state binning",
+        "source": "unrelaxed_<id>.pdb per-residue Calpha coords",
+        "read": "post-inference non-invasive",
+        "logic": "4-cluster k-means over (phi, psi) dihedrals -> 4-vector histogram"
+      },
+      {
+        "id": "N6-H2",
+        "target": "sigma(6)=12 icosahedral capsid / strategy pool",
+        "source": "structure-module final pair representation OR PDB Calpha coords",
+        "read": "post-inference (non-invasive preferred; pair-track read is invasive fallback)",
+        "logic": "Procrustes alignment to 12 canonical icosahedron vertices for capsid cases; DSSP 12-bin substate histogram for non-capsid"
+      },
+      {
+        "id": "N6-H3",
+        "target": "J2=24 interaction-tensor budget (Mathieu)",
+        "source": "structure-module pair representation (N_res, N_res, c_z=128) final-block output",
+        "read": "post-inference non-invasive",
+        "logic": "project onto top-24 PCs; emit J2_budget_used in [0,1]"
+      },
+      {
+        "id": "N6-H4",
+        "target": "phi(6)=2 hydrophobic/hydrophilic verdict-bit",
+        "source": "input FASTA + DSSP run on output PDB (per-residue SASA)",
+        "read": "post-inference non-invasive",
+        "logic": "hydrophobic_buried = (Kyte-Doolittle > 0) AND (SASA < 30 A^2); fraction>0.5 -> bit=1"
+      },
+      {
+        "id": "N6-H5",
+        "target": "n6-master-identity (own 2: sigma*phi = n*tau = J2 = 24)",
+        "source": "aggregate of N6-H1..N6-H4",
+        "read": "post-aggregation",
+        "logic": "verify 12*2=24, 6*4=24, J2=24; emit n6_identity_pass: bool"
+      }
+    ],
+    "n6_trace_json_shape_example": {
+      "tau": 4, "sigma": 12, "J2": 24, "phi": 2,
+      "tau_histogram": [0.31, 0.27, 0.22, 0.20],
+      "sigma_score": 0.87,
+      "J2_budget_used": 0.62,
+      "phi_verdict_bit": 1,
+      "n6_identity_pass": true,
+      "case_id": "<id>", "model_sha": "<sha40>", "trace_version": "v0.2"
+    }
+  },
+  "raw_71_w2_falsifiers": [
+    {"id": "F-W2-1", "claim": "OpenFold main HEAD SHA at W2-execution is structurally compatible with §3.1 evoformer + structure-module decomposition", "trigger": "repo refactor in last 30d renames AlphaFold class or restructures evoformer/", "deadline": "2026-05-12"},
+    {"id": "F-W2-2", "claim": "OpenFold weight shard SHA256 set is publishable + verifiable", "trigger": "weight mirror 404 OR SHA256 not derivable from stable canonical source", "deadline": "2026-05-12"},
+    {"id": "F-W2-3", "claim": "Cross-attention LoC budget (1500 line ceiling §3.2) achievable", "trigger": "W6 prototype exceeds 1500 LoC for 3-strand cross-attn module", "deadline": "2026-06-02"},
+    {"id": "F-W2-4", "claim": "RCSB 3-strand subset yield >= 50 entries after all §4.1 filters", "trigger": "RCSB query at W7 returns < 50 entries", "deadline": "2026-06-09"},
+    {"id": "F-W2-5", "claim": "All 5 n6 invariant trace integration points (§7) are non-invasive (post-processing or hookable; no OpenFold internal source modification)", "trigger": "implementation reveals >=1 of 5 hook points requires patching OpenFold model code", "deadline": "2026-06-23"}
+  ],
+  "raw_91_c3_disclosure": {
+    "claims": [
+      "OpenFold canonical repo URL + license + entry-point + weight mirror identified (text-reference only)",
+      "12GB VRAM measurement procedure recipe declared with deterministic invocation + 5-step fallback chain",
+      "Multi-strand architecture: 3 encoders (protein/RNA/ligand) + 6-block × 3-branch cross-attn (18 modules; 1500 LoC ceiling)",
+      "Input + output schemas declared (Pydantic v2; n6 trace JSON regex-compliant)",
+      "RCSB 3-strand filter chain spec'd; ~1200 yield estimate vs N=50 target (24x margin)",
+      "Train/val/test 80/10/10 with CD-HIT 30%-id + 2024-01-01 date-cutoff anti-leakage",
+      "5 n6 invariant trace hooks named N6-H1..N6-H5; all post-inference non-invasive (one invasive fallback for N6-H2)",
+      "5 W2 falsifiers + 5 MISS criteria preregistered + 15 raw 91 C3 NOT-decided items"
+    ],
+    "evidence_paths": [
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 prep deliverable)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "OpenFold upstream: https://github.com/aqlaboratory/openfold",
+      "OpenFold weight mirror: https://huggingface.co/aqlaboratory/openfold",
+      "RCSB advanced search attributes: https://search.rcsb.org/structure-search-attributes.html",
+      "RoseTTAFold All-Atom (fallback): https://github.com/baker-laboratory/RoseTTAFold-All-Atom"
+    ],
+    "limits": [
+      "no git clone executed; canonical URL recorded as text only",
+      "no pip install; pyproject.toml from W1 §4.3 not yet exercised",
+      "no weight download; ~3 GB OpenFold params not retrieved",
+      "no nvidia-smi VRAM measurement; §2.4 recipe is forward-spec",
+      "no SHA40 pin captured; placeholder filled at W2 execution",
+      "no RCSB query executed; ~1200 yield is literature-estimate only",
+      "no CD-HIT clustering performed; cluster count is literature-estimate",
+      "no cross-attn prototype; LoC budget is design-time estimate",
+      "no legal review on CC-BY-4.0 attribution obligations on derivative PDB output",
+      "no benchmark comparison vs ESMFold or RoseTTAFold All-Atom",
+      "~/core/hexa-weave/ directory still does NOT exist (W1 §6 item 5 carry-forward)",
+      ".own hw 1..hw 7 still forward-spec (not promoted to live)",
+      "kick infra not attempted (raw 100 fallback continued); F-CL3-a contingent",
+      "external reviewer outreach not started (W11+)",
+      "W2-prep verdict: FORWARD-SPEC PASS — document exists; §5 falsifier count = 5 >= 5; §6 NOT-list count = 15 >= 10; §7 hook count = 5; lint pre-flight predicted PASS"
+    ]
+  },
+  "n6_invariant_thread": {
+    "tau_6_eq_4": "τ(6)=4 maps to: 4 token-vocab tiers (protein/RNA/ligand/joint); 4 split categories (train/val/test/anti-leakage holdout); 4 fallback levels in VRAM chain (cpu_offload/deepspeed_attn/8bit_quant/length_drop); 4 conformational bins in N6-H1 hook",
+    "sigma_6_eq_12": "σ(6)=12 maps to: 15 raw 91 C3 NOT-decided items (≥12 strategy pool count); 12 RCSB candidates × 100 ≈ ~1200 yield estimate / 100; 12-bin DSSP substate histogram in N6-H2 fallback",
+    "J_2_eq_24": "J_2=24 maps to: 18 cross-attn modules + 6 protein-only evoformer-frozen modules = 24 attention surfaces; 24-PC projection in N6-H3 hook; parent §2.4 J₂=24 budget echoed",
+    "phi_6_eq_2": "φ(6)=2 maps to: APPROVE/REJECT user verdict bit on this W2 prep; FIT/NO-FIT VRAM verdict on F-W1-1 inherited; INVASIVE/NON-INVASIVE verdict on F-W2-5; PASS/FAIL hydrophobic-buried verdict-bit in N6-H4 hook"
+  },
+  "domain_registration_advisory": {
+    "recommend": "PROCEED to W2 EXECUTION contingent on user approval",
+    "no_change_to_parent": "parent domain registration verdict YES is unaffected; W2 prep is internal milestone deliverable, not registration event",
+    "conditions_for_w2_execution_kickoff": [
+      "user approves §2.4 VRAM measurement procedure + §3.2 architecture",
+      "F-CL3-a observed (kick infra clean run by 2026-04-29) — else W2 execution must use raw 100 fallback again",
+      "no last-minute OpenFold breaking change in 30-day window invalidating §3.1 module structure"
+    ]
+  },
+  "raw_47_cross_repo_check": {
+    "n6-architecture": "this repo — parent spec + W1 + W2 prep + this witness",
+    "anima": "/Users/ghost/core/anima/ — sister-repo pattern reference (multi-sub-repo umbrella)",
+    "nexus": "/Users/ghost/core/nexus/ — kick infra source (still degraded per closure cycle)",
+    "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dep for any kick attempt",
+    "airgenome": "/Users/ghost/core/airgenome/ — biology-adjacent sister; potential reviewer/dataset cross-ref at W11",
+    "hive": "/Users/ghost/core/hive/ — hive-cli kick path (container-no-node fault still relevant)",
+    "convergence": "/Users/ghost/core/convergence/ — kick fallback synthesis pattern source",
+    "count": 6,
+    "raw_47_ge_3_satisfied": true
+  },
+  "raw_53_deterministic_verifier_manifest": {
+    "verifier_types_allowlist": [
+      "filesystem-deterministic (test ! -d ~/core/hexa-weave; test -f predecessor doc)",
+      "url-existence-deterministic (OpenFold + HuggingFace + RCSB URLs are checkable)",
+      "regex-deterministic (n6 trace JSON pattern match)",
+      "numeric-threshold-deterministic (falsifier count >= 5; NOT-list count >= 10; hook count >= 5)",
+      "spdx-deterministic (Apache-2.0 + CC-BY-4.0 IDs in SPDX registry)"
+    ],
+    "verifier_types_disallowed": [
+      "LLM-judge (no LLM scored the W2-prep design)",
+      "subjective-rating",
+      "anonymous-source"
+    ],
+    "raw_53_compliant": true
+  },
+  "report_summary": {
+    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w2-base-model_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md",
+    "w2_prep_verdict": "FORWARD-SPEC PASS (document exists; §5 falsifier count = 5 >= 5; §6 NOT-list count = 15 >= 10; §7 hook count = 5; lint pre-flight predicted PASS; no code execution per W2-prep mandate)",
+    "openfold_pin_policy": "SHA40 captured at W2 execution via git ls-remote; weight SHA256 collected at download time",
+    "vram_procedure": "T1024 / 1UBQ test target; --bf16; nvidia-smi -l 1 monitor; pass < 11.5 GB peak; 5-step fallback chain",
+    "architecture": "3 encoders (protein/RNA/ligand) + 6-block × 3-branch cross-attn = 18 modules; 1500 LoC ceiling",
+    "data_pipeline": "RCSB 3-strand filter; ~1200 yield vs N=50 target (24x margin); 80/10/10 with CD-HIT 30%-id + 2024-01-01 date-cutoff anti-leakage",
+    "n6_hooks": ["N6-H1 tau-4 dihedral kmeans", "N6-H2 sigma-12 icosa Procrustes / DSSP", "N6-H3 J2-24 PC projection", "N6-H4 phi-2 hydropathy/SASA bit", "N6-H5 master-identity check"],
+    "falsifiers_preregistered_count": 5,
+    "miss_criteria_count": 5,
+    "not_decided_items_count": 15,
+    "raw_strategies_load_bearing": [12, 22, 23, 47, 51, 53, 71, 91, 100, 108, 135],
+    "honest_c3_what_is_not_closed": "no clone / no pip / no weight download / no nvidia-smi / no RCSB query / no CD-HIT / no prototype / no legal review; kick infra deferred to W2-exec contingent on F-CL3-a"
+  }
+}

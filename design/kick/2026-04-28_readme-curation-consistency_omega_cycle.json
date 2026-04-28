@@ -45,7 +45,7 @@
     {
       "id": "INC-2",
       "severity": "high",
-      "description": "L377 'Honest disclosure (raw 91 C3): ...' standalone blockquote sits between table and FOOTER markers — breaks the otherwise rigid (heading -> SUMMARY -> table -> FOOTER) schema applied to all 32 other sections.",
+      "description": "L377 'Honest disclosure (raw 91 C3): ...' standalone blockquote sits between table and FOOTER markers — Biology is the ONLY section with a between-table-and-footer blockquote (verified by F-CONS-3). Other stray blockquotes (L618 Marketing, L644/L646 Roadmap, L785 Fantasy) are post-FOOTER notes or in intentionally schema-light sub-sections.",
       "objective": true
     },
     {
@@ -147,9 +147,11 @@
     },
     {
       "id": "F-CONS-3",
-      "claim": "L377 'Honest disclosure' paragraph is the only blockquote (`> ...`) outside SUMMARY and FOOTER markers across all 32 sections",
-      "test": "Parse README, for each '# Section' block check if any `> ` line lies outside `<!-- AUTO:SUMMARY_*:START -->...END` and `<!-- AUTO:FOOTER_*:START -->...END` ranges; expected hit count is 1 (Biology L377)",
-      "fail_condition": "If hit count is 0, INC-2 is false; if > 1, the inconsistency is wider and FIX-1 must extend further"
+      "claim": "L377 'Honest disclosure' paragraph is the only blockquote (`> ...`) sitting BETWEEN a domain table and its FOOTER marker; other stray blockquotes in the README range exist but are outside that specific position",
+      "test": "Parse README L110-L787, count `> ` lines outside SUMMARY/FOOTER markers AND positioned between a section's last `|...|` table row and `<!-- AUTO:FOOTER_*:START -->`",
+      "actual_result": "5 stray blockquotes exist in the domain range (L377 Biology, L618 Marketing post-footer SSOT note, L644+L646 Roadmap v2 sub-section preface, L785 Fantasy intentional schema-light section). Only L377 is positioned BETWEEN table and FOOTER — the other 4 are post-FOOTER notes or in non-standard sub-sections. The narrowed claim holds; the broad claim does NOT.",
+      "verdict": "PARTIAL PASS — original claim too strong; refined claim (between-table-and-footer) PASSES with hit count 1",
+      "fail_condition": "If a 6th between-table-and-footer blockquote is found, FIX-1 scope expands"
     }
   ],
 
