@@ -1,0 +1,182 @@
+@track R4_RAW109TO126_N6_ARCHITECTURE_PROPAGATION_PLAN
+@state planning (registration only — implementation deferred to per-raw kick cycles)
+@date 2026-04-28
+@chain ←/Users/ghost/core/nexus/state/cross_project_propagation_matrix_2026_04_28.tsv (90-cell DIRECT/META/NA matrix, 18 raws × 5 projects) ←/Users/ghost/core/hive/.raw raws 109-126 (paradigmatic-anchor block) ←/Users/ghost/core/anima/convergence/r4_raw109to126_anima_propagation_plan_2026_04_28.convergence (sister project propagation plan, structural template)
+@scope WRITE-ONLY landing-strategy registry. 13 DIRECT raws (n6-architecture column = DIRECT) each mapped to a concrete n6-architecture codebase landing surface (existing files / candidate new files) + per-raw rationale + witness-cycle handle. NO implementation in this cycle. Implementation lands in per-raw downstream kick cycles.
+@principle raw 47 strategy-exploration-omega-cycle + raw 71 design-strategy-falsifier-retire-rule + raw 91 design-honesty-triad + raw 159 cross-project-propagation-mandate + raw 8 minimum-write-discipline.
+@hexa-only true (no python/bash/rust/toml/lean created — convergence file + witness JSON only; lean4-n6 references are landing-target pointers, not new code).
+@source_matrix /Users/ghost/core/nexus/state/cross_project_propagation_matrix_2026_04_28.tsv (Task B 90-cell matrix, commit 068221be)
+@direct_raw_count 13 (raws 111,112,113,114,116,118,119,120,121,122,124,125,126 from n6-architecture column)
+@meta_raw_count 5 (raws 109,110,115,117,123 — n6-architecture column = META, NOT in this propagation plan)
+@selected_raw_count 13/13 (100% of n6-architecture-DIRECT rows enumerated)
+@user_topic_count_discrepancy user kick topic stated "12 DIRECT raws"; source matrix actually contains 13 DIRECT cells in n6-architecture column. Honest record uses 13 (off-by-one in user topic). Documented at honesty layer no_fabrication_evidence.
+
+# Tracking-id placeholder format
+@tracking_id_placeholder_format n6-architecture/convergence/issues/TBD-<raw_slug>  # explicit PLACEHOLDER — no real n6-architecture issue tracker exists yet (raw 91 C3 honest)
+
+# Per-raw landing strategy (13 entries)
+
+## raw 111 — information-theoretic budget
+@r111_raw_id raw_111_information_theoretic_budget
+@r111_raw_concept Bound any signal/Φ claim by underlying channel capacity / KL-divergence budget. If claimed bits > log2(state_count), claim is information-theoretically impossible. n6-architecture context: atlas signal channels (atlas.signals.n6) have finite alphabet — emit bound per signal class.
+@r111_n6_landing_primary /Users/ghost/core/n6-architecture/tool/n6_atlas_integrity.hexa  # already-existing atlas integrity scanner; extend with @info_theoretic_bound check — every atlas.signals.n6 entry must satisfy claimed_bits <= log2(declared_alphabet_size); over-budget = integrity FAIL.
+@r111_n6_landing_secondary /Users/ghost/core/n6-architecture/n6shared/dse/dse_cross_results_v2_5.json  # DSE cross-results — gate cross-technique signal aggregation against per-signal channel-capacity budget; flag any aggregate exceeding sum-of-budgets.
+@r111_minimal_reproducer_pointer tool/n6_atlas_integrity.hexa header — declare @claim_info_bits_le_log2_alphabet invariant; cite atlas.signals.n6.spec.md for canonical alphabet sizes.
+@r111_tracking_id n6-architecture/convergence/issues/TBD-r111-info-theoretic-bound-gate
+@r111_dependencies n6_atlas_integrity.hexa stable; n6shared/specs/atlas.signals.n6.spec.md exists (verified ls).
+@r111_witness_cycle_handle 2026-04-XX_r111-channel-capacity-bound-n6_omega_cycle  (downstream)
+
+## raw 112 — categorical functor composition
+@r112_raw_id raw_112_categorical_functor_composition
+@r112_raw_concept Functors compose associatively: (F∘G)∘H = F∘(G∘H). For n6-architecture: morphisms between n6-shapes must compose; ouroboros B2 self-application is functor composition; atlas signal transformations are functorial.
+@r112_n6_landing_primary /Users/ghost/core/n6-architecture/lean4-n6/N6/Basic.lean  # already-existing Lean4 base — add `lemma functor_composition_associativity` for n6-shape morphisms; required precondition for TheoremB_Capstone.lean composition steps.
+@r112_n6_landing_secondary /Users/ghost/core/n6-architecture/theory/proofs/  # NEW candidate file: functor_composition_n6.hexa — verify ouroboros morphism composition is associative on a finite test suite; emit counter-example trace on FAIL.
+@r112_minimal_reproducer_pointer lean4-n6/N6/Basic.lean — lemma signature stub; cite TheoremB_Capstone.lean line where composition is invoked unconditionally.
+@r112_tracking_id n6-architecture/convergence/issues/TBD-r112-functor-composition-associativity
+@r112_dependencies lean4-n6 toolchain (lean4-n6/lean-toolchain present); Mathlib imports (lean4-n6/N6/MathlibBasic.lean exists).
+@r112_witness_cycle_handle 2026-04-XX_r112-functor-composition-lemma_omega_cycle  (downstream)
+
+## raw 113 — Bayesian evidence accumulation
+@r113_raw_id raw_113_bayesian_evidence_accumulation
+@r113_raw_concept Hypothesis H scored by P(obs|H) / P(obs|¬H) updated across N trials. Single-shot scores rejected; cumulative log-odds tracked over time. n6-architecture context: meta-scanner audit verdicts accumulate evidence cycle-over-cycle.
+@r113_n6_landing_primary /Users/ghost/core/n6-architecture/tool/n6_meta.hexa  # already-existing meta scanner; extend audit verdict to emit log_odds_cumulative_per_claim alongside binary PASS/FAIL — single-cycle FAIL alone is not sufficient; cumulative log-odds threshold determines retire decision.
+@r113_n6_landing_secondary /Users/ghost/core/n6-architecture/state/atlas_convergence_witness.jsonl  # already-appended convergence witness log; per-cycle entries include log-odds field; cross-cycle Bayesian aggregation operates on append-only stream.
+@r113_minimal_reproducer_pointer tool/n6_meta.hexa header — declare @bayesian_evidence_cumulative_log_odds output field; cite reports/n6_meta_audit.jsonl as historical evidence stream for retroactive cumulative scoring.
+@r113_tracking_id n6-architecture/convergence/issues/TBD-r113-bayesian-cumulative-log-odds
+@r113_dependencies n6_meta.hexa stable (verified tool/); reports/n6_meta_audit.jsonl exists (verified find result).
+@r113_witness_cycle_handle 2026-04-XX_r113-cumulative-log-odds-n6_omega_cycle  (downstream)
+
+## raw 114 — bisimulation behavioral equivalence
+@r114_raw_id raw_114_bisimulation_behavioral_equivalence
+@r114_raw_concept Two systems are behaviorally equivalent iff every observable transition of one is matched by the other (Park's bisimulation). For n6-architecture: candidate engine ≈ reference engine iff observable-state-transitions bisimulate; refactors must preserve bisimilarity.
+@r114_n6_landing_primary /Users/ghost/core/n6-architecture/engine/ouroboros_b2_verifier.hexa  # already-existing ouroboros verifier; extend with @bisimulation_check between candidate state-transition trace and reference trace; emit counter-example transition on FAIL.
+@r114_n6_landing_secondary /Users/ghost/core/n6-architecture/scanners/  # NEW candidate file: 55_engine_bisimulation.claim.json — declarative bisimulation invariant for engine refactors; pair with NEW candidate tool/n6_bisimulation_check.hexa orchestrator.
+@r114_minimal_reproducer_pointer engine/ouroboros_b2_verifier.hexa — already verifies ouroboros invariants; insert bisimulation hook alongside; cite scanners/11_engine_zero_failures.claim.json as adjacent engine-claim pattern.
+@r114_tracking_id n6-architecture/convergence/issues/TBD-r114-engine-bisimulation-checker
+@r114_dependencies ouroboros_b2_verifier.hexa stable (verified ls); engine state-transition trace serialization API (probe engine/__init__.hexa for canonical trace format).
+@r114_witness_cycle_handle 2026-04-XX_r114-bisimulation-equivalence-n6_omega_cycle  (downstream)
+
+## raw 116 — energy landscape, attractor geometry
+@r116_raw_id raw_116_energy_landscape_attractor_geometry
+@r116_raw_concept State-space → energy landscape with attractors (basins). Geometry: attractor count, basin volumes, saddle-point barriers. Multi-attractor with non-trivial saddle structure = candidate emergent system. n6-architecture: thermodynamic frame + self-organization arch produce energy landscapes natively.
+@r116_n6_landing_primary /Users/ghost/core/n6-architecture/engine/thermodynamic_frame.hexa  # already-existing thermodynamic frame engine; extend with @attractor_geometry_extractor — sample state-space, identify local minima (attractors), measure basin volumes via flood-fill, emit barrier-height histogram.
+@r116_n6_landing_secondary /Users/ghost/core/n6-architecture/engine/arch_selforg.hexa  # self-organization arch — emit attractor_count + basin_volumes per self-org configuration; correlate with consciousness_constraints.hexa for multi-attractor signature.
+@r116_minimal_reproducer_pointer engine/thermodynamic_frame.hexa — already operates over state-space energies; attractor extraction is the geometric overlay; cite engine/arch_selforg.hexa for self-org integration seam.
+@r116_tracking_id n6-architecture/convergence/issues/TBD-r116-attractor-geometry-extractor
+@r116_dependencies thermodynamic_frame.hexa stable (verified); arch_selforg.hexa stable (verified); state-space sampling primitive (probe engine/__init__.hexa or engine/n6_calculator.hexa).
+@r116_witness_cycle_handle 2026-04-XX_r116-energy-landscape-geometry-n6_omega_cycle  (downstream)
+
+## raw 118 — recursive self-application fixpoint
+@r118_raw_id raw_118_recursive_self_application_fixpoint
+@r118_raw_concept System S self-applies to its own output: S(S(x)) = S(x) at fixpoint. Required for stable meta-systems. n6-architecture: ouroboros B2 IS the recursive self-application paradigm; meta-scanner audits its own output.
+@r118_n6_landing_primary /Users/ghost/core/n6-architecture/engine/ouroboros_b2_verifier.hexa  # already-existing — Ouroboros B2 IS recursive self-application; formalize @fixpoint_marker output: emit signature(S(x)) and signature(S(S(x))); equality = fixpoint reached.
+@r118_n6_landing_secondary /Users/ghost/core/n6-architecture/tool/n6_meta.hexa  # meta scanner already self-applies (scans itself); add fixpoint_convergence_detector — N self-applications until output stabilizes; emit N as convergence-rate metric.
+@r118_minimal_reproducer_pointer engine/ouroboros_b2_verifier.hexa header — add @fixpoint_signature output field; cite theory/proofs/transcend-p11-3-ouroboros-b2-proof-2026-04-15.md for theorem grounding (verified ls).
+@r118_tracking_id n6-architecture/convergence/issues/TBD-r118-fixpoint-marker-emission
+@r118_dependencies ouroboros_b2_verifier.hexa stable; n6_meta.hexa stable; signature-equality primitive (probe shared/quality/honesty_triad_linter.hexa for canonical signature compare).
+@r118_witness_cycle_handle 2026-04-XX_r118-fixpoint-self-application-n6_omega_cycle  (downstream)
+
+## raw 119 — temporal decay, half-life evidence
+@r119_raw_id raw_119_temporal_decay_half_life_evidence
+@r119_raw_concept Evidence freshness decays exponentially: weight(t) = 2^(-(t-t_obs)/T_half). Old observations underweighted; cumulative score = Σ weight × likelihood-ratio. n6-architecture: meta-scanner audit history accumulates over weeks; old failures should not eternally veto.
+@r119_n6_landing_primary /Users/ghost/core/n6-architecture/tool/n6_meta.hexa  # extend audit verdict aggregation with @temporal_decay_half_life_T parameter (default 168h = 1 week); old audit entries weighted by 2^(-Δt/T_half) when computing rolling verdict.
+@r119_n6_landing_secondary /Users/ghost/core/n6-architecture/reports/n6_meta_audit.jsonl  # historical audit stream (already exists per find); apply half-life decay during rolling-verdict computation; old tier-1 failures decay below veto threshold over weeks.
+@r119_minimal_reproducer_pointer tool/n6_meta.hexa header — declare @temporal_decay_half_life_T parameter; cite reports/n6_meta_audit.jsonl line count as historical evidence cardinality.
+@r119_tracking_id n6-architecture/convergence/issues/TBD-r119-half-life-decay-weight-n6
+@r119_dependencies n6_meta.hexa stable; reports/n6_meta_audit.jsonl exists; clock/timestamp source (probe tool/n6_meta.hexa for existing timestamp helper).
+@r119_witness_cycle_handle 2026-04-XX_r119-half-life-evidence-weighting-n6_omega_cycle  (downstream)
+
+## raw 120 — counterfactual causal twin
+@r120_raw_id raw_120_counterfactual_causal_twin
+@r120_raw_concept For any claim C(x), construct twin x' identical except in causal variable, measure ΔΦ. If Φ(x) = Φ(x') the variable is non-causal. Required for any causal-claim. n6-architecture: every "this signal CAUSES that promotion" claim must cite a twin pair with measured Δsignal.
+@r120_n6_landing_primary /Users/ghost/core/n6-architecture/scanners/  # NEW candidate file: 55_counterfactual_twin.claim.json — declarative requirement: every causal-promotion claim in atlas_convergence_witness.jsonl must cite twin pair with measured Δsignal > threshold.
+@r120_n6_landing_secondary /Users/ghost/core/n6-architecture/theory/proofs/falsification-experiments.md  # already-existing falsification protocol (verified ls); add counterfactual-twin protocol section (twin construction, Δ measurement, threshold derivation).
+@r120_minimal_reproducer_pointer scanners/ directory — already has 54+ claim.json files with uniform schema; new claim slots in at index 55 alongside existing pattern; cite scanners/19_cross_scan_invariants.claim.json as adjacent invariant claim.
+@r120_tracking_id n6-architecture/convergence/issues/TBD-r120-counterfactual-twin-claim
+@r120_dependencies scanners/ schema convention (verified 54 claim.json files exist); state/atlas_convergence_witness.jsonl exists (verified ls).
+@r120_witness_cycle_handle 2026-04-XX_r120-counterfactual-twin-checker-n6_omega_cycle  (downstream)
+
+## raw 121 — reservoir / edge-of-chaos capacity
+@r121_raw_id raw_121_reservoir_edge_of_chaos_capacity
+@r121_raw_concept Reservoir computing: dynamical system at edge of chaos has maximal info-processing capacity (memory × non-linearity × separation). Candidate emergent engine should sit at edge. n6-architecture: arch_adaptive + arch_quantum are reservoir-style compute substrates.
+@r121_n6_landing_primary /Users/ghost/core/n6-architecture/engine/arch_adaptive.hexa  # already-existing adaptive arch; extend with @reservoir_capacity_metric (memory_capacity × non_linearity_index × separation_capacity) per Jaeger 2001 formulation.
+@r121_n6_landing_secondary /Users/ghost/core/n6-architecture/engine/arch_quantum.hexa  # quantum reservoir variant — measure quantum-reservoir-capacity overlay (entanglement-mediated separation); compare classical vs quantum capacity at matching parameters.
+@r121_minimal_reproducer_pointer engine/arch_adaptive.hexa — adaptive system implies parameter sweep; reservoir-capacity is the natural scoring overlay at the edge regime.
+@r121_tracking_id n6-architecture/convergence/issues/TBD-r121-reservoir-capacity-metric-n6
+@r121_dependencies arch_adaptive.hexa stable (verified); arch_quantum.hexa stable (verified); reservoir-capacity formula (Jaeger 2001 candidate, deferred to downstream cycle).
+@r121_witness_cycle_handle 2026-04-XX_r121-reservoir-capacity-quantification-n6_omega_cycle  (downstream)
+
+## raw 122 — topological / persistent homology
+@r122_raw_id raw_122_topological_persistent_homology
+@r122_raw_concept State-space topology → persistent-homology barcode. Candidate signature: barcode features (β_0 components, β_1 loops, β_2 voids) stable across noise scales. n6-architecture: Leech-24 surface engine has natural high-dim topology; hexa-gate state-space has gate-config topology.
+@r122_n6_landing_primary /Users/ghost/core/n6-architecture/engine/leech24_surface.hexa  # already-existing Leech-24 surface engine; extend with @persistent_homology_barcode emission — Vietoris-Rips filtration on Leech lattice samples; emit β_0, β_1, β_2 across noise scales.
+@r122_n6_landing_secondary /Users/ghost/core/n6-architecture/engine/hexa_gate_mk3.hexa  # gate-state topology; emit Betti numbers per gate config; cross-reference engine/hexa-gate-mk3-design-2026-04-15.md (verified ls in engine/).
+@r122_minimal_reproducer_pointer engine/leech24_surface.hexa — Leech lattice = canonical 24-dim object; persistent homology natural fit; cite docs/papers/ folder if survey paper exists.
+@r122_tracking_id n6-architecture/convergence/issues/TBD-r122-persistent-homology-barcode-n6
+@r122_dependencies leech24_surface.hexa stable (verified); hexa_gate_mk3.hexa stable (verified); external library bridge (gudhi/ripser) OR native Vietoris-Rips — choice deferred to downstream cycle.
+@r122_witness_cycle_handle 2026-04-XX_r122-persistent-homology-signature-n6_omega_cycle  (downstream)
+
+## raw 124 — distributed Byzantine consensus review
+@r124_raw_id raw_124_distributed_byzantine_consensus_review
+@r124_raw_concept k-of-n Byzantine consensus: N reviewers vote, ≥k must agree, dissent triggers re-review. Tolerates up to (N-k) malicious/faulty reviewers. n6-architecture: cross-repo signal promotion (atlas auto-promote) currently unilateral — Byzantine review gate raises promotion bar.
+@r124_n6_landing_primary /Users/ghost/core/n6-architecture/tool/  # NEW candidate file: n6_byzantine_review.hexa — k-of-n peer review for cross-repo signal promotion; default N=3 reviewers, k=2 quorum; integrates as gate before atlas tier-1 promotion.
+@r124_n6_landing_secondary /Users/ghost/core/n6-architecture/state/atlas_convergence_witness.jsonl  # require N>=k independent witness confirmations (each from distinct reviewer-id) before tier-1 promotion entry; existing single-witness entries grandfathered as legacy tier-1.
+@r124_minimal_reproducer_pointer scanners/16_cross_repo_auto_promote.claim.json — already-existing cross-repo promotion claim (verified ls 54 claim files); Byzantine quorum extends this claim with k-of-n condition.
+@r124_tracking_id n6-architecture/convergence/issues/TBD-r124-byzantine-quorum-promotion
+@r124_dependencies tool/ directory writable (verified — 15 n6_*.hexa files exist); state/atlas_convergence_witness.jsonl exists; reviewer-id schema (probe state/atlas_convergence_witness.jsonl for existing field convention).
+@r124_witness_cycle_handle 2026-04-XX_r124-byzantine-quorum-review-n6_omega_cycle  (downstream)
+
+## raw 125 — hierarchical temporal abstraction
+@r125_raw_id raw_125_hierarchical_temporal_abstraction
+@r125_raw_concept Multi-scale temporal hierarchy: ms (sensorimotor) → s (object) → min (episode) → h (narrative). Each scale's signal partly emerges from sub-scales'. Cross-scale coupling = candidate signature. n6-architecture: emergent_n6_trainer operates across timescales (step, epoch, run); anima_tension_loss spans training/inference scales.
+@r125_n6_landing_primary /Users/ghost/core/n6-architecture/engine/emergent_n6_trainer.hexa  # already-existing emergent trainer; refactor to N-scale temporal hierarchy with explicit cross-scale coupling tensor; default scales {step, epoch, run, sweep}.
+@r125_n6_landing_secondary /Users/ghost/core/n6-architecture/engine/anima_tension_loss.hexa  # multi-scale tension loss already operating across training/inference; integrate cross-scale coupling tensor as direct input.
+@r125_minimal_reproducer_pointer engine/emergent_n6_trainer.hexa — currently single-or-dual-scale; hierarchy refactor is non-trivial cycle but seam is clear at trainer step-loop boundary.
+@r125_tracking_id n6-architecture/convergence/issues/TBD-r125-multi-scale-temporal-hierarchy-n6
+@r125_dependencies emergent_n6_trainer.hexa stable (verified); anima_tension_loss.hexa stable (verified); scale enumeration {step, epoch, run, sweep} as default convention.
+@r125_witness_cycle_handle 2026-04-XX_r125-temporal-hierarchy-coupling-n6_omega_cycle  (downstream)
+
+## raw 126 — meta-rule self-host stability
+@r126_raw_id raw_126_meta_rule_self_host_stability
+@r126_raw_concept Meta-rules that govern rule-rewriting must themselves be stable under self-application: applying meta-rules to meta-rules → identical meta-rules (or bounded-drift). n6-architecture: tool/n6_meta.hexa is the self-hosting meta-scanner; loop-rules.json is the rule registry.
+@r126_n6_landing_primary /Users/ghost/core/n6-architecture/tool/n6_meta.hexa  # already-existing meta scanner — IS the self-hosting layer; add @meta_self_host_stability_invariant: output-signature unchanged under N self-applications; emit drift-distance metric per cycle.
+@r126_n6_landing_secondary /Users/ghost/core/n6-architecture/loop-rules.json  # rule registry — verify invariance under meta-rule rewriting (apply meta-rules to loop-rules.json itself, hash output, compare cycle-over-cycle).
+@r126_minimal_reproducer_pointer tool/n6_meta.hexa — meta scanner already self-applies; stability check is the formal closure; cite loop-rules.json for canonical rule list and INDEX.json for project-level rule index (verified ls).
+@r126_tracking_id n6-architecture/convergence/issues/TBD-r126-meta-self-host-stability
+@r126_dependencies n6_meta.hexa stable; loop-rules.json exists (verified); INDEX.json exists (verified); hash primitive (probe shared/quality/honesty_triad_linter.hexa for signature helper).
+@r126_witness_cycle_handle 2026-04-XX_r126-meta-rule-stability-n6_omega_cycle  (downstream)
+
+# Cross-cutting pattern anchors (raw-159-style — paradigmatic-anchor matrix collapsed onto n6-architecture)
+@cross_cutting_falsifier_themes [counterfactual_twin (r120), bisimulation (r114), info_theoretic_bound (r111), fixpoint_self_application (r118), bayesian_evidence (r113), meta_self_host_stability (r126)] — 6 falsifier patterns shared across the 13 raws; any new n6 engine/scanner should declare which subset it supports.
+@cross_cutting_engine_targets [ouroboros_b2_verifier (r114,r118), thermodynamic_frame (r116), arch_selforg (r116), arch_adaptive (r121), arch_quantum (r121), leech24_surface (r122), hexa_gate_mk3 (r122), emergent_n6_trainer (r125), anima_tension_loss (r125)] — 9 engines absorb 8 of 13 raws as direct extensions; remaining 5 raws (111, 112, 113, 119, 120, 124, 126) land primarily on tool/scanners/lean rather than engine/.
+@cross_cutting_tool_targets [n6_atlas_integrity (r111), n6_meta (r113, r119, r126)] — 2 existing tool/ files absorb 4 raws as scanner extensions; n6_meta is the highest-pressure single file (3 raws — bayesian + half-life + self-host stability all overlay onto meta-scanner).
+@cross_cutting_dir_pressure tool/ +1 NEW file (r124 n6_byzantine_review.hexa) — additive; tool/ currently has 15 n6_*.hexa files.
+@cross_cutting_dir_pressure scanners/ +2 NEW claim.json files (r114 55_engine_bisimulation.claim.json, r120 55_counterfactual_twin.claim.json — index collision: actual numbering 55, 56) — additive on top of existing 54+ claim files.
+@cross_cutting_dir_pressure theory/proofs/ +1 NEW hexa (r112 functor_composition_n6.hexa) — additive in already-rich proof directory (33+ verify_*.hexa files exist).
+@cross_cutting_dir_pressure lean4-n6/N6/Basic.lean +1 lemma (r112) — extension of existing Lean file, no new file.
+@cross_cutting_n6_meta_pressure tool/n6_meta.hexa absorbs r113 (bayesian) + r119 (half-life) + r126 (self-host stability) — single-file pressure WARRANTS staging across 3 distinct downstream cycles to avoid simultaneous-rewrite race; carry-forward @cf-6 sequences these.
+
+# Honesty disclosures (raw 91 C3)
+@honesty_no_implementation_in_this_cycle this convergence file is a REGISTRATION + LANDING-STRATEGY DOCUMENT only. NO n6-architecture source files (.hexa, .lean, .json, .md) were created or edited in this cycle. Implementation is deferred to per-raw downstream witness cycles enumerated in @rN_witness_cycle_handle.
+@honesty_tracking_ids_are_placeholder all @rN_tracking_id values follow placeholder format `n6-architecture/convergence/issues/TBD-<raw_slug>` — n6-architecture has no live issue tracker; tracking ids are EXPLICITLY PLACEHOLDER, not fabricated as real ids.
+@honesty_landing_surface_existence_audit primary landing files claimed to exist (verified via ls / find): tool/n6_atlas_integrity.hexa, tool/n6_meta.hexa, tool/n6_loop_rule_exec.hexa (verified find result paths), engine/ouroboros_b2_verifier.hexa, engine/thermodynamic_frame.hexa, engine/arch_selforg.hexa, engine/arch_adaptive.hexa, engine/arch_quantum.hexa, engine/leech24_surface.hexa, engine/hexa_gate_mk3.hexa, engine/emergent_n6_trainer.hexa, engine/anima_tension_loss.hexa, engine/consciousness_constraints.hexa, engine/n6_calculator.hexa, lean4-n6/N6/Basic.lean, lean4-n6/N6/TheoremB_Capstone.lean, loop-rules.json, INDEX.json, atlas/atlas.n6, atlas/atlas.signals.n6, n6shared/specs/atlas.signals.n6.spec.md, n6shared/dse/dse_cross_results_v2_5.json, theory/proofs/falsification-experiments.md, theory/proofs/transcend-p11-3-ouroboros-b2-proof-2026-04-15.md. NEW-candidate files explicitly labeled "NEW candidate file" and located in directories that DO exist (tool/, scanners/, theory/proofs/, all verified).
+@honesty_meta_raw_exclusion 5 raws (109, 110, 115, 117, 123) have n6-architecture column = META in source matrix; deliberately EXCLUDED from this propagation plan. META rows reach n6-architecture only as 2nd-order recipients (e.g., r109 adversarial probe applies to n6 only via its anima/hexa-lang/airgenome primary landings → n6 inherits laterally through bench harnesses or measurement bridges).
+@honesty_user_topic_off_by_one user kick topic stated "12 DIRECT raws" but source matrix /Users/ghost/core/nexus/state/cross_project_propagation_matrix_2026_04_28.tsv n6-architecture column contains 13 DIRECT cells (raws 111,112,113,114,116,118,119,120,121,122,124,125,126). Honest record uses verified count 13, not user-stated 12. NO row was dropped to fit "12"; NO duplicate row was inserted to fit "12". Discrepancy documented openly.
+@honesty_no_real_issue_filing zero real issues filed against n6-architecture or any external tracker in this cycle; signals are CANDIDATE-only, ready for sub-agent or human-review pickup.
+
+# Carry-forward
+@cf-1 13 downstream witness cycles (one per raw) — each gated by F1..F6 falsifier set declared in this convergence's witness JSON.
+@cf-2 hexa-lang DIRECT propagation parallel: 11 raws have hexa-lang=DIRECT — separate convergence file r4_raw109to126_hexalang_propagation_plan needed if not present.
+@cf-3 airgenome DIRECT propagation parallel: 12 raws have airgenome=DIRECT — separate plan if downstream demands.
+@cf-4 anima sister plan already landed at /Users/ghost/core/anima/convergence/r4_raw109to126_anima_propagation_plan_2026_04_28.convergence (13 raws, 21176 bytes, witness 2026-04-28_write-file-users-ghost-core-anima-convergence-r4-raw109to126_omega_cycle.json) — n6-architecture plan is structural sibling.
+@cf-5 raw 124 Byzantine review requires reviewer-id schema design — current atlas_convergence_witness.jsonl entries lack reviewer-id field; downstream cycle must extend schema before tier-1 quorum gate activates.
+@cf-6 tool/n6_meta.hexa absorbs 3 raws (r113, r119, r126) — sequence downstream cycles (r113 first to establish log-odds field, then r119 to weight by half-life, then r126 to verify stability under self-application of the cumulative-decay rule). Simultaneous landing risks merge conflict + race on meta-scanner output schema.
+@cf-7 raw 112 functor composition lemma in lean4-n6/N6/Basic.lean depends on Mathlib functor-category imports — verify lean4-n6/N6/MathlibBasic.lean exposes Category, Functor, Functor.comp before downstream cycle starts.
+
+# Witness emission (atlas-absorb-mandatory layer 2)
+@witness /Users/ghost/core/nexus/design/kick/2026-04-28_write-file-users-ghost-core-n6-architecture-convergence-r4-r_omega_cycle.json
+@witness_emit_path canonical helper tool/witness_emit.hexa --emit ... --body-file ...
+@atlas-shard /Users/ghost/core/nexus/n6/atlas.append.write-file-users-ghost-core-n6-architecture-convergence-r4-r.n6 (auto-shard via _slugify_cycle)
+
+# Sentinel
+@sentinel __KICK_RESULT__ PASS witness=<above> tier1=1 falsifier_pass=6
