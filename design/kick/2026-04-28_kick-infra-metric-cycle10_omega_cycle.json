@@ -1,0 +1,101 @@
+{
+  "$schema": "../schemas/omega_cycle.schema.json",
+  "id": "kick-infra-metric-cycle10",
+  "date": "2026-04-28",
+  "cycle": 10,
+  "fan_out": "5/5",
+  "mission": "F-MX-3-c kick infra closure cycle 10 — LIVE metric snapshot + B.3 ghcr.io plan + F-MANUAL-LOGIN check",
+  "status": "ADVISORY",
+  "summary": "Read-only audit of cascade_blocked_events.jsonl (35 rows, +19 since cycle 7), F-MANUAL-LOGIN profile state (12 Mac creds; 6 absent, 6 expired ~7d ago, 0 live), and B.3 ghcr.io 5-step plan documented. raw 51 4-gate audit smell sustains 4/5 closure (gate (a) OAuth + gate (c)-remote BLOCKED on user TTY).",
+  "epsilon": {
+    "expected": "cycle-7 cascade ledger continues to grow under all-routes-blocked sentinel; F-MANUAL-LOGIN Mac side dormant pending user /login; ghcr.io plan ready for user approval.",
+    "observed": {
+      "cascade_total_rows": 35,
+      "cascade_delta_since_cycle7": 19,
+      "cascade_first_ts": "2026-04-28T06:49:19Z",
+      "cascade_last_ts": "2026-04-28T08:57:18Z",
+      "cascade_modes": {
+        "all-routes-blocked": 35
+      },
+      "cascade_reasons": {
+        "all_unreachable_preflight": 35
+      },
+      "cascade_slot_pool": {
+        "12/12 available, 0/12 cooldown, 0/12 unknown": 8,
+        "12/12 dirs (helper unreachable)": 26,
+        "13/12 dirs (helper unreachable)": 1
+      },
+      "cascade_fallback_chain": {
+        "[ubu1,hetzner,ubu2,htz]": 32,
+        "[ubu1,ubu,ubu2,hetzner]": 3
+      },
+      "f_manual_login_remaining_hours": 38.99,
+      "mac_credentials_present_count": 6,
+      "mac_credentials_live_count": 0,
+      "mac_credentials_drift_since_cycle7": "none (mtimes still 2026-04-20)",
+      "ghcr_plan_steps": 5,
+      "raw_71_falsifiers_preregistered": 5
+    },
+    "delta": "Cycle 7 had 16 rows; cycle 10 has 35 (+19 in ~2h08m sample). All new rows still all-routes-blocked. F-MANUAL-LOGIN Mac state UNCHANGED. Single anomalous slot_pool=13/12 row flagged (F-CASCADE-METRIC-1).",
+    "honest": "Mac-only audit. Hetzner-side BROKEN_HETZNER_IDS=[1,2,4,5,6,7,8,9,10,11,12] claim NOT independently verified this cycle (raw 13 no-ssh discipline). User TTY required for both gate (a) /login and gate (c)-remote ghcr.io PAT issuance."
+  },
+  "gates": {
+    "raw_51_4_gate_audit": {
+      "a_oauth_refresh": "PARTIAL — F-MANUAL-LOGIN; T-38.99h to deadline",
+      "b_slot_saturation": "FIXED + LIVE",
+      "c_docker_rebuild_mac": "FIXED",
+      "c_docker_rebuild_remote": "BLOCKED — user PAT or ssh-load required",
+      "d_silent_timeout": "FIXED + LIVE",
+      "e_cascade_prevention": "FIXED + LIVE 35 rows",
+      "closure_score": "4/5 (5/5 BLOCKED on user TTY)"
+    }
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-CASCADE-METRIC-1",
+      "predicate": "slot_pool count != nominal pool size (e.g. 13/12 dirs)",
+      "observed_count": 1,
+      "disposition": "SURFACE; cycle 11 dir-glob investigation"
+    },
+    {
+      "id": "F-CASCADE-METRIC-2",
+      "predicate": "Cascade rows continue post-deadline (2026-04-29T23:59:59Z) at same rate",
+      "disposition": "PRE-REGISTERED; check cycle 11+"
+    },
+    {
+      "id": "F-CASCADE-METRIC-3",
+      "predicate": "New event mode appears without raw 71 upstream guard",
+      "disposition": "PRE-REGISTERED"
+    },
+    {
+      "id": "F-MAC-CRED-DRIFT-1",
+      "predicate": "Mac .credentials.json mtime advances without user-reported /login",
+      "disposition": "PRE-REGISTERED; security-relevant"
+    },
+    {
+      "id": "F-FALLBACK-CHAIN-1",
+      "predicate": "fallback_chain with legacy 'ubu' alias appears with ts > 2026-04-28T09:00:00Z",
+      "disposition": "PRE-REGISTERED; config-rotation regression check"
+    }
+  ],
+  "artifacts": {
+    "metric_report": "proposals/hexa_weave_kick_infra_metric_2026_04_28.md",
+    "ghcr_plan": "proposals/hexa_weave_kick_infra_b3_ghcr_2026_04_28.md",
+    "companion_b3_save_load": "proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
+    "data_source_cascade": "/Users/ghost/core/nexus/state/audit/cascade_blocked_events.jsonl",
+    "data_source_creds_glob": "/Users/ghost/.claude-claudeN/.credentials.json (N=1..12)",
+    "tool_used": "/Users/ghost/core/n6-architecture/tool/manual_login_reminder.hexa (logic; direct python3 invoked due to PATH issue)"
+  },
+  "next_cycle": [
+    "cycle 11: investigate slot_pool=13/12 dir-glob anomaly (F-CASCADE-METRIC-1)",
+    "cycle 11: add manual_login_reminder.hexa --remote opt-in for hetzner verification",
+    "cycle 11: if F-MANUAL-LOGIN deadline passed without user /login, escalate gate (a) PARTIAL -> FAIL"
+  ],
+  "safety": {
+    "raw_9_hexa_only": true,
+    "raw_13_no_external_comms": true,
+    "raw_65_pat_never_in_witness": true,
+    "raw_91_c3_honest_user_tty_dependency": true,
+    "no_infra_mutation_this_cycle": true
+  }
+}

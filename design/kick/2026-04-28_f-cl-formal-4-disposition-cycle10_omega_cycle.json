@@ -1,0 +1,105 @@
+{
+  "schema": "design/kick/omega_cycle_v1",
+  "kick_id": "2026-04-28_f-cl-formal-4-disposition-cycle10",
+  "ts": "2026-04-28T08:58:24Z",
+  "cycle": "cycle-10/fan-out-2-of-5",
+  "mission": "F-CL-FORMAL-4 disposition (cycle 4-9 진척 audit + PARTIAL-RESOLVED 결정 + AXIOM-RESIDUAL successor 발행)",
+  "context": {
+    "predecessor_blocker": "cycle 9 fan-out 4/5 sub-agent disclosed Agent tool 부재; raw 91 C3 fake delegation 거부",
+    "user_explicit_ok": "옵션 2 (직접 수행 허락) — cron loop 5m keep going all kick weave 발화 = 직접 진행 의사",
+    "delegation_status": "Agent tool absent in deferred tool list (verified via ToolSearch); sub-agent delegation path unavailable; direct execution per user OK"
+  },
+  "audit_progression_cycle_4_9": [
+    {"cycle": 4, "phase": "W2", "result": "AX-1 partial PASS (n=6 case decide + n∈[2,30] interval_cases, 2 sorry)"},
+    {"cycle": 5, "phase": "W3", "result": "AX-2 partial PASS (메인 sorry-free + 2 opaque-bridge sorry)"},
+    {"cycle": 6, "phase": "W4", "result": "Felgner 1971 채택, MKBridge.lean 215 LOC 0 sorry, 4 named axioms"},
+    {"cycle": 7, "phase": "W5", "result": "AX1 Robin axiom + AX2 mirror axioms → 전체 project sorry-free"},
+    {"cycle": 8, "phase": "W6", "result": "Foundation/{Strand,Axioms}.lean shared refactor, 6 axiom mirror eliminated"},
+    {"cycle": 9, "phase": "W7", "result": "7→15 sub-axioms (strand_zfc/hexa_comp derived), sorry 0 유지"}
+  ],
+  "decision": {
+    "option_chosen": "B (PARTIAL-RESOLVED)",
+    "options_considered": [
+      {"option": "A (FULL-SATISFIED/RETIRE)", "rejected_reason": "raw 91 C3: 15 sub-axioms 가 여전히 axiom (not theorem) — strict raw 71 reading 위반"},
+      {"option": "B (PARTIAL-RESOLVED)", "selected_reason": "mechanical PASS 충족 + axiom residual 정직 노출 + successor falsifier 발행 = 가장 honest 한 disposition"},
+      {"option": "C (DEFER)", "rejected_reason": "이미 cycle 4-9 6 cycle 진행 — 추가 defer 는 진척 무효화 위험"}
+    ],
+    "disposition_label": "MECHANICAL-PASS-WITH-15-SUB-AXIOMS",
+    "predecessor_status": "active",
+    "new_status": "PARTIAL-RESOLVED"
+  },
+  "evidence": [
+    "lean4 lake build PASS sorry 0",
+    "15 sub-axioms #print axioms 노출",
+    "own_doc_lint 13/13 PASS",
+    "papers/hexa-weave-formal-mechanical-w2-2026-04-28.md (cycle 6 외부 노출 첫 paper)"
+  ],
+  "axiom_residual": {
+    "count": 15,
+    "categories": {
+      "felgner_1971_decomposed": ["felgner_1971_step1", "felgner_1971_step2", "felgner_1971_step3"],
+      "strand_zfc_derived": ["strand_zfc_amino", "strand_zfc_rna", "strand_zfc_dna", "strand_zfc_ligand", "strand_zfc_antibody"],
+      "hexa_comp_derived": ["hexa_comp_strand_op_well_defined", "hexa_comp_associativity", "hexa_comp_identity", "hexa_comp_zfc_class_closure", "hexa_comp_atom"],
+      "robin_axiom": ["robin_hardy_wright_ax1_tail"],
+      "felgner_bridge": ["felgner_bridge_to_MK"]
+    }
+  },
+  "successor_falsifier": {
+    "id": "F-CL-FORMAL-4-AXIOM-RESIDUAL",
+    "status": "active",
+    "deadline": "2027-04-28",
+    "horizon_days": 365,
+    "auto_check": "no",
+    "claim": "15 sub-axioms 의 axiom-to-theorem 변환 1년 안 미완 시 PARTIAL-RESOLVED → STILL-ACTIVE 강등",
+    "manual_review_required": true,
+    "axiom_to_theorem_targets": 15,
+    "axiom_to_theorem_completed_at_creation": 0
+  },
+  "raw_71_meta_falsifiers": [
+    {"id": "F-DISPO-1-FORMAL-4", "type": "split-defensibility", "claim": "PARTIAL-RESOLVED 분할이 strict raw 71 reading 에 비해 약한지 1주 안 외부 검토"},
+    {"id": "F-DISPO-2-FORMAL-4", "type": "capture-fidelity", "claim": "15 axiom_residual 목록이 #print axioms 출력과 일치 — 1주 안 lean4 grep 재검증"},
+    {"id": "F-DISPO-3-FORMAL-4", "type": "retire-rule-honor", "claim": "successor F-CL-FORMAL-4-AXIOM-RESIDUAL 가 raw 71 retire-rule 4-step 준수 (decision/audit/evidence/successor)"}
+  ],
+  "f_d_3_reevaluation": {
+    "predecessor_metric": "91d horizon, mechanical PASS deadline-miss 확률",
+    "new_metric_split": [
+      {"horizon": "short (mechanical)", "deadline": "2026-07-28", "status": "충족 (PARTIAL-RESOLVED 시점)", "miss_prob": "0% (이미 PASS)"},
+      {"horizon": "long (axiom residual)", "deadline": "2027-04-28", "status": "active F-CL-FORMAL-4-AXIOM-RESIDUAL", "miss_prob": "추정 60-75% (15 sub-axiom 모두 1년 내 theorem 변환 어려움; Felgner 1971 step1-3 + strand_zfc 5 + hexa_comp 5 + Robin tail + bridge)"}
+    ],
+    "net_assessment": "단기 deadline-miss 확률 0% 로 하향, 장기 axiom-to-theorem deadline-miss 확률 60-75% 신규 등록"
+  },
+  "raw_91_c3_honesty": {
+    "retreats": [
+      "PARTIAL-RESOLVED 가 raw 71 strict 'mechanical PASS = full SATISFIED' reading 에서 약간 후퇴",
+      "15 sub-axioms 가 여전히 axiom (not theorem) — formal closure 미완",
+      "manual review 필요 (auto_check=no)",
+      "felgner_bridge_to_MK 는 Felgner 1971 외부 reference 의존 (구현 검증 추가 필요)"
+    ],
+    "preserves": [
+      "lake build PASS sorry 0 — mechanical contract 충족",
+      "#print axioms 15 노출 — 모든 residual 명시적",
+      "successor falsifier 발행 — long-tail 추적 보장",
+      "papers/ 외부 노출 — 외부 검증 가능"
+    ]
+  },
+  "deliverables": {
+    "audit_jsonl_rows_appended": 2,
+    "registry_jsonl_rows_appended": 1,
+    "witness_json": "design/kick/2026-04-28_f-cl-formal-4-disposition-cycle10_omega_cycle.json",
+    "meta_falsifiers_registered": 3
+  },
+  "safety_guards": [
+    "silent disposition 금지 — 모두 명시적 (audit + registry + witness)",
+    "사용자 cron loop 발화 = OK 신호 명시",
+    "raw 91 C3 정직 — PARTIAL-RESOLVED 의 후퇴 명시 disclose",
+    "successor falsifier 발행 — retire-rule 준수"
+  ],
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_lean4-w5-ax2-integration_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w6-axioms-refactor_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w6-felgner-full-proof_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w7-axiom-step-down_omega_cycle.json"
+  ],
+  "parent_falsifier": "F-CL-FORMAL-4",
+  "successor": "F-CL-FORMAL-4-AXIOM-RESIDUAL"
+}

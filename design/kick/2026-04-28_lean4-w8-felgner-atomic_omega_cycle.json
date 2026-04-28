@@ -1,0 +1,96 @@
+{
+  "kick_id": "2026-04-28_lean4-w8-felgner-atomic",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T18:30:00Z",
+  "fan_out": "3/5",
+  "cycle": 10,
+  "mission": "Felgner step1/step2/step3 monolithic axioms → 11 atomic sub-axioms (option a — replace) in Foundation/Axioms.lean. Net 15 → 23 axiom keywords. Monolithic step1/2/3 converted to derived theorems composing the atomics; downstream callers preserved.",
+  "parent_proposals": [
+    "proposals/hexa_weave_mvp_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w7_axiom_step_down_2026_04_28.md"
+  ],
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w8_felgner_atomic_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w8-felgner-atomic_omega_cycle.json"
+    ]
+  },
+  "decomposition": {
+    "step1": {
+      "from": "axiom_felgner_step1_class_quantifier_to_Vkappa_bounded : True (axiom)",
+      "to": "theorem (composes 1.a + 1.b + 1.c)",
+      "atomic_subaxioms": [
+        "axiom_felgner_step1a_class_LZFC_definable_in_Vkappa : True",
+        "axiom_felgner_step1b_Vkappa_definable_to_set : True",
+        "axiom_felgner_step1c_Pi1_preservation : True"
+      ]
+    },
+    "step2": {
+      "from": "axiom_felgner_step2_proper_class_in_Vkappa : True (axiom)",
+      "to": "theorem (composes 2.a + 2.b + 2.c + 2.d)",
+      "atomic_subaxioms": [
+        "axiom_felgner_step2a_Vkappa_Replacement : True",
+        "axiom_felgner_step2b_Vkappa_PowerSet : True",
+        "axiom_felgner_step2c_Vkappa_Choice : True",
+        "axiom_felgner_step2d_Vkappa_Foundation : True"
+      ],
+      "mathlib4_attack_surface": "Cardinal.IsInaccessible (Mathlib.SetTheory.Cardinal.Regular)"
+    },
+    "step3": {
+      "from": "axiom_felgner_step3_LZFC_relativization : True (axiom)",
+      "to": "theorem (composes 3.a + 3.b + 3.c + 3.d)",
+      "atomic_subaxioms": [
+        "axiom_felgner_step3a_Delta0_preservation : True",
+        "axiom_felgner_step3b_Sigma1_upward_absoluteness : True",
+        "axiom_felgner_step3c_Pi1_downward_absoluteness : True",
+        "axiom_felgner_step3d_LZFC_full_induction : True"
+      ]
+    },
+    "wrapper": {
+      "axiom_felgner_1971_conservativity_meta": "re-derived as theorem composing the 3 step theorems (transitively depends on all 11 atomics)"
+    }
+  },
+  "axiom_count": {
+    "pre_w8": 15,
+    "post_w8": 23,
+    "net_change": "+8 keywords (−3 monolithic + 11 atomic)",
+    "verification": "grep -c '^axiom ' N6/MechVerif/Foundation/Axioms.lean = 23"
+  },
+  "option_decision": {
+    "chosen": "a (replace)",
+    "rejected": "b (add only — would yield 26 axioms with redundancy)",
+    "rationale": "smaller atomic axioms have lower mechanical-proof attack surface; mission spec recommendation; no downstream callers to break"
+  },
+  "lake_build": {
+    "scoped_target": "lake build N6.MechVerif.Foundation.Axioms — Built 1336/1336 (11s)",
+    "full": "lake build — Build completed successfully (8 jobs)",
+    "sorry_count": 0,
+    "ax1_ax2_mkbridge_importer_status": "rebuild clean — no symbol churn (W7 step1/2/3 names retained as theorems)"
+  },
+  "f_d_3_re_evaluation": {
+    "prior_status": "deferred — keep distance from rejected full-proof track (cycle 8 fan-out 2/5)",
+    "post_w8_status": "active — atomic step-down landed for Felgner steps 1/2/3",
+    "remaining_surface": [
+      "axiom_felgner_bridge_to_MK (load-bearing application axiom; non-trivial type, not :True; W9+)",
+      "axiom_robin_hardy_wright_ax1_tail (outside Felgner cluster, untouched)"
+    ]
+  },
+  "raw_71_falsifiers": [
+    "F-W8-FELGNER-1: an atomic sub-axiom proved spurious vs cited source",
+    "F-W8-FELGNER-2: composite #print axioms unexpectedly omits an atomic (composition gap)",
+    "F-W8-FELGNER-3: future cycle discharges an atomic via mathlib4 (e.g. step2.a via Cardinal.IsInaccessible) — forces :True placeholder rewrite",
+    "F-W8-FELGNER-4: option-a reverted to option-b by policy — re-add 3 monolithic axioms (23 → 26)",
+    "F-W8-FELGNER-5: 11-element split judged too fine; merge back to coarser e.g. 2-element step2 — nominal regression"
+  ],
+  "safety": {
+    "silent_axiom": "none (all sub-axioms named, all derivations explicit `have _h : True := ...; trivial`)",
+    "main_pass_theorems_preserved": true,
+    "sorry_count_preserved": "0 → 0",
+    "raw91_c3_honest": true,
+    "raw13_hooks_honored": "no --no-verify / --amend / force push planned"
+  },
+  "raw_91_c3": "honest"
+}

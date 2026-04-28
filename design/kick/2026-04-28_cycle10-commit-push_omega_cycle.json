@@ -1,0 +1,44 @@
+{
+  "kick_id": "2026-04-28_cycle10-commit-push",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T18:10:00Z",
+  "fan_out": "1/5",
+  "cycle": 11,
+  "mission": "cycle 10 monolithic commit + push origin/main",
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean",
+      "state/discovery_absorption/registry.jsonl",
+      "state/falsifier_monitor/audit.jsonl"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w8_felgner_atomic_2026_04_28.md",
+      "proposals/hexa_weave_mvp_w5_alt2_cdhit_clustering_2026_04_28.md",
+      "proposals/hexa_weave_kick_infra_metric_2026_04_28.md",
+      "proposals/hexa_weave_kick_infra_b3_ghcr_2026_04_28.md",
+      "design/kick/2026-04-28_f-cl-formal-4-disposition-cycle10_omega_cycle.json",
+      "design/kick/2026-04-28_hexa-weave-mvp-w5-alt2-cdhit_omega_cycle.json",
+      "design/kick/2026-04-28_kick-infra-metric-cycle10_omega_cycle.json",
+      "design/kick/2026-04-28_lean4-w8-felgner-atomic_omega_cycle.json",
+      "design/kick/2026-04-28_cycle10-commit-push_omega_cycle.json"
+    ],
+    "excluded_dirty": [
+      "reports/n6_own_doc_lint.json (M, pre-existing — own_doc_lint regen)",
+      "tool/atlas_self_arch_lint.hexa (M, pre-existing — atlas_self_arch_lint tool drift)",
+      "atlas/atlas.append.atlas-metadata-policy-2026-04-28.n6 (untracked, atlas-metadata-policy axis)",
+      "state/atlas_metadata_audit/ (untracked, atlas metadata audit trail)",
+      "state/atlas_self_arch_audit/ (untracked, atlas self-arch audit trail)",
+      "state/markers/_probe* | atlas_metadata_lint* | atlas_self_arch* | dump_cmd* | falsifier_monitor* | file_lock* | manual_login_reminder* | probe* | raw_registration_gate_lint* | test_exec* (untracked markers)",
+      "tool/atlas_metadata_lint.hexa (untracked, atlas-metadata-lint tool)"
+    ]
+  },
+  "safety": {
+    "preexisting_dirty_isolated": true,
+    "secrets_scan": "clean (strict regex ghp_/github_pat_/sk-/xoxb-/AKIA/aws_secret — 0 hits in staged set; informational PAT setup docs in hexa_weave_kick_infra_b3_ghcr_2026_04_28.md are procedure-only with no credential values)",
+    "destructive_ops": 0,
+    "raw13_hooks": "honored (no --no-verify, no --amend, no force push)",
+    "raw91_c3_honest": true
+  },
+  "commit_message": "feat(hexa-weave): cycle 10 W8 Felgner atomic 15->23 + W5 Alt-2 CD-HIT (46 clusters) + kick infra metric + F-CL-FORMAL-4 PARTIAL-RESOLVED",
+  "raw_91_c3": "honest — 4 cycle10 design/kick files + 1 self-witness = 5 total kick witnesses; mission said '신규 5개' which now matches (4 mission-listed + this commit-push witness); pre-existing dirty (own_doc_lint, atlas_self_arch tool, atlas-metadata audit trail, probe markers) deliberately excluded"
+}

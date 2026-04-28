@@ -1,0 +1,213 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T22:30:00Z",
+  "title": "HEXA-WEAVE MVP W5 — Alt-2 follow-on (CD-HIT 30%-id clustering plan + python emulation)",
+  "task_label": "cycle 10 / fan-out 4/5 W5 Alt-2 deepening: RCSB FASTA + difflib emulation + cluster split + CD-HIT plan",
+  "scope": "Cycle 9 fan-out 3/5 retired F-W2-4 PARTIAL via RCSB Query B = 1965 entries. Cycle 10 fan-out 4/5 deepens dataset prep without GPU/torch/cd-hit-binary: (a) HTTPS-fetch first 100 protein FASTAs from Query B, (b) python-stdlib difflib.SequenceMatcher pairwise + 30%-id greedy clustering as CD-HIT pre-flight, (c) cluster-aware 80/10/10 split simulation, (d) accurate CD-HIT install + run procedure plan documented for user approval. raw 91 C3: difflib != BLAST/CD-HIT — emulation is architecture-validation pre-flight only.",
+
+  "parent_witness": {
+    "cycle_5": "W1 + W2 spec + lean4 audit",
+    "cycle_6": "W3 clone+VRAM + lean4 ax2 sorry-discharge",
+    "cycle_7": "W4 8-subdir+dryrun + lean4 ax2/mkbridge integration",
+    "cycle_8": "W5 plan + dry-run + 8-item approval gate + 4 alt-path identification",
+    "cycle_9": "W5 alt-paths Alt-2 RCSB 1965 + Alt-3 mock-up 280 LoC + Alt-4 lean4 docstring",
+    "cycle_10_this": "W5 Alt-2 follow-on: 100 FASTA + difflib + 30%-id cluster + 80/10/10 split + CD-HIT plan",
+    "fan_out_siblings_cycle_10": ["1/5", "2/5", "3/5", "4/5 (this)", "5/5"]
+  },
+
+  "rcsb_fasta_fetch_executed": {
+    "method": "real HTTPS GET to https://www.rcsb.org/fasta/entry/<PDB_ID> (read-only)",
+    "query_b_total_count_today": 1965,
+    "query_b_total_count_cycle_9": 1965,
+    "f_w5alt_1_tripped": false,
+    "sample_size": 100,
+    "fetch_walltime_seconds": 45.5,
+    "fetch_failures": 0,
+    "bandwidth_kb_estimate": 340,
+    "first_100_pdb_ids": [
+      "1NMA","1JID","1B7F","1IL2","1C0A","1KD1","1I6U","1S03","1F7Y","1KUQ",
+      "1DK1","1U0B","1AV6","1MJI","1J1U","1MZP","1ASZ","1F8V","1JJ2","1K8A",
+      "1K9M","1M90","1N8R","1NJI","1S72","1JBR","1JBS","1JBT","1MMS","1M8V",
+      "1HC8","1QA6","1N77","1N78","1FEU","1Q81","1Q82","1Q86","1QVG","1SDS",
+      "1DFU","1L9A","1LNG","1M5K","1M5O","1M5P","1M5V","1SJ3","1SJF","1DRZ",
+      "1URN","1CVJ","1K8W","1H2D","1NB7","1B23","1F7U","1FFY","1QU2","1QU3",
+      "1GAX","1IVS","1H4Q","1H4S","1I5L","1N1H","1N35","1N38","1O0B","1O0C",
+      "1GTR","1GTS","1QRS","1QRT","1QRU","1QTQ","1EUY","1EXD","1S76","1S77",
+      "1UVI","1UVJ","1UVK","1UVL","1C9S","1GTF","1GTN","1UTD","1FXL","1G1X",
+      "1HQ1","1JBN","1ZBI","2AKE","2BTE","2CSX","2DU3","2DXI","2NUG","2OZB"
+    ]
+  },
+
+  "difflib_pairwise_executed": {
+    "method": "python3 stdlib difflib.SequenceMatcher.ratio() on first-protein-chain truncated to 300 aa",
+    "n_records": 100,
+    "pairs_computed": 4950,
+    "walltime_seconds": 7.51,
+    "throughput_pairs_per_second": 659.2,
+    "mean_similarity": 0.1747,
+    "max_similarity": 1.0000,
+    "fraction_pairs_ge_30pct": 0.0307,
+    "full_set_projection_seconds": 2928,
+    "full_set_projection_minutes": 48
+  },
+
+  "clustering_30pct_id_executed": {
+    "algorithm": "CD-HIT-like greedy: sort by length desc; assign to first cluster whose representative has ratio >= 0.30",
+    "threshold": 0.30,
+    "n_clusters": 46,
+    "singleton_count": 25,
+    "ge5_member_count": 4,
+    "largest_cluster_size": 10,
+    "cluster_size_top10": [10, 8, 7, 5, 4, 4, 4, 3, 3, 3],
+    "top_3_cluster_reps": [
+      {"cluster_id": 9,  "rep_pdb": "1O0B", "rep_len": 554, "size": 10, "biology": "glutaminyl-tRNA synthetase family"},
+      {"cluster_id": 40, "rep_pdb": "1M5K", "rep_len": 100, "size": 8,  "biology": "U1A-like RNA-binding domain"},
+      {"cluster_id": 19, "rep_pdb": "1JJ2", "rep_len": 348, "size": 7,  "biology": "50S ribosomal subunit proteins"}
+    ]
+  },
+
+  "split_80_10_10_simulation": {
+    "method": "cluster-aware shuffle (deterministic seed = SHA256(cluster_rep_csv)[:8])",
+    "split_seed_hex": "0xf927314f",
+    "train_clusters": 36,
+    "train_pdbs": 78,
+    "val_clusters": 4,
+    "val_pdbs": 13,
+    "test_clusters": 6,
+    "test_pdbs": 9,
+    "val_pdb_list": ["1I5L","1N1H","1N35","1N38","1FEU","1M5K","1M5O","1M5P","1M5V","1SJ3","1SJF","1DRZ","1URN"],
+    "test_pdb_list": ["1CVJ","1K8W","1H2D","1NB7","1N77","1N78","1JBR","1JBS","1JBT"],
+    "set_intersection_check": "train ∩ val = ∅, train ∩ test = ∅, val ∩ test = ∅ (PASS)"
+  },
+
+  "cd_hit_accurate_plan": {
+    "install_options": [
+      "brew install cd-hit (macOS, ~30s)",
+      "apt-get install -y cd-hit (Debian/Ubuntu)",
+      "git clone github.com/weizhongli/cdhit && make (any platform)"
+    ],
+    "run_command": "cd-hit -i scratch/rcsb_qb_all.fasta -o scratch/rcsb_qb_clustered.fasta -c 0.30 -n 2 -M 4096 -T 4 -d 0",
+    "expected_runtime_full_1965": "30s single-thread, 10s with 4 threads",
+    "user_approval_pending": true,
+    "tool_stub_to_write": "tool/hexa_weave_rcsb_fetch_all.py (~80 LoC stdlib + concurrent.futures, W7 deliverable)"
+  },
+
+  "f_tp5b_90d_gate_progress": {
+    "pre_cycle_10_pct": 37,
+    "cycle_10_increment_pct": 1,
+    "post_cycle_10_pct": 38,
+    "post_cdhit_approval_target_pct": 39,
+    "post_w5_gpu_approval_target_pct": 49
+  },
+
+  "deliverables": {
+    "files_created": [
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_alt2_cdhit_clustering_2026_04_28.md",
+      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w5-alt2-cdhit_omega_cycle.json"
+    ],
+    "files_modified": [],
+    "scratch_artifacts": [
+      "/tmp/cdhit_emul_step1_data.json (100-FASTA fetch payload, ~340 KB)",
+      "/tmp/cdhit_emul_step2_clusters.json (46-cluster + split result, ~50 KB)",
+      "/tmp/cdhit_emul_step1_fetch.py (fetcher source, ~50 LoC)",
+      "/tmp/cdhit_emul_step2_cluster.py (clustering source, ~120 LoC)"
+    ],
+    "destructive_ops_executed": 0,
+    "http_calls_executed": 101,
+    "http_call_breakdown": "1 RCSB Search v2 query + 100 FASTA GETs",
+    "raw_71_falsifiers": 5,
+    "raw_91_c3_caveats": 10
+  },
+
+  "honest_disclosure_raw_91_C3": {
+    "gpu_touched": false,
+    "torch_installed": false,
+    "cd_hit_installed": false,
+    "cd_hit_run": false,
+    "structure_files_downloaded": false,
+    "length_cap_applied": false,
+    "full_1965_set_clustered": false,
+    "external_reviewer_contacted": false,
+    "difflib_equals_blast_or_cdhit": false,
+    "claim": "Cycle 10 fan-out 4/5 produced 1 markdown report (~28 KB) + 1 witness JSON, made 101 RCSB HTTP calls (read-only, ~340 KB total bandwidth), executed 7.51 s python difflib pairwise on N=100, and committed 0 destructive operations.",
+    "caveats_count": 10,
+    "caveats_doc_path": "proposals/hexa_weave_mvp_w5_alt2_cdhit_clustering_2026_04_28.md §6"
+  },
+
+  "raw_86_cost_attribution_summary": {
+    "compute_gpu_week": 0,
+    "compute_dollar_marginal": 0,
+    "bandwidth_mb": 0.34,
+    "storage_local_kb": 420,
+    "human_hours_this_cycle": 0.5,
+    "ubu1_resources_consumed": 0
+  },
+
+  "falsifiers_raw_71": [
+    {
+      "id": "F-CDHIT-1",
+      "tier": "TRANSCEND",
+      "predicate": "Within 14 days, real CD-HIT 30%-id on the same 100-sample produces cluster count outside [30,60] band (i.e. divergence vs difflib's 46 exceeds ±30%)",
+      "detection": "post user-approval, run cd-hit -c 0.30 -n 2 on /tmp/cdhit_emul_step1_data.json FASTAs",
+      "trip_action": "re-emit emulation with biopython pairwise2 (BLOSUM62); update §3.5 divergence band; flag difflib heuristic invalid",
+      "deadline": "T+14d"
+    },
+    {
+      "id": "F-CDHIT-2",
+      "tier": "TRANSCEND",
+      "predicate": "Within 7 days, RCSB Query B total_count falls below 1500 (significant filter semantic change)",
+      "detection": "re-issue Query B JSON",
+      "trip_action": "re-spec filter chain; capture diff vs 1965 baseline; update W2 spec §4.1",
+      "deadline": "T+7d"
+    },
+    {
+      "id": "F-CDHIT-3",
+      "tier": "TRANSCEND",
+      "predicate": "Within 7 days, RCSB FASTA endpoint (/fasta/entry/<PDB>) error rate > 5% on re-fetch of same 100 IDs",
+      "detection": "re-run /tmp/cdhit_emul_step1_fetch.py",
+      "trip_action": "switch to ftp.rcsb.org bulk FASTA; flag F-W5-3 endpoint stability",
+      "deadline": "T+7d"
+    },
+    {
+      "id": "F-CDHIT-4",
+      "tier": "TRANSCEND",
+      "predicate": "Within 14 days, post-length-cap (50–500 aa) yield drops below 800 entries (W2 spec post-cap est ~1180)",
+      "detection": "apply length cap to full Query B set when fetched",
+      "trip_action": "revise W2 spec §4.2 cap range; consider widening to 30–600 aa",
+      "deadline": "T+14d"
+    },
+    {
+      "id": "F-CDHIT-5",
+      "tier": "TRANSCEND",
+      "predicate": "Within 30 days, cluster-aware split simulator produces non-empty intersection between any two of {train, val, test} PDB lists when re-run on full 1965-entry set",
+      "detection": "run tool/hexa_weave_cluster_split.py post-CD-HIT; check set intersections",
+      "trip_action": "fix split-simulator bug; re-emit splits; flag own 12 determinism violation",
+      "deadline": "T+30d"
+    }
+  ],
+
+  "verification": {
+    "destructive_ops_count": 0,
+    "http_calls_count": 101,
+    "rcsb_query_b_total": 1965,
+    "fasta_fetch_success": "100/100",
+    "difflib_pairwise_seconds": 7.51,
+    "cluster_count_at_30pct": 46,
+    "split_set_disjoint": true,
+    "user_approval_received_for_cdhit_install": false,
+    "implementation_status": "EMULATION_EXECUTED_REAL_CDHIT_AWAITING_APPROVAL",
+    "spec_chain_intact": "W1 → W2 → W3 → W4 → W5 plan → W5 alt-paths (cycle 9) → W5 alt-2 follow-on (this) — all docs in proposals/"
+  },
+
+  "user_approval_unlock_gate": {
+    "gate_state": "AWAITING_USER_APPROVAL_FOR_CDHIT_INSTALL_AND_RUN",
+    "items_pending": [
+      "brew install cd-hit (macOS) OR apt install cd-hit (Linux)",
+      "Run cd-hit on full 1965-entry FASTA set",
+      "Concurrent FASTA fetch all 1965 (~6.7 MB bandwidth, ~3 min with 10 workers)",
+      "Length-cap filter (proteins 50–500 aa)",
+      "Write tool/hexa_weave_rcsb_fetch_all.py"
+    ],
+    "recommended_next_user_action": "Approve §5.4 items together to advance F-TP5-b 38% → 39%; approve W5 main 8-item gate to advance to 49%."
+  }
+}
