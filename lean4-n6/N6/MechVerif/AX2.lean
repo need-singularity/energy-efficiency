@@ -257,18 +257,39 @@ theorem AX2_translation_fidelity_to_MK :
   -- Per raw 91 C3 we ALSO surface an object-level explicit sorry below.
   trivial
 
-/-- Object-level explicit `sorry`: the MK-bridge claim, stated as a Prop
-    that no lean4-level proof can discharge without an MK formalization.
+/-- Opaque axiom-shaped predicate: "X is an MK proper class". Cannot be
+    inhabited without an MK formalization. Stated as an `axiom` would commit
+    us to MK semantics; instead we use an `opaque` definition with default
+    value `False` to surface the unmechanized gap honestly. -/
+opaque IsMKProperClass (α : Type) : Prop
 
-    This is the `sorry` to be discharged in W4-W5 via ZFC+V_κ fallback. -/
-theorem AX2_strand_is_MK_class :
-    -- Placeholder Prop: "Strand corresponds to an MK proper class".
-    -- Without an MK formalization we cannot state this honestly; we use
-    -- a Prop variable bound by the meta-promise, which collapses to `False`
-    -- in a context lacking MK semantics. The `sorry` is intentional.
-    ∀ (P : Prop), (P ↔ Nonempty Strand) → P := by
-  intro P hP
-  exact hP.mpr ⟨default⟩
+/-- Opaque axiom-shaped predicate: "the class is closed under HEXA-COMP".
+    HEXA-COMP is not yet mechanized (slated for AX-3/AX-4 W6+ work). -/
+opaque ClosedUnderHEXAComp (α : Type) : Prop
+
+/-- Object-level explicit `sorry`: the MK-bridge claim.
+
+    LOAD-BEARING SORRY (W3): the genuine MK class-theory bridge cannot be
+    discharged without a mathlib formalization of MK (W1 audit confirmed
+    MK is ABSENT in mathlib4 master rev 19c4978). The claim
+    `IsMKProperClass Strand` is `opaque`, hence not provable in lean4
+    without an `axiom`. To be discharged in W4-W5 via ZFC+V_κ fallback. -/
+theorem AX2_strand_is_MK_class : IsMKProperClass Strand := by
+  -- MK class-theory bridge: NOT mechanized in W3.
+  -- Discharge plan (W4-W5): formalize ZFC+V_κ comprehension or Felgner 1971
+  -- conservativity, then prove `IsMKProperClass` from a constructive witness.
+  sorry
+
+/-- Object-level explicit `sorry`: HEXA-COMP closure claim.
+
+    LOAD-BEARING SORRY (W3): the Spec §4 unit 2 demands STRAND closed under
+    HEXA-COMP, but HEXA-COMP itself is not yet mechanized in lean4. To be
+    discharged in W6+ together with the AX-3/AX-4 ENCODES/Bekenstein work. -/
+theorem AX2_strand_closed_under_HEXAComp : ClosedUnderHEXAComp Strand := by
+  -- HEXA-COMP composition operator: NOT mechanized in W3.
+  -- Discharge plan (W6+): define HEXA_COMP as a (Strand × Strand) → Strand
+  -- partial function, then prove image stays inside Strand.
+  sorry
 
 /-! ## §7 W3 main statement — `thm.AX2_strand_class_well_formed`
 

@@ -1,0 +1,216 @@
+{
+  "kick_id": "falsifier-measurement-cycle5",
+  "cycle": "5",
+  "fan_out_slot": "5/5",
+  "today": "2026-04-28",
+  "schema": "raw_77_falsifier_monitor_cycle5_measurement_v1",
+  "ssot": [
+    "design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-mk-x-transcend-closure-all_omega_cycle.json",
+    "design/kick/2026-04-28_falsifier-monitor-cron-cycle4_omega_cycle.json"
+  ],
+  "tool": "tool/falsifier_monitor.hexa",
+  "audit_ledger": "state/falsifier_monitor/audit.jsonl",
+  "audit_ledger_line_count_after_cycle5": 89,
+  "audit_ledger_rows_appended_cycle5": 31,
+
+  "falsifier_inventory": {
+    "total": 29,
+    "active": 25,
+    "RESOLVED": 4,
+    "RESOLVED_list": ["F-MX-1", "F-MX-3-b", "F-MX-6", "F-MX-7"],
+    "deadline_imminent_<=7d": 4,
+    "deadline_passed": 0,
+    "auto_check_yes": 5,
+    "auto_check_partial": 11,
+    "auto_check_no": 13
+  },
+
+  "days_to_deadline_classification": [
+    {"id": "F-CL-JOINT-9",   "days": 1,     "auto": "yes",     "status": "active",   "claim": "F-MX-3-c rebuild-clean not attempted by 2026-04-29"},
+    {"id": "F-MX-3",         "days": 7,     "auto": "partial", "status": "active",   "claim": "4th orthogonal kick-infra failure mode"},
+    {"id": "F-CL-JOINT-10",  "days": 7,     "auto": "yes",     "status": "active",   "claim": "F-MX-3-c rebuild-clean SUCCESS"},
+    {"id": "F-CL-JOINT-11",  "days": 7,     "auto": "yes",     "status": "active",   "claim": "F-MX-3-c rebuild-clean FAIL"},
+    {"id": "F-MX-3-b",       "days": 7,     "auto": "partial", "status": "RESOLVED", "claim": "5th orthogonal kick-infra mode"},
+    {"id": "F-CL-FORMAL-4",  "days": 91,    "auto": "partial", "status": "active",   "claim": "lean4 mechanical T_MK-HW⊬Φ_HW"},
+    {"id": "F-CL-JOINT-2",   "days": 91,    "auto": "partial", "status": "active",   "claim": "F-CL-FORMAL-4 fails 90d"},
+    {"id": "F-MX-5",         "days": 183,   "auto": "partial", "status": "active",   "claim": "raw 106 scope creep HIGH"},
+    {"id": "F-CL-FORMAL-3",  "days": 183,   "auto": "no",      "status": "active",   "claim": "HEXA-WEAVE-specific Tarski"},
+    {"id": "F-CL-PHYSICAL-4","days": 183,   "auto": "no",      "status": "active",   "claim": "Bayesian theory-laundering"},
+    {"id": "F-CL-JOINT-3",   "days": 183,   "auto": "no",      "status": "active",   "claim": "F-CL-PHYSICAL-4 forwarded"},
+    {"id": "F-MX-1",         "days": 365,   "auto": "no",      "status": "RESOLVED", "claim": "TRANSCEND paradigm executed"},
+    {"id": "F-MX-4",         "days": 365,   "auto": "no",      "status": "active",   "claim": "raw 142 D2 verdict-revert"},
+    {"id": "F-CL-FORMAL-1",  "days": 365,   "auto": "no",      "status": "active",   "claim": "T_MK-HW Tarski undefinability"},
+    {"id": "F-CL-PHYSICAL-1","days": 365,   "auto": "no",      "status": "active",   "claim": "AdS/CFT planar limit"},
+    {"id": "F-CL-PHYSICAL-3","days": 365,   "auto": "no",      "status": "active",   "claim": "NR sub-Hubble Bekenstein"},
+    {"id": "F-CL-JOINT-4",   "days": 365,   "auto": "no",      "status": "active",   "claim": "F-CL-FORMAL-1 forwarded"},
+    {"id": "F-CL-JOINT-5",   "days": 365,   "auto": "no",      "status": "active",   "claim": "F-CL-PHYSICAL-1 forwarded"},
+    {"id": "F-MX-6",         "days": 548,   "auto": "no",      "status": "RESOLVED", "claim": "FORMAL Tarski/Hartogs/V_κ"},
+    {"id": "F-CL-FORMAL-2",  "days": 548,   "auto": "no",      "status": "active",   "claim": "Hartogs ordinal V_κ ceiling"},
+    {"id": "F-CL-PHYSICAL-2","days": 548,   "auto": "no",      "status": "active",   "claim": "Bousso dS extension"},
+    {"id": "F-MX-2",         "days": 731,   "auto": "no",      "status": "active",   "claim": "n=6 cosmological lift"},
+    {"id": "F-MX-7",         "days": 731,   "auto": "no",      "status": "RESOLVED", "claim": "Bekenstein self-ref verification"},
+    {"id": "F-CL-JOINT-1",   "days": 26910, "auto": "no",      "status": "active",   "claim": "any axis closure retracted"},
+    {"id": "F-CL-JOINT-6",   "days": 26910, "auto": "partial", "status": "active",   "claim": "option-ii domain pressure"},
+    {"id": "F-CL-JOINT-7",   "days": 26910, "auto": "yes",     "status": "active",   "claim": "biology hexa-weave own_doc_lint"},
+    {"id": "F-CL-JOINT-8",   "days": 26910, "auto": "partial", "status": "active",   "claim": "raw 106 biology cascade"},
+    {"id": "F-CL-JOINT-12",  "days": 26910, "auto": "no",      "status": "active",   "claim": "user loop continuation post-PASS"},
+    {"id": "F-CL-JOINT-13",  "days": 26910, "auto": "no",      "status": "active",   "claim": "retroactive D2 revert"}
+  ],
+
+  "immediate_measurements_5plus": [
+    {
+      "metric": "kick infra distinct failure mode count (cycle 1-4)",
+      "falsifier": "F-MX-3 / F-MX-3-b",
+      "value": "5+",
+      "modes": ["OAuth-401", "slot-saturated", "container-no-node", "silent-timeout", "all-routes-blocked-cascade"],
+      "evidence": "design/kick/2026-04-28_b1..b5_*.json"
+    },
+    {
+      "metric": "AX1.lean exists",
+      "falsifier": "F-CL-FORMAL-4 / F-CL-JOINT-2",
+      "value": "yes",
+      "path": "lean4-n6/N6/MechVerif/AX1.lean",
+      "commit": "47fb6b0b",
+      "completion": "partial PASS, 2 sorry remain",
+      "F-D-3_progress_pct": "64-73"
+    },
+    {
+      "metric": "F-MX-3-c rebuild-clean attempted by 2026-04-29",
+      "falsifier": "F-CL-JOINT-9",
+      "value": "pending (1d remaining)",
+      "evidence": "design/kick/2026-04-28_b3-docker-hexa-runner-rebuild_omega_cycle.json drafted; no SUCCESS marker",
+      "imminent": true
+    },
+    {
+      "metric": "own_doc_lint regression count cycle1-4",
+      "falsifier": "F-CL-JOINT-7",
+      "value": 0,
+      "evidence": "state/format_witness_2026-04-28_migration_phase7_n6-architecture_sweep.jsonl"
+    },
+    {
+      "metric": "raw 106 scope-creep HIGH flag count",
+      "falsifier": "F-MX-5",
+      "value": 0,
+      "evidence": "no scope-creep marker in state/markers/"
+    },
+    {
+      "metric": "L4/L5/L6 axis closure retraction count cycle1-4",
+      "falsifier": "F-CL-JOINT-1",
+      "value": 0,
+      "evidence": "all 28 falsifier rows status preserved across cycle1-4"
+    },
+    {
+      "metric": "raw 142 D2 retroactive revert count",
+      "falsifier": "F-CL-JOINT-13 / F-MX-4",
+      "value": 0
+    },
+    {
+      "metric": "user loop continuation post-PASS detection",
+      "falsifier": "F-CL-JOINT-12",
+      "value": "POSSIBLE FIRE",
+      "note": "cycle 5 mission active = ongoing user-driven continuation post-TRANSCEND-PASS; raw 91 C3 disclosure: requires manual review (this falsifier is intentionally philosophical/non-deterministic)"
+    }
+  ],
+
+  "RESOLVED_candidates_cycle5": [
+    {
+      "id": "F-MX-1",
+      "basis": "already RESOLVED in L4 witness; TRANSCEND paradigm executed",
+      "manual_review_required": false,
+      "current_status": "RESOLVED"
+    },
+    {
+      "id": "F-MX-3-b",
+      "basis": "5th orthogonal kick-infra mode confirmed within 7d window (cascade)",
+      "manual_review_required": false,
+      "current_status": "RESOLVED"
+    },
+    {
+      "id": "F-MX-6",
+      "basis": "L5 formal closure absorbed Tarski/Hartogs/V_κ binding",
+      "manual_review_required": false,
+      "current_status": "RESOLVED"
+    },
+    {
+      "id": "F-MX-7",
+      "basis": "L6 physical closure absorbed Bekenstein cosmological self-ref",
+      "manual_review_required": false,
+      "current_status": "RESOLVED"
+    },
+    {
+      "id": "F-FIX1-1/2/3 (proposed)",
+      "basis": "cycle 4 README FIX-1 applied; 24h regression window opens",
+      "manual_review_required": true,
+      "decision": "DEFER — <24h elapsed since cycle 4; auto-flag premature (raw 91 C3)",
+      "decision_at": "+24h post-cycle4 commit"
+    },
+    {
+      "id": "F-W1-* (proposed)",
+      "basis": "cycle 2 W1 architecture+lean4-audit batches PASS",
+      "manual_review_required": true,
+      "decision": "DEFER — F-CL-FORMAL-4 still active (lean4 W1 audit feeds W2 AX-1 mechanical step; not full RESOLVED until 2 sorry eliminated)",
+      "decision_at": "post-AX1 sorry-elimination"
+    },
+    {
+      "id": "F-CL-JOINT-9 (provisional)",
+      "basis": "if rebuild-clean SUCCESS marker emitted before EOD 2026-04-29, falsifier closes (no fire)",
+      "manual_review_required": true,
+      "decision": "PENDING — 1d remaining"
+    }
+  ],
+
+  "RETIRED_candidates_cycle5": [
+    {
+      "id": "F-CL-JOINT-12",
+      "basis": "philosophical falsifier — fires on user behaviour beyond architecture control; cycle 5 mission active = continuation evidence",
+      "manual_review_required": true,
+      "decision": "DO NOT RETIRE — fires informatively but is non-actionable; keep as observability flag (raw 91 C3)"
+    }
+  ],
+
+  "raw_71_falsifiers_for_cycle5_measurement_construction": [
+    {
+      "falsifier_id": "F-MEAS5-1",
+      "claim_target": "cycle-5 measurement is itself self-referentially regressive (raw 71 self-falsification)",
+      "condition": "two cycle-5 audit-ledger rows for the same falsifier_id within the same UTC second produce non-identical content (raw 65 idempotent violation)",
+      "deadline": "2026-05-05",
+      "verification": "byte-eq check against state/falsifier_monitor/audit.jsonl tail rows for duplicate ts+fid"
+    },
+    {
+      "falsifier_id": "F-MEAS5-2",
+      "claim_target": "ledger silent-fail (raw 77 mandate violation)",
+      "condition": "audit.jsonl line count strictly less than line_count_pre_cycle5 + len(measurements_appended)",
+      "deadline": "2026-05-05",
+      "verification": "post-append wc -l == 58 + 31 = 89 (CONFIRMED)"
+    },
+    {
+      "falsifier_id": "F-MEAS5-3",
+      "claim_target": "auto_check classifier-version drift between cycle1-4 ledger rows and cycle-5 rows for the same fid",
+      "condition": "fid auto_check field changes class without explicit witness rationale",
+      "deadline": "2026-05-05",
+      "verification": "diff cycle1-4 audit rows vs cycle5 rows for fid in {F-MX-3, F-CL-JOINT-1..13}; cycle5 preserves L7-injected partial/yes/no triple"
+    }
+  ],
+
+  "raw_91_C3_honest_disclosures": [
+    "auto_check 'yes/partial/no' tagging is heuristic, not adjudicated — manual review required before any RESOLVED/RETIRED auto-flag is enacted (raw 71 falsifier-retire-rule)",
+    "F-CL-JOINT-12 (user-loop-continuation-post-PASS) IS firing informatively this cycle (cycle 5 mission active) but the falsifier is non-deterministic / philosophical; cannot be 'closed' without conflating observation with decision",
+    "F-CL-FORMAL-4 days_to_deadline=91 (NOT +91) — 90-day mechanical-verification window starts 2026-04-29; cycle 5 measurement window is +91 in the JSON but mission text quotes '+91d remaining', which is a 1-day off-by-one that the L5 deadline 2026-07-28 resolves in favour of 91d",
+    "F-FIX1-* and F-W1-* are NOT in the L4-L7 28-falsifier registry; they are external supplementary trackers, deferred to cycle 6 for formal RESOLVED disposition",
+    "F-A1-PATTERN-* uses days_to_deadline=null (no fixed deadline in cycle 1 witness); 7d regression window is informal and not part of raw 71 retire-rule"
+  ],
+
+  "guards": {
+    "raw_71_falsifier_retire_rule": "RESOLVED/RETIRED auto-flags require manual review",
+    "raw_77_audit_ledger": "append-only; line count grew 58 -> 89",
+    "raw_65_idempotent": "re-running cycle-5 measurement with identical TODAY+fid produces byte-eq rows modulo ts",
+    "raw_142_D2_try_and_revert": "no D2 revert performed this cycle",
+    "raw_91_C3": "all auto-flags carry honest non-determinism disclosure (see disclosures section)",
+    "raw_66_ai_native_error_trailer": "no parse failures encountered; all 4 L4-L7 witnesses loaded"
+  },
+
+  "verdict": "MEASURE-PASS — 31 audit rows appended; 4 RESOLVED preserved; 7 RESOLVED-candidates documented (4 confirmed + 3 deferred); 0 RETIRED enacted (1 candidate F-CL-JOINT-12 deferred per raw 91 C3); 5 immediate-measurable metrics extracted; 3 raw-71 self-falsifiers constructed for cycle-5 measurement-process meta-soundness."
+}

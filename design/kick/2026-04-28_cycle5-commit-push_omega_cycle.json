@@ -1,0 +1,42 @@
+{
+  "schema": "anima/kick/omega_cycle/v1",
+  "kick_id": "cycle5-commit-push-2026-04-28",
+  "ts": "2026-04-28T07:29:34Z",
+  "mission": "cycle 6 / fan-out 1/5 — n6-architecture cycle 5 산출물 monolithic commit + push origin/main",
+  "parent_kick": "cycle 5 fan-out 1-5 (lean4-ax1-commit / lean4-w3-ax2 / mvp-w3 / readme-fix2 / falsifier-measurement)",
+  "scope": "n6-architecture only — multi-repo fan-out 1/5 of 5",
+  "predecessor_commit": "75d753b5da82f8c1ce879a3d93df92987214c781",
+  "files_staged_cycle5": [
+    "lean4-n6/N6/MechVerif/AX2.lean",
+    "state/discovery_absorption/registry.jsonl",
+    "design/kick/2026-04-28_falsifier-measurement-cycle5_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-mvp-w3-clone-vram_omega_cycle.json",
+    "design/kick/2026-04-28_lean4-w3-ax2_omega_cycle.json",
+    "design/kick/2026-04-28_readme-fix2-n6-invariant_omega_cycle.json",
+    "proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w3_lean4_ax2_2026_04_28.md",
+    "design/kick/2026-04-28_cycle5-commit-push_omega_cycle.json"
+  ],
+  "files_NOT_staged_pre_existing_dirty": [
+    "tool/atlas_self_arch_lint.hexa (eprintln debug instrumentation — parallel probe work, not cycle-5 hexa-weave scope)",
+    "state/markers/probe*.marker × 14 (probe debug markers from atlas_self_arch_lint.hexa eprintln runs — pre-existing parallel work)"
+  ],
+  "kick_brief_vs_actual_state_drift": {
+    "brief_claim": "AX2.lean 신규 353 lines + README.md FIX-2 + README.md.sealed.hash + state/falsifier_monitor/audit.jsonl +31 row",
+    "actual_state": "README.md / README.md.sealed.hash / state/falsifier_monitor/audit.jsonl already absorbed in predecessor commit 75d753b5 (chore: bulk-commit n6-architecture background process accumulation, 2026-04-28 16:20 KST). AX2.lean was initial 332 lines in 75d753b5; cycle-5 delta is +45 lines (opaque IsMKProperClass/ClosedUnderHEXAComp predicates + 2 explicit object-level sorry).",
+    "raw_91_c3_honest": "brief over-counted scope; actual cycle-5 commit is incremental opaque-bridge sorry refactor + 4 new kick witnesses + 2 new W3 proposals + 1 registry row. README/falsifier work was in predecessor bulk-commit."
+  },
+  "secrets_scan": {
+    "method": "grep -i -E (api_key|secret|password|token|bearer|sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{20,}|AKIA[A-Z0-9]{16}) on all 9 staged files + git diff",
+    "result": "PASS — no real credentials. Hits on 'token'/'auth' are descriptive text in registry.jsonl (predecessor row about OAuth refresh) + readme-fix2 kick (n6 invariant lead numerics). No sk-/ghp_/AKIA/bearer-token literals."
+  },
+  "raw_13_hooks": "intended PASS — pre-commit hooks let run; no --no-verify",
+  "destructive_op_count": 0,
+  "raw_91_c3_disclosure": [
+    "chflags uchg files NOT touched (.raw / .own untouched per brief)",
+    "pre-existing dirty (atlas_self_arch_lint.hexa + 14 probe markers) explicitly EXCLUDED from this commit",
+    "kick brief 'cycle 5 변경 파일' list contained README/falsifier rows that were already absorbed in 75d753b5; this commit is the incremental delta on top",
+    "AX2.lean stated as '신규 353 lines, 2 opaque-bridge sorry' — actual is +45 line modification (332 base from 75d753b5 → 358 after cycle-5 opaque refactor); 2 sorry confirmed (AX2_strand_is_MK_class, AX2_strand_closed_under_HEXAComp)"
+  ],
+  "korean_report_300char_target": "(filled by report)"
+}

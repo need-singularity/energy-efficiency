@@ -1,0 +1,269 @@
+{
+  "schema": "omega_cycle.witness_v2_w3_clone_vram_spec",
+  "ts": "2026-04-28T17:00:00Z",
+  "topic": "hexa-weave-mvp-w3-clone-vram",
+  "synthesis_mode": "in_context_fallback",
+  "predecessor_witness": "design/kick/2026-04-28_hexa-weave-mvp-w2-base-model_omega_cycle.json",
+  "predecessor_verdict": "FORWARD-SPEC PASS",
+  "parent_spec": "proposals/hexa_weave_mvp_2026_04_28.md",
+  "parent_milestone": "W3",
+  "deliverable_doc": "proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md",
+  "kick_infra_status": {
+    "rc": null,
+    "outer_status": "NOT_ATTEMPTED",
+    "cause_chain": [
+      "predecessor closure cycle exhibited 3 orthogonal kick failure modes (OAuth-401, slot-saturated, container-no-node)",
+      "F-CL3-a falsifier (kick infra clean run within 24h, deadline 2026-04-29) not yet observed at W3-prep authoring time",
+      "W2 used raw 100 fallback; W3 prep continues fallback for consistency until F-CL3-a flips"
+    ],
+    "raw_100_fallback_invoked": true,
+    "raw_91_c3_disclosure": "W3 prep deliverable produced via in-context synthesis (raw 100 fallback). Real nexus kick deferred to W3-execution turn contingent on F-CL3-a observation by 2026-04-29."
+  },
+  "w3_prep_decisions": {
+    "openfold_sha40_capture": {
+      "captured_via": "git ls-remote https://github.com/aqlaboratory/openfold.git (read-only metadata)",
+      "captured_at_utc": "2026-04-28T17:00:00Z",
+      "head_main_sha40": "be2ec1841f16c966c65ae0e7599ebbadc725757d",
+      "tags": [
+        {"name": "v2.2.0",  "sha40": "e938c184a291bf053af3b14c1e3e8bb29aee57e2", "verdict": "RECOMMENDED PIN"},
+        {"name": "v.2.1.0", "sha40": "f434a2786b5a6b39171f358fb3470ad9f4fd2a58", "verdict": "SKIP (typo in tag name)"},
+        {"name": "v2.0.0",  "sha40": "bb3f51e5a2cf2d5e3b709fe8f7d7a083c870222e", "verdict": "older stable"},
+        {"name": "v1.0.1",  "sha40": "42e71db7fa327e0810eb0e371abc9f82aa9b7a6a", "verdict": "legacy"},
+        {"name": "v1.0.0",  "sha40": "6da2cdafc902d423cf7c136d66fbe81484d2cd0a", "verdict": "legacy"},
+        {"name": "v0.1.0",  "sha40": "8d1119dff18506588604949d2cc81997d63cd911", "verdict": "initial"}
+      ],
+      "recommended_pin": {"tag": "v2.2.0", "sha40": "e938c184a291bf053af3b14c1e3e8bb29aee57e2"},
+      "alternate_pin":   {"tag": "main",   "sha40": "be2ec1841f16c966c65ae0e7599ebbadc725757d"},
+      "raw_91_c3_limits": [
+        "no source-tree inspection performed; pin compatibility with W2 §3.1 module structure is structural assumption (F-W3-1)",
+        "no checkout / clone / file read; SHA40 is metadata-only evidence"
+      ]
+    },
+    "clone_procedure": {
+      "approach": "depth-1 tag-pinned shallow clone",
+      "command_recommended": "git clone --depth 1 --branch v2.2.0 https://github.com/aqlaboratory/openfold.git ~/core/hexa-weave/openfold/",
+      "command_alternate":   "git clone --depth 1 --branch main   https://github.com/aqlaboratory/openfold.git ~/core/hexa-weave/openfold/",
+      "post_clone_verification": [
+        "git rev-parse HEAD == e938c184a291bf053af3b14c1e3e8bb29aee57e2",
+        "git describe --tags == v2.2.0",
+        "test -f openfold/model/model.py",
+        "test -f run_pretrained_openfold.py"
+      ],
+      "venv_creation": "python3.10 -m venv ~/core/hexa-weave/.venv",
+      "torch_install": "pip install --index-url https://download.pytorch.org/whl/cu124 torch==2.5.1 torchvision==0.20.1",
+      "openfold_install": "pip install -r requirements.txt (after torch)",
+      "hexa_additions": "pip install pydantic==2.* biopython==1.84 biotite==1.0.* rdkit-pypi==2024.3.*",
+      "weight_download": "huggingface-cli download aqlaboratory/openfold --local-dir ~/core/hexa-weave/openfold/openfold/resources/params/",
+      "weight_size_expected_gb": 3.0,
+      "execution_status": "NOT_EXECUTED — requires user approval"
+    },
+    "vram_measurement_procedure": {
+      "test_target_primary": {"pdb_id": "6L1U", "claimed_residues": 60, "verification_status": "FASTA NOT FETCHED (W3-execution step)"},
+      "test_target_fallback": {"pdb_id": "1UBQ", "residues": 76, "verification_status": "literature-known"},
+      "step_count": 9,
+      "steps": [
+        "STEP 1: pre-flight nvidia-smi (idle <200 MB; 12288 MB total; driver >=550)",
+        "STEP 2: curl PDB 6L1U FASTA + reference structure",
+        "STEP 3: precompute MSA alignments (or use --use_single_seq_inference for fast smoke)",
+        "STEP 4: launch nvidia-smi poller @ 500ms cadence (-lms 500) in background",
+        "STEP 5: forward pass via run_pretrained_openfold.py with --bf16 --model_device cuda:0",
+        "STEP 6: kill poller, awk peak_vram_mb from CSV",
+        "STEP 7: BioPython parse output PDB; verify residue count matches input",
+        "STEP 8: RMSD via Bio.PDB.Superimposer (Cα-only) vs 6L1U_ref.pdb",
+        "STEP 9: write verifier.json with case_id, model_pin SHA40, peak_vram_mb, rmsd_angstrom, inference_time_sec, verdict"
+      ],
+      "polling_cadence_ms": 500,
+      "polling_rationale": "OpenFold attention has sub-second peak spikes; 500ms catches them without CUDA stream interference",
+      "pass_criteria": {
+        "peak_vram_mb_lt_11500": "12 GB capacity − 0.5 GB OS reserve",
+        "rmsd_angstrom_lt_3.0":  "single-seq inference relaxed threshold",
+        "inference_completes_no_oom": true,
+        "output_pdb_parses_with_biopython": true,
+        "predicted_residue_count_eq_input": true
+      },
+      "fallback_chain_count": 7,
+      "fallback_chain": [
+        "7a: enable MSA (HHblits ~30 min)",
+        "7b: --cpu_offload",
+        "7c: --use_deepspeed_evoformer_attention",
+        "7d: bitsandbytes 8-bit quantize",
+        "7e: drop test target to 1UBQ (76 aa)",
+        "7f: bf16 → fp16 (slight accuracy loss, large memory drop)",
+        "7g: declare F-W1-1 + F-W3-4 falsified → escalate to RoseTTAFold All-Atom"
+      ],
+      "execution_status": "NOT_EXECUTED — requires user approval; sandbox cannot SSH ubu1"
+    },
+    "multi_strand_insertion_points": {
+      "openfold_module_layout_assumed": [
+        "openfold/model/model.py (AlphaFold class, top-level forward)",
+        "openfold/model/embedders.py (InputEmbedder, RecyclingEmbedder, TemplateEmbedder)",
+        "openfold/model/evoformer.py (EvoformerStack 48 blocks, EvoformerBlock)",
+        "openfold/model/structure_module.py (StructureModule + IPA)",
+        "openfold/model/primitives.py (Attention, LayerNorm, Linear)"
+      ],
+      "insertion_strategy": "late-fusion: cross-attn modules attach AFTER each of evoformer blocks 43..48 (last 6 of 48); RNA + ligand encoders run independently; joint structure module at end",
+      "rationale": [
+        "first 42 blocks preserve protein-only representation quality",
+        "block boundaries expose pair tensor (B, N_res, N_res, 128) without shape adapter",
+        "late injection means RNA/ligand encoders see stable protein gradients (training stability)"
+      ],
+      "module_count_recap": {
+        "cross_attn_blocks": 6,
+        "branches_per_block": 3,
+        "total_cross_attn_modules": 18,
+        "branches": ["pair → r_emb (P attends to RNA)", "pair → l_emb (P attends to ligand)", "r_emb → l_emb (RNA attends to ligand)"]
+      },
+      "openfold_api_surface_required": [
+        {"surface": "EvoformerStack.run_blocks(input, blocks=range)", "invasiveness": "non-invasive if forward() exposes start_block/end_block kwarg; runtime monkey-patch otherwise"},
+        {"surface": "Pair embedding (B, N_res, N_res, 128) accessible at block boundary", "invasiveness": "non-invasive (standard AF2 contract)"},
+        {"surface": "StructureModule.forward(pair, msa, ...) extension to accept r_emb + l_emb queries", "invasiveness": "necessarily invasive (subclass + override; bounded — no source patches)"}
+      ],
+      "loc_budget_refined": {
+        "CrossAttnBlock_3branch": 240,
+        "RNATransformer_6block_ESM2_style": 320,
+        "LigandGNN_4round_MP": 280,
+        "HexaWeaveModel_top_wiring": 180,
+        "StructureModule_extension_subclass": 220,
+        "Test_scaffolds": 180,
+        "Pydantic_schemas_io": 80,
+        "total": 1500,
+        "ceiling": 1500,
+        "margin": 0
+      },
+      "raw_91_c3_limits": [
+        "module-layout assumption based on AF2 lineage canonical form; not source-tree-verified (F-W3-1, F-W3-5)",
+        "EvoformerStack block-range API existence assumed; runtime monkey-patch is bounded fallback",
+        "LoC margin is zero — no slack for unexpected boilerplate"
+      ]
+    },
+    "dependency_conflict_matrix": {
+      "row_count": 12,
+      "rows": [
+        {"package": "torch", "hexa_target": "2.5.1+cu124", "openfold_v220": "typically >=1.12,<2.x (AF2 lineage) — may have widened", "conflict": "POSSIBLE — F-W3-4 retires", "mitigation": "fall back to OpenFold main HEAD if v2.2.0 pins torch<2.0"},
+        {"package": "cuda-toolkit", "hexa_target": "12.4 (sm_120 RTX 5070)", "openfold_v220": "compiles cuda kernels; sm_120 may be missing from prebuilt", "conflict": "POSSIBLE", "mitigation": "source-compile via CUDA_ARCH_LIST=8.6;9.0;12.0; ~10 min one-time"},
+        {"package": "deepspeed", "hexa_target": "0.14+ or 0.15+ (torch 2.5 compat)", "openfold_v220": "uses deepspeed.ops.op_builder.EvoformerAttnBuilder", "conflict": "low", "mitigation": "pin deepspeed==0.14.* or 0.15+"},
+        {"package": "biopython", "hexa_target": "1.84", "openfold_v220": ">=1.79", "conflict": "none", "mitigation": "none"},
+        {"package": "biotite", "hexa_target": "1.0.*", "openfold_v220": "not direct dep", "conflict": "none", "mitigation": "none"},
+        {"package": "rdkit-pypi", "hexa_target": "2024.3.*", "openfold_v220": "not direct dep", "conflict": "none", "mitigation": "use rdkit-pypi (not the conda-only rdkit)"},
+        {"package": "numpy", "hexa_target": "inherited (~1.26)", "openfold_v220": "typically >=1.21,<2.0", "conflict": "POSSIBLE if numpy 2.x pulled", "mitigation": "hard-pin numpy==1.26.*"},
+        {"package": "scipy", "hexa_target": "inherited (~1.13)", "openfold_v220": "spatial used in IPA tests", "conflict": "low", "mitigation": "none"},
+        {"package": "ml_collections", "hexa_target": "0.1.1", "openfold_v220": "exact 0.1.1 expected", "conflict": "none", "mitigation": "pin"},
+        {"package": "dm-tree", "hexa_target": "0.1.8", "openfold_v220": "from JAX lineage", "conflict": "none", "mitigation": "pin"},
+        {"package": "einops", "hexa_target": ">=0.7,<1.0", "openfold_v220": "internals use einops", "conflict": "harmonize", "mitigation": "single version both honor"},
+        {"package": "pytorch-lightning", "hexa_target": "2.2.* (torch 2.5 compat)", "openfold_v220": "training scripts only (optional for inference)", "conflict": "low", "mitigation": "pin if used"}
+      ],
+      "critical_conflicts_count": 3,
+      "critical_conflicts": [
+        "sm_120 (RTX 5070 compute capability 12.0) absent from OpenFold prebuilt cuda kernels",
+        "torch 2.5 may exceed OpenFold v2.2.0 upper bound (forces main HEAD pin or torch downgrade)",
+        "numpy 2.0 ABI break risk (hard-pin numpy<2.0)"
+      ],
+      "resolution_decision_tree": "torch 2.5 incompatible? → main HEAD ; sm_120 fails compile? → PTX JIT ; numpy ABI mis? → hard-pin <2.0"
+    },
+    "n6_invariant_trace_reaffirmation": {
+      "hooks_pin_compatible_count": 5,
+      "hooks_non_invasive_count": 4,
+      "hooks_with_invasive_fallback": ["N6-H2 (only invasive if pair-track read needed)"],
+      "regression_vs_w2": "none"
+    }
+  },
+  "raw_71_w3_falsifiers_transcend_tier": [
+    {"id": "F-W3-1", "tier": "TRANSCEND", "claim": "OpenFold v2.2.0 (e938c184...) is structurally compatible with W2 §3.1 evoformer + structure-module decomposition", "trigger": "source-tree inspection at W3-execution reveals AlphaFold class renamed/moved or evoformer.py restructured", "deadline": "2026-05-19"},
+    {"id": "F-W3-2", "tier": "TRANSCEND", "claim": "OpenFold weight shards download from huggingface.co/aqlaboratory/openfold resolves with 200 OK + total size in [2.7 GB, 3.3 GB]", "trigger": "mirror 404 OR size out of band OR LFS quota exhausted", "deadline": "2026-05-19"},
+    {"id": "F-W3-3", "tier": "TRANSCEND", "claim": "PDB 6L1U inference on RTX 5070 12GB completes with peak VRAM < 11.5 GB AND RMSD < 3.0 Å vs 6L1U reference", "trigger": "peak >= 11.5 GB OR RMSD >= 3.0 Å OR OOM OR PDB parser fails", "deadline": "2026-05-19"},
+    {"id": "F-W3-4", "tier": "TRANSCEND", "claim": "torch 2.5.1+cu124 + OpenFold v2.2.0 + sm_120 compile path is conflict-free without source patches", "trigger": "pip install errors OR cuda kernel build fails for sm_120 OR runtime CUDA error during forward", "deadline": "2026-05-19"},
+    {"id": "F-W3-5", "tier": "TRANSCEND", "claim": "18 cross-attention modules can be inserted at evoformer blocks 43-48 + StructureModule subclass without modifying OpenFold source files (only subclassing + monkey-patch)", "trigger": "implementation reveals EvoformerStack does not expose block-range slicing OR pair tensor shape mangled before structure module", "deadline": "2026-06-09"}
+  ],
+  "raw_91_c3_disclosure": {
+    "claims": [
+      "OpenFold HEAD + 6 tag SHA40s live-captured via git ls-remote (read-only metadata; no clone)",
+      "Recommended pin: v2.2.0 = e938c184a291bf053af3b14c1e3e8bb29aee57e2",
+      "Alternate pin: main HEAD = be2ec1841f16c966c65ae0e7599ebbadc725757d",
+      "Clone procedure spec: depth-1 tag-pinned + python3.10 venv + torch 2.5 cu124 + huggingface weight ~3 GB",
+      "12GB VRAM measurement step-by-step: 9 steps; PDB 6L1U primary, 1UBQ fallback; nvidia-smi -lms 500; pass < 11.5 GB peak + RMSD < 3.0 Å; 7-step fallback chain",
+      "Cross-attention insertion: late-fusion at evoformer blocks 43-48; 1500 LoC ceiling; 2/3 OpenFold API surfaces non-invasive, 1/3 (StructureModule) bounded-invasive (subclass)",
+      "Dependency conflict matrix: 12 rows; 3 critical conflicts (sm_120, torch 2.5 vs v2.2.0, numpy 2.0 ABI)",
+      "5 W3 TRANSCEND-tier falsifiers + 5 MISS criteria + 17 raw 91 C3 NOT-decided items"
+    ],
+    "evidence_paths": [
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md (W3 prep deliverable)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 predecessor)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "OpenFold upstream: https://github.com/aqlaboratory/openfold",
+      "OpenFold v2.2.0: https://github.com/aqlaboratory/openfold/tree/v2.2.0",
+      "OpenFold weight mirror: https://huggingface.co/aqlaboratory/openfold",
+      "PDB 6L1U: https://www.rcsb.org/structure/6L1U",
+      "RoseTTAFold All-Atom (fallback): https://github.com/baker-laboratory/RoseTTAFold-All-Atom"
+    ],
+    "limits": [
+      "no git clone executed; only git ls-remote (metadata)",
+      "no pip install; recipe only",
+      "no weight download; HuggingFace shard SHA256 set NOT collected",
+      "no nvidia-smi execution; peak VRAM number NOT measured",
+      "no SSH attempt to ubu1; sandbox-bounded",
+      "no PDB 6L1U FASTA fetched; spec-claimed 60-residue length unverified",
+      "no HHblits MSA precomputation",
+      "no source-tree inspection of v2.2.0 (F-W3-1 + F-W3-5 retire)",
+      "no deepspeed cuda kernel compile attempt; sm_120 conflict theoretical (F-W3-4 retires)",
+      "no ~/core/hexa-weave/ directory created (W2 §6 item 11 carry)",
+      ".own hw 1..hw 7 still forward-spec",
+      "kick infra not attempted (raw 100 fallback continued; F-CL3-a still open)",
+      "no legal review on CC-BY-4.0 weight derivative obligations",
+      "no external reviewer outreach (W11+ deferred)",
+      "no CD-HIT clustering / RCSB query execution (W2 §4 still forward-spec)",
+      "no F-TP5-b satisfaction claim (90-day MVP gate at 2026-07-28)",
+      "no cross-attention prototype written (W6 first compile)",
+      "W3-prep verdict: FORWARD-SPEC PASS — document exists; §6 falsifier count = 5 (5/5 TRANSCEND-tier); §7 NOT-list = 17 (>=10); §3.2 step count = 9 (>=5); lint pre-flight predicted PASS"
+    ]
+  },
+  "n6_invariant_thread": {
+    "tau_6_eq_4": "τ(6)=4 maps to: 4 W3 ledger (clone / VRAM / insertion / dep-matrix); 4 critical-path artifacts (SHA40 / verifier.json / pyproject.toml / MANIFEST.md); 4 fallback levels in §3.4 (MSA / cpu_offload / quantize / target-drop); 4 conformational bins (carry W2 N6-H1)",
+    "sigma_6_eq_12": "σ(6)=12 maps to: 12 dependency conflict matrix rows §5.1; 12 GB VRAM ceiling target on RTX 5070; 12-bin DSSP substate histogram (carry W2 N6-H2 fallback)",
+    "J_2_eq_24": "J_2=24 maps to: 18 cross-attn modules + 6 protein-only frozen evoformer blocks (W2 carry) = 24 attention surfaces; 24-PC projection (carry W2 N6-H3)",
+    "phi_6_eq_2": "φ(6)=2 maps to: APPROVE/REJECT user verdict on this W3 prep (clone / VRAM measurement); v2.2.0/main pin choice (binary); FIT/NO-FIT VRAM verdict (F-W3-3); CONFLICT/NO-CONFLICT dep-matrix verdict (F-W3-4)"
+  },
+  "raw_47_cross_repo_check": {
+    "n6-architecture": "this repo — parent + W1 + W2 + W3 prep + this witness",
+    "anima": "/Users/ghost/core/anima/ — sister-repo pattern reference",
+    "nexus": "/Users/ghost/core/nexus/ — kick infra source (degraded; F-CL3-a)",
+    "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dep",
+    "airgenome": "/Users/ghost/core/airgenome/ — biology-adjacent sister",
+    "hive": "/Users/ghost/core/hive/ — hive-cli kick path",
+    "convergence": "/Users/ghost/core/convergence/ — kick fallback synthesis pattern",
+    "count": 6,
+    "raw_47_ge_3_satisfied": true
+  },
+  "raw_53_deterministic_verifier_manifest": {
+    "verifier_types_allowlist": [
+      "filesystem-deterministic (test ! -d ~/core/hexa-weave/openfold; test -f predecessor doc)",
+      "url-existence-deterministic (OpenFold + HuggingFace + RCSB 6L1U URLs string-checkable)",
+      "sha40-pin-deterministic (e938c184... and be2ec18... are immutable git refs)",
+      "regex-deterministic (n6 trace JSON pattern match carry W2)",
+      "numeric-threshold-deterministic (falsifier count >= 5; NOT-list >= 10; VRAM step count >= 5; dep matrix rows >= 5; transcend-tier count >= 5)"
+    ],
+    "verifier_types_disallowed": ["LLM-judge", "subjective-rating", "anonymous-source"],
+    "raw_53_compliant": true
+  },
+  "report_summary": {
+    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w3-clone-vram_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md",
+    "w3_prep_verdict": "FORWARD-SPEC PASS (document exists; §6 falsifier count = 5 (5/5 TRANSCEND-tier); §7 NOT-list = 17 >= 10; §3.2 VRAM steps = 9 >= 5; §5.1 dep matrix = 12 rows; lint pre-flight predicted PASS; no code execution)",
+    "openfold_pin_recommended": {"tag": "v2.2.0", "sha40": "e938c184a291bf053af3b14c1e3e8bb29aee57e2"},
+    "openfold_pin_alternate":   {"tag": "main",   "sha40": "be2ec1841f16c966c65ae0e7599ebbadc725757d"},
+    "clone_procedure_step_count": 12,
+    "vram_step_count": 9,
+    "vram_pass_criteria": ["peak_vram_mb < 11500", "rmsd_angstrom < 3.0", "no_oom", "biopython_parse_ok", "residue_count_match"],
+    "vram_fallback_levels": 7,
+    "insertion_strategy": "late-fusion at evoformer blocks 43-48; 1500 LoC ceiling (zero margin); 2/3 OpenFold API surfaces non-invasive",
+    "dependency_conflict_rows": 12,
+    "critical_conflicts": ["sm_120 prebuilt absence", "torch 2.5 vs v2.2.0 upper bound", "numpy 2.0 ABI break"],
+    "n6_hooks_pin_compatible": "5/5 (one with invasive fallback for N6-H2)",
+    "falsifiers_preregistered_count": 5,
+    "falsifiers_transcend_tier_count": 5,
+    "miss_criteria_count": 5,
+    "not_decided_items_count": 17,
+    "raw_strategies_load_bearing": [12, 22, 23, 47, 51, 53, 71, 91, 100, 108, 135],
+    "honest_c3_what_is_not_closed": "no clone / no pip / no weight download / no nvidia-smi / no SSH / no FASTA fetch / no source-tree inspection / no kernel compile / kick infra deferred to W3-exec contingent on F-CL3-a"
+  }
+}
