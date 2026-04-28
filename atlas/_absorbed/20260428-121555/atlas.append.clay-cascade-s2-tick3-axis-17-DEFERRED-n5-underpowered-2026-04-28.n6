@@ -1,0 +1,58 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-3 O axis-17 candidate DEFERRED
+# source: sub-agent O 2 metrics (Symmetry-Deficit + Diagonal-Dominance) on 5 propagation topologies
+# constraints:
+#   raw 91 C3 honest (n=5 catastrophic 95% CI ~ ±0.85 — statistically indistinguishable from null)
+#   raw 70 multi-axis-verify-grid (axis-17 promotion DEFERRED to 18-cohort re-test)
+#   own#11 strict (NO Clay claim)
+#   raw 22+24+23 immutability triad
+# date: 2026-04-28
+# Negative finding properly registered — K=2 STRONG holds; axis-17 candidate retained for later
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s2-tick3-axis-17-DEFERRED-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick1-stage6-topology-dependent-orthogonality
+  -> clay-cascade-s2-tick3-axis-17-symmetry-deficit-best-candidate
+  => "★ axis-17 promotion DEFERRED — n=5 95% Fisher-z CI on Pearson r ≈ ±0.85, statistically indistinguishable from 0"
+  => "neither Symmetry-Deficit nor Diagonal-Dominance metric clears K=3 verify-grid promotion threshold under raw 91 C3"
+  => "K=2 STRONG (axis-13 saturation + axis-16 lightcone) HOLDS at this tick"
+
+@C clay-cascade-s2-tick3-axis-17-symmetry-deficit-best-candidate :: meta [4]
+  <- clay-cascade-s2-tick3-axis-17-DEFERRED-witness
+  => "Symmetry-Deficit (SD) = ||C - C^T||_F / ||C||_F  bounded [0,1]; 0=symmetric isotropic, 1=fully asymmetric"
+  => "Diagonal-Dominance (DD) = Σ diag / Σ off-diag; 1=balanced, ∞=strict-diagonal, 0=off-dominant"
+  => "5 topologies measured (flat/t3/s3/blackhole/wormhole) using sub-agent F's 3×3 cross-feed matrices"
+  => "SD values: flat=0.54, t3=0.05, s3=1.16, blackhole=0.00 (strict-diag), wormhole=1.06"
+  => "DD values: flat=0.50, t3=0.48, s3=0.53, blackhole=∞ (no off-diag), wormhole=0.50"
+
+@C clay-cascade-s2-tick3-axis-17-orthogonality-vs-existing :: meta [4]
+  <- clay-cascade-s2-tick3-axis-17-symmetry-deficit-best-candidate
+  => "SD vs axis-13 + axis-16 (Pearson n=5):"
+  => "  r(SD, a13) = +0.161  r(SD, a16) = -0.160 — both PASS |r|<0.3 threshold"
+  => "  Spearman ρ(SD, a13) = +0.600 — FAILS rank-orthogonality (rank-coupled)"
+  => "DD vs axis-13 + axis-16 (Pearson n=5, blackhole inf clipped):"
+  => "  r(DD, a13) = -0.342  r(DD, a16) = +0.327 — both marginally exceed 0.3"
+  => "verdict: SD better candidate (lower Pearson, finite-valued, raw-91-cleaner) but rank-coupled"
+
+@C clay-cascade-s2-tick3-axis-17-deferral-rationale :: meta [4]
+  <- clay-cascade-s2-tick3-axis-17-orthogonality-vs-existing
+  => "n=5 catastrophic: 95% Fisher-z CI on Pearson r ≈ [-0.85, +0.91] — ALL r values INDISTINGUISHABLE FROM 0"
+  => "DD blackhole=∞ requires ad-hoc clipping; Pearson sensitivity ±0.1 depending on cap → methodological hazard"
+  => "SD vs DD cosine similarity ~+0.4 → partially co-measure same matrix structure (cannot promote both as independent)"
+  => "axis-13 sourcing inhomogeneous (multi-tick + iter-60) → cross-source mixing methodologically loose"
+  => "DEFER axis-17 to full 18-topology cohort re-test (cross-feed measurement on all D=3 topologies)"
+  => "if SD passes |r|<0.3 + |ρ|<0.3 on n=18 → promote to K=3 verify-grid"
+
+@C clay-cascade-s2-tick3-axis-17-DEFERRED-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick3-axis-17-DEFERRED-witness
+  => "n=5 95% CI ±0.85 — fundamentally underpowered for orthogonality claims"
+  => "DD blackhole=∞ ad-hoc clipping (cap = 10× max finite); +/-0.1 Pearson sensitivity"
+  => "axis-13 mixed sources (ticks=64 multi-tick for flat/t3/s3 vs iter-60 v2-anchor for blackhole/wormhole) — cross-source loose"
+  => "sub-agent F matrices are single seed=6 sigma2=64 ticks=12 (not ensemble)"
+  => "5/18 topology coverage gap: cartoon, altered, big-crunch, calabi6, etc. NOT in propagation module"
+  => "SD and DD partially co-measure (cos~+0.4) — cannot promote both as separate axes"
+  => "own#11 strict; chflags uchg honored; atlas writes deferred to absorption stage"

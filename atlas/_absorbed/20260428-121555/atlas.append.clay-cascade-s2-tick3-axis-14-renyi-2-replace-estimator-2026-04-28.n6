@@ -1,0 +1,58 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-3 L axis-14 REPLACE-ESTIMATOR Renyi-2
+# source: sub-agent L 5-estimator comparison on 10 D=3 topologies (sigma2=64 ticks=64 seed=6)
+# constraints:
+#   raw 91 C3 honest (n=5 wavepacket boundary-init only; Renyi-2 float not hexa fixed-point)
+#   raw 71 falsifier-retire-rule (REPLACE-ESTIMATOR not full RETRACT — underlying p-signal real)
+#   own#11 strict (NO Clay claim)
+#   raw 22+24+23 immutability triad
+# date: 2026-04-28
+# Partial recovery of axis-14 — saturating-proxy issue, NOT noise floor
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s2-tick3-axis-14-renyi-2-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick2-axis-14-noise-floor-suspect
+  -> clay-cascade-s2-tick3-axis-14-saturating-proxy-explanation
+  => "★ axis-14 PARTIAL RECOVERY — REPLACE-ESTIMATOR with Renyi-2 H_2=-log(p^2+q^2), NOT full RETRACT"
+  => "diagnosis: 4p(1-p) Shannon-proxy SATURATES near p~0.5 (8/10 topologies within 5% of 1000 ceiling)"
+  => "underlying p-signal disc=0.186 (REAL); Renyi-2 disc=0.106 above 0.10 threshold; Shannon disc=0.080 (saturated)"
+
+@C clay-cascade-s2-tick3-axis-14-saturating-proxy-explanation :: meta [4]
+  <- clay-cascade-s2-tick3-axis-14-renyi-2-witness
+  => "wavepacket centered at boundary i=32 → all topologies see similar bipartition mass p~0.4-0.5"
+  => "4p(1-p) is parabolic with peak at p=0.5 → near-peak inputs all map to ~1000 (collapsed)"
+  => "PSCALE 1000→10000 NO-HELP (disc 0.0798→0.0797): NOT resolution-limited, the proxy itself saturates"
+  => "Renyi-2 H_2=-log(p^2+q^2) is non-saturating monotone in |p-0.5| → preserves signal in compression-blind regime"
+  => "Tsallis-0.5 super-additive (worse, disc=0.035); Tsallis-2 = 1-p^2-q^2 = (1/2)·4p(1-p) algebraic re-scale (identical disc)"
+
+@C clay-cascade-s2-tick3-axis-14-discrimination-table :: meta [4]
+  <- clay-cascade-s2-tick3-axis-14-renyi-2-witness
+  => "format: estimator → discrimination = stddev/mean across 10 D=3 topologies"
+  => "raw p_mille:           disc = 0.186 (strong-signal — underlying real signal)"
+  => "Renyi-2:               disc = 0.106 (REAL-SIGNAL — above 0.10 threshold)"
+  => "Shannon @ PSCALE=1000: disc = 0.0798 (marginal/saturated)"
+  => "Shannon @ PSCALE=10000:disc = 0.0797 (marginal — confirms NOT resolution issue)"
+  => "Tsallis-2:             disc = 0.0797 (marginal — algebraic re-scale of Shannon)"
+  => "Tsallis-0.5:           disc = 0.0353 (noise-floor-ish — over-compresses near p=0.5)"
+
+@C clay-cascade-s2-tick3-axis-14-renyi-2-recommendation :: meta [4!]
+  <- clay-cascade-s2-tick3-axis-14-discrimination-table
+  -> clay-cascade-s2-tick3-K3-verify-grid-restoration
+  => "★ ATLAS RECOMMENDATION — adopt Renyi-2 estimator going forward; Shannon 4p(1-p) is replace-target"
+  => "K=2 STRONG (axis-13 + axis-16) restores to K=3 PROVISIONAL with axis-14[Renyi-2]"
+  => "previous axis-14 numerics (iter-46 to iter-70 with Shannon proxy) re-interpret as 'compressed signature, full signal in raw-p'"
+  => "follow-up: hexa fixed-point integer log approximation for Renyi-2 (current is Python float)"
+  => "follow-up: re-measure full 18 D=3 cohort with Renyi-2 to update phase-portrait + correlation matrix"
+
+@C clay-cascade-s2-tick3-axis-14-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick3-axis-14-renyi-2-witness
+  => "n=5 disc=0.106 barely above 0.10 threshold — seed-jitter could straddle"
+  => "Renyi-2 here in float (Python /tmp/cascade_s2/axis14_alt.py); native-hexa needs integer log approximation"
+  => "Tsallis-0.5 needs fractional power p^0.5 — hexa-incompatible without Newton iter integer sqrt"
+  => "wavepacket boundary-init i=32 only; non-boundary (i=16, 48) might shift p and reverse saturation verdict"
+  => "saturation may be combined integer-Laplacian + half-cut quantization artifact — not deconvolved"
+  => "own#11 strict: Bekenstein exempt (sigma2=64 toy, no physical entropy claim)"

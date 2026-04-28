@@ -1,0 +1,65 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-3 M tau ~ O(L^2) REFUTED + mass-oscillation revised
+# source: sub-agent M chain1d L∈{4,6,8,10,12,16} × ticks∈{16..256} = 48 cells (seed=6)
+# constraints:
+#   raw 91 C3 honest (single seed; chain1d L narrow [4,16]; t3 integrator-unstable)
+#   raw 71 falsifier-retire-rule (tau ~ O(L^2) REFUTED; mass-oscillation revised hypothesis)
+#   own#11 strict (NO Clay claim)
+#   raw 22+24+23 immutability triad
+# date: 2026-04-28
+# 3rd raw 71 retraction this cascade-s2 sequence — replacement hypothesis revised
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s2-tick3-tau-L2-REFUTED-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick2-replacement-hypothesis-tau-L-squared
+  -> clay-cascade-s2-tick3-mass-oscillation-revised-mechanism
+  => "★ tau ~ O(L^2) REFUTED — chain1d log-log slope = -0.102 (R^2=0.58), NOT slope=2"
+  => "tau is L-INDEPENDENT — set by mass term not lattice diffusion"
+  => "revised mechanism: tau_fit ~23.6 ticks ≈ mass-oscillation period 2pi/sqrt(m^2/PSCALE) = 19.9 ticks"
+
+@C clay-cascade-s2-tick3-tau-L-table :: meta [4]
+  <- clay-cascade-s2-tick3-tau-L2-REFUTED-witness
+  => "format: L → tau_1/e ticks | tau_fit ticks | R^2 (descent-only saturation fit)"
+  => "L=4:  47.8 | 30.3 | 0.977"
+  => "L=6:  46.6 | 22.5 | 0.939"
+  => "L=8:  43.7 | 21.8 | 0.960"
+  => "L=10: 41.5 | 24.5 | 0.994"
+  => "L=12: 40.2 | 19.5 | 0.979"
+  => "L=16: 43.8 | 22.9 | 0.990"
+  => "tau_1/e mean = 43.9 ± 2.9 ticks (CV=6.6%); tau_fit mean = 23.6 ± 3.6 (CV=15%) — robust L-independence"
+
+@C clay-cascade-s2-tick3-mass-oscillation-revised-mechanism :: meta [4!]
+  <- clay-cascade-s2-tick3-tau-L-table
+  => "★ revised mechanism: HARMONIC OSCILLATION period set by mass term, NOT lattice diffusion"
+  => "omega = sqrt(m^2/PSCALE) = sqrt(0.1) = 0.316; period 2pi/omega = 19.9 ticks"
+  => "observed tau_fit = 23.6 ticks within 18% of mass period — close match"
+  => "descent bottom T_min ~ 64-96 ticks (~3-4 mass periods), L-independent"
+  => "regime: small-lattice mass-dominated (xi_lattice << xi_mass at all tested L)"
+  => "implication: tick-2 saturation R^2=0.997 was per-L oscillation envelope, NOT L-dependent equilibration"
+
+@C clay-cascade-s2-tick3-t3-integrator-unstable :: meta [4]
+  <- clay-cascade-s2-tick3-tau-L2-REFUTED-witness
+  => "t3 cubes N∈{27,64,125,216,512} INTEGRATOR-UNSTABLE on Verlet/force-20 step"
+  => "L=4 t3: correlator 9 → 19 → 30 → 54 → 339 → -7281 → -2.5e7 → -2.7e10 over T={16..256}"
+  => "energy drift grows ~10^4× per 64-tick block — cannot test 3D regime without symplectic stepper or smaller dt"
+  => "current data only excludes L^2-scaling in small-lattice mass-dominated regime; large-L crossover untestable"
+
+@C clay-cascade-s2-tick3-tau-L2-followup :: meta [4]
+  <- clay-cascade-s2-tick3-mass-oscillation-revised-mechanism
+  => "follow-up test: vary m^2 explicitly, predict tau ∝ 1/sqrt(m^2) (mass-oscillation hypothesis)"
+  => "follow-up: implement symplectic integrator for t3 to test 3D regime + larger L"
+  => "follow-up: enlarge chain1d L range [16, 64, 256] to detect potential xi_mass < L crossover where diffusion class might emerge"
+  => "atlas integrity strengthened by REFUTATION → revised hypothesis registered, not silently retained"
+
+@C clay-cascade-s2-tick3-tau-L2-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick3-tau-L2-REFUTED-witness
+  => "single seed=6 (CV<15% suggests robust but not multi-seed averaged)"
+  => "descent fit uses only 4-5 monotonic points per L; rebound after T~64-96 truncates tail"
+  => "chain1d L range [4,16] may be too narrow — true diffusion crossover might live at L>>16"
+  => "t3 untestable due to integrator instability — verdict applies to 1D ring only"
+  => "revised mass-oscillation hypothesis itself provisional pending m^2-variation test"
+  => "own#11 strict; tools: /tmp/cascade_s2_tick3/{chain1d_grid.txt, t3_grid.txt, fit_tau_v2.py}"

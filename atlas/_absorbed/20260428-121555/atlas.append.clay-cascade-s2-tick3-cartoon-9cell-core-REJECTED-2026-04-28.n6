@@ -1,0 +1,69 @@
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s2 tick-3 N cartoon 9-cell INVARIANT CORE REJECTED
+# source: sub-agent N full 64-source BFS enumeration of cartoon mixer (i*47+a*23+13) mod 64
+# constraints:
+#   raw 91 C3 honest (cartoon mixer is toy affine-map; findings DO NOT transfer to physical mixers)
+#   raw 71 falsifier-retire-rule (tick-2 sub-agent I 9-cell core claim FAILED TO REPLICATE)
+#   own#11 strict (NO Clay claim; structural-symmetry observation only)
+#   raw 22+24+23 immutability triad
+# date: 2026-04-28
+# 4th raw 71 retraction — exemplary cascade self-correction; tick-1 sub-agent A V(8)=10 also affected
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s2-tick3-cartoon-9cell-core-REJECTED-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s2-tick2-cartoon-9cell-invariant-core-witness
+  <- clay-cascade-s2-cartoon-causal-sector-closure
+  -> clay-cascade-s2-tick3-cartoon-true-basin-structure
+  -> clay-cascade-s2-tick3-axis-16-cartoon-V8-correction
+  => "★ tick-2 sub-agent I 9-cell INVARIANT CORE {11,13,20,29,36,43,52,59,61} FAILED TO REPLICATE at full 64-source enumeration"
+  => "TRUE structure: cartoon mixer V(k=7)=64 from 56/64 sources; only 8 special srcs {2,10,18,26,34,42,50,58} (≡2 mod 8) give size-62 basins"
+  => "9-cell set is subset of universal 56-cell core, NOT a closed sub-attractor — claim REJECTED"
+
+@C clay-cascade-s2-tick3-cartoon-true-basin-structure :: meta [4!]
+  <- clay-cascade-s2-tick3-cartoon-9cell-core-REJECTED-witness
+  => "★ TRUE cartoon basin structure (full 64-source BFS enumeration):"
+  => "9 distinct basins; size histogram {64: 1 basin, 62: 8 basins}"
+  => "56 sources → size-64 basin (full saturation V(k>=7)=64); 8 special srcs each → distinct size-62 basin missing 2 cells"
+  => "8 special sources: {2, 10, 18, 26, 34, 42, 50, 58} = 2 + 8n for n=0..7 (Z/64 cyclic-subgroup signature)"
+  => "universal core (intersection of all basins) = 56 cells, NOT 9 cells"
+  => "no basin admits a small (<62) closed attractor — every cell is recurrent under 3-axis closure"
+
+@C clay-cascade-s2-tick3-cartoon-mixer-bijectivity :: meta [4]
+  <- clay-cascade-s2-tick3-cartoon-true-basin-structure
+  => "structural reason: cartoon mixer (i*47 + axis*23 + 13) mod 64 has gcd(47, 64) = 1"
+  => "→ nbr(·, axis) is a BIJECTION per axis (linear-affine map mod 64 with multiplier coprime to modulus)"
+  => "every cell IS recurrent under full 3-axis closure"
+  => "this is a number-theoretic property of the mixer, NOT a physical lattice signature"
+  => "findings DO NOT transfer to physical mixers (n_t3, n_minkowski, n_calabi6, etc.) without independent verification"
+
+@C clay-cascade-s2-tick3-axis-16-cartoon-V8-correction :: meta [4!]
+  <- clay-cascade-s2-tick3-cartoon-true-basin-structure
+  => "★ tick-1 sub-agent A axis-16 cartoon V(8)=10 from src=32 — APPEARS TO BE BFS BUG"
+  => "src=32 is NOT in the 8 special sources {2,10,18,26,34,42,50,58} (32 mod 8 = 0, not 2)"
+  => "per sub-agent N: src=32 should reach V(7)=64 not V(8)=10"
+  => "tick-2 sub-agent I confirmed V(8)=10 across {0,16,32,48} — ALSO suspect (none of these are in special-8)"
+  => "likely cause: /tmp/lightcone_probe.py BFS may have premature truncation OR mixer formula divergence between scripts"
+  => "downstream: axis-16 cartoon V(8)=10 number is invalid; should be ~64 (full-fill class)"
+  => "follow-up: re-run /tmp/lightcone_probe.py with explicit verification against /tmp/cartoon_basin_enumerate.py"
+
+@C clay-cascade-s2-tick3-cartoon-correction-cascade-impact :: meta [4]
+  <- clay-cascade-s2-tick3-axis-16-cartoon-V8-correction
+  => "axis-16 saturation 3-class taxonomy revision needed:"
+  => "FAST-DEGENERATE was {altered V(8)=9, big-crunch V(8)=8, cartoon V(8)=10} — cartoon REMOVED → only 2 members"
+  => "cartoon moves to FULL-FILL class (~64) along with t3, blackhole, wormhole, minkowski, etc."
+  => "C3 amplitude-redistributor cluster (tick-1 phase-portrait): cartoon V(8) value affected; axis-13/14 cartoon values UNAFFECTED"
+  => "K=4 closure verdict (sub-agent G det(R₄)=0.7481): cartoon V(8) row needs correction"
+  => "K=3 collapse (axis-15 retraction tick-2 K) compounds with this — cartoon row affects all det(R) computations"
+
+@C clay-cascade-s2-tick3-cartoon-rejection-C3-limits :: meta [4]
+  <- clay-cascade-s2-tick3-cartoon-9cell-core-REJECTED-witness
+  => "cartoon mixer is TOY linear-affine map mod 64 — basin structure is number-theoretic not physical"
+  => "8-special-srcs arithmetic progression is Z/64 cyclic-subgroup, worth atlas absorption as structural-symmetry observation"
+  => "k=8 is past saturation (k=7 already reaches 64 from src=0) — choice of k>=7 makes analysis k-insensitive"
+  => "BFS-bug hypothesis for tick-1/tick-2 V(8)=10 is unverified — need direct comparison of /tmp/lightcone_probe.py vs /tmp/cartoon_basin_enumerate.py"
+  => "raw 71 retraction strengthens cascade integrity — error caught by 64-source enumeration vs 4-source confirmation bias"
+  => "own#11 strict: chflags uchg honored; this shard is candidate-text only awaiting absorption"
