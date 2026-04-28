@@ -1,0 +1,122 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T06:43:00Z",
+  "title": "F-OAUTH-DETECTOR-MAC-PATH: oauth_refresh_detector Mac branch — Keychain mdat polling (cycle 2 fan-out 2/5)",
+  "task_label": "F-OAUTH-DETECTOR-MAC-PATH (Task B follow-up)",
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_b1-hetzner-oauth-refresh_omega_cycle.json (raised this F-finding under outstanding_followups)",
+    "nexus/.raw-audit ts=2026-04-28T04:50:19Z 'detector-false-positive-fixed-queue-bug-discovered' (previous fix swapped .claude.json → .credentials.json; this fix swaps file-mtime → Keychain mdat for darwin)"
+  ],
+
+  "scope": "Fix oauth_refresh_detector body's Mac path so REFRESH_HEALTHY can fire on Mac. Current logic watches ~/.claude-claude9/.credentials.json mtime, but Mac CLI stores OAuth in macOS Keychain item 'Claude Code-credentials' — file mtime never changes, so signal never fires. Add OS branching: darwin uses Keychain mdat, linux/other keep file mtime.",
+
+  "investigation_summary": {
+    "current_state_evidence": {
+      "credentials_file_mtime_on_mac": "Apr 21 05:11 (1776715872) — frozen ~7 days, last modified before authoring of this fix",
+      "keychain_mdat_on_mac": "20260427024539Z (Apr 27 02:45 UTC) — actively maintained by Mac CLI, advanced 6 days past file mtime",
+      "log_evidence_pre_fix": "/Users/ghost/.hx/log/oauth_refresh_events.log shows 1 spurious MAC_REFRESH at 2026-04-28T04:47:51Z (file touched once externally) + zero genuine REFRESH_HEALTHY events despite Mac CLI being used continuously",
+      "linux_side_status": "WORKING — hetzner /root/.claude-claude1/.claude.json mtime correctly tracked via ssh probe (300s cadence)"
+    },
+    "root_cause": "raw 91 C3 — file-based detection assumes credential persistence through filesystem; Mac CLI uses Keychain CRUD via security framework, leaving credentials.json untouched after initial profile bootstrap.",
+    "fix_layer": "tool/oauth_refresh_detector.body — POSIX shell daemon body, locked with chflags uchg per raw 9 hexa-only mandate"
+  },
+
+  "patch_applied": {
+    "file": "/Users/ghost/core/hive/tool/oauth_refresh_detector.body",
+    "lock_state_pre": "chflags uchg (locked)",
+    "lock_state_post": "chflags uchg (re-locked after edit)",
+    "size_pre_bytes": 2025,
+    "size_post_bytes": 4886,
+    "diff_summary": [
+      "Added OS=$(uname -s) detection at top.",
+      "Added mac_keychain_mdat() function: `security find-generic-password -s 'Claude Code-credentials'` (NO -w flag → secret never read), pipe through `grep '\"mdat\"'` and `sed -n 's/.*\"\\([0-9]\\{14\\}\\)Z.*/\\1/p'`. Returns 14-digit YYYYMMDDHHMMSS string or empty.",
+      "Added MAC_MODE state variable (keychain | file).",
+      "Bootstrap branch by $OS: Darwin tries Keychain first; if mdat empty, falls back to file mode (F-3 falsifier).",
+      "Main loop polls mdat string equality (not mtime numeric); on mid-run mdat disappearance, switches MAC_MODE to file and continues without flapping.",
+      "Linux/other branch unchanged — uses existing stat -f %m file mtime path.",
+      "REFRESH_HEALTHY logic now driven by LAST_REFRESH_TS (set in either Mac branch) rather than LAST_MAC_MTIME directly — keeps healthy-window semantics when Mac source is mdat string."
+    ],
+    "secret_safety": "security CLI invoked WITHOUT `-w`. stdout contains attribute metadata only (cdat, mdat, svce, acct). Verified by selftest grep for access_token/refresh_token/sk-ant/ya29 → 0 hits."
+  },
+
+  "selftest_results": {
+    "syntax_check": "sh -n on patched body → SYNTAX_OK",
+    "isolated_helper_test": {
+      "OS_detected": "Darwin",
+      "initial_mdat_extracted": "20260427024539",
+      "mdat_format_pass": "14-digit YYYYMMDDHHMMSS confirmed",
+      "missing_key_returns_empty": "PASS — non-existent service name returns empty string cleanly",
+      "secret_leak_grep_hits": 0
+    },
+    "live_smoke_test": {
+      "method": "ran full body for 3s in subshell with redirected log path; verified bootstrap line",
+      "bootstrap_line_observed": "2026-04-28T06:41:37Z START_MAC_KEYCHAIN mdat=20260427024539 file_mtime=1776715872",
+      "verdict": "PASS — new format emitted, old 'START mac_mtime=...' format gone"
+    },
+    "launchd_daemon_restart": {
+      "method": "launchctl kickstart -k gui/$(id -u)/dev.hexa-lang.oauth-refresh-detector",
+      "old_pid_killed": true,
+      "new_pid": 53340,
+      "post_kickstart_log_lines": [
+        "2026-04-28T06:42:23Z START_MAC_KEYCHAIN mdat=20260427024539 file_mtime=1776715872",
+        "2026-04-28T06:42:28Z HETZNER_REFRESH mtime=1777341858 prev=0"
+      ],
+      "verdict": "PASS — daemon picked up patched body, branched into keychain mode, hetzner probe still functional"
+    }
+  },
+
+  "raw_71_falsifiers": [
+    {
+      "id": "F-OAUTH-DETECTOR-MAC-PATH-1",
+      "name": "Keychain mdat unchanged for >24h despite Mac CLI usage",
+      "predicate": "If `tail /Users/ghost/.hx/log/oauth_refresh_events.log | grep MAC_REFRESH` shows zero MAC_REFRESH lines in any 24h window AND `claude -p ok` succeeds in that window AND `security find-generic-password -s 'Claude Code-credentials' | grep mdat` shows mdat advanced from logged value, then this fix is broken (parsing or polling cadence regression).",
+      "deadline": "2026-04-29T07:00:00Z (~24h post-fix)",
+      "check_command": "awk '/MAC_REFRESH source=keychain/' /Users/ghost/.hx/log/oauth_refresh_events.log | tail -5",
+      "remedy_if_fails": "verify sed regex against current `security` output format (Apple may change escape sequence); add tee-to-stderr debug line to mac_keychain_mdat()"
+    },
+    {
+      "id": "F-OAUTH-DETECTOR-MAC-PATH-2",
+      "name": "false-positive: linux host running Mac branch",
+      "predicate": "If detector deployed to hetzner / ubu* (linux uname=Linux) and emits `START_MAC_KEYCHAIN` line instead of `START_LINUX`, OS branching is broken.",
+      "check_command": "ssh hetzner 'tail -20 ~/.hx/log/oauth_refresh_events.log 2>/dev/null | grep START_MAC_KEYCHAIN' (expect zero hits)",
+      "remedy_if_fails": "verify case statement; security CLI does not exist on linux so it would fail-empty anyway, but explicit branching is preferred"
+    },
+    {
+      "id": "F-OAUTH-DETECTOR-MAC-PATH-3",
+      "name": "mdat field absent → fallback path",
+      "predicate": "If Apple removes/renames mdat attribute in future macOS versions OR Keychain item is deleted/renamed, mac_keychain_mdat returns empty. Fix MUST fall through to file mode and emit START_MAC_FALLBACK_FILE log line.",
+      "check_command": "security delete-generic-password -s 'TEST-NONEXISTENT' 2>/dev/null; mac_keychain_mdat against fake service → empty",
+      "selftest_status": "PASS — non-existent service returns empty; bootstrap branches to MAC_MODE=file with START_MAC_FALLBACK_FILE",
+      "remedy_if_fails": "add second fallback to /Users/ghost/Library/Application\\ Support/Claude/* config tree mtime"
+    }
+  ],
+
+  "raw_91_c3_honest_limits": [
+    "Keychain `mdat` is updated whenever ANY attribute write happens to the Keychain item — could in theory be touched by something other than OAuth refresh (e.g., Keychain Access GUI 'Show password' user prompt, ACL edits). Probability low but not zero. False-positive MAC_REFRESH is benign because REFRESH_HEALTHY also requires hetzner refresh within 30min.",
+    "We did NOT use `security find-generic-password -w` — that flag prints the secret to stdout. Reading mdat metadata only is safer but still requires the daemon to have keychain access (sandbox/launchd userid context must match). Verified working under launchd gui/$(id -u) bootstrap on this Mac (PID 53340 emitted bootstrap line).",
+    "Alternative considered: `log stream --predicate 'subsystem == \"com.apple.security\"'` for syslog event detection. Rejected — requires sudo, produces high-volume noise (every Keychain access by any app), no clean filter for the specific 'Claude Code-credentials' item, and would be killed by ThrottleInterval=30s launchd policy.",
+    "MAC_MODE switch is one-way: keychain → file on mid-run mdat-missing. Does NOT switch back to keychain if Keychain item is recreated. Mitigation: KeepAlive=true causes daemon restart on crash; daemon also restarts cleanly on launchctl kickstart. Acceptable.",
+    "Polling cadence stays at 60s same as before. Keychain CLI invocation is ~5–20ms wall-time on M-series Mac (selftest measured), well within budget."
+  ],
+
+  "cross_repo_impact": {
+    "files_modified": [
+      "/Users/ghost/core/hive/tool/oauth_refresh_detector.body (size 2025 → 4886 bytes; locked uchg)"
+    ],
+    "files_unchanged": [
+      "/Users/ghost/core/hive/tool/oauth_refresh_detector.hexa (still calls /bin/sh body — wrapper unaffected)",
+      "/Users/ghost/core/hive/launchd/dev.hexa-lang.oauth-refresh-detector.plist (no env/args change)",
+      "/Users/ghost/core/nexus/scripts/bin/hexa_remote (still consumes REFRESH_HEALTHY via /Users/ghost/.hx/state/oauth_blacklisted_hosts.jsonl clearing — unchanged)"
+    ],
+    "consumers_affected": [
+      "pending_kick_replay_daemon (downstream of REFRESH_HEALTHY events) — should now actually fire on Mac side",
+      "nexus hexa_remote oauth blacklist clearer — same"
+    ],
+    "no_repo_outside_hive_modified": true
+  },
+
+  "outstanding_followups": [
+    "monitor next 24h for first Mac MAC_REFRESH event (Mac CLI typically refreshes tokens every few hours)",
+    "if F-OAUTH-DETECTOR-MAC-PATH-1 fires, dump raw `security find-generic-password` output to stderr for one cycle to inspect format drift"
+  ]
+}

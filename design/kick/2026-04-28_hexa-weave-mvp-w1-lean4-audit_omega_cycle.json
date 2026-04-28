@@ -1,0 +1,170 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_hexa-weave-mvp-w1-lean4-audit",
+  "kick_title": "HEXA-WEAVE MVP W1 lean4 + mathlib4 audit (early start)",
+  "kick_date": "2026-04-28",
+  "umbrella": "formal-verification",
+  "cost_center": "hexa-weave-formal-mechanical-verification",
+  "parent_witness": "design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
+  "parent_spec": "proposals/hexa-weave-formal-mechanical-verification-prep.md",
+  "audit_doc": "proposals/hexa_weave_mvp_w1_lean4_audit_2026_04_28.md",
+  "deadline_for_w12": "2026-07-28",
+  "w1_window": {
+    "nominal_start": "2026-04-28",
+    "nominal_end": "2026-05-04",
+    "actual_start": "2026-04-28",
+    "actual_end": "2026-04-28",
+    "early_start_savings_days": 0,
+    "schedule_margin_buy_days": 7
+  },
+  "environment": {
+    "elan_installed": true,
+    "elan_version": "4.2.1",
+    "elan_path": "/opt/homebrew/bin/elan",
+    "lean_installed": true,
+    "lean_version": "4.30.0-rc1",
+    "lean_arch": "arm64-apple-darwin24.6.0",
+    "lean_path": "/opt/homebrew/bin/lean",
+    "toolchain_match_spec": true,
+    "lean4_n6_repo_exists": true,
+    "lean4_n6_repo_path": "/Users/ghost/core/n6-architecture/lean4-n6",
+    "mathlib4_present": true,
+    "mathlib4_rev": "19c497800a418208f973be74c9f5c5901aac2f54",
+    "mathlib4_input_rev": "master",
+    "mathlib4_path": "/Users/ghost/core/n6-architecture/lean4-n6/.lake/packages/mathlib/Mathlib",
+    "no_install_actions_taken": true,
+    "no_lake_update_invoked": true,
+    "no_lake_build_invoked": true,
+    "audit_method": "grep_source_inspection_only"
+  },
+  "audit_7_theorems": [
+    {
+      "idx": 1,
+      "name": "Hartogs ordinal",
+      "spec_classification": "USE AS-IS",
+      "audit_classification": "USE-AS-IS w/ rename",
+      "module_path_actual": "Mathlib/SetTheory/Cardinal/Aleph.lean + Cardinal/Basic.lean",
+      "symbol": "Order.succ : Cardinal → Cardinal (NO Ordinal.hartogs)",
+      "spec_corrigendum": "Spec cited Ordinal.hartogs which does NOT exist in master rev"
+    },
+    {
+      "idx": 2,
+      "name": "V_kappa rank hierarchy",
+      "spec_classification": "USE AS-IS",
+      "audit_classification": "USE-AS-IS",
+      "module_path_actual": "Mathlib/SetTheory/ZFC/VonNeumann.lean (V_o), Mathlib/SetTheory/ZFC/Rank.lean (rank)",
+      "symbol": "ZFSet.vonNeumann (notation V_), ZFSet.rank",
+      "spec_corrigendum": "Spec cited ZFC.Basic; actual files are ZFC/VonNeumann.lean and ZFC/Rank.lean"
+    },
+    {
+      "idx": 3,
+      "name": "sigma / phi / tau arithmetic functions",
+      "spec_classification": "USE AS-IS",
+      "audit_classification": "USE-AS-IS",
+      "module_path_actual": "Mathlib/NumberTheory/ArithmeticFunction/Misc.lean (sigma); Mathlib/Data/Nat/Totient.lean (totient)",
+      "symbol": "ArithmeticFunction.sigma (notation sigma); Nat.totient; tau encoded as sigma 0 via sigma_zero_apply",
+      "spec_corrigendum": "Spec cited Nat.ArithmeticFunction.tau; that path does NOT exist; use sigma 0"
+    },
+    {
+      "idx": 4,
+      "name": "Tarski undefinability",
+      "spec_classification": "EXTEND",
+      "audit_classification": "EXTEND",
+      "module_path_actual": "Mathlib/ModelTheory/Definability.lean + Encoding.lean + ElementaryMaps.lean",
+      "symbol": "Set.Definable, FirstOrder.Language.DefinableSet, Tarski-Vaught Test (NOT truth-undefinability)",
+      "spec_corrigendum": "Tarski hits in master refer to Tarski-Vaught test for elementary substructures, not 1936 truth-undefinability; diagonal lemma must be built on top of ModelTheory/Encoding"
+    },
+    {
+      "idx": 5,
+      "name": "Goedel incompleteness",
+      "spec_classification": "EXTEND",
+      "audit_classification": "EXTEND (foundations only)",
+      "module_path_actual": "Mathlib/Logic/Godel/GodelBetaFunction.lean",
+      "symbol": "Nat.beta, Nat.unbeta",
+      "spec_corrigendum": "Spec cited Mathlib.ModelTheory.Arithmetic Q.consistent_iff and Mathlib.Logic.Incomplete; neither exists; only beta-function foundations are present"
+    },
+    {
+      "idx": 6,
+      "name": "Inaccessible cardinal",
+      "spec_classification": "EXTEND-AXIOM",
+      "audit_classification": "USE-AS-IS predicate + EXTEND-AXIOM existence",
+      "module_path_actual": "Mathlib/SetTheory/Cardinal/Regular.lean",
+      "symbol": "structure Cardinal.IsInaccessible; theorem IsInaccessible.univ",
+      "spec_corrigendum": "IsInaccessible.univ is meta-level (universe), does NOT supply an in-V inaccessible; axiom exists_inaccessible still required"
+    },
+    {
+      "idx": 7,
+      "name": "Morse-Kelley class theory",
+      "spec_classification": "PORT (or fallback)",
+      "audit_classification": "ABSENT (PORT or fallback to ZFC.Class)",
+      "module_path_actual": "n/a; fallback path Mathlib/SetTheory/ZFC/Class.lean",
+      "symbol": "n/a; fallback Class := Set ZFSet, Class.iota",
+      "spec_corrigendum": "MK / NBG / Morse-Kelley confirmed ABSENT in mathlib4 master; Class machinery in ZFC/Class.lean enables ZFC + axiom exists_inaccessible fallback path"
+    }
+  ],
+  "audit_summary": {
+    "use_as_is": 3,
+    "use_as_is_with_rename": 1,
+    "extend": 2,
+    "extend_axiom": 1,
+    "port_or_fallback": 1,
+    "spec_section_3_corrigenda_count": 6
+  },
+  "f_d_3_reassessment": {
+    "spec_section_9_value": "HIGH 60-75%",
+    "post_w1_value": "HIGH 65-75%",
+    "lower_bound_change": "+5pp due to Tarski/Goedel composition gap exposed",
+    "upper_bound_change": "0pp",
+    "rationale": "Environment-already-ready saves ~3-7 days but Spec section 3 had 6 module-path inaccuracies anchoring the 22-34 person-day estimate; Tarski-undefinability + Goedel incompleteness composition is more work than Spec implied (Nat.beta only, no Q.consistent_iff)",
+    "fallback_path_strengthened": "ZFC.Class + axiom exists_inaccessible is now de-facto primary path; MK direct port deprecated for W4-5"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-W1-1",
+      "claim": "audit reports USE-AS-IS theorem that does not compile in lean4-n6 N6/MechVerif/Audit.lean",
+      "condition": "by 2026-05-04, a stub #check on each USE-AS-IS symbol fails in lean4-n6",
+      "experiment": "write lean4-n6/N6/MechVerif/Audit.lean with one #check per USE-AS-IS prerequisite; run lake build N6.MechVerif.Audit",
+      "expected_outcome": "does NOT fire",
+      "severity_if_fires": "MEDIUM (signals grep audit insufficient; need #check audit)"
+    },
+    {
+      "id": "F-W1-2",
+      "claim": "Spec section 3.2 corrigenda list misses an additional inaccuracy that surfaces in W2",
+      "condition": "during W2 AX-1 work, a NEW Spec section 3 path-reference error emerges",
+      "experiment": "track W2 build log; cross-reference FAIL against this audit section 3.2 corrigenda",
+      "expected_outcome": "may fire on minor lemma names; no major missing-module inaccuracy expected",
+      "severity_if_fires": "LOW (lemma-name level)"
+    },
+    {
+      "id": "F-W1-3",
+      "claim": "Hartogs Order.succ surrogate does NOT match Spec section 1 kappa-plus semantics",
+      "condition": "Order.succ (kappa : Cardinal) for kappa inaccessible is NOT equal to Hartogs(V_kappa) in the Spec section 1 sense",
+      "experiment": "prove (Order.succ kappa).ord = Hartogs(V_kappa) lemma in lean4-n6/N6/MechVerif/PhiHW.lean (W7)",
+      "expected_outcome": "does NOT fire; classical Hartogs(V_kappa)=kappa-plus for kappa inaccessible (Jech 2003 ch.17)",
+      "severity_if_fires": "HIGH (would invalidate USE-AS-IS-with-rename classification)"
+    },
+    {
+      "id": "F-W1-4",
+      "claim": "IsInaccessible.univ is sufficient for Spec section 1 kappa purposes (axiom exists_inaccessible unnecessary)",
+      "condition": "lean4 universe-level inaccessibility admits internal-to-V_kappa use without new axiom",
+      "experiment": "attempt to derive exists kappa Cardinal level 0 IsInaccessible kappa from IsInaccessible.univ at W4",
+      "expected_outcome": "FIRES NEGATIVE (Lean universe inaccessibility is meta; cannot internalize to Cardinal.0 without Tarski-Grothendieck-style axiom; axiom exists_inaccessible remains required)",
+      "severity_if_fires_negative": "expected; reinforces EXTEND-AXIOM classification"
+    },
+    {
+      "id": "F-W1-5",
+      "claim": "MK-fallback via Class := Set ZFSet is too weak for AX-2 STRAND class comprehension",
+      "condition": "encoding STRAND as Class := Set ZFSet cannot accommodate impredicative class comprehension required by T_MK-HW AX-2",
+      "experiment": "at W4, attempt STRAND := {x : ZFSet | exists s, encodes_strand x s} via Class.iota; verify class-existence under impredicative quantifier",
+      "expected_outcome": "may fire MEDIUM; Class.iota is definite-description-only; fallback-to-fallback: drop AX-2 to predicative ZFC + reflection schema",
+      "severity_if_fires": "MEDIUM (forces second-fallback to predicative + reflection)"
+    }
+  ],
+  "raw_91_c3_honest_disclosure": [
+    "Audit is grep-only; NO lake build invoked; NO #check evaluated. PRESENT/ABSENT classifications are lexical presence in .lean source; do NOT verify public-export, typeclass-resolution at use-site, or elaborator timeout. F-W1-1 covers grep-to-#check conversion in W1 residual budget.",
+    "No system mutation: elan was NOT installed (already present); lake update was NOT invoked; lake build was NOT invoked. User authorization for any system change was not requested because no change was needed.",
+    "Spec section 3 estimate-to-measurement promotion is partial: 3 USE-AS-IS items confirmed by source inspection but Tarski-extends and Goedel-extends classifications still depend on engineering judgment about diagonal-lemma composition. The 22-34 person-day Spec section 4 estimate is NOT promoted to measurement until W6-W7 yields a working thm.Phi_HW_tarski_independence proof skeleton.",
+    "Spec section 3 inaccuracies disclosed: 6 incorrect module-path references flagged in section 3.2. Quality concern about Spec authoring process; Spec-revision pass should fold corrections back. Recommended action: append a section 3-bis corrigendum to parent Spec cross-linking this audit.",
+    "F-D-3 reassessment is NOT a green light. Even with W1 environment-already-ready savings, F-D-3 remains HIGH (65-75%). At W6 mid-point checkpoint, if thm.AX1_n6_uniqueness and MK-fallback scaffolding are NOT both green-CI, escalate to Isabelle/HOL pivot (Spec section 2) or 90-day-extension request (raw 142 D2 retroactive defer)."
+  ]
+}

@@ -1,0 +1,25 @@
+=== cross-feed-probe cascade-s2 tick-1 ===
+perturbation: +1000 (scaled phi units) at axis-X-neighbor of center cell
+response: Σ|Δφ| at axis-Y first+second neighbors of perturbed cell
+ticks_per_stage=12  PROP_SIGMA=64  PROP_FSCALE=1000
+[topo=flat] center_cell=32 delta=1000
+  C(X=0 pert_cell=31 → Y): [Y0=827] [Y1=371] [Y2=371] 
+  C(X=1 pert_cell=33 → Y): [Y0=835] [Y1=371] [Y2=371] 
+  C(X=2 pert_cell=33 → Y): [Y0=835] [Y1=371] [Y2=371] 
+[topo=t3] center_cell=42 delta=1000
+  C(X=0 pert_cell=41 → Y): [Y0=51] [Y1=55] [Y2=54] 
+  C(X=1 pert_cell=38 → Y): [Y0=51] [Y1=51] [Y2=56] 
+  C(X=2 pert_cell=26 → Y): [Y0=54] [Y1=52] [Y2=53] 
+[topo=s3] center_cell=42 delta=1000
+  C(X=0 pert_cell=9 → Y): [Y0=52] [Y1=56] [Y2=764] 
+  C(X=1 pert_cell=6 → Y): [Y0=59] [Y1=59] [Y2=758] 
+  C(X=2 pert_cell=58 → Y): [Y0=0] [Y1=0] [Y2=751] 
+[topo=blackhole] center_cell=42 delta=1000
+  C(X=0 pert_cell=41 → Y): [Y0=53] [Y1=0] [Y2=0] 
+  C(X=1 pert_cell=38 → Y): [Y0=0] [Y1=53] [Y2=0] 
+  C(X=2 pert_cell=26 → Y): [Y0=0] [Y1=0] [Y2=51] 
+[topo=wormhole] center_cell=42 delta=1000
+  C(X=0 pert_cell=41 → Y): [Y0=57] [Y1=58] [Y2=756] 
+  C(X=1 pert_cell=38 → Y): [Y0=59] [Y1=56] [Y2=763] 
+  C(X=2 pert_cell=58 → Y): [Y0=57] [Y1=56] [Y2=762] 
+=== END ===

@@ -1,0 +1,132 @@
+{
+  "schema": "omega_cycle.witness_v2_closure",
+  "ts": "2026-04-28T15:55:00Z",
+  "title": "F-SLOT-PICKER-LIVE-PROBE: live-API health gate for claude_slot_pick.hexa (cycle 2 / fan-out 1/5)",
+  "task_label": "F-SLOT-PICKER-LIVE-PROBE",
+  "scope": "Add a live-API health gate to /Users/ghost/core/hive/tool/claude_slot_pick.hexa so that --pick refuses to return profiles whose OAuth refreshToken has been revoked Anthropic-side (currently 11/12 of the pool). The gate round-trips `claude -p ping --model claude-haiku-4-5` per candidate (5s timeout, 30s cache) and walks LRU order until a healthy candidate is found, or aborts with raw 66 trailer when all 12 are unhealthy.",
+
+  "background_b1_residue": {
+    "observed_state": "B.1 left the 12-profile pool with 11 revoked refreshTokens. _pick_lru's gate (file existence + cooldown windows) considered them all available; dispatch then 401'd ~91% of the time. Kick infra is institutionalizing raw 100 fallback (docker hard-landing) for this reason — 7 cycles of degraded operation.",
+    "root_cause_class": "trust-boundary-mismatch — picker trusts file-system state, but auth liveness is an Anthropic-side property; only an actual round-trip can prove it.",
+    "fix_class": "live-API health gate with TTL cache (raw 65 idempotent within 30s)"
+  },
+
+  "patch": {
+    "file": "/Users/ghost/core/hive/tool/claude_slot_pick.hexa",
+    "size_before_bytes": 39275,
+    "size_after_bytes": 47350,
+    "insertions_summary": [
+      "doc block: top-of-file LIVE-API HEALTH GATE narrative + opt-out env vars",
+      "doc block: PROBE SOURCE table now lists 'live_api_probe' as distinct verdict source",
+      "fn _health_cache_dir / _ensure_health_cache_dir / _health_cache_path",
+      "fn _health_cache_ttl_seconds (default 30, override via CLAUDE_SLOT_PICK_CACHE_TTL)",
+      "fn _health_probe_timeout_seconds (default 5, override via CLAUDE_SLOT_PICK_PROBE_TIMEOUT)",
+      "fn _health_cache_read / _health_cache_write (atomic, tab-delimited line)",
+      "fn _health_invalidate_cache (rm /tmp/claude_slot_health/*.cache)",
+      "fn _probe_cmd_template (default `claude -p ping --model claude-haiku-4-5`; override via CLAUDE_SLOT_PICK_PROBE_CMD for selftest)",
+      "fn _classify_unhealthy_reason (timeout | auth-401 | empty-stdout | exit-nonzero)",
+      "fn _live_api_probe (cache hit-or-spawn, emits __SLOT_LIVE_PROBE__ sentinel)",
+      "fn _pick_with_live_gate (LRU walk with per-candidate live probe + tried-set)",
+      "main: --pick now calls _pick_with_live_gate; on full exhaustion emits raw 66 reason=all-slots-unhealthy-live-probe + exit 76",
+      "main: --invalidate-cache mode added; emits PASS sentinel reason=live-probe-cache-invalidated",
+      "usage banner + sentinel banner + @exit_codes header updated"
+    ],
+    "diff_summary": "+~280 net lines; no existing fn signatures changed; backward compatible (CLAUDE_SLOT_PICK_LIVE_PROBE=0 reverts to legacy gate).",
+    "chflags_status": "FILE WAS NOT LOCKED — `stat -f %Sf` returned `-` (no flags). Edit applied directly; no raw 85 procedure required.",
+    "compile_smoke": "hexa run claude_slot_pick.hexa executed end-to-end during selftest (4/4 cases) without parser errors → patch is syntactically valid hexa-lang."
+  },
+
+  "selftest": {
+    "script": "/Users/ghost/core/n6-architecture/design/kick/selftest/f_slot_picker_live_probe_selftest.sh",
+    "harness_strategy": "CLAUDE_SLOT_TEST_HOME redirects slot discovery to a tempdir with 3 mock slots; CLAUDE_SLOT_PICK_PROBE_CMD injects a deterministic shell script in place of `claude -p`. No real Anthropic traffic.",
+    "cases": [
+      {"id": "C1", "name": "all-3-revoked-401", "mock": "all 3 slots return exit 1 + '401 authentication_error' on stderr", "expect": "exit 76, stderr contains 'all-slots-unhealthy-live-probe' + 'reason=auth-401'", "result": "PASS"},
+      {"id": "C2", "name": "one-healthy-two-revoked", "mock": "claude2 returns exit 0 + 'pong'; claude1/3 return 401", "expect": "exit 0, stdout = path to .claude-claude2, stderr 'PASS slot=2 reason=lru-available-live-gated'", "result": "PASS"},
+      {"id": "C3", "name": "cache-hit-skips-fresh-probe", "mock": "same as C2; immediate re-pick", "expect": "stderr 'verdict=healthy source=cache' (no fresh spawn)", "result": "PASS"},
+      {"id": "C4", "name": "invalidate-cache-rerun", "mock": "after C3, run --invalidate-cache then --pick", "expect": "stderr 'live-probe-cache-invalidated' then 'source=fresh' (cache cleared, re-probed)", "result": "PASS"}
+    ],
+    "all_cases_passed": true,
+    "final_sentinel": "__SLOT_PICK_LIVE_PROBE_SELFTEST__ PASS cases=4",
+    "execution_log": "All 12 assertions PASS in single run on Mac (Darwin 25.4.0, /usr/bin/timeout absent, perl SIGALRM fallback exercised on probe wrap). Wall-clock ≈ 3-4s for full suite."
+  },
+
+  "cache_policy_verification": {
+    "ttl_default_seconds": 30,
+    "ttl_override_env": "CLAUDE_SLOT_PICK_CACHE_TTL",
+    "cache_location": "/tmp/claude_slot_health/<slot>.cache",
+    "format": "tab-delimited single line: <verdict>\\t<epoch_seconds>\\t<reason_slug>",
+    "atomicity": "writes go through _atomic_write (write tmp + mv -f rename — same FIX 3 path as .kick_limit_until)",
+    "invalidate_explicit": "--invalidate-cache flag; selftest C4 confirms it emits 'live-probe-cache-invalidated' and the next --pick re-spawns fresh probes",
+    "invalidate_implicit": "_health_cache_read parses col 2 epoch; if (now - written) > ttl OR < 0 (clock skew) → returns empty → fresh probe",
+    "edge_cases_covered": [
+      "missing cache file → fresh probe",
+      "malformed cache line (< 2 tab fields) → fresh probe",
+      "non-integer epoch → fresh probe",
+      "negative age (clock went backward) → fresh probe (defense in depth)"
+    ]
+  },
+
+  "tests_run": [
+    {"id": "T-FSPLP-1", "cmd": "stat -f %Sf /Users/ghost/core/hive/tool/claude_slot_pick.hexa", "result": "PASS — flags='-' (not chflags-locked); raw 85 procedure NOT required"},
+    {"id": "T-FSPLP-2", "cmd": "Edit tool: 4 patches applied to claude_slot_pick.hexa", "result": "PASS — all Edits succeeded, file size went 39275 → 47350 bytes"},
+    {"id": "T-FSPLP-3", "cmd": "selftest C1 (all 3 revoked)", "result": "PASS — exit 76, sentinel 'all-slots-unhealthy-live-probe' present, all 3 probes classified reason=auth-401"},
+    {"id": "T-FSPLP-4", "cmd": "selftest C2 (one healthy)", "result": "PASS — exit 0, picked claude2, sentinel 'lru-available-live-gated'"},
+    {"id": "T-FSPLP-5", "cmd": "selftest C3 (cache hit)", "result": "PASS — second pick uses 'source=cache', no fresh probe spawn"},
+    {"id": "T-FSPLP-6", "cmd": "selftest C4 (cache invalidate)", "result": "PASS — --invalidate-cache wipes cache files; subsequent pick uses 'source=fresh'"},
+    {"id": "T-FSPLP-7", "cmd": "manual debug run with mocked healthy/unhealthy split", "result": "PASS — picker emits __SLOT_LIVE_PROBE__ slot=1 verdict=unhealthy reason=auth-401, then __SLOT_LIVE_PROBE__ slot=2 verdict=healthy reason=ok, then PASS sentinel for slot=2"}
+  ],
+
+  "outcome": "PASS",
+  "outcome_detail": "Live-API health gate landed in hive/tool/claude_slot_pick.hexa with full selftest (4 cases / 12 assertions PASS). --invalidate-cache flag added. Default behavior is now: every --pick attempts a real claude round-trip (haiku-4-5, 5s timeout) per candidate before returning, walks LRU order to find a healthy slot, or emits raw 66 trailer with actionable fix='run claude /login' on full exhaustion. Cache is 30s TTL at /tmp/claude_slot_health/<slot>.cache. Backward compatible — set CLAUDE_SLOT_PICK_LIVE_PROBE=0 to revert.",
+
+  "falsifiers_preregistered": {
+    "F_SPLP": [
+      {
+        "id": "F-SPLP-1",
+        "predicate": "live-probe latency exceeds the 5s timeout in production (real-world Anthropic round-trip > timeout window) and forces the picker to misclassify a healthy slot as unhealthy",
+        "expected_count_within_24h": 0,
+        "observed_at_witness_time": 0,
+        "verifier_command": "tail -F ~/.hx/state/markers/claude_slot_pick_*.marker | grep -c 'reason=timeout' over next 24h. Cross-reference with claude.ai service incidents page.",
+        "interpretation_if_violated": "Timeout too aggressive for current Anthropic latency profile; raise CLAUDE_SLOT_PICK_PROBE_TIMEOUT to 10s and re-witness. Note: on macOS without coreutils, fallback path uses perl SIGALRM which has been observed to be slightly less precise than GNU `timeout` — investigate per-call wall-clock if F-SPLP-1 fires."
+      },
+      {
+        "id": "F-SPLP-2",
+        "predicate": "false-healthy: the gate returns verdict=healthy for a slot that subsequently 401s on real dispatch within the same 30s cache window (the dispatch happens after slot was probed but slot was revoked between the two)",
+        "expected_count_within_24h": 0,
+        "observed_at_witness_time": 0,
+        "verifier_command": "for kick events in next 24h: count cases where __SLOT_PICK_RESULT__ PASS slot=N is followed within 30s by __KICK_RESULT__ FAIL reason=*401*. Each match = one F-SPLP-2 hit.",
+        "interpretation_if_violated": "30s cache window is too long given Anthropic-side revocation cadence. Mitigation hierarchy: (a) shorten TTL via CLAUDE_SLOT_PICK_CACHE_TTL=5; (b) force --invalidate-cache after every kick failure; (c) fall back to per-call probe with cache disabled (CLAUDE_SLOT_PICK_CACHE_TTL=0)."
+      },
+      {
+        "id": "F-SPLP-3",
+        "predicate": "cache stale-pick: the cached verdict outlives its actual validity — i.e. cache says 'healthy' for slot N at second 0; the user runs `claude /login` for a different slot N at second 25, accidentally invalidating shared OAuth state; at second 28 a pick reuses cached 'healthy' for N but dispatch 401s",
+        "expected_count_within_24h": 0,
+        "observed_at_witness_time": 0,
+        "verifier_command": "look for any kick FAIL where the immediately preceding __SLOT_LIVE_PROBE__ for the picked slot reads 'source=cache' (not 'source=fresh') and the kick fails reason=*401*. Track in /Users/ghost/.hx/state/markers/claude_slot_pick_*.marker over 24h.",
+        "interpretation_if_violated": "OAuth state has cross-slot coupling we did not anticipate. Mitigation: post-`claude /login` flow MUST call `claude_slot_pick --invalidate-cache` (document this in the recovery runbook). If the failure persists, drop cache TTL to 5s or eliminate cache entirely."
+      }
+    ],
+    "total_count": 3
+  },
+
+  "raw_91_c3_disclosure": "HONEST PARTIAL: (1) Selftest used a MOCKED probe command, not real `claude -p`. The mock proves the gate's plumbing (cache, classification, exit codes, sentinels) is correct; it does NOT prove that real `claude -p ping --model claude-haiku-4-5` actually exits 0 with non-empty stdout when OAuth is healthy, nor that it exits non-zero with '401' string when revoked. The user/operator needs to run the gate against the real B.1 12-profile pool to confirm. Best-effort confidence transfer: B.1 witness already empirically established that `claude -p` does refresh + return exit 0 for claude3 (the 1 healthy profile) and exit non-zero for the other 11; this gate just plumbs that observation into the picker. (2) The 5s timeout is a guess — picked because it covers the ~1.5s observed claude3 refresh from B.1 plus headroom, but real network jitter may push past it. F-SPLP-1 falsifier is preregistered to catch this. (3) `claude -p ping --model claude-haiku-4-5` consumes ~1 token of haiku quota per probe per slot per 30s — at 12 slots * 120 probes/hour this is ~1440 tokens/hour worst-case, ~$0.001/hour at haiku pricing. Negligible but not zero. (4) The fallback path `perl -e 'alarm()' exec()` for macOS without coreutils has not been live-tested with a process that ignores SIGALRM; theoretical edge case where a hung claude CLI ignoring signals would not actually time out. Mitigation: install GNU coreutils (`brew install coreutils`) on every host; the gate prefers `timeout` then `gtimeout` then perl. (5) The patch is syntactically valid hexa (the selftest exercised the full file via `hexa run`), but I have NOT run hexa-lang's own type-checker / linter against it; if hexa has a separate `--typecheck` mode, that should be invoked before merging. (6) chflags status check: file was NOT locked (raw 85 not needed); but if a hexa builder process re-locks it during the next CI cycle, future edits would need raw 85 procedure (sudo chflags nouchg).",
+
+  "constraints_compliance": {
+    "raw_9_hexa_only": "PASS — modified .hexa source only; no nexus-side state mutation",
+    "raw_11_provenance": "PASS — every new fn header explicitly attributes F-SLOT-PICKER-LIVE-PROBE / 2026-04-28",
+    "raw_65_idempotent": "PASS — 30s TTL cache makes back-to-back picks idempotent within window; explicit --invalidate-cache for ordered-effect callers",
+    "raw_66_ai_native_trailer": "PASS — exit-76 path emits 'reason=all-slots-unhealthy-live-probe fix=run claude /login ...' trailer",
+    "raw_71_falsifiers": "PASS — 3 falsifiers preregistered with predicate/verifier/interpretation",
+    "raw_80_sentinel": "PASS — __SLOT_LIVE_PROBE__ sentinel emitted per-probe; existing __SLOT_PICK_RESULT__ kept",
+    "raw_85_chflags": "N/A — file not locked at time of patch (verified via stat -f %Sf returning '-')",
+    "raw_91_c3_honest": "PASS — 6 honest disclosure points covering mock-vs-real, timeout heuristic, quota cost, perl-fallback edge, hexa typecheck gap, future chflags-relock risk"
+  },
+
+  "registry_sync": {
+    "registry_path": "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl",
+    "to_be_absorbed": true,
+    "marker_required": true
+  },
+
+  "korean_report_300char": "1) 패치: ~/core/hive/tool/claude_slot_pick.hexa (39275→47350B). _live_api_probe / _pick_with_live_gate / --invalidate-cache 추가; --pick 가 5s timeout 으로 `claude -p ping --model claude-haiku-4-5` round-trip 후 healthy 만 반환, 12개 모두 unhealthy 면 raw 66 trailer + exit 76. 2) Selftest 4/4 PASS (12 assertions): C1 all-401→exit76, C2 1-healthy→pick claude2, C3 cache-hit, C4 invalidate→re-probe. 3) Cache 정책: 30s TTL @ /tmp/claude_slot_health/<N>.cache, atomic_write, --invalidate-cache 명시 무효화 검증. 4) raw 91 C3: 셀프테스트는 mock probe — 실제 12-profile pool 검증은 사용자가 production 에서 1회 수행 필요; 5s timeout 은 B.1 의 1.5s claude3 refresh 관측치 + 헤드룸 추정치 (F-SPLP-1 falsifier 가 모니터). 5) chflags: 잠겨있지 않음 (raw 85 절차 불필요)."
+}

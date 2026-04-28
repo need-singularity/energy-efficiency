@@ -1,0 +1,168 @@
+{
+  "kick_id": "readme-curation-consistency",
+  "date": "2026-04-28",
+  "cycle": "cycle 3 / fan-out 5/5",
+  "type": "readonly_analysis",
+  "scope": "README.md Biology section (HEXA-WEAVE) curation consistency vs 12 sibling sections",
+  "method": "schema-by-schema diff against 12 sampled sibling sections (Fusion / Chip / AI / Energy / Environment / Materials / Robotics / Physics / Software / Display / Audio / Safety / Play / Aerospace / HEXA-UFO / Frontier / Civilization / Life-Culture / Tech-Industry / Computer / Marketing / Millennium / Dimension / Music / Linguistics / Crypto / Astronomy / Hygiene / Fantasy)",
+  "readme_lines": 968,
+  "biology_section_lines": "367-381",
+  "sealed_hash_unaffected": true,
+
+  "schema_dimensions": [
+    "heading_format (emoji + name)",
+    "summary_blockquote_format",
+    "table_columns (sigma | Closure | ver | Product | Core | Link)",
+    "footer_blockquote_format",
+    "row_count",
+    "honest_disclosure_paragraph (extra)",
+    "n6_invariant_trace (sigma-phi=n-tau=J2=24)",
+    "cross-link to other domains"
+  ],
+
+  "consistency_score_per_dimension": {
+    "heading_format": {"score": 5, "note": "'# 🧫 Biology' matches '# 🔥 Fusion' style exactly"},
+    "summary_blockquote_format": {"score": 3, "note": "uses blockquote + pipe-separator like siblings, but field semantics drift: '실험theoretical-analytical (raw 91 C3)' instead of standard '실험XX% YYY/ZZZ EXACT'; 'TP0' field present but other slots reordered; 'tri-axis Omega-saturation' pattern is unique"},
+    "table_columns": {"score": 5, "note": "exact same 6-column header"},
+    "table_status_cell": {"score": 2, "note": "'APPROACH' status only appears in Biology; 12 sibling sections use ✅ / 🛸 / 🌌 / 🔬 / ❌ — APPROACH is not in vocab. Closes column with text, not symbol"},
+    "ufo_column": {"score": 3, "note": "'7' (sigma+phi=14? no, sigma-sopfr=7) used; siblings use 5/6/7/8/9/10/11/12/13/14/15/16/500. 7 is in the vocab but uniquely matches APPROACH grade — formally permissible but visually breaks the otherwise mostly-10 column"},
+    "row_count": {"score": 2, "note": "1 row only. Siblings range 1-43. 1-row is allowed (Aerospace=1, HEXA-UFO=1) but Biology row is by far the wordiest in the README (~750 chars in Core cell)"},
+    "footer_blockquote_format": {"score": 4, "note": "uses '> 도메인:' prefix like siblings; tail '— STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), not theorem chain' is editorialization not seen in 32 other footers"},
+    "extra_honest_disclosure_paragraph": {"score": 1, "note": "L377 standalone blockquote between table and footer is UNIQUE — 32 other sections never insert a paragraph between table and FOOTER markers. Honest Limitations section (L806) is the README-wide counterpart for global caveats"},
+    "n6_invariant_trace": {"score": 1, "note": "Biology row Core cell does NOT show 'σ·φ=n·τ=J₂=24' or any (σ, τ, φ, J₂, sopfr) numerics. 28 of 30+ sibling rows trace at least one n6 invariant inline. Biology talks 'P up to 10^4, N up to 350 aa' (workload params) instead"},
+    "cross_link_to_other_domains": {"score": 1, "note": "no Frontier / Materials / Safety / Physics row references HEXA-WEAVE; Biology row does not reference HEXA-NANOBOT (L491, lifescience adjacent), virology (L483), bio-pharma (L569), or synbio (L554). Cross-discoverability is zero"}
+  },
+
+  "overall_consistency_score": "2.6 / 5 (weighted average)",
+
+  "inconsistencies_found": [
+    {
+      "id": "INC-1",
+      "severity": "high",
+      "description": "Status tag 'APPROACH' is novel — not in the 32-section vocabulary (✅ / 🛸 / 🌌 / 🔬 / ❌). Readers cannot benchmark it without scrolling to raw 69 definition.",
+      "objective": true
+    },
+    {
+      "id": "INC-2",
+      "severity": "high",
+      "description": "L377 'Honest disclosure (raw 91 C3): ...' standalone blockquote sits between table and FOOTER markers — breaks the otherwise rigid (heading -> SUMMARY -> table -> FOOTER) schema applied to all 32 other sections.",
+      "objective": true
+    },
+    {
+      "id": "INC-3",
+      "severity": "medium",
+      "description": "Biology row Core cell shows zero n6-invariant numerics (σ, τ, φ, J₂, sopfr). Compare to virology (L483) 'icosahedral σ=12 pentamer' or veterinary (L487) 'cervical σ-sopfr=7'. Reader cannot tell from the row alone why this is an n6 architecture entry.",
+      "objective": true
+    },
+    {
+      "id": "INC-4",
+      "severity": "medium",
+      "description": "Biology SUMMARY 'tri-axis Omega-saturation PASS at workload ceiling' uses jargon found nowhere else in README. Sibling SUMMARY blocks use BT count, EXACT %, DSE size, industry %, TP count, discoveries count — all numerics. Biology breaks the numeric-summary convention.",
+      "objective": true
+    },
+    {
+      "id": "INC-5",
+      "severity": "medium",
+      "description": "Zero cross-references either direction. Frontier section has HEXA-NANOBOT (L491, therapeutic, life-domain), Tech-Industry has Synthetic Biology (L554, CRISPR/codon), Life-Culture has Dolphin (L534, bio-acoustics) — none reference HEXA-WEAVE. Symmetrically Biology row does not name-drop these adjacent products.",
+      "objective": true
+    },
+    {
+      "id": "INC-6",
+      "severity": "low",
+      "description": "SUMMARY field order drift: standard order is `🛸X | ✅ | BT N개 X%EXACT | DSE | industry | experiment | physical-limit | TP | discoveries`. Biology drops BT/DSE/physical-limit/discoveries entirely and inserts narrative phrase before TP0.",
+      "objective": true
+    },
+    {
+      "id": "INC-7",
+      "severity": "low",
+      "description": "FOOTER tail editorializes ('— STRONG-CONJECTURE chain ... not theorem chain'). 32 other footers are pure 도메인 + 도구 link lists with no qualifiers.",
+      "objective": true
+    },
+    {
+      "id": "INC-8",
+      "severity": "low",
+      "description": "Core cell length: ~750 chars (Biology) vs median ~150 chars across 200+ rows. Visual rhythm of the table is broken.",
+      "objective": true
+    },
+    {
+      "id": "INC-9",
+      "severity": "low",
+      "description": "'F-TP5-b 90-day MVP gate 2026-07-28' is a roadmap promise embedded in the Core cell — siblings keep promises in [Roadmap v2 Phase Progress] (L642+) or in 'Honest Limitations' (L806+).",
+      "objective": true
+    }
+  ],
+
+  "fix_recommendations_priority_ordered": [
+    {
+      "priority": 1,
+      "id": "FIX-1",
+      "addresses": "INC-1 + INC-2",
+      "action": "Either (a) move the L377 'Honest disclosure' blockquote into the README-global 'Honest Limitations' section (L806) as a new bullet, or (b) extend the schema project-wide so any APPROACH-grade row implicitly carries a per-section disclosure paragraph and audit all 32 other sections for graded honesty (no other section currently has APPROACH grade, so option (a) is lower-risk).",
+      "rationale": "Maintains visual schema; preserves raw 91 C3 honesty by relocation, not deletion."
+    },
+    {
+      "priority": 2,
+      "id": "FIX-2",
+      "addresses": "INC-3 + INC-4 + INC-6",
+      "action": "Rewrite Biology SUMMARY and Core cell to lead with n6 invariants. Sketch: SUMMARY = '🛸7 | APPROACH | BT 0 | DSE -- | TP0 | F-TP5-b gate 2026-07-28 | tri-axis Omega-saturation PASS (raw 70)'. Core cell add explicit invariants: 'P up to (σ-φ)^τ=10^4', 'N up to σ²+sopfr·n+8·n−4=350 aa', 'sopfr=5 modalities', 'tri-axis = n/φ=3 closure axes'.",
+      "rationale": "Makes the row legible as an n6 entry without reading hexa-weave.md."
+    },
+    {
+      "priority": 3,
+      "id": "FIX-3",
+      "addresses": "INC-5",
+      "action": "Add bidirectional cross-links: (a) Biology row Core cell append 'Cross: HEXA-NANOBOT [L491] (delivery), Synbio [L554] (CRISPR write-side)'; (b) Frontier HEXA-NANOBOT row append 'Cross: HEXA-WEAVE [L375] (multi-strand design)'; (c) Tech-Industry Synbio row append 'Cross: HEXA-WEAVE [L375]'.",
+      "rationale": "Enables discovery from any of three entry points without being intrusive."
+    }
+  ],
+
+  "raw_91_C3_honest_distinction": {
+    "objective_findings": [
+      "'APPROACH' is not in the README's existing closure vocabulary (verifiable by grep on '| ✅ |' vs '| APPROACH |')",
+      "L377 paragraph is the only standalone blockquote between table and FOOTER across 32 sections (verifiable by line-position scan)",
+      "Biology row Core has zero σ/τ/φ/J₂/sopfr literals (verifiable by regex)",
+      "Zero references to 'HEXA-WEAVE' outside L370/L375/L380 (verifiable by grep)",
+      "F-TP5-b gate date 2026-07-28 is 91 days from 2026-04-28 (verifiable by date arithmetic)"
+    ],
+    "subjective_judgments": [
+      "Whether INC-2 (extra paragraph) is 'visual schema break' depends on reader's tolerance for one-off honesty inserts. Some maintainers may view a per-section honest-disclosure block as a feature, not a bug.",
+      "Whether the wordy Core cell is 'too marketing' or 'appropriately hedged'. 750 chars for an APPROACH-grade row may be defensive (hedge against reader over-claiming) or excessive (could be one sentence).",
+      "INC-7 (footer editorialization) — could read as 'self-correcting curator' or 'load-bearing caveat'. Subjective.",
+      "Priority ordering of fixes (1>2>3) reflects reviewer judgment that schema-coherence > legibility > discoverability; an opposite ordering would be defensible."
+    ]
+  },
+
+  "raw_71_falsifiers": [
+    {
+      "id": "F-CONS-1",
+      "claim": "APPROACH status tag is unique to Biology section in README.md",
+      "test": "grep -c '| APPROACH |' README.md should return exactly 1; grep -c '| ✅ |' should return >= 100",
+      "fail_condition": "If grep finds APPROACH elsewhere or ✅ count is < 50, claim is false"
+    },
+    {
+      "id": "F-CONS-2",
+      "claim": "Biology row Core cell contains zero n6-invariant Greek letter literals (σ, τ, φ, J₂, sopfr) where invariant means used as numeric value not generic word",
+      "test": "Extract L375 Core cell, count occurrences of σ|τ|φ|J₂|sopfr; should be 0",
+      "fail_condition": "If count > 0, then n6 trace is present and INC-3 is false"
+    },
+    {
+      "id": "F-CONS-3",
+      "claim": "L377 'Honest disclosure' paragraph is the only blockquote (`> ...`) outside SUMMARY and FOOTER markers across all 32 sections",
+      "test": "Parse README, for each '# Section' block check if any `> ` line lies outside `<!-- AUTO:SUMMARY_*:START -->...END` and `<!-- AUTO:FOOTER_*:START -->...END` ranges; expected hit count is 1 (Biology L377)",
+      "fail_condition": "If hit count is 0, INC-2 is false; if > 1, the inconsistency is wider and FIX-1 must extend further"
+    }
+  ],
+
+  "next_cycle_decision": {
+    "auto_fix": false,
+    "rationale": "User instruction (cycle 3 spec) explicitly says 'README 직접 수정 금지 — 분석만 / 사용자 승인 후 별도 cycle'. Per raw 91 C3 honesty: FIX-1 option (a) vs (b) is a curatorial value judgment (relocate vs schema-extend) — should not be auto-decided. FIX-2 invariant rewrite touches sealed-hash document; user approval required. FIX-3 cross-links touch 3 sections — needs user OK on phrasing.",
+    "recommended_path": "Present this analysis, await user pick on FIX-1 (a) vs (b), then issue cycle-4 with explicit edit scope."
+  },
+
+  "files_inspected": [
+    "/Users/ghost/core/n6-architecture/README.md (lines 1-968)"
+  ],
+
+  "files_modified": [],
+  "sealed_hash_impact": "none (read-only analysis, no own/own_doc_lint touched)"
+}

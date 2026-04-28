@@ -1,0 +1,181 @@
+{
+  "schema": "omega_cycle.witness_v2_w1_architecture_decision",
+  "ts": "2026-04-28T15:30:00Z",
+  "topic": "hexa-weave-mvp-w1-architecture",
+  "synthesis_mode": "in_context_fallback",
+  "predecessor_witness": "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+  "predecessor_verdict": "PASS",
+  "parent_spec": "proposals/hexa_weave_mvp_2026_04_28.md",
+  "parent_milestone": "W1",
+  "deliverable_doc": "proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md",
+  "kick_infra_status": {
+    "rc": null,
+    "outer_status": "NOT_ATTEMPTED",
+    "cause_chain": [
+      "predecessor closure cycle exhibited 3 orthogonal kick failure modes (OAuth-401, slot-saturated, container-no-node)",
+      "F-CL3-a falsifier (kick infra clean run within 24h, deadline 2026-04-29) not yet observed",
+      "raw 100 fallback institutionalization is a smell per closure witness; W1 attempts in-context synthesis only and defers kick to W2 entry"
+    ],
+    "raw_100_fallback_invoked": true,
+    "raw_91_c3_disclosure": "W1 deliverable produced via in-context synthesis (raw 100 fallback). Nexus kick will be attempted at W2 entry contingent on F-CL3-a observation by 2026-04-29."
+  },
+  "w1_architecture_decisions": {
+    "base_model": {
+      "decision": "OpenFold (Apache-2.0 code + CC-BY-4.0 weights)",
+      "secondary_reference": "RoseTTAFold All-Atom (BSD-3 + MIT)",
+      "rejected": "ESM3 (Cambrian Non-Commercial Community License — commercial-reviewer block risk)",
+      "rationale_summary": [
+        "license-clean for commercial reviewers (parent P1-7)",
+        "12 GB VRAM fit at BF16 inference for 350-aa chain (literature claim; F-W1-1 retires)",
+        "PyTorch codebase clean for cross-attention extension (W6)",
+        "AF-3 weight independence trivially holds (parent P2-12)",
+        "fallback path = RoseTTAFold All-Atom (already multi-strand-native)"
+      ],
+      "raw_91_c3_limits": [
+        "12 GB VRAM fit is literature-claimed not empirically measured on ubu1",
+        "ESM3 license interpretation uses most-restrictive reading; license-relaxation evidence could re-open candidacy",
+        "cross-attention LoC estimate is qualitative judgment, not measured"
+      ]
+    },
+    "repo_location": {
+      "decision": "Option A — ~/core/hexa-weave/ (new sister repo)",
+      "rejected": [
+        {"option": "B (n6-architecture/experiments/hexa-weave/)", "reason": "violates own 5 theory-report-separation — experiments/ is for time-stamped artifacts not live ML pipeline"},
+        {"option": "C (~/core/anima/<sub>/)", "reason": "thematic mismatch — anima is consciousness/physics-focused; existing sub-repos (anima-physics, anima-cpgd-research, anima-eeg, anima-hexad) form a coherent umbrella that biology/ML would break"},
+        {"option": "D (~/core/nexus/labs/hexa-weave/)", "reason": "~/core/nexus/labs/ does not exist (verified by ls); creating it would extend nexus's footprint into lab incubation, outside its current engine/dispatch scope"}
+      ],
+      "rationale_summary": [
+        "parent spec already references core/hexa-weave/ in §3 W1/W2 rows and §7 verifier_manifest path",
+        "own 5 disqualifies Option B",
+        "Option D path verified non-existent",
+        "Option C breaks anima umbrella coherence",
+        "sister-repo isolation prevents 50 GB dataset weight + PyTorch dependency from polluting n6-architecture"
+      ],
+      "init_status": "NOT_EXECUTED — mock-up only; user approval gates W2 mkdir"
+    },
+    "license": {
+      "decision": "Apache-2.0 (code) + CC-BY-4.0 (weights, inherited from OpenFold)",
+      "rejected": [
+        {"option": "MIT", "reason": "lacks explicit patent grant; defensive value of Apache-2.0 patent clause matters in protein-folding patent landscape (DeepMind AF-3 pending)"},
+        {"option": "proprietary", "reason": "violates parent §1 open-source intent + parent §9 NOT-list item 7 (no closed-source reuse)"}
+      ],
+      "raw_91_c3_limits": [
+        "no legal counsel review performed",
+        "PDB CC0-only filter for dataset is a separate concern (parent §6 B2)",
+        "F-W1-3 falsifier monitors for license-validity surprise"
+      ]
+    },
+    "dependency_stack": {
+      "language": "Python 3.11..<3.13",
+      "framework": "PyTorch 2.5.1+cu124",
+      "rejected_framework": "JAX (OpenFold canonical impl is PyTorch; re-implementation cost prohibitive in 12 weeks)",
+      "core_deps": [
+        "openfold @ git+https://github.com/aqlaboratory/openfold@main",
+        "biopython>=1.83",
+        "biotite>=0.40",
+        "rdkit>=2024.3",
+        "numpy>=1.26,<2.0",
+        "scipy>=1.13",
+        "pyyaml>=6.0",
+        "pydantic>=2.7",
+        "pytest>=8.0"
+      ],
+      "fallback_quant": "bitsandbytes>=0.43 (if 12 GB VRAM tight)",
+      "datasets": [
+        "PDB-multimer subset (CC0 only filter per parent §6 B2)",
+        "RCSB structure releases",
+        "BMRB NMR (P2 nice-to-have, W7+ if time)"
+      ]
+    }
+  },
+  "raw_71_w1_falsifiers": [
+    {"id": "F-W1-1", "claim": "OpenFold inference fits 12 GB VRAM on RTX 5070 (350-aa BF16)", "trigger": "nvidia-smi peak > 11.5 GB during W2 single-chain inference", "deadline": "2026-05-05"},
+    {"id": "F-W1-2", "claim": "OpenFold cross-attention extension feasible within W6 budget", "trigger": "joint protein+RNA+ligand cross-attn module > 1500 LoC", "deadline": "2026-06-02"},
+    {"id": "F-W1-3", "claim": "Apache-2.0 + CC-BY-4.0 licensing clean for commercial-reviewer use", "trigger": "OSI/SPDX/counsel surfaces patent or copyright restriction blocking P1-7", "deadline": "2026-05-19"},
+    {"id": "F-W1-4", "claim": "~/core/hexa-weave/ sister repo is correct location", "trigger": "external constraint forces parent spec amendment to relocate", "deadline": "2026-05-05"},
+    {"id": "F-W1-5", "claim": "n6 invariant trace generatable from OpenFold output post-processing", "trigger": "extraction requires OpenFold internal modification not just post-proc", "deadline": "2026-06-23"}
+  ],
+  "raw_91_c3_disclosure": {
+    "claims": [
+      "OpenFold selected as base model with documented Apache-2.0 license + 12 GB VRAM literature claim",
+      "Option A sister repo ~/core/hexa-weave/ selected over B (own 5 violation), C (thematic), D (path nonexistent)",
+      "Apache-2.0 license selected over MIT (patent grant) and proprietary (parent §9 NOT-list)",
+      "PyTorch 2.5 + OpenFold + BioPython + Biotite + RDKit dependency stack declared",
+      "5 W1 falsifiers (F-W1-1..F-W1-5) preregistered + 5 MISS criteria (WM1..WM5)"
+    ],
+    "evidence_paths": [
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 deliverable doc)",
+      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (predecessor closure witness)",
+      "OpenFold upstream LICENSE: https://github.com/aqlaboratory/openfold/blob/main/LICENSE",
+      "RoseTTAFold All-Atom upstream: https://github.com/baker-laboratory/RoseTTAFold-All-Atom",
+      "ESM3 license reference: https://github.com/evolutionaryscale/esm"
+    ],
+    "limits": [
+      "VRAM fit is literature-claimed, not empirically measured on ubu1 RTX 5070 12 GB; F-W1-1 retires",
+      "license review by legal counsel NOT performed; F-W1-3 retires",
+      "no code execution: no clone, no pip install, no git init in W1; user approval gates W2",
+      "kick infra not attempted in W1 (predecessor exhibited 3 orthogonal failures); raw 100 in-context fallback used per closure cycle pattern",
+      "ESM3 license interpretation is most-restrictive reading; relaxation evidence could re-open candidacy",
+      "cross-attention LoC estimate (1500 line F-W1-2 trigger) is qualitative; no static analysis performed",
+      "AF-3 weight hash-compare baseline list NOT yet collected; W2 task",
+      "PDB CC0-only filter NOT yet implemented; W7 task per parent §6 B2",
+      "external reviewer outreach (P1-7) NOT started; W11+ per parent §6 B3",
+      "W1 verdict: forward-spec architecture decision; 'PASS' here means the document exists and meets §5 falsifier-count + §6 NOT-list-count thresholds, not that the decisions are empirically validated"
+    ]
+  },
+  "n6_invariant_thread": {
+    "tau_6_eq_4": "τ(6)=4 maps to: 4 base-model candidates considered (OpenFold, ESM3, RoseTTAFold, RoseTTAFold All-Atom — though All-Atom is a variant); 4 repo location options (A, B, C, D); 4 license options considered (Apache-2.0, MIT, BSD, proprietary); 4 dependency-stack tier categories (framework, base-model, biology-libs, structure-libs)",
+    "J_2_eq_24": "J_2=24 maps to: parent spec declares J_2=24 interaction-tensor budget; W1 cross-attention design (W6) must respect this budget; OpenFold's evoformer block count baseline (typically 48 blocks) is 2 × J_2 = 48, suggesting J_2 binning across pairs",
+    "sigma_6_eq_12": "σ(6)=12 maps to: 12 raw 91 C3 NOT-decided items in §6 (matches σ_6=12 strategy pool count); 12 weeks in parent §3 milestone table",
+    "phi_6_eq_2": "φ(6)=2 maps to: APPROVE/REJECT user verdict bit on this W1 decision; FIT/NO-FIT VRAM verdict on F-W1-1; CLEAN/NOT-CLEAN license verdict on F-W1-3"
+  },
+  "domain_registration_advisory": {
+    "recommend": "PROCEED to W2 contingent on user approval",
+    "no_change_to_parent": "parent domain registration verdict YES (from closure cycle) is not affected by W1; W1 is an internal milestone deliverable, not a registration event",
+    "conditions_for_w2_kickoff": [
+      "user approves §3.3 repo init plan",
+      "F-CL3-a observed (kick infra clean run by 2026-04-29) — else W2 must use raw 100 fallback again",
+      "no last-minute license-relaxation surprise on ESM3 that would re-open §2 base-model decision"
+    ]
+  },
+  "raw_47_cross_repo_check": {
+    "n6-architecture": "this repo — parent spec + W1 deliverable + this witness",
+    "anima": "/Users/ghost/core/anima/ — Option C candidate (rejected, thematic mismatch)",
+    "nexus": "/Users/ghost/core/nexus/ — Option D candidate (rejected, labs/ path nonexistent)",
+    "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dependency for any future kick attempt",
+    "airgenome": "/Users/ghost/core/airgenome/ — biology-adjacent sister; potential reviewer/dataset cross-reference at W11",
+    "hive": "/Users/ghost/core/hive/ — hive-cli kick infra path; container-no-node fault from closure cycle still relevant",
+    "convergence": "/Users/ghost/core/convergence/ — kick fallback synthesis pattern source",
+    "count": 6,
+    "raw_47_ge_3_satisfied": true
+  },
+  "raw_53_deterministic_verifier_manifest": {
+    "verifier_types_allowlist": [
+      "filesystem-deterministic (test ! -d ~/core/hexa-weave; ls /Users/ghost/core/anima; ls /Users/ghost/core/nexus)",
+      "license-spdx-deterministic (Apache-2.0 ID matches SPDX registry)",
+      "literature-citation-deterministic (OpenFold + RoseTTAFold + ESM3 GitHub LICENSE files)",
+      "numeric-threshold-deterministic (falsifier count >= 5; NOT-list count >= 10)"
+    ],
+    "verifier_types_disallowed": [
+      "LLM-judge (no LLM scored the architecture decision)",
+      "subjective-rating",
+      "anonymous-source"
+    ],
+    "raw_53_compliant": true
+  },
+  "report_summary": {
+    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w1-architecture_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md",
+    "w1_verdict": "FORWARD-SPEC PASS (document exists; §5 falsifier count = 5 >= 5; §6 NOT-list count = 12 >= 10; lint pre-flight predicted PASS; no code execution per W1 mandate)",
+    "base_model": "OpenFold (Apache-2.0)",
+    "repo_location": "~/core/hexa-weave/ (Option A new sister)",
+    "license": "Apache-2.0 + CC-BY-4.0",
+    "dep_stack_summary": "PyTorch 2.5 + OpenFold + BioPython + Biotite + RDKit + Pydantic",
+    "falsifiers_preregistered_count": 5,
+    "miss_criteria_count": 5,
+    "not_decided_items_count": 12,
+    "raw_strategies_load_bearing": [12, 22, 23, 47, 51, 53, 71, 91, 100],
+    "honest_c3_what_is_not_closed": "no code executed; VRAM fit literature-only; license review counsel NOT done; kick infra deferred to W2 contingent on F-CL3-a"
+  }
+}

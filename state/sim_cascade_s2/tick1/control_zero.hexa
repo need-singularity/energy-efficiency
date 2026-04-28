@@ -1,0 +1,115 @@
+// control_zero.hexa — sanity check: pert_delta=0 should produce all zero responses
+const PROP_SIGMA: i64 = 64
+const PROP_HBAR: i64 = 100
+const PROP_LSCALE: i64 = 65536
+const PROP_LHIST: i64 = 4
+const PROP_FDT: i64 = 100
+const PROP_FSCALE: i64 = 1000
+
+fn _prneighbor_flat(i: i64, axis: i64) -> i64 {
+    if axis == 0 { return (i + PROP_SIGMA - 1) % PROP_SIGMA }
+    return (i + 1) % PROP_SIGMA
+}
+
+fn s1(ticks: i64) -> [i64] {
+    let mut re: [i64] = []
+    let mut im: [i64] = []
+    let mut i = 0
+    while i < PROP_SIGMA {
+        let mut d = i - 32; if d < 0 { d = 0 - d }
+        let denom = 1 + (d * d) / 4
+        let mut v: i64 = 10000 / denom
+        v = v + (6 * 17 + i * 3) % 100
+        if v < 0 { v = 0 - v }
+        re = re + [v]; im = im + [0]
+        i = i + 1
+    }
+    let mut t = 0
+    while t < ticks {
+        let mut new_re: [i64] = []; let mut new_im: [i64] = []
+        i = 0
+        while i < PROP_SIGMA {
+            let mut sr: i64 = 0; let mut si: i64 = 0
+            let mut a = 0
+            while a < 3 { let j = _prneighbor_flat(i, a); sr = sr + re[j]; si = si + im[j]; a = a + 1 }
+            let lap_re = sr - 3 * re[i]; let lap_im = si - 3 * im[i]
+            new_re = new_re + [re[i] + (PROP_HBAR * lap_im) / 10000]
+            new_im = new_im + [im[i] - (PROP_HBAR * lap_re) / 10000]
+            i = i + 1
+        }
+        re = new_re; im = new_im; t = t + 1
+    }
+    let mut density: [i64] = []
+    i = 0
+    while i < PROP_SIGMA {
+        density = density + [(re[i] * re[i] + im[i] * im[i]) / 10000]
+        i = i + 1
+    }
+    return density
+}
+
+fn s3field(input: [i64], ticks: i64, pcell: i64, pdelta: i64) -> [i64] {
+    let mut phi: [i64] = []; let mut pi: [i64] = []
+    let mut i = 0
+    while i < PROP_SIGMA {
+        phi = phi + [input[i] / 65]
+        pi = pi + [(6 * 7 + i * 3) % 30]
+        i = i + 1
+    }
+    if pcell >= 0 && pcell < PROP_SIGMA { phi[pcell] = phi[pcell] + pdelta }
+    let m2: i64 = 100
+    let mut t = 0
+    while t < ticks {
+        let mut force: [i64] = []
+        i = 0
+        while i < PROP_SIGMA {
+            let mut sn: i64 = 0
+            let mut a = 0
+            while a < 3 { sn = sn + phi[_prneighbor_flat(i, a)]; a = a + 1 }
+            let lap = sn - 3 * phi[i]
+            let dV = m2 * phi[i] / PROP_FSCALE
+            force = force + [lap - dV]
+            i = i + 1
+        }
+        let mut pi_h: [i64] = []; let mut nphi: [i64] = []
+        i = 0
+        while i < PROP_SIGMA {
+            let h = pi[i] + (PROP_FDT * force[i]) / (2 * PROP_FSCALE)
+            pi_h = pi_h + [h]
+            nphi = nphi + [phi[i] + (PROP_FDT * h) / PROP_FSCALE]
+            i = i + 1
+        }
+        let mut fn2: [i64] = []
+        i = 0
+        while i < PROP_SIGMA {
+            let mut sn: i64 = 0
+            let mut a = 0
+            while a < 3 { sn = sn + nphi[_prneighbor_flat(i, a)]; a = a + 1 }
+            let lap = sn - 3 * nphi[i]
+            let dV = m2 * nphi[i] / PROP_FSCALE
+            fn2 = fn2 + [lap - dV]
+            i = i + 1
+        }
+        let mut npi: [i64] = []
+        i = 0
+        while i < PROP_SIGMA {
+            npi = npi + [pi_h[i] + (PROP_FDT * fn2[i]) / (2 * PROP_FSCALE)]
+            i = i + 1
+        }
+        phi = nphi; pi = npi; t = t + 1
+    }
+    return phi
+}
+
+let s1out = s1(12)
+let base = s3field(s1out, 12, 0 - 1, 0)
+let zero_pert = s3field(s1out, 12, 32, 0)
+let mut diff: i64 = 0
+let mut i = 0
+while i < PROP_SIGMA {
+    let mut d = base[i] - zero_pert[i]
+    if d < 0 { d = 0 - d }
+    diff = diff + d
+    i = i + 1
+}
+println("control_zero_total_diff=" + to_string(diff))

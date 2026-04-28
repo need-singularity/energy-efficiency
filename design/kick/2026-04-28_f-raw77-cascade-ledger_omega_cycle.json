@@ -1,0 +1,91 @@
+{
+  "schema": "design/kick/omega_cycle.v1",
+  "topic": "f-raw77-cascade-ledger",
+  "date": "2026-04-28",
+  "cycle": "omega",
+  "fan_out": "2/3 of 5",
+  "mission": "F-RAW77-CASCADE-LEDGER: B.5 cascade-block prevention raw 66 trailer is stderr-only ephemeral; add raw 77 audit ledger append for cross-session traceability.",
+  "background": {
+    "site": "~/core/nexus/scripts/bin/hexa_remote",
+    "function": "_emit_all_routes_blocked_trailer",
+    "current_lines": "717-774",
+    "call_sites": ["801 preflight all_unreachable_preflight", "1062 post-probe all_unreachable"],
+    "gap": "trailer emits raw 66 schema only to stderr → vanishes on session end; raw 77 mandates append-only JSONL for cross-session traceability"
+  },
+  "patch": {
+    "target_file": "~/core/nexus/scripts/bin/hexa_remote",
+    "patch_file_in_sandbox": "/tmp/hexa_remote_patch_test/raw77_ledger.patch",
+    "patched_copy": "/tmp/hexa_remote_patch_test/hexa_remote.patched",
+    "approach": "extend _emit_all_routes_blocked_trailer body — after the raw 66 stderr trailer line, append a JSONL row to $HEXA_REMOTE_AUDIT_DIR/cascade_blocked_events.jsonl",
+    "no_call_site_changes": true,
+    "comment": "both call sites at 801 + 1062 already invoke this function; extending the function alone covers both",
+    "ledger_path": "~/core/nexus/state/audit/cascade_blocked_events.jsonl",
+    "env_override": "HEXA_REMOTE_AUDIT_DIR (test isolation)",
+    "row_schema": {
+      "ts": "ISO 8601 UTC (date -u +%Y-%m-%dT%H:%M:%SZ)",
+      "event": "all-routes-blocked",
+      "external_blacklist": "[] (Sub-AA 2026-04-27 retired persistent bans)",
+      "docker_neg_cache": "present(age=Ns,ttl_remaining=Ms) | absent",
+      "slot_pool": "<helper-summary or dir-count fallback>",
+      "reason": "all_unreachable | all_unreachable_preflight",
+      "fallback_chain": "[\"hetzner\",\"ubu1\",\"ubu2\"]",
+      "fix_steps": "JSON array — machine-readable mirror of stderr fix block",
+      "ref": "raw 66 + raw 77",
+      "host": "hostname output",
+      "agent": "hexa_remote"
+    },
+    "concurrency_safety": "raw 25 file-lock pattern: flock -w 5 with 3-attempt retry when available; POSIX O_APPEND atomic-write fallback for macOS (flock typically absent)",
+    "idempotency": "raw 65 — mkdir -p of audit dir; JSONL append-only never overwrites prior rows",
+    "error_propagation": "raw 12 — silent failure surfaces stderr ledger_warn; does not change exit code (cascade exit path owns primary exit via raw 66 trailer caller)"
+  },
+  "synthetic_test": {
+    "harness": "/tmp/hexa_remote_patch_test/synth_test.sh",
+    "result": "PASS",
+    "evidence": {
+      "stderr_trailer_preserved": true,
+      "ledger_row_appended": true,
+      "schema_validation_python3": "PASS — all 11 required keys present, json.loads OK",
+      "idempotent_double_invocation": "ledger row count 1 → 2 (append-only honored)",
+      "exit_code": 0
+    },
+    "sample_row": "{\"ts\":\"2026-04-28T06:41:00Z\",\"event\":\"all-routes-blocked\",\"external_blacklist\":[],\"docker_neg_cache\":\"present(age=25s, ttl_remaining=35s)\",\"slot_pool\":\"12/12 dirs (helper unreachable)\",\"reason\":\"all_unreachable_synth\",\"fallback_chain\":[\"hetzner\",\"ubu1\",\"ubu2\"],\"fix_steps\":[\"clear neg_cache: rm -f /tmp/hexa_resolver.connectivity\",\"probe slots: hexa run claude_slot_pick.hexa --probe-all\",\"connectivity check: ssh ConnectTimeout=5 BatchMode=yes per host\",\"full bypass: HEXA_RESOLVER_NO_REROUTE=1 nexus kick run <topic>\"],\"ref\":\"raw 66 + raw 77\",\"host\":\"Mac\",\"agent\":\"hexa_remote\"}"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-RAW77-1-ledger-silent-fail-24h",
+      "name": "ledger silent fail 24h",
+      "spec": "Within any 24h window where >=1 cascade-block event occurs in operator session logs, ledger MUST contain >=1 row whose ts is within that window. Falsifier: stderr trailer emitted but ledger empty/stale → patch regression.",
+      "check": "tail -1 $HEXA_REMOTE_AUDIT_DIR/cascade_blocked_events.jsonl; verify ts within 24h of latest stderr 'err hexa_remote/all-routes-blocked' grep result",
+      "expected_state": "ledger_ok"
+    },
+    {
+      "id": "F-RAW77-2-schema-mismatch",
+      "name": "schema mismatch",
+      "spec": "Every JSONL row MUST parse via json.loads AND contain all 11 required keys (ts, event, external_blacklist, docker_neg_cache, slot_pool, reason, fallback_chain, fix_steps, ref, host, agent). Falsifier: any row missing a key or parse-failing.",
+      "check": "python3 validator over full ledger; sys.exit nonzero on any miss",
+      "expected_state": "schema_pass"
+    },
+    {
+      "id": "F-RAW77-3-concurrent-write-race",
+      "name": "concurrent write race",
+      "spec": "10 parallel invocations of _emit_all_routes_blocked_trailer MUST result in exactly 10 valid JSONL rows (no truncation, no interleaving). Falsifier: row count != 10 or any row mid-line concatenated with another.",
+      "check": "for i in $(seq 1 10); do (runner.sh &) ; done; wait; wc -l ledger == 10 AND every line json.loads",
+      "expected_state": "race_safe"
+    }
+  ],
+  "raw_91_c3_honest": {
+    "sandbox_constraint": "agent sandbox blocks Edit/Write to /Users/ghost/core/nexus/scripts/bin/hexa_remote (EPERM). The patch was applied to a copy in /tmp/hexa_remote_patch_test/hexa_remote.patched and validated synthetically. Operator must apply the patch to nexus repo and commit/push.",
+    "patch_file": "/tmp/hexa_remote_patch_test/raw77_ledger.patch (61 lines, unified diff)",
+    "manual_apply_command": "cd ~/core/nexus && patch -p1 < /tmp/hexa_remote_patch_test/raw77_ledger.patch",
+    "alt_apply": "Edit hexa_remote at line 773 — append the F-RAW77 block (lines 775-826 of patched copy) before closing brace at line 774",
+    "nexus_push_capability": "previous cycle commit 561cfdfe was successfully pushed to origin/main; push capability confirmed for current operator. This sub-agent cannot push (sandbox EPERM on nexus tree)."
+  },
+  "outputs": {
+    "patch_diff": "/tmp/hexa_remote_patch_test/raw77_ledger.patch",
+    "patched_full_file": "/tmp/hexa_remote_patch_test/hexa_remote.patched",
+    "synth_test_harness": "/tmp/hexa_remote_patch_test/synth_test.sh",
+    "synth_ledger_artifact": "/tmp/hexa_remote_patch_test/audit_synth/cascade_blocked_events.jsonl",
+    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_f-raw77-cascade-ledger_omega_cycle.json"
+  },
+  "verdict": "PATCH_READY — synthetic test green, schema validated, raw 71 falsifiers specified. Sandbox prevents nexus mutation; operator must apply patch + commit + push."
+}
