@@ -1,0 +1,58 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-29T08:30:00Z",
+  "cycle": 24,
+  "phase": "scripts-migration-to-nexus-sim-bridge-weave",
+  "topic": "HEXA-WEAVE empirical sandbox canonical migration: ~/core/hexa-weave/ (cycle 14 sister-repo plan, retired) → ~/core/nexus/sim_bridge/weave/ (cycle 24 sim_bridge sub-module pattern, peer of multiverse / bostrom_test / godel_q)",
+  "verdict": "MIGRATED-AND-PUSHED",
+  "verdict_detail": "User directive: nexus/sim_bridge/ 패턴 따라 sim-universe (multiverse) + rng (ouroboros_qrng) 형태로 nexus 에 포함. Name 'hexa' prefix 불필요 (sim_bridge sub 컨벤션은 snake_case + bare topic name: anu_stream / atlas_anu_corr / multiverse / weave). cycle 22 commit 67b07339 의 scripts/cage_assembly_simulation.py + scripts/polyhedral_cage_bayesian_audit.py 가 nexus 측 sim_bridge/weave/ 로 이전; n6-architecture 측은 git rm + spec path 갱신.",
+  "files_migrated_to_nexus": [
+    "nexus/sim_bridge/weave/cage_assembly_simulation.py (21888 bytes, EVENTS_PATH MODULE_DIR/runs/ 으로 path 갱신)",
+    "nexus/sim_bridge/weave/polyhedral_cage_bayesian_audit.py (17086 bytes, audit out_path MODULE_DIR/runs/ 으로 path 갱신)",
+    "nexus/sim_bridge/weave/README.md (5474 bytes, sim_bridge 패턴 따른 README — 컨셉 + 모듈 + 사용법 + n6 cross-link + raw 91 C3 disclose)",
+    "nexus/sim_bridge/weave/runner.sh (1258 bytes, executable, --cage-only / --audit-only / --extended / default both)"
+  ],
+  "files_removed_from_n6": [
+    "n6-architecture/scripts/cage_assembly_simulation.py (git rm; cycle 22 commit 67b07339 historical preservation)",
+    "n6-architecture/scripts/polyhedral_cage_bayesian_audit.py (git rm; cycle 22 commit 67b07339 historical preservation)"
+  ],
+  "files_preserved_in_n6": [
+    "n6-architecture/state/audit/cage_assembly_events.jsonl (cycle 22 historical snapshot, NOT removed)",
+    "n6-architecture/state/audit/polyhedral_cage_audit_events.jsonl (cycle 22 historical snapshot, NOT removed)",
+    "n6-architecture/domains/biology/hexa-weave/hexa-weave.md (declarative SSOT, no script path references)",
+    "n6-architecture/lean4-n6/N6/MechVerif/* (formal SSOT)",
+    "n6-architecture/papers/hexa-weave-formal-mechanical-w2-2026-04-28.md (paper SSOT)"
+  ],
+  "files_modified_in_n6": [
+    "proposals/hexa_weave_mvp_w5_mac_cpu_fallback_2026_04_28.md §11 DEPENDENCIES + §13 TOOLS — path 갱신: ~/core/hexa-weave/ retired, ~/core/nexus/sim_bridge/weave/ canonical"
+  ],
+  "nexus_side_commit": {
+    "branch": "fix/kick-infra-recovery (NOT main; raw 91 C3 disclose)",
+    "commit_hash": "bb37dab7",
+    "files_changed": 4,
+    "insertions": 1151,
+    "push_status": "pushed origin fix/kick-infra-recovery c7c10b53→bb37dab7"
+  },
+  "smoke_test_results": {
+    "runner_sh_audit_only": "PASS posterior 0.9668 RESOLVED (32/32 CK-admissible cages vertex=12)",
+    "runner_sh_cage_only": "5/6 PASS yield FAIL plateau 0.6842 (cycle 22 reproduction; calibration gap not theoretical refutation)",
+    "runs_directory_created": "nexus/sim_bridge/weave/runs/{cage_assembly_events,polyhedral_cage_audit_events}.jsonl 생성됨 (gitignored per sim_bridge/.gitignore convention)"
+  },
+  "raw_91_c3_disclose": [
+    "nexus 측은 fix/kick-infra-recovery branch 에 commit (main 아님). 다른 dirty files 4개는 무수정 — 사용자 다른 작업 격리 보존",
+    "~/core/hexa-weave/ 별도 sister-repo plan retired — cycle 14 sub-agent 결정 한 path 였으나 사용자 directive 후 nexus sub-module 으로 통합",
+    "n6 측 state/audit/*_events.jsonl 은 cycle 22 historical snapshot 으로 보존 (cycle 24+ 부터 nexus runs/ 가 canonical)",
+    "scripts git rm 은 working tree 삭제만; cycle 22 commit 67b07339 git history 에 영구 보존 (rewrite 없음)",
+    "MODULE_DIR/runs/ path 갱신 후 smoke test 정상 PASS — cycle 22 결과 (5/6 yield FAIL plateau, posterior 0.9668 RESOLVED) 동일 재현"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE24-MIGRATION-1", "condition": "smoke test runner.sh 가 nexus 측에서 실행 시 path resolution 오류로 ledger 누락", "deadline": "2026-05-06", "status": "preregistered"},
+    {"id": "F-CYCLE24-MIGRATION-2", "condition": "n6 측 cycle 23 spec 의 path reference 잔재 발견 (자동 검색 누락)", "deadline": "2026-05-13", "status": "preregistered"},
+    {"id": "F-CYCLE24-MIGRATION-3", "condition": "nexus fix/kick-infra-recovery branch 가 main 으로 merge 안 되어 weave/ canonical 위치가 fork 상태로 stale", "deadline": "2026-05-29", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "SSOT 4-axis: declarative (n6 domains/biology/hexa-weave) + formal (n6 lean4-n6) + paper (n6 papers/) + empirical (nexus sim_bridge/weave) — 4-tier 분리 명확",
+  "raw_9_hexa_only": "weave/ 는 python stdlib only (raw 9 deviation: cycle 14 design 잔재; cycle 30+ rewrite 보류). README + runner.sh + .py 3종 hybrid (sim_bridge 컨벤션 호환).",
+  "raw_53_deterministic": "smoke test 6/6 deterministic + audit posterior numeric_threshold 결정",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__CYCLE24_MIGRATION_RESULT__ MIGRATED-AND-PUSHED"
+}

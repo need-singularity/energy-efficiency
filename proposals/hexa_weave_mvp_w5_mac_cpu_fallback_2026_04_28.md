@@ -137,8 +137,10 @@ should be < 0.01 (numerical precision) per F-W5-MAC-CPU-2.
 
 - raw 14 ext-ssot: PyPI (PyTorch CPU + biopython + RDKit + Pydantic)
 - raw 9 hexa-only: setup runbook native
-- raw 47 cross-repo: ~/core/hexa-weave/ may register as sister repo
-  (raw_loader.hexa governed) — currently absent, gated on user approval
+- raw 47 cross-repo: cycle 24 path migration — empirical sandbox now lives
+  at `~/core/nexus/sim_bridge/weave/` (sim_bridge sub-module pattern,
+  peer of multiverse / bostrom_test / godel_q). Original `~/core/hexa-weave/`
+  proposal retired in cycle 24; sister-repo init NOT pursued.
 - raw 91 C3: external PyPI required, not vendored
 
 ## §12 TIMELINE
@@ -151,8 +153,13 @@ should be < 0.01 (numerical precision) per F-W5-MAC-CPU-2.
 ## §13 TOOLS
 
 - `tool/hexa_weave_w5_setup.hexa --mode=mac-cpu` (cycle 23 enhancement
-  to existing runbook)
-- `tool/hexa_weave_w5_mac_cpu_verify.py` (forward-spec, cycle 24+)
+  to existing runbook; cycle 24 path target updated to
+  `~/core/nexus/sim_bridge/weave/`)
+- `tool/hexa_weave_w5_mac_cpu_verify.py` (forward-spec, cycle 24+; will
+  also live in `nexus/sim_bridge/weave/` once authored)
+- `~/core/nexus/sim_bridge/weave/runner.sh` (cycle 24 LIVE — pipeline
+  driver: `--cage-only` / `--audit-only` / `--extended` / default both
+  for `cage_assembly_simulation.py` + `polyhedral_cage_bayesian_audit.py`)
 
 ## §14 TEAM
 
