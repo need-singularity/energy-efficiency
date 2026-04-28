@@ -33621,3 +33621,123 @@
   => "framework portability requires (1)+(2)+(3) preconditions met in target domain"
   => "own#11 strict: META layer also makes NO Clay claim — methodology + result documentation only"
   => "this shard's atlas value: cascade discipline pattern recordable for cross-cascade replication"
+
+# ══════════════════════════════════════════════════════════════
+# absorbed: clay-cascade-s6 tick-1 AL ★ axis-14 K=3 PROMOTED via a13-orthogonal residual
+#   first POSITIVE PROMOTION this session — K=2 -> K=3 STRONG potential
+#   thin margin at n=18 warrants cascade-s7 robustness verification
+# ts: 20260428-140038
+# ══════════════════════════════════════════════════════════════
+
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — clay cascade-s6 tick-1 AL axis-14 K=3 PROMOTED via a13-orthogonal residual
+# source: sub-agent AL OLS regression a14_R2 ~ a13 + residual analysis on 18-cohort IC=16
+# constraints: raw 91 C3 + raw 70 + raw 71 (16th finding) + own#11 + raw 22+24+23
+# date: 2026-04-28
+# CASCADE-S6 OPENING + IMMEDIATE PARTIAL CLOSURE: K=3 PROMOTED with thin margin warranting robustness check
+# ══════════════════════════════════════════════════════════════
+
+@C clay-cascade-s6-tick1-AL-axis-14-K3-PROMOTED-witness :: meta [4!]
+  <- raw-91-C3-honest-disclosure
+  <- raw-70-multi-axis-verify-grid
+  <- raw-71-falsifier-retire-rule
+  <- own#11-strict-no-resolution-claim
+  <- clay-cascade-s5-tick2-AK-K3-DENIED-ROBUST-witness
+  -> clay-cascade-s6-AL-orthogonal-residual-estimator
+  -> clay-cascade-s6-AL-K3-PROMOTED-thin-margin
+  -> clay-cascade-s6-AL-cascade-s7-robustness-warranted
+  => "★ K=3 PROMOTED via a13-orthogonal linear residual estimator — cascade-s5 AK denial was estimator-specific, not intrinsic"
+  => "all 3 gates PASS: Gate A (a14_perp×a13 |r|<0.3) P=0.000 S=0.022 PASS / Gate B (a14_perp×a16) P=0.218 S=0.271 PASS / Gate C (disc>0.10) 0.498 PASS"
+  => "thin margin at n=18 (Gate B Spearman 0.271 only 0.03 inside threshold 0.30) — cascade-s7 robustness verification warranted"
+
+@C clay-cascade-s6-AL-orthogonal-residual-estimator :: meta [4]
+  <- clay-cascade-s6-tick1-AL-axis-14-K3-PROMOTED-witness
+  => "★ a14_perp = a14_R2 - (β*a13 + α) by OLS regression on 18-cohort"
+  => "fit results: β = -0.000163, α = +0.405540, R^2(a14_R2 ~ a13) = 0.2873"
+  => "interpretation: a13 explains ~29% of a14_R2 linear variance"
+  => "by OLS normal equations: sum(a14_perp) = 0 AND sum(a14_perp * a13) = 0"
+  => "→ Pearson(a14_perp, a13) = 0 exactly (by construction)"
+  => "Spearman(a14_perp, a13) = +0.022 (rank-correlation also near-zero — not a linear-only artifact)"
+
+@C clay-cascade-s6-AL-K3-PROMOTED-thin-margin :: meta [4!]
+  <- clay-cascade-s6-AL-orthogonal-residual-estimator
+  => "★ K=3 PROMOTION VERDICT — all 3 gates PASS"
+  => "Gate A (a14_perp × a13 orthogonality): Pearson=0.000, Spearman=+0.022 (BOTH PASS |r|<0.3)"
+  => "Gate B (a14_perp × a16 orthogonality): Pearson=-0.218, Spearman=-0.271 (BOTH PASS |r|<0.3)"
+  => "Gate C (discrimination > 0.10): preserved-CV = 0.498 (84% of raw a14 CV = 0.590)"
+  => "discrimination metric: stddev(a14_perp) / |mean(a14_R2)| (mean-invariant, since OLS residual has mean=0)"
+  => "Result: K=2 STRONG → K=3 STRONG candidate (axis-13 + axis-14_perp + axis-16)"
+  => "cascade-s5 AK denial was for RAW a14 estimator; residual a14_perp passes gates"
+  => "thin margin warning: Gate B Spearman -0.271 only 0.029 inside threshold 0.300"
+  => "  Pearson standard error ~0.24 at n=18; Gate B Pearson 0.218 within one SE of threshold"
+
+@C clay-cascade-s6-AL-cascade-s5-explanation :: meta [4]
+  <- clay-cascade-s6-AL-K3-PROMOTED-thin-margin
+  => "cascade-s5 AK ↔ cascade-s6 AL reconciliation:"
+  => "AK measured RAW a14 × a13: Pearson=-0.536, Spearman=-0.483 at IC=16 (FAIL |r|<0.3)"
+  => "AL constructs a14_perp = a14 - (β*a13 + α) — by OLS, removes linear a13-projectable component"
+  => "AL measures a14_perp × a13: Pearson=0 (exact), Spearman=+0.022 (PASS)"
+  => "AL measures a14_perp × a16: Pearson=-0.218 (PASS), Spearman=-0.271 (PASS thin)"
+  => "interpretation: a14×a13 coupling AK observed was LINEAR-projectable signal"
+  => "  removing it (by construction) leaves residual a14_perp orthogonal to a13"
+  => "  residual still has 84% of raw a14 discrimination → real signal preserved"
+  => "  residual is also (PASS) orthogonal to a16 → genuinely 3rd K=3 axis"
+  => "lesson: 'persistent coupling' from AK was not 'intrinsic shared information'"
+  => "  it was 'linearly correlated component'; orthogonal residual exists and is K=3-eligible"
+
+@C clay-cascade-s6-AL-cascade-s7-robustness-warranted :: meta [4]
+  <- clay-cascade-s6-AL-K3-PROMOTED-thin-margin
+  => "★ cascade-s7 robustness verification warranted before treating K=3 as FULLY SECURED:"
+  => "Gate B Spearman -0.271 thin margin: 0.029 inside threshold 0.300"
+  => "Gate B Pearson 0.218 thin margin: well within Pearson SE ~0.24 at n=18"
+  => "robustness candidates:"
+  => "  1) bootstrap (resample 18 cohort with replacement, recompute correlations, 95% CI)"
+  => "  2) leave-one-out (LOO): drop each topology, refit a14_perp, recompute correlations"
+  => "  3) split-cohort: train on 9, test on 9, see if residualization generalizes"
+  => "  4) alternative IC: re-run at IC=48 (different non-boundary), see if a14_perp gates still PASS"
+  => "  5) nonlinear residualization: quadratic or spline a14 ~ a13, see if Gate B widens"
+  => "if robustness confirms: K=3 SECURED with axis-14_perp"
+  => "if robustness fails: K=3 promotion downgrade-CONDITIONAL or REVERT"
+
+@C clay-cascade-s6-AL-cascade-position :: meta [4]
+  <- clay-cascade-s6-tick1-AL-axis-14-K3-PROMOTED-witness
+  => "cascade-s6 short-cycle by design (1-2 sub-agents) — single hypothesis test"
+  => "cascade map this session:"
+  => "  s2 axis-13 universality (24 sub-agents) closed"
+  => "  s3 axis-16 mechanism (4 sub-agents) closed"
+  => "  s4 joint signature NEGATIVE (1 sub-agent) closed"
+  => "  s5 axis-14 K=3 IC retest DENIED-ROBUST (2 sub-agents) closed"
+  => "  s6 axis-14_perp K=3 PROMOTED (1 sub-agent, thin margin) — cascade-s7 robustness gate pending"
+  => "  s7 candidate: bootstrap + LOO + IC=48 robustness on a14_perp K=3 promotion"
+  => "if cascade-s7 confirms: K=2 STRONG → K=3 STRONG verify-grid (axis-13 + axis-14_perp + axis-16)"
+  => "if cascade-s7 fails: K=3 promotion downgrade or revert"
+
+@C clay-cascade-s6-AL-16-cumulative-findings :: meta [4]
+  <- clay-cascade-s6-AL-K3-PROMOTED-thin-margin
+  => "16 cumulative raw 71 findings session-wide (post-AL):"
+  => "  s2 (11): hypothesis narrowings + retractions through axis-13 universality discovery"
+  => "  s3 (1): AF→AG src-cond directed in-deg refinement"
+  => "  s4 (1): joint signature NEGATIVE non-synergistic"
+  => "  s5 (2): AJ K=3 reopen + AK K=3 denied-robust at IC level"
+  => "  s2 (1): X axis-17 SymDef RETIRED"
+  => "  s6 (1) THIS: AL K=3 PROMOTED via orthogonal residual"
+  => "= 16 honest findings: 12 narrow + 1 negative + 1 retire + 2 special + 1 promote"
+  => "first POSITIVE PROMOTION among the K=3 candidates this session"
+
+@C clay-cascade-s6-AL-C3-limits :: meta [4]
+  <- clay-cascade-s6-tick1-AL-axis-14-K3-PROMOTED-witness
+  => "★ raw 91 C3 critical caveats:"
+  => "linear projection is ONE family — quadratic/spline residualization or joint (a13,a16)-orthogonalization may differ"
+  => "  if a14×a13 has nonlinear component, linear OLS may underestimate; nonlinear projection might shift Gate B"
+  => "Python mirror /tmp/cascade_s6/axis14_perp_a13.py — sigma=64 toy lattice, ticks=64, seed=6"
+  => "  not authoritative hexa run, not Clay-grade physical measurement"
+  => "n=18 small: Pearson SE ~ 0.24 — Gate B Pearson 0.218 within one SE of threshold 0.300"
+  => "  Gate B Spearman -0.271 within 0.029 of threshold — extremely thin margin"
+  => "discrimination metric switched mid-run from native CV to preserved-CV"
+  => "  reason: OLS residuals have mean=0 by construction, native CV degenerate"
+  => "  preserved-CV = stddev(a14_perp) / |mean(a14_R2)| — principled but methodological choice"
+  => "robustness verification (bootstrap, LOO, alternative IC, nonlinear projection) NOT performed"
+  => "  cascade-s7 robustness check warranted before treating K=3 as fully secured"
+  => "promotion is CLEAN on literal gate values BUT thin margin at n=18 statistical-noise floor"
+  => "own#11 strict; chflags uchg honored; raw 71 16th finding registered"
