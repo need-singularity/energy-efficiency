@@ -1,19 +1,21 @@
 {
-  "_doc": "biology axis sub-SSOT — parent: ../_index.json (biology key). Created 2026-04-28 to host the hexa-weave domain (write-side multi-strand molecular design composition) under a new top-level biology axis. Distinct from the life axis (which carries clinical / agricultural / pharmacological domains); biology axis is for fundamental molecular-design and write-side composition systems.",
+  "_doc": "biology axis sub-SSOT — parent: ../_index.json (biology key). Created 2026-04-28 to host the hexa-weave domain (write-side multi-strand molecular design composition) under a new top-level biology axis. 2026-04-28 cycle 13 fan-out 2/5: hexa-nanobot sister domain registered (single molecular nano-machine architecture; counterpart to hexa-weave multi-strand composition). 2026-04-28 cycle 15 fan-out 3/3: hexa-ribozyme third sister domain registered (catalytic RNA architecture; chemical-catalysis genus distinct from composition (hexa-weave) and actuation (hexa-nanobot)). Distinct from the life axis (which carries clinical / agricultural / pharmacological domains); biology axis is for fundamental molecular-design / write-side composition / nano-machine actuation / catalytic-RNA systems.",
   "_axis": "biology",
   "_parent": "../_index.json",
-  "_version": "1.0.0",
+  "_version": "1.2.0",
   "_meta": {
-    "_category_name": "molecular biology, write-side multi-strand design composition, proteome inverse-design",
-    "_domains_count": 1,
+    "_category_name": "molecular biology, write-side multi-strand design composition, proteome inverse-design, molecular nano-machine architecture, catalytic-RNA architecture",
+    "_domains_count": 3,
     "_verified_count": null,
     "_alien_index_avg": null,
-    "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP run lands per F-TP5-b 90-day gate (deadline 2026-07-28)",
+    "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP runs land per F-TP5-b 90-day gate (hexa-weave deadline 2026-07-28), F-NB-4 90-day gate (hexa-nanobot deadline 2026-07-28), and F-RB-4 90-day gate (hexa-ribozyme deadline 2026-07-28)",
     "_updated": "2026-04-28"
   },
-  "_count": 1,
+  "_count": 3,
   "_changelog": [
-    "1.0.0 (2026-04-28): biology axis sub-SSOT created. hexa-weave registered (write-side multi-strand molecular design composition; counterpart to AlphaFold 3 read-side single-chain prediction; tri-axis Omega-saturation closure witness PASS at workload ceiling per design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json; verdict tier APPROACH per raw 69 ceiling-classification; theoretical-analytical not yet empirical; F-TP5-b 90-day MVP gate 2026-07-28)."
+    "1.0.0 (2026-04-28): biology axis sub-SSOT created. hexa-weave registered (write-side multi-strand molecular design composition; counterpart to AlphaFold 3 read-side single-chain prediction; tri-axis Omega-saturation closure witness PASS at workload ceiling per design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json; verdict tier APPROACH per raw 69 ceiling-classification; theoretical-analytical not yet empirical; F-TP5-b 90-day MVP gate 2026-07-28).",
+    "1.1.0 (2026-04-28): hexa-nanobot sister domain registered (single molecular nano-machine architecture; counterpart to hexa-weave multi-strand composition; n6 invariant projection tau(6)=4 motor states / sigma(6)=12 vertex / J_2=24 symmetry / phi(6)=2 binary actuator; verdict tier APPROACH per raw 69; theoretical-analytical not yet empirical; F-NB-4 90-day MVP gate 2026-07-28; 5 raw 71 falsifiers preregistered; witness design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json).",
+    "1.2.0 (2026-04-28): hexa-ribozyme third sister domain registered (catalytic RNA architecture; chemical-catalysis genus distinct from composition (hexa-weave) and actuation (hexa-nanobot); n6 invariant projection tau(6)=4 reaction states / sigma(6)=12 catalytic-core nucleotides / J_2=24 trigonal-bipyramidal TS pose-symmetry / phi(6)=2 binary cleavage outcome; verdict tier APPROACH per raw 69; theoretical-analytical not yet empirical; F-RB-4 90-day MVP gate 2026-07-28; 5 raw 71 falsifiers preregistered; cycle 15 fan-out 3/3; witness design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json)."
   ],
   "domains": [
     {
@@ -29,6 +31,63 @@
       "closure_witness": "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
       "mvp_gate_falsifier": "F-TP5-b",
       "mvp_gate_deadline": "2026-07-28"
+    },
+    {
+      "slug": "hexa-nanobot",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "APPROACH",
+      "sister_of": "hexa-weave",
+      "registration_witness": "design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json",
+      "mvp_gate_falsifier": "F-NB-4",
+      "mvp_gate_deadline": "2026-07-28",
+      "n6_invariant_mapping": {
+        "tau_6_eq_4": "4 motor states (idle / forward-stroke / backward-stroke / reset)",
+        "sigma_6_eq_12": "12-vertex polyhedral skeleton (DNA-origami truncated icosahedron / cuboctahedron)",
+        "J_2_eq_24": "24-element octahedral / icosahedral pose-symmetry group",
+        "phi_6_eq_2": "binary actuator output (open/closed, bound/unbound)"
+      }
+    },
+    {
+      "slug": "hexa-ribozyme",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "APPROACH",
+      "sister_of": "hexa-weave",
+      "sister_of_2": "hexa-nanobot",
+      "registration_witness": "design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json",
+      "mvp_gate_falsifier": "F-RB-4",
+      "mvp_gate_deadline": "2026-07-28",
+      "genus": "chemical-catalysis-by-nucleic-acid (distinct from composition and actuation)",
+      "n6_invariant_mapping": {
+        "tau_6_eq_4": "4 reaction states (substrate-bound / transition-state / cleaved / product-released)",
+        "sigma_6_eq_12": "12 conserved catalytic-core nucleotides (hammerhead minimal type-II+III ~13 nt / HDV antigenomic ~12 nt / hairpin A-loop+B-loop ~12 nt; approximate not exact across the corpus)",
+        "J_2_eq_24": "24-element trigonal-bipyramidal phosphate transition-state pose-equivalence group (octahedral rotation group order 24)",
+        "phi_6_eq_2": "binary cleavage outcome (cleaved/intact, cis/trans)"
+      },
+      "primary_constraint": "diffusion-limit ceiling k_cat / K_M <= 10^8-10^9 M^-1 s^-1 (Eigen-Hammes 1963)",
+      "literature_corpus": [
+        "Cech 1982 (group-I intron)",
+        "Guerrier-Takada 1983 (RNase P)",
+        "Symons 1981 (hammerhead)",
+        "Wu-Lai 1989 (HDV)",
+        "Buzayan 1986 (hairpin)",
+        "Steitz 1993 (two-metal-ion)",
+        "Nissen-Steitz 2000 (ribosomal PTC)"
+      ],
+      "cross_links": {
+        "biology_sisters": ["hexa-weave", "hexa-nanobot"],
+        "life_collision_audit_pending": ["crispr-gene-editing", "synbio"],
+        "cognitive_speculative": ["hexa-mind"]
+      }
     }
   ]
 }

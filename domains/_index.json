@@ -1,7 +1,7 @@
 {
   "_doc": "도메인 SSOT — 304 도메인을 10축으로 분류. 축 변경 시 이 파일만 수정.",
-  "_version": "1.0.6",
-  "_total": 379,
+  "_version": "1.0.8",
+  "_total": 381,
   "_axes": 11,
   "_changelog": [
     "1.0.1 (2026-04-11): compute 축에 4 도메인 추가 — chip-rtl-gen, chip-dse-pipeline, chip-isa-n6, chip-npu-n6 (칩 설계 축 확장)",
@@ -16,6 +16,18 @@
     {
       "date": "2026-04-28",
       "change": "1.0.6 — add biology axis (n=11) + register hexa-weave domain (write-side multi-strand molecular design composition; counterpart to AlphaFold 3 / IsoDDE; tri-axis Omega-saturation closure witness PASS at workload ceiling, APPROACH grade per raw 69)"
+    },
+    {
+      "date": "2026-04-28",
+      "change": "1.0.7 — register hexa-nanobot sister domain under biology axis (cycle 13 fan-out 2/5; single molecular nano-machine architecture; n6 invariant projection tau(6)=4 motor states / sigma(6)=12 vertex / J_2=24 symmetry / phi(6)=2 binary actuator; APPROACH grade; F-NB-4 90-day MVP gate 2026-07-28; witness design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json); _total 379 -> 380; biology axis count 1 -> 2"
+    },
+    {
+      "date": "2026-04-28",
+      "change": "1.0.8 — register hexa-ribozyme third sister domain under biology axis (cycle 15 fan-out 3/3; catalytic RNA architecture; chemical-catalysis genus distinct from composition (hexa-weave) and actuation (hexa-nanobot); n6 invariant projection tau(6)=4 reaction states / sigma(6)=12 catalytic-core nucleotides / J_2=24 trigonal-bipyramidal TS pose-symmetry / phi(6)=2 binary cleavage outcome; APPROACH grade; F-RB-4 90-day MVP gate 2026-07-28; witness design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json); _total 380 -> 381; biology axis count 2 -> 3"
+    },
+    {
+      "date": "2026-04-28",
+      "change": "1.0.8 (cycle 16 README curation): readme-data.json sync — stats.dse_domains 379 -> 381; biology section docs +2 (hexa-nanobot/, hexa-ribozyme/); SUMMARY/FOOTER markers updated by manual fallback (cycle-11 hexa-runtime sync-readme bug persists for per-domain SUMMARY/FOOTER markers per item-5 of cycle-16 kick spec; AUTO:BADGE marker auto-syncs cleanly); README.md.sealed.hash regenerated"
     }
   ],
   "_template": "각 도메인: domains/<axis>/<name>/{CLAUDE.md, <name>.md, verify.hexa}",
@@ -63,7 +75,7 @@
     },
     "biology": {
       "path": "biology/_index.json",
-      "count": 1
+      "count": 3
     }
   },
   "physics": [
@@ -393,6 +405,8 @@
     "hypotheses"
   ],
   "biology": [
-    "hexa-weave"
+    "hexa-weave",
+    "hexa-nanobot",
+    "hexa-ribozyme"
   ]
 }

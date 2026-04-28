@@ -2,7 +2,7 @@
   "schema": "n6-architecture/n6_own21_drift/1",
   "rule": "own#21",
   "slug": "readme-nexus6-tests-count-drift",
-  "ts": "2026-04-28T05:15:45Z",
+  "ts": "2026-04-28T10:47:29Z",
   "drift_pattern": "tests:\\s+(\\d+)",
   "authoritative": {
     "count": 51,
@@ -10,9 +10,22 @@
   },
   "readme": {
     "path": "README.md",
-    "claims": [],
-    "claim_count": 0
+    "claims": [
+      {
+        "line": 70,
+        "match": "tests:    1116",
+        "count": 1116
+      }
+    ],
+    "claim_count": 1
   },
-  "verdict": "WARN_NO_TOKEN",
-  "detail": "README.md carries no `tests: N` token matching drift_pattern 'tests:\\\\s+(\\\\d+)'; nothing to compare against authoritative count=51. Add a canonical token to README.md (or keep own#21 deferred) to enable hard drift enforcement."
+  "mismatches": [
+    {
+      "line": 70,
+      "match": "tests:    1116",
+      "count": 1116
+    }
+  ],
+  "verdict": "DRIFT",
+  "detail": "1 README token(s) disagree with authoritative count=51"
 }

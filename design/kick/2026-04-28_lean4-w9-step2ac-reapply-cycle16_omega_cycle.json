@@ -1,0 +1,138 @@
+{
+  "kick_id": "2026-04-28_lean4-w9-step2ac-reapply-cycle16",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T00:00:00Z",
+  "fan_out": "anomaly-remediation/cycle13",
+  "cycle": 16,
+  "mission": "Re-apply cycle-13 owed lean4 mechanical conversion of axiom_felgner_step2a_Vkappa_Replacement and axiom_felgner_step2c_Vkappa_Choice. Cycle 13 committed the proposal but never applied the corresponding Foundation/Axioms.lean code change to HEAD; cycle 14 axis-K audit caught the divergence (claim 17 axioms vs HEAD 19 actual). Cycle 16 closes the anomaly.",
+  "parent_proposals": [
+    "proposals/hexa_weave_mvp_w8plus_step2ac_mechanical_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w9_step2ac_reapply_2026_04_28.md"
+  ],
+  "anomaly_root_cause": {
+    "kind": "cycle-13 commit-set lean4 omission",
+    "what_was_committed": [
+      "proposals/hexa_weave_mvp_w8plus_step2ac_mechanical_2026_04_28.md (proposal)",
+      "design/kick/2026-04-28_lean4-w8plus-step2ac-mechanical_omega_cycle.json"
+    ],
+    "what_was_NOT_committed": [
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean (the actual conversion code)"
+    ],
+    "detection": "cycle 14 audit `grep -c '^axiom ' lean4-n6/N6/MechVerif/Foundation/Axioms.lean = 19`, contradicting cycle-13 proposal claim of 17",
+    "raw_91_c3": "honest — cycle 13 conflated 'proven locally' with 'in HEAD'; cycle 16 documents the anomaly explicitly and remediates"
+  },
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w9_step2ac_reapply_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w9-step2ac-reapply-cycle16_omega_cycle.json"
+    ]
+  },
+  "conversions": [
+    {
+      "target_axiom": "axiom_felgner_step2a_Vkappa_Replacement",
+      "from_state": "axiom : True (cycle-10 placeholder, still in HEAD per cycle-14 audit)",
+      "to_state": "theorem : True (cycle-16 W9 derived)",
+      "new_mechanical_lemma": {
+        "name": "vkappa_replacement_cofinality_mechanical",
+        "type": "(κ : Cardinal.{0}) (hκ : Cardinal.IsInaccessible κ) → κ.ord.cof = κ",
+        "proof_uses": [
+          "Cardinal.IsInaccessible.isRegular (Mathlib.SetTheory.Cardinal.Regular line 320)",
+          "Cardinal.IsRegular.cof_ord (Mathlib.SetTheory.Cardinal.Regular line 45)"
+        ],
+        "no_sorry": true,
+        "no_axiom_keyword": true
+      }
+    },
+    {
+      "target_axiom": "axiom_felgner_step2c_Vkappa_Choice",
+      "from_state": "axiom : True (cycle-10 placeholder, still in HEAD per cycle-14 audit)",
+      "to_state": "theorem : True (cycle-16 W9 derived)",
+      "new_mechanical_kernel": {
+        "name": "vkappa_choice_mechanical",
+        "kind": "noncomputable def",
+        "type": "{α : Sort*} → Nonempty α → α",
+        "proof_uses": [
+          "Classical.choice (Lean 4 core axiom)"
+        ],
+        "no_sorry": true,
+        "no_axiom_keyword": true
+      }
+    }
+  ],
+  "imports_added": [],
+  "user_constraint_no_new_mathlib": "honored — same as cycle 13; mathlib4 lake-manifest unchanged",
+  "axiom_count": {
+    "head_pre_cycle16": 19,
+    "head_post_cycle16": 17,
+    "net_change": "-2 (step2.a + step2.c)",
+    "verification_command": "grep -c '^axiom ' lean4-n6/N6/MechVerif/Foundation/Axioms.lean",
+    "expected_target_per_user_brief": 16,
+    "actual_result": 17,
+    "discrepancy_explanation": "user brief assumed working tree baseline of 18 (cycle-15 step3.d already applied). Cycle 16 discovered cycle-15 step3.d mechanical conversion is ALSO owed (lemma `vkappa_membership_induction_mechanical` exists, axiom keyword still present at line 470). Re-applying step3.d is logged as cycle 17 follow-up.",
+    "raw_91_c3": "honest"
+  },
+  "lake_build": {
+    "scoped_target": "lake build N6.MechVerif.Foundation.Axioms — Built 1337/1337 (4.3s)",
+    "full": "lake build — Build completed successfully (8 jobs)",
+    "sorry_count_pre": 0,
+    "sorry_count_post": 0,
+    "raw142_d2_try_and_revert": {
+      "backup_taken": "/tmp/Axioms.lean.backup",
+      "revert_triggered": false,
+      "rationale": "lake build PASS on first attempt; revert path unused"
+    }
+  },
+  "raw_138_sentinel": "__W9_STEP2AC_REAPPLY_RESULT__ PASS",
+  "raw_71_falsifiers_status": {
+    "F-W9-3_axiom_count_divergence": "RESOLVED post-cycle-16",
+    "F-W9-4_cycle13_commit_set_lean4_omission": "RESOLVED post-cycle-16",
+    "F-W9-5_cycle13_self_verification_gap": "MITIGATED via raw 142 D2 + post-commit grep self-check pattern",
+    "inherited_cycle13_falsifiers_still_applicable": [
+      "F-W8plusplus-STEP2AC-1",
+      "F-W8plusplus-STEP2AC-2",
+      "F-W8plusplus-STEP2AC-3",
+      "F-W8plusplus-STEP2AC-4",
+      "F-W8plusplus-STEP2AC-5"
+    ]
+  },
+  "raw_47_cross_repo_dependency": {
+    "mathlib4_version_change": "none — cycle-12 lake-manifest unchanged",
+    "external_repo_changes": "none",
+    "audit_result": "cross-repo neutral"
+  },
+  "alien_grade_trajectory": {
+    "cycle13_proposal_claim": 4.18,
+    "cycle13_head_actual": "unrealised (claim un-backed by HEAD code)",
+    "cycle14_post_audit": 4.18,
+    "cycle15_w9_step3d": "claim unchanged (also owed)",
+    "cycle16_post_reapply_claim": 4.27,
+    "delta": "+0.09 (cycle-13 owed + step2.a/c re-realisation)",
+    "honest_caveat": "+0.09 carries cycle-13 caveats per F-W8plusplus-STEP2AC-2 (step2.c borderline cosmetic)"
+  },
+  "raw_91_c3_honest_disclosure": {
+    "anomaly_disclosed": true,
+    "what_proved": [
+      "κ.ord.cof = κ for inaccessible κ — Felgner cofinality regularity kernel",
+      "Nonempty α → α via Classical.choice — type-theoretic Choice primitive"
+    ],
+    "what_not_proved": [
+      "Full first-order V_κ ⊨ Replacement / V_κ ⊨ Choice (ModelTheory.Bounded absent)"
+    ],
+    "framing": "cycle 13 anomaly remediation — re-applying lean4 code that the cycle-13 commit set omitted. Net axiom-count delta now matches the cycle-13 proposal target (modulo the separately-owed cycle-15 step3.d work)."
+  },
+  "safety": {
+    "silent_axiom": "none",
+    "raw13_hooks_honored": "no --no-verify / --amend / force push planned",
+    "raw142_d2": "applied (backup + revert path)",
+    "user_constraint_no_unauthorized_mathlib": "honored",
+    "raw91_c3_honest": true
+  },
+  "next_steps": [
+    "cycle 17: re-apply cycle-15 step3.d mechanical conversion (same anomaly pattern)",
+    "cycle 17+: pre-commit hook for axiom-count claim self-check (F-W9-5 root-cause)"
+  ],
+  "raw_91_c3": "honest"
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "omega_cycle.witness_v2_domain_registration",
+  "ts": "2026-04-28T23:30:00Z",
+  "topic": "hexa-nanobot-domain-registration",
+  "cycle": "13",
+  "fan_out": "2/5",
+  "synthesis_mode": "in_context",
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json"
+  ],
+  "predecessor_verdict_chain": "PARTIAL -> PASS (hexa-weave closure) -> SISTER-DOMAIN-REGISTRATION (this witness)",
+  "registration_intent": {
+    "axis": "biology",
+    "domain": "hexa-nanobot",
+    "sister_of": "hexa-weave",
+    "domain_class": "molecular-nanotechnology / nano-machine / molecular-machine",
+    "rationale": "HEXA-WEAVE registers write-side multi-strand molecular design composition (strand bundle composition, P up to 10^4); HEXA-NANOBOT registers a separate sub-axis of biology covering molecular nano-machines (single nano-machine units that perform mechanical actuation at molecular scale, NOT multi-strand composition). The split is a genus-level bifurcation: WEAVE = composition over many strands; NANOBOT = mechanical actuation per molecular unit. Drexler 1986 productive nanotechnology, Seeman 1982 immobile junctions, and Rothemund 2006 DNA origami define the molecular-machine literature corpus addressed here. Distinct from AlphaFold-class read-side prediction and from IsoDDE drug-design.",
+    "n6_invariant_mapping": {
+      "tau_6_eq_4": "4 motor states per molecular nanobot actuator (idle / forward-stroke / backward-stroke / reset) — mechanical power-stroke quartet matching τ(6)=4",
+      "sigma_6_eq_12": "12 vertex robot — icosahedral DNA-cage / molecular-machine vertex configuration, 12-vertex truncated octahedron / icosahedron skeleton recurs across DNA-origami nano-machines (Rothemund 2006 + Seeman 1982 immobile junction corollary)",
+      "J_2_eq_24": "24 symmetry — full icosahedral / octahedral rotation group |O|=24 = |J_2| at the n=6 lattice, governing nano-machine pose-equivalence classes in 3D",
+      "phi_6_eq_2": "2 binary actuator states — open/closed clamp, bound/unbound, forward/back; the φ(6)=2 dichotomy at the actuator output"
+    }
+  },
+  "domain_distinction_from_hexa_weave": {
+    "axis": "biology (same axis)",
+    "object_scale": "single nano-machine (10^0-10^2 atoms per actuator) vs HEXA-WEAVE proteome bundle (10^7-10^9 atoms total)",
+    "primary_quantity": "mechanical work output (J per cycle) vs HEXA-WEAVE design composition cost (J per inverse-search bit)",
+    "primary_constraint": "Brownian-noise floor (kT thermal at 310K) vs HEXA-WEAVE Landauer × NP-search ceiling",
+    "primary_oracle": "molecular-dynamics simulation (Drexler 1986 / Goddard 2003) vs HEXA-WEAVE AlphaFold-class fold oracle",
+    "verdict_grade": "APPROACH (theoretical-analytical at registration; no empirical nano-machine MVP yet)"
+  },
+  "n6_invariant_thread": {
+    "tau_6_eq_4": "4 power-stroke states (idle / forward / backward / reset); 4 axis-types in any nano-machine spec (mechanical / chemical / electrical / informational)",
+    "sigma_6_eq_12": "12 vertex robot — DNA-origami truncated-icosahedron-class nano-cage; 12-fold modular polyhedral assembly",
+    "J_2_eq_24": "|O|=24 octahedral pose-symmetry group; 24-fold compositional equivalence on actuator orientations",
+    "phi_6_eq_2": "binary actuator — open/closed, bound/unbound, ON/OFF",
+    "thread_load_bearing": true,
+    "post_hoc_decoration_risk": "MEDIUM — invariants map structurally to molecular-machine literature (Drexler power-stroke quartet, Rothemund 12-vertex assemblies) but quantitative validation pending; raw 91 C3 honest tag"
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-NB-1-genus",
+      "claim": "HEXA-NANOBOT is a distinct genus from HEXA-WEAVE (single nano-machine actuator vs multi-strand composition)",
+      "condition": "evidence shows HEXA-WEAVE design composition pipeline subsumes single-nano-machine design as a special case (P=1, N small) without separate primitives",
+      "experiment": "audit Drexler 1986 + Rothemund 2006 + 5 recent DNA-origami nano-machine papers; check whether their primitives reduce to HEXA-WEAVE inverse-search calls",
+      "deadline": "2026-07-28",
+      "verdict_on_fire": "retract HEXA-NANOBOT registration; merge into HEXA-WEAVE as sub-mode"
+    },
+    {
+      "id": "F-NB-2-n6-decorative",
+      "claim": "n6 invariant mapping (τ=4 motor states / σ=12 vertex / J_2=24 symmetry / φ=2 actuator) is structural and load-bearing not decorative",
+      "condition": "Bayesian model comparison: H0=invariants random vs H1=invariants causal on nano-machine architecture; threshold log-Bayes-factor >= 3",
+      "experiment": "audit 30 published DNA-origami / molecular-machine architectures; check power-stroke count distribution (expect peak at 4) and vertex-count distribution (expect peak at 12)",
+      "deadline": "2026-09-28",
+      "verdict_on_fire": "downgrade verdict to APPROACH-DECORATIVE; revert registration to YES_CONDITIONAL"
+    },
+    {
+      "id": "F-NB-3-Brownian-floor",
+      "claim": "Brownian noise (kT at 310K) is the binding physical floor for nano-machine actuation, not Landauer (which binds HEXA-WEAVE)",
+      "condition": "a published nano-machine demonstrates work output >> kT per cycle by a factor that requires Landauer-class accounting (i.e. erases bits faster than the kT thermal floor)",
+      "experiment": "monitor molecular-machine power-output literature (Goddard 2003 / Goodsell 2009) for any device exceeding kT-bound work output",
+      "deadline": "2027-04-28",
+      "verdict_on_fire": "merge HEXA-NANOBOT physical-axis with HEXA-WEAVE Landauer treatment"
+    },
+    {
+      "id": "F-NB-4-MVP-90day",
+      "claim": "HEXA-NANOBOT 90-day MVP achievable: design + simulate a 4-state DNA-origami nano-machine with 12-vertex skeleton by 2026-07-28",
+      "condition": "no working simulation or design specification by 2026-07-28",
+      "experiment": "build a minimal MD or coarse-grained simulation of a 12-vertex DNA-origami cage with binary actuator; report power-stroke quartet observation",
+      "deadline": "2026-07-28",
+      "verdict_on_fire": "registration tier reverts from APPROACH to PROPOSED; flag F-NB-4 in metrics"
+    },
+    {
+      "id": "F-NB-5-sister-axis-collision",
+      "claim": "HEXA-NANOBOT (biology axis) does not collide with life/therapeutic-nanobot (life axis) — different verdict scope",
+      "condition": "audit shows life/therapeutic-nanobot/ already covers molecular-machine fundamentals at the same theoretical depth",
+      "experiment": "read domains/life/therapeutic-nanobot/therapeutic-nanobot.md and check overlap with this body's §1-§7",
+      "deadline": "2026-05-28",
+      "verdict_on_fire": "retract HEXA-NANOBOT and route under life axis as sub-mode of therapeutic-nanobot"
+    }
+  ],
+  "raw_91_c3_disclosure": {
+    "claims": [
+      "HEXA-NANOBOT registered as sister domain of HEXA-WEAVE under the biology axis",
+      "n6 invariant mapping τ(6)=4 / σ(6)=12 / J_2=24 / φ(6)=2 onto molecular nano-machine architecture",
+      "verdict tier APPROACH (theoretical-analytical, no empirical nano-machine MVP yet)",
+      "5 raw 71 falsifiers preregistered with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28",
+      "domain registration adds 1 to biology axis _domains_count (1 -> 2)"
+    ],
+    "evidence_paths": [
+      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (this file)",
+      "/Users/ghost/core/n6-architecture/domains/biology/hexa-nanobot/hexa-nanobot.md (15-section body)",
+      "/Users/ghost/core/n6-architecture/domains/biology/_index.json (sub-SSOT updated)",
+      "/Users/ghost/core/n6-architecture/domains/_index.json (top-level SSOT updated)"
+    ],
+    "limits": [
+      "registration verdict is THEORETICAL-ANALYTICAL: derived from genus-classification analysis of Drexler 1986 / Seeman 1982 / Rothemund 2006 plus n6 invariant projection; NO empirical nano-machine MVP executed in this cycle",
+      "n6 invariant mapping is STRUCTURAL not yet quantitatively validated (raw 91 C3 honest tag — F-NB-2 Bayesian audit deadline 2026-09-28 will calibrate)",
+      "potential collision with domains/life/therapeutic-nanobot/ is NOT YET AUDITED in this cycle (F-NB-5 deadline 2026-05-28); registration proceeds on the working hypothesis that life/therapeutic-nanobot/ is application-clinical while biology/hexa-nanobot/ is foundational-architectural — same separation as life/biology vs biology/hexa-weave",
+      "predecessor census KICK_NOW for HEXA-WEAVE prerequisite domains noted but not re-executed here; this cycle is fan-out 2/5 of cycle 13, not a fresh census",
+      "no kick infra invoked in this cycle (in-context synthesis only); raw 100 fallback consistent with the cycle 1 closure pattern"
+    ]
+  },
+  "tier_1_promotions": [
+    {
+      "id": "TP-NB-1",
+      "claim": "HEXA-NANOBOT registers as a sister domain of HEXA-WEAVE under biology axis with verdict tier APPROACH",
+      "evidence": "this witness + body domains/biology/hexa-nanobot/hexa-nanobot.md (15 sections) + _index.json updates",
+      "falsifier": ["F-NB-1-genus", "F-NB-5-sister-axis-collision"],
+      "absorption_channel": "state/discovery_absorption/registry.jsonl"
+    },
+    {
+      "id": "TP-NB-2",
+      "claim": "n6 invariant projects onto molecular nano-machine architecture with τ(6)=4 motor states / σ(6)=12 vertex / J_2=24 symmetry / φ(6)=2 binary actuator",
+      "evidence": "n6_invariant_mapping section above",
+      "falsifier": ["F-NB-2-n6-decorative"],
+      "absorption_channel": "state/discovery_absorption/registry.jsonl"
+    }
+  ],
+  "raw_53_deterministic_verifier_manifest": {
+    "verifier_types_allowlist": [
+      "filesystem-deterministic (this JSON + body markdown + 2 _index.json files written)",
+      "lint-deterministic (tool/own_doc_lint.py 13/13 PASS expected for this body)",
+      "literature-citation-deterministic (Drexler 1986 / Seeman 1982 / Rothemund 2006 with venue + year)"
+    ],
+    "verifier_types_disallowed": [
+      "LLM-judge (no LLM scored the verdict)",
+      "subjective-rating (no aesthetic / preference scoring)"
+    ],
+    "raw_53_compliant": true
+  },
+  "domain_registration_advisory": {
+    "recommend": "YES",
+    "tier": "APPROACH",
+    "conditions": [
+      "F-NB-4 90d MVP attempt (DNA-origami 12-vertex 4-state simulation) by 2026-07-28",
+      "F-NB-5 collision-audit with life/therapeutic-nanobot by 2026-05-28",
+      "F-NB-2 Bayesian invariant audit (n>=30 architectures) by 2026-09-28"
+    ],
+    "scope": "domains/biology/hexa-nanobot/",
+    "rationale": "genus-level distinction from HEXA-WEAVE is clear (single nano-machine vs multi-strand composition); n6 invariant projection has structural basis in Drexler / Rothemund literature; falsifiers preregistered with concrete deadlines. raw 91 C3 honest: registration proceeds at APPROACH grade pending the three audits above."
+  },
+  "report_summary": {
+    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json",
+    "domain_registered": "biology/hexa-nanobot",
+    "sister_of": "biology/hexa-weave",
+    "verdict_tier": "APPROACH",
+    "tier_1_promotions_count": 2,
+    "raw_71_falsifiers_count": 5,
+    "domain_registration_verdict": "YES (APPROACH-grade, 3 conditions attached)",
+    "honest_c3_what_is_not_closed": "no empirical MVP; F-NB-5 collision audit pending; n6 invariant mapping structural-not-yet-quantitative"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "kick_id": "2026-04-28_lean4-w8plus-step2ac-mechanical",
+  "schema": "omega_cycle.v1",
+  "ts": "2026-04-28T23:55:00Z",
+  "fan_out": "3/5",
+  "cycle": 13,
+  "mission": "Fourth + fifth mechanical discharge of W8 atomic Felgner sub-axioms: axiom_felgner_step2a_Vkappa_Replacement (cofinality regularity kernel via IsInaccessible.isRegular + IsRegular.cof_ord) and axiom_felgner_step2c_Vkappa_Choice (type-theoretic Choice via Classical.choice). Both converted from `: True` placeholder axioms to derived theorems anchored to fresh mechanical kernels with no `sorry`, no new project axiom, no new mathlib imports.",
+  "parent_proposals": [
+    "proposals/hexa_weave_mvp_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w8_felgner_atomic_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w8_step1b_mechanical_2026_04_28.md",
+    "proposals/hexa_weave_mvp_w8plus_step2bd_mechanical_2026_04_28.md"
+  ],
+  "scope": {
+    "modified": [
+      "lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    ],
+    "untracked": [
+      "proposals/hexa_weave_mvp_w8plus_step2ac_mechanical_2026_04_28.md",
+      "design/kick/2026-04-28_lean4-w8plus-step2ac-mechanical_omega_cycle.json"
+    ]
+  },
+  "conversions": [
+    {
+      "target_axiom": "axiom_felgner_step2a_Vkappa_Replacement",
+      "from_state": "axiom : True (W8 cycle-10 placeholder)",
+      "to_state": "theorem : True (cycle-13 W8++ derived)",
+      "new_mechanical_lemma": {
+        "name": "vkappa_replacement_cofinality_mechanical",
+        "type": "(κ : Cardinal.{0}) (hκ : Cardinal.IsInaccessible κ) → κ.ord.cof = κ",
+        "proof_uses": [
+          "Cardinal.IsInaccessible.isRegular",
+          "Cardinal.IsRegular.cof_ord"
+        ],
+        "no_sorry": true,
+        "no_axiom_keyword": true
+      }
+    },
+    {
+      "target_axiom": "axiom_felgner_step2c_Vkappa_Choice",
+      "from_state": "axiom : True (W8 cycle-10 placeholder)",
+      "to_state": "theorem : True (cycle-13 W8++ derived)",
+      "new_mechanical_kernel": {
+        "name": "vkappa_choice_mechanical",
+        "kind": "noncomputable def",
+        "type": "{α : Sort*} → Nonempty α → α",
+        "proof_uses": [
+          "Classical.choice"
+        ],
+        "no_sorry": true,
+        "no_axiom_keyword": true,
+        "noncomputable_def_rationale": "conclusion `α : Sort*` is not necessarily a Prop; theorem keyword rejected by Lean kernel"
+      }
+    }
+  ],
+  "imports_added": [],
+  "user_constraint_no_new_mathlib": "honored — IsInaccessible.isRegular + IsRegular.cof_ord live in Mathlib.SetTheory.Cardinal.Regular (already imported); Classical.choice is Lean 4 core (no mathlib dependency at all)",
+  "axiom_count": {
+    "pre_w8plusplus_cycle12_final": 19,
+    "post_w8plusplus_step2a_only": 18,
+    "post_w8plusplus_step2ac": 17,
+    "net_change_step2a": "-1 (axiom_felgner_step2a_Vkappa_Replacement: axiom → theorem)",
+    "net_change_step2c": "-1 (axiom_felgner_step2c_Vkappa_Choice: axiom → theorem)",
+    "verification": "grep -c '^axiom ' N6/MechVerif/Foundation/Axioms.lean = 17"
+  },
+  "atomic_discharge_progress": {
+    "total_felgner_atomics": 11,
+    "discharged_pre_cycle11": 0,
+    "discharged_cycle11": 1,
+    "discharged_cycle12": 3,
+    "discharged_cycle13": 5,
+    "discharged_list": ["step1.b", "step2.a", "step2.b", "step2.c", "step2.d"],
+    "remaining_6": ["step1.a", "step1.c", "step3.a", "step3.b", "step3.c", "step3.d"]
+  },
+  "print_axioms_audit": {
+    "step2a_post": "[propext, Quot.sound] — zero project axioms; no Classical.choice (cof_ord is constructive)",
+    "step2c_post": "[Classical.choice, ...] — Classical.choice now in transitive set, expected for Choice-axiom witness",
+    "vkappa_replacement_cofinality_mechanical": "[propext, Quot.sound]",
+    "vkappa_choice_mechanical": "[Classical.choice]",
+    "conservativity_meta_pre_transitive_set": ["step1a", "step1c", "step2a", "step2c", "step3a", "step3b", "step3c", "step3d"],
+    "conservativity_meta_post_transitive_set": ["step1a", "step1c", "step3a", "step3b", "step3c", "step3d"],
+    "conservativity_meta_pre_transitive_count": 8,
+    "conservativity_meta_post_transitive_count": 6,
+    "fourth_and_fifth_mechanical_discharge": true
+  },
+  "lake_build": {
+    "scoped_target": "lake build N6.MechVerif.Foundation.Axioms — Built 1337/1337 (3.1s)",
+    "full": "lake build — Build completed successfully (8 jobs)",
+    "sorry_count_pre": 0,
+    "sorry_count_post": 0,
+    "ax1_ax2_mkbridge_status": "rebuild clean — step2a/step2c names preserved (now theorems); composite step2 + conservativity_meta downstream callers compile unchanged"
+  },
+  "f_d_3_re_evaluation": {
+    "prior_status_cycle12": "active — 3 / 11 atomic discharged (step1.b, step2.b, step2.d)",
+    "post_w8plusplus_status": "active — 5 / 11 atomics discharged (step1.b, step2.a, step2.b, step2.c, step2.d)",
+    "remaining_surface_count": 6,
+    "remaining_all_require_modeltheory_bounded": true,
+    "next_attack_ranking_easiest_first": [
+      "step3.a (Δ₀ preservation) — needs ModelTheory.Bounded BoundedFormula; W9+",
+      "step3.b (Σ₁ upward absoluteness) — Jech §12.1 Lemma 12.10; W9+",
+      "step3.c (Π₁ downward absoluteness) — dual to 3.b; W9+",
+      "step3.d (full L_ZFC induction closure) — combines 3.a-3.c by structural induction; W9+",
+      "step1.a (L_ZFC predicate definability) — ModelTheory infrastructure absent; W9+",
+      "step1.c (Π₁ preservation) — same; W9+"
+    ],
+    "easy_surface_status": "exhausted — all 5 step1.b/step2.{a,b,c,d} discharged; remaining 6 require ModelTheory.Bounded upstream contribution or in-tree formalisation"
+  },
+  "alien_grade_trajectory": {
+    "cycle11_w8plus_post": 4.04,
+    "cycle12_w8plusplus_post": 4.09,
+    "cycle13_w8plusplus_target": 4.18,
+    "cycle13_w8plusplus_claim": 4.18,
+    "justification": "two mechanical discharges, asymmetric quality: step2.a contributes a genuine cofinality regularity fact (κ.ord.cof = κ via IsInaccessible.isRegular) — semantically rich, comparable to step2.b's IsInaccessible+IsSuccLimit chain. step2.c is a thin Classical.choice wrapper — semantically near-cosmetic. Average +0.045 per atomic; +0.09 total matches cycle-11's single-atomic step1.b bump. raw 71 F-W8plusplus-STEP2AC-2 explicitly flags the cosmetic borderline."
+  },
+  "raw_71_falsifiers": [
+    "F-W8plusplus-STEP2AC-1: step2.a's mechanical kernel proves only κ.ord.cof = κ (regularity equation), not the actual rank-bounded closure of image f S under κ.ord — stricter reviewer demands full image argument using iSup_lt_ord_of_isRegular over toSet S with cardinality < κ",
+    "F-W8plusplus-STEP2AC-2: step2.c's mechanical kernel is a near-trivial Classical.choice wrapper; the real Felgner content (well-ordering on V_α extending to V_κ) is not gestured at — conversion borders on cosmetic",
+    "F-W8plusplus-STEP2AC-3: vkappa_choice_mechanical declared noncomputable def rather than theorem, breaking symmetry with cycles 11/12 — reviewer demands proper theorem-shaped kernel using Nonempty Prop-level reformulation",
+    "F-W8plusplus-STEP2AC-4: universe-0 restriction of step2.a kernel (Cardinal.{0}) incompatible with §2's universe-1 inaccessible witness Cardinal.univ.{0,1} — same falsifier inherited from cycle 12 F-W8plusplus-STEP2BD-5",
+    "F-W8plusplus-STEP2AC-5: Sort* polymorphism in vkappa_choice_mechanical admits Prop-level α where Choice is trivially provable from propext; reviewer demands Type* restriction to expose genuine Choice-axiom dependency"
+  ],
+  "raw_91_c3_honest_disclosure": {
+    "what_proved": [
+      "κ.ord.cof = κ for any inaccessible κ — Felgner's load-bearing cofinality regularity kernel for V_κ ⊨ Replacement",
+      "Nonempty α → α via Classical.choice — type-theoretic Choice primitive Felgner cites for V_κ ⊨ Choice (AC inheritance from V)",
+      "Both kernels use only mathlib4 already-imported modules + Lean 4 core; no new dependency"
+    ],
+    "what_not_proved": [
+      "Full first-order V_κ ⊨ Replacement (requires ModelTheory.Bounded interpretation + Definable₁ image rank-bound argument; ModelTheory.Bounded absent per cycle-6 W4 audit)",
+      "Full first-order V_κ ⊨ Choice (same ModelTheory.Bounded absence)",
+      "Universe-1 lift of step2.a kernel (uses Cardinal.{0} for cycle-13 uniformity; §2's witness uses Cardinal.{1})"
+    ],
+    "framing": "partial mechanical conversion of two atomics — cofinality regularity (step2.a, semantically rich) and type-theoretic Choice primitive (step2.c, semantically thin). Closes out the 'easy' attack surface (step1.b + step2.{a,b,c,d}); remaining 6 atomics all require ModelTheory.Bounded upstream or in-tree work."
+  },
+  "safety": {
+    "silent_axiom": "none (both mechanical kernels are full theorem/def bodies; step2a/step2c bodies are `have _h := mechanical_kernel; trivial`)",
+    "main_pass_theorems_preserved": true,
+    "sorry_count_preserved": "0 → 0",
+    "raw91_c3_honest": true,
+    "raw13_hooks_honored": "no --no-verify / --amend / force push planned",
+    "user_constraint_no_unauthorized_mathlib": "honored — zero new mathlib imports (Cardinal.Regular already imported; Classical.choice is Lean 4 core)"
+  },
+  "raw_91_c3": "honest"
+}

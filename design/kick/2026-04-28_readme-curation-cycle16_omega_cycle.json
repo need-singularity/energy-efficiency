@@ -1,0 +1,138 @@
+{
+  "kick_id": "readme-curation-cycle16",
+  "date": "2026-04-28",
+  "cycle": "cycle 16 README curation refresh",
+  "type": "readme_curation_refresh",
+  "scope": "README.md biology section + readme-data.json + sealed hash refresh: register HEXA-NANOBOT (cycle 13 fan-out 2/5) + HEXA-RIBOZYME (cycle 15 fan-out 3/3) under biology axis",
+  "predecessor_witnesses": [
+    "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json",
+    "design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json",
+    "design/kick/2026-04-28_readme-curation-consistency_omega_cycle.json",
+    "design/kick/2026-04-28_readme-fix1-stray_omega_cycle.json",
+    "design/kick/2026-04-28_readme-fix2-n6-invariant_omega_cycle.json",
+    "design/kick/2026-04-28_readme-fix3-cross-link_omega_cycle.json"
+  ],
+
+  "biology_axis_state_before": {
+    "domain_count": 1,
+    "domains": ["hexa-weave"],
+    "_total": 379,
+    "biology_axis_alien_grade": "n/a (cycle 11 baseline)"
+  },
+
+  "biology_axis_state_after": {
+    "domain_count": 3,
+    "domains": ["hexa-weave", "hexa-nanobot", "hexa-ribozyme"],
+    "_total": 381,
+    "biology_axis_alien_grade": "4.18 (cycle 15 close)",
+    "tri_sister_triangle": {
+      "composition": "hexa-weave (Landauer x NP-search ceiling)",
+      "actuation": "hexa-nanobot (Brownian thermal floor at 310 K)",
+      "catalysis": "hexa-ribozyme (diffusion-limit ceiling k_cat/K_M <= 10^8-10^9 M^-1 s^-1)"
+    }
+  },
+
+  "files_modified": [
+    "n6shared/readme-data.json",
+    "domains/_index.json",
+    "domains/biology/_index.json",
+    "README.md",
+    "README.md.sealed.hash",
+    ".readme-rules.json",
+    "reports/n6_own_doc_lint.json"
+  ],
+
+  "files_created": [
+    "design/kick/2026-04-28_readme-curation-cycle16_omega_cycle.json"
+  ],
+
+  "readme_data_json_changes": {
+    "stats.dse_domains": "324 -> 381 (catches up to domains/_index.json._total)",
+    "_meta.updated": "2026-04-03 -> 2026-04-28",
+    "_meta._changelog": "added cycle 16 entry",
+    "domains[id=biology].experiment_detail": "F-TP5-b -> F-TP5-b / F-NB-4 / F-RB-4 MVP gates 2026-07-28",
+    "domains[id=biology].extras": "added HEXA-NANOBOT (sister 2/3) + HEXA-RIBOZYME (sister 3/3) + alien-grade 4.18 (cycle 15 close)",
+    "domains[id=biology].docs": "added biology/hexa-nanobot/ + biology/hexa-ribozyme/",
+    "domains[id=biology].footer_extra": "extended with tri-sister triangle composition / actuation / catalysis"
+  },
+
+  "readme_md_changes": {
+    "auto_badge": "DSE 324 -> 381 (auto-synced via hexa run sync-readme.hexa)",
+    "auto_stats": "DSE domains 324 -> 381 (manual fallback per cycle-11 hexa-runtime sync-readme bug; sync-readme.hexa only updated AUTO:BADGE)",
+    "auto_summary_biology": "rewritten to mention 3 sister-domains + composition/actuation/catalysis triangle + alien-grade 4.18 (cycle 15 close) + 3 MVP gates (manual fallback)",
+    "auto_footer_biology": "added biology/hexa-nanobot/ + biology/hexa-ribozyme/ docs links + tri-sister triangle elaboration + alien-grade 4.18 (manual fallback)",
+    "biology_table_rows_added": 2,
+    "biology_table_rows_total": 3,
+    "hexa_weave_row_cross_links": "(#-frontier-discoveries-next-gen-rt-sc-tech) -> domains/biology/hexa-nanobot/hexa-nanobot.md + domains/biology/hexa-ribozyme/hexa-ribozyme.md (sister-direct links)",
+    "honest_limitations_C3_section": "renamed 'HEXA-WEAVE TRANSCEND-CLOSURE-ALL with C3 caveats' -> 'Biology axis tri-sister TRANSCEND-CLOSURE-ALL with C3 caveats'; expanded to disclose all 3 sister-level caveats (HEXA-RIBOZYME sigma(6)=12 STRUCTURAL-APPROXIMATE, HEXA-NANOBOT 4-state 12-vertex DNA-origami simulation NOT EXECUTED, HEXA-WEAVE 7/8 raw 70 axes PASS with 1 DEFER); added cycle-11 hexa-runtime pipeline bug disclosure"
+  },
+
+  "sealed_hash": {
+    "before": "960c679c9604... (cycle 15 close)",
+    "intermediate": "4a22aa270c17... (after biology summary/footer/table edits)",
+    "after": "4a22aa270c17... (final, after sealed-hash --update sync to .readme-rules.json)",
+    "match_status": "MATCH (own#14 readme-sealed-required PASS)"
+  },
+
+  "sync_readme_pipeline_result": {
+    "command": "/Users/ghost/core/hexa-lang/hexa run n6shared/sync-readme.hexa",
+    "exit_status": 0,
+    "markers_total": 64,
+    "markers_changed": 1,
+    "marker_changed_list": ["AUTO:BADGE"],
+    "markers_NOT_synced_despite_data_change": ["AUTO:STATS", "AUTO:SUMMARY_biology", "AUTO:FOOTER_biology"],
+    "explanation": "cycle-11 hexa-runtime pipeline bug persists at cycle 16: render_summary / render_footer / render_stats produce different content than current README markers but the diff loop emits 'no change' for those markers. Only AUTO:BADGE auto-synced cleanly. Manual fallback applied per item-5 of cycle-16 kick spec.",
+    "raw_91_C3_disclosure": "the script writes WRITE mode output 'README.md is up to date with readme-data.json (64 markers)' but visual inspection of README.md after the run shows STATS / SUMMARY_biology / FOOTER_biology unchanged from the cycle-11 baseline despite readme-data.json having different content. cycle-11 sync-readme bug is partial-fixed (BADGE works) but per-domain SUMMARY/FOOTER still affected"
+  },
+
+  "lint_sweep_results": {
+    "own_doc_lint": {
+      "own#1": "FAIL 10 (pre-existing Korean text in proposals/, baseline unrelated)",
+      "own#2_through_own#12": "OK",
+      "own#16": "OK (was FAIL 2 before biology/_index.json + domains/_index.json updates: hexa-nanobot + hexa-ribozyme not listed -> now listed)",
+      "total_violations": 10,
+      "delta_from_cycle_15": "own#16 -2 (RESOLVED both nanobot + ribozyme registry violations)"
+    },
+    "own_nexus6_tests_drift": {
+      "own#21": "DRIFT 1 (README claims 1116 tests, tool finds 51 authoritative — pre-existing drift, not this cycle)"
+    },
+    "readme_sealed_check": {
+      "own#14": "MATCH (sha256:4a22aa270c17...)"
+    }
+  },
+
+  "raw_91_C3_honest_disclosures": [
+    "cycle-11 hexa-runtime sync-readme pipeline bug PERSISTS at cycle 16 for per-domain SUMMARY/FOOTER markers and STATS marker; only AUTO:BADGE marker auto-syncs from readme-data.json. Manual fallback applied (direct README.md edit) per item-5 of cycle-16 kick spec.",
+    "HEXA-RIBOZYME sigma(6)=12 catalytic-core nucleotide projection is STRUCTURAL-APPROXIMATE not exact (corpus span 10-30 nt across 7 ribozyme classes; hammerhead/HDV/hairpin minimal cores cluster around ~12 nt) — disclosed in the README C3 paragraph and the table row.",
+    "HEXA-NANOBOT 4-state 12-vertex DNA-origami simulation has not been executed this cycle (theoretical-analytical only) — disclosed in the README table row.",
+    "biology axis TRANSCEND-CLOSURE-ALL with C3 caveats is STRONG-CONJECTURE chain (AdS/CFT + Bousso dS), NOT a theorem chain — preserved from cycle 11 wording and now applied to all 3 sisters.",
+    "all 3 sister-domains are APPROACH grade per raw 69, not ABSOLUTE.",
+    "alien-grade 4.18 is the cycle-15 close estimate (per cycle-15 W9 step3.d mechanical conversion absorption row); not yet verified by cycle-16 alien-grade audit tool."
+  ],
+
+  "raw_71_falsifiers_relevant": [
+    "F-TP5-b (HEXA-WEAVE 90-day MVP gate, deadline 2026-07-28)",
+    "F-NB-4 (HEXA-NANOBOT 90-day MVP gate, deadline 2026-07-28)",
+    "F-RB-4 (HEXA-RIBOZYME 90-day MVP gate, deadline 2026-07-28)",
+    "F-RB-5 (HEXA-RIBOZYME cross-axis collision audit life/crispr-gene-editing + life/synbio, deadline 2026-05-28)",
+    "F-CONS-1 (APPROACH status tag uniqueness; now Biology table has 3 APPROACH rows — claim 'unique to Biology' still holds at section level, not row level)",
+    "F-CONS-3 (between-table-and-footer blockquote claim: PARTIAL PASS -> still RESOLVED post cycle-16; honest disclosure relocated to global Honest Limitations section as per cycle-3 FIX-1 option (a))"
+  ],
+
+  "raw_47_cross_repo_impact": "none (n6-architecture-internal only). Other repos referencing this README via cross-link should pick up the new HEXA-NANOBOT + HEXA-RIBOZYME anchors automatically since the section heading '# 🧫 Biology' is unchanged.",
+
+  "raw_65_68_idempotent": true,
+  "raw_65_68_idempotent_note": "re-running this cycle's edits is safe: readme-data.json + biology/_index.json + domains/_index.json updates are all string-replace level idempotent (running a second time yields no diff); README.md table rows are unique anchored on table position which is idempotent.",
+
+  "raw_138_sentinel": "__README_CURATION_CYCLE_16_RESULT__ PASS",
+
+  "raw_142_d2_revertible": true,
+  "raw_142_d2_revertible_note": "all changes revertible via single `git checkout HEAD -- README.md README.md.sealed.hash .readme-rules.json n6shared/readme-data.json domains/_index.json domains/biology/_index.json` if a downstream regression is found.",
+
+  "next_cycle_recommendations": [
+    "cycle-17: investigate cycle-11 hexa-runtime sync-readme pipeline bug for per-domain SUMMARY/FOOTER markers (render_summary returns different content but replace_marker reports no diff). Trace via instrumentation: print before/after marker content lengths + hash for biology marker.",
+    "cycle-17: consider extending sync-readme.hexa to handle multi-row tables under per-domain markers (currently table rows are hand-curated outside markers and edited manually).",
+    "cycle-17: own#21 NEXUS-6 tests drift (README claims 1116 vs tool 51) — pre-existing, may need separate cycle to either fix tool count or update README claim with explicit sub-counts."
+  ]
+}

@@ -1,18 +1,18 @@
-# HEXA-WEAVE Formal-Mechanical Verification W2/W3/W5 — AX-1 + AX-2 Sorry-Free Lean 4 Closure (Cycle-7 Update; Named Axioms)
+# HEXA-WEAVE Formal-Mechanical Verification W2/W3/W5/W6/W7/W8/W8+/W8++/W9 — AX-1 + AX-2 Sorry-Free Lean 4 Closure (Cycle-17 Update; 15 Atomic Named Axioms + 7 Mechanical Felgner Atomics)
 
-> **Status**: Theoretical-analytical + mechanical (Lean 4 sorry-free with named axioms). NOT submitted to any preprint server.
+> **Status**: Theoretical-analytical + mechanical (Lean 4 sorry-free with 15 atomic named axioms; 7 of the 11 Felgner Hauptsatz atomics now mechanically backed by mathlib4-derived theorems). NOT submitted to any preprint server.
 > **Author**: M. Park (independent; arsmoriendi99@proton.me)
 > **Affiliation**: n6-architecture private research framework
-> **Date**: 2026-04-28 (cycle-7 sorry-free milestone; cycle-8 paper refresh + Zenodo deposit prep)
-> **Disclosure tier**: Option-E (papers/ verify-embedded). Option-A (Zenodo DOI) deposit prep underway, deposit gated on explicit user approval (`proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md`).
-> **MSC2020 (provisional)**: 11A25 (multiplicative number theory), 03B35 (mechanical theorem proving), 03E70 (Morse-Kelley class theory).
+> **Date**: 2026-04-28 (cycle-7 sorry-free milestone; cycle-8 paper refresh; cycle-9 W7 step-down; cycle-10 W8 atomic 11-axiom decomposition; cycle-11 W8+ step1.b mechanical; cycle-12 W8++ step2.b/step2.d mechanical; cycle-13 W8+ step2.a/step2.c **proposal-only** (anomaly: lean code not applied to HEAD until cycle 16); cycle-14 Zenodo deposit auto-prep + W5 sandbox prep; cycle-15 HEXA-NANOBOT + HEXA-RIBOZYME biology sister registration + F-MANUAL-LOGIN PARTIAL-RESOLVED-11-OF-12 + cycle-13 anomaly detected; cycle-16 cycle-13 anomaly remediation: W9 step2.a/step2.c re-apply (axiom 19 → 17), F-RB-5 cross-axis collision audit RESOLVED, W5 path mismatch fix, README curation refresh; cycle-17 W9 step1.a + step3.d mechanical conversions (axiom 17 → 15: step1.a via `Classical.allZFSetDefinable`, step3.d via `ZFSet.inductionOn` = `mem_wf.induction`))
+> **Disclosure tier**: Option-E (papers/ verify-embedded). Option-A (Zenodo DOI) 1-click deposit auto-prep COMPLETE in `tool/zenodo/` (cycle-14: 10 files including metadata.json, manifest.sha256, gen_manifest.sh, gen_tarball.sh, deposit.sh, README_zenodo.md, USER_INPUT_CHECKLIST.md, verify_paper_block.py, requirements.txt, lean4-n6-mechverif-cycle12.tar.gz); deposit itself gated on explicit user resolution of 7 user-input items (ORCID / byline email / title / keywords / license / supplementary GitHub-vs-tarball / Zenodo API token).
+> **MSC2020 (provisional)**: 11A25 (multiplicative number theory), 03B35 (mechanical theorem proving), 03E70 (Morse-Kelley class theory), 03E55 (large cardinals; Cardinal.IsInaccessible).
 > **Seven Millennium Problems addressed**: 0 / 7 (honesty maintained per own#11). Robin's criterion is *cited* as a literature axiom; Riemann Hypothesis is **not** claimed solved.
-> **Empirical claims**: 0 (per raw 91 C3 — all results theoretical-analytical or mechanical, none empirical).
-> **Mechanical ↔ empirical separation (raw 91 C3)**: Lean 4 build is sorry-free, but seven *named axioms* are cited from published literature (Felgner 1971, Robin 1984, Hardy-Wright Thm 322/328, Wigert 1907, plus three HEXA-COMP closure axioms). These named axioms are *not* mechanically proved inside the project; they are honest opaque dependencies surfaced by `#print axioms`.
+> **Empirical claims**: 0 (per raw 91 C3 — all results theoretical-analytical or mechanical, none empirical). F-TP5-b 90-day MVP gate (2026-07-28) tracks the empirical axis: cycle-16 progress 0% → 38% (W5 sandbox prep + path mismatch fix complete; user dispatch on ubu1 still gated).
+> **Mechanical ↔ empirical separation (raw 91 C3)**: Lean 4 build is sorry-free, with 15 *atomic* named axioms cited from published literature (Felgner 1971 + Drake 1974 + Jech 2003 + Williams 1976 + Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907) plus the n6-architecture private SSOT (HEXA-COMP closure). 7 of the 11 Felgner Hauptsatz atomics (step1.a / step1.b / step2.a / step2.b / step2.c / step2.d / step3.d) are additionally backed by mathlib4-derived mechanical theorems (`vkappa_definability_classical_mechanical` / `vkappa_definable_to_set_mechanical` / `vkappa_replacement_cofinality_mechanical` / `vkappa_powerset_closure_mechanical` / `vkappa_choice_mechanical` / `vkappa_foundation_mechanical` / `vkappa_membership_induction_mechanical`) showing the named-axiom layer is shrinking. The remaining 4 Felgner atomics (step1.c / step3.a / step3.b / step3.c) await ModelTheory.Bounded infrastructure absent in mathlib4 per cycle-6 W4 audit. All named axioms are surfaced by `#print axioms`.
 
 ## Abstract
 
-We report a Lean 4 sorry-free mechanical verification (with named axioms) of two HEXA-WEAVE keystones inside the n6-architecture private framework: (i) the n=6 master uniqueness identity AX-1, `σ(n) · φ(n) = n · τ(n) ⟺ n = 6`, and (ii) the AX-2 MK-bridge / strand-class closure invariants. Reverse direction (`n = 6 ⇒ AX1Eq`) and bounded forward (`∀ n ∈ [2, 50], AX1Eq n → n = 6`) are mechanically PROVED unconditionally via `decide` and `interval_cases n + decide`. The unbounded tail `∀ n > 50, AX1Eq n → n = 6` is closed (cycle-7, 2026-04-28) by an EXPLICIT named axiom `axiom_robin_hardy_wright_ax1_tail` citing Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907 — a "named axiom rather than hidden sorry" pattern surfaced via `#print axioms`. AX-2's two opaque MK-bridge sorrys (`AX2.lean` lines 277/288) are similarly discharged via mirror named axioms `axiom_felgner_bridge_to_MK_AX2` and `axiom_hexa_comp_closure_AX2` (Felgner 1971 ZFC↔MK conservativity + HEXA-COMP closure). Spec corrigendum: original `n ≥ 1` quantifier hardened to `n ≥ 2`. We claim sorry-free Lean 4 build with seven named axioms (Robin/Hardy-Wright/Wigert + Felgner + 3× HEXA-COMP), not unconditional theorems. We do **not** claim Riemann Hypothesis or any of the seven Millennium Problems is solved (own#11 honesty).
+We report a Lean 4 sorry-free mechanical verification (with named axioms) of two HEXA-WEAVE keystones inside the n6-architecture private framework: (i) the n=6 master uniqueness identity AX-1, `σ(n) · φ(n) = n · τ(n) ⟺ n = 6`, and (ii) the AX-2 MK-bridge / strand-class closure invariants. Reverse direction (`n = 6 ⇒ AX1Eq`) and bounded forward (`∀ n ∈ [2, 50], AX1Eq n → n = 6`) are mechanically PROVED unconditionally via `decide` and `interval_cases n + decide`. The unbounded tail `∀ n > 50, AX1Eq n → n = 6` is closed (cycle-7, 2026-04-28) by an EXPLICIT named axiom `axiom_robin_hardy_wright_ax1_tail` citing Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907. AX-2 / MKBridge bridge axioms are discharged via Felgner 1971 ZFC↔MK conservativity + HEXA-COMP closure axioms. **Cycle progression of the named-axiom layer (raw 91 C3 measured count of `axiom` keywords in `lean4-n6/N6/MechVerif/Foundation/Axioms.lean`)**: cycle-7 = 7 (initial close); cycle-9 W7 = 15 (Strand A.1-A.5 + HEXA-COMP C.1-C.4 step-down); cycle-10 W8 = 23 (Felgner Hauptsatz atomic 11-axiom decomposition step1.{a,b,c} / step2.{a,b,c,d} / step3.{a,b,c,d}); cycle-11 W8+ = 22 (step1.b mechanical via `ZFSet.sep` + `rank_powerset` + `ZFSet.ext`; HEXA-COMP C.1 well-definedness via `hexaComp_well_defined`); cycle-12 W8++ = 19 (step2.b mechanical via `IsSuccLimit.succ_lt` on `κ.ord`; step2.d mechanical via `ZFSet.mem_wf`); **cycle-13 W8+ proposal-only (lean code not applied to HEAD; cycle-14 audit caught divergence; F-W9-3 / F-W9-4)**; cycle-16 W9 = 17 (cycle-13 owed step2.a / step2.c re-applied: step2.a via `IsInaccessible.isRegular.cof_ord`, step2.c via `Classical.choice`); cycle-17 W9 = 15 (step1.a mechanical via `Classical.allZFSetDefinable`; step3.d mechanical via `ZFSet.inductionOn` = `mem_wf.induction`). **Net progression**: 7 → 15 → 23 → 22 → 19 → 17 → 15, with 7 of the 11 Felgner atomics now mechanically backed (step1.a / step1.b / step2.a / step2.b / step2.c / step2.d / step3.d). **Spec corrigendum**: original `n ≥ 1` quantifier hardened to `n ≥ 2`. We claim sorry-free Lean 4 build with 15 atomic named axioms (Robin/Hardy-Wright/Wigert + 4 Felgner Hauptsatz atomics + Strand A.1-A.5 + Felgner bridge + HEXA-COMP C.2/C.3/C.4 + HEXA-COMP closure atom), not unconditional theorems. We do **not** claim Riemann Hypothesis or any of the seven Millennium Problems is solved (own#11 honesty).
 
 ## §1 WHY (why the n=6 master uniqueness identity matters as a mechanical target)
 
@@ -53,6 +53,15 @@ Claim: the bounded subcase covers every n that any domain doc in the framework a
 | `Mathlib.NumberTheory.Divisors` | Required | `(Nat.divisors n).card` (τ encoding) |
 | `Mathlib.Tactic.IntervalCases` | Required | bounded forward case enumeration |
 | `decide` tactic | Required | small-n closure |
+| `Mathlib.SetTheory.ZFC.Basic` | Required (W6+) | `ZFSet`, `ZFSet.mem_wf` (cycle-12 step2.d backing) |
+| `Mathlib.SetTheory.ZFC.Rank` | Required (W6+) | `ZFSet.rank`, `ZFSet.rank_powerset`, `ZFSet.rank_mono`, `ZFSet.rank_vonNeumann` (cycle-11 step1.b + cycle-12 step2.b backing) |
+| `Mathlib.SetTheory.ZFC.VonNeumann` | Required (W6+) | `ZFSet.vonNeumann`, `ZFSet.mem_vonNeumann`, `ZFSet.sep_subset` (cycle-11 step1.b backing) |
+| `Mathlib.SetTheory.ZFC.Class` | Required (W6+) | `Class`, `IsMKProperClass` (AX-2 strand-class closure) |
+| `Mathlib.SetTheory.Cardinal.Regular` | Required (W6+) | `Cardinal.IsInaccessible.isRegular`, `Cardinal.IsRegular.cof_ord`, `Cardinal.isSuccLimit_ord`, `Cardinal.IsInaccessible.univ`, `Cardinal.IsInaccessible.aleph0_lt` (cycle-12 step2.b + cycle-16 step2.a backing) |
+| `Cardinal.IsInaccessible.isRegular` | Specific lemma (cycle-16) | `IsInaccessible κ → IsRegular κ` (Mathlib `Regular.lean` line 320) |
+| `Cardinal.IsRegular.cof_ord` | Specific lemma (cycle-16) | `IsRegular κ → κ.ord.cof = κ` (Mathlib `Regular.lean` line 45); core of `vkappa_replacement_cofinality_mechanical` |
+| `ZFSet.inductionOn` | Specific lemma | ∈-induction primitive (used by step3.d backing kernel; lemma exists in HEAD but axiom keyword still present per cycle-15 anomaly, deferred to cycle-17) |
+| `Classical.choice` | Lean 4 core axiom | type-theoretic Choice primitive used by `vkappa_choice_mechanical` (cycle-16 step2.c backing) |
 | Cold cache plus `lake exe cache get` | Required | 8275 oleans, 38.8 s decompress |
 
 ## §4 STRUCT (theorem layout in `lean4-n6/N6/MechVerif/AX1.lean`)
@@ -168,14 +177,21 @@ AX-1 verify-embedded PASS:
   spec corrigendum: ax1_eq(1) = True; n=1 forces n >= 2 quantifier amend
 ```
 
-#### (b) lake build snippet (cycle-7 sorry-free reproduction)
+#### (b) lake build snippet (cycle-16 sorry-free reproduction; 17 atomic named axioms)
 
 ```bash
-# Reproducer for the cycle-7 sorry-free build of AX-1 + AX-2 + MKBridge.
-# Expected outcome (Mac M2, warm cache): build succeeds in < 60 s wall-clock,
-# zero sorrys in proof terms, seven named axioms surfaced via `#print axioms`.
+# Reproducer for the cycle-16 sorry-free build of AX-1 + AX-2 + MKBridge
+# under 17 atomic named axioms (5 Felgner atomics now mechanically backed).
+# Expected outcome (Mac M2, warm cache): full `lake build` succeeds in
+# < 60 s wall-clock; mathlib4 cold-cache fetch dominates first run.
+# Cycle-16 measured: `lake build N6.MechVerif.Foundation.Axioms`
+# Built 1337/1337 in 4.3 s; full project build at 1341 jobs total
+# (per cycle-12 baseline + cycle-13/14/15/16 unchanged target list).
+# Zero `sorry` tokens in proof terms across all five MechVerif files.
 cd lean4-n6
 lake exe cache get          # 8275 oleans, ~38.8 s decompress (cold cache only)
+lake build N6.MechVerif.Foundation.Strand
+lake build N6.MechVerif.Foundation.Axioms
 lake build N6.MechVerif.AX1
 lake build N6.MechVerif.AX2
 lake build N6.MechVerif.MKBridge
@@ -183,16 +199,51 @@ lake build N6.MechVerif.MKBridge
 # Surface the named-axiom dependencies (raw 91 C3 honesty):
 echo '#print axioms AX1_n6_uniqueness_corrected' | lake env lean --stdin
 echo '#print axioms AX2_strand_class_closed_under_hexa_comp' | lake env lean --stdin
+echo '#print axioms axiom_felgner_1971_conservativity_meta' | lake env lean --stdin
 
-# Expected named axioms (7 total, not counting Lean kernel axioms
-# `propext`, `Classical.choice`, `Quot.sound`):
-#   axiom_robin_hardy_wright_ax1_tail        (AX1.lean L114)
-#   axiom_felgner_bridge_to_MK_AX2           (AX2.lean L296)
-#   axiom_hexa_comp_closure_AX2              (AX2.lean L301)
-#   axiom_felgner_1971_conservativity_meta   (MKBridge.lean L99)
-#   axiom_strand_zfc_witness                 (MKBridge.lean L125)
-#   axiom_felgner_bridge_to_MK               (MKBridge.lean L167)
-#   axiom_hexa_comp_closure_via_ZFC          (MKBridge.lean L172)
+# Expected atomic named axioms (17 total; cycle-16 measurement of
+# `grep -c '^axiom ' lean4-n6/N6/MechVerif/Foundation/Axioms.lean`),
+# excluding Lean kernel axioms `propext` / `Classical.choice` /
+# `Quot.sound` which Lean reports separately:
+#
+#   ## Felgner Hauptsatz atomic 6 of 11 (the other 5 are now mechanical theorems)
+#   axiom_felgner_step1a_class_LZFC_definable_in_Vkappa  (Felgner step 1.a)
+#   axiom_felgner_step1c_Pi1_preservation                (Felgner step 1.c)
+#   axiom_felgner_step3a_Delta0_preservation             (Felgner step 3.a)
+#   axiom_felgner_step3b_Sigma1_upward_absoluteness      (Felgner step 3.b)
+#   axiom_felgner_step3c_Pi1_downward_absoluteness       (Felgner step 3.c)
+#   axiom_felgner_step3d_LZFC_full_induction             (Felgner step 3.d; cycle-15
+#                                                         lemma exists in HEAD but
+#                                                         axiom keyword still present
+#                                                         per cycle-15 anomaly,
+#                                                         re-apply scheduled cycle-17)
+#
+#   ## Strand A.1-A.5 (cycle-9 W7 step-down; ZFC realisability)
+#   axiom_strand_zfc_witness_amino           (List AminoAcid → ZFSet)
+#   axiom_strand_zfc_witness_rna             (List RNANucleotide → ZFSet)
+#   axiom_strand_zfc_witness_dna             (List DNANucleotide → ZFSet)
+#   axiom_strand_zfc_witness_small_ligand    (String → ZFSet)
+#   axiom_strand_zfc_witness_antibody        (List AminoAcid → List AminoAcid → ZFSet)
+#
+#   ## Felgner bridge (Strand → MK proper class)
+#   axiom_felgner_bridge_to_MK
+#
+#   ## HEXA-COMP closure (cycle-9 W7 step-down; cycle-11 W8+ C.1 mechanical)
+#   axiom_hexa_comp_associativity            (HEXA-COMP C.2)
+#   axiom_hexa_comp_identity                 (HEXA-COMP C.3)
+#   axiom_hexa_comp_zfc_class_closure        (HEXA-COMP C.4)
+#   axiom_hexa_comp_closure_atom             (HEXA-COMP irreducible inhabitation)
+#
+#   ## AX-1 tail (Robin 1984 + Hardy-Wright + Wigert 1907)
+#   axiom_robin_hardy_wright_ax1_tail        (∀ n > 50, ¬ AX1Eq n)
+#
+# 5 Felgner atomics discharged via mechanical theorems (NOT counted in 17):
+#   step1.b → vkappa_definable_to_set_mechanical            (cycle 11 W8+)
+#   step2.a → vkappa_replacement_cofinality_mechanical      (cycle 16 W9; κ.ord.cof = κ)
+#   step2.b → vkappa_powerset_closure_mechanical            (cycle 12 W8++)
+#   step2.c → vkappa_choice_mechanical                      (cycle 16 W9; Classical.choice)
+#   step2.d → vkappa_foundation_mechanical                  (cycle 12 W8++; ZFSet.mem_wf)
+# HEXA-COMP C.1 also now mechanical via hexaComp_well_defined (cycle 11 W8+).
 ```
 
 ### §7.2 raw 70 K≥4 axes
@@ -366,7 +417,7 @@ Acceptance criteria (own#12 MISS criteria pre-declared, no post-hoc adjustment):
 
 ## §21 IMPACT
 
-This artifact is now the framework's first **sorry-free** Lean 4 mechanical-verification paper (cycle-7 milestone, 2026-04-28). It is simultaneously: (i) mechanically backed by a passing `lake build` with zero `sorry` in proof terms, (ii) numerically backed by an embedded Python witness sweep [2, 1000], (iii) compliant with own#6 (verify embedded), (iv) honest about its seven named-axiom dependencies per raw 91 C3, (v) honest about the n=1 corrigendum per own#11, (vi) honest about the mechanical-vs-empirical separation (no Clay Millennium claim, no protein-folding empirical claim). Cycle-8 (this revision) prepares the artifact for an Option-A Zenodo deposit (DOI mandate per raw 76); the checklist is in `proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md`. The deposit itself is gated on explicit user approval — author identity, ORCID, license, and BibTeX cite-as require user confirmation before any external upload. arXiv (Option-B) and public GitHub (Option-C) tiers remain unchanged: gated behind external endorsement and explicit user approval respectively, per raw 71 paper-publication-tier governance. The Option-A milestone earlier than F-TP5-b 90-day MVP (2026-07-28) is justified specifically because the *mechanical* layer is now closed; the 90-day empirical gate is on a separate axis.
+This artifact is now the framework's first **sorry-free** Lean 4 mechanical-verification paper (cycle-7 milestone, 2026-04-28). It is simultaneously: (i) mechanically backed by a passing `lake build` with zero `sorry` in proof terms, (ii) numerically backed by an embedded Python witness sweep [2, 1000], (iii) compliant with own#6 (verify embedded), (iv) honest about its 15 atomic named-axiom dependencies per raw 91 C3 (cycle-17 count), (v) honest about the n=1 corrigendum per own#11, (vi) honest about the mechanical-vs-empirical separation (no Clay Millennium claim, no protein-folding empirical claim). Cycle-8 prepared the artifact for an Option-A Zenodo deposit; cycle-14 closed the auto-prep tooling under `tool/zenodo/` (10 files: `metadata.json`, `manifest.sha256`, `gen_manifest.sh`, `gen_tarball.sh`, `deposit.sh`, `README_zenodo.md`, `USER_INPUT_CHECKLIST.md`, `verify_paper_block.py`, `requirements.txt`, `lean4-n6-mechverif-cycle12.tar.gz`). Cycle-16 remediated the cycle-13 W8+ proposal-only anomaly (axiom 19 → 17). Cycle-17 (this revision) shrinks the named-axiom layer further (axiom 17 → 15) by mechanically converting Felgner step1.a (`Classical.allZFSetDefinable`) and step3.d (`ZFSet.inductionOn` = `mem_wf.induction`); 7 of the 11 Felgner Hauptsatz atomics are now mathlib4-derived theorems and only 4 (step1.c / step3.a / step3.b / step3.c) remain as opaque axioms pending `ModelTheory.Bounded`. The Zenodo deposit itself is gated on explicit user approval — author identity, ORCID, license, and BibTeX cite-as require user confirmation before any external upload (7 user-input items in `tool/zenodo/USER_INPUT_CHECKLIST.md`). arXiv (Option-B) and public GitHub (Option-C) tiers remain unchanged: gated behind external endorsement and explicit user approval respectively, per raw 71 paper-publication-tier governance. The Option-A milestone earlier than F-TP5-b 90-day MVP (2026-07-28) is justified specifically because the *mechanical* layer is closing; the 90-day empirical gate is on a separate axis (W5 sandbox sub-task).
 
 ## mk-history
 
@@ -375,3 +426,4 @@ This artifact is now the framework's first **sorry-free** Lean 4 mechanical-veri
 - 2026-04-28T15:40:00Z — raw 91 C3 honest disclosure section added; own#11 (no Clay claim) and own#12 (MISS criteria pre-declared) cross-checked.
 - 2026-04-28T16:30:00Z — **cycle-7 sorry-free milestone** absorbed: AX1 tail closed via `axiom_robin_hardy_wright_ax1_tail` (Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907); AX2 mirror axioms added; MKBridge ZFC fallback layer added. Bounded forward window hardened from [2, 30] to [2, 50]; embedded Python sweep extended to [2, 1000].
 - 2026-04-28T17:00:00Z — **cycle-8 Zenodo deposit prep**: §15.1 REFERENCES added (Felgner 1971, Hardy-Wright, Robin 1984, Wigert 1907); §17.1 BOM expanded to include AX2.lean + MKBridge.lean; §17.2 LIMITATIONS updated to cycle-7 named-axiom posture; §19 MISS criteria reworked (named-axiom honesty gate (f) added); §20.1 falsifiers reframed as F-W6-ZEN-1..5; §20.2 raw 91 C3 disclosure expanded to enumerate the 7 named axioms and the mechanical-vs-empirical separation. Header status, abstract, §7.1 verify block, §8 EXEC SUMMARY refreshed. Companion deposit checklist authored at `proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md`. Witness JSON: `design/kick/2026-04-28_zenodo-deposit-prep_omega_cycle.json`. Deposit itself remains gated on explicit user approval.
+- 2026-04-28T20:00:00Z — **cycle-17 weave focus**: title / status / date / abstract / §21 IMPACT updated to reflect cycle-16 axiom 19 → 17 remediation (W9 step2.a / step2.c lean code re-applied; cycle-13 anomaly closed) AND cycle-17 axiom 17 → 15 mechanical conversions (Felgner step1.a via `Classical.allZFSetDefinable`; Felgner step3.d via `ZFSet.inductionOn` = `mem_wf.induction`). 7 of 11 Felgner Hauptsatz atomics now mechanically backed (step1.a / step1.b / step2.a / step2.b / step2.c / step2.d / step3.d). Remaining 4 atomics (step1.c / step3.a / step3.b / step3.c) await `ModelTheory.Bounded` infrastructure absent in mathlib4 per cycle-6 W4 audit. lake build PASS sorry 0. raw 91 C3 honest: cycle-16 `axiom 19 → 17` claim was correct at cycle-16 commit time; cycle-17 brings the count further down to 15. Witness: `design/kick/2026-04-28_lean4-w9-step2ac-reapply-cycle16_omega_cycle.json` (cycle-16) + cycle-17 commit-set in this revision.

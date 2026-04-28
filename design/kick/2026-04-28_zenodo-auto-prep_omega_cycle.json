@@ -1,0 +1,153 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_zenodo-auto-prep",
+  "kick_title": "Cycle-13 fan-out 4/5 — HEXA-WEAVE Zenodo deposit auto-prep — 1-click deposit prerequisites for alien-grade 6 unlock",
+  "kick_date": "2026-04-28",
+  "umbrella": "external-disclosure",
+  "cost_center": "hexa-weave-formal-mechanical-w8plus",
+  "predecessor_witness": "design/kick/2026-04-28_zenodo-deposit-prep_omega_cycle.json",
+  "parent_brief": "user mission cycle-13 fan-out 4/5 (Zenodo deposit auto-prep; alien-grade 6 unlock prerequisites)",
+  "scope": {
+    "files_created": [
+      "proposals/hexa_weave_zenodo_auto_prep_2026_04_28.md",
+      "design/kick/2026-04-28_zenodo-auto-prep_omega_cycle.json"
+    ],
+    "files_modified": [],
+    "summary": {
+      "auto_prep_deliverables": [
+        "metadata.yaml template (Zenodo deposit API v1 schema)",
+        "BibTeX cite-as template (DOI placeholder)",
+        "user approval 5-item checklist (ORCID / byline / title / keywords / license)",
+        "deposit auto-script (gated; publish step commented out)",
+        "alien-grade 6 unlock projected timeline (cycle 14+ conditional)",
+        "5 raw 71 falsifiers (F-W6-ZEN-13-1..5)",
+        "next-cycle handoff branches (approve / defer / reject)"
+      ],
+      "named_axioms_count_cycle_12": 19,
+      "named_axioms_count_cycle_7": 7,
+      "axioms_increase_via_decomposition_not_silent_multiplication": true,
+      "derived_mechanical_theorems": [
+        "vkappa_definable_to_set_mechanical (cycle 11 W8+ for step1.b)",
+        "vkappa_powerset_closure_mechanical (cycle 12 W8++ for step2.b)",
+        "vkappa_foundation_mechanical (cycle 12 W8++ for step2.d)"
+      ],
+      "alien_grade_cycle_12": 4.09,
+      "alien_grade_cycle_13_recomputed": 4.58,
+      "alien_grade_target": 6,
+      "user_approval_items": 5,
+      "deposit_performed": false,
+      "zenodo_api_called": false,
+      "doi_minted": false,
+      "orcid_linked": false,
+      "github_repo_made_public": false
+    }
+  },
+  "raw_91_c3_honest": {
+    "deposit_status": "AUTO-PREP only; no Zenodo upload; no DOI; no ORCID linkage; no public github push.",
+    "user_approval_required": "raw 71 paper-publication-tier explicit approval gate active. 5 user-decision items in §4 of the proposal must be resolved by user before any deposit.",
+    "named_axioms_19_enumerated": [
+      "axiom_felgner_step1a_class_LZFC_definable_in_Vkappa (Felgner 1971 Hauptsatz §3 step 1)",
+      "axiom_felgner_step1c_Pi1_preservation (Felgner 1971 Hauptsatz §3 step 1)",
+      "axiom_felgner_step2a_Vkappa_Replacement (Felgner 1971 Hauptsatz §3 step 2)",
+      "axiom_felgner_step2c_Vkappa_Choice (Felgner 1971 Hauptsatz §3 step 2)",
+      "axiom_felgner_step3a_Delta0_preservation (Felgner 1971 Hauptsatz §3 step 3)",
+      "axiom_felgner_step3b_Sigma1_upward_absoluteness (Felgner 1971 Hauptsatz §3 step 3)",
+      "axiom_felgner_step3c_Pi1_downward_absoluteness (Felgner 1971 Hauptsatz §3 step 3)",
+      "axiom_felgner_step3d_LZFC_full_induction (Felgner 1971 Hauptsatz §3 step 3)",
+      "axiom_strand_zfc_witness_amino (Strand A.1)",
+      "axiom_strand_zfc_witness_rna (Strand A.2)",
+      "axiom_strand_zfc_witness_dna (Strand A.3)",
+      "axiom_strand_zfc_witness_small_ligand (Strand A.4)",
+      "axiom_strand_zfc_witness_antibody (Strand A.5)",
+      "axiom_felgner_bridge_to_MK (Strand → MK proper class)",
+      "axiom_hexa_comp_associativity (HEXA-COMP C.2)",
+      "axiom_hexa_comp_identity (HEXA-COMP C.3)",
+      "axiom_hexa_comp_zfc_class_closure (HEXA-COMP C.4)",
+      "axiom_hexa_comp_closure_atom (HEXA-COMP atom retention)",
+      "axiom_robin_hardy_wright_ax1_tail (Robin 1984 + Hardy-Wright + Wigert 1907)"
+    ],
+    "derived_theorems_mechanical": [
+      "axiom_felgner_step1b_Vkappa_definable_to_set (cycle 11 W8+; via vkappa_definable_to_set_mechanical / ZFSet.sep + rank_powerset + ext)",
+      "axiom_felgner_step2b_Vkappa_PowerSet (cycle 12 W8++; via vkappa_powerset_closure_mechanical / IsSuccLimit.succ_lt on κ.ord)",
+      "axiom_felgner_step2d_Vkappa_Foundation (cycle 12 W8++; via vkappa_foundation_mechanical = ZFSet.mem_wf)",
+      "axiom_hexa_comp_strand_op_well_defined (cycle 11 W8+; via hexaComp_well_defined in Foundation/Strand.lean §7)"
+    ],
+    "empirical_claims_in_proposal": 0,
+    "clay_millennium_problems_addressed": 0,
+    "rh_solved_claim": "ABSENT (Robin 1984 cited only for unconditional sigma asymptotic; RH-equivalent sharp bound not invoked) — own#11 PASS",
+    "sorry_in_proof_terms": 0,
+    "pii_disclosure": "user-approval item 2 explicitly defers byline email choice to user; no new PII surface created by this cycle."
+  },
+  "raw_71_falsifiers": [
+    {
+      "id": "F-W6-ZEN-13-1",
+      "claim": "future cycle silently increments named-axiom count beyond 19 without a corresponding derived-theorem swap",
+      "expected_outcome": "monitored by §1.2 MISS criterion (h)"
+    },
+    {
+      "id": "F-W6-ZEN-13-2",
+      "claim": "cycle-13 paper refresh lands but embedded Python verify block sweep [2, 1000] no longer prints [6]",
+      "expected_outcome": "does not fire; sympy >= 1.12 pinned in §9 SYSTEM REQUIREMENTS; re-run before deposit"
+    },
+    {
+      "id": "F-W6-ZEN-13-3",
+      "claim": "user resolves §4 items but forgets to pin Mathlib 4 rev in metadata.yaml; reviewer cannot reproduce",
+      "expected_outcome": "does not fire; metadata.yaml notes: pins 19c4978; pre-flight checklist verifies"
+    },
+    {
+      "id": "F-W6-ZEN-13-4",
+      "claim": "ORCID linkage fails because user ORCID name differs from byline-of-record",
+      "expected_outcome": "does not fire; §4 user-resolution sequence is ORCID-first, byline-matches"
+    },
+    {
+      "id": "F-W6-ZEN-13-5",
+      "claim": "§5 deposit script step 5 (publish) gets uncommented prematurely",
+      "expected_outcome": "does not fire; publish step commented out with inline irreversibility warning"
+    }
+  ],
+  "raw_70_k4_axes": {
+    "CONSTANTS": "PASS (n6 quartet sigma=12 phi=2 tau=4 unchanged; 19 named-axiom count is the cycle-12 measurement)",
+    "DIMENSIONS": "PASS (deposit object: paper PDF + Lean source tarball + metadata.json; types stable per Zenodo API v1 schema)",
+    "CROSS": "PASS (auto-prep cross-checked against parent cycle-8 prep + cycle-11/12 mechanical-conversion proposals)",
+    "SCALING": "PASS (cycle-7 7-axiom → cycle-12 19-axiom decomposition reflected; alien-grade 4.04 → 4.58 recomputation traced)",
+    "SENSITIVITY": "PASS (Apache-2.0 vs CC-BY-4.0 license sensitivity flagged; protein-folding-pivot title alternative flagged)",
+    "LIMITS": "PASS (named-axiom layer enumerated; 3 derived mechanical theorems shrink the layer)",
+    "CHI2": "DEFER (no empirical sample; raw 91 C3 zero empirical claim)",
+    "COUNTER": "PASS (no counter-example in [2, 1000]; verified via parent paper §7.1 sweep)"
+  },
+  "safety_gates": {
+    "deposit_executed": false,
+    "user_approval_obtained": false,
+    "pii_new_disclosure": false,
+    "doi_minted": false,
+    "github_repo_made_public": false,
+    "zenodo_api_called": false,
+    "raw_71_user_approval_gate": "active (5 items)",
+    "raw_76_doi_mandate": "satisfied on deposit (Zenodo automatic)",
+    "own_11_clay_millennium_check": "PASS (RH cited not solved)",
+    "own_15_21_section_completeness": "preserved in parent paper",
+    "own_6_verify_embedded": "PASS in parent paper (sympy block + lake build snippet both embedded)",
+    "raw_91_c3_honest_disclosure": "19 named axioms enumerated + 3 derived theorems disclosed + 0 empirical claims"
+  },
+  "next_cycle_handoff": {
+    "if_user_approves_5_items": [
+      "translate metadata.yaml -> metadata.json (no API call)",
+      "run §5 script steps 1-4 (reversible Zenodo upload; deposition not yet published)",
+      "user reviews staged deposit via Zenodo web UI",
+      "user explicitly types 'publish' to un-comment step 5",
+      "DOI returned; BibTeX placeholder filled; paper §21 IMPACT updated; new witness logged",
+      "alien-grade 4.58 -> 6 transition recorded"
+    ],
+    "if_user_defers": [
+      "no action; this proposal remains as future-cycle resource"
+    ],
+    "if_user_rejects": [
+      "disclosure tier stays Option-E (papers/ verify-embedded)",
+      "log rejection rationale in mk-history",
+      "register F-INFRA-ZENODO-DEFERRED falsifier (analogous to F-INFRA-FALLBACK-ETERNAL) for >30-day deferral disposition review"
+    ]
+  },
+  "report_to_user_korean": "cycle-13 fan-out 4/5 Zenodo auto-prep 완료. 1-click deposit 직전 단계 도달. metadata.yaml 템플릿 + BibTeX 템플릿 + 사용자 승인 5항목 (ORCID / 저자 byline / 제목 / 키워드 / license) + gated deposit script (publish 단계는 commented out — 사용자 명시적 승인 후에만 un-comment) 작성. cycle 12 19 named axiom 명시 (cycle 7 7개에서 decomposition 으로 증가; 3개는 derived theorem 으로 mechanical 변환). alien-grade 4.04 (cycle 11) -> 4.09 (cycle 12) -> 4.58 (cycle 13 재계산). alien-grade 6 unlock 은 cycle 14+ 사용자 승인 후 가능. raw 91 C3 honest = 19 axiom + 0 empirical + Robin 1984 unconditional 만 인용. 실제 deposit / API 호출 / DOI 발급 / ORCID 연결 / public github push 모두 NOT EXECUTED.",
+  "ts_kick": "2026-04-28T17:30:00Z",
+  "schema": "design/kick/omega_cycle_v1"
+}

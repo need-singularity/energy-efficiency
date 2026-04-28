@@ -1,0 +1,76 @@
+{
+  "kick_kind": "omega_cycle",
+  "kick_id": "2026-04-28_w5-path-mismatch-fix-cycle16",
+  "kick_title": "Cycle 16 — HEXA-WEAVE W5 path mismatch fix — tool/hexa_weave_w5_setup.hexa Step 6/8 HW_SCRIPTS_DIR patch (1.0.0 -> 1.0.1)",
+  "kick_date": "2026-04-28",
+  "umbrella": "hexa-weave-mvp-w5-sandbox",
+  "cost_center": "hexa-weave-mvp-w5",
+  "predecessor_witness": "design/kick/2026-04-28_w5-supporting-scripts-cycle15_omega_cycle.json",
+  "parent_brief": "user mission cycle 16: W5 path mismatch resolution between cycle-14 .hexa runbook (referenced ~/core/hexa-weave/scripts/) and cycle-15 actual script location (~/core/n6-architecture/scripts/) before user W5 1-command dispatch",
+  "scope": {
+    "files_modified": [
+      "tool/hexa_weave_w5_setup.hexa"
+    ],
+    "files_created": [
+      "proposals/hexa_weave_mvp_w5_path_mismatch_fix_2026_04_28.md",
+      "design/kick/2026-04-28_w5-path-mismatch-fix-cycle16_omega_cycle.json"
+    ],
+    "summary": {
+      "patch_kind": "Option B (HW_SCRIPTS_DIR env override; default $HOME/core/n6-architecture/scripts)",
+      "patch_target_steps": [6, 8],
+      "patch_loc_delta_added": 20,
+      "patch_loc_delta_removed": 3,
+      "patch_loc_delta_net": 17,
+      "version_bump": "1.0.0 -> 1.0.1",
+      "options_evaluated": {
+        "A_user_cp": "rejected: two-source-of-truth drift on every script update",
+        "B_env_override": "SELECTED: single-source-of-truth + raw 142 D2 minimal-scope + raw 47 cross-repo explicit",
+        "C_relative_resolver": "rejected: runtime probe complexity for marginal benefit"
+      },
+      "improvements_bundled": [
+        "--resume flag added to Step 6 (raw 65 idempotent + raw 142 D2)",
+        "test -f probe with actionable error message (raw 66 ai-native)",
+        "raw 47 cross-repo edge declaration in caveats"
+      ],
+      "selftest_evidence": "YAML parse PASS (schema=hexa/runbook/v1 version=1.0.1 total_steps=8); bash -n PASS (rc=0); HW_SCRIPTS_DIR resolves to /Users/ghost/core/n6-architecture/scripts; rcsb_cluster_split_fetch.py + w5_verdict.py both --help-able; CLI flag conformance 100% (--out --train --val --test --seed --resume for Step 6; --pred --ref --vram-csv --rmsd-max --tm-min --vram-max-mb --out for Step 8)",
+      "user_dispatch_readiness": "READY (1-command dispatch from /Users/ghost/core/n6-architecture/ on ubu1; HW_SCRIPTS_DIR env override available for arbitrary script locations)",
+      "sister_repo_separation_preserved": true,
+      "raw_142_d2_revertible": true,
+      "raw_47_cross_repo_declared": true,
+      "raw_138_sentinel": "__W5_PATH_FIX_RESULT__ PASS"
+    }
+  },
+  "raw_91_c3_honest": {
+    "cycle_14_prep_mistake_acknowledged": "cycle 14 authored runbook before cycle 15 authored scripts; implicit assumption was sister-repo location. Neither cycle individually wrong; mismatch is cross-cycle handoff bug, closed cycle 16.",
+    "option_a_vs_b_evaluation": "Option A (user mkdir+cp) is slightly less invasive but creates two-source-of-truth that drifts whenever a script is updated. Option B (env override) preserves single-source-of-truth at cost of one extra shell variable + one extra test -f line per Step. Option C (auto-detect resolver) deferred as runtime-probe-complex.",
+    "sister_repo_still_required": "cycle 16 does NOT collapse repos; sister hexa-weave/ holds large data (3 GB weights, 100 FASTAs, 50 MB outputs) inappropriate for source repo.",
+    "hexa_parse_noise_preexisting": "hexa parse emits 60+ errors on the .hexa runbook YAML; this is pre-existing cycle-14 baseline and not caused by cycle 16. The .hexa-suffixed runbook is YAML-spec, not strand-typed hexa-lang. Implied by cycle-14 caveat #1.",
+    "no_user_dispatch_yet": "cycle 16 closes the path mismatch but does NOT execute W5; user dispatch on ubu1 is still pending (raw 71 paper-publication-tier human gate).",
+    "vram_ladder_path_unaffected": "tool/hexa_weave_vram_ladder.hexa (cycle 15 219 LoC) does NOT reference scripts/ — uses raw nvidia-smi only — so no path mismatch fix needed there."
+  },
+  "selftest_passed": true,
+  "selftest_count": 4,
+  "selftest_evidence_inline": "YAML parse PASS; bash -n PASS; HW_SCRIPTS_DIR live probe PASS (PROBE-1 + PROBE-2 PASS with actual file existence); --help dry-run PASS for both scripts; CLI flag conformance 100% across argparse-defined signatures.",
+  "falsifiers_preregistered": [
+    "F-W5-PATH-1 (2026-04-30): hexa run --dry-run resolves HW_SCRIPTS_DIR + test -f passes",
+    "F-W5-PATH-2 (2026-05-05): full W5 dispatch produces manifest.json + verdict.json with __W5_SETUP_RESULT__ PASS",
+    "F-W5-PATH-3 (2026-04-29): cycle 16 selftest reproducible on clean shell",
+    "F-W5-PATH-4 (2026-05-01): git diff shows only 4 hunks (header/v + step 6 cmd + step 8 cmd + caveats), raw 142 D2 minimal-scope confirmed",
+    "F-W5-PATH-5 (2026-05-15): sister-repo README updated to declare HW_SCRIPTS_DIR setup prerequisite"
+  ],
+  "user_decision_items": [
+    "user_decision_1: Approve cycle 16 patch as 1-command dispatch path; default HW_SCRIPTS_DIR=$HOME/core/n6-architecture/scripts implies user has cloned n6-architecture next to hexa-weave (~/core/n6-architecture + ~/core/hexa-weave). Confirm.",
+    "user_decision_2: Optional override for users on different filesystem layouts; document in W5 dispatch instructions whether to advertise HW_SCRIPTS_DIR=... prefix or rely on default.",
+    "user_decision_3: Defer cycle 17+ sister-repo README HW_SCRIPTS_DIR mention OR fold into cycle 16 (mention only — README spec already authored cycle 15 as proposal, not committed to disk yet)."
+  ],
+  "next_cycle_handoff": {
+    "cycle_17_plus_dispatch": "user runs hexa_weave_w5_setup.hexa 1.0.1 from /Users/ghost/core/n6-architecture/ on ubu1; cycle 17 writes post-dispatch verdict + alien-grade bump",
+    "cycle_17_plus_README_HW_SCRIPTS_DIR_mention": "fold HW_SCRIPTS_DIR setup prerequisite into the cycle-15 README spec proposal before user manual sister-repo .git init"
+  },
+  "alien_grade_baseline": 4.09,
+  "alien_grade_after": 4.09,
+  "alien_grade_delta": 0,
+  "alien_grade_rationale": "infrastructure prep cycle (path mismatch fix); empirical bump 4.09 -> ~4.9 still gated on user W5 dispatch + Step 8 PASS",
+  "raw_47_cross_repo_edge_declared": "n6-architecture/scripts/ -> hexa-weave/data+weights+outputs/",
+  "raw_91_c3_summary": "cycle-14 prep mistake acknowledged; option A vs B honest comparison; sister repo still required; hexa parse noise pre-existing; user dispatch still pending."
+}

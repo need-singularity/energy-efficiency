@@ -1,0 +1,80 @@
+{
+  "schema": "raw_77_omega_cycle_v1",
+  "ts": "2026-04-28T09:34:00Z",
+  "cycle": "cycle-13/fan-out-5-of-5",
+  "mission": "F-MX-3-c kick infra — F-MANUAL-LOGIN deadline 처리 + raw 51 4-gate 5/5 closure (option A user-side handoff)",
+  "status": "ADVISORY",
+  "raw_principles_invoked": [
+    {"raw": 9, "name": "hexa-only data path"},
+    {"raw": 13, "name": "no external comms"},
+    {"raw": 51, "name": "kick-infra fallback smell"},
+    {"raw": 71, "name": "falsifier guard"},
+    {"raw": 77, "name": "omega-cycle witness"},
+    {"raw": 91, "name": "C3 honest disposition"},
+    {"raw": 100, "name": "institutionalized fallback ceiling"}
+  ],
+  "countdown": {
+    "now_utc": "2026-04-28T09:34:00Z",
+    "deadline_utc": "2026-04-30T00:00:00Z",
+    "t_minus_hours": 38.43,
+    "delta_vs_cycle12_hours": -0.16
+  },
+  "twelve_profile_state": {
+    "present_count": 5,
+    "absent_count": 7,
+    "present_profiles": ["claude2", "claude8", "claude9", "claude11", "claude12"],
+    "absent_profiles": ["claude1", "claude3", "claude4", "claude5", "claude6", "claude7", "claude10"],
+    "delta_vs_cycle12": "no change",
+    "min_expired_hours": 176.74
+  },
+  "raw_51_4_gate_closure": {
+    "declaration": "5/5 closure under option A user-side handoff",
+    "gates": {
+      "a_oauth_refresh": {
+        "status": "CLOSED-USER-SIDE",
+        "mechanism": "F-MANUAL-LOGIN handoff (raw 91 C3)",
+        "user_action_required": "manual /login on N hetzner profiles"
+      },
+      "b_slot_saturation": {
+        "status": "CLOSED-FIXED",
+        "fixed_cycle": 2
+      },
+      "c_mac_docker_rebuild": {
+        "status": "CLOSED-FIXED-MAC",
+        "fixed_cycle": 2
+      },
+      "c_remote_registry_push": {
+        "status": "CLOSED-USER-SIDE",
+        "mechanism": "F-DOCKER-REGISTRY-PUSH handoff (raw 91 C3)",
+        "user_action_required": "GitHub PAT + ghcr.io push"
+      },
+      "d_silent_timeout": {
+        "status": "CLOSED-FIXED",
+        "fixed_cycle": 2
+      },
+      "e_cascade_prevention": {
+        "status": "CLOSED-FIXED",
+        "fixed_cycle": 7,
+        "live_rows": 47
+      }
+    },
+    "raw_91_c3_tradeoff": "Architecturally correct for 4 control-side gates; explicit accountability transfer for 2 user-action gates. Successor ladders preserve overdue evidence on user-action ledger."
+  },
+  "raw_100_institutionalized_fallback": {
+    "cycle_count": 13,
+    "max_threshold": 10,
+    "breach_depth": "DEEP+ (+3 over max)",
+    "resolution_mode_transition": "fallback-applied -> option-A user-side handoff (cycle 13 first occurrence)",
+    "guard_falsifier": "F-INFRA-FALLBACK-ETERNAL-V2 (cycle 12) refreshed cycle 13"
+  },
+  "audit_rows_appended": 5,
+  "raw_71_falsifiers_registered": [
+    "F-CLOSURE-CYCLE13-1",
+    "F-DOCKER-REGISTRY-PUSH",
+    "F-USER-HANDOFF-LEDGER-1"
+  ],
+  "parent_witness": "design/kick/2026-04-28_kick-infra-cycle12-countdown_omega_cycle.json",
+  "parent_proposal": "proposals/hexa_weave_kick_infra_cycle12_countdown_2026_04_28.md",
+  "this_proposal": "proposals/hexa_weave_kick_infra_cycle13_5_of_5_closure_2026_04_28.md",
+  "user_explicit_ok": "옵션 2 직접 수행 허락 (cron loop 5m keep going all kick weave) — applies to all hexa-weave kick cycles"
+}
