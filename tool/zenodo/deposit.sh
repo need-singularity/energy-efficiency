@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 # tool/zenodo/deposit.sh
 #
+# [DEPRECATED 2026-04-29] papers/.own own 9 (papers-cross-repo-publish-canonical, papers@6b670f9)
+# sister repo 자체 zenodo publish 도구 금지 — papers CLI 위임 mandate.
+# 본 스크립트는 active hexa-weave w2 paper deposit 용으로 grandfather 유지.
+# 신규 paper 는 반드시 papers CLI 사용:
+#   papers publish <paper-id> --target zenodo --sandbox --dry-run
+#   papers publish <paper-id> --target all
+# 검증: papers cross-repo-lint --report (이 파일 BLOCK 표시 grandfather note)
+# 향후 hexa-weave w2 publish 완료 후 archive/_deprecated/ 이동 예정.
+#
 # HEXA-WEAVE Zenodo deposit auto-script (cycle 14 deposit-prep).
 #
 # raw 65/68: idempotent. Re-running this script with the same
