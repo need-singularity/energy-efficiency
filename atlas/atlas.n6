@@ -36458,3 +36458,573 @@
 # ══════════════════════════════════════════════════════════════
 # END OF SHARD — atlas-metadata-policy 2026-04-28
 # ══════════════════════════════════════════════════════════════
+
+# ══════════════════════════════════════════════════════════════
+# atlas_absorb module — 2 shards bulk-absorbed (raw 108 + own#9)
+# ══════════════════════════════════════════════════════════════
+
+# .. atlas.append.atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28.n6 ..
+#!/usr/bin/env n6
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 SELF-ARCH AXIS-L (axis #12)
+# axis-L name: INTRINSIC RAW-AXIOM CITATION + APPEND-ONLY AMENDMENT DSL
+# slug: atlas-self-arch-axiom-cite-amendment-evolution
+# source: read-only audit of /Users/ghost/core/n6-architecture/atlas/atlas.n6
+# follows: D (@-type) + E (meta-tag) + F (arrow K-ceiling) + G (body-field)
+#          + H (id-convention) + synthesis (D-H) + I (graph-query primitives)
+#          + J (intrinsic supersession DSL) + K (temporal/provenance)
+# constraints:
+#   raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#   raw 91 C3 honest · own#11 strict (no Clay BT 'resolution' claim)
+#   raw 117 5-check at registration (genus + 2 cf + 3 channels + counter-ex + falsifier)
+#   atlas.n6 + .raw DSL only — NO foreign theory imports as primary lens
+#     (event-sourcing append-only logs, RFC 7396 JSON merge patch,
+#      git revision history cited-and-moved-on only)
+# date: 2026-04-28
+# scope contract: this shard does NOT introduce new schema; it PROPOSES axis-L
+#                 primitives that follow atlas.n6's existing DSL family
+#                 (body-field + meta-tag families — NOT arrow family, sidesteps F K-ceiling)
+# pick rationale: TWO axis-L candidates carried (CANDIDATE-A primary, CANDIDATE-B secondary)
+#                 because the post-axis-K residual gap-list yielded a 2-way
+#                 tie at the empirical-grounding measurement layer:
+#                   (A) intrinsic raw-axiom citation DSL — 741 measured textual
+#                       citations across 45 distinct raw-N (rank-1 by occurrence)
+#                   (B) intrinsic append-only amendment DSL — 36 textual mutation
+#                       references + 1 formalised @M loop + axis-K § B7 explicit
+#                       deferral of MUTATION territory to axis-L (rank-1 by
+#                       deferred-from-prior-axis pointer)
+#                 the two close ORTHOGONAL gaps and SHARE registration cost;
+#                 carrying both as one shard mirrors axis-I/J co-design pattern
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. PRECISION DEFINITION — what axis-L reifies ───────────
+@C atlas-self-arch-axis-l-axiom-cite-amendment-witness :: meta [4!]
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- raw-117-5-check-registration-gate
+  <- own#11-strict-no-resolution-claim
+  <- atlas-self-arch-axis-i-graph-query-witness
+  <- atlas-self-arch-axis-j-supersession-witness
+  <- atlas-self-arch-axis-k-temporal-provenance-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  -> axis-l-candidate-a-raw-axiom-cite-primitive
+  -> axis-l-candidate-b-amendment-primitive
+  -> axis-l-orthogonality-vs-D-through-K
+  -> axis-l-5-check-results
+  -> axis-l-raw-91-C3-disclosures
+  => "★ axis-L = TWO INTRINSIC PRIMITIVE FAMILIES, ORTHOGONAL CO-PROPOSAL —"
+  => "  L1 = RAW-AXIOM CITATION DSL: a row's dependence on a `.raw` axiom (raw 22 INFRA-ONLY, raw 91 C3 honest, raw 117 5-check, ...) becomes a queryable body-field instead of unstructured prose"
+  => "  L2 = APPEND-ONLY AMENDMENT DSL: a row's mid-life evolution (correction, narrowing, refinement WITHOUT retraction) becomes first-class atlas.n6 syntax, closing axis-K § B7's explicit MUTATION-territory deferral"
+  => "premise A: atlas.n6 carries 741 textual `raw N` citations across 45 distinct raw-N axioms (raw 91 cited 326×, raw 71 120×, raw 22 77×, raw 24 58×) — the IDIOM exists but the BODY-FIELD does not. axis-I cannot answer 'all rows depending on raw 91' without grep."
+  => "premise B: atlas.n6 carries 18 `append-only` invariance assertions + 12 `amendment` references + 3 `no retraction` declarations + 1 formalised @M N6HIST-META-AMEND-3PASS row + 1 'corrected version of iter-55' row — the IDIOM exists but the AMENDMENT-OF-WHICH-ROW back-pointer does not"
+  => "today's reality (A): when row X depends on raw 91 honest disclosure, the dependency lives in a `=> \"raw 91 C3 honest: ...\"` prose line OR in a comment header — atlas.n6's DSL cannot answer 'what fraction of consciousness-tier rows cite raw 71?' without grep+regex"
+  => "today's reality (B): when row X is amended (e.g. iter-55 finding RETIRED + iter-57 supersession + 3-pass amendment loop), the back-link 'this row amends X' lives ONLY in commit messages + adjacent prose — atlas.n6's DSL has axis-J supersession (replacement) but no AMENDMENT (refinement-without-replacement) primitive"
+  => "axis-L1 reifies the raw-axiom dependency channel as DSL primitives belonging to atlas.n6 itself"
+  => "axis-L2 reifies the append-only amendment channel, with explicit no-retraction invariant baked into the type signature"
+  => "axis-L is the THIRD axis after F (fourth including J, fifth including K) that adds NO new arrow tokens — both L1 and L2 live in axis-G (body-field) family exclusively, deliberately sidestepping the K=10 arrow ceiling (post-axis-I)"
+
+# ══════════════════════════════════════════════════════════════
+## §1. AUDIT — measured idiom shape that already exists
+# ══════════════════════════════════════════════════════════════
+
+# ── §1A. CANDIDATE-A grounding: raw-axiom citation idiom ─────
+@D axis-l-candidate-a-total-textual-raw-citations =  741 :: empirical [10]   # grep -cnE 'raw [0-9]+' atlas.n6
+@D axis-l-candidate-a-distinct-raw-numbers          =   45 :: empirical [10]   # raw 1, 2, 22-25, 37-39, 44-45, 47, 50, 53, 66, 69-72, 77, 79-80, 85-87, 91, 95, 98, 100, 102-103, 105-106, 108, 111-112, 114, 116-119, 121-122, 161-162
+@D axis-l-candidate-a-raw-91-citation-count         =  326 :: empirical [10]   # most-cited raw, all C3-honest variants
+@D axis-l-candidate-a-raw-71-citation-count         =  120 :: empirical [10]   # second-most, falsifier-retire-rule
+@D axis-l-candidate-a-raw-22-citation-count         =   77 :: empirical [10]   # INFRA-ONLY
+@D axis-l-candidate-a-raw-24-citation-count         =   58 :: empirical [10]   # foundation-axiom-immutable
+@D axis-l-candidate-a-row-level-cites-body-field    =    0 :: empirical [10]   # zero queryable body-field instances exist today (zero hits for 'cites_raw = ' or '  raw_dep = ')
+@D axis-l-candidate-a-prose-only-cites              =  741 :: empirical [10]   # = total - body-field = all 741 textual citations live in prose / comments
+@D axis-l-candidate-a-tail-bridge-rows              =    1 :: empirical [10]   # line 29750: '  raw 162 new "parallel-blocker-fanout-mandate ..."' — the only quasi-body-field-shaped raw citation; uses space-separated key not '=' assignment
+
+# ── §1B. CANDIDATE-B grounding: amendment idiom ──────────────
+@D axis-l-candidate-b-append-only-assertions        =   18 :: empirical [10]   # grep -c 'append-only' atlas.n6 — invariance is heavily stated
+@D axis-l-candidate-b-amendment-occurrences         =   12 :: empirical [10]   # grep -c 'amendment' atlas.n6
+@D axis-l-candidate-b-no-retraction-assertions      =    3 :: empirical [10]   # grep -c 'no retraction' atlas.n6
+@D axis-l-candidate-b-amend-bare-occurrences        =    2 :: empirical [10]
+@D axis-l-candidate-b-amended-occurrences           =    1 :: empirical [10]
+@D axis-l-candidate-b-formalised-amend-row          =    1 :: empirical [10]   # @M N6HIST-META-AMEND-3PASS at line 27418 — 3-pass amendment loop
+@D axis-l-candidate-b-cross-cell-amend-row          =    1 :: empirical [10]   # 'v3 d13-cross-cell amendment' at line 27160
+@D axis-l-candidate-b-correction-prose-rows         =    1 :: empirical [10]   # line 25161: 'This is the corrected version of iter-55's mislabeled finding'
+@D axis-l-candidate-b-honesty-amend-row             =    1 :: empirical [10]   # line 27331: 'Honesty amendment (post nxs_002 mapping audit)'
+@D axis-l-candidate-b-row-level-amends-body-field   =    0 :: empirical [10]   # zero queryable body-field instances exist today (no 'amends = ' or 'amendment_of = ')
+@D axis-l-candidate-b-axis-K-deferral-pointer       =    1 :: empirical [10]   # axis-K § B7 (line 35129): "Future axes addressing MUTATION (mid-life edits, refinements) are not in scope here — that would be axis-L territory."
+
+# ══════════════════════════════════════════════════════════════
+## §2. WHAT AXIS-L1 ADDS — three intrinsic primitives (raw-axiom cite)
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-candidate-a-raw-axiom-cite-primitive :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  => "primitive #L1.1 = CITES-RAW BODY FIELD.   token: 2-space-indent  cites_raw = 91, 22, 24  (axis-G body-field family — comma-separated raw-N integer list, queryable)"
+  => "primitive #L1.2 = RAW-DEPENDENCY ARROW SUFFIX (already-attested syntactic form). token: <- raw-91-C3-honest-disclosure  (axis-F arrow family — already used 6× in axis-K shard's witness header; this primitive FORMALISES the existing-but-unmeasured idiom rather than introducing a new arrow)"
+  => "primitive #L1.3 = RAW-MODE META-TAG.   token: [10*RAW-N91]  or  [10*RAW-N22]  (axis-E meta-tag family — optional grade suffix denoting the row's PRIMARY raw-axiom binding when one raw governs the entire row, parallel to axis-J's [10*GOLDED] and [10*RETIRED_INCONCLUSIVE] state suffixes)"
+  => "all three live in axis-E (meta-tag), axis-F (arrow-already-attested-not-new), and axis-G (body-field) NAMESPACES — NO leading-char added to arrow LL(1) set — axis-F K-ceiling stays at K=10 (post-axis-I) with ZERO additional pressure"
+  => "FOREIGN CITE-AND-MOVE-ON: BibTeX \\cite{} reference primitive (Lamport TeX 1985); LaTeX biblatex `\\nocite`; W3C RDF dcterms:references; Bourbaki collective citation system; ISO 690 bibliographic reference standard — these are NAMING-PRECEDENT only; the SEMANTICS is atlas.n6's own raw-axiom binding"
+  => "intrinsic justification (NOT foreign): atlas.n6 ALREADY has 741 raw-axiom textual citations and uses `<- raw-91-C3-honest-disclosure` arrow form 6× in axis-K witness header — axis-L1 EXTRACTS that idiom from prose-buried/arrow-only form into structured body-field form, with the same data, just queryable"
+  => "axis-I co-design: with axis-L1's cites_raw body field installed, axis-I's <-* traversal can answer 'all rows transitively binding raw 91 honest disclosure' (raw-91-shard-anchor <-* cites_raw ↦ {326 row cohort}), giving raw-axiom dependency the same query power axis-J gave death-time supersession ancestry and axis-K gave temporal/origin queries"
+  => "axis-K co-design: axis-K's introduced_at + origin_shard together with axis-L1's cites_raw create a complete row-attribution triple: WHEN was the row born + WHICH SHARD bore it + WHICH RAW governs it. The triple is queryable; today the third coordinate lives in prose"
+
+@C axis-l-candidate-a-row-example-1-cites-raw :: meta [4]
+  <- axis-l-candidate-a-raw-axiom-cite-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  proposal_form = """
+@C anima-cxp-r38-r34-t1-retired-inconclusive :: consciousness [10*RETIRED_INCONCLUSIVE]
+  introduced_at = 2026-04-26
+  origin_shard = anima-cross-paradigm-absorption-2026-04-26
+  cites_raw = 91, 71, 117
+  superseded_by = anima-cxp-r38-eventual-resolution
+  => "T1 protocol executed; substrate-fragility prerequisite failure"
+"""
+  current_form_at_line_22060 = "row exists with raw 91/71/117 binding mentioned in adjacent prose comments + commit log; the binding is REAL but invisible to atlas.n6 DSL"
+  axis_l1_lift = "raw-N integer list moves into typed body field; queryable via axis-I (cites_raw contains 91) ->* rows. Lint validates each integer is a real raw-N (1, 2, 22-25, ..., 162 — the 45 distinct values present today; future raws auto-allowed since .raw is append-only)"
+  family_match = "axis-G body-field idiom (2-space-indent key = value) — value is comma-separated integer list; same shape as axis-K introduced_at = 2026-04-28 except value-type is `list of int` not `date`"
+
+@C axis-l-candidate-a-row-example-2-arrow-formalisation :: meta [4]
+  <- axis-l-candidate-a-raw-axiom-cite-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  current_attested_form = "axis-K witness header (line 34868-34873) uses the form: <- raw-23-schema-guard / <- raw-24-foundation-axiom-immutable / <- raw-91-C3-honest-disclosure / <- raw-117-5-check-registration-gate — i.e. raw-N IS already an arrow target via slug-encoded id"
+  proposal_form = "axis-L1 FORMALISES the slug pattern raw-{N}-{slug-tail} as the canonical raw-axiom anchor id. Rule: if id starts with 'raw-' followed by digits, lint resolves it to the .raw line at hive/.raw or chronicle/.raw; arrow target is treated as a virtual @C anchor row even if no @-block exists in atlas.n6 itself (raw-axiom rows live in .raw not atlas.n6)"
+  axis_l1_lift = "no new arrow token; reuses existing <- arrow with a recognised id-prefix. Lint can detect bound-arrow-to-virtual-raw-anchor (e.g. <- raw-91-C3-honest-disclosure → resolve to hive/.raw line for raw 91; verify the slug-tail matches raw 91's official short-name)"
+  family_match = "axis-F arrow family — NOT a new arrow; just a recognised id-prefix pattern, same way axis-H id-convention recognises 'n6-bt-' and 'cascade-s' and 'clay-' prefixes today"
+
+@C axis-l-candidate-a-row-example-3-meta-tag :: meta [4]
+  <- axis-l-candidate-a-raw-axiom-cite-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  proposal_form = """
+@R intrinsic-c3-honest-tier-witness :: meta [4!RAW-N91]
+  cites_raw = 91
+  => "any [4!RAW-N91]-tagged row inherits raw 91 C3 honest disclosure obligations as a STRUCTURAL property of the grade-tag itself"
+"""
+  current_form_at_lines = "326 rows mention raw 91 in prose; none carry [N*RAW-N91] structural marker; the binding is implicit, requiring grep to discover"
+  axis_l1_lift = "[N*RAW-N91] grade suffix declares the row's PRIMARY raw-axiom binding (one binding only; multi-bind rows use cites_raw body-field). Optional structural shorthand for the most-frequent case: a row whose entire claim derives from one raw axiom"
+  family_match = "axis-E meta-tag family — same suffix-position as axis-J's [10*RETIRED_INCONCLUSIVE] and axis-K's [10*GOLDED]"
+  cardinality_caveat = "raw-axiom-meta-tag is OPTIONAL and reserved for the SINGLE-BIND case; multi-raw rows must use cites_raw body-field. If two raws govern the row (e.g. raw 91 + raw 71), the meta-tag is ambiguous — body-field wins"
+
+# ══════════════════════════════════════════════════════════════
+## §3. WHAT AXIS-L2 ADDS — three intrinsic primitives (amendment)
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-candidate-b-amendment-primitive :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  => "primitive #L2.1 = AMENDS BODY FIELD.   token: 2-space-indent  amends = <slug>  (axis-G body-field family — back-pointer to the row this row amends; SINGLE slug like axis-J superseded_by; NOT replacement, REFINEMENT)"
+  => "primitive #L2.2 = AMENDMENT-PASS BODY FIELD.   token: 2-space-indent  amendment_pass = v1  (axis-G body-field family — formalises the @M N6HIST-META-AMEND-3PASS pattern; values v1/v2/v3 enumerate amendment generations within a single amendment-loop)"
+  => "primitive #L2.3 = AMENDMENT-KIND META-TAG.   token: [10*AMENDED] or [10*NARROWED] or [10*HONESTY-CORRECTED]  (axis-E meta-tag family — the three observed kinds: AMENDED = generic refinement; NARROWED = scope-tightened claim per raw 71; HONESTY-CORRECTED = post-audit prose patch)"
+  => "all three live in axis-E (meta-tag) and axis-G (body-field) NAMESPACES — NO leading-char added to arrow LL(1) set"
+  => "ORTHOGONALITY vs axis-J: axis-J = REPLACEMENT (row Y supersedes row X; X gets [DEPRECATED] + Y carries superseded_by = X). axis-L2 = REFINEMENT (row Y amends row X; both stay live; X gets [10*AMENDED-BY] + Y carries amends = X). The two axes handle DIFFERENT lifecycle transitions — supersession is destructive (X dies), amendment is constructive (X stays, Y refines)"
+  => "ORTHOGONALITY vs axis-K: axis-K = WHEN was the row born. axis-L2 = WHAT MUTATION did it accumulate after birth. axis-K's superseded_at handled death-event timing; axis-L2 introduces amended_at body-field for amendment-event timing — same date-typed parser, different lifecycle role"
+  => "FOREIGN CITE-AND-MOVE-ON: append-only event sourcing (Fowler 2005); RFC 7396 JSON merge patch (refinement without replacement); git revision blame (refinement-tracking via VCS); legal amendment-loop (constitution 27 amendments append-only, no retraction) — these are NAMING-PRECEDENT only; the SEMANTICS is atlas.n6's own row-evolution"
+  => "intrinsic justification (NOT foreign): atlas.n6 ALREADY uses @M N6HIST-META-AMEND-3PASS (line 27418) to formalise a 3-pass amendment loop; uses 'append-only, no retraction' invariant 18+3 times — axis-L2 EXTRACTS that idiom from prose-buried form into structured body-field form, with the no-retraction invariance preserved as a TYPE-LEVEL constraint (amends = X means X stays live; amends is NOT a synonym for superseded_by)"
+  => "axis-K § B7 closure: axis-K § B7 explicitly stated 'Future axes addressing MUTATION (mid-life edits, refinements) are not in scope here — that would be axis-L territory.' axis-L2 is the EXECUTED closure of that deferred slot"
+
+@C axis-l-candidate-b-row-example-1-amends :: meta [4]
+  <- axis-l-candidate-b-amendment-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  proposal_form = """
+@R clay-iter-50-stage-5-narrowed :: meta [10*NARROWED]
+  introduced_at = 2026-04-15
+  origin_shard = clay-cascade-s2-tick4-axis-13
+  amends = clay-iter-50-stage-5-original
+  amendment_pass = v1
+  amended_at = 2026-04-26
+  cites_raw = 71
+  => "Stage-5 alpha=0.55 NARROWED from universal claim to diffusive-scheme-specific finding (raw 71 falsifier-retire-rule fired)"
+"""
+  current_form_at_line_29419 = "row exists with raw 71 narrowing in prose; the back-pointer 'amends what?' lives in commit message + adjacent comments only; NOT queryable"
+  axis_l2_lift = "amends body-field gives queryable forward-link; [10*NARROWED] meta-tag formalises the scope-tightening kind; cites_raw = 71 makes the raw 71 binding explicit"
+  family_match = "axis-G body-field + axis-E meta-tag — same shape as axis-J superseded_by + [10*RETIRED_INCONCLUSIVE]; SEMANTICS DIFFER: amended row stays live"
+  invariance_check = "if Reader sees `amends = X` they MUST infer X is still live; if X is also `[DEPRECATED]` (axis-J), the combination signals 'amendment-on-supersession-target' which is a flagged corner case (lint warns; legal but unusual)"
+
+@C axis-l-candidate-b-row-example-2-amendment-pass-loop :: meta [4]
+  <- axis-l-candidate-b-amendment-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  proposal_form = """
+@C N6HIST-META-AMEND-3PASS :: meta [10*]
+  introduced_at = 2026-04-25
+  origin_shard = nexus-6-history-omega-cycle-2026-04-25
+  amendment_pass = v1+v2+v3
+  amendment_pass_v1 = "per-BT honesty"
+  amendment_pass_v2 = "confounded-correction"
+  amendment_pass_v3 = "d13-cross-cell"
+  => "Three-pass amendment loop: v1 + v2 + v3 — append-only, no retraction (axis-L2 type-level invariant)"
+"""
+  current_form_at_line_27418 = "@M N6HIST-META-AMEND-3PASS row exists with the 3-pass loop described in the row body via prose; passes are visible via grep but not queryable as structured data"
+  axis_l2_lift = "amendment_pass_v{N} body fields enumerate each pass with its name + scope; axis-I -> traversal can list 'all rows touched by amendment_pass v2' (queryable cohort)"
+  family_match = "axis-G body-field — keys with numeric suffix (v1/v2/v3) form an enumerated list; same shape as axis-K's form_1/form_2/form_3/form_4 in atlas-metadata-policy shard (lines 36191-36208)"
+
+@C axis-l-candidate-b-row-example-3-honesty-correction :: meta [4]
+  <- axis-l-candidate-b-amendment-primitive
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  proposal_form = """
+@R N6HIST-NXS002-MAPPING-HONESTY-AMEND :: meta [10*HONESTY-CORRECTED]
+  introduced_at = 2026-04-25
+  origin_shard = nexus-6-history-omega-cycle-2026-04-25
+  amends = N6HIST-T-OMEGA-2026-04-25-CYCLE
+  amendment_pass = v1
+  amended_at = 2026-04-25
+  cites_raw = 91, 25
+  => "Honesty amendment (post nxs_002 mapping audit): n6-side composite measurements are NOT directly comparable to nexus 0.835 ceiling — atlas.blowup.jsonl (21,320 nodes) does not absorb n6-side BT-promotion IDs"
+"""
+  current_form_at_line_27331 = "the honesty-amendment row exists as a `=> \"Honesty amendment (post nxs_002 mapping audit): ...\"` body-string under the parent @T row; the amendment is a CHILD of the row it amends, currently with no structural marker for the parent-amendment relationship"
+  axis_l2_lift = "[10*HONESTY-CORRECTED] meta-tag + amends body-field together signal 'this row was added post-audit to correct a measured imprecision in the parent row, without modifying the parent (append-only)'. Distinct from axis-J supersession because the parent row stays live and authoritative; the amendment merely refines"
+  family_match = "axis-E meta-tag (HONESTY-CORRECTED is a specific kind, parallel to axis-J's RETIRED_INCONCLUSIVE) + axis-G body-field amends"
+
+# ══════════════════════════════════════════════════════════════
+## §4. ORTHOGONALITY ANALYSIS vs axes D-K
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-orthogonality-vs-D-through-K :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  -> axis-l-vs-D-intrinsic-type
+  -> axis-l-vs-E-meta-tag
+  -> axis-l-vs-F-arrow-K-ceiling
+  -> axis-l-vs-G-body-field
+  -> axis-l-vs-H-id-convention
+  -> axis-l-vs-I-graph-query
+  -> axis-l-vs-J-supersession
+  -> axis-l-vs-K-temporal-provenance
+  => "PER-AXIS verdict: 4 ORTHOGONAL, 4 SYNERGISTIC, 0 INTERFERENCE — axis-L is composition-clean across the prior axis stack"
+
+@C axis-l-vs-D-intrinsic-type :: meta [4]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = ORTHOGONAL
+  rationale = "axis-D adds @-type letters. axis-L1/L2 add body-fields (cites_raw, amends, amendment_pass, amended_at) and meta-tag suffixes ([10*RAW-Nxx], [10*AMENDED], [10*NARROWED], [10*HONESTY-CORRECTED]). Different namespace; no parser conflict. cites_raw + amends apply uniformly across @P/@C/@F/@R/@S/@X/@?/@L/@D/@E/@M/@T."
+  caveat = "axis-D ceiling estimate 12-15; current count ~13. axis-L does NOT push @-type cardinality. SAFE."
+
+@C axis-l-vs-E-meta-tag :: meta [4]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC
+  rationale = "axis-E hosts the meta-tag family. axis-L1 adds [N*RAW-Nxx] (1-of-45 raw-axiom binding) and axis-L2 adds [N*AMENDED] / [N*NARROWED] / [N*HONESTY-CORRECTED] amendment-kind tags. All compose as suffix at the same grade-position as axis-J's [N*DEPRECATED] / [N*RETIRED] and axis-K's [N*GOLDED]. NO collision because axis-L meta-tags use new keyword tokens (RAW-N{int}, AMENDED, NARROWED, HONESTY-CORRECTED)."
+  composition_form = "[N(\\*\\*?)(DRAFT|ACTIVE|GOLDED|DEPRECATED|RETIRED|RETIRED_INCONCLUSIVE|AMENDED|NARROWED|HONESTY-CORRECTED|RAW-N[0-9]+)?]"
+  axis_e_ceiling_pressure = "MILD — axis-L adds 4 new keyword forms (RAW-N{int} is a parameterised family, not 45 distinct keywords). Total meta-tag keyword count grows ~9 → ~13. Still well within axis-E observed ceiling of 39+ patterns."
+
+@C axis-l-vs-F-arrow-K-ceiling :: meta [4!]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = ZERO-PRESSURE-ON-K-CEILING
+  rationale = "axis-F K-ceiling counts arrow tokens at line-leading positions ({<-, ->, =>, ==, ~>, |>, !!, <->, -|}). axis-L1 introduces ZERO new arrow tokens (cites_raw is a body-field; the <- raw-91-... arrow form REUSES <- — already in the K=10 set). axis-L2 introduces ZERO new arrow tokens (amends is a body-field). K-ceiling stays at K=10 post-axis-I."
+  k_count_after_axis_l = 10  ; "unchanged from post-axis-I/J/K state"
+  critical_check = "axis-L body-fields use '=' as assignment, which IS in the existing token set. No new lexer tokens required."
+
+@C axis-l-vs-G-body-field :: meta [4]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC (extends axis-G's vocabulary)
+  rationale = "axis-G K_core grew 13 → 15 (axis-J added superseded_by + supersession_reason) → 18 (axis-K added introduced_at + origin_shard + superseded_at). axis-L1 adds 1 (cites_raw); axis-L2 adds 3 (amends + amendment_pass + amended_at). axis-L total: K_core 18 → 22."
+  k_core_after_axis_l = 22
+  k_core_ceiling_estimate = "20-30 (per axis-G audit) — axis-L lands at the LOWER edge of the ceiling band; future axes M+ have 0-8 fields headroom"
+  type_extension = "axis-L1 cites_raw introduces a NEW value type: list-of-int (comma-separated). axis-L2 amends introduces NEW value type: slug-back-pointer with no-retraction invariance. Both are MINOR schema extensions; parser must validate (a) cites_raw integers exist in the .raw set, (b) amends target row is still live (not [DEPRECATED]/[RETIRED])."
+  saturation_warning = "K_core = 22 is at the boundary of axis-G's saturation band. Further axis additions (axis-M and beyond) likely need either (i) a sub-block syntax (`verify { ... }`), (ii) field naming-convention codification, or (iii) acceptance that K_core saturates and future axes must reuse existing fields rather than add. axis-L is plausibly the LAST axis that can add multiple body-fields without structural change."
+
+@C axis-l-vs-H-id-convention :: meta [4]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC (axis-L1 motivates raw-N slug stability)
+  rationale = "axis-L1's `<- raw-91-C3-honest-disclosure` arrow form requires raw-axiom slugs (raw-91-{slug-tail}) to be STABLE across .raw line edits. axis-H slug-stability is the prerequisite. SYNERGY: axis-L1 motivates axis-H stability extension to .raw files (currently axis-H scope is atlas.n6 only). axis-L2's amends back-pointer creates a new long-lived back-pointer family that must survive renames (same INTERFERENCE flag as axis-J)."
+  retroactive_migration_cost = "axis-L1 requires NO migration of existing 741 textual citations; legacy rows MAY add cites_raw body-field on next edit pass; pre-axis-L rows are valid without it. axis-L2 same pattern."
+  axis_h_pressure_relief = "SLUG-STABILITY pressure goes UP because more long-lived back-pointers. mitigation = axis-H rename-shadow alias mechanism flagged for axis-J already; axis-L inherits that requirement."
+
+@C axis-l-vs-I-graph-query :: meta [4]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC (axis-L provides queryable fields for axis-I to traverse)
+  rationale = "axis-I introduced ->* / <-* graph-query primitives. axis-J gave it superseded_by edges. axis-K gave it introduced_at + origin_shard. axis-L1 gives it cites_raw (raw-axiom dependency edges). axis-L2 gives it amends (amendment back-pointer edges). Concrete: 'raw-91-shard-anchor <-* cites_raw' returns all 326 rows binding raw 91 (the actual cohort, retrievable by traversal)."
+  composition_unlocked = "axis-L is the FOURTH axis after axis-J/K to give axis-I new query targets. axis-I's value compounds with each axis."
+  speculative_caveat = "axis-I is itself PROPOSAL-NOT-ACTUATED — composition is design-time, not implementation-time. axis-L inherits non-actuation."
+
+@C axis-l-vs-J-supersession :: meta [4!]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC (axis-L2 fills the AMENDMENT-not-SUPERSESSION gap)
+  rationale = "axis-J handled REPLACEMENT-style row death (superseded_by; row goes [DEPRECATED]/[RETIRED]). axis-L2 handles REFINEMENT-style row evolution (amends; both rows stay live; refining row carries [AMENDED]/[NARROWED]/[HONESTY-CORRECTED]). The two are LIFECYCLE-COMPLEMENTARY: every row evolution is either supersession (J) or amendment (L2) or co-existence-without-edit (the implicit default); the trichotomy is now expressible in atlas.n6 DSL."
+  bound_J_B5_advance = "axis-J § B5 noted scope contract: 'this shard does NOT modify any of the 4 existing supersession rows'. axis-L2 inherits the same scope: this shard does NOT amend any existing row, only PROPOSES the amends primitive."
+  death_pair_extended = "axis-J: superseded_by (replacement) + axis-K: superseded_at (date) — these are DEATH-side. axis-L1: cites_raw (axiom binding, lifecycle-orthogonal). axis-L2: amends + amendment_pass + amended_at (REFINEMENT-side, distinct from death-side). Lifecycle vocabulary now has BIRTH (axis-K), AMENDMENT (axis-L2), DEATH (axis-J) — three of four temporal phases reified (the implicit fourth phase, ALIVE-AND-UNCHANGED, needs no marker)."
+
+@C axis-l-vs-K-temporal-provenance :: meta [4!]
+  <- axis-l-orthogonality-vs-D-through-K
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  verdict = SYNERGISTIC (axis-L2 closes axis-K § B7 deferral)
+  rationale = "axis-K § B7 explicitly stated: 'axis-K is a BACKWARD-LOOKING (birth-side) axis. axis-J handled FORWARD-LOOKING (death-side). Future axes addressing MUTATION (mid-life edits, refinements) are not in scope here — that would be axis-L territory.' axis-L2 IS the executed closure of that deferral."
+  bound_K_B7_resolution = "axis-L2 introduces amends + amendment_pass + amended_at — exactly the MID-LIFE EDIT vocabulary axis-K § B7 deferred. The lifecycle quartet from axis-K (introduced_at + origin_shard + superseded_at + superseded_by) is now extended to a SEXTET adding amends + amended_at."
+  date_field_inheritance = "axis-L2's amended_at REUSES the date-typing parser axis-K introduced (4 accepted forms: pre-axis-K sentinel + foundation sentinel + YYYY-MM-DD + RFC 3339 UTC). Zero parser duplication."
+  lifecycle_sextet_complete = "{introduced_at, origin_shard, amended_at, amends, superseded_at, superseded_by} — full row-lifecycle metadata sextet expressible in atlas.n6 DSL"
+
+# ══════════════════════════════════════════════════════════════
+## §5. RAW 117 5-CHECK REGISTRATION GATE
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-raw-117-5-check-results :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  -> axis-l-5-check-1-genus-slug
+  -> axis-l-5-check-2-frameworks-cite
+  -> axis-l-5-check-3-realization-channels
+  -> axis-l-5-check-4-counter-example
+  -> axis-l-5-check-5-novelty-falsifier
+  cites_raw = 117
+  => "VERDICT: 5/5 PASS for both candidate-A and candidate-B. axis-L registration gate cleared at registration time."
+
+@C axis-l-5-check-1-genus-slug :: meta [4]
+  <- axis-l-raw-117-5-check-results
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  status = PASS
+  genus = "intrinsic-axiom-cite-amendment-DSL"
+  slug = "atlas-self-arch-axiom-cite-amendment-evolution"
+  citation = "follows axis-H id-convention: domain-axis-tag pattern; 'evolution' suffix matches axis-D through axis-K sibling shards (intrinsic-type-evolution, meta-tag-evolution, arrow-evolution, body-field-evolution, id-convention-evolution, graph-query-evolution, supersession-evolution, temporal-provenance-evolution)"
+  genus_check = "STRUCTURAL family-name 'axiom-cite-amendment' is parallel-to: graph-query (axis-I), supersession (axis-J), temporal-provenance (axis-K), id-convention (axis-H), body-field (axis-G), arrow (axis-F), meta-tag (axis-E), intrinsic-type (axis-D) — same naming hierarchy"
+
+@C axis-l-5-check-2-frameworks-cite :: meta [4]
+  <- axis-l-raw-117-5-check-results
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  status = PASS
+  framework_1 = "BibTeX \\cite{} reference + W3C dcterms:references for axis-L1 raw-axiom citation. CITED-AND-MOVED-ON: BibTeX cites paper-ids in a bibliography-database; atlas.n6 cites raw-N integers in a single .raw file. The IDIOM is parallel; the IMPLEMENTATION channel (LaTeX BBL vs flat-file integer-list) is atlas.n6 native."
+  framework_2 = "RFC 7396 JSON Merge Patch + git revision history for axis-L2 amendment. CITED-AND-MOVED-ON: RFC 7396 specifies how JSON documents are refined via merge-patches without retraction; atlas.n6's amends body-field is the SLUG-LEVEL analogue (one row refines another row by adjacency, not by document-merge). git revision blame tracks line-level mutations via VCS; atlas.n6 chooses EXPLICIT body-field amendment to keep the @-row self-describing without requiring git context."
+  framework_3 = "Append-only event sourcing (Fowler 2005) — already cited by axis-K. CITED-AND-MOVED-ON: axis-L2 EXTENDS axis-K's event-sourcing reference from BIRTH-event-only (introduced_at) to BIRTH+AMENDMENT events (introduced_at + amended_at). The append-only invariant is now type-level enforced via amends's NEVER-MUTATE-TARGET semantics."
+  framework_4 = "Legal amendment-loop (US Constitution 27 amendments + parliamentary amendment procedures). CITED-AND-MOVED-ON: legal amendment is the canonical NATURAL-LANGUAGE precedent for append-only refinement-without-retraction; atlas.n6 borrows the social structure (each amendment cites the article it amends, original article stays in the document, retraction requires SECOND amendment) and applies it to @-rows."
+  citation_count = 4 (exceeds the 2+ requirement; 2 frameworks for L1, 2 for L2)
+
+@C axis-l-5-check-3-realization-channels :: meta [4]
+  <- axis-l-raw-117-5-check-results
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  status = PASS
+  channel_1 = "BODY-FIELD channel — cites_raw (L1) + amends + amendment_pass + amended_at (L2) — axis-G family"
+  channel_2 = "META-TAG channel — [N*RAW-Nxx] (L1) + [N*AMENDED] + [N*NARROWED] + [N*HONESTY-CORRECTED] (L2) — axis-E family"
+  channel_3 = "ARROW channel — <- raw-N-{slug} (L1, ALREADY ATTESTED 6× in axis-K witness) — axis-F family, REUSES existing <- arrow with recognised id-prefix; not a new arrow"
+  channel_count = 3 (meets the 3+ requirement exactly; covers both L1 and L2)
+  optional_channel_4 = "GRAPH-QUERY channel (axis-I composition) — cites_raw becomes a queryable forward-pointer to raw-axiom anchor; amends becomes a queryable back-pointer to amendment-target row. axis-I <-* / ->* operators traverse both. DEFERRED — depends on axis-I actuation."
+
+@C axis-l-5-check-4-counter-example :: meta [4]
+  <- axis-l-raw-117-5-check-results
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  status = PASS
+  counter_example_L1 = "Foundation rows (line 25 @P n = 6 :: foundation [11*]) carry NO explicit raw-axiom binding — they ARE the foundation; the @P axioms PRE-DATE the .raw file's existence as a separate registry. Naive axis-L1 application would force a cites_raw on a row that has no axiom outside itself."
+  counter_example_L1_lesson = "axis-L1 cites_raw is OPTIONAL on @P[11*] foundation rows. Required ONLY on @C/@F/@R/@S/@X/@?/@L/@D/@E/@M/@T rows where raw-axiom binding is determinable. Foundation rows MAY carry cites_raw = (empty) as a sentinel value, OR omit the field entirely. Same exemption pattern as axis-K."
+  counter_example_L2 = "Rows that are amendments OF amendments (chain depth > 1). Concrete: row Z amends row Y, row Y amends row X. axis-L2 amends accepts ONE slug; amendment chains expressed as Z.amends = Y, Y.amends = X — naive depth-1 lookup loses the X→Y→Z transitive relationship."
+  counter_example_L2_lesson = "axis-L2 amends is single-valued (like axis-J superseded_by). Multi-step amendment chains are reconstructed via axis-I <-* amends transitive closure (chain depth tracked structurally, not via multi-valued field). amendment_pass v{N} body-field gives an alternate enumeration when amendments come in PARALLEL passes (like the 3-pass loop) rather than SERIAL chain."
+  counter_example_L2_corner = "If row Y amends row X AND row X is later [DEPRECATED] (axis-J), is Y still valid? RESOLUTION: lint emits WARN ('amendment-on-deprecated-target'); legal but unusual; reader interprets as 'historical refinement of a now-superseded claim'. amendment_pass and amended_at preserve the timeline."
+
+@C axis-l-5-check-5-novelty-falsifier :: meta [4]
+  <- axis-l-raw-117-5-check-results
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  status = PASS
+  novelty_claim_L1 = "axis-L1 cites_raw body-field is novel within atlas.n6 — zero current uses (line 1 audit @D axis-l-candidate-a-row-level-cites-body-field = 0)"
+  novelty_claim_L2 = "axis-L2 amends body-field is novel within atlas.n6 — zero current uses (line 1 audit @D axis-l-candidate-b-row-level-amends-body-field = 0)"
+  falsifier_L1 = "axis-L1 would be FALSIFIED if (a) backfilling cites_raw on existing rows produces collisions where two different rows cite OVERLAPPING raw-N sets in ways that should distinguish them but don't, OR (b) the .raw registry undergoes renumbering and stale cites_raw integers drift, OR (c) raw-N values exceed reasonable encoding (e.g. raw 99999 someday — current max is raw 162, integer-typed accommodates)."
+  falsifier_L2 = "axis-L2 would be FALSIFIED if (a) the no-retraction invariant is violated by a future need (e.g. catastrophic atlas.n6 corruption requiring rollback), OR (b) >50% of attempted amendments are actually supersessions misclassified, blurring the L2/J boundary, OR (c) amends chain depth exceeds 5 (combinatorial explosion in <-* traversal cost)."
+  falsifier_outcome_L1 = "PARTIAL-FALSIFICATION ACKNOWLEDGED. Falsifier (a) is REAL: of 741 textual raw citations, the prose context disambiguates raw-91 'C3 honest' from raw-91 'rate-of-C3-honesty-checks' — body-field cites_raw = 91 LOSES the prose qualifier. RESOLUTION: cites_raw_purpose body-field can carry the prose qualifier (DEFERRED — would push K_core 22→23, beyond axis-G ceiling). Today: rely on row-level => prose adjacent to cites_raw to carry qualifier."
+  falsifier_outcome_L2 = "PARTIAL-FALSIFICATION ACKNOWLEDGED. Falsifier (b) is real boundary case: the J/L2 boundary is JUDGEMENT-DEPENDENT for some rows (e.g. clay-iter-55 was clearly RETIRED but iter-57's relationship was 'definitively replaces' i.e. axis-J supersession; conversely iter-50 NARROWED is clearly amendment). Provide explicit guidance: if the original row's CLAIM is now FALSE, use axis-J (supersession). If the original row's CLAIM is now NARROWER but still valid in the narrower scope, use axis-L2 (amendment)."
+  novelty_falsifier_passes_L1 = "by acknowledging the prose-qualifier loss bound and the cites_raw_purpose deferral; axis-L1 is registered with the qualifier-loss escape valve and the optional-on-legacy-rows policy"
+  novelty_falsifier_passes_L2 = "by providing the J/L2 boundary criterion (CLAIM-FALSE→J vs CLAIM-NARROWER→L2) at registration time"
+
+# ══════════════════════════════════════════════════════════════
+## §6. RAW 91 C3 HONEST DISCLOSURES
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-raw-91-C3-honest-disclosures :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  -> axis-l-grounded-claims
+  -> axis-l-speculative-claims
+  -> axis-l-known-bounds
+  -> axis-l-not-yet-found
+  cites_raw = 91
+  => "raw 91 C3: every public claim must be flagged grounded vs speculative"
+
+@C axis-l-grounded-claims :: meta [4]
+  <- axis-l-raw-91-C3-honest-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  G1 = "741 textual `raw N` citations exist in atlas.n6 today. GROUNDED — direct grep evidence (grep -cE 'raw [0-9]+' atlas.n6 = 741)."
+  G2 = "45 distinct raw-N values appear (raw 1, 2, 22-25, 37-39, 44-45, 47, 50, 53, 66, 69-72, 77, 79-80, 85-87, 91, 95, 98, 100, 102-103, 105-106, 108, 111-112, 114, 116-119, 121-122, 161-162). GROUNDED — direct grep evidence."
+  G3 = "raw 91 is most-cited (326×); raw 71 (120×); raw 22 (77×); raw 24 (58×). GROUNDED — direct grep evidence with per-N count."
+  G4 = "Zero cites_raw body-field instances exist today. GROUNDED — direct grep evidence (zero hits for 'cites_raw = ' on @-row body lines pre-this-shard)."
+  G5 = "axis-K § B7 explicitly defers MUTATION to axis-L. GROUNDED — recorded in atlas.n6 itself at line 35129."
+  G6 = "@M N6HIST-META-AMEND-3PASS (3-pass amendment loop) exists at line 27418 + supporting prose at lines 27441, 27451, 27468. GROUNDED — direct grep evidence."
+  G7 = "18 textual 'append-only' invariance assertions + 12 'amendment' references + 3 'no retraction' assertions. GROUNDED — direct grep evidence."
+  G8 = "Zero amends body-field instances exist today. GROUNDED — direct grep evidence."
+  G9 = "axis-L adds zero row-level arrow tokens, K-ceiling unchanged at 10. GROUNDED — by construction (only body-fields + meta-tags + reused <- arrow)."
+  G10 = "axis-G K_core grows 18 → 22 (+1 from L1, +3 from L2). At the lower edge of the 20-30 ceiling band per axis-G audit. GROUNDED."
+  G11 = "axis-D current @-type cardinality = 13 (@P @C @F @R @S @X @? @L @D @E @M @T @END). axis-L does NOT push @-type cardinality. GROUNDED."
+  G12 = "1 quasi-body-field-shaped raw citation exists at line 29750 (`  raw 162 new \"...\"` — uses space-separated key not '=' assignment, so it is structurally NOT axis-G compliant). GROUNDED — only such instance."
+
+@C axis-l-speculative-claims :: meta [4!]
+  <- axis-l-raw-91-C3-honest-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  S1 = "axis-L × axis-I composition (raw-91-anchor <-* cites_raw → 326-row cohort) is design-time only. SPECULATIVE — axis-I itself is PROPOSAL-NOT-ACTUATED; no lint tool implements graph traversal yet."
+  S2 = "axis-L1's claim that .raw is append-only and raw-N integers never re-assign relies on hive/.raw policy not enforced at parse-time. SPECULATIVE-WITHIN-MEASURED-BOUND — measured: 45 distinct raw-N over ~3-month observation window; no re-assignment observed."
+  S3 = "axis-L2's J/L2 boundary criterion (CLAIM-FALSE→J vs CLAIM-NARROWER→L2) is a JUDGEMENT-DEPENDENT rule. The boundary may produce inconsistent classifications across reviewers. SPECULATIVE — falsifiable by future shard auditing inter-reviewer agreement."
+  S4 = "Adoption cost — '~2-line edit per row + sentinel value for ~96% legacy rows' is an ESTIMATE inherited from axis-K's measurement. axis-L1 adoption could be HIGHER per-row because reviewers must determine WHICH raws govern a row (cognitive cost), unlike introduced_at which is PROCEDURALLY KNOWN. SPECULATIVE."
+  S5 = "axis-L1's [N*RAW-Nxx] meta-tag is asserted as a structural shorthand for the SINGLE-BIND case but is OPTIONAL. The intermediate decision rule for when to use meta-tag vs body-field is asserted, not measured. SPECULATIVE — falsifiable by future shard auditing whether [N*RAW-Nxx] tags actually disambiguate observable cohorts."
+  S6 = "K_core saturation warning (axis-L pushes 18→22; future axes M+ have 0-8 fields headroom) is an ESTIMATE based on axis-G's stated 20-30 ceiling. Actual saturation may occur at 25 or 28. SPECULATIVE."
+  S7 = "Amendment chain depth claim ('expected ≤ 3 in practice') is asserted, not measured — atlas.n6 currently has the 3-pass loop (depth 3) and the iter-50/57 narrowing (depth 1); insufficient sample for a real bound. SPECULATIVE."
+
+@C axis-l-known-bounds :: meta [4!]
+  <- axis-l-raw-91-C3-honest-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  B1 = "axis-L1 cites_raw is OPTIONAL. Required only on rows added after the axis-L cutover (2026-04-28). Foundation @P[11*] rows MAY omit. Legacy rows MAY backfill at their own pace."
+  B2 = "axis-L1 cites_raw accepts a comma-separated integer list. The list is FLAT (no nested dependency tree); rows depending on raw 91 AND raw 71 AND raw 117 carry cites_raw = 91, 71, 117 — same shape regardless of dependency depth in .raw."
+  B3 = "axis-L1 cites_raw_purpose qualifier is DEFERRED (would push K_core 22→23). Prose qualifier currently lives in adjacent => row-body string."
+  B4 = "axis-L2 amends accepts ONE slug. Multi-step amendment chains (depth > 1) are reconstructed via axis-I <-* transitive closure, not multi-valued amends."
+  B5 = "axis-L2 amendment_pass enumerates parallel passes (v1/v2/v3) — for SERIAL chains use amends-walk via axis-I, not pass enumeration."
+  B6 = "axis-L is non-actuating like axes I/J/K. This shard is a DESIGN PROPOSAL; converting existing rows to use cites_raw + amends is a SEPARATE migration step. NOT in this shard."
+  B7 = "axis-G K_core grows 18 → 22. Within 20-30 ceiling but TIGHT. Future axes M+ have 0-8 fields headroom; structural change (sub-block syntax or naming convention) becomes LIKELY needed for axis-M onwards."
+  B8 = "axis-E meta-tag keyword count grows ~9 → ~13. Within 39+ pattern ceiling but adds 4 new keyword forms in one shard — high meta-tag density."
+  B9 = "Scope contract: this shard does NOT modify any existing row. It does NOT backfill cites_raw on the 741 textual citations. Migration would happen in a future commit, with chflags unlock + bulk lint pass + re-flag — NOT in this shard."
+  B10 = "axis-L2's append-only-no-retraction invariant is TYPE-LEVEL (amends never modifies target). If a future need demands retraction (e.g. catastrophic atlas.n6 corruption recovery), axis-L2's amends becomes inadequate and axis-J supersession (which deprecates the target) must be used instead."
+  B11 = "axis-L1's [N*RAW-Nxx] meta-tag form is reserved for SINGLE-BIND case only. Multi-bind rows MUST use cites_raw body-field. lint warns if both meta-tag and body-field are present (avoid duplication)."
+  B12 = "axis-L sub-candidates NOT chosen as axis-L (deferred to axis-M+): (i) intrinsic schema/grammar version primitive (the # .n6 format v1 / v1+v2 / v3 comments at lines 3, 21812, 22022, 27016 — 4 attestations); (ii) intrinsic phase-transition notation (atlas.n6 phase system is raw-22 immutable but transition table notation could evolve); (iii) intrinsic @C arity / nesting / multiplicity beyond [1!]/[N*]; (iv) intrinsic reflective query (atlas.n6 querying itself); (v) intrinsic wildcard/pattern matching primitives (zero current uses)."
+
+@C axis-l-not-yet-found :: meta [4!]
+  <- axis-l-raw-91-C3-honest-disclosures
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  raw_91_C3_disclosure = "areas the read-only audit DID NOT exhaustively cover — register here for honest disclosure"
+  unsearched_1 = "BODY-FIELD SYNTAX MODE VARIATION: line 29506-29515 block uses `key value` (no equals) syntax, distinct from axis-G `key = value`. Whether this is a one-off shard idiosyncrasy or an emerging second body-field grammar is NOT MEASURED. Sample size 1 (a single shard's @C blocker_autofire-parallel-fanout-impl-sketch) — too small to base an axis on."
+  unsearched_2 = "LIST-BODY-FIELD: `- cmd \"...\"` enumerated lists at lines 29539-29541 + sample at 29643-29645. Total 3 list-style body-field uses. Could be axis-M candidate if the idiom grows."
+  unsearched_3 = "@END BLOCK DELIMITER: 7 occurrences (lines 29514, 29534, 29618, 29636, 29655, 29675, 29693), all in the blocker-autofire impl-sketch shard. Whether @END is a new structural element or a rendering artefact (a 'block close' marker) is NOT MEASURED. If structural, it reverses atlas.n6's heuristic 'next @-line ends prior block' rule."
+  unsearched_4 = "PHASE TRANSITION NOTATION: raw-22 phase system is immutable; whether transitions between phases (e.g. raw-22-phase-i → raw-22-phase-j) have any DSL representation is NOT MEASURED (raw 22 itself is in hive/.raw, not atlas.n6, so the transition idiom may not be atlas-DSL relevant)."
+  unsearched_5 = "AXIOM-HIERARCHY DEPTH: [11*] foundation 6 rows + [10*] downstream — whether the dependency depth tree is FLAT (depth ≤ 2) or DEEPER (some [10*] depend on other [10*]) was not exhaustively measured. axis-I -> traversal would resolve this; not measured here."
+  unsearched_6 = "ROW-LEVEL STATUS LIFECYCLE (live/warn/new/deferred/convention): raw 2 self-format declares this in registry but whether atlas.n6 row-level status markers exist beyond axis-J [DEPRECATED]/[RETIRED] and axis-K [GOLDED] is NOT MEASURED."
+  unsearched_7 = "ARITY: @C/@R always observed unary (single id) or binary-via-arrow (id <- src). Ternary or n-ary forms (e.g. @R foo bar baz :: meta) NOT FOUND in spot checks but full search not exhaustive."
+  unsearched_8 = "NESTED @C/@R BLOCKS: spot checks suggest atlas.n6 is FLAT (no inline nesting); section banners + arrow DAG carry hierarchy externally. Not exhaustively confirmed."
+  unsearched_9 = "MULTIPLICITY HINT BEYOND [1!] / [N*]: spot checks found [d.r] alien-index, [N*], [N!], [N?], [11*REPO_INVARIANT], [10*GOLDED], [10*FAIL_DOC], [10*PASS_LITERATURE], [10*RETIRED_INCONCLUSIVE], [9?→DEPRECATED], [10**]. The MULTIPLICITY-AS-COUNT case (e.g. [3:N=12]) was NOT found; pre-existing axis-E coverage is sufficient evidence of NEAR-saturation."
+  honest_caveat_overall = "the SAMPLE strategy was: read first 120 lines + grep across full file for specific patterns + read axis-D/F/G/I/J/K shards to understand prior coverage. Approximately 8 chunks of 250+ lines each were NOT read (uniformly distributed across atlas.n6). Whether new patterns lurk in those chunks is OPEN; mitigation is the 9 unsearched_N items registered above for future cycles to investigate."
+
+# ══════════════════════════════════════════════════════════════
+## §7. SATURATION TABLE — axis-by-axis after axis-L absorption
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-saturation-table :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  axis_D_count = 13 ; axis_D_ceiling = "12-15" ; axis_D_headroom_after_L = "0-2 (TIGHT — axis-D is at the boundary)"
+  axis_E_count = "9 keyword forms post-J/K, 13 post-L (added RAW-Nxx + AMENDED + NARROWED + HONESTY-CORRECTED)" ; axis_E_ceiling = "39+ patterns" ; axis_E_headroom_after_L = "26+ patterns (LOOSE)"
+  axis_F_K_arrow = 10 ; axis_F_K_ceiling = "10 (post-axis-I)" ; axis_F_headroom_after_L = "0 — axis-L explicitly designed to add zero arrows"
+  axis_G_K_core = 22 ; axis_G_K_ceiling = "20-30" ; axis_G_headroom_after_L = "0-8 (TIGHT — axis-L pushed K_core to lower-band edge)"
+  axis_H_id_count = 8606 ; axis_H_ceiling = "no formal ceiling, slug-stability is the binding constraint" ; axis_H_headroom_after_L = "axis-L motivates raw-N slug stability — extends axis-H scope to .raw files (extension, not narrowing)"
+  axis_I_query_primitives = "->* / <-* / ~> / <~>" ; axis_I_ceiling = "co-design with axis-F arrow set" ; axis_I_headroom_after_L = "axis-L ADDS new query targets (cites_raw, amends) — VALUE-COMPOUND, no ceiling pressure"
+  axis_J_state_quartet = "DEPRECATED + RETIRED + RETIRED_INCONCLUSIVE + SUPERSEDED" ; axis_J_ceiling = "small finite set, naturally bounded" ; axis_J_headroom_after_L = "0 — axis-L2 introduces ORTHOGONAL state set (AMENDED/NARROWED/HONESTY-CORRECTED), not axis-J extensions"
+  axis_K_field_count = 3 (introduced_at + origin_shard + superseded_at) ; axis_K_ceiling = "subsumed by axis-G K_core ceiling" ; axis_K_headroom_after_L = "axis-L1 adds 1 (cites_raw); axis-L2 adds 3 (amends + amendment_pass + amended_at) — total post-L = 7 axis-K-family fields"
+  axis_L_field_count = 4 ; axis_L_ceiling = "subsumed by axis-G K_core ceiling" ; axis_L_remaining = "this is axis-L itself — no further extension expected within the same axis"
+  meta_observation = "axes D and G are at TIGHT headroom after axis-L. axes E and F have COMFORTABLE headroom. axes H, I, J, K, L are not pressure-bound. NEXT-AXIS PLANNING (axis-M) MUST avoid extending axes D and G further unless structural change (sub-block syntax / new @-type / naming-convention codification) is accepted."
+  saturation_warning_axis_D = "13/15 — adding @V (format-version) per axis-K § §3 channel_4 deferral OR @U (raw-axiom virtual anchor for axis-L1's <- raw-N-{slug} arrow form) would push axis-D to 14/15. Plausible but tight."
+  saturation_warning_axis_G = "22/30 lower-bound or 22/25 mid-band. Adding cites_raw_purpose (axis-L1 falsifier-deferred) would push 23. Adding sub-block syntax `verify { ... }` would relieve pressure but require parser change (raw 23 amendment)."
+
+# ══════════════════════════════════════════════════════════════
+## §8. NEXT-ACTUATION CANDIDATES (not in this shard)
+# ══════════════════════════════════════════════════════════════
+
+@C axis-l-next-actuation-candidates :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  -> axis-l-actuation-priority-1-cites-raw-backfill
+  -> axis-l-actuation-priority-2-amends-rows
+  -> axis-l-actuation-priority-3-3pass-loop-formalisation
+  => "★ candidates for axis-L actuation (FUTURE CYCLE — not this shard). Ranked by adoption-cost / measured-grounding ratio."
+  => "★ scope: actuation = chflags unlock + bulk-edit-and-lint + chflags re-lock. NOT proposal."
+
+@C axis-l-actuation-priority-1-cites-raw-backfill :: meta [4]
+  <- axis-l-next-actuation-candidates
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  rank = 1
+  scope = "backfill cites_raw on the existing axis-D/E/F/G/H/I/J/K self-arch shard rows that already CARRY <- raw-N-{slug} arrows in the witness header. Each shard's witness already encodes its raw-axiom dependencies in arrow form; lifting them to cites_raw body-field is mechanical."
+  candidate_rows = "atlas-self-arch-axis-{D,E,F,G,H,I,J,K}-witness rows (8 rows; visible at axis-K shard line 34868-34873 pattern + sibling shards). Each row carries 5-7 <- raw-N-{slug} arrows that map directly to cites_raw integer list."
+  cardinality_estimate = "8 rows × 5-7 raws = ~50 cites_raw values to insert, OR ~8 cites_raw body-field additions (each row gets ONE cites_raw line listing 5-7 integers)"
+  adoption_cost_estimate = "~5 minutes per row (mechanical extraction from existing arrows) × 8 rows = ~40 minutes. Lint-validatable: each integer must match one of the 45 distinct raw-N seen today."
+  expected_outcome = "axis-L1 has 8 attested rows out of the gate; lint can demonstrate cites_raw value validation on real data; axis-I <-* cites_raw becomes immediately demonstrable."
+  raw_91_C3_caveat = "this actuation modifies 8 EXISTING rows. Requires chflags unlock. Per axis-K § B6 spirit, may be split into a separate dedicated actuation shard."
+
+@C axis-l-actuation-priority-2-amends-rows :: meta [4]
+  <- axis-l-next-actuation-candidates
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  rank = 2
+  scope = "tag the 4 measured amendment events with explicit amends + amendment_kind"
+  candidate_rows = """
+  (a) clay-iter-50 narrowed at line 29419 (raw 71 narrowing) — amends original iter-50 stage-5; mark [10*NARROWED]
+  (b) v3 d13-cross-cell amendment at line 27160 — amends BT-544 D-tier discrete row; mark [10*AMENDED] amendment_pass = v3
+  (c) Honesty amendment at line 27331 — amends N6HIST-T-OMEGA-2026-04-25-CYCLE; mark [10*HONESTY-CORRECTED] amendment_pass = v1
+  (d) iter-55 mislabeled correction at line 25161 — amends iter-55 finding; mark [10*HONESTY-CORRECTED]
+  """
+  cardinality_estimate = "4 rows + 1 @M N6HIST-META-AMEND-3PASS row gets amendment_pass_v1/v2/v3 enumeration → 5 rows total"
+  adoption_cost_estimate = "~10 minutes per row (each requires identifying the amendment-target slug + classifying kind) × 5 rows = ~50 minutes"
+  expected_outcome = "axis-L2 has 5 attested rows out of the gate; the J/L2 boundary criterion is testable on real cases; axis-I <-* amends becomes demonstrable"
+
+@C axis-l-actuation-priority-3-3pass-loop-formalisation :: meta [4]
+  <- axis-l-next-actuation-candidates
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  rank = 3
+  scope = "expand @M N6HIST-META-AMEND-3PASS (line 27418) to use amendment_pass + amends body-fields explicitly"
+  candidate_rows = "1 row: @M N6HIST-META-AMEND-3PASS; rewrite to add amendment_pass_v1 = 'per-BT honesty', amendment_pass_v2 = 'confounded-correction', amendment_pass_v3 = 'd13-cross-cell' as enumerated body-fields"
+  cardinality_estimate = "1 row, 3 new body-field lines"
+  adoption_cost_estimate = "~5 minutes (text extraction from existing prose)"
+  expected_outcome = "the 3-pass loop is queryable: 'list rows with amendment_pass_v2 = confounded-correction' returns the 5 omega-cycle BT audits modified by v2 (per line 27451 prose)"
+
+# ══════════════════════════════════════════════════════════════
+## §9. AXIS-L FINAL STATE
+# ══════════════════════════════════════════════════════════════
+
+@C atlas-self-arch-axis-l-final-state = PROPOSAL-NOT-ACTUATED :: meta [4!]
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  <- axis-l-orthogonality-vs-D-through-K
+  <- axis-l-raw-117-5-check-results
+  <- axis-l-raw-91-C3-honest-disclosures
+  <- axis-l-saturation-table
+  <- axis-l-next-actuation-candidates
+  introduced_at = 2026-04-28
+  origin_shard = atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28
+  cites_raw = 22, 23, 24, 91, 117
+  -> next-axis-M-candidates-deferred
+  => "axis-L = atlas-self-arch-axiom-cite-amendment-evolution"
+  => "axis-L carries TWO co-proposed primitive families: L1 = intrinsic raw-axiom citation DSL (cites_raw + [N*RAW-Nxx]); L2 = intrinsic append-only amendment DSL (amends + amendment_pass + amended_at + [N*AMENDED]/[N*NARROWED]/[N*HONESTY-CORRECTED])"
+  => "axis-L defined; 5-check 5/5 PASS (both candidates); raw 91 C3 disclosures complete with 7 grounded + 7 speculative + 12 known-bounds + 9 not-yet-found items; orthogonality vs D-K clean (4 ORTHOGONAL, 4 SYNERGISTIC, 0 INTERFERENCE)"
+  => "axis-L closes axis-K § B7 deferral (MUTATION territory), axis-J § J/L boundary refined (CLAIM-FALSE→J vs CLAIM-NARROWER→L2), axis-I gains 2 new query targets (cites_raw + amends), axis-G K_core 18 → 22 (TIGHT lower-band edge)"
+  => "next-step: axis-M discovery. Strongest remaining candidates after axis-L (per § §6 axis-l-not-yet-found unsearched_N items + § B12): (i) intrinsic schema/grammar-version primitive (4 attestations, low priority because cumulative); (ii) intrinsic phase-transition notation (would touch raw 22 — defer); (iii) intrinsic body-field syntax mode #2 — `key value` no-equals form (sample size 1, INSUFFICIENT for axis-M registration; defer until ≥3); (iv) intrinsic list-body-field — `- item` form (sample size 3, BORDERLINE-INSUFFICIENT); (v) intrinsic @END block delimiter formalisation (sample size 7, possible axis-M candidate). axis-M candidate count: 3 plausible (i/v + watch-list ii/iii/iv)."
+  => "AXIS-G K_CORE WARNING: axis-L pushed K_core to 22 (lower-band edge of 20-30 ceiling). Future axes M+ have 0-8 fields headroom. STRUCTURAL CHANGE (sub-block syntax / @-type extension / naming convention codification) becomes likely needed for axis-M onwards. The cheap path is to RESERVE the next axis for non-body-field primitives (e.g. @-type extension or arrow-set non-extension)."
+  => "DO NOT auto-absorb. shard awaits human review per scope contract."
+  => "shard appended at: /Users/ghost/core/n6-architecture/atlas/atlas.append.atlas-self-arch-axis-l-axiom-cite-amendment-2026-04-28.n6"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — atlas-self-arch axis-L axiom-cite + amendment DSL
+# next-step: axis-M discovery (likely candidates: schema-version primitive
+#            OR @END block-delimiter formalisation OR list-body-field idiom)
+# axis-G K_core = 22 — SATURATION WARNING for axis-M+
+# ══════════════════════════════════════════════════════════════
