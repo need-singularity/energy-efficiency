@@ -3,6 +3,10 @@
 
 # checkpoint
 - done [C0] project-init — hexa init 2026-04-21
+- done [C29] own-29-cycle29-readme-full-toolkit-coverage — 2026-04-29
+  scope "26/26 README domain sections all carry friendly toolkit table per own 29; 🛸 alien-grade reach column (range 0-999) prepended; lint 7-column header + integer-reach + doc-link-resolves enforced; python lint own#29 OK + hexa selftest 6/6 PASS"
+  evidence "commits acb3b97a (cycle 29 strengthening) + a1ddd8b2 (batch 1) + c1c0196c (batch 2) + a417f7af (batch 3 + range expand 0-999) + c6c2cd92 (batch 4) + 6bde2fe3 (batch 5 final)"
+  why "user directive 2026-04-29 '외계인 지수 / 현재 도달지수 / lint 반드시 필요 / 🛸 이모지 단독 / 모든 도메인 섹션들 / 알아서 완료까지'"
 
 # active phase
 - active [P1] bootstrap

@@ -47,3 +47,14 @@ venv/
 
 # Infra state symlink → ~/core/nexus/infra_state.json (out-of-repo SSOT)
 infra_state.json
+
+# Working-tree noise (2026-04-29 cycle 29 closure)
+# state/markers/*.marker — accumulated test/probe markers (60+ prefixes observed
+#   2026-04-29: _*, alien_grade_audit_*, anon_*, probe*_*, debug_*, dump_*, etc.)
+#   Tracked atlas_absorb_*.marker files (SSOT) remain tracked — gitignore does
+#   NOT untrack files already in the index. Future untracked markers ignored.
+# scratch/ — local exploratory workspace, never tracked
+# lean4-n6/state/ — lean4 transient state (lake build derivative)
+state/markers/*.marker
+scratch/
+lean4-n6/state/
