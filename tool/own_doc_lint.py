@@ -1130,7 +1130,7 @@ def _check_one_toolkit_section(text: str, lines: list[str], heading: str,
     else:
         doc_re = _re.compile(r"\[doc\]\((domains/[^)]+)\)")
     # cycle 29 strengthening 2026-04-29: first cell = 🛸 alien-grade reach
-    # integer 0-10. Validate per data row.
+    # integer 0-999. Validate per data row.
     reach_re = _re.compile(r"^\|\s*(\d+)\s*\|")
     for row in data_rows:
         rm = reach_re.match(row)
@@ -1143,11 +1143,11 @@ def _check_one_toolkit_section(text: str, lines: list[str], heading: str,
         else:
             try:
                 reach_val = int(rm.group(1))
-                if reach_val < 0 or reach_val > 10:
+                if reach_val < 0 or reach_val > 999:
                     out.append({
                         "rule": "own#29",
                         "path": "README.md",
-                        "detail": f"[{axis}] toolkit row 🛸 reach value out of range 0-10 (got {reach_val}): {row[:80]!r}",
+                        "detail": f"[{axis}] toolkit row 🛸 reach value out of range 0-999 (got {reach_val}): {row[:80]!r}",
                     })
             except ValueError:
                 out.append({
@@ -1189,7 +1189,7 @@ def check_rule_29_readme_friendly_toolkit(rules: dict[int, dict[str, Any]]) -> l
       (b) 7-column header row matching template `| 🛸 | Tool | One-liner |
           Everyday analogy | What it does | <Mainstream> contrast | Doc |`
       (c) >=min_rows data rows under the table block
-      (d) each data row's first cell is integer 0-10 (🛸 alien-grade reach)
+      (d) each data row's first cell is integer 0-999 (🛸 alien-grade reach)
       (e) each data row's last cell contains `[doc](domains/<axis>/<slug>/<slug>.md)`
           link resolving to an existing file under repo root
 

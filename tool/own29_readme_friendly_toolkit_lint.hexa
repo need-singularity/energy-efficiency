@@ -13,7 +13,7 @@
 // dispatch (mandatory + optional) is the python lint's responsibility per
 // own 29 declarative-spec contract.
 //
-// @tool(slug="own29_readme_friendly_toolkit_lint", desc="own 29 HARD lint on README.md — biology mandatory friendly Molecular Toolkit (HEXA family) 7-column table (cycle 29 strengthening 2026-04-29): H2 heading present + 7-column header (🛸 / Tool / One-liner / Everyday analogy / What it does / <Mainstream> contrast / Doc) + >=4 data rows + first cell integer 0-10 alien-grade reach + each row's [doc](domains/biology/<slug>/<slug>.md) link resolves to existing file")
+// @tool(slug="own29_readme_friendly_toolkit_lint", desc="own 29 HARD lint on README.md — biology mandatory friendly Molecular Toolkit (HEXA family) 7-column table (cycle 29 strengthening 2026-04-29): H2 heading present + 7-column header (🛸 / Tool / One-liner / Everyday analogy / What it does / <Mainstream> contrast / Doc) + >=4 data rows + first cell integer 0-999 alien-grade reach + each row's [doc](domains/biology/<slug>/<slug>.md) link resolves to existing file")
 // @usage(hexa /Users/ghost/core/n6-architecture/tool/own29_readme_friendly_toolkit_lint.hexa [--selftest])
 // @omega-saturation-exempt("README is single-file SSOT; lint is O(file-size) line-walk + N=4 file-existence checks; converges trivially")
 // @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
@@ -99,7 +99,7 @@ fn _parse_reach(row: string) -> int {
   if end == start { return -1 }
   let num_str = row.substring(start, end)
   let v = to_int(num_str)
-  if v < 0 || v > 10 { return -1 }
+  if v < 0 || v > 999 { return -1 }
   return v
 }
 
@@ -172,7 +172,7 @@ fn _run_lint(text: string) -> int {
     let row = data_rows[k]
     let reach = _parse_reach(row)
     if reach < 0 {
-      println("[own29] FAIL axis (d) — row " + to_string(k+1) + " missing/invalid 🛸 reach integer (expect 0-10)")
+      println("[own29] FAIL axis (d) — row " + to_string(k+1) + " missing/invalid 🛸 reach integer (expect 0-999)")
       violations = violations + 1
     }
     k = k + 1
@@ -299,16 +299,16 @@ fn _selftest() -> void {
   let fix6 = HEADING_LINE + "\n\n"
     + HEADER_ROW + "\n"
     + "|:--:|:---:|---|---|---|---|:---:|\n"
-    + "| 11 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/hexa-weave/hexa-weave.md) |\n"
+    + "| 1000 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/hexa-weave/hexa-weave.md) |\n"
     + "| 7 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](domains/biology/hexa-nanobot/hexa-nanobot.md) |\n"
     + "| 7 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](domains/biology/hexa-ribozyme/hexa-ribozyme.md) |\n"
     + "| 7 | 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n"
   let v6 = _run_lint(fix6)
   if v6 >= 1 {
-    println("[own29] fixture 6 PASS — out-of-range 🛸 reach (>10) rejected (" + to_string(v6) + " viol)")
+    println("[own29] fixture 6 PASS — out-of-range 🛸 reach (>999) rejected (" + to_string(v6) + " viol)")
     pass_count = pass_count + 1
   } else {
-    println("[own29] fixture 6 FAIL — should reject reach > 10")
+    println("[own29] fixture 6 FAIL — should reject reach > 999")
   }
 
   if pass_count == total {

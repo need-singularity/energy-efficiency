@@ -482,7 +482,7 @@ own 28 new "n6-local: user-facing-response-friendliness — hive raw 165 cross-r
 own 29 live "readme-friendly-toolkit-required — README friendly toolkit table generalized across domain sections (HARD)"
   slug readme-friendly-toolkit-required
   decl README.md tool/own_doc_lint.py tool/own29_readme_friendly_toolkit_lint.hexa
-  scope HARD block — README.md per-section friendly toolkit table contract. Generalized 2026-04-29 from Biology-only to multi-section spec; cycle 29 strengthening 2026-04-29 prepended 🛸 alien-grade-reach as new first column (7-column header). Each section in the registered `mandatory-sections` list must contain a friendly H2 heading + 7-column toolkit table (🛸 first cell integer 0-10 reach grade) + >=N data rows + valid `[doc](domains/<axis>/<slug>/<slug>.md)` link per row. Sections in `optional-sections` are checked when present (toolkit table found → 5-axis check applied) but absence is allowed. Sections not in either list are skipped.
+  scope HARD block — README.md per-section friendly toolkit table contract. Generalized 2026-04-29 from Biology-only to multi-section spec; cycle 29 strengthening 2026-04-29 prepended 🛸 alien-grade-reach as new first column (7-column header). Each section in the registered `mandatory-sections` list must contain a friendly H2 heading + 7-column toolkit table (🛸 first cell integer 0-999 reach grade) + >=N data rows + valid `[doc](domains/<axis>/<slug>/<slug>.md)` link per row. Sections in `optional-sections` are checked when present (toolkit table found → 5-axis check applied) but absence is allowed. Sections not in either list are skipped.
   mandatory-sections biology=## 🧬 Molecular Toolkit (HEXA family)|min_rows=4|axis=biology
   mandatory-sections ai_ml=## 🤖 AI Toolkit (HEXA-AI family)|min_rows=3|axis=compute
   mandatory-sections environment=## 🌿 Environment Toolkit (HEXA-Earth family)|min_rows=3|axis=infra
@@ -497,11 +497,15 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   mandatory-sections audio=## 🎵 Audio Toolkit (HEXA-Sound family)|min_rows=3|axis=culture
   mandatory-sections safety=## 🛡️ Safety Toolkit (HEXA-Safe family)|min_rows=3|axis=infra
   mandatory-sections play=## 🎪 Play Toolkit (HEXA-Joy family)|min_rows=2|axis=infra
+  mandatory-sections aerospace=## 🚀 Aerospace Toolkit (HEXA-Space family)|min_rows=3|axis=space
+  mandatory-sections ufo=## 🛸 HEXA-UFO Toolkit (HEXA-Disc family)|min_rows=3|axis=sf-ufo
+  mandatory-sections frontier=## 🔭 Frontier Toolkit (HEXA-Beyond family)|min_rows=3|axis=physics
+  mandatory-sections civilization=## 🏛️ Civilization Toolkit (HEXA-Heritage family)|min_rows=3|axis=culture
   expected-header-row | 🛸 | Tool | One-liner | Everyday analogy | What it does | <Mainstream> contrast | Doc |
   status live
   since 2026-04-29
-  why README.md Biology section accumulated dense technical table only (cycle 14-22 evolution); cycle 25 introduced friendly Molecular Toolkit (HEXA family) 6-column block at user direction. cycle 25 strengthening: generalize beyond Biology so any domain section can register a toolkit table; mandatory-list grows as sections are filled. cycle 29 strengthening 2026-04-29: prepend 🛸 alien-grade-reach as new first column (7-column header) per user directive '외계인 지수 / 현재 도달지수 / 🛸 이모지 단독 / lint 반드시 필요'. Reach grade integer 0-10 validated per row.
-  note enforcement = lint scan on README.md only (no recursive scan). 5-axis check per registered section: H2 heading present + 7-column header (🛸 first, exact column-name template, allowing per-section <Mainstream> contrast variation) + >=min_rows data rows + each row's first cell integer 0-10 reach grade + each row's last cell [doc](domains/<axis>/<slug>/<slug>.md) link resolves. own 1 English-only still applies. mandatory list growth: append entries to `mandatory-sections` as user approves each section; optional list is for pre-registered candidates that lint will check IF the section's toolkit table appears.
+  why README.md Biology section accumulated dense technical table only (cycle 14-22 evolution); cycle 25 introduced friendly Molecular Toolkit (HEXA family) 6-column block at user direction. cycle 25 strengthening: generalize beyond Biology so any domain section can register a toolkit table; mandatory-list grows as sections are filled. cycle 29 strengthening 2026-04-29: prepend 🛸 alien-grade-reach as new first column (7-column header) per user directive '외계인 지수 / 현재 도달지수 / 🛸 이모지 단독 / lint 반드시 필요'. Reach grade integer 0-999 validated per row.
+  note enforcement = lint scan on README.md only (no recursive scan). 5-axis check per registered section: H2 heading present + 7-column header (🛸 first, exact column-name template, allowing per-section <Mainstream> contrast variation) + >=min_rows data rows + each row's first cell integer 0-999 reach grade + each row's last cell [doc](domains/<axis>/<slug>/<slug>.md) link resolves. own 1 English-only still applies. mandatory list growth: append entries to `mandatory-sections` as user approves each section; optional list is for pre-registered candidates that lint will check IF the section's toolkit table appears.
   verify python3 tool/own_doc_lint.py --rule 29
   cron on-commit
   on_fail block

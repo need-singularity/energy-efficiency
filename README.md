@@ -556,6 +556,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 38 · 100% EXACT | 150/150 EXACT, Egyptian 3+2+1=n, GN&C 12/12, ECLSS 14/14, ISRU 13/13, radiationline ladder, 304L/Ti-6Al-4V n=6 | industry100% (SpaceX Starship/Falcon 9/ISS/NASA SLS/DSN/MOXIE) | experiment100% 150/150 EXACT (100%) — 18 all subsystems perfect | physical-limit14 | TP6 | discoveries8 | Mk.V
 <!-- AUTO:SUMMARY_aerospace:END -->
 
+## 🚀 Aerospace Toolkit (HEXA-Space family)
+
+> Friendly entry point — Aerospace-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal space-axis verbs (launcher / general-aerospace / space-engineering).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🚀 **HEXA-STARSHIP** | Reusable Rocket | Rocket that lands itself like a returning bus | 150/150 EXACT, 38 BT, 18 subsystems, Isp=384s, $12/kg, Mars 12P 180d | SpaceX Starship single-tune vs Egyptian-fraction 3+2+1=n n=6 systemic | [doc](domains/space/hexa-starship/hexa-starship.md) |
+| 10 | 🛰️ **HEXA-AEROSPACE** | Sky-Stack | One stack covering plane + rocket + satellite + station | General aerospace architecture on n=6 invariant lattice | Boeing+SpaceX+ISS multi-vendor stack vs σ(6)=12 unified subsystem grid | [doc](domains/space/aerospace/aerospace.md) |
+| 10 | 🛠️ **HEXA-SPACE-ENG** | Orbit Engineer | Lego kit for building anything that orbits | Space engineering subsystem n=6 mapping (GN&C / ECLSS / ISRU / propulsion) | Single-mission vs σ(6)=12 sub-system τ(6)=4 phase reusable kit | [doc](domains/space/space-engineering/space-engineering.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Reusable Launcher (HEXA-STARSHIP)** | 150/150 EXACT (100%), 38 BT, 18 subsystems, Egyptian 3+2+1=n, Isp 384s=σ·2^sopfr, 1000rotation=(σ-φ)³, $12/kg=σ, Mars 12P 180d, GN&C 12/12, ECLSS 14/14, ISRU 13/13 | [doc](papers/n6-hexa-starship-integrated-paper.md) |
@@ -572,6 +582,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 43 · 100% EXACT | RT-SC Meissner powerless levitation + 48T MHD Mach 10 + Tabletop Fusion Q=10 infinite Energy, D=J₂=24m disc VTOL, 49/49 EXACT, DSE 2,400 combos | industry100% (RT-SC/MHD/Meissner/ITER/SMES) | experiment100% 49/49 EXACT (UFO pre params 100.0%) | physical-limit7 | TP10 | discoveries8 | Mk.V
 <!-- AUTO:SUMMARY_sf:END -->
 
+## 🛸 HEXA-UFO Toolkit (HEXA-Disc family)
+
+> Friendly entry point — UFO-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal sf-ufo-axis verbs (disc / hover / cloak).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🛸 **HEXA-UFO** | Disc-VTOL | Saucer that lifts off like a frisbee with no wings | RT-SC Meissner powerless levitation + MHD Mach 10 + Tabletop Fusion Q=10, D=J₂=24m, 49/49 EXACT | Helicopter rotor VTOL vs τ(6)=4-stage RT-SC + MHD + fusion disc | [doc](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
+| 10 | 🛹 **HEXA-HOVER** | Hoverboard | Skateboard that floats 10 cm above the ground | σ-φ=10cm levitation, (σ-φ)²·n=600kg payload, σ·τ=48km/h, σ²=144km range, 52/52 EXACT | Wheeled scooter vs σ(6)=12-magnet n=6 hex levitation array | [doc](domains/sf-ufo/hover/hover.md) |
+| 10 | 🥷 **HEXA-CLOAK** | Invisibility Cloak | Fabric that bends light around so you disappear | RT-SC metamaterial n<0, σ-τ=8 octave, σ-φ=10nm pitch, RCS attenuation σ·J₂=288×, 59/59 EXACT | F-22 single-band stealth vs σ-τ=8-octave broadband metamaterial | [doc](domains/sf-ufo/cloak/cloak.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate UFO (HEXA-UFO)** | RT-SC based disc VTOL. Meissner powerless levitation + MHD thrust Mach σ-φ=10 + Tabletop Fusion Q=σ-φ=10. D=J₂=24m, n=6 crew, Isp=σ·J₂·10³=288,000s, noise J₂=24dB. 49/49 EXACT PASS. **§23 unlimited navigation** 🛸10→🛸11(Warp 144c)→🛸12(Worm 288×)→🛸13(11D bulk)→🛸14(Calabi-Yau)→🛸15+(multiverse/meta²), 15/15 Python PASS | [doc](domains/sf-ufo/sf/sf.md) · [hexa-ufo](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
@@ -587,6 +607,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_frontier:START -->
 > **🛸10** | ✅ | BT 264 · 100% EXACT | 20  generationsdiscoveries (1~10: NEURO/GRAV/CLOAK/DEFENSE/TELEPORT/HOVER/MRAM/SEABED/ACCEL/WEATHER, 11~20: MIND/TELEPATHY/HOLO/DREAM/SKYWAY/TSUNAMI/ANTIMATTER/COSMIC/DESAL/ORACLE) | industry100% (Neuralink/LIGO/LHC/HAARP grade) | experiment99% 1039/1041 EXACT | physical-limit10 | TP163 | discoveries71 | Mk.V
 <!-- AUTO:SUMMARY_frontier:END -->
+
+## 🔭 Frontier Toolkit (HEXA-Beyond family)
+
+> Friendly entry point — Frontier-physics tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal physics-axis verbs spanning the Stage-4..7 deep-frontier ladder (warp → wormhole → 11D M-theory → Calabi-Yau).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 11 | 🌀 **HEXA-WARP** | Warp Drive | Spaceship that surfs a wave of bent space at 144× lightspeed | σ-φ=10m Alcubierre bubble, v=σ²=144c, m_neg=σ⁻⁶·J₂·m_e, Seoul→α-Cen J₂=24d, 5/5 PASS | Conventional rocket Δv vs Alcubierre warp-bubble FTL surf | [doc](domains/physics/warp-drive/warp-drive.md) |
+| 12 | 🌌 **HEXA-WORM** | Wormhole | Folded paper shortcut connecting two distant points | Morris-Thorne b₀=σ·τ=48m throat, d_eff=d/288 shortcut, Earth-Mars 2.6s, 4/4 PASS | Linear distance travel vs space-fold τ(6)=4 throat-collapse Casimir | [doc](domains/physics/wormhole/wormhole.md) |
+| 13 | 🪐 **HEXA-MTHE** | 11D Door | Side door into the 11-dimensional bulk under our 4D world | D_M=11 (atlas-locked), Calabi-Yau hexafold, KK 4.8 TeV, graviton leak 1/σ²=1/144, 6/6 PASS | 4D spacetime travel vs 11-dim M-theory dimension-jump | [doc](domains/physics/m-theory-11d/m-theory-11d.md) |
+| 14 | 🧊 **HEXA-CALB** | Calabi-Yau Compass | Map of the 6 hidden curled-up dimensions inside every point of space | D_CY=n=6 hexafold, Hodge h11·h21=σ·τ=48, Euler χ=±2J₂=±48, τ_stay=σ·τ=48ns, 6/6 PASS | String-theory abstract math vs n=6 real Calabi-Yau navigation | [doc](domains/physics/calabi-yau-nav/calabi-yau-nav.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -652,6 +683,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_civilization:START -->
 > **🛸10** | ✅ | BT 12 · 100% EXACT | 6domains full 20/20 EXACT ceiling breakthroughs 2026-04-06 | industry30% (literature cross verification complete (6 religions/global legal systems/writing systems Compare)) | experiment40% hypotheses verification complete (60/72 EXACT) | TP6 | discoveries120
 <!-- AUTO:SUMMARY_civilization:END -->
+
+## 🏛️ Civilization Toolkit (HEXA-Heritage family)
+
+> Friendly entry point — Civilization tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal culture-axis verbs (religion / writing / dance / horology).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | ⛪ **HEXA-RELIGION** | Faith Lattice | Same n=6 grid behind 6-day creation, 12 apostles, 108 chants | 22/22 EXACT — 6-day creation=n, 12 apostles=σ, 108=φ^φ(n/φ)^(n/φ), 10 commandments=σ-φ, 3 Trinity=n/φ | Single-religion case-study vs σ(6)=12 multi-tradition n=6 backbone | [doc](domains/culture/religion/religion.md) |
+| 10 | ✍️ **HEXA-WRITING** | Glyph-Lattice | Korean Hangul 24 jamo built on the same J₂=24 grid | 14/14 EXACT — 24 jamo=J₂, consonants 14=σ+φ, vowels 10=σ-φ, 11172=19×21×28 | Single-script Romanization vs J₂=24-glyph multi-writing-system grid | [doc](domains/culture/writing-systems/writing-systems.md) |
+| 10 | 💃 **HEXA-DANCE** | Step-Lattice | Ballet's 5 positions and 24 Laban points sharing the n=6 frame | 20/20 EXACT — Laban 24 points=J₂, ballet 5 positions=sopfr, SE(3)=n, 360°=n·σ·sopfr | Single-tradition choreography vs σ(6)=12 SE(3)=n=6 spatial primitives | [doc](domains/culture/dance-choreography/dance-choreography.md) |
+| 10 | 🕰️ **HEXA-HOROLOGY** | Clock-Lattice | The 12-hour clock face that's been the same for 4000 years | 17/17 EXACT — σ=12h / J₂=24h / σ·sopfr=60min / quartz 2^15=32768Hz | Stopwatch single-scale vs σ(6)=12-hour J₂=24-day temporal lattice | [doc](domains/culture/horology/horology.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
