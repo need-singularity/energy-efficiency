@@ -339,15 +339,14 @@ jobs:
         run: hexa "$GITHUB_WORKSPACE/hexa-lang/tool/own_runner.hexa" drift-all
 
       - name: README nexus6 tests count drift (own#21)
-        # Always attempt — Python-only, no hexa dependency.
         if: always()
         shell: bash
         working-directory: n6-architecture
         continue-on-error: true  # SOFT — .own own#21 on_fail=warn
-        # Python comparator parity with own#20: authoritative count from
+        # Hexa comparator (raw 9 hexa-only): authoritative count from
         # reports/n6_selftest.json#total vs README.md 'tests: N' tokens.
         # Emits reports/n6_own21_drift.json for post-run triage.
-        run: python3 tool/own_nexus6_tests_drift.py --verbose
+        run: hexa tool/own_nexus6_tests_drift.hexa --verbose
 
   # ── Job 6: own#13 — OUROBOROS CRITICAL=0 enforcement (HARD block) ──
   # Enforces .own rule #13 (R14 atlas acyclicity for CRITICAL prefixes).
@@ -381,62 +380,41 @@ jobs:
 
   # ── Job 7: own#14 — README sealed-hash enforcement (HARD block) ──
   # Enforces .own rule #14 (readme-sealed-required).
-  # Tool: tool/readme_sealed_check.py. README.md SHA-256 must match the
+  # Tool: tool/readme_sealed_check.hexa. README.md SHA-256 must match the
   # value stored in README.md.sealed.hash. Drift → exit 1 (merge blocked).
-  # Re-seal locally via: python3 tool/readme_sealed_check.py --update
+  # Re-seal locally via: hexa tool/readme_sealed_check.hexa --update
   readme-sealed-hash:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Syntax check
-        run: python3 -m py_compile tool/readme_sealed_check.py
-
       - name: Verify README sealed hash (own#14)
-        run: python3 tool/readme_sealed_check.py
+        run: hexa tool/readme_sealed_check.hexa
 
   # ── Job 8: own#1 — doc-english-required HARD block ──
-  # Promoted 2026-04-24 from SOFT log to HARD merge-blocking per user 'hard go'.
+  # Hexa-native (raw 9): tool/own1_doc_english_lint.hexa via dispatcher --rule 1.
   # Scope: domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/
   # .md files. Legacy CJK files grandfathered via tool/own1_legacy_allowlist.json
-  # (frozen sidecar, 1050 entries). New CJK content in any .md under decl scope
-  # fails the check and blocks merge. Kept SEPARATE from own-drift-daily (which
-  # is SOFT continue-on-error) so blocking behaviour is unambiguous in the UI.
+  # (frozen sidecar, 1050+ entries). New CJK content in any .md under decl scope
+  # fails the check and blocks merge.
   own1-doc-english-hard:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Syntax check
-        run: python3 -m py_compile tool/own_doc_lint.py
-
       - name: own#1 doc-english-required (HARD)
-        run: python3 tool/own_doc_lint.py --rule 1
+        run: hexa tool/own_doc_lint.hexa --rule 1
 
-  # ── Job 9: own#2/#3/#4/#5/#6/#7/#8/#9/#10/#11/#12/#16 — HARD block (all auto) ──
-  # Promoted 2026-04-24 from SOFT log to HARD merge-blocking per user 'hard!!!'.
-  # All auto-verifiable DOC-ONLY rules run in one linter pass. Pre-existing
-  # violations grandfathered via OWN{4,6,12}_LEGACY_ALLOWLIST inline sets in
-  # tool/own_doc_lint.py (frozen, shrink-only). Kept SEPARATE from own1 job so
-  # the UI signal makes it obvious which rule family blocked the merge.
+  # ── Job 9: own#2/#3/#4/#5/#6/#7/#8/#9/#10/#11/#12/#16/#29 — HARD (all auto) ──
+  # Hexa-native (raw 9, 14/14 dispatcher coverage). All auto-verifiable rules
+  # run in one linter pass. Pre-existing violations grandfathered via inline
+  # OWN{4,6,12}_LEGACY_ALLOWLIST sets in their respective per-rule hexa lints.
   own-all-hard:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - run: python3 tool/own_doc_lint.py
+      - run: hexa tool/own_doc_lint.hexa

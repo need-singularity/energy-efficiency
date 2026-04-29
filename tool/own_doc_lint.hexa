@@ -10,8 +10,7 @@
 // hexa-native rules (full coverage 14/14 as of 2026-04-29):
 //   own#1 own#2 own#3 own#4 own#5 own#6 own#7 own#8 own#9 own#10 own#11
 //   own#12 own#16 own#29
-// not-yet-ported (delegated to python via --rule N):
-//   (none — py-bridge fall-through retained for safety on unknown rule ids)
+// py-bridge: REMOVED 2026-04-29 (own_doc_lint_legacy.py retired; raw 9 hexa-only).
 //
 // Migration follow-up: incrementally add own<N>_lint.hexa per rule and remove
 // python fall-through. Target: full hexa coverage in 30d.
@@ -21,7 +20,6 @@
 // @exit_codes(0=PASS, 1=violations found, 2=internal error)
 
 let REPO_ROOT  = "/Users/ghost/core/n6-architecture"
-let PY_LEGACY  = REPO_ROOT + "/tool/own_doc_lint_legacy.py"
 let REPORT_DIR = REPO_ROOT + "/reports"
 
 // Rule IDs handled by this dispatcher (auto-verifiable).
@@ -231,43 +229,6 @@ fn _run_native_rule(rid: int) -> int {
   return 0  // unknown rule, treat as 0
 }
 
-fn _run_py_rule(rid: int) -> int {
-  // Delegate to legacy python via --rule flag. Captures violation count.
-  let cmd = "python3 '" + PY_LEGACY + "' --rule " + to_string(rid) + " 2>&1"
-  let raw = to_string(exec(cmd))
-  // Look for "  own#N    OK" or "  own#N    FAIL (M)"
-  let lines = split(raw, "\n")
-  let target = "own#" + to_string(rid)
-  let mut k = 0
-  while k < len(lines) {
-    let line = lines[k]
-    if line.contains(target) {
-      if line.contains(" OK") { return 0 }
-      if line.contains("FAIL") {
-        // Extract count from "FAIL (N)"
-        let mut p = 0
-        while p < len(line) {
-          if line.substring(p, p + 1) == "(" {
-            let mut q = p + 1
-            let mut digits = ""
-            while q < len(line) {
-              let c = line.substring(q, q + 1)
-              if c >= "0" && c <= "9" { digits = digits + c }
-              else { q = len(line) }
-              q = q + 1
-            }
-            if len(digits) > 0 { return to_int(digits) }
-          }
-          p = p + 1
-        }
-        return 1
-      }
-    }
-    k = k + 1
-  }
-  return 0
-}
-
 fn main() -> void {
   let raw_args = args()
   let rule_filter = _parse_rule_filter(raw_args)
@@ -283,7 +244,10 @@ fn main() -> void {
       if _is_hexa_native_rule(rid) {
         count = _run_native_rule(rid)
       } else {
-        count = _run_py_rule(rid)
+        // Unknown rule id — should never trigger given current TARGET_RULES.
+        // raw 9 hexa-only: py-bridge retired 2026-04-29.
+        println("[own_doc_lint] WARN: rule own#" + to_string(rid) + " not in hexa native dispatch; skipping")
+        count = 0
       }
       let mut entry = []
       entry.push(rid)

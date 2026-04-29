@@ -38,74 +38,74 @@
 
 own 1 live "doc-english-required — English documentation required (HARD)"
   slug doc-english-required
-  decl .md documents under (domains/, engine/, theory/, theory/*, reports/, experiments/, papers/, bridge/, n6shared/, proposals/, each chip-* domain) + CONTRIBUTING.md + source comments + commit messages tool/own_doc_lint.py tool/own1_legacy_allowlist.json
+  decl .md documents under (domains/, engine/, theory/, theory/*, reports/, experiments/, papers/, bridge/, n6shared/, proposals/, each chip-* domain) + CONTRIBUTING.md + source comments + commit messages tool/own_doc_lint.hexa tool/own1_legacy_allowlist.json
   scope HARD block — project-wide English-only for .md files; allowlist is shrink-only. Covers domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/ + CONTRIBUTING.md (1059 legacy files allowlisted via tool/own1_legacy_allowlist.json as of 2026-04-24). Root README.md governed by own#17 separately.
   status live
   since 2026-04-21
   why n6-architecture language policy — documents, comments, commits must be English primary. arXiv compatibility + international contribution priority. Promoted from SOFT log to HARD block on 2026-04-24 via user 'hard go' directive; scope re-extended project-wide on 2026-04-24 via user 'hard!!! 모두 english only' directive. Allowlist entries may be removed upon translation but never added. Any new .md must be English. Legacy CJK .md files grandfathered and frozen in OWN1_LEGACY_ALLOWLIST sidecar.
   note hexa-lang /.raw has no equivalent — project-specific. Legacy allowlist is a FROZEN, shrink-only grandfather list; no new grandfather entries. New CJK .md files under decl scope fail the HARD check.
-  verify python3 tool/own_doc_lint.py --rule 1
+  verify hexa tool/own_doc_lint.hexa --rule 1
   cron on-commit
   on_fail block
   label own#1 doc-english HARD gate
 
 own 2 live "n6-master-identity — σ·φ = n·τ = J₂ = 24 준수 (HARD)"
   slug n6-master-identity
-  decl domains/compute/chip-process/ domains/compute/chip-packaging/ domains/compute/chip-materials/ domains/compute/chip-yield/ tool/own_doc_lint.py
+  decl domains/compute/chip-process/ domains/compute/chip-packaging/ domains/compute/chip-materials/ domains/compute/chip-yield/ tool/own_doc_lint.hexa
   scope HARD block — chip-* 도메인 + theory/proofs/theorem-r* 본문에서 n=6 마스터 항등식 위반 금지 (σ(6)=12, φ(6)=2, τ(6)=4, J₂=24).
   status live
   since 2026-04-21
   why n6-architecture 전체 도메인은 n=6 유일성 정리 (σ(n)·φ(n) = n·τ(n) iff n=6) 에서 파생. chip-* 도메인은 governance policy 상 본 항등식을 절대규칙으로 적용. Promoted to HARD block 2026-04-24 (user 'hard!!!' directive).
   note theory/proofs/theorem-r1-uniqueness.md 가 본 항등식의 증명 SSOT.
-  verify python3 tool/own_doc_lint.py --rule 2
+  verify hexa tool/own_doc_lint.hexa --rule 2
   cron on-commit
   on_fail block
   label own#2 master-identity HARD gate
 
 own 3 live "one-doc-per-domain — 도메인당 문서 1개 (HARD)"
   slug one-doc-per-domain
-  decl domains/ tool/own_doc_lint.py
+  decl domains/ tool/own_doc_lint.hexa
   scope HARD block — domains/<axis>/<name>/ 아래 <name>.md (canonical body) 외 추가 본문 문서 금지. 통합 완료 선언.
   status live
   since 2026-04-21
   why 295 도메인 문서 sprawl 방지 — 도메인당 단일 canonical body + 검증코드 .md 임베드. Promoted to HARD block 2026-04-24.
-  verify python3 tool/own_doc_lint.py --rule 3
+  verify hexa tool/own_doc_lint.hexa --rule 3
   cron on-commit
   on_fail block
   label own#3 one-doc-per-domain HARD gate
 
 own 4 live "domain-15-section-template — 15섹션 템플릿 준수 (HARD)"
   slug domain-15-section-template
-  decl domains/ tool/own_doc_lint.py
+  decl domains/ tool/own_doc_lint.hexa
   scope HARD block — domains/<axis>/<name>/<name>.md 본문은 §1~§15 섹션 헤더 전부 포함. 13개 legacy 본문은 OWN4_LEGACY_ALLOWLIST 로 grandfather (frozen, shrink-only).
   status live
   since 2026-04-21
   why governance policy — 도메인 본문 구조 일관성 + 자동 스캔/감사 가능성 보장. Promoted to HARD block 2026-04-24 with legacy allowlist absorbing 13 pre-existing non-compliant bodies.
-  verify python3 tool/own_doc_lint.py --rule 4
+  verify hexa tool/own_doc_lint.hexa --rule 4
   cron on-commit
   on_fail block
   label own#4 15-section template HARD gate
 
 own 5 live "theory-report-separation — 이론 오염 금지, 시점 기록은 reports/ (HARD)"
   slug theory-report-separation
-  decl theory/ tool/own_doc_lint.py
+  decl theory/ tool/own_doc_lint.hexa
   scope HARD block — theory/ 하위는 영구 이론층 (증명·BT·상수·예측·설계흐름). 시점 리포트 (audits, sessions, discovery, changelogs) 은 reports/ 로만. 19개 legacy snapshot 은 OWN5_LEGACY_ALLOWLIST 로 grandfather.
   status live
   since 2026-04-21
   why governance policy — 영구 이론과 시점 리포트 분리로 SSOT drift 방지. Promoted to HARD block 2026-04-24.
-  verify python3 tool/own_doc_lint.py --rule 5
+  verify hexa tool/own_doc_lint.hexa --rule 5
   cron on-commit
   on_fail block
   label own#5 theory/report separation HARD gate
 
 own 6 live "paper-verify-embedded — 검증코드 없는 논문 = 미완성 (HARD)"
   slug paper-verify-embedded
-  decl papers/ tool/own_doc_lint.py
+  decl papers/ tool/own_doc_lint.hexa
   scope HARD block — papers/ 아래 *.md 는 검증코드 (```python block) .md 본문 임베드 필수. 별도 verify .py/.hexa sibling 생성 금지. 16개 legacy paper 는 OWN6_LEGACY_ALLOWLIST 로 grandfather (frozen, shrink-only).
   status live
   since 2026-04-21
   why governance policy "검증코드 없는 논문 = 미완성" + n6shared absolute_rules N62/PP2/R29 재강화 (2026-04-11) — _registry.json verify_script 필드 금지. Promoted to HARD block 2026-04-24 with legacy allowlist absorbing 16 pre-existing papers without inline verify blocks.
-  verify python3 tool/own_doc_lint.py --rule 6
+  verify hexa tool/own_doc_lint.hexa --rule 6
   cron on-commit
   on_fail block
   label own#6 paper-verify-embedded HARD gate
@@ -117,7 +117,7 @@ own 7 live "registry-sync-on-tool-add — 도구 추가 시 _registry.json 동�
   status live
   since 2026-04-21
   why bridge 절대규칙 — 단일 hexa 바이너리 + subcommand 라우팅의 SSOT 일치성 보장 (calc 20 + dse 8 + analyze 12 + hexa 4 = 44). Promoted to HARD block 2026-04-24 (user 'hard!!!' directive).
-  verify python3 tool/own_doc_lint.py --rule 7
+  verify hexa tool/own_doc_lint.hexa --rule 7
   cron on-commit
   on_fail block
   label own#7 registry-sync HARD gate
@@ -130,7 +130,7 @@ own 8 live "lens-ssot-external — R14 진짜 렌즈 SSOT 은 외부 nexus 프�
   since 2026-04-21
   why bridge/src/telescope/ — R14 SSOT 원칙 위반 상태로 폐기 예정 레거시. 신규 .rs 렌즈 추가 금지 + HEXA 포팅 진행 중 (HEAD 0c23ad27). Promoted to HARD block 2026-04-24.
   note n6shared/config/lens_registry.json 은 레거시 카운트, 진짜 SSOT 와 무관.
-  verify python3 tool/own_doc_lint.py --rule 8
+  verify hexa tool/own_doc_lint.hexa --rule 8
   cron on-commit
   on_fail block
   label own#8 lens-ssot-external HARD gate
@@ -143,7 +143,7 @@ own 9 live "lens-auto-absorb-atlas — R28 렌즈 결과 → atlas.n6 자동 흡
   since 2026-04-21
   why telescope/ R28 — 렌즈 산출물이 atlas 에 연결되지 않으면 OUROBOROS 주기 감사 무효. Promoted to HARD block 2026-04-24.
   deps raw:schema-guard-mandatory
-  verify python3 tool/own_doc_lint.py --rule 9
+  verify hexa tool/own_doc_lint.hexa --rule 9
   cron on-commit
   on_fail block
   label own#9 lens-absorb-atlas HARD gate
@@ -156,7 +156,7 @@ own 10 live "rust-lens-ban-legacy — bridge/src/telescope Rust 렌즈 신규 �
   since 2026-04-21
   why Rust → HEXA 네이티브 단일화 (HEAD 0c23ad27 "refactor(telescope): 56 렌즈 Rust→HEXA"). 레거시 파생본 동결, 신규 추가 = R14 위반 확대. Promoted to HARD block 2026-04-24.
   deps raw:deprecated-symlink-ban
-  verify python3 tool/own_doc_lint.py --rule 10
+  verify hexa tool/own_doc_lint.hexa --rule 10
   cron on-commit
   on_fail block
   label own#10 rust-lens-ban HARD gate
@@ -168,7 +168,7 @@ own 11 live "bt-solution-claim-ban — Clay Millennium 7 난제 '해결' 주장 
   status live
   since 2026-04-21
   why CONTRIBUTING.md 정직성 헌장 1 — 과장된 주장 방지. '해결' 대신 '실측'/'조건부'/'추측' 정확 표기. Promoted to HARD block 2026-04-24.
-  verify python3 tool/own_doc_lint.py --rule 11
+  verify hexa tool/own_doc_lint.hexa --rule 11
   cron on-commit
   on_fail block
   label own#11 bt-solution-claim-ban HARD gate
@@ -180,7 +180,7 @@ own 12 live "miss-criteria-declared — 실험/계산 MISS 판정 기준 사전 
   status live
   since 2026-04-21
   why CONTRIBUTING.md 정직성 헌장 3 — post-hoc MISS 기준 조정은 confirmation bias 유도. README Honest Limitations "Post-hoc matching risk" 연동. Promoted to HARD block 2026-04-24 with legacy allowlist absorbing 26 pre-existing experiment docs.
-  verify python3 tool/own_doc_lint.py --rule 12
+  verify hexa tool/own_doc_lint.hexa --rule 12
   cron on-commit
   on_fail block
   label own#12 miss-criteria HARD gate
@@ -204,14 +204,14 @@ own 14 live "readme-sealed-required — 루트 README.md sealed 필수"
 
 own 15 live "paper-canonical-sections — 논문 문서 21섹션 canonical + verify + mk-history (HARD)"
   slug paper-canonical-sections
-  decl papers/ tool/own_doc_lint.py
+  decl papers/ tool/own_doc_lint.hexa
   scope HARD block — papers/*.md (그리고 @doc paper 타입 문서) 는 §1~§21 canonical_full sections 모두 포함. brief(§1-§7): WHY / COMPARE / REQUIRES / STRUCT / FLOW / EVOLVE / VERIFY. engineering(§8-§20): EXEC SUMMARY / SYSTEM REQUIREMENTS / ARCHITECTURE / CIRCUIT DESIGN / PCB DESIGN / FIRMWARE / MECHANICAL / MANUFACTURING / TEST / BOM / VENDOR / ACCEPTANCE / APPENDIX. impact(§21): IMPACT. 추가 게이트: require_ascii_check + require_verify + mk_history_min_lines=3.
   status live
   since 2026-04-26
   why Phase 4 finalization (2026-04-26) — paper=sscb canonical 문서 포맷 SSOT 가 .doc-rules.json rules.paper 에서 .own own#15 로 완전 이관. .doc-rules.json 의 paper 항목은 deprecated=true (deprecated_by=@own, deprecated_date=2026-04-19, migration_phase=4) 로 표시되며 @own 미선언 파일에 대한 legacy toggle 도 본 own#15 가 흡수. own#6 (paper-verify-embedded) 은 별도 concern (검증코드 .md 임베드) 으로 공존.
   note 21-section list 는 본 .own 선언이 SSOT. brief sections (WHY/COMPARE/REQUIRES/STRUCT/FLOW/EVOLVE/VERIFY) 는 §1-§7, engineering sections 는 §8-§20, impact 는 §21. mk_history_min_lines=3 은 mk-history footer 의 최소 줄 수.
   deps own:paper-verify-embedded
-  verify python3 tool/own_doc_lint.py --rule 15
+  verify hexa tool/own_doc_lint.hexa --rule 15
   cron on-commit
   on_fail block
   label own#15 paper-canonical-sections HARD gate
@@ -224,7 +224,7 @@ own 16 live "md-domain-registry-required — .md 생성 시 domains/_index.json 
   since 2026-04-21
   why new sub-domain orphan 방지 — domains/_index.json 이 lens/registry/audit tool 의 canonical index. 미등록 .md 는 SSOT drift 유발. Promoted to HARD block 2026-04-24.
   deps raw:schema-guard-mandatory
-  verify python3 tool/own_doc_lint.py --rule 16
+  verify hexa tool/own_doc_lint.hexa --rule 16
   cron on-commit
   on_fail block
   label own#16 md-domain-registry HARD gate
@@ -256,12 +256,12 @@ own 18 live "ssot-fingerprint-daily — daily raw-audit status sweep"
 
 own 19 live "roadmap-review-weekly — weekly roadmap review runner"
   slug roadmap-review-weekly
-  decl .own tool/own_roadmap_review.py .github/workflows/own-roadmap-review.yml
-  scope Weekly roadmap review — runs tool/own_roadmap_review.py as SOFT reminder (on_fail=log).
+  decl .own tool/own_roadmap_review.hexa .github/workflows/own-roadmap-review.yml
+  scope Weekly roadmap review — runs tool/own_roadmap_review.hexa as SOFT reminder (on_fail=log).
   status live
   since 2026-04-21
-  why Migrated from .loop (2026-04-21). Stub replaced 2026-04-24 with real Python runner (commit 74b22775 added tool/own_roadmap_review.py + .github/workflows/own-roadmap-review.yml). SOFT reminder — surfaces drift without blocking.
-  verify python3 tool/own_roadmap_review.py
+  why Migrated from .loop (2026-04-21). Stub replaced 2026-04-24 with real Python runner (commit 74b22775 added tool/own_roadmap_review.hexa + .github/workflows/own-roadmap-review.yml). SOFT reminder — surfaces drift without blocking.
+  verify hexa tool/own_roadmap_review.hexa
   cron weekly
   on_fail log
   label Roadmap review reminder
@@ -282,38 +282,38 @@ own 20 live "readme-techniques-count-drift — README techniques count matches a
 
 own 21 live "readme-nexus6-tests-count-drift — README NEXUS-6 tests count matches actual"
   slug readme-nexus6-tests-count-drift
-  decl README.md tool/own_nexus6_tests_drift.py reports/n6_selftest.json
+  decl README.md tool/own_nexus6_tests_drift.hexa reports/n6_selftest.json
   scope README.md 'tests: NNNN' count must equal actual test total (reports/n6_selftest.json#total).
   status live
   since 2026-04-21
-  why Migrated from loop-rules.json#2 (2026-04-21). Original had echo 2078 stub and README never carried the 'tests: N' token — drift rule was orphaned from the start. Lifted to live 2026-04-24 with tool/own_nexus6_tests_drift.py (parity with own#20): authoritative source = reports/n6_selftest.json#total, README extraction = drift_pattern. WARN_NO_TOKEN when README has no token (SOFT, exit 0); DRIFT (exit 1) when a token mismatches.
+  why Migrated from loop-rules.json#2 (2026-04-21). Original had echo 2078 stub and README never carried the 'tests: N' token — drift rule was orphaned from the start. Lifted to live 2026-04-24 with tool/own_nexus6_tests_drift.hexa (parity with own#20): authoritative source = reports/n6_selftest.json#total, README extraction = drift_pattern. WARN_NO_TOKEN when README has no token (SOFT, exit 0); DRIFT (exit 1) when a token mismatches.
   drift_doc README.md
   drift_pattern tests:\s+\d+
-  drift_actual python3 tool/own_nexus6_tests_drift.py
+  drift_actual hexa tool/own_nexus6_tests_drift.hexa
   cron daily
   on_fail warn
   label NEXUS-6 test count
 
 own 22 live "proposal-naming — proposal filename category convention (HARD)"
   slug proposal-naming
-  decl proposals/ tool/proposal_lint.py
+  decl proposals/ tool/proposal_lint.hexa
   scope HARD block — proposals/*.md filenames must match category-derived naming pattern. category=identity → kebab-case, no date suffix. category=operational → snake_case + _YYYY_MM_DD. category=phased → kebab-case + -YYYY-MM-DD. Mismatch between declared (frontmatter `category:`) and inferred-from-filename pattern blocks commit.
   status live
   since 2026-04-25
   why filename predicts proposal lifecycle (identity = durable strategic doc, operational = dated audit/op artifact, phased = dated rollout phase). Convention drift erodes the predictive signal and causes proposal repo navigation friction. Promoted to HARD via user '강제' directive on 2026-04-25.
-  verify python3 tool/proposal_lint.py --rule 1
+  verify hexa tool/proposal_lint.hexa --rule 1
   cron on-commit
   on_fail block
   label own#22 proposal-naming HARD gate
 
 own 23 live "proposal-umbrella — proposal section consolidation (HARD)"
   slug proposal-umbrella
-  decl proposals/ tool/proposal_lint.py
+  decl proposals/ tool/proposal_lint.hexa
   scope HARD block — proposals declaring frontmatter `umbrella: <name>` must consolidate all domain-content H2 sections under a single umbrella section. Multi-section splits are allowed only when sub-sections share the same first-word umbrella token (e.g. AI Business + AI Safety) OR no `umbrella:` is declared. Mirrors the `anthropic-fellows-research.md` reference layout.
   status live
   since 2026-04-25
   why proposal layout consistency — when an umbrella domain is declared, splitting it into multiple H2 sections obscures the portfolio framing. Promoted to HARD via user '강제' directive on 2026-04-25 with the rule "도메인섹션이 전혀 다르면 분리".
-  verify python3 tool/proposal_lint.py --rule 2
+  verify hexa tool/proposal_lint.hexa --rule 2
   cron on-commit
   on_fail block
   label own#23 proposal-umbrella HARD gate
@@ -481,7 +481,7 @@ own 28 new "n6-local: user-facing-response-friendliness — hive raw 165 cross-r
 
 own 29 live "readme-friendly-toolkit-required — README friendly toolkit table generalized across domain sections (HARD)"
   slug readme-friendly-toolkit-required
-  decl README.md tool/own_doc_lint.py tool/own29_readme_friendly_toolkit_lint.hexa
+  decl README.md tool/own_doc_lint.hexa tool/own29_readme_friendly_toolkit_lint.hexa
   scope HARD block — README.md per-section friendly toolkit table contract. Generalized 2026-04-29 from Biology-only to multi-section spec; cycle 29 strengthening 2026-04-29 prepended 🛸 alien-grade-reach as new first column (7-column header). Each section in the registered `mandatory-sections` list must contain a friendly H2 heading + 7-column toolkit table (🛸 first cell integer 0-999 reach grade) + >=N data rows + valid `[doc](domains/<axis>/<slug>/<slug>.md)` link per row. Sections in `optional-sections` are checked when present (toolkit table found → 5-axis check applied) but absence is allowed. Sections not in either list are skipped.
   mandatory-sections biology=## 🧬 Molecular Toolkit (HEXA family)|min_rows=4|axis=biology
   mandatory-sections ai_ml=## 🤖 AI Toolkit (HEXA-AI family)|min_rows=3|axis=compute
@@ -518,15 +518,15 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   since 2026-04-29
   why README.md Biology section accumulated dense technical table only (cycle 14-22 evolution); cycle 25 introduced friendly Molecular Toolkit (HEXA family) 6-column block at user direction. cycle 25 strengthening: generalize beyond Biology so any domain section can register a toolkit table; mandatory-list grows as sections are filled. cycle 29 strengthening 2026-04-29: prepend 🛸 alien-grade-reach as new first column (7-column header) per user directive '외계인 지수 / 현재 도달지수 / 🛸 이모지 단독 / lint 반드시 필요'. Reach grade integer 0-999 validated per row.
   note enforcement = lint scan on README.md only (no recursive scan). 5-axis check per registered section: H2 heading present + 7-column header (🛸 first, exact column-name template, allowing per-section <Mainstream> contrast variation) + >=min_rows data rows + each row's first cell integer 0-999 reach grade + each row's last cell [doc](domains/<axis>/<slug>/<slug>.md) link resolves. own 1 English-only still applies. mandatory list growth: append entries to `mandatory-sections` as user approves each section; optional list is for pre-registered candidates that lint will check IF the section's toolkit table appears.
-  verify python3 tool/own_doc_lint.py --rule 29
+  verify hexa tool/own_doc_lint.hexa --rule 29
   cron on-commit
   on_fail block
   label own#29 readme-friendly-toolkit HARD gate (multi-section)
 
 own 30 new "proposal-addition-command-recognition — '제안서 추가' / 'add proposal' trigger phrase auto-creates proposals/<slug>.md skeleton"
   slug proposal-addition-command-recognition
-  decl proposals/ tool/proposal_lint.py .own
-  scope When user input contains trigger phrase set {'제안서 추가', '제안서 작성', '제안서 만들어', '제안서 생성', 'proposal add', 'add proposal', 'create proposal', 'new proposal'} AND creation-intent is detected (NOT informational query), AI agent MUST: (a) infer slug from user-provided context per own 22 naming convention (kebab-case for identity, snake_case + _YYYY_MM_DD for operational, kebab-case + -YYYY-MM-DD for phased), (b) determine category (default identity unless date / operational keyword present), (c) create proposals/<slug>.md with frontmatter (`category: <type>` + optional `umbrella: <name>`) + ≥1 H2 section + body following own 1 (English-only) + own 22 (naming) + own 23 (umbrella consolidation) + own 11 (no Clay-Millennium '해결' claim) + own 12 (MISS criteria pre-declared) conventions, (d) post-creation run python3 tool/proposal_lint.py --rule 1 + --rule 2 verify + report exit code, (e) report created path + lint verdict + next-step hint to user.
+  decl proposals/ tool/proposal_lint.hexa .own
+  scope When user input contains trigger phrase set {'제안서 추가', '제안서 작성', '제안서 만들어', '제안서 생성', 'proposal add', 'add proposal', 'create proposal', 'new proposal'} AND creation-intent is detected (NOT informational query), AI agent MUST: (a) infer slug from user-provided context per own 22 naming convention (kebab-case for identity, snake_case + _YYYY_MM_DD for operational, kebab-case + -YYYY-MM-DD for phased), (b) determine category (default identity unless date / operational keyword present), (c) create proposals/<slug>.md with frontmatter (`category: <type>` + optional `umbrella: <name>`) + ≥1 H2 section + body following own 1 (English-only) + own 22 (naming) + own 23 (umbrella consolidation) + own 11 (no Clay-Millennium '해결' claim) + own 12 (MISS criteria pre-declared) conventions, (d) post-creation run hexa tool/proposal_lint.hexa --rule 1 + --rule 2 verify + report exit code, (e) report created path + lint verdict + next-step hint to user.
   status new
   since 2026-04-29
   why proposals/ creation flow currently ad-hoc — user 2026-04-29 directive 'own 에 제안서 추가 명령어 인식 / proposal/ 생성 / md 문서 생성' codifies the recognition pattern as own SSOT so future sessions auto-trigger creation flow without re-derivation per session. Mirrors raw 141 (closed-loop trigger phrase pattern) + raw 100 (kick canonical entry trigger) — n6-architecture-local proposal-creation specialization. Reduces friction (no 5-step manual recall) + guarantees lint conformance at creation moment (own 22 + own 23 not retrofit).
@@ -557,7 +557,7 @@ own 30 new "proposal-addition-command-recognition — '제안서 추가' / 'add 
   deps own:miss-criteria-declared
   deps raw:plan-omega-saturation
   deps raw:proof-carrying
-  proof tool/proposal_lint.py
+  proof tool/proposal_lint.hexa
   measurement-axis trigger-phrase-recognition-rate = (sessions with trigger phrase emitting proposal creation flow / total sessions with trigger phrase + creation intent) — target ≥ 0.90
   measurement-axis post-create-lint-pass-rate = (auto-created proposals passing rule 1 + 2 at first creation / total auto-created) — target ≥ 0.95
   measurement-axis informational-query-false-positive-rate = (informational queries mis-triggering creation flow / total informational queries) — target ≤ 0.05
@@ -568,7 +568,7 @@ own 30 new "proposal-addition-command-recognition — '제안서 추가' / 'add 
   falsifier F-OWN30-3 informational-query-false-positive-rate > 0.20 → trigger detector too eager (informational queries mis-trigger creation), classifier bump
   falsifier F-OWN30-4 ≥1 auto-created proposal subsequently fails own 11 (Clay '해결' claim) OR own 12 (MISS criteria) → conventions inheritance broken, mandate stronger gate
   measurement-threshold trigger-phrase-recognition-rate>=0.90-at-30d post-create-lint-pass-rate>=0.95-at-30d informational-query-false-positive-rate<=0.05
-  proof-obligations tool/proposal_lint.py-rule-1+2-PASS-on-auto-created-skeleton + own-30-self-apply-PASS-at-registration
+  proof-obligations tool/proposal_lint.hexa-rule-1+2-PASS-on-auto-created-skeleton + own-30-self-apply-PASS-at-registration
   spec-form forward-spec
   category meta-triad
   category routing-dispatch
@@ -577,14 +577,14 @@ own 30 new "proposal-addition-command-recognition — '제안서 추가' / 'add 
   phase pre-write
   phase runtime
   triad-exempt forward-spec-meta-rule - own 30 governs trigger-phrase recognition for proposal creation, not parser substrate; raw 95 compliance via canonical hive-agent + cli-lint + advisory trio (proposal_lint.py is the cli-lint surface).
-  verify python3 tool/proposal_lint.py
+  verify hexa tool/proposal_lint.hexa
   cron on-commit
   on_fail warn
   label own#30 proposal-addition-command-recognition (trigger-phrase auto-create)
   note FORWARD SPEC. user directive 2026-04-29 (Korean preserved): 'own 에 제안서 추가 명령어 인식 / proposal/ 생성 / md 문서 생성'. self-applied at registration (10/10 governance check): genus slug ✓ + 2 frameworks ✓ + 4 channels ✓ + 3 counter-examples ✓ + 4 falsifiers ✓ + raw 117 5-check satisfied + raw 47 cross-repo trawl deferred (n6-local origin, sister-repo replication on warn → live transition). raw 91 honest C3 disclosure: trigger-phrase set is initial 8-phrase enum — may need expansion for multilingual / paraphrase variants (e.g. '제안서 한 개 추가해줘' compound forms) at 30d empirical recalibration; informational-query fingerprint heuristic ('가 뭐야' / 'how do' / 'list') requires NLP-lite detection. no chflags uchg unlock-edit-relock cycle required at registration time (.own currently no kernel lock per `ls -lO` 2026-04-29).
   follow-up implement informational-query fingerprint detector (suffix patterns '가 뭐야' / '어떻게 작동' / 'how do' / 'list' / 'show me')
   follow-up bootstrap state/proposal_addition_audit/audit.jsonl per raw 77 schema (per-trigger-event row: ts + trigger_phrase + creation_intent_score + slug_inferred + category_inferred + lint_verdict)
-  follow-up extend tool/proposal_lint.py with --auto-create <slug> --category <type> subcommand for skeleton emission (canonical impl path)
+  follow-up extend tool/proposal_lint.hexa with --auto-create <slug> --category <type> subcommand for skeleton emission (canonical impl path)
   follow-up new -> warn 30d once trigger-phrase-recognition-rate ≥ 0.50 measured + post-create-lint-pass-rate ≥ 0.80; warn -> live 60d once both axes ≥ 0.80 maintained 14d straight + zero F-OWN30-3 false-positive events
 
 own 31 live "verify-tautology-ban-mandate — python verify-block tautology forbidden; real n=6 number-theoretic primitive computation mandated (HARD ramp)"

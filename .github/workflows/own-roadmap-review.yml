@@ -19,15 +19,10 @@ jobs:
         with:
           fetch-depth: 0  # need git log history for mtime detection
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Detect roadmap staleness (own#19)
         id: review
         run: |
-          python3 tool/own_roadmap_review.py
+          hexa tool/own_roadmap_review.hexa
         continue-on-error: true  # SOFT log per own#19 on_fail=log
 
       - name: Upload review report

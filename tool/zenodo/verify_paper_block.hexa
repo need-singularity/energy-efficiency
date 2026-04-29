@@ -1,0 +1,130 @@
+#!hexa strict
+// tool/zenodo/verify_paper_block.hexa — HEXA-WEAVE paper §7.1 (a) embedded verify block.
+//
+// Migrated from tool/zenodo/verify_paper_block.py per raw 9 hexa-only mandate.
+// Port strategy: replace sympy { divisor_sigma, totient, divisor_count } with
+// pure-hexa primitive impls (small-n loops; no external dep).
+//
+// Mirror of the Python block embedded in
+//     papers/hexa-weave-formal-mechanical-w2-2026-04-28.md §7.1 (a)
+// Standalone re-runner so a Zenodo reviewer can reproduce the
+// [2, 1000] sweep yielding {6} without parsing markdown.
+//
+// @tool(slug="verify_paper_block", desc="HEXA-WEAVE paper §7.1 (a) — sigma/phi/tau verify + AX1Eq sweep [2,1000] → {6}")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/zenodo/verify_paper_block.hexa)
+// @exit_codes(0=PASS, 2=ASSERTION FAIL — F-W6-ZEN-13-2 falsifier fired, do NOT deposit)
+
+// sigma_1(n) = sum of positive divisors of n
+fn _sigma_1(n: int) -> int {
+  let mut s = 0
+  let mut k = 1
+  while k <= n {
+    if n % k == 0 { s = s + k }
+    k = k + 1
+  }
+  return s
+}
+
+// gcd via Euclidean algorithm (helper for totient)
+fn _gcd(a: int, b: int) -> int {
+  let mut x = a
+  let mut y = b
+  while y > 0 {
+    let r = x % y
+    x = y
+    y = r
+  }
+  return x
+}
+
+// phi(n) = Euler totient — count k in [1, n] with gcd(k, n) = 1.
+fn _totient(n: int) -> int {
+  if n == 1 { return 1 }
+  let mut c = 0
+  let mut k = 1
+  while k <= n {
+    if _gcd(k, n) == 1 { c = c + 1 }
+    k = k + 1
+  }
+  return c
+}
+
+// tau(n) = number of positive divisors of n
+fn _divisor_count(n: int) -> int {
+  let mut c = 0
+  let mut k = 1
+  while k <= n {
+    if n % k == 0 { c = c + 1 }
+    k = k + 1
+  }
+  return c
+}
+
+// AX1Eq n := sigma(n) * phi(n) == n * tau(n)
+fn _ax1_eq(n: int) -> bool {
+  return _sigma_1(n) * _totient(n) == n * _divisor_count(n)
+}
+
+fn _list_to_str(xs: list) -> string {
+  let mut out = "["
+  let mut i = 0
+  while i < len(xs) {
+    if i > 0 { out = out + ", " }
+    out = out + to_string(xs[i])
+    i = i + 1
+  }
+  return out + "]"
+}
+
+fn _fail(msg: string) -> void {
+  // Emit on stderr-equivalent path (stdout for hexa) and exit 2.
+  println("verify_paper_block: ASSERTION FAIL — " + msg)
+  println("F-W6-ZEN-13-2 falsifier FIRED. DO NOT proceed with Zenodo deposit.")
+  exit(2)
+}
+
+fn main() -> void {
+  // Reverse direction: AX1Eq 6 must hold.
+  if !_ax1_eq(6) { _fail("AX1 reverse direction: AX1Eq 6 must hold") }
+  let sigma6 = _sigma_1(6)
+  let phi6 = _totient(6)
+  let tau6 = _divisor_count(6)
+  if sigma6 != 12 { _fail("sigma(6) = 12 expected, got " + to_string(sigma6)) }
+  if phi6 != 2 { _fail("phi(6) = 2 expected, got " + to_string(phi6)) }
+  if tau6 != 4 { _fail("tau(6) = 4 expected, got " + to_string(tau6)) }
+  if sigma6 * phi6 != 6 * tau6 { _fail("n6 master identity at n=6 broken") }
+  if 12 * 2 != 24 { _fail("12*2 == 24 must hold") }
+  if 24 != 6 * 4 { _fail("24 == 6*4 must hold") }
+
+  // Bounded forward direction (cycle-7 hardened to [2, 50]).
+  let mut solutions_bounded = []
+  let mut n = 2
+  while n <= 50 {
+    if _ax1_eq(n) { solutions_bounded.push(n) }
+    n = n + 1
+  }
+  if !(len(solutions_bounded) == 1 && solutions_bounded[0] == 6) {
+    _fail("AX1 bounded forward [2,50] expected [6], got " + _list_to_str(solutions_bounded))
+  }
+
+  // Spec corrigendum surface at n=1.
+  if !_ax1_eq(1) { _fail("Spec corrigendum: AX1Eq 1 holds trivially") }
+
+  // Extended sweep [2, 1000] -> {6}.
+  let mut solutions_extended = []
+  let mut m = 2
+  while m <= 1000 {
+    if _ax1_eq(m) { solutions_extended.push(m) }
+    m = m + 1
+  }
+  if !(len(solutions_extended) == 1 && solutions_extended[0] == 6) {
+    _fail("AX1 extended sweep [2,1000] expected [6], got " + _list_to_str(solutions_extended))
+  }
+
+  println("AX-1 verify-embedded PASS:")
+  println("  sigma(6)=" + to_string(sigma6) + ", phi(6)=" + to_string(phi6) + ", tau(6)=" + to_string(tau6))
+  println("  bounded [2,50]    solutions: " + _list_to_str(solutions_bounded))
+  println("  extended [2,1000] solutions: " + _list_to_str(solutions_extended))
+  println("  spec corrigendum: ax1_eq(1) = true; n=1 forces n >= 2 quantifier amend")
+  exit(0)
+}
