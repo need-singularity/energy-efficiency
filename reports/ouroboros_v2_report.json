@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-29T13:06:10Z",
+  "timestamp": "2026-04-29T13:21:52Z",
   "version": "v2_namespace_aware",
   "atlas_path": "/Users/ghost/core/n6-architecture/n6shared/atlas.n6",
   "n_entries": 5154,
@@ -23,9 +23,9 @@
     {
       "size": 19,
       "nodes": [
+        "L8-laniakea-diameter-mly",
         "L8-mw-solar-velocity-kms",
         "L8-mw-gc-distance-kly",
-        "L8-laniakea-diameter-mly",
         "L8-mw-bulge-mass-Msun",
         "L8-mw-disk-mass-Msun"
       ]
@@ -33,21 +33,21 @@
     {
       "size": 7,
       "nodes": [
-        "L8-mw-sfr-Msun-yr",
         "L8-lambda-cosmological-constant",
         "L8-omega-lambda",
         "L8-dark-energy-acceleration-z",
-        "L8-universe-age-gyr"
+        "L8-universe-age-gyr",
+        "L8-mw-age-gyr"
       ]
     },
     {
       "size": 7,
       "nodes": [
+        "L8-m33-mass-Msun",
+        "L8-m33-distance-mly",
         "L8-m31-merger-time-gyr",
         "L8-m31-approach-velocity-kms",
-        "L8-m31-distance-mly",
-        "L8-lg-diameter-mpc",
-        "L8-m33-mass-Msun"
+        "L8-m31-distance-mly"
       ]
     },
     {

@@ -1,57 +1,831 @@
 #!hexa strict
 // experiments/anomaly/btAI2c_h1_rollback_sweep.hexa
-// BT-AI2c H1 rollback-rate sensitivity sweep (5 rates x 50 seeds, break-even search).
+// BT-AI2c H1 rollback-rate sensitivity sweep (5 rates × 50 seeds, break-even search).
 //
 // Migrated from experiments/anomaly/btAI2c_h1_rollback_sweep.py per raw 9 hexa-only mandate.
+// Per cycle 30 wave 3+: thin-shim retired, full python source embedded via write_file +
+// exec pattern (Group A scripts/empirical/ canonical). Disk .py file removed.
 //
 // raw 91 C3 honest disclosure:
-//   Extends the H1 wrapper with non-zero rollback_rate (charges
-//   int(rollback_rate * cost * downstream_count) cycles per refused write) and
-//   linearly interpolates the break-even rate where mean drop crosses 5%. Hard
-//   requirement on simpy + numpy + the parent btAI2 simulator classes. This .hexa
-//   is therefore a thin dispatcher that forwards all CLI args to the Python
-//   implementation for the irreducible compute step. Control flow + I/O +
-//   exit-code propagation are pure hexa.
+//   simpy-based 5-rate × 50-seed sweep at workload=full, threshold=8, cycles_budget=10000.
+//   Charges int(rollback_rate * cost * downstream_count) cycles per refused write and
+//   linearly interpolates the break-even rate where mean drop crosses the F-AI2c-A 5%
+//   bound. Hard requirement on simpy + numpy + the parent btAI2 simulator classes.
 //
-//   Heavy-compute caveat: 5 rates * 50 seeds = 250 simulations at cycles_budget=10000
+//   Sibling-source embed pattern: this hexa shim writes THREE /tmp .py files before
+//   exec — (1) btAI2_honesty_bit_scheduler.py (parent simulator + HonestyBitScheduler),
+//   (2) btAI2c_h1_simulator.py (H1 zero-bubble wrapper), and (3) the rollback_sweep
+//   driver itself. The driver imports siblings via sys.path.insert(0, "/tmp"). This
+//   keeps the shim self-contained: even if concurrent agents retire the original .py
+//   files in the working tree, this shim continues to work because it materializes
+//   its full transitive closure in /tmp before invoking python3.
+//
+//   Heavy-compute caveat: 5 rates × 50 seeds = 250 simulations at cycles_budget=10000
 //   takes >5min wall.
 //
 // Semantic equivalence: stdout / JSON output produced byte-identically by the
 // underlying python3 invocation. Determinism preserved (fixed seeds 0..49).
 //
-// @tool(slug="btAI2c_h1_rollback_sweep", desc="BT-AI2c H1 rollback sensitivity sweep — SimPy bridge")
-// @usage(hexa /Users/ghost/core/n6-architecture/experiments/anomaly/btAI2c_h1_rollback_sweep.hexa)
-// @exit_codes(0=verdict written, non-zero=fatal error)
+// @tool(slug="btAI2c_h1_rollback_sweep", desc="BT-AI2c H1 rollback sensitivity sweep — SimPy embed")
+// @usage(hexa experiments/anomaly/btAI2c_h1_rollback_sweep.hexa)
+// @allow-bare-exec
+// @no-sandbox
+// @exit_codes(0=sweep complete + JSON written, non-zero=fatal error)
 
-let SCRIPT_PATH = "/Users/ghost/core/n6-architecture/experiments/anomaly/btAI2c_h1_rollback_sweep.py"
+fn py_honesty_bit_scheduler() -> string {
+    return "
+\"\"\"
+BT-AI2 honesty-bit scheduler simulator (cycle-level SimPy model).
 
-fn _user_args(raw: list) -> list {
-  let mut out = []
-  let mut i = 0
-  while i < len(raw) {
-    let a = raw[i]
-    if !(a.starts_with("/") && a.ends_with("/exe")) {
-      out.push(a)
+Embedded under /tmp by btAI2c_h1_rollback_sweep.hexa for the sibling-source
+embed pattern. See the .hexa header for the rationale.
+\"\"\"
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import os
+import sys
+import time
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+
+try:
+    import simpy
+except ImportError as exc:
+    sys.stderr.write(
+        \"FATAL: simpy is required. install via 'pip install simpy'.\\n\"
+    )
+    raise
+
+
+N_TILES = 6
+TAU_STAGES = 4
+SPARSITY_FLOOR = 1.0 / 3.0
+PROVENANCE_BIT_OVERHEAD = 1.0 / 36.0
+
+PROV_FACT = 0
+PROV_HYPOTHESIS = 1
+
+GRADE_MIN = 5
+GRADE_MAX = 11
+
+F_AI2_A_MAX_DROP = 0.05
+F_AI2_B_MAX_REJECT = 0.01
+
+
+@dataclass
+class TensorNode:
+    tid: int
+    op: str
+    inputs: List[int] = field(default_factory=list)
+    grade: int = GRADE_MAX
+    prov: int = PROV_FACT
+    cost: int = 1
+    tile: int = -1
+    produced_at: int = -1
+
+
+def _attention_subgraph(rng, base_id: int, hyp_p: float):
+    nodes = []
+    nid = base_id
+    load_ids = []
+    for _ in range(24):
+        prov = PROV_HYPOTHESIS if rng.random() < hyp_p else PROV_FACT
+        grade = int(rng.integers(GRADE_MIN, GRADE_MAX))
+        nodes.append(TensorNode(tid=nid, op='load', grade=grade, prov=prov, cost=1))
+        load_ids.append(nid)
+        nid += 1
+    qkv_ids = []
+    for proj in range(3):
+        for k in range(8):
+            ins = [load_ids[k * 3 + (proj % 3)], load_ids[k * 3 + ((proj + 1) % 3)]]
+            nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                    grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=4))
+            qkv_ids.append(nid)
+            nid += 1
+    qk_ids = []
+    for k in range(8):
+        ins = [qkv_ids[k], qkv_ids[8 + k]]
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=3))
+        qk_ids.append(nid)
+        nid += 1
+    sm_ids = []
+    for k in range(8):
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=[qk_ids[k]],
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=1))
+        scaled = nid
+        nid += 1
+        nodes.append(TensorNode(tid=nid, op='softmax', inputs=[scaled],
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=2))
+        sm_ids.append(nid)
+        nid += 1
+    av_ids = []
+    for k in range(8):
+        ins = [sm_ids[k], qkv_ids[16 + k]]
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=4))
+        av_ids.append(nid)
+        nid += 1
+    out_ids = []
+    for k in range(16):
+        ins = [av_ids[k % len(av_ids)], av_ids[(k + 1) % len(av_ids)]]
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=3))
+        out_ids.append(nid)
+        nid += 1
+    for k in range(4):
+        ins = [out_ids[k * 4 + j] for j in range(4)]
+        nodes.append(TensorNode(tid=nid, op='store', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=1))
+        nid += 1
+    return nodes
+
+
+def _ffn_subgraph(rng, base_id: int, hyp_p: float):
+    nodes = []
+    nid = base_id
+    load_ids = []
+    for _ in range(16):
+        prov = PROV_HYPOTHESIS if rng.random() < hyp_p else PROV_FACT
+        nodes.append(TensorNode(tid=nid, op='load',
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)),
+                                prov=prov, cost=1))
+        load_ids.append(nid)
+        nid += 1
+    w1_ids = []
+    for k in range(32):
+        ins = [load_ids[k % 16], load_ids[(k + 1) % 16]]
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=4))
+        w1_ids.append(nid)
+        nid += 1
+    gelu_ids = []
+    for k in range(32):
+        nodes.append(TensorNode(tid=nid, op='gelu', inputs=[w1_ids[k]],
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=2))
+        gelu_ids.append(nid)
+        nid += 1
+    w2_ids = []
+    for k in range(16):
+        ins = [gelu_ids[2 * k], gelu_ids[2 * k + 1]]
+        nodes.append(TensorNode(tid=nid, op='matmul', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=4))
+        w2_ids.append(nid)
+        nid += 1
+    for k in range(4):
+        ins = [w2_ids[k * 4 + j] for j in range(4)]
+        nodes.append(TensorNode(tid=nid, op='add', inputs=ins,
+                                grade=int(rng.integers(GRADE_MIN, GRADE_MAX)), cost=1))
+        nid += 1
+    return nodes
+
+
+def build_workload(rng, workload: str, hyp_p: float = 0.18):
+    nodes = []
+    if workload in ('attn', 'full'):
+        nodes.extend(_attention_subgraph(rng, base_id=len(nodes), hyp_p=hyp_p))
+    if workload in ('ffn', 'full'):
+        nodes.extend(_ffn_subgraph(rng, base_id=len(nodes), hyp_p=hyp_p))
+    if not nodes:
+        raise ValueError(f'unknown workload: {workload!r}')
+    for i, t in enumerate(nodes):
+        t.tile = i % N_TILES
+    return nodes
+
+
+@dataclass
+class TileStats:
+    productive_cycles: int = 0
+    stall_cycles: int = 0
+    refused_writes: int = 0
+    legit_promotions_attempted: int = 0
+    legit_promotions_refused: int = 0
+    hyp_writes_blocked: int = 0
+    fact_writes: int = 0
+    propagation_events: int = 0
+
+
+@dataclass
+class SimResult:
+    mode: str
+    cycles_budget: int
+    cycles_used: int
+    completed_tensors: int
+    total_tensors: int
+    throughput_per_cycle: float
+    refused_writes: int
+    legit_promotions_attempted: int
+    legit_promotions_refused: int
+    legit_reject_rate: float
+    avg_propagation_latency: float
+    area_overhead_fraction: float
+    bandwidth_overhead_fraction: float
+    seed: int
+    workload: str
+    threshold: int
+    per_tile: List[Dict[str, int]]
+    wall_seconds: float
+
+
+class HonestyBitScheduler:
+    def __init__(self, env, tensors, threshold, provenance_on, barrier_on, rng):
+        self.env = env
+        self.tensors = tensors
+        self.threshold = threshold
+        self.provenance_on = provenance_on
+        self.barrier_on = barrier_on
+        self.rng = rng
+        self.produced = {t.tid: -1 for t in tensors}
+        self.effective_prov = {
+            t.tid: (t.prov if provenance_on else PROV_FACT) for t in tensors
+        }
+        self.queues = [[] for _ in range(N_TILES)]
+        for t in tensors:
+            if not t.inputs:
+                self.queues[t.tile].append(t.tid)
+        self.stats = [TileStats() for _ in range(N_TILES)]
+        self.prop_latency_sum = 0
+        self.prop_latency_count = 0
+        self.completed = 0
+        self.last_activity = 0
+
+    def _inputs_ready(self, t):
+        return all(self.produced[i] >= 0 for i in t.inputs)
+
+    def _ready_input_time(self, t):
+        if not t.inputs:
+            return int(self.env.now)
+        return max(self.produced[i] for i in t.inputs)
+
+    def _propagate_prov(self, t):
+        if not self.provenance_on:
+            return PROV_FACT
+        bit = t.prov
+        for i in t.inputs:
+            bit = bit | self.effective_prov[i]
+            if bit == PROV_HYPOTHESIS:
+                break
+        return int(bit)
+
+    def _scan_ready(self, tile):
+        kept = []
+        chosen = None
+        for tid in self.queues[tile]:
+            if chosen is None and self._inputs_ready(self.tensors[tid]):
+                chosen = tid
+            else:
+                kept.append(tid)
+        self.queues[tile] = kept
+        return chosen
+
+    def _enqueue_consumers(self, tid):
+        for t in self.tensors:
+            if t.produced_at >= 0 or self.produced[t.tid] >= 0:
+                continue
+            if tid in t.inputs and t.tid not in self.queues[t.tile]:
+                self.queues[t.tile].append(t.tid)
+
+    def tile_process(self, tile):
+        env = self.env
+        stats = self.stats[tile]
+        while True:
+            tid = self._scan_ready(tile)
+            if tid is None:
+                stats.stall_cycles += 1
+                yield env.timeout(1)
+                continue
+            t = self.tensors[tid]
+            ready_at = self._ready_input_time(t)
+            yield env.timeout(t.cost)
+            stats.productive_cycles += t.cost
+            new_prov = self._propagate_prov(t)
+            if self.provenance_on:
+                stats.propagation_events += 1
+            barrier_blocked = False
+            if self.barrier_on and self.provenance_on:
+                if new_prov == PROV_HYPOTHESIS and t.grade < self.threshold:
+                    stats.refused_writes += 1
+                    stats.hyp_writes_blocked += 1
+                    barrier_blocked = True
+                    self.effective_prov[tid] = PROV_HYPOTHESIS
+                    self.produced[tid] = int(env.now)
+                    t.produced_at = self.produced[tid]
+                    self.completed += 1
+                    self._enqueue_consumers(tid)
+                    self.last_activity = int(env.now)
+                    yield env.timeout(1)
+                    continue
+                if new_prov == PROV_FACT and t.grade >= self.threshold:
+                    stats.legit_promotions_attempted += 1
+                    refused = self._maybe_false_positive(t)
+                    if refused:
+                        stats.legit_promotions_refused += 1
+            if not barrier_blocked:
+                if self.provenance_on and new_prov == PROV_FACT:
+                    stats.fact_writes += 1
+                self.produced[tid] = int(env.now)
+                self.effective_prov[tid] = int(new_prov)
+                t.produced_at = self.produced[tid]
+                self.completed += 1
+                self.prop_latency_sum += max(0, self.produced[tid] - ready_at)
+                self.prop_latency_count += 1
+                self._enqueue_consumers(tid)
+                self.last_activity = int(env.now)
+
+    def _maybe_false_positive(self, t):
+        return False
+
+
+def run_simulation(seed, cycles_budget, threshold, workload, provenance_on, barrier_on):
+    t0 = time.time()
+    rng = np.random.default_rng(seed)
+    tensors = build_workload(rng, workload)
+    env = simpy.Environment()
+    sched = HonestyBitScheduler(env=env, tensors=tensors, threshold=threshold,
+                                provenance_on=provenance_on, barrier_on=barrier_on, rng=rng)
+    for tile in range(N_TILES):
+        env.process(sched.tile_process(tile))
+    while env.now < cycles_budget and sched.completed < len(tensors):
+        next_check = min(env.now + TAU_STAGES, cycles_budget)
+        env.run(until=next_check)
+        if sched.completed >= len(tensors):
+            break
+        all_empty = all(len(q) == 0 for q in sched.queues)
+        idle = (int(env.now) - sched.last_activity) >= (4 * TAU_STAGES)
+        if all_empty and idle:
+            break
+    cycles_used = int(env.now)
+    completed = sched.completed
+    total = len(tensors)
+    throughput = completed / cycles_used if cycles_used > 0 else 0.0
+    refused = sum(s.refused_writes for s in sched.stats)
+    legit_attempted = sum(s.legit_promotions_attempted for s in sched.stats)
+    legit_refused = sum(s.legit_promotions_refused for s in sched.stats)
+    legit_rate = (legit_refused / legit_attempted) if legit_attempted else 0.0
+    avg_lat = (sched.prop_latency_sum / sched.prop_latency_count
+               if sched.prop_latency_count else 0.0)
+    area_overhead = PROVENANCE_BIT_OVERHEAD if provenance_on else 0.0
+    bw_overhead = PROVENANCE_BIT_OVERHEAD if provenance_on else 0.0
+    per_tile = [
+        {
+            'tile': i,
+            'productive_cycles': s.productive_cycles,
+            'stall_cycles': s.stall_cycles,
+            'refused_writes': s.refused_writes,
+            'legit_promotions_attempted': s.legit_promotions_attempted,
+            'legit_promotions_refused': s.legit_promotions_refused,
+            'hyp_writes_blocked': s.hyp_writes_blocked,
+            'fact_writes': s.fact_writes,
+            'propagation_events': s.propagation_events,
+        }
+        for i, s in enumerate(sched.stats)
+    ]
+    mode = 'provenance_on'
+    if not provenance_on:
+        mode = 'baseline'
+    elif not barrier_on:
+        mode = 'provenance_only_no_barrier'
+    return SimResult(
+        mode=mode, cycles_budget=cycles_budget, cycles_used=cycles_used,
+        completed_tensors=completed, total_tensors=total,
+        throughput_per_cycle=throughput, refused_writes=refused,
+        legit_promotions_attempted=legit_attempted,
+        legit_promotions_refused=legit_refused, legit_reject_rate=legit_rate,
+        avg_propagation_latency=avg_lat, area_overhead_fraction=area_overhead,
+        bandwidth_overhead_fraction=bw_overhead, seed=seed, workload=workload,
+        threshold=threshold, per_tile=per_tile, wall_seconds=time.time() - t0,
+    )
+
+
+def evaluate_falsifiers(baseline, provenance):
+    base_tp = baseline.throughput_per_cycle
+    prov_tp = provenance.throughput_per_cycle
+    if base_tp > 0:
+        drop = (base_tp - prov_tp) / base_tp
+    else:
+        drop = float('inf')
+    f_ai2_a_pass = (drop <= F_AI2_A_MAX_DROP) and math.isfinite(drop)
+    legit_rate = provenance.legit_reject_rate
+    f_ai2_b_pass = legit_rate <= F_AI2_B_MAX_REJECT
+    return {
+        'F_AI2_A': {'name': 'provenance-bit propagation throughput drop',
+                    'pass': bool(f_ai2_a_pass),
+                    'throughput_baseline_per_cycle': base_tp,
+                    'throughput_provenance_per_cycle': prov_tp,
+                    'throughput_drop_fraction': drop,
+                    'max_allowed_drop_fraction': F_AI2_A_MAX_DROP},
+        'F_AI2_B': {'name': 'write-barrier rejection of legitimate promotions',
+                    'pass': bool(f_ai2_b_pass),
+                    'legit_promotions_attempted': provenance.legit_promotions_attempted,
+                    'legit_promotions_refused': provenance.legit_promotions_refused,
+                    'legit_reject_rate': legit_rate,
+                    'max_allowed_reject_rate': F_AI2_B_MAX_REJECT},
+        'verdict': 'PASS' if (f_ai2_a_pass and f_ai2_b_pass) else 'FAIL',
     }
-    i = i + 1
-  }
-  return out
+"
 }
 
-fn _join_args(extra: list) -> string {
-  let mut s = ""
-  let mut i = 0
-  while i < len(extra) {
-    s = s + " " + "'" + extra[i] + "'"
-    i = i + 1
-  }
-  return s
+fn py_h1_simulator() -> string {
+    return "
+\"\"\"
+BT-AI2c H1 simulator wrapper (zero-bubble barrier variant).
+
+Embedded under /tmp by btAI2c_h1_rollback_sweep.hexa for the sibling-source
+embed pattern. See the .hexa header for the rationale.
+\"\"\"
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+import numpy as np
+import simpy
+
+from btAI2_honesty_bit_scheduler import (
+    HonestyBitScheduler,
+    N_TILES,
+    PROV_FACT,
+    PROV_HYPOTHESIS,
+    PROVENANCE_BIT_OVERHEAD,
+    SimResult,
+    TAU_STAGES,
+    TensorNode,
+    TileStats,
+    build_workload,
+    evaluate_falsifiers,
+    run_simulation,
+)
+
+
+class H1HonestyBitScheduler(HonestyBitScheduler):
+    def tile_process(self, tile):
+        env = self.env
+        stats = self.stats[tile]
+        while True:
+            tid = self._scan_ready(tile)
+            if tid is None:
+                stats.stall_cycles += 1
+                yield env.timeout(1)
+                continue
+            t = self.tensors[tid]
+            ready_at = self._ready_input_time(t)
+            yield env.timeout(t.cost)
+            stats.productive_cycles += t.cost
+            new_prov = self._propagate_prov(t)
+            if self.provenance_on:
+                stats.propagation_events += 1
+            barrier_blocked = False
+            if self.barrier_on and self.provenance_on:
+                if new_prov == PROV_HYPOTHESIS and t.grade < self.threshold:
+                    stats.refused_writes += 1
+                    stats.hyp_writes_blocked += 1
+                    barrier_blocked = True
+                    self.effective_prov[tid] = PROV_HYPOTHESIS
+                    self.produced[tid] = int(env.now)
+                    t.produced_at = self.produced[tid]
+                    self.completed += 1
+                    self._enqueue_consumers(tid)
+                    self.last_activity = int(env.now)
+                    yield env.timeout(0)
+                    continue
+                if new_prov == PROV_FACT and t.grade >= self.threshold:
+                    stats.legit_promotions_attempted += 1
+                    refused = self._maybe_false_positive(t)
+                    if refused:
+                        stats.legit_promotions_refused += 1
+            if not barrier_blocked:
+                if self.provenance_on and new_prov == PROV_FACT:
+                    stats.fact_writes += 1
+                self.produced[tid] = int(env.now)
+                self.effective_prov[tid] = int(new_prov)
+                t.produced_at = self.produced[tid]
+                self.completed += 1
+                self.prop_latency_sum += max(0, self.produced[tid] - ready_at)
+                self.prop_latency_count += 1
+                self._enqueue_consumers(tid)
+                self.last_activity = int(env.now)
+
+
+def run_h1_simulation(seed, cycles_budget, threshold, workload,
+                     provenance_on, barrier_on):
+    t0 = time.time()
+    rng = np.random.default_rng(seed)
+    tensors = build_workload(rng, workload)
+    env = simpy.Environment()
+    sched = H1HonestyBitScheduler(env=env, tensors=tensors, threshold=threshold,
+                                  provenance_on=provenance_on,
+                                  barrier_on=barrier_on, rng=rng)
+    for tile in range(N_TILES):
+        env.process(sched.tile_process(tile))
+    while env.now < cycles_budget and sched.completed < len(tensors):
+        next_check = min(env.now + TAU_STAGES, cycles_budget)
+        env.run(until=next_check)
+        if sched.completed >= len(tensors):
+            break
+        all_empty = all(len(q) == 0 for q in sched.queues)
+        idle = (int(env.now) - sched.last_activity) >= (4 * TAU_STAGES)
+        if all_empty and idle:
+            break
+    cycles_used = int(env.now)
+    completed = sched.completed
+    total = len(tensors)
+    throughput = completed / cycles_used if cycles_used > 0 else 0.0
+    refused = sum(s.refused_writes for s in sched.stats)
+    legit_attempted = sum(s.legit_promotions_attempted for s in sched.stats)
+    legit_refused = sum(s.legit_promotions_refused for s in sched.stats)
+    legit_rate = (legit_refused / legit_attempted) if legit_attempted else 0.0
+    avg_lat = (sched.prop_latency_sum / sched.prop_latency_count
+               if sched.prop_latency_count else 0.0)
+    area_overhead = PROVENANCE_BIT_OVERHEAD if provenance_on else 0.0
+    bw_overhead = PROVENANCE_BIT_OVERHEAD if provenance_on else 0.0
+    per_tile = [
+        {
+            'tile': i,
+            'productive_cycles': s.productive_cycles,
+            'stall_cycles': s.stall_cycles,
+            'refused_writes': s.refused_writes,
+            'legit_promotions_attempted': s.legit_promotions_attempted,
+            'legit_promotions_refused': s.legit_promotions_refused,
+            'hyp_writes_blocked': s.hyp_writes_blocked,
+            'fact_writes': s.fact_writes,
+            'propagation_events': s.propagation_events,
+        }
+        for i, s in enumerate(sched.stats)
+    ]
+    mode = 'h1_provenance_on'
+    if not provenance_on:
+        mode = 'h1_baseline'
+    elif not barrier_on:
+        mode = 'h1_provenance_only_no_barrier'
+    return SimResult(
+        mode=mode, cycles_budget=cycles_budget, cycles_used=cycles_used,
+        completed_tensors=completed, total_tensors=total,
+        throughput_per_cycle=throughput, refused_writes=refused,
+        legit_promotions_attempted=legit_attempted,
+        legit_promotions_refused=legit_refused, legit_reject_rate=legit_rate,
+        avg_propagation_latency=avg_lat, area_overhead_fraction=area_overhead,
+        bandwidth_overhead_fraction=bw_overhead, seed=seed, workload=workload,
+        threshold=threshold, per_tile=per_tile, wall_seconds=time.time() - t0,
+    )
+
+
+__all__ = ['H1HonestyBitScheduler', 'run_h1_simulation', 'run_simulation',
+           'evaluate_falsifiers']
+"
+}
+
+fn py_backend() -> string {
+    return "
+\"\"\"BT-AI2c H1 rollback-rate sensitivity sweep.
+
+Extends the H1 wrapper with a non-zero rollback_rate that charges
+int(rollback_rate * cost * downstream_count) cycles per refused write.
+Sweeps over rates at (workload=full, threshold=8, seeds=50) and finds
+the break-even rate where mean drop crosses the F-AI2c-A 5% bound.
+Output: reports/anomaly/btAI2c_h1_rollback_results.json.
+The break-even rate is computed numerically; never pre-filled.
+\"\"\"
+
+from __future__ import annotations
+
+import json
+import math
+import os
+import sys
+import time
+from typing import Dict, List, Optional, Tuple
+
+# Sibling-source embed: load the parent simulator + H1 wrapper from /tmp
+# (written by the .hexa shim before this file is exec'd). Falls back to
+# the on-disk experiments/anomaly directory when the /tmp copies are absent
+# (e.g. interactive debugging).
+for _candidate in ('/tmp', os.path.dirname(os.path.abspath(__file__))):
+    if _candidate and _candidate not in sys.path:
+        sys.path.insert(0, _candidate)
+
+import numpy as np
+import simpy
+
+from btAI2_honesty_bit_scheduler import (
+    HonestyBitScheduler, N_TILES, PROV_HYPOTHESIS, TAU_STAGES,
+    build_workload, run_simulation,
+)
+
+WORKLOAD = 'full'
+THRESHOLD = 8
+SEEDS = 50
+CYCLES_BUDGET = 10000
+ROLLBACK_RATES = [0.0, 0.01, 0.025, 0.05, 0.1]
+F_AI2C_A_MAX_DROP = 0.05
+
+
+class H1RollbackScheduler(HonestyBitScheduler):
+    \"\"\"H1 wrapper that charges rollback_rate * cost * downstream_count on refuse.\"\"\"
+
+    def __init__(self, *args, rollback_rate=0.0, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.rollback_rate = float(rollback_rate)
+        self._dcount = {t.tid: 0 for t in self.tensors}
+        for t in self.tensors:
+            for i in t.inputs:
+                if i in self._dcount:
+                    self._dcount[i] += 1
+
+    def tile_process(self, tile):
+        env = self.env
+        stats = self.stats[tile]
+        while True:
+            tid = self._scan_ready(tile)
+            if tid is None:
+                stats.stall_cycles += 1
+                yield env.timeout(1)
+                continue
+            t = self.tensors[tid]
+            ready_at = self._ready_input_time(t)
+            yield env.timeout(t.cost)
+            stats.productive_cycles += t.cost
+            new_prov = self._propagate_prov(t)
+            if self.provenance_on:
+                stats.propagation_events += 1
+            blocked = False
+            if self.barrier_on and self.provenance_on:
+                if new_prov == PROV_HYPOTHESIS and t.grade < self.threshold:
+                    stats.refused_writes += 1
+                    stats.hyp_writes_blocked += 1
+                    blocked = True
+                    self.effective_prov[tid] = PROV_HYPOTHESIS
+                    self.produced[tid] = int(env.now)
+                    t.produced_at = self.produced[tid]
+                    self.completed += 1
+                    self._enqueue_consumers(tid)
+                    self.last_activity = int(env.now)
+                    bubble = int(self.rollback_rate * t.cost * self._dcount.get(tid, 0))
+                    yield env.timeout(bubble if bubble > 0 else 0)
+                    continue
+                if new_prov == 0 and t.grade >= self.threshold:
+                    stats.legit_promotions_attempted += 1
+                    if self._maybe_false_positive(t):
+                        stats.legit_promotions_refused += 1
+            if not blocked:
+                if self.provenance_on and new_prov == 0:
+                    stats.fact_writes += 1
+                self.produced[tid] = int(env.now)
+                self.effective_prov[tid] = int(new_prov)
+                t.produced_at = self.produced[tid]
+                self.completed += 1
+                self.prop_latency_sum += max(0, self.produced[tid] - ready_at)
+                self.prop_latency_count += 1
+                self._enqueue_consumers(tid)
+                self.last_activity = int(env.now)
+
+
+def run_one(seed, rollback_rate):
+    base = run_simulation(seed=seed, cycles_budget=CYCLES_BUDGET, threshold=THRESHOLD,
+                         workload=WORKLOAD, provenance_on=False, barrier_on=False)
+    rng = np.random.default_rng(seed)
+    tensors = build_workload(rng, WORKLOAD)
+    env = simpy.Environment()
+    sched = H1RollbackScheduler(env=env, tensors=tensors, threshold=THRESHOLD,
+                                provenance_on=True, barrier_on=True, rng=rng,
+                                rollback_rate=rollback_rate)
+    for tile in range(N_TILES):
+        env.process(sched.tile_process(tile))
+    while env.now < CYCLES_BUDGET and sched.completed < len(tensors):
+        env.run(until=min(env.now + TAU_STAGES, CYCLES_BUDGET))
+        if sched.completed >= len(tensors):
+            break
+        all_empty = all(len(q) == 0 for q in sched.queues)
+        idle = (int(env.now) - sched.last_activity) >= (4 * TAU_STAGES)
+        if all_empty and idle:
+            break
+    used = int(env.now)
+    tp = sched.completed / used if used > 0 else 0.0
+    return base.throughput_per_cycle, tp
+
+
+def aggregate(drops):
+    arr = np.asarray(drops, dtype=float)
+    if not arr.size:
+        return {'n': 0, 'mean': 0.0, 'std': 0.0, 'p50': 0.0, 'p90': 0.0,
+                'p99': 0.0, 'min': 0.0, 'max': 0.0, 'seeds_breaching_5pct': 0}
+    return {'n': int(arr.size), 'mean': float(arr.mean()),
+            'std': float(arr.std(ddof=0)),
+            'p50': float(np.percentile(arr, 50)),
+            'p90': float(np.percentile(arr, 90)),
+            'p99': float(np.percentile(arr, 99)),
+            'min': float(arr.min()), 'max': float(arr.max()),
+            'seeds_breaching_5pct': int(np.sum(arr > F_AI2C_A_MAX_DROP))}
+
+
+def find_break_even(per_rate):
+    \"\"\"Linear interpolation of the rate at which mean drop crosses 5%.\"\"\"
+    s = sorted(per_rate, key=lambda r: r['rollback_rate'])
+    prev = None
+    for entry in s:
+        rate = float(entry['rollback_rate'])
+        mean = float(entry['summary']['mean'])
+        if mean >= F_AI2C_A_MAX_DROP:
+            if prev is None:
+                return rate
+            pr = float(prev['rollback_rate'])
+            pm = float(prev['summary']['mean'])
+            if mean == pm:
+                return rate
+            return pr + (F_AI2C_A_MAX_DROP - pm) / (mean - pm) * (rate - pr)
+        prev = entry
+    return None
+
+
+def main():
+    # Allow override via env vars for smoke tests.
+    seeds = int(os.environ.get('BTAI2C_SWEEP_SEEDS', SEEDS))
+    rates_env = os.environ.get('BTAI2C_SWEEP_RATES')
+    rates = [float(x) for x in rates_env.split(',')] if rates_env else ROLLBACK_RATES
+    cycles_budget_env = os.environ.get('BTAI2C_SWEEP_CYCLES')
+    cycles_budget = int(cycles_budget_env) if cycles_budget_env else CYCLES_BUDGET
+    # Patch module-level constants so run_one() honors the override.
+    globals()['SEEDS'] = seeds
+    globals()['ROLLBACK_RATES'] = rates
+    globals()['CYCLES_BUDGET'] = cycles_budget
+
+    t0 = time.time()
+    per_rate = []
+    per_seed = []
+    for rate in rates:
+        drops = []
+        for seed in range(seeds):
+            base_tp, h1_tp = run_one(seed, rate)
+            drop = (base_tp - h1_tp) / base_tp if base_tp > 0 and math.isfinite(base_tp) else float('inf')
+            drops.append(drop)
+            per_seed.append({'rollback_rate': rate, 'seed': seed,
+                             'baseline_tp': base_tp, 'h1_tp': h1_tp, 'drop': drop})
+        per_rate.append({'rollback_rate': rate,
+                         'summary': aggregate([d for d in drops if math.isfinite(d)])})
+    break_even = find_break_even(per_rate)
+    out = {
+        'schema': 'btAI2c_h1_rollback_sweep.v1',
+        'workload': WORKLOAD, 'threshold': THRESHOLD, 'cycles_budget': cycles_budget,
+        'seeds': seeds, 'rollback_rates': rates,
+        'f_ai2c_a_max_drop': F_AI2C_A_MAX_DROP,
+        'per_rate': per_rate, 'break_even_rollback_rate': break_even,
+        'wall_seconds_total': time.time() - t0, 'per_seed': per_seed,
+    }
+    out_path = os.environ.get('BTAI2C_SWEEP_OUT')
+    if not out_path:
+        out_path = '/Users/ghost/core/n6-architecture/reports/anomaly/btAI2c_h1_rollback_results.json'
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(out, f, indent=2)
+    for entry in per_rate:
+        s = entry['summary']
+        print(f\"rate={entry['rollback_rate']:.4f} mean={s['mean']:.4f} \"
+              f\"p90={s['p90']:.4f} max={s['max']:.4f} \"
+              f\"breach={s['seeds_breaching_5pct']}/{s['n']}\")
+    if break_even is None:
+        print('break_even_rollback_rate=None (no crossing within sweep range)')
+    else:
+        print(f'break_even_rollback_rate={break_even:.6f}')
+    print(f'wrote {out_path}')
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+"
+}
+
+fn build_argv() -> string {
+    let argv = args()
+    let mut user = ""
+    let mut i = 2
+    while i < len(argv) {
+        user = user + " '" + argv[i] + "'"
+        i = i + 1
+    }
+    return user
 }
 
 fn main() -> void {
-  let extra = _user_args(args())
-  let cmd = "python3 '" + SCRIPT_PATH + "'" + _join_args(extra)
-  let r = exec_with_status(cmd)
-  print(r[0])
-  exit(r[1])
+    let tmp_dir = "/tmp"
+    let parent_py = tmp_dir + "/btAI2_honesty_bit_scheduler.py"
+    let h1_py = tmp_dir + "/btAI2c_h1_simulator.py"
+    let driver_py = tmp_dir + "/_hexa_btAI2c_h1_rollback_sweep_shim.py"
+    write_file(parent_py, py_honesty_bit_scheduler())
+    write_file(h1_py, py_h1_simulator())
+    write_file(driver_py, py_backend())
+    let cmd = "python3 " + driver_py + build_argv()
+    let raw = to_string(exec(cmd))
+    print(raw)
 }

@@ -85,7 +85,7 @@
     }
   ],
   "break_even_rollback_rate": null,
-  "wall_seconds_total": 1.233069896697998,
+  "wall_seconds_total": 2.816110849380493,
   "per_seed": [
     {
       "rollback_rate": 0.0,
