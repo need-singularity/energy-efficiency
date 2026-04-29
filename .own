@@ -505,6 +505,14 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   mandatory-sections tech_industry=## 🔧 Tech & Industry Toolkit (HEXA-Industrial family)|min_rows=3|axis=infra
   mandatory-sections computer=## 💻 Computer Toolkit (HEXA-Input family)|min_rows=2|axis=compute
   mandatory-sections marketing=## 📢 Marketing Toolkit (HEXA-Service family)|min_rows=2|axis=compute
+  mandatory-sections millennium=## 🧮 Millennium Toolkit (HEXA-Clay family)|min_rows=3|axis=physics
+  mandatory-sections dimensional=## 👁️ Dimensional Perception Toolkit (HEXA-Sense family)|min_rows=3|axis=physics
+  mandatory-sections music=## 🎵 Music Toolkit (HEXA-Tone family)|min_rows=3|axis=culture
+  mandatory-sections linguistics=## 📝 Linguistics Toolkit (HEXA-Word family)|min_rows=3|axis=culture
+  mandatory-sections crypto=## 🔐 Crypto Toolkit (HEXA-Cipher family)|min_rows=3|axis=compute
+  mandatory-sections astronomy=## 🔭 Astronomy Toolkit (HEXA-Cosmos family)|min_rows=3|axis=space
+  mandatory-sections hygiene=## 🧴 Hygiene Toolkit (HEXA-Cleanse family)|min_rows=2|axis=life
+  mandatory-sections fantasy=## 🐉 Fantasy Toolkit (HEXA-Myth family)|min_rows=3|axis=sf-ufo
   expected-header-row | 🛸 | Tool | One-liner | Everyday analogy | What it does | <Mainstream> contrast | Doc |
   status live
   since 2026-04-29

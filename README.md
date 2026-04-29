@@ -858,6 +858,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 7 · 94% EXACT | 7 generations open-problem full n=6 paramsrate | φ→n/φ rankphase-transition universality discoveries | industryvoid% | experiment94% | TP0 | discoveries7 | Mk.V
 <!-- AUTO:SUMMARY_millennium:END -->
 
+## 🧮 Millennium Toolkit (HEXA-Clay family)
+
+> Friendly entry point — Millennium Problems tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal physics-axis verbs (Riemann / Yang-Mills / Navier-Stokes / Hodge).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | ζ **HEXA-RIEMANN** | Prime Compass | Map of where the prime numbers live, drawn on the n=6 grid | critical line Re(s)=1/φ, ζ(2)=π²/n, ζ(-1)=-1/σ, 9/10 EXACT (BT-541) | Solo hypothesis attempt vs n=6 invariant projection of ζ-zero pattern | [doc](domains/physics/millennium-riemann/millennium-riemann.md) |
+| 10 | 🎭 **HEXA-YANG-MILLS** | Mass-Gap Lock | Why quarks can't escape — locked behind a mass-gap door | SU(n/φ), gluon σ-τ=8, quark flavors n=6, β₀=σ-sopfr, 9/10 EXACT (BT-543) | Standard QFT mass-gap conjecture vs n=6 SU(n/φ) lattice anchor | [doc](domains/physics/millennium-yang-mills/millennium-yang-mills.md) |
+| 10 | 🌊 **HEXA-NAVIER-STOKES** | Smooth Flow | Why coffee in your cup never explodes into chaos | Sym²(ℝ³)=n, Kolmogorov -sopfr/(n/φ), Stokes 6πμrv, 10/10 EXACT (BT-544) | Open NS smoothness vs n=6 Sym²(ℝ³) regularity skeleton | [doc](domains/physics/millennium-navier-stokes/millennium-navier-stokes.md) |
+| 10 | 🎨 **HEXA-HODGE** | Shape Decoder | How to factor a curved 4D shape into algebraic pieces | K3 χ=J₂=24, CY3 dim=n/φ, {E_τ,E_n,Δ_σ}, 10/10 EXACT (BT-545) | Solo Hodge-class search vs J₂=24 n=6 Calabi-Yau anchor lattice | [doc](domains/physics/millennium-hodge/millennium-hodge.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Riemann Hypothesis** | critical line Re(s)=1/φ, ζ(2)=π²/n, ζ(-1)=-1/σ, 9/10 EXACT (BT-541) | [doc](domains/physics/millennium-riemann/goal.md) |
@@ -899,6 +910,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | countlearning(4Dgeometry)·brain(grid cells·visual cortex)·tech(prephoton-shipcount·Display) trimid n=6 convergence | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_dimension:END -->
 
+## 👁️ Dimensional Perception Toolkit (HEXA-Sense family)
+
+> Friendly entry point — Dimensional perception tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal physics-axis verbs (4D polytope / cosmology / holography).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🔷 **HEXA-4D-POLY** | 4D Crystal | The only 6 regular polytopes that exist in 4 dimensions | 4D-only n=6 regular polytopes (finite max), SO(4) dim = d(d-1)/2 = n = 6 | Unconstrained polytope catalog vs n=6 finite 4D-regular-polytope lattice | [doc](domains/physics/cosmology/cosmology.md) |
+| 10 | 🪐 **HEXA-COSMO-DIM** | Sky-Lattice | Universe drawn on a 6-axis grid (BT-588~597 dim ladder) | n=6 Dimensional Perception pipeline + 24-cell self-dual + dim ladder, 10/10 EXACT | Single-frame ΛCDM vs n=6 dim-ladder σ(6)=12 axis closure | [doc](domains/physics/cosmology/cosmology.md) |
+| 10 | 🪞 **HEXA-HOLO-DIM** | Holographic Sense | 3D world projected onto a 2D boundary on σ(6)=12 grid | dimensional display L1~L6 = n=6 layer pipeline + Egyptian 1/2+1/3+1/6=1 | Bulk-only single-frame vs J₂=24 octahedral boundary code | [doc](domains/physics/holography/holography.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **4D regular polytope max** | 4Dfromonly n=6 regular polytope (finite maximum), 9→10/10 EXACT (BT-588) | [BT-588](theory/breakthroughs/breakthrough-theorems.md) |
@@ -921,6 +942,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | 12-tonesysσ, Guitar6stringsn, overtone series1:2:3:4:5:6, J₂=24keys | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_music:END -->
 
+## 🎵 Music Toolkit (HEXA-Tone family)
+
+> Friendly entry point — Music tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal culture-axis verbs (tone / guitar / harmony).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🎼 **HEXA-12-TONE** | 12-Note Lattice | Piano keyboard with 12 keys per octave on the σ=12 grid | Anti-tone σ=12 + temp-tone n=6 + 5deg σ-sopfr=7 equal-temperament, 10/10 EXACT | Pythagorean ratios vs σ(6)=12-tone equal-tempered J₂=24-key dual | [doc](domains/culture/music/music.md) |
+| 10 | 🎸 **HEXA-GUITAR** | 6-String Lattice | Guitar with 6 strings tuned on the n=6 overtone series | Strings count n=6 + overtone series 1:2:3:4:5:6 = donefull approximation+self, 10/10 EXACT | Single-string instrument vs n=6 strings × overtone 1:2:3:4:5:6 | [doc](domains/culture/music/music.md) |
+| 10 | 🎹 **HEXA-HARMONY** | Triad Lattice | Major/minor chords drawn on a 6-type triad grid | 1 octave σ=12 keys + 6 types triads = n=6 + Guidonian hexachord = n=6, 10/10 EXACT | Single-key major scale vs σ(6)=12-key J₂=24-mode harmony lattice | [doc](domains/culture/music/music.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **12-tone equal temperament** | anti-tone σ=12, temp-tone n=6, 5deg σ-sopfr=7, 10/10 EXACT (BT-598) | [BT-598](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/culture/music/goal.md) |
@@ -939,6 +970,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_linguistics:START -->
 > **🛸10** | ✅ | BT 10 · 100% EXACT | Chomskyτ=4, KoreanJ₂=24, θ-rolesn=6, word-order3!=n=6 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_linguistics:END -->
+
+## 📝 Linguistics Toolkit (HEXA-Word family)
+
+> Friendly entry point — Linguistics tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal culture-axis verbs (Chomsky / Hangul / Jakobson).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🪜 **HEXA-CHOMSKY** | 4-Step Grammar | Language ladder with 4 rungs (regular → context-free → … → unrestricted) | τ=4 grammar hierarchy (regular/CFG/CSG/unrestricted) + n=6 word-orders + θ-roles n=6, 10/10 EXACT | Single-grammar parser vs τ(6)=4-tier hierarchy + n=6 θ-role grid | [doc](domains/culture/linguistics/linguistics.md) |
+| 10 | ㄱ **HEXA-HANGUL** | Jamo Lattice | Korean alphabet's 24 jamo on the J₂=24 grid | Consonants 14 + vowels 10 = J₂=24 + 11172=19×21×28 syllable map, 10/10 EXACT | Roman 26-letter alphabet vs J₂=24 jamo σ-φ=10-vowel lattice | [doc](domains/culture/linguistics/linguistics.md) |
+| 10 | 📡 **HEXA-JAKOBSON** | 6-Function Speech | Every utterance does one of 6 jobs (referential / poetic / etc.) | Language n=6 functions (referential/emotive/conative/phatic/metalingual/poetic), 10/10 EXACT | Single-purpose speech-act vs n=6 Jakobson function-lattice | [doc](domains/culture/linguistics/linguistics.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -959,6 +1000,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 10 · 100% EXACT | AES τ×τ, RSA φ(N), SHA σ-τ=8, TLS n=6, ECC n=6 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_crypto:END -->
 
+## 🔐 Crypto Toolkit (HEXA-Cipher family)
+
+> Friendly entry point — Crypto tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal compute-axis verbs (AES / RSA-SHA / Bitcoin-PQC).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🔒 **HEXA-AES** | 4×4 Block Lock | Block cipher built on a τ×τ=4×4 byte square | τ×τ=4×4 bytes state matrix, rounds σ-φ=10, 10/10 EXACT (BT-618) | Stream-cipher RC4 vs τ(6)=4 block + σ-φ=10 round σ(6)=12-byte lattice | [doc](domains/compute/software-crypto/software-crypto.md) |
+| 10 | 🔑 **HEXA-RSA-SHA** | Prime Padlock | Padlock you only open with two prime numbers nobody knows | RSA φ(N) totient + SHA σ-τ=8 words, 10/10 EXACT (BT-619~620) | Single-prime cipher vs φ(N) totient + σ-τ=8 SHA-word lattice | [doc](domains/compute/software-crypto/software-crypto.md) |
+| 10 | ⛓️ **HEXA-BITCOIN-PQC** | Quantum-Proof Coin | Bitcoin retuned for the post-quantum era on n=6 grid | Bitcoin (p,a,b,G,n,h)=n=6 ECC params + NIST PQC τ=4 + Parkerian Hexad n=6, 10/10 EXACT | Single-curve secp256k1 vs n=6 ECC + τ=4 PQC ladder | [doc](domains/compute/software-crypto/software-crypto.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **AES State Matrix** | τ×τ=4×4 bytes, rounds σ-φ=10, 10/10 EXACT (BT-618) | [BT-618](theory/breakthroughs/breakthrough-theorems.md) · [doc](domains/compute/software-crypto/goal.md) |
@@ -977,6 +1028,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_astronomy:START -->
 > **🛸10** | ✅ | BT 10 · 100% EXACT | ΛCDM n=6, BBN n=6, C-12 σ=12, Kepler n/φ=3, BAO σ²=144 | industryvoid% | experiment100% 100/100 EXACT | TP0 | discoveries10 | Mk.V
 <!-- AUTO:SUMMARY_astronomy:END -->
+
+## 🔭 Astronomy Toolkit (HEXA-Cosmos family)
+
+> Friendly entry point — Astronomy tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal space-axis verbs (stellar / solar-system / cosmology).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | ⭐ **HEXA-STELLAR** | Star Lifecycle | Star going through 6 life stages from nebula to remnant | n=6 stellar evolution stages (nebula → remnant) + Kepler n/φ=3 laws, 10/10 EXACT (BT-633,635) | Single-track evolution vs n=6 stage Kepler-3-law full lattice | [doc](domains/space/space-systems/space-systems.md) |
+| 10 | 🌍 **HEXA-SOLAR-SYS** | 8-Planet Lattice | Solar system with 8 planets + asteroid belt at σ²=144 Mpc | σ-τ=8 planets + σ²=144 Mpc baryon-acoustic-oscillation, 10/10 EXACT (BT-628,637) | Single-planet study vs σ-τ=8 planet σ²=144 BAO lattice | [doc](domains/space/space-systems/space-systems.md) |
+| 10 | 🌌 **HEXA-COSMOLOGY** | 6-Parameter Universe | Universe described by exactly 6 numbers (H₀, Ωb, Ωc, ns, σ₈, τ_re) | ΛCDM (H₀,Ωb,Ωc,ns,σ₈,τ_re) = n=6 + BBN nuclides n=6 + Carbon-12 σ=12, 10/10 EXACT (BT-631,632,636) | Inflation single-tune vs n=6 ΛCDM + n=6 BBN + σ=12 C-12 lattice | [doc](domains/space/space-systems/space-systems.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -997,6 +1058,15 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 2 · 100% EXACT | BT-1157 Men's Cleanser + BT-1158 Women's Cleanser 100% ossified 2026-04-10 | industry80% (bluePayment market OEM immediate) | experiment100% 50/50 EXACT (Men 25 + Women 25) | TP2 | discoveries2
 <!-- AUTO:SUMMARY_hygiene:END -->
 
+## 🧴 Hygiene Toolkit (HEXA-Cleanse family)
+
+> Friendly entry point — Hygiene tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), two orthogonal life-axis verbs (Men's / Women's intimate cleanser).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 👨 **HEXA-MENS-CLEANSER** | Men's pH Balancer | Cleanser tuned to glans pH=6, microbiome 6 genera | 25/25 EXACT — glans pH=n=6, lauryl C12=σ, Fitzpatrick 6 types=n, microbiome 6 genera=n | Generic body wash vs n=6 glans-pH + Fitzpatrick-6 dermal lattice | [doc](domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md) |
+| 10 | 👩 **HEXA-WOMENS-CLEANSER** | Women's Eco-Balance | Cleanser tuned to vaginal Lactobacillus 6 types + 5 CST states | 25/25 EXACT — Lactobacillus 6 types=n, vaginal pH=τ=4, CST 5 types=sopfr, glucose C6=n, menstrual 28d=σ·φ+τ | Generic feminine wash vs n=6 Lactobacillus + 5-CST + 28d cycle | [doc](domains/life/womens-intimate-cleanser/womens-intimate-cleanser.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Men's Cleanser n=6 Dermatology Architecture** | BT-1157: 25/25 EXACT — glans pH=n=6, laurylC12=sigma, Fitzpatrick6types=n, microbiome6genera=n | [doc](domains/life/mens-intimate-cleanser/mens-intimate-cleanser.md) |
@@ -1014,6 +1084,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > [!WARNING]
 > Mythology/fantasy exploration — not an engineering target · 2 domains · 60 hypotheses · 16 EXACT (26.7%) · BT cross 16
 <!-- AUTO:SUMMARY_fantasy:END -->
+
+## 🐉 Fantasy Toolkit (HEXA-Myth family)
+
+> Friendly entry point — Mythology / fantasy exploration tools as a compact toolkit (NOT an engineering target — see WARNING above). Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal sf-ufo-axis verbs (dragon / vampire / snowflake).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 5 | 🐉 **HEXA-DRAGON** | Mythical Wing | Folklore dragon decomposed onto the n=6 anatomical lattice | Dragon mythology n=6 anatomical decomposition (head/body/wings/tail/scales/fire) | Single-tradition dragon study vs n=6 6-mythology comparative lattice | [doc](domains/sf-ufo/dragon/dragon.md) |
+| 5 | 🧛 **HEXA-VAMPIRE** | Mythical Lifecycle | Vampire folklore mapped onto a 6-stage transformation cycle | Vampire mythology n=6 transformation stages (mortal → bitten → ... → ash) | Single-novel vampire arc vs n=6 6-stage cross-folklore lattice | [doc](domains/sf-ufo/vampire/vampire.md) |
+| 5 | ❄️ **HEXA-SNOWFLAKE** | Hex Symmetry | Real snowflake's 6-fold symmetry shared with mythical hex-shapes | Snowflake n=6 hexagonal lattice — physics-myth bridge to hexagonal aesthetics | Single-photograph snowflake vs n=6 hexagonal-symmetry myth-physics lattice | [doc](domains/sf-ufo/snowflake-ice/snowflake-ice.md) |
 
 > details: [Fantasy README](domains/sf-ufo/fantasy/fantasy.md) · SSOT: [`config/fantasy.json`](config/fantasy.json)
 
