@@ -113,6 +113,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸8** | ✅ | BT 9개 82.2%EXACT | DSE 2,400+1M | 산업87% (7 devices) | 실험43% TP confirmed | 물리한계10 | TP35 | 발견15 | Cross-DSE 8 domains | evolution 5stages | Mk.V
 <!-- AUTO:SUMMARY_fusion:END -->
 
+## 🔥 Fusion Toolkit (HEXA-Fusion family)
+
+> Friendly entry point — Fusion-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal energy-axis verbs.
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🔥 **HEXA-FUSION** | Sun-in-a-Bottle | Plasma confined like the sun's core squeezed into a magnetic jar | 12 fusion-archetype reactor closure, 122/122 EXACT, BT-97~102+291~298 | Single-tokamak ITER vs σ(6)=12-archetype unified lattice | [doc](domains/energy/fusion/fusion.md) |
+| 10 | 🔬 **HEXA-TTF** | Desktop Sun | Microwave-sized fusion device on the lab bench | 1m³ p-¹¹B aneutronic, B=σ·τ=48T, T=300keV, Q=τ=4, 14/14 PASS | Reactor-scale ITER vs σ(6)=12-vertex tabletop module | [doc](domains/energy/tabletop-fusion/tabletop-fusion.md) |
+| 10 | 🏭 **HEXA-FPP** | Fusion Power Plant | Power station running on fused atoms instead of burning coal | Full powerplant integration on n=6 8-stage pipeline | Single-shot fusion lab vs τ(6)=4-state full-cycle plant | [doc](domains/energy/fusion-powerplant/fusion-powerplant.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v5 | **Ultimate Fusion Reactor** | 122/122 EXACT (v4 42 universal-nuclear-physics + v5 80 engineering-layer new), BT-97~102+291~298+1169~1174, Cross-DSE 12, TP42, Python 80/80 PASS, 12 Fusion Archetype closure proof | [doc](domains/energy/fusion/fusion.md) |
@@ -133,6 +143,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_chip:START -->
 > **🛸7** | ✅ | BT 13개 74.5%EXACT | DSE 3,000 | 산업92.6% (6 vendors) | 물리한계10 | TP28 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_chip:END -->
+
+## 💻 Chip Toolkit (HEXA-Silicon family)
+
+> Friendly entry point — Chip-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal compute-axis verbs spanning the von-Neumann boundary.
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 💻 **HEXA-1-DIGITAL** | Square-MAC Engine | A pocket calculator with 288 little adders running in lockstep | σ²=144 SM × τ=4 pipe × φ=2 issue = 288 MAC/cycle, 288 TOPS/W | H100 GPU vs Mk.I=Exynos 2500 SF3P 4.8× efficient | [doc](domains/compute/chip-design/hexa-1-digital/hexa-1-digital.md) |
+| 10 | 🧠 **HEXA-2-PIM** | Memory-that-Thinks | Library where each shelf can read its own books and add them up | DRAM row buffer σ·J₂=288 ALU/bank — von Neumann dismantle, 60 TOPS/W | HBM2-PIM Aquabolt-XL vs σ·J₂=288 / bank in-place compute | [doc](domains/compute/chip-design/hexa-2-pim/hexa-2-pim.md) |
+| 10 | 📚 **HEXA-3D-STACK** | Skyscraper Silicon | Wafers stacked like floors in a tower with elevators every 2μm | σ=12 wafer + φ=2μm TSV + 144× density vs single-die plain | Samsung X-Cube TSV 40μm vs σ·J₂=288 vertical lane/mm² | [doc](domains/compute/chip-design/hexa-3d-stack/hexa-3d-stack.md) |
+| 10 | 🏭 **HEXA-WAFER** | Whole-Wafer Chip | One giant chip carved from a whole dinner plate of silicon | σ²=144 tile + σ=12 spare row+col + 2D torus τ=4 hops + 48 GB SRAM | Cerebras WSE-3 vs σ²=144-tile self-healing array | [doc](domains/compute/chip-design/hexa-wafer/hexa-wafer.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -269,6 +290,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸10** | ✅ | BT 11개 100%EXACT | DSE 3,600 | 산업100% | 실험100% | 물리한계10 | TP28 | 발견10 | CrossDSE 8domains | Mk.V
 <!-- AUTO:SUMMARY_materials:END -->
 
+## 🧬 Materials Toolkit (HEXA-Matter family)
+
+> Friendly entry point — Material-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal materials-axis verbs.
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🧪 **HEXA-MATERIAL-SYNTH** | Universal Forge | Master kitchen that cooks any material from raw ingredients | 8-stage material→universal pipeline, 179/179 EXACT, DSE 3,600, 36 hypotheses 100% | Single-recipe melt vs n=6 8-stage σ(6)=12 archetype synthesis | [doc](domains/materials/material-synthesis/material-synthesis.md) |
+| 10 | 🪨 **HEXA-CONCRETE** | Smart Cement | Concrete mix that knows its own strength curve as it cures | Concrete-technology architecture on σ(6)=12 phase invariants | Single-W/C-ratio ASTM mix vs τ(6)=4-state cure-prediction | [doc](domains/materials/concrete-technology/concrete-technology.md) |
+| 10 | 🧷 **HEXA-ARAMID** | Bullet-Stop Thread | Thread woven so tightly bullets bounce off the cloth | Aramid fiber on σ(6)=12 hydrogen-bond crystallinity lattice | Kevlar standalone fiber vs n=6 aramid-aramid composite map | [doc](domains/materials/aramid/aramid.md) |
+| 10 | 🏺 **HEXA-CERAMICS** | Heat-Proof Pottery | Coffee mug strong enough to hold a rocket nozzle | Ceramics architecture on σ(6)=12 packing + τ(6)=4 sintering states | Single-grade Al₂O₃ vs σ(6)=12 ceramic-class lattice | [doc](domains/materials/ceramics/ceramics.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v6 | **Ultimate Material Synthesis 8-stage** | material → process → assembler → control → factory → transform → universal → ultimate, DSE 3,600, 12 BT 179/179 EXACT, 36 hypotheses 100% | [doc](domains/materials/material-synthesis/material-synthesis.md) |
@@ -347,6 +379,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_software:START -->
 > **🛸6** | ✅ | BT 5개 95.1%EXACT | 산업98.6% | 실험100% RFC/ISO/NIST | 물리한계10 | TP28 | 발견10 | Mk.V | CrossDSE5-Way
 <!-- AUTO:SUMMARY_software:END -->
+
+## 💬 Software & Infra Toolkit (HEXA-Stack family)
+
+> Friendly entry point — Software-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal compute-axis verbs spanning language→OS→network.
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 💻 **HEXA-LANG** | Sextet Compiler | Programming language with exactly 6 verbs that say everything | 76/76 EXACT, BT-329(20)+113(18)+114(10)+115(12), 10 impossibility-theorem, DSE 7,560 | Rust/Go/Python multi-paradigm vs σ(6)=12-form n=6 verb-set | [doc](domains/compute/programming-language/programming-language.md) |
+| 10 | 🍎 **HEXA-MACOS** | Macbook OS | Mac operating system retuned around the n=6 invariant | 80/80 EXACT, BT-115/162/180/344~346, 8-stage DSE, GCD QoS=n=6, Egyptian cache | Stock Darwin/XNU vs τ(6)=4-state σ(6)=12-bin scheduler | [doc](domains/compute/hexa-macos/hexa-macos.md) |
+| 10 | 📱 **HEXA-IOS** | iPhone Heart | iPhone OS with 6-core CPU + 6-core GPU + 6" screen on n=6 | 86/86 EXACT, BT-115/162/180/48/58/66/113/123/211 10BT cross, 8-stage DSE 1024 combos | Stock iOS vs n=6·CPU+n=6·GPU+n=6"screen σ(6)=12 lattice | [doc](domains/compute/hexa-ios/hexa-ios.md) |
+| 10 | 🌐 **HEXA-NETWORK** | Universal Pipe | One protocol stack that talks to 6G/5G/WiFi/Starlink/LoRa/BT | 50/50 EXACT, σ=12 subcarriers, J₂=24 WiFi channels, τ=4 TCP/IP, 6G/5G/WiFi6/Starlink/LoRaWAN/BT6.0 | Single-stack TCP/IP vs σ(6)=12-channel J₂=24 multi-radio lattice | [doc](domains/compute/network-protocol/network-protocol.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
