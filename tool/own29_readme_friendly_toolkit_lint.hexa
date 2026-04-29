@@ -1,0 +1,263 @@
+#!hexa strict
+// tool/own29_readme_friendly_toolkit_lint.hexa — README.md friendly Molecular
+// Toolkit (HEXA family) table HARD-block enforcement (own 29).
+//
+// Authored 2026-04-29 (cycle 25) under user 'lint 강화' + 'hexa 로 작성' directive.
+// Companion to python `tool/own_doc_lint.py` own#29 checker (which keeps the
+// unified report writer); this hexa tool is the standalone canonical gate
+// per raw 9 hexa-only and is what cron / CI may invoke directly.
+//
+// @tool(slug="own29_readme_friendly_toolkit_lint", desc="own 29 HARD lint on README.md — Biology friendly Molecular Toolkit (HEXA family) 6-column table mandatory: H2 heading present + exact 6-column header + ≥4 data rows + each row's [doc](domains/biology/<slug>/<slug>.md) link resolves to existing file")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own29_readme_friendly_toolkit_lint.hexa [--selftest])
+// @omega-saturation-exempt("README is single-file SSOT; lint is O(file-size) line-walk + N=4 file-existence checks; converges trivially")
+// @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let README_PATH = REPO_ROOT + "/README.md"
+let HEADING_LINE = "## 🧬 Molecular Toolkit (HEXA family)"
+let HEADER_ROW   = "| Tool | One-liner | Everyday analogy | What it does | AlphaFold contrast | Doc |"
+
+fn _starts_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(0, len(p)) == p
+}
+
+fn _contains(s: string, needle: string) -> bool {
+  if len(needle) == 0 { return true }
+  if len(s) < len(needle) { return false }
+  let mut i = 0
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _find_from(s: string, needle: string, start: int) -> int {
+  if len(needle) == 0 { return start }
+  if len(s) < len(needle) { return -1 }
+  let mut i = start
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return i }
+    i = i + 1
+  }
+  return -1
+}
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _run_lint(text: string) -> int {
+  let mut violations = 0
+
+  // axis (a) — H2 heading present
+  if !_contains(text, HEADING_LINE) {
+    println("[own29] FAIL axis (a) — missing heading: " + HEADING_LINE)
+    violations = violations + 1
+  } else {
+    println("[own29] PASS axis (a) — H2 heading present")
+  }
+
+  // axis (b) — exact 6-column header row
+  if !_contains(text, HEADER_ROW) {
+    println("[own29] FAIL axis (b) — missing exact 6-column header row")
+    return violations + 1
+  }
+  println("[own29] PASS axis (b) — 6-column header row present")
+
+  // axes (c)+(d) — locate header line index, walk data rows
+  let lines = split(text, "\n")
+  let n = len(lines)
+  let mut hdr_idx = -1
+  let mut i = 0
+  while i < n {
+    if lines[i] == HEADER_ROW {
+      hdr_idx = i
+      i = n
+    } else {
+      i = i + 1
+    }
+  }
+  if hdr_idx < 0 {
+    println("[own29] FAIL axis (b) — header substring matched but exact-line lookup failed")
+    return violations + 1
+  }
+
+  // Skip header + alignment row
+  let data_start = hdr_idx + 2
+  let mut data_rows = []
+  let mut j = data_start
+  let upper = data_start + 50
+  while j < n && j < upper {
+    let raw = lines[j]
+    let ln = raw.trim()
+    if len(ln) == 0 { j = upper }
+    else {
+      if !_starts_with(ln, "|") { j = upper }
+      else {
+        data_rows.push(ln)
+        j = j + 1
+      }
+    }
+  }
+
+  let row_count = len(data_rows)
+  if row_count < 4 {
+    println("[own29] FAIL axis (c) — need >=4 data rows, found " + to_string(row_count))
+    violations = violations + 1
+  } else {
+    println("[own29] PASS axis (c) — " + to_string(row_count) + " data rows present")
+  }
+
+  // axis (d) — each row's [doc](...) link resolves
+  let mut k = 0
+  while k < row_count {
+    let row = data_rows[k]
+    let doc_open = _find_from(row, "[doc](", 0)
+    if doc_open < 0 {
+      println("[own29] FAIL axis (d) — row " + to_string(k+1) + " missing [doc](...) link")
+      violations = violations + 1
+    } else {
+      let path_start = doc_open + 6
+      let path_end = _find_from(row, ")", path_start)
+      if path_end < 0 {
+        println("[own29] FAIL axis (d) — row " + to_string(k+1) + " malformed [doc] link")
+        violations = violations + 1
+      } else {
+        let link_path = row.substring(path_start, path_end)
+        let abs_path = REPO_ROOT + "/" + link_path
+        if !_file_exists(abs_path) {
+          println("[own29] FAIL axis (d) — row " + to_string(k+1) + " unresolved doc link: " + link_path)
+          violations = violations + 1
+        }
+      }
+    }
+    k = k + 1
+  }
+
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own29] selftest — fixture matrix")
+  let mut pass_count = 0
+  let mut total = 0
+
+  // Fixture 1: PASS — minimal 4-row table with real doc links
+  total = total + 1
+  let pass_text = HEADING_LINE + "\n\n"
+    + "> Friendly entry point.\n\n"
+    + HEADER_ROW + "\n"
+    + "|:---:|---|---|---|---|:---:|\n"
+    + "| 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/hexa-weave/hexa-weave.md) |\n"
+    + "| 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](domains/biology/hexa-nanobot/hexa-nanobot.md) |\n"
+    + "| ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](domains/biology/hexa-ribozyme/hexa-ribozyme.md) |\n"
+    + "| 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n\n"
+    + "Tail.\n"
+  let v1 = _run_lint(pass_text)
+  if v1 == 0 {
+    println("[own29] fixture 1 PASS — minimal 4-row table accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29] fixture 1 FAIL — " + to_string(v1) + " violations on 4-row PASS fixture")
+  }
+
+  // Fixture 2: FAIL — heading missing
+  total = total + 1
+  let fix2 = HEADER_ROW + "\n"
+    + "|:---:|---|---|---|---|:---:|\n"
+    + "| 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/hexa-weave/hexa-weave.md) |\n"
+  let v2 = _run_lint(fix2)
+  if v2 >= 1 {
+    println("[own29] fixture 2 PASS — missing heading rejected (" + to_string(v2) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29] fixture 2 FAIL — should reject missing heading")
+  }
+
+  // Fixture 3: FAIL — only 3 rows
+  total = total + 1
+  let fix3 = HEADING_LINE + "\n\n"
+    + HEADER_ROW + "\n"
+    + "|:---:|---|---|---|---|:---:|\n"
+    + "| 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/hexa-weave/hexa-weave.md) |\n"
+    + "| 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](domains/biology/hexa-nanobot/hexa-nanobot.md) |\n"
+    + "| ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](domains/biology/hexa-ribozyme/hexa-ribozyme.md) |\n"
+  let v3 = _run_lint(fix3)
+  if v3 >= 1 {
+    println("[own29] fixture 3 PASS — 3-row table rejected (" + to_string(v3) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29] fixture 3 FAIL — should reject <4 rows")
+  }
+
+  // Fixture 4: FAIL — bad doc link (non-existent path)
+  total = total + 1
+  let fix4 = HEADING_LINE + "\n\n"
+    + HEADER_ROW + "\n"
+    + "|:---:|---|---|---|---|:---:|\n"
+    + "| 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](domains/biology/nonexistent/x.md) |\n"
+    + "| 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](domains/biology/hexa-nanobot/hexa-nanobot.md) |\n"
+    + "| ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](domains/biology/hexa-ribozyme/hexa-ribozyme.md) |\n"
+    + "| 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n"
+  let v4 = _run_lint(fix4)
+  if v4 >= 1 {
+    println("[own29] fixture 4 PASS — bad doc link rejected (" + to_string(v4) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29] fixture 4 FAIL — should reject unresolved doc link")
+  }
+
+  if pass_count == total {
+    println("__OWN29_SELFTEST_RESULT__ PASS (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN29_SELFTEST_RESULT__ FAIL (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut cli = []
+  let mut ai = 0
+  while ai < len(raw_args) {
+    let a = raw_args[ai]
+    if !_starts_with(a, "/") && !_contains(a, "hexa") {
+      cli.push(a)
+    }
+    ai = ai + 1
+  }
+  // Simpler: take all argv beyond invocation prefix
+  let mut want_selftest = false
+  let mut bi = 0
+  while bi < len(raw_args) {
+    if raw_args[bi] == "--selftest" || raw_args[bi] == "selftest" {
+      want_selftest = true
+    }
+    bi = bi + 1
+  }
+
+  if want_selftest {
+    _selftest()
+    return
+  }
+
+  if !_file_exists(README_PATH) {
+    println("[own29] FAIL — README.md missing at: " + README_PATH)
+    exit(1)
+  }
+  let text = read_file(README_PATH)
+  let v = _run_lint(text)
+  if v == 0 {
+    println("__OWN29_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN29_RESULT__ FAIL (" + to_string(v) + " violations)")
+    exit(1)
+  }
+}

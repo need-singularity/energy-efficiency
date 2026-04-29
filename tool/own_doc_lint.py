@@ -40,10 +40,10 @@ OWN1_ALLOWLIST_PATH = REPO_ROOT / "tool" / "own1_legacy_allowlist.json"
 # Rules with active violations on promotion day were grandfathered via
 # OWN{4,6,12}_LEGACY_ALLOWLIST inline sets below — new files outside
 # those allowlists must comply immediately.
-HARD_RULES: set[int] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16}
+HARD_RULES: set[int] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 29}
 
 # Target rule IDs — the 14 DOC-ONLY rules this linter enforces.
-TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16]
+TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 29]
 # Note: own#14 (readme-sealed) lives in readme_sealed_check.py.
 # own#13/#15/#17..#21 already have runtime verifiers (ouroboros detector, .doc-rules, hexa tools).
 
@@ -51,7 +51,7 @@ TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16]
 # Phase 2 (2026-04-24): extended heuristic coverage to own#2/#5/#8/#9/#10/#12.
 # These checks are intentionally conservative — false positives are preferred
 # over false negatives and each flag is a review signal, not a hard fact.
-AUTO_VERIFIABLE = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16}
+AUTO_VERIFIABLE = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 29}
 MANUAL_ONLY: set[int] = set()
 # Rationale captured in the report + final summary.
 
@@ -1014,6 +1014,107 @@ def check_rule_12_miss_criteria() -> list[dict[str, str]]:
 # Orchestrator
 # -----------------------------------------------------------------------------
 
+def check_rule_29_readme_friendly_toolkit() -> list[dict[str, str]]:
+    """own#29 HARD enforcement — README.md must contain the friendly Molecular
+    Toolkit (HEXA family) table immediately before the Biology product table.
+
+    4-axis check:
+      (a) `## 🧬 Molecular Toolkit (HEXA family)` H2 heading present
+      (b) 6-column header row exact: `| Tool | One-liner | Everyday analogy |
+          What it does | AlphaFold contrast | Doc |`
+      (c) >=4 data rows (one per HEXA biology sister)
+      (d) each data row's last cell contains a markdown link
+          `[doc](domains/biology/<slug>/<slug>.md)` where the file exists
+
+    Established 2026-04-29 (cycle 25) via user 'lint 강화' directive.
+    """
+    violations: list[dict[str, str]] = []
+    readme_path = REPO_ROOT / "README.md"
+    if not readme_path.is_file():
+        return [{
+            "rule": "own#29",
+            "path": "README.md",
+            "detail": "README.md missing at repo root",
+        }]
+    text = readme_path.read_text(encoding="utf-8", errors="replace")
+
+    # axis (a): heading
+    heading = "## 🧬 Molecular Toolkit (HEXA family)"
+    if heading not in text:
+        violations.append({
+            "rule": "own#29",
+            "path": "README.md",
+            "detail": f"missing heading line: '{heading}'",
+        })
+
+    # axis (b): header row exact
+    expected_header = "| Tool | One-liner | Everyday analogy | What it does | AlphaFold contrast | Doc |"
+    if expected_header not in text:
+        violations.append({
+            "rule": "own#29",
+            "path": "README.md",
+            "detail": f"missing 6-column header row exact: '{expected_header}'",
+        })
+        # Without the header, downstream row checks become noisy; return early.
+        return violations
+
+    # axes (c)+(d): locate the table block immediately after the header line and
+    # walk data rows until a non-table line ends the block.
+    lines = text.splitlines()
+    try:
+        header_idx = lines.index(expected_header)
+    except ValueError:
+        # Defensive: header substring matched but exact-line lookup failed
+        # (e.g. trailing whitespace). Treat as failed axis (b).
+        violations.append({
+            "rule": "own#29",
+            "path": "README.md",
+            "detail": "header row substring present but no exact line match (check trailing whitespace)",
+        })
+        return violations
+
+    # Skip the alignment row (`|:----:|...`) right after the header.
+    data_start = header_idx + 2
+    data_rows: list[str] = []
+    for i in range(data_start, min(data_start + 50, len(lines))):
+        ln = lines[i].strip()
+        if not ln:
+            break
+        if not ln.startswith("|"):
+            break
+        data_rows.append(ln)
+
+    if len(data_rows) < 4:
+        violations.append({
+            "rule": "own#29",
+            "path": "README.md",
+            "detail": f"need >=4 data rows (one per HEXA sister); found {len(data_rows)}",
+        })
+
+    # axis (d): each row's last non-empty cell must be a `[doc](...)` link
+    # resolving to an existing file.
+    import re as _re
+    doc_re = _re.compile(r"\[doc\]\((domains/biology/[^)]+)\)")
+    for row in data_rows:
+        m = doc_re.search(row)
+        if m is None:
+            violations.append({
+                "rule": "own#29",
+                "path": "README.md",
+                "detail": f"toolkit row missing [doc](domains/biology/...) link: {row[:80]!r}",
+            })
+            continue
+        link_path = m.group(1)
+        if not (REPO_ROOT / link_path).is_file():
+            violations.append({
+                "rule": "own#29",
+                "path": "README.md",
+                "detail": f"toolkit doc link unresolved: {link_path}",
+            })
+
+    return violations
+
+
 CHECKERS = [
     ("own#1", lambda rules: check_rule_1_doc_english(rules)),
     ("own#2", lambda rules: check_rule_2_master_identity()),
@@ -1028,6 +1129,7 @@ CHECKERS = [
     ("own#11", lambda rules: check_rule_11_bt_solution_ban()),
     ("own#12", lambda rules: check_rule_12_miss_criteria()),
     ("own#16", lambda rules: check_rule_16_domain_registry()),
+    ("own#29", lambda rules: check_rule_29_readme_friendly_toolkit()),
 ]
 
 

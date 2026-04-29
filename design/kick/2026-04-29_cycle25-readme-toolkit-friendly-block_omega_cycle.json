@@ -1,0 +1,54 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-29T01:35:00Z",
+  "cycle": 25,
+  "phase": "readme-biology-section-friendly-toolkit-block",
+  "topic": "README.md Biology section 안에 친근 4-sister Molecular Toolkit (HEXA family) 블록 통합 + HEXA-VIROCAPSID 4행 추가 + AUTO:SUMMARY/FOOTER tetrahedron 갱신",
+  "verdict": "TOOLKIT-BLOCK-INSERTED-VIROCAPSID-ROW-ADDED-SEALED-RESYNCED",
+  "verdict_detail": "User directive: 친근 toolkit 통합 섹션 이름 'Molecular Toolkit (HEXA family)' 채택 + 위치 README.md Biology 안 (옵션 A). 5-row toolkit table (4 sister + closure verb summary) 추가. 4번째 sister HEXA-VIROCAPSID 가 기존 3-sister table 에 누락되어 있어 4번째 행 추가. AUTO:SUMMARY_biology + AUTO:FOOTER_biology 가 'tri-sister triangle' → 'tetra-sister tetrahedron' 으로 갱신, alien-grade 4.18 cycle 15 close → 4.78 cycle 22 close 로 갱신, F-VIROCAPSID-3 90-day MVP gate 추가. README.md.sealed.hash re-seal (4a22aa27 → 085c8249).",
+  "files_modified": [
+    "README.md (cycle 24 base 에서 +29 / -3 lines: toolkit 5-row block + VIROCAPSID 행 + SUMMARY/FOOTER tetrahedron)",
+    "README.md.sealed.hash (085c82491fd6309003a7b3ecc72997191806acb844e9d5e82fb4ec2f71a95019)",
+    ".readme-rules.json (sealed_hash 동기화 자동)"
+  ],
+  "molecular_toolkit_table_rows": {
+    "HEXA-WEAVE": "🧶 Knit-AI / yarn knitting analogy / multi-strand interlace design / vs AlphaFold paper-folding",
+    "HEXA-NANOBOT": "🤖 Molecular gripper / robot arm analogy / actuation kinematics / DNA-origami switch",
+    "HEXA-RIBOZYME": "✂️ RNA scissors / RNA-only cutting analogy / chemistry-by-RNA / hammerhead+HDV+hairpin+ribosome",
+    "HEXA-VIROCAPSID": "🦠 Virus shell / 60 Lego soccer-ball analogy / icosahedral cage self-assembly / T=1 VLP+drug-capsule"
+  },
+  "n6_invariant_in_friendly_block": "σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24 single sentence on opener; 4 sister 가 같은 lattice 의 4 orthogonal verbs (compose / actuate / catalyse / assemble)",
+  "verification": {
+    "own_doc_lint_total_violations": 16,
+    "own_doc_lint_violations_attributable_to_cycle25": 0,
+    "own_doc_lint_violations_grandfathered_prior_cycles": 16,
+    "readme_sealed_match": "PASS sha256:085c82491fd6...",
+    "biology_section_length_chars": 9506,
+    "VIROCAPSID_mentions_in_readme": 9,
+    "toolkit_table_present": true
+  },
+  "raw_91_c3_disclose": [
+    "5/5 sub-agent (A/B/C/D/E) cycle 25 fan-out 모두 server-side rate-limited (raw 91 C3 timing); 메인 thread 직접 task E 의 한 변형 진행 (README toolkit insertion)",
+    "기존 16 own#1 CJK violation 은 pre-existing prior cycles (W3/W8/W10/Zenodo/sync_readme proposals); cycle 25 introduce 0",
+    "1 my-files violation 발견 + fix (proposals/hexa_weave_mvp_w5_mac_cpu_fallback... 'Step 1: 디렉토리 생성' → 'Step 1: directory tree creation')",
+    "δ recheck 결과: nexus fix/kick-infra-recovery 에 cycle 24 commit (bb37dab7) 위로 사용자 별도 작업 2개 추가됨 (142bb9a1 400-quota / acec1771 401-auth raw 172) — 우리 weave migration 과 별개 격리됨",
+    "다른 sister repo (hexa-lang/anima/airgenome/hive/papers): 2026-04-29 commit 0개",
+    "AUTO:SUMMARY/FOOTER 마커는 cycle 11 sync-readme bug 잔재로 manual edit 적용 (cycle 16 fallback 패턴 따름)"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE25-TOOLKIT-1", "condition": "친근 toolkit 표가 일반인 가독성 측정에서 실패 (외부 reviewer 5명 중 3명 이하 OK)", "deadline": "2026-07-29", "status": "preregistered"},
+    {"id": "F-CYCLE25-TOOLKIT-2", "condition": "Molecular Toolkit (HEXA family) 라는 명명이 다른 toolkit (e.g. Bioconductor toolkit) 과 trademark 충돌", "deadline": "2026-10-29", "status": "preregistered"},
+    {"id": "F-CYCLE25-TOOLKIT-3", "condition": "tetrahedron closure 주장이 4번째 sister 추가 시 무너짐 (5-sister 도입 → tetrahedron 깨짐)", "deadline": "open-ended", "status": "preregistered"}
+  ],
+  "raw_47_cross_repo": "n6-architecture README.md 만 수정; nexus / hexa-lang / anima / airgenome / hive / papers 무수정",
+  "raw_9_hexa_only": "markdown + python (own_doc_lint, sealed_check) — raw 9 호환",
+  "raw_53_deterministic": "own_doc_lint + sealed_check 둘 다 deterministic verifier-type",
+  "raw_77_append_only": true,
+  "raw_138_sentinel": "__CYCLE25_TOOLKIT_INSERT_RESULT__ INSERTED-AND-VERIFIED",
+  "delta_recheck_disclose": {
+    "n6_branch_main_log": "eaa56869 (cycle 24) → eaa56869 unchanged (cycle 25 첫 commit 미진행 시점)",
+    "nexus_branch_fix_kick_infra_recovery_log": "bb37dab7 → 142bb9a1 → acec1771 (사용자 별도 작업, 우리 weave 와 무관)",
+    "sister_repos_2026-04-29_commits": "hexa-lang / anima / airgenome / hive / papers 모두 0",
+    "merge_to_main_decision": "사용자 결정 영역 (우리 weave migration 은 이미 push 됨)"
+  }
+}

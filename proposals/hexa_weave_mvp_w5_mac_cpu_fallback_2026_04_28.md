@@ -53,7 +53,7 @@ compile NOT NEEDED on Mac (CPU-only branch).
 8-step runbook delta from cycle 14 spec:
 
 ```
-Step 1: 디렉토리 생성                    [unchanged]
+Step 1: directory tree creation          [unchanged]
 Step 2: python3.10 venv                  [unchanged]
 Step 3: pip install (CPU wheel)          [DELTA — cpu wheel not cu124]
 Step 4: OpenFold clone                   [unchanged]

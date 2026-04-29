@@ -478,3 +478,16 @@ own 28 new "n6-local: user-facing-response-friendliness — hive raw 165 cross-r
   follow-up apply friendliness_lint.hexa scan to n6 theory/ docs sample-N=20 (BT/DSE/σ/τ/META/RG first-use coverage)
   follow-up retrofit n6 design/ proposals user-summary section with raw 165 5-element pattern when applicable (analogy-to-everyday-object addition)
   follow-up new -> warn 30d once friendliness_lint scan satisfies measurement-thresholds; warn -> live 60d once 5-sister cross-repo coverage = 5/5 (4/5 done — hive origin + nexus T1 + anima T2 + n6 T4; T3 hexa-lang scope-exempt counted as covered)
+
+own 29 live "readme-friendly-toolkit-required — README Biology friendly Molecular Toolkit table mandatory (HARD)"
+  slug readme-friendly-toolkit-required
+  decl README.md tool/own_doc_lint.py
+  scope HARD block — README.md must contain a `## 🧬 Molecular Toolkit (HEXA family)` H2 heading immediately before the Biology product table, followed by a 6-column friendly toolkit table with header row exactly `| Tool | One-liner | Everyday analogy | What it does | AlphaFold contrast | Doc |` and at least 4 data rows (one per HEXA biology sister: WEAVE / NANOBOT / RIBOZYME / VIROCAPSID). Each data row's last cell must contain a markdown link of the form `[doc](domains/biology/<slug>/<slug>.md)` resolving to an existing file.
+  status live
+  since 2026-04-29
+  why README.md Biology section accumulated dense technical table only (cycle 14-22 evolution); cycle 25 introduced friendly Molecular Toolkit (HEXA family) 6-column block at user direction. To prevent regression (table removal / row drop / column drop / bad doc link), own 29 mandates the structure as HARD on 2026-04-29 via user 'lint 강화' directive.
+  note enforcement = lint scan on README.md only (no recursive scan). 4-axis check: heading present + 6-column header exact + >=4 data rows + each row's doc link resolves. own 1 English-only still applies (NL fields English).
+  verify python3 tool/own_doc_lint.py --rule 29
+  cron on-commit
+  on_fail block
+  label own#29 readme-friendly-toolkit HARD gate
