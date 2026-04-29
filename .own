@@ -493,6 +493,10 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   mandatory-sections chip=## 💻 Chip Toolkit (HEXA-Silicon family)|min_rows=3|axis=compute
   mandatory-sections materials=## 🧬 Materials Toolkit (HEXA-Matter family)|min_rows=3|axis=materials
   mandatory-sections software_infra=## 💬 Software & Infra Toolkit (HEXA-Stack family)|min_rows=3|axis=compute
+  mandatory-sections display=## 📺 Display Toolkit (HEXA-Visual family)|min_rows=3|axis=compute
+  mandatory-sections audio=## 🎵 Audio Toolkit (HEXA-Sound family)|min_rows=3|axis=culture
+  mandatory-sections safety=## 🛡️ Safety Toolkit (HEXA-Safe family)|min_rows=3|axis=infra
+  mandatory-sections play=## 🎪 Play Toolkit (HEXA-Joy family)|min_rows=2|axis=infra
   expected-header-row | 🛸 | Tool | One-liner | Everyday analogy | What it does | <Mainstream> contrast | Doc |
   status live
   since 2026-04-29

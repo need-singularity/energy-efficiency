@@ -411,6 +411,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸5** | ✅ | BT 3개 86%EXACT | 산업81% (6 companies) | 실험93.9% | 물리한계10 | TP14 | 발견8 | Mk.V
 <!-- AUTO:SUMMARY_display:END -->
 
+## 📺 Display Toolkit (HEXA-Visual family)
+
+> Friendly entry point — Display-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal compute-axis verbs (panel → driver → holo).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 📺 **HEXA-DISPLAY** | Pixel Lattice | TV panel laid out on a hex grid that auto-corrects color | 8-stage panel design (material → panel → driver → processor → system → immersive → holo → Omega) | Single OLED layer vs n=6 8-stage σ(6)=12 sub-pixel grid | [doc](domains/compute/display/display.md) |
+| 10 | 🎞️ **HEXA-FRAME-DRIVER** | Smooth Motion | Movie projector at 24 fps (J₂) flickering smooth as silk | J₂=24 fps + BT-48 driver chain on σ(6)=12 sub-cycles | Single-rate 60 Hz vs J₂=24 / σ-multiple frame-pacing | [doc](domains/compute/display/display.md) |
+| 10 | 🪞 **HEXA-HOLO-DISPLAY** | Air-Hologram | 3D image floating mid-air without goggles | NeRF/3DGS-class on σ(6)=12 view directions + holo layer | Stereo-VR HMD vs σ(6)=12 view-grid holographic projection | [doc](domains/compute/display/display.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v1 | **Ultimate Display 8-stage** | material → panel → driver → processor → system → immersive → holo → Omega | [doc](domains/compute/display/display.md) |
@@ -427,6 +437,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_audio:START -->
 > **🛸5** | ✅ | BT 4개 86%EXACT | 산업92.6% (4 companies) | 실험90.9% | 물리한계8 | TP14 | 발견12 | Mk.V
 <!-- AUTO:SUMMARY_audio:END -->
+
+## 🎵 Audio Toolkit (HEXA-Sound family)
+
+> Friendly entry point — Audio-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal culture-axis verbs spanning transducer → voice → speaker → bone.
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🎧 **HEXA-EAR** | Lattice Earbud | Earphone tuned across 144 directions like a tiny concert hall | 8-stage Ultimate Earphone — DLC+graphene/8-way hybrid/48dB ANC/HRTF 144 directions, 65/65 EXACT | Single-driver true-wireless vs σ²=144 spatial-direction map | [doc](domains/culture/audio/audio.md) |
+| 10 | 🦴 **HEXA-BONE** | Skull-Whisper | Earphone that sends sound through your jawbone, not your eardrum | 100% bone-conduction 8-stage — Ti+graphene dual oscillator/AI bone-density calib/EEG link, 78/78 EXACT | Air-conduction earbud vs τ(6)=4-state bone-density adaptive calib | [doc](domains/culture/audio/audio.md) |
+| 10 | 🔊 **HEXA-SPEAKER** | Hex-Drum Speaker | Speaker with 12 cone-drums arranged in a hex circle | CNT thermoacoustic + σ=12 driver array + Class-D 576 W + 144 spatial objects, 36/36 EXACT | Single-driver bookshelf vs σ(6)=12-driver J₂=24-channel array | [doc](domains/culture/audio/audio.md) |
+| 10 | 🔋 **HEXA-EAR-CELL** | Forever-Earbud Battery | Earphone battery that lasts σ=12 hours single-charge / J₂=24 hours total | Ultimate Earphone Battery 6-stage — σ=12h single life / J₂=24h total / 71/72 EXACT, 72 params | Single-charge 8-hour earbud vs σ(6)=12 / J₂=24-hour battery cycle | [doc](domains/culture/audio/audio.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -449,6 +470,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_safety:START -->
 > **🛸3** | BT 66.7%EXACT | DSE 7,776 | TP5 | hypotheses 30+20극한 | 10 domains Safety Integrated
 <!-- AUTO:SUMMARY_safety:END -->
+
+## 🛡️ Safety Toolkit (HEXA-Safe family)
+
+> Friendly entry point — Safety-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal infra-axis verbs (process / hypothesis / extreme).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🛡️ **HEXA-SAFETY** | Triple-Door Bunker | 6 nested safety doors so failure goes through n=6 layers | 8-stage safety design, 79/79 PASS, 12 impossibility-theorem, 174yr industry verification | Single-layer fail-safe vs n=6 6-layer (1/10)⁶ = 10⁻⁶ risk floor | [doc](domains/infra/safety/safety.md) |
+| 10 | 📐 **HEXA-SAFETY-HYP** | Theorem Inspector | Inspector that runs 30 tests on every safety claim | H-SF 20/30 + H-SFX 14/20 + H-SAFE-EX 8/10 + PL 12/12, 54/72 EXACT | Manual SOP review vs σ(6)·τ(6)=72 hypothesis-grid systematic check | [doc](domains/infra/safety/safety.md) |
+| 10 | 🚨 **HEXA-SAFETY-EX** | Worst-Case Drill | Practice the worst storm before it actually arrives | Extreme-scenario H-SAFE-EX 8/10 + cross-DSE 13 domains | Single-scenario fire-drill vs τ(6)=4-state extreme-event matrix | [doc](domains/infra/safety/safety.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
@@ -498,6 +529,15 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_play:START -->
 > **🛸10** | ✅ | BT 14 · 100% EXACT | DSE 160,920combos, Fun-Car+Motorcycle integrated | industry100% (GT3 RS/F1/McLaren/Ducati V4R) | experiment100% 209/209 EXACT (Fun-Car 133 + Motorcycle 76) | physical-limit8 | TP6 | discoveries1 | Mk.V
 <!-- AUTO:SUMMARY_play:END -->
+
+## 🎪 Play Toolkit (HEXA-Joy family)
+
+> Friendly entry point — Play-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), two orthogonal infra-axis verbs (4-wheel sport / 2-wheel sport).
+
+| 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 10 | 🏎️ **HEXA-FUN-CAR** | Track Day Beast | Sports car tuned across 16 categories down to the bolt | 133/133 EXACT, flat-6 + 7DCT + Ti-6Al-4V, DSE 155,520, 16 categories n=6 100% | GT3 RS / F1 / McLaren single-line tune vs σ(6)=12-axis n=6 sweep | [doc](domains/infra/fun-car/fun-car.md) |
+| 10 | 🏍️ **HEXA-MOTORCYCLE** | 6-Axis Bike | Motorbike that knows pitch / yaw / roll / accel / brake / lean | 76/76 EXACT, IMU 6-axis + σ²=144 kg + J₂=24 km/L, DSE 5,400 | Ducati V4R single-tune vs n=6·IMU + σ²=144 kg integrated | [doc](domains/infra/motorcycle/motorcycle.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
