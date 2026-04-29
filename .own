@@ -586,3 +586,64 @@ own 30 new "proposal-addition-command-recognition — '제안서 추가' / 'add 
   follow-up bootstrap state/proposal_addition_audit/audit.jsonl per raw 77 schema (per-trigger-event row: ts + trigger_phrase + creation_intent_score + slug_inferred + category_inferred + lint_verdict)
   follow-up extend tool/proposal_lint.py with --auto-create <slug> --category <type> subcommand for skeleton emission (canonical impl path)
   follow-up new -> warn 30d once trigger-phrase-recognition-rate ≥ 0.50 measured + post-create-lint-pass-rate ≥ 0.80; warn -> live 60d once both axes ≥ 0.80 maintained 14d straight + zero F-OWN30-3 false-positive events
+
+own 31 live "verify-tautology-ban-mandate — python verify-block tautology forbidden; real n=6 number-theoretic primitive computation mandated (HARD ramp)"
+  slug verify-tautology-ban-mandate
+  decl tool/own31_verify_tautology_ban_lint.hexa
+  scope HARD-block ramp — domains/**/*.md + papers/**/*.md python ```python``` blocks. Tautology pattern (hardcode constants σ=12, τ=4, φ=2, sopfr=5, n=6 → assert arithmetic identity from those literals → claim "EXACT N/N PASS") FORBIDDEN. Real verification (compute σ(n), τ(n), φ_eul(n), sopfr(n) from divisor primitives — see canonical pattern domains/cognitive/hexa-dream/hexa-dream.md §7.0) MANDATED.
+  status live
+  since 2026-04-29
+  why fork audit 2026-04-29 surfaced 5 frontier docs (calabi-yau-nav / m-theory-11d / multiverse-nav / tabletop-blackhole / hexa-ufo §23.7) embedding python verify blocks that hardcoded constants then asserted arithmetic identities upon those very constants — pure self-referential tautology violating own 6 paper-verify-embedded (verification claim without real verification) + own 13 ouroboros-critical-zero (atlas self-ref class extended to verify-block self-ref) + raw 91 C3 (fabricated "PASS" claim from circular evidence). Fix commit 58695981 replaced 5 blocks with divisor-primitive computation. own 31 codifies the rule for future blocks; lint detects + blocks the regression.
+  bans python verify block with hardcoded constant assignment (e.g. `sigma = 12` or `sigma, tau, phi, sopfr, n = 12, 4, 2, 5, 6`) AND no `def` of computation primitives in same block AND ≥3 assertions
+  bans claim "EXACT N/N PASS" or "exhaustive PASS" without real-verification YES marker (def of divisor / sigma / tau / phi_euler / sopfr functions)
+  bans hardcoded n=6 master-identity assertions (`σ(6)·φ(6) == n·τ(6) == 24`) without computing the four number-theoretic functions from divisor primitives first
+  exceptions pure non-numeric verification (string regex / set membership / file existence / schema validation) — exempt
+  exceptions verification block opening with `# raw 91 C3:` honest disclaimer (within first 5 lines) declaring the block is illustrative / demonstration / projection — exempt
+  exceptions pre-existing legacy verification blocks listed in OWN31_LEGACY_ALLOWLIST sidecar (frozen, shrink-only — same pattern as own 1 / own 4 / own 5 / own 6 legacy allowlists)
+  realization-channels hexa-only POSIX scanner (raw 9 + raw 18 self-host fixpoint compatible)
+  realization-channels integration with own_doc_lint dispatcher when py→hexa migration completes (follow-up)
+  realization-channels per-rule modular hexa lint (mirrors own 29 pattern)
+  cognitive-frameworks own 6 paper-verify-embedded (sister axis — papers/ scope vs own 31 domains/+papers/ scope)
+  cognitive-frameworks own 13 ouroboros-critical-zero (sister axis — atlas self-ref vs verify-block self-ref)
+  cognitive-frameworks raw 91 C3 no-fabrication (parent honesty axis)
+  cognitive-frameworks raw 184 whitelist-first framing (`def` presence = real-verify YES marker)
+  counter-example domains/cognitive/hexa-dream/hexa-dream.md §7.0 CONSTANTS pattern (canonical real-verification reference — divisor / sigma / tau / phi_euler / sopfr computed from primitives, then asserted)
+  counter-example domains/sf-ufo/hexa-ufo/hexa-ufo.md §7 (line 549, ~252 LoC operability test — Carnot / Weibull / P=Fv physical formulas, NOT tautology)
+  counter-example test fixtures in tool/own31_verify_tautology_ban_lint.hexa --selftest (5 fixtures including FAIL-tautology mirror)
+  proof tool/own31_verify_tautology_ban_lint.hexa
+  proof commit 58695981 (5 frontier doc tautology fixes — pre-own-31 retroactive correction batch)
+  proof reports/own31_verify_tautology_ban.json (per-run audit ledger, raw 77 schema)
+  measurement-axis tautology-detection-coverage = (flagged tautology blocks / hand-labeled gold-set tautology blocks) — target ≥ 0.85 at 30d
+  measurement-axis false-positive-rate = (real-verification blocks wrongly flagged / total flagged) — target ≤ 0.10
+  measurement-axis honest-fix-rate = (flagged blocks fixed via real-verify replacement / total flagged) — target ≥ 0.80
+  measurement-axis legacy-allowlist-shrink-rate = (legacy allowlist entries removed / total legacy entries) over rolling 90d — target monotone decrease
+  witness reports/own31_verify_tautology_ban.json
+  classifier-version own31_verify_tautology_ban_lint.v1
+  falsifier F-OWN31-1 30d post: tautology-detection-coverage < 0.50 → heuristic v2 (def-count + assert-count + hardcoded-var inference) too narrow, classifier bump OR retire
+  falsifier F-OWN31-2 false-positive-rate > 0.30 → mandate too strict, exception widening OR retire
+  falsifier F-OWN31-3 30d post: 3+ legitimate verification blocks cannot fit either pattern (real-verify primitives OR raw 91 C3 disclaimer) → exemption widening OR retire
+  falsifier F-OWN31-4 ≥1 fixed block subsequently regressed to tautology (commit reintroduces hardcode pattern after own 31 LIVE) → enforcement insufficient, ramp to HARD block immediately
+  measurement-threshold tautology-detection-coverage>=0.85-at-30d false-positive-rate<=0.10 honest-fix-rate>=0.80
+  proof-obligations tool/own31_verify_tautology_ban_lint.hexa-selftest-PASS (5/5 fixtures) + repo-wide-scan-0-violations-as-of-58695981 + raw-185-prohibition-class-structure-PASS
+  spec-form forward-spec
+  enforce tool/own31_verify_tautology_ban_lint.hexa
+  enforce-layer hive-agent
+  enforce-layer-secondary cli-lint
+  enforce-layer-tertiary advisory
+  enforce-layer-rationale tri-layer (raw 95 triad-mandate): hive-agent runs hexa lint on commit (cron on-commit); cli-lint enforces selftest fixture pattern as canonical reference template; advisory layer reports detection-coverage / false-positive-rate measurement axes for 30d calibration window before HARD block ramp.
+  category meta-triad
+  category proof-truth
+  applies-to source-code
+  applies-to design-doc
+  phase pre-write
+  triad-exempt forward-spec-meta-rule - own 31 governs python verify block tautology detection, not parser substrate; raw 95 compliance via canonical hive-agent + cli-lint + advisory trio.
+  severity warn
+  verify hexa tool/own31_verify_tautology_ban_lint.hexa
+  cron on-commit
+  on_fail warn
+  label own#31 verify-tautology-ban-mandate (warn ramp; HARD block at 30d zero-violation streak)
+  note FORWARD SPEC. retroactive cycle: 5 frontier doc tautology fixes (commit 58695981) preceded own 31 registration — own 31 codifies the rule and prevents future regressions. raw 91 honest C3: heuristic v2 (def_count + assert_count + hardcoded-var detection) is approximate; AST-based detection (raw 168 violation, ~200 LoC) deferred to follow-up if false-positive rate exceeds 30%. raw 185 prohibition-class structure: bans field is primary content + exceptions enumerated + lint scanner declared.
+  follow-up integrate own 31 lint into tool/own_doc_lint dispatcher when py→hexa migration completes (post own_doc_lint.hexa land)
+  follow-up bootstrap reports/own31_verify_tautology_ban.json per raw 77 audit ledger schema
+  follow-up new → warn 30d once detection-coverage ≥ 0.50 + false-positive-rate ≤ 0.20; warn → live HARD-block 90d once detection-coverage ≥ 0.85 + 14d zero F-OWN31-1..4 trigger streak
+  follow-up cross-project propagation per raw 47 — sister repos (nexus / anima / hexa-lang / airgenome / hive) inherit if they have python-embedded verification blocks

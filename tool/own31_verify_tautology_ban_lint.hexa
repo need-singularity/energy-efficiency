@@ -1,0 +1,378 @@
+#!hexa strict
+// tool/own31_verify_tautology_ban_lint.hexa — verify-block tautology
+// HARD-block enforcement (own 31).
+//
+// Authored 2026-04-29 (cycle 30) under user 'LINT 등 설계 필요' + 'hexa 로 작성'
+// directive following the cycle 29 closure where 5 frontier docs were caught
+// emitting hardcode → assert arithmetic identity → "EXACT N/N PASS" tautology
+// patterns (own 13 ouroboros + own 6 paper-verify-embedded + raw 91 C3 fab).
+//
+// Purpose: prevent regression. Future python verify blocks under
+// domains/**/*.md and papers/**/*.md must use real number-theoretic
+// computation (def divisors / def sigma / etc.) rather than hardcoded
+// constants asserted against trivially derivable arithmetic.
+//
+// Detection heuristic (v2 per raw 184 whitelist-first):
+//   YES marker for real verification = block contains >=1 `def ` line.
+//   FLAG block if def_count == 0 AND assert_count >= 3 AND there is no
+//   raw 91 C3 honest disclaimer comment in the first 5 lines.
+//
+// @tool(slug="own31_verify_tautology_ban_lint", desc="own 31 HARD lint scanning domains/**/*.md + papers/**/*.md python verify blocks for hardcode→assert tautology pattern (own 13 ouroboros + own 6 paper-verify-embedded + raw 91 C3 sister axis). FLAGS def-count=0 AND assert-count>=3 blocks lacking raw 91 C3 disclaimer.")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own31_verify_tautology_ban_lint.hexa [--selftest])
+// @omega-saturation-exempt("static heuristic v2 line-walk on each python block; O(file-size) per file; converges trivially")
+// @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+
+fn _starts_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(0, len(p)) == p
+}
+
+fn _contains(s: string, needle: string) -> bool {
+  if len(needle) == 0 { return true }
+  if len(s) < len(needle) { return false }
+  let mut i = 0
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+// Identify a python fence line. Accepts ```python only (per own 6 paper
+// verify embed convention). ``` py / ```python3 are fenced separately and
+// out of scope for this lint (kept narrow per raw 168 minimum-viable).
+fn _is_python_open(line: string) -> bool {
+  let t = line.trim()
+  return t == "```python"
+}
+
+fn _is_fence_close(line: string) -> bool {
+  let t = line.trim()
+  return t == "```"
+}
+
+// Check whether a line opens with raw 91 C3 disclaimer / illustrative marker.
+// Per own 31 exception clause 2 — block carrying explicit honest disclaimer
+// is exempt from tautology lint.
+fn _is_c3_disclaimer(line: string) -> bool {
+  let t = line.trim()
+  if !_starts_with(t, "#") { return false }
+  if _contains(t, "raw 91 C3") { return true }
+  if _contains(t, "raw 91 honest C3") { return true }
+  if _contains(t, "illustrative") { return true }
+  if _contains(t, "demonstration only") { return true }
+  if _contains(t, "demo only") { return true }
+  return false
+}
+
+// Count occurrences of `def ` (with trailing space) at start of trimmed line.
+// Real verification YES marker per raw 184.
+fn _is_def_line(line: string) -> bool {
+  let t = line.trim()
+  return _starts_with(t, "def ")
+}
+
+fn _is_assert_line(line: string) -> bool {
+  let t = line.trim()
+  return _starts_with(t, "assert ")
+}
+
+// Check if the block contains a non-numeric verification mode (regex /
+// string check / set membership) — these are exempt per own 31 exception 1.
+fn _has_non_numeric_marker(block_lines: list) -> bool {
+  let mut i = 0
+  let n = len(block_lines)
+  while i < n {
+    let t = block_lines[i].trim()
+    // Conservative whitelist of clearly-non-numeric verification idioms
+    if _contains(t, "re.match") { return true }
+    if _contains(t, "re.search") { return true }
+    if _contains(t, ".startswith") { return true }
+    if _contains(t, ".endswith") { return true }
+    if _contains(t, "in set(") { return true }
+    if _contains(t, "isinstance(") { return true }
+    i = i + 1
+  }
+  return false
+}
+
+// Scan a single python block (line array) and decide if it is tautological.
+// Returns 1 = violation, 0 = OK.
+fn _scan_block(block_lines: list, file_path: string, block_start_line: int) -> int {
+  let n = len(block_lines)
+  if n == 0 { return 0 }
+
+  // Exception (raw 91 C3 / illustrative): check first 5 lines for disclaimer.
+  let mut head_check = 0
+  let head_limit = if n < 5 { n } else { 5 }
+  while head_check < head_limit {
+    if _is_c3_disclaimer(block_lines[head_check]) { return 0 }
+    head_check = head_check + 1
+  }
+
+  // Exception (non-numeric): regex / set-membership style verification.
+  if _has_non_numeric_marker(block_lines) { return 0 }
+
+  // Heuristic v2 — count def lines and assert lines.
+  let mut def_count = 0
+  let mut assert_count = 0
+  let mut i = 0
+  while i < n {
+    let line = block_lines[i]
+    if _is_def_line(line) { def_count = def_count + 1 }
+    if _is_assert_line(line) { assert_count = assert_count + 1 }
+    i = i + 1
+  }
+
+  // FLAG only if both conditions: no def primitives + multiple asserts.
+  // This is the YES marker absence signal per raw 184.
+  if def_count == 0 && assert_count >= 3 {
+    println("[own31] FAIL " + file_path + ":" + to_string(block_start_line)
+            + " — tautology suspect (def_count=0, assert_count="
+            + to_string(assert_count) + ")")
+    println("[own31]   fix: replace hardcoded constants with computed values via")
+    println("[own31]         divisor / sigma / phi_euler primitives — see canonical")
+    println("[own31]         pattern at domains/cognitive/hexa-dream/hexa-dream.md §7.0")
+    println("[own31]         OR add raw 91 C3 disclaimer comment within first 5 lines")
+    return 1
+  }
+  return 0
+}
+
+// Scan all python blocks in a single .md file. Returns total violation count.
+fn _scan_file(path: string) -> int {
+  if !_file_exists(path) { return 0 }
+  let text = read_file(path)
+  let lines = split(text, "\n")
+  let n = len(lines)
+  let mut total_violations = 0
+  let mut in_block = false
+  let mut current_block = []
+  let mut block_start = 0
+
+  let mut i = 0
+  while i < n {
+    let line = lines[i]
+    if !in_block {
+      if _is_python_open(line) {
+        in_block = true
+        current_block = []
+        block_start = i + 1
+      }
+    } else {
+      if _is_fence_close(line) {
+        // close block — scan it
+        let v = _scan_block(current_block, path, block_start)
+        total_violations = total_violations + v
+        in_block = false
+        current_block = []
+      } else {
+        current_block.push(line)
+      }
+    }
+    i = i + 1
+  }
+  return total_violations
+}
+
+// Recursively enumerate .md files under a given directory via find.
+fn _enumerate_md_files(rel_dir: string) -> list {
+  let cmd = "find '" + REPO_ROOT + "/" + rel_dir + "' -type f -name '*.md' 2>/dev/null"
+  let raw = to_string(exec(cmd))
+  let trimmed = raw.trim()
+  if len(trimmed) == 0 { return [] }
+  let lines = split(trimmed, "\n")
+  let mut result = []
+  let n = len(lines)
+  let mut i = 0
+  while i < n {
+    let p = lines[i].trim()
+    if len(p) > 0 { result.push(p) }
+    i = i + 1
+  }
+  return result
+}
+
+fn _run_full_scan() -> int {
+  let mut total_violations = 0
+  let mut files_scanned = 0
+  let scopes = ["domains", "papers"]
+  let s_n = len(scopes)
+  let mut s_i = 0
+  while s_i < s_n {
+    let scope = scopes[s_i]
+    let scope_path = REPO_ROOT + "/" + scope
+    if _file_exists(scope_path + "/_index.json") || _file_exists(scope_path) {
+      let files = _enumerate_md_files(scope)
+      let f_n = len(files)
+      let mut f_i = 0
+      while f_i < f_n {
+        let file_path = files[f_i]
+        let v = _scan_file(file_path)
+        total_violations = total_violations + v
+        files_scanned = files_scanned + 1
+        f_i = f_i + 1
+      }
+    }
+    s_i = s_i + 1
+  }
+  println("[own31] scanned " + to_string(files_scanned) + " markdown files across "
+          + to_string(s_n) + " scopes (domains/, papers/)")
+  return total_violations
+}
+
+fn _selftest() -> void {
+  println("[own31] selftest — fixture matrix (heuristic v2)")
+  let mut pass_count = 0
+  let mut total = 0
+
+  // Helper: scan a literal block via inline list construction.
+  // (Our _scan_block expects a list of lines already split.)
+
+  // Fixture 1: PASS — real verify (cognitive/hexa-dream §7.0 style with def primitives)
+  total = total + 1
+  let f1 = [
+    "from math import gcd",
+    "def divisors(n):",
+    "    return {d for d in range(1, n+1) if n % d == 0}",
+    "def sigma(n):",
+    "    return sum(divisors(n))",
+    "def tau(n):",
+    "    return len(divisors(n))",
+    "N = 6",
+    "SIGMA = sigma(N)",
+    "TAU = tau(N)",
+    "assert SIGMA == 12, 'sigma(6) = 1+2+3+6 = 12 (perfect number)'",
+    "assert TAU == 4, 'tau(6) = |{1,2,3,6}| = 4'",
+    "assert SIGMA == 2 * N, 'perfect-number identity sigma(n) = 2n'",
+    "print('PASS: real number-theoretic verification')"
+  ]
+  let v1 = _scan_block(f1, "/fixture/1", 1)
+  if v1 == 0 {
+    println("[own31] fixture 1 PASS — real verify (def primitives) accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own31] fixture 1 FAIL — should accept block with def primitives")
+  }
+
+  // Fixture 2: PASS — mixed hardcode + def (still has def, so OK)
+  total = total + 1
+  let f2 = [
+    "BUDGET_USD = 120",
+    "def total_cost(items):",
+    "    return sum(items)",
+    "items = [10, 20, 30]",
+    "assert total_cost(items) == 60",
+    "assert total_cost(items) <= BUDGET_USD",
+    "assert len(items) == 3",
+    "print('PASS: budget within target')"
+  ]
+  let v2 = _scan_block(f2, "/fixture/2", 1)
+  if v2 == 0 {
+    println("[own31] fixture 2 PASS — mixed hardcode+def accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own31] fixture 2 FAIL — should accept block with at least one def")
+  }
+
+  // Fixture 3: FAIL — tautology mirror of pre-fix hexa-ufo §23.7
+  total = total + 1
+  let f3 = [
+    "sigma, tau, phi, sopfr, n = 12, 4, 2, 5, 6",
+    "J2 = sigma*tau/2",
+    "assert (sigma-phi)==10 and sigma**2==144 and J2==24",
+    "assert sigma*tau==48 and sigma*J2==288",
+    "assert sopfr+n==11 and sigma-phi==10 and n==6",
+    "assert n==6",
+    "print('NAV-STAGES EXACT: PASS')"
+  ]
+  let v3 = _scan_block(f3, "/fixture/3", 1)
+  if v3 >= 1 {
+    println("[own31] fixture 3 PASS — tautology rejected (" + to_string(v3) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own31] fixture 3 FAIL — should reject hardcode→assert tautology")
+  }
+
+  // Fixture 4: PASS — non-numeric (regex / string) verification
+  total = total + 1
+  let f4 = [
+    "import re",
+    "PATTERN = r'^[A-Z][a-z]+$'",
+    "samples = ['Hello', 'World', 'Foo']",
+    "assert re.match(PATTERN, samples[0]) is not None",
+    "assert re.match(PATTERN, samples[1]) is not None",
+    "assert re.match(PATTERN, samples[2]) is not None",
+    "print('PASS: regex match')"
+  ]
+  let v4 = _scan_block(f4, "/fixture/4", 1)
+  if v4 == 0 {
+    println("[own31] fixture 4 PASS — non-numeric regex verify accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own31] fixture 4 FAIL — should accept regex-style non-numeric verification")
+  }
+
+  // Fixture 5: PASS — explicit raw 91 C3 disclaimer in head
+  total = total + 1
+  let f5 = [
+    "# raw 91 C3: this block is illustrative — hardcoded values for documentation",
+    "# only, NOT empirical or literature-anchored verification of any claim.",
+    "sigma, tau = 12, 4",
+    "n = 6",
+    "assert sigma == 12",
+    "assert tau == 4",
+    "assert n == 6",
+    "print('illustrative arithmetic')"
+  ]
+  let v5 = _scan_block(f5, "/fixture/5", 1)
+  if v5 == 0 {
+    println("[own31] fixture 5 PASS — C3-disclaimer block accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own31] fixture 5 FAIL — should accept block with raw 91 C3 disclaimer")
+  }
+
+  if pass_count == total {
+    println("__OWN31_SELFTEST_RESULT__ PASS (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN31_SELFTEST_RESULT__ FAIL (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut bi = 0
+  let n_args = len(raw_args)
+  while bi < n_args {
+    if raw_args[bi] == "--selftest" || raw_args[bi] == "selftest" {
+      want_selftest = true
+    }
+    bi = bi + 1
+  }
+
+  if want_selftest {
+    _selftest()
+    return
+  }
+
+  let v = _run_full_scan()
+  if v == 0 {
+    println("__OWN31_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN31_RESULT__ FAIL (" + to_string(v) + " violations)")
+    exit(1)
+  }
+}
