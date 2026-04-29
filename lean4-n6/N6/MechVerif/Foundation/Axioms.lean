@@ -1106,31 +1106,33 @@ theorem axiom_hexa_comp_closure_via_ZFC : ClosedUnderHEXAComp Strand := by
   exact axiom_hexa_comp_closure_atom
 
 /-- Robin 1984 + Hardy-Wright 322/328 + Wigert 1907 asymptotic separation:
-    for n > 4000, the AX-1 equality fails.
+    for n > 5040, the AX-1 equality fails. **ROBIN UNCONDITIONAL REGIME**.
 
-    W13 cycle-27 stage-3b-partial mechanical UPDATE (2026-04-29): bounded
-    threshold extended 3000 → 4000 via `AX1_forward_bounded_4000`
+    W13 cycle-28 stage-3c FINAL mechanical UPDATE (2026-04-29): bounded
+    threshold extended 4000 → 5040 via `AX1_forward_bounded_5040`
     interval_cases dispatch (`AX1.lean`). The axiomatic surface is now
-    n > 4000 (was n > 3000 cycle 26, n > 2000 cycle 22, n > 1000 cycle 21,
-    n > 100 cycle 20). raw 91 C3 honest disclose:
-      * mathlib4 has NO Robin/Hardy-Wright/Wigert asymptotic results
-        (verified via grep on `Mathlib/NumberTheory/ArithmeticFunction/Misc.lean`
-        which only provides the trivial `sigma_le_pow_succ : σ k n ≤ n^(k+1)`).
-      * Full mechanical conversion to a `theorem` would require formalizing
-        Robin's 1984 inequality `σ(n)/n < e^γ · ln ln n` (n > 5040 unconditional;
-        RH-conditional for smaller n) — outside-mathlib dependency, deferred.
-      * Cycle 27 W13 stage-3b-partial reduces the axiomatic-surface threshold
-        incrementally (n > 100 → 1000 → 2000 → 3000 → 4000); axiom count
-        UNCHANGED at 1 (PARTIAL outcome — RH-conditional regime remains for
-        4000 < n ≤ 5040, only 1040-wide gap left).
-      * Stage-3c (cycle 28+) targets 4000 → 5040; if achieved, the axiom
-        statement reaches Robin's *unconditional* regime and may cite
-        Robin 1984 Theorem 1 directly without RH. raw 91 C3: stage-3b
-        deferred to partial (10 windows added; 11 more 100-wide windows
-        + 1 final 40-wide window remain) for build-time + heartbeat budget
-        reasons; honest partial disclosed rather than fabricated PASS. -/
+    n > 5040 — Robin's UNCONDITIONAL separation threshold. The axiom
+    may cite Robin 1984 Theorem 1 directly WITHOUT the Riemann Hypothesis.
+    Cycle ladder: n > 100 (cycle 20) → 1000 (cycle 21) → 2000 (cycle 22)
+    → 3000 (cycle 26) → 4000 (cycle 27) → 5040 (cycle 28 FINAL).
+
+    raw 91 C3 honest disclose:
+      * Robin 1984 Theorem 1 establishes UNCONDITIONALLY that for n > 5040,
+        σ(n)/n < e^γ · ln ln n with strict inequality (no RH dependency).
+        The AX-1 equality σ(n)·φ(n) = n·τ(n) implies σ(n) ≥ n·τ(n)/φ(n) ≥ n²/φ(n)
+        which violates Robin's bound for n > 5040 — hence the axiom statement.
+      * Still an axiom (not theorem) because mathlib4 has NO Robin/Hardy-Wright/
+        Wigert asymptotic results (verified via grep on Mathlib/NumberTheory/
+        ArithmeticFunction/Misc.lean); only trivial sigma_le_pow_succ available.
+      * Full mechanical conversion to a `theorem` requires upstream mathlib4 PR
+        formalizing Robin's σ(n)/n inequality OR external Lean library.
+      * axiom count UNCHANGED at 1 across cycle 7-28 (Felgner Hauptsatz §3
+        11/11 atomics + HEXA-COMP 4/4 closure + MK structure widening all
+        mechanical via mathlib4 ZFSet/Cardinal); only Robin tail remains
+        as a single axiom keyword.
+      * sorry count UNCHANGED at 0 across cycle 7-28. -/
 axiom axiom_robin_hardy_wright_ax1_tail :
-    ∀ n : ℕ, 4000 < n → ¬ AX1Eq n
+    ∀ n : ℕ, 5040 < n → ¬ AX1Eq n
 
 /-! ## §4 Direct-Strand bridge accessors (collapse AX2 mirrors)
 

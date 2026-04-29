@@ -486,9 +486,9 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   mandatory-sections biology=## 🧬 Molecular Toolkit (HEXA family)|min_rows=4|axis=biology
   mandatory-sections ai_ml=## 🤖 AI Toolkit (HEXA-AI family)|min_rows=3|axis=compute
   mandatory-sections environment=## 🌿 Environment Toolkit (HEXA-Earth family)|min_rows=3|axis=infra
-  optional-sections energy=## ⚡ Energy Toolkit (HEXA-Power family)|min_rows=3|axis=infra
-  optional-sections robotics=## 🤖 Robotics Toolkit (HEXA-Mech family)|min_rows=3|axis=robotics
-  optional-sections physics_math=## 🔬 Physics Toolkit (HEXA-Phys family)|min_rows=3|axis=physics
+  mandatory-sections energy=## ⚡ Energy Toolkit (HEXA-Power family)|min_rows=3|axis=energy
+  mandatory-sections robotics=## 🤖 Robotics Toolkit (HEXA-Mech family)|min_rows=3|axis=infra
+  mandatory-sections physics_math=## 🔬 Physics Toolkit (HEXA-Phys family)|min_rows=3|axis=physics
   expected-header-row | Tool | One-liner | Everyday analogy | What it does | <Mainstream> contrast | Doc |
   status live
   since 2026-04-29

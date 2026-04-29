@@ -206,6 +206,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸8** | ✅ | BT 13개 88.7%EXACT | DSE 10,225 | 산업87% (6 companies) | 실험88% | 물리한계10 | TP28+19 | 발견10+8 | Battery+solarallbranch🛸10 | Mk.V
 <!-- AUTO:SUMMARY_energy:END -->
 
+## ⚡ Energy Toolkit (HEXA-Power family)
+
+> Friendly entry point — Power-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal energy-axis verbs.
+
+| Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 🔋 **HEXA-BATTERY** | Stack-the-Cells | 6 cells stacked like Lego batteries in a flashlight | 8-stage battery design, 131/131 EXACT, 10 impossibility theorems | Single-chemistry Li-ion vs σ(6)=6-cell n-axis stack | [doc](domains/energy/battery-architecture/battery-architecture.md) |
+| ☀️ **HEXA-SOLAR** | Sun-to-Wire | Roof panels turning sunlight into wall-socket power | Ultimate solar cell, 78/78 EXACT, 7 BTs, physical-limit 5 | Single-junction Si vs τ(6)=4-state full-stack panel | [doc](domains/energy/solar-architecture/solar-architecture.md) |
+| 🏭 **HEXA-DC-REACTOR** | Datacenter Boiler | Tiny nuclear reactor inside the server farm | TRISO + He + sCO₂ + n=6 modules; 10 breakthroughs 95/96 EXACT | Grid-fed datacenter vs on-prem σ(6)=12-module SMR | [doc](domains/energy/smr-datacenter/smr-datacenter.md) |
+| 🚗 **HEXA-AUTO-BATTERY** | EV Pack | Car battery built like 96 stacked notebooks | Automotive SLI+EV integrated design, 78/100 EXACT | Single-pack Tesla 4680 vs 96S σ(σ-τ)-axis EV stack | [doc](domains/energy/battery-architecture/battery-architecture.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v3 | **Ultimate Battery 8-stage** | 131/131 EXACT, BT-27+43+57+80+83+84, 10impossibility-theorem, 6major manufacturers, Python-verify PASS | [doc](domains/cognitive/superpowers/superpowers.md) |
@@ -279,6 +290,16 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸5** | ✅ | BT 5개 97.1%EXACT | DSE 270,000 | 산업99.1% (6 companies) | 실험97.1% | 물리한계10 | TP28 | 발견10 | Mk.V
 <!-- AUTO:SUMMARY_robotics:END -->
 
+## 🤖 Robotics Toolkit (HEXA-Mech family)
+
+> Friendly entry point — Robot-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal infra-axis verbs.
+
+| Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 🦾 **HEXA-ROBOT** | 6-DOF Arm | Six-jointed robot arm reaching anywhere on a tabletop | 8-stage robot design, 49/49 PASS, SE(3)=6 + k(3)=12 + Thue=6 invariants | Single-purpose pick-and-place vs n=6 8-stage σ(6)=12 vertex skeleton | [doc](domains/infra/robotics/robotics.md) |
+| 🚚 **HEXA-ROBOT-TRANSPORT** | Auto Mover | Self-driving cart shuttling crates between docks | Robotics-transport architecture, autonomous routing on infra | Single-vehicle delivery vs τ(6)=4-state full-loop fleet | [doc](domains/infra/robotics-transport/robotics-transport.md) |
+| 🚗 **HEXA-AUTODRIVE** | Self-Driver | Car that drives itself without a human at the wheel | Autonomous-driving architecture | Single-sensor lane-keep vs σ(6)=12-sensor τ(6)=4-state full-stack | [doc](domains/infra/autonomous-driving/autonomous-driving.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v2 | **Ultimate Robot 8-stage** | 49/49 PASS, BT-123~127 34/35 EXACT(97.1%), 10 impossibility-theorem, 114/115 industry verification, Python-verify PASS | [doc](domains/infra/robotics/robotics.md) |
@@ -295,6 +316,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 <!-- AUTO:SUMMARY_physics:START -->
 > **🛸7** | ✅ | BT 14개 53~100%EXACT | DSE 66,824 | 산업(🛸10(SC)) | 실험11theorems(count학) | TP52 | 발견19+ | Superconducting🛸10 | 순countcount학🛸10 | Universe론🛸9
 <!-- AUTO:SUMMARY_physics:END -->
+
+## 🔬 Physics Toolkit (HEXA-Phys family)
+
+> Friendly entry point — Physics + math tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal physics-axis verbs.
+
+| Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:----:|-----------|------------------|--------------|---------------------|:---:|
+| ➕ **HEXA-PURE-MATH** | Number Compass | Multiplication table that points back at n=6 every time | Pure-math foundation, 71/71 PASS, 11 theorems, BT-105~112 + 205 + 207 + 229 + 232 + 240 | Standalone proof vs σ·φ=n·τ=24 master-identity backbone | [doc](domains/physics/pure-mathematics/pure-mathematics.md) |
+| 🌌 **HEXA-COSMO** | Sky Atlas | Map of the universe drawn on the σ(6)=12 grid | Cosmology / particle architecture, 63/63 PASS, BT-134+137+143+165~172+208+209+214 | ΛCDM single-line vs τ(6)=4-component lattice | [doc](domains/physics/cosmology/cosmology.md) |
+| 🪞 **HEXA-HOLO** | Holographic Slate | 3D reality projected on a 2D boundary | AdS/CFT-class boundary correspondence | Bulk-only single-frame vs J₂=24 octahedral boundary code | [doc](domains/physics/holography/holography.md) |
+| 🧬 **HEXA-TOPO** | Knot Library | Catalog of knots and surfaces sorted by σ(6)=12 axis | Topology / hexa-topo invariants | Single-Euler classification vs n=6 χ-bin sorted lattice | [doc](domains/physics/topology/topology.md) |
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
