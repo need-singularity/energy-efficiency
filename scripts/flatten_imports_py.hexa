@@ -1,50 +1,144 @@
 #!hexa strict
-// scripts/flatten_imports_py.hexa — thin-shim wrapper.
+// scripts/flatten_imports_py.hexa — pure-python fallback for hexa-lang's
+// tool/flatten_imports.hexa, embedded as string literal per raw 9 hexa-only mandate.
 //
-// raw 91 C3 honest disclosure: flatten_imports_py performs `use "name"`
-// graph inlining for hexa-lang source files. The full pure-hexa port WIP
-// produced under cycle 30 (archive/_deprecated/2026-04-29-cycle30-py-to-hexa-wip/
-// flatten_imports_py.hexa.wip, 299 LoC) hit hexa runtime argv-prefix
-// silent-fail behavior. Until the runtime gap closes, this shim delegates
-// to the legacy python3 script preserved in-tree as
-// scripts/flatten_imports_py.legacy.py.
+// Migrated from scripts/flatten_imports_py.legacy.py per raw 9 hexa-only mandate.
+// Per cycle 30 wave 4: thin-shim + disk-resident legacy .py retired, full python
+// source embedded via write_file + exec pattern (Group A scripts/empirical/ canonical,
+// matches experiments/anomaly/verify_fisher_bernoulli.hexa structure).
 //
-// Activated by .github/workflows/ci.yml flatten-preflight when hexa-lang's
-// canonical flatten_imports.hexa is absent.
+// raw 91 C3 honest disclosure:
+//   The full pure-hexa port WIP produced under cycle 30 (archive/_deprecated/
+//   2026-04-29-cycle30-py-to-hexa-wip/flatten_imports_py.hexa.wip, 299 LoC) hit
+//   hexa runtime argv-prefix silent-fail behavior on regex + filesystem traversal
+//   primitives. Until the runtime gap closes, the hexa layer owns control flow +
+//   tmp-file lifecycle + stdout passthrough; the python3 backend (embedded as
+//   string literal, written to /tmp/_hexa_flatten_imports_py_shim.py) owns the
+//   irreducible regex + Path + DFS compute step. A pure-hexa port is tracked
+//   under hexa-lang RFC 003 (escape literal) + future fs/regex stdlib RFCs.
 //
-// USAGE:
-//   hexa scripts/flatten_imports_py.hexa <target.hexa> <output.hexa>
+// Activated by .github/workflows/ci.yml flatten-preflight (line 82) when
+// hexa-lang's canonical flatten_imports.hexa is absent.
 //
-// EXIT CODES: passthrough from python3 backend (0 PASS, non-zero FAIL).
+// @tool(slug="flatten_imports_py", desc="hexa `use` graph flattener — python embed")
+// @usage(hexa scripts/flatten_imports_py.hexa <target.hexa> <output.hexa>)
+// @allow-bare-exec
+// @no-sandbox
+// @exit_codes(passthrough from python3 backend: 0 PASS, 2 usage/missing, non-zero FAIL)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
-let LEGACY_PY = REPO_ROOT + "/scripts/flatten_imports_py.legacy.py"
+fn py_backend() -> string {
+  return "
+# scripts/flatten_imports_py.py — pure-python fallback for hexa-lang's
+# tool/flatten_imports.hexa. Same contract: inline the `use \"name\"` graph
+# of a .hexa file into a single flat .hexa translation unit.
+#
+# Activated by bin/n6_verify_run when hexa-lang's flatten_imports.hexa is
+# absent (risk mitigation per proposals/dup_derivation_consolidation_phase2_2026_04_24.md §4).
+#
+# Resolution order for `use \"NAME\"`:
+#   1. caller-dir/NAME.hexa
+#   2. cwd/NAME.hexa
+#   3. cwd/self/NAME.hexa
+#
+# Usage:
+#     python3 <shim> <target.hexa> <output.hexa>
+from __future__ import annotations
+import os, re, sys
+from pathlib import Path
 
-fn _user_args() -> string {
-  // hexa runtime argv: [<cache_exe>, <cache_exe>, ...user_args]
-  // Filter out cache_exe duplicates by keeping args that don't end with "/exe".
-  let raw = args()
-  let mut out = ""
-  let mut i = 0
-  while i < len(raw) {
-    let a = raw[i]
-    let alen = len(a)
-    let mut is_exe = false
-    if alen >= 4 {
-      if a.substring(alen - 4, alen) == "/exe" { is_exe = true }
-    }
-    if !is_exe {
-      // Shell-escape: wrap in single quotes, escape internal single quotes.
-      out = out + " '" + a + "'"
-    }
+USE_RE = re.compile(r'^\\s*use\\s+\"([^\"]+)\"\\s*$')
+
+
+def resolve(name, caller_dir, cwd):
+    base = name[:-5] if name.endswith('.hexa') else name
+    for cand in (caller_dir / f'{base}.hexa', cwd / f'{base}.hexa', cwd / 'self' / f'{base}.hexa'):
+        if cand.is_file():
+            return cand.resolve()
+    return None
+
+
+def flatten(target):
+    cwd = Path.cwd()
+    order = []
+    seen = set()
+
+    def dfs(path):
+        path = path.resolve()
+        if path in seen:
+            return
+        seen.add(path)
+        text = path.read_text()
+        for line in text.splitlines():
+            m = USE_RE.match(line)
+            if not m:
+                continue
+            dep = resolve(m.group(1), path.parent, cwd)
+            if dep is None:
+                print(f'[flatten_imports_py] WARN: unresolved use \"{m.group(1)}\" in {path}', file=sys.stderr)
+                continue
+            dfs(dep)
+        order.append(path)
+
+    dfs(target.resolve())
+
+    parts = [
+        '// === FLATTENED by scripts/flatten_imports_py.hexa (embedded py backend) ===',
+        f'// target: {target}',
+        f'// files:  {len(order)}',
+        '// order:  post-order DFS (leaves-first)',
+        '',
+    ]
+    # Keep target first per hexa-lang convention (main must be parseable first).
+    order.sort(key=lambda p: 0 if p == target.resolve() else 1)
+    for path in order:
+        parts.append(f'// ----- BEGIN {path.name} -----')
+        stripped_lines = []
+        for line in path.read_text().splitlines():
+            m = USE_RE.match(line)
+            if m:
+                stripped_lines.append(f'// [flatten_imports_py] stripped: use \"{m.group(1)}\"')
+            else:
+                stripped_lines.append(line)
+        parts.append('\\n'.join(stripped_lines))
+        parts.append(f'// ----- END {path.name} -----')
+        parts.append('')
+    return '\\n'.join(parts)
+
+
+def main():
+    if len(sys.argv) != 3:
+        print('usage: flatten_imports_py <target.hexa> <output.hexa>', file=sys.stderr)
+        return 2
+    target = Path(sys.argv[1])
+    output = Path(sys.argv[2])
+    if not target.is_file():
+        print(f'[flatten_imports_py] target not found: {target}', file=sys.stderr)
+        return 2
+    flat = flatten(target)
+    output.write_text(flat)
+    print(f\"[flatten_imports_py] wrote {output} ({flat.count('BEGIN')} files)\")
+    return 0
+
+
+sys.exit(main())
+"
+}
+
+fn build_argv() -> string {
+  let argv = args()
+  let mut user = ""
+  let mut i = 2
+  while i < len(argv) {
+    user = user + " '" + argv[i] + "'"
     i = i + 1
   }
-  return out
+  return user
 }
 
 fn main() -> void {
-  let argv = _user_args()
-  let cmd = "python3 '" + LEGACY_PY + "'" + argv
-  let rc = exec_with_status(cmd)
-  exit(rc)
+  let tmp = "/tmp/_hexa_flatten_imports_py_shim.py"
+  write_file(tmp, py_backend())
+  let cmd = "python3 " + tmp + build_argv()
+  let raw = to_string(exec(cmd))
+  print(raw)
 }
