@@ -1,0 +1,225 @@
+// ════════════════════════════════════════════════════════════════════════════
+//  tool/governance.hexa — n6-architecture CLI `governance` topic
+//
+//  PURPOSE
+//    raw 91 cross-repo cli-coverage parity (mirrors anima/airgenome
+//    governance.hexa Tier-A surface). n6-architecture has no .raw of its
+//    own (.raw-ref pins hive canonical), so every governance subcmd wires
+//    to cross-repo sibling backends (../hive, ../hexa-lang). Paths resolve
+//    via N6_ROOT (default $HOME/core/n6-architecture).
+//
+//  SUBCMDS  (raw 9 / 175 / 13 / 21 / triad)
+//    n6 governance raw triad [--strict]    raw triad lint
+//    n6 governance hexa-only [args]        raw 9   hexa-only ban
+//    n6 governance english-only [args]     raw 175 English baseline
+//    n6 governance ai-config-ban [args]    raw 13  AI config ban
+//    n6 governance deprecated-ban [args]   raw 21  deprecated-ref
+//    n6 governance --selftest              backend reachability
+//    n6 governance --help
+//
+//  DESIGN
+//    raw#9   hexa-only; no .py
+//    raw#11  snake_case
+//    raw#15  no hardcoded paths outside N6_ROOT
+//    raw 47  cross-repo sister parity (anima + airgenome mirror)
+//    raw 91  honest C3 — n6 owns no .raw; governance is cross-repo wire-up
+//    own 1   doc-english-required HARD gate — all output English
+// ════════════════════════════════════════════════════════════════════════════
+
+fn _str(x) -> string {
+    let t = type_of(x)
+    if t == "str" || t == "string" { return x }
+    return ""
+}
+
+fn _fexists(p: string) -> bool {
+    return _str(exec("test -f " + p + " && echo 1 || echo 0")).trim() == "1"
+}
+
+fn _resolve_root() -> string {
+    let a = _str(env("N6_ROOT"))
+    if a != "" { return a }
+    let n = _str(env("N6"))
+    if n != "" { return n }
+    let gt = _str(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
+    if gt != "" { return gt }
+    return _str(env("HOME")) + "/core/n6-architecture"
+}
+
+fn _hexa() -> string {
+    let e = _str(env("HEXA_BIN"))
+    if e != "" && _fexists(e) { return e }
+    let h = _str(env("HEXA"))
+    if h != "" && _fexists(h) { return h }
+    return "/Users/ghost/.hx/bin/hexa"
+}
+
+fn _shq(s: string) -> string {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn _user_argv(raw) -> array {
+    let out = []
+    let mut i = 0
+    while i < len(raw) {
+        let s = _str(raw[i])
+        if !s.contains("/.hexa-cache/") { out = out + [s] }
+        i = i + 1
+    }
+    let known = ["raw", "triad", "hexa-only", "english-only", "ai-config-ban",
+                 "deprecated-ban", "--selftest", "--help", "-h", "help"]
+    let mut found = -1
+    let mut j = 0
+    while j < len(out) {
+        let a = _str(out[j])
+        let mut k = 0
+        while k < len(known) {
+            if a == known[k] { found = j; break }
+            k = k + 1
+        }
+        if found >= 0 { break }
+        j = j + 1
+    }
+    if found < 0 { return [] }
+    let mut cli = []
+    let mut p = found
+    while p < len(out) { cli = cli + [_str(out[p])]; p = p + 1 }
+    return cli
+}
+
+let N6_ROOT  = _resolve_root()
+let HEXA_BIN = _hexa()
+
+fn _sibling(repo: string, rel: string) -> string {
+    return N6_ROOT + "/../" + repo + "/" + rel
+}
+let TOOL_TRIAD         = _sibling("hexa-lang", "tool/triad_lint.hexa")
+let TOOL_HEXA_ONLY     = _sibling("hexa-lang", "tool/hexa_only_lint.hexa")
+let TOOL_ENGLISH_ONLY  = _sibling("hive",      "tool/english_only_lint.hexa")
+let TOOL_AI_CONFIG_BAN = _sibling("hive",      "tool/ai_config_ban_lint.hexa")
+let TOOL_DEPRECATED    = _sibling("hive",      "tool/deprecated_ref_scanner.hexa")
+
+fn _run_backend(backend: string, rest: array, sub_label: string) -> int {
+    if !_fexists(backend) {
+        eprintln("n6 governance " + sub_label + ": backend not found: " + backend)
+        eprintln("reason: io-error: cross-repo backend absent")
+        eprintln("fix: ensure sibling repo present (../hexa-lang or ../hive)")
+        return 1
+    }
+    let mut cmd = "N6_CLI_PARENT=1 HEXA_RESOLVER_NO_REROUTE=1 " + _shq(HEXA_BIN) + " run " + _shq(backend)
+    let mut i = 0
+    while i < len(rest) {
+        cmd = cmd + " " + _shq(_str(rest[i]))
+        i = i + 1
+    }
+    let raw = _str(exec(cmd + " 2>&1"))
+    print(raw)
+    if raw.contains("FAIL") { return 1 }
+    return 0
+}
+
+fn _rest_from(cli: array, start: int) -> array {
+    let mut out = []
+    let mut i = start
+    while i < len(cli) { out = out + [_str(cli[i])]; i = i + 1 }
+    return out
+}
+
+fn _selftest() {
+    println("n6 governance --selftest (raw 91 cross-repo backend reachability)")
+    let backends = [
+        ["raw triad",      TOOL_TRIAD],
+        ["hexa-only",      TOOL_HEXA_ONLY],
+        ["english-only",   TOOL_ENGLISH_ONLY],
+        ["ai-config-ban",  TOOL_AI_CONFIG_BAN],
+        ["deprecated-ban", TOOL_DEPRECATED],
+    ]
+    let mut i = 0
+    let mut all_pass = true
+    while i < len(backends) {
+        let row = backends[i]
+        let label = _str(row[0])
+        let path  = _str(row[1])
+        if _fexists(path) {
+            println("  PASS " + label + "    " + path)
+        } else {
+            println("  FAIL " + label + "    " + path + " (missing)")
+            all_pass = false
+        }
+        i = i + 1
+    }
+    if all_pass {
+        println("__N6_GOVERNANCE_SELFTEST__ PASS")
+        exit(0)
+    }
+    println("__N6_GOVERNANCE_SELFTEST__ FAIL")
+    exit(1)
+}
+
+fn _help() {
+    println("n6 governance — raw 91 cross-repo cli-coverage parity")
+    println("")
+    println("USAGE")
+    println("  n6 governance raw triad [--strict]    raw triad lint")
+    println("  n6 governance hexa-only [args]        raw 9   hexa-only ban")
+    println("  n6 governance english-only [args]     raw 175 English baseline")
+    println("  n6 governance ai-config-ban [args]    raw 13  AI config ban")
+    println("  n6 governance deprecated-ban [args]   raw 21  deprecated-ref")
+    println("  n6 governance --selftest              backend reachability")
+    println("  n6 governance --help                  this help")
+    println("")
+    println("BACKENDS (cross-repo siblings of $N6_ROOT)")
+    println("  raw triad        " + TOOL_TRIAD)
+    println("  hexa-only        " + TOOL_HEXA_ONLY)
+    println("  english-only     " + TOOL_ENGLISH_ONLY)
+    println("  ai-config-ban    " + TOOL_AI_CONFIG_BAN)
+    println("  deprecated-ban   " + TOOL_DEPRECATED)
+    println("")
+    println("NOTE  n6-architecture has no .raw of its own (.raw-ref pins hive")
+    println("      canonical). own 1 doc-english-required is HARD gate; all")
+    println("      governance output stays English (raw 91 honest C3).")
+}
+
+fn main() -> void {
+    let raw = args()
+    let cli = _user_argv(raw)
+    if len(cli) == 0 { _help(); exit(0) }
+
+    let head = _str(cli[0])
+    if head == "--help" || head == "-h" || head == "help" { _help(); exit(0) }
+    if head == "--selftest" { _selftest() }
+
+    let mut rc = 2
+    if head == "raw" {
+        if len(cli) < 2 { eprintln("n6 governance raw: expected 'triad'"); exit(2) }
+        let sub2 = _str(cli[1])
+        if sub2 == "triad" {
+            let rest = _rest_from(cli, 2)
+            rc = _run_backend(TOOL_TRIAD, rest, "raw triad")
+        } else {
+            eprintln("n6 governance raw: unknown sub: " + sub2)
+            rc = 2
+        }
+    } else if head == "triad" {
+        let rest = _rest_from(cli, 1)
+        rc = _run_backend(TOOL_TRIAD, rest, "raw triad")
+    } else if head == "hexa-only" {
+        let rest = _rest_from(cli, 1)
+        rc = _run_backend(TOOL_HEXA_ONLY, rest, "hexa-only")
+    } else if head == "english-only" {
+        let rest = _rest_from(cli, 1)
+        rc = _run_backend(TOOL_ENGLISH_ONLY, rest, "english-only")
+    } else if head == "ai-config-ban" {
+        let rest = _rest_from(cli, 1)
+        rc = _run_backend(TOOL_AI_CONFIG_BAN, rest, "ai-config-ban")
+    } else if head == "deprecated-ban" {
+        let rest = _rest_from(cli, 1)
+        rc = _run_backend(TOOL_DEPRECATED, rest, "deprecated-ban")
+    } else {
+        eprintln("n6 governance: unknown subcommand: " + head)
+        eprintln("reason: cli-arg-parse-failed")
+        eprintln("fix: n6 governance --help")
+        rc = 2
+    }
+    exit(rc)
+}

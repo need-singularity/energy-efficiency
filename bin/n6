@@ -1,0 +1,94 @@
+#!/bin/bash
+# bin/n6 — canonical CLI entry for n6-architecture
+#
+# raw 99  canonical-CLI single entry point
+# raw 47  cross-repo sister parity (anima, airgenome mirror)
+# raw 91  honest C3 — n6 has no .raw; governance subcmds wire to ../hive
+#         and ../hexa-lang sibling backends. n6 itself owns own 1..23 SSOT.
+# own 1   doc-english-required HARD gate — output English only
+#
+# Subcommands:
+#   n6 governance <sub> ...   raw 91 cross-repo cli-coverage parity
+#   n6 meta <sub> ...         legacy n6_meta dispatcher (Phase 4 scanners)
+#   n6 verify-run [args]      legacy n6_verify_run dispatcher
+#   n6 help | --help | -h     this help
+#
+# All non-governance subcmds forward to the existing wrappers untouched
+# (raw 169 surgical scope: bin/n6 + tool/governance.hexa land additive only).
+
+set -u
+
+N6_ROOT="${N6_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
+export N6_ROOT
+export N6="${N6:-$N6_ROOT}"
+
+_resolve_hexa() {
+    if [ -n "${HEXA:-}" ] && [ -x "$HEXA" ]; then echo "$HEXA"; return; fi
+    if [ -x "$HOME/.hx/bin/hexa" ]; then echo "$HOME/.hx/bin/hexa"; return; fi
+    command -v hexa 2>/dev/null || true
+}
+
+cmd_governance() {
+    local mod="$N6_ROOT/tool/governance.hexa"
+    if [ ! -f "$mod" ]; then
+        echo "[n6-governance] tool/governance.hexa missing: $mod" >&2
+        return 1
+    fi
+    local hexa_bin
+    hexa_bin="$(_resolve_hexa)"
+    if [ -z "$hexa_bin" ] || [ ! -x "$hexa_bin" ]; then
+        echo "[n6-governance] hexa binary missing (tried HEXA + ~/.hx/bin/hexa + PATH)" >&2
+        return 1
+    fi
+    exec "$hexa_bin" run "$mod" "$@"
+}
+
+cmd_meta() {
+    exec "$N6_ROOT/bin/n6_meta" "$@"
+}
+
+cmd_verify_run() {
+    exec "$N6_ROOT/bin/n6_verify_run" "$@"
+}
+
+cmd_help() {
+    cat <<'EOF'
+n6 — canonical CLI entry for n6-architecture (raw 99 single entry)
+
+usage: n6 <command>
+
+  governance <sub>  raw 91 cross-repo cli-coverage parity:
+                    raw triad / hexa-only / english-only / ai-config-ban /
+                    deprecated-ban (sibling backends ../hexa-lang or ../hive)
+                    --selftest for backend reachability
+  meta <sub>        legacy n6_meta dispatcher (Phase 4 scanners via _n6_lib)
+  verify-run [args] legacy n6_verify_run dispatcher
+  help | -h | --help  this help
+
+design notes:
+  raw 99   single canonical entry (this script)
+  raw 47   sister-repo parity with anima, airgenome
+  raw 91   honest C3: n6-architecture has no local .raw — governance
+           subcmds dispatch to cross-repo siblings; selftest verifies
+           backend reachability rather than local lint coverage
+  own 1    doc-english-required HARD gate (all output English)
+EOF
+}
+
+main() {
+    local sub="${1:-help}"
+    shift || true
+    case "$sub" in
+        governance|gov)         cmd_governance "$@" ;;
+        meta)                   cmd_meta "$@" ;;
+        verify-run|verify_run)  cmd_verify_run "$@" ;;
+        help|-h|--help|"")      cmd_help ;;
+        *)
+            echo "n6: unknown subcommand: $sub" >&2
+            echo "fix: n6 --help" >&2
+            return 2
+            ;;
+    esac
+}
+
+main "$@"
