@@ -77,8 +77,9 @@ fn _join_int_list(xs: list) -> string {
 }
 
 fn _is_hexa_native_rule(rid: int) -> bool {
-  // Rules with native hexa impls. own#3 + own#11 + own#29 (incremental migration).
+  // Rules with native hexa impls. own#3 + own#5 + own#11 + own#29 (incremental migration).
   if rid == 3 { return true }
+  if rid == 5 { return true }
   if rid == 11 { return true }
   if rid == 29 { return true }
   return false
@@ -120,6 +121,11 @@ fn _run_native_rule(rid: int) -> int {
     let cmd = "hexa '" + REPO_ROOT + "/tool/own3_one_doc_per_domain_lint.hexa' 2>&1"
     let raw = to_string(exec(cmd))
     return _parse_rc_count(raw, "__OWN3_RESULT__")
+  }
+  if rid == 5 {
+    let cmd = "hexa '" + REPO_ROOT + "/tool/own5_theory_report_separation_lint.hexa' 2>&1"
+    let raw = to_string(exec(cmd))
+    return _parse_rc_count(raw, "__OWN5_RESULT__")
   }
   if rid == 11 {
     let cmd = "hexa '" + REPO_ROOT + "/tool/own11_bt_solution_ban_lint.hexa' 2>&1"

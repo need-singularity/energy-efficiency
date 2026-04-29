@@ -1,0 +1,325 @@
+#!hexa strict
+// tool/own5_theory_report_separation_lint.hexa — own#5 theory/report separation HARD lint.
+//
+// Rule: theory/ subdir = permanent theorem layer; filenames with dated suffix
+// (YYYY-MM-DD / YYYY_MM_DD / YYYYMMDD / vN-report / session-N) FORBIDDEN.
+// Snapshots → reports/. Allowlist: 19 grandfathered theory snapshots.
+//
+// Migrated from tool/own_doc_lint_legacy.py:691-714 + lines 654-688 per raw 9.
+// Regex _DATE_SUFFIX_RE replaced with manual char-class scan.
+//
+// @tool(slug="own5_theory_report_separation_lint", desc="own#5 theory/ filename separation HARD — dated suffix files (YYYY-MM-DD / YYYY_MM_DD / YYYYMMDD / vN-report / session-N) forbidden under theory/, allowlist of 19 grandfathered legacy snapshots")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own5_theory_report_separation_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let THEORY_ROOT = REPO_ROOT + "/theory"
+
+// Whitelist filenames (no rule applied)
+let WHITELIST = ["README.md", "CLAUDE.md", "INDEX.md", "_INDEX.md"]
+
+// Frozen legacy allowlist (relative paths from repo root) — 19 entries
+let LEGACY_ALLOWLIST = [
+  "theory/proofs/transcend-p11-3-ouroboros-b2-proof-2026-04-15.md",
+  "theory/proofs/formal-p13-1-bsd-n6-2026-04-15.md",
+  "theory/proofs/formal-p11-2-hodge-n6-2026-04-15.md",
+  "theory/proofs/n6-boundary-metatheory-2026-04-14.md",
+  "theory/proofs/mk4-trident-final-verdict-2026-04-15.md",
+  "theory/proofs/l11-l15-quantum-nuclear-mapping-2026-04-14.md",
+  "theory/proofs/fisher-ouroboros-reformulation-2026-04-15.md",
+  "theory/proofs/ouroboros-alpha-universality-2026-04-15.md",
+  "theory/proofs/attractor-meta-theorem-2026-04-11.md",
+  "theory/proofs/attractor-meta-theorem-extended-2026-04-14.md",
+  "theory/proofs/bernoulli-boundary-2026-04-11.md",
+  "theory/proofs/formal-p12-2-cy3-hodge-retry-2026-04-15.md",
+  "theory/proofs/formal-p10-1-riemann-sigma-tau-2026-04-15.md",
+  "theory/proofs/mk4-theorem-candidates-2026-04-14.md",
+  "theory/proofs/formal-p11-1-selberg-ingham-2026-04-15.md",
+  "theory/proofs/formal-p12-1-conrey-gonek-6th-moment-2026-04-15.md",
+  "theory/preprints/millennium-v3-preprint-draft-2026-04-16.md",
+  "theory/roadmap-v2/millennium-v4-design-2026-04-16.md",
+  "theory/roadmap-v2/millennium-v3-design-2026-04-15.md",
+]
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _basename(path: string) -> string {
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  if last_slash < 0 { return path }
+  return path.substring(last_slash + 1, len(path))
+}
+
+fn _stem(name: string) -> string {
+  // Strip .md
+  if len(name) > 3 && name.substring(len(name) - 3, len(name)) == ".md" {
+    return name.substring(0, len(name) - 3)
+  }
+  return name
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+fn _is_digit(c: string) -> bool {
+  return c >= "0" && c <= "9"
+}
+
+fn _walk_theory_md() -> list {
+  let raw = to_string(exec("find '" + THEORY_ROOT + "' -type f -name '*.md' 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _in_whitelist(name: string) -> bool {
+  let mut i = 0
+  while i < len(WHITELIST) {
+    if WHITELIST[i] == name { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _in_legacy(rel: string) -> bool {
+  let mut i = 0
+  while i < len(LEGACY_ALLOWLIST) {
+    if LEGACY_ALLOWLIST[i] == rel { return true }
+    i = i + 1
+  }
+  return false
+}
+
+// Detect dated suffix patterns:
+// - 20YY-MM-DD or 20YY_MM_DD ending stem (preceded by - or _ or start)
+// - 20YYMMDD (8 digits ending)
+// - vN-report or vN_report (trailing 'v' + digits + report)
+// - session-N or session_N (trailing 'session' + sep + digits)
+fn _has_dated_suffix(stem: string) -> bool {
+  let n = len(stem)
+
+  // Pattern A: ends with -20YY-MM-DD or _20YY_MM_DD (11 trailing chars)
+  if n >= 11 {
+    let tail = stem.substring(n - 11, n)
+    let sep0 = tail.substring(0, 1)
+    if sep0 == "-" || sep0 == "_" {
+      let sep1 = tail.substring(5, 6)
+      let sep2 = tail.substring(8, 9)
+      if (sep1 == "-" || sep1 == "_") && (sep2 == "-" || sep2 == "_") {
+        // Check digits at positions 1-4 (year), 6-7 (month), 9-10 (day)
+        let mut ok = true
+        if !_is_digit(tail.substring(1, 2)) { ok = false }
+        if !_is_digit(tail.substring(2, 3)) { ok = false }
+        if !_is_digit(tail.substring(3, 4)) { ok = false }
+        if !_is_digit(tail.substring(4, 5)) { ok = false }
+        if !_is_digit(tail.substring(6, 7)) { ok = false }
+        if !_is_digit(tail.substring(7, 8)) { ok = false }
+        if !_is_digit(tail.substring(9, 10)) { ok = false }
+        if !_is_digit(tail.substring(10, 11)) { ok = false }
+        // Must start with "20"
+        if tail.substring(1, 3) != "20" { ok = false }
+        if ok { return true }
+      }
+    }
+  }
+
+  // Pattern B: ends with 20YYMMDD (8 digits, preceded by - or _ at n-9)
+  if n >= 9 {
+    let sep = stem.substring(n - 9, n - 8)
+    if sep == "-" || sep == "_" {
+      let date_part = stem.substring(n - 8, n)
+      if date_part.substring(0, 2) == "20" {
+        let mut ok = true
+        let mut k = 0
+        while k < 8 {
+          if !_is_digit(date_part.substring(k, k + 1)) { ok = false }
+          k = k + 1
+        }
+        if ok { return true }
+      }
+    }
+  }
+
+  // Pattern C: ends with vN-report or vN_report
+  // Look for "v" followed by digits followed by "-report" or "_report"
+  let report_a = "-report"
+  let report_b = "_report"
+  if n >= len(report_a) + 2 {
+    if stem.substring(n - len(report_a), n) == report_a {
+      // Walk backward from n-len(report_a)-1 — must be digits, then 'v'
+      let mut p = n - len(report_a) - 1
+      let mut digit_count = 0
+      while p >= 0 && _is_digit(stem.substring(p, p + 1)) {
+        digit_count = digit_count + 1
+        p = p - 1
+      }
+      if digit_count > 0 && p >= 0 && stem.substring(p, p + 1) == "v" {
+        return true
+      }
+    }
+    if stem.substring(n - len(report_b), n) == report_b {
+      let mut p = n - len(report_b) - 1
+      let mut digit_count = 0
+      while p >= 0 && _is_digit(stem.substring(p, p + 1)) {
+        digit_count = digit_count + 1
+        p = p - 1
+      }
+      if digit_count > 0 && p >= 0 && stem.substring(p, p + 1) == "v" {
+        return true
+      }
+    }
+  }
+
+  // Pattern D: ends with session-N or session_N (digits at tail)
+  // Walk backward: must be digits, then '-' or '_', then "session"
+  let session_word = "session"
+  let mut p = n - 1
+  let mut digit_count = 0
+  while p >= 0 && _is_digit(stem.substring(p, p + 1)) {
+    digit_count = digit_count + 1
+    p = p - 1
+  }
+  if digit_count > 0 && p >= 0 {
+    let sep_c = stem.substring(p, p + 1)
+    if sep_c == "-" || sep_c == "_" {
+      if p >= len(session_word) {
+        let sw_start = p - len(session_word)
+        if stem.substring(sw_start, p) == session_word {
+          return true
+        }
+      }
+    }
+  }
+
+  return false
+}
+
+fn _scan() -> list {
+  let mut violations = []
+  if !_dir_exists(THEORY_ROOT) { return violations }
+  let mds = _walk_theory_md()
+  let mut i = 0
+  while i < len(mds) {
+    let path = mds[i]
+    let name = _basename(path)
+    let rel = _rel(path)
+    if !_in_whitelist(name) {
+      if !_in_legacy(rel) {
+        let stem = _stem(name)
+        if _has_dated_suffix(stem) {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "theory/ file carries date/version suffix — move timestamped snapshot to reports/ or rename to permanent theory title"
+          violations.push(v)
+        }
+      }
+    }
+    i = i + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#5] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // F1: PASS — permanent name with no date
+  total = total + 1
+  if !_has_dated_suffix("riemann-zeta-uniqueness") {
+    println("[own#5] fixture 1 PASS — permanent theorem name accepted")
+    pass = pass + 1
+  } else {
+    println("[own#5] fixture 1 FAIL — permanent name wrongly flagged")
+  }
+
+  // F2: FAIL — has -2026-04-15 date
+  total = total + 1
+  if _has_dated_suffix("formal-p11-2-hodge-n6-2026-04-15") {
+    println("[own#5] fixture 2 PASS — dated suffix YYYY-MM-DD detected")
+    pass = pass + 1
+  } else {
+    println("[own#5] fixture 2 FAIL — should detect date suffix")
+  }
+
+  // F3: FAIL — has _2026_04_15
+  total = total + 1
+  if _has_dated_suffix("session_log_2026_04_15") {
+    println("[own#5] fixture 3 PASS — _YYYY_MM_DD detected")
+    pass = pass + 1
+  } else {
+    println("[own#5] fixture 3 FAIL — should detect underscore date")
+  }
+
+  // F4: FAIL — has 20260415 (8-digit)
+  total = total + 1
+  if _has_dated_suffix("audit-20260415") {
+    println("[own#5] fixture 4 PASS — YYYYMMDD detected")
+    pass = pass + 1
+  } else {
+    println("[own#5] fixture 4 FAIL — should detect YYYYMMDD")
+  }
+
+  // F5: PASS — generic permanent name with hyphens but no date
+  total = total + 1
+  if !_has_dated_suffix("attractor-meta-theorem") {
+    println("[own#5] fixture 5 PASS — generic theorem name accepted")
+    pass = pass + 1
+  } else {
+    println("[own#5] fixture 5 FAIL — generic theorem name wrongly flagged")
+  }
+
+  if pass == total {
+    println("__OWN5_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN5_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#5] FAIL " + v["path"] + " — " + v["detail"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN5_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN5_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}
