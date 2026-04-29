@@ -1,0 +1,434 @@
+// grover_n6.hexa — Grover quantum search uniqueness re-verification (n=6)
+// 포팅 원본: experiments/grover_n6_uniqueness/grover_n6.py (py 삭제 동반)
+// 규칙: HEXA-FIRST, raw 9 hexa-only mandate (2026-04-29 cycle 29 sweep).
+//
+// 정수 영역 (sigma/phi/tau/marked_set/optimal_iterations) 은 순수 hexa 로 구현.
+// 양자 회로 시뮬 (qiskit-aer + numpy) 부분만 python3 -c 브리지로 격리:
+//   - 필수 의존성 정확 매핑 (qiskit + qiskit_aer): hexa stage 어떤 단계에서도
+//     numpy ndarray/UnitaryGate 토픽이 라이브러리화되지 않은 점을 raw 91 honest C3
+//     로 명시 — 내장은 하지 않음, 단지 sub-shell 호출.
+//   - 입력은 N_max 정수 + marked_set 리스트 + iter_count (모두 정수 연산으로
+//     hexa 측에서 결정), 출력은 stdout 의 단일 JSON 라인 (per-N).
+//
+// 기본 sweep = 16,64,256 (Python 원본 default 와 동일).
+// CLI 인자 미적용 (stage1+ env 만 사용; --N_max / --shots 지원 단순화):
+//   N6_GROVER_N_MAX  (정수, 단일 N 모드. 미설정 시 sweep 사용)
+//   N6_GROVER_SWEEP  (콤마 리스트, 기본 "16,64,256")
+//   N6_GROVER_SHOTS  (정수, 기본 4096)
+//   N6_GROVER_OUT    (출력 JSON 경로. 미설정 시 stdout)
+// 출력: per-N 진행 라인 + 마지막에 results JSON.
+//
+// raw 91 C3 honest disclosure: qiskit_aer 호출은 외부 프로세스 — 결정성은
+// seed_simulator=20260416 고정으로 재현. 만약 qiskit_aer 미설치 → 해당 N 에서
+// theory_only 모드 (top_n/top_prob/prob_n_eq_6 = NaN sentinel "_skipped").
+
+let DEFAULT_SWEEP = "16,64,256"
+let DEFAULT_SHOTS: i64 = 4096
+let SEED: i64 = 20260416
+
+// ── 정수 유틸 ─────────────────────────────────────────────
+
+fn _str(x) -> string {
+    let t = type_of(x)
+    if t == "str" || t == "string" { return x }
+    return ""
+}
+
+fn ilog2_ceil(n: i64) -> i64 {
+    // ceil(log2(n)) 정수, n>=1.
+    if n <= 1 { return 1 }
+    let mut q: i64 = 0
+    let mut v: i64 = 1
+    while v < n {
+        v = v * 2
+        q = q + 1
+    }
+    return q
+}
+
+fn isqrt(n: i64) -> i64 {
+    if n <= 0 { return 0 }
+    let mut x: i64 = n
+    let mut y: i64 = (x + 1) / 2
+    while y < x {
+        x = y
+        y = (x + n / x) / 2
+    }
+    return x
+}
+
+fn gcd(a0: i64, b0: i64) -> i64 {
+    let mut a = a0
+    let mut b = b0
+    if a < 0 { a = -a }
+    if b < 0 { b = -b }
+    while b != 0 {
+        let t = a % b
+        a = b
+        b = t
+    }
+    return a
+}
+
+// ── n6 항등식 (sigma * phi == n * tau) ──────────────────
+
+fn sigma_n(n: i64) -> i64 {
+    let mut s: i64 = 0
+    let mut d: i64 = 1
+    while d <= n {
+        if n % d == 0 { s = s + d }
+        d = d + 1
+    }
+    return s
+}
+
+fn phi_n(n: i64) -> i64 {
+    if n == 1 { return 1 }
+    let mut c: i64 = 0
+    let mut k: i64 = 1
+    while k <= n {
+        if gcd(k, n) == 1 { c = c + 1 }
+        k = k + 1
+    }
+    return c
+}
+
+fn tau_n(n: i64) -> i64 {
+    let mut c: i64 = 0
+    let mut d: i64 = 1
+    while d <= n {
+        if n % d == 0 { c = c + 1 }
+        d = d + 1
+    }
+    return c
+}
+
+fn marked_set(n_max: i64) -> list {
+    let mut out: list = []
+    let mut n: i64 = 2
+    while n < n_max {
+        if sigma_n(n) * phi_n(n) == n * tau_n(n) {
+            out.push(n)
+        }
+        n = n + 1
+    }
+    return out
+}
+
+// optimal_iterations: round(pi/4 · sqrt(N/M)).
+// 정수 근사: (78540 · sqrt(N/M·1) + 50000) / 100000 (소수점 5 자리).
+fn optimal_iterations(big_n: i64, big_m: i64) -> i64 {
+    if big_m <= 0 { return 0 }
+    // sqrt(N/M) 을 sqrt(N*1000000/M)/1000 으로 분리 (N/M 정수 정밀도).
+    let scaled = big_n * 1000000 / big_m
+    let sr_x1000 = isqrt(scaled)
+    // (pi/4) ≈ 0.7853981633...; ×100000 ≈ 78540 (round down 5자리).
+    let v = (78540 * sr_x1000 + 50000000) / 100000000
+    if v < 1 { return 1 }
+    return v
+}
+
+// ── 리스트 → 콤마 문자열 ──────────────────────────────────
+
+fn list_csv(xs: list) -> string {
+    let mut s = ""
+    let mut i: i64 = 0
+    while i < len(xs) {
+        if i > 0 { s = s + "," }
+        s = s + to_string(xs[i])
+        i = i + 1
+    }
+    return s
+}
+
+fn list_jsonarr(xs: list) -> string {
+    return "[" + list_csv(xs) + "]"
+}
+
+// ── JSON 인코딩 헬퍼 ────────────────────────────────────
+
+fn json_escape(s: string) -> string {
+    let mut r = s
+    r = r.replace("\\", "\\\\")
+    r = r.replace("\"", "\\\"")
+    return r
+}
+
+// ── python3 -c qiskit-aer 브리지 ────────────────────────
+
+fn build_python_script(n_max: i64, marked_csv: string, q: i64, k: i64, shots: i64) -> string {
+    // Python 측: marked 정수 리스트 → phase oracle (lookup-table form).
+    // - X gates on zero-bits; multi-controlled Z; X again to restore.
+    // - Apply k iterations of (oracle, diffusion).
+    // - Return JSON line with op_counts/top_n/top_prob/prob_n_eq_6/theo + timing.
+    // 결정성: AerSimulator(seed_simulator=SEED).
+    // raw 91 C3: ImportError 발생 시 stdout 에 {"qiskit": "missing"} 단일 객체.
+    let mut s = ""
+    s = s + "import json,math,sys,time\n"
+    s = s + "try:\n"
+    s = s + "    from qiskit import QuantumCircuit, transpile\n"
+    s = s + "    from qiskit.circuit.library import ZGate\n"
+    s = s + "    from qiskit_aer import AerSimulator\n"
+    s = s + "except Exception as e:\n"
+    s = s + "    sys.stdout.write(json.dumps({\"qiskit\":\"missing\",\"err\":str(e)})+\"\\n\")\n"
+    s = s + "    sys.exit(0)\n"
+    s = s + "N_MAX=" + to_string(n_max) + "\n"
+    s = s + "Q=" + to_string(q) + "\n"
+    s = s + "K=" + to_string(k) + "\n"
+    s = s + "SHOTS=" + to_string(shots) + "\n"
+    s = s + "SEED=" + to_string(SEED) + "\n"
+    s = s + "MARKED=[" + marked_csv + "]\n"
+    s = s + "def int_to_bits(x,q):\n"
+    s = s + "    return [(x>>i)&1 for i in range(q)]\n"
+    s = s + "def phase_oracle(marked,q):\n"
+    s = s + "    qc=QuantumCircuit(q,name='oracle')\n"
+    s = s + "    for m in marked:\n"
+    s = s + "        bits=int_to_bits(m,q)\n"
+    s = s + "        for i,b in enumerate(bits):\n"
+    s = s + "            if b==0: qc.x(i)\n"
+    s = s + "        if q==1: qc.z(0)\n"
+    s = s + "        else: qc.append(ZGate().control(q-1),list(range(q)))\n"
+    s = s + "        for i,b in enumerate(bits):\n"
+    s = s + "            if b==0: qc.x(i)\n"
+    s = s + "    return qc\n"
+    s = s + "def diffusion(q):\n"
+    s = s + "    qc=QuantumCircuit(q,name='diffusion')\n"
+    s = s + "    qc.h(range(q))\n"
+    s = s + "    qc.x(range(q))\n"
+    s = s + "    if q==1: qc.z(0)\n"
+    s = s + "    else: qc.append(ZGate().control(q-1),list(range(q)))\n"
+    s = s + "    qc.x(range(q))\n"
+    s = s + "    qc.h(range(q))\n"
+    s = s + "    return qc\n"
+    s = s + "qc=QuantumCircuit(Q,Q)\n"
+    s = s + "qc.h(range(Q))\n"
+    s = s + "orc=phase_oracle(MARKED,Q).to_gate(label='U_f')\n"
+    s = s + "diff=diffusion(Q).to_gate(label='D')\n"
+    s = s + "for _ in range(K):\n"
+    s = s + "    qc.append(orc,range(Q))\n"
+    s = s + "    qc.append(diff,range(Q))\n"
+    s = s + "qc.measure(range(Q),range(Q))\n"
+    s = s + "backend=AerSimulator(seed_simulator=SEED)\n"
+    s = s + "t0=time.perf_counter()\n"
+    s = s + "tqc=transpile(qc,backend,basis_gates=['cx','u3','h','x','z'],optimization_level=1)\n"
+    s = s + "build=time.perf_counter()-t0\n"
+    s = s + "ops=dict(tqc.count_ops())\n"
+    s = s + "gtot=sum(v for k_,v in ops.items() if k_!='measure')\n"
+    s = s + "t1=time.perf_counter()\n"
+    s = s + "res=backend.run(tqc,shots=SHOTS).result()\n"
+    s = s + "sim=time.perf_counter()-t1\n"
+    s = s + "counts=res.get_counts()\n"
+    s = s + "ic={}\n"
+    s = s + "for bs,c in counts.items():\n"
+    s = s + "    nv=int(bs,2); ic[nv]=ic.get(nv,0)+c\n"
+    s = s + "if ic:\n"
+    s = s + "    top_n,top_c=max(ic.items(),key=lambda kv:kv[1])\n"
+    s = s + "else:\n"
+    s = s + "    top_n,top_c=-1,0\n"
+    s = s + "tp=top_c/SHOTS if SHOTS else 0.0\n"
+    s = s + "p6=ic.get(6,0)/SHOTS if SHOTS else 0.0\n"
+    s = s + "M=len(MARKED)\n"
+    s = s + "if M>0:\n"
+    s = s + "    th=math.asin(math.sqrt(M/(2**Q)))\n"
+    s = s + "    theo=math.sin((2*K+1)*th)**2\n"
+    s = s + "else:\n"
+    s = s + "    theo=0.0\n"
+    s = s + "out={\"qiskit\":\"ok\",\"gate_counts\":ops,\"gate_total\":gtot,\"top_n\":top_n,\"top_prob\":tp,\"prob_n_eq_6\":p6,\"theo\":theo,\"build_sec\":build,\"sim_sec\":sim}\n"
+    s = s + "sys.stdout.write(json.dumps(out)+\"\\n\")\n"
+    return s
+}
+
+fn run_quantum(n_max: i64, marked: list, q: i64, k: i64, shots: i64) -> string {
+    // python3 -c "<script>" — heredoc 으로 안전 전달.
+    let script = build_python_script(n_max, list_csv(marked), q, k, shots)
+    // python3 -c 의 인자는 single-quote 안에서 ' escape 가 까다로우므로 stdin
+    // 쪽 'python3 -' 가 더 안전 — exec sh heredoc.
+    let cmd = "/usr/bin/python3 - <<'__N6_GROVER_PY__'\n" + script + "__N6_GROVER_PY__\n"
+    let raw = _str(exec(cmd)).trim()
+    return raw
+}
+
+// 매우 단순한 JSON-line 키 추출 (qiskit==missing/ok 둘 다).
+fn json_get_field(json_line: string, key: string) -> string {
+    // "key":value ... 첫 매치만 (중첩 객체는 단순 truncate).
+    let needle = "\"" + key + "\":"
+    let pos = json_line.index_of(needle)
+    if pos < 0 { return "" }
+    let mut p = pos + len(needle)
+    let n = len(json_line)
+    // skip whitespace
+    while p < n && (json_line.char_at(p) == " ") { p = p + 1 }
+    if p >= n { return "" }
+    let c0 = json_line.char_at(p)
+    if c0 == "\"" {
+        // string until closing "
+        let mut q2 = p + 1
+        let mut out = ""
+        while q2 < n {
+            let ch = json_line.char_at(q2)
+            if ch == "\"" { return out }
+            out = out + ch
+            q2 = q2 + 1
+        }
+        return out
+    } else if c0 == "{" || c0 == "[" {
+        // bracketed — return raw until matching close (1-level).
+        let open_c = c0
+        let mut close_c = "]"
+        if c0 == "{" { close_c = "}" }
+        let mut depth: i64 = 0
+        let mut q2 = p
+        let mut out = ""
+        while q2 < n {
+            let ch = json_line.char_at(q2)
+            out = out + ch
+            if ch == open_c { depth = depth + 1 }
+            else if ch == close_c {
+                depth = depth - 1
+                if depth == 0 { return out }
+            }
+            q2 = q2 + 1
+        }
+        return out
+    } else {
+        // bare token until , } ] EOL
+        let mut q2 = p
+        let mut out = ""
+        while q2 < n {
+            let ch = json_line.char_at(q2)
+            if ch == "," || ch == "}" || ch == "]" || ch == "\n" { return out }
+            out = out + ch
+            q2 = q2 + 1
+        }
+        return out
+    }
+}
+
+// ── 메인 ──────────────────────────────────────────────────
+
+fn run_one(n_max: i64, shots: i64) -> string {
+    let marked = marked_set(n_max)
+    let big_m = len(marked)
+    let q = ilog2_ceil(n_max)
+    let space: i64 = 1
+    // 2^q
+    let mut pw: i64 = 1
+    let mut qi: i64 = 0
+    while qi < q { pw = pw * 2; qi = qi + 1 }
+    let mut big_m_eff = big_m
+    if big_m_eff == 0 { big_m_eff = 1 }
+    let k = optimal_iterations(pw, big_m_eff)
+
+    // qiskit 브리지
+    let raw = run_quantum(n_max, marked, q, k, shots)
+    let qstatus = json_get_field(raw, "qiskit")
+    let mut top_n_s = "-1"
+    let mut top_prob_s = "0.0"
+    let mut p6_s = "0.0"
+    let mut theo_s = "0.0"
+    let mut gate_total_s = "0"
+    let mut gate_counts_s = "{}"
+    let mut build_s = "0.0"
+    let mut sim_s = "0.0"
+    if qstatus == "ok" {
+        top_n_s = json_get_field(raw, "top_n").trim()
+        top_prob_s = json_get_field(raw, "top_prob").trim()
+        p6_s = json_get_field(raw, "prob_n_eq_6").trim()
+        theo_s = json_get_field(raw, "theo").trim()
+        gate_total_s = json_get_field(raw, "gate_total").trim()
+        gate_counts_s = json_get_field(raw, "gate_counts").trim()
+        build_s = json_get_field(raw, "build_sec").trim()
+        sim_s = json_get_field(raw, "sim_sec").trim()
+    }
+
+    // 진행 라인 (stdout)
+    let mut line = "[N_max=" + to_string(n_max) + "]"
+    line = line + " q=" + to_string(q) + " k=" + to_string(k)
+    line = line + " marked=" + list_jsonarr(marked)
+    line = line + " top_n=" + top_n_s + " p_top=" + top_prob_s
+    line = line + " p(n=6)=" + p6_s + " theo=" + theo_s
+    line = line + " gates=" + gate_total_s
+    line = line + " build=" + build_s + "s sim=" + sim_s + "s"
+    let unique6 = (len(marked) == 1 && marked[0] == 6 && top_n_s == "6")
+    let mut unique6_s = "false"
+    if unique6 { unique6_s = "true" }
+    line = line + " unique6=" + unique6_s
+    if qstatus != "ok" {
+        line = line + " qiskit=missing"
+    }
+    println(line)
+
+    // per-N JSON
+    let mut je = "{"
+    je = je + "\"N_max\":" + to_string(n_max) + ","
+    je = je + "\"search_space\":" + to_string(pw) + ","
+    je = je + "\"qubits\":" + to_string(q) + ","
+    je = je + "\"marked_set\":" + list_jsonarr(marked) + ","
+    je = je + "\"num_marked\":" + to_string(big_m) + ","
+    je = je + "\"iterations\":" + to_string(k) + ","
+    je = je + "\"shots\":" + to_string(shots) + ","
+    je = je + "\"gate_counts\":" + gate_counts_s + ","
+    je = je + "\"gate_total\":" + gate_total_s + ","
+    je = je + "\"top_n\":" + top_n_s + ","
+    je = je + "\"top_prob\":" + top_prob_s + ","
+    je = je + "\"prob_n_eq_6\":" + p6_s + ","
+    je = je + "\"theoretical_success_prob\":" + theo_s + ","
+    je = je + "\"build_sec\":" + build_s + ","
+    je = je + "\"sim_sec\":" + sim_s + ","
+    je = je + "\"unique_six_confirmed\":" + unique6_s + ","
+    je = je + "\"qiskit_status\":\"" + qstatus + "\""
+    je = je + "}"
+    return je
+}
+
+fn parse_csv_ints(csv: string) -> list {
+    let parts = csv.split(",")
+    let mut out: list = []
+    let mut i: i64 = 0
+    while i < len(parts) {
+        let s = parts[i].trim()
+        if len(s) > 0 {
+            out.push(to_int(s))
+        }
+        i = i + 1
+    }
+    return out
+}
+
+fn main() {
+    let single = env("N6_GROVER_N_MAX")
+    let sweep_env = env("N6_GROVER_SWEEP")
+    let shots_env = env("N6_GROVER_SHOTS")
+    let out_path = env("N6_GROVER_OUT")
+
+    let mut shots: i64 = DEFAULT_SHOTS
+    if len(shots_env) > 0 { shots = to_int(shots_env) }
+
+    let mut nlist: list = []
+    if len(single) > 0 {
+        nlist.push(to_int(single))
+    } else {
+        let mut csv = DEFAULT_SWEEP
+        if len(sweep_env) > 0 { csv = sweep_env }
+        nlist = parse_csv_ints(csv)
+    }
+
+    let mut results = ""
+    let mut i: i64 = 0
+    while i < len(nlist) {
+        let je = run_one(nlist[i], shots)
+        if i > 0 { results = results + "," }
+        results = results + "\n    " + je
+        i = i + 1
+    }
+
+    let payload = "{\n  \"results\": [" + results + "\n  ]\n}\n"
+    if len(out_path) > 0 {
+        write_file(out_path, payload)
+        println("[grover_n6] JSON 작성: " + out_path)
+    } else {
+        println(payload)
+    }
+}
+
+main()

@@ -1,0 +1,532 @@
+// run_verify_batch_cached.hexa — CHIP-P0-4 mtime-cache verify batch runner
+// 포팅 원본: experiments/run_verify_batch_cached.py (py 삭제 동반)
+// 규칙: HEXA-FIRST, raw 9 hexa-only mandate (2026-04-29 cycle 29 sweep).
+//
+// 원본 .py 의 출력 포맷/캐시 스키마/모드 (--dry / --full / --status / --all /
+// --json) 를 1:1 보존. 캐시 파일은 experiments/.verify_mtime_cache.json (원본 동일).
+//
+// 전제: stage1+ hexa runtime (env / exec / read_file / write_file / args).
+//
+// raw 91 honest C3:
+//   - 캐시 JSON 파싱은 단순 키-값 grep (object/depth-1) 로 처리. 원본 .py 의
+//     json.dump(indent=2, sort_keys=False) 와 동일한 평면 스키마이므로 수용 가능.
+//   - 원자적 쓰기: tempfile mkstemp + os.replace 등가 — mktemp + mv -f 로 구현.
+//   - "상태] pass" 마커 검출은 원본 정의 그대로 재사용.
+
+let HOME = env("HOME")
+let REPO = HOME + "/Dev/n6-architecture"
+let EXPER = REPO + "/experiments"
+let CACHE_PATH = EXPER + "/.verify_mtime_cache.json"
+let HEXA_BIN_DEFAULT = HOME + "/.hx/bin/hexa"
+
+fn _str(x) -> string {
+    let t = type_of(x)
+    if t == "str" || t == "string" { return x }
+    return ""
+}
+
+fn sh(cmd: string) -> string {
+    return _str(exec(cmd)).trim()
+}
+
+fn iso_now() -> string {
+    return sh("date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null")
+}
+
+fn hexa_bin() -> string {
+    let e = env("HEXA_BIN")
+    if len(e) > 0 { return e }
+    return HEXA_BIN_DEFAULT
+}
+
+// ── stat 헬퍼 (mtime float, size int) ────────────────────────
+
+fn file_mtime(path: string) -> string {
+    // BSD stat (-f '%m') 우선, GNU stat (-c '%Y') 폴백. 원본은 float st_mtime.
+    let r = sh("stat -f '%m' '" + path + "' 2>/dev/null || stat -c '%Y' '" + path + "' 2>/dev/null")
+    if r == "" { return "0" }
+    return r
+}
+
+fn file_size(path: string) -> string {
+    let r = sh("stat -f '%z' '" + path + "' 2>/dev/null || stat -c '%s' '" + path + "' 2>/dev/null")
+    if r == "" { return "0" }
+    return r
+}
+
+// ── 캐시 (단순 JSON read/write) ─────────────────────────────
+
+// 원본 cache schema:
+//   {"_meta": {...}, "files": {"<abs>": {"mtime":..., "size":..., "last_verify_result":..., "verified_at":...}}}
+//
+// 우리는 cache_files 를 'list of (path,mtime,size,result,verified_at)' 로 표현
+// (hexa stage1+ list/dict 모두 지원되나, 평면 list 로 다루는 것이 단순).
+
+fn load_cache_raw() -> string {
+    if !file_exists(CACHE_PATH) { return "" }
+    return read_file(CACHE_PATH)
+}
+
+// _meta 의 단일 키 추출 (가벼운 grep 기반 파싱).
+fn meta_field(cache_raw: string, key: string) -> string {
+    if cache_raw == "" { return "" }
+    // _meta 블록 grep
+    let mp = cache_raw.index_of("\"_meta\"")
+    if mp < 0 { return "" }
+    let needle = "\"" + key + "\":"
+    let p0 = cache_raw.index_of(needle, mp)
+    if p0 < 0 { return "" }
+    let mut p = p0 + len(needle)
+    let n = len(cache_raw)
+    while p < n && (cache_raw.char_at(p) == " ") { p = p + 1 }
+    if p >= n { return "" }
+    let c0 = cache_raw.char_at(p)
+    if c0 == "\"" {
+        let mut q = p + 1
+        let mut out = ""
+        while q < n {
+            let ch = cache_raw.char_at(q)
+            if ch == "\"" { return out }
+            out = out + ch
+            q = q + 1
+        }
+        return out
+    }
+    // bare token until , } EOL
+    let mut q = p
+    let mut out = ""
+    while q < n {
+        let ch = cache_raw.char_at(q)
+        if ch == "," || ch == "}" || ch == "\n" { return out }
+        out = out + ch
+        q = q + 1
+    }
+    return out
+}
+
+// files."<abs>" 객체에서 단일 키 추출.
+fn cache_field(cache_raw: string, abs: string, key: string) -> string {
+    if cache_raw == "" { return "" }
+    let fp = cache_raw.index_of("\"files\"")
+    if fp < 0 { return "" }
+    let path_marker = "\"" + abs + "\":"
+    let p0 = cache_raw.index_of(path_marker, fp)
+    if p0 < 0 { return "" }
+    // open brace
+    let mut bp = p0 + len(path_marker)
+    let n = len(cache_raw)
+    while bp < n && (cache_raw.char_at(bp) == " " || cache_raw.char_at(bp) == "\n") { bp = bp + 1 }
+    if bp >= n || cache_raw.char_at(bp) != "{" { return "" }
+    // 단일 객체 본문 (1-level depth) 끝 위치 찾기
+    let mut depth: i64 = 0
+    let mut end = bp
+    while end < n {
+        let ch = cache_raw.char_at(end)
+        if ch == "{" { depth = depth + 1 }
+        else if ch == "}" {
+            depth = depth - 1
+            if depth == 0 { break }
+        }
+        end = end + 1
+    }
+    if end <= bp { return "" }
+    let body_start = bp
+    let needle = "\"" + key + "\":"
+    let np = cache_raw.index_of(needle, body_start)
+    if np < 0 || np >= end { return "" }
+    let mut p = np + len(needle)
+    while p < end && (cache_raw.char_at(p) == " ") { p = p + 1 }
+    if p >= end { return "" }
+    let c0 = cache_raw.char_at(p)
+    if c0 == "\"" {
+        let mut q = p + 1
+        let mut out = ""
+        while q < end {
+            let ch = cache_raw.char_at(q)
+            if ch == "\"" { return out }
+            out = out + ch
+            q = q + 1
+        }
+        return out
+    }
+    let mut q = p
+    let mut out = ""
+    while q < end {
+        let ch = cache_raw.char_at(q)
+        if ch == "," || ch == "}" || ch == "\n" { return out }
+        out = out + ch
+        q = q + 1
+    }
+    return out
+}
+
+// ── 파일 수집 ────────────────────────────────────────────
+
+fn collect_chip_lens() -> list {
+    let raw = sh("ls -1 '" + EXPER + "/chip-verify'/verify_*.hexa 2>/dev/null; ls -1 '" + EXPER + "/lens-verify'/verify_*.hexa 2>/dev/null")
+    if raw == "" { return [] }
+    let parts = raw.split("\n")
+    let mut out: list = []
+    let mut i: i64 = 0
+    while i < len(parts) {
+        let p = parts[i].trim()
+        if len(p) > 0 { out.push(p) }
+        i = i + 1
+    }
+    return out
+}
+
+fn collect_all() -> list {
+    let raw = sh("find '" + EXPER + "' -type f -name 'verify_*.hexa' -not -path '*/.cache/*' -not -name '.verify_*' 2>/dev/null | sort")
+    if raw == "" { return [] }
+    let parts = raw.split("\n")
+    let mut out: list = []
+    let mut i: i64 = 0
+    while i < len(parts) {
+        let p = parts[i].trim()
+        if len(p) > 0 { out.push(p) }
+        i = i + 1
+    }
+    return out
+}
+
+fn collect_files(f_scope: string) -> list {
+    if f_scope == "chip+lens" { return collect_chip_lens() }
+    return collect_all()
+}
+
+// ── verify 실행 ─────────────────────────────────────────
+
+fn verify_one(path: string) -> string {
+    // 원본 정의:
+    //   - "상태] pass" stdout/stderr 결합 매치 → "pass"
+    //   - exit 0 + 비어있음 → "unknown"
+    //   - exit 0 그 외 → "pass_no_marker"
+    //   - exit !=0 → "fail"
+    //   - timeout 60s
+    let bin = hexa_bin()
+    // exec wrapper: stdout+stderr 결합 + exit code stash
+    let cmd = "HEXA_NO_LAUNCHD=1 timeout 60 '" + bin + "' run '" + path + "' 2>&1; echo __EXIT__=$?"
+    let raw = _str(exec(cmd))
+    // 빈 출력 + 정상 종료 케이스 추정: __EXIT__=0 만 있는 경우
+    let m = "__EXIT__="
+    let p = raw.last_index_of(m)
+    if p < 0 {
+        // 비정상; 안전상 fail 반환
+        return "fail"
+    }
+    let exit_code_s = raw.substring(p + len(m)).trim()
+    let body = raw.substring(0, p).trim()
+    if body.contains("상태] pass") { return "pass" }
+    if exit_code_s == "0" {
+        if len(body) == 0 { return "unknown" }
+        return "pass_no_marker"
+    }
+    if exit_code_s == "124" || exit_code_s == "137" { return "timeout" }
+    if exit_code_s == "127" { return "hexa_missing" }
+    return "fail"
+}
+
+// ── 시간 포맷 ─────────────────────────────────────────────
+
+fn format_seconds(ms_x100: i64) -> string {
+    // 입력: ms*100 (즉 0.01 ms 단위).
+    // 1.0 s 이상이면 '<x>.<yy> s', 미만이면 '<x>.<y> ms'.
+    let total_ms_x10 = ms_x100 / 10  // 0.1 ms 단위
+    if total_ms_x10 >= 10000 {
+        // ≥ 1 s
+        let secs_x100 = ms_x100 / 1000   // 0.01 s 단위
+        let s_int = secs_x100 / 100
+        let s_frac = secs_x100 - s_int * 100
+        let mut fs = to_string(s_frac)
+        if s_frac < 10 { fs = "0" + fs }
+        return to_string(s_int) + "." + fs + " s"
+    }
+    // < 1 s : ms.X ms
+    let ms_x10 = ms_x100 / 10
+    let m_int = ms_x10 / 10
+    let m_frac = ms_x10 - m_int * 10
+    return to_string(m_int) + "." + to_string(m_frac) + " ms"
+}
+
+// monotonic ms (정수, BSD/GNU 호환).
+fn monotonic_ms() -> i64 {
+    // python time.monotonic 정밀도 → 우리는 ms.
+    // /usr/bin/python3 일관성을 위해 perf_counter 호출.
+    let r = sh("/usr/bin/python3 -c 'import time;print(int(time.monotonic()*1000))' 2>/dev/null")
+    if r == "" { return 0 }
+    return to_int(r)
+}
+
+// ── 캐시 쓰기 (atomic) ────────────────────────────────────
+
+fn json_escape(s: string) -> string {
+    let mut r = s
+    r = r.replace("\\", "\\\\")
+    r = r.replace("\"", "\\\"")
+    return r
+}
+
+fn write_cache_atomic(meta_kv: list, files_kv: list) {
+    // meta_kv: [["key","strval","raw?"], ...]  raw==1 이면 unquoted
+    // files_kv: [[abs,mtime,size,result,verified_at], ...]
+    let _ = sh("mkdir -p '" + EXPER + "' 2>/dev/null")
+    let tmp = sh("mktemp '" + EXPER + "/.verify_mtime_cache.XXXXXX.tmp'")
+    if tmp == "" { return }
+
+    let mut body = "{\n  \"_meta\": {\n"
+    let mut mi: i64 = 0
+    while mi < len(meta_kv) {
+        let kv = meta_kv[mi]
+        let k = kv[0]
+        let v = kv[1]
+        let is_raw = kv[2]
+        let mut comma = ""
+        if mi < len(meta_kv) - 1 { comma = "," }
+        let mut val_s = "\"" + json_escape(v) + "\""
+        if is_raw == "1" { val_s = v }
+        body = body + "    \"" + k + "\": " + val_s + comma + "\n"
+        mi = mi + 1
+    }
+    body = body + "  },\n  \"files\": {\n"
+    let mut fi: i64 = 0
+    while fi < len(files_kv) {
+        let f = files_kv[fi]
+        let abs = f[0]
+        let mt = f[1]
+        let sz = f[2]
+        let res = f[3]
+        let va = f[4]
+        let mut comma = ""
+        if fi < len(files_kv) - 1 { comma = "," }
+        body = body + "    \"" + json_escape(abs) + "\": {\n"
+        body = body + "      \"mtime\": " + mt + ",\n"
+        body = body + "      \"size\": " + sz + ",\n"
+        body = body + "      \"last_verify_result\": \"" + json_escape(res) + "\",\n"
+        body = body + "      \"verified_at\": \"" + json_escape(va) + "\"\n"
+        body = body + "    }" + comma + "\n"
+        fi = fi + 1
+    }
+    body = body + "  }\n}\n"
+
+    write_file(tmp, body)
+    let _ = sh("mv -f '" + tmp + "' '" + CACHE_PATH + "'")
+}
+
+// ── 인자 파싱 ────────────────────────────────────────────
+
+fn parse_args() -> list {
+    // returns [mode, scope, json_flag]  (json_flag: "1"/"0")
+    let argv = args()
+    let mut mode = "batch"
+    let mut f_scope = "chip+lens"
+    let mut json_flag = "0"
+    let mut i: i64 = 2  // argv[0]=hexa argv[1]=script
+    let nargv = len(argv)
+    while i < nargv {
+        let a = argv[i]
+        if a == "--dry" { mode = "dry" }
+        else if a == "--full" { mode = "full" }
+        else if a == "--status" { mode = "status" }
+        else if a == "--all" { f_scope = "all" }
+        else if a == "--json" { json_flag = "1" }
+        i = i + 1
+    }
+    return [mode, f_scope, json_flag]
+}
+
+// ── 상대 경로 ────────────────────────────────────────────
+
+fn rel_to_repo(abs: string) -> string {
+    let pre = REPO + "/"
+    if abs.starts_with(pre) { return abs.substring(len(pre)) }
+    return abs
+}
+
+// ── 메인 ─────────────────────────────────────────────────
+
+fn main() {
+    let parsed = parse_args()
+    let mode = parsed[0]
+    let f_scope = parsed[1]
+    let json_flag = parsed[2]
+
+    let cache_raw = load_cache_raw()
+
+    if mode == "status" {
+        let updated = meta_field(cache_raw, "updated")
+        let total = meta_field(cache_raw, "total")
+        let cached = meta_field(cache_raw, "cached")
+        let scope_meta = meta_field(cache_raw, "scope")
+        let first = meta_field(cache_raw, "first_run_seconds")
+        let last = meta_field(cache_raw, "last_run_seconds")
+        let mut total_disp = "0"
+        if len(total) > 0 { total_disp = total }
+        let mut cached_disp = "0"
+        if len(cached) > 0 { cached_disp = cached }
+        let mut first_disp = "null"
+        if len(first) > 0 { first_disp = first }
+        let mut last_disp = "null"
+        if len(last) > 0 { last_disp = last }
+        println("[verify-batch] mode=status")
+        println("[verify-batch] cache=" + CACHE_PATH)
+        println("[verify-batch] updated=" + updated + " total=" + total_disp + " cached=" + cached_disp + " scope=" + scope_meta)
+        println("[verify-batch] first_run_seconds=" + first + " last_run_seconds=" + last)
+        if json_flag == "1" {
+            let mut js = "{"
+            js = js + "\"updated\":\"" + updated + "\","
+            js = js + "\"total\":" + total_disp + ","
+            js = js + "\"cached\":" + cached_disp + ","
+            js = js + "\"scope\":\"" + scope_meta + "\","
+            js = js + "\"first_run_seconds\":" + first_disp + ","
+            js = js + "\"last_run_seconds\":" + last_disp
+            js = js + "}"
+            println(js)
+        }
+        return
+    }
+
+    let files = collect_files(f_scope)
+    println("[verify-batch] mode=" + mode)
+    println("[verify-batch] cache=" + CACHE_PATH)
+    println("[verify-batch] scope=" + f_scope)
+    if len(files) == 0 {
+        println("[verify-batch] verify_*.hexa 없음 — 스킵")
+        return
+    }
+    let total = len(files)
+    println("[verify-batch] 발견 verify 파일 = " + to_string(total))
+
+    let mut hit: i64 = 0
+    let mut miss: i64 = 0
+    let mut ran_cnt: i64 = 0
+    let mut passed: i64 = 0
+    let mut failed: i64 = 0
+    let mut skipped: i64 = 0
+
+    let t0 = monotonic_ms()
+    let mut new_files: list = []  // [abs,mtime,size,result,verified_at]
+
+    let mut i: i64 = 0
+    while i < total {
+        let abs = files[i]
+        if !file_exists(abs) {
+            // stat 실패와 동일 — skip with warn
+            println("[verify-batch] WARN stat 실패 " + abs)
+            i = i + 1
+            continue
+        }
+        let cur_mt = file_mtime(abs)
+        let cur_sz = file_size(abs)
+        let cached_mt = cache_field(cache_raw, abs, "mtime")
+        let cached_sz = cache_field(cache_raw, abs, "size")
+        let prev_result = cache_field(cache_raw, abs, "last_verify_result")
+        let prev_verified = cache_field(cache_raw, abs, "verified_at")
+        let mut prev_result_eff = "unknown"
+        if len(prev_result) > 0 { prev_result_eff = prev_result }
+
+        let unchanged = (len(cached_mt) > 0 && len(cached_sz) > 0 && cached_mt == cur_mt && cached_sz == cur_sz)
+
+        let mut run_it = false
+        if mode == "full" {
+            run_it = true
+        } else if mode == "dry" {
+            run_it = false
+        } else if !unchanged {
+            run_it = true
+            miss = miss + 1
+        } else {
+            hit = hit + 1
+            skipped = skipped + 1
+            println("[verify-batch] [SKIP] " + rel_to_repo(abs) + " (mtime/size 불변, prev=" + prev_result_eff + ")")
+        }
+
+        let mut entry_result = prev_result_eff
+        let mut entry_verified = iso_now()
+        if len(prev_verified) > 0 { entry_verified = prev_verified }
+
+        if run_it {
+            let result = verify_one(abs)
+            ran_cnt = ran_cnt + 1
+            if result == "pass" || result == "pass_no_marker" || result == "unknown" {
+                passed = passed + 1
+            } else {
+                failed = failed + 1
+            }
+            println("[verify-batch] [RUN ] " + rel_to_repo(abs) + " → " + result)
+            entry_result = result
+            entry_verified = iso_now()
+        }
+
+        new_files.push([abs, cur_mt, cur_sz, entry_result, entry_verified])
+        i = i + 1
+    }
+
+    let t1 = monotonic_ms()
+    let elapsed_ms_x100 = (t1 - t0) * 100  // ms*100 단위 통일
+
+    // _meta
+    let updated = iso_now()
+    let prev_first = meta_field(cache_raw, "first_run_seconds")
+    let elapsed_secs_x10000 = (t1 - t0) * 10  // 0.0001 s 단위
+    let secs_int = elapsed_secs_x10000 / 10000
+    let secs_frac = elapsed_secs_x10000 - secs_int * 10000
+    let mut sf_str = to_string(secs_frac)
+    while len(sf_str) < 4 { sf_str = "0" + sf_str }
+    let last_run_str = to_string(secs_int) + "." + sf_str
+    let mut first_run_str = prev_first
+    if mode != "dry" && (len(prev_first) == 0 || prev_first == "null" || prev_first == "0" || prev_first == "0.0") {
+        first_run_str = last_run_str
+    }
+    if len(first_run_str) == 0 { first_run_str = "null" }
+
+    let mut meta_kv: list = []
+    meta_kv.push(["updated", updated, "0"])
+    meta_kv.push(["total", to_string(total), "1"])
+    meta_kv.push(["cached", to_string(hit), "1"])
+    meta_kv.push(["scope", f_scope, "0"])
+    meta_kv.push(["first_run_seconds", first_run_str, "1"])
+    meta_kv.push(["last_run_seconds", last_run_str, "1"])
+
+    write_cache_atomic(meta_kv, new_files)
+
+    println("")
+    println("═══ verify-batch 통계 ═══")
+    println("총 파일    = " + to_string(total))
+    println("캐시 히트  = " + to_string(hit))
+    println("캐시 미스  = " + to_string(miss))
+    println("재실행     = " + to_string(ran_cnt))
+    println("스킵       = " + to_string(skipped))
+    println("pass       = " + to_string(passed))
+    println("fail       = " + to_string(failed))
+    println("경과       = " + format_seconds(elapsed_ms_x100))
+    println("캐시 경로  = " + CACHE_PATH)
+    if hit == total && total > 0 {
+        println("[verify-batch] all_cached (재실행 없음)")
+    }
+    if mode == "dry" {
+        println("[dry] 실제 실행 없음 — 캐시 세팅만 완료")
+    }
+
+    if json_flag == "1" {
+        let mut all_cached_b = "false"
+        if hit == total && total > 0 { all_cached_b = "true" }
+        let mut js = "{"
+        js = js + "\"mode\":\"" + mode + "\","
+        js = js + "\"scope\":\"" + f_scope + "\","
+        js = js + "\"total\":" + to_string(total) + ","
+        js = js + "\"hit\":" + to_string(hit) + ","
+        js = js + "\"miss\":" + to_string(miss) + ","
+        js = js + "\"ran\":" + to_string(ran_cnt) + ","
+        js = js + "\"skipped\":" + to_string(skipped) + ","
+        js = js + "\"passed\":" + to_string(passed) + ","
+        js = js + "\"failed\":" + to_string(failed) + ","
+        js = js + "\"elapsed_seconds\":" + last_run_str + ","
+        js = js + "\"all_cached\":" + all_cached_b + ","
+        js = js + "\"cache_path\":\"" + json_escape(CACHE_PATH) + "\""
+        js = js + "}"
+        println(js)
+    }
+}
+
+main()
