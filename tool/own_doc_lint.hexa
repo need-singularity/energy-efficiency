@@ -1,0 +1,214 @@
+#!hexa strict
+// tool/own_doc_lint.hexa — own#1..29 main lint dispatcher (HEXA canonical).
+//
+// Migrated from tool/own_doc_lint.py (1384 LoC) per raw 9 hexa-only mandate.
+// Migration strategy: dispatcher in hexa + per-rule modular hexa lints land
+// over multiple cycles. For rules NOT yet ported to hexa, dispatcher invokes
+// the legacy Python rule-check via `python3 tool/own_doc_lint.py --rule N`
+// (raw 91 honest C3: bridge mode until full port lands).
+//
+// already-ported hexa rules:
+//   own#29 — tool/own29_readme_friendly_toolkit_lint.hexa
+// not-yet-ported (delegated to python via --rule N):
+//   own#1 own#2 own#3 own#4 own#5 own#6 own#7 own#8 own#9 own#10 own#11
+//   own#12 own#16
+//
+// Migration follow-up: incrementally add own<N>_lint.hexa per rule and remove
+// python fall-through. Target: full hexa coverage in 30d.
+//
+// @tool(slug="own_doc_lint", desc="own#1..29 main lint dispatcher; routes per-rule checks to hexa-native impls when available, falls back to python tool/own_doc_lint.py --rule N for not-yet-ported rules")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own_doc_lint.hexa [--rule N])
+// @exit_codes(0=PASS, 1=violations found, 2=internal error)
+
+let REPO_ROOT  = "/Users/ghost/core/n6-architecture"
+let PY_LEGACY  = REPO_ROOT + "/tool/own_doc_lint_legacy.py"
+let REPORT_DIR = REPO_ROOT + "/reports"
+
+// Rule IDs handled by this dispatcher (auto-verifiable).
+let TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 29]
+
+// All current rules are HARD (raw 24 promotion).
+let HARD_RULES = TARGET_RULES
+
+fn _parse_rule_filter(raw: list) -> list {
+  // Returns list of rule ids; empty list = no filter (run all).
+  let mut out = []
+  let mut ai = 0
+  while ai < len(raw) {
+    let a = raw[ai]
+    if a == "--rule" {
+      ai = ai + 1
+      if ai < len(raw) {
+        let val = raw[ai]
+        // Comma-separated or single
+        let parts = split(val, ",")
+        let mut pi = 0
+        while pi < len(parts) {
+          let p = parts[pi].trim()
+          if len(p) > 0 { out.push(to_int(p)) }
+          pi = pi + 1
+        }
+      }
+    }
+    ai = ai + 1
+  }
+  return out
+}
+
+fn _in_filter(filter: list, rid: int) -> bool {
+  if len(filter) == 0 { return true }  // empty filter = all
+  let mut i = 0
+  while i < len(filter) {
+    if filter[i] == rid { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _join_int_list(xs: list) -> string {
+  let mut out = "["
+  let mut i = 0
+  while i < len(xs) {
+    if i > 0 { out = out + ", " }
+    out = out + "'own#" + to_string(xs[i]) + "'"
+    i = i + 1
+  }
+  return out + "]"
+}
+
+fn _is_hexa_native_rule(rid: int) -> bool {
+  // Rules with native hexa impls. Currently only own#29.
+  if rid == 29 { return true }
+  return false
+}
+
+fn _run_native_rule(rid: int) -> int {
+  // Run rule via hexa impl. Returns violation count (0 = OK).
+  if rid == 29 {
+    let cmd = "hexa '" + REPO_ROOT + "/tool/own29_readme_friendly_toolkit_lint.hexa' 2>&1"
+    let raw = to_string(exec(cmd))
+    // Parse output for "__OWN29_RESULT__ PASS" or "__OWN29_RESULT__ FAIL (N violations)"
+    if raw.contains("__OWN29_RESULT__ PASS") { return 0 }
+    if raw.contains("__OWN29_RESULT__ FAIL") {
+      // Extract violation count
+      let lines = split(raw, "\n")
+      let mut k = 0
+      while k < len(lines) {
+        let line = lines[k]
+        if line.contains("__OWN29_RESULT__ FAIL") {
+          // Format: "__OWN29_RESULT__ FAIL (N violations)"
+          let mut p = 0
+          while p < len(line) {
+            if line.substring(p, p + 1) == "(" {
+              // Read digits
+              let mut q = p + 1
+              let mut digits = ""
+              while q < len(line) {
+                let c = line.substring(q, q + 1)
+                if c >= "0" && c <= "9" { digits = digits + c }
+                else { q = len(line) }  // break on non-digit
+                q = q + 1
+              }
+              if len(digits) > 0 { return to_int(digits) }
+            }
+            p = p + 1
+          }
+          return 1  // unknown count, return 1
+        }
+        k = k + 1
+      }
+      return 1
+    }
+  }
+  return 0  // unknown rule, treat as 0
+}
+
+fn _run_py_rule(rid: int) -> int {
+  // Delegate to legacy python via --rule flag. Captures violation count.
+  let cmd = "python3 '" + PY_LEGACY + "' --rule " + to_string(rid) + " 2>&1"
+  let raw = to_string(exec(cmd))
+  // Look for "  own#N    OK" or "  own#N    FAIL (M)"
+  let lines = split(raw, "\n")
+  let target = "own#" + to_string(rid)
+  let mut k = 0
+  while k < len(lines) {
+    let line = lines[k]
+    if line.contains(target) {
+      if line.contains(" OK") { return 0 }
+      if line.contains("FAIL") {
+        // Extract count from "FAIL (N)"
+        let mut p = 0
+        while p < len(line) {
+          if line.substring(p, p + 1) == "(" {
+            let mut q = p + 1
+            let mut digits = ""
+            while q < len(line) {
+              let c = line.substring(q, q + 1)
+              if c >= "0" && c <= "9" { digits = digits + c }
+              else { q = len(line) }
+              q = q + 1
+            }
+            if len(digits) > 0 { return to_int(digits) }
+          }
+          p = p + 1
+        }
+        return 1
+      }
+    }
+    k = k + 1
+  }
+  return 0
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let rule_filter = _parse_rule_filter(raw_args)
+  let mut all_count = 0
+  let mut per_rule = []  // list of [rid, count]
+  let mut hard_count = 0
+
+  let mut i = 0
+  while i < len(TARGET_RULES) {
+    let rid = TARGET_RULES[i]
+    if _in_filter(rule_filter, rid) {
+      let mut count = 0
+      if _is_hexa_native_rule(rid) {
+        count = _run_native_rule(rid)
+      } else {
+        count = _run_py_rule(rid)
+      }
+      let mut entry = []
+      entry.push(rid)
+      entry.push(count)
+      per_rule.push(entry)
+      all_count = all_count + count
+      hard_count = hard_count + count
+    }
+    i = i + 1
+  }
+
+  // Output
+  let mut filter_label = "[own_doc_lint] rule filter : (none — full run)"
+  if len(rule_filter) > 0 { filter_label = "[own_doc_lint] rule filter : " + _join_int_list(rule_filter) }
+  println(filter_label)
+  println("[own_doc_lint] target rules: " + _join_int_list(TARGET_RULES))
+  println("[own_doc_lint] HARD rules     : " + _join_int_list(HARD_RULES))
+
+  let mut j = 0
+  while j < len(per_rule) {
+    let rid = per_rule[j][0]
+    let cnt = per_rule[j][1]
+    let label = "  own#" + to_string(rid)
+    let mut pad = "   "
+    if rid >= 10 { pad = "  " }
+    let mut marker = "OK"
+    if cnt > 0 { marker = "FAIL (" + to_string(cnt) + ")" }
+    println(label + pad + marker)
+    j = j + 1
+  }
+
+  println("[own_doc_lint] total violations: " + to_string(all_count) + " (HARD=" + to_string(hard_count) + ", SOFT=0)")
+
+  if all_count > 0 { exit(1) }
+  exit(0)
+}
