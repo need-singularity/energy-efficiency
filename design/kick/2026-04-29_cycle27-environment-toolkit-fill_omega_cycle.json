@@ -1,0 +1,48 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-29T02:30:00Z",
+  "cycle": 27,
+  "phase": "environment-toolkit-first-fill",
+  "topic": "README.md Environment section adds friendly Molecular Toolkit (HEXA-Earth family) 6-column block + own 29 environment promotion optional → mandatory",
+  "verdict": "FILLED-AND-PROMOTED",
+  "verdict_detail": "User cycle 25 candidate kept as base, axis-mismatch row (HEXA-RECYCLE materials) replaced with HEXA-WATER-TREATMENT (axis=infra). 4 rows all link to existing domains/infra/<slug>/<slug>.md. own_doc_lint --rule 29 PASS post-fill and post-promotion.",
+  "rows_filled": [
+    {"tool": "🌬️ HEXA-CARBON-CAPTURE", "doc": "domains/infra/carbon-capture/carbon-capture.md"},
+    {"tool": "💧 HEXA-MICROPLASTICS", "doc": "domains/infra/environmental-protection/environmental-protection.md"},
+    {"tool": "🛡️ HEXA-ENV-PROTECT", "doc": "domains/infra/environmental-protection/environmental-protection.md"},
+    {"tool": "💦 HEXA-WATER-TREATMENT", "doc": "domains/infra/water-treatment/water-treatment.md"}
+  ],
+  "axis": "infra",
+  "min_rows_required": 3,
+  "rows_present": 4,
+  "doc_links_resolved": "4/4 (2× environmental-protection.md duplicate, 1× carbon-capture.md, 1× water-treatment.md)",
+  "own_29_promotion": "environment entry: optional-sections → mandatory-sections in .own",
+  "own_29_state_after": "mandatory-sections={biology, ai_ml, environment} ; optional-sections={energy, robotics, physics_math}",
+  "readme_sealed_update": "43e87bebf3a9 → e47ef86136fd",
+  "lint_pass": "own_doc_lint --rule 29: own#29 OK; full sweep total 0 HARD / 0 SOFT",
+  "raw_91_c3_disclose": [
+    "HEXA-RECYCLE candidate dropped because doc lives at domains/materials/recycling (axis=materials, not infra) — own 29 axis=infra regex would fail. Reinstating as a HEXA-Materials toolkit row in cycle 28+ is the correct path.",
+    "HEXA-MICROPLASTICS and HEXA-ENV-PROTECT both link to environmental-protection.md (single-doc reuse); cycle 28+ may split into per-tool sub-domain docs (microplastics/ecosystem/etc).",
+    "HEXA-WATER-TREATMENT row is a cycle-27 author addition based on existing domains/infra/water-treatment/ — text is best-effort one-liner, not a measured product card. The dense Product table further down still carries the verified n6 metrics."
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE27-ENV-TOOLKIT-1", "condition": "row count drops below 3 within 30d (regression)", "deadline": "2026-05-29", "status": "preregistered"},
+    {"id": "F-CYCLE27-ENV-TOOLKIT-2", "condition": "any of carbon-capture / environmental-protection / water-treatment doc files removed or renamed within 90d", "deadline": "2026-07-29", "status": "preregistered"},
+    {"id": "F-CYCLE27-ENV-TOOLKIT-3", "condition": "HEXA-WATER-TREATMENT row's everyday-analogy / contrast cells flagged as inaccurate vs the actual water-treatment.md domain doc within 30d", "deadline": "2026-05-29", "status": "preregistered"}
+  ],
+  "files_modified": [
+    "README.md (Environment Toolkit section + 4-row table inserted)",
+    "README.md.sealed.hash (new e47ef86136fd…)",
+    ".readme-rules.json (sealed_hash mirror)",
+    ".own (own 29 environment entry: optional-sections → mandatory-sections)"
+  ],
+  "files_created": [
+    "design/kick/2026-04-29_cycle27-environment-toolkit-fill_omega_cycle.json (this witness)"
+  ],
+  "raw_47_cross_repo": "n6-architecture local only",
+  "raw_9_hexa_only": "markdown + lint dispatch (raw 9 호환)",
+  "raw_53_deterministic": "own_doc_lint exit code + sealed sha256 = deterministic",
+  "raw_77_append_only": true,
+  "raw_142_d2_revertible": true,
+  "raw_138_sentinel": "__CYCLE27_ENV_TOOLKIT_RESULT__ FILLED-AND-PROMOTED"
+}

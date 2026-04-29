@@ -226,6 +226,17 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 > **🛸8** | ✅ | BT 5개 92.3%EXACT | DSE 3.6M | 산업82.9% | 실험82.4% | 물리한계10 | TP43 | 발견42 | 미세플라스틱🛸10 | CCUS100%EXACT | Mk.V
 <!-- AUTO:SUMMARY_environment:END -->
 
+## 🌿 Environment Toolkit (HEXA-Earth family)
+
+> Friendly entry point — Earth-care infrastructure tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), four orthogonal infra-axis verbs.
+
+| Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
+|:----:|-----------|------------------|--------------|---------------------|:---:|
+| 🌬️ **HEXA-CARBON-CAPTURE** | Air Vacuum | Air cleaner that only sucks CO₂ out of the sky | 8-stage capture pipeline (30/30 EXACT, DSE 3.6M) | DAC single-stage rig vs n=6 8-stage chain | [doc](domains/infra/carbon-capture/carbon-capture.md) |
+| 💧 **HEXA-MICROPLASTICS** | Ocean Sieve | A six-tier sieve filtering microplastics out of the sea | 6-stage pipeline, 6-nines removal, CN=6 catalyst tri-Trinity | Single mesh filter vs σ(6)=6-stage chain | [doc](domains/infra/environmental-protection/environmental-protection.md) |
+| 🛡️ **HEXA-ENV-PROTECT** | Forest Guardian | Forest-watching security system covering eight gates | 8-stage sensor → monitor → capture → purify → restore → cycle → ecosystem → Omega | EPA single-metric audit vs 8-stage closure | [doc](domains/infra/environmental-protection/environmental-protection.md) |
+| 💦 **HEXA-WATER-TREATMENT** | Tap Whisperer | Plant that turns river / sea / waste water into safe tap water | n=6 multi-stage purification + reuse loop | Single-pass treatment vs τ(6)=4-state full-cycle plant | [doc](domains/infra/water-treatment/water-treatment.md) |
+
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
 | 10 | ✅ | v4 | **Ultimate Environmental Protection 8-stage** | sensor → monitor → capture → purify → restore → cycle → ecosystem → Omega, 120/120 EXACT full-verify | [doc](domains/infra/environmental-protection/) |
