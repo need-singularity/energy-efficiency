@@ -485,7 +485,7 @@ own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 
   scope HARD block — README.md per-section friendly toolkit table contract. Generalized 2026-04-29 from Biology-only to multi-section spec. Each section in the registered `mandatory-sections` list must contain a friendly H2 heading + 6-column toolkit table + >=N data rows + valid `[doc](domains/<axis>/<slug>/<slug>.md)` link per row. Sections in `optional-sections` are checked when present (toolkit table found → 4-axis check applied) but absence is allowed. Sections not in either list are skipped.
   mandatory-sections biology=## 🧬 Molecular Toolkit (HEXA family)|min_rows=4|axis=biology
   mandatory-sections ai_ml=## 🤖 AI Toolkit (HEXA-AI family)|min_rows=3|axis=compute
-  optional-sections environment=## 🌿 Environment Toolkit (HEXA-Earth family)|min_rows=3|axis=infra
+  mandatory-sections environment=## 🌿 Environment Toolkit (HEXA-Earth family)|min_rows=3|axis=infra
   optional-sections energy=## ⚡ Energy Toolkit (HEXA-Power family)|min_rows=3|axis=infra
   optional-sections robotics=## 🤖 Robotics Toolkit (HEXA-Mech family)|min_rows=3|axis=robotics
   optional-sections physics_math=## 🔬 Physics Toolkit (HEXA-Phys family)|min_rows=3|axis=physics
