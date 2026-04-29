@@ -1,0 +1,417 @@
+#!hexa strict
+// tool/own2_master_identity_lint.hexa — own#2 n6-master-identity HARD lint.
+//
+// Rule: σ(6)=12, φ(6)=2, τ(6)=4, J₂=24 (canonical). Standalone equality
+// declarations contradicting these constants are FORBIDDEN. Multi-term
+// products (σ·J₂=288) and arithmetic continuations are excluded.
+//
+// Migrated from tool/own_doc_lint_legacy.py:564-648 + 577-583 per raw 9.
+// _IDENT_SINGLE_RE composite regex replaced with manual token scan +
+// prefix-12-char composite-guard check + tail arithmetic-continuation reject.
+//
+// @tool(slug="own2_master_identity_lint", desc="own#2 n6-master-identity HARD — σ(6)=12, φ(6)=2, τ(6)=4, J₂=24 contradictions in chip-* + theory/proofs/theorem-r* docs")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own2_master_identity_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+
+// Identity name → canonical value
+// Tokens (UTF-8 byte literals): σ=2 bytes, φ=2 bytes, τ=2 bytes, ₂=3 bytes
+fn _canonical_value(name: string) -> int {
+  if name == "sigma(6)" || name == "σ(6)" { return 12 }
+  if name == "phi(6)" || name == "φ(6)" { return 2 }
+  if name == "tau(6)" || name == "τ(6)" { return 4 }
+  if name == "J2" || name == "J₂" { return 24 }
+  return -1
+}
+
+fn _normalise_name(raw: string) -> string {
+  if raw == "σ(6)" { return "sigma(6)" }
+  if raw == "φ(6)" { return "phi(6)" }
+  if raw == "τ(6)" { return "tau(6)" }
+  if raw == "J₂" { return "J2" }
+  return raw
+}
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _starts_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(0, len(p)) == p
+}
+
+fn _is_digit(c: string) -> bool {
+  return c >= "0" && c <= "9"
+}
+
+fn _is_word_char(c: string) -> bool {
+  if c >= "a" && c <= "z" { return true }
+  if c >= "A" && c <= "Z" { return true }
+  if _is_digit(c) { return true }
+  if c == "_" { return true }
+  // Non-ASCII byte (>= 0x80) — likely UTF-8 lead/cont byte for Greek/CJK letters.
+  // Treat as word-char to mirror Python regex \b semantics on Unicode word chars
+  // (σ φ τ etc.). Required for chain expressions like 'J₂ = 2σ = 24' where the
+  // byte after digit is multibyte-letter lead, NOT word-boundary.
+  if c > "~" { return true }
+  return false
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+fn _list_dirs(path: string) -> list {
+  let raw = to_string(exec("find '" + path + "' -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _basename(path: string) -> string {
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  if last_slash < 0 { return path }
+  return path.substring(last_slash + 1, len(path))
+}
+
+// Composite-guard prefix: line[max(0, start-12):start] contains [·*×/+-]
+fn _has_composite_in_prefix(line: string, start: int) -> bool {
+  let mut p_start = start - 12
+  if p_start < 0 { p_start = 0 }
+  let prefix = line.substring(p_start, start)
+  let chars = ["+", "-", "*", "/", "·", "×"]
+  let mut i = 0
+  while i < len(chars) {
+    if prefix.contains(chars[i]) { return true }
+    i = i + 1
+  }
+  return false
+}
+
+// Tail arithmetic-continuation reject: ^\s*[+\-*/·×^]
+fn _tail_is_arithmetic(line: string, end: int) -> bool {
+  let mut p = end
+  // Skip whitespace
+  while p < len(line) && (line.substring(p, p + 1) == " " || line.substring(p, p + 1) == "\t") {
+    p = p + 1
+  }
+  if p >= len(line) { return false }
+  let c = line.substring(p, p + 1)
+  if c == "+" { return true }
+  if c == "-" { return true }
+  if c == "*" { return true }
+  if c == "/" { return true }
+  if c == "^" { return true }
+  // Multibyte chars — check 2-byte sequences for · and ×
+  if p + 1 < len(line) {
+    let two = line.substring(p, p + 2)
+    if two == "·" { return true }
+    if two == "×" { return true }
+  }
+  return false
+}
+
+// Try to match a name token at position `start` in line. Returns name string
+// (canonical form) or "" if no match.
+fn _match_name(line: string, start: int) -> string {
+  let n = len(line)
+  // ASCII variants first
+  let ascii_tokens = ["sigma(6)", "phi(6)", "tau(6)", "J2"]
+  let mut i = 0
+  while i < len(ascii_tokens) {
+    let tok = ascii_tokens[i]
+    if start + len(tok) <= n && line.substring(start, start + len(tok)) == tok {
+      return tok
+    }
+    i = i + 1
+  }
+  // Greek variants (σ φ τ J₂)
+  let greek_tokens = ["σ(6)", "φ(6)", "τ(6)", "J₂"]
+  let mut j = 0
+  while j < len(greek_tokens) {
+    let tok = greek_tokens[j]
+    if start + len(tok) <= n && line.substring(start, start + len(tok)) == tok {
+      return tok
+    }
+    j = j + 1
+  }
+  return ""
+}
+
+// Try to parse '\s*=\s*(\d{1,4})\b' at position `pos`. Returns
+// {ok: bool, value: int, end: int} via list [ok_int, value, end].
+fn _parse_equals_value(line: string, pos: int) -> list {
+  let n = len(line)
+  let mut p = pos
+  // Skip whitespace
+  while p < n && (line.substring(p, p + 1) == " " || line.substring(p, p + 1) == "\t") {
+    p = p + 1
+  }
+  if p >= n || line.substring(p, p + 1) != "=" {
+    let mut r = []
+    r.push(0); r.push(0); r.push(p)
+    return r
+  }
+  p = p + 1
+  // Skip whitespace
+  while p < n && (line.substring(p, p + 1) == " " || line.substring(p, p + 1) == "\t") {
+    p = p + 1
+  }
+  // Read 1..4 digits
+  let digit_start = p
+  while p < n && _is_digit(line.substring(p, p + 1)) && p - digit_start < 4 {
+    p = p + 1
+  }
+  if p == digit_start {
+    let mut r = []
+    r.push(0); r.push(0); r.push(p)
+    return r
+  }
+  // Word-boundary: next char must NOT be word char
+  if p < n && _is_word_char(line.substring(p, p + 1)) {
+    let mut r = []
+    r.push(0); r.push(0); r.push(p)
+    return r
+  }
+  let value = to_int(line.substring(digit_start, p))
+  let mut r = []
+  r.push(1); r.push(value); r.push(p)
+  return r
+}
+
+fn _scan_text(path: string, text: string) -> list {
+  let mut violations = []
+  let lines = split(text, "\n")
+  let mut li = 0
+  while li < len(lines) {
+    let lineno = li + 1
+    let line = lines[li]
+    let n = len(line)
+    let mut i = 0
+    while i < n {
+      let name = _match_name(line, i)
+      if len(name) > 0 {
+        // Check composite-guard prefix
+        if !_has_composite_in_prefix(line, i) {
+          // Try parse '= <digits>'
+          let eq_pos = i + len(name)
+          let parsed = _parse_equals_value(line, eq_pos)
+          if parsed[0] == 1 {
+            let value = parsed[1]
+            let end = parsed[2]
+            // Tail arithmetic check
+            if !_tail_is_arithmetic(line, end) {
+              let canon_name = _normalise_name(name)
+              let canonical = _canonical_value(canon_name)
+              if canonical >= 0 && value != canonical {
+                let mut snippet = line.trim()
+                if len(snippet) > 80 { snippet = snippet.substring(0, 80) }
+                let mut v = {}
+                v["path"] = _rel(path)
+                v["detail"] = "line " + to_string(lineno) + ": " + canon_name + "=" + to_string(value) + " contradicts canonical " + canon_name + "=" + to_string(canonical) + " (context: '" + snippet + "')"
+                violations.push(v)
+              }
+            }
+            i = end
+          } else {
+            i = i + 1
+          }
+        } else {
+          i = i + 1
+        }
+      } else {
+        i = i + 1
+      }
+    }
+    li = li + 1
+  }
+  return violations
+}
+
+fn _scan() -> list {
+  let mut violations = []
+  let mut targets = []
+  // CLAUDE.md + README.md at root
+  let claude = REPO_ROOT + "/CLAUDE.md"
+  let readme = REPO_ROOT + "/README.md"
+  if _file_exists(claude) { targets.push(claude) }
+  if _file_exists(readme) { targets.push(readme) }
+
+  // chip-* domain bodies under domains/compute/
+  let chip_root = REPO_ROOT + "/domains/compute"
+  if _dir_exists(chip_root) {
+    let dirs = _list_dirs(chip_root)
+    let mut i = 0
+    while i < len(dirs) {
+      let d = dirs[i]
+      let name = _basename(d)
+      if _starts_with(name, "chip-") {
+        // *.md files under this chip dir
+        let raw = to_string(exec("find '" + d + "' -mindepth 1 -maxdepth 1 -type f -name '*.md' 2>/dev/null"))
+        let lines = split(raw, "\n")
+        let mut k = 0
+        while k < len(lines) {
+          let p = lines[k].trim()
+          if len(p) > 0 { targets.push(p) }
+          k = k + 1
+        }
+      }
+      i = i + 1
+    }
+  }
+
+  // theory/proofs/theorem-r*.md
+  let proofs_root = REPO_ROOT + "/theory/proofs"
+  if _dir_exists(proofs_root) {
+    let raw = to_string(exec("find '" + proofs_root + "' -mindepth 1 -maxdepth 1 -type f -name 'theorem-r*.md' 2>/dev/null | sort"))
+    let lines = split(raw, "\n")
+    let mut k = 0
+    while k < len(lines) {
+      let p = lines[k].trim()
+      if len(p) > 0 { targets.push(p) }
+      k = k + 1
+    }
+  }
+
+  // Scan each target
+  let mut ti = 0
+  while ti < len(targets) {
+    let path = targets[ti]
+    if _file_exists(path) {
+      let text = read_file(path)
+      let v_list = _scan_text(path, text)
+      let mut vk = 0
+      while vk < len(v_list) {
+        violations.push(v_list[vk])
+        vk = vk + 1
+      }
+    }
+    ti = ti + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#2] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // F1: PASS — canonical sigma(6)=12
+  total = total + 1
+  let v1 = _scan_text("/tmp/f1", "constant: sigma(6)=12 always")
+  if len(v1) == 0 {
+    println("[own#2] fixture 1 PASS — sigma(6)=12 accepted (canonical)")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 1 FAIL — got " + to_string(len(v1)) + " violations")
+  }
+
+  // F2: FAIL — sigma(6)=10 contradiction
+  total = total + 1
+  let v2 = _scan_text("/tmp/f2", "wrong: sigma(6) = 10 mistake")
+  if len(v2) >= 1 {
+    println("[own#2] fixture 2 PASS — sigma(6)=10 contradiction flagged")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 2 FAIL — should detect contradiction")
+  }
+
+  // F3: PASS — composite expression sigma(6)·tau(6)=48 (composite guard skip)
+  total = total + 1
+  let v3 = _scan_text("/tmp/f3", "product: sigma(6)·tau(6)=48 valid")
+  if len(v3) == 0 {
+    println("[own#2] fixture 3 PASS — composite product not flagged")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 3 FAIL — composite product wrongly flagged: " + to_string(len(v3)))
+  }
+
+  // F4: PASS — arithmetic continuation sigma(6)=1+2+3+6 (tail check skip)
+  total = total + 1
+  let v4 = _scan_text("/tmp/f4", "expansion: sigma(6) = 1+2+3+6 sum")
+  if len(v4) == 0 {
+    println("[own#2] fixture 4 PASS — arithmetic continuation skipped")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 4 FAIL — should skip arith continuation")
+  }
+
+  // F5: PASS — Greek variants τ(6)=4 canonical
+  total = total + 1
+  let v5 = _scan_text("/tmp/f5", "τ(6)=4 canonical")
+  if len(v5) == 0 {
+    println("[own#2] fixture 5 PASS — Greek τ(6)=4 accepted")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 5 FAIL — Greek variant not accepted")
+  }
+
+  // F6: FAIL — J₂=23 contradiction
+  total = total + 1
+  let v6 = _scan_text("/tmp/f6", "wrong: J₂ = 23 mistake")
+  if len(v6) >= 1 {
+    println("[own#2] fixture 6 PASS — J₂=23 contradiction flagged")
+    pass = pass + 1
+  } else {
+    println("[own#2] fixture 6 FAIL — should detect J₂ contradiction")
+  }
+
+  if pass == total {
+    println("__OWN2_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN2_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#2] FAIL " + v["path"] + " — " + v["detail"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN2_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN2_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}

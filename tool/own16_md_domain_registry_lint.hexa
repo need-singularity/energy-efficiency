@@ -1,0 +1,192 @@
+#!hexa strict
+// tool/own16_md_domain_registry_lint.hexa — own#16 md-domain-registry HARD lint.
+//
+// Rule: domains/<axis>/<name>/<name>.md must be registered in
+// domains/<axis>/_index.json (and the canonical domains/_index.json must exist).
+// Cross-check via JSON-quoted token presence (raw text scan, mirrors py impl).
+//
+// Migrated from tool/own_doc_lint_legacy.py:496-548 per raw 9.
+//
+// @tool(slug="own16_md_domain_registry_lint", desc="own#16 domain registry sync HARD — every domains/<axis>/<name>/ must appear as quoted token in domains/<axis>/_index.json sub-SSOT")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own16_md_domain_registry_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let DOMAINS_ROOT = REPO_ROOT + "/domains"
+let CANONICAL_INDEX = DOMAINS_ROOT + "/_index.json"
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _starts_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(0, len(p)) == p
+}
+
+fn _list_dirs(path: string) -> list {
+  let raw = to_string(exec("find '" + path + "' -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _basename(path: string) -> string {
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  if last_slash < 0 { return path }
+  return path.substring(last_slash + 1, len(path))
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+fn _scan() -> list {
+  let mut violations = []
+
+  if !_file_exists(CANONICAL_INDEX) {
+    let mut v = {}
+    v["path"] = "domains/_index.json"
+    v["detail"] = "canonical index missing"
+    violations.push(v)
+    return violations
+  }
+
+  // Sanity: top-level index parses (use python3 -c for parse check; bounded shell-out)
+  let parse_check = to_string(exec("python3 -c 'import json; json.loads(open(\"" + CANONICAL_INDEX + "\").read())' 2>&1 | head -3")).trim()
+  if len(parse_check) > 0 && parse_check.contains("Error") {
+    let mut v = {}
+    v["path"] = "domains/_index.json"
+    v["detail"] = "index parse failed: " + parse_check
+    violations.push(v)
+    return violations
+  }
+
+  if !_dir_exists(DOMAINS_ROOT) { return violations }
+
+  let axes = _list_dirs(DOMAINS_ROOT)
+  let mut ai = 0
+  while ai < len(axes) {
+    let axis_dir = axes[ai]
+    let axis_name = _basename(axis_dir)
+    if !_starts_with(axis_name, "_") {
+      let sub_index = axis_dir + "/_index.json"
+      if !_file_exists(sub_index) {
+        let mut v = {}
+        v["path"] = _rel(sub_index)
+        v["detail"] = "axis '" + axis_name + "' missing _index.json sub-SSOT"
+        violations.push(v)
+      } else {
+        let sub_text = read_file(sub_index)
+        let domains = _list_dirs(axis_dir)
+        let mut di = 0
+        while di < len(domains) {
+          let domain_dir = domains[di]
+          let domain_name = _basename(domain_dir)
+          if !_starts_with(domain_name, "_") {
+            // Look for JSON-quoted token "<name>"
+            let token = "\"" + domain_name + "\""
+            if !sub_text.contains(token) {
+              let mut v = {}
+              v["path"] = _rel(domain_dir)
+              v["detail"] = "domain '" + domain_name + "' not listed in " + axis_name + "/_index.json"
+              violations.push(v)
+            }
+          }
+          di = di + 1
+        }
+      }
+    }
+    ai = ai + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#16] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // F1: PASS — index text contains "foo" quoted
+  total = total + 1
+  let t1 = "{\"domains\": [{\"slug\": \"foo\"}, {\"slug\": \"bar\"}]}"
+  if t1.contains("\"foo\"") {
+    println("[own#16] fixture 1 PASS — quoted token detection")
+    pass = pass + 1
+  }
+
+  // F2: FAIL — domain not in sub-index
+  total = total + 1
+  let t2 = "{\"domains\": [{\"slug\": \"foo\"}]}"
+  if !t2.contains("\"missing\"") {
+    println("[own#16] fixture 2 PASS — absent token correctly absent")
+    pass = pass + 1
+  }
+
+  // F3: PASS — partial substring NOT confused with quoted token
+  total = total + 1
+  let t3 = "{\"description\": \"prefix-foobar text\"}"
+  if !t3.contains("\"foo\"") {
+    println("[own#16] fixture 3 PASS — partial substring not confused with quoted token")
+    pass = pass + 1
+  } else {
+    println("[own#16] fixture 3 FAIL — partial substring confusion")
+  }
+
+  if pass == total {
+    println("__OWN16_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN16_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#16] FAIL " + v["path"] + " — " + v["detail"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN16_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN16_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}

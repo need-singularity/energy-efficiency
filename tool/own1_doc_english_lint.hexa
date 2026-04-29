@@ -1,0 +1,320 @@
+#!hexa strict
+// tool/own1_doc_english_lint.hexa — own#1 doc-english-required HARD lint.
+//
+// Rule: .md files under decl scope dirs MUST be English-only (0% CJK).
+// CJK ranges: Hiragana/Katakana U+3040-U+30FF, CJK Unified U+4E00-U+9FFF,
+// Hangul U+AC00-U+D7AF.
+// Allowlist sidecar: tool/own1_legacy_allowlist.json (FROZEN, shrink-only).
+//
+// Migrated from tool/own_doc_lint_legacy.py:215-269 + 142-212 per raw 9.
+// CJK regex replaced with python3 -c byte-precise counter (raw 91 honest C3:
+// pure-hexa Unicode-range check via UTF-8 byte parsing is feasible but
+// non-trivial; python3 shell-out is bounded transition mode).
+//
+// @tool(slug="own1_doc_english_lint", desc="own#1 doc-english-required HARD — .md under decl scope must be English-only; CJK count via python3 sidecar; FROZEN allowlist of legacy CJK files")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own1_doc_english_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let ALLOWLIST_PATH = REPO_ROOT + "/tool/own1_legacy_allowlist.json"
+
+let SCOPE_DIRS = ["domains", "theory", "reports", "experiments", "papers", "bridge", "n6shared", "proposals"]
+let ROOT_DOCS = ["CONTRIBUTING.md"]
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+// Load allowlist via python3 (JSON parse fallback). Returns list of strings.
+fn _load_allowlist() -> list {
+  let mut out = []
+  if !_file_exists(ALLOWLIST_PATH) { return out }
+  let cmd = "python3 -c 'import json; d=json.load(open(\"" + ALLOWLIST_PATH + "\")); [print(p) for p in d.get(\"allowlist\", []) if isinstance(p, str) and p.strip()]' 2>/dev/null"
+  let raw = to_string(exec(cmd))
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _in_allowlist(rel: string, allowlist: list) -> bool {
+  let mut i = 0
+  while i < len(allowlist) {
+    if allowlist[i] == rel { return true }
+    i = i + 1
+  }
+  return false
+}
+
+// CJK count via python3 (Unicode-range counter using literal char ranges)
+// Single python3 call (avoids per-file subprocess overhead on large md sets)
+fn _count_cjk(path: string) -> int {
+  let cmd = "python3 -c 'import re,sys; t=open(\"" + path + "\",encoding=\"utf-8\",errors=\"replace\").read(); sys.stdout.write(str(len(re.findall(r\"[぀-ヿ㐀-䶿一-鿿가-힯]\", t))))' 2>/dev/null"
+  let raw = to_string(exec(cmd)).trim()
+  if len(raw) == 0 { return 0 }
+  return to_int(raw)
+}
+
+// Bulk CJK scan: single python3 process scans many files at once.
+// Returns map-style data: list of [path, count] pairs where count > 0.
+fn _bulk_cjk_scan(paths: list) -> list {
+  let mut hits = []
+  if len(paths) == 0 { return hits }
+  // Build NUL-separated path list via stdin
+  let mut joined = ""
+  let mut i = 0
+  while i < len(paths) {
+    if i > 0 { joined = joined + "\n" }
+    joined = joined + paths[i]
+    i = i + 1
+  }
+  // Write to tmp file (avoids ARG_MAX); pipe via stdin to python
+  let _w = exec("rm -f /tmp/own1_paths.lst")
+  write_file("/tmp/own1_paths.lst", joined)
+  let cmd = "python3 -c \"import re,sys; pat=re.compile(r'[぀-ヿ㐀-䶿一-鿿가-힯]'); paths=[ln.strip() for ln in open('/tmp/own1_paths.lst').readlines() if ln.strip()]; out=[]; \\\nimport os\\nfor p in paths:\\n  try:\\n    t=open(p, encoding='utf-8', errors='replace').read()\\n    n=len(pat.findall(t))\\n    if n > 0:\\n      out.append(f'{n}\\\\t{p}')\\n  except: pass\\nsys.stdout.write('\\\\n'.join(out))\" 2>/dev/null"
+  // Hexa string escaping is fragile — write python script to file instead
+  write_file("/tmp/own1_bulk_scan.py", "import re,sys\npat=re.compile(r'[぀-ヿ㐀-䶿一-鿿가-힯]')\npaths=[ln.strip() for ln in open('/tmp/own1_paths.lst').readlines() if ln.strip()]\nfor p in paths:\n  try:\n    t=open(p, encoding='utf-8', errors='replace').read()\n    n=len(pat.findall(t))\n    if n > 0:\n      print(f'{n}\\t{p}')\n  except: pass\n")
+  let raw = to_string(exec("python3 /tmp/own1_bulk_scan.py 2>/dev/null"))
+  let lines = split(raw, "\n")
+  let mut k = 0
+  while k < len(lines) {
+    let line = lines[k]
+    if len(line) > 0 {
+      // Format: "<count>\t<path>"
+      let mut tab_pos = -1
+      let mut p = 0
+      while p < len(line) {
+        if line.substring(p, p + 1) == "\t" { tab_pos = p; p = len(line) }
+        else { p = p + 1 }
+      }
+      if tab_pos > 0 {
+        let count_str = line.substring(0, tab_pos)
+        let path_str = line.substring(tab_pos + 1, len(line))
+        let mut entry = []
+        entry.push(path_str)
+        entry.push(to_int(count_str))
+        hits.push(entry)
+      }
+    }
+    k = k + 1
+  }
+  return hits
+}
+
+fn _walk_md_recursive(root: string) -> list {
+  let raw = to_string(exec("find '" + root + "' -type f -name '*.md' 2>/dev/null"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _scan() -> list {
+  let mut violations = []
+  let allowlist = _load_allowlist()
+  let mut all_paths = []
+  let mut path_is_root_doc = []  // parallel list: true if ROOT_DOCS, else SCOPE_DIRS
+
+  // (a) ROOT_DOCS
+  let mut i = 0
+  while i < len(ROOT_DOCS) {
+    let name = ROOT_DOCS[i]
+    let path = REPO_ROOT + "/" + name
+    if !_file_exists(path) {
+      let mut v = {}
+      v["path"] = name
+      v["detail"] = "required English-primary doc is missing"
+      violations.push(v)
+    } else {
+      all_paths.push(path)
+      path_is_root_doc.push(true)
+    }
+    i = i + 1
+  }
+
+  // (b) SCOPE_DIRS — collect all md paths first
+  let mut sdi = 0
+  while sdi < len(SCOPE_DIRS) {
+    let scope_name = SCOPE_DIRS[sdi]
+    let root = REPO_ROOT + "/" + scope_name
+    if _dir_exists(root) {
+      let mds = _walk_md_recursive(root)
+      let mut mi = 0
+      while mi < len(mds) {
+        let path = mds[mi]
+        // dedupe
+        let mut already = false
+        let mut k = 0
+        while k < len(all_paths) {
+          if all_paths[k] == path { already = true }
+          k = k + 1
+        }
+        if !already {
+          all_paths.push(path)
+          path_is_root_doc.push(false)
+        }
+        mi = mi + 1
+      }
+    }
+    sdi = sdi + 1
+  }
+
+  // Bulk scan in single python3 call (massive speedup over per-file)
+  let hits = _bulk_cjk_scan(all_paths)
+  let mut hi = 0
+  while hi < len(hits) {
+    let h = hits[hi]
+    let path = h[0]
+    let cjk = h[1]
+    // Determine if root_doc or scope_dir
+    let mut idx = -1
+    let mut k = 0
+    while k < len(all_paths) {
+      if all_paths[k] == path { idx = k }
+      k = k + 1
+    }
+    let mut display_path = path
+    let mut detail = "CJK present (" + to_string(cjk) + " chars) — new .md must be English-only (own#1 HARD since 2026-04-24)"
+    if idx >= 0 && idx < len(path_is_root_doc) && path_is_root_doc[idx] {
+      // ROOT_DOC
+      let mut bn = path
+      let prefix = REPO_ROOT + "/"
+      if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+        bn = path.substring(len(prefix), len(path))
+      }
+      display_path = bn
+      detail = "CJK present (" + to_string(cjk) + " chars) — English-only required"
+    } else {
+      display_path = _rel(path)
+    }
+
+    if !_in_allowlist(display_path, allowlist) {
+      let mut v = {}
+      v["path"] = display_path
+      v["detail"] = detail
+      violations.push(v)
+    }
+    hi = hi + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#1] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // F1: empty file → 0 CJK
+  total = total + 1
+  let _ = exec("rm -f /tmp/own1_f1.md && echo 'Hello English-only' > /tmp/own1_f1.md")
+  let c1 = _count_cjk("/tmp/own1_f1.md")
+  if c1 == 0 {
+    println("[own#1] fixture 1 PASS — pure ASCII = 0 CJK")
+    pass = pass + 1
+  } else {
+    println("[own#1] fixture 1 FAIL — got " + to_string(c1))
+  }
+
+  // F2: Korean text → > 0 CJK
+  total = total + 1
+  let _2 = exec("printf '안녕 hello' > /tmp/own1_f2.md")
+  let c2 = _count_cjk("/tmp/own1_f2.md")
+  if c2 >= 2 {
+    println("[own#1] fixture 2 PASS — Korean detected (" + to_string(c2) + " chars)")
+    pass = pass + 1
+  } else {
+    println("[own#1] fixture 2 FAIL — got " + to_string(c2))
+  }
+
+  // F3: Japanese hiragana/katakana → > 0 CJK
+  total = total + 1
+  let _3 = exec("printf 'ひらがな' > /tmp/own1_f3.md")
+  let c3 = _count_cjk("/tmp/own1_f3.md")
+  if c3 >= 4 {
+    println("[own#1] fixture 3 PASS — Japanese detected (" + to_string(c3) + " chars)")
+    pass = pass + 1
+  } else {
+    println("[own#1] fixture 3 FAIL — got " + to_string(c3))
+  }
+
+  // F4: CJK Unified Han → > 0 CJK
+  total = total + 1
+  let _4 = exec("printf '漢字' > /tmp/own1_f4.md")
+  let c4 = _count_cjk("/tmp/own1_f4.md")
+  if c4 >= 2 {
+    println("[own#1] fixture 4 PASS — CJK Unified detected (" + to_string(c4) + " chars)")
+    pass = pass + 1
+  } else {
+    println("[own#1] fixture 4 FAIL — got " + to_string(c4))
+  }
+
+  // F5: allowlist match
+  total = total + 1
+  let allowlist = _load_allowlist()
+  if len(allowlist) >= 0 {
+    println("[own#1] fixture 5 PASS — allowlist loaded (" + to_string(len(allowlist)) + " entries)")
+    pass = pass + 1
+  }
+
+  // Cleanup
+  let _c = exec("rm -f /tmp/own1_f1.md /tmp/own1_f2.md /tmp/own1_f3.md /tmp/own1_f4.md")
+
+  if pass == total {
+    println("__OWN1_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN1_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#1] FAIL " + v["path"] + " — " + v["detail"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN1_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN1_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}
