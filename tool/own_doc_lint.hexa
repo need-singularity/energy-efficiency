@@ -77,13 +77,55 @@ fn _join_int_list(xs: list) -> string {
 }
 
 fn _is_hexa_native_rule(rid: int) -> bool {
-  // Rules with native hexa impls. Currently only own#29.
+  // Rules with native hexa impls. own#3 + own#11 + own#29 (incremental migration).
+  if rid == 3 { return true }
+  if rid == 11 { return true }
   if rid == 29 { return true }
   return false
 }
 
+fn _parse_rc_count(raw: string, marker: string) -> int {
+  // Look for "<marker> PASS" or "<marker> FAIL (N ...)"; return 0 / N.
+  if raw.contains(marker + " PASS") { return 0 }
+  let lines = split(raw, "\n")
+  let mut k = 0
+  while k < len(lines) {
+    let line = lines[k]
+    if line.contains(marker + " FAIL") {
+      let mut p = 0
+      while p < len(line) {
+        if line.substring(p, p + 1) == "(" {
+          let mut q = p + 1
+          let mut digits = ""
+          while q < len(line) {
+            let c = line.substring(q, q + 1)
+            if c >= "0" && c <= "9" { digits = digits + c }
+            else { q = len(line) }
+            q = q + 1
+          }
+          if len(digits) > 0 { return to_int(digits) }
+        }
+        p = p + 1
+      }
+      return 1
+    }
+    k = k + 1
+  }
+  return 0
+}
+
 fn _run_native_rule(rid: int) -> int {
   // Run rule via hexa impl. Returns violation count (0 = OK).
+  if rid == 3 {
+    let cmd = "hexa '" + REPO_ROOT + "/tool/own3_one_doc_per_domain_lint.hexa' 2>&1"
+    let raw = to_string(exec(cmd))
+    return _parse_rc_count(raw, "__OWN3_RESULT__")
+  }
+  if rid == 11 {
+    let cmd = "hexa '" + REPO_ROOT + "/tool/own11_bt_solution_ban_lint.hexa' 2>&1"
+    let raw = to_string(exec(cmd))
+    return _parse_rc_count(raw, "__OWN11_RESULT__")
+  }
   if rid == 29 {
     let cmd = "hexa '" + REPO_ROOT + "/tool/own29_readme_friendly_toolkit_lint.hexa' 2>&1"
     let raw = to_string(exec(cmd))

@@ -1,0 +1,202 @@
+#!hexa strict
+// tool/own11_bt_solution_ban_lint.hexa — own#11 Clay Millennium 'solved' claim ban.
+//
+// Rule: BT-541..547 (Millennium 7) MUST NOT be claimed 'solved' / 'resolved'
+// / '해결' in public docs (README.md, CONTRIBUTING.md, papers/*.md). Partial
+// progress / conditional / survey wording allowed.
+//
+// Migrated from tool/own_doc_lint_legacy.py:472-492 per raw 9 hexa-only.
+// Regex BT_CLAIM_RE replaced with manual substring scan: find BT-541..547
+// token, then check if 'solved'/'solution'/'resolved'/'해결' appears within
+// 120 chars after on same line.
+//
+// @tool(slug="own11_bt_solution_ban_lint", desc="own#11 Clay Millennium solve-claim ban — BT-541..547 + 'solved/solution/resolved/해결' within 120 chars FORBIDDEN in README.md / CONTRIBUTING.md / papers/*.md")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/own11_bt_solution_ban_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _list_papers() -> list {
+  let raw = to_string(exec("find '" + REPO_ROOT + "/papers' -mindepth 1 -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+// Scan text for BT-541..547 + claim keyword within 120 chars on same line
+// Returns list of violation dicts {path, snippet}
+fn _scan_text(path: string, text: string) -> list {
+  let mut violations = []
+  let lines = split(text, "\n")
+  let bt_tokens = ["BT-541", "BT-542", "BT-543", "BT-544", "BT-545", "BT-546", "BT-547",
+                   "BT 541", "BT 542", "BT 543", "BT 544", "BT 545", "BT 546", "BT 547"]
+  let claim_tokens = ["solved", "Solved", "SOLVED", "solution", "Solution", "SOLUTION",
+                      "resolved", "Resolved", "RESOLVED", "해결"]
+  let mut li = 0
+  while li < len(lines) {
+    let line = lines[li]
+    // Find any BT token in the line
+    let mut bt_pos = -1
+    let mut ti = 0
+    while ti < len(bt_tokens) && bt_pos < 0 {
+      let pos = line.find(bt_tokens[ti])
+      if pos >= 0 { bt_pos = pos }
+      ti = ti + 1
+    }
+    if bt_pos >= 0 {
+      // Check next 120 chars for any claim keyword
+      let mut window_end = bt_pos + 120
+      if window_end > len(line) { window_end = len(line) }
+      let window = line.substring(bt_pos, window_end)
+      let mut found_claim = false
+      let mut ci = 0
+      while ci < len(claim_tokens) && !found_claim {
+        if window.find(claim_tokens[ci]) >= 0 { found_claim = true }
+        ci = ci + 1
+      }
+      if found_claim {
+        let mut snippet = line
+        if len(snippet) > 80 { snippet = snippet.substring(0, 80) }
+        let mut v = {}
+        v["path"] = _rel(path)
+        v["snippet"] = snippet
+        violations.push(v)
+      }
+    }
+    li = li + 1
+  }
+  return violations
+}
+
+fn _scan() -> list {
+  let mut violations = []
+  let mut targets = []
+  targets.push(REPO_ROOT + "/README.md")
+  targets.push(REPO_ROOT + "/CONTRIBUTING.md")
+  let papers = _list_papers()
+  let mut pi = 0
+  while pi < len(papers) {
+    targets.push(papers[pi])
+    pi = pi + 1
+  }
+  let mut i = 0
+  while i < len(targets) {
+    let path = targets[i]
+    if _file_exists(path) {
+      let text = read_file(path)
+      let v_list = _scan_text(path, text)
+      let mut k = 0
+      while k < len(v_list) {
+        violations.push(v_list[k])
+        k = k + 1
+      }
+    }
+    i = i + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#11] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // Fixture 1: PASS (BT-541 partial progress — no claim keyword)
+  total = total + 1
+  let f1 = "BT-541 partial progress documented; conditional proof under hypothesis H."
+  let v1 = _scan_text("/tmp/f1", f1)
+  if len(v1) == 0 {
+    println("[own#11] fixture 1 PASS — partial progress accepted")
+    pass = pass + 1
+  } else {
+    println("[own#11] fixture 1 FAIL — partial wrongly flagged")
+  }
+
+  // Fixture 2: FAIL (BT-541 solved — should be flagged)
+  total = total + 1
+  let f2 = "We have BT-541 solved — Riemann hypothesis decided."
+  let v2 = _scan_text("/tmp/f2", f2)
+  if len(v2) >= 1 {
+    println("[own#11] fixture 2 PASS — 'BT-541 solved' rejected")
+    pass = pass + 1
+  } else {
+    println("[own#11] fixture 2 FAIL — should reject solved claim")
+  }
+
+  // Fixture 3: PASS (BT-541 conditional proof — no forbidden claim keyword)
+  total = total + 1
+  let f3 = "BT-541 conditional proof under assumption A."
+  let v3 = _scan_text("/tmp/f3", f3)
+  if len(v3) == 0 {
+    println("[own#11] fixture 3 PASS — conditional proof accepted")
+    pass = pass + 1
+  } else {
+    println("[own#11] fixture 3 FAIL — conditional wrongly flagged")
+  }
+
+  // Fixture 4: FAIL (Korean 해결 next to BT-547)
+  total = total + 1
+  let f4 = "BT-547 Poincare 해결됨"
+  let v4 = _scan_text("/tmp/f4", f4)
+  if len(v4) >= 1 {
+    println("[own#11] fixture 4 PASS — Korean 해결 claim rejected")
+    pass = pass + 1
+  } else {
+    println("[own#11] fixture 4 FAIL — should reject 해결 claim")
+  }
+
+  if pass == total {
+    println("__OWN11_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN11_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#11] FAIL " + v["path"] + " — Millennium solve-claim: " + v["snippet"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN11_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN11_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}
