@@ -1,0 +1,207 @@
+#!hexa strict
+// scripts/empirical/cremona_kappa_asymptotic.hexa — GALO-PX-4 kappa(p,q,B) 3-bin asymptotic trend
+//
+// Migrated from scripts/empirical/cremona_kappa_asymptotic.py per raw 9 hexa-only mandate.
+//
+// raw 91 C3 honest disclosure:
+//   This tool depends on python3 for the irreducible computation step.
+//   Hexa stdlib does not yet expose: shard streaming + per-bin variance / Pearson r.
+//   The hexa layer owns:
+//     - control flow (CLI dispatch, output emission)
+//     - raw 91 C3 disclosure header
+//     - tmp-file lifecycle for the embedded backend
+//   The python3 backend (embedded as a literal string written to
+//   /tmp/_hexa_cremona_kappa_asymptotic_shim.py) owns the heavy compute path. A pure-hexa
+//   port of these primitives is tracked under hexa-lang RFC 003 (escape
+//   literal) + future numerical-stdlib RFCs.
+//
+// @tool(slug="cremona_kappa_asymptotic", desc="GALO-PX-4 kappa(p,q,B) 3-bin asymptotic trend")
+// @usage(hexa scripts/empirical/cremona_kappa_asymptotic.hexa [args...])
+// @allow-bare-exec
+// @no-sandbox
+
+fn py_backend() -> string {
+    return "
+# GALO-PX-4 (A3') kappa(p,q,B) 점근 추세 검증
+# B 를 세 구간으로 분할: low (0-49999) / mid (50000-99999) / high (200000-249999)
+# 각 구간에서 kappa = Cov(|Sel_2|, |Sel_3|) + Pearson r 계산
+# 목표: B 증가 시 kappa 감소 → (A3') 점근 주장 지지 / 유지·증가 시 반박
+
+import json
+import math
+import sys
+from pathlib import Path
+
+ROOT = Path(\"/Users/ghost/Dev/n6-architecture\")
+DATA_DIR = ROOT / \"data\" / \"cremona\" / \"allbsd\"
+
+BINS = {
+    \"low_B0-49999\":    [\"allbsd.00000-09999\", \"allbsd.10000-19999\", \"allbsd.20000-29999\",
+                        \"allbsd.30000-39999\", \"allbsd.40000-49999\"],
+    \"mid_B50-99999\":   [\"allbsd.50000-59999\", \"allbsd.60000-69999\", \"allbsd.70000-79999\",
+                        \"allbsd.80000-89999\", \"allbsd.90000-99999\"],
+    \"high_B200-249999\":[\"allbsd.200000-209999\", \"allbsd.210000-219999\", \"allbsd.220000-229999\",
+                        \"allbsd.230000-239999\", \"allbsd.240000-249999\"],
+}
+
+
+def parse(line):
+    p = line.strip().split()
+    if len(p) < 8:
+        return None
+    try:
+        return (int(p[0]), int(p[4]), int(p[5]), max(int(round(float(p[-1]))), 1))
+    except (ValueError, IndexError):
+        return None
+
+
+def sel2(r, t, sha):
+    tf = 2 if t % 2 == 0 else 1
+    sp = 1; s = sha
+    while s % 2 == 0:
+        sp *= 2; s //= 2
+    return (2 ** r) * tf * sp
+
+
+def sel3(r, t, sha):
+    tf = 3 if t % 3 == 0 else 1
+    sp = 1; s = sha
+    while s % 3 == 0:
+        sp *= 3; s //= 3
+    return (3 ** r) * tf * sp
+
+
+def stats_bin(bin_files):
+    s2, s3 = [], []
+    for name in bin_files:
+        fp = DATA_DIR / name
+        if not fp.exists():
+            continue
+        with fp.open() as fh:
+            for line in fh:
+                c = parse(line)
+                if c:
+                    _, r, t, sha = c
+                    s2.append(sel2(r, t, sha))
+                    s3.append(sel3(r, t, sha))
+    N = len(s2)
+    if N == 0:
+        return None
+    m2 = sum(s2) / N
+    m3 = sum(s3) / N
+    m6 = sum(a * b for a, b in zip(s2, s3)) / N
+    v2 = sum((x - m2) ** 2 for x in s2) / N
+    v3 = sum((x - m3) ** 2 for x in s3) / N
+    cov = sum((a - m2) * (b - m3) for a, b in zip(s2, s3)) / N
+    sd2 = math.sqrt(v2); sd3 = math.sqrt(v3)
+    r = cov / (sd2 * sd3) if sd2 * sd3 > 0 else 0
+    # rank dist
+    # reconstruction rank from sel2: rank ≈ log2(sel2 / torsion_part / sha_part)
+    # 간접: rank 분포는 원 curve 에서. 여기서는 이미 sel2 계산 후 — 생략
+    return {
+        \"N\": N,
+        \"E_sel_2\": m2,
+        \"E_sel_3\": m3,
+        \"E_sel_6\": m6,
+        \"product_marginals\": m2 * m3,
+        \"covariance_kappa\": cov,
+        \"pearson_r\": r,
+        \"var_s2\": v2,
+        \"var_s3\": v3,
+        \"ratio_to_sigma_2\": m2 / 3,
+        \"ratio_to_sigma_3\": m3 / 4,
+        \"ratio_to_sigma_6\": m6 / 12,
+    }
+
+
+def main():
+    results = {}
+    print(f\"[GALO-PX-4] kappa(B) 점근 추세 분석 3 구간\", file=sys.stderr)
+    for bin_name, files in BINS.items():
+        print(f\"[구간] {bin_name} — {len(files)} shard\", file=sys.stderr)
+        r = stats_bin(files)
+        if r:
+            results[bin_name] = r
+            print(f\"  N={r['N']} | E[|S_6|]={r['E_sel_6']:.4f} | kappa={r['covariance_kappa']:.4f} | r={r['pearson_r']:.6f}\", file=sys.stderr)
+
+    # 비교 표 출력
+    print()
+    print(\"=\" * 88)
+    print(\"[결과] kappa(2, 3, B) 의 B 의존성\")
+    print(\"=\" * 88)
+    print()
+    header = f\"{'구간':>20} {'N':>10} {'E[|S_6|]':>10} {'kappa':>10} {'Pearson r':>12} {'ratio_6':>10}\"
+    print(header)
+    print(\"-\" * 88)
+    for bin_name, r in results.items():
+        row = f\"{bin_name:>20} {r['N']:>10} {r['E_sel_6']:>10.4f} {r['covariance_kappa']:>10.4f} {r['pearson_r']:>12.6f} {r['ratio_to_sigma_6']:>10.4f}\"
+        print(row)
+    print()
+
+    # 점근 추세 해석
+    if \"low_B0-49999\" in results and \"mid_B50-99999\" in results:
+        d_kappa_low_mid = results[\"mid_B50-99999\"][\"covariance_kappa\"] - results[\"low_B0-49999\"][\"covariance_kappa\"]
+        d_r_low_mid = results[\"mid_B50-99999\"][\"pearson_r\"] - results[\"low_B0-49999\"][\"pearson_r\"]
+        print(f\"[low → mid 변화] Δκ = {d_kappa_low_mid:+.4f}, Δr = {d_r_low_mid:+.6f}\")
+    if \"mid_B50-99999\" in results and \"high_B200-249999\" in results:
+        d_kappa_mid_high = results[\"high_B200-249999\"][\"covariance_kappa\"] - results[\"mid_B50-99999\"][\"covariance_kappa\"]
+        d_r_mid_high = results[\"high_B200-249999\"][\"pearson_r\"] - results[\"mid_B50-99999\"][\"pearson_r\"]
+        print(f\"[mid → high 변화] Δκ = {d_kappa_mid_high:+.4f}, Δr = {d_r_mid_high:+.6f}\")
+
+    # 판정
+    kappas = [results[b][\"covariance_kappa\"] for b in results]
+    rs = [results[b][\"pearson_r\"] for b in results]
+    print()
+    print(\"[(A3') 점근 주장 판정]\")
+    if kappas[0] > kappas[-1] and rs[0] > rs[-1]:
+        print(\"  → κ, r 둘 다 감소 → (A3') 점근 (B→∞에서 κ→0) 지지\")
+        verdict = \"A3_PRIME_SUPPORT\"
+    elif abs(kappas[-1] - kappas[0]) < 0.05:
+        print(\"  → κ 거의 변화 없음 → (A3') 점근 주장 WEAK, 더 큰 B 필요\")
+        verdict = \"A3_PRIME_AMBIGUOUS\"
+    else:
+        print(\"  → κ 증가 또는 비단조 → (A3') 점근 반박 가능\")
+        verdict = \"A3_PRIME_REFUTE\"
+
+    print(f\"[판정] {verdict}\")
+
+    # 저장
+    summary = {
+        \"source\": \"Cremona ecdata allbsd shards 3 bins\",
+        \"bins\": BINS,
+        \"results_per_bin\": results,
+        \"verdict\": verdict,
+        \"caveats\": [
+            \"|Sel_n| 1차근사 유지 (torsion Z/2×Z/2 미분리)\",
+            \"conductor bin 간 간격 [0-50k] vs [50-100k] vs [200-250k] — asymmetric\",
+            \"각 bin 은 독립 샘플이 아닌 concurrent 분포 slice\",
+            \"BKLPR (A3') 점근 증명 없음 — 경험 추세만\",
+        ],
+    }
+    out = ROOT / \"data\" / \"cremona\" / \"kappa_asymptotic_3bins.json\"
+    out.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding=\"utf-8\")
+    print(f\"\\n[저장] {out}\")
+
+
+main()
+"
+}
+
+fn build_argv() -> string {
+    let argv = args()
+    let mut user = ""
+    let mut i = 2
+    while i < len(argv) {
+        user = user + " " + argv[i]
+        i = i + 1
+    }
+    return user
+}
+
+fn main() {
+    let tmp = "/tmp/_hexa_cremona_kappa_asymptotic_shim.py"
+    write_file(tmp, py_backend())
+    let cmd = "python3 " + tmp + build_argv()
+    let out = to_string(exec(cmd))
+    println(out)
+}

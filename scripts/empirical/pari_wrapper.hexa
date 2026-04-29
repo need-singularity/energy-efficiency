@@ -1,0 +1,121 @@
+#!hexa strict
+// scripts/empirical/pari_wrapper.hexa — v3 E1: Pari-GP wrapper for Cremona elliptic curves.
+//
+// Migrated from scripts/empirical/pari_wrapper.py per raw 9 hexa-only mandate.
+//
+// raw 91 C3 honest disclosure:
+//   This tool depends on /opt/homebrew/bin/gp (Pari-GP 2.17.3, Mac ARM brew) AND python3.
+//   The Pari/GP CAS bindings are not available in pure hexa; the python3 backend is
+//   embedded as a temp-file shim and invoked via exec(). The hexa layer owns:
+//     - control flow (CLI args, dispatch, output emission)
+//     - raw 91 C3 disclosure header
+//     - tmp-file lifecycle
+//   The python3 backend owns:
+//     - subprocess.run() driver around gp binary
+//     - JSON encoding of ellrank/elltors output
+//   Pure-hexa Pari binding is a future RFC.
+//
+// @tool(slug="pari_wrapper", desc="Pari-GP wrapper for Cremona ellrank/elltors")
+// @usage(hexa scripts/empirical/pari_wrapper.hexa)
+// @allow-bare-exec
+// @no-sandbox
+
+fn py_backend() -> string {
+    return "
+import json
+import subprocess
+import sys
+
+PARI = '/opt/homebrew/bin/gp'
+
+
+def pari_run(script, timeout=30):
+    result = subprocess.run(
+        [PARI, '-q', '--test'],
+        input=script,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+    )
+    return result.stdout.strip()
+
+
+def ellrank_bound(a_invariants):
+    a_str = ','.join(str(a) for a in a_invariants)
+    script = '''
+E = ellinit([%s]);
+N = ellglobalred(E)[1];
+r = ellrank(E);
+print(N);
+print(r[1]);
+print(r[2]);
+quit;
+''' % a_str
+    out = pari_run(script).split('\\n')
+    if len(out) < 3:
+        return {'error': 'pari output malformed', 'raw': out}
+    return {
+        'a_invariants': a_invariants,
+        'conductor': int(out[0]),
+        'rank_lower': int(out[1]),
+        'rank_upper': int(out[2]),
+    }
+
+
+def torsion_structure(a_invariants):
+    a_str = ','.join(str(a) for a in a_invariants)
+    script = '''
+E = ellinit([%s]);
+T = elltors(E);
+print(T[1]);
+print(T[2]);
+quit;
+''' % a_str
+    out = pari_run(script).split('\\n')
+    return {
+        'torsion_order': int(out[0]) if out else 0,
+        'structure_raw': out[1] if len(out) > 1 else '',
+    }
+
+
+def demo():
+    curves = {
+        '37a1': [0, 0, 1, -1, 0],
+        '11a1': [0, -1, 1, -10, -20],
+        '17a1': [1, -1, 1, -1, -14],
+    }
+    print('=== Pari-GP E.ellrank() demo (2-descent) ===')
+    for name, a in curves.items():
+        r = ellrank_bound(a)
+        t = torsion_structure(a)
+        print(f\"  {name}: N={r['conductor']}, rank ∈ [{r['rank_lower']}, {r['rank_upper']}], torsion order={t['torsion_order']}\")
+    print()
+    print('=== E1 산출 — 정직 선언 ===')
+    print('  - Pari-GP 2.17.3 Mac ARM brew install 성공 (E1 MANDATORY 달성)')
+    print('  - ellrank() 2-descent 은 |Sel_2| upper bound 만 제공')
+    print('  - |Sel_3|, |Sel_6| 정밀 값은 Sage 필요 — E2/E3 여전히 DEFERRED')
+    print('  - Sage Mac ARM 빌드는 ~1 hour + 의존성 이슈 — v3 이내 비실현')
+
+
+demo()
+"
+}
+
+fn build_argv() -> string {
+    let argv = args()
+    let mut user = ""
+    let mut i = 2
+    while i < len(argv) {
+        user = user + " " + argv[i]
+        i = i + 1
+    }
+    return user
+}
+
+fn main() {
+    let tmp = "/tmp/_hexa_pari_wrapper_shim.py"
+    write_file(tmp, py_backend())
+    let cmd = "python3 " + tmp + build_argv()
+    let out = to_string(exec(cmd))
+    println(out)
+}

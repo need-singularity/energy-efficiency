@@ -20,7 +20,8 @@ jobs:
 
       - name: Run arXiv millennium survey
         run: |
-          python3 scripts/empirical/arxiv_millennium_survey.py
+          # raw 9 hexa-only mandate: invoke .hexa wrapper (python3 still embedded as raw 91 C3 backend)
+          hexa scripts/empirical/arxiv_millennium_survey.hexa
           ls -la data/arxiv/
 
       - name: Generate month summary

@@ -1,0 +1,169 @@
+#!hexa strict
+// scripts/empirical/cremona_kappa_10bin.hexa — v3 E5 kappa(B) 7-bin power-law fit
+//
+// Migrated from scripts/empirical/cremona_kappa_10bin.py per raw 9 hexa-only mandate.
+//
+// raw 91 C3 honest disclosure:
+//   This tool depends on python3 for the irreducible computation step.
+//   Hexa stdlib does not yet expose: shard streaming + log-log linear fit.
+//   The hexa layer owns:
+//     - control flow (CLI dispatch, output emission)
+//     - raw 91 C3 disclosure header
+//     - tmp-file lifecycle for the embedded backend
+//   The python3 backend (embedded as a literal string written to
+//   /tmp/_hexa_cremona_kappa_10bin_shim.py) owns the heavy compute path. A pure-hexa
+//   port of these primitives is tracked under hexa-lang RFC 003 (escape
+//   literal) + future numerical-stdlib RFCs.
+//
+// @tool(slug="cremona_kappa_10bin", desc="v3 E5 kappa(B) 7-bin power-law fit")
+// @usage(hexa scripts/empirical/cremona_kappa_10bin.hexa [args...])
+// @allow-bare-exec
+// @no-sandbox
+
+fn py_backend() -> string {
+    return "
+# v3 E5: κ(B) 10+ bin 점근 분석
+# bins: [0-50k] [50-100k] [100-150k] [150-200k] [200-250k] [300k+] [400k+] ...
+
+import json
+import math
+import sys
+from pathlib import Path
+
+ROOT = Path(\"/Users/ghost/Dev/n6-architecture\")
+DATA_DIR = ROOT / \"data\" / \"cremona\" / \"allbsd\"
+
+BINS = [
+    (\"B_00-50k\",    [\"allbsd.00000-09999\", \"allbsd.10000-19999\", \"allbsd.20000-29999\", \"allbsd.30000-39999\", \"allbsd.40000-49999\"], 25000),
+    (\"B_50-100k\",   [\"allbsd.50000-59999\", \"allbsd.60000-69999\", \"allbsd.70000-79999\", \"allbsd.80000-89999\", \"allbsd.90000-99999\"], 75000),
+    (\"B_100-150k\",  [\"allbsd.100000-109999\", \"allbsd.110000-119999\", \"allbsd.120000-129999\", \"allbsd.130000-139999\", \"allbsd.140000-149999\"], 125000),
+    (\"B_150-200k\",  [\"allbsd.150000-159999\", \"allbsd.160000-169999\", \"allbsd.170000-179999\", \"allbsd.180000-189999\", \"allbsd.190000-199999\"], 175000),
+    (\"B_200-250k\",  [\"allbsd.200000-209999\", \"allbsd.210000-219999\", \"allbsd.220000-229999\", \"allbsd.230000-239999\", \"allbsd.240000-249999\"], 225000),
+    (\"B_300-310k\",  [\"allbsd.300000-309999\"], 305000),
+    (\"B_400-410k\",  [\"allbsd.400000-409999\"], 405000),
+]
+
+
+def parse(line):
+    p = line.strip().split()
+    if len(p) < 8:
+        return None
+    try:
+        return (int(p[4]), int(p[5]), max(int(round(float(p[-1]))), 1))
+    except (ValueError, IndexError):
+        return None
+
+
+def sel2(r, t, sha):
+    tf = 2 if t % 2 == 0 else 1
+    sp = 1; s = sha
+    while s % 2 == 0: sp *= 2; s //= 2
+    return (2 ** r) * tf * sp
+
+
+def sel3(r, t, sha):
+    tf = 3 if t % 3 == 0 else 1
+    sp = 1; s = sha
+    while s % 3 == 0: sp *= 3; s //= 3
+    return (3 ** r) * tf * sp
+
+
+def stats_bin(files):
+    s2, s3 = [], []
+    for name in files:
+        fp = DATA_DIR / name
+        if not fp.exists(): continue
+        for line in fp.open():
+            c = parse(line)
+            if c:
+                r, t, sha = c
+                s2.append(sel2(r, t, sha))
+                s3.append(sel3(r, t, sha))
+    N = len(s2)
+    if N == 0: return None
+    m2 = sum(s2) / N; m3 = sum(s3) / N
+    m6 = sum(a*b for a,b in zip(s2,s3)) / N
+    cov = m6 - m2*m3
+    v2 = sum((x-m2)**2 for x in s2) / N
+    v3 = sum((x-m3)**2 for x in s3) / N
+    sd2, sd3 = math.sqrt(v2), math.sqrt(v3)
+    r = cov/(sd2*sd3) if sd2*sd3>0 else 0
+    return dict(N=N, E_s2=m2, E_s3=m3, E_s6=m6, kappa=cov, r=r, ratio6=m6/12)
+
+
+def main():
+    print(f\"[E5] κ(B) 7-bin 분석\", file=sys.stderr)
+    results = []
+    for name, files, B_mid in BINS:
+        r = stats_bin(files)
+        if not r: continue
+        r[\"bin\"] = name; r[\"B_mid\"] = B_mid
+        results.append(r)
+        print(f\"  {name}: N={r['N']:>7} | E[|S_6|]={r['E_s6']:.4f} | κ={r['kappa']:.4f} | r={r['r']:.4f} | ratio6={r['ratio6']:.4f}\", file=sys.stderr)
+
+    print()
+    print(\"=\" * 100)
+    print(f\"{'Bin':>12} {'B_mid':>8} {'N':>8} {'E[|S_6|]':>10} {'κ':>10} {'Pearson r':>12} {'ratio_6':>10}\")
+    print(\"-\" * 100)
+    for r in results:
+        print(f\"{r['bin']:>12} {r['B_mid']:>8} {r['N']:>8} {r['E_s6']:>10.4f} {r['kappa']:>10.4f} {r['r']:>12.6f} {r['ratio6']:>10.4f}\")
+    print(\"=\" * 100)
+    print()
+
+    # power law fit: log(κ) vs log(B_mid)
+    if len(results) >= 3:
+        xs = [math.log(r[\"B_mid\"]) for r in results]
+        ys = [math.log(r[\"kappa\"]) for r in results if r[\"kappa\"] > 0]
+        n = len(xs)
+        xbar = sum(xs)/n; ybar = sum(ys)/n
+        slope_num = sum((xs[i]-xbar)*(ys[i]-ybar) for i in range(n))
+        slope_den = sum((xs[i]-xbar)**2 for i in range(n))
+        slope = slope_num/slope_den if slope_den > 0 else 0
+        intercept = ybar - slope*xbar
+        print(f\"[power law log-log fit] log κ = {slope:.4f} · log B + {intercept:.4f}\")
+        print(f\"  slope = {slope:.4f}: {'+ (κ ∝ B^α 증가)' if slope > 0 else '- (κ ∝ B^-α 감소)'}\")
+        print(f\"  α = {slope:.4f} — if slope>0, (A3) asymptotic κ→0 REFUTED\")
+    print()
+
+    # 결론 판정
+    kappas = [r[\"kappa\"] for r in results]
+    rs = [r[\"r\"] for r in results]
+    ratios = [r[\"ratio6\"] for r in results]
+    print(f\"[추세 요약]\")
+    print(f\"  κ:        {kappas[0]:.4f} → ... → {kappas[-1]:.4f} ({'↑' if kappas[-1] > kappas[0] else '↓'})\")
+    print(f\"  Pearson r: {rs[0]:.4f} → ... → {rs[-1]:.4f} ({'↑' if rs[-1] > rs[0] else '↓'})\")
+    print(f\"  ratio_6:   {ratios[0]:.4f} → ... → {ratios[-1]:.4f} (σ(6)=12 에 대한 비율)\")
+
+    # 저장
+    out = ROOT / \"data\" / \"cremona\" / \"kappa_10bin_results.json\"
+    out.write_text(json.dumps({
+        \"source\": \"Cremona ecdata allbsd 27 shards, conductor bin 분할\",
+        \"n_bins\": len(results),
+        \"bins\": results,
+        \"power_law_fit\": {\"slope\": slope, \"intercept\": intercept} if len(results) >= 3 else None,
+    }, indent=2, ensure_ascii=False), encoding=\"utf-8\")
+    print(f\"\\n[저장] {out}\")
+
+
+main()
+"
+}
+
+fn build_argv() -> string {
+    let argv = args()
+    let mut user = ""
+    let mut i = 2
+    while i < len(argv) {
+        user = user + " " + argv[i]
+        i = i + 1
+    }
+    return user
+}
+
+fn main() {
+    let tmp = "/tmp/_hexa_cremona_kappa_10bin_shim.py"
+    write_file(tmp, py_backend())
+    let cmd = "python3 " + tmp + build_argv()
+    let out = to_string(exec(cmd))
+    println(out)
+}
