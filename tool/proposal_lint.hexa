@@ -1,0 +1,675 @@
+#!hexa strict
+// tool/proposal_lint.hexa — own#22 + own#23 proposals/*.md HARD lint.
+//
+// proposal#1 — filename naming by category (kebab/snake/phased)
+// proposal#2 — umbrella consolidation (multi-H2 with differing first words BANNED if umbrella declared)
+//
+// Migrated from tool/proposal_lint.py (377 LoC) per raw 9 hexa-only.
+// All regex patterns replaced with manual character-class matching using
+// _is_lower_alnum / _is_digit / _is_kebab_run / _is_snake_run helpers
+// (raw 18 self-host fixpoint, no regex dep).
+//
+// @tool(slug="proposal_lint", desc="proposal#1 naming + proposal#2 umbrella consolidation HARD lint for proposals/*.md")
+// @usage(hexa /Users/ghost/core/n6-architecture/tool/proposal_lint.hexa [--rule 1|2] [files...])
+// @exit_codes(0=PASS, 1=violations found, 2=internal error)
+
+let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let PROPOSALS_DIR = REPO_ROOT + "/proposals"
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _is_digit(c: string) -> bool {
+  return c >= "0" && c <= "9"
+}
+
+fn _is_lower_alpha(c: string) -> bool {
+  return c >= "a" && c <= "z"
+}
+
+fn _is_lower_alnum(c: string) -> bool {
+  return _is_digit(c) || _is_lower_alpha(c)
+}
+
+// Match: [a-z0-9]+(?:-[a-z0-9]+)*  (pure kebab-case, no date)
+fn _is_kebab_no_date(s: string) -> bool {
+  let n = len(s)
+  if n == 0 { return false }
+  let mut i = 0
+  let mut prev_dash = false
+  while i < n {
+    let c = s.substring(i, i + 1)
+    if c == "-" {
+      if i == 0 || prev_dash { return false }
+      prev_dash = true
+    } else {
+      if !_is_lower_alnum(c) { return false }
+      prev_dash = false
+    }
+    i = i + 1
+  }
+  if prev_dash { return false }
+  return true
+}
+
+// Match: ends with -YYYY-MM-DD (kebab) or _YYYY_MM_DD (snake)
+fn _has_date_suffix(s: string, sep: string) -> bool {
+  let n = len(s)
+  if n < 11 { return false }
+  // Last 11 chars: <sep>YYYY<sep>MM<sep>DD
+  if s.substring(n - 11, n - 10) != sep { return false }
+  // YYYY: digits at n-10..n-6
+  let mut i = n - 10
+  while i < n - 6 {
+    if !_is_digit(s.substring(i, i + 1)) { return false }
+    i = i + 1
+  }
+  if s.substring(n - 6, n - 5) != sep { return false }
+  // MM: n-5..n-3
+  i = n - 5
+  while i < n - 3 {
+    if !_is_digit(s.substring(i, i + 1)) { return false }
+    i = i + 1
+  }
+  if s.substring(n - 3, n - 2) != sep { return false }
+  // DD: n-2..n
+  i = n - 2
+  while i < n {
+    if !_is_digit(s.substring(i, i + 1)) { return false }
+    i = i + 1
+  }
+  return true
+}
+
+// Strip trailing -YYYY-MM-DD or _YYYY_MM_DD; returns the prefix
+fn _strip_date_suffix(s: string) -> string {
+  return s.substring(0, len(s) - 11)
+}
+
+// Match: snake_case stem (lowercase letters/digits/underscores, no hyphens)
+fn _is_snake(s: string) -> bool {
+  let n = len(s)
+  if n == 0 { return false }
+  let mut i = 0
+  let mut prev_us = false
+  while i < n {
+    let c = s.substring(i, i + 1)
+    if c == "_" {
+      if i == 0 || prev_us { return false }
+      prev_us = true
+    } else {
+      if !_is_lower_alnum(c) { return false }
+      prev_us = false
+    }
+    i = i + 1
+  }
+  if prev_us { return false }
+  return true
+}
+
+// proposal#1 category inference from filename stem
+fn infer_category(stem: string) -> string {
+  // operational: snake_case stem + _YYYY_MM_DD
+  if _has_date_suffix(stem, "_") {
+    let prefix = _strip_date_suffix(stem)
+    if _is_snake(prefix) { return "operational" }
+  }
+  // phased: kebab-case stem + -YYYY-MM-DD
+  if _has_date_suffix(stem, "-") {
+    let prefix = _strip_date_suffix(stem)
+    if _is_kebab_no_date(prefix) { return "phased" }
+  }
+  // identity: pure kebab-case, no date
+  if _is_kebab_no_date(stem) { return "identity" }
+  return ""
+}
+
+// Detect any -YYYY-MM-DD or _YYYY_MM_DD suffix (loose date check)
+fn _has_any_date_suffix(s: string) -> bool {
+  if _has_date_suffix(s, "-") { return true }
+  if _has_date_suffix(s, "_") { return true }
+  return false
+}
+
+// Parse YAML-style frontmatter — returns map of key→value, body separated.
+// Returns [fm_keys, fm_values, body] as 3-tuple list.
+fn parse_frontmatter(text: string) -> list {
+  let mut result = []
+  let mut keys = []
+  let mut values = []
+  let n = len(text)
+  if n < 3 || text.substring(0, 3) != "---" {
+    result.push(keys)
+    result.push(values)
+    result.push(text)
+    return result
+  }
+  let lines = split(text, "\n")
+  // First line must be "---" (already known)
+  // Find closing fence "---"
+  let mut end_idx = -1
+  let mut i = 1
+  while i < len(lines) {
+    if lines[i].trim() == "---" {
+      end_idx = i
+      i = len(lines)  // break
+    }
+    i = i + 1
+  }
+  if end_idx < 0 {
+    result.push(keys)
+    result.push(values)
+    result.push(text)
+    return result
+  }
+  // Parse key: value lines between line 1 and end_idx
+  let mut j = 1
+  while j < end_idx {
+    let line = lines[j]
+    // Find first ':' at depth 0
+    let mut colon_pos = -1
+    let mut k = 0
+    while k < len(line) {
+      if line.substring(k, k + 1) == ":" {
+        colon_pos = k
+        k = len(line)  // break
+      }
+      k = k + 1
+    }
+    if colon_pos > 0 {
+      let raw_key = line.substring(0, colon_pos).trim()
+      let raw_val = line.substring(colon_pos + 1, len(line)).trim()
+      // Validate key (must start with letter or _, contain alnum/_/-)
+      let mut valid_key = len(raw_key) > 0
+      let mut kk = 0
+      while kk < len(raw_key) && valid_key {
+        let c = raw_key.substring(kk, kk + 1)
+        if kk == 0 {
+          if !((c >= "A" && c <= "Z") || (c >= "a" && c <= "z") || c == "_") { valid_key = false }
+        } else {
+          if !((c >= "A" && c <= "Z") || (c >= "a" && c <= "z") || (c >= "0" && c <= "9") || c == "_" || c == "-") { valid_key = false }
+        }
+        kk = kk + 1
+      }
+      if valid_key {
+        // Strip surrounding quotes
+        let mut val = raw_val
+        if len(val) >= 2 {
+          let first = val.substring(0, 1)
+          let last = val.substring(len(val) - 1, len(val))
+          if (first == "'" && last == "'") || (first == "\"" && last == "\"") {
+            val = val.substring(1, len(val) - 1)
+          }
+        }
+        keys.push(raw_key)
+        values.push(val)
+      }
+    }
+    j = j + 1
+  }
+  // Body = everything after end_idx line
+  let mut body = ""
+  let mut bi = end_idx + 1
+  while bi < len(lines) {
+    if bi > end_idx + 1 { body = body + "\n" }
+    body = body + lines[bi]
+    bi = bi + 1
+  }
+  result.push(keys)
+  result.push(values)
+  result.push(body)
+  return result
+}
+
+fn fm_get(keys: list, values: list, key: string) -> string {
+  let mut i = 0
+  while i < len(keys) {
+    if keys[i] == key { return values[i] }
+    i = i + 1
+  }
+  return ""
+}
+
+// H2 heading is "## " followed by text. Extract heading text.
+fn _extract_h2(line: string) -> string {
+  if len(line) < 4 { return "" }
+  if line.substring(0, 3) != "## " { return "" }
+  return line.substring(3, len(line)).trim()
+}
+
+// Strip trailing parenthetical "...(...)..." → keep prefix
+fn _strip_paren(text: string) -> string {
+  let mut p = -1
+  let mut i = 0
+  while i < len(text) {
+    if text.substring(i, i + 1) == "(" {
+      p = i
+      i = len(text)  // break first paren
+    }
+    i = i + 1
+  }
+  if p < 0 { return text.trim() }
+  return text.substring(0, p).trim()
+}
+
+// Generic / structural H2 phrases (lowercase, paren-stripped form)
+fn _is_generic_heading(heading: string) -> bool {
+  let stripped = _strip_paren(heading)
+  // Convert to lowercase manually
+  let mut norm = ""
+  let mut i = 0
+  while i < len(stripped) {
+    let c = stripped.substring(i, i + 1)
+    if c >= "A" && c <= "Z" {
+      // lowercase via offset; hexa string ord differs — use 26-branch lookup
+      if c == "A" { norm = norm + "a" }
+      if c == "B" { norm = norm + "b" }
+      if c == "C" { norm = norm + "c" }
+      if c == "D" { norm = norm + "d" }
+      if c == "E" { norm = norm + "e" }
+      if c == "F" { norm = norm + "f" }
+      if c == "G" { norm = norm + "g" }
+      if c == "H" { norm = norm + "h" }
+      if c == "I" { norm = norm + "i" }
+      if c == "J" { norm = norm + "j" }
+      if c == "K" { norm = norm + "k" }
+      if c == "L" { norm = norm + "l" }
+      if c == "M" { norm = norm + "m" }
+      if c == "N" { norm = norm + "n" }
+      if c == "O" { norm = norm + "o" }
+      if c == "P" { norm = norm + "p" }
+      if c == "Q" { norm = norm + "q" }
+      if c == "R" { norm = norm + "r" }
+      if c == "S" { norm = norm + "s" }
+      if c == "T" { norm = norm + "t" }
+      if c == "U" { norm = norm + "u" }
+      if c == "V" { norm = norm + "v" }
+      if c == "W" { norm = norm + "w" }
+      if c == "X" { norm = norm + "x" }
+      if c == "Y" { norm = norm + "y" }
+      if c == "Z" { norm = norm + "z" }
+    } else {
+      norm = norm + c
+    }
+    i = i + 1
+  }
+  let phrases = ["executive summary", "closing", "risks", "open questions", "sequencing", "linked registries", "what would make this wrong", "top", "why"]
+  let mut k = 0
+  while k < len(phrases) {
+    let p = phrases[k]
+    if norm == p { return true }
+    if len(norm) > len(p) {
+      let trail = norm.substring(len(p), len(p) + 1)
+      if norm.substring(0, len(p)) == p && (trail == " " || trail == ".") { return true }
+    }
+    k = k + 1
+  }
+  return false
+}
+
+// First whitespace-delimited token of heading (after stripping paren)
+fn _first_word(heading: string) -> string {
+  let stripped = _strip_paren(heading).trim()
+  let mut end = 0
+  while end < len(stripped) {
+    let c = stripped.substring(end, end + 1)
+    if c == " " || c == "\t" { end = len(stripped) + 1 }
+    else { end = end + 1 }
+  }
+  if end > len(stripped) {
+    // Found whitespace; back-track via min(end-1, len)
+    let mut e = 0
+    while e < len(stripped) {
+      let c = stripped.substring(e, e + 1)
+      if c == " " || c == "\t" { e = len(stripped) + 100; }
+      else { e = e + 1 }
+    }
+    // Re-do simpler: walk again
+    let mut k = 0
+    while k < len(stripped) {
+      let cc = stripped.substring(k, k + 1)
+      if cc == " " || cc == "\t" { return stripped.substring(0, k) }
+      k = k + 1
+    }
+  }
+  return stripped
+}
+
+fn extract_content_h2_first_words(body: string) -> list {
+  let mut words = []
+  let lines = split(body, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let h = _extract_h2(lines[i])
+    if len(h) > 0 {
+      if !_is_generic_heading(h) {
+        let fw = _first_word(h)
+        if len(fw) > 0 { words.push(fw) }
+      }
+    }
+    i = i + 1
+  }
+  return words
+}
+
+// Get filename stem (drop .md extension and dir)
+fn _stem(path: string) -> string {
+  // Strip dir
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  let name = if last_slash >= 0 { path.substring(last_slash + 1, len(path)) } else { path }
+  // Strip .md
+  if len(name) > 3 && name.substring(len(name) - 3, len(name)) == ".md" {
+    return name.substring(0, len(name) - 3)
+  }
+  return name
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+// Lint a single file → list of violation maps {rule, path, detail}
+fn lint_file(path: string) -> list {
+  let mut violations = []
+  let rel = _rel(path)
+  let stem = _stem(path)
+
+  if !_file_exists(path) {
+    let mut v = {}
+    v["rule"] = "proposal#1"
+    v["path"] = rel
+    v["detail"] = "unreadable file"
+    violations.push(v)
+    return violations
+  }
+
+  let text = read_file(path)
+  let fm = parse_frontmatter(text)
+  let keys = fm[0]
+  let values = fm[1]
+  let body = fm[2]
+
+  let declared = fm_get(keys, values, "category")
+  let inferred = infer_category(stem)
+  let mut category = ""
+  if len(declared) > 0 { category = declared }
+  else { category = inferred }
+
+  // proposal#1 — filename naming
+  if category == "identity" {
+    if _has_any_date_suffix(stem) {
+      let mut v = {}
+      v["rule"] = "proposal#1"
+      v["path"] = rel
+      v["detail"] = "category=identity but filename carries a date suffix — use kebab-case with NO date (e.g. 'foo-bar.md')"
+      violations.push(v)
+    } else {
+      if !_is_kebab_no_date(stem) {
+        let mut v = {}
+        v["rule"] = "proposal#1"
+        v["path"] = rel
+        v["detail"] = "category=identity expects pure kebab-case, got stem '" + stem + "'"
+        violations.push(v)
+      }
+    }
+  } else {
+    if category == "operational" {
+      let mut ok = false
+      if _has_date_suffix(stem, "_") {
+        let prefix = _strip_date_suffix(stem)
+        if _is_snake(prefix) { ok = true }
+      }
+      if !ok {
+        let mut v = {}
+        v["rule"] = "proposal#1"
+        v["path"] = rel
+        v["detail"] = "category=operational expects snake_case + _YYYY_MM_DD, got stem '" + stem + "'"
+        violations.push(v)
+      }
+    } else {
+      if category == "phased" {
+        let mut ok = false
+        if _has_date_suffix(stem, "-") {
+          let prefix = _strip_date_suffix(stem)
+          if _is_kebab_no_date(prefix) { ok = true }
+        }
+        if !ok {
+          let mut v = {}
+          v["rule"] = "proposal#1"
+          v["path"] = rel
+          v["detail"] = "category=phased expects kebab-case + -YYYY-MM-DD, got stem '" + stem + "'"
+          violations.push(v)
+        }
+      } else {
+        // No category, no inference
+        let mut v = {}
+        v["rule"] = "proposal#1"
+        v["path"] = rel
+        v["detail"] = "filename stem '" + stem + "' does not match any of identity (kebab, no date) / operational (snake_YYYY_MM_DD) / phased (kebab-YYYY-MM-DD); add frontmatter `category:`"
+        violations.push(v)
+      }
+    }
+  }
+
+  // Cross-check declared vs inferred mismatch
+  if len(declared) > 0 && len(inferred) > 0 && declared != inferred {
+    let mut v = {}
+    v["rule"] = "proposal#1"
+    v["path"] = rel
+    v["detail"] = "frontmatter category='" + declared + "' contradicts filename pattern (looks like '" + inferred + "')"
+    violations.push(v)
+  }
+
+  // proposal#2 — umbrella consolidation
+  let umbrella = fm_get(keys, values, "umbrella")
+  let domain_words = extract_content_h2_first_words(body)
+  if len(umbrella) > 0 && len(domain_words) >= 2 {
+    // Compute distinct first-words
+    let mut distinct = []
+    let mut i = 0
+    while i < len(domain_words) {
+      let w = domain_words[i]
+      let mut found = false
+      let mut j = 0
+      while j < len(distinct) {
+        if distinct[j] == w { found = true }
+        j = j + 1
+      }
+      if !found { distinct.push(w) }
+      i = i + 1
+    }
+    if len(distinct) >= 2 {
+      // Build comma-list
+      let mut joined = ""
+      let mut k = 0
+      while k < len(distinct) {
+        if k > 0 { joined = joined + ", " }
+        joined = joined + distinct[k]
+        k = k + 1
+      }
+      let mut v = {}
+      v["rule"] = "proposal#2"
+      v["path"] = rel
+      v["detail"] = "file declares `umbrella: " + umbrella + "` but has multiple H2 content sections with differing first words (" + joined + "). Consolidate into a single `## " + umbrella + " Applied Tech (N bets / consolidated)` block."
+      violations.push(v)
+    }
+  }
+
+  return violations
+}
+
+fn _is_readme_like(stem: string) -> bool {
+  // lowercase comparison
+  let mut lower = ""
+  let mut i = 0
+  while i < len(stem) {
+    let c = stem.substring(i, i + 1)
+    if c >= "A" && c <= "Z" {
+      // 26-branch lowercase
+      if c == "R" { lower = lower + "r" }
+      if c == "E" { lower = lower + "e" }
+      if c == "A" { lower = lower + "a" }
+      if c == "D" { lower = lower + "d" }
+      if c == "M" { lower = lower + "m" }
+      if c == "C" { lower = lower + "c" }
+      if c == "L" { lower = lower + "l" }
+      if c == "U" { lower = lower + "u" }
+      if c == "I" { lower = lower + "i" }
+      if c == "N" { lower = lower + "n" }
+      if c == "X" { lower = lower + "x" }
+      if c == "_" { lower = lower + "_" }
+      // Other chars: no migration here; treat as lower (best-effort)
+    } else {
+      lower = lower + c
+    }
+    i = i + 1
+  }
+  if lower == "readme" { return true }
+  if lower == "claude" { return true }
+  if lower == "index" { return true }
+  if lower == "_index" { return true }
+  return false
+}
+
+fn _gather_targets(file_args: list) -> list {
+  let mut targets = []
+  if len(file_args) > 0 {
+    let mut i = 0
+    while i < len(file_args) {
+      let arg = file_args[i]
+      let abs = if len(arg) > 0 && arg.substring(0, 1) == "/" { arg } else { REPO_ROOT + "/" + arg }
+      if _file_exists(abs) {
+        targets.push(abs)
+      } else {
+        println("[proposal_lint] WARN: " + arg + " not found")
+      }
+      i = i + 1
+    }
+    return targets
+  }
+  if !_dir_exists(PROPOSALS_DIR) { return targets }
+  // Glob proposals/*.md via ls
+  let raw = to_string(exec("ls '" + PROPOSALS_DIR + "'/*.md 2>/dev/null"))
+  let lines = split(raw, "\n")
+  let mut k = 0
+  while k < len(lines) {
+    let p = lines[k].trim()
+    if len(p) > 0 {
+      let stem = _stem(p)
+      if !_is_readme_like(stem) {
+        targets.push(p)
+      }
+    }
+    k = k + 1
+  }
+  // Sort by simple insertion order (ls already sorted on most systems)
+  return targets
+}
+
+fn _format_status(rule: string, found: list) -> string {
+  let mut matches = []
+  let mut i = 0
+  while i < len(found) {
+    if found[i]["rule"] == rule { matches.push(found[i]) }
+    i = i + 1
+  }
+  if len(matches) == 0 { return rule + " OK" }
+  let mut reasons = ""
+  let mut j = 0
+  while j < len(matches) {
+    if j > 0 { reasons = reasons + "; " }
+    reasons = reasons + matches[j]["detail"]
+    j = j + 1
+  }
+  return rule + " FAIL: " + reasons
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut rule_filter = 0  // 0 = both, 1 = rule 1 only, 2 = rule 2 only
+  let mut file_args = []
+  let mut ai = 0
+  while ai < len(raw_args) {
+    let a = raw_args[ai]
+    if a == "--rule" {
+      ai = ai + 1
+      if ai < len(raw_args) {
+        rule_filter = to_int(raw_args[ai])
+      }
+    } else {
+      // skip self path (first arg may be tool path); accept if .md
+      if len(a) > 3 && a.substring(len(a) - 3, len(a)) == ".md" {
+        file_args.push(a)
+      }
+    }
+    ai = ai + 1
+  }
+
+  let targets = _gather_targets(file_args)
+  let mut active_rules = []
+  if rule_filter == 0 {
+    active_rules.push("proposal#1")
+    active_rules.push("proposal#2")
+  } else {
+    active_rules.push("proposal#" + to_string(rule_filter))
+  }
+
+  let mut joined = ""
+  let mut ri = 0
+  while ri < len(active_rules) {
+    if ri > 0 { joined = joined + "," }
+    joined = joined + active_rules[ri]
+    ri = ri + 1
+  }
+  println("[proposal_lint] target: " + to_string(len(targets)) + " files, rules: " + joined)
+
+  let mut in_scope = []
+  let mut ti = 0
+  while ti < len(targets) {
+    let path = targets[ti]
+    let rel = _rel(path)
+    let found = lint_file(path)
+    // Filter to active rules
+    let mut scoped = []
+    let mut fi = 0
+    while fi < len(found) {
+      let v = found[fi]
+      let mut active = false
+      let mut ri2 = 0
+      while ri2 < len(active_rules) {
+        if v["rule"] == active_rules[ri2] { active = true }
+        ri2 = ri2 + 1
+      }
+      if active { scoped.push(v); in_scope.push(v) }
+      fi = fi + 1
+    }
+    println("  " + rel)
+    let mut rj = 0
+    while rj < len(active_rules) {
+      println("    " + _format_status(active_rules[rj], scoped))
+      rj = rj + 1
+    }
+    ti = ti + 1
+  }
+
+  let hard = len(in_scope)
+  println("[proposal_lint] total violations: " + to_string(len(in_scope)) + " (HARD=" + to_string(hard) + ")")
+  if hard > 0 { exit(1) }
+  exit(0)
+}
