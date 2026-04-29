@@ -1,0 +1,90 @@
+{
+  "schema": "omega_cycle.witness_v1",
+  "ts": "2026-04-29T03:30:00Z",
+  "cycle": 29,
+  "phase": "implicit-backward-euler-t-number-generalization",
+  "topic": "F-CYCLE27-CAGE-CALIB-2 (implicit ODE) + F-CYCLE27-CAGE-CALIB-3 (T>1 model) — both code work, both progressed",
+  "verdict": "PARTIAL — convergence axis CLOSED, yield axis remains intrinsic gap, T>1 calibration deferred",
+  "verdict_detail": "(a) Backward Euler with fixed-point iteration + 0.5 under-relaxation + max_iter=12 + tol=1e-10 lands; STNV preset under backward_euler reaches 5/6 PASS (cycle 27 was 4/6 PASS — convergence axis δ=6.10e-08 < 0.01 tolerance now PASS). Yield axis still 0.8209 < 0.95 — intrinsic to T=1 12th-order pentamer model, NOT a numerical artifact. (b) --t-number flag added (1/3/4 choices) with Caspar-Klug N_CP_PER_CAGE=60T and N_HEX_PER_CAGE=10(T-1) override; n6_invariant_check generalized (vertex_match_sigma + subunit_count_60T + hexamer_count_10_T_minus_1); 8 mass conservation/yield literals migrated 60.0 → N_CP_PER_CAGE. T=3/T=4 calibration NEEDS preset re-tuning (literature K_close 5e-8 calibrated for T=1 c0=60; at c0=180 the C2^12 closure rate explodes ~531441× per Caspar-Klug stoichiometry).",
+  "track_a_implicit_solver": {
+    "method": "step_backward_euler",
+    "iteration": "fixed-point with 0.5 under-relaxation",
+    "max_iter": 12,
+    "tol": 1.0e-10,
+    "secondary_method_flag": "--secondary-method {euler|backward_euler}",
+    "stnv_preset_results": {
+      "yield_rk4": 0.8209310757729854,
+      "yield_euler_via_backward": 0.8209310147889248,
+      "convergence_delta": 6.098406057919448e-08,
+      "tolerance": 0.01,
+      "convergence_axis": "PASS",
+      "mass_conservation_rk4": 2.0889956431346945e-12,
+      "mass_conservation_euler": 1.2747136679536197e-11,
+      "mass_axis": "PASS",
+      "yield_axis": "FAIL (0.82 < 0.95) — intrinsic gap"
+    },
+    "pass_count": "5/6 (cycle 27 was 4/6)",
+    "axis_resolved": "F-CYCLE27-CAGE-CALIB-2 numerical convergence under stiff K_CLOSE",
+    "axis_intrinsic_remaining": "yield 0.95 target requires T>1 model OR seed-injection nucleation (literature consensus)"
+  },
+  "track_b_t_number_generalization": {
+    "flag": "--t-number {1,3,4}",
+    "stoichiometry_override": {
+      "T1": {"N_CP_PER_CAGE": 60, "N_HEX_PER_CAGE": 0},
+      "T3": {"N_CP_PER_CAGE": 180, "N_HEX_PER_CAGE": 20, "exemplar": "CCMV"},
+      "T4": {"N_CP_PER_CAGE": 240, "N_HEX_PER_CAGE": 30, "exemplar": "HBV"}
+    },
+    "caspar_klug_invariant": "12 pentamers at icosahedral vertices preserved across all T (σ(6)=12 invariant)",
+    "n6_invariant_check_generalized": ["vertex_match_sigma (always 12=σ(6))", "subunit_count_60T", "hexamer_count_10_T_minus_1"],
+    "mass_conservation_literals_migrated": "8/8 (60.0 → N_CP_PER_CAGE)",
+    "auto_c0_scale": "args.c0 auto-scales to N_CP_PER_CAGE when --t-number != 1 (preserves stoichiometric ratio)",
+    "t1_smoke_test": "PASS (5/6, identical to baseline)",
+    "t3_smoke_test": "BLOWS UP under STNV preset — K_close=5e-8 calibrated for T=1 c0=60; at c0=180 closure rate ~531441× higher",
+    "t4_smoke_test": "DEFERRED (same calibration issue expected)",
+    "calibration_gap_disclosed": "raw 91 C3 — T>1 needs preset re-tuning (literature K_pent / K_close per T-number); current presets HBV/CCMV/STNV all measured at T=1 stoichiometric scale"
+  },
+  "raw_91_c3_disclose": [
+    "convergence axis F-CYCLE27-CAGE-CALIB-2 CLOSED (5/6 PASS, δ=6.10e-08 < 0.01); yield axis remains intrinsic gap (T=1 12th-order pentamer model plateau ~0.82, literature consensus)",
+    "T>1 model code-level lands (--t-number flag + Caspar-Klug invariant generalization + 8 mass conservation literal migrations) but NUMERICAL calibration gap persists — STNV preset K_close=5e-8 valid only at T=1 c0=60; T=3/T=4 require new preset families (deferred)",
+    "yield ≥ 0.95 target NOT met in cycle 29; literature presets (HBV/CCMV/STNV) all converge ~0.82 at T=1 — this is an intrinsic feature of monomer-driven nucleation-elongation without seed",
+    "main thread direct execution (sub-agent fan-out skipped given persistent rate-limit pattern across cycle 25-28)",
+    "cycle 29 closes the SOLVER axis; calibration axis (T>1 K-tuning) and seed-injection axis remain as future cycles"
+  ],
+  "raw_71_falsifiers": [
+    {"id": "F-CYCLE29-IMPLICIT-1", "condition": "step_backward_euler regression — STNV convergence delta > 0.01 within 30d", "deadline": "2026-05-29", "status": "preregistered"},
+    {"id": "F-CYCLE29-IMPLICIT-2", "condition": "mass conservation regression on T=1 backward_euler within 30d", "deadline": "2026-05-29", "status": "preregistered"},
+    {"id": "F-CYCLE29-T-NUMBER-1", "condition": "T=3/T=4 preset tuning lands within 60d (resolves T>1 calibration gap)", "deadline": "2026-06-29", "status": "preregistered"},
+    {"id": "F-CYCLE29-T-NUMBER-2", "condition": "Caspar-Klug invariant regression — vertex_match_sigma fails for any T-number within 90d", "deadline": "2026-07-29", "status": "preregistered"},
+    {"id": "F-CYCLE29-YIELD-INTRINSIC-1", "condition": "yield ≥ 0.95 reached on T=1 STNV without seed injection within 90d (would refute intrinsic-plateau hypothesis)", "deadline": "2026-07-29", "status": "preregistered"}
+  ],
+  "files_modified": [
+    "nexus/sim_bridge/weave/cage_assembly_simulation.py (step_backward_euler + --secondary-method + --t-number + 8 literal migrations 60.0→N_CP_PER_CAGE + n6_invariant_check generalized)"
+  ],
+  "files_created": [
+    "n6-architecture/design/kick/2026-04-29_cycle29-implicit-backward-euler-t-number-generalization_omega_cycle.json (this witness)"
+  ],
+  "verification_summary": {
+    "stnv_t1_backward_euler": "5/6 PASS (cycle 27 was 4/6)",
+    "stnv_t1_convergence_delta": 6.098406057919448e-08,
+    "stnv_t1_mass_conservation": 2.0889956431346945e-12,
+    "stnv_t1_yield": 0.8209310757729854,
+    "yield_threshold": 0.95,
+    "yield_gap_intrinsic": true,
+    "t_number_flag_lands": true,
+    "caspar_klug_invariant_generalized": true,
+    "literal_migrations_60_to_NCP": "8/8"
+  },
+  "cumulative_progress_cycle_25_through_29": {
+    "cycle_25": "own 1 cleanup + launchd plist + hive lock spec + own 29 init (Biology mandatory)",
+    "cycle_26": "own 29 generalized + AI Toolkit fill + W13 stage-3a (2000→3000)",
+    "cycle_27": "Environment Toolkit fill + W13 stage-3b (3000→4000) + cage --preset (HBV/CCMV/STNV)",
+    "cycle_28": "energy + robotics + physics_math mandatory promotion + W13 stage-3c FINAL (4000→5040 Robin unconditional)",
+    "cycle_29": "F-CYCLE27-CAGE-CALIB-2 closed (implicit Backward Euler + fixed-point) + F-CYCLE27-CAGE-CALIB-3 partial (--t-number 1/3/4 + Caspar-Klug generalization, T>1 calibration deferred)"
+  },
+  "raw_47_cross_repo": "nexus sim_bridge/weave (file modified) + n6-architecture design/kick witness (this file)",
+  "raw_9_hexa_only": "python ODE solver — runtime-execution scope, raw 9 호환",
+  "raw_53_deterministic": "PASS evaluation 6-axis raw 53 deterministic",
+  "raw_77_append_only": true,
+  "raw_142_d2_revertible": true,
+  "raw_138_sentinel": "__CYCLE29_RESIDUAL_RESULT__ IMPLICIT-CONVERGENCE-CLOSED-T-NUMBER-PARTIAL"
+}
