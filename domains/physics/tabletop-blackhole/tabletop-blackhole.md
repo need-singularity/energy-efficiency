@@ -62,18 +62,42 @@ HEXA-UFO §23 event-horizon realization draft:
 ## §4 EXACT (Python verification)
 
 ```python
-# Tabletop black hole EXACT check (n=6 lock, 7 items, draft)
-sigma, tau, phi, sopfr, n = 12, 4, 2, 5, 6
-sigma_tau = sigma*tau  # 48
+# raw 91 C3: this block verifies n=6 number-theoretic properties (computed
+# from divisor primitives, NOT hardcoded). Stage-specific physics claims in
+# this section (B-field sigma.tau=48 T, sonic horizon L_h=sigma-phi=10 um,
+# T_BEC ~ 100/(sigma.phi) nK coefficient, phonon tau=4 modes, BH lifetime
+# tau.sopfr=20 ms, Hawking T_H=(sigma/tau)/n=0.5 nK, v_flow phi.sigma.tau=96
+# mm/s) are THEORETICAL PROJECTIONS — not empirically verified by this code.
+from math import gcd
+from fractions import Fraction
 
-assert sigma_tau == 48                    # B field T, c_s mm/s, atoms x 10^6
-assert sigma - phi == 10                  # L_h um
-assert 100/(sigma*phi) == 100/24          # T_BEC nK coefficient
-assert tau == 4                           # phonon mode count
-assert tau*sopfr == 20                    # BH lifetime ms
-assert (sigma/tau)/n == 0.5               # T_H nK
-assert phi*sigma_tau == 96                # v_flow mm/s
-print("TBHL EXACT: 7/7 PASS")
+def divisors(n): return {d for d in range(1, n+1) if n % d == 0}
+def sigma(n):    return sum(divisors(n))                              # OEIS A000203
+def tau(n):      return len(divisors(n))                              # OEIS A000005
+def phi_euler(n): return sum(1 for k in range(1, n+1) if gcd(k,n)==1) # OEIS A000010
+def sopfr(n):
+    s, k, p = 0, n, 2
+    while k > 1 and p <= n:
+        while k % p == 0: s += p; k //= p
+        p += 1
+    return s
+
+N      = 6
+SIGMA  = sigma(N)        # 12 — divisor sum, perfect number
+TAU    = tau(N)          # 4  — divisor count
+PHI    = phi_euler(N)    # 2  — Euler phi
+SOPFR  = sopfr(N)        # 5  — sum of prime factors
+J2     = 2 * SIGMA       # 24 — Mathieu-related
+
+assert SIGMA == 12, f"sigma(6) computed = {SIGMA}, expected 12"
+assert TAU   == 4,  f"tau(6) computed = {TAU}, expected 4"
+assert PHI   == 2,  f"phi(6) computed = {PHI}, expected 2"
+assert SOPFR == 5,  f"sopfr(6) computed = {SOPFR}, expected 5"
+assert J2    == 24, f"2.sigma(6) computed = {J2}, expected 24"
+# Master identity: sigma(6).phi(6) = n.tau(6) = J2 = 24 (n=6 uniqueness candidate)
+assert Fraction(SIGMA * PHI, N * TAU) == 1, "sigma.phi = n.tau master identity"
+assert SIGMA * PHI == N * TAU == J2 == 24, "master identity numeric check"
+print("TBHL: n=6 number-theoretic verification PASS")
 ```
 
 ## §5 BOX (TBHL-01~08 atlas.n6 registration target)
