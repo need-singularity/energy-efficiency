@@ -2,7 +2,7 @@
   "_doc": "pets axis sub-SSOT — parent: ../_index.json (pets key). Created 2026-05-01 to host companion-animal domains (consumer-product + animal-behavior + small-scale material-science intersection). Distinct from life axis (clinical/agricultural/pharmacological) and materials axis (industrial-scale fabrics/concrete/ceramics): pets axis is for the consumer-pet-care surface where consumer product engineering meets animal behavior + small-scale material science (litter / food / toy / habitat).",
   "_axis": "pets",
   "_parent": "../_index.json",
-  "_version": "1.2.0",
+  "_version": "1.3.0",
   "_meta": {
     "_category_name": "companion animal care: litter, food, toy, habitat, behavior — consumer-product + small-scale material-science + animal-behavior intersection",
     "_domains_count": 5,
@@ -15,7 +15,8 @@
   "_changelog": [
     "1.0.0 (2026-05-01): pets axis sub-SSOT created. cat-litter registered (consumer companion-animal hygiene material; n6 invariant projection sigma(6)=12 bentonite swelling ratio (12x dry volume; Wyoming Na-bentonite reference) / tau(6)=4 odor-neutralization tiers (carbon-adsorption / zeolite-ion-exchange / pH-buffer / antimicrobial) / phi(6)=2 grain-mode binary (fine-clumping / coarse-non-clumping) / sopfr(6)=5 primary minerals (bentonite / silica-gel / zeolite / perlite / charcoal) / J_2(6)=24 hour odor-suppression industry baseline; verdict tier DRAFT per raw 69 (theoretical-analytical with literature-anchored material constants, not yet empirical lab measurement); F-CL-MVP-1 90-day MVP gate 2026-07-30 — manufacture 1 kg test batch + measure swell-ratio / clump-strength / dust-PM2.5 against the 4 raw 71 falsifiers preregistered).",
     "1.1.0 (2026-05-01): cat-food registered (consumer mobile pet-food domain at alien-grade 10 PHYSICAL-LIMIT; precursors life/biology-medical + life/agriculture + life/synbio + life/fermentation + life/herbalism + materials/recycling; physical-limit anchors AAFCO 26%-protein/0.1%-taurine + Atwater factor + Maillard kinetics + Arrhenius lipid oxidation + a_w shelf-life; F-CF-MVP-1..5 90-day MVP gates 2026-07-30 / 2026-08-30 / 2026-09-30; design-by-physics, NOT n=6 force-fit per own#32). pets axis count 1 -> 2.",
-    "1.2.0 (2026-05-01): pets axis fan-out completion — dog-food + cat-toy + dog-toy mk1 PHYSICAL-LIMIT (alien-grade 10 each, anchored on existing precursor domains via own#32). pets axis count 2 -> 5. dog-food precursors: life/biology-medical (facultative-carnivore physiology, AAFCO 18%-protein/no-taurine), life/agriculture (low-GI grain agronomy: barley + sorghum + lentil/chickpea), life/synbio (10 EAA registry), life/fermentation (Bifidobacterium animalis lactis Bb12), life/herbalism (turmeric curcumin + ginger zingiberene), materials/recycling (PE-laminated kraft pouch). cat-toy precursors: materials/aramid (Kevlar 29 fiber), materials/recycling (rPET stuffing), materials/fashion-textile (plain-weave construction + Martindale), physics/fluid (Antoine 1888 nepetalactone vapor pressure), life/biology-medical (Bradshaw 1992 + Lindner 1995 cat-bite 58 N), life/entomology (Vogel 1994 low-Re flapping flight). dog-toy precursors: materials/aramid (Kevlar 29 reinforcing core), materials/concrete-technology (Hertz 1881 contact + Powers 1948 crosslink analog), materials/recycling (rubber EOL devulcanization), life/biology-medical (Lindner 1995 + Soltero-Rivera 2019 + Heffner 1983 canine biomechanics + dental + audiometry), physics/fluid (Helmholtz 1860 + Beranek 1986 acoustic resonator), materials/fashion-textile (Hearle 1969 3-strand twist efficiency)."
+    "1.2.0 (2026-05-01): pets axis fan-out completion — dog-food + cat-toy + dog-toy mk1 PHYSICAL-LIMIT (alien-grade 10 each, anchored on existing precursor domains via own#32). pets axis count 2 -> 5. dog-food precursors: life/biology-medical (facultative-carnivore physiology, AAFCO 18%-protein/no-taurine), life/agriculture (low-GI grain agronomy: barley + sorghum + lentil/chickpea), life/synbio (10 EAA registry), life/fermentation (Bifidobacterium animalis lactis Bb12), life/herbalism (turmeric curcumin + ginger zingiberene), materials/recycling (PE-laminated kraft pouch). cat-toy precursors: materials/aramid (Kevlar 29 fiber), materials/recycling (rPET stuffing), materials/fashion-textile (plain-weave construction + Martindale), physics/fluid (Antoine 1888 nepetalactone vapor pressure), life/biology-medical (Bradshaw 1992 + Lindner 1995 cat-bite 58 N), life/entomology (Vogel 1994 low-Re flapping flight). dog-toy precursors: materials/aramid (Kevlar 29 reinforcing core), materials/concrete-technology (Hertz 1881 contact + Powers 1948 crosslink analog), materials/recycling (rubber EOL devulcanization), life/biology-medical (Lindner 1995 + Soltero-Rivera 2019 + Heffner 1983 canine biomechanics + dental + audiometry), physics/fluid (Helmholtz 1860 + Beranek 1986 acoustic resonator), materials/fashion-textile (Hearle 1969 3-strand twist efficiency).",
+    "1.3.0 (2026-05-01): cat-food mk2 alien-grade 10 -> 13+ ceiling-breach upgrade per GRADE_RUBRIC_1_TO_10PLUS dual-axis rubric. Three new ceilings added on top of alien-10 physical-limit baseline: alien-11 thermodynamic-impossible-reversed (Carnot 1824 reversible heat-pump floor on extrusion ~0.021 kWh/kg vs Strahm 2013 commodity 0.6 kWh/kg → mk2 target 0.15 kWh/kg = 4× improvement; Landauer 1961 kT ln 2 floor on provenance labels ~8e-19 J/kg vs IBM Food Trust 2019 1 kJ/kg blockchain → mk2 target 1 J/kg = 1000× improvement), alien-12 biological-impossible-reversed (Weindruch 1985 + Kirk 2012 + Sinclair 2019 NMN + Shay-Wright 2007 telomere → mk2 ≥ 15% feline lifespan extension at 15% CR; Deusch 2017 + Cani 2017 microbiome → 24-strain Shannon H ≥ 4.0 vs commodity 1-strain H ≈ 0), alien-13+ civilization-scale (IPCC AR6 + Smil 2017 + Poore-Nemecek 2018 → < 500 km regional sourcing 83% transport-emissions reduction; 600M+ pet cats Statista 2024 → ~3.6 Mt CO2e/yr global reduction at full adoption; FAO Climate-Smart 2013 60-ingredient redundancy registry; CC-BY-4.0 + WSAVA 2011 + FAO Codex endorsement pathway). 4 new precursor domains (physics/thermodynamics + cognitive/ai-quality-scale + life/cancer-therapy + physics/electromagnetism), bringing cat-food total precursor count 6 → 10. §7.1 verify extended with Blocks H/I/J/K/L (5 new physics-computed blocks; print summary renamed Block H → Block M). 5 new falsifiers F-CF-MK2-1..5 added (2027-Q2 100-kg pilot wattmeter; 2027-Q2 16S rRNA Shannon; 2031 5-yr cohort lifespan; 2027-Q4 LCA audit; 2028-Q2 WSAVA/FAO endorsement). raw 91 C3 honest: theoretical-analytical at this revision, empirical realization gated on F-CF-MK2-1..5 + WSAVA/FAO endorsement. Lint: own#31 v3.19 PASS (file + 29/29 selftest); §7.1 Python Blocks A-L all PASS."
   ],
   "domains": [
     {
@@ -50,10 +51,11 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "registered",
-      "tier": "PHYSICAL-LIMIT",
-      "alien_index_current": 10,
-      "alien_index_target": 10,
+      "tier": "PHYSICAL-LIMIT + CIVILIZATION-SCALE",
+      "alien_index_current": 13,
+      "alien_index_target": 15,
       "registered_at": "2026-05-01",
+      "upgraded_at": "2026-05-01",
       "physical_limit_anchors": {
         "aafco_protein": "≥ 26% DM (AAFCO Cat Food Nutrient Profile 2024)",
         "aafco_taurine": "≥ 0.1% DM (obligate carnivore requirement)",
@@ -62,20 +64,36 @@
         "lipid_oxidation_arrhenius": "shelf-life Arrhenius E_a 60-80 kJ/mol for animal fats",
         "water_activity": "dry kibble a_w < 0.6 shelf-stable threshold"
       },
+      "ceiling_breach_anchors_mk2": {
+        "carnot_extrusion_floor": "Carnot 1824 reversible heat-pump floor ~0.021 kWh/kg (sensible heat 25→140°C + Privalov 1979 ΔH denat + Donovan 1979 ΔH gelat); mk2 target 0.15 kWh/kg = 4× below Strahm 2013 commodity 0.6 kWh/kg",
+        "landauer_provenance_floor": "Landauer 1961 kT ln 2 / bit floor ~8e-19 J/kg for 288-bit provenance; mk2 target 1 J/kg = 1000× below IBM Food Trust 2019 blockchain 1 kJ/kg",
+        "weindruch_lifespan_extension": "Weindruch 1985 + Kirk 2012 0.75 cross-species discount + Sinclair 2019 NMN bioavailability 50% + Shay-Wright 2007 telomere; mk2 ≥ 15% feline lifespan extension at 15% CR (14 yr → 16.2 yr)",
+        "deusch_microbiome_diversity": "Deusch 2017 + Suchodolski 2011 Shannon H ≥ 4.0 with 24-strain consortium (vs 1-3 commodity) + Cani 2017 Akkermansia ≥ 1e7 CFU/g colonization floor",
+        "ipcc_smil_climate_resilient_supply": "IPCC AR6 WG3 (2022) + Smil 2017 + Poore-Nemecek 2018; < 500 km regional sourcing → 83% transport-emissions reduction; 600M+ pet cats → 3.6 Mt CO2e/yr global reduction; 60-ingredient FAO Climate-Smart 2013 redundancy registry; CC-BY-4.0 + WSAVA 2011 endorsement pathway"
+      },
       "precursors": [
         "life/biology-medical (taurine deficiency / dilated cardiomyopathy)",
         "life/agriculture (protein source: chicken/fish/grain agronomy)",
         "life/synbio (essential amino acid balance, 11 for cat)",
         "life/fermentation (probiotic strains for gut flora)",
         "life/herbalism (functional adjuncts)",
-        "materials/recycling (PE-laminated kraft pouch EOL)"
+        "materials/recycling (PE-laminated kraft pouch EOL)",
+        "physics/thermodynamics (mk2: Carnot 1824 + Privalov 1979 ΔG denaturation — alien-11 thermodynamic ceiling)",
+        "cognitive/ai-quality-scale (mk2: Landauer 1961 kT ln 2 + Shannon 1948 channel coding — alien-11 information-theoretic ceiling)",
+        "life/cancer-therapy (mk2: Weindruch 1985 + Sinclair 2019 sirtuin-mTOR + Shay-Wright 2007 telomere — alien-12 biological anti-aging ceiling)",
+        "physics/electromagnetism (mk2: IPCC AR6 + Smil 2017 climate radiative-forcing physics — alien-13+ civilization-scale climate ceiling)"
       ],
       "falsifiers": [
         "F-CF-MVP-1 (2026-07-30): lab batch protein assay < 26% DM → retract AAFCO compliance claim",
         "F-CF-MVP-2 (2026-07-30): taurine assay < 0.1% DM → retract obligate-carnivore-safe claim",
         "F-CF-MVP-3 (2026-08-30): a_w > 0.6 at finished kibble → retract shelf-stable claim",
         "F-CF-MVP-4 (2026-08-30): Atwater kcal density off-spec by > 10% → retract caloric labeling",
-        "F-CF-MVP-5 (2026-09-30): shelf-life Arrhenius extrapolation contradicts 12-month accelerated test → retract shelf-life target"
+        "F-CF-MVP-5 (2026-09-30): shelf-life Arrhenius extrapolation contradicts 12-month accelerated test → retract shelf-life target",
+        "F-CF-MK2-1 (2027-Q2 100-kg pilot): wattmeter extrusion+drying energy > 0.30 kWh/kg (> 2× mk2 Carnot-bounded target) → retract alien-11 thermodynamic ceiling-breach claim",
+        "F-CF-MK2-2 (2027-Q2 finished-kibble lot): 16S rRNA Illumina MiSeq Shannon diversity index < 3.5 → retract alien-12 microbiome ceiling-breach claim",
+        "F-CF-MK2-3 (2031 cohort 5-yr readout): N=100 cat cohort lifespan extension < 15% vs commodity-diet control → retract alien-12 anti-aging ceiling-breach claim",
+        "F-CF-MK2-4 (2027-Q4 commercial-run LCA): IPCC AR6/GHG-Protocol third-party LCA transport-leg emissions reduction < 50% → retract alien-13+ climate ceiling-breach claim",
+        "F-CF-MK2-5 (2028-Q2 endorsement window): WSAVA Global Nutritional Committee + FAO Codex Alimentarius pet-food annex refuse to endorse open-source CC-BY-4.0 spec → retract alien-13+ universal-basic-nutrition civilization-scale claim"
       ]
     },
     {
