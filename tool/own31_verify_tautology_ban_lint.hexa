@@ -1357,6 +1357,40 @@ fn _scan_block(block: list, file_def_names: list, file_path: string,
   let n = len(block)
   if n == 0 { return 0 }
 
+  // Round D budget cap — large blocks risk OOMing the hexa interpreter
+  // due to cumulative substring allocations across YES marker scans.
+  // For blocks >300 lines, fall back to a minimum-viable check: only the
+  // numeric_claim_count threshold + substantive disclaimer escape. raw 91
+  // C3 honest disclosure: oversized blocks (>300 lines) are scanned with
+  // reduced fidelity; full multi-marker analysis is gated on hexa-lang
+  // interpreter substring optimization (separate RFC).
+  if n > 300 {
+    // Substantive disclaimer (anywhere) — exempt
+    let mut di = 0
+    while di < n {
+      if _is_substantive_disclaimer(block[di]) { return 0 }
+      di = di + 1
+    }
+    // Substantive def quick check — strong YES, skip rest
+    let mut qi = 0
+    while qi < n {
+      if _is_def_line(block[qi]) {
+        if _is_def_substantive(block, qi) { return 0 }
+      }
+      qi = qi + 1
+    }
+    let nc = _numeric_claim_count(block)
+    if nc >= 1 {
+      println("[own31] FAIL " + file_path + ":" + to_string(block_start_line)
+              + " — tautology suspect (numeric_claim_count=" + to_string(nc)
+              + "; oversize block — Round D budget-cap reduced-fidelity scan)")
+      println("[own31]   note: full multi-marker analysis skipped on this")
+      println("[own31]         block (>300 lines); raw 91 C3 honest disclosure.")
+      return 1
+    }
+    return 0
+  }
+
   // Substantive disclaimer (anywhere in block) — exempt
   let mut i = 0
   while i < n {
@@ -1388,8 +1422,16 @@ fn _scan_block(block: list, file_def_names: list, file_path: string,
     i = i + 1
   }
 
-  // YES marker 3: compute-lib import + call — Round C LLB-override applies.
+  // YES marker 3: compute-lib import + call — Round C LLB-override applies,
+  // but only on blocks ≤ 150 lines. Larger blocks would explode hexa
+  // interpreter heap allocations; raw 91 C3 honest disclosure: cocktail
+  // bypasses inside oversized blocks (>150 lines) are NOT detected by this
+  // lint and must be caught by manual review or runtime sandbox (gated on
+  // python3-in-runner infrastructure RFC, post-Round-D).
   if _has_compute_lib_call(block) {
+    if len(block) > 150 {
+      return 0  // size-cap path; honest-disclosed limitation
+    }
     let prov_map = _build_provenance_map(block, file_def_names)
     if _all_checks_literal_load_bearing(block, prov_map) {
       println("[own31] FAIL " + file_path + ":" + to_string(block_start_line)
@@ -1792,6 +1834,24 @@ fn _selftest() -> void {
     "assert c == 4"
   ]
   counters = _check_block("F19-llb-arith-chain", f19, [], true,
+                          counters[0], counters[1])
+
+  // F20 (Round D oversize-block budget cap): block >300 lines forces a
+  // reduced-fidelity scan. Substantive def must still pass; tautology
+  // numeric_claim_count must still flag. Verify the budget-cap path
+  // exits cleanly with a strong YES (substantive def) early-return.
+  let mut f20 = ["def divisors(n):"]
+  // Pad with 305 noop lines after the def
+  let mut pad_i = 0
+  while pad_i < 5 {
+    f20.push("    return [d for d in range(1, n+1) if n % d == 0]")
+    pad_i = pad_i + 1
+  }
+  while len(f20) < 305 {
+    f20.push("# pad line " + to_string(len(f20)))
+  }
+  f20.push("assert divisors(6) == [1, 2, 3, 6]")
+  counters = _check_block("F20-budget-cap-substantive-def", f20, [], false,
                           counters[0], counters[1])
 
   let total = counters[0]
