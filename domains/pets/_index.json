@@ -2,18 +2,19 @@
   "_doc": "pets axis sub-SSOT — parent: ../_index.json (pets key). Created 2026-05-01 to host companion-animal domains (consumer-product + animal-behavior + small-scale material-science intersection). Distinct from life axis (clinical/agricultural/pharmacological) and materials axis (industrial-scale fabrics/concrete/ceramics): pets axis is for the consumer-pet-care surface where consumer product engineering meets animal behavior + small-scale material science (litter / food / toy / habitat).",
   "_axis": "pets",
   "_parent": "../_index.json",
-  "_version": "1.0.0",
+  "_version": "1.1.0",
   "_meta": {
     "_category_name": "companion animal care: litter, food, toy, habitat, behavior — consumer-product + small-scale material-science + animal-behavior intersection",
-    "_domains_count": 1,
+    "_domains_count": 2,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP measurements land per per-domain falsifier deadlines.",
     "_updated": "2026-05-01"
   },
-  "_count": 1,
+  "_count": 2,
   "_changelog": [
-    "1.0.0 (2026-05-01): pets axis sub-SSOT created. cat-litter registered (consumer companion-animal hygiene material; n6 invariant projection sigma(6)=12 bentonite swelling ratio (12x dry volume; Wyoming Na-bentonite reference) / tau(6)=4 odor-neutralization tiers (carbon-adsorption / zeolite-ion-exchange / pH-buffer / antimicrobial) / phi(6)=2 grain-mode binary (fine-clumping / coarse-non-clumping) / sopfr(6)=5 primary minerals (bentonite / silica-gel / zeolite / perlite / charcoal) / J_2(6)=24 hour odor-suppression industry baseline; verdict tier DRAFT per raw 69 (theoretical-analytical with literature-anchored material constants, not yet empirical lab measurement); F-CL-MVP-1 90-day MVP gate 2026-07-30 — manufacture 1 kg test batch + measure swell-ratio / clump-strength / dust-PM2.5 against the 4 raw 71 falsifiers preregistered)."
+    "1.0.0 (2026-05-01): pets axis sub-SSOT created. cat-litter registered (consumer companion-animal hygiene material; n6 invariant projection sigma(6)=12 bentonite swelling ratio (12x dry volume; Wyoming Na-bentonite reference) / tau(6)=4 odor-neutralization tiers (carbon-adsorption / zeolite-ion-exchange / pH-buffer / antimicrobial) / phi(6)=2 grain-mode binary (fine-clumping / coarse-non-clumping) / sopfr(6)=5 primary minerals (bentonite / silica-gel / zeolite / perlite / charcoal) / J_2(6)=24 hour odor-suppression industry baseline; verdict tier DRAFT per raw 69 (theoretical-analytical with literature-anchored material constants, not yet empirical lab measurement); F-CL-MVP-1 90-day MVP gate 2026-07-30 — manufacture 1 kg test batch + measure swell-ratio / clump-strength / dust-PM2.5 against the 4 raw 71 falsifiers preregistered).",
+    "1.1.0 (2026-05-01): cat-food registered (consumer mobile pet-food domain at alien-grade 10 PHYSICAL-LIMIT; precursors life/biology-medical + life/agriculture + life/synbio + life/fermentation + life/herbalism + materials/recycling; physical-limit anchors AAFCO 26%-protein/0.1%-taurine + Atwater factor + Maillard kinetics + Arrhenius lipid oxidation + a_w shelf-life; F-CF-MVP-1..5 90-day MVP gates 2026-07-30 / 2026-08-30 / 2026-09-30; design-by-physics, NOT n=6 force-fit per own#32). pets axis count 1 -> 2."
   ],
   "domains": [
     {
@@ -38,6 +39,42 @@
         "F-CL-MVP-2 (2026-07-30): clump 24h-failure-stress < 50 kPa @ saturation → retract clump-strength target",
         "F-CL-MVP-3 (2026-07-30): dust PM2.5 emission > 200 µg/m³ during 1-min pour → retract dust-control claim",
         "F-CL-MVP-4 (2026-08-30): odor (NH3 + H2S) breakthrough < 24h at 30°C / 70% RH → retract J_2=24 hour target"
+      ]
+    },
+    {
+      "slug": "cat-food",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "aafco_protein": "≥ 26% DM (AAFCO Cat Food Nutrient Profile 2024)",
+        "aafco_taurine": "≥ 0.1% DM (obligate carnivore requirement)",
+        "atwater_factor": "kcal/g = 4*carb + 9*fat + 4*protein (Atwater 1900)",
+        "maillard_arrhenius": "extrusion-cooking browning E_a ≈ 100 kJ/mol",
+        "lipid_oxidation_arrhenius": "shelf-life Arrhenius E_a 60-80 kJ/mol for animal fats",
+        "water_activity": "dry kibble a_w < 0.6 shelf-stable threshold"
+      },
+      "precursors": [
+        "life/biology-medical (taurine deficiency / dilated cardiomyopathy)",
+        "life/agriculture (protein source: chicken/fish/grain agronomy)",
+        "life/synbio (essential amino acid balance, 11 for cat)",
+        "life/fermentation (probiotic strains for gut flora)",
+        "life/herbalism (functional adjuncts)",
+        "materials/recycling (PE-laminated kraft pouch EOL)"
+      ],
+      "falsifiers": [
+        "F-CF-MVP-1 (2026-07-30): lab batch protein assay < 26% DM → retract AAFCO compliance claim",
+        "F-CF-MVP-2 (2026-07-30): taurine assay < 0.1% DM → retract obligate-carnivore-safe claim",
+        "F-CF-MVP-3 (2026-08-30): a_w > 0.6 at finished kibble → retract shelf-stable claim",
+        "F-CF-MVP-4 (2026-08-30): Atwater kcal density off-spec by > 10% → retract caloric labeling",
+        "F-CF-MVP-5 (2026-09-30): shelf-life Arrhenius extrapolation contradicts 12-month accelerated test → retract shelf-life target"
       ]
     }
   ]

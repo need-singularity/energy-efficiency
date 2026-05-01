@@ -1,0 +1,58 @@
+{
+  "_doc": "apps axis sub-SSOT — consumer software application surface where mobile compute + cognitive AI + physical optics + sensor physics intersect. Distinct from compute axis (silicon engineering scope) and cognitive axis (AI research scope) and physics axis (fundamental physics scope): apps axis is for the consumer-software-product surface where real-time UX + mobile-power-budget + multi-axis precursor inheritance dominate.",
+  "_axis": "apps",
+  "_parent": "../_index.json",
+  "_version": "1.0.0",
+  "_meta": {
+    "_category_name": "consumer software apps: camera-filter / media / fitness / social / productivity / accessibility — mobile-compute + cognitive-AI + physics-optics intersection surface",
+    "_domains_count": 1,
+    "_verified_count": null,
+    "_alien_index_avg": null,
+    "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP measurements land per per-domain falsifier deadlines.",
+    "_updated": "2026-05-01"
+  },
+  "_count": 1,
+  "_changelog": [
+    "1.0.0 (2026-05-01): apps axis sub-SSOT created. camera-filter-app registered (consumer mobile camera filter application; real-time 60-fps preview + AI-augmented stylization; precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism)."
+  ],
+  "domains": [
+    {
+      "slug": "camera-filter-app",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "real_time_frame_budget_ms": "16.67 ms = 1000/60 fps (Nyquist visual perception >= 24 fps; smooth UX target = 60 fps)",
+        "npu_compute_budget_TOPS": "17.5 TOPS = 50% of Apple A17 Pro 35 TOPS (mk1 headroom design constraint)",
+        "roofline_model": "Williams-Waterman-Patterson 2009 — operational intensity (FLOPs/byte) vs DRAM bandwidth ceiling (51.2 GB/s on iPhone 15 Pro)",
+        "airy_diffraction_limit_um": "Airy 1835 — theta_min = 1.22 lambda/D; mobile lens f/1.7 at 555 nm gives Airy radius ~1.15 um, matching 1.0-1.4 um pixel pitch (diffraction-balanced)",
+        "poisson_shot_noise_SNR_dB": "sigma_shot = sqrt(N_photons); daylight ~10000 photons/pixel/frame -> SNR ~40 dB",
+        "jpeg_quantization": "Wallace 1991 / ISO/IEC 10918-1 — qfactor 75-95 corridor for filter output, file size proportional to pixel_count / qfactor",
+        "rec2020_color_gamut": "WCG covers >= 75% CIE 1931 vs sRGB ~36%; HDR10 + Rec.2020 supported",
+        "energy_per_frame_mJ": "50 mJ/frame budget (3 W camera-active * 16.67 ms = 50 mJ; 4000 mAh / 3 W ~ 4.8 hr active runtime headroom)"
+      },
+      "precursors": [
+        "compute/chip-architecture",
+        "cognitive/ai-multimodal",
+        "cognitive/ai-inference-cost",
+        "cognitive/ai-quality-scale",
+        "physics/optics",
+        "physics/electromagnetism"
+      ],
+      "falsifiers": [
+        "F-CFA-MVP-1 (2026-08-30): real-time latency p95 > 25 ms on iPhone 15 Pro at 60 fps preview -> retract real-time claim",
+        "F-CFA-MVP-2 (2026-08-30): NPU utilization > 50% on flagship at filter-active -> retract headroom design margin",
+        "F-CFA-MVP-3 (2026-08-30): output JPEG @ qfactor 85 size > 4 MB at 12 MP -> retract compression target",
+        "F-CFA-MVP-4 (2026-09-30): perceptual quality MOS (Mean Opinion Score) < 4.0/5 on N=30 user panel -> retract quality target",
+        "F-CFA-MVP-5 (2026-09-30): energy per frame > 75 mJ -> retract battery-life claim (would deplete 4000 mAh in <2 hr active use)"
+      ]
+    }
+  ]
+}
