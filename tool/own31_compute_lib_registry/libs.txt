@@ -1,0 +1,80 @@
+# own#31 Round E — compute-lib registry (one library name per line).
+# Comment lines (#) and blank lines ignored.
+#
+# Source: PyPI top-1000 (manually curated 2026-05-01). Refresh cycle:
+# weekly via tool/own31_pypi_refresh.hexa (separate RFC; not yet wired).
+# Hand-edited additions go here BEFORE auto-refresh integration.
+#
+# When this file is present, the lint reads it at startup and replaces
+# the baked-in list. When absent or empty, the lint falls back to the
+# baked-in list (raw 91 C3 honest fallback).
+
+# stdlib numerics
+math
+cmath
+fractions
+decimal
+statistics
+random
+secrets
+hmac
+hashlib
+
+# stdlib data
+collections
+itertools
+functools
+operator
+bisect
+heapq
+array
+queue
+enum
+dataclasses
+typing
+abc
+weakref
+re
+zlib
+gzip
+bz2
+lzma
+base64
+struct
+codecs
+binascii
+csv
+sqlite3
+datetime
+time
+json
+io
+tempfile
+pathlib
+shutil
+subprocess
+
+# scientific
+sympy
+numpy
+scipy
+mpmath
+gmpy2
+sage
+pari
+networkx
+statsmodels
+sklearn
+torch
+tensorflow
+
+# data
+pandas
+polars
+dask
+vaex
+modin
+
+# testing
+pytest
+unittest

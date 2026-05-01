@@ -375,17 +375,45 @@ fn _index_of(s: string, needle: string) -> int {
 
 // ---------- compute-lib import + call ----------
 
+// Round E: registry loader with baked-in fallback. The registry sidecar
+// allows refreshing the lib list without rebuilding the lint.
+fn _load_registry_file(rel_path: string) -> list {
+  let abs = REPO_ROOT + "/" + rel_path
+  if !_file_exists(abs) { return [] }
+  let raw = read_file(abs)
+  let lines = split(raw, "\n")
+  let mut out = []
+  let n = len(lines)
+  let mut i = 0
+  while i < n {
+    let t = lines[i].trim()
+    if len(t) > 0 && !_starts_with(t, "#") { out.push(t) }
+    i = i + 1
+  }
+  return out
+}
+
+fn _baked_in_libs() -> list {
+  return ["sympy", "numpy", "scipy", "mpmath", "gmpy2", "sage", "pari",
+          "networkx", "statsmodels", "sklearn", "torch", "tensorflow",
+          "fractions", "decimal", "math", "cmath", "hashlib",
+          "itertools", "functools", "collections", "statistics", "random",
+          "secrets", "hmac", "subprocess", "shutil", "pathlib", "json",
+          "csv", "sqlite3", "datetime", "time", "pytest", "unittest",
+          "pandas", "polars", "dask", "vaex", "modin", "bisect", "heapq",
+          "array", "queue", "enum", "dataclasses", "typing", "abc",
+          "weakref", "re", "zlib", "gzip", "bz2", "lzma", "base64",
+          "struct", "codecs", "binascii", "operator", "tempfile", "io"]
+}
+
+fn _resolve_libs_registry() -> list {
+  let from_file = _load_registry_file("tool/own31_compute_lib_registry/libs.txt")
+  if len(from_file) > 0 { return from_file }
+  return _baked_in_libs()
+}
+
 fn _has_compute_lib_import(block: list) -> bool {
-  let libs = ["sympy", "numpy", "scipy", "mpmath", "gmpy2", "sage", "pari",
-              "networkx", "statsmodels", "sklearn", "torch", "tensorflow",
-              "fractions", "decimal", "math", "cmath", "hashlib",
-              "itertools", "functools", "collections", "statistics", "random",
-              "secrets", "hmac", "subprocess", "shutil", "pathlib", "json",
-              "csv", "sqlite3", "datetime", "time", "pytest", "unittest",
-              "pandas", "polars", "dask", "vaex", "modin", "bisect", "heapq",
-              "array", "queue", "enum", "dataclasses", "typing", "abc",
-              "weakref", "re", "zlib", "gzip", "bz2", "lzma", "base64",
-              "struct", "codecs", "binascii", "operator", "tempfile", "io"]
+  let libs = _resolve_libs_registry()
   let n = len(block)
   let mut i = 0
   while i < n {
@@ -404,35 +432,45 @@ fn _has_compute_lib_import(block: list) -> bool {
   return false
 }
 
+fn _baked_in_func_tokens() -> list {
+  return ["divisor_sigma(", "totient(", "divisor_count(", "isprime(",
+          "factorint(", "primerange(", "linalg.", ".det(", ".eig(",
+          ".solve(", "fft(", "integrate(", "diff(", "limit(",
+          "Fraction(", "Decimal(", "gcd(", "lcm(", "Rational(",
+          "np.", "sp.", "sym.", "mp.", "scipy.",
+          "math.pi", "math.e", "math.tau", "math.factorial(", "math.log(",
+          "math.exp(", "math.sqrt(", "math.sin(", "math.cos(", "math.gcd(",
+          "math.ceil(", "math.floor(", "math.pow(", "math.comb(",
+          "Counter(", "defaultdict(", "OrderedDict(", "deque(",
+          "mean(", "median(", "stdev(", "variance(",
+          "hexdigest()", "md5(", "sha1(", "sha256(",
+          "choices(", "sample(", "randint(", "uniform(", "gauss(",
+          "subprocess.run(", "subprocess.check_output(",
+          ".stdout", ".stderr", ".returncode",
+          "Path(", ".read_text(", ".loads(", ".dumps(",
+          "pytest.approx(", "approx(",
+          "csv.reader(", "csv.writer(",
+          "json.loads(", "json.dumps(",
+          "io.StringIO(", "io.BytesIO(",
+          "operator.add(", "operator.mul(", "operator.eq(",
+          "DataFrame(", "Series(", ".iloc[", ".loc[", "pd.", "pl.",
+          "bisect_left(", "bisect_right(", "heappush(", "heappop(",
+          "re.match(", "re.search(", "re.findall(", "re.fullmatch(",
+          ".group(", ".groups(",
+          "zlib.compress(", "zlib.decompress(",
+          "base64.b64encode(", "base64.b64decode(",
+          "cmath.phase(", "cmath.polar(", ".conjugate(", "complex(",
+          "tempfile.", "NamedTemporaryFile("]
+}
+
+fn _resolve_func_tokens_registry() -> list {
+  let from_file = _load_registry_file("tool/own31_compute_lib_registry/func_tokens.txt")
+  if len(from_file) > 0 { return from_file }
+  return _baked_in_func_tokens()
+}
+
 fn _line_has_compute_func_token(line: string) -> bool {
-  let toks = ["divisor_sigma(", "totient(", "divisor_count(", "isprime(",
-              "factorint(", "primerange(", "linalg.", ".det(", ".eig(",
-              ".solve(", "fft(", "integrate(", "diff(", "limit(",
-              "Fraction(", "Decimal(", "gcd(", "lcm(", "Rational(",
-              "np.", "sp.", "sym.", "mp.", "scipy.",
-              "math.pi", "math.e", "math.tau", "math.factorial(", "math.log(",
-              "math.exp(", "math.sqrt(", "math.sin(", "math.cos(", "math.gcd(",
-              "math.ceil(", "math.floor(", "math.pow(", "math.comb(",
-              "Counter(", "defaultdict(", "OrderedDict(", "deque(",
-              "mean(", "median(", "stdev(", "variance(",
-              "hexdigest()", "md5(", "sha1(", "sha256(",
-              "choices(", "sample(", "randint(", "uniform(", "gauss(",
-              "subprocess.run(", "subprocess.check_output(",
-              ".stdout", ".stderr", ".returncode",
-              "Path(", ".read_text(", ".loads(", ".dumps(",
-              "pytest.approx(", "approx(",
-              "csv.reader(", "csv.writer(",
-              "json.loads(", "json.dumps(",
-              "io.StringIO(", "io.BytesIO(",
-              "operator.add(", "operator.mul(", "operator.eq(",
-              "DataFrame(", "Series(", ".iloc[", ".loc[", "pd.", "pl.",
-              "bisect_left(", "bisect_right(", "heappush(", "heappop(",
-              "re.match(", "re.search(", "re.findall(", "re.fullmatch(",
-              ".group(", ".groups(",
-              "zlib.compress(", "zlib.decompress(",
-              "base64.b64encode(", "base64.b64decode(",
-              "cmath.phase(", "cmath.polar(", ".conjugate(", "complex(",
-              "tempfile.", "NamedTemporaryFile("]
+  let toks = _resolve_func_tokens_registry()
   let mut i = 0
   while i < len(toks) {
     if _contains(line, toks[i]) { return true }
@@ -1853,6 +1891,23 @@ fn _selftest() -> void {
   f20.push("assert divisors(6) == [1, 2, 3, 6]")
   counters = _check_block("F20-budget-cap-substantive-def", f20, [], false,
                           counters[0], counters[1])
+
+  // F21 (Round E registry loader): verify the loader returns at least the
+  // baked-in libs count (60 in baked-in, 50+ in registry). Loader
+  // robustness — registry file or fallback must always populate.
+  let libs = _resolve_libs_registry()
+  let toks = _resolve_func_tokens_registry()
+  let mut tp = counters[0] + 1
+  let mut pp = counters[1]
+  if len(libs) >= 50 && len(toks) >= 80 {
+    println("[own31] F21-registry-loader PASS (libs=" + to_string(len(libs))
+            + " toks=" + to_string(len(toks)) + ")")
+    pp = pp + 1
+  } else {
+    println("[own31] F21-registry-loader FAIL (libs=" + to_string(len(libs))
+            + " toks=" + to_string(len(toks)) + " — expect >=50/>=80)")
+  }
+  counters = [tp, pp]
 
   let total = counters[0]
   let pass_count = counters[1]

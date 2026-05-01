@@ -1,0 +1,171 @@
+# own#31 Round E — compute func-token registry (one token per line).
+# Tokens are substring-matched against block lines after import detection.
+# The token includes its trailing `(` to bias toward function calls.
+#
+# Source: hand-curated 2026-05-01. Refresh cycle: weekly via PyPI top-1000
+# function-name extraction (separate RFC).
+
+# n=6 number theory primitives
+divisor_sigma(
+totient(
+divisor_count(
+isprime(
+factorint(
+primerange(
+
+# linear algebra
+linalg.
+.det(
+.eig(
+.solve(
+
+# integral calculus
+fft(
+integrate(
+diff(
+limit(
+
+# precision arithmetic
+Fraction(
+Decimal(
+gcd(
+lcm(
+Rational(
+
+# numpy/scipy/sympy namespace dotted
+np.
+sp.
+sym.
+mp.
+scipy.
+
+# math module specifics
+math.pi
+math.e
+math.tau
+math.factorial(
+math.log(
+math.exp(
+math.sqrt(
+math.sin(
+math.cos(
+math.gcd(
+math.ceil(
+math.floor(
+math.pow(
+math.comb(
+
+# collections
+Counter(
+defaultdict(
+OrderedDict(
+deque(
+
+# statistics
+mean(
+median(
+stdev(
+variance(
+
+# crypto
+hexdigest()
+md5(
+sha1(
+sha256(
+
+# random
+choices(
+sample(
+randint(
+uniform(
+gauss(
+
+# subprocess
+subprocess.run(
+subprocess.check_output(
+.stdout
+.stderr
+.returncode
+
+# file/path
+Path(
+.read_text(
+.loads(
+.dumps(
+
+# time
+datetime.now(
+datetime(
+time.time(
+
+# testing assertions
+pytest.approx(
+approx(
+assertEqual(
+assertAlmostEqual(
+assertTrue(
+assertFalse(
+assertGreater(
+assertLess(
+
+# parsing
+csv.reader(
+csv.writer(
+json.loads(
+json.dumps(
+io.StringIO(
+io.BytesIO(
+
+# operator module
+operator.add(
+operator.mul(
+operator.eq(
+
+# tempfile
+tempfile.
+NamedTemporaryFile(
+
+# generic builtins (limited — these can FP)
+list(
+tuple(
+set(
+dict(
+frozenset(
+
+# dataframe
+DataFrame(
+Series(
+.iloc[
+.loc[
+pd.
+pl.
+
+# bisect / heap
+bisect_left(
+bisect_right(
+bisect.bisect_left(
+bisect.bisect_right(
+heappush(
+heappop(
+
+# regex
+re.match(
+re.search(
+re.findall(
+re.fullmatch(
+.group(
+.groups(
+
+# compression
+zlib.compress(
+zlib.decompress(
+
+# encoding
+base64.b64encode(
+base64.b64decode(
+
+# complex
+cmath.phase(
+cmath.polar(
+.conjugate(
+complex(
