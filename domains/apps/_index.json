@@ -2,18 +2,20 @@
   "_doc": "apps axis sub-SSOT — consumer software application surface where mobile compute + cognitive AI + physical optics + sensor physics intersect. Distinct from compute axis (silicon engineering scope) and cognitive axis (AI research scope) and physics axis (fundamental physics scope): apps axis is for the consumer-software-product surface where real-time UX + mobile-power-budget + multi-axis precursor inheritance dominate.",
   "_axis": "apps",
   "_parent": "../_index.json",
-  "_version": "1.0.0",
+  "_version": "1.3.0",
   "_meta": {
     "_category_name": "consumer software apps: camera-filter / media / fitness / social / productivity / accessibility — mobile-compute + cognitive-AI + physics-optics intersection surface",
-    "_domains_count": 1,
+    "_domains_count": 4,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP measurements land per per-domain falsifier deadlines.",
     "_updated": "2026-05-01"
   },
-  "_count": 1,
+  "_count": 4,
   "_changelog": [
-    "1.0.0 (2026-05-01): apps axis sub-SSOT created. camera-filter-app registered (consumer mobile camera filter application; real-time 60-fps preview + AI-augmented stylization; precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism)."
+    "1.0.0 (2026-05-01): apps axis sub-SSOT created. camera-filter-app registered (consumer mobile camera filter application; real-time 60-fps preview + AI-augmented stylization; precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism).",
+    "1.1.0 (2026-05-01): hexa-filter-algebra registered (filter authoring/composition framework; sister to camera-filter-app — FILTER-ALGEBRA authors, camera-filter-app applies; 9 primitive operations + composition algebra + auto-generation from N=5 reference pairs + LPIPS/SSIM/PSNR provable quality bounds + 16.67 ms hard real-time ceiling; vs VSCO 1-2-week artist labor; 6 precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism + compute/chip-design; F-FA-MVP-1..5 falsifier gates 2026-08-30 / 2026-09-30; alien-grade 10 PHYSICAL-LIMIT).",
+    "1.2.0 (2026-05-01): hexa-parallel-self registered (consumer mobile selfie filter app; slot-machine 8-grid alternate-self generation via latent diffusion + InstantID + LoRA per-timeline weights; 5-axis identity exploration era/culture/profession/aesthetic/personal; 18 ms p95 inference; sister to camera-filter-app — PARALLEL-SELF generates alternate selves, camera-filter-app applies aesthetic filters; 6 precursors cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + compute/chip-architecture + cognitive/ai-alignment + cognitive/ai-eval-pipeline; F-PSELF-MVP-1..5 falsifier gates 2026-08-30 / 2026-09-30; alien-grade 10 PHYSICAL-LIMIT). Plus hexa-main-character registered (cinematic-look video filter app; 9 unified Hollywood effects — aspect/teal-orange/slow-mo/bokeh/lens-flare/grain/freeze/music/title; 16.67 ms real-time per camera-filter-app inheritance; main-character-energy market — TikTok #maincharacterenergy 5B+ views; 6 precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism; F-MC-MVP-1..5 falsifier gates 2026-08-30 / 2026-09-30; alien-grade 10 PHYSICAL-LIMIT). apps axis count 2 → 4."
   ],
   "domains": [
     {
@@ -52,6 +54,132 @@
         "F-CFA-MVP-3 (2026-08-30): output JPEG @ qfactor 85 size > 4 MB at 12 MP -> retract compression target",
         "F-CFA-MVP-4 (2026-09-30): perceptual quality MOS (Mean Opinion Score) < 4.0/5 on N=30 user panel -> retract quality target",
         "F-CFA-MVP-5 (2026-09-30): energy per frame > 75 mJ -> retract battery-life claim (would deplete 4000 mAh in <2 hr active use)"
+      ]
+    },
+    {
+      "slug": "hexa-filter-algebra",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "sister_domain": "apps/camera-filter-app",
+      "verb_distinction": "FILTER-ALGEBRA AUTHORS / COMPILES filters; camera-filter-app APPLIES them. Shared 16.67 ms real-time budget (DAG handoff at compile output)",
+      "physical_limit_anchors": {
+        "shannon_DPI_bits_per_pixel": "Shannon 1948 Data Processing Inequality — filter cannot exceed 24 bits/pixel for 8-bit RGB input (entropy ceiling)",
+        "wiener_inverse_gain": "Wiener 1949 — minimum noise-amplification inverse filter G = |H|^2 / (|H|^2 + K) bounded in (0, 1) for K > 0; sharpening primitive U lower bound",
+        "tishby_information_bottleneck_LUT": "Tishby 1999 information bottleneck — 33^3 = 35937 LUT nodes optimal at K-L divergence threshold (Adobe Premiere industry standard)",
+        "lpips_perceptual_threshold": "Zhang 2018 LPIPS — design threshold 0.15 vs indistinguishability 0.20 (30% headroom; AlexNet/VGG/SqueezeNet feature distance)",
+        "ssim_perceptual_threshold": "Wang-Bovik 2004 SSIM — design threshold >= 0.95 (structural similarity perceptual fidelity)",
+        "psnr_threshold_dB": "PSNR >= 35 dB design threshold (mean-square-error fidelity)",
+        "real_time_chain_depth": "16.67 ms / 3.5 ms-per-primitive = depth 4 ceiling (camera-filter-app shared 60-fps Nyquist budget)",
+        "roofline_OI_threshold": "Williams-Waterman-Patterson 2009 Roofline — operational intensity > 10 FLOPs/byte for compute-bound regime",
+        "cluster_poisson_grain": "Cox 1955 cluster Poisson model for stochastic film-grain primitive N",
+        "reinhard_devlin_local_tone": "Reinhard-Devlin 2002 photoreceptor-physiology operator for local-tone-mapping primitive",
+        "cie_1931_color_matching_nm": "CIE 1931 2-degree standard observer 360-830 nm visible spectrum (color-space change primitive)",
+        "n_reference_pairs_inverse_problem": "N = 5 reference image pairs sufficient for inverse-problem auto-generation (linear regression on 9 RGB unknowns + 1D regression on tone curve + FFT grain match + He 2015 residual CNN)",
+        "nine_primitive_operations": "9 primitive ops closed under composition algebra: M (color matrix) / T (tone curve) / K (convolution) / C (color-space change) / N (grain) / H (histogram match) / L (local tone) / V (vignette) / U (sharpening)",
+        "four_composition_operators": "4 algebra operators: ∘ (compose) / ^ (power) / / (scale) / blend(f, g, alpha)"
+      },
+      "precursors": [
+        "compute/chip-architecture",
+        "cognitive/ai-multimodal",
+        "cognitive/ai-quality-scale",
+        "physics/optics",
+        "physics/electromagnetism",
+        "compute/chip-design"
+      ],
+      "falsifiers": [
+        "F-FA-MVP-1 (2026-08-30): runtime detection of (f∘g)∘h ≠ f∘(g∘h) for ANY composition in the defined primitive set -> algebra associativity claim retracted; primitive set restricted",
+        "F-FA-MVP-2 (2026-08-30): auto-generation from N=5 reference pairs gives LPIPS gap > 0.20 vs hand-crafted -> inverse-problem fidelity insufficient",
+        "F-FA-MVP-3 (2026-08-30): filter chain depth >= 4 exceeds 16.67 ms p95 on iPhone 15 Pro -> real-time claim retracted; depth cap applied",
+        "F-FA-MVP-4 (2026-09-30): N=30 blind A/B test, hand-crafted vs HEXA-generated preference < 40% -> quality claim retracted",
+        "F-FA-MVP-5 (2026-09-30): commute claim violation at runtime — (M, T) labeled non-commute but found to commute, OR (M1, M2) labeled commute but found to NOT commute -> algebra correctness violated"
+      ]
+    },
+    {
+      "slug": "hexa-parallel-self",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "sister_domain": "apps/camera-filter-app",
+      "verb_distinction": "PARALLEL-SELF GENERATES alternate selves via slot-machine 8-grid; camera-filter-app APPLIES aesthetic filters. Different verb, same apps axis.",
+      "physical_limit_anchors": {
+        "latent_diffusion": "Rombach 2022 Stable Diffusion v3 quantised ~3 GB on-device",
+        "instantid_identity_preservation": "Wang 2024 InstantID — Cosine similarity > 0.85 face-embedding lock",
+        "clip_image_embedding": "Radford 2021 CLIP-Image 512-dim latent for facial feature lock",
+        "lora_per_timeline": "Hu 2021 LoRA — rank ≤ 16, INT8 quantised ≤ 50 MB per timeline",
+        "ddim_sampling": "Song 2020 DDIM — 4-step denoising at 18 ms p95 inference",
+        "eight_grid_batch_render": "8 alternate selves per tap (4×2 grid)",
+        "npu_compute_budget": "17.5 TOPS = 50% Apple A17 Pro 35 TOPS (camera-filter-app inheritance)",
+        "five_axis_identity": "era / culture / profession / aesthetic / personal-multiverse"
+      },
+      "precursors": [
+        "cognitive/ai-multimodal",
+        "cognitive/ai-inference-cost",
+        "cognitive/ai-quality-scale",
+        "compute/chip-architecture",
+        "cognitive/ai-alignment",
+        "cognitive/ai-eval-pipeline"
+      ],
+      "falsifiers": [
+        "F-PSELF-MVP-1 (2026-08-30): InstantID identity-preservation Cosine < 0.85 between input selfie and 8-grid -> identity-lock claim retracted",
+        "F-PSELF-MVP-2 (2026-08-30): single-tap latency p95 > 25 ms on iPhone 15 Pro -> real-time slot-machine claim retracted",
+        "F-PSELF-MVP-3 (2026-08-30): N=30 blind A/B vs FaceApp/Reface preference < 50% -> quality claim retracted",
+        "F-PSELF-MVP-4 (2026-09-30): generated content classified deepfake by C2PA / Adobe Content Credentials -> safety/alignment claim retracted",
+        "F-PSELF-MVP-5 (2026-09-30): cross-cultural mk2 generation flagged appropriation by N=10 cultural reviewers -> mk2 culture-jump retract"
+      ]
+    },
+    {
+      "slug": "hexa-main-character",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "sister_domain": "apps/camera-filter-app",
+      "verb_distinction": "MAIN-CHARACTER applies CINEMATIC DIRECTION to videos (9 effects + genre detection); camera-filter-app APPLIES aesthetic filters (real-time still+video preview). Same apps axis, different verb.",
+      "physical_limit_anchors": {
+        "aspect_ratio_2_39_anamorphic": "Cinerama / Panavision standard since 1953; auto-letterbox preserves all source pixels",
+        "lucas_kanade_optical_flow": "Lucas-Kanade 1981 sub-pixel motion vector field at 16 ms / frame",
+        "hexagonal_aperture_lens_flare": "Snell + Fresnel; 6-blade aperture → 6-point flare physics (J.J. Abrams Star Trek 2009)",
+        "cox_1955_cluster_poisson_grain": "Kodak Vision3 5219 D50 grain 1.4 µm",
+        "clap_audio_text_embedding": "Wu et al. 2023 — 512-dim joint embedding for scene-music matching",
+        "reinhard_devlin_2002_tone_operator": "Photographic global+local tone mapping for HDR cinematic range",
+        "real_time_16_67_ms": "60-fps Nyquist visual UX target (camera-filter-app inheritance)",
+        "npu_compute_budget": "17.5 TOPS = 50% Apple A17 Pro 35 TOPS"
+      },
+      "precursors": [
+        "compute/chip-architecture",
+        "cognitive/ai-multimodal",
+        "cognitive/ai-inference-cost",
+        "cognitive/ai-quality-scale",
+        "physics/optics",
+        "physics/electromagnetism"
+      ],
+      "falsifiers": [
+        "F-MC-MVP-1 (2026-08-30): real-time 60-fps p95 latency > 25 ms with all 9 effects active -> real-time claim retracted",
+        "F-MC-MVP-2 (2026-08-30): N=30 blind A/B vs Instagram + VSCO + Premiere Rush mobile preference < 50% -> quality claim retracted",
+        "F-MC-MVP-3 (2026-08-30): genre auto-detection accuracy < 70% on 1000-clip labeled test set -> genre classifier retract",
+        "F-MC-MVP-4 (2026-09-30): scene-music CLAP MOS < 4.0/5 on N=20 panel -> music suggestion claim retracted",
+        "F-MC-MVP-5 (2026-09-30): aperture-shape lens flare diverges > 5° from 6-blade physical model -> physics fidelity retract"
       ]
     }
   ]

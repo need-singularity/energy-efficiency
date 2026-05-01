@@ -1,7 +1,7 @@
 {
   "_doc": "도메인 SSOT — 304 도메인을 10축으로 분류. 축 변경 시 이 파일만 수정.",
-  "_version": "1.2.0",
-  "_total": 385,
+  "_version": "1.4.0",
+  "_total": 391,
   "_axes": 13,
   "_changelog": [
     "1.0.1 (2026-04-11): compute 축에 4 도메인 추가 — chip-rtl-gen, chip-dse-pipeline, chip-isa-n6, chip-npu-n6 (칩 설계 축 확장)",
@@ -40,6 +40,10 @@
     {
       "date": "2026-05-01",
       "change": "1.2.0 — add apps axis (13th; consumer software application surface; mobile-compute + cognitive-AI + physics-optics intersection; distinct from compute/cognitive/physics axes); first domain camera-filter-app at alien-grade 10 PHYSICAL-LIMIT (real-time 16.67 ms frame budget + 17.5 TOPS NPU budget + Roofline + Airy diffraction + Poisson shot-noise floor + Wallace JPEG quantization; 6 precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-inference-cost + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism; F-CFA-MVP-1..5). Plus pets axis cat-food domain registered at alien-grade 10 PHYSICAL-LIMIT (AAFCO 26%-protein/0.1%-taurine + Atwater factor + Maillard kinetics + Arrhenius lipid oxidation + a_w shelf-life; 6 precursors life/biology-medical + agriculture + synbio + fermentation + herbalism + materials/recycling; F-CF-MVP-1..5). _total 383 -> 385 (+2); _axes 12 -> 13; pets axis count 1 -> 2; apps axis count 0 -> 1. Design-by-physics per own#32, NOT n=6 force-fit."
+    },
+    {
+      "date": "2026-05-01",
+      "change": "1.3.0 (2026-05-01): apps axis 2nd domain hexa-filter-algebra registered (filter authoring/composition framework; sister to camera-filter-app — FILTER-ALGEBRA AUTHORS / COMPILES filters, camera-filter-app APPLIES them; both share 16.67 ms real-time budget; first intra-axis sister-pairing in n6-architecture). 9 primitive operations (M color matrix / T tone curve / K convolution / C color-space change / N grain / H histogram match / L local tone / V vignette / U sharpening) closed under composition algebra (∘ compose / ^ power / / scale / blend); auto-generation from N=5 reference image pairs (linear regression on 9 RGB unknowns + 1D regression on tone curve + FFT grain match + He 2015 residual CNN); LPIPS ≤ 0.15 / SSIM ≥ 0.95 / PSNR ≥ 35 dB provable quality bounds; 16.67 ms hard real-time ceiling at depth ≤ 4 (4 × 3.5 ms primitive avg = 14.0 ms ≤ 16.67 ms; depth 5 = 17.5 ms falsifier-trigger by construction). Physical-limit anchors: Shannon 1948 Data Processing Inequality (24 bits/pixel ceiling) + Wiener 1949 inverse filter (sharpening lower bound) + Tishby 1999 information bottleneck (33³ LUT optimal) + Cox 1955 cluster Poisson (grain) + Reinhard-Devlin 2002 (local tone) + Williams-Waterman-Patterson 2009 Roofline (scheduling) + Zhang 2018 LPIPS + Wang-Bovik 2004 SSIM + Hurter-Driffield 1890 (tone curve) + He 2015 residual + Radford 2021 CLIP + CIE 1931. 6 precursors compute/chip-architecture + cognitive/ai-multimodal + cognitive/ai-quality-scale + physics/optics + physics/electromagnetism + compute/chip-design. F-FA-MVP-1..5 90-day MVP gates 2026-08-30 (associativity / inverse-problem LPIPS / depth-4 real-time) + 2026-09-30 (A/B preference / commute correctness). Design-by-physics per own#32, NOT n=6 force-fit. _total 385 -> 386 (+1); apps axis count 1 -> 2; alien-grade 10 PHYSICAL-LIMIT."
     }
   ],
   "_template": "각 도메인: domains/<axis>/<name>/{CLAUDE.md, <name>.md, verify.hexa}",
@@ -91,11 +95,11 @@
     },
     "pets": {
       "path": "pets/_index.json",
-      "count": 2
+      "count": 5
     },
     "apps": {
       "path": "apps/_index.json",
-      "count": 1
+      "count": 4
     }
   },
   "physics": [
@@ -432,9 +436,15 @@
   ],
   "pets": [
     "cat-litter",
-    "cat-food"
+    "cat-food",
+    "dog-food",
+    "cat-toy",
+    "dog-toy"
   ],
   "apps": [
-    "camera-filter-app"
+    "camera-filter-app",
+    "hexa-filter-algebra",
+    "hexa-parallel-self",
+    "hexa-main-character"
   ]
 }

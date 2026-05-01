@@ -2,19 +2,20 @@
   "_doc": "pets axis sub-SSOT — parent: ../_index.json (pets key). Created 2026-05-01 to host companion-animal domains (consumer-product + animal-behavior + small-scale material-science intersection). Distinct from life axis (clinical/agricultural/pharmacological) and materials axis (industrial-scale fabrics/concrete/ceramics): pets axis is for the consumer-pet-care surface where consumer product engineering meets animal behavior + small-scale material science (litter / food / toy / habitat).",
   "_axis": "pets",
   "_parent": "../_index.json",
-  "_version": "1.1.0",
+  "_version": "1.2.0",
   "_meta": {
     "_category_name": "companion animal care: litter, food, toy, habitat, behavior — consumer-product + small-scale material-science + animal-behavior intersection",
-    "_domains_count": 2,
+    "_domains_count": 5,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg null on creation; populate from atlas.n6 aggregation once the first MVP measurements land per per-domain falsifier deadlines.",
     "_updated": "2026-05-01"
   },
-  "_count": 2,
+  "_count": 5,
   "_changelog": [
     "1.0.0 (2026-05-01): pets axis sub-SSOT created. cat-litter registered (consumer companion-animal hygiene material; n6 invariant projection sigma(6)=12 bentonite swelling ratio (12x dry volume; Wyoming Na-bentonite reference) / tau(6)=4 odor-neutralization tiers (carbon-adsorption / zeolite-ion-exchange / pH-buffer / antimicrobial) / phi(6)=2 grain-mode binary (fine-clumping / coarse-non-clumping) / sopfr(6)=5 primary minerals (bentonite / silica-gel / zeolite / perlite / charcoal) / J_2(6)=24 hour odor-suppression industry baseline; verdict tier DRAFT per raw 69 (theoretical-analytical with literature-anchored material constants, not yet empirical lab measurement); F-CL-MVP-1 90-day MVP gate 2026-07-30 — manufacture 1 kg test batch + measure swell-ratio / clump-strength / dust-PM2.5 against the 4 raw 71 falsifiers preregistered).",
-    "1.1.0 (2026-05-01): cat-food registered (consumer mobile pet-food domain at alien-grade 10 PHYSICAL-LIMIT; precursors life/biology-medical + life/agriculture + life/synbio + life/fermentation + life/herbalism + materials/recycling; physical-limit anchors AAFCO 26%-protein/0.1%-taurine + Atwater factor + Maillard kinetics + Arrhenius lipid oxidation + a_w shelf-life; F-CF-MVP-1..5 90-day MVP gates 2026-07-30 / 2026-08-30 / 2026-09-30; design-by-physics, NOT n=6 force-fit per own#32). pets axis count 1 -> 2."
+    "1.1.0 (2026-05-01): cat-food registered (consumer mobile pet-food domain at alien-grade 10 PHYSICAL-LIMIT; precursors life/biology-medical + life/agriculture + life/synbio + life/fermentation + life/herbalism + materials/recycling; physical-limit anchors AAFCO 26%-protein/0.1%-taurine + Atwater factor + Maillard kinetics + Arrhenius lipid oxidation + a_w shelf-life; F-CF-MVP-1..5 90-day MVP gates 2026-07-30 / 2026-08-30 / 2026-09-30; design-by-physics, NOT n=6 force-fit per own#32). pets axis count 1 -> 2.",
+    "1.2.0 (2026-05-01): pets axis fan-out completion — dog-food + cat-toy + dog-toy mk1 PHYSICAL-LIMIT (alien-grade 10 each, anchored on existing precursor domains via own#32). pets axis count 2 -> 5. dog-food precursors: life/biology-medical (facultative-carnivore physiology, AAFCO 18%-protein/no-taurine), life/agriculture (low-GI grain agronomy: barley + sorghum + lentil/chickpea), life/synbio (10 EAA registry), life/fermentation (Bifidobacterium animalis lactis Bb12), life/herbalism (turmeric curcumin + ginger zingiberene), materials/recycling (PE-laminated kraft pouch). cat-toy precursors: materials/aramid (Kevlar 29 fiber), materials/recycling (rPET stuffing), materials/fashion-textile (plain-weave construction + Martindale), physics/fluid (Antoine 1888 nepetalactone vapor pressure), life/biology-medical (Bradshaw 1992 + Lindner 1995 cat-bite 58 N), life/entomology (Vogel 1994 low-Re flapping flight). dog-toy precursors: materials/aramid (Kevlar 29 reinforcing core), materials/concrete-technology (Hertz 1881 contact + Powers 1948 crosslink analog), materials/recycling (rubber EOL devulcanization), life/biology-medical (Lindner 1995 + Soltero-Rivera 2019 + Heffner 1983 canine biomechanics + dental + audiometry), physics/fluid (Helmholtz 1860 + Beranek 1986 acoustic resonator), materials/fashion-textile (Hearle 1969 3-strand twist efficiency)."
   ],
   "domains": [
     {
@@ -75,6 +76,113 @@
         "F-CF-MVP-3 (2026-08-30): a_w > 0.6 at finished kibble → retract shelf-stable claim",
         "F-CF-MVP-4 (2026-08-30): Atwater kcal density off-spec by > 10% → retract caloric labeling",
         "F-CF-MVP-5 (2026-09-30): shelf-life Arrhenius extrapolation contradicts 12-month accelerated test → retract shelf-life target"
+      ]
+    },
+    {
+      "slug": "dog-food",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "aafco_protein": "≥ 18% DM (AAFCO Dog Food Adult Maintenance Profile 2024; FDA 21 CFR 501.22)",
+        "aafco_no_taurine_min": "endogenous CSAD synthesis (Hayes 1989) — 10 EAA dog vs 11 EAA cat",
+        "atwater_factor": "kcal/g = 4*carb + 9*fat + 4*protein (Atwater 1900) + NRC Dog 2006 MER 132*BW^0.75",
+        "glycemic_index": "weighted-average GI ≤ 55 LOW-GI ceiling (Hewson-Hughes 2013 / Atkinson 2008)",
+        "maillard_arrhenius": "extrusion-cooking browning E_a ≈ 100 kJ/mol (Labuza 1985)",
+        "lipid_oxidation_arrhenius": "shelf-life Arrhenius E_a 60-80 kJ/mol for animal fats (Frankel 2005)",
+        "water_activity": "dry kibble a_w < 0.6 shelf-stable threshold (Mossel 1975)"
+      },
+      "precursors": [
+        "life/biology-medical (facultative-carnivore physiology, endogenous taurine via CSAD per Hayes 1989)",
+        "life/agriculture (low-GI grain agronomy: barley + sorghum + lentil/chickpea)",
+        "life/synbio (10 essential amino acid registry — no taurine entry)",
+        "life/fermentation (Bifidobacterium animalis lactis Bb12 canine probiotic)",
+        "life/herbalism (turmeric curcumin + ginger zingiberene functional adjuncts)",
+        "materials/recycling (PE-laminated kraft pouch EOL)"
+      ],
+      "falsifiers": [
+        "F-DF-MVP-1 (2026-07-30): lab batch protein assay < 18% DM → retract AAFCO compliance claim",
+        "F-DF-MVP-2 (2026-07-30): in-vitro glycemic-index digest > 60 → retract LOW-GI claim",
+        "F-DF-MVP-3 (2026-07-30): a_w > 0.6 at finished kibble → retract shelf-stable claim",
+        "F-DF-MVP-4 (2026-07-30): Atwater kcal density < 3.3 kcal/g → retract caloric target",
+        "F-DF-MVP-5 (2026-08-30): 40°C×3mo accelerated shelf-life Arrhenius-extrapolates to < 9 mo at 25°C → retract shelf-life target"
+      ]
+    },
+    {
+      "slug": "cat-toy",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "wohler_fatigue": "≥ 10⁵ cycles to failure at 58 N cat-bite peak force per Lindner 1995 (Wöhler 1870 / Basquin 1910 S-N curve, Talreja 1981 textile composite fatigue exponent b ≈ -0.08)",
+        "antoine_equation": "log10(P_mmHg) = A - B/(T+C); nepetalactone parameters per Heron 2002 (A=7.45, B=2150, C=230); P(25°C) ~ 1e-3 mmHg vs cat olfactory floor 1e-5 mmHg per Hart 1969",
+        "en_71_1_safety": "minimum dimension ≥ 31.7 mm (small-parts cylinder §5.2) OR cylindrical D ≥ 44.5 mm (cord-and-bead §4.5); retention pull-test ≥ 90 N (§8.4)",
+        "velcro_peel": "≥ 1 N/cm² peel (ISO 24316:2018) + total peel × 5x shear ratio (Bowditch 2003) > cat-bite 58 N",
+        "martindale_abrasion": "≥ 10⁴ cycles before fiber breakdown (ISO 12947-2:2016)"
+      },
+      "precursors": [
+        "materials/aramid (Kevlar 29 tensile + cut resistance for outer fabric)",
+        "materials/recycling (post-consumer rPET stuffing + ISO 14021 Type II)",
+        "materials/fashion-textile (plain-weave 220 g/m² aramid-PET 30/70 blend + Martindale)",
+        "physics/fluid (Antoine 1888 vapor-pressure thermodynamics)",
+        "life/biology-medical (Bradshaw 1992 4-stage hunt + Lindner 1995 cat-bite 58 N)",
+        "life/entomology (Vogel 1994 low-Reynolds flapping flight prey-mimic)"
+      ],
+      "falsifiers": [
+        "F-CT-MVP-1 (2026-08-30): bite-fatigue rig (58 N cyclic) measures < 10⁴ cycles → retract Wöhler 10⁵ cycle floor claim",
+        "F-CT-MVP-2 (2026-07-30): GC-headspace (Heron 2002) measures P(25°C) < 1e-6 mmHg → retract Antoine extrapolation",
+        "F-CT-MVP-3 (2026-07-30): EN 71-1:2014 third-party audit (TÜV / Intertek) flags §4.5 / §5.2 / §8.4 violation → retract toy-safety claim",
+        "F-CT-MVP-4 (2026-07-30): Velcro peel test (ISO 24316) measures < 1 N/cm² → retract pouch retention claim",
+        "F-CT-MVP-5 (2026-07-30): Martindale abrasion (ISO 12947-2) measures < 5,000 cycles → retract premium-textile claim"
+      ]
+    },
+    {
+      "slug": "dog-toy",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "compressive_yield": "≥ 2.0 MPa with safety factor 1.3× over Lindner 1995 medium-dog bite 1.5 MPa; large-breed variant ≥ 4 MPa via 5 mm steel cord reinforcement (Hertz 1881 stiff-inclusion factor 2×)",
+        "helmholtz_resonator": "f_res = (c/2π)·√(A/(VL)); geometry (port D=4mm, V=2cm³, L_eff=8.4mm) tuned to 1200 Hz center within Wells 2004 800-2000 Hz dog-attractive band; Beranek 1986 end correction 1.7×radius",
+        "shore_a_hardness": "60-80 chew-toy elastomer band (Shore 1907 ASTM D2240; Soltero-Rivera 2019 tooth-safe upper from 200-dog clinical study); Mott-Roland 1995 Shore A → Young's E correlation",
+        "nylon_rope_tensile": "≥ 800 MPa composite (DuPont nylon 6,6 850 MPa + Kevlar 29 2920 MPa core, Hearle 1969 3-strand twist efficiency 0.85); 12 mm rope breaks at ≥ 9.0 kN > 5× tug peak 300 N for 25 kg dog",
+        "cen_ts_16637_voc": "formaldehyde < 5 ppm indoor-air bound; Frisch 2002 Arrhenius post-cure decay E_a 60 kJ/mol; 80°C × 7 days post-cure ageing protocol"
+      },
+      "precursors": [
+        "materials/aramid (Kevlar 29 reinforcing core for rope SKU)",
+        "materials/concrete-technology (Hertz 1881 elastic contact + Powers 1948 cement-paste hydration ↔ rubber crosslinking analog)",
+        "materials/recycling (rubber EOL devulcanization ≥ 70% recovery per Adhikari 2000 / Roy 1999)",
+        "life/biology-medical (Lindner 1995 canine bite + Soltero-Rivera 2019 dental safety + Heffner 1983 dog audiogram)",
+        "physics/fluid (Helmholtz 1860 acoustic resonator + Beranek 1986 end correction)",
+        "materials/fashion-textile (Hearle 1969 3-strand twist efficiency 0.85)"
+      ],
+      "falsifiers": [
+        "F-DT-MVP-1 (2026-07-30): compressive-yield rig (ASTM D575) measures < 1.5 MPa → retract chew-toy yield-floor claim",
+        "F-DT-MVP-2 (2026-07-30): audio analyzer measures Helmholtz f_res outside 600-2500 Hz → retract dog-attractive band claim",
+        "F-DT-MVP-3 (2026-07-30): Shore A durometer (ASTM D2240) measures outside 55-85 band → retract chew-toy elastomer claim",
+        "F-DT-MVP-4 (2026-07-30): rope tensile rig (ASTM D6775) measures < 600 MPa on 12 mm composite rope → retract rope-tensile claim",
+        "F-DT-MVP-5 (2026-08-30): CEN/TS 16637 chamber test measures formaldehyde ≥ 5 ppm post-ageing → retract low-VOC claim"
       ]
     }
   ]
