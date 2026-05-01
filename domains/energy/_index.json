@@ -2,19 +2,21 @@
   "_doc": "energy 축 sub-SSOT — 부모: ../_index.json (energy 키). 자동 생성 2026-04-12.",
   "_axis": "energy",
   "_parent": "../_index.json",
-  "_version": "1.0.0",
+  "_version": "1.3.0",
   "_meta": {
     "_category_name": "에너지·배터리·핵융합·초전도·태양광·그리드·냉각",
-    "_domains_count": 16,
+    "_domains_count": 18,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
-    "_updated": "2026-04-14"
+    "_updated": "2026-05-01"
   },
-  "_count": 24,
+  "_count": 26,
   "_changelog": [
     "1.0.0 (2026-04-12): energy 축 sub-SSOT 신설. 전체 16개 도메인 등록.",
-    "1.1.0 (2026-04-24): own#16 registry sync — tabletop-fusion domain registered (disk measured, body .md present)."
+    "1.1.0 (2026-04-24): own#16 registry sync — tabletop-fusion domain registered (disk measured, body .md present).",
+    "1.2.0 (2026-05-01): SA applied-tech bet #3 — amd-ree-mineshaft-phes mk1 alien-grade 10 PHYSICAL-LIMIT registered. Witwatersrand/Mpumalanga AMD treated as REE/base-metal precipitate-mining feedstock + decommissioned 1-3 km mine shafts repurposed as PHES lower reservoirs. Bernoulli 1738 specific energy 2.72 kWh/m³ at 1 km head + IEA 2021 PHES round-trip 0.80-0.87 + Baes & Mesmer 1976 REE-hydroxide K_sp + Sastri-Shibata 2003 D2EHPA β_Y/Eu 2.5 + McCarthy 2010 Witwatersrand AMD pH 2-4 + ASTM C150 Type V cement 28 MPa vs 9.81 MPa hydrostatic. 6 precursors energy/power-grid + energy/battery-architecture + materials/recycling + physics/fluid + physics/thermodynamics + materials/concrete-technology. F-AMD-MVP-1..5 falsifier deadlines 2026-09-30 (RTE) / 2026-12-31 (REE yield + shaft integrity + DMR licensing) / 2027-06-30 (REE basket NPV).",
+    "1.3.0 (2026-05-01): SA applied-tech bet #1 — rooftop-pv-2nd-life-microgrid mk1 alien-grade 10 PHYSICAL-LIMIT registered (proposals/south-africa-applied-tech.md row 1). 50-500 kW rooftop PV + 100-500 kWh second-life NMC EV-battery microgrid for SA clinic/school/SME anchor sites. Reference T2 100 kW PV + 250 kWh battery at USD 150,000 capex with 6.7-yr simple payback at SA loadshedding-blended avoided-cost tariff 0.17 USD/kWh; LCOE 0.12 USD/kWh; discounted payback 11 yr at r=8%. Physical-limit anchors: Shockley-Queisser 1961 PV ceiling 33.7% at Eg=1.34 eV (commercial Si 22% = 65% of SQ peak; Tiedje 1984 + Ruhle 2016) + NREL TMY3 / SAURAN 2400 kWh/m^2/yr SA GHI (top decile globally; PR 0.80 → 1920 kWh/kW/yr) + Wood-Mackenzie 2023 NMC 2nd-life 1500-2500 cycles to 60% SOH at 80% DoD (10-yr calendar life; Schmalstieg 2014 + Wang 2014) + Spotnitz-Franklin 2003 Li-ion thermal runaway 80°C onset (Bernardi 1985 heat-gen + Incropera 2017 nat-conv h=7.5 W/m^2/K → 38°C margin at 40°C SA ambient with extended-fin radiator 32 m^2/250 kWh) + Esram-Chapman 2007 MPPT 99% theoretical × 96% inverter (SMA Sunny Tripower spec) + Cole 1990 LCOE financial-physics. 6 precursors energy/solar-architecture (SQ ceiling + insolation) + energy/battery-architecture (NMC electrochemistry + cycle life) + energy/power-grid (grid-tie inverter + microgrid topology + NRS-097-2/NERSA SSEG) + energy/thermal-management (passive cooling SA peak ambient) + physics/electromagnetism (semiconductor band gap) + materials/recycling (2nd-life EV pack reclamation; Nissan Leaf / Tesla Model S retired packs 70-80% SOH; BloombergNEF 2024 1 GWh/yr supply). F-PV2L-MVP-1..5 90-day MVP gates: F-PV2L-MVP-1 + F-PV2L-MVP-3 + F-PV2L-MVP-5 (2026-09-30 cycle-life < 1500 / SCR < 70% / thermal management > 35°C internal at SA peak summer) + F-PV2L-MVP-2 (2026-10-31 inverter MTBF < 10 yr in SA dust+heat) + F-PV2L-MVP-4 (2026-12-31 NERSA SSEG approval > 18 months). Hardest unknown per SA portfolio row 1: 2nd-life cycle-life data scarcity (Wood-Mackenzie 2023 industry data converges on 2000-cycle midpoint but SA-pilot validation needed). Design-by-physics per own#32, NOT n=6 force-fit. Lint: own#31 v3.19 PASS; own_doc_lint --rule 6 + 15 PASS; §7.1 Python Block A-G all PASS."
   ],
   "domains": [
     {
@@ -249,6 +251,32 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "basic"
+    },
+    {
+      "slug": "amd-ree-mineshaft-phes",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "alien-10-physical-limit",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered": "2026-05-01",
+      "note": "SA applied-tech bet #3 — Witwatersrand AMD REE recovery + mine-shaft PHES coupled system; 6 precursors; F-AMD-MVP-1..5 falsifiers"
+    },
+    {
+      "slug": "rooftop-pv-2nd-life-microgrid",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "alien-10-physical-limit",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered": "2026-05-01",
+      "note": "SA applied-tech bet #1 — 50-500 kW rooftop PV + 100-500 kWh 2nd-life NMC EV-battery microgrid for SA clinic/school/SME anchors; Shockley-Queisser 1961 + NREL TMY3 SA 2400 kWh/m^2/yr + Wood-Mackenzie 2023 NMC 2nd-life + Spotnitz-Franklin 2003 thermal runaway + Esram-Chapman 2007 MPPT + Cole 1990 LCOE; 6 precursors; F-PV2L-MVP-1..5 falsifiers (2026-09-30/2026-10-31/2026-12-31)"
     }
   ],
   "_note": "energy 축 전체 멤버 목록은 ../_index.json energy 키 SSOT 를 따른다 (중복 등록 금지)."

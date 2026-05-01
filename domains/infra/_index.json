@@ -1,20 +1,21 @@
 {
-  "_doc": "infra 축 sub-SSOT — 부모: ../_index.json (infra 키). 자동 생성 2026-04-12.",
+  "_doc": "infra axis sub-SSOT — parent: ../_index.json (infra key). auto-generated 2026-04-12.",
   "_axis": "infra",
   "_parent": "../_index.json",
-  "_version": "1.1.0",
+  "_version": "1.2.0",
   "_meta": {
-    "_category_name": "인프라·건축·토목·교통·경제·기후·제조·해양·법학",
-    "_domains_count": 58,
+    "_category_name": "infrastructure / architecture / civil / transport / economics / climate / manufacturing / marine / jurisprudence",
+    "_domains_count": 59,
     "_verified_count": null,
     "_alien_index_avg": null,
-    "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
-    "_updated": "2026-04-23"
+    "_honesty_note": "_verified_count / _alien_index_avg: per-domain alien_index source absent so null (no self-reference — populate from atlas.n6 / _registry aggregation later)",
+    "_updated": "2026-05-01"
   },
-  "_count": 58,
+  "_count": 59,
   "_changelog": [
-    "1.0.0 (2026-04-12): infra 축 sub-SSOT 신설. 전체 57개 도메인 등록.",
-    "1.1.0 (2026-04-23): DIS-P2-1 low-risk batch 2 — forensic-science."
+    "1.0.0 (2026-04-12): infra axis sub-SSOT created. 57 domains registered.",
+    "1.1.0 (2026-04-23): DIS-P2-1 low-risk batch 2 — forensic-science.",
+    "1.2.0 (2026-05-01): SA applied-tech bet #6 lora-mesh-learning-terminal registered (solar-powered LoRa mesh + e-paper Android terminal stack delivering CAPS-aligned curriculum + AI-tutor responses to South African rural learners at USD 8-15/learner-year all-in. Physical-limit anchors: Shannon-Hartley channel capacity at SF12 BW125 kHz (Shannon 1948) + LoRa link budget 162 dB (Semtech SX127x §4.1.1.3) + Friis 1946 free-space-path-loss + ITU-R P.833 vegetation attenuation + solar PV sizing for 50 W panel + 100 Wh LiFePO4 at Karoo 6 kWh/m^2/d (PVGIS-Africa) + e-paper bistable display 0 mW idle / 50-100 mW per refresh (Carsel-Hwang 2017) + per-learner cost USD 11-15/yr from BOM. 6 precursors: compute/5g-6g-network + compute/chip-architecture + cognitive/ai-multimodal + energy/solar-architecture + physics/electromagnetism + infra/calendar-time-geography. F-LORA-MVP-1..5 falsifier gates 2026-09-30 (attrition + uptime) + 2026-12-31 (link reliability + per-learner cost) + 2027-03-31 (DBE CAPS certification). Source: proposals/south-africa-applied-tech.md row 6. Design-by-physics per own#32, NOT n=6 force-fit. infra axis count 58 -> 59; alien-grade 10 PHYSICAL-LIMIT."
   ],
   "domains": [
     {
@@ -538,7 +539,55 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "S1"
+    },
+    {
+      "slug": "lora-mesh-learning-terminal",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "source_proposal": "proposals/south-africa-applied-tech.md row 6 (SA applied-tech bet #6: LoRa mesh offline learning terminal)",
+      "physical_limit_anchors": {
+        "shannon_hartley_capacity_bps_SF12_BW125": "Shannon 1948 BSTJ 27 — C = B*log2(1+SNR); LoRa SF12 BW125 kHz with -20 dB SNR demodulator floor gives ~1.8 kbps theoretical; LoRa actual bit rate ~250 bps at SF12 (Semtech SX127x Table 13)",
+        "lora_link_budget_dB": "Semtech SX127x datasheet §4.1.1.3 — 14 dBm Tx + -148 dBm Rx sensitivity = 162 dB link budget at SF12 BW125",
+        "friis_path_loss_868MHz": "Friis 1946 IRE 34:254 — PL_dB(d) = 20*log10(4*pi*d*f/c); at 868 MHz 5 km PL = 105 dB; with 12 dBi antenna gain + 10 dB fade margin → 5+ km practical rural range",
+        "vegetation_attenuation": "ITU-R P.833-9 — ~6 dB/km foliage loss at 868 MHz mid-density rural environment",
+        "etsi_duty_cycle_limit": "ETSI EN 300 220-2 V3.2.1 — 1% duty cycle on 868 MHz ISM band; SA ICASA Reg 2014 Type 1 alignment",
+        "solar_pv_sizing": "PVGIS-Africa SA-Karoo 6.0 kWh/m^2/day annual avg insolation; 50 W panel * 5.1 peak-sun-h * 0.85 system efficiency = 217 Wh/d harvest > 50.4 Wh/d gateway load (4x margin)",
+        "lifepo4_cycle_life": "Battery University BU-205 — LiFePO4 3000 cycles at 80% DoD = 8.2 yr (1 cycle/day); IEC 62133-2 abuse-test compliance",
+        "epaper_idle_power_W": "Comiskey 1998 Nature 394:253 + Carsel-Hwang 2017 — bistable electrophoretic display holds image at ZERO drive voltage (0 mW idle); 50-100 mW per refresh (1 sec full-frame)",
+        "epaper_battery_life_days": "3500 mAh Li-Po * 3.7 V * 0.85 usable = 11 Wh / mixed-workload 0.20 Wh/d = 54 days mixed-workload (1 hr/d active reading + 30 min/d SoC active + 2 AI queries/d); Carsel-Hwang 2017 30+ day field reference",
+        "soc_idle_power_W": "ARM Cortex-A55 race-to-sleep 0.3 W idle / 1.5 W active; sub-1 W avg under e-paper-reading workload",
+        "llm_int4_memory_GB": "Frantar 2023 GPTQ + Lin 2023 AWQ — 7B INT4 LLM = 7e9 params * 4 bits / 8 = 3.5 GB; fits gateway 8 GB RAM (RPi CM4); CLIP-ViT-B/32 (Radford 2021) 151 MB on terminal",
+        "dtn_bundle_protocol": "Fall 2003 SIGCOMM + RFC 5050 (Cerf 2007) — Bundle Protocol delay-tolerant networking; tolerates hours-days propagation delay; LoRaWAN Class A inheritance",
+        "dbe_caps_corpus_GB": "DBE 2011-2024 CAPS curriculum corpus 4.4 GB compressed = 8 grades * 11 official languages * ~50 MB; fits 32 GB gateway eMMC with 7x margin",
+        "per_learner_cost_USD_per_year_target": "USD 12.75/yr at 100% retention with terminal multi-grade reuse (1.6x); USD 11/yr design target band (8-15 USD spec); USD 27/yr at 30% attrition (F-LORA-MVP-1 falsifier breakpoint)",
+        "icasa_type_1_unlicensed": "SA ICASA Reg 2014 §3 — 868 MHz Type 1 unlicensed-band general authorisation, 14-day notification, no fee",
+        "device_attrition_breakpoint": "5% sustains design (USD 11/yr); 25% holds design ceiling (USD 15/yr); 30% breaks unit economics (USD 27/yr); F-LORA-MVP-1 deadline 2026-09-30",
+        "ai_tutor_latency_s": "On-device CLIP encoder (terminal) + gateway LLM round-trip via LoRa 250 bps; offline mode falls back to terminal Phi-2 1B INT4; design <= 2 s response"
+      },
+      "precursors": [
+        "compute/5g-6g-network",
+        "compute/chip-architecture",
+        "cognitive/ai-multimodal",
+        "energy/solar-architecture",
+        "physics/electromagnetism",
+        "infra/calendar-time-geography"
+      ],
+      "falsifiers": [
+        "F-LORA-MVP-1 (2026-09-30): device attrition rate > 25% in 6-month rural pilot (10 schools × 200 terminals = 2000 terminals) -> unit economics retract (5% sustains; 30% destroys per SA proposal row 6 hardest unknown)",
+        "F-LORA-MVP-2 (2026-12-31): LoRa link reliability < 95% packet-delivery rate at 5 km in SA rural Karoo / Eastern Cape -> range claim retract (Block C 162 dB budget physics)",
+        "F-LORA-MVP-3 (2026-09-30): solar gateway uptime < 95% under SA Karoo seasonal cloud cover (June-August worst case) -> power claim retract (Block D 50 W PV + 100 Wh sizing)",
+        "F-LORA-MVP-4 (2027-03-31): CAPS curriculum integration certification by SA Department of Basic Education delayed > 18 months -> deployment plan retract (mitigation: parallel-track CC-BY-4.0 release)",
+        "F-LORA-MVP-5 (2026-12-31): per-learner all-in cost > USD 18/yr at pilot scale (200 terminals × 10 schools) -> affordability claim retract (Block F BOM + amort physics)"
+      ]
     }
   ],
-  "_note": "infra 축 전체 멤버 목록은 ../_index.json infra 키 SSOT 를 따른다 (중복 등록 금지)."
+  "_note": "infra axis full member list follows ../_index.json infra key SSOT (no duplicate registration)."
 }
