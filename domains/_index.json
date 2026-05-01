@@ -1,7 +1,7 @@
 {
   "_doc": "도메인 SSOT — 304 도메인을 10축으로 분류. 축 변경 시 이 파일만 수정.",
-  "_version": "1.6.0",
-  "_total": 392,
+  "_version": "2.2.0",
+  "_total": 398,
   "_axes": 13,
   "_changelog": [
     "1.0.1 (2026-04-11): compute 축에 4 도메인 추가 — chip-rtl-gen, chip-dse-pipeline, chip-isa-n6, chip-npu-n6 (칩 설계 축 확장)",
@@ -52,6 +52,22 @@
     {
       "date": "2026-05-01",
       "change": "1.6.0 (2026-05-01): pets axis cat-food domain alien-grade 10 -> 13+ ceiling-breach upgrade per GRADE_RUBRIC_1_TO_10PLUS dual-axis rubric (alien_index_current 10 -> 13; alien_index_target 10 -> 15; tier PHYSICAL-LIMIT -> PHYSICAL-LIMIT + CIVILIZATION-SCALE). Three new ceilings added on top of alien-10 physical-limit baseline: alien-11 thermodynamic-impossible-reversed (Carnot 1824 reversible heat-pump floor on extrusion ~0.021 kWh/kg; mk2 target 0.15 kWh/kg = 4× below Strahm 2013 commodity 0.6 kWh/kg + Landauer 1961 kT ln 2 floor on 288-bit provenance ~8e-19 J/kg; mk2 target 1 J/kg = 1000× below IBM Food Trust 2019 blockchain), alien-12 biological-impossible-reversed (Weindruch 1985 + Kirk 2012 cross-species discount + Sinclair 2019 NMN bioavailability + Shay-Wright 2007 telomere → ≥ 15% feline lifespan extension at 15% CR; Deusch 2017 + Cani 2017 microbiome → 24-strain Shannon H ≥ 4.0 vs commodity H ≈ 0), alien-13+ civilization-scale (IPCC AR6 + Smil 2017 + Poore-Nemecek 2018 → < 500 km regional sourcing 83% transport-emissions reduction; 600M+ pet cats Statista 2024 → ~3.6 Mt CO2e/yr global reduction at full mk2 adoption + FAO Climate-Smart 2013 60-ingredient redundancy registry + CC-BY-4.0 + WSAVA 2011 + FAO Codex endorsement pathway for universal-basic-nutrition). 4 new precursor domains added (physics/thermodynamics + cognitive/ai-quality-scale + life/cancer-therapy + physics/electromagnetism), bringing cat-food precursor count 6 -> 10. §7.1 verify extended with Blocks H/I/J/K/L (5 new physics-computed blocks; print summary renamed Block H -> Block M). 5 new falsifiers F-CF-MK2-1..5 added (2027-Q2 100-kg pilot wattmeter; 2027-Q2 16S rRNA Shannon; 2031 5-yr cohort lifespan; 2027-Q4 LCA audit; 2028-Q2 WSAVA/FAO endorsement). raw 91 C3 honest: theoretical-analytical at this revision; empirical realization gated on F-CF-MK2-1..5 + WSAVA/FAO endorsement. Lint: own#31 v3.19 PASS (file + 29/29 selftest); §7.1 Python Blocks A-L all PASS. Design-by-physics per own#32, NOT n=6 force-fit. _total unchanged (upgrade only)."
+    },
+    {
+      "date": "2026-05-01",
+      "change": "1.7.0 (2026-05-01): South Africa applied-tech bet #5 — biochar-dryland-restoration registered under life axis at alien-grade 10 PHYSICAL-LIMIT. Pyrolyze invasive Prosopis glandulosa + Acacia mearnsii (Australian wattle) + black wattle biomass into biochar at 5-20 t/ha amendment; stack Working-for-Water clearance subsidy USD 20-50/ha (DEFF 2023) + 10-25% Karoo rangeland carrying-capacity uplift (Hoffmann 2014 6-12 ha/LSU baseline) + Verra VM0044 / Puro durable-removal credits at USD 80-150/tCO2e. Physical-limit anchors: Antal-Grønli 2003 slow-pyrolysis char yield 25-35% biomass mass + 50-65% biomass-C retention (IECR 42:1619) · Lehmann 2007 / Singh 2012 Arrhenius mineralization E_a 75-120 kJ/mol → 100-1000 yr soil residence at 25 °C (GCB 18:2659) · Glaser-Lehmann 2002 CEC mass-balance mixing rule (BFS 35:219; Liang 2006 SSSAJ 70:1719) · Atkinson 2010 plant-available water uplift 5-15% per 10 t/ha (Plant Soil 337:1) · Smith-Bondeau 2014 SOC sink ~ 1.5 GtCO2/yr global (SA share ~ 36-50 MtCO2/yr; GCB 20:3270) · Verra VM0044 (2023) ≥ 100 yr + 10% buffer / Puro.earth Biochar v3 (2024) ≥ 1000 yr · Spokas 2010 H/C < 0.4 stability indicator · OSHA 29 CFR 1910.1000 CO 50 ppm + HCN 10 ppm 8-hr TWA. 6 precursors life/agriculture (Karoo carrying capacity Hoffmann 2014) + life/ecology (invasive ecology van Wilgen 2012 Biol Conserv 148:28) + life/herbalism (Acacia mearnsii bark 35-45% tannin Pizzi 1994) + materials/recycling (waste-stream conversion + EBC II PAH < 12 mg/kg) + physics/thermodynamics (Antal-Grønli + Arrhenius coupling) + materials/concrete-technology (Gupta 2018 1-5% cement substitution at parity strength). F-BIOCHAR-MVP-1..5 90-day MVP gates: F-MVP-4 (2026-09-30 carbon-price floor < USD 50/tCO2e) + F-MVP-1 + F-MVP-5 (2026-12-31 pilot kiln yield < 22% / OSHA PEL exceedance) + F-MVP-3 (2027-03-31 N=10 farm-pair carrying-cap uplift < 8%) + F-MVP-2 (2027-06-30 5-yr soil residence < 80%). Hardest unknown per proposals/south-africa-applied-tech.md: voluntary carbon market integrity durability (Verra integrity scandals 2023-2024); contingency = SA Carbon Tax 2019 R190/tCO2e + Article 6.4 ITMOs + concrete-technology cross-utilization. Design-by-physics per own#32, NOT n=6 force-fit. Lint: own#31 v3.19 PASS; own_doc_lint --rule 6 + 15 PASS. _total 392 -> 393 (+1); life axis count 47 -> 48; alien-grade 10 PHYSICAL-LIMIT."
+    },
+    {
+      "date": "2026-05-01",
+      "change": "2.0.0 (2026-05-01): South Africa applied-tech bet #2 — crispr-cas13-poc-diagnostic registered under life axis at alien-grade 10 PHYSICAL-LIMIT (proposals/south-africa-applied-tech.md row 2). Field-deployable CRISPR-Cas13 isothermal SHERLOCK/DETECTR diagnostic for TB + HIV with lateral-flow Au-NP readout, 30-60 min TTR, lyophilized reagents, USD 2-5/test + USD 200-500 reader. Targets World #3 TB burden 450,000 cases/yr South Africa + 13% HIV prevalence 8.2M PLHIV vs current lab-bound NAATs (GeneXpert MTB/RIF USD 10-15/cartridge + USD 17,000 instrument requiring 4°C cold chain + AC mains). Physical-limit anchors: Abudayyeh-Zhang 2017 (Nature 550:280) Cas13 trans-cleavage k_cat 30-50 /s/molecule + Eigen-Hammes 1963 universal diffusion-limit ceiling k_cat/K_M ≤ 10⁹ M⁻¹s⁻¹ + Mason-Botella 2020 (Anal. Chem. 92:14644) lyophilized-reagent Arrhenius E_a ≈ 80 kJ/mol → 12 mo @ 25°C / 60% RH (no cold chain) + Posthuma-Trumpie 2009 (Anal. Bioanal. Chem. 393:569) lateral-flow Au-NP visual LOD ~10 fM analyte / ~10⁵ copies viral RNA + Piepenburg-Armes 2006 (PLOS Biol. 4:e204) RPA isothermal pre-amplification 10⁹ in 20 min at 37-42°C. Clinical anchors: WHO Global TB Report 2023 + WHO TB TPP 2014 (≤ 10³ CFU/mL PoC class) + WHO HIV-VL 2021 (1,000 cp/mL virological-failure threshold) + Thierry 1990 IS6110 multi-copy 10-15 / Mtb cell + UNAIDS 2023 SA 8.2M PLHIV. 6 precursors life/biology-medical (TB/HIV pathology) + life/synbio (LbuCas13a engineering) + life/genetics (28-nt crRNA + RPA primers) + life/hiv-treatment (WHO VL clinical thresholds) + materials/ceramics (Whatman FF120HP nitrocellulose) + physics/optics (Mie 1908 / Haiss 2007 Au-NP plasmon). F-CAS13-MVP-1..5 falsifier gates: F-MVP-1 + F-MVP-3 (2026-09-30 lyo activity < 50% after 12-mo @ 25°C / HIV LOD > 1,000 cp/mL) + F-MVP-2 (2026-10-31 TB sensitivity < 90% smear-pos) + F-MVP-5 (2026-12-31 cost > USD 8 at 100k-test/yr) + F-MVP-4 (2027-03-31 SAHPRA Class C IVD timeline > 24 mo). Hardest unknown per SA portfolio: lyophilized-reagent shelf life under field humidity 60-90% RH (gated by F-CAS13-MVP-1 ICH Q1A R2 accelerated study). Design-by-physics per own#32, NOT n=6 force-fit. Lint: own#31 v3.19 PASS; own_doc_lint --rule 6 + 4 PASS; §7.1 Python Block A-G all PASS. _total 395 -> 396 (+1); life axis count 48 -> 49; alien-grade 10 PHYSICAL-LIMIT."
+    },
+    {
+      "date": "2026-05-01",
+      "change": "1.8.0 (2026-05-01): South Africa applied-tech bet #4 — youth-ai-labeling-rlhf-hub registered under cognitive axis at alien-grade 10 PHYSICAL-LIMIT (proposals/south-africa-applied-tech.md row 4). Premium-tier AI training data labelling + RLHF preference-pair production at 200-1000-seat Cape Town/Johannesburg/Durban hubs targeting domain-expert (medical/legal/scientific) + multilingual tail Zulu/Xhosa/Afrikaans/Sotho/Tswana on EU/UK 2-3 hr time-zone overlap. Physical-limit anchors: Cohen 1960 inter-annotator agreement kappa (expert >= 0.80 / multilingual >= 0.70 per Landis-Koch 1977 substantial / almost-perfect floors) · Bai-Anthropic 2022 Constitutional AI RLHF data efficiency (50k preference-pair sufficiency arXiv:2212.08073; 50-day delivery at 1k pairs/day mk1 throughput; SA wage arbitrage USD 5-15/pair vs US senior USD 10-30/pair via Christiano 2017 + Ouyang 2022 InstructGPT precursor floor) · Mielke 2019 Zipf low-resource language scarcity (Zulu/Xhosa speech corpora < 100h vs English 100,000h+ → 50-100x data-scarcity premium per Joshi 2020 ACL) · Shannon 1948 information-theoretic annotation bit floor (expert tasks 6-10 bits/sample log_2 K for K=64-1024 classes; RLHF 50-150 bits/pair including rationale per Shannon 1951 English 1.0 bit/char) · SAT-3+WACS submarine-cable Cape Town-Frankfurt RTT ~150ms (TeleGeography 2024; sufficient for asynchronous queue-based annotation; 8 hr/day EU/UK overlap vs 2 hr US-East) · Eskom 2024 EAF ~54% (Eskom Annual Report FY2024; PV 100 kWp DC + LFP 768 kWh battery 12-hr autonomy required for 200-seat 64 kW continuous load per ASHRAE 90.1 + NFPA 855). 6 precursors cognitive/ai-multimodal (multimodal annotation task surface) + cognitive/ai-quality-scale (Cohen 1960 + Krippendorff alpha) + cognitive/ai-eval-pipeline (Bai 2022 CAI 50k pair production-grade) + cognitive/ai-alignment (Christiano 2017 + Ouyang 2022 + Bai 2022) + cognitive/cognitive-social-psychology (Sweller 1988 cognitive load + Ericsson 1993 deliberate practice 4-hr ceiling) + energy/power-grid (Eskom EAF + PV+battery; cross-link rooftop-pv-2nd-life-microgrid SA-portfolio sister). F-RLHF-MVP-1..5 90-day + year-1 falsifier gates: F-MVP-1 + F-MVP-5 (2026-09-30 expert wage premium < USD 1,000/mo / Eskom load-shedding > 8 hr/day uncovered) + F-MVP-2 + F-MVP-4 (2026-12-31 multilingual kappa < 0.7 / SA YES tax break expires unfunded) + F-MVP-3 (2027-03-31 customer churn > 30% in year 1). Hardest unknown per proposals/south-africa-applied-tech.md row 4: expert-tail wage premium durability vs annotation commoditization. Design-by-physics per own#32, NOT n=6 force-fit. Lint: own#31 v3.19 PASS; own_doc_lint --rule 6 + 15 PASS. _total 393 -> 394 (+1); cognitive axis count 35 -> 36; alien-grade 10 PHYSICAL-LIMIT."
+    },
+    {
+      "date": "2026-05-01",
+      "change": "2.1.0 (2026-05-01): South Africa applied-tech bet #3 — amd-ree-mineshaft-phes registered under energy axis at alien-grade 10 PHYSICAL-LIMIT (proposals/south-africa-applied-tech.md row 3). Witwatersrand/Mpumalanga acid-mine drainage (AMD) treated as REE/base-metal precipitate-mining feedstock + decommissioned 1-3 km mine shafts repurposed as Pumped Hydroelectric Energy Storage (PHES) lower reservoirs. Physical-limit anchors: Bernoulli 1738 specific potential energy E = ρ·g·h = 2.72 kWh/m³ at 1 km head (NIST CODATA g=9.80665 m/s²; cross-check IEA 2021 PHES handbook quote 2.7 kWh/m³ per 1 km head) · IEA 2021 PHES Handbook modern round-trip efficiency 80-87% with reversible-pump-turbine ceiling ~ 0.95 (Goldisthal 0.872 observed per Engle 2018; mk1 design 0.82) · Baes & Mesmer 1976 REE-hydroxide solubility products Y(OH)₃ K_sp 10⁻²² + Eu(OH)₃ 10⁻²⁴ + Fe(OH)₃ 4×10⁻³⁸ + Al(OH)₃ 3×10⁻³⁴ + Byrne 1988 / Bau 1999 Fe-Al hydroxide scavenger window pH 5-6 + Verplanck 2004 USGS / Ayora 2016 70-95% REE coprecipitation yield · Sastri-Shibata 2003 D2EHPA solvent-extraction selectivity β_Y/Eu 1.5-3.0 (mk1 design 2.5) + Kremser 1930 5-stage countercurrent for 99% recovery · McCarthy 2010 Witwatersrand basin geology (pH 2-4 + Fe 100-1000 mg/L + sulfate 1000-5000 mg/L + REE 10-200 ppb per Naicker 2003 / Olias 2005) + Singer-Stumm 1970 pyrite-oxidation pH chemistry · ASTM C150 Type V sulfate-resistant Portland cement 28 MPa compressive at 28 d vs 9.81 MPa hydrostatic at 1 km depth (2.85× margin) · NREL 2020 PHES grid-services < 30 s primary-frequency-response (Eskom 50 Hz tie) · Lazard LCOS v8 2022 PHES vs battery LCOS comparison (PHES wins long-duration > 6 hr at USD 50-150/MWh) · Schreiber 2021 J Cleaner Production REE recycling LCA (30-50% of primary-mining energy intensity). 6 precursors energy/power-grid + energy/battery-architecture + materials/recycling + physics/fluid + physics/thermodynamics + materials/concrete-technology. Pilot scale 1000 m³/day AMD + 100,000 m³ reservoir / 1 km head / 60 MW pump-turbine = 272 MWh raw / 223 MWh round-trip + ~ 25.5 kg/yr REE oxide. F-AMD-MVP-1..5 falsifier gates: F-MVP-3 (2026-09-30 PHES RTE < 75% in pilot) + F-MVP-1 + F-MVP-2 + F-MVP-5 (2026-12-31 REE yield < 60% / shaft integrity < 25 yr cyclic-PHES design life / SA DMR licensing > 36 months) + F-MVP-4 (2027-06-30 REE basket > 50% drop from 2024 baseline + IRR < 8%). Hardest unknown per proposals row 3: REE basket price volatility ±30-50%; mitigation = dual revenue (REE + storage) where storage alone may carry IRR. Design-by-physics per own#32, NOT n=6 force-fit. Lint: own#31 v3.19 PASS; own_doc_lint --rule 6 + 15 PASS. _total 396 -> 397 (+1); energy axis count 24 -> 25; alien-grade 10 PHYSICAL-LIMIT."
     }
   ],
   "_template": "각 도메인: domains/<axis>/<name>/{CLAUDE.md, <name>.md, verify.hexa}",
@@ -63,11 +79,11 @@
     },
     "life": {
       "path": "life/_index.json",
-      "count": 47
+      "count": 49
     },
     "energy": {
       "path": "energy/_index.json",
-      "count": 24
+      "count": 25
     },
     "compute": {
       "path": "compute/_index.json",
@@ -87,7 +103,7 @@
     },
     "cognitive": {
       "path": "cognitive/_index.json",
-      "count": 36
+      "count": 37
     },
     "culture": {
       "path": "culture/_index.json",
@@ -196,7 +212,9 @@
     "wine-enology",
     "womens-intimate-cleanser",
     "hexa-skin",
-    "hexa-limb"
+    "hexa-limb",
+    "biochar-dryland-restoration",
+    "crispr-cas13-poc-diagnostic"
   ],
   "energy": [
     "battery-architecture",
@@ -214,7 +232,8 @@
     "smr-datacenter",
     "superconductor",
     "thermal-management",
-    "hvac-system"
+    "hvac-system",
+    "amd-ree-mineshaft-phes"
   ],
   "compute": [
     "5g-6g-network",
@@ -388,7 +407,8 @@
     "hexa-olfact",
     "hexa-oracle",
     "hexa-speak",
-    "hexa-telepathy"
+    "hexa-telepathy",
+    "youth-ai-labeling-rlhf-hub"
   ],
   "culture": [
     "archaeology",

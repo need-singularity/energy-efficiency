@@ -2,21 +2,23 @@
   "_doc": "life 축 sub-SSOT — 부모: ../_index.json (life 키). 자동 생성 2026-04-12.",
   "_axis": "life",
   "_parent": "../_index.json",
-  "_version": "1.2.0",
+  "_version": "1.4.0",
   "_meta": {
     "_category_name": "생명·의학·농업·뇌과학·유전자·면역·식품·약리",
-    "_domains_count": 54,
+    "_domains_count": 56,
     "_verified_count": null,
     "_alien_index_avg": null,
     "_honesty_note": "_verified_count / _alien_index_avg: 도메인별 alien_index 소스 부재로 null (자기참조 금지 — 추후 atlas.n6 혹은 _registry 집계 시 갱신)",
-    "_updated": "2026-04-23"
+    "_updated": "2026-05-01"
   },
-  "_count": 54,
+  "_count": 56,
   "_changelog": [
     "1.0.0 (2026-04-12): life 축 sub-SSOT 신설. 전체 47개 도메인 등록.",
     "1.1.0 (2026-04-23): DIS-P2-1 fast-track 2 domains — nuclear-medicine, tibetan-medicine.",
     "1.2.0 (2026-04-23): DIS-P2-1 low-risk batch 2 — sleep-medicine, urban-farming, gastrointestinal-medicine, radiation-biology, music-therapy.",
-    "1.3.0 (2026-04-24): own#16 registry sync — dog-robot-test domain registered (disk measured, body .md present)."
+    "1.3.0 (2026-04-24): own#16 registry sync — dog-robot-test domain registered (disk measured, body .md present).",
+    "1.3.1 (2026-05-01): SA applied-tech bet #5 — biochar-dryland-restoration registered (mk1 PHYSICAL-LIMIT alien-grade 10; precursors life/agriculture + life/ecology + life/herbalism + materials/recycling + physics/thermodynamics + materials/concrete-technology; physical-limit anchors Antal-Grønli 2003 pyrolysis char yield + Lehmann 2007 / Singh 2012 Arrhenius mineralization + Glaser-Lehmann 2002 CEC + Smith-Bondeau 2014 SOC sequestration ceiling + Verra VM0044 / Puro durable-removal rules; F-BIOCHAR-MVP-1..5 90-day MVP gates 2026-09-30 / 2026-12-31 / 2027-03-31 / 2027-06-30; design-by-physics per own#32, NOT n=6 force-fit). life axis count 54 -> 55.",
+    "1.4.0 (2026-05-01): SA applied-tech bet #2 — crispr-cas13-poc-diagnostic registered (mk1 PHYSICAL-LIMIT alien-grade 10; precursors life/biology-medical + life/synbio + life/genetics + life/hiv-treatment + materials/ceramics + physics/optics; physical-limit anchors Abudayyeh-Zhang 2017 Cas13 trans-cleavage k_cat 30-50/s/molecule + Eigen-Hammes 1963 diffusion-limit ceiling 10⁹ M⁻¹s⁻¹ + Mason-Botella 2020 lyophilized-reagent Arrhenius shelf-life E_a 80 kJ/mol → 12 mo @ 25°C / 60% RH + Posthuma-Trumpie 2009 Au-NP lateral-flow visual LOD ~10 fM + Piepenburg-Armes 2006 RPA isothermal pre-amplification 10⁹ in 20 min at 37-42°C; targets World #3 TB burden 450,000 cases/yr SA + 13% HIV prevalence 8.2M PLHIV at USD 2-5/test + USD 200-500 reader vs USD 10-15/cartridge GeneXpert + USD 17,000 instrument; F-CAS13-MVP-1..5 90-day MVP gates 2026-09-30 (lyo shelf + HIV LOD) / 2026-10-31 (TB sensitivity) / 2026-12-31 (cost USD 8 ceiling) / 2027-03-31 (SAHPRA Class C IVD timeline 24 mo); design-by-physics per own#32, NOT n=6 force-fit). life axis count 55 -> 56."
   ],
   "domains": [
     {
@@ -513,6 +515,86 @@
       "has_hexa": false,
       "has_verify": false,
       "status": "basic"
+    },
+    {
+      "slug": "biochar-dryland-restoration",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "antal_gronli_char_yield": "25-35% biomass mass at 400-500 °C slow pyrolysis (Antal-Grønli 2003 IECR 42:1619)",
+        "biomass_C_retention": "50-65% biomass C retained as biochar (slow-pyrolysis 75-85% C in char)",
+        "lehmann_singh_arrhenius": "E_a 75-120 kJ/mol mineralization → 100-1000 yr soil residence at 25 °C (Lehmann 2007 / Singh 2012 GCB 18:2659)",
+        "glaser_lehmann_cec": "amended-soil CEC mass-balance mixing rule; 6-30 cmol/kg terra-preta band (Glaser-Lehmann 2002 BFS 35:219; Liang 2006 SSSAJ 70:1719)",
+        "atkinson_water_retention": "5-15% plant-available water uplift per 10 t/ha biochar (Atkinson 2010 Plant Soil 337:1)",
+        "smith_bondeau_soc_ceiling": "global SOC sink ~ 1.5 GtCO2/yr; SA share ~ 36-50 MtCO2/yr (Smith-Bondeau 2014 GCB 20:3270)",
+        "verra_vm0044_durability": "≥ 100 yr permanence + 10% buffer (Verra VM0044 v1.0 2023)",
+        "puro_durability": "≥ 1000 yr durability threshold (Puro.earth Biochar v3 2024)",
+        "spokas_stability_indicator": "H/C molar ratio < 0.40 (Spokas 2010 Carbon Manag 1:289)",
+        "osha_kiln_safety": "CO ≤ 50 ppm + HCN ≤ 10 ppm 8-hr TWA (OSHA 29 CFR 1910.1000)"
+      },
+      "precursors": [
+        "life/agriculture (rangeland carrying capacity, Karoo 6-12 ha/LSU baseline, Hoffmann 2014)",
+        "life/ecology (invasive species control, Prosopis 30-80 t/ha aboveground biomass, van Wilgen 2012)",
+        "life/herbalism (Acacia mearnsii bark 35-45% tannin, Pizzi 1994; feedstock phytochemistry)",
+        "materials/recycling (waste-stream biomass-to-product conversion, EBC II PAH < 12 mg/kg)",
+        "physics/thermodynamics (Antal-Grønli 2003 slow-pyrolysis kinetics + Arrhenius mineralization)",
+        "materials/concrete-technology (Gupta 2018 1-5% cement substitution at parity strength)"
+      ],
+      "falsifiers": [
+        "F-BIOCHAR-MVP-1 (2026-12-31): pilot kiln char yield < 22% biomass mass → retract production economics (Antal-Grønli 2003)",
+        "F-BIOCHAR-MVP-2 (2027-06-30): 5-yr soil residence < 80% mass remaining → retract durability claim (Verra fail; Singh 2012)",
+        "F-BIOCHAR-MVP-3 (2027-03-31): N=10 farm-pair carrying-capacity uplift < 8% → retract agricultural co-benefit (Hoffmann 2014)",
+        "F-BIOCHAR-MVP-4 (2026-09-30): Verra/Puro carbon price drops < USD 50/tCO2e → unit economics retract",
+        "F-BIOCHAR-MVP-5 (2026-12-31): co-op kiln safety incident (CO/HCN/PAH > OSHA PEL) → process redesign"
+      ],
+      "sa_portfolio_link": "proposals/south-africa-applied-tech.md row 5 (bet #5)"
+    },
+    {
+      "slug": "crispr-cas13-poc-diagnostic",
+      "files": 1,
+      "has_claude_md": false,
+      "has_domain_md": true,
+      "has_hexa": false,
+      "has_verify": false,
+      "status": "registered",
+      "tier": "PHYSICAL-LIMIT",
+      "alien_index_current": 10,
+      "alien_index_target": 10,
+      "registered_at": "2026-05-01",
+      "physical_limit_anchors": {
+        "cas13_kcat": "30-50 /s/molecule on poly-U substrate (Abudayyeh-Zhang 2017 Nature 550:280)",
+        "eigen_hammes_ceiling": "k_cat/K_M ≤ 10⁹ M⁻¹s⁻¹ universal diffusion bound (Eigen-Hammes 1963)",
+        "lyo_arrhenius_shelf": "12 mo @ 25°C / 60% RH from E_a ≈ 80 kJ/mol trehalose-mannitol lyophilizate (Mason-Botella 2020 Anal. Chem.)",
+        "lfa_au_np_visual_lod": "~10 fM analyte naked-eye LOD with 40-nm Au-NP at 520-nm plasmon resonance (Posthuma-Trumpie 2009 Anal. Bioanal. Chem.)",
+        "rpa_amplification": "10⁹ amplicons in 20 min at 37-42°C isothermal recombinase polymerase (Piepenburg-Armes 2006 PLOS Biol.)",
+        "tb_is6110_multicopy": "10-15 IS6110 copies / Mtb cell → effective 10x sensitivity boost (Thierry 1990 Nucleic Acids Res. 18:188)",
+        "hiv_vl_clinical_threshold": "1,000 cp/mL virological-failure / 50 cp/mL undetectable (WHO HIV-VL 2021)",
+        "who_tb_tpp_lod": "≤ 10³ CFU/mL point-of-care class (WHO TB Target Product Profile 2014)"
+      },
+      "precursors": [
+        "life/biology-medical (TB epidemiology + clinical pathology, Mycobacterium tuberculosis IS6110 multi-copy element + HIV-1 RNA dynamics)",
+        "life/synbio (CRISPR-Cas13 enzyme engineering, LbuCas13a / LwaCas13a / Cas13b ortholog selection + lyophilization-compatible buffer)",
+        "life/genetics (28-nt crRNA spacer design + RPA primer design rules + isothermal amplification physics)",
+        "life/hiv-treatment (HIV-1 viral-load clinical context, WHO 2021 1,000 cp/mL virological-failure threshold + ART monitoring)",
+        "materials/ceramics (Whatman FF120HP nitrocellulose lateral-flow membrane substrate, capillary 30 s/cm)",
+        "physics/optics (Au-NP plasmon resonance, 40-nm 520-nm peak, Mie 1908 + Haiss 2007 size-extinction)"
+      ],
+      "falsifiers": [
+        "F-CAS13-MVP-1 (2026-09-30): lyophilized reagent activity < 50% after 12-mo storage at 25°C / 60% RH (Arrhenius-extrapolated from 1-mo @ 40°C / 75% RH ICH Q1A R2) → retract shelf-life claim",
+        "F-CAS13-MVP-2 (2026-10-31): TB-LAM clinical sensitivity < 90% on smear-positive subgroup (contrived spike panel 10⁴ CFU/mL equivalent) → retract diagnostic accuracy claim",
+        "F-CAS13-MVP-3 (2026-09-30): HIV viral-load LOD > 1,000 copies/mL (contrived plasmid-spiked plasma) → retract clinical utility claim",
+        "F-CAS13-MVP-4 (2027-03-31): SAHPRA Class C IVD validation timeline > 24 months from pre-submission → retract deployment plan",
+        "F-CAS13-MVP-5 (2026-12-31): cost per test > USD 8 at 100k-test/yr volume (N=3-supplier audit) → retract affordability claim"
+      ],
+      "sa_portfolio_link": "proposals/south-africa-applied-tech.md row 2 (bet #2)"
     }
   ],
   "_note": "life 축 전체 멤버 목록은 ../_index.json life 키 SSOT 를 따른다 (중복 등록 금지)."
