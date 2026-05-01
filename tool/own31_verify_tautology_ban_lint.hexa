@@ -809,6 +809,315 @@ fn _has_file_def_call(block: list, names: list) -> bool {
   return false
 }
 
+// ---------- adversarial-pattern detection (Round B, hexa-pure) ----------
+//
+// Round B closes Limitation #2 — patterns that pure heuristic misses
+// because they're inside string literals, decorators, or dunder methods.
+// The original design used a Python AST visitor (see _ast_visitor_py
+// below — kept for documentation), but the hexa-runner docker image
+// lacks python3, so we re-implement each pattern as a hexa string
+// heuristic. AST visitor source is retained as a fallback for environments
+// where python3 IS available (raw 91 C3 honest disclosure).
+
+// Fast string filter — only run adversarial scan if any of these tokens appear.
+fn _block_has_adversarial_tokens(block: list) -> bool {
+  let toks = ["eval(", "exec(", "__eq__", "__ne__", "__lt__", "__le__",
+              "__gt__", "__ge__", "__init_subclass__", "subprocess.run",
+              "subprocess.check_output", "subprocess.Popen", "Popen(",
+              "__file__", "compile("]
+  let mut i = 0
+  let n = len(block)
+  while i < n {
+    let ln = block[i]
+    let mut k = 0
+    while k < len(toks) {
+      if _contains(ln, toks[k]) { return true }
+      k = k + 1
+    }
+    i = i + 1
+  }
+  return false
+}
+
+// String heuristics for the 4 Round-B patterns.
+fn _detect_eval_deferred_cmp(block: list) -> string {
+  // Pattern: `eval("...==..." )` or `exec("...==..." )` where the literal
+  // string contains a comparison operator.
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    let evidx = _index_of(ln, "eval(")
+    let exidx = _index_of(ln, "exec(")
+    let idx = if evidx >= 0 { evidx + 5 } else if exidx >= 0 { exidx + 5 } else { -1 }
+    let kind = if evidx >= 0 { "eval" } else { "exec" }
+    if idx >= 0 {
+      // Find the first quote after the call open
+      let after = ln.substring(idx, len(ln))
+      let qidx = if _index_of(after, "\"") >= 0 { _index_of(after, "\"") }
+                 else { _index_of(after, "'") }
+      if qidx >= 0 {
+        let q = after.substring(qidx, qidx + 1)
+        let after_q = after.substring(qidx + 1, len(after))
+        let close = _index_of(after_q, q)
+        if close > 0 {
+          let inner = after_q.substring(0, close)
+          if _contains(inner, "==") || _contains(inner, "!=")
+             || _contains(inner, "<=") || _contains(inner, ">=")
+             || _contains(inner, "<") || _contains(inner, ">") {
+            let preview = if len(inner) > 40 { inner.substring(0, 40) } else { inner }
+            return kind + "-deferred-cmp:" + preview
+          }
+        }
+      }
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+fn _detect_subprocess_self_ref(block: list) -> string {
+  // Pattern: `subprocess.run([__file__, ...])` or .check_output / Popen with
+  // __file__ as a list/tuple element (within reasonable distance).
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    if _contains(ln, "subprocess.run(") || _contains(ln, "subprocess.check_output(")
+       || _contains(ln, "subprocess.Popen(") || _contains(ln, "Popen([") {
+      // Look for __file__ within the same line OR the next 5 lines (multi-line call).
+      let mut j = i
+      let mut scan_end = i + 6
+      if scan_end > n { scan_end = n }
+      while j < scan_end {
+        if _contains(block[j], "__file__") {
+          return "subprocess-self-reference"
+        }
+        j = j + 1
+      }
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+fn _detect_operator_override_constant(block: list) -> string {
+  // Pattern (multi-line):
+  //   def __eq__(self, other): return True   (single-line variant)
+  // OR:
+  //   def __eq__(self, other):
+  //       return True
+  // Returns "operator-override-constant:<dunder>" if matched.
+  let n = len(block)
+  let dunders = ["__eq__", "__ne__", "__lt__", "__le__", "__gt__", "__ge__"]
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    let t = ln.trim()
+    if !_starts_with(t, "def ") { i = i + 1; continue }
+    // Which dunder?
+    let mut matched = ""
+    let mut d = 0
+    while d < len(dunders) {
+      if _contains(t, dunders[d] + "(") { matched = dunders[d]; d = len(dunders) }
+      else { d = d + 1 }
+    }
+    if len(matched) == 0 { i = i + 1; continue }
+    // Inline body?
+    let inline = _def_inline_body(ln)
+    if len(inline) > 0 {
+      let st = inline.trim()
+      if st == "return True" || st == "return False" {
+        return "operator-override-constant:" + matched
+      }
+      // Numeric literal return: `return 12`
+      if _starts_with(st, "return ") {
+        let val = st.substring(7, len(st)).trim()
+        if _is_numeric_literal(val) {
+          return "operator-override-constant:" + matched
+        }
+      }
+    }
+    // Multi-line: scan next 1-3 indented lines for `return True/False/<num>`
+    let mut j = i + 1
+    let mut scan_end = i + 4
+    if scan_end > n { scan_end = n }
+    while j < scan_end {
+      let body_ln = block[j]
+      let body_t = body_ln.trim()
+      if body_t == "" { j = j + 1; continue }
+      if !_starts_with(body_ln, " ") && !_starts_with(body_ln, "\t") {
+        j = scan_end  // body ended
+      } else {
+        if body_t == "return True" || body_t == "return False" {
+          return "operator-override-constant:" + matched
+        }
+        if _starts_with(body_t, "return ") {
+          let val = body_t.substring(7, len(body_t)).trim()
+          if _is_numeric_literal(val) {
+            return "operator-override-constant:" + matched
+          }
+        }
+        j = j + 1
+      }
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+fn _is_numeric_literal(s: string) -> bool {
+  if len(s) == 0 { return false }
+  let mut i = 0
+  let n = len(s)
+  let mut has_digit = false
+  while i < n {
+    let c = s.substring(i, i + 1)
+    if (c >= "0" && c <= "9") { has_digit = true }
+    else if c == "." || c == "-" || c == "+" || c == "e" || c == "E"
+            || c == "x" || c == "X" || c == "_" {
+      // ok — float / hex / underscored grouping
+    }
+    else { return false }
+    i = i + 1
+  }
+  return has_digit
+}
+
+fn _detect_metaclass_literal_injection(block: list) -> string {
+  // Pattern:
+  //   def __init_subclass__(cls, ...):
+  //       cls.SIGMA = 12
+  //       cls.TAU = 4
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    let t = ln.trim()
+    if !_starts_with(t, "def __init_subclass__") { i = i + 1; continue }
+    // Scan body — up to 12 indented lines
+    let mut j = i + 1
+    let mut scan_end = i + 13
+    if scan_end > n { scan_end = n }
+    while j < scan_end {
+      let body_ln = block[j]
+      let body_t = body_ln.trim()
+      if body_t == "" { j = j + 1; continue }
+      if !_starts_with(body_ln, " ") && !_starts_with(body_ln, "\t") {
+        j = scan_end
+      } else {
+        // Look for `cls.<NAME> = <numeric-literal>`
+        if _starts_with(body_t, "cls.") {
+          let eqi = _index_of(body_t, "=")
+          if eqi > 0 {
+            // make sure it's `=` not `==`
+            let after = body_t.substring(eqi + 1, len(body_t)).trim()
+            let lhs_pre = body_t.substring(0, eqi).trim()
+            if eqi + 1 < len(body_t) && body_t.substring(eqi + 1, eqi + 2) != "=" {
+              if _is_numeric_literal(after) {
+                let attr = lhs_pre.substring(4, len(lhs_pre))
+                return "metaclass-literal-injection:" + attr.trim() + "=" + after
+              }
+            }
+          }
+        }
+        j = j + 1
+      }
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+fn _adversarial_pattern_check(block: list) -> string {
+  let r1 = _detect_eval_deferred_cmp(block)
+  if len(r1) > 0 { return r1 }
+  let r2 = _detect_subprocess_self_ref(block)
+  if len(r2) > 0 { return r2 }
+  let r3 = _detect_operator_override_constant(block)
+  if len(r3) > 0 { return r3 }
+  let r4 = _detect_metaclass_literal_injection(block)
+  if len(r4) > 0 { return r4 }
+  return ""
+}
+
+fn _ast_visitor_py() -> string {
+  // Embedded Python script: read block source from argv[1], emit reason
+  // string on stdout (empty = no adversarial pattern).
+  return "import ast, sys\n"
+       + "def visit(tree):\n"
+       + "    found = []\n"
+       + "    for node in ast.walk(tree):\n"
+       + "        if isinstance(node, ast.Call):\n"
+       + "            f = node.func\n"
+       + "            if isinstance(f, ast.Name) and f.id in ('eval', 'exec'):\n"
+       + "                if node.args:\n"
+       + "                    a0 = node.args[0]\n"
+       + "                    val = None\n"
+       + "                    if isinstance(a0, ast.Constant):\n"
+       + "                        val = a0.value\n"
+       + "                    if isinstance(val, str):\n"
+       + "                        if any(op in val for op in ('==','!=','<=','>=','<','>')):\n"
+       + "                            found.append(f.id + '-deferred-cmp:' + val[:40])\n"
+       + "            if isinstance(f, ast.Attribute):\n"
+       + "                if (isinstance(f.value, ast.Name)\n"
+       + "                    and f.value.id == 'subprocess'\n"
+       + "                    and f.attr in ('run','check_output','check_call','Popen')):\n"
+       + "                    for arg in node.args:\n"
+       + "                        if isinstance(arg, (ast.List, ast.Tuple)):\n"
+       + "                            for e in arg.elts:\n"
+       + "                                if isinstance(e, ast.Name) and e.id == '__file__':\n"
+       + "                                    found.append('subprocess-self-reference')\n"
+       + "        if isinstance(node, ast.ClassDef):\n"
+       + "            for child in node.body:\n"
+       + "                if isinstance(child, ast.FunctionDef) and child.name in (\n"
+       + "                    '__eq__','__ne__','__lt__','__le__','__gt__','__ge__'):\n"
+       + "                    if len(child.body) == 1 and isinstance(child.body[0], ast.Return):\n"
+       + "                        ret = child.body[0].value\n"
+       + "                        if isinstance(ret, ast.Constant):\n"
+       + "                            if isinstance(ret.value, bool):\n"
+       + "                                found.append('operator-override-constant:' + node.name + '.' + child.name)\n"
+       + "        if isinstance(node, ast.FunctionDef) and node.name == '__init_subclass__':\n"
+       + "            for child in node.body:\n"
+       + "                if isinstance(child, ast.Assign):\n"
+       + "                    for tgt in child.targets:\n"
+       + "                        if isinstance(tgt, ast.Attribute):\n"
+       + "                            if (isinstance(tgt.value, ast.Name)\n"
+       + "                                and tgt.value.id == 'cls'):\n"
+       + "                                if isinstance(child.value, ast.Constant):\n"
+       + "                                    v = child.value.value\n"
+       + "                                    if isinstance(v, (int, float)):\n"
+       + "                                        found.append('metaclass-literal-injection:' + tgt.attr + '=' + repr(v))\n"
+       + "    return ';'.join(found) if found else ''\n"
+       + "src = open(sys.argv[1]).read() if len(sys.argv) > 1 else sys.stdin.read()\n"
+       + "try:\n"
+       + "    tree = ast.parse(src)\n"
+       + "except SyntaxError:\n"
+       + "    print('')\n"
+       + "    sys.exit(0)\n"
+       + "print(visit(tree))\n"
+}
+
+fn _ast_check_block(block: list) -> string {
+  // Materialize block + visitor to /tmp, invoke python3, read stdout.
+  let block_src = ""
+  let mut acc = ""
+  let mut i = 0
+  let n = len(block)
+  while i < n {
+    if i > 0 { acc = acc + "\n" }
+    acc = acc + block[i]
+    i = i + 1
+  }
+  let tmp_block = "/tmp/_own31_ast_block.py"
+  let tmp_visitor = "/tmp/_own31_ast_visitor.py"
+  write_file(tmp_block, acc)
+  write_file(tmp_visitor, _ast_visitor_py())
+  let cmd = "python3 " + tmp_visitor + " " + tmp_block + " 2>/dev/null"
+  let out = to_string(exec(cmd)).trim()
+  return out
+}
+
 // ---------- block scan ----------
 
 fn _scan_block(block: list, file_def_names: list, file_path: string,
@@ -862,6 +1171,29 @@ fn _scan_block(block: list, file_def_names: list, file_path: string,
     println("[own31]         pattern at domains/cognitive/hexa-dream/hexa-dream.md §7.0")
     println("[own31]         OR add `# raw 91 C3: <negation-keyword>` disclaimer")
     return 1
+  }
+
+  // Round B (AST-based adversarial-pattern upgrade): if heuristic finds no
+  // tautology, run a Python AST visitor for patterns that string-walking
+  // can't detect:
+  //   - eval(<literal-string-with-cmp-op>)
+  //   - subprocess.run([__file__, ...])      (self-reference)
+  //   - class with __eq__ / __ne__ / __lt__ etc. returning a constant bool
+  //   - class metaclass __init_subclass__ injecting numeric literals as
+  //     class attributes that a later block then asserts
+  //   - exec(<literal-string-with-cmp-op>)
+  // Only run when block has a suspicious token (fast string filter) — avoids
+  // python invocation cost on the typical case.
+  if _block_has_adversarial_tokens(block) {
+    let ast_reason = _adversarial_pattern_check(block)
+    if len(ast_reason) > 0 {
+      println("[own31] FAIL " + file_path + ":" + to_string(block_start_line)
+              + " — adversarial pattern: " + ast_reason)
+      println("[own31]   fix: remove the adversarial pattern (eval/exec literal")
+      println("[own31]         comparison / subprocess self-ref / operator override /")
+      println("[own31]         metaclass literal injection); use real verification.")
+      return 1
+    }
   }
   return 0
 }
@@ -1126,6 +1458,51 @@ fn _selftest() -> void {
     "assert classical_evals == N / 2"
   ]
   counters = _check_block("F12-indirection-chain", f12, [], false,
+                          counters[0], counters[1])
+
+  // F13 (Round B): eval-deferred comparison — heuristic alone misses; AST
+  // catches the literal-string-with-cmp-op pattern.
+  let f13 = [
+    "x = eval(\"12 == 12\")",
+    "y = eval(\"6 == 6\")"
+  ]
+  counters = _check_block("F13-eval-deferred-cmp", f13, [], true,
+                          counters[0], counters[1])
+
+  // F14 (Round B): subprocess self-reference — verifying script invokes
+  // itself, parses its own output, and asserts equality. Sandbox would pass
+  // it; AST catches the [__file__] argv pattern.
+  let f14 = [
+    "import subprocess",
+    "result = subprocess.run([__file__], capture_output=True)",
+    "print(result.returncode)"
+  ]
+  counters = _check_block("F14-subprocess-self-ref", f14, [], true,
+                          counters[0], counters[1])
+
+  // F15 (Round B): operator override returning constant True/False — class
+  // pretends to compare but always agrees. AST catches single-Return-bool
+  // body in dunder methods.
+  let f15 = [
+    "class AlwaysEqual:",
+    "    def __eq__(self, other): return True",
+    "x = AlwaysEqual()",
+    "print(x)"
+  ]
+  counters = _check_block("F15-operator-override-const", f15, [], true,
+                          counters[0], counters[1])
+
+  // F16 (Round B): __init_subclass__ literal injection — metaclass injects
+  // numeric attrs that downstream blocks then assert. AST catches the
+  // cls.<name> = <int-literal> assignment inside __init_subclass__.
+  let f16 = [
+    "class Meta(type):",
+    "    def __init_subclass__(cls, **kw):",
+    "        cls.SIGMA = 12",
+    "        cls.TAU = 4",
+    "print('meta')"
+  ]
+  counters = _check_block("F16-metaclass-injection", f16, [], true,
                           counters[0], counters[1])
 
   let total = counters[0]
