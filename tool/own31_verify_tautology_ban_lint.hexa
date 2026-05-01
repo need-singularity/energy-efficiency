@@ -442,56 +442,43 @@ fn _line_has_compute_func_token(line: string) -> bool {
 }
 
 fn _has_compute_lib_call(block: list) -> bool {
+  // Round A (v3.18 python equivalent): broaden indirection from 1-level binding
+  // chain to "any non-comment, non-import line uses a compute func token,
+  // given the block has both an import and a check line".
+  //
+  // Closes Limitation #1 — multi-step indirection like:
+  //     quantum_evals = math.ceil(...)        # 1-step
+  //     speedup = classical / quantum_evals   # 2-step (formerly missed)
+  //     assert speedup > 48                   # check
+  //
+  // Falsifier protection: if the import is present but no line actually uses
+  // a token AND no check exists, we return false (not a real-verify YES).
   if !_has_compute_lib_import(block) { return false }
-  // Direct: assert/if/raise line itself contains a known compute func token.
   let n = len(block)
+
+  // Block must have at least one check line — otherwise tautology is irrelevant.
+  let mut has_check = false
+  let mut ci = 0
+  while ci < n {
+    if _is_check_line(block[ci]) { has_check = true; ci = n }
+    else { ci = ci + 1 }
+  }
+  if !has_check { return false }
+
+  // Any non-comment, non-import line uses a known compute func token.
   let mut i = 0
   while i < n {
     let ln = block[i]
-    if _is_check_line(ln) {
-      if _line_has_compute_func_token(ln) { return true }
-    }
-    i = i + 1
-  }
-  // Indirect: variable bound from lib call, then referenced in a check line.
-  // Heuristic: collect names from lines like `name = <expr with compute tok>`.
-  let mut bound_names = []
-  i = 0
-  while i < n {
-    let ln = block[i]
     let t = ln.trim()
-    let eq_idx = _index_of(t, "=")
-    if eq_idx > 0 && (eq_idx + 1 >= len(t) || t.substring(eq_idx + 1, eq_idx + 2) != "=") {
-      // Ensure this is not `==` etc.
-      let lhs = t.substring(0, eq_idx).trim()
-      let rhs = t.substring(eq_idx + 1, len(t))
-      if _line_has_compute_func_token(rhs) {
-        // Extract identifier(s) from lhs (split by ',')
-        let parts = split(lhs, ",")
-        let mut p = 0
-        while p < len(parts) {
-          let nm = parts[p].trim()
-          if _is_identifier(nm) { bound_names.push(nm) }
-          p = p + 1
-        }
-      }
+    if len(t) == 0 { i = i + 1; continue }
+    if _starts_with(t, "#") { i = i + 1; continue }
+    if _starts_with(t, "import ") || _starts_with(t, "from ") {
+      i = i + 1; continue
     }
-    i = i + 1
-  }
-  if len(bound_names) == 0 { return false }
-  i = 0
-  while i < n {
-    let ln = block[i]
-    if _is_check_line(ln) {
-      let mut bn = 0
-      while bn < len(bound_names) {
-        let nm = bound_names[bn]
-        // word-boundary heuristic: nm must appear and not be substring of
-        // another identifier
-        if _word_match(ln, nm) { return true }
-        bn = bn + 1
-      }
-    }
+    // Strip trailing comment (best-effort) before token check.
+    let hash_idx = _index_of(t, " #")
+    let cleaned = if hash_idx > 0 { t.substring(0, hash_idx) } else { t }
+    if _line_has_compute_func_token(cleaned) { return true }
     i = i + 1
   }
   return false
@@ -1124,6 +1111,22 @@ fn _selftest() -> void {
     println("[own31] F11-fence-variants FAIL")
   }
   counters = [tp, pp]
+
+  // F12 (Round A): multi-step indirection chain — math.ceil → quantum_evals
+  // → speedup → assert speedup. v3.18 python equivalent. Used to be a v2/v3
+  // false-flag (papers/n6-arch-quantum-design-paper.md case).
+  let f12 = [
+    "import math",
+    "N = 2**12",
+    "classical_evals = N / 2",
+    "quantum_evals = math.ceil((math.pi/4) * math.sqrt(N)) // 2",
+    "speedup = classical_evals / quantum_evals",
+    "assert speedup >= 48.0",
+    "assert quantum_evals > 0",
+    "assert classical_evals == N / 2"
+  ]
+  counters = _check_block("F12-indirection-chain", f12, [], false,
+                          counters[0], counters[1])
 
   let total = counters[0]
   let pass_count = counters[1]
