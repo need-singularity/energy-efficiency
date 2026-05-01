@@ -647,3 +647,67 @@ own 31 live "verify-tautology-ban-mandate — python verify-block tautology forb
   follow-up bootstrap reports/own31_verify_tautology_ban.json per raw 77 audit ledger schema
   follow-up new → warn 30d once detection-coverage ≥ 0.50 + false-positive-rate ≤ 0.20; warn → live HARD-block 90d once detection-coverage ≥ 0.85 + 14d zero F-OWN31-1..4 trigger streak
   follow-up cross-project propagation per raw 47 — sister repos (nexus / anima / hexa-lang / airgenome / hive) inherit if they have python-embedded verification blocks
+
+own 32 live "physical-limit-alternative-framing — domains MAY anchor design constants on physical-limit physics models from precursor domains rather than n=6 number-theoretic invariants, provided own#2 master identity is verified as a separable mathematical fact (HARD-OPT-IN)"
+  slug physical-limit-alternative-framing
+  decl domains/**/*.md domains/**/*-spec.md tool/own_doc_lint.hexa
+  scope HARD-opt-in — any domain doc under domains/ MAY anchor its design constants (engineering targets, falsifier-axis thresholds, operability envelopes) on physical-limit physics models inherited from one or more precursor domains, INSTEAD of force-fitting parameters to n=6 number-theoretic invariants (σ / φ / τ / sopfr / J₂). own#2 master identity (σ·φ = n·τ = J₂ = 24) remains MANDATORY as a separable framework-level mathematical check, but is decoupled from the per-domain design-constant choice. This rule places NO upper bound on the number of precursor domains that may be inherited, NO restriction on which axes (materials / life / physics / compute / cognitive / sf-ufo / pets / etc.) may be combined, and NO cap on how many physical-limit models may be cited. Permissive by user directive 2026-05-01: "한계가 있으면 안됨" (no limits on this rule).
+  status live
+  since 2026-05-01
+  why prior governance pressured every domain to derive its design constants directly from n=6 number-theoretic invariants, yielding force-fit parameters that did not match the underlying physics (e.g. arbitrary factor choices to land on σ(6)=12 or τ(6)=4 multiples). User directive 2026-05-01: "own 에 반영 => n=6 집착 할필요없음 / n=6 force-fit 제거". Resolution: separate the framework-level mathematical fact (own#2: σ·φ=n·τ=J₂=24, always provable from n=6) from the engineering-design layer (per-domain constants). Domains anchor on physical-limit physics (Helmholtz double-layer, Yoon-Nelson breakthrough, BET surface area, Eigen-Hammes diffusion limit, Darcy permeability, Kozeny-Carman porosity, Carnot efficiency, Weibull reliability, etc.) inheriting from precursor domains via the requires-list, while own#2 remains a standalone provable identity in a dedicated verify Block A. cat-litter (commit 5fd6825e) is the inaugural live counter-example: §7 VERIFY Blocks A-G demonstrate own#2 in Block A, six physical-limit models in Blocks B-F, and 6 precursor cross-link attestation in Block G; alien_index_current=10.
+  bans force-fit of domain design constants to n=6 number-theoretic invariants (σ / φ / τ / sopfr / J₂) when the underlying physical-limit model yields a different value within model uncertainty
+  bans rejection of a domain design solely because its design constants do not exhibit n=6 multiples, provided own#2 master identity is verified as a separable mathematical fact in the same doc
+  bans capping the number of precursor domains a single design may inherit from (no ceiling — user directive permissive)
+  bans restricting which axes may be combined in a single design (materials × life × physics × compute × cognitive × sf-ufo × pets × any future axis — all permitted)
+  exceptions own#2 master identity verification (σ·φ=n·τ=J₂=24) MUST remain present as a separable mathematical-fact verify block (e.g. cat-litter §7 Block A pattern); this exception is mandatory not optional
+  exceptions theory/proofs/theorem-r1-uniqueness.md and any framework-level proof doc — n=6 uniqueness IS the subject matter, physical-limit framing not applicable
+  exceptions chip-* domains under domains/compute/ where own#2 decl scope mandates the master identity in body (own#2 unchanged for chip-* HARD scope); chip-* docs MAY add physical-limit blocks IN ADDITION to the master-identity block, but MAY NOT remove the master-identity block
+  cognitive-frameworks own#2 n6-master-identity (parent — separable mathematical layer; own#32 is the engineering-design sister axis)
+  cognitive-frameworks raw 91 C3 no-fabrication (physical-limit anchors must cite real literature constants, not invented numbers)
+  cognitive-frameworks raw 117 alien-grade reproduction (physical-limit framing typically scores 7-10 on alien-index because it is reproducible from textbook physics + cited literature)
+  cognitive-frameworks own#31 verify-tautology-ban-mandate (sister axis — physical-limit blocks naturally avoid tautology because they compute from physical constants, not hardcoded n=6 literals)
+  cognitive-frameworks own#13 ouroboros-critical-zero (avoids self-ref by anchoring on external physical-limit literature rather than internal n=6 invariants)
+  counter-example domains/pets/cat-litter/cat-litter.md §7 VERIFY (Blocks A-G: own#2 master identity in Block A, physical-limit physics in Blocks B-F, 6 precursor cross-links in Block G; alien-grade 10)
+  counter-example domains/cognitive/hexa-dream/hexa-dream.md §7.0 (own#2 master identity computed from divisor primitives — pure framework-level mathematical layer, no physical-limit needed because the doc IS about n=6 number theory)
+  counter-example domains/sf-ufo/hexa-ufo/hexa-ufo.md §7 (Carnot / Weibull / P=Fv physical formulas — physical-limit framing pre-own-32 retroactive precedent)
+  proof domains/pets/cat-litter/cat-litter.md §7 VERIFY Blocks A-G (live demonstration: own#2 separable + 6 precursor inheritance + alien-grade 10)
+  proof commit 5fd6825e cat-litter alien-grade upgrade 4 → 10 via physical-limit re-derivation
+  proof tool/own_doc_lint.hexa --rule 32 (forward-spec — confirms own#2 master-identity block presence when doc declares physical-limit framing; does not enforce specific precursor count)
+  measurement-axis physical-limit-adoption-rate = (domain docs declaring physical-limit framing in §7 / total domain docs with §7 verify) — informational, no target floor (permissive rule)
+  measurement-axis precursor-inheritance-depth = mean (precursor count) across docs declaring physical-limit framing — informational, no ceiling (permissive rule)
+  measurement-axis own2-block-presence-rate = (docs with separable own#2 master-identity block / docs declaring physical-limit framing) — target = 1.0 (HARD floor; this is the only mandatory check)
+  measurement-axis force-fit-incidence = (docs flagged with n=6 force-fit pattern after own#32 LIVE / total domain docs reviewed) — target monotone decrease over rolling 90d
+  witness reports/own32_physical_limit_framing.json (forward-spec audit ledger per raw 77 schema)
+  classifier-version own32_physical_limit_framing.v1
+  falsifier F-OWN32-1 30d post: own2-block-presence-rate < 1.0 (any doc declares physical-limit framing without separable own#2 block) → enforcement gap, HARD-block ramp on missing-block detection
+  falsifier F-OWN32-2 90d post: force-fit-incidence does NOT decrease monotonically (rule fails to displace n=6 force-fit pattern) → rule ineffective, classifier v2 OR doc-template mandate
+  falsifier F-OWN32-3 ≥1 chip-* domain under domains/compute/ removes its own#2 master-identity block under cover of own#32 (exceptions clause violation) → exception clarification + immediate revert
+  falsifier F-OWN32-4 ≥1 doc cites a precursor domain that does not exist in domains/ tree (fabricated inheritance) → raw 91 C3 violation, doc rejection
+  falsifier F-OWN32-5 a future user directive explicitly re-mandates n=6 force-fit (reverses 2026-05-01 directive) → own#32 retire / status downgrade per directive
+  measurement-threshold own2-block-presence-rate=1.0-mandatory force-fit-incidence-monotone-decrease-90d
+  proof-obligations own2-master-identity-block-present-in-physical-limit-docs + precursor-domains-cited-exist-in-domains-tree + physical-limit-models-cite-real-literature
+  spec-form forward-spec-with-live-precedent
+  enforce tool/own_doc_lint.hexa --rule 32
+  enforce-layer hive-agent
+  enforce-layer-secondary cli-lint
+  enforce-layer-tertiary advisory
+  enforce-layer-rationale tri-layer (raw 95 triad-mandate): hive-agent verifies own#2 block presence on commit when doc declares physical-limit framing; cli-lint validates precursor-domain references resolve to existing domains/ paths; advisory layer reports adoption-rate + precursor-inheritance-depth informationally (no enforcement — permissive rule per user directive).
+  category meta-triad
+  category proof-truth
+  category framing-axis
+  applies-to design-doc
+  applies-to domain-spec
+  phase pre-write
+  phase verify-block-authorship
+  triad-exempt forward-spec-meta-rule — own#32 governs design-constant framing choice, not parser substrate; raw 95 compliance via canonical hive-agent + cli-lint + advisory trio.
+  severity warn
+  verify hexa tool/own_doc_lint.hexa --rule 32
+  cron on-commit
+  on_fail warn
+  label own#32 physical-limit-alternative-framing (live; permissive — no caps on precursor count or axis combinations)
+  note FORWARD SPEC with live precedent. user directive 2026-05-01 (Korean preserved): "own 에 반영 => n=6 집착 할필요없음 / 한계가 있으면 안됨 / n=6 force-fit 제거". Inaugural live counter-example: cat-litter (commit 5fd6825e) §7 Blocks A-G with alien-grade 10. raw 91 C3 honest disclosure: enforcement layer for own#32 is currently advisory + structural (own#2 block presence check) — semantic detection of force-fit patterns (e.g. arbitrary scaling factor inserted to land on σ(6) multiple) requires NLP-lite heuristics deferred to follow-up. No cap on precursor count or axis combinations — user directive explicitly permissive ("한계가 있으면 안됨"). own#2 remains MANDATORY for framework-level mathematical-fact layer; own#32 only governs the engineering-design layer.
+  follow-up bootstrap reports/own32_physical_limit_framing.json per raw 77 audit ledger schema (per-doc row: ts + doc_path + framing_kind + own2_block_present + precursor_count + precursor_axes + alien_index)
+  follow-up extend tool/own_doc_lint.hexa with --rule 32 subcommand: detect physical-limit framing declaration (heuristic: §7 contains Block A own#2 master-identity + Blocks B+ precursor citations) + verify own#2 block presence when framing declared
+  follow-up cross-project propagation per raw 47 — sister repos (nexus / anima / hexa-lang / airgenome / hive) inherit if they have domain docs with §7 verify blocks (deferred — n6-local origin first, sister replication on warn → live transition)
+  follow-up template emission for new domain docs declaring physical-limit framing — canonical Block A (own#2 master identity) + Block B+ (physical-limit models) + Block G (precursor cross-link attestation) skeleton, mirroring cat-litter §7 pattern
+  follow-up retroactive audit of existing domain docs for n=6 force-fit pattern — produce candidate list for physical-limit re-derivation (non-blocking, advisory recommendation only per permissive rule scope)
