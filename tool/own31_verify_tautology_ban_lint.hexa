@@ -2,31 +2,72 @@
 // tool/own31_verify_tautology_ban_lint.hexa — verify-block tautology
 // HARD-block enforcement (own 31).
 //
-// Authored 2026-04-29 (cycle 30) under user 'LINT 등 설계 필요' + 'hexa 로 작성'
-// directive following the cycle 29 closure where 5 frontier docs were caught
-// emitting hardcode → assert arithmetic identity → "EXACT N/N PASS" tautology
-// patterns (own 13 ouroboros + own 6 paper-verify-embedded + raw 91 C3 fab).
+// v3 (2026-05-01): heuristic upgrade from v2. Closes 9 bypasses + 2 runtime
+// bugs surfaced in cycle 30 wave 4 review:
 //
-// Purpose: prevent regression. Future python verify blocks under
-// domains/**/*.md and papers/**/*.md must use real number-theoretic
-// computation (def divisors / def sigma / etc.) rather than hardcoded
-// constants asserted against trivially derivable arithmetic.
+//   v2 bypass / FP                            v3 fix
+//   ----------------------------------------  -------------------------------
+//   A  ` ```py ` / ` ```python3 ` / `Python`  fence_open accepts variants
+//   B  trivial `def f(): pass / return None`  decoy detection on def body
+//   C  inline `def f(): a + b`                inline body parsed
+//   D  `lambda` real-verify falsely flagged   lambda-substantive YES marker
+//   E  unused `.startswith` exempts entire    per-line non-numeric filter
+//   F  bare `# raw 91 C3:` disclaimer         must contain negation keyword
+//   G  packed `a==1 and b==2 and c==3`        numeric_claim_count via cmp ops
+//   H  sympy / numpy real verify (no def)     compute-lib import + call YES
+//   I  cross-block def call (file-wide)       file_def_names accumulated
+//   J  bare anchor next to literal assert     anchor needs fn call on assert
+//   K  comprehension over `range(...)`        substantive-iteration YES
+//   R1 reserved word `scope` parse failure    rename to `sx`
+//   R2 `_file_exists` only matched files      use `find` directly w/o gate
 //
-// Detection heuristic (v2 per raw 184 whitelist-first):
-//   YES marker for real verification = block contains >=1 `def ` line.
-//   FLAG block if def_count == 0 AND assert_count >= 3 AND there is no
-//   raw 91 C3 honest disclaimer comment in the first 5 lines.
+// Detection summary (v3):
+//   YES markers (any one passes):
+//     - block has substantive def (body has arith op or call, not decoy)
+//     - block has substantive lambda (`lambda ...: <expr with op or call>`)
+//     - block imports compute-lib (sympy/numpy/scipy/...) AND calls a known
+//       computation function in an assert/if/raise line, OR has a variable
+//       bound to a lib call and that variable appears in such a line
+//     - assert line has both a literature-anchor token AND a function call
+//     - file-wide substantive def name is called by an assert in this block
+//     - block contains `for X in <iterable>` where iterable is NOT a literal
+//       list of numbers (substantive-iteration: range / enumerate / dataset)
+//   EXEMPT:
+//     - block has `# raw 91 C3:` line containing a negation keyword
+//       ('not verified', 'not empirical', 'illustrative only', 'projection',
+//       'demonstration only', 'not load-bearing', 'out of scope')
+//   FLAG:
+//     - none of the above AND numeric_claim_count >= 3
+//       where numeric_claim_count = sum of `==`/`!=`/`<=`/`>=`/`<`/`>` ops
+//       across assert/if/raise lines (after stripping non-numeric exempt lines
+//       containing `.startswith`/`re.match`/`isinstance(`/`in set(` etc.)
 //
-// @tool(slug="own31_verify_tautology_ban_lint", desc="own 31 HARD lint scanning domains/**/*.md + papers/**/*.md python verify blocks for hardcode→assert tautology pattern (own 13 ouroboros + own 6 paper-verify-embedded + raw 91 C3 sister axis). FLAGS def-count=0 AND assert-count>=3 blocks lacking raw 91 C3 disclaimer.")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own31_verify_tautology_ban_lint.hexa [--selftest])
-// @omega-saturation-exempt("static heuristic v2 line-walk on each python block; O(file-size) per file; converges trivially")
+// @tool(slug="own31_verify_tautology_ban_lint", desc="own 31 v3 lint scanning domains/**/*.md + papers/**/*.md python verify blocks for hardcode→assert tautology — closes 9 v2 bypasses + 2 runtime bugs (raw 91 C3 sister axis with own 6 / own 13).")
+// @usage(hexa <repo-root>/tool/own31_verify_tautology_ban_lint.hexa [--selftest|--file PATH])
+// @omega-saturation-exempt("static heuristic v3 line-walk on each python block; converges trivially")
 // @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+// Runtime-resolved repo root — avoids hardcoding operator-OS-account path
+// (raw 15 personal-path-leak-ban). Resolved via `git rev-parse` from the
+// process CWD; falls back to `.` if not in a git repo.
+fn _resolve_repo_root() -> string {
+  let out = to_string(exec("git rev-parse --show-toplevel 2>/dev/null || echo .")).trim()
+  if len(out) == 0 { return "." }
+  return out
+}
+
+let REPO_ROOT = _resolve_repo_root()
+
+// ---------- string utilities ----------
 
 fn _starts_with(s: string, p: string) -> bool {
   if len(s) < len(p) { return false }
   return s.substring(0, len(p)) == p
+}
+
+fn _ends_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(len(s) - len(p), len(s)) == p
 }
 
 fn _contains(s: string, needle: string) -> bool {
@@ -41,17 +82,68 @@ fn _contains(s: string, needle: string) -> bool {
   return false
 }
 
+fn _to_lower(s: string) -> string {
+  // Manual ASCII tolower — sufficient for our markers.
+  let mut out = ""
+  let mut i = 0
+  let n = len(s)
+  while i < n {
+    let c = s.substring(i, i + 1)
+    if c >= "A" && c <= "Z" {
+      // shift by 32 via ASCII swap table — emulate
+      if c == "A" { out = out + "a" }
+      else if c == "B" { out = out + "b" }
+      else if c == "C" { out = out + "c" }
+      else if c == "D" { out = out + "d" }
+      else if c == "E" { out = out + "e" }
+      else if c == "F" { out = out + "f" }
+      else if c == "G" { out = out + "g" }
+      else if c == "H" { out = out + "h" }
+      else if c == "I" { out = out + "i" }
+      else if c == "J" { out = out + "j" }
+      else if c == "K" { out = out + "k" }
+      else if c == "L" { out = out + "l" }
+      else if c == "M" { out = out + "m" }
+      else if c == "N" { out = out + "n" }
+      else if c == "O" { out = out + "o" }
+      else if c == "P" { out = out + "p" }
+      else if c == "Q" { out = out + "q" }
+      else if c == "R" { out = out + "r" }
+      else if c == "S" { out = out + "s" }
+      else if c == "T" { out = out + "t" }
+      else if c == "U" { out = out + "u" }
+      else if c == "V" { out = out + "v" }
+      else if c == "W" { out = out + "w" }
+      else if c == "X" { out = out + "x" }
+      else if c == "Y" { out = out + "y" }
+      else if c == "Z" { out = out + "z" }
+    } else {
+      out = out + c
+    }
+    i = i + 1
+  }
+  return out
+}
+
 fn _file_exists(path: string) -> bool {
   let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
   return r == "y"
 }
 
-// Identify a python fence line. Accepts ```python only (per own 6 paper
-// verify embed convention). ``` py / ```python3 are fenced separately and
-// out of scope for this lint (kept narrow per raw 168 minimum-viable).
+// ---------- fence detection ----------
+
+// Accept ```python, ```python3, ```py, ```Python, ```PY (case insensitive).
 fn _is_python_open(line: string) -> bool {
   let t = line.trim()
-  return t == "```python"
+  if !_starts_with(t, "```") { return false }
+  if !_ends_with(t, "") { return false }
+  // Strip leading ``` and any trailing whitespace.
+  let after = t.substring(3, len(t)).trim()
+  let lc = _to_lower(after)
+  if lc == "python" { return true }
+  if lc == "python3" { return true }
+  if lc == "py" { return true }
+  return false
 }
 
 fn _is_fence_close(line: string) -> bool {
@@ -59,132 +151,788 @@ fn _is_fence_close(line: string) -> bool {
   return t == "```"
 }
 
-// Check whether a line opens with raw 91 C3 disclaimer / illustrative marker.
-// Per own 31 exception clause 2 — block carrying explicit honest disclaimer
-// is exempt from tautology lint.
-fn _is_c3_disclaimer(line: string) -> bool {
+// ---------- per-line classifiers ----------
+
+fn _line_starts_with_kw(line: string, kw: string) -> bool {
+  let t = line.trim()
+  return _starts_with(t, kw)
+}
+
+fn _is_assert_line(line: string) -> bool { return _line_starts_with_kw(line, "assert ") }
+fn _is_if_line(line: string)     -> bool { return _line_starts_with_kw(line, "if ") }
+fn _is_elif_line(line: string)   -> bool { return _line_starts_with_kw(line, "elif ") }
+fn _is_while_line(line: string)  -> bool { return _line_starts_with_kw(line, "while ") }
+fn _is_raise_line(line: string)  -> bool { return _line_starts_with_kw(line, "raise ") }
+fn _is_def_line(line: string)    -> bool { return _line_starts_with_kw(line, "def ") }
+
+// Method-call assertion forms (unittest, numpy.testing).
+fn _is_method_assert_line(line: string) -> bool {
+  let toks = [".assertEqual(", ".assertAlmostEqual(", ".assertNotEqual(",
+              ".assertTrue(", ".assertFalse(", ".assertGreater(", ".assertLess(",
+              ".assertIn(", ".assertNotIn(", ".assertIs(", ".assertIsNot(",
+              ".assertIsNone(", ".assertIsNotNone(", ".assertRaises(",
+              "assert_equal(", "assert_array_equal(", "assert_almost_equal(",
+              "assert_allclose("]
+  let mut i = 0
+  while i < len(toks) {
+    if _contains(line, toks[i]) { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _is_check_line(line: string) -> bool {
+  if _is_assert_line(line)        { return true }
+  if _is_if_line(line)            { return true }
+  if _is_elif_line(line)          { return true }
+  if _is_while_line(line)         { return true }
+  if _is_raise_line(line)         { return true }
+  if _is_method_assert_line(line) { return true }
+  return false
+}
+
+// Disclaimer must mention `raw 91 C3` AND a negation keyword.
+fn _is_substantive_disclaimer(line: string) -> bool {
   let t = line.trim()
   if !_starts_with(t, "#") { return false }
-  if _contains(t, "raw 91 C3") { return true }
-  if _contains(t, "raw 91 honest C3") { return true }
-  if _contains(t, "illustrative") { return true }
-  if _contains(t, "demonstration only") { return true }
-  if _contains(t, "demo only") { return true }
+  if !_contains(t, "raw 91 C3") && !_contains(t, "raw 91 honest C3") { return false }
+  let lc = _to_lower(t)
+  if _contains(lc, "not verified")     { return true }
+  if _contains(lc, "not empirical")    { return true }
+  if _contains(lc, "not load-bearing") { return true }
+  if _contains(lc, "not load bearing") { return true }
+  if _contains(lc, "not real")         { return true }
+  if _contains(lc, "projection")       { return true }
+  if _contains(lc, "illustrative only"){ return true }
+  if _contains(lc, "demo only")        { return true }
+  if _contains(lc, "demonstration only"){ return true }
+  if _contains(lc, "out of scope")     { return true }
+  if _contains(lc, "theoretical projection") { return true }
   return false
 }
 
-// Count occurrences of `def ` (with trailing space) at start of trimmed line.
-// Real verification YES marker per raw 184.
-fn _is_def_line(line: string) -> bool {
+// Body line is decoy if it is exactly `pass`, `return`, `return None`, or `...`.
+fn _is_decoy_body_line(line: string) -> bool {
   let t = line.trim()
-  return _starts_with(t, "def ")
+  if t == "pass"        { return true }
+  if t == "return"      { return true }
+  if t == "return None" { return true }
+  if t == "..."         { return true }
+  return false
 }
 
-fn _is_assert_line(line: string) -> bool {
-  let t = line.trim()
-  return _starts_with(t, "assert ")
+// Substantive = contains an arith op or function-call paren.
+fn _is_substantive_expr(s: string) -> bool {
+  if _contains(s, "+") { return true }
+  if _contains(s, "-") { return true }
+  if _contains(s, "*") { return true }
+  if _contains(s, "/") { return true }
+  if _contains(s, "%") { return true }
+  if _contains(s, "(") { return true }
+  return false
 }
 
-// Check if the block contains a non-numeric verification mode (regex /
-// string check / set membership) — these are exempt per own 31 exception 1.
-fn _has_non_numeric_marker(block_lines: list) -> bool {
+// ---------- def-substantive (inline + multi-line) ----------
+
+fn _def_inline_body(line: string) -> string {
+  // Locate the `):` that ends the parameter list, take everything after.
   let mut i = 0
-  let n = len(block_lines)
+  let n = len(line)
+  let mut depth = 0
   while i < n {
-    let t = block_lines[i].trim()
-    // Conservative whitelist of clearly-non-numeric verification idioms
-    if _contains(t, "re.match") { return true }
-    if _contains(t, "re.search") { return true }
-    if _contains(t, ".startswith") { return true }
-    if _contains(t, ".endswith") { return true }
-    if _contains(t, "in set(") { return true }
-    if _contains(t, "isinstance(") { return true }
+    let c = line.substring(i, i + 1)
+    if c == "(" { depth = depth + 1 }
+    else if c == ")" {
+      depth = depth - 1
+      if depth == 0 {
+        // Look for following `:`
+        let mut j = i + 1
+        while j < n {
+          let cj = line.substring(j, j + 1)
+          if cj == ":" {
+            return line.substring(j + 1, n).trim()
+          }
+          if cj != " " && cj != "\t" { return "" }
+          j = j + 1
+        }
+        return ""
+      }
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+fn _is_def_substantive(block: list, def_idx: int) -> bool {
+  let n = len(block)
+  let def_line = block[def_idx]
+
+  // Inline body
+  let inline = _def_inline_body(def_line)
+  if len(inline) > 0 {
+    let stripped = inline.trim()
+    if !_is_decoy_body_line(stripped) {
+      if _is_substantive_expr(stripped) { return true }
+    }
+  }
+
+  // Multi-line body — scan up to 6 indented non-empty lines after def.
+  let mut j = def_idx + 1
+  let mut body_count = 0
+  let mut all_decoy = true
+  let mut substantive = false
+  let mut in_doc = false
+  while j < n && body_count < 8 {
+    let ln = block[j]
+    let t = ln.trim()
+    if t == "" { j = j + 1; continue }
+    let is_indented = _starts_with(ln, " ") || _starts_with(ln, "\t")
+    if !is_indented { break }
+
+    // skip docstring lines
+    if !in_doc {
+      let triple1 = _contains(t, "\"\"\"")
+      let triple2 = _contains(t, "'''")
+      if triple1 || triple2 {
+        // count occurrences of triple quote in this line
+        let q = if triple1 { "\"\"\"" } else { "'''" }
+        let mut count = 0
+        let mut k = 0
+        while k <= len(t) - 3 {
+          if t.substring(k, k + 3) == q {
+            count = count + 1
+            k = k + 3
+          } else { k = k + 1 }
+        }
+        if count >= 2 {
+          j = j + 1; continue
+        } else {
+          in_doc = true
+          j = j + 1; continue
+        }
+      }
+    } else {
+      if _contains(t, "\"\"\"") || _contains(t, "'''") {
+        in_doc = false
+      }
+      j = j + 1; continue
+    }
+
+    body_count = body_count + 1
+    if !_is_decoy_body_line(t) { all_decoy = false }
+    if _is_substantive_expr(t) { substantive = true }
+    j = j + 1
+  }
+
+  if body_count == 0 { return false }
+  if all_decoy { return false }
+  return substantive
+}
+
+// Extract the function name from a `def NAME(...)` line.
+fn _def_name(line: string) -> string {
+  let t = line.trim()
+  if !_starts_with(t, "def ") { return "" }
+  let after = t.substring(4, len(t))
+  let mut i = 0
+  let n = len(after)
+  while i < n {
+    let c = after.substring(i, i + 1)
+    if c == "(" || c == " " || c == ":" {
+      return after.substring(0, i)
+    }
+    i = i + 1
+  }
+  return ""
+}
+
+// ---------- lambda-substantive ----------
+
+fn _lambda_substantive_in_line(line: string) -> bool {
+  if !_contains(line, "lambda") { return false }
+  // Find first `:` after `lambda`
+  let lam_idx = _index_of(line, "lambda")
+  if lam_idx < 0 { return false }
+  let after_lam = line.substring(lam_idx + 6, len(line))
+  let colon_idx = _index_of(after_lam, ":")
+  if colon_idx < 0 { return false }
+  let body = after_lam.substring(colon_idx + 1, len(after_lam)).trim()
+  if len(body) == 0 { return false }
+  return _is_substantive_expr(body)
+}
+
+fn _index_of(s: string, needle: string) -> int {
+  if len(needle) == 0 { return 0 }
+  if len(s) < len(needle) { return -1 }
+  let mut i = 0
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return i }
+    i = i + 1
+  }
+  return -1
+}
+
+// ---------- compute-lib import + call ----------
+
+fn _has_compute_lib_import(block: list) -> bool {
+  let libs = ["sympy", "numpy", "scipy", "mpmath", "gmpy2", "sage", "pari",
+              "networkx", "statsmodels", "sklearn", "torch", "tensorflow",
+              "fractions", "decimal", "math", "cmath", "hashlib",
+              "itertools", "functools", "collections", "statistics", "random",
+              "secrets", "hmac", "subprocess", "shutil", "pathlib", "json",
+              "csv", "sqlite3", "datetime", "time", "pytest", "unittest",
+              "pandas", "polars", "dask", "vaex", "modin", "bisect", "heapq",
+              "array", "queue", "enum", "dataclasses", "typing", "abc",
+              "weakref", "re", "zlib", "gzip", "bz2", "lzma", "base64",
+              "struct", "codecs", "binascii", "operator", "tempfile", "io"]
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let t = block[i].trim()
+    let mut k = 0
+    while k < len(libs) {
+      let lib = libs[k]
+      if _starts_with(t, "import " + lib) { return true }
+      if _starts_with(t, "from " + lib + " ") { return true }
+      if _starts_with(t, "from " + lib + ".") { return true }
+      if _starts_with(t, "import " + lib + ".") { return true }
+      k = k + 1
+    }
     i = i + 1
   }
   return false
 }
 
-// Scan a single python block (line array) and decide if it is tautological.
-// Returns 1 = violation, 0 = OK.
-fn _scan_block(block_lines: list, file_path: string, block_start_line: int) -> int {
-  let n = len(block_lines)
+fn _line_has_compute_func_token(line: string) -> bool {
+  let toks = ["divisor_sigma(", "totient(", "divisor_count(", "isprime(",
+              "factorint(", "primerange(", "linalg.", ".det(", ".eig(",
+              ".solve(", "fft(", "integrate(", "diff(", "limit(",
+              "Fraction(", "Decimal(", "gcd(", "lcm(", "Rational(",
+              "np.", "sp.", "sym.", "mp.", "scipy.",
+              "math.pi", "math.e", "math.tau", "math.factorial(", "math.log(",
+              "math.exp(", "math.sqrt(", "math.sin(", "math.cos(", "math.gcd(",
+              "math.ceil(", "math.floor(", "math.pow(", "math.comb(",
+              "Counter(", "defaultdict(", "OrderedDict(", "deque(",
+              "mean(", "median(", "stdev(", "variance(",
+              "hexdigest()", "md5(", "sha1(", "sha256(",
+              "choices(", "sample(", "randint(", "uniform(", "gauss(",
+              "subprocess.run(", "subprocess.check_output(",
+              ".stdout", ".stderr", ".returncode",
+              "Path(", ".read_text(", ".loads(", ".dumps(",
+              "pytest.approx(", "approx(",
+              "csv.reader(", "csv.writer(",
+              "json.loads(", "json.dumps(",
+              "io.StringIO(", "io.BytesIO(",
+              "operator.add(", "operator.mul(", "operator.eq(",
+              "DataFrame(", "Series(", ".iloc[", ".loc[", "pd.", "pl.",
+              "bisect_left(", "bisect_right(", "heappush(", "heappop(",
+              "re.match(", "re.search(", "re.findall(", "re.fullmatch(",
+              ".group(", ".groups(",
+              "zlib.compress(", "zlib.decompress(",
+              "base64.b64encode(", "base64.b64decode(",
+              "cmath.phase(", "cmath.polar(", ".conjugate(", "complex(",
+              "tempfile.", "NamedTemporaryFile("]
+  let mut i = 0
+  while i < len(toks) {
+    if _contains(line, toks[i]) { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _has_compute_lib_call(block: list) -> bool {
+  if !_has_compute_lib_import(block) { return false }
+  // Direct: assert/if/raise line itself contains a known compute func token.
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    if _is_check_line(ln) {
+      if _line_has_compute_func_token(ln) { return true }
+    }
+    i = i + 1
+  }
+  // Indirect: variable bound from lib call, then referenced in a check line.
+  // Heuristic: collect names from lines like `name = <expr with compute tok>`.
+  let mut bound_names = []
+  i = 0
+  while i < n {
+    let ln = block[i]
+    let t = ln.trim()
+    let eq_idx = _index_of(t, "=")
+    if eq_idx > 0 && (eq_idx + 1 >= len(t) || t.substring(eq_idx + 1, eq_idx + 2) != "=") {
+      // Ensure this is not `==` etc.
+      let lhs = t.substring(0, eq_idx).trim()
+      let rhs = t.substring(eq_idx + 1, len(t))
+      if _line_has_compute_func_token(rhs) {
+        // Extract identifier(s) from lhs (split by ',')
+        let parts = split(lhs, ",")
+        let mut p = 0
+        while p < len(parts) {
+          let nm = parts[p].trim()
+          if _is_identifier(nm) { bound_names.push(nm) }
+          p = p + 1
+        }
+      }
+    }
+    i = i + 1
+  }
+  if len(bound_names) == 0 { return false }
+  i = 0
+  while i < n {
+    let ln = block[i]
+    if _is_check_line(ln) {
+      let mut bn = 0
+      while bn < len(bound_names) {
+        let nm = bound_names[bn]
+        // word-boundary heuristic: nm must appear and not be substring of
+        // another identifier
+        if _word_match(ln, nm) { return true }
+        bn = bn + 1
+      }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+fn _is_identifier(s: string) -> bool {
+  if len(s) == 0 { return false }
+  let c0 = s.substring(0, 1)
+  if !((c0 >= "a" && c0 <= "z") || (c0 >= "A" && c0 <= "Z") || c0 == "_") {
+    return false
+  }
+  let mut i = 1
+  while i < len(s) {
+    let c = s.substring(i, i + 1)
+    if !((c >= "a" && c <= "z") || (c >= "A" && c <= "Z")
+         || (c >= "0" && c <= "9") || c == "_") {
+      return false
+    }
+    i = i + 1
+  }
+  return true
+}
+
+fn _word_match(haystack: string, word: string) -> bool {
+  let n = len(haystack)
+  let w = len(word)
+  if w == 0 { return false }
+  let mut i = 0
+  while i + w <= n {
+    if haystack.substring(i, i + w) == word {
+      let prev_ok = if i == 0 { true } else {
+        let pc = haystack.substring(i - 1, i)
+        !((pc >= "a" && pc <= "z") || (pc >= "A" && pc <= "Z")
+          || (pc >= "0" && pc <= "9") || pc == "_")
+      }
+      let next_ok = if i + w == n { true } else {
+        let nc = haystack.substring(i + w, i + w + 1)
+        !((nc >= "a" && nc <= "z") || (nc >= "A" && nc <= "Z")
+          || (nc >= "0" && nc <= "9") || nc == "_")
+      }
+      if prev_ok && next_ok { return true }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+// ---------- anchored assertion (literature anchor + fn call on assert) ----------
+
+fn _line_has_anchor(line: string) -> bool {
+  let anchors = ["OEIS", "doi.org", "DOI:", "arXiv", "arxiv:", "NIST",
+                 "CODATA", "Mathlib", "mathlib", "Hardy-Wright", "Robin",
+                 "Felgner", "PMID:", "Crick", "Watson", "Brodmann",
+                 "PNAS", "Nature 1961", "Nature 1953"]
+  let mut i = 0
+  while i < len(anchors) {
+    if _contains(line, anchors[i]) { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _line_has_fn_call(line: string) -> bool {
+  // Heuristic: contains `\w+(` somewhere (excluding `==(` `<=(` etc.).
+  let n = len(line)
+  let mut i = 0
+  while i < n - 1 {
+    let c = line.substring(i, i + 1)
+    if c == "(" {
+      if i > 0 {
+        let pc = line.substring(i - 1, i)
+        if (pc >= "a" && pc <= "z") || (pc >= "A" && pc <= "Z")
+           || (pc >= "0" && pc <= "9") || pc == "_" {
+          return true
+        }
+      }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+fn _has_anchored_assertion(block: list) -> bool {
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    if _is_assert_line(ln) {
+      if _line_has_fn_call(ln) {
+        if _line_has_anchor(ln) { return true }
+        // Or anchor in immediately preceding comment line
+        if i > 0 {
+          let prev = block[i - 1].trim()
+          if _starts_with(prev, "#") && _line_has_anchor(prev) { return true }
+        }
+      }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+// ---------- substantive iteration ----------
+
+// Helper: scan `for X in Y` substring at any position. Returns true if the
+// iterable is substantive (not a literal numeric list).
+fn _scan_for_in_at(text: string, start: int) -> bool {
+  let after_in = text.substring(start, len(text)).trim()
+  if !_starts_with(after_in, "[") {
+    return true
+  }
+  let close_idx = _index_of(after_in, "]")
+  if close_idx > 0 {
+    let inner = after_in.substring(1, close_idx)
+    let mut k = 0
+    while k < len(inner) {
+      let c = inner.substring(k, k + 1)
+      if (c >= "a" && c <= "z") || (c >= "A" && c <= "Z") || c == "_" {
+        return true
+      }
+      k = k + 1
+    }
+  }
+  return false
+}
+
+// `for X in Y` (anywhere in line, including comprehensions) or `while <cond>`.
+fn _has_substantive_iteration(block: list) -> bool {
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let t = block[i]
+    // Find ` for ` followed by name(s) followed by ` in ` (covers both
+    // `for x in ...` line and `[expr for x in ...]` comprehensions).
+    let mut search_pos = 0
+    while search_pos < len(t) {
+      let idx = _index_of(t.substring(search_pos, len(t)), " in ")
+      if idx < 0 {
+        search_pos = len(t)
+      } else {
+        let abs_idx = search_pos + idx
+        // Look backward for `for `
+        let pre_start = if abs_idx > 30 { abs_idx - 30 } else { 0 }
+        let pre = t.substring(pre_start, abs_idx)
+        if _contains(pre, "for ") {
+          if _scan_for_in_at(t, abs_idx + 4) {
+            return true
+          }
+        }
+        search_pos = abs_idx + 4
+      }
+    }
+    let trimmed = t.trim()
+    if _starts_with(trimmed, "for ") {
+      let idx = _index_of(trimmed, " in ")
+      if idx > 0 {
+        let after_in = trimmed.substring(idx + 4, len(trimmed)).trim()
+        if !_starts_with(after_in, "[") {
+          return true
+        }
+        // It is a literal list — check if all chars before `]` are digits/dots/-,/space/e
+        // If contains alpha → substantive (e.g., for x in [a, b]).
+        let close_idx = _index_of(after_in, "]")
+        if close_idx > 0 {
+          let inner = after_in.substring(1, close_idx)
+          let mut k = 0
+          let mut alpha = false
+          while k < len(inner) {
+            let c = inner.substring(k, k + 1)
+            if (c >= "a" && c <= "z") || (c >= "A" && c <= "Z") || c == "_" {
+              alpha = true
+              k = len(inner)
+            } else {
+              k = k + 1
+            }
+          }
+          if alpha { return true }
+        }
+      }
+    }
+    // while-loop with comparison condition counts as substantive.
+    if _starts_with(t, "while ") {
+      let cond_start = 6
+      let mut cond_end = len(t)
+      // strip trailing `:`
+      if cond_end > 0 && t.substring(cond_end - 1, cond_end) == ":" {
+        cond_end = cond_end - 1
+      }
+      let cond = t.substring(cond_start, cond_end).trim()
+      if cond != "True" && cond != "1" && len(cond) > 0 {
+        // Has a comparison op?
+        if _contains(cond, "==") || _contains(cond, "!=")
+           || _contains(cond, "<=") || _contains(cond, ">=")
+           || _contains(cond, "<") || _contains(cond, ">") {
+          return true
+        }
+      }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+// ---------- numeric claim count ----------
+
+fn _line_has_non_numeric_token(line: string) -> bool {
+  if _contains(line, ".startswith(") { return true }
+  if _contains(line, ".endswith(")   { return true }
+  if _contains(line, "re.match(")    { return true }
+  if _contains(line, "re.search(")   { return true }
+  if _contains(line, "re.fullmatch(") { return true }
+  if _contains(line, "isinstance(")  { return true }
+  if _contains(line, "in set(")      { return true }
+  if _contains(line, "in frozenset(") { return true }
+  return false
+}
+
+fn _count_cmp_ops(line: string) -> int {
+  // Count `==`, `!=`, `<=`, `>=`, `<`, `>` (excluding `<-`, `<<`, `>>` for shift/walrus).
+  // Walk and dispatch on 1-2 char windows.
+  let n = len(line)
+  let mut total = 0
+  let mut i = 0
+  while i < n {
+    let c = line.substring(i, i + 1)
+    let c2 = if i + 1 < n { line.substring(i, i + 2) } else { "" }
+    let mut consumed = 0
+    if c2 == "==" || c2 == "!=" || c2 == "<=" || c2 == ">=" {
+      total = total + 1
+      consumed = 2
+    } else if c == "<" {
+      if c2 != "<-" && c2 != "<<" { total = total + 1 }
+      consumed = 1
+    } else if c == ">" {
+      if c2 != ">>" { total = total + 1 }
+      consumed = 1
+    } else {
+      consumed = 1
+    }
+    i = i + consumed
+  }
+  return total
+}
+
+fn _numeric_claim_count(block: list) -> int {
+  let n = len(block)
+  let mut total = 0
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    if _is_check_line(ln) {
+      if !_line_has_non_numeric_token(ln) {
+        let cmp = _count_cmp_ops(ln)
+        // Method-call assertions (assertEqual etc.) imply 1 numeric claim
+        // even when no `==` literally appears in the line.
+        if cmp == 0 && _is_method_assert_line(ln) {
+          total = total + 1
+        } else {
+          total = total + cmp
+        }
+      }
+    }
+    i = i + 1
+  }
+  return total
+}
+
+// ---------- file-wide def collection ----------
+
+fn _collect_substantive_def_names(blocks_arr: list) -> list {
+  let mut names = []
+  let bn = len(blocks_arr)
+  let mut bi = 0
+  while bi < bn {
+    let blk = blocks_arr[bi]
+    let n = len(blk)
+    let mut i = 0
+    while i < n {
+      let ln = blk[i]
+      if _is_def_line(ln) {
+        if _is_def_substantive(blk, i) {
+          let nm = _def_name(ln)
+          if len(nm) > 0 {
+            // dedupe
+            let mut seen = false
+            let mut k = 0
+            while k < len(names) {
+              if names[k] == nm { seen = true; break }
+              k = k + 1
+            }
+            if !seen { names.push(nm) }
+          }
+        }
+      }
+      i = i + 1
+    }
+    bi = bi + 1
+  }
+  return names
+}
+
+fn _has_file_def_call(block: list, names: list) -> bool {
+  if len(names) == 0 { return false }
+  let n = len(block)
+  let mut i = 0
+  while i < n {
+    let ln = block[i]
+    if _is_check_line(ln) {
+      let mut k = 0
+      while k < len(names) {
+        let nm = names[k]
+        // Look for `nm(` with word-boundary on the left.
+        let pat = nm + "("
+        let idx = _index_of(ln, pat)
+        if idx >= 0 {
+          let prev_ok = if idx == 0 { true } else {
+            let pc = ln.substring(idx - 1, idx)
+            !((pc >= "a" && pc <= "z") || (pc >= "A" && pc <= "Z")
+              || (pc >= "0" && pc <= "9") || pc == "_")
+          }
+          if prev_ok { return true }
+        }
+        k = k + 1
+      }
+    }
+    i = i + 1
+  }
+  return false
+}
+
+// ---------- block scan ----------
+
+fn _scan_block(block: list, file_def_names: list, file_path: string,
+               block_start_line: int) -> int {
+  let n = len(block)
   if n == 0 { return 0 }
 
-  // Exception (raw 91 C3 / illustrative): check first 5 lines for disclaimer.
-  let mut head_check = 0
-  let head_limit = if n < 5 { n } else { 5 }
-  while head_check < head_limit {
-    if _is_c3_disclaimer(block_lines[head_check]) { return 0 }
-    head_check = head_check + 1
-  }
-
-  // Exception (non-numeric): regex / set-membership style verification.
-  if _has_non_numeric_marker(block_lines) { return 0 }
-
-  // Heuristic v2 — count def lines and assert lines.
-  let mut def_count = 0
-  let mut assert_count = 0
+  // Substantive disclaimer (anywhere in block) — exempt
   let mut i = 0
   while i < n {
-    let line = block_lines[i]
-    if _is_def_line(line) { def_count = def_count + 1 }
-    if _is_assert_line(line) { assert_count = assert_count + 1 }
+    if _is_substantive_disclaimer(block[i]) { return 0 }
     i = i + 1
   }
 
-  // FLAG only if both conditions: no def primitives + multiple asserts.
-  // This is the YES marker absence signal per raw 184.
-  if def_count == 0 && assert_count >= 3 {
+  // YES marker 1: substantive def
+  i = 0
+  while i < n {
+    if _is_def_line(block[i]) {
+      if _is_def_substantive(block, i) { return 0 }
+    }
+    i = i + 1
+  }
+
+  // YES marker 2: substantive lambda
+  i = 0
+  while i < n {
+    if _lambda_substantive_in_line(block[i]) { return 0 }
+    i = i + 1
+  }
+
+  // YES marker 3: compute-lib import + call
+  if _has_compute_lib_call(block) { return 0 }
+
+  // YES marker 4: anchored assertion with fn call
+  if _has_anchored_assertion(block) { return 0 }
+
+  // YES marker 5: file-wide def call
+  if _has_file_def_call(block, file_def_names) { return 0 }
+
+  // YES marker 6: substantive iteration
+  if _has_substantive_iteration(block) { return 0 }
+
+  // Decision — threshold v3.18 = 1 (catches user-banned `a=1, a+a=2` pattern).
+  // YES markers above guarantee real-verification blocks pass without FP.
+  let nc = _numeric_claim_count(block)
+  if nc >= 1 {
     println("[own31] FAIL " + file_path + ":" + to_string(block_start_line)
-            + " — tautology suspect (def_count=0, assert_count="
-            + to_string(assert_count) + ")")
+            + " — tautology suspect (numeric_claim_count=" + to_string(nc) + ")")
     println("[own31]   fix: replace hardcoded constants with computed values via")
-    println("[own31]         divisor / sigma / phi_euler primitives — see canonical")
+    println("[own31]         divisor / sigma / phi_eul primitives — see canonical")
     println("[own31]         pattern at domains/cognitive/hexa-dream/hexa-dream.md §7.0")
-    println("[own31]         OR add raw 91 C3 disclaimer comment within first 5 lines")
+    println("[own31]         OR add `# raw 91 C3: <negation-keyword>` disclaimer")
     return 1
   }
   return 0
 }
 
-// Scan all python blocks in a single .md file. Returns total violation count.
+// ---------- file scan ----------
+
 fn _scan_file(path: string) -> int {
   if !_file_exists(path) { return 0 }
   let text = read_file(path)
   let lines = split(text, "\n")
   let n = len(lines)
-  let mut total_violations = 0
+
+  // First pass: collect blocks
+  let mut blocks_arr = []
+  let mut block_starts = []
   let mut in_block = false
   let mut current_block = []
   let mut block_start = 0
-
   let mut i = 0
   while i < n {
-    let line = lines[i]
+    let ln = lines[i]
     if !in_block {
-      if _is_python_open(line) {
+      if _is_python_open(ln) {
         in_block = true
         current_block = []
         block_start = i + 1
       }
     } else {
-      if _is_fence_close(line) {
-        // close block — scan it
-        let v = _scan_block(current_block, path, block_start)
-        total_violations = total_violations + v
+      if _is_fence_close(ln) {
+        blocks_arr.push(current_block)
+        block_starts.push(block_start)
         in_block = false
-        current_block = []
       } else {
-        current_block.push(line)
+        current_block.push(ln)
       }
     }
     i = i + 1
   }
+
+  // Second pass: file-wide def name accumulation
+  let file_def_names = _collect_substantive_def_names(blocks_arr)
+
+  // Third pass: scan each block
+  let mut total_violations = 0
+  let bn = len(blocks_arr)
+  let mut bi = 0
+  while bi < bn {
+    let v = _scan_block(blocks_arr[bi], file_def_names, path, block_starts[bi])
+    total_violations = total_violations + v
+    bi = bi + 1
+  }
   return total_violations
 }
 
-// Recursively enumerate .md files under a given directory via find.
+// ---------- repo scan ----------
+
 fn _enumerate_md_files(rel_dir: string) -> list {
+  // No scope-existence gate (R2 fix): if dir doesn't exist, find returns empty.
   let cmd = "find '" + REPO_ROOT + "/" + rel_dir + "' -type f -name '*.md' 2>/dev/null"
   let raw = to_string(exec(cmd))
   let trimmed = raw.trim()
@@ -204,160 +952,207 @@ fn _enumerate_md_files(rel_dir: string) -> list {
 fn _run_full_scan() -> int {
   let mut total_violations = 0
   let mut files_scanned = 0
-  let scopes = ["domains", "papers"]
-  let s_n = len(scopes)
+  // R1 fix: rename `scope` → `sx` (avoid hexa reserved word)
+  let sxs = ["domains", "papers"]
+  let s_n = len(sxs)
   let mut s_i = 0
   while s_i < s_n {
-    let scope = scopes[s_i]
-    let scope_path = REPO_ROOT + "/" + scope
-    if _file_exists(scope_path + "/_index.json") || _file_exists(scope_path) {
-      let files = _enumerate_md_files(scope)
-      let f_n = len(files)
-      let mut f_i = 0
-      while f_i < f_n {
-        let file_path = files[f_i]
-        let v = _scan_file(file_path)
-        total_violations = total_violations + v
-        files_scanned = files_scanned + 1
-        f_i = f_i + 1
-      }
+    let sx = sxs[s_i]
+    let files = _enumerate_md_files(sx)
+    let f_n = len(files)
+    let mut f_i = 0
+    while f_i < f_n {
+      let file_path = files[f_i]
+      let v = _scan_file(file_path)
+      total_violations = total_violations + v
+      files_scanned = files_scanned + 1
+      f_i = f_i + 1
     }
     s_i = s_i + 1
   }
   println("[own31] scanned " + to_string(files_scanned) + " markdown files across "
-          + to_string(s_n) + " scopes (domains/, papers/)")
+          + to_string(s_n) + " areas (domains/, papers/)")
   return total_violations
 }
 
+// ---------- selftest ----------
+
+fn _check_block(label: string, blk: list, file_def_names: list,
+                expect_flag: bool, total_p: int, pass_p: int) -> list {
+  let v = _scan_block(blk, file_def_names, "/fixture/" + label, 1)
+  let actual_flag = v >= 1
+  let mut tp = total_p + 1
+  let mut pp = pass_p
+  if actual_flag == expect_flag {
+    println("[own31] " + label + " PASS")
+    pp = pp + 1
+  } else {
+    let exp = if expect_flag { "FLAG" } else { "OK" }
+    let got = if actual_flag { "FLAG" } else { "OK" }
+    println("[own31] " + label + " FAIL  expected=" + exp + " got=" + got)
+  }
+  return [tp, pp]
+}
+
 fn _selftest() -> void {
-  println("[own31] selftest — fixture matrix (heuristic v2)")
-  let mut pass_count = 0
-  let mut total = 0
+  println("[own31] selftest — fixture matrix (heuristic v3)")
+  let mut counters = [0, 0]
 
-  // Helper: scan a literal block via inline list construction.
-  // (Our _scan_block expects a list of lines already split.)
-
-  // Fixture 1: PASS — real verify (cognitive/hexa-dream §7.0 style with def primitives)
-  total = total + 1
+  // F1: real verify with def primitives — OK
   let f1 = [
     "from math import gcd",
     "def divisors(n):",
     "    return {d for d in range(1, n+1) if n % d == 0}",
     "def sigma(n):",
     "    return sum(divisors(n))",
-    "def tau(n):",
-    "    return len(divisors(n))",
     "N = 6",
-    "SIGMA = sigma(N)",
-    "TAU = tau(N)",
-    "assert SIGMA == 12, 'sigma(6) = 1+2+3+6 = 12 (perfect number)'",
-    "assert TAU == 4, 'tau(6) = |{1,2,3,6}| = 4'",
-    "assert SIGMA == 2 * N, 'perfect-number identity sigma(n) = 2n'",
-    "print('PASS: real number-theoretic verification')"
+    "assert sigma(N) == 12",
+    "assert sigma(N) == 2 * N",
+    "print('PASS')"
   ]
-  let v1 = _scan_block(f1, "/fixture/1", 1)
-  if v1 == 0 {
-    println("[own31] fixture 1 PASS — real verify (def primitives) accepted")
-    pass_count = pass_count + 1
-  } else {
-    println("[own31] fixture 1 FAIL — should accept block with def primitives")
-  }
+  counters = _check_block("F1-real-def", f1, [], false, counters[0], counters[1])
 
-  // Fixture 2: PASS — mixed hardcode + def (still has def, so OK)
-  total = total + 1
+  // F2: hardcode + 3 asserts — FLAG
   let f2 = [
-    "BUDGET_USD = 120",
-    "def total_cost(items):",
-    "    return sum(items)",
-    "items = [10, 20, 30]",
-    "assert total_cost(items) == 60",
-    "assert total_cost(items) <= BUDGET_USD",
-    "assert len(items) == 3",
-    "print('PASS: budget within target')"
-  ]
-  let v2 = _scan_block(f2, "/fixture/2", 1)
-  if v2 == 0 {
-    println("[own31] fixture 2 PASS — mixed hardcode+def accepted")
-    pass_count = pass_count + 1
-  } else {
-    println("[own31] fixture 2 FAIL — should accept block with at least one def")
-  }
-
-  // Fixture 3: FAIL — tautology mirror of pre-fix hexa-ufo §23.7
-  total = total + 1
-  let f3 = [
     "sigma, tau, phi, sopfr, n = 12, 4, 2, 5, 6",
     "J2 = sigma*tau/2",
     "assert (sigma-phi)==10 and sigma**2==144 and J2==24",
     "assert sigma*tau==48 and sigma*J2==288",
     "assert sopfr+n==11 and sigma-phi==10 and n==6",
-    "assert n==6",
-    "print('NAV-STAGES EXACT: PASS')"
+    "assert n==6"
   ]
-  let v3 = _scan_block(f3, "/fixture/3", 1)
-  if v3 >= 1 {
-    println("[own31] fixture 3 PASS — tautology rejected (" + to_string(v3) + " viol)")
-    pass_count = pass_count + 1
-  } else {
-    println("[own31] fixture 3 FAIL — should reject hardcode→assert tautology")
-  }
+  counters = _check_block("F2-tautology", f2, [], true, counters[0], counters[1])
 
-  // Fixture 4: PASS — non-numeric (regex / string) verification
-  total = total + 1
-  let f4 = [
-    "import re",
-    "PATTERN = r'^[A-Z][a-z]+$'",
-    "samples = ['Hello', 'World', 'Foo']",
-    "assert re.match(PATTERN, samples[0]) is not None",
-    "assert re.match(PATTERN, samples[1]) is not None",
-    "assert re.match(PATTERN, samples[2]) is not None",
-    "print('PASS: regex match')"
-  ]
-  let v4 = _scan_block(f4, "/fixture/4", 1)
-  if v4 == 0 {
-    println("[own31] fixture 4 PASS — non-numeric regex verify accepted")
-    pass_count = pass_count + 1
-  } else {
-    println("[own31] fixture 4 FAIL — should accept regex-style non-numeric verification")
-  }
-
-  // Fixture 5: PASS — explicit raw 91 C3 disclaimer in head
-  total = total + 1
-  let f5 = [
-    "# raw 91 C3: this block is illustrative — hardcoded values for documentation",
-    "# only, NOT empirical or literature-anchored verification of any claim.",
+  // F3: substantive disclaimer — OK
+  let f3 = [
+    "# raw 91 C3: not verified — illustrative only",
     "sigma, tau = 12, 4",
     "n = 6",
     "assert sigma == 12",
     "assert tau == 4",
-    "assert n == 6",
-    "print('illustrative arithmetic')"
+    "assert n == 6"
   ]
-  let v5 = _scan_block(f5, "/fixture/5", 1)
-  if v5 == 0 {
-    println("[own31] fixture 5 PASS — C3-disclaimer block accepted")
-    pass_count = pass_count + 1
-  } else {
-    println("[own31] fixture 5 FAIL — should accept block with raw 91 C3 disclaimer")
-  }
+  counters = _check_block("F3-disclaimer", f3, [], false, counters[0], counters[1])
 
+  // F4: bare disclaimer (no negation) — FLAG (G hole)
+  let f4 = [
+    "# raw 91 C3: illustrative",
+    "sigma, tau, n = 12, 4, 6",
+    "assert sigma == 12",
+    "assert tau == 4",
+    "assert n == 6"
+  ]
+  counters = _check_block("F4-disclaimer-bare", f4, [], true, counters[0], counters[1])
+
+  // F5: trivial def decoy — FLAG (D hole)
+  let f5 = [
+    "def _decoy(): return None",
+    "sigma, tau, n = 12, 4, 6",
+    "assert sigma == 12",
+    "assert tau == 4",
+    "assert n == 6"
+  ]
+  counters = _check_block("F5-def-decoy", f5, [], true, counters[0], counters[1])
+
+  // F6: lambda real-verify — OK (E hole was FP)
+  let f6 = [
+    "sigma = lambda n: sum(d for d in range(1, n+1) if n % d == 0)",
+    "n = 6",
+    "assert sigma(n) == 12",
+    "assert sigma(n) == 2 * n"
+  ]
+  counters = _check_block("F6-lambda", f6, [], false, counters[0], counters[1])
+
+  // F7: numpy lib import + indirect call — OK (H hole)
+  let f7 = [
+    "import numpy as np",
+    "matrix = np.array([[1, 2], [3, 4]])",
+    "det = np.linalg.det(matrix)",
+    "assert abs(det - (-2.0)) < 1e-9",
+    "assert matrix.shape == (2, 2)",
+    "assert matrix[0, 0] == 1"
+  ]
+  counters = _check_block("F7-numpy-indirect", f7, [], false, counters[0], counters[1])
+
+  // F8: bare anchor + literal assert — FLAG (J hole)
+  let f8 = [
+    "sigma, tau, n = 12, 4, 6",
+    "assert sigma == 12  # OEIS A000203",
+    "assert tau == 4",
+    "assert n == 6"
+  ]
+  counters = _check_block("F8-anchor-bare", f8, [], true, counters[0], counters[1])
+
+  // F9: substantive iteration — OK (K hole)
+  let f9 = [
+    "for n in [4, 5, 6, 7, 8]:",
+    "    sigma_n = sum(d for d in range(1, n+1) if n % d == 0)",
+    "    if n == 6:",
+    "        assert sigma_n == 12",
+    "        assert sigma_n == 2 * n",
+    "        assert sigma_n % 6 == 0"
+  ]
+  counters = _check_block("F9-iteration", f9, [], false, counters[0], counters[1])
+
+  // F10: file-wide def — OK
+  let other_blk = [
+    "def sigma(n): return sum(d for d in range(1, n+1) if n % d == 0)",
+    "def tau(n): return sum(1 for d in range(1, n+1) if n % d == 0)"
+  ]
+  let file_defs = _collect_substantive_def_names([other_blk])
+  let f10 = [
+    "assert sigma(6) * tau(6) == 48",
+    "assert sigma(6) == 12",
+    "assert tau(6) == 4"
+  ]
+  counters = _check_block("F10-file-def-call", f10, file_defs, false,
+                          counters[0], counters[1])
+
+  // F11: fence variant python3 (caught at fence-detection layer; here we just
+  // assert _is_python_open accepts it).
+  let py3_open = "```python3"
+  let py_open = "```py"
+  let py_caps = "```Python"
+  let unrelated = "```javascript"
+  let mut tp = counters[0] + 1
+  let mut pp = counters[1]
+  if _is_python_open(py3_open) && _is_python_open(py_open)
+     && _is_python_open(py_caps) && !_is_python_open(unrelated) {
+    println("[own31] F11-fence-variants PASS")
+    pp = pp + 1
+  } else {
+    println("[own31] F11-fence-variants FAIL")
+  }
+  counters = [tp, pp]
+
+  let total = counters[0]
+  let pass_count = counters[1]
   if pass_count == total {
-    println("__OWN31_SELFTEST_RESULT__ PASS (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    println("__OWN31_SELFTEST_RESULT__ PASS (" + to_string(pass_count) + "/"
+            + to_string(total) + " fixtures)")
     exit(0)
   } else {
-    println("__OWN31_SELFTEST_RESULT__ FAIL (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    println("__OWN31_SELFTEST_RESULT__ FAIL (" + to_string(pass_count) + "/"
+            + to_string(total) + " fixtures)")
     exit(1)
   }
 }
 
+// ---------- main ----------
+
 fn main() -> void {
   let raw_args = args()
   let mut want_selftest = false
+  let mut want_file = ""
   let mut bi = 0
   let n_args = len(raw_args)
   while bi < n_args {
-    if raw_args[bi] == "--selftest" || raw_args[bi] == "selftest" {
+    let a = raw_args[bi]
+    if a == "--selftest" || a == "selftest" {
       want_selftest = true
+    } else if a == "--file" {
+      bi = bi + 1
+      if bi < n_args { want_file = raw_args[bi] }
     }
     bi = bi + 1
   }
@@ -365,6 +1160,18 @@ fn main() -> void {
   if want_selftest {
     _selftest()
     return
+  }
+
+  if len(want_file) > 0 {
+    let v = _scan_file(want_file)
+    if v == 0 {
+      println("__OWN31_RESULT__ PASS (file " + want_file + ")")
+      exit(0)
+    } else {
+      println("__OWN31_RESULT__ FAIL (" + to_string(v) + " violations in "
+              + want_file + ")")
+      exit(1)
+    }
   }
 
   let v = _run_full_scan()

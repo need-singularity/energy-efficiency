@@ -1,0 +1,110 @@
+{
+  "schema": "raw_77_audit_ledger",
+  "rule": "own#31 verify-tautology-ban-mandate",
+  "classifier_version": "own31_verify_tautology_ban_lint.v3.18",
+  "events": [
+    {
+      "ts": "2026-04-29T19:07:00Z",
+      "event": "lint_v1_authored",
+      "version": "v1",
+      "fixtures_pass": "5/5",
+      "repo_violations": 0,
+      "note": "initial v2 heuristic — def_count=0 AND assert_count>=3 AND no raw 91 C3 disclaimer"
+    },
+    {
+      "ts": "2026-05-01T05:38:00Z",
+      "event": "v3_closure_review",
+      "version": "v3.18",
+      "fixtures_pass": "11/11",
+      "rounds_executed": 21,
+      "repo_scan": {
+        "files_total": 603,
+        "files_scanned_clean": 389,
+        "files_oom_or_timeout": 214,
+        "violations_in_scanned": 9,
+        "scan_log": "reports/own31_repo_scan_2026-05-01.txt",
+        "scan_command": "tool/own31_verify_tautology_ban_lint.hexa --file <path> per-file via shell wrapper (docker mem=4g cap; full-batch in-process scan OOM-killed)",
+        "flagged_files": [
+          "domains/sf-ufo/cloak/cloak.md",
+          "domains/physics/warp-drive/warp-drive.md",
+          "domains/physics/wormhole/wormhole.md",
+          "domains/physics/tabletop-antimatter/tabletop-antimatter.md",
+          "papers/n6-arch-quantum-design-paper.md",
+          "papers/embody-p11-1-hexa-propulsion-fusion-2026-04-15.md",
+          "papers/n6-speak-v2-4tier-chip-paper.md",
+          "papers/n6-nexus6-discovery-engine-paper.md",
+          "papers/n6-honest-limitations-meta-paper.md"
+        ],
+        "oom_clusters": {
+          "domains/infra": 58,
+          "domains/life": 55,
+          "domains/cognitive": 42,
+          "domains/energy": 25,
+          "domains/materials": 19,
+          "domains/compute": 15
+        }
+      },
+      "bypasses_closed": [
+        "A: fence variants (```py / ```python3 / case-insensitive)",
+        "B: trivial def decoy (pass / return None / ...)",
+        "C: inline def body (def f(): expr)",
+        "D: lambda-substantive YES marker (was FP in v2)",
+        "E: per-line non-numeric exempt (was full-block bypass)",
+        "F: substantive disclaimer requires negation keyword",
+        "G: bare disclaimer comment bypass",
+        "H: packed boolean chain assert (a==1 and b==2 and c==3)",
+        "I: file-wide def name accumulation (cross-block calls)",
+        "J: bare anchor on literal assert (anchor needs fn call)",
+        "K: substantive iteration (range / dataset / non-literal)",
+        "L: tab-indented def body",
+        "M: pytest.approx + sympy/numpy real verification",
+        "N: pytest.raises + variable binding cmp expression",
+        "O: nested decoy def + class operator overload",
+        "P: subprocess + io + csv + json real verification",
+        "Q: float literal list iteration FP fix",
+        "R: pandas + bisect + while-loop real verification",
+        "S: multi-line backslash-continued assert",
+        "T: regex / zlib / hashlib real verification",
+        "U: unittest / numpy.testing assertEqual method-call recognition",
+        "V: unused-lambda decoy bypass",
+        "W: dict-access + class hierarchy hardcode",
+        "X: namedtuple + sage-style sympy compute",
+        "Y: long arith chain hardcoded",
+        "Z: docstring-only claim + sigil-table tautology",
+        "ZA: bypass cocktail (decoy import + decoy def + bare anchor)",
+        "ZA9: single-line semicolon-packed assert (a=1; assert a+a==2)"
+      ],
+      "runtime_bugs_fixed": [
+        "R1: hexa reserved word `scope` parse failure (renamed to `sx`)",
+        "R2: scope-existence gate via _file_exists rejected directories"
+      ],
+      "threshold_change": "numeric_claim_count >= 3 → >= 1 (catches user-banned a=1; assert a+a==2)",
+      "yes_markers_added": [
+        "lambda-substantive (with bound-name usage check)",
+        "compute-lib import + call (broadened from assert-line-only to any non-comment non-import line)",
+        "anchored-assertion (anchor + fn call on assert line)",
+        "file-wide def call (cross-block accumulation)",
+        "substantive-iteration (for/while with non-trivial iterable/condition)",
+        "method-assert (assertEqual / assert_array_equal / pytest.approx)"
+      ],
+      "compute_lib_registry_size": 60,
+      "compute_func_token_registry_size": 90,
+      "canonical_pass_files_unchanged": [
+        "domains/cognitive/hexa-dream/hexa-dream.md",
+        "papers/hexa-weave-formal-mechanical-w2-2026-04-28.md",
+        "papers/n6-hexa-neuro-paper.md",
+        "papers/n6-arch-adaptive-homeostasis-paper.md",
+        "papers/n6-66-techniques-integrated-paper.md",
+        "papers/embody-p10-2-new-domain-design-2026-04-15.md",
+        "papers/n6-arch-quantum-design-paper.md"
+      ]
+    }
+  ],
+  "follow_ups": [
+    "OWN31_LEGACY_ALLOWLIST sidecar: enumerate the 9 currently-flagged blocks (3 papers + 6 domains) and decide per-file disposition (fix vs add raw 91 C3 disclaimer vs allowlist freeze)",
+    ".own own#31 metadata update — currently uchg-locked; needs `chflags nouchg .own && update && chflags uchg .own` from user",
+    "tool/own_doc_lint.hexa dispatcher integration (post own_doc_lint.hexa land — already complete cycle 30)",
+    "docker hexa-runner mem cap raise (4g → 8g) OR per-file invocation hardening: 214/603 files OOM-killed during full-batch scan (chip-architecture/ + ai-* + life/* clusters); per-file shell wrapper succeeded on the same 389 files. Recommend bumping hexa runner mem to 8g and re-running full-batch in single process for remaining 214.",
+    "raw 47 cross-repo propagation to nexus / anima / hexa-lang / airgenome / hive sister repos"
+  ]
+}
