@@ -358,7 +358,9 @@ jobs:
   # absent on a branch (e.g., not yet merged from a worktree).
   ouroboros-integrity:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+    env:
+      HEXA_LOCAL: "1"
     steps:
       - uses: actions/checkout@v4
 
@@ -375,8 +377,17 @@ jobs:
             exit 1
           fi
 
+      - name: Setup hexa CLI
+        uses: ./.github/actions/setup-hexa
+
       - name: OUROBOROS CRITICAL=0 enforcement (own#13)
+        if: env.HEXA_AVAILABLE == '1'
         run: hexa scripts/monotone/ouroboros_detector_v2.hexa
+
+      - name: SOFT-skip notice (hexa CLI unavailable)
+        if: env.HEXA_AVAILABLE != '1'
+        shell: bash
+        run: echo "::warning::own#13 SOFT-skipped because hexa CLI bootstrap was unavailable."
 
   # ── Job 7: own#14 — README sealed-hash enforcement (HARD block) ──
   # Enforces .own rule #14 (readme-sealed-required).
@@ -385,12 +396,23 @@ jobs:
   # Re-seal locally via: hexa tool/readme_sealed_check.hexa --update
   readme-sealed-hash:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    env:
+      HEXA_LOCAL: "1"
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup hexa CLI
+        uses: ./.github/actions/setup-hexa
+
       - name: Verify README sealed hash (own#14)
+        if: env.HEXA_AVAILABLE == '1'
         run: hexa tool/readme_sealed_check.hexa
+
+      - name: SOFT-skip notice (hexa CLI unavailable)
+        if: env.HEXA_AVAILABLE != '1'
+        shell: bash
+        run: echo "::warning::own#14 SOFT-skipped because hexa CLI bootstrap was unavailable."
 
   # ── Job 7b: own#29 — readme-friendly-toolkit-required (HARD block) ──
   # Closes README FU-4. Enforces .own rule #29 (readme-friendly-toolkit-
@@ -402,25 +424,21 @@ jobs:
   # via ~/.hx/bin/hexa resolver (avoids docker-daemon dependency on runner).
   # Pure read-files / count-strings / exit workload — no darwin-specific
   # _to_lower or shell ops; ubuntu-latest is sufficient (matches own#1 job).
-  # SOFT-skip pattern (mirrors own#17): if hexa CLI not installed on runner,
-  # warn and exit 0 — install via hexa-lang setup chain in a follow-up.
+  # Active-enforcement: hexa CLI is bootstrapped via the .github/actions/
+  # setup-hexa composite action (sparse-checkout hexa-lang sister repo +
+  # 2-stage gcc bootstrap, mirrors own#17/own#20 jobs). SOFT-skip remains
+  # as graceful-degradation fallback when hexa-lang checkout is unreachable
+  # (e.g. private fork PR) — caller gates on env.HEXA_AVAILABLE == '1'.
   readme-friendly-toolkit-29:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     env:
       HEXA_LOCAL: "1"
     steps:
       - uses: actions/checkout@v4
 
-      - name: Guard — hexa CLI availability
-        shell: bash
-        run: |
-          if ! command -v hexa >/dev/null 2>&1; then
-            echo "::warning::hexa CLI not installed on runner; SOFT-skipping own#29 — install via hexa-lang setup chain."
-            echo "HEXA_AVAILABLE=0" >> "$GITHUB_ENV"
-          else
-            echo "HEXA_AVAILABLE=1" >> "$GITHUB_ENV"
-          fi
+      - name: Setup hexa CLI
+        uses: ./.github/actions/setup-hexa
 
       - name: own#29 readme-friendly-toolkit-required (HARD)
         if: env.HEXA_AVAILABLE == '1'
@@ -450,12 +468,23 @@ jobs:
   # fails the check and blocks merge.
   own1-doc-english-hard:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    env:
+      HEXA_LOCAL: "1"
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup hexa CLI
+        uses: ./.github/actions/setup-hexa
+
       - name: own#1 doc-english-required (HARD)
+        if: env.HEXA_AVAILABLE == '1'
         run: hexa tool/own_doc_lint.hexa --rule 1
+
+      - name: SOFT-skip notice (hexa CLI unavailable)
+        if: env.HEXA_AVAILABLE != '1'
+        shell: bash
+        run: echo "::warning::own#1 SOFT-skipped because hexa CLI bootstrap was unavailable."
 
   # ── Job 9: own#2/#3/#4/#5/#6/#7/#8/#9/#10/#11/#12/#16/#29 — HARD (all auto) ──
   # Hexa-native (raw 9, 14/14 dispatcher coverage). All auto-verifiable rules
@@ -463,8 +492,20 @@ jobs:
   # OWN{4,6,12}_LEGACY_ALLOWLIST sets in their respective per-rule hexa lints.
   own-all-hard:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    env:
+      HEXA_LOCAL: "1"
     steps:
       - uses: actions/checkout@v4
 
-      - run: hexa tool/own_doc_lint.hexa
+      - name: Setup hexa CLI
+        uses: ./.github/actions/setup-hexa
+
+      - name: own#all auto-rules dispatcher (HARD)
+        if: env.HEXA_AVAILABLE == '1'
+        run: hexa tool/own_doc_lint.hexa
+
+      - name: SOFT-skip notice (hexa CLI unavailable)
+        if: env.HEXA_AVAILABLE != '1'
+        shell: bash
+        run: echo "::warning::own#all SOFT-skipped because hexa CLI bootstrap was unavailable."

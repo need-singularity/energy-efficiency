@@ -1,0 +1,97 @@
+# ─────────────────────────────────────────────────────────────────────
+# Composite action: setup-hexa
+# ─────────────────────────────────────────────────────────────────────
+# Bootstraps the hexa CLI on stock ubuntu-latest runners by:
+#   1. Sparse-checking-out the hexa-lang sister repo (need-singularity/hexa-lang)
+#   2. Restoring (or building) the bare-host hexa interpreter via 2-stage gcc
+#      bootstrap (self/native/hexa_v2 → build/stage1/main.c → ./hexa).
+#   3. Exposing $GITHUB_WORKSPACE/hexa-lang/hexa on PATH.
+#
+# Why a composite action: 5 hexa-dependent jobs (readme-friendly-toolkit-29,
+# readme-sealed-hash, own1-doc-english-hard, own-all-hard, ouroboros-integrity)
+# previously SOFT-skipped or HARD-failed on stock runners. This DRYs the
+# checkout+cache+gcc bootstrap (~30 LoC × 5 = 150 LoC duplication → 1 reusable
+# unit). Mirrors the inline pattern in ci.yml jobs readme-english-audit (own#17)
+# and own-drift-daily (own#20) verbatim.
+#
+# Graceful degradation: if hexa-lang clone fails (e.g. private fork PR), the
+# action sets HEXA_AVAILABLE=0 and exits 0 — caller jobs MUST gate downstream
+# steps on `if: env.HEXA_AVAILABLE == '1'` and emit SOFT-skip notice otherwise.
+#
+# Idempotent: actions/cache@v4 keys on hashFiles('hexa-lang/self/**'), so the
+# 2-stage gcc bootstrap (~30s cold) becomes a no-op on cache-hit.
+#
+# raw 15 personal-path-leak-ban: uses $GITHUB_WORKSPACE / $HOME / $RUNNER_TEMP
+# only — no hardcoded /Users/<name>/ paths.
+# ─────────────────────────────────────────────────────────────────────
+name: "Setup hexa CLI"
+description: "Sparse-checkout hexa-lang sister repo + 2-stage gcc bootstrap of hexa CLI; exposes hexa on PATH. Sets HEXA_AVAILABLE env (0|1) for caller SOFT-skip gating."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout hexa-lang (sister repo, hexa CLI source)
+      id: checkout-hexa
+      uses: actions/checkout@v4
+      with:
+        repository: need-singularity/hexa-lang
+        path: hexa-lang
+      continue-on-error: true
+
+    - name: Guard — hexa-lang checkout result
+      shell: bash
+      run: |
+        if [ ! -d "$GITHUB_WORKSPACE/hexa-lang/self" ]; then
+          echo "::warning::hexa-lang checkout unavailable — caller will SOFT-skip hexa-dependent steps."
+          echo "HEXA_AVAILABLE=0" >> "$GITHUB_ENV"
+          echo "HEXA_LANG_AVAILABLE=0" >> "$GITHUB_ENV"
+          exit 0
+        else
+          echo "HEXA_LANG_AVAILABLE=1" >> "$GITHUB_ENV"
+        fi
+
+    - name: Cache hexa CLI binary
+      if: env.HEXA_LANG_AVAILABLE == '1'
+      uses: actions/cache@v4
+      id: hexa-cache
+      with:
+        path: |
+          ${{ github.workspace }}/hexa-lang/hexa
+          ${{ github.workspace }}/hexa-lang/self/native/hexa_v2
+          ${{ github.workspace }}/hexa-lang/build
+        key: hexa-cli-${{ runner.os }}-${{ hashFiles('hexa-lang/self/**') }}
+        restore-keys: |
+          hexa-cli-${{ runner.os }}-
+
+    - name: Bootstrap hexa CLI (2-stage gcc, from hexa-lang source)
+      if: env.HEXA_LANG_AVAILABLE == '1' && steps.hexa-cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: hexa-lang
+      run: |
+        set -euo pipefail
+        mkdir -p self/native build/stage1
+        gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+            -I self self/native/hexa_cc.c \
+            -o self/native/hexa_v2 \
+            -lm -ldl
+        ./self/native/hexa_v2 self/main.hexa build/stage1/main.c
+        gcc -O2 -std=gnu11 -D_GNU_SOURCE -Wno-trigraphs \
+            -I self build/stage1/main.c \
+            -o hexa \
+            -lm -ldl
+
+    - name: Expose hexa CLI on PATH
+      if: env.HEXA_LANG_AVAILABLE == '1'
+      shell: bash
+      working-directory: hexa-lang
+      run: |
+        set -euo pipefail
+        if [ ! -x ./hexa ]; then
+          echo "::warning::hexa binary missing after cache+bootstrap — caller will SOFT-skip."
+          echo "HEXA_AVAILABLE=0" >> "$GITHUB_ENV"
+          exit 0
+        fi
+        echo "$GITHUB_WORKSPACE/hexa-lang" >> "$GITHUB_PATH"
+        echo "HEXA_AVAILABLE=1" >> "$GITHUB_ENV"
+        echo "HEXA_LANG=$GITHUB_WORKSPACE/hexa-lang" >> "$GITHUB_ENV"
+        ./hexa --version 2>/dev/null || echo "(hexa --version not available; PATH wired regardless)"
