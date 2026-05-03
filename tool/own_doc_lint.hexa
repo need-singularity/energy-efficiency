@@ -7,10 +7,11 @@
 // the legacy Python rule-check via `python3 tool/own_doc_lint.py --rule N`
 // (raw 91 honest C3: bridge mode until full port lands).
 //
-// hexa-native rules (full coverage 14/14 as of 2026-04-29):
+// hexa-native rules (full coverage 15/15 as of 2026-05-04):
 //   own#1 own#2 own#3 own#4 own#5 own#6 own#7 own#8 own#9 own#10 own#11
-//   own#12 own#16 own#29
+//   own#12 own#15 own#16 own#29
 // py-bridge: REMOVED 2026-04-29 (own_doc_lint_legacy.py retired; raw 9 hexa-only).
+// own#15 reconstructed (paper-canonical-sections via tool/own15_paper_canonical_sections_lint.hexa, 2026-05-04).
 //
 // Migration follow-up: incrementally add own<N>_lint.hexa per rule and remove
 // python fall-through. Target: full hexa coverage in 30d.
@@ -24,7 +25,7 @@ let REPO_ROOT  = to_string(exec("git rev-parse --show-toplevel 2>/dev/null")).tr
 let REPORT_DIR = REPO_ROOT + "/reports"
 
 // Rule IDs handled by this dispatcher (auto-verifiable).
-let TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 29]
+let TARGET_RULES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 29]
 
 // All current rules are HARD (raw 24 promotion).
 let HARD_RULES = TARGET_RULES
@@ -76,7 +77,7 @@ fn _join_int_list(xs: list) -> string {
 }
 
 fn _is_hexa_native_rule(rid: int) -> bool {
-  // All 14 rules ported to hexa-native (full migration complete 2026-04-29).
+  // All 15 rules ported to hexa-native (own#15 reconstructed 2026-05-04).
   if rid == 1 { return true }
   if rid == 2 { return true }
   if rid == 3 { return true }
@@ -89,6 +90,7 @@ fn _is_hexa_native_rule(rid: int) -> bool {
   if rid == 10 { return true }
   if rid == 11 { return true }
   if rid == 12 { return true }
+  if rid == 15 { return true }
   if rid == 16 { return true }
   if rid == 29 { return true }
   return false
@@ -185,6 +187,11 @@ fn _run_native_rule(rid: int) -> int {
     let cmd = "hexa '" + REPO_ROOT + "/tool/own12_miss_criteria_lint.hexa' 2>&1"
     let raw = to_string(exec(cmd))
     return _parse_rc_count(raw, "__OWN12_RESULT__")
+  }
+  if rid == 15 {
+    let cmd = "hexa '" + REPO_ROOT + "/tool/own15_paper_canonical_sections_lint.hexa' 2>&1"
+    let raw = to_string(exec(cmd))
+    return _parse_rc_count(raw, "__OWN15_RESULT__")
   }
   if rid == 16 {
     let cmd = "hexa '" + REPO_ROOT + "/tool/own16_md_domain_registry_lint.hexa' 2>&1"

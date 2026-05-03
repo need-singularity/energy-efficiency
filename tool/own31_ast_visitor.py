@@ -309,5 +309,40 @@ def main(argv):
     return 1
 
 
+def _classify_stdin():
+    """own#6 Tier-2 fallback CLI mode.
+
+    Read python block source from stdin, parse via ast, run
+    detect_math_physics(tree), emit one-line classification marker plus
+    a JSON details line. Always exits 0 (informational; gating happens
+    in caller — own6_math_physics_classifier.hexa).
+
+    Output (stdout, two lines):
+      OWN6_AST_CLASSIFY: <math|physics|both|neither>
+      details: {"math_imports_found": [...], "physics_imports_found": [...], ...}
+
+    raw 91 honest caveat: parse failures emit `neither` so caller's
+    Tier-1 result wins; this mirrors own#34 Tier-2 deployment status
+    (informational adjunct, not authoritative).
+    """
+    import json
+    src = sys.stdin.read()
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        sys.stdout.write("OWN6_AST_CLASSIFY: neither\n")
+        sys.stdout.write('details: {"error": "syntax-error"}\n')
+        return 0
+    info = detect_math_physics(tree)
+    sys.stdout.write("OWN6_AST_CLASSIFY: {}\n".format(info["classification"]))
+    try:
+        sys.stdout.write("details: {}\n".format(json.dumps(info)))
+    except (TypeError, ValueError):
+        sys.stdout.write('details: {"error": "json-encode-failure"}\n')
+    return 0
+
+
 if __name__ == "__main__":
+    if len(sys.argv) >= 2 and sys.argv[1] == "--classify-stdin":
+        sys.exit(_classify_stdin())
     sys.exit(main(sys.argv))

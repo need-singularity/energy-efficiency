@@ -392,6 +392,56 @@ jobs:
       - name: Verify README sealed hash (own#14)
         run: hexa tool/readme_sealed_check.hexa
 
+  # ── Job 7b: own#29 — readme-friendly-toolkit-required (HARD block) ──
+  # Closes README FU-4. Enforces .own rule #29 (readme-friendly-toolkit-
+  # required) — alien-grade alignment SSOT (P0). Dispatcher tool/own_doc_lint
+  # .hexa --rule 29 chains both:
+  #   - tool/own29_readme_friendly_toolkit_lint.hexa (biology-only table)
+  #   - tool/own29_multi_section_lint.hexa           (multi-section, 32 rows)
+  # Drift → exit 1 (merge blocked). HEXA_LOCAL=1 invokes bare-host REAL_HEXA
+  # via ~/.hx/bin/hexa resolver (avoids docker-daemon dependency on runner).
+  # Pure read-files / count-strings / exit workload — no darwin-specific
+  # _to_lower or shell ops; ubuntu-latest is sufficient (matches own#1 job).
+  # SOFT-skip pattern (mirrors own#17): if hexa CLI not installed on runner,
+  # warn and exit 0 — install via hexa-lang setup chain in a follow-up.
+  readme-friendly-toolkit-29:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      HEXA_LOCAL: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Guard — hexa CLI availability
+        shell: bash
+        run: |
+          if ! command -v hexa >/dev/null 2>&1; then
+            echo "::warning::hexa CLI not installed on runner; SOFT-skipping own#29 — install via hexa-lang setup chain."
+            echo "HEXA_AVAILABLE=0" >> "$GITHUB_ENV"
+          else
+            echo "HEXA_AVAILABLE=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: own#29 readme-friendly-toolkit-required (HARD)
+        if: env.HEXA_AVAILABLE == '1'
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          if hexa tool/own_doc_lint.hexa --rule 29; then
+            echo "own#29 lint PASS (biology-only + multi-section)"
+          else
+            rc=$?
+            echo "::error::own#29 readme-friendly-toolkit lint FAILED (exit ${rc}) — see log above for failing section/row."
+            exit "${rc}"
+          fi
+
+      - name: SOFT-skip notice (hexa CLI unavailable)
+        if: env.HEXA_AVAILABLE != '1'
+        shell: bash
+        run: |
+          echo "::warning::own#29 SOFT-skipped because hexa CLI is not installed on this runner."
+
   # ── Job 8: own#1 — doc-english-required HARD block ──
   # Hexa-native (raw 9): tool/own1_doc_english_lint.hexa via dispatcher --rule 1.
   # Scope: domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/
