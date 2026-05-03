@@ -38,6 +38,28 @@ _MUTATING_DECO_NAMES = {
     "override", "force", "fake", "mock",
 }
 
+_MATH_LIB_IMPORTS = frozenset({
+    "sympy", "fractions", "math.gcd", "math.lcm", "math.factorial",
+    "math.comb", "math.perm", "numbers", "decimal", "statistics",
+})
+
+_PHYSICS_LIB_IMPORTS = frozenset({
+    "scipy.constants", "astropy.units", "astropy.constants",
+    "pint", "uncertainties", "cgs", "siconv",
+})
+
+_PHYSICS_CONSTANTS_NUMERIC = frozenset({
+    1.602176634e-19,  # elementary charge e
+    6.02214076e23,    # Avogadro
+    2.99792458e8,     # speed of light c
+    1.380649e-23,     # Boltzmann k
+    6.62607015e-34,   # Planck h
+    9.81,             # g earth surface
+    8.314,            # R gas constant
+    9.109e-31,        # electron mass
+    1.673e-27,        # proton mass
+})
+
 
 def _flatten_str_concat(node):
     """Reconstruct a string from BinOp(Add) of string Constants."""
@@ -185,6 +207,84 @@ def visit(tree):
                     getattr(node, "lineno", 0), key, right.value))
 
     return found
+
+
+def detect_math_physics(tree):
+    """Walk AST; classify block as math/physics/both/neither via imports + constants."""
+    math_imports_found = []
+    physics_imports_found = []
+    physics_constants_found = []
+    scientific_notation_count = 0
+
+    def _check_name(name):
+        if not isinstance(name, str):
+            return
+        if name in _MATH_LIB_IMPORTS and name not in math_imports_found:
+            math_imports_found.append(name)
+        if name in _PHYSICS_LIB_IMPORTS and name not in physics_imports_found:
+            physics_imports_found.append(name)
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                _check_name(alias.name)
+                # also check top-level package fragment (e.g. "scipy" of
+                # "scipy.constants") for completeness — only if exact match
+                # in either set
+        elif isinstance(node, ast.ImportFrom):
+            mod = node.module or ""
+            _check_name(mod)
+            for alias in node.names:
+                if mod:
+                    _check_name(mod + "." + alias.name)
+                else:
+                    _check_name(alias.name)
+        elif isinstance(node, ast.Constant):
+            v = node.value
+            if isinstance(v, bool):
+                continue
+            if isinstance(v, (int, float)) and not isinstance(v, bool):
+                fv = float(v)
+                for const in _PHYSICS_CONSTANTS_NUMERIC:
+                    if abs(fv - const) < 1e-6 * abs(const) and \
+                            const not in physics_constants_found:
+                        physics_constants_found.append(const)
+                        break
+                rep = repr(v)
+                i = 0
+                while i < len(rep):
+                    ch = rep[i]
+                    if ch == "e" or ch == "E":
+                        if i + 1 < len(rep):
+                            nxt = rep[i + 1]
+                            if nxt.isdigit() or (
+                                    nxt in ("+", "-")
+                                    and i + 2 < len(rep)
+                                    and rep[i + 2].isdigit()):
+                                scientific_notation_count += 1
+                                break
+                    i += 1
+
+    math = bool(math_imports_found)
+    physics = (bool(physics_imports_found)
+               or bool(physics_constants_found)
+               or scientific_notation_count >= 1)
+    if math and physics:
+        classification = "both"
+    elif math:
+        classification = "math"
+    elif physics:
+        classification = "physics"
+    else:
+        classification = "neither"
+
+    return {
+        "math_imports_found": math_imports_found,
+        "physics_imports_found": physics_imports_found,
+        "physics_constants_found": physics_constants_found,
+        "scientific_notation_count": scientific_notation_count,
+        "classification": classification,
+    }
 
 
 def main(argv):

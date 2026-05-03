@@ -16,10 +16,11 @@
 // python fall-through. Target: full hexa coverage in 30d.
 //
 // @tool(slug="own_doc_lint", desc="own#1..29 main lint dispatcher; routes per-rule checks to hexa-native impls when available, falls back to python tool/own_doc_lint.py --rule N for not-yet-ported rules")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own_doc_lint.hexa [--rule N])
+// @usage(hexa <repo-root>/tool/own_doc_lint.hexa [--rule N])
 // @exit_codes(0=PASS, 1=violations found, 2=internal error)
 
-let REPO_ROOT  = "/Users/ghost/core/n6-architecture"
+// REPO_ROOT resolved at runtime via git rev-parse (raw 15 personal-path-leak-ban compliance)
+let REPO_ROOT  = to_string(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
 let REPORT_DIR = REPO_ROOT + "/reports"
 
 // Rule IDs handled by this dispatcher (auto-verifiable).
@@ -191,40 +192,31 @@ fn _run_native_rule(rid: int) -> int {
     return _parse_rc_count(raw, "__OWN16_RESULT__")
   }
   if rid == 29 {
-    let cmd = "hexa '" + REPO_ROOT + "/tool/own29_readme_friendly_toolkit_lint.hexa' 2>&1"
-    let raw = to_string(exec(cmd))
-    // Parse output for "__OWN29_RESULT__ PASS" or "__OWN29_RESULT__ FAIL (N violations)"
-    if raw.contains("__OWN29_RESULT__ PASS") { return 0 }
-    if raw.contains("__OWN29_RESULT__ FAIL") {
-      // Extract violation count
-      let lines = split(raw, "\n")
-      let mut k = 0
-      while k < len(lines) {
-        let line = lines[k]
-        if line.contains("__OWN29_RESULT__ FAIL") {
-          // Format: "__OWN29_RESULT__ FAIL (N violations)"
-          let mut p = 0
-          while p < len(line) {
-            if line.substring(p, p + 1) == "(" {
-              // Read digits
-              let mut q = p + 1
-              let mut digits = ""
-              while q < len(line) {
-                let c = line.substring(q, q + 1)
-                if c >= "0" && c <= "9" { digits = digits + c }
-                else { q = len(line) }  // break on non-digit
-                q = q + 1
-              }
-              if len(digits) > 0 { return to_int(digits) }
-            }
-            p = p + 1
-          }
-          return 1  // unknown count, return 1
-        }
-        k = k + 1
-      }
-      return 1
+    // README FU-2 closure: chain biology-only standalone (fast canonical gate)
+    // + multi-section dispatcher (32-section coverage). Combined PASS only if
+    // both pass; combined violation count = sum of both.
+    //
+    // (a) Biology-only standalone — existing fast canonical gate.
+    let cmd_bio = "hexa '" + REPO_ROOT + "/tool/own29_readme_friendly_toolkit_lint.hexa' 2>&1"
+    let raw_bio = to_string(exec(cmd_bio))
+    let bio_violations = _parse_rc_count(raw_bio, "__OWN29_RESULT__")
+    if bio_violations == 0 {
+      println("[own#29] biology-only result: PASS")
+    } else {
+      println("[own#29] biology-only result: FAIL (" + to_string(bio_violations) + ")")
     }
+    // (b) Multi-section dispatcher — full 32-section coverage (FU-3 cycle).
+    let cmd_multi = "hexa '" + REPO_ROOT + "/tool/own29_multi_section_lint.hexa' 2>&1"
+    let raw_multi = to_string(exec(cmd_multi))
+    let multi_violations = _parse_rc_count(raw_multi, "__OWN29_MULTI_RESULT__")
+    if multi_violations == 0 {
+      println("[own#29] multi-section result: PASS")
+    } else {
+      println("[own#29] multi-section result: FAIL (" + to_string(multi_violations) + ")")
+    }
+    let total = bio_violations + multi_violations
+    println("[own#29] combined tally: " + to_string(total) + " violations (bio=" + to_string(bio_violations) + ", multi=" + to_string(multi_violations) + ")")
+    return total
   }
   return 0  // unknown rule, treat as 0
 }

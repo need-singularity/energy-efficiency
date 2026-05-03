@@ -1,0 +1,30 @@
+{
+  "schema": "n6-architecture/tool/own15_legacy_allowlist/1",
+  "rule_slug": "paper-canonical-sections",
+  "rule_owner": ".own.group_p own#6 (mk2 unified, absorbs mk1 own#15)",
+  "frozen": true,
+  "shrink_only": true,
+  "last_updated": "2026-05-04",
+  "rationale": "Sidecar for own#15 paper-canonical-sections rule (21-section + mk_history + ASCII). Initially mirrors own#6 16-entry list as conservative starting point — papers without python block also lack §1-§21 scaffold in most cases. Future cycle will measure live conformance and shrink to actual non-conformant subset (estimated 6 entries based on 2026-05-03 deep research: 158/164 papers scaffold §1-§21, 164-158=6 missing scaffold). Until measurement cycle, the 16-entry conservative list applies.",
+  "sync_target": "tool/own15_paper_canonical_sections_lint.hexa OWN15_LEGACY_ALLOWLIST array",
+  "entries_count": 16,
+  "expected_shrink_to_count": "6 (post-measurement cycle)",
+  "entries": [
+    "papers/M10star-21-unified-theorem-2026-04-15.md",
+    "papers/bernoulli-18-arxiv-stub-2026-04-15.md",
+    "papers/bernoulli-b6-sign-2026-04-22.md",
+    "papers/consciousness-measurement-protocol-2026-04-15.md",
+    "papers/consciousness-red-team-n6-failure-2026-04-15.md",
+    "papers/doob-talagrand-tau-2026-04-22.md",
+    "papers/embody-p10-1-l13-l14-unified-spec-2026-04-15.md",
+    "papers/embody-p11-2-nanobot-gen2-2026-04-15.md",
+    "papers/embody-p12-2-quantum-sensor-design-2026-04-15.md",
+    "papers/embody-p13-1-qkd-6state-design-2026-04-15.md",
+    "papers/enriques-abelian-6fold-link-2026-04-22.md",
+    "papers/lemmas-A3-A4-conditional-2026-04-15.md",
+    "papers/monte-carlo-control-e-2026-04-22.md",
+    "papers/n=6-convergence-80-domains-2026-04-19.md",
+    "papers/plunnecke-6-2026-04-22.md",
+    "papers/yang-mills-beta0-rewriting-2026-04-22.md"
+  ]
+}

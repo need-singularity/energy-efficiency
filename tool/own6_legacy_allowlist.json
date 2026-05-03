@@ -1,0 +1,29 @@
+{
+  "schema": "n6-architecture/tool/own6_legacy_allowlist/1",
+  "rule_slug": "paper-verify-embedded",
+  "rule_owner": ".own.group_p own#6 (mk2 unified)",
+  "frozen": true,
+  "shrink_only": true,
+  "last_updated": "2026-05-04",
+  "rationale": "Sidecar mirror of OWN6_LEGACY_ALLOWLIST currently hardcoded at tool/own6_paper_verify_embedded_lint.hexa:19-36. Frozen 16-entry list grandfathers pre-2026-04-29 papers that lack ```python verify block. Future cycle will deprecate the hardcoded list in favor of this sidecar; until then, both files MUST stay in sync (any change in lint hexa requires matching change here).",
+  "sync_target": "tool/own6_paper_verify_embedded_lint.hexa:19-36 (OWN6_LEGACY_ALLOWLIST array)",
+  "entries_count": 16,
+  "entries": [
+    "papers/M10star-21-unified-theorem-2026-04-15.md",
+    "papers/bernoulli-18-arxiv-stub-2026-04-15.md",
+    "papers/bernoulli-b6-sign-2026-04-22.md",
+    "papers/consciousness-measurement-protocol-2026-04-15.md",
+    "papers/consciousness-red-team-n6-failure-2026-04-15.md",
+    "papers/doob-talagrand-tau-2026-04-22.md",
+    "papers/embody-p10-1-l13-l14-unified-spec-2026-04-15.md",
+    "papers/embody-p11-2-nanobot-gen2-2026-04-15.md",
+    "papers/embody-p12-2-quantum-sensor-design-2026-04-15.md",
+    "papers/embody-p13-1-qkd-6state-design-2026-04-15.md",
+    "papers/enriques-abelian-6fold-link-2026-04-22.md",
+    "papers/lemmas-A3-A4-conditional-2026-04-15.md",
+    "papers/monte-carlo-control-e-2026-04-22.md",
+    "papers/n=6-convergence-80-domains-2026-04-19.md",
+    "papers/plunnecke-6-2026-04-22.md",
+    "papers/yang-mills-beta0-rewriting-2026-04-22.md"
+  ]
+}
