@@ -1,0 +1,37 @@
+#!/bin/bash
+# bin/hexa-local — n6-architecture HEXA_LOCAL=1 wrapper (FU-fix-hexa, 2026-05-04)
+#
+# Root-cause fix for "interp not found" hang on Docker Desktop daemon failure.
+#
+# Routes hexa CLI through resolver line 114-117 bare-Mac bypass:
+#   ~/.hx/bin/hexa → if [ "${HEXA_LOCAL:-0}" = "1" ]; then exec REAL_HEXA "$@"; fi
+# REAL_HEXA = $HOME/.hx/packages/hexa/hexa (Mach-O on Darwin host).
+#
+# Why: raw 44 docker hard-landing (2026-04-25) intentionally blocks bare-Mac
+# to prevent SIGKILL pressure under heavy load (load 445, swap 18/19GB
+# incident). For n6-architecture lint workloads (read-files / count-strings /
+# exit) the load profile is light enough that bare-Mac exec is safe AND faster
+# than docker route. When Docker Desktop daemon hangs (docker info no
+# response), the standard `hexa` invocation stalls until SIGTERM — this
+# wrapper avoids that path entirely.
+#
+# Scope: n6-architecture lint runs ONLY. Do NOT use for kick/subagent paths
+# (those genuinely need container's CPU/MEM caps + node binary). For
+# kick/subagent, use bare `hexa` and ensure Docker Desktop is healthy.
+#
+# Usage:
+#   bin/hexa-local tool/own_doc_lint.hexa --rule 6
+#   bin/hexa-local tool/own29_multi_section_lint.hexa --selftest
+#   bin/hexa-local tool/readme_sealed_check.hexa
+#
+# Env passthrough: all caller env preserved; only HEXA_LOCAL=1 added/overridden.
+#
+# Validated lints (2026-05-04 closure cycle):
+#   own#6  paper-verify-embedded         (4/4 selftest + live PASS)
+#   own#15 paper-canonical-sections      (6/6 selftest)
+#   own#29 readme-friendly-toolkit       (6/6 selftest, biology-only)
+#   own#29 multi-section                 (8/8 selftest, 32 mandatory-sections)
+#   own#6  math/physics classifier       (7/7 selftest)
+#   readme-sealed-check                  (live MATCH 293a8865...)
+
+exec env HEXA_LOCAL=1 "$HOME/.hx/bin/hexa" "$@"
