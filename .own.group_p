@@ -1,0 +1,90 @@
+# n6-architecture /.own.group_p — L1 paper-md governance (mk2 reconstruction, 1 unified rule)
+#
+# AI-native frontmatter (YAML in comment block; .own DSL parser skips # lines):
+# ---
+# schema: n6-architecture/own/group_p/2
+# last_updated: 2026-05-03
+# ssot:
+#   parent_handoff: docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md
+#   axis_spine: .roadmap.group_p (Tier-A planned, deferred)
+#   absolute_rules_anchor: n6shared/config/absolute_rules.json (N62 + PP2 + R29)
+#   hierarchy_tier: T2 (paper-grade product axis)
+#   predecessor_handoff: docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
+# related_raws: []  # paper-md governance is n6-local; hive raw 270-273 + arch.001 do NOT apply
+# related_rules:
+#   retired_mk1: own#1 .. own#35 (.own 881L deleted at commit 442afa7b 2026-05-03)
+#   restored_mk2_unified: own#6 (paper-3pack-verify-embedded; absorbs mk1 own#6 + mk1 own#15)
+# policy:
+#   migration: PROHIBITED
+#   additive_only: true
+#   hive_resource_only: enforced
+#   scope_drift_ban: true
+# status: live
+# omega_cycle: 6-step single-pass (audit -> plan -> emit -> handoff -> marker -> close)
+# ---
+#
+# Grammar: hexa-lang self/raw_loader.hexa (same syntax as .raw / .loop / .chain).
+# Source-of-truth for paper-md governance under mk2. Predecessor mk1 .own (881L, 35 rules)
+# retired 2026-05-03 commit 442afa7b. This file restores ONLY paper-md scope, collapsing
+# mk1 own#6 (paper-verify-embedded HARD) + mk1 own#15 (paper-canonical-sections HARD) into
+# one unified mk2 rule mirroring hive raw.mk2 arch.001 (4-rule cluster -> 1 canonical pattern).
+#
+# Lint coverage at emit time:
+#   PRIMARY  (active): tool/own6_paper_verify_embedded_lint.hexa  -- substring + sibling-glob
+#   SECONDARY(active): tool/own31_verify_tautology_ban_lint.hexa -- papers/ scope live
+#   TERTIARY (deferred): own#15 21-section lint -- removed from dispatcher 2026-04-29
+#   QUATERNARY(deferred): math/physics auto-classifier -- Tier-1 substring + Tier-2 AST fallback
+
+own 6 live "paper-3pack-verify-embedded — papers/*.md MUST contain §1-§21 + mk_history + mathematical OR physical python verify (HARD, mk2 unified)"
+  slug paper-3pack-verify-embedded
+  decl papers/ tool/own_doc_lint.hexa tool/own6_paper_verify_embedded_lint.hexa tool/own31_verify_tautology_ban_lint.hexa n6shared/config/absolute_rules.json
+  scope HARD block — papers/<*>.md (mindepth/maxdepth 1) MUST satisfy ALL invariants below. Subdir scope (papers/group-P/, papers/sigma_tau_8_submission/, papers/hexa_weave_*/) deferred — current own#6 lint top-level only.
+  status live
+  since 2026-05-03
+  why "검증코드 없는 논문 = 미완성" (n6shared absolute_rules N62 / PP2) AND "3-pack 누락 = 미완성" (SSCB mk1 reference: brief PDF §1-§7 + engineering PDF §8-§20 + impact PDF §21 = single .md source). mk1 .own had own#6 (verify-embed) + own#15 (21-section) as separate rules; mk2 collapses them into one unified rule mirroring hive raw.mk2 arch.001 pattern (4-rule cluster -> 1 canonical pattern). Mathematical OR physical classification gate added per 2026-05-03 user directive ("수학적, 물리적 검증코드여야한다") — auto-detect required (Tier-1 substring + Tier-2 AST fallback). Deep research (2026-05-03) confirmed: 158/164 papers (96.3%) already scaffold §1-§21 + mk_history; 148/164 (90.2%) already have ```python block; 135/148 (91.2%) match math template signature. Reconstruction is declarative SSOT recovery; enforcement layer (own#15 lint + classifier) deferred to follow-up cycle.
+  invariant brief-§1-§7 — ## §1 WHY / ## §2 COMPARE / ## §3 REQUIRES / ## §4 STRUCT / ## §5 FLOW / ## §6 EVOLVE / ## §7 VERIFY headers all present
+  invariant engineering-§8-§20 — ## §8 EXEC SUMMARY / ## §9 SYSTEM REQUIREMENTS / ## §10 ARCHITECTURE / ## §11 CIRCUIT DESIGN / ## §12 PCB DESIGN / ## §13 FIRMWARE / ## §14 MECHANICAL / ## §15 MANUFACTURING / ## §16 TEST / ## §17 BOM / ## §18 VENDOR / ## §19 ACCEPTANCE / ## §20 APPENDIX headers all present
+  invariant impact-§21 — ## §21 IMPACT header present
+  invariant python-block-embedded — ```python ... ``` fenced block >=1 inside §7 VERIFY (substring check; sibling .py/.hexa verify file FORBIDDEN per mk1 own#6)
+  invariant math-or-physics-classified — python block content classifies as math OR physics OR both:
+    math signatures: def sigma\b | def divisors\b | def sopfr\b | def phi_min_prime | def totient\b | from math import gcd | divisor_sigma | _totient | is_squarefree | Fraction | n6_master | divisor_count | sympy
+    physics signatures: NIST | CODATA | Carnot | Shockley | Queisser | Bernoulli | Weibull | Darcy | Kozeny | Helmholtz | Eigen-Hammes | scientific notation [0-9]+\.[0-9]+e-?[0-9]+ | SI units (mΩ|kHz|MHz|GHz|nm|μm|μs|ns|ms|eV|J/K|kg/m³|Wh/kg)
+    classify=neither -> FAIL (decorative / tautology block forbidden; cross-fire with own#31 v3.19)
+  invariant mk_history-footer — ## mk_history (underscore form; 158/164 papers use this) header + >=3 lines (Mk.I / Mk.II / Mk.III ...) at footer
+  invariant ascii-check — body passes ascii / encoding hygiene (require_ascii_check inherited from mk1 own#15)
+  forbid sibling-verify-file — papers/<stem>_verify.* / papers/<stem>-verify.* glob — legacy allowlist exemption does NOT apply
+  forbid tautology-decoration — literal == literal / x = 5; assert x == 5 / single print() pattern (cross-link own#31 v3.19 lint already scanning papers/**/*.md per tool/own31_verify_tautology_ban_lint.hexa:2145)
+  forbid n6-force-fit — arbitrary scaling factor inserted to land on σ(6) multiple (cross-link mk1 own#32 physical-limit-alternative-framing)
+  forbid 21-section-partial-omission — exempt only via OWN6_LEGACY_ALLOWLIST (16 entries, frozen, shrink-only)
+  exempt META_STEMS = [readme, claude, index, _index] (case-insensitive stem match per tool/own6_paper_verify_embedded_lint.hexa:38)
+  exempt OWN6_LEGACY_ALLOWLIST 16 entries — see tool/own6_paper_verify_embedded_lint.hexa:19-36 (frozen, shrink-only); will mirror to tool/own6_legacy_allowlist.json sidecar in follow-up cycle (Phase 4 of reconstruction plan)
+  exempt OWN15_LEGACY_ALLOWLIST 6 entries (subset of OWN6_LEGACY_ALLOWLIST — 6 of 16 papers also missing §1-§21 scaffold) — emit tool/own15_legacy_allowlist.json sidecar in follow-up cycle when own#15 lint reconstructed
+  reference-example /Users/<user>/core/contact/attachments/sscb_mk1.pdf + sscb_mk1_engineering_pack.pdf + sscb_mk1_impact.pdf (3-pack PDF source; canonical paper md emission deferred per Phase 3 of reconstruction plan)
+  reference-example papers/n6-blowup-singularity-paper.md (158-paper template; §1-§21 + mk_history canonical scaffold)
+  reference-example papers/hexa-weave-formal-mechanical-w2-2026-04-28.md (only paper using `mk-history` hyphen form; outlier)
+  cognitive-frameworks own#2 (n6-master-identity — separable mathematical fact; Block A baseline; sigma(6)*phi(6) = 6*tau(6) = 24)
+  cognitive-frameworks own#31 (verify-tautology-ban — papers/ scope already active per tool/own31_verify_tautology_ban_lint.hexa:2145; cross-fire enforce layer)
+  cognitive-frameworks own#32 (physical-limit-alternative-framing — engineering-design layer decoupled from n=6 force-fit)
+  cognitive-frameworks own#33 (ai-native-verify-pattern Block A-G template — positive structural guidance)
+  cognitive-frameworks own#34 (ai-native-tier2-runtime — own31_ast_visitor.py + own31_runtime_sandbox.py available for math/physics Tier-2 fallback)
+  cognitive-frameworks own#35 (hive-resource-only-mandate — Tier-2/3 python3 invocation MUST route through hive resource exec)
+  cognitive-frameworks N62 (n6shared/config/absolute_rules.json:307-311 — 검증코드 100% 골화 형식 의무)
+  cognitive-frameworks PP2 (n6shared/config/absolute_rules.json:336-340 — 검증코드 없는 논문 = 미완성)
+  cognitive-frameworks R29 (n6shared/config/absolute_rules.json:233-239 — 도메인당 1파일, verify.hexa 별도 금지)
+  enforce-primary hexa tool/own6_paper_verify_embedded_lint.hexa (current — substring ```python check + sibling-verify glob; 269 LoC; selftest 4/4 PASS)
+  enforce-secondary hexa tool/own31_verify_tautology_ban_lint.hexa (current — papers/**/*.md scope active; tautology + 10 adversarial detectors; v3.19 ai-native fix-output)
+  enforce-tertiary hexa tool/own_doc_lint.hexa --rule 15 (DEFERRED — TARGET_RULES = [1-12,16,29] at tool/own_doc_lint.hexa:26 omits 15; reconstruction in follow-up cycle Phase 2a)
+  enforce-quaternary hexa tool/own6_math_physics_classifier.hexa (DEFERRED — Tier-1 substring + Tier-2 AST extension via own31_ast_visitor.py; reconstruction follow-up cycle Phase 2b-c)
+  dispatcher hexa tool/own_doc_lint.hexa --rule 6
+  cron on-commit
+  on_fail block
+  exit-codes 0=PASS / 1=violations / 2=internal
+  label own#6 paper-3pack-verify-embedded HARD gate (mk2 unified)
+  note mk2 reconstruction 2026-05-03. mk1 own#15 (paper-canonical-sections) absorbed; mk1 own#6 (paper-verify-embedded) extended with math/physics classification gate. Single unified rule per hive raw.mk2 arch.001 collapsing pattern. Lint coverage gap (own#15 + classifier) deferred — current PASS rate per enforce-primary + enforce-secondary only; full gate active after follow-up cycle (Phase 2 of reconstruction plan, ETA 2026-05-15).
+  follow-up Phase 2a — emit tool/own15_paper_canonical_sections_lint.hexa (~300 LoC; §1-§21 header + mk_history + ascii)
+  follow-up Phase 2a — extend tool/own_doc_lint.hexa TARGET_RULES to include 15 + add dispatcher rule 15 branch
+  follow-up Phase 2b — emit tool/own6_math_physics_classifier.hexa (~250 LoC; Tier-1 substring; ~91% coverage)
+  follow-up Phase 2c — extend tool/own31_ast_visitor.py with _MATH_LIB_IMPORTS / _PHYSICS_LIB_IMPORTS; emit tool/own6_math_physics_classifier_tier2.py (~150 LoC; Tier-2 AST; covers remaining ~9%)
+  follow-up Phase 3 — emit papers/sscb-mk1-2026-05-03.md as inaugural live precedent (3-pack PDF source markdown; alien-grade 10 target)
+  follow-up Phase 4 — bootstrap tool/own6_legacy_allowlist.json + tool/own15_legacy_allowlist.json sidecars (frozen, shrink-only)
+  follow-up Phase 5 — promote enforce-tertiary/quaternary from DEFERRED to ACTIVE; INDEX.json 9-axis -> 10-axis manifest add (governance axis)
