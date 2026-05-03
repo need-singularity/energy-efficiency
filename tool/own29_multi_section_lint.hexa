@@ -1,0 +1,627 @@
+#!hexa strict
+// tool/own29_multi_section_lint.hexa — README.md multi-section friendly toolkit
+// table HARD-block enforcement (own#29, mk2 reconstruction FU-3).
+//
+// Authored 2026-05-03 (cycle 26) under user 'FU-3 hexa-native multi-section
+// generalization' directive — generalizes the biology-only canonical
+// tool/own29_readme_friendly_toolkit_lint.hexa across all 32 mandatory-sections
+// declared in /.own.readme (own 29 declarative spec).
+//
+// Per-section validation, 5 axes:
+//   (a) H2 heading literal match
+//   (b) 7-column header row exact match (with section-specific contrast variant:
+//       Mainstream / AlphaFold / Commodity)
+//   (c) data rows >= min_rows after header + alignment row
+//   (d) each row first cell = integer 0..999 (alien-grade reach)
+//   (e) each row's [doc](path) link resolves via `test -f` shell exec
+//
+// @tool(slug="own29_multi_section_lint", desc="own#29 readme-friendly-toolkit multi-section HARD — 32 mandatory sections, 5-axis per-section validation reading mandatory-sections from .own.readme")
+// @usage(hexa <repo-root>/tool/own29_multi_section_lint.hexa [--selftest])
+// @omega-saturation-exempt("README is single-file SSOT; lint is O(file-size * num-sections) line-walk + O(rows) test-f file-existence checks; converges trivially at N=32 sections")
+// @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
+
+// REPO_ROOT resolved at runtime via git rev-parse (raw 15 personal-path-leak-ban compliance)
+let REPO_ROOT       = to_string(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
+let README_PATH     = REPO_ROOT + "/README.md"
+let OWN_READMEPATH  = REPO_ROOT + "/.own.readme"
+let MANDATORY_PFX   = "  mandatory-sections "
+
+// =============================================================================
+// Generic string helpers (reused / lifted from biology-only tool)
+// =============================================================================
+
+fn _starts_with(s: string, p: string) -> bool {
+  if len(s) < len(p) { return false }
+  return s.substring(0, len(p)) == p
+}
+
+fn _contains(s: string, needle: string) -> bool {
+  if len(needle) == 0 { return true }
+  if len(s) < len(needle) { return false }
+  let mut i = 0
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _find_from(s: string, needle: string, start: int) -> int {
+  if len(needle) == 0 { return start }
+  if len(s) < len(needle) { return -1 }
+  let mut i = start
+  let limit = len(s) - len(needle) + 1
+  while i < limit {
+    if s.substring(i, i + len(needle)) == needle { return i }
+    i = i + 1
+  }
+  return -1
+}
+
+fn _file_exists(path: string) -> bool {
+  let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _is_digit(c: string) -> bool {
+  return c == "0" || c == "1" || c == "2" || c == "3" || c == "4"
+      || c == "5" || c == "6" || c == "7" || c == "8" || c == "9"
+}
+
+// Reach parser — first cell after leading "|" must be integer 0..999.
+fn _parse_reach(row: string) -> int {
+  if !_starts_with(row, "|") { return -1 }
+  let n = len(row)
+  let mut start = 1
+  let mut found_start = false
+  let mut iter1 = 1
+  while iter1 < n && !found_start {
+    let c = row.substring(iter1, iter1 + 1)
+    if c == " " || c == "\t" {
+      iter1 = iter1 + 1
+    } else {
+      start = iter1
+      found_start = true
+    }
+  }
+  if !found_start { return -1 }
+  let mut end = start
+  let mut iter2 = start
+  let mut stop = false
+  while iter2 < n && !stop {
+    let c = row.substring(iter2, iter2 + 1)
+    if _is_digit(c) {
+      iter2 = iter2 + 1
+      end = iter2
+    } else {
+      stop = true
+    }
+  }
+  if end == start { return -1 }
+  let num_str = row.substring(start, end)
+  let v = to_int(num_str)
+  if v < 0 || v > 999 { return -1 }
+  return v
+}
+
+// =============================================================================
+// .own.readme mandatory-sections parser
+// Each line format (2-space indent + literal prefix):
+//   `  mandatory-sections <key>=<heading>|min_rows=<N>|axis=<axis>|contrast=<variant>`
+// Returns list of dicts {key, heading, min_rows, axis, contrast}.
+// =============================================================================
+
+fn _split_first(s: string, sep: string) -> list {
+  let idx = _find_from(s, sep, 0)
+  if idx < 0 {
+    return [s, ""]
+  }
+  return [s.substring(0, idx), s.substring(idx + len(sep), len(s))]
+}
+
+fn _strip_prefix(s: string, p: string) -> string {
+  if _starts_with(s, p) {
+    return s.substring(len(p), len(s))
+  }
+  return s
+}
+
+fn _read_mandatory_sections(own_readme_path: string) -> list {
+  let mut out = []
+  if !_file_exists(own_readme_path) {
+    return out
+  }
+  let text = read_file(own_readme_path)
+  let lines = split(text, "\n")
+  let n = len(lines)
+  let mut i = 0
+  while i < n {
+    let raw = lines[i]
+    if _starts_with(raw, MANDATORY_PFX) {
+      let body = raw.substring(len(MANDATORY_PFX), len(raw))
+      // body = "<key>=<heading>|min_rows=<N>|axis=<axis>|contrast=<variant>"
+      let kv = _split_first(body, "=")
+      let key = kv[0]
+      let rest = kv[1]
+      // Split rest on first "|" to peel heading; remaining params separated by "|".
+      let h_split = _split_first(rest, "|")
+      let heading = h_split[0]
+      let params  = h_split[1]
+      // parse remaining "|"-separated key=value pairs
+      let parts = split(params, "|")
+      let mut min_rows = 0
+      let mut axis = ""
+      let mut contrast = ""
+      let mut p_i = 0
+      while p_i < len(parts) {
+        let kv2 = _split_first(parts[p_i], "=")
+        let k2 = kv2[0]
+        let v2 = kv2[1]
+        if k2 == "min_rows" { min_rows = to_int(v2) }
+        if k2 == "axis"     { axis = v2 }
+        if k2 == "contrast" { contrast = v2 }
+        p_i = p_i + 1
+      }
+      let mut entry = {}
+      entry["key"] = key
+      entry["heading"] = heading
+      entry["min_rows"] = min_rows
+      entry["axis"] = axis
+      entry["contrast"] = contrast
+      out.push(entry)
+    }
+    i = i + 1
+  }
+  return out
+}
+
+// =============================================================================
+// Per-section header row builder. The 7-column header has shape:
+//   | 🛸 | Tool | One-liner | Everyday analogy | What it does | <C> contrast | Doc |
+// where <C> is the per-section contrast variant (Mainstream / AlphaFold / Commodity).
+// =============================================================================
+
+fn _build_header_row(contrast: string) -> string {
+  return "| 🛸 | Tool | One-liner | Everyday analogy | What it does | "
+       + contrast + " contrast | Doc |"
+}
+
+// =============================================================================
+// Per-section block extraction + validation
+// =============================================================================
+
+fn _section_block(text: string, heading: string) -> string {
+  // Returns the slice of `text` from `heading` line (inclusive) up to the next
+  // "## " H2 heading, or end-of-text. Used for scoping data-row walk so we do
+  // not accidentally consume rows from the next section's table.
+  let start = _find_from(text, heading, 0)
+  if start < 0 { return "" }
+  // Find next H2 boundary AFTER the heading line itself.
+  let after = start + len(heading)
+  let next_h2 = _find_from(text, "\n## ", after)
+  if next_h2 < 0 {
+    return text.substring(start, len(text))
+  }
+  return text.substring(start, next_h2)
+}
+
+fn _validate_section(readme_text: string, section: any) -> list {
+  let mut viols = []
+  let heading  = section["heading"]
+  let contrast = section["contrast"]
+  let min_rows = section["min_rows"]
+  let key      = section["key"]
+  let axis     = section["axis"]
+  let header_row = _build_header_row(contrast)
+
+  // axis (a) — H2 heading present
+  if !_contains(readme_text, heading) {
+    let mut v0 = {}
+    v0["key"] = key
+    v0["axis"] = "a"
+    v0["detail"] = "missing heading: " + heading
+    viols.push(v0)
+    return viols
+  }
+
+  // Scope further checks to the section block (between this heading and next H2)
+  let block = _section_block(readme_text, heading)
+  if len(block) == 0 {
+    let mut v1 = {}
+    v1["key"] = key
+    v1["axis"] = "a"
+    v1["detail"] = "section block empty for heading: " + heading
+    viols.push(v1)
+    return viols
+  }
+
+  // axis (b) — exact 7-column header row with section-specific contrast variant
+  if !_contains(block, header_row) {
+    let mut v2 = {}
+    v2["key"] = key
+    v2["axis"] = "b"
+    v2["detail"] = "missing 7-col header row (expected contrast=" + contrast + ")"
+    viols.push(v2)
+    return viols
+  }
+
+  // axes (c)+(d)+(e) — locate header line + walk data rows within section block
+  let lines = split(block, "\n")
+  let n = len(lines)
+  let mut hdr_idx = -1
+  let mut i = 0
+  while i < n {
+    if lines[i] == header_row {
+      hdr_idx = i
+      i = n
+    } else {
+      i = i + 1
+    }
+  }
+  if hdr_idx < 0 {
+    let mut v3 = {}
+    v3["key"] = key
+    v3["axis"] = "b"
+    v3["detail"] = "header substring matched but exact-line lookup failed"
+    viols.push(v3)
+    return viols
+  }
+
+  // Skip header + alignment row
+  let data_start = hdr_idx + 2
+  let mut data_rows = []
+  let mut j = data_start
+  let upper = data_start + 100
+  let bound = if n < upper { n } else { upper }
+  let mut stop_walk = false
+  while j < bound && !stop_walk {
+    let raw = lines[j]
+    let ln = raw.trim()
+    if len(ln) == 0 {
+      stop_walk = true
+    } else {
+      if !_starts_with(ln, "|") {
+        stop_walk = true
+      } else {
+        data_rows.push(ln)
+        j = j + 1
+      }
+    }
+  }
+
+  let row_count = len(data_rows)
+
+  // axis (c) — row count >= min_rows
+  if row_count < min_rows {
+    let mut vc = {}
+    vc["key"] = key
+    vc["axis"] = "c"
+    vc["detail"] = "need >=" + to_string(min_rows) + " data rows, found " + to_string(row_count)
+    viols.push(vc)
+  }
+
+  // axis (d) — each row first cell = integer 0..999
+  let mut k = 0
+  while k < row_count {
+    let row = data_rows[k]
+    let reach = _parse_reach(row)
+    if reach < 0 {
+      let mut vd = {}
+      vd["key"] = key
+      vd["axis"] = "d"
+      vd["detail"] = "row " + to_string(k+1) + " missing/invalid integer reach (0..999)"
+      viols.push(vd)
+    }
+    k = k + 1
+  }
+
+  // axis (e) — each row [doc](path) link resolves
+  let mut m = 0
+  while m < row_count {
+    let row = data_rows[m]
+    let doc_open = _find_from(row, "[doc](", 0)
+    if doc_open < 0 {
+      let mut ve1 = {}
+      ve1["key"] = key
+      ve1["axis"] = "e"
+      ve1["detail"] = "row " + to_string(m+1) + " missing [doc](...) link"
+      viols.push(ve1)
+    } else {
+      let path_start = doc_open + 6
+      let path_end = _find_from(row, ")", path_start)
+      if path_end < 0 {
+        let mut ve2 = {}
+        ve2["key"] = key
+        ve2["axis"] = "e"
+        ve2["detail"] = "row " + to_string(m+1) + " malformed [doc] link"
+        viols.push(ve2)
+      } else {
+        let link_path = row.substring(path_start, path_end)
+        let abs_path = REPO_ROOT + "/" + link_path
+        if !_file_exists(abs_path) {
+          let mut ve3 = {}
+          ve3["key"] = key
+          ve3["axis"] = "e"
+          ve3["detail"] = "row " + to_string(m+1) + " unresolved doc link: " + link_path
+          viols.push(ve3)
+        }
+      }
+    }
+    m = m + 1
+  }
+
+  return viols
+}
+
+// =============================================================================
+// Top-level lint: read all 32 mandatory sections, validate each.
+// =============================================================================
+
+fn _run_lint_multi(readme_text: string, sections: list) -> int {
+  let mut total_viols = 0
+  let mut s_i = 0
+  let n_sections = len(sections)
+  while s_i < n_sections {
+    let section = sections[s_i]
+    let v = _validate_section(readme_text, section)
+    let v_n = len(v)
+    if v_n == 0 {
+      println("[own29-multi] PASS section " + to_string(s_i+1) + "/" + to_string(n_sections)
+            + " key=" + section["key"]
+            + " contrast=" + section["contrast"]
+            + " min_rows=" + to_string(section["min_rows"]))
+    } else {
+      let mut vi = 0
+      while vi < v_n {
+        let vd = v[vi]
+        println("[own29-multi] FAIL section key=" + section["key"]
+              + " axis=(" + vd["axis"] + ") "
+              + vd["detail"])
+        vi = vi + 1
+      }
+      total_viols = total_viols + v_n
+    }
+    s_i = s_i + 1
+  }
+  return total_viols
+}
+
+// =============================================================================
+// Selftest fixtures
+// =============================================================================
+
+fn _selftest() -> void {
+  println("[own29-multi] selftest — fixture matrix")
+  let mut pass_count = 0
+  let mut total = 0
+
+  // Build a synthetic biology section heading + header (using AlphaFold contrast)
+  let bio_heading = "## 🧬 Molecular Toolkit (HEXA family)"
+  let bio_header  = _build_header_row("AlphaFold")
+
+  // Build a synthetic Mainstream-contrast section heading + header
+  let ai_heading  = "## 🤖 AI Toolkit (HEXA-AI family)"
+  let ai_header   = _build_header_row("Mainstream")
+
+  // Build a synthetic Commodity-contrast section heading + header
+  let pets_heading = "## 🐾 Pets Toolkit (HEXA-Companion family)"
+  let pets_header  = _build_header_row("Commodity")
+
+  // Use existing biology doc paths for resolvable [doc](...) links
+  let real_doc_a = "domains/biology/hexa-weave/hexa-weave.md"
+  let real_doc_b = "domains/biology/hexa-nanobot/hexa-nanobot.md"
+  let real_doc_c = "domains/biology/hexa-ribozyme/hexa-ribozyme.md"
+
+  // -----------------------------------------------------------------------
+  // Fixture 1: PASS — biology section fully conformant (4 rows, AlphaFold contrast)
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f1_text = bio_heading + "\n\n"
+    + "> Friendly entry point.\n\n"
+    + bio_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 7 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 7 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+    + "| 7 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](" + real_doc_c + ") |\n"
+    + "| 7 | 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n\n"
+    + "Tail.\n"
+  let mut bio_section = {}
+  bio_section["key"] = "biology"
+  bio_section["heading"] = bio_heading
+  bio_section["min_rows"] = 4
+  bio_section["axis"] = "biology"
+  bio_section["contrast"] = "AlphaFold"
+  let v1 = _validate_section(f1_text, bio_section)
+  if len(v1) == 0 {
+    println("[own29-multi] fixture 1 PASS — biology AlphaFold-contrast 4-row accepted")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 1 FAIL — " + to_string(len(v1)) + " viols on PASS fixture")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 2: FAIL — missing heading
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f2_text = bio_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 7 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+  let v2 = _validate_section(f2_text, bio_section)
+  if len(v2) >= 1 {
+    println("[own29-multi] fixture 2 PASS — missing heading rejected (" + to_string(len(v2)) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 2 FAIL — should reject missing heading")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 3: FAIL — header row variant wrong (Mainstream where AlphaFold expected)
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f3_text = bio_heading + "\n\n"
+    + _build_header_row("Mainstream") + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 7 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 7 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+    + "| 7 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](" + real_doc_c + ") |\n"
+    + "| 7 | 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n"
+  let v3 = _validate_section(f3_text, bio_section)
+  if len(v3) >= 1 {
+    println("[own29-multi] fixture 3 PASS — wrong contrast variant rejected (" + to_string(len(v3)) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 3 FAIL — should reject Mainstream where AlphaFold required")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 4: FAIL — row count below min_rows (3 rows when biology demands 4)
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f4_text = bio_heading + "\n\n"
+    + bio_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 7 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 7 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+    + "| 7 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](" + real_doc_c + ") |\n"
+  let v4 = _validate_section(f4_text, bio_section)
+  if len(v4) >= 1 {
+    println("[own29-multi] fixture 4 PASS — row count below min_rows rejected (" + to_string(len(v4)) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 4 FAIL — should reject < min_rows")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 5: FAIL — first cell non-integer
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f5_text = bio_heading + "\n\n"
+    + bio_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| ?? | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 7 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+    + "| 7 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](" + real_doc_c + ") |\n"
+    + "| 7 | 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n"
+  let v5 = _validate_section(f5_text, bio_section)
+  if len(v5) >= 1 {
+    println("[own29-multi] fixture 5 PASS — non-integer reach rejected (" + to_string(len(v5)) + " viol)")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 5 FAIL — should reject non-integer reach cell")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 6: PASS — AlphaFold contrast variant accepted (round-trip identity)
+  //   Distinguishes from F1 by also exercising trailing tail content + multiple
+  //   sections sharing a synthetic README.
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let f6_text = "# Top\n\n" + bio_heading + "\n\n"
+    + bio_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 5 | 🧶 **HEXA-WEAVE** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 5 | 🤖 **HEXA-NANOBOT** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+    + "| 5 | ✂️ **HEXA-RIBOZYME** | a | b | c | d | [doc](" + real_doc_c + ") |\n"
+    + "| 5 | 🦠 **HEXA-VIROCAPSID** | a | b | c | d | [doc](domains/biology/hexa-virocapsid/hexa-virocapsid.md) |\n\n"
+    + "## Some Other H2\n\nUnrelated body.\n"
+  let v6 = _validate_section(f6_text, bio_section)
+  if len(v6) == 0 {
+    println("[own29-multi] fixture 6 PASS — AlphaFold variant accepted across H2-bounded block")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 6 FAIL — " + to_string(len(v6)) + " viols on AlphaFold accept fixture")
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 7: PASS — parser correctly extracts 32 mandatory-sections from .own.readme
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let parsed = _read_mandatory_sections(OWN_READMEPATH)
+  let parsed_n = len(parsed)
+  if parsed_n == 32 {
+    println("[own29-multi] fixture 7 PASS — parser extracted 32 mandatory-sections from .own.readme")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 7 FAIL — expected 32 mandatory-sections, got " + to_string(parsed_n))
+  }
+
+  // -----------------------------------------------------------------------
+  // Fixture 8: PASS — Commodity contrast variant accepted (pets section, min_rows=2)
+  // -----------------------------------------------------------------------
+  total = total + 1
+  let mut pets_section = {}
+  pets_section["key"] = "pets"
+  pets_section["heading"] = pets_heading
+  pets_section["min_rows"] = 2
+  pets_section["axis"] = "pets"
+  pets_section["contrast"] = "Commodity"
+  let f8_text = pets_heading + "\n\n"
+    + pets_header + "\n"
+    + "|:--:|:---:|---|---|---|---|:---:|\n"
+    + "| 4 | 🐾 **HEXA-PET-A** | a | b | c | d | [doc](" + real_doc_a + ") |\n"
+    + "| 4 | 🐾 **HEXA-PET-B** | a | b | c | d | [doc](" + real_doc_b + ") |\n"
+  let v8 = _validate_section(f8_text, pets_section)
+  if len(v8) == 0 {
+    println("[own29-multi] fixture 8 PASS — Commodity contrast (pets) accepted with min_rows=2")
+    pass_count = pass_count + 1
+  } else {
+    println("[own29-multi] fixture 8 FAIL — " + to_string(len(v8)) + " viols on Commodity-pets fixture")
+  }
+
+  if pass_count == total {
+    println("__OWN29_MULTI_SELFTEST_RESULT__ PASS (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN29_MULTI_SELFTEST_RESULT__ FAIL (" + to_string(pass_count) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+// =============================================================================
+// Entry point
+// =============================================================================
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut bi = 0
+  while bi < len(raw_args) {
+    if raw_args[bi] == "--selftest" || raw_args[bi] == "selftest" {
+      want_selftest = true
+    }
+    bi = bi + 1
+  }
+
+  if want_selftest {
+    _selftest()
+    return
+  }
+
+  if !_file_exists(README_PATH) {
+    println("[own29-multi] FAIL — README.md missing at: " + README_PATH)
+    exit(2)
+  }
+  if !_file_exists(OWN_READMEPATH) {
+    println("[own29-multi] FAIL — .own.readme missing at: " + OWN_READMEPATH)
+    exit(2)
+  }
+
+  let readme_text = read_file(README_PATH)
+  let sections = _read_mandatory_sections(OWN_READMEPATH)
+  let n_sections = len(sections)
+  if n_sections == 0 {
+    println("[own29-multi] FAIL — parsed 0 mandatory-sections from .own.readme")
+    exit(2)
+  }
+  println("[own29-multi] parsed " + to_string(n_sections) + " mandatory-sections from .own.readme")
+
+  let v = _run_lint_multi(readme_text, sections)
+  if v == 0 {
+    println("__OWN29_MULTI_RESULT__ PASS (" + to_string(n_sections) + " sections)")
+    exit(0)
+  } else {
+    println("__OWN29_MULTI_RESULT__ FAIL (" + to_string(v) + " violations across " + to_string(n_sections) + " sections)")
+    exit(1)
+  }
+}

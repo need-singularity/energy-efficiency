@@ -1,0 +1,504 @@
+#!hexa strict
+// tool/own6_math_physics_classifier.hexa — own#6 math/physics Tier-1 substring classifier.
+//
+// Rule: papers/*.md inline ```python verify blocks MUST be classifiable as
+// math / physics / both. "neither" (purely decorative) is FAIL.
+//
+// Closes auto-classification gate added to mk2 unified own#6 rule per
+// 2026-05-03 user directive ("수학적, 물리적 검증코드여야한다 자동검출 필요").
+//
+// Tier-1: substring presence over an extracted ```python block. Future
+// Tier-2 (AST / dimensional analysis) can subsume this without API change.
+//
+// @tool(slug="own6_math_physics_classifier", desc="own#6 math/physics classifier (Tier-1 substring) — classifies papers/*.md python blocks as math/physics/both/neither")
+// @usage(hexa <repo-root>/tool/own6_math_physics_classifier.hexa [--selftest])
+// @exit_codes(0=all classified math/physics/both, 1=any neither, 2=internal error)
+
+// REPO_ROOT resolved at runtime via git rev-parse (raw 15 personal-path-leak-ban compliance)
+let REPO_ROOT = to_string(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
+let PAPERS_ROOT = REPO_ROOT + "/papers"
+
+// Frozen 16-entry legacy allowlist (mirrors own6_paper_verify_embedded_lint).
+// Decorative blocks in legacy papers are grandfathered (skipped, not failed).
+let OWN6_LEGACY_ALLOWLIST = [
+  "papers/M10star-21-unified-theorem-2026-04-15.md",
+  "papers/bernoulli-18-arxiv-stub-2026-04-15.md",
+  "papers/bernoulli-b6-sign-2026-04-22.md",
+  "papers/consciousness-measurement-protocol-2026-04-15.md",
+  "papers/consciousness-red-team-n6-failure-2026-04-15.md",
+  "papers/doob-talagrand-tau-2026-04-22.md",
+  "papers/embody-p10-1-l13-l14-unified-spec-2026-04-15.md",
+  "papers/embody-p11-2-nanobot-gen2-2026-04-15.md",
+  "papers/embody-p12-2-quantum-sensor-design-2026-04-15.md",
+  "papers/embody-p13-1-qkd-6state-design-2026-04-15.md",
+  "papers/enriques-abelian-6fold-link-2026-04-22.md",
+  "papers/lemmas-A3-A4-conditional-2026-04-15.md",
+  "papers/monte-carlo-control-e-2026-04-22.md",
+  "papers/n=6-convergence-80-domains-2026-04-19.md",
+  "papers/plunnecke-6-2026-04-22.md",
+  "papers/yang-mills-beta0-rewriting-2026-04-22.md",
+]
+
+let META_STEMS = ["readme", "claude", "index", "_index"]
+
+// Tier-1 math substring signatures (any match → math=true).
+let MATH_SIGNATURES = [
+  "def sigma",
+  "def divisors",
+  "def sopfr",
+  "def phi_min_prime",
+  "def totient",
+  "def moebius",
+  "def divisor_count",
+  "from math import gcd",
+  "from fractions import Fraction",
+  "import sympy",
+  "from sympy",
+  "divisor_sigma",
+  "_totient",
+  "is_squarefree",
+  "phi_eul",
+  "J2 = 2 * SIGMA",
+  "J2 = 24",
+  "master identity",
+]
+
+// Tier-1 physics substring signatures (names + library imports).
+let PHYSICS_NAME_SIGNATURES = [
+  "NIST",
+  "CODATA",
+  "Carnot",
+  "Shockley",
+  "Queisser",
+  "Bernoulli",
+  "Weibull",
+  "Darcy",
+  "Kozeny",
+  "Carman",
+  "Helmholtz",
+  "Eigen-Hammes",
+  "Eigen Hammes",
+  "Boltzmann",
+  "Avogadro",
+  "Planck",
+  "import scipy.constants",
+  "import astropy",
+  "import pint",
+]
+
+// SI unit substring signatures (presence → physics=true).
+let PHYSICS_SI_UNIT_SIGNATURES = [
+  "mΩ",
+  "kΩ",
+  "Ω",
+  "kHz",
+  "MHz",
+  "GHz",
+  "Hz",
+  "nm",
+  "μm",
+  "μs",
+  "ns",
+  "ms",
+  "eV",
+  "Wh/kg",
+  "kWh",
+  "J/K",
+  "kg/m³",
+  "m/s²",
+  "Pa",
+  "kPa",
+  "MPa",
+]
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _basename(path: string) -> string {
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  if last_slash < 0 { return path }
+  return path.substring(last_slash + 1, len(path))
+}
+
+fn _stem(name: string) -> string {
+  if len(name) > 3 && name.substring(len(name) - 3, len(name)) == ".md" {
+    return name.substring(0, len(name) - 3)
+  }
+  return name
+}
+
+fn _to_lower(s: string) -> string {
+  let mut out = ""
+  let mut i = 0
+  while i < len(s) {
+    let c = s.substring(i, i + 1)
+    if c >= "A" && c <= "Z" {
+      if c == "A" { out = out + "a" }
+      if c == "B" { out = out + "b" }
+      if c == "C" { out = out + "c" }
+      if c == "D" { out = out + "d" }
+      if c == "E" { out = out + "e" }
+      if c == "F" { out = out + "f" }
+      if c == "G" { out = out + "g" }
+      if c == "H" { out = out + "h" }
+      if c == "I" { out = out + "i" }
+      if c == "J" { out = out + "j" }
+      if c == "K" { out = out + "k" }
+      if c == "L" { out = out + "l" }
+      if c == "M" { out = out + "m" }
+      if c == "N" { out = out + "n" }
+      if c == "O" { out = out + "o" }
+      if c == "P" { out = out + "p" }
+      if c == "Q" { out = out + "q" }
+      if c == "R" { out = out + "r" }
+      if c == "S" { out = out + "s" }
+      if c == "T" { out = out + "t" }
+      if c == "U" { out = out + "u" }
+      if c == "V" { out = out + "v" }
+      if c == "W" { out = out + "w" }
+      if c == "X" { out = out + "x" }
+      if c == "Y" { out = out + "y" }
+      if c == "Z" { out = out + "z" }
+    } else {
+      out = out + c
+    }
+    i = i + 1
+  }
+  return out
+}
+
+fn _is_meta(stem: string) -> bool {
+  let lower = _to_lower(stem)
+  let mut i = 0
+  while i < len(META_STEMS) {
+    if META_STEMS[i] == lower { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+fn _in_legacy(rel: string) -> bool {
+  let mut i = 0
+  while i < len(OWN6_LEGACY_ALLOWLIST) {
+    if OWN6_LEGACY_ALLOWLIST[i] == rel { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _list_papers_md() -> list {
+  let raw = to_string(exec("find '" + PAPERS_ROOT + "' -mindepth 1 -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+// Extract content between ```python and matching ``` fences.
+// Returns list of strings (one entry per fenced python block).
+fn _extract_python_blocks(text: string) -> list {
+  let mut out = []
+  let open_fence = "```python"
+  let close_fence = "```"
+  let mut i = 0
+  let n = len(text)
+  while i < n {
+    // Find next ```python opener
+    let mut found_open = -1
+    let mut j = i
+    while j + len(open_fence) <= n {
+      if text.substring(j, j + len(open_fence)) == open_fence {
+        found_open = j
+        break
+      }
+      j = j + 1
+    }
+    if found_open < 0 { break }
+    let body_start = found_open + len(open_fence)
+    // Find matching ``` after body_start
+    let mut found_close = -1
+    let mut k = body_start
+    while k + len(close_fence) <= n {
+      if text.substring(k, k + len(close_fence)) == close_fence {
+        found_close = k
+        break
+      }
+      k = k + 1
+    }
+    if found_close < 0 { break }
+    out.push(text.substring(body_start, found_close))
+    i = found_close + len(close_fence)
+  }
+  return out
+}
+
+fn _has_any_signature(block: string, sigs: list) -> bool {
+  let mut i = 0
+  while i < len(sigs) {
+    if block.contains(sigs[i]) { return true }
+    i = i + 1
+  }
+  return false
+}
+
+// Manual scientific-notation scan: digit (or digit.digit) followed by e/E
+// followed by optional sign followed by digit(s).
+// Hexa lacks regex stdlib in some versions — manual char loop.
+fn _has_sci_notation(block: string) -> bool {
+  let n = len(block)
+  let digits = "0123456789"
+  let mut i = 0
+  while i < n {
+    let c = block.substring(i, i + 1)
+    if digits.contains(c) {
+      // Walk forward over digits/dot until e/E
+      let mut j = i + 1
+      let mut saw_dot = false
+      while j < n {
+        let cj = block.substring(j, j + 1)
+        if digits.contains(cj) {
+          j = j + 1
+        } else if cj == "." && !saw_dot {
+          saw_dot = true
+          j = j + 1
+        } else {
+          break
+        }
+      }
+      if j < n {
+        let ce = block.substring(j, j + 1)
+        if ce == "e" || ce == "E" {
+          let mut k = j + 1
+          if k < n {
+            let cs = block.substring(k, k + 1)
+            if cs == "-" || cs == "+" { k = k + 1 }
+          }
+          // Require at least one trailing digit
+          if k < n && digits.contains(block.substring(k, k + 1)) {
+            return true
+          }
+        }
+      }
+      // Skip past the numeric run we already consumed
+      i = j
+    } else {
+      i = i + 1
+    }
+  }
+  return false
+}
+
+fn _has_any_math_signature(block: string) -> bool {
+  return _has_any_signature(block, MATH_SIGNATURES)
+}
+
+fn _has_any_physics_signature(block: string) -> bool {
+  if _has_any_signature(block, PHYSICS_NAME_SIGNATURES) { return true }
+  if _has_any_signature(block, PHYSICS_SI_UNIT_SIGNATURES) { return true }
+  if _has_sci_notation(block) { return true }
+  return false
+}
+
+fn _classify(block: string) -> string {
+  let m = _has_any_math_signature(block)
+  let p = _has_any_physics_signature(block)
+  if m && p { return "both" }
+  if m { return "math" }
+  if p { return "physics" }
+  return "neither"
+}
+
+fn _scan() -> list {
+  let mut results = []
+  if !_dir_exists(PAPERS_ROOT) { return results }
+  let papers = _list_papers_md()
+  let mut i = 0
+  while i < len(papers) {
+    let path = papers[i]
+    let name = _basename(path)
+    let stem = _stem(name)
+    if !_is_meta(stem) {
+      let rel = _rel(path)
+      let is_legacy = _in_legacy(rel)
+      if !is_legacy {
+        let text = read_file(path)
+        let blocks = _extract_python_blocks(text)
+        if len(blocks) > 0 {
+          // Concatenate all blocks before classifying — a paper is classified
+          // by the union of its python verify content.
+          let mut joined = ""
+          let mut b = 0
+          while b < len(blocks) {
+            joined = joined + blocks[b] + "\n"
+            b = b + 1
+          }
+          let kind = _classify(joined)
+          let mut r = {}
+          r["path"] = rel
+          r["kind"] = kind
+          results.push(r)
+        }
+      }
+    }
+    i = i + 1
+  }
+  return results
+}
+
+fn _selftest() -> void {
+  println("[own#6cls] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // F1: math signature `def sigma(n)` → "math"
+  total = total + 1
+  let f1 = "def sigma(n):\n    return sum(divisors(n))\n"
+  let k1 = _classify(f1)
+  if k1 == "math" {
+    println("[own#6cls] fixture 1 PASS — math signature → math")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 1 FAIL — got " + k1 + " expected math")
+  }
+
+  // F2: physics signature `Carnot` + `8.314` SI string → "physics"
+  total = total + 1
+  let f2 = "# Carnot efficiency = 1 - Tc/Th\nR = 8.314  # J/(mol K)\n"
+  let k2 = _classify(f2)
+  if k2 == "physics" {
+    println("[own#6cls] fixture 2 PASS — Carnot+J/K → physics")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 2 FAIL — got " + k2 + " expected physics")
+  }
+
+  // F3: both — `from math import gcd` + `1.6e-19 C`
+  total = total + 1
+  let f3 = "from math import gcd\nq_e = 1.6e-19  # C\n"
+  let k3 = _classify(f3)
+  if k3 == "both" {
+    println("[own#6cls] fixture 3 PASS — math import + sci notation → both")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 3 FAIL — got " + k3 + " expected both")
+  }
+
+  // F4: neither — `print('verify')` only
+  total = total + 1
+  let f4 = "print('verify')\n"
+  let k4 = _classify(f4)
+  if k4 == "neither" {
+    println("[own#6cls] fixture 4 PASS — bare print → neither")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 4 FAIL — got " + k4 + " expected neither")
+  }
+
+  // F5: SI unit detection — `Rds_on = 0.005` with Ω → physics
+  total = total + 1
+  let f5 = "Rds_on = 0.005  # Ω resistance\n"
+  let k5 = _classify(f5)
+  if k5 == "physics" {
+    println("[own#6cls] fixture 5 PASS — Ω SI unit → physics")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 5 FAIL — got " + k5 + " expected physics")
+  }
+
+  // F6: legacy allowlist exempt → SKIP path returns true on _in_legacy
+  total = total + 1
+  if _in_legacy("papers/bernoulli-18-arxiv-stub-2026-04-15.md") {
+    println("[own#6cls] fixture 6 PASS — legacy allowlist hit (skip)")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 6 FAIL — legacy allowlist miss")
+  }
+
+  // F7: ```python block extraction round-trip
+  total = total + 1
+  let f7 = "# Paper\n```python\ndef sigma(n): return n\n```\nprose\n"
+  let blocks7 = _extract_python_blocks(f7)
+  if len(blocks7) == 1 && blocks7[0].contains("def sigma") {
+    println("[own#6cls] fixture 7 PASS — python block extracted")
+    pass = pass + 1
+  } else {
+    println("[own#6cls] fixture 7 FAIL — extraction yielded " + to_string(len(blocks7)) + " blocks")
+  }
+
+  if pass == total {
+    println("__OWN6_CLASSIFIER_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN6_CLASSIFIER_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let results = _scan()
+  let mut n_math = 0
+  let mut n_physics = 0
+  let mut n_both = 0
+  let mut n_neither = 0
+  let mut neither_paths = []
+  let mut k = 0
+  while k < len(results) {
+    let r = results[k]
+    let kind = r["kind"]
+    if kind == "math" { n_math = n_math + 1 }
+    if kind == "physics" { n_physics = n_physics + 1 }
+    if kind == "both" { n_both = n_both + 1 }
+    if kind == "neither" {
+      n_neither = n_neither + 1
+      neither_paths.push(r["path"])
+    }
+    k = k + 1
+  }
+
+  let mut nk = 0
+  while nk < len(neither_paths) {
+    println("[own#6cls] FAIL " + neither_paths[nk] + " — block classified as neither (no math/physics signature)")
+    nk = nk + 1
+  }
+
+  let total = n_math + n_physics + n_both + n_neither
+  println("[own#6cls] matrix math=" + to_string(n_math) + " physics=" + to_string(n_physics) + " both=" + to_string(n_both) + " neither=" + to_string(n_neither) + " total=" + to_string(total))
+
+  if n_neither == 0 {
+    println("__OWN6_CLASSIFIER_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN6_CLASSIFIER_RESULT__ FAIL (" + to_string(n_neither) + " neither)")
+    exit(1)
+  }
+}

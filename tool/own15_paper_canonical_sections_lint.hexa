@@ -1,0 +1,432 @@
+#!hexa strict
+// tool/own15_paper_canonical_sections_lint.hexa — own#15 paper-canonical-sections HARD lint.
+//
+// Rule: papers/*.md MUST contain canonical section scaffold:
+//   - Brief §1-§7   (WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY)
+//   - Engineering §8-§20 (EXEC SUMMARY ... APPENDIX, 13 sections)
+//   - Impact §21    (IMPACT)
+//   - Footer        (## mk_history with >= 3 mk lines)
+//   - ASCII hygiene (non-ASCII bytes <= 5% of file size)
+//
+// Allowlist: 16 grandfathered papers (frozen, shrink-only — same set as own#6).
+//
+// @tool(slug="own15_paper_canonical_sections_lint", desc="own#15 paper-canonical-sections HARD — papers/*.md must contain §1-§21 + mk_history footer >=3 lines + ASCII")
+// @usage(hexa <repo-root>/tool/own15_paper_canonical_sections_lint.hexa [--selftest])
+// @exit_codes(0=PASS, 1=violations, 2=internal error)
+
+// REPO_ROOT resolved at runtime via git rev-parse (raw 15 personal-path-leak-ban compliance)
+let REPO_ROOT = to_string(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
+let PAPERS_ROOT = REPO_ROOT + "/papers"
+
+// Frozen 16-entry legacy allowlist (relative paths from repo root) — mirrors own#6
+let OWN15_LEGACY_ALLOWLIST = [
+  "papers/M10star-21-unified-theorem-2026-04-15.md",
+  "papers/bernoulli-18-arxiv-stub-2026-04-15.md",
+  "papers/bernoulli-b6-sign-2026-04-22.md",
+  "papers/consciousness-measurement-protocol-2026-04-15.md",
+  "papers/consciousness-red-team-n6-failure-2026-04-15.md",
+  "papers/doob-talagrand-tau-2026-04-22.md",
+  "papers/embody-p10-1-l13-l14-unified-spec-2026-04-15.md",
+  "papers/embody-p11-2-nanobot-gen2-2026-04-15.md",
+  "papers/embody-p12-2-quantum-sensor-design-2026-04-15.md",
+  "papers/embody-p13-1-qkd-6state-design-2026-04-15.md",
+  "papers/enriques-abelian-6fold-link-2026-04-22.md",
+  "papers/lemmas-A3-A4-conditional-2026-04-15.md",
+  "papers/monte-carlo-control-e-2026-04-22.md",
+  "papers/n=6-convergence-80-domains-2026-04-19.md",
+  "papers/plunnecke-6-2026-04-22.md",
+  "papers/yang-mills-beta0-rewriting-2026-04-22.md",
+]
+
+let META_STEMS = ["readme", "claude", "index", "_index"]
+
+// Brief §1-§7 canonical headers
+let BRIEF_HEADERS = [
+  "## §1 WHY",
+  "## §2 COMPARE",
+  "## §3 REQUIRES",
+  "## §4 STRUCT",
+  "## §5 FLOW",
+  "## §6 EVOLVE",
+  "## §7 VERIFY",
+]
+
+// Engineering §8-§20 canonical headers
+let ENG_HEADERS = [
+  "## §8 EXEC SUMMARY",
+  "## §9 SYSTEM REQUIREMENTS",
+  "## §10 ARCHITECTURE",
+  "## §11 CIRCUIT DESIGN",
+  "## §12 PCB DESIGN",
+  "## §13 FIRMWARE",
+  "## §14 MECHANICAL",
+  "## §15 MANUFACTURING",
+  "## §16 TEST",
+  "## §17 BOM",
+  "## §18 VENDOR",
+  "## §19 ACCEPTANCE",
+  "## §20 APPENDIX",
+]
+
+// Impact §21
+let IMPACT_HEADER = "## §21 IMPACT"
+
+// mk_history footer marker (underscore form mandated)
+let MK_HISTORY_HEADER = "## mk_history"
+
+// ASCII hygiene: max non-ASCII byte ratio
+let ASCII_MAX_NONASCII_PCT = 5
+
+// mk_history minimum non-empty lines following header
+let MK_HISTORY_MIN_LINES = 3
+
+fn _dir_exists(path: string) -> bool {
+  let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
+  return r == "y"
+}
+
+fn _basename(path: string) -> string {
+  let mut last_slash = -1
+  let mut i = 0
+  while i < len(path) {
+    if path.substring(i, i + 1) == "/" { last_slash = i }
+    i = i + 1
+  }
+  if last_slash < 0 { return path }
+  return path.substring(last_slash + 1, len(path))
+}
+
+fn _stem(name: string) -> string {
+  if len(name) > 3 && name.substring(len(name) - 3, len(name)) == ".md" {
+    return name.substring(0, len(name) - 3)
+  }
+  return name
+}
+
+fn _to_lower(s: string) -> string {
+  let mut out = ""
+  let mut i = 0
+  while i < len(s) {
+    let c = s.substring(i, i + 1)
+    if c >= "A" && c <= "Z" {
+      // 26-branch lowercase (hexa lacks ord())
+      if c == "A" { out = out + "a" }
+      if c == "B" { out = out + "b" }
+      if c == "C" { out = out + "c" }
+      if c == "D" { out = out + "d" }
+      if c == "E" { out = out + "e" }
+      if c == "F" { out = out + "f" }
+      if c == "G" { out = out + "g" }
+      if c == "H" { out = out + "h" }
+      if c == "I" { out = out + "i" }
+      if c == "J" { out = out + "j" }
+      if c == "K" { out = out + "k" }
+      if c == "L" { out = out + "l" }
+      if c == "M" { out = out + "m" }
+      if c == "N" { out = out + "n" }
+      if c == "O" { out = out + "o" }
+      if c == "P" { out = out + "p" }
+      if c == "Q" { out = out + "q" }
+      if c == "R" { out = out + "r" }
+      if c == "S" { out = out + "s" }
+      if c == "T" { out = out + "t" }
+      if c == "U" { out = out + "u" }
+      if c == "V" { out = out + "v" }
+      if c == "W" { out = out + "w" }
+      if c == "X" { out = out + "x" }
+      if c == "Y" { out = out + "y" }
+      if c == "Z" { out = out + "z" }
+    } else {
+      out = out + c
+    }
+    i = i + 1
+  }
+  return out
+}
+
+fn _is_meta(stem: string) -> bool {
+  let lower = _to_lower(stem)
+  let mut i = 0
+  while i < len(META_STEMS) {
+    if META_STEMS[i] == lower { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _rel(path: string) -> string {
+  let prefix = REPO_ROOT + "/"
+  if len(path) > len(prefix) && path.substring(0, len(prefix)) == prefix {
+    return path.substring(len(prefix), len(path))
+  }
+  return path
+}
+
+fn _in_legacy(rel: string) -> bool {
+  let mut i = 0
+  while i < len(OWN15_LEGACY_ALLOWLIST) {
+    if OWN15_LEGACY_ALLOWLIST[i] == rel { return true }
+    i = i + 1
+  }
+  return false
+}
+
+fn _list_papers_md() -> list {
+  let raw = to_string(exec("find '" + PAPERS_ROOT + "' -mindepth 1 -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort"))
+  let mut out = []
+  let lines = split(raw, "\n")
+  let mut i = 0
+  while i < len(lines) {
+    let p = lines[i].trim()
+    if len(p) > 0 { out.push(p) }
+    i = i + 1
+  }
+  return out
+}
+
+// Returns list of missing brief headers (empty list = all present)
+fn _missing_brief(text: string) -> list {
+  let mut missing = []
+  let mut i = 0
+  while i < len(BRIEF_HEADERS) {
+    if !text.contains(BRIEF_HEADERS[i]) { missing.push(BRIEF_HEADERS[i]) }
+    i = i + 1
+  }
+  return missing
+}
+
+// Returns list of missing engineering headers (empty list = all present)
+fn _missing_eng(text: string) -> list {
+  let mut missing = []
+  let mut i = 0
+  while i < len(ENG_HEADERS) {
+    if !text.contains(ENG_HEADERS[i]) { missing.push(ENG_HEADERS[i]) }
+    i = i + 1
+  }
+  return missing
+}
+
+// Check mk_history header present + >=3 non-empty lines after it
+fn _mk_history_ok(text: string) -> bool {
+  if !text.contains(MK_HISTORY_HEADER) { return false }
+  let lines = split(text, "\n")
+  let mut i = 0
+  let mut found_at = -1
+  while i < len(lines) {
+    let line = lines[i].trim()
+    if line == MK_HISTORY_HEADER { found_at = i }
+    i = i + 1
+  }
+  if found_at < 0 { return false }
+  let mut count = 0
+  let mut j = found_at + 1
+  while j < len(lines) {
+    if len(lines[j].trim()) > 0 { count = count + 1 }
+    j = j + 1
+  }
+  return count >= MK_HISTORY_MIN_LINES
+}
+
+// ASCII heuristic: count bytes >= 128 via shell wc with LANG=C tr filter
+fn _ascii_pct(path: string) -> int {
+  let total_raw = to_string(exec("wc -c < '" + path + "' 2>/dev/null")).trim()
+  if len(total_raw) == 0 { return 0 }
+  let total = parse_int(total_raw)
+  if total <= 0 { return 0 }
+  let nonascii_raw = to_string(exec("LC_ALL=C tr -d '\\000-\\177' < '" + path + "' 2>/dev/null | wc -c")).trim()
+  if len(nonascii_raw) == 0 { return 0 }
+  let nonascii = parse_int(nonascii_raw)
+  if nonascii <= 0 { return 0 }
+  return (nonascii * 100) / total
+}
+
+fn _scan() -> list {
+  let mut violations = []
+  if !_dir_exists(PAPERS_ROOT) { return violations }
+  let papers = _list_papers_md()
+  let mut i = 0
+  while i < len(papers) {
+    let path = papers[i]
+    let name = _basename(path)
+    let stem = _stem(name)
+    if !_is_meta(stem) {
+      let rel = _rel(path)
+      let is_legacy = _in_legacy(rel)
+      if !is_legacy {
+        let text = read_file(path)
+        // Axis 1: brief §1-§7
+        let mb = _missing_brief(text)
+        if len(mb) > 0 {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "missing brief headers (" + to_string(len(mb)) + "/7): " + mb[0]
+          violations.push(v)
+        }
+        // Axis 2: engineering §8-§20
+        let me = _missing_eng(text)
+        if len(me) > 0 {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "missing engineering headers (" + to_string(len(me)) + "/13): " + me[0]
+          violations.push(v)
+        }
+        // Axis 3: impact §21
+        if !text.contains(IMPACT_HEADER) {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "missing impact header: " + IMPACT_HEADER
+          violations.push(v)
+        }
+        // Axis 4: mk_history footer
+        if !_mk_history_ok(text) {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "missing or insufficient ## mk_history footer (need >=3 mk lines, underscore form)"
+          violations.push(v)
+        }
+        // Axis 5: ASCII hygiene
+        let pct = _ascii_pct(path)
+        if pct > ASCII_MAX_NONASCII_PCT {
+          let mut v = {}
+          v["path"] = rel
+          v["detail"] = "ASCII hygiene fail — non-ASCII bytes " + to_string(pct) + "% > " + to_string(ASCII_MAX_NONASCII_PCT) + "%"
+          violations.push(v)
+        }
+      }
+    }
+    i = i + 1
+  }
+  return violations
+}
+
+fn _selftest() -> void {
+  println("[own#15] selftest — fixture matrix")
+  let mut total = 0
+  let mut pass = 0
+
+  // Build synthetic full-scaffold body
+  let mut full_body = "# Paper\n"
+  let mut bi = 0
+  while bi < len(BRIEF_HEADERS) {
+    full_body = full_body + BRIEF_HEADERS[bi] + "\nbody line\n"
+    bi = bi + 1
+  }
+  let mut ei = 0
+  while ei < len(ENG_HEADERS) {
+    full_body = full_body + ENG_HEADERS[ei] + "\nbody line\n"
+    ei = ei + 1
+  }
+  full_body = full_body + IMPACT_HEADER + "\nbody line\n"
+  full_body = full_body + MK_HISTORY_HEADER + "\n- Mk.I init\n- Mk.II refine\n- Mk.III ship\n"
+
+  // F1: PASS — full scaffold passes all 4 text-axis checks
+  total = total + 1
+  let f1_brief_missing = _missing_brief(full_body)
+  let f1_eng_missing = _missing_eng(full_body)
+  let f1_has_impact = full_body.contains(IMPACT_HEADER)
+  let f1_mk_ok = _mk_history_ok(full_body)
+  if len(f1_brief_missing) == 0 && len(f1_eng_missing) == 0 && f1_has_impact && f1_mk_ok {
+    println("[own#15] fixture 1 PASS — full scaffold §1-§21 + mk_history detected")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 1 FAIL — full scaffold did not validate")
+  }
+
+  // F2: FAIL — missing §11 CIRCUIT DESIGN
+  total = total + 1
+  let mut f2 = "# Paper\n"
+  let mut bi2 = 0
+  while bi2 < len(BRIEF_HEADERS) {
+    f2 = f2 + BRIEF_HEADERS[bi2] + "\nbody\n"
+    bi2 = bi2 + 1
+  }
+  let mut ei2 = 0
+  while ei2 < len(ENG_HEADERS) {
+    if ENG_HEADERS[ei2] != "## §11 CIRCUIT DESIGN" {
+      f2 = f2 + ENG_HEADERS[ei2] + "\nbody\n"
+    }
+    ei2 = ei2 + 1
+  }
+  f2 = f2 + IMPACT_HEADER + "\n" + MK_HISTORY_HEADER + "\nMk.I\nMk.II\nMk.III\n"
+  let f2_missing = _missing_eng(f2)
+  if len(f2_missing) == 1 && f2_missing[0] == "## §11 CIRCUIT DESIGN" {
+    println("[own#15] fixture 2 PASS — §11 CIRCUIT DESIGN absence detected")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 2 FAIL — expected single missing §11")
+  }
+
+  // F3: FAIL — mk_history present but only 2 lines
+  total = total + 1
+  let f3 = "# Paper\n" + MK_HISTORY_HEADER + "\n- Mk.I\n- Mk.II\n"
+  if !_mk_history_ok(f3) {
+    println("[own#15] fixture 3 PASS — mk_history with 2 lines rejected (need >=3)")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 3 FAIL — under-threshold mk_history accepted")
+  }
+
+  // F4: PASS — META stem README exempted
+  total = total + 1
+  if _is_meta("README") && _is_meta("readme") && _is_meta("CLAUDE") && _is_meta("_index") {
+    println("[own#15] fixture 4 PASS — META stems exempted")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 4 FAIL — META stem detection broken")
+  }
+
+  // F5: PASS — legacy allowlist hit
+  total = total + 1
+  if _in_legacy("papers/bernoulli-18-arxiv-stub-2026-04-15.md") && _in_legacy("papers/yang-mills-beta0-rewriting-2026-04-22.md") {
+    println("[own#15] fixture 5 PASS — legacy allowlist hit")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 5 FAIL — legacy allowlist miss")
+  }
+
+  // F6: FAIL — mk_history header absent entirely
+  total = total + 1
+  let f6 = "# Paper\nNo footer at all.\n"
+  if !_mk_history_ok(f6) {
+    println("[own#15] fixture 6 PASS — absent mk_history rejected")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 6 FAIL — absent mk_history accepted")
+  }
+
+  if pass == total {
+    println("__OWN15_SELFTEST_RESULT__ PASS (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(0)
+  } else {
+    println("__OWN15_SELFTEST_RESULT__ FAIL (" + to_string(pass) + "/" + to_string(total) + " fixtures)")
+    exit(1)
+  }
+}
+
+fn main() -> void {
+  let raw_args = args()
+  let mut want_selftest = false
+  let mut i = 0
+  while i < len(raw_args) {
+    if raw_args[i] == "--selftest" || raw_args[i] == "selftest" { want_selftest = true }
+    i = i + 1
+  }
+
+  if want_selftest { _selftest(); return }
+
+  let violations = _scan()
+  let mut k = 0
+  while k < len(violations) {
+    let v = violations[k]
+    println("[own#15] FAIL " + v["path"] + " — " + v["detail"])
+    k = k + 1
+  }
+
+  if len(violations) == 0 {
+    println("__OWN15_RESULT__ PASS")
+    exit(0)
+  } else {
+    println("__OWN15_RESULT__ FAIL (" + to_string(len(violations)) + " violations)")
+    exit(1)
+  }
+}
