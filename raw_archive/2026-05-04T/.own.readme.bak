@@ -1,0 +1,192 @@
+# n6-architecture /.own.readme — L1 README.md governance (mk2 reconstruction, 5 rules)
+#
+# AI-native frontmatter (YAML in comment block; .own DSL parser skips # lines):
+# ---
+# schema: n6-architecture/own/readme/2
+# last_updated: 2026-05-04
+# ssot:
+#   parent_handoff: docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
+#   sibling_emit: .own.group_p (paper-md governance, emitted 2026-05-03)
+#   axis_spine: .roadmap.n6_architecture (Tier-A planned, deferred)
+#   absolute_rules_anchor: n6shared/config/absolute_rules.json
+#   hierarchy_tier: T0 (project-level public-facing surface)
+#   predecessor_handoff: docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
+#   mk1_recovery_blob: /tmp/n6_own_mk1.txt (commit 442afa7b^:.own, 881 LoC, 32 rules)
+# related_raws: []  # README governance is n6-local + cross-repo (hexa-lang sister); hive raw 270/271/272/273 + arch.001 do NOT govern README content
+# related_rules:
+#   retired_mk1: own#1 .. own#35 (.own 881L deleted at commit 442afa7b 2026-05-03)
+#   restored_mk2: own#14 readme-sealed-required + own#17 public-readme-english-only + own#20 readme-techniques-count-drift + own#21 readme-nexus6-tests-count-drift + own#29 readme-friendly-toolkit-required
+#   priority: own#29 = P0 (alien-grade alignment SSOT — 7-column toolkit table + n=6 master identity anchoring in Mainstream contrast cell per Fusion/Chip precedent)
+# policy:
+#   migration: PROHIBITED
+#   additive_only: true
+#   hive_resource_only: enforced (own#35; own#17 cross-repo dep grandfathered — see caveat 4)
+#   scope_drift_ban: true
+# status: live
+# omega_cycle: 6-step single-pass (audit -> plan -> emit -> handoff -> marker -> close)
+# ---
+#
+# Grammar: hexa-lang self/raw_loader.hexa (same syntax as .raw / .loop / .chain).
+# Source-of-truth for README.md governance under mk2. Predecessor mk1 .own (881L, 32 rules)
+# retired 2026-05-03 commit 442afa7b. This file restores ONLY the 5 README-bound rules,
+# preserving each rule as a separate concern (sealed / english / drift x2 / toolkit-table)
+# rather than collapsing — concern separation outweighs hive raw.mk2 arch.001 collapsing
+# benefit when rules touch different invariant axes.
+#
+# ============================================================
+# P0 PRIORITY: own#29 readme-friendly-toolkit-required (HARD)
+#
+# This rule is the ALIEN-GRADE ALIGNMENT SSOT. The 7-column toolkit table format
+# (🛸 alien-grade-reach / Tool / One-liner / Everyday analogy / What it does /
+# <Mainstream> contrast / Doc) anchors n=6 master identity (own#2) directly in the
+# Mainstream contrast cell — see Fusion §L116 precedent ("σ(6)=12-archetype unified
+# lattice", "τ(6)=4-state full-cycle plant") and Chip §L147 precedent ("σ²=144 SM × τ=4 pipe ×
+# φ=2 issue", "σ·J₂=288 / bank in-place compute"). README structure preservation is the
+# user's most-critical invariant per 2026-05-04 directive ("이 구성에 가장중요!!!!").
+# ============================================================
+#
+# Lint coverage at emit time:
+#   own#14 sealed-hash      ACTIVE  -- tool/readme_sealed_check.hexa (selftest works; live exec broken via mac Docker route)
+#   own#17 english-only     ACTIVE  -- ~/core/hexa-lang/tool/readme_english_audit.hexa (cross-repo; ci.yml SOFT-skip fallback)
+#   own#20 techniques-drift ACTIVE  -- inline `find techniques -name '*.hexa' ...` (currently MATCHED 225=225)
+#   own#21 tests-drift      ACTIVE  -- tool/own_nexus6_tests_drift.hexa (currently DRIFT 1116 vs 51; see caveat 3)
+#   own#29 toolkit-table    PARTIAL -- biology-only standalone tool/own29_readme_friendly_toolkit_lint.hexa; multi-section dispatcher tool/own_doc_lint.hexa --rule 29 reads mandatory-sections from this .own.readme (FU-2 verifies wiring)
+
+own 14 live "readme-sealed-required — root README.md sealed hash mandatory (HARD warn ramp)"
+  slug readme-sealed-required
+  decl .readme-rules.json README.md.sealed.hash README.md tool/readme_sealed_check.hexa
+  scope root README.md must keep `.readme-rules.json scopes.root.require_sealed=true` AND `README.md.sealed.hash` synchronized with shasum -a 256 README.md. Body edits without hash refresh forbidden.
+  status live
+  since 2026-05-04
+  why .readme-rules.json scopes.root.require_sealed=true + README.md.sealed.hash present + tool/readme_sealed_check.hexa wired in .github/workflows/ci.yml:393. Sealed hash defends auto-generated blocks (toolkit tables / counts) from silent drift. Current sealed hash (293a8865...) verified MATCH actual sha256 at 2026-05-04 audit.
+  invariant `.readme-rules.json` scopes.root.require_sealed = true
+  invariant `README.md.sealed.hash` = sha256:<64-hex>; lower-case hex; 1 line
+  invariant verify-tool: tool/readme_sealed_check.hexa exit 0 = match-or-init / 1 = mismatch / 2 = error
+  cognitive-frameworks own#1 (doc-english-required, deps)
+  cognitive-frameworks own#17 (public-readme-english-only, sister-rule)
+  enforce hexa tool/readme_sealed_check.hexa
+  ci-wiring .github/workflows/ci.yml:381-393 (readme-sealed-hash job)
+  cron on-commit
+  on_fail block
+  exit-codes 0=PASS / 1=mismatch / 2=error
+  label own#14 readme-sealed-required (live, actively wired)
+
+own 17 live "public-readme-english-only — no CJK in public org root READMEs (HARD)"
+  slug public-readme-english-only
+  decl ~/core/hexa-lang/tool/readme_english_audit.hexa .own.readme
+  scope need-singularity org 5 repos (n6-architecture / nexus / hexa-lang / anima / papers) root README.md MUST contain no Hangul (AC00..D7AF / Jamo / Compat Jamo) / Kana (Hiragana / Katakana) / CJK Unified (4E00..9FFF). Greek (σ φ τ λ μ ρ Ω) / math (J₂ σ² × ≤ ≥ → · ∞ √ ∑) / common punct (✅ ❌ — – ‒ … 「」『』) / units (° ℃ μm Å) PASS.
+  status live
+  since 2026-05-04
+  why Enforcement path for own#1 doc-english-required at the org-public surface. Manual review missed 158+ long-tail fragments at mk1 baseline. arXiv compatibility + international contribution + org landing consistency. Promoted to raw#33 ai-native-english-only (2026-04-21) per mk1 lineage.
+  invariant root README.md no-CJK pass
+  cross-repo-dep ~/core/hexa-lang/tool/readme_english_audit.hexa (8934 bytes, 2026-04-22; verified present)
+  own35-grandfather own#17 (2026-04-21) predates own#35 (2026-05-02). Cross-repo path-based access via `hexa` interpreter remains valid until hive resource exec migration (FU-deferred). raw#10 honest: this is a known own#35 cross-fire surface.
+  cognitive-frameworks own#1 (doc-english-required, deps)
+  cognitive-frameworks own#14 (readme-sealed-required, deps)
+  cognitive-frameworks own#35 (hive-resource-only-mandate, grandfathered)
+  cognitive-frameworks raw#33 (ai-native-english-only, mk1 promotion)
+  enforce hexa ~/core/hexa-lang/tool/readme_english_audit.hexa
+  ci-wiring .github/workflows/ci.yml:143-170,253 (readme-english-audit job; SOFT-skip on sister-repo checkout failure)
+  cron on-commit
+  on_fail block
+  exit-codes 0=PASS / 1=CJK-detected / 2=structural-error
+  label own#17 public-readme-english-only (live, cross-repo dep)
+
+own 20 live "readme-techniques-count-drift — README techniques count matches actual hexa file count (daily warn)"
+  slug readme-techniques-count-drift
+  decl README.md techniques/
+  scope README.md `<N> Techniques` token must equal `find techniques -name '*.hexa' -type f ! -name 'test_techniques*' | wc -l`. Drift -> warn (daily cron), not block.
+  status live
+  since 2026-05-04
+  why Migrated from mk1 loop-rules.json#1 (2026-04-21). Prevents doc-vs-fact drift; keeps README count in sync with disk reality. Audit 2026-05-04: README L208 `**225 Techniques**` = actual 225 hexa files -> MATCHED.
+  drift_doc README.md
+  drift_pattern (\d+) Techniques
+  drift_actual find techniques -name '*.hexa' -type f ! -name 'test_techniques*' | wc -l
+  cognitive-frameworks own#14 (sealed-hash, sibling-rule)
+  cognitive-frameworks own#21 (tests-count-drift, sibling-rule)
+  cron daily
+  on_fail warn
+  label own#20 readme-techniques-count-drift (live, MATCHED at audit)
+
+own 21 live "readme-nexus6-tests-count-drift — README NEXUS-6 test count matches reports/n6_selftest.json#total (daily warn; CURRENT DRIFT)"
+  slug readme-nexus6-tests-count-drift
+  decl README.md tool/own_nexus6_tests_drift.hexa reports/n6_selftest.json
+  scope README.md `tests:\s+\d+` token must equal `reports/n6_selftest.json#total`. WARN_NO_TOKEN when README has no token (SOFT, exit 0); DRIFT (exit 1) when token mismatches.
+  status live
+  since 2026-05-04
+  why Migrated from mk1 loop-rules.json#2 (2026-04-21). Lifted to live 2026-04-24 with tool/own_nexus6_tests_drift.hexa parity to own#20. Authoritative source = reports/n6_selftest.json#total; README extraction = drift_pattern.
+  drift_doc README.md
+  drift_pattern tests:\s+\d+
+  drift_actual hexa tool/own_nexus6_tests_drift.hexa
+  current-state DRIFT — README L70 `NEXUS tests:    1116` + L7 badge `NEXUS-1116%20tests` vs reports/n6_selftest.json#total = 51 (audit 2026-05-04). policy decision deferred (which value is canonical; see caveat 3 in handoff).
+  cognitive-frameworks own#14 (sealed-hash, sibling-rule)
+  cognitive-frameworks own#20 (techniques-count-drift, sibling-rule)
+  enforce hexa tool/own_nexus6_tests_drift.hexa
+  ci-wiring .github/workflows/ci.yml:341-349 (drift detection job; --verbose)
+  cron daily
+  on_fail warn
+  exit-codes 0=PASS-or-WARN_NO_TOKEN / 1=DRIFT
+  label own#21 readme-nexus6-tests-count-drift (live, CURRENT DRIFT — fix scope deferred)
+
+own 29 live "readme-friendly-toolkit-required — README friendly toolkit table 7-column generalized across 32 mandatory sections (HARD, P0)"
+  slug readme-friendly-toolkit-required
+  decl README.md tool/own_doc_lint.hexa tool/own29_readme_friendly_toolkit_lint.hexa
+  scope HARD block — README.md per-section friendly toolkit table contract. Each section in mandatory-sections list MUST contain: H2 heading match + 7-column header (🛸 alien-grade reach FIRST cell; <Mainstream> contrast variation per section) + ≥min_rows data rows + each row first cell integer 0..999 + each row last cell `[doc](domains/<axis>/<slug>/<slug>.md)` resolving via test -f. P0 PRIORITY: this rule is the alien-grade alignment SSOT — n=6 master identity (own#2) anchored directly in Mainstream contrast cell per Fusion/Chip precedent.
+  status live
+  since 2026-05-04
+  why README.md mk1 governance accumulated dense technical tables (cycle 14-22) -> friendly Molecular Toolkit (HEXA family) 6-column block (cycle 25) -> generalized multi-section spec (cycle 25 strengthening) -> 🛸 alien-grade-reach prepended as first column making 7-column header (cycle 29 strengthening 2026-04-29 per user "외계인 지수 / 현재 도달지수 / 🛸 이모지 단독 / lint 반드시 필요"). mk2 reconstruction adds Pets + Apps as 31st + 32nd mandatory-sections (README has Pets at L539 + Apps at L570; mk1 .own had only 30). User directive 2026-05-04: "이 구성에 가장중요!!!!" — toolkit table structure preservation = top priority.
+  mandatory-sections biology=## 🧬 Molecular Toolkit (HEXA family)|min_rows=4|axis=biology|contrast=AlphaFold
+  mandatory-sections ai_ml=## 🤖 AI Toolkit (HEXA-AI family)|min_rows=3|axis=compute|contrast=Mainstream
+  mandatory-sections environment=## 🌿 Environment Toolkit (HEXA-Earth family)|min_rows=3|axis=infra|contrast=Mainstream
+  mandatory-sections energy=## ⚡ Energy Toolkit (HEXA-Power family)|min_rows=3|axis=energy|contrast=Mainstream
+  mandatory-sections robotics=## 🤖 Robotics Toolkit (HEXA-Mech family)|min_rows=3|axis=infra|contrast=Mainstream
+  mandatory-sections physics_math=## 🔬 Physics Toolkit (HEXA-Phys family)|min_rows=3|axis=physics|contrast=Mainstream
+  mandatory-sections fusion=## 🔥 Fusion Toolkit (HEXA-Fusion family)|min_rows=3|axis=energy|contrast=Mainstream
+  mandatory-sections chip=## 💻 Chip Toolkit (HEXA-Silicon family)|min_rows=3|axis=compute|contrast=Mainstream
+  mandatory-sections materials=## 🧬 Materials Toolkit (HEXA-Matter family)|min_rows=3|axis=materials|contrast=Mainstream
+  mandatory-sections software_infra=## 💬 Software & Infra Toolkit (HEXA-Stack family)|min_rows=3|axis=compute|contrast=Mainstream
+  mandatory-sections display=## 📺 Display Toolkit (HEXA-Visual family)|min_rows=3|axis=compute|contrast=Mainstream
+  mandatory-sections audio=## 🎵 Audio Toolkit (HEXA-Sound family)|min_rows=3|axis=culture|contrast=Mainstream
+  mandatory-sections safety=## 🛡️ Safety Toolkit (HEXA-Safe family)|min_rows=3|axis=infra|contrast=Mainstream
+  mandatory-sections play=## 🎪 Play Toolkit (HEXA-Joy family)|min_rows=2|axis=infra|contrast=Mainstream
+  mandatory-sections aerospace=## 🚀 Aerospace Toolkit (HEXA-Space family)|min_rows=3|axis=space|contrast=Mainstream
+  mandatory-sections ufo=## 🛸 HEXA-UFO Toolkit (HEXA-Disc family)|min_rows=3|axis=sf-ufo|contrast=Mainstream
+  mandatory-sections frontier=## 🔭 Frontier Toolkit (HEXA-Beyond family)|min_rows=3|axis=physics|contrast=Mainstream
+  mandatory-sections civilization=## 🏛️ Civilization Toolkit (HEXA-Heritage family)|min_rows=3|axis=culture|contrast=Mainstream
+  mandatory-sections life_culture=## 🍷 Life & Culture Toolkit (HEXA-Living family)|min_rows=3|axis=life|contrast=Mainstream
+  mandatory-sections tech_industry=## 🔧 Tech & Industry Toolkit (HEXA-Industrial family)|min_rows=3|axis=infra|contrast=Mainstream
+  mandatory-sections computer=## 💻 Computer Toolkit (HEXA-Input family)|min_rows=2|axis=compute|contrast=Mainstream
+  mandatory-sections marketing=## 📢 Marketing Toolkit (HEXA-Service family)|min_rows=2|axis=compute|contrast=Mainstream
+  mandatory-sections millennium=## 🧮 Millennium Toolkit (HEXA-Clay family)|min_rows=3|axis=physics|contrast=Mainstream
+  mandatory-sections dimensional=## 👁️ Dimensional Perception Toolkit (HEXA-Sense family)|min_rows=3|axis=physics|contrast=Mainstream
+  mandatory-sections music=## 🎵 Music Toolkit (HEXA-Tone family)|min_rows=3|axis=culture|contrast=Mainstream
+  mandatory-sections linguistics=## 📝 Linguistics Toolkit (HEXA-Word family)|min_rows=3|axis=culture|contrast=Mainstream
+  mandatory-sections crypto=## 🔐 Crypto Toolkit (HEXA-Cipher family)|min_rows=3|axis=compute|contrast=Mainstream
+  mandatory-sections astronomy=## 🔭 Astronomy Toolkit (HEXA-Cosmos family)|min_rows=3|axis=space|contrast=Mainstream
+  mandatory-sections hygiene=## 🧴 Hygiene Toolkit (HEXA-Cleanse family)|min_rows=2|axis=life|contrast=Mainstream
+  mandatory-sections fantasy=## 🐉 Fantasy Toolkit (HEXA-Myth family)|min_rows=3|axis=sf-ufo|contrast=Mainstream
+  mandatory-sections pets=## 🐾 Pets Toolkit (HEXA-Companion family)|min_rows=2|axis=pets|contrast=Commodity
+  mandatory-sections apps=## 📱 Apps Toolkit (HEXA-Mobile family)|min_rows=3|axis=apps|contrast=Mainstream
+  expected-header-row | 🛸 | Tool | One-liner | Everyday analogy | What it does | <Mainstream> contrast | Doc |
+  expected-header-row-variants Mainstream contrast (default 30 sections) / AlphaFold contrast (biology only) / Commodity contrast (pets only)
+  recommendation Mainstream-contrast cell SHOULD anchor n=6 master identity (own#2): σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24 / σ²=144 / σ·τ=48 / σ·J₂=288 — see Fusion L116 + Chip L147 precedent. NOT enforced (informational only); enforcement deferred until alien-grade-anchor lint exists.
+  invariant H2 heading literal match per mandatory-sections row
+  invariant 7-column header row exact match (modulo <Mainstream> variation)
+  invariant data rows >= min_rows after header + alignment row
+  invariant first cell integer 0..999 (alien-grade-reach)
+  invariant last cell [doc](domains/<axis>/<slug>/<slug>.md) resolves via test -f
+  cognitive-frameworks own#1 (doc-english-required, applies to README.md)
+  cognitive-frameworks own#2 (n6-master-identity, recommended anchor in Mainstream contrast cell)
+  cognitive-frameworks own#14 (sealed-hash, sibling-rule)
+  cognitive-frameworks own#17 (english-only, sibling-rule)
+  enforce-primary hexa tool/own_doc_lint.hexa --rule 29 (multi-section dispatcher; reads mandatory-sections from THIS .own.readme — wiring verification deferred to FU-2)
+  enforce-secondary hexa tool/own29_readme_friendly_toolkit_lint.hexa (biology-only standalone gate; selftest 6/6 PASS at audit 2026-05-04 via darwin-bypass-marker route)
+  ci-wiring NONE direct (current ci.yml omits own#29; FU-4 adds own#29 ci wiring)
+  cron on-commit
+  on_fail block
+  label own#29 readme-friendly-toolkit-required HARD (P0 priority — alien-grade alignment SSOT)
+  note mk2 reconstruction 2026-05-04. mk1 had 30 mandatory-sections; mk2 adds Pets (axis=pets, contrast=Commodity, min_rows=2) and Apps (axis=apps, contrast=Mainstream, min_rows=3) per 2026-05-04 audit (README L539 + L570 already conformant). 32 mandatory-sections total. Current README has 33 toolkit sections (32 mandatory + 1 implicit — verified all 30 mk1 mandatory headings present verbatim). User directive 2026-05-04: "이 구성에 가장중요!!!!" — toolkit-table structure = highest priority across all README invariants.
+  follow-up FU-2 — verify tool/own_doc_lint.hexa --rule 29 reads mandatory-sections from .own.readme (parser wiring may need 1-line additive update)
+  follow-up FU-3 — extend tool/own29_readme_friendly_toolkit_lint.hexa from biology-only to multi-section (or emit tool/own29_multi_section_lint.hexa)
+  follow-up FU-4 — add own#29 ci.yml wiring (currently absent; own#14/17/20/21 wired but own#29 not directly invoked)
+  follow-up FU-fix-hexa-runtime — restore `hexa run` mac route (currently fails `interp interpreter not found`); selftest path works via darwin-bypass-marker, live README scan does not

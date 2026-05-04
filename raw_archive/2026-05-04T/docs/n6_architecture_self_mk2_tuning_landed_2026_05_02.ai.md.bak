@@ -6,7 +6,7 @@ ssot:
   index: INDEX.json (1.0.0, 9-axis manifest)
   domains_index: domains/_index.json (1.7.0, 393 domains, 13 axes)
   atlas: atlas/atlas.n6 (axis-A through axis-L, K_core=22 saturation edge)
-  retired_predecessor_ssot: confirmed (2026-05-02; no .roadmap.* files at repo root)
+  retired_mk1_ssot: confirmed (2026-05-02; no .roadmap.* files at repo root)
 related_raws:
   - hive raw 270 (core-module-architecture-mandate)
   - hive raw 271 (readme-ai-native-mandate)
@@ -34,7 +34,7 @@ omega_cycle: 6-step single-pass (audit -> plan -> raw triplet -> handoff -> mark
 
 > **TL;DR for the implementer**
 >
-> n6-architecture the prior baseline SSOT (single repo-root `.roadmap`) retired. This doc proposes (a) **per-domain `.roadmap.<domain>` fan-out** mirroring the 13-axis `domains/_index.json` taxonomy, (b) **raw 270/271/272/273 hexa-side adoption** via the `core/<feature>/` + `modules/<feature>/` + `README.ai.md` pattern collapsed into hive raw.mk2 arch.001, and (c) **deferred impl** — this cycle ships PLAN + handoff + marker only. Migration of any existing structure is **prohibited**; the plan is **purely additive**.
+> n6-architecture mk1 SSOT (single repo-root `.roadmap`) retired. This doc proposes (a) **per-domain `.roadmap.<domain>` fan-out** mirroring the 13-axis `domains/_index.json` taxonomy, (b) **raw 270/271/272/273 hexa-side adoption** via the `core/<feature>/` + `modules/<feature>/` + `README.ai.md` pattern collapsed into hive raw.mk2 arch.001, and (c) **deferred impl** — this cycle ships PLAN + handoff + marker only. Migration of any existing structure is **prohibited**; the plan is **purely additive**.
 
 ## §1 Phase 1 — Repo audit findings
 
@@ -158,10 +158,10 @@ Each `.roadmap.<domain>` MUST include:
 
 # upstream
 - depends_on .roadmap.n6_architecture (meta-spine)
-- absorbs (none) — additive only, predecessor retired
+- absorbs (none) — additive only, mk1 retired
 
 # raw#10 honest
-- additive only; earlier `.roadmap` retired (no migration)
+- additive only; mk1 .roadmap retired (no migration)
 - evidence_sources are read-only; no rewrites
 ```
 
@@ -275,7 +275,7 @@ Per session prompt: `friendly preset (handoff doc only)`. impl does NOT receive 
 
 ## §6 raw#10 caveats (15 honest items)
 
-1. **The prior baseline SSOT retirement scope unverified at agent-spawn**: prompt asserts "the prior baseline SSOT 폐기 완료" — confirmed via repo-root absence of `.roadmap` / `.roadmap.*` files. Worktree-local `.roadmap` artefacts (3 worktrees: agent-add0758622241ad36 / agent-a4a66d7e / agent-ab556f12ea2cdfd52) are NOT repo-root SSOTs.
+1. **mk1 SSOT retirement scope unverified at agent-spawn**: prompt asserts "mk1 SSOT 폐기 완료" — confirmed via repo-root absence of `.roadmap` / `.roadmap.*` files. Worktree-local `.roadmap` artefacts (3 worktrees: agent-add0758622241ad36 / agent-a4a66d7e / agent-ab556f12ea2cdfd52) are NOT repo-root SSOTs.
 
 2. **n6 `core/<feature>/` + `modules/<feature>/` pattern absent at present**: raw 270 mandate triggers only for ≥2 implementations of the same feature. Engine/ + tool/ flat cardinality means raw 270 is N/A today; raw 271 README.ai.md is the only universal trigger.
 
