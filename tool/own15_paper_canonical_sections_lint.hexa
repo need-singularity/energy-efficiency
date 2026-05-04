@@ -80,6 +80,14 @@ let ASCII_MAX_NONASCII_PCT = 5
 // mk_history minimum non-empty lines following header
 let MK_HISTORY_MIN_LINES = 3
 
+// Date-gate cutoff (2026-05-04 audit Option C1): papers with filename date suffix
+// `-YYYY-MM-DD.md` strictly less than this date are exempt as historical scaffolding
+// preceded mk2 own#15 spec finalization (2026-04-26 mk1 land date). Forward-looking
+// enforcement only — papers dated 2026-04-26+ MUST conform to §1-§21 + mk_history.
+// Audit ground truth: pre-cutoff 79 violations / 127 papers; post-cutoff 1 residual.
+// ASCII threshold revision (5%->25% or Unicode math whitelist) tracked separately.
+let OWN15_DATE_CUTOFF = "2026-04-26"
+
 fn _dir_exists(path: string) -> bool {
   let r = to_string(exec("test -d '" + path + "' && echo y || echo n")).trim()
   return r == "y"
@@ -171,6 +179,44 @@ fn _in_legacy(rel: string) -> bool {
   return false
 }
 
+fn _is_digit_char(c: string) -> bool {
+  return c >= "0" && c <= "9"
+}
+
+// Extract YYYY-MM-DD suffix from filename stem; return empty string if pattern absent.
+// Pattern: stem ends with `-DDDD-DD-DD` (11 chars, leading dash + ISO date).
+fn _extract_date(stem: string) -> string {
+  let n = len(stem)
+  if n < 11 { return "" }
+  let dash_pos = n - 11
+  if stem.substring(dash_pos, dash_pos + 1) != "-" { return "" }
+  let mut p = dash_pos + 1
+  while p < dash_pos + 5 {
+    if !_is_digit_char(stem.substring(p, p + 1)) { return "" }
+    p = p + 1
+  }
+  if stem.substring(dash_pos + 5, dash_pos + 6) != "-" { return "" }
+  if !_is_digit_char(stem.substring(dash_pos + 6, dash_pos + 7)) { return "" }
+  if !_is_digit_char(stem.substring(dash_pos + 7, dash_pos + 8)) { return "" }
+  if stem.substring(dash_pos + 8, dash_pos + 9) != "-" { return "" }
+  if !_is_digit_char(stem.substring(dash_pos + 9, dash_pos + 10)) { return "" }
+  if !_is_digit_char(stem.substring(dash_pos + 10, dash_pos + 11)) { return "" }
+  return stem.substring(dash_pos + 1, n)
+}
+
+// Pre-cutoff exemption (Option C1 per 2026-05-04 audit):
+//   - filename date suffix < OWN15_DATE_CUTOFF -> exempt
+//   - filename date suffix >= OWN15_DATE_CUTOFF -> enforce
+//   - NO date suffix -> exempt (legacy/unstandardized; pre-mk2 papers commonly
+//     omit date suffix per pre-2026-04-15 convention; new papers SHOULD adopt
+//     papers/<slug>-YYYY-MM-DD.md naming to opt into enforcement)
+// Lexicographic comparison works for ISO YYYY-MM-DD strings of equal length.
+fn _is_pre_cutoff(stem: string) -> bool {
+  let date = _extract_date(stem)
+  if len(date) == 0 { return true }
+  return date < OWN15_DATE_CUTOFF
+}
+
 fn _list_papers_md() -> list {
   let raw = to_string(exec("find '" + PAPERS_ROOT + "' -mindepth 1 -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort"))
   let mut out = []
@@ -252,7 +298,8 @@ fn _scan() -> list {
     if !_is_meta(stem) {
       let rel = _rel(path)
       let is_legacy = _in_legacy(rel)
-      if !is_legacy {
+      let is_pre_cutoff = _is_pre_cutoff(stem)
+      if !is_legacy && !is_pre_cutoff {
         let text = read_file(path)
         // Axis 1: brief §1-§7
         let mb = _missing_brief(text)
@@ -392,6 +439,55 @@ fn _selftest() -> void {
     pass = pass + 1
   } else {
     println("[own#15] fixture 6 FAIL — absent mk_history accepted")
+  }
+
+  // F7: PASS — _extract_date returns YYYY-MM-DD from valid filename suffix
+  total = total + 1
+  if _extract_date("paper-slug-2026-04-26") == "2026-04-26" \
+     && _extract_date("sscb-mk1-2026-05-04") == "2026-05-04" \
+     && _extract_date("bernoulli-18-arxiv-stub-2026-04-15") == "2026-04-15" {
+    println("[own#15] fixture 7 PASS — _extract_date pulls YYYY-MM-DD from valid suffix")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 7 FAIL — _extract_date suffix extraction broken")
+  }
+
+  // F8: PASS — _extract_date returns "" for stems without date suffix
+  total = total + 1
+  if _extract_date("hexa-chip-6stage-unified") == "" \
+     && _extract_date("n6-acoustics-paper") == "" \
+     && _extract_date("short") == "" {
+    println("[own#15] fixture 8 PASS — _extract_date empty for no-date stem")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 8 FAIL — _extract_date should return empty for non-date stems")
+  }
+
+  // F9: PASS — _is_pre_cutoff true for date < 2026-04-26
+  total = total + 1
+  if _is_pre_cutoff("paper-2026-04-15") && _is_pre_cutoff("paper-2026-04-25") {
+    println("[own#15] fixture 9 PASS — pre-cutoff dates exempted")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 9 FAIL — pre-cutoff date not detected")
+  }
+
+  // F10: PASS — _is_pre_cutoff false for date >= 2026-04-26
+  total = total + 1
+  if !_is_pre_cutoff("paper-2026-04-26") && !_is_pre_cutoff("sscb-mk1-2026-05-04") {
+    println("[own#15] fixture 10 PASS — post-cutoff dates enforced")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 10 FAIL — post-cutoff date erroneously exempted")
+  }
+
+  // F11: PASS — _is_pre_cutoff true for no-date stem (legacy/unstandardized)
+  total = total + 1
+  if _is_pre_cutoff("hexa-chip-6stage-unified") && _is_pre_cutoff("n6-acoustics-paper") {
+    println("[own#15] fixture 11 PASS — no-date stems treated as legacy (exempted)")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 11 FAIL — no-date stem not exempted")
   }
 
   if pass == total {

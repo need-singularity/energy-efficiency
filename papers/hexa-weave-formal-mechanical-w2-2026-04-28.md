@@ -635,7 +635,7 @@ Cycle-8 prepared the artifact for an Option-A Zenodo deposit; cycle-14 closed th
 - **raw 53 deterministic-verifier**: the embedded sympy verify block in §7.1 is preserved verbatim across cycle-18 paper updates; output text `[6]` for `[2,50]` and `[2,1000]` is a fixed-point gate.
 - **raw 65/68 idempotent**: `bash tool/zenodo/gen_manifest.sh` and `bash tool/zenodo/gen_tarball.sh` are deterministic and re-runnable; paper re-generation under any cycle is safe (this is a markdown source file, not a generated artifact).
 
-## mk-history
+## mk_history
 
 - 2026-04-28T15:30:00Z — initial draft created as cycle-6 fan-out 5/5 external-disclosure Option-E deliverable. W2 AX-1 partial PASS recorded; verify-embedded Python block included; 5 raw 71 falsifiers declared.
 - 2026-04-28T15:35:00Z — embedded Python verify block extended to [2, 100] sweep beyond Lean's [2, 30] bounded interval; raw 70 SCALING axis updated.
