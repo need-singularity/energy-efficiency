@@ -1,0 +1,445 @@
+#!hexa strict
+// modules/chip_isa_n6/chip_isa_n6.hexa — Xn6 24-instruction ISA encoder/decoder
+//
+// @tool(slug="chip_isa_n6", desc="24-mnemonic n=6 ISA: encode asm ↔ decode hex (lossless roundtrip). 24 ops align to J₂=2σ. funct3=6 used + 2 reserved (=2³=8). variant=τ=4 per family.")
+// @usage(hexa run modules/chip_isa_n6/chip_isa_n6.hexa --encode "gemm.m r1, r2, r3")
+// @usage(hexa run modules/chip_isa_n6/chip_isa_n6.hexa --decode "<hex>")
+// @usage(hexa run modules/chip_isa_n6/chip_isa_n6.hexa --self-test)
+// @sentinel(__CHIP_ISA_N6__ <PASS|FAIL> [reason=<slug>])
+// @origin(rewrite of lost 502-LOC Python module via .hexa, sourced from
+//         ~/core/n6-architecture/domains/compute/chip-isa-n6/xn6-opcode-table/
+//         and ../xn6_asm_examples.hexa — funct3 × variant = 6×4 = J₂=24)
+//
+// Encoding (24-bit instruction word, σ-τ=8-bit opcode byte at top):
+//   bits[23:21] = funct3   (3 bits, op family — n=6 used + 2 reserved)
+//   bits[20:19] = variant  (2 bits, τ=4 stage selector)
+//   bits[18:14] = rd       (5 bits)
+//   bits[13:9]  = rs1      (5 bits)
+//   bits[8:4]   = rs2      (5 bits)
+//   bits[3:0]   = rsvd     (4 bits, must be 0; non-zero on decode → reserved-bits error)
+//
+// Total = 24 bits = J₂ = 6 hex chars. Master identity: σ·φ = n·τ = J₂ = 24.
+//
+// Number-theory primitives (defined locally; no shared lib import):
+//   N=6, PHI=2, TAU=4, SIGMA=12, SOPFR=5, J2=24
+//   funct3_used = N = 6 (gemm, softmax/sm, topk/tk, gate/gt, reduce/rd, conv6/conv)
+//   funct3_rsvd = 2  (reserved values 110 and 111 — encode rejects, decode flags)
+//   variants_per_family = TAU = 4 (00/01/10/11)
+//   total mnemonics = funct3_used × variants = N · τ = J₂ = 24
+
+// ─── n=6 anchors ──────────────────────────────────────────────
+
+fn _N() -> int { return 6 }
+fn _PHI() -> int { return 2 }
+fn _TAU() -> int { return 4 }
+fn _SIGMA() -> int { return 12 }
+fn _SOPFR() -> int { return 5 }
+fn _J2() -> int { return 24 }
+
+fn _assert_n6_identity() -> bool {
+    if _SIGMA() * _PHI() != _J2() { return false }
+    if _N() * _TAU() != _J2() { return false }
+    if _N() * _TAU() != 24 { return false }
+    return true
+}
+
+// ─── 24-mnemonic table (funct3, variant, mnemonic) ────────────
+// funct3 0 .. 5 are used; 6 and 7 are reserved.
+
+fn _mnemonic_table() -> array {
+    // [mnemonic, funct3, variant_bits]
+    // Ω₁ GEMM     funct3=000
+    // Ω₂ SOFTMAX  funct3=001
+    // Ω₃ TOPK     funct3=010
+    // Ω₄ GATE     funct3=011
+    // Ω₅ REDUCE   funct3=100
+    // Ω₆ CONV6    funct3=101
+    return [
+        ["gemm.m",     0, 0], ["gemm.a",     0, 1], ["gemm.tc",    0, 2], ["gemm.bf16",  0, 3],
+        ["sm.exp",     1, 0], ["sm.max",     1, 1], ["sm.sub",     1, 2], ["sm.norm",    1, 3],
+        ["tk.sort",    2, 0], ["tk.pick",    2, 1], ["tk.merge",   2, 2], ["tk.idx",     2, 3],
+        ["gt.mul",     3, 0], ["gt.and",     3, 1], ["gt.or",      3, 2], ["gt.xor",     3, 3],
+        ["rd.sum",     4, 0], ["rd.max",     4, 1], ["rd.min",     4, 2], ["rd.mean",    4, 3],
+        ["conv.3x3",   5, 0], ["conv.1x1",   5, 1], ["conv.dw",    5, 2], ["conv.pw",    5, 3]
+    ]
+}
+
+fn _table_size() -> int { return 24 }   // = J₂ = 2σ
+
+// ─── hex helpers (no lib dep) ─────────────────────────────────
+
+fn _hex_digit(d: int) -> string {
+    if d == 0 { return "0" }
+    if d == 1 { return "1" }
+    if d == 2 { return "2" }
+    if d == 3 { return "3" }
+    if d == 4 { return "4" }
+    if d == 5 { return "5" }
+    if d == 6 { return "6" }
+    if d == 7 { return "7" }
+    if d == 8 { return "8" }
+    if d == 9 { return "9" }
+    if d == 10 { return "a" }
+    if d == 11 { return "b" }
+    if d == 12 { return "c" }
+    if d == 13 { return "d" }
+    if d == 14 { return "e" }
+    if d == 15 { return "f" }
+    return "?"
+}
+
+fn _hex_value(c: string) -> int {
+    if c == "0" { return 0 }
+    if c == "1" { return 1 }
+    if c == "2" { return 2 }
+    if c == "3" { return 3 }
+    if c == "4" { return 4 }
+    if c == "5" { return 5 }
+    if c == "6" { return 6 }
+    if c == "7" { return 7 }
+    if c == "8" { return 8 }
+    if c == "9" { return 9 }
+    if c == "a" || c == "A" { return 10 }
+    if c == "b" || c == "B" { return 11 }
+    if c == "c" || c == "C" { return 12 }
+    if c == "d" || c == "D" { return 13 }
+    if c == "e" || c == "E" { return 14 }
+    if c == "f" || c == "F" { return 15 }
+    return -1
+}
+
+fn _to_hex6(word: int) -> string {
+    // 24-bit word -> 6-char lowercase hex (zero padded MSB-first)
+    let mut w = word
+    let mut out = ""
+    let mut k = 0
+    while k < 6 {
+        let d = w % 16
+        out = _hex_digit(d) + out
+        w = w / 16
+        k = k + 1
+    }
+    return out
+}
+
+fn _from_hex(hex: string) -> int {
+    // Parse 1..6-char hex string into int. Strips optional 0x/0X prefix.
+    let mut s = hex.trim()
+    if len(s) >= 2 {
+        let p = s.substring(0, 2)
+        if p == "0x" || p == "0X" { s = s.substring(2, len(s)) }
+    }
+    if len(s) == 0 { return -1 }
+    if len(s) > 6 { return -1 }
+    let mut v = 0
+    let mut i = 0
+    while i < len(s) {
+        let c = s.substring(i, i + 1)
+        let d = _hex_value(c)
+        if d < 0 { return -1 }
+        v = v * 16 + d
+        i = i + 1
+    }
+    return v
+}
+
+// ─── register parser ──────────────────────────────────────────
+
+fn _parse_reg(tok: string) -> int {
+    // "r0".."r31" -> 0..31; on error returns -1
+    let t = tok.trim()
+    if len(t) < 2 { return -1 }
+    if t.substring(0, 1) != "r" { return -1 }
+    let rest = t.substring(1, len(t))
+    if len(rest) == 0 || len(rest) > 2 { return -1 }
+    let mut v = 0
+    let mut i = 0
+    while i < len(rest) {
+        let c = rest.substring(i, i + 1)
+        if c < "0" || c > "9" { return -1 }
+        let d = _hex_value(c)
+        v = v * 10 + d
+        i = i + 1
+    }
+    if v < 0 || v > 31 { return -1 }
+    return v
+}
+
+fn _reg_str(r: int) -> string {
+    return "r" + to_string(r)
+}
+
+// ─── lookup: mnemonic -> (funct3, variant) ────────────────────
+
+fn _lookup_mnemonic(mn: string) -> array {
+    // Returns [funct3, variant] or [-1, -1] on miss.
+    let table = _mnemonic_table()
+    let mut i = 0
+    while i < len(table) {
+        let row = table[i]
+        if row[0] == mn { return [row[1], row[2]] }
+        i = i + 1
+    }
+    return [-1, -1]
+}
+
+fn _lookup_opcode(funct3: int, variant: int) -> string {
+    // Returns mnemonic or "" on miss (reserved or invalid).
+    let table = _mnemonic_table()
+    let mut i = 0
+    while i < len(table) {
+        let row = table[i]
+        if row[1] == funct3 && row[2] == variant { return row[0] }
+        i = i + 1
+    }
+    return ""
+}
+
+// ─── encode / decode ──────────────────────────────────────────
+
+fn encode(asm: string) -> string {
+    // Parses "<mnemonic> rd, rs1, rs2" into 24-bit hex word.
+    // On error, prints sentinel + exits 1.
+    let s = asm.trim()
+    if len(s) == 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=empty-asm fix=provide '<mnemonic> rd, rs1, rs2'")
+        exit(1)
+    }
+    // Split on first space → mnemonic + operand-list
+    let sp = s.index_of(" ")
+    if sp < 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=missing-operands asm=" + s + " fix=add 3 register operands")
+        exit(1)
+    }
+    let mn = s.substring(0, sp).trim()
+    let ops_raw = s.substring(sp + 1, len(s)).trim()
+    let lookup = _lookup_mnemonic(mn)
+    if lookup[0] < 0 {
+        // funct3=6 or 7 is reserved; that's a separate error class — but here
+        // we never even reach those values: the table only has funct3 0..5.
+        eprintln("__CHIP_ISA_N6__ FAIL reason=unknown-mnemonic mn=" + mn + " fix=use one of the 24 listed ops (gemm.*, sm.*, tk.*, gt.*, rd.*, conv.*)")
+        exit(1)
+    }
+    let funct3 = lookup[0]
+    let variant = lookup[1]
+    // Funct3 reservation guard: by construction the table excludes funct3 6,7.
+    if funct3 >= 6 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=reserved-funct3 funct3=" + to_string(funct3) + " fix=funct3 ∈ {0..5}; 6,7 are reserved")
+        exit(1)
+    }
+    let parts = ops_raw.split(",")
+    if len(parts) != 3 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=bad-operand-count count=" + to_string(len(parts)) + " fix=exactly 3 comma-separated regs")
+        exit(1)
+    }
+    let rd = _parse_reg(parts[0])
+    let rs1 = _parse_reg(parts[1])
+    let rs2 = _parse_reg(parts[2])
+    if rd < 0 || rs1 < 0 || rs2 < 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=bad-register fix=use r0..r31")
+        exit(1)
+    }
+    // Pack: funct3<<21 | variant<<19 | rd<<14 | rs1<<9 | rs2<<4 | 0
+    let word = (funct3 * 2097152) + (variant * 524288) + (rd * 16384) + (rs1 * 512) + (rs2 * 16) + 0
+    return _to_hex6(word)
+}
+
+fn decode(b: string) -> string {
+    // Parses 24-bit hex word into "<mnemonic> rd, rs1, rs2".
+    let word = _from_hex(b)
+    if word < 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=bad-hex hex=" + b + " fix=hex must be 1..6 chars [0-9a-fA-F], optional 0x prefix")
+        exit(1)
+    }
+    if word > 16777215 {
+        // > 24 bits
+        eprintln("__CHIP_ISA_N6__ FAIL reason=hex-overflow hex=" + b + " fix=hex must fit in 24 bits (max 0xffffff)")
+        exit(1)
+    }
+    let funct3 = word / 2097152
+    let r1 = word % 2097152
+    let variant = r1 / 524288
+    let r2 = r1 % 524288
+    let rd = r2 / 16384
+    let r3 = r2 % 16384
+    let rs1 = r3 / 512
+    let r4 = r3 % 512
+    let rs2 = r4 / 16
+    let rsvd = r4 % 16
+    if rsvd != 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=nonzero-rsvd-bits rsvd=" + to_string(rsvd) + " fix=low 4 bits must be 0 in this ISA")
+        exit(1)
+    }
+    if funct3 >= 6 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=reserved-funct3 funct3=" + to_string(funct3) + " fix=funct3 6,7 are reserved")
+        exit(1)
+    }
+    let mn = _lookup_opcode(funct3, variant)
+    if len(mn) == 0 {
+        eprintln("__CHIP_ISA_N6__ FAIL reason=opcode-table-miss funct3=" + to_string(funct3) + " variant=" + to_string(variant))
+        exit(1)
+    }
+    return mn + " " + _reg_str(rd) + ", " + _reg_str(rs1) + ", " + _reg_str(rs2)
+}
+
+fn roundtrip_test(asm: string) -> bool {
+    let hex = encode(asm)
+    let back = decode(hex)
+    if back != asm { return false }
+    return true
+}
+
+// ─── self-test ───────────────────────────────────────────────
+
+fn _self_test() -> void {
+    println("=== chip_isa_n6 --self-test ===")
+    if !_assert_n6_identity() {
+        println("__CHIP_ISA_N6__ FAIL reason=n6-identity fix=verify σ·φ=n·τ=24")
+        exit(1)
+    }
+    println("  σ·φ=n·τ=" + to_string(_J2()) + " PASS")
+    let table = _mnemonic_table()
+    if len(table) != _table_size() {
+        println("__CHIP_ISA_N6__ FAIL reason=table-size got=" + to_string(len(table)) + " expected=24 fix=fix mnemonic table")
+        exit(1)
+    }
+    println("  mnemonic count=" + to_string(len(table)) + " (=J₂=2σ) PASS")
+    // 1) every op roundtrips with a canonical operand triple
+    let mut i = 0
+    let mut ok = 0
+    while i < len(table) {
+        let row = table[i]
+        let mn = row[0]
+        let asm = mn + " r1, r2, r3"
+        if !roundtrip_test(asm) {
+            println("__CHIP_ISA_N6__ FAIL reason=roundtrip mn=" + mn + " asm=" + asm)
+            exit(1)
+        }
+        ok = ok + 1
+        i = i + 1
+    }
+    println("  24/24 roundtrip canonical (r1,r2,r3) PASS")
+    // 2) varied register operands, each op
+    let regs = [["r0", "r0", "r0"], ["r31", "r31", "r31"], ["r5", "r10", "r17"], ["r1", "r2", "r3"]]
+    let mut j = 0
+    let mut ok2 = 0
+    while j < len(table) {
+        let row = table[j]
+        let mn = row[0]
+        let mut k = 0
+        while k < len(regs) {
+            let r = regs[k]
+            let asm = mn + " " + r[0] + ", " + r[1] + ", " + r[2]
+            if !roundtrip_test(asm) {
+                println("__CHIP_ISA_N6__ FAIL reason=roundtrip-vary asm=" + asm)
+                exit(1)
+            }
+            ok2 = ok2 + 1
+            k = k + 1
+        }
+        j = j + 1
+    }
+    println("  " + to_string(ok2) + "/" + to_string(_table_size() * 4) + " varied-reg roundtrip PASS")
+    // 3) multi-line program roundtrip
+    let prog = ["gemm.m r1, r2, r3", "sm.exp r4, r5, r0", "tk.pick r6, r7, r8", "gt.and r9, r10, r11", "rd.sum r12, r13, r14", "conv.3x3 r15, r16, r17"]
+    let mut p = 0
+    while p < len(prog) {
+        if !roundtrip_test(prog[p]) {
+            println("__CHIP_ISA_N6__ FAIL reason=multiline-roundtrip line=" + prog[p])
+            exit(1)
+        }
+        p = p + 1
+    }
+    println("  multi-line " + to_string(len(prog)) + "-instr program roundtrip PASS")
+    // 4) sample encoding sentinel
+    let s1 = encode("gemm.m r1, r2, r3")
+    println("  encode(gemm.m r1, r2, r3) = " + s1)
+    let s2 = decode(s1)
+    println("  decode(" + s1 + ") = " + s2)
+    if s2 != "gemm.m r1, r2, r3" {
+        println("__CHIP_ISA_N6__ FAIL reason=display-roundtrip got=" + s2)
+        exit(1)
+    }
+    // 5) negative-test validators (we test the predicates, not live exits)
+    if _lookup_mnemonic("bogus.op")[0] >= 0 {
+        println("__CHIP_ISA_N6__ FAIL reason=unknown-mnemonic-validator-broken fix=tighten _lookup_mnemonic")
+        exit(1)
+    }
+    println("  unknown-mnemonic validator PASS")
+    // reserved funct3 table-miss check
+    if len(_lookup_opcode(6, 0)) != 0 {
+        println("__CHIP_ISA_N6__ FAIL reason=reserved-funct3-6-leak fix=table must omit funct3 6,7")
+        exit(1)
+    }
+    if len(_lookup_opcode(7, 0)) != 0 {
+        println("__CHIP_ISA_N6__ FAIL reason=reserved-funct3-7-leak fix=table must omit funct3 6,7")
+        exit(1)
+    }
+    println("  reserved funct3 (6,7) validator PASS")
+    println("__CHIP_ISA_N6__ PASS ops=" + to_string(_table_size()) + " families=" + to_string(_N()) + " variants=" + to_string(_TAU()) + " word_bits=" + to_string(_J2()))
+    exit(0)
+}
+
+// ─── CLI ─────────────────────────────────────────────────────
+
+fn _print_help() -> void {
+    println("usage:")
+    println("  hexa run modules/chip_isa_n6/chip_isa_n6.hexa --encode '<mnemonic> rd, rs1, rs2'")
+    println("  hexa run modules/chip_isa_n6/chip_isa_n6.hexa --decode '<6-hex-chars>'")
+    println("  hexa run modules/chip_isa_n6/chip_isa_n6.hexa --self-test")
+    println("notes:")
+    println("  24-bit instruction, 6 hex chars. 24 mnemonics = funct3(6) × variant(τ=4).")
+}
+
+fn main() -> void {
+    let raw = args()
+    let mut cli = []
+    let mut ai = 2
+    while ai < len(raw) {
+        cli.push(raw[ai])
+        ai = ai + 1
+    }
+    let mut mode = ""
+    let mut payload = ""
+    let mut self_test = false
+    let mut i = 0
+    while i < len(cli) {
+        let a = cli[i]
+        if a == "--self-test" || a == "--selftest" { self_test = true }
+        else if a == "--encode" {
+            if i + 1 >= len(cli) {
+                eprintln("__CHIP_ISA_N6__ FAIL reason=missing-encode-arg fix=--encode 'gemm.m r1, r2, r3'")
+                exit(1)
+            }
+            mode = "encode"; payload = cli[i + 1]; i = i + 1
+        }
+        else if a == "--decode" {
+            if i + 1 >= len(cli) {
+                eprintln("__CHIP_ISA_N6__ FAIL reason=missing-decode-arg fix=--decode <hex>")
+                exit(1)
+            }
+            mode = "decode"; payload = cli[i + 1]; i = i + 1
+        }
+        else if a == "--help" || a == "-h" {
+            _print_help(); exit(0)
+        }
+        else {
+            eprintln("__CHIP_ISA_N6__ FAIL reason=unknown-arg arg=" + a)
+            exit(1)
+        }
+        i = i + 1
+    }
+    if self_test { _self_test() }
+    if mode == "encode" {
+        let h = encode(payload)
+        println(h)
+        exit(0)
+    }
+    if mode == "decode" {
+        let s = decode(payload)
+        println(s)
+        exit(0)
+    }
+    _print_help()
+    exit(1)
+}
