@@ -74,8 +74,17 @@ let IMPACT_HEADER = "## §21 IMPACT"
 // mk_history footer marker (underscore form mandated)
 let MK_HISTORY_HEADER = "## mk_history"
 
-// ASCII hygiene: max non-ASCII byte ratio
-let ASCII_MAX_NONASCII_PCT = 5
+// ASCII hygiene: max non-ASCII byte ratio.
+// 2026-05-04 audit Track A (Option X1): raised 5 -> 25 to accommodate the
+// n6-* domain template body cluster (62 papers stable at 22% non-ASCII)
+// driven by legitimate Unicode math/symbol notation:
+//   Greek (σ τ φ λ μ Ω), § symbol, em-dash —, arrows → ↓ ↑ ⟺,
+//   box-drawing │ ┌ ┘ ─, super/subscripts ² ³ ₀ ₁.
+// 25% provides ~3% headroom over the 22% cluster while still catching
+// truly-corrupted files (>50% non-ASCII = encoding error / binary leak).
+// Future cycle may upgrade to Option X2 (Unicode codepoint allowlist) if
+// false-negatives surface mixing legitimate-math + corruption.
+let ASCII_MAX_NONASCII_PCT = 25
 
 // mk_history minimum non-empty lines following header
 let MK_HISTORY_MIN_LINES = 3
@@ -204,17 +213,39 @@ fn _extract_date(stem: string) -> string {
   return stem.substring(dash_pos + 1, n)
 }
 
-// Pre-cutoff exemption (Option C1 per 2026-05-04 audit):
+// Git-log creation date fallback (2026-05-04 audit Track B): when a paper
+// lacks a `-YYYY-MM-DD` filename suffix, derive the file's first-add commit
+// date via `git log --diff-filter=A --follow --format=%cs`. Returns ISO
+// short date (YYYY-MM-DD) of the earliest add-commit, or "" when the file
+// is absent from git history (uncommitted new paper) or git unavailable.
+// own#35 hive-resource-only compliance: shell `git` only, already in PATH.
+fn _git_creation_date(rel: string) -> string {
+  let cmd = "git -C '" + REPO_ROOT + "' log --diff-filter=A --follow --format=%cs -- '" + rel + "' 2>/dev/null | tail -1"
+  return to_string(exec(cmd)).trim()
+}
+
+// Pre-cutoff exemption (Option C1 per 2026-05-04 audit + Track B fallback):
 //   - filename date suffix < OWN15_DATE_CUTOFF -> exempt
 //   - filename date suffix >= OWN15_DATE_CUTOFF -> enforce
-//   - NO date suffix -> exempt (legacy/unstandardized; pre-mk2 papers commonly
-//     omit date suffix per pre-2026-04-15 convention; new papers SHOULD adopt
-//     papers/<slug>-YYYY-MM-DD.md naming to opt into enforcement)
+//   - NO date suffix -> consult git creation date:
+//       - git creation < OWN15_DATE_CUTOFF -> exempt as legacy
+//       - git creation >= OWN15_DATE_CUTOFF -> enforce (forward-looking)
+//       - git creation absent (uncommitted) -> exempt as legacy (graceful
+//         default; preserve historical pre-mk2 papers that lack date suffix)
 // Lexicographic comparison works for ISO YYYY-MM-DD strings of equal length.
-fn _is_pre_cutoff(stem: string) -> bool {
+fn _is_pre_cutoff(stem: string, rel: string) -> bool {
   let date = _extract_date(stem)
-  if len(date) == 0 { return true }
-  return date < OWN15_DATE_CUTOFF
+  if len(date) > 0 {
+    return date < OWN15_DATE_CUTOFF
+  }
+  // No filename date -> check git creation date
+  let git_date = _git_creation_date(rel)
+  if len(git_date) >= 10 {
+    let iso = git_date.substring(0, 10)
+    return iso < OWN15_DATE_CUTOFF
+  }
+  // Neither filename nor git date -> exempt as legacy (preserve default)
+  return true
 }
 
 fn _list_papers_md() -> list {
@@ -298,7 +329,7 @@ fn _scan() -> list {
     if !_is_meta(stem) {
       let rel = _rel(path)
       let is_legacy = _in_legacy(rel)
-      let is_pre_cutoff = _is_pre_cutoff(stem)
+      let is_pre_cutoff = _is_pre_cutoff(stem, rel)
       if !is_legacy && !is_pre_cutoff {
         let text = read_file(path)
         // Axis 1: brief §1-§7
@@ -463,9 +494,11 @@ fn _selftest() -> void {
     println("[own#15] fixture 8 FAIL — _extract_date should return empty for non-date stems")
   }
 
-  // F9: PASS — _is_pre_cutoff true for date < 2026-04-26
+  // F9: PASS — _is_pre_cutoff true for date < 2026-04-26 (filename date wins;
+  // rel value irrelevant when filename date present — pass synthetic rel)
   total = total + 1
-  if _is_pre_cutoff("paper-2026-04-15") && _is_pre_cutoff("paper-2026-04-25") {
+  if _is_pre_cutoff("paper-2026-04-15", "papers/__synthetic_f9_a.md") \
+     && _is_pre_cutoff("paper-2026-04-25", "papers/__synthetic_f9_b.md") {
     println("[own#15] fixture 9 PASS — pre-cutoff dates exempted")
     pass = pass + 1
   } else {
@@ -474,20 +507,73 @@ fn _selftest() -> void {
 
   // F10: PASS — _is_pre_cutoff false for date >= 2026-04-26
   total = total + 1
-  if !_is_pre_cutoff("paper-2026-04-26") && !_is_pre_cutoff("sscb-mk1-2026-05-04") {
+  if !_is_pre_cutoff("paper-2026-04-26", "papers/__synthetic_f10_a.md") \
+     && !_is_pre_cutoff("sscb-mk1-2026-05-04", "papers/__synthetic_f10_b.md") {
     println("[own#15] fixture 10 PASS — post-cutoff dates enforced")
     pass = pass + 1
   } else {
     println("[own#15] fixture 10 FAIL — post-cutoff date erroneously exempted")
   }
 
-  // F11: PASS — _is_pre_cutoff true for no-date stem (legacy/unstandardized)
+  // F11: PASS — _is_pre_cutoff true for no-date stem when file absent from git
+  // (synthetic non-existent rel -> git_date "" -> graceful legacy exemption)
   total = total + 1
-  if _is_pre_cutoff("hexa-chip-6stage-unified") && _is_pre_cutoff("n6-acoustics-paper") {
-    println("[own#15] fixture 11 PASS — no-date stems treated as legacy (exempted)")
+  if _is_pre_cutoff("hexa-chip-6stage-unified", "papers/__synthetic_nonexistent_f11.md") \
+     && _is_pre_cutoff("n6-acoustics-paper", "papers/__synthetic_nonexistent_f11b.md") {
+    println("[own#15] fixture 11 PASS — no-date + no-git stems treated as legacy (exempted)")
     pass = pass + 1
   } else {
     println("[own#15] fixture 11 FAIL — no-date stem not exempted")
+  }
+
+  // F12: PASS — _git_creation_date returns YYYY-MM-DD for an in-repo file
+  // (use this lint tool itself; it has been committed and has a creation date).
+  total = total + 1
+  let f12_date = _git_creation_date("tool/own15_paper_canonical_sections_lint.hexa")
+  let mut f12_ok = false
+  if len(f12_date) >= 10 {
+    let f12_iso = f12_date.substring(0, 10)
+    if len(f12_iso) == 10 \
+       && f12_iso.substring(4, 5) == "-" \
+       && f12_iso.substring(7, 8) == "-" \
+       && _is_digit_char(f12_iso.substring(0, 1)) \
+       && _is_digit_char(f12_iso.substring(1, 2)) \
+       && _is_digit_char(f12_iso.substring(2, 3)) \
+       && _is_digit_char(f12_iso.substring(3, 4)) \
+       && _is_digit_char(f12_iso.substring(5, 6)) \
+       && _is_digit_char(f12_iso.substring(6, 7)) \
+       && _is_digit_char(f12_iso.substring(8, 9)) \
+       && _is_digit_char(f12_iso.substring(9, 10)) {
+      f12_ok = true
+    }
+  }
+  if f12_ok {
+    println("[own#15] fixture 12 PASS — _git_creation_date returns ISO YYYY-MM-DD for in-repo file")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 12 FAIL — _git_creation_date did not return valid ISO date (got '" + f12_date + "')")
+  }
+
+  // F13: PASS — _is_pre_cutoff with synthetic rel for non-existent file +
+  // no-date stem -> graceful exempt (git returns empty -> default legacy true)
+  total = total + 1
+  if _is_pre_cutoff("synthetic-no-date-stem", "papers/__synthetic_does_not_exist_f13.md") {
+    println("[own#15] fixture 13 PASS — non-existent file + no-date stem exempted as legacy")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 13 FAIL — non-existent + no-date should default to legacy exempt")
+  }
+
+  // F14: PASS — _is_pre_cutoff(stem, rel) 2-arg signature invocation smoke test
+  // (filename date present -> rel ignored, pure lexicographic comparison path)
+  total = total + 1
+  let f14_pre = _is_pre_cutoff("alpha-2025-01-01", "papers/__synthetic_f14.md")
+  let f14_post = _is_pre_cutoff("beta-2099-12-31", "papers/__synthetic_f14.md")
+  if f14_pre && !f14_post {
+    println("[own#15] fixture 14 PASS — _is_pre_cutoff 2-arg signature operates correctly")
+    pass = pass + 1
+  } else {
+    println("[own#15] fixture 14 FAIL — 2-arg signature smoke test failed")
   }
 
   if pass == total {
