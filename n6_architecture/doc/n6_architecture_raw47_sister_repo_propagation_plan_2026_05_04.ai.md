@@ -3,7 +3,7 @@ schema: n6-architecture/docs/raw47_sister_repo_propagation/ai-native/1
 last_updated: 2026-05-04
 ssot:
   proposal_only: true
-  predecessor_handoff: docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
+  predecessor_handoff: n6_architecture/doc/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
 related_raws: [raw 47, hive raw.mk2 arch.001]
 status: PROPOSAL (read-only investigation; no impl this cycle)
 policy:

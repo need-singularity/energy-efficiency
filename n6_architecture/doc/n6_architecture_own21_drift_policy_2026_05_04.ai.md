@@ -3,7 +3,7 @@ schema: n6-architecture/docs/own21_drift_policy/ai-native/1
 last_updated: 2026-05-04
 ssot:
   proposal_only: true
-  predecessor_handoff: docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
+  predecessor_handoff: n6_architecture/doc/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
 related_rules: [.own.readme own#21]
 status: PROPOSAL (caller policy decision required)
 policy:
@@ -117,7 +117,7 @@ omega_cycle: investigation-only
 2. **51 ≠ 54** — there are 54 scanner claim files but only 51 verdicts. The 3-claim gap is unexplained and may itself be a separate drift (scanner declared but not registered in selftest harness). This is OUT OF SCOPE for own#21 but should be tracked.
 3. **No selftest harness located.** The investigation could not find the tool that PRODUCES `reports/n6_selftest.json`. It must exist (the file is regenerated, per commit `e081a05e`), but it is not under `tool/n6_selftest*`. Possibly an external runner (engine/, hidden orchestrator, or shell-driven). This means the "tool that maintains it" claim in commit messages is unverified.
 4. **own#21 regex literal-coupling**: the drift_pattern `tests:\s+(\d+)` couples lint to the literal label "tests:". A D4 relabel breaks the lint unless the pattern is updated in lockstep. Caller should decide whether to keep label "tests:" (compromise) or update the lint regex (strict).
-5. **Predecessor reference is forward-dated**: the front-matter cites `docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md` which was not directly verified in this investigation. If absent, the `predecessor_handoff` field should be revised before commit.
+5. **Predecessor reference is forward-dated**: the front-matter cites `n6_architecture/doc/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md` which was not directly verified in this investigation. If absent, the `predecessor_handoff` field should be revised before commit.
 6. **No CI enforcement observed**: even after fixing drift, there is no mechanism preventing future TECS-L syncs from re-introducing a stale literal. Recommend adding own#21 to a pre-commit / pre-push hook gate.
 
 ## §7 Investigation provenance

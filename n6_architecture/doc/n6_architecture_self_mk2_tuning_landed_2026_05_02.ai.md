@@ -250,7 +250,7 @@ raw#10 honest: 2026-06-01 promotion is **gated on hive Stage-2 promotion succeed
 
 ### §4.1 Handoff (this doc)
 
-- path: `n6-architecture/docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md`
+- path: `n6-architecture/n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md`
 - frontmatter: AI-native (schema / last_updated / ssot / related_raws / related_docs / status / preset / policy / omega_cycle)
 - length target: ≤ 600 lines (current draft within budget)
 
@@ -320,7 +320,7 @@ Per session prompt: `friendly preset (handoff doc only)`. impl does NOT receive 
 
 | Path | Role |
 |---|---|
-| `n6-architecture/docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | this handoff doc |
+| `n6-architecture/n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | this handoff doc |
 | `n6-architecture/state/markers/n6_architecture_self_mk2_tuning_landed.marker` | landing marker (JSON) |
 | `n6-architecture/INDEX.json` | 9-axis manifest (read-only this cycle) |
 | `n6-architecture/domains/_index.json` | 13-axis 393-domain SSOT (read-only) |

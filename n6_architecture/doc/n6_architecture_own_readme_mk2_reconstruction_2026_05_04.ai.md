@@ -3,15 +3,15 @@ schema: n6-architecture/docs/own_readme_mk2_reconstruction/ai-native/1
 last_updated: 2026-05-04
 ssot:
   rule_file: .own.readme
-  predecessor_handoff: docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
-  sibling_handoff: docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md
+  predecessor_handoff: n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
+  sibling_handoff: n6_architecture/doc/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md
   axis_spine: .roadmap.n6_architecture (Tier-A planned, deferred per predecessor §2.1)
   retired_mk1_own: confirmed (mk1 .own 881L + 32 rules deleted at commit 442afa7b 2026-05-03)
   mk1_recovery_blob: /tmp/n6_own_mk1.txt (recovered via git show 442afa7b^:.own)
 related_raws: []  # README governance is n6-local + cross-repo (hexa-lang sister); hive raw 270/271/272/273 + arch.001 do NOT govern README content
 related_docs:
-  - docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md (predecessor handoff)
-  - docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md (sibling cycle — paper-md governance)
+  - n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md (predecessor handoff)
+  - n6_architecture/doc/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md (sibling cycle — paper-md governance)
   - .readme-rules.json (own#14 SSOT)
   - reports/n6_selftest.json (own#21 authoritative source)
 status: PLAN-LANDED (.own.readme emitted; Phase 2 lint coverage gap deferred)
@@ -156,7 +156,7 @@ own#1 (doc-english-required) / own#2 (n6-master-identity) / own#14 / own#17 / ow
 
 ### §4.1 Handoff (this doc)
 
-- path: `docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md`
+- path: `n6_architecture/doc/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md`
 - frontmatter: AI-native (schema / last_updated / ssot / related_raws / related_docs / status / preset / policy / omega_cycle)
 - length target: ≤ 250 lines
 
@@ -210,10 +210,10 @@ own#1 (doc-english-required) / own#2 (n6-master-identity) / own#14 / own#17 / ow
 | Path | Role |
 |---|---|
 | `.own.readme` | this cycle's declarative rule emit (5 rules; mk2 expansion to 32 mandatory-sections) |
-| `docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md` | this handoff doc |
+| `n6_architecture/doc/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md` | this handoff doc |
 | `state/markers/n6_architecture_own_readme_mk2_reconstruction.marker` | landing marker (JSON, gitignored) |
-| `docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md` | sibling cycle (paper-md governance) |
-| `docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | predecessor handoff (mk2 plan-land) |
+| `n6_architecture/doc/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md` | sibling cycle (paper-md governance) |
+| `n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | predecessor handoff (mk2 plan-land) |
 | `.readme-rules.json` | own#14 SSOT (sealed_hash field; require_sealed=true) |
 | `README.md.sealed.hash` | own#14 hash artifact |
 | `tool/readme_sealed_check.hexa` | own#14 enforce |

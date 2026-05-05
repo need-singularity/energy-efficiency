@@ -3,13 +3,13 @@ schema: n6-architecture/docs/own_group_p_mk2_reconstruction/ai-native/1
 last_updated: 2026-05-03
 ssot:
   rule_file: .own.group_p
-  predecessor_handoff: docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
+  predecessor_handoff: n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
   absolute_rules_anchor: n6shared/config/absolute_rules.json (N62 + PP2 + R29)
   axis_spine: .roadmap.group_p (Tier-A planned, deferred per predecessor handoff §2.1)
   retired_mk1_own: confirmed (mk1 .own 881L + 35 rules deleted at commit 442afa7b 2026-05-03)
 related_raws: []  # paper-md governance is n6-local; hive raw 270/271/272/273 + arch.001 do NOT govern paper-md content
 related_docs:
-  - docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md (parent handoff)
+  - n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md (parent handoff)
   - n6shared/config/absolute_rules.json (N62 / PP2 / R29 SSOT, predates `.own` reconstruction)
 status: PLAN-LANDED (.own.group_p emitted; Phase 2-5 deferred to follow-up cycles)
 preset: friendly (handoff doc + minimal rule emit; impl-heavy phases preserved for follow-up)
@@ -64,7 +64,7 @@ omega_cycle: 6-step single-pass (audit -> plan -> emit -> handoff -> marker -> c
 
 ### §1.4 Hive raw alignment
 
-- `docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md:194-220` (predecessor handoff §3.2) lists raw 270/271/272/273 + arch.001 n6-side adoption targets: T0 = `n6shared/n6/`, T1 = `engine/`, T2 = `tool/` — `papers/` **NOT in scope**
+- `n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md:194-220` (predecessor handoff §3.2) lists raw 270/271/272/273 + arch.001 n6-side adoption targets: T0 = `n6shared/n6/`, T1 = `engine/`, T2 = `tool/` — `papers/` **NOT in scope**
 - `/Users/<user>/core/hive/.raw.mk2` line 74 (arch.001) lists `papers` repo in scope but the rule applies to module architecture, NOT paper-md content
 - `grep paper/verify_block/fenced/python` in `/Users/<user>/core/hive/.raw.mk2` = 0 matches
 - **Conclusion**: paper-md governance is n6-local. `.own.group_p` does not declare hive raw cross-links.
@@ -125,7 +125,7 @@ own#2 (master identity) / own#31 (tautology ban) / own#32 (physical-limit framin
 
 ### §3.1 Handoff (this doc)
 
-- path: `docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md`
+- path: `n6_architecture/doc/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md`
 - frontmatter: AI-native (schema / last_updated / ssot / related_raws / related_docs / status / preset / policy / omega_cycle)
 - length target: ≤ 300 lines
 
@@ -182,9 +182,9 @@ own#2 (master identity) / own#31 (tautology ban) / own#32 (physical-limit framin
 | Path | Role |
 |---|---|
 | `.own.group_p` | this cycle's declarative rule emit (mk2 unified) |
-| `docs/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md` | this handoff doc |
+| `n6_architecture/doc/n6_architecture_own_group_p_mk2_reconstruction_2026_05_03.ai.md` | this handoff doc |
 | `state/markers/n6_architecture_own_group_p_mk2_reconstruction.marker` | landing marker (JSON) |
-| `docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | predecessor handoff (mk2 plan-land) |
+| `n6_architecture/doc/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md` | predecessor handoff (mk2 plan-land) |
 | `tool/own6_paper_verify_embedded_lint.hexa` | enforce-primary (active, 269 LoC) |
 | `tool/own31_verify_tautology_ban_lint.hexa` | enforce-secondary (active, papers/ scope live) |
 | `tool/own_doc_lint.hexa` | dispatcher (--rule 6 active; --rule 15 deferred) |
