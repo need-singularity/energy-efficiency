@@ -661,13 +661,28 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 
 ## 🛸 HEXA-UFO Toolkit (HEXA-Disc family)
 
-> Friendly entry point — UFO-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), three orthogonal sf-ufo-axis verbs (disc / hover / cloak).
+> Friendly entry point — UFO-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), two orthogonal sf-ufo-axis verbs (disc / cloak). **HEXA-HOVER is now classified under [Frontier Discoveries (next-gen RT-SC tech)](#-frontier-discoveries-next-gen-rt-sc-tech)** — Meissner-levitation hoverboard belongs to the RT-SC frontier rather than UFO disc-VTOL.
 
 | 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
 |:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
 | 10 | 🛸 **HEXA-UFO** | Disc-VTOL | Saucer that lifts off like a frisbee with no wings | RT-SC Meissner powerless levitation + MHD Mach 10 + Tabletop Fusion Q=10, D=J₂=24m, 49/49 EXACT | Helicopter rotor VTOL vs τ(6)=4-stage RT-SC + MHD + fusion disc | [doc](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
-| 10 | 🛹 **HEXA-HOVER** | Hoverboard | Skateboard that floats 10 cm above the ground | σ-φ=10cm levitation, (σ-φ)²·n=600kg payload, σ·τ=48km/h, σ²=144km range, 52/52 EXACT | Wheeled scooter vs σ(6)=12-magnet n=6 hex levitation array | [doc](domains/sf-ufo/hover/hover.md) |
 | 10 | 🥷 **HEXA-CLOAK** | Invisibility Cloak | Fabric that bends light around so you disappear | RT-SC metamaterial n<0, σ-τ=8 octave, σ-φ=10nm pitch, RCS attenuation σ·J₂=288×, 59/59 EXACT | F-22 single-band stealth vs σ-τ=8-octave broadband metamaterial | [doc](domains/sf-ufo/cloak/cloak.md) |
+
+### 🛸 HEXA-UFO 7-Stage Propulsion Ladder
+
+> The full alien_index 6 → 500 propulsion atlas, broken into 7 substrate stages. Stage-1~3 are physical-substrate-grounded (RT-SC / fusion / antimatter); Stage-4~7 are deep-frontier theoretical (warp / wormhole / 11D / Calabi-Yau).
+
+| Stage | Mode | Substrate | Altitude / Range | Status |
+|:-----:|------|-----------|------------------|:------:|
+| **Stage-1** | hover    | Meissner diamagnetism (RT-SC 48T)        | 0~20 km altitude     | ✅ |
+| **Stage-2** | cruise   | MHD + tabletop fusion (D-T / p-¹¹B)      | 20~200 km            | ✅ |
+| **Stage-3** | orbital  | antimatter γ-rocket (anti-H + H)         | 200 km~1 AU          | ✅ |
+| **Stage-4** | warp     | Alcubierre bubble                        | 1 AU~galactic        | [TBD] |
+| **Stage-5** | wormhole | Morris-Thorne ER bridge                  | intergalactic        | [TBD] |
+| **Stage-6** | dim-jump | KK-tower 4.8 TeV brane transit           | bulk wide            | [TBD] |
+| **Stage-7** | dim-use  | Calabi-Yau 6-fold navigation             | observer-invisible   | [TBD] |
+
+> Standalone repo: 🛸 [need-singularity/hexa-ufo](https://github.com/need-singularity/hexa-ufo) — full atlas + 6-verb propulsion (grav / hover / cloak / teleport / sim) + cross-link to hexa-rtsc · hexa-fusion · hexa-antimatter · petite-cern.
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
