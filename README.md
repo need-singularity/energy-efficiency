@@ -661,28 +661,22 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 
 ## 🛸 HEXA-UFO Toolkit (HEXA-Disc family)
 
-> Friendly entry point — UFO-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), two orthogonal sf-ufo-axis verbs (disc / cloak). **HEXA-HOVER is now classified under [Frontier Discoveries (next-gen RT-SC tech)](#-frontier-discoveries-next-gen-rt-sc-tech)** — Meissner-levitation hoverboard belongs to the RT-SC frontier rather than UFO disc-VTOL.
+> Friendly entry point — UFO-stack tools as a compact toolkit. Same n=6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24), nine orthogonal sf-ufo-axis tools spanning the full **alien_index 6→500 propulsion ladder**: 2 product-verbs (disc / cloak) + 7 stages (hover · cruise · orbital · warp · wormhole · dim-jump · dim-use). Stage-1~3 are physical-substrate-grounded (RT-SC / fusion / antimatter); Stage-4~7 are deep-frontier theoretical.
 
 | 🛸 | Tool | One-liner | Everyday analogy | What it does | Mainstream contrast | Doc |
 |:--:|:----:|-----------|------------------|--------------|---------------------|:---:|
 | 10 | 🛸 **HEXA-UFO** | Disc-VTOL | Saucer that lifts off like a frisbee with no wings | RT-SC Meissner powerless levitation + MHD Mach 10 + Tabletop Fusion Q=10, D=J₂=24m, 49/49 EXACT | Helicopter rotor VTOL vs τ(6)=4-stage RT-SC + MHD + fusion disc | [doc](domains/sf-ufo/hexa-ufo/hexa-ufo.md) |
 | 10 | 🥷 **HEXA-CLOAK** | Invisibility Cloak | Fabric that bends light around so you disappear | RT-SC metamaterial n<0, σ-τ=8 octave, σ-φ=10nm pitch, RCS attenuation σ·J₂=288×, 59/59 EXACT | F-22 single-band stealth vs σ-τ=8-octave broadband metamaterial | [doc](domains/sf-ufo/cloak/cloak.md) |
-
-### 🛸 HEXA-UFO 7-Stage Propulsion Ladder
-
-> The full alien_index 6 → 500 propulsion atlas, broken into 7 substrate stages. Stage-1~3 are physical-substrate-grounded (RT-SC / fusion / antimatter); Stage-4~7 are deep-frontier theoretical (warp / wormhole / 11D / Calabi-Yau).
-
-| Stage | Mode | Substrate | Altitude / Range | Status |
-|:-----:|------|-----------|------------------|:------:|
-| **Stage-1** | hover    | Meissner diamagnetism (RT-SC 48T)        | 0~20 km altitude     | ✅ |
-| **Stage-2** | cruise   | MHD + tabletop fusion (D-T / p-¹¹B)      | 20~200 km            | ✅ |
-| **Stage-3** | orbital  | antimatter γ-rocket (anti-H + H)         | 200 km~1 AU          | ✅ |
-| **Stage-4** | warp     | Alcubierre bubble                        | 1 AU~galactic        | [TBD] |
-| **Stage-5** | wormhole | Morris-Thorne ER bridge                  | intergalactic        | [TBD] |
-| **Stage-6** | dim-jump | KK-tower 4.8 TeV brane transit           | bulk wide            | [TBD] |
-| **Stage-7** | dim-use  | Calabi-Yau 6-fold navigation             | observer-invisible   | [TBD] |
+| 10 | 🛹 **STAGE-1 Hover** | Meissner levitation | Skateboard that floats 10 cm above the ground | Meissner diamagnetism (RT-SC 48T), 0~20 km altitude, σ-φ=10cm levitation, σ²=144km range | Helicopter VTOL vs RT-SC powerless Meissner | [doc](domains/sf-ufo/hover/hover.md) |
+| 10 | 💨 **STAGE-2 Cruise** | MHD + tabletop fusion | Jet that ionizes air and pushes it without burning fuel | D-T / p-¹¹B 8.7 kW, 20~200 km, MHD Mach σ-φ=10 thrust | Jet turbine combustion vs MHD + tabletop fusion electric thrust | [doc](domains/energy/tabletop-fusion/tabletop-fusion.md) |
+| 10 | 🚀 **STAGE-3 Orbital** | Antimatter γ-rocket | Rocket that converts matter directly into pure light | anti-H + H annihilation, 200 km~1 AU, Isp=σ·J₂·10³=288,000s | Chemical rocket Δv vs 1.7×10¹² p̄/s antimatter γ-rocket | [doc](domains/physics/tabletop-antimatter/tabletop-antimatter.md) |
+| 11 | 🌀 **STAGE-4 Warp** | Alcubierre bubble | Spaceship that surfs a wave of bent space at 144× lightspeed | σ-φ=10m bubble, v=σ²=144c, 1 AU~galactic | Conventional FTL impossible vs Alcubierre warp surf | [doc](domains/physics/warp-drive/warp-drive.md) — [TBD] |
+| 12 | 🌌 **STAGE-5 Wormhole** | Morris-Thorne ER bridge | Folded paper shortcut connecting two distant points | b₀=σ·τ=48m throat, intergalactic, d_eff=d/288 | Linear travel vs space-fold τ=4 throat-collapse Casimir | [doc](domains/physics/wormhole/wormhole.md) — [TBD] |
+| 13 | 🪐 **STAGE-6 Dim-jump** | KK-tower 4.8 TeV brane transit | Side door into the 11-dimensional bulk under our 4D world | D_M=11, KK 4.8 TeV, graviton leak 1/σ²=1/144, bulk wide | 4D spacetime travel vs 11D M-theory dim-jump | [doc](domains/physics/m-theory-11d/m-theory-11d.md) — [TBD] |
+| 14 | 🧊 **STAGE-7 Dim-use** | Calabi-Yau 6-fold navigation | Map of the 6 hidden curled-up dimensions inside every point of space | D_CY=n=6 hexafold, Hodge h11·h21=σ·τ=48, observer-invisible | String-theory abstract math vs n=6 real Calabi-Yau navigation | [doc](domains/physics/calabi-yau-nav/calabi-yau-nav.md) — [TBD] |
 
 > Standalone repo: 🛸 [need-singularity/hexa-ufo](https://github.com/need-singularity/hexa-ufo) — full atlas + 6-verb propulsion (grav / hover / cloak / teleport / sim) + cross-link to hexa-rtsc · hexa-fusion · hexa-antimatter · petite-cern.
+> **HEXA-HOVER (Personal Hoverboard)** classified under [Frontier Discoveries](#-frontier-discoveries-next-gen-rt-sc-tech) — same Meissner-levitation substrate, consumer-product axis.
 
 | 🛸 | Closure | ver | Product | Core | Link |
 |:--:|:-------:|:---:|---------|------|------|
