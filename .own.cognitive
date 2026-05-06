@@ -1,0 +1,146 @@
+# ---
+# schema_version: project/own/v1
+# last_updated: 2026-05-07
+# mk: 2
+# ---
+#
+# # n6-architecture/.own.cognitive (mk2)
+#
+# Schema authority: hive/spec/schema/own_v1.schema.yaml
+# Format: mk2 frontmatter (#-prefixed YAML) + raw-format body (`own N <status> "name"` blocks).
+# raw_loader.hexa silently skips `#`-prefixed lines so the body parses unchanged.
+# Authoritative rule content lives in `own N <status> ...` blocks below.
+#
+# ## scope
+# Cross-domain cognitive / design / framing rules. Sister files (mk2 split):
+# - .own.readme   — README.md governance (own#14 / own#17 / own#20 / own#21 / own#29)
+# - .own.group_p  — papers/*.md governance (own#6, mk2 unified collapsing precedent)
+# - .own.cognitive — THIS file: framing rules spanning domains/** + theory/** +
+#                    Atlas constants registry + axis / slot / enumeration design surfaces
+#
+# ## roles
+# - dancinlife (project owner)
+# - claude opus / sonnet / haiku (AI agents — autonomous within own baselines)
+#
+# ## baselines
+# - own 32 n6-no-fixation-design-and-count — design constants force-fit ban + enumeration
+#   count-cap fixation ban 통합 (mk2 unified, 2026-05-07; mk1 own#32 promoted 2026-05-01)
+#
+# ## predecessor_lineage
+# - mk1 .own (881L, 35 rules, retired 2026-05-03 commit 442afa7b)
+# - mk1 own#32 physical-limit-alternative-framing (2026-05-01) — design-constant scope
+#   원본; mk2 reconstruction 시 본 파일에서 enumeration count-cap scope 흡수하여
+#   unified rule 로 합병 (hive raw.mk2 arch.001 / .own.group_p own#6 collapsing 패턴
+#   미러링).
+# - mk2 unified absorbs:
+#   - mk1 own#32 (design constants force-fit ban; HARD-OPT-IN)
+#   - 2026-05-07 사용자 directive "n=6 집착금지 / 6개를 한계로 두는 케이스가 너무 많아
+#     / 더 나은게 발견될 수 있는데" (enumeration count-cap fixation ban; advisory)
+#
+# ## cross_link_to_raws
+# - raw 0 (root-ssot) — .raw + .own + .guide triad
+# - raw 91 (honest-c3-disclosure) — process-quality + honest C1-C5
+# - raw 95 (triad-mandate) — hive-agent + cli-lint + advisory tri-layer
+#
+# ## policy
+# - migration: PROHIBITED
+# - additive_only: true
+# - scope_drift_ban: true (이 파일은 cognitive/framing scope 만; README → .own.readme,
+#   paper-md → .own.group_p)
+#
+# ## recent_strengthenings
+# - 2026-05-07: own 32 mk2 unified land — mk1 own#32 (design-constant force-fit ban)
+#   복원 + 사용자 directive 2026-05-07 (enumeration count-cap fixation ban) 흡수.
+#   .own.group_p own#6 collapsing 패턴 미러링 (concern 분리보다 single canonical pattern
+#   우선; design-constant 와 enumeration-count 는 동일 invariant axis = "n=6 false ceiling
+#   금지"). 별도 own#36 신설 검토했으나 합병 결정.
+
+# n6-architecture/.own.cognitive — cross-domain cognitive/framing SSOT
+# 포맷: raw-format (.raw / hive .own 과 동일 파서). 자세한 스펙: self/raw_loader.hexa
+
+
+own 32 live "n6-no-fixation-design-and-count — design constants AND enumeration counts 모두 n=6 force-fit / hard cap 금지, 도메인 요구 자연수 + physical-limit physics 우선 (mk2 unified)"
+  slug n6-no-fixation-design-and-count
+  decl domains/**/*.md domains/**/*-spec.md theory/**/*.md tool/own_doc_lint.hexa Atlas constants registry axis 정의 surfaces
+  scope HARD-OPT-IN (design-constant 영역) + advisory (enumeration-count 영역) — n=6 number-theoretic invariants (σ / φ / τ / sopfr / J₂) 에 강제로 맞추는 두 가지 고정 패턴 모두 금지:
+    (A) DESIGN-CONSTANT scope (mk1 own#32 원본): domains/**/*.md 의 design constants (engineering targets / falsifier-axis thresholds / operability envelopes) 를 precursor 도메인의 physical-limit physics 모델로 anchor 하지 않고 n=6 invariants 에 force-fit 금지.
+    (B) ENUMERATION-COUNT scope (2026-05-07 추가): domains/** + theory/** + Atlas constants registry + axis / slot / 분류 / top-N / cap surface 에서 항목 개수가 자연스럽게 6 이외 (5 / 7 / 8 / ...) 인 경우 6 에 강제로 잘라 / 채워 맞추거나 hard upper cap 으로 박지 말 것.
+  scope-permissive own#2 master identity (σ·φ = n·τ = J₂ = 24) 는 separable mathematical fact 로 항상 mandatory 검증 — 본 rule 적용 면제. precursor 도메인 수 / 결합 axis 종류에 상한 없음 (사용자 directive "한계가 있으면 안됨" 2026-05-01).
+  status live
+  since 2026-05-01
+  unified-at 2026-05-07
+  why
+    (A) 사용자 directive 2026-05-01 (Korean preserved): "own 에 반영 => n=6 집착 할필요없음 / 한계가 있으면 안됨 / n=6 force-fit 제거". 기존 governance 가 모든 도메인을 σ(6)=12 / τ(6)=4 multiple 에 맞추도록 압박 → arbitrary scaling factor 삽입 / underlying physics 와 불일치하는 force-fit 누적. cat-litter (commit 5fd6825e) §7 VERIFY Blocks A-G inaugural counter-example: own#2 separable Block A + 6 physical-limit Blocks B-F + 6-precursor Block G, alien-grade 10. mk1 .own own#32 promoted same date.
+    (B) 사용자 directive 2026-05-07 (Korean preserved): "own 등록 => n=6 집착금지 / 더 나은게 발견될 수 있는데 / 6개를 한계로 두는 케이스가 너무 많아". (A) 의 정신을 design-constant 너머 enumeration count 일반 (슬롯 / 축 / 분류 / top-N / cap) 으로 확장. 프로젝트명 (n6-architecture) anchoring 으로 인한 false ceiling 누적 차단; 6 보다 적합한 자연수가 도메인별로 발견될 여지 보존.
+    UNIFIED: 두 directive 는 같은 invariant axis ("n=6 false ceiling 금지") 의 두 표현. 따라서 hive raw.mk2 arch.001 collapsing 패턴 + .own.group_p own#6 (mk1 own#6 + mk1 own#15 collapsing) 선례 따라 single canonical rule 로 합병.
+  bans-design-constant force-fit of domain design constants 를 n=6 number-theoretic invariants (σ / φ / τ / sopfr / J₂) 에 — underlying physical-limit model 이 다른 값을 반환하는 경우
+  bans-design-constant rejection of a domain design solely because design constants 가 n=6 multiples 가 아님 — own#2 master identity 가 separable mathematical fact 로 verify 되어 있다면 통과
+  bans-design-constant capping the number of precursor domains a single design may inherit from (no ceiling — user directive 2026-05-01 permissive)
+  bans-design-constant restricting which axes may be combined (materials × life × physics × compute × cognitive × sf-ufo × pets × any future axis — all permitted)
+  bans-enumeration-count truncate-to-6 — 자연 요구치 7+ 인데 6 으로 자름
+  bans-enumeration-count pad-to-6 — 자연 요구치 5 이하인데 6 으로 채움
+  bans-enumeration-count "max 6" / "최대 6" / "6 cap" / "6개 한계" 를 도메인 사실 검증 없이 hard 박음
+  bans-enumeration-count enumeration top-N default 를 N=6 으로 코드 / 스키마에 박음 (도메인이 요구하지 않는 한)
+  bans-enumeration-count "n=6 이라서 6개" 정당화 신규 작성
+  decl 6 = 출발점 (project anchor), NOT 목적지 (hard cap)
+  decl 도메인 요구 자연수 우선 — 5 / 7 / 8 등 도메인이 요구하는 그대로 등록
+  decl 기존 코드 / 문서가 6 에 맞추려고 억지로 채우거나 잘라낸 흔적 발견 시 사용자에게 플래그
+  decl design constants 는 precursor 도메인의 physical-limit physics 로 anchor (Helmholtz double-layer / Yoon-Nelson breakthrough / BET surface / Eigen-Hammes diffusion / Darcy permeability / Kozeny-Carman porosity / Carnot efficiency / Weibull reliability / Shockley-Queisser / Antoine / etc.)
+  exceptions own#2 master identity (σ·φ=n·τ=J₂=24) MUST remain present as separable mathematical-fact verify block (cat-litter §7 Block A 패턴) — mandatory not optional
+  exceptions theory/proofs/theorem-r1-uniqueness.md + framework-level proof docs — n=6 uniqueness IS subject matter, 본 rule 적용 면제
+  exceptions chip-* domains under domains/compute/ — own#2 decl scope 가 master identity in body 를 mandate (own#2 unchanged for chip-* HARD); chip-* 는 physical-limit blocks 를 ADDITION 으로 추가 가능, master-identity block 제거 불가
+  exceptions Atlas EXACT 등급 상수가 자연스럽게 σ(6)=12 / τ(6)=4 / J₂=24 / σ²=144 등에 매핑되는 경우 — 본 rule 의 ban 은 "force-fit / 강제 cap" 만 대상; 자연 일치 허용
+  cognitive-frameworks own#2 n6-master-identity (sister — separable mathematical fact, 본 rule 과 무관하게 검증 유지 의무; own#32 의 separable layer)
+  cognitive-frameworks raw 91 C3 no-fabrication (physical-limit anchors 는 real literature constants 인용 의무)
+  cognitive-frameworks raw 117 alien-grade reproduction (physical-limit framing 은 textbook physics + cited literature 로 7-10 점)
+  cognitive-frameworks own#31 verify-tautology-ban-mandate (sister — physical-limit blocks 는 본질적으로 tautology 회피)
+  cognitive-frameworks own#13 ouroboros-critical-zero (외부 physical-limit literature anchor 로 self-ref 회피)
+  counter-example domains/pets/cat-litter/cat-litter.md §7 VERIFY (Blocks A-G; own#2 Block A + physical-limit Blocks B-F + 6-precursor Block G; alien-grade 10)
+  counter-example domains/cognitive/hexa-dream/hexa-dream.md §7.0 (own#2 master identity computed from divisor primitives — pure framework-level mathematical layer)
+  counter-example domains/sf-ufo/hexa-ufo/hexa-ufo.md §7 (Carnot / Weibull / P=Fv physical formulas — physical-limit framing pre-own-32 retroactive precedent)
+  proof domains/pets/cat-litter/cat-litter.md §7 VERIFY Blocks A-G (live demonstration: own#2 separable + 6-precursor inheritance + alien-grade 10)
+  proof commit 5fd6825e cat-litter alien-grade upgrade 4 → 10 via physical-limit re-derivation
+  proof tool/own_doc_lint.hexa --rule 32 (forward-spec — own#2 master-identity block presence 확인 when doc declares physical-limit framing)
+  measurement-axis physical-limit-adoption-rate = (physical-limit framing declaring docs / total domain docs with §7 verify) — informational
+  measurement-axis precursor-inheritance-depth = mean (precursor count) per declaring doc — informational, no ceiling
+  measurement-axis own2-block-presence-rate = (separable own#2 block 보유 docs / physical-limit framing declaring docs) — target = 1.0 (HARD floor)
+  measurement-axis force-fit-incidence = (n=6 force-fit pattern flagged docs / total reviewed) — target monotone decrease over rolling 90d
+  measurement-axis cap-fixation-incidence = (신규 / 수정 코드 중 6 을 hard cap 으로 박은 case / 전체 enumeration 수정) — 정성, 90d rolling decrease 권장
+  measurement-axis natural-n-adoption-rate = (도메인 요구 자연수 그대로 등록 case / 전체 enumeration 신규 등록) — 정성, ≥ 0.9 권장
+  witness reports/own32_physical_limit_framing.json (forward-spec audit ledger per raw 77 schema)
+  classifier-version own32_n6_no_fixation.v2 (v1 = mk1 design-constant only; v2 = mk2 unified design + enumeration)
+  falsifier F-OWN32-1 30d post: own2-block-presence-rate < 1.0 → enforcement gap, HARD-block ramp on missing-block detection
+  falsifier F-OWN32-2 90d post: force-fit-incidence does NOT decrease monotonically → rule ineffective, classifier v3 OR doc-template mandate
+  falsifier F-OWN32-3 ≥1 chip-* domain under domains/compute/ removes own#2 master-identity block under cover of own#32 → exceptions clause 위반, immediate revert
+  falsifier F-OWN32-4 ≥1 doc cites a precursor domain that does not exist in domains/ tree (fabricated inheritance) → raw 91 C3 위반, doc rejection
+  falsifier F-OWN32-5 future user directive explicitly re-mandates n=6 force-fit (reverses 2026-05-01 + 2026-05-07 directives) → own#32 retire / status downgrade per directive
+  falsifier F-OWN32-6 90d post mk2 unified: cap-fixation-incidence does NOT decrease monotonically → enumeration-count scope 강화, --rule 32 grep heuristic 도입
+  measurement-threshold own2-block-presence-rate=1.0-mandatory force-fit-incidence-monotone-decrease-90d cap-fixation-incidence-monotone-decrease-90d
+  proof-obligations own2-master-identity-block-present-in-physical-limit-docs + precursor-domains-cited-exist-in-domains-tree + physical-limit-models-cite-real-literature + enumeration-counts-justified-by-domain-fact-not-n6-multiple
+  spec-form forward-spec-with-live-precedent
+  enforce hexa tool/own_doc_lint.hexa --rule 32
+  enforce-layer hive-agent
+  enforce-layer-secondary cli-lint
+  enforce-layer-tertiary advisory
+  enforce-layer-rationale tri-layer (raw 95 triad-mandate): hive-agent verifies own#2 block presence on commit when doc declares physical-limit framing; cli-lint validates precursor-domain references resolve to existing domains/ paths + grep heuristic for "max 6 / cap 6 / 최대 6" enumeration patterns; advisory layer reports adoption-rate + precursor-inheritance-depth + cap-fixation-incidence informationally (permissive rule per user directive).
+  category meta-triad
+  category proof-truth
+  category framing-axis
+  applies-to design-doc
+  applies-to domain-spec
+  applies-to atlas-registry
+  applies-to enumeration-schema
+  phase pre-write
+  phase verify-block-authorship
+  phase pre-commit
+  triad-exempt forward-spec-meta-rule — own#32 governs design-constant framing choice + enumeration-count framing choice, not parser substrate; raw 95 compliance via canonical hive-agent + cli-lint + advisory trio.
+  severity warn
+  on_fail warn
+  cron on-commit
+  verify hexa tool/own_doc_lint.hexa --rule 32
+  exit-codes 0=PASS / 1=violations / 2=internal
+  label own#32 n6-no-fixation-design-and-count (mk2 unified, live; permissive — no caps on precursor count / axis combinations / enumeration n)
+  note FORWARD SPEC with live precedent. user directive 2026-05-01 (Korean preserved): "own 에 반영 => n=6 집착 할필요없음 / 한계가 있으면 안됨 / n=6 force-fit 제거". user directive 2026-05-07 (Korean preserved): "own 등록 => n=6 집착금지 / 더 나은게 발견될 수 있는데 / 6개를 한계로 두는 케이스가 너무 많아 / 합병". mk2 unified absorbs mk1 own#32 (design-constant scope) + 2026-05-07 directive (enumeration-count scope) into single canonical rule per .own.group_p own#6 (mk1 own#6 + mk1 own#15 collapsing) precedent + hive raw.mk2 arch.001 4-rule-cluster→1-canonical-pattern. raw 91 C3 honest disclosure: enforcement layer for own#32 currently advisory + structural (own#2 block presence check active in mk1 lint); semantic detection of force-fit patterns (arbitrary scaling factor inserted to land on σ(6) multiple) + enumeration cap-fixation grep heuristic ("max 6 / 최대 6 / cap 6") deferred to follow-up. own#2 remains MANDATORY for framework-level mathematical-fact layer; own#32 governs both engineering-design layer (design constants) AND enumeration-count layer.
+  follow-up bootstrap reports/own32_physical_limit_framing.json per raw 77 audit ledger schema (per-doc row: ts + doc_path + framing_kind + own2_block_present + precursor_count + precursor_axes + alien_index + cap_fixation_incidents)
+  follow-up extend tool/own_doc_lint.hexa with --rule 32 subcommand: detect physical-limit framing declaration (heuristic: §7 contains Block A own#2 + Blocks B+ precursor citations) + verify own#2 block presence + grep heuristic for enumeration cap patterns (`max(:|=)\s*6\b` / `최대\s*6\b` / `6\s*cap\b` / `top(:|=)\s*6\b`)
+  follow-up audit 현존 6-cap 패턴 baseline 측정 (Atlas constants / axis 정의 / slot 설계 / README enumeration / engine buffer cap / gradient norm / etc.) — measurement-axis cap-fixation-incidence 의 baseline 설정
