@@ -1,0 +1,308 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — hexa-sscb mk1 vendor + datasheet anchors
+# slug: hsscb-mk1-vendor-datasheet-anchor-batch
+# scope: hexa-sscb (HEXA-SSCB) mk1 — 4-foundry SiP + STM32F429 commercial fallback
+# date: 2026-05-06
+# orthogonality: cross-shard sibling of engineering-content-mk-next-batch-1
+#   (universal physics + standards) — this shard is project-bound vendor anchors
+# constraints: raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 axiom-immutable
+# axis-M syntax: unit=<atomic> + anchor=<doc>/<sec>/<vintage> on every @C
+# verification surface: hexa-sscb/verify/sscb_atlas_check.py +
+#   nexus calc/hsscb_verify/manifest.jsonl (Stage C, pending)
+# ══════════════════════════════════════════════════════════════
+
+# ── Section 1: SiC MOSFET die — YESPOWER 1200V planar, 200mm MPW ──
+# 4-die matched parallel array per engpack §3.1 + spec.md §10
+# datasheet: YESPOWER_SiC_1200V_planar_p1-12 (vendor PDF, repo-external)
+
+@C HSSCB-yespower-Vds-rating = 1200 :: device.sic [10]
+  unit = V
+  anchor = YESPOWER_SiC_1200V_planar/p1/2024
+  cite = engpack-sec3.1
+  "SiC MOSFET drain-source breakdown rating"
+  -> EE-lenz-inductor
+
+@C HSSCB-yespower-Rdson-25C-per-die = 30e-3 :: device.sic [10]
+  unit = ohm
+  anchor = YESPOWER_SiC_1200V_planar/p2/2024
+  cite = engpack-sec3.1-table
+  "per-die Rds(on) at Tj=25 C, Vgs=15V (typical bin)"
+  -> EE-joule-first, EE-rdson-thermal-coef
+
+@C HSSCB-yespower-Rdson-thermal-coef = 1.5 :: device.sic [10]
+  unit = dimensionless
+  anchor = YESPOWER_SiC_1200V_planar/p3/2024
+  "Rds(on) thermal coefficient — ratio Rdson(150C) / Rdson(25C)"
+  <- EE-rdson-thermal-coef
+
+@C HSSCB-yespower-Vth = 3.0 :: device.sic [9]
+  unit = V
+  anchor = YESPOWER_SiC_1200V_planar/p2/2024
+  "gate threshold voltage typical (Vds=Vgs, Id=1mA)"
+
+@C HSSCB-yespower-Qg-total = 80e-9 :: device.sic [10]
+  unit = C
+  anchor = YESPOWER_SiC_1200V_planar/p4/2024
+  cite = spec-md-sec11
+  "total gate charge @ Vgs=20V (typical)"
+  -> EE-gate-charge-drive
+
+@C HSSCB-yespower-Qgd = 25e-9 :: device.sic [10]
+  unit = C
+  anchor = YESPOWER_SiC_1200V_planar/p4/2024
+  cite = engpack-sec3.1
+  "gate-drain (Miller) charge — relevant during plateau drive"
+  -> EE-gate-charge-drive
+
+@C HSSCB-yespower-i2t-rating = 100 :: device.sic [9]
+  unit = A_squared_seconds
+  anchor = YESPOWER_SiC_1200V_planar/p5/2024
+  "single-pulse avalanche rating (I^2 t equivalent for 600 ns rectangular)"
+  <- EE-i2t-rectangular
+
+@C HSSCB-yespower-avalanche-energy = 1.5 :: device.sic [9]
+  unit = J
+  anchor = YESPOWER_SiC_1200V_planar/p5/2024
+  cite = spec-md-sec11
+  "single-pulse unclamped avalanche energy worst-case @ 100A parasitic-L"
+
+@C HSSCB-yespower-Tj-max = 175 :: device.sic [10]
+  unit = deg_C
+  anchor = YESPOWER_SiC_1200V_planar/p1/2024
+  cite = spec-md-sec14
+  "max junction temperature absolute"
+  -> EE-thermal-lumped
+
+@C HSSCB-N-dies = 4 :: device.sic [10]
+  unit = count
+  anchor = engpack/sec3.1/2026-05-06
+  cite = domain-md-sec9-E-4
+  "4-die parallel matched-binning array (per SiP)"
+  -> EE-kirchhoff-parallel
+  "drift-marker: spec.md §11 narrative says 'single die per SiP' — domain.md +"
+  "engpack contradict — engpack 30 mΩ/die × 4 = 7.5 mΩ → 5 mΩ spec target"
+  "→ spec.md §11 NEEDS amendment per axis-L axiom-cite-amendment process"
+
+@C HSSCB-Rds-spread-binning = 0.10 :: device.sic [9]
+  unit = dimensionless
+  anchor = engpack/sec3.1/2026-05-06
+  "matched-binning Rds spread tolerance (±10%)"
+  -> EE-kirchhoff-parallel
+
+# ── Section 2: BCD gate driver — DB HiTek 0.18 µm BCD ──
+# datasheet: DB_HiTek_BCD180_gate_driver_SSCB-DRV-A0_p1-8
+
+@C HSSCB-dbhitek-Idrv-peak = 8 :: device.driver [10]
+  unit = A
+  anchor = DB_HiTek_BCD180/SSCB-DRV-A0_p3/2025
+  cite = engpack-sec3.2
+  "gate driver peak push-pull current (±8A)"
+  -> EE-gate-charge-drive
+
+@C HSSCB-dbhitek-tprop = 30e-9 :: device.driver [10]
+  unit = s
+  anchor = DB_HiTek_BCD180/SSCB-DRV-A0_p4/2025
+  cite = engpack-sec3.2
+  "propagation delay PWM-input → gate-output"
+
+@C HSSCB-dbhitek-Vgs-on = 15 :: device.driver [10]
+  unit = V
+  anchor = DB_HiTek_BCD180/SSCB-DRV-A0_p2/2025
+  "gate-on rail (turn-on Vgs)"
+
+@C HSSCB-dbhitek-Vgs-off = -5 :: device.driver [10]
+  unit = V
+  anchor = DB_HiTek_BCD180/SSCB-DRV-A0_p2/2025
+  "gate-off rail (turn-off Vgs, negative for fast pulldown)"
+
+@C HSSCB-dbhitek-V-plateau = 5 :: device.driver [9]
+  unit = V
+  anchor = YESPOWER_SiC_1200V_planar/p4/2024
+  "plateau voltage during Miller transition (typical SiC planar)"
+  -> EE-gate-charge-drive
+
+@C HSSCB-Rg-ext = 5 :: device.driver [10]
+  unit = ohm
+  anchor = engpack/sec3.2/2026-05-06
+  cite = engpack-sec4.2-L3
+  "external gate resistor (current-limit during transition)"
+  -> EE-gate-charge-drive
+
+# ── Section 3: Σ-Δ ADC — SK Key Foundry CMOS 0.18 µm ──
+# datasheet: SK_Foundry_CMOS018_SDADC_SSCB-ADC-A0_p1-6
+
+@C HSSCB-skfoundry-fs = 100e6 :: device.adc [10]
+  unit = Hz
+  anchor = SK_Foundry_CMOS018/SSCB-ADC-A0_p2/2025
+  cite = engpack-sec3.4
+  "1-bit modulator sample rate (external 100 MHz crystal)"
+  -> EE-nyquist-decimation
+
+@C HSSCB-skfoundry-OSR = 100 :: device.adc [10]
+  unit = count
+  anchor = SK_Foundry_CMOS018/SSCB-ADC-A0_p3/2025
+  cite = engpack-sec3.4
+  "oversampling ratio (sigma-delta decimation)"
+  -> EE-nyquist-decimation
+
+@C HSSCB-skfoundry-tcomp-prop = 50e-9 :: device.adc [9]
+  unit = s
+  anchor = SK_Foundry_CMOS018/SSCB-ADC-A0_p4/2025
+  cite = engpack-sec3.4
+  "fast comparator propagation (separate flag pin, pre-decimation)"
+
+@C HSSCB-skfoundry-ENOB = 16 :: device.adc [9]
+  unit = bit
+  anchor = SK_Foundry_CMOS018/SSCB-ADC-A0_p3/2025
+  cite = engpack-sec3.4
+  "effective number of bits after sinc^3 decimation @ 100 kHz output"
+
+# ── Section 4: MCU — STM32F429ZIT6 (commercial bridge for mk1) ──
+# datasheet: ST_STM32F429ZIT6_RM0090_p1-1700 (reference manual)
+
+@C HSSCB-stm32f429-fclk = 180e6 :: device.mcu [10]
+  unit = Hz
+  anchor = ST_STM32F429ZIT6/RM0090_p152/2024
+  cite = engpack-sec3.5
+  "PLL output system clock (180 MHz peak)"
+  -> EE-cycle-time-clock
+  "drift-marker: spec.md §13 says 170 MHz / verify/sscb_verify.py says 120 MHz"
+  "→ engpack §3.5 = 180 MHz is canonical; spec/verify need amendment"
+
+@C HSSCB-stm32f429-irq-cycles = 16 :: device.mcu [10]
+  unit = cycle
+  anchor = ARM_Cortex-M4_TRM/r0p1_p72/2014
+  cite = engpack-sec3.5
+  "NVIC IRQ entry latency (12 cycles vector + 4 cycles context save)"
+  -> EE-cycle-time-clock
+
+@C HSSCB-stm32f429-bsrr-cycles = 1 :: device.mcu [10]
+  unit = cycle
+  anchor = ST_STM32F429ZIT6/RM0090_p287/2024
+  "GPIO BSRR atomic-write 1-cycle bus access"
+
+# ── Section 5: TVS / surge protection — SMBJ58A ──
+# datasheet: SMBJ58A_BOURNS_KEC_p1-2
+
+@C HSSCB-smbj58a-Vbr = 64.4 :: device.tvs [10]
+  unit = V
+  anchor = SMBJ58A/p1/2020
+  cite = engpack-sec3.6
+  "TVS reverse breakdown voltage (Vbr typical)"
+
+@C HSSCB-smbj58a-Vclamp-1A = 100 :: device.tvs [10]
+  unit = V
+  anchor = SMBJ58A/p1/2020
+  "clamping voltage at 1A surge"
+
+@C HSSCB-smbj58a-surge-W-1ms = 600 :: device.tvs [10]
+  unit = W
+  anchor = SMBJ58A/p2/2020
+  cite = spec-md-sec11
+  "peak surge power for 1 ms pulse"
+
+# ── Section 6: 패키징 + 열저항 — DBC AlN + Bergquist Sil-Pad 2000 ──
+
+@C HSSCB-dbc-aln-k = 180 :: device.package [10]
+  unit = W_per_m_K
+  anchor = Heraeus_DBC_AlN/datasheet/2023
+  cite = spec-md-sec12, spec-md-sec14
+  "DBC AlN ceramic thermal conductivity"
+
+@C HSSCB-Rth-jc = 0.30 :: device.package [9]
+  unit = K_per_W
+  anchor = engpack/sec4.1-sec6.2/2026-05-06
+  cite = spec-md-sec14
+  "junction-to-case thermal resistance (DBC + die)"
+  -> EE-thermal-lumped
+  "drift-marker: spec.md §14 narrative says 0.4 K/W → engpack 0.30 K/W canonical"
+
+@C HSSCB-Rth-ca = 0.40 :: device.package [9]
+  unit = K_per_W
+  anchor = engpack/sec6.2/2026-05-06
+  "case-to-ambient thermal resistance (Sil-Pad 2000 + heatsink @ 100 LFM)"
+  -> EE-thermal-lumped
+
+@C HSSCB-L-stray-pcb = 15e-9 :: device.pcb [9]
+  unit = H
+  anchor = engpack/sec4.2-L1/2026-05-06
+  cite = engpack-sec3.6
+  "stray inductance budget — power loop area ≤ 50 mm² (IPC-2152 baseline)"
+  -> EE-lenz-inductor
+
+@C HSSCB-T-amb-test = 70 :: device.thermal [10]
+  unit = deg_C
+  anchor = engpack/sec6.2-test/2026-05-06
+  cite = domain-md-sec7.5
+  "ambient temperature for thermal verification (worst-case test condition)"
+
+# ── Section 7: BOM 비용 ($USD, 1k volume) ──
+# 9 active classes per σ(6)=12 lattice (3 reserved sigma slack)
+
+@C HSSCB-bom-class-SiC = 11.00 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B1-B2/2026-05-06
+  cite = spec-md-sec17
+  "B-1 SiC die 4-matched (10.00) + B-2 binning (1.00)"
+
+@C HSSCB-bom-class-Driver = 1.50 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B3/2026-05-06
+  "B-3 BCD gate driver"
+
+@C HSSCB-bom-class-ADC = 1.50 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B4/2026-05-06
+  "B-4 sigma-delta ADC + comparator"
+
+@C HSSCB-bom-class-MCU = 2.00 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B5/2026-05-06
+  "B-5 STM32F429 (commercial fallback for mk1)"
+
+@C HSSCB-bom-class-DBC = 2.50 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B6/2026-05-06
+  "B-6 DBC Al2O3 substrate"
+
+@C HSSCB-bom-class-Package = 5.34 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B7-B8-B17-B19/2026-05-06
+  "B-7 mold (0.30) + B-8 wire (0.005) + B-17 paste (0.02) + B-19 assembly (5.00)"
+
+@C HSSCB-bom-class-Sense = 5.10 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B9-B15-B16-B18/2026-05-06
+  "B-9 shunt + B-15 PT1000 + B-16 sub-board + B-18 connector"
+
+@C HSSCB-bom-class-TVS = 0.40 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B10-B11/2026-05-06
+  "B-10 SMBJ58A x3 (0.30) + B-11 ferrite x2 (0.10)"
+
+@C HSSCB-bom-class-Snubber = 1.44 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-B12-B13-B14/2026-05-06
+  "B-12 caps (1.20) + B-13 caps (0.20) + B-14 R 5Ω x4 (0.04)"
+
+@C HSSCB-bom-grand-total = 30.78 :: economics.sscb [10]
+  unit = USD
+  anchor = engpack/sec9-total/2026-05-06
+  cite = spec-md-sec17, README-md-validation-sweep
+  "9-class active sum (3 reserved sigma slack = 0.00)"
+
+@C HSSCB-bom-ceiling = 35 :: economics.sscb [10]
+  unit = USD
+  anchor = own-1/n6-master-identity/2026-05-06
+  cite = spec-md-sec17
+  "BOM ceiling per .own own 1 (sigma(6)=12 lattice budget)"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — hsscb-mk1-vendor-datasheet-anchors
+# entries added: 40 (4 SiC value/coef + 8 SiC + 6 driver + 4 ADC + 3 MCU
+#                    + 3 TVS + 5 package/PCB + 11 BOM)
+# axis-M usage: every @C has unit= + anchor= (where applicable)
+# drift-markers embedded: spec.md §11 (single-die), spec.md §13 (170MHz),
+#                         spec.md §14 (Rth_jc 0.4 K/W), verify/ (120 MHz)
+# next-step: Stage C — nexus calc/hsscb_verify/manifest.jsonl using these anchors
+# ══════════════════════════════════════════════════════════════

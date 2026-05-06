@@ -1,0 +1,126 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — engineering-domain-content-mk-next-batch-1
+# slug: ee-laws-codata-standards-anchor-2026-05-06
+# scope: device-level repos (hexa-sscb mk1 first; future hexa-* extensible)
+# date: 2026-05-06
+# orthogonality: meta-DSL axes D-L govern HOW atlas.n6 represents knowledge;
+#                this shard adds DOMAIN CONTENT (universal physics + standards)
+#                that device-level verifiers anchor to. No new schema/types.
+# constraints: raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 axiom-immutable
+#   foreign cite-and-move-on: SI 2019 redefinition + CODATA 2019 +
+#     UL/IEC/JEDEC/MIL-STD/USCAR/IPC standards (published prior to date)
+# write-mode: separate atlas.append.* shard — atlas.n6 main file is EPERM-locked
+#             from sandbox; canonical pattern (matches cycle25-26 shard 2026-04-29).
+# ══════════════════════════════════════════════════════════════
+
+# ── Engineering Laws (@L formula bodies) ──────────────────────
+# 기존 atlas.n6 본체의 @L (THERMO-laws=tau, EM-maxwell-eq=tau 식 카운트 매핑) 와
+# 구별: 본 절의 @L 은 평가 가능한 수식 자체. device-level verifier 가 외부
+# 권위로 인용. circular-trap 회피 (= non-traceable verification 차단) — 입력·법칙·한계 3-소스 분리.
+
+@L EE-joule-first = "P = I^2 * R" :: physics.electrical [11*]
+  "Joule's first law — 저항 발열 (사각 펄스 정상상태)"
+  "applies: hexa-sscb test_thermal P_die = (I/N)^2 * R_DSon_hot"
+  -> EE-thermal-lumped, EE-rdson-thermal-coef
+
+@L EE-i2t-rectangular = "E = I^2 * t" :: physics.electrical [11*]
+  "I^2t fuse model — 사각 펄스 Joule 에너지 누적"
+  "applies: hexa-sscb test_i2t event 에너지 vs SiC die rating"
+  <- EE-joule-first
+
+@L EE-lenz-inductor = "V = L * dI/dt" :: physics.em [11*]
+  "Faraday-Lenz inductor V-I — 사각 dI/dt 평균값"
+  "applies: hexa-sscb test_overshoot V_over = L_stray * I_SC/T_off"
+
+@L EE-gate-charge-drive = "t_drive = Q_g / I_drv" :: physics.electrical [11*]
+  "정전류 방전 모델 — capacitive gate charge transit time"
+  "applies: hexa-sscb test_turnoff t_mos = Q_GD/I_drv + transition margin"
+
+@L EE-kirchhoff-parallel = "I_k = I_total * G_k / sum(G)" :: physics.electrical [11*]
+  "병렬 저항 전류 분배 (Kirchhoff current law + Ohm)"
+  "applies: hexa-sscb test_current_share 4-die parallel R_DS 스프레드"
+
+@L EE-thermal-lumped = "deltaT = P * R_th" :: physics.thermal [11*]
+  "1D Fourier 전도 → lumped 열저항 (정상상태)"
+  "applies: hexa-sscb test_thermal Tj = T_amb + P_die * (R_jc + R_ca)"
+  <- EE-joule-first
+
+@L EE-weibull-cdf = "F(N) = 1 - exp(-(N/eta)^beta)" :: stats.reliability [11*]
+  "Weibull 2-parameter cumulative failure CDF"
+  "applies: hexa-sscb test_gate_lifetime TDDB beta=2.5"
+
+@L EE-nyquist-decimation = "f_BW = f_s / (2 * OSR)" :: signal.processing [11*]
+  "Nyquist + sigma-delta decimation 효과 대역폭"
+  "applies: hexa-sscb test_adc_bandwidth f_s/(2*OSR) >= 400 kHz"
+
+@L EE-cycle-time-clock = "t = N_cyc / f_clk" :: physics.timing [11*]
+  "동기 클럭 cycle 카운팅 latency (ARM Cortex NVIC ISR 등)"
+  "applies: hexa-sscb test_irq_latency t_irq = N_IRQ / F_MCU"
+
+@L EE-rdson-thermal-coef = "R(T) = R_25 * (1 + alpha * (T-25))" :: physics.semiconductor [10*]
+  "MOSFET 채널저항 온도계수 (SiC planar alpha ~ 1.5/100 K)"
+  "applies: hexa-sscb test_thermal R_DSon_hot = R_25 * RDSON_TC"
+  <- EE-joule-first
+
+# ── CODATA 2019 / SI redefinition (2019-05-20 발효) ────────────
+# 기존 본체의 boltzmann [10*] / planck_action [8*] 보다 정밀 — 본 entry 는
+# 정의값. device verifier 우선 참조 시 [11*] 우선.
+
+@C CODATA-e-charge = 1.602176634e-19 :: physics.codata [11*]
+  "elementary charge 정의값 (2019 SI redefinition, exact, 단위 C)"
+
+@C CODATA-h-planck = 6.62607015e-34 :: physics.codata [11*]
+  "Planck constant 정의값 (2019 SI redefinition, exact, 단위 J*s)"
+
+@C CODATA-kB-boltzmann = 1.380649e-23 :: physics.codata [11*]
+  "Boltzmann constant 정의값 (2019 SI redefinition, exact, 단위 J/K)"
+
+@C CODATA-NA-avogadro = 6.02214076e23 :: physics.codata [11*]
+  "Avogadro number 정의값 (2019 SI redefinition, exact, 단위 1/mol)"
+
+@C SI-mu0 = 1.25663706212e-6 :: physics.codata [11*]
+  "vacuum magnetic permeability (CODATA 2018, 단위 H/m)"
+  "applies: EE-lenz-inductor 계산 base"
+
+@C SI-c-light = 299792458 :: physics.codata [11*]
+  "speed of light in vacuum 정의값 (단위 m/s, exact)"
+
+# ── 표준/규격 anchors (regulatory + qualification) ─────────────
+# cite-and-anchor 형식: 표준 문서 번호 + 핵심 임계 + 단위.
+
+@C UL489B-shortcircuit-cat2 = 5000 :: standards.regulatory [10*]
+  "UL 489B 단락 차단 카테고리 2 임계 (단위 A peak)"
+  "applies: hexa-sscb spec.md sec.16 / engpack sec.1.1 E-3 anchor"
+
+@C UL489-insulation-V = 2500 :: standards.regulatory [10*]
+  "UL 489 절연 1분 a.c. (단위 V rms)"
+
+@C IEC61000-4-5-surge-V = 6000 :: standards.regulatory [10*]
+  "IEC 61000-4-5 combination wave 서지 (1.2/50 us V / 8/20 us I, V peak)"
+
+@C IEC61810-endurance-cycles = 100000 :: standards.regulatory [10*]
+  "IEC 61810 mechanical-equivalent endurance (단위 cycle)"
+
+@C IPC2152-2oz-100A-width = 8 :: standards.regulatory [10*]
+  "IPC-2152 2 oz Cu, 100 A continuous, dT <= 20 K, trace 폭 (mm)"
+
+@C JEDEC-JESD22-A108 = "TDDB-qualification-protocol" :: standards.qualification [10*]
+  "TDDB Weibull beta·eta 자격 시험 — gate-oxide degradation"
+  "applies: EE-weibull-cdf 시험 anchor"
+
+@C JEDEC-JESD22-A104 = "thermal-cycling-protocol" :: standards.qualification [10*]
+  "JESD22-A104: -40 to +125 C, 1000 cycles, 30-min dwell, 10 K/min ramp"
+
+@C MIL-STD-883-1010 = "thermal-cycling-method-1010" :: standards.qualification [10*]
+  "MIL-STD-883 method 1010 condition (열사이클 시험)"
+
+@C USCAR-2-bus-V = 48 :: standards.regulatory [10*]
+  "USCAR-2 자동차 48 V mild-hybrid 버스 표준 (V DC nominal)"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — engineering-domain-content-mk-next-batch-1
+# entries added: 25 (10 @L + 6 @C CODATA + 9 @C standards)
+# device-verify anchor surface: hexa-sscb mk1 + future hexa-*
+# next batch (mk-next-2): vendor datasheet anchors (project-bound, separate shard)
+# next axis (axis-M): pending — meta-DSL evolution candidate
+# ══════════════════════════════════════════════════════════════

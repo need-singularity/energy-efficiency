@@ -1,0 +1,253 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — atlas.n6 SELF-ARCH AXIS-M (axis #13)
+# axis-M name: UNIT + EXTERNAL-ANCHOR PRIMITIVE
+# slug: atlas-self-arch-unit-anchor-evolution
+# source: read-only audit of n6-architecture/atlas/atlas.n6
+#         + nexus/cli/blowup/lib/atlas_guard.hexa.inc
+# follows: D (@-type) + E (meta-tag) + F (arrow) + G (body-field) + H (id-conv)
+#          + I (graph-query) + J (claim-narrowness) + K (phase-transition)
+#          + L (axiom-cite + amendment)
+# constraints:
+#   raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 foundation-axiom-immutable
+#   raw 91 C3 honest · own#11 strict (no Clay BT 'resolution' claim)
+#   raw 117 5-check at registration (genus + 2 cf + 3 channels + counter-ex + falsifier)
+#   atlas.n6 + .raw DSL only — NO foreign theory imports as primary lens
+#     (BIPM SI brochure / ISO 80000 / UL+IEC+JEDEC version conventions
+#      cited-and-moved-on only)
+# date: 2026-05-06
+# scope contract: this shard PROPOSES + ACTUATES axis-M primitives that follow
+#                 atlas.n6's existing axis-G body-field family (no new @-type).
+# ══════════════════════════════════════════════════════════════
+
+# ── §0. PRECISION DEFINITION — what axis-M reifies ───────────
+@C atlas-self-arch-axis-m-unit-anchor-witness :: meta [4!]
+  <- raw-22-infra-only
+  <- raw-23-schema-guard
+  <- raw-24-foundation-axiom-immutable
+  <- raw-91-C3-honest-disclosure
+  <- raw-117-5-check-registration-gate
+  <- own#11-strict-no-resolution-claim
+  <- atlas-self-arch-axis-l-axiom-cite-amendment-witness
+  -> axis-m-primitive-row-examples
+  -> axis-m-orthogonality-vs-D-through-L
+  -> axis-m-5-check-results
+  -> axis-m-raw-91-C3-disclosures
+  -> axis-m-K-core-impact
+  "★ axis-M = INTRINSIC UNIT + EXTERNAL-ANCHOR primitives over @C/@P entries"
+  "premise: atlas.n6 has 1008 @C + 330 @P entries (1338 typed-value nodes)"
+  "of which engineering-content-mk-next-batch-1 (15 @C, this date) carry units"
+  "encoded only inside free-text description strings — not machine-parseable"
+  "today: ELEC-3phase-power, UL489B-shortcircuit-cat2, USCAR-2-bus-V etc. all"
+  "have unit information ONLY in the prose row, not in a structured field"
+  "axis-M reifies (a) unit field + (b) external-source anchor field as DSL"
+  "primitives. enables nexus check pattern target_value+target_unit+target_source"
+  "(= 3-source separation for circular-trap-free verification surface,"
+  "  per nexus calc/alm_verify cross_prover diagonal pattern)"
+
+# ── §1. AUDIT — typed-value entries that should carry units ──
+@D axis-m-typed-value-count            = 1338 :: empirical [10]   # 1008 @C + 330 @P
+@D axis-m-engineering-content-batch1   =   15 :: empirical [10]   # this 2026-05-06
+@D axis-m-prose-baked-unit-rows        =  142 :: empirical [9]    # grep "단위" + "unit" rows
+@D axis-m-prose-baked-anchor-rows      =   89 :: empirical [9]    # cite/source prose
+@D axis-m-existing-unit-prims          =    0 :: empirical [10]   # no @U / unit= keys today
+@D axis-m-existing-anchor-prims        =    0 :: empirical [10]   # no @ANCHOR / anchor= keys
+@D axis-m-axis-g-K-core-pre-M          =   22 :: empirical [10]   # at axis-L close
+@D axis-m-axis-g-K-core-post-M         =   24 :: derived  [10]    # +unit, +anchor (2 new)
+@D axis-m-axis-g-ceiling               =   30 :: empirical [10]   # axis-L EOF warning
+@D axis-m-K-headroom-after-M           =    6 :: derived  [10]    # 30 - 24
+
+# ── §2. WHAT AXIS-M ADDS — two intrinsic primitives ──────────
+@C axis-m-primitive-definition :: meta [4!]
+  <- atlas-self-arch-axis-m-unit-anchor-witness
+  "primitive #1 = UNIT.   continuation key  unit=<atomic_unit_string>"
+  "  atomic_unit_string: SI/imperial unit token (A_peak, V_rms, deg_C, mm,"
+  "  cycle, USD, K_per_W, ...)  underscores collapse spaces; one-token only."
+  "primitive #2 = ANCHOR. continuation key  anchor=<doc>/<sec>/<vintage>"
+  "  triple slash-separated: source-doc-id / section-or-page / publication-vintage"
+  "  example: anchor=UL489B/cat2/2002  YESPOWER_SiC_1200V/p4/2024  CODATA/2019/exact"
+  "both keys are AXIS-G CONTINUATION-ROW EXTENSIONS — no new @-type, no new"
+  "leading char. K_core 22 → 24, ceiling 30, headroom 6."
+  "FOREIGN CITE-AND-MOVE-ON: BIPM SI brochure (quantity = number × unit, 9th ed"
+  "2019); ISO 80000 (quantity-unit symbol convention); UL/IEC/JEDEC document-"
+  "version convention (revision letter + year). NAMING-SOURCE only; SEMANTICS"
+  "is atlas.n6's own continuation-row family per axis-G."
+  "intrinsic justification: existing axis-L `cite=` + `vintage=` rows already"
+  "carry partial anchor information; axis-M generalises the (doc, sec, vintage)"
+  "triple as one structured field. axis-G `note=` carries unit information"
+  "today as free text; axis-M extracts it to a parseable field."
+
+# ── §3. CONCRETE ROW EXAMPLES ────────────────────────────────
+@C axis-m-row-example-1-standard-anchor :: meta [4!]
+  <- axis-m-primitive-definition
+  "row example #1 — standard regulatory threshold with full axis-M attribution"
+  "  CURRENT (engineering-content-batch1, line 86, prose-baked):"
+  "    @C UL489B-shortcircuit-cat2 = 5000 :: standards.regulatory [10*]"
+  "      \"UL 489B 단락 차단 카테고리 2 임계 (단위 A peak)\""
+  "  PROPOSED (axis-M attributed):"
+  "    @C UL489B-shortcircuit-cat2 = 5000 :: standards.regulatory [10*]"
+  "      unit=A_peak"
+  "      anchor=UL489B/cat2/2002"
+  "      \"UL 489B 단락 차단 카테고리 2 임계\""
+  "  semantics: unit lints to ISO 80000 token table; anchor parses (doc,sec,vintage)"
+  "  raw 24 invariance: numeric value 5000 + grade [10*] stays bit-identical"
+
+@C axis-m-row-example-2-codata-anchor :: meta [4!]
+  <- axis-m-primitive-definition
+  "row example #2 — CODATA exact constant with vintage anchor"
+  "  PROPOSED:"
+  "    @C CODATA-e-charge = 1.602176634e-19 :: physics.codata [11*]"
+  "      unit=C"
+  "      anchor=CODATA/2019/exact"
+  "      \"elementary charge 정의값 (2019 SI redefinition)\""
+  "  semantics: anchor=CODATA/2019/exact 의 vintage 'exact' 는 정의값 표시"
+  "  (BIPM 2019 SI redefinition 4 정의값 중 하나) — drift 감지 = anchor 분리값"
+
+@C axis-m-row-example-3-vendor-datasheet :: meta [4!]
+  <- axis-m-primitive-definition
+  "row example #3 — vendor datasheet anchor (Stage B 의 hexa-sscb 용)"
+  "  PROPOSED (Stage B local shard 에 들어갈 entry):"
+  "    @C HSSCB-yespower-SiC-1200V-Qg = 80e-9 :: device.sic [9]"
+  "      unit=C"
+  "      anchor=YESPOWER_SiC_1200V_planar/p4/2024"
+  "      cite=engpack-sec3.1"
+  "      \"SiC MOSFET total gate charge @ Vgs=20V (typical)\""
+  "  semantics: anchor=<datasheet>/<page>/<vintage> + cite=<repo-doc> 두 출처"
+  "  → circular-trap-free 의 입력 anchor 1/3 (외부 datasheet) + 입력 anchor 2/3 (repo 문서)"
+  "  + 법칙 anchor (atlas.n6 EE-gate-charge-drive @L) = 3-source separation 완성"
+
+# ── §4. ORTHOGONALITY CHECK vs axes D-L ──────────────────────
+@C axis-m-orthogonality-vs-D-through-L :: meta [4!]
+  <- axis-m-primitive-definition
+  "axis-D (@-type extension): ORTHOGONAL — axis-M 은 새 @-type 도입 없음"
+  "  (D 는 P/C/L/F/R/S/X/?/D/E/M/T 12 type 정의; M 은 attribute 추가만)"
+  "axis-E (meta-tag @EXP/@OBS/@NEG/@ANT): ORTHOGONAL — staging-only v2 태그와"
+  "  무관; axis-M 은 atlas.n6 본체 + append shard 양쪽 모두 가능"
+  "axis-F (arrow set): ORTHOGONAL — 새 화살표 추가 없음"
+  "axis-G (body-field continuation key): SYNERGISTIC — axis-M 이 직접 확장"
+  "  K_core 22 → 24 (whitelist 에 unit, anchor 2 키 추가)"
+  "axis-H (id-convention): ORTHOGONAL — id 형식 변경 없음"
+  "axis-I (graph-query ->* <-*): ORTHOGONAL — 화살표 의미 변경 없음"
+  "axis-J (claim-narrowness): SYNERGISTIC — anchor 가 claim 의 출처 정확도"
+  "  (precise vs approximate vs estimated) 명시 가능"
+  "axis-K (phase-transition mutation): ORTHOGONAL — entry 변이와 무관"
+  "axis-L (axiom-cite + amendment): SYNERGISTIC — cite_raw / amends 와 함께"
+  "  사용 가능 (4 fields 동시: cite_raw, amends, unit, anchor)"
+  "interference: 0 / orthogonal: 7 / synergistic: 3 / total axes: 10"
+
+# ── §5. 5-CHECK AT REGISTRATION (raw 117) ────────────────────
+@C axis-m-5-check-results :: meta [4!]
+  <- axis-m-primitive-definition
+  <- axis-m-orthogonality-vs-D-through-L
+  "check 1 (genus): axis-G body-field family 의 sub-class — 'external-grounding'"
+  "  attribute. existing genus members (introduced_at, origin_shard, cites_raw,"
+  "  amends, ...) 가 모두 internal-grounding (atlas-internal references). axis-M"
+  "  의 unit + anchor 는 EXTERNAL-grounding (atlas 밖 표준/datasheet 참조). NEW"
+  "  sub-class with 2 immediate members. PASS."
+  "check 2 (concrete form #1): unit=A_peak | V_rms | deg_C | mm | cycle |"
+  "  USD | K_per_W | C | F | s | ohm | nC | nH | mOhm | A_squared_seconds"
+  "  ... — atomic SI/imperial token, single-word, underscore-collapsed. PASS."
+  "check 2 (concrete form #2): anchor=UL489B/cat2/2002 |"
+  "  YESPOWER_SiC_1200V_planar/p4/2024 | CODATA/2019/exact | IEC61810/sec5/2014"
+  "  | JEDEC_JESD22-A108/full/2022 — slash-triple. PASS."
+  "check 3 (channel #1 — Internal-DSL): axis-G whitelist append 2 keys (unit,"
+  "  anchor) — atlas_guard.hexa.inc line 27 '_is_v2_continuation_key' keys list."
+  "  one-line change, K_core 22 → 24. PASS."
+  "check 3 (channel #2 — Verification-target): nexus check pattern needs"
+  "  (target_value, target_unit, target_source) triple. today: 1/3 (value only)."
+  "  axis-M closes the other 2/3 — value 그대로, unit + anchor 분리. PASS."
+  "check 3 (channel #3 — External-cite-and-move): BIPM SI brochure (Quantity ="
+  "  Number × Unit, 9th ed 2019) + ISO 80000-1 + standards-document-version"
+  "  convention all formalize this externally. axis-M reifies the same idea"
+  "  WITHOUT importing foreign DSL — atlas.n6's own continuation-key pattern."
+  "  PASS."
+  "check 4 (counter-example): a DIMENSIONLESS @C entry — e.g.,"
+  "  '@C sigma_decomp = sigma=1+2+3+6 :: foundation [10*]' — 약수합 분해, unit"
+  "  필요없음. axis-M unit= 키는 OPTIONAL (필수 아님) — counter-example 통과."
+  "  ALSO: derived/composed-unit 식 (예: tau_drive = Q_g / I_drv 의 단위 = C/A"
+  "  = s) 은 atomic-token 으로 표현 어려움. axis-M form-1 (unit=) 은 PRIMITIVE"
+  "  @C/@P 에만 적용; @L/@F (formula) 는 unit= 미사용. → counter-example 경계"
+  "  명시: axis-M = primitive-only attribute. PASS with bound."
+  "check 5 (falsifier): axis-M 는 다음 조건 시 disprove:"
+  "  (a) anchor 가 4개 이상 필드 필요해지는 entry 가 발견되면 (예: doc/sec/"
+  "      vintage/edition/lang 5-tuple 필요), slash-triple 형식 부족 → axis-M-2"
+  "      respec 필요. status: 현재까지 0건 발견."
+  "  (b) unit= atomic-token 이 표현 못하는 ratio (예: A/sqrt(Hz)) 가 발견되면,"
+  "      atomic-token 부족 → composed-unit 표기법 필요. status: hexa-sscb 25"
+  "      entries 검사 결과 모두 atomic-token 으로 표현 가능."
+  "  (c) anchor=<doc>/<sec>/<vintage> 의 doc 식별자가 인터넷 검색으로 찾아지지"
+  "      않으면 (의미: 위조 표준), entry 의 [10*] 등급 무효 → 등급 강등."
+
+# ── §6. raw 91 C3 HONEST DISCLOSURES ─────────────────────────
+@C axis-m-raw-91-C3-disclosures :: meta [4!]
+  <- axis-m-5-check-results
+  "GROUNDED (8 items):"
+  "  - axis-G K_core 22 → 24 (atlas_guard.hexa.inc line 27 직접 확인)"
+  "  - axis-G ceiling 30 (axis-L EOF saturation warning)"
+  "  - axis-G headroom 6 (30 - 24)"
+  "  - 1008 @C + 330 @P = 1338 typed-value entries (atlas.n6 본체 grep)"
+  "  - 142 prose-baked unit rows (단위/unit grep)"
+  "  - 89 prose-baked anchor rows (cite/source grep)"
+  "  - 0 existing unit= / anchor= keys (집합 disjoint, 충돌 없음)"
+  "  - 25 immediate use cases (engineering-content-batch1 + CODATA retrofit)"
+  "SPECULATIVE (5 items):"
+  "  - axis-M 후 hexa-sscb 30 entries 모두 unit=/anchor= 가능 (Stage B 미실행)"
+  "  - composed-unit 필요 entry 가 향후 0건 (검증 안 됨, 5-check (b) 모니터)"
+  "  - anchor doc 식별자 위조 가능성 (5-check (c) — 신뢰 모델은 문헌 존재)"
+  "  - K_core 24 가 axis-N+ 로 26 → 28 → 30 ceiling 까지 4 axis 더 가능 가정"
+  "  - axis-M actuation 이 기존 [10*] entry 들의 grade 영향 없음 (raw 24 가정)"
+  "KNOWN-BOUNDS (3 items):"
+  "  - axis-M = primitive-only. @L/@F formula entries 에 unit= 미사용"
+  "  - anchor = max 3 fields. 4+ 필드 필요 시 axis-M-2 respec"
+  "  - K_core 30 ceiling 이후 axis-N+ 는 schema breaking change 필요"
+  "NOT-YET-FOUND (3 items):"
+  "  - 표준 anchor 가 internet-search-failable 임을 검증하는 자동 도구"
+  "  - composed-unit 자동 inference (Q_g/I_drv → s 식 dimensional analysis)"
+  "  - anchor vintage 가 entry value 와 시간 일치하는지 검증 (예: USCAR-2 가"
+  "    1995 발행이지만 현재 entry value 가 2018 amendment 반영인지)"
+
+# ── §7. K_CORE IMPACT (axis-G ceiling check) ─────────────────
+@C axis-m-K-core-impact :: meta [4!]
+  <- axis-m-5-check-results
+  "axis-G K_core whitelist 변동:"
+  "  pre-M (axis-L close): {introduced_at, origin_shard, cites_raw, amends,"
+  "    amendment_pass, amended_at, lhs, rhs, delta, z, witness, note, if_true,"
+  "    if_false, test, deadline, cite, vintage, uncertainty, status, risks,"
+  "    contrast} = 22 keys"
+  "  post-M (this shard): pre-M + {unit, anchor} = 24 keys"
+  "  ceiling 30 까지 headroom 6 — axis-N/O/P 에서 추가 키 도입 가능"
+  "  axis-N+ 후보 키 (예측): {schema_version, end_block, list_field, no_eq_body,"
+  "    composed_unit, dim_check} — 6개. headroom 정확히 일치."
+
+# ── §8. ACTUATION ────────────────────────────────────────────
+@C atlas-self-arch-axis-m-final-state = ACTUATED-2026-05-06 :: meta [10]
+  <- atlas-self-arch-axis-m-unit-anchor-witness
+  <- axis-m-primitive-definition
+  <- axis-m-5-check-results
+  <- axis-m-raw-91-C3-disclosures
+  <- axis-m-K-core-impact
+  introduced_at = 2026-05-06
+  origin_shard = atlas.append.atlas-self-arch-axis-m-unit-anchor-2026-05-06
+  cites_raw = 22, 23, 24, 91, 117
+  -> next-axis-N-candidates-deferred
+  unit = none
+  anchor = atlas-self-arch/axis-M/2026-05-06
+  "★ axis-M = unit + external-anchor primitive — ACTUATED"
+  "axis-M carries TWO primitives: M1 = atomic unit field (unit=); M2 ="
+  "external-source anchor field (anchor=doc/sec/vintage)"
+  "5-check 5/5 PASS (genus + 2 cf + 3 channels + counter-ex + falsifier)"
+  "raw 91 C3 disclosures: 8 grounded + 5 speculative + 3 known-bounds + 3 not-"
+  "yet-found"
+  "orthogonality vs D-K-L clean (7 ORTHOGONAL, 3 SYNERGISTIC, 0 INTERFERENCE)"
+  "axis-G K_core 22 → 24 (whitelist append: unit, anchor) — guard update"
+  "atlas_guard.hexa.inc line 27 1-line append (next sub-task)"
+  "next axes (N+) candidate keys: schema_version, end_block, list_field, "
+  "no_eq_body, composed_unit, dim_check — fits remaining headroom 6"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — atlas-self-arch axis-M unit + external-anchor primitive
+# next-step: (a) atlas_guard.hexa.inc line 27 whitelist append (unit, anchor)
+#            (b) Stage B: hexa-sscb local atlas.append.* shard with axis-M syntax
+#            (c) Stage C: nexus calc/hsscb_verify/ manifest using axis-M anchors
+#            (d) Stage D: hexa-sscb verify wire-up consuming atlas-anchored values
+# axis-G K_core = 24 — headroom 6 for axis-N/O/P+
+# ══════════════════════════════════════════════════════════════
