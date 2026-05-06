@@ -1,0 +1,172 @@
+#!hexa strict
+// tools/inject_provenance.hexa — prepend a `@canonical:` provenance header
+// to every seed copy listed in standalone_registry.toml.
+//
+// Header format (HTML comment for .md, // comment for .hexa):
+//   .md   →  <!-- @canonical: n6-architecture@<sha>:<canonical> -->
+//             <!-- @extracted: 2026-05-06 -->
+//             <!-- @md5_at_extraction: <md5_canon> -->
+//   .hexa →  // @canonical: n6-architecture@<sha>:<canonical>
+//             // @extracted: 2026-05-06
+//             // @md5_at_extraction: <md5_canon>
+//
+// Idempotent: skips files that already contain `@canonical: n6-architecture@`.
+//
+// Usage:
+//   HEXA_FORK_CAP=0 hexa run tools/inject_provenance.hexa
+//
+// Run AFTER `tools/build_registry.hexa` (uses standalone_registry.toml as
+// source-of-truth).
+
+let REGISTRY = "standalone_registry.toml"
+let MARKER = "@canonical: n6-architecture@"
+
+fn shq(s: str) -> str {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn n6_root() -> str {
+    let r = exec("git -C . rev-parse --show-toplevel 2>/dev/null").trim()
+    if r.len() > 0 { return r }
+    return env("PWD")
+}
+
+fn core_root() -> str {
+    return env("HOME") + "/core"
+}
+
+fn parse_value(line: str) -> str {
+    let parts = line.split("=")
+    if parts.len() < 2 { return "" }
+    let mut v = parts[1]
+    let mut k = 2
+    while k < parts.len() {
+        v = v + "=" + parts[k]
+        k = k + 1
+    }
+    v = v.trim()
+    let quoted = v.split("\"")
+    if quoted.len() >= 3 { return quoted[1] }
+    return v
+}
+
+fn ends_with_md(p: str) -> bool { return p.ends_with(".md") }
+fn ends_with_hexa(p: str) -> bool { return p.ends_with(".hexa") }
+
+fn build_header_md(sha: str, canonical: str, md5: str) -> str {
+    return "<!-- @canonical: n6-architecture@" + sha + ":" + canonical + " -->\n"
+        + "<!-- @extracted: 2026-05-06 -->\n"
+        + "<!-- @md5_at_extraction: " + md5 + " -->\n"
+}
+
+fn build_header_hexa(sha: str, canonical: str, md5: str) -> str {
+    return "// @canonical: n6-architecture@" + sha + ":" + canonical + "\n"
+        + "// @extracted: 2026-05-06\n"
+        + "// @md5_at_extraction: " + md5 + "\n"
+}
+
+fn main() {
+    let n6 = n6_root()
+    let core = core_root()
+    let raw = read_file(n6 + "/" + REGISTRY)
+    if raw.len() == 0 {
+        println("ERROR: cannot read " + REGISTRY)
+        return
+    }
+
+    // Pull n6 sha from [meta] block.
+    let meta_lines = raw.split("\n")
+    let mut sha = ""
+    let mut mi = 0
+    while mi < meta_lines.len() {
+        let ml = meta_lines[mi].trim()
+        mi = mi + 1
+        if ml.starts_with("n6_arch_sha") {
+            sha = parse_value(ml)
+            break
+        }
+    }
+    if sha.len() == 0 {
+        println("ERROR: n6_arch_sha not found in registry")
+        return
+    }
+
+    let mut current_slug = ""
+    let mut canonical = ""
+    let mut copy = ""
+    let mut md5_canon_rec = ""
+    let mut in_seed = false
+
+    let mut injected = 0
+    let mut already = 0
+    let mut skipped = 0
+    let mut total = 0
+
+    let mut i = 0
+    while i < meta_lines.len() {
+        let line = meta_lines[i].trim()
+        i = i + 1
+        if line.starts_with("[[standalone]]") {
+            in_seed = false
+            current_slug = ""
+            continue
+        }
+        if line.starts_with("[[standalone.seeds]]") {
+            in_seed = true
+            canonical = ""
+            copy = ""
+            md5_canon_rec = ""
+            continue
+        }
+        if line.starts_with("slug") && !in_seed {
+            current_slug = parse_value(line)
+            continue
+        }
+        if !in_seed { continue }
+        if line.starts_with("canonical") { canonical = parse_value(line); continue }
+        if line.starts_with("copy")      { copy = parse_value(line); continue }
+        if line.starts_with("md5_canon") { md5_canon_rec = parse_value(line); continue }
+        if line.starts_with("md5_copy") {
+            // end of seed block — process now
+            total = total + 1
+            let copy_path = core + "/" + current_slug + "/" + copy
+            let probe = exec("[ -f " + shq(copy_path) + " ] && echo yes || echo no").trim()
+            if probe != "yes" {
+                println("  SKIP-MISSING [" + current_slug + "] " + copy)
+                skipped = skipped + 1
+                in_seed = false
+                continue
+            }
+            let body = read_file(copy_path)
+            if body.contains(MARKER) {
+                already = already + 1
+                in_seed = false
+                continue
+            }
+            let mut header = ""
+            if ends_with_md(copy) {
+                header = build_header_md(sha, canonical, md5_canon_rec)
+            } else if ends_with_hexa(copy) {
+                header = build_header_hexa(sha, canonical, md5_canon_rec)
+            } else {
+                // Unknown ext — fallback to HTML comment
+                header = build_header_md(sha, canonical, md5_canon_rec)
+            }
+            write_file(copy_path, header + body)
+            injected = injected + 1
+            in_seed = false
+            continue
+        }
+    }
+
+    println("Provenance injection summary:")
+    println("  total seeds:    " + str(total))
+    println("  injected:       " + str(injected))
+    println("  already-tagged: " + str(already))
+    println("  skipped-missing: " + str(skipped))
+    if total - skipped > 0 {
+        println("__INJECT_PROVENANCE__ PASS")
+    } else {
+        println("__INJECT_PROVENANCE__ FAIL reason=no-files")
+    }
+}

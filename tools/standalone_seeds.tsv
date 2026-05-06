@@ -1,0 +1,133 @@
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/fusion/fusion.md	fusion/doc/fusion.md
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/fusion/fusion_ledger.hexa	fusion/module/fusion_ledger.hexa
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/fusion/verify_fusion.hexa	fusion/module/verify_fusion.hexa
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/fusion/fusion_ledger.README.md	fusion/doc/fusion_ledger.README.md
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/tabletop-fusion/tabletop-fusion.md	tabletop_fusion/doc/tabletop-fusion.md
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/energy/fusion-powerplant/fusion-powerplant.md	fusion_powerplant/doc/fusion-powerplant.md
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	domains/physics/plasma-fusion-deep/plasma-fusion-deep.md	plasma_deep/doc/plasma-fusion-deep.md
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-calc/main.hexa	cli/fusion_calc.hexa
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-dse/main.hexa	cli/fusion_dse.hexa
+hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-verify/main.hexa	cli/fusion_verify.hexa
+petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/mini-accelerator/mini-accelerator.md	mini/doc/mini-accelerator.md
+petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/particle-accelerator/particle-accelerator.md	parent/doc/particle-accelerator.md
+petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/classical-mechanics-accelerator/classical-mechanics-accelerator.md	classical/doc/classical-mechanics-accelerator.md
+hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	domains/sf-ufo/hexa-ufo/hexa-ufo.md	ufo/doc/hexa-ufo.md
+hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	experiments/structural/ufo_nexus_scan.hexa	ufo/module/ufo_nexus_scan.hexa
+hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	reports/sessions/specs/2026-04-06-ufo-warp-dimension-design.md	ufo/doc/warp-dimension-design.md
+hexa-rtsc	🧲	Room-Temp Superconductor — Meissner + 48T SC coil.	domains/energy/room-temp-sc/room-temp-sc.md	rtsc/room-temp-sc.md
+hexa-rtsc	🧲	Room-Temp Superconductor — Meissner + 48T SC coil.	domains/energy/superconductor/superconductor.md	sc/superconductor.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-bsd/millennium-bsd.md	bsd/millennium-bsd.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-hodge/millennium-hodge.md	hodge/millennium-hodge.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-navier-stokes/millennium-navier-stokes.md	navier_stokes/millennium-navier-stokes.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-p-vs-np/millennium-p-vs-np.md	p_vs_np/millennium-p-vs-np.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-poincare/millennium-poincare.md	poincare/millennium-poincare.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-riemann/millennium-riemann.md	riemann/millennium-riemann.md
+hexa-millennium	🏆	Clay 7 Millennium Problems — n=6 closed-form candidates.	domains/physics/millennium-yang-mills/millennium-yang-mills.md	yang_mills/millennium-yang-mills.md
+hexa-cosmos	🌌	Cosmos substrate — cosmology + particle-cosmology + cosmic observatory.	domains/physics/cosmology/cosmology.md	cosmology/cosmology.md
+hexa-cosmos	🌌	Cosmos substrate — cosmology + particle-cosmology + cosmic observatory.	domains/physics/cosmology-particle/cosmology-particle.md	particle/cosmology-particle.md
+hexa-cosmos	🌌	Cosmos substrate — cosmology + particle-cosmology + cosmic observatory.	domains/physics/cosmic-observatory/cosmic-observatory.md	observatory/cosmic-observatory.md
+hexa-pet	🐱	반려동물 toolkit — cat·dog food/litter/toy 5-verb.	domains/pets/cat-food/cat-food.md	cat_food/cat-food.md
+hexa-pet	🐱	반려동물 toolkit — cat·dog food/litter/toy 5-verb.	domains/pets/cat-litter/cat-litter.md	cat_litter/cat-litter.md
+hexa-pet	🐱	반려동물 toolkit — cat·dog food/litter/toy 5-verb.	domains/pets/cat-toy/cat-toy.md	cat_toy/cat-toy.md
+hexa-pet	🐱	반려동물 toolkit — cat·dog food/litter/toy 5-verb.	domains/pets/dog-food/dog-food.md	dog_food/dog-food.md
+hexa-pet	🐱	반려동물 toolkit — cat·dog food/litter/toy 5-verb.	domains/pets/dog-toy/dog-toy.md	dog_toy/dog-toy.md
+hexa-time	⏰	n=6 시간 substrate — horology + bell-clockwork + calendar.	domains/culture/horology/horology.md	horology/horology.md
+hexa-time	⏰	n=6 시간 substrate — horology + bell-clockwork + calendar.	domains/culture/bell-clockwork/bell-clockwork.md	clockwork/bell-clockwork.md
+hexa-time	⏰	n=6 시간 substrate — horology + bell-clockwork + calendar.	domains/infra/calendar-time-geography/calendar-time-geography.md	calendar/calendar-time-geography.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/hexa-cosmic/hexa-cosmic.md	cosmic/hexa-cosmic.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/hexa-starship/hexa-starship.md	starship/hexa-starship.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/aerospace/aerospace.md	aerospace/aerospace.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/aerospace-transport/aerospace-transport.md	aerospace_transport/aerospace-transport.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/space-engineering/space-engineering.md	engineering/space-engineering.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/space-systems/space-systems.md	systems/space-systems.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/astrodynamics/astrodynamics.md	astrodynamics/astrodynamics.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/astronomy/astronomy.md	astronomy/astronomy.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/observational-astronomy/observational-astronomy.md	obs_astronomy/observational-astronomy.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/astrobiology/astrobiology.md	astrobiology/astrobiology.md
+hexa-space	🚀	Space 통합 — cosmic + starship + aerospace + astronomy + medicine 11-verb.	domains/space/space-medicine/space-medicine.md	medicine/space-medicine.md
+hexa-fantasy	🐉	Fantasy substrate — dragon + vampire + fantasy + sf + snowflake-ice.	domains/sf-ufo/dragon/dragon.md	dragon/dragon.md
+hexa-fantasy	🐉	Fantasy substrate — dragon + vampire + fantasy + sf + snowflake-ice.	domains/sf-ufo/vampire/vampire.md	vampire/vampire.md
+hexa-fantasy	🐉	Fantasy substrate — dragon + vampire + fantasy + sf + snowflake-ice.	domains/sf-ufo/fantasy/fantasy.md	fantasy/fantasy.md
+hexa-fantasy	🐉	Fantasy substrate — dragon + vampire + fantasy + sf + snowflake-ice.	domains/sf-ufo/sf/sf.md	sf/sf.md
+hexa-fantasy	🐉	Fantasy substrate — dragon + vampire + fantasy + sf + snowflake-ice.	domains/sf-ufo/snowflake-ice/snowflake-ice.md	snowflake_ice/snowflake-ice.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/battery-architecture/battery-architecture.md	battery_arch/battery-architecture.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/battery-energy/battery-energy.md	battery_energy/battery-energy.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/nuclear-reactor/nuclear-reactor.md	nuclear/nuclear-reactor.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/smr-datacenter/smr-datacenter.md	smr_dc/smr-datacenter.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/datacenter-reactor/datacenter-reactor.md	dc_reactor/datacenter-reactor.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/power-grid/power-grid.md	grid/power-grid.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/rooftop-pv-2nd-life-microgrid/rooftop-pv-2nd-life-microgrid.md	pv_microgrid/rooftop-pv-2nd-life-microgrid.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/solar-architecture/solar-architecture.md	solar/solar-architecture.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/pemfc/pemfc.md	pemfc/pemfc.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/hvac-system/hvac-system.md	hvac/hvac-system.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/thermal-management/thermal-management.md	thermal/thermal-management.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/amd-ree-mineshaft-phes/amd-ree-mineshaft-phes.md	mineshaft/amd-ree-mineshaft-phes.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/energy-architecture/energy-architecture.md	arch/energy-architecture.md
+hexa-energy	⚡	Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb.	domains/energy/energy-efficiency/energy-efficiency.md	efficiency/energy-efficiency.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/climate/climate.md	climate/climate.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/carbon-capture/carbon-capture.md	carbon_capture/carbon-capture.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/environment-thermal/environment-thermal.md	env_thermal/environment-thermal.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/environmental-protection/environmental-protection.md	env_protect/environmental-protection.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/desal/desal.md	desal/desal.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/desalination/desalination.md	desalination/desalination.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/water-treatment/water-treatment.md	water_treat/water-treatment.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/geology/geology.md	geology/geology.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/earthquake-engineering/earthquake-engineering.md	earthquake/earthquake-engineering.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/cartography-gis/cartography-gis.md	cartography/cartography-gis.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/earth-defense/earth-defense.md	earth_defense/earth-defense.md
+hexa-earth	🌍	Earth 묶음 — climate + water + geo + defense 12-verb.	domains/infra/hexa-defense/hexa-defense.md	hexa_defense/hexa-defense.md
+hexa-antimatter	☄️	반물질 substrate — factory + tabletop + PET cyclotron.	domains/physics/antimatter-factory/antimatter-factory.md	factory/antimatter-factory.md
+hexa-antimatter	☄️	반물질 substrate — factory + tabletop + PET cyclotron.	domains/physics/tabletop-antimatter/tabletop-antimatter.md	tabletop/tabletop-antimatter.md
+hexa-antimatter	☄️	반물질 substrate — factory + tabletop + PET cyclotron.	domains/physics/pet-cyclotron/pet-cyclotron.md	pet_cyclotron/pet-cyclotron.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-alignment/ai-alignment.md	alignment/ai-alignment.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-safety/ai-safety.md	safety/ai-safety.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-welfare/ai-welfare.md	welfare/ai-welfare.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-adversarial/ai-adversarial.md	adversarial/ai-adversarial.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-consciousness/ai-consciousness.md	consciousness/ai-consciousness.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-interpretability/ai-interpretability.md	interpret/ai-interpretability.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-training-cost/ai-training-cost.md	train_cost/ai-training-cost.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-inference-cost/ai-inference-cost.md	infer_cost/ai-inference-cost.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-quality-scale/ai-quality-scale.md	quality_scale/ai-quality-scale.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-deployment/ai-deployment.md	deploy/ai-deployment.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-enterprise-custom/ai-enterprise-custom.md	enterprise/ai-enterprise-custom.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-agent-serving/ai-agent-serving.md	agent_serving/ai-agent-serving.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-eval-pipeline/ai-eval-pipeline.md	eval/ai-eval-pipeline.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/ai-multimodal/ai-multimodal.md	multimodal/ai-multimodal.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/youth-ai-labeling-rlhf-hub/youth-ai-labeling-rlhf-hub.md	rlhf/youth-ai-labeling-rlhf-hub.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/cognitive-architecture/cognitive-architecture.md	cog_arch/cognitive-architecture.md
+hexa-codex	📚	AI knowledge substrate — alignment·safety·welfare·training·inference·multimodal 17-verb.	domains/cognitive/causal-chain/causal-chain.md	causal/causal-chain.md
+hexa-bot	🤖	Robot substrate — robotics + transport + control-automation + dog-robot 4-verb.	domains/infra/robotics/robotics.md	robotics/robotics.md
+hexa-bot	🤖	Robot substrate — robotics + transport + control-automation + dog-robot 4-verb.	domains/infra/robotics-transport/robotics-transport.md	transport/robotics-transport.md
+hexa-bot	🤖	Robot substrate — robotics + transport + control-automation + dog-robot 4-verb.	domains/infra/control-automation/control-automation.md	automation/control-automation.md
+hexa-bot	🤖	Robot substrate — robotics + transport + control-automation + dog-robot 4-verb.	domains/life/dog-robot-test/dog-robot-test.md	dog_robot/dog-robot-test.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-architecture/chip-architecture.md	architecture/chip-architecture.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-isa-n6/chip-isa-n6.md	isa_n6/chip-isa-n6.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-hexa1/chip-hexa1.md	hexa1/chip-hexa1.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-design/chip-design.md	design/chip-design.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-dse-pipeline/chip-dse-pipeline.md	dse_pipeline/chip-dse-pipeline.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-rtl-gen/chip-rtl-gen.md	rtl_gen/chip-rtl-gen.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-eda/chip-eda.md	eda/chip-eda.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-verify-test/chip-verify-test.md	verify_test/chip-verify-test.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-process/chip-process.md	process/chip-process.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-materials/chip-materials.md	materials/chip-materials.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-wafer/chip-wafer.md	wafer/chip-wafer.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-yield/chip-yield.md	yield/chip-yield.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-thermal-power/chip-thermal-power.md	thermal_power/chip-thermal-power.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-packaging/chip-packaging.md	packaging/chip-packaging.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/advanced-packaging/advanced-packaging.md	advanced_packaging/advanced-packaging.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-3d/chip-3d.md	chip_3d/chip-3d.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-hbm/chip-hbm.md	hbm/chip-hbm.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-interconnect/chip-interconnect.md	interconnect/chip-interconnect.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-sc/chip-sc.md	sc/chip-sc.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-npu-n6/chip-npu-n6.md	npu_n6/chip-npu-n6.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-pim/chip-pim.md	pim/chip-pim.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/chip-photonic/chip-photonic.md	photonic/chip-photonic.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/hexa-accel/hexa-accel.md	accel/hexa-accel.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/hexa-asic/hexa-asic.md	asic/hexa-asic.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/hexa-pim/hexa-pim.md	hexa_pim/hexa-pim.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/hexa-3d/hexa-3d.md	hexa_3d/hexa-3d.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/hexa-wafer/hexa-wafer.md	hexa_wafer/hexa-wafer.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/consciousness-chip/consciousness-chip.md	conscious_chip/consciousness-chip.md
+hexa-chip	🔲	Chip substrate — 28-verb semiconductor stack.	domains/compute/consciousness-soc/consciousness-soc.md	conscious_soc/consciousness-soc.md
+hexa-scope	🛰️	Space telescope substrate — Hubble·JWST·LSST·Roman + post-Hubble.	domains/physics/cosmic-observatory/cosmic-observatory.md	observatory/cosmic-observatory.md
+hexa-scope	🛰️	Space telescope substrate — Hubble·JWST·LSST·Roman + post-Hubble.	domains/space/observational-astronomy/observational-astronomy.md	obs_astronomy/observational-astronomy.md
