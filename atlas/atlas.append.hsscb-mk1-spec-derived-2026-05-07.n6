@@ -1,0 +1,92 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — hexa-sscb mk1 spec-derived + placeholder anchors
+# slug: hsscb-mk1-spec-derived-followup
+# scope: hexa-sscb mk1 — fills gap entries needed by legacy sscb_verify.py
+#        + bom_lattice.py refactor to circular-trap-free pattern
+# date: 2026-05-07
+# orthogonality: follow-up to atlas.append.hsscb-mk1-vendor-anchors-2026-05-06
+#                — adds spec-text-derived constants and TDDB placeholders
+#                that lacked vendor datasheet pages but exist in spec.md /
+#                engpack as design-time constants.
+# constraints: raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 axiom-immutable
+# axis-M: every @C carries unit= + anchor=
+# ══════════════════════════════════════════════════════════════
+
+# ── Section 1: spec-derived continuous-operation constants ────
+
+@C HSSCB-spec-Inom-continuous = 100 :: device.electrical [10*]
+  unit = A
+  anchor = spec.md/sec9/2026-05-06
+  cite = spec-md-sec4, engpack-sec1.1-E-2, USCAR-2-bus-V
+  "continuous current spec @ 40 C ambient (USCAR-2 48 V mild-hybrid bus)"
+
+@C HSSCB-spec-Vbus-nominal = 48 :: device.electrical [10*]
+  unit = V
+  anchor = spec.md/sec9-E-1/2026-05-06
+  cite = USCAR-2-bus-V
+  "DC bus nominal voltage (+/- 10% tolerance)"
+
+# ── Section 2: cutoff budget — derived from n=6 master identity ──
+
+@C HSSCB-cutoff-budget-n6 = 600e-9 :: device.timing [11*]
+  unit = s
+  anchor = atlas.n6/n=6/2026-04-12
+  cite = spec-md-sec4, atlas.append.engineering-content-mk-next/EE-cycle-time-clock
+  "T_off budget = n * 100 ns = 6 * 100 ns (atlas.n6 @P n=6 [11*] derived)"
+
+# ── Section 3: schedule budget ────────────────────────────────
+
+@C HSSCB-spec-schedule-budget-mo = 12 :: economics.sscb [10*]
+  unit = month
+  anchor = spec.md/sec8/2026-05-06
+  cite = engpack-sec10, spec-md-sec15
+  "12-month MPW + assembly + cert schedule budget (parallel + serial)"
+
+# ── Section 4: SiC TDDB Weibull placeholders ──────────────────
+# These are placeholder values until JEDEC JESD22-A108 qualification report
+# from YESPOWER is available. Grade [8?] = empirical-near, high uncertainty.
+# See manifest hsscb_mk1_reliability_tddb note.
+
+@C HSSCB-tddb-weibull-eta-placeholder = 1.0e9 :: device.reliability [8?]
+  unit = cycle
+  anchor = engpack/sec1.1-E-7/2026-05-06
+  cite = JEDEC-JESD22-A108
+  "TDDB Weibull characteristic life eta (placeholder — pending qual report)"
+
+@C HSSCB-tddb-weibull-beta-placeholder = 2.5 :: device.reliability [9]
+  unit = dimensionless
+  anchor = engpack/sec1.1-E-7/2026-05-06
+  cite = JEDEC-JESD22-A108
+  "TDDB Weibull shape beta (industry-standard SiC 2.0-3.0 range)"
+
+# ── Section 5: thermal verification constants ─────────────────
+
+@C HSSCB-spec-overshoot-margin-frac = 0.20 :: device.electrical [10*]
+  unit = dimensionless
+  anchor = engpack/sec3.6/2026-05-06
+  cite = spec-md-sec11, IEC61000-4-5-surge-V
+  "dV/dt overshoot allowed fraction of Vds rating (snubber sizing rule)"
+
+@C HSSCB-spec-current-share-budget = 1.20 :: device.electrical [10*]
+  unit = dimensionless
+  anchor = engpack/sec3.1/2026-05-06
+  cite = engpack-sec7.4
+  "per-die current share budget (+/- 20% over nominal I/N with binning)"
+
+@C HSSCB-spec-irq-budget = 150e-9 :: device.timing [10*]
+  unit = s
+  anchor = spec.md/sec10/2026-05-06
+  cite = spec-md-sec13, engpack-sec3.5
+  "IRQ latency budget per cutoff timing-budget table"
+
+@C HSSCB-spec-adc-bw-budget = 400e3 :: device.signal [10*]
+  unit = Hz
+  anchor = spec.md/sec10/2026-05-06
+  cite = engpack-sec3.4
+  "ADC effective BW lower bound — 5 kA short-circuit di/dt resolution"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — hsscb-mk1-spec-derived-followup
+# entries added: 10 (8 spec-derived + 2 TDDB placeholders)
+# combined with vendor-anchors shard: 50 hexa-sscb @C anchors total
+# ══════════════════════════════════════════════════════════════
