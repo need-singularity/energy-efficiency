@@ -63,3 +63,6 @@ lean4-n6/state/
 .workspace
 .workspace.*
 .workspace.lock
+
+# Lean4 compile output
+*.olean
