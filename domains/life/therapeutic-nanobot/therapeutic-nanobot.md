@@ -111,6 +111,10 @@ The current-tech ceiling is set by **structure-constant mismatch**:
 
 The three upstream domains must mature before the integrated Ultimate Therapeutic Nanobot (HEXA-NANOBOT) becomes realisable. Current status is partial (Mk.I to Mk.II, draft stage).
 
+### §3.1 Sister-axis pre-registration acknowledgment (hexa-nanobot, 2026-04-28)
+
+The hexa-bio repository's NANOBOT verb (`~/core/hexa-bio/nanobot/`) was pre-registered on 2026-04-28 as a single-molecule **architectural primitive** (atoms-level, 4-state motor kinetics, 12-vertex truncated-icosahedron / cuboctahedron skeleton, kT thermal floor at 310K, layers L0-L6). This canonical `life/therapeutic-nanobot/` domain occupies the orthogonal **clinical-application system** layers L7-L9 (drug load / immune evasion / biodistribution). Cross-domain handshake declared in `~/core/hexa-bio/.roadmap.nanobot` Require N-R2; canonical acceptance JSON published at `handoff/2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary.json` (schema `raw_77_therapeutic_nanobot_l7_acceptance_v1`, version `v1.0.0-stub`, status `DECLARED` — boundary acknowledgment only; wet-lab integration and IP/contract review deferred to cycle 30+).
+
 ## §4 STRUCT (system structure) -- System Architecture (ASCII)
 
 ### 5-stage chain system map
@@ -598,6 +602,16 @@ This section covers risks for the domain. Initial scaffold content -- expand wit
 ## §11 DEPENDENCIES
 
 This section covers dependencies for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
+
+### §11.1 Sister-axis dependency: hexa-bio NANOBOT (L0-L6 producer)
+
+| Dependency | Repo | Path | Layer | Status |
+|------------|------|------|-------|--------|
+| hexa-bio NANOBOT (single-molecule architectural primitive, L0-L6 producer) | `hexa-bio` | `nanobot/` (Require N-R2 in `.roadmap.nanobot`) | L0-L6 | pre-registered 2026-04-28 |
+| Canonical handoff JSON | `n6-architecture` (this repo) | `handoff/2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary.json` | L7-L9 declaration | `DECLARED` v1.0.0-stub (2026-05-06) |
+| Acceptance schema | `n6-architecture` (this repo) | `raw_77_therapeutic_nanobot_l7_acceptance_v1` (declared in handoff JSON; per-layer schemas placeholder until cycle 30+) | L7-L9 | stub |
+
+Boundary contract: hexa-bio side polls the handoff JSON via `_python_bridge/module/nanobot_n_r2_boundary_audit.py` and computes Jaccard `collision_overlap_ratio = |L0_L6 INTERSECT L7_L9| / |L0_L6 UNION L7_L9|`; PASS gate is `ratio < 0.5` per F-NB-1-c. Stub handoff guarantees disjoint primitive label sets (expected ratio = 0.0). Wet-lab integration, IP review, and joint witness contracts deferred to cycle 30+.
 
 ## §12 TIMELINE
 

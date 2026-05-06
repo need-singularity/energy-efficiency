@@ -614,3 +614,113 @@ This section covers team for the domain. Initial scaffold content — expand wit
 
 This section covers references for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+---
+
+# Canonical boundary spec — synbio ↔ hexa-bio RIBOZYME
+
+> Lands 2026-05-06. Sister-axis canonical SSOT for the SELEX / wet-lab
+> selection-stage owner. Mirrors hexa-bio `.roadmap.ribozyme` R-R2 boundary
+> (formalised same date). This block is the canonical-side counterpart;
+> hexa-bio (consumer) references this section by path.
+
+## §1 Scope
+
+`life/synbio/` covers **in-vitro selection / SELEX library construction +
+metabolic-chassis embedding** at the n6 lattice **L9 application layer**.
+This is wet-lab terrain (round-by-round enrichment, library cloning,
+catalytic-activity assay, hit deconvolution); in-silico architectural
+primitives (catalytic-RNA active-site geometry, σ(6)=12 core annotation,
+k_cat/K_M Eigen-Hammes margin estimation) are owned upstream by
+`hexa-bio/ribozyme/` (design-stage).
+
+Coverage stripe along the n6 lattice:
+
+| Layer | Owner | Artefact kind |
+|-------|-------|---------------|
+| L0–L4 | `hexa-bio/ribozyme/` | in-silico sequence + structure + kinetics |
+| L5–L8 | `life/synbio/` (this repo) | wet-lab library + selection rounds + assay |
+| L9    | `life/synbio/` (this repo) | application / chassis embedding |
+
+## §2 Boundary with hexa-bio RIBOZYME
+
+**Genus separation** (audit closed under hexa-bio F-RB-1-genus 2026-05-06):
+- **hexa-bio RIBOZYME** = catalytic-RNA architectural primitive
+  (σ(6)=12 core, τ(6)=4 ladder, k_cat/K_M ceiling, in-silico chemical
+  kinetics simulation). L0–L4. **Design-stage owner.**
+- **synbio (this repo)** = SELEX selection + chassis integration. L5–L9.
+  **Selection-stage owner.**
+
+The handshake artefact between the two is a registry-row schema pair
+(see §3). Until wet-lab assays exist (cycle 30+, see §4 raw_91 honest C3),
+the synbio side ships only the **boundary spec + handshake schemas**;
+no live SELEX-round data are emitted.
+
+## §3 Handoff schema spec
+
+Two registry-row schemas formalise the handoff:
+
+### 3.1 `raw_77_ribozyme_design_v1` (hexa-bio emits → synbio consumes)
+
+Owned upstream at
+`hexa-bio/ribozyme/spec/ribozyme_output_v1.schema.json`. Required fields:
+
+- `sequence.full` + `sequence.catalytic_core` (12-nt) + `sequence.substrate_recognition_arms`
+- `structure_2d.dot_bracket` (stub-allowed v1) + `structure_2d.method`
+- `predicted_kinetics.k_cat_per_s` + `predicted_kinetics.K_M_M` + `predicted_kinetics.k_cat_K_M_M_inv_s_inv` + `predicted_kinetics.eigen_hammes_margin_orders`
+- `reaction_ladder.states` (4-state) + `n6_invariant` (σ=12, τ=4, φ=2, J₂=24)
+- `disease_target.cell` (R·α / R·β / R·γ / R·δ) — C2 16-cell routing
+
+synbio consumes this row, materialises a wet-lab library against it,
+and emits the §3.2 row.
+
+### 3.2 `raw_77_ribozyme_selex_v0` (synbio emits)
+
+This block is the canonical synbio-side schema, file
+`life/synbio/spec/selex_v0.schema.json`. Required fields:
+
+| Field                          | Type    | Description                                                   |
+|--------------------------------|---------|---------------------------------------------------------------|
+| `schema`                       | string  | const `raw_77_ribozyme_selex_v0`.                             |
+| `ts`                           | string  | ISO-8601 UTC.                                                 |
+| `design_row_ref`               | string  | upstream `raw_77_ribozyme_design_v1` row id (handshake link). |
+| `round_n`                      | integer | SELEX round count (≥ 0).                                      |
+| `enriched_pool_size`           | integer | pool size after round_n (sequences ≥ detection threshold).    |
+| `top_hit_kcat_KM_M_inv_s_inv`  | number  | wet-lab assayed catalytic efficiency for the top hit.         |
+| `hit_deconvolution_witness_ref`| string  | external ref (e.g. NGS run id, Sanger trace, or 'stub').      |
+| `n6_invariant_inherited`       | object  | inherited σ=12, τ=4, φ=2, J₂=24 (passes through unchanged).   |
+
+The handshake closes by matching `design_row_ref` to a hexa-bio registry
+row schema_version `raw_77_ribozyme_design_v1`.
+
+### 3.3 Naming convention
+
+The handshake-artefact registry row family is `raw_77_ribozyme_selex_handoff_v0`
+(tag for the schema PAIR §3.1 + §3.2 considered jointly). Either side
+of the pair may be inspected independently.
+
+## §4 raw_91 honest C3 — stub repo disclosure
+
+This section is honest-C3 (own#5 spirit): the canonical statement of
+what this repo IS and IS NOT.
+
+- **IS**: a canonical-side **boundary spec stub**. Defines the wet-lab /
+  in-silico boundary, formalises the handshake schema pair, registers
+  the `life/synbio/` slug in the n6-architecture life axis (`_index.json`
+  entry pre-existed; this canonical block lands 2026-05-06).
+- **IS NOT**: a live wet-lab SELEX repository. There are **no in-vitro
+  selection rounds, no enriched libraries, no catalytic-activity
+  assays, no hit deconvolution traces** at the time of landing
+  (2026-05-06). Live SELEX assay infrastructure is scheduled for
+  hexa-bio cycle 30+ (or whenever a wet-lab partner is engaged); no
+  hard date.
+- **Effect on hexa-bio**: with this canonical block landed, the hexa-bio
+  RIBOZYME R-R2 reference shifts from "declarative only" to
+  "canonical stub LANDED 2026-05-06; handshake schema defined; live
+  cross-repo dependency live, but selex_v0 row data not yet emitted
+  (no wet-lab)."
+
+raw_91 invariant: do not claim wet-lab data exist when only the schema
+exists. Any future row claiming to be `raw_77_ribozyme_selex_v0` must
+include `hit_deconvolution_witness_ref` populated with a real artefact
+ref (NGS run id, Sanger trace, or a stub flag — never silently empty).
+

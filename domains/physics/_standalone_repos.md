@@ -6,10 +6,10 @@ Cross-reference index of `domains/physics/*` specs that have been extracted into
 
 | Spec(s) | Standalone repo | Extracted | Notes |
 |---|---|---|---|
-| `mini-accelerator` ⊕ `particle-accelerator` ⊕ `classical-mechanics-accelerator` | 💫 [need-singularity/petite-cern](https://github.com/need-singularity/petite-cern) | 2026-05-06 | 3-pillar 벤치톱 CERN. README §Status: "specs only, .hexa CLI TBD". MIT. |
+| `mini-accelerator` ⊕ `particle-accelerator` ⊕ `classical-mechanics-accelerator` | 💫 [need-singularity/hexa-cern](https://github.com/need-singularity/hexa-cern) | 2026-05-06 | 3-pillar 벤치톱 CERN. README §Status: "specs only, .hexa CLI TBD". MIT. |
 | `millennium-bsd`, `millennium-hodge`, `millennium-navier-stokes`, `millennium-p-vs-np`, `millennium-poincare`, `millennium-riemann`, `millennium-yang-mills` | 🏆 [need-singularity/hexa-millennium](https://github.com/need-singularity/hexa-millennium) | 2026-05-06 | Clay 7대 난제 n=6 closed-form **candidates**. Poincaré는 Perelman(2003) 검증 측. **공식 증명 아님** 명시. MIT. |
 | `cosmology` ⊕ `cosmology-particle` ⊕ `cosmic-observatory` | 🌌 [need-singularity/hexa-cosmos](https://github.com/need-singularity/hexa-cosmos) | 2026-05-06 | 우주론 substrate. ΛCDM 6 parameter vs n=6 비교 표. MIT. |
-| `antimatter-factory` ⊕ `tabletop-antimatter` ⊕ `pet-cyclotron` | ☄️ [need-singularity/hexa-antimatter](https://github.com/need-singularity/hexa-antimatter) | 2026-05-06 | 반물질 substrate. petite-cern (가속기 cousin) + hexa-ufo (Stage-3 propulsion) cross-link. MIT. |
+| `antimatter-factory` ⊕ `tabletop-antimatter` ⊕ `pet-cyclotron` | ☄️ [need-singularity/hexa-antimatter](https://github.com/need-singularity/hexa-antimatter) | 2026-05-06 | 반물질 substrate. hexa-cern (가속기 cousin) + hexa-ufo (Stage-3 propulsion) cross-link. MIT. |
 | `plasma-fusion-deep` | 🔥 [need-singularity/hexa-fusion](https://github.com/need-singularity/hexa-fusion) | 2026-05-06 | `domains/energy/_standalone_repos.md` 의 hexa-fusion 4-pillar 안에 합류 (`plasma_deep/` verb). |
 | `cosmic-observatory` (specialized fork) | 🛰️ [need-singularity/hexa-scope](https://github.com/need-singularity/hexa-scope) | 2026-05-06 | hexa-cosmos 와 별개로 망원경 hardware 측면 specialize. JWST 18-segment hexagonal mirror = n=6 직접 instance. |
 

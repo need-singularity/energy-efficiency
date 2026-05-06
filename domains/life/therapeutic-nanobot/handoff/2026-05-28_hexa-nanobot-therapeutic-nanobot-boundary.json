@@ -1,0 +1,78 @@
+{
+  "schema": "raw_77_therapeutic_nanobot_l7_acceptance_v1",
+  "ts": "2026-05-06T18:00:00Z",
+  "declared_at": "2026-05-06T18:00:00Z",
+  "domain": "life/therapeutic-nanobot",
+  "canonical_repo": "n6-architecture",
+  "consumer_repo": "hexa-bio",
+  "boundary_id": "2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary",
+  "hexa_bio_l6_layer_consumer": true,
+  "acceptance_status": "DECLARED",
+  "acceptance_scope": "boundary_acknowledgment_only",
+  "wet_lab_integration_status": "DEFERRED_CYCLE_30_PLUS",
+  "ip_contract_review_status": "DEFERRED_CYCLE_30_PLUS",
+  "therapeutic_nanobot_l7_to_l9_layers": [
+    {
+      "layer": "L7",
+      "name": "drug_load",
+      "responsibility": "payload encapsulation + release kinetics (lipid-shell or polymer-cage drug compartmentalisation, k_release_s_inv, payload_mass_amu)",
+      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "witness_schema": "raw_77_therapeutic_nanobot_l7_drug_load_v1",
+      "consumes_from_l6": ["work_per_cycle_kT_units", "vertex_decorations"],
+      "primitives": [
+        "L7_drug_payload:lipid_shell:k_release_s_inv:payload_mass_amu",
+        "L7_surface_coating:peg_density_per_nm2:zeta_potential_mV"
+      ]
+    },
+    {
+      "layer": "L8",
+      "name": "immune_evasion",
+      "responsibility": "complement-cascade evasion + opsonization shielding (peg-corona density, c3b-deposition rate, macrophage_clearance_t_half_h)",
+      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "witness_schema": "raw_77_therapeutic_nanobot_l8_immune_evasion_v1",
+      "consumes_from_l6": ["pose_canonical_form"],
+      "primitives": [
+        "L8_complement_evasion:c3b_deposition_rate_per_s:macrophage_clearance_t_half_h",
+        "L8_opsonization_shield:igg_binding_kd_M:fc_receptor_avidity"
+      ]
+    },
+    {
+      "layer": "L9",
+      "name": "biodistribution",
+      "responsibility": "tissue-targeting kinetics + clearance pathway selection (organ_uptake_percent_id_per_g, renal_vs_hepatic_clearance_ratio, target_tissue_residence_time_h)",
+      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "witness_schema": "raw_77_therapeutic_nanobot_l9_biodistribution_v1",
+      "consumes_from_l6": ["actuator_id"],
+      "primitives": [
+        "L9_clearance_kinetics:renal_hepatic_ratio:residence_time_h",
+        "L9_tissue_targeting:organ_uptake_percent_id_per_g:active_targeting_ligand_kd_M",
+        "L9_excretion_pathway:eGFR_threshold_ml_min:bile_clearance_fraction"
+      ]
+    }
+  ],
+  "l7_l9_primitives": [
+    "L7_drug_payload:lipid_shell:k_release_s_inv:payload_mass_amu",
+    "L7_surface_coating:peg_density_per_nm2:zeta_potential_mV",
+    "L8_complement_evasion:c3b_deposition_rate_per_s:macrophage_clearance_t_half_h",
+    "L8_opsonization_shield:igg_binding_kd_M:fc_receptor_avidity",
+    "L9_clearance_kinetics:renal_hepatic_ratio:residence_time_h",
+    "L9_tissue_targeting:organ_uptake_percent_id_per_g:active_targeting_ligand_kd_M",
+    "L9_excretion_pathway:eGFR_threshold_ml_min:bile_clearance_fraction"
+  ],
+  "collision_overlap_target": {
+    "metric": "jaccard_string_set",
+    "formula": "|hexa_L0_L6 INTERSECT therapeutic_L7_L9| / |hexa_L0_L6 UNION therapeutic_L7_L9|",
+    "expected_intersection_size": 0,
+    "expected_jaccard_ratio": 0.0,
+    "pass_threshold": "< 0.5",
+    "pass_criterion_source": "hexa-bio .roadmap.nanobot:66 F-NB-1-c gate",
+    "rationale": "L0-L6 (single-molecule architectural primitive: vertex topology, n6 invariant lattice, Brownian floor, Stokes-Langevin, Markov motor cycle, J2 pose canonicalization, per-cycle work) and L7-L9 (clinical-application system: drug payload/coating, complement evasion/opsonization, biodistribution/clearance/targeting) are intentionally string-disjoint at the canonical-primitive label level."
+  },
+  "raw_91_c3_disclose": "Stub handoff — boundary acknowledgment only. (1) This JSON declares the L7-L9 primitive enumeration so hexa-bio's nanobot_n_r2_boundary_audit.py can compute collision_overlap_ratio = 0 (full disjointness). (2) NO wet-lab integration, NO IP/contract review, NO joint design exists yet — those are explicitly DEFERRED to cycle 30+. (3) Acceptance schema raw_77_therapeutic_nanobot_l7_acceptance_v1 is declared here in canonical repo but the consuming witness contracts (raw_77_therapeutic_nanobot_l7_drug_load_v1, _l8_immune_evasion_v1, _l9_biodistribution_v1) are placeholder names — actual schema files do not yet exist in either repo. (4) collision_overlap_target=0.0 is a definitional disjointness claim, not an experimentally measured quantity; it holds because the string labels were chosen to be disjoint. (5) F-NB-5 PASS via this handoff certifies architectural-axis non-collision only, not therapeutic efficacy or clinical co-design.",
+  "raw_47_cross_repo": "Canonical-side declaration; hexa-bio side reads READ-ONLY via _python_bridge/module/nanobot_n_r2_boundary_audit.py per .roadmap.nanobot N-R2 line 38. No reverse dependency: this canonical JSON does not import or read hexa-bio state.",
+  "raw_77_append_only": true,
+  "version": "v1.0.0-stub",
+  "supersedes": null,
+  "next_review_cycle": 30,
+  "next_review_trigger": "wet_lab_integration_or_ip_contract_kickoff"
+}

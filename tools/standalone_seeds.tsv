@@ -8,9 +8,9 @@ hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutroni
 hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-calc/main.hexa	cli/fusion_calc.hexa
 hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-dse/main.hexa	cli/fusion_dse.hexa
 hexa-fusion	🔥	Fusion Toolkit (HEXA family) — D-T ignition + p-11B aneutronic + KSTAR-N6 powerplant + plasma deep.	bridge/origins/fusion-verify/main.hexa	cli/fusion_verify.hexa
-petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/mini-accelerator/mini-accelerator.md	mini/doc/mini-accelerator.md
-petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/particle-accelerator/particle-accelerator.md	parent/doc/particle-accelerator.md
-petite-cern	💫	Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/classical-mechanics-accelerator/classical-mechanics-accelerator.md	classical/doc/classical-mechanics-accelerator.md
+hexa-cern	💫	hexa-cern — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/mini-accelerator/mini-accelerator.md	mini/doc/mini-accelerator.md
+hexa-cern	💫	hexa-cern — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/particle-accelerator/particle-accelerator.md	parent/doc/particle-accelerator.md
+hexa-cern	💫	hexa-cern — n=6 sigma-cascade 6-order benchtop accelerator.	domains/physics/classical-mechanics-accelerator/classical-mechanics-accelerator.md	classical/doc/classical-mechanics-accelerator.md
 hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	domains/sf-ufo/hexa-ufo/hexa-ufo.md	ufo/doc/hexa-ufo.md
 hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	experiments/structural/ufo_nexus_scan.hexa	ufo/module/ufo_nexus_scan.hexa
 hexa-ufo	🛸	UFO Substrate Atlas + 7-stage Propulsion.	reports/sessions/specs/2026-04-06-ufo-warp-dimension-design.md	ufo/doc/warp-dimension-design.md

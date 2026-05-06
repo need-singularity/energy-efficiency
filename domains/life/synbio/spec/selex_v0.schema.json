@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "n6-architecture/domains/life/synbio/spec/selex_v0.schema.json",
+  "title": "raw_77_ribozyme_selex_v0 — synbio SELEX handoff witness",
+  "description": "Synbio-side handshake schema (selection-stage). Pairs with hexa-bio raw_77_ribozyme_design_v1 (design-stage) under the joint family raw_77_ribozyme_selex_handoff_v0. Canonical boundary spec lands 2026-05-06 in life/synbio/synbio.md §3 'Handoff schema spec'. raw_91 honest C3: stub repo — no live wet-lab assays at land time; this schema reserves the row shape so that when wet-lab infrastructure exists (hexa-bio cycle 30+), rows can be emitted without further schema drift.",
+  "type": "object",
+  "required": [
+    "schema",
+    "ts",
+    "design_row_ref",
+    "round_n",
+    "enriched_pool_size",
+    "top_hit_kcat_KM_M_inv_s_inv",
+    "hit_deconvolution_witness_ref",
+    "n6_invariant_inherited"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "raw_77_ribozyme_selex_v0"
+    },
+    "ts": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp."
+    },
+    "design_row_ref": {
+      "type": "string",
+      "description": "Upstream hexa-bio registry row id with schema_version=raw_77_ribozyme_design_v1 (handshake link)."
+    },
+    "round_n": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "SELEX round count (0 = naive library, pre-selection)."
+    },
+    "enriched_pool_size": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Pool size after round_n (sequences at or above detection threshold)."
+    },
+    "top_hit_kcat_KM_M_inv_s_inv": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1e9,
+      "description": "Wet-lab assayed catalytic efficiency for the top hit (M^-1 s^-1); bounded by Eigen-Hammes ceiling 1e9."
+    },
+    "hit_deconvolution_witness_ref": {
+      "type": "string",
+      "description": "External artefact ref (NGS run id, Sanger trace, or literal 'stub' if unavailable). Never silently empty (raw_91 invariant)."
+    },
+    "n6_invariant_inherited": {
+      "type": "object",
+      "description": "Inherited from upstream design row; passes through unchanged.",
+      "required": ["sigma_6", "tau_6", "phi_6", "J2", "master_identity_ok"],
+      "properties": {
+        "sigma_6":  {"type": "integer", "const": 12},
+        "tau_6":    {"type": "integer", "const": 4},
+        "phi_6":    {"type": "integer", "const": 2},
+        "J2":       {"type": "integer", "const": 24},
+        "master_identity_ok": {"type": "boolean", "const": true}
+      },
+      "additionalProperties": false
+    },
+    "raw_91_honest_c3": {
+      "type": "object",
+      "description": "Honest C3 disclosure block. Required when row is emitted from a stub-state synbio repo (no wet-lab).",
+      "properties": {
+        "stub_state": {
+          "type": "boolean",
+          "description": "True if this row was emitted without live wet-lab assays (boundary spec landed but selection infrastructure absent)."
+        },
+        "disclosure": {
+          "type": "string",
+          "description": "Free-text disclosure (e.g. 'no wet-lab partner engaged at land time; row reserved for future cycle 30+ population')."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

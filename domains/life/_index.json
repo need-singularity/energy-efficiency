@@ -2,7 +2,7 @@
   "_doc": "life 축 sub-SSOT — 부모: ../_index.json (life 키). 자동 생성 2026-04-12.",
   "_axis": "life",
   "_parent": "../_index.json",
-  "_version": "1.4.0",
+  "_version": "1.5.0",
   "_meta": {
     "_category_name": "생명·의학·농업·뇌과학·유전자·면역·식품·약리",
     "_domains_count": 56,
@@ -18,7 +18,8 @@
     "1.2.0 (2026-04-23): DIS-P2-1 low-risk batch 2 — sleep-medicine, urban-farming, gastrointestinal-medicine, radiation-biology, music-therapy.",
     "1.3.0 (2026-04-24): own#16 registry sync — dog-robot-test domain registered (disk measured, body .md present).",
     "1.3.1 (2026-05-01): SA applied-tech bet #5 — biochar-dryland-restoration registered (mk1 PHYSICAL-LIMIT alien-grade 10; precursors life/agriculture + life/ecology + life/herbalism + materials/recycling + physics/thermodynamics + materials/concrete-technology; physical-limit anchors Antal-Grønli 2003 pyrolysis char yield + Lehmann 2007 / Singh 2012 Arrhenius mineralization + Glaser-Lehmann 2002 CEC + Smith-Bondeau 2014 SOC sequestration ceiling + Verra VM0044 / Puro durable-removal rules; F-BIOCHAR-MVP-1..5 90-day MVP gates 2026-09-30 / 2026-12-31 / 2027-03-31 / 2027-06-30; design-by-physics per own#32, NOT n=6 force-fit). life axis count 54 -> 55.",
-    "1.4.0 (2026-05-01): SA applied-tech bet #2 — crispr-cas13-poc-diagnostic registered (mk1 PHYSICAL-LIMIT alien-grade 10; precursors life/biology-medical + life/synbio + life/genetics + life/hiv-treatment + materials/ceramics + physics/optics; physical-limit anchors Abudayyeh-Zhang 2017 Cas13 trans-cleavage k_cat 30-50/s/molecule + Eigen-Hammes 1963 diffusion-limit ceiling 10⁹ M⁻¹s⁻¹ + Mason-Botella 2020 lyophilized-reagent Arrhenius shelf-life E_a 80 kJ/mol → 12 mo @ 25°C / 60% RH + Posthuma-Trumpie 2009 Au-NP lateral-flow visual LOD ~10 fM + Piepenburg-Armes 2006 RPA isothermal pre-amplification 10⁹ in 20 min at 37-42°C; targets World #3 TB burden 450,000 cases/yr SA + 13% HIV prevalence 8.2M PLHIV at USD 2-5/test + USD 200-500 reader vs USD 10-15/cartridge GeneXpert + USD 17,000 instrument; F-CAS13-MVP-1..5 90-day MVP gates 2026-09-30 (lyo shelf + HIV LOD) / 2026-10-31 (TB sensitivity) / 2026-12-31 (cost USD 8 ceiling) / 2027-03-31 (SAHPRA Class C IVD timeline 24 mo); design-by-physics per own#32, NOT n=6 force-fit). life axis count 55 -> 56."
+    "1.4.0 (2026-05-01): SA applied-tech bet #2 — crispr-cas13-poc-diagnostic registered (mk1 PHYSICAL-LIMIT alien-grade 10; precursors life/biology-medical + life/synbio + life/genetics + life/hiv-treatment + materials/ceramics + physics/optics; physical-limit anchors Abudayyeh-Zhang 2017 Cas13 trans-cleavage k_cat 30-50/s/molecule + Eigen-Hammes 1963 diffusion-limit ceiling 10⁹ M⁻¹s⁻¹ + Mason-Botella 2020 lyophilized-reagent Arrhenius shelf-life E_a 80 kJ/mol → 12 mo @ 25°C / 60% RH + Posthuma-Trumpie 2009 Au-NP lateral-flow visual LOD ~10 fM + Piepenburg-Armes 2006 RPA isothermal pre-amplification 10⁹ in 20 min at 37-42°C; targets World #3 TB burden 450,000 cases/yr SA + 13% HIV prevalence 8.2M PLHIV at USD 2-5/test + USD 200-500 reader vs USD 10-15/cartridge GeneXpert + USD 17,000 instrument; F-CAS13-MVP-1..5 90-day MVP gates 2026-09-30 (lyo shelf + HIV LOD) / 2026-10-31 (TB sensitivity) / 2026-12-31 (cost USD 8 ceiling) / 2027-03-31 (SAHPRA Class C IVD timeline 24 mo); design-by-physics per own#32, NOT n=6 force-fit). life axis count 55 -> 56.",
+    "1.5.0 (2026-05-06): synbio canonical boundary stub LANDED — sister-axis SSOT for hexa-bio RIBOZYME R-R2 SELEX boundary. Adds canonical block to life/synbio/synbio.md (§1 Scope L9; §2 Boundary with hexa-bio: design-stage L0-L4 vs selection-stage L5-L9; §3 Handoff schema pair raw_77_ribozyme_design_v1 emit + raw_77_ribozyme_selex_v0 consume, joint family raw_77_ribozyme_selex_handoff_v0; §4 raw_91 honest C3: stub repo — no live wet-lab assays at land time, live SELEX cycle 30+). New schema file life/synbio/spec/selex_v0.schema.json (draft 2020-12; required fields design_row_ref / round_n / enriched_pool_size / top_hit_kcat_KM / hit_deconvolution_witness_ref / n6_invariant_inherited). hexa-bio R-R2 reference upgraded: 'declarative only' → 'canonical stub LANDED 2026-05-06; live cross-repo dependency live (no wet-lab data)'. life axis count 56 -> 56 (synbio slug pre-existed; no new domain, only canonical-block enrichment)."
   ],
   "domains": [
     {
@@ -370,7 +371,18 @@
       "has_domain_md": true,
       "has_hexa": false,
       "has_verify": false,
-      "status": "기초"
+      "status": "기초",
+      "canonical_boundary_landed": "2026-05-06",
+      "boundary_spec": {
+        "scope": "L9 application — in-vitro SELEX library construction + metabolic-chassis embedding",
+        "sister_repo": "hexa-bio/ribozyme/ (design-stage L0-L4; this repo = selection-stage L5-L9)",
+        "handshake_schema_pair": [
+          "raw_77_ribozyme_design_v1 (hexa-bio emits; ../../hexa-bio/ribozyme/spec/ribozyme_output_v1.schema.json)",
+          "raw_77_ribozyme_selex_v0 (this repo emits; spec/selex_v0.schema.json)"
+        ],
+        "joint_family": "raw_77_ribozyme_selex_handoff_v0",
+        "raw_91_c3": "stub repo — boundary spec + schemas landed; NO live wet-lab assays / SELEX rounds / hit deconvolution at land time. Live infrastructure scheduled hexa-bio cycle 30+."
+      }
     },
     {
       "slug": "tattoo-removal",

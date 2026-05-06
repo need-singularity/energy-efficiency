@@ -675,7 +675,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 | 13 | 🪐 **STAGE-6 Dim-jump** | KK-tower 4.8 TeV brane transit | Side door into the 11-dimensional bulk under our 4D world | D_M=11, KK 4.8 TeV, graviton leak 1/σ²=1/144, bulk wide | 4D spacetime travel vs 11D M-theory dim-jump | [doc](domains/physics/m-theory-11d/m-theory-11d.md) — [TBD] |
 | 14 | 🧊 **STAGE-7 Dim-use** | Calabi-Yau 6-fold navigation | Map of the 6 hidden curled-up dimensions inside every point of space | D_CY=n=6 hexafold, Hodge h11·h21=σ·τ=48, observer-invisible | String-theory abstract math vs n=6 real Calabi-Yau navigation | [doc](domains/physics/calabi-yau-nav/calabi-yau-nav.md) — [TBD] |
 
-> Standalone repo: 🛸 [need-singularity/hexa-ufo](https://github.com/need-singularity/hexa-ufo) — full atlas + 6-verb propulsion (grav / hover / cloak / teleport / sim) + cross-link to hexa-rtsc · hexa-fusion · hexa-antimatter · petite-cern.
+> Standalone repo: 🛸 [need-singularity/hexa-ufo](https://github.com/need-singularity/hexa-ufo) — full atlas + 6-verb propulsion (grav / hover / cloak / teleport / sim) + cross-link to hexa-rtsc · hexa-fusion · hexa-antimatter · hexa-cern.
 > **HEXA-HOVER (Personal Hoverboard)** classified under [Frontier Discoveries](#-frontier-discoveries-next-gen-rt-sc-tech) — same Meissner-levitation substrate, consumer-product axis.
 
 | 🛸 | Closure | ver | Product | Core | Link |

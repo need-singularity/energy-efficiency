@@ -10,7 +10,7 @@
 [meta]
 schema_version = "1.0"
 last_updated   = "2026-05-06"
-n6_arch_sha    = "0570a835"
+n6_arch_sha    = "f5bae2e6"
 standalones    = 17
 total_seeds    = 133
 
@@ -83,10 +83,10 @@ md5_canon = "7efb3b21de90f522fb07719ba5671961"
 md5_copy  = "5b160029325483e01ec7da3d752ec27d"
 
 [[standalone]]
-slug      = "petite-cern"
+slug      = "hexa-cern"
 emoji     = "💫"
-repo      = "https://github.com/need-singularity/petite-cern"
-oneliner  = "Petite CERN — n=6 sigma-cascade 6-order benchtop accelerator."
+repo      = "https://github.com/need-singularity/hexa-cern"
+oneliner  = "hexa-cern — n=6 sigma-cascade 6-order benchtop accelerator."
 license   = "MIT"
 extracted = "2026-05-06"
 
