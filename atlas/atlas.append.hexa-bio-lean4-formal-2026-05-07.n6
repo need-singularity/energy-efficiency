@@ -1,0 +1,45 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — hexa-bio lean4 formal axis
+# slug: hexa-bio-lean4-formal-2026-05-07
+# scope: F-CL-FORMAL-1/2/3/4 lean4 mechanical layer (long-horizon cycle 30+)
+# date: 2026-05-07
+# orthogonality: anima.consciousness analog — anima has Φ★ measurement
+#                protocol pending; hexa-bio has 4-axis formal-verification
+#                trajectory pending. both are post-cycle-30 promotion targets.
+# constraints: raw 22/23/24 + raw#10 honest C3 (placeholder vs real-semantics)
+# ══════════════════════════════════════════════════════════════
+
+@C HBIO-lean4-formal-axis-count = 4 :: hbio.lean4 [10*]
+  unit = axis
+  anchor = hexa-bio/.roadmap.lean4_formal
+  cite = n6-architecture/formal/lean4
+  "4-axis formal closure (sigma cardinality + Landauer + pi_p2 + idempotent)"
+
+@C HBIO-lean4-sorry-count = 0 :: hbio.lean4 [10*]
+  unit = count
+  anchor = hexa-bio/.roadmap.lean4_formal/2026-05-06
+  cite = n6-architecture/lean4-n6
+  "all 4 modules compile zero sorry (sigma real + 3 placeholders proven)"
+
+@? HBIO-F-CL-FORMAL-1-sigma-lattice = "sigma 6 = 12 (computable Nat function, rfl)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.lean4_formal/F-CL-FORMAL-1/REAL-SEMANTICS-PROVEN
+  cite = n6-architecture/formal/lean4/N6/MechVerif
+  "REAL-SEMANTICS PROVEN — sigma is computable; rfl proof"
+
+@? HBIO-F-CL-FORMAL-2-landauer-monotonic = "heatConsumed(compose s1 s2) ≥ max(...)" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.lean4_formal/F-CL-FORMAL-2/PLACEHOLDER-PROVEN
+  "PLACEHOLDER PROVEN (stub heat-additive); real-semantics cycle 30+"
+
+@? HBIO-F-CL-FORMAL-3-pi-p2-terminates = "∃n, verifierSteps q ≤ n" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.lean4_formal/F-CL-FORMAL-3/PLACEHOLDER-PROVEN
+  "PLACEHOLDER PROVEN (stub verifierSteps=0); real-semantics cycle 30+"
+
+@? HBIO-F-CL-FORMAL-4-closure-idempotent = "discloseTwice c = discloseOnce c" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.lean4_formal/F-CL-FORMAL-4/PLACEHOLDER-PROVEN
+  "PLACEHOLDER PROVEN (stub discloseOnce=id); real-semantics cycle 30+"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — hexa-bio-lean4-formal-2026-05-07
+# entries added: 6 (2 @C + 4 @?)
+# axis 1 REAL-SEMANTICS PROVEN; axes 2/3/4 PLACEHOLDER PROVEN (cycle 30+)
+# ══════════════════════════════════════════════════════════════

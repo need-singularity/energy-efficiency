@@ -1,0 +1,219 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — hexa-bio 4-verb numerical + C2 matrix anchors
+# slug: hexa-bio-anchors-2026-05-07
+# scope: hexa-bio v1.0.0/v1.1.0 — WEAVE/NANOBOT/RIBOZYME/VIROCAPSID
+# date: 2026-05-07
+# orthogonality: hbio.* domain entries (project-bound to hexa-bio)
+# constraints: raw 22/23/24 + raw#10 honest C3 + raw#91 (in-silico only)
+# axis-M: every @C carries unit= + anchor=
+# IMPORTANT C3: 16-cell C2 PASS = simulator+metadata internal-consistency only.
+# NOT therapeutic / clinical / regulatory / immunogenic / efficacy progress.
+# ══════════════════════════════════════════════════════════════
+
+# ── Section 1: WEAVE (composition, WIRED v1.0.0) ──────────────
+
+@C HBIO-weave-T1-vertex-count = 12 :: hbio.weave [11*]
+  unit = vertex
+  anchor = hexa-bio/weave/T1-cage/posterior-0.9668/2026-05-04
+  cite = hexa-bio/README.md/sec3, n6-master-identity-sigma-12
+  "T=1 60-subunit icosahedral cage vertex count = sigma(6)=12 STRUCTURAL-EXACT"
+
+@C HBIO-weave-T1-subunit-count = 60 :: hbio.weave [11*]
+  unit = subunit
+  anchor = hexa-bio/weave/T1-cage/2026-05-04
+  cite = hexa-bio/README.md
+  "T=1 icosahedral cage 60 subunits (Caspar-Klug T=1 = 60)"
+
+@C HBIO-weave-posterior-runtime = 0.9668 :: hbio.weave [10*]
+  unit = probability
+  anchor = hexa-bio/weave/run-output/2026-05-04
+  cite = hexa-bio/weave/module/weave.hexa-line229
+  "weave Bayesian audit posterior — vertex==12 in CK subset 32/32"
+
+@C HBIO-weave-posterior-threshold = 0.95 :: hbio.weave [10*]
+  unit = probability
+  anchor = hexa-bio/.roadmap.weave/F-CAGE-MVP-1
+  "F-CAGE-MVP-1 / F-WEAVE-CAGE PASS gate"
+
+@C HBIO-weave-CK-subset-pass-count = 32 :: hbio.weave [10*]
+  unit = sample
+  anchor = hexa-bio/weave/run-output/CK-subset/2026-05-04
+  cite = hexa-bio/weave/module/weave.hexa-line231
+  "Caspar-Klug subset vertex==12 invariant 32/32 = 1.0000 base preservation"
+
+@C HBIO-weave-ladder-states = 4 :: hbio.weave [10*]
+  unit = state
+  anchor = hexa-bio/weave/4-state-ladder/2026-05-04
+  cite = n6-master-identity-tau-4
+  "tau(6)=4 ladder: free CP / pentamer / hexamer / closed cage"
+
+# ── Section 2: NANOBOT (actuation, C0b PASS 2026-05-05) ───────
+
+@C HBIO-nanobot-skeleton-vertex-count = 12 :: hbio.nanobot [10*]
+  unit = vertex
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4/truncated-icosahedron
+  cite = n6-master-identity-sigma-12
+  "4-state 12-vertex truncated-icosahedron skeleton — sigma(6)=12 preserved"
+
+@C HBIO-nanobot-mech-states = 4 :: hbio.nanobot [10*]
+  unit = state
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-1-genus
+  cite = n6-master-identity-tau-4
+  "S0..S3 directed-transition mechanical regimes"
+
+@C HBIO-nanobot-work-per-cycle-kT = 50 :: hbio.nanobot [10*]
+  unit = kT
+  anchor = hexa-bio/state/discovery_absorption/raw_77_nanobot_actuation_v1/cycle-24
+  cite = hexa-bio/.roadmap.nanobot/F-NB-3-floor
+  "work_per_cycle from Langevin productive cycles (S0->S1->S3->S0)"
+
+@C HBIO-nanobot-brownian-floor-kT = 10 :: hbio.nanobot [10*]
+  unit = kT
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-3-floor
+  "F-NB-3 minimum kT margin (Brownian noise floor exclusion)"
+
+@C HBIO-nanobot-work-margin-kT = 40 :: hbio.nanobot [10*]
+  unit = kT
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-3-floor
+  cite = HBIO-nanobot-work-per-cycle-kT, HBIO-nanobot-brownian-floor-kT
+  "margin = 50 - 10 = 40 kT (5x over floor)"
+
+@C HBIO-nanobot-productive-roundtrips = 3018 :: hbio.nanobot [10*]
+  unit = count
+  anchor = hexa-bio/state/raw_77_nanobot_actuation_v1/cycle-24
+  cite = hexa-bio/.roadmap.nanobot/F-NB-1-genus
+  "S0->...->S0 productive cycles at n_cycles=10000 macro-budget"
+
+@C HBIO-nanobot-J2-speedup = 24 :: hbio.nanobot [10*]
+  unit = dimensionless
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4-c
+  cite = n6-master-identity-J2-24
+  "pose-equivalence speedup factor (theoretical max, ≥10x threshold)"
+
+@C HBIO-nanobot-corpus-log-bf-n60 = 13.65 :: hbio.nanobot [10*]
+  unit = log10_BF
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-b/n60-extension/2026-05-06
+  cite = hexa-bio/_python_bridge/module/nanobot_corpus_n30_dynamic_extension.py
+  "Bayesian audit log_bf at n=60 (Jeffreys decisive ≥3.0; trajectory n=30:0.16 → n=60:13.65)"
+
+@C HBIO-nanobot-corpus-posterior-h1-n60 = 1.000 :: hbio.nanobot [10*]
+  unit = probability
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-b/n60/2026-05-06
+  "Bayesian posterior h1 at n=60 (cycle-25 0.591 → cycle-26 1.000)"
+
+@C HBIO-nanobot-interrater-kappa-v2 = 1.000 :: hbio.nanobot [10*]
+  unit = dimensionless
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-extended-inter-rater/v2/2026-05-06
+  cite = hexa-bio/nanobot/spec/interrater_v2.schema.json
+  "inter-rater rubric-locked κ (60/60 axes match, PROVISIONAL AI-rater)"
+
+@C HBIO-nanobot-collision-overlap = 0.0 :: hbio.nanobot [10*]
+  unit = jaccard_ratio
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-1-c/closure/2026-05-06
+  cite = hexa-bio/_python_bridge/module/nanobot_n_r2_boundary_audit.py
+  "L0-L6 ∩ L7-L9 disjoint; PASS gate < 0.5"
+
+# ── Section 3: RIBOZYME (catalysis, C0b PASS) ─────────────────
+
+@C HBIO-ribozyme-catalytic-core-nt = 12 :: hbio.ribozyme [10*]
+  unit = nucleotide
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-1-b/CUGAUGAGGCCG
+  cite = n6-master-identity-sigma-12
+  "active-site catalytic residues — sigma(6)=12 STRUCTURAL-EXACT"
+
+@C HBIO-ribozyme-kcat-Km-mvp = 8.33e4 :: hbio.ribozyme [10*]
+  unit = M_inv_s_inv
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-3/cycle-24-MVP
+  "k_cat/K_M cycle-24 MVP value (well below diffusion limit)"
+
+@C HBIO-ribozyme-eigen-hammes-ceiling = 1e9 :: hbio.ribozyme [10*]
+  unit = M_inv_s_inv
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-1-c
+  cite = literature-eigen-hammes
+  "diffusion-limited binding ceiling (Eigen-Hammes)"
+
+@C HBIO-ribozyme-margin-orders = 4.08 :: hbio.ribozyme [10*]
+  unit = log10_orders
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-3-b
+  cite = HBIO-ribozyme-kcat-Km-mvp, HBIO-ribozyme-eigen-hammes-ceiling
+  "margin = log10(1e9 / 8.33e4) = 4.08 orders (>>1.0 threshold)"
+
+@C HBIO-ribozyme-corpus-log-bf-n30 = 79.74 :: hbio.ribozyme [10*]
+  unit = log10_BF
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-2/cycle-25
+  "n=30 corpus 4-axis match 30/30 = log_bf 79.74 (Jeffreys decisive)"
+
+@C HBIO-ribozyme-interrater-kappa-v2 = 1.000 :: hbio.ribozyme [10*]
+  unit = dimensionless
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-2-inter-rater/v2/2026-05-06
+  cite = hexa-bio/ribozyme/spec/interrater_v2.schema.json
+  "inter-rater rubric-locked κ (30/30, PROVISIONAL AI-rater)"
+
+# ── Section 4: VIROCAPSID (assembly, C0b PASS) ────────────────
+
+@C HBIO-virocapsid-T1-via-weave = "verified" :: hbio.virocapsid [10*]
+  anchor = hexa-bio/.roadmap.virocapsid/T1-via-weave-cycle-24
+  cite = HBIO-weave-T1-vertex-count, HBIO-weave-T1-subunit-count
+  "T=1 60-subunit cage verified via WEAVE module (sigma(6)=12 preserved)"
+
+@C HBIO-virocapsid-assembly-stages = 4 :: hbio.virocapsid [10]
+  unit = stage
+  anchor = hexa-bio/.roadmap.virocapsid
+  cite = n6-master-identity-tau-4
+  "4 assembly stages (tau(6)=4)"
+
+# ── Section 5: 16-cell C2 matrix (cycle 25, 2026-05-06) ───────
+
+@C HBIO-c2-matrix-cells = 16 :: hbio.c2 [10*]
+  unit = cell
+  anchor = hexa-bio/design/kick/2026-05-06_hexa-bio-cycle25-c2-matrix-closure_omega_cycle.json
+  cite = hexa-bio/README.md/sec16-cell-C2
+  "4 verb × 4 disease class scaffold"
+
+@C HBIO-c2-matrix-pass = 16 :: hbio.c2 [10*]
+  unit = cell
+  anchor = hexa-bio/design/kick/cycle25-closure
+  cite = HBIO-c2-matrix-cells
+  "16/16 PASS in-silico (simulator+metadata internal-consistency only)"
+
+@C HBIO-c2-disease-class-alpha = "AML" :: hbio.c2 [10*]
+  anchor = hexa-bio/_python_bridge/module/aml_candidate.py
+  cite = hexa-bio/state/discovery_absorption/registry.jsonl
+  "C2 alpha = Acute Myeloid Leukemia disease-class scaffold"
+
+@C HBIO-c2-disease-class-beta = "SCD" :: hbio.c2 [10*]
+  anchor = hexa-bio/_python_bridge/module/scd_candidate.py
+  "C2 beta = Sickle-Cell Disease scaffold"
+
+@C HBIO-c2-disease-class-gamma = "pan-cov" :: hbio.c2 [10*]
+  anchor = hexa-bio/_python_bridge/module/pan_cov_candidate.py
+  "C2 gamma = pan-coronavirus broad-spectrum scaffold"
+
+@C HBIO-c2-disease-class-delta = "senolytic" :: hbio.c2 [10*]
+  anchor = hexa-bio/_python_bridge/module/senolytic_candidate.py
+  "C2 delta = senescent-cell-clearance scaffold"
+
+# ── Section 6: cycle 24/25 milestones + registry ──────────────
+
+@C HBIO-version = 1.0.0 :: hbio.release [10*]
+  unit = semver
+  anchor = hexa-bio/CHANGELOG.md/v1.0.0
+  cite = hexa-bio/RELEASE_NOTES_v1.0.0.md
+  "v1.0.0 standalone extraction 2026-05-04 (registry L24)"
+
+@C HBIO-version-candidate = 1.1.0 :: hbio.release [10]
+  unit = semver
+  anchor = hexa-bio/RELEASE_NOTES_v1.1.0.md
+  "v1.1.0 candidate (cycle 25 closed 2026-05-06)"
+
+@C HBIO-package-registry-L = 24 :: hbio.release [10*]
+  unit = line
+  anchor = hexa-lang/tool/pkg/registry.tsv-L24
+  "hexa-lang package registry line position (24th entry)"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — hexa-bio-anchors-2026-05-07
+# entries added: 30 (6 weave + 11 nanobot + 6 ribozyme + 2 virocapsid +
+#                    6 c2 matrix + 3 release/registry)
+# C3 reminder: in-silico verification only, NOT therapeutic/clinical
+# ══════════════════════════════════════════════════════════════

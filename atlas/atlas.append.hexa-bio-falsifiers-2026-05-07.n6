@@ -1,0 +1,178 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — hexa-bio falsifier preregister @? entries
+# slug: hexa-bio-falsifiers-2026-05-07
+# scope: 4 verb falsifier preregister tables (raw#10 honest C3 mandate)
+# date: 2026-05-07
+# orthogonality: status → grade mapping:
+#   PASS / CLOSED PASS → [10*]
+#   USER-DISCRETION PASS → [10*USER]
+#   CLOSED HONEST NEGATIVE FAIL → [10*FAIL]
+#   PENDING / ACTIVE → [N?]
+#   PROMOTED / ALIAS → cross-link only
+# constraints: raw 22/23/24 + raw#10 honest C3 + raw#91 (in-silico)
+# ══════════════════════════════════════════════════════════════
+
+# ── WEAVE falsifiers (F-TP5-* + F-CL-FORMAL-* + F-CAGE-MVP-1) ──
+
+@? HBIO-F-TP5-b-weave-compose-MVP = "weave_compose() end-to-end MVP — 500 trial rows, greedy + Landauer gate, Pi^p_2 verifier" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.weave/F-TP5-b/cycle-24-PASS-6-of-6/2026-05-05
+  cite = hexa-bio/state/discovery_absorption/raw_77_weave_compose_v1
+  "PASS 6/6 closed cycle 24 (deadline 2026-07-28 closed early)"
+
+@? HBIO-F-TP5-c-strand-coverage = "strand-catalogue saturation ≥10/12" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.weave/F-TP5-c
+  "PENDING deadline 2026-07-28 — coverage_ratio ≥ 0.83"
+
+@? HBIO-F-TP5-d-greedy-vs-baseline = "greedy median pass-rate ≥ random + 10%" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.weave/F-TP5-d
+  "PENDING deadline 2026-07-28 — n=50 paired bundles"
+
+@? HBIO-F-TP5-e-public-API-uptake = "≥5 external callsites OR ≥1 published consumer" :: hbio.falsifier [10]
+  anchor = hexa-bio/.roadmap.weave/F-TP5-e/USER-DISCRETION-2026-05-06
+  cite = hexa-bio/selftest/f_tp5_e_uptake_enumerator.py
+  "USER-DISCRETION PASS — 41 internal / 0 external at land; quarterly re-run"
+  "raw#91 honest C3: NOT objective falsifier-criterion PASS — discretionary"
+
+@? HBIO-F-CAGE-MVP-1-alias = "alias of F-TP5-b" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.weave/F-CAGE-MVP-1
+  cite = HBIO-F-TP5-b-weave-compose-MVP
+  "legacy weave.hexa label (yield-0.95 calibration framing pre-cycle-22)"
+
+# ── NANOBOT falsifiers (F-NB-1..5 + sub-clauses) ──────────────
+
+@? HBIO-F-NB-1-genus-actuator-state-cycle = "≥4 mech states + work_per_cycle ≥10 kT" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-1-genus/closed-2026-05-06
+  cite = hexa-bio/_python_bridge/module/sister_genus_audit.py
+  "4 states visited + productive_cycles 2168 ≥ threshold 754.5"
+
+@? HBIO-F-NB-1-b-brownian-margin = "Langevin work ≥10 kT margin (≠ passive Brownian)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-1-b/closed-2026-05-06
+  cite = HBIO-nanobot-work-per-cycle-kT
+  "50 kT >> 10 kT (transitive with F-NB-3-floor)"
+
+@? HBIO-F-NB-1-c-sister-axis-collision = "Jaccard collision_overlap < 0.5" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-1-c/closed-2026-05-06
+  cite = HBIO-nanobot-collision-overlap
+  "ratio 0.0 (full disjointness, well below 0.5 gate)"
+
+@? HBIO-F-NB-2-n6-decorative = "log10_BF perturbed - canonical ≥ 0.5 (n6 load-bearing)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-n6-decorative/closed-decisive-2026-05-06
+  cite = hexa-bio/_python_bridge/module/nanobot_bayesian_n6_ablation.py
+  "Δ log10_BF max = 1e9 ≫ 0.5 → DECISIVE (lattice load-bearing)"
+
+@? HBIO-F-NB-2-b-ensemble-drift-corpus = "log10_BF(n=60) ≥ 3.0 Jeffreys decisive" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-b/decisive-PASS-2026-05-06
+  cite = HBIO-nanobot-corpus-log-bf-n60, HBIO-nanobot-corpus-posterior-h1-n60
+  "n=30:0.16 → n=60:13.65, posterior 0.591 → 1.000"
+
+@? HBIO-F-NB-2-c-corpus-source-bias = "|log10_BF(textbook) - log10_BF(experimental)| ≤ 1.0" :: hbio.falsifier [10*FAIL]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-c/HONEST-NEGATIVE-FAIL-2026-05-06
+  cite = hexa-bio/_python_bridge/module/nanobot_bayesian_n6_stratum_bias.py
+  "delta=3.65 ≫ 1.0 → FAIL (corpus IS source-class biased)"
+  "honest negative: pre_2000 textbook proxy log_bf=+2.65 vs post_2000 experimental -0.99"
+  "bias driver: τ axis (motor states) Δ=0.75 + J₂ axis Δ=0.67"
+
+@? HBIO-F-NB-2-extended-inter-rater-v2 = "rubric-locked κ ≥ 0.6 ∧ agreement ≥ 0.95" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-2-extended-inter-rater/v2/USER-DISCRETION-2026-05-06
+  cite = HBIO-nanobot-interrater-kappa-v2
+  "v2 PROVISIONAL PASS κ=1.000 (60/60 axes); v1 κ=0.482 was rubric-imprecision"
+  "raw#91 honest C3: AI-rater NOT equivalent to human; user-discretion closure"
+
+@? HBIO-F-NB-3-floor-numerical = "work_per_cycle_kT ≥ 10 at 310K" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-3-floor/closed-2026-05-06
+  cite = HBIO-nanobot-work-per-cycle-kT
+  "50 kT measured (margin 40 kT)"
+
+@? HBIO-F-NB-3-b-ensemble-mean = "n≥1000 trajectories mean ≥10 kT, std ≤ 0.2 mean" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-3-b/closed-2026-05-06
+  "40.0 kT >> 10 threshold (deferred N≥3 stratified ensemble to F-NB-3-c)"
+
+@? HBIO-F-NB-3-c-worst-case-env = "T=320K + γ_drag +20%, work ≥5 kT, no Brownian collapse ≥2500 cycles" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-3-c/REMEDIATED-PASS-2026-05-06
+  cite = hexa-bio/_python_bridge/module/nanobot_worst_case_env_audit.py
+  "remediated --cycles 10000 → cycles_run=3018 ≥ 2500, work=50 kT, no collapse"
+
+@? HBIO-F-NB-4-MVP-90day = "PASS 6/6 by 2026-07-28 (4-state 12-vertex truncated icosahedron)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4-MVP-90day/closed-2026-05-05
+  "PASS 6/6 closed cycle 24 (deadline 2026-07-28 closed early)"
+
+@? HBIO-F-NB-4-b-master-identity = "hybrid Langevin+Markov σ·φ=6·τ=J₂=24 verified" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4-b
+  cite = n6-master-identity
+  "σ(6)·φ(6) = 12·2 = 24 = 6·4 = n·τ(6) = J₂"
+
+@? HBIO-F-NB-4-c-J2-speedup = "J₂=24 pose-equivalence speedup ≥10× (achieved 24×)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4-c
+  cite = HBIO-nanobot-J2-speedup
+  "24× theoretical max"
+
+@? HBIO-F-NB-4-cuboctahedron = "stretch upgrade — cuboctahedron variant PASS 6/6" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-4-cuboctahedron/GATE-26-1
+  "PENDING deadline 2026-07-28 — dual-skeleton claim demote on FAIL"
+
+@? HBIO-F-NB-5-sister-axis-collision = "L0-L9 disjointness via Jaccard" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.nanobot/F-NB-5/closed-PASS-2026-05-06
+  cite = HBIO-nanobot-collision-overlap
+  "stub-handoff caveat: architectural-axis non-collision only; wet-lab cycle 30+"
+
+# ── RIBOZYME falsifiers (F-RB-1..3 + sub-clauses) ─────────────
+
+@? HBIO-F-RB-1-genus-catalytic = "k_cat > 0 + ΔG_TS measurable (catalytic event)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-1-genus/closed-2026-05-06
+  cite = HBIO-ribozyme-kcat-Km-mvp
+  "k_cat/K_M=8.33e4 > 0; sister verbs lack k_cat axis"
+
+@? HBIO-F-RB-1-b-active-site = "σ(6)=12 mapping = catalytic core nt count (not full-length)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-1-b/closed-2026-05-06
+  cite = HBIO-ribozyme-catalytic-core-nt
+  "core nt count=12, sequence CUGAUGAGGCCG (matches σ(6)=12)"
+
+@? HBIO-F-RB-1-c-aptamer-null = "k_cat=0 across n≥10 hand-curated aptamers (binding-only ceiling)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-1-c/closed-2026-05-06
+  cite = hexa-bio/_python_bridge/module/ribozyme_aptamer_null_corpus.py
+  "n=10 aptamers (theophylline/ATP/tetracycline/...); all k_cat=0; max n6_match=1/4"
+  "lattice correctly REJECTS aptamers as ribozymes → genus distinction"
+
+@? HBIO-F-RB-2-inter-rater-v2 = "rubric-locked κ ≥ 0.6 ∧ agreement ≥ 0.95" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-2-inter-rater/v2/USER-DISCRETION-2026-05-06
+  cite = HBIO-ribozyme-interrater-kappa-v2
+  "v2 PASS κ=1.000 (30/30 axes); v1 κ=0.20 was rubric-imprecision"
+  "σ(6)=12 RIBOZYME promoted STRUCTURAL-EXACT-CANDIDATE → STRUCTURAL-EXACT under user-discretion"
+
+@? HBIO-F-RB-2-c-corpus-source-bias = "|log10_BF(textbook)-log10_BF(experimental)| ≤ 1.0" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-2-c/closed-PASS-2026-05-06
+  cite = hexa-bio/_python_bridge/module/ribozyme_bayesian_n6_stratum_bias.py
+  "pre_2000 11/11 + post_2000 19/19 → match-fraction delta=0.0 → PASS"
+
+@? HBIO-F-RB-2-n6-decorative = "Δ log10_BF perturbed-canonical ≥ 0.5 (load-bearing)" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-2-n6-decorative/closed-DECISIVE-2026-05-06
+  cite = hexa-bio/_python_bridge/module/ribozyme_bayesian_n6_ablation.py
+  "Δ log10_BF max=1e9 sentinel ≫ 0.5 → DECISIVE"
+
+@? HBIO-F-RB-3-diffusion-limit = "k_cat/K_M ≤ 1e9 across corpus + MVP" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-3/closed-2026-05-06
+  cite = HBIO-ribozyme-margin-orders
+  "8.33e4 << 1e9 (margin 4.08 orders)"
+
+@? HBIO-F-RB-3-b-margin-1-order = "Eigen-Hammes margin ≥1 order in MVP" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-3-b/closed-2026-05-06
+  "4.08 orders >> 1.0 threshold"
+
+@? HBIO-F-RB-3-c-mg-sweep = "Mg²⁺ sweep 1/5/10/25 mM all margin >> 1 order" :: hbio.falsifier [10*]
+  anchor = hexa-bio/.roadmap.ribozyme/F-RB-3-c/closed-2026-05-06
+  cite = hexa-bio/_python_bridge/module/ribozyme_mg_sweep_audit.py
+  "Hill n=2 K_Mg=2 mM (Steitz 1993 + Dahm-Uhlenbeck 1991): {4.76, 4.13, 4.08, 4.07}"
+
+# ── VIROCAPSID falsifiers ─────────────────────────────────────
+
+@? HBIO-F-VIROCAPSID-2-LIVE-PDB = "live-PDB scrape n≥100 cages posterior ≥ 0.95" :: hbio.falsifier [N?]
+  anchor = hexa-bio/.roadmap.virocapsid/F-VIROCAPSID-2/2027-04-28
+  cite = hexa-bio/weave/module/weave.hexa-line87
+  "PENDING deadline 2027-04-28 (long-horizon T>1 generalization)"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — hexa-bio-falsifiers-2026-05-07
+# entries added: 30 (5 weave + 14 nanobot + 9 ribozyme + 1 virocapsid + 1 alias)
+# 22 [10*] PASS, 1 [10*FAIL] honest negative, 4 [N?] PENDING, 2 user-discretion, 1 alias
+# raw#10 honest C3 + raw#91 in-silico-only mandate respected
+# ══════════════════════════════════════════════════════════════
