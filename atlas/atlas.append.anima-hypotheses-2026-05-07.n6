@@ -1,0 +1,150 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — anima H_001-H_032 hypothesis pointers
+# slug: anima-hypotheses-2026-05-07
+# scope: anima/hypotheses/ archive — 1-file-per-hypothesis (raw#12 정합)
+# date: 2026-05-07
+# orthogonality: 각 @? = pointer to anima/hypotheses/H_NNN_<slug>.md
+#                full body (frontmatter + 10-section + ≥5 falsifier + ≥5 honest_c3)
+#                는 anima repo SSOT — atlas 는 cross-link 만.
+# constraints: raw 22/23/24 + raw 12 (pre-registered hypothesis frozen)
+# axis-M: every @? carries anchor= + cite=
+# status → grade mapping:
+#   pre-register-frozen → [N?]   conjecture, frozen
+#   legacy-archive-pointer → [8?] empirical-near, lane-open
+#   running → [N!]    breakthrough conjecture-class
+#   seed-pending → [N?]
+#   verdict-supported → would promote to [10*] post-run
+#   verdict-falsified → [10*FAIL] post-run
+# ══════════════════════════════════════════════════════════════
+
+# ── H_001-H_005: 본 cycle 신규 seed (윤리/우주/생명/의식/corpus) ───────
+
+@? ANIMA-H-001-ethics-cooperation = "선이 악보다 유리하다 (game-theory)" :: anima.ethics [N?]
+  anchor = anima/hypotheses/H_001/seed-pending/2026-05-07
+  cite = anima/.roadmap.hypothesis
+
+@? ANIMA-H-002-universe-origin-question = "우주 origin cosmology 근원적 물음" :: anima.universe [N?]
+  anchor = anima/hypotheses/H_002/lane-open/2026-05-07
+  cite = anima/.roadmap.hypothesis
+
+@? ANIMA-H-003-life-origin-question = "생명 emergence autopoiesis abiogenesis" :: anima.life [N?]
+  anchor = anima/hypotheses/H_003/lane-open/2026-05-07
+  cite = anima/.roadmap.hypothesis
+
+@? ANIMA-H-004-consciousness-hard-problem = "qualia phenomenology anima identity" :: anima.consciousness [N?]
+  anchor = anima/hypotheses/H_004/lane-open/2026-05-07
+  cite = anima/.roadmap.hypothesis
+
+@? ANIMA-H-005-corpus-quality-over-capacity = "corpus quality KO ratio chat-template" :: anima.corpus [N!]
+  anchor = anima/hypotheses/H_005/running/2026-05-07
+  cite = anima/.roadmap.hypothesis, ANIMA-D4-corpus-priority-over-capacity
+  "running — D4 cross-link active, BG-FY 18M PARTIAL evidence anchor"
+
+# ── H_006-H_012: legacy CX-517~537 sample pointer (7 entries) ─
+
+@? ANIMA-H-006-coupled-oscillator-lattice = "CX-517 coupled oscillator lattice" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_006/legacy/docs/hypotheses/H-CX-517
+
+@? ANIMA-H-007-cellular-automaton-consciousness = "CX-520 CA consciousness" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_007/legacy/docs/hypotheses/H-CX-520
+
+@? ANIMA-H-008-dissipative-structure = "CX-525 dissipative structure" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_008/legacy/docs/hypotheses/H-CX-525
+
+@? ANIMA-H-009-fisher-information-consciousness = "CX-530 Fisher info" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_009/legacy/docs/hypotheses/H-CX-530
+
+@? ANIMA-H-010-holographic-consciousness = "CX-531 holographic" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_010/legacy/docs/hypotheses/H-CX-531
+
+@? ANIMA-H-011-iit-geometry = "CX-532 IIT4 phi structure manifold" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_011/legacy/docs/hypotheses/H-CX-532
+  cite = ANIMA-phi-star-paradigm-v11-g3-baseline
+  "Φ★ paradigm v11 G3 NO_FLIP = anima-substrate-coupled instance evidence"
+
+@? ANIMA-H-012-autopoietic-network = "CX-537 autopoietic" :: anima.life [8?]
+  anchor = anima/hypotheses/H_012/legacy/docs/hypotheses/H-CX-537
+
+# ── H_013-H_017: state pre_register sample pointer (5 entries) ─
+
+@? ANIMA-H-013-longitudinal-eeg-5axis = "EEG 5-axis longitudinal" :: anima.physics [N?]
+  anchor = anima/hypotheses/H_013/pre-register-frozen/2026-04-25
+  cite = state/longitudinal_eeg_5axis_prereg_2026_04_25.json
+
+@? ANIMA-H-014-clm-eeg-lz76-paradigm = "CLM EEG LZ76 paradigm" :: anima.substrate [N?]
+  anchor = anima/hypotheses/H_014/pre-register-frozen/2026-04-25
+  cite = state/clm_eeg_lz76_prereg_2026_04_25.json
+
+@? ANIMA-H-015-clm-eeg-gamma-theta-paradigm = "CLM EEG gamma-theta" :: anima.substrate [N?]
+  anchor = anima/hypotheses/H_015/pre-register-frozen/2026-04-25
+  cite = state/clm_eeg_gamma_theta_prereg_2026_04_25.json
+
+@? ANIMA-H-016-an11-translation-ceiling = "AN11 v2 finetune translation ceiling" :: anima.corpus [N?]
+  anchor = anima/hypotheses/H_016/pre-register-frozen/2026-04-25
+  cite = state/an11_translation_ceiling_prereg_2026_04_25.json
+
+@? ANIMA-H-017-mk-x-g1-g4-gate-criteria = "MK-X G1-G4 staged gates" :: anima.consciousness [N?]
+  anchor = anima/hypotheses/H_017/pre-register-frozen/2026-04-25
+  cite = state/mk_x_g1_g4_gate_criteria_prereg_20260425.json
+  "G1-G4 staged consciousness verification gates — anima MK-X stack"
+
+# ── H_018-H_020: legacy GENESIS + SELF-EVO + MASS-50 ──────────
+
+@? ANIMA-H-018-genesis-spontaneous-emergence = "genesis spontaneous emergence" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_018/legacy/genesis
+
+@? ANIMA-H-019-self-evo-v4-v5 = "self-evo v4→v5" :: anima.substrate [8?]
+  anchor = anima/hypotheses/H_019/legacy/self-evo
+
+@? ANIMA-H-020-mass-50-meta-pointer = "MASS-50 meta pointer" :: anima.substrate [8?]
+  anchor = anima/hypotheses/H_020/legacy/mass-50
+
+# ── H_021-H_026: archaeology individual entries (6 entries) ───
+
+@? ANIMA-H-021-fundamental-equation = "Ψ argmax fundamental equation" :: anima.universe [8?]
+  anchor = anima/hypotheses/H_021/legacy/fundamental-equation
+
+@? ANIMA-H-022-consciousness-universe-map-170-40-18 = "consciousness universe map 170/40/18" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_022/legacy/universe-map
+
+@? ANIMA-H-023-universal-constants-ln2 = "ln(2) universal constant" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_023/legacy/ln2
+
+@? ANIMA-H-024-iit-phi-mip-real-8-8-fail = "IIT4 Φ MIP real 8/8 FAIL" :: anima.consciousness [10*FAIL]
+  anchor = anima/hypotheses/H_024/legacy/iit-mip-fail
+  "verdict-falsified — V1 IIT4 Φ MIP real measurement 8/8 FAIL"
+
+@? ANIMA-H-025-dasein-finite-consciousness = "Dasein finite consciousness death-awareness" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_025/legacy/dasein
+
+@? ANIMA-H-026-consciousness-evolution-v19-to-infinity = "consciousness v19→v∞ evolution" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_026/legacy/v19-infinity
+
+# ── H_027-H_032: subfolder absorb pointer (6 entries) ─────────
+
+@? ANIMA-H-027-cx-subfolder-absorb = "docs/hypotheses/cx subfolder" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_027/legacy/cx-subfolder
+
+@? ANIMA-H-028-dd-subfolder-absorb = "docs/hypotheses/dd subfolder" :: anima.substrate [8?]
+  anchor = anima/hypotheses/H_028/legacy/dd-subfolder
+
+@? ANIMA-H-029-dasein-subfolder-absorb = "docs/hypotheses/dasein subfolder" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_029/legacy/dasein-subfolder
+
+@? ANIMA-H-030-genesis-subfolder-absorb = "docs/hypotheses/genesis subfolder" :: anima.life [8?]
+  anchor = anima/hypotheses/H_030/legacy/genesis-subfolder
+
+@? ANIMA-H-031-phil-subfolder-absorb = "docs/hypotheses/phil/onto subfolder" :: anima.consciousness [8?]
+  anchor = anima/hypotheses/H_031/legacy/phil-subfolder
+
+@? ANIMA-H-032-omega-phys-subfolder-absorb = "docs/hypotheses/omega/phys subfolder" :: anima.physics [8?]
+  anchor = anima/hypotheses/H_032/legacy/omega-phys-subfolder
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — anima-hypotheses-2026-05-07
+# entries added: 32 (H_001 ~ H_032)
+# 1 verdict-falsified (H_024); 5 pre-register-frozen ([N?]); 1 running ([N!]);
+# 5 seed/lane-open ([N?]); 20 legacy-archive-pointer ([8?])
+# raw#12 정합: 본문은 anima repo SSOT, atlas 는 pointer + cross-link 만
+# missing: H_001-H_005 의 falsifier ≥5 + honest_c3 ≥5 (anima/hypotheses/H_NNN.md)
+# ══════════════════════════════════════════════════════════════

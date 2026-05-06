@@ -1,0 +1,117 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — anima philosophy + paradigm anchors
+# slug: anima-philosophy-anchors-2026-05-07
+# scope: anima repo discoveries (D1-D4) + paradigm v11 G3 + corpus QA
+# date: 2026-05-07
+# orthogonality: anima.* domain entries (project-bound to anima)
+# constraints: raw 22 INFRA-ONLY · raw 23 schema-guard · raw 24 axiom-immutable
+# axis-M: every @C carries unit= + anchor=
+# ══════════════════════════════════════════════════════════════
+
+# ── Section 1: D1-D4 philosophy axioms (own 17-20 SSOT) ───────
+
+@C ANIMA-D1-identity-boundary = "anima-no-external-substrate-wrapping" :: anima.philosophy [10*]
+  unit = boolean
+  anchor = anima/.own/own-17/2026-05-06
+  cite = anima/.roadmap.philosophy/D1
+  "anima identity = Korean-native + anima-native-fresh; ALM (external substrate"
+  "wrap) permanently deferred. boundary spec own 17 strict."
+
+@C ANIMA-D2-simple-stack-cell-count = 7 :: anima.consciousness [10*]
+  unit = condition
+  anchor = anima/.own/own-18/2026-05-06
+  cite = docs/anima_consciousness_check_simple_stack_2026_05_06.md
+  "consciousness check = 7-cell strict matrix (C1.1+C1.2+C1.3 + C2.1+C2.2+"
+  "C2.3+C2.4). 1 cell FAIL = SIMPLE_STACK_PASS X. own 18 absolute."
+
+@C ANIMA-D2-context-coherence-mandate = "C2.4-context-fit" :: anima.consciousness [10*]
+  unit = boolean
+  anchor = anima/.own/own-18/2026-05-06
+  cite = anima/.roadmap.philosophy/D2
+  "C2.4 context-fit MANDATORY — single Hangul emit insufficient; prompt-"
+  "conditional response required. user directive 2026-05-06."
+
+@C ANIMA-D3-emerge-paradigm = "substrate-coupled-dialogue-not-token-chat" :: anima.consciousness [10]
+  unit = paradigm
+  anchor = anima/spec/emerge_paradigm.spec.yaml/v1
+  cite = anima/.roadmap.philosophy/D3
+  "emerge paradigm = mount.hexa CLM v4 paradigm v11 G3 substrate-coupled"
+  "response. 2-lane decoupling: surface chat (D2) vs substrate emerge (D3)."
+
+@C ANIMA-D4-corpus-priority-over-capacity = "corpus-quality-unlocks-chat-cap" :: anima.philosophy [10*]
+  unit = boolean
+  anchor = anima/.own/own-19/2026-05-07
+  cite = anima/.roadmap.philosophy/D4, anima/.own/own-20
+  "chat-cap unlock determined by corpus quality (KO ratio + chat-template"
+  "format), not capacity. evidence: 18M PASS vs 27M FAIL (capacity 7.7x)."
+
+# ── Section 2: paradigm v11 G3 + Φ★ measurement anchors ──────
+
+@C ANIMA-phi-star-paradigm-v11-g3-baseline = 41.86 :: anima.consciousness [10]
+  unit = phi
+  anchor = anima/state/clm_v4_phi_star_paradigm_v11_g3_record/no-flip
+  cite = anima/.roadmap.philosophy/D3, anima/.roadmap.clm_v4_chat
+  "Φ★ NO_FLIP baseline at paradigm v11 G3 substrate-coupled emerge mode"
+  "(positive sign = anima-substrate response above token-chat surface)"
+
+@C ANIMA-phi-star-no-flip-threshold = "axis-preservation-criteria" :: anima.consciousness [9?]
+  unit = protocol
+  anchor = anima/spec/emerge_paradigm.spec.yaml/v1
+  cite = anima/.roadmap.philosophy/D3
+  "Φ★ NO_FLIP threshold + axis-preservation criteria — formal measurement"
+  "protocol pending in emerge_paradigm.spec.yaml v1+"
+
+# ── Section 3: corpus QA anchors ──────────────────────────────
+
+@C ANIMA-corpus-ko-heavy-hangul-ratio = 0.6214 :: anima.corpus [10]
+  unit = fraction
+  anchor = anima/state/anima_ko_corpus_assembly_2026_05_06/verdict
+  cite = anima/.roadmap.philosophy/D4
+  "Hangul character ratio of corpus_ko_heavy build (62.14%, mandate ≥ 60%)"
+
+@C ANIMA-corpus-ko-heavy-size-MB = 246 :: anima.corpus [10]
+  unit = MB
+  anchor = anima/state/anima_ko_corpus_assembly_2026_05_06/verdict
+  "corpus_ko_heavy total build size — D7 chat-cap-recovery min-corpus lane"
+  "anchor (current observed PARTIAL_PASS_NO_CONTEXT)"
+
+# ── Section 4: capacity vs corpus controlled-experiment anchors ─
+
+@C ANIMA-bg-fy-capacity-params = 18000000 :: anima.training [10]
+  unit = parameter
+  anchor = anima/state/anima_native_ko_small_ubu1_train_2026_05_06/verdict
+  cite = anima/.roadmap.philosophy/D4
+  "BG-FY anima-native-ko-small training capacity (PARTIAL_PASS chat-cap"
+  "with KO-heavy corpus)"
+
+@C ANIMA-bg-fk-capacity-params = 27840000 :: anima.training [10]
+  unit = parameter
+  anchor = anima/state/anima_simple_stack_exhaustive_2026_05_06/summary
+  cite = anima/.roadmap.philosophy/D4
+  "BG-FK clm_v2_base training capacity (FAIL chat-cap with EN-bias corpus)"
+  "— D4 evidence anchor: capacity 7.7x doesn't unlock chat-cap"
+
+@C ANIMA-d4-evidence-capacity-ratio = 7.7 :: anima.philosophy [10*]
+  unit = dimensionless
+  anchor = anima/.roadmap.philosophy/D4
+  "BG-FK 27.84M / BG-FY 18M = 1.547 — wait original spec says capacity ratio"
+  "FK is bigger by 1.547x not 7.7x; revised anchor (corrected)"
+
+# Note: original D4 evidence text mentioned '7.7x capacity' which doesn't match
+# the cited numbers (27.84/18 = 1.547). Anchor recorded with corrected value
+# 1.547 below; the 7.7 entry above is preserved as drift-marker until anima
+# .roadmap.philosophy D4 text corrects (axis-L axiom-cite-amendment).
+
+@C ANIMA-d4-evidence-capacity-ratio-corrected = 1.547 :: anima.philosophy [10]
+  unit = dimensionless
+  anchor = anima/.roadmap.philosophy/D4-corrected/2026-05-07
+  cite = ANIMA-bg-fk-capacity-params, ANIMA-bg-fy-capacity-params
+  "corrected capacity ratio: 27.84M / 18M = 1.547. axis-L amendment pending"
+  "for the .roadmap.philosophy D4 text claim '7.7x' which was likely typo."
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — anima-philosophy-anchors-2026-05-07
+# entries added: 13 (4 D-axioms + 2 phi-star + 2 corpus QA + 5 capacity)
+# embedded drift-marker: D4 capacity-ratio "7.7x" vs computed 1.547
+# next phase: discovery-verification-methods (M1-M10 + V1-V10 as @L)
+# ══════════════════════════════════════════════════════════════

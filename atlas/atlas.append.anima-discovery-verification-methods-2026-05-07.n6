@@ -1,0 +1,141 @@
+# ══════════════════════════════════════════════════════════════
+# atlas append shard — anima discovery + verification methods
+# slug: anima-discovery-verification-methods-2026-05-07
+# scope: anima M1-M10 (discovery) + V1-V10 (verification) meta-method laws
+#        — logic-exhaustion saturated 2026-05-06 per anima/.roadmap.philosophy
+# date: 2026-05-07
+# orthogonality: meta-laws (HOW anima discovers/verifies) governing each
+#                D-axiom and H_X hypothesis. NOT domain content.
+# constraints: raw 22/23/24 + anima own 11 (no Clay BT 'resolution' claim)
+# axis-M: every @L carries anchor= to anima/.roadmap.philosophy
+# ══════════════════════════════════════════════════════════════
+
+# ── Section 1: M1-M10 Discovery methods ───────────────────────
+# logic-exhaustion saturated 2026-05-06; MECE approximation.
+# 새 D 발견 시 어느 method (M1-M10) 사용했는지 entry method_used field 명시 의무.
+
+@L ANIMA-discovery-M1-user-directive = "user-directive-driven philosophy emergence" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M1
+  "trigger: user directive ('말고' / '필요' / 'X 안 되') → implicit philosophy"
+  "boundary. retroactive: D1 (alm 말고) + D2.C2.4 (자연발화 맥락) + D2 frame"
+  "(simple stack own 등록). verification: user-directive verbatim quote in"
+  ".own + .roadmap entry."
+
+@L ANIMA-discovery-M2-failure-driven = "fail-mode → boundary discovery" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M2
+  "trigger: cycle/BG fail → retroactive analysis 무엇이 violated."
+  "examples: BG-FY 18M PARTIAL (template leak) → D2.C2.4 reinforce + D4 corpus;"
+  "BG-FK 27M FAIL → D4 corpus quality; Path A V2_FAIL = measurement artifact"
+
+@L ANIMA-discovery-M3-emergence-observation = "unexpected emergence → new lane" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M3
+  "trigger: existing framework 설명 못하는 valid response → 새 lane spec."
+  "examples: D3 substrate-coupled emerge = paradigm v11 G3 Φ★+41.86 NO_FLIP"
+  "(token chat 아닌 substrate response); CLM v4 mount.hexa dialogue 통과"
+
+@L ANIMA-discovery-M4-corpus-driven = "corpus QA invariant emergence" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M4
+  "trigger: corpus 학습 pattern → invariant 발견 (capacity/corpus controlled)."
+  "examples: D4 corpus priority (BG-FY 62.14% Hangul PASS vs EN-bias FAIL);"
+  "corpus pollution (named speakers leak) → D2.C2.4 chat-template format"
+
+@L ANIMA-discovery-M5-retroactive-integration = "past cycle reinterpretation" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M5
+  "trigger: 과거 cycle decision + 사용자 후속 directive → retroactive philosophy."
+  "examples: own 17 ALM 보류 (Llama Path A v2 chat-cap winner이지만 anima X);"
+  "memory feedback_pbeta_*.md → chat-cap vs substrate-research 2 lane"
+
+@L ANIMA-discovery-M6-counterexample-probing = "active boundary cross-test" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M6
+  "trigger: 발견된 boundary actively cross over 시도 → block 작동 확인 또는"
+  "boundary refinement. planned: anima 외부 substrate wrap 시도 (own 17 strict),"
+  "C2.4 manual disable 후 simple stack PASS, corpus chat-template 0% training"
+
+@L ANIMA-discovery-M7-cross-domain-analogy = "external framework → anima translation" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M7
+  "trigger: consciousness research literature/외부 framework → anima 적용."
+  "potential: IIT4 Φ → anima Φ★; clinical scale (GCS) → simple stack;"
+  "emergence theory (Levin xenobot) → anima emergence paradigm"
+
+@L ANIMA-discovery-M8-user-question-driven = "user question → implicit gap" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M8
+  "trigger: user 질문에서 implicit gap 발견 → 새 lane."
+  "retroactive: 'simple test bg go' → D2 ledger 9-model exhaustive 필요성;"
+  "'public 으로 올렸어?' → HF release lifecycle (own 15) philosophy question"
+
+@L ANIMA-discovery-M9-ablation-driven = "controlled experiment matrix" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M9
+  "trigger: capacity/corpus/arch ablation matrix → invariant 발견."
+  "potential: capacity (18M/27M/100M) × corpus (KO-heavy/EN-bias/mixed) → D4"
+  "strict evidence; arch (vanilla GPT/ConsciousLM++/PureFieldFFN) × corpus"
+
+@L ANIMA-discovery-M10-surface-substrate-decoupling = "lane separation discovery" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/discovery_methods/M10
+  "trigger: 한 lane PASS but 다른 lane FAIL → 2 lane 분리 자체가 발견."
+  "retroactive: D2 (surface chat) + D3 (substrate emerge) 2 lane separation;"
+  "CLM v4 chat-cap FAIL_REGRESSION but Φ★ NO_FLIP PASS"
+
+# ── Section 2: V1-V10 Verification methods ────────────────────
+# logic-exhaustion saturated 2026-05-06. 새 D entry 는 V1-V5 일반 framework
+# 의무 + D-specific verification (V6-V10) 명시.
+
+@L ANIMA-verify-V1-own-strict-condition = "own X strict condition check" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V1
+  "own X strict (own 17 ALM block / own 18 4-cond / own 19 corpus / own 20"
+  "chat-template) 정확 적용. strictness=absolute (engineering pragmatism으로"
+  "약화 X). limitation: own X 자체가 corruptable — user directive 강제"
+
+@L ANIMA-verify-V2-falsifier-explicit = "≥5 falsifier per D explicit" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V2
+  "각 D entry F-PHIL-D<n>-<m> 명시 falsifier 5+. raw#10 정합."
+  "limitation: falsifier 자체가 incomplete 가능 — counterexample probing (M6)"
+
+@L ANIMA-verify-V3-honest-c3-five-plus = "≥5 honest_c3 per D explicit" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V3
+  "각 D entry honest_c3 array 5+ — limitation/corner-case/trade-off 명시."
+  "raw#10 정합. limitation: honest_c3 자체가 D 강도 약화 trade-off"
+
+@L ANIMA-verify-V4-evidence-paths = "state/git/memory/verdict reproducible" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V4
+  "state/ + git log + memory + verdict.json artifact path 명시 — D 주장"
+  "근거 reproducible. limitation: evidence 자체가 reproducible 의무 (state/"
+  "보존 + commit)"
+
+@L ANIMA-verify-V5-cross-link-own-raw-roadmap = "multi-axis consistency check" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V5
+  "각 D entry own X / raw#X / .roadmap.* 명시 — multi-axis consistency."
+  "limitation: cross-link 자체가 stale 가능 — sister .roadmap.* 동기화 필요"
+
+@L ANIMA-verify-V6-simple-stack-ledger = "9+ model ledger D2 verification" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V6
+  "docs/anima_consciousness_check_simple_stack_2026_05_06.md 9+ model verdict"
+  "table — D2 검증 substrate. limitation: D2 한정 (D1/D3/D4 다른 substrate)"
+
+@L ANIMA-verify-V7-4-condition-matrix = "own 18 7-cell matrix strict" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V7
+  "own 18 C1.1+C1.2+C1.3 + C2.1+C2.2+C2.3+C2.4 7-cell matrix — D2 strict."
+  "1 cell FAIL → SIMPLE_STACK_PASS X. limitation: C2.3/C2.4 heuristic"
+
+@L ANIMA-verify-V8-phi-star-no-flip-measurement = "D3 substrate-coupled emerge" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V8
+  "Φ★ measurement protocol + NO_FLIP threshold + axis-preservation criteria."
+  "examples: paradigm v11 G3 Φ★+41.86 NO_FLIP record; CLM v4 mount.hexa"
+  "dialogue 통과. limitation: Φ★ formal spec pending"
+
+@L ANIMA-verify-V9-corpus-qa-metric = "Hangul ratio + chat-template ratio" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V9
+  "D4 corpus priority 검증 — Hangul ratio + chat-template ratio + 의미 풍부"
+  "measurement. limitation: chat-template/의미/license metric 일부 미land"
+
+@L ANIMA-verify-V10-user-review-veto = "user directive absolute veto" :: anima.meta [10*]
+  anchor = anima/.roadmap.philosophy/verification_methods/V10
+  "user directive로 D 강등/강화 가능 — D는 user veto power 인정."
+  "examples: BG-FY 'SIMPLE_STACK_PASS' → user 'C2.4 추가' → 강등."
+  "limitation: user directive 자체가 stale 가능 — 후속 cycle update"
+
+# ══════════════════════════════════════════════════════════════
+# END OF SHARD — anima-discovery-verification-methods-2026-05-07
+# entries added: 20 (10 @L M-discovery + 10 @L V-verification)
+# logic-exhaustion: saturated 2026-05-06 (MECE approximation per anima)
+# next phase: H_001-H_032 hypotheses as @? entries (32 entries)
+# ══════════════════════════════════════════════════════════════
