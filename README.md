@@ -25,7 +25,7 @@
 
 <!-- SHARED:PROJECTS:START -->
 <!-- AUTO:COMMON_LINKS:START -->
-void
+**[🎥 YouTube](https://www.youtube.com/@dancinlife)** · **[💬 Discord](https://discord.gg/mYzqYr67R)** · **[📬 Email](mailto:nerve011235@gmail.com)** · **[☕ Ko-fi](https://ko-fi.com/dancinlife)** · **[💖 Sponsor](https://github.com/sponsors/need-singularity)** · **[💳 PayPal](https://www.paypal.com/donate?business=nerve011235%40gmail.com)** · **[🗺️ Atlas](https://need-singularity.github.io/TECS-L/atlas/)** · **[📄 Papers](https://need-singularity.github.io/papers/)**
 <!-- AUTO:COMMON_LINKS:END -->
 
 ## Main projects
@@ -40,23 +40,7 @@ void
 >
 > **[📄 Papers](https://github.com/need-singularity/papers)** — Complete paper collection (92 papers, Zenodo DOIs).
 
-## Sub-projects
-
-> **[🐝 Hive](https://github.com/need-singularity/hive)** — pi-mono fork. AI-agent swarm: multi-cell parallel agents, layered persistent memory, need-singularity bridges.
->
-> **[🕳️ Void](https://github.com/need-singularity/void)** — Ghostty fork. AI-native terminal: grid mode (N×M auto-layout), agent I/O alongside PTY, perf-first budget.
->
-> **[🧬 airgenome](https://github.com/need-singularity/airgenome)** — OS genome scanner: 6-axis hexagon projection of host vitals + pattern accumulation + anomaly detection.
-
-## Sister substrates
-
-> **[⚛️ qmirror v2.0.0](https://github.com/need-singularity/qmirror/releases/tag/v2.0.0)** — Quantum Mirror Substrate. Statistically real-QPU-equivalent (≤30 qubit) on commodity CPUs. Closure 13/13 conds met (8 v1 + 5 v2: process tomography / GHZ-Mermin / stabilizer / surface-code d=3 / chained-sequential CHSH). qmirror Aer integration provides $0 quantum-circuit execution for n=6 / J₂=24 invariant verification across the chip + AI + quantum-error-correction axes (see `n6-quantum-computing-paper.md`, `n6-quantum-error-correction-paper.md`, `n6-quantum-machine-learning-paper.md`). `hx install qmirror`.
->
-> **[🌌 sim-universe v1.0.0](https://github.com/need-singularity/sim-universe)** — Virtual Universe Runtime. τ-clock + multiverse interferometer + ouroboros QRNG. Forensic verdict EXISTS_RUNNABLE.
->
-> **[🧬 hexa-bio v1.0.0](https://github.com/need-singularity/hexa-bio)** — Molecular Toolkit. WEAVE / NANOBOT / RIBOZYME / VIROCAPSID. Empirical companion to `n6-architecture/domains/biology/`.
->
-> **[🛡️ honesty-monitor v1.0.0](https://github.com/need-singularity/honesty-monitor)** — AI Honesty-Bit Falsifier. Online detector for BT-AI2 silent-regression / over-pessimism contract violations. HEXA port of `n6-architecture/experiments/anomaly/btAI2_honesty_bit_scheduler.py`.
+> **[Other projects →](https://github.com/orgs/need-singularity/repositories)**
 
 ## 💬 Community
 
@@ -64,8 +48,7 @@ void
 
 Live research discussion, paper drops, stage-gate reviews, cross-project dispatch.
 
-<!-- private repos are stored in projects.json's private_repos field (do not expose) -->
-
+<!-- private repos는 projects.json의 private_repos 필드에 저장됨 (노출 금지) -->
 <!-- SHARED:PROJECTS:END -->
 
 
