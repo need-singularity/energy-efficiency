@@ -7,6 +7,7 @@ Cross-reference index of `domains/space/*` specs that have been extracted into s
 | Spec(s) | Standalone repo | Extracted | Notes |
 |---|---|---|---|
 | `hexa-cosmic`, `hexa-starship`, `aerospace`, `aerospace-transport`, `space-engineering`, `space-systems`, `astrodynamics`, `astronomy`, `observational-astronomy`, `astrobiology`, `space-medicine` | 🚀 [need-singularity/hexa-space](https://github.com/need-singularity/hexa-space) | 2026-05-06 | 11-verb / 4 그룹 (core · engineering · observation · life). hexa-cosmos(이론) · hexa-ufo(starship 자매) cross-link. MIT. |
+| `observational-astronomy` (specialized fork) | 🛰️ [need-singularity/hexa-scope](https://github.com/need-singularity/hexa-scope) | 2026-05-06 | 망원경 hardware 측면 specialize fork. JWST 18-segment hexagonal mirror = n=6 직접 hardware instance. 7-mission overview (Hubble · JWST · LSST · Roman · LUVOIR · Origins · HabEx). hexa-cosmos · hexa-rtsc cross-link. MIT. |
 
 ## Convention
 
