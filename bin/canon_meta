@@ -1,0 +1,5 @@
+#!/bin/bash
+# bin/n6_meta — shim for tool/n6_meta.hexa (via tool/_n6_lib)
+# Prefers direct bash invocation (avoids hexa run overhead).
+N6="${N6:-$(cd "$(dirname "$0")/.." && pwd)}"
+exec bash "$N6/tool/_n6_lib" "$@"

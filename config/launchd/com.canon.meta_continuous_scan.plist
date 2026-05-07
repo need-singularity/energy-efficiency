@@ -3,27 +3,27 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.n6-architecture.meta_continuous_scan</string>
+  <string>com.canon.meta_continuous_scan</string>
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/ghost/core/n6-architecture/bin/n6_meta</string>
+    <string>/Users/ghost/core/canon/bin/canon_meta</string>
     <string>continuous-scan</string>
   </array>
   <key>WorkingDirectory</key>
-  <string>/Users/ghost/core/n6-architecture</string>
+  <string>/Users/ghost/core/canon</string>
   <key>StartInterval</key>
   <integer>43200</integer>
   <key>RunAtLoad</key>
   <false/>
   <key>StandardOutPath</key>
-  <string>/tmp/n6_meta_scan.out.log</string>
+  <string>/tmp/canon_meta_scan.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/n6_meta_scan.err.log</string>
+  <string>/tmp/canon_meta_scan.err.log</string>
   <key>EnvironmentVariables</key>
   <dict>
-    <key>N6</key>
-    <string>/Users/ghost/core/n6-architecture</string>
+    <key>CANON</key>
+    <string>/Users/ghost/core/canon</string>
     <key>PATH</key>
     <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
   </dict>

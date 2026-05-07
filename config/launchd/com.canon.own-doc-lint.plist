@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.n6-architecture.own-doc-lint</string>
+  <string>com.canon.own-doc-lint</string>
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/ghost/core/n6-architecture/tool/own_doc_lint_with_alert.sh</string>
+    <string>/Users/ghost/core/canon/tool/own_doc_lint_with_alert.sh</string>
   </array>
   <key>WorkingDirectory</key>
-  <string>/Users/ghost/core/n6-architecture</string>
+  <string>/Users/ghost/core/canon</string>
   <key>StartInterval</key>
   <integer>86400</integer>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>
-  <string>/tmp/n6_own_doc_lint.out.log</string>
+  <string>/tmp/canon_own_doc_lint.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/n6_own_doc_lint.err.log</string>
+  <string>/tmp/canon_own_doc_lint.err.log</string>
   <key>EnvironmentVariables</key>
   <dict>
-    <key>N6_ARCHITECTURE</key>
-    <string>/Users/ghost/core/n6-architecture</string>
+    <key>CANON</key>
+    <string>/Users/ghost/core/canon</string>
     <key>PATH</key>
     <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
   </dict>
