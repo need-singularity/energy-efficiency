@@ -1,0 +1,4 @@
+{"ts":"2026-05-07T08:03:37Z","actor":"staged-scan","kind":"bypass","reason":"pre-existing personal paths in tool/*.hexa unchanged by sed rename — fix in separate refactor PR","branch":"main","scanner_user":"ghost"}
+{"ts":"2026-05-07T08:03:37Z","actor":"commit-msg-scan","kind":"bypass","reason":"pre-existing personal paths in tool/*.hexa unchanged by sed rename — fix in separate refactor PR","branch":"main","scanner_user":"ghost"}
+{"ts":"2026-05-07T08:46:12Z","actor":"staged-scan","kind":"bypass","reason":"launchd plist content rebrand follow-up — sed missed .plist extension","branch":"main","scanner_user":"ghost"}
+{"ts":"2026-05-07T08:46:13Z","actor":"commit-msg-scan","kind":"bypass","reason":"launchd plist content rebrand follow-up — sed missed .plist extension","branch":"main","scanner_user":"ghost"}
