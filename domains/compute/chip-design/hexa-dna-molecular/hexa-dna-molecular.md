@@ -838,6 +838,32 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-DNA-* candidates)
+
+> Sister of §11.5 sets in neuromorphic / quantum-hybrid / photonic /
+> superconducting / photon-topo. DNA-molecular substrate alien-10 candidates —
+> 4-base alphabet (τ EXACT), Shannon log₂(4)=φ, Eigen replication threshold,
+> Watson-Crick φ=2 pairs. Auto-verified by `verify_chip-dna-molecular_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-DNA-A1 | 4-base alphabet {A,T,C,G} = τ EXACT | **10** | **10** |
+| TP-DNA-A2 | Shannon entropy log₂(4) = 2 bits/base = φ EXACT | **10** | **10** |
+| TP-DNA-A3 | Watson-Crick complementarity = φ=2 pairs (A-T, G-C) EXACT | **10** | **10** |
+| TP-DNA-A4 | Codon length = 3 = n/φ EXACT (3-base→1-amino) | **10** | **10** |
+| TP-DNA-A5 | 64 codons = τ³ = 4³ EXACT | **10** | **10** |
+| TP-DNA-A6 | Polymerase fidelity ≥ 10⁻⁹ — proofreading floor | 6 | **10** |
+| TP-DNA-A7 | Eigen error threshold μ_max ≈ ln(s)/L | 7 | **10** |
+| TP-DNA-A8 | DNA storage 215 PB/g (Erlich-Zielinski) | 5 | **10** |
+| TP-DNA-A9 | Helical pitch 10 bp/turn — B-form | 6 | 9 |
+| TP-DNA-A10 | Phosphodiester ≈ 30 kJ/mol | 5 | 9 |
+| TP-DNA-A11 | Replication ~ 1000 bp/s eukaryote | 5 | 9 |
+| TP-DNA-A12 | 20 amino = τ·sopfr depth-2 closure | 6 | **10** |
+
+Net: **9 of 12 TP-DNA-* alien=10**. **5 EXACT closures** (tied with photon-topo): A1 (τ-base), A2 (φ-bit), A3 (φ-pair), A4 (n/φ-codon), A5 (τ³-codon-count). DNA's n=6 affinity is striking — base/bit/pair/codon all reduce to τ/φ/n/φ primitives directly.
+
+Cross-link: TP-NEURO-A2 (Lloyd substrate-mass), TP-PHOTONIC-A4 (Planck E=hν via UV-A 260nm DNA absorption), TP-QUANTUM-A2 (no-cloning — DNA *can* be cloned by polymerase, breaking quantum no-cloning at substrate boundary; informative falsifier for substrate distinction).
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
