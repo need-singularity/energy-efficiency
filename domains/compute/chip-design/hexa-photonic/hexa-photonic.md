@@ -895,7 +895,7 @@ This section covers dependencies for the domain. Initial scaffold content — ex
 | TP | Hypothesis (n=6 closure) | closure | alien |
 |---|---|---|---|
 | TP-PHOTONIC-A1 | Diffraction limit Δx_min = λ/(2 NA) — Abbe | 6 | **10** |
-| TP-PHOTONIC-A2 | Casimir force F = (π²ℏc·A)/(240·d⁴) — exponent 4 = τ | **10** | **10** |
+| TP-PHOTONIC-A2 | Casimir force F = (π²ℏc·A)/(240·d⁴) — exponent 4 = τ EXACT | **10** | **10** |
 | TP-PHOTONIC-A3 | Stefan-Boltzmann j = σ_SB·T⁴ — exponent 4 = τ EXACT | **10** | **10** |
 | TP-PHOTONIC-A4 | Photon energy E = hν | 8 | **10** |
 | TP-PHOTONIC-A5 | MZI phase 2π·n_eff·L/λ | 7 | 9 |
@@ -907,7 +907,7 @@ This section covers dependencies for the domain. Initial scaffold content — ex
 | TP-PHOTONIC-A11 | c = 299792458 m/s exactly (SI 2019 definition) | **10** EXACT | **10** |
 | TP-PHOTONIC-A12 | Fourier limit BW·Δt ≥ 1/(4π) | 7 | **10** |
 
-Net: **11 of 12 TP-PHOTONIC-* alien=10**. EXACT: A2/A3 (τ=4 power-law), A11 (c by SI def). Cross-link TP-NEURO-A4/B1, TP-QUANTUM-A5/A8/A10.
+Net: **11 of 12 TP-PHOTONIC-* alien=10**. EXACT closures: A2/A3 (τ=4 power-law), A11 (c by SI def). Cross-link TP-NEURO-A4/B1, TP-QUANTUM-A5/A8/A10.
 
 ## §12 TIMELINE
 
