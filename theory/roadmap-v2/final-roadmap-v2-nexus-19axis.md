@@ -193,7 +193,7 @@ Phase documents (17 substantive + saturation + declaration):
 
 Others:
 - `final-roadmap-v2-nexus-19axis.md` — this document
-- `/Users/ghost/Dev/nexus/shared/roadmaps/nexus-v2.json` — JSON SSOT
+- `/Users/ghost/core/nexus/shared/roadmaps/nexus-v2.json` — JSON SSOT
 
 ---
 

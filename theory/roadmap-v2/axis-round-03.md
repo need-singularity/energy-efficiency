@@ -52,9 +52,9 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C22 — THINKING (thinking engine)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/thinking_engine.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/thinking_log.jsonl`
-- `/Users/ghost/Dev/nexus/shared/harness/think_baseline.json`
+- `/Users/ghost/core/nexus/shared/harness/thinking_engine.hexa`
+- `/Users/ghost/core/nexus/shared/harness/thinking_log.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/think_baseline.json`
 - CLAUDE.md convention: "before a complex question / design decision, thinking query → anima 6-phase reflection"
 
 **Independence argument**:
@@ -69,9 +69,9 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C23 — AGENT-LEDGER (agent ledger)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/agent_ledger.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/work_registry.jsonl`
-- `/Users/ghost/Dev/nexus/shared/harness/session_registry.{hexa,jsonl}`
+- `/Users/ghost/core/nexus/shared/harness/agent_ledger.hexa`
+- `/Users/ghost/core/nexus/shared/harness/work_registry.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/session_registry.{hexa,jsonl}`
 
 **Independence argument**: a **work-distribution + dedup ledger** between parallel-agent sessions. The execution SSOT of GO mode (MEMORY f-go-mode-parallel-agents.md).
 
@@ -84,8 +84,8 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C24 — DREAM-ENGINE (dream engine)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/dream_engine.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/dream_log.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/dream_engine.hexa`
+- `/Users/ghost/core/nexus/shared/harness/dream_log.jsonl`
 
 **Independence argument**: a background engine that **generates hypotheses** while the session is idle. A different ideation mechanism from BLOWUP/DSE.
 
@@ -98,10 +98,10 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C25 — CONSENSUS (consensus engine)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/consensus_loop.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/critique.hexa`, `critique_log.jsonl`
-- `/Users/ghost/Dev/nexus/shared/harness/curiosity.hexa`, `curiosity_log.jsonl`
-- `/Users/ghost/Dev/nexus/shared/harness/governance.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/consensus_loop.hexa`
+- `/Users/ghost/core/nexus/shared/harness/critique.hexa`, `critique_log.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/curiosity.hexa`, `curiosity_log.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/governance.jsonl`
 
 **Independence argument**: a **consensus loop** among several agents/models — a 3-engine composition of critique / curiosity / consensus.
 
@@ -114,8 +114,8 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C26 — MODEL-ROUTE (model routing)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/model_route.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/model_route.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/model_route.hexa`
+- `/Users/ghost/core/nexus/shared/harness/model_route.jsonl`
 
 **Independence argument**: **work routing** across Claude Opus / Sonnet / Haiku / external models.
 
@@ -128,10 +128,10 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C27 — ENGINE-FORGE (engine forging)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/harness/engine_forge.hexa`
-- `/Users/ghost/Dev/nexus/shared/harness/engine_candidates.jsonl`
-- `/Users/ghost/Dev/nexus/shared/harness/engines_usage.jsonl`
-- `/Users/ghost/Dev/nexus/shared/engine/` — all of engine_*.hexa.
+- `/Users/ghost/core/nexus/shared/harness/engine_forge.hexa`
+- `/Users/ghost/core/nexus/shared/harness/engine_candidates.jsonl`
+- `/Users/ghost/core/nexus/shared/harness/engines_usage.jsonl`
+- `/Users/ghost/core/nexus/shared/engine/` — all of engine_*.hexa.
 
 **Independence argument**: a meta-engine — an engine that **generates engines themselves**. A meta-layer above BLOWUP/DSE.
 
@@ -146,8 +146,8 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C28 — HANDOFF (session handoff)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/handoff/template.md`
-- `/Users/ghost/Dev/nexus/shared/harness/handoff_write.hexa`
+- `/Users/ghost/core/nexus/shared/handoff/template.md`
+- `/Users/ghost/core/nexus/shared/harness/handoff_write.hexa`
 - MEMORY `handoff-latest.md`, `handoff-bisociation.md`, `session-handoff-latest.md`
 
 **Independence argument**: **context handoff** across sessions. cron-based session chaining (MEMORY f-user-workflow.md).
@@ -161,8 +161,8 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C29 — SKILLS (skills)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/skills/nexus-status.skill.json`
-- `/Users/ghost/Dev/nexus/shared/skills/registry.json`
+- `/Users/ghost/core/nexus/shared/skills/nexus-status.skill.json`
+- `/Users/ghost/core/nexus/shared/skills/registry.json`
 - global `~/.claude/skills/loop` (loop-engine SSOT)
 
 **Independence argument**: a Claude Code skill layer — reusable action units such as `/commit`, `/loop`, `/review-pr`.
@@ -176,11 +176,11 @@ HARNESS was grouped as a single axis at R2, but inside it there are engines that
 ### C30 — HEXA-LANG-RUNTIME (runtime)
 
 **Assets**:
-- `/Users/ghost/Dev/nexus/shared/hexa-lang/ml-commands.json`
-- `/Users/ghost/Dev/nexus/shared/hexa-lang/ml-next-level.json`
-- `/Users/ghost/Dev/nexus/shared/hexa-lang/rt-commands.json`
-- `/Users/ghost/Dev/nexus/shared/hexa-lang/runtime-bottlenecks.json`
-- `/Users/ghost/Dev/nexus/shared/hexa-lang/bt-77-port-report.md`
+- `/Users/ghost/core/nexus/shared/hexa-lang/ml-commands.json`
+- `/Users/ghost/core/nexus/shared/hexa-lang/ml-next-level.json`
+- `/Users/ghost/core/nexus/shared/hexa-lang/rt-commands.json`
+- `/Users/ghost/core/nexus/shared/hexa-lang/runtime-bottlenecks.json`
+- `/Users/ghost/core/nexus/shared/hexa-lang/bt-77-port-report.md`
 
 **Independence argument**: Different from HEXA-LANG (A9)? — HEXA-LANG is the language as a whole; RUNTIME is ml/rt optimization + bottlenecks.
 

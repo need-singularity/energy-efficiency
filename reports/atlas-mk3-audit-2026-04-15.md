@@ -7,8 +7,8 @@ canon P7 Mk.III-gamma — integrate the full Mk.III (P5+P6+P7) output into atlas
 
 ## 0. Backup and environment
 
-- **atlas backup path**: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6.bak.p7-audit` (18,431,979 bytes, written 2026-04-15)
-- **Edit target**: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`
+- **atlas backup path**: `/Users/ghost/core/nexus/shared/n6/atlas.n6.bak.p7-audit` (18,431,979 bytes, written 2026-04-15)
+- **Edit target**: `/Users/ghost/core/nexus/shared/n6/atlas.n6`
 - **Line count before edit**: 106,806
 - **Line count after edit**: 106,816 (+10)
 - **Work time**: ~10 minutes
@@ -265,7 +265,7 @@ These 8 items are **independent output from a parallel session** and are out of 
 ### 8.1 Backup confirmation
 
 ```
--rw-r--r--@ 1 ghost staff 18431979 4 15 00:49 /Users/ghost/Dev/nexus/shared/n6/atlas.n6.bak.p7-audit
+-rw-r--r--@ 1 ghost staff 18431979 4 15 00:49 /Users/ghost/core/nexus/shared/n6/atlas.n6.bak.p7-audit
 ```
 
 ### 8.2 Edited file (changes)

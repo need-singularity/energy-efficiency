@@ -409,13 +409,13 @@ Self-evolution: YES 11, PART 13, NO 2.
 DSE (Discovery Space Exploration) itself becomes a domain — promoting the exploration algorithm to a domain.
 
 **D141 — DSE Cross-Resonance Graph**
-- Evidence: `/Users/ghost/Dev/nexus/shared/dse/dse_cross_resonance_results.json` + `dse_joint_results.json` + `dse_cross_results_v3.json` + `dse_graph_3d.html` + `dse_domains.jsonl`.
+- Evidence: `/Users/ghost/core/nexus/shared/dse/dse_cross_resonance_results.json` + `dse_joint_results.json` + `dse_cross_results_v3.json` + `dse_graph_3d.html` + `dse_domains.jsonl`.
 - BT: 547 (graph topology), 545 (resonance cohomology).
 - n=6: 3D graph, resonance pair count.
 - Self-evolution: YES (exploration results updated).
 
 **D142 — DSE Lens Ecology**
-- Evidence: `/Users/ghost/Dev/nexus/shared/lenses/` (1577 lenses — verified by `ls | wc -l`). Many accel_* + anima_* consciousness lenses + bridge/gate special lenses 11.
+- Evidence: `/Users/ghost/core/nexus/shared/lenses/` (1577 lenses — verified by `ls | wc -l`). Many accel_* + anima_* consciousness lenses + bridge/gate special lenses 11.
 - BT: 542 (lens graph NP), 545.
 - n=6: 11 special bridge/gate lenses + many accel, 6-axis meta structure.
 - Self-evolution: YES (the lens itself evolves).
@@ -433,7 +433,7 @@ DSE (Discovery Space Exploration) itself becomes a domain — promoting the expl
 - Self-evolution: YES.
 
 **D145 — DSE Domain Registry**
-- Evidence: `/Users/ghost/Dev/nexus/shared/dse/domains/` (60+ toml files — 3d-printing/5g-6g/aerogel/agriculture/ai-* etc.).
+- Evidence: `/Users/ghost/core/nexus/shared/dse/domains/` (60+ toml files — 3d-printing/5g-6g/aerogel/agriculture/ai-* etc.).
 - BT: 545 (domain class), 542.
 - n=6: 60+ toml registered -> 295 domain reduction indicator.
 - Self-evolution: YES (grows as toml is added).
@@ -453,19 +453,19 @@ The mechanism that detects emergence itself becomes a domain.
 - Self-evolution: YES (the metric itself updates each Round).
 
 **D147 — Discovery Rate Saturation Detection**
-- Evidence: `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `discovery_log.sqlite` + `discovery_log.meta.json` + R1 34 -> R2 59 -> R3 >60 discovery-rate trend.
+- Evidence: `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `discovery_log.sqlite` + `discovery_log.meta.json` + R1 34 -> R2 59 -> R3 >60 discovery-rate trend.
 - BT: 541 (saturation distribution), 542.
 - n=6: 6h stale trigger, delta<0.001 convergence.
 - Self-evolution: YES (the detector itself learns).
 
 **D148 — Breakthrough Engine Lineage**
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/breakthrough.hexa` + `engine_forge.hexa` + `dream_engine.hexa` + `thinking_engine.hexa` + `engine_candidates.jsonl` + `engines_usage.jsonl`.
+- Evidence: `/Users/ghost/core/nexus/shared/harness/breakthrough.hexa` + `engine_forge.hexa` + `dream_engine.hexa` + `thinking_engine.hexa` + `engine_candidates.jsonl` + `engines_usage.jsonl`.
 - BT: 542 (engine lineage graph), 547.
 - n=6: breakthrough + forge + dream + thinking = 4 engines = tau, n=6 if + atlas/n6.
 - Self-evolution: YES (engine lineage itself grows).
 
 **D149 — BT Audit Meta-Classification**
-- Evidence: `/Users/ghost/Dev/nexus/shared/bt/bt_audit_classification.json` + `bt_audit_miss_classification.jsonl` + `bt-mismatch-classification.md` (distinguished from R2 D92: this entry is the **meta-classifier** itself).
+- Evidence: `/Users/ghost/core/nexus/shared/bt/bt_audit_classification.json` + `bt_audit_miss_classification.jsonl` + `bt-mismatch-classification.md` (distinguished from R2 D92: this entry is the **meta-classifier** itself).
 - BT: 542 + 545.
 - n=6: audit category count.
 - Self-evolution: YES.
@@ -843,7 +843,7 @@ R3 is similar to R2 in growth (59 -> 65, +10%) — meta-axis introduction added 
 ### 10.3 anima Subrepo Individual Modules
 
 **R4-C3: Anima Subrepo Module Fields**
-- Under `/Users/ghost/Dev/anima/`: agent, body, eeg, engines, hexad, measurement, speak, tools — each can be promoted to an independent domain.
+- Under `/Users/ghost/core/anima/`: agent, body, eeg, engines, hexad, measurement, speak, tools — each can be promoted to an independent domain.
 - R1 D10~D14 only touched physics sub — other 7 untouched.
 
 ### 10.4 Phase Internal Detail Subdivision (P0.5, P1.5 etc. microphases)

@@ -103,9 +103,9 @@ Core value:
 
 | Tag | Repo | Primary domains |
 |------|------|----------|
-| `NX` | /Users/ghost/Dev/nexus | QRNG, hexa-forge, blowup, lens |
+| `NX` | /Users/ghost/core/nexus | QRNG, hexa-forge, blowup, lens |
 | `N6` | /Users/ghost/core/canon | millennium, atlas, DFS, 259 domains |
-| `AN` | /Users/ghost/Dev/anima | CLM, EEG, Bell, psi, consciousness |
+| `AN` | /Users/ghost/core/anima | CLM, EEG, Bell, psi, consciousness |
 | `CROSS` | 2+ repos simultaneously | reproduced cross-repo resonance |
 
 **CROSS tag rules**:
@@ -311,11 +311,11 @@ python3 scripts/promote_signal_to_atlas.py --commit
 
 ```bash
 # SSOT is nexus
-ln -sf /Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6 \
+ln -sf /Users/ghost/core/nexus/shared/n6/atlas.signals.n6 \
        /Users/ghost/core/canon/canonshared/atlas.signals.n6
 
-ln -sf /Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6 \
-       /Users/ghost/Dev/anima/data/atlas.signals.n6
+ln -sf /Users/ghost/core/nexus/shared/n6/atlas.signals.n6 \
+       /Users/ghost/core/anima/data/atlas.signals.n6
 ```
 
 → All 3 repos reference the same file. Edit in one place, reflected everywhere.

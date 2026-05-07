@@ -186,7 +186,7 @@ avg    -          6.67
 
 ```
 # --- v2 roadmap Phase 2-4 atlas edit drafts (awaiting approval) ---
-# Location: /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+# Location: /Users/ghost/core/nexus/shared/n6/atlas.n6
 # Edit approval requirement: L0 Guard verify pass + explicit user approval
 
 @R n6-ns-triple-resonance-d3 = Sym2(R^3)=6=n + Lambda2(R^3)=3=n/phi + Onsager alpha_c=1/3 :: n6atlas [10*]

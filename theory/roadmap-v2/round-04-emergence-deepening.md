@@ -135,19 +135,19 @@ P0.5/P1.5/P2.5 microphases are elevated to 3 representative new domains in §4.
 ### 1.6 R4-C6 Rules as Fields — 3 domains (representative; 3 of the total 36 promoted)
 
 **D167 — R0~R27 Common Rules Field (28 common rules as a single domain)**
-- Evidence: `/Users/ghost/Dev/nexus/shared/rules/common.json` (MEMORY CLAUDE.md notes "R0~R27").
+- Evidence: `/Users/ghost/core/nexus/shared/rules/common.json` (MEMORY CLAUDE.md notes "R0~R27").
 - BT: 542 (rule-consistency NP).
 - n=6: 28 rules = J2 + 4 = J2 + tau. Aggregated as a single domain on promotion.
 - Self-evolution: YES (rule-update history).
 
 **D168 — N61~N65 canon Rules Field (5 n6-arch rules)**
-- Evidence: `/Users/ghost/Dev/nexus/shared/rules/canon.json` (CLAUDE.md "N61~N65").
+- Evidence: `/Users/ghost/core/nexus/shared/rules/canon.json` (CLAUDE.md "N61~N65").
 - BT: 542 + 545.
 - n=6: 5 = sopfr rules, project-specific.
 - Self-evolution: YES.
 
 **D169 — L0/L1/L2 Lockdown Rules Field**
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/lockdown_gate.hexa` + distinction from R2 D86 Lockdown Gate (D169 is the rule itself, D86 is the engine).
+- Evidence: `/Users/ghost/core/nexus/shared/harness/lockdown_gate.hexa` + distinction from R2 D86 Lockdown Gate (D169 is the rule itself, D86 is the engine).
 - BT: 542.
 - n=6: L0/L1/L2 = 3 = n/phi layers.
 - Self-evolution: PART (D86 is the engine).
@@ -222,14 +222,14 @@ Self-evolution YES 13, PART 3, NO 0 + additions in §3/§4/§6.
 
 **D176 — 3-hop CLM→D8→D24→6h-Stale Consolidation Calculus**
 - Path: CLM → D8 Memory Auto-Save → D24 LTM Consolidation (6h) → **3-hop: calculus structure of the 6h stale threshold**.
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/growth_tick.hexa` (6h = 21600s, STALE_THRESHOLD) + R1 D24.
+- Evidence: `/Users/ghost/core/nexus/shared/harness/growth_tick.hexa` (6h = 21600s, STALE_THRESHOLD) + R1 D24.
 - BT: 541 (periodicity), 547.
 - n=6: 6h = n·3600, consolidation exponential e^(-t/6h).
 - Self-evolution: YES.
 
 **D177 — 3-hop physics→D12→D44→Photonic-Ceramic Phase Diagram**
 - Path: physics → D12 Photonic → D44 Ceramic Phase Transition → **3-hop: photonic-ceramic phase diagram**.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/photonic/` + `/Users/ghost/core/canon/domains/materials/ceramics/` + shared n=6 symmetry across both systems.
+- Evidence: `/Users/ghost/core/anima/anima-physics/photonic/` + `/Users/ghost/core/canon/domains/materials/ceramics/` + shared n=6 symmetry across both systems.
 - BT: 544 + 543 + 547.
 - n=6: hcp 6-fold symmetry × photonic 6 channels = 36 = n².
 - Self-evolution: PART.
@@ -243,55 +243,55 @@ Self-evolution YES 13, PART 3, NO 0 + additions in §3/§4/§6.
 10 anima subrepos: agent/body/core/eeg/engines/hexad/measurement/physics/speak/tools. R1 D10~D14 covered physics only. Evidence-sufficient domains among the remaining 9 are promoted.
 
 **D178 — Anima Agent Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-agent/` exists. Agent execution module.
+- Evidence: `/Users/ghost/core/anima/anima-agent/` exists. Agent execution module.
 - BT: 542 (agent computation NP).
 - n=6: multi-agent coordination (distinguished from D14 ESP32 mesh: agent is high-level reasoning).
 - Self-evolution: YES (agent self-improvement).
 
 **D179 — Anima Body Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-body/` exists. Body-simulation module.
+- Evidence: `/Users/ghost/core/anima/anima-body/` exists. Body-simulation module.
 - BT: 544 (body PDE), 547 (body topology).
 - n=6: 6 DoF pose + spinal segments.
 - Self-evolution: PART.
 
 **D180 — Anima EEG Module Field (independent)**
-- Evidence: `/Users/ghost/Dev/anima/anima-eeg/` exists. Distinguished from R1 D10: this item is the **independent subrepo module** (D10 is instrument measurement).
+- Evidence: `/Users/ghost/core/anima/anima-eeg/` exists. Distinguished from R1 D10: this item is the **independent subrepo module** (D10 is instrument measurement).
 - BT: 547.
 - n=6: 16ch, 6-layer cortex.
 - Self-evolution: PART.
 
 **D181 — Anima Engines Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-engines/` exists.
+- Evidence: `/Users/ghost/core/anima/anima-engines/` exists.
 - BT: 542 + 547.
 - n=6: engine lineage (distinguished from D148: this item is anima-side, D148 is nexus-side).
 - Self-evolution: YES.
 
 **D182 — Anima Hexad Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-hexad/` exists. The name itself reflects a hexad=6-unit structure.
+- Evidence: `/Users/ghost/core/anima/anima-hexad/` exists. The name itself reflects a hexad=6-unit structure.
 - BT: 547.
 - n=6: **name itself** = hexad = 6 = n.
 - Self-evolution: YES.
 
 **D183 — Anima Measurement Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-measurement/` exists.
+- Evidence: `/Users/ghost/core/anima/anima-measurement/` exists.
 - BT: 541 (measurement distribution).
 - n=6: prometheus 8 gauges (distinguished from D9: this item is anima-internal).
 - Self-evolution: YES.
 
 **D184 — Anima Speak Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-speak/` exists.
+- Evidence: `/Users/ghost/core/anima/anima-speak/` exists.
 - BT: 544 (sound-wave fluid), 545.
 - n=6: formants F1~F3 + pitch = 4, articulators 6.
 - Self-evolution: PART.
 
 **D185 — Anima Tools Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-tools/` exists.
+- Evidence: `/Users/ghost/core/anima/anima-tools/` exists.
 - BT: 542.
 - n=6: tool categories.
 - Self-evolution: YES (tool self-evolution).
 
 **D186 — Anima Core Module Field**
-- Evidence: `/Users/ghost/Dev/anima/anima-core/` exists.
+- Evidence: `/Users/ghost/core/anima/anima-core/` exists.
 - BT: 542 + 547.
 - n=6: core cycle = OUROBOROS anima variant.
 - Self-evolution: YES.
@@ -336,7 +336,7 @@ Microphase definitions:
 §1.6 Rules 3 + §1.7 Techniques 3 + §1.8 Experiments 2 are already individual domains. This §5 separately promotes the **meta-evolution of the categories themselves** as new domains.
 
 **D190 — Rules Meta-Evolution Field**
-- Evidence: the 12 JSON files inside `/Users/ghost/Dev/nexus/shared/rules/` (common, canon, anima, nexus, papers, void, hexa-lang, convergence_ops, airgenome, contact, CLAUDE.md). 12 rules json = σ.
+- Evidence: the 12 JSON files inside `/Users/ghost/core/nexus/shared/rules/` (common, canon, anima, nexus, papers, void, hexa-lang, convergence_ops, airgenome, contact, CLAUDE.md). 12 rules json = σ.
 - BT: 542 + 545.
 - n=6: 12 rules json = sigma, R0~R27 + N61~N65 + L0~L2 = 28+5+3 = 36 = 6².
 - Self-evolution: YES (rule-update OUROBOROS).
@@ -690,7 +690,7 @@ Total potential 31~43. Actual R5 new is **expected 10~20** (after duplication re
 
 - §1 R3 10 candidates: theory/study, domains/, nexus/shared/, techniques/, experiments/ existing paths.
 - §2 3-hop: growth_tick.hexa + anima-physics + ceramics etc.
-- §3 anima subrepo: `/Users/ghost/Dev/anima/anima-agent/` ~ `/anima-tools/` 10 directories directly confirmed.
+- §3 anima subrepo: `/Users/ghost/core/anima/anima-agent/` ~ `/anima-tools/` 10 directories directly confirmed.
 - §4 microphase: theory/study/p0~p3 transition files (p0→p1, p1→p2, p2→p3).
 - §5 meta categories: rules/techniques/experiments directories + _registry.json/_bench_plan.md/_results.jsonl.
 - §6 closure: these 4 round md + README.

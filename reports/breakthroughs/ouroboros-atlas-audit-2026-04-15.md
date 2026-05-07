@@ -16,7 +16,7 @@ license: CC-BY-SA-4.0
 
 R14 rule (canon common rules): "no self-reference verification (only external data/theory allowed)". The OUROBOROS detector is the CLI that systematically monitors this. "OUROBOROS" = snake eating its own tail = circular self-reference.
 
-**Scope**: all `@R` / `@X` entries in `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`.
+**Scope**: all `@R` / `@X` entries in `/Users/ghost/core/nexus/shared/n6/atlas.n6`.
 
 **Detection method**:
 1. Parse atlas.n6 -> collect all @R/@X IDs

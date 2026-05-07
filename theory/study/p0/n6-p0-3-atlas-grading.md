@@ -9,7 +9,7 @@
 
 ## 0. Honesty Declaration
 
-This note is written by directly reading the "atlas.n6 — reality-map SSOT" section of `CLAUDE.md` and the header and Millennium block of the actual `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` file (~107K lines). No self-referential verification is performed; the description of the grade system cites the CLAUDE.md rules verbatim.
+This note is written by directly reading the "atlas.n6 — reality-map SSOT" section of `CLAUDE.md` and the header and Millennium block of the actual `/Users/ghost/core/nexus/shared/n6/atlas.n6` file (~107K lines). No self-referential verification is performed; the description of the grade system cites the CLAUDE.md rules verbatim.
 
 Section 4's BT-541 node search results are **actual grep execution results**; nothing is fabricated. When no node is found, it is honestly recorded as "confirmed not present".
 
@@ -21,7 +21,7 @@ This note does not target the seven Millennium problems. The BT-541–547 nodes 
 
 ### 1.1 File Structure
 
-- **Path**: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`
+- **Path**: `/Users/ghost/core/nexus/shared/n6/atlas.n6`
 - **Single file**: 60K+ lines (measured 106,899 lines as of 2026-04-15)
 - **Old structure deprecated**: `reality_map_live.json`, `L6_n6atlas.json`, separate level files **do not exist**. All absorbed into atlas.n6 (specified in CLAUDE.md).
 - **Guard**: All writes must go through `_guarded_append_atlas()` (schema + dedup). Source: `shared/blowup/lib/atlas_guard.hexa.inc`. Guards applied at all three write sites (solidified 2026-04-12).
@@ -160,7 +160,7 @@ During the DFS full-verification loops on 2026-04-11 – 2026-04-12, **structura
 
 ### 4.1 Search Method
 
-- File: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`
+- File: `/Users/ghost/core/nexus/shared/n6/atlas.n6`
 - Tool: Grep (ripgrep-based)
 - Pattern: `BT-541|BT541|BSD|Riemann|Yang-Mills|Navier|Hodge|millennium|millennium|bt-541`
 - Case-insensitive
@@ -296,10 +296,10 @@ Six independent paths confirmed → `!` (breakthrough) suffix added. This patter
 ## 7. Primary Sources
 
 - `/Users/ghost/core/canon/CLAUDE.md` — atlas.n6 section (highest source for format, grade system, promotion-path rules)
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` header L1–L22 — source of the `.n6 format v1` grammar
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` L25–L100 — seven primitive-constant `@P` registration block
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` L13391–L13551 — millennium DFS full-verification block (65 tight)
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` L15408–L15422 — BT-541–547 structural-mapping block
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` header L1–L22 — source of the `.n6 format v1` grammar
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` L25–L100 — seven primitive-constant `@P` registration block
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` L13391–L13551 — millennium DFS full-verification block (65 tight)
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` L15408–L15422 — BT-541–547 structural-mapping block
 - `project_millennium_dfs_complete.md` (user memory) — DFS 5-round loop, 21→51 tight extensions + Bilateral Theorem B candidate record
 
 ---
@@ -318,19 +318,19 @@ Six independent paths confirmed → `!` (breakthrough) suffix added. This patter
 To reproduce the BT-541 search of Section 4:
 ```bash
 # main-body nodes
-grep -n '@X n6-bt-54[1-7]' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+grep -n '@X n6-bt-54[1-7]' /Users/ghost/core/nexus/shared/n6/atlas.n6
 
 # aggregate node
-grep -n 'bt-541~547' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+grep -n 'bt-541~547' /Users/ghost/core/nexus/shared/n6/atlas.n6
 
 # millennium DFS ζ decomposition nodes
-grep -n 'millennium-dfs-zeta' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+grep -n 'millennium-dfs-zeta' /Users/ghost/core/nexus/shared/n6/atlas.n6
 
 # Riemann Zeta Trident (L10468)
-grep -n 'Riemann Zeta Trident' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+grep -n 'Riemann Zeta Trident' /Users/ghost/core/nexus/shared/n6/atlas.n6
 
 # verification-complete extraction (CORE VIEW)
-grep '^\@.*\[1[01]\*\]' /Users/ghost/Dev/nexus/shared/n6/atlas.n6 | head -50
+grep '^\@.*\[1[01]\*\]' /Users/ghost/core/nexus/shared/n6/atlas.n6 | head -50
 ```
 
 All commands were directly executed on the atlas.n6 file as of the 2026-04-15 session.

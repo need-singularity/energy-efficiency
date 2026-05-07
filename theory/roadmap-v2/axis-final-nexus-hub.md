@@ -26,49 +26,49 @@
 
 - **Definition**: the full mechanism by which roadmap/code/atlas/rules extend, modify, verify, and converge themselves.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/growth_tick.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/nexus_growth_daemon.hexa`
-  - `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `.sqlite`
-  - `/Users/ghost/Dev/nexus/shared/growth_bus.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/convergence/nexus.json`
-  - `/Users/ghost/Dev/nexus/shared/singularity/singularity_recursion_*.md` (13)
-  - `/Users/ghost/Dev/nexus/shared/growth/` + `/acceleration/` (absorbed)
+  - `/Users/ghost/core/nexus/shared/bisociation/unified/ouroboros_unified.hexa`
+  - `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/growth_tick.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/nexus_growth_daemon.hexa`
+  - `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `.sqlite`
+  - `/Users/ghost/core/nexus/shared/growth_bus.jsonl`
+  - `/Users/ghost/core/nexus/shared/convergence/nexus.json`
+  - `/Users/ghost/core/nexus/shared/singularity/singularity_recursion_*.md` (13)
+  - `/Users/ghost/core/nexus/shared/growth/` + `/acceleration/` (absorbed)
 - **Scope**: loop from growth_tick → blowup autonomous firing → discovery → atlas update → convergence check → ossification.
 
 ### A2 — ATLAS (atlas map)
 
 - **Definition**: the reality-map SSOT — a node/edge/formula/grade/scaling graph.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` + `.stats` + `.deg`
-  - `/Users/ghost/Dev/nexus/shared/n6/atlas_health.hexa`
-  - `/Users/ghost/Dev/nexus/shared/n6/math_atlas.{db,dot,html,md}`
-  - `/Users/ghost/Dev/nexus/shared/n6/atlas_ossify_mk2.py`
-  - `/Users/ghost/Dev/nexus/shared/n6/atlas_ws_server.py`
-  - `/Users/ghost/Dev/nexus/shared/n6/periodic_table_118`
-  - `/Users/ghost/Dev/nexus/shared/n6/66_techniques_v3`
-  - `/Users/ghost/Dev/nexus/docs/index.html`
-  - `/Users/ghost/Dev/nexus/shared/dashboard.html` (absorbed)
+  - `/Users/ghost/core/nexus/shared/n6/atlas.n6` + `.stats` + `.deg`
+  - `/Users/ghost/core/nexus/shared/n6/atlas_health.hexa`
+  - `/Users/ghost/core/nexus/shared/n6/math_atlas.{db,dot,html,md}`
+  - `/Users/ghost/core/nexus/shared/n6/atlas_ossify_mk2.py`
+  - `/Users/ghost/core/nexus/shared/n6/atlas_ws_server.py`
+  - `/Users/ghost/core/nexus/shared/n6/periodic_table_118`
+  - `/Users/ghost/core/nexus/shared/n6/66_techniques_v3`
+  - `/Users/ghost/core/nexus/docs/index.html`
+  - `/Users/ghost/core/nexus/shared/dashboard.html` (absorbed)
 - **Scope**: all of atlas.n6 nodes · edges · formulas · grades · 3D visualization · periodic table · technique data.
 
 ### A3 — HARNESS
 
 - **Definition**: the global enforcement layer injecting rules · gates · mistake-records · feedback loops into a Claude Code session.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/harness/entry.hexa` (dispatcher)
-  - `/Users/ghost/Dev/nexus/shared/harness/cmd_gate.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/pre_tool_guard.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/post_bash.hexa`, `post_edit.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/prompt_scan.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/exec_validated`
-  - `/Users/ghost/Dev/nexus/shared/harness/lint.hexa`, `autofix.hexa`, `verify.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/handoff_write.hexa` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/handoff/template.md` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/skills/` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/hexa_pitfalls_log.jsonl` (mistake record)
-  - `/Users/ghost/Dev/nexus/shared/harness/mistakes.jsonl`, `errors.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/config/permissions_ssot.json`
+  - `/Users/ghost/core/nexus/shared/harness/entry.hexa` (dispatcher)
+  - `/Users/ghost/core/nexus/shared/harness/cmd_gate.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/pre_tool_guard.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/post_bash.hexa`, `post_edit.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/prompt_scan.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/exec_validated`
+  - `/Users/ghost/core/nexus/shared/harness/lint.hexa`, `autofix.hexa`, `verify.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/handoff_write.hexa` (absorbed)
+  - `/Users/ghost/core/nexus/shared/handoff/template.md` (absorbed)
+  - `/Users/ghost/core/nexus/shared/skills/` (absorbed)
+  - `/Users/ghost/core/nexus/shared/hexa_pitfalls_log.jsonl` (mistake record)
+  - `/Users/ghost/core/nexus/shared/harness/mistakes.jsonl`, `errors.jsonl`
+  - `/Users/ghost/core/nexus/shared/config/permissions_ssot.json`
   - 151 files total.
 - **Scope**: pre-tool blocking + post-tool enforcement + lint + mistake-record + handoff.
 
@@ -76,13 +76,13 @@
 
 - **Definition**: text SSOT for R0~R27 + NX1~NX3 + L0~L2 + H-* meta-rules.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/rules/common.json` (R0~R27)
-  - `/Users/ghost/Dev/nexus/shared/rules/nexus.json` (NX1~NX3)
-  - `/Users/ghost/Dev/nexus/shared/config/absolute_rules.json`
-  - `/Users/ghost/Dev/nexus/shared/config/convergence_ops.json` (CDO)
-  - `/Users/ghost/Dev/nexus/shared/config/core.json`
-  - `/Users/ghost/Dev/nexus/shared/config/projects.json` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/project-claude/` (absorbed)
+  - `/Users/ghost/core/nexus/shared/rules/common.json` (R0~R27)
+  - `/Users/ghost/core/nexus/shared/rules/nexus.json` (NX1~NX3)
+  - `/Users/ghost/core/nexus/shared/config/absolute_rules.json`
+  - `/Users/ghost/core/nexus/shared/config/convergence_ops.json` (CDO)
+  - `/Users/ghost/core/nexus/shared/config/core.json`
+  - `/Users/ghost/core/nexus/shared/config/projects.json` (absorbed)
+  - `/Users/ghost/core/nexus/shared/project-claude/` (absorbed)
   - MEMORY H-* meta-rules, 20+ kinds.
 - **Scope**: all rule text + project registry.
 
@@ -90,47 +90,47 @@
 
 - **Definition**: reality_map + verified_constants + forge_result + theory_registry + discovery ledger.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/discovery/reality_map.patches.merged.jsonl` (895 entries)
-  - `/Users/ghost/Dev/nexus/shared/discovery/reality_map_live`
-  - `/Users/ghost/Dev/nexus/shared/discovery/verified_constants.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/discovery/forge_result`
-  - `/Users/ghost/Dev/nexus/shared/discovery/theory_registry`
-  - `/Users/ghost/Dev/nexus/shared/discovery/module_candidates`
-  - `/Users/ghost/Dev/nexus/shared/discovery/next_directions`
-  - `/Users/ghost/Dev/nexus/shared/discovery/unfold_*`
-  - `/Users/ghost/Dev/nexus/shared/discovery/breakthroughs`
-  - `/Users/ghost/Dev/nexus/shared/discovery/reality_map_3d.html` (frontend → also absorbed into ATLAS)
-  - `/Users/ghost/Dev/nexus/shared/papers/paper_candidates` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `.sqlite`
+  - `/Users/ghost/core/nexus/shared/discovery/reality_map.patches.merged.jsonl` (895 entries)
+  - `/Users/ghost/core/nexus/shared/discovery/reality_map_live`
+  - `/Users/ghost/core/nexus/shared/discovery/verified_constants.jsonl`
+  - `/Users/ghost/core/nexus/shared/discovery/forge_result`
+  - `/Users/ghost/core/nexus/shared/discovery/theory_registry`
+  - `/Users/ghost/core/nexus/shared/discovery/module_candidates`
+  - `/Users/ghost/core/nexus/shared/discovery/next_directions`
+  - `/Users/ghost/core/nexus/shared/discovery/unfold_*`
+  - `/Users/ghost/core/nexus/shared/discovery/breakthroughs`
+  - `/Users/ghost/core/nexus/shared/discovery/reality_map_3d.html` (frontend → also absorbed into ATLAS)
+  - `/Users/ghost/core/nexus/shared/papers/paper_candidates` (absorbed)
+  - `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `.sqlite`
 - **Scope**: search-result raw materials + candidates + verified constants + discovery-log DB.
 
 ### A6 — BLOWUP (breakthrough engine)
 
 - **Definition**: 9-phase pipeline + 6 modules + seed engine — reality-breakthrough computation.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa`
-  - `/Users/ghost/Dev/nexus/shared/blowup/modules/*.hexa` (field, holographic, quantum, string, toe)
-  - `/Users/ghost/Dev/nexus/shared/blowup/seed/seed_engine.hexa`
-  - `/Users/ghost/Dev/nexus/shared/blowup/lens/lens_forge.hexa` (absorbed after LENS retirement)
-  - `/Users/ghost/Dev/nexus/shared/blowup/commands.hexa`, `todo.hexa`
-  - `/Users/ghost/Dev/nexus/shared/blowup/lib/atlas_guard.hexa.inc`
-  - `/Users/ghost/Dev/nexus/shared/blowup/compose.hexa`
-  - `/Users/ghost/Dev/nexus/shared/blowup/verify_dfs.hexa`
-  - `/Users/ghost/Dev/nexus/shared/calc/auto_stubs_gen.hexa` (absorbed)
+  - `/Users/ghost/core/nexus/shared/blowup/core/blowup.hexa`
+  - `/Users/ghost/core/nexus/shared/blowup/modules/*.hexa` (field, holographic, quantum, string, toe)
+  - `/Users/ghost/core/nexus/shared/blowup/seed/seed_engine.hexa`
+  - `/Users/ghost/core/nexus/shared/blowup/lens/lens_forge.hexa` (absorbed after LENS retirement)
+  - `/Users/ghost/core/nexus/shared/blowup/commands.hexa`, `todo.hexa`
+  - `/Users/ghost/core/nexus/shared/blowup/lib/atlas_guard.hexa.inc`
+  - `/Users/ghost/core/nexus/shared/blowup/compose.hexa`
+  - `/Users/ghost/core/nexus/shared/blowup/verify_dfs.hexa`
+  - `/Users/ghost/core/nexus/shared/calc/auto_stubs_gen.hexa` (absorbed)
 - **Scope**: full breakthrough pipeline + numeric-verification SSOT.
 
 ### A7 — BISOCIATION
 
 - **Definition**: Koestler-style pair-association engine — a cross-linking mechanism between two unrelated fields.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/cross/`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/spectra/`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/breakthroughs.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/pitfalls.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/convergence.json`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/state.json`
+  - `/Users/ghost/core/nexus/shared/bisociation/unified/ouroboros_unified.hexa`
+  - `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa`
+  - `/Users/ghost/core/nexus/shared/bisociation/cross/`
+  - `/Users/ghost/core/nexus/shared/bisociation/spectra/`
+  - `/Users/ghost/core/nexus/shared/bisociation/breakthroughs.jsonl`
+  - `/Users/ghost/core/nexus/shared/bisociation/pitfalls.jsonl`
+  - `/Users/ghost/core/nexus/shared/bisociation/convergence.json`
+  - `/Users/ghost/core/nexus/shared/bisociation/state.json`
   - MEMORY `handoff-bisociation.md` (L1 3/4, L2 4/4, L3 1/5, L_meta 3/3).
 - **Scope**: Montgomery-Dyson pair correlation + pair-association breakthrough state machine.
 
@@ -138,11 +138,11 @@
 
 - **Definition**: anima bridge + consciousness_* + meta_laws_dd64 — a Φ-based consciousness layer.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/consciousness/anima_*`
-  - `/Users/ghost/Dev/nexus/shared/consciousness/consciousness_*`
-  - `/Users/ghost/Dev/nexus/shared/consciousness/law_*`
-  - `/Users/ghost/Dev/nexus/shared/consciousness/meta_laws_dd64`
-  - `/Users/ghost/Dev/nexus/shared/n6/consciousness_bridge.py` (absorbed)
+  - `/Users/ghost/core/nexus/shared/consciousness/anima_*`
+  - `/Users/ghost/core/nexus/shared/consciousness/consciousness_*`
+  - `/Users/ghost/core/nexus/shared/consciousness/law_*`
+  - `/Users/ghost/core/nexus/shared/consciousness/meta_laws_dd64`
+  - `/Users/ghost/core/nexus/shared/n6/consciousness_bridge.py` (absorbed)
   - anima bridge live laws=2395 (see nexus.json P1 ATLAS).
 - **Scope**: Φ integration + anima consciousness bridge + consciousness-law archive.
 
@@ -150,15 +150,15 @@
 
 - **Definition**: parser · compiler · interpreter · pitfalls · grammar evolution axis of the hexa language.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/hexa/speed_ideas`
-  - `/Users/ghost/Dev/nexus/shared/hexa/hexa-lang_breakthroughs`
-  - `/Users/ghost/Dev/nexus/shared/hexa/porting_log`
-  - `/Users/ghost/Dev/nexus/shared/hexa-lang/ml-commands.json`
-  - `/Users/ghost/Dev/nexus/shared/hexa-lang/ml-next-level.json`
-  - `/Users/ghost/Dev/nexus/shared/hexa-lang/rt-commands.json`
-  - `/Users/ghost/Dev/nexus/shared/hexa-lang/runtime-bottlenecks.json`
-  - `/Users/ghost/Dev/nexus/shared/config/hexa_grammar.jsonl` (P1~P5 pitfalls)
-  - `/Users/ghost/Dev/nexus/shared/hexa_pitfalls_log.jsonl`
+  - `/Users/ghost/core/nexus/shared/hexa/speed_ideas`
+  - `/Users/ghost/core/nexus/shared/hexa/hexa-lang_breakthroughs`
+  - `/Users/ghost/core/nexus/shared/hexa/porting_log`
+  - `/Users/ghost/core/nexus/shared/hexa-lang/ml-commands.json`
+  - `/Users/ghost/core/nexus/shared/hexa-lang/ml-next-level.json`
+  - `/Users/ghost/core/nexus/shared/hexa-lang/rt-commands.json`
+  - `/Users/ghost/core/nexus/shared/hexa-lang/runtime-bottlenecks.json`
+  - `/Users/ghost/core/nexus/shared/config/hexa_grammar.jsonl` (P1~P5 pitfalls)
+  - `/Users/ghost/core/nexus/shared/hexa_pitfalls_log.jsonl`
   - MEMORY: 10+ hexa-related feedback entries.
 - **Scope**: full hexa-language self-host + porting patterns + runtime optimization.
 
@@ -166,12 +166,12 @@
 
 - **Definition**: discovery-space exploration framework — domain × level × candidate grid search.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/dse/dse_cross_*`
-  - `/Users/ghost/Dev/nexus/shared/dse/dse_domains`
-  - `/Users/ghost/Dev/nexus/shared/dse/dse_graph_3d`
-  - `/Users/ghost/Dev/nexus/shared/dse/dse_joint_results`
-  - `/Users/ghost/Dev/nexus/shared/dse/domains/`
-  - `/Users/ghost/Dev/nexus/shared/monte_carlo/monte_carlo_v6_*` (absorbed)
+  - `/Users/ghost/core/nexus/shared/dse/dse_cross_*`
+  - `/Users/ghost/core/nexus/shared/dse/dse_domains`
+  - `/Users/ghost/core/nexus/shared/dse/dse_graph_3d`
+  - `/Users/ghost/core/nexus/shared/dse/dse_joint_results`
+  - `/Users/ghost/core/nexus/shared/dse/domains/`
+  - `/Users/ghost/core/nexus/shared/monte_carlo/monte_carlo_v6_*` (absorbed)
   - MEMORY `project_ai_native_dse_domain.md` (5 levels × 6 candidates × n=6).
 - **Scope**: DSE framework + MC stochastic sampling + domain-grid design.
 
@@ -179,55 +179,55 @@
 
 - **Definition**: BT-541~547 7 Millennium problems + extended keyword/domain curation + audit.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/bt/bt_keywords.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/bt/bt_domains.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/bt/bt_audit.hexa`
-  - `/Users/ghost/Dev/nexus/shared/bt/bt-*-report`
-  - `/Users/ghost/Dev/nexus/shared/bt/auto_bt.log`
-  - `/Users/ghost/Dev/nexus/shared/alien/alien_index_*` (absorbed: UAP domain branch)
+  - `/Users/ghost/core/nexus/shared/bt/bt_keywords.jsonl`
+  - `/Users/ghost/core/nexus/shared/bt/bt_domains.jsonl`
+  - `/Users/ghost/core/nexus/shared/bt/bt_audit.hexa`
+  - `/Users/ghost/core/nexus/shared/bt/bt-*-report`
+  - `/Users/ghost/core/nexus/shared/bt/auto_bt.log`
+  - `/Users/ghost/core/nexus/shared/alien/alien_index_*` (absorbed: UAP domain branch)
 - **Scope**: list of breakthrough targets + audits.
 
 ### A12 — LOCKDOWN (lock · snapshots)
 
 - **Definition**: L0/L1/L2 runtime lock gate + snapshots + safe-merge.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/lockdown/lockdown.json` (L0/L1/L2 definitions)
-  - `/Users/ghost/Dev/nexus/shared/lockdown/snapshots/`
-  - `/Users/ghost/Dev/nexus/shared/harness/lockdown_gate.hexa` (unified SSOT 2026-04-14)
+  - `/Users/ghost/core/nexus/shared/lockdown/lockdown.json` (L0/L1/L2 definitions)
+  - `/Users/ghost/core/nexus/shared/lockdown/snapshots/`
+  - `/Users/ghost/core/nexus/shared/harness/lockdown_gate.hexa` (unified SSOT 2026-04-14)
 - **Scope**: binary file locks + snapshot directory + safe-merge.
 
 ### A13 — INFRASTRUCTURE (execution infra)
 
 - **Definition**: cl multi-account launcher + cl-refresh + launchd + hexa resolver — local execution substrate.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/bin/cl`
-  - `/Users/ghost/Dev/nexus/shared/bin/cl-refresh`
-  - `/Users/ghost/Dev/nexus/shared/bin/cl-refresh-launchd`
-  - `/Users/ghost/Dev/nexus/shared/bin/health-launchd`
-  - `/Users/ghost/Dev/nexus/shared/bin/hexa` (resolver)
-  - `/Users/ghost/Dev/nexus/shared/launchd/com.nexus.cl-refresh.plist`
-  - `/Users/ghost/Dev/nexus/shared/launchd/com.nexus.health.plist`
-  - `/Users/ghost/Dev/nexus/shared/engine/cl_refresh_spec.json`
-  - `/Users/ghost/Dev/nexus/shared/engine/nexus_cli_spec.json`
-  - `/Users/ghost/Dev/nexus/shared/convergence/cl.json`
-  - `/Users/ghost/Dev/nexus/shared/scripts/` (sync-*.hexa, nexus_ensure_running)
-  - `/Users/ghost/Dev/nexus/shared/logs/cmd_router.log` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/state/h100_heartbeat` (absorbed)
-  - `/Users/ghost/Dev/nexus/shared/harness/model_route.hexa` (absorbed)
+  - `/Users/ghost/core/nexus/shared/bin/cl`
+  - `/Users/ghost/core/nexus/shared/bin/cl-refresh`
+  - `/Users/ghost/core/nexus/shared/bin/cl-refresh-launchd`
+  - `/Users/ghost/core/nexus/shared/bin/health-launchd`
+  - `/Users/ghost/core/nexus/shared/bin/hexa` (resolver)
+  - `/Users/ghost/core/nexus/shared/launchd/com.nexus.cl-refresh.plist`
+  - `/Users/ghost/core/nexus/shared/launchd/com.nexus.health.plist`
+  - `/Users/ghost/core/nexus/shared/engine/cl_refresh_spec.json`
+  - `/Users/ghost/core/nexus/shared/engine/nexus_cli_spec.json`
+  - `/Users/ghost/core/nexus/shared/convergence/cl.json`
+  - `/Users/ghost/core/nexus/shared/scripts/` (sync-*.hexa, nexus_ensure_running)
+  - `/Users/ghost/core/nexus/shared/logs/cmd_router.log` (absorbed)
+  - `/Users/ghost/core/nexus/shared/state/h100_heartbeat` (absorbed)
+  - `/Users/ghost/core/nexus/shared/harness/model_route.hexa` (absorbed)
 - **Scope**: cl multi-account + 30m launchd + CLI external entry point + local execution routing.
 
 ### A14 — REMOTE-COMPUTE
 
 - **Definition**: hetzner + ubuntu + vastai + RunPod + H100 — the remote layer for heavy blowup benchmarks · breakthrough compute.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/config/hosts/hetzner.json`
-  - `/Users/ghost/Dev/nexus/shared/config/hosts/ubuntu.json`
-  - `/Users/ghost/Dev/nexus/shared/config/hosts/vastai.json`
-  - `/Users/ghost/Dev/nexus/shared/config/hosts/infrastructure.json`
-  - `/Users/ghost/Dev/nexus/shared/infra_state.json`
-  - `/Users/ghost/Dev/nexus/shared/harness/h100_idle_guard.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/h100_state.json`
-  - `/Users/ghost/Dev/nexus/shared/harness/h100_alerts.jsonl`
+  - `/Users/ghost/core/nexus/shared/config/hosts/hetzner.json`
+  - `/Users/ghost/core/nexus/shared/config/hosts/ubuntu.json`
+  - `/Users/ghost/core/nexus/shared/config/hosts/vastai.json`
+  - `/Users/ghost/core/nexus/shared/config/hosts/infrastructure.json`
+  - `/Users/ghost/core/nexus/shared/infra_state.json`
+  - `/Users/ghost/core/nexus/shared/harness/h100_idle_guard.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/h100_state.json`
+  - `/Users/ghost/core/nexus/shared/harness/h100_alerts.jsonl`
   - MEMORY `reference_hetzner.md`, `reference_infra.md`, `feedback_hetzner_pollution.md`, `feedback_no_blowup_local.md`.
 - **Scope**: remote-host paths + compute dispatch + H100 status monitoring.
 
@@ -235,9 +235,9 @@
 
 - **Definition**: anima 6-phase reflection + thinking_engine — axis for context injection before a complex question / design decision.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/harness/thinking_engine.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/thinking_log.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/think_baseline.json`
+  - `/Users/ghost/core/nexus/shared/harness/thinking_engine.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/thinking_log.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/think_baseline.json`
   - CLAUDE.md convention: `hexa $NEXUS/shared/harness/entry.hexa thinking query "<prompt>"`.
 - **Scope**: pre-emptive metacognitive 6-phase reflection engine.
 
@@ -245,13 +245,13 @@
 
 - **Definition**: cross-parallel-session/agent work distribution + dedup + worktree branching.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/harness/agent_ledger.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/session_registry.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/session_registry.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/work_registry.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/session_worktree.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/session_lock.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/session.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/agent_ledger.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/session_registry.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/session_registry.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/work_registry.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/session_worktree.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/session_lock.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/session.hexa`
   - MEMORY `f-go-mode-parallel-agents.md`.
 - **Scope**: GO-mode parallel-agent orchestration.
 
@@ -259,33 +259,33 @@
 
 - **Definition**: post-hoc cross-critique + curiosity + broadcast multi-agent consensus loop.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/harness/consensus_loop.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/critique.hexa`, `critique_log.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/curiosity.hexa`, `curiosity_log.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/cross_feed.hexa`, `cross_feed.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/broadcast.hexa`, `broadcast.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/governance.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/consensus_loop.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/critique.hexa`, `critique_log.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/curiosity.hexa`, `curiosity_log.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/cross_feed.hexa`, `cross_feed.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/broadcast.hexa`, `broadcast.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/governance.jsonl`
 - **Scope**: post-hoc multi-agent consensus + broadcast pipeline.
 
 ### A18 — ENGINE-FORGE (engine forging)
 
 - **Definition**: meta-engine layer that generates engines themselves.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/harness/engine_forge.hexa`
-  - `/Users/ghost/Dev/nexus/shared/harness/engine_candidates.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/harness/engines_usage.jsonl`
-  - `/Users/ghost/Dev/nexus/shared/engine/engine_*.hexa`
-  - `/Users/ghost/Dev/nexus/shared/engine/engine_anima_strategy`
-  - `/Users/ghost/Dev/nexus/shared/engine/engine_nexus_strategy`
+  - `/Users/ghost/core/nexus/shared/harness/engine_forge.hexa`
+  - `/Users/ghost/core/nexus/shared/harness/engine_candidates.jsonl`
+  - `/Users/ghost/core/nexus/shared/harness/engines_usage.jsonl`
+  - `/Users/ghost/core/nexus/shared/engine/engine_*.hexa`
+  - `/Users/ghost/core/nexus/shared/engine/engine_anima_strategy`
+  - `/Users/ghost/core/nexus/shared/engine/engine_nexus_strategy`
 - **Scope**: automatic engine generation and selection + usage statistics.
 
 ### A19 — CROSS-DOMAIN-GRID (domain-cross grid)
 
 - **Definition**: 24 domains (ai, chip, energy, battery, solar, fusion, superconductor, quantum, biology, cosmology, robotics, materials, blockchain, network, cryptography, display, audio, environment, mathematics, software, plasma, compiler, consciousness, thermodynamics) × pairwise cross-evolution grid.
 - **Evidence files**:
-  - `/Users/ghost/Dev/nexus/shared/roadmaps/nexus.json` P4~P112 (107 Phases)
-  - `/Users/ghost/Dev/nexus/shared/dse/dse_cross_*`
-  - `/Users/ghost/Dev/nexus/shared/bisociation/cross/`
+  - `/Users/ghost/core/nexus/shared/roadmaps/nexus.json` P4~P112 (107 Phases)
+  - `/Users/ghost/core/nexus/shared/dse/dse_cross_*`
+  - `/Users/ghost/core/nexus/shared/bisociation/cross/`
 - **Scope**: 107 executed Phases out of 24 × 23 / 2 = 276 possible pairs.
 
 ---

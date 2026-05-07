@@ -191,5 +191,5 @@ done
 
 - Harness: `/Users/ghost/core/canon/theory/predictions/verify_sigma_sopfr_7_{ns,hodge,bsd,pnp,perfect}.hexa`
 - Report: `/Users/ghost/core/canon/reports/sigma-sopfr-7-megasignature-20260415.md`
-- staging: `/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.sigma7.n6`
+- staging: `/Users/ghost/core/nexus/shared/n6/staging/atlas.signals.staging.sigma7.n6`
 - Upstream: Group D meganode -> `reports/meta-group-H-20260415.md`, `reports/millennium-group-F-20260415.md`

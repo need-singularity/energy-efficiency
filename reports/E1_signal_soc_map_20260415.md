@@ -1,6 +1,6 @@
 # E1 Signal SOC Map -- 2026-04-15
 
-> Input: `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`
+> Input: `/Users/ghost/core/nexus/shared/n6/atlas.signals.n6`
 > Total signals: 385 | Analysis: log-log slope (Zipf-like) | SOC judgement qualitative
 > Seven-major-problems resolution held at 0/7
 

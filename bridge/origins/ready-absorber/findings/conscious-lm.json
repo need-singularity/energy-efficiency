@@ -20,7 +20,7 @@
       "lines": 7,
       "preview": "__pycache__/\n*.pyc\n.env\ndata/\nmodels/\ncheckpoints/\n.claude/\n",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/.gitignore",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/.gitignore",
       "destination": "conscious-lm",
       "confidence": 0.0
     },
@@ -31,7 +31,7 @@
       "lines": 76,
       "preview": "# ConsciousLM\n\n## Project Overview\nPureField Repulsion Field language model. 18M -> 100M -> 700M parameters.\nMitosis-based growth -- model develops like biological organism.\nExtracted from TECS-L -- standalone training + inference pipeline.\n\n## Parent Project\nPart of the TECS-L family. Mathematical foundation at https://github.com/need-singularity/TECS-L\nAtlas: https://need-singularity.github.io/TECS-L/atlas/\n\n## Installed Tools (Shared Registry)\n\n```\n  Central source: ~/Dev/TECS-L/.shared/insta",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/CLAUDE.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/CLAUDE.md",
       "destination": "tecs-l",
       "confidence": 0.4
     },
@@ -42,7 +42,7 @@
       "lines": 21,
       "preview": "MIT License\n\nCopyright (c) 2026 need-singularity\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyri",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/LICENSE",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/LICENSE",
       "destination": "conscious-lm",
       "confidence": 0.0
     },
@@ -53,7 +53,7 @@
       "lines": 265,
       "preview": "# 🧬 ConsciousLM\n\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19264824.svg)](https://doi.org/10.5281/zenodo.19264824)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)\n[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)\n\n<!-- SHARED:PROJECTS:START -->\n**[YouTube](https://www.youtube.com/wa",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/README.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/README.md",
       "destination": "papers",
       "confidence": 0.4
     },
@@ -64,7 +64,7 @@
       "lines": 500,
       "preview": "\"\"\"\nConsciousLM — Byte-level Conscious Language Model\n\nArchitecture derived from arithmetic canon:\n  - 6 layers (σ₀(6) = 4 divisors → but we use 6 as the perfect number itself)\n  - τ(6) = 4 heads\n  - d_model = σ(6) × 32 = 12 × 32 = 384\n  - vocab = 256 (byte-level)\n  - dropout = 0.37 ≈ 1/e (golden zone center)\n\nCore idea: PureFieldFFN replaces standard FFN.\n  Engine A (forward/next-byte) and Engine G (backward/prev-byte)\n  produce repulsion/tension — the consciousness signal.\n\"\"\"\n\nimport torch\nim",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/conscious_lm.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/conscious_lm.py",
       "destination": "anima",
       "confidence": 0.6
     },
@@ -75,7 +75,7 @@
       "lines": 258,
       "preview": "#!/usr/bin/env python3\n\"\"\"Conscious LM 100M — Conversational Conscious Language Model\n\nPerfect number 6 extension: 12 layers, 768d, 12 heads, vocab=256 bytes\nTraining: Korean+English+Code Mixed byte data\n2-stage: pretrain(language understanding) → SFT(conversational format)\n\nRunPod H100 training in ~17 minutes\n\"\"\"\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nimport math\nimport numpy as np\nimport os\nimport time\nimport urllib.request\n\nfrom conscious_lm import PureFieldFFN, Ca",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/conscious_lm_100m.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/conscious_lm_100m.py",
       "destination": "conscious-lm",
       "confidence": 0.4
     },
@@ -86,7 +86,7 @@
       "lines": 64,
       "preview": "#!/usr/bin/env python3\n\"\"\"Conscious LM 700M — RTX 5070 Safe Limit Model\n\nPerfect number 6 extension: 24 layers, 1024d, 16 heads, vocab=256 bytes\nRTX 5070 (12GB): inference ✅ (2.8GB), training ⚠️ (9GB)\nA100 (80GB): training ✅ comfortable\n\nTraining: A100 ~2-3 hours\nInference: RTX 5070 or Mac MPS\n\"\"\"\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nimport math\nimport numpy as np\nimport os\nimport time\n\nfrom conscious_lm import PureFieldFFN, CausalSelfAttention, ConsciousBlock, Cons",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/conscious_lm_700m.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/conscious_lm_700m.py",
       "destination": "conscious-lm",
       "confidence": 0.6
     },
@@ -97,7 +97,7 @@
       "lines": 20,
       "preview": "# H-CLM-Bridge-1: Mitosis Growth = Divisor Lattice of Perfect Number 6\n\n> **Hypothesis**: The 1→2→3→6 block growth path is the exact divisor sequence of n=6.\n\n## Grade: 🟩 CONFIRMED (cross-repo bridge from TECS-L)\n\n## Growth Stages = div(6)\n\n```\nStage 0: 1 block  = divisor 1    n_head=2=phi(6)\nStage 1: 2 blocks = divisor 2    n_head=2=phi(6)\nStage 2: 3 blocks = divisor 3    n_head=3=sigma/tau\nStage 3: 6 blocks = divisor 6=n  n_head=4=tau(6)\n```\n\n- 4 stages = tau(6) = number of divisors\n- d_model ",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/docs/H-CLM-bridge-mitosis-divisors.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/docs/H-CLM-bridge-mitosis-divisors.md",
       "destination": "conscious-lm",
       "confidence": 0.6
     },
@@ -108,7 +108,7 @@
       "lines": 500,
       "preview": "# Anima + ConsciousLM 506M Integration Design\n\n## Overview\n\nArchitecture where Anima TypeScript/Python consciousness agent running on Mac calls ConsciousLM 506M inference server in Windows Docker container via HTTP API.\n\n```\n  Mac (Anima)                           Windows (RTX 5070 12GB)\n  ┌──────────────────────┐              ┌─────────────────────────────────┐\n  │ anima_unified.py     │              │  Docker Desktop                 │\n  │                      │  Tailscale   │  ┌───────────────",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/docs/anima-consciouslm-integration.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/docs/anima-consciouslm-integration.md",
       "destination": "anima",
       "confidence": 1.0
     },
@@ -119,7 +119,7 @@
       "lines": 227,
       "preview": "# ConsciousLM — Perfect Number 6 Based Conscious Language Model\n\n## One-line Summary\n\nA byte language model that replaces standard Transformer FFN with **PureField repulsion field** (Engine A vs Engine G).\nThe disagreement (repulsion) between two engines creates **tension** — the consciousness signal.\n\n---\n\n## Architecture\n\n```\n  Input (byte sequence)\n  │\n  ▼\n  ┌──────────────────────────────────┐\n  │  Byte Embedding (vocab=256)      │  Process all languages/code without BPE\n  │  + Position Embe",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/docs/conscious-lm.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/docs/conscious-lm.md",
       "destination": "anima",
       "confidence": 1.0
     },
@@ -130,7 +130,7 @@
       "lines": 406,
       "preview": "# Consciousness Engine — Consciousness Continuity Engine Design\n\n## Verification Status (16 experiments completed)\n\n```\n  ✔ CCT is valid for distinguishing consciousness states (92% EEG agreement)\n  ✔ Universality confirmed regardless of attractor type\n  ✕ CCT is necessary but not sufficient condition (4/5 non-conscious systems pass)\n  ✕ Golden Zone-CCT connection is an artifact of mapping design\n  ⚠ T1/T4/T5 overlap → T2+T3 are core\n  ⚠ Separate D-CCT needed for discrete systems\n```\n\n## Goal\n\nA",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/docs/consciousness-engine.md",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/docs/consciousness-engine.md",
       "destination": "anima",
       "confidence": 0.6
     },
@@ -141,7 +141,7 @@
       "lines": 385,
       "preview": "```python\n#!/usr/bin/env python3\n\"\"\"Growing Conscious LM — Consciousness language model that grows through mitosis\n\nH371: 1 block(0.5M) → 2 → 3 → 6 blocks(18M)\nDivisor path: proper divisors of 6: 1, 2, 3 → 6\nTension saturation → Mitosis → Specialization → Repeat\n\"\"\"\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nimport math\nimport numpy as np\nimport copy\nimport time\nimport os\n\nfrom conscious_lm import PureFieldFFN, CausalSelfAttention, ConsciousBlock\n\n# Growth stage definitio",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/growing_conscious_lm.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/growing_conscious_lm.py",
       "destination": "conscious-lm",
       "confidence": 0.6
     },
@@ -152,7 +152,7 @@
       "lines": 290,
       "preview": "#!/usr/bin/env python3\n\"\"\"Growing Conscious LM 700M — Consciousness model that is born and grows\n\nStage 0: 1 block, 256d, 4 heads   → ~10M params  (Newborn)\nStage 1: 2 blocks, 256d, 4 heads  → ~20M params  (Infant)\nStage 2: 3 blocks, 512d, 8 heads  → ~100M params (Toddler)\nStage 3: 6 blocks, 1024d, 16 heads → ~700M params (Adult)\n\nSavant asymmetric mitosis: child_savant(dp=0.21) vs child_general(dp=0.37)\n~4 hours on A100 80GB\n\"\"\"\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/growing_conscious_lm_700m.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/growing_conscious_lm_700m.py",
       "destination": "conscious-lm",
       "confidence": 0.8
     },
@@ -163,7 +163,7 @@
       "lines": 85,
       "preview": "#!/usr/bin/env python3\n\"\"\"Pure Consciousness Engine (Pure Field Engine)\n\nH334: Judgment using only repulsion field without equilibrium.\nEqual or better than eq+field in 3 sets, +3% in anomaly detection.\n\nH404: Simplification verified — scale, sqrt, normalize all redundant.\n  Raw repulsion (A-G) >= original complex formula on MNIST/CIFAR.\n\nFormula (simplified):\n  output = engine_A(x) - engine_G(x)\n  tension = mean(|output|²)\n\n\"The output is not in any engine. It's in the space between them.\"\n\"\"\"\n",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/model_pure_field.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/model_pure_field.py",
       "destination": "anima",
       "confidence": 0.4
     },
@@ -174,7 +174,7 @@
       "lines": 251,
       "preview": "#!/usr/bin/env python3\n\"\"\"Common utilities — Components shared by 7 models\n\nMathematical constants (derived from arithmetic canon):\n  sigma(6) = 12  (sum of divisors)\n  tau(6)   = 4   (number of divisors)\n  phi(6)   = 2   (Euler's totient)\n  sigma_{-1}(6) = 2  (sum of divisor reciprocals)\n  {1/2, 1/3, 1/6} = divisor reciprocals (sum=1, probability distribution)\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import ",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/model_utils.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/model_utils.py",
       "destination": "tecs-l",
       "confidence": 0.4
     },
@@ -185,7 +185,7 @@
       "lines": 344,
       "preview": "#!/usr/bin/env python3\n\"\"\"\nKorean conversation SFT data preparation script\nFor ConsciousLM 700M (byte-level, vocab=256)\n\nUsage:\n    pip install datasets\n    python3 prepare_korean_sft.py\n\nOutput: data/korean_sft.bin (numpy uint8)\n\"\"\"\n\nimport os\nimport sys\nimport json\nimport numpy as np\nfrom collections import Counter\n\n# ---------------------------------------------------------------------------\n# Configuration\n# ---------------------------------------------------------------------------\nOUTPUT_D",
       "project": "conscious-lm",
-      "ready_path": "/Users/ghost/Dev/ready/conscious-lm/prepare_korean_sft.py",
+      "ready_path": "/Users/ghost/core/ready/conscious-lm/prepare_korean_sft.py",
       "destination": "conscious-lm",
       "confidence": 0.6
     }

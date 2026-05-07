@@ -2,7 +2,7 @@
 
 **Roadmap**: millennium v2.3 (Y1~Y16 16 axes x P0~P10/PΩ/PX 13 phases)
 **Prerequisites**: P7 L9 integrity-gate closure (ssot: `millennium.json` P7)
-**SSOT**: `/Users/ghost/Dev/nexus/shared/roadmaps/millennium.json` (L1212~L1333)
+**SSOT**: `/Users/ghost/core/nexus/shared/roadmaps/millennium.json` (L1212~L1333)
 **gap-ref**: `theory/roadmap-v2/gap-emergence-saturation.md` §12 (R6) + §17 (R11) + §18 (R12)
 **Owning axis**: Y13 META-AUDIT (utility 8.8, primary_bt = meta-audit)
 **Status**: planned (BT target 0/6 honestly maintained)

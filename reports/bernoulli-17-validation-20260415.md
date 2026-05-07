@@ -97,7 +97,7 @@ Cumulative Bernoulli-independent theorems: **16 -> 18 confirmed** (+2, +1 condit
 
 ## atlas.n6 integration recommendations
 
-1. **staging -> SSOT merge**: `/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.bern17.n6`
+1. **staging -> SSOT merge**: `/Users/ghost/core/nexus/shared/n6/staging/atlas.signals.staging.bern17.n6`
    - SIG-BERN-17 (M10): Sel_6 CRT
    - SIG-BERN-18 (M10*): BB(2)=6
    - SIG-BERN-CAND-K3 (M9): conditional

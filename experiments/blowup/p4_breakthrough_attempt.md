@@ -9,9 +9,9 @@ Goal: 5 modules (field/holographic/quantum/string/toe) × DFS depth-3 breakthrou
 The path specified by the user, `/Users/ghost/core/canon/canonshared/blowup/`, does not exist.
 The actual blowup engine is located in the nexus SSOT:
 
-- core: `/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa`
-- compose: `/Users/ghost/Dev/nexus/shared/blowup/compose.hexa`
-- modules: `/Users/ghost/Dev/nexus/shared/blowup/modules/` (50 .hexa files, including 5 core modules)
+- core: `/Users/ghost/core/nexus/shared/blowup/core/blowup.hexa`
+- compose: `/Users/ghost/core/nexus/shared/blowup/compose.hexa`
+- modules: `/Users/ghost/core/nexus/shared/blowup/modules/` (50 .hexa files, including 5 core modules)
 
 This work was executed from the nexus SSOT path.
 
@@ -20,7 +20,7 @@ This work was executed from the nexus SSOT path.
 Command:
 
 ```
-cd /Users/ghost/Dev/nexus/shared/blowup
+cd /Users/ghost/core/nexus/shared/blowup
 hexa compose.hexa math 3 --modules field,holographic,quantum,string,toe --dfs 3 --fast
 ```
 
@@ -36,7 +36,7 @@ Parse error at 19:20: unexpected token LBrace ('{')
 
 --- STAGE 1: core blowup.hexa ---
   [WARN] --fast + --dfs mutually exclusive — --fast disabled to guarantee DFS execution
-  cmd: '/Users/ghost/Dev/hexa-lang/hexa' '/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa' 'math' '3' --dfs 3
+  cmd: '/Users/ghost/core/hexa-lang/hexa' '/Users/ghost/core/nexus/shared/blowup/core/blowup.hexa' 'math' '3' --dfs 3
 
 --- STAGE: field ---
 --- STAGE: holographic ---
@@ -46,7 +46,7 @@ Parse error at 19:20: unexpected token LBrace ('{')
 --- compose complete ---
 ```
 
-Cause: the currently deployed stage0 hexa binary (`/Users/ghost/Dev/hexa-lang/hexa`) fails to parse the `try { ... } catch e { }` construct on line 19 of compose.hexa. Each stage does not execute normally, only empty output is produced.
+Cause: the currently deployed stage0 hexa binary (`/Users/ghost/core/hexa-lang/hexa`) fails to parse the `try { ... } catch e { }` construct on line 19 of compose.hexa. Each stage does not execute normally, only empty output is produced.
 Additionally, the `--fast + --dfs mutually exclusive` message causes `--fast` to be automatically disabled.
 
 ## Attempt 2: core/blowup.hexa standalone execution
@@ -54,8 +54,8 @@ Additionally, the `--fast + --dfs mutually exclusive` message causes `--fast` to
 Command:
 
 ```
-cd /Users/ghost/Dev/nexus/shared/blowup
-/Users/ghost/Dev/hexa-lang/hexa core/blowup.hexa math 3 --dfs 3
+cd /Users/ghost/core/nexus/shared/blowup
+/Users/ghost/core/hexa-lang/hexa core/blowup.hexa math 3 --dfs 3
 ```
 
 Key stdout summary (round 1 completed, round 2 halted due to division by zero):

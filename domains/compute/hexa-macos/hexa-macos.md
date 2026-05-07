@@ -826,7 +826,7 @@ CPU emulation reference + Python verification code. n=6 constants auto-derived f
 ## §16 VT 6-tier Terminal + VOID linkage (CHIP-P2-3)
 
 - `./vt-6tier-terminal/vt-6tier-terminal.md` — 6-layer (RENDER/INPUT/STREAM/CAPABILITY/OS-BRIDGE/AI-NATIVE) protocol spec, σ=12 channel multiplex, 6-byte header
-- VOID path: `/Users/ghost/Dev/void/` (app/ai/core/platform tree)
+- VOID path: `/Users/ghost/core/void/` (app/ai/core/platform tree)
 - Split:
   - tier 1 RENDER + tier 6 AI-NATIVE → VOID host frontend
   - tier 2 INPUT + tier 3 STREAM + tier 4 CAPABILITY + tier 5 OS-BRIDGE → hexa-macos SoC firmware

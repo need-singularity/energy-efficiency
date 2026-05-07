@@ -3,7 +3,7 @@
 - Reference date: 2026-04-14
 - Generator: `scripts/atlas_promote_7_to_10star.hexa` (hexa, dry-run by default)
 - Adaptive engine: `engine/arch_adaptive.hexa` (v4 evolutionary adaptive architecture)
-- Target file: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (106,496 lines)
+- Target file: `/Users/ghost/core/nexus/shared/n6/atlas.n6` (106,496 lines)
 - Scan method: single full pass, `:: <domain> [7]` tail filter + `@` entry restriction
 - Edit method: manual-approval principle — dry-run is default; in-place replacement only with `--apply`
 - Rules: CLAUDE.md (no new files, edit atlas.n6 directly), N61 (Korean), R18 (minimal)
@@ -146,6 +146,6 @@ hexa run scripts/atlas_promote_7_to_10star.hexa --apply
 |---------------------------------------|------------------------------------------------------------------|
 | Pipeline script                       | `/Users/ghost/core/canon/scripts/atlas_promote_7_to_10star.hexa` |
 | Adaptive engine                       | `/Users/ghost/core/canon/engine/arch_adaptive.hexa`     |
-| atlas.n6 (SSOT, target of edits)      | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`                      |
+| atlas.n6 (SSOT, target of edits)      | `/Users/ghost/core/nexus/shared/n6/atlas.n6`                      |
 | This candidate report                 | `/Users/ghost/core/canon/experiments/dse/atlas_promotion_candidates_p2.md` |
-| Roadmap SSOT                          | `/Users/ghost/Dev/nexus/shared/roadmaps/canon.json` (DSE-P2-2 entry) |
+| Roadmap SSOT                          | `/Users/ghost/core/nexus/shared/roadmaps/canon.json` (DSE-P2-2 entry) |

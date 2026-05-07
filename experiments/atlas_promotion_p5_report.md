@@ -2,7 +2,7 @@
 
 > Date: 2026-04-14
 > Phase: P5 (DSE-P5-2)
-> Target: /Users/ghost/Dev/nexus/shared/n6/atlas.n6 (106,495 lines → 106,507 lines)
+> Target: /Users/ghost/core/nexus/shared/n6/atlas.n6 (106,495 lines → 106,507 lines)
 
 ---
 

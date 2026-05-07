@@ -2,7 +2,7 @@
 
 **Roadmap**: millennium v2.3 (Y1~Y16 16 axes × P0~P10/PΩ/PX 13 Phases)
 **Prior**: P9 L11 external collaboration + history + publication closure (`phase-09-external-history-publication.md`)
-**SSOT**: `/Users/ghost/Dev/nexus/shared/roadmaps/millennium.json` (L1459~L1602)
+**SSOT**: `/Users/ghost/core/nexus/shared/roadmaps/millennium.json` (L1459~L1602)
 **gap-ref**: `theory/roadmap-v2/gap-emergence-saturation.md` §15 (R9) + §16 (R10) + §19 (R13)
 **Responsible axes**: Y15 MEASUREMENT (utility 8.0) + Y16 STRATEGY-TOOL (utility 7.5) jointly
 **Status**: planned (BT resolutions 0/6 honesty maintained)

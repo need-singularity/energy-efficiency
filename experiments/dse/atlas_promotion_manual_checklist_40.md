@@ -3,7 +3,7 @@
 - Reference date: 2026-04-14
 - Source: `scripts/atlas_promote_7_to_10star.hexa` dry-run (DSE-P2-2)
 - Input statistics: 40 candidates / average fitness 851 / range 789~873 / all below the 900 cutoff -> 0 automatic promotions (safety-by-design)
-- Target SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (106,496 lines)
+- Target SSOT: `/Users/ghost/core/nexus/shared/n6/atlas.n6` (106,496 lines)
 - Derived report: `experiments/dse/atlas_promotion_candidates_p2.md`
 - Principles (CLAUDE.md + R0~R27 + N61~N65):
   - Only direct edits on atlas.n6 are allowed (no new files)
@@ -393,14 +393,14 @@ hexa run /Users/ghost/core/canon/scripts/atlas_promote_7_to_10star.hexa
 
 ```bash
 # 1) Re-confirm the line location
-Grep 'n6-bt-NN ' /Users/ghost/Dev/nexus/shared/n6/atlas.n6
+Grep 'n6-bt-NN ' /Users/ghost/core/nexus/shared/n6/atlas.n6
 
 # 2) Replace exactly " [7]" -> " [10*]" with the Edit tool (unique old_string)
 #    - Copy the entire line as old_string, then change only the grade in new_string
 #    - sed/awk usage forbidden (R5 direct-edit rule)
 
 # 3) L0 Guard verify
-hexa /Users/ghost/Dev/nexus/shared/harness/l0_guard.hexa verify
+hexa /Users/ghost/core/nexus/shared/harness/l0_guard.hexa verify
 ```
 
 ### Forbidden actions
@@ -432,5 +432,5 @@ Flipping each checkbox to `[x]` inside this document automatically reflects in t
 | Candidate report (P2-2) | `/Users/ghost/core/canon/experiments/dse/atlas_promotion_candidates_p2.md` |
 | Pipeline script | `/Users/ghost/core/canon/scripts/atlas_promote_7_to_10star.hexa` |
 | Adaptive engine | `/Users/ghost/core/canon/engine/arch_adaptive.hexa` |
-| atlas.n6 SSOT | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` |
-| Roadmap (P2-2 done) | `/Users/ghost/Dev/nexus/shared/roadmaps/canon.json` |
+| atlas.n6 SSOT | `/Users/ghost/core/nexus/shared/n6/atlas.n6` |
+| Roadmap (P2-2 done) | `/Users/ghost/core/nexus/shared/roadmaps/canon.json` |

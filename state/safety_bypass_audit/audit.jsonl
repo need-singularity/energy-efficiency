@@ -4,3 +4,5 @@
 {"ts":"2026-05-07T08:46:13Z","actor":"commit-msg-scan","kind":"bypass","reason":"launchd plist content rebrand follow-up — sed missed .plist extension","branch":"main","scanner_user":"ghost"}
 {"ts":"2026-05-07T08:47:07Z","actor":"staged-scan","kind":"bypass","reason":"cleanup of bin/n6_meta deletion and safety_bypass_audit ledger","branch":"main","scanner_user":"ghost"}
 {"ts":"2026-05-07T08:47:07Z","actor":"commit-msg-scan","kind":"bypass","reason":"cleanup of bin/n6_meta deletion and safety_bypass_audit ledger","branch":"main","scanner_user":"ghost"}
+{"ts":"2026-05-07T10:04:16Z","actor":"staged-scan","kind":"bypass","reason":"Dev/canon (broken, dead) → core/canon (real path) refactor; pre-existing /Users/ghost personal paths in many state files unchanged in this sweep","branch":"main","scanner_user":"ghost"}
+{"ts":"2026-05-07T10:04:16Z","actor":"commit-msg-scan","kind":"bypass","reason":"Dev/canon (broken, dead) → core/canon (real path) refactor; pre-existing /Users/ghost personal paths in many state files unchanged in this sweep","branch":"main","scanner_user":"ghost"}

@@ -1,7 +1,7 @@
 # stage0 live-run re-verification report — 13 .hexa files
 
 - Date: 2026-04-14
-- Binary: `/Users/ghost/Dev/hexa-lang/build/hexa_stage0` (arm64 Mach-O, 1.8 MB, mtime 21:52)
+- Binary: `/Users/ghost/core/hexa-lang/build/hexa_stage0` (arm64 Mach-O, 1.8 MB, mtime 21:52)
 - Execution mode: direct invocation of `hexa_stage0 <path>` interpreter
 - Timeout: perl alarm 30 s (substitute for missing macOS `timeout`)
 - Purpose: take the 13 files previously logged as "runtime.c missing → parse only" in past P1~P3 sessions and actually run them through the stage0 interpreter, capturing output/verification.

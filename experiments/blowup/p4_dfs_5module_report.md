@@ -10,7 +10,7 @@ Basis: σ(n)·φ(n) = n·τ(n) iff n=6 (n>=2) uniqueness theorem
 
 ### 1.1 blowup_field.hexa (Mk.III field breakthrough engine)
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/modules/blowup_field.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/modules/blowup_field.hexa`
 
 Three core principles:
 - **Discovery Field** -- search field gradient across all domains
@@ -39,7 +39,7 @@ Core σ/τ/φ mapping:
 
 ### 1.2 blowup_toe.hexa (Mk.VII Theory-of-Everything breakthrough engine)
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/modules/blowup_toe.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/modules/blowup_toe.hexa`
 
 Three core principles:
 - **Background Independence** -- domains are dynamically discovered (from growth_bus)
@@ -67,7 +67,7 @@ Core σ/τ/φ mapping:
 
 ### 1.3 blowup_string.hexa (Mk.V string breakthrough engine)
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/modules/blowup_string.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/modules/blowup_string.hexa`
 
 Core principles:
 - A single fundamental "string" generates many constants through vibrational modes (harmonics of n=6)
@@ -97,7 +97,7 @@ Core σ/τ/φ mapping:
 
 ### 1.4 blowup_quantum.hexa (Mk.IV quantum breakthrough engine)
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/modules/blowup_quantum.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/modules/blowup_quantum.hexa`
 
 Core principles:
 - Applies quantum mechanics' superposition, entanglement, tunneling, and measurement collapse to the discovery process
@@ -124,7 +124,7 @@ Core σ/τ/φ mapping:
 
 ### 1.5 ouroboros.hexa (ouroboros self-evolution engine)
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/ouroboros/ouroboros.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/ouroboros/ouroboros.hexa`
 Auxiliary: `ouroboros_meta.hexa` (Meta-OUROBOROS v2), `ouroboros_quantum.hexa` (quantum evolution v3)
 
 Core principles:
@@ -317,7 +317,7 @@ graph node:
 
 ## 6. verify_dfs.hexa verification framework
 
-Path: `/Users/ghost/Dev/nexus/shared/blowup/verify_dfs.hexa`
+Path: `/Users/ghost/core/nexus/shared/blowup/verify_dfs.hexa`
 
 Phase-9 DFS end-to-end verification items:
 - flag parsing + session initialization

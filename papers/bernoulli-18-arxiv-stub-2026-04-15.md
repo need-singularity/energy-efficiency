@@ -201,7 +201,7 @@ not a sub-statement of Theorem B.
 6. Bhargava, M., & Shankar, A. (2012). Ternary cubic forms having bounded invariants. *Annals of Math.* **181**, 191–242.
 7. Bhargava, M., Kane, D., Lenstra, H., Poonen, B., Rains, E. (2015). Modeling the distribution of ranks. *Camb. J. Math.* **3**, 275–321.
 8. Park, M. (2026). M10\* 21 unified theorem (companion preprint stub). `canon/papers/M10star-21-unified-theorem-2026-04-15.md`.
-9. atlas.signals.n6 (2026-04-15) `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6` — SIG-BERN-18 record at line 3550.
+9. atlas.signals.n6 (2026-04-15) `/Users/ghost/core/nexus/shared/n6/atlas.signals.n6` — SIG-BERN-18 record at line 3550.
 
 ---
 

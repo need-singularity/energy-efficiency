@@ -164,7 +164,7 @@ Kissing-number K(d) and sigma(k) matching:
 
 ## 9. File list
 
-- `/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.wild.n6` (new, 33 signals)
+- `/Users/ghost/core/nexus/shared/n6/staging/atlas.signals.staging.wild.n6` (new, 33 signals)
 - `/Users/ghost/core/canon/theory/predictions/verify_wild_unit_partition.hexa` (new)
 - `/Users/ghost/core/canon/theory/predictions/verify_wild_perfect_partition_all.hexa` (new)
 - `/Users/ghost/core/canon/theory/predictions/verify_wild_k5_sigma.hexa` (new)

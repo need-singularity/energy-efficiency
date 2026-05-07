@@ -182,7 +182,7 @@ hexa parse domains/cognitive/hexa-speak/proto/rtl/soc_integration.hexa
 hexa parse domains/cognitive/hexa-speak/proto/rtl/soc_drc_lvs.hexa
 
 # 2) self-hosted build + run
-HX=/Users/ghost/Dev/hexa-lang/self
+HX=/Users/ghost/core/hexa-lang/self
 $HX/native/hexa_v2 \
     domains/cognitive/hexa-speak/proto/rtl/soc_drc_lvs.hexa \
     /tmp/soc_drc_lvs.c

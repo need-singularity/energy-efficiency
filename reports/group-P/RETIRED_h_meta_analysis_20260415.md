@@ -31,8 +31,8 @@ Group-P meta-analysis (H1~H5) over `atlas.signals.n6` + signal staging:
 
 - Single-session meta-analysis (Group P, 2026-04-15); output already
   committed verbatim to git.
-- Hard-coded paths point to `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`
-  and `/Users/ghost/Dev/nexus/shared/n6/staging/...`, which are *external*
+- Hard-coded paths point to `/Users/ghost/core/nexus/shared/n6/atlas.signals.n6`
+  and `/Users/ghost/core/nexus/shared/n6/staging/...`, which are *external*
   to this repo (`Dev/nexus/...`, not `core/canon/`). The script
   is therefore not portable to a fresh checkout in any case.
 - No `.own` decl, CI hook, or downstream tool invokes this file.

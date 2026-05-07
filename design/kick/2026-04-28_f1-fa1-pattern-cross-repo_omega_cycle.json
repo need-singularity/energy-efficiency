@@ -43,7 +43,7 @@
     "parse_check_all_11_files": "PASS (./hexa parse on all 11 modified files produces no Parse error / unexpected token / codegen ERROR; config_test.hexa and growth_tick_test.hexa emit unrelated 'unknown shim command' shell warnings which appear in stderr from a hexa parse hint mechanism but the files themselves parse cleanly — confirmed by 'OK: <file> parses cleanly' line in output)",
     "smoke_test_runtime": {
       "command": "HOME=/Users/ghost ./hexa run example/verify_pages_test.hexa",
-      "result": "PASS — printed '=== Pages Deploy Verify ===' header, atlas.n6 path resolved correctly to /Users/ghost/Dev/nexus/.. → atlas.n6 v1 10043 nodes detected, GitHub URLs returned 200. End-to-end home resolution works."
+      "result": "PASS — printed '=== Pages Deploy Verify ===' header, atlas.n6 path resolved correctly to /Users/ghost/core/nexus/.. → atlas.n6 v1 10043 nodes detected, GitHub URLs returned 200. End-to-end home resolution works."
     },
     "raw_18_self_host_fixpoint": {
       "command": "./hexa test self/main.hexa --selftest-only",

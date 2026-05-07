@@ -216,8 +216,8 @@ Theorem B itself is orthogonal to the 7 problems (a simple arithmetic identity).
 - Post, E. (1941). The Two-Valued Iterative Systems of Mathematical Logic. Ann. Math. Studies.
 - Rosenberg, I. G. (1970). Über die funktionale Vollständigkeit. Acta Sci. Math.
 - BKLPR (2015). Bhargava-Kane-Lenstra-Poonen-Rains random matrix model.
-- atlas.n6 (`/Users/ghost/Dev/nexus/shared/n6/atlas.n6`) — canon SSOT.
-- atlas.signals.n6 (`/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`) — 385 signals.
+- atlas.n6 (`/Users/ghost/core/nexus/shared/n6/atlas.n6`) — canon SSOT.
+- atlas.signals.n6 (`/Users/ghost/core/nexus/shared/n6/atlas.signals.n6`) — 385 signals.
 
 ## 8. Appendix — UT-21 reduction matrix (precise)
 

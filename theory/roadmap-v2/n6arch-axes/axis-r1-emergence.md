@@ -104,7 +104,7 @@ Therefore the **realistic targets of this axis design** are:
 | study P2 | 15 | `theory/study/p2/` |
 | study P3 | 9 | `theory/study/p3/` |
 | Main papers | 2 | `papers/moonshine-barrier-honest-report-*.md`, `papers/n6-mk4-theorem-candidates-paper.md` |
-| Roadmap | 1 | `/Users/ghost/Dev/nexus/shared/roadmaps/millennium-learning.json` |
+| Roadmap | 1 | `/Users/ghost/core/nexus/shared/roadmaps/millennium-learning.json` |
 
 Repeated strategies/tools/techniques/structures were extracted from a total of **70+ files**.
 

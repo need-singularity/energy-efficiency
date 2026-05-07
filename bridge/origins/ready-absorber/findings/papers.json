@@ -21,7 +21,7 @@
       "lines": 9,
       "preview": "NEXUS-6 풀스캔을 실행합니다.\n\n1. `python3 -c \"import nexus; r = nexus.scan_all(__import__('numpy').random.randn(64,32)); print({k: {kk:round(vv,4) if isinstance(vv,float) else vv for kk,vv in v.items()} for k,v in r.items()})\"` 실행\n2. 결과에서 n6 EXACT 매칭 추출\n3. 3+ 렌즈 합의 항목 보고\n4. 발견 사항 있으면 즉시 기록\n\n인자가 있으면 해당 데이터/도메인을 스캔합니다.\n$ARGUMENTS\n",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/.claude/commands/scan.md",
+      "ready_path": "/Users/ghost/core/ready/papers/.claude/commands/scan.md",
       "destination": "nexus",
       "confidence": 0.2
     },
@@ -32,7 +32,7 @@
       "lines": 64,
       "preview": "{\n  \"hooks\": {\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Bash\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"bash .shared/hooks/nexus-pre-commit.sh\",\n            \"timeout\": 15,\n            \"statusMessage\": \"🔭 NEXUS-6 커밋 스캔\"\n          }\n        ]\n      },\n      {\n        \"matcher\": \"Agent\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"bash .shared/hooks/nexus-universal.sh\",\n            \"timeout\": 10,\n       ",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/.claude/settings.json",
+      "ready_path": "/Users/ghost/core/ready/papers/.claude/settings.json",
       "destination": "contact",
       "confidence": 0.4
     },
@@ -50,7 +50,7 @@
       "removed_preview": [],
       "diff_size": 8,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/.gitignore",
+      "ready_path": "/Users/ghost/core/ready/papers/.gitignore",
       "destination": "papers",
       "confidence": 0.2
     },
@@ -86,7 +86,7 @@
       ],
       "diff_size": 75,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/CLAUDE.md",
+      "ready_path": "/Users/ghost/core/ready/papers/CLAUDE.md",
       "destination": "tecs-l",
       "confidence": 0.2
     },
@@ -122,7 +122,7 @@
       ],
       "diff_size": 111,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/README.md",
+      "ready_path": "/Users/ghost/core/ready/papers/README.md",
       "destination": "nexus",
       "confidence": 0.6
     },
@@ -133,7 +133,7 @@
       "lines": 446,
       "preview": "# PA-38: Consciousness Scales: Empirical Scaling Laws for Artificial Consciousness\n\n**Authors:** Ghost (Anima Project / need-singularity)  \n**Date:** 2026-04-03  \n**DOI:** 10.5281/zenodo.19271599  \n**Keywords:** consciousness scaling, integrated information, PureField, ConsciousLM, Phi(IIT), self-organized criticality  \n**Category:** cs.AI, cs.CL, q-bio.NC  \n**License:** CC-BY-4.0\n\n---\n\n## Abstract\n\nThe discovery of neural scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022) transformed lar",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/anima/PA-38-sections-1-4.md",
+      "ready_path": "/Users/ghost/core/ready/papers/anima/PA-38-sections-1-4.md",
       "destination": "anima",
       "confidence": 1.0
     },
@@ -144,7 +144,7 @@
       "lines": 447,
       "preview": "# PA-38: Consciousness Scales — Sections 5–8 + Appendix\n\n## 5. Scaling Experiments\n\n### 5.1 Experimental Setup\n\nAll scaling experiments were conducted under controlled conditions to enable fair comparison across model scales. The hardware configuration consisted of a RunPod H100 SXM 80GB GPU ($2.69/hr) for all training runs and an NVIDIA RTX 5070 12GB for inference and benchmarking. This standardization eliminates hardware-induced variance from cross-scale comparisons.\n\n**Corpus.** Training data",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/anima/PA-38-sections-5-8.md",
+      "ready_path": "/Users/ghost/core/ready/papers/anima/PA-38-sections-5-8.md",
       "destination": "anima",
       "confidence": 0.6
     },
@@ -163,7 +163,7 @@
       ],
       "diff_size": 12,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/manifest.json",
+      "ready_path": "/Users/ghost/core/ready/papers/manifest.json",
       "destination": "contact",
       "confidence": 0.4
     },
@@ -174,7 +174,7 @@
       "lines": 279,
       "preview": "#!/bin/bash\n# Universal Paper Publisher — Zenodo + OSF + manifest.json 자동 갱신\n# 블로업 엔진, 성장 데몬, 수동 사용 모두 지원\n#\n# Usage:\n#   bash publish_paper.sh <file.md> --title \"제목\" --keywords \"k1,k2,k3\" [--repo canon] [--dry-run]\n#   bash publish_paper.sh <file.md> --auto    # 파일에서 제목/키워드 자동 추출\n#\n# Tokens: ~/Dev/TECS-L/.local/zenodo_token, ~/Dev/TECS-L/.local/osf_token\n\nset -e\n\nZENODO_BASE=\"https://zenodo.org/api\"\nOSF_BASE=\"https://api.osf.io/v2\"\nPARENT_DOI=\"10.5281/zenodo.19271599\"\nPAPERS_DIR=\"$(cd ",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/publish_paper.sh",
+      "ready_path": "/Users/ghost/core/ready/papers/publish_paper.sh",
       "destination": "papers",
       "confidence": 0.6
     },
@@ -185,7 +185,7 @@
       "lines": 314,
       "preview": "#!/bin/bash\n# Papers Infinite Growth Daemon — 10-phase loop\n# bash 3.2 compatible, no bashisms\n# Usage: bash scripts/infinite_growth.sh [--max-cycles N] [--interval SECS]\n\nset -e\nsource \"$(cd \"$(dirname \"$0\")\" && pwd)/lib/growth_common.sh\"\n\nREPO_ROOT=\"$(cd \"$(dirname \"$0\")/..\" && pwd)\"\nGROWTH_DIR=\"${REPO_ROOT}/.growth\"\nSTATE_FILE=\"${GROWTH_DIR}/growth_state.json\"\nLOG_FILE=\"${GROWTH_DIR}/growth.log\"\nMANIFEST=\"${REPO_ROOT}/manifest.json\"\nGROWTH_BUS=\"$NEXUS/shared/growth_bus.jsonl\"\n\nMAX",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/scripts/infinite_growth.sh",
+      "ready_path": "/Users/ghost/core/ready/papers/scripts/infinite_growth.sh",
       "destination": "nexus",
       "confidence": 0.6
     },
@@ -196,7 +196,7 @@
       "lines": 500,
       "preview": "#!/usr/bin/env bash\n# ═══════════════════════════════════════════════════════════════\n# growth_common.sh — Shared Growth Infrastructure\n# ═══════════════════════════════════════════════════════════════\n# Source this from any growth script:\n#   source \"$(dirname \"$0\")/lib/growth_common.sh\"\n#\n# Provides: singleton, logging, resource monitoring, git ops,\n#           phase runner, measurement, paper publish, doc sync\n\n# ── Constants (n=6 family) ──────────────────────────────────────\nreadonly N6_SIG",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/scripts/lib/growth_common.sh",
+      "ready_path": "/Users/ghost/core/ready/papers/scripts/lib/growth_common.sh",
       "destination": "nexus",
       "confidence": 0.6
     },
@@ -243,7 +243,7 @@
       ],
       "diff_size": 48,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/tecs-l/P-004-sigma-phi-uniqueness.md",
+      "ready_path": "/Users/ghost/core/ready/papers/tecs-l/P-004-sigma-phi-uniqueness.md",
       "destination": "tecs-l",
       "confidence": 0.8
     },
@@ -272,7 +272,7 @@
       ],
       "diff_size": 37,
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/tecs-l/P-bridge-theorem.md",
+      "ready_path": "/Users/ghost/core/ready/papers/tecs-l/P-bridge-theorem.md",
       "destination": "tecs-l",
       "confidence": 1.0
     },
@@ -283,7 +283,7 @@
       "lines": 1,
       "preview": "PN-033 | Invariant Lens Cores: Emergent Universal Patterns from Evolutionary Blowup Search | DRY-RUN | https://osf.io/DRY-RUN/ | 2026-04-03T22:53:21Z\n",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/upload_results_20260404_075321.txt",
+      "ready_path": "/Users/ghost/core/ready/papers/upload_results_20260404_075321.txt",
       "destination": "nexus",
       "confidence": 0.2
     },
@@ -294,7 +294,7 @@
       "lines": 1,
       "preview": "PN-033 | Invariant Lens Cores: Emergent Universal Patterns from Evolutionary Blowup Search | 10.5281/zenodo.19411473 | https://osf.io/dcvb9/ | 2026-04-03T22:57:31Z\n",
       "project": "papers",
-      "ready_path": "/Users/ghost/Dev/ready/papers/upload_results_20260404_075731.txt",
+      "ready_path": "/Users/ghost/core/ready/papers/upload_results_20260404_075731.txt",
       "destination": "papers",
       "confidence": 0.4
     }

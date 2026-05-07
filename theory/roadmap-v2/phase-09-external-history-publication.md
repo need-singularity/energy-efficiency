@@ -2,7 +2,7 @@
 
 **Roadmap**: millennium v2.3 (Y1~Y16 16 axes × P0~P10/PΩ/PX 13 Phases)
 **Prior**: P8 L10 meta-audit + philosophy + epistemics closure (`phase-08-meta-audit-philosophy.md`)
-**SSOT**: `/Users/ghost/Dev/nexus/shared/roadmaps/millennium.json` (L1334~L1458)
+**SSOT**: `/Users/ghost/core/nexus/shared/roadmaps/millennium.json` (L1334~L1458)
 **gap-ref**: `theory/roadmap-v2/gap-emergence-saturation.md` §13 (R7) + §14 (R8+R13)
 **Responsible axis**: Y14 EXT-COLLAB (utility 7.8, primary_bt = meta-external)
 **Status**: planned (BT resolutions 0/6 honesty maintained)

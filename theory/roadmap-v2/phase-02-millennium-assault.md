@@ -90,7 +90,7 @@ Phase 2 uses the following existing assets as tools.
 | P1 BT scenarios | `theory/study/p1/prob-p1-{1..6}-bt{541..546}-*.md` | 6-target P1 draft studies |
 | P2 barriers | `theory/study/p2/prob-p2-{1..6}-*-barriers.md` | 6-target barrier analysis |
 | P3 follow-ups | `theory/study/p3/prob-p3-{1..3}-*.md` + `pure-p3-{1..3}-*.md` | BKLPR, methodology, frontier |
-| atlas.n6 | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (4438 `@R` nodes) | promotion-target SSOT |
+| atlas.n6 | `/Users/ghost/core/nexus/shared/n6/atlas.n6` (4438 `@R` nodes) | promotion-target SSOT |
 | self-evolution engines | `$NEXUS/shared/harness/growth_tick.hexa` + `ouroboros_unified.hexa` + `phi_ratchet.hexa` | always on |
 
 ### 1.3 Verdict-Criterion Definitions

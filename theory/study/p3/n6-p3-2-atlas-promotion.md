@@ -629,7 +629,7 @@ Each question answerable ≤3 minutes.
 ## 12. Source Reconfirmation
 
 - `CLAUDE.md` — atlas.n6 section (format, grade, promotion rules)
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` — grep of whole region
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` — grep of whole region
   - L1-L22 (header)
   - L81 (meta_fp)
   - L232 (bernoulli_6)

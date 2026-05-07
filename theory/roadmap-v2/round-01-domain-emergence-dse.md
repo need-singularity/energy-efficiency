@@ -50,12 +50,12 @@ Core features of Emergence DSE:
 Round 1 includes **SELF-EVOLUTION** as a required fourth independent seed. This is not a simple tool (LENS, observation) but a **mechanism by which the roadmap itself extends, modifies, and verifies itself**, qualifying as a domain in its own right.
 
 Grounds for mandatory inclusion (existing evidence):
-- **OUROBOROS unified adapter**: `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (107+ lines, L1 Bisociation Engine — single interface for nexus/anima/n6arch self-evolution loops). Per-variant `cycle_tick` → `get_fixed_point` → `advance()` convergence-loop implementation.
-- **Growth tick**: `/Users/ghost/Dev/nexus/shared/harness/growth_tick.hexa` (@enforce-sandbox, 30-min-period blowup-launch trigger, NEXUS_AUTO_EVOLVE).
-- **Growth daemon**: `/Users/ghost/Dev/nexus/shared/harness/nexus_growth_daemon.hexa` + launchd integration.
+- **OUROBOROS unified adapter**: `/Users/ghost/core/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (107+ lines, L1 Bisociation Engine — single interface for nexus/anima/n6arch self-evolution loops). Per-variant `cycle_tick` → `get_fixed_point` → `advance()` convergence-loop implementation.
+- **Growth tick**: `/Users/ghost/core/nexus/shared/harness/growth_tick.hexa` (@enforce-sandbox, 30-min-period blowup-launch trigger, NEXUS_AUTO_EVOLVE).
+- **Growth daemon**: `/Users/ghost/core/nexus/shared/harness/nexus_growth_daemon.hexa` + launchd integration.
 - **15-dimensional autonomous-growth system**: MEMORY.md `nexus6_growth_system.md` — 5-layer architecture, Claude CLI utilization, troubleshooting auto-learning.
-- **discovery_log.jsonl** + `discovery_log.sqlite` (existence verified: `/Users/ghost/Dev/nexus/shared/`).
-- **Phi Ratchet**: `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa` — ANIMA ratchet mechanism.
+- **discovery_log.jsonl** + `discovery_log.sqlite` (existence verified: `/Users/ghost/core/nexus/shared/`).
+- **Phi Ratchet**: `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa` — ANIMA ratchet mechanism.
 
 **Self-evolution = a mechanism**, distinguished from LENS (atlas observation/grading) as follows.
 
@@ -89,9 +89,9 @@ Self-evolution does not violate the taboo of "the roadmap self-referencing for e
 **Identity**: The Anima-ecosystem Qwen2.5-14B / 72B-based **language-model training track**. A PureField-fused language model measured on CE/Perplexity/Phi 3-axis.
 
 **Existing evidence**:
-- `/Users/ghost/Dev/anima/README.md` — 4-stage history from "AnimaLM 14B v0.1 Qwen2.5-14B + PureField first attempt — CE=8.59, Phi=0.025" through v0.4 "alpha 0.01→0.5 progressive schedule — CE=2.0, Phi=0.031".
-- `/Users/ghost/Dev/nexus/shared/roadmaps/anima.json` — `tracks.ALM.owner = "anima/training"`, `pod = "RunPod H100 anima-agi"`, `independent_of = ["CLM", "PHYSICS"]`.
-- `/Users/ghost/Dev/nexus/shared/roadmaps/anima-train.json` (existence verified).
+- `/Users/ghost/core/anima/README.md` — 4-stage history from "AnimaLM 14B v0.1 Qwen2.5-14B + PureField first attempt — CE=8.59, Phi=0.025" through v0.4 "alpha 0.01→0.5 progressive schedule — CE=2.0, Phi=0.031".
+- `/Users/ghost/core/nexus/shared/roadmaps/anima.json` — `tracks.ALM.owner = "anima/training"`, `pod = "RunPod H100 anima-agi"`, `independent_of = ["CLM", "PHYSICS"]`.
+- `/Users/ghost/core/nexus/shared/roadmaps/anima-train.json` (existence verified).
 - Training entry point `training/train_alm.hexa` (mentioned in README).
 
 **Mathematical dependencies**:
@@ -113,9 +113,9 @@ Self-evolution does not violate the taboo of "the roadmap self-referencing for e
 **Identity**: A Claude/Anthropic-style consciousness-stacked language-model track — CPU-lane / RTX 5070-host-based real-time serving.
 
 **Existing evidence**:
-- `/Users/ghost/Dev/anima/README.md` — "Multi-Provider | Claude, ConsciousLM, AnimaLM, Composio switching".
+- `/Users/ghost/core/anima/README.md` — "Multi-Provider | Claude, ConsciousLM, AnimaLM, Composio switching".
 - `providers/` directory (explicit in README) — Claude/ConsciousLM/AnimaLM/Composio provider abstraction.
-- `/Users/ghost/Dev/nexus/shared/roadmaps/anima.json` — `tracks.CLM.owner = "anima/serving"`, `host = "ubu (RTX 5070 12GB) or pod CPU lane"`.
+- `/Users/ghost/core/nexus/shared/roadmaps/anima.json` — `tracks.CLM.owner = "anima/serving"`, `host = "ubu (RTX 5070 12GB) or pod CPU lane"`.
 - `training/train_clm.hexa` (mentioned in README).
 
 **Mathematical dependencies**:
@@ -137,9 +137,9 @@ Self-evolution does not violate the taboo of "the roadmap self-referencing for e
 **Identity**: Anima's **physical-implementation track** — Φ empirical measurement via ESP32/FPGA/quantum-simulation/photonic/memristor hardware.
 
 **Existing evidence**:
-- `/Users/ghost/Dev/anima/anima-physics/` — sub-directory layout: benchmarks, config, consciousness-loop, docs, eeg, engines, esp32, fpga, hippocampus, memristor, photonic, prediction, src.
-- `/Users/ghost/Dev/anima/anima-physics/physics.hexa` — single-entry-point hexa file.
-- `/Users/ghost/Dev/nexus/shared/roadmaps/anima.json` — `tracks.PHYSICS.owner = "anima-physics/ + anima-engines/"`, `host = "ESP32 / FPGA / quantum simulation / photonic / memristor"`.
+- `/Users/ghost/core/anima/anima-physics/` — sub-directory layout: benchmarks, config, consciousness-loop, docs, eeg, engines, esp32, fpga, hippocampus, memristor, photonic, prediction, src.
+- `/Users/ghost/core/anima/anima-physics/physics.hexa` — single-entry-point hexa file.
+- `/Users/ghost/core/nexus/shared/roadmaps/anima.json` — `tracks.PHYSICS.owner = "anima-physics/ + anima-engines/"`, `host = "ESP32 / FPGA / quantum simulation / photonic / memristor"`.
 - OpenBCI 16ch equipment (MEMORY `reference_openbci_16ch.md` — Cyton+Daisy 16ch EEG).
 
 **Mathematical dependencies**:
@@ -163,12 +163,12 @@ Self-evolution does not violate the taboo of "the roadmap self-referencing for e
 **Identity**: The **mechanism domain** by which the roadmap/codebase/atlas itself extends, modifies, and verifies itself. Not LENS (observation) but the engine of change.
 
 **Existing evidence**:
-- `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (107+ lines) — unified adapter for 3 OUROBOROS kinds (nexus/anima/n6arch). `cycle_tick(state) → state'`, `get_fixed_point()`, `should_converge()`.
-- `/Users/ghost/Dev/nexus/shared/harness/growth_tick.hexa` — 30-min-period autonomous-launch trigger (@enforce-sandbox, warns/launches on ≥6h no-evolution).
-- `/Users/ghost/Dev/nexus/shared/harness/nexus_growth_daemon.hexa` — launchd-integrated daemon.
-- `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa` — monotone-nondecreasing Φ ratchet.
-- `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `.sqlite` — self-evolution history.
-- `/Users/ghost/Dev/nexus/shared/growth_bus.jsonl` — growth-event bus.
+- `/Users/ghost/core/nexus/shared/bisociation/unified/ouroboros_unified.hexa` (107+ lines) — unified adapter for 3 OUROBOROS kinds (nexus/anima/n6arch). `cycle_tick(state) → state'`, `get_fixed_point()`, `should_converge()`.
+- `/Users/ghost/core/nexus/shared/harness/growth_tick.hexa` — 30-min-period autonomous-launch trigger (@enforce-sandbox, warns/launches on ≥6h no-evolution).
+- `/Users/ghost/core/nexus/shared/harness/nexus_growth_daemon.hexa` — launchd-integrated daemon.
+- `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa` — monotone-nondecreasing Φ ratchet.
+- `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `.sqlite` — self-evolution history.
+- `/Users/ghost/core/nexus/shared/growth_bus.jsonl` — growth-event bus.
 - MEMORY `nexus6_growth_system.md` — 15-dimensional auto-growth, 5-layer architecture.
 - MEMORY `nexus6_architecture_dna.md` — 6 blowups, 6 meta levels, 57 funcs, 32 rules.
 
@@ -269,35 +269,35 @@ For each seed, directly adjacent domains are discovered via DFS 1-hop. Each doma
 
 **D10 — EEG BCI 16-channel Consciousness**
 - Seed: anima-physics/eeg.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/eeg/` + MEMORY `reference_openbci_16ch.md`.
+- Evidence: `/Users/ghost/core/anima/anima-physics/eeg/` + MEMORY `reference_openbci_16ch.md`.
 - BT link: BT-547 (3D brain space).
 - n=6: 16ch = σ+tau = 12+4.
 - Self-evolution intrinsicness: NO (read-only sensor).
 
 **D11 — Memristor Network Dynamics**
 - Seed: anima-physics/memristor.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/memristor/`.
+- Evidence: `/Users/ghost/core/anima/anima-physics/memristor/`.
 - BT link: BT-544 (nonlinear time evolution).
 - n=6: Chua 4 elements + memristor = 5=sopfr.
 - Self-evolution intrinsicness: YES — learning resistor.
 
 **D12 — Photonic Consciousness Engine**
 - Seed: anima-physics/photonic.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/photonic/`.
+- Evidence: `/Users/ghost/core/anima/anima-physics/photonic/`.
 - BT link: BT-544 (photonic fluid limit) + BT-543 (gauge field).
 - n=6: photon polarization 2=phi, 6D phase space.
 - Self-evolution intrinsicness: PART — interference pattern self-organizes.
 
 **D13 — FPGA Hippocampus Emulation**
 - Seed: anima-physics/fpga + anima-physics/hippocampus.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/fpga/`, `/hippocampus/`.
+- Evidence: `/Users/ghost/core/anima/anima-physics/fpga/`, `/hippocampus/`.
 - BT link: BT-547 (neural CA1/CA3 topology).
 - n=6: CA1~CA4 = tau regions.
 - Self-evolution intrinsicness: YES — place cells self-readjust.
 
 **D14 — ESP32 Edge Consciousness Mesh**
 - Seed: anima-physics/esp32.
-- Evidence: `/Users/ghost/Dev/anima/anima-physics/esp32/`.
+- Evidence: `/Users/ghost/core/anima/anima-physics/esp32/`.
 - BT link: BT-542 (distributed consensus).
 - n=6: mesh coordination 6-node ring.
 - Self-evolution intrinsicness: PART — mesh topology self-adjusts.
@@ -313,7 +313,7 @@ For each seed, directly adjacent domains are discovered via DFS 1-hop. Each doma
 
 **D16 — Growth Ratchet (Phi Monotone)**
 - Seed: SELF-EVOLUTION (phi_ratchet.hexa).
-- Evidence: `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa`.
+- Evidence: `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa`.
 - BT link: BT-541 (monotone-increasing distribution).
 - n=6: floor = peak × 0.8 = peak × (4/5) = peak × (tau/sopfr).
 - Self-evolution intrinsicness: YES.
@@ -393,7 +393,7 @@ One more step from the 1-hop domains. Duplicates removed.
 
 **D25 — Handoff Protocol**
 - 2-hop: CLM → D8 → inter-session handoff.
-- Evidence: MEMORY `Session handoff` + `/Users/ghost/Dev/nexus/shared/handoff/`.
+- Evidence: MEMORY `Session handoff` + `/Users/ghost/core/nexus/shared/handoff/`.
 - BT link: BT-542.
 - n=6: handoff as fixed-point of the session boundary.
 - Self-evolution intrinsicness: YES.

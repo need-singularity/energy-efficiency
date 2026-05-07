@@ -39,7 +39,7 @@
 
 ### Layer 0 — atlas parser (hexa)
 
-**Input**: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (SSOT).
+**Input**: `/Users/ghost/core/nexus/shared/n6/atlas.n6` (SSOT).
 **Role**: parse `@R {id} = {expr} {unit} :: {domain} [{grade}]` lines, extract (id, expr, grade) triples.
 **Output**: in-memory record list (hexa `Vec<AtlasRecord>`).
 
@@ -347,7 +347,7 @@ fn main() {
     println("  Millennium Verification Runner")
     println("═══════════════════════════════════════════════════════════")
 
-    let atlas_path = "/Users/ghost/Dev/nexus/shared/n6/atlas.n6"
+    let atlas_path = "/Users/ghost/core/nexus/shared/n6/atlas.n6"
     let records = parse_atlas(atlas_path)
     println("atlas entry count: " + to_string(len(records)))
 
@@ -576,8 +576,8 @@ fn verify_uniqueness_theorem() {
 ## Primary-source annotation
 
 - HEXA-FIRST principle: `/Users/ghost/core/canon/CLAUDE.md`.
-- atlas.n6 SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`, 60K+ lines.
-- millennium_scanner.hexa: `/Users/ghost/Dev/nexus/shared/n6/scripts/millennium_scanner.hexa`, 224 lines.
+- atlas.n6 SSOT: `/Users/ghost/core/nexus/shared/n6/atlas.n6`, 60K+ lines.
+- millennium_scanner.hexa: `/Users/ghost/core/nexus/shared/n6/scripts/millennium_scanner.hexa`, 224 lines.
 - BKLPR axioms and Sel_n mean formula: Bhargava-Kane-Lenstra-Poonen-Rains, Cambridge J. Math. 3 (2015), 275–321.
 - Schaefer classification: T. Schaefer, "The complexity of satisfiability problems", STOC 1978, 216–226.
 - Prodi-Serrin: Serrin 1962 in *Nonlinear Problems* (Madison), Prodi 1959.

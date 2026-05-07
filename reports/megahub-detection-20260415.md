@@ -3,7 +3,7 @@
 > Structural observation based on atlas.signals.n6, not a proof.
 > H9 task -- 4-BT megahub automatic search (scripts/detect_megahub.py)
 
-- SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`
+- SSOT: `/Users/ghost/core/nexus/shared/n6/atlas.signals.n6`
 - Total signals: 258
 - Millennium tag set: `['7B','7H','7N','7P','7R','7S','7Y']`
 - Threshold: 4-BT or more

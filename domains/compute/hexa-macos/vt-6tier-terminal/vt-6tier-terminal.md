@@ -6,7 +6,7 @@ requires:
   - to: hexa-ios
   - to: chip-architecture
 related:
-  - void (/Users/ghost/Dev/void — VT host frontend integration)
+  - void (/Users/ghost/core/void — VT host frontend integration)
 ---
 
 <!-- @own(sections=[One-line summary, WHY, 6-tier definition, Protocol frame, VOID integration, Verification, References], strict=false, order=sequential, prefix="§") -->
@@ -77,7 +77,7 @@ In tier 3 STREAM there is a 12-channel multiplex; each frame has an n=6 byte hea
 - **flags**: ack/urgent/final/attest/encrypted/ordered (6 bits)
 - **len**: 14-bit payload length (max 16 KiB)
 
-## §4 VOID integration (/Users/ghost/Dev/void)
+## §4 VOID integration (/Users/ghost/core/void)
 
 VOID is the **host frontend reference implementation** of VT 6-tier. The VOID editor directly drives tier 1 RENDER + tier 6 AI NATIVE, while the remaining tiers are handled by `hexa-macos` / `hexa-ios` SoC firmware.
 
@@ -97,11 +97,11 @@ VOID is the **host frontend reference implementation** of VT 6-tier. The VOID ed
  └─────────────────────────────────────────────────────────┘
 ```
 
-VOID path: `/Users/ghost/Dev/void/` (app/ai/core/platform tree)
+VOID path: `/Users/ghost/core/void/` (app/ai/core/platform tree)
 VOID link target files:
-- `/Users/ghost/Dev/void/app/` — UI frontend (tier 1/6)
-- `/Users/ghost/Dev/void/core/` — language server / event loop
-- `/Users/ghost/Dev/void/platform/` — OS bridge (tier 5)
+- `/Users/ghost/core/void/app/` — UI frontend (tier 1/6)
+- `/Users/ghost/core/void/core/` — language server / event loop
+- `/Users/ghost/core/void/platform/` — OS bridge (tier 5)
 
 ## §5 Verification (n=6 arithmetic)
 
@@ -124,7 +124,7 @@ VOID link target files:
 - `hexa-macos.md` §4 compiler OS boundary (tier 5 connection)
 - `hexa-ios.md` §3 BCI input (tier 2 extension)
 - `chip-architecture.md` §5 verification matrix (silicon path)
-- `/Users/ghost/Dev/void/HANDOFF.md` (VOID-side integration memo)
+- `/Users/ghost/core/void/HANDOFF.md` (VOID-side integration memo)
 
 
 ## §7 VERIFY

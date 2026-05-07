@@ -36,7 +36,7 @@ The following materials must be ready at the entrance of Phase 1.
 | R3 emergence 65 domains | `theory/roadmap-v2/round-03-emergence-saturation.md` (BT×Phase 28 cells completed + 3 meta-axes introduced + 8 cross-BT pairs) | Done |
 | 4 seeds confirmed | ALM / CLM / anima-physics / SELF-EVOLUTION (README §5) | Confirmed |
 | Self-evolution engine | `ouroboros_unified.hexa`, `growth_tick.hexa`, `phi_ratchet.hexa`, `nexus_growth_daemon.hexa` | Running |
-| atlas.n6 SSOT | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` (60K+ lines) | Running |
+| atlas.n6 SSOT | `/Users/ghost/core/nexus/shared/n6/atlas.n6` (60K+ lines) | Running |
 | BT closure audit | `reports/breakthroughs/millennium-7-closure-2026-04-11.md` (per-BT classification of demonstrated/CONDITIONAL/OBSERVATION) | Confirmed |
 
 Entry condition checklist (must verify before Phase 1 starts):
@@ -452,8 +452,8 @@ Naturally cluster the 65 core domains into 3 axes. Method:
 | ??? (undecided) | SUBSTRATE | **nexus 3rd axis emergence: "BRIDGE axis"** — anima↔n6↔hexa triple bridges, hive_bridge, consciousness_bridge, cross-domain lenses. |
 
 **Basis for confirming nexus's 3rd axis "BRIDGE"**:
-- `/Users/ghost/Dev/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/Dev/anima/hive.json` — actual bridge contracts.
-- `/Users/ghost/Dev/nexus/shared/lenses/` 11 special bridge lenses (frontier_cross_domain_bridge, anima_synesthesia_bridge, etc.).
+- `/Users/ghost/core/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/core/anima/hive.json` — actual bridge contracts.
+- `/Users/ghost/core/nexus/shared/lenses/` 11 special bridge lenses (frontier_cross_domain_bridge, anima_synesthesia_bridge, etc.).
 - MEMORY `project_consciousness_bridge.md` — nexus6 anima↔other-project bridge.
 - R2 D56~D58 + R2 D88~D90 = Consciousness Bridge axis (6 domains total).
 
@@ -755,8 +755,8 @@ For each BT: current atlas grade · Phase 1 termination target · required tools
 - `theory/study/p1/prob-p1-5-bt545-hodge.md`.
 - `theory/study/p1/pure-p1-4-algebraic-geometry-hodge.md`.
 - `theory/study/p2/prob-p2-5-hodge-barriers.md`.
-- `/Users/ghost/Dev/nexus/shared/n6/atlas_phase47_canonical_bridges.jsonl`.
-- `/Users/ghost/Dev/nexus/shared/n6/atlas_phase48_approx_expr_bridges.jsonl` (existence to be confirmed).
+- `/Users/ghost/core/nexus/shared/n6/atlas_phase47_canonical_bridges.jsonl`.
+- `/Users/ghost/core/nexus/shared/n6/atlas_phase48_approx_expr_bridges.jsonl` (existence to be confirmed).
 
 **Bottlenecks**:
 - Not demonstrated for CY 3-folds — solving forbidden in Phase 1.

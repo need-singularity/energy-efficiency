@@ -42,11 +42,11 @@
 - BREAKTHROUGH = **target curation** for BT-541~547 (a list of what to break through + audits).
 
 **Distinguishing evidence**:
-- `/Users/ghost/Dev/nexus/shared/bt/bt_keywords.jsonl` — keyword curation (defines breakthrough targets).
-- `/Users/ghost/Dev/nexus/shared/bt/bt_domains.jsonl` — domain mapping.
-- `/Users/ghost/Dev/nexus/shared/bt/bt_audit.hexa` — audit-dedicated.
-- `/Users/ghost/Dev/nexus/shared/bt/bt-*-report` — reports.
-- `/Users/ghost/Dev/nexus/shared/bt/auto_bt.log` — automatic log.
+- `/Users/ghost/core/nexus/shared/bt/bt_keywords.jsonl` — keyword curation (defines breakthrough targets).
+- `/Users/ghost/core/nexus/shared/bt/bt_domains.jsonl` — domain mapping.
+- `/Users/ghost/core/nexus/shared/bt/bt_audit.hexa` — audit-dedicated.
+- `/Users/ghost/core/nexus/shared/bt/bt-*-report` — reports.
+- `/Users/ghost/core/nexus/shared/bt/auto_bt.log` — automatic log.
 
 **Verdict**: **confirmed (N9)**. BLOWUP is "how"; BREAKTHROUGH is "what" — separable axes.
 
@@ -68,9 +68,9 @@
 - LOCKDOWN = "how forbiddance is enforced" (binary file locks + snapshots/ + safe-merge).
 
 **Asset existence**:
-- `/Users/ghost/Dev/nexus/shared/lockdown/lockdown.json` — L0/L1/L2 layer definitions.
-- `/Users/ghost/Dev/nexus/shared/harness/lockdown_gate.hexa` (unified SSOT as of this round, 2026-04-14).
-- `/Users/ghost/Dev/nexus/shared/lockdown/snapshots/` — snapshot directory (untracked, confirmed in state file).
+- `/Users/ghost/core/nexus/shared/lockdown/lockdown.json` — L0/L1/L2 layer definitions.
+- `/Users/ghost/core/nexus/shared/harness/lockdown_gate.hexa` (unified SSOT as of this round, 2026-04-14).
+- `/Users/ghost/core/nexus/shared/lockdown/snapshots/` — snapshot directory (untracked, confirmed in state file).
 - CLAUDE.md "L0 protection" section — lists 29 L0 assets.
 
 **Verdict**: **confirmed (N10)**. Although it is an enforcement offshoot of GOVERNANCE, the runtime-lock + snapshot SSOT is valuable as a separate axis.
@@ -80,7 +80,7 @@
 **Re-exam issue**: axis vs support.
 - Existing: cl launcher (multi-account) + cl-refresh (usage cache) + launchd (30m cycle) + hexa resolver.
 - These are **operational infrastructure** — closer to a HARNESS sub-operation than an axis.
-- However, `/Users/ghost/Dev/nexus/shared/engine/cl_refresh_spec.json` and `nexus_cli_spec.json` stand as independent engine specs.
+- However, `/Users/ghost/core/nexus/shared/engine/cl_refresh_spec.json` and `nexus_cli_spec.json` stand as independent engine specs.
 - `convergence/cl.json` also exists — extends to convergence tracking.
 
 **Verdict**: **confirmed (N11)**. The `cl` execution-infra line has axis-level independent value. Generalized as **INFRASTRUCTURE** (includes cl + launchd + hetzner/ubuntu/vastai remote execution).

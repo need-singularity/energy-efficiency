@@ -143,7 +143,7 @@ SIG-UNIV-KURA-001 = integer Kuramoto r(n) = 1 - tau/sigma perfect-number sequenc
 ## 8. Harness result summary
 
 - File: `theory/predictions/kuramoto_r23_perfect_numbers.hexa`
-- Run: `/Users/ghost/Dev/nexus/shared/bin/hexa theory/predictions/kuramoto_r23_perfect_numbers.hexa`
+- Run: `/Users/ghost/core/nexus/shared/bin/hexa theory/predictions/kuramoto_r23_perfect_numbers.hexa`
 - Result: **15 PASS / 0 FAIL**
 - Verification items:
   1. r = (sigma-tau)/sigma reduced fraction check for each of 5 perfect numbers

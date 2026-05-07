@@ -1,6 +1,6 @@
 # E6 Signal Graph Homology / Betti -- 2026-04-15
 
-> Input: `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`
+> Input: `/Users/ghost/core/nexus/shared/n6/atlas.signals.n6`
 > Edge definition: SIG-* references in cross_repo/cross/refs/predicts
 > b0/b1 on undirected 1-skeleton only. Higher Betti not computed.
 > Seven-major-problems resolution held at 0/7.

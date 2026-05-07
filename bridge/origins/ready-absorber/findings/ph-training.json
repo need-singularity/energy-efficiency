@@ -19,7 +19,7 @@
       "lines": 16,
       "preview": "__pycache__/\n*.py[cod]\n*$py.class\n*.egg-info/\ndist/\nbuild/\n.eggs/\n*.egg\n.pytest_cache/\n.mypy_cache/\n.venv/\nvenv/\n/data/\n*.pt\n*.pth\n.DS_Store\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/.gitignore",
+      "ready_path": "/Users/ghost/core/ready/ph-training/.gitignore",
       "destination": "ph-training",
       "confidence": 0.0
     },
@@ -30,7 +30,7 @@
       "lines": 23,
       "preview": "# 📐 PH Training\n\nPersistent Homology 기반 자동 학습 파이프라인.\n\n## README 프로젝트 설명 동기화 (필수)\n\n```\n  중앙 소스: ~/Dev/TECS-L/.shared/projects.md (이것만 수정)\n  동기화: cd ~/Dev/TECS-L && bash .shared/sync-readmes.sh\n  마커: <!-- SHARED:PROJECTS:START --> ~ <!-- SHARED:PROJECTS:END -->\n  이 구간은 직접 수정 금지 — sync 시 덮어씌워짐\n```\n\n## Installed Tools (Shared Registry)\n\n```\n  Central source: ~/Dev/TECS-L/.shared/installed_tools.json\n  ★ PATH: homebrew is at /opt/homebrew/bin/ (not in Claude Code default PATH!)\n    gh → /opt/homebrew",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/CLAUDE.md",
+      "ready_path": "/Users/ghost/core/ready/ph-training/CLAUDE.md",
       "destination": "ph-training",
       "confidence": 0.2
     },
@@ -41,7 +41,7 @@
       "lines": 21,
       "preview": "MIT License\n\nCopyright (c) 2026 logout project\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyrigh",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/LICENSE",
+      "ready_path": "/Users/ghost/core/ready/ph-training/LICENSE",
       "destination": "ph-training",
       "confidence": 0.0
     },
@@ -52,7 +52,7 @@
       "lines": 332,
       "preview": "# 📐 PH Training\n\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19243584.svg)](https://doi.org/10.5281/zenodo.19243584)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)\n[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)\n\n> **Automatic model training pipeline powered by Persistent Homology*",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/README.md",
+      "ready_path": "/Users/ghost/core/ready/ph-training/README.md",
       "destination": "papers",
       "confidence": 0.4
     },
@@ -63,7 +63,7 @@
       "lines": 19,
       "preview": "Output demo.gif\n\nSet FontSize 14\nSet Width 900\nSet Height 600\nSet Theme \"Catppuccin Mocha\"\nSet Padding 20\n\nType \"source .venv/bin/activate\"\nEnter\nSleep 1s\n\nType \"ph-train --dataset mnist --epochs 5\"\nEnter\nSleep 30s\n\nType \"ph-train --dataset fashion --epochs 5\"\nEnter\nSleep 30s\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/demo.tape",
+      "ready_path": "/Users/ghost/core/ready/ph-training/demo.tape",
       "destination": "ph-training",
       "confidence": 0.0
     },
@@ -74,7 +74,7 @@
       "lines": 44,
       "preview": "[build-system]\nrequires = [\"setuptools>=68.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"ph-training\"\nversion = \"0.1.0\"\ndescription = \"Persistent Homology based automatic model training pipeline\"\nreadme = \"README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.9\"\nauthors = [\n    {name = \"logout project\", email = \"nerve011235@gmail.com\"},\n]\nkeywords = [\"persistent-homology\", \"topological-data-analysis\", \"deep-learning\", \"training\"]\nclassifiers = [\n    \"Development St",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/pyproject.toml",
+      "ready_path": "/Users/ghost/core/ready/ph-training/pyproject.toml",
       "destination": "hexa-lang",
       "confidence": 0.2
     },
@@ -85,7 +85,7 @@
       "lines": 25,
       "preview": "\"\"\"ph-training: Automatic model training pipeline powered by Persistent Homology\"\"\"\n\n__version__ = \"0.1.0\"\n\nfrom .engine import PureFieldEngine\nfrom .ph import (\n    compute_h0, compute_h0_from_distance_matrix, get_merges,\n    PHMonitor, LayerPHMonitor, TensionPHMonitor,\n)\nfrom .trainer import PHTrainer, TrainingResult\nfrom .data import load_data, DATASETS\n\n__all__ = [\n    \"PureFieldEngine\",\n    \"compute_h0\",\n    \"get_merges\",\n    \"PHMonitor\",\n    \"LayerPHMonitor\",\n    \"TensionPHMonitor\",\n    \"c",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/__init__.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/__init__.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -96,7 +96,7 @@
       "lines": 57,
       "preview": "\"\"\"CLI entry point.\"\"\"\n\nimport argparse\nfrom .trainer import PHTrainer\n\n\ndef main():\n    parser = argparse.ArgumentParser(\n        description='ph-train: Automatic model training with Persistent Homology',\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        epilog=\"\"\"\nExamples:\n  ph-train --dataset mnist\n  ph-train --dataset fashion --epochs 30\n  ph-train --dataset cifar --lr 0.001\n        \"\"\",\n    )\n    parser.add_argument('--dataset', default='mnist',\n                        ",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/cli.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/cli.py",
       "destination": "hexa-lang",
       "confidence": 0.6
     },
@@ -107,7 +107,7 @@
       "lines": 60,
       "preview": "\"\"\"Dataset loading utilities.\"\"\"\n\nfrom torch.utils.data import DataLoader\n\nDATASETS = {\n    'mnist': dict(\n        dim=784,\n        norm=(0.1307, 0.3081),\n        cls_names=[str(i) for i in range(10)],\n    ),\n    'fashion': dict(\n        dim=784,\n        norm=(0.2860, 0.3530),\n        cls_names=['Tshirt', 'Trouser', 'Pullvr', 'Dress', 'Coat',\n                   'Sandal', 'Shirt', 'Sneakr', 'Bag', 'Boot'],\n    ),\n    'cifar': dict(\n        dim=3072,\n        norm=((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/data.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/data.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -118,7 +118,7 @@
       "lines": 80,
       "preview": "\"\"\"PureFieldEngine — Dual-engine repulsion field model.\n\noutput = tension_scale * sqrt(tension) * direction\ntension = |engine_A(x) - engine_G(x)|^2\ndirection = normalize(engine_A(x) - engine_G(x))\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\n\n\nclass PureFieldEngine(nn.Module):\n    \"\"\"Dual-engine repulsion field model.\n\n    Two independent engines (A and G) produce representations.\n    The output emerges from the repulsion between them —\n    not from either engine alone",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/engine.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/engine.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -129,7 +129,7 @@
       "lines": 388,
       "preview": "\"\"\"Persistent Homology computation and monitoring.\n\nKey results:\n- H0 gap between train/test predicts overfitting with r=0.998\n- Merge order predicts confusion pairs with r=-0.97\n- H0 CV minimum identifies optimal learning rate\n- H0 after 1 epoch predicts final difficulty\n\"\"\"\n\nimport numpy as np\nfrom dataclasses import dataclass\n\ntry:\n    import gudhi\n    HAS_GUDHI = True\nexcept ImportError:\n    HAS_GUDHI = False\n\ntry:\n    from ripser import ripser\n    HAS_RIPSER = True\nexcept ImportError:\n    H",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/ph.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/ph.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -140,7 +140,7 @@
       "lines": 328,
       "preview": "\"\"\"PHTrainer — Automatic training pipeline with PH monitoring.\n\nPhase 1: Difficulty prediction (1-epoch H0)\nPhase 2: Automatic LR search (H0 CV minimum)\nPhase 3: Training with real-time overfitting detection (H0 gap)\nPhase 4: Result analysis (dendrogram, confusion, vulnerability)\n\"\"\"\n\nimport os, time\nimport numpy as np\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom dataclasses import dataclass, field\n\nfrom .engine import PureFieldEngine\nfrom .ph import compute_h0, get_me",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training/trainer.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training/trainer.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -151,7 +151,7 @@
       "lines": 228,
       "preview": "Metadata-Version: 2.4\nName: ph-training\nVersion: 0.1.0\nSummary: Persistent Homology based automatic model training pipeline\nAuthor-email: logout project <nerve011235@gmail.com>\nLicense: MIT\nKeywords: persistent-homology,topological-data-analysis,deep-learning,training\nClassifier: Development Status :: 3 - Alpha\nClassifier: Intended Audience :: Science/Research\nClassifier: License :: OSI Approved :: MIT License\nClassifier: Programming Language :: Python :: 3\nClassifier: Topic :: Scientific/Engine",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/PKG-INFO",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/PKG-INFO",
       "destination": "hexa-lang",
       "confidence": 0.6
     },
@@ -162,7 +162,7 @@
       "lines": 16,
       "preview": "LICENSE\nREADME.md\npyproject.toml\nsrc/ph_training/__init__.py\nsrc/ph_training/cli.py\nsrc/ph_training/data.py\nsrc/ph_training/engine.py\nsrc/ph_training/ph.py\nsrc/ph_training/trainer.py\nsrc/ph_training.egg-info/PKG-INFO\nsrc/ph_training.egg-info/SOURCES.txt\nsrc/ph_training.egg-info/dependency_links.txt\nsrc/ph_training.egg-info/entry_points.txt\nsrc/ph_training.egg-info/requires.txt\nsrc/ph_training.egg-info/top_level.txt\ntests/test_engine.py\ntests/test_ph.py",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/SOURCES.txt",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/SOURCES.txt",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -173,7 +173,7 @@
       "lines": 1,
       "preview": "\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/dependency_links.txt",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/dependency_links.txt",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -184,7 +184,7 @@
       "lines": 2,
       "preview": "[console_scripts]\nph-train = ph_training.cli:main\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/entry_points.txt",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/entry_points.txt",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -195,7 +195,7 @@
       "lines": 14,
       "preview": "torch>=2.0\ntorchvision>=0.15\nnumpy>=1.24\nscipy>=1.7\nscikit-learn>=1.0\nripser>=0.6.0\n\n[dev]\npytest>=7.0\npytest-cov\n\n[viz]\nmatplotlib>=3.5\npersim>=0.3.0\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/requires.txt",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/requires.txt",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -206,7 +206,7 @@
       "lines": 1,
       "preview": "ph_training\n",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/src/ph_training.egg-info/top_level.txt",
+      "ready_path": "/Users/ghost/core/ready/ph-training/src/ph_training.egg-info/top_level.txt",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -217,7 +217,7 @@
       "lines": 0,
       "preview": "",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/tests/__init__.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/tests/__init__.py",
       "destination": "ph-training",
       "confidence": 0.4
     },
@@ -228,7 +228,7 @@
       "lines": 39,
       "preview": "\"\"\"Tests for PureFieldEngine.\"\"\"\n\nimport torch\nimport pytest\nfrom ph_training import PureFieldEngine\n\n\ndef test_forward_shape():\n    model = PureFieldEngine(input_dim=784, hidden_dim=64, output_dim=10)\n    x = torch.randn(32, 784)\n    output, tension = model(x)\n    assert output.shape == (32, 10)\n    assert tension.shape == (32,)\n\n\ndef test_tension_nonnegative():\n    model = PureFieldEngine(input_dim=100, hidden_dim=32, output_dim=5)\n    x = torch.randn(16, 100)\n    _, tension = model(x)\n    ass",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/tests/test_engine.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/tests/test_engine.py",
       "destination": "ph-training",
       "confidence": 0.6
     },
@@ -239,7 +239,7 @@
       "lines": 78,
       "preview": "\"\"\"Tests for PH computation and monitoring.\"\"\"\n\nimport numpy as np\nimport pytest\nfrom ph_training import compute_h0, get_merges, PHMonitor\n\n\ndef _make_directions(n_classes=5, n_per_class=50, dim=10, sep=1.0):\n    \"\"\"Generate test direction vectors with separable classes.\"\"\"\n    rng = np.random.RandomState(42)\n    dirs = []\n    labels = []\n    for c in range(n_classes):\n        center = np.zeros(dim)\n        center[c % dim] = sep\n        d = center + rng.randn(n_per_class, dim) * 0.1\n        norm",
       "project": "ph-training",
-      "ready_path": "/Users/ghost/Dev/ready/ph-training/tests/test_ph.py",
+      "ready_path": "/Users/ghost/core/ready/ph-training/tests/test_ph.py",
       "destination": "ph-training",
       "confidence": 0.6
     }

@@ -28,13 +28,13 @@ R1 (this round): 1-hop emergence of **independent new axes** around the 2 confir
 **Definition**: the full mechanism by which roadmap/code/atlas/rules extend, modify, verify, and converge themselves. Not observation (LENS) but a **change engine**.
 
 **Existence evidence (nexus assets)**:
-- `/Users/ghost/Dev/nexus/shared/bisociation/unified/ouroboros_unified.hexa` — 3-way OUROBOROS integration (cycle_tick / get_fixed_point / advance).
-- `/Users/ghost/Dev/nexus/shared/harness/growth_tick.hexa` — 30-minute autonomous firing.
-- `/Users/ghost/Dev/nexus/shared/harness/nexus_growth_daemon.hexa` — launchd daemon (currently STUB, MEMORY project-daemon-stub.md).
-- `/Users/ghost/Dev/nexus/shared/bisociation/unified/phi_ratchet.hexa` — monotone non-decreasing Φ ratchet.
-- `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `.sqlite` — self-evolution history bus.
-- `/Users/ghost/Dev/nexus/shared/growth_bus.jsonl` — growth event bus.
-- `/Users/ghost/Dev/nexus/shared/convergence/nexus.json` — evolution convergence SSOT.
+- `/Users/ghost/core/nexus/shared/bisociation/unified/ouroboros_unified.hexa` — 3-way OUROBOROS integration (cycle_tick / get_fixed_point / advance).
+- `/Users/ghost/core/nexus/shared/harness/growth_tick.hexa` — 30-minute autonomous firing.
+- `/Users/ghost/core/nexus/shared/harness/nexus_growth_daemon.hexa` — launchd daemon (currently STUB, MEMORY project-daemon-stub.md).
+- `/Users/ghost/core/nexus/shared/bisociation/unified/phi_ratchet.hexa` — monotone non-decreasing Φ ratchet.
+- `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `.sqlite` — self-evolution history bus.
+- `/Users/ghost/core/nexus/shared/growth_bus.jsonl` — growth event bus.
+- `/Users/ghost/core/nexus/shared/convergence/nexus.json` — evolution convergence SSOT.
 - nexus.json P3 "convergence — 3D realtime + autonomous evolution + ossification" Phase itself is an output of this axis.
 
 **Scope**: full loop growth_tick → blowup autonomous firing → discovery → atlas update → convergence check → ossification.
@@ -44,12 +44,12 @@ R1 (this round): 1-hop emergence of **independent new axes** around the 2 confir
 **Definition**: the reality-map SSOT of entities. A **reality graph** coupling node/edge/formula/grade/scaling structure.
 
 **Existence evidence (nexus assets)**:
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` — reality-map body.
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6.stats` / `.deg` — sidecar metadata.
-- `/Users/ghost/Dev/nexus/shared/n6/atlas_health.hexa` — health check.
-- `/Users/ghost/Dev/nexus/shared/n6/math_atlas.{db,dot,html,md}` — math atlas.
-- `/Users/ghost/Dev/nexus/shared/n6/atlas_ossify_mk2.py` + `atlas_ws_server.py` — ossification / realtime serving.
-- `/Users/ghost/Dev/nexus/docs/index.html` — 3D reality-map frontend.
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` — reality-map body.
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6.stats` / `.deg` — sidecar metadata.
+- `/Users/ghost/core/nexus/shared/n6/atlas_health.hexa` — health check.
+- `/Users/ghost/core/nexus/shared/n6/math_atlas.{db,dot,html,md}` — math atlas.
+- `/Users/ghost/core/nexus/shared/n6/atlas_ossify_mk2.py` + `atlas_ws_server.py` — ossification / realtime serving.
+- `/Users/ghost/core/nexus/docs/index.html` — 3D reality-map frontend.
 - Explicit in nexus.json P2 "atlas coherence" + P3 "3D realtime".
 
 **Scope**: atlas.n6 node/edge + formula verification + grade verification + 3D visualization + up to periodic_table_118.

@@ -246,7 +246,7 @@ alpha_L ~ 0.05 (empirical, +-0.01 range)
 
 ## 6. Staging additions (by grade)
 
-`/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.appl.n6` (new)
+`/Users/ghost/core/nexus/shared/n6/staging/atlas.signals.staging.appl.n6` (new)
 
 | Grade | Count | SIG IDs |
 |---|---|---|
@@ -291,7 +291,7 @@ This work catalogs n=6 emergence in **application domains** (physics/biology/AI/
 
 ### Staging signals
 
-`/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.appl.n6` (14 signals)
+`/Users/ghost/core/nexus/shared/n6/staging/atlas.signals.staging.appl.n6` (14 signals)
 
 ### Un-harnessed (9 ideas — hypothesis/design only)
 

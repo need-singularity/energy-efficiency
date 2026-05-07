@@ -7,7 +7,7 @@
 # 경로: canonshared/tools/atlas_auto_promote.hexa
 #
 # 입력: /Users/ghost/core/canon/canonshared/discovery_graph.json
-# 출력: /Users/ghost/Dev/nexus/n6/atlas.n6 (append)
+# 출력: /Users/ghost/core/nexus/n6/atlas.n6 (append)
 #       /Users/ghost/core/canon/canonshared/logs/atlas_auto_promote.jsonl
 #
 # 경고: 실행 전 반드시 atlas.n6 백업. 설계 단계 — 아직 실행 금지.

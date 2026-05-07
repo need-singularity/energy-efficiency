@@ -161,25 +161,25 @@ The 7 pairs of R2-C7 are formally developed into 7 domains in §2. This subsecti
 ### 1.8 R2-C8 — HEXA-LANG DSE Recheck Triggers Development
 
 **D49 — Hexa Compiler Self-Host Track**
-- Evidence: `/Users/ghost/Dev/hexa-lang/self/bootstrap.hexa` + `/bootstrap_compiler.c`.
+- Evidence: `/Users/ghost/core/hexa-lang/self/bootstrap.hexa` + `/bootstrap_compiler.c`.
 - BT: 542.
 - n=6: Mk.I → Mk.III evolution, bootstrap stage 3.
 - Self-evolution: YES.
 
 **D50 — Hexa Optimizer Passes**
-- Evidence: `/Users/ghost/Dev/hexa-lang/self/ai_native_pass.hexa` + `bc_emitter.hexa` + `bc_vm.hexa`.
+- Evidence: `/Users/ghost/core/hexa-lang/self/ai_native_pass.hexa` + `bc_emitter.hexa` + `bc_vm.hexa`.
 - BT: 542, 544.
 - n=6: pass-pipeline stages.
 - Self-evolution: YES (auto-opt trigger).
 
 **D51 — Hexa Test Regression Suite**
-- Evidence: `/Users/ghost/Dev/hexa-lang/tests/regression_stage1.hexa` + `/scripts/regression_harness.hexa` + `_verify_lars_lamb_fix.hexa`.
+- Evidence: `/Users/ghost/core/hexa-lang/tests/regression_stage1.hexa` + `/scripts/regression_harness.hexa` + `_verify_lars_lamb_fix.hexa`.
 - BT: 542.
 - n=6: 113 tests (see R1 D32) + regression stages.
 - Self-evolution: YES.
 
 **D52 — Hexa Bench Competitive Evolution**
-- Evidence: `/Users/ghost/Dev/hexa-lang/bench/` 10 benches + `rust_baseline/`.
+- Evidence: `/Users/ghost/core/hexa-lang/bench/` 10 benches + `rust_baseline/`.
 - BT: 542.
 - n=6: 6 bench categories.
 - Self-evolution: YES (self-optimization measurement).
@@ -187,7 +187,7 @@ The 7 pairs of R2-C7 are formally developed into 7 domains in §2. This subsecti
 ### 1.9 R2-C9 — Nexus-6 Breakthrough Gate as Field Development
 
 **D53 — HEXA-GATE Mk.I Field**
-- Evidence: MEMORY `project_hexa_gate_mk1.md` + `/Users/ghost/Dev/nexus/shared/dse/domains/nexus-gate.toml` + `/Users/ghost/core/canon/domains/compute/nexus-breakthrough-gate/nexus-breakthrough-gate.md`.
+- Evidence: MEMORY `project_hexa_gate_mk1.md` + `/Users/ghost/core/nexus/shared/dse/domains/nexus-gate.toml` + `/Users/ghost/core/canon/domains/compute/nexus-breakthrough-gate/nexus-breakthrough-gate.md`.
 - BT: 542, 547.
 - n=6: tau=4 gate + 2 fiber = n=6, 24/24 EXACT, 33 Rust + 43 Py tests.
 - Self-evolution: YES.
@@ -199,7 +199,7 @@ The 7 pairs of R2-C7 are formally developed into 7 domains in §2. This subsecti
 - Self-evolution: YES.
 
 **D55 — meta_fp Registry Field**
-- Evidence: R1 §4.2 — NEXUS_FP=0.333, ANIMA_FLOOR=0.8, N6ARCH targets + `/Users/ghost/Dev/nexus/shared/harness/ouroboros_unified.hexa` (same-file link).
+- Evidence: R1 §4.2 — NEXUS_FP=0.333, ANIMA_FLOOR=0.8, N6ARCH targets + `/Users/ghost/core/nexus/shared/harness/ouroboros_unified.hexa` (same-file link).
 - BT: 547.
 - n=6: 3 variant × 3 = 9 meta_fp (unexplored registry-ification).
 - Self-evolution: YES.
@@ -207,19 +207,19 @@ The 7 pairs of R2-C7 are formally developed into 7 domains in §2. This subsecti
 ### 1.10 R2-C10 — Consciousness Bridge Field Development
 
 **D56 — EEG Consciousness Bridge DSE Domain**
-- Evidence: `/Users/ghost/Dev/nexus/shared/dse/domains/eeg-consciousness-bridge.toml` (distinct from R1 D10 EEG: R1 was equipment measurement, here it is a **bridge DSE domain**).
+- Evidence: `/Users/ghost/core/nexus/shared/dse/domains/eeg-consciousness-bridge.toml` (distinct from R1 D10 EEG: R1 was equipment measurement, here it is a **bridge DSE domain**).
 - BT: 547, 542.
 - n=6: EEG 16ch → consciousness bridge → anima.
 - Self-evolution: YES (the bridge itself is a DSE target).
 
 **D57 — Atlas Canonical Bridge Chain**
-- Evidence: `/Users/ghost/Dev/nexus/shared/n6/atlas_phase47_canonical_bridges.jsonl` + phase48_approx_expr_bridges.
+- Evidence: `/Users/ghost/core/nexus/shared/n6/atlas_phase47_canonical_bridges.jsonl` + phase48_approx_expr_bridges.
 - BT: 541, 545.
 - n=6: phase47 canonical, phase48 approx.
 - Self-evolution: YES (phase progression itself).
 
 **D58 — Anima↔N6↔Hexa Triad Bridge**
-- Evidence: MEMORY `project_consciousness_bridge.md` + `/Users/ghost/Dev/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/Dev/anima/hive.json`.
+- Evidence: MEMORY `project_consciousness_bridge.md` + `/Users/ghost/core/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/core/anima/hive.json`.
 - BT: 542, 547.
 - n=6: 3 = n/phi projects.
 - Self-evolution: YES (the bridge self-grows).
@@ -422,7 +422,7 @@ R1 had 12-direct + 9-indirect = 21 self-evolution derivatives. R2 deepens axes.
 - Self-evolution: YES.
 
 **D84 — Hexa Pitfalls Learn Ring**
-- Evidence: `/Users/ghost/Dev/nexus/shared/bisociation/unified/pitfalls_ring.hexa` + `pitfalls_ring_map.json`.
+- Evidence: `/Users/ghost/core/nexus/shared/bisociation/unified/pitfalls_ring.hexa` + `pitfalls_ring_map.json`.
 - BT: 542.
 - n=6: pitfalls-ring structure = cyclic learning.
 - Self-evolution: YES.
@@ -430,19 +430,19 @@ R1 had 12-direct + 9-indirect = 21 self-evolution derivatives. R2 deepens axes.
 ### 4.2 HEXA-GATE Axis (reinforcement of §1.9 D53~D55)
 
 **D85 — Bitter Gate Enforcement**
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/bitter-gate.hexa`.
+- Evidence: `/Users/ghost/core/nexus/shared/harness/bitter-gate.hexa`.
 - BT: 542.
 - n=6: bitter signal 6-channel mapping.
 - Self-evolution: YES.
 
 **D86 — Lockdown Gate L0/L1/L2**
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/lockdown_gate.hexa` + `lock_gate.sh` + `lib/lock_gate.hexa` + canonshared `rules/lockdown.json`.
+- Evidence: `/Users/ghost/core/nexus/shared/harness/lockdown_gate.hexa` + `lock_gate.sh` + `lib/lock_gate.hexa` + canonshared `rules/lockdown.json`.
 - BT: 542 (access-control NP).
 - n=6: L0/L1/L2 = 3 = n/phi layers.
 - Self-evolution: YES.
 
 **D87 — Roadmap Sync Gate**
-- Evidence: `/Users/ghost/Dev/nexus/shared/harness/roadmap_sync_gate.hexa`.
+- Evidence: `/Users/ghost/core/nexus/shared/harness/roadmap_sync_gate.hexa`.
 - BT: 542.
 - n=6: roadmap 7 projects = 7 = 7 problems.
 - Self-evolution: YES.
@@ -450,19 +450,19 @@ R1 had 12-direct + 9-indirect = 21 self-evolution derivatives. R2 deepens axes.
 ### 4.3 Consciousness Bridge Axis (reinforcement of §1.10 D56~D58)
 
 **D88 — Anima Synesthesia Bridge Lens**
-- Evidence: `/Users/ghost/Dev/nexus/shared/lenses/anima_synesthesia_bridge.hexa`.
+- Evidence: `/Users/ghost/core/nexus/shared/lenses/anima_synesthesia_bridge.hexa`.
 - BT: 547 (synesthesia topology).
 - n=6: 6 synesthesia types.
 - Self-evolution: YES (lens self-learning).
 
 **D89 — Frontier Cross-Domain Bridge Lens**
-- Evidence: `/Users/ghost/Dev/nexus/shared/lenses/frontier_cross_domain_bridge.hexa`.
+- Evidence: `/Users/ghost/core/nexus/shared/lenses/frontier_cross_domain_bridge.hexa`.
 - BT: 545 (cross-domain cohomology).
 - n=6: bucket crossings 12 → n=6 coincidence.
 - Self-evolution: YES.
 
 **D90 — Hive Bridge Contract**
-- Evidence: `/Users/ghost/Dev/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/Dev/anima/hive.json`.
+- Evidence: `/Users/ghost/core/nexus/shared/config/contracts/hive_bridge.json` + `/Users/ghost/core/anima/hive.json`.
 - BT: 542.
 - n=6: hive role count.
 - Self-evolution: YES.
@@ -470,19 +470,19 @@ R1 had 12-direct + 9-indirect = 21 self-evolution derivatives. R2 deepens axes.
 ### 4.4 DSE Framework Itself Axis (R2-C10 extension)
 
 **D91 — DSE Graph 3D Navigation**
-- Evidence: `/Users/ghost/Dev/nexus/shared/bt/dse_graph_3d.html` + `dse_cross_resonance_results.json` + `dse_joint_results.json`.
+- Evidence: `/Users/ghost/core/nexus/shared/bt/dse_graph_3d.html` + `dse_cross_resonance_results.json` + `dse_joint_results.json`.
 - BT: 547 (3D topology).
 - n=6: 3D = n/phi axis × 2.
 - Self-evolution: YES.
 
 **D92 — BT Audit Classification**
-- Evidence: `/Users/ghost/Dev/nexus/shared/bt/bt_audit_classification.json` + `bt_audit_miss_classification.jsonl` + `bt-mismatch-classification.md`.
+- Evidence: `/Users/ghost/core/nexus/shared/bt/bt_audit_classification.json` + `bt_audit_miss_classification.jsonl` + `bt-mismatch-classification.md`.
 - BT: 542, 545.
 - n=6: audit categories.
 - Self-evolution: YES (self-classification refresh).
 
 **D93 — Discovery Log Append-Only Ledger**
-- Evidence: `/Users/ghost/Dev/nexus/shared/discovery_log.jsonl` + `discovery_log.sqlite` + `discovery_log.meta.json` + `discovery_log.2026-04-12.jsonl.gz`.
+- Evidence: `/Users/ghost/core/nexus/shared/discovery_log.jsonl` + `discovery_log.sqlite` + `discovery_log.meta.json` + `discovery_log.2026-04-12.jsonl.gz`.
 - BT: 542 (log = Kolmogorov upper bound).
 - n=6: 6h stale trigger.
 - Self-evolution: YES (ledger append).
@@ -734,11 +734,11 @@ Organize **unexplored territories** revealed in R2 as R3 candidates.
 ### 8.3 DSE Framework Itself Deep Expansion
 
 **R3-C6: DSE Lens Ecology**
-- Path: anima_synesthesia_bridge, quantum_auto_register_gate, sedi_coincidence_gate, frontier_cross_domain_bridge and ≥ 12 more lenses within `/Users/ghost/Dev/nexus/shared/lenses/`.
+- Path: anima_synesthesia_bridge, quantum_auto_register_gate, sedi_coincidence_gate, frontier_cross_domain_bridge and ≥ 12 more lenses within `/Users/ghost/core/nexus/shared/lenses/`.
 - Self-evolution: YES.
 
 **R3-C7: Breakthrough Engine Lineage**
-- Path: `/Users/ghost/Dev/nexus/shared/harness/breakthrough.hexa` + `engine_forge.hexa` + `dream_engine.hexa`.
+- Path: `/Users/ghost/core/nexus/shared/harness/breakthrough.hexa` + `engine_forge.hexa` + `dream_engine.hexa`.
 - BT: 542+547.
 - Self-evolution: YES.
 

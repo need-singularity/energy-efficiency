@@ -828,7 +828,7 @@ CPU emulation reference + Python verification code. n=6 constants auto-derived f
 - iOS-side specifics:
   - tier 2 INPUT accepts **BCI** (OpenBCI 16ch -> n=6 reduction) + multi-touch + IME simultaneously
   - tier 1 RENDER supports hexa-holo output (SoC-embedded neural renderer)
-- VOID linkage: bundle the `/Users/ghost/Dev/void/` app tree as an iOS app, host-driven on tier 1+6
+- VOID linkage: bundle the `/Users/ghost/core/void/` app tree as an iOS app, host-driven on tier 1+6
 - n=6 alignment: 9/9 EXACT in shared spec + 2 BCI extension axes (tau bandwidth split / sigma channel select) added
 
 

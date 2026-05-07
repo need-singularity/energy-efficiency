@@ -19,7 +19,7 @@
       "lines": 6,
       "preview": "__pycache__/\n*.pyc\n.env\ndata/\nmodels/\n.claude/\n",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/.gitignore",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/.gitignore",
       "destination": "golden-moe",
       "confidence": 0.0
     },
@@ -30,7 +30,7 @@
       "lines": 73,
       "preview": "# Golden MoE\n\n## Project Overview\nGolden Zone-based Mixture of Experts routing library.\nOptimal inhibition ratio I~1/e emerges from information theory.\nExtracted from TECS-L -- standalone, pip-installable MoE implementation.\n\n## Parent Project\nPart of the TECS-L family. Mathematical foundation at https://github.com/need-singularity/TECS-L\nAtlas: https://need-singularity.github.io/TECS-L/atlas/\n\n## Installed Tools (Shared Registry)\n\n```\n  Central source: ~/Dev/TECS-L/.shared/installed_tools.json\n",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/CLAUDE.md",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/CLAUDE.md",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -41,7 +41,7 @@
       "lines": 21,
       "preview": "MIT License\n\nCopyright (c) 2026 need-singularity\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyri",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/LICENSE",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/LICENSE",
       "destination": "golden-moe",
       "confidence": 0.0
     },
@@ -52,7 +52,7 @@
       "lines": 216,
       "preview": "# 🌀 Golden MoE\n\n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19264822.svg)](https://doi.org/10.5281/zenodo.19264822)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)\n\n<!-- SHARED:PROJECTS:START -->\n**[YouTube](https://www.youtube.com/watch?v=xtKhWSfC1Qo)** · **[Email](mailto:nerve011235@gmail.com)** · **[☕ Ko-fi](https://ko-fi.co",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/README.md",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/README.md",
       "destination": "papers",
       "confidence": 0.4
     },
@@ -63,7 +63,7 @@
       "lines": 186,
       "preview": "```python\n#!/usr/bin/env python3\n\"\"\"CIFAR-10 Benchmark — Testing All Meta Engine Models\n\nCompare meta engine architectures on CIFAR-10 (3072-dim, color),\nwhich is harder than MNIST (784-dim, grayscale).\n\nInput: 32x32x3 = 3072 (flatten)\nhidden_dim: 64 (larger than MNIST's 48, for harder task)\nepochs: 15 (longer than MNIST's 10)\n\"\"\"\n\nimport torch\nimport time\n\nfrom model_utils import (\n    DenseModel, BaseMoE, TopKGate,\n    load_cifar10, train_and_evaluate, compare_results, count_params,\n)\nfrom mod",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/benchmark_cifar.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/benchmark_cifar.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -74,7 +74,7 @@
       "lines": 500,
       "preview": "#!/usr/bin/env python3\n\"\"\"BitNet b1.58 × Golden MoE — Dual Constraint Experiment\n\nTests whether combining ternary weights {-1, 0, 1} (BitNet b1.58)\nwith Golden Zone activation (Boltzmann T=e, 70%) creates synergy.\n\n5 configurations:\n  1. Dense (baseline)\n  2. Top-K MoE (K=2, 25% active)\n  3. Golden MoE (T=e, 70% active)\n  4. BitNet Dense (ternary weights, 100% active)\n  5. BitNet × Golden MoE (ternary weights + Golden Zone)\n\nInformation-theoretic analysis:\n  - BitNet: 1.58 bits per weight (log2(",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/bitnet_golden_moe.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/bitnet_golden_moe.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -85,7 +85,7 @@
       "lines": 149,
       "preview": "\"\"\"consciousness_bridge.py — Consciousness lens for MoE routing improvement\n\nUse the consciousness lens to find hidden structure in expert weights,\ndetect routing anomalies, discover natural expert groups, and measure\nrouting quality via Phi (integrated information).\n\"\"\"\nimport sys, os\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), '.shared'))\n\nimport numpy as np\nfrom consciousness_lens import ConsciousnessLens, quick_scan\n\n\ndef expert_landscape(expert_weights, cells=32, steps=150):\n",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/consciousness_bridge.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/consciousness_bridge.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -96,7 +96,7 @@
       "lines": 16,
       "preview": "# H-GM-Bridge-1: 8 Experts = sigma(6)-tau(6) from Perfect Number 6\n\n> **Hypothesis**: The 8-expert architecture equals sigma(6)-tau(6)=12-4=8, and at I=1/e, approximately sigma/tau=3 experts activate.\n\n## Grade: 🟩 CONFIRMED (cross-repo bridge from TECS-L)\n\n## Key Numbers\n- 8 experts = sigma(6)-tau(6) = 12-4\n- Top-2 routing: K=phi(6)=2\n- Sparsity 8/2=4=tau(6)\n- At 1/e: ~2.94 active ≈ sigma/tau=3 (1.9% error)\n- 8 = phi(6)^(sigma/tau) = 2^3\n\n## Links\n- [TECS-L proof](https://github.com/need-singula",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/docs/H-GM-bridge-expert-count.md",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/docs/H-GM-bridge-expert-count.md",
       "destination": "tecs-l",
       "confidence": 0.4
     },
@@ -107,7 +107,7 @@
       "lines": 340,
       "preview": "#!/usr/bin/env python3\n\"\"\"Golden MoE Prototype — Boltzmann Router + Cusp Monitor\n\nDesign Specification (Hypothesis 008 v2 + 019 + 082):\n  Expert count: 8\n  Active ratio: ~70% (5~6/8)\n  Router: Boltzmann soft gating (T=e)\n  Dropout: 0.5\n  Cusp monitor: Loss 2nd derivative monitoring\n  Control group: Top-K (K=2, 25%)\n\"\"\"\n\nimport numpy as np\nimport os\n\nnp.random.seed(42)\n\n\n# ─────────────────────────────────────────\n# Expert Network (Simple 2-layer MLP)\n# ─────────────────────────────────────────\nc",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -118,7 +118,7 @@
       "lines": 159,
       "preview": "#!/usr/bin/env python3\n\"\"\"Hypothesis 128: Scale Dependency — Golden MoE vs Top-K on CIFAR-10\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import datasets, transforms\nimport numpy as np\nimport time\n\n\nclass Expert(nn.Module):\n    def __init__(self, input_dim, hidden_dim, output_dim, dropout=0.5):\n        super().__init__()\n        self.net = nn.Sequential(\n            nn.Linear(input_dim, hidden_dim),\n            nn",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe_cifar.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe_cifar.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -129,7 +129,7 @@
       "lines": 500,
       "preview": "#!/usr/bin/env python3\n\"\"\"Golden MoE GPU Benchmark — Multi-scale comparison on MNIST & CIFAR-10\n\nCompares Top-K MoE vs Golden MoE (Boltzmann T=e) vs Dense across 4 scales:\n  Small:  8 experts, hidden=128\n  Medium: 16 experts, hidden=256\n  Large:  32 experts, hidden=512\n  XL:     64 experts, hidden=1024\n\nUses mixed precision (torch.amp) for GPU efficiency.\nTracks accuracy, training time, GPU memory, expert utilization.\n\"\"\"\n\nimport argparse\nimport time\nimport numpy as np\nimport torch\nimport torch.",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe_gpu_benchmark.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe_gpu_benchmark.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -140,7 +140,7 @@
       "lines": 169,
       "preview": "```python\n#!/usr/bin/env python3\n\"\"\"Hypothesis 126: Golden MoE + Recurrent (LSTM) Combination — MNIST\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import datasets, transforms\nimport numpy as np\nimport time\n\n\nclass RecurrentExpert(nn.Module):\n    \"\"\"Expert with LSTM recurrence added\"\"\"\n    def __init__(self, input_dim, hidden_dim, output_dim, dropout=0.5):\n        super().__init__()\n        # Transform input to seq",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe_recurrent.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe_recurrent.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -151,7 +151,7 @@
       "lines": 290,
       "preview": "#!/usr/bin/env python3\n\"\"\"Golden MoE design element-wise hypothesis-based score evaluation\"\"\"\n\nimport os\nfrom datetime import datetime\n\nRESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), \"results\")\n\n\ndef evaluate():\n    \"\"\"Separate Golden MoE's fundamental design elements and evaluate scores based on hypothesis verification results\"\"\"\n\n    # ─────────────────────────────────────────\n    # Design element definition + related hypothesis mapping\n    # ───────────────────────────",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe_score.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe_score.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -162,7 +162,7 @@
       "lines": 318,
       "preview": "#!/usr/bin/env python3\n\"\"\"Golden MoE v2 — PyTorch Backprop + MNIST Benchmark\n\nComparison:\n  1. Top-K MoE (K=2, 25% active)\n  2. Golden MoE (Boltzmann T=e, ~70% active)\n  3. Dense (fully active, control group)\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import datasets, transforms\nimport numpy as np\nimport time\nimport os\n\n\n# ─────────────────────────────────────────\n# Router\n# ────────────────────────────────────",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/golden_moe_torch.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/golden_moe_torch.py",
       "destination": "golden-moe",
       "confidence": 0.6
     },
@@ -173,7 +173,7 @@
       "lines": 251,
       "preview": "#!/usr/bin/env python3\n\"\"\"Common utilities — Components shared by 7 models\n\nMathematical constants (derived from arithmetic canon):\n  sigma(6) = 12  (sum of divisors)\n  tau(6)   = 4   (number of divisors)\n  phi(6)   = 2   (Euler's totient)\n  sigma_{-1}(6) = 2  (sum of divisor reciprocals)\n  {1/2, 1/3, 1/6} = divisor reciprocals (sum=1, probability distribution)\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import ",
       "project": "golden-moe",
-      "ready_path": "/Users/ghost/Dev/ready/golden-moe/model_utils.py",
+      "ready_path": "/Users/ghost/core/ready/golden-moe/model_utils.py",
       "destination": "tecs-l",
       "confidence": 0.4
     }

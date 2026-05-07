@@ -465,7 +465,7 @@ Final structure of the planned outputs in README.md:
 | axis-final.md | theory/roadmap-v2/ | **this document done** |
 | axis-final-nexus-hub.md | theory/roadmap-v2/ | preserved (different track) |
 | final-roadmap-v2.md | theory/roadmap-v2/ | next task (detailed Phase 2~Ω design) |
-| millennium-learning-v2.json | /Users/ghost/Dev/nexus/shared/roadmaps/ | next task (JSON formalization) |
+| millennium-learning-v2.json | /Users/ghost/core/nexus/shared/roadmaps/ | next task (JSON formalization) |
 | comparison-v1-vs-v2.md | theory/roadmap-v2/ | replaceable by §6 of this document |
 
 **With this axis-final, axis confirmation · saturation declaration · Phase-structure overview · v1 comparison are complete.** Remaining: Phase 2~Ω details and JSON formalization.

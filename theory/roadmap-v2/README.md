@@ -48,7 +48,7 @@ R5 saturation index 96.0% ≥ 95% breakthrough triggers saturation declaration. 
 - axis-final.md (domain-track 4 axes confirmed) — **done**
 - axis-final-nexus-hub.md (nexus-hub 19-axis separate track — preserved)
 - final-roadmap-v2.md (converged v2 roadmap master) — Phase 2~Ω detail pending
-- millennium-learning-v2.json (/Users/ghost/Dev/nexus/shared/roadmaps/) — pending
+- millennium-learning-v2.json (/Users/ghost/core/nexus/shared/roadmaps/) — pending
 - comparison-v1-vs-v2.md (ASCII comparison) — replaceable by axis-final.md §6
 
 ## Principles

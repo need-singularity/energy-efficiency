@@ -488,7 +488,7 @@ PASS  when append  constant (fabrication possible TRL 5  as condition PASS):
 - `/Users/ghost/core/canon/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 storage)
 - `/Users/ghost/core/canon/domains/cognitive/brain-computer-interface/brain-computer-interface.md` (BCI SSOT)
 - `/Users/ghost/core/canon/bridge/ouroboros_5phase.hexa` (5-phase )
-- `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (consciousness·BCI constant)
+- `/Users/ghost/core/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (consciousness·BCI constant)
 
 ---
 
