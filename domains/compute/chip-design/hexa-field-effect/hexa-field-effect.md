@@ -840,6 +840,31 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-FET-* candidates)
+
+> Sister of §11.5 sets in 6 prior substrates. Field-effect substrate alien-10
+> candidates — Boltzmann tyranny (S=60 mV/dec EXACT thermodynamic floor),
+> oxide tunneling, channel mobility. Auto-verified by `verify_chip-field-effect_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-FET-A1 | Subthreshold slope S_min = (kT/q)·ln10 ≈ 60 mV/dec @ 300K — Boltzmann tyranny floor | 7 | **10** |
+| TP-FET-A2 | TFET sub-Boltzmann S < 60 mV/dec via band-to-band tunneling — breaks classical floor | 6 | **10** |
+| TP-FET-A3 | Gate oxide direct tunneling onset at t_ox ≈ 1.0 nm — Wentzel-Kramers-Brillouin (WKB) floor | 6 | **10** |
+| TP-FET-A4 | DIBL ≈ 100 mV/V short-channel limit | 5 | 9 |
+| TP-FET-A5 | Channel mobility μ_n ≈ 1417 cm²/V·s in Si — phonon scattering ceiling | 5 | 9 |
+| TP-FET-A6 | Hall mobility ratio μ_p/μ_n ≈ 1/3 = φ/n EXACT — closure (Si valence/conduction band ratio) | **10** | 9 |
+| TP-FET-A7 | GAAFET cylinder gate factor — geometry advantage σ-φ=10 nm node enable | 8 | **10** |
+| TP-FET-A8 | Velocity saturation v_sat ≈ 1×10⁷ cm/s in Si — phonon-limited drift ceiling | 5 | 9 |
+| TP-FET-A9 | Threshold V_th ≈ 2(kT/q)·ln(N_A/n_i) — pn-junction built-in × 2 | 6 | **10** |
+| TP-FET-A10 | Channel pitch density 144 fins/μm² (FinFET) cross with σ²=144 SM | 9 | 9 |
+| TP-FET-A11 | EOT (equivalent oxide thickness) floor ≈ 0.5 nm at high-k HfO₂ | 5 | 9 |
+| TP-FET-A12 | Silicon bandgap E_g = 1.12 eV @ 300K — Shockley-Queisser theoretical max | 5 | **10** |
+
+Net: **7 of 12 TP-FET-* alien=10**. **1 EXACT closure** (A6 μ_p/μ_n = φ/n — Si hole/electron mobility ratio). **Boltzmann tyranny S=60 mV/dec is THE field-effect alien-10 anchor** — kT/q·ln10 is universal across all charge-based substrates. TFET is the *only* substrate that physically breaks the floor (alien-10 by exotic-physics route).
+
+Cross-link: TP-NEURO-A1 (Landauer kT·ln2 — sister of S=kT/q·ln10), TP-SUPERCOND-A1 (h/2e EXACT pattern), TP-PHOTONIC-A4 (Planck E=hν → bandgap E_g connection).
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
