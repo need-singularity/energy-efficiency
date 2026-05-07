@@ -941,6 +941,33 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-DIGITAL-* candidates)
+
+> Sister of §11.5 sets in 7 prior substrates. Digital VLSI alien-10 candidates —
+> Amdahl/Pollack/Rent's universal scaling laws, von Neumann bottleneck, Dennard.
+> Auto-verified by `verify_chip-1-digital_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-DIGITAL-A1 | Amdahl S = 1/((1-p)+p/N) — parallelism speedup ceiling | 7 | **10** |
+| TP-DIGITAL-A2 | Gustafson S = N − (N−1)·s — scaled-speedup law (sister of Amdahl) | 7 | **10** |
+| TP-DIGITAL-A3 | Rent's rule T = K·B^p, p ≈ 0.6 — universal interconnect scaling | 5 | **10** |
+| TP-DIGITAL-A4 | Pollack's rule perf ∝ √(area) — single-thread diminishing return | 6 | 9 |
+| TP-DIGITAL-A5 | Dennard scaling V·f → constant power density (broken @ 28nm) | 5 | **10** |
+| TP-DIGITAL-A6 | Power = C·V²·f — CMOS dynamic power identity (φ=2 = exponent) | **10** | **10** |
+| TP-DIGITAL-A7 | Frequency wall ~5 GHz @ 300K — heat-removal economic ceiling | 5 | 9 |
+| TP-DIGITAL-A8 | Pipeline τ=4 stages = optimal balance — Hennessy-Patterson canonical | **10** | **10** |
+| TP-DIGITAL-A9 | Cache hit-time ratio τ=4-tier hierarchy (REG/L1/L2/DRAM) | **10** | **10** |
+| TP-DIGITAL-A10 | Branch-prediction misprediction penalty = pipeline_depth × τ-stage | 8 | 9 |
+| TP-DIGITAL-A11 | von Neumann bottleneck — memory_BW < CPU_BW always (architectural floor) | 7 | **10** |
+| TP-DIGITAL-A12 | ILP wall ~ 4-issue practical max (φ=2 issue × τ=4 deep ≤ 8) | 8 | 9 |
+
+Net: **8 of 12 TP-DIGITAL-* alien=10**. **3 EXACT closures** (A6 P=CV²f exponent=φ, A8 τ=4 pipe, A9 τ=4 cache tiers). 12/12 PASS.
+
+Cross-link: TP-NEURO-A1 (Landauer kT·ln2 — sister of CMOS dynamic floor),
+TP-FET-A1 (Boltzmann S=60 mV/dec — limits V_DD scaling → caps Dennard),
+TP-DIGITAL-A6 (P=CV²f) directly couples FET physics to digital scaling.
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
