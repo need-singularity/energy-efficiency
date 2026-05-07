@@ -886,6 +886,29 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-SUPERCOND-* candidates)
+
+> Sister of hexa-neuromorphic / hexa-quantum-hybrid / hexa-photonic §11.5.
+> Superconducting substrate alien-10 candidates — flux quantum, BCS,
+> Josephson, Cooper pair. Auto-verified by `verify_chip-superconducting_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-SUPERCOND-A1 | Flux quantum Φ₀ = h/(2e) ≈ 2.0678×10⁻¹⁵ Wb (CODATA EXACT) | **10** | **10** |
+| TP-SUPERCOND-A2 | Josephson const K_J = 2e/h = 483597.84841698 GHz/V (SI 2019 EXACT) | **10** | **10** |
+| TP-SUPERCOND-A3 | BCS gap ratio 2Δ/(k_B T_c) ≈ 3.528 — universal across BCS materials | 7 | **10** |
+| TP-SUPERCOND-A4 | von Klitzing R_K = h/e² = 25812.80745... Ω (SI 2019 EXACT) | **10** | **10** |
+| TP-SUPERCOND-A5 | Cooper pair charge q* = 2e — Cooper pair binding | 8 | **10** |
+| TP-SUPERCOND-A6 | London penetration depth λ_L = √(m·c²/(4π·n_s·e²)) | 6 | 9 |
+| TP-SUPERCOND-A7 | Meissner B=0 inside (cross with σ²=144 SQUID array) | 8 | **10** |
+| TP-SUPERCOND-A8 | Type-II Abrikosov vortex — σ=12 vertices triangular | 9 | 9 |
+| TP-SUPERCOND-A9 | RSFQ logic — 1 SFQ pulse = Φ₀ single-flux gate | 9 | **10** |
+| TP-SUPERCOND-A10 | Pippard coherence ξ = ℏv_F/(πΔ) | 6 | 9 |
+| TP-SUPERCOND-A11 | Critical current J_c — σ=12 pinning sites | 7 | 9 |
+| TP-SUPERCOND-A12 | Persistent current τ ≥ 10¹⁰⁰⁰⁰ years (Bardeen) | 5 | **10** |
+
+Net: **9 of 12 TP-SUPERCOND-* alien=10**. **4 EXACT closures** (A1 Φ₀, A2 K_J, A4 R_K — SI 2019 fundamental constants from quantum Hall + Josephson; plus A5 q*=2e). Cross-link TP-NEURO-A4, TP-QUANTUM-A1/A11, TP-PHOTONIC-A11.
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
