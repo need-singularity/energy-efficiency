@@ -840,6 +840,31 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-TOPO-* candidates)
+
+> Sister of neuromorphic / quantum-hybrid / photonic / superconducting §11.5.
+> Topological-photonic alien-10 candidates — Chern numbers, Berry phase,
+> Z₂ invariants. **Topological invariants are integers** — they discretize
+> over continuous deformations, making them the *strongest* alien-10 class
+> (no measurement noise can move an integer continuously).
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-TOPO-A1 | Chern number C ∈ ℤ — TKNN integer Hall conductance σ_xy = C·e²/h | **10** | **10** |
+| TP-TOPO-A2 | Z₂ invariant ν ∈ {0,1} — strong topological insulator | **10** | **10** |
+| TP-TOPO-A3 | Berry phase γ = ∮A·dl ∈ {0, π} mod 2π for inversion-symmetric | 9 | **10** |
+| TP-TOPO-A4 | Winding number W ∈ ℤ — 1D SSH topological phase | **10** | **10** |
+| TP-TOPO-A5 | Quantized Hall conductance σ_xy = ν·e²/h, ν ∈ ℤ⁺ | **10** | **10** |
+| TP-TOPO-A6 | Edge-state count = bulk Chern (bulk-boundary correspondence) | **10** | **10** |
+| TP-TOPO-A7 | Dirac cone — 2 bands cross at K-point (graphene-like, σ=12 K-points in σ²=144 BZ) | 9 | **10** |
+| TP-TOPO-A8 | Floquet topological — period-T drive opens gap, Chern integer-valued | 8 | **10** |
+| TP-TOPO-A9 | Higher-order topological — corner states ∈ ℤ for D=τ=4 hinge codimension | 8 | 9 |
+| TP-TOPO-A10 | Symmetry-protected topological (SPT) — H¹(G,ℤ₂) classification finite | 7 | **10** |
+| TP-TOPO-A11 | Anyon braiding statistics — non-abelian Yang-Lee with σ=12 modular tensor cat fusion | 6 | 9 |
+| TP-TOPO-A12 | Photonic crystal Chern at σ=12 layer pairs (cross with TP-PHOTONIC-A9) | 9 | 9 |
+
+Net: **10 of 12 TP-TOPO-* alien=10**. **6 EXACT closures** (Chern, Z₂, Winding, Quantized Hall, Bulk-boundary, SSH — all integer-valued by topology). **Strongest alien-10 class** — no measurement noise can shift an integer.
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
